@@ -26,6 +26,7 @@
 #include "collision.h"
 #include "main.h"
 #include "code_80086E70.h"
+#include "code_800029B0.h"
 #include "src/data/data_800E45C0.h"
 #include "courses/all_course_data.h"
 #include <vehicles.h>
@@ -4451,20 +4452,20 @@ void func_80053870(s32 cameraId) {
     if (cameraId == 0) {
         var_s0 = D_80183EA0;
         var_s2 = 0;
-        if (D_80165750 > 0) {
+        if (gNumActiveThwomps > 0) {
             do {
                 temp_s1 = *var_s0;
                 set_object_flag_unk_054_false(temp_s1, 0x00070000);
                 func_800722CC(temp_s1, 0x00000110);
                 var_s2 += 1;
                 var_s0 += 4;
-            } while (var_s2 < D_80165750);
+            } while (var_s2 < gNumActiveThwomps);
             sp94 = temp_s1;
         }
     }
     func_800534A4(sp94);
     var_s0_2 = D_80183EA0;
-    if (D_80165750 > 0) {
+    if (gNumActiveThwomps > 0) {
         do {
             temp_s1_2 = *var_s0_2;
             temp_v0 = gObjectList[temp_s1_2].unk_0DF;
@@ -4473,10 +4474,10 @@ void func_80053870(s32 cameraId) {
                 if ((temp_v0_2 >= (s16) (temp_v0 - 1)) && ((s16) (temp_v0 + 1) >= temp_v0_2) && (func_8008A140(temp_s1_2, sp84, 0x8000U) != 0)) {
                     func_800536C8(temp_s1_2);
                 }
-                var_v1 = &D_80183EA0[D_80165750];
+                var_v1 = &D_80183EA0[gNumActiveThwomps];
             } else {
                 func_800536C8(temp_s1_2);
-                var_v1 = &D_80183EA0[D_80165750];
+                var_v1 = &D_80183EA0[gNumActiveThwomps];
             }
             var_s0_2 += 4;
         } while ((u32) var_s0_2 < (u32) var_v1);
@@ -4871,7 +4872,7 @@ void func_80054E10(s32 objectIndex) {
 void func_80054EB8(UNUSED s32 unused) {
     s32 someIndex;
 
-    for (someIndex = 0; someIndex < NUM_MOLES; someIndex++) {
+    for (someIndex = 0; someIndex < NUM_MAX_MOLES; someIndex++) {
         func_80054E10(D_8018C1B0[someIndex]);
     }
 }

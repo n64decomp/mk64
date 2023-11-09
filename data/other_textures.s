@@ -1148,108 +1148,108 @@ glabel gTexture68E2D0
 .incbin "textures/standalone/texture_68E2D0.rgba16.mio0"
 
 .balign 4, 0x00
-glabel gTexture68EB50
-.incbin "bin/texture_68EB50.mio0"
+glabel gTextureGreenShell0
+.incbin "assets/greenshell/gTextureGreenShell0.mio0"
 
 .balign 4, 0x00
-glabel gTexture68EDA0
-.incbin "bin/texture_68EDA0.mio0"
+glabel gTextureGreenShell1
+.incbin "assets/greenshell/gTextureGreenShell1.mio0"
 
 .balign 4, 0x00
-glabel gTexture68EFF0
-.incbin "bin/texture_68EFF0.mio0"
+glabel gTextureGreenShell2
+.incbin "assets/greenshell/gTextureGreenShell2.mio0"
 
 .balign 4, 0x00
-glabel gTexture68F248
-.incbin "bin/texture_68F248.mio0"
+glabel gTextureGreenShell3
+.incbin "assets/greenshell/gTextureGreenShell3.mio0"
 
 .balign 4, 0x00
-glabel gTexture68F4A8
-.incbin "bin/texture_68F4A8.mio0"
+glabel gTextureGreenShell4
+.incbin "assets/greenshell/gTextureGreenShell4.mio0"
 
 .balign 4, 0x00
-glabel gTexture68F700
-.incbin "bin/texture_68F700.mio0"
+glabel gTextureGreenShell5
+.incbin "assets/greenshell/gTextureGreenShell5.mio0"
 
 .balign 4, 0x00
-glabel gTexture68F96C
-.incbin "bin/texture_68F96C.mio0"
+glabel gTextureGreenShell6
+.incbin "assets/greenshell/gTextureGreenShell6.mio0"
 
 .balign 4, 0x00
-glabel gTexture68FBCC
-.incbin "bin/texture_68FBCC.mio0"
+glabel gTextureGreenShell7
+.incbin "assets/greenshell/gTextureGreenShell7.mio0"
 
 .balign 4, 0x00
-glabel gTexture68FE20
-.incbin "bin/texture_68FE20.mio0"
+glabel gTextureBlueShell0
+.incbin "assets/blueshell/gTextureBlueShell0.mio0"
 
 .balign 4, 0x00
-glabel gTexture69004C
-.incbin "bin/texture_69004C.mio0"
+glabel gTextureBlueShell1
+.incbin "assets/blueshell/gTextureBlueShell1.mio0"
 
 .balign 4, 0x00
-glabel gTexture690284
-.incbin "bin/texture_690284.mio0"
+glabel gTextureBlueShell2
+.incbin "assets/blueshell/gTextureBlueShell2.mio0"
 
 .balign 4, 0x00
-glabel gTexture6904C4
-.incbin "bin/texture_6904C4.mio0"
+glabel gTextureBlueShell3
+.incbin "assets/blueshell/gTextureBlueShell3.mio0"
 
 .balign 4, 0x00
-glabel gTexture690708
-.incbin "bin/texture_690708.mio0"
+glabel gTextureBlueShell4
+.incbin "assets/blueshell/gTextureBlueShell4.mio0"
 
 .balign 4, 0x00
-glabel gTexture690960
-.incbin "bin/texture_690960.mio0"
+glabel gTextureBlueShell5
+.incbin "assets/blueshell/gTextureBlueShell5.mio0"
 
 .balign 4, 0x00
-glabel gTexture690BBC
-.incbin "bin/texture_690BBC.mio0"
+glabel gTextureBlueShell6
+.incbin "assets/blueshell/gTextureBlueShell6.mio0"
 
 .balign 4, 0x00
-glabel gTexture690DF8
-.incbin "bin/texture_690DF8.mio0"
+glabel gTextureBlueShell7
+.incbin "assets/blueshell/gTextureBlueShell7.mio0"
 
 .balign 4, 0x00
 glabel gTextureQuestionMarkYellow
 .incbin "textures/standalone/question_mark_yellow.rgba16.mio0"
 
 .balign 4, 0x00
-glabel gTexture6913CC
-.incbin "bin/texture_6913CC.mio0"
+glabel gTextureTrees1
+.incbin "assets/trees/gTextureTrees1.mio0"
 
 .balign 4, 0x00
-glabel gTexture691714
-.incbin "bin/texture_691714.mio0"
+glabel gTextureTrees2
+.incbin "assets/trees/gTextureTrees2.mio0"
 
 .balign 4, 0x00
-glabel gTexture691AAC
-.incbin "bin/texture_691AAC.mio0"
+glabel gTextureTrees3
+.incbin "assets/trees/gTextureTrees3.mio0"
 
 .balign 4, 0x00
-glabel gTexture691D98
-.incbin "bin/texture_691D98.mio0"
+glabel gTextureTrees4Left
+.incbin "assets/trees/gTextureTrees4Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture692088
-.incbin "bin/texture_692088.mio0"
+glabel gTextureTrees4Right
+.incbin "assets/trees/gTextureTrees4Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture6923D8
-.incbin "bin/texture_6923D8.mio0"
+glabel gTextureTrees5Left
+.incbin "assets/trees/gTextureTrees5Left.mio0"
 
 .balign 4, 0x00
-glabel gTexture6925E8
-.incbin "bin/texture_6925E8.mio0"
+glabel gTextureTrees5Right
+.incbin "assets/trees/gTextureTrees5Right.mio0"
 
 .balign 4, 0x00
-glabel gTexture692888
-.incbin "bin/texture_692888.mio0"
+glabel gTextureTrees6
+.incbin "assets/trees/gTextureTrees6.mio0"
 
 .balign 4, 0x00
-glabel gTexture692CC0
-.incbin "bin/texture_692CC0.mio0"
+glabel gTextureTrees7
+.incbin "assets/trees/gTextureTrees7.mio0"
 
 .balign 4, 0x00
 glabel gTextureShrub
@@ -1567,8 +1567,469 @@ glabel gTextureLightningBolt0
 glabel gTextureLightningBolt1
 .incbin "textures/standalone/lightning_zap_1.ia8.mio0"
 
+.balign 16, 0x00
+glabel gTextureLakituNoLights1
+.incbin "assets/lakitu/nolights/gTextureLakituNoLights1.bin"
+
 .balign 4, 0x00
-.incbin "bin/mk64.u.6A0ABC.bin"
+glabel gTextureLakituNoLights2
+.incbin "assets/lakitu/nolights/gTextureLakituNoLights2.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituNoLights3
+.incbin "assets/lakitu/nolights/gTextureLakituNoLights3.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituNoLights4
+.incbin "assets/lakitu/nolights/gTextureLakituNoLights4.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituNoLights5
+.incbin "assets/lakitu/nolights/gTextureLakituNoLights5.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituNoLights6
+.incbin "assets/lakitu/nolights/gTextureLakituNoLights6.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituNoLights7
+.incbin "assets/lakitu/nolights/gTextureLakituNoLights7.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituNoLights8
+.incbin "assets/lakitu/nolights/gTextureLakituNoLights8.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights01
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights01.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights02
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights02.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights03
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights03.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights04
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights04.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights05
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights05.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights06
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights06.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights07
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights07.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights08
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights08.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights09
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights09.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights10
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights10.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights11
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights11.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights12
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights12.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights13
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights13.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights14
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights14.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights15
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights15.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituRedLights16
+.incbin "assets/lakitu/redlights/gTextureLakituRedLights16.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituBlueLight1
+.incbin "assets/lakitu/bluelight/gTextureLakituBlueLight1.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituBlueLight2
+.incbin "assets/lakitu/bluelight/gTextureLakituBlueLight2.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituBlueLight3
+.incbin "assets/lakitu/bluelight/gTextureLakituBlueLight3.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituBlueLight4
+.incbin "assets/lakitu/bluelight/gTextureLakituBlueLight4.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituBlueLight5
+.incbin "assets/lakitu/bluelight/gTextureLakituBlueLight5.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituBlueLight6
+.incbin "assets/lakitu/bluelight/gTextureLakituBlueLight6.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituBlueLight7
+.incbin "assets/lakitu/bluelight/gTextureLakituBlueLight7.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituBlueLight8
+.incbin "assets/lakitu/bluelight/gTextureLakituBlueLight8.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag01
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag01.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag02
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag02.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag03
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag03.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag04
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag04.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag05
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag05.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag06
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag06.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag07
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag07.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag08
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag08.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag09
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag09.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag10
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag10.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag11
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag11.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag12
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag12.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag13
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag13.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag14
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag14.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag15
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag15.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag16
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag16.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag17
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag17.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag18
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag18.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag19
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag19.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag20
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag20.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag21
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag21.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag22
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag22.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag23
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag23.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag24
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag24.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag25
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag25.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag26
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag26.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag27
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag27.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag28
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag28.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag29
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag29.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag30
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag30.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag31
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag31.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituCheckeredFlag32
+.incbin "assets/lakitu/checkeredflag/gTextureLakituCheckeredFlag32.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap01
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap01.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap02
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap02.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap03
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap03.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap04
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap04.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap05
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap05.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap06
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap06.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap07
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap07.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap08
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap08.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap09
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap09.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap10
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap10.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap11
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap11.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap12
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap12.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap13
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap13.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap14
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap14.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap15
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap15.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituSecondLap16
+.incbin "assets/lakitu/secondlap/gTextureLakituSecondLap16.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap01
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap01.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap02
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap02.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap03
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap03.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap04
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap04.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap05
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap05.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap06
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap06.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap07
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap07.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap08
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap08.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap09
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap09.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap10
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap10.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap11
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap11.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap12
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap12.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap13
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap13.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap14
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap14.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap15
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap15.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFinalLap16
+.incbin "assets/lakitu/finallap/gTextureLakituFinalLap16.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse01
+.incbin "assets/lakitu/reverse/gTextureLakituReverse01.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse02
+.incbin "assets/lakitu/reverse/gTextureLakituReverse02.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse03
+.incbin "assets/lakitu/reverse/gTextureLakituReverse03.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse04
+.incbin "assets/lakitu/reverse/gTextureLakituReverse04.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse05
+.incbin "assets/lakitu/reverse/gTextureLakituReverse05.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse06
+.incbin "assets/lakitu/reverse/gTextureLakituReverse06.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse07
+.incbin "assets/lakitu/reverse/gTextureLakituReverse07.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse08
+.incbin "assets/lakitu/reverse/gTextureLakituReverse08.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse09
+.incbin "assets/lakitu/reverse/gTextureLakituReverse09.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse10
+.incbin "assets/lakitu/reverse/gTextureLakituReverse10.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse11
+.incbin "assets/lakitu/reverse/gTextureLakituReverse11.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse12
+.incbin "assets/lakitu/reverse/gTextureLakituReverse12.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse13
+.incbin "assets/lakitu/reverse/gTextureLakituReverse13.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse14
+.incbin "assets/lakitu/reverse/gTextureLakituReverse14.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse15
+.incbin "assets/lakitu/reverse/gTextureLakituReverse15.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituReverse16
+.incbin "assets/lakitu/reverse/gTextureLakituReverse16.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFishing1
+.incbin "assets/lakitu/fishing/gTextureLakituFishing1.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFishing2
+.incbin "assets/lakitu/fishing/gTextureLakituFishing2.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFishing3
+.incbin "assets/lakitu/fishing/gTextureLakituFishing3.bin"
+
+.balign 4, 0x00
+glabel gTextureLakituFishing4
+.incbin "assets/lakitu/fishing/gTextureLakituFishing4.bin"
 
 .balign 4, 0x00
 glabel gTextureGhosts

@@ -1,6 +1,6 @@
 #include "types.h"
 
-static Vtx startup_logo[] = {
+Vtx startup_logo[] = {
 
     {{{   482,    -124,      50}, 0, {0, 0}, {0xc9, 0x97, 0x00, 0xff}}},
     {{{   482,    -124,     -50}, 0, {0, 0}, {0xc9, 0x97, 0x00, 0xff}}},
@@ -693,7 +693,7 @@ static Vtx startup_logo[] = {
 
 };
 
-static Gfx startup_logo_dl[] = {
+Gfx startup_logo_dl[] = {
     gsSPVertex(&startup_logo[0], 32, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsSP1Quadrangle(4, 5, 1, 0, 0),
@@ -746,7 +746,7 @@ static Gfx startup_logo_dl[] = {
 
 };
 
-static Gfx startup_logo_dl2[] = {
+Gfx startup_logo_dl2[] = {
 
     gsSPVertex(&startup_logo[106], 30, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
@@ -777,7 +777,7 @@ static Gfx startup_logo_dl2[] = {
 
 };
 
-static Gfx startup_logo_dl3[] = {
+Gfx startup_logo_dl3[] = {
 
     gsSPVertex(&startup_logo[158], 30, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
@@ -839,7 +839,7 @@ static Gfx startup_logo_dl3[] = {
 
 };
 
-static Gfx startup_logo_dl4[] = {
+Gfx startup_logo_dl4[] = {
     gsSPVertex(&startup_logo[274], 30, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsSP1Quadrangle(4, 5, 1, 0, 0),
@@ -868,7 +868,7 @@ static Gfx startup_logo_dl4[] = {
     gsSPEndDisplayList(),
 };
 
-static Gfx startup_logo_dl5[] = {
+Gfx startup_logo_dl5[] = {
     gsSPVertex(&startup_logo[326], 32, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsSP1Quadrangle(4, 5, 1, 0, 0),
@@ -921,7 +921,7 @@ static Gfx startup_logo_dl5[] = {
     gsSPEndDisplayList(),
 };
 
-static Gfx startup_logo_dl6[] = {
+Gfx startup_logo_dl6[] = {
     gsSPVertex(&startup_logo[436], 32, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsSP1Quadrangle(4, 5, 1, 0, 0),
@@ -974,7 +974,7 @@ static Gfx startup_logo_dl6[] = {
 
 };
 
-static Gfx startup_logo_dl7[] = {
+Gfx startup_logo_dl7[] = {
     gsSPVertex(&startup_logo[540], 32, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsSP1Quadrangle(4, 5, 1, 0, 0),
@@ -1004,7 +1004,7 @@ static Gfx startup_logo_dl7[] = {
 
 };
 
-static Gfx startup_logo_dl8[] = {
+Gfx startup_logo_dl8[] = {
     gsSPVertex(&startup_logo[596], 32, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsSP1Quadrangle(4, 5, 1, 0, 0),
@@ -1051,7 +1051,7 @@ static Gfx startup_logo_dl8[] = {
     gsSPEndDisplayList(),
 };
 
-static Vtx startup_logo2[] = {
+Vtx startup_logo2[] = {
 
     {{{   107,      36,     -50}, 0, {0, 0}, {0x00, 0x00, 0x88, 0xff}}},
     {{{    66,      17,     -50}, 0, {0, 0}, {0x00, 0x00, 0x88, 0xff}}},
@@ -2149,7 +2149,7 @@ static Vtx startup_logo2[] = {
 
 };
 
-static Gfx startup_logo_dl9[] = {
+Gfx startup_logo_dl9[] = {
 
     gsSPVertex(&startup_logo2[0], 32, 0),
     gsSP1Triangle(0, 1, 2, 0),
@@ -2236,7 +2236,7 @@ static Gfx startup_logo_dl9[] = {
     gsSPEndDisplayList(),
 };
 
-static Gfx startup_logo_dl10[] = {
+Gfx startup_logo_dl10[] = {
 
     gsSPVertex(&startup_logo2[161], 32, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
@@ -2267,7 +2267,7 @@ static Gfx startup_logo_dl10[] = {
 
 };
 
-static Gfx startup_logo_dl11[] = {
+Gfx startup_logo_dl11[] = {
 
     gsSPVertex(&startup_logo2[240], 32, 0),
     gsSP1Triangle(0, 1, 2, 0),
@@ -2317,7 +2317,7 @@ static Gfx startup_logo_dl11[] = {
 
 };
 
-static Gfx startup_logo_dl12[] = {
+Gfx startup_logo_dl12[] = {
 
     gsSPVertex(&startup_logo2[329], 24, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
@@ -2330,7 +2330,7 @@ static Gfx startup_logo_dl12[] = {
 
 };
 
-static Gfx startup_logo_dl13[] = {
+Gfx startup_logo_dl13[] = {
 
     gsSPVertex(&startup_logo2[353], 24, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
@@ -2343,7 +2343,7 @@ static Gfx startup_logo_dl13[] = {
 
 };
 
-static Gfx startup_logo_dl14[] = {
+Gfx startup_logo_dl14[] = {
 
     gsSPVertex(&startup_logo2[377], 32, 0),
     gsSP1Quadrangle(0, 3, 1, 2, 0),
@@ -2371,7 +2371,7 @@ static Gfx startup_logo_dl14[] = {
 
 };
 
-static Gfx startup_logo_dl15[] = {
+Gfx startup_logo_dl15[] = {
 
     gsSPVertex(&startup_logo2[442], 32, 0),
     gsSP1Triangle(0, 1, 2, 0),
@@ -2421,7 +2421,7 @@ static Gfx startup_logo_dl15[] = {
 
 };
 
-static Gfx startup_logo_dl16[] = {
+Gfx startup_logo_dl16[] = {
 
     gsSPVertex(&startup_logo2[531], 32, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
@@ -2470,7 +2470,7 @@ static Gfx startup_logo_dl16[] = {
 
 };
 
-static Gfx startup_logo_dl17[] = {
+Gfx startup_logo_dl17[] = {
 
     gsSPVertex(&startup_logo2[619], 32, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
@@ -2522,7 +2522,7 @@ static Gfx startup_logo_dl17[] = {
 
 };
 
-static Gfx startup_logo_dl18[] = {
+Gfx startup_logo_dl18[] = {
 
     gsSPVertex(&startup_logo2[732], 32, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
@@ -2575,7 +2575,7 @@ static Gfx startup_logo_dl18[] = {
 
 };
 
-static Gfx startup_logo_dl19[] = {
+Gfx startup_logo_dl19[] = {
     gsSPVertex(&startup_logo2[828], 32, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
     gsSP1Triangle(0, 3, 4, 0),
@@ -2654,7 +2654,7 @@ static Gfx startup_logo_dl19[] = {
 
 };
 
-static Gfx startup_logo_dl20[] = {
+Gfx startup_logo_dl20[] = {
 
     gsSPVertex(&startup_logo2[941], 29, 0),
     gsSP1Quadrangle(0, 1, 2, 3, 0),
@@ -2744,11 +2744,11 @@ static Gfx startup_logo_dl20[] = {
 
 };
 
-static u8 reflection_map_gold[2048] = {
-    #include "textures/startup_logo/reflection_map_gold.rgba16.inc.c"
+u8 reflection_map_gold[2048] = {
+    #include "assets/startup_logo/gTextureReflectionMapGold.inc.c"
 };
 
-static Gfx startup_texture_dl1[] = {
+Gfx startup_texture_dl1[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_TEXTURE_GEN),
     gsDPLoadTextureBlock(reflection_map_gold, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
@@ -2769,12 +2769,12 @@ static Gfx startup_texture_dl1[] = {
     gsSPEndDisplayList(),
 };
 
-static Lights1 lights = gdSPDefLights1 (
+Lights1 lights = gdSPDefLights1 (
     63, 63, 63,
     255, 255, 255, 0, 0, 120
 );
 
-static Gfx startup_texture_dl2[] = {
+Gfx startup_texture_dl2[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_TEXTURE_GEN),
     gsDPLoadTextureBlock(reflection_map_gold, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
@@ -2799,13 +2799,13 @@ static Gfx startup_texture_dl2[] = {
 
 };
 
-static Gfx startup_texture_dl3[] = {
+Gfx startup_texture_dl3[] = {
     gsSPDisplayList(startup_texture_dl1),
     gsSPDisplayList(startup_texture_dl2),
     gsSPEndDisplayList(),
 };
 
-static Gfx startup_texture_dl4[] = {
+Gfx startup_texture_dl4[] = {
 
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_TEXTURE_GEN),

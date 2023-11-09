@@ -16,6 +16,7 @@
 #include "skybox_and_splitscreen.h"
 #include "courses/all_course_data.h"
 #include "courses/all_course_packed.h"
+#include "courses/all_course_offsets.h"
 
 s16 D_802B87B0 = 995;
 s16 D_802B87B4 = 1000;
@@ -303,7 +304,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
 
             mtxf_identity(matrix);
             render_set_position(matrix, 0);
-            load_surface_map((uintptr_t) &D_090001D0, arg0);
+            load_surface_map((uintptr_t) sherbet_land_dls_2, arg0);
 
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
             if ((func_80290C20(arg0->camera) == 1) && (func_802AAB4C(player) < player->pos[1])) {

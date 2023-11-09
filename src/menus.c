@@ -9,6 +9,7 @@
 #include "code_800029B0.h"
 #include "actors.h"
 #include "audio/external.h"
+#include "code_800029B0.h"
 #include "code_80005FD0.h"
 #include "code_80091750.h"
 #include "code_800AF9B0.h"
@@ -18,7 +19,6 @@
 #include <sounds.h>
 
 /** Externs to be put into headers **/
-extern u32 D_800DC5AC; // data? from this file or another (main.c?)?
 extern void rmonPrintf(const char *, ...); // not in a libultra header?
 
 /** BSS **/
@@ -1382,11 +1382,13 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
         case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:
         case TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT:
         {
-            if (1);
-            if ((arg1 == 0) && (++gMenuTimingCounter == 100 || gMenuTimingCounter % 300 == 0)) {
-                // L800B2FAC
-                if (gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]] == 0 || gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]] == 2) {
-                    play_sound2(SOUND_MENU_SELECT_LEVEL);
+            if (arg1 == 0){
+                gMenuTimingCounter++;
+                if ((gMenuTimingCounter == 100 || gMenuTimingCounter % 300 == 0)) {
+                    // L800B2FAC
+                    if (gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]] == 0 || gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]] == 2) {
+                        play_sound2(SOUND_MENU_SELECT_LEVEL);
+                    }
                 }
             }
             // L800B3000

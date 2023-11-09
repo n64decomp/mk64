@@ -203,7 +203,6 @@ void transition_sliding_borders(void);
 
 /* This is where I'd put my static data, if I had any */
 
-extern u16 D_800DC5E4;
 extern s32 D_80283FCC;
 extern s32 D_80283FF4;
 extern f32 D_802856B0;

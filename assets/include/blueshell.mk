@@ -1,35 +1,40 @@
-BLUE_SHELL_DIR := assets/blueshell
+BLUESHELL_DIR := assets/blueshell
 
-BLUE_SHELL_PALETTE := $(BLUE_SHELL_DIR)/gTLUTBlueShell.png
+BLUESHELL_PALETTE := $(BLUESHELL_DIR)/gTLUTBlueShell.png
 
-BLUE_SHELL_FRAMES := \
-$(BLUE_SHELL_DIR)/gTextureBlueShell1.png \
-$(BLUE_SHELL_DIR)/gTextureBlueShell2.png \
-$(BLUE_SHELL_DIR)/gTextureBlueShell3.png \
-$(BLUE_SHELL_DIR)/gTextureBlueShell4.png \
-$(BLUE_SHELL_DIR)/gTextureBlueShell5.png \
-$(BLUE_SHELL_DIR)/gTextureBlueShell6.png \
-$(BLUE_SHELL_DIR)/gTextureBlueShell7.png \
-$(BLUE_SHELL_DIR)/gTextureBlueShell8.png
+BLUESHELL_FRAMES := \
+$(BLUESHELL_DIR)/gTextureBlueShell0.png \
+$(BLUESHELL_DIR)/gTextureBlueShell1.png \
+$(BLUESHELL_DIR)/gTextureBlueShell2.png \
+$(BLUESHELL_DIR)/gTextureBlueShell3.png \
+$(BLUESHELL_DIR)/gTextureBlueShell4.png \
+$(BLUESHELL_DIR)/gTextureBlueShell5.png \
+$(BLUESHELL_DIR)/gTextureBlueShell6.png \
+$(BLUESHELL_DIR)/gTextureBlueShell7.png
 
-BLUE_SHELL_EXPORT_SENTINEL := $(BLUE_SHELL_DIR)/.export
+BLUESHELL_EXPORT_SENTINEL := $(BLUESHELL_DIR)/.export
 
-$(BLUE_SHELL_FRAMES:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(BLUE_SHELL_PALETTE)
+$(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(BLUESHELL_FRAMES:%.png=%.mio0)
 
-$(BUILD_DIR)/src/data/common_textures.inc.o: $(BLUE_SHELL_PALETTE:%.png=%.inc.c)
+$(BLUESHELL_FRAMES:%.png=%.mio0): %.mio0 : %.bin
+	$(MIO0TOOL) -c $< $@
 
-$(BLUE_SHELL_PALETTE:%.png=%.inc.c): %.inc.c : %.png
+$(BLUESHELL_FRAMES:%.png=%.bin): %.bin : %.png
+	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(BLUESHELL_PALETTE)
+
+$(BUILD_DIR)/src/data/common_textures.inc.o: $(BLUESHELL_PALETTE:%.png=%.inc.c)
+
+$(BLUESHELL_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
-$(BLUE_SHELL_FRAMES) $(BLUE_SHELL_PALETTE): $(BLUE_SHELL_EXPORT_SENTINEL) ;
+$(BLUESHELL_FRAMES) $(BLUESHELL_PALETTE): $(BLUESHELL_EXPORT_SENTINEL) ;
 
-$(BLUE_SHELL_EXPORT_SENTINEL): $(ASSET_DIR)/blueshell.json
+$(BLUESHELL_EXPORT_SENTINEL): $(ASSET_DIR)/blueshell.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
 	touch $@
 
 .PHONY: distclean_blueshell
 distclean_blueshell:
-	rm -rf $(BLUE_SHELL_DIR)
+	rm -rf $(BLUESHELL_DIR)
 
 distclean_assets: distclean_blueshell

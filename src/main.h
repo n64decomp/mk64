@@ -231,12 +231,6 @@ extern f32 gCourseTimer;
 
 // end of definition of main.c variables
 
-extern u64 rspbootTextStart[], rspbootTextEnd[];
-extern u64 gspF3DEXTextStart[], gspF3DEXTextEnd[];
-extern u64 gspF3DLXTextStart[], gspF3DLXTextEnd[];
-extern u64 gspF3DEXDataStart[];
-extern u64 gspF3DLXDataStart[];
-
 extern u64 gGfxSPTaskOutputBuffer[];
 extern u32 gGfxSPTaskOutputBufferSize;
 
@@ -247,16 +241,6 @@ extern u8 _common_texturesSegmentRomEnd[];
 extern u8 _data_802BA370SegmentRomStart[];
 extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?
 
-extern s16 gCurrentlyLoadedCourseId;
-extern s16 gCurrentCourseId;
-
 extern s16 gMatrixEffectCount;
-extern u16 gIsGamePaused; // 1 if the game is paused and 0 if the game is not paused
-extern u16 gIsInQuitToMenuTransition;
-
-extern struct UnkStruct_800DC5EC *D_800DC5EC;
-
-extern u16 D_800DC5B0;
-extern s32 gPlayerWinningIndex;
 
 #endif

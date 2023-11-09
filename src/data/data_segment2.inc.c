@@ -3,6 +3,7 @@
 #include <PR/ultratypes.h>
 #include <PR/gbi.h>
 #include "data_segment2.h"
+#include "src/data/startup_logo.inc.h"
 
 Gfx D_02007650[] = {
     gsDPPipeSync(),
@@ -444,7 +445,7 @@ Gfx D_02007F60[] = {
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPSetGeometryMode(G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH),
     gsDPPipeSync(),
-    gsSPDisplayList(D_060093F8),
+    gsSPDisplayList(startup_texture_dl3),
     gsSPEndDisplayList(),
 };
 

@@ -21,21 +21,33 @@
 #include "render_courses.h"
 #include "main.h"
 #include "courses/all_course_data.h"
+#include "courses/all_course_packed.h"
 #include "menus.h"
-
-extern u16 D_800DC5A8;
+#include "data/other_textures.h"
 
 extern s32 D_802BA038;
 extern s16 D_802BA048;
 
-extern s16 gCurrentlyLoadedCourseId;
-
-extern struct ActorSpawnData d_course_moo_moo_farm_tree_spawn[];
-
-
+s16 gCurrentCourseId = 0;
+s16 gCurrentlyLoadedCourseId = 0xFF;
+u16 D_800DC5A8 = 0;
+s32 D_800DC5AC = 0;
+u16 D_800DC5B0 = 1;
+u16 D_800DC5B4 = 0;
+u16 D_800DC5B8 = 0;
+u16 D_800DC5BC = 0;
+u16 gIsInQuitToMenuTransition = 0;
+u16 gQuitToMenuTransitionCounter = 0;
+u16 D_800DC5C8 = 0;
+UNUSED u16 D_800DC5CC = 0;
+s32 D_800DC5D0 = 0;
+s32 D_800DC5D4 = 0;
+s32 D_800DC5D8 = 0;
+s32 D_800DC5DC = 64;
 
 s32 D_800DC5E0 = 32;
 
+// This is tracking which credit "state" we're in, decides which credits are shown (and probably other stuff)
 u16 D_800DC5E4 = 0;
 
 // TODO: gPlayerWinningIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8
@@ -46,7 +58,18 @@ struct UnkStruct_800DC5EC *D_800DC5EC = &D_8015F480[0];
 struct UnkStruct_800DC5EC *D_800DC5F0 = &D_8015F480[1];
 struct UnkStruct_800DC5EC *D_800DC5F4 = &D_8015F480[2];
 struct UnkStruct_800DC5EC *D_800DC5F8 = &D_8015F480[3];
-u16 gIsGamePaused = 0;
+u16 gIsGamePaused = 0; // 1 if the game is paused and 0 if the game is not paused
+u8 *pAppNmiBuffer = (u8 *) &osAppNmiBuffer;
+
+s32 gIsMirrorMode = 0;
+f32 vtxStretchY =  1.0f;
+Lights1 D_800DC610[] = {
+    gdSPDefLights1(175, 175, 175, 255, 255, 255, 0, 0, 120),
+    gdSPDefLights1(115, 115, 115, 255, 255, 255, 0, 0, 120),
+};
+static s32 pad_800029B0 = 0x80000000;
+s16 gCreditsCourseId = COURSE_LUIGI_RACEWAY;
+s16 gPlaceItemBoxes = 1;
 
 // Technically a pointer to an array, but declaring it so creates regalloc issues.
 mk64_surface_map_ram *gSurfaceMap;
@@ -105,23 +128,12 @@ u16 D_8015F894;
 // Indexed by Player ID. Track time in seconds since player has last crossed the finish line
 f32 gTimePlayerLastTouchedFinishLine[8];
 
-u8 *pAppNmiBuffer = (u8 *) &osAppNmiBuffer;
 u8 *gNmiUnknown1;
 u8 *gNmiUnknown2;
 u8 *gNmiUnknown3;
 u8 *gNmiUnknown4;
 u8 *gNmiUnknown5;
 u8 *gNmiUnknown6;
-
-s32 gIsMirrorMode = 0;
-f32 vtxStretchY =  1.0f;
-Lights1 D_800DC610[] = {
-    gdSPDefLights1(175, 175, 175, 255, 255, 255, 0, 0, 120),
-    gdSPDefLights1(115, 115, 115, 255, 255, 255, 0, 0, 120),
-};
-static s32 pad_800029B0 = 0x80000000;
-s16 gCreditsCourseId = COURSE_LUIGI_RACEWAY;
-s16 gPlaceItemBoxes = 1;
 
 Vec3f D_8015F8D0;
 s32 D_8015F8DC;
@@ -295,14 +307,16 @@ void func_80003040(void) {
     destroy_all_actors();
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            dma_textures(D_0F04F45C, 0x35B, 0x800);
+            dma_textures(gTextureTrees1, 0x35B, 0x800);
             spawn_foliage(d_course_mario_raceway_tree_spawns);
             break;
         case COURSE_BOWSER_CASTLE:
-            find_vtx_and_set_colours(0x7001350, 0x32, 0, 0, 0);
+            // d_course_bowsers_castle_packed_dl_1350
+            find_vtx_and_set_colours(0x07001350, 0x32, 0, 0, 0);
             break;
         case COURSE_BANSHEE_BOARDWALK:
-            find_vtx_and_set_colours(0x7000878, -0x80, 0, 0, 0);
+            // d_course_banshee_boardwalk_packed_dl_878
+            find_vtx_and_set_colours(0x07000878, -0x80, 0, 0, 0);
             break;
         case COURSE_YOSHI_VALLEY:
             vec3f_set(position, -2300.0f, 0.0f, 634.0f);
@@ -310,28 +324,33 @@ void func_80003040(void) {
             addActorToEmptySlot(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
             break;
         case COURSE_MOO_MOO_FARM:
-            dma_textures(D_0F04FE28, 0x3E8, 0x800);
-            dma_textures(D_0F050118, 0x3E8, 0x800);
-            dma_textures(D_0F051C54, 0x400, 0x800);
-            dma_textures(D_0F051FD8, 0x400, 0x800);
-            dma_textures(D_0F05232C, 0x400, 0x800);
-            dma_textures(D_0F0526B8, 0x400, 0x800);
-            dma_textures(D_0F052A20, 0x400, 0x800);
-            dma_textures(D_0F052D3C, 0x400, 0x800);
-            dma_textures(D_0F05300C, 0x400, 0x800);
-            dma_textures(D_0F0532F8, 0x400, 0x800);
-            dma_textures(D_0F05363C, 0x400, 0x800);
-            dma_textures(D_0F053950, 0x400, 0x800);
+            dma_textures(gTextureTrees4Left,  0x3E8, 0x800);
+            dma_textures(gTextureTrees4Right, 0x3E8, 0x800);
+            dma_textures(gTextureCow01Left,   0x400, 0x800);
+            dma_textures(gTextureCow01Right,  0x400, 0x800);
+            dma_textures(gTextureCow02Left,   0x400, 0x800);
+            dma_textures(gTextureCow02Right,  0x400, 0x800);
+            dma_textures(gTextureCow03Left,   0x400, 0x800);
+            dma_textures(gTextureCow03Right,  0x400, 0x800);
+            dma_textures(gTextureCow04Left,   0x400, 0x800);
+            dma_textures(gTextureCow04Right,  0x400, 0x800);
+            dma_textures(gTextureCow05Left,   0x400, 0x800);
+            dma_textures(gTextureCow05Right,  0x400, 0x800);
             spawn_foliage(d_course_moo_moo_farm_tree_spawn);
             break;
         case COURSE_SHERBET_LAND:
-            find_vtx_and_set_colours(0x7001EB8, -0x4C, 0xFF, 0xFF, 0xFF);
-            find_vtx_and_set_colours(0x7002308, -0x6A, 0xFF, 0xFF, 0xFF);
+            // d_course_sherbet_land_packed_dl_1EB8
+            find_vtx_and_set_colours(0x07001EB8, -0x4C, 0xFF, 0xFF, 0xFF);
+            // d_course_sherbet_land_packed_dl_2308
+            find_vtx_and_set_colours(0x07002308, -0x6A, 0xFF, 0xFF, 0xFF);
             break;
         case COURSE_RAINBOW_ROAD:
-            find_vtx_and_set_colours(0x7002068, -0x6A, 0xFF, 0xFF, 0xFF);
-            find_vtx_and_set_colours(0x7001E18, -0x6A, 0xFF, 0xFF, 0xFF);
-            find_vtx_and_set_colours(0x7001318, -1, 0xFF, 0xFF, 0);
+            // d_course_rainbow_road_packed_dl_2068
+            find_vtx_and_set_colours(0x07002068, -0x6A, 0xFF, 0xFF, 0xFF);
+            // d_course_rainbow_road_packed_dl_1E18
+            find_vtx_and_set_colours(0x07001E18, -0x6A, 0xFF, 0xFF, 0xFF);
+            // d_course_rainbow_road_packed_dl_1318
+            find_vtx_and_set_colours(0x07001318, -1, 0xFF, 0xFF, 0);
             break;
         case COURSE_WARIO_STADIUM:
             vec3f_set(position, -131.0f, 83.0f, 286.0f);
@@ -340,17 +359,26 @@ void func_80003040(void) {
             addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
             vec3f_set(position, -2622.0f, 79.0f, 739.0f);
             addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
-            find_vtx_and_set_colours(0x7000C50, 0x64, 0xFF, 0xFF, 0xFF);
-            find_vtx_and_set_colours(0x7000BD8, 0x64, 0xFF, 0xFF, 0xFF);
-            find_vtx_and_set_colours(0x7000B60, 0x64, 0xFF, 0xFF, 0xFF);
-            find_vtx_and_set_colours(0x7000AE8, 0x64, 0xFF, 0xFF, 0xFF);
-            find_vtx_and_set_colours(0x7000CC8, 0x64, 0xFF, 0xFF, 0xFF);
-            find_vtx_and_set_colours(0x7000D50, 0x64, 0xFF, 0xFF, 0xFF);
-            find_vtx_and_set_colours(0x7000DD0, 0x64, 0xFF, 0xFF, 0xFF);
-            find_vtx_and_set_colours(0x7000E48, 0x64, 0xFF, 0xFF, 0xFF);
+            // d_course_wario_stadium_packed_dl_C50
+            find_vtx_and_set_colours(0x07000C50, 0x64, 0xFF, 0xFF, 0xFF);
+            // d_course_wario_stadium_packed_dl_BD8
+            find_vtx_and_set_colours(0x07000BD8, 0x64, 0xFF, 0xFF, 0xFF);
+            // d_course_wario_stadium_packed_dl_B60
+            find_vtx_and_set_colours(0x07000B60, 0x64, 0xFF, 0xFF, 0xFF);
+            // d_course_wario_stadium_packed_dl_AE8
+            find_vtx_and_set_colours(0x07000AE8, 0x64, 0xFF, 0xFF, 0xFF);
+            // d_course_wario_stadium_packed_dl_CC8
+            find_vtx_and_set_colours(0x07000CC8, 0x64, 0xFF, 0xFF, 0xFF);
+            // d_course_wario_stadium_packed_dl_D50
+            find_vtx_and_set_colours(0x07000D50, 0x64, 0xFF, 0xFF, 0xFF);
+            // d_course_wario_stadium_packed_dl_DD0
+            find_vtx_and_set_colours(0x07000DD0, 0x64, 0xFF, 0xFF, 0xFF);
+            // d_course_wario_stadium_packed_dl_E48
+            find_vtx_and_set_colours(0x07000E48, 0x64, 0xFF, 0xFF, 0xFF);
             break;
         case COURSE_DK_JUNGLE:
-            find_vtx_and_set_colours(0x7003FA8, 0x78, 0xFF, 0xFF, 0xFF);
+            // d_course_dks_jungle_parkway_packed_dl_3FA8
+            find_vtx_and_set_colours(0x07003FA8, 0x78, 0xFF, 0xFF, 0xFF);
             break;
         default:
             break;
