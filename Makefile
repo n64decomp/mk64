@@ -353,6 +353,7 @@ DLPACKER              := $(TOOLS_DIR)/displaylist_packer
 BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
 ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
+LINKONLY_GENERATOR    := $(PYTHON) $(TOOLS_DIR)/linkonly_generator.py
 EMULATOR               = mupen64plus
 EMU_FLAGS              = --noosd
 LOADER                 = loader64
@@ -481,8 +482,21 @@ $(BUILD_DIR)/src/data/common_textures.inc.o: src/data/common_textures.inc.c $(TE
 # Course Packed Displaylists Generation                                        #
 #==============================================================================#
 
-%/course_displaylists.inc.elf: %/course_displaylists.inc.o
-	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -o $@ $< --no-check-sections
+
+%/course_textures.linkonly.c %/course_textures.linkonly.h: %/course_offsets.inc.c
+	$(V)$(LINKONLY_GENERATOR) $(lastword $(subst /, ,$*))
+
+# Its unclear why this is necessary. Everything I undesrtand about `make` says that just 
+# `$(BUILD_DIR)/%/course_displaylists.inc.o: %/course_textures.linkonly.h`
+# Should work identical to this. But in practice it doesn't :(
+COURSE_DISPLAYLIST_OFILES := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_displaylists.inc.o)
+$(COURSE_DISPLAYLIST_OFILES): $(BUILD_DIR)/%/course_displaylists.inc.o: %/course_textures.linkonly.h
+
+%/course_textures.linkonly.elf: %/course_textures.linkonly.o
+	$(V)$(LD) -t -e 0 -Ttext=05000000 -Map $@.map -o $@ $< --no-check-sections
+
+%/course_displaylists.inc.elf: %/course_displaylists.inc.o %/course_textures.linkonly.elf
+	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -R $*/course_textures.linkonly.elf -o $@ $< --no-check-sections
 
 %/course_displaylists.inc.bin: %/course_displaylists.inc.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
@@ -550,7 +564,7 @@ $(BUILD_DIR)/%.jp.c: %.c
 
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
-	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+	$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 

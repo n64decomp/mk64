@@ -48,7 +48,7 @@ glabel gTexture64313C
 .incbin "textures/standalone/texture_64313C.rgba16.mio0"
 
 .balign 4, 0x00
-glabel gTextureCheckerbordYellowBlue
+glabel gTextureCheckerboardYellowBlue
 .incbin "textures/standalone/checkerbord_yellow_blue.rgba16.mio0"
 
 .balign 4, 0x00
