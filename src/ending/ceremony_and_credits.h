@@ -210,6 +210,21 @@ extern f32 D_802856B4;
 extern f32 D_802856B8;
 extern f32 D_802856BC;
 extern f32 D_802856C0;
+extern s32 D_802856C4;
+extern s32 D_802856C8[]; // padding?
+extern s16 sCutsceneShot;
+extern s16 gCutsceneShotTimer;
+extern s32 D_802876D4;
+extern s32 D_802876D8;
+extern s32 D_802876DC; // fake/padding? Or D8 is array?
+extern struct CinematicCamera D_802876E0;
+extern struct struct_80283431 D_80287750[];
+extern struct struct_80283430 D_80287818[];
+extern struct struct_80283430 D_80287998[];
+extern f32 sCutsceneSplineSegmentProgress;
+extern s16 sCutsceneSplineSegment;
+extern s16 D_80287B1E;
+extern s8 D_80287B20;
 extern struct struct_80282C40 D_802856DC[];
 extern struct struct_80282C40 D_80285718[];
 extern struct struct_80282C40 D_80285754[];
