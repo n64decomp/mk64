@@ -1,0 +1,27 @@
+579c48e211ae952530ffc8738709f078d5dd215e:
+  name: Mario Kart 64 [US]
+  path: assets/mk64/us
+  config:
+    gbi: F3DEX_MK64
+    sort: OFFSET
+    output:
+      binary: mkcube.otr
+  segments:
+    - 0x000000
+    - 0x000000
+    - 0x12aae0
+    - 0x000000
+    - 0x000000
+    - 0x000000
+    - 0x825800
+    - 0x000000
+    - 0x000000
+    - 0x88cd70
+    - 0x729a30
+    - 0x821D10
+    - 0x7fa3c0
+    - 0x132b50
+    - 0x000000
+    - 0x145470
+
+
