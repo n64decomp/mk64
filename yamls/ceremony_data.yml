@@ -29,13 +29,13 @@ silver_trophy_dl6:
   mio0: 0x821D10
   offset: 0x14D0
 some_vtx:
-  symbol: some_vtx
+  symbol: unused_trophy_base_with_handle
   type: vtx
   mio0: 0x821D10
   offset: 0x18C0 # 2200
   count: 211 # 274
 some_vtx2:
-  symbol: some_vtx2
+  symbol: unused_trophy_base2
   type: vtx
   mio0: 0x821D10
   offset: 0x2F30
