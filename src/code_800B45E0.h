@@ -87,12 +87,18 @@ s32  func_800B6A68(void);
 /* data */
 // these might not be in this file, but for now...
 
+typedef struct struct_8018EE10_entry_cont
+{
+    struct_8018EE10_entry arr[1];
+
+} struct_8018EE10_entry_cont;
+
 extern u32*        D_800DC714;
 
 extern u16         gCompanyCode;
 extern u32         gGameCode; // osPfs gamecode
 extern s8          gControllerPak1State; // Current state of Controller Pak 1
-extern struct_8018EE10_entry *D_8018D9C0;
+extern struct_8018EE10_entry_cont *D_8018D9C0;
 
 extern s8          sControllerPak2State; // Current state of the Controller Pak 2
 extern const u8    D_800F2E60[];
