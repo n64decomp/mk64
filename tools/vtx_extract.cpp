@@ -515,6 +515,8 @@ struct node{
     std::stringstream face_string;
 };
 
+int32_t scale = 1;
+
 // Emit leaf nodes in tree in DFS order
 void parse_tree(std::shared_ptr<node> root, std::stringstream &face_string) {
     // Doing this silly check as a way to differentiate
@@ -561,19 +563,35 @@ int main(int argc, char **argv) {
     // There HAS to be a better way to do this
     std::string uncompressed_model = "./temp.model.bin";
 
+    if (argc == 1) {
+        printf("Run using ./tools/vtx_extract baserom.us.z64 <optional:vtx_scale>\n\nvtx_scale can be any number.\n - 1 is default.\n - Higher makes the model smaller. \n - Use 10 for import into blender, otherwise the models are larger than the viewports max render distance.\n");
+        return 0;
+    }
+
+    if (argc >= 3) {
+        // Convert arg2 to a uint32_t number.
+        char *endptr;
+        scale = strtoul(argv[2], &endptr, 10);
+
+        // Check for errors in conversion
+        if (*endptr != '\0') {
+            printf("Invalid number for scale: %s\n", argv[1]);
+            return 1;
+        }
+    }
+
     for (auto model : all_models) {
         // This might be inefficient, but declaring these outside the loop
         // will(?) cause their internal buffers to balloon.
         std::stringstream vtx_string;
         std::stringstream vtx_tc_string;
-        std::stringstream model_string;
         std::stringstream face_string;
         std::map<short, uv> uv_list;
         std::map<uint32_t, std::shared_ptr<node>> node_map;
         std::vector<mk64_Vtx> vtx_list;
         std::shared_ptr<node> anode;
         vtx_obj_path   = "./courses/" + model.course_name + "/course.obj";
-        model_inc_path = "./courses/" + model.course_name + "/course.vtx";
+        //model_inc_path = "./courses/" + model.course_name + "/course.vtx";
 
         err = mio0_decode_file(argv[1], model.model_rom_offset, uncompressed_model.c_str());
 
@@ -597,21 +615,9 @@ int main(int argc, char **argv) {
              * If we could use "gpp 13+ we could use the `fmt` feature to make this" cleaner
              * I also don't know if the bswap'ing is necessary everywhere or just on my machine
              **/
-            model_string << "{";
-            model_string << "{ ";
-            model_string << std::to_string(bswap(vtx.ob[0]))  << ", " << std::to_string(bswap(vtx.ob[1])) << ", " << std::to_string(bswap(vtx.ob[2]));
-            model_string << " }, ";
-            model_string << "{ ";
-            model_string << std::to_string(bswap(vtx.tc[0]))  << ", " << std::to_string(bswap(vtx.tc[1]));
-            model_string << " }, ";
-            model_string << "{ ";
-            model_string << std::to_string(vtx.ca[0]) << ", " << std::to_string(vtx.ca[1]) << ", " << std::to_string(vtx.ca[2]) << ", 0x00";
-            model_string << " }";
-            model_string << "},";
-            model_string << std::endl;
 
             vtx_string << "v ";
-            vtx_string << std::to_string(bswap(vtx.ob[0])) << " " << std::to_string(bswap(vtx.ob[1])) << " " << std::to_string(bswap(vtx.ob[2]));
+            vtx_string << std::to_string(bswap(vtx.ob[0]) / scale) << " " << std::to_string(bswap(vtx.ob[1]) / scale) << " " << std::to_string(bswap(vtx.ob[2]) / scale);
             vtx_string << std::endl;
         }
 
@@ -804,9 +810,6 @@ int main(int argc, char **argv) {
         vtx_obj << vtx_string.rdbuf() << vtx_tc_string.rdbuf() << face_string.rdbuf();
         vtx_obj.close();
 
-        model_inc.open(model_inc_path, std::ios::out | std::ios::trunc);
-        model_inc << model_string.rdbuf();
-        model_inc.close();
     }
     return 0;
 }
