@@ -5,4 +5,10 @@
 
 .section .data
 
-.incbin "bin/mk64.u.966260.bin" # Audiobank data
+# Audiobank data
+
+.ifdef VERSION_EU_1_0
+    .incbin "bin/audiobanks.eu.bin"
+.else
+    .incbin "bin/audiobanks.us.bin"
+.endif

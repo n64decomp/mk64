@@ -292,7 +292,7 @@ void update_actor_banana_bunch(struct BananaBunchParent *banana_bunch) {
         }
         if (someCount == 0) {
             destroy_actor((struct Actor *) banana_bunch);
-            owner->statusEffects &= ~0x40000;
+            owner->statusEffects &= ~HOLD_BANANA_EFFECT;
         } else if ((owner->type & 0x4000) != 0) {
             controller = &gControllers[banana_bunch->playerId];
             if ((controller->buttonPressed & Z_TRIG) != 0) {
@@ -716,7 +716,7 @@ void update_actor_banana(struct BananaActor *banana) {
         }
         func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
         func_802B4E30((struct Actor *) banana);
-        if ((player->type & 0x4000) != 0) {
+        if ((player->type & PLAYER_HUMAN) != 0) {
             if (gDemoMode) {
                 controller = gControllerOne;
             } else {
@@ -726,7 +726,7 @@ void update_actor_banana(struct BananaActor *banana) {
                 controller->buttonDepressed &= ~Z_TRIG;
                 banana->state = 1;
                 banana->unk_04 = 0x00B4;
-                player->statusEffects &= ~0x40000;
+                player->statusEffects &= ~HOLD_BANANA_EFFECT;
                 func_800C9060(player - gPlayerOne, 0x19008012U);
                 pad3 = controller->rawStickY;
                 if ((pad3 > 30.0f) && (controller->rawStickX < 10) && (controller->rawStickX >= -9)) {
@@ -925,7 +925,7 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
             tempBanana->youngerIndex = actorIndex;
             break;
         }
-        if ((player->type & 0x4000) != 0) {
+        if ((player->type & PLAYER_HUMAN) != 0) {
             func_800C9060(player - gPlayerOne, 0x19008012);
         }
     }
@@ -1030,12 +1030,12 @@ void use_thunder_item(Player *player) {
     Player *otherPlayer;
 
     func_8009E5BC();
-    if ((player->type & 0x4000) != 0) {
+    if ((player->type & PLAYER_HUMAN) != 0) {
         // Play sound.
         func_800CAB4C(player - gPlayerOne);
     }
 
-    for (index = 0; index < 8; index++) {
+    for (index = 0; index < NUM_PLAYERS; index++) {
         otherPlayer = &gPlayers[index];
         if (player != otherPlayer) {
             otherPlayer->statusEffects |= HIT_ROTATING_EFFECT;
@@ -1119,7 +1119,7 @@ void func_802B30EC(void) {
                 }
             }
 
-            if (((player->type & 0x4000) != 0) && (player->currentItemCopy != ITEM_NONE) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
+            if (((player->type & PLAYER_HUMAN) != 0) && (player->currentItemCopy != ITEM_NONE) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
                 if ((controller->buttonPressed & Z_TRIG) != 0) {
                     controller->buttonPressed &= ~Z_TRIG;
                     func_802B2FA0(player);
@@ -1173,10 +1173,10 @@ void update_actor_green_shell(struct ShellActor *shell) {
         } else {
             shell->pos[1] = pad2;
         }
-        if ((player->type & 0x4000) != 0) {
+        if ((player->type & PLAYER_HUMAN) != 0) {
             controller = &gControllers[shell->playerId];
-            if ((controller->buttonDepressed & 0x2000) != 0) {
-                controller->buttonDepressed &= ~0x2000;
+            if ((controller->buttonDepressed & Z_TRIG) != 0) {
+                controller->buttonDepressed &= ~Z_TRIG;
                 if (controller->rawStickY < -0x2D) {
                     var_f2 = 8.0f;
                     if (player->unk_094 > 8.0f) {
@@ -1314,7 +1314,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
 
 void func_802B3B44(struct ShellActor *shell) {
     u16 currentWaypoint;
-    u16 nextWayPoint;
+    u16 nextWaypoint;
     f32 temp_f0;
     f32 temp_f0_2;
     f32 temp_f0_3;
@@ -1336,13 +1336,13 @@ void func_802B3B44(struct ShellActor *shell) {
     Vec3f origPos;
 
     currentWaypoint = shell->pathIndex;
-    temp_f2  = D_80164490[currentWaypoint].wayPointX;
-    temp_f12 = D_80164490[currentWaypoint].wayPointY;
-    temp_f28 = D_80164490[currentWaypoint].wayPointZ;
-    nextWayPoint = currentWaypoint + 1;
+    temp_f2  = D_80164490[currentWaypoint].posX;
+    temp_f12 = D_80164490[currentWaypoint].posY;
+    temp_f28 = D_80164490[currentWaypoint].posZ;
+    nextWaypoint = currentWaypoint + 1;
 
-    if (nextWayPoint >= D_80164430) {
-        nextWayPoint -= D_80164430;
+    if (nextWaypoint >= D_80164430) {
+        nextWaypoint -= D_80164430;
     }
 
     temp_f20 = temp_f2  - shell->pos[0];
@@ -1350,9 +1350,9 @@ void func_802B3B44(struct ShellActor *shell) {
     temp_f24 = temp_f28 - shell->pos[2];
     temp_f0 = (temp_f20 * temp_f20) + (temp_f22 * temp_f22) + (temp_f24 * temp_f24);
     if (temp_f0 > 400.0f) {
-        temp_f18_3 = D_80164490[nextWayPoint].wayPointX;
-        temp_f16_3 = D_80164490[nextWayPoint].wayPointY;
-        temp_f26   = D_80164490[nextWayPoint].wayPointZ;
+        temp_f18_3 = D_80164490[nextWaypoint].posX;
+        temp_f16_3 = D_80164490[nextWaypoint].posY;
+        temp_f26   = D_80164490[nextWaypoint].posZ;
 
         temp_f12_0 = temp_f18_3 - shell->pos[0];
         temp_f12_1 = temp_f16_3 - shell->pos[1];
@@ -1360,7 +1360,7 @@ void func_802B3B44(struct ShellActor *shell) {
 
         temp_f0_3 = (temp_f12_0 * temp_f12_0) + (temp_f12_1 * temp_f12_1) + (temp_f12_2 * temp_f12_2);
         if (temp_f0_3 < temp_f0) {
-            shell->pathIndex = nextWayPoint;
+            shell->pathIndex = nextWaypoint;
         } else {
             temp_f0_2 = sqrtf(temp_f0) * 4.0f;
             temp_f20 /= temp_f0_2;
@@ -1400,11 +1400,11 @@ void func_802B3B44(struct ShellActor *shell) {
             shell->pos[0] = temp_f2;
             shell->pos[1] = shell->boundingBoxSize + temp_f12;
             shell->pos[2] = temp_f28;
-            shell->pathIndex = nextWayPoint;
+            shell->pathIndex = nextWaypoint;
         } else {
-            temp_f18_3 = D_80164490[nextWayPoint].wayPointX;
-            temp_f16_3 = D_80164490[nextWayPoint].wayPointY;
-            temp_f26   = D_80164490[nextWayPoint].wayPointZ;
+            temp_f18_3 = D_80164490[nextWaypoint].posX;
+            temp_f16_3 = D_80164490[nextWaypoint].posY;
+            temp_f26   = D_80164490[nextWaypoint].posZ;
 
             shell->pos[0] =  (temp_f2 + temp_f18_3)  * 0.5f;
             shell->pos[1] = ((temp_f12 + temp_f16_3) * 0.5f) + shell->boundingBoxSize;
@@ -1554,7 +1554,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             shell->pos[1] = pad7;
         }
 
-        if ((player->type & 0x4000) != 0) {
+        if ((player->type & PLAYER_HUMAN) != 0) {
             if (gDemoMode) {
                 controller = gControllerOne;
             } else {
@@ -1564,8 +1564,8 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             controller = gControllerOne;
         }
 
-        if ((controller->buttonDepressed & 0x2000) != 0) {
-            controller->buttonDepressed &= ~0x2000;
+        if ((controller->buttonDepressed & Z_TRIG) != 0) {
+            controller->buttonDepressed &= ~Z_TRIG;
             shell->state = RELEASED_SHELL;
             if (player->unk_0C0 > 0) {
                 shell->rotAngle = 0x78E3;

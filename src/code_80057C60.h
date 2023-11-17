@@ -90,6 +90,7 @@ void func_8005D0FC(s32);
 void func_8005D18C(void);
 void func_8005D1F4(s32);
 
+void func_8005D290(void);
 void func_8005D6C0(Player*);
 void func_8005D794(Player*, UnkPlayerStruct258*, f32, f32, f32, s8, s8);
 s32  func_8005D7D8(UnkPlayerStruct258*, s8, f32);
@@ -166,11 +167,15 @@ void func_800651F4(Player*, s16, s8, s8);
 void func_800652D4(Vec3f, Vec3s, f32);
 void func_8006538C(Player*, s8, s16, s8);
 void func_800658A0(Player*, s8, s16, s8);
+void func_80065AB0(Player*, s8, s16, s8);
+void func_80065F0C(Player*, s8, s16, s8);
 
 void func_800664E0(Player*, s8, s16, s8);
 void func_80066998(Player*, s8, s16, s8);
+void func_80066BAC(Player*, s8, s16, s8);
 
 void func_80067280(Player*, s8, s16, s8);
+void func_80067604(Player*, s8, s16, s8);
 void func_80067964(Player*, s8, f32, s8, s8);
 void func_80067D3C(Player*, s8, u8*, s8, f32, s32);
 
@@ -189,10 +194,11 @@ void func_80069DB8(Player*, s8, s16, s8);
 
 void func_8006A01C(Player*, s8, s16, s8);
 void func_8006A280(Player*, s8, s16, s8);
-void func_8006A280(Player*, s8, s16, s8);
+void func_8006A50C(Player*, f32, f32, s8, s8, s16);
 void func_8006A7C0(Player*, f32, f32, s8, s8);
-void func_8006AFD0(Player*, s16, s8, s8);
+void func_8006AFD0(Player*, s8, s16, s8);
 
+void func_8006B7E4(Player*, s8);
 void func_8006B87C(Player*, s8);
 void func_8006B8B4(Player*, s8);
 void func_8006B974(s32, s8, s8);
@@ -223,7 +229,32 @@ void func_8006E848(Player*, s8, s8);
 void func_8006E8C4(Player*, s8, s8);
 void func_8006E940(Player*, s8, s8);
 
+// data/data_code_80071F00_2.s
+extern Vtx gBalloonVertexPlane1[];
+extern Vtx gBalloonVertexPlane2[];
+extern u8 D_800E52D0[];
 
+extern s16 D_800E4730[];
+extern u8 **D_800E4770[];
+extern u8 **D_800E47A0[];
+extern s32 D_800E47DC[];
+extern s32 D_800E480C[];
+
+extern Vec3f D_8018D4D0[];
+extern Vec3f D_8018D530[];
+extern Vec3f D_8018D590[];
+extern Vec3s D_8018D620[];
+extern Vec3f D_8018D650[];
+extern Vec3f D_8018D6B0[];
+extern Vec3f D_8018D710[];
+extern Vec3s D_8018D770[];
+extern Vec3s D_8018D7A0[];
+extern Vec3s D_8018D7D0[];
+extern Vec3s D_8018D800[];
+extern Vec3s D_8018D830[];
+extern Vec3s D_8018D860[];
+extern Vec3s D_8018D890[];
+extern Vec3s D_8018D8D0[];
 
 extern s8 D_801657B2;
 extern s8 D_801657C8;
@@ -233,7 +264,6 @@ extern Gfx D_0D0076F8[];
 extern s8 D_801657E4;
 extern bool8 D_801657E6;
 extern s32 D_8018D2AC;
-extern u16 D_800DC5B8;
 extern bool8 D_801657F0;
 extern s8 D_80165800[2];
 extern s8 D_80165801;
@@ -283,13 +313,6 @@ extern u8 *D_8018D4C8;
 extern u16 gPlayerBalloonStatus[8][3]; // D_8018D5F0
 extern s16 gPlayerBalloonCount[];      // D_8018D8C0
 
-extern struct UnkStruct_800DC5EC *D_800DC5EC;
-extern struct UnkStruct_800DC5EC *D_800DC5F0;
-extern struct UnkStruct_800DC5EC *D_800DC5F4;
-extern struct UnkStruct_800DC5EC *D_800DC5F8;
-
-extern u16 gIsGamePaused;
-
 extern s32   D_80164394;
 extern s32   D_80164398;
 extern s32   D_8016439C;
@@ -332,7 +355,7 @@ extern s32 D_8018D410;
 extern s32 gMatrixHudCount;
 extern s32 D_8018D170;
 extern s32 D_8018D178;
-extern s32 D_8018D188;
+extern s32 gIsHUDVisible;
 extern s32 D_8018D190;
 extern s32 D_8018D1A0;
 extern s32 D_8018D1B4;
@@ -345,21 +368,5 @@ extern s32 D_8018D2A4;
 extern s32 D_8018D2BC;
 extern u8 *D_8018D480;
 extern u8 *D_8018D484;
-
-// data/data_800E8700.c
-extern Vtx D_800E8740[];
-extern Vtx D_800E8780[];
-extern Vtx D_800E87C0[];
-extern Vtx D_800E8800[];
-extern Vtx D_800E8840[];
-extern Vtx D_800E8880[];
-extern Vtx D_800E88C0[];
-extern Vtx D_800E8A00[];
-extern Vtx D_800E8A40[];
-extern Vtx D_800E8B00[];
-extern Vtx D_800E8B40[];
-extern Vtx D_800E8B80[];
-extern Vtx D_800E8BC0[];
-extern Vtx D_800E8900[][4];
 
 #endif

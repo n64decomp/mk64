@@ -18,12 +18,14 @@
 #include "code_80071F00.h"
 #include "code_80086E70.h"
 #include "code_8008C1D0.h"
+#include "src/data/data_800E8700.h"
 #include "skybox_and_splitscreen.h"
 #include "common_textures.h"
 #include "audio/external.h"
 #include "objects.h"
 #include "bomb_kart.h"
 #include "menus.h"
+#include "data/other_textures.h"
 
 
 // WARNING: this macro is undef'd at the end of this file
@@ -623,7 +625,7 @@ void func_80058F48(void) {
 void func_80058F78(void) {
     if (D_801657B0 == 0) {
         func_80041EF4();
-        if ((!gDemoMode) && (D_8018D188 != 0) && (D_801657D8 == 0)) {
+        if ((!gDemoMode) && (gIsHUDVisible != 0) && (D_801657D8 == 0)) {
             func_8004E638(0);
             if (D_801657E4 != 2) {
                 func_8004FA78(0);
@@ -700,7 +702,7 @@ void func_800591B4(void) {
         func_80057C60();
         gSPDisplayList(gDisplayListHead++, &D_0D0076F8);
 
-        if (D_8018D188 != 0) {
+        if (gIsHUDVisible != 0) {
             if (D_801657D8 == 0) {
                 if (D_801657F0 != FALSE) {
                     func_800514BC();
@@ -764,7 +766,7 @@ void func_800593F8(void) {
 }
 
 void func_80059488(s32 arg0) {
-    if ((gModeSelection != BATTLE) && (D_80165800[arg0] == 0) && (D_8018D188 != 0)) {
+    if ((gModeSelection != BATTLE) && (D_80165800[arg0] == 0) && (gIsHUDVisible != 0)) {
         func_8004FA78(arg0);
         func_8004E78C(arg0);
     }
@@ -796,7 +798,7 @@ extern s8 D_801657F8;
 
 void func_80059560(s32 arg0) {
     if (gModeSelection != BATTLE) {
-        if (D_801657F8 && D_8018D188) {
+        if (D_801657F8 && gIsHUDVisible) {
             func_8004CB60(D_8018CA70[arg0].lapX, D_8018CA70[arg0].lapY, D_0D00A958);
             func_8004FC78(D_8018CA70[arg0].lapX - 12, D_8018CA70[arg0].lapY + 4, D_8018CA70[arg0].alsoLapCount);
         }
@@ -893,7 +895,7 @@ extern s8 D_80165890;
 void func_8005995C(void) {
     s32 i;
     Player *player = gPlayerOne;
-    for (i = 0; i != 4; i++) {
+    for (i = 0; i < 4; i++) {
         if ((D_80165890 != 0) && (player->type & PLAYER_INVISIBLE_OR_BOMB)) {
             player->currentItemCopy = ITEM_MUSHROOM;
             
@@ -927,7 +929,7 @@ void func_80059AC8(void) {
     if (gIsGamePaused == 0) {
         func_8008C1D8(&D_80165678);
         gRaceFrameCounter++;
-        for (i = 0; i != 8; i++) {
+        for (i = 0; i < NUM_PLAYERS; i++) {
             D_8018CF68[i] = func_8008A890(&camera1[i]);
             func_800892E0(i);
         }
@@ -966,12 +968,12 @@ void func_80059C50(void) {
     s32 playerId;
 
     func_8005A3C0();
-    for (someIndex = 0; someIndex < 8; someIndex++) {
+    for (someIndex = 0; someIndex < NUM_PLAYERS; someIndex++) {
         playerId = gGPCurrentRacePlayerIdByRank[someIndex];
         // I hate this dumb pointer access here
         gGPCurrentRaceCharacterIdByRank[someIndex] = (gPlayerOne + playerId)->characterId;
     }
-    for (someIndex = 0; someIndex < 8; someIndex++) {
+    for (someIndex = 0; someIndex < NUM_PLAYERS; someIndex++) {
         D_8018CF98[someIndex] = gGPCurrentRaceRankByPlayerId[someIndex];
     }
 }
@@ -1157,7 +1159,7 @@ void func_8005A14C(s32 playerId) {
 
 void func_8005A380(void) {
     s32 temp_s0;
-    for (temp_s0 = 0; temp_s0 < 8; ++temp_s0) {
+    for (temp_s0 = 0; temp_s0 < NUM_PLAYERS; ++temp_s0) {
         func_8005A14C(temp_s0);
     }
 }
@@ -1168,7 +1170,7 @@ void func_8006F824(s32);
 
 void func_8005A3C0(void) {
     bool b = FALSE;
-    if ((gGamestate != 5) && (gGamestate != 9) && !D_8018D204) {
+    if ((gGamestate != ENDING_SEQUENCE) && (gGamestate != CREDITS_SEQUENCE) && !D_8018D204) {
         switch (gPlayerCountSelection1) {
         case 1:
             if (gControllerOne->buttonPressed & R_CBUTTONS) {
@@ -1336,7 +1338,7 @@ void func_8005A99C(void) {
             if (gPlayerCountSelection1 == 3) {
                 D_801657E8 = TRUE;
             }
-            D_8018D188 = (s32) 1;
+            gIsHUDVisible = (s32) 1;
             D_8018D170 = (s32) 1;
             D_8018D190 = (s32) 1;
             D_8018D204 = 0;
@@ -1802,7 +1804,7 @@ void func_8005B7A0(void) {
     s16_step_towards(&D_8018CAC2, 0xE4, 0x10);
     s16_step_towards(&D_8018CAC4, 0xE4, 0x10);
     s16_step_towards(&D_8018CAC6, 0xE4, 0x10);
-    for (var_s0 = 0; var_s0 != 8; var_s0++) {
+    for (var_s0 = 0; var_s0 < NUM_PLAYERS; var_s0++) {
         temp_s2 = &D_8018D028[var_s0];
         temp_s3 = &D_8018D0C8[var_s0];
         temp_s4 = &D_8018D078[var_s0];
@@ -1925,7 +1927,7 @@ void func_8005B914(void) {
         func_8005AA94(0xA);
         break;
     case 0x6E:
-        for (i = 0; i != 8; i += 4) {
+        for (i = 0; i < NUM_PLAYERS; i += 4) {
             D_8018D050[i] = -32.0f;
             D_8018D050[i + 1] = -32.0f;
             D_8018D050[i + 2] = -32.0f;
@@ -2012,7 +2014,7 @@ void func_8005B914(void) {
         func_8005AA94(0xA);
         break;
     case 0x7E:
-        for (i = 0; i != 8; i++) {
+        for (i = 0; i < NUM_PLAYERS; i++) {
             D_8018D078[i] = 0.0f;
         }
         func_8005AA4C();
@@ -2104,7 +2106,7 @@ void func_8005B914(void) {
         func_8005B7A0();
     }
     if ((D_8018D1CC != 0) && (D_8018D1CC >= 0x14) && (D_8018D1CC < 0x1E)) {
-        for (i = 0; i != 4; i++) {
+        for (i = 0; i < 4; i++) {
             f32_step_towards(&D_8018D028[i], D_8018D0C8[i], D_8018D078[i]);
             if (D_8018D028[i] == D_8018D0C8[i]) {
                 D_8018D078[i] = 0.0f;
@@ -2256,7 +2258,7 @@ void func_8005C980(void) {
     s32 var_v0;
     s32 sp0;
     s32 temp_v1;
-    for (var_v0 = 0; var_v0 < 8; var_v0++) {
+    for (var_v0 = 0; var_v0 < NUM_PLAYERS; var_v0++) {
         temp_v1 = gGPCurrentRaceRankByPlayerId[var_v0];
         if (D_80165590 == 0) {
             D_8018CF98[var_v0] = temp_v1;
@@ -2267,7 +2269,7 @@ void func_8005C980(void) {
         }
     }
 
-    for (var_v0 = 0; var_v0 < 8; var_v0++) {
+    for (var_v0 = 0; var_v0 < NUM_PLAYERS; var_v0++) {
         sp0 = gGPCurrentRacePlayerIdByRank[var_v0];
         D_8018CF50[var_v0] = sp0;
         if (D_80165590 == 0) {
@@ -2518,8 +2520,8 @@ void func_8005D1F4(s32 arg0)
         playerWaypoint = gNearestWaypointByPlayerId[arg0];
         D_8018CA70[arg0].unk_74 = 0;
         for (var_a2 = 0; var_a2 < NUM_BOMB_KARTS_VERSUS; var_a2++) {
-            if ((D_80163DE8[var_a2].state == BOMB_STATE_EXPLODED) || (D_80163DE8[var_a2].state == BOMB_STATE_INACTIVE)) continue;
-            bombWaypoint = D_80163DE8[var_a2].wayPointIndex;
+            if ((gBombKarts[var_a2].state == BOMB_STATE_EXPLODED) || (gBombKarts[var_a2].state == BOMB_STATE_INACTIVE)) continue;
+            bombWaypoint = gBombKarts[var_a2].waypointIndex;
             waypointDiff = bombWaypoint - playerWaypoint;
             if ((waypointDiff < -5) || (waypointDiff > 0x1E)) continue;
             D_8018CA70[arg0].unk_74 = 1;
@@ -2527,48 +2529,6 @@ void func_8005D1F4(s32 arg0)
         }
     }
 }
-
-// todo: Import?
-// Appears to be balloons
-extern u8 D_0F05D1E8[]; // unk
-extern u8 D_0F05D420[]; // unk
-extern u8 D_0F05D674[]; // unk
-extern u8 D_0F05DA50[]; // unk
-extern u8 D_0F05DDFC[]; // unk
-extern u8 D_0F05DFC0[]; // unk
-extern u8 D_0F05E19C[]; // balloon top?
-extern u8 D_0F05E3E0[]; // balloon bottom?
-
-
-extern u8 gTexture69B03C[];
-extern u8 gTexture69B140[];
-extern u8 gTexture69B378[];
-extern u8 gTexture69B960[];
-extern u8 gTexture69BA28[];
-extern u8 gTexture69C1E8[];
-extern u8 gTexture69C354[];
-extern u8 gTexture69C4E4[];
-extern u8 gTexture69C80C[];
-extern u8 gTexture69C9C4[];
-extern u8 gTexture69CB84[];
-extern u8 gTexture69CCEC[];
-extern u8 gTexture69CEB8[];
-extern u8 gTexture69D148[];
-extern u8 gTexture69D4E0[];
-extern u8 gTexture69D8FC[];
-extern u8 gTexture69DCB4[];
-extern u8 gTexture69DFA0[];
-extern u8 gTexture69E25C[];
-extern u8 gTexture69E518[];
-extern u8 gTexture69E7A8[];
-extern u8 gTexture69EA18[];
-extern u8 gTexture69EC54[];
-extern u8 gTexture69EE38[];
-extern u8 gTexture69EFE0[];
-extern u8 gTextureBoingExclamation[];
-extern u8 gTextureKartShadow[];
-extern u8 gTextureLightningBolt0[];
-extern u8 gTextureLightningBolt1[];
 
 // Appears to load GP Mode race staging balloons and kart shadows.
 void func_8005D290(void) {
@@ -2583,16 +2543,16 @@ void func_8005D290(void) {
     D_8018D494 = dma_textures(gTexture69C4E4, 0x400, 0x400);
     D_8018D490 = D_8018D48C;
     D_8018D498 = dma_textures(gTexture69B378, 0x1000, 0x1000);
-    D_8018D4BC = dma_textures(D_0F05E19C, 0x800, 0x800);
-    D_8018D4C0 = dma_textures(D_0F05E3E0, 0x800, 0x800);
+    D_8018D4BC = dma_textures(gTextureBalloon1, 0x800, 0x800);
+    D_8018D4C0 = dma_textures(gTextureBalloon2, 0x800, 0x800);
     D_8018D49C = dma_textures(gTexture69C9C4, 0x200, 0x200);
     D_8018D4A0 = dma_textures(gTextureBoingExclamation, 0x800, 0x800);
-    D_8018D4A4 = dma_textures(D_0F05DDFC, 0x800, 0x800);
-    D_8018D4A8 = dma_textures(D_0F05DFC0, 0x800, 0x800);
-    D_8018D4AC = dma_textures(D_0F05D674, 0x800, 0x800);
-    D_8018D4B0 = dma_textures(D_0F05DA50, 0x800, 0x800);
-    D_8018D4B4 = dma_textures(D_0F05D1E8, 0x800, 0x800);
-    D_8018D4B8 = dma_textures(D_0F05D420, 0x800, 0x800);
+    D_8018D4A4 = dma_textures(gTextureOnomatopoeiaPoomp1, 0x800, 0x800);
+    D_8018D4A8 = dma_textures(gTextureOnomatopoeiaPoomp2, 0x800, 0x800);
+    D_8018D4AC = dma_textures(gTextureOnomatopoeiaWhrrrr1, 0x800, 0x800);
+    D_8018D4B0 = dma_textures(gTextureOnomatopoeiaWhrrrr2, 0x800, 0x800);
+    D_8018D4B4 = dma_textures(gTextureOnomatopoeiaCrash1, 0x800, 0x800);
+    D_8018D4B8 = dma_textures(gTextureOnomatopoeiaCrash2, 0x800, 0x800);
     D_8018D438 = dma_textures(gTexture69CB84, 0x800, 0x800);
     D_8018D43C = dma_textures(gTexture69CCEC, 0x800, 0x800);
     D_8018D440 = dma_textures(gTexture69CEB8, 0x800, 0x800);
@@ -4782,247 +4742,60 @@ void func_80065AB0(Player *player, s8 arg1, s16 arg2, s8 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80065AB0.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-? func_800652D4(f32 *, s16 *, f32);                 /* extern */
-extern ? D_05FF8DB8;
-extern u32 D_8018D494;
-extern u32 D_8018D498;
-static s32 D_800E47DC[0xC] = {
-    0x00FBFFFB,
-    0x00A06011,
-    0x00E0C090,
-    0x00D0B080,
-    0x00907040,
-    0x00C07010,
-    0x00D0F0FF,
-    0x00E09030,
-    0x00C09030,
-    0x00604020,
-    0x00F0D0B0,
-    0x00A08030,
-};
-static s32 D_800E480C[0xC] = {
-    0x00B0B0B0,
-    0x00804011,
-    0x00B08050,
-    0x00A07040,
-    0x00603011,
-    0x00804010,
-    0x007090A0,
-    0x00A06030,
-    0x00A07010,
-    0x00301011,
-    0x00B0A080,
-    0x00806010,
-};
-static ? D_800E8C00;                                /* unable to generate initializer */
+#ifdef NON_MATCHING
+//https://decomp.me/scratch/KEz08
+// Something is very wrong with the handling of prim/evn colors, but I can't figuer out what.
+void func_80065F0C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
+    Vec3f spDC;
+    Vec3s spD4;
+    s16 primRed;
+    s16 primGreen;
+    s16 primBlue;
+    s16 primAlpha;
+    u8 envRed;
+    s16 envGreen;
+    s16 envBlue;
 
-void func_80065F0C(Player *player, s32 arg1, s16 arg2, s8 arg3) {
-    f32 spE4;
-    f32 spE0;
-    f32 spDC;
-    s16 spD8;
-    s16 spD6;
-    s16 spD4;
-    s16 spCC;
-    s16 spCA;
-    s16 spC8;
-    s16 spC6;
-    void *sp44;
-    Gfx *temp_s0;
-    Gfx *temp_s0_10;
-    Gfx *temp_s0_11;
-    Gfx *temp_s0_12;
-    Gfx *temp_s0_13;
-    Gfx *temp_s0_14;
-    Gfx *temp_s0_15;
-    Gfx *temp_s0_16;
-    Gfx *temp_s0_17;
-    Gfx *temp_s0_18;
-    Gfx *temp_s0_19;
-    Gfx *temp_s0_20;
-    Gfx *temp_s0_21;
-    Gfx *temp_s0_22;
-    Gfx *temp_s0_23;
-    Gfx *temp_s0_24;
-    Gfx *temp_s0_25;
-    Gfx *temp_s0_26;
-    Gfx *temp_s0_27;
-    Gfx *temp_s0_28;
-    Gfx *temp_s0_29;
-    Gfx *temp_s0_2;
-    Gfx *temp_s0_30;
-    Gfx *temp_s0_31;
-    Gfx *temp_s0_3;
-    Gfx *temp_s0_4;
-    Gfx *temp_s0_5;
-    Gfx *temp_s0_6;
-    Gfx *temp_s0_7;
-    Gfx *temp_s0_8;
-    Gfx *temp_s0_9;
-    s16 temp_a0;
-    s16 temp_a1;
-    s16 temp_ra;
-    s16 temp_s2;
-    s16 temp_s3;
-    s32 temp_a2;
-    s32 temp_v1;
-    void *temp_v0;
-
-    temp_v0 = player + (arg2 * 0x48);
-    if ((temp_v0->unk544 == 1) && (temp_v0->unk546 != 0)) {
-        spDC = temp_v0->unk528;
-        spE0 = temp_v0->unk52C;
-        spD4 = 0;
-        spE4 = temp_v0->unk530;
-        spD8 = 0;
-        spD6 = player->unk_048[arg3];
-        sp44 = temp_v0;
-        func_800652D4(&spDC, &spD4, temp_v0->unk534 * player->size);
-        if ((s32) sp44->unk53C != 8) {
-            temp_a1 = sp44->unk560;
-            temp_a0 = sp44->unk562;
-            temp_v1 = D_800E47DC[temp_a1];
-            temp_ra = ((temp_v1 >> 0x10) & 0xFF) - temp_a0;
-            temp_a2 = D_800E480C[temp_a1];
-            temp_s2 = ((temp_v1 >> 8) & 0xFF) - temp_a0;
-            temp_s3 = (temp_v1 & 0xFF) - temp_a0;
-            spCA = ((temp_a2 >> 0x10) & 0xFF) - temp_a0;
-            spC8 = ((temp_a2 >> 8) & 0xFF) - temp_a0;
-            spC6 = (temp_a2 & 0xFF) - temp_a0;
-            spCC = sp44->unk566;
-            if (sp44->unk568 == 0) {
-                temp_s0 = gDisplayListHead;
-                gDisplayListHead = temp_s0 + 8;
-                temp_s0->words.w1 = (u32) D_0D008DB8;
-                temp_s0->words.w0 = 0x06000000;
-                temp_s0_2 = gDisplayListHead;
-                gDisplayListHead = temp_s0_2 + 8;
-                temp_s0_2->words.w0 = 0xFD900000;
-                temp_s0_2->words.w1 = D_8018D494;
-                temp_s0_3 = gDisplayListHead;
-                gDisplayListHead = temp_s0_3 + 8;
-                temp_s0_3->words.w1 = 0x07000000;
-                temp_s0_3->words.w0 = 0xF5900000;
-                temp_s0_4 = gDisplayListHead;
-                gDisplayListHead = temp_s0_4 + 8;
-                temp_s0_4->words.w1 = 0;
-                temp_s0_4->words.w0 = 0xE6000000;
-                temp_s0_5 = gDisplayListHead;
-                gDisplayListHead = temp_s0_5 + 8;
-                temp_s0_5->words.w1 = 0x071FF200;
-                temp_s0_5->words.w0 = 0xF3000000;
-                temp_s0_6 = gDisplayListHead;
-                gDisplayListHead = temp_s0_6 + 8;
-                temp_s0_6->words.w1 = 0;
-                temp_s0_6->words.w0 = 0xE7000000;
-                temp_s0_7 = gDisplayListHead;
-                gDisplayListHead = temp_s0_7 + 8;
-                temp_s0_7->words.w1 = 0;
-                temp_s0_7->words.w0 = 0xF5880800;
-                temp_s0_8 = gDisplayListHead;
-                gDisplayListHead = temp_s0_8 + 8;
-                temp_s0_8->words.w1 = 0x0007C07C;
-                temp_s0_8->words.w0 = 0xF2000000;
-                func_8004B72C((s32) temp_ra, (s32) temp_s2, (s32) temp_s3, (s32) spCA, (s32) spC8, (s32) spC6, (s32) spCC);
-                temp_s0_9 = gDisplayListHead;
-                gDisplayListHead = temp_s0_9 + 8;
-                temp_s0_9->words.w0 = (u32) &D_05FF8DB8;
-                temp_s0_9->words.w1 = (u32) D_0D008E48;
+    if ((player->unk_258[10 + arg2].unk_01C == 1) && (player->unk_258[10 + arg2].unk_01E != 0)) {
+        spDC[0] = player->unk_258[10 + arg2].unk_000[0];
+        spDC[1] = player->unk_258[10 + arg2].unk_000[1];
+        spDC[2] = player->unk_258[10 + arg2].unk_000[2];
+        spD4[0] = 0;
+        spD4[1] = player->unk_048[arg3];
+        spD4[2] = 0;
+        func_800652D4(&spDC, &spD4, player->unk_258[10 + arg2].unk_00C * player->size);
+        if ((s32)player->unk_258[10 + arg2].unk_014 != 8) {
+            primRed   = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            primGreen = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            primBlue  = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            envRed    = ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            envGreen  = ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            envBlue   = ((D_800E480C[player->unk_258[10 + arg2].unk_038] >> 0x00) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
+            primAlpha = player->unk_258[10 + arg2].unk_03E;
+            if (player->unk_258[10 + arg2].unk_040 == 0) {
+                gSPDisplayList(gDisplayListHead++, D_0D008DB8);
+                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
+                gSPDisplayList(gDisplayListHead++, D_0D008E48);
             } else {
-                temp_s0_10 = gDisplayListHead;
-                gDisplayListHead = temp_s0_10 + 8;
-                temp_s0_10->words.w1 = 0x0D010000;
-                temp_s0_10->words.w0 = 0x06000000;
-                temp_s0_11 = gDisplayListHead;
-                gDisplayListHead = temp_s0_11 + 8;
-                temp_s0_11->words.w0 = 0xFD900000;
-                temp_s0_11->words.w1 = D_8018D494;
-                temp_s0_12 = gDisplayListHead;
-                gDisplayListHead = temp_s0_12 + 8;
-                temp_s0_12->words.w1 = 0x07000000;
-                temp_s0_12->words.w0 = 0xF5900000;
-                temp_s0_13 = gDisplayListHead;
-                gDisplayListHead = temp_s0_13 + 8;
-                temp_s0_13->words.w1 = 0;
-                temp_s0_13->words.w0 = 0xE6000000;
-                temp_s0_14 = gDisplayListHead;
-                gDisplayListHead = temp_s0_14 + 8;
-                temp_s0_14->words.w1 = 0x071FF200;
-                temp_s0_14->words.w0 = 0xF3000000;
-                temp_s0_15 = gDisplayListHead;
-                gDisplayListHead = temp_s0_15 + 8;
-                temp_s0_15->words.w1 = 0;
-                temp_s0_15->words.w0 = 0xE7000000;
-                temp_s0_16 = gDisplayListHead;
-                gDisplayListHead = temp_s0_16 + 8;
-                temp_s0_16->words.w1 = 0;
-                temp_s0_16->words.w0 = 0xF5880800;
-                temp_s0_17 = gDisplayListHead;
-                gDisplayListHead = temp_s0_17 + 8;
-                temp_s0_17->words.w1 = 0x0007C07C;
-                temp_s0_17->words.w0 = 0xF2000000;
-                func_8004B72C((s32) temp_ra, (s32) temp_s2, (s32) temp_s3, (s32) spCA, (s32) spC8, (s32) spC6, (s32) spCC);
-                temp_s0_18 = gDisplayListHead;
-                gDisplayListHead = temp_s0_18 + 8;
-                temp_s0_18->words.w1 = 3;
-                temp_s0_18->words.w0 = 0xB9000002;
-                temp_s0_19 = gDisplayListHead;
-                gDisplayListHead = temp_s0_19 + 8;
-                temp_s0_19->words.w0 = 0x06000000;
-                temp_s0_19->words.w1 = (u32) D_0D008E48;
+                gSPDisplayList(gDisplayListHead++, D_0D008DB8);
+                gDPLoadTextureBlock(gDisplayListHead++, D_8018D494, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+                func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
+                gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
+                gSPDisplayList(gDisplayListHead++, D_0D008E48);
             }
         } else {
-            temp_s0_20 = gDisplayListHead;
-            gDisplayListHead = temp_s0_20 + 8;
-            temp_s0_20->words.w1 = (u32) D_0D008C90;
-            temp_s0_20->words.w0 = 0x06000000;
-            temp_s0_21 = gDisplayListHead;
-            gDisplayListHead = temp_s0_21 + 8;
-            temp_s0_21->words.w1 = 0;
-            temp_s0_21->words.w0 = 0xBA000E02;
-            temp_s0_22 = gDisplayListHead;
-            gDisplayListHead = temp_s0_22 + 8;
-            temp_s0_22->words.w0 = 0xFD100000;
-            temp_s0_22->words.w1 = D_8018D498;
-            temp_s0_23 = gDisplayListHead;
-            gDisplayListHead = temp_s0_23 + 8;
-            temp_s0_23->words.w1 = 0x07080200;
-            temp_s0_23->words.w0 = 0xF5100000;
-            temp_s0_24 = gDisplayListHead;
-            gDisplayListHead = temp_s0_24 + 8;
-            temp_s0_24->words.w1 = 0;
-            temp_s0_24->words.w0 = 0xE6000000;
-            temp_s0_25 = gDisplayListHead;
-            gDisplayListHead = temp_s0_25 + 8;
-            temp_s0_25->words.w1 = 0x077FF100;
-            temp_s0_25->words.w0 = 0xF3000000;
-            temp_s0_26 = gDisplayListHead;
-            gDisplayListHead = temp_s0_26 + 8;
-            temp_s0_26->words.w1 = 0;
-            temp_s0_26->words.w0 = 0xE7000000;
-            temp_s0_27 = gDisplayListHead;
-            gDisplayListHead = temp_s0_27 + 8;
-            temp_s0_27->words.w0 = 0xF5101000;
-            temp_s0_27->words.w1 = 0x00080200;
-            temp_s0_28 = gDisplayListHead;
-            gDisplayListHead = temp_s0_28 + 8;
-            temp_s0_28->words.w0 = 0xF2000000;
-            temp_s0_28->words.w1 = 0x0007C0FC;
-            func_8004B35C((s32) sp44->unk560, (s32) sp44->unk562, (s32) sp44->unk564, 0x000000FF);
-            temp_s0_29 = gDisplayListHead;
-            gDisplayListHead = temp_s0_29 + 8;
-            temp_s0_29->words.w0 = 0xB900031D;
-            temp_s0_29->words.w1 = 0x00553078;
-            temp_s0_30 = gDisplayListHead;
-            gDisplayListHead = temp_s0_30 + 8;
-            temp_s0_30->words.w1 = (u32) &D_800E8C00;
-            temp_s0_30->words.w0 = 0x0400103F;
-            temp_s0_31 = gDisplayListHead;
-            gDisplayListHead = temp_s0_31 + 8;
-            temp_s0_31->words.w0 = 0x06000000;
-            temp_s0_31->words.w1 = (u32) D_0D008DA0;
+            primRed   = player->unk_258[10 + arg2].unk_038;
+            primGreen = player->unk_258[10 + arg2].unk_03A;
+            primBlue  = player->unk_258[10 + arg2].unk_03C;
+            gSPDisplayList(gDisplayListHead++, D_0D008C90);
+            gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
+            gDPLoadTextureBlock(gDisplayListHead++, D_8018D498, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+            func_8004B35C(primRed, primGreen, primBlue, 0x000000FF);
+            gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
+            gSPVertex(gDisplayListHead++, D_800E8C00, 4, 0);
+            gSPDisplayList(gDisplayListHead++, D_0D008DA0);
+
         }
         gMatrixEffectCount += 1;
     }
@@ -5202,8 +4975,6 @@ void func_80067280(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-#ifdef NON_MATCHING
-
 void func_80067604(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Vec3f sp8C;
     Vec3s sp84;
@@ -5221,15 +4992,9 @@ void func_80067604(Player *player, s8 arg1, s16 arg2, s8 arg3) {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPLoadTextureBlock(gDisplayListHead++, D_0D02AC58, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(0x000000FF, 0x000000FF, 0x000000DF, 0x000000FF, 0x0000005F, 0, 0x00000060);
-            // temp_v0_10 = gDisplayListHead;
-            // gDisplayListHead = temp_v0_10 + 8;
-            // temp_v0_10->words.w0 = (u32) &D_05FF8DB8;
-            // temp_v0_10->words.w1 = (u32) D_0D008E70;
-            // I have no idea what's going on here.
-            // D_05FF8DB8 is clearly a fake variable, but there's not Gfx command
-            // that matches w0 = 05FF8DB8, w1 = 0D008E70
+            gSPDisplayList(gDisplayListHead++, D_0D008E70);
         } else {
-            gSPDisplayList(gDisplayListHead++, 0x0D010000);
+            gSPDisplayList(gDisplayListHead++, D_0D008DB8);
             gDPLoadTextureBlock(gDisplayListHead++, D_0D02AC58, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(0x000000FF, 0x000000FF, 0x000000DF, 0x000000FF, 0x0000005F, 0, 0x00000060);
             gSPDisplayList(gDisplayListHead++, D_0D008E48);
@@ -5237,9 +5002,6 @@ void func_80067604(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         gMatrixEffectCount += 1;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_80067604.s")
-#endif
 
 // data/data_code_80071F00_2.s
 extern u8 D_800E52D0[];
@@ -5653,404 +5415,182 @@ void func_8006A280(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-extern ? D_8018D4D0;
-extern ? D_8018D530;
-extern ? D_8018D590;
-extern ? D_8018D620;
-extern ? D_8018D650;
-extern ? D_8018D6B0;
-extern ? D_8018D710;
-extern ? D_8018D770;
-extern ? D_8018D7A0;
-extern ? D_8018D7D0;
-extern ? D_8018D800;
-extern ? D_8018D830;
-extern ? D_8018D860;
-extern ? D_8018D890;
-extern ? gPlayerBalloonStatus;
-
 void func_8006A50C(Player *player, f32 arg1, f32 arg2, s8 arg3, s8 arg4, s16 arg5) {
-    f32 sp44;
-    f32 sp40;
-    f32 sp3C;
-    s32 sp38;
-    u16 *sp34;
-    s32 sp30;
-    s32 temp_v0;
-    s32 temp_v1;
-    u16 *temp_t0;
+    f32 someX;
+    f32 someY;
+    f32 someZ;
 
-    temp_v0 = arg4 * 2;
-    temp_t0 = (arg3 * 6) + temp_v0 + &gPlayerBalloonStatus;
-    *temp_t0 = 0;
-    temp_v1 = arg4 * 4;
-    *(&D_8018D650 + ((arg3 * 0xC) + temp_v1)) = 0.1f;
-    *(&D_8018D6B0 + ((arg3 * 0xC) + temp_v1)) = 0.0f;
-    *(&D_8018D710 + ((arg3 * 0xC) + temp_v1)) = 0.0f;
-    *(&D_8018D770 + ((arg3 * 6) + temp_v0)) = 0;
-    *(&D_8018D7A0 + ((arg3 * 6) + temp_v0)) = 0;
-    *(&D_8018D7D0 + ((arg3 * 6) + temp_v0)) = 0;
-    *(&D_8018D800 + ((arg3 * 6) + temp_v0)) = 5;
-    *(&D_8018D830 + ((arg3 * 6) + temp_v0)) = 1;
-    *(&D_8018D620 + ((arg3 * 6) + temp_v0)) = -player->unk_02C[1] - player->unk_0C0;
-    sp34 = temp_t0;
-    sp30 = temp_v1;
-    sp38 = temp_v0;
-    func_80062B18(&sp44, &sp40, &sp3C, arg1, 4.0f, (f32) ((f64) arg2 + -3.8), (u16) (s32) -player->unk_02C[1], (u16) 0);
-    *(&D_8018D4D0 + ((arg3 * 0xC) + sp30)) = player->pos[0] + sp44;
-    *(&D_8018D590 + ((arg3 * 0xC) + sp30)) = player->pos[2] + sp3C;
-    *(&D_8018D530 + ((arg3 * 0xC) + sp30)) = (player->pos[1] - player->boundingBoxSize) + sp40;
-    *sp34 |= 1;
-    *(&D_8018D860 + ((arg3 * 6) + sp38)) = arg5;
-    *(&D_8018D890 + ((arg3 * 6) + sp38)) = 0;
+    gPlayerBalloonStatus[arg3][arg4] = 0;
+    D_8018D650[arg3][arg4] = 0.1f;
+    D_8018D6B0[arg3][arg4] = 0.0f;
+    D_8018D710[arg3][arg4] = 0.0f;
+    D_8018D770[arg3][arg4] = 0;
+    D_8018D7A0[arg3][arg4] = 0;
+    D_8018D7D0[arg3][arg4] = 0;
+    D_8018D800[arg3][arg4] = 5;
+    D_8018D830[arg3][arg4] = 1;
+    D_8018D620[arg3][arg4] = -player->unk_02C[1] - player->unk_0C0;
+    func_80062B18(&someX, &someY, &someZ, arg1, 4.0f, arg2 + -3.8, -player->unk_02C[1], 0);
+    D_8018D4D0[arg3][arg4] = player->pos[0] + someX;
+    D_8018D590[arg3][arg4] = player->pos[2] + someZ;
+    D_8018D530[arg3][arg4] = (player->pos[1] - player->boundingBoxSize) + someY;
+    gPlayerBalloonStatus[arg3][arg4] |= 1;
+    D_8018D860[arg3][arg4] = arg5;
+    D_8018D890[arg3][arg4] = 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006A50C.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-extern ? D_8018D4D0;
-extern ? D_8018D530;
-extern ? D_8018D590;
-extern ? D_8018D620;
-extern ? D_8018D650;
-extern ? D_8018D6B0;
-extern ? D_8018D710;
-extern ? D_8018D770;
-extern ? D_8018D7A0;
-extern ? D_8018D7D0;
-extern ? D_8018D800;
-extern ? D_8018D830;
-extern ? D_8018D860;
-extern ? D_8018D890;
-extern ? D_8018D8D0;
-extern ? gPlayerBalloonStatus;
-static ? D_800E4914;                                /* unable to generate initializer */
 
 void func_8006A7C0(Player *player, f32 arg1, f32 arg2, s8 arg3, s8 arg4) {
-    ? sp80;
-    f32 sp78;
-    f32 sp74;
-    f32 sp70;
+    f32 sp80[] = {
+         9.0f, 10.0f, 9.0f,  8.0f,
+        10.0f,  9.5f, 9.5f, 11.0f,
+    };
+    s32 stackPadding0;
+    f32 someX;
+    f32 someY;
+    f32 someZ;
     f32 sp6C;
-    f32 *sp60;
-    s32 sp5C;
-    u16 *sp58;
-    s32 sp54;
-    f32 *sp50;
-    f32 *sp4C;
-    s16 *sp3C;
-    s16 *sp34;
-    f32 *temp_a1;
-    f32 *temp_t2;
-    f32 *temp_v0_2;
-    f32 *temp_v1;
-    f32 *temp_v1_2;
-    f32 *temp_v1_3;
-    f32 *var_t2;
-    f32 temp_f8;
-    f32 var_f12;
-    f64 var_f0;
-    f64 var_f0_2;
-    s16 *temp_a0;
-    s16 *temp_a2;
-    s16 *temp_v0;
-    s16 *var_a1;
-    s16 *var_v0;
-    s32 temp_t1;
-    s32 temp_t8;
-    s32 var_t0;
-    s32 var_t1;
-    u16 *temp_t7;
+    s32 stackPadding1;
+    s32 stackPadding2;
 
-    sp80.unk0 = (s32) D_800E4914.unk0;
-    sp80.unk4 = (s32) D_800E4914.unk4;
-    sp80.unk8 = (s32) D_800E4914.unk8;
-    sp80.unkC = (s32) D_800E4914.unkC;
-    sp80.unk10 = (s32) D_800E4914.unk10;
-    sp80.unk14 = (s32) D_800E4914.unk14;
-    sp80.unk18 = (s32) D_800E4914.unk18;
-    sp80.unk1C = (s32) D_800E4914.unk1C;
-    var_f12 = player->unk_094;
-    var_t0 = arg4 * 2;
-    temp_t7 = (arg3 * 6) + var_t0 + &gPlayerBalloonStatus;
-    sp58 = temp_t7;
-    temp_t1 = arg4 * 4;
-    sp6C = (-(var_f12 / 18.0f) * 216.0f) / 10.0f;
-    if ((*temp_t7 & 2) != 2) {
-        temp_a1 = (arg3 * 0xC) + temp_t1 + &D_8018D650;
-        *temp_a1 = (f32) ((f64) *temp_a1 + (-0.003 + ((f64) -var_f12 * 0.0006)));
-        var_f0 = (f64) *temp_a1;
-        temp_v1 = (arg3 * 0xC) + temp_t1 + &D_8018D6B0;
-        temp_t2 = (arg3 * 0xC) + temp_t1 + &D_8018D710;
-        if (var_f0 >= 0.05) {
-            *temp_a1 = 0.05f;
-            var_f0 = (f64) *temp_a1;
+    sp6C = (-(player->unk_094 / 18.0f) * 216.0f) / 10.0f;
+    if ((gPlayerBalloonStatus[arg3][arg4] & 2) != 2) {
+        D_8018D650[arg3][arg4] += -0.003 + (-player->unk_094 * 0.0006);
+        if (D_8018D650[arg3][arg4] >= 0.05) {
+            D_8018D650[arg3][arg4] = 0.05f;
         }
-        if (var_f0 <= -0.05) {
-            *temp_a1 = -0.05f;
+        if (D_8018D650[arg3][arg4] <= -0.05) {
+            D_8018D650[arg3][arg4] = -0.05f;
         }
-        *temp_v1 += *temp_a1;
-        var_f0_2 = (f64) *temp_v1;
-        if (var_f0_2 >= 0.06) {
-            *temp_v1 = 0.06f;
-            var_f0_2 = (f64) *temp_v1;
+        D_8018D6B0[arg3][arg4] += D_8018D650[arg3][arg4];
+        if (D_8018D6B0[arg3][arg4] >= 0.06) {
+            D_8018D6B0[arg3][arg4] = 0.06f;
         }
-        if (var_f0_2 <= -0.06) {
-            *temp_v1 = -0.06f;
+        if (D_8018D6B0[arg3][arg4] <= -0.06) {
+            D_8018D6B0[arg3][arg4] = -0.06f;
         }
-        *temp_t2 += *temp_v1;
-        if (*temp_t2 < 0.0f) {
-            sp60 = temp_v1;
-            sp50 = temp_a1;
-            sp5C = var_t0;
-            sp4C = temp_t2;
-            temp_f8 = (f32) (random_int(0x000BU) / 10);
-            *temp_v1 = 0.0f;
-            *temp_t2 = 0.0f;
-            *temp_a1 = temp_f8;
+        D_8018D710[arg3][arg4] += D_8018D6B0[arg3][arg4];
+        if (D_8018D710[arg3][arg4] < 0.0f) {
+            D_8018D650[arg3][arg4] = random_int(0x000BU) / 10;
+            D_8018D6B0[arg3][arg4] = 0.0f;
+            D_8018D710[arg3][arg4] = 0.0f;
         }
-        *(&D_8018D620 + ((arg3 * 6) + var_t0)) = -player->unk_02C[1] - player->unk_0C0;
-        sp5C = var_t0;
-        move_s16_towards((arg3 * 6) + var_t0 + &D_8018D890, (s16) (s32) (player->unk_094 * 182.0f), 0.1f);
-        var_f12 = player->unk_094;
+        D_8018D620[arg3][arg4] = -player->unk_02C[1] - player->unk_0C0;
+        move_s16_towards(&D_8018D890[arg3][arg4], player->unk_094 * 182.0f, 0.1f);
     }
-    temp_a2 = (arg3 * 6) + var_t0 + &D_8018D830;
-    temp_t8 = arg4 * 4;
-    var_t1 = temp_t8;
-    sp50 = (arg3 * 6) + var_t0 + &D_8018D620;
-    var_t2 = (arg3 * 0xC) + temp_t8 + &D_8018D710;
-    if (*temp_a2 == 1) {
-        var_a1 = (arg3 * 6) + var_t0 + &D_8018D800;
-        var_v0 = (arg3 * 6) + var_t0 + &D_8018D770;
-        *var_v0 = (s16) (s32) ((f32) *var_v0 + ((f32) *var_a1 - var_f12));
+    if (D_8018D830[arg3][arg4] == 1) {
+        D_8018D770[arg3][arg4] += D_8018D800[arg3][arg4] - player->unk_094;
     } else {
-        var_a1 = (arg3 * 6) + var_t0 + &D_8018D800;
-        var_v0 = (arg3 * 6) + var_t0 + &D_8018D770;
-        *var_v0 = (s16) (s32) ((f32) *var_v0 + ((f32) *var_a1 + var_f12));
+        D_8018D770[arg3][arg4] += D_8018D800[arg3][arg4] + player->unk_094;
     }
-    if (*var_v0 >= 0xB) {
-        *var_v0 = 0x000B;
+    if (D_8018D770[arg3][arg4] >= 0xB) {
+        D_8018D770[arg3][arg4] = 0x000B;
     }
-    if (*var_v0 < -0xA) {
-        *var_v0 = -0x000B;
+    if (D_8018D770[arg3][arg4] < -0xA) {
+        D_8018D770[arg3][arg4] = -0x000B;
     }
-    temp_v0 = (arg3 * 6) + var_t0 + &D_8018D7A0;
-    *temp_v0 += *var_v0;
-    if (*temp_v0 >= 0x29) {
-        *temp_v0 = 0x0029;
+    D_8018D7A0[arg3][arg4] += D_8018D770[arg3][arg4];
+    if (D_8018D7A0[arg3][arg4] >= 0x29) {
+        D_8018D7A0[arg3][arg4] = 0x0029;
     }
-    if (*temp_v0 < -0x28) {
-        *temp_v0 = -0x0029;
+    if (D_8018D7A0[arg3][arg4] < -0x28) {
+        D_8018D7A0[arg3][arg4] = -0x0029;
     }
-    temp_v1_2 = (arg3 * 6) + var_t0 + &D_8018D7D0;
-    *temp_v1_2 = (s16) (*temp_v1_2 + *temp_v0);
-    if (*temp_v1_2 >= 0x38E) {
-        sp60 = temp_v1_2;
-        sp34 = var_a1;
-        sp3C = temp_a2;
-        sp5C = var_t0;
-        sp54 = var_t1;
-        sp4C = var_t2;
-        *var_a1 = -random_int(8U);
-        if (*temp_a2 != 1) {
-            *temp_a2 = 1;
+    D_8018D7D0[arg3][arg4] += D_8018D7A0[arg3][arg4];
+    if (D_8018D7D0[arg3][arg4] >= 0x38E) {
+        D_8018D800[arg3][arg4] = -random_int(8U);
+        if (D_8018D830[arg3][arg4] != 1) {
+            D_8018D830[arg3][arg4] = 1;
         }
     }
-    if (*temp_v1_2 < -0x38D) {
-        sp34 = var_a1;
-        sp3C = temp_a2;
-        sp5C = var_t0;
-        sp54 = var_t1;
-        sp4C = var_t2;
-        *var_a1 = random_int(8U);
-        if (*temp_a2 != -1) {
-            *temp_a2 = -1;
+    if (D_8018D7D0[arg3][arg4] < -0x38D) {
+        D_8018D800[arg3][arg4] = random_int(8U);
+        if (D_8018D830[arg3][arg4] != -1) {
+            D_8018D830[arg3][arg4] = -1;
         }
     }
-    sp54 = var_t1;
-    sp5C = var_t0;
-    func_80062B18(&sp78, &sp74, &sp70, arg1, (sp + (player->characterId * 4))->unk80 - *var_t2, (f32) ((f64) arg2 + -3.2 + (f64) (sp6C * 1.0f)), (u16) (s32) -*sp50, (u16) (player->unk_206 * -2));
-    if ((*sp58 & 2) != 2) {
-        *(&D_8018D530 + ((arg3 * 0xC) + sp54)) = (player->pos[1] - player->boundingBoxSize) + sp74;
-        *(&D_8018D4D0 + ((arg3 * 0xC) + sp54)) = player->pos[0] + sp78;
-        *(&D_8018D590 + ((arg3 * 0xC) + sp54)) = player->pos[2] + sp70;
-        *(&D_8018D8D0 + ((arg3 * 6) + sp5C)) = 0;
-        return;
-    }
-    temp_v0_2 = (arg3 * 0xC) + sp54 + &D_8018D530;
-    temp_v1_3 = (arg3 * 6) + sp5C + &D_8018D8D0;
-    *temp_v0_2 = (f32) ((f64) *temp_v0_2 + 0.2);
-    *temp_v1_3 = (s16) (*temp_v1_3 + 1);
-    temp_a0 = (arg3 * 6) + sp5C + &D_8018D890;
-    sp60 = temp_v1_3;
-    sp5C = sp5C;
-    move_s16_towards(temp_a0, 0, 0.1f);
-    move_s16_towards((arg3 * 6) + sp5C + &D_8018D860, 0, 0.1f);
-    if (*temp_v1_3 >= 0x78) {
-        func_8006B974((s32) player, arg3, arg4);
+    func_80062B18(&someX, &someY, &someZ, arg1, sp80[player->characterId] - D_8018D710[arg3][arg4], arg2 + -3.2 + (sp6C * 1), -D_8018D620[arg3][arg4], -player->unk_206 * 2);
+    if ((gPlayerBalloonStatus[arg3][arg4] & 2) != 2) {
+        D_8018D530[arg3][arg4] = (player->pos[1] - player->boundingBoxSize) + someY;
+        D_8018D4D0[arg3][arg4] = player->pos[0] + someX;
+        D_8018D590[arg3][arg4] = player->pos[2] + someZ;
+        D_8018D8D0[arg3][arg4] = 0;
+    } else {
+        D_8018D530[arg3][arg4] += 0.2;
+        D_8018D8D0[arg3][arg4] += 1;
+        move_s16_towards(&D_8018D890[arg3][arg4], 0, 0.1f);
+        move_s16_towards(&D_8018D860[arg3][arg4], 0, 0.1f);
+        if (D_8018D8D0[arg3][arg4] >= 0x78) {
+            func_8006B974((s32) player, arg3, arg4);
+        }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006A7C0.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b7eac665cffd02361f73cec283ef16d0a35a0e5b
-extern u32 D_8018D4BC;
-extern s32 D_8018D4C0;
-extern ? D_8018D4D0;
-extern ? D_8018D530;
-extern ? D_8018D590;
-extern ? D_8018D7D0;
-extern ? D_8018D860;
-extern ? D_8018D890;
-static ? D_800E4934;                                /* unable to generate initializer */
-static ? D_800E4954;                                /* unable to generate initializer */
-static ? gBalloonVertexPlane1;                                /* unable to generate initializer */
-static ? gBalloonVertexPlane2;                                /* unable to generate initializer */
-static ? D_800E52D0;                                /* unable to generate initializer */
-
-void func_8006AFD0(Player *player, s16 arg1, s8 arg2, s8 arg3) {
-    f32 sp13C;
-    f32 sp138;
-    f32 sp134;
-    s16 sp130;
-    s16 sp12E;
-    s16 sp12C;
-    s16 sp128;
-    s16 sp126;
-    s16 sp124;
-    s16 sp122;
-    s16 sp120;
-    s16 sp11E;
-    s16 sp11C;
-    Gfx *spB0;
-    Gfx *spAC;
-    f32 sp58;
-    void *sp54;
-    s32 sp44;
-    s32 sp40;
-    s16 *sp3C;
-    Camera *temp_v0_2;
-    Gfx *temp_v0_10;
-    Gfx *temp_v0_11;
-    Gfx *temp_v0_12;
-    Gfx *temp_v0_13;
-    Gfx *temp_v0_14;
-    Gfx *temp_v0_15;
-    Gfx *temp_v0_16;
-    Gfx *temp_v0_17;
-    Gfx *temp_v0_18;
-    Gfx *temp_v0_19;
-    Gfx *temp_v0_20;
-    Gfx *temp_v0_21;
-    Gfx *temp_v0_22;
-    Gfx *temp_v0_23;
-    Gfx *temp_v0_24;
-    Gfx *temp_v0_25;
-    Gfx *temp_v0_26;
-    Gfx *temp_v0_27;
-    Gfx *temp_v0_28;
-    Gfx *temp_v0_29;
-    Gfx *temp_v0_30;
-    Gfx *temp_v0_31;
-    Gfx *temp_v0_3;
-    Gfx *temp_v0_4;
-    Gfx *temp_v0_5;
-    Gfx *temp_v0_6;
-    Gfx *temp_v0_7;
-    Gfx *temp_v0_8;
-    Gfx *temp_v0_9;
-    f32 temp_f0;
-    f32 temp_f20;
-    f32 var_f20;
-    f64 var_f0;
-    s16 *temp_v1_2;
+void func_8006AFD0(Player *player, s8 arg1, s16 arg2, s8 arg3) {
+    Mat4 sp140;
+    Vec3f sp134;
+    Vec3s sp12C;
+    s16 stackPadding;
+    s16 primRed;
+    s16 primGreen;
+    s16 primBlue;
+    s16 envRed;
+    s16 envGreen;
+    s16 envBlue;
     s16 temp_t1;
-    s32 temp_a0;
-    s32 temp_t6;
-    s32 temp_t7;
-    s32 temp_v0;
-    s32 temp_v1;
-    u16 temp_t0;
+    f32 xdiff;
+    f32 zdiff;
+    f32 var_f20;
+    s32 primColors[] = {
+        MAKE_RGB(0xC8, 0x01, 0x00), MAKE_RGB(0x00, 0x70, 0x01), MAKE_RGB(0x10, 0x79, 0x51), MAKE_RGB(0x00, 0x59, 0x70),
+        MAKE_RGB(0x70, 0x55, 0x00), MAKE_RGB(0x7A, 0x7E, 0x00), MAKE_RGB(0x77, 0x2C, 0x24), MAKE_RGB(0x30, 0x14, 0x58),
+    };
+    s32 envColors[] = {
+        MAKE_RGB(0xDC, 0x00, 0x00), MAKE_RGB(0x00, 0x8C, 0x06), MAKE_RGB(0x00, 0x00, 0x51), MAKE_RGB(0x00, 0x00, 0x00),
+        MAKE_RGB(0x00, 0x00, 0x00), MAKE_RGB(0x00, 0x00, 0x00), MAKE_RGB(0x00, 0x00, 0x00), MAKE_RGB(0x00, 0x00, 0x00),
+    };
 
-    spF0[0].unk0 = D_800E4934.unk0;
-    spF0[0].unk4 = (s32) D_800E4934.unk4;
-    spF0[0].unk8 = (s32) D_800E4934.unk8;
-    spF0[0].unkC = (s32) D_800E4934.unkC;
-    spF0[0].unk10 = (s32) D_800E4934.unk10;
-    spF0[0].unk14 = (s32) D_800E4934.unk14;
-    spF0[0].unk18 = (s32) D_800E4934.unk18;
-    spF0[0].unk1C = (s32) D_800E4934.unk1C;
-    spD0[0].unk0 = D_800E4954.unk0;
-    spD0[0].unk4 = (s32) D_800E4954.unk4;
-    spD0[0].unk8 = (s32) D_800E4954.unk8;
-    spD0[0].unkC = (s32) D_800E4954.unkC;
-    spD0[0].unk10 = (s32) D_800E4954.unk10;
-    spD0[0].unk14 = (s32) D_800E4954.unk14;
-    spD0[0].unk18 = (s32) D_800E4954.unk18;
-    spD0[0].unk1C = (s32) D_800E4954.unk1C;
-    temp_t0 = player->characterId;
-    temp_v0 = (&spF0[0])[temp_t0];
-    sp128 = (temp_v0 >> 0x10) & 0xFF;
-    sp126 = (temp_v0 >> 8) & 0xFF;
-    sp124 = temp_v0 & 0xFF;
-    temp_v1 = (&spD0[0])[temp_t0];
-    sp122 = (temp_v1 >> 0x10) & 0xFF;
-    sp120 = (temp_v1 >> 8) & 0xFF;
-    sp11E = temp_v1 & 0xFF;
-    sp54 = player + (arg3 * 2);
-    temp_t1 = ((s32) ((player->unk_02C[1] + player->unk_048[arg3] + player->unk_0C0) & 0xFFFF) / 128) << 7;
-    if (arg3 == (s8) arg1) {
+    primRed   = (primColors[player->characterId] >> 0x10) & 0xFF;
+    primGreen = (primColors[player->characterId] >> 0x08) & 0xFF;
+    primBlue  = (primColors[player->characterId] >> 0x00) & 0xFF;
+    envRed    = (envColors[player->characterId]  >> 0x10) & 0xFF;
+    envGreen  = (envColors[player->characterId]  >> 0x08) & 0xFF;
+    envBlue   = (envColors[player->characterId]  >> 0x00) & 0xFF;
+    temp_t1 = (((player->unk_048[arg3] + player->unk_02C[1] + player->unk_0C0) & 0xFFFF) / 128);
+    temp_t1 <<= 7;
+    if (arg3 == arg1) {
         var_f20 = 0.3f;
     } else {
-        temp_v0_2 = &cameras[arg3];
-        temp_f20 = player->pos[0] - temp_v0_2->pos[0];
-        temp_f0 = player->pos[2] - temp_v0_2->pos[2];
-        if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
-            sp11C = temp_t1;
-            var_f20 = sqrtf((temp_f20 * temp_f20) + (temp_f0 * temp_f0)) / 300.0f;
+        // wut?
+        xdiff = (var_f20 = player->pos[0] - cameras[arg3].pos[0]);
+        zdiff = player->pos[2] - cameras[arg3].pos[2];
+        if (gActiveScreenMode != 3) {
+            var_f20 = sqrtf((xdiff * xdiff) + (zdiff * zdiff)) / 300.0f;
         } else {
-            sp11C = temp_t1;
-            var_f20 = sqrtf((temp_f20 * temp_f20) + (temp_f0 * temp_f0)) / 200.0f;
+            var_f20 = sqrtf((xdiff * xdiff) + (zdiff * zdiff)) / 200.0f;
         }
-        var_f0 = (f64) var_f20;
-        if (var_f0 >= 1.8) {
+        if (var_f20 >= 1.8) {
             var_f20 = 1.8f;
-            var_f0 = (f64) 1.8f;
         }
-        if (var_f0 <= 0.3) {
+        if (var_f20 <= 0.3) {
             var_f20 = 0.3f;
         }
     }
-    temp_t7 = (s16) arg2 * 4;
-    temp_a0 = temp_t1 & 0xFFFF;
-    sp44 = temp_a0;
-    sp134 = *(&D_8018D4D0 + (((s8) arg1 * 0xC) + temp_t7));
-    sp138 = *(&D_8018D530 + (((s8) arg1 * 0xC) + temp_t7));
-    sp13C = *(&D_8018D590 + (((s8) arg1 * 0xC) + temp_t7));
-    temp_t6 = (s16) arg2 * 2;
-    temp_v1_2 = ((s8) arg1 * 6) + temp_t6 + &D_8018D890;
-    sp12C = (s16) (s32) -(coss((u16) temp_a0) * (f32) (*temp_v1_2 * 4));
-    sp3C = temp_v1_2;
-    sp40 = temp_t6;
-    sp12E = sp54->unk48;
-    sp58 = coss(unksp46);
-    sp130 = (s16) (s32) (((f32) *(&D_8018D7D0 + (((s8) arg1 * 6) + temp_t6)) - ((f32) *(&D_8018D860 + (((s8) arg1 * 6) + temp_t6)) * sp58)) - (sins(unksp46) * (f32) (*sp3C * 8)));
-    mtxf_translate_rotate((f32 (*)[4]) &sp140[0], &sp134, &sp12C);
-    mtxf_scale2((f32 (*)[4]) &sp140[0], var_f20);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], (f32 (*)[4]) &sp140[0]);
+    sp134[0] = D_8018D4D0[arg1][arg2];
+    sp134[1] = D_8018D530[arg1][arg2];
+    sp134[2] = D_8018D590[arg1][arg2];
+    sp12C[0] = -((D_8018D890[arg1][arg2] * 4) * coss(temp_t1));
+    sp12C[1] = player->unk_048[arg3];
+    sp12C[2] = D_8018D7D0[arg1][arg2] - (D_8018D860[arg1][arg2] * coss(temp_t1)) - ((D_8018D890[arg1][arg2] * 8) * sins(temp_t1));
+    mtxf_translate_rotate(sp140, sp134, sp12C);
+    mtxf_scale2(sp140, var_f20);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp140);
 
-    gSPMatrix(gDisplayListHead++, PHYSICAL_TO_VIRTUAL(&gGfxPool->mtxEffect[gMatrixEffectCount], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-    gDPLoadTLUT_pal256(gDisplayListHead++, 0x800E52D0);
+    gDPLoadTLUT_pal256(gDisplayListHead++, D_800E52D0);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
 
-    func_8004B614((s32) sp128, (s32) sp126, (s32) sp124, (s32) sp122, (s32) sp120, (s32) sp11E, 0x000000D8);
+    func_8004B614(primRed, primGreen, primBlue, envRed, envGreen, envBlue, 0x000000D8);
     
     gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4BC, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -6062,11 +5602,6 @@ void func_8006AFD0(Player *player, s16 arg1, s8 arg2, s8 arg3) {
     gSPTexture(gDisplayListHead++, 0x0001, 0x0001, 0, G_TX_RENDERTILE, G_OFF);
     gMatrixEffectCount++;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006AFD0.s")
-#endif
-
-extern void func_8006A50C(Player*, f32, f32, s8, s8, s16);
 
 void func_8006B7E4(Player* player, s8 arg1) {
     func_8006A50C(player, 0.0f, 0.0f, arg1, (s8) 0, (s16) 0);
@@ -6125,11 +5660,6 @@ void func_8006BA94(Player* player, s8 playerIndex, s8 arg2) {
         func_8006AFD0(player, playerIndex, 2, arg2);
     }
 }
-
-// data/data_code_80071F00_2.s
-extern Vtx gBalloonVertexPlane1[];
-extern Vtx gBalloonVertexPlane2[];
-extern u8 D_800E52D0[];
 
 void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     Mat4 sp108;
@@ -6304,7 +5834,7 @@ void func_8006C6AC(Player *player, s16 arg1, s8 arg2, s8 arg3) {
             // func_80060BCC(player, arg1, sp28, (s32) arg2, /* extra? */ (s32) arg3);
             func_80060BCC(player, arg1, sp28, (s32) arg2);
         } else if (!(player->effects & 8) && !(player->effects & 2)) {
-            if (((player->effects & 0x10) == 0x10) && ((player->type & 0x4000) == 0x4000)) {
+            if (((player->effects & 0x10) == 0x10) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                 func_8005DA30(player, arg1, sp28, arg2, (s8) (s32) arg3);
             } else if (((f64) (D_801652A0[arg2] - player->boundingBoxCorners[3].cornerGroundY) >= 3.5) || ((f64) (D_801652A0[arg2] - player->boundingBoxCorners[2].cornerGroundY) >= 3.5)) {
                 // func_8005EA94(player, arg1, sp28, arg2, /* extra? */ (s32) arg3);
@@ -6417,11 +5947,11 @@ void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if ((player->effects & 0x2000) && (player->type & 0x4000)) {
+        if ((player->effects & 0x2000) && (player->type & PLAYER_HUMAN)) {
             func_800621BC(player, arg1, sp28, arg2);
             return;
         }
-        if (((player->effects & 0x200000) || (player->effects & 0x100000)) && ((player->type & 0x4000) == 0x4000)) {
+        if (((player->effects & 0x200000) || (player->effects & 0x100000)) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
             func_80061EF4(player, arg1, sp28, arg2);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
@@ -6575,21 +6105,6 @@ void func_8006D194(Player *player, s8 arg1, s8 arg2) {
 #else
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006D194.s")
 #endif
-
-void func_8006538C(Player *, s8, s16, s8);             /* extern */
-void func_80065AB0(Player *, s8, s16, s8);             /* extern */
-void func_80065F0C(Player *, s8, s16, s8);             /* extern */
-void func_800664E0(Player *, s8, s16, s8);             /* extern */
-void func_80066BAC(Player *, s8, s16, s8);             /* extern */
-void func_80067280(Player *, s8, s16, s8);             /* extern */
-void func_80067604(Player *, s8, s16, s8);             /* extern */
-void func_800691B8(Player *, s8, s16, s8);             /* extern */
-void func_80069444(Player *, s8, s16, s8);             /* extern */
-void func_800696CC(Player *, s8, s16, s8, f32);        /* extern */
-void func_80069938(Player *, s8, s16, s8);             /* extern */
-void func_80069BA8(Player *, s8, s16, s8);             /* extern */
-void func_80069DB8(Player *, s8, s16, s8);             /* extern */
-void func_8006A01C(Player *, s8, s16, s8);             /* extern */
 
 void func_8006D474(Player *player, s8 arg1, s8 arg2) {
     s16 var_s2;
@@ -6880,14 +6395,14 @@ void func_8006E420(Player* player, s8 arg1, s8 arg2) {
     s16 temp_s0;
 
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->type & 0x4000) == 0x4000) {
+        if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
             func_8006D194(player, arg1, arg2);
         }
    
         for (temp_s0 = 0; temp_s0 < 10; ++temp_s0)
         {
             func_8006CEC0(player, temp_s0, arg1, arg2);
-            if (((player->type & 0x4000) == 0x4000) || (gGamestate == ENDING_SEQUENCE)) {
+            if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) || (gGamestate == ENDING_SEQUENCE)) {
                 func_8006C9B8(player, temp_s0, arg1, arg2);
             }
             func_8006C6AC(player, temp_s0, arg1, arg2);

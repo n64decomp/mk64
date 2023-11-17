@@ -5,19 +5,6 @@
 
 /* Types */
 
-
-#ifndef MK64
-typedef struct {
-#if !defined(VERSION_EU) && !defined(VERSION_SH)
-    u32 errStatus;
-#endif
-    void *dramAddr;
-    void *C2Addr;
-    u32 sectorSize;
-    u32 C1ErrNum;
-    u32 C1ErrSector[4];
-} __OSBlockInfo;
-#else
 typedef struct {
     void *dramAddr;
     void *C2Addr;
@@ -25,7 +12,6 @@ typedef struct {
     u32 C1ErrNum;
     u32 C1ErrSector[4];
 } __OSBlockInfo;
-#endif
 
 typedef struct {
     u32 cmdType;       // 0

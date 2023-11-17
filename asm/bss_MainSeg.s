@@ -14,7 +14,7 @@ glabel D_801637BC # CrossingTimer
 glabel D_801637BE
 .skip 2
 
-glabel D_801637C0
+glabel gFerries
 .skip 4
 
 glabel D_801637C4
@@ -65,14 +65,14 @@ glabel D_80163DD8
 glabel D_80163DE4
 .skip 4
 
-# D_80163DE8 should actually be of size 588 (0x54 * 7)
+# gBombKarts should actually be of size 588 (0x54 * 7)
 # D_80163E2C is a fake variable
-glabel D_80163DE8
+glabel gBombKarts
 .skip 68
 
 glabel D_80163E2C
 .skip 520
-# end D_80163DE8
+# end gBombKarts
 
 glabel D_80164034
 .skip 4
@@ -269,7 +269,7 @@ glabel D_80164648
 glabel D_80164658
 .skip 16
 
-glabel gNearestWaypointByCameraId
+glabel gNearestWaypointByCameraId # size 4
 .skip 8
 
 glabel D_80164670

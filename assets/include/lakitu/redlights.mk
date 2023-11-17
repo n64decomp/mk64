@@ -22,10 +22,12 @@ $(REDLIGHTS_DIR)/gTextureLakituRedLights16.png
 
 REDLIGHTS_EXPORT_SENTINEL := $(REDLIGHTS_DIR)/.export
 
-$(REDLIGHTS_FRAMES:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(REDLIGHTS_PALETTE)
+$(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(REDLIGHTS_FRAMES:%.png=%.bin)
 
-$(BUILD_DIR)/src/common_textures.inc.o: $(REDLIGHTS_PALETTE:%.png=%.inc.c)
+$(REDLIGHTS_FRAMES:%.png=%.bin): %.bin : %.png
+	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(REDLIGHTS_PALETTE)
+
+$(BUILD_DIR)/src/data/common_textures.inc.o: $(REDLIGHTS_PALETTE:%.png=%.inc.c)
 
 $(REDLIGHTS_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16

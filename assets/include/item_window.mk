@@ -38,7 +38,7 @@ $(ITEM_WINDOW_DIR)/gTextureItemWindowFakeItemBox.png
 
 ITEM_WINDOW_EXPORT_SENTINEL := $(ITEM_WINDOW_DIR)/.export
 
-$(BUILD_DIR)/src/common_textures.inc.o: $(ITEM_WINDOW_PNG:%.png=%.inc.c) $(ITEM_WINDOW_PALETTES:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.inc.o: $(ITEM_WINDOW_PNG:%.png=%.inc.c) $(ITEM_WINDOW_PALETTES:%.png=%.inc.c)
 
 $(ITEM_WINDOW_DIR)/gTexture%.inc.c: $(ITEM_WINDOW_DIR)/gTexture%.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(ITEM_WINDOW_DIR)/gTLUT$*.png

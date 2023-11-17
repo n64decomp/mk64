@@ -33,16 +33,17 @@ DEBUG ?= 0
 #   us - builds the 1997 North American version
 #   eu - builds the 1997 1.1 PAL version
 VERSION ?= us
-$(eval $(call validate-option,VERSION,us eu))
+$(eval $(call validate-option,VERSION,us eu-1.0 eu-final))
 
 ifeq      ($(VERSION),us)
   DEFINES += VERSION_US=1
   GRUCODE   ?= f3dex_old
-  VERSION_ASFLAGS := --defsym VERSION_US=1
-else ifeq ($(VERSION), eu)
-  DEFINES += VERSION_EU=1 
+else ifeq ($(VERSION),eu-1.0)
+  DEFINES += VERSION_EU=1 VERSION_EU_1_0=1
   GRUCODE   ?= f3dex_old
-  VERSION_ASFLAGS := --defsym VERSION_EU=1
+else ifeq ($(VERSION),eu-final)
+  DEFINES += VERSION_EU=1 VERSION_EU_1_1=1
+  GRUCODE   ?= f3dex_old
 endif
 
 ifeq ($(DEBUG),1)
@@ -205,8 +206,8 @@ DATA_DIR       := data
 INCLUDE_DIRS   := include
 
 # Directories containing source files
-SRC_DIRS       := src src/racing src/ending src/audio src/debug src/os src/os/math courses
-ASM_DIRS       := asm asm/audio asm/os asm/unused asm/os/non_matchings $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
+SRC_DIRS       := src src/data src/racing src/ending src/audio src/debug src/os src/os/math courses
+ASM_DIRS       := asm asm/os asm/unused $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
 
 
 # Directories containing course source and data files
@@ -214,7 +215,7 @@ COURSE_DIRS := $(shell find courses -mindepth 1 -type d)
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
-ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) include $(ASM_DIRS) $(ALL_KARTS_DIRS) $(TEXTURES_DIR)/raw \
+ALL_DIRS = $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(COURSE_DIRS) include $(ASM_DIRS) $(TEXTURES_DIR)/raw \
 	$(TEXTURES_DIR)/standalone $(TEXTURES_DIR)/startup_logo $(TEXTURES_DIR)/crash_screen $(TEXTURES_DIR)/trophy $(TEXTURES_DIR)/courses        \
 	$(TEXTURE_DIRS) $(TEXTURE_DIRS)/tlut $(BIN_DIR))
 
@@ -242,9 +243,11 @@ DEP_FILES := $(O_FILES:.o=.d) $(BUILD_DIR)/$(LD_SCRIPT).d
 
 # Files with GLOBAL_ASM blocks
 GLOBAL_ASM_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/*.c)
+GLOBAL_ASM_OS_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/os/*.c)
 GLOBAL_ASM_AUDIO_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/audio/*.c)
 GLOBAL_ASM_RACING_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/racing/*.c)
 GLOBAL_ASM_O_FILES = $(foreach file,$(GLOBAL_ASM_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
+GLOBAL_ASM_OS_O_FILES = $(foreach file,$(GLOBAL_ASM_OS_FILES),$(BUILD_DIR)/$(file:.c=.o))
 GLOBAL_ASM_AUDIO_O_FILES = $(foreach file,$(GLOBAL_ASM_AUDIO_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 
@@ -319,7 +322,7 @@ else
   CFLAGS += $(HIDE_WARNINGS) -non_shared -Wab,-r4300_mul -Xcpluscomm -Xfullwarn -signed -32
 endif
 
-ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) --defsym F3DEX_GBI=1
+ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) $(foreach d,$(DEFINES),--defsym $(d))
 
 # Fills end of rom
 OBJCOPYFLAGS = --pad-to=0xC00000 --gap-fill=0xFF
@@ -350,6 +353,7 @@ DLPACKER              := $(TOOLS_DIR)/displaylist_packer
 BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
 ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
+LINKONLY_GENERATOR    := $(PYTHON) $(TOOLS_DIR)/linkonly_generator.py
 EMULATOR               = mupen64plus
 EMU_FLAGS              = --noosd
 LOADER                 = loader64
@@ -449,27 +453,6 @@ $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
-$(BUILD_DIR)/src/ending/ceremony_data.inc.o: src/ending/ceremony_data.inc.c
-	@$(PRINT) "$(GREEN)Compiling Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/reflection_map_brass.rgba16.inc.c -g textures/trophy/reflection_map_brass.rgba16.png -f rgba16 -s u8
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/reflection_map_silver.rgba16.inc.c -g textures/trophy/reflection_map_silver.rgba16.png -f rgba16 -s u8
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/reflection_map_gold.rgba16.inc.c -g textures/trophy/reflection_map_gold.rgba16.png -f rgba16 -s u8
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/podium1.rgba16.inc.c -g textures/trophy/podium1.rgba16.png -f rgba16 -s u8
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/podium2.rgba16.inc.c -g textures/trophy/podium2.rgba16.png -f rgba16 -s u8
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/trophy/podium3.rgba16.inc.c -g textures/trophy/podium3.rgba16.png -f rgba16 -s u8
-	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) tools/set_o32abi_bit.py $@
-
-$(BUILD_DIR)/src/startup_logo.inc.o: src/startup_logo.inc.c
-	@$(PRINT) "$(GREEN)Compiling Startup Logo:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/startup_logo/reflection_map_gold.rgba16.inc.c -g textures/startup_logo/reflection_map_gold.rgba16.png -f rgba16 -s u8
-	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) tools/set_o32abi_bit.py $@
-
-
-
 #==============================================================================#
 # Common Textures Segment Generation                                           #
 #==============================================================================#
@@ -487,7 +470,7 @@ $(TEXTURE_FILES_TLUT):
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(TEXTURE_FILES_TLUT))), ,$(TEXTURE_FILES_TLUT)))) -p $(BUILD_DIR)/$@.tlut.inc.c
 
 # common textures
-$(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILES) $(TEXTURE_FILES_TLUT)
+$(BUILD_DIR)/src/data/common_textures.inc.o: src/data/common_textures.inc.c $(TEXTURE_FILES) $(TEXTURE_FILES_TLUT)
 	@$(PRINT) "$(GREEN)Compiling Common Textures:  $(BLUE)$@ $(NO_COL)\n"
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
@@ -499,8 +482,21 @@ $(BUILD_DIR)/src/common_textures.inc.o: src/common_textures.inc.c $(TEXTURE_FILE
 # Course Packed Displaylists Generation                                        #
 #==============================================================================#
 
-%/course_displaylists.inc.elf: %/course_displaylists.inc.o
-	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -o $@ $< --no-check-sections
+
+%/course_textures.linkonly.c %/course_textures.linkonly.h: %/course_offsets.inc.c
+	$(V)$(LINKONLY_GENERATOR) $(lastword $(subst /, ,$*))
+
+# Its unclear why this is necessary. Everything I undesrtand about `make` says that just 
+# `$(BUILD_DIR)/%/course_displaylists.inc.o: %/course_textures.linkonly.h`
+# Should work identical to this. But in practice it doesn't :(
+COURSE_DISPLAYLIST_OFILES := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_displaylists.inc.o)
+$(COURSE_DISPLAYLIST_OFILES): $(BUILD_DIR)/%/course_displaylists.inc.o: %/course_textures.linkonly.h
+
+%/course_textures.linkonly.elf: %/course_textures.linkonly.o
+	$(V)$(LD) -t -e 0 -Ttext=05000000 -Map $@.map -o $@ $< --no-check-sections
+
+%/course_displaylists.inc.elf: %/course_displaylists.inc.o %/course_textures.linkonly.elf
+	$(V)$(LD) -t -e 0 -Ttext=07000000 -Map $@.map -R $*/course_textures.linkonly.elf -o $@ $< --no-check-sections
 
 %/course_displaylists.inc.bin: %/course_displaylists.inc.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
@@ -530,7 +526,7 @@ COURSE_GEOGRAPHY_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/cou
 
 # Course vertices and displaylists are included together due to no alignment between the two files.
 %/course_geography.inc.mio0.s: %/course_vertices.inc.mio0 %/course_displaylists_packed.inc.bin
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
+	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_vertex\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
 
 
 
@@ -568,7 +564,7 @@ $(BUILD_DIR)/%.jp.c: %.c
 
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
-	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+	$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
 
@@ -583,6 +579,8 @@ $(BUILD_DIR)/%.o: %.s $(MIO0_FILES) $(RAW_TEXTURE_FILES)
 $(EUC_JP_FILES:%.c=$(BUILD_DIR)/%.jp.o): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
 $(GLOBAL_ASM_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
+
+$(GLOBAL_ASM_OS_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
 $(GLOBAL_ASM_AUDIO_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
@@ -611,6 +609,8 @@ ifeq ($(COMPILER),ido)
     $(BUILD_DIR)/src/audio/%.o:        OPT_FLAGS := -O2 -use_readwrite_const
     $(BUILD_DIR)/src/audio/port_eu.o:  OPT_FLAGS := -O2 -framepointer
     $(BUILD_DIR)/src/audio/external.o:  OPT_FLAGS := -O2 -framepointer
+# No tab here required
+$(BUILD_DIR)/src/code_8006E9C0.o:  OPT_FLAGS := -O2 -Wo,-loopunroll,0
 endif
 
 
@@ -619,35 +619,45 @@ endif
 # Compile Trophy and Podium Models                                             #
 #==============================================================================#
 
-$(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o: $(BUILD_DIR)/src/ending/ceremony_data.inc.o
+LDFLAGS += -R $(BUILD_DIR)/src/ending/ceremony_data.inc.elf
+
+%/ceremony_data.inc.elf: %/ceremony_data.inc.o
+	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $@.map -o $@ $< --no-check-sections
+
+%/ceremony_data.inc.bin: %/ceremony_data.inc.elf
+	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
+
+%/ceremony_data.inc.mio0: %/ceremony_data.inc.bin
 	@$(PRINT) "$(GREEN)Compressing Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $(BUILD_DIR)/src/ending/ceremony_data.inc.elf.map -o $(BUILD_DIR)/src/ending/ceremony_data.inc.elf $(BUILD_DIR)/src/ending/ceremony_data.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/ending/ceremony_data.inc.elf $(BUILD_DIR)/src/ending/ceremony_data.inc.bin
-	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/ending/ceremony_data.inc.bin $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"build/us/src/ending/ceremony_data.inc.mio0\"\n\n.balign 16\nglabel data_821D10_end\n" > build/us/src/ending/ceremony_data.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.s
+	$(V)$(MIO0TOOL) -c $< $@
 
-
+%/ceremony_data.inc.mio0.s: %/ceremony_data.inc.mio0
+	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel data_821D10_end\n" > $@
 
 #==============================================================================#
 # Compile Startup Logo                                                         #
 #==============================================================================#
 
-$(BUILD_DIR)/src/startup_logo.inc.mio0.o: src/startup_logo.inc.c
-	@$(PRINT) "$(GREEN)Compressing Startup Logo:  $(BLUE)$@ $(NO_COL)\n"
-	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $(BUILD_DIR)/src/startup_logo.inc.elf.map -o $(BUILD_DIR)/src/startup_logo.inc.elf $(BUILD_DIR)/src/startup_logo.inc.o --no-check-sections
-	$(V)$(EXTRACT_DATA_FOR_MIO) $(BUILD_DIR)/src/startup_logo.inc.elf $(BUILD_DIR)/src/startup_logo.inc.bin
-	$(V)$(MIO0TOOL) -c $(BUILD_DIR)/src/startup_logo.inc.bin $(BUILD_DIR)/src/startup_logo.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n\n\n.balign 4\n\n\nglabel startup_logo\n\n.incbin \"build/us/src/startup_logo.inc.mio0\"\n\n.balign 16\n\nglabel data_825800_end\n" > build/us/src/startup_logo.inc.mio0.s
-	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/startup_logo.inc.mio0.s
+LDFLAGS += -R $(BUILD_DIR)/src/data/startup_logo.inc.elf
 
+%/startup_logo.inc.elf: %/startup_logo.inc.o
+	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -o $@ $< --no-check-sections
 
+%/startup_logo.inc.bin: %/startup_logo.inc.elf
+	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
+
+%/startup_logo.inc.mio0: %/startup_logo.inc.bin
+	@$(PRINT) "$(GREEN)Compressing Startup Logo Model:  $(BLUE)$@ $(NO_COL)\n"
+	$(V)$(MIO0TOOL) -c $< $@
+
+%/startup_logo.inc.mio0.s: %/startup_logo.inc.mio0
+	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel data_825800_end\n" > $@
 
 #==============================================================================#
 # Compile Common Textures                                                      #
 #==============================================================================#
 
-LDFLAGS += -R $(BUILD_DIR)/src/common_textures.inc.elf
+LDFLAGS += -R $(BUILD_DIR)/src/data/common_textures.inc.elf
 
 %/common_textures.inc.elf: %/common_textures.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=0D000000 -Map $@.map -o $@ $< --no-check-sections
@@ -674,7 +684,7 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(COURSE_MIO0_OBJ_FILES) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/startup_logo.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/data/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 

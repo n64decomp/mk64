@@ -110,8 +110,8 @@ glabel audio_init
 /* 0BCE30 800BC230 0044082B */  sltu  $at, $v0, $a0
 /* 0BCE34 800BC234 1420FFFD */  bnez  $at, .L800BC22C
 /* 0BCE38 800BC238 A443FFFE */   sh    $v1, -2($v0)
-/* 0BCE3C 800BC23C 3C18803B */  lui   $t8, %hi(gAudioUpdatesPerFrame) # $t8, 0x803b
-/* 0BCE40 800BC240 271870B8 */  addiu $t8, %lo(gAudioUpdatesPerFrame) # addiu $t8, $t8, 0x70b8
+/* 0BCE3C 800BC23C 3C18803B */  lui   $t8, %hi(gAudioFrameCount) # $t8, 0x803b
+/* 0BCE40 800BC240 271870B8 */  addiu $t8, %lo(gAudioFrameCount) # addiu $t8, $t8, 0x70b8
 /* 0BCE44 800BC244 AF000000 */  sw    $zero, ($t8)
 /* 0BCE48 800BC248 3C01803B */  lui   $at, %hi(gAudioTaskIndex) # $at, 0x803b
 /* 0BCE4C 800BC24C AC2070C0 */  sw    $zero, %lo(gAudioTaskIndex)($at)
@@ -142,7 +142,7 @@ glabel audio_init
 /* 0BCEB0 800BC2B0 3C01803B */  lui   $at, %hi(gSampleDmaNumListItems) # $at, 0x803b
 /* 0BCEB4 800BC2B4 3C04800F */  lui   $a0, %hi(gAudioInitPoolSize) # $a0, 0x800f
 /* 0BCEB8 800BC2B8 AC206E58 */  sw    $zero, %lo(gSampleDmaNumListItems)($at)
-/* 0BCEBC 800BC2BC 0C02E43C */  jal   func_800B90F0
+/* 0BCEBC 800BC2BC 0C02E43C */  jal   sound_init_main_pools
 /* 0BCEC0 800BC2C0 8C84A5D4 */   lw    $a0, %lo(gAudioInitPoolSize)($a0)
 /* 0BCEC4 800BC2C4 3C06803B */  lui   $a2, %hi(gAiBuffers) # $a2, 0x803b
 /* 0BCEC8 800BC2C8 3C14803B */  lui   $s4, %hi(gAudioInitPool) # $s4, 0x803b

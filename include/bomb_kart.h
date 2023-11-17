@@ -15,9 +15,9 @@
 #define BOMB_STATE_UNKNOWN    5
 
 typedef struct {
-	/* 0x00 */ u16 wayPointIndex;
+	/* 0x00 */ u16 waypointIndex;
 	/* 0x02 */ u16 startingState;
-	/* 0x04 */ f32 unk_04; // Used to set the value of unk_3C in struct_D_80163DE8_entry
+	/* 0x04 */ f32 unk_04; // Used to set the value of unk_3C in BombKart
 	/* 0x08 */ f32 startingXPos;
 	/* 0x0C */ f32 startingZPos;
 	/**
@@ -41,7 +41,7 @@ typedef struct {
 	/* 0x30 */ Vec3f wheel4Pos;
 	/* 0x3C */ f32 unk_3C;
 	/* 0x40 */ s16 someRot; // seems like an angle of some variety, can't figure out its purpose
-	/* 0x42 */ u16 wayPointIndex; // probably the waypoint that the bomb circles
+	/* 0x42 */ u16 waypointIndex; // probably the waypoint that the bomb circles
 	/* 0x44 */ u16 state;
 	/* 0x46 */ s16 bounceTimer; // timer? state? height?
 	/* 0x48 */ s16 circleTimer; // timer? state? Somehow controls how it circles around
@@ -49,12 +49,12 @@ typedef struct {
 	/* 0x4C */ s16 unk_4C;
 	/* 0x4E */ // s16 compilerPadding;
 	/* 0x50 */ f32 yPos; // Y position of the center of the circle
-} struct_D_80163DE8_entry; // size = 0x54
+} BombKart; // size = 0x54
 
 // Indexes for the objects associated with the Bomb Karts
 extern s32 D_80183DD8[NUM_BOMB_KARTS_MAX];
 
-extern struct_D_80163DE8_entry D_80163DE8[NUM_BOMB_KARTS_MAX];
+extern BombKart gBombKarts[NUM_BOMB_KARTS_MAX];
 extern Collision D_80164038[NUM_BOMB_KARTS_MAX];
 
 // data/data_0DD0A0_1.s

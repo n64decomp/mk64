@@ -62,6 +62,7 @@ expected/*
 
 # Assets. Generally ignored, but ones with "custom" in the name are fine.
 /bin/*
+/courses/**/*linkonly*
 /textures/**/*.png
 /textures/**/*.bin
 /assets/**/.export
@@ -82,3 +83,6 @@ expected/*
 !/sound/**/*custom*/**/*.aiff
 !/assets/**/*custom*.bin
 !/assets/**/*custom*/**/*.bin
+
+# Doxygen
+docs/html/*

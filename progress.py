@@ -6,43 +6,80 @@ import csv
 import os
 import re
 
+# Script arguments.
 parser = argparse.ArgumentParser(description="Computes current progress throughout the whole project.")
-parser.add_argument("format", nargs="?", default="text", choices=["text", "shield-json", "totalBadge", "gameBadge", "audioBadge", "bytesToDecompile", "m2cFuncs", "nonmatchingFuncs"])
-parser.add_argument("-m", "--matching", dest='matching', action='store_true',
-                    help="Output matching progress instead of decompilation progress")
+parser.add_argument("format", nargs="?", default="text", choices=["text", "verbose", "totalBadge", "gameBadge", "mainBadge", "endingBadge", "racingBadge", "audioBadge", "osBadge", "bytesToDecompile", "globalAsmFuncs", "m2cFuncs", "nonmatchingFuncs"])
+parser.add_argument("-d", "--debug", dest='debug', action='store_true',
+                    help="Adds additional debug information, outputs files parsed and score for each file")
+parser.add_argument("-n", "--nonmatching", dest='nonmatching', action='store_true',
+                    help="Tracks progress counting non matching functions")
 args = parser.parse_args()
 
-NON_MATCHING_PATTERN = r"#ifdef\s+NON_MATCHING.*?#pragma\s+GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\).*?#endif"
-MIPS_TO_C_FUNC_COUNT_PATTERN = r"#ifdef\s+MIPS_TO_C.*?GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\).*?#endif"
-NON_MATCHING_FUNC_COUNT_PATTERN = r"#ifdef\s+NON_MATCHING.*?GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\).*?#endif"
+# Patterns for "NON_MATCHING" defines, one of those is used depending of the project.
+NON_MATCHING_FUNC_PATTERN = r"#ifdef\s+NON_MATCHING.*?GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\).*?#endif"
+NON_MATCHING_PRAGMA_PATTERN = r"#ifdef\s+NON_MATCHING.*?#pragma\s+GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\).*?#endif"
 
+# Gets the assembly file around a NON_MATCHING define.
 def GetNonMatchingFunctions(files):
     functions = []
 
     for file in files:
         with open(file) as f:
-            functions += re.findall(NON_MATCHING_PATTERN, f.read(), re.DOTALL)
+            functions += re.findall(NON_MATCHING_FUNC_PATTERN, f.read(), re.DOTALL)
+            functions += re.findall(NON_MATCHING_PRAGMA_PATTERN, f.read(), re.DOTALL)
 
     return functions
 
+# Pattern for "MIPS_TO_C" define
+MIPS_TO_C_FUNC_PATTERN = r"#ifdef\s+MIPS_TO_C.*?GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\).*?#endif"
+
+# Gets the assembly file around a MIPS_TO_C define.
 def CountMipsToCFunctions(files):
     functions = []
 
     for file in files:
         with open(file) as f:
-            functions += re.findall(MIPS_TO_C_FUNC_COUNT_PATTERN, f.read(), re.DOTALL)
+            functions += re.findall(MIPS_TO_C_FUNC_PATTERN, f.read(), re.DOTALL)
 
     return functions
-def CountNonMatchingFunctions(files):
+
+# Pattern for "GLOBAL_ASM" macros
+GLOBAL_ASM_FUNC_PATTERN = r"GLOBAL_ASM\s*\(\s*\"(.*?)\"\s*\)."
+
+# Gets the assembly file defined in a GLOBAL_ASM macro.
+def CountGlobalAsmFunctions(files):
     functions = []
 
     for file in files:
         with open(file) as f:
-            functions += re.findall(NON_MATCHING_FUNC_COUNT_PATTERN, f.read(), re.DOTALL)
+            functions += re.findall(GLOBAL_ASM_FUNC_PATTERN, f.read(), re.DOTALL)
 
     return functions
 
+# Regex to find a non static C function. Consists of 3 groups, comment documentation, function type and function name.
+# We only take the function name here for simple needs.
+C_FUNCTION_PATERN_REGEX = r'^(?<!static\s)(?:(\/[*][*!][*]*\n(?:[^/]*\n)+?\s*[*]\/\n)(?:\s*)*?)?(?:\s*UNUSED\s+)?([^\s]+)\s(?:\s|[*])*?([0-9A-Za-z_]+)\s*[(][^)]*[)]\s*{'
 
+# Gets the function name and the C file which has it.
+def GetCFunctions(files):
+    functions = []
+
+    for file in files:
+        with open(file) as f:
+            source_code = f.read()
+
+        # Parse regex pattern
+        matches = re.finditer(C_FUNCTION_PATERN_REGEX, source_code, re.MULTILINE)
+
+        for match in matches:
+            # Group 3 has functions names taken from the regex
+            function_name = match.group(3)
+            # Get the C file which has the function
+            functions.append((file, function_name))
+
+    return functions
+
+# Reads the string of all lines in a file.
 def ReadAllLines(fileName):
     lineList = list()
     with open(fileName) as f:
@@ -50,9 +87,10 @@ def ReadAllLines(fileName):
 
     return lineList
 
+# Gets the file on an extension in a path and it's subdirectories.
 def GetFiles(path, ext):
     files = []
-    
+
     for r, d, f in os.walk(path):
         for file in f:
             if file.endswith(ext):
@@ -60,254 +98,430 @@ def GetFiles(path, ext):
 
     return files
 
-nonMatchingFunctions = GetNonMatchingFunctions(GetFiles("src", ".c")) if not args.matching else []
-TotalMipsToCFunctions = len(CountMipsToCFunctions(GetFiles("src", ".c")) if not args.matching else [])
-TotalNonMatchingFunctions = len(CountNonMatchingFunctions(GetFiles("src", ".c")) if not args.matching else [])
+# Gets the file on an extension in a path and it's subdirectories except the ones under a blacklist.
+def GetFilesBlackList(path, ext, blacklist=[]):
+    files = []
 
-mainSegFiles2 = [
-    "asm/non_matchings/code_80004740",
-    "asm/non_matchings/code_80005FD0",
-    "asm/non_matchings/code_8001F980",
-    "asm/non_matchings/player_controller",
-    "asm/non_matchings/hud_renderer",
-    "asm/non_matchings/code_80057C60",
-    "asm/non_matchings/code_8006E9C0",
-    "asm/non_matchings/code_80071F00",
-    "asm/non_matchings/code_80086E70",
-    "asm/non_matchings/code_8008C1D0",
-    "asm/non_matchings/code_80091750",
-    "asm/non_matchings/crash_screen",
-    "asm/non_matchings/menus",
-]
-seg2Files2 = [
+    for r, d, f in os.walk(path):
+        d[:] = [dir for dir in d if dir not in blacklist]
 
-]
-audioFiles2 = [
-    "asm/non_matchings/audio"
-]
+        for file in f:
+            if file.endswith(ext):
+                files.append(os.path.join(r, file))
 
-def GetNonMatchingSize(path):
+    return files
+
+# Gets the file on an extension in a path and only it's subdirectories under a whilelist.
+def GetFilesWhiteList(path, ext, whitelist=[]):
+    files = []
+
+    for r, d, f in os.walk(path):
+        if r == path or any(subdir in r for subdir in whitelist):
+            for file in f:
+                if file.endswith(ext):
+                    files.append(os.path.join(r, file))
+
+    return files
+
+# Segments have their own folder, used later for the following:
+# Whilelist (C Functions list, includes src folder and only these subdirectories).
+# Blacklist (For main segment, includes all folders in nonmatching except these subdirectories).
+gameExclusiveDirs=["ending", "racing", "os", "audio"]
+
+# Get non matching functions and count how many there is.
+# If --nonmatching is set, then the score counts their progress by excluding their asm file.
+nonMatchingFunctions = GetNonMatchingFunctions(GetFiles("src", ".c")) if args.nonmatching else []
+TotalNonMatchingFunctions = len(GetNonMatchingFunctions(GetFiles("src", ".c")))
+
+# Counts how many functions are under a MIPS_TO_C define and GLOBAL_ASM macro respectively.
+TotalMipsToCFunctions = len(CountMipsToCFunctions(GetFiles("src", ".c")))
+TotalGlobalAsmFunctions = len(CountGlobalAsmFunctions(GetFiles("src", ".c")))
+
+# Counts how many functions are decompiled. To account for the uncompiled functions,
+# we do a bit of subtraction from functions with NON_MATCHING and MIPS_TO_C defines
+# and GLOBAL_ASM macros without the defines mentioned.
+# If --nonmatching is set, then we exclude non matching count subsraction.
+TotalCFunctions = len(GetCFunctions(GetFilesWhiteList("src", ".c", gameExclusiveDirs)))
+TotalCFunctions -= TotalGlobalAsmFunctions + (TotalGlobalAsmFunctions - (TotalNonMatchingFunctions if args.nonmatching else 0) - TotalMipsToCFunctions)
+
+# Gets the non matching size for each segment depending of the path set.
+def GetNotMatchingSize(path):
     size = 0
+    files = []
 
+    # Asm non matching files for main segment.
     if (path == "main"):
-        for file in mainSegFiles2: 
-            size += getData(file)
+        files = GetFilesBlackList("asm/non_matchings", ".s", gameExclusiveDirs)
 
-    elif (path == "seg2"):
-        for file in seg2Files2: 
-            size += getData(file)
+    # Asm non matching files for ending segment.
+    elif (path == "ending"):
+        files = GetFiles("asm/non_matchings/ending", ".s")
 
+    # Asm non matching files for racing segment.
+    elif (path == "racing"):
+        files = GetFiles("asm/non_matchings/racing", ".s")
+
+    # Asm non matching files for libultra segment.
     elif (path == "os"):
-            size = getData("asm/os/func_800CE720.s")
+        files = GetFiles("asm/non_matchings/os", ".s")
 
+    # Asm non matching files for libultra segment.
     elif (path == "audio"):
-        for file in audioFiles2: 
-            size += getData(file)
+        files = GetFiles("asm/non_matchings/audio", ".s")
 
-    else: size = getData("asm/non_matchings")
+    # Asm non matching files for a path specified, in a general case:
+    # asm/non_matchings and it's subdirectories (for total segment).
+    else:
+        files = GetFiles(path, ".s")
 
+    # Get the total size for the files specified above.
+    size = GetAsmSize(files)
 
     return size
 
-def getData(path):
+# Gets the assembly size of a file using a text pattern.
+def GetAsmSize(path):
     size = 0
-
-
-    asmFiles = GetFiles(path, ".s")
-
+    asmFiles = path
 
     for asmFilePath in asmFiles:
-    #if path == asmFilePath.startswith("audio"):
-    #    continue
         if asmFilePath not in nonMatchingFunctions:
             asmLines = ReadAllLines(asmFilePath)
 
+            # Checks each line if it starts with a comment, for context:
+            # split/splat programs generate assembly files with comments to 
+            # provide additional information of the mips instruction such as:
+            # /* Hex Location - Address location - Instruction in Hex */
             for asmLine in asmLines:
+                # If there's a comment, assume there's an instruction there
+                # as well, each mips instruction is 4 bytes long.
                 if (asmLine.startswith("/*")):
                     size += 4
 
     return size
 
+# Size for all object segments.
+total = 0
 
-
-mapFile = ReadAllLines("build/us/mk64.us.map")
-src = 0
-mainSeg = 0
-seg2 = 0
-audio = 0
+# Sizes for each object segment.
+segMain = 0
+segEnding = 0
+segRacing = 0
 libultra = 0
+audio = 0
 
-mainSegFiles = [
-    "build/us/src/code_800029B0",
-    "build/us/src/code_80004740",
-    "build/us/src/code_80005FD0",
-    "build/us/src/camera",
-    "build/us/src/code_8001F980",
-    "build/us/src/player_controller",
-    "build/us/src/hud_renderer",
-    "build/us/src/code_80057C60",
-    "build/us/src/code_8006E9C0",
-    "build/us/src/code_80071F00",
-    "build/us/src/code_80086E70",
-    "build/us/src/code_8008C1D0",
-    "build/us/src/code_80091750",
-    "build/us/src/code_800AF9B0",
-    "build/us/src/crash_screen",
-    "build/us/src/gbiMacro",
-    "build/us/src/kart_dma",
-    "build/us/src/main",
-    "build/us/src/math_util_2",
-    "build/us/src/profiler",
-    "build/us/src/spawn_players",
-    "build/us/src/staff_ghosts",
-]
-seg2Files = [
-    "build/us/src/racing/actors",
-    "build/us/src/racing/actors_extended",
-    "build/us/src/racing/math_util",
-    "build/us/src/racing/memory",
-    "build/us/src/racing/collision",
-    "build/us/src/racing/race_logic",
-    "build/us/src/racing/render_courses",
-    "build/us/src/racing/skybox_and_splitscreen",
-]
-segAudioFiles = [
-    "build/us/src/audio/effects",
-    "build/us/src/audio/external",
-    "build/us/src/audio/heap",
-    "build/us/src/audio/load",
-    "build/us/src/audio/playback",
-    "build/us/src/audio/port_eu",
-    "build/us/src/audio/seqplayer",
-    "build/us/src/audio/synthesis",
-]
+# List of objects parsed for all segments (Debug).
+obj_list_total = []
 
+# List of objects parsed for each segment (Debug).
+obj_list_game = []
+obj_list_main = []
+obj_list_ending = []
+obj_list_racing = []
+obj_list_libultra = []
+obj_list_audio = []
+
+# Read the linker map file, has correct results with a matching one.
+mapFile = ReadAllLines("build/us/mk64.us.map")
+
+# Check for every line in the map file.
 for line in mapFile:
     lineSplit =  list(filter(None, line.split(" ")))
 
+    # Check if is a memory segment list by a pattern.
     if (len(lineSplit) == 4 and lineSplit[0].startswith(".")):
         section = lineSplit[0]
         size = int(lineSplit[2], 16)
         objFile = lineSplit[3]
 
-        if (section == ".text"):
+        # Checks for the ".text" line to get the function size of a file and
+        # store the size for each segment by checking their respective folders
+        # Ensure we parse files that have an actual size value.
+        # Also list object files parsed (Debug).
+        if (section == ".text") and size > 0:
+            # This takes the size of every C file in the src directory
+            # including subdirectories.
             if (objFile.startswith("build/us/src")):
-                src += size
-            
-            if (objFile.startswith(tuple(mainSegFiles))):
-                mainSeg += size
+                total += size
+                if args.debug:
+                    obj_list_total.append("File: " + str(objFile.rstrip("\n")) + " - Size: " + str(size))
 
-            if (objFile.startswith(tuple(seg2Files))):
-                seg2 += size
+            # This takes the size of every C file in the src directory
+            # excluding subdirectories using an additional check.
+            if (objFile.startswith("build/us/src") and objFile.count("/") == 3):
+                segMain += size
+                if args.debug:
+                    obj_list_main.append("File: " + str(objFile.rstrip("\n")) + " - Size: " + str(size))
 
+            # Object size for ending segment.
+            if (objFile.startswith("build/us/src/ending")):
+                segEnding += size
+                if args.debug:
+                    obj_list_ending.append("File: " + str(objFile.rstrip("\n")) + " - Size: " + str(size))
+
+            # Object size for racing segment.
+            if (objFile.startswith("build/us/src/racing")):
+                segRacing += size
+                if args.debug:
+                    obj_list_racing.append("File: " + str(objFile.rstrip("\n")) + " - Size: " + str(size))
+
+            # Object size for libultra segment.
             if (objFile.startswith("build/us/src/os")):
                 libultra += size
+                if args.debug:
+                    obj_list_libultra.append("File: " + str(objFile.rstrip("\n")) + " - Size: " + str(size))
 
-            if (objFile.startswith(tuple(segAudioFiles))):
+            # Object size for audio segment.
+            if (objFile.startswith("build/us/src/audio")):
                 audio += size
+                if args.debug:
+                    obj_list_audio.append("File: " + str(objFile.rstrip("\n")) + " - Size: " + str(size))
 
-nonMatchingASM = GetNonMatchingSize("asm/non_matchings")
-nonMatchingMain = GetNonMatchingSize("main")
-nonMatchingSeg2 = GetNonMatchingSize("seg2")
-nonMatchingLibultra = GetNonMatchingSize("os")
-nonMatchingASMAudio = GetNonMatchingSize("audio")
+# List game object files (Main + Ending + Racing) (Debug).
+obj_list_game = obj_list_main + obj_list_ending + obj_list_racing
 
-src -= nonMatchingASM
+# Asm size for all segments not decompiled.
+nonMatchingTotal = GetNotMatchingSize("asm/non_matchings")
 
-decompilable = src + audio + 448 # 448 = OS func_800CE720
+# Asm size for each segment not decompiled.
+nonMatchingMain = GetNotMatchingSize("main")
+nonMatchingEnding = GetNotMatchingSize("ending")
+nonMatchingRacing = GetNotMatchingSize("racing")
+nonMatchingLibultra = GetNotMatchingSize("os")
+nonMatchingAudio = GetNotMatchingSize("audio")
 
-mainSeg += libultra
-mainSeg -= nonMatchingMain
+# Set total size for each segment.
+seg_main_size = segMain # 744112
+seg_ending_size = segEnding # 20032
+seg_racing_size = segRacing # 174224
+libultra_size = libultra # 48848
+audio_size = audio # 86912
 
-seg2 -= nonMatchingSeg2
-audio -= nonMatchingASMAudio
+# Set total size for game segment (Main + Ending + Racing).
+game = segMain + segEnding + segRacing # 938368
+game_code_size = seg_main_size + seg_ending_size + seg_racing_size # 938368
+
+# Set total size for all segments.
+total_code_size = game_code_size + libultra_size + audio_size # 1074128
+
+# Set progress size depending of the size of non matching files for each segments.
+segMain -= nonMatchingMain
+segEnding -= nonMatchingEnding
+segRacing -= nonMatchingRacing
 libultra -= nonMatchingLibultra
+audio -= nonMatchingAudio
 
+# Set progress size for game segment (Main + Ending + Racing).
+game -= nonMatchingMain + nonMatchingEnding + nonMatchingRacing
 
-mainSeg_size = 831024
-seg2_size = 174224
-# Segment 3 size = 20032
-mk64Code_size = 1025280
-# handwritten is likely 4400 bytes which brings us to the grand total of 53248.
-# for now the total is just a guess. 544 being non_matching funcs.
-# osSyncPrintf and func_800CE720
-#libultra non_matching
-#osSyncPrintf     0x60   96
-#func_800CE720    0x1C0  448
-#guPerspectiveF   0x290 656
-#__osLeoInterrupt 0x880 2176
-#contramread      0x3B0 944
-#contramwrite     0x3B0 944
+# Set progress size for all segments.
+total -= nonMatchingTotal
 
+# Set remaining size substacting total size with progress size.
+decompilable = total
+remaining_size = total_code_size - decompilable
 
-#total 0x1490    5264
-
-libultra_size = 43584 + 5264 # 53248 - 2112 # total - handwritten
-audio_size = 86912
-text_size = mk64Code_size - decompilable
-
-srcPct = 100 * src / mk64Code_size
+# Set percentage progress for each segment.
+segMainPct = 100 * segMain / seg_main_size
+segEndingPct = 100 * segEnding / seg_ending_size
+segRacingPct = 100 * segRacing / seg_racing_size
 libultraPct = 100 * libultra / libultra_size
 audioPct = 100 * audio / audio_size
-mainSegPct = 100 * mainSeg / mainSeg_size
-seg2Pct = 100 * seg2 / seg2_size
 
-bytesPerHeartPiece = text_size // 80
+# Set percentage progress for game segment (Main + Ending + Racing).
+gamePct = 100 * game / game_code_size
 
-#if args.format == 'csv':
-#    version = 1
-#    git_object = git.Repo().head.object
-#    timestamp = str(git_object.committed_date)
-#    git_hash = git_object.hexsha
+# Set percentage progress for all segments.
+totalPct = 100 * total / total_code_size
 
-#    csv_list = [str(version), timestamp, git_hash, 
-#        str(text_size), str(mk64Code_size), str(src), str(srcPct),
-#        str(audio), str(audio_size), str(audioPct), str(libultra),
-#        str(libultra_size), str(libultraPct), str(seg2), str(seg2_size),
-#        str(seg2Pct), str(seg3), str(seg3_size), str(seg3Pct),
-#        str(TotalNonMatchingFunctions), str(TotalMipsToCFunctions)]
+# Gets a string from a table index position.
+def get_string_from_table(idx, table):
+    if 0 <= idx < len(table):
+        return table[idx]
+    else:
+        return "Number out of range"
 
-#    print(",".join(csv_list))
-if args.format == 'shield-json':
-    # https://shields.io/endpoint
-    print(json.dumps({
-        "schemaVersion": 1,
-        "label": "progress",
-        "message": f"{srcPct:.3g}%",
-        "color": 'yellow',
-    }))
-elif args.format  == 'totalBadge':
-    print(str(round(((mk64Code_size - text_size) / mk64Code_size) * 100, 2))+"%")
+# Finds the closest divisible of a number to get a result without decimals.
+def find_closest_divisible(number, divisor):
+    closest_smaller = number - (number % divisor)
+    closest_larger = closest_smaller + divisor
+
+    if abs(number - closest_smaller) < abs(number - closest_larger):
+        return closest_smaller
+    else:
+        return closest_larger
+
+# Centers a text around a specified filled character and how long it should be.
+def center_text(text, total_width, fill_character=" "):
+    empty_spaces = total_width - len(text)
+    left_padding = empty_spaces // 2
+    right_padding = empty_spaces - left_padding
+    centered_text = fill_character * left_padding + text + fill_character * right_padding
+    return centered_text
+
+# Moves a base character around a filled character depending of the position set.
+# Simulates a lap line progress like in the original game.
+def move_character_from_bar(position, total_length, charbase="0", charfill="1"):
+    if position < 0:
+        position = 0
+    elif position > total_length:
+        position = total_length
+
+    line = charfill * total_length
+    line = list(line)
+    line[position] = charbase
+
+    return "".join(line)
+
+# Checks the progress of a condition depending of where the total is.
+# Tracks the progress which cup are we using a table set by a condition.
+def check_table_cond(cond, total, table):
+    if total > cond:
+        sym = " (V)"
+    elif total == cond:
+        sym = " (~)"
+    else:
+        sym = " (X)"
+
+    return str(table[cond]) + str(sym)
+
+# Lists detailed progress for each badge set and the object files parsed on it (Debug).
+def list_detailed_progress_and_files(pct, prog, size, objlist, charseg):
+    print("Percentage progress: " + str(pct) + "%")
+    print("Size progress: " + str(prog))
+    print("Size total: " + str(size))
+    print(str(charseg) + " object files: \n" + "\n".join(objlist))
+
+# All the cups in the game in order.
+mkCups = [
+    "Mushroom Cup",
+    "Flower Cup",
+    "Star Cup",
+    "Special Cup",
+]
+
+# All the courses in the game in order.
+mkCourses = [
+    "Luigi Raceway",
+    "Moo Moo Farm",
+    "Koopa Troopa Beach",
+    "Kalimari Desert",
+    "Toad's Turnpike",
+    "Frappe Snowland",
+    "Choco Mountain",
+    "Mario Raceway",
+    "Wario Stadium",
+    "Sherbet Land",
+    "Royal Raceway",
+    "Bowser's Castle",
+    "D.K.'s Jungle Parkway",
+    "Yoshi Valley",
+    "Banshee Boardwalk",
+    "Rainbow Road",
+]
+
+# Shows total segment progress.
+if args.format  == 'totalBadge':
+    if not args.debug:
+        print(str(round(totalPct, 2))+"%")
+    else:
+        list_detailed_progress_and_files(totalPct, total, total_code_size, obj_list_total, "Total")
+# Shows game segment progress (Main + Ending + Racing).
 elif args.format == 'gameBadge':
-    print(str(round((((mk64Code_size - audio_size) - (text_size - audio)) / (mk64Code_size - audio_size)) * 100, 2))+"%")
+    if not args.debug:
+        print(str(round(gamePct, 2))+"%")
+    else:
+        list_detailed_progress_and_files(gamePct, game, game_code_size, obj_list_game, "Game")
+# Shows main segment progress.
+elif args.format == 'mainBadge':
+    if not args.debug:
+        print(str(round(segMainPct, 2))+"%")
+    else:
+        list_detailed_progress_and_files(segMainPct, segMain, seg_main_size, obj_list_main, "Main")
+# Shows ending segment progress.
+elif args.format == 'endingBadge':
+    if not args.debug:
+        print(str(round(segEndingPct, 2))+"%")
+    else:
+        list_detailed_progress_and_files(segEndingPct, segEnding, seg_ending_size, obj_list_ending, "Ending")
+# Shows racing segment progress.
+elif args.format == 'racingBadge':
+    if not args.debug:
+        print(str(round(segRacingPct, 2)) + "%")
+    else:
+        list_detailed_progress_and_files(segRacingPct, segRacing, seg_racing_size, obj_list_racing, "Racing")
+# Shows libultra segment progress.
+elif args.format == 'osBadge':
+    if not args.debug:
+        print(str(round(libultraPct, 2))+"%")
+    else:
+        list_detailed_progress_and_files(libultraPct, libultra, libultra_size, obj_list_libultra, "Libultra")
+# Shows audio segment progress.
 elif args.format == 'audioBadge':
-    print(str(round(audioPct, 2))+"%")
+    if not args.debug:
+        print(str(round(audioPct, 2)) + "%")
+    else:
+        list_detailed_progress_and_files(audioPct, audio, audio_size, obj_list_audio, "Audio")
+# Shows current bytes left to decompile out of the total.
 elif args.format == 'bytesToDecompile':
-    print(str(text_size)+" of "+str(mk64Code_size)+"\n")
+    print(str(remaining_size)+" of "+str(total_code_size)+"\n")
+# Shows how many GLOBAL_ASM functions are left.
+elif args.format == 'globalAsmFuncs':
+    print(str(TotalGlobalAsmFunctions))
+# Shows how many MIPS_TO_C functions are left.
 elif args.format == 'm2cFuncs':
     print(str(TotalMipsToCFunctions))
+# Shows how many NON_MATCHING functions are left.
 elif args.format == 'nonmatchingFuncs':
     print(str(TotalNonMatchingFunctions))
+# Shows decompilation progress output in a fancy way.
 elif args.format == 'text':
-    adjective = "decompiled" if not args.matching else "matched"
+    outputLength = 67 # Horizontal length of the text in the terminal output
+    # "Magic" number is 48, which is 3 laps * 4 courses * 3 cups
+    bytesPerTotalLaps = total_code_size // 47 # Total size // (Magic number - 1)
+    srcDivNear = find_closest_divisible(total, 49) # Correct division by diving closest divisible with (Magic number + 1)
+    lapTotalCounts = int(srcDivNear / bytesPerTotalLaps) # Game progress count, sets where are we in a simulated game, can be between 0 - 47
+    curLapProgress = int(((srcDivNear % bytesPerTotalLaps) * (outputLength - 1)) / (bytesPerTotalLaps)) # Progress of a lap depending of the output length
+    curLapCount = int((lapTotalCounts % 3) + 1) # Lap count, can be between 1 - 3 (3 laps total)
+    curCourseCount = int(lapTotalCounts / 3) # Course count, can be between 0 - 15 (16 courses total)
+    curCupCount = int((lapTotalCounts / 12) % 12) # Cup count, can be between 0 - 3 (4 cups total)
 
-    print("Total decompilable bytes remaining: "+str(text_size)+" out of "+str(mk64Code_size)+"\n")
-    print(str(TotalMipsToCFunctions)+" Mips to C functions and")
-    print(str(TotalNonMatchingFunctions)+" non-matching functions remain to decomp."+"\n")
-    print(str(src) + " bytes " + adjective + " in game code " + str(srcPct) + "%\n")
-    print(str(audio) + "/" + str(audio_size) + " bytes " + adjective + " in audio " + str(audioPct) + "%\n")
-    print(str(libultra) + "/" + str(libultra_size) + " bytes " + adjective + " in libultra " + str(libultraPct) + "%\n")
-    print(str(mainSeg) + "/" + str(mainSeg_size) + " bytes " + adjective + " in mainSeg " + str(mainSegPct) + "%\n")
-    print(str(seg2) + "/" + str(seg2_size) + " bytes " + adjective + " in seg2 " + str(seg2Pct) + "%\n")
-    print(str(20032) + "/" + str(20032) + "   bytes " + adjective + " in seg3 " + str(100.0) + "%\n")
-    print("------------------------------------\n")
+    # Print current decompilation progress.
+    print(str(center_text((str(" Non Matching progress mode ") if args.nonmatching else str("")), outputLength, "=")))
+    print(str(center_text(" All Cups (Decompilation) ", outputLength)))
+    print(str(center_text(" " + str(round(totalPct, 2))+"% Complete ", outputLength, "-")))
+    print(str(center_text(" # Decompiled functions: " + str(TotalCFunctions) + " ", outputLength)))
+    print(str(center_text(" # GLOBAL_ASM remaining: " + str(TotalGlobalAsmFunctions) + " ", outputLength)))
+    print(str(center_text(" # NON_MATCHING remaining: " + str(TotalNonMatchingFunctions) + " ", outputLength)))
+    print(str(center_text(" # MIPS_TO_C remaining: " + str(TotalMipsToCFunctions) + " ", outputLength)))
+    print(str(center_text(" Game Status ", outputLength, "-")))
 
-    heartPieces = int(src / bytesPerHeartPiece)
-    rupees = int(((src % bytesPerHeartPiece) * 100) / bytesPerHeartPiece)
-
-    if (rupees > 0):
-        print("You have " + str(heartPieces) + "/80 GP Wins and " + str(rupees) + " bronze cup(s).\n")
+    # Simlautes an All Cups race, prints how much the player has been progressing.
+    if TotalGlobalAsmFunctions > 0:
+        print(str(center_text(check_table_cond(0, curCupCount, mkCups) + " - " + check_table_cond(1, curCupCount, mkCups), outputLength)))
+        print(str(center_text(check_table_cond(2, curCupCount, mkCups) + " - " + check_table_cond(3, curCupCount, mkCups), outputLength)))
+        print(str(center_text(" Lap Progress Bar and Race Status ", outputLength, "-")))
+        print(str(move_character_from_bar(curLapProgress, outputLength, "O", "-")))
+        print(str(center_text("We are in " + str(get_string_from_table(curCupCount, mkCups)) + " racing at " +  str(get_string_from_table(curCourseCount, mkCourses)) + " (Lap " + str(curLapCount) + "/3)", outputLength)))
     else:
-        print("You have " + str(heartPieces) + "/80 GP Wins.\n")
+        print(str(center_text("Mushroom Cup (V) - Flower Cup (V)", outputLength)))
+        print(str(center_text("Star Cup (V) - Special Cup (V)", outputLength)))
+        print(str(center_text("We finished All Cups! We got all 4 Gold Cups!", outputLength)))
+
+    print(str(center_text((str(" Non Matching progress mode ") if args.nonmatching else str("")), outputLength, "=")))
+# Shows decompilation progress output in verbose mode.
+elif args.format == 'verbose':
+    adjective = "decompiled" if args.nonmatching else "matched"
+
+    print("Total decompilable bytes remaining: " + str(remaining_size)+ " out of " + str(total_code_size)+"\n")
+    print(str(total) + "/" + str(total_code_size) + " bytes " + adjective + " in total code " + str(totalPct) + "%")
+    print(str(game) + "/" + str(game_code_size) + " bytes " + adjective + " in game code " + str(gamePct) + "%\n")
+    print(str(TotalCFunctions) + " " + adjective + " functions - " + str(TotalGlobalAsmFunctions)+" GLOBAL_ASM functions remaining."+"")
+    print(str(TotalNonMatchingFunctions)+" NON_MATCHING functions - " + str(TotalMipsToCFunctions) + " MIPS_TO_C functions." +"\n")
+    print(str(segMain) + "/" + str(seg_main_size) + " bytes " + adjective + " in segMain " + str(segMainPct) + "%")
+    print(str(segEnding) + "/" + str(seg_ending_size) + " bytes " + adjective + " in segEnding " + str(segEndingPct) + "%")
+    print(str(segRacing) + "/" + str(seg_racing_size) + " bytes " + adjective + " in segRacing " + str(segRacingPct) + "%")
+    print(str(audio) + "/" + str(audio_size) + " bytes " + adjective + " in audio " + str(audioPct) + "%")
+    print(str(libultra) + "/" + str(libultra_size) + " bytes " + adjective + " in libultra " + str(libultraPct) + "%\n")
 else:
     print("Unknown format argument: " + args.format)

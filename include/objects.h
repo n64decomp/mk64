@@ -158,6 +158,13 @@ typedef struct
 } ItemWindowObjects; // size = 0xE0
 
 // This are other lists of indices in gObjectList.
+
+/**
+ * Use unknown. An object is reserved and its index is saved to
+ * this variable, but it appears to go unreferenced
+ **/
+extern s32 D_80183DA0;
+
 /**
  * Lakitu?
 **/
@@ -172,6 +179,7 @@ extern s32 gItemWindowObjectByPlayerId[];
 extern s16 D_80165750;
 // These seem to be limits on different object types in Moo Moo Farm
 // See func_80070780 in code_8006E9C0.c
+// Maybe max number of active moles in a given group of moles?
 extern s32 D_8018D1C8;
 extern s32 D_8018D1D0;
 extern s32 D_8018D1D8;
@@ -188,10 +196,53 @@ extern Collision D_8018C0B0[];
  * The objects found at the indices in each list appears to be course dependent
  **/ 
 
+#define NUM_YV_FLAG_POLES 4
+
+typedef struct {
+    /* 0x0 */ Vec3s pos;
+    /* 0x6 */ u16 rot;
+} YVFlagPoleSpawn; // size = 0x8;
+
+extern YVFlagPoleSpawn D_800E5DF4[];
+
 #define NUM_CRABS 0xA
-#define NUM_NEON_SIGNS 0xA
+
+typedef struct {
+    /* 0x0 */ s16 startX;
+    /* 0x2 */ s16 patrolX;
+    /* 0x4 */ s16 startZ;
+    /* 0x6 */ s16 patrolZ;
+} CrabSpawn;
+
+extern CrabSpawn gCrabSpawns[];
+
+#define NUM_THWOMPS_50CC 8
+#define NUM_THWOMPS_100CC_EXTRA 11
+#define NUM_THWOMPS_150CC 12
+
+extern Vec3f D_800E6734[];
+
+typedef struct {
+    /* 0x0 */ s16 startX;
+    /* 0x2 */ s16 startZ;
+    /* 0x4 */ s16 unk_4; // Group Id?
+    /* 0x6 */ s16 unk_6; // Starting State?
+} ThwompSpawn; // size = 0x8;
+
+extern ThwompSpawn gThomwpSpawns50CC[];
+extern ThwompSpawn gThwompSpawns100CCExtra[];
+extern ThwompSpawn gThomwpSpawns150CC[];
+extern ThwompSpawn *gThowmpSpawnList;
+
+extern s16 gNumActiveThwomps;
+
+#define NUM_NEON_SIGNS 10
+#define NUM_CHAIN_CHOMPS 3
+
+#define NUM_PENGUINS 15
 
 /**
+ * Snowmen bodies in FrappeSnowland
  * Crabs in Koopa Troopa Beach
  * Hot air balloon in Luigi Raceway?
  * Neon signs in Rainbow Road?
@@ -200,25 +251,68 @@ extern Collision D_8018C0B0[];
  * Flag Poles in Yoshi Valley?
 **/
 extern s32 D_80183EA0[];
+
+
+#define NUM_SEAGULLS 10
+#define NUM_SNOWMEN 19
+#define NUM_HEDGEHOGS 15
+
+typedef struct {
+    /* 0x0 */ Vec3s pos;
+    /* 0x6 */ s16 unk_6; // Group Id?
+} SnowmanSpawn; // size = 0x8;
+
+extern SnowmanSpawn gSnowmanSpawns[];
+
+typedef struct {
+    /* 0x0 */ Vec3s pos;
+    /* 0x6 */ s16 unk_06; // Group Id?
+} HegdehogSpawn; // size = 0x8;
+
+extern HegdehogSpawn gHedgehogSpawns[];
+extern Vec3s gHedgehogPatrolPoints[];
+
 /**
- * Snowmen in Frappe Snowland
+ * Snowmen heads in Frappe Snowland
  * Chain Chomps in RaindbowRoad?
  * Trophy in award ceremony?
  * Seagulls in Koopa Troopa Beach?
+ * Hedgehogs in Yoshi Valley?
+ * Spawn for big fire breath in Bowser's Castle
 **/
 extern s32 D_80183F28[];
 
 #define NUM_BOOS 0xA
+#define NUM_FIRE_BREATHS 4
+
+extern Vec3s gFireBreathsSpawns[];
 
 /**
  * Boos in Banshee Boardwalk
+ * Spawners for the 4 small fire breaths inside Bowser's Castle
 **/
 extern s32 D_8018BFA8[];
+
+// Appears to go entirely unused?
 extern s32 D_8018C030[];
 
 #define D_8018C1B0_SIZE 128
-#define NUM_MOLES 0x1F
+#define NUM_MAX_MOLES  0x1F
+#define NUM_GROUP1_MOLES  8
+#define NUM_GROUP2_MOLES 11
+#define NUM_GROUP3_MOLES 12
 #define NUM_SNOWFLAKES 0x32
+
+extern Vec3s gMoleSpawns[];
+// Exact use unknown, something related to the mole groups
+// Maybe be indicating that a given mole in a given group is active?
+extern s8 D_8018D198[];
+extern s8 D_8018D1A8[];
+extern s8 D_8018D1B8[];
+
+// Unknown object index, only set for Kalimari Desert, never read
+extern s32 D_8018CF10;
+
 /**
  * List of object list indices used for:
  *   Moles in Moo Moo Farm
@@ -252,6 +346,12 @@ extern s16 D_80165730;
 extern s16 D_80165738;
 
 #define D_8018C870_SIZE 0x40
+
+#define NUM_TORCHES 8
+
+// This should really be `extern Vec3s gTorchSpawns[];`
+extern s16 gTorchSpawns[1]; // todo: fix this extern
+
 /**
  * List of object list indices. Used both for the fires in the DK Jungle cave
  * and, seemingly for the trail that shells leave behind them.

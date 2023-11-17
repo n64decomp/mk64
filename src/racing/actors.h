@@ -120,13 +120,9 @@ extern u16 D_802BA260; // Box Truck sub-type?
 
 // end of definition of actor.c variables
 
-extern u16 gNearestWaypointByPlayerId[];
-
 extern s16 gCurrentCourseId;
 extern u16 isCrossingTriggeredByIndex[];
 extern Lights1 D_800DC610[];
-
-extern s16 gPlaceItemBoxes;
 
 extern s8 D_0D004C68[];
 extern Gfx D_0D005338[];
@@ -174,76 +170,8 @@ extern Gfx D_0D0031E8[];
 extern Gfx common_model_banana[];
 extern Gfx common_model_flat_banana[];
 
-extern u8 D_0F04CBE0[];
-extern u8 D_0F04CE30[];
-extern u8 D_0F04D080[];
-extern u8 D_0F04D2D8[];
-extern u8 D_0F04D538[];
-extern u8 D_0F04D790[];
-extern u8 D_0F04D9FC[];
-extern u8 D_0F04DC5C[];
-extern u8 D_0F04DEB0[];
-extern u8 D_0F04E0DC[];
-extern u8 D_0F04E314[];
-extern u8 D_0F04E554[];
-extern u8 D_0F04E798[];
-extern u8 D_0F04E9F0[];
-extern u8 D_0F04EC4C[];
-extern u8 D_0F04EE88[];
-extern u8 D_0F04F45C[];
-extern u8 D_0F04F7A4[];
-extern u8 D_0F04FB3C[];
-extern u8 D_0F04FE28[];
-extern u8 D_0F050118[];
-extern u8 D_0F050468[];
-extern u8 D_0F050678[];
-extern u8 D_0F050D50[];
-extern u8 D_0F0513CC[];
-extern u8 D_0F051820[];
-extern u8 D_0F051C54[];
-extern u8 D_0F051FD8[];
-extern u8 D_0F05232C[];
-extern u8 D_0F0526B8[];
-extern u8 D_0F052A20[];
-extern u8 D_0F052D3C[];
-extern u8 D_0F05300C[];
-extern u8 D_0F0532F8[];
-extern u8 D_0F05363C[];
-extern u8 D_0F053950[];
-extern u8 D_0F053C34[];
-extern u8 D_0F053F74[];
-extern u8 D_0F054270[];
-extern u8 D_0F054518[];
-extern u8 D_0F05488C[];
-extern u8 D_0F054C3C[];
-extern u8 D_0F054ECC[];
-extern u8 D_0F0551C8[];
-extern u8 D_0F0554CC[];
-extern u8 D_0F055880[];
-extern u8 D_0F055BA0[];
-extern u8 D_0F055F10[];
-extern u8 D_0F0561AC[];
-extern u8 D_0F056408[];
-extern u8 D_0F05662C[];
-extern u8 D_0F05688C[];
-extern u8 D_0F056AD0[];
-extern u8 D_0F056CF0[];
-extern u8 D_0F056EC8[];
-extern u8 D_0F057084[];
-extern u8 D_0F057288[];
-extern u8 D_0F057590[];
-extern u8 D_0F057EB4[];
-extern u8 D_0F0581E4[];
-extern u8 D_0F058550[];
-extern u8 gTexture671A88[];
-extern u8 gTexture6774D8[];
-extern u8 gTextureShrub[];
-
 extern s8 D_800DC628[];
 extern s8 D_800DC630[];
-extern u16 gIsGamePaused;
 extern s8 D_802B8864[];
-
-extern u16 D_800DC5BC;
 
 #endif // ACTORS_H

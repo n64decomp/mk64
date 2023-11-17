@@ -7,13 +7,6 @@
 #include "math_util.h"
 #include "collision.h"
 
-void func_80091440(s8 arg0) {
-    if ((gPlayers[arg0].unk_044 & 0x800) == 0) {
-        gPlayers[arg0].unk_044 |= 0x2400;
-        gPlayers[arg0].type &= ~0x2000;
-    }
-}
-
 void func_800914A0(void) {
     D_80152308 = gPlayerOneCopy->unk_006 + 7;
     if ((s32) D_8015F6F8 < D_80152308) {

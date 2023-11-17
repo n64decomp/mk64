@@ -4075,7 +4075,7 @@ Gfx d_course_dks_jungle_parkway_dl_7108[] =
 };
 
 // 0x71F0
-struct TrackWayPoint d_course_dks_jungle_parkway_unknown_waypoints[] = {
+TrackWaypoint d_course_dks_jungle_parkway_unknown_waypoints[] = {
     {2, 0, 12, 0},
     {5, 0, -5, 0},
     {0, 0, -211, 0},
@@ -4178,6 +4178,9 @@ struct TrackWayPoint d_course_dks_jungle_parkway_unknown_waypoints[] = {
     {3, 0, 251, 0},
     {3, 0, 45, 0},
     {-32768, 0, 0, 0},
+};
+
+TrackWaypoint d_course_dks_jungle_parkway_unknown_waypoints2[] = {
     {1237, 0, -1373, 0},
     {1206, 0, -1365, 0},
     {877, 0, -1272, 0},
@@ -4212,7 +4215,7 @@ struct TrackWayPoint d_course_dks_jungle_parkway_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_dks_jungle_parkway_track_waypoints[] = {
+TrackWaypoint d_course_dks_jungle_parkway_track_waypoints[] = {
     {3, 0, 3, 1},
     {4, 0, -16, 1},
     {3, 0, -36, 1},

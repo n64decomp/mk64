@@ -6,6 +6,7 @@
 #include "audio/internal.h"
 #include "audio/playback.h"
 #include "audio/synthesis.h"
+#include "data/gfx_output_buffer.h"
 
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 
@@ -48,8 +49,9 @@ s32 gMaxAudioCmds;
 s32 gMaxSimultaneousNotes;
 s16 gTempoInternalToExternal;
 s8 gAudioLibSoundMode;
-s32 gAudioUpdatesPerFrame;
-s32 gCurrAudioFrameDmaCount; // file split around here?
+// If we take SM64 as gospel, these should be in data.c, but that doesn't match
+volatile s32 gAudioFrameCount;
+s32 gCurrAudioFrameDmaCount;
 
 
 /**
@@ -783,8 +785,8 @@ void audio_init() {
 
 #ifdef TARGET_N64
     // It seems boot.s doesn't clear the .bss area for audio, so do it here.
-    lim3 = ((uintptr_t) &D_803B71A0 - (uintptr_t) &gGfxSPTaskOutputBufferSize) / 8;
-    ptr64 = &gGfxSPTaskOutputBufferSize;
+    lim3 = ((uintptr_t) &D_803B71A0 - (uintptr_t) ((u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer))) ) / 8;
+    ptr64 = (u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));;
     for (k = lim3; k >= 0; k--) {
         *ptr64++ = 0;
     }
@@ -810,7 +812,7 @@ void audio_init() {
         gAiBufferLengths[i] = 0xa0;
     }
 
-    gAudioTaskIndex = gAudioUpdatesPerFrame = 0;
+    gAudioTaskIndex = gAudioFrameCount = 0;
     gCurrAiBufferIndex = 0;
     gAudioLibSoundMode = 0;
     gAudioTask = NULL;
@@ -874,5 +876,9 @@ void audio_init() {
     gAudioLoadLock = 0x76557364;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/audio/load/audio_init.s")
+    #ifdef VERSION_EU
+    GLOBAL_ASM("asm/eu_nonmatchings/audio_init.s")
+    #else
+    GLOBAL_ASM("asm/non_matchings/audio/load/audio_init.s")
+    #endif
 #endif

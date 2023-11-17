@@ -67,7 +67,7 @@ glabel D_80164AD0
 glabel gMatrixEffectCount
 .skip 20
 
-glabel D_80164B04
+glabel gPlayerPalette
 .skip 4
 
 glabel D_80164B08
@@ -349,13 +349,13 @@ glabel D_80165740
 glabel D_80165748
 .skip 8
 
-glabel D_80165750
+glabel gNumActiveThwomps
 .skip 4
 
 glabel D_80165754
 .skip 4
 
-glabel D_80165758
+glabel gThowmpSpawnList
 .skip 8
 
 glabel D_80165760
@@ -1209,7 +1209,7 @@ glabel D_8018D180
 glabel D_8018D184
 .skip 4
 
-glabel D_8018D188
+glabel gIsHUDVisible
 .skip 4
 
 glabel D_8018D18C

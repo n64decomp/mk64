@@ -1964,7 +1964,7 @@ Gfx d_course_frappe_snowland_dl_33E0[] =
     gsSPEndDisplayList(),
 };
 
-struct TrackWayPoint d_course_frappe_unknown_waypoints[] = {
+TrackWaypoint d_course_frappe_unknown_waypoints[] = {
     {-4, 0, -259, 0},
     {-4, 0, -282, 0},
     {-10, 0, -526, 0},
@@ -2040,7 +2040,7 @@ struct TrackWayPoint d_course_frappe_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_frappe_track_waypoints[] = {
+TrackWaypoint d_course_frappe_track_waypoints[] = {
     {-4, 0, -270, 1},
     {-4, 0, -290, 1},
     {-4, 0, -310, 2},

@@ -1,6 +1,8 @@
 #ifndef SKYBOX_AND_SPLITSCREEN_H
 #define SKYBOX_AND_SPLITSCREEN_H
 
+#include <PR/gbi.h>
+
 #define G_CLEAR_ALL_MODES 0xFFFFFFFF
 
 /* Function Prototypes */
@@ -52,26 +54,6 @@ void copy_framebuffer(s32, s32, s32, s32, u16*, u16*);
 void func_802A7728(void);
 void func_802A7940(void);
 
-extern struct UnkStruct_800DC5EC *D_800DC5EC;
-extern struct UnkStruct_800DC5EC *D_800DC5F0;
-extern struct UnkStruct_800DC5EC *D_800DC5F4;
-extern struct UnkStruct_800DC5EC *D_800DC5F8;
-extern u16 D_800DC5B0;
-extern u16 gIsInQuitToMenuTransition;
-extern u16 gQuitToMenuTransitionCounter;
-
-extern s32 D_800DC5D0;
-extern s32 D_800DC5D4;
-extern s32 D_800DC5D8;
-extern u16 D_800DC5BC;
-extern u16 D_800DC5B4;
-
-
-extern u16 D_800DC5C8;
-extern u16 D_800DC5B8;
-extern struct UnkStruct_800DC5EC D_8015F480[];
-
-extern s32 D_800DC5DC;
-extern s32 D_800DC5E0;
+extern Vp D_802B8880[];
 
 #endif

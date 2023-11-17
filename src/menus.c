@@ -9,6 +9,7 @@
 #include "code_800029B0.h"
 #include "actors.h"
 #include "audio/external.h"
+#include "code_800029B0.h"
 #include "code_80005FD0.h"
 #include "code_80091750.h"
 #include "code_800AF9B0.h"
@@ -18,7 +19,6 @@
 #include <sounds.h>
 
 /** Externs to be put into headers **/
-extern u32 D_800DC5AC; // data? from this file or another (main.c?)?
 extern void rmonPrintf(const char *, ...); // not in a libultra header?
 
 /** BSS **/
@@ -849,7 +849,7 @@ void logo_intro_menu_act(struct Controller *arg0, UNUSED u16 arg1) {
     gCupSelection = 1;
     gCupCourseSelection = 0;
     gCurrentCourseId = 0;
-    gScreenModeSelection = 0;
+    gScreenModeSelection = SCREEN_MODE_1P;
     gCharacterSelections[0] = 0;
     gModeSelection = 0;
     gPlayerCount = 1;
@@ -1194,7 +1194,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 func_800CA330(0x19);
                 gDebugMenuSelection = DEBUG_MENU_EXITED;
 
-                if (controller->button & CONT_L) {
+                if (controller->button & L_TRIG) {
                     gDemoMode = DEMO_MODE_ACTIVE;
                 } else {
                     gDemoMode = DEMO_MODE_INACTIVE;
@@ -1214,7 +1214,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 gDebugMenuSelection = DEBUG_MENU_EXITED;
                 gDebugGotoScene = DEBUG_GOTO_CREDITS_SEQUENCE_CC_50;
                 play_sound2(SOUND_MENU_OK_CLICKED);
-            } else if (btnAndStick & CONT_R) {
+            } else if (btnAndStick & R_TRIG) {
                 gDebugMenuSelection = DEBUG_MENU_DISABLED;
                 play_sound2(SOUND_MENU_SELECT);
             }
@@ -1382,11 +1382,13 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
         case GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION:
         case TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT:
         {
-            if (1);
-            if ((arg1 == 0) && (++gMenuTimingCounter == 100 || gMenuTimingCounter % 300 == 0)) {
-                // L800B2FAC
-                if (gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]] == 0 || gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]] == 2) {
-                    play_sound2(SOUND_MENU_SELECT_LEVEL);
+            if (arg1 == 0){
+                gMenuTimingCounter++;
+                if ((gMenuTimingCounter == 100 || gMenuTimingCounter % 300 == 0)) {
+                    // L800B2FAC
+                    if (gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]] == 0 || gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]] == 2) {
+                        play_sound2(SOUND_MENU_SELECT_LEVEL);
+                    }
                 }
             }
             // L800B3000

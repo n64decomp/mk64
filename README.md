@@ -1,21 +1,34 @@
+# Mario Kart 64
+This work-in-progress decompilation of Mario Kart 64 pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
+
+This repository does not contain assets. Compiling requires asset extraction from a prior copy of the game.
+
+It supports and builds the following versions:
+
+| ROM Output        | Revision| SHA-1 Checksum                           |
+|-------------------|---------|------------------------------------------|
+| mk64.us.z64       | USA     | 579c48e211ae952530ffc8738709f078d5dd215e |
+| mk64.eu-1.0.z64   | EUR 1.0 | a729039453210b84f17019dda3f248d5888f7690 |
+| mk64.eu-final.z64 | EUR 1.1 | f6b5f519dd57ea59e9f013cc64816e9d273b2329 |
+
+## Score progress
+
+Total progress consists of all code segments together.
+
+Game code progress consists of `main`, `ending` and `racing`.
+
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=totalProgress)](https://ci.valandil.ca/job/mk64/job/master/)
-[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=codeProgress)](https://ci.valandil.ca/job/mk64/job/master/)
-[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=audioProgress)](https://ci.valandil.ca/job/mk64/job/master/)
+[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=gameProgress)](https://ci.valandil.ca/job/mk64/job/master/)
 
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=bytesLeft)](https://ci.valandil.ca/job/mk64/job/master/)
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=m2c)](https://ci.valandil.ca/job/mk64/job/master/)
 [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=nonmatching)](https://ci.valandil.ca/job/mk64/job/master/)  
 
-C files left: ~7 out of 40 (not counting audio)
-# Mario Kart 64
-
-This repo contains a work-in-progress decompilation of Mario Kart 64 (U). The project pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
-
-It builds the following ROM:
-
-* mk64.us.z64 `sha1: 579c48e211ae952530ffc8738709f078d5dd215e`
-
-This repository does not contain assets. Compiling requires asset extraction from a prior copy of the game.
+- [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=mainProgress)](https://ci.valandil.ca/job/mk64/job/master/)
+- [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=endingProgress)](https://ci.valandil.ca/job/mk64/job/master/)
+- [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=racingProgress)](https://ci.valandil.ca/job/mk64/job/master/)
+- [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=audioProgress)](https://ci.valandil.ca/job/mk64/job/master/)
+- [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=osProgress)](https://ci.valandil.ca/job/mk64/job/master/)
 
 ## Dependencies
 
@@ -26,6 +39,23 @@ The build system has the following package requirements:
     libaudiofile
 
 To add submodules run `git submodule update --init --recursive` after cloning.
+
+## EU Specific Steps (All versions)
+Both EU builds first requires US to be built first:
+```
+make -j
+```
+
+Now build either EU 1.0 `eu-1.0` or EU 1.1 `eu-final`
+```
+make -j VERSION=eu-final
+```
+
+diff/first-diff commands
+```
+python3 first-diff.py --eu
+./diff <function> -eu
+```
 
 #### Debian / Ubuntu
 ```
@@ -59,6 +89,24 @@ brew install python3 capstone coreutils make pkg-config tehzz/n64-dev/mips64-elf
 
 When building, use `gmake` to ensure that homebrew `make` is used instead of the old, macOS system `make`.
 
+#### Docker
+
+Build the Docker image:
+```
+docker build -t mk64 .
+```
+
+When building and using other tools, append the following in front of every command you run:
+```bash
+docker run --rm -v ${PWD}:/mk64 mk64
+```
+
+For example:
+```bash
+docker run --rm -v ${PWD}:/mk64 mk64 make -C tools
+docker run --rm -v ${PWD}:/mk64 mk64 make
+```
+
 ## Building
 
 Place a US version of Mario Kart 64 called `baserom.us.z64` into the project folder for asset extraction.
@@ -79,40 +127,41 @@ Some menu textures are compressed using a format called tkmk00. A byte-matching 
 	
 	mk64
 	├── asm: Handwritten assembly code, rom header and boot
-	│   ├── non_matchings: asm for non-matching sections
-	│   └── os: OS related assembly code
+	│   ├── non_matchings: Assembly for non-matching sections
+	│   └── os: Libultra handwritten assembly code
 	├── assets: Textures
-	├── bin: Files needing import. Most of them are already done.
-	├── courses: Course geography, course data, course table, and staff ghosts.
+	├── courses: Course data, geography, display lists and staff ghosts
 	├── build: Output directory
-	├── data: Data, text, audio banks, and instrument sets.
+	├── data: Misc data, text, audio banks, and instrument sets
 	├── docs: Build guides
 	├── include: Header files
 	├── music: Sequences
 	├── src: C source code for the game
 	|   ├── actors: Individual actors split out from other files
-	│   ├── audio: Sample tables and audio source
+	│   ├── audio: Sample tables and audio code
+	│   ├── data: Misc data referenced in other C files
 	|   ├── debug: Custom debug code
-	|   ├── ending: Podium ceremony and credits code.
-	│   ├── os: Libultra
-	|   └── racing: Race and game engine code.
-	├── textures: texture data, bitmaps
-	|   ├── common: textures common to many courses
-	|   ├── courses: course specific textures
-	|   ├── crash screen: crash screen font image
-	│   ├── raw: raw textures
-  	│   ├── standalone: whole textures
-	|   ├── startup_logo: reflection map
-	|   └── trophy: ceremony cutscene podium and trophy textures
+	|   ├── ending: Podium ceremony and credits code
+	│   ├── os: Libultra C code
+	|   └── racing: Race and game engine code
+	├── textures: Texture data, bitmaps
+	|   ├── common: Textures common to many courses
+	|   ├── courses: Course specific textures
+	|   ├── crash screen: Crash screen font image
+	│   ├── raw: Raw textures
+    │   ├── standalone: Whole textures
+	|   ├── startup_logo: Reflection map
+	|   └── trophy: Ceremony cutscene podium and trophy textures
 	└── tools: build tools
+
+## Documentation
+
+[Doxygen](https://www.doxygen.nl/index.html) is used to generate documentation. To generate the documentation, run `doxygen Doxyfile` from the project root. The documentation will be generated in the `docs/html` folder.
+The documentation is also available online at [https://n64decomp.github.io/mk64/](https://n64decomp.github.io/mk64/).
 
 ## Contributing
 
 Pull requests are welcome. For major changes, please discuss in the Discord.
-
-Files needing documentation:
-actors.c, actors_extended.c, main.c, kart_dma.c, race_logic.c, render_courses.c, skybox_and_splitscreen.c, staff_ghosts.c.
-Any inc.c file.
 
 Run `clang-format` on your code to ensure it meets the project's coding standards.
 

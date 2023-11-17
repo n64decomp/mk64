@@ -3746,7 +3746,7 @@ Gfx d_course_kalimari_desert_dl_6940[] =
 };
 
 // 0x6AC8
-struct TrackWayPoint d_course_kalimari_desert_unknown_waypoints[] = {
+TrackWaypoint d_course_kalimari_desert_unknown_waypoints[] = {
     {1, 0, 503, 0},
     {1, 0, 485, 0},
     {1, 0, 325, 0},
@@ -3800,7 +3800,7 @@ struct TrackWayPoint d_course_kalimari_desert_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_kalimari_desert_track_unknown_waypoints[] = {
+TrackWaypoint d_course_kalimari_desert_track_unknown_waypoints[] = {
     {-741, 0, 2114, 0},
     {-741, 0, 2130, 0},
     {-741, 0, 2364, 0},
@@ -3879,7 +3879,7 @@ struct TrackWayPoint d_course_kalimari_desert_track_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-struct TrackWayPoint d_course_kalimari_desert_track_waypoints[] = {
+TrackWaypoint d_course_kalimari_desert_track_waypoints[] = {
     {1, 0, 494, 1},
     {1, 0, 473, 2},
     {1, 0, 453, 2},

@@ -382,7 +382,7 @@ void func_80027DA8(Player *arg0, s8 arg1) {
 
 void func_80027EDC(Player *player, s8 playerId) {
     UNUSED s32 pad;
-    if (((player->type & 0x4000) == 0x4000) && ((player->type & 0x100) != 0x100)) {
+    if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             if (((s16)gNearestWaypointByPlayerId[playerId] >= 0x19B) && ((s16)gNearestWaypointByPlayerId[playerId] < 0x1B9)) {
@@ -670,7 +670,7 @@ void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
     } else if (player->type & 0x80) {
         func_8002D268(player, camera, arg3, arg2);
     } else {
-        if ((player->type & 0x4000) != 0x4000) {
+        if ((player->type & PLAYER_HUMAN) != PLAYER_HUMAN) {
             player->currentSpeed = 50.0f;
         }
         player->effects &= ~8;
@@ -1230,7 +1230,7 @@ void func_8002A5F4(Vec3f arg0, f32 arg1, Vec3f arg2, f32 arg3, f32 arg4) {
 void func_8002A704(Player *player, s8 arg1) {
     player->effects |= 0x2000;
     player->statusEffects &= ~0x02000000;
-    if (((player->type & 0x4000) == 0x4000) && ((player->type & 0x100) != 0x100)) {
+    if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         func_800C90F4(0U, (player->characterId * 0x10) + 0x29008001);
         func_800C9060(arg1, 0x1900A40BU);
     }
@@ -1244,7 +1244,7 @@ void func_8002A79C(Player *player, s8 arg1) {
         player->unk_22A = 0;
         player->unk_228 = 0;
         if (D_8015F890 != 1) {
-            if ((player->type & 0x4000) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
+            if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
                 func_800C9250(arg1);
             }
         } else if (player == gPlayerOne) {
@@ -1267,7 +1267,7 @@ void func_8002A8A4(Player *player, s8 arg1) {
             if (player->unk_228 < 0x65) {
                 player->unk_228++;
             }
-            if ((player->unk_228 == 0x0064) && (player->type & 0x4000)) {
+            if ((player->unk_228 == 0x0064) && (player->type & PLAYER_HUMAN)) {
                 func_800C9060(arg1, 0x1900851EU);
             }
         } else {
@@ -1287,7 +1287,7 @@ void func_8002A8A4(Player *player, s8 arg1) {
         if (player->unk_228 < 0x65) {
             player->unk_228++;
         }
-        if ((player->unk_228 == 0x0064) && (player->type & 0x4000)) {
+        if ((player->unk_228 == 0x0064) && (player->type & PLAYER_HUMAN)) {
             func_800C9060(arg1, 0x1900851EU);
         }
     } else {
@@ -1523,7 +1523,7 @@ void func_8002B308(Player *player, s8 arg1, UNUSED s8 arg2) {
     if ((player->statusEffects & 1) == 1) {
         func_8008CDC0(player, arg1);
     }
-    if ((player->statusEffects & 0x200) == 0x200) {
+    if ((player->statusEffects & BOOST_EFFECT) == BOOST_EFFECT) {
         func_8008D3C4(player, arg1);
     }
     if ((player->statusEffects & 0x02000000) == 0x02000000) {
@@ -1556,10 +1556,10 @@ void func_8002B308(Player *player, s8 arg1, UNUSED s8 arg2) {
     if ((player->statusEffects & 0x8000) == 0x8000) {
         func_8008EEE4(player, arg1);
     }
-    if ((player->statusEffects & 0x2000) == 0x2000) {
+    if ((player->statusEffects & STAR_EFFECT) == STAR_EFFECT) {
         func_8008F778(player, arg1);
     }
-    if ((player->statusEffects & 0x800) == 0x800) {
+    if ((player->statusEffects & BOO_EFFECT) == BOO_EFFECT) {
         func_8008FA38(player, arg1);
     }
     if (player->statusEffects & 0x80) {
@@ -1812,7 +1812,7 @@ void func_8002BF4C(Player *player, s8 arg1) {
             player->effects &= 0xFFDFFFFF;
         }
     } else {
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < NUM_PLAYERS; i++) {
             playerBorrow = &players[i];
             if (((player != playerBorrow) && 
                 ((playerBorrow->type & 0x100) == 0) && 
@@ -1931,7 +1931,7 @@ void func_8002C4F8(Player *player, s8 arg1) {
             if ((gCurrentCourseId != COURSE_KOOPA_BEACH)  &&
                 (gCurrentCourseId != COURSE_SKYSCRAPER)   &&
                 (gCurrentCourseId != COURSE_RAINBOW_ROAD) &&
-                ((player->type & 0x4000) == 0x4000)) {
+                ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                 if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) ||
                     (gCurrentCourseId == COURSE_BIG_DONUT)) {
                     func_800C9060((u8) arg1, 0x1900801CU);
@@ -1976,7 +1976,7 @@ void func_8002C7E4(Player *player, s8 arg1, s8 arg2) {
             player->unk_044 &= ~0x0001;
             player->unk_046 |= 1;
             player->unk_046 |= 8;
-            if ((player->type & 0x4000) == 0x4000) {
+            if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
                 func_8001CA24(player, 2.8f);
             }
             if ((player->unk_046 & 2) == 2) {
@@ -2032,7 +2032,7 @@ void func_8002C954(Player *player, s8 arg1, Vec3f arg2) {
         }
         player->unk_046 |= 0x20;
     }
-    if (((player->type & 0x4000) == 0x4000) && (((player->unk_094 / 18.0f) * 216.0f) > 30.0f)) {
+    if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && (((player->unk_094 / 18.0f) * 216.0f) > 30.0f)) {
         func_8001CA24(player, 3.0f);
     }
     player->unk_046 |= 0x10;
@@ -2043,7 +2043,7 @@ void func_8002C954(Player *player, s8 arg1, Vec3f arg2) {
     if ((player->slopeAccel >= 0) && (((player->unk_094 / 18.0f) * 216.0f) > 5.0f)) {
         func_80031F48(player, 18.0f);
     }
-    if ((player->type & 0x4000) == 0x4000) {
+    if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
         xdist = D_80165070[arg1][0] - arg2[0];
         var_f14 = D_80165070[arg1][1] - arg2[1];
         ydist = var_f14; // okay
@@ -2177,7 +2177,7 @@ void func_8002D028(Player *player, s8 arg1) {
 
     temp_f18 = sqrtf((sp4C[0] - player->pos[0]) * (sp4C[0] - player->pos[0])+ (sp4C[2] - player->pos[2]) * (sp4C[2] - player->pos[2]));
     if (temp_f18 <= 8.0f) {
-        func_800224F0(&player->unk_02C[1], -0x8000, 0x016C);
+        adjust_angle(&player->unk_02C[1], -0x8000, 0x016C);
         if ((player->unk_02C[1] < (-0x7F41)) || (player->unk_02C[1] > 0x7F41)) {
             player->type &= ~0x0200;
         }
@@ -2228,11 +2228,11 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
 
     func_80027EDC(player, playerId);
     func_8002C11C(player);
-    if ((player->type & 0x4000) == 0x4000) {
+    if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
         func_8002A79C(player, playerId);
     }
     func_8002B830(player, playerId, arg2);
-    if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
+    if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         func_8002BF4C(player, playerId);
     }
     func_8002CD48(player, playerId, arg2);
@@ -2359,16 +2359,16 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
             player->unk_DB4.unkC = 3.0f;
             player->unk_DB4.unk18 = 0;
             player->unk_0B6 |= 0x100;
-            if ((((player->type & 0x4000) == 0x4000) 
+            if ((((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) 
                 && ((player->effects & 0x100000) == 0x100000))  
                 && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) 
             
                 func_800C9060(playerId, 0x1900A60AU);
-            else if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB))
+            else if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB))
             {
                 func_800CADD0((u8) playerId, ((f32) player->unk_0C2) / 35.0f);
             }
-            if ((player->type & 0x4000) == 0x4000)
+            if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)
             {
                 player->unk_044 |= 0x100;
             }
@@ -2376,18 +2376,18 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
         if (((player->unk_0C2 < 0x23) && (player->unk_0C2 >= 0x1C)) && (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
             player->unk_DB4.unkC = 2.8f;
             player->unk_DB4.unk18 = 0;
-            if (((player->type & 0x4000) == 0x4000) 
+            if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) 
                 && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
                 func_800CADD0((u8) playerId, ((f32) player->unk_0C2) / 35.0f);
             }
-            if ((player->type & 0x4000) == 0x4000) {
+            if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
                 player->unk_044 |= 0x100;
             }
         }
         if (((player->unk_0C2 < 0x1C) && (player->unk_0C2 >= 4)) && (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
             player->unk_DB4.unk18 = 0;
             player->unk_DB4.unkC = 1.5f;
-            if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
+            if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
                 if (((player->unk_0C2 < 0xB) && (player->unk_0C2 >= 4)) && (gCurrentCourseId == COURSE_BOWSER_CASTLE)) {
                     func_800CADD0((u8) playerId, player->unk_0C2 / 14.0f);
                 }
@@ -2435,7 +2435,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
         func_8008F5A4(player, playerId);
     }
     player->unk_074 = func_802ABE30(spFC, spF8, spF4, player->unk_110.unk3A);
-    if (((player->type & 0x4000) == 0x4000) && (((gActiveScreenMode == SCREEN_MODE_1P) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL)) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
+    if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && (((gActiveScreenMode == SCREEN_MODE_1P) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL)) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
         func_80029B4C(player, spFC, spF8, spF4);
     } else {
         func_8002A194(player, spFC, spF8, spF4);
@@ -2457,7 +2457,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
         player->pos[2] = spF4;
     }
     player->pos[1] = spF8;
-    if ((player->type & 0x4000) && (!(player->type & PLAYER_CPU))) {
+    if ((player->type & PLAYER_HUMAN) && (!(player->type & PLAYER_CPU))) {
         func_8002BB9C(player, &spFC, &spF4, arg2, playerId, sp98);
     }
     player->unk_064[0] = sp178[0];
@@ -2468,7 +2468,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
     D_80165070[playerId][0] = sp98[0];
     D_80165070[playerId][1] = sp98[1];
     D_80165070[playerId][2] = sp98[2];
-    if ((player->type & 0x4000) == 0x4000) {
+    if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
         if (gKartTopSpeedTable[player->characterId] < player->unk_094) {
             temp = gKartTopSpeedTable[player->characterId] / player->unk_094;
             player->velocity[0] *= temp;
@@ -2622,10 +2622,10 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
             player->unk_DB4.unk18 = 0;
             player->unk_0B6 |= 0x100;
             player->unk_DB4.unkC = 3.0f;
-            if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
+            if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
                 func_800CADD0((u8) arg3, ((f32) player->unk_0C2) / 50.0f);
             }
-            if ((player->type & 0x4000) == 0x4000) {
+            if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
                 player->unk_044 |= 0x100;
             }
         }
@@ -2634,10 +2634,10 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
             && (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
             player->unk_DB4.unkC = 2.0f;
             player->unk_DB4.unk18 = 0;
-            if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
+            if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
                 func_800CADD0((u8) arg3, ((f32) player->unk_0C2) / 50.0f);
             }
-            if ((player->type & 0x4000) == 0x4000) {
+            if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
                 player->unk_044 |= 0x100;
             }
         }
@@ -2647,7 +2647,7 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
             if (player->unk_0C2 >= 0x32) {
                 player->unk_0C2 = 0x0032;
             }
-            if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
+            if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
                 func_800CADD0((u8) arg3, ((f32) player->unk_0C2) / 20.0f);
             }
             if (player->unk_0C2 >= 0x28) {
@@ -2661,7 +2661,7 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
                 player->unk_0C2 /= 7.5;
                 player->kartHopJerk = 0.06f;
                 player->kartHopAcceleration = 0.0f;
-                if ((player->type & 0x4000) == 0x4000) {
+                if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
                     player->unk_044 |= 0x100;
                 }
             }
@@ -2709,7 +2709,7 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
         func_8008F5A4(player, arg3);
     }
     player->unk_074 = func_802ABE30(spD0, spCC, spC8, player->unk_110.unk3A);
-    if (((player->type & 0x4000) == 0x4000) && (((gActiveScreenMode == SCREEN_MODE_1P) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL)) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
+    if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && (((gActiveScreenMode == SCREEN_MODE_1P) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL)) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
         func_80029B4C(player, spD0, spCC, spC8);
     } else {
         func_8002A194(player, spD0, spCC, spC8);
@@ -2737,7 +2737,7 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     player->velocity[0] = sp54[0];
     player->velocity[1] = sp54[1];
     player->velocity[2] = sp54[2];
-    if ((player->type & 0x4000) == 0x4000) {
+    if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
         if (gKartTopSpeedTable[player->characterId] < player->unk_094) {
         temp_f0_6 = gKartTopSpeedTable[player->characterId] / player->unk_094;
         player->velocity[0] *= temp_f0_6;
@@ -2890,7 +2890,7 @@ void func_8002F730(Player *player, UNUSED Camera *camera, UNUSED s8 arg2, s8 arg
         func_8003F46C(player, sp5C, sp68, spE8, &sp78, &spCC, &spC8, &spC4);
     }
     player->unk_074 = func_802ABE30(spCC, spC8, spC4, player->unk_110.unk3A);
-    if (((player->type & 0x4000) == 0x4000) && ((gActiveScreenMode == SCREEN_MODE_1P) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
+    if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((gActiveScreenMode == SCREEN_MODE_1P) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
         func_80029B4C(player, spCC, spC8, spC4);
     } else {
         func_8002A194(player, spCC, spC8, spC4);
@@ -2919,7 +2919,7 @@ void func_8002F730(Player *player, UNUSED Camera *camera, UNUSED s8 arg2, s8 arg
     D_80165070[arg3][1] = sp68[1];
     D_80165070[arg3][2] = sp68[2];
 
-    if ((player->type & 0x4000) == 0x4000) {
+    if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
         if (gKartTopSpeedTable[player->characterId] < player->unk_094) {
             temp_f0_2 = gKartTopSpeedTable[player->characterId] / player->unk_094;
             player->velocity[0] *= temp_f0_2;
@@ -2962,7 +2962,7 @@ void func_8002FCA8(Player *player, s8 arg1) {
             var_f0 += 1.0;
         }
     }
-    if (((player->effects & 0x200000) == 0x200000) && ((player->type & 0x4000) != 0x4000)) {
+    if (((player->effects & 0x200000) == 0x200000) && ((player->type & PLAYER_HUMAN) != PLAYER_HUMAN)) {
         var_f0 = -3.0f;
     }
 
@@ -3111,14 +3111,14 @@ f32 func_80030150(Player *player, s8 arg1) {
             }
         }
     }
-    if ((player->type & 0x4000) != 0x4000) {
+    if ((player->type & PLAYER_HUMAN) != PLAYER_HUMAN) {
         if ((player->effects & 0x200000) == 0x200000) {
             move_f32_towards(&player->unk_0E8, 380.0f, 0.5f);
         } else {
             move_f32_towards(&player->unk_0E8, 0.0f, 0.1f);
         }
     }
-    if ((player->type & 0x4000) == 0x4000) {
+    if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
         if (((player->effects & 0x100) == 0x100) && ((player->effects & 0x10) != 0x10)) {
             move_f32_towards(&player->unk_0E8, 580.0f, 0.2f);
         } else {
@@ -3261,61 +3261,61 @@ void func_80030C34(Player *player) {
 }
 
 void func_80030E00(Player *player) {
-    s32 var_v0;
+    s32 playerIndex;
 
     if (player == gPlayerOne) {
-        var_v0 = 0;
+        playerIndex = 0;
     }
     if (player == gPlayerTwo) {
-        var_v0 = 1;
+        playerIndex = 1;
     }
     if (player == gPlayerThree) {
-        var_v0 = 2;
+        playerIndex = 2;
     }
     if (player == gPlayerFour) {
-        var_v0 = 3;
+        playerIndex = 3;
     }
     if (player == gPlayerFive) {
-        var_v0 = 4;
+        playerIndex = 4;
     }
     if (player == gPlayerSix) {
-        var_v0 = 5;
+        playerIndex = 5;
     }
     if (player == gPlayerSeven) {
-        var_v0 = 6;
+        playerIndex = 6;
     }
     if (player == gPlayerEight) {
-        var_v0 = 7;
+        playerIndex = 7;
     }
-    if (gIsPlayerTripleAButtonCombo[var_v0] == FALSE) {
-        if (gPlayerIsThrottleActive[var_v0] == 0) {
-            if ((D_80165420[var_v0] < 2) || (D_80165420[var_v0] >= 9)) {
-                D_80165440[var_v0] = 0;
+    if (gIsPlayerTripleAButtonCombo[playerIndex] == FALSE) {
+        if (gPlayerIsThrottleActive[playerIndex] == 0) {
+            if ((D_80165420[playerIndex] < 2) || (D_80165420[playerIndex] >= 9)) {
+                D_80165440[playerIndex] = 0;
             }
-            D_80165420[var_v0] = 0;
-            D_80165400[var_v0] = 0;
+            D_80165420[playerIndex] = 0;
+            D_80165400[playerIndex] = 0;
         }
-        gPlayerIsThrottleActive[var_v0] = 1;
-        D_80165420[var_v0]++;
-        if (D_80165420[var_v0] >= 9) {
-            D_80165420[var_v0] = 9;
+        gPlayerIsThrottleActive[playerIndex] = 1;
+        D_80165420[playerIndex]++;
+        if (D_80165420[playerIndex] >= 9) {
+            D_80165420[playerIndex] = 9;
         }
-        if ((D_80165420[var_v0] >= 2) && (D_80165420[var_v0] < 9)) {
-            if (D_80165400[var_v0] == 0) {
-                D_80165440[var_v0] += 1;
+        if ((D_80165420[playerIndex] >= 2) && (D_80165420[playerIndex] < 9)) {
+            if (D_80165400[playerIndex] == 0) {
+                D_80165440[playerIndex] += 1;
             }
-            D_80165400[var_v0] = 1;
+            D_80165400[playerIndex] = 1;
         }
-        if (D_80165440[var_v0] == 5) {
-            gIsPlayerTripleAButtonCombo[var_v0] = TRUE;
-            D_80165480[var_v0] = 0x00000078;
-            D_80165440[var_v0] = 0;
-            D_80165420[var_v0] = 0;
+        if (D_80165440[playerIndex] == 5) {
+            gIsPlayerTripleAButtonCombo[playerIndex] = TRUE;
+            D_80165480[playerIndex] = 0x00000078;
+            D_80165440[playerIndex] = 0;
+            D_80165420[playerIndex] = 0;
         }
     } else {
-        D_80165480[var_v0]--;
-        if (D_80165480[var_v0] <= 0) {
-            gIsPlayerTripleAButtonCombo[var_v0] = FALSE;
+        D_80165480[playerIndex]--;
+        if (D_80165480[playerIndex] <= 0) {
+            gIsPlayerTripleAButtonCombo[playerIndex] = FALSE;
         }
     }
 }
@@ -3893,9 +3893,8 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     UNUSED s32 pad3;
     s32 var_a0;
     f32 sp44[156] = {0.0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8};
-  //f32 sp44[156] = {0.0, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.5, 0.5, 0.5, 0.5, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.6, 0.6, 0.6, 0.6, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8, 0.8};
 
-    if (((((player->effects & 2) != 2) && ((((player->unk_0C0 / 182) <= 6) && ((player->unk_0C0 / 182) >= (-6))) || ((controller->button & 0x0010) != 0x0010))) || (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f)) || ((player->effects & 0x8000) == 0x8000))
+    if (((((player->effects & 2) != 2) && ((((player->unk_0C0 / 182) <= 6) && ((player->unk_0C0 / 182) >= (-6))) || ((controller->button & R_TRIG) != R_TRIG))) || (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f)) || ((player->effects & 0x8000) == 0x8000))
     {
         func_80036CB4(player);
     }
@@ -4251,9 +4250,6 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
         player->unk_078 *= 1.7;
     }
 }
-//#else
-//GLOBAL_ASM("asm/non_matchings/player_controller/func_80033AE0.s")
-//#endif
 
 void func_8003680C(Player *player, s16 arg1) {
     s32 sp304 = 0;
@@ -4360,7 +4356,7 @@ void func_80036C5C(Player *arg0) {
 void func_80036CB4(Player *player) {
     s32 test;
 
-    if (((player->effects & 0x10) == 0x10) && ((player->type & 0x4000) == 0x4000)) {
+    if (((player->effects & 0x10) == 0x10) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
         if ((player->unk_0C0 / 182) > 0) {
             test = ((((player->unk_07C >> 0x10) * 0xD) + 0x2B1) / 106) + 0x28;
             player->unk_07C = test << 0x10;
@@ -4371,7 +4367,7 @@ void func_80036CB4(Player *player) {
         }
         player->effects &= ~0x10;
     }
-    if (((player->effects & 0x10) == 0x10) && ((player->type & 0x4000) != 0x4000)) {
+    if (((player->effects & 0x10) == 0x10) && ((player->type & PLAYER_HUMAN) != PLAYER_HUMAN)) {
         player->effects &= ~0x10;
     }
 }
@@ -4644,9 +4640,9 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
                 ((player->effects & 8) != 8) && 
                 ((player->effects & 2) != 2) && 
                 ((player->effects & 0x10) != 0x10) && 
-                (controller->buttonPressed & 0x10)) {
+                (controller->buttonPressed & R_TRIG)) {
                     func_8002AA50(player);
-                    if (((player->type & 0x4000) == 0x4000) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
+                    if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
                         func_800C9060(arg2, 0x19008000);
                     }
             }
@@ -4737,7 +4733,7 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
 
 void func_800381AC(Player *player, struct Controller *controller, s8 arg2) {
     if (((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) && 
-        ((player->type & 0x4000) == 0x4000) && 
+        ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && 
         ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
             if ((player->type & PLAYER_START_SEQUENCE) != PLAYER_START_SEQUENCE) {
                 if (((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) {
@@ -4950,15 +4946,11 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     f32 spEC;
     f32 spE8;
     f32 spE4;
-    //f32 spE0;
-    //f32 spD8;
     f32 posX;
     f32 posY;
     f32 posZ;
     f32 sqrt;
 
-    //f32 sp90;
-    //f32 sp8C;
     f32 divOptimize;
     UNUSED s32 pad2[10];
     f32 spA4;
@@ -5074,7 +5066,7 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     D_80165070[arg3][1] = sp88[1];
     D_80165070[arg3][2] = sp88[2];
     
-    if ((player->type & 0x4000) == 0x4000) {
+    if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
         if (gKartTopSpeedTable[player->characterId] < player->unk_094) {
             divOptimize = gKartTopSpeedTable[player->characterId] / player->unk_094;
             player->velocity[0] *= divOptimize;

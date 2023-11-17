@@ -24,6 +24,7 @@
 #include "common_textures.h"
 #include "courses/all_course_data.h"
 #include "main.h"
+#include "data/other_textures.h"
 
 // Appears to be textures
 // or tluts
@@ -513,9 +514,9 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
         fruit->velocity[0] = 80.0f;
     case 1:
         nearestWaypoint = gNearestWaypointByPlayerId[(u16)(player - gPlayerOne)];
-        temp_f2  = player->pos[0] - D_80164490[nearestWaypoint].wayPointX;
-        temp_f16 = player->pos[1] - D_80164490[nearestWaypoint].wayPointY;
-        temp_f14 = player->pos[2] - D_80164490[nearestWaypoint].wayPointZ;
+        temp_f2  = player->pos[0] - D_80164490[nearestWaypoint].posX;
+        temp_f16 = player->pos[1] - D_80164490[nearestWaypoint].posY;
+        temp_f14 = player->pos[2] - D_80164490[nearestWaypoint].posZ;
         temp_f12 = fruit->velocity[0] / sqrtf((temp_f2 * temp_f2) + (temp_f16 * temp_f16) + (temp_f14 * temp_f14));
         temp_f2  *= temp_f12;
         temp_f16 *= temp_f12;
@@ -1605,10 +1606,10 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     } else if (distance < 640000.0f) {
 
         gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D670);
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D160);
+       gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1D160);
     } else {
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E910);
-        gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E480);
+       gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E910);
+       gSPDisplayList(gDisplayListHead++, d_course_kalimari_desert_dl_1E480);
     }
     if (1440000.0f < distance) { return; }
 
@@ -2282,97 +2283,97 @@ void place_course_actors(void) {
 
 void func_8029E158(void) {
     set_segment_base_addr(3, (void *) gNextFreeMemoryAddress);
-    D_802BA050 = dma_textures(D_0F04CBE0, 0x00000257U, 0x00000400U);
-    dma_textures(D_0F04CE30, 0x00000242U, 0x00000400U);
-    dma_textures(D_0F04D080, 0x00000259U, 0x00000400U);
-    dma_textures(D_0F04D2D8, 0x00000256U, 0x00000400U);
-    dma_textures(D_0F04D538, 0x00000246U, 0x00000400U);
-    dma_textures(D_0F04D790, 0x0000025EU, 0x00000400U);
-    dma_textures(D_0F04D9FC, 0x0000025CU, 0x00000400U);
-    dma_textures(D_0F04DC5C, 0x00000254U, 0x00000400U);
-    D_802BA054 = dma_textures(D_0F04DEB0, 0x0000022AU, 0x00000400U);
-    dma_textures(D_0F04E0DC, 0x00000237U, 0x00000400U);
-    dma_textures(D_0F04E314, 0x0000023EU, 0x00000400U);
-    dma_textures(D_0F04E554, 0x00000243U, 0x00000400U);
-    dma_textures(D_0F04E798, 0x00000255U, 0x00000400U);
-    dma_textures(D_0F04E9F0, 0x00000259U, 0x00000400U);
-    dma_textures(D_0F04EC4C, 0x00000239U, 0x00000400U);
-    dma_textures(D_0F04EE88, 0x00000236U, 0x00000400U);
-    dma_textures(D_0F054C3C, 0x0000028EU, 0x00000800U);
-    dma_textures(D_0F054ECC, 0x000002FBU, 0x00000800U);
-    dma_textures(D_0F0551C8, 0x00000302U, 0x00000800U);
-    dma_textures(D_0F0554CC, 0x000003B4U, 0x00000800U);
-    dma_textures(D_0F055880, 0x0000031EU, 0x00000800U);
-    dma_textures(D_0F055BA0, 0x0000036EU, 0x00000800U);
-    dma_textures(D_0F055F10, 0x0000029CU, 0x00000800U);
-    dma_textures(D_0F0561AC, 0x0000025BU, 0x00000800U);
+    D_802BA050 = dma_textures(gTextureGreenShell0, 0x00000257U, 0x00000400U);
+    dma_textures(gTextureGreenShell1, 0x00000242U, 0x00000400U);
+    dma_textures(gTextureGreenShell2, 0x00000259U, 0x00000400U);
+    dma_textures(gTextureGreenShell3, 0x00000256U, 0x00000400U);
+    dma_textures(gTextureGreenShell4, 0x00000246U, 0x00000400U);
+    dma_textures(gTextureGreenShell5, 0x0000025EU, 0x00000400U);
+    dma_textures(gTextureGreenShell6, 0x0000025CU, 0x00000400U);
+    dma_textures(gTextureGreenShell7, 0x00000254U, 0x00000400U);
+    D_802BA054 = dma_textures(gTextureBlueShell0, 0x0000022AU, 0x00000400U);
+    dma_textures(gTextureBlueShell1, 0x00000237U, 0x00000400U);
+    dma_textures(gTextureBlueShell2, 0x0000023EU, 0x00000400U);
+    dma_textures(gTextureBlueShell3, 0x00000243U, 0x00000400U);
+    dma_textures(gTextureBlueShell4, 0x00000255U, 0x00000400U);
+    dma_textures(gTextureBlueShell5, 0x00000259U, 0x00000400U);
+    dma_textures(gTextureBlueShell6, 0x00000239U, 0x00000400U);
+    dma_textures(gTextureBlueShell7, 0x00000236U, 0x00000400U);
+    dma_textures(gTextureFinishLineBanner1, 0x0000028EU, 0x00000800U);
+    dma_textures(gTextureFinishLineBanner2, 0x000002FBU, 0x00000800U);
+    dma_textures(gTextureFinishLineBanner3, 0x00000302U, 0x00000800U);
+    dma_textures(gTextureFinishLineBanner4, 0x000003B4U, 0x00000800U);
+    dma_textures(gTextureFinishLineBanner5, 0x0000031EU, 0x00000800U);
+    dma_textures(gTextureFinishLineBanner6, 0x0000036EU, 0x00000800U);
+    dma_textures(gTextureFinishLineBanner7, 0x0000029CU, 0x00000800U);
+    dma_textures(gTextureFinishLineBanner8, 0x0000025BU, 0x00000800U);
     dma_textures(gTexture671A88, 0x00000400U, 0x00000800U);
     dma_textures(gTexture6774D8, 0x00000400U, 0x00000800U);
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
-        dma_textures(D_0F04F45C, 0x0000035BU, 0x00000800U);
-        D_802BA058 = dma_textures(D_0F056408, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F05662C, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F05688C, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F056AD0, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F056CF0, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F056EC8, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F057084, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F057288, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F057590, 0x000003E8U, 0x00000800U);
+        dma_textures(gTextureTrees1, 0x0000035BU, 0x00000800U);
+        D_802BA058 = dma_textures(gTexturePiranhaPlant1, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant2, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant3, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant4, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant5, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant6, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant7, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant8, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U);
         break;
     case COURSE_BOWSER_CASTLE:
         dma_textures(gTextureShrub, 0x000003FFU, 0x00000800U);
         break;
     case COURSE_YOSHI_VALLEY:
-        dma_textures(D_0F04F7A4, 0x000003E8U, 0x00000800U);
+        dma_textures(gTextureTrees2, 0x000003E8U, 0x00000800U);
         break;
     case COURSE_FRAPPE_SNOWLAND:
-        dma_textures(D_0F0513CC, 0x00000454U, 0x00000800U);
-        dma_textures(D_0F051820, 0x00000432U, 0x00000800U);
+        dma_textures(gTextureFrappeSnowlandTreeLeft, 0x00000454U, 0x00000800U);
+        dma_textures(gTextureFrappeSnowlandTreeRight, 0x00000432U, 0x00000800U);
         break;
     case COURSE_ROYAL_RACEWAY:
-        dma_textures(D_0F04FB3C, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F050D50, 0x000003E8U, 0x00000800U);
-        D_802BA058 = dma_textures(D_0F056408, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F05662C, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F05688C, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F056AD0, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F056CF0, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F056EC8, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F057084, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F057288, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F057590, 0x000003E8U, 0x00000800U);
+        dma_textures(gTextureTrees3, 0x000003E8U, 0x00000800U);
+        dma_textures(gTextureTrees7, 0x000003E8U, 0x00000800U);
+        D_802BA058 = dma_textures(gTexturePiranhaPlant1, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant2, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant3, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant4, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant5, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant6, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant7, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant8, 0x000003E8U, 0x00000800U);
+        dma_textures(gTexturePiranhaPlant9, 0x000003E8U, 0x00000800U);
         break;
     case COURSE_LUIGI_RACEWAY:
-        dma_textures(D_0F050468, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F050678, 0x000003E8U, 0x00000800U);
+        dma_textures(gTextureTrees5Left, 0x000003E8U, 0x00000800U);
+        dma_textures(gTextureTrees5Right, 0x000003E8U, 0x00000800U);
         break;
     case COURSE_MOO_MOO_FARM:
-        dma_textures(D_0F04FE28, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F050118, 0x000003E8U, 0x00000800U);
-        dma_textures(D_0F051C54, 0x00000400U, 0x00000800U);
-        dma_textures(D_0F051FD8, 0x00000400U, 0x00000800U);
-        dma_textures(D_0F05232C, 0x00000400U, 0x00000800U);
-        dma_textures(D_0F0526B8, 0x00000400U, 0x00000800U);
-        dma_textures(D_0F052A20, 0x00000400U, 0x00000800U);
-        dma_textures(D_0F052D3C, 0x00000400U, 0x00000800U);
-        dma_textures(D_0F05300C, 0x00000400U, 0x00000800U);
-        dma_textures(D_0F0532F8, 0x00000400U, 0x00000800U);
-        dma_textures(D_0F05363C, 0x00000400U, 0x00000800U);
-        dma_textures(D_0F053950, 0x00000400U, 0x00000800U);
+        dma_textures(gTextureTrees4Left, 0x000003E8U, 0x00000800U);
+        dma_textures(gTextureTrees4Right, 0x000003E8U, 0x00000800U);
+        dma_textures(gTextureCow01Left, 0x00000400U, 0x00000800U);
+        dma_textures(gTextureCow01Right, 0x00000400U, 0x00000800U);
+        dma_textures(gTextureCow02Left, 0x00000400U, 0x00000800U);
+        dma_textures(gTextureCow02Right, 0x00000400U, 0x00000800U);
+        dma_textures(gTextureCow03Left, 0x00000400U, 0x00000800U);
+        dma_textures(gTextureCow03Right, 0x00000400U, 0x00000800U);
+        dma_textures(gTextureCow04Left, 0x00000400U, 0x00000800U);
+        dma_textures(gTextureCow04Right, 0x00000400U, 0x00000800U);
+        dma_textures(gTextureCow05Left, 0x00000400U, 0x00000800U);
+        dma_textures(gTextureCow05Right, 0x00000400U, 0x00000800U);
         break;
     case COURSE_KALAMARI_DESERT:
-        dma_textures(D_0F053C34, 0x0000033EU, 0x00000800U);
-        dma_textures(D_0F053F74, 0x000002FBU, 0x00000800U);
-        dma_textures(D_0F054270, 0x000002A8U, 0x00000800U);
-        dma_textures(D_0F054518, 0x00000374U, 0x00000800U);
-        dma_textures(D_0F05488C, 0x000003AFU, 0x00000800U);
+        dma_textures(gTextureCactus1Left, 0x0000033EU, 0x00000800U);
+        dma_textures(gTextureCactus1Right, 0x000002FBU, 0x00000800U);
+        dma_textures(gTextureCactus2Left, 0x000002A8U, 0x00000800U);
+        dma_textures(gTextureCactus2Right, 0x00000374U, 0x00000800U);
+        dma_textures(gTextureCactus3, 0x000003AFU, 0x00000800U);
         break;
     case COURSE_DK_JUNGLE:
-        dma_textures(D_0F057EB4, 0x0000032FU, 0x00000400U);
-        dma_textures(D_0F0581E4, 0x00000369U, 0x00000400U);
-        dma_textures(D_0F058550, 0x00000364U, 0x00000400U);
+        dma_textures(gTextureDksJungleParkwayKiwanoFruit1, 0x0000032FU, 0x00000400U);
+        dma_textures(gTextureDksJungleParkwayKiwanoFruit2, 0x00000369U, 0x00000400U);
+        dma_textures(gTextureDksJungleParkwayKiwanoFruit3, 0x00000364U, 0x00000400U);
         break;
     }
     init_red_shell_texture();
@@ -2665,7 +2666,7 @@ s32 func_8029EEB8(Player *player, Vec3f pos, f32 arg2, f32 arg3, f32 arg4) {
 
 s32 func_8029F1F8(Player *player, struct Actor *marioRacewaySign) {
     if (func_8029EEB8(player, marioRacewaySign->pos, 7.0f, 200.0f, 0.8f) == 1) {
-        if ((player->type & 0x4000) != 0) {
+        if ((player->type & PLAYER_HUMAN) != 0) {
             if ((player->effects & 0x200) != 0) {
                 marioRacewaySign->flags |= 0x400;
                 func_800C98B8(player->pos, player->velocity, 0x19018010U);
@@ -2681,7 +2682,7 @@ s32 func_8029F1F8(Player *player, struct Actor *marioRacewaySign) {
 
 s32 func_8029F2FC(Player *player, struct PiranhaPlant *plant) {
     if (func_8029EEB8(player, plant->pos, plant->boundingBoxSize, plant->boundingBoxSize, 2.5f) == 1) {
-        if ((player->type & 0x4000) != 0) {
+        if ((player->type & PLAYER_HUMAN) != 0) {
             if ((player->effects & 0x200) != 0) {
                 plant->flags |= 0x400;
                 func_800C98B8(player->pos, player->velocity, 0x1901A24AU);
@@ -2732,7 +2733,7 @@ s32 func_8029F408(Player *player, struct YoshiValleyEgg *egg) {
     if (totalBox < xz_dist) {
         return 0;
     }
-    if ((player->type & 0x4000) != 0) {
+    if ((player->type & PLAYER_HUMAN) != 0) {
         if ((player->effects & 0x200) != 0) {
             egg->flags |= 0x400;
             egg->pathCenter[1] = 8.0f;
@@ -2797,7 +2798,7 @@ s32 func_8029F69C(Player *player, struct Actor *actor) {
     }
     sp48 = player->velocity[0];
     sp44 = player->velocity[2];
-    if (player->type & 0x4000) {
+    if (player->type & PLAYER_HUMAN) {
         if (player->effects & 0x200) {
             actor->flags |= 0x400;
             func_800C98B8(player->pos, player->velocity, 0x19018010U);
@@ -3294,7 +3295,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
             actor->state = 3;
             actor->flags = -0x8000;
             actor->unk_04 = 0;
-            if (player->type & 0x4000) {
+            if (player->type & PLAYER_HUMAN) {
                 func_8007ABFC(player - gPlayerOne, 7);
             }
         } else if (actor->state == 0) {
@@ -3307,7 +3308,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
             actor->state = 3;
             actor->flags = -0x8000;
             actor->unk_04 = 0;
-            if (player->type & 0x4000) {
+            if (player->type & PLAYER_HUMAN) {
                 func_8007ABFC(player - gPlayerOne, 0);
             }
         } else if (actor->state == 0) {
@@ -3325,7 +3326,7 @@ void evaluate_player_collision(void) {
     s32 i, j;
     Player *phi_s1;
 
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < NUM_PLAYERS; i++) {
         phi_s1 = &gPlayers[i];
 
         if (((phi_s1->type & 0x8000) != 0) && ((phi_s1->effects & 0x4000000) == 0)) {

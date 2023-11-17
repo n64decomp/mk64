@@ -8,7 +8,11 @@
 #define AUDIO_LOCK_LOADING 0x19710515
 
 #define NUMAIBUFFERS 3
+#ifdef VERSION_EU
+#define AIBUFFER_LEN (0xaa * 16)
+#else
 #define AIBUFFER_LEN (0xa0 * 16)
+#endif
 
 // number of DMAs performed during this frame
 extern s32 gCurrAudioFrameDmaCount;

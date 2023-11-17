@@ -16,9 +16,11 @@
 #include "render_courses.h"
 #include "staff_ghosts.h"
 #include "code_80005FD0.h"
+#include "code_8001F980.h"
 #include "podium_ceremony_actors.h"
 #include "main.h"
 #include "menus.h"
+#include "code_8001F980.h"
 
 // arg4 is height? Or something like that?
 void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingColumn, f32 arg4, f32 arg5, u16 characterId, s16 playerType) {
@@ -419,11 +421,11 @@ void func_80039DA4(void) {
     if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
         (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < NUM_PLAYERS; i++) {
             D_80165270[i] = sp2C[i];
         }
     } else {
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < NUM_PLAYERS; i++) {
             D_80165270[i] = spC[gGPCurrentRaceRankByPlayerId[i]];
         }
     }
@@ -728,9 +730,9 @@ void func_8003C0F0(void) {
         case COURSE_WARIO_STADIUM:
         case COURSE_DK_JUNGLE:
             func_8000F2DC();
-            sp5E = (f32) D_80164550[0][0].wayPointX;
-            sp5C = (f32) D_80164550[0][0].wayPointZ;
-            sp5A = (f32) D_80164550[0][0].wayPointY;
+            sp5E = (f32) D_80164550[0][0].posX;
+            sp5C = (f32) D_80164550[0][0].posZ;
+            sp5A = (f32) D_80164550[0][0].posY;
             if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
                 sp5E = 0;
             }
@@ -1040,7 +1042,7 @@ void func_8003CD98(Player *player, Camera *camera, s8 playerId, s8 arg3) {
         D_80165110[arg3][playerId] = player->animGroupSelector[arg3];
         D_80165150[arg3][playerId] = player->unk_0A8;
         D_801651D0[arg3][playerId] = 0;
-        func_800267AC(player, playerId, arg3);
+        player_render(player, playerId, arg3);
     }
 }
 
@@ -1208,7 +1210,7 @@ void func_8003DB5C(void) {
     camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 0);
     camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 1);
 
-    for (playerId = 0; playerId < 8; playerId++, player++) {
+    for (playerId = 0; playerId < NUM_PLAYERS; playerId++, player++) {
         load_kart_palette(player, playerId, 1, 0);
         load_kart_palette(player, playerId, 1, 1);
     }

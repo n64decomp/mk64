@@ -1052,7 +1052,7 @@ s32 func_80089CBC(s32 objectIndex, f32 arg1) {
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x81000000)) {
-                if ((player->type & PLAYER_EXISTS) && !(player->type & 0x100) && (func_80088E98(objectIndex, player, arg1) != 0)) {
+                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088E98(objectIndex, player, arg1) != 0)) {
                     if (!(player->effects & 0x200)) {
                         player->statusEffects |= REVERSE_EFFECT;
                         if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {

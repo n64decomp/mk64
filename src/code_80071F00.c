@@ -13,6 +13,7 @@
 #include "objects.h"
 #include "waypoints.h"
 #include "variables.h"
+#include "code_800029B0.h"
 #include "code_80005FD0.h"
 #include "code_80057C60.h"
 #include "code_80086E70.h"
@@ -27,7 +28,9 @@
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
 #include "courses/all_course_data.h"
+#include "src/ending/ceremony_data.inc.h"
 #include "menus.h"
+#include "data/other_textures.h"
 
 // TODO: unused?
 f32 D_800E43B0[] = { 
@@ -2271,7 +2274,6 @@ void func_80076F2C(void) {
     }
 }
 
-extern s16 D_800E6788[1]; // todo: fix this extern
 void func_80076FEC(s32 objectIndex, s32 flameIndex) {
     func_800723A4(objectIndex, 3);
 
@@ -2282,9 +2284,9 @@ void func_80076FEC(s32 objectIndex, s32 flameIndex) {
 
     // Mixing arr + offset and array access... Why?
     // todo: ifdef this to proper array access.
-    gObjectList[objectIndex].unk_010[0] = (f32)(intptr_t)(*(&D_800E6788 + flameIndex * 3)[0]) * D_8018D01C;
-    gObjectList[objectIndex].unk_010[1] = (f32)(intptr_t)(*(&D_800E6788 + flameIndex * 3)[1]);
-    gObjectList[objectIndex].unk_010[2] = (f32)(intptr_t)(*(&D_800E6788 + flameIndex * 3)[2]);
+    gObjectList[objectIndex].unk_010[0] = (f32)(intptr_t)(*(&gTorchSpawns + flameIndex * 3)[0]) * D_8018D01C;
+    gObjectList[objectIndex].unk_010[1] = (f32)(intptr_t)(*(&gTorchSpawns + flameIndex * 3)[1]);
+    gObjectList[objectIndex].unk_010[2] = (f32)(intptr_t)(*(&gTorchSpawns + flameIndex * 3)[2]);
     gObjectList[objectIndex].unk_034 = 0;
     gObjectList[objectIndex].type = 255;
     gObjectList[objectIndex].unk_0A2 = 255;
@@ -3074,7 +3076,6 @@ void func_800791F0(s32 objectIndex, s32 playerId) {
     func_800C9018(playerId, 0x0100FA28);
 }
 
-extern u8 *D_0F05EB50;
 extern s16 D_801656F0;
 extern s32 D_8018D168;
 extern s32 D_8018D180;
@@ -3084,7 +3085,7 @@ void func_800792D8(s32 objectIndex, s32 arg1) {
         D_801656F0 = 0;
         D_8018D168 = 0;
     }
-    init_texture_object(objectIndex, (u8 *) gTLUTLakituCountdown, (u8 *) &D_0F05EB50, 0x38U, (u16) 0x00000048);
+    init_texture_object(objectIndex, (u8 *) gTLUTLakituCountdown, gTextureLakituNoLights1, 0x38U, (u16) 0x00000048);
     gObjectList[objectIndex].vertex = D_0D005EB0;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     set_object_flag_unk_054_false(objectIndex, 0x00000010);
@@ -3176,7 +3177,6 @@ void func_80079380(s32 objectIndex, s32 arg1) {
     }
 }
 
-extern u8 *D_0F07E350;
 //extern s32 D_8018C028;
 extern u16 D_800E6834[][4]; // static
 
@@ -3184,7 +3184,7 @@ void func_8007963C(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, gTLUTLakituCheckeredFlag, (u8 *) &D_0F07E350, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, gTLUTLakituCheckeredFlag, gTextureLakituCheckeredFlag01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
     temp_v0->vertex = D_0D006730;
@@ -3259,11 +3259,9 @@ void func_8007993C(s32 objectIndex, Player *player) {
     func_800722CC(objectIndex, 2);
 }
 
-extern u8 D_0F0CCF50;
-
 void func_800799A8(s32 objectIndex, s32 arg1) {
     func_800791F0(objectIndex, arg1);
-    init_texture_object(objectIndex, gTLUTLakituFishing, &D_0F0CCF50, 0x38U, (u16) 0x00000048);
+    init_texture_object(objectIndex, gTLUTLakituFishing, gTextureLakituFishing1, 0x38U, (u16) 0x00000048);
     gObjectList[objectIndex].vertex = D_0D005F30;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     func_80086E70(objectIndex);
@@ -3432,14 +3430,13 @@ void func_80079D44(s32 objectIndex, s32 playerId) {
     func_80079A5C(objectIndex, temp_s1);
 }
 
-extern u8 *D_0F09DB50[];
 extern u16 D_800E694C[];
 
 void func_8007A060(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, gTLUTLakituSecondLap, (u8 *) D_0F09DB50, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, gTLUTLakituSecondLap, gTextureLakituSecondLap01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
     temp_v0->vertex = D_0D006730;
@@ -3483,13 +3480,11 @@ void func_8007A124(s32 objectIndex, s32 playerIndex) {
     }
 }
 
-extern u8 *D_0F0AD750;
-
 void func_8007A228(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, gTLUTLakituFinalLap, (u8 *)&D_0F0AD750, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, gTLUTLakituFinalLap, gTextureLakituFinalLap01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
     temp_v0->vertex = D_0D006730;
@@ -3533,13 +3528,12 @@ void func_8007A2EC(s32 objectIndex, s32 playerIndex) {
     }
 }
 
-extern u8 D_0F0BD350[];
 extern u16 D_800E69B0[][4]; // static?
 
 void func_8007A3F0(s32 objectIndex, s32 arg1) {
     f32 var = 5000.0f;
     func_800791F0(objectIndex, arg1);
-    init_texture_object(objectIndex, gTLUTLakituReverse, D_0F0BD350, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, gTLUTLakituReverse, gTextureLakituReverse01, 0x48U, (u16) 0x00000038);
     gObjectList[objectIndex].activeTexture = D_8018C028;
     gObjectList[objectIndex].vertex = D_0D006730;
     gObjectList[objectIndex].pos[2] = var;
@@ -4748,7 +4742,7 @@ void func_8007CC00(void) {
 void func_8007CE0C(s32 objectIndex) {
     Objects *temp_s0;
 
-    init_texture_object(objectIndex, d_course_banshee_boardwalk_boo_tlut, D_0F0D0E50, 0x30U, (u16) 0x00000028);
+    init_texture_object(objectIndex, d_course_banshee_boardwalk_boo_tlut, gTextureGhosts, 0x30U, (u16) 0x00000028);
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->itemDisplay = 0x1C;
     temp_s0->pos[0] = 0.0f;
@@ -5832,7 +5826,7 @@ s32 func_8007F75C(s32 playerId) {
     var_s6 = 0;
     if ((waypoint >= 0xAA) && (waypoint < 0xB5)) {
         temp_s7 = random_int(0x0032U) + 0x32;
-        for (someIndex = 0; someIndex < D_80165750; someIndex++) {
+        for (someIndex = 0; someIndex < gNumActiveThwomps; someIndex++) {
             objectIndex = D_80183EA0[someIndex];
             if (gObjectList[objectIndex].unk_0D5 == 3) {
                 var_s6 = 1;
@@ -5840,7 +5834,7 @@ s32 func_8007F75C(s32 playerId) {
             }
         }
     } else if ((waypoint >= 0xD7) && (waypoint < 0xE2)) {
-        for (someIndex = 0; someIndex < D_80165750; someIndex++) {
+        for (someIndex = 0; someIndex < gNumActiveThwomps; someIndex++) {
             objectIndex = D_80183EA0[someIndex];
             if (gObjectList[objectIndex].unk_0D5 == 3) {
                 var_s6 = 1;
@@ -5861,7 +5855,7 @@ void func_8007F8D8(void) {
 
     player = gPlayerOne;
     var_s4 = 1;
-    for (someIndex = 0; someIndex < D_80165750; someIndex++){
+    for (someIndex = 0; someIndex < gNumActiveThwomps; someIndex++){
         objectIndex = D_80183EA0[someIndex];
         object = &gObjectList[objectIndex];
         if (object->unk_0D5 == 3) {
@@ -6331,7 +6325,7 @@ void func_80080A4C(s32 objectIndex, s32 cameraPlayerId) {
     Camera *camera = &camera1[cameraPlayerId];
     Player *player = &gPlayerOne[cameraPlayerId];
 
-    if (gScreenModeSelection != 3) {
+    if (gScreenModeSelection != SCREEN_MODE_3P_4P_SPLITSCREEN) {
         if ((func_80072320(objectIndex, 0x00000010) != 0) && (func_80088A58(objectIndex, player, 500.0f) != 0)) {
             func_8001CA10(camera);
             func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_038, 0x1900800FU);
@@ -6388,7 +6382,7 @@ void func_80080DE4(s32 arg0) {
     s32 var_v1;
 
     player = gPlayerOne;
-    for (var_v1 = 0; var_v1 < 8; var_v1++, player++) {
+    for (var_v1 = 0; var_v1 < NUM_PLAYERS; var_v1++, player++) {
         if (arg0 == player->unk_040) {
             player->statusEffects &= ~0x100;
             player->unk_040 = -1;
@@ -6503,13 +6497,13 @@ void func_80081210(void) {
 
     D_80165834[0] += 0x100;
     D_80165834[1] += 0x200;
-    for (var_s4 = 0; var_s4 < D_80165750; var_s4++) {
+    for (var_s4 = 0; var_s4 < gNumActiveThwomps; var_s4++) {
         objectIndex = D_80183EA0[var_s4];
         func_800722CC(objectIndex, 0x00000010);
         func_8008A4CC(objectIndex);
     }
     func_8007F8D8();
-    for (var_s4 = 0; var_s4 < D_80165750; var_s4++) {
+    for (var_s4 = 0; var_s4 < gNumActiveThwomps; var_s4++) {
         objectIndex = D_80183EA0[var_s4];
         if (gObjectList[objectIndex].state != 0) {
             switch (gObjectList[objectIndex].unk_0D5) {
@@ -6535,10 +6529,10 @@ void func_80081210(void) {
         }
     }
     player = gPlayerOne;
-    for (var_s4 = 0; var_s4 < 8; var_s4++, player++) {
+    for (var_s4 = 0; var_s4 < NUM_PLAYERS; var_s4++, player++) {
         player->boundingBoxCorners[0].unk_14 &= ~3;
         player->unk_046 &= ~0x0006;
-        for (var_s2_3 = 0; var_s2_3 < D_80165750; var_s2_3++) {
+        for (var_s2_3 = 0; var_s2_3 < gNumActiveThwomps; var_s2_3++) {
             objectIndex = D_80183EA0[var_s2_3];
             if (!(player->effects & 0x80000000)) {
                 func_80080B28(objectIndex, var_s4);
@@ -6552,7 +6546,7 @@ void func_80081210(void) {
         }
     }
     func_8007542C(3);
-    for (var_s4 = 0; var_s4 < D_80165750; var_s4++) {
+    for (var_s4 = 0; var_s4 < gNumActiveThwomps; var_s4++) {
         objectIndex = D_80183EA0[var_s4];
         if (func_80072320(objectIndex, 0x00000020) == 0) continue;
 
@@ -6685,32 +6679,22 @@ void func_80081A88(s32 objectIndex) {
     func_8008BF18(objectIndex);
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b52d92c2340f6f4ba1aafb464188bb698752fbb0 on Jul-25-2023
-extern ? D_8018D198;
-extern ? D_8018D1A8;
-extern ? D_8018D1B8;
-
 void func_80081AFC(s32 objectIndex, s32 arg1) {
-    ? *sp2C;
-    s16 temp_v1;
-    s32 temp_v0;
+    s8 *sp2C;
     Objects *temp_s0;
 
     temp_s0 = &gObjectList[objectIndex];
-    temp_v1 = temp_s0->state;
-    switch (temp_v1) {                              /* irregular */
+    switch (temp_s0->state) {                              /* irregular */
     case 0x1:
         func_80081848(objectIndex);
         break;
     case 0x2:
-        temp_v0 = temp_s0->unk_04C;
-        if (temp_v0 == 0) {
+        if (temp_s0->unk_04C == 0) {
             func_80086EAC(objectIndex, 2, 1);
             func_80072488(objectIndex);
             set_object_flag_unk_054_true(objectIndex, 0x00000200);
         } else {
-            temp_s0->unk_04C = temp_v0 - 1;
+            temp_s0->unk_04C--;
         }
         break;
     case 0x3:
@@ -6738,26 +6722,26 @@ void func_80081AFC(s32 objectIndex, s32 arg1) {
             func_80072428(objectIndex);
             switch (arg1) {                         /* switch 1; irregular */
             case 1:                                 /* switch 1 */
-                sp2C = &D_8018D198;
+                sp2C = D_8018D198;
                 break;
             case 2:                                 /* switch 1 */
-                sp2C = &D_8018D1A8;
+                sp2C = D_8018D1A8;
                 break;
             case 3:                                 /* switch 1 */
-                sp2C = &D_8018D1B8;
+                sp2C = D_8018D1B8;
                 break;
             }
-            *(sp2C + temp_s0->type) = 0;
+            sp2C[temp_s0->type] = 0;
         }
+        break;
+    case 0:
+    default:
         break;
     }
     if (temp_s0->state >= 2) {
         func_80073514(objectIndex);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80081AFC.s")
-#endif
 
 void func_80081D34(s32 objectIndex) {
     Player *var_s1;
@@ -6805,72 +6789,63 @@ void func_80081D34(s32 objectIndex) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 8267401fa4ef7a38942dcca43353cc1bcc6efabc
-extern f32 D_8018D01C;
-extern s8 D_8018D198;
-extern s8 D_8018D1A8;
-extern s8 D_8018D1B8;
-static ? D_800E6360;                                /* unable to generate initializer */
-
+#ifdef NON_MATCHING
+/**
+ * Nonmatching due to regalloc stuff
+ * The use of the `offset` variable is really really weird
+ * The intent of the function appears to be choose a random mole from a given
+ * group of moles (decided by arg1)
+ * `offset` then would then be offsetting the indexing into gMoleSpawns
+ * so that we choose the appropriate spawn location for that mole
+ * But as its written, `offset` is triple what it ought to be.
+ * So there' something kind of fucky happening
+ **/
 void func_80081FF4(s32 objectIndex, s32 arg1) {
-    s32 sp2C;
-    s16 sp28;
-    ? *sp20;
-    Objects *sp18;
-    ? *var_a2;
+    s32 stackPadding0;
+    s32 stackPadding1;
+    s32 moleCount;
     s16 var_v1;
+    s16 offset;
     s32 var_a0;
-    s8 *temp_v0;
-    Objects *temp_a3;
-    void *temp_v0_2;
+    s8 *var_a2;
 
     func_800723A4(objectIndex, 0);
-    temp_a3 = &gObjectList[objectIndex];
-    temp_a3->unk_04C = random_int(0x001EU) + 5;
+    gObjectList[objectIndex].unk_04C = random_int(0x001EU) + 5;
     switch (arg1) {                                 /* irregular */
     case 1:
-        var_a2 = &D_8018D198;
-        sp28 = 0;
-        sp2C = 8;
-block_7:
-        sp20 = var_a2;
+        var_a2 = D_8018D198;
+        moleCount = NUM_GROUP1_MOLES;
+        offset = 0;
         break;
     case 2:
-        var_a2 = &D_8018D1A8;
-        sp28 = 0x0018;
-        sp2C = 0x0000000B;
-        goto block_7;
+        var_a2 = D_8018D1A8;
+        moleCount = NUM_GROUP2_MOLES;
+        offset = 24;
+        // offset = NUM_GROUP1_MOLES;
+        break;
     case 3:
-        var_a2 = &D_8018D1B8;
-        sp28 = 0x0039;
-        sp2C = 0x0000000C;
-        goto block_7;
+        var_a2 = D_8018D1B8;
+        moleCount = NUM_GROUP3_MOLES;
+        offset = 57;
+        // offset = NUM_GROUP1_MOLES + NUM_GROUP2_MOLES;
+        break;
     }
-    sp18 = temp_a3;
-    var_v1 = random_int(sp2C & 0xFFFF);
-    var_a0 = 0;
-    if (sp2C > 0) {
-loop_9:
-        temp_v0 = var_v1 + sp20;
-        var_a0 += 1;
-        if (*temp_v0 != 0) {
-            var_v1 += 1;
-            if (var_v1 == sp2C) {
+    var_v1 = random_int(moleCount);
+    for (var_a0 = 0; var_a0 < moleCount; var_a0++) {
+        if (var_a2[var_v1] != 0) {
+            var_v1++;
+            if (var_v1 == moleCount) {
                 var_v1 = 0;
             }
-            if (var_a0 != sp2C) {
-                goto loop_9;
-            }
         } else {
-            *temp_v0 = 1;
-            temp_a3->type = var_v1;
+            var_a2[var_v1] = 1;
+            gObjectList[objectIndex].type = var_v1;
+            break;
         }
     }
-    temp_v0_2 = (sp28 * 2) + (var_v1 * 6) + &D_800E6360;
-    temp_a3->unk_010[0] = (f32) temp_v0_2->unk0 * D_8018D01C;
-    temp_a3->unk_010[1] = (f32) ((f64) temp_v0_2->unk2 - 9.0);
-    temp_a3->unk_010[2] = (f32) temp_v0_2->unk4;
+    gObjectList[objectIndex].unk_010[0] = gMoleSpawns[var_v1][offset + 0] * D_8018D01C;
+    gObjectList[objectIndex].unk_010[1] = gMoleSpawns[var_v1][offset + 1] - 9.0;
+    gObjectList[objectIndex].unk_010[2] = gMoleSpawns[var_v1][offset + 2];
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80081FF4.s")
@@ -8066,7 +8041,7 @@ void func_800857C0(void) {
 }
 
 void func_80085878(s32 objectIndex, s32 arg1) {
-    struct TrackWayPoint *temp_v0;
+    TrackWaypoint *temp_v0;
     Objects *temp_s0;
 
     temp_s0 = &gObjectList[objectIndex];
@@ -8079,7 +8054,7 @@ void func_80085878(s32 objectIndex, s32 arg1) {
     temp_s0->unk_084[8] = (arg1 * 0x12C) + 0x1F4;
     func_8008B7D4(objectIndex, 0.0f, -15.0f, 0.0f);
     temp_v0 = &D_80164490[(u16)temp_s0->unk_084[8]];
-    func_8008B80C(objectIndex, temp_v0->wayPointX, temp_v0->wayPointY, temp_v0->wayPointZ);
+    func_8008B80C(objectIndex, temp_v0->posX, temp_v0->posY, temp_v0->posZ);
     func_8008B888(objectIndex, 0U, 0U, 0U);
     temp_s0->unk_034 = 4.0f;
     temp_s0->type = func_80004EAC(d_rainbow_road_unk3, 0);
@@ -8243,7 +8218,6 @@ void func_80085F74(s32 objectIndex) {
  * But then it get popped back into v0 when its supposed to be popped into t0.
  * I really, really don't get why that's happening and the permuter hasn't found anything
 **/
-extern Vec3f D_800E6734[];                               /* unable to generate initializer */
 
 void func_80086074(s32 objectIndex, s32 arg1) {
     func_8008B7D4(objectIndex, D_800E6734[arg1][0] * D_8018D01C, D_800E6734[arg1][1], D_800E6734[arg1][2]);
@@ -8300,15 +8274,15 @@ void func_800861E0(void) {
 void func_8008629C(s32 objectIndex, s32 arg1) {
     switch (arg1) {                                 /* irregular */
     case 0:
-        gObjectList[objectIndex].unk_070 = D_0B0075F0;
+        gObjectList[objectIndex].unk_070 = podium_dl3;
         gObjectList[objectIndex].unk_04C = 0x00000038;
         break;
     case 1:
-        gObjectList[objectIndex].unk_070 = D_0B008040;
+        gObjectList[objectIndex].unk_070 = podium2_dl3;
         gObjectList[objectIndex].unk_04C = 0x0000002B;
         break;
     case 2:
-        gObjectList[objectIndex].unk_070 = D_0B008A90;
+        gObjectList[objectIndex].unk_070 = podium3_dl3;
         gObjectList[objectIndex].unk_04C = 0x0000001E;
         break;
     default:
@@ -8410,13 +8384,13 @@ void func_80086700(s32 objectIndex) {
     if (gCCSelection < CC_150) {
         switch (D_802874D8.unk1D) {                       /* switch 1; irregular */
         case 0:                                     /* switch 1 */
-            gObjectList[objectIndex].unk_070 = D_0B0069D8;
+            gObjectList[objectIndex].unk_070 = gold_trophy_dl10;
             break;
         case 1:                                     /* switch 1 */
-            gObjectList[objectIndex].unk_070 = D_0B006A78;
+            gObjectList[objectIndex].unk_070 = gold_trophy_dl12;
             break;
         case 2:                                     /* switch 1 */
-            gObjectList[objectIndex].unk_070 = D_0B006B18;
+            gObjectList[objectIndex].unk_070 = gold_trophy_dl14;
             break;
         default:                                    /* switch 1 */
             break;
@@ -8424,13 +8398,13 @@ void func_80086700(s32 objectIndex) {
     } else {
         switch (D_802874D8.unk1D) {                       /* irregular */
         case 0:
-            gObjectList[objectIndex].unk_070 = D_0B006A28;
+            gObjectList[objectIndex].unk_070 = gold_trophy_dl11;
             break;
         case 1:
-            gObjectList[objectIndex].unk_070 = D_0B006AC8;
+            gObjectList[objectIndex].unk_070 = gold_trophy_dl13;
             break;
         case 2:
-            gObjectList[objectIndex].unk_070 = D_0B006B68;
+            gObjectList[objectIndex].unk_070 = gold_trophy_dl15;
             break;
         default:
             break;

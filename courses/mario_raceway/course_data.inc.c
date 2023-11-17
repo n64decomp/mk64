@@ -3017,7 +3017,7 @@ Gfx d_course_mario_raceway_dl_5228[] =
     gsSPEndDisplayList(),
 };
 
-struct TrackWayPoint d_course_mario_raceway_unknown_waypoints[] = {
+TrackWaypoint d_course_mario_raceway_unknown_waypoints[] = {
     { 0, 0, -224, 0 },
     { 0, 0, -241, 0 },
     { 0, 0, -612, 0 },
@@ -3093,7 +3093,7 @@ struct TrackWayPoint d_course_mario_raceway_unknown_waypoints[] = {
     { -32768, 0, 0, 0 },
 };
 
-struct TrackWayPoint d_course_mario_raceway_track_waypoints[] = {
+TrackWaypoint d_course_mario_raceway_track_waypoints[] = {
     { 0, 0, -232, 1 },
     { 0, 0, -252, 1 },
     { 0, 0, -272, 1 },

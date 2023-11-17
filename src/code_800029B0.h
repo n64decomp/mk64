@@ -3,6 +3,7 @@
 
 #include <macros.h>
 #include <ultra64.h>
+#include <types.h>
 #include <actor_types.h>
 
 /* Function Prototypes */
@@ -13,10 +14,37 @@ void func_80002DAC(void);
 void clear_nmi_buffer(void);
 void func_80003040(void);
 
+extern s16 gCurrentCourseId; // D_800DC5A0
+extern s16 gCurrentlyLoadedCourseId;
+extern u16 D_800DC5A8;
+extern s32 D_800DC5AC;
+extern u16 D_800DC5B0;
+extern u16 D_800DC5B4;
+extern u16 D_800DC5B8;
+extern u16 D_800DC5BC;
+extern u16 gIsInQuitToMenuTransition;
+extern u16 gQuitToMenuTransitionCounter;
+extern u16 D_800DC5C8;
+extern u16 D_800DC5CC;
+extern s32 D_800DC5D0;
+extern s32 D_800DC5D4;
+extern s32 D_800DC5D8;
+extern s32 D_800DC5DC;
+extern s32 D_800DC5E0;
+// This is tracking which credit "state" we're in, decides which credits are shown (and probably other stuff)
+extern u16 D_800DC5E4;
+extern s32 gPlayerWinningIndex;
+
+extern struct UnkStruct_800DC5EC D_8015F480[4];
 extern struct UnkStruct_800DC5EC *D_800DC5EC;
 extern struct UnkStruct_800DC5EC *D_800DC5F0;
 extern struct UnkStruct_800DC5EC *D_800DC5F4;
 extern struct UnkStruct_800DC5EC *D_800DC5F8;
+extern u16  gIsGamePaused;
+extern u8 *pAppNmiBuffer;
+extern s32 gIsMirrorMode; // D_800DC604
+extern s16 gCreditsCourseId;
+extern s16 gPlaceItemBoxes;
 
 extern mk64_surface_map_ram *gSurfaceMap;
 extern u16 *D_8015F584;
@@ -70,7 +98,6 @@ extern u16 D_8015F892;
 extern u16 D_8015F894;
 extern f32 gTimePlayerLastTouchedFinishLine[];
 
-extern u8 *pAppNmiBuffer;
 extern u8 *gNmiUnknown1;
 extern u8 *gNmiUnknown2;
 extern u8 *gNmiUnknown3;
@@ -86,7 +113,6 @@ extern f32 D_8015F8E4;
 extern f32 D_8015F8E8;
 extern s16 gPlayerPositionLUT[]; // Player index at each position
 extern u16 gNumPermanentActors;
-extern struct Actor gActorList[];
 
 extern UNUSED u8 D_80162578[];
 extern s16 gDebugPathCount;
