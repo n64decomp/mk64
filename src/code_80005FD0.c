@@ -4955,7 +4955,7 @@ void func_800120C8(void) {
 
 void func_80012190(void) {
     TrackWaypoint *tree;
-    s32 i = 0;
+    s32 i;
 
     tree = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(d_frappe_snowland_tree)] + (SEGMENT_OFFSET(d_frappe_snowland_tree)));
 
