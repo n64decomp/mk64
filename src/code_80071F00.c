@@ -5247,8 +5247,6 @@ void func_8007E00C(s32 objectIndex) {
 GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007E00C.s")
 #endif
 
-extern s32 D_80183EA4;
-
 void func_8007E1AC() {
     s32 temp_a0;
 
@@ -8332,9 +8330,6 @@ void func_80086528(s32 objectIndex, s32 arg1) {
         break;
     }
 }
-
-extern s16 D_8016347C;
-extern s8 D_801658C6;
 
 void func_80086604(void) {
     s32 objectIndex;
