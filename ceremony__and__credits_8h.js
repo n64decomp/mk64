@@ -108,6 +108,8 @@ var ceremony__and__credits_8h =
     [ "D_802856B8", "ceremony__and__credits_8h.html#a7a3282ca55775c8dd9d99fd6b97cad99", null ],
     [ "D_802856BC", "ceremony__and__credits_8h.html#a09d05c4f13230c6e07b8a43dad3a2a59", null ],
     [ "D_802856C0", "ceremony__and__credits_8h.html#a422d5154df4ea85909873949b06ef114", null ],
+    [ "D_802856C4", "ceremony__and__credits_8h.html#a0f90b69b7866d17451bccba643391157", null ],
+    [ "D_802856C8", "ceremony__and__credits_8h.html#af409ba693a2e15a3dfa59a23659b8d78", null ],
     [ "D_802856DC", "ceremony__and__credits_8h.html#aa541fc201d6e5afd3fea4d074c5db77a", null ],
     [ "D_80285718", "ceremony__and__credits_8h.html#aa0537494e18a6693aef2623d00431ca9", null ],
     [ "D_80285754", "ceremony__and__credits_8h.html#ad4f7d9f989753161f6adbc6cfaae27ca", null ],
@@ -136,5 +138,16 @@ var ceremony__and__credits_8h =
     [ "D_80285D10", "ceremony__and__credits_8h.html#aa1b48925254b2625d381adcf03af043a", null ],
     [ "D_80285D14", "ceremony__and__credits_8h.html#a88a63327f5d3d15a4e2d39ec2a66909c", null ],
     [ "D_802876D4", "ceremony__and__credits_8h.html#aafc5182e9771a62fbc69feec223c5579", null ],
-    [ "D_802876D8", "ceremony__and__credits_8h.html#a7f2f482d5fded6b1ffa153e9f0502019", null ]
+    [ "D_802876D8", "ceremony__and__credits_8h.html#a7f2f482d5fded6b1ffa153e9f0502019", null ],
+    [ "D_802876DC", "ceremony__and__credits_8h.html#af416b1f15fb96b9e7782ea43479fb102", null ],
+    [ "D_802876E0", "ceremony__and__credits_8h.html#a148884b4f55eda8db622fd8ae4b1b73e", null ],
+    [ "D_80287750", "ceremony__and__credits_8h.html#a2bb31358f1ae4bcbd2c26827a0705039", null ],
+    [ "D_80287818", "ceremony__and__credits_8h.html#a81bbd6acf6e0b2c89b6130dac630b3b8", null ],
+    [ "D_80287998", "ceremony__and__credits_8h.html#aa7ed6cd289d8acf8e1a1a3e8e891ec32", null ],
+    [ "D_80287B1E", "ceremony__and__credits_8h.html#af67d4dc7e1b9e9e331291a7c0d6d9ff6", null ],
+    [ "D_80287B20", "ceremony__and__credits_8h.html#ae0b2c2988791af51d7038ee4244b0992", null ],
+    [ "gCutsceneShotTimer", "ceremony__and__credits_8h.html#a08e9dc3c81aee6cb8532ff8091549f18", null ],
+    [ "sCutsceneShot", "ceremony__and__credits_8h.html#a956b3f48a385d8c138bb35ae9847c992", null ],
+    [ "sCutsceneSplineSegment", "ceremony__and__credits_8h.html#af891ee7c37f3086d9b5a380683a01225", null ],
+    [ "sCutsceneSplineSegmentProgress", "ceremony__and__credits_8h.html#a002b453fed030382e4c7db29878fc373", null ]
 ];
