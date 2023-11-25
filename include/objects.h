@@ -379,6 +379,8 @@ extern s32 D_8018CC80[];
 extern s32 D_8018D1F0;
 // Next free spot in D_8018CC80?
 extern s32 D_8018D1F8;
+// Also next free spot in D_8018CC80?
+extern s16 D_8018D17C;
 // Something related to the display of the clouds/stars?
 extern s8 D_8018D230;
 // Some sort of limiter on how many of some object type can spawn
