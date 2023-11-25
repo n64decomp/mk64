@@ -1,5 +1,11 @@
 var NAVTREEINDEX68 =
 {
+"structCinematicCamera.html#adf4fbc44d7a1d92ef6c34a70f5130189":[1,0,62,8],
+"structCinematicCamera.html#af040f105d6492058ce51aad952a6849f":[1,0,62,6],
+"structCollision.html":[1,0,63],
+"structCollision.html#a0efc6bf3ed2c3d042e5b81dcd7679ed4":[1,0,63,1],
+"structCollision.html#a4b2dc607e86c5d93d6923c59cad702e9":[1,0,63,6],
+"structCollision.html#a7e2e601b4ea17e62338548b33e740fef":[1,0,63,0],
 "structCollision.html#a8670ba4685a8638c001516c5c35bcf15":[1,0,63,5],
 "structCollision.html#a8d0f128e51e27be430cabcd21d0b8410":[1,0,63,4],
 "structCollision.html#abbac7b426b00b3cfcd6037628163cc74":[1,0,63,8],
@@ -243,11 +249,5 @@ var NAVTREEINDEX68 =
 "structKartBoundingBoxCorner.html#a7acb1ace45eb0cc9b9b1ae72bd0a9c60":[1,0,90,3],
 "structKartBoundingBoxCorner.html#ac14eec8efe1ef06a8675e0ddbc7dfe95":[1,0,90,2],
 "structKartBoundingBoxCorner.html#acef75b0804bbf3b3f870f19fa4e60427":[1,0,90,5],
-"structKiwanoFruit.html":[1,0,91],
-"structKiwanoFruit.html#a188f60f643194dc691ea02d9a4ca5e36":[1,0,91,3],
-"structKiwanoFruit.html#a33b682d0233daccaaa7f8f2a52e7f3ea":[1,0,91,9],
-"structKiwanoFruit.html#a395221128fc4678e43d97556c14b0b75":[1,0,91,2],
-"structKiwanoFruit.html#a42e01e9caa040b6c495d7d30a93536c2":[1,0,91,12],
-"structKiwanoFruit.html#a45799822f9f1e3ac2fd213a6012ff510":[1,0,91,0],
-"structKiwanoFruit.html#a74ede07f322e736b2e7ac5269352fc13":[1,0,91,1]
+"structKiwanoFruit.html":[1,0,91]
 };

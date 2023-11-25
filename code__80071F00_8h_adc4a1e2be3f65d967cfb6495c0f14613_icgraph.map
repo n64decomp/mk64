@@ -1,5 +1,5 @@
 <map id="func_800723A4" name="func_800723A4">
-<area shape="rect" id="node1" title=" " alt="" coords="721,715,844,741"/>
+<area shape="rect" id="node1" title=" " alt="" coords="721,740,844,767"/>
 <area shape="rect" id="node2" href="$hud__renderer_8c.html#a95ac268de26d32d1a53ad46f641e7060" title=" " alt="" coords="551,5,672,32"/>
 <area shape="rect" id="node4" href="$hud__renderer_8c.html#a48c37261398c106dd6b80a4c2ea27499" title=" " alt="" coords="550,56,673,83"/>
 <area shape="rect" id="node6" href="$code__8006E9C0_8c.html#afc1c21ebff7f2ec70a11244a842f499a" title=" " alt="" coords="551,107,672,133"/>
@@ -21,14 +21,15 @@
 <area shape="rect" id="node39" href="$code__80071F00_8c.html#ab4dcef4adbe09115a1c09b9a70d4d086" title=" " alt="" coords="551,917,672,944"/>
 <area shape="rect" id="node40" href="$code__80071F00_8c.html#ac00314aa6f2d0509da702f27914705cf" title=" " alt="" coords="550,968,673,995"/>
 <area shape="rect" id="node41" href="$code__80071F00_8c.html#ada7490dae077ee7c5e2d5ef5e485ddb5" title=" " alt="" coords="551,1019,672,1045"/>
-<area shape="rect" id="node43" href="$code__80071F00_8c.html#a4cddfb6eec34ca24cca8d7cb72c78310" title=" " alt="" coords="550,1069,673,1096"/>
-<area shape="rect" id="node44" href="$code__80071F00_8c.html#a3d5ed177f37f3aebf40dab991800a209" title=" " alt="" coords="549,1120,673,1147"/>
-<area shape="rect" id="node45" href="$code__80071F00_8c.html#af6fa0450f99946e4318111b11373aef3" title=" " alt="" coords="549,1171,673,1197"/>
-<area shape="rect" id="node46" href="$code__80071F00_8c.html#ab93974a608cb1b351f9841dd19ca4b7e" title=" " alt="" coords="550,1221,673,1248"/>
-<area shape="rect" id="node47" href="$code__80071F00_8c.html#a281b6219991026ad20df7d33ae149504" title=" " alt="" coords="550,1272,673,1299"/>
-<area shape="rect" id="node48" href="$code__80071F00_8c.html#adb8fa7d5ecadc9f55623553c7b6c0d53" title=" " alt="" coords="550,1323,673,1349"/>
-<area shape="rect" id="node49" href="$code__80071F00_8c.html#ac880ad14addb7eb365089ff9ee64b3fa" title=" " alt="" coords="551,1373,672,1400"/>
-<area shape="rect" id="node50" href="$code__80071F00_8c.html#aab38c04d81699ccb47b1491a5c828584" title=" " alt="" coords="550,1424,673,1451"/>
+<area shape="rect" id="node42" href="$code__80071F00_8c.html#a4cddfb6eec34ca24cca8d7cb72c78310" title=" " alt="" coords="550,1069,673,1096"/>
+<area shape="rect" id="node43" href="$code__80071F00_8c.html#a3d5ed177f37f3aebf40dab991800a209" title=" " alt="" coords="549,1120,673,1147"/>
+<area shape="rect" id="node44" href="$code__80071F00_8c.html#af6fa0450f99946e4318111b11373aef3" title=" " alt="" coords="549,1171,673,1197"/>
+<area shape="rect" id="node45" href="$code__80071F00_8c.html#ab93974a608cb1b351f9841dd19ca4b7e" title=" " alt="" coords="550,1221,673,1248"/>
+<area shape="rect" id="node46" href="$code__80071F00_8c.html#a281b6219991026ad20df7d33ae149504" title=" " alt="" coords="550,1272,673,1299"/>
+<area shape="rect" id="node47" href="$code__80071F00_8c.html#adb8fa7d5ecadc9f55623553c7b6c0d53" title=" " alt="" coords="550,1323,673,1349"/>
+<area shape="rect" id="node48" href="$code__80071F00_8c.html#ac880ad14addb7eb365089ff9ee64b3fa" title=" " alt="" coords="551,1373,672,1400"/>
+<area shape="rect" id="node49" href="$code__80071F00_8c.html#aab38c04d81699ccb47b1491a5c828584" title=" " alt="" coords="550,1424,673,1451"/>
+<area shape="rect" id="node50" href="$code__80071F00_8c.html#a2204b3133e4191e5d50b0b0bee4a53c9" title=" " alt="" coords="551,1475,672,1501"/>
 <area shape="rect" id="node3" href="$code__8008C1D0_8c.html#a0fb4928e7128ee9e78ae7eedb5d2192e" title=" " alt="" coords="377,5,500,32"/>
 <area shape="rect" id="node5" href="$code__8008C1D0_8c.html#a9543ba376f1aae1af5a00fbf80013c6f" title=" " alt="" coords="376,56,501,83"/>
 <area shape="rect" id="node7" href="$code__8006E9C0_8c.html#a5945e5ad978f80b31110f73ae96fdd36" title=" " alt="" coords="378,107,499,133"/>
@@ -48,5 +49,4 @@
 <area shape="rect" id="node33" href="$code__80071F00_8c.html#ae59e8278973af3a01fa65b157f2025cd" title=" " alt="" coords="377,715,500,741"/>
 <area shape="rect" id="node35" href="$code__80071F00_8c.html#a50084315197d7528db75a51984120323" title=" " alt="" coords="378,765,499,792"/>
 <area shape="rect" id="node37" href="$race__logic_8c.html#a7f21a1ef55b61f5678170da62e5e51dc" title=" " alt="" coords="377,816,501,843"/>
-<area shape="rect" id="node42" href="$code__80071F00_8c.html#a1fd996dd0611651c7995794011429bff" title=" " alt="" coords="377,1019,500,1045"/>
 </map>

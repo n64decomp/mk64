@@ -1,5 +1,11 @@
 var NAVTREEINDEX66 =
 {
+"staff__ghosts_8c.html#a2cdecb796bba9a80bdd2dce9c053daaf":[2,0,1,60,31],
+"staff__ghosts_8c.html#a3132c30926f13318af281a88744d4d33":[2,0,1,60,30],
+"staff__ghosts_8c.html#a33271f262e4e65181182b313cf6bcc2e":[2,0,1,60,16],
+"staff__ghosts_8c.html#a3c4cb1f93d431addad4c91c97bc08231":[2,0,1,60,15],
+"staff__ghosts_8c.html#a3ca399e359eafd83324904df83fc1ef9":[2,0,1,60,57],
+"staff__ghosts_8c.html#a4170fda73f68122eda29f002371524e4":[2,0,1,60,11],
 "staff__ghosts_8c.html#a46efde801bfc426ba8a78d24f9779e22":[2,0,1,60,29],
 "staff__ghosts_8c.html#a4ca179885936d13aa3dde49dd332369a":[2,0,1,60,38],
 "staff__ghosts_8c.html#a4e58850f1fd8ab0b9cb2543d71c70316":[2,0,1,60,63],
@@ -243,11 +249,5 @@ var NAVTREEINDEX66 =
 "structALSound__s.html#a649e0313749f127e30ce6754fbd81324":[1,0,43,3],
 "structALSound__s.html#a8bb355521feffe02dfa992b5fd23ae87":[1,0,43,5],
 "structALSound__s.html#ad9afec6b6e6f1a31b982630d40d67f49":[1,0,43,4],
-"structALSound__s.html#ae6cc6bf2664502a9c86ed4531391fd7f":[1,0,43,0],
-"structALSound__s.html#aff53a80677e56bccd8a77015b3fa8c47":[1,0,43,2],
-"structALWaveTable__s.html":[1,0,44],
-"structALWaveTable__s.html#a0e0fc820a7b7c2c8dcdfe38e60c0fa25":[1,0,44,4],
-"structALWaveTable__s.html#a42402da278ae304efe7ff64ce3d1983f":[1,0,44,3],
-"structALWaveTable__s.html#a8b00d48faf540e97599e88086d7c9ba5":[1,0,44,1],
-"structALWaveTable__s.html#aa9aafaec1f56b5cb5a16e7bfde1c3bd9":[1,0,44,0]
+"structALSound__s.html#ae6cc6bf2664502a9c86ed4531391fd7f":[1,0,43,0]
 };
