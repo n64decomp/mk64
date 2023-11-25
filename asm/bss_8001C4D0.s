@@ -757,15 +757,9 @@ glabel D_8018C0B0
 .skip 256
 
 # begin D_8018C1B0, should be 512 bytes big
-# D_8018C1D8 through D_8018C278 are fake variables
+# D_8018C278 is a fake variable
 glabel D_8018C1B0
-.skip 40
-
-glabel D_8018C1D8
-.skip 80
-
-glabel D_8018C228
-.skip 80
+.skip 200
 
 glabel D_8018C278
 .skip 312
