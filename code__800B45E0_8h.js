@@ -1,5 +1,6 @@
 var code__800B45E0_8h =
 [
+    [ "struct_8018EE10_entry_cont", "structstruct__8018EE10__entry__cont.html", "structstruct__8018EE10__entry__cont" ],
     [ "CONTROLLER_1", "code__800B45E0_8h.html#ae50d5c27b3a0f97a1c73dd342834d1d7", null ],
     [ "CONTROLLER_2", "code__800B45E0_8h.html#a5151689fa90f56c1babcd0fa50e190b5", null ],
     [ "CONTROLLER_3", "code__800B45E0_8h.html#a12f08e9daa50094e2e51fc00a532d10b", null ],
@@ -15,6 +16,7 @@ var code__800B45E0_8h =
     [ "PFS_NUM_FILES_ERROR", "code__800B45E0_8h.html#a5831e885ddb572f6499de962a1b675e4", null ],
     [ "PFS_PAK_BAD_READ", "code__800B45E0_8h.html#a068c0fe5e8166fe5fab93b0e3198ea53", null ],
     [ "PFS_PAK_STATE_OK", "code__800B45E0_8h.html#a1243cd09441ec83f064719461ac0b6a8", null ],
+    [ "struct_8018EE10_entry_cont", "code__800B45E0_8h.html#a3af4bb707e908d581e52f3ff62446fac", null ],
     [ "check_for_controller_pak", "code__800B45E0_8h.html#a3d6cfb32ce3dab7f887b09289d6db6cb", null ],
     [ "checksum_time_trial_records", "code__800B45E0_8h.html#ae8ae96fbdadac5d78cd77203773af7e5", null ],
     [ "compute_save_data_checksum_1", "code__800B45E0_8h.html#a59b4e93d2c2915660cfeef4972a1b478", null ],
@@ -74,7 +76,7 @@ var code__800B45E0_8h =
     [ "D_80162DD6", "code__800B45E0_8h.html#a26fc0e5f675f4602960709d90df9ac8f", null ],
     [ "D_80162DE0", "code__800B45E0_8h.html#a909ba9a7cda091f75ea4d7e508e82c53", null ],
     [ "D_80162DFC", "code__800B45E0_8h.html#a3ca399e359eafd83324904df83fc1ef9", null ],
-    [ "D_8018D9C0", "code__800B45E0_8h.html#ab68918f40ab30bfddb81ccc80729e2ae", null ],
+    [ "D_8018D9C0", "code__800B45E0_8h.html#af983f6ff2a97702a6ebfc219a082fae7", null ],
     [ "D_8018EDE5", "code__800B45E0_8h.html#a765caa7d17cbf953889103aeb6880c0b", null ],
     [ "D_8018EDE6", "code__800B45E0_8h.html#a9b55020cfea963ac206552239274414f", null ],
     [ "D_8018EDE7", "code__800B45E0_8h.html#a87f47de00fbced3e8afba016748eb350", null ],

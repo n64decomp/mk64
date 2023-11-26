@@ -1,5 +1,9 @@
 var NAVTREEINDEX66 =
 {
+"sprintf_8c.html#a6151eb738d6a0c5af66836e8a50fad9e":[2,0,1,5,119,0],
+"sptask_8h.html":[2,0,0,1,25],
+"sptask_8h.html#a0296c458ceb9fb23da6fb6d231eacc6d":[2,0,0,1,25,25],
+"sptask_8h.html#a04a950eaa34a139e6866efcd11ee43a6":[2,0,0,1,25,12],
 "sptask_8h.html#a0625ecaa8a8ffd6212809c1fee7f4702":[2,0,0,1,25,46],
 "sptask_8h.html#a081ccd1a16a69e782ee49cb64dc0755e":[2,0,0,1,25,30],
 "sptask_8h.html#a086dcc64d4fd3a8bc980d7250c5f06c1":[2,0,0,1,25,15],
@@ -245,9 +249,5 @@ var NAVTREEINDEX66 =
 "structALADPCMloop.html#a3346f736d48ac20161233b9a065a7205":[1,0,30,1],
 "structALADPCMloop.html#a520bead3b69cf83f5ea552cec4ae2e3a":[1,0,30,3],
 "structALADPCMloop.html#a77efa500c195e50e91fd3cb1a5e751a4":[1,0,30,2],
-"structALADPCMloop.html#a79a950184af0347c58501e770a27b07b":[1,0,30,0],
-"structALBankFile.html":[1,0,33],
-"structALBankFile.html#a01c1cee5df95ccd5db0690f34e742ad2":[1,0,33,1],
-"structALBankFile.html#a0248bb12530179de5061822eacdaf91e":[1,0,33,0],
-"structALBankFile.html#ab94aa3f283c52419547e417151e84bfb":[1,0,33,2]
+"structALADPCMloop.html#a79a950184af0347c58501e770a27b07b":[1,0,30,0]
 };

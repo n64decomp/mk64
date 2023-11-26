@@ -1,5 +1,9 @@
 var NAVTREEINDEX67 =
 {
+"structALBankFile.html":[1,0,33],
+"structALBankFile.html#a01c1cee5df95ccd5db0690f34e742ad2":[1,0,33,1],
+"structALBankFile.html#a0248bb12530179de5061822eacdaf91e":[1,0,33,0],
+"structALBankFile.html#ab94aa3f283c52419547e417151e84bfb":[1,0,33,2],
 "structALBank__s.html":[1,0,32],
 "structALBank__s.html#a09c8b064e5f89189e117b0927941b2a0":[1,0,32,2],
 "structALBank__s.html#a0bf3563b4c60b580a2b09422de6eebce":[1,0,32,4],
@@ -245,9 +249,5 @@ var NAVTREEINDEX67 =
 "structCamera.html#a77d5fb9976392a938f9b37145a56b5f3":[1,0,59,11],
 "structCamera.html#a85144d23d2ab9abadcf19ebb9572cc11":[1,0,59,12],
 "structCamera.html#a88ed7d5dfdbf522ce88132d5aaf2279a":[1,0,59,14],
-"structCamera.html#a9ef6c05c079b57a4ebfcf0f2c28e1704":[1,0,59,6],
-"structCamera.html#aa41528fb3d92947fbd847bb427622383":[1,0,59,20],
-"structCamera.html#aa746a36785af3a009ad44385e7613e89":[1,0,59,15],
-"structCamera.html#aaa7eaab22236f016fd933666bd90c741":[1,0,59,2],
-"structCamera.html#aabd0fd674bc8669577184f6f815367b6":[1,0,59,19]
+"structCamera.html#a9ef6c05c079b57a4ebfcf0f2c28e1704":[1,0,59,6]
 };

@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['y_26349',['y',['../structVec3fs.html#ae5aabac0675c3e62a55ebd37e819380f',1,'Vec3fs::y()'],['../structUnkStruct__8018E7E8.html#abf41ca30a4f528282f2330a58c29b03b',1,'UnkStruct_8018E7E8::y()']]],
-  ['y_26350',['Y',['../structuObjMtx__t.html#a77cba098affd2443453774614aecc253',1,'uObjMtx_t::Y()'],['../structuObjSubMtx__t.html#acaddc66617be3440fa68c567fd41e1b8',1,'uObjSubMtx_t::Y()']]],
-  ['youngerindex_26351',['youngerIndex',['../structBananaActor.html#ad686614e95607653ffbf00b39cd10397',1,'BananaActor']]],
-  ['ypos_26352',['yPos',['../structBombKart.html#a8cc2966d931e376e71aa0942dfb85af3',1,'BombKart']]],
-  ['yscale_26353',['yScale',['../structOSViFieldRegs.html#a1a39cfe1ebe1efe3da6765e009a6d252',1,'OSViFieldRegs']]]
+  ['y_26353',['y',['../structVec3fs.html#ae5aabac0675c3e62a55ebd37e819380f',1,'Vec3fs::y()'],['../structUnkStruct__8018E7E8.html#abf41ca30a4f528282f2330a58c29b03b',1,'UnkStruct_8018E7E8::y()']]],
+  ['y_26354',['Y',['../structuObjMtx__t.html#a77cba098affd2443453774614aecc253',1,'uObjMtx_t::Y()'],['../structuObjSubMtx__t.html#acaddc66617be3440fa68c567fd41e1b8',1,'uObjSubMtx_t::Y()']]],
+  ['youngerindex_26355',['youngerIndex',['../structBananaActor.html#ad686614e95607653ffbf00b39cd10397',1,'BananaActor']]],
+  ['ypos_26356',['yPos',['../structBombKart.html#a8cc2966d931e376e71aa0942dfb85af3',1,'BombKart']]],
+  ['yscale_26357',['yScale',['../structOSViFieldRegs.html#a1a39cfe1ebe1efe3da6765e009a6d252',1,'OSViFieldRegs']]]
 ];

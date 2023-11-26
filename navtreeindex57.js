@@ -1,5 +1,9 @@
 var NAVTREEINDEX57 =
 {
+"objects_8h_source.html":[2,0,0,17],
+"osAiGetLength_8c.html":[2,0,1,5,58],
+"osAiGetLength_8c.html#a1b20874b21a1e6db4b16ca914e5c7863":[2,0,1,5,58,0],
+"osAiSetFrequency_8c.html":[2,0,1,5,59],
 "osAiSetFrequency_8c.html#a359a7a14acda8314d35aaf1019425e18":[2,0,1,5,59,1],
 "osAiSetFrequency_8c.html#a9e52bbdd047be9c1af82a9b1aeff305c":[2,0,1,5,59,0],
 "osAiSetNextBuffer_8c.html":[2,0,1,5,60],
@@ -245,9 +249,5 @@ var NAVTREEINDEX57 =
 "osViSwapBuffer_8c.html#a36511d1bdf47d5cdc155727f8f1ee88e":[2,0,1,5,114,1],
 "osViSwapBuffer_8c.html#ad9fbc8feed5d6cf557a051834e168950":[2,0,1,5,114,0],
 "osViTable_8c.html":[2,0,1,5,115],
-"osViTable_8c.html#a1bd0fb40b87060535b5ec4561bbd7523":[2,0,1,5,115,0],
-"osVirtualToPhysical_8c.html":[2,0,1,5,110],
-"osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570":[2,0,1,5,110,0],
-"osYieldThread_8c.html":[2,0,1,5,116],
-"osYieldThread_8c.html#a173231dae7f6dcc9bf41edee99001250":[2,0,1,5,116,0]
+"osViTable_8c.html#a1bd0fb40b87060535b5ec4561bbd7523":[2,0,1,5,115,0]
 };

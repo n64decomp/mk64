@@ -1,5 +1,9 @@
 var NAVTREEINDEX33 =
 {
+"gbi_8h.html#abf67e0d2fab448bee1215245654ef01f":[2,0,0,1,1,136],
+"gbi_8h.html#abf68069ca226c4a5ed63aa7eccbbe2e3":[2,0,0,1,1,62],
+"gbi_8h.html#abf6f357754d73376d6c3683e77cc2711":[2,0,0,1,1,465],
+"gbi_8h.html#abf7e9781ad0a1e2b3de84e0160f07f9b":[2,0,0,1,1,50],
 "gbi_8h.html#abf97a0611f936633d97a41e801efabdf":[2,0,0,1,1,110],
 "gbi_8h.html#abfc3aaacddd392fc50af3cbe49ac7a6d":[2,0,0,1,1,413],
 "gbi_8h.html#ac20b077ca514d11acd358274908d5c3a":[2,0,0,1,1,313],
@@ -122,8 +126,8 @@ var NAVTREEINDEX33 =
 "globals_b.html":[2,1,0,2],
 "globals_c.html":[2,1,0,3],
 "globals_d.html":[2,1,0,4],
-"globals_defs.html":[2,1,6,0],
 "globals_defs.html":[2,1,6],
+"globals_defs.html":[2,1,6,0],
 "globals_defs_a.html":[2,1,6,1],
 "globals_defs_b.html":[2,1,6,2],
 "globals_defs_c.html":[2,1,6,3],
@@ -245,9 +249,5 @@ var NAVTREEINDEX33 =
 "gs2dex_8h.html#a4af7f861f558006cbe25800e6b589934":[2,0,0,1,2,74],
 "gs2dex_8h.html#a4bd9a3569a1a3db7e8a60e2f6d49c53a":[2,0,0,1,2,16],
 "gs2dex_8h.html#a4cec598f4424c06667cf8da631e71fe8":[2,0,0,1,2,85],
-"gs2dex_8h.html#a51fd86472d022cec086a747281b91f41":[2,0,0,1,2,51],
-"gs2dex_8h.html#a5358614315419a5a4454dea683c9b0f8":[2,0,0,1,2,57],
-"gs2dex_8h.html#a545061755096b751713b4c82a11f9c01":[2,0,0,1,2,92],
-"gs2dex_8h.html#a556bc707109ea037d3a7f7054a8af276":[2,0,0,1,2,87],
-"gs2dex_8h.html#a56942a43523891eb965e4ca23f4a852d":[2,0,0,1,2,25]
+"gs2dex_8h.html#a51fd86472d022cec086a747281b91f41":[2,0,0,1,2,51]
 };
