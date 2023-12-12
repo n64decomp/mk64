@@ -55,7 +55,7 @@ typedef struct
     /* 0xBE */ Vec3su unk_0BE;
     /* 0xC4 */ u16 unk_0C4;
     /* 0xC6 */ u16 unk_0C6;
-    /* 0xC8 */ u16 unk_0C8;
+    /* 0xC8 */ u16 boundingBoxSize;
     /* 0xCA */ s8  unk_0CA;
     /* 0xCB */ s8  unk_0CB;
     /* 0xCC */ s8  unk_0CC;
