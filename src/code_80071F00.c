@@ -5141,7 +5141,7 @@ s32 func_8007E50C(s32 objectIndex, Player *player, Camera *camera) {
     s32 sp24;
 
     sp24 = 0;
-    if ((func_80072354(objectIndex, 4) != 0) && (is_closer_of_player_2d(objectIndex, player, 300.0f) != 0) && (func_8008A0B4(objectIndex, player, camera, 0x4000U) != 0) && (func_8008A060(objectIndex, camera, 0x1555U) != 0)) {
+    if ((func_80072354(objectIndex, 4) != 0) && (is_within_horizontal_distance_of_player(objectIndex, player, 300.0f) != 0) && (func_8008A0B4(objectIndex, player, camera, 0x4000U) != 0) && (func_8008A060(objectIndex, camera, 0x1555U) != 0)) {
         func_800722A4(objectIndex, 4);
         sp24 = 1;
     }
@@ -6050,7 +6050,7 @@ void func_800808CC(s32 objectIndex) {
 }
 
 void func_80080A14(s32 objectIndex, Player *player) {
-    if (is_closer_of_player_2d(objectIndex, player, 12.0f) != 0) {
+    if (is_within_horizontal_distance_of_player(objectIndex, player, 12.0f) != 0) {
         player->boundingBoxCorners[0].unk_14 |= 3;
     }
 }
@@ -6060,7 +6060,7 @@ void func_80080A4C(s32 objectIndex, s32 cameraPlayerId) {
     Player *player = &gPlayerOne[cameraPlayerId];
 
     if (gScreenModeSelection != SCREEN_MODE_3P_4P_SPLITSCREEN) {
-        if ((func_80072320(objectIndex, 0x00000010) != 0) && (is_closer_of_player_2d(objectIndex, player, 500.0f) != 0)) {
+        if ((func_80072320(objectIndex, 0x00000010) != 0) && (is_within_horizontal_distance_of_player(objectIndex, player, 500.0f) != 0)) {
             func_8001CA10(camera);
             func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_038, 0x1900800FU);
         }
@@ -6075,7 +6075,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         if (!(temp_s0->statusEffects & 0x100)) {
             temp_f0 = func_80088F54(objectIndex, temp_s0);
-            if ((temp_f0 <= 9.0) && !(temp_s0->effects & 0x04000000) && (is_object_collide_player_2d(objectIndex, temp_s0) != 0)) {
+            if ((temp_f0 <= 9.0) && !(temp_s0->effects & 0x04000000) && (has_collided_horizontally_with_player(objectIndex, temp_s0) != 0)) {
                 if ((temp_s0->type & 0x8000) && !(temp_s0->type & 0x100)) {
                     if (!(temp_s0->effects & 0x200)) {
                         func_80089474(objectIndex, playerId, 1.4f, 1.1f, 0x1900A04CU);
@@ -6093,7 +6093,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
                         func_800726CC(objectIndex, 0x000000C8);
                     }
                 }
-            } else if ((temp_f0 <= 17.5) && (func_80072320(objectIndex, 1) != 0) && (is_closer_of_player_2d(objectIndex, temp_s0, (temp_s0->unk_094 * 0.5) + 7.0) != 0)) {
+            } else if ((temp_f0 <= 17.5) && (func_80072320(objectIndex, 1) != 0) && (is_within_horizontal_distance_of_player(objectIndex, temp_s0, (temp_s0->unk_094 * 0.5) + 7.0) != 0)) {
                 if ((temp_s0->type & 0x8000) && !(temp_s0->type & 0x100)) {
                     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
@@ -6470,7 +6470,7 @@ void func_80081D34(s32 objectIndex) {
     var_s1 = gPlayerOne;
     var_s4 = camera1;
     for (var_s2 = 0; var_s2 < D_8018D158; var_s2++, var_s1++, var_s4++) {
-        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) && !(var_s1->effects & 0x80000000) && (is_object_collide_player_3d(objectIndex, var_s1) != 0)) {
+        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) && !(var_s1->effects & 0x80000000) && (has_collided_with_player(objectIndex, var_s1) != 0)) {
             if ((var_s1->type & 0x8000) && !(var_s1->type & 0x100)) {
                 var_s5 = 1;
                 temp_s0 = &gObjectList[objectIndex];

@@ -587,7 +587,7 @@ void func_800887C0(s32 objectIndex) {
  * @param player 
  * @return UNUSED 
  */
-UNUSED s32 distance_object_player_2d(s32 objectIndex, Player *player) {
+UNUSED s32 get_horizontal_distance_to_player(s32 objectIndex, Player *player) {
     s32 x;
     s32 y;
 
@@ -603,7 +603,7 @@ UNUSED s32 distance_object_player_2d(s32 objectIndex, Player *player) {
  * @param player 
  * @return UNUSED 
  */
-UNUSED s32 distance_object_player_3d(s32 objectIndex, Player *player) {
+UNUSED s32 get_distance_to_player(s32 objectIndex, Player *player) {
     s32 x;
     s32 z;
     s32 y;
@@ -621,7 +621,7 @@ UNUSED s32 distance_object_player_3d(s32 objectIndex, Player *player) {
  * @param camera 
  * @return UNUSED 
  */
-u32 distance_object_camera_2d(s32 objectIndex, Camera *camera) {
+u32 get_horizontal_distance_to_camera(s32 objectIndex, Camera *camera) {
     s32 x;
     s32 y;
 
@@ -637,7 +637,7 @@ u32 distance_object_camera_2d(s32 objectIndex, Camera *camera) {
  * @param camera 
  * @return UNUSED 
  */
-UNUSED s32 distance_object_camera_3d(s32 objectIndex, Camera *camera) {
+UNUSED s32 get_distance_to_camera(s32 objectIndex, Camera *camera) {
     s32 x;
     s32 z;
     s32 y;
@@ -657,7 +657,7 @@ UNUSED s32 distance_object_camera_3d(s32 objectIndex, Camera *camera) {
  * @return true 
  * @return false 
  */
-bool is_closer_of_player_2d(s32 objectIndex, Player *player, f32 distance) {
+bool is_within_horizontal_distance_of_player(s32 objectIndex, Player *player, f32 distance) {
     f32 x;
     f32 y;
     bool var_v1;
@@ -681,16 +681,16 @@ bool is_closer_of_player_2d(s32 objectIndex, Player *player, f32 distance) {
  * @return true 
  * @return false 
  */
-bool are_between_distance_player_2d(s32 objectIndex, Player *player, f32 distance_min, f32 distance_max) {
+bool is_in_bounds_to_player(s32 objectIndex, Player *player, f32 distance_min, f32 distance_max) {
     f32 x;
     f32 distance;
-    f32 y;
+    f32 z;
     bool var_v1;
 
     var_v1 = FALSE;
     x = gObjectList[objectIndex].pos[0] - player->pos[0];
-    y = gObjectList[objectIndex].pos[2] - player->pos[2];
-    distance = (x * x) + (y * y);
+    z = gObjectList[objectIndex].pos[2] - player->pos[2];
+    distance = (x * x) + (z * z);
     if (((distance_min * distance_min) <= distance) && (distance <= (distance_max * distance_max))) {
         var_v1 = TRUE;
     }
@@ -706,7 +706,7 @@ bool are_between_distance_player_2d(s32 objectIndex, Player *player, f32 distanc
  * @return true 
  * @return false 
  */
-bool is_closer_of_player_3d(s32 objectIndex, Player *player, f32 distance) {
+bool is_within_distance_to_player(s32 objectIndex, Player *player, f32 distance) {
     f32 x;
     f32 z;
     f32 y;
@@ -731,7 +731,7 @@ bool is_closer_of_player_3d(s32 objectIndex, Player *player, f32 distance) {
  * @return true 
  * @return false 
  */
-bool is_closer_of_camera_2d(s32 objectIndex, Camera *camera, f32 distance) {
+bool is_within_horizontal_distance_to_camera(s32 objectIndex, Camera *camera, f32 distance) {
     f32 x;
     f32 y;
     bool var_v1;
@@ -754,16 +754,16 @@ bool is_closer_of_camera_2d(s32 objectIndex, Camera *camera, f32 distance) {
  * @param distance_max 
  * @return UNUSED 
  */
-UNUSED bool are_between_distance_camera_2d(s32 objectIndex, Camera *camera, f32 distance_min, f32 distance_max) {
+UNUSED bool is_within_bounds_to_camera(s32 objectIndex, Camera *camera, f32 distance_min, f32 distance_max) {
     f32 x;
     f32 distance;
-    f32 y;
+    f32 z;
     bool var_v1;
 
     var_v1 = FALSE;
     x  = gObjectList[objectIndex].pos[0] - camera->pos[0];
-    y  = gObjectList[objectIndex].pos[2] - camera->pos[2];
-    distance = (x * x) + (y * y);
+    z  = gObjectList[objectIndex].pos[2] - camera->pos[2];
+    distance = (x * x) + (z * z);
     if (((distance_min * distance_min) <= distance) && (distance <= (distance_max * distance_max))) {
         var_v1 = TRUE;
     }
@@ -802,17 +802,17 @@ UNUSED bool is_closer_of_camera_3d(s32 objectIndex, Camera *camera, f32 distance
  * @return true 
  * @return false 
  */
-bool is_object_collide_player_2d(s32 objectIndex, Player *player) {
+bool has_collided_horizontally_with_player(s32 objectIndex, Player *player) {
     f32 x;
     f32 distance;
-    f32 y;
+    f32 z;
     bool var_v1;
 
     var_v1 = FALSE;
     x  = gObjectList[objectIndex].pos[0] - player->pos[0];
-    y  = gObjectList[objectIndex].pos[2] - player->pos[2];
+    z  = gObjectList[objectIndex].pos[2] - player->pos[2];
     distance = gObjectList[objectIndex].boundingBoxSize + player->boundingBoxSize;
-    if (((x * x) + (y * y)) <= (distance * distance)) {
+    if (((x * x) + (z * z)) <= (distance * distance)) {
         var_v1 = TRUE;
     }
     return var_v1;
@@ -826,7 +826,7 @@ bool is_object_collide_player_2d(s32 objectIndex, Player *player) {
  * @return true 
  * @return false 
  */
-bool is_object_collide_player_3d(s32 objectIndex, Player *player) {
+bool has_collided_with_player(s32 objectIndex, Player *player) {
     f32 x;
     f32 z;
     f32 distance;
@@ -852,7 +852,7 @@ bool is_object_collide_player_3d(s32 objectIndex, Player *player) {
  * @param distance 
  * @return UNUSED 
  */
-UNUSED bool is_closer_of_player_1d(s32 objectIndex, Player *player, f32 distance) {
+UNUSED bool has_collided_with_player_1d(s32 objectIndex, Player *player, f32 distance) {
     f32 x;
     bool var_v1;
 
@@ -873,7 +873,7 @@ UNUSED bool is_closer_of_player_1d(s32 objectIndex, Player *player, f32 distance
  * @return true 
  * @return false 
  */
-bool is_closer_of_player_and_distance_y(s32 objectIndex, Player *player, f32 distance_y) {
+bool has_collided_with_player_and_within_height(s32 objectIndex, Player *player, f32 distance_y) {
     f32 x;
     f32 z;
     f32 distance;
@@ -1062,7 +1062,7 @@ s32 func_800895E4(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && (is_object_collide_player_2d(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].state != 0) && (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                     func_80072180();
                 }
@@ -1080,7 +1080,7 @@ void func_800896D4(s32 objectIndex, f32 arg1, f32 arg2) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x80000200) && (is_object_collide_player_2d(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x80000200) && (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 func_8008933C(player, objectIndex, arg1, arg2 * 1.1);
                 if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                     func_80072180();
@@ -1099,7 +1099,7 @@ void func_80089820(s32 objectIndex, f32 arg1, f32 arg2, u32 arg3) {
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x80000000)) {
-                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (is_object_collide_player_2d(objectIndex, player) != 0)) {
+                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                     if (player->effects & 0x200) {
                         set_object_flag_unk_054_true(objectIndex, 0x02000000);
                     } else {
@@ -1123,7 +1123,7 @@ void func_80089A04(s32 objectIndex, f32 arg1, f32 arg2) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x80000200) && (is_object_collide_player_3d(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x80000200) && (has_collided_with_player(objectIndex, player) != 0)) {
                 func_8008933C(player, objectIndex, arg1, arg2 * 1.1);
                 if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                     func_80072180();
@@ -1144,7 +1144,7 @@ s32 func_80089B50(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++, test++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x81000000) && (player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (is_object_collide_player_2d(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x81000000) && (player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 if (!(player->effects & 0x200)) {
                     player->statusEffects |= REVERSE_EFFECT;
                     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
@@ -1170,7 +1170,7 @@ s32 func_80089CBC(s32 objectIndex, f32 arg1) {
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x81000000)) {
-                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (is_closer_of_player_and_distance_y(objectIndex, player, arg1) != 0)) {
+                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (has_collided_with_player_and_within_height(objectIndex, player, arg1) != 0)) {
                     if (!(player->effects & 0x200)) {
                         player->statusEffects |= REVERSE_EFFECT;
                         if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
@@ -1194,7 +1194,7 @@ s32 func_80089E18(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x800000C0) && (is_object_collide_player_2d(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x800000C0) && (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 if (player->effects & 0x200) {
                     var_s6 = 1;
                 } else {
@@ -1216,7 +1216,7 @@ s32 func_80089F24(s32 objectIndex) {
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x800002C0)) {
-                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (is_object_collide_player_2d(objectIndex, player) != 0)) {
+                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                     var_s7 = 1;
                     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
@@ -1278,7 +1278,7 @@ void func_8008A1D0(s32 objectIndex, s32 cameraId, s32 arg2, s32 arg3) {
 
     camera = &camera1[cameraId];
     set_object_flag_unk_054_false(objectIndex, 0x00140000);
-    temp_v0 = distance_object_camera_2d(objectIndex, camera);
+    temp_v0 = get_horizontal_distance_to_camera(objectIndex, camera);
     if (temp_v0 < 0x2711U) {
         var_a2 = 0x5555;
     } else if (temp_v0 < 0x9C41U) {
@@ -1321,7 +1321,7 @@ s32 func_8008A364(s32 objectIndex, s32 cameraId, u16 arg2, s32 arg3) {
 
     camera = &camera1[cameraId];
     set_object_flag_unk_054_false(objectIndex, 0x00060000);
-    var_v1 = distance_object_camera_2d(objectIndex, camera);
+    var_v1 = get_horizontal_distance_to_camera(objectIndex, camera);
     if (var_v1 < (arg3 * arg3)) {
         set_object_flag_unk_054_true(objectIndex, 0x00020000);
         if (var_v1 < 0x2711U) {
@@ -1339,7 +1339,7 @@ s32 func_8008A364(s32 objectIndex, s32 cameraId, u16 arg2, s32 arg3) {
 }
 
 void func_8008A454(s32 objectIndex, s32 cameraId, s32 arg2) {
-    if (distance_object_camera_2d(objectIndex, &camera1[cameraId]) < (u32) (arg2 * arg2)) {
+    if (get_horizontal_distance_to_camera(objectIndex, &camera1[cameraId]) < (u32) (arg2 * arg2)) {
         set_object_flag_unk_054_true(objectIndex, 0x00000020);
     } else {
         set_object_flag_unk_054_false(objectIndex, 0x00000020);
@@ -1385,7 +1385,7 @@ void func_8008A6DC(s32 objectIndex, f32 arg1) {
 
     set_object_flag_unk_054_false(objectIndex, 0x00060000);
     for (camera = camera1, loopIndex = 0; loopIndex < gPlayerCountSelection1; loopIndex++, camera++) {
-        if ((gObjectList[objectIndex].state != 0) && (is_closer_of_camera_2d(objectIndex, camera, arg1) != 0)) {
+        if ((gObjectList[objectIndex].state != 0) && (is_within_horizontal_distance_to_camera(objectIndex, camera, arg1) != 0)) {
             set_object_flag_unk_054_true(objectIndex, 0x00020000);
             if (arg1 <= 500.0) {
                 var_a2 = 0x4000;
