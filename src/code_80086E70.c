@@ -778,7 +778,7 @@ UNUSED bool is_within_bounds_to_camera(s32 objectIndex, Camera *camera, f32 dist
  * @param distance 
  * @return UNUSED 
  */
-UNUSED bool is_closer_of_camera_3d(s32 objectIndex, Camera *camera, f32 distance) {
+UNUSED bool is_within_distance_to_camera(s32 objectIndex, Camera *camera, f32 distance) {
     f32 x;
     f32 z;
     f32 y;

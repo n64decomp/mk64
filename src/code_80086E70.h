@@ -68,7 +68,7 @@ s32  are_between_distance_2d(s32, Player*, f32, f32);
 bool  is_within_distance_to_player(s32, Player*, f32);
 bool  is_within_horizontal_distance_to_camera(s32, Camera*, f32);
 s32  is_within_bounds_to_camera(s32, Camera*, f32, f32);
-bool  is_closer_of_camera_3d(s32, Camera*, f32);
+bool  is_within_distance_to_camera(s32, Camera*, f32);
 bool  has_collided_horizontally_with_player(s32, Player*);
 bool  has_collided_with_player(s32, Player*);
 bool  has_collided_with_player_1d(s32, Player*, f32);
