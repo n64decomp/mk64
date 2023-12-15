@@ -65,7 +65,7 @@ s32 func_80087060(s32 objectIndex, s32 arg1) {
     s32 sp1C;
 
     sp1C = 0;
-    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != FALSE) {
         set_object_flag_unk_054_true(objectIndex, 8);
         gObjectList[objectIndex].unk_0B0 = arg1;
     }
@@ -81,7 +81,7 @@ s32 func_80087104(s32 objectIndex, u16 arg1) {
     s32 sp24;
 
     sp24 = 0;
-    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
+    if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != FALSE) {
         set_object_flag_unk_054_true(objectIndex, 8);
         gObjectList[objectIndex].unk_0B0 = random_int(arg1);
     }
@@ -580,226 +580,344 @@ void func_800887C0(s32 objectIndex) {
     set_object_flag_unk_054_false(objectIndex, 0x00800000);
 }
 
-UNUSED s32 func_80088880(s32 objectIndex, Player *player) {
-    s32 temp_f10;
-    s32 temp_f6;
+/**
+ * @brief Returns the distance between the object and the player.
+ * 
+ * @param objectIndex 
+ * @param player 
+ * @return UNUSED 
+ */
+UNUSED s32 get_horizontal_distance_to_player(s32 objectIndex, Player *player) {
+    s32 x;
+    s32 y;
 
-    temp_f10 = gObjectList[objectIndex].pos[0] - player->pos[0];
-    temp_f6  = gObjectList[objectIndex].pos[2] - player->pos[2];
-    return (temp_f10 * temp_f10) + (temp_f6 * temp_f6);
+    x = gObjectList[objectIndex].pos[0] - player->pos[0];
+    y  = gObjectList[objectIndex].pos[2] - player->pos[2];
+    return (x * x) + (y * y);
 }
 
-UNUSED s32 func_800888E8(s32 objectIndex, Player *player) {
-    s32 temp_f10;
-    s32 temp_f18;
-    s32 temp_f6;
+/**
+ * @brief Returns the distance between the object and the player.
+ * 
+ * @param objectIndex 
+ * @param player 
+ * @return UNUSED 
+ */
+UNUSED s32 get_distance_to_player(s32 objectIndex, Player *player) {
+    s32 x;
+    s32 z;
+    s32 y;
 
-    temp_f10 = gObjectList[objectIndex].pos[0] - player->pos[0];
-    temp_f6  = gObjectList[objectIndex].pos[1] - player->pos[1];
-    temp_f18 = gObjectList[objectIndex].pos[2] - player->pos[2];
-    return (temp_f10 * temp_f10) + (temp_f6 * temp_f6) + (temp_f18 * temp_f18);
+    x = gObjectList[objectIndex].pos[0] - player->pos[0];
+    y  = gObjectList[objectIndex].pos[1] - player->pos[1];
+    z = gObjectList[objectIndex].pos[2] - player->pos[2];
+    return (x * x) + (y * y) + (z * z);
 }
 
-u32 func_8008896C(s32 objectIndex, Camera *camera) {
-    s32 temp_f10;
-    s32 temp_f6;
+/**
+ * @brief Returns the distance between the object and the camera.
+ * 
+ * @param objectIndex 
+ * @param camera 
+ * @return UNUSED 
+ */
+u32 get_horizontal_distance_to_camera(s32 objectIndex, Camera *camera) {
+    s32 x;
+    s32 y;
 
-    temp_f10 = gObjectList[objectIndex].pos[0] - camera->pos[0];
-    temp_f6  = gObjectList[objectIndex].pos[2] - camera->pos[2];
-    return (temp_f10 * temp_f10) + (temp_f6 * temp_f6);
+    x = gObjectList[objectIndex].pos[0] - camera->pos[0];
+    y  = gObjectList[objectIndex].pos[2] - camera->pos[2];
+    return (x * x) + (y * y);
 }
 
-UNUSED s32 func_800889D4(s32 objectIndex, Camera *camera) {
-    s32 temp_f10;
-    s32 temp_f18;
-    s32 temp_f6;
+/**
+ * @brief Returns the distance between the object and the camera.
+ * 
+ * @param objectIndex 
+ * @param camera 
+ * @return UNUSED 
+ */
+UNUSED s32 get_distance_to_camera(s32 objectIndex, Camera *camera) {
+    s32 x;
+    s32 z;
+    s32 y;
 
-    temp_f10 = gObjectList[objectIndex].pos[0] - camera->pos[0];
-    temp_f6  = gObjectList[objectIndex].pos[1] - camera->pos[1];
-    temp_f18 = gObjectList[objectIndex].pos[2] - camera->pos[2];
-    return (temp_f10 * temp_f10) + (temp_f6 * temp_f6) + (temp_f18 * temp_f18);
+    x = gObjectList[objectIndex].pos[0] - camera->pos[0];
+    y  = gObjectList[objectIndex].pos[1] - camera->pos[1];
+    z = gObjectList[objectIndex].pos[2] - camera->pos[2];
+    return (x * x) + (y * y) + (z * z);
 }
 
-s32 func_80088A58(s32 objectIndex, Player *player, f32 arg2) {
-    f32 temp_f0;
-    f32 temp_f2;
-    s32 var_v1;
+/**
+ * @brief Returns if the object is closer than the distance to the player.
+ * 
+ * @param objectIndex 
+ * @param player 
+ * @param distance
+ * @return true 
+ * @return false 
+ */
+bool is_within_horizontal_distance_of_player(s32 objectIndex, Player *player, f32 distance) {
+    f32 x;
+    f32 y;
+    bool var_v1;
 
-    var_v1 = 0;
-    temp_f0 = gObjectList[objectIndex].pos[0] - player->pos[0];
-    temp_f2 = gObjectList[objectIndex].pos[2] - player->pos[2];
-    if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) <= (arg2 * arg2)) {
-        var_v1 = 1;
+    var_v1 = FALSE;
+    x = gObjectList[objectIndex].pos[0] - player->pos[0];
+    y = gObjectList[objectIndex].pos[2] - player->pos[2];
+    if (((x * x) + (y * y)) <= (distance * distance)) {
+        var_v1 = TRUE;
     }
     return var_v1;
 }
 
-s32 func_80088AC0(s32 objectIndex, Player *player, f32 arg2, f32 arg3) {
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f2;
-    s32 var_v1;
+/**
+ * @brief Returns if the object is between the distance_min and distance_max to the player.
+ * 
+ * @param objectIndex 
+ * @param player 
+ * @param distance_min 
+ * @param distance_max 
+ * @return true 
+ * @return false 
+ */
+bool is_in_bounds_to_player(s32 objectIndex, Player *player, f32 distance_min, f32 distance_max) {
+    f32 x;
+    f32 distance;
+    f32 z;
+    bool var_v1;
 
-    var_v1 = 0;
-    temp_f0 = gObjectList[objectIndex].pos[0] - player->pos[0];
-    temp_f2 = gObjectList[objectIndex].pos[2] - player->pos[2];
-    temp_f12 = (temp_f0 * temp_f0) + (temp_f2 * temp_f2);
-    if (((arg2 * arg2) <= temp_f12) && (temp_f12 <= (arg3 * arg3))) {
-        var_v1 = 1;
+    var_v1 = FALSE;
+    x = gObjectList[objectIndex].pos[0] - player->pos[0];
+    z = gObjectList[objectIndex].pos[2] - player->pos[2];
+    distance = (x * x) + (z * z);
+    if (((distance_min * distance_min) <= distance) && (distance <= (distance_max * distance_max))) {
+        var_v1 = TRUE;
     }
     return var_v1;
 }
 
-s32 func_80088B40(s32 objectIndex, Player *player, f32 arg2) {
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f2;
-    s32 var_v1;
+/**
+ * @brief Returns if the object is closer than the distance to the player.
+ * 
+ * @param objectIndex 
+ * @param player 
+ * @param distance 
+ * @return true 
+ * @return false 
+ */
+bool is_within_distance_to_player(s32 objectIndex, Player *player, f32 distance) {
+    f32 x;
+    f32 z;
+    f32 y;
+    bool var_v1;
 
-    var_v1 = 0;
-    temp_f0  = gObjectList[objectIndex].pos[0] - player->pos[0];
-    temp_f2  = gObjectList[objectIndex].pos[1] - player->pos[1];
-    temp_f12 = gObjectList[objectIndex].pos[2] - player->pos[2];
-    if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12)) <= (arg2 * arg2)) {
-        var_v1 = 1;
+    var_v1 = FALSE;
+    x  = gObjectList[objectIndex].pos[0] - player->pos[0];
+    y  = gObjectList[objectIndex].pos[1] - player->pos[1];
+    z = gObjectList[objectIndex].pos[2] - player->pos[2];
+    if (((x * x) + (y * y) + (z * z)) <= (distance * distance)) {
+        var_v1 = TRUE;
     }
     return var_v1;
 }
 
-s32 func_80088BB8(s32 objectIndex, Camera *camera, f32 arg2) {
-    f32 temp_f0;
-    f32 temp_f2;
-    s32 var_v1;
+/**
+ * @brief Returns if the object is between the distance_min and distance_max to the camera.
+ * 
+ * @param objectIndex 
+ * @param camera 
+ * @param distance 
+ * @return true 
+ * @return false 
+ */
+bool is_within_horizontal_distance_to_camera(s32 objectIndex, Camera *camera, f32 distance) {
+    f32 x;
+    f32 y;
+    bool var_v1;
 
-    var_v1 = 0;
-    temp_f0 = gObjectList[objectIndex].pos[0] - camera->pos[0];
-    temp_f2 = gObjectList[objectIndex].pos[2] - camera->pos[2];
-    if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) <= (arg2 * arg2)) {
-        var_v1 = 1;
+    var_v1 = FALSE;
+    x = gObjectList[objectIndex].pos[0] - camera->pos[0];
+    y = gObjectList[objectIndex].pos[2] - camera->pos[2];
+    if (((x * x) + (y * y)) <= (distance * distance)) {
+        var_v1 = TRUE;
     }
     return var_v1;
 }
 
-UNUSED s32 func_80088C20(s32 objectIndex, Camera *camera, f32 arg2, f32 arg3) {
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f2;
-    s32 var_v1;
+/**
+ * @brief Returns if the object is between the distance_min and distance_max to the camera.
+ * 
+ * @param objectIndex 
+ * @param camera 
+ * @param distance_min 
+ * @param distance_max 
+ * @return UNUSED 
+ */
+UNUSED bool is_within_bounds_to_camera(s32 objectIndex, Camera *camera, f32 distance_min, f32 distance_max) {
+    f32 x;
+    f32 distance;
+    f32 z;
+    bool var_v1;
 
-    var_v1 = 0;
-    temp_f0  = gObjectList[objectIndex].pos[0] - camera->pos[0];
-    temp_f2  = gObjectList[objectIndex].pos[2] - camera->pos[2];
-    temp_f12 = (temp_f0 * temp_f0) + (temp_f2 * temp_f2);
-    if (((arg2 * arg2) <= temp_f12) && (temp_f12 <= (arg3 * arg3))) {
-        var_v1 = 1;
+    var_v1 = FALSE;
+    x  = gObjectList[objectIndex].pos[0] - camera->pos[0];
+    z  = gObjectList[objectIndex].pos[2] - camera->pos[2];
+    distance = (x * x) + (z * z);
+    if (((distance_min * distance_min) <= distance) && (distance <= (distance_max * distance_max))) {
+        var_v1 = TRUE;
     }
     return var_v1;
 }
 
-UNUSED s32 func_80088CA0(s32 objectIndex, Camera *camera, f32 arg2) {
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f2;
-    s32 var_v1;
+/**
+ * @brief Returns if the object is closer than the distance to the camera.
+ * 
+ * @param objectIndex 
+ * @param camera 
+ * @param distance 
+ * @return UNUSED 
+ */
+UNUSED bool is_within_distance_to_camera(s32 objectIndex, Camera *camera, f32 distance) {
+    f32 x;
+    f32 z;
+    f32 y;
+    bool var_v1;
 
-    var_v1 = 0;
-    temp_f0  = gObjectList[objectIndex].pos[0] - camera->pos[0];
-    temp_f2  = gObjectList[objectIndex].pos[1] - camera->pos[1];
-    temp_f12 = gObjectList[objectIndex].pos[2] - camera->pos[2];
-    if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12)) <= (arg2 * arg2)) {
-        var_v1 = 1;
+    var_v1 = FALSE;
+    x  = gObjectList[objectIndex].pos[0] - camera->pos[0];
+    y  = gObjectList[objectIndex].pos[1] - camera->pos[1];
+    z = gObjectList[objectIndex].pos[2] - camera->pos[2];
+    if (((x * x) + (y * y) + (z * z)) <= (distance * distance)) {
+        var_v1 = TRUE;
     }
     return var_v1;
 }
 
-s32 func_80088D18(s32 objectIndex, Player *player) {
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f2;
-    s32 var_v1;
+/**
+ * @brief Returns if the object collided with the player.
+ * 
+ * @param objectIndex 
+ * @param player 
+ * @return true 
+ * @return false 
+ */
+bool has_collided_horizontally_with_player(s32 objectIndex, Player *player) {
+    f32 x;
+    f32 distance;
+    f32 z;
+    bool var_v1;
 
-    var_v1 = 0;
-    temp_f0  = gObjectList[objectIndex].pos[0] - player->pos[0];
-    temp_f2  = gObjectList[objectIndex].pos[2] - player->pos[2];
-    temp_f12 = gObjectList[objectIndex].unk_0C8 + player->boundingBoxSize;
-    if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) <= (temp_f12 * temp_f12)) {
-        var_v1 = 1;
+    var_v1 = FALSE;
+    x  = gObjectList[objectIndex].pos[0] - player->pos[0];
+    z  = gObjectList[objectIndex].pos[2] - player->pos[2];
+    distance = gObjectList[objectIndex].boundingBoxSize + player->boundingBoxSize;
+    if (((x * x) + (z * z)) <= (distance * distance)) {
+        var_v1 = TRUE;
     }
     return var_v1;
 }
 
-s32 func_80088DA4(s32 objectIndex, Player *player) {
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f14;
-    f32 temp_f2;
-    s32 var_v1;
+/**
+ * @brief Returns if the object collided with the player.
+ * 
+ * @param objectIndex 
+ * @param player 
+ * @return true 
+ * @return false 
+ */
+bool has_collided_with_player(s32 objectIndex, Player *player) {
+    f32 x;
+    f32 z;
+    f32 distance;
+    f32 y;
+    bool var_v1;
 
-    var_v1 = 0;
-    temp_f0  = gObjectList[objectIndex].pos[0] - player->pos[0];
-    temp_f2  = gObjectList[objectIndex].pos[1] - player->pos[1];
-    temp_f12 = gObjectList[objectIndex].pos[2] - player->pos[2];
-    temp_f14 = gObjectList[objectIndex].unk_0C8 + player->boundingBoxSize;
-    if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12)) <= (temp_f14 * temp_f14)) {
-        var_v1 = 1;
+    var_v1 = FALSE;
+    x  = gObjectList[objectIndex].pos[0] - player->pos[0];
+    y  = gObjectList[objectIndex].pos[1] - player->pos[1];
+    z = gObjectList[objectIndex].pos[2] - player->pos[2];
+    distance = gObjectList[objectIndex].boundingBoxSize + player->boundingBoxSize;
+    if (((x * x) + (y * y) + (z * z)) <= (distance * distance)) {
+        var_v1 = TRUE;
     }
     return var_v1;
 }
 
-UNUSED s32 func_80088E48(s32 objectIndex, Player *player, f32 arg2) {
-    f32 temp_f0;
-    s32 var_v1;
+/**
+ * @brief Returns if the object collided with the player.
+ * 
+ * @param objectIndex 
+ * @param player 
+ * @param distance 
+ * @return UNUSED 
+ */
+UNUSED bool has_collided_with_player_1d(s32 objectIndex, Player *player, f32 distance) {
+    f32 x;
+    bool var_v1;
 
-    var_v1 = 0;
-    temp_f0 = gObjectList[objectIndex].pos[1] - player->pos[1];
-    if ((temp_f0 * temp_f0) <= (arg2 * arg2)) {
-        var_v1 = 1;
+    var_v1 = FALSE;
+    x = gObjectList[objectIndex].pos[1] - player->pos[1];
+    if ((x * x) <= (distance * distance)) {
+        var_v1 = TRUE;
     }
     return var_v1;
 }
 
-s32 func_80088E98(s32 objectIndex, Player *player, f32 arg2) {
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f14;
-    f32 var_f2;
-    s32 var_v1;
+/**
+ * @brief Returns if the object collided with the player and is closer than the distance in the y axis.
+ * 
+ * @param objectIndex 
+ * @param player 
+ * @param distance_y 
+ * @return true 
+ * @return false 
+ */
+bool has_collided_with_player_and_within_height(s32 objectIndex, Player *player, f32 distance_y) {
+    f32 x;
+    f32 z;
+    f32 distance;
+    f32 y;
+    bool var_v1;
 
-    var_v1 = 0;
-    temp_f0  = gObjectList[objectIndex].pos[0] - player->pos[0];
-    var_f2   = gObjectList[objectIndex].pos[1] - player->pos[1];
-    temp_f12 = gObjectList[objectIndex].pos[2] - player->pos[2];
-    temp_f14 = gObjectList[objectIndex].unk_0C8 + player->boundingBoxSize;
-    if (var_f2 < 0.0f) {
-        var_f2 = -var_f2;
+    var_v1 = FALSE;
+    x  = gObjectList[objectIndex].pos[0] - player->pos[0];
+    y   = gObjectList[objectIndex].pos[1] - player->pos[1];
+    z = gObjectList[objectIndex].pos[2] - player->pos[2];
+    distance = gObjectList[objectIndex].boundingBoxSize + player->boundingBoxSize;
+    // abs(y)
+    if (y < 0.0f) {
+        y = -y;
     }
-    if ((((temp_f0 * temp_f0) + (temp_f12 * temp_f12)) <= (temp_f14 * temp_f14)) && (var_f2 <= arg2)) {
-        var_v1 = 1;
+    if ((((x * x) + (z * z)) <= (distance * distance)) && (y <= distance_y)) {
+        var_v1 = TRUE;
     }
     return var_v1;
 }
 
 f32 func_80088F54(s32 objectIndex, Player *player) {
-    f32 var_f2;
+    f32 distance;
 
-    var_f2 = gObjectList[objectIndex].pos[1] - player->unk_074;
-    if (var_f2 < 0.0f) {
-        var_f2 = -var_f2;
+    distance = gObjectList[objectIndex].pos[1] - player->unk_074;
+    // abs(distance)
+    if (distance < 0.0f) {
+        distance = -distance;
     }
-    return var_f2;
+    return distance;
 }
 
-UNUSED s32 func_80088F94(s32 objectIndex, Player *player, f32 arg2) {
-    f32 var_f0;
-    s32 var_v1;
+UNUSED bool func_80088F94(s32 objectIndex, Player *player, f32 arg2) {
+    f32 distance;
+    bool var_v1;
 
-    var_f0 = gObjectList[objectIndex].pos[1] - player->unk_074;
-    var_v1 = 0;
-    if (var_f0 < 0.0f) {
-        var_f0 = -var_f0;
+    distance = gObjectList[objectIndex].pos[1] - player->unk_074;
+    var_v1 = FALSE;
+    // abs(distance)
+    if (distance < 0.0f) {
+        distance = -distance;
     }
-    if (var_f0 <= arg2) {
-        var_v1 = 1;
+    if (distance <= arg2) {
+        var_v1 = TRUE;
     }
     return var_v1;
 }
@@ -944,7 +1062,7 @@ s32 func_800895E4(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && (func_80088D18(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].state != 0) && (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                     func_80072180();
                 }
@@ -962,7 +1080,7 @@ void func_800896D4(s32 objectIndex, f32 arg1, f32 arg2) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x80000200) && (func_80088D18(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x80000200) && (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 func_8008933C(player, objectIndex, arg1, arg2 * 1.1);
                 if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                     func_80072180();
@@ -981,7 +1099,7 @@ void func_80089820(s32 objectIndex, f32 arg1, f32 arg2, u32 arg3) {
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x80000000)) {
-                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088D18(objectIndex, player) != 0)) {
+                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                     if (player->effects & 0x200) {
                         set_object_flag_unk_054_true(objectIndex, 0x02000000);
                     } else {
@@ -1005,7 +1123,7 @@ void func_80089A04(s32 objectIndex, f32 arg1, f32 arg2) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x80000200) && (func_80088DA4(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x80000200) && (has_collided_with_player(objectIndex, player) != 0)) {
                 func_8008933C(player, objectIndex, arg1, arg2 * 1.1);
                 if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                     func_80072180();
@@ -1026,7 +1144,7 @@ s32 func_80089B50(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++, test++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x81000000) && (player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088D18(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x81000000) && (player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 if (!(player->effects & 0x200)) {
                     player->statusEffects |= REVERSE_EFFECT;
                     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
@@ -1052,7 +1170,7 @@ s32 func_80089CBC(s32 objectIndex, f32 arg1) {
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x81000000)) {
-                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088E98(objectIndex, player, arg1) != 0)) {
+                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (has_collided_with_player_and_within_height(objectIndex, player, arg1) != 0)) {
                     if (!(player->effects & 0x200)) {
                         player->statusEffects |= REVERSE_EFFECT;
                         if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
@@ -1076,7 +1194,7 @@ s32 func_80089E18(s32 objectIndex) {
     player = gPlayerOne;
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
-            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x800000C0) && (func_80088D18(objectIndex, player) != 0)) {
+            if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x800000C0) && (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 if (player->effects & 0x200) {
                     var_s6 = 1;
                 } else {
@@ -1098,7 +1216,7 @@ s32 func_80089F24(s32 objectIndex) {
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x800002C0)) {
-                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (func_80088D18(objectIndex, player) != 0)) {
+                if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                     var_s7 = 1;
                     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
@@ -1160,7 +1278,7 @@ void func_8008A1D0(s32 objectIndex, s32 cameraId, s32 arg2, s32 arg3) {
 
     camera = &camera1[cameraId];
     set_object_flag_unk_054_false(objectIndex, 0x00140000);
-    temp_v0 = func_8008896C(objectIndex, camera);
+    temp_v0 = get_horizontal_distance_to_camera(objectIndex, camera);
     if (temp_v0 < 0x2711U) {
         var_a2 = 0x5555;
     } else if (temp_v0 < 0x9C41U) {
@@ -1203,7 +1321,7 @@ s32 func_8008A364(s32 objectIndex, s32 cameraId, u16 arg2, s32 arg3) {
 
     camera = &camera1[cameraId];
     set_object_flag_unk_054_false(objectIndex, 0x00060000);
-    var_v1 = func_8008896C(objectIndex, camera);
+    var_v1 = get_horizontal_distance_to_camera(objectIndex, camera);
     if (var_v1 < (arg3 * arg3)) {
         set_object_flag_unk_054_true(objectIndex, 0x00020000);
         if (var_v1 < 0x2711U) {
@@ -1221,7 +1339,7 @@ s32 func_8008A364(s32 objectIndex, s32 cameraId, u16 arg2, s32 arg3) {
 }
 
 void func_8008A454(s32 objectIndex, s32 cameraId, s32 arg2) {
-    if (func_8008896C(objectIndex, &camera1[cameraId]) < (u32) (arg2 * arg2)) {
+    if (get_horizontal_distance_to_camera(objectIndex, &camera1[cameraId]) < (u32) (arg2 * arg2)) {
         set_object_flag_unk_054_true(objectIndex, 0x00000020);
     } else {
         set_object_flag_unk_054_false(objectIndex, 0x00000020);
@@ -1267,7 +1385,7 @@ void func_8008A6DC(s32 objectIndex, f32 arg1) {
 
     set_object_flag_unk_054_false(objectIndex, 0x00060000);
     for (camera = camera1, loopIndex = 0; loopIndex < gPlayerCountSelection1; loopIndex++, camera++) {
-        if ((gObjectList[objectIndex].state != 0) && (func_80088BB8(objectIndex, camera, arg1) != 0)) {
+        if ((gObjectList[objectIndex].state != 0) && (is_within_horizontal_distance_to_camera(objectIndex, camera, arg1) != 0)) {
             set_object_flag_unk_054_true(objectIndex, 0x00020000);
             if (arg1 <= 500.0) {
                 var_a2 = 0x4000;

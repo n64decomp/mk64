@@ -4736,7 +4736,7 @@ void func_8007D6A8(s32 objectIndex, s32 arg1) {
     func_8007D360(objectIndex, arg1);
     temp_v0->sizeScaling = 0.1f;
     set_object_flag_unk_054_true(objectIndex, 0x00000200);
-    temp_v0->unk_0C8 = 3;
+    temp_v0->boundingBoxSize = 3;
 }
 
 void func_8007D714(s32 arg0) {
@@ -5141,7 +5141,7 @@ s32 func_8007E50C(s32 objectIndex, Player *player, Camera *camera) {
     s32 sp24;
 
     sp24 = 0;
-    if ((func_80072354(objectIndex, 4) != 0) && (func_80088A58(objectIndex, player, 300.0f) != 0) && (func_8008A0B4(objectIndex, player, camera, 0x4000U) != 0) && (func_8008A060(objectIndex, camera, 0x1555U) != 0)) {
+    if ((func_80072354(objectIndex, 4) != 0) && (is_within_horizontal_distance_of_player(objectIndex, player, 300.0f) != 0) && (func_8008A0B4(objectIndex, player, camera, 0x4000U) != 0) && (func_8008A060(objectIndex, camera, 0x1555U) != 0)) {
         func_800722A4(objectIndex, 4);
         sp24 = 1;
     }
@@ -5316,7 +5316,7 @@ void func_8007EC30(s32 objectIndex) {
     }
     init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s1->unk_070 = d_course_bowsers_castle_dl_thwomp;
-    temp_s1->unk_0C8 = 0x000C;
+    temp_s1->boundingBoxSize = 0x000C;
     temp_s1->sizeScaling = 1.0f;
     temp_s1->unk_01C[1] = 30.0f;
     set_object_flag_unk_054_true(objectIndex, 0x05000220);
@@ -5361,7 +5361,7 @@ void func_8007EE5C(s32 objectIndex) {
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->sizeScaling = 1.0f;
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
-    temp_s0->unk_0C8 = 0x000C;
+    temp_s0->boundingBoxSize = 0x000C;
     set_object_flag_unk_054_true(objectIndex, 0x04000220);
     temp_s0->type = 0;
     temp_s0->unk_0DF = 6;
@@ -5659,7 +5659,7 @@ void func_8007FA08(s32 objectIndex) {
     init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
-    temp_s0->unk_0C8 = 0x000C;
+    temp_s0->boundingBoxSize = 0x000C;
     temp_s0->sizeScaling = 1.0f;
     set_object_flag_unk_054_true(objectIndex, 0x04000220);
     temp_s0->type = 0;
@@ -5819,7 +5819,7 @@ void func_80080078(s32 objectIndex) {
     init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
-    temp_s0->unk_0C8 = 0x000C;
+    temp_s0->boundingBoxSize = 0x000C;
     temp_s0->sizeScaling = 1.0f;
     set_object_flag_unk_054_true(objectIndex, 0x04000220);
     temp_s0->type = 2;
@@ -5886,7 +5886,7 @@ void func_800802C0(s32 objectIndex) {
     init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
     temp_s0->itemDisplay = 0;
-    temp_s0->unk_0C8 = 0x000C;
+    temp_s0->boundingBoxSize = 0x000C;
     temp_s0->sizeScaling = 1.5f;
     set_object_flag_unk_054_true(objectIndex, 0x05000220);
     temp_s0->type = 1;
@@ -5943,7 +5943,7 @@ void func_80080524(s32 objectIndex) {
     init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->unk_070 = d_course_bowsers_castle_dl_thwomp;
-    temp_s0->unk_0C8 = 0x000C;
+    temp_s0->boundingBoxSize = 0x000C;
     temp_s0->itemDisplay = 0;
     temp_s0->sizeScaling = 1.0f;
     set_object_flag_unk_054_true(objectIndex, 0x04000220);
@@ -6050,7 +6050,7 @@ void func_800808CC(s32 objectIndex) {
 }
 
 void func_80080A14(s32 objectIndex, Player *player) {
-    if (func_80088A58(objectIndex, player, 12.0f) != 0) {
+    if (is_within_horizontal_distance_of_player(objectIndex, player, 12.0f) != 0) {
         player->boundingBoxCorners[0].unk_14 |= 3;
     }
 }
@@ -6060,7 +6060,7 @@ void func_80080A4C(s32 objectIndex, s32 cameraPlayerId) {
     Player *player = &gPlayerOne[cameraPlayerId];
 
     if (gScreenModeSelection != SCREEN_MODE_3P_4P_SPLITSCREEN) {
-        if ((func_80072320(objectIndex, 0x00000010) != 0) && (func_80088A58(objectIndex, player, 500.0f) != 0)) {
+        if ((func_80072320(objectIndex, 0x00000010) != 0) && (is_within_horizontal_distance_of_player(objectIndex, player, 500.0f) != 0)) {
             func_8001CA10(camera);
             func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_038, 0x1900800FU);
         }
@@ -6075,7 +6075,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
         if (!(temp_s0->statusEffects & 0x100)) {
             temp_f0 = func_80088F54(objectIndex, temp_s0);
-            if ((temp_f0 <= 9.0) && !(temp_s0->effects & 0x04000000) && (func_80088D18(objectIndex, temp_s0) != 0)) {
+            if ((temp_f0 <= 9.0) && !(temp_s0->effects & 0x04000000) && (has_collided_horizontally_with_player(objectIndex, temp_s0) != 0)) {
                 if ((temp_s0->type & 0x8000) && !(temp_s0->type & 0x100)) {
                     if (!(temp_s0->effects & 0x200)) {
                         func_80089474(objectIndex, playerId, 1.4f, 1.1f, 0x1900A04CU);
@@ -6093,7 +6093,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
                         func_800726CC(objectIndex, 0x000000C8);
                     }
                 }
-            } else if ((temp_f0 <= 17.5) && (func_80072320(objectIndex, 1) != 0) && (func_80088A58(objectIndex, temp_s0, (temp_s0->unk_094 * 0.5) + 7.0) != 0)) {
+            } else if ((temp_f0 <= 17.5) && (func_80072320(objectIndex, 1) != 0) && (is_within_horizontal_distance_of_player(objectIndex, temp_s0, (temp_s0->unk_094 * 0.5) + 7.0) != 0)) {
                 if ((temp_s0->type & 0x8000) && !(temp_s0->type & 0x100)) {
                     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
@@ -6339,7 +6339,7 @@ void func_80081848(s32 objectIndex) {
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
     func_8008B888(objectIndex, 0U, 0U, 0U);
     func_8008B8BC(objectIndex, 0U, 0U, 0x8000U);
-    gObjectList[objectIndex].unk_0C8 = 6;
+    gObjectList[objectIndex].boundingBoxSize = 6;
     gObjectList[objectIndex].unk_038[1] = 4.0f;
     set_object_flag_unk_054_true(objectIndex, 0x04000000);
     func_80072488(objectIndex);
@@ -6470,7 +6470,7 @@ void func_80081D34(s32 objectIndex) {
     var_s1 = gPlayerOne;
     var_s4 = camera1;
     for (var_s2 = 0; var_s2 < D_8018D158; var_s2++, var_s1++, var_s4++) {
-        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) && !(var_s1->effects & 0x80000000) && (func_80088DA4(objectIndex, var_s1) != 0)) {
+        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) && !(var_s1->effects & 0x80000000) && (has_collided_with_player(objectIndex, var_s1) != 0)) {
             if ((var_s1->type & 0x8000) && !(var_s1->type & 0x100)) {
                 var_s5 = 1;
                 temp_s0 = &gObjectList[objectIndex];
@@ -6747,7 +6747,7 @@ void init_ktb_crab(s32 objectIndex) {
     object->sizeScaling = 0.15f;
     object->itemDisplay = 0;
     func_80072488(objectIndex);
-    object->unk_0C8 = 1;
+    object->boundingBoxSize = 1;
     set_object_flag_unk_054_true(objectIndex, 0x04000420);
     func_80086EAC(objectIndex, 0, 1);
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -6897,7 +6897,7 @@ void func_8008311C(s32 objectIndex, s32 arg1) {
     temp_s0->unk_034 = ((arg1 % 6) * 0.1) + 0.5;
     func_80086E70(objectIndex);
     set_object_flag_unk_054_true(objectIndex, 0x04000600);
-    temp_s0->unk_0C8 = 2;
+    temp_s0->boundingBoxSize = 2;
 }
 
 void func_80083248(s32 objectIndex) {
@@ -7095,7 +7095,7 @@ void func_80083B0C(s32 objectIndex) {
     gObjectList[objectIndex].unk_0B2[0] = 0;
     gObjectList[objectIndex].unk_0B2[1] = 0;
     gObjectList[objectIndex].unk_0B2[2] = 0x8000;
-    gObjectList[objectIndex].unk_0C8 = 2;
+    gObjectList[objectIndex].boundingBoxSize = 2;
     gObjectList[objectIndex].unk_034 = 1.5f;
     set_object_flag_unk_054_true(objectIndex, 0x04000210);
 }
@@ -7269,7 +7269,7 @@ void func_80084430(s32 objectIndex, s32 arg1) {
     temp_s0->unk_070 = (Gfx *) d_course_sherbet_land_unk_data1;
     temp_s0->vertex = (Vtx *) d_course_sherbet_land_unk_data11;
     temp_s0->sizeScaling = 0.2f;
-    temp_s0->unk_0C8 = 0x000C;
+    temp_s0->boundingBoxSize = 0x000C;
     temp_s0->unk_09C = 1;
     func_8008B7D4(objectIndex, D_8018D01C * -383.0, 2.0f, -690.0f);
     func_8008B888(objectIndex, 0U, 0U, 0U);
@@ -7303,7 +7303,7 @@ void func_800845C8(s32 objectIndex, s32 arg1) {
     temp_s0->unk_0D8 = 0;
     temp_s0->unk_070 = d_course_sherbet_land_unk_data1;
     temp_s0->vertex = d_course_sherbet_land_unk_data11;
-    temp_s0->unk_0C8 = 4;
+    temp_s0->boundingBoxSize = 4;
     temp_s0->unk_09C = 2;
     temp_s0->unk_04C = random_int(0x012CU);
     set_object_flag_unk_054_true(objectIndex, 0x04000220);
@@ -7723,7 +7723,7 @@ void func_80085878(s32 objectIndex, s32 arg1) {
     temp_s0->unk_070 = d_rainbow_road_unk4;
     temp_s0->vertex = d_rainbow_road_unk3;
     temp_s0->sizeScaling = 0.03f;
-    temp_s0->unk_0C8 = 0x000A;
+    temp_s0->boundingBoxSize = 0x000A;
     set_object_flag_unk_054_true(objectIndex, 0x04000200);
     temp_s0->unk_084[8] = (arg1 * 0x12C) + 0x1F4;
     func_8008B7D4(objectIndex, 0.0f, -15.0f, 0.0f);
