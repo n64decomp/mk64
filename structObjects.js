@@ -2,6 +2,7 @@ var structObjects =
 [
     [ "activeTexture", "structObjects.html#a56dfd1f30a07e24c37cdb0409e7d2bae", null ],
     [ "activeTLUT", "structObjects.html#ad8ef439307ffc96b14046ea90e453574", null ],
+    [ "boundingBoxSize", "structObjects.html#a35625dfc9e8353163406776f6cd77ce6", null ],
     [ "itemDisplay", "structObjects.html#a2abaf2f9fa2d97a411b7d3cfc3f27657", null ],
     [ "pos", "structObjects.html#a248376f4c3214d48f9e7f6c551e84616", null ],
     [ "sizeScaling", "structObjects.html#a10487cd700f115b65bcb3bd37ca4e654", null ],
@@ -44,7 +45,6 @@ var structObjects =
     [ "unk_0BE", "structObjects.html#a923f1a87e62b151f1a3f2590dad2ddd8", null ],
     [ "unk_0C4", "structObjects.html#ad5e2c37332c1fd0477f83a46fd68047f", null ],
     [ "unk_0C6", "structObjects.html#a3ed07b06dc517373c5888dd93f6ba1fe", null ],
-    [ "unk_0C8", "structObjects.html#a28955d97572588694e8a22ec6096d362", null ],
     [ "unk_0CA", "structObjects.html#a9f1d83da277ecbecf4cf90cc4a8e9742", null ],
     [ "unk_0CB", "structObjects.html#ad8ea061778fd78ac9e7427a729edbb86", null ],
     [ "unk_0CC", "structObjects.html#a93e1689183de92e1d2eddc1df688a48d", null ],
