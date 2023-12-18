@@ -1,12 +1,12 @@
 var structBombKart =
 [
     [ "bombPos", "structBombKart.html#abff650a8965656c8ff1879ddca0cc35a", null ],
-    [ "bounceTimer", "structBombKart.html#afb99282aec5b15f6c16324433aa44a3b", null ],
-    [ "circleTimer", "structBombKart.html#a6a9b3e1c631d3ad3bce82e9842b4702a", null ],
-    [ "someRot", "structBombKart.html#addc754d518a1c85785d6e65bb279a3b3", null ],
+    [ "bounceTimer", "structBombKart.html#a88edf2368de96c55b84ad782ae269ffc", null ],
+    [ "circleTimer", "structBombKart.html#a1bde5eef376c38628b3785a370e65c1e", null ],
+    [ "someRot", "structBombKart.html#a62594c2aa941cf3be6e5a6d41e165dc5", null ],
     [ "state", "structBombKart.html#a7ed32035aef35fc8f66c77074577b56c", null ],
     [ "unk_3C", "structBombKart.html#ab192143b106b00daa2926827c917c448", null ],
-    [ "unk_4A", "structBombKart.html#aaacc758bab5344f2623b80a44b6f221c", null ],
+    [ "unk_4A", "structBombKart.html#ad7a1a6a174453a96410a6215a746f343", null ],
     [ "unk_4C", "structBombKart.html#a7df771fc63a3e9c0fb3142e5c3984696", null ],
     [ "waypointIndex", "structBombKart.html#a525c7c5d643f877e4ad83c936813af2b", null ],
     [ "wheel1Pos", "structBombKart.html#a1cab59b9c101bcceff7bc98bcd31bb1d", null ],

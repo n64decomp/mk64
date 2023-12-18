@@ -48,7 +48,7 @@ if (edges && edges.length) {
 <script type="text/javascript">
 var viewWidth = 772;
 var viewHeight = 1530;
-var sectionId = 'dynsection-50';
+var sectionId = 'dynsection-39';
 </script>
 <script xlink:href="svgpan.js"/>
 <svg id="graph" class="graph">
@@ -856,7 +856,7 @@ var sectionId = 'dynsection-50';
         </g>
         <svg viewBox="0 0 15 15" width="100%" height="30px" preserveAspectRatio="xMaxYMin meet">
          <g id="arrow_out" transform="scale(0.3 0.3)">
-          <a xlink:href="math__util_8c_a4eb407fa2be7c74a12fb7ffe8307148a_icgraph_org.svg" target="_base">
+          <a xlink:href="math__util_8h_ae338af21c87c2daf7aa73c68e644115d_icgraph_org.svg" target="_base">
            <rect id="button" ry="5" rx="5" y="6" x="6" height="38" width="38"
                 fill="#f2f5e9" fill-opacity="0.5" stroke="#606060" stroke-width="1.0"/>
            <path id="arrow"

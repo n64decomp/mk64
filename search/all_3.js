@@ -134,7 +134,7 @@ var searchData=
   ['chnl_5ferr_5foverrun_771',['CHNL_ERR_OVERRUN',['../rcp_8h.html#a021358f4eaae21094bb78ff24d1a8202',1,'rcp.h']]],
   ['chunklen_772',['chunkLen',['../structReverbRingBufferItem.html#aecb154fdd65e01e1dc121b3b204943c3',1,'ReverbRingBufferItem']]],
   ['cinematiccamera_773',['CinematicCamera',['../structCinematicCamera.html',1,'']]],
-  ['circletimer_774',['circleTimer',['../structBombKart.html#a6a9b3e1c631d3ad3bce82e9842b4702a',1,'BombKart']]],
+  ['circletimer_774',['circleTimer',['../structBombKart.html#a1bde5eef376c38628b3785a370e65c1e',1,'BombKart']]],
   ['cleanup_5fred_5fand_5fgreen_5fshells_775',['cleanup_red_and_green_shells',['../actors_8h.html#a4c7c9e640a28fc221f580e466b80a379',1,'cleanup_red_and_green_shells(struct ShellActor *):&#160;actors.c'],['../actors_8c.html#a1a9bccb586242555a9123ebd4ab70f2a',1,'cleanup_red_and_green_shells(struct ShellActor *shell):&#160;actors.c']]],
   ['clear_5fframebuffer_776',['clear_framebuffer',['../main_8c.html#a8fa00601d510540676d7af3af095c569',1,'clear_framebuffer(s32 color):&#160;main.c'],['../main_8h.html#a6f0bbf51e47e025b7489e520bded8cd8',1,'clear_framebuffer(s32):&#160;main.c']]],
   ['clear_5fnmi_5fbuffer_777',['clear_nmi_buffer',['../code__800029B0_8c.html#a0d59a21a5843b6b518a1b93920dc561e',1,'clear_nmi_buffer(void):&#160;code_800029B0.c'],['../code__800029B0_8h.html#a0d59a21a5843b6b518a1b93920dc561e',1,'clear_nmi_buffer(void):&#160;code_800029B0.c']]],
