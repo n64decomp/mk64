@@ -56,30 +56,23 @@ typedef struct {
     u16 unk6;
 } UnkStruct_46D0;
 
+typedef struct {
+    s16 x;
+    s16 z;
+} PathNoY;
 
 /* Function Prototypes */
-void func_80012190(void);
-void func_8000BA14(u16, f32, f32, s16);
-void func_80014BDC(void);
-void func_80014A88(void);
-void func_80014934(void);
-void func_800147E0(void);
-void func_800132F4(void);
 s16  func_80005FD0(Vec3f, Vec3f);
-void func_800100F0(s32);
-void func_80011E38(s32);
-void func_800120C8(void);
-void func_80012780(TrainCarStuff*, s16*, u16);
-void func_800127E0(void);
+
 s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
 void func_80006114(Vec3f, Vec3f, s16);
 s32  func_800061DC(Vec3f, f32, s32);
 void set_places(void);
-void func_80010E6C(s32 pathIndex);
-void set_bomb_kart_spawn_positions(void);
+
 void func_800070F4(void);
 void func_800074D4(void);
 s32  func_80007BF8(u16, u16, u16, u16, u16);
+void func_80007FA4(s32, Player*, f32);
 
 void func_80008DC0(s32);
 s32  func_80008E58(s32, s32);
@@ -89,12 +82,15 @@ void func_80009000(s32);
 void func_800090F0(s32, Player*);
 f32  func_80009258(s32, f32, f32);
 void func_800097E0(void);
+void func_800099EC(s32, s32);
 void func_80009B60(s32);
 
+void func_8000B140(s32);
 s32  func_8000B7E4(s32, u16);
 s32  func_8000B820(s32);
 f32  func_8000B874(f32, f32, u16, s32);
 void func_8000B95C(s32, u16, s32);
+void func_8000BA14(u16, f32, f32, s16);
 void func_8000BBD8(u16, f32, s16);
 s16  func_8000BD94(f32, f32, f32, s32);
 
@@ -130,6 +126,7 @@ void func_8000F2BC(TrackWaypoint*, size_t);
 void func_8000F2DC(void);
 void func_8000F628(void);
 
+void func_800100F0(s32);
 void func_80010218(s32);
 f32  func_80010480(s32, u16);
 void func_800107C4(s32);
@@ -139,25 +136,28 @@ void func_80010E6C(s32);
 f32  func_80010F40(f32, f32, f32, s32, s32);
 f32  func_80010FA0(f32, f32, f32, s32, s32);
 
-s32 func_80011014(TrackWaypoint *, TrackWaypoint *, s32, s32);
+s32  func_80011014(TrackWaypoint *, TrackWaypoint *, s32, s32);
 s32  process_path_data(TrackWaypoint*, TrackWaypoint*);
-typedef struct {
-    s16 x;
-    s16 z;
-} PathNoY;
 s32  func_8001168C(PathNoY*, TrackWaypoint*, s32);
 void func_80011A5C(void);
 void func_80011AB8(s32);
 void func_80011AE4(s32);
+void func_80011E38(s32);
+void func_80011EC0(s32, Player*, s32, s32);
 
+void func_800120C8(void);
+void func_80012190(void);
 void func_80012220(VehicleStuff*);
 void init_course_vehicles(void);
+void func_80012780(TrainCarStuff*, s16*, u16);
+void func_800127E0(void);
 void func_80012A48(TrainCarStuff*, s16);
 void func_80012AC0(void);
 void func_80012DC0(s32, Player*);
 
 void func_80013054(void);
 void func_800131DC(s32);
+void func_800132F4(void);
 void func_800133C4(void);
 void func_80013854(Player*);
 void func_800139E4(f32, f32, s32, s32, VehicleStuff*, TrackWaypoint*);
@@ -167,15 +167,19 @@ void func_80013F7C(s32, Player*, VehicleStuff*, f32, f32, s32, u32);
 
 f32  func_800145A8(s16, f32, s16);
 void func_800146B8(s32, s32, VehicleStuff*);
+void func_800147E0(void);
 void func_8001487C(void);
 void func_800148C4(s32, Player*);
 void func_8001490C(s32);
+void func_80014934(void);
 void func_800149D0(void);
 void func_80014A18(s32, Player*);
 void func_80014A60(s32);
+void func_80014A88(void);
 void func_80014B24(void);
 void func_80014B6C(s32, Player*);
 void func_80014BB4(s32);
+void func_80014BDC(void);
 void func_80014C78(void);
 void func_80014CC0(s32, Player*);
 void func_80014D08(s32);
@@ -260,14 +264,13 @@ extern uintptr_t D_800DC8D0[20][4];
 extern struct _struct_D_800DD9D0_0x10 D_800DD9D0[];
 extern s16 D_80162F10[];
 extern s16 D_80162F50[];
+extern Vec3f D_80162FB0;
+extern Vec3f D_80162FC0;
 extern s16 D_80162FF8[];
 extern s16 D_80163010[];
 extern f32 D_80163028[];
 extern s16 D_80163050[];
 extern f32 D_80163090[];
-extern u16 D_80163258[];
-extern u16 D_80163270[];
-extern s16 D_80163346[];
 extern s32 D_801630B8[];
 extern s16 D_801630E8[];
 extern s32 D_80163100[];
@@ -277,6 +280,8 @@ extern f32 D_80163178[];
 extern f32 D_801631A0[];
 extern s32 D_801631CC;
 extern s16 D_801631F8[];
+extern u16 D_80163258[];
+extern u16 D_80163270[];
 extern f32 D_80163210[];
 extern s32 D_80163288[];
 extern u16 D_80163330[]; // static?
@@ -290,6 +295,10 @@ extern s16 D_801633B0[];
 extern s16 D_801633C8[];
 extern s16 D_801633F8[];
 extern f32 D_80163450[];
+extern s16 D_8016347C;
+extern s16 D_8016347E;
+extern s32 D_80163480;
+extern s32 D_80163484;
 extern s16 D_801634C0[];
 extern s16 D_801634EC;
 extern s32 D_801634F0;
@@ -298,6 +307,10 @@ extern s16 D_80164358;
 extern s16 D_8016435A;
 extern s16 D_8016435C;
 extern s16 D_80164538[];
+extern s32 D_801645D0[];
+extern s32 D_801645E8[];
+extern s32 D_80164608[];
+extern s32 D_80164628[];
 extern f32 D_80164698;
 extern f32 D_8016469C;
 extern f32 D_801646A0;
@@ -342,7 +355,10 @@ extern s16 D_801632B8[];
 extern s16 D_801632D0[];
 extern u16 D_801632E8[];
 extern s32 D_8016337C;
-extern u16 D_80163410[]; // One per player?
+extern s16 D_80163410[]; // One per player?
+extern f32 D_80163418[];
+extern f32 D_80163428[];
+extern f32 D_80163438[];
 extern s16 D_80163478;
 extern s32 D_80163488;
 extern s16 D_8016348C;
