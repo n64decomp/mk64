@@ -1,5 +1,7 @@
 var NAVTREEINDEX67 =
 {
+"string_8h.html#a0f768e1fba5eb46430e5aaf328f07ba8":[2,0,0,0,5,1],
+"string_8h.html#a221995d01087b6da7d0df8d004c7797b":[2,0,0,0,5,0],
 "string_8h_source.html":[2,0,0,0,5],
 "structALADPCMBook.html":[1,0,29],
 "structALADPCMBook.html#a2298d51ac6d5273fb4bd62506352eb60":[1,0,29,2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX67 =
 "structBombKartSpawn.html":[1,0,58],
 "structBombKartSpawn.html#a2433b7d49cd9dbe30178490a1c5996a0":[1,0,58,6],
 "structBombKartSpawn.html#a25fe99726407a9478d5993b6344bc382":[1,0,58,0],
-"structBombKartSpawn.html#aa5a1b58b434f18873799513b06f82022":[1,0,58,3],
-"structBombKartSpawn.html#ab18c65ba3270593b6670ef45a16270b5":[1,0,58,5],
-"structBombKartSpawn.html#af1f4926d93bde76f108119f5bc18aff9":[1,0,58,2]
+"structBombKartSpawn.html#aa5a1b58b434f18873799513b06f82022":[1,0,58,3]
 };

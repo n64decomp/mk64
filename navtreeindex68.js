@@ -1,5 +1,7 @@
 var NAVTREEINDEX68 =
 {
+"structBombKartSpawn.html#ab18c65ba3270593b6670ef45a16270b5":[1,0,58,5],
+"structBombKartSpawn.html#af1f4926d93bde76f108119f5bc18aff9":[1,0,58,2],
 "structBombKartSpawn.html#af23e6dc210468dbf7b9c256ea8865b87":[1,0,58,1],
 "structBombKartSpawn.html#afd74dec68c253ef7b2f20f5828b64872":[1,0,58,4],
 "structCamera.html":[1,0,59],
@@ -247,7 +249,5 @@ var NAVTREEINDEX68 =
 "structItemBox.html#aad7a9f46654608486a15ebd5251b70e7":[1,0,88,5],
 "structItemBox.html#acbe8c0af0b7e62a73c6537404b952999":[1,0,88,11],
 "structItemBox.html#af8f78b9ee3b51c94f1c5e9492c06b54c":[1,0,88,9],
-"structItemBox.html#afbe6f4cee304f147c300049c1e8b95b7":[1,0,88,12],
-"structItemWindowObjects.html":[1,0,89],
-"structItemWindowObjects.html#a083379390e6404e7677b68ed25d8f1bb":[1,0,89,59]
+"structItemBox.html#afbe6f4cee304f147c300049c1e8b95b7":[1,0,88,12]
 };
