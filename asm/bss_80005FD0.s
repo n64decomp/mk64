@@ -225,6 +225,7 @@ glabel D_80163438
 glabel D_80163448
 .skip 2
 
+# D_8016344A is fake, its just the lower half-word of D_80163448
 glabel D_8016344A
 .skip 2
 
