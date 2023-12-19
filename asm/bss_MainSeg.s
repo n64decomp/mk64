@@ -65,14 +65,8 @@ glabel D_80163DD8
 glabel D_80163DE4
 .skip 4
 
-# gBombKarts should actually be of size 588 (0x54 * 7)
-# D_80163E2C is a fake variable
 glabel gBombKarts
-.skip 68
-
-glabel D_80163E2C
-.skip 520
-# end gBombKarts
+.skip 588
 
 glabel D_80164034
 .skip 4

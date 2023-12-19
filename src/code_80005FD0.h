@@ -50,7 +50,7 @@ typedef struct {
 extern D_801642D8_entry D_801642D8[];
 
 typedef struct {
-    u16 unk0;
+    s16 unk0;
     u16 unk2;
     u16 unk4;
     u16 unk6;
@@ -106,6 +106,7 @@ s16  func_8000D24C(f32, f32, f32, s32*);
 s16  func_8000D2B4(f32, f32, f32, s16, s32);
 s16  func_8000D33C(f32, f32, f32, s16, s32);
 f32  func_8000D3B8(s32);
+void func_8000D438(s32, u16);
 s16  func_8000D6D0(Vec3f, s16*, f32, f32, s16, s16);
 s16  func_8000D940(Vec3f, s16*, f32, f32, s16);
 s16  func_8000DBAC(Vec3f, s16*, f32);
@@ -347,6 +348,7 @@ extern s16 D_80164680[];
 extern f32 D_80164688[];
 extern s16 D_801646C0[];
 extern s16 D_801646CC;
+extern UnkStruct_46D0 D_801646D0[];
 extern s16 D_801630FC;
 extern s16 D_801631C8;
 extern u16 D_801631E0[8];
