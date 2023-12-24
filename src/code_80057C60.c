@@ -13,7 +13,7 @@
 #include "math_util.h"
 #include "math_util_2.h"
 #include "code_80005FD0.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 #include "hud_renderer.h"
 #include "code_80071F00.h"
 #include "code_80086E70.h"

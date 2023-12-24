@@ -52,7 +52,7 @@ segments:
       - [0x6BB0, asm, unused_overflow_check]
       - [0x6BD0, c, code_80005FD0]
       - [0x1D0D0, c, camera]
-      - [0x20580, c, code_8001F980]
+      - [0x20580, c, render_player]
       - [0x27C40, c, kart_dma]
       - [0x28900, c, code_80027D00]
       - [0x39FC0, c, spawn_players]

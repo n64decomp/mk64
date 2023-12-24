@@ -18,7 +18,7 @@
 #include "waypoints.h"
 #include "bomb_kart.h"
 #include "common_textures.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 #include "code_80004740.h"
 #include "hud_renderer.h"
 #include "code_80071F00.h"

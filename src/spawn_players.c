@@ -16,11 +16,11 @@
 #include "render_courses.h"
 #include "staff_ghosts.h"
 #include "code_80005FD0.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 #include "podium_ceremony_actors.h"
 #include "main.h"
 #include "menus.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 
 // arg4 is height? Or something like that?
 void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingColumn, f32 arg4, f32 arg5, u16 characterId, s16 playerType) {

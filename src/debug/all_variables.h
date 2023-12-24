@@ -13,7 +13,7 @@
 #include <code_800029B0.h>
 #include <code_80004740.h>
 #include <code_80005FD0.h>
-#include <code_8001F980.h>
+#include <render_player.h>
 #include <player_controller.h>
 #include <code_8003DC40.h>
 #include <code_80057C60.h>
