@@ -21,6 +21,10 @@ def process_map_file(map_file_path):
                 # Ensure there are enough tokens to extract address and function name
                 if len(tokens) >= 2:
                     address = f"0x{int(tokens[0][2:].upper(), base=16):08X}"
+
+                    if int(address, 16) == 0:
+                        continue
+
                     function_name = tokens[-1]
 
                     # Format the information into the Doxygen style
