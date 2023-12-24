@@ -1,5 +1,7 @@
 # usr/bin/python3
 
+import re
+
 def process_map_file(map_file_path):
     result = (
         "# Memory Addresses\n"
@@ -26,6 +28,9 @@ def process_map_file(map_file_path):
                         continue
 
                     function_name = tokens[-1]
+
+                    if re.match(r"L[0-9a-zA-Z]+", function_name):
+                        continue
 
                     # Format the information into the Doxygen style
                     result += f"[{function_name}](@ref {function_name}) | {address}\n"
