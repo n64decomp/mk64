@@ -1,25 +1,25 @@
 <map id="src/ending/podium_ceremony_actors.c" name="src/ending/podium_ceremony_actors.c">
-<area shape="rect" id="node1" title=" " alt="" coords="1266,5,1481,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="1290,5,1505,47"/>
 <area shape="rect" id="node2" href="$ultra64_8h.html" title=" " alt="" coords="1156,468,1236,495"/>
 <area shape="rect" id="node23" href="$gu_8h.html" title=" " alt="" coords="206,543,277,569"/>
-<area shape="rect" id="node27" href="$macros_8h.html" title=" " alt="" coords="616,244,699,271"/>
-<area shape="rect" id="node28" href="$mk64_8h.html" title=" " alt="" coords="1513,169,1583,196"/>
-<area shape="rect" id="node29" href="$types_8h.html" title=" " alt="" coords="1498,244,1569,271"/>
-<area shape="rect" id="node30" href="$common__structs_8h.html" title=" " alt="" coords="1158,393,1301,420"/>
-<area shape="rect" id="node33" href="$debug_8h.html" title=" " alt="" coords="773,95,848,121"/>
-<area shape="rect" id="node35" href="$main_8h.html" title=" " alt="" coords="1320,169,1387,196"/>
-<area shape="rect" id="node36" href="$memory_8h.html" title=" " alt="" coords="1437,95,1523,121"/>
-<area shape="rect" id="node37" href="$variables_8h.html" title=" " alt="" coords="873,95,967,121"/>
-<area shape="rect" id="node39" href="$common__textures_8h.html" title=" " alt="" coords="1768,169,1920,196"/>
-<area shape="rect" id="node40" href="$code__8001F980_8h.html" title=" " alt="" coords="1608,169,1744,196"/>
-<area shape="rect" id="node42" href="$hud__renderer_8h.html" title=" " alt="" coords="1131,95,1250,121"/>
-<area shape="rect" id="node43" href="$podium__ceremony__actors_8h.html" title=" " alt="" coords="752,319,955,345"/>
-<area shape="rect" id="node44" href="$camera__junk_8h.html" title=" " alt="" coords="1650,95,1769,121"/>
-<area shape="rect" id="node45" href="$player__controller_8h.html" title=" " alt="" coords="1081,244,1223,271"/>
-<area shape="rect" id="node46" href="$code__80057C60_8h.html" title=" " alt="" coords="1350,319,1487,345"/>
-<area shape="rect" id="node47" href="$code__80005FD0_8h.html" title=" " alt="" coords="1248,244,1387,271"/>
-<area shape="rect" id="node49" href="$code__80281C40_8h.html" title=" " alt="" coords="1953,95,2090,121"/>
-<area shape="rect" id="node50" href="$math__util_8h.html" title=" " alt="" coords="1944,169,2040,196"/>
+<area shape="rect" id="node27" href="$macros_8h.html" title=" " alt="" coords="645,244,728,271"/>
+<area shape="rect" id="node28" href="$mk64_8h.html" title=" " alt="" coords="1543,169,1614,196"/>
+<area shape="rect" id="node29" href="$types_8h.html" title=" " alt="" coords="1531,244,1602,271"/>
+<area shape="rect" id="node30" href="$common__structs_8h.html" title=" " alt="" coords="1187,393,1330,420"/>
+<area shape="rect" id="node33" href="$debug_8h.html" title=" " alt="" coords="804,95,879,121"/>
+<area shape="rect" id="node35" href="$main_8h.html" title=" " alt="" coords="1351,169,1417,196"/>
+<area shape="rect" id="node36" href="$memory_8h.html" title=" " alt="" coords="1461,95,1547,121"/>
+<area shape="rect" id="node37" href="$variables_8h.html" title=" " alt="" coords="903,95,998,121"/>
+<area shape="rect" id="node39" href="$common__textures_8h.html" title=" " alt="" coords="1785,169,1937,196"/>
+<area shape="rect" id="node40" href="$render__player_8h.html" title=" " alt="" coords="1639,169,1761,196"/>
+<area shape="rect" id="node42" href="$hud__renderer_8h.html" title=" " alt="" coords="1161,95,1279,121"/>
+<area shape="rect" id="node43" href="$podium__ceremony__actors_8h.html" title=" " alt="" coords="781,319,984,345"/>
+<area shape="rect" id="node44" href="$camera__junk_8h.html" title=" " alt="" coords="1674,95,1793,121"/>
+<area shape="rect" id="node45" href="$player__controller_8h.html" title=" " alt="" coords="1110,244,1253,271"/>
+<area shape="rect" id="node46" href="$code__80057C60_8h.html" title=" " alt="" coords="1379,319,1517,345"/>
+<area shape="rect" id="node47" href="$code__80005FD0_8h.html" title=" " alt="" coords="1277,244,1416,271"/>
+<area shape="rect" id="node49" href="$code__80281C40_8h.html" title=" " alt="" coords="1970,95,2107,121"/>
+<area shape="rect" id="node50" href="$math__util_8h.html" title=" " alt="" coords="1961,169,2057,196"/>
 <area shape="rect" id="node3" href="$math_8h.html" title=" " alt="" coords="1642,543,1710,569"/>
 <area shape="rect" id="node4" href="$ultratypes_8h.html" title=" " alt="" coords="957,767,1078,793"/>
 <area shape="rect" id="node5" href="$os__exception_8h.html" title=" " alt="" coords="1721,617,1863,644"/>
@@ -43,10 +43,10 @@
 <area shape="rect" id="node25" href="$libaudio_8h.html" title=" " alt="" coords="1385,543,1492,569"/>
 <area shape="rect" id="node26" href="$libultra_8h.html" title=" " alt="" coords="1516,543,1617,569"/>
 <area shape="rect" id="node20" href="$gbi_8h.html" title=" " alt="" coords="1687,692,1761,719"/>
-<area shape="rect" id="node32" href="$config_8h.html" title=" " alt="" coords="1614,319,1687,345"/>
-<area shape="rect" id="node31" href="$camera_8h.html" title=" " alt="" coords="1243,319,1325,345"/>
-<area shape="rect" id="node34" href="$defines_8h.html" title=" " alt="" coords="774,169,855,196"/>
-<area shape="rect" id="node38" href="$global_8h.html" title=" " alt="" coords="880,169,955,196"/>
-<area shape="rect" id="node41" href="$framebuffers_8h.html" title=" " alt="" coords="1763,244,1882,271"/>
-<area shape="rect" id="node48" href="$vehicles_8h.html" title=" " alt="" coords="1131,319,1219,345"/>
+<area shape="rect" id="node32" href="$config_8h.html" title=" " alt="" coords="1643,319,1717,345"/>
+<area shape="rect" id="node31" href="$camera_8h.html" title=" " alt="" coords="1272,319,1355,345"/>
+<area shape="rect" id="node34" href="$defines_8h.html" title=" " alt="" coords="803,169,885,196"/>
+<area shape="rect" id="node38" href="$global_8h.html" title=" " alt="" coords="909,169,984,196"/>
+<area shape="rect" id="node41" href="$framebuffers_8h.html" title=" " alt="" coords="1793,244,1911,271"/>
+<area shape="rect" id="node48" href="$vehicles_8h.html" title=" " alt="" coords="1160,319,1248,345"/>
 </map>

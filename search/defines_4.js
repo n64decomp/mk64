@@ -13,7 +13,7 @@ var searchData=
   ['d_5f8018e118_5fsize_26996',['D_8018E118_SIZE',['../code__80091750_8h.html#a0a2297c370018758498514a0c4ca73f7',1,'code_80091750.h']]],
   ['d_5f8018e768_5fsize_26997',['D_8018E768_SIZE',['../code__80091750_8h.html#a73ea27f53a53cc4f1ce3ff8aa96f2480',1,'code_80091750.h']]],
   ['d_5f802ba038_5fsize_26998',['D_802BA038_SIZE',['../race__logic_8c.html#ad0abac1adccb2725a281a2db6286cd0d',1,'race_logic.c']]],
-  ['d_5f802f1f80_5fwheel_26999',['D_802F1F80_WHEEL',['../code__8001F980_8c.html#a264d068eff1f62f3de9f73f95f00de73',1,'code_8001F980.c']]],
+  ['d_5f802f1f80_5fwheel_26999',['D_802F1F80_WHEEL',['../render__player_8c.html#a264d068eff1f62f3de9f73f95f00de73',1,'render_player.c']]],
   ['d_5fcbuttons_27000',['D_CBUTTONS',['../os_8h.html#a5ef612288a93912c5e576682dd9b43f8',1,'D_CBUTTONS():&#160;os.h'],['../os__cont_8h.html#a5ef612288a93912c5e576682dd9b43f8',1,'D_CBUTTONS():&#160;os_cont.h']]],
   ['d_5fjpad_27001',['D_JPAD',['../os_8h.html#a67d373343f99c2d2e083c258a789eaa7',1,'D_JPAD():&#160;os.h'],['../os__cont_8h.html#a67d373343f99c2d2e083c258a789eaa7',1,'D_JPAD():&#160;os_cont.h']]],
   ['data_5fmenu_27002',['DATA_MENU',['../defines_8h.html#a8158aa6dfe340352f5a9ce22c3295d31',1,'defines.h']]],

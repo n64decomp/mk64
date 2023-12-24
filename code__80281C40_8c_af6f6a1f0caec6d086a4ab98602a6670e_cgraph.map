@@ -1,7 +1,7 @@
 <map id="func_80281D00" name="func_80281D00">
 <area shape="rect" id="node1" title=" " alt="" coords="5,1304,128,1331"/>
 <area shape="rect" id="node2" href="$main_8c.html#a8fa00601d510540676d7af3af095c569" title="TODO: Why did void* work for matching." alt="" coords="218,68,357,95"/>
-<area shape="rect" id="node3" href="$code__8001F980_8c.html#a01be050002fbc5c7f80bda44baae4a79" title=" " alt="" coords="226,119,349,145"/>
+<area shape="rect" id="node3" href="$render__player_8c.html#a01be050002fbc5c7f80bda44baae4a79" title=" " alt="" coords="226,119,349,145"/>
 <area shape="rect" id="node6" href="$code__80057C60_8c.html#a4bd90115d861aa37b15e0d9a26b8b4b1" title=" " alt="" coords="227,224,348,251"/>
 <area shape="rect" id="node11" href="$code__80091750_8c.html#af21eb61f5e1a1ae1ffcc0cf89c398a2e" title=" " alt="" coords="227,553,348,580"/>
 <area shape="rect" id="node22" href="$podium__ceremony__actors_8c.html#ada674a65695d9415cb4e50e687318e45" title=" " alt="" coords="226,984,349,1011"/>
@@ -11,12 +11,12 @@
 <area shape="rect" id="node35" href="$guLookAtF_8c.html#a8641b89f7767fe85370ca7d198ef5566" title=" " alt="" coords="490,1557,573,1584"/>
 <area shape="rect" id="node37" href="$guPerspectiveF_8c.html#ac2050885d6967becf0e5e3bb3e54bd08" title=" " alt="" coords="230,1355,345,1381"/>
 <area shape="rect" id="node39" href="$math__util_8c.html#ac22eee16b1def67d2441ce919df0c5ac" title=" " alt="" coords="232,1456,343,1483"/>
-<area shape="rect" id="node40" href="$code__8001F980_8c.html#a6bc32c583b2a3886183f09447e213be8" title=" " alt="" coords="176,1659,399,1685"/>
+<area shape="rect" id="node40" href="$render__player_8c.html#a6bc32c583b2a3886183f09447e213be8" title=" " alt="" coords="176,1659,399,1685"/>
 <area shape="rect" id="node45" href="$math__util_8c.html#aa23f6384122bc45f13a81ef0fa86c099" title=" " alt="" coords="212,1405,363,1432"/>
 <area shape="rect" id="node47" href="$ceremony__and__credits_8c.html#a95f780b3400179205a22494827db1fc9" title=" " alt="" coords="220,1761,355,1802"/>
 <area shape="rect" id="node49" href="$podium__ceremony__actors_8c.html#a6b0b952d000187f1e1b4e130a1d6caf8" title=" " alt="" coords="213,1507,362,1533"/>
 <area shape="rect" id="node4" href="$code__80057C60_8c.html#aa092aa3d7f7c2b7df1efdc5cd214b41e" title=" " alt="" coords="470,5,593,32"/>
-<area shape="rect" id="node5" href="$code__8001F980_8c.html#afae2325d39290e681f161f6b895ea2c7" title=" " alt="" coords="447,57,616,98"/>
+<area shape="rect" id="node5" href="$render__player_8c.html#afae2325d39290e681f161f6b895ea2c7" title=" " alt="" coords="447,57,616,98"/>
 <area shape="rect" id="node7" href="$code__80057C60_8c.html#a556bf545c738904aa82de0c61a87a6cc" title=" " alt="" coords="470,123,593,149"/>
 <area shape="rect" id="node8" href="$code__80057C60_8c.html#a2079974b7805c9bad85e80bf6cade0ad" title=" " alt="" coords="470,173,593,200"/>
 <area shape="rect" id="node9" href="$code__80057C60_8c.html#a85697f0bd455d3f914d34a7a455cfbfa" title=" " alt="" coords="471,224,592,251"/>
@@ -42,10 +42,10 @@
 <area shape="rect" id="node34" href="$skybox__and__splitscreen_8c.html#ab481a35d4548245b2a89ab574f460a14" title=" " alt="" coords="459,1253,604,1280"/>
 <area shape="rect" id="node36" href="$guLookAtF_8c.html#a221be5535617db52477d4cb992afa4a9" title=" " alt="" coords="680,1507,771,1533"/>
 <area shape="rect" id="node38" href="$guPerspectiveF_8c.html#a440bd049e431a7ef892658d88620646c" title=" " alt="" coords="470,1355,593,1381"/>
-<area shape="rect" id="node41" href="$code__8001F980_8c.html#aa48ec7ff2a347fb6035ad10ceebb7291" title=" " alt="" coords="471,1760,592,1787"/>
+<area shape="rect" id="node41" href="$render__player_8c.html#aa48ec7ff2a347fb6035ad10ceebb7291" title=" " alt="" coords="471,1760,592,1787"/>
 <area shape="rect" id="node42" href="$code__80057C60_8c.html#a70bb01173a1b939e76ddca5b63c55498" title=" " alt="" coords="664,1684,787,1711"/>
-<area shape="rect" id="node43" href="$code__8001F980_8c.html#a72ebe3d656637960444176171f4ec860" title=" " alt="" coords="461,1659,601,1685"/>
-<area shape="rect" id="node44" href="$code__8001F980_8c.html#ab931f9c88f630600e6c5e97d8593b904" title=" " alt="" coords="463,1709,600,1736"/>
+<area shape="rect" id="node43" href="$render__player_8c.html#a72ebe3d656637960444176171f4ec860" title=" " alt="" coords="461,1659,601,1685"/>
+<area shape="rect" id="node44" href="$render__player_8c.html#ab931f9c88f630600e6c5e97d8593b904" title=" " alt="" coords="463,1709,600,1736"/>
 <area shape="rect" id="node46" href="$math__util_8c.html#a32af0f217114736291c9ca6689138b81" title=" " alt="" coords="672,1456,779,1483"/>
 <area shape="rect" id="node48" href="$ceremony__and__credits_8c.html#aee02d75d0b98c6df07f3089b172e586d" title=" " alt="" coords="452,1811,611,1853"/>
 <area shape="rect" id="node50" href="$podium__ceremony__actors_8c.html#a5e713904a3cb8975528052e4b25f04b1" title=" " alt="" coords="478,1507,585,1533"/>

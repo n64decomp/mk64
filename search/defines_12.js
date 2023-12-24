@@ -55,7 +55,7 @@ var searchData=
   ['slide_5fleft_28427',['SLIDE_LEFT',['../credits_8h.html#a471ee58840637f546d6e276e41652ed4',1,'credits.h']]],
   ['slide_5fright_28428',['SLIDE_RIGHT',['../credits_8h.html#a862ce2d0a7eafbd267d18910d174cd61',1,'credits.h']]],
   ['some_5fobject_5findex_5flist_5fsize_28429',['SOME_OBJECT_INDEX_LIST_SIZE',['../objects_8h.html#af63656ae6040e4380cf20939128e9efb',1,'objects.h']]],
-  ['some_5ftexture_5fpointer_5fmath_28430',['SOME_TEXTURE_POINTER_MATH',['../code__8001F980_8h.html#a8109b3c68fbea07a9bd97c7c420849bb',1,'code_8001F980.h']]],
+  ['some_5ftexture_5fpointer_5fmath_28430',['SOME_TEXTURE_POINTER_MATH',['../render__player_8h.html#a8109b3c68fbea07a9bd97c7c420849bb',1,'render_player.h']]],
   ['sound_5faction_5fcontinue_5funknown_28431',['SOUND_ACTION_CONTINUE_UNKNOWN',['../sounds_8h.html#a59f0ba6cdca4a6c882c9ee19ed7d894d',1,'sounds.h']]],
   ['sound_5faction_5fcount_5fscore_28432',['SOUND_ACTION_COUNT_SCORE',['../sounds_8h.html#a66d12fb3207920dd7dec38578a0337d9',1,'sounds.h']]],
   ['sound_5faction_5fcountdown_5flight_28433',['SOUND_ACTION_COUNTDOWN_LIGHT',['../sounds_8h.html#a8583c6b6f41d6d7c9870b853c1b80fe7',1,'sounds.h']]],

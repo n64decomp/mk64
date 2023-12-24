@@ -67,7 +67,7 @@ var sectionId = 'dynsection-34';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="code__8001F980_8c.html#a078a3fa98164ddde21e074d7e0228b29" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="render__player_8c.html#a078a3fa98164ddde21e074d7e0228b29" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="165.5,-1444.5 165.5,-1463.5 257.5,-1463.5 257.5,-1444.5 165.5,-1444.5"/>
 <text text-anchor="middle" x="211.5" y="-1451.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_80021C78</text>
 </a>
@@ -337,7 +337,7 @@ var sectionId = 'dynsection-34';
 <!-- Node558 -->
 <g id="node50" class="node">
 <title>Node558</title>
-<g id="a_node50"><a xlink:href="code__8001F980_8c.html#a43de8cdea70bb468b90f6f9357278e7e" target="_top" xlink:title=" ">
+<g id="a_node50"><a xlink:href="render__player_8c.html#a43de8cdea70bb468b90f6f9357278e7e" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="red" points="128,-0.5 128,-19.5 295,-19.5 295,-0.5 128,-0.5"/>
 <text text-anchor="middle" x="211.5" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">render_players_on_screen_two</text>
 </a>

@@ -67,7 +67,7 @@ var sectionId = 'dynsection-7';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="code__8001F980_8c.html#a186c5153f31e17a40d17238b1149f63d" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="render__player_8c.html#a186c5153f31e17a40d17238b1149f63d" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="624.5,-326.61 624.5,-356.61 747.5,-356.61 747.5,-326.61 624.5,-326.61"/>
 <text text-anchor="start" x="632.5" y="-344.61" font-family="Helvetica,sans-Serif" font-size="10.00">check_player_camera</text>
 <text text-anchor="middle" x="686" y="-333.61" font-family="Helvetica,sans-Serif" font-size="10.00">_collision</text>
@@ -433,7 +433,7 @@ var sectionId = 'dynsection-7';
 <!-- Node122 -->
 <g id="node20" class="node">
 <title>Node122</title>
-<g id="a_node20"><a xlink:href="code__8001F980_8c.html#af630bf89117f79abdb4e5edc8c67d00f" target="_top" xlink:title=" ">
+<g id="a_node20"><a xlink:href="render__player_8c.html#af630bf89117f79abdb4e5edc8c67d00f" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="461.5,-1884.11 461.5,-1903.11 540.5,-1903.11 540.5,-1884.11 461.5,-1884.11"/>
 <text text-anchor="middle" x="501" y="-1891.11" font-family="Helvetica,sans-Serif" font-size="10.00">adjust_angle</text>
 </a>

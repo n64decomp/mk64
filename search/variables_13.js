@@ -33,7 +33,7 @@ var searchData=
   ['sbuttonsequenceindex_25693',['sButtonSequenceIndex',['../crash__screen_8c.html#aa55b93a1bb0b4c5c9666de4c0697cdd7',1,'crash_screen.c']]],
   ['scaleh_25694',['scaleH',['../structuObjSprite__t.html#adcc53d02f99ed6629a2627c31340434b',1,'uObjSprite_t::scaleH()'],['../structuObjScaleBg__t.html#a4f3bb179cae5e8778d60a2684393bbde',1,'uObjScaleBg_t::scaleH()']]],
   ['scalew_25695',['scaleW',['../structuObjSprite__t.html#a635fae9cf9b9eec02b9295def0333ed9',1,'uObjSprite_t::scaleW()'],['../structuObjScaleBg__t.html#aa4eabb8ba8c477b31339e8f2a9abde69',1,'uObjScaleBg_t::scaleW()']]],
-  ['scontrollerpak2state_25696',['sControllerPak2State',['../code__800B45E0_8c.html#acf34c97df90c2045ed58664182ea5d21',1,'sControllerPak2State():&#160;code_800B45E0.c'],['../code__800B45E0_8h.html#acf34c97df90c2045ed58664182ea5d21',1,'sControllerPak2State():&#160;code_800B45E0.c']]],
+  ['scontrollerpak2state_25696',['sControllerPak2State',['../save_8c.html#acf34c97df90c2045ed58664182ea5d21',1,'sControllerPak2State():&#160;save.c'],['../save_8h.html#acf34c97df90c2045ed58664182ea5d21',1,'sControllerPak2State():&#160;save.c']]],
   ['scounter_25697',['sCounter',['../crash__screen_8c.html#a05a53ff72bcf7daf24b3ab616665ffaa',1,'crash_screen.c']]],
   ['scrashscreenbuttonsequence_25698',['sCrashScreenButtonSequence',['../crash__screen_8c.html#afa0cb1d3b5e21db58b00b03608fa965e',1,'crash_screen.c']]],
   ['screenheight_25699',['screenHeight',['../structUnkStruct__800DC5EC.html#a44afd7ec23c595d02e0ad6abfa2c63a5',1,'UnkStruct_800DC5EC']]],

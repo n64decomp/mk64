@@ -67,7 +67,7 @@ var sectionId = 'dynsection-60';
 <!-- Node2 -->
 <g id="node2" class="node">
 <title>Node2</title>
-<g id="a_node2"><a xlink:href="code__8001F980_8c.html#af630bf89117f79abdb4e5edc8c67d00f" target="_top" xlink:title=" ">
+<g id="a_node2"><a xlink:href="render__player_8c.html#af630bf89117f79abdb4e5edc8c67d00f" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="162,-114.5 162,-133.5 241,-133.5 241,-114.5 162,-114.5"/>
 <text text-anchor="middle" x="201.5" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">adjust_angle</text>
 </a>
@@ -142,7 +142,7 @@ var sectionId = 'dynsection-60';
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="code__8001F980_8c.html#aaf37c5a80c77d5ad4b14f3e076289768" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="render__player_8c.html#aaf37c5a80c77d5ad4b14f3e076289768" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="311,-76.5 311,-95.5 422,-95.5 422,-76.5 311,-76.5"/>
 <text text-anchor="middle" x="366.5" y="-83.5" font-family="Helvetica,sans-Serif" font-size="10.00">move_s32_towards</text>
 </a>

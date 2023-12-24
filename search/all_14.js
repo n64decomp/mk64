@@ -182,7 +182,7 @@ var searchData=
   ['triple_5fred_5fshell_13754',['TRIPLE_RED_SHELL',['../actor__types_8h.html#a32942b6bcb167490429561cb34cfc23c',1,'actor_types.h']]],
   ['tripleshellparent_13755',['TripleShellParent',['../structTripleShellParent.html',1,'']]],
   ['true_13756',['TRUE',['../ultratypes_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d',1,'ultratypes.h']]],
-  ['try_5frender_5fplayer_13757',['try_render_player',['../code__8001F980_8h.html#aa36c41509f13f1d4f3764d4d93a3bdfe',1,'try_render_player(Player *, s8, s8):&#160;code_8001F980.c'],['../code__8001F980_8c.html#ab931f9c88f630600e6c5e97d8593b904',1,'try_render_player(Player *player, s8 playerId, s8 arg2):&#160;code_8001F980.c']]],
+  ['try_5frender_5fplayer_13757',['try_render_player',['../render__player_8h.html#aa36c41509f13f1d4f3764d4d93a3bdfe',1,'try_render_player(Player *, s8, s8):&#160;render_player.c'],['../render__player_8c.html#ab931f9c88f630600e6c5e97d8593b904',1,'try_render_player(Player *player, s8 playerId, s8 arg2):&#160;render_player.c']]],
   ['tsize_13758',['tsize',['../structuObjTxtrBlock__t.html#a461f3df71c3f7fe59454c5640dbd18c2',1,'uObjTxtrBlock_t']]],
   ['ttl_13759',['ttl',['../structSharedDma.html#aebf320bf040269395cd662295accd1cf',1,'SharedDma']]],
   ['tuning_13760',['tuning',['../structAudioBankSound.html#a2d41c84ecf76ec2edcf520495380a693',1,'AudioBankSound']]],
