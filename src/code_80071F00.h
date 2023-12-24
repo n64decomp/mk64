@@ -405,7 +405,7 @@ extern s8  D_80165888;
 extern s8  D_801658C6;
 extern s8  D_801658DC;
 extern s8  D_801658F4;
-extern s32 D_80183D5C;
+extern s32 sizeObjectList;
 extern s32 D_80183EA4;
 extern s16 D_8018CAB8;
 extern s16 D_8018CFB0;

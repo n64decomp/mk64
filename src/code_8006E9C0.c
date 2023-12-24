@@ -22,7 +22,7 @@
 
 void init_object_list(void) {
 
-    func_8006EA5C();
+    reset_object_variable();
     func_8006FA94();
 
     switch (gScreenModeSelection) {
@@ -42,9 +42,9 @@ void init_object_list(void) {
     func_80070148();
 }
 
-void func_8006EA5C(void) {
+void reset_object_variable(void) {
     func_8006EB10();
-    func_8006ED60();
+    clear_object_list();
     bzero(D_8018CA70, D_8018CA70_SIZE * sizeof(struct_8018CA70_entry));
     D_8018CAE1 = 0;
     D_8018CAE2 = 0;
@@ -182,9 +182,9 @@ void func_8006EB10(void) {
     D_80183E38 = D_80183E4C;
 }
 
-void func_8006ED60() {
+void clear_object_list() {
     bzero(gObjectList, OBJECT_LIST_SIZE * sizeof(Objects));
-    D_80183D5C = -1;
+    sizeObjectList = -1;
 }
 
 u8 *func_8006ED94(u8 *devAddr, u8 *baseAddress, u32 size, u32 offset)

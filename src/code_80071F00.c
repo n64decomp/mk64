@@ -98,7 +98,7 @@ s32 find_unused_obj_index(s32* arg0) {
     s32 temp_v0;
     s32 temp_v1;
 
-    temp_v1 = D_80183D5C;
+    temp_v1 = sizeObjectList;
     temp_v0 = 0; do
     {
         ++temp_v1;
@@ -113,7 +113,7 @@ s32 find_unused_obj_index(s32* arg0) {
     gObjectList[temp_v1].unk_0CA = 1;
 
     *arg0 = temp_v1;
-    D_80183D5C = temp_v1;
+    sizeObjectList = temp_v1;
     return temp_v1;
 }
 

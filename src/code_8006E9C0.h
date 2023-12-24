@@ -5,9 +5,9 @@
 #include "code_80071F00.h"
 
 void init_object_list(void);
-void func_8006EA5C(void);
+void reset_object_variable(void);
 void func_8006EB10(void);
-void func_8006ED60(void);
+void clear_object_list(void);
 u8  *func_8006ED94(u8*, u8*, u32, u32);
 void func_8006EE44(void);
 void init_item_window(s32);
@@ -35,7 +35,7 @@ extern u8 *gCourseOutlineTextures[0x14];
 extern s16 D_80165730;
 extern s16 D_80165740;
 extern s16 D_80165748;
-extern s32 D_80183D5C;
+extern s32 sizeObjectList;
 extern u8 *D_8018D1E0;
 extern intptr_t D_8018D9B0;
 
@@ -52,7 +52,7 @@ extern s32 D_80183DBC;
 
 extern struct_8018CA70_entry D_8018CA70[];
 // These are all *technically* hardcoded references to spots in D_8018CA70, but there's something weird
-// going on match wise in func_8006EA5C that means we have to (for now) leave them as separate variables
+// going on match wise in reset_object_variable that means we have to (for now) leave them as separate variables
 extern s8 D_8018CAE0;
 extern s8 D_8018CAE1;
 extern s8 D_8018CAE2;

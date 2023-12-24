@@ -608,7 +608,7 @@ glabel D_80165CED
 glabel D_80183D58
 .skip 4
 
-glabel D_80183D5C
+glabel sizeObjectList
 .skip 4
 
 glabel D_80183D60
