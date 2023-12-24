@@ -12,7 +12,7 @@
 #include "podium_ceremony_actors.h"
 #include "ceremony_and_credits.h"
 #include "podium_ceremony_actors.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 
 struct UnkStruct80287560 {
     s16 unk0;

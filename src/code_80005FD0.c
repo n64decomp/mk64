@@ -10,7 +10,7 @@
 #include "camera.h"
 #include "actors.h"
 #include "actors_extended.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 #include "player_controller.h"
 #include "code_80071F00.h"
 #include "collision.h"

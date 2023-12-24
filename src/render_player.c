@@ -11,7 +11,7 @@
 #include "functions.h"
 #include "kart_dma.h"
 #include "objects.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 #include "code_80057C60.h"
 #include "code_8008C1D0.h"
 #include "framebuffers.h"

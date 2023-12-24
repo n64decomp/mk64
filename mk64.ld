@@ -46,7 +46,7 @@ SECTIONS
       BUILD_DIR/asm/unused_overflow_check.o(.text);
       BUILD_DIR/src/code_80005FD0.jp.o(.text);
       BUILD_DIR/src/camera.o(.text);
-      BUILD_DIR/src/code_8001F980.o(.text);
+      BUILD_DIR/src/render_player.o(.text);
       BUILD_DIR/src/kart_dma.o(.text);
       BUILD_DIR/src/player_controller.o(.text);
       BUILD_DIR/src/spawn_players.o(.text);
@@ -66,7 +66,7 @@ SECTIONS
       BUILD_DIR/src/code_80091750.jp.o(.text);
       BUILD_DIR/src/code_800AF9B0.o(.text);
       BUILD_DIR/src/menus.o(.text);
-      BUILD_DIR/src/code_800B45E0.o(.text);
+      BUILD_DIR/src/save.o(.text);
       BUILD_DIR/src/audio/synthesis.o(.text);
       BUILD_DIR/src/audio/heap.o(.text);
       BUILD_DIR/src/audio/load.o(.text);
@@ -210,7 +210,7 @@ SECTIONS
       BUILD_DIR/src/staff_ghosts.o(.data);
       BUILD_DIR/data/data_0DD0A0_1.o(.data);
       BUILD_DIR/src/camera.o(.data);
-      BUILD_DIR/src/code_8001F980.o(.data);
+      BUILD_DIR/src/render_player.o(.data);
       BUILD_DIR/src/kart_dma.o(.data);
       BUILD_DIR/src/data/kart_attributes.inc.o(.data);
       BUILD_DIR/src/player_controller.o(.data);
@@ -224,7 +224,7 @@ SECTIONS
       BUILD_DIR/src/code_80091750.jp.o(.data);
       BUILD_DIR/src/code_800AF9B0.o(.data);
       BUILD_DIR/src/menus.o(.data);
-      BUILD_DIR/src/code_800B45E0.o(.data);
+      BUILD_DIR/src/save.o(.data);
       BUILD_DIR/src/data/data_800E8700.o(.data);
       BUILD_DIR/src/audio/synthesis.o(.data);
       BUILD_DIR/src/audio/heap.o(.data);
@@ -259,7 +259,7 @@ SECTIONS
       BUILD_DIR/src/code_800029B0.o(.rodata);
       BUILD_DIR/src/code_80005FD0.jp.o(.rodata);
       BUILD_DIR/src/camera.o(.rodata);
-      BUILD_DIR/src/code_8001F980.o(.rodata);
+      BUILD_DIR/src/render_player.o(.rodata);
       BUILD_DIR/src/player_controller.o(.rodata);
       BUILD_DIR/src/spawn_players.o(.rodata);
       BUILD_DIR/src/code_8003DC40.o(.rodata);
@@ -272,7 +272,7 @@ SECTIONS
       BUILD_DIR/src/code_80091750.jp.o(.rodata);
       BUILD_DIR/src/code_800AF9B0.o(.rodata);
       BUILD_DIR/src/menus.o(.rodata);
-      BUILD_DIR/src/code_800B45E0.o(.rodata);
+      BUILD_DIR/src/save.o(.rodata);
       BUILD_DIR/src/audio/heap.o(.rodata);
       BUILD_DIR/src/audio/load.o(.rodata);
       BUILD_DIR/src/audio/playback.o(.rodata);

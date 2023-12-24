@@ -9,7 +9,7 @@
 #include "code_80091750.h"
 #include "code_80005FD0.h"
 #include "menus.h"
-#include "code_800B45E0.h"
+#include "save.h"
 #include "code_80057C60.h"
 #include "credits.h"
 #include "data_segment2.h"
