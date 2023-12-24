@@ -693,13 +693,13 @@ $(ROM): $(ELF)
 	$(call print,Building ROM:,$<,$@)
 	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $(@:.z64=.bin) -O binary
 	$(V)$(N64CKSUM) $(@:.z64=.bin) $@
+	$(PYTHON) tools/doxygen_symbol_gen.py
 
 $(BUILD_DIR)/$(TARGET).hex: $(TARGET).z64
 	xxd $< > $@
 
 $(BUILD_DIR)/$(TARGET).objdump: $(ELF) 
 	$(OBJDUMP) -D $< > $@
-	$(PYTHON) tools/doxygen_symbol_gen.py
 
 
 .PHONY: all clean distclean distclean_assets default diff test load
