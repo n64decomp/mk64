@@ -41,7 +41,7 @@ SECTIONS
       BUILD_DIR/src/code_800029B0.o(.text);
       BUILD_DIR/src/profiler.o(.text);
       BUILD_DIR/src/crash_screen.o(.text);
-      BUILD_DIR/src/save.o(.text);
+      BUILD_DIR/src/code_80004740.o(.text);
       BUILD_DIR/src/staff_ghosts.o(.text);
       BUILD_DIR/asm/unused_overflow_check.o(.text);
       BUILD_DIR/src/code_80005FD0.jp.o(.text);
@@ -304,7 +304,7 @@ SECTIONS
       BUILD_DIR/src/code_800029B0.o(.bss);
       BUILD_DIR/src/profiler.o(.bss);
       BUILD_DIR/src/crash_screen.o(.bss);
-      BUILD_DIR/src/save.o(.bss);
+      BUILD_DIR/src/code_80004740.o(.bss);
       BUILD_DIR/src/staff_ghosts.o(.bss);
       BUILD_DIR/src/code_80005FD0.jp.o(.bss);
       BUILD_DIR/asm/bss_80005FD0.o(.bss);

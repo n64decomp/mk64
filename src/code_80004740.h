@@ -1,5 +1,5 @@
-#ifndef SAVE_H
-#define SAVE_H
+#ifndef CODE_80004740_H
+#define CODE_80004740_H
 
 #include "common_structs.h"
 
@@ -8,7 +8,7 @@ What I know about animation stuff so far
 
 Its not clear to me exactly what animations even are in MK64, my speculation is that their some form of matrix manipulation sequence.
 Presumably the "models" of the objects that are getting animated are a bunch of matrices and the animations somehow change them.
-save appears to be responsible for the handling of animations.
+code_80004740 appears to be responsible for the handling of animations.
 Animation seem to be reserved for objects, namely: seagulls in KTB, flags in YV, chain chomps in RR, and penguins in SL.
 
 Each object has 2 pointers of interest, at offsets 0x70 and 0x74  (unk_070 and unk_074).

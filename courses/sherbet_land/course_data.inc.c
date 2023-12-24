@@ -5,7 +5,7 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
-#include <save.h>
+#include <code_80004740.h>
 
 #include <courses/sherbet_land/course_displaylists.inc.h>
 

@@ -1,7 +1,7 @@
 #ifndef CODE_80071F00_H
 #define CODE_80071F00_H
 
-#include "save.h"
+#include "code_80004740.h"
 #include "common_structs.h"
 #include "camera.h"
 

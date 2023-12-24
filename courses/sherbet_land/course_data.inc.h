@@ -6,7 +6,7 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
-#include "save.h"
+#include "code_80004740.h"
 
 extern Gfx d_course_sherbet_land_dl_0[];
 extern Gfx d_course_sherbet_land_dl_C0[];
