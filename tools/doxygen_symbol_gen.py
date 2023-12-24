@@ -27,6 +27,9 @@ def process_map_file(map_file_path):
 
                     function_name = tokens[-1]
 
+                    if function_name.startswith("L8"): # Ignore local labels
+                        continue
+
                     # Format the information into the Doxygen style
                     result += f"[{function_name}](@ref {function_name}) | {address}\n"
 
