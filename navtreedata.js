@@ -25,8 +25,8 @@
 var NAVTREE =
 [
   [ "Mario Kart 64", "index.html", [
-    [ "Memory Addresses", "memory_addresses.html", [
-      [ "Memory Addresses", "memory_addresses.html#sec_addresses", null ]
+    [ "Memory Addresses", "md_tools_doxygen_syms.html", [
+      [ "Memory Addresses", "md_tools_doxygen_syms.html#autotoc_md1", null ]
     ] ],
     [ "Bug List", "bug.html", null ],
     [ "Data Structures", "annotated.html", [
@@ -110,7 +110,7 @@ var NAVTREEINDEX =
 "load_8h.html#aea5e1113ed6186106c99f9d146e80e75",
 "main_8h.html#a3e923581f5947a3d809b446ce3761a2b",
 "math__util_8h.html#ae2b95152b2e5052bc08599ac1ce63ac2",
-"memory_8h.html#a088fb6a08dba1019aeb7af251de83ebf",
+"memory_8h.html#a0121b4578980d9f825cbe98aca725457",
 "objects_8h.html#a71b306994a113bcc21d0dddacb802360",
 "osSetTime_8c.html#a4af0cb38d6a9bc36e9ee5dda55d7726e",
 "os_8h.html#acccef2dc8897b399ec7abdd31d04715a",

@@ -2825,7 +2825,7 @@ var searchData=
   ['dmem_5faddr_5fwet_5fright_5fch_3910',['DMEM_ADDR_WET_RIGHT_CH',['../synthesis_8h.html#a7d0209c82345e7a6205f78c353b70547',1,'synthesis.h']]],
   ['domain_3911',['domain',['../structOSPiHandle__s.html#a1688d2b84a1320d63fe1555c369f4485',1,'OSPiHandle_s']]],
   ['downsamplerate_3912',['downsampleRate',['../structReverbSettingsEU.html#a1fa00252ed7fddbb38d9dc241ce45749',1,'ReverbSettingsEU::downsampleRate()'],['../structSynthesisReverb.html#ab4cf4eefbf98776a131b84bf7bad71c4',1,'SynthesisReverb::downsampleRate()']]],
-  ['doxygen_5fsyms_2etxt_3913',['doxygen_syms.txt',['../doxygen__syms_8txt.html',1,'']]],
+  ['doxygen_5fsyms_2emd_3913',['doxygen_syms.md',['../doxygen__syms_8md.html',1,'']]],
   ['dpc_5fbase_5freg_3914',['DPC_BASE_REG',['../rcp_8h.html#a0ecfd97a0a11a3727f1c74bd9dc30a27',1,'rcp.h']]],
   ['dpc_5fbufbusy_5freg_3915',['DPC_BUFBUSY_REG',['../rcp_8h.html#a1bfc9fe1a290c5811175c7dec530f5b6',1,'rcp.h']]],
   ['dpc_5fclock_5freg_3916',['DPC_CLOCK_REG',['../rcp_8h.html#a314bebf72a7a8d67e5aeb22e24d4b2ad',1,'rcp.h']]],

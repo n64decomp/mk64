@@ -13,5 +13,5 @@ var searchData=
   ['debug_2einc_2ec_14760',['debug.inc.c',['../debug_8inc_8c.html',1,'']]],
   ['defines_2eh_14761',['defines.h',['../defines_8h.html',1,'']]],
   ['dl_5funk_5f80284ee0_2einc_2ec_14762',['dl_unk_80284EE0.inc.c',['../dl__unk__80284EE0_8inc_8c.html',1,'']]],
-  ['doxygen_5fsyms_2etxt_14763',['doxygen_syms.txt',['../doxygen__syms_8txt.html',1,'']]]
+  ['doxygen_5fsyms_2emd_14763',['doxygen_syms.md',['../doxygen__syms_8md.html',1,'']]]
 ];
