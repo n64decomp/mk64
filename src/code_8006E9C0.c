@@ -45,7 +45,7 @@ void init_object_list(void) {
 void reset_object_variable(void) {
     func_8006EB10();
     clear_object_list();
-    bzero(D_8018CA70, D_8018CA70_SIZE * sizeof(struct_8018CA70_entry));
+    bzero(hudPlayers, HUD_PLAYERS_SIZE * sizeof(hud_player));
     D_8018CAE1 = 0;
     D_8018CAE2 = 0;
     D_8018CAF1 = 0;
@@ -64,30 +64,30 @@ void reset_object_variable(void) {
     D_8018CC6C = 0;
 
     /**
-    D_8018CA70[0].lapCount = 0;
-    D_8018CA70[0].alsoLapCount = 0;
-    D_8018CA70[0].unk_81 = 0;
-    D_8018CA70[1].lapCount = 0;
-    D_8018CA70[1].alsoLapCount = 0;
-    D_8018CA70[1].unk_81 = 0;
-    D_8018CA70[2].lapCount = 0;
-    D_8018CA70[2].alsoLapCount = 0;
-    D_8018CA70[2].unk_81 = 0;
-    D_8018CA70[3].lapCount = 0;
-    D_8018CA70[3].alsoLapCount = 0;
-    D_8018CA70[3].unk_81 = 0;
-    D_8018CA70[0].raceCompleteBool = 0;
-    D_8018CA70[1].raceCompleteBool = 0;
-    D_8018CA70[2].raceCompleteBool = 0;
-    D_8018CA70[3].raceCompleteBool = 0;
+    hudPlayers[PLAYER_ONE].lapCount = 0;
+    hudPlayers[PLAYER_ONE].alsoLapCount = 0;
+    hudPlayers[PLAYER_ONE].unk_81 = 0;
+    hudPlayers[PLAYER_TWO].lapCount = 0;
+    hudPlayers[PLAYER_TWO].alsoLapCount = 0;
+    hudPlayers[PLAYER_TWO].unk_81 = 0;
+    hudPlayers[PLAYER_THREE].lapCount = 0;
+    hudPlayers[PLAYER_THREE].alsoLapCount = 0;
+    hudPlayers[PLAYER_THREE].unk_81 = 0;
+    hudPlayers[PLAYER_FOUR].lapCount = 0;
+    hudPlayers[PLAYER_FOUR].alsoLapCount = 0;
+    hudPlayers[PLAYER_FOUR].unk_81 = 0;
+    hudPlayers[PLAYER_ONE].raceCompleteBool = 0;
+    hudPlayers[PLAYER_TWO].raceCompleteBool = 0;
+    hudPlayers[PLAYER_THREE].raceCompleteBool = 0;
+    hudPlayers[PLAYER_FOUR].raceCompleteBool = 0;
 
     // This is close but it puts the raceCompletedBool stuff in the wrong place
     // Which makes sense, but its still annoying
-    for (thing = 0; thing < D_8018CA70_SIZE; thing++) {
-        D_8018CA70[thing].lapCount = 0;
-        D_8018CA70[thing].alsoLapCount = 0;
-        D_8018CA70[thing].unk_81 = 0;
-        D_8018CA70[thing].raceCompleteBool = 0;
+    for (thing = 0; thing < HUD_PLAYERS_SIZE; thing++) {
+        hudPlayers[thing].lapCount = 0;
+        hudPlayers[thing].alsoLapCount = 0;
+        hudPlayers[thing].unk_81 = 0;
+        hudPlayers[thing].raceCompleteBool = 0;
     }
     **/
 }
@@ -1307,28 +1307,28 @@ void init_hud_one_player(void) {
     func_8007055C();
     func_8007055C();
     func_80070780();
-    D_8018CA70->speedometerX = 0x0156;
-    D_8018CA70->speedometerY = 0x0106;
-    D_8018CFEC = (f32) (D_8018CA70->speedometerX + 0x18);
-    D_8018CFF4 = (f32) (D_8018CA70->speedometerY + 6);
+    hudPlayers->speedometerX = 0x0156;
+    hudPlayers->speedometerY = 0x0106;
+    D_8018CFEC = (f32) (hudPlayers->speedometerX + 0x18);
+    D_8018CFF4 = (f32) (hudPlayers->speedometerY + 6);
     D_8016579E = 0xDD00;
-    D_8018CA70->rankX = 0x0034;
-    D_8018CA70->rankY = 0x00C8;
-    D_8018CA70->slideRankX = 0;
-    D_8018CA70->slideRankY = 0;
-    D_8018CA70->timerX = 0x012C;
-    D_8018CA70->lap1CompletionTimeX = 0x012C;
-    D_8018CA70->lap2CompletionTimeX = 0x012C;
-    D_8018CA70->timerY = 0x0011;
-    D_8018CA70->lapX = -0x0028;
-    D_8018CA70->lapAfterImage1X = -0x0028;
-    D_8018CA70->lapAfterImage2X = -0x0028;
-    D_8018CA70->lapY = 0x0019;
-    D_8018CA70->itemBoxX = 0x00A0;
-    D_8018CA70->itemBoxY = -0x0020;
-    D_8018CA70->slideItemBoxX = 0;
-    D_8018CA70->slideItemBoxY = 0;
-    D_8018CA70->stagingPosition = (s16) *gGPCurrentRaceRankByPlayerId;
+    hudPlayers->rankX = 0x0034;
+    hudPlayers->rankY = 0x00C8;
+    hudPlayers->slideRankX = 0;
+    hudPlayers->slideRankY = 0;
+    hudPlayers->timerX = 0x012C;
+    hudPlayers->lap1CompletionTimeX = 0x012C;
+    hudPlayers->lap2CompletionTimeX = 0x012C;
+    hudPlayers->timerY = 0x0011;
+    hudPlayers->lapX = -0x0028;
+    hudPlayers->lapAfterImage1X = -0x0028;
+    hudPlayers->lapAfterImage2X = -0x0028;
+    hudPlayers->lapY = 0x0019;
+    hudPlayers->itemBoxX = 0x00A0;
+    hudPlayers->itemBoxY = -0x0020;
+    hudPlayers->slideItemBoxX = 0;
+    hudPlayers->slideItemBoxY = 0;
+    hudPlayers->stagingPosition = (s16) *gGPCurrentRaceRankByPlayerId;
     init_item_window(gItemWindowObjectByPlayerId[0]);
     var_f0 = 35.0f;
     var_v0 = &D_8018D078;
@@ -1383,9 +1383,9 @@ void init_hud_one_player(void) {
     D_8018D3EC = 0x000000FF;
     D_8018D3F0 = 0x000000FF;
     D_8018D3F4 = 1;
-    D_8018CA70->unk_4C = 0x0078;
-    D_8018CA70->unk_4A = 0x00A0;
-    D_8018CA70->rankScaling = 0.5f;
+    hudPlayers->unk_4C = 0x0078;
+    hudPlayers->unk_4A = 0x00A0;
+    hudPlayers->rankScaling = 0.5f;
     D_801656B0 = 0;
     D_80165708 = 0x0028;
     D_8018D00C = 5.0f;
@@ -1427,42 +1427,42 @@ void init_hud_two_player_vertical(void) {
     func_8007055C();
     func_80070780();
 
-    D_8018CA70[0].itemBoxX = -0x52;
-    D_8018CA70[0].itemBoxY = 0x32;
-    D_8018CA70[0].slideItemBoxX = 0;
-    D_8018CA70[0].slideItemBoxY = 0;
-    D_8018CA70[0].unk_4A = 0x50;
-    D_8018CA70[0].unk_4C = 0x78;
-    D_8018CA70[0].rankX = 0x32;
-    D_8018CA70[0].rankY = 0xD2;
-    D_8018CA70[0].slideRankX = 0;
-    D_8018CA70[0].slideRankY = 0;
-    D_8018CA70[0].timerX = 0x4B;
-    D_8018CA70[0].timerY = 0x10;
-    D_8018CA70[0].lapX = 0x67;
-    D_8018CA70[0].lapY = 0x28;
-    init_item_window(gItemWindowObjectByPlayerId[0]);
+    hudPlayers[PLAYER_ONE].itemBoxX = -0x52;
+    hudPlayers[PLAYER_ONE].itemBoxY = 0x32;
+    hudPlayers[PLAYER_ONE].slideItemBoxX = 0;
+    hudPlayers[PLAYER_ONE].slideItemBoxY = 0;
+    hudPlayers[PLAYER_ONE].unk_4A = 0x50;
+    hudPlayers[PLAYER_ONE].unk_4C = 0x78;
+    hudPlayers[PLAYER_ONE].rankX = 0x32;
+    hudPlayers[PLAYER_ONE].rankY = 0xD2;
+    hudPlayers[PLAYER_ONE].slideRankX = 0;
+    hudPlayers[PLAYER_ONE].slideRankY = 0;
+    hudPlayers[PLAYER_ONE].timerX = 0x4B;
+    hudPlayers[PLAYER_ONE].timerY = 0x10;
+    hudPlayers[PLAYER_ONE].lapX = 0x67;
+    hudPlayers[PLAYER_ONE].lapY = 0x28;
+    init_item_window(gItemWindowObjectByPlayerId[PLAYER_ONE]);
 
-    D_8018CA70[1].itemBoxX = 0x43;
-    D_8018CA70[1].itemBoxY = 0x32;
-    D_8018CA70[1].slideItemBoxX = 0;
-    D_8018CA70[1].slideItemBoxY = 0;
-    D_8018CA70[1].unk_4A = 0xF0;
-    D_8018CA70[1].unk_4C = 0x78;
-    D_8018CA70[1].rankX = 0xC8;
-    D_8018CA70[1].rankY = 0xD2;
-    D_8018CA70[1].slideRankX = 0;
-    D_8018CA70[1].slideRankY = 0;
-    D_8018CA70[1].timerX = 0xDC;
-    D_8018CA70[1].timerY = 0x10;
-    D_8018CA70[1].lapX = 0xF7;
-    D_8018CA70[1].lapY = 0x28;
-    init_item_window(gItemWindowObjectByPlayerId[1]);
+    hudPlayers[PLAYER_TWO].itemBoxX = 0x43;
+    hudPlayers[PLAYER_TWO].itemBoxY = 0x32;
+    hudPlayers[PLAYER_TWO].slideItemBoxX = 0;
+    hudPlayers[PLAYER_TWO].slideItemBoxY = 0;
+    hudPlayers[PLAYER_TWO].unk_4A = 0xF0;
+    hudPlayers[PLAYER_TWO].unk_4C = 0x78;
+    hudPlayers[PLAYER_TWO].rankX = 0xC8;
+    hudPlayers[PLAYER_TWO].rankY = 0xD2;
+    hudPlayers[PLAYER_TWO].slideRankX = 0;
+    hudPlayers[PLAYER_TWO].slideRankY = 0;
+    hudPlayers[PLAYER_TWO].timerX = 0xDC;
+    hudPlayers[PLAYER_TWO].timerY = 0x10;
+    hudPlayers[PLAYER_TWO].lapX = 0xF7;
+    hudPlayers[PLAYER_TWO].lapY = 0x28;
+    init_item_window(gItemWindowObjectByPlayerId[PLAYER_TWO]);
 
-    D_8018CA70[0].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
-    D_8018CA70[1].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
+    hudPlayers[PLAYER_ONE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
+    hudPlayers[PLAYER_TWO].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
 
-    D_8018CA70[0].rankScaling = D_8018CA70[1].rankScaling = 0.5f;
+    hudPlayers[PLAYER_ONE].rankScaling = hudPlayers[PLAYER_TWO].rankScaling = 0.5f;
 
     D_8018D3C4 = 0x1E;
     D_8018D3BC = 0x18;
@@ -1498,45 +1498,45 @@ void init_hud_two_player_horizontal() {
     func_80070780();
 
 
-    D_8018CA70[0].itemBoxY = 0x22;
-    D_8018CA70[0].itemBoxX = -0x53;
-    D_8018CA70[0].slideItemBoxX = 0;
-    D_8018CA70[0].slideItemBoxY = 0;
-    D_8018CA70[0].unk_4A = 0xA0;
-    D_8018CA70[0].unk_4C = 0x3C;
-    D_8018CA70[0].rankX = 0x34;
-    D_8018CA70[0].rankY = 0x62;
-    D_8018CA70[0].slideRankX = 0;
-    D_8018CA70[0].slideRankY = 0;
-    D_8018CA70[0].timerX = 0xEA;
-    D_8018CA70[0].timerY = 0x10;
-    D_8018CA70[0].lapX = 0x101;
-    D_8018CA70[0].lapY = 0x6A;
+    hudPlayers[PLAYER_ONE].itemBoxY = 0x22;
+    hudPlayers[PLAYER_ONE].itemBoxX = -0x53;
+    hudPlayers[PLAYER_ONE].slideItemBoxX = 0;
+    hudPlayers[PLAYER_ONE].slideItemBoxY = 0;
+    hudPlayers[PLAYER_ONE].unk_4A = 0xA0;
+    hudPlayers[PLAYER_ONE].unk_4C = 0x3C;
+    hudPlayers[PLAYER_ONE].rankX = 0x34;
+    hudPlayers[PLAYER_ONE].rankY = 0x62;
+    hudPlayers[PLAYER_ONE].slideRankX = 0;
+    hudPlayers[PLAYER_ONE].slideRankY = 0;
+    hudPlayers[PLAYER_ONE].timerX = 0xEA;
+    hudPlayers[PLAYER_ONE].timerY = 0x10;
+    hudPlayers[PLAYER_ONE].lapX = 0x101;
+    hudPlayers[PLAYER_ONE].lapY = 0x6A;
 
-    D_8018CA70[1].itemBoxX = -0x53;
-    D_8018CA70[1].itemBoxY = 0x8F;
-    D_8018CA70[1].slideItemBoxX = 0;
-    D_8018CA70[1].slideItemBoxY = 0;
-    D_8018CA70[1].unk_4A = 0xA0;
-    D_8018CA70[1].unk_4C = 0xB4;
-    D_8018CA70[1].rankX = 0x34;
-    D_8018CA70[1].rankY = 0xD2;
-    D_8018CA70[1].slideRankX = 0;
-    D_8018CA70[1].slideRankY = 0;
-    D_8018CA70[1].timerX = 0xEA;
-    D_8018CA70[1].timerY = 0x7F;
-    D_8018CA70[1].lapX = 0x101;
-    D_8018CA70[1].lapY = 0xDA;
+    hudPlayers[PLAYER_TWO].itemBoxX = -0x53;
+    hudPlayers[PLAYER_TWO].itemBoxY = 0x8F;
+    hudPlayers[PLAYER_TWO].slideItemBoxX = 0;
+    hudPlayers[PLAYER_TWO].slideItemBoxY = 0;
+    hudPlayers[PLAYER_TWO].unk_4A = 0xA0;
+    hudPlayers[PLAYER_TWO].unk_4C = 0xB4;
+    hudPlayers[PLAYER_TWO].rankX = 0x34;
+    hudPlayers[PLAYER_TWO].rankY = 0xD2;
+    hudPlayers[PLAYER_TWO].slideRankX = 0;
+    hudPlayers[PLAYER_TWO].slideRankY = 0;
+    hudPlayers[PLAYER_TWO].timerX = 0xEA;
+    hudPlayers[PLAYER_TWO].timerY = 0x7F;
+    hudPlayers[PLAYER_TWO].lapX = 0x101;
+    hudPlayers[PLAYER_TWO].lapY = 0xDA;
 
     if (gModeSelection == 3) {
-        D_8018CA70[0].itemBoxY = 0x5E;
-        D_8018CA70[1].itemBoxY = 0xD0;
+        hudPlayers[PLAYER_ONE].itemBoxY = 0x5E;
+        hudPlayers[PLAYER_TWO].itemBoxY = 0xD0;
     }
 
-    D_8018CA70[0].rankScaling = D_8018CA70[1].rankScaling = 0.5f;
+    hudPlayers[PLAYER_ONE].rankScaling = hudPlayers[PLAYER_TWO].rankScaling = 0.5f;
 
-    D_8018CA70[0].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
-    D_8018CA70[1].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
+    hudPlayers[PLAYER_ONE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
+    hudPlayers[PLAYER_TWO].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
 
     init_item_window(gItemWindowObjectByPlayerId[0]);
     init_item_window((gItemWindowObjectByPlayerId[1]));
@@ -1575,86 +1575,86 @@ void init_hud_three_four_player(void) {
     func_80070190();
     func_80070780();
 
-    D_8018CA70[0].itemBoxX = -0x36;
-    D_8018CA70[0].itemBoxY = 0x36;
-    D_8018CA70[0].slideItemBoxX = 0;
-    D_8018CA70[0].slideItemBoxY = 0;
-    D_8018CA70[0].unk_4A = 0x50;
-    D_8018CA70[0].unk_4C = 0x3C;
-    D_8018CA70[0].rankX = 0x25;
-    D_8018CA70[0].rankY = 0x64;
-    D_8018CA70[0].slideRankX = 0;
-    D_8018CA70[0].slideRankY = 0;
-    D_8018CA70[0].lapX = 0x8C;
-    D_8018CA70[0].lapY = 0x60;
-    D_8018CA70[0].unk_6C = 0xDE;
-    D_8018CA70[0].unk_6E = 0xC8;
+    hudPlayers[PLAYER_ONE].itemBoxX = -0x36;
+    hudPlayers[PLAYER_ONE].itemBoxY = 0x36;
+    hudPlayers[PLAYER_ONE].slideItemBoxX = 0;
+    hudPlayers[PLAYER_ONE].slideItemBoxY = 0;
+    hudPlayers[PLAYER_ONE].unk_4A = 0x50;
+    hudPlayers[PLAYER_ONE].unk_4C = 0x3C;
+    hudPlayers[PLAYER_ONE].rankX = 0x25;
+    hudPlayers[PLAYER_ONE].rankY = 0x64;
+    hudPlayers[PLAYER_ONE].slideRankX = 0;
+    hudPlayers[PLAYER_ONE].slideRankY = 0;
+    hudPlayers[PLAYER_ONE].lapX = 0x8C;
+    hudPlayers[PLAYER_ONE].lapY = 0x60;
+    hudPlayers[PLAYER_ONE].unk_6C = 0xDE;
+    hudPlayers[PLAYER_ONE].unk_6E = 0xC8;
 
-    D_8018CA70[1].itemBoxX = 0x175;
-    D_8018CA70[1].itemBoxY = 0x36;
-    D_8018CA70[1].slideItemBoxX = 0;
-    D_8018CA70[1].slideItemBoxY = 0;
-    D_8018CA70[1].unk_4A = 0xF0;
-    D_8018CA70[1].unk_4C = 0x3C;
-    D_8018CA70[1].rankX = 0x11A;
-    D_8018CA70[1].rankY = 0x64;
-    D_8018CA70[1].slideRankX = 0;
-    D_8018CA70[1].slideRankY = 0;
-    D_8018CA70[1].lapX = 0xB4;
-    D_8018CA70[1].lapY = 0x60;
-    D_8018CA70[1].unk_6C = 0xC8;
-    D_8018CA70[1].unk_6E = 0xC8;
+    hudPlayers[PLAYER_TWO].itemBoxX = 0x175;
+    hudPlayers[PLAYER_TWO].itemBoxY = 0x36;
+    hudPlayers[PLAYER_TWO].slideItemBoxX = 0;
+    hudPlayers[PLAYER_TWO].slideItemBoxY = 0;
+    hudPlayers[PLAYER_TWO].unk_4A = 0xF0;
+    hudPlayers[PLAYER_TWO].unk_4C = 0x3C;
+    hudPlayers[PLAYER_TWO].rankX = 0x11A;
+    hudPlayers[PLAYER_TWO].rankY = 0x64;
+    hudPlayers[PLAYER_TWO].slideRankX = 0;
+    hudPlayers[PLAYER_TWO].slideRankY = 0;
+    hudPlayers[PLAYER_TWO].lapX = 0xB4;
+    hudPlayers[PLAYER_TWO].lapY = 0x60;
+    hudPlayers[PLAYER_TWO].unk_6C = 0xC8;
+    hudPlayers[PLAYER_TWO].unk_6E = 0xC8;
     
-    D_8018CA70[2].itemBoxX = -0x36;
-    D_8018CA70[2].itemBoxY = 0x2D;
-    D_8018CA70[2].slideItemBoxX = 0;
-    D_8018CA70[2].slideItemBoxY = 0;
-    D_8018CA70[2].unk_4A = 0x50;
-    D_8018CA70[2].unk_4C = 0xB4;
-    D_8018CA70[2].rankX = 0x25;
-    D_8018CA70[2].rankY = 0xD2;
-    D_8018CA70[2].slideRankX = 0;
-    D_8018CA70[2].slideRankY = 0;
-    D_8018CA70[2].lapX = 0x8C;
-    D_8018CA70[2].lapY = 0xD4;
-    D_8018CA70[2].unk_6C = 0xDE;
-    D_8018CA70[2].unk_6E = 0xC0;
+    hudPlayers[PLAYER_THREE].itemBoxX = -0x36;
+    hudPlayers[PLAYER_THREE].itemBoxY = 0x2D;
+    hudPlayers[PLAYER_THREE].slideItemBoxX = 0;
+    hudPlayers[PLAYER_THREE].slideItemBoxY = 0;
+    hudPlayers[PLAYER_THREE].unk_4A = 0x50;
+    hudPlayers[PLAYER_THREE].unk_4C = 0xB4;
+    hudPlayers[PLAYER_THREE].rankX = 0x25;
+    hudPlayers[PLAYER_THREE].rankY = 0xD2;
+    hudPlayers[PLAYER_THREE].slideRankX = 0;
+    hudPlayers[PLAYER_THREE].slideRankY = 0;
+    hudPlayers[PLAYER_THREE].lapX = 0x8C;
+    hudPlayers[PLAYER_THREE].lapY = 0xD4;
+    hudPlayers[PLAYER_THREE].unk_6C = 0xDE;
+    hudPlayers[PLAYER_THREE].unk_6E = 0xC0;
     
-    D_8018CA70[3].itemBoxX = 0x175;
-    D_8018CA70[3].itemBoxY = 0x2D;
-    D_8018CA70[3].slideItemBoxX = 0;
-    D_8018CA70[3].slideItemBoxY = 0;
-    D_8018CA70[3].unk_4A = 0xF0;
-    D_8018CA70[3].unk_4C = 0xB4;
-    D_8018CA70[3].rankX = 0x11A;
-    D_8018CA70[3].rankY = 0xD2;
-    D_8018CA70[3].slideRankX = 0;
-    D_8018CA70[3].slideRankY = 0;
-    D_8018CA70[3].lapX = 0xB4;
-    D_8018CA70[3].lapY = 0xD4;
-    D_8018CA70[3].unk_6C = 0xC8;
-    D_8018CA70[3].unk_6E = 0xC0;
+    hudPlayers[PLAYER_FOUR].itemBoxX = 0x175;
+    hudPlayers[PLAYER_FOUR].itemBoxY = 0x2D;
+    hudPlayers[PLAYER_FOUR].slideItemBoxX = 0;
+    hudPlayers[PLAYER_FOUR].slideItemBoxY = 0;
+    hudPlayers[PLAYER_FOUR].unk_4A = 0xF0;
+    hudPlayers[PLAYER_FOUR].unk_4C = 0xB4;
+    hudPlayers[PLAYER_FOUR].rankX = 0x11A;
+    hudPlayers[PLAYER_FOUR].rankY = 0xD2;
+    hudPlayers[PLAYER_FOUR].slideRankX = 0;
+    hudPlayers[PLAYER_FOUR].slideRankY = 0;
+    hudPlayers[PLAYER_FOUR].lapX = 0xB4;
+    hudPlayers[PLAYER_FOUR].lapY = 0xD4;
+    hudPlayers[PLAYER_FOUR].unk_6C = 0xC8;
+    hudPlayers[PLAYER_FOUR].unk_6E = 0xC0;
 
     if (gModeSelection == 3) {
-        D_8018CA70[0].itemBoxY = 0xC8;
-        D_8018CA70[1].itemBoxY = 0xC8;
-        D_8018CA70[2].itemBoxY = 0xB8;
-        D_8018CA70[3].itemBoxY = 0xB8;
+        hudPlayers[PLAYER_ONE].itemBoxY = 0xC8;
+        hudPlayers[PLAYER_TWO].itemBoxY = 0xC8;
+        hudPlayers[PLAYER_THREE].itemBoxY = 0xB8;
+        hudPlayers[PLAYER_FOUR].itemBoxY = 0xB8;
     }
 
-    D_8018CA70[0].rankScaling = D_8018CA70[1].rankScaling = D_8018CA70[2].rankScaling = D_8018CA70[3].rankScaling = 0.5f;
+    hudPlayers[PLAYER_ONE].rankScaling = hudPlayers[PLAYER_TWO].rankScaling = hudPlayers[PLAYER_THREE].rankScaling = hudPlayers[PLAYER_FOUR].rankScaling = 0.5f;
 
-    D_8018CA70[0].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
-    D_8018CA70[1].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
-    D_8018CA70[2].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[2];
-    D_8018CA70[3].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[3];
+    hudPlayers[PLAYER_ONE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
+    hudPlayers[PLAYER_TWO].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
+    hudPlayers[PLAYER_THREE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[2];
+    hudPlayers[PLAYER_FOUR].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[3];
 
     init_item_window(gItemWindowObjectByPlayerId[0]);
     init_item_window(gItemWindowObjectByPlayerId[1]);
     init_item_window(gItemWindowObjectByPlayerId[2]);
     init_item_window(gItemWindowObjectByPlayerId[3]);
 
-    D_8018CA70[0].unknownScaling = D_8018CA70[1].unknownScaling = D_8018CA70[2].unknownScaling = D_8018CA70[3].unknownScaling = 1.5f;
+    hudPlayers[PLAYER_ONE].unknownScaling = hudPlayers[PLAYER_TWO].unknownScaling = hudPlayers[PLAYER_THREE].unknownScaling = hudPlayers[PLAYER_FOUR].unknownScaling = 1.5f;
 
     D_8018D158 = (s32) gPlayerCount;
     D_8018D3C4 = 0x00000014;

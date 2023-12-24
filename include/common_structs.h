@@ -508,8 +508,8 @@ typedef struct {
     /* 0x81 */ u8 unk_81;
     /* 0x82 */ s8 unk_82;
     /* 0x83 */ s8 unk_83;
-} struct_8018CA70_entry; // size = 0x84
+} hud_player; // size = 0x84
 
-#define D_8018CA70_SIZE 4
+#define HUD_PLAYERS_SIZE 4
 
 #endif

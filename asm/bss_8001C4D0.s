@@ -795,9 +795,9 @@ glabel D_8018C970
 .skip 256
 
 # some hud related list begin
-# D_8018CA70 should be of size 528 (0x84 * 0x4)
+# hudPlayers should be of size 528 (0x84 * 0x4)
 # D_8018CA74 through D_8018CC7D are all fake
-glabel D_8018CA70
+glabel hudPlayers
 .skip 4
 
 glabel D_8018CA74

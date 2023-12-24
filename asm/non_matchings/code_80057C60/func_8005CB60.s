@@ -1,10 +1,10 @@
 glabel func_8005CB60
 /* 05D760 8005CB60 0004C140 */  sll   $t8, $a0, 5
 /* 05D764 8005CB64 27BDFFC0 */  addiu $sp, $sp, -0x40
-/* 05D768 8005CB68 3C068019 */  lui   $a2, %hi(D_8018CA70) # $a2, 0x8019
+/* 05D768 8005CB68 3C068019 */  lui   $a2, %hi(hudPlayers) # $a2, 0x8019
 /* 05D76C 8005CB6C 000470C0 */  sll   $t6, $a0, 3
 /* 05D770 8005CB70 0304C021 */  addu  $t8, $t8, $a0
-/* 05D774 8005CB74 24C6CA70 */  addiu $a2, %lo(D_8018CA70) # addiu $a2, $a2, -0x3590
+/* 05D774 8005CB74 24C6CA70 */  addiu $a2, %lo(hudPlayers) # addiu $a2, $a2, -0x3590
 /* 05D778 8005CB78 AFB00018 */  sw    $s0, 0x18($sp)
 /* 05D77C 8005CB7C 01C47023 */  subu  $t6, $t6, $a0
 /* 05D780 8005CB80 0018C080 */  sll   $t8, $t8, 2

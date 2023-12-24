@@ -8,12 +8,12 @@ glabel func_800B5218
 /* 0B5E30 800B5230 27BDFFB8 */  addiu $sp, $sp, -0x48
 /* 0B5E34 800B5234 000E7880 */  sll   $t7, $t6, 2
 /* 0B5E38 800B5238 3C058019 */  lui   $a1, %hi(D_8018CA74) # $a1, 0x8019
-/* 0B5E3C 800B523C 3C068019 */  lui   $a2, %hi(D_8018CA70) # $a2, 0x8019
+/* 0B5E3C 800B523C 3C068019 */  lui   $a2, %hi(hudPlayers) # $a2, 0x8019
 /* 0B5E40 800B5240 01F8C821 */  addu  $t9, $t7, $t8
 /* 0B5E44 800B5244 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0B5E48 800B5248 AFB90038 */  sw    $t9, 0x38($sp)
 /* 0B5E4C 800B524C 24070001 */  li    $a3, 1
-/* 0B5E50 800B5250 24C6CA70 */  addiu $a2, %lo(D_8018CA70) # addiu $a2, $a2, -0x3590
+/* 0B5E50 800B5250 24C6CA70 */  addiu $a2, %lo(hudPlayers) # addiu $a2, $a2, -0x3590
 /* 0B5E54 800B5254 24A5CA74 */  addiu $a1, %lo(D_8018CA74) # addiu $a1, $a1, -0x358c
 /* 0B5E58 800B5258 24020001 */  li    $v0, 1
 /* 0B5E5C 800B525C 24080003 */  li    $t0, 3
@@ -25,8 +25,8 @@ glabel func_800B5218
 /* 0B5E70 800B5270 00025880 */  sll   $t3, $v0, 2
 /* 0B5E74 800B5274 0064082A */  slt   $at, $v1, $a0
 /* 0B5E78 800B5278 10200005 */  beqz  $at, .L800B5290
-/* 0B5E7C 800B527C 3C0C8019 */   lui   $t4, %hi(D_8018CA70) # $t4, 0x8019
-/* 0B5E80 800B5280 258CCA70 */  addiu $t4, %lo(D_8018CA70) # addiu $t4, $t4, -0x3590
+/* 0B5E7C 800B527C 3C0C8019 */   lui   $t4, %hi(hudPlayers) # $t4, 0x8019
+/* 0B5E80 800B5280 258CCA70 */  addiu $t4, %lo(hudPlayers) # addiu $t4, $t4, -0x3590
 /* 0B5E84 800B5284 004A3804 */  sllv  $a3, $t2, $v0
 /* 0B5E88 800B5288 10000005 */  b     .L800B52A0
 /* 0B5E8C 800B528C 016C3021 */   addu  $a2, $t3, $t4

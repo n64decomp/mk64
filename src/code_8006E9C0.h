@@ -50,8 +50,8 @@ extern s16 D_8018D2B8;
 extern s32 D_80183DA0;
 extern s32 D_80183DBC;
 
-extern struct_8018CA70_entry D_8018CA70[];
-// These are all *technically* hardcoded references to spots in D_8018CA70, but there's something weird
+extern hud_player hudPlayers[];
+// These are all *technically* hardcoded references to spots in hudPlayers, but there's something weird
 // going on match wise in reset_object_variable that means we have to (for now) leave them as separate variables
 extern s8 D_8018CAE0;
 extern s8 D_8018CAE1;

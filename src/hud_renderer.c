@@ -2206,12 +2206,12 @@ UNUSED void func_8004E604(s32 arg0, s32 arg1, u8 *tlut, u8 *texture) {
 void func_8004E638(s32 playerId) {
     s32 objectIndex;
     Objects *temp_v1;
-    struct_8018CA70_entry *temp_v0;
+    hud_player *temp_v0;
 
     objectIndex = gItemWindowObjectByPlayerId[playerId];
     temp_v1 = &gObjectList[objectIndex];
     if (temp_v1->state >= 2) {
-        temp_v0 = &D_8018CA70[playerId];
+        temp_v0 = &hudPlayers[playerId];
         func_8004E4CC(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, (u8 *) temp_v1->activeTLUT, temp_v1->activeTexture);
     }
 }
@@ -2219,44 +2219,44 @@ void func_8004E638(s32 playerId) {
 void func_8004E6C4(s32 playerId) {
     s32 objectIndex;
     Objects *temp_v1;
-    struct_8018CA70_entry *temp_v0;
+    hud_player *temp_v0;
 
     objectIndex = gItemWindowObjectByPlayerId[playerId];
     temp_v1 = &gObjectList[objectIndex];
     if (temp_v1->state >= 2) {
-        temp_v0 = &D_8018CA70[playerId];
+        temp_v0 = &hudPlayers[playerId];
         func_80047910(temp_v0->slideItemBoxX + temp_v0->itemBoxX, temp_v0->slideItemBoxY + temp_v0->itemBoxY, 0U, temp_v0->unknownScaling, (u8 *) temp_v1->activeTLUT, (u8 *) temp_v1->activeTexture, D_0D005C30, 0x00000028, 0x00000020, 0x00000028, 0x00000020);
     }
 }
 
 void func_8004E78C(s32 playerId) {
-    func_8004CB60((s32) D_8018CA70[playerId].lapX, D_8018CA70[playerId].lapY + 3, (s32) D_0D00A958);
-    func_8004CB90(D_8018CA70[playerId].lapX + 0x1C, (s32) D_8018CA70[playerId].lapY, D_800E4570[D_8018CA70[playerId].alsoLapCount]);
+    func_8004CB60((s32) hudPlayers[playerId].lapX, hudPlayers[playerId].lapY + 3, (s32) D_0D00A958);
+    func_8004CB90(hudPlayers[playerId].lapX + 0x1C, (s32) hudPlayers[playerId].lapY, D_800E4570[hudPlayers[playerId].alsoLapCount]);
 }
 
 void func_8004E800(s32 playerId) {
-    if (D_8018CA70[playerId].unk_81 != 0) {
-        if (D_8018CA70[playerId].lapCount != 3) {
-            func_8004A384(D_8018CA70[playerId].rankX + D_8018CA70[playerId].slideRankX, D_8018CA70[playerId].rankY + D_8018CA70[playerId].slideRankY, 0U,
-                D_8018CA70[playerId].rankScaling, 0x000000FF, D_800E55F8[D_8018CF98[playerId]], 0, 0x000000FF, D_0D00D258[D_8018CF98[playerId]],
+    if (hudPlayers[playerId].unk_81 != 0) {
+        if (hudPlayers[playerId].lapCount != 3) {
+            func_8004A384(hudPlayers[playerId].rankX + hudPlayers[playerId].slideRankX, hudPlayers[playerId].rankY + hudPlayers[playerId].slideRankY, 0U,
+                hudPlayers[playerId].rankScaling, 0x000000FF, D_800E55F8[D_8018CF98[playerId]], 0, 0x000000FF, D_0D00D258[D_8018CF98[playerId]],
                 D_0D0068F0, 0x00000080, 0x00000040, 0x00000080, 0x00000040);
         } else {
-            func_8004A384(D_8018CA70[playerId].rankX + D_8018CA70[playerId].slideRankX, D_8018CA70[playerId].rankY + D_8018CA70[playerId].slideRankY, 0U,
-                D_8018CA70[playerId].rankScaling, 0x000000FF, D_800E55F8[D_80165594], 0, 0x000000FF, D_0D00D258[gGPCurrentRaceRankByPlayerId[playerId]],
+            func_8004A384(hudPlayers[playerId].rankX + hudPlayers[playerId].slideRankX, hudPlayers[playerId].rankY + hudPlayers[playerId].slideRankY, 0U,
+                hudPlayers[playerId].rankScaling, 0x000000FF, D_800E55F8[D_80165594], 0, 0x000000FF, D_0D00D258[gGPCurrentRaceRankByPlayerId[playerId]],
                 D_0D0068F0, 0x00000080, 0x00000040, 0x00000080, 0x00000040);
         }
     }
 }
 
 void func_8004E998(s32 playerId) {
-    if (D_8018CA70[playerId].unk_81 != 0) {
-        if (D_8018CA70[playerId].lapCount != 3) {
-            func_8004A384(D_8018CA70[playerId].rankX + D_8018CA70[playerId].slideRankX, D_8018CA70[playerId].rankY + D_8018CA70[playerId].slideRankY, 0U,
-                D_8018CA70[playerId].rankScaling, 0x000000FF, D_800E5618[gGPCurrentRaceRankByPlayerId[playerId]], 0, 0x000000FF, D_0D015258[gGPCurrentRaceRankByPlayerId[playerId]],
+    if (hudPlayers[playerId].unk_81 != 0) {
+        if (hudPlayers[playerId].lapCount != 3) {
+            func_8004A384(hudPlayers[playerId].rankX + hudPlayers[playerId].slideRankX, hudPlayers[playerId].rankY + hudPlayers[playerId].slideRankY, 0U,
+                hudPlayers[playerId].rankScaling, 0x000000FF, D_800E5618[gGPCurrentRaceRankByPlayerId[playerId]], 0, 0x000000FF, D_0D015258[gGPCurrentRaceRankByPlayerId[playerId]],
                 D_0D006030, 0x00000040, 0x00000040, 0x00000040, 0x00000040);
         } else {
-            func_8004A384(D_8018CA70[playerId].rankX + D_8018CA70[playerId].slideRankX, D_8018CA70[playerId].rankY + D_8018CA70[playerId].slideRankY, 0U,
-                D_8018CA70[playerId].rankScaling, 0x000000FF, D_800E5618[D_80165598], 0, 0x000000FF, D_0D015258[gGPCurrentRaceRankByPlayerId[playerId]],
+            func_8004A384(hudPlayers[playerId].rankX + hudPlayers[playerId].slideRankX, hudPlayers[playerId].rankY + hudPlayers[playerId].slideRankY, 0U,
+                hudPlayers[playerId].rankScaling, 0x000000FF, D_800E5618[D_80165598], 0, 0x000000FF, D_0D015258[gGPCurrentRaceRankByPlayerId[playerId]],
                 D_0D006030, 0x00000040, 0x00000040, 0x00000040, 0x00000040);
         }
     }
@@ -2267,9 +2267,9 @@ void func_8004EB30(UNUSED s32 arg0) {
 }
 
 void func_8004EB38(s32 playerId) {
-    struct_8018CA70_entry *temp_s0;
+    hud_player *temp_s0;
 
-    temp_s0 = &D_8018CA70[playerId];
+    temp_s0 = &hudPlayers[playerId];
     if ((u8) temp_s0->unk_7B != 0) {
         func_8004C9D8(temp_s0->lap1CompletionTimeX - 0x13, temp_s0->timerY + 8, 0x00000080, (s32) D_0D00C158, 0x00000020, 0x00000010, 0x00000020, 0x00000010);
         func_8004F950((s32) temp_s0->lap1CompletionTimeX, (s32) temp_s0->timerY, 0x00000080, (s32) temp_s0->someTimer);
@@ -2289,7 +2289,7 @@ void func_8004EB38(s32 playerId) {
 }
 
 void func_8004ED40(s32 arg0) {
-    func_8004A2F4(D_8018CA70[arg0].speedometerX, D_8018CA70[arg0].speedometerY, 0U, 1.0f, D_8018D300, D_8018D308, D_8018D310, 0xFF, (u8* ) D_0D009958, D_0D0064B0, 0x40, 0x60, 0x40, 0x30);
+    func_8004A2F4(hudPlayers[arg0].speedometerX, hudPlayers[arg0].speedometerY, 0U, 1.0f, D_8018D300, D_8018D308, D_8018D310, 0xFF, (u8* ) D_0D009958, D_0D0064B0, 0x40, 0x60, 0x40, 0x30);
     func_8004A258(D_8018CFEC, D_8018CFF4, D_8016579E, 1.0f, (u8* ) D_0D00A558, &D_0D005FF0, 0x40, 0x20, 0x40, 0x20);
 }
 
@@ -2494,12 +2494,12 @@ extern s32 D_8018D320;
 void func_8004FA78(s32 playerId) {
     s32 *var_s3;
     s32 var_s0;
-    struct_8018CA70_entry *temp_s4;
-    struct_8018CA70_entry *var_s1;
-    struct_8018CA70_entry *var_s2;
+    hud_player *temp_s4;
+    hud_player *var_s1;
+    hud_player *var_s2;
 
     if ((gModeSelection != 2) && (gModeSelection != 3)) {
-        temp_s4 = &D_8018CA70[playerId];
+        temp_s4 = &hudPlayers[playerId];
         if (D_8018D320 == temp_s4->lapCount) {
             var_s3 = &D_80165658;
             var_s1 = temp_s4;
