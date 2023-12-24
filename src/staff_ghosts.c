@@ -7,7 +7,7 @@
 #include "main.h"
 #include "code_800029B0.h"
 #include "framebuffers.h"
-#include "code_800B45E0.h"
+#include "save.h"
 #include "staff_ghosts.h"
 #include "code_80091750.h"
 

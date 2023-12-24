@@ -370,7 +370,7 @@ s32 func_800B5218(void) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B5218.s")
+GLOBAL_ASM("asm/non_matchings/save/func_800B5218.s")
 #endif
 
 void func_800B536C(s32 arg0) {
@@ -506,7 +506,7 @@ s32 func_800B578C(s32 arg0) {
     return (var_v1 % 256) & 0xFF;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B578C.s")
+GLOBAL_ASM("asm/non_matchings/save/func_800B578C.s")
 #endif
 
 s32 func_800B5888(s32 arg0) {
@@ -759,7 +759,7 @@ u8 func_800B60E8(s32 page) {
     return checksum;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B60E8.s")
+GLOBAL_ASM("asm/non_matchings/save/func_800B60E8.s")
 #endif
 
 s32 func_800B6178(s32 arg0) {
@@ -982,7 +982,7 @@ u8 func_800B68F4(s32 arg0) {
     return checksum;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B68F4.s")
+GLOBAL_ASM("asm/non_matchings/save/func_800B68F4.s")
 #endif
 
 #ifdef NON_MATCHING
@@ -1006,7 +1006,7 @@ s32 func_800B69BC(s32 arg0) {
     return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_WRITE, offset, sizeof(struct_8018EE10_entry), (u8 *)plz);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_800B45E0/func_800B69BC.s")
+GLOBAL_ASM("asm/non_matchings/save/func_800B69BC.s")
 #endif
 
 s32 func_800B6A68(void) {

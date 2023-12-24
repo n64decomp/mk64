@@ -24,7 +24,7 @@
 #include <code_80091440.h>
 #include <code_80091750.h>
 #include <code_800AF9B0.h>
-#include <code_800B45E0.h>
+#include <save.h>
 #include <code_80280000.h>
 #include <podium_ceremony_actors.h>
 #include <code_80281780.h>

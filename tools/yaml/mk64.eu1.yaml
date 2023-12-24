@@ -73,7 +73,7 @@ segments:
       - [0x92350, c, code_80091750]
       - [0xB05B0, c, code_800AF9B0]
       - [0xB0F50, c, menus]
-      - [0xB51E0, c, code_800B45E0]
+      - [0xB51E0, c, save]
       - [0xB77F0, c, audio/synthesis]
       - [0xB99E0, c, audio/heap]
       - [0xBB680, c, audio/load]

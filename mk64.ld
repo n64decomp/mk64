@@ -66,7 +66,7 @@ SECTIONS
       BUILD_DIR/src/code_80091750.jp.o(.text);
       BUILD_DIR/src/code_800AF9B0.o(.text);
       BUILD_DIR/src/menus.o(.text);
-      BUILD_DIR/src/code_800B45E0.o(.text);
+      BUILD_DIR/src/save.o(.text);
       BUILD_DIR/src/audio/synthesis.o(.text);
       BUILD_DIR/src/audio/heap.o(.text);
       BUILD_DIR/src/audio/load.o(.text);
@@ -224,7 +224,7 @@ SECTIONS
       BUILD_DIR/src/code_80091750.jp.o(.data);
       BUILD_DIR/src/code_800AF9B0.o(.data);
       BUILD_DIR/src/menus.o(.data);
-      BUILD_DIR/src/code_800B45E0.o(.data);
+      BUILD_DIR/src/save.o(.data);
       BUILD_DIR/src/data/data_800E8700.o(.data);
       BUILD_DIR/src/audio/synthesis.o(.data);
       BUILD_DIR/src/audio/heap.o(.data);
@@ -272,7 +272,7 @@ SECTIONS
       BUILD_DIR/src/code_80091750.jp.o(.rodata);
       BUILD_DIR/src/code_800AF9B0.o(.rodata);
       BUILD_DIR/src/menus.o(.rodata);
-      BUILD_DIR/src/code_800B45E0.o(.rodata);
+      BUILD_DIR/src/save.o(.rodata);
       BUILD_DIR/src/audio/heap.o(.rodata);
       BUILD_DIR/src/audio/load.o(.rodata);
       BUILD_DIR/src/audio/playback.o(.rodata);
