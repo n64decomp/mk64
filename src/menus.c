@@ -13,7 +13,7 @@
 #include "code_80005FD0.h"
 #include "code_80091750.h"
 #include "code_800AF9B0.h"
-#include "code_800B45E0.h"
+#include "save.h"
 #include "staff_ghosts.h"
 #include "save_data.h"
 #include <sounds.h>

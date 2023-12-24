@@ -1,5 +1,5 @@
-#ifndef CODE_800B045E0_H
-#define CODE_800B045E0_H
+#ifndef SAVE_H
+#define SAVE_H
 
 #include "PR/os.h"
 #include "common_structs.h"

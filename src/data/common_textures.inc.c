@@ -2623,64 +2623,58 @@ u8 D_0D00C558[] = {
     #include "textures/common/132B50_0C558.rgba16.inc.c"
 };
 
-// first place
-s8 D_0D00D258[] = {
-    #include "textures/common/132B50_0D258.i4.inc.c"
+u8 D_0D00D258[][4096] = {
+    // first place
+    {
+        #include "textures/common/132B50_0D258.i4.inc.c"
+    },
+    // second place
+    {
+        #include "textures/common/132B50_0E258.i4.inc.c"
+    },
+    // third place
+    {
+        #include "textures/common/132B50_0F258.i4.inc.c"
+    },
+    // fourth place
+    {
+        #include "textures/common/132B50_10258.i4.inc.c"
+    },
+    // fifth place
+    {
+        #include "textures/common/132B50_11258.i4.inc.c"
+    },
+    // sixth place
+    {
+        #include "textures/common/132B50_12258.i4.inc.c"
+    },
+    // seventh place
+    {
+        #include "textures/common/132B50_13258.i4.inc.c"
+    },
+    // eighth place
+    {
+        #include "textures/common/132B50_14258.i4.inc.c"
+    },
 };
 
-// second place
-s8 D_0D00E258[] = {
-    #include "textures/common/132B50_0E258.i4.inc.c"
-};
-
-// third place
-s8 D_0D00F258[] = {
-    #include "textures/common/132B50_0F258.i4.inc.c"
-};
-
-// fourth place
-s8 D_0D010258[] = {
-    #include "textures/common/132B50_10258.i4.inc.c"
-};
-
-// fifth place
-s8 D_0D011258[] = {
-    #include "textures/common/132B50_11258.i4.inc.c"
-};
-
-// sixth place
-s8 D_0D012258[] = {
-    #include "textures/common/132B50_12258.i4.inc.c"
-};
-
-// seventh place
-s8 D_0D013258[] = {
-    #include "textures/common/132B50_13258.i4.inc.c"
-};
-
-// eighth place
-s8 D_0D014258[] = {
-    #include "textures/common/132B50_14258.i4.inc.c"
-};
-
-// First
-s8 D_0D015258[] = {
-    #include "textures/common/132B50_15258.i4.inc.c"
-};
-
-// Second
-s8 D_0D015A58[] = {
-    #include "textures/common/132B50_15A58.i4.inc.c"
-};
-
-// Third
-s8 D_0D016258[] = {
-    #include "textures/common/132B50_16258.i4.inc.c"
-};
-
-// Fourth
-s8 D_0D016A58[] = {
-    #include "textures/common/132B50_16A58.i4.inc.c"
+u8 D_0D015258[][2048] = {
+    // First
+    {
+        #include "textures/common/132B50_15258.i4.inc.c"
+    },
+    // Second
+    {
+        #include "textures/common/132B50_15A58.i4.inc.c"
+    },
+    // Third
+    {
+        #include "textures/common/132B50_16258.i4.inc.c"
+    },
+    // Fourth
+    {
+        #include "textures/common/132B50_16A58.i4.inc.c"
+    },
 };
 
 // tlut for 1p, 2p, 3p, 4p

@@ -9,7 +9,7 @@
 #include "kart_attributes.h"
 #include "racing/memory.h"
 #include "math_util.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 #include "code_8008C1D0.h"
 #include "collision.h"
 #include "waypoints.h"

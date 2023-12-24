@@ -13,7 +13,7 @@
 #include <code_800029B0.h>
 #include <code_80004740.h>
 #include <code_80005FD0.h>
-#include <code_8001F980.h>
+#include <render_player.h>
 #include <player_controller.h>
 #include <code_8003DC40.h>
 #include <code_80057C60.h>
@@ -24,7 +24,7 @@
 #include <code_80091440.h>
 #include <code_80091750.h>
 #include <code_800AF9B0.h>
-#include <code_800B45E0.h>
+#include <save.h>
 #include <code_80280000.h>
 #include <podium_ceremony_actors.h>
 #include <code_80281780.h>
