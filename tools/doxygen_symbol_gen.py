@@ -1,12 +1,14 @@
+# usr/bin/python3
+
 def process_map_file(map_file_path):
     result = (
-        "/**\n"
-        " * @page memory_addresses Memory Addresses\n"
-        " * This page displays the memory addresses of variables in the project.\n"
-        " *\n"
-        " * @section sec_addresses Memory Addresses\n"
-        " * The following table shows the memory addresses of important variables:\n"
-        " * | Variable Name | Memory Address |\n"
+        "# Memory Addresses\n"
+        "This page displays the memory addresses of variables in the project.\n"
+        "\n"
+        "## Memory Addresses\n"
+        "The following table shows the memory addresses of important variables:\n"
+        "Variable Name | Memory Address\n"
+        "--------------|---------------\n"
     )
 
     with open(map_file_path, 'r') as file:
@@ -22,12 +24,12 @@ def process_map_file(map_file_path):
                     function_name = tokens[-1]
 
                     # Format the information into the Doxygen style
-                    result += f" * | {function_name} | {address} |\n"
+                    result += f"{function_name} | {address}\n"
 
     result += (
-        " *\n"
-        " * @note This information is generated during the compilation process.\n"
-        " */\n"
+        "\n"
+        "Note: This information is generated during the compilation process.\n"
+        "\n"
     )
 
     return result
@@ -38,7 +40,7 @@ if __name__ == "__main__":
     doxygen_formatted_content = process_map_file(map_file_path)
 
     # Specify the output file path
-    output_file_path = "tools/doxygen_syms.txt"
+    output_file_path = "tools/doxygen_syms.md"
 
     # Write the result to the output file
     with open(output_file_path, 'w') as output_file:
