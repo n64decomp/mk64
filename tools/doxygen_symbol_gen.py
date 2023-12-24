@@ -34,11 +34,11 @@ def process_map_file(map_file_path):
 
 
 if __name__ == "__main__":
-    map_file_path = "../build/us/mk64.us.map"
+    map_file_path = "build/us/mk64.us.map"
     doxygen_formatted_content = process_map_file(map_file_path)
 
     # Specify the output file path
-    output_file_path = "doxygen_syms.txt"
+    output_file_path = "tools/doxygen_syms.txt"
 
     # Write the result to the output file
     with open(output_file_path, 'w') as output_file:
