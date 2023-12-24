@@ -1,5 +1,5 @@
-#ifndef CODE_8001F980_H
-#define CODE_8001F980_H
+#ifndef RENDER_PLAYER_H
+#define RENDER_PLAYER_H
 
 #include "types.h"
 #include "common_structs.h"

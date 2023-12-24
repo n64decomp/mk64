@@ -19,7 +19,7 @@
 #include "bomb_kart.h"
 #include "common_textures.h"
 #include "render_player.h"
-#include "code_80004740.h"
+#include "save.h"
 #include "hud_renderer.h"
 #include "code_80071F00.h"
 #include "code_80091750.h"

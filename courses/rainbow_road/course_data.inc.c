@@ -5,7 +5,7 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
-#include <code_80004740.h>
+#include <save.h>
 
 #include <courses/rainbow_road/course_displaylists.inc.h>
 

@@ -5,7 +5,7 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
-#include <code_80004740.h>
+#include <save.h>
 
 #include <courses/yoshi_valley/course_displaylists.inc.h>
 

@@ -6,7 +6,7 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
-#include "code_80004740.h"
+#include "save.h"
 
 extern Gfx d_course_koopa_troopa_beach_dl_0[];
 extern Gfx d_course_koopa_troopa_beach_dl_48[];

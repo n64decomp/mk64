@@ -47,7 +47,7 @@ segments:
       - [0x35B0, c, code_800029B0]
       - [0x4150, c, profiler]
       - [0x4CC0, c, crash_screen]
-      - [0x5340, c, code_80004740]
+      - [0x5340, c, save]
       - [0x5AF0, c, staff_ghosts]
       - [0x6BB0, asm, unused_overflow_check]
       - [0x6BD0, c, code_80005FD0]
