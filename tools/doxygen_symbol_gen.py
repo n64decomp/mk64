@@ -20,11 +20,11 @@ def process_map_file(map_file_path):
                 
                 # Ensure there are enough tokens to extract address and function name
                 if len(tokens) >= 2:
-                    address = f"0x{tokens[0][2:].upper()}"
+                    address = f"0x{int(tokens[0][2:].upper(), base=16):08X}"
                     function_name = tokens[-1]
 
                     # Format the information into the Doxygen style
-                    result += f"{function_name} | {address}\n"
+                    result += f"[{function_name}](@ref {function_name}) | {address}\n"
 
     result += (
         "\n"
