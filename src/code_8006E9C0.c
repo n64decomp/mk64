@@ -996,7 +996,7 @@ void func_80070780(void) {
     s32 var_s3;
 
     switch (gCurrentCourseId) {
-    case 0:
+    case COURSE_MARIO_RACEWAY:
         if (gGamestate != 9) {
             if (gModeSelection == 0) {
                 func_80070714();
@@ -1007,7 +1007,7 @@ void func_80070780(void) {
             }
         }
         break;
-    case 2:
+    case COURSE_BOWSER_CASTLE:
         gNumActiveThwomps = NUM_THWOMPS_100CC_EXTRA;
         gThowmpSpawnList = gThwompSpawns100CCExtra;
         switch (gCCSelection) {                     /* switch 1; irregular */
@@ -1053,7 +1053,7 @@ void func_80070780(void) {
             delete_object(&D_8018C030[var_s3]);
         }
         break;
-    case 3:
+    case COURSE_BANSHEE_BOARDWALK:
         if (gGamestate != 9) {
             temp_s0 = D_80183EA0[0];
             init_texture_object(temp_s0, d_course_banshee_boardwalk_bat_tlut, *d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
@@ -1064,7 +1064,7 @@ void func_80070780(void) {
             func_800723A4(D_80183EA0[2], 0);
         }
         break;
-    case 4:
+    case COURSE_YOSHI_VALLEY:
         for (var_s3 = 0; var_s3 < 4; var_s3++) {
             func_800723A4(D_80183EA0[var_s3], 0);
         }
@@ -1081,7 +1081,7 @@ void func_80070780(void) {
             }
         }
         break;
-    case 5:
+    case COURSE_FRAPPE_SNOWLAND:
         for (var_s3 = 0; var_s3 < NUM_SNOWFLAKES; var_s3++) {
             find_unused_obj_index(&D_8018C1B0[var_s3]);
         }
@@ -1101,7 +1101,7 @@ void func_80070780(void) {
             }
         }
         break;
-    case 6:
+    case COURSE_KOOPA_BEACH:
         if (gGamestate != 9) {
             for (var_s3 = 0; var_s3 < NUM_CRABS; var_s3++) {
                 temp_s0 = D_80183EA0[var_s3];
@@ -1123,7 +1123,7 @@ void func_80070780(void) {
             }
         }
         break;
-    case 7:
+    case COURSE_ROYAL_RACEWAY:
         if (gGamestate != 9) {
             if (gModeSelection == 0) {
                 func_80070714();
@@ -1134,7 +1134,7 @@ void func_80070780(void) {
             }
         }
         break;
-    case 8:
+    case COURSE_LUIGI_RACEWAY:
         if (gGamestate != 9) {
             if (gModeSelection == 0) {
                 func_80070714();
@@ -1147,7 +1147,7 @@ void func_80070780(void) {
             }
         }
         break;
-    case 9:
+    case COURSE_MOO_MOO_FARM:
         if (gGamestate != 9) {
             if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == (s32) 2))) {
                 switch (gCCSelection) {             /* switch 2; irregular */
@@ -1203,7 +1203,7 @@ void func_80070780(void) {
             }
         }
         break;
-    case 11:
+    case COURSE_KALAMARI_DESERT:
         if (gGamestate != 9) {
             find_unused_obj_index(&D_8018CF10);
             func_800723A4(D_8018CF10, 0);
@@ -1218,12 +1218,12 @@ void func_80070780(void) {
             }
         }
         break;
-    case 12:
+    case COURSE_SHERBET_LAND:
         for (var_s3 = 0; var_s3 < NUM_PENGUINS; var_s3++) {
             func_800723A4(D_80183EA0[var_s3], 0);
         }
         break;
-    case 13:
+    case COURSE_RAINBOW_ROAD:
         if (gGamestate != 9) {
             for (var_s3 = 0; var_s3 < NUM_NEON_SIGNS; var_s3++) {
                 func_800723A4(D_80183EA0[var_s3], 0);
@@ -1233,7 +1233,7 @@ void func_80070780(void) {
             }
         }
         break;
-    case 18:
+    case COURSE_DK_JUNGLE:
         for (var_s3 = 0; var_s3 < NUM_TORCHES; var_s3++) {
             func_800770F0(var_s3);
             // wtf?
