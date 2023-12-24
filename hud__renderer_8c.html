@@ -82,8 +82,7 @@ $(document).ready(function(){initNavTree('hud__renderer_8c.html',''); initResiza
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">hud_renderer.c File Reference</div>  </div>
 </div><!--header-->
@@ -105,11 +104,15 @@ $(document).ready(function(){initNavTree('hud__renderer_8c.html',''); initResiza
 <code>#include &quot;<a class="el" href="common__textures_8h_source.html">common_textures.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__8001F980_8h_source.html">code_8001F980.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__80004740_8h_source.html">code_80004740.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="code__80005FD0_8h_source.html">code_80005FD0.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="code__80057C60_8h_source.html">code_80057C60.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="code__8006E9C0_8h_source.html">code_8006E9C0.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="hud__renderer_8h_source.html">hud_renderer.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__80071F00_8h_source.html">code_80071F00.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__80091750_8h_source.html">code_80091750.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="collision_8h_source.html">collision.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="menus_8h_source.html">menus.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__80086E70_8h_source.html">code_80086E70.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__800029B0_8h_source.html">code_800029B0.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="data__800E45C0_8h_source.html">src/data/data_800E45C0.h</a>&quot;</code><br />
@@ -176,16 +179,26 @@ Functions</h2></td></tr>
 <tr class="separator:a75c1f30740b7f52db518a274df7c0f08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc562f0a231c2d09f6d99dd082eacef1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#adc562f0a231c2d09f6d99dd082eacef1">func_8004477C</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *texture, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
 <tr class="separator:adc562f0a231c2d09f6d99dd082eacef1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace17844cb3a8e3b2060b310b923b38ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ace17844cb3a8e3b2060b310b923b38ee">func_80044924</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *texture, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
+<tr class="separator:ace17844cb3a8e3b2060b310b923b38ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53ac825fe01e36aed6a854a76b998f8e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a53ac825fe01e36aed6a854a76b998f8e">func_80044AB8</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *texture, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
 <tr class="separator:a53ac825fe01e36aed6a854a76b998f8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01f1c93f475b407a8e57888c6a6dd45b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a01f1c93f475b407a8e57888c6a6dd45b">func_80044BF8</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *texture, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
 <tr class="separator:a01f1c93f475b407a8e57888c6a6dd45b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e222e4426a0c151a8580e2982336170"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a7e222e4426a0c151a8580e2982336170">func_80044DA0</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *image, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
+<tr class="separator:a7e222e4426a0c151a8580e2982336170"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81be2b87d808633d8fe563c777fe1b0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a81be2b87d808633d8fe563c777fe1b0c">func_80044F34</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *image, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
+<tr class="separator:a81be2b87d808633d8fe563c777fe1b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae71ebbe68e62fb7ea654ffc848fad261"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ae71ebbe68e62fb7ea654ffc848fad261">func_800450C8</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *image, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
+<tr class="separator:ae71ebbe68e62fb7ea654ffc848fad261"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a3e9d3da5a6ac97b84b553fdc5d7d59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a8a3e9d3da5a6ac97b84b553fdc5d7d59">rsp_load_texture</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *texture, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
 <tr class="separator:a8a3e9d3da5a6ac97b84b553fdc5d7d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a96f71e7de2b291bd06dd92188b107b53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a96f71e7de2b291bd06dd92188b107b53">rsp_load_texture_mask</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *texture, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> someMask)</td></tr>
 <tr class="separator:a96f71e7de2b291bd06dd92188b107b53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76dfbc0953da5702d5ce5c3c0fd53f74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a76dfbc0953da5702d5ce5c3c0fd53f74">func_80045614</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *texture, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
 <tr class="separator:a76dfbc0953da5702d5ce5c3c0fd53f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e7a6bea4772082ac35d4148288775ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a8e7a6bea4772082ac35d4148288775ce">func_80045738</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *image1, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *image2, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
+<tr class="separator:a8e7a6bea4772082ac35d4148288775ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f7b6f198a3065bb9ecb40934bab4ad8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a5f7b6f198a3065bb9ecb40934bab4ad8">func_80045B2C</a> (Vtx *arg0)</td></tr>
 <tr class="separator:a5f7b6f198a3065bb9ecb40934bab4ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc71ff0d604d20aef6a9ba8ffa4e31ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#adc71ff0d604d20aef6a9ba8ffa4e31ca">func_80045B74</a> (Vtx *arg0)</td></tr>
@@ -516,6 +529,8 @@ Functions</h2></td></tr>
 <tr class="separator:aff2039298737b1d02de7c19da0b1d49a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade8453da908f090119a25e30fe66bcbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ade8453da908f090119a25e30fe66bcbe">func_8004BB34</a> (void)</td></tr>
 <tr class="separator:ade8453da908f090119a25e30fe66bcbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f077b9b03b813485f0c45fd516a346c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a0f077b9b03b813485f0c45fd516a346c">func_8004BB3C</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg2, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg3, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> arg4)</td></tr>
+<tr class="separator:a0f077b9b03b813485f0c45fd516a346c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa64d68c1cca9c2bb9e8641dd40423d12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#aa64d68c1cca9c2bb9e8641dd40423d12">func_8004BD14</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> x, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> y, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> width, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> height, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> alpha, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *texture1, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *texture2)</td></tr>
 <tr class="separator:aa64d68c1cca9c2bb9e8641dd40423d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca52ec6f647b303e0bb33dbfe7d93e23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#aca52ec6f647b303e0bb33dbfe7d93e23">func_8004C024</a> (<a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> arg0, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> arg1, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> arg2, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> red, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> green, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> blue, <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> alpha)</td></tr>
@@ -582,8 +597,8 @@ Functions</h2></td></tr>
 <tr class="separator:af36925e1c46773c3cf1f0b96df5019e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1eb71bce0922e019fe9c265ab8b5dd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ae1eb71bce0922e019fe9c265ab8b5dd6">func_8004D0CC</a> (void)</td></tr>
 <tr class="separator:ae1eb71bce0922e019fe9c265ab8b5dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fc2b9dfc41cea768a4ff2ff9afb1e07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> Gfx *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a8fc2b9dfc41cea768a4ff2ff9afb1e07">func_8004D0D4</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *texture, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg4, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
-<tr class="separator:a8fc2b9dfc41cea768a4ff2ff9afb1e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dca29732ec54164fbe516b8c43da687"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a0dca29732ec54164fbe516b8c43da687">func_8004D0D4</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *texture, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg4, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
+<tr class="separator:a0dca29732ec54164fbe516b8c43da687"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a752e88016d70da231c58ee04aa2b236a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a752e88016d70da231c58ee04aa2b236a">func_8004D210</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *texture, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg3, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg4, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg5, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg6, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg8, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg9, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
 <tr class="separator:a752e88016d70da231c58ee04aa2b236a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae29301bb23161e8876c9a7a7ceb7af7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ae29301bb23161e8876c9a7a7ceb7af7d">func_8004D37C</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *texture, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg3, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg4, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg5, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg6, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> width, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg8, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg9, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> height)</td></tr>
@@ -672,14 +687,28 @@ Functions</h2></td></tr>
 <tr class="separator:ac3aa31afb8462c8e823edd0cf61d1db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af705c0d2be74fa2daf88ce8614600f04"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#af705c0d2be74fa2daf88ce8614600f04">func_8004E78C</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> playerId)</td></tr>
 <tr class="separator:af705c0d2be74fa2daf88ce8614600f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2dbb3b4e5493a2c2956eee319a1d9a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ab2dbb3b4e5493a2c2956eee319a1d9a0">func_8004E800</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> playerId)</td></tr>
+<tr class="separator:ab2dbb3b4e5493a2c2956eee319a1d9a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6953a8d5781673902633593066be252a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a6953a8d5781673902633593066be252a">func_8004E998</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> playerId)</td></tr>
+<tr class="separator:a6953a8d5781673902633593066be252a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae6ed99340292be6e5e195650f87caa4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ae6ed99340292be6e5e195650f87caa4f">func_8004EB30</a> (<a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
 <tr class="separator:ae6ed99340292be6e5e195650f87caa4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa47aeace70f0c84226be78109628f51"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#aaa47aeace70f0c84226be78109628f51">func_8004EB38</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> playerId)</td></tr>
 <tr class="separator:aaa47aeace70f0c84226be78109628f51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97b907a1a55127693112e0541494f38f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a97b907a1a55127693112e0541494f38f">func_8004ED40</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
 <tr class="separator:a97b907a1a55127693112e0541494f38f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc78af0ac81b571720f1dbaa15475bb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#adc78af0ac81b571720f1dbaa15475bb8">func_8004EE54</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
+<tr class="separator:adc78af0ac81b571720f1dbaa15475bb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa192f4b314faad1c8a4f27ee3152ebe6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#aa192f4b314faad1c8a4f27ee3152ebe6">func_8004EF9C</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
+<tr class="separator:aa192f4b314faad1c8a4f27ee3152ebe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89a08db37bd0664cba25b61c695dbaab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a89a08db37bd0664cba25b61c695dbaab">func_8004F020</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
+<tr class="separator:a89a08db37bd0664cba25b61c695dbaab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a863e3cfbfc8514c990b3bd44fd5e2abc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a863e3cfbfc8514c990b3bd44fd5e2abc">func_8004F3E4</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
+<tr class="separator:a863e3cfbfc8514c990b3bd44fd5e2abc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59f65c26d644b29f30bb570bbc5fa4e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a59f65c26d644b29f30bb570bbc5fa4e1">func_8004F674</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> *arg0, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1)</td></tr>
 <tr class="separator:a59f65c26d644b29f30bb570bbc5fa4e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ac9d5d41211e3821c42829fe51b4d77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a2ac9d5d41211e3821c42829fe51b4d77">func_8004F6D0</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
+<tr class="separator:a2ac9d5d41211e3821c42829fe51b4d77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31f36620a3e361277b5855635c1aceba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a31f36620a3e361277b5855635c1aceba">func_8004F774</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1)</td></tr>
 <tr class="separator:a31f36620a3e361277b5855635c1aceba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab24628140290caa0645b1b33cd4ba8a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ab24628140290caa0645b1b33cd4ba8a7">print_timer</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg2)</td></tr>
@@ -698,6 +727,8 @@ Functions</h2></td></tr>
 <tr class="separator:a2c222aeebae984dfb62f7692e04e0c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad843eda1ada08663956d8e9a18efab3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ad843eda1ada08663956d8e9a18efab3c">func_800507D8</a> (<a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> bombIndex, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> *arg1, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> *arg2)</td></tr>
 <tr class="separator:ad843eda1ada08663956d8e9a18efab3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a669063fc0fc2bc5dadc704906a9cf880"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a669063fc0fc2bc5dadc704906a9cf880">func_800508C0</a> (void)</td></tr>
+<tr class="separator:a669063fc0fc2bc5dadc704906a9cf880"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a742c49e38b1be564b29023711aef1eea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a742c49e38b1be564b29023711aef1eea">func_80050C68</a> (void)</td></tr>
 <tr class="separator:a742c49e38b1be564b29023711aef1eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8995af8c737460d503e580558ed3307"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#aa8995af8c737460d503e580558ed3307">func_80051638</a> (<a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
@@ -706,6 +737,12 @@ Functions</h2></td></tr>
 <tr class="separator:a68bc490d1fd1b8de9b80e6b613938099"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8061faa4a6732e64327ce4794a8c9f74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a8061faa4a6732e64327ce4794a8c9f74">func_800518F8</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> objectIndex, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> arg1, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> arg2)</td></tr>
 <tr class="separator:a8061faa4a6732e64327ce4794a8c9f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62f4d79ca049faf6db97f0daa8541bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ac62f4d79ca049faf6db97f0daa8541bc">func_800519D4</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> objectIndex, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> arg1, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> arg2)</td></tr>
+<tr class="separator:ac62f4d79ca049faf6db97f0daa8541bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6603f469da43f588fae1d63555b5250c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a6603f469da43f588fae1d63555b5250c">func_80051ABC</a> (<a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> arg0, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1)</td></tr>
+<tr class="separator:a6603f469da43f588fae1d63555b5250c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5076afafc3e6fad82897fff313f766c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a5076afafc3e6fad82897fff313f766c7">func_80051C60</a> (<a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> arg0, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1)</td></tr>
+<tr class="separator:a5076afafc3e6fad82897fff313f766c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a825e8e731c52353ac39601ed2aef3eb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a825e8e731c52353ac39601ed2aef3eb1">func_80051EBC</a> (void)</td></tr>
 <tr class="separator:a825e8e731c52353ac39601ed2aef3eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a467430e13a9dbbed38a9454bfb98fd24"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a467430e13a9dbbed38a9454bfb98fd24">func_80051EF8</a> (void)</td></tr>
@@ -716,6 +753,10 @@ Functions</h2></td></tr>
 <tr class="separator:af8b0c2768b4b7052b73b67da5e51c25c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0b2597c5ad125d8c62911db932c9647"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ab0b2597c5ad125d8c62911db932c9647">func_80052080</a> (void)</td></tr>
 <tr class="separator:ab0b2597c5ad125d8c62911db932c9647"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7735a81a89d148e0546c7f424ced10f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ac7735a81a89d148e0546c7f424ced10f">func_800520C0</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
+<tr class="separator:ac7735a81a89d148e0546c7f424ced10f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0b2dd370f52249458e654780f1848cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ae0b2dd370f52249458e654780f1848cb">func_8005217C</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
+<tr class="separator:ae0b2dd370f52249458e654780f1848cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a919b2af05d4e4d41b9c870be74106ac1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a919b2af05d4e4d41b9c870be74106ac1">func_800523B8</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> objectIndex, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> arg2)</td></tr>
 <tr class="separator:a919b2af05d4e4d41b9c870be74106ac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f651575d536a825db07d1bf3a634f7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a4f651575d536a825db07d1bf3a634f7b">func_800524B4</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
@@ -724,8 +765,14 @@ Functions</h2></td></tr>
 <tr class="separator:a502e83a842d350ef0e1934d9230c6bcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acda60e8397a4e568bb0b1f20c31cdb58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#acda60e8397a4e568bb0b1f20c31cdb58">func_8005285C</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
 <tr class="separator:acda60e8397a4e568bb0b1f20c31cdb58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e2a5ab77a676f17415355cc9c4910f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a0e2a5ab77a676f17415355cc9c4910f3">func_800528EC</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
+<tr class="separator:a0e2a5ab77a676f17415355cc9c4910f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb3a6ba10452dc44d30b83931618753f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#acb3a6ba10452dc44d30b83931618753f">func_80052C60</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
+<tr class="separator:acb3a6ba10452dc44d30b83931618753f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31d221441caf529810b42913d7f291f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a31d221441caf529810b42913d7f291f7">func_80052D70</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> playerId)</td></tr>
 <tr class="separator:a31d221441caf529810b42913d7f291f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef3af66c21b92ca0195ba7dd641fbe48"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#aef3af66c21b92ca0195ba7dd641fbe48">func_80052E30</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
+<tr class="separator:aef3af66c21b92ca0195ba7dd641fbe48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1737dab7c2546a0f2bf39f79eab3378"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#af1737dab7c2546a0f2bf39f79eab3378">func_80052F20</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> cameraId)</td></tr>
 <tr class="separator:af1737dab7c2546a0f2bf39f79eab3378"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acef89d9936a60997060a18a76828dc2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#acef89d9936a60997060a18a76828dc2a">func_8005309C</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> cameraId)</td></tr>
@@ -740,6 +787,8 @@ Functions</h2></td></tr>
 <tr class="separator:a42d1ae42457409811a8f7f66097c4c74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a843dfa59e28f5e007017adccc5c67ad1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a843dfa59e28f5e007017adccc5c67ad1">func_800536C8</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> objectIndex)</td></tr>
 <tr class="separator:a843dfa59e28f5e007017adccc5c67ad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a483a4b18f946669f87ea2947f8ba43d2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a483a4b18f946669f87ea2947f8ba43d2">func_80053870</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> cameraId)</td></tr>
+<tr class="separator:a483a4b18f946669f87ea2947f8ba43d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac498e4af0235665db9a2603d2cbe3b81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ac498e4af0235665db9a2603d2cbe3b81">func_80053D74</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> objectIndex, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> vertexIndex)</td></tr>
 <tr class="separator:ac498e4af0235665db9a2603d2cbe3b81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4262aa876dea8ab843e6bd9a01045a8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a4262aa876dea8ab843e6bd9a01045a8b">func_80053E6C</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0)</td></tr>
@@ -762,6 +811,8 @@ Functions</h2></td></tr>
 <tr class="separator:a026ee5d79e81aae9d613c00dcdd68cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa67ae5e31f67c9da5d87279ddd25f770"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#aa67ae5e31f67c9da5d87279ddd25f770">func_80054AFC</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> objectIndex, <a class="el" href="common__structs_8h.html#a5290523279339ea495248ab3a36cb46e">Vec3f</a> arg1)</td></tr>
 <tr class="separator:aa67ae5e31f67c9da5d87279ddd25f770"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a108b5f93d4a4f068fa7655c287be1dda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a108b5f93d4a4f068fa7655c287be1dda">func_80054BE8</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> cameraId)</td></tr>
+<tr class="separator:a108b5f93d4a4f068fa7655c287be1dda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f2b5b3dff6221375f0f469a1f7ec6f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a3f2b5b3dff6221375f0f469a1f7ec6f1">func_80054D00</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> objectIndex, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> cameraId)</td></tr>
 <tr class="separator:a3f2b5b3dff6221375f0f469a1f7ec6f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4cc6cd2a49b1d0326a58852731afd0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#af4cc6cd2a49b1d0326a58852731afd0f">func_80054E10</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> objectIndex)</td></tr>
@@ -812,6 +863,10 @@ Functions</h2></td></tr>
 <tr class="separator:a8e28c4a9c2d391095eef7c7e87e0abff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3f099c2eadd6481bd5dbcfccfc6eada"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ae3f099c2eadd6481bd5dbcfccfc6eada">func_80056188</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> cameraId)</td></tr>
 <tr class="separator:ae3f099c2eadd6481bd5dbcfccfc6eada"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f12cf578f0abd9e0aaa3f9adc4fe324"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a4f12cf578f0abd9e0aaa3f9adc4fe324">func_800562E4</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg2)</td></tr>
+<tr class="separator:a4f12cf578f0abd9e0aaa3f9adc4fe324"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e71bb2a914da25c9767d72707665f58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a8e71bb2a914da25c9767d72707665f58">func_800563DC</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> objectIndex, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> cameraId, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg2)</td></tr>
+<tr class="separator:a8e71bb2a914da25c9767d72707665f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae68c0a495d3a72a312318d83604d4e34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ae68c0a495d3a72a312318d83604d4e34">func_8005669C</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> objectIndex, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg2)</td></tr>
 <tr class="separator:ae68c0a495d3a72a312318d83604d4e34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a852cb0a2e8c940add312fbaa9a0cb705"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a852cb0a2e8c940add312fbaa9a0cb705">func_800568A0</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> objectIndex, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> playerId)</td></tr>
@@ -890,55 +945,6 @@ Functions</h2></td></tr>
 <tr class="separator:a2d3cfe801dcca47ce0c5e23a43d4e207"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc0474563304b8e2a5b4be42265b60a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#acc0474563304b8e2a5b4be42265b60a0">func_80057BEC</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1, char *arg2, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> arg3)</td></tr>
 <tr class="separator:acc0474563304b8e2a5b4be42265b60a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:ad298cb87cc68b60a0469b3ad6106efbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ad298cb87cc68b60a0469b3ad6106efbc">D_801656B0</a></td></tr>
-<tr class="separator:ad298cb87cc68b60a0469b3ad6106efbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a342353a689b3d52c9a5f988608090a5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a342353a689b3d52c9a5f988608090a5f">D_80165708</a></td></tr>
-<tr class="separator:a342353a689b3d52c9a5f988608090a5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa359faa3057a1d5866fec2288de9e945"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#aa359faa3057a1d5866fec2288de9e945">D_80165710</a></td></tr>
-<tr class="separator:aa359faa3057a1d5866fec2288de9e945"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5f1f2025635ab7484b70da635e530c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ac5f1f2025635ab7484b70da635e530c0">D_8018D00C</a></td></tr>
-<tr class="separator:ac5f1f2025635ab7484b70da635e530c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a768d36f1deacc83428c8e217f00e5baa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a768d36f1deacc83428c8e217f00e5baa">D_8016579E</a></td></tr>
-<tr class="separator:a768d36f1deacc83428c8e217f00e5baa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a243a75e7ef0be2d20cd71e4324d3dfa8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a243a75e7ef0be2d20cd71e4324d3dfa8">D_8018CFEC</a></td></tr>
-<tr class="separator:a243a75e7ef0be2d20cd71e4324d3dfa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9da78ab735bc895545752d3d70bf7382"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a9da78ab735bc895545752d3d70bf7382">D_8018CFF4</a></td></tr>
-<tr class="separator:a9da78ab735bc895545752d3d70bf7382"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7a7623a767c4b5eb6b3d280170a11e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ac7a7623a767c4b5eb6b3d280170a11e0">D_8018D300</a></td></tr>
-<tr class="separator:ac7a7623a767c4b5eb6b3d280170a11e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76b3a2fc07e687aef48f48e1c36a9f2e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a76b3a2fc07e687aef48f48e1c36a9f2e">D_8018D308</a></td></tr>
-<tr class="separator:a76b3a2fc07e687aef48f48e1c36a9f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6291d05ecfaea9d82d33dce8bc7b9e3c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a6291d05ecfaea9d82d33dce8bc7b9e3c">D_8018D310</a></td></tr>
-<tr class="separator:a6291d05ecfaea9d82d33dce8bc7b9e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c55c6f8cae5a6eb8d155af767e8026a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a1c55c6f8cae5a6eb8d155af767e8026a">D_801657D0</a> []</td></tr>
-<tr class="separator:a1c55c6f8cae5a6eb8d155af767e8026a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9cfb1aae0aa48c4b3db2e5fe984875d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#aa9cfb1aae0aa48c4b3db2e5fe984875d">D_8018D228</a></td></tr>
-<tr class="separator:aa9cfb1aae0aa48c4b3db2e5fe984875d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f286ce4e9edc21bb1d433775f0c4e43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a7f286ce4e9edc21bb1d433775f0c4e43">D_800E52D0</a> []</td></tr>
-<tr class="separator:a7f286ce4e9edc21bb1d433775f0c4e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a10eabe7ee944c4ad4bd6cc34d2a4dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a5a10eabe7ee944c4ad4bd6cc34d2a4dc">D_8018D4BC</a></td></tr>
-<tr class="separator:a5a10eabe7ee944c4ad4bd6cc34d2a4dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb3738c027de7196ec230b0c47468baf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#aeb3738c027de7196ec230b0c47468baf">D_8018D4C0</a></td></tr>
-<tr class="separator:aeb3738c027de7196ec230b0c47468baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef84cecca19f6e24328a075d1d75e6e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#aef84cecca19f6e24328a075d1d75e6e5">D_801637C4</a></td></tr>
-<tr class="separator:aef84cecca19f6e24328a075d1d75e6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af82a0368e8e7ea94e6f125bc16346d74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#af82a0368e8e7ea94e6f125bc16346d74">D_801637E8</a></td></tr>
-<tr class="separator:af82a0368e8e7ea94e6f125bc16346d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af321fccf100e20630461ecc76a19910c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#af321fccf100e20630461ecc76a19910c">D_801637F0</a></td></tr>
-<tr class="separator:af321fccf100e20630461ecc76a19910c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f9d64fa40fcf6eb95cdf51999c3605a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a4f9d64fa40fcf6eb95cdf51999c3605a">D_80163814</a></td></tr>
-<tr class="separator:a4f9d64fa40fcf6eb95cdf51999c3605a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19eb0ac2c0898f49ef27ce46e2a4509f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a19eb0ac2c0898f49ef27ce46e2a4509f">D_80165908</a></td></tr>
-<tr class="separator:a19eb0ac2c0898f49ef27ce46e2a4509f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4a6575ddd38057902d86ee7e5bbc6fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ac4a6575ddd38057902d86ee7e5bbc6fe">D_800E5628</a> []</td></tr>
-<tr class="separator:ac4a6575ddd38057902d86ee7e5bbc6fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac511b3968cfdaad746e6383914050cf1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#ac511b3968cfdaad746e6383914050cf1">D_800E5655</a> [0x15]</td></tr>
-<tr class="separator:ac511b3968cfdaad746e6383914050cf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a99898eab423d50cac12421f9898d7d56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hud__renderer_8c.html#a99898eab423d50cac12421f9898d7d56">D_801657B8</a> [16]</td></tr>
-<tr class="separator:a99898eab423d50cac12421f9898d7d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>renders hud elements A more suitable name may be print.c </p>
@@ -1577,7 +1583,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a64a1b579023d24b6d3506bc42b13b837_icgraph.svg" width="303" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a64a1b579023d24b6d3506bc42b13b837_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -1635,7 +1641,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_aaa8db08f147bc6819144cf35c0e91935_icgraph.svg" width="304" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_aaa8db08f147bc6819144cf35c0e91935_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -1980,6 +1986,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_acaf2220348364da25cdda4a5761725af_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -2217,7 +2229,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a0c77f9a3b403c5058eb74fc5e304cc2c_icgraph.svg" width="654" height="367"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a0c77f9a3b403c5058eb74fc5e304cc2c_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -2383,6 +2395,46 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="ace17844cb3a8e3b2060b310b923b38ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace17844cb3a8e3b2060b310b923b38ee">&#9670;&nbsp;</a></span>func_80044924()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_80044924 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td>
+          <td class="paramname"><em>texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ace17844cb3a8e3b2060b310b923b38ee_icgraph.svg" width="651" height="316"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <a id="a53ac825fe01e36aed6a854a76b998f8e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a53ac825fe01e36aed6a854a76b998f8e">&#9670;&nbsp;</a></span>func_80044AB8()</h2>
 
@@ -2451,7 +2503,133 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a01f1c93f475b407a8e57888c6a6dd45b_icgraph.svg" width="475" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a01f1c93f475b407a8e57888c6a6dd45b_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a7e222e4426a0c151a8580e2982336170"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e222e4426a0c151a8580e2982336170">&#9670;&nbsp;</a></span>func_80044DA0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_80044DA0 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a7e222e4426a0c151a8580e2982336170_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a81be2b87d808633d8fe563c777fe1b0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81be2b87d808633d8fe563c777fe1b0c">&#9670;&nbsp;</a></span>func_80044F34()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_80044F34 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a81be2b87d808633d8fe563c777fe1b0c_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ae71ebbe68e62fb7ea654ffc848fad261"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae71ebbe68e62fb7ea654ffc848fad261">&#9670;&nbsp;</a></span>func_800450C8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_800450C8 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ae71ebbe68e62fb7ea654ffc848fad261_cgraph.svg" width="304" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ae71ebbe68e62fb7ea654ffc848fad261_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -2488,6 +2666,52 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8e7a6bea4772082ac35d4148288775ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e7a6bea4772082ac35d4148288775ce">&#9670;&nbsp;</a></span>func_80045738()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> void func_80045738 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td>
+          <td class="paramname"><em>image1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td>
+          <td class="paramname"><em>image2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>height</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a8e7a6bea4772082ac35d4148288775ce_icgraph.svg" width="471" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -10976,6 +11200,12 @@ Here is the call graph for this function:</div>
 <div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_af565e270db0433dee7cc4826301a4b3e_cgraph.svg" width="620" height="216"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_af565e270db0433dee7cc4826301a4b3e_icgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -12788,6 +13018,12 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_abbcc0557ad17056fd4f51ca82d6e6f04_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -13067,7 +13303,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a93a6f0b4f562c06bfb21f3825543ad19_icgraph.svg" width="304" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a93a6f0b4f562c06bfb21f3825543ad19_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -13369,7 +13605,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a803bc598fd1969dd1bf6daaa2d65b9ad_icgraph.svg" width="304" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a803bc598fd1969dd1bf6daaa2d65b9ad_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -13460,6 +13696,58 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0f077b9b03b813485f0c45fd516a346c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f077b9b03b813485f0c45fd516a346c">&#9670;&nbsp;</a></span>func_8004BB3C()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_8004BB3C </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a>&#160;</td>
+          <td class="paramname"><em>arg4</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a0f077b9b03b813485f0c45fd516a346c_icgraph.svg" width="478" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -13591,7 +13879,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_aca52ec6f647b303e0bb33dbfe7d93e23_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_aca52ec6f647b303e0bb33dbfe7d93e23_icgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -13661,7 +13949,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ae284f32d0a5c7f49c8655e3626463e1c_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ae284f32d0a5c7f49c8655e3626463e1c_icgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -14266,6 +14554,12 @@ Here is the caller graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a46a461873fe58b8c30a4e8bf7e16caac_cgraph.svg" width="651" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a46a461873fe58b8c30a4e8bf7e16caac_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -15143,14 +15437,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a8fc2b9dfc41cea768a4ff2ff9afb1e07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fc2b9dfc41cea768a4ff2ff9afb1e07">&#9670;&nbsp;</a></span>func_8004D0D4()</h2>
+<a id="a0dca29732ec54164fbe516b8c43da687"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dca29732ec54164fbe516b8c43da687">&#9670;&nbsp;</a></span>func_8004D0D4()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> Gfx* func_8004D0D4 </td>
+          <td class="memname"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> void func_8004D0D4 </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
           <td class="paramname"><em>arg0</em>, </td>
@@ -15195,13 +15489,13 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a8fc2b9dfc41cea768a4ff2ff9afb1e07_cgraph.svg" width="480" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a0dca29732ec54164fbe516b8c43da687_cgraph.svg" width="480" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a8fc2b9dfc41cea768a4ff2ff9afb1e07_icgraph.svg" width="311" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a0dca29732ec54164fbe516b8c43da687_icgraph.svg" width="311" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -15380,6 +15674,12 @@ Here is the call graph for this function:</div>
 <div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ae29301bb23161e8876c9a7a7ceb7af7d_cgraph.svg" width="479" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ae29301bb23161e8876c9a7a7ceb7af7d_icgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -15466,6 +15766,12 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a639ce63bbb65fcb5acef68a9354a4de7_cgraph.svg" width="478" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a639ce63bbb65fcb5acef68a9354a4de7_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -17361,6 +17667,66 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="ab2dbb3b4e5493a2c2956eee319a1d9a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2dbb3b4e5493a2c2956eee319a1d9a0">&#9670;&nbsp;</a></span>func_8004E800()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_8004E800 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>playerId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ab2dbb3b4e5493a2c2956eee319a1d9a0_cgraph.svg" width="100%" height="462"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ab2dbb3b4e5493a2c2956eee319a1d9a0_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a6953a8d5781673902633593066be252a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6953a8d5781673902633593066be252a">&#9670;&nbsp;</a></span>func_8004E998()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_8004E998 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>playerId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a6953a8d5781673902633593066be252a_cgraph.svg" width="100%" height="462"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a6953a8d5781673902633593066be252a_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
 <a id="ae6ed99340292be6e5e195650f87caa4f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae6ed99340292be6e5e195650f87caa4f">&#9670;&nbsp;</a></span>func_8004EB30()</h2>
 
@@ -17445,6 +17811,126 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="adc78af0ac81b571720f1dbaa15475bb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc78af0ac81b571720f1dbaa15475bb8">&#9670;&nbsp;</a></span>func_8004EE54()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_8004EE54 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg0</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_adc78af0ac81b571720f1dbaa15475bb8_cgraph.svg" width="648" height="240"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_adc78af0ac81b571720f1dbaa15475bb8_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="aa192f4b314faad1c8a4f27ee3152ebe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa192f4b314faad1c8a4f27ee3152ebe6">&#9670;&nbsp;</a></span>func_8004EF9C()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_8004EF9C </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg0</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_aa192f4b314faad1c8a4f27ee3152ebe6_cgraph.svg" width="650" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_aa192f4b314faad1c8a4f27ee3152ebe6_icgraph.svg" width="304" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a89a08db37bd0664cba25b61c695dbaab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89a08db37bd0664cba25b61c695dbaab">&#9670;&nbsp;</a></span>func_8004F020()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_8004F020 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg0</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a89a08db37bd0664cba25b61c695dbaab_cgraph.svg" width="100%" height="366"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a89a08db37bd0664cba25b61c695dbaab_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a863e3cfbfc8514c990b3bd44fd5e2abc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a863e3cfbfc8514c990b3bd44fd5e2abc">&#9670;&nbsp;</a></span>func_8004F3E4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_8004F3E4 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg0</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a863e3cfbfc8514c990b3bd44fd5e2abc_cgraph.svg" width="302" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a863e3cfbfc8514c990b3bd44fd5e2abc_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
 <a id="a59f65c26d644b29f30bb570bbc5fa4e1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a59f65c26d644b29f30bb570bbc5fa4e1">&#9670;&nbsp;</a></span>func_8004F674()</h2>
 
@@ -17470,6 +17956,42 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a59f65c26d644b29f30bb570bbc5fa4e1_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a2ac9d5d41211e3821c42829fe51b4d77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ac9d5d41211e3821c42829fe51b4d77">&#9670;&nbsp;</a></span>func_8004F6D0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_8004F6D0 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg0</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a2ac9d5d41211e3821c42829fe51b4d77_cgraph.svg" width="303" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a2ac9d5d41211e3821c42829fe51b4d77_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -17798,6 +18320,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a2c222aeebae984dfb62f7692e04e0c2f_icgraph.svg" width="303" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>
@@ -17836,6 +18364,30 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ad843eda1ada08663956d8e9a18efab3c_icgraph.svg" width="304" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a669063fc0fc2bc5dadc704906a9cf880"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a669063fc0fc2bc5dadc704906a9cf880">&#9670;&nbsp;</a></span>func_800508C0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_800508C0 </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a669063fc0fc2bc5dadc704906a9cf880_cgraph.svg" width="648" height="139"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -17962,6 +18514,138 @@ Here is the call graph for this function:</div>
 <div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a8061faa4a6732e64327ce4794a8c9f74_cgraph.svg" width="620" height="136"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a8061faa4a6732e64327ce4794a8c9f74_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ac62f4d79ca049faf6db97f0daa8541bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62f4d79ca049faf6db97f0daa8541bc">&#9670;&nbsp;</a></span>func_800519D4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_800519D4 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>objectIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td>
+          <td class="paramname"><em>arg1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td>
+          <td class="paramname"><em>arg2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ac62f4d79ca049faf6db97f0daa8541bc_cgraph.svg" width="622" height="179"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ac62f4d79ca049faf6db97f0daa8541bc_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a6603f469da43f588fae1d63555b5250c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6603f469da43f588fae1d63555b5250c">&#9670;&nbsp;</a></span>func_80051ABC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_80051ABC </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td>
+          <td class="paramname"><em>arg0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a6603f469da43f588fae1d63555b5250c_cgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a6603f469da43f588fae1d63555b5250c_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a5076afafc3e6fad82897fff313f766c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5076afafc3e6fad82897fff313f766c7">&#9670;&nbsp;</a></span>func_80051C60()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_80051C60 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td>
+          <td class="paramname"><em>arg0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a5076afafc3e6fad82897fff313f766c7_cgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a5076afafc3e6fad82897fff313f766c7_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -17983,7 +18667,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a825e8e731c52353ac39601ed2aef3eb1_cgraph.svg" width="306" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a825e8e731c52353ac39601ed2aef3eb1_cgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
@@ -18013,7 +18697,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a467430e13a9dbbed38a9454bfb98fd24_cgraph.svg" width="304" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a467430e13a9dbbed38a9454bfb98fd24_cgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
@@ -18043,7 +18727,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_aa24d319ba792bdbc5b99a914ec15cda5_cgraph.svg" width="306" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_aa24d319ba792bdbc5b99a914ec15cda5_cgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
@@ -18073,7 +18757,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_af8b0c2768b4b7052b73b67da5e51c25c_cgraph.svg" width="303" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_af8b0c2768b4b7052b73b67da5e51c25c_cgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
@@ -18103,13 +18787,67 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ab0b2597c5ad125d8c62911db932c9647_cgraph.svg" width="303" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ab0b2597c5ad125d8c62911db932c9647_cgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ab0b2597c5ad125d8c62911db932c9647_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ac7735a81a89d148e0546c7f424ced10f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7735a81a89d148e0546c7f424ced10f">&#9670;&nbsp;</a></span>func_800520C0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_800520C0 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg0</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ac7735a81a89d148e0546c7f424ced10f_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="ae0b2dd370f52249458e654780f1848cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0b2dd370f52249458e654780f1848cb">&#9670;&nbsp;</a></span>func_8005217C()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_8005217C </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg0</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ae0b2dd370f52249458e654780f1848cb_cgraph.svg" width="100%" height="457"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ae0b2dd370f52249458e654780f1848cb_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -18242,6 +18980,72 @@ Here is the call graph for this function:</div>
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_acda60e8397a4e568bb0b1f20c31cdb58_cgraph.svg" width="100%" height="397"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_acda60e8397a4e568bb0b1f20c31cdb58_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a0e2a5ab77a676f17415355cc9c4910f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e2a5ab77a676f17415355cc9c4910f3">&#9670;&nbsp;</a></span>func_800528EC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_800528EC </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg0</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a0e2a5ab77a676f17415355cc9c4910f3_cgraph.svg" width="100%" height="407"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a0e2a5ab77a676f17415355cc9c4910f3_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="acb3a6ba10452dc44d30b83931618753f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb3a6ba10452dc44d30b83931618753f">&#9670;&nbsp;</a></span>func_80052C60()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_80052C60 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg0</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_acb3a6ba10452dc44d30b83931618753f_cgraph.svg" width="100%" height="413"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_acb3a6ba10452dc44d30b83931618753f_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -18264,6 +19068,42 @@ Here is the call graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a31d221441caf529810b42913d7f291f7_cgraph.svg" width="100%" height="397"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a31d221441caf529810b42913d7f291f7_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="aef3af66c21b92ca0195ba7dd641fbe48"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef3af66c21b92ca0195ba7dd641fbe48">&#9670;&nbsp;</a></span>func_80052E30()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_80052E30 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg0</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_aef3af66c21b92ca0195ba7dd641fbe48_cgraph.svg" width="100%" height="397"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_aef3af66c21b92ca0195ba7dd641fbe48_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -18410,6 +19250,12 @@ Here is the call graph for this function:</div>
 <div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a533e692fbd1c94f80df8ea4e8c05897e_cgraph.svg" width="584" height="88"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a533e692fbd1c94f80df8ea4e8c05897e_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
 
 </div>
 </div>
@@ -18431,7 +19277,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a42d1ae42457409811a8f7f66097c4c74_icgraph.svg" width="303" height="38"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a42d1ae42457409811a8f7f66097c4c74_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -18456,6 +19302,42 @@ Here is the caller graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a843dfa59e28f5e007017adccc5c67ad1_cgraph.svg" width="100%" height="492"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a843dfa59e28f5e007017adccc5c67ad1_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a483a4b18f946669f87ea2947f8ba43d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a483a4b18f946669f87ea2947f8ba43d2">&#9670;&nbsp;</a></span>func_80053870()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_80053870 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>cameraId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a483a4b18f946669f87ea2947f8ba43d2_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a483a4b18f946669f87ea2947f8ba43d2_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -18852,6 +19734,42 @@ Here is the caller graph for this function:</div>
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_aa67ae5e31f67c9da5d87279ddd25f770_cgraph.svg" width="100%" height="467"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_aa67ae5e31f67c9da5d87279ddd25f770_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a108b5f93d4a4f068fa7655c287be1dda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a108b5f93d4a4f068fa7655c287be1dda">&#9670;&nbsp;</a></span>func_80054BE8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_80054BE8 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>cameraId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a108b5f93d4a4f068fa7655c287be1dda_cgraph.svg" width="100%" height="486"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a108b5f93d4a4f068fa7655c287be1dda_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -19681,6 +20599,98 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a4f12cf578f0abd9e0aaa3f9adc4fe324"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f12cf578f0abd9e0aaa3f9adc4fe324">&#9670;&nbsp;</a></span>func_800562E4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_800562E4 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a4f12cf578f0abd9e0aaa3f9adc4fe324_cgraph.svg" width="100%" height="445"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a4f12cf578f0abd9e0aaa3f9adc4fe324_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
+<a id="a8e71bb2a914da25c9767d72707665f58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e71bb2a914da25c9767d72707665f58">&#9670;&nbsp;</a></span>func_800563DC()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void func_800563DC </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>objectIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>cameraId</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td>
+          <td class="paramname"><em>arg2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a8e71bb2a914da25c9767d72707665f58_cgraph.svg" width="100%" height="571"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_a8e71bb2a914da25c9767d72707665f58_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div>
+
+</div>
+</div>
 <a id="ae68c0a495d3a72a312318d83604d4e34"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae68c0a495d3a72a312318d83604d4e34">&#9670;&nbsp;</a></span>func_8005669C()</h2>
 
@@ -19885,7 +20895,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_af1f6deab6c7bbd15ca7ebf1802911c74_cgraph.svg" width="100%" height="493"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_af1f6deab6c7bbd15ca7ebf1802911c74_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <div class="dynheader">
@@ -19915,7 +20925,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_abefc70b83784d524432d3301a08cfb0d_cgraph.svg" width="100%" height="441"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_abefc70b83784d524432d3301a08cfb0d_cgraph.svg" width="100%" height="454"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 
@@ -21069,513 +22079,6 @@ Here is the caller graph for this function:</div>
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="hud__renderer_8c_ad92ac25c074d6586a5b7c7331fccdb21_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a7f286ce4e9edc21bb1d433775f0c4e43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f286ce4e9edc21bb1d433775f0c4e43">&#9670;&nbsp;</a></span>D_800E52D0</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> D_800E52D0[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac4a6575ddd38057902d86ee7e5bbc6fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4a6575ddd38057902d86ee7e5bbc6fe">&#9670;&nbsp;</a></span>D_800E5628</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> D_800E5628[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac511b3968cfdaad746e6383914050cf1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac511b3968cfdaad746e6383914050cf1">&#9670;&nbsp;</a></span>D_800E5655</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> D_800E5655[0x15]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aef84cecca19f6e24328a075d1d75e6e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef84cecca19f6e24328a075d1d75e6e5">&#9670;&nbsp;</a></span>D_801637C4</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> D_801637C4</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af82a0368e8e7ea94e6f125bc16346d74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af82a0368e8e7ea94e6f125bc16346d74">&#9670;&nbsp;</a></span>D_801637E8</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> D_801637E8</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af321fccf100e20630461ecc76a19910c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af321fccf100e20630461ecc76a19910c">&#9670;&nbsp;</a></span>D_801637F0</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> D_801637F0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4f9d64fa40fcf6eb95cdf51999c3605a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f9d64fa40fcf6eb95cdf51999c3605a">&#9670;&nbsp;</a></span>D_80163814</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> D_80163814</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad298cb87cc68b60a0469b3ad6106efbc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad298cb87cc68b60a0469b3ad6106efbc">&#9670;&nbsp;</a></span>D_801656B0</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> D_801656B0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a342353a689b3d52c9a5f988608090a5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a342353a689b3d52c9a5f988608090a5f">&#9670;&nbsp;</a></span>D_80165708</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> D_80165708</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa359faa3057a1d5866fec2288de9e945"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa359faa3057a1d5866fec2288de9e945">&#9670;&nbsp;</a></span>D_80165710</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> D_80165710</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a768d36f1deacc83428c8e217f00e5baa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a768d36f1deacc83428c8e217f00e5baa">&#9670;&nbsp;</a></span>D_8016579E</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> D_8016579E</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a99898eab423d50cac12421f9898d7d56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99898eab423d50cac12421f9898d7d56">&#9670;&nbsp;</a></span>D_801657B8</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> D_801657B8[16]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1c55c6f8cae5a6eb8d155af767e8026a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c55c6f8cae5a6eb8d155af767e8026a">&#9670;&nbsp;</a></span>D_801657D0</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> D_801657D0[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a19eb0ac2c0898f49ef27ce46e2a4509f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19eb0ac2c0898f49ef27ce46e2a4509f">&#9670;&nbsp;</a></span>D_80165908</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> D_80165908</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a243a75e7ef0be2d20cd71e4324d3dfa8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a243a75e7ef0be2d20cd71e4324d3dfa8">&#9670;&nbsp;</a></span>D_8018CFEC</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> D_8018CFEC</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9da78ab735bc895545752d3d70bf7382"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9da78ab735bc895545752d3d70bf7382">&#9670;&nbsp;</a></span>D_8018CFF4</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> D_8018CFF4</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac5f1f2025635ab7484b70da635e530c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5f1f2025635ab7484b70da635e530c0">&#9670;&nbsp;</a></span>D_8018D00C</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> D_8018D00C</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa9cfb1aae0aa48c4b3db2e5fe984875d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9cfb1aae0aa48c4b3db2e5fe984875d">&#9670;&nbsp;</a></span>D_8018D228</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> D_8018D228</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac7a7623a767c4b5eb6b3d280170a11e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7a7623a767c4b5eb6b3d280170a11e0">&#9670;&nbsp;</a></span>D_8018D300</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> D_8018D300</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a76b3a2fc07e687aef48f48e1c36a9f2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a76b3a2fc07e687aef48f48e1c36a9f2e">&#9670;&nbsp;</a></span>D_8018D308</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> D_8018D308</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a6291d05ecfaea9d82d33dce8bc7b9e3c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6291d05ecfaea9d82d33dce8bc7b9e3c">&#9670;&nbsp;</a></span>D_8018D310</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> D_8018D310</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5a10eabe7ee944c4ad4bd6cc34d2a4dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a10eabe7ee944c4ad4bd6cc34d2a4dc">&#9670;&nbsp;</a></span>D_8018D4BC</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>* D_8018D4BC</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aeb3738c027de7196ec230b0c47468baf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb3738c027de7196ec230b0c47468baf">&#9670;&nbsp;</a></span>D_8018D4C0</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>* D_8018D4C0</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
 
 </div>
 </div>
