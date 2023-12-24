@@ -5138,6 +5138,7 @@ Variable Name | Memory Address
 [__osEepPifRam](@ref __osEepPifRam) | 0x80197660
 [D_8019769C](@ref D_8019769C) | 0x8019769C
 [D_801976A0](@ref D_801976A0) | 0x801976A0
+[LeoDiskHandle](@ref LeoDiskHandle) | 0x80197850
 [__osDiskHandle](@ref __osDiskHandle) | 0x801978C0
 [(.main.noload))](@ref (.main.noload))) | 0x801978D0
 [(.racing)](@ref (.racing)) | 0x8028DF00

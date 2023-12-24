@@ -1,7 +1,5 @@
 # usr/bin/python3
 
-import re
-
 def process_map_file(map_file_path):
     result = (
         "# Memory Addresses\n"
@@ -29,7 +27,7 @@ def process_map_file(map_file_path):
 
                     function_name = tokens[-1]
 
-                    if re.match(r"L[0-9a-zA-Z]+", function_name):
+                    if function_name.startswith("L8"): # Ignore local labels
                         continue
 
                     # Format the information into the Doxygen style
