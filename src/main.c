@@ -29,7 +29,7 @@
 #include "code_80057C60.h"
 #include "profiler.h"
 #include "player_controller.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 #include "render_courses.h"
 #include "actors.h"
 #include "staff_ghosts.h"

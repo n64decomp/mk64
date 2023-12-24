@@ -49,10 +49,10 @@ index 02275b1..406739d 100644
              break;
          case 8:
              func_8001E0C4(camera, player, index);
-diff --git a/src/code_8001F980.c b/src/code_8001F980.c
+diff --git a/src/render_player.c b/src/render_player.c
 index 6b14e27..d10796b 100644
---- a/src/code_8001F980.c
-+++ b/src/code_8001F980.c
+--- a/src/render_player.c
++++ b/src/render_player.c
 @@ -65,6 +65,8 @@ void func_8001F9E4(Player *player, Camera *camera, s8 arg2) {
      }
  }

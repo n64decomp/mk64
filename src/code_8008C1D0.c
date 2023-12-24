@@ -10,7 +10,7 @@
 #include "kart_attributes.h"
 #include "waypoints.h"
 #include "code_80005FD0.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 #include "player_controller.h"
 #include "hud_renderer.h"
 #include "code_80057C60.h"

@@ -9,7 +9,7 @@
 #include "memory.h"
 #include "variables.h"
 #include "common_textures.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 #include "hud_renderer.h"
 #include "podium_ceremony_actors.h"
 #include "camera_junk.h"
