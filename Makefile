@@ -699,6 +699,7 @@ $(BUILD_DIR)/$(TARGET).hex: $(TARGET).z64
 
 $(BUILD_DIR)/$(TARGET).objdump: $(ELF) 
 	$(OBJDUMP) -D $< > $@
+	$(PYTHON) tools/doxygen_symbol_gen.py
 
 
 .PHONY: all clean distclean distclean_assets default diff test load
