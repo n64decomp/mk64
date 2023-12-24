@@ -3,7 +3,7 @@
 #include <defines.h>
 #include "global.h"
 
-#include "code_800B45E0.h"
+#include "save.h"
 
 #include "code_80091750.h"
 #include "menus.h"
