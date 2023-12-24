@@ -1578,7 +1578,7 @@ void func_802847CC(struct CinematicCamera *camera) {
     }
 
 #ifndef VERSION_EU
-    if (gCCSelection == 3) {
+    if (gCCSelection == CC_EXTRA) {
         sp2C = D_80286B34[D_800DC5E4];
     }
 #endif

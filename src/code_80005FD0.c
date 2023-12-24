@@ -831,7 +831,7 @@ void func_80007D04(s32 playerId, Player *player) {
     // Something wrong here. Maybe needs
    // var_v0 = 0;
     switch (gCCSelection) {
-        case 0:
+        case CC_50:
             var_v0 = 0;
             if (playerId == D_80163344[0]) {
                 var_v0 = 0x14;
@@ -3808,7 +3808,7 @@ void func_8000F628(void) {
     }
 
     D_8016347A = 0;
-    if (gCCSelection == 3) {
+    if (gCCSelection == CC_EXTRA) {
         D_8016347A = 1;
     }
 
@@ -5176,7 +5176,7 @@ void func_800139E4(f32 arg0, f32 arg1, s32 arg2, s32 arg3, VehicleStuff *vehicle
                 veh->someType = random_int(3);
             }
             veh->someMultiplierTheSequel = (f32) ((f64) (f32) (veh->someType - 1) * 0.6);
-            if (((gCCSelection > 0) || (gModeSelection == 1)) && (veh->someType == 2)) {
+            if (((gCCSelection > CC_50) || (gModeSelection == 1)) && (veh->someType == 2)) {
                 veh->someMultiplier = arg0;
             } else {
                 veh->someMultiplier = arg1;

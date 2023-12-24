@@ -1011,14 +1011,14 @@ void func_80070780(void) {
         gNumActiveThwomps = NUM_THWOMPS_100CC_EXTRA;
         gThowmpSpawnList = gThwompSpawns100CCExtra;
         switch (gCCSelection) {                     /* switch 1; irregular */
-        case 1:                                     /* switch 1 */
-        case 3:                                     /* switch 1 */
+        case CC_100:                                     /* switch 1 */
+        case CC_EXTRA:                                     /* switch 1 */
             break;
-        case 0:                                     /* switch 1 */
+        case CC_50:                                     /* switch 1 */
             gNumActiveThwomps = NUM_THWOMPS_50CC;
             gThowmpSpawnList = gThomwpSpawns50CC;
             break;
-        case 2:                                     /* switch 1 */
+        case CC_150:                                     /* switch 1 */
             gNumActiveThwomps = NUM_THWOMPS_150CC;
             gThowmpSpawnList = gThomwpSpawns150CC;
             break;
@@ -1151,7 +1151,7 @@ void func_80070780(void) {
         if (gGamestate != 9) {
             if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == (s32) 2))) {
                 switch (gCCSelection) {             /* switch 2; irregular */
-                case 0:                             /* switch 2 */
+                case CC_50:                             /* switch 2 */
                     D_8018D1C8 = 4;
                     D_8018D1D0 = 6;
                     D_8018D1D8 = 6;

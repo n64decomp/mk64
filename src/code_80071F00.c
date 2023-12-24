@@ -4720,7 +4720,7 @@ void func_8007D360(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].unk_0BE[2] = 0;
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
     gObjectList[objectIndex].unk_0B0 = 0;
-    if (gCCSelection < 2) {
+    if (gCCSelection < CC_150) {
        gObjectList[objectIndex].unk_034 = (random_int(4U) + 4.0);
     } else {
         gObjectList[objectIndex].unk_034 = (random_int(4U) + 5.0);
@@ -5000,7 +5000,7 @@ void func_8007E00C(s32 objectIndex) {
     case 4:
         func_8007278C(objectIndex, 0x000000D2);
         if (D_80165594 == 0) {
-            if (gCCSelection < 2) {
+            if (gCCSelection < CC_150) {
                 func_8007D714(1);
                 func_8007D714(1);
             } else {
