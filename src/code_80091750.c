@@ -8,6 +8,7 @@
 #include "code_800029B0.h"
 #include "code_80091750.h"
 #include "code_80005FD0.h"
+#include "code_8006E9C0.h"
 #include "menus.h"
 #include "save.h"
 #include "code_80057C60.h"
@@ -20,11 +21,15 @@
 #include "hud_renderer.h"
 #include "staff_ghosts.h"
 #include "common_textures.h"
+#include "textures.h"
 #include "math_util.h"
 #include "save_data.h"
 #include "podium_ceremony_actors.h"
 #include "skybox_and_splitscreen.h"
 #include "src/data/startup_logo.inc.h"
+#include "framebuffers.h"
+#include "racing/race_logic.h"
+#include "ending/code_80281C40.h"
 // TODO: Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
@@ -456,7 +461,7 @@ char *gDebugCourseNames[] = {
     "doughnut",
 };
 
-const u8 gPerCupIndexByCourseId[] = {
+const s8 gPerCupIndexByCourseId[] = {
     3, 2, 3, 2,
     1, 1, 2, 2,
     0, 1, 0, 3,
@@ -467,7 +472,7 @@ const u8 gPerCupIndexByCourseId[] = {
 const s8 D_800EFD64[] = { 0, 1, 4, 3, 5, 6, 2, 7 };
 
 // Maps course IDs (as defined in the COURSES enum) to the cup they belong to
-u8 gCupSelectionByCourseId[] = {
+s8 gCupSelectionByCourseId[] = {
       FLOWER_CUP,   FLOWER_CUP,     STAR_CUP,  SPECIAL_CUP,
      SPECIAL_CUP,   FLOWER_CUP, MUSHROOM_CUP,     STAR_CUP,
     MUSHROOM_CUP, MUSHROOM_CUP,   FLOWER_CUP, MUSHROOM_CUP,
@@ -986,9 +991,6 @@ MkTexture *D_800E7AF8[] = {
     D_02000F00, D_02000F28, D_02000F50, D_02000F78,
     D_02000FA0, D_02000FC8, D_02000FF0, D_02001018,
     D_02001040, D_02001068, D_02001090, D_020010B8,
-};
-
-MkTexture *D_800E7CA8[] = {
     D_020010E0, D_02001108, D_02001130, D_02001158,
     D_02001180, D_020011A8, D_020011D0, D_020011F8,
     D_02001220, D_02001248, D_02001270, D_02001298,
@@ -1171,10 +1173,13 @@ MkTexture *D_800E82B4[] = {
 MkTexture *D_800E82C8[] = {
     D_02004BC4, D_02004BEC, D_02004C14, D_02004C3C,
     D_02004C64, D_02004C8C, D_02004CF0, D_02004D54,
-    D_02004DB8, D_02004E1C, D_02004E80, D_02004BC4,
-    D_02004BEC, D_02004C14, D_02004C3C, D_02004C64,
-    D_02004C8C, D_02004CF0, D_02004D54, D_02004DB8,
-    D_02004E1C, D_02004E80,
+    D_02004DB8, D_02004E1C, D_02004E80,
+};
+
+MkTexture *D_800E82F4[] = {
+    D_02004BC4, D_02004BEC, D_02004C14, D_02004C3C,
+    D_02004C64, D_02004C8C, D_02004CF0, D_02004D54,
+    D_02004DB8, D_02004E1C, D_02004E80,
 };
 
 MkAnimation *D_800E8320[] = {
@@ -1366,9 +1371,6 @@ f64 exponent_by_squaring(f64 base, s32 exponent) {
     return 1.0 / result;
 }
 
-f64 func_8009186C(f64);                             /* extern */
-f64 func_8009195C(f64);                        /* extern */
-
 f64 func_800917B0(f64 arg0, f64 arg1) {
     if ((arg1 <= 2147483647.0) && (-2147483647.0 <= arg1)) {
         if (arg1 == (s32) arg1) {
@@ -1497,7 +1499,6 @@ void swap_values(s32 *arg0, s32 *arg1) {
     *arg1 = temp;
 }
 
-extern s8 D_8018E7AC[]; // size of 4... Actually 5 probably.
 extern s8 D_800E852C;
 extern uintptr_t *D_8018D9B4;
 extern uintptr_t *D_8018D9B8;
@@ -1524,7 +1525,7 @@ void func_80091B78(void) {
     }
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     // Hypothetically, this should be a ptr... But only hypothetically.
-    D_8018D9B0 = (intptr_t) get_next_available_memory_addr(0x000900B0);
+    D_8018D9B0 = get_next_available_memory_addr(0x000900B0);
     D_8018D9B4 = (uintptr_t *) get_next_available_memory_addr(0x0000CE00);
     D_8018D9B8 = (uintptr_t *) get_next_available_memory_addr(0x00012C00);
     D_8018D9C0 = (struct_8018EE10_entry *) get_next_available_memory_addr(0x00001000);
@@ -1623,7 +1624,7 @@ void func_80091FA4(void) {
 
     // todo: These sizes need to be sizeof() for shiftability if possible
     D_8018D9B4 = (uintptr_t *) get_next_available_memory_addr(0x00002800);
-    D_8018D9B0 = (intptr_t) get_next_available_memory_addr(0x000124F8);
+    D_8018D9B0 = get_next_available_memory_addr(0x000124F8);
     D_8018D9B8 = (uintptr_t *) get_next_available_memory_addr(0x00001000);
     D_8018D9BC = get_next_available_memory_addr(4);
 
@@ -2021,30 +2022,32 @@ s32 func_80092DF8(s8 *arg) {
     return func_80092E1C(arg) + 0x50;
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/Uh0mI
-// Really dumb register allocation diff
 s32 func_80092E1C(char *character) {
     s32 ret;
+    s32 test;
     u8 temp_t6;
+    u8 temp;
 
     temp_t6 = (*character + 0x80);
-    if ((temp_t6 >= 0x21) && (temp_t6 < 0x2B)) {
-        if (temp_t6 % 2) {
-            ret = ((temp_t6 - 0x21) / 2) + 0x7B;
+    // Huh?
+    temp = temp_t6;
+    if (temp) {}
+    if ((temp > 0x20) && (temp < 0x2B)) {
+        if (temp % 2) {
+            ret = ((temp - 0x21) / 2) + 0x7B;
         } else {
-            ret = ((temp_t6 - 0x21) / 2) + 0x30;
+            ret = ((temp - 0x21) / 2) + 0x30;
         }
-    } else if ((temp_t6 >= 0x2B) && (temp_t6 < 0x6E)) {
-        ret = temp_t6 + 0xA;
+    } else if ((temp > 0x2A) && (temp < 0x6E)) {
+        ret = temp + 0xA;
     } else {
-        switch (temp_t6) {                              /* irregular */
+        switch (temp) {                              /* irregular */
         case 0x6F:
             ret = 0x00000078;
             break;
         case 0x72:
         case 0x73:
-            ret = temp_t6 + 7;
+            ret = temp + 7;
             break;
         default:
             ret = -2;
@@ -2053,9 +2056,6 @@ s32 func_80092E1C(char *character) {
     }
     return ret;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80092E1C.s")
-#endif
 
 s32 func_80092EE4(char *character) {
     u8 temp_t6;
@@ -2226,35 +2226,35 @@ void func_80093358(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f
     print_text0(column, row, text, tracking, x_scale, y_scale, 2);
 }
 
-#ifdef NON_MATCHING
 // "tracking" is a uniform spacing between all characters in a given word
 void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale, s32 arg6) {
     char *temp_string = text;
     s32 stringWidth = 0;
     s32 glyphIndex;
+    s32 sp60;
 
-    if (*temp_string != 0) {
-        do{
-            glyphIndex = char_to_glyph_index(temp_string);
-            if (glyphIndex >= 0) {
-                stringWidth += ((gGlyphDisplayWidth[glyphIndex] + tracking) * x_scale);
-            }
-            else if ((glyphIndex != -2) && (glyphIndex == -1)) {
-                stringWidth += ((tracking + 7) * x_scale);
-            }
-            else{
-                return;
-            }
-            if (glyphIndex >= 0x30) {
-                temp_string += 2;
-            } else {
-                temp_string += 1;
-            }
-        } while(*temp_string != 0);
+    while(*temp_string != 0) {
+        glyphIndex = char_to_glyph_index(temp_string);
+        if (glyphIndex >= 0) {
+            stringWidth += ((gGlyphDisplayWidth[glyphIndex] + tracking) * x_scale);
+        }
+        else if ((glyphIndex != -2) && (glyphIndex == -1)) {
+            stringWidth += ((tracking + 7) * x_scale);
+        }
+        else{
+            return;
+        }
+        if (glyphIndex >= 0x30) {
+            temp_string += 2;
+        } else {
+            temp_string += 1;
+        }
     }
 
     switch(arg6) {
         case 1:
+            // ???
+            do { } while (0);
         case 3:
             column -= stringWidth;
             break;
@@ -2267,43 +2267,36 @@ void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
     }
 
     if (arg6 < 3){
-        arg6 = 1;
+        sp60 = 1;
     }
     else{
-        arg6 = 2;
+        sp60 = 2;
     }
 
 
     gSPDisplayList(gDisplayListHead++, D_020077A8);
-    if (*text != 0) {
-        do{
-            glyphIndex = char_to_glyph_index(text);
-            if (glyphIndex >= 0) {
-                func_80099184((MkTexture *)segmented_to_virtual_dupe((const void *) gGlyphTextureLUT[glyphIndex]));
-                gDisplayListHead = func_8009BEF0(gDisplayListHead, (MkTexture *) segmented_to_virtual_dupe((const void *)gGlyphTextureLUT[glyphIndex]), column, row, arg6, x_scale, y_scale);
-                column += (gGlyphDisplayWidth[glyphIndex] + tracking);
-                column *= x_scale;
-            }
-            else if ((glyphIndex != -2) && (glyphIndex == -1)) {
-                column += (tracking + 7);
-                column *= x_scale;
-            }
-            else{
-                gSPDisplayList(gDisplayListHead++, D_020077D8);
-                return;
-            }
-            if (glyphIndex >= 0x30) {
-                text += 2;
-            } else {
-                text += 1;
-            }
-        } while(*text != 0);
+    while(*text != 0) {
+        glyphIndex = char_to_glyph_index(text);
+        if (glyphIndex >= 0) {
+            func_80099184(segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]));
+            gDisplayListHead = func_8009BEF0(gDisplayListHead, segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]), column, row, sp60, x_scale, y_scale);
+            column = column + (s32)((gGlyphDisplayWidth[glyphIndex] + tracking) * x_scale);
+        }
+        else if ((glyphIndex != -2) && (glyphIndex == -1)) {
+            column = column + (s32)((tracking + 7) * x_scale);
+        }
+        else{
+            gSPDisplayList(gDisplayListHead++, D_020077D8);
+            return;
+        }
+        if (glyphIndex >= 0x30) {
+            text += 2;
+        } else {
+            text += 1;
+        }
     }
     gSPDisplayList(gDisplayListHead++, D_020077D8);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/print_text1.s")
-#endif
 
 void func_800936B8(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale) {
     print_text1(column, row, text, tracking, x_scale, y_scale, 1);
@@ -2957,78 +2950,44 @@ void func_80095AE0(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80095AE0.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-? func_80095AE0(Mtx *, s32, s32, s32, f32);         /* extern */
-? rmonPrintf(? *);                                  /* extern */
-
-Gfx *func_80095BD0(Gfx *arg0, s32 arg1, s32 arg2, s32 arg3, u32 arg4, s32 arg5, s32 arg6, f32 arg7) {
-    Mtx *sp28;
-    Gfx *temp_s0;
-    Gfx *temp_s0_2;
-    Gfx *temp_s0_3;
-    Gfx *temp_s0_4;
-    Gfx *temp_s0_5;
-    Gfx *temp_s0_6;
-    Gfx *temp_s0_7;
+Gfx *func_80095BD0(Gfx *displayListHead, u8 *arg1, f32 arg2, f32 arg3, u32 arg4, u32 arg5, f32 arg6, f32 arg7) {
     Vtx *var_a1;
-    s32 temp_a3;
-    s32 temp_v0;
+    Mtx *sp28;
 
-    if (gMatrixEffectCount <= MTX_EFFECT_POOL_SIZE_MAX) {
-        sp28 = &gGfxPool->mtxEffect[gMatrixEffectCount];
-        if (gMatrixEffectCount < 0) {
-            rmonPrintf("effectcount < 0 !!!!!!(kawano)\n");
-        }
-        func_80095AE0(sp28, arg2, arg3, arg6, arg7);
-        arg0->words.w0 = 0x01020040;
-        arg0->words.w1 = (s32) (&gGfxPool->mtxEffect[gMatrixEffectCount]) & 0x1FFFFFFF;
-        temp_s0_2 = arg0 + 8;
-        gMatrixEffectCount += 1;
-        temp_s0_2->words.w0 = (((arg4 >> 1) - 1) & 0xFFF) | 0xFD880000;
-        temp_s0_3 = temp_s0_2 + 8;
-        temp_s0_2->words.w1 = (u32) arg1;
-        temp_a3 = (((u32) (((u32) (arg4 + 1) >> 1) + 7) >> 3) & 0x1FF) << 9;
-        temp_s0_4 = temp_s0_3 + 8;
-        temp_s0_3->words.w0 = temp_a3 | 0xF5880000;
-        temp_s0_3->words.w1 = 0x07000000;
-        temp_s0_5 = temp_s0_4 + 8;
-        temp_s0_4->words.w0 = 0xE6000000;
-        temp_s0_4->words.w1 = 0;
-        temp_s0_5->words.w0 = 0xF4000000;
-        temp_v0 = (arg5 * 4) & 0xFFF;
-        temp_s0_6 = temp_s0_5 + 8;
-        temp_s0_5->words.w1 = (((arg4 * 2) & 0xFFF) << 0xC) | 0x07000000U | temp_v0;
-        temp_s0_7 = temp_s0_6 + 8;
-        temp_s0_6->words.w0 = 0xE7000000;
-        temp_s0 = temp_s0_7 + 8;
-        temp_s0_6->words.w1 = 0;
-        temp_s0_7->words.w1 = 0;
-        temp_s0_7->words.w0 = temp_a3 | 0xF5800000;
-        temp_s0->words.w0 = 0xF2000000;
-        temp_s0->words.w1 = (((arg4 * 4) & 0xFFF) << 0xC) | temp_v0;
-        switch (arg4) {                             /* irregular */
-        default:
-            var_a1 = D_02007CD8;
-            break;
-        case 16:
-            var_a1 = D_02007CD8;
-            break;
-        case 26:
-            var_a1 = D_02007BB8;
-            break;
-        case 30:
-            var_a1 = D_02007DF8;
-            break;
-        }
-        return func_800959F8(temp_s0 + 8, var_a1);
+    // A match is a match, but why are goto's required here?
+    if (gMatrixEffectCount >= 0x2F7) {
+        goto func_80095BD0_label1;
     }
+    sp28 = &gGfxPool->mtxEffect[gMatrixEffectCount];
+    if (gMatrixEffectCount < 0) {
+        rmonPrintf("effectcount < 0 !!!!!!(kawano)\n");
+    }
+    goto func_80095BD0_label2;
+func_80095BD0_label1:
     rmonPrintf("MAX effectcount(760) over!!!!(kawano)\n");
-    return arg0;
+    return displayListHead;
+func_80095BD0_label2:
+    func_80095AE0(sp28, arg2, arg3, arg6, arg7);
+    gSPMatrix(displayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gMatrixEffectCount += 1;
+    gDPLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4, arg5, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    switch (arg4) {
+    default:
+        var_a1 = D_02007CD8;
+        break;
+    case 16:
+        var_a1 = D_02007CD8;
+        break;
+    case 26:
+        var_a1 = D_02007BB8;
+        break;
+    case 30:
+        var_a1 = D_02007DF8;
+        break;
+    }
+
+    return func_800959F8(displayListHead, var_a1);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80095BD0.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
@@ -4100,33 +4059,18 @@ block_37:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80097274.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-void *func_80095E10(Gfx *, s8, ?, ?, s32, s32, s32, s32, s32, s32, s32, s32, s32); /* extern */
-
-Gfx *func_80097A14(Gfx *arg0, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, s32 argA) {
-    Gfx *temp_a0;
-    void *temp_v0;
-
-    temp_a0 = arg0 + 8;
-    arg0->words.w0 = 0xE7000000;
-    arg0->words.w1 = 0;
-    temp_a0->words.w1 = 0x00200000;
-    temp_a0->words.w0 = 0xBA001402;
-    temp_v0 = func_80095E10(temp_a0 + 8, arg1, 0x1000, 0x400, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA);
-    temp_v0->unk0 = 0xE7000000;
-    temp_v0->unk4 = 0;
-    temp_v0->unk8 = 0xBA001402;
-    temp_v0->unkC = 0;
-    return temp_v0 + 0x10;
+Gfx *func_80097A14(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, u32 arg9, u32 argA) {
+    gDPPipeSync(displayListHead++);
+    gDPSetCycleType(displayListHead++, G_CYC_COPY);
+    displayListHead = func_80095E10(displayListHead, arg1, 0x00001000, 0x00000400, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA);
+    gDPPipeSync(displayListHead++);
+    gDPSetCycleType(displayListHead++, G_CYC_1CYCLE);
+    return displayListHead;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80097A14.s")
-#endif
 
 #ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-Gfx *func_80097AE4(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
+//generated by m2c commit beb457dabfc7a01ec6540a5404a6a05097a13602 on Dec-21-2023
+Gfx *func_80097AE4(Gfx *displayListHead, s8 fmt, s32 arg2, s32 arg3, u8 *arg4, s32 arg5) {
     s32 sp34;
     Gfx *temp_a0;
     Gfx *temp_a0_10;
@@ -4169,7 +4113,7 @@ Gfx *func_80097AE4(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
     if (arg5 >= 0x20) {
 
     } else {
-        temp_t8 = (arg1 & 7) << 0x15;
+        temp_t8 = (fmt & 7) << 0x15;
         temp_s4 = temp_t8 | 0xFD000000 | 0x100000 | 0x3F;
         temp_t8_2 = temp_t8 | 0xF5000000 | 0x100000 | 0x1200;
         sp34 = var_s0;
@@ -4242,6 +4186,13 @@ Gfx *func_80097AE4(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
             temp_a0_18->words.w1 = 0;
             temp_a0_19->words.w0 = 0xB2000000;
             temp_a0_19->words.w1 = temp_t7;
+            /*
+            gDPLoadTextureTile(displayListHead++, arg4, fmt, G_IM_SIZ_16b, 64, 0, 0, var_a2, 32, (var_a2 + 1) * 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
+            gSPTextureRectangle(displayListHead++, arg2 + arg5, arg3 + 32*var_a2, arg2 + 32, arg3 + 32, G_TX_RENDERTILE, 0, 0, 0x8000 / (32 - arg5), 4);
+
+            gDPLoadTextureTile(displayListHead++, arg4, fmt, G_IM_SIZ_16b, 64, 0, 32, 0, 64, 0, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
+            gSPTextureRectangle(displayListHead++, arg2 + 32, arg3 + 32*var_a2, (arg2 + 32 - arg5) + 32, arg3 + 32, G_TX_RENDERTILE, 0, 0, 0x8000 / (32 - arg5), 4);
+            */
             var_a2 = temp_s1;
             var_a0 = temp_a0_19 + 8;
             var_s0 = sp34;
@@ -4899,8 +4850,6 @@ void func_80099958(MkTexture *arg0, s32 arg1, s32 arg2) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099958.s")
 #endif
 
-extern s32 D_8018E060;
-
 // Possibly a debug print function?
 void func_80099A70(void) {
     s32 i;
@@ -5029,36 +4978,21 @@ loop_9:
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099AEC.s")
 #endif
 
-extern s32 D_8018E0E8;
-
 void func_80099E54(void) {
-    D_8018E0E8 = 0;
+    D_8018E0E8[0].mk64Texture = NULL;
 }
-
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-extern void *D_8018E0E8;
 
 void func_80099E60(MkTexture *arg0, s32 arg1, s32 arg2) {
-    void **sp1C;
-    s32 temp_t7;
-    void **var_v1;
+    struct_8018E0E8_entry *var_v1;
 
-    var_v1 = &D_8018E0E8;
-    if (D_8018E0E8 != NULL) {
-        do {
-            temp_t7 = var_v1->unk8;
-            var_v1 += 8;
-        } while (temp_t7 != 0);
+    var_v1 = D_8018E0E8;
+    while(var_v1->mk64Texture != NULL) {
+        var_v1++;
     }
-    sp1C = var_v1;
-    var_v1->unk0 = segmented_to_virtual_dupe(arg0);
-    var_v1->unk4 = (s16) arg1;
-    var_v1->unk6 = (s16) arg2;
+    var_v1->mk64Texture = segmented_to_virtual_dupe(arg0);
+    var_v1->unk4 = arg1;
+    var_v1->unk6 = arg2;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099E60.s")
-#endif
 
 #ifdef MIPS_TO_C
 //generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
@@ -5196,65 +5130,35 @@ s32 func_8009A374(MkAnimation *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009A374.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-? func_80099958(MkTexture *, s32, ?, s32);          /* extern */
-
 s32 func_8009A478(MkAnimation *arg0, s32 arg1) {
-    s32 sp2C;
-    struct_8018DEE0_entry *sp24;
-    MkAnimation *temp_s0;
+    s32 var_a1;
     MkAnimation *temp_v0;
-    MkTexture *temp_a0;
-    s32 var_a3;
-    struct_8018DEE0_entry *temp_v1;
-    struct_8018DEE0_entry *var_v1;
 
     temp_v0 = segmented_to_virtual_dupe_2(arg0);
-    temp_s0 = temp_v0;
-    var_a3 = 0;
-    if (D_8018DEE0->visible != 0) {
-        var_v1 = D_8018DEE0;
-loop_2:
-        var_a3 += 1;
-        var_v1 += 0x18;
-        if (var_a3 >= 0x10) {
-loop_3:
-            goto loop_3;
+    var_a1 = 0;
+    while (D_8018DEE0[var_a1].visible != 0) {
+        var_a1++;
+        if (var_a1 >= 0x10) {
+            while(TRUE);
         }
-        if (var_v1->visible == 0) {
-            goto block_5;
-        }
-        goto loop_2;
     }
-block_5:
-    temp_v1 = &D_8018DEE0[var_a3];
-    temp_v1->textureSequence = temp_v0;
-    temp_v1->sequenceIndex = -1;
-    temp_v1->frameCountDown = 0;
-    temp_v1->visible = 0x80000000;
-    temp_v1->D_8018E118_index = gNumD_8018E118Entries;
+    D_8018DEE0[var_a1].textureSequence = temp_v0;
+    D_8018DEE0[var_a1].sequenceIndex = -1;
+    D_8018DEE0[var_a1].frameCountDown = 0;
+    D_8018DEE0[var_a1].visible = 0x80000000;
+    D_8018DEE0[var_a1].D_8018E118_index = gNumD_8018E118Entries;
     if (temp_v0->mk64Texture != NULL) {
-        sp2C = var_a3;
-        sp24 = temp_v1;
-        func_80099958(temp_s0->mk64Texture, arg1, 0, var_a3);
+        func_80099958(temp_v0->mk64Texture, arg1, 0);
     }
-    temp_a0 = temp_s0->unk8;
-    if (temp_a0 != NULL) {
-        sp24 = temp_v1;
-        sp2C = var_a3;
-        func_80099958(temp_a0, arg1, 1, var_a3);
+    if ((temp_v0 + 1)->mk64Texture != NULL) {
+        func_80099958((temp_v0 + 1)->mk64Texture, arg1, 1);
     } else {
-        sp2C = var_a3;
-        sp24 = temp_v1;
-        func_80099958(temp_s0->mk64Texture, arg1, 1, var_a3);
+        func_80099958(temp_v0->mk64Texture, arg1, 1);
     }
-    temp_v1->unk14 = 0;
-    return sp2C;
+    // ?????????????????????
+    D_8018DEE0[var_a1].unk14 = (temp_v0->mk64Texture != ((void *) 0)) * 0;
+    return var_a1;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009A478.s")
-#endif
 
 void func_8009A594(s32 arg0, s32 arg1, MkAnimation *arg2) {
     MkAnimation *temp_v0;
@@ -5707,506 +5611,256 @@ Gfx *func_8009B9D0(Gfx *displayListHead, MkTexture *textures) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-Gfx *func_80095E10(Gfx *, s8, ?, ?, s32, s32, s32, s32, s32, s32, s32, s32, s32); /* extern */
-Gfx *func_800987D0(Gfx *, ?, ?, u16, s32, s32, s32, s32, s32, s32); /* extern */
-
 Gfx *func_8009BA74(Gfx *arg0, MkTexture *arg1, s32 column, s32 row) {
-    Gfx *temp_v0_2;
-    Gfx *var_s0;
-    Gfx *var_v0;
-    s32 temp_t1;
+    MkTexture *temp_v0;
     s32 temp_v0_3;
     s8 var_s4;
-    u16 temp_s1;
-    u16 temp_s1_2;
-    u16 temp_t7;
-    u16 temp_v0_4;
-    u16 temp_v0_5;
-    void *temp_v0;
-    void *var_s2;
 
-    var_s0 = arg0;
     temp_v0 = segmented_to_virtual_dupe(arg1);
-    var_s2 = temp_v0;
-    if (temp_v0->unk4 != 0) {
-        do {
-            temp_t7 = var_s2->unk0;
-            var_s4 = 0;
-            temp_v0_2 = var_s0;
-            switch (temp_t7) {
-            case 0:
-                var_s0->words.w0 = 0x06000000;
-                var_s0->words.w1 = (u32) D_02007708;
-                var_s0 += 8;
-                break;
-            case 1:
-                var_s0->words.w0 = 0x06000000;
-                var_s0->words.w1 = (u32) D_02007728;
-                var_s0 += 8;
-                break;
-            case 2:
-                var_s0->words.w1 = (u32) D_02007748;
-                var_s0->words.w0 = 0x06000000;
-                var_s0 += 8;
-                break;
-            case 3:
-                var_s0->words.w1 = (u32) D_02007768;
-                var_s0->words.w0 = 0x06000000;
-                var_s0 += 8;
-                var_s4 = 3;
-                break;
-            case 4:
-                var_s0->words.w1 = (u32) D_02007788;
-                var_s0->words.w0 = 0x06000000;
-                var_s0 += 8;
-                break;
-            default:
-                var_s0 += 8;
-                temp_v0_2->words.w0 = 0x06000000;
-                temp_v0_2->words.w1 = (u32) D_02007728;
-                break;
+    while (temp_v0->textureData != NULL) {
+        var_s4 = 0;
+        switch (temp_v0->type) {
+        case 0:
+            gSPDisplayList(arg0++, D_02007708);
+            break;
+        case 1:
+            gSPDisplayList(arg0++, D_02007728);
+            break;
+        case 2:
+            gSPDisplayList(arg0++, D_02007748);
+            break;
+        case 3:
+            gSPDisplayList(arg0++, D_02007768);
+            var_s4 = 3;
+            break;
+        case 4:
+            gSPDisplayList(arg0++, D_02007788);
+            break;
+        default:
+            gSPDisplayList(arg0++, D_02007728);
+            break;
+        }
+        temp_v0_3 = func_8009B8C4(temp_v0->textureData);
+        if (temp_v0_3 != 0) {
+            if (D_8018E7B0 != 4) {
+                arg0 = func_80095E10(arg0, var_s4, 0x00000400, 0x00000400, 0, 0, temp_v0->width, temp_v0->height, temp_v0->dX + column, temp_v0->dY + row, temp_v0_3, temp_v0->width, temp_v0->height);
+            } else {
+                arg0 = func_800987D0(arg0, 0U, 0U, temp_v0->width, temp_v0->height, temp_v0->dX + column, temp_v0->dY + row, temp_v0_3, temp_v0->width, temp_v0->height);
             }
-            temp_v0_3 = func_8009B8C4(var_s2->unk4);
-            if (temp_v0_3 != 0) {
-                if (D_8018E7B0 != 4) {
-                    temp_s1 = var_s2->unk8;
-                    temp_v0_4 = var_s2->unkA;
-                    var_v0 = func_80095E10(var_s0, var_s4, 0x400, 0x400, 0, 0, (s32) temp_s1, (s32) temp_v0_4, var_s2->unkC + column, var_s2->unkE + row, temp_v0_3, (s32) temp_s1, (s32) temp_v0_4);
-                } else {
-                    temp_v0_5 = var_s2->unkA;
-                    temp_s1_2 = var_s2->unk8;
-                    var_v0 = func_800987D0(var_s0, 0, 0, temp_s1_2, (s32) temp_v0_5, var_s2->unkC + column, var_s2->unkE + row, temp_v0_3, (s32) temp_s1_2, (s32) temp_v0_5);
-                }
-                var_s0 = var_v0;
-            }
-            temp_t1 = var_s2->unk18;
-            var_s2 += 0x14;
-        } while (temp_t1 != 0);
+        }
+        temp_v0++;
     }
-    return var_s0;
+    return arg0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009BA74.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-Gfx *func_80097274(Gfx *, ?, ?, ?, s32, s32, s32, s32, s32, s32, s32, s32, s32, s32); /* extern */
-Gfx *func_80097A14(Gfx *, ?, ?, ?, s32, s32, s32, s32, s32, s32, s32); /* extern */
-Gfx *func_80097AE4(Gfx *, ?, s32, s32, s32, s32);   /* extern */
-Gfx *func_80097E58(Gfx *, ?, ?, ?, s32, s32, s32, s32, s32, s32, s32, s32); /* extern */
 
 Gfx *func_8009BC9C(Gfx *arg0, MkTexture *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
-    Gfx *var_s1;
-    Gfx *var_v0;
-    s16 temp_v0_2;
-    s32 temp_t5;
+    MkTexture *var_s0;
     s32 temp_v0_3;
-    u16 temp_v0_4;
-    u16 temp_v0_5;
-    u16 temp_v0_6;
-    u16 temp_v1;
-    u16 temp_v1_2;
-    u16 temp_v1_3;
-    void *temp_v0;
-    void *var_s0;
 
-    var_s1 = arg0;
-    temp_v0 = segmented_to_virtual_dupe(arg1);
-    var_s0 = temp_v0;
-    if (temp_v0->unk4 != 0) {
-        do {
-            temp_v0_2 = var_s0->unk0;
-            switch (temp_v0_2) {                    /* irregular */
-            case 0:
-                var_s1->words.w0 = 0x06000000;
-                var_s1->words.w1 = (u32) D_02007708;
-                var_s1 += 8;
+    var_s0 = segmented_to_virtual_dupe(arg1);
+    while (var_s0->textureData != NULL) {
+        switch (var_s0->type) {                    /* irregular */
+        case 0:
+            gSPDisplayList(arg0++, D_02007708);
+            break;
+        case 1:
+            gSPDisplayList(arg0++, D_02007728);
+            break;
+        }
+        temp_v0_3 = func_8009B8C4(var_s0->textureData);
+        if (temp_v0_3 != 0) {
+            switch (arg4) {                     /* switch 1; irregular */
+            case 1:                             /* switch 1 */
+                arg0 = func_80097AE4(arg0, 0, var_s0->dX + arg2, var_s0->dY + arg3, temp_v0_3, arg5);
                 break;
-            case 1:
-                var_s1->words.w1 = (u32) D_02007728;
-                var_s1->words.w0 = 0x06000000;
-                var_s1 += 8;
+            case 2:                             /* switch 1 */
+                arg0 = func_80097E58(arg0, 0, 0, 0U, var_s0->width, var_s0->height, var_s0->dX + arg2, var_s0->dY + arg3, temp_v0_3, var_s0->width, var_s0->height, arg5);
+                break;
+            case 3:                             /* switch 1 */
+                arg0 = func_80097A14(arg0, 0, 0, 0, var_s0->width, var_s0->height, var_s0->dX + arg2, var_s0->dY + arg3, temp_v0_3, var_s0->width, var_s0->height);
+                break;
+            case 4:                             /* switch 1 */
+                arg0 = func_80097274(arg0, 0, 0x00000400, 0x00000400, 0, 0, var_s0->width, var_s0->height, var_s0->dX + arg2, var_s0->dY + arg3, temp_v0_3, var_s0->width, var_s0->height, arg5);
                 break;
             }
-            temp_v0_3 = func_8009B8C4(var_s0->unk4);
-            if (temp_v0_3 != 0) {
-                switch (arg4) {                     /* switch 1; irregular */
-                case 1:                             /* switch 1 */
-                    var_v0 = func_80097AE4(var_s1, 0, var_s0->unkC + arg2, var_s0->unkE + arg3, temp_v0_3, arg5);
-block_17:
-                    var_s1 = var_v0;
-                    break;
-                case 2:                             /* switch 1 */
-                    temp_v0_4 = var_s0->unk8;
-                    temp_v1 = var_s0->unkA;
-                    var_v0 = func_80097E58(var_s1, 0, 0, 0, (s32) temp_v0_4, (s32) temp_v1, var_s0->unkC + arg2, var_s0->unkE + arg3, temp_v0_3, (s32) temp_v0_4, (s32) temp_v1, arg5);
-                    goto block_17;
-                case 3:                             /* switch 1 */
-                    temp_v0_5 = var_s0->unk8;
-                    temp_v1_2 = var_s0->unkA;
-                    var_v0 = func_80097A14(var_s1, 0, 0, 0, (s32) temp_v0_5, (s32) temp_v1_2, var_s0->unkC + arg2, var_s0->unkE + arg3, temp_v0_3, (s32) temp_v0_5, (s32) temp_v1_2);
-                    goto block_17;
-                case 4:                             /* switch 1 */
-                    temp_v0_6 = var_s0->unk8;
-                    temp_v1_3 = var_s0->unkA;
-                    var_v0 = func_80097274(var_s1, 0, 0x400, 0x400, 0, 0, (s32) temp_v0_6, (s32) temp_v1_3, var_s0->unkC + arg2, var_s0->unkE + arg3, temp_v0_3, (s32) temp_v0_6, (s32) temp_v1_3, arg5);
-                    goto block_17;
-                }
-            }
-            temp_t5 = var_s0->unk18;
-            var_s0 += 0x14;
-        } while (temp_t5 != 0);
+        }
+        var_s0++;
     }
-    return var_s1;
+    return arg0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009BC9C.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-Gfx *func_80095BD0(Gfx *, s32, f32, f32, s32, s32, f32, f32); /* extern */
 
 Gfx *func_8009BEF0(Gfx *arg0, MkTexture *arg1, f32 arg2, f32 arg3, s32 arg4, f32 arg5, f32 arg6) {
-    Gfx *var_s1;
-    Gfx *var_v0_2;
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 var_f10;
-    f32 var_f16;
-    f32 var_f16_2;
-    f32 var_f16_3;
-    f32 var_f18;
-    f32 var_f4;
-    f32 var_f6;
-    f32 var_f6_2;
-    s32 temp_v0_2;
     s32 var_v0;
-    u16 temp_t0;
-    u16 temp_t1;
-    u16 temp_t2;
-    u16 temp_t5;
-    u16 temp_t6;
-    u16 temp_t7;
-    u16 temp_t8;
-    u16 temp_t9;
-    void *temp_v0;
-    void *var_s0;
+    s32 temp_v0_2;
+    f32 thing0;
+    f32 thing1;
+    MkTexture *var_s0;
 
-    var_s1 = arg0;
-    temp_v0 = segmented_to_virtual_dupe(arg1);
-    var_s0 = temp_v0;
-    if (temp_v0->unk4 != 0) {
-        do {
-            temp_t7 = var_s0->unkC;
-            var_v0 = 0;
-            var_f6 = (f32) temp_t7;
-            if ((s32) temp_t7 < 0) {
-                var_f6 += 4294967296.0f;
-            }
-            temp_f0 = var_f6 + arg2;
-            if (temp_f0 > 320.0f) {
-                var_v0 = 1;
-            }
-            temp_t8 = var_s0->unk8;
-            var_f16 = (f32) temp_t8;
-            if ((s32) temp_t8 < 0) {
-                var_f16 += 4294967296.0f;
-            }
-            if ((temp_f0 + (var_f16 * arg5)) < 0.0f) {
-                var_v0 += 1;
-            }
-            temp_t9 = var_s0->unkE;
-            var_f6_2 = (f32) temp_t9;
-            if ((s32) temp_t9 < 0) {
-                var_f6_2 += 4294967296.0f;
-            }
-            temp_f0_2 = var_f6_2 + arg3;
-            if (temp_f0_2 < 0.0f) {
-                var_v0 += 1;
-            }
-            temp_t0 = var_s0->unkA;
-            var_f16_2 = (f32) temp_t0;
-            if ((s32) temp_t0 < 0) {
-                var_f16_2 += 4294967296.0f;
-            }
-            if ((temp_f0_2 - (var_f16_2 * arg6)) > 240.0f) {
-                var_v0 += 1;
-            }
-            if (var_v0 != 0) {
+    var_s0 = segmented_to_virtual_dupe(arg1);
+    while (var_s0->textureData != NULL) {
+        var_v0 = 0;
 
-            } else {
-                temp_v0_2 = func_8009B8C4(var_s0->unk4);
-                if (temp_v0_2 != 0) {
-                    switch (arg4) {                 /* irregular */
-                    case 1:
-                        var_s1->words.w0 = 0x06000000;
-                        var_s1->words.w1 = (u32) D_020077F8;
-                        temp_t1 = var_s0->unkC;
-                        var_f18 = (f32) temp_t1;
-                        if ((s32) temp_t1 < 0) {
-                            var_f18 += 4294967296.0f;
-                        }
-                        temp_t2 = var_s0->unkE;
-                        var_f10 = (f32) temp_t2;
-                        if ((s32) temp_t2 < 0) {
-                            var_f10 += 4294967296.0f;
-                        }
-                        var_v0_2 = func_80095BD0(var_s1 + 8, temp_v0_2, var_f18 + arg2, var_f10 + arg3, (s32) var_s0->unk8, (s32) var_s0->unkA, arg5, arg6);
-block_34:
-                        var_s1 = var_v0_2;
-                        break;
-                    case 2:
-                        var_s1->words.w0 = 0x06000000;
-                        var_s1->words.w1 = (u32) D_02007818;
-                        temp_t5 = var_s0->unkC;
-                        var_f16_3 = (f32) temp_t5;
-                        if ((s32) temp_t5 < 0) {
-                            var_f16_3 += 4294967296.0f;
-                        }
-                        temp_t6 = var_s0->unkE;
-                        var_f4 = (f32) temp_t6;
-                        if ((s32) temp_t6 < 0) {
-                            var_f4 += 4294967296.0f;
-                        }
-                        var_v0_2 = func_80095BD0(var_s1 + 8, temp_v0_2, var_f16_3 + arg2, var_f4 + arg3, (s32) var_s0->unk8, (s32) var_s0->unkA, arg5, arg6);
-                        goto block_34;
-                    }
+        thing0 = var_s0->dX + arg2;
+        if (thing0 > 320.0f) {
+            var_v0 = 1;
+        }
+        thing0 += var_s0->width * arg5;
+        if (thing0 < 0.0f) {
+            var_v0 += 1;
+        }
+        thing1 = var_s0->dY + arg3;
+        if (thing1 < 0.0f) {
+            var_v0 += 1;
+        }
+        thing1 -= var_s0->height * arg6;
+        if (thing1 > 240.0f) {
+            var_v0 += 1;
+        }
+
+        if (var_v0 != 0) {
+            var_s0++;
+        } else {
+            temp_v0_2 = func_8009B8C4(var_s0->textureData);
+            if (temp_v0_2 != 0) {
+                switch (arg4) {                 /* irregular */
+                case 1:
+                    gSPDisplayList(arg0++, D_020077F8);
+                    arg0 = func_80095BD0(arg0, (u8 *) temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3, var_s0->width, var_s0->height, arg5, arg6);
+                    break;
+                case 2:
+                    gSPDisplayList(arg0++, D_02007818);
+                    arg0 = func_80095BD0(arg0, (u8 *) temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3, var_s0->width, var_s0->height, arg5, arg6);
+                    break;
                 }
             }
-            var_s0 += 0x14;
-        } while (var_s0->unk4 != 0);
+            var_s0++;
+        }
     }
-    return var_s1;
+    return arg0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009BEF0.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-Gfx *func_800963F0(Gfx *, s8, ?, ?, f32, f32, s32, s32, s32, s32, s32, s32, s32, s32, s32); /* extern */
 
 Gfx *func_8009C204(Gfx *arg0, MkTexture *arg1, s32 arg2, s32 arg3, s32 arg4) {
-    Gfx *var_s0;
-    Gfx *var_v0;
-    s16 temp_v0_2;
+    s32 var_s2;
     s32 temp_t0;
-    s32 temp_t1;
-    s8 var_s2;
-    u16 temp_v0_3;
-    u16 temp_v0_4;
-    u16 temp_v1;
-    u16 temp_v1_2;
-    void *temp_v0;
-    void *var_s1;
+    MkTexture *var_s1;
 
-    var_s0 = arg0;
-    temp_v0 = segmented_to_virtual_dupe(arg1);
-    var_s1 = temp_v0;
-    if (temp_v0->unk4 != 0) {
-        do {
-            temp_v0_2 = var_s1->unk0;
-            var_s2 = 0;
-            switch (temp_v0_2) {                    /* irregular */
-            default:
-                var_s0->words.w0 = 0x06000000;
-                var_s0->words.w1 = (u32) D_02007728;
-                var_s0 += 8;
-                break;
-            case 0:
-                var_s0->words.w0 = 0x06000000;
-                var_s0->words.w1 = (u32) D_02007708;
-                var_s0 += 8;
-                break;
-            case 1:
-                var_s0->words.w0 = 0x06000000;
-                var_s0->words.w1 = (u32) D_02007728;
-                var_s0 += 8;
-                break;
-            case 3:
-                var_s0->words.w1 = (u32) D_02007768;
-                var_s0->words.w0 = 0x06000000;
-                var_s0 += 8;
-                var_s2 = 3;
-                break;
-            }
-            temp_t0 = func_8009B8C4(var_s1->unk4);
-            switch (arg4) {                         /* switch 1; irregular */
-            case 2:                                 /* switch 1 */
-                temp_v0_3 = var_s1->unk8;
-                temp_v1 = var_s1->unkA;
-                var_v0 = func_800963F0(var_s0, var_s2, 0x400, 0x400, 0.5f, 0.5f, 0, 0, (s32) temp_v0_3, (s32) temp_v1, var_s1->unkC + arg2, var_s1->unkE + arg3, temp_t0, (s32) temp_v0_3, (s32) temp_v1);
-block_14:
-                var_s0 = var_v0;
-                break;
-            case 3:                                 /* switch 1 */
-                temp_v0_4 = var_s1->unk8;
-                temp_v1_2 = var_s1->unkA;
-                var_v0 = func_800963F0(var_s0, var_s2, 0x400, 0x400, 0.457f, 0.5f, 0, 0, (s32) temp_v0_4, (s32) temp_v1_2, var_s1->unkC + arg2, var_s1->unkE + arg3, temp_t0, (s32) temp_v0_4, (s32) temp_v1_2);
-                goto block_14;
-            }
-            temp_t1 = var_s1->unk18;
-            var_s1 += 0x14;
-        } while (temp_t1 != 0);
+    var_s1 = segmented_to_virtual_dupe(arg1);
+    while (var_s1->textureData != NULL) {
+        var_s2 = 0;
+        switch (var_s1->type) {                    /* irregular */
+        case 0:
+            gSPDisplayList(arg0++, D_02007708);
+            break;
+        case 1:
+            gSPDisplayList(arg0++, D_02007728);
+            break;
+        case 3:
+            gSPDisplayList(arg0++, D_02007768);
+            var_s2 = 3;
+            break;
+        default:
+            gSPDisplayList(arg0++, D_02007728);
+            break;
+        }
+        temp_t0 = func_8009B8C4(var_s1->textureData);
+        switch (arg4) {                         /* switch 1; irregular */
+        case 2:                                 /* switch 1 */
+            arg0 = func_800963F0(arg0, var_s2, 0x00000400, 0x00000400, 0.5f, 0.5f, 0, 0, var_s1->width, var_s1->height, var_s1->dX + arg2, var_s1->dY + arg3, temp_t0, var_s1->width, var_s1->height);
+            break;
+        case 3:                                 /* switch 1 */
+            arg0 = func_800963F0(arg0, var_s2, 0x00000400, 0x00000400, 0.457f, 0.5f, 0, 0, var_s1->width, var_s1->height, var_s1->dX + arg2, var_s1->dY + arg3, temp_t0, var_s1->width, var_s1->height);
+            break;
+        }
+        var_s1++;
     }
-    return var_s0;
+    return arg0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009C204.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-Gfx *func_80095E10(Gfx *, s8, ?, ?, s32, s32, s32, s32, s32, s32, s32, s32, s32); /* extern */
-Gfx *func_800963F0(Gfx *, s8, ?, ?, f32, f32, s32, s32, s32, s32, s32, s32, s32, s32, s32); /* extern */
-Gfx *func_80097E58(Gfx *, s8, ?, ?, s32, s32, s32, s32, s32, s32, s32, s32); /* extern */
-extern ? D_8018E11C;
-extern ? D_8018E124;
 
 Gfx *func_8009C434(Gfx *arg0, struct_8018DEE0_entry *arg1, s32 arg2, s32 arg3, s32 arg4) {
-    Gfx *var_s1;
-    Gfx *var_v0;
-    s16 temp_v0_2;
-    s32 temp_t2;
     s32 var_t0;
-    s8 var_t1;
-    u16 temp_v0_3;
-    u16 temp_v0_4;
-    u16 temp_v0_5;
-    u16 temp_v1;
-    u16 temp_v1_2;
-    u16 temp_v1_3;
-    void *temp_v0;
-    void *var_s0;
+    s32 var_t1;
+    Gfx *temp;
+    MkTexture *var_s0;
 
-    var_s1 = arg0;
-    temp_v0 = segmented_to_virtual_dupe(arg1->textureSequence[arg1->sequenceIndex].mk64Texture);
-    var_s0 = temp_v0;
-    if (temp_v0->unk4 != 0) {
-        do {
-            temp_v0_2 = var_s0->unk0;
-            var_t1 = 0;
-            switch (temp_v0_2) {                    /* irregular */
-            default:
-                var_s1->words.w0 = 0x06000000;
-                var_s1->words.w1 = (u32) D_02007728;
-                var_s1 += 8;
+    var_s0 = segmented_to_virtual_dupe(arg1->textureSequence[arg1->sequenceIndex].mk64Texture);
+    temp = D_02007728;
+    while (var_s0->textureData != NULL) {
+        var_t1 = 0;
+        switch (var_s0->type) {                    /* irregular */
+        default:
+            gSPDisplayList(arg0++, temp);
+            break;
+        case 0:
+            gSPDisplayList(arg0++, D_02007708);
+            break;
+        case 1:
+            gSPDisplayList(arg0++, temp);
+            break;
+        case 3:
+            gSPDisplayList(arg0++, D_02007768);
+            var_t1 = 3;
+            break;
+        }
+        if (arg1->unk14 != 0) {
+            var_t0 = D_8018E118[arg1->D_8018E118_index + 1].offset;
+        } else {
+            var_t0 = D_8018E118[arg1->D_8018E118_index].offset;
+            if (1) { } if (1) { } if (1) { }
+        }
+        if (arg4 >= 0) {
+            arg0 = func_80097E58(arg0, var_t1, 0, 0U, var_s0->width, var_s0->height, var_s0->dX + arg2, var_s0->dY + arg3, D_8018D9B0 + (var_t0* 2), var_s0->width, var_s0->height, (u32) arg4);
+        } else {
+        switch(arg4) {
+            case -1:
+                arg0 = func_80095E10(arg0, var_t1, 0x00000400, 0x00000400, 0, 0, var_s0->width, var_s0->height, var_s0->dX + arg2, var_s0->dY + arg3, D_8018D9B0 + (var_t0* 2), var_s0->width, var_s0->height);
                 break;
-            case 0:
-                var_s1->words.w0 = 0x06000000;
-                var_s1->words.w1 = (u32) D_02007708;
-                var_s1 += 8;
-                break;
-            case 1:
-                var_s1->words.w0 = 0x06000000;
-                var_s1->words.w1 = (u32) D_02007728;
-                var_s1 += 8;
-                break;
-            case 3:
-                var_s1->words.w1 = (u32) D_02007768;
-                var_s1->words.w0 = 0x06000000;
-                var_s1 += 8;
-                var_t1 = 3;
+            case -2:
+                arg0 = func_800963F0(arg0, var_t1, 0x00000400, 0x00000400, 0.5f, 0.5f, 0, 0, var_s0->width, var_s0->height, var_s0->dX + arg2, var_s0->dY + arg3, D_8018D9B0 + (var_t0* 2), var_s0->width, var_s0->height);
                 break;
             }
-            if (arg1->unk14 != 0) {
-                var_t0 = *(&D_8018E124 + (arg1->D_8018E118_index * 8));
-            } else {
-                var_t0 = *(&D_8018E11C + (arg1->D_8018E118_index * 8));
-            }
-            if (arg4 >= 0) {
-                temp_v0_3 = var_s0->unk8;
-                temp_v1 = var_s0->unkA;
-                var_v0 = func_80097E58(var_s1, var_t1, 0, 0, (s32) temp_v0_3, (s32) temp_v1, var_s0->unkC + arg2, var_s0->unkE + arg3, (var_t0 * 2) + D_8018D9B0, (s32) temp_v0_3, (s32) temp_v1, arg4);
-                goto block_18;
-            }
-            if (arg4 != -2) {
-                if (arg4 == -1) {
-                    temp_v0_4 = var_s0->unk8;
-                    temp_v1_2 = var_s0->unkA;
-                    var_v0 = func_80095E10(var_s1, var_t1, 0x400, 0x400, 0, 0, (s32) temp_v0_4, (s32) temp_v1_2, var_s0->unkC + arg2, var_s0->unkE + arg3, (var_t0 * 2) + D_8018D9B0, (s32) temp_v0_4, (s32) temp_v1_2);
-                    goto block_18;
-                }
-            } else {
-                temp_v0_5 = var_s0->unk8;
-                temp_v1_3 = var_s0->unkA;
-                var_v0 = func_800963F0(var_s1, var_t1, 0x400, 0x400, 0.5f, 0.5f, 0, 0, (s32) temp_v0_5, (s32) temp_v1_3, var_s0->unkC + arg2, var_s0->unkE + arg3, (var_t0 * 2) + D_8018D9B0, (s32) temp_v0_5, (s32) temp_v1_3);
-block_18:
-                var_s1 = var_v0;
-            }
-            temp_t2 = var_s0->unk18;
-            var_s0 += 0x14;
-        } while (temp_t2 != 0);
+        }
+        var_s0++;
     }
-    return var_s1;
+    return arg0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009C434.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-Gfx *func_80097E58(Gfx *, s8, ?, ?, s32, s32, s32, s32, u8 *, s32, s32, s32); /* extern */
-
+#ifdef NON_MATCHING
+// https://decomp.me/scratch/TK1UV
+// Some register allocation differences when accessing `D_802BFB80`
 Gfx *func_8009C708(Gfx *arg0, struct_8018DEE0_entry *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
-    Gfx *var_s0;
-    s16 temp_v0_2;
-    s32 temp_t5;
-    s8 var_t0;
-    u16 temp_v0_3;
-    u16 temp_v1;
-    void *temp_v0;
-    void *var_s1;
+    s32 var_t0;
+    s32 thing;
+    Gfx *temp;
+    MkTexture *var_s1;
 
-    var_s0 = arg0;
-    temp_v0 = segmented_to_virtual_dupe(arg1->textureSequence[arg1->sequenceIndex].mk64Texture);
-    var_s1 = temp_v0;
-    if (temp_v0->unk4 != 0) {
-        do {
-            temp_v0_2 = var_s1->unk0;
-            var_t0 = 0;
-            switch (temp_v0_2) {                    /* irregular */
-            default:
-                var_s0->words.w0 = 0x06000000;
-                var_s0->words.w1 = (u32) D_02007728;
-                var_s0 += 8;
-                break;
-            case 0:
-                var_s0->words.w0 = 0x06000000;
-                var_s0->words.w1 = (u32) D_02007708;
-                var_s0 += 8;
-                break;
-            case 1:
-                var_s0->words.w0 = 0x06000000;
-                var_s0->words.w1 = (u32) D_02007728;
-                var_s0 += 8;
-                break;
-            case 2:
-                var_s0->words.w1 = (u32) D_02007748;
-                var_s0->words.w0 = 0x06000000;
-                var_s0 += 8;
-                break;
-            case 3:
-                var_s0->words.w1 = (u32) D_02007768;
-                var_s0->words.w0 = 0x06000000;
-                var_s0 += 8;
-                var_t0 = 3;
-                break;
-            }
-            if (arg5 >= 0) {
-                temp_v0_3 = var_s1->unk8;
-                temp_v1 = var_s1->unkA;
-                var_s0 = func_80097E58(var_s0, var_t0, 0, 0, (s32) temp_v0_3, (s32) temp_v1, var_s1->unkC + arg2, var_s1->unkE + arg3, &D_802BFB80[0][0][4].pixel_index_array[(arg1->unk14 << 0x10) + ((arg4 / 2) << 0xF) + ((arg4 % 2) << 0xD)], (s32) temp_v0_3, (s32) temp_v1, arg5);
-            }
-            temp_t5 = var_s1->unk18;
-            var_s1 += 0x14;
-        } while (temp_t5 != 0);
+    var_s1 = segmented_to_virtual_dupe(arg1->textureSequence[arg1->sequenceIndex].mk64Texture);
+    temp = D_02007728;
+    while (var_s1->textureData != NULL) {
+        var_t0 = 0;
+        switch (var_s1->type) {                    /* irregular */
+        case 0:
+            gSPDisplayList(arg0++, D_02007708);
+            break;
+        case 1:
+            gSPDisplayList(arg0++, temp);
+            break;
+        case 2:
+            gSPDisplayList(arg0++, D_02007748);
+            break;
+        case 3:
+            gSPDisplayList(arg0++, D_02007768);
+            var_t0 = 3;
+            break;
+        default:
+            gSPDisplayList(arg0++, temp);
+            break;
+        }
+        if (arg5 >= 0) {
+            arg0 = func_80097E58(arg0, var_t0, 0, 0U, var_s1->width, var_s1->height, var_s1->dX + arg2, var_s1->dY + arg3, D_802BFB80[arg1->unk14][arg4 / 2][((arg4 % 2) + 2) * 2].pixel_index_array, var_s1->width, var_s1->height, (u32) arg5);
+        }
+        var_s1++;
     }
-    return var_s0;
+    return arg0;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009C708.s")
@@ -6377,172 +6031,158 @@ void func_8009CE1C(void) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-extern ? D_8018E7AC;
-s16 gCurrentCourseId;                               /* unable to generate initializer */
-
+#ifdef NON_MATCHING
+// https://decomp.me/scratch/NSiHw
+// Register allocation difference concerning the use of `gModeSelection`
+// See the `REGALLOC DIFF HERE` comment
 void func_8009CE64(s32 arg0) {
-    s32 sp28;
-    s8 *sp18;
-    s32 temp_t6;
-    s32 temp_t6_2;
-    s32 temp_v1;
-    s32 temp_v1_2;
+    s32 thing;
     s32 var_a1;
-    s32 var_a1_2;
-    s32 var_t7;
-    s32 var_v0;
-    s8 *temp_v0;
-    struct_8018D9E0_entry *temp_v0_2;
-    struct_8018D9E0_entry *temp_v0_3;
-    struct_8018D9E0_entry *temp_v0_4;
-    struct_8018D9E0_entry *temp_v0_5;
+    s32 stackPadding0;
+    struct_8018D9E0_entry *temp_v0;
 
     var_a1 = 0;
-    if (gGamestate == (s32) 5) {
-        if ((gCCSelection != 2) && (gCCSelection != 3)) {
-
-        } else if ((D_802874D8.unk1D < 3) && (gCupSelection == 3)) {
+    if (gGamestate == 5) {
+        if (2 != gCCSelection) {
+            thing = gCCSelection;
+            if (thing != 3) {
+                goto func_8009CE64_label1;
+            }
+            goto func_8009CE64_label2;
+        }
+func_8009CE64_label2:
+        if ((D_802874D8.unk1D < 3) && (gCupSelection == 3)) {
             var_a1 = 1;
         }
-        if (var_a1 != 0) {
+func_8009CE64_label1:
+        if (var_a1) {
             gMenuSelectionFromEndingSequence = 9;
             gCreditsCourseId = 8;
-            return;
+        } else {
+            gMenuSelectionFromEndingSequence = 1;
+            gMenuSelection = 0x0000000B;
         }
-        gMenuSelectionFromEndingSequence = 1;
-        gMenuSelection = 0x0000000B;
-        return;
-    }
-    if (gGamestate == 4) {
-        temp_v0 = arg0 + &D_8018E7AC;
-        if (*temp_v0 == 2) {
-            if (temp_v0 != &D_8018E7B0) {
-                *temp_v0 = 5;
-                return;
-            }
-            sp18 = temp_v0;
-            sp28 = 0;
-            temp_v0_2 = find_8018D9E0_entry(0x000000B0);
-            if (temp_v0_2 != NULL) {
-                temp_v1 = temp_v0_2->unk4;
-                switch (temp_v1) {                  /* switch 8; irregular */
-                case 10:                            /* switch 8 */
-                    func_802903B0();
-                    return;
-                case 11:                            /* switch 8 */
-                    func_80290388();
-                    return;
-                case 12:                            /* switch 8 */
-                    func_80290360();
-                    return;
-                default:                            /* switch 8 */
-                case 13:                            /* switch 8 */
-                    func_80290338();
-                    return;
-                }
+    } else if (gGamestate == 4) {
+        if (D_8018E7AC[arg0] == 2) {
+            if (arg0 != 4) {
+                D_8018E7AC[arg0] = 5;
             } else {
-                sp28 = 0;
-                temp_v0_3 = find_8018D9E0_entry(0x000000AC);
-                if (temp_v0_3 != NULL) {
-                    temp_v1_2 = temp_v0_3->unk4;
-                    switch (temp_v1_2) {            /* switch 7; irregular */
-                    case 11:                        /* switch 7 */
+                var_a1 = 0;
+                temp_v0 = find_8018D9E0_entry(0x000000B0);
+                if (temp_v0 != NULL) {
+                    switch (temp_v0->unk4) {                  /* switch 8; irregular */
+                    case 10:                            /* switch 8 */
                         func_802903B0();
-                        D_8016556E = 1;
-                        return;
-                    default:                        /* switch 7 */
-                    case 12:                        /* switch 7 */
+                        break;
+                    case 11:                            /* switch 8 */
+                        func_80290388();
+                        break;
+                    case 12:                            /* switch 8 */
+                        func_80290360();
+                        break;
+                    default:                            /* switch 8 */
+                    case 13:                            /* switch 8 */
                         func_80290338();
-                        return;
+                        break;
                     }
                 } else {
-                    sp28 = 0;
-                    temp_v0_4 = find_8018D9E0_entry(0x000000C7);
-                    var_a1_2 = 0;
-                    if (temp_v0_4 != NULL) {
-                        temp_t6 = temp_v0_4->unk4;
-                        switch (temp_t6) {          /* switch 1 */
-                        case 12:                    /* switch 1 */
+                    var_a1 = 0;
+                    temp_v0 = find_8018D9E0_entry(0x000000AC);
+                    if (temp_v0 != NULL) {
+                        switch (temp_v0->unk4) {            /* switch 7; irregular */
+                        case 11:                        /* switch 7 */
                             func_802903B0();
-                            var_a1_2 = 1;
+                            D_8016556E = 1;
                             break;
-                        case 13:                    /* switch 1 */
-                        case 22:                    /* switch 1 */
-                        case 42:                    /* switch 1 */
-                            func_80290388();
-                            var_a1_2 = 1;
-                            break;
-                        case 14:                    /* switch 1 */
-                        case 23:                    /* switch 1 */
-                        case 43:                    /* switch 1 */
-                            func_80290360();
-                            var_a1_2 = 1;
-                            break;
-                        case 15:                    /* switch 1 */
-                        case 24:                    /* switch 1 */
-                        case 32:                    /* switch 1 */
-                        case 44:                    /* switch 1 */
+                        default:                        /* switch 7 */
+                        case 12:                        /* switch 7 */
                             func_80290338();
-                            var_a1_2 = 1;
                             break;
-                        default:                    /* switch 1 */
-                            *sp18 = 5;
-                            break;
-                        }
-                        if (var_a1_2 != 0) {
-                            gIsGamePaused = 0;
-                        }
-                    }
-                    temp_v0_5 = find_8018D9E0_entry(0x000000BD);
-                    if (temp_v0_5 != NULL) {
-                        temp_t6_2 = temp_v0_5->unk4;
-                        switch (temp_t6_2) {        /* switch 2 */
-                        case 11:                    /* switch 2 */
-                            D_8015F892 = 1;
-                            D_8015F890 = 0;
-                            func_802903B0();
-                            return;
-                        case 12:                    /* switch 2 */
-                            D_8015F892 = 0;
-                            D_8015F890 = 0;
-                            func_80290388();
-                            return;
-                        case 13:                    /* switch 2 */
-                            D_8015F892 = 0;
-                            D_8015F890 = 0;
-                            func_80290360();
-                            return;
-                        case 14:                    /* switch 2 */
-                            D_8015F892 = 0;
-                            D_8015F890 = 0;
-                            func_80290338();
-                            return;
-                        case 15:                    /* switch 2 */
-                            D_8015F892 = 0;
-                            D_8015F890 = 1;
-                            func_802903B0();
-                            return;
                         }
                     } else {
-                        *sp18 = 5;
+                        var_a1 = 0;
+                        temp_v0 = find_8018D9E0_entry(0x000000C7);
+                        if (temp_v0 != NULL) {
+                            switch (temp_v0->unk4) {          /* switch 1 */
+                            case 12:                    /* switch 1 */
+                                func_802903B0();
+                                var_a1 = 1;
+                                break;
+                            case 13:                    /* switch 1 */
+                            case 22:                    /* switch 1 */
+                            case 42:                    /* switch 1 */
+                                func_80290388();
+                                var_a1 = 1;
+                                break;
+                            case 14:                    /* switch 1 */
+                            case 23:                    /* switch 1 */
+                            case 43:                    /* switch 1 */
+                                func_80290360();
+                                var_a1 = 1;
+                                break;
+                            case 15:                    /* switch 1 */
+                            case 24:                    /* switch 1 */
+                            case 32:                    /* switch 1 */
+                            case 44:                    /* switch 1 */
+                                func_80290338();
+                                var_a1 = 1;
+                                break;
+                            default:                    /* switch 1 */
+                                D_8018E7AC[arg0] = 5;
+                                break;
+                            }
+                            if (var_a1 != 0) {
+                                gIsGamePaused = 0;
+                            }
+                        }
+                        temp_v0 = find_8018D9E0_entry(0x000000BD);
+                        if (temp_v0 != NULL) {
+                            switch (temp_v0->unk4) {        /* switch 2 */
+                            case 11:                    /* switch 2 */
+                                D_8015F892 = 1;
+                                D_8015F890 = 0;
+                                func_802903B0();
+                                break;
+                            case 12:                    /* switch 2 */
+                                D_8015F892 = 0;
+                                D_8015F890 = 0;
+                                func_80290388();
+                                break;
+                            case 13:                    /* switch 2 */
+                                D_8015F892 = 0;
+                                D_8015F890 = 0;
+                                func_80290360();
+                                break;
+                            case 14:                    /* switch 2 */
+                                D_8015F892 = 0;
+                                D_8015F890 = 0;
+                                func_80290338();
+                                break;
+                            case 15:                    /* switch 2 */
+                                D_8015F892 = 0;
+                                D_8015F890 = 1;
+                                func_802903B0();
+                                break;
+                            default:                    /* switch 2 */
+                                break;
+                            }
+                        } else {
+                            D_8018E7AC[arg0] = 5;
+                        }
                     }
                 }
             }
         }
     } else {
-        *(&D_8018E7AC + arg0) = 0;
+        D_8018E7AC[arg0] = 0;
         if (gDebugMenuSelection != 0x40) {
             switch (D_8018EDE0) {                   /* switch 3 */
             case 0:                                 /* switch 3 */
-                var_t7 = gMenuSelection + 1;
                 if (gMenuSelection == 8) {
                     gMenuSelection = 0x0000000A;
                     D_800E86A4 = 2;
                 } else {
-block_74:
-                    gMenuSelection = var_t7;
+                    gMenuSelection++;
                 }
                 break;
             case 1:                                 /* switch 3 */
@@ -6556,84 +6196,87 @@ block_74:
                 switch (gNextDemoId) {              /* switch 4 */
                 case 0:                             /* switch 4 */
                     gCurrentCourseId = 0;
-                    gScreenModeSelection = SCREEN_MODE_1P;
-                    gPlayerCountSelection1 = (s32) 1;
+                    gScreenModeSelection = 0;
+                    gPlayerCountSelection1 = 1;
                     gPlayerCount = 1;
-                    gCharacterSelections->unk0 = 0;
+                    gCharacterSelections[0] = 0;
                     gModeSelection = 0;
                     break;
                 case 1:                             /* switch 4 */
                     gCurrentCourseId = (s16) 1;
-                    gScreenModeSelection = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
+                    gScreenModeSelection = (s32) 1;
                     gPlayerCountSelection1 = 2;
                     gPlayerCount = (s8) 2;
-                    gCharacterSelections->unk0 = (s8) 2;
-                    gCharacterSelections->unk1 = (s8) 4;
+                    gCharacterSelections[0] = (s8) 2;
+                    gCharacterSelections[1] = (s8) 4;
                     gModeSelection = 2;
                     break;
                 case 2:                             /* switch 4 */
                     gCurrentCourseId = 0x000B;
-                    gScreenModeSelection = SCREEN_MODE_1P;
+                    gScreenModeSelection = 0;
                     gPlayerCountSelection1 = (s32) 1;
                     gPlayerCount = 1;
-                    gCharacterSelections->unk0 = 1;
+                    gCharacterSelections[0] = 1;
                     gModeSelection = 0;
                     break;
                 case 3:                             /* switch 4 */
                     gCurrentCourseId = 0x000E;
-                    gScreenModeSelection = SCREEN_MODE_3P_4P_SPLITSCREEN;
+                    gScreenModeSelection = 3;
                     gPlayerCountSelection1 = 3;
                     gPlayerCount = (s8) 3;
-                    gCharacterSelections->unk0 = 5;
-                    gCharacterSelections->unk1 = 2;
-                    gCharacterSelections->unk2 = 7;
+                    gCharacterSelections[0] = 5;
+                    gCharacterSelections[1] = 2;
+                    gCharacterSelections[2] = 7;
                     gModeSelection = (s32) 2;
                     break;
                 case 4:                             /* switch 4 */
                     gCurrentCourseId = 2;
-                    gScreenModeSelection = SCREEN_MODE_1P;
+                    gScreenModeSelection = 0;
                     gPlayerCountSelection1 = (s32) 1;
                     gPlayerCount = 1;
-                    gCharacterSelections->unk0 = 7;
+                    gCharacterSelections[0] = 7;
                     gModeSelection = 0;
                     break;
                 case 5:                             /* switch 4 */
                     gCurrentCourseId = 0x000C;
-                    gScreenModeSelection = SCREEN_MODE_3P_4P_SPLITSCREEN;
+                    gScreenModeSelection = 3;
                     gPlayerCountSelection1 = 4;
-                    gPlayerCount = (s8) 4;
-                    gCharacterSelections->unk0 = 0;
-                    gCharacterSelections->unk1 = 1;
-                    gCharacterSelections->unk2 = 6;
-                    gCharacterSelections->unk3 = (s8) 3;
+                    gPlayerCount = 4;
+                    gCharacterSelections[0] = 0;
+                    gCharacterSelections[1] = 1;
+                    gCharacterSelections[2] = 6;
+                    gCharacterSelections[3] = 3;
                     gModeSelection = 2;
+                    break;
+                default:
                     break;
                 }
                 gNextDemoId += 1;
                 if (gNextDemoId >= 6) {
                     gNextDemoId = 0;
                 }
-                gCupSelection = (s8) gCupSelectionByCourseId[gCurrentCourseId];
+                gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
                 D_800DC540 = (s32) gCupSelection;
                 gCupCourseSelection = (s8) gPerCupIndexByCourseId[gCurrentCourseId];
                 break;
             case 3:                                 /* switch 3 */
-                if (gMenuSelection != 6) {
-                    if (gMenuSelection == 0x0000000B) {
-                        gMenuSelection = 6;
-                    }
-                } else {
-                    gMenuSelection = 0x0000000B;
+                switch (gMenuSelection) {
+                case 11:
+                    gMenuSelection = 6;
+                    break;
+                case 6:
+                    gMenuSelection = 11;
+                    break;
                 }
                 break;
             case 4:                                 /* switch 3 */
-                var_t7 = 0x0000000B;
-                if (gMenuSelection != (s32) 5) {
-                    if (gMenuSelection == 0x0000000B) {
-                        gMenuSelection = (s32) 5;
-                    }
-                } else {
-                    goto block_74;
+                switch (gMenuSelection) {
+                case 11:
+                    gMenuSelection = 5;
+                    break;
+                case 5:
+                    gMenuSelection = 11;
+                    break;
                 }
                 break;
             }
@@ -6648,64 +6291,70 @@ block_74:
                 func_8009CE1C();
             }
             D_8018EE0C = 0;
-            return;
-        }
-        switch (gDebugGotoScene) {                  /* switch 5; irregular */
-        case 1:                                     /* switch 5 */
-            gGamestateNext = (s32) 5;
-            break;
-        case 2:                                     /* switch 5 */
-        case 3:                                     /* switch 5 */
-            gGamestateNext = 9;
-            gCreditsCourseId = 8;
-            break;
-        default:                                    /* switch 5 */
-            gGamestateNext = 4;
-            if (gModeSelection == (s32) 1) {
-                D_8018EDFB = 1;
-            }
-            break;
-        }
-        func_8000F124();
-        if ((gScreenModeSelection == SCREEN_MODE_3P_4P_SPLITSCREEN) && ((gModeSelection == 0) || (gModeSelection == 1))) {
-            gModeSelection = 2;
-        }
-        if ((gCurrentCourseId != 0x000F) && (gCurrentCourseId != 0x0010) && (gCurrentCourseId != 0x0011) && (gCurrentCourseId != 0x0013)) {
-            var_v0 = gModeSelection;
-            if (var_v0 == 3) {
-                gModeSelection = 0;
-                var_v0 = 0;
-            }
-            if ((var_v0 == 2) && (gPlayerCountSelection1 == 1)) {
-                gModeSelection = 0;
-            }
         } else {
-            gModeSelection = 3;
-            if (gPlayerCountSelection1 == 1) {
-                gPlayerCount = (s8) 2;
-                gScreenModeSelection = SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL;
-                gPlayerCountSelection1 = (s32) gPlayerCount;
+            switch (gDebugGotoScene) {                  /* switch 5; irregular */
+            case 1:                                     /* switch 5 */
+                gGamestateNext = (s32) 5;
+                break;
+            case 2:                                     /* switch 5 */
+            case 3:                                     /* switch 5 */
+                gGamestateNext = 9;
+                gCreditsCourseId = 8;
+                break;
+            default:                                    /* switch 5 */
+                gGamestateNext = 4;
+                if (gModeSelection == (s32) 1) {
+                    D_8018EDFB = 1;
+                }
+                break;
             }
-        }
-        gCupSelection = (s8) gCupSelectionByCourseId[gCurrentCourseId];
-        D_800DC540 = (s32) gCupSelection;
-        gCupCourseSelection = (s8) gPerCupIndexByCourseId[gCurrentCourseId];
-        switch (gDebugGotoScene) {                  /* switch 6; irregular */
-        case 2:                                     /* switch 6 */
-            gCCSelection = 0;
-            return;
-        case 3:                                     /* switch 6 */
-            gCCSelection = 3;
-            return;
-        default:                                    /* switch 6 */
-            if (gCCSelection == 3) {
-                gIsMirrorMode = 1;
-                return;
+            func_8000F124();
+            if (gScreenModeSelection == 3) {
+                // REGALLOC DIFF HERE
+                if ((gModeSelection == 0) || (1 == gModeSelection)) {
+                    gModeSelection = 2;
+                }
             }
-            gIsMirrorMode = 0;
-        case 1:                                     /* switch 6 */
-        default:                                    /* switch 2 */
-            return;
+            switch (gCurrentCourseId) {
+            case COURSE_BLOCK_FORT:
+            case COURSE_SKYSCRAPER:
+            case COURSE_DOUBLE_DECK:
+            case COURSE_BIG_DONUT:
+                gModeSelection = 3;
+                if (gPlayerCountSelection1 == 1) {
+                    gPlayerCount = 2;
+                    gScreenModeSelection = 1;
+                    gPlayerCountSelection1 = gPlayerCount;
+                }
+                break;
+            default:
+                if (gModeSelection == 3) {
+                    gModeSelection = 0;
+                }
+                if ((gModeSelection == 2) && (gPlayerCountSelection1 == 1)) {
+                    gModeSelection = 0;
+                }
+            }
+            gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
+            D_800DC540 = gCupSelection;
+            gCupCourseSelection = gPerCupIndexByCourseId[gCurrentCourseId];
+            switch (gDebugGotoScene) {                  /* switch 6; irregular */
+            case 1:                                     /* switch 6 */
+                break;
+            case 2:                                     /* switch 6 */
+                gCCSelection = 0;
+                break;
+            case 3:                                     /* switch 6 */
+                gCCSelection = 3;
+                break;
+            default:                                    /* switch 6 */
+                if (gCCSelection == 3) {
+                    gIsMirrorMode = 1;
+                } else {
+                    gIsMirrorMode = 0;
+                }
+                break;
+            }
         }
     }
 }
@@ -6714,9 +6363,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009CE64.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-? func_8009CE64(s32);                               /* extern */
-extern ? D_8018E7B8;
+//generated by m2c commit beb457dabfc7a01ec6540a5404a6a05097a13602 on Dec-23-2023
 extern ? D_8018E7D0;
 extern ? D_8018E7E8;
 extern ? D_8018E810;
@@ -6724,19 +6371,18 @@ extern ? D_8018E810;
 void func_8009D77C(s32 arg0, s32 arg1, s32 arg2) {
     s32 sp44;
     u32 *sp3C;
-    u32 *sp38;
-    RGBA16 *temp_v0_5;
+    s32 *sp38;
+    RGBA16 *temp_v0_4;
     s16 var_ra;
     s16 var_t3;
     s16 var_t4;
+    s32 *temp_t5;
     s32 temp_t8;
     s32 temp_v0;
     s32 temp_v0_2;
-    s32 temp_v0_4;
     s32 temp_v1_3;
     struct UnkStruct_800DC5EC *temp_v0_3;
     u32 *temp_t1;
-    u32 *temp_t5;
     u32 temp_t6;
     u32 var_t2;
     void *temp_a0;
@@ -6767,19 +6413,18 @@ void func_8009D77C(s32 arg0, s32 arg1, s32 arg2) {
         var_ra = temp_v0_3->screenWidth;
         sp44 = (s32) temp_v0_3->screenHeight;
     }
-    temp_v0_4 = arg0 * 4;
-    temp_t1 = temp_v0_4 + &D_8018E7D0;
-    temp_t5 = temp_v0_4 + &D_8018E7B8;
+    temp_t1 = (arg0 * 4) + &D_8018E7D0;
+    temp_t5 = &D_8018E7B8[arg0];
     var_t2 = (u32) (*temp_t1 * 0xFF) / (u32) *temp_t5;
     if ((s32) var_t2 >= 0x100) {
         var_t2 = 0x000000FF;
     }
     temp_v1_3 = var_ra / 2;
     temp_t8 = sp44 / 2;
-    temp_v0_5 = &D_800E7AE8[arg2];
+    temp_v0_4 = &D_800E7AE8[arg2];
     sp3C = temp_t1;
     sp38 = temp_t5;
-    gDisplayListHead = draw_box(gDisplayListHead, var_t3 - temp_v1_3, var_t4 - temp_t8, temp_v1_3 + var_t3, temp_t8 + var_t4, (s32) temp_v0_5->red, (s32) temp_v0_5->green, (s32) temp_v0_5->blue, (s32) var_t2);
+    gDisplayListHead = draw_box(gDisplayListHead, var_t3 - temp_v1_3, var_t4 - temp_t8, temp_v1_3 + var_t3, temp_t8 + var_t4, (s32) temp_v0_4->red, (s32) temp_v0_4->green, (s32) temp_v0_4->blue, (s32) var_t2);
     if (arg1 == 0) {
         temp_t6 = *temp_t1 + 1;
         *temp_t1 = temp_t6;
@@ -6854,8 +6499,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009D998.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-? func_8009CE64(?, ? *);                            /* extern */
+//generated by m2c commit beb457dabfc7a01ec6540a5404a6a05097a13602 on Dec-23-2023
 extern u32 D_8018E7C8;
 extern ? D_8018E7D0;
 
@@ -6867,7 +6511,7 @@ void func_8009DAA8(void) {
     temp_t8 = D_8018E7D0.unk10 + 1;
     D_8018E7D0.unk10 = temp_t8;
     if (temp_t8 >= (u32) (D_8018E7C8 + 1)) {
-        func_8009CE64(4, &D_8018E7D0);
+        func_8009CE64(4);
     }
     temp_v1 = gDisplayListHead;
     gDisplayListHead = temp_v1 + 8;
@@ -6884,8 +6528,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009DAA8.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-? func_8009CE64(?);                                 /* extern */
+//generated by m2c commit beb457dabfc7a01ec6540a5404a6a05097a13602 on Dec-23-2023
 extern s32 D_8018D9B8;
 extern u32 D_8018E7C8;
 extern ? D_8018E7D0;
@@ -7064,21 +6707,18 @@ void func_8009E088(s32 arg0, s32 arg1) {
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
+//generated by m2c commit beb457dabfc7a01ec6540a5404a6a05097a13602 on Dec-23-2023
 extern s32 D_8018D9B8;
-extern ? D_8018E7AC;
-extern ? D_8018E7B8;
-extern s32 D_8018E7E0;
 
 void func_8009E0F0(s32 arg0) {
     s32 var_v0;
     void *temp_t6;
 
-    if (D_8018E7AC.unk4 != 3) {
-        D_8018E7AC.unk4 = 3;
-        D_8018E7B8.unk10 = arg0;
+    if (D_8018E7AC->unk4 != 3) {
+        D_8018E7AC->unk4 = 3;
+        D_8018E7B8->unk10 = arg0;
         if ((u32) arg0 >= 0x100U) {
-            D_8018E7B8.unk10 = 0x000000FF;
+            D_8018E7B8->unk10 = 0x000000FF;
         }
         D_8018E7E0 = 0;
         var_v0 = 0;
@@ -7234,92 +6874,59 @@ void func_8009E620(void) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-? func_8006EF60();                                  /* extern */
-s32 func_8009A374(void *);                          /* extern */
-s32 func_8009A478(void *, s32);                     /* extern */
-? func_8009B0A4(?, ?);                              /* extern */
-? func_8009B538(?, ?, u16, u16, s32);               /* extern */
-s32 func_800B5218();                                /* extern */
-extern ? D_801640F4;
-extern u32 D_8018CA78;
-u64 gTexture7ED50C[0x32];
-
+#ifdef NON_MATCHING
+// https://decomp.me/scratch/1BHpa
+// Mostly register allocation stuff, but near `case 0xD4` there's a missing `move v0,zero` instruction
+// I have no idea what's up with that.
 void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
-    struct_8018D9E0_entry *sp7C;
-    Gfx *sp6C;
-    s32 sp3C;
-    MkTexture **sp24;                               /* compiler-managed */
-    s32 sp20;
-    Gfx *temp_v0;
-    Gfx *temp_v1;
-    Gfx *temp_v1_2;
-    Gfx *temp_v1_3;
-    Gfx *temp_v1_4;
-    Gfx *temp_v1_5;
-    Gfx *temp_v1_6;
-    Gfx *temp_v1_7;
-    Gfx *temp_v1_8;
-    Gfx *temp_v1_9;
-    MkAnimation *var_a0;
-    MkAnimation *var_a0_2;
-    MkTexture **temp_v0_3;
-    MkTexture **var_v1;
-    MkTexture **var_v1_2;
-    RGBA16 *temp_v0_2;
-    Unk_D_800E70A0 *temp_v0_4;
-    s32 temp_t9;
-    s32 temp_v0_5;
-    s32 temp_v0_6;
-    s32 temp_v0_7;
-    s32 var_a2;
-    s32 var_v0;
-    s32 var_v0_2;
-    s32 var_v1_3;
-    s32 var_v1_4;
-    s32 var_v1_5;
-    s8 temp_a1;
-    s8 temp_a1_2;
     struct_8018D9E0_entry *var_ra;
+    s32 stackPadding0;
+    s32 stackPadding1;
+    s32 stackPadding2;
+    s32 temp_v0_6;
+    s32 var_v0;
+    s32 var_v1_3;
+    s32 temp_a1;
+    MkTexture *mk64Texture;
+    MkAnimation *var_a0;
+    s32 one = 1;
 
     var_v0 = 0;
     var_ra = D_8018D9E0;
-loop_1:
-    var_v0 += 1;
-    if (var_ra->type != 0) {
-        if (var_v0 >= 0x21) {
-loop_3:
-            goto loop_3;
+    while (1) {
+        var_v0++;
+        if (var_ra->type == 0) break;
+
+        if (var_v0 > 0x20) {
+            while(1) {}
         }
-        var_ra += 0x28;
-        goto loop_1;
+        var_ra++;
     }
+    var_ra->type = type;
     var_ra->unk4 = 0;
     var_ra->unk8 = 0;
     var_ra->column = column;
     var_ra->row = row;
     var_ra->priority = (u8) priority;
-    var_ra->visible = 1;
+    var_ra->visible = one;
     var_ra->unk1C = 0;
     var_ra->unk20 = 0;
-    var_ra->type = type;
     switch (type) {                                 /* irregular */
     case 0xFA:
         s8018ED94 = 0;
         D_800E8530 = 0.0f;
         D_800E8534 = 3.0f;
         D_8018EDC0 = 0x000009C4;
-        D_8018EDC8 = 0.0f;
+        D_8018EDC8 = 0;
         D_8018EDCC = -270.0f;
-        D_8018EDD0 = 0.0f;
-        D_8018EDD4 = 0.0f;
-        D_8018EDD8 = 0.0f;
-        D_8018EDDC = 0.0f;
-        D_8018EDC4 = 3.0f;
+        D_8018EDD0 = 0;
+        D_8018EDD4 = 0;
+        D_8018EDD8 = 0;
+        D_8018EDDC = 0;
+        D_8018EDC4 = 3;
         var_ra->unk1C = -1;
-        var_ra->unk20 = (s32) 1U;
-        return;
+        var_ra->unk20 = one;
+        break;
     case 0xFB:
         D_8018EDC0 = 0x00000708;
         D_8018EDC8 = -51.0f;
@@ -7327,84 +6934,37 @@ loop_3:
         D_8018EDD0 = -18.0f;
         D_8018EDD4 = -270.0f;
         D_8018EDD8 = 750.0f;
-        D_8018EDDC = 0.0f;
+        D_8018EDDC = 0;
         D_8018EDC4 = 1.0f;
         var_ra->unk1C = -1;
-        var_ra->unk20 = (s32) 1U;
-        return;
+        var_ra->unk20 = one;
+        break;
     case 0xD2:
-        sp7C = var_ra;
         func_800996BC(D_020014C8, 0);
         func_8009B954(D_020014C8);
         D_8018E75C = func_8009BA74(D_8018E75C, D_020014C8, var_ra->column, var_ra->row);
         func_8009B998();
-        return;
+        break;
     case 0xD3:
-        sp7C = var_ra;
         func_800996BC(D_02001540, 0);
         func_8009B954(D_02001540);
         D_8018E75C = func_8009BA74(D_8018E75C, D_02001540, var_ra->column, var_ra->row);
         func_8009B998();
-        return;
+        break;
     case 0xD4:
-        sp7C = var_ra;
         func_800996BC(D_0200157C, 0);
         func_80099184(D_02001874);
-        var_v1 = D_800E7AF8;
         var_ra->row = 0x00000069;
-        do {
-            sp24 = var_v1;
-            func_80099184(segmented_to_virtual_dupe(*var_v1));
-            var_v1 += 4;
-        } while (var_v1 != D_800E7D0C);
-        return;
+        for (var_v0 = 0; var_v0 < 133; var_v0++) {
+            func_80099184(segmented_to_virtual_dupe(D_800E7AF8[var_v0]));
+        }
+        break;
     case 0xD5:
-        sp7C = var_ra;
         func_80099184(D_020015A4);
         func_8009B954(D_020015A4);
-        temp_v0 = func_8009BA74(D_8018E75C, D_020015A4, var_ra->column, var_ra->row);
-        D_8018E75C = temp_v0;
-        D_8018E75C = temp_v0 + 8;
-        temp_v0->words.w0 = 0xFD700000;
-        sp6C = temp_v0;
-        sp6C->words.w1 = func_8009B8C4(gTexture7ED50C);
-        temp_v1 = D_8018E75C;
-        D_8018E75C = temp_v1 + 8;
-        temp_v1->words.w0 = 0xF5700000;
-        temp_v1->words.w1 = 0x07080200;
-        temp_v1_2 = D_8018E75C;
-        D_8018E75C = temp_v1_2 + 8;
-        temp_v1_2->words.w1 = 0;
-        temp_v1_2->words.w0 = 0xE6000000;
-        temp_v1_3 = D_8018E75C;
-        D_8018E75C = temp_v1_3 + 8;
-        temp_v1_3->words.w1 = 0x074FF020;
-        temp_v1_3->words.w0 = 0xF3000000;
-        temp_v1_4 = D_8018E75C;
-        D_8018E75C = temp_v1_4 + 8;
-        temp_v1_4->words.w1 = 0;
-        temp_v1_4->words.w0 = 0xE7000000;
-        temp_v1_5 = D_8018E75C;
-        D_8018E75C = temp_v1_5 + 8;
-        temp_v1_5->words.w0 = 0xF5708000;
-        temp_v1_5->words.w1 = 0x00080200;
-        temp_v1_6 = D_8018E75C;
-        D_8018E75C = temp_v1_6 + 8;
-        temp_v1_6->words.w0 = 0xF2000000;
-        temp_v1_6->words.w1 = 0x003FC010;
-        temp_v1_7 = D_8018E75C;
-        D_8018E75C = temp_v1_7 + 8;
-        temp_v1_7->words.w1 = 0x000802C0;
-        temp_v1_7->words.w0 = 0xE44802D4;
-        temp_v1_8 = D_8018E75C;
-        D_8018E75C = temp_v1_8 + 8;
-        temp_v1_8->words.w1 = 0x00000080;
-        temp_v1_8->words.w0 = 0xB3000000;
-        temp_v1_9 = D_8018E75C;
-        D_8018E75C = temp_v1_9 + 8;
-        temp_v1_9->words.w0 = 0xB2000000;
-        temp_v1_9->words.w1 = 0x0400FC00;
-        sp7C = var_ra;
+        D_8018E75C = func_8009BA74(D_8018E75C, D_020015A4, var_ra->column, var_ra->row);
+        gDPLoadTextureBlock(D_8018E75C++, func_8009B8C4(gTexture7ED50C), G_IM_FMT_IA, G_IM_SIZ_16b, 256, 5, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+        gSPTextureRectangle(D_8018E75C++, 0x80, 0x2C0, 0x480, 0x2D4, G_TX_RENDERTILE, 0, 0x80, 0x0400, 0xFC00);
         func_8009B998();
         func_80099184(D_020015CC);
         func_8009B954(D_020015CC);
@@ -7418,47 +6978,42 @@ loop_3:
         func_8009B954(D_02001658);
         D_8018E75C = func_8009BA74(D_8018E75C, D_02001658, var_ra->column, var_ra->row);
         func_8009B998();
-        return;
+        break;
     case 0xD6:
-        sp7C = var_ra;
-        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(*D_800E7D34));
-        return;
+        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E7D34[0]));
+        break;
     case 0xD7:
-        var_v1_2 = D_800E7D0C;
-        do {
-            sp24 = var_v1_2;
-            func_80099184(segmented_to_virtual_dupe(*var_v1_2));
-            var_v1_2 += 4;
-        } while (var_v1_2 != D_800E7D34);
-        return;
+        for (var_v0 = 0; var_v0 < 10; var_v0++) {
+            func_80099184(segmented_to_virtual_dupe(D_800E7D0C[var_v0]));
+        }
+        break;
     case 0xD8:
     case 0xD9:
         func_80099184(D_0200184C);
-        return;
+        break;
     case 0x1:
         func_800996BC(D_800E7D4C[func_800B555C()], 0);
-        return;
+        break;
     case 0x2:
         func_8006EE44();
         gD_8018E118TotalSize += 0x10000;
         func_80099184(D_020045E8);
-        return;
+        break;
     case 0x3:
         func_80099184(D_02004610);
-        return;
+        break;
     case 0x23:
     case 0x24:
     case 0x25:
         func_800996BC(D_800E7D4C[func_800B555C()], 0);
         func_800996BC(D_02004B74, 0);
-        func_8009B0A4(0, 0x19);
-        temp_v0_2 = &D_800E74E8[type];
-        func_8009B538(0, 0x12C00, temp_v0_2->unk-118, temp_v0_2->unk-116, (s32) temp_v0_2->unk-114);
-        return;
+        func_8009B0A4(0, 0x00000019);
+        func_8009B538(0, 0x00012C00, D_800E74E8[type - 0x23].red, D_800E74E8[type - 0x23].green, D_800E74E8[type - 0x23].blue);
+        break;
     case 0xF:
         var_ra->unk1C = 0x00000020;
         /* fallthrough */
-    case 0xA:
+    case 0x0A:
     case 0x10:
     case 0x11:
     case 0x12:
@@ -7469,31 +7024,28 @@ loop_3:
     case 0x17:
     case 0x18:
     case 0x19:
-        func_800996BC(segmented_to_virtual_dupe(D_800E822C[type]), 0);
-        return;
+        func_800996BC(segmented_to_virtual_dupe(D_800E8274[type - 0x12]), 0);
+        break;
     case 0xB:
     case 0xC:
     case 0xD:
     case 0xE:
-        temp_v0_3 = (type * 8) + D_800E8234;
-        sp24 = temp_v0_3;
-        func_800996BC(segmented_to_virtual_dupe(temp_v0_3->unk-58), 0);
-        func_80099184(segmented_to_virtual_dupe(sp24->unk-54));
-        return;
+        func_800996BC(segmented_to_virtual_dupe(D_800E8234[type - 0xB][0]), 0);
+        func_80099184(segmented_to_virtual_dupe(D_800E8234[type - 0xB][1]));
+        break;
     case 0x2A:
         func_800996BC(D_02004B4C, 0);
-        return;
+        break;
     case 0x33:
-        sp7C = var_ra;
         func_800996BC(D_02004B74, 0);
         var_ra->unk1C = 0x00000020;
-        return;
+        break;
     case 0x34:
     case 0x35:
     case 0x36:
     case 0x37:
-        func_80099184(segmented_to_virtual_dupe(D_800E81E4[type]));
-        return;
+        func_80099184(segmented_to_virtual_dupe(D_800E82B4[type - 0x34]));
+        break;
     case 0x2B:
     case 0x2C:
     case 0x2D:
@@ -7502,16 +7054,13 @@ loop_3:
     case 0x30:
     case 0x31:
     case 0x32:
-        sp7C = var_ra;
-        sp24 = type * 4;
-        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E8274[type]));
-        func_800996BC(segmented_to_virtual_dupe(*(D_800E7CA8 + sp24)), 0);
-        return;
+        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E8320[type - 0x2B]));
+        func_800996BC(segmented_to_virtual_dupe(D_800E7D54[type - 0x2B]), 0);
+        break;
     case 0xA0:
     case 0xA1:
-        sp7C = var_ra;
-        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E80A0[type]));
-        return;
+        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E8320[type - 0xA0]));
+        break;
     case 0x5D:
         var_ra->unk1C = 0x00000020;
         /* fallthrough */
@@ -7525,67 +7074,63 @@ loop_3:
     case 0x5A:
     case 0x5B:
     case 0x5C:
-        func_800996BC(segmented_to_virtual_dupe(D_800E817C[type]), 0);
-        return;
+        func_800996BC(segmented_to_virtual_dupe(D_800E82C8[type - 0x53]), 0);
+        break;
     case 0x5F:
     case 0x60:
     case 0x61:
     case 0x62:
-        sp7C = var_ra;
-        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E7E34[*(gCupCourseOrder - 0xBE + (var_ra->type * 2))]));
-        return;
+        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[0][var_ra->type - 0x5F]]));
+        break;
     case 0x5E:
-        sp7C = var_ra;
         var_ra->unk20 = random_int(4U) + 2;
-        return;
+        break;
     case 0x65:
     case 0x66:
-        temp_v0_4 = &D_800E7248[type];
-        var_ra->column = (s32) temp_v0_4->unk-328;
-        var_ra->row = (s32) temp_v0_4->unk-326;
-        return;
+        var_ra->column = D_800E7248[type - 0x65].column;
+        var_ra->row = D_800E7248[type - 0x65].row;
+        break;
     case 0x67:
         var_ra->unk1C = (s32) gCupSelection;
-        sp7C = var_ra;
-        temp_v0_5 = func_800B54C0((s32) gCupSelection, gCCSelection);
-        var_ra->unk20 = temp_v0_5;
-        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(*(D_800E7E20 + ((((s32) gCCSelection / 2) * 0x10) + -(temp_v0_5 * 4)))));
-        var_ra->column = (s32) D_800E7268->column;
-        var_ra->row = (s32) D_800E7268->row;
-        return;
+        var_ra->unk20 = func_800B54C0(gCupSelection, gCCSelection);
+        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection/2) * 4) - var_ra->unk20]));
+        var_ra->column = D_800E7268[0].column;
+        var_ra->row = D_800E7268[0].row;
+        break;
     case 0x68:
-        sp7C = var_ra;
         func_800996BC(segmented_to_virtual_dupe(D_800E8294[gCCSelection]), 0);
         var_ra->column = 0x00000037;
         var_ra->row = 0x000000C3;
-        return;
+        break;
     case 0x69:
         func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
         if (controller_pak_1_status() == 0) {
             func_800B6708();
-            return;
+        } else {
+            // ? D_8018EE10[1].ghostDataSaved =  D_8018EE10[0].ghostDataSaved = 0;
+            D_8018EE10[0].ghostDataSaved = 0;
+            D_8018EE10[1].ghostDataSaved = 0;
         }
-        D_8018EE10->ghostDataSaved = 0;
-        D_8018EE10->unk84 = 0;
-        return;
+        break;
     case 0x78:
     case 0x79:
     case 0x7A:
     case 0x7B:
-        func_800996BC(segmented_to_virtual_dupe(D_800E8114[type]), 0);
-        return;
+        func_800996BC(segmented_to_virtual_dupe(D_800E82F4[type - 0x78]), 0);
+        break;
     case 0x8C:
         func_800996BC(segmented_to_virtual_dupe(D_02004A34), 0);
         if (controller_pak_1_status() == 0) {
             func_800B6708();
-            return;
+        } else {
+            // ? D_8018EE10[1].ghostDataSaved =  D_8018EE10[0].ghostDataSaved = 0;
+            D_8018EE10[0].ghostDataSaved = 0;
+            D_8018EE10[1].ghostDataSaved = 0;
         }
-        D_8018EE10->ghostDataSaved = 0;
-        D_8018EE10->unk84 = 0;
-        return;
+        break;
     case 0x8D:
         func_80099184(segmented_to_virtual_dupe(D_02001FA4));
-        return;
+        break;
     case 0x7C:
     case 0x7D:
     case 0x7E:
@@ -7602,106 +7147,154 @@ loop_3:
     case 0x89:
     case 0x8A:
     case 0x8B:
-        sp7C = var_ra;
         temp_v0_6 = var_ra->type - 0x7C;
-        func_800996BC(segmented_to_virtual_dupe(D_800E7D74[*(gCupCourseOrder + (((temp_v0_6 / 4) * 8) + ((temp_v0_6 % 4) * 2)))]), -1);
-        temp_v0_7 = var_ra->type - 0x7C;
-        func_800996BC(segmented_to_virtual_dupe(D_800E7DC4[*(gCupCourseOrder + (((temp_v0_7 / 4) * 8) + ((temp_v0_7 % 4) * 2)))]), 0);
+        func_800996BC(segmented_to_virtual_dupe(D_800E7D74[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]), -1);
+        temp_v0_6 = var_ra->type - 0x7C;
+        func_800996BC(segmented_to_virtual_dupe(D_800E7DC4[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]), 0);
         func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
-        return;
+        break;
     case 0xB1:
     case 0xB2:
     case 0xB3:
     case 0xB4:
-        temp_a1 = D_800EFD64[(gCharacterSelections - 0xB1)[type]];
+        temp_a1 = D_800EFD64[gCharacterSelections[type - 0xB1]];
         var_v1_3 = 0;
-        if (gModeSelection != 2) {
-            if (gModeSelection != 3) {
-                var_a2 = type * 4;
-            } else {
-                var_a2 = type * 4;
-                if (type != (gPlayerWinningIndex + 0xB1)) {
-                    goto block_63;
-                }
-            }
-        } else {
-            temp_t9 = type * 4;
-            var_a2 = temp_t9;
-            if (*(&D_801640F4 + temp_t9) != 0) {
-block_63:
+        stackPadding0 = type - 0xB1;
+        switch(gModeSelection) {
+        case 2:
+            if (gGPCurrentRaceRankByPlayerId[type - 0xB1] != 0) {
                 var_v1_3 = 1;
             }
+            break;
+        case 3:
+            if ((type - 0xB1) != gPlayerWinningIndex) {
+                var_v1_3 = 1;
+            }
+            break;
+        default:
+            break;
         }
         if (var_v1_3 != 0) {
-            var_v1_4 = temp_a1 * 4;
             var_a0 = gCharacterDefeatAnimation[temp_a1];
         } else {
-            var_v1_4 = temp_a1 * 4;
             var_a0 = D_800E8320[temp_a1];
         }
-        sp7C = var_ra;
-        sp20 = var_v1_4;
-        sp24 = var_a2;
-        sp3C = type - 0xB1;
-        var_ra->D_8018DEE0_index = func_8009A478(segmented_to_virtual_dupe_2(var_a0), sp3C);
-        func_800996BC(segmented_to_virtual_dupe(*(D_800E7D54 + var_v1_4)), 0);
-        func_80099184(segmented_to_virtual_dupe(*(D_800E7FF0 + var_a2)));
-        return;
+        var_ra->D_8018DEE0_index = func_8009A478(segmented_to_virtual_dupe_2(var_a0), stackPadding0);
+        func_800996BC(segmented_to_virtual_dupe(D_800E7D54[temp_a1]), 0);
+        func_80099184(segmented_to_virtual_dupe(D_800E82B4[type - 0xB1]));
+        break;
     case 0xBB:
-        sp7C = var_ra;
-        var_ra->unk1C = func_800B5020(D_8018CA78, (s32) *gCharacterSelections);
+        var_ra->unk1C = func_800B5020(D_8018CA78, gCharacterSelections[0]);
         var_ra->unk20 = func_800B5218();
-        if (*D_80162DD4 != 1) {
-            sp7C = var_ra;
+        if (D_80162DD4 != 1) {
             if (func_800051C4() >= 0x3C01) {
-                *D_80162DD4 = 1;
+                D_80162DD4 = 1;
             }
         }
         if ((var_ra->unk1C == 0) || (var_ra->unk20 != 0)) {
-            func_800B559C((gCupSelection * 4) + gCupCourseSelection);
-            return;
+            func_800B559C(gCupCourseSelection + (gCupSelection * 4));
         }
-        return;
+        break;
     case 0xE6:
-        sp7C = var_ra;
-        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E7E34[*(gCupCourseOrder + ((((s8) gTimeTrialDataCourseIndex / 4) * 8) + (((s8) gTimeTrialDataCourseIndex % 4) * 2)))]));
-        var_ra->unk1C = (s32) gTimeTrialDataCourseIndex;
+        var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4]]));
+        var_ra->unk1C = gTimeTrialDataCourseIndex;
         func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
         func_8006EF60();
         if (controller_pak_1_status() == 0) {
             func_800B6708();
-            return;
+        } else {
+            D_8018EE10[0].ghostDataSaved = 0;
+            D_8018EE10[1].ghostDataSaved = 0;
         }
-        D_8018EE10->ghostDataSaved = 0;
-        D_8018EE10->unk84 = 0;
-        return;
+        break;
     case 0xF0:
         var_ra->unk4 = (s32) gSoundMode;
-        return;
+        break;
     case 0xF1:
         func_800996BC(segmented_to_virtual_dupe(D_02004638), 0);
-        return;
+        break;
     case 0xBE:
         D_8018ED90 = 0;
-        return;
+        break;
     case 0x130:
-        temp_a1_2 = D_800EFD64[D_802874D8.unk_1E];
-        if (D_802874D8.unk_1D >= 3) {
-            var_v0_2 = 1;
+        temp_a1 = D_800EFD64[D_802874D8.unk1E];
+        if (D_802874D8.unk1D >= 3) {
+            var_v0 = 1;
         } else {
-            var_v0_2 = 0;
+            var_v0 = 0;
         }
-        var_v1_5 = temp_a1_2 * 4;
-        if (var_v0_2 != 0) {
-            var_v1_5 = temp_a1_2 * 4;
-            var_a0_2 = gCharacterDefeatAnimation[temp_a1_2];
+        if (var_v0 != 0) {
+            var_a0 = gCharacterDefeatAnimation[temp_a1];
         } else {
-            var_a0_2 = D_800E8320[temp_a1_2];
+            var_a0 = D_800E8320[temp_a1];
         }
-        sp7C = var_ra;
-        sp20 = var_v1_5;
-        var_ra->D_8018DEE0_index = func_8009A478(segmented_to_virtual_dupe_2(var_a0_2), 0);
-        func_800996BC(segmented_to_virtual_dupe(*(D_800E7D54 + var_v1_5)), 0);
+        var_ra->D_8018DEE0_index = func_8009A478(segmented_to_virtual_dupe_2(var_a0), 0);
+        func_800996BC(segmented_to_virtual_dupe(D_800E7D54[temp_a1]), 0);
+        break;
+    case 0x190:
+    case 0x191:
+    case 0x192:
+    case 0x193:
+    case 0x194:
+    case 0x195:
+    case 0x196:
+    case 0x197:
+    case 0x198:
+    case 0x199:
+    case 0x19A:
+    case 0x19B:
+    case 0x19C:
+    case 0x19D:
+    case 0x19E:
+    case 0x19F:
+    case 0x1A0:
+    case 0x1A1:
+    case 0x1A2:
+    case 0x1A3:
+    case 0x1A4:
+    case 0x1A5:
+    case 0x1A6:
+    case 0x1A7:
+    case 0x1A8:
+    case 0x1A9:
+    case 0x1AA:
+    case 0x1AB:
+    case 0x1AC:
+    case 0x1AD:
+    case 0x1AE:
+    case 0x1AF:
+    case 0x1B0:
+    case 0x1B1:
+    case 0x1B2:
+    case 0x1B3:
+    case 0x1B4:
+    case 0x1B5:
+    case 0x1B6:
+    case 0x1B7:
+    case 0x1B8:
+    case 0x1B9:
+    case 0x1BA:
+    case 0x1BB:
+    case 0x1BC:
+    case 0x1BD:
+    case 0x1BE:
+    case 0x1BF:
+    case 0x1C0:
+    case 0x1C1:
+    case 0x1C2:
+    case 0x1C3:
+    case 0x1C4:
+    case 0x1C5:
+    case 0x1C6:
+    case 0x1C7:
+    case 0x1C8:
+    case 0x1C9:
+    case 0x1CA:
+    case 0x1CB:
+    case 0x1CC:
+    case 0x1CD:
+    case 0x1CE:
+    default:
         break;
     }
 }
@@ -7709,99 +7302,56 @@ block_63:
 GLOBAL_ASM("asm/non_matchings/code_80091750/add_8018D9E0_entry.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-03-2023
-Gfx *draw_flash_select_case_fast(Gfx *, s32, s32, s32, s32);      /* extern */
-Gfx *func_80096CD8(Gfx *, ?, ?, ?, s32);            /* extern */
-? func_800A0B80(struct_8018D9E0_entry *);           /* extern */
-? func_800A1780(struct_8018D9E0_entry *);           /* extern */
-? func_800A1FB0(struct_8018D9E0_entry *);           /* extern */
-? func_800A638C(struct_8018D9E0_entry *);           /* extern */
-s16 gCurrentCourseId;                               /* unable to generate initializer */
-
+#ifdef NON_MATCHING
+// Lots of work left to be done.
+// There's a pretty huge diff in the `case 0x4` block concerning all the math
+// being done. Not sure what's up there yet.
+// spAC and spA8 are used in `case 0x8C` without being intitialized. I don't know if that's
+// a result of wonky decompilation or if that's real.
 void func_8009F5E0(struct_8018D9E0_entry *arg0) {
     s32 spAC;
     s32 spA8;
+    s32 stackPadding0;
     MkTexture *sp9C;
-    s8 sp80;
-    s32 sp58;
-    f32 sp4C;
-    s32 sp44;
-    s8 **sp40;
-    s32 sp3C;
-    f32 sp38;
-    Gfx *temp_v0;
-    Gfx *temp_v0_2;
-    Gfx *temp_v0_3;
-    Gfx *temp_v1;
-    Gfx *temp_v1_2;
-    Gfx *var_v0_2;
-    Gfx *var_v0_3;
+    s32 stackPadding1;
+    s32 stackPadding2;
+    s32 stackPadding3;
+    s32 stackPadding4;
+    char sp80[3];
     f32 var_f0;
     s32 temp_a0;
-    s32 temp_a0_2;
-    s32 temp_a0_3;
-    s32 temp_a1;
-    s32 temp_a1_2;
-    s32 temp_a1_3;
-    s32 temp_a1_4;
-    s32 temp_a1_5;
-    s32 temp_a2;
-    s32 temp_a2_2;
-    s32 temp_a2_3;
-    s32 temp_a2_4;
-    s32 temp_a2_5;
-    s32 temp_a2_6;
-    s32 temp_t1;
+    s32 stackPadding5;
     s32 temp_t2;
     s32 temp_t4;
     s32 temp_t5;
-    s32 temp_t8;
     s32 temp_t9;
     s32 temp_v0_4;
-    s32 temp_v0_5;
-    s32 temp_v0_6;
-    s32 temp_v0_7;
-    s32 temp_v0_8;
     s32 temp_v1_3;
-    s32 temp_v1_4;
-    s32 temp_v1_5;
-    s32 temp_v1_7;
-    s32 temp_v1_8;
     s32 var_a1;
-    s32 var_a2_2;
-    s32 var_a2_3;
     s32 var_t0;
-    s32 var_t0_2;
     s32 var_v1;
-    s8 **var_v0;
-    s8 temp_v1_6;
-    s8 var_a2;
+    s32 var_a2;
 
     if ((s8) arg0->visible != 0) {
-        temp_v1 = gDisplayListHead;
-        gDisplayListHead = temp_v1 + 8;
-        temp_v1->words.w1 = 0;
-        temp_v1->words.w0 = 0xE7000000;
-        var_t0 = arg0->type;
-        switch (var_t0) {                           /* switch 6; irregular */
+        gDPPipeSync(gDisplayListHead++);
+        switch (arg0->type) {                           /* switch 6; irregular */
         case 0xFA:                                  /* switch 6 */
             func_80094660(gGfxPool, arg0->unk1C);
-            return;
+            break;
         case 0xFB:                                  /* switch 6 */
             func_800947B4(gGfxPool, arg0->unk1C);
-            return;
+            break;
         case 0xD2:                                  /* switch 6 */
             gDisplayListHead = func_8009B9D0(gDisplayListHead, D_020014C8);
-            return;
+            break;
         case 0xD3:                                  /* switch 6 */
             gDisplayListHead = func_8009B9D0(gDisplayListHead, D_02001540);
-            return;
+            break;
         case 0xD4:                                  /* switch 6 */
             func_800A09E0(arg0);
             func_800A0AD0(arg0);
             func_800A0B80(arg0);
-            return;
+            break;
         case 0xD5:                                  /* switch 6 */
         // Sets the text color of the text on the Controller Pak menu
         // Also sets the color of the shading at the top and bottom of the menu
@@ -7814,35 +7364,34 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
             gDisplayListHead = func_8009B9D0(gDisplayListHead, &D_02001630);
             gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x32, 0x32, 0x00, 0xFF);
             gDisplayListHead = func_8009B9D0(gDisplayListHead, D_02001658);
-            return;
+            break;
         case 0xD6:                                  /* switch 6 */
-            func_8009A76C(arg0->type, arg0->type, arg0->type, -1);
-            return;
+            func_8009A76C(arg0->D_8018DEE0_index, arg0->column, arg0->row, -1);
+            break;
         case 0xD7:                                  /* switch 6 */
             func_800A0DFC();
-            return;
+            break;
         case 0xD8:                                  /* switch 6 */
         case 0xD9:                                  /* switch 6 */
-            func_800A0EB8((s32) arg0, var_t0 - 0xD8);
-            return;
+            func_800A0EB8(arg0, arg0->type - 0xD8);
+            break;
         case 0x1:                                   /* switch 6 */
-            gDisplayListHead = func_8009BA74(gDisplayListHead, D_800E7D4C[func_800B555C()], arg0->type, arg0->type);
-            return;
+            gDisplayListHead = func_8009BA74(gDisplayListHead, D_800E7D4C[func_800B555C()], arg0->column, arg0->row);
+            break;
         case 0x2:                                   /* switch 6 */
-            func_8004C8D4((s16) (arg0->type + 0xA0), (s16) (arg0->type + 0x47));
-            gDisplayListHead = func_8009BA74(gDisplayListHead, D_020045E8, arg0->type, arg0->type);
-            return;
+            func_8004C8D4((arg0->column + 0xA0), (arg0->row + 0x47));
+            gDisplayListHead = func_8009BA74(gDisplayListHead, D_020045E8, arg0->column, arg0->row);
+            break;
         case 0x3:                                   /* switch 6 */
-            if (((s32) ((s32) gGlobalTimer / 8) % 3) != 0) {
-                gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004610, arg0->type, arg0->type);
-                return;
+            if (((gGlobalTimer / 8) % 3) != 0) {
+                gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004610, arg0->column, arg0->row);
             }
             break;
         case 0x5:                                   /* switch 6 */
-            temp_t4 = (s32) ((f32) (get_string_width(*D_800E7574) + 5) * 0.9f) / 2;
+            temp_t4 = (s32) ((f32) (get_string_width(D_800E7574[0]) + 5) * 0.9f) / 2;
             gDisplayListHead = draw_box(gDisplayListHead, 0xA0 - temp_t4, 0x0000007B, temp_t4 + 0xA0, 0x000000A4, 0, 0, 0, 0x00000096);
             set_text_color(1);
-            draw_text(0x0000009B, 0x0000008C, *D_800E7574, 0, 0.9f, 0.9f);
+            draw_text(0x0000009B, 0x0000008C, D_800E7574[0], 0, 0.9f, 0.9f);
             temp_v1_3 = func_800B4EB4(0, 7) & 0xFFFFF;
             if (temp_v1_3 < 0x1EAA) {
                 set_text_color((s32) gGlobalTimer % 2);
@@ -7851,79 +7400,63 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
             } else {
                 set_text_color(3);
             }
-            get_time_record_minutes(temp_v1_3, &sp80);
-            func_800939C8(0x00000077, 0x000000A0, &sp80, 0, 1.0f, 1.0f);
+            get_time_record_minutes(temp_v1_3, sp80);
+            func_800939C8(0x00000077, 0x000000A0, sp80, 0, 1.0f, 1.0f);
             func_80093324(0x0000008B, 0x000000A0, "'", 0, 1.0f, 1.0f);
-            get_time_record_seconds(temp_v1_3, &sp80);
-            func_800939C8(0x00000094, 0x000000A0, &sp80, 0, 1.0f, 1.0f);
+            get_time_record_seconds(temp_v1_3, sp80);
+            func_800939C8(0x00000094, 0x000000A0, sp80, 0, 1.0f, 1.0f);
             func_80093324(0x000000A7, 0x000000A0, "\"", 0, 1.0f, 1.0f);
-            get_time_record_centiseconds(temp_v1_3, &sp80);
-            func_800939C8(0x000000B4, 0x000000A0, &sp80, 0, 1.0f, 1.0f);
-            return;
+            get_time_record_centiseconds(temp_v1_3, sp80);
+            func_800939C8(0x000000B4, 0x000000A0, sp80, 0, 1.0f, 1.0f);
+            break;
         case 0x4:                                   /* switch 6 */
-            sp58 = get_string_width(D_800E77A0->unk0);
-            temp_v0_4 = get_string_width(D_800E77A0->unk4);
-            var_t0_2 = sp58;
-            if (var_t0_2 < temp_v0_4) {
-                var_t0_2 = temp_v0_4;
+            var_t0 = get_string_width(D_800E77A0[0]);
+            temp_v0_4 = get_string_width(D_800E77A0[1]);
+            if (var_t0 < temp_v0_4) {
+                var_t0 = temp_v0_4;
             }
-            temp_t2 = (s32) ((f32) var_t0_2 * 0.75f) / 2;
-            temp_t5 = (s32) (((f64) (0.75f * 2.0f) + 0.5) * 16.0) / 2;
+            temp_t2 = (s32) (var_t0 * 0.75f) / 2;
+            temp_t5 = (s32) (((0.75f * 2.0f) + 0.5) * 16.0) / 2;
             gDisplayListHead = draw_box(gDisplayListHead, 0xA0 - temp_t2, 0xB6 - temp_t5, temp_t2 + 0xA0, temp_t5 + 0xB6, 0, 0, 0, 0x00000096);
             set_text_color(4);
-            var_v0 = D_800E77A0;
-            var_v1 = 0;
-            sp38 = (f32) 0xB4;
-            sp3C = (s32) ((f32) 0xA0 - (1.0f * 0.75f));
-            do {
-                sp40 = var_v0;
-                sp44 = var_v1;
-                draw_text(sp3C, (s32) (sp38 + ((f32) var_v1 * 0.75f)), *var_v0, 0, 0.75f, 0.75f);
-                var_v0 += 4;
-                var_v1 += 0x12;
-            } while (var_v0 != D_800E77A8);
-            return;
+            for (var_v1 = 0; var_v1 < 2; var_v1++) {
+                draw_text(0xA0 - (1.0f * 0.75f), (s32) (0xB4 + ((f32) (var_v1 * 0x12) * 0.75f)), D_800E77A0[var_v1], 0, 0.75f, 0.75f);
+            }
+            break;
         case 0x23:                                  /* switch 6 */
         case 0x24:                                  /* switch 6 */
         case 0x25:                                  /* switch 6 */
             gDisplayListHead = func_8009BC9C(gDisplayListHead, D_800E7D4C[func_800B555C()], arg0->column, arg0->row, 3, 0);
-            return;
+            break;
         case 0xA:                                   /* switch 6 */
             gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004660, arg0->column, arg0->row);
-            return;
+            break;
         case 0xB:                                   /* switch 6 */
         case 0xC:                                   /* switch 6 */
         case 0xD:                                   /* switch 6 */
         case 0xE:                                   /* switch 6 */
-            temp_a0 = var_t0 - 0xB;
-            spAC = temp_a0;
+            temp_a0 = arg0->type - 0xB;
             func_800A8270(temp_a0, arg0);
-            func_800A0FA4(arg0, spAC);
-            return;
+            func_800A0FA4(arg0, temp_a0);
+            break;
         case 0xF:                                   /* switch 6 */
             func_800A8564(arg0);
             gDisplayListHead = func_8009BC9C(gDisplayListHead, D_0200487C, arg0->column, arg0->row, 2, arg0->unk1C);
-            return;
+            break;
         case 0x10:                                  /* switch 6 */
         case 0x11:                                  /* switch 6 */
-            temp_v1_4 = arg0->unk1C;
-            if (temp_v1_4 < 0x20) {
-                temp_t9 = (s32) (temp_v1_4 * 0x3A) / 64;
-                if ((var_t0 - 0xF) == gMainMenuSelectionDepth) {
-                    temp_v0_5 = arg0->column;
-                    temp_v1_5 = arg0->row;
-                    gDisplayListHead = draw_flash_select_case_fast(gDisplayListHead, temp_v0_5 + temp_t9, temp_v1_5, (temp_v0_5 - temp_t9) + 0x39, temp_v1_5 + 0x12);
+            temp_a0 = arg0->type - 0xF;
+            if (arg0->unk1C < 0x20) {
+                temp_t9 = (s32) (arg0->unk1C * 0x3A) / 64;
+                if (temp_a0 == gMainMenuSelectionDepth) {
+                    gDisplayListHead = draw_flash_select_case_fast(gDisplayListHead, arg0->column + temp_t9, arg0->row, (arg0->column - temp_t9) + 0x39, arg0->row + 0x12);
                 } else {
-                    temp_v0_6 = arg0->column;
-                    temp_a2 = arg0->row;
-                    gDisplayListHead = draw_box_fill(gDisplayListHead, temp_v0_6 + temp_t9, temp_a2, (temp_v0_6 - temp_t9) + 0x39, temp_a2 + 0x12, 1, 1, 1, 0x000000FF);
+                    gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column + temp_t9, arg0->row, (arg0->column - temp_t9) + 0x39, arg0->row + 0x12, 1, 1, 1, 0x000000FF);
                 }
-                var_t0 = arg0->type;
             }
-            temp_t8 = var_t0 - 0xA;
-            spA8 = temp_t8;
-            gDisplayListHead = func_8009BC9C(gDisplayListHead, D_800E8254[temp_t8], arg0->column, arg0->row, 2, arg0->unk1C);
-            return;
+            temp_a0 = arg0->type - 0xA;
+            gDisplayListHead = func_8009BC9C(gDisplayListHead, D_800E8254[temp_a0], arg0->column, arg0->row, 2, arg0->unk1C);
+            break;
         case 0x12:                                  /* switch 6 */
         case 0x13:                                  /* switch 6 */
         case 0x14:                                  /* switch 6 */
@@ -7932,10 +7465,9 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
         case 0x17:                                  /* switch 6 */
         case 0x18:                                  /* switch 6 */
         case 0x19:                                  /* switch 6 */
-            temp_v1_6 = (D_800E86AC - 1)[gPlayerCount];
-            var_a2 = (*(D_800E86B0 - 3))[(gPlayerCount * 3) + temp_v1_6];
-            var_a1 = *(gGameModeFromNumPlayersAndRowSelection + ((gPlayerCount * 0xC) + (temp_v1_6 * 4)));
-            switch (var_t0) {                       /* switch 5 */
+            var_a2 = D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]];
+            var_a1 = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
+            switch (arg0->type) {                       /* switch 5 */
             case 18:                                /* switch 5 */
             case 19:                                /* switch 5 */
             case 20:                                /* switch 5 */
@@ -7943,21 +7475,16 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
                 if ((var_a1 != 0) && (var_a1 != 2)) {
                     var_a2 = -1;
                 }
-                spA8 = 0x00000012;
-                spAC = (s32) var_a2;
-                sp9C = segmented_to_virtual_dupe(D_800E824C[var_t0]);
-block_58:
-                var_a1 = spA8;
+                var_a1 = 18;
+                sp9C = segmented_to_virtual_dupe(D_800E824C[arg0->type]);
                 break;
             case 22:                                /* switch 5 */
             case 23:                                /* switch 5 */
                 if (var_a1 != 2) {
                     var_a2 = -1;
                 } else {
-                    spA8 = 0x00000016;
-                    spAC = (s32) var_a2;
-                    sp9C = segmented_to_virtual_dupe(D_800E824C[var_t0]);
-                    goto block_58;
+                    var_a1 = 22;
+                    sp9C = segmented_to_virtual_dupe(D_800E824C[arg0->type]);
                 }
                 break;
             case 24:                                /* switch 5 */
@@ -7965,64 +7492,54 @@ block_58:
                 if (var_a1 != 1) {
                     var_a2 = -1;
                 } else {
-                    spA8 = 0x00000018;
-                    spAC = (s32) var_a2;
-                    sp9C = segmented_to_virtual_dupe(D_800E824C[var_t0]);
-                    goto block_58;
+                    var_a1 = 24;
+                    sp9C = segmented_to_virtual_dupe(D_800E824C[arg0->type]);
                 }
                 break;
             }
             if (var_a2 != -1) {
                 if ((gMainMenuSelectionDepth >= 5) && (var_a2 == (arg0->type - var_a1))) {
                     if (gMainMenuSelectionDepth >= 6) {
-                        temp_a1 = arg0->column;
-                        temp_a2_2 = arg0->row;
-                        var_v0_2 = draw_box_fill(gDisplayListHead, temp_a1, temp_a2_2, temp_a1 + 0x3F, temp_a2_2 + 0x11, 0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
+                        gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F, arg0->row + 0x11, 0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
                     } else {
-                        temp_v1_7 = arg0->row;
-                        temp_v0_7 = arg0->column;
-                        var_v0_2 = draw_flash_select_case_slow(gDisplayListHead, temp_v0_7, temp_v1_7, temp_v0_7 + 0x3F, temp_v1_7 + 0x11);
+                        gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F, arg0->row + 0x11);
                     }
                 } else {
-                    temp_a1_2 = arg0->column;
-                    temp_a2_3 = arg0->row;
-                    var_v0_2 = draw_box_fill(gDisplayListHead, temp_a1_2, temp_a2_3, temp_a1_2 + 0x3F, temp_a2_3 + 0x11, 1, 1, 1, 0x000000FF);
+                    gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F, arg0->row + 0x11, 1, 1, 1, 0x000000FF);
                 }
-                gDisplayListHead = var_v0_2;
                 gDisplayListHead = func_8009BA74(gDisplayListHead, sp9C, arg0->column, arg0->row);
-                return;
             }
             break;
         case 0x1B:                                  /* switch 6 */
             func_800A10CC(arg0);
-            return;
+            break;
         case 0x2A:                                  /* switch 6 */
             gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004B4C, arg0->column, arg0->row);
-            return;
+            break;
         case 0x34:                                  /* switch 6 */
         case 0x35:                                  /* switch 6 */
         case 0x36:                                  /* switch 6 */
         case 0x37:                                  /* switch 6 */
-            if (gCharacterGridSelections[var_t0].unk-34 != 0) {
-                if (D_8018EDE8[var_t0].unk-34 == 0) {
-                    var_a2_2 = 0x000000FF;
+            temp_a0 = arg0->type - 0x34;
+            if (gCharacterGridSelections[temp_a0]) {
+                if (D_8018EDE8[temp_a0] == 0) {
+                    temp_t2 = 0x000000FF;
                 } else {
-                    temp_t1 = (s32) gGlobalTimer % 16;
-                    if (temp_t1 >= 8) {
-                        var_a2_3 = (temp_t1 * -8) + 0x80;
+                    temp_t2 = gGlobalTimer % 16;
+                    if (temp_t2 >= 8) {
+                        temp_t2 = (-temp_t2 * 8) + 0x80;
                     } else {
-                        var_a2_3 = temp_t1 * 8;
+                        temp_t2 *= 8;
                     }
-                    var_a2_2 = var_a2_3 + 0xBF;
+                    temp_t2 += 0xBF;
                 }
-                func_800A11D0(arg0, var_t0 - 0x34, var_a2_2);
-                return;
+                func_800A11D0(arg0, temp_a0, temp_t2);
             }
             break;
         case 0x33:                                  /* switch 6 */
             func_800A8564(arg0);
             gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004B74, arg0->column, arg0->row, 2, arg0->unk1C);
-            return;
+            break;
         case 0x2B:                                  /* switch 6 */
         case 0x2C:                                  /* switch 6 */
         case 0x2D:                                  /* switch 6 */
@@ -8031,104 +7548,92 @@ block_58:
         case 0x30:                                  /* switch 6 */
         case 0x31:                                  /* switch 6 */
         case 0x32:                                  /* switch 6 */
-            func_800A12BC(arg0, segmented_to_virtual_dupe(D_800E7CA8[var_t0]));
+            func_800A12BC(arg0, segmented_to_virtual_dupe(D_800E7D54[arg0->type - 0x2B]));
             /* fallthrough */
         case 0xA0:                                  /* switch 6 */
         case 0xA1:                                  /* switch 6 */
             func_8009A76C(arg0->D_8018DEE0_index, arg0->column, arg0->row, arg0->unk1C);
-            return;
+            break;
         case 0x58:                                  /* switch 6 */
         case 0x59:                                  /* switch 6 */
         case 0x5A:                                  /* switch 6 */
         case 0x5B:                                  /* switch 6 */
         case 0x5C:                                  /* switch 6 */
             func_800A8A98(arg0);
-            gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E817C[arg0->type]), arg0->column, arg0->row);
+            gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82C8[arg0->type - 0x53]), arg0->column, arg0->row);
             func_800A8CA4(arg0);
-            return;
+            break;
         case 0x52:                                  /* switch 6 */
-            gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E817C[var_t0]), arg0->column, arg0->row);
-            return;
+            gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82C8[arg0->type - 0x53]), arg0->column, arg0->row);
+            break;
         case 0x5F:                                  /* switch 6 */
         case 0x60:                                  /* switch 6 */
         case 0x61:                                  /* switch 6 */
         case 0x62:                                  /* switch 6 */
             func_800A1500(arg0);
-            return;
+            break;
         case 0x53:                                  /* switch 6 */
         case 0x54:                                  /* switch 6 */
         case 0x55:                                  /* switch 6 */
         case 0x56:                                  /* switch 6 */
-            temp_a0_2 = var_t0 - 0x53;
-            spAC = temp_a0_2;
-            func_800A890C(temp_a0_2, arg0);
-            func_800A143C(arg0, spAC);
-            return;
+            temp_a0 = arg0->type - 0x53;
+            func_800A890C(temp_a0, arg0);
+            func_800A143C(arg0, temp_a0);
+            break;
         case 0x5D:                                  /* switch 6 */
             func_800A8564(arg0);
             gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004E80, arg0->column, arg0->row, 2, arg0->unk1C);
-            return;
+            break;
         case 0x65:                                  /* switch 6 */
         case 0x66:                                  /* switch 6 */
-            if (var_t0 == 0x00000065) {
+            if (arg0->type == 0x00000065) {
                 var_f0 = 0.6f;
             } else {
                 var_f0 = 0.8f;
             }
-            sp4C = var_f0;
             func_800A86E8(arg0);
             set_text_color(3);
-            func_80093324(arg0->column + 8, arg0->row + 0x10, (D_800E7728 - 0x194)[arg0->type], 0, var_f0, 0.8f);
+            func_80093324(arg0->column + 8, arg0->row + 0x10, D_800E7728[arg0->type - 0x65], 0, var_f0, 0.8f);
             func_800A874C(arg0);
-            return;
+            break;
         case 0x6E:                                  /* switch 6 */
             func_800A8E14(arg0);
-            return;
+            break;
         case 0x67:                                  /* switch 6 */
             func_800A8EC0(arg0);
-            return;
+            break;
         case 0x68:                                  /* switch 6 */
-            temp_a1_3 = arg0->column;
-            temp_a2_4 = arg0->row;
-            gDisplayListHead = draw_box_fill(gDisplayListHead, temp_a1_3, temp_a2_4, temp_a1_3 + 0x3F, temp_a2_4 + 0x11, 1, 1, 1, 0x000000FF);
+            gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F, arg0->row + 0x11, 1, 1, 1, 0x000000FF);
             gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E8294[gCCSelection]), arg0->column, arg0->row);
-            return;
+            break;
         case 0x69:                                  /* switch 6 */
             func_800A8F48(arg0);
-            return;
+            break;
         case 0x78:                                  /* switch 6 */
         case 0x79:                                  /* switch 6 */
         case 0x7A:                                  /* switch 6 */
         case 0x7B:                                  /* switch 6 */
-            temp_a0_3 = var_t0 - 0x78;
-            spAC = temp_a0_3;
-            func_800A90D4(temp_a0_3, arg0);
-            func_800A143C(arg0, spAC);
-            return;
+            temp_a0 = arg0->type - 0x78;
+            func_800A90D4(temp_a0, arg0);
+            func_800A143C(arg0, temp_a0);
+            break;
         case 0x8C:                                  /* switch 6 */
-            if ((gMainMenuSelectionDepth >= 5) && (spAC == (var_t0 - spA8))) {
+            if ((gMainMenuSelectionDepth >= 5) && (spAC == (arg0->type - spA8))) {
                 if (gMainMenuSelectionDepth >= 6) {
-                    temp_a1_4 = arg0->column;
-                    temp_a2_5 = arg0->row;
-                    var_v0_3 = draw_box_fill(gDisplayListHead, temp_a1_4, temp_a2_5, temp_a1_4 + 0x3F, temp_a2_5 + 0x11, 0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
+                    gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F, arg0->row + 0x11, 0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
                 } else {
-                    temp_v1_8 = arg0->row;
-                    temp_v0_8 = arg0->column;
-                    var_v0_3 = draw_flash_select_case_slow(gDisplayListHead, temp_v0_8, temp_v1_8, temp_v0_8 + 0x3F, temp_v1_8 + 0x11);
+                    gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F, arg0->row + 0x11);
                 }
             } else {
-                temp_a1_5 = arg0->column;
-                temp_a2_6 = arg0->row;
-                var_v0_3 = draw_box_fill(gDisplayListHead, temp_a1_5, temp_a2_6, temp_a1_5 + 0x3F, temp_a2_6 + 0x11, 1, 1, 1, 0x000000FF);
+                gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F, arg0->row + 0x11, 1, 1, 1, 0x000000FF);
             }
-            gDisplayListHead = var_v0_3;
             gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004A34, arg0->column, arg0->row);
             set_text_color(3);
             func_800936B8(0x00000125, 0x0000001C, D_800E77B4, 0, 0.55f, 0.55f);
-            return;
+            break;
         case 0x8D:                                  /* switch 6 */
             func_800A1780(arg0);
-            return;
+            break;
         case 0x7C:                                  /* switch 6 */
         case 0x7D:                                  /* switch 6 */
         case 0x7E:                                  /* switch 6 */
@@ -8146,107 +7651,105 @@ block_58:
         case 0x8A:                                  /* switch 6 */
         case 0x8B:                                  /* switch 6 */
             func_800A15EC(arg0);
-            return;
+            break;
         case 0x96:                                  /* switch 6 */
             set_text_color(4);
             func_800936B8(arg0->column, arg0->row, gCupNames[D_800DC540], arg0->unk1C, arg0->unk24, 1.0f);
-            return;
+            break;
         case 0x97:                                  /* switch 6 */
             set_text_color(5);
             func_80093324(arg0->column, arg0->row, D_800E7524[gCurrentCourseId], arg0->unk1C, arg0->unk24, 1.0f);
-            return;
+            break;
         case 0x98:                                  /* switch 6 */
             func_800A2D1C(arg0);
-            return;
+            break;
         case 0x5E:                                  /* switch 6 */
-            gDisplayListHead = func_80096CD8(gDisplayListHead, 0x19, 0x72, 0x7C, 0x0000004A);
-            return;
+            gDisplayListHead = func_80096CD8(gDisplayListHead, 0x00000019, 0x00000072, 0x0000007CU, 0x0000004AU);
+            break;
         case 0xAA:                                  /* switch 6 */
             func_800A2EB8(arg0);
-            return;
+            break;
         case 0xAB:                                  /* switch 6 */
             func_800A34A8(arg0);
-            return;
+            break;
         case 0xAC:                                  /* switch 6 */
             func_800A6154(arg0);
-            return;
+            break;
         case 0xAF:                                  /* switch 6 */
             func_800A6034(arg0);
-            return;
+            break;
         case 0xB0:                                  /* switch 6 */
             func_800A638C(arg0);
-            return;
+            break;
         case 0xB1:                                  /* switch 6 */
         case 0xB2:                                  /* switch 6 */
         case 0xB3:                                  /* switch 6 */
         case 0xB4:                                  /* switch 6 */
             if (arg0->unk4 != 0) {
-                spA8 = var_t0 - 0xB1;
-                gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E7D54[D_800EFD64[gCharacterSelections[var_t0].unk-B1]]), arg0->column, arg0->row);
+                spA8 = arg0->type - 0xB1;
+                gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E7D54[D_800EFD64[gCharacterSelections[spA8]]]), arg0->column, arg0->row);
                 func_8009A7EC(arg0->D_8018DEE0_index, arg0->column, arg0->row, spA8, arg0->unk1C);
                 func_800A11D0(arg0, spA8, 0x000000FF);
-                return;
             }
             break;
         case 0xB9:                                  /* switch 6 */
             func_800A3C84(arg0);
-            return;
+            break;
         case 0xBA:                                  /* switch 6 */
             func_800A3E60(arg0);
-            return;
+            break;
         case 0xBC:                                  /* switch 6 */
             func_800A4A24(arg0);
-            return;
+            break;
         case 0xC7:                                  /* switch 6 */
             func_800A4B38(arg0);
-            return;
+            break;
         case 0xBD:                                  /* switch 6 */
             func_800A5738(arg0);
-            return;
+            break;
         case 0xE6:                                  /* switch 6 */
             func_800A1924(arg0);
-            return;
+            break;
         case 0xE7:                                  /* switch 6 */
             func_800A1A20(arg0);
-            return;
+            break;
         case 0xE8:                                  /* switch 6 */
             func_800A1BE0(arg0);
-            return;
+            break;
         case 0xE9:                                  /* switch 6 */
             func_800A1DE0(arg0);
-            return;
+            break;
         case 0xEA:                                  /* switch 6 */
             func_800A1F30(arg0);
-            return;
+            break;
         case 0xF0:                                  /* switch 6 */
             func_800A1FB0(arg0);
-            return;
+            break;
         case 0xF1:                                  /* switch 6 */
             gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004638, arg0->column, arg0->row);
-            return;
+            break;
         case 0x10E:                                 /* switch 6 */
             func_800A70E8(arg0);
-            return;
+            break;
         case 0x12B:                                 /* switch 6 */
             func_800A7258(arg0);
-            return;
+            break;
         case 0x12C:                                 /* switch 6 */
             func_800A72FC(arg0);
-            return;
+            break;
         case 0x12D:                                 /* switch 6 */
             func_800A7448(arg0);
-            return;
+            break;
         case 0x12E:                                 /* switch 6 */
             func_800A75A0(arg0);
-            return;
+            break;
         case 0x12F:                                 /* switch 6 */
             func_800A761C(arg0);
-            return;
+            break;
         case 0x130:                                 /* switch 6 */
             if (arg0->unk4 != 0) {
                 gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E7D54[D_800EFD64[D_802874D8.unk1E]]), arg0->column, arg0->row);
                 func_8009A7EC(arg0->D_8018DEE0_index, arg0->column, arg0->row, 0, arg0->unk1C);
-                return;
             }
             break;
         case 0x190:                                 /* switch 6 */
@@ -8465,7 +7968,7 @@ void func_800A0DFC(void) {
     } while (var_s0 != 0);
 }
 
-void func_800A0EB8(s32 arg0, s32 arg1) {
+void func_800A0EB8(struct_8018D9E0_entry *arg0, s32 arg1) {
     s32 var_t1;
     s32 thing;
     Unk_D_800E70A0 *temp_v0;
@@ -9529,58 +9032,46 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A3E60.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Sep-01-2023
-extern s32 D_8018CA78;
-extern ? D_8018CA90;
-
-void func_800A4550(s32 recordType, s32 column, s32 row) {
+void func_800A4550(s32 lapNumber, s32 column, s32 row) {
+    s32 stackPadding0;
     s32 sp40;
-    s8 sp34;
-    s32 sp2C;
-    s32 temp_v0;
-    s32 var_a0;
-    s32 var_v0;
+    s32 stackPadding1;
+    s32 textColor;
+    char sp34[3];
     struct_8018D9E0_entry *temp_v0_2;
 
-    if (recordType < 3) {
-        temp_v0 = recordType * 4;
-        sp2C = temp_v0;
-        sp40 = *(&D_8018CA90 + temp_v0);
+    if (lapNumber < 3) {
+        sp40 = playerHUD[0].lapDurations[lapNumber];
         set_text_color(2);
-        var_v0 = temp_v0;
     } else {
-        sp40 = D_8018CA78;
+        sp40 = playerHUD[0].someTimer;
         set_text_color(1);
-        var_v0 = recordType * 4;
     }
-    func_800936B8(column + 0x21, row, *(D_800E7734 + var_v0), 0, 0.7f, 0.7f);
+    func_800936B8(column + 0x21, row, D_800E7734[lapNumber], 0, 0.7f, 0.7f);
     temp_v0_2 = find_8018D9E0_entry_dupe(0x000000BB);
-    if (recordType < 3) {
-        if (temp_v0_2->unk20 & (1 << recordType)) {
-            var_a0 = (s32) gGlobalTimer % 3;
+    if (lapNumber < 3) {
+        if (temp_v0_2->unk20 & (1 << lapNumber)) {
+            textColor = (s32) gGlobalTimer % 3;
         } else {
-            var_a0 = 3;
+            textColor = TEXT_YELLOW;
         }
     } else {
-        var_a0 = 3;
         if (temp_v0_2->unk1C >= 0) {
-            var_a0 = (s32) gGlobalTimer % 3;
+            textColor = (s32) gGlobalTimer % 3;
+        } else {
+            textColor = TEXT_YELLOW;
         }
     }
-    set_text_color(var_a0);
-    get_time_record_minutes(sp40, &sp34);
-    func_800939C8(column + 0x2C, row, &sp34, 0, 0.7f, 0.7f);
+    set_text_color(textColor);
+    get_time_record_minutes(sp40, sp34);
+    func_800939C8(column + 0x2C, row, sp34, 0, 0.7f, 0.7f);
     func_80093324(column + 0x37, row, "'", 0, 0.7f, 0.7f);
-    get_time_record_seconds(sp40, &sp34);
-    func_800939C8(column + 0x40, row, &sp34, 0, 0.7f, 0.7f);
+    get_time_record_seconds(sp40, sp34);
+    func_800939C8(column + 0x40, row, sp34, 0, 0.7f, 0.7f);
     func_80093324(column + 0x4B, row, "\"", 0, 0.7f, 0.7f);
-    get_time_record_centiseconds(sp40, &sp34);
-    func_800939C8(column + 0x55, row, &sp34, 0, 0.7f, 0.7f);
+    get_time_record_centiseconds(sp40, sp34);
+    func_800939C8(column + 0x55, row, sp34, 0, 0.7f, 0.7f);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A4550.s")
-#endif
 
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/mWCHC

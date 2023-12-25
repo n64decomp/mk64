@@ -954,7 +954,7 @@ void func_80284154(struct CinematicCamera *camera) {
 void func_80284184(struct CinematicCamera *camera)
 {
   f32 trophy;
-  trophy = ((gObjectList[D_80183EA0[3]].pos[1] - camera->lookAt[1]) * 0.9f) + camera->lookAt[1];
+  trophy = ((gObjectList[indexObjectList1[3]].pos[1] - camera->lookAt[1]) * 0.9f) + camera->lookAt[1];
   f32_lerp(&camera->pos[1], trophy, 0.5);
 }
 
@@ -1578,7 +1578,7 @@ void func_802847CC(struct CinematicCamera *camera) {
     }
 
 #ifndef VERSION_EU
-    if (gCCSelection == 3) {
+    if (gCCSelection == CC_EXTRA) {
         sp2C = D_80286B34[D_800DC5E4];
     }
 #endif

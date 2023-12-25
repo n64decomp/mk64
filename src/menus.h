@@ -18,6 +18,9 @@ union GameModePack {
     s32 word;
 };
 
+// This really, really shouldn't be in this header file, but I don't know where else to put it
+void rmonPrintf(const char *, ...);
+
 /* functions */
 void update_menus(void);
 void options_menu_act(struct Controller *, u16);

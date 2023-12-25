@@ -3931,7 +3931,7 @@ void func_80033AE0(Player *player, struct Controller *controller, s8 arg2) {
     player->unk_0FA = (s16) sp2D0;
     if (((sp2D0 >= 0x5A) || (sp2D0 < (-0x59))) && (!(player->unk_044 & 0x4000)))
     {
-        if ((((((!(player->effects & 0x10)) && (gCCSelection == 2)) && (gModeSelection != 3)) && (!(player->effects & 8))) && (((player->unk_094 / 18.0f) * 216.0f) >= 40.0f)) && (player->unk_204 == 0))
+        if ((((((!(player->effects & 0x10)) && (gCCSelection == CC_150)) && (gModeSelection != 3)) && (!(player->effects & 8))) && (((player->unk_094 / 18.0f) * 216.0f) >= 40.0f)) && (player->unk_204 == 0))
         {
         player->statusEffects |= 0x80;
         }

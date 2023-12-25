@@ -595,7 +595,7 @@ glabel gObjectList
 glabel D_80183D58
 .skip 4
 
-glabel D_80183D5C
+glabel objectListSize
 .skip 4
 
 glabel D_80183D60
@@ -667,76 +667,25 @@ glabel gItemWindowObjectByPlayerId
 glabel D_80183E98
 .skip 8
 
-glabel D_80183EA0
-.skip 4
+glabel indexObjectList1
+.skip 128
 
-glabel D_80183EA4
-.skip 4
-
-glabel D_80183EA8
-.skip 4
-
-glabel D_80183EAC
-.skip 4
-
-glabel D_80183EB0
-.skip 16
-
-glabel D_80183EC0
+glabel D_80183F20
 .skip 8
 
-glabel D_80183EC8
-.skip 20
-
-glabel D_80183EDC
-.skip 16
-
-glabel D_80183EEC
-.skip 60
-
-glabel D_80183F28
-.skip 4
-
-glabel D_80183F2C
-.skip 8
-
-glabel D_80183F34
-.skip 8
-
-glabel D_80183F3C
-.skip 20
-
-glabel D_80183F50
-.skip 4
-
-glabel D_80183F54
-.skip 16
-
-glabel D_80183F64
-.skip 16
-
-glabel D_80183F74
-.skip 52
+glabel indexObjectList2
+.skip 128
 
 glabel D_80183FA8
 .skip 32768
 
-glabel D_8018BFA8
-.skip 16
-
-glabel D_8018BFB8
-.skip 24
-
-glabel D_8018BFD0
-.skip 8
-
-glabel D_8018BFD8
-.skip 80
+glabel indexObjectList3
+.skip 128
 
 glabel D_8018C028
 .skip 8
 
-glabel D_8018C030
+glabel indexObjectList4
 .skip 128
 
 # Array of (4) Collisions?
@@ -795,9 +744,9 @@ glabel D_8018C970
 .skip 256
 
 # some hud related list begin
-# D_8018CA70 should be of size 528 (0x84 * 0x4)
+# playerHUD should be of size 528 (0x84 * 0x4)
 # D_8018CA74 through D_8018CC7D are all fake
-glabel D_8018CA70
+glabel playerHUD
 .skip 4
 
 glabel D_8018CA74
@@ -1022,7 +971,7 @@ glabel D_8018D010
 glabel D_8018D018
 .skip 4
 
-glabel D_8018D01C
+glabel xOrientation
 .skip 4
 
 glabel D_8018D020
@@ -1699,10 +1648,7 @@ glabel D_8018E7AC
 .skip 4
 
 glabel D_8018E7B0
-.skip 1
-
-glabel D_8018E7B1
-.skip 7
+.skip 8
 
 glabel D_8018E7B8
 .skip 16
