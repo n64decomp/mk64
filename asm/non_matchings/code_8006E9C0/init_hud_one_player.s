@@ -24,7 +24,7 @@ glabel init_hud_one_player
 /* 072080 80071480 3C048018 */  lui   $a0, %hi(gItemWindowObjectByPlayerId + 4) # $a0, 0x8018
 /* 072084 80071484 0C01C7C0 */  jal   find_unused_obj_index
 /* 072088 80071488 24843E8C */   addiu $a0, %lo(gItemWindowObjectByPlayerId + 4) # addiu $a0, $a0, 0x3e8c
-/* 07208C 8007148C 0C01C064 */  jal   func_80070190
+/* 07208C 8007148C 0C01C064 */  jal   init_index_object_list
 /* 072090 80071490 00000000 */   nop
 /* 072094 80071494 0C01C157 */  jal   func_8007055C
 /* 072098 80071498 00000000 */   nop

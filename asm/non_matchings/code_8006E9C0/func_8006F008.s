@@ -74,8 +74,8 @@ glabel func_8006F008
 /* 06FC0C 8006F00C AC2055C8 */  sw    $zero, %lo(D_801655C8)($at)
 /* 06FC10 8006F010 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 06FC14 8006F014 44812000 */  mtc1  $at, $f4
-/* 06FC18 8006F018 3C028019 */  lui   $v0, %hi(D_8018D01C) # $v0, 0x8019
-/* 06FC1C 8006F01C 2442D01C */  addiu $v0, %lo(D_8018D01C) # addiu $v0, $v0, -0x2fe4
+/* 06FC18 8006F018 3C028019 */  lui   $v0, %hi(xOrientation) # $v0, 0x8019
+/* 06FC1C 8006F01C 2442D01C */  addiu $v0, %lo(xOrientation) # addiu $v0, $v0, -0x2fe4
 /* 06FC20 8006F020 3C0E800E */  lui   $t6, %hi(gIsMirrorMode) # $t6, 0x800e
 /* 06FC24 8006F024 E4440000 */  swc1  $f4, ($v0)
 /* 06FC28 8006F028 8DCEC604 */  lw    $t6, %lo(gIsMirrorMode)($t6)

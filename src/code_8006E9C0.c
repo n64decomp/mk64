@@ -278,9 +278,9 @@ void func_8006F008(void) {
     s16 var_t9;
 
     D_801655C8 = 0;
-    D_8018D01C = 1.0f;
+    xOrientation = 1.0f;
     if (gIsMirrorMode != 0) {
-        D_8018D01C = -1.0f;
+        xOrientation = -1.0f;
     }
     D_8018D2C0.unk0 = 0x0101;
     D_8018D2D8.unk0 = 0x00AA;
@@ -838,14 +838,14 @@ void func_80070148(void) {
     }
 }
 
-void func_80070190(void) {
+void init_index_object_list(void) {
     s32 loopIndex;
 
     for(loopIndex = 0; loopIndex < SOME_OBJECT_INDEX_LIST_SIZE; loopIndex++) {
-        find_unused_obj_index(&D_80183EA0[loopIndex]);
-        find_unused_obj_index(&D_80183F28[loopIndex]);
-        find_unused_obj_index(&D_8018BFA8[loopIndex]);
-        find_unused_obj_index(&D_8018C030[loopIndex]);
+        find_unused_obj_index(&indexObjectList1[loopIndex]);
+        find_unused_obj_index(&indexObjectList2[loopIndex]);
+        find_unused_obj_index(&indexObjectList3[loopIndex]);
+        find_unused_obj_index(&indexObjectList4[loopIndex]);
     }
 
     for(loopIndex = 0; loopIndex < NUM_BOMB_KARTS_VERSUS; loopIndex++) {
@@ -1024,24 +1024,24 @@ void func_80070780(void) {
             break;
         }
         for (i = 0; i < gNumActiveThwomps; i++) {
-            objectId = D_80183EA0[i];
+            objectId = indexObjectList1[i];
             init_object(objectId, 0);
-            gObjectList[objectId].unk_010[0] = gThowmpSpawnList[i].startX * D_8018D01C;
+            gObjectList[objectId].unk_010[0] = gThowmpSpawnList[i].startX * xOrientation;
             gObjectList[objectId].unk_010[2] = gThowmpSpawnList[i].startZ;
             gObjectList[objectId].unk_0D5 = gThowmpSpawnList[i].unk_4;
             gObjectList[objectId].unk_0A0 = gThowmpSpawnList[i].unk_6;
         }
         // Handle the big statue's fire breath
-        objectId = D_80183F28[0];
+        objectId = indexObjectList2[0];
         init_object(objectId, 0);
-        gObjectList[objectId].pos[0] = -68.0 * D_8018D01C;
+        gObjectList[objectId].pos[0] = -68.0 * xOrientation;
         gObjectList[objectId].pos[1] = 80.0f;
         gObjectList[objectId].pos[2] = -1840.0f;
         // Handle the smaller statues' fire breath
         for (i = 0; i < NUM_FIRE_BREATHS; i++) {
-            objectId = D_8018BFA8[i];
+            objectId = indexObjectList3[i];
             init_object(objectId, 0);
-            gObjectList[objectId].pos[0] = gFireBreathsSpawns[i][0] * D_8018D01C;
+            gObjectList[objectId].pos[0] = gFireBreathsSpawns[i][0] * xOrientation;
             gObjectList[objectId].pos[1] = gFireBreathsSpawns[i][1];
             gObjectList[objectId].pos[2] = gFireBreathsSpawns[i][2];
             gObjectList[objectId].unk_0BE[1] = 0;
@@ -1050,33 +1050,33 @@ void func_80070780(void) {
             }
         }
         for (i = 0; i < 32; i++) {
-            delete_object(&D_8018C030[i]);
+            delete_object(&indexObjectList4[i]);
         }
         break;
     case COURSE_BANSHEE_BOARDWALK:
         if (gGamestate != 9) {
-            objectId = D_80183EA0[0];
+            objectId = indexObjectList1[0];
             init_texture_object(objectId, d_course_banshee_boardwalk_bat_tlut, *d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
             gObjectList[objectId].unk_0B2[0] = 0;
             gObjectList[objectId].unk_0B2[1] = 0;
             gObjectList[objectId].unk_0B2[2] = 0x8000;
-            init_object(D_80183EA0[1], 0);
-            init_object(D_80183EA0[2], 0);
+            init_object(indexObjectList1[1], 0);
+            init_object(indexObjectList1[2], 0);
         }
         break;
     case COURSE_YOSHI_VALLEY:
         for (i = 0; i < 4; i++) {
-            init_object(D_80183EA0[i], 0);
+            init_object(indexObjectList1[i], 0);
         }
         if (gGamestate != 9) {
             for (i = 0; i < NUM_HEDGEHOGS; i++) {
-                objectId = D_80183F28[i];
+                objectId = indexObjectList2[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].pos[0] = gObjectList[objectId].unk_010[0] = gHedgehogSpawns[i].pos[0] * D_8018D01C;
+                gObjectList[objectId].pos[0] = gObjectList[objectId].unk_010[0] = gHedgehogSpawns[i].pos[0] * xOrientation;
                 gObjectList[objectId].pos[1] = gObjectList[objectId].unk_044 = gHedgehogSpawns[i].pos[1] + 6.0;
                 gObjectList[objectId].pos[2] = gObjectList[objectId].unk_010[2] = gHedgehogSpawns[i].pos[2];
                 gObjectList[objectId].unk_0D5 = gHedgehogSpawns[i].unk_06;
-                gObjectList[objectId].unk_09C = gHedgehogPatrolPoints[i][0] * D_8018D01C;
+                gObjectList[objectId].unk_09C = gHedgehogPatrolPoints[i][0] * xOrientation;
                 gObjectList[objectId].unk_09E = gHedgehogPatrolPoints[i][2];
             }
         }
@@ -1087,14 +1087,14 @@ void func_80070780(void) {
         }
         if (gGamestate != 9) {
             for (i = 0; i < NUM_SNOWMEN; i++) {
-                objectId = D_80183F28[i];
+                objectId = indexObjectList2[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].unk_010[0] = gSnowmanSpawns[i].pos[0] * D_8018D01C;
+                gObjectList[objectId].unk_010[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
                 gObjectList[objectId].unk_010[1] = gSnowmanSpawns[i].pos[1] + 5.0 + 3.0;
                 gObjectList[objectId].unk_010[2] = gSnowmanSpawns[i].pos[2];
-                objectId = D_80183EA0[i];
+                objectId = indexObjectList1[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].unk_010[0] = gSnowmanSpawns[i].pos[0] * D_8018D01C;
+                gObjectList[objectId].unk_010[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
                 gObjectList[objectId].unk_010[1] = gSnowmanSpawns[i].pos[1] + 3.0;
                 gObjectList[objectId].unk_010[2] = gSnowmanSpawns[i].pos[2];
                 gObjectList[objectId].unk_0D5 = gSnowmanSpawns[i].unk_6;
@@ -1104,17 +1104,17 @@ void func_80070780(void) {
     case COURSE_KOOPA_BEACH:
         if (gGamestate != 9) {
             for (i = 0; i < NUM_CRABS; i++) {
-                objectId = D_80183EA0[i];
+                objectId = indexObjectList1[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].pos[0] = gObjectList[objectId].unk_010[0] = gCrabSpawns[i].startX * D_8018D01C;
-                gObjectList[objectId].unk_01C[0] = gCrabSpawns[i].patrolX * D_8018D01C;
+                gObjectList[objectId].pos[0] = gObjectList[objectId].unk_010[0] = gCrabSpawns[i].startX * xOrientation;
+                gObjectList[objectId].unk_01C[0] = gCrabSpawns[i].patrolX * xOrientation;
 
                 gObjectList[objectId].pos[2] = gObjectList[objectId].unk_010[2] = gCrabSpawns[i].startZ;
                 gObjectList[objectId].unk_01C[2] = gCrabSpawns[i].patrolZ;
             }
         }
         for (i = 0; i < NUM_SEAGULLS; i++) {
-            objectId = D_80183F28[i];
+            objectId = indexObjectList2[i];
             init_object(objectId, 0);
             if (i < (NUM_SEAGULLS / 2)) {
                 gObjectList[objectId].unk_0D5 = 0;
@@ -1140,7 +1140,7 @@ void func_80070780(void) {
                 func_80070714();
             }
             D_80165898 = 0;
-            init_object(D_80183EA0[0], 0);
+            init_object(indexObjectList1[0], 0);
             for (i = 0; i < D_80165738; i++) {
                 find_unused_obj_index(&D_8018C630[i]);
                 init_object(D_8018C630[i], 0);
@@ -1179,21 +1179,21 @@ void func_80070780(void) {
             }
             for (i = 0; i < NUM_GROUP1_MOLES; i++) {
                 D_8018D198[i] = 0;
-                find_unused_obj_index(&D_80183EA0[i]);
+                find_unused_obj_index(&indexObjectList1[i]);
             }
             for (i = 0; i < NUM_GROUP2_MOLES; i++) {
                 D_8018D1A8[i] = 0;
-                find_unused_obj_index(&D_80183EA0[i]);
+                find_unused_obj_index(&indexObjectList1[i]);
             }
             for (i = 0; i < NUM_GROUP3_MOLES; i++) {
                 D_8018D1B8[i] = 0;
-                find_unused_obj_index(&D_80183EA0[i]);
+                find_unused_obj_index(&indexObjectList1[i]);
             }
             for (i = 0; i < NUM_MAX_MOLES; i++) {
                 find_unused_obj_index(&D_8018C1B0[i]);
                 objectId = D_8018C1B0[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].pos[0] = gMoleSpawns[i][0] * D_8018D01C;
+                gObjectList[objectId].pos[0] = gMoleSpawns[i][0] * xOrientation;
                 gObjectList[objectId].pos[2] = gMoleSpawns[i][2];
                 func_800887C0(objectId);
                 gObjectList[objectId].sizeScaling = 0.7f;
@@ -1220,16 +1220,16 @@ void func_80070780(void) {
         break;
     case COURSE_SHERBET_LAND:
         for (i = 0; i < NUM_PENGUINS; i++) {
-            init_object(D_80183EA0[i], 0);
+            init_object(indexObjectList1[i], 0);
         }
         break;
     case COURSE_RAINBOW_ROAD:
         if (gGamestate != 9) {
             for (i = 0; i < NUM_NEON_SIGNS; i++) {
-                init_object(D_80183EA0[i], 0);
+                init_object(indexObjectList1[i], 0);
             }
             for (i = 0; i < NUM_CHAIN_CHOMPS; i++) {
-                init_object(D_80183F28[i], 0);
+                init_object(indexObjectList2[i], 0);
             }
         }
         break;
@@ -1303,7 +1303,7 @@ void init_hud_one_player(void) {
     find_unused_obj_index(&D_80183DBC);
     find_unused_obj_index(gItemWindowObjectByPlayerId);
     find_unused_obj_index(gItemWindowObjectByPlayerId + 4);
-    func_80070190();
+    init_index_object_list();
     func_8007055C();
     func_8007055C();
     func_80070780();
@@ -1422,7 +1422,7 @@ void init_hud_two_player_vertical(void) {
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
 
-    func_80070190();
+    init_index_object_list();
     func_8007055C();
     func_8007055C();
     func_80070780();
@@ -1492,7 +1492,7 @@ void init_hud_two_player_horizontal() {
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
 
-    func_80070190();
+    init_index_object_list();
     func_8007055C();
     func_8007055C();
     func_80070780();
@@ -1572,7 +1572,7 @@ void init_hud_three_four_player(void) {
     find_unused_obj_index(&gItemWindowObjectByPlayerId[2]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[3]);
 
-    func_80070190();
+    init_index_object_list();
     func_80070780();
 
     hudPlayers[PLAYER_ONE].itemBoxX = -0x36;

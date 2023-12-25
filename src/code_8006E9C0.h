@@ -15,7 +15,7 @@ void func_8006EEE8(s32);
 void func_8006F824(s32);
 void func_8006FA94(void);
 void func_80070148(void);
-void func_80070190(void);
+void init_index_object_list(void);
 void func_80070250(s32, s32, StarSpawn*);
 void func_80070328(StarSpawn*);
 void func_800703E0(s32, s32, StarSpawn*);
