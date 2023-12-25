@@ -77,7 +77,6 @@ var render__player_8h =
     [ "D_800ED688", "render__player_8h.html#afc57fb22663b31a4da35fd8679c9e3aa", null ],
     [ "D_800ED6A8", "render__player_8h.html#a40cec23425b923a40f373abd7df26a7d", null ],
     [ "D_80164A28", "render__player_8h.html#a3a9f5f7350aba44f0115f0a4314483dd", null ],
-    [ "D_80164AAE", "render__player_8h.html#aa1e57a9b932eddacc709bab1607c6366", null ],
     [ "D_80164AB0", "render__player_8h.html#adb50c3c661f6bc349a52a5b7c12c8cf3", null ],
     [ "D_80164ABE", "render__player_8h.html#a6a6a5ac5fc4bccb612570fd16c53a6d7", null ],
     [ "D_80164AC0", "render__player_8h.html#afee4c573d4ed68fe5a99ff4f076054cc", null ],

@@ -27,6 +27,7 @@ var camera_8h =
     [ "cameras", "camera_8h.html#a8f5ed94c43a83ee4c33fba816f1e4ee5", null ],
     [ "D_800DDB30", "camera_8h.html#a2d201e72205f4468b1f1d1fc571ed486", null ],
     [ "D_80164A08", "camera_8h.html#a8adf287999dbf88d34466ab4e5d77ddb", null ],
+    [ "D_80164A28", "camera_8h.html#a3a9f5f7350aba44f0115f0a4314483dd", null ],
     [ "D_80164A2C", "camera_8h.html#aafd122319f0159b7ef4cc32b0c302394", null ],
     [ "D_80164A30", "camera_8h.html#a2d5af8c9c060b866cf5f15ecd54f8610", null ],
     [ "D_80164A89", "camera_8h.html#ac7270d3d11e3d60c43e68aa8a46734db", null ],

@@ -166,6 +166,5 @@ var player__controller_8c =
     [ "D_800E3C30", "player__controller_8c.html#a9ca0b1fab5f5b47de4bce7b8e8dc72b4", null ],
     [ "D_800E3C50", "player__controller_8c.html#a21321fc3b569a3bb129ec9f733e20de6", null ],
     [ "D_801633F8", "player__controller_8c.html#a9a0e4baed227f134463d153d4088e713", null ],
-    [ "D_80164A89", "player__controller_8c.html#ac7270d3d11e3d60c43e68aa8a46734db", null ],
     [ "D_8018D168", "player__controller_8c.html#af7d909f91b652566a1e6824dc16a96d7", null ]
 ];

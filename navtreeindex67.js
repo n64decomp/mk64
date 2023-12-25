@@ -1,5 +1,10 @@
 var NAVTREEINDEX67 =
 {
+"startup__logo_8inc_8c.html#a18b88401357e451e1d00b287b930e65c":[3,0,1,2,10,10],
+"startup__logo_8inc_8c.html#a2333776df237874d47c4b3a87762d40d":[3,0,1,2,10,18],
+"startup__logo_8inc_8c.html#a243b80084d0e2d5d2eff6eee4630e351":[3,0,1,2,10,24],
+"startup__logo_8inc_8c.html#a26d28357d32231b35c7cb249c6581688":[3,0,1,2,10,8],
+"startup__logo_8inc_8c.html#a2c16f85166a5b7ed4136a6bf0a0a0438":[3,0,1,2,10,7],
 "startup__logo_8inc_8c.html#a46561e285025a0edcf7d83c582aeb447":[3,0,1,2,10,14],
 "startup__logo_8inc_8c.html#a46f92383d5c36c3aa4ff9eb48a1d4213":[3,0,1,2,10,6],
 "startup__logo_8inc_8c.html#a5d155084c516545221947b4d42f550e3":[3,0,1,2,10,4],
@@ -244,10 +249,5 @@ var NAVTREEINDEX67 =
 "structAudioBufferParametersEU.html#abc9368e6141b216e80ea3eb635b959a1":[2,0,51,4],
 "structAudioBufferParametersEU.html#ac53a69267090acd3d367120eff6f7389":[2,0,51,1],
 "structAudioBufferParametersEU.html#ad93e334dafd2a2230fb64815f7752a21":[2,0,51,9],
-"structAudioBufferParametersEU.html#ad98989140eb984c68819b30dc562a869":[2,0,51,7],
-"structAudioListItem.html":[2,0,52],
-"structAudioListItem.html#a39c79f8d07aa4c9c3c7efde62022e521":[2,0,52,4],
-"structAudioListItem.html#a55779fbf47eea9adee6eb432b30424e0":[2,0,52,2],
-"structAudioListItem.html#a75f7cf4ca61be215028346fab2ac6ab8":[2,0,52,0],
-"structAudioListItem.html#ab838a8bb1d7648057b666190a9ee6108":[2,0,52,5]
+"structAudioBufferParametersEU.html#ad98989140eb984c68819b30dc562a869":[2,0,51,7]
 };
