@@ -4347,7 +4347,7 @@ void func_800569F4(s32 arg0) {
     s32 objectIndex;
 
     objectIndex = D_80183DD8[arg0];
-    func_800723A4(objectIndex, 0);
+    init_object(objectIndex, 0);
     gObjectList[objectIndex].unk_0A0 = 0;
 }
 
@@ -4355,7 +4355,7 @@ void func_80056A40(s32 arg0, s32 arg1) {
     s32 objectIndex;
 
     objectIndex = D_80183DD8[arg0];
-    func_800723A4(objectIndex, 0);
+    init_object(objectIndex, 0);
     gObjectList[objectIndex].unk_0A0 = (s16) arg1;
 }
 

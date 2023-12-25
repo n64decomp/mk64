@@ -856,7 +856,7 @@ void func_80070190(void) {
 void func_80070250(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     ItemWindowObjects *temp_v0;
 
-    func_800723A4(objectIndex, arg1);
+    init_object(objectIndex, arg1);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_0D5 = arg2->id;
     temp_v0->currentItem = ITEM_NONE;
@@ -899,7 +899,7 @@ void func_80070328(StarSpawn *arg0) {
 void func_800703E0(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     ItemWindowObjects *temp_v0;
 
-    func_800723A4(objectIndex, arg1);
+    init_object(objectIndex, arg1);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_0D5 = arg2->id; // No idea, all 0's for stars
     temp_v0->currentItem = ITEM_BANANA;
@@ -992,18 +992,18 @@ void func_80070714(void) {
 }
 
 void func_80070780(void) {
-    s32 temp_s0;
-    s32 var_s3;
+    s32 objectId;
+    s32 i;
 
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
         if (gGamestate != 9) {
-            if (gModeSelection == 0) {
+            if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
-            for (var_s3 = 0; var_s3 < D_80165738; var_s3++) {
-                find_unused_obj_index(&D_8018C630[var_s3]);
-                func_800723A4(D_8018C630[var_s3], 0);
+            for (i = 0; i < D_80165738; i++) {
+                find_unused_obj_index(&D_8018C630[i]);
+                init_object(D_8018C630[i], 0);
             }
         }
         break;
@@ -1023,133 +1023,133 @@ void func_80070780(void) {
             gThowmpSpawnList = gThomwpSpawns150CC;
             break;
         }
-        for (var_s3 = 0; var_s3 < gNumActiveThwomps; var_s3++) {
-            temp_s0 = D_80183EA0[var_s3];
-            func_800723A4(temp_s0, 0);
-            gObjectList[temp_s0].unk_010[0] = gThowmpSpawnList[var_s3].startX * D_8018D01C;
-            gObjectList[temp_s0].unk_010[2] = gThowmpSpawnList[var_s3].startZ;
-            gObjectList[temp_s0].unk_0D5 = gThowmpSpawnList[var_s3].unk_4;
-            gObjectList[temp_s0].unk_0A0 = gThowmpSpawnList[var_s3].unk_6;
+        for (i = 0; i < gNumActiveThwomps; i++) {
+            objectId = D_80183EA0[i];
+            init_object(objectId, 0);
+            gObjectList[objectId].unk_010[0] = gThowmpSpawnList[i].startX * D_8018D01C;
+            gObjectList[objectId].unk_010[2] = gThowmpSpawnList[i].startZ;
+            gObjectList[objectId].unk_0D5 = gThowmpSpawnList[i].unk_4;
+            gObjectList[objectId].unk_0A0 = gThowmpSpawnList[i].unk_6;
         }
         // Handle the big statue's fire breath
-        temp_s0 = D_80183F28[0];
-        func_800723A4(temp_s0, 0);
-        gObjectList[temp_s0].pos[0] = -68.0 * D_8018D01C;
-        gObjectList[temp_s0].pos[1] = 80.0f;
-        gObjectList[temp_s0].pos[2] = -1840.0f;
+        objectId = D_80183F28[0];
+        init_object(objectId, 0);
+        gObjectList[objectId].pos[0] = -68.0 * D_8018D01C;
+        gObjectList[objectId].pos[1] = 80.0f;
+        gObjectList[objectId].pos[2] = -1840.0f;
         // Handle the smaller statues' fire breath
-        for (var_s3 = 0; var_s3 < NUM_FIRE_BREATHS; var_s3++) {
-            temp_s0 = D_8018BFA8[var_s3];
-            func_800723A4(temp_s0, 0);
-            gObjectList[temp_s0].pos[0] = gFireBreathsSpawns[var_s3][0] * D_8018D01C;
-            gObjectList[temp_s0].pos[1] = gFireBreathsSpawns[var_s3][1];
-            gObjectList[temp_s0].pos[2] = gFireBreathsSpawns[var_s3][2];
-            gObjectList[temp_s0].unk_0BE[1] = 0;
-            if (var_s3 % 2U) {
-                gObjectList[temp_s0].unk_0BE[1] += 0x8000;
+        for (i = 0; i < NUM_FIRE_BREATHS; i++) {
+            objectId = D_8018BFA8[i];
+            init_object(objectId, 0);
+            gObjectList[objectId].pos[0] = gFireBreathsSpawns[i][0] * D_8018D01C;
+            gObjectList[objectId].pos[1] = gFireBreathsSpawns[i][1];
+            gObjectList[objectId].pos[2] = gFireBreathsSpawns[i][2];
+            gObjectList[objectId].unk_0BE[1] = 0;
+            if (i % 2U) {
+                gObjectList[objectId].unk_0BE[1] += 0x8000;
             }
         }
-        for (var_s3 = 0; var_s3 < 32; var_s3++) {
-            delete_object(&D_8018C030[var_s3]);
+        for (i = 0; i < 32; i++) {
+            delete_object(&D_8018C030[i]);
         }
         break;
     case COURSE_BANSHEE_BOARDWALK:
         if (gGamestate != 9) {
-            temp_s0 = D_80183EA0[0];
-            init_texture_object(temp_s0, d_course_banshee_boardwalk_bat_tlut, *d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
-            gObjectList[temp_s0].unk_0B2[0] = 0;
-            gObjectList[temp_s0].unk_0B2[1] = 0;
-            gObjectList[temp_s0].unk_0B2[2] = 0x8000;
-            func_800723A4(D_80183EA0[1], 0);
-            func_800723A4(D_80183EA0[2], 0);
+            objectId = D_80183EA0[0];
+            init_texture_object(objectId, d_course_banshee_boardwalk_bat_tlut, *d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
+            gObjectList[objectId].unk_0B2[0] = 0;
+            gObjectList[objectId].unk_0B2[1] = 0;
+            gObjectList[objectId].unk_0B2[2] = 0x8000;
+            init_object(D_80183EA0[1], 0);
+            init_object(D_80183EA0[2], 0);
         }
         break;
     case COURSE_YOSHI_VALLEY:
-        for (var_s3 = 0; var_s3 < 4; var_s3++) {
-            func_800723A4(D_80183EA0[var_s3], 0);
+        for (i = 0; i < 4; i++) {
+            init_object(D_80183EA0[i], 0);
         }
         if (gGamestate != 9) {
-            for (var_s3 = 0; var_s3 < NUM_HEDGEHOGS; var_s3++) {
-                temp_s0 = D_80183F28[var_s3];
-                func_800723A4(temp_s0, 0);
-                gObjectList[temp_s0].pos[0] = gObjectList[temp_s0].unk_010[0] = gHedgehogSpawns[var_s3].pos[0] * D_8018D01C;
-                gObjectList[temp_s0].pos[1] = gObjectList[temp_s0].unk_044 = gHedgehogSpawns[var_s3].pos[1] + 6.0;
-                gObjectList[temp_s0].pos[2] = gObjectList[temp_s0].unk_010[2] = gHedgehogSpawns[var_s3].pos[2];
-                gObjectList[temp_s0].unk_0D5 = gHedgehogSpawns[var_s3].unk_06;
-                gObjectList[temp_s0].unk_09C = gHedgehogPatrolPoints[var_s3][0] * D_8018D01C;
-                gObjectList[temp_s0].unk_09E = gHedgehogPatrolPoints[var_s3][2];
+            for (i = 0; i < NUM_HEDGEHOGS; i++) {
+                objectId = D_80183F28[i];
+                init_object(objectId, 0);
+                gObjectList[objectId].pos[0] = gObjectList[objectId].unk_010[0] = gHedgehogSpawns[i].pos[0] * D_8018D01C;
+                gObjectList[objectId].pos[1] = gObjectList[objectId].unk_044 = gHedgehogSpawns[i].pos[1] + 6.0;
+                gObjectList[objectId].pos[2] = gObjectList[objectId].unk_010[2] = gHedgehogSpawns[i].pos[2];
+                gObjectList[objectId].unk_0D5 = gHedgehogSpawns[i].unk_06;
+                gObjectList[objectId].unk_09C = gHedgehogPatrolPoints[i][0] * D_8018D01C;
+                gObjectList[objectId].unk_09E = gHedgehogPatrolPoints[i][2];
             }
         }
         break;
     case COURSE_FRAPPE_SNOWLAND:
-        for (var_s3 = 0; var_s3 < NUM_SNOWFLAKES; var_s3++) {
-            find_unused_obj_index(&D_8018C1B0[var_s3]);
+        for (i = 0; i < NUM_SNOWFLAKES; i++) {
+            find_unused_obj_index(&D_8018C1B0[i]);
         }
         if (gGamestate != 9) {
-            for (var_s3 = 0; var_s3 < NUM_SNOWMEN; var_s3++) {
-                temp_s0 = D_80183F28[var_s3];
-                func_800723A4(temp_s0, 0);
-                gObjectList[temp_s0].unk_010[0] = gSnowmanSpawns[var_s3].pos[0] * D_8018D01C;
-                gObjectList[temp_s0].unk_010[1] = gSnowmanSpawns[var_s3].pos[1] + 5.0 + 3.0;
-                gObjectList[temp_s0].unk_010[2] = gSnowmanSpawns[var_s3].pos[2];
-                temp_s0 = D_80183EA0[var_s3];
-                func_800723A4(temp_s0, 0);
-                gObjectList[temp_s0].unk_010[0] = gSnowmanSpawns[var_s3].pos[0] * D_8018D01C;
-                gObjectList[temp_s0].unk_010[1] = gSnowmanSpawns[var_s3].pos[1] + 3.0;
-                gObjectList[temp_s0].unk_010[2] = gSnowmanSpawns[var_s3].pos[2];
-                gObjectList[temp_s0].unk_0D5 = gSnowmanSpawns[var_s3].unk_6;
+            for (i = 0; i < NUM_SNOWMEN; i++) {
+                objectId = D_80183F28[i];
+                init_object(objectId, 0);
+                gObjectList[objectId].unk_010[0] = gSnowmanSpawns[i].pos[0] * D_8018D01C;
+                gObjectList[objectId].unk_010[1] = gSnowmanSpawns[i].pos[1] + 5.0 + 3.0;
+                gObjectList[objectId].unk_010[2] = gSnowmanSpawns[i].pos[2];
+                objectId = D_80183EA0[i];
+                init_object(objectId, 0);
+                gObjectList[objectId].unk_010[0] = gSnowmanSpawns[i].pos[0] * D_8018D01C;
+                gObjectList[objectId].unk_010[1] = gSnowmanSpawns[i].pos[1] + 3.0;
+                gObjectList[objectId].unk_010[2] = gSnowmanSpawns[i].pos[2];
+                gObjectList[objectId].unk_0D5 = gSnowmanSpawns[i].unk_6;
             }
         }
         break;
     case COURSE_KOOPA_BEACH:
         if (gGamestate != 9) {
-            for (var_s3 = 0; var_s3 < NUM_CRABS; var_s3++) {
-                temp_s0 = D_80183EA0[var_s3];
-                func_800723A4(temp_s0, 0);
-                gObjectList[temp_s0].pos[0] = gObjectList[temp_s0].unk_010[0] = gCrabSpawns[var_s3].startX * D_8018D01C;
-                gObjectList[temp_s0].unk_01C[0] = gCrabSpawns[var_s3].patrolX * D_8018D01C;
+            for (i = 0; i < NUM_CRABS; i++) {
+                objectId = D_80183EA0[i];
+                init_object(objectId, 0);
+                gObjectList[objectId].pos[0] = gObjectList[objectId].unk_010[0] = gCrabSpawns[i].startX * D_8018D01C;
+                gObjectList[objectId].unk_01C[0] = gCrabSpawns[i].patrolX * D_8018D01C;
 
-                gObjectList[temp_s0].pos[2] = gObjectList[temp_s0].unk_010[2] = gCrabSpawns[var_s3].startZ;
-                gObjectList[temp_s0].unk_01C[2] = gCrabSpawns[var_s3].patrolZ;
+                gObjectList[objectId].pos[2] = gObjectList[objectId].unk_010[2] = gCrabSpawns[i].startZ;
+                gObjectList[objectId].unk_01C[2] = gCrabSpawns[i].patrolZ;
             }
         }
-        for (var_s3 = 0; var_s3 < NUM_SEAGULLS; var_s3++) {
-            temp_s0 = D_80183F28[var_s3];
-            func_800723A4(temp_s0, 0);
-            if (var_s3 < (NUM_SEAGULLS / 2)) {
-                gObjectList[temp_s0].unk_0D5 = 0;
+        for (i = 0; i < NUM_SEAGULLS; i++) {
+            objectId = D_80183F28[i];
+            init_object(objectId, 0);
+            if (i < (NUM_SEAGULLS / 2)) {
+                gObjectList[objectId].unk_0D5 = 0;
             } else {
-                gObjectList[temp_s0].unk_0D5 = 1;
+                gObjectList[objectId].unk_0D5 = 1;
             }
         }
         break;
     case COURSE_ROYAL_RACEWAY:
         if (gGamestate != 9) {
-            if (gModeSelection == 0) {
+            if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
-            for (var_s3 = 0; var_s3 < D_80165738; var_s3++) {
-                find_unused_obj_index(&D_8018C630[var_s3]);
-                func_800723A4(D_8018C630[var_s3], 0);
+            for (i = 0; i < D_80165738; i++) {
+                find_unused_obj_index(&D_8018C630[i]);
+                init_object(D_8018C630[i], 0);
             }
         }
         break;
     case COURSE_LUIGI_RACEWAY:
         if (gGamestate != 9) {
-            if (gModeSelection == 0) {
+            if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
             D_80165898 = 0;
-            func_800723A4(D_80183EA0[0], 0);
-            for (var_s3 = 0; var_s3 < D_80165738; var_s3++) {
-                find_unused_obj_index(&D_8018C630[var_s3]);
-                func_800723A4(D_8018C630[var_s3], 0);
+            init_object(D_80183EA0[0], 0);
+            for (i = 0; i < D_80165738; i++) {
+                find_unused_obj_index(&D_8018C630[i]);
+                init_object(D_8018C630[i], 0);
             }
         }
         break;
     case COURSE_MOO_MOO_FARM:
         if (gGamestate != 9) {
-            if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == (s32) 2))) {
+            if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == VERSUS))) {
                 switch (gCCSelection) {             /* switch 2; irregular */
                 case CC_50:                             /* switch 2 */
                     D_8018D1C8 = 4;
@@ -1177,65 +1177,65 @@ void func_80070780(void) {
                 D_8018D1D0 = 6;
                 D_8018D1D8 = 6;
             }
-            for (var_s3 = 0; var_s3 < NUM_GROUP1_MOLES; var_s3++) {
-                D_8018D198[var_s3] = 0;
-                find_unused_obj_index(&D_80183EA0[var_s3]);
+            for (i = 0; i < NUM_GROUP1_MOLES; i++) {
+                D_8018D198[i] = 0;
+                find_unused_obj_index(&D_80183EA0[i]);
             }
-            for (var_s3 = 0; var_s3 < NUM_GROUP2_MOLES; var_s3++) {
-                D_8018D1A8[var_s3] = 0;
-                find_unused_obj_index(&D_80183EA0[var_s3]);
+            for (i = 0; i < NUM_GROUP2_MOLES; i++) {
+                D_8018D1A8[i] = 0;
+                find_unused_obj_index(&D_80183EA0[i]);
             }
-            for (var_s3 = 0; var_s3 < NUM_GROUP3_MOLES; var_s3++) {
-                D_8018D1B8[var_s3] = 0;
-                find_unused_obj_index(&D_80183EA0[var_s3]);
+            for (i = 0; i < NUM_GROUP3_MOLES; i++) {
+                D_8018D1B8[i] = 0;
+                find_unused_obj_index(&D_80183EA0[i]);
             }
-            for (var_s3 = 0; var_s3 < NUM_MAX_MOLES; var_s3++) {
-                find_unused_obj_index(&D_8018C1B0[var_s3]);
-                temp_s0 = D_8018C1B0[var_s3];
-                func_800723A4(temp_s0, 0);
-                gObjectList[temp_s0].pos[0] = gMoleSpawns[var_s3][0] * D_8018D01C;
-                gObjectList[temp_s0].pos[2] = gMoleSpawns[var_s3][2];
-                func_800887C0(temp_s0);
-                gObjectList[temp_s0].sizeScaling = 0.7f;
+            for (i = 0; i < NUM_MAX_MOLES; i++) {
+                find_unused_obj_index(&D_8018C1B0[i]);
+                objectId = D_8018C1B0[i];
+                init_object(objectId, 0);
+                gObjectList[objectId].pos[0] = gMoleSpawns[i][0] * D_8018D01C;
+                gObjectList[objectId].pos[2] = gMoleSpawns[i][2];
+                func_800887C0(objectId);
+                gObjectList[objectId].sizeScaling = 0.7f;
             }
-            for (var_s3 = 0; var_s3 < D_8018C3F0_SIZE; var_s3++) {
-                find_unused_obj_index(&D_8018C3F0[var_s3]);
+            for (i = 0; i < D_8018C3F0_SIZE; i++) {
+                find_unused_obj_index(&D_8018C3F0[i]);
             }
         }
         break;
     case COURSE_KALAMARI_DESERT:
         if (gGamestate != 9) {
             find_unused_obj_index(&D_8018CF10);
-            func_800723A4(D_8018CF10, 0);
-            for (var_s3 = 0; var_s3 < 50; var_s3++) {
-                find_unused_obj_index(&D_8018C1B0[var_s3]);
+            init_object(D_8018CF10, 0);
+            for (i = 0; i < 50; i++) {
+                find_unused_obj_index(&D_8018C1B0[i]);
             }
-            for (var_s3 = 0; var_s3 < 5; var_s3++) {
-                find_unused_obj_index(&D_8018C3F0[var_s3]);
+            for (i = 0; i < 5; i++) {
+                find_unused_obj_index(&D_8018C3F0[i]);
             }
-            for (var_s3 = 0; var_s3 < 32; var_s3++) {
-                find_unused_obj_index(&D_8018C630[var_s3]);
+            for (i = 0; i < 32; i++) {
+                find_unused_obj_index(&D_8018C630[i]);
             }
         }
         break;
     case COURSE_SHERBET_LAND:
-        for (var_s3 = 0; var_s3 < NUM_PENGUINS; var_s3++) {
-            func_800723A4(D_80183EA0[var_s3], 0);
+        for (i = 0; i < NUM_PENGUINS; i++) {
+            init_object(D_80183EA0[i], 0);
         }
         break;
     case COURSE_RAINBOW_ROAD:
         if (gGamestate != 9) {
-            for (var_s3 = 0; var_s3 < NUM_NEON_SIGNS; var_s3++) {
-                func_800723A4(D_80183EA0[var_s3], 0);
+            for (i = 0; i < NUM_NEON_SIGNS; i++) {
+                init_object(D_80183EA0[i], 0);
             }
-            for (var_s3 = 0; var_s3 < NUM_CHAIN_CHOMPS; var_s3++) {
-                func_800723A4(D_80183F28[var_s3], 0);
+            for (i = 0; i < NUM_CHAIN_CHOMPS; i++) {
+                init_object(D_80183F28[i], 0);
             }
         }
         break;
     case COURSE_DK_JUNGLE:
-        for (var_s3 = 0; var_s3 < NUM_TORCHES; var_s3++) {
-            func_800770F0(var_s3);
+        for (i = 0; i < NUM_TORCHES; i++) {
+            func_800770F0(i);
             // wtf?
             if (D_8018CF10){}
         }
@@ -1469,13 +1469,13 @@ void init_hud_two_player_vertical(void) {
     D_8018D3C0 = 0x28;
     D_801657A2 = 0x666;
     switch (gModeSelection) {                       /* irregular */
-    case 0:
+    case GRAND_PRIX:
         D_8018D158 = 8;
         break;
-    case 2:
+    case VERSUS:
         D_8018D158 = 2;
         break;
-    case 3:
+    case BATTLE:
         D_8018D158 = 2;
         break;
     }
@@ -1528,7 +1528,7 @@ void init_hud_two_player_horizontal() {
     hudPlayers[PLAYER_TWO].lapX = 0x101;
     hudPlayers[PLAYER_TWO].lapY = 0xDA;
 
-    if (gModeSelection == 3) {
+    if (gModeSelection == BATTLE) {
         hudPlayers[PLAYER_ONE].itemBoxY = 0x5E;
         hudPlayers[PLAYER_TWO].itemBoxY = 0xD0;
     }
@@ -1546,13 +1546,13 @@ void init_hud_two_player_horizontal() {
     D_8018D3C0 = 0x28;
     D_801657A2 = 0x666;
     switch (gModeSelection) {                       /* irregular */
-    case 0:
+    case GRAND_PRIX:
         D_8018D158 = 8;
         return;
-    case 2:
+    case VERSUS:
         D_8018D158 = 2;
         return;
-    case 3:
+    case BATTLE:
         D_8018D158 = 2;
         return;
     }
@@ -1635,7 +1635,7 @@ void init_hud_three_four_player(void) {
     hudPlayers[PLAYER_FOUR].unk_6C = 0xC8;
     hudPlayers[PLAYER_FOUR].unk_6E = 0xC0;
 
-    if (gModeSelection == 3) {
+    if (gModeSelection == BATTLE) {
         hudPlayers[PLAYER_ONE].itemBoxY = 0xC8;
         hudPlayers[PLAYER_TWO].itemBoxY = 0xC8;
         hudPlayers[PLAYER_THREE].itemBoxY = 0xB8;

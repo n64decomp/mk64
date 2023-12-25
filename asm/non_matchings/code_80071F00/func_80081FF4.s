@@ -3,7 +3,7 @@ glabel func_80081FF4
 /* 082BF8 80081FF8 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 082BFC 80081FFC AFA5003C */  sw    $a1, 0x3c($sp)
 /* 082C00 80082000 AFA40038 */  sw    $a0, 0x38($sp)
-/* 082C04 80082004 0C01C8E9 */  jal   func_800723A4
+/* 082C04 80082004 0C01C8E9 */  jal   init_object
 /* 082C08 80082008 00002825 */   move  $a1, $zero
 /* 082C0C 8008200C 0C0ADF8D */  jal   random_int
 /* 082C10 80082010 2404001E */   li    $a0, 30

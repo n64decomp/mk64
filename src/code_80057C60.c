@@ -1832,7 +1832,7 @@ void func_8005B914(void) {
         func_8005AAF0();
         break;
     case 0x2:
-        if (gModeSelection == 1) {
+        if (gModeSelection == TIME_TRIALS) {
             hudPlayers[PLAYER_ONE].unk_80 = 1;
         }
         hudPlayers[PLAYER_ONE].unk_78 = 1;
