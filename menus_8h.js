@@ -18,6 +18,7 @@ var menus_8h =
     [ "main_menu_act", "menus_8h.html#a29ee3f2a988bfa836ca9314af24fcfe5", null ],
     [ "options_menu_act", "menus_8h.html#a2143bb9ef498a804b13d4f10cb62ef82", null ],
     [ "player_select_menu_act", "menus_8h.html#a12782c6dfda55fb80c3fdf7d11d302f0", null ],
+    [ "rmonPrintf", "menus_8h.html#a19085a3486cdb488add643cb0e34d20a", null ],
     [ "splash_menu_act", "menus_8h.html#a52ab81a056590cac214809800c31ab29", null ],
     [ "update_menus", "menus_8h.html#a5fd6ba9b77c684f7c5e0f4732de81953", null ],
     [ "D_800E86A4", "menus_8h.html#abb2ea38cf7a38ac58573450daaa644d9", null ],

@@ -7,5 +7,5 @@ var code__80281C40_8h =
     [ "D_00284EE0", "code__80281C40_8h.html#a7ed99c76cfed3df0f8bbbf00d712c677", null ],
     [ "D_00284F70", "code__80281C40_8h.html#a6577519b7b2615dcabfd2ab52c1c70d4", null ],
     [ "gIsInQuitToMenuTransition", "code__80281C40_8h.html#a2e7d63dbfdabad69a70a95734822fe41", null ],
-    [ "gMenuSelectionFromEndingSequence", "code__80281C40_8h.html#a1da8d46886b3608075a6ea0d7f1ff83d", null ]
+    [ "gMenuSelectionFromEndingSequence", "code__80281C40_8h.html#ad2860b2a2758318250fe173901d47149", null ]
 ];

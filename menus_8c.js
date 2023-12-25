@@ -13,7 +13,6 @@ var menus_8c =
     [ "is_character_spot_free", "menus_8c.html#a4b11994b1b802cd7af3ade61dac14ca5", null ],
     [ "logo_intro_menu_act", "menus_8c.html#a2624e9b264715a18c2bb23c5c71d5108", null ],
     [ "options_menu_act", "menus_8c.html#ac12b794ad6e6f958a6ab8eaebde7efae", null ],
-    [ "rmonPrintf", "menus_8c.html#a19085a3486cdb488add643cb0e34d20a", null ],
     [ "splash_menu_act", "menus_8c.html#a15d9aecd0ca959638140706233257a37", null ],
     [ "update_menus", "menus_8c.html#a5fd6ba9b77c684f7c5e0f4732de81953", null ],
     [ "D_800E86A4", "menus_8c.html#abb2ea38cf7a38ac58573450daaa644d9", null ],

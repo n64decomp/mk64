@@ -6,6 +6,7 @@ var code__8006E9C0_8h =
     [ "func_8006ED94", "code__8006E9C0_8h.html#a7b789d7b17a6c6a707e01b482196252a", null ],
     [ "func_8006EE44", "code__8006E9C0_8h.html#a7035aa35df03a6428e21a10f4472d68e", null ],
     [ "func_8006EEE8", "code__8006E9C0_8h.html#aedce5312d1981131b06edd1d62e8f070", null ],
+    [ "func_8006EF60", "code__8006E9C0_8h.html#a2956212d9a77bb65bd839ca351c3132a", null ],
     [ "func_8006F824", "code__8006E9C0_8h.html#a8461a418dd36b6e443d6962bccfb593a", null ],
     [ "func_8006FA94", "code__8006E9C0_8h.html#a0a15839e2884f0317e950c05b03e4f0b", null ],
     [ "func_80070148", "code__8006E9C0_8h.html#a7ce8b772e14372f2078703a39e676d2a", null ],
