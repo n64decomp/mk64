@@ -194,7 +194,7 @@ var searchData=
   ['alseqdata_441',['ALSeqData',['../structALSeqData.html',1,'']]],
   ['alseqfile_442',['ALSeqFile',['../structALSeqFile.html',1,'']]],
   ['alseqfilenew_443',['alSeqFileNew',['../alBnkfNew_8c.html#ab275be6c7d58d2836dbd28d7c119e1d6',1,'alSeqFileNew(ALSeqFile *f, u8 *base):&#160;alBnkfNew.c'],['../libaudio_8h.html#ab275be6c7d58d2836dbd28d7c119e1d6',1,'alSeqFileNew(ALSeqFile *f, u8 *base):&#160;alBnkfNew.c']]],
-  ['alsolapcount_444',['alsoLapCount',['../structstruct__8018CA70__entry.html#ad05cd3d18a503ba6280296f73a4fbc75',1,'struct_8018CA70_entry']]],
+  ['alsolapcount_444',['alsoLapCount',['../structhud__player.html#a3bf6c6d74d60d7cf19c5aa483a8edde5',1,'hud_player']]],
   ['alsound_445',['ALSound',['../libaudio__internal_8h.html#ad22cfca9e762ade3716a66f309bdb920',1,'libaudio_internal.h']]],
   ['alsound_5fs_446',['ALSound_s',['../structALSound__s.html',1,'']]],
   ['alwavetable_447',['ALWaveTable',['../libaudio__internal_8h.html#ac16ea6431170571ec31088911394605a',1,'libaudio_internal.h']]],

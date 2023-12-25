@@ -15,7 +15,6 @@ var code__80071F00_8h =
     [ "func_800722F8", "code__80071F00_8h.html#a9be4aa639617e52a7205b105af58c632", null ],
     [ "func_80072320", "code__80071F00_8h.html#ad22f25874f7d1c0ad02ac2efc6b57608", null ],
     [ "func_80072354", "code__80071F00_8h.html#a26b971fd009f514e6a9a92e3896836a8", null ],
-    [ "func_800723A4", "code__80071F00_8h.html#adc4a1e2be3f65d967cfb6495c0f14613", null ],
     [ "func_80072408", "code__80071F00_8h.html#ac2f26ad8b90a89c7e81d52c554c31c9b", null ],
     [ "func_80072428", "code__80071F00_8h.html#af64e55bd10806194fc6710c2f3aa0972", null ],
     [ "func_80072488", "code__80071F00_8h.html#a038d0e9e4693c1226ff08ca3d2a309b1", null ],
@@ -348,6 +347,7 @@ var code__80071F00_8h =
     [ "gen_random_item_human", "code__80071F00_8h.html#a535a6bc08951dc7bb9c3cb48392ae621", null ],
     [ "init_bb_trash_bin", "code__80071F00_8h.html#a5cd49847e798f75ecc85679675ea0d32", null ],
     [ "init_ktb_crab", "code__80071F00_8h.html#a15c81fa92d8ece0748679484f12161c3", null ],
+    [ "init_object", "code__80071F00_8h.html#accf3d33fa8ebb38dc00a2be3d87123a5", null ],
     [ "init_texture_object", "code__80071F00_8h.html#aa7cef667ee2293d0afd079a0a1dcd023", null ],
     [ "is_obj_index_flag_unk_054_active", "code__80071F00_8h.html#ac11e77c71ede34aca2c6ddbd5481a90e", null ],
     [ "is_obj_index_flag_unk_054_inactive", "code__80071F00_8h.html#a236f87c2d592ca6396dfa3962f26d71a", null ],
@@ -381,8 +381,6 @@ var code__80071F00_8h =
     [ "D_801658CE", "code__80071F00_8h.html#ac1336fdb7f4785fd3f42f6aa0493deef", null ],
     [ "D_801658DC", "code__80071F00_8h.html#a921d3981f4a0e20c8e7aa9822747fe76", null ],
     [ "D_801658F4", "code__80071F00_8h.html#ab9ad655092aa1ce992753a255b940350", null ],
-    [ "D_80183D5C", "code__80071F00_8h.html#a1ba3885f5c1c0dcfbfd33a54acb01b05", null ],
-    [ "D_80183EA4", "code__80071F00_8h.html#a5a1a3f4a5d767de5e5358fd900598bb6", null ],
     [ "D_80183FA8", "code__80071F00_8h.html#aaa6d95077e451e6f65ceeef23323d581", null ],
     [ "D_8018C028", "code__80071F00_8h.html#af8978cd66a20859240d369b9e1ba3a5b", null ],
     [ "D_8018CAB8", "code__80071F00_8h.html#a7dca76a7678974fa9be43e94c71647d1", null ],
@@ -390,7 +388,6 @@ var code__80071F00_8h =
     [ "D_8018CFE8", "code__80071F00_8h.html#af9b029ef4cc82c94dbed5b2a4315f14c", null ],
     [ "D_8018CFF0", "code__80071F00_8h.html#aad2d5a6a9f0b995b8648dc4ba7dc8654", null ],
     [ "D_8018D018", "code__80071F00_8h.html#ab2bbae686a80b211b97d56b59f41de83", null ],
-    [ "D_8018D01C", "code__80071F00_8h.html#aaff8ba374fe359bca5b9264ddfabb2d9", null ],
     [ "D_8018D048", "code__80071F00_8h.html#a500f56fea907c77763a575baf8f98b89", null ],
     [ "D_8018D110", "code__80071F00_8h.html#a69c5451c9fa9946af25574639b0256b4", null ],
     [ "D_8018D140", "code__80071F00_8h.html#aa7477ba6fe5295b2e380116e71ab01b2", null ],
@@ -404,5 +401,7 @@ var code__80071F00_8h =
     [ "gItemWindowTextures", "code__80071F00_8h.html#af2ee51d08a070f0ec6d56e5077466493", null ],
     [ "gItemWindowTLUTs", "code__80071F00_8h.html#ac65c3696186c5894d52e8f2da29c521a", null ],
     [ "gPortraitTextures", "code__80071F00_8h.html#a601231686d436717b1f26ad0303fe7e3", null ],
-    [ "gPortraitTLUTs", "code__80071F00_8h.html#ac92acbe0f14e4a89e43337ce5095a4f4", null ]
+    [ "gPortraitTLUTs", "code__80071F00_8h.html#ac92acbe0f14e4a89e43337ce5095a4f4", null ],
+    [ "objectListSize", "code__80071F00_8h.html#a619a9cb4ca05d69a44a5928af9e499ad", null ],
+    [ "xOrientation", "code__80071F00_8h.html#aa8baaee38198253cb48457f67d39e877", null ]
 ];

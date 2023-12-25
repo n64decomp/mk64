@@ -82,9 +82,9 @@ var sectionId = 'dynsection-4';
 <!-- Node28 -->
 <g id="node28" class="node">
 <title>Node28</title>
-<g id="a_node28"><a xlink:href="code__8006E9C0_8c.html#af74065379c405a1dda1c942665fe5f9e" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1539.5,-80 1539.5,-99 1630.5,-99 1630.5,-80 1539.5,-80"/>
-<text text-anchor="middle" x="1585" y="-87" font-family="Helvetica,sans-Serif" font-size="10.00">func_80070780</text>
+<g id="a_node28"><a xlink:href="code__8006E9C0_8c.html#a95bd792f4507dd26cf251c980bd9214b" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1532.5,-80 1532.5,-99 1637.5,-99 1637.5,-80 1532.5,-80"/>
+<text text-anchor="middle" x="1585" y="-87" font-family="Helvetica,sans-Serif" font-size="10.00">init_course_object</text>
 </a>
 </g>
 </g>
@@ -572,8 +572,8 @@ var sectionId = 'dynsection-4';
 <!-- Node28&#45;&gt;Node29 -->
 <g id="edge43" class="edge">
 <title>Node28&#45;&gt;Node29</title>
-<path fill="none" stroke="midnightblue" d="M1529.28,-97.95C1514.27,-100.26 1498.01,-102.77 1483.01,-105.09"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1530.09,-101.36 1539.44,-96.38 1529.02,-94.44 1530.09,-101.36"/>
+<path fill="none" stroke="midnightblue" d="M1522.08,-99.06C1509.25,-101.04 1495.81,-103.11 1483.25,-105.05"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1522.87,-102.48 1532.22,-97.49 1521.8,-95.56 1522.87,-102.48"/>
 </g>
 <!-- Node35 -->
 <g id="node35" class="node">
@@ -588,8 +588,8 @@ var sectionId = 'dynsection-4';
 <!-- Node28&#45;&gt;Node35 -->
 <g id="edge52" class="edge">
 <title>Node28&#45;&gt;Node35</title>
-<path fill="none" stroke="midnightblue" d="M1529.29,-80.7C1515.03,-78.41 1499.64,-75.94 1485.28,-73.63"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1529.01,-84.2 1539.44,-82.34 1530.12,-77.29 1529.01,-84.2"/>
+<path fill="none" stroke="midnightblue" d="M1522.12,-79.55C1509.91,-77.59 1497.16,-75.54 1485.14,-73.61"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1521.79,-83.04 1532.22,-81.18 1522.9,-76.13 1521.79,-83.04"/>
 </g>
 <!-- Node36 -->
 <g id="node36" class="node">

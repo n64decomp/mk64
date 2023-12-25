@@ -21,7 +21,7 @@ var searchData=
   ['aifrequency_18284',['aiFrequency',['../structAudioBufferParametersEU.html#a675f5849a446429e68e7c03f89be6841',1,'AudioBufferParametersEU']]],
   ['allcoursetimetrialrecords_18285',['allCourseTimeTrialRecords',['../structSaveData.html#af99eee38007ec1e42d9fb466faf8ac5b',1,'SaveData']]],
   ['alpha_18286',['alpha',['../structRGBA16.html#a23265999b7bfedc1640e44c331d67f06',1,'RGBA16::alpha()'],['../structRGBA5551.html#a8e4b93a16be5353df9973a8672ef6d28',1,'RGBA5551::alpha()']]],
-  ['alsolapcount_18287',['alsoLapCount',['../structstruct__8018CA70__entry.html#ad05cd3d18a503ba6280296f73a4fbc75',1,'struct_8018CA70_entry']]],
+  ['alsolapcount_18287',['alsoLapCount',['../structhud__player.html#a3bf6c6d74d60d7cf19c5aa483a8edde5',1,'hud_player']]],
   ['always_5fset_5fto_5fsomething_5fbut_5fnever_5fused_18288',['always_set_to_something_but_never_used',['../structanimation__type__2.html#a554dcc81b947ef56decae02c35edd3a4',1,'animation_type_2']]],
   ['always_5fzero_5fnever_5fused_18289',['always_zero_never_used',['../structanimation__type__1.html#af9f1a38ab1c91116378fd9923d9abf84',1,'animation_type_1::always_zero_never_used()'],['../structanimation__type__2.html#a3f5a40202790eb3865453c5b6d1a17d4',1,'animation_type_2::always_zero_never_used()']]],
   ['animation_5flength_18290',['animation_length',['../structanimation__type__2.html#a0afc4954ed7ed309911003a6f81726b4',1,'animation_type_2']]],

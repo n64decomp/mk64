@@ -855,16 +855,16 @@ var sectionId = 'dynsection-25';
 <!-- Node114 -->
 <g id="node43" class="node">
 <title>Node114</title>
-<g id="a_node43"><a xlink:href="code__8006E9C0_8c.html#af74065379c405a1dda1c942665fe5f9e" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="red" points="483,-214 483,-233 574,-233 574,-214 483,-214"/>
-<text text-anchor="middle" x="528.5" y="-221" font-family="Helvetica,sans-Serif" font-size="10.00">func_80070780</text>
+<g id="a_node43"><a xlink:href="code__8006E9C0_8c.html#a95bd792f4507dd26cf251c980bd9214b" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="red" points="476,-214 476,-233 581,-233 581,-214 476,-214"/>
+<text text-anchor="middle" x="528.5" y="-221" font-family="Helvetica,sans-Serif" font-size="10.00">init_course_object</text>
 </a>
 </g>
 </g>
 <!-- Node113&#45;&gt;Node114 -->
 <g id="edge56" class="edge">
 <title>Node113&#45;&gt;Node114</title>
-<path fill="none" stroke="midnightblue" d="M648.56,-223.5C624.51,-223.5 596.74,-223.5 574.06,-223.5"/>
+<path fill="none" stroke="midnightblue" d="M648.6,-223.5C626.99,-223.5 602.37,-223.5 581.14,-223.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="648.61,-227 658.61,-223.5 648.61,-220 648.61,-227"/>
 </g>
 <!-- Node58 -->

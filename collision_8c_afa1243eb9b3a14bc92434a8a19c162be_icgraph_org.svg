@@ -548,16 +548,16 @@
 <!-- Node64 -->
 <g id="node24" class="node">
 <title>Node64</title>
-<g id="a_node24"><a xlink:href="code__8006E9C0_8c.html#af74065379c405a1dda1c942665fe5f9e" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="red" points="426,-626 426,-645 517,-645 517,-626 426,-626"/>
-<text text-anchor="middle" x="471.5" y="-633" font-family="Helvetica,sans-Serif" font-size="10.00">func_80070780</text>
+<g id="a_node24"><a xlink:href="code__8006E9C0_8c.html#a95bd792f4507dd26cf251c980bd9214b" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="red" points="419,-626 419,-645 524,-645 524,-626 419,-626"/>
+<text text-anchor="middle" x="471.5" y="-633" font-family="Helvetica,sans-Serif" font-size="10.00">init_course_object</text>
 </a>
 </g>
 </g>
 <!-- Node63&#45;&gt;Node64 -->
 <g id="edge33" class="edge">
 <title>Node63&#45;&gt;Node64</title>
-<path fill="none" stroke="midnightblue" d="M583.87,-635.5C562.16,-635.5 537.56,-635.5 517.02,-635.5"/>
+<path fill="none" stroke="midnightblue" d="M583.81,-635.5C564.55,-635.5 543.02,-635.5 524.07,-635.5"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="583.94,-639 593.94,-635.5 583.94,-632 583.94,-639"/>
 </g>
 <!-- Node71 -->

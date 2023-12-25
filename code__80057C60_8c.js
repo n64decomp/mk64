@@ -217,7 +217,6 @@ var code__80057C60_8c =
     [ "D_801657E7", "code__80057C60_8c.html#ab040abdc6060c227681631f6e2df9b43", null ],
     [ "D_801657F8", "code__80057C60_8c.html#a1bcd1fdf892a2baefdf194cacb43c17b", null ],
     [ "D_80165890", "code__80057C60_8c.html#ac110bb24c0a8655cc57e7a2e12ab013f", null ],
-    [ "D_8018CA70", "code__80057C60_8c.html#aa8ffcc58022c02deda233574293f80d9", null ],
     [ "D_8018CAAE", "code__80057C60_8c.html#a828f2feb79295ced00facb1edc29f2c5", null ],
     [ "D_8018CAB0", "code__80057C60_8c.html#a2a9d47b662961963b5a59c6d2d16bfe2", null ],
     [ "D_8018CAB8", "code__80057C60_8c.html#a7dca76a7678974fa9be43e94c71647d1", null ],
@@ -248,5 +247,6 @@ var code__80057C60_8c =
     [ "gGPCurrentRacePlayerIdByRank", "code__80057C60_8c.html#adf1a010814a163e8727e3737c3a81b35", null ],
     [ "gGPCurrentRaceRankByPlayerId", "code__80057C60_8c.html#a376783d0c0edf573f546c9794eee5258", null ],
     [ "gRaceFrameCounter", "code__80057C60_8c.html#a1ab400633b3d05faceec6f04e07639a3", null ],
+    [ "playerHUD", "code__80057C60_8c.html#a73eb4e70ca2b26ae43523016c1e3c0c4", null ],
     [ "some_unused_data", "code__80057C60_8c.html#a704b06c0af22c4d89c287f9311e1f10b", null ]
 ];

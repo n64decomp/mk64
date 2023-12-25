@@ -48,10 +48,6 @@ var objects_8h =
     [ "D_80183E5C", "objects_8h.html#a5a482ecae10cfa0c556959d550c4f09e", null ],
     [ "D_80183E6C", "objects_8h.html#a3aab530f1956ec60d006b6edab695a8b", null ],
     [ "D_80183E7C", "objects_8h.html#a3e2e28a148d0af8de7336269697cd291", null ],
-    [ "D_80183EA0", "objects_8h.html#aa775a901a4e1cf8e7161657bd7a9da7a", null ],
-    [ "D_80183F28", "objects_8h.html#a71b306994a113bcc21d0dddacb802360", null ],
-    [ "D_8018BFA8", "objects_8h.html#ade23c7d0c0071ee638149e34d851fa4a", null ],
-    [ "D_8018C030", "objects_8h.html#ac8632dbec81668aab171be6a7dd418d0", null ],
     [ "D_8018C0B0", "objects_8h.html#a6207335a62ad3cf3b1ce26b6b6d91550", null ],
     [ "D_8018C1B0", "objects_8h.html#a4eaa281a1efb4760518ddb0f01b395ec", null ],
     [ "D_8018C3F0", "objects_8h.html#acec3764835abbd52f3303df62bbb17e2", null ],
@@ -87,5 +83,9 @@ var objects_8h =
     [ "gThomwpSpawns50CC", "objects_8h.html#aaf65d9c5ffd8e4297c54dd993877d8cf", null ],
     [ "gThowmpSpawnList", "objects_8h.html#a840ef2e5e6ba8d81138c0dd18c11cf21", null ],
     [ "gThwompSpawns100CCExtra", "objects_8h.html#abe4d0b9a4a99ad4cb6146bfea9e20dbe", null ],
-    [ "gTorchSpawns", "objects_8h.html#a79576299626c8e78c3a95dd03abff115", null ]
+    [ "gTorchSpawns", "objects_8h.html#a79576299626c8e78c3a95dd03abff115", null ],
+    [ "indexObjectList1", "objects_8h.html#a67cc647d1f6897f44c74f3b0a16e4ef3", null ],
+    [ "indexObjectList2", "objects_8h.html#a588c128c78cc45dd3829718dbdcd693d", null ],
+    [ "indexObjectList3", "objects_8h.html#a29918a947d590d6409da7b7a3c726c8e", null ],
+    [ "indexObjectList4", "objects_8h.html#af8dc3b7cb92633154ff0f162251463cc", null ]
 ];
