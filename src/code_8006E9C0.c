@@ -22,7 +22,7 @@
 
 void init_object_list(void) {
 
-    func_8006EA5C();
+    reset_object_variable();
     func_8006FA94();
 
     switch (gScreenModeSelection) {
@@ -42,10 +42,10 @@ void init_object_list(void) {
     func_80070148();
 }
 
-void func_8006EA5C(void) {
+void reset_object_variable(void) {
     func_8006EB10();
-    func_8006ED60();
-    bzero(D_8018CA70, D_8018CA70_SIZE * sizeof(struct_8018CA70_entry));
+    clear_object_list();
+    bzero(playerHUD, HUD_PLAYERS_SIZE * sizeof(hud_player));
     D_8018CAE1 = 0;
     D_8018CAE2 = 0;
     D_8018CAF1 = 0;
@@ -64,30 +64,30 @@ void func_8006EA5C(void) {
     D_8018CC6C = 0;
 
     /**
-    D_8018CA70[0].lapCount = 0;
-    D_8018CA70[0].alsoLapCount = 0;
-    D_8018CA70[0].unk_81 = 0;
-    D_8018CA70[1].lapCount = 0;
-    D_8018CA70[1].alsoLapCount = 0;
-    D_8018CA70[1].unk_81 = 0;
-    D_8018CA70[2].lapCount = 0;
-    D_8018CA70[2].alsoLapCount = 0;
-    D_8018CA70[2].unk_81 = 0;
-    D_8018CA70[3].lapCount = 0;
-    D_8018CA70[3].alsoLapCount = 0;
-    D_8018CA70[3].unk_81 = 0;
-    D_8018CA70[0].raceCompleteBool = 0;
-    D_8018CA70[1].raceCompleteBool = 0;
-    D_8018CA70[2].raceCompleteBool = 0;
-    D_8018CA70[3].raceCompleteBool = 0;
+    playerHUD[PLAYER_ONE].lapCount = 0;
+    playerHUD[PLAYER_ONE].alsoLapCount = 0;
+    playerHUD[PLAYER_ONE].unk_81 = 0;
+    playerHUD[PLAYER_TWO].lapCount = 0;
+    playerHUD[PLAYER_TWO].alsoLapCount = 0;
+    playerHUD[PLAYER_TWO].unk_81 = 0;
+    playerHUD[PLAYER_THREE].lapCount = 0;
+    playerHUD[PLAYER_THREE].alsoLapCount = 0;
+    playerHUD[PLAYER_THREE].unk_81 = 0;
+    playerHUD[PLAYER_FOUR].lapCount = 0;
+    playerHUD[PLAYER_FOUR].alsoLapCount = 0;
+    playerHUD[PLAYER_FOUR].unk_81 = 0;
+    playerHUD[PLAYER_ONE].raceCompleteBool = 0;
+    playerHUD[PLAYER_TWO].raceCompleteBool = 0;
+    playerHUD[PLAYER_THREE].raceCompleteBool = 0;
+    playerHUD[PLAYER_FOUR].raceCompleteBool = 0;
 
     // This is close but it puts the raceCompletedBool stuff in the wrong place
     // Which makes sense, but its still annoying
-    for (thing = 0; thing < D_8018CA70_SIZE; thing++) {
-        D_8018CA70[thing].lapCount = 0;
-        D_8018CA70[thing].alsoLapCount = 0;
-        D_8018CA70[thing].unk_81 = 0;
-        D_8018CA70[thing].raceCompleteBool = 0;
+    for (thing = 0; thing < HUD_PLAYERS_SIZE; thing++) {
+        playerHUD[thing].lapCount = 0;
+        playerHUD[thing].alsoLapCount = 0;
+        playerHUD[thing].unk_81 = 0;
+        playerHUD[thing].raceCompleteBool = 0;
     }
     **/
 }
@@ -182,9 +182,9 @@ void func_8006EB10(void) {
     D_80183E38 = D_80183E4C;
 }
 
-void func_8006ED60() {
+void clear_object_list() {
     bzero(gObjectList, OBJECT_LIST_SIZE * sizeof(Objects));
-    D_80183D5C = -1;
+    objectListSize = -1;
 }
 
 u8 *func_8006ED94(u8 *devAddr, u8 *baseAddress, u32 size, u32 offset)
@@ -278,9 +278,9 @@ void func_8006F008(void) {
     s16 var_t9;
 
     D_801655C8 = 0;
-    D_8018D01C = 1.0f;
+    xOrientation = 1.0f;
     if (gIsMirrorMode != 0) {
-        D_8018D01C = -1.0f;
+        xOrientation = -1.0f;
     }
     D_8018D2C0.unk0 = 0x0101;
     D_8018D2D8.unk0 = 0x00AA;
@@ -838,14 +838,14 @@ void func_80070148(void) {
     }
 }
 
-void func_80070190(void) {
+void init_object_list_index(void) {
     s32 loopIndex;
 
     for(loopIndex = 0; loopIndex < SOME_OBJECT_INDEX_LIST_SIZE; loopIndex++) {
-        find_unused_obj_index(&D_80183EA0[loopIndex]);
-        find_unused_obj_index(&D_80183F28[loopIndex]);
-        find_unused_obj_index(&D_8018BFA8[loopIndex]);
-        find_unused_obj_index(&D_8018C030[loopIndex]);
+        find_unused_obj_index(&indexObjectList1[loopIndex]);
+        find_unused_obj_index(&indexObjectList2[loopIndex]);
+        find_unused_obj_index(&indexObjectList3[loopIndex]);
+        find_unused_obj_index(&indexObjectList4[loopIndex]);
     }
 
     for(loopIndex = 0; loopIndex < NUM_BOMB_KARTS_VERSUS; loopIndex++) {
@@ -856,7 +856,7 @@ void func_80070190(void) {
 void func_80070250(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     ItemWindowObjects *temp_v0;
 
-    func_800723A4(objectIndex, arg1);
+    init_object(objectIndex, arg1);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_0D5 = arg2->id;
     temp_v0->currentItem = ITEM_NONE;
@@ -899,7 +899,7 @@ void func_80070328(StarSpawn *arg0) {
 void func_800703E0(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     ItemWindowObjects *temp_v0;
 
-    func_800723A4(objectIndex, arg1);
+    init_object(objectIndex, arg1);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_0D5 = arg2->id; // No idea, all 0's for stars
     temp_v0->currentItem = ITEM_BANANA;
@@ -991,182 +991,182 @@ void func_80070714(void) {
     D_80165748 = 0xA;
 }
 
-void func_80070780(void) {
-    s32 temp_s0;
-    s32 var_s3;
+void init_course_object(void) {
+    s32 objectId;
+    s32 i;
 
     switch (gCurrentCourseId) {
-    case 0:
+    case COURSE_MARIO_RACEWAY:
         if (gGamestate != 9) {
-            if (gModeSelection == 0) {
+            if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
-            for (var_s3 = 0; var_s3 < D_80165738; var_s3++) {
-                find_unused_obj_index(&D_8018C630[var_s3]);
-                func_800723A4(D_8018C630[var_s3], 0);
+            for (i = 0; i < D_80165738; i++) {
+                find_unused_obj_index(&D_8018C630[i]);
+                init_object(D_8018C630[i], 0);
             }
         }
         break;
-    case 2:
+    case COURSE_BOWSER_CASTLE:
         gNumActiveThwomps = NUM_THWOMPS_100CC_EXTRA;
         gThowmpSpawnList = gThwompSpawns100CCExtra;
         switch (gCCSelection) {                     /* switch 1; irregular */
-        case 1:                                     /* switch 1 */
-        case 3:                                     /* switch 1 */
+        case CC_100:                                     /* switch 1 */
+        case CC_EXTRA:                                     /* switch 1 */
             break;
-        case 0:                                     /* switch 1 */
+        case CC_50:                                     /* switch 1 */
             gNumActiveThwomps = NUM_THWOMPS_50CC;
             gThowmpSpawnList = gThomwpSpawns50CC;
             break;
-        case 2:                                     /* switch 1 */
+        case CC_150:                                     /* switch 1 */
             gNumActiveThwomps = NUM_THWOMPS_150CC;
             gThowmpSpawnList = gThomwpSpawns150CC;
             break;
         }
-        for (var_s3 = 0; var_s3 < gNumActiveThwomps; var_s3++) {
-            temp_s0 = D_80183EA0[var_s3];
-            func_800723A4(temp_s0, 0);
-            gObjectList[temp_s0].unk_010[0] = gThowmpSpawnList[var_s3].startX * D_8018D01C;
-            gObjectList[temp_s0].unk_010[2] = gThowmpSpawnList[var_s3].startZ;
-            gObjectList[temp_s0].unk_0D5 = gThowmpSpawnList[var_s3].unk_4;
-            gObjectList[temp_s0].unk_0A0 = gThowmpSpawnList[var_s3].unk_6;
+        for (i = 0; i < gNumActiveThwomps; i++) {
+            objectId = indexObjectList1[i];
+            init_object(objectId, 0);
+            gObjectList[objectId].unk_010[0] = gThowmpSpawnList[i].startX * xOrientation;
+            gObjectList[objectId].unk_010[2] = gThowmpSpawnList[i].startZ;
+            gObjectList[objectId].unk_0D5 = gThowmpSpawnList[i].unk_4;
+            gObjectList[objectId].unk_0A0 = gThowmpSpawnList[i].unk_6;
         }
         // Handle the big statue's fire breath
-        temp_s0 = D_80183F28[0];
-        func_800723A4(temp_s0, 0);
-        gObjectList[temp_s0].pos[0] = -68.0 * D_8018D01C;
-        gObjectList[temp_s0].pos[1] = 80.0f;
-        gObjectList[temp_s0].pos[2] = -1840.0f;
+        objectId = indexObjectList2[0];
+        init_object(objectId, 0);
+        gObjectList[objectId].pos[0] = -68.0 * xOrientation;
+        gObjectList[objectId].pos[1] = 80.0f;
+        gObjectList[objectId].pos[2] = -1840.0f;
         // Handle the smaller statues' fire breath
-        for (var_s3 = 0; var_s3 < NUM_FIRE_BREATHS; var_s3++) {
-            temp_s0 = D_8018BFA8[var_s3];
-            func_800723A4(temp_s0, 0);
-            gObjectList[temp_s0].pos[0] = gFireBreathsSpawns[var_s3][0] * D_8018D01C;
-            gObjectList[temp_s0].pos[1] = gFireBreathsSpawns[var_s3][1];
-            gObjectList[temp_s0].pos[2] = gFireBreathsSpawns[var_s3][2];
-            gObjectList[temp_s0].unk_0BE[1] = 0;
-            if (var_s3 % 2U) {
-                gObjectList[temp_s0].unk_0BE[1] += 0x8000;
+        for (i = 0; i < NUM_FIRE_BREATHS; i++) {
+            objectId = indexObjectList3[i];
+            init_object(objectId, 0);
+            gObjectList[objectId].pos[0] = gFireBreathsSpawns[i][0] * xOrientation;
+            gObjectList[objectId].pos[1] = gFireBreathsSpawns[i][1];
+            gObjectList[objectId].pos[2] = gFireBreathsSpawns[i][2];
+            gObjectList[objectId].unk_0BE[1] = 0;
+            if (i % 2U) {
+                gObjectList[objectId].unk_0BE[1] += 0x8000;
             }
         }
-        for (var_s3 = 0; var_s3 < 32; var_s3++) {
-            delete_object(&D_8018C030[var_s3]);
+        for (i = 0; i < 32; i++) {
+            delete_object(&indexObjectList4[i]);
         }
         break;
-    case 3:
+    case COURSE_BANSHEE_BOARDWALK:
         if (gGamestate != 9) {
-            temp_s0 = D_80183EA0[0];
-            init_texture_object(temp_s0, d_course_banshee_boardwalk_bat_tlut, *d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
-            gObjectList[temp_s0].unk_0B2[0] = 0;
-            gObjectList[temp_s0].unk_0B2[1] = 0;
-            gObjectList[temp_s0].unk_0B2[2] = 0x8000;
-            func_800723A4(D_80183EA0[1], 0);
-            func_800723A4(D_80183EA0[2], 0);
+            objectId = indexObjectList1[0];
+            init_texture_object(objectId, d_course_banshee_boardwalk_bat_tlut, *d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
+            gObjectList[objectId].unk_0B2[0] = 0;
+            gObjectList[objectId].unk_0B2[1] = 0;
+            gObjectList[objectId].unk_0B2[2] = 0x8000;
+            init_object(indexObjectList1[1], 0);
+            init_object(indexObjectList1[2], 0);
         }
         break;
-    case 4:
-        for (var_s3 = 0; var_s3 < 4; var_s3++) {
-            func_800723A4(D_80183EA0[var_s3], 0);
+    case COURSE_YOSHI_VALLEY:
+        for (i = 0; i < 4; i++) {
+            init_object(indexObjectList1[i], 0);
         }
         if (gGamestate != 9) {
-            for (var_s3 = 0; var_s3 < NUM_HEDGEHOGS; var_s3++) {
-                temp_s0 = D_80183F28[var_s3];
-                func_800723A4(temp_s0, 0);
-                gObjectList[temp_s0].pos[0] = gObjectList[temp_s0].unk_010[0] = gHedgehogSpawns[var_s3].pos[0] * D_8018D01C;
-                gObjectList[temp_s0].pos[1] = gObjectList[temp_s0].unk_044 = gHedgehogSpawns[var_s3].pos[1] + 6.0;
-                gObjectList[temp_s0].pos[2] = gObjectList[temp_s0].unk_010[2] = gHedgehogSpawns[var_s3].pos[2];
-                gObjectList[temp_s0].unk_0D5 = gHedgehogSpawns[var_s3].unk_06;
-                gObjectList[temp_s0].unk_09C = gHedgehogPatrolPoints[var_s3][0] * D_8018D01C;
-                gObjectList[temp_s0].unk_09E = gHedgehogPatrolPoints[var_s3][2];
-            }
-        }
-        break;
-    case 5:
-        for (var_s3 = 0; var_s3 < NUM_SNOWFLAKES; var_s3++) {
-            find_unused_obj_index(&D_8018C1B0[var_s3]);
-        }
-        if (gGamestate != 9) {
-            for (var_s3 = 0; var_s3 < NUM_SNOWMEN; var_s3++) {
-                temp_s0 = D_80183F28[var_s3];
-                func_800723A4(temp_s0, 0);
-                gObjectList[temp_s0].unk_010[0] = gSnowmanSpawns[var_s3].pos[0] * D_8018D01C;
-                gObjectList[temp_s0].unk_010[1] = gSnowmanSpawns[var_s3].pos[1] + 5.0 + 3.0;
-                gObjectList[temp_s0].unk_010[2] = gSnowmanSpawns[var_s3].pos[2];
-                temp_s0 = D_80183EA0[var_s3];
-                func_800723A4(temp_s0, 0);
-                gObjectList[temp_s0].unk_010[0] = gSnowmanSpawns[var_s3].pos[0] * D_8018D01C;
-                gObjectList[temp_s0].unk_010[1] = gSnowmanSpawns[var_s3].pos[1] + 3.0;
-                gObjectList[temp_s0].unk_010[2] = gSnowmanSpawns[var_s3].pos[2];
-                gObjectList[temp_s0].unk_0D5 = gSnowmanSpawns[var_s3].unk_6;
+            for (i = 0; i < NUM_HEDGEHOGS; i++) {
+                objectId = indexObjectList2[i];
+                init_object(objectId, 0);
+                gObjectList[objectId].pos[0] = gObjectList[objectId].unk_010[0] = gHedgehogSpawns[i].pos[0] * xOrientation;
+                gObjectList[objectId].pos[1] = gObjectList[objectId].unk_044 = gHedgehogSpawns[i].pos[1] + 6.0;
+                gObjectList[objectId].pos[2] = gObjectList[objectId].unk_010[2] = gHedgehogSpawns[i].pos[2];
+                gObjectList[objectId].unk_0D5 = gHedgehogSpawns[i].unk_06;
+                gObjectList[objectId].unk_09C = gHedgehogPatrolPoints[i][0] * xOrientation;
+                gObjectList[objectId].unk_09E = gHedgehogPatrolPoints[i][2];
             }
         }
         break;
-    case 6:
+    case COURSE_FRAPPE_SNOWLAND:
+        for (i = 0; i < NUM_SNOWFLAKES; i++) {
+            find_unused_obj_index(&D_8018C1B0[i]);
+        }
         if (gGamestate != 9) {
-            for (var_s3 = 0; var_s3 < NUM_CRABS; var_s3++) {
-                temp_s0 = D_80183EA0[var_s3];
-                func_800723A4(temp_s0, 0);
-                gObjectList[temp_s0].pos[0] = gObjectList[temp_s0].unk_010[0] = gCrabSpawns[var_s3].startX * D_8018D01C;
-                gObjectList[temp_s0].unk_01C[0] = gCrabSpawns[var_s3].patrolX * D_8018D01C;
+            for (i = 0; i < NUM_SNOWMEN; i++) {
+                objectId = indexObjectList2[i];
+                init_object(objectId, 0);
+                gObjectList[objectId].unk_010[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
+                gObjectList[objectId].unk_010[1] = gSnowmanSpawns[i].pos[1] + 5.0 + 3.0;
+                gObjectList[objectId].unk_010[2] = gSnowmanSpawns[i].pos[2];
+                objectId = indexObjectList1[i];
+                init_object(objectId, 0);
+                gObjectList[objectId].unk_010[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
+                gObjectList[objectId].unk_010[1] = gSnowmanSpawns[i].pos[1] + 3.0;
+                gObjectList[objectId].unk_010[2] = gSnowmanSpawns[i].pos[2];
+                gObjectList[objectId].unk_0D5 = gSnowmanSpawns[i].unk_6;
+            }
+        }
+        break;
+    case COURSE_KOOPA_BEACH:
+        if (gGamestate != 9) {
+            for (i = 0; i < NUM_CRABS; i++) {
+                objectId = indexObjectList1[i];
+                init_object(objectId, 0);
+                gObjectList[objectId].pos[0] = gObjectList[objectId].unk_010[0] = gCrabSpawns[i].startX * xOrientation;
+                gObjectList[objectId].unk_01C[0] = gCrabSpawns[i].patrolX * xOrientation;
 
-                gObjectList[temp_s0].pos[2] = gObjectList[temp_s0].unk_010[2] = gCrabSpawns[var_s3].startZ;
-                gObjectList[temp_s0].unk_01C[2] = gCrabSpawns[var_s3].patrolZ;
+                gObjectList[objectId].pos[2] = gObjectList[objectId].unk_010[2] = gCrabSpawns[i].startZ;
+                gObjectList[objectId].unk_01C[2] = gCrabSpawns[i].patrolZ;
             }
         }
-        for (var_s3 = 0; var_s3 < NUM_SEAGULLS; var_s3++) {
-            temp_s0 = D_80183F28[var_s3];
-            func_800723A4(temp_s0, 0);
-            if (var_s3 < (NUM_SEAGULLS / 2)) {
-                gObjectList[temp_s0].unk_0D5 = 0;
+        for (i = 0; i < NUM_SEAGULLS; i++) {
+            objectId = indexObjectList2[i];
+            init_object(objectId, 0);
+            if (i < (NUM_SEAGULLS / 2)) {
+                gObjectList[objectId].unk_0D5 = 0;
             } else {
-                gObjectList[temp_s0].unk_0D5 = 1;
+                gObjectList[objectId].unk_0D5 = 1;
             }
         }
         break;
-    case 7:
+    case COURSE_ROYAL_RACEWAY:
         if (gGamestate != 9) {
-            if (gModeSelection == 0) {
+            if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
-            for (var_s3 = 0; var_s3 < D_80165738; var_s3++) {
-                find_unused_obj_index(&D_8018C630[var_s3]);
-                func_800723A4(D_8018C630[var_s3], 0);
+            for (i = 0; i < D_80165738; i++) {
+                find_unused_obj_index(&D_8018C630[i]);
+                init_object(D_8018C630[i], 0);
             }
         }
         break;
-    case 8:
+    case COURSE_LUIGI_RACEWAY:
         if (gGamestate != 9) {
-            if (gModeSelection == 0) {
+            if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
             D_80165898 = 0;
-            func_800723A4(D_80183EA0[0], 0);
-            for (var_s3 = 0; var_s3 < D_80165738; var_s3++) {
-                find_unused_obj_index(&D_8018C630[var_s3]);
-                func_800723A4(D_8018C630[var_s3], 0);
+            init_object(indexObjectList1[0], 0);
+            for (i = 0; i < D_80165738; i++) {
+                find_unused_obj_index(&D_8018C630[i]);
+                init_object(D_8018C630[i], 0);
             }
         }
         break;
-    case 9:
+    case COURSE_MOO_MOO_FARM:
         if (gGamestate != 9) {
-            if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == (s32) 2))) {
+            if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == VERSUS))) {
                 switch (gCCSelection) {             /* switch 2; irregular */
-                case 0:                             /* switch 2 */
+                case CC_50:                             /* switch 2 */
                     D_8018D1C8 = 4;
                     D_8018D1D0 = 6;
                     D_8018D1D8 = 6;
                     break;
-                case 1:                             /* switch 2 */
+                case CC_100:                             /* switch 2 */
                     D_8018D1C8 = 5;
                     D_8018D1D0 = 8;
                     D_8018D1D8 = 8;
                     break;
-                case 2:                             /* switch 2 */
+                case CC_150:                             /* switch 2 */
                     D_8018D1C8 = 5;
                     D_8018D1D0 = 8;
                     D_8018D1D8 = 10;
                     break;
-                case 3:                             /* switch 2 */
+                case CC_EXTRA:                             /* switch 2 */
                     D_8018D1C8 = 5;
                     D_8018D1D0 = 8;
                     D_8018D1D8 = 8;
@@ -1177,65 +1177,65 @@ void func_80070780(void) {
                 D_8018D1D0 = 6;
                 D_8018D1D8 = 6;
             }
-            for (var_s3 = 0; var_s3 < NUM_GROUP1_MOLES; var_s3++) {
-                D_8018D198[var_s3] = 0;
-                find_unused_obj_index(&D_80183EA0[var_s3]);
+            for (i = 0; i < NUM_GROUP1_MOLES; i++) {
+                D_8018D198[i] = 0;
+                find_unused_obj_index(&indexObjectList1[i]);
             }
-            for (var_s3 = 0; var_s3 < NUM_GROUP2_MOLES; var_s3++) {
-                D_8018D1A8[var_s3] = 0;
-                find_unused_obj_index(&D_80183EA0[var_s3]);
+            for (i = 0; i < NUM_GROUP2_MOLES; i++) {
+                D_8018D1A8[i] = 0;
+                find_unused_obj_index(&indexObjectList1[i]);
             }
-            for (var_s3 = 0; var_s3 < NUM_GROUP3_MOLES; var_s3++) {
-                D_8018D1B8[var_s3] = 0;
-                find_unused_obj_index(&D_80183EA0[var_s3]);
+            for (i = 0; i < NUM_GROUP3_MOLES; i++) {
+                D_8018D1B8[i] = 0;
+                find_unused_obj_index(&indexObjectList1[i]);
             }
-            for (var_s3 = 0; var_s3 < NUM_MAX_MOLES; var_s3++) {
-                find_unused_obj_index(&D_8018C1B0[var_s3]);
-                temp_s0 = D_8018C1B0[var_s3];
-                func_800723A4(temp_s0, 0);
-                gObjectList[temp_s0].pos[0] = gMoleSpawns[var_s3][0] * D_8018D01C;
-                gObjectList[temp_s0].pos[2] = gMoleSpawns[var_s3][2];
-                func_800887C0(temp_s0);
-                gObjectList[temp_s0].sizeScaling = 0.7f;
+            for (i = 0; i < NUM_MAX_MOLES; i++) {
+                find_unused_obj_index(&D_8018C1B0[i]);
+                objectId = D_8018C1B0[i];
+                init_object(objectId, 0);
+                gObjectList[objectId].pos[0] = gMoleSpawns[i][0] * xOrientation;
+                gObjectList[objectId].pos[2] = gMoleSpawns[i][2];
+                func_800887C0(objectId);
+                gObjectList[objectId].sizeScaling = 0.7f;
             }
-            for (var_s3 = 0; var_s3 < D_8018C3F0_SIZE; var_s3++) {
-                find_unused_obj_index(&D_8018C3F0[var_s3]);
+            for (i = 0; i < D_8018C3F0_SIZE; i++) {
+                find_unused_obj_index(&D_8018C3F0[i]);
             }
         }
         break;
-    case 11:
+    case COURSE_KALAMARI_DESERT:
         if (gGamestate != 9) {
             find_unused_obj_index(&D_8018CF10);
-            func_800723A4(D_8018CF10, 0);
-            for (var_s3 = 0; var_s3 < 50; var_s3++) {
-                find_unused_obj_index(&D_8018C1B0[var_s3]);
+            init_object(D_8018CF10, 0);
+            for (i = 0; i < 50; i++) {
+                find_unused_obj_index(&D_8018C1B0[i]);
             }
-            for (var_s3 = 0; var_s3 < 5; var_s3++) {
-                find_unused_obj_index(&D_8018C3F0[var_s3]);
+            for (i = 0; i < 5; i++) {
+                find_unused_obj_index(&D_8018C3F0[i]);
             }
-            for (var_s3 = 0; var_s3 < 32; var_s3++) {
-                find_unused_obj_index(&D_8018C630[var_s3]);
+            for (i = 0; i < 32; i++) {
+                find_unused_obj_index(&D_8018C630[i]);
             }
         }
         break;
-    case 12:
-        for (var_s3 = 0; var_s3 < NUM_PENGUINS; var_s3++) {
-            func_800723A4(D_80183EA0[var_s3], 0);
+    case COURSE_SHERBET_LAND:
+        for (i = 0; i < NUM_PENGUINS; i++) {
+            init_object(indexObjectList1[i], 0);
         }
         break;
-    case 13:
+    case COURSE_RAINBOW_ROAD:
         if (gGamestate != 9) {
-            for (var_s3 = 0; var_s3 < NUM_NEON_SIGNS; var_s3++) {
-                func_800723A4(D_80183EA0[var_s3], 0);
+            for (i = 0; i < NUM_NEON_SIGNS; i++) {
+                init_object(indexObjectList1[i], 0);
             }
-            for (var_s3 = 0; var_s3 < NUM_CHAIN_CHOMPS; var_s3++) {
-                func_800723A4(D_80183F28[var_s3], 0);
+            for (i = 0; i < NUM_CHAIN_CHOMPS; i++) {
+                init_object(indexObjectList2[i], 0);
             }
         }
         break;
-    case 18:
-        for (var_s3 = 0; var_s3 < NUM_TORCHES; var_s3++) {
-            func_800770F0(var_s3);
+    case COURSE_DK_JUNGLE:
+        for (i = 0; i < NUM_TORCHES; i++) {
+            func_800770F0(i);
             // wtf?
             if (D_8018CF10){}
         }
@@ -1247,7 +1247,7 @@ void func_80070780(void) {
 
 #ifdef MIPS_TO_C
 //generated by m2c commit b52d92c2340f6f4ba1aafb464188bb698752fbb0 on Jul-28-2023
-? func_80070780();                                  /* extern */
+? init_course_object();                                  /* extern */
 extern s32 D_80165638;
 extern s32 D_80165648;
 extern s16 D_801656B0;
@@ -1303,32 +1303,32 @@ void init_hud_one_player(void) {
     find_unused_obj_index(&D_80183DBC);
     find_unused_obj_index(gItemWindowObjectByPlayerId);
     find_unused_obj_index(gItemWindowObjectByPlayerId + 4);
-    func_80070190();
+    init_object_list_index();
     func_8007055C();
     func_8007055C();
-    func_80070780();
-    D_8018CA70->speedometerX = 0x0156;
-    D_8018CA70->speedometerY = 0x0106;
-    D_8018CFEC = (f32) (D_8018CA70->speedometerX + 0x18);
-    D_8018CFF4 = (f32) (D_8018CA70->speedometerY + 6);
+    init_course_object();
+    playerHUD->speedometerX = 0x0156;
+    playerHUD->speedometerY = 0x0106;
+    D_8018CFEC = (f32) (playerHUD->speedometerX + 0x18);
+    D_8018CFF4 = (f32) (playerHUD->speedometerY + 6);
     D_8016579E = 0xDD00;
-    D_8018CA70->rankX = 0x0034;
-    D_8018CA70->rankY = 0x00C8;
-    D_8018CA70->slideRankX = 0;
-    D_8018CA70->slideRankY = 0;
-    D_8018CA70->timerX = 0x012C;
-    D_8018CA70->lap1CompletionTimeX = 0x012C;
-    D_8018CA70->lap2CompletionTimeX = 0x012C;
-    D_8018CA70->timerY = 0x0011;
-    D_8018CA70->lapX = -0x0028;
-    D_8018CA70->lapAfterImage1X = -0x0028;
-    D_8018CA70->lapAfterImage2X = -0x0028;
-    D_8018CA70->lapY = 0x0019;
-    D_8018CA70->itemBoxX = 0x00A0;
-    D_8018CA70->itemBoxY = -0x0020;
-    D_8018CA70->slideItemBoxX = 0;
-    D_8018CA70->slideItemBoxY = 0;
-    D_8018CA70->stagingPosition = (s16) *gGPCurrentRaceRankByPlayerId;
+    playerHUD->rankX = 0x0034;
+    playerHUD->rankY = 0x00C8;
+    playerHUD->slideRankX = 0;
+    playerHUD->slideRankY = 0;
+    playerHUD->timerX = 0x012C;
+    playerHUD->lap1CompletionTimeX = 0x012C;
+    playerHUD->lap2CompletionTimeX = 0x012C;
+    playerHUD->timerY = 0x0011;
+    playerHUD->lapX = -0x0028;
+    playerHUD->lapAfterImage1X = -0x0028;
+    playerHUD->lapAfterImage2X = -0x0028;
+    playerHUD->lapY = 0x0019;
+    playerHUD->itemBoxX = 0x00A0;
+    playerHUD->itemBoxY = -0x0020;
+    playerHUD->slideItemBoxX = 0;
+    playerHUD->slideItemBoxY = 0;
+    playerHUD->stagingPosition = (s16) *gGPCurrentRaceRankByPlayerId;
     init_item_window(gItemWindowObjectByPlayerId[0]);
     var_f0 = 35.0f;
     var_v0 = &D_8018D078;
@@ -1383,9 +1383,9 @@ void init_hud_one_player(void) {
     D_8018D3EC = 0x000000FF;
     D_8018D3F0 = 0x000000FF;
     D_8018D3F4 = 1;
-    D_8018CA70->unk_4C = 0x0078;
-    D_8018CA70->unk_4A = 0x00A0;
-    D_8018CA70->rankScaling = 0.5f;
+    playerHUD->unk_4C = 0x0078;
+    playerHUD->unk_4A = 0x00A0;
+    playerHUD->rankScaling = 0.5f;
     D_801656B0 = 0;
     D_80165708 = 0x0028;
     D_8018D00C = 5.0f;
@@ -1422,60 +1422,60 @@ void init_hud_two_player_vertical(void) {
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
 
-    func_80070190();
+    init_object_list_index();
     func_8007055C();
     func_8007055C();
-    func_80070780();
+    init_course_object();
 
-    D_8018CA70[0].itemBoxX = -0x52;
-    D_8018CA70[0].itemBoxY = 0x32;
-    D_8018CA70[0].slideItemBoxX = 0;
-    D_8018CA70[0].slideItemBoxY = 0;
-    D_8018CA70[0].unk_4A = 0x50;
-    D_8018CA70[0].unk_4C = 0x78;
-    D_8018CA70[0].rankX = 0x32;
-    D_8018CA70[0].rankY = 0xD2;
-    D_8018CA70[0].slideRankX = 0;
-    D_8018CA70[0].slideRankY = 0;
-    D_8018CA70[0].timerX = 0x4B;
-    D_8018CA70[0].timerY = 0x10;
-    D_8018CA70[0].lapX = 0x67;
-    D_8018CA70[0].lapY = 0x28;
-    init_item_window(gItemWindowObjectByPlayerId[0]);
+    playerHUD[PLAYER_ONE].itemBoxX = -0x52;
+    playerHUD[PLAYER_ONE].itemBoxY = 0x32;
+    playerHUD[PLAYER_ONE].slideItemBoxX = 0;
+    playerHUD[PLAYER_ONE].slideItemBoxY = 0;
+    playerHUD[PLAYER_ONE].unk_4A = 0x50;
+    playerHUD[PLAYER_ONE].unk_4C = 0x78;
+    playerHUD[PLAYER_ONE].rankX = 0x32;
+    playerHUD[PLAYER_ONE].rankY = 0xD2;
+    playerHUD[PLAYER_ONE].slideRankX = 0;
+    playerHUD[PLAYER_ONE].slideRankY = 0;
+    playerHUD[PLAYER_ONE].timerX = 0x4B;
+    playerHUD[PLAYER_ONE].timerY = 0x10;
+    playerHUD[PLAYER_ONE].lapX = 0x67;
+    playerHUD[PLAYER_ONE].lapY = 0x28;
+    init_item_window(gItemWindowObjectByPlayerId[PLAYER_ONE]);
 
-    D_8018CA70[1].itemBoxX = 0x43;
-    D_8018CA70[1].itemBoxY = 0x32;
-    D_8018CA70[1].slideItemBoxX = 0;
-    D_8018CA70[1].slideItemBoxY = 0;
-    D_8018CA70[1].unk_4A = 0xF0;
-    D_8018CA70[1].unk_4C = 0x78;
-    D_8018CA70[1].rankX = 0xC8;
-    D_8018CA70[1].rankY = 0xD2;
-    D_8018CA70[1].slideRankX = 0;
-    D_8018CA70[1].slideRankY = 0;
-    D_8018CA70[1].timerX = 0xDC;
-    D_8018CA70[1].timerY = 0x10;
-    D_8018CA70[1].lapX = 0xF7;
-    D_8018CA70[1].lapY = 0x28;
-    init_item_window(gItemWindowObjectByPlayerId[1]);
+    playerHUD[PLAYER_TWO].itemBoxX = 0x43;
+    playerHUD[PLAYER_TWO].itemBoxY = 0x32;
+    playerHUD[PLAYER_TWO].slideItemBoxX = 0;
+    playerHUD[PLAYER_TWO].slideItemBoxY = 0;
+    playerHUD[PLAYER_TWO].unk_4A = 0xF0;
+    playerHUD[PLAYER_TWO].unk_4C = 0x78;
+    playerHUD[PLAYER_TWO].rankX = 0xC8;
+    playerHUD[PLAYER_TWO].rankY = 0xD2;
+    playerHUD[PLAYER_TWO].slideRankX = 0;
+    playerHUD[PLAYER_TWO].slideRankY = 0;
+    playerHUD[PLAYER_TWO].timerX = 0xDC;
+    playerHUD[PLAYER_TWO].timerY = 0x10;
+    playerHUD[PLAYER_TWO].lapX = 0xF7;
+    playerHUD[PLAYER_TWO].lapY = 0x28;
+    init_item_window(gItemWindowObjectByPlayerId[PLAYER_TWO]);
 
-    D_8018CA70[0].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
-    D_8018CA70[1].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
+    playerHUD[PLAYER_ONE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
+    playerHUD[PLAYER_TWO].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
 
-    D_8018CA70[0].rankScaling = D_8018CA70[1].rankScaling = 0.5f;
+    playerHUD[PLAYER_ONE].rankScaling = playerHUD[PLAYER_TWO].rankScaling = 0.5f;
 
     D_8018D3C4 = 0x1E;
     D_8018D3BC = 0x18;
     D_8018D3C0 = 0x28;
     D_801657A2 = 0x666;
     switch (gModeSelection) {                       /* irregular */
-    case 0:
+    case GRAND_PRIX:
         D_8018D158 = 8;
         break;
-    case 2:
+    case VERSUS:
         D_8018D158 = 2;
         break;
-    case 3:
+    case BATTLE:
         D_8018D158 = 2;
         break;
     }
@@ -1492,51 +1492,51 @@ void init_hud_two_player_horizontal() {
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
 
-    func_80070190();
+    init_object_list_index();
     func_8007055C();
     func_8007055C();
-    func_80070780();
+    init_course_object();
 
 
-    D_8018CA70[0].itemBoxY = 0x22;
-    D_8018CA70[0].itemBoxX = -0x53;
-    D_8018CA70[0].slideItemBoxX = 0;
-    D_8018CA70[0].slideItemBoxY = 0;
-    D_8018CA70[0].unk_4A = 0xA0;
-    D_8018CA70[0].unk_4C = 0x3C;
-    D_8018CA70[0].rankX = 0x34;
-    D_8018CA70[0].rankY = 0x62;
-    D_8018CA70[0].slideRankX = 0;
-    D_8018CA70[0].slideRankY = 0;
-    D_8018CA70[0].timerX = 0xEA;
-    D_8018CA70[0].timerY = 0x10;
-    D_8018CA70[0].lapX = 0x101;
-    D_8018CA70[0].lapY = 0x6A;
+    playerHUD[PLAYER_ONE].itemBoxY = 0x22;
+    playerHUD[PLAYER_ONE].itemBoxX = -0x53;
+    playerHUD[PLAYER_ONE].slideItemBoxX = 0;
+    playerHUD[PLAYER_ONE].slideItemBoxY = 0;
+    playerHUD[PLAYER_ONE].unk_4A = 0xA0;
+    playerHUD[PLAYER_ONE].unk_4C = 0x3C;
+    playerHUD[PLAYER_ONE].rankX = 0x34;
+    playerHUD[PLAYER_ONE].rankY = 0x62;
+    playerHUD[PLAYER_ONE].slideRankX = 0;
+    playerHUD[PLAYER_ONE].slideRankY = 0;
+    playerHUD[PLAYER_ONE].timerX = 0xEA;
+    playerHUD[PLAYER_ONE].timerY = 0x10;
+    playerHUD[PLAYER_ONE].lapX = 0x101;
+    playerHUD[PLAYER_ONE].lapY = 0x6A;
 
-    D_8018CA70[1].itemBoxX = -0x53;
-    D_8018CA70[1].itemBoxY = 0x8F;
-    D_8018CA70[1].slideItemBoxX = 0;
-    D_8018CA70[1].slideItemBoxY = 0;
-    D_8018CA70[1].unk_4A = 0xA0;
-    D_8018CA70[1].unk_4C = 0xB4;
-    D_8018CA70[1].rankX = 0x34;
-    D_8018CA70[1].rankY = 0xD2;
-    D_8018CA70[1].slideRankX = 0;
-    D_8018CA70[1].slideRankY = 0;
-    D_8018CA70[1].timerX = 0xEA;
-    D_8018CA70[1].timerY = 0x7F;
-    D_8018CA70[1].lapX = 0x101;
-    D_8018CA70[1].lapY = 0xDA;
+    playerHUD[PLAYER_TWO].itemBoxX = -0x53;
+    playerHUD[PLAYER_TWO].itemBoxY = 0x8F;
+    playerHUD[PLAYER_TWO].slideItemBoxX = 0;
+    playerHUD[PLAYER_TWO].slideItemBoxY = 0;
+    playerHUD[PLAYER_TWO].unk_4A = 0xA0;
+    playerHUD[PLAYER_TWO].unk_4C = 0xB4;
+    playerHUD[PLAYER_TWO].rankX = 0x34;
+    playerHUD[PLAYER_TWO].rankY = 0xD2;
+    playerHUD[PLAYER_TWO].slideRankX = 0;
+    playerHUD[PLAYER_TWO].slideRankY = 0;
+    playerHUD[PLAYER_TWO].timerX = 0xEA;
+    playerHUD[PLAYER_TWO].timerY = 0x7F;
+    playerHUD[PLAYER_TWO].lapX = 0x101;
+    playerHUD[PLAYER_TWO].lapY = 0xDA;
 
-    if (gModeSelection == 3) {
-        D_8018CA70[0].itemBoxY = 0x5E;
-        D_8018CA70[1].itemBoxY = 0xD0;
+    if (gModeSelection == BATTLE) {
+        playerHUD[PLAYER_ONE].itemBoxY = 0x5E;
+        playerHUD[PLAYER_TWO].itemBoxY = 0xD0;
     }
 
-    D_8018CA70[0].rankScaling = D_8018CA70[1].rankScaling = 0.5f;
+    playerHUD[PLAYER_ONE].rankScaling = playerHUD[PLAYER_TWO].rankScaling = 0.5f;
 
-    D_8018CA70[0].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
-    D_8018CA70[1].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
+    playerHUD[PLAYER_ONE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
+    playerHUD[PLAYER_TWO].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
 
     init_item_window(gItemWindowObjectByPlayerId[0]);
     init_item_window((gItemWindowObjectByPlayerId[1]));
@@ -1546,13 +1546,13 @@ void init_hud_two_player_horizontal() {
     D_8018D3C0 = 0x28;
     D_801657A2 = 0x666;
     switch (gModeSelection) {                       /* irregular */
-    case 0:
+    case GRAND_PRIX:
         D_8018D158 = 8;
         return;
-    case 2:
+    case VERSUS:
         D_8018D158 = 2;
         return;
-    case 3:
+    case BATTLE:
         D_8018D158 = 2;
         return;
     }
@@ -1572,89 +1572,89 @@ void init_hud_three_four_player(void) {
     find_unused_obj_index(&gItemWindowObjectByPlayerId[2]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[3]);
 
-    func_80070190();
-    func_80070780();
+    init_object_list_index();
+    init_course_object();
 
-    D_8018CA70[0].itemBoxX = -0x36;
-    D_8018CA70[0].itemBoxY = 0x36;
-    D_8018CA70[0].slideItemBoxX = 0;
-    D_8018CA70[0].slideItemBoxY = 0;
-    D_8018CA70[0].unk_4A = 0x50;
-    D_8018CA70[0].unk_4C = 0x3C;
-    D_8018CA70[0].rankX = 0x25;
-    D_8018CA70[0].rankY = 0x64;
-    D_8018CA70[0].slideRankX = 0;
-    D_8018CA70[0].slideRankY = 0;
-    D_8018CA70[0].lapX = 0x8C;
-    D_8018CA70[0].lapY = 0x60;
-    D_8018CA70[0].unk_6C = 0xDE;
-    D_8018CA70[0].unk_6E = 0xC8;
+    playerHUD[PLAYER_ONE].itemBoxX = -0x36;
+    playerHUD[PLAYER_ONE].itemBoxY = 0x36;
+    playerHUD[PLAYER_ONE].slideItemBoxX = 0;
+    playerHUD[PLAYER_ONE].slideItemBoxY = 0;
+    playerHUD[PLAYER_ONE].unk_4A = 0x50;
+    playerHUD[PLAYER_ONE].unk_4C = 0x3C;
+    playerHUD[PLAYER_ONE].rankX = 0x25;
+    playerHUD[PLAYER_ONE].rankY = 0x64;
+    playerHUD[PLAYER_ONE].slideRankX = 0;
+    playerHUD[PLAYER_ONE].slideRankY = 0;
+    playerHUD[PLAYER_ONE].lapX = 0x8C;
+    playerHUD[PLAYER_ONE].lapY = 0x60;
+    playerHUD[PLAYER_ONE].unk_6C = 0xDE;
+    playerHUD[PLAYER_ONE].unk_6E = 0xC8;
 
-    D_8018CA70[1].itemBoxX = 0x175;
-    D_8018CA70[1].itemBoxY = 0x36;
-    D_8018CA70[1].slideItemBoxX = 0;
-    D_8018CA70[1].slideItemBoxY = 0;
-    D_8018CA70[1].unk_4A = 0xF0;
-    D_8018CA70[1].unk_4C = 0x3C;
-    D_8018CA70[1].rankX = 0x11A;
-    D_8018CA70[1].rankY = 0x64;
-    D_8018CA70[1].slideRankX = 0;
-    D_8018CA70[1].slideRankY = 0;
-    D_8018CA70[1].lapX = 0xB4;
-    D_8018CA70[1].lapY = 0x60;
-    D_8018CA70[1].unk_6C = 0xC8;
-    D_8018CA70[1].unk_6E = 0xC8;
+    playerHUD[PLAYER_TWO].itemBoxX = 0x175;
+    playerHUD[PLAYER_TWO].itemBoxY = 0x36;
+    playerHUD[PLAYER_TWO].slideItemBoxX = 0;
+    playerHUD[PLAYER_TWO].slideItemBoxY = 0;
+    playerHUD[PLAYER_TWO].unk_4A = 0xF0;
+    playerHUD[PLAYER_TWO].unk_4C = 0x3C;
+    playerHUD[PLAYER_TWO].rankX = 0x11A;
+    playerHUD[PLAYER_TWO].rankY = 0x64;
+    playerHUD[PLAYER_TWO].slideRankX = 0;
+    playerHUD[PLAYER_TWO].slideRankY = 0;
+    playerHUD[PLAYER_TWO].lapX = 0xB4;
+    playerHUD[PLAYER_TWO].lapY = 0x60;
+    playerHUD[PLAYER_TWO].unk_6C = 0xC8;
+    playerHUD[PLAYER_TWO].unk_6E = 0xC8;
     
-    D_8018CA70[2].itemBoxX = -0x36;
-    D_8018CA70[2].itemBoxY = 0x2D;
-    D_8018CA70[2].slideItemBoxX = 0;
-    D_8018CA70[2].slideItemBoxY = 0;
-    D_8018CA70[2].unk_4A = 0x50;
-    D_8018CA70[2].unk_4C = 0xB4;
-    D_8018CA70[2].rankX = 0x25;
-    D_8018CA70[2].rankY = 0xD2;
-    D_8018CA70[2].slideRankX = 0;
-    D_8018CA70[2].slideRankY = 0;
-    D_8018CA70[2].lapX = 0x8C;
-    D_8018CA70[2].lapY = 0xD4;
-    D_8018CA70[2].unk_6C = 0xDE;
-    D_8018CA70[2].unk_6E = 0xC0;
+    playerHUD[PLAYER_THREE].itemBoxX = -0x36;
+    playerHUD[PLAYER_THREE].itemBoxY = 0x2D;
+    playerHUD[PLAYER_THREE].slideItemBoxX = 0;
+    playerHUD[PLAYER_THREE].slideItemBoxY = 0;
+    playerHUD[PLAYER_THREE].unk_4A = 0x50;
+    playerHUD[PLAYER_THREE].unk_4C = 0xB4;
+    playerHUD[PLAYER_THREE].rankX = 0x25;
+    playerHUD[PLAYER_THREE].rankY = 0xD2;
+    playerHUD[PLAYER_THREE].slideRankX = 0;
+    playerHUD[PLAYER_THREE].slideRankY = 0;
+    playerHUD[PLAYER_THREE].lapX = 0x8C;
+    playerHUD[PLAYER_THREE].lapY = 0xD4;
+    playerHUD[PLAYER_THREE].unk_6C = 0xDE;
+    playerHUD[PLAYER_THREE].unk_6E = 0xC0;
     
-    D_8018CA70[3].itemBoxX = 0x175;
-    D_8018CA70[3].itemBoxY = 0x2D;
-    D_8018CA70[3].slideItemBoxX = 0;
-    D_8018CA70[3].slideItemBoxY = 0;
-    D_8018CA70[3].unk_4A = 0xF0;
-    D_8018CA70[3].unk_4C = 0xB4;
-    D_8018CA70[3].rankX = 0x11A;
-    D_8018CA70[3].rankY = 0xD2;
-    D_8018CA70[3].slideRankX = 0;
-    D_8018CA70[3].slideRankY = 0;
-    D_8018CA70[3].lapX = 0xB4;
-    D_8018CA70[3].lapY = 0xD4;
-    D_8018CA70[3].unk_6C = 0xC8;
-    D_8018CA70[3].unk_6E = 0xC0;
+    playerHUD[PLAYER_FOUR].itemBoxX = 0x175;
+    playerHUD[PLAYER_FOUR].itemBoxY = 0x2D;
+    playerHUD[PLAYER_FOUR].slideItemBoxX = 0;
+    playerHUD[PLAYER_FOUR].slideItemBoxY = 0;
+    playerHUD[PLAYER_FOUR].unk_4A = 0xF0;
+    playerHUD[PLAYER_FOUR].unk_4C = 0xB4;
+    playerHUD[PLAYER_FOUR].rankX = 0x11A;
+    playerHUD[PLAYER_FOUR].rankY = 0xD2;
+    playerHUD[PLAYER_FOUR].slideRankX = 0;
+    playerHUD[PLAYER_FOUR].slideRankY = 0;
+    playerHUD[PLAYER_FOUR].lapX = 0xB4;
+    playerHUD[PLAYER_FOUR].lapY = 0xD4;
+    playerHUD[PLAYER_FOUR].unk_6C = 0xC8;
+    playerHUD[PLAYER_FOUR].unk_6E = 0xC0;
 
-    if (gModeSelection == 3) {
-        D_8018CA70[0].itemBoxY = 0xC8;
-        D_8018CA70[1].itemBoxY = 0xC8;
-        D_8018CA70[2].itemBoxY = 0xB8;
-        D_8018CA70[3].itemBoxY = 0xB8;
+    if (gModeSelection == BATTLE) {
+        playerHUD[PLAYER_ONE].itemBoxY = 0xC8;
+        playerHUD[PLAYER_TWO].itemBoxY = 0xC8;
+        playerHUD[PLAYER_THREE].itemBoxY = 0xB8;
+        playerHUD[PLAYER_FOUR].itemBoxY = 0xB8;
     }
 
-    D_8018CA70[0].rankScaling = D_8018CA70[1].rankScaling = D_8018CA70[2].rankScaling = D_8018CA70[3].rankScaling = 0.5f;
+    playerHUD[PLAYER_ONE].rankScaling = playerHUD[PLAYER_TWO].rankScaling = playerHUD[PLAYER_THREE].rankScaling = playerHUD[PLAYER_FOUR].rankScaling = 0.5f;
 
-    D_8018CA70[0].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
-    D_8018CA70[1].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
-    D_8018CA70[2].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[2];
-    D_8018CA70[3].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[3];
+    playerHUD[PLAYER_ONE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
+    playerHUD[PLAYER_TWO].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
+    playerHUD[PLAYER_THREE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[2];
+    playerHUD[PLAYER_FOUR].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[3];
 
     init_item_window(gItemWindowObjectByPlayerId[0]);
     init_item_window(gItemWindowObjectByPlayerId[1]);
     init_item_window(gItemWindowObjectByPlayerId[2]);
     init_item_window(gItemWindowObjectByPlayerId[3]);
 
-    D_8018CA70[0].unknownScaling = D_8018CA70[1].unknownScaling = D_8018CA70[2].unknownScaling = D_8018CA70[3].unknownScaling = 1.5f;
+    playerHUD[PLAYER_ONE].unknownScaling = playerHUD[PLAYER_TWO].unknownScaling = playerHUD[PLAYER_THREE].unknownScaling = playerHUD[PLAYER_FOUR].unknownScaling = 1.5f;
 
     D_8018D158 = (s32) gPlayerCount;
     D_8018D3C4 = 0x00000014;

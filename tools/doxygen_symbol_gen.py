@@ -29,6 +29,8 @@ def process_map_file(map_file_path):
 
                     if function_name.startswith("L8"): # Ignore local labels
                         continue
+                    if function_name.startswith("jpt_"):
+                        continue
 
                     # Format the information into the Doxygen style
                     result += f"[{function_name}](@ref {function_name}) | {address}\n"
@@ -52,5 +54,3 @@ if __name__ == "__main__":
     # Write the result to the output file
     with open(output_file_path, 'w') as output_file:
         output_file.write(doxygen_formatted_content)
-
-    print(f"Output written to: {output_file_path}")

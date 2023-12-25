@@ -36,8 +36,8 @@ glabel func_80082F1C
 /* 083B88 80082F88 844D0002 */  lh    $t5, 2($v0)
 /* 083B8C 80082F8C 844E0004 */  lh    $t6, 4($v0)
 /* 083B90 80082F90 448C3000 */  mtc1  $t4, $f6
-/* 083B94 80082F94 3C018019 */  lui   $at, %hi(D_8018D01C) # $at, 0x8019
-/* 083B98 80082F98 C42AD01C */  lwc1  $f10, %lo(D_8018D01C)($at)
+/* 083B94 80082F94 3C018019 */  lui   $at, %hi(xOrientation) # $at, 0x8019
+/* 083B98 80082F98 C42AD01C */  lwc1  $f10, %lo(xOrientation)($at)
 /* 083B9C 80082F9C 46803220 */  cvt.s.w $f8, $f6
 /* 083BA0 80082FA0 448D9000 */  mtc1  $t5, $f18
 /* 083BA4 80082FA4 448E2000 */  mtc1  $t6, $f4

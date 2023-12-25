@@ -46,17 +46,17 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
 
         // Uses 100CC values
         case TIME_TRIALS:
-            player->unk_084 = D_800E2400[1][player->characterId];
-            player->unk_088 = D_800E24B4[1][player->characterId];
-            player->unk_210 = D_800E2568[1][player->characterId];
-            player->topSpeed = gTopSpeedTable[1][player->characterId];
+            player->unk_084 = D_800E2400[CC_100][player->characterId];
+            player->unk_088 = D_800E24B4[CC_100][player->characterId];
+            player->unk_210 = D_800E2568[CC_100][player->characterId];
+            player->topSpeed = gTopSpeedTable[CC_100][player->characterId];
             break;
 
         case BATTLE:
-            player->unk_084 = D_800E2400[4][player->characterId];
-            player->unk_088 = D_800E24B4[4][player->characterId];
-            player->unk_210 = D_800E2568[4][player->characterId];
-            player->topSpeed = gTopSpeedTable[4][player->characterId];
+            player->unk_084 = D_800E2400[CC_BATTLE][player->characterId];
+            player->unk_088 = D_800E24B4[CC_BATTLE][player->characterId];
+            player->unk_210 = D_800E2568[CC_BATTLE][player->characterId];
+            player->topSpeed = gTopSpeedTable[CC_BATTLE][player->characterId];
             break;
     }
 

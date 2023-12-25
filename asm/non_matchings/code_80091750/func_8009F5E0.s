@@ -940,10 +940,10 @@ glabel L800A0184
 /* 0A0DB8 800A01B8 AE020000 */   sw    $v0, ($s0)
 glabel L800A01BC
 /* 0A0DBC 800A01BC 00087080 */  sll   $t6, $t0, 2
-/* 0A0DC0 800A01C0 3C04800E */  lui   $a0, %hi(D_800E7CA8)
+/* 0A0DC0 800A01C0 3C04800E */  lui   $a0, %hi(D_800E7D54 - 0xAC)
 /* 0A0DC4 800A01C4 008E2021 */  addu  $a0, $a0, $t6
 /* 0A0DC8 800A01C8 0C026449 */  jal   segmented_to_virtual_dupe
-/* 0A0DCC 800A01CC 8C847CA8 */   lw    $a0, %lo(D_800E7CA8)($a0)
+/* 0A0DCC 800A01CC 8C847CA8 */   lw    $a0, %lo(D_800E7D54 - 0xAC)($a0)
 /* 0A0DD0 800A01D0 02202025 */  move  $a0, $s1
 /* 0A0DD4 800A01D4 0C0284AF */  jal   func_800A12BC
 /* 0A0DD8 800A01D8 00402825 */   move  $a1, $v0
