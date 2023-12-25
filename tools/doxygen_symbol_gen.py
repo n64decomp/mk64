@@ -52,5 +52,3 @@ if __name__ == "__main__":
     # Write the result to the output file
     with open(output_file_path, 'w') as output_file:
         output_file.write(doxygen_formatted_content)
-
-    print(f"Output written to: {output_file_path}")
