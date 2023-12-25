@@ -4676,7 +4676,7 @@ Variable Name | Memory Address
 [D_8018C830](@ref D_8018C830) | 0x8018C830
 [D_8018C870](@ref D_8018C870) | 0x8018C870
 [D_8018C970](@ref D_8018C970) | 0x8018C970
-[playerHUD](@ref playerHUD) | 0x8018CA70
+[playerHUD](@ref playerHUD) | 0xplayerHUD
 [D_8018CA74](@ref D_8018CA74) | 0x8018CA74
 [D_8018CA78](@ref D_8018CA78) | 0x8018CA78
 [D_8018CA90](@ref D_8018CA90) | 0x8018CA90
