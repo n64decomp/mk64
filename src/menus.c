@@ -848,7 +848,7 @@ void logo_intro_menu_act(struct Controller *arg0, UNUSED u16 arg1) {
     gCurrentCourseId = 0;
     gScreenModeSelection = SCREEN_MODE_1P;
     gCharacterSelections[0] = 0;
-    gModeSelection = 0;
+    gModeSelection = GRAND_PRIX;
     gPlayerCount = 1;
 #endif
 

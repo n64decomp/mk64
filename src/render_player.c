@@ -796,73 +796,73 @@ void func_80022744(void) {
 
 void func_8002276C(void) {
     switch (gActiveScreenMode) {                              /* irregular */
-    case SCREEN_MODE_1P:
-        switch (gModeSelection) {                        /* switch 1; irregular */
-        case GRAND_PRIX:                                     /* switch 1 */
-            func_80022A98(gPlayerOne, 0);
-            func_80022A98(gPlayerTwo, 1);
-            func_80022A98(gPlayerThree, 2);
-            func_80022A98(gPlayerFour, 3);
-            func_80022A98(gPlayerFive, 4);
-            func_80022A98(gPlayerSix, 5);
-            func_80022A98(gPlayerSeven, 6);
-            func_80022A98(gPlayerEight, 7);
+        case SCREEN_MODE_1P:
+            switch (gModeSelection) {                        /* switch 1; irregular */
+                case GRAND_PRIX:                                     /* switch 1 */
+                    func_80022A98(gPlayerOne, 0);
+                    func_80022A98(gPlayerTwo, 1);
+                    func_80022A98(gPlayerThree, 2);
+                    func_80022A98(gPlayerFour, 3);
+                    func_80022A98(gPlayerFive, 4);
+                    func_80022A98(gPlayerSix, 5);
+                    func_80022A98(gPlayerSeven, 6);
+                    func_80022A98(gPlayerEight, 7);
+                    break;
+                case TIME_TRIALS:                                     /* switch 1 */
+                    func_80022A98(gPlayerOne, 0);
+                    if ((gPlayerTwo->type & 0x100) == 0x100) {
+                        func_80022A98(gPlayerTwo, 1);
+                    }
+                    if ((gPlayerThree->type & 0x100) == 0x100) {
+                        func_80022A98(gPlayerThree, 2);
+                    }
+                    break;
+                case VERSUS:                                     /* switch 1 */
+                case BATTLE:                                     /* switch 1 */
+                    func_80022A98(gPlayerOne, 0);
+                    func_80022A98(gPlayerTwo, 1);
+                    if (gPlayerCountSelection1 >= 3) {
+                        func_80022A98(gPlayerThree, 2);
+                    }
+                    if (gPlayerCountSelection1 == 4) {
+                        func_80022A98(gPlayerFour, 3);
+                    }
+                    break;
+            }
             break;
-        case TIME_TRIALS:                                     /* switch 1 */
-            func_80022A98(gPlayerOne, 0);
-            if ((gPlayerTwo->type & 0x100) == 0x100) {
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+            switch (gModeSelection) {                        /* switch 2; irregular */
+                case GRAND_PRIX:                                     /* switch 2 */
+                    func_80022A98(gPlayerOne, 0);
+                    func_80022A98(gPlayerTwo, 1);
+                    func_80022A98(gPlayerThree, 2);
+                    func_80022A98(gPlayerFour, 3);
+                    func_80022A98(gPlayerFive, 4);
+                    func_80022A98(gPlayerSix, 5);
+                    func_80022A98(gPlayerSeven, 6);
+                    func_80022A98(gPlayerEight, 7);
+                    break;
+                case VERSUS:                                     /* switch 2 */
+                case BATTLE:                                     /* switch 2 */
+                    func_80022A98(gPlayerOne, 0);
+                    func_80022A98(gPlayerTwo, 1);
+                    break;
+                case TIME_TRIALS:                                     /* switch 2 */
+                    func_80022A98(gPlayerOne, 0);
+                    break;
+            }
+            break;
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+            if ((VERSUS == gModeSelection) || (BATTLE == gModeSelection)) {
+                func_80022A98(gPlayerOne, 0);
                 func_80022A98(gPlayerTwo, 1);
-            }
-            if ((gPlayerThree->type & 0x100) == 0x100) {
                 func_80022A98(gPlayerThree, 2);
+                if (gPlayerCountSelection1 == 4) {
+                    func_80022A98(gPlayerFour, 3);
+                }
             }
             break;
-        case VERSUS:                                     /* switch 1 */
-        case BATTLE:                                     /* switch 1 */
-            func_80022A98(gPlayerOne, 0);
-            func_80022A98(gPlayerTwo, 1);
-            if (gPlayerCountSelection1 >= 3) {
-                func_80022A98(gPlayerThree, 2);
-            }
-            if (gPlayerCountSelection1 == 4) {
-                func_80022A98(gPlayerFour, 3);
-            }
-            break;
-        }
-        break;
-    case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-    case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-        switch (gModeSelection) {                        /* switch 2; irregular */
-        case GRAND_PRIX:                                     /* switch 2 */
-            func_80022A98(gPlayerOne, 0);
-            func_80022A98(gPlayerTwo, 1);
-            func_80022A98(gPlayerThree, 2);
-            func_80022A98(gPlayerFour, 3);
-            func_80022A98(gPlayerFive, 4);
-            func_80022A98(gPlayerSix, 5);
-            func_80022A98(gPlayerSeven, 6);
-            func_80022A98(gPlayerEight, 7);
-            break;
-        case VERSUS:                                     /* switch 2 */
-        case BATTLE:                                     /* switch 2 */
-            func_80022A98(gPlayerOne, 0);
-            func_80022A98(gPlayerTwo, 1);
-            break;
-        case TIME_TRIALS:                                     /* switch 2 */
-            func_80022A98(gPlayerOne, 0);
-            break;
-        }
-        break;
-    case SCREEN_MODE_3P_4P_SPLITSCREEN:
-        if ((VERSUS == gModeSelection) || (BATTLE == gModeSelection)) {
-            func_80022A98(gPlayerOne, 0);
-            func_80022A98(gPlayerTwo, 1);
-            func_80022A98(gPlayerThree, 2);
-            if (gPlayerCountSelection1 == 4) {
-                func_80022A98(gPlayerFour, 3);
-            }
-        }
-        break;
     }
 }
 
