@@ -2,56 +2,6 @@
 
 .section .bss
 
-.skip 8 #padding
-
-glabel D_801649D8
-.skip 16
-
-glabel D_801649E8
-.skip 16
-
-glabel D_801649F8
-.skip 16
-
-glabel D_80164A08
-.skip 16
-
-glabel D_80164A18
-.skip 16
-
-glabel D_80164A28
-.skip 4
-
-glabel D_80164A2C
-.skip 4
-
-glabel D_80164A30
-.skip 8
-
-glabel D_80164A38
-.skip 16
-
-glabel D_80164A48
-.skip 48
-
-glabel D_80164A78
-.skip 16
-
-glabel D_80164A88
-.skip 1
-
-glabel D_80164A89
-.skip 7
-
-glabel D_80164A90
-.skip 16
-
-glabel D_80164AA0
-.skip 14
-
-glabel D_80164AAE
-.skip 2
-
 glabel D_80164AB0
 .skip 14
 
