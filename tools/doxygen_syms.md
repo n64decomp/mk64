@@ -1272,7 +1272,7 @@ Variable Name | Memory Address
 [func_800704A0](@ref func_800704A0) | 0x800704A0
 [func_8007055C](@ref func_8007055C) | 0x8007055C
 [func_80070714](@ref func_80070714) | 0x80070714
-[func_80070780](@ref func_80070780) | 0x80070780
+[init_course_object](@ref init_course_object) | 0x80070780
 [init_hud_one_player](@ref init_hud_one_player) | 0x80071428
 [init_hud_two_player_vertical](@ref init_hud_two_player_vertical) | 0x80071818
 [init_hud_two_player_horizontal](@ref init_hud_two_player_horizontal) | 0x80071A20

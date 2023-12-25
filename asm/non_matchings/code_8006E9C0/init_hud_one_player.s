@@ -30,7 +30,7 @@ glabel init_hud_one_player
 /* 072098 80071498 00000000 */   nop
 /* 07209C 8007149C 0C01C157 */  jal   func_8007055C
 /* 0720A0 800714A0 00000000 */   nop
-/* 0720A4 800714A4 0C01C1E0 */  jal   func_80070780
+/* 0720A4 800714A4 0C01C1E0 */  jal   init_course_object
 /* 0720A8 800714A8 00000000 */   nop
 /* 0720AC 800714AC 3C088019 */  lui   $t0, %hi(hudPlayers) # $t0, 0x8019
 /* 0720B0 800714B0 2508CA70 */  addiu $t0, %lo(hudPlayers) # addiu $t0, $t0, -0x3590

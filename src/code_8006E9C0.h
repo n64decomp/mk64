@@ -22,7 +22,7 @@ void func_800703E0(s32, s32, StarSpawn*);
 void func_800704A0(StarSpawn*);
 void func_8007055C(void);
 void func_80070714(void);
-void func_80070780(void);
+void init_course_object(void);
 void init_hud_one_player(void);
 void init_hud_two_player_vertical(void);
 void init_hud_three_four_player(void);
