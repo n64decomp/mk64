@@ -51,8 +51,8 @@ extern D_801642D8_entry D_801642D8[];
 
 typedef struct {
     s16 unk0;
-    u16 unk2;
-    u16 unk4;
+    s16 unk2;
+    s16 unk4;
     u16 unk6;
 } UnkStruct_46D0;
 
@@ -193,7 +193,7 @@ void func_8001530C(void);
 void func_80015314(s32, f32, s32);
 void func_80015390(Camera*, Player*, s32);
 void func_80015544(s32, f32, s32, s32);
-void func_8001577C(Camera*, s32, s32, s32);
+void func_8001577C(Camera*, UNUSED Player*, s32, s32);
 void func_80015A9C(s32, f32, s32, s16);
 
 void func_800162CC(s32, f32, s32, s16);
@@ -205,10 +205,10 @@ void func_80017F10(s32, f32, s32, s16);
 void func_80018718(s32, f32, s32, s16);
 
 void func_80019118(s32, f32, s32, s16);
-void func_8001933C(Camera*, s32, s32, s32);
+void func_8001933C(Camera*, UNUSED Player*, s32, s32);
 void func_8001968C(void);
 void func_8001969C(s32, f32, s32, s16);
-void func_80019760(Camera*, s32, s32, s32);
+void func_80019760(Camera*, UNUSED Player*, s32, s32);
 void func_80019890(s32, s32);
 void func_80019B50(s32, u16);
 void func_80019C50(s32);
