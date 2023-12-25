@@ -18,31 +18,35 @@
 
 f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 
-// Future BSS section, replaces unknown amount of stuff in bss_8001C4D0.s
-// f32 D_80164A30;
-// s32 D_80164A2C;
-// f32 D_8016524C; <- could maybe, maybe be part of spawn_players' bss stuff?
-
 Camera cameras[4];
 Camera *camera1 = &cameras[0];
 Camera *camera2 = &cameras[1];
 Camera *camera3 = &cameras[2];
 Camera *camera4 = &cameras[3];
 
+UNUSED s32 D_801649D0[2];
+
+f32 D_801649D8[4];
+f32 D_801649E8[4];
+f32 D_801649F8[4];
+s32 D_80164A08[4];
+s32 D_80164A18[4];
+s32 D_80164A28;
+s32 D_80164A2C;
+f32 D_80164A30;
+UNUSED f32 D_80164A34;
+f32 D_80164A38[4];
+f32 D_80164A48[4];
+UNUSED s32 D_80164A58[8];
+f32 D_80164A78[4];
+s8 D_80164A88;
+s8 D_80164A89;
+// UNUSED s8 D_80164A8C[3];
+f32 D_80164A90[4];
+f32 D_80164AA0[4];
+
 extern f32 D_80164498[];
 extern s16 D_80164678[];
-extern f32 D_801649D8[]; // f32[4]
-extern f32 D_801649E8[]; // f32[4]
-extern f32 D_801649F8[]; // f32[4]
-extern s32 D_80164A08[];
-extern s32 D_80164A18[];
-extern s32 D_80164A2C;
-extern f32 D_80164A30;
-extern f32 D_80164A38[4];
-extern f32 D_80164A48[4];
-extern f32 D_80164A78[];
-extern s8 D_80164A88;
-extern s8 D_80164A89;
 
 void camera_init(f32 posX, f32 posY, f32 posZ, UNUSED s16 rot, u32 arg4, s32 cameraId) {
     Player *player = gPlayerOne;

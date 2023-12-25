@@ -16,8 +16,8 @@
 #include "audio/external.h"
 #include "code_8003DC40.h"
 #include "main.h"
+#include "camera.h"
 
-extern s8 D_80164A89;
 extern s16 D_801633F8;
 extern s32 D_8018D168;
 
