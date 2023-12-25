@@ -18,9 +18,6 @@
 #include "save_data.h"
 #include <sounds.h>
 
-/** Externs to be put into headers **/
-extern void rmonPrintf(const char *, ...); // not in a libultra header?
-
 /** BSS **/
 s32 D_8018EDC0;
 f32 D_8018EDC4;

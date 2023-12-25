@@ -12,6 +12,7 @@ u8  *func_8006ED94(u8*, u8*, u32, u32);
 void func_8006EE44(void);
 void init_item_window(s32);
 void func_8006EEE8(s32);
+void func_8006EF60(void);
 void func_8006F824(s32);
 void func_8006FA94(void);
 void func_80070148(void);

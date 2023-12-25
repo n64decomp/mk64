@@ -1648,10 +1648,7 @@ glabel D_8018E7AC
 .skip 4
 
 glabel D_8018E7B0
-.skip 1
-
-glabel D_8018E7B1
-.skip 7
+.skip 8
 
 glabel D_8018E7B8
 .skip 16
