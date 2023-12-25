@@ -5,9 +5,9 @@
 #include "code_80071F00.h"
 
 void init_object_list(void);
-void func_8006EA5C(void);
+void reset_object_variable(void);
 void func_8006EB10(void);
-void func_8006ED60(void);
+void clear_object_list(void);
 u8  *func_8006ED94(u8*, u8*, u32, u32);
 void func_8006EE44(void);
 void init_item_window(s32);
@@ -16,14 +16,14 @@ void func_8006EF60(void);
 void func_8006F824(s32);
 void func_8006FA94(void);
 void func_80070148(void);
-void func_80070190(void);
+void init_object_list_index(void);
 void func_80070250(s32, s32, StarSpawn*);
 void func_80070328(StarSpawn*);
 void func_800703E0(s32, s32, StarSpawn*);
 void func_800704A0(StarSpawn*);
 void func_8007055C(void);
 void func_80070714(void);
-void func_80070780(void);
+void init_course_object(void);
 void init_hud_one_player(void);
 void init_hud_two_player_vertical(void);
 void init_hud_three_four_player(void);
@@ -36,7 +36,7 @@ extern u8 *gCourseOutlineTextures[0x14];
 extern s16 D_80165730;
 extern s16 D_80165740;
 extern s16 D_80165748;
-extern s32 D_80183D5C;
+extern s32 objectListSize;
 extern u8 *D_8018D1E0;
 extern intptr_t D_8018D9B0;
 
@@ -51,9 +51,9 @@ extern s16 D_8018D2B8;
 extern s32 D_80183DA0;
 extern s32 D_80183DBC;
 
-extern struct_8018CA70_entry D_8018CA70[];
-// These are all *technically* hardcoded references to spots in D_8018CA70, but there's something weird
-// going on match wise in func_8006EA5C that means we have to (for now) leave them as separate variables
+extern hud_player playerHUD[];
+// These are all *technically* hardcoded references to spots in playerHUD, but there's something weird
+// going on match wise in reset_object_variable that means we have to (for now) leave them as separate variables
 extern s8 D_8018CAE0;
 extern s8 D_8018CAE1;
 extern s8 D_8018CAE2;

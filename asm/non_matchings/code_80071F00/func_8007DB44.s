@@ -18,14 +18,14 @@ glabel func_8007DB44
 /* 07E780 8007DB80 3C088019 */  lui   $t0, %hi(D_8018D000) # $t0, 0x8019
 /* 07E784 8007DB84 2508D000 */  addiu $t0, %lo(D_8018D000) # addiu $t0, $t0, -0x3000
 /* 07E788 8007DB88 85020000 */  lh    $v0, ($t0)
-/* 07E78C 8007DB8C 3C108018 */  lui   $s0, %hi(D_80183EA0) # $s0, 0x8018
+/* 07E78C 8007DB8C 3C108018 */  lui   $s0, %hi(indexObjectList1) # $s0, 0x8018
 /* 07E790 8007DB90 00002825 */  move  $a1, $zero
 /* 07E794 8007DB94 10400003 */  beqz  $v0, .L8007DBA4
 /* 07E798 8007DB98 24060003 */   li    $a2, 3
 /* 07E79C 8007DB9C 244FFFFF */  addiu $t7, $v0, -1
 /* 07E7A0 8007DBA0 A50F0000 */  sh    $t7, ($t0)
 .L8007DBA4:
-/* 07E7A4 8007DBA4 8E103EA0 */  lw    $s0, %lo(D_80183EA0)($s0)
+/* 07E7A4 8007DBA4 8E103EA0 */  lw    $s0, %lo(indexObjectList1)($s0)
 /* 07E7A8 8007DBA8 2418FFFF */  li    $t8, -1
 /* 07E7AC 8007DBAC AFB80014 */  sw    $t8, 0x14($sp)
 /* 07E7B0 8007DBB0 24070001 */  li    $a3, 1

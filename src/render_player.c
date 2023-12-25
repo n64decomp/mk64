@@ -1291,7 +1291,7 @@ void render_player_shadow_credits(Player *player, s8 playerId, s8 arg2) {
 
     spCC[0] = player->pos[0] + ((spB0 * sins(spC0)) + (spAC * coss(spC0)));
     spCC[2] = player->pos[2] + ((spB0 * coss(spC0)) - (spAC * sins(spC0)));
-    spCC[1] = gObjectList[D_80183EA0[playerId]].pos[1] + sp94[playerId];
+    spCC[1] = gObjectList[indexObjectList1[playerId]].pos[1] + sp94[playerId];
 
     mtxf_translate_rotate(sp118, spCC, spC4);
     mtxf_scale2(sp118, gCharacterSize[player->characterId] * player->size);

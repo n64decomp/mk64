@@ -9041,10 +9041,10 @@ void func_800A4550(s32 lapNumber, s32 column, s32 row) {
     struct_8018D9E0_entry *temp_v0_2;
 
     if (lapNumber < 3) {
-        sp40 = D_8018CA70[0].lapDurations[lapNumber];
+        sp40 = playerHUD[0].lapDurations[lapNumber];
         set_text_color(2);
     } else {
-        sp40 = D_8018CA70[0].someTimer;
+        sp40 = playerHUD[0].someTimer;
         set_text_color(1);
     }
     func_800936B8(column + 0x21, row, D_800E7734[lapNumber], 0, 0.7f, 0.7f);

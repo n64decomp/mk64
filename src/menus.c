@@ -842,7 +842,7 @@ void logo_intro_menu_act(struct Controller *arg0, UNUSED u16 arg1) {
 //#define SKIP_TO_RACE
 #ifdef SKIP_TO_RACE
     gGamestateNext = 4; // Enter race state
-    gCCSelection = 1;
+    gCCSelection = CC_100;
     gCupSelection = 1;
     gCupCourseSelection = 0;
     gCurrentCourseId = 0;

@@ -16,7 +16,7 @@ glabel func_80080E8C
 /* 081A9C 80080E9C AFB00014 */  sw    $s0, 0x14($sp)
 /* 081AA0 80080EA0 AFA40040 */  sw    $a0, 0x40($sp)
 /* 081AA4 80080EA4 AFA60048 */  sw    $a2, 0x48($sp)
-/* 081AA8 80080EA8 0C01C8E9 */  jal   func_800723A4
+/* 081AA8 80080EA8 0C01C8E9 */  jal   init_object
 /* 081AAC 80080EAC 00C02825 */   move  $a1, $a2
 /* 081AB0 80080EB0 8FAE0040 */  lw    $t6, 0x40($sp)
 /* 081AB4 80080EB4 240700E0 */  li    $a3, 224

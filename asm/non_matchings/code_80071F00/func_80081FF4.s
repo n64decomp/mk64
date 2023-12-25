@@ -3,7 +3,7 @@ glabel func_80081FF4
 /* 082BF8 80081FF8 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 082BFC 80081FFC AFA5003C */  sw    $a1, 0x3c($sp)
 /* 082C00 80082000 AFA40038 */  sw    $a0, 0x38($sp)
-/* 082C04 80082004 0C01C8E9 */  jal   func_800723A4
+/* 082C04 80082004 0C01C8E9 */  jal   init_object
 /* 082C08 80082008 00002825 */   move  $a1, $zero
 /* 082C0C 8008200C 0C0ADF8D */  jal   random_int
 /* 082C10 80082010 2404001E */   li    $a0, 30
@@ -96,8 +96,8 @@ glabel func_80081FF4
 /* 082D48 80082148 254A6360 */  addiu $t2, %lo(gMoleSpawns) # addiu $t2, $t2, 0x6360
 /* 082D4C 8008214C 012A1021 */  addu  $v0, $t1, $t2
 /* 082D50 80082150 844B0000 */  lh    $t3, ($v0)
-/* 082D54 80082154 3C018019 */  lui   $at, %hi(D_8018D01C) # $at, 0x8019
-/* 082D58 80082158 C428D01C */  lwc1  $f8, %lo(D_8018D01C)($at)
+/* 082D54 80082154 3C018019 */  lui   $at, %hi(xOrientation) # $at, 0x8019
+/* 082D58 80082158 C428D01C */  lwc1  $f8, %lo(xOrientation)($at)
 /* 082D5C 8008215C 448B2000 */  mtc1  $t3, $f4
 /* 082D60 80082160 844C0002 */  lh    $t4, 2($v0)
 /* 082D64 80082164 844D0004 */  lh    $t5, 4($v0)
