@@ -22,7 +22,7 @@ struct UnkStruct80287560 {
 }; // 0xC
 
 /** bss **/
-u32 gMenuSelectionFromEndingSequence;
+s32 gMenuSelectionFromEndingSequence;
 s32 D_80287554;
 s32 D_80281C40_pad[2];
 struct UnkStruct80287560 D_80287560[30];
