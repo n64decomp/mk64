@@ -24,7 +24,6 @@ extern struct_D_8018CE10 D_8018CE10[];
 extern Vec3f D_80165070[];
 
 extern f32  D_80164510[];
-extern s32  D_80164A28;
 extern s16  gMatrixEffectCount;
 
 extern s16  D_80165020[];
