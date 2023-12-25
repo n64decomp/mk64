@@ -476,7 +476,7 @@ void func_80005AE8(Player *ply) {
 }
 
 void func_80005B18(void) {
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         if ((gLapCountByPlayerId[0] == 3) && (D_80162DDC == 0) && (D_80162DF8 != 1)) {
             if (D_80162DD4 == 1) {
                 D_80162DD0 = D_80162DCC;
@@ -524,7 +524,7 @@ void func_80005B18(void) {
                 if (D_80162DEC >= 0x65) {
                     D_80162DEC = 0x00000064;
                 }
-                if ((gModeSelection == 1) && (gActiveScreenMode == SCREEN_MODE_1P)) {
+                if ((gModeSelection == TIME_TRIALS) && (gActiveScreenMode == SCREEN_MODE_1P)) {
                     if ((D_80162DD4 == 0) && (gLapCountByPlayerId[1] != 3)) {
                         func_800057DC();
                     }

@@ -2367,7 +2367,7 @@ void func_8004F3E4(s32 arg0) {
     Player *player;
 
     switch (gModeSelection) {                   /* irregular */
-    case 0:
+    case GRAND_PRIX:
         for (var_s1 = D_8018D158 - 1; var_s1 >= 0; var_s1--) {
             temp_a1 = gGPCurrentRacePlayerIdByRank[var_s1];
             if ((gPlayerOne + temp_a1)->type & 0x1000) {
@@ -2381,7 +2381,7 @@ void func_8004F3E4(s32 arg0) {
             }
         }
         break;
-    case 1:
+    case TIME_TRIALS:
         for (var_s1 = 0; var_s1 < 8; var_s1++) {
             if (((gPlayerOne + var_s1)->type & 0x100) == 0x100) {
                 func_8004F168(arg0, var_s1, 8);
@@ -2389,13 +2389,13 @@ void func_8004F3E4(s32 arg0) {
         }
         func_8004F168(arg0, 0, gPlayerOne->characterId);
         break;
-    case 2:
+    case VERSUS:
         for (var_s1 = gPlayerCountSelection1 - 1; var_s1 >=0; var_s1--) {
             temp_a1 = gGPCurrentRacePlayerIdByRank[var_s1];
             func_8004F168(arg0, temp_a1, (gPlayerOne + temp_a1)->characterId);
         }
         break;
-    case 3:
+    case BATTLE:
         for (var_s1 = 0; var_s1 < gPlayerCountSelection1; var_s1++) {
             if (!((gPlayerOne + var_s1)->type & 0x40)) {
                 func_8004F168(arg0, var_s1, (gPlayerOne + var_s1)->characterId);

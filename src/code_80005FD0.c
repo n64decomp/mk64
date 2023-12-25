@@ -1275,10 +1275,10 @@ s32 func_80008E58(s32 payerId, s32 pathIndex) {
     D_80163318[payerId] = trackSegment;
     D_80162FCE = func_8000C0BC(posX, posY, posZ, trackSegment, &pathIndex);
     gNearestWaypointByPlayerId[payerId] = D_80162FCE;
-    if(pathIndex){};
+    if(pathIndex) {};
     gPathIndexByPlayerId[payerId] = pathIndex;
     func_80008DC0(pathIndex);
-    if(stackPadding){};
+    if(stackPadding) {};
     return pathIndex;
 }
 
@@ -3791,8 +3791,7 @@ void func_8000F628(void) {
             D_80163330[D_80163344[0]] = 1;
             D_8016334C[D_80163344[0]] = 0;
             
-            for (i = 1; i < 2; i++)
-            {
+            for (i = 1; i < 2; i++) {
                 D_80163344[i] = cameras[i].playerId;
                 D_80163330[D_80163344[i]] = 1;
                 D_8016334C[D_80163344[i]] = i;
@@ -7535,34 +7534,34 @@ void func_8001A124(s32 arg0, s32 arg1) {
     }
 }
 
-void func_8001A220(s32 arg0, s32 arg1) {
+void func_8001A220(s32 arg0, s32 cameraId) {
     switch (random_int(6)) {
         case 0:
-            D_80164680[arg1] = 4;
+            D_80164680[cameraId] = 4;
             break;
         case 1:
-            D_80164680[arg1] = 5;
+            D_80164680[cameraId] = 5;
             break;
         case 2:
-            D_80164680[arg1] = 6;
+            D_80164680[cameraId] = 6;
             break;
         case 3:
-            D_80164680[arg1] = 7;
+            D_80164680[cameraId] = 7;
             break;
         case 4:
-            D_80164680[arg1] = 8;
+            D_80164680[cameraId] = 8;
             break;
         case 5:
-            D_80164680[arg1] = 1;
+            D_80164680[cameraId] = 1;
             break;
         default:
-            D_80164680[arg1] = 8;
+            D_80164680[cameraId] = 8;
             break;
     }
 }
 
-s32 func_8001A310(s32 arg0, s32 arg1) {
-    if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) && (arg1 != 0) && (arg0 >= 0xE7) && (arg0 < 0x1C2)) {
+s32 func_8001A310(s32 waypoint, s32 arg1) {
+    if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) && (arg1 != 0) && (waypoint >= 0xE7) && (waypoint < 0x1C2)) {
         arg1 = 0;
     }
     return arg1;
@@ -7630,7 +7629,7 @@ void func_8001A588(u16 *localD_80152300, Camera *camera, Player *player, s8 inde
     s32 playerId;
     playerId = camera->playerId;
 
-    if (gModeSelection == 1) {
+    if (gModeSelection == TIME_TRIALS) {
         playerId = 0;
     }
     func_80019FB4(cameraIndex);
@@ -7642,8 +7641,8 @@ void func_8001A588(u16 *localD_80152300, Camera *camera, Player *player, s8 inde
             camera->pos[2] = (f32) (camera->pos[2] + 100.0);
         }
     }
-    if ((gModeSelection != 3) && (D_80164680[cameraIndex] == -1) && (player->type & 0x800) && ((u16) D_801646CC == 0) && (D_801646C8 == 0)) {
-        if (gModeSelection == 2) {
+    if ((gModeSelection != BATTLE) && (D_80164680[cameraIndex] == -1) && (player->type & 0x800) && ((u16) D_801646CC == 0) && (D_801646C8 == 0)) {
+        if (gModeSelection == VERSUS) {
             func_8001A220(playerId, cameraIndex);
         } else {
             func_8001A124((s32) playerId, cameraIndex);
@@ -7666,7 +7665,7 @@ void func_8001A588(u16 *localD_80152300, Camera *camera, Player *player, s8 inde
         if ((cameraIndex == 0) && (((D_801646C8 == 10)) || (D_801646C8 == 11))) {
             func_8001A518((s32) playerId, gGPCurrentRaceRankByPlayerId[playerId], 0);
         }
-        if ((gModeSelection != 1) && (cameraIndex == 1) && (((D_801646C8 == 260)) || (D_801646C8 == 261))) {
+        if ((gModeSelection != TIME_TRIALS) && (cameraIndex == 1) && (((D_801646C8 == 260)) || (D_801646C8 == 261))) {
             
             var_v1 = 0;
             if (gPlayerCount == 2) {
@@ -7798,7 +7797,7 @@ void func_8001AB74(s32 arg0, s16 *arg1, s32 arg2) {
             break;
     }
     if (value >= 0) {
-    *arg1 = value;
+        *arg1 = value;
     }
 }
 
