@@ -1,5 +1,7 @@
 var NAVTREEINDEX54 =
 {
+"mbi_8h.html#af134e3daae598b6802d6720e6bb9cdef":[3,0,0,1,6,5],
+"mbi_8h.html#af443c1fae07e1181ea599e3857200214":[3,0,0,1,6,7],
 "mbi_8h.html#afbc277aa75ae3af42c496970da79775c":[3,0,0,1,6,13],
 "mbi_8h_source.html":[3,0,0,1,6],
 "md_tools_doxygen_syms.html":[0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX54 =
 "menus_8h.html#a7ecc63df28c188d8b4476dba6fcf94af":[3,0,1,49,33],
 "menus_8h.html#a83f1a7f464362c3403e959fe1a38a130":[3,0,1,49,44],
 "menus_8h.html#a8aa851d10d529a40b5e373b5de5739bd":[3,0,1,49,61],
-"menus_8h.html#a96d76ad29ef34940fabf0387ea55c898":[3,0,1,49,24],
-"menus_8h.html#a987c7dbbbcdaf2aa0bceeb8c2747dcdf":[3,0,1,49,3],
-"menus_8h.html#a9dc55fd7e705c9bfcc184700d3c5fdce":[3,0,1,49,31]
+"menus_8h.html#a96d76ad29ef34940fabf0387ea55c898":[3,0,1,49,24]
 };

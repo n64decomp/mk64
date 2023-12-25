@@ -1,5 +1,7 @@
 var NAVTREEINDEX68 =
 {
+"structAudioListItem.html#ad518e6401fbb50f6221cb6d86e7fc2fd":[2,0,52,3],
+"structAudioListItem.html#afb3e57e2306a3f69ead1dff998ab4d9f":[2,0,52,1],
 "structAudioSessionSettings.html":[2,0,53],
 "structAudioSessionSettings.html#a05ebf9209e133d04eb887d6f48c74ef3":[2,0,53,9],
 "structAudioSessionSettings.html#a38f8c2f423cd8e270ea2e2abc023ce11":[2,0,53,8],
@@ -247,7 +249,5 @@ var NAVTREEINDEX68 =
 "structFallingRock.html#a1813485d40d1ba84720c6ac416bd685e":[2,0,80,6],
 "structFallingRock.html#a2f0889a792eb41e695782460e49b4107":[2,0,80,3],
 "structFallingRock.html#a373091fb2a25dcdb1a895dba44078564":[2,0,80,8],
-"structFallingRock.html#a4e01cc977edd28d2b84aecb215980491":[2,0,80,4],
-"structFallingRock.html#a5e49dea5026d0b37a10275ebdb0b58cb":[2,0,80,7],
-"structFallingRock.html#a9132acc2c2159d25dd0d752e4fa5f199":[2,0,80,2]
+"structFallingRock.html#a4e01cc977edd28d2b84aecb215980491":[2,0,80,4]
 };

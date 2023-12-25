@@ -1,16 +1,16 @@
 var searchData=
 [
-  ['k0_5fto_5fk1_27778',['K0_TO_K1',['../R4300_8h.html#a5ae3334c23012184175345172a0cac1e',1,'R4300.h']]],
-  ['k0_5fto_5fphys_27779',['K0_TO_PHYS',['../R4300_8h.html#a316c03632d14d84593e9908e473f565e',1,'R4300.h']]],
-  ['k0base_27780',['K0BASE',['../R4300_8h.html#a3895dc73e1b9343e0a0fd61037f0f887',1,'R4300.h']]],
-  ['k0size_27781',['K0SIZE',['../R4300_8h.html#afde3fc42d1d3dcf891cadcdb590f8d4b',1,'R4300.h']]],
-  ['k1_5fto_5fk0_27782',['K1_TO_K0',['../R4300_8h.html#ac3f97b9e95436eb2cd9bf16c8633a230',1,'R4300.h']]],
-  ['k1_5fto_5fphys_27783',['K1_TO_PHYS',['../R4300_8h.html#abbba41e07fa4ca0fed97fdeb7185d6ec',1,'R4300.h']]],
-  ['k1base_27784',['K1BASE',['../R4300_8h.html#a6633ac67351b3315b65209bd155aa0e2',1,'R4300.h']]],
-  ['k1size_27785',['K1SIZE',['../R4300_8h.html#ae7d4257f7050069d35a6e940c45caf12',1,'R4300.h']]],
-  ['k2base_27786',['K2BASE',['../R4300_8h.html#ace9d54246e55a11994c6e3ebe8aff525',1,'R4300.h']]],
-  ['k2size_27787',['K2SIZE',['../R4300_8h.html#a6391ea25e673fbb03ac9b5f6337eece7',1,'R4300.h']]],
-  ['kdm_5fto_5fphys_27788',['KDM_TO_PHYS',['../R4300_8h.html#aad51d21ac47be2f4f39b0a561f61d40c',1,'R4300.h']]],
-  ['kubase_27789',['KUBASE',['../R4300_8h.html#a921a56ca8fba91ce2c187522eb4fa304',1,'R4300.h']]],
-  ['kusize_27790',['KUSIZE',['../R4300_8h.html#a2e400dd26a1afa6e6955b38a23870a8d',1,'R4300.h']]]
+  ['k0_5fto_5fk1_27780',['K0_TO_K1',['../R4300_8h.html#a5ae3334c23012184175345172a0cac1e',1,'R4300.h']]],
+  ['k0_5fto_5fphys_27781',['K0_TO_PHYS',['../R4300_8h.html#a316c03632d14d84593e9908e473f565e',1,'R4300.h']]],
+  ['k0base_27782',['K0BASE',['../R4300_8h.html#a3895dc73e1b9343e0a0fd61037f0f887',1,'R4300.h']]],
+  ['k0size_27783',['K0SIZE',['../R4300_8h.html#afde3fc42d1d3dcf891cadcdb590f8d4b',1,'R4300.h']]],
+  ['k1_5fto_5fk0_27784',['K1_TO_K0',['../R4300_8h.html#ac3f97b9e95436eb2cd9bf16c8633a230',1,'R4300.h']]],
+  ['k1_5fto_5fphys_27785',['K1_TO_PHYS',['../R4300_8h.html#abbba41e07fa4ca0fed97fdeb7185d6ec',1,'R4300.h']]],
+  ['k1base_27786',['K1BASE',['../R4300_8h.html#a6633ac67351b3315b65209bd155aa0e2',1,'R4300.h']]],
+  ['k1size_27787',['K1SIZE',['../R4300_8h.html#ae7d4257f7050069d35a6e940c45caf12',1,'R4300.h']]],
+  ['k2base_27788',['K2BASE',['../R4300_8h.html#ace9d54246e55a11994c6e3ebe8aff525',1,'R4300.h']]],
+  ['k2size_27789',['K2SIZE',['../R4300_8h.html#a6391ea25e673fbb03ac9b5f6337eece7',1,'R4300.h']]],
+  ['kdm_5fto_5fphys_27790',['KDM_TO_PHYS',['../R4300_8h.html#aad51d21ac47be2f4f39b0a561f61d40c',1,'R4300.h']]],
+  ['kubase_27791',['KUBASE',['../R4300_8h.html#a921a56ca8fba91ce2c187522eb4fa304',1,'R4300.h']]],
+  ['kusize_27792',['KUSIZE',['../R4300_8h.html#a2e400dd26a1afa6e6955b38a23870a8d',1,'R4300.h']]]
 ];

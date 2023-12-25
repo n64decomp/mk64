@@ -1,5 +1,7 @@
 var NAVTREEINDEX74 =
 {
+"struct____OSBlockInfo.html#a70ae85d5ece1fbc3665a07c270c852ed":[2,0,0,4],
+"struct____OSBlockInfo.html#aa4171705f3d3633a9b23f38094531c05":[2,0,0,3],
 "struct____OSBlockInfo.html#ad2d64c4968eb061b0749f676fd303a36":[2,0,0,0],
 "struct____OSBlockInfo.html#afca49491ffc3d4102f10aab42a9648e1":[2,0,0,2],
 "struct____OSContEepromFormat.html":[2,0,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX74 =
 "structhud__player.html#a9c03f1bb09675d00ad3f6182713b2427":[2,0,86,30],
 "structhud__player.html#aa21cf21b02048bda46fcbb4fd38b37fc":[2,0,86,40],
 "structhud__player.html#aa24daffecc14d611f8d2d71b4fb887cf":[2,0,86,18],
-"structhud__player.html#aa27d3dbf20733d77b8b5919a30d24765":[2,0,86,58],
-"structhud__player.html#aa31a3dba04a6ec7fd466b830ba559572":[2,0,86,56],
-"structhud__player.html#aa997af0a1d2e30df45af4f513e27fa2f":[2,0,86,45]
+"structhud__player.html#aa27d3dbf20733d77b8b5919a30d24765":[2,0,86,58]
 };
