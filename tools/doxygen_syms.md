@@ -1265,7 +1265,7 @@ Variable Name | Memory Address
 [func_8006F8CC](@ref func_8006F8CC) | 0x8006F8CC
 [func_8006FA94](@ref func_8006FA94) | 0x8006FA94
 [func_80070148](@ref func_80070148) | 0x80070148
-[init_index_object_list](@ref init_index_object_list) | 0x80070190
+[init_object_list_index](@ref init_object_list_index) | 0x80070190
 [func_80070250](@ref func_80070250) | 0x80070250
 [func_80070328](@ref func_80070328) | 0x80070328
 [func_800703E0](@ref func_800703E0) | 0x800703E0
@@ -4631,7 +4631,7 @@ Variable Name | Memory Address
 [D_80165A90](@ref D_80165A90) | 0x80165A90
 [gObjectList](@ref gObjectList) | 0x80165C18
 [D_80183D58](@ref D_80183D58) | 0x80183D58
-[sizeObjectList](@ref sizeObjectList) | 0x80183D5C
+[objectListSize](@ref objectListSize) | 0x80183D5C
 [D_80183D60](@ref D_80183D60) | 0x80183D60
 [D_80183DA0](@ref D_80183DA0) | 0x80183DA0
 [D_80183DA8](@ref D_80183DA8) | 0x80183DA8
@@ -4676,7 +4676,7 @@ Variable Name | Memory Address
 [D_8018C830](@ref D_8018C830) | 0x8018C830
 [D_8018C870](@ref D_8018C870) | 0x8018C870
 [D_8018C970](@ref D_8018C970) | 0x8018C970
-[hudPlayers](@ref hudPlayers) | 0x8018CA70
+[playerHUD](@ref playerHUD) | 0x8018CA70
 [D_8018CA74](@ref D_8018CA74) | 0x8018CA74
 [D_8018CA78](@ref D_8018CA78) | 0x8018CA78
 [D_8018CA90](@ref D_8018CA90) | 0x8018CA90

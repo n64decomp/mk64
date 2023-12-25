@@ -15,7 +15,7 @@ extern s32   gLapCountByPlayerId[8];             // D_80164390
 extern s32   gPlayerIsThrottleActive[];           // D_801653E0
 extern s32   gGPCurrentRaceRankByPlayerId[];      // D_801643B8
 
-extern hud_player hudPlayers[];
+extern hud_player playerHUD[];
 
 extern Mtx D_80183D60[];
 

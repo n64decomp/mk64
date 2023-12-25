@@ -15,7 +15,7 @@ void func_8006EEE8(s32);
 void func_8006F824(s32);
 void func_8006FA94(void);
 void func_80070148(void);
-void init_index_object_list(void);
+void init_object_list_index(void);
 void func_80070250(s32, s32, StarSpawn*);
 void func_80070328(StarSpawn*);
 void func_800703E0(s32, s32, StarSpawn*);
@@ -35,7 +35,7 @@ extern u8 *gCourseOutlineTextures[0x14];
 extern s16 D_80165730;
 extern s16 D_80165740;
 extern s16 D_80165748;
-extern s32 sizeObjectList;
+extern s32 objectListSize;
 extern u8 *D_8018D1E0;
 extern intptr_t D_8018D9B0;
 
@@ -50,8 +50,8 @@ extern s16 D_8018D2B8;
 extern s32 D_80183DA0;
 extern s32 D_80183DBC;
 
-extern hud_player hudPlayers[];
-// These are all *technically* hardcoded references to spots in hudPlayers, but there's something weird
+extern hud_player playerHUD[];
+// These are all *technically* hardcoded references to spots in playerHUD, but there's something weird
 // going on match wise in reset_object_variable that means we have to (for now) leave them as separate variables
 extern s8 D_8018CAE0;
 extern s8 D_8018CAE1;

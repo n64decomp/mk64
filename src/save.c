@@ -350,8 +350,8 @@ s32 func_800B5218(void) {
     fastestLapIndex = 0;
     character = *gCharacterSelections;
     for (checkLapIndex = 1; checkLapIndex != 3; checkLapIndex++) {
-        prevLapTime = hudPlayers->lapDurations[checkLapIndex];
-        thisLapTime = hudPlayers->lapDurations[fastestLapIndex];
+        prevLapTime = playerHUD->lapDurations[checkLapIndex];
+        thisLapTime = playerHUD->lapDurations[fastestLapIndex];
         if (prevLapTime < thisLapTime) {
             lapBitmask = 1 << checkLapIndex;
             fastestLapIndex = checkLapIndex;
@@ -360,8 +360,8 @@ s32 func_800B5218(void) {
         }
     }
 
-    if (hudPlayers->lapDurations[fastestLapIndex] < (func_800B4F2C() & 0xFFFFF)) {
-        populate_time_trial_record(recordPointer + 0xF, hudPlayers->lapDurations[fastestLapIndex], character);
+    if (playerHUD->lapDurations[fastestLapIndex] < (func_800B4F2C() & 0xFFFFF)) {
+        populate_time_trial_record(recordPointer + 0xF, playerHUD->lapDurations[fastestLapIndex], character);
         recordPointer[0x12] = 1;
         func_800B45E0(recordIndex);
         return lapBitmask;

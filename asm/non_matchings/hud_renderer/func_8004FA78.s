@@ -15,8 +15,8 @@ glabel func_8004FA78
 /* 0506AC 8004FAAC 10410069 */  beq   $v0, $at, .L8004FC54
 /* 0506B0 8004FAB0 00047140 */   sll   $t6, $a0, 5
 /* 0506B4 8004FAB4 01C47021 */  addu  $t6, $t6, $a0
-/* 0506B8 8004FAB8 3C0F8019 */  lui   $t7, %hi(hudPlayers) # $t7, 0x8019
-/* 0506BC 8004FABC 25EFCA70 */  addiu $t7, %lo(hudPlayers) # addiu $t7, $t7, -0x3590
+/* 0506B8 8004FAB8 3C0F8019 */  lui   $t7, %hi(playerHUD) # $t7, 0x8019
+/* 0506BC 8004FABC 25EFCA70 */  addiu $t7, %lo(playerHUD) # addiu $t7, $t7, -0x3590
 /* 0506C0 8004FAC0 000E7080 */  sll   $t6, $t6, 2
 /* 0506C4 8004FAC4 01CFA021 */  addu  $s4, $t6, $t7
 /* 0506C8 8004FAC8 3C188019 */  lui   $t8, %hi(D_8018D320) # $t8, 0x8019

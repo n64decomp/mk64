@@ -45,7 +45,7 @@ void init_object_list(void) {
 void reset_object_variable(void) {
     func_8006EB10();
     clear_object_list();
-    bzero(hudPlayers, HUD_PLAYERS_SIZE * sizeof(hud_player));
+    bzero(playerHUD, HUD_PLAYERS_SIZE * sizeof(hud_player));
     D_8018CAE1 = 0;
     D_8018CAE2 = 0;
     D_8018CAF1 = 0;
@@ -64,30 +64,30 @@ void reset_object_variable(void) {
     D_8018CC6C = 0;
 
     /**
-    hudPlayers[PLAYER_ONE].lapCount = 0;
-    hudPlayers[PLAYER_ONE].alsoLapCount = 0;
-    hudPlayers[PLAYER_ONE].unk_81 = 0;
-    hudPlayers[PLAYER_TWO].lapCount = 0;
-    hudPlayers[PLAYER_TWO].alsoLapCount = 0;
-    hudPlayers[PLAYER_TWO].unk_81 = 0;
-    hudPlayers[PLAYER_THREE].lapCount = 0;
-    hudPlayers[PLAYER_THREE].alsoLapCount = 0;
-    hudPlayers[PLAYER_THREE].unk_81 = 0;
-    hudPlayers[PLAYER_FOUR].lapCount = 0;
-    hudPlayers[PLAYER_FOUR].alsoLapCount = 0;
-    hudPlayers[PLAYER_FOUR].unk_81 = 0;
-    hudPlayers[PLAYER_ONE].raceCompleteBool = 0;
-    hudPlayers[PLAYER_TWO].raceCompleteBool = 0;
-    hudPlayers[PLAYER_THREE].raceCompleteBool = 0;
-    hudPlayers[PLAYER_FOUR].raceCompleteBool = 0;
+    playerHUD[PLAYER_ONE].lapCount = 0;
+    playerHUD[PLAYER_ONE].alsoLapCount = 0;
+    playerHUD[PLAYER_ONE].unk_81 = 0;
+    playerHUD[PLAYER_TWO].lapCount = 0;
+    playerHUD[PLAYER_TWO].alsoLapCount = 0;
+    playerHUD[PLAYER_TWO].unk_81 = 0;
+    playerHUD[PLAYER_THREE].lapCount = 0;
+    playerHUD[PLAYER_THREE].alsoLapCount = 0;
+    playerHUD[PLAYER_THREE].unk_81 = 0;
+    playerHUD[PLAYER_FOUR].lapCount = 0;
+    playerHUD[PLAYER_FOUR].alsoLapCount = 0;
+    playerHUD[PLAYER_FOUR].unk_81 = 0;
+    playerHUD[PLAYER_ONE].raceCompleteBool = 0;
+    playerHUD[PLAYER_TWO].raceCompleteBool = 0;
+    playerHUD[PLAYER_THREE].raceCompleteBool = 0;
+    playerHUD[PLAYER_FOUR].raceCompleteBool = 0;
 
     // This is close but it puts the raceCompletedBool stuff in the wrong place
     // Which makes sense, but its still annoying
     for (thing = 0; thing < HUD_PLAYERS_SIZE; thing++) {
-        hudPlayers[thing].lapCount = 0;
-        hudPlayers[thing].alsoLapCount = 0;
-        hudPlayers[thing].unk_81 = 0;
-        hudPlayers[thing].raceCompleteBool = 0;
+        playerHUD[thing].lapCount = 0;
+        playerHUD[thing].alsoLapCount = 0;
+        playerHUD[thing].unk_81 = 0;
+        playerHUD[thing].raceCompleteBool = 0;
     }
     **/
 }
@@ -184,7 +184,7 @@ void func_8006EB10(void) {
 
 void clear_object_list() {
     bzero(gObjectList, OBJECT_LIST_SIZE * sizeof(Objects));
-    sizeObjectList = -1;
+    objectListSize = -1;
 }
 
 u8 *func_8006ED94(u8 *devAddr, u8 *baseAddress, u32 size, u32 offset)
@@ -838,7 +838,7 @@ void func_80070148(void) {
     }
 }
 
-void init_index_object_list(void) {
+void init_object_list_index(void) {
     s32 loopIndex;
 
     for(loopIndex = 0; loopIndex < SOME_OBJECT_INDEX_LIST_SIZE; loopIndex++) {
@@ -1303,32 +1303,32 @@ void init_hud_one_player(void) {
     find_unused_obj_index(&D_80183DBC);
     find_unused_obj_index(gItemWindowObjectByPlayerId);
     find_unused_obj_index(gItemWindowObjectByPlayerId + 4);
-    init_index_object_list();
+    init_object_list_index();
     func_8007055C();
     func_8007055C();
     init_course_object();
-    hudPlayers->speedometerX = 0x0156;
-    hudPlayers->speedometerY = 0x0106;
-    D_8018CFEC = (f32) (hudPlayers->speedometerX + 0x18);
-    D_8018CFF4 = (f32) (hudPlayers->speedometerY + 6);
+    playerHUD->speedometerX = 0x0156;
+    playerHUD->speedometerY = 0x0106;
+    D_8018CFEC = (f32) (playerHUD->speedometerX + 0x18);
+    D_8018CFF4 = (f32) (playerHUD->speedometerY + 6);
     D_8016579E = 0xDD00;
-    hudPlayers->rankX = 0x0034;
-    hudPlayers->rankY = 0x00C8;
-    hudPlayers->slideRankX = 0;
-    hudPlayers->slideRankY = 0;
-    hudPlayers->timerX = 0x012C;
-    hudPlayers->lap1CompletionTimeX = 0x012C;
-    hudPlayers->lap2CompletionTimeX = 0x012C;
-    hudPlayers->timerY = 0x0011;
-    hudPlayers->lapX = -0x0028;
-    hudPlayers->lapAfterImage1X = -0x0028;
-    hudPlayers->lapAfterImage2X = -0x0028;
-    hudPlayers->lapY = 0x0019;
-    hudPlayers->itemBoxX = 0x00A0;
-    hudPlayers->itemBoxY = -0x0020;
-    hudPlayers->slideItemBoxX = 0;
-    hudPlayers->slideItemBoxY = 0;
-    hudPlayers->stagingPosition = (s16) *gGPCurrentRaceRankByPlayerId;
+    playerHUD->rankX = 0x0034;
+    playerHUD->rankY = 0x00C8;
+    playerHUD->slideRankX = 0;
+    playerHUD->slideRankY = 0;
+    playerHUD->timerX = 0x012C;
+    playerHUD->lap1CompletionTimeX = 0x012C;
+    playerHUD->lap2CompletionTimeX = 0x012C;
+    playerHUD->timerY = 0x0011;
+    playerHUD->lapX = -0x0028;
+    playerHUD->lapAfterImage1X = -0x0028;
+    playerHUD->lapAfterImage2X = -0x0028;
+    playerHUD->lapY = 0x0019;
+    playerHUD->itemBoxX = 0x00A0;
+    playerHUD->itemBoxY = -0x0020;
+    playerHUD->slideItemBoxX = 0;
+    playerHUD->slideItemBoxY = 0;
+    playerHUD->stagingPosition = (s16) *gGPCurrentRaceRankByPlayerId;
     init_item_window(gItemWindowObjectByPlayerId[0]);
     var_f0 = 35.0f;
     var_v0 = &D_8018D078;
@@ -1383,9 +1383,9 @@ void init_hud_one_player(void) {
     D_8018D3EC = 0x000000FF;
     D_8018D3F0 = 0x000000FF;
     D_8018D3F4 = 1;
-    hudPlayers->unk_4C = 0x0078;
-    hudPlayers->unk_4A = 0x00A0;
-    hudPlayers->rankScaling = 0.5f;
+    playerHUD->unk_4C = 0x0078;
+    playerHUD->unk_4A = 0x00A0;
+    playerHUD->rankScaling = 0.5f;
     D_801656B0 = 0;
     D_80165708 = 0x0028;
     D_8018D00C = 5.0f;
@@ -1422,47 +1422,47 @@ void init_hud_two_player_vertical(void) {
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
 
-    init_index_object_list();
+    init_object_list_index();
     func_8007055C();
     func_8007055C();
     init_course_object();
 
-    hudPlayers[PLAYER_ONE].itemBoxX = -0x52;
-    hudPlayers[PLAYER_ONE].itemBoxY = 0x32;
-    hudPlayers[PLAYER_ONE].slideItemBoxX = 0;
-    hudPlayers[PLAYER_ONE].slideItemBoxY = 0;
-    hudPlayers[PLAYER_ONE].unk_4A = 0x50;
-    hudPlayers[PLAYER_ONE].unk_4C = 0x78;
-    hudPlayers[PLAYER_ONE].rankX = 0x32;
-    hudPlayers[PLAYER_ONE].rankY = 0xD2;
-    hudPlayers[PLAYER_ONE].slideRankX = 0;
-    hudPlayers[PLAYER_ONE].slideRankY = 0;
-    hudPlayers[PLAYER_ONE].timerX = 0x4B;
-    hudPlayers[PLAYER_ONE].timerY = 0x10;
-    hudPlayers[PLAYER_ONE].lapX = 0x67;
-    hudPlayers[PLAYER_ONE].lapY = 0x28;
+    playerHUD[PLAYER_ONE].itemBoxX = -0x52;
+    playerHUD[PLAYER_ONE].itemBoxY = 0x32;
+    playerHUD[PLAYER_ONE].slideItemBoxX = 0;
+    playerHUD[PLAYER_ONE].slideItemBoxY = 0;
+    playerHUD[PLAYER_ONE].unk_4A = 0x50;
+    playerHUD[PLAYER_ONE].unk_4C = 0x78;
+    playerHUD[PLAYER_ONE].rankX = 0x32;
+    playerHUD[PLAYER_ONE].rankY = 0xD2;
+    playerHUD[PLAYER_ONE].slideRankX = 0;
+    playerHUD[PLAYER_ONE].slideRankY = 0;
+    playerHUD[PLAYER_ONE].timerX = 0x4B;
+    playerHUD[PLAYER_ONE].timerY = 0x10;
+    playerHUD[PLAYER_ONE].lapX = 0x67;
+    playerHUD[PLAYER_ONE].lapY = 0x28;
     init_item_window(gItemWindowObjectByPlayerId[PLAYER_ONE]);
 
-    hudPlayers[PLAYER_TWO].itemBoxX = 0x43;
-    hudPlayers[PLAYER_TWO].itemBoxY = 0x32;
-    hudPlayers[PLAYER_TWO].slideItemBoxX = 0;
-    hudPlayers[PLAYER_TWO].slideItemBoxY = 0;
-    hudPlayers[PLAYER_TWO].unk_4A = 0xF0;
-    hudPlayers[PLAYER_TWO].unk_4C = 0x78;
-    hudPlayers[PLAYER_TWO].rankX = 0xC8;
-    hudPlayers[PLAYER_TWO].rankY = 0xD2;
-    hudPlayers[PLAYER_TWO].slideRankX = 0;
-    hudPlayers[PLAYER_TWO].slideRankY = 0;
-    hudPlayers[PLAYER_TWO].timerX = 0xDC;
-    hudPlayers[PLAYER_TWO].timerY = 0x10;
-    hudPlayers[PLAYER_TWO].lapX = 0xF7;
-    hudPlayers[PLAYER_TWO].lapY = 0x28;
+    playerHUD[PLAYER_TWO].itemBoxX = 0x43;
+    playerHUD[PLAYER_TWO].itemBoxY = 0x32;
+    playerHUD[PLAYER_TWO].slideItemBoxX = 0;
+    playerHUD[PLAYER_TWO].slideItemBoxY = 0;
+    playerHUD[PLAYER_TWO].unk_4A = 0xF0;
+    playerHUD[PLAYER_TWO].unk_4C = 0x78;
+    playerHUD[PLAYER_TWO].rankX = 0xC8;
+    playerHUD[PLAYER_TWO].rankY = 0xD2;
+    playerHUD[PLAYER_TWO].slideRankX = 0;
+    playerHUD[PLAYER_TWO].slideRankY = 0;
+    playerHUD[PLAYER_TWO].timerX = 0xDC;
+    playerHUD[PLAYER_TWO].timerY = 0x10;
+    playerHUD[PLAYER_TWO].lapX = 0xF7;
+    playerHUD[PLAYER_TWO].lapY = 0x28;
     init_item_window(gItemWindowObjectByPlayerId[PLAYER_TWO]);
 
-    hudPlayers[PLAYER_ONE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
-    hudPlayers[PLAYER_TWO].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
+    playerHUD[PLAYER_ONE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
+    playerHUD[PLAYER_TWO].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
 
-    hudPlayers[PLAYER_ONE].rankScaling = hudPlayers[PLAYER_TWO].rankScaling = 0.5f;
+    playerHUD[PLAYER_ONE].rankScaling = playerHUD[PLAYER_TWO].rankScaling = 0.5f;
 
     D_8018D3C4 = 0x1E;
     D_8018D3BC = 0x18;
@@ -1492,51 +1492,51 @@ void init_hud_two_player_horizontal() {
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
 
-    init_index_object_list();
+    init_object_list_index();
     func_8007055C();
     func_8007055C();
     init_course_object();
 
 
-    hudPlayers[PLAYER_ONE].itemBoxY = 0x22;
-    hudPlayers[PLAYER_ONE].itemBoxX = -0x53;
-    hudPlayers[PLAYER_ONE].slideItemBoxX = 0;
-    hudPlayers[PLAYER_ONE].slideItemBoxY = 0;
-    hudPlayers[PLAYER_ONE].unk_4A = 0xA0;
-    hudPlayers[PLAYER_ONE].unk_4C = 0x3C;
-    hudPlayers[PLAYER_ONE].rankX = 0x34;
-    hudPlayers[PLAYER_ONE].rankY = 0x62;
-    hudPlayers[PLAYER_ONE].slideRankX = 0;
-    hudPlayers[PLAYER_ONE].slideRankY = 0;
-    hudPlayers[PLAYER_ONE].timerX = 0xEA;
-    hudPlayers[PLAYER_ONE].timerY = 0x10;
-    hudPlayers[PLAYER_ONE].lapX = 0x101;
-    hudPlayers[PLAYER_ONE].lapY = 0x6A;
+    playerHUD[PLAYER_ONE].itemBoxY = 0x22;
+    playerHUD[PLAYER_ONE].itemBoxX = -0x53;
+    playerHUD[PLAYER_ONE].slideItemBoxX = 0;
+    playerHUD[PLAYER_ONE].slideItemBoxY = 0;
+    playerHUD[PLAYER_ONE].unk_4A = 0xA0;
+    playerHUD[PLAYER_ONE].unk_4C = 0x3C;
+    playerHUD[PLAYER_ONE].rankX = 0x34;
+    playerHUD[PLAYER_ONE].rankY = 0x62;
+    playerHUD[PLAYER_ONE].slideRankX = 0;
+    playerHUD[PLAYER_ONE].slideRankY = 0;
+    playerHUD[PLAYER_ONE].timerX = 0xEA;
+    playerHUD[PLAYER_ONE].timerY = 0x10;
+    playerHUD[PLAYER_ONE].lapX = 0x101;
+    playerHUD[PLAYER_ONE].lapY = 0x6A;
 
-    hudPlayers[PLAYER_TWO].itemBoxX = -0x53;
-    hudPlayers[PLAYER_TWO].itemBoxY = 0x8F;
-    hudPlayers[PLAYER_TWO].slideItemBoxX = 0;
-    hudPlayers[PLAYER_TWO].slideItemBoxY = 0;
-    hudPlayers[PLAYER_TWO].unk_4A = 0xA0;
-    hudPlayers[PLAYER_TWO].unk_4C = 0xB4;
-    hudPlayers[PLAYER_TWO].rankX = 0x34;
-    hudPlayers[PLAYER_TWO].rankY = 0xD2;
-    hudPlayers[PLAYER_TWO].slideRankX = 0;
-    hudPlayers[PLAYER_TWO].slideRankY = 0;
-    hudPlayers[PLAYER_TWO].timerX = 0xEA;
-    hudPlayers[PLAYER_TWO].timerY = 0x7F;
-    hudPlayers[PLAYER_TWO].lapX = 0x101;
-    hudPlayers[PLAYER_TWO].lapY = 0xDA;
+    playerHUD[PLAYER_TWO].itemBoxX = -0x53;
+    playerHUD[PLAYER_TWO].itemBoxY = 0x8F;
+    playerHUD[PLAYER_TWO].slideItemBoxX = 0;
+    playerHUD[PLAYER_TWO].slideItemBoxY = 0;
+    playerHUD[PLAYER_TWO].unk_4A = 0xA0;
+    playerHUD[PLAYER_TWO].unk_4C = 0xB4;
+    playerHUD[PLAYER_TWO].rankX = 0x34;
+    playerHUD[PLAYER_TWO].rankY = 0xD2;
+    playerHUD[PLAYER_TWO].slideRankX = 0;
+    playerHUD[PLAYER_TWO].slideRankY = 0;
+    playerHUD[PLAYER_TWO].timerX = 0xEA;
+    playerHUD[PLAYER_TWO].timerY = 0x7F;
+    playerHUD[PLAYER_TWO].lapX = 0x101;
+    playerHUD[PLAYER_TWO].lapY = 0xDA;
 
     if (gModeSelection == BATTLE) {
-        hudPlayers[PLAYER_ONE].itemBoxY = 0x5E;
-        hudPlayers[PLAYER_TWO].itemBoxY = 0xD0;
+        playerHUD[PLAYER_ONE].itemBoxY = 0x5E;
+        playerHUD[PLAYER_TWO].itemBoxY = 0xD0;
     }
 
-    hudPlayers[PLAYER_ONE].rankScaling = hudPlayers[PLAYER_TWO].rankScaling = 0.5f;
+    playerHUD[PLAYER_ONE].rankScaling = playerHUD[PLAYER_TWO].rankScaling = 0.5f;
 
-    hudPlayers[PLAYER_ONE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
-    hudPlayers[PLAYER_TWO].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
+    playerHUD[PLAYER_ONE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
+    playerHUD[PLAYER_TWO].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
 
     init_item_window(gItemWindowObjectByPlayerId[0]);
     init_item_window((gItemWindowObjectByPlayerId[1]));
@@ -1572,89 +1572,89 @@ void init_hud_three_four_player(void) {
     find_unused_obj_index(&gItemWindowObjectByPlayerId[2]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[3]);
 
-    init_index_object_list();
+    init_object_list_index();
     init_course_object();
 
-    hudPlayers[PLAYER_ONE].itemBoxX = -0x36;
-    hudPlayers[PLAYER_ONE].itemBoxY = 0x36;
-    hudPlayers[PLAYER_ONE].slideItemBoxX = 0;
-    hudPlayers[PLAYER_ONE].slideItemBoxY = 0;
-    hudPlayers[PLAYER_ONE].unk_4A = 0x50;
-    hudPlayers[PLAYER_ONE].unk_4C = 0x3C;
-    hudPlayers[PLAYER_ONE].rankX = 0x25;
-    hudPlayers[PLAYER_ONE].rankY = 0x64;
-    hudPlayers[PLAYER_ONE].slideRankX = 0;
-    hudPlayers[PLAYER_ONE].slideRankY = 0;
-    hudPlayers[PLAYER_ONE].lapX = 0x8C;
-    hudPlayers[PLAYER_ONE].lapY = 0x60;
-    hudPlayers[PLAYER_ONE].unk_6C = 0xDE;
-    hudPlayers[PLAYER_ONE].unk_6E = 0xC8;
+    playerHUD[PLAYER_ONE].itemBoxX = -0x36;
+    playerHUD[PLAYER_ONE].itemBoxY = 0x36;
+    playerHUD[PLAYER_ONE].slideItemBoxX = 0;
+    playerHUD[PLAYER_ONE].slideItemBoxY = 0;
+    playerHUD[PLAYER_ONE].unk_4A = 0x50;
+    playerHUD[PLAYER_ONE].unk_4C = 0x3C;
+    playerHUD[PLAYER_ONE].rankX = 0x25;
+    playerHUD[PLAYER_ONE].rankY = 0x64;
+    playerHUD[PLAYER_ONE].slideRankX = 0;
+    playerHUD[PLAYER_ONE].slideRankY = 0;
+    playerHUD[PLAYER_ONE].lapX = 0x8C;
+    playerHUD[PLAYER_ONE].lapY = 0x60;
+    playerHUD[PLAYER_ONE].unk_6C = 0xDE;
+    playerHUD[PLAYER_ONE].unk_6E = 0xC8;
 
-    hudPlayers[PLAYER_TWO].itemBoxX = 0x175;
-    hudPlayers[PLAYER_TWO].itemBoxY = 0x36;
-    hudPlayers[PLAYER_TWO].slideItemBoxX = 0;
-    hudPlayers[PLAYER_TWO].slideItemBoxY = 0;
-    hudPlayers[PLAYER_TWO].unk_4A = 0xF0;
-    hudPlayers[PLAYER_TWO].unk_4C = 0x3C;
-    hudPlayers[PLAYER_TWO].rankX = 0x11A;
-    hudPlayers[PLAYER_TWO].rankY = 0x64;
-    hudPlayers[PLAYER_TWO].slideRankX = 0;
-    hudPlayers[PLAYER_TWO].slideRankY = 0;
-    hudPlayers[PLAYER_TWO].lapX = 0xB4;
-    hudPlayers[PLAYER_TWO].lapY = 0x60;
-    hudPlayers[PLAYER_TWO].unk_6C = 0xC8;
-    hudPlayers[PLAYER_TWO].unk_6E = 0xC8;
+    playerHUD[PLAYER_TWO].itemBoxX = 0x175;
+    playerHUD[PLAYER_TWO].itemBoxY = 0x36;
+    playerHUD[PLAYER_TWO].slideItemBoxX = 0;
+    playerHUD[PLAYER_TWO].slideItemBoxY = 0;
+    playerHUD[PLAYER_TWO].unk_4A = 0xF0;
+    playerHUD[PLAYER_TWO].unk_4C = 0x3C;
+    playerHUD[PLAYER_TWO].rankX = 0x11A;
+    playerHUD[PLAYER_TWO].rankY = 0x64;
+    playerHUD[PLAYER_TWO].slideRankX = 0;
+    playerHUD[PLAYER_TWO].slideRankY = 0;
+    playerHUD[PLAYER_TWO].lapX = 0xB4;
+    playerHUD[PLAYER_TWO].lapY = 0x60;
+    playerHUD[PLAYER_TWO].unk_6C = 0xC8;
+    playerHUD[PLAYER_TWO].unk_6E = 0xC8;
     
-    hudPlayers[PLAYER_THREE].itemBoxX = -0x36;
-    hudPlayers[PLAYER_THREE].itemBoxY = 0x2D;
-    hudPlayers[PLAYER_THREE].slideItemBoxX = 0;
-    hudPlayers[PLAYER_THREE].slideItemBoxY = 0;
-    hudPlayers[PLAYER_THREE].unk_4A = 0x50;
-    hudPlayers[PLAYER_THREE].unk_4C = 0xB4;
-    hudPlayers[PLAYER_THREE].rankX = 0x25;
-    hudPlayers[PLAYER_THREE].rankY = 0xD2;
-    hudPlayers[PLAYER_THREE].slideRankX = 0;
-    hudPlayers[PLAYER_THREE].slideRankY = 0;
-    hudPlayers[PLAYER_THREE].lapX = 0x8C;
-    hudPlayers[PLAYER_THREE].lapY = 0xD4;
-    hudPlayers[PLAYER_THREE].unk_6C = 0xDE;
-    hudPlayers[PLAYER_THREE].unk_6E = 0xC0;
+    playerHUD[PLAYER_THREE].itemBoxX = -0x36;
+    playerHUD[PLAYER_THREE].itemBoxY = 0x2D;
+    playerHUD[PLAYER_THREE].slideItemBoxX = 0;
+    playerHUD[PLAYER_THREE].slideItemBoxY = 0;
+    playerHUD[PLAYER_THREE].unk_4A = 0x50;
+    playerHUD[PLAYER_THREE].unk_4C = 0xB4;
+    playerHUD[PLAYER_THREE].rankX = 0x25;
+    playerHUD[PLAYER_THREE].rankY = 0xD2;
+    playerHUD[PLAYER_THREE].slideRankX = 0;
+    playerHUD[PLAYER_THREE].slideRankY = 0;
+    playerHUD[PLAYER_THREE].lapX = 0x8C;
+    playerHUD[PLAYER_THREE].lapY = 0xD4;
+    playerHUD[PLAYER_THREE].unk_6C = 0xDE;
+    playerHUD[PLAYER_THREE].unk_6E = 0xC0;
     
-    hudPlayers[PLAYER_FOUR].itemBoxX = 0x175;
-    hudPlayers[PLAYER_FOUR].itemBoxY = 0x2D;
-    hudPlayers[PLAYER_FOUR].slideItemBoxX = 0;
-    hudPlayers[PLAYER_FOUR].slideItemBoxY = 0;
-    hudPlayers[PLAYER_FOUR].unk_4A = 0xF0;
-    hudPlayers[PLAYER_FOUR].unk_4C = 0xB4;
-    hudPlayers[PLAYER_FOUR].rankX = 0x11A;
-    hudPlayers[PLAYER_FOUR].rankY = 0xD2;
-    hudPlayers[PLAYER_FOUR].slideRankX = 0;
-    hudPlayers[PLAYER_FOUR].slideRankY = 0;
-    hudPlayers[PLAYER_FOUR].lapX = 0xB4;
-    hudPlayers[PLAYER_FOUR].lapY = 0xD4;
-    hudPlayers[PLAYER_FOUR].unk_6C = 0xC8;
-    hudPlayers[PLAYER_FOUR].unk_6E = 0xC0;
+    playerHUD[PLAYER_FOUR].itemBoxX = 0x175;
+    playerHUD[PLAYER_FOUR].itemBoxY = 0x2D;
+    playerHUD[PLAYER_FOUR].slideItemBoxX = 0;
+    playerHUD[PLAYER_FOUR].slideItemBoxY = 0;
+    playerHUD[PLAYER_FOUR].unk_4A = 0xF0;
+    playerHUD[PLAYER_FOUR].unk_4C = 0xB4;
+    playerHUD[PLAYER_FOUR].rankX = 0x11A;
+    playerHUD[PLAYER_FOUR].rankY = 0xD2;
+    playerHUD[PLAYER_FOUR].slideRankX = 0;
+    playerHUD[PLAYER_FOUR].slideRankY = 0;
+    playerHUD[PLAYER_FOUR].lapX = 0xB4;
+    playerHUD[PLAYER_FOUR].lapY = 0xD4;
+    playerHUD[PLAYER_FOUR].unk_6C = 0xC8;
+    playerHUD[PLAYER_FOUR].unk_6E = 0xC0;
 
     if (gModeSelection == BATTLE) {
-        hudPlayers[PLAYER_ONE].itemBoxY = 0xC8;
-        hudPlayers[PLAYER_TWO].itemBoxY = 0xC8;
-        hudPlayers[PLAYER_THREE].itemBoxY = 0xB8;
-        hudPlayers[PLAYER_FOUR].itemBoxY = 0xB8;
+        playerHUD[PLAYER_ONE].itemBoxY = 0xC8;
+        playerHUD[PLAYER_TWO].itemBoxY = 0xC8;
+        playerHUD[PLAYER_THREE].itemBoxY = 0xB8;
+        playerHUD[PLAYER_FOUR].itemBoxY = 0xB8;
     }
 
-    hudPlayers[PLAYER_ONE].rankScaling = hudPlayers[PLAYER_TWO].rankScaling = hudPlayers[PLAYER_THREE].rankScaling = hudPlayers[PLAYER_FOUR].rankScaling = 0.5f;
+    playerHUD[PLAYER_ONE].rankScaling = playerHUD[PLAYER_TWO].rankScaling = playerHUD[PLAYER_THREE].rankScaling = playerHUD[PLAYER_FOUR].rankScaling = 0.5f;
 
-    hudPlayers[PLAYER_ONE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
-    hudPlayers[PLAYER_TWO].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
-    hudPlayers[PLAYER_THREE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[2];
-    hudPlayers[PLAYER_FOUR].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[3];
+    playerHUD[PLAYER_ONE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[0];
+    playerHUD[PLAYER_TWO].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[1];
+    playerHUD[PLAYER_THREE].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[2];
+    playerHUD[PLAYER_FOUR].stagingPosition = (s16) gGPCurrentRaceRankByPlayerId[3];
 
     init_item_window(gItemWindowObjectByPlayerId[0]);
     init_item_window(gItemWindowObjectByPlayerId[1]);
     init_item_window(gItemWindowObjectByPlayerId[2]);
     init_item_window(gItemWindowObjectByPlayerId[3]);
 
-    hudPlayers[PLAYER_ONE].unknownScaling = hudPlayers[PLAYER_TWO].unknownScaling = hudPlayers[PLAYER_THREE].unknownScaling = hudPlayers[PLAYER_FOUR].unknownScaling = 1.5f;
+    playerHUD[PLAYER_ONE].unknownScaling = playerHUD[PLAYER_TWO].unknownScaling = playerHUD[PLAYER_THREE].unknownScaling = playerHUD[PLAYER_FOUR].unknownScaling = 1.5f;
 
     D_8018D158 = (s32) gPlayerCount;
     D_8018D3C4 = 0x00000014;

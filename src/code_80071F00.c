@@ -98,7 +98,7 @@ s32 find_unused_obj_index(s32* arg0) {
     s32 temp_v0;
     s32 temp_v1;
 
-    temp_v1 = sizeObjectList;
+    temp_v1 = objectListSize;
     temp_v0 = 0; do
     {
         ++temp_v1;
@@ -113,7 +113,7 @@ s32 find_unused_obj_index(s32* arg0) {
     gObjectList[temp_v1].unk_0CA = 1;
 
     *arg0 = temp_v1;
-    sizeObjectList = temp_v1;
+    objectListSize = temp_v1;
     return temp_v1;
 }
 
@@ -437,7 +437,7 @@ void func_800729EC(s32 objectIndex) {
 
     if (gCurrentCourseId != COURSE_YOSHI_VALLEY) {
         for (i = 0; i < gPlayerCount; i++) {
-                hudPlayers[i].unk_81 = temp_v1;
+                playerHUD[i].unk_81 = temp_v1;
         }
     }
     func_8005AB20();
@@ -3691,12 +3691,12 @@ void func_8007AA44(s32 playerId) {
 void func_8007ABFC(s32 playerId, bool arg1) {
     s32 itemWindow;
 
-    if (hudPlayers[playerId].raceCompleteBool == FALSE) {
+    if (playerHUD[playerId].raceCompleteBool == FALSE) {
         itemWindow = gItemWindowObjectByPlayerId[playerId];
         if (func_80072354(itemWindow, 4) != 0) {
             init_object(itemWindow, 0);
             if (arg1 != 0) {
-                hudPlayers[playerId].itemOverride = arg1;
+                playerHUD[playerId].itemOverride = arg1;
             }
         }
         func_800C9060(playerId, 0x19008406U);
@@ -3789,9 +3789,9 @@ s16 func_8007AFB0(s32 objectIndex, s32 arg1) {
 
     randomItem = gen_random_item_human(gLapCountByPlayerId[arg1], gGPCurrentRaceRankByPlayerId[arg1]);
     
-    if (hudPlayers[arg1].itemOverride != 0) {
-        randomItem = (s16) hudPlayers[arg1].itemOverride;
-        hudPlayers[arg1].itemOverride = 0;
+    if (playerHUD[arg1].itemOverride != 0) {
+        randomItem = (s16) playerHUD[arg1].itemOverride;
+        playerHUD[arg1].itemOverride = 0;
     }
 
     func_800729B4(objectIndex, (s32) randomItem);
@@ -3916,25 +3916,25 @@ void func_8007B34C(s32 playerId) {
         break;
     case 2:
         if (gActiveScreenMode == 0) {
-            s16_step_up_towards(&hudPlayers[playerId].slideItemBoxY, 0x0040, 4);
-            if (hudPlayers[playerId].slideItemBoxY == 0x0040) {
+            s16_step_up_towards(&playerHUD[playerId].slideItemBoxY, 0x0040, 4);
+            if (playerHUD[playerId].slideItemBoxY == 0x0040) {
                 func_80072488(temp_s0);
             }
         } else if (gActiveScreenMode == 3) {
             if ((playerId == 0) || (playerId == 2)) {
-                s16_step_up_towards(&hudPlayers[playerId].slideItemBoxX, 0x0080, 8);
-                if (hudPlayers[playerId].slideItemBoxX == 0x0080) {
+                s16_step_up_towards(&playerHUD[playerId].slideItemBoxX, 0x0080, 8);
+                if (playerHUD[playerId].slideItemBoxX == 0x0080) {
                     func_80072488(temp_s0);
                 }
             } else {
-                s16_step_down_towards(&hudPlayers[playerId].slideItemBoxX, -0x0080, 8);
-                if (hudPlayers[playerId].slideItemBoxX == -0x0080) {
+                s16_step_down_towards(&playerHUD[playerId].slideItemBoxX, -0x0080, 8);
+                if (playerHUD[playerId].slideItemBoxX == -0x0080) {
                     func_80072488(temp_s0);
                 }
             }
         } else {
-            s16_step_up_towards(&hudPlayers[playerId].slideItemBoxX, 0x0080, 8);
-            if (hudPlayers[playerId].slideItemBoxX == 0x0080) {
+            s16_step_up_towards(&playerHUD[playerId].slideItemBoxX, 0x0080, 8);
+            if (playerHUD[playerId].slideItemBoxX == 0x0080) {
                 func_80072488(temp_s0);
             }
         }
@@ -3970,22 +3970,22 @@ void func_8007B34C(s32 playerId) {
         break;
     case 11:
         if (gActiveScreenMode == 0) {
-            if (s16_step_down_towards(&hudPlayers[playerId].slideItemBoxY, 0, 4) != 0) {
+            if (s16_step_down_towards(&playerHUD[playerId].slideItemBoxY, 0, 4) != 0) {
                 func_80072488(temp_s0);
             }
         } else if (gActiveScreenMode == 3) {
             if ((playerId == 0) || (playerId == 2)) {
-                s16_step_down_towards(&hudPlayers[playerId].slideItemBoxX, 0, 8);
-                if (hudPlayers[playerId].slideItemBoxX == 0) {
+                s16_step_down_towards(&playerHUD[playerId].slideItemBoxX, 0, 8);
+                if (playerHUD[playerId].slideItemBoxX == 0) {
                     func_80072488(temp_s0);
                 }
             } else {
-                s16_step_up_towards(&hudPlayers[playerId].slideItemBoxX, 0, 8);
-                if (hudPlayers[playerId].slideItemBoxX == 0) {
+                s16_step_up_towards(&playerHUD[playerId].slideItemBoxX, 0, 8);
+                if (playerHUD[playerId].slideItemBoxX == 0) {
                     func_80072488(temp_s0);
                 }
             }
-        } else if (s16_step_down_towards(&hudPlayers[playerId].slideItemBoxX, 0, 8) != 0) {
+        } else if (s16_step_down_towards(&playerHUD[playerId].slideItemBoxX, 0, 8) != 0) {
             func_80072488(temp_s0);
         }
         break;

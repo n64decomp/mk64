@@ -595,7 +595,7 @@ glabel gObjectList
 glabel D_80183D58
 .skip 4
 
-glabel sizeObjectList
+glabel objectListSize
 .skip 4
 
 glabel D_80183D60
@@ -744,9 +744,9 @@ glabel D_8018C970
 .skip 256
 
 # some hud related list begin
-# hudPlayers should be of size 528 (0x84 * 0x4)
+# playerHUD should be of size 528 (0x84 * 0x4)
 # D_8018CA74 through D_8018CC7D are all fake
-glabel hudPlayers
+glabel playerHUD
 .skip 4
 
 glabel D_8018CA74

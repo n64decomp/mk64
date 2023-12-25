@@ -190,7 +190,7 @@ extern Collision D_8018C0B0[];
 
 /**
  * indexObjectList1, indexObjectList2, indexObjectList3, and indexObjectList4 are all lists of indices in gObjectList.
- * init_index_object_list initializes them in such a way that the indicies in each list are not adjacent.
+ * init_object_list_index initializes them in such a way that the indicies in each list are not adjacent.
  * First indexObjectList1 gets an unused index, then indexObjectList2, then indexObjectList3, then indexObjectList4, and then it loops.
  * 
  * The objects found at the indices in each list appears to be course dependent
