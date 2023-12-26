@@ -68,9 +68,6 @@ extern StaffGhost *d_mario_raceway_staff_ghost;
 extern StaffGhost *d_royal_raceway_staff_ghost;
 extern StaffGhost *d_luigi_raceway_staff_ghost;
 
-extern s32 D_80164394;
-extern s32 D_80164398;
-
 void func_80004EF0(void) {
     D_80162DA4 = (u32 *) &D_802BFB80[0][2][3];
     osInvalDCache(&D_80162DA4[0], 0x4000);
@@ -542,10 +539,10 @@ void func_80005B18(void) {
 
 void func_80005E6C(void) {
     if ((gModeSelection == TIME_TRIALS) && (gModeSelection == TIME_TRIALS) && (gActiveScreenMode == SCREEN_MODE_1P)) {
-        if ((D_80162DD8 == 0) && (D_80164394 != 3)) {
+        if ((D_80162DD8 == 0) && (gLapCountByPlayerId[1] != 3)) {
             func_800057DC(); //3
         }
-        if ((D_80162DD6 == 0) && (D_80164398 != 3)) {
+        if ((D_80162DD6 == 0) && (gLapCountByPlayerId[2] != 3)) {
             func_8000561C(); //2
         }
         if ((gPlayerOne->type & PLAYER_CINEMATIC_MODE) != PLAYER_CINEMATIC_MODE) {

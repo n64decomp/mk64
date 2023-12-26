@@ -10,7 +10,9 @@
 #define NUM_TRAINS                2
 #define LOCOMOTIVE_ONLY           0
 
-#define NUM_PADDLE_WHEEL_BOATS 1
+// It seems like there's room for 2 Ferries, but only 1 is ever active
+#define NUM_ACTIVE_PADDLE_WHEEL_BOATS 1
+#define NUM_PADDLE_WHEEL_BOATS 2
 
 #define NUM_RACE_BOX_TRUCKS    7
 #define NUM_RACE_SCHOOL_BUSES  7

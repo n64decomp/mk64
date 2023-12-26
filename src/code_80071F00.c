@@ -1753,8 +1753,6 @@ void func_80075B84(s32 objectIndex) {
     func_8008BF18(objectIndex);
 }
 
-extern s32 D_801637E8;
-extern s32 D_80163814;
 extern s16 D_8016578C;
 extern s16 D_80165790;
 
@@ -1770,7 +1768,7 @@ void func_80075CA8(void) {
     if (D_80165790 != 0) {
         D_80165790 -= 1;
     }
-    if ((D_801637E8 != 0) || (D_8016578C != 0)) {
+    if ((gFerries[0].someFlags != 0) || (D_8016578C != 0)) {
         count = 0;
         for (i = 0; i < 128; i++) {
             temp_a0 = D_8018C3F0[i];
@@ -1789,7 +1787,7 @@ void func_80075CA8(void) {
             D_8016578C = 100;
         }
     }
-    if ((D_80163814 != 0) || (D_80165790 != 0)) {
+    if ((gFerries[1].someFlags != 0) || (D_80165790 != 0)) {
         count = 0;
         for (i = 0; i < 128; i++) {
             temp_a0 = D_8018C630[i];

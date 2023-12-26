@@ -35,9 +35,182 @@ s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;
 s16 D_80162EB0; // Possibly a float.
 s16 D_80162EB2; // possibly [3]
-s16 code_80005FD0_pad[2];
 
 uintptr_t *D_80162EB8[20];
+
+// more padding?
+s32 D_80162F08[2];
+
+s16 D_80162F10[30];
+s16 D_80162F50[30];
+
+// padding, seemingly?
+s32 D_80162F90[4];
+
+Vec3f D_80162FA0;
+Vec3f D_80162FB0;
+Vec3f D_80162FC0;
+s16 D_80162FCC;
+s16 D_80162FCE;
+s16 D_80162FD0;
+f32 gCourseCompletionPercentByRank[8];
+/*
+The size of many of these arrays is weird. Based on their usage, they would only need
+to be 8 entries long (enough for each player). But some are 10 or even 12 long.
+Its plausible that this is just some decompilation artifact?
+Or maybe at some point in development they had plans for more players?
+*/
+s16 D_80162FF8[12];
+s16 D_80163010[12];
+f32 D_80163028[10];
+s16 D_80163050[12];
+f32 D_80163068[10];
+f32 D_80163090[10];
+s32 D_801630B8[10];
+s16 D_801630E0;
+s16 D_801630E2;
+s16 D_801630E8[10];
+s16 D_801630FC;
+s32 D_80163100[10];
+s32 D_80163128[10];
+s32 D_80163150[10];
+f32 D_80163178[10];
+f32 D_801631A0[10];
+s16 D_801631C8;
+s32 D_801631CC;
+TrackWaypoint *D_801631D0;
+TrackWaypoint *D_801631D4;
+s16 *D_801631D8;
+u16 *D_801631DC;
+u16 D_801631E0[12];
+s16 D_801631F8[10];
+f32 D_8016320C;
+f32 D_80163210[10];
+s32 D_80163238;
+s16 D_80163240[12];
+u16 D_80163258[12];
+u16 D_80163270[12];
+s32 D_80163288[10];
+// Exact pointer type unknown
+// Maybe PathNoY or TrackWaypoint?
+void *D_801632B0;
+s16 D_801632B8[12];
+s16 D_801632D0[12];
+u16 D_801632E8[12];
+s16 D_80163300[12];
+u16 D_80163318[12];
+u16 D_80163330[10];
+u16 D_80163344[2];
+u16 D_80163348[2];
+u16 D_8016334C[2];
+s16 D_80163350[12];
+s32 D_80163368[4];
+s32 D_80163378;
+s32 D_8016337C;
+s16 D_80163380[12];
+s16 D_80163398[12];
+s16 D_801633B0[12];
+s16 D_801633C8[12];
+s16 D_801633E0[12];
+s16 D_801633F8[12];
+s16 D_80163410[4];
+f32 D_80163418[4];
+f32 D_80163428[4];
+f32 D_80163438[4];
+s32 D_80163448;
+f32 D_8016344C;
+f32 D_80163450[10];
+s16 D_80163478;
+s16 D_8016347A;
+s16 D_8016347C;
+s16 D_8016347E;
+s32 D_80163480;
+s32 D_80163484;
+s32 D_80163488;
+s16 D_8016348C;
+s16 D_80163490[12];
+s16 D_801634A8[12];
+s16 D_801634C0[12];
+s16 D_801634D8[10];
+s16 D_801634EC;
+s32 D_801634F0;
+s32 D_801634F4;
+Test D_801634F8[10];
+PathNoY *D_80163598;
+s32 D_8016359C;
+TrainStuff sTrains[NUM_TRAINS];
+u16 isCrossingTriggeredByIndex[2];
+u16 D_801637BC[2];
+PaddleWheelBoatStuff gFerries[NUM_PADDLE_WHEEL_BOATS];
+VehicleStuff gBoxTruckList[NUM_RACE_BOX_TRUCKS];
+VehicleStuff gSchoolBusList[NUM_RACE_SCHOOL_BUSES];
+VehicleStuff gTankerTruckList[NUM_RACE_TANKER_TRUCKS];
+VehicleStuff gCarList[NUM_RACE_CARS];
+s32 D_80163DD8[4];
+BombKart gBombKarts[NUM_BOMB_KARTS_MAX];
+Collision D_80164038[NUM_BOMB_KARTS_MAX];
+struct unexpiredActors gUnexpiredActorsList[8];
+D_801642D8_entry D_801642D8[8];
+s16 D_80164358;
+s16 D_8016435A;
+s16 D_8016435C;
+s16 gGPCurrentRacePlayerIdByRank[12]; // D_80164360
+s16 D_80164378[12];
+s32 gLapCountByPlayerId[10]; // D_80164390
+s32 gGPCurrentRaceRankByPlayerId[10]; // D_801643B8
+s32 D_801643E0[10];
+s32 D_80164408[10];
+u16 D_80164430;
+u16 gNearestWaypointByPlayerId[12];
+s32 D_80164450[10];
+s16 D_80164478[10];
+s32 D_8016448C;
+TrackWaypoint *D_80164490;
+f32 D_80164498[4];
+f32 gLapCompletionPercentByPlayerId[10]; // D_801644A8
+f32 gCourseCompletionPercentByPlayerId[10]; // D_801644D0
+s16 D_801644F8[12];
+f32 D_80164510[10];
+s16 D_80164538[12];
+TrackWaypoint *D_80164550[4];
+TrackWaypoint *D_80164560[4];
+TrackWaypoint *D_80164570[4];
+s16 *D_80164580[4];
+s16 *D_80164590[4];
+s16 *D_801645A0[4];
+u16 gPathIndexByPlayerId[12]; // D_801645B0
+u16 gWaypointCountByPathIndex[4]; // D_801645C8
+s32 D_801645D0[4];
+s16 *D_801645E0;
+s32 D_801645E8[4];
+f32 D_801645F8[4];
+s32 D_80164608[4];
+f32 D_80164618[4];
+s32 D_80164628[4];
+f32 D_80164638[4];
+f32 D_80164648[4];
+f32 D_80164658[4];
+s16 gNearestWaypointByCameraId[4];
+s16 D_80164670[4];
+s16 D_80164678[4];
+s16 D_80164680[4];
+f32 D_80164688[4];
+f32 D_80164698;
+f32 D_8016469C;
+f32 D_801646A0;
+// start padding
+s32 D_801646A4;
+s32 D_801646A8;
+s32 D_801646AC;
+s32 D_801646B0;
+s32 D_801646B4;
+s32 D_801646B8;
+s32 D_801646BC;
+// end padding
+s16 D_801646C0[4];
+u32 D_801646C8;
+s16 D_801646CC;
+UnkStruct_46D0 D_801646D0[4];
 
 // Strings, presented by google translate!
 // Note that these are EUC-JP encoded, see:
@@ -375,47 +548,6 @@ char *D_800ECF3C = "４位の人終了\n";
 // OGA commendation move end
 char *D_800ECF4C = "OGA 表彰 move 終了\n";
 char *D_800ECF60 = "OGAWA DEBUG DRAW\n";
-
-/*    end of bss_Main.s imported. Commented out cause need everything prior too.
-    s16 *D_801645E0;
-    s16 D_801645E4_pad[3];
-
-    f32 D_801645E8[4];
-
-    f32 D_801645F8[4];
-
-    s32 D_80164608[4];
-
-    f32 D_80164618[4];
-
-    f32 D_80164628[4];
-
-    f32 D_80164638[4];
-
-    f32 D_80164648[4];
-    f32 D_80164658[4];
-
-    s16 gNearestWaypointByCameraId[4];
-
-    s16 D_80164670[4];
-    s16 D_80164678[4];
-    s16 D_80164680[4];
-    f32 D_80164688[4];
-    f32 D_80164698;
-    f32 D_8016469C;
-    f32 D_801646A0;
-
-    s32 D_801646A4_pad[7];
-
-    s16 D_801646C0[2];
-
-    s32 D_801646C8;
-
-    s16 D_801646CC;
-    //.skip 4
-
-    UnkStruct_46D0 D_801646D0[4];
-*/
 
 s16 func_80005FD0(Vec3f arg0, Vec3f arg1) {
     s16 temp_ret;
@@ -1173,11 +1305,11 @@ s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
             }
             return 1;
         }
-        temp_v0 = D_80164450[arg0].unk2;
-        var_a1_3 = temp_v0 - D_80164450[D_80163478].unk2;
-        temp_t5_2 = *(&D_801643BA + (D_80163478 * 4));
+        temp_v0 = D_80164450[arg0 + 1];
+        var_a1_3 = temp_v0 - D_80164450[D_80163478 + 1];
+        temp_t5_2 = gGPCurrentRaceRankByPlayerId[D_80163478];
         if ((((s32) (*gWaypointCountByPathIndex * 2) / 3) < var_a1_3) && (temp_t5_2 >= 6)) {
-            var_a1_3 = temp_v0 - D_80164450[*(&D_80164376 + (temp_t5_2 * 2))].unk2;
+            var_a1_3 = temp_v0 - D_80164450[gLapCountByPlayerId[temp_t5_2 - 6]].unk2;
         }
         if (var_a1_3 < 0) {
             var_a1_3 = -var_a1_3;
@@ -3627,7 +3759,7 @@ void func_8000F2DC(void) {
     D_80163368[3] = (s32) ptr->unk6;
     
     temp = ptr->unk8;
-    D_80163598 = (uintptr_t *) get_next_available_memory_addr(temp * 4);
+    D_80163598 = get_next_available_memory_addr(temp * 4);
 
     // Podium ceremony appears to allocate 1 * 8 bytes of data. Which would be aligned to 0x10.
     for (i = 0; i < 4; i++) {
@@ -3643,7 +3775,7 @@ void func_8000F2DC(void) {
     D_801631D0 = D_80164560[0];
     D_801631D4 = D_80164570[0];
     D_801631D8 = D_80164580[0];
-    D_801631DC = *D_80164590;
+    D_801631DC = D_80164590[0];
     D_801645E0 = D_801645A0[0];
 
     // zero allocated memory?
@@ -4458,7 +4590,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80011B14.s")
 //generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
 //extern ? D_80162EB8;
 extern s16 D_801630E8[];
-extern s32 *D_801632B0;
+extern void *D_801632B0;
 
 void func_80011D48(s32 playerIndex, Player *player) {
     //s32 temp_a2;
@@ -4474,8 +4606,8 @@ void func_80011D48(s32 playerIndex, Player *player) {
     D_801632B0 = D_801632D0[playerIndex] + D_80162EB8[gCurrentCourseId];
     test = gNearestWaypointByPlayerId[playerIndex];
    // temp_a2 = temp_t3;
-    if (test >= (u16)*D_801632B0) {
-        switch (*D_801632B0) {
+    if (test >= (*(u16*)D_801632B0)) {
+        switch (*(u16*)D_801632B0) {
         case 1:
             player->effects &= ~0x10;
             D_801630E8[playerIndex] = 0;
@@ -4555,7 +4687,7 @@ void func_80011EC0(s32 arg0, Player *player, s32 arg2, s32 arg3) {
 
 void func_800120C8(void) {
     s32 i;
-    s16 *temp;
+    PathNoY *temp;
     TrackWaypoint *waypoint = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(
         gSegmentTable[SEGMENT_NUMBER2(d_course_kalimari_desert_track_unknown_waypoints)]
                     + SEGMENT_OFFSET(d_course_kalimari_desert_track_unknown_waypoints));
@@ -4566,9 +4698,9 @@ void func_800120C8(void) {
         }
     }
 
-    temp = (s16 *)D_80163598;
+    temp = D_80163598;
     D_8016359C = func_8001168C(temp, waypoint, i - 1);
-    D_80162EB0 = func_802AE1C0(temp[0], 2000.0f, temp[1]);
+    D_80162EB0 = func_802AE1C0(temp[0].x, 2000.0f, temp[0].z);
 }
 
 void func_80012190(void) {
@@ -4664,7 +4796,7 @@ void init_course_vehicles(void) {
         }
         break;
     case COURSE_DK_JUNGLE:
-        for(loopIndex = 0; loopIndex < NUM_PADDLE_WHEEL_BOATS; loopIndex++) {
+        for(loopIndex = 0; loopIndex < NUM_ACTIVE_PADDLE_WHEEL_BOATS; loopIndex++) {
             tempPaddleWheelBoat = &gFerries[loopIndex];
             if(tempPaddleWheelBoat->isActive == 1) {
                 origXPos = tempPaddleWheelBoat->position[0];
@@ -4714,10 +4846,6 @@ void func_80012780(TrainCarStuff *trainCar, s16 *arg1, u16 arg2) {
     trainCar->velocity[2] = 0.0f;
 }
 
-// This is really Vec2s D_80163598[465] but that does not match.
-// Likely because this is a shared pointer between courses.
-//extern uintptr_t *D_80163598;
-
 /**
  * Set waypoint spawn locations for each rolling stock
  * The railroad has 465 waypoints
@@ -4725,7 +4853,7 @@ void func_80012780(TrainCarStuff *trainCar, s16 *arg1, u16 arg2) {
 void func_800127E0(void) {
     u16 waypointOffset;
     TrainCarStuff *ptr1;
-    s32 *ptr2;
+    PathNoY *ptr2;
     s32 i;
     s32 j;
 
@@ -4739,19 +4867,19 @@ void func_800127E0(void) {
         for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) {
             waypointOffset += 4;
             ptr1 = &sTrains[i].passengerCars[j];
-            ptr2 = &D_80163598[waypointOffset];      
+            ptr2 = &D_80163598[waypointOffset];
             func_80012780(ptr1, ptr2, waypointOffset);
         }
         // Smaller offset for the tender
         waypointOffset += 3;
         ptr1 = &sTrains[i].tender;
-        ptr2 = &D_80163598[waypointOffset];      
+        ptr2 = &D_80163598[waypointOffset];
         func_80012780(ptr1, ptr2, waypointOffset);
         
         waypointOffset += 4;
         ptr1 = &sTrains[i].locomotive;
         ptr2 = &D_80163598[waypointOffset];
-        func_80012780(&sTrains[i].locomotive, ptr2, waypointOffset);
+        func_80012780(ptr1, ptr2, waypointOffset);
         
         // Only use locomotive unless overwritten below.
         sTrains[i].numCars = LOCOMOTIVE_ONLY;
@@ -4967,7 +5095,7 @@ void func_800131DC(s32 playerId) {
            || (func_800061DC(gPlayers[playerId].pos, 1000.0f, 0))) {
 
             if ((isCrossingTriggeredByIndex[1] == 1) 
-                && ((D_801637BE) > 240)) {
+                && ((D_801637BC[1]) > 240)) {
             
                 if ((D_80162FCE > 176) && (D_80162FCE < 182)) {
                     D_801634D8[playerId] = 1;
@@ -4985,18 +5113,15 @@ void func_800131DC(s32 playerId) {
 void func_800132F4(void) {
     PaddleWheelBoatStuff *var_a1;
     s32 i;
-    TrackWaypoint *temp_a2;
+    PathNoY *temp_a2;
     u16 temp;
-    for (i = 0; i < NUM_PADDLE_WHEEL_BOATS; i++) {
+    for (i = 0; i < NUM_ACTIVE_PADDLE_WHEEL_BOATS; i++) {
         temp = i * 0xB4;
         var_a1 = &gFerries[i];
         temp_a2 = &D_80163598[temp];
-        var_a1->position[0] = (f32) temp_a2->posX;
-        var_a1->position[1] = (f32) D_80162EB2;
-        // Shouldn't this be posZ? Something doesn't seem right here.
-        // Unless temp_a2 has been converted to X,Z with no Y. In-that case our
-        // struct is wrong or the member name is wrong.
-        var_a1->position[2] = (f32) temp_a2->posY;
+        var_a1->position[0] = temp_a2->x;
+        var_a1->position[1] = D_80162EB2;
+        var_a1->position[2] = temp_a2->z;
         var_a1->waypointIndex = i * 0xB4;
         var_a1->actorIndex = -1;
         
@@ -5008,8 +5133,6 @@ void func_800132F4(void) {
         var_a1->velocity[0] = 0.0f;
         var_a1->velocity[1] = 0.0f;
         var_a1->velocity[2] = 0.0f;
-        // fakematch
-        temp_a2 = &D_80163598[temp];
         var_a1->someMultiplier = 1.6666666f;
         var_a1->rotY = 0;
     }
@@ -5018,7 +5141,7 @@ void func_800132F4(void) {
 
 void func_800133C4(void) {
     PaddleWheelBoatStuff *ferry;
-    TrackWaypoint *waypoint;
+    PathNoY *waypoint;
     s32 i;
     struct Actor *ferryActor;
     f32 temp_f26;
@@ -5033,7 +5156,7 @@ void func_800133C4(void) {
     Vec3f sp78;
     s32 pad2;
     D_801630FC += 1;
-    for (i = 0; i < NUM_PADDLE_WHEEL_BOATS; i++) {
+    for (i = 0; i < NUM_ACTIVE_PADDLE_WHEEL_BOATS; i++) {
         ferry = &gFerries[i];
         if (ferry->isActive == 1) {
             temp_f26 = ferry->position[0];
@@ -5063,10 +5186,10 @@ void func_800133C4(void) {
             sp94[0] = temp_f26;
             sp94[1] = temp_f28;
             sp94[2] = temp_f30;
-            waypoint = (TrackWaypoint *) &D_80163598[(ferry->waypointIndex + 5) % D_8016359C];
-            sp88[0] = (f32) waypoint->posX;
+            waypoint = &D_80163598[(ferry->waypointIndex + 5) % D_8016359C];
+            sp88[0] = (f32) waypoint->x;
             sp88[1] = (f32) D_80162EB0;
-            sp88[2] = (f32) waypoint->posY;
+            sp88[2] = (f32) waypoint->z;
             temp_a1 = func_80005FD0(sp94, sp88);
             temp = temp_a1 - ferry->rotY;
             var_v1 = temp;
@@ -5130,7 +5253,7 @@ void func_80013854(Player *player) {
         playerX = player->pos[0];
         playerY = player->pos[1];
         playerZ = player->pos[2];
-        for (someIndex = 0; someIndex < NUM_PADDLE_WHEEL_BOATS; someIndex++) {
+        for (someIndex = 0; someIndex < NUM_ACTIVE_PADDLE_WHEEL_BOATS; someIndex++) {
             tempPaddleWheelBoat = &gFerries[someIndex];
             if (tempPaddleWheelBoat->isActive == 1) {
                 x_diff = playerX - tempPaddleWheelBoat->position[0];
@@ -7619,8 +7742,6 @@ void func_8001A518(s32 arg0, s32 arg1, s32 arg2) {
         break;
     }
 }
-
-extern u32 D_801646C8;
 
 void func_8001A588(u16 *localD_80152300, Camera *camera, Player *player, s8 index, s32 cameraIndex) {
     s32 var_v1;
