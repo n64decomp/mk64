@@ -27,10 +27,36 @@ s8 gRenderingFramebufferByPlayer[] = {
 
 s32 gPlayersToRenderCount = 0;
 
+
 // Can't find anything that actually references these...
 UNUSED void *D_800DDB5C[3] = {
     gFramebuffer0, gFramebuffer1, gFramebuffer2
 };
+
+s16 D_80164AB0[8];
+s16 D_80164AC0[8];
+Player *D_80164AD0[8];
+s16 gMatrixEffectCount;
+s32 D_80164AF4[3];
+struct_D_802F1F80 *gPlayerPalette;
+u8 *D_80164B08;
+u8 *D_80164B0C;
+u16 gPlayerRedEffect[8];
+u16 gPlayerGreenEffect[8];
+u16 gPlayerBlueEffect[8];
+u16 gPlayerCyanEffect[8];
+u16 gPlayerMagentaEffect[8];
+u16 gPlayerYellowEffect[8];
+//if it's also a color effect like before
+UNUSED u16 gPlayerWhiteEffect[8];
+s32 D_80164B80[296];
+s16 D_80165020[40];
+Vec3f D_80165070[8];
+s16 D_801650D0[4][8];
+s16 D_80165110[4][8];
+s16 D_80165150[4][8];
+s16 D_80165190[4][8];
+s16 D_801651D0[4][8];
 
 void func_8001F980(s32 *arg0, s32 *arg1) {
     if ((gDemoMode == 1) || (D_80164A28 != 0) || (D_8015F894 != 0)) {
@@ -243,8 +269,8 @@ void func_80020524(void) {
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
 
-    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164ABE[gPlayersToRenderCount]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
-               D_802BFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164ABE[gPlayersToRenderCount]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
+    mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
+               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
 }
 
 void func_8002088C(void) {
@@ -268,8 +294,8 @@ void func_8002088C(void) {
                    D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164ABE[gPlayersToRenderCount]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
-               D_802BFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164ABE[gPlayersToRenderCount]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
+    mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
+               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
 }
 
 void func_80020BF4(void) {
@@ -287,8 +313,8 @@ void func_80020BF4(void) {
                    D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164ABE[gPlayersToRenderCount] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
-               D_802BFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164ABE[gPlayersToRenderCount] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
+    mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
+               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
 }
 
 void func_80020F1C(void) {
@@ -306,8 +332,8 @@ void func_80020F1C(void) {
                    D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164ABE[gPlayersToRenderCount] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
-               D_802BFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164ABE[gPlayersToRenderCount] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
+    mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
+               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
 }
 
 void try_render_player(Player *player, s8 playerId, s8 arg2) {

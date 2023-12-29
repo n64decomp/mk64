@@ -21,18 +21,8 @@ extern Mtx D_80183D60[];
 
 extern struct_D_8018CE10 D_8018CE10[];
 
-extern Vec3f D_80165070[];
-
 extern f32  D_80164510[];
 extern s16  gMatrixEffectCount;
-
-extern s16  D_80165020[];
-extern s16  D_801650D0[4][8];
-
-extern s16  D_80165110[4][8];
-extern s16  D_80165150[4][8];
-extern s16  D_80165190[4][8];
-extern s16  D_801651D0[4][8];
 
 extern f32  D_80165210[];
 extern f32  D_80165230[];

@@ -4406,10 +4406,10 @@ Variable Name | Memory Address
 [D_80164A90](@ref D_80164A90) | 0x80164A90
 [D_80164AA0](@ref D_80164AA0) | 0x80164AA0
 [D_80164AB0](@ref D_80164AB0) | 0x80164AB0
-[D_80164ABE](@ref D_80164ABE) | 0x80164ABE
 [D_80164AC0](@ref D_80164AC0) | 0x80164AC0
 [D_80164AD0](@ref D_80164AD0) | 0x80164AD0
 [gMatrixEffectCount](@ref gMatrixEffectCount) | 0x80164AF0
+[D_80164AF4](@ref D_80164AF4) | 0x80164AF8
 [gPlayerPalette](@ref gPlayerPalette) | 0x80164B04
 [D_80164B08](@ref D_80164B08) | 0x80164B08
 [D_80164B0C](@ref D_80164B0C) | 0x80164B0C
@@ -4419,6 +4419,7 @@ Variable Name | Memory Address
 [gPlayerCyanEffect](@ref gPlayerCyanEffect) | 0x80164B40
 [gPlayerMagentaEffect](@ref gPlayerMagentaEffect) | 0x80164B50
 [gPlayerYellowEffect](@ref gPlayerYellowEffect) | 0x80164B60
+[gPlayerWhiteEffect](@ref gPlayerWhiteEffect) | 0x80164B70
 [D_80164B80](@ref D_80164B80) | 0x80164B80
 [D_80165020](@ref D_80165020) | 0x80165020
 [D_80165070](@ref D_80165070) | 0x80165070
@@ -4427,7 +4428,6 @@ Variable Name | Memory Address
 [D_80165150](@ref D_80165150) | 0x80165150
 [D_80165190](@ref D_80165190) | 0x80165190
 [D_801651D0](@ref D_801651D0) | 0x801651D0
-[D_801651D1](@ref D_801651D1) | 0x801651D1
 [D_80165210](@ref D_80165210) | 0x80165210
 [D_80165230](@ref D_80165230) | 0x80165230
 [D_8016524C](@ref D_8016524C) | 0x8016524C
