@@ -6,7 +6,7 @@ var waypoints_8h =
     [ "D_801631D0", "waypoints_8h.html#a76902b248cceab4188595952d1e90fc6", null ],
     [ "D_801631D4", "waypoints_8h.html#a1db4e17c2dc006e5d26c295a309946bd", null ],
     [ "D_801631D8", "waypoints_8h.html#a6c27a1bef5465b0ad60305dae8002220", null ],
-    [ "D_801631DC", "waypoints_8h.html#acc4c35b457acb81d3218c6a01788150e", null ],
+    [ "D_801631DC", "waypoints_8h.html#a54e78a28d2754f25545e02dfa06eaf95", null ],
     [ "D_80163318", "waypoints_8h.html#a5397cd2f3412708bf4520d4bac4aee92", null ],
     [ "D_80163368", "waypoints_8h.html#ac3def14969f395c80c3789853c3f8ed9", null ],
     [ "D_80163448", "waypoints_8h.html#a3dce0c373d91f167acadd7823465c32e", null ],
