@@ -2484,13 +2484,13 @@ void func_8005D0FC(s32 arg0) {
             func_8005CB60(arg0, gLapCountByPlayerId[0]);
             break;
         case 1:
-            func_8005CB60(arg0, D_80164394);
+            func_8005CB60(arg0, gLapCountByPlayerId[1]);
             break;
         case 2:
-            func_8005CB60(arg0, D_80164398);
+            func_8005CB60(arg0, gLapCountByPlayerId[2]);
             break;
         case 3:
-            func_8005CB60(arg0, D_8016439C);
+            func_8005CB60(arg0, gLapCountByPlayerId[3]);
             break;
         }
     }

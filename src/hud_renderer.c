@@ -3736,12 +3736,12 @@ void func_80054414(s32 cameraId) {
     func_8004B72C(255, 255, 255, 255, 255, 255, 255);
     D_80183E80[0] = 0;
     D_80183E80[2] = 0x8000;
-    if ((D_801637E8 != 0) && (func_80041980(&D_801637C4, camera, 0x4000U) != 0)) {
+    if ((gFerries[0].someFlags != 0) && (func_80041980(gFerries[0].position, camera, 0x4000U) != 0)) {
         for (i = 0; i < D_8018C3F0_SIZE; i++) {
             func_80054324(D_8018C3F0[i], cameraId);
         }
     }
-    if ((D_80163814 != 0) && (func_80041980(&D_801637F0, camera, 0x4000U) != 0)) {
+    if ((gFerries[1].someFlags != 0) && (func_80041980(gFerries[1].position, camera, 0x4000U) != 0)) {
         for (i = 0; i < D_8018C630_SIZE; i++) {
             func_80054324(D_8018C630[i], cameraId);
         }

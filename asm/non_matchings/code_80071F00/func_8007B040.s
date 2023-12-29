@@ -15,13 +15,13 @@ glabel func_8007B040
 /* 07BC74 8007B074 1020000B */  beqz  $at, .L8007B0A4
 /* 07BC78 8007B078 320400FF */   andi  $a0, $s0, 0xff
 /* 07BC7C 8007B07C 00101080 */  sll   $v0, $s0, 2
-/* 07BC80 8007B080 3C048016 */  lui   $a0, %hi(D_80164392) # 0x8016
-/* 07BC84 8007B084 3C058016 */  lui   $a1, %hi(D_801643BA) # 0x8016
+/* 07BC80 8007B080 3C048016 */  lui   $a0, %hi(gLapCountByPlayerId + 0x2) # 0x8016
+/* 07BC84 8007B084 3C058016 */  lui   $a1, %hi(gGPCurrentRaceRankByPlayerId + 0x2) # 0x8016
 /* 07BC88 8007B088 00A22821 */  addu  $a1, $a1, $v0
 /* 07BC8C 8007B08C 00822021 */  addu  $a0, $a0, $v0
-/* 07BC90 8007B090 84844392 */  lh    $a0, %lo(D_80164392)($a0) # 0x4392($a0)
+/* 07BC90 8007B090 84844392 */  lh    $a0, %lo(gLapCountByPlayerId + 0x2)($a0) # 0x4392($a0)
 /* 07BC94 8007B094 0C01EBD0 */  jal   gen_random_item_human
-/* 07BC98 8007B098 84A543BA */   lh    $a1, %lo(D_801643BA)($a1) # 0x43ba($a1)
+/* 07BC98 8007B098 84A543BA */   lh    $a1, %lo(gGPCurrentRaceRankByPlayerId + 0x2)($a1) # 0x43ba($a1)
 /* 07BC9C 8007B09C 10000006 */  b     .L8007B0B8
 /* 07BCA0 8007B0A0 00401825 */   move  $v1, $v0
 .L8007B0A4:
