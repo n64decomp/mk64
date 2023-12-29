@@ -52,7 +52,7 @@ extern TrackWaypoint *D_801631D4;
 // Shadows values from D_80164580
 extern s16 *D_801631D8;
 // Shadows values from D_80164590
-extern u16 *D_801631DC;
+extern s16 *D_801631DC;
 // Shadowd values from gWaypointCountByPathIndex
 extern u16 D_80164430;
 // Shadows values from D_80164550
