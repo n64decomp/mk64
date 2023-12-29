@@ -245,7 +245,7 @@ var code__80057C60_8c =
     [ "D_8018D3F8", "code__80057C60_8c.html#a5b00cd60c5e1b9e90e2f8924c47cdf5c", null ],
     [ "gGPCurrentRaceCharacterIdByRank", "code__80057C60_8c.html#afe4aea7726db5cec0d9f9cc41c086895", null ],
     [ "gGPCurrentRacePlayerIdByRank", "code__80057C60_8c.html#adf1a010814a163e8727e3737c3a81b35", null ],
-    [ "gGPCurrentRaceRankByPlayerId", "code__80057C60_8c.html#a376783d0c0edf573f546c9794eee5258", null ],
+    [ "gGPCurrentRaceRankByPlayerId", "code__80057C60_8c.html#aaca9568fe63c9091e81fb4e67b14f529", null ],
     [ "gRaceFrameCounter", "code__80057C60_8c.html#a1ab400633b3d05faceec6f04e07639a3", null ],
     [ "playerHUD", "code__80057C60_8c.html#a73eb4e70ca2b26ae43523016c1e3c0c4", null ],
     [ "some_unused_data", "code__80057C60_8c.html#a704b06c0af22c4d89c287f9311e1f10b", null ]

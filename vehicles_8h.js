@@ -7,6 +7,7 @@ var vehicles_8h =
     [ "LOCOMOTIVE_ONLY", "vehicles_8h.html#a7bb7f90607adbbc2d74f3b248f820e09", null ],
     [ "NUM_1P_PASSENGER_CARS", "vehicles_8h.html#a180fece3a8e26cdf6c649546cfabbb62", null ],
     [ "NUM_2P_PASSENGER_CARS", "vehicles_8h.html#add2a8da8f18ab6c292bac6907059fe55", null ],
+    [ "NUM_ACTIVE_PADDLE_WHEEL_BOATS", "vehicles_8h.html#aadc918ca4fd1d63a595e14e462be8f6a", null ],
     [ "NUM_PADDLE_WHEEL_BOATS", "vehicles_8h.html#acb05d4b88a09604307082f07c3877156", null ],
     [ "NUM_PASSENGER_CAR_ENTRIES", "vehicles_8h.html#afb990fae40ce49abe1bcb6d21a09b9c0", null ],
     [ "NUM_RACE_BOX_TRUCKS", "vehicles_8h.html#afc115b89b5da7a7d1dacacb76d2ea106", null ],
