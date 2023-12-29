@@ -25,8 +25,11 @@ void func_8003CD98(Player*, Camera*, s8, s8);
 void func_8003D080(void);
 void func_8003DB5C(void);
 
+extern f32 D_80165210[];
+extern f32 D_80165230[];
+extern f32 D_8016524C;
+extern s16 D_80165270[];
 extern s16 D_80165560[];
 extern s16 D_80165340;
-
 
 #endif

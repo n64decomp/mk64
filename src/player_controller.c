@@ -17,6 +17,7 @@
 #include "code_8003DC40.h"
 #include "main.h"
 #include "camera.h"
+#include "spawn_players.h"
 
 extern s16 D_801633F8;
 extern s32 D_8018D168;

@@ -22,6 +22,12 @@
 #include "menus.h"
 #include "render_player.h"
 
+f32 D_80165210[8];
+f32 D_80165230[7];
+f32 D_8016524C;
+f32 D_80165250[8];
+s16 D_80165270[8];
+
 // arg4 is height? Or something like that?
 void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingColumn, f32 arg4, f32 arg5, u16 characterId, s16 playerType) {
     f32 ret;
