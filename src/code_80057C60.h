@@ -313,9 +313,6 @@ extern u8 *D_8018D4C8;
 extern u16 gPlayerBalloonStatus[8][3]; // D_8018D5F0
 extern s16 gPlayerBalloonCount[];      // D_8018D8C0
 
-extern s32   D_80164394;
-extern s32   D_80164398;
-extern s32   D_8016439C;
 extern f32   D_801652A0[];
 extern s32   D_801655C0;
 extern s32   D_801655F0;

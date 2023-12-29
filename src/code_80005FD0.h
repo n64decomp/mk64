@@ -15,25 +15,23 @@ struct struct_801642D8 {
 };
 
 struct unexpiredActors {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    u16 unkC;
-    u16 actorIndex;
-    s16 unk10;
-    // s16 compilerPadding;
-    u32 unk14;
-    s32 unk18;
-};
+    /* 0x00 */ s32 unk0;
+    /* 0x04 */ s32 unk4;
+    /* 0x08 */ s32 unk8;
+    /* 0x0C */ u16 unkC;
+    /* 0x0E */ u16 actorIndex;
+    /* 0x10 */ s16 unk10;
+    /* 0x12 */ // s16 compilerPadding;
+    /* 0x14 */ u32 unk14;
+    /* 0x18 */ s32 unk18;
+}; // size = 0x1C
 
 typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-} Test;
-
-extern Test D_801634F8[];
+    /* 0x00 */ f32 unk0;
+    /* 0x04 */ f32 unk4;
+    /* 0x08 */ f32 unk8;
+    /* 0x0C */ f32 unkC;
+} Test; // size = 0x10
 
 // Something related to CPU item usage
 typedef struct {
@@ -46,8 +44,6 @@ typedef struct {
     /* 0x0C */ s16 unk_0C;
     /* 0x0E */ s16 unk_0E;
 } D_801642D8_entry; // size = 0x10
-
-extern D_801642D8_entry D_801642D8[];
 
 typedef struct {
     s16 unk0;
@@ -243,8 +239,6 @@ void func_8001C3C4(s32);
 void func_8001C42C(void);
 
 /* This is where I'd put my static data, if I had any */
-// 0 or 1, only 1 when when in extra (mirror) mode
-extern s16 D_8016347A;
 
 // Suspected to be the "width" of each waypoint. See data_0DD0A0_1.s
 extern f32 D_800DCA4C[];
@@ -257,118 +251,158 @@ struct _struct_D_800DD9D0_0x10 {
     /* 0x08 */ u16 unk8;
     /* 0x0A */ char padA[6];
 };  // size 0x10
-extern uintptr_t *D_80163598;
 
 extern uintptr_t gCoursePathTable[20][4];
 extern uintptr_t D_800DC8D0[20][4];
 // An array of 21 items. The final element is for podium ceremony.
 extern struct _struct_D_800DD9D0_0x10 D_800DD9D0[];
+
+
+extern Collision D_80162E70;
+extern s16 D_80162EB0; // Possibly a float.
+extern s16 D_80162EB2; // possibly [3]
+extern uintptr_t *D_80162EB8[];
 extern s16 D_80162F10[];
 extern s16 D_80162F50[];
+extern Vec3f D_80162FA0;
 extern Vec3f D_80162FB0;
 extern Vec3f D_80162FC0;
+extern s16 D_80162FCC;
+extern s16 D_80162FCE;
+extern s16 D_80162FD0;
+extern f32 gCourseCompletionPercentByRank[]; // D_80162FD8
 extern s16 D_80162FF8[];
 extern s16 D_80163010[];
 extern f32 D_80163028[];
 extern s16 D_80163050[];
+extern f32 D_80163068[];
 extern f32 D_80163090[];
 extern s32 D_801630B8[];
+extern s16 D_801630E0;
+extern s16 D_801630E2;
 extern s16 D_801630E8[];
+extern s16 D_801630FC;
 extern s32 D_80163100[];
 extern s32 D_80163128[];
 extern s32 D_80163150[];
 extern f32 D_80163178[];
 extern f32 D_801631A0[];
+extern s16 D_801631C8;
 extern s32 D_801631CC;
+extern TrackWaypoint *D_801631D0;
+extern TrackWaypoint *D_801631D4;
+extern s16 *D_801631D8;
+extern u16 *D_801631DC;
+extern u16 D_801631E0[];
 extern s16 D_801631F8[];
+extern f32 D_8016320C;
+extern f32 D_80163210[];
+extern s32 D_80163238;
+extern s16 D_80163240[];
 extern u16 D_80163258[];
 extern u16 D_80163270[];
-extern f32 D_80163210[];
 extern s32 D_80163288[];
-extern u16 D_80163330[]; // static?
+// Exact pointer type unknown
+extern void *D_801632B0;
+extern s16 D_801632B8[];
+extern s16 D_801632D0[];
+extern u16 D_801632E8[];
+extern s16 D_80163300[];
+extern u16 D_80163318[];
+extern u16 D_80163330[];
 extern u16 D_80163344[];
+extern u16 D_80163348[];
 extern u16 D_8016334C[];
 extern s16 D_80163350[];
+extern s32 D_80163368[];
 extern s32 D_80163378;
+extern s32 D_8016337C;
 extern s16 D_80163380[];
 extern s16 D_80163398[];
 extern s16 D_801633B0[];
 extern s16 D_801633C8[];
+extern s16 D_801633E0[];
 extern s16 D_801633F8[];
+extern s16 D_80163410[];
+extern f32 D_80163418[];
+extern f32 D_80163428[];
+extern f32 D_80163438[];
+extern s32 D_80163448;
+extern f32 D_8016344C;
 extern f32 D_80163450[];
+extern s16 D_80163478;
+// 0 or 1, only 1 when when in extra (mirror) mode
+extern s16 D_8016347A;
 extern s16 D_8016347C;
 extern s16 D_8016347E;
 extern s32 D_80163480;
 extern s32 D_80163484;
+extern s32 D_80163488;
+extern s16 D_8016348C;
+extern s16 D_80163490[];
+extern s16 D_801634A8[];
 extern s16 D_801634C0[];
+extern s16 D_801634D8[];
 extern s16 D_801634EC;
 extern s32 D_801634F0;
 extern s32 D_801634F4;
+extern Test D_801634F8[];
+extern PathNoY *D_80163598;
+extern s32 D_8016359C;
+extern u16 isCrossingTriggeredByIndex[];
+extern u16 D_801637BC[];
+extern s32 D_80163DD8[];
+extern struct unexpiredActors gUnexpiredActorsList[];
+extern D_801642D8_entry D_801642D8[];
 extern s16 D_80164358;
 extern s16 D_8016435A;
 extern s16 D_8016435C;
+extern s16 gGPCurrentRacePlayerIdByRank[]; // D_80164360
+extern s16 D_80164378[];
+extern s32 gLapCountByPlayerId[]; // D_80164390
+extern s32 gGPCurrentRaceRankByPlayerId[]; // D_801643B8
+extern s32 D_801643E0[];
+extern s32 D_80164408[];
+extern u16 D_80164430;
+extern u16 gNearestWaypointByPlayerId[];
+extern s32 D_80164450[];
+extern s16 D_80164478[];
+extern s32 D_8016448C;
+extern f32 D_80164498[];
+extern f32 gLapCompletionPercentByPlayerId[]; // D_801644A8
+extern f32 gCourseCompletionPercentByPlayerId[]; // D_801644D0
+extern s16 D_801644F8[];
+extern f32 D_80164510[];
 extern s16 D_80164538[];
 extern s32 D_801645D0[];
 extern s32 D_801645E8[];
-extern s32 D_80164608[];
-extern s32 D_80164628[];
-extern f32 D_80164698;
-extern f32 D_8016469C;
-extern f32 D_801646A0;
-extern f32 D_800DCAA0[];
-
-
-// See bss_80005FD0.s
-extern Collision D_80162E70;
-extern s16 D_80162EB0;
-extern s16 D_80162FCC;
-extern f32 D_80162FA0[];
-extern f32 gCourseCompletionPercentByRank[8];     // D_80162FD8
-extern u16 D_80163348[];
-extern s16 D_80164378[];
-extern s32 D_801643E0[];
-extern struct unexpiredActors gUnexpiredActorsList[];
-extern s32 D_801643E0[];
-extern s32 D_80164408[];
-extern s32 D_8016448C;
-extern f32 D_80164498[];
-extern f32 gCourseCompletionPercentByPlayerId[8]; // D_801644D0
 extern f32 D_801645F8[];
 extern s32 D_80164608[];
 extern f32 D_80164618[];
+extern s32 D_80164628[];
 extern f32 D_80164638[];
 extern f32 D_80164648[];
 extern f32 D_80164658[];
 extern s16 D_80164670[];
-extern s16 D_80164672;
-extern s16 D_80164674;
-extern s16 D_80164676;
-extern s16 D_80164678[]; // Size 4? Is the three below this fake?
+extern s16 D_80164678[];
 extern s16 D_80164680[];
 extern f32 D_80164688[];
+extern f32 D_80164698;
+extern f32 D_8016469C;
+extern f32 D_801646A0;
 extern s16 D_801646C0[];
+extern u32 D_801646C8;
 extern s16 D_801646CC;
 extern UnkStruct_46D0 D_801646D0[];
-extern s16 D_801630FC;
-extern s16 D_801631C8;
-extern u16 D_801631E0[8];
-extern s32 D_80163238;
-extern s16 D_801632B8[];
-extern s16 D_801632D0[];
-extern u16 D_801632E8[];
-extern s32 D_8016337C;
-extern s16 D_80163410[]; // One per player?
-extern f32 D_80163418[];
-extern f32 D_80163428[];
-extern f32 D_80163438[];
-extern s16 D_80163478;
-extern s32 D_80163488;
-extern s16 D_8016348C;
-extern s16 D_801634D8[8];
-extern s32 D_8016359C;
-extern u16 D_801637BC[2];
+
+extern f32 D_800DCAA0[];
+
+
+// See bss_80005FD0.s
+extern f32 gCourseCompletionPercentByRank[8];
+extern s32 D_801643E0[];
+extern s32 D_8016448C;
 extern u16 D_801637BE;
-extern s32 D_80163DD8[];
 extern u16 D_80163E2A;
 
 extern Gfx D_0D0076F8[];

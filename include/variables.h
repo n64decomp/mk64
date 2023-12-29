@@ -7,13 +7,7 @@
 
 extern s8    gCharacterIdByGPOverallRank[8];        // D_8018D9D0
 
-extern s16   gGPCurrentRacePlayerIdByRank[8]; // D_80164360
-
-extern f32   gLapCompletionPercentByPlayerId[8]; // D_801644A8
-extern s32   gLapCountByPlayerId[8];             // D_80164390
-
 extern s32   gPlayerIsThrottleActive[];           // D_801653E0
-extern s32   gGPCurrentRaceRankByPlayerId[];      // D_801643B8
 
 extern hud_player playerHUD[];
 

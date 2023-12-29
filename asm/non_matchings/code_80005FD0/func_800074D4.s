@@ -414,8 +414,8 @@ glabel func_800074D4
 .L80007ABC:
 /* 0086BC 80007ABC 3C028016 */  lui   $v0, %hi(D_801643E0) # $v0, 0x8016
 /* 0086C0 80007AC0 3C038016 */  lui   $v1, %hi(gGPCurrentRaceRankByPlayerId) # $v1, 0x8016
-/* 0086C4 80007AC4 3C048016 */  lui   $a0, %hi(D_801643D8) # $a0, 0x8016
-/* 0086C8 80007AC8 248443D8 */  addiu $a0, %lo(D_801643D8) # addiu $a0, $a0, 0x43d8
+/* 0086C4 80007AC4 3C048016 */  lui   $a0, %hi(gGPCurrentRaceRankByPlayerId + 0x20) # $a0, 0x8016
+/* 0086C8 80007AC8 248443D8 */  addiu $a0, %lo(gGPCurrentRaceRankByPlayerId + 0x20) # addiu $a0, $a0, 0x43d8
 /* 0086CC 80007ACC 246343B8 */  addiu $v1, %lo(gGPCurrentRaceRankByPlayerId) # addiu $v1, $v1, 0x43b8
 /* 0086D0 80007AD0 244243E0 */  addiu $v0, %lo(D_801643E0) # addiu $v0, $v0, 0x43e0
 /* 0086D4 80007AD4 24070001 */  li    $a3, 1

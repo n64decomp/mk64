@@ -307,8 +307,6 @@ SECTIONS
       BUILD_DIR/src/code_80004740.o(.bss);
       BUILD_DIR/src/staff_ghosts.o(.bss);
       BUILD_DIR/src/code_80005FD0.jp.o(.bss);
-      BUILD_DIR/asm/bss_80005FD0.o(.bss);
-      BUILD_DIR/asm/bss_MainSeg.o(.bss);
       BUILD_DIR/src/camera.o(.bss);
       BUILD_DIR/src/render_player.o(.bss);
       BUILD_DIR/asm/bss_80165210.o(.bss);
