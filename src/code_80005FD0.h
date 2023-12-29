@@ -4,6 +4,7 @@
 #include "vehicles.h"
 #include "camera.h"
 #include "waypoints.h"
+#include "common_textures.h"
 
 struct struct_801642D8 {
     /* 0x0 */ u16 unk0;
@@ -63,13 +64,17 @@ s16  func_80005FD0(Vec3f, Vec3f);
 s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
 void func_80006114(Vec3f, Vec3f, s16);
 s32  func_800061DC(Vec3f, f32, s32);
+void func_800065D0(s32, Player*);
 void set_places(void);
 
 void func_800070F4(void);
 void func_800074D4(void);
 s32  func_80007BF8(u16, u16, u16, u16, u16);
+void func_80007D04(s32, Player*);
 void func_80007FA4(s32, Player*, f32);
 
+void func_80008424(s32, f32, Player*);
+s32  func_800088D8(s32, s16, s16);
 void func_80008DC0(s32);
 s32  func_80008E58(s32, s32);
 void func_80008F38(s32);
@@ -77,8 +82,9 @@ void func_80008F38(s32);
 void func_80009000(s32);
 void func_800090F0(s32, Player*);
 f32  func_80009258(s32, f32, f32);
+void func_8000929C(s32, Player*);
 void func_800097E0(void);
-void func_800099EC(s32, s32);
+void func_800099EC(s32, Player*);
 void func_80009B60(s32);
 
 void func_8000B140(s32);
@@ -98,6 +104,7 @@ void func_8000CBF8(f32, f32, f32, s16*, s32);
 s16  func_8000CC88(f32, f32, f32, Player*, s32, s32*);
 s16  func_8000CD24(f32, f32, f32, s16, Player*, s32, s32);
 
+s16  func_8000D100(f32, f32, f32, s16);
 s16  func_8000D24C(f32, f32, f32, s32*);
 s16  func_8000D2B4(f32, f32, f32, s16, s32);
 s16  func_8000D33C(f32, f32, f32, s16, s32);
@@ -139,6 +146,8 @@ s32  func_8001168C(PathNoY*, TrackWaypoint*, s32);
 void func_80011A5C(void);
 void func_80011AB8(s32);
 void func_80011AE4(s32);
+void func_80011B14(s32, Player*);
+void func_80011D48(s32, Player*);
 void func_80011E38(s32);
 void func_80011EC0(s32, Player*, s32, s32);
 
@@ -242,6 +251,7 @@ void func_8001C42C(void);
 
 // Suspected to be the "width" of each waypoint. See data_0DD0A0_1.s
 extern f32 D_800DCA4C[];
+extern s16 D_800DCA20[];
 
 struct _struct_D_800DD9D0_0x10 {
     /* 0x00 */ u16 unk0;
@@ -261,14 +271,13 @@ extern struct _struct_D_800DD9D0_0x10 D_800DD9D0[];
 extern Collision D_80162E70;
 extern s16 D_80162EB0; // Possibly a float.
 extern s16 D_80162EB2; // possibly [3]
-extern uintptr_t *D_80162EB8[];
+extern UnkCommonTextureStruct0 *D_80162EB8[];
 extern s16 D_80162F10[];
 extern s16 D_80162F50[];
 extern Vec3f D_80162FA0;
 extern Vec3f D_80162FB0;
 extern Vec3f D_80162FC0;
 extern s16 D_80162FCC;
-extern s16 D_80162FCE;
 extern s16 D_80162FD0;
 extern f32 gCourseCompletionPercentByRank[]; // D_80162FD8
 extern s16 D_80162FF8[];
@@ -278,7 +287,7 @@ extern s16 D_80163050[];
 extern f32 D_80163068[];
 extern f32 D_80163090[];
 extern s32 D_801630B8[];
-extern s16 D_801630E0;
+extern u16 D_801630E0;
 extern s16 D_801630E2;
 extern s16 D_801630E8[];
 extern s16 D_801630FC;
@@ -292,20 +301,19 @@ extern s32 D_801631CC;
 extern TrackWaypoint *D_801631D0;
 extern TrackWaypoint *D_801631D4;
 extern s16 *D_801631D8;
-extern u16 *D_801631DC;
 extern u16 D_801631E0[];
-extern s16 D_801631F8[];
+extern u16 D_801631F8[];
 extern f32 D_8016320C;
 extern f32 D_80163210[];
 extern s32 D_80163238;
-extern s16 D_80163240[];
+extern u16 D_80163240[];
 extern u16 D_80163258[];
 extern u16 D_80163270[];
 extern s32 D_80163288[];
 // Exact pointer type unknown
-extern void *D_801632B0;
-extern s16 D_801632B8[];
-extern s16 D_801632D0[];
+extern UnkCommonTextureStruct0 *D_801632B0;
+extern u16 D_801632B8[];
+extern u16 D_801632D0[];
 extern u16 D_801632E8[];
 extern s16 D_80163300[];
 extern u16 D_80163318[];
@@ -313,7 +321,7 @@ extern u16 D_80163330[];
 extern u16 D_80163344[];
 extern u16 D_80163348[];
 extern u16 D_8016334C[];
-extern s16 D_80163350[];
+extern u16 D_80163350[];
 extern s32 D_80163368[];
 extern s32 D_80163378;
 extern s32 D_8016337C;
@@ -392,7 +400,7 @@ extern f32 D_8016469C;
 extern f32 D_801646A0;
 extern s16 D_801646C0[];
 extern u32 D_801646C8;
-extern s16 D_801646CC;
+extern u16 D_801646CC;
 extern UnkStruct_46D0 D_801646D0[];
 
 extern f32 D_800DCAA0[];

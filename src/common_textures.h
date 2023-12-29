@@ -5,10 +5,10 @@
 #include <PR/gbi.h>
 
 typedef struct {
-    s16 waypointId1;
-    s16 waypointId2;
-    s32 unk4;
-} UnkCommonTextureStruct0;
+    /* 0x0 */ s16 waypointId1;
+    /* 0x2 */ s16 waypointId2;
+    /* 0x4 */ s32 unk4;
+} UnkCommonTextureStruct0; // size = 0x8
 
 extern s8  gTLUTFinishLineBanner[];
 extern s8  D_0D000200[];
@@ -248,9 +248,9 @@ extern UnkCommonTextureStruct0 D_0D0092C8[];
 extern UnkCommonTextureStruct0 D_0D009310[];
 extern UnkCommonTextureStruct0 D_0D0093C0[];
 extern f32 D_0D009418[][4];
-extern f32 D_0D009568[];
-extern f32 D_0D0096B8[];
-extern f32 D_0D009808[];
+extern f32 D_0D009568[][4];
+extern f32 D_0D0096B8[][4];
+extern f32 D_0D009808[][4];
 extern s32 unkPad;
 extern s8 D_0D009958[];
 extern s8 D_0D00A558[];
