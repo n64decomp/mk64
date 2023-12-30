@@ -164,7 +164,6 @@ var player__controller_8h =
     [ "D_800E3C10", "player__controller_8h.html#ac24d97e7d83036f4c6f1a6bbbcf26f28", null ],
     [ "D_800E3C30", "player__controller_8h.html#a9ca0b1fab5f5b47de4bce7b8e8dc72b4", null ],
     [ "D_800E3C50", "player__controller_8h.html#a21321fc3b569a3bb129ec9f733e20de6", null ],
-    [ "D_801653C0", "player__controller_8h.html#a29f6533e17484dd3b0cd259964fc1846", null ],
     [ "D_801656F0", "player__controller_8h.html#ae7df3b60b978697813e6b88386423ad2", null ],
     [ "gMatrixEffectCount", "player__controller_8h.html#abeefcb4eb9df7b90bbf608d19a9294dc", null ],
     [ "gRaceFrameCounter", "player__controller_8h.html#a1ab400633b3d05faceec6f04e07639a3", null ]

@@ -10,7 +10,6 @@ var common__structs_8h =
     [ "KartBoundingBoxCorner", "structKartBoundingBoxCorner.html", "structKartBoundingBoxCorner" ],
     [ "UnkPlayerInner", "structUnkPlayerInner.html", "structUnkPlayerInner" ],
     [ "Player", "structPlayer.html", "structPlayer" ],
-    [ "struct_D_801650D0", "structstruct__D__801650D0.html", "structstruct__D__801650D0" ],
     [ "struct_D_8018CE10", "structstruct__D__8018CE10.html", "structstruct__D__8018CE10" ],
     [ "struct_8018EE10_entry", "structstruct__8018EE10__entry.html", "structstruct__8018EE10__entry" ],
     [ "RGBA16", "structRGBA16.html", "structRGBA16" ],
