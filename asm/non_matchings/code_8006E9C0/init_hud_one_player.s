@@ -24,16 +24,16 @@ glabel init_hud_one_player
 /* 072080 80071480 3C048018 */  lui   $a0, %hi(gItemWindowObjectByPlayerId + 4) # $a0, 0x8018
 /* 072084 80071484 0C01C7C0 */  jal   find_unused_obj_index
 /* 072088 80071488 24843E8C */   addiu $a0, %lo(gItemWindowObjectByPlayerId + 4) # addiu $a0, $a0, 0x3e8c
-/* 07208C 8007148C 0C01C064 */  jal   func_80070190
+/* 07208C 8007148C 0C01C064 */  jal   init_object_list_index
 /* 072090 80071490 00000000 */   nop
 /* 072094 80071494 0C01C157 */  jal   func_8007055C
 /* 072098 80071498 00000000 */   nop
 /* 07209C 8007149C 0C01C157 */  jal   func_8007055C
 /* 0720A0 800714A0 00000000 */   nop
-/* 0720A4 800714A4 0C01C1E0 */  jal   func_80070780
+/* 0720A4 800714A4 0C01C1E0 */  jal   init_course_object
 /* 0720A8 800714A8 00000000 */   nop
-/* 0720AC 800714AC 3C088019 */  lui   $t0, %hi(D_8018CA70) # $t0, 0x8019
-/* 0720B0 800714B0 2508CA70 */  addiu $t0, %lo(D_8018CA70) # addiu $t0, $t0, -0x3590
+/* 0720AC 800714AC 3C088019 */  lui   $t0, %hi(playerHUD) # $t0, 0x8019
+/* 0720B0 800714B0 2508CA70 */  addiu $t0, %lo(playerHUD) # addiu $t0, $t0, -0x3590
 /* 0720B4 800714B4 240E0156 */  li    $t6, 342
 /* 0720B8 800714B8 A50E003E */  sh    $t6, 0x3e($t0)
 /* 0720BC 800714BC 8518003E */  lh    $t8, 0x3e($t0)
@@ -90,7 +90,7 @@ glabel init_hud_one_player
 /* 072188 80071588 3C014220 */  li    $at, 0x42200000 # 40.000000
 /* 07218C 8007158C 44817000 */  mtc1  $at, $f14
 /* 072190 80071590 3C014040 */  li    $at, 0x40400000 # 3.000000
-/* 072194 80071594 3C088019 */  lui   $t0, %hi(D_8018CA70) # $t0, 0x8019
+/* 072194 80071594 3C088019 */  lui   $t0, %hi(playerHUD) # $t0, 0x8019
 /* 072198 80071598 3C038019 */  lui   $v1, %hi(D_8018D0C8) # $v1, 0x8019
 /* 07219C 8007159C 3C048019 */  lui   $a0, %hi(D_8018D028) # $a0, 0x8019
 /* 0721A0 800715A0 3C058019 */  lui   $a1, %hi(D_8018D050) # $a1, 0x8019
@@ -101,7 +101,7 @@ glabel init_hud_one_player
 /* 0721B4 800715B4 44816800 */  mtc1  $at, $f13
 /* 0721B8 800715B8 44806000 */  mtc1  $zero, $f12
 /* 0721BC 800715BC 44801000 */  mtc1  $zero, $f2
-/* 0721C0 800715C0 2508CA70 */  addiu $t0, %lo(D_8018CA70) # addiu $t0, $t0, -0x3590
+/* 0721C0 800715C0 2508CA70 */  addiu $t0, %lo(playerHUD) # addiu $t0, $t0, -0x3590
 /* 0721C4 800715C4 240A00A0 */  li    $t2, 160
 /* 0721C8 800715C8 2529D098 */  addiu $t1, %lo(D_8018D098) # addiu $t1, $t1, -0x2f68
 /* 0721CC 800715CC 2442D078 */  addiu $v0, %lo(D_8018D078) # addiu $v0, $v0, -0x2f88

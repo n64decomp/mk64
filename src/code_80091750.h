@@ -36,6 +36,12 @@ typedef struct {
 } struct_8018DEE0_entry; // size = 0x18
 
 typedef struct {
+    /* 0x0 */ MkTexture *mk64Texture;
+    /* 0x4 */ s16 unk4;
+    /* 0x6 */ s16 unk6;
+} struct_8018E0E8_entry; //size = 0x8
+
+typedef struct {
     /* 0x00 */ u64 *textureData; // This should be interpreted as a segmented address
     /**
      * Its hard to tell what exactly what this is meant to be,
@@ -61,6 +67,9 @@ typedef struct {
 /* Function Prototypes */
 
 f64  exponent_by_squaring(f64, s32);
+f64  func_800917B0(f64, f64);
+f64  func_8009186C(f64);
+f64  func_8009195C(f64);
 f64  func_80091A6C(f64, s32);
 f64  func_80091AC0(f64, s32*);
 void swap_values(s32*, s32*);
@@ -120,7 +129,18 @@ void func_80094C60(void);
 void func_80095574(void);
 Gfx *draw_flash_select_case(Gfx*, s32, s32, s32, s32, s32);
 Gfx *draw_flash_select_case_slow(Gfx*, s32, s32, s32, s32);
+Gfx *draw_flash_select_case_fast(Gfx*, s32, s32, s32, s32);
 Gfx *func_800959F8(Gfx*, Vtx*);
+void func_80095AE0(Mtx*, f32, f32, f32, f32);
+Gfx *func_80095BD0(Gfx*, u8*, f32, f32, u32, u32, f32, f32);
+Gfx *func_80095E10(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, s32, s32, u32, u32);
+Gfx *func_800963F0(Gfx*,  s8, s32, s32, f32, f32, s32, s32, s32, s32, s32, s32, s32, u32, u32);
+Gfx *func_80096CD8(Gfx*, s32, s32, u32, u32);
+Gfx *func_80097274(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, s32, s32, u32, u32, u32);
+Gfx *func_80097A14(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, u32, u32);
+Gfx *func_80097AE4(Gfx*,  s8, s32, s32, u8*, s32);
+Gfx *func_80097E58(Gfx*,  s8, s32, u32, u32, s32, s32, s32, s32, s32, s32, u32);
+Gfx *func_800987D0(Gfx*, u32, u32, u32, u32, s32, s32, s32, s32, s32);
 Gfx *draw_box_fill(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *draw_box(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *func_80098FC8(Gfx*, s32, s32, s32, s32);
@@ -132,6 +152,7 @@ void *segmented_to_virtual_dupe(const void*);
 void *segmented_to_virtual_dupe_2(const void*);
 void func_8009969C(MkTexture*);
 void func_800996BC(MkTexture*, s32);
+void func_80099958(MkTexture*, s32, s32);
 void func_80099E54(void);
 void func_80099E60(MkTexture *, s32, s32);
 void func_80099EC4(void);
@@ -139,6 +160,8 @@ void func_80099A70(void);
 void func_80099A94(MkTexture *, s32);
 void func_80099AEC(void);
 void func_8009A344(void);
+s32  func_8009A374(MkAnimation*);
+s32  func_8009A478(MkAnimation*, s32);
 void func_8009A594(s32, s32, MkAnimation*);
 void func_8009A640(s32, s32, s32, MkAnimation*);
 void func_8009A6D4(void);
@@ -146,6 +169,8 @@ void func_8009A76C(s32, s32, s32, s32);
 void func_8009A7EC(s32, s32, s32, s32, s32);
 MkTexture *func_8009A878(struct_8018DEE0_entry*);
 MkTexture *func_8009A944(struct_8018DEE0_entry*, s32);
+void func_8009B0A4(s32, s32);
+void func_8009B538(s32, s32, s32, s32, s32);
 s32  func_8009B8C4(u64*);
 void func_8009B938(void);
 void func_8009B954(MkTexture*);
@@ -164,6 +189,7 @@ void func_8009CBE4(s32, s32, s32);
 void func_8009CDDC(s32, s32);
 void func_8009CDFC(s32, s32);
 void func_8009CE1C(void);
+void func_8009CE64(s32);
 void func_8009D77C(s32,s32,s32);
 void func_8009D958(s32, s32);
 void func_8009D978(s32, s32);
@@ -193,8 +219,9 @@ void func_800A08D8(u8, s32, s32);
 s32  func_800A095C(char*, s32, s32, s32);
 void func_800A09E0(struct_8018D9E0_entry*);
 void func_800A0AD0(struct_8018D9E0_entry*);
+void func_800A0B80(struct_8018D9E0_entry*);
 void func_800A0DFC(void);
-void func_800A0EB8(s32, s32);
+void func_800A0EB8(struct_8018D9E0_entry*, s32);
 void func_800A0FA4(struct_8018D9E0_entry*, s32);
 void func_800A10CC(struct_8018D9E0_entry*);
 void func_800A11D0(struct_8018D9E0_entry*, s32, s32);
@@ -203,11 +230,13 @@ void func_800A1350(struct_8018D9E0_entry*);
 void func_800A143C(struct_8018D9E0_entry*, s32);
 void func_800A1500(struct_8018D9E0_entry*);
 void func_800A15EC(struct_8018D9E0_entry*);
+void func_800A1780(struct_8018D9E0_entry*);
 void func_800A1924(struct_8018D9E0_entry*);
 void func_800A1A20(struct_8018D9E0_entry*);
 void func_800A1BE0(struct_8018D9E0_entry*);
 void func_800A1DE0(struct_8018D9E0_entry*);
 void func_800A1F30(struct_8018D9E0_entry*);
+void func_800A1FB0(struct_8018D9E0_entry*);
 void func_800A2D1C(struct_8018D9E0_entry*);
 void func_800A2EB8(struct_8018D9E0_entry*);
 void func_800A32B4(s32, s32, s32, s32);
@@ -334,10 +363,14 @@ void func_800AF480(struct_8018D9E0_entry*);
 void func_800AF4DC(struct_8018D9E0_entry*);
 void func_800AF740(struct_8018D9E0_entry*);
 
+// This really, really shouldn't be in this header file, but I don't know where else to put it
+void rmonPrintf(const char *, ...);
+
 /* File specific defines */
 
 #define D_8018D9E0_SIZE 0x20
 #define D_8018DEE0_SIZE 0x10
+#define D_8018E0E8_SIZE 0x05
 #define D_8018E118_SIZE 0xC8
 #define D_8018E768_SIZE 0x08
 
@@ -354,12 +387,19 @@ extern s8  D_8018D9D8;
 extern s8  D_8018D9D9;
 extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE]; // D_8018D9E0
 extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE]; // D_8018DEE0
+extern s32 D_8018E060;
+extern struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
 extern s32 gD_8018E118TotalSize;                          // D_8018E110
 extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE]; // D_8018E118
 extern s32 gNumD_8018E118Entries;                         // D_8018E758
 extern Gfx *D_8018E75C;                                   // D_8018E75C
 extern s32 gNumD_8018E768Entries;                         // D_8018E760
 extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE]; // D_8018E768
+extern s32 gCycleFlashMenu; // maybe?
+extern s8  D_8018E7AC[];
+extern s8  D_8018E7B0;  // maybe?
+extern s32 D_8018E7B8[];
+extern s32 D_8018E7E0;
 extern s8  gTextColor;                                    // D_8018E860
 extern u8  D_8018ED90;
 extern u8  D_8018ED91;
@@ -370,16 +410,10 @@ extern s32 D_8018E854;
 extern s32 D_8018E858[];
 extern s32 D_8018E85C;
 
-extern s32 D_8018E7B8[];
-extern s32 D_8018E7E0;
-
 extern s32 D_8018CA78;
 
 extern u8 _textures_0aSegmentRomStart[];
 extern u8 _textures_0bSegmentRomStart[];
-
-extern s32 gCycleFlashMenu; // maybe?
-extern s8 D_8018E7B0;  // maybe?
 
 extern Unk_D_800E70A0 D_800E70A0[];
 extern Unk_D_800E70A0 D_800E70E8[];
@@ -415,9 +449,9 @@ extern char *D_800E7574[];
 extern char *D_800E75C4[];
 extern char *gDebugCourseNames[];
 // Maps course IDs (as defined in the COURSES enum) to an index in a given cup's track order
-extern const u8 gPerCupIndexByCourseId[]; // D_800EFD50
+extern const s8 gPerCupIndexByCourseId[]; // D_800EFD50
 extern const s8 D_800EFD64[];
-extern u8 gCupSelectionByCourseId[];
+extern s8 gCupSelectionByCourseId[];
 extern char *D_800E7678[];
 extern char *gDebugCharacterNames[];
 extern char *D_800E76A8[];
@@ -478,7 +512,6 @@ extern const s8 D_800F0B54[];
 extern RGBA16 D_800E7AC8[];
 extern RGBA16 D_800E7AE8[];
 extern MkTexture *D_800E7AF8[];
-extern MkTexture *D_800E7CA8[];
 extern MkTexture *D_800E7D0C[];
 extern MkAnimation *D_800E7D34[];
 extern MkTexture *D_800E7D4C[];
@@ -503,6 +536,7 @@ extern MkTexture *D_800E8274[];
 extern MkTexture *D_800E8294[];
 extern MkTexture *D_800E82B4[];
 extern MkTexture *D_800E82C8[];
+extern MkTexture *D_800E82F4[];
 extern MkAnimation *D_800E8320[];
 extern MkAnimation *D_800E8340[];
 extern MkAnimation *D_800E8360[];

@@ -648,11 +648,11 @@ glabel L8009EE74
 /* 09FA9C 8009EE9C 00402025 */   move  $a0, $v0
 /* 09FAA0 8009EEA0 8FA60024 */  lw    $a2, 0x24($sp)
 /* 09FAA4 8009EEA4 8FBF007C */  lw    $ra, 0x7c($sp)
-/* 09FAA8 8009EEA8 3C04800E */  lui   $a0, %hi(D_800E7CA8)
+/* 09FAA8 8009EEA8 3C04800E */  lui   $a0, %hi(D_800E7D54 - 0xAC)
 /* 09FAAC 8009EEAC 00862021 */  addu  $a0, $a0, $a2
 /* 09FAB0 8009EEB0 AFE20018 */  sw    $v0, 0x18($ra)
 /* 09FAB4 8009EEB4 0C026449 */  jal   segmented_to_virtual_dupe
-/* 09FAB8 8009EEB8 8C847CA8 */   lw    $a0, %lo(D_800E7CA8)($a0)
+/* 09FAB8 8009EEB8 8C847CA8 */   lw    $a0, %lo(D_800E7D54 - 0xAC)($a0)
 /* 09FABC 8009EEBC 00402025 */  move  $a0, $v0
 /* 09FAC0 8009EEC0 0C0265AF */  jal   func_800996BC
 /* 09FAC4 8009EEC4 00002825 */   move  $a1, $zero
@@ -928,10 +928,10 @@ glabel L8009F264
 /* 09FEA8 8009F2A8 000F3080 */   sll   $a2, $t7, 2
 .L8009F2AC:
 /* 09FEAC 8009F2AC 8FA60080 */  lw    $a2, 0x80($sp)
-/* 09FEB0 8009F2B0 3C188016 */  lui   $t8, %hi(D_801640F4) # 0x8016
+/* 09FEB0 8009F2B0 3C188016 */  lui   $t8, %hi(gGPCurrentRaceRankByPlayerId - 0x2C4) # 0x8016
 /* 09FEB4 8009F2B4 0006C880 */  sll   $t9, $a2, 2
 /* 09FEB8 8009F2B8 0319C021 */  addu  $t8, $t8, $t9
-/* 09FEBC 8009F2BC 8F1840F4 */  lw    $t8, %lo(D_801640F4)($t8) # 0x40f4($t8)
+/* 09FEBC 8009F2BC 8F1840F4 */  lw    $t8, %lo(gGPCurrentRaceRankByPlayerId - 0x2C4)($t8) # 0x40f4($t8)
 /* 09FEC0 8009F2C0 03203025 */  move  $a2, $t9
 /* 09FEC4 8009F2C4 1300000B */  beqz  $t8, .L8009F2F4
 /* 09FEC8 8009F2C8 00000000 */   nop

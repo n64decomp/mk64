@@ -1,5 +1,5 @@
-#ifndef CODE_800B045E0_H
-#define CODE_800B045E0_H
+#ifndef SAVE_H
+#define SAVE_H
 
 #include "PR/os.h"
 #include "common_structs.h"
@@ -49,11 +49,11 @@ u32  func_800B4EB4(s32, s32);
 s32  func_800B4F2C(void);
 s32  func_800B4FB0(s32);
 s32  func_800B5020(u32, s32);
+s32  func_800B5218(void);
 void func_800B536C(s32);
 void func_800B5404(s32, s32);
 u8   func_800B54C0(s32, s32);
 u8   func_800B54EC(s32, s32);
-s32  func_800B5020(u32 time, s32 charId);
 u8   func_800B5508(s32, s32, s32);
 s32  func_800B5530(s32);
 s32  func_800B555C(void);
@@ -87,12 +87,18 @@ s32  func_800B6A68(void);
 /* data */
 // these might not be in this file, but for now...
 
+typedef struct struct_8018EE10_entry_cont
+{
+    struct_8018EE10_entry arr[1];
+
+} struct_8018EE10_entry_cont;
+
 extern u32*        D_800DC714;
 
 extern u16         gCompanyCode;
 extern u32         gGameCode; // osPfs gamecode
 extern s8          gControllerPak1State; // Current state of Controller Pak 1
-extern struct_8018EE10_entry *D_8018D9C0;
+extern struct_8018EE10_entry_cont *D_8018D9C0;
 
 extern s8          sControllerPak2State; // Current state of the Controller Pak 2
 extern const u8    D_800F2E60[];

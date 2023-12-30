@@ -72,7 +72,6 @@ extern u8 *D_80164B08;
 extern u8 *D_80164B0C;
 
 extern s32 D_80164A28;
-extern s16 D_80164AAE[];
 extern s16 D_80164AB0[];
 extern s16 D_80164ABE[];
 extern s16 D_80164AC0[];
@@ -279,5 +278,13 @@ extern u8 *gKartWario229Wheel0[];
 extern u8 *gKartWario209Wheel0[];
 extern u8 *gKartWario189Wheel0[];
 extern u8 *gKartWario189Wheel0[];
+
+extern s16 D_80165020[40];
+extern Vec3f D_80165070[8];
+extern s16 D_801650D0[4][8];
+extern s16  D_80165110[4][8];
+extern s16  D_80165150[4][8];
+extern s16  D_80165190[4][8];
+extern s16  D_801651D0[4][8];
 
 #endif

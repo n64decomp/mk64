@@ -10,7 +10,9 @@
 #define NUM_TRAINS                2
 #define LOCOMOTIVE_ONLY           0
 
-#define NUM_PADDLE_WHEEL_BOATS 1
+// It seems like there's room for 2 Ferries, but only 1 is ever active
+#define NUM_ACTIVE_PADDLE_WHEEL_BOATS 1
+#define NUM_PADDLE_WHEEL_BOATS 2
 
 #define NUM_RACE_BOX_TRUCKS    7
 #define NUM_RACE_SCHOOL_BUSES  7
@@ -80,7 +82,7 @@ typedef struct {
 	/* 0x32 */ // s16 compilerPadding2;
 } VehicleStuff; // size = 0x34
 
-extern TrainStuff sTrains[];
+extern TrainStuff gTrains[];
 
 // This is an array, maybe they intended to have multiple boats at some point in development?
 extern PaddleWheelBoatStuff gFerries[];

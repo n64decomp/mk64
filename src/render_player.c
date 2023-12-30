@@ -11,7 +11,7 @@
 #include "functions.h"
 #include "kart_dma.h"
 #include "objects.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 #include "code_80057C60.h"
 #include "code_8008C1D0.h"
 #include "framebuffers.h"
@@ -20,6 +20,7 @@
 #include "hud_renderer.h"
 #include "common_textures.h"
 #include "skybox_and_splitscreen.h"
+#include "spawn_players.h"
 
 s8 gRenderingFramebufferByPlayer[] = {
     0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0x02
@@ -27,10 +28,36 @@ s8 gRenderingFramebufferByPlayer[] = {
 
 s32 gPlayersToRenderCount = 0;
 
+
 // Can't find anything that actually references these...
 UNUSED void *D_800DDB5C[3] = {
     gFramebuffer0, gFramebuffer1, gFramebuffer2
 };
+
+s16 D_80164AB0[8];
+s16 D_80164AC0[8];
+Player *D_80164AD0[8];
+s16 gMatrixEffectCount;
+s32 D_80164AF4[3];
+struct_D_802F1F80 *gPlayerPalette;
+u8 *D_80164B08;
+u8 *D_80164B0C;
+u16 gPlayerRedEffect[8];
+u16 gPlayerGreenEffect[8];
+u16 gPlayerBlueEffect[8];
+u16 gPlayerCyanEffect[8];
+u16 gPlayerMagentaEffect[8];
+u16 gPlayerYellowEffect[8];
+//if it's also a color effect like before
+UNUSED u16 gPlayerWhiteEffect[8];
+s32 D_80164B80[296];
+s16 D_80165020[40];
+Vec3f D_80165070[8];
+s16 D_801650D0[4][8];
+s16 D_80165110[4][8];
+s16 D_80165150[4][8];
+s16 D_80165190[4][8];
+s16 D_801651D0[4][8];
 
 void func_8001F980(s32 *arg0, s32 *arg1) {
     if ((gDemoMode == 1) || (D_80164A28 != 0) || (D_8015F894 != 0)) {
@@ -243,8 +270,8 @@ void func_80020524(void) {
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
 
-    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AAE[gPlayersToRenderCount]]][D_80164ABE[gPlayersToRenderCount]][D_80164AAE[gPlayersToRenderCount]].unk_00,
-               D_802BFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AAE[gPlayersToRenderCount]]][D_80164ABE[gPlayersToRenderCount]][D_80164AAE[gPlayersToRenderCount]].pixel_index_array);
+    mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
+               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
 }
 
 void func_8002088C(void) {
@@ -268,8 +295,8 @@ void func_8002088C(void) {
                    D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AAE[gPlayersToRenderCount]]][D_80164ABE[gPlayersToRenderCount]][D_80164AAE[gPlayersToRenderCount]].unk_00,
-               D_802BFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AAE[gPlayersToRenderCount]]][D_80164ABE[gPlayersToRenderCount]][D_80164AAE[gPlayersToRenderCount]].pixel_index_array);
+    mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
+               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
 }
 
 void func_80020BF4(void) {
@@ -287,8 +314,8 @@ void func_80020BF4(void) {
                    D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AAE[gPlayersToRenderCount]]][D_80164ABE[gPlayersToRenderCount] - 2][D_80164AAE[gPlayersToRenderCount] + 4].unk_00,
-               D_802BFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AAE[gPlayersToRenderCount]]][D_80164ABE[gPlayersToRenderCount] - 2][D_80164AAE[gPlayersToRenderCount] + 4].pixel_index_array);
+    mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
+               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
 }
 
 void func_80020F1C(void) {
@@ -306,8 +333,8 @@ void func_80020F1C(void) {
                    D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode(D_802DFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AAE[gPlayersToRenderCount]]][D_80164ABE[gPlayersToRenderCount] - 2][D_80164AAE[gPlayersToRenderCount] + 4].unk_00,
-               D_802BFB80[D_801651D0[D_80164ABE[gPlayersToRenderCount]][D_80164AAE[gPlayersToRenderCount]]][D_80164ABE[gPlayersToRenderCount] - 2][D_80164AAE[gPlayersToRenderCount] + 4].pixel_index_array);
+    mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
+               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
 }
 
 void try_render_player(Player *player, s8 playerId, s8 arg2) {
@@ -796,73 +823,73 @@ void func_80022744(void) {
 
 void func_8002276C(void) {
     switch (gActiveScreenMode) {                              /* irregular */
-    case SCREEN_MODE_1P:
-        switch (gModeSelection) {                        /* switch 1; irregular */
-        case GRAND_PRIX:                                     /* switch 1 */
-            func_80022A98(gPlayerOne, 0);
-            func_80022A98(gPlayerTwo, 1);
-            func_80022A98(gPlayerThree, 2);
-            func_80022A98(gPlayerFour, 3);
-            func_80022A98(gPlayerFive, 4);
-            func_80022A98(gPlayerSix, 5);
-            func_80022A98(gPlayerSeven, 6);
-            func_80022A98(gPlayerEight, 7);
+        case SCREEN_MODE_1P:
+            switch (gModeSelection) {                        /* switch 1; irregular */
+                case GRAND_PRIX:                                     /* switch 1 */
+                    func_80022A98(gPlayerOne, 0);
+                    func_80022A98(gPlayerTwo, 1);
+                    func_80022A98(gPlayerThree, 2);
+                    func_80022A98(gPlayerFour, 3);
+                    func_80022A98(gPlayerFive, 4);
+                    func_80022A98(gPlayerSix, 5);
+                    func_80022A98(gPlayerSeven, 6);
+                    func_80022A98(gPlayerEight, 7);
+                    break;
+                case TIME_TRIALS:                                     /* switch 1 */
+                    func_80022A98(gPlayerOne, 0);
+                    if ((gPlayerTwo->type & 0x100) == 0x100) {
+                        func_80022A98(gPlayerTwo, 1);
+                    }
+                    if ((gPlayerThree->type & 0x100) == 0x100) {
+                        func_80022A98(gPlayerThree, 2);
+                    }
+                    break;
+                case VERSUS:                                     /* switch 1 */
+                case BATTLE:                                     /* switch 1 */
+                    func_80022A98(gPlayerOne, 0);
+                    func_80022A98(gPlayerTwo, 1);
+                    if (gPlayerCountSelection1 >= 3) {
+                        func_80022A98(gPlayerThree, 2);
+                    }
+                    if (gPlayerCountSelection1 == 4) {
+                        func_80022A98(gPlayerFour, 3);
+                    }
+                    break;
+            }
             break;
-        case TIME_TRIALS:                                     /* switch 1 */
-            func_80022A98(gPlayerOne, 0);
-            if ((gPlayerTwo->type & 0x100) == 0x100) {
+        case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+        case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
+            switch (gModeSelection) {                        /* switch 2; irregular */
+                case GRAND_PRIX:                                     /* switch 2 */
+                    func_80022A98(gPlayerOne, 0);
+                    func_80022A98(gPlayerTwo, 1);
+                    func_80022A98(gPlayerThree, 2);
+                    func_80022A98(gPlayerFour, 3);
+                    func_80022A98(gPlayerFive, 4);
+                    func_80022A98(gPlayerSix, 5);
+                    func_80022A98(gPlayerSeven, 6);
+                    func_80022A98(gPlayerEight, 7);
+                    break;
+                case VERSUS:                                     /* switch 2 */
+                case BATTLE:                                     /* switch 2 */
+                    func_80022A98(gPlayerOne, 0);
+                    func_80022A98(gPlayerTwo, 1);
+                    break;
+                case TIME_TRIALS:                                     /* switch 2 */
+                    func_80022A98(gPlayerOne, 0);
+                    break;
+            }
+            break;
+        case SCREEN_MODE_3P_4P_SPLITSCREEN:
+            if ((VERSUS == gModeSelection) || (BATTLE == gModeSelection)) {
+                func_80022A98(gPlayerOne, 0);
                 func_80022A98(gPlayerTwo, 1);
-            }
-            if ((gPlayerThree->type & 0x100) == 0x100) {
                 func_80022A98(gPlayerThree, 2);
+                if (gPlayerCountSelection1 == 4) {
+                    func_80022A98(gPlayerFour, 3);
+                }
             }
             break;
-        case VERSUS:                                     /* switch 1 */
-        case BATTLE:                                     /* switch 1 */
-            func_80022A98(gPlayerOne, 0);
-            func_80022A98(gPlayerTwo, 1);
-            if (gPlayerCountSelection1 >= 3) {
-                func_80022A98(gPlayerThree, 2);
-            }
-            if (gPlayerCountSelection1 == 4) {
-                func_80022A98(gPlayerFour, 3);
-            }
-            break;
-        }
-        break;
-    case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
-    case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-        switch (gModeSelection) {                        /* switch 2; irregular */
-        case GRAND_PRIX:                                     /* switch 2 */
-            func_80022A98(gPlayerOne, 0);
-            func_80022A98(gPlayerTwo, 1);
-            func_80022A98(gPlayerThree, 2);
-            func_80022A98(gPlayerFour, 3);
-            func_80022A98(gPlayerFive, 4);
-            func_80022A98(gPlayerSix, 5);
-            func_80022A98(gPlayerSeven, 6);
-            func_80022A98(gPlayerEight, 7);
-            break;
-        case VERSUS:                                     /* switch 2 */
-        case BATTLE:                                     /* switch 2 */
-            func_80022A98(gPlayerOne, 0);
-            func_80022A98(gPlayerTwo, 1);
-            break;
-        case TIME_TRIALS:                                     /* switch 2 */
-            func_80022A98(gPlayerOne, 0);
-            break;
-        }
-        break;
-    case SCREEN_MODE_3P_4P_SPLITSCREEN:
-        if ((VERSUS == gModeSelection) || (BATTLE == gModeSelection)) {
-            func_80022A98(gPlayerOne, 0);
-            func_80022A98(gPlayerTwo, 1);
-            func_80022A98(gPlayerThree, 2);
-            if (gPlayerCountSelection1 == 4) {
-                func_80022A98(gPlayerFour, 3);
-            }
-        }
-        break;
     }
 }
 
@@ -1291,7 +1318,7 @@ void render_player_shadow_credits(Player *player, s8 playerId, s8 arg2) {
 
     spCC[0] = player->pos[0] + ((spB0 * sins(spC0)) + (spAC * coss(spC0)));
     spCC[2] = player->pos[2] + ((spB0 * coss(spC0)) - (spAC * sins(spC0)));
-    spCC[1] = gObjectList[D_80183EA0[playerId]].pos[1] + sp94[playerId];
+    spCC[1] = gObjectList[indexObjectList1[playerId]].pos[1] + sp94[playerId];
 
     mtxf_translate_rotate(sp118, spCC, spC4);
     mtxf_scale2(sp118, gCharacterSize[player->characterId] * player->size);

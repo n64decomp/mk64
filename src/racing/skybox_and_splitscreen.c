@@ -11,7 +11,7 @@
 #include "memory.h"
 #include "camera.h"
 #include "common_textures.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 #include "code_80057C60.h"
 #include "code_80091750.h"
 #include "actors.h"

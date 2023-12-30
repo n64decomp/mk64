@@ -378,17 +378,6 @@ typedef struct {
 } Player; // size = 0xDD8
 
 typedef struct {
-    s16 unk_00;
-    char unk_02[0xE];
-    s16 unk_10;
-    char unk_12[0xE];
-    s16 unk_20;
-    char unk_22[0xE];
-    s16 unk_30;
-    char unk_32[0xE]; // guessed
-} struct_D_801650D0;
-
-typedef struct {
     char unk_00[0x4];
     Vec3f unk_04;
     char unk_10[0x4];
@@ -508,8 +497,8 @@ typedef struct {
     /* 0x81 */ u8 unk_81;
     /* 0x82 */ s8 unk_82;
     /* 0x83 */ s8 unk_83;
-} struct_8018CA70_entry; // size = 0x84
+} hud_player; // size = 0x84
 
-#define D_8018CA70_SIZE 4
+#define HUD_PLAYERS_SIZE 4
 
 #endif

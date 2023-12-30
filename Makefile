@@ -392,6 +392,10 @@ ifeq ($(COMPARE),1)
 	@$(SHA1SUM) --quiet -c $(TARGET).sha1 && $(PRINT) "$(TARGET): $(GREEN)OK$(NO_COL)\n" || ($(PRINT) "$(YELLOW)Building the ROM file has succeeded, but does not match the original ROM.\nThis is expected, and not an error, if you are making modifications.\nTo silence this message, use 'make COMPARE=0.' $(NO_COL)\n" && false)
 endif
 
+doc:
+	$(PYTHON) tools/doxygen_symbol_gen.py
+	doxygen
+
 clean:
 	$(RM) -r $(BUILD_DIR)
 
@@ -693,6 +697,7 @@ $(ROM): $(ELF)
 	$(call print,Building ROM:,$<,$@)
 	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $(@:.z64=.bin) -O binary
 	$(V)$(N64CKSUM) $(@:.z64=.bin) $@
+	$(PYTHON) tools/doxygen_symbol_gen.py
 
 $(BUILD_DIR)/$(TARGET).hex: $(TARGET).z64
 	xxd $< > $@

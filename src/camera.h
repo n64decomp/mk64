@@ -86,6 +86,7 @@ extern s8 D_80164A89;
 
 extern s32 D_80164A08[4];
 
+extern s32 D_80164A28;
 extern s32 D_80164A2C;
 extern f32 D_80164A30;
 extern f32 D_80164A90[];

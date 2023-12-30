@@ -2,239 +2,6 @@
 
 .section .bss
 
-.skip 8 #padding
-
-glabel D_801649D8
-.skip 16
-
-glabel D_801649E8
-.skip 16
-
-glabel D_801649F8
-.skip 16
-
-glabel D_80164A08
-.skip 16
-
-glabel D_80164A18
-.skip 16
-
-glabel D_80164A28
-.skip 4
-
-glabel D_80164A2C
-.skip 4
-
-glabel D_80164A30
-.skip 8
-
-glabel D_80164A38
-.skip 16
-
-glabel D_80164A48
-.skip 48
-
-glabel D_80164A78
-.skip 16
-
-glabel D_80164A88
-.skip 1
-
-glabel D_80164A89
-.skip 7
-
-glabel D_80164A90
-.skip 16
-
-glabel D_80164AA0
-.skip 14
-
-glabel D_80164AAE
-.skip 2
-
-glabel D_80164AB0
-.skip 14
-
-glabel D_80164ABE
-.skip 2
-
-glabel D_80164AC0
-.skip 16
-
-glabel D_80164AD0
-.skip 32
-
-glabel gMatrixEffectCount
-.skip 20
-
-glabel gPlayerPalette
-.skip 4
-
-glabel D_80164B08
-.skip 4
-
-glabel D_80164B0C
-.skip 4
-
-glabel gPlayerRedEffect
-.skip 16
-
-glabel gPlayerGreenEffect
-.skip 16
-
-glabel gPlayerBlueEffect
-.skip 16
-
-glabel gPlayerCyanEffect
-.skip 16
-
-glabel gPlayerMagentaEffect
-.skip 16
-
-glabel gPlayerYellowEffect
-.skip 32
-
-glabel D_80164B80
-.skip 1184
-
-glabel D_80165020
-.skip 80
-
-glabel D_80165070
-.skip 96
-
-glabel D_801650D0
-.skip 64
-
-glabel D_80165110
-.skip 64
-
-glabel D_80165150
-.skip 64
-
-glabel D_80165190
-.skip 64
-
-glabel D_801651D0
-.skip 1
-
-glabel D_801651D1
-.skip 63
-
-glabel D_80165210
-.skip 32
-
-glabel D_80165230
-.skip 28
-
-glabel D_8016524C
-.skip 36
-
-glabel D_80165270
-.skip 16
-
-glabel D_80165280
-.skip 32
-
-glabel D_801652A0
-.skip 32
-
-glabel D_801652C0
-.skip 32
-
-glabel D_801652E0
-.skip 32
-
-glabel D_80165300
-.skip 16
-
-glabel D_80165310
-.skip 16
-
-glabel D_80165320
-.skip 16
-
-glabel D_80165330
-.skip 16
-
-glabel D_80165340
-.skip 128
-
-glabel D_801653C0
-.skip 32
-
-glabel gPlayerIsThrottleActive
-.skip 32
-
-glabel D_80165400
-.skip 32
-
-glabel D_80165420
-.skip 32
-
-glabel D_80165440
-.skip 32
-
-glabel gIsPlayerTripleAButtonCombo
-.skip 32
-
-glabel D_80165480
-.skip 32
-
-glabel D_801654A0
-.skip 32
-
-glabel D_801654C0
-.skip 32
-
-glabel D_801654E0
-.skip 32
-
-glabel D_80165500
-.skip 32
-
-glabel D_80165520
-.skip 32
-
-glabel D_80165540
-.skip 32
-
-glabel D_80165560
-.skip 14
-
-glabel D_8016556E
-.skip 2
-
-glabel D_80165570
-.skip 2
-
-glabel D_80165572
-.skip 2
-
-glabel D_80165574
-.skip 2
-
-glabel D_80165576
-.skip 2
-
-glabel D_80165578
-.skip 2
-
-glabel D_8016557A
-.skip 2
-
-glabel D_8016557C
-.skip 2
-
-glabel D_8016557E
-.skip 2
-
-glabel D_80165580
-.skip 2
-
-glabel D_80165582
-.skip 14
-
 glabel D_80165590
 .skip 4
 
@@ -589,26 +356,13 @@ glabel D_80165908
 glabel D_80165A90
 .skip 392
 
-# object list begin
-# gObjectList should be of size 123,200 (0xE0 * 0x226)
-# D_80165CBC, D_80165CBE, and D_80165CED are all fake variables
 glabel gObjectList
-.skip 164
-
-glabel D_80165CBC
-.skip 2
-
-glabel D_80165CBE
-.skip 47
-
-glabel D_80165CED
-.skip 122987
-# object list end
+.skip 123200
 
 glabel D_80183D58
 .skip 4
 
-glabel D_80183D5C
+glabel objectListSize
 .skip 4
 
 glabel D_80183D60
@@ -680,76 +434,25 @@ glabel gItemWindowObjectByPlayerId
 glabel D_80183E98
 .skip 8
 
-glabel D_80183EA0
-.skip 4
+glabel indexObjectList1
+.skip 128
 
-glabel D_80183EA4
-.skip 4
-
-glabel D_80183EA8
-.skip 4
-
-glabel D_80183EAC
-.skip 4
-
-glabel D_80183EB0
-.skip 16
-
-glabel D_80183EC0
+glabel D_80183F20
 .skip 8
 
-glabel D_80183EC8
-.skip 20
-
-glabel D_80183EDC
-.skip 16
-
-glabel D_80183EEC
-.skip 60
-
-glabel D_80183F28
-.skip 4
-
-glabel D_80183F2C
-.skip 8
-
-glabel D_80183F34
-.skip 8
-
-glabel D_80183F3C
-.skip 20
-
-glabel D_80183F50
-.skip 4
-
-glabel D_80183F54
-.skip 16
-
-glabel D_80183F64
-.skip 16
-
-glabel D_80183F74
-.skip 52
+glabel indexObjectList2
+.skip 128
 
 glabel D_80183FA8
 .skip 32768
 
-glabel D_8018BFA8
-.skip 16
-
-glabel D_8018BFB8
-.skip 24
-
-glabel D_8018BFD0
-.skip 8
-
-glabel D_8018BFD8
-.skip 80
+glabel indexObjectList3
+.skip 128
 
 glabel D_8018C028
 .skip 8
 
-glabel D_8018C030
+glabel indexObjectList4
 .skip 128
 
 # Array of (4) Collisions?
@@ -757,15 +460,9 @@ glabel D_8018C0B0
 .skip 256
 
 # begin D_8018C1B0, should be 512 bytes big
-# D_8018C1D8 through D_8018C278 are fake variables
+# D_8018C278 is a fake variable
 glabel D_8018C1B0
-.skip 40
-
-glabel D_8018C1D8
-.skip 80
-
-glabel D_8018C228
-.skip 80
+.skip 200
 
 glabel D_8018C278
 .skip 312
@@ -814,9 +511,9 @@ glabel D_8018C970
 .skip 256
 
 # some hud related list begin
-# D_8018CA70 should be of size 528 (0x84 * 0x4)
+# playerHUD should be of size 528 (0x84 * 0x4)
 # D_8018CA74 through D_8018CC7D are all fake
-glabel D_8018CA70
+glabel playerHUD
 .skip 4
 
 glabel D_8018CA74
@@ -1041,7 +738,7 @@ glabel D_8018D010
 glabel D_8018D018
 .skip 4
 
-glabel D_8018D01C
+glabel xOrientation
 .skip 4
 
 glabel D_8018D020
@@ -1718,10 +1415,7 @@ glabel D_8018E7AC
 .skip 4
 
 glabel D_8018E7B0
-.skip 1
-
-glabel D_8018E7B1
-.skip 7
+.skip 8
 
 glabel D_8018E7B8
 .skip 16

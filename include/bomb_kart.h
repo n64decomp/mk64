@@ -40,12 +40,12 @@ typedef struct {
 	/* 0x24 */ Vec3f wheel3Pos;
 	/* 0x30 */ Vec3f wheel4Pos;
 	/* 0x3C */ f32 unk_3C;
-	/* 0x40 */ s16 someRot; // seems like an angle of some variety, can't figure out its purpose
+	/* 0x40 */ u16 someRot; // seems like an angle of some variety, can't figure out its purpose
 	/* 0x42 */ u16 waypointIndex; // probably the waypoint that the bomb circles
 	/* 0x44 */ u16 state;
-	/* 0x46 */ s16 bounceTimer; // timer? state? height?
-	/* 0x48 */ s16 circleTimer; // timer? state? Somehow controls how it circles around
-	/* 0x4A */ s16 unk_4A;
+	/* 0x46 */ u16 bounceTimer; // timer? state? height?
+	/* 0x48 */ u16 circleTimer; // timer? state? Somehow controls how it circles around
+	/* 0x4A */ u16 unk_4A;
 	/* 0x4C */ s16 unk_4C;
 	/* 0x4E */ // s16 compilerPadding;
 	/* 0x50 */ f32 yPos; // Y position of the center of the circle

@@ -243,6 +243,10 @@ void func_800450C8(u8*, s32, s32);
 void func_80044F34(u8*, s32, s32);
 void func_8004D044(s32, s32, u8*, s32, s32, s32, s32, s32, s32, s32, s32);
 void func_8004D0CC(void);
+void func_8004D0D4(s32, s32, u8*, s32, s32, s32);
+void func_8004D210(s32, s32, u8*, s32, s32, s32, s32, s32, s32, s32, s32);
+void func_8004D37C(s32, s32, u8*, s32, s32, s32, s32, s32, s32, s32, s32);
+void func_8004D4E8(s32, s32, u8*, s32, s32, s32, s32, s32, s32, s32, s32);
 void func_8004DC34(s32, s32, u8*);
 void func_8004DC6C(s32, s32, u8*);
 void func_8004DCA4(s32, s32, u8*);
@@ -291,6 +295,7 @@ void func_8004EE54(s32);
 
 void func_8004EF9C(s32);
 void func_8004F020(s32);
+void func_8004F168(s32, s32, s32);
 void func_8004F3E4(s32);
 s32  func_8004F674(s32*, s32);
 void print_timer(s32, s32, s32);
@@ -303,12 +308,15 @@ void func_8004FDB4(f32, f32, s16, s16, s16, s32, s32, s32, s32);
 void func_80050320(void);
 s32  func_80050644(u16, s32*, s32*);
 void func_800507D8(u16, s32*, s32*);
+void func_800508C0(void);
 void func_80050C68(void);
 void func_80050E34(s32, s32);
 
 void func_800514BC(void);
 void func_80051638(s32);
 void func_800517C8(void);
+void func_800518F8(s32, s16, s16);
+void func_800519D4(s32, s16, s16);
 void func_80051ABC(s16, s32);
 void func_80051C60(s16, s32); 
 void func_80051EBC(void);
@@ -317,13 +325,15 @@ void func_80051F9C(void);
 
 void func_80052044(void);
 void func_80052080(void);
+void func_800520C0(s32);
 void func_8005217C(s32);
 void func_800523B8(s32, s32, u32);
 void func_800524B4(s32);
 void func_800524B4(s32);
+void func_80052590(s32);
 void func_800527D8(s32);
 void func_8005285C(s32);
-void func_80052590(s32);
+void func_800528EC(s32);
 void func_80052C60(s32);
 void func_80052D70(s32);
 void func_80052E30(s32);
@@ -332,6 +342,7 @@ void func_80052F20(s32);
 void func_8005309C(s32);
 void func_8005327C(s32);
 void func_800532A4(s32);
+void func_800534A4(s32);
 void func_800534E8(s32);
 void func_800536C8(s32);
 void func_80053870(s32);
@@ -417,14 +428,30 @@ void func_80057B14(s32, s32, char*, u32);
 void func_80057B80(s32, s32, char*, u32);
 void func_80057BEC(s32, s32, char*, u32);
 
-extern s32 D_80165860;
-extern s32 D_8016586C;
-extern s32 D_80165878;
-extern s32 D_8016589C;
+extern f32 D_801637C4;
+extern s32 D_801637E8;
+extern f32 D_801637F0;
+
+extern s32 D_80163814;
+
+extern u16 D_801656B0;
 extern u16 D_801656C0;
 extern s32 D_801655CC;
 extern u16 D_801656D0;
 extern u16 D_801656E0;
+
+extern s16 D_80165708;
+extern s16 D_80165710;
+extern s8  D_801657D0[];
+extern u16 D_8016579E;
+extern s8  D_801657B8[16];
+
+extern s32 D_80165860;
+extern s32 D_8016586C;
+extern s32 D_80165878;
+extern s32 D_8016589C;
+
+extern s8  D_80165908;
 
 extern Camera *D_8018CF14;
 extern s32 D_80183DD8[];
@@ -436,12 +463,29 @@ extern Vec3su D_80183E98;
 extern Collision D_8018C830;
 extern u8 *D_8018D1E0;
 
+extern f32 D_8018CFEC;
+extern f32 D_8018CFF4;
+extern f32 D_8018D00C;
+extern u8  D_8018D228;
+extern f32 D_8018D2A0;
+extern s16 D_8018D2C0[];
+extern s16 D_8018D2D8[];
+extern s16 D_8018D2E0;
+extern s16 D_8018D2E8;
+extern s16 D_8018D2F0;
+extern s16 D_8018D2F8;
+extern u16 D_8018D300;
+extern u16 D_8018D308;
+extern u16 D_8018D310;
+extern u16 D_8018D318;
 extern s32 D_8018D3E0; // some alpha
 extern s32 D_8018D3E4; // some red
 extern s32 D_8018D3E8; // some green
 extern s32 D_8018D3EC; // some blue
 
 extern s32 D_8018D400;
+extern u8* D_8018D4BC;
+extern u8* D_8018D4C0;
 
 // Probably aren't really part of this file, but don't have a better place to put them
 extern u8 *gPortraitTLUTs[];
@@ -453,8 +497,13 @@ extern Lights1 D_800E4668;
 extern Lights1 D_800E4680;
 extern Lights1 D_800E4698;
 
-extern s8 D_800E5670[];
-extern s8 D_800E566A[];
+extern u8  D_800E52D0[];
+extern s32 D_800E55F8[];
+extern s32 D_800E5618[4];// = { 0x000000FF, 0x000000D7, 0x000000A2, 0x00000061 };
+extern s8  D_800E5628[];
+extern s8  D_800E5655[0x15]; //[0x15] = { 0x2B, 0x24, 0x2D, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0x2C, 0x36, 0x3C, 0x2F, 0x3D, 0x28, 0x30, 0x0A, };
+extern s8  D_800E5670[];
+extern s8  D_800E566A[];
 
 extern u8 d_course_bowsers_castle_thwomp_tlut[]; // Some type of pallette?
 

@@ -9,7 +9,7 @@
 
 #include "memory.h"
 #include "collision.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 
 #pragma intrinsic (sqrtf)
 

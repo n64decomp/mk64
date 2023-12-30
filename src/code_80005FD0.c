@@ -10,7 +10,7 @@
 #include "camera.h"
 #include "actors.h"
 #include "actors_extended.h"
-#include "code_8001F980.h"
+#include "render_player.h"
 #include "player_controller.h"
 #include "code_80071F00.h"
 #include "collision.h"
@@ -26,6 +26,9 @@
 #include "main.h"
 #include "menus.h"
 #include "code_80091750.h"
+#include "audio/external.h"
+#include "ending/podium_ceremony_actors.h"
+#include "spawn_players.h"
 
 extern UnkCommonTextureStruct0 *D_800DC720[];
 
@@ -33,9 +36,180 @@ s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;
 s16 D_80162EB0; // Possibly a float.
 s16 D_80162EB2; // possibly [3]
-s16 code_80005FD0_pad[2];
 
-uintptr_t *D_80162EB8[20];
+UnkCommonTextureStruct0 *D_80162EB8[20];
+
+// more padding?
+s32 D_80162F08[2];
+
+s16 D_80162F10[30];
+s16 D_80162F50[30];
+
+// padding, seemingly?
+s32 D_80162F90[4];
+
+Vec3f D_80162FA0;
+Vec3f D_80162FB0;
+Vec3f D_80162FC0;
+s16 D_80162FCC;
+s16 D_80162FCE;
+s16 D_80162FD0;
+f32 gCourseCompletionPercentByRank[8];
+/*
+The size of many of these arrays is weird. Based on their usage, they would only need
+to be 8 entries long (enough for each player). But some are 10 or even 12 long.
+Its plausible that this is just some decompilation artifact?
+Or maybe at some point in development they had plans for more players?
+*/
+s16 D_80162FF8[12];
+s16 D_80163010[12];
+f32 D_80163028[10];
+s16 D_80163050[12];
+f32 D_80163068[10];
+f32 D_80163090[10];
+s32 D_801630B8[10];
+u16 D_801630E0;
+s16 D_801630E2;
+s16 D_801630E8[10];
+s16 D_801630FC;
+s32 D_80163100[10];
+s32 D_80163128[10];
+s32 D_80163150[10];
+f32 D_80163178[10];
+f32 D_801631A0[10];
+s16 D_801631C8;
+s32 D_801631CC;
+TrackWaypoint *D_801631D0;
+TrackWaypoint *D_801631D4;
+s16 *D_801631D8;
+s16 *D_801631DC;
+u16 D_801631E0[12];
+u16 D_801631F8[10];
+f32 D_8016320C;
+f32 D_80163210[10];
+s32 D_80163238;
+u16 D_80163240[12];
+u16 D_80163258[12];
+u16 D_80163270[12];
+s32 D_80163288[10];
+UnkCommonTextureStruct0 *D_801632B0;
+u16 D_801632B8[12];
+u16 D_801632D0[12];
+u16 D_801632E8[12];
+s16 D_80163300[12];
+u16 D_80163318[12];
+u16 D_80163330[10];
+u16 D_80163344[2];
+u16 D_80163348[2];
+u16 D_8016334C[2];
+u16 D_80163350[12];
+s32 D_80163368[4];
+s32 D_80163378;
+s32 D_8016337C;
+s16 D_80163380[12];
+s16 D_80163398[12];
+s16 D_801633B0[12];
+s16 D_801633C8[12];
+s16 D_801633E0[12];
+s16 D_801633F8[12];
+s16 D_80163410[4];
+f32 D_80163418[4];
+f32 D_80163428[4];
+f32 D_80163438[4];
+s32 D_80163448;
+f32 D_8016344C;
+f32 D_80163450[10];
+s16 D_80163478;
+s16 D_8016347A;
+s16 D_8016347C;
+s16 D_8016347E;
+s32 D_80163480;
+s32 D_80163484;
+s32 D_80163488;
+s16 D_8016348C;
+s16 D_80163490[12];
+s16 D_801634A8[12];
+s16 D_801634C0[12];
+s16 D_801634D8[10];
+s16 D_801634EC;
+s32 D_801634F0;
+s32 D_801634F4;
+Test D_801634F8[10];
+PathNoY *D_80163598;
+s32 D_8016359C;
+TrainStuff gTrains[NUM_TRAINS];
+u16 isCrossingTriggeredByIndex[2];
+u16 D_801637BC[2];
+PaddleWheelBoatStuff gFerries[NUM_PADDLE_WHEEL_BOATS];
+VehicleStuff gBoxTruckList[NUM_RACE_BOX_TRUCKS];
+VehicleStuff gSchoolBusList[NUM_RACE_SCHOOL_BUSES];
+VehicleStuff gTankerTruckList[NUM_RACE_TANKER_TRUCKS];
+VehicleStuff gCarList[NUM_RACE_CARS];
+s32 D_80163DD8[4];
+BombKart gBombKarts[NUM_BOMB_KARTS_MAX];
+Collision D_80164038[NUM_BOMB_KARTS_MAX];
+struct unexpiredActors gUnexpiredActorsList[8];
+D_801642D8_entry D_801642D8[8];
+s16 D_80164358;
+s16 D_8016435A;
+s16 D_8016435C;
+s16 gGPCurrentRacePlayerIdByRank[12]; // D_80164360
+s16 D_80164378[12];
+s32 gLapCountByPlayerId[10]; // D_80164390
+s32 gGPCurrentRaceRankByPlayerId[10]; // D_801643B8
+s32 D_801643E0[10];
+s32 D_80164408[10];
+u16 D_80164430;
+u16 gNearestWaypointByPlayerId[12];
+s32 D_80164450[10];
+s16 D_80164478[10];
+s32 D_8016448C;
+TrackWaypoint *D_80164490;
+f32 D_80164498[4];
+f32 gLapCompletionPercentByPlayerId[10]; // D_801644A8
+f32 gCourseCompletionPercentByPlayerId[10]; // D_801644D0
+s16 D_801644F8[12];
+f32 D_80164510[10];
+s16 D_80164538[12];
+TrackWaypoint *D_80164550[4];
+TrackWaypoint *D_80164560[4];
+TrackWaypoint *D_80164570[4];
+s16 *D_80164580[4];
+s16 *D_80164590[4];
+s16 *D_801645A0[4];
+u16 gPathIndexByPlayerId[12]; // D_801645B0
+u16 gWaypointCountByPathIndex[4]; // D_801645C8
+s32 D_801645D0[4];
+s16 *D_801645E0;
+s32 D_801645E8[4];
+f32 D_801645F8[4];
+s32 D_80164608[4];
+f32 D_80164618[4];
+s32 D_80164628[4];
+f32 D_80164638[4];
+f32 D_80164648[4];
+f32 D_80164658[4];
+s16 gNearestWaypointByCameraId[4];
+s16 D_80164670[4];
+s16 D_80164678[4];
+s16 D_80164680[4];
+f32 D_80164688[4];
+f32 D_80164698;
+f32 D_8016469C;
+f32 D_801646A0;
+// start padding
+s32 D_801646A4;
+s32 D_801646A8;
+s32 D_801646AC;
+s32 D_801646B0;
+s32 D_801646B4;
+s32 D_801646B8;
+s32 D_801646BC;
+// end padding
+s16 D_801646C0[4];
+u32 D_801646C8;
+u16 D_801646CC;
+UnkStruct_46D0 D_801646D0[4];
 
 // Strings, presented by google translate!
 // Note that these are EUC-JP encoded, see:
@@ -374,47 +548,6 @@ char *D_800ECF3C = "４位の人終了\n";
 char *D_800ECF4C = "OGA 表彰 move 終了\n";
 char *D_800ECF60 = "OGAWA DEBUG DRAW\n";
 
-/*    end of bss_Main.s imported. Commented out cause need everything prior too.
-    s16 *D_801645E0;
-    s16 D_801645E4_pad[3];
-
-    f32 D_801645E8[4];
-
-    f32 D_801645F8[4];
-
-    s32 D_80164608[4];
-
-    f32 D_80164618[4];
-
-    f32 D_80164628[4];
-
-    f32 D_80164638[4];
-
-    f32 D_80164648[4];
-    f32 D_80164658[4];
-
-    s16 gNearestWaypointByCameraId[4];
-
-    s16 D_80164670[4];
-    s16 D_80164678[4];
-    s16 D_80164680[4];
-    f32 D_80164688[4];
-    f32 D_80164698;
-    f32 D_8016469C;
-    f32 D_801646A0;
-
-    s32 D_801646A4_pad[7];
-
-    s16 D_801646C0[2];
-
-    s32 D_801646C8;
-
-    s16 D_801646CC;
-    //.skip 4
-
-    UnkStruct_46D0 D_801646D0[4];
-*/
-
 s16 func_80005FD0(Vec3f arg0, Vec3f arg1) {
     s16 temp_ret;
     s16 phi_v1;
@@ -522,10 +655,6 @@ s32 func_800061DC(Vec3f arg0, f32 arg1, s32 arg2) {
     }
     return var_v1;
 }
-
-extern u16 D_80163258[];
-extern u16 D_80163270[];
-extern s32 D_80163288[];
 
 void func_800065D0(s32 playerId, Player *player) {
     s16 temp_t2;
@@ -833,7 +962,7 @@ void func_80007D04(s32 playerId, Player *player) {
     // Something wrong here. Maybe needs
    // var_v0 = 0;
     switch (gCCSelection) {
-        case 0:
+        case CC_50:
             var_v0 = 0;
             if (playerId == D_80163344[0]) {
                 var_v0 = 0x14;
@@ -886,271 +1015,156 @@ void func_80007D04(s32 playerId, Player *player) {
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80007D04.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit bece1d6db17040749f77dbbd090363cc6fb926f9
-extern ? D_80163410;
-extern ? D_80163418;
-extern ? D_80163438;
-
-void func_80007FA4(s16 arg0, Player *player, f32 arg2) {
+void func_80007FA4(s32 arg0, Player *player, f32 arg2) {
     f32 temp_f0;
     f32 temp_f12;
-    f32 temp_f12_2;
     f32 temp_f2;
-    s16 *temp_v0_2;
-    s16 *temp_v0_3;
-    s16 *temp_v0_4;
-    s16 *temp_v0_5;
-    s16 temp_v1;
-    s32 temp_v0;
+    s32 test;
 
-    temp_v0 = arg0 * 4;
-    temp_f0 = *(&D_80163418 + temp_v0) - player->pos[0];
-    temp_f2 = *(&D_80163438 + temp_v0) - player->pos[2];
+    temp_f0 = D_80163418[arg0] - player->pos[0];
+    temp_f2 = D_80163438[arg0] - player->pos[2];
+    temp_f12 = (temp_f0 * temp_f0) + (temp_f2 * temp_f2);
     if (arg0 == 3) {
-        temp_v0_2 = (arg0 * 2) + &D_80163410;
-        temp_f12 = (temp_f0 * temp_f0) + (temp_f2 * temp_f2);
-        if ((temp_f12 < 25.0f) && (*temp_v0_2 < 5)) {
-            *temp_v0_2 = 4;
-            if ((f64) arg2 < 0.16666666666666666) {
-                func_80038BE4(player, 1);
-                return;
-            }
+        if ((temp_f12 < 25.0f) && (D_80163410[arg0] < 5)) {
+            D_80163410[arg0] = 4;
+            (arg2 < ((2.0  * 18.0) / 216.0)) ? func_80038BE4(player, 1)  : func_80031F48(player, 1.0f);
+        } else if ((temp_f12 < 3600.0f) && (D_80163410[arg0] < 4)) {
+            D_80163410[arg0] = 3;
+            (arg2 < ((5.0  * 18.0) / 216.0)) ? func_80038BE4(player, 1)  : func_80031F48(player, 5.0f);
+        } else {
+            (arg2 < ((20.0 * 18.0) / 216.0)) ? func_80038BE4(player, 10) : func_80031F48(player, 1.0f);
+        }
+    } else {
+        if ((temp_f12 < 25.0f) && (D_80163410[arg0] < 5)) {
+            D_80163410[arg0] = 4;
+            test = 2;
+            (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 1) : func_80031F48(player, 1.0f);
+        } else if ((temp_f12 < 4900.0f) && (D_80163410[arg0] < 4)) {
+            D_80163410[arg0] = 3;
+            test = 5;
+            (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 1) : func_80031F48(player, 15.0f);
+        } else if ((temp_f12 < 22500.0f) && (D_80163410[arg0] < 3)) {
+            D_80163410[arg0] = 2;
+            test = 20;
+            (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 5) : func_80031F48(player, 1.0f);
+        } else if ((temp_f12 < 90000.0f) && (D_80163410[arg0] < 2)) {
+            D_80163410[arg0] = 1;
+            test = 30;
+            (arg2 < ((test * 18.0) / 216.0)) ? func_80038BE4(player, 6) : func_80031F48(player, 1.0f);
+        } else if (D_80163410[arg0] == 0) {
+            test = 35;
+            (arg2 < (((test^0) * 18.0) / 216.0)) ? func_80038BE4(player, 2) : func_80031F48(player, 1.0f);
+        } else {
             func_80031F48(player, 1.0f);
-            return;
         }
-        temp_v0_3 = (arg0 * 2) + &D_80163410;
-        if ((temp_f12 < 3600.0f) && (*temp_v0_3 < 4)) {
-            *temp_v0_3 = 3;
-            if ((f64) arg2 < 0.4166666666666667) {
-                func_80038BE4(player, 1);
-                return;
-            }
-            func_80031F48(player, 5.0f);
-            return;
-        }
-        if ((f64) arg2 < 1.6666666666666667) {
-            func_80038BE4(player, 0x000A);
-            return;
-        }
-        func_80031F48(player, 1.0f);
-        return;
     }
-    temp_v0_4 = (arg0 * 2) + &D_80163410;
-    temp_f12_2 = (temp_f0 * temp_f0) + (temp_f2 * temp_f2);
-    if ((temp_f12_2 < 25.0f) && (*temp_v0_4 < 5)) {
-        *temp_v0_4 = 4;
-        if ((f64) arg2 < ((2.0 * 18.0) / 216.0)) {
-            func_80038BE4(player, 1);
-            return;
-        }
-        func_80031F48(player, 1.0f);
-        return;
-    }
-    temp_v0_5 = (arg0 * 2) + &D_80163410;
-    temp_v1 = *temp_v0_5;
-    if ((temp_f12_2 < 4900.0f) && (temp_v1 < 4)) {
-        *temp_v0_5 = 3;
-        if ((f64) arg2 < ((5.0 * 18.0) / 216.0)) {
-            func_80038BE4(player, 1);
-            return;
-        }
-        func_80031F48(player, 15.0f);
-        return;
-    }
-    if ((temp_f12_2 < 22500.0f) && (temp_v1 < 3)) {
-        *temp_v0_5 = 2;
-        if ((f64) arg2 < ((20.0 * 18.0) / 216.0)) {
-            func_80038BE4(player, 5);
-            return;
-        }
-        func_80031F48(player, 1.0f);
-        return;
-    }
-    if ((temp_f12_2 < 90000.0f) && (temp_v1 < 2)) {
-        *temp_v0_5 = 1;
-        if ((f64) arg2 < ((30.0 * 18.0) / 216.0)) {
-            func_80038BE4(player, 6);
-            return;
-        }
-        func_80031F48(player, 1.0f);
-        return;
-    }
-    if (temp_v1 == 0) {
-        if ((f64) arg2 < (((f64) 0x23 * 18.0) / 216.0)) {
-            func_80038BE4(player, 2);
-            return;
-        }
-        func_80031F48(player, 1.0f);
-        return;
-    }
-    func_80031F48(player, 1.0f);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80007FA4.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 3b40ab93768f52ac241c5ae84ef58ef6bc4cb1de
-void func_80007D04(f32, s32, Player *, s32, Player *); /* extern */
-void func_80007FA4(f32, Player *, f32, Player *);      /* extern */
-s32 func_800088D8(f32, s32, s16, s16, Player *);    /* extern */
-extern s16 D_801631E0;
-extern u16 D_80163330;
-extern s16 D_80163350;
-extern ? D_801634D8;
-extern ? D_80164392;
-extern ? D_8016440A;
-s16 gCurrentCourseId;                               /* unable to generate initializer */
-
-void func_80008424(s32 arg0, f32 arg1, Player *player) {
-    f32 sp34;
-    s32 sp28;
-    s32 sp1C;
-    f32 temp_f2;
+void func_80008424(s32 playerId, f32 arg1, Player *player) {
+    f32 var_f2;
     f32 var_f0;
-    f32 var_f12;
-    s32 temp_t5;
-    s32 temp_v0;
-    s32 temp_v0_2;
-    s32 temp_v0_3;
-    s32 temp_v0_5;
-    s32 temp_v1;
+    s32 thing;
     s32 var_a1;
-    u16 temp_v0_4;
 
-    temp_v1 = player->effects;
-    var_f12 = arg1;
-    temp_f2 = player->unk_094;
-    if (!(temp_v1 & 0x80) && !(temp_v1 & 0x40) && ((temp_v1 << 0xE) >= 0) && (temp_v0 = player->statusEffects, ((temp_v0 << 9) >= 0)) && ((temp_v0 << 7) >= 0) && !(temp_v0 & 2) && !(temp_v0 & 4)) {
-        if (gCurrentCourseId == 0x0014) {
-            func_80007FA4(var_f12, player, temp_f2, player);
-            return;
-        }
-        temp_t5 = arg0 * 2;
-        if ((*(&D_801634D8 + temp_t5) == (s16) 1) && !(temp_v1 & 0x80000200)) {
+    var_f2 = player->unk_094;
+    if (!(player->effects & 0x80) &&
+        !(player->effects & 0x40) &&
+        !(player->effects & 0x20000) &&
+        !(player->statusEffects & 0x400000) &&
+        !(player->statusEffects & 0x01000000) &&
+        !(player->statusEffects & 2) &&
+        !(player->statusEffects & 4)) {
+        if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
+            func_80007FA4(playerId, player, var_f2);
+        } else if ((D_801634D8[playerId] == 1) && !(player->effects & 0x80000200)) {
             func_80031F48(player, 10.0f);
-            if ((f64) player->currentSpeed == 0.0) {
+            if (player->currentSpeed == 0.0) {
                 player->velocity[0] = 0.0f;
                 player->velocity[2] = 0.0f;
             }
         } else {
-            temp_v0_2 = gCCSelection;
             var_f0 = 3.3333333f;
-            switch (temp_v0_2) {                    /* irregular */
-            case CC_100:
-            case CC_EXTRA:
+            switch (gCCSelection) {                 /* irregular */
+            case 1:
+            case 3:
                 break;
-            case CC_50:
+            case 0:
                 var_f0 = 2.5f;
                 break;
-            case CC_150:
+            case 2:
                 var_f0 = 3.75f;
                 break;
             }
-            if (temp_f2 < var_f0) {
-                player->effects = temp_v1 & 0xFFDFFFFF;
+            if (var_f2 < var_f0) {
+                player->effects &= ~0x00200000;
                 player_speed(player);
-                return;
-            }
-            if (player->type & PLAYER_CINEMATIC_MODE) {
-                if (temp_f2 < var_f12) {
-                    player->effects = temp_v1 & 0xFFDFFFFF;
+            } else if (player->type & 0x800) {
+                if (var_f2 < arg1) {
+                    player->effects &= ~0x00200000;
                     player_speed(player);
-                    return;
+                } else {
+                    player->effects &= ~0x00200000;
+                    func_80031F48(player, 1.0f);
                 }
-                player->effects = temp_v1 & 0xFFDFFFFF;
-                func_80031F48(player, 1.0f);
-                return;
-            }
-            if ((*(&D_801631E0 + temp_t5) == (u16) 1) && (*(&D_80163330 + temp_t5) != (u16) 1)) {
-                temp_v0_3 = arg0 * 4;
-                if (func_800088D8(var_f12, arg0, *(&D_80164392 + temp_v0_3), *(&D_8016440A + temp_v0_3), player) == 1) {
+            } else if ((D_801631E0[playerId] == 1) && (D_80163330[playerId] != 1)) {
+                if (func_800088D8(playerId, gLapCountByPlayerId[playerId], D_80164408[playerId]) == 1) {
                     player->effects |= 0x200000;
                     player_speed(player);
-                    return;
-                }
-                player->effects &= 0xFFDFFFFF;
-                func_80031F48(player, 1.0f);
-                return;
-            }
-            temp_v0_4 = *(&D_80163350 + temp_t5);
-            switch (temp_v0_4) {                    /* switch 1; irregular */
-            case 1:                                 /* switch 1 */
-                player->effects = temp_v1 & 0xFFDFFFFF;
-                sp34 = temp_f2;
-                sp1C = temp_t5;
-                sp28 = 1;
-                player_speed(player);
-                var_a1 = 1;
-                var_f12 = arg1;
-                break;
-            case 3:                                 /* switch 1 */
-                player->effects = temp_v1 | 0x200000;
-                sp34 = temp_f2;
-                sp1C = temp_t5;
-                sp28 = 1;
-                player_speed(player);
-                var_a1 = 1;
-                var_f12 = arg1;
-                break;
-            case 2:                                 /* switch 1 */
-                if (((temp_f2 / 18.0f) * 216.0f) > 20.0f) {
-                    var_f12 = 1.6666666f;
-                }
-                /* fallthrough */
-            default:                                /* switch 1 */
-            case 0:                                 /* switch 1 */
-                var_a1 = 0;
-                break;
-            }
-            if (var_a1 != 1) {
-                if (temp_f2 < var_f12) {
-                    if ((gDemoMode) && (gCurrentCourseId != 0x0014)) {
-                        player_speed(player);
-                        return;
-                    }
-                    temp_v0_5 = arg0 * 4;
-                    if (*(&D_80163330 + temp_t5) == (u16) 1) {
-                        func_80007D04(var_f12, arg0, player, temp_t5, player);
-                        return;
-                    }
-                    if (func_800088D8(var_f12, arg0, *(&D_80164392 + temp_v0_5), *(&D_8016440A + temp_v0_5), player) == 1) {
-                        player->effects |= 0x200000;
-                        player_speed(player);
-                        return;
-                    }
-                    player->effects &= 0xFFDFFFFF;
+                } else {
+                    player->effects &= ~0x00200000;
                     func_80031F48(player, 1.0f);
-                    return;
                 }
-                player->effects &= 0xFFDFFFFF;
-                if (var_f12 > 1.0f) {
-                    func_80031F48(player, 2.0f);
-                    return;
+            } else {
+                var_a1 = 1;
+                switch (D_80163350[playerId]) {                    /* switch 1; irregular */
+                case 1:                                 /* switch 1 */
+                    player->effects &= ~0x00200000;
+                    player_speed(player);
+                    break;
+                case 3:                                 /* switch 1 */
+                    player->effects |= 0x200000;
+                    player_speed(player);
+                    break;
+                case 2:                                 /* switch 1 */
+                    if (((var_f2 / 18.0f) * 216.0f) > 20.0f) {
+                        arg1 = 1.6666666f;
+                    }
+                    var_a1 = 0;
+                    break;
+                case 0:                                 /* switch 1 */
+                default:                                /* switch 1 */
+                    var_a1 = 0;
+                    break;
                 }
-                func_80031F48(player, 5.0f);
+                if (var_a1 != 1) {
+                    if (var_f2 < arg1) {
+                        if ((gDemoMode == 1) && (gCurrentCourseId != 0x0014)) {
+                            player_speed(player);
+                        }else if (D_80163330[playerId] == 1) {
+                            func_80007D04(playerId, player);
+                        } else if (func_800088D8(playerId, gLapCountByPlayerId[playerId], D_80164408[playerId]) == 1) {
+                            player->effects |= 0x200000;
+                            player_speed(player);
+                        } else {
+                            player->effects &= ~0x00200000;
+                            func_80031F48(player, 1.0f);
+                        }
+                    } else {
+                        player->effects &= ~0x00200000;
+                        if (arg1 > 1.0f) {
+                            func_80031F48(player, 2.0f);
+                        } else {
+                            func_80031F48(player, 5.0f);
+                        }
+                    }
+                }
             }
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80008424.s")
-#endif
 
 #ifdef MIPS_TO_C
-//generated by m2c commit bece1d6db17040749f77dbbd090363cc6fb926f9
-extern s32 D_80163128;
-extern s32 D_80163150;
-extern u16 D_80163330;
-extern s16 D_80163344;
-extern u16 D_80163348;
-extern s16 D_80163478;
-extern ? D_80164376;
-extern s16 D_80164386;
-extern ? D_801643BA;
-extern ? D_80164538;
-extern s8 gPlayerCount;
+//generated by m2c commit beb457dabfc7a01ec6540a5404a6a05097a13602 on Dec-26-2023
 static ? D_800DCAF4;                                /* unable to generate initializer */
 static ? D_800DCB34;                                /* unable to generate initializer */
 static ? *D_800DCBB4[0x15] = {
@@ -1176,7 +1190,6 @@ static ? *D_800DCBB4[0x15] = {
     &D_800DCAF4,
     &D_800DCAF4,
 };
-s16 gCurrentCourseId;                               /* unable to generate initializer */
 
 s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
     s32 sp10;
@@ -1185,8 +1198,6 @@ s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
     f32 temp_f0;
     f32 temp_f0_2;
     f32 temp_f0_3;
-    s16 *var_a0_3;
-    s16 temp_t3_2;
     s16 temp_t5_2;
     s16 temp_v0;
     s16 var_a0_4;
@@ -1198,9 +1209,7 @@ s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
     s32 *var_v1;
     s32 temp_a2;
     s32 temp_lo;
-    s32 temp_t0;
     s32 temp_t2;
-    s32 temp_t3;
     s32 temp_t8;
     s32 var_a0;
     s32 var_a0_2;
@@ -1208,39 +1217,37 @@ s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
     s32 var_a1_2;
     s32 var_a1_3;
     s32 var_a1_4;
-    s8 temp_t1_2;
+    u16 *var_a0_3;
     u16 temp_t7;
     void *temp_a2_2;
     void *temp_a3;
 
     var_a1 = arg1;
-    temp_t0 = arg0 * 4;
-    temp_t5 = temp_t0 + &D_80163128;
-    temp_t4 = temp_t0 + &D_80163150;
+    temp_t5 = &D_80163128[arg0];
+    temp_t4 = &D_80163150[arg0];
     *temp_t5 = -1;
     *temp_t4 = -1;
-    if (gModeSelection == TIME_TRIALS) {
+    if (gModeSelection == 1) {
         return 1;
     }
     if (var_a1 < 0) {
         return 1;
     }
-    temp_t3 = arg0 * 2;
     if (var_a1 >= 4) {
         var_a1 = 3;
     }
-    if (*(&D_80163330 + temp_t3) == (u16) 1) {
+    if (D_80163330[arg0] == (u16) 1) {
         return 1;
     }
     temp_t1 = &gPlayers[arg0];
-    if ((temp_t1->type & 0x4000) != 0) {
+    if (temp_t1->type & 0x4000) {
         return 1;
     }
     temp_t2 = var_a1 * 8;
     temp_a3 = D_800DCBB4[gCurrentCourseId] + (temp_t2 * 2);
     if (arg2 == 0) {
-        if (gDemoMode) {
-            temp_a2 = D_80164450[arg0].unk2 - D_80164450[D_80164386].unk2;
+        if (gDemoMode == (u16) 1) {
+            temp_a2 = D_80164450[arg0].unk2 - D_80164450[*(D_80164378 + 0xE)].unk2;
             var_a1_2 = temp_a2;
             if (temp_a2 < 0) {
                 var_a1_2 = -temp_a2;
@@ -1258,11 +1265,10 @@ s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
             return 1;
         }
         temp_v0 = D_80164450[arg0].unk2;
-        temp_t3_2 = D_80163478;
-        var_a1_3 = temp_v0 - D_80164450[temp_t3_2].unk2;
-        temp_t5_2 = *(&D_801643BA + (temp_t3_2 * 4));
+        var_a1_3 = temp_v0 - D_80164450[D_80163478].unk2;
+        temp_t5_2 = *(gGPCurrentRaceRankByPlayerId + 2 + (D_80163478 * 4));
         if ((((s32) (*gWaypointCountByPathIndex * 2) / 3) < var_a1_3) && (temp_t5_2 >= 6)) {
-            var_a1_3 = temp_v0 - D_80164450[*(&D_80164376 + (temp_t5_2 * 2))].unk2;
+            var_a1_3 = temp_v0 - D_80164450[*(gLapCountByPlayerId - 0x1A + (temp_t5_2 * 2))].unk2;
         }
         if (var_a1_3 < 0) {
             var_a1_3 = -var_a1_3;
@@ -1280,8 +1286,8 @@ s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
         }
         return 1;
     }
-    var_a0_3 = &D_80163344;
-    temp_t8 = D_80164450[D_80163344].unk2 - D_80164450[arg0].unk2;
+    var_a0_3 = D_80163344;
+    temp_t8 = D_80164450[(s16) *D_80163344].unk2 - D_80164450[arg0].unk2;
     sp10 = temp_t8;
     var_a1_4 = temp_t8;
     if (temp_t8 < 0) {
@@ -1289,17 +1295,16 @@ s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
     }
     var_v0 = 0;
     do {
-        temp_t7 = (u16) *var_a0_3;
+        temp_t7 = *var_a0_3;
         var_a0_3 += 2;
         if (gGPCurrentRaceRankByPlayerId[temp_t7] < arg2) {
             var_v0 += 1;
         }
-    } while ((u32) var_a0_3 < (u32) &D_80163348);
-    temp_t1_2 = gPlayerCount;
+    } while ((u32) var_a0_3 < (u32) D_80163348);
     var_a0_4 = 0;
     var_v1 = gGPCurrentRaceRankByPlayerId;
-    if (temp_t1_2 > 0) {
-        sp4 = &gGPCurrentRaceRankByPlayerId[temp_t1_2];
+    if (gPlayerCount > 0) {
+        sp4 = &gGPCurrentRaceRankByPlayerId[gPlayerCount];
         do {
             if (*var_v1 < arg2) {
                 var_a0_4 += 1;
@@ -1311,7 +1316,7 @@ s32 func_800088D8(s32 arg0, s16 arg1, s16 arg2) {
     if ((var_v0 > 0) || (var_a0_4 > 0)) {
         var_t1 += 1;
     }
-    *(&D_80164538 + temp_t3) = var_t1;
+    D_80164538[arg0] = var_t1;
     if ((var_t1 < 0) || (var_t1 >= 8)) {
         goto block_55;
     }
@@ -1361,10 +1366,10 @@ s32 func_80008E58(s32 payerId, s32 pathIndex) {
     D_80163318[payerId] = trackSegment;
     D_80162FCE = func_8000C0BC(posX, posY, posZ, trackSegment, &pathIndex);
     gNearestWaypointByPlayerId[payerId] = D_80162FCE;
-    if(pathIndex){};
+    if(pathIndex) {};
     gPathIndexByPlayerId[payerId] = pathIndex;
     func_80008DC0(pathIndex);
-    if(stackPadding){};
+    if(stackPadding) {};
     return pathIndex;
 }
 
@@ -1451,30 +1456,16 @@ f32 func_80009258(UNUSED s32 playerId, f32 arg1, f32 arg2) {
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-12-2023
-? func_800065D0(s32, Player *, s32 *);              /* extern */
-f32 func_80009258(s32, f32, f32, u16 *);            /* extern */
-extern s16 D_801630E0;
-extern s16 D_801630E2;
-extern ? D_80163240;
-extern ? D_80163450;
-extern s16 D_801634EC;
-extern ? D_801642DE;
-extern ? D_801643B0;
-extern s32 D_8016440C;
-s16 gCurrentCourseId;                               /* unable to generate initializer */
-
+//generated by m2c commit beb457dabfc7a01ec6540a5404a6a05097a13602 on Dec-28-2023
 void func_8000929C(s32 playerId, Player *player) {
     f32 sp4C;
     f32 sp44;
     f32 sp38;
     s16 sp34;
     u16 *sp30;                                      /* compiler-managed */
-    s16 *sp2C;
+    u16 *sp2C;
     f32 temp_f0;
-    f32 temp_f0_2;
     f32 temp_f12;
-    s16 *temp_v1;
     s16 temp_a3;
     s16 var_t0;
     s32 *temp_v0;
@@ -1488,13 +1479,14 @@ void func_8000929C(s32 playerId, Player *player) {
     s32 var_a3;
     s32 var_v1;
     u16 *temp_t0;
+    u16 *temp_v1;
     u16 temp_v0_3;
     u16 temp_v0_4;
 
     temp_f0 = player->pos[2];
     temp_f12 = player->pos[0];
     D_801630E2 = 0;
-    temp_v1 = (playerId * 2) + &D_80163240;
+    temp_v1 = &D_80163240[playerId];
     *temp_v1 = 0;
     temp_t0 = &gNearestWaypointByPlayerId[playerId];
     sp30 = temp_t0;
@@ -1503,7 +1495,7 @@ void func_8000929C(s32 playerId, Player *player) {
     sp4C = temp_f12;
     D_80162FCE = func_8000CD24(temp_f12, player->pos[1], temp_f0, (s16) *temp_t0, player, playerId, D_80163448);
     temp_a3 = D_80162FCE;
-    D_801630E0 = temp_a3;
+    D_801630E0 = (u16) temp_a3;
     if (temp_a3 != *temp_t0) {
         *temp_t0 = (u16) temp_a3;
         D_801630E2 = 1;
@@ -1553,7 +1545,7 @@ block_23:
 block_25:
             var_a3 = playerId * 4;
         }
-        sp38 = *(&D_80163450 + var_a3);
+        sp38 = *(D_80163450 + var_a3);
         if ((var_v1 != 0) && (sp44 <= D_8016344C)) {
             temp_v0 = var_a3 + gLapCountByPlayerId;
             if (D_8016344C < sp38) {
@@ -1572,7 +1564,7 @@ block_25:
                             var_v0->unk-8 = (s32) (temp_t9 - 1);
                             var_v0->unk-C = (s32) (temp_t7 - 1);
                             var_v0->unk-10 = (s32) (temp_t5 - 1);
-                        } while (var_v0 != &D_801643B0);
+                        } while (var_v0 != (gLapCountByPlayerId + 0x20));
                     }
                 }
                 *sp2C = 1;
@@ -1580,12 +1572,11 @@ block_25:
                 sp30 = var_a3;
                 func_80008F38(playerId);
                 func_80011AE4(playerId);
-                *(&D_801642DE + (playerId * 0x10)) = 0;
-                if ((D_8016348C == 0) && !(player->type & PLAYER_CINEMATIC_MODE)) {
+                *(&D_801642D8->unk_06 + (playerId * 0x10)) = 0;
+                if ((D_8016348C == 0) && !(player->type & 0x800)) {
                     sp30 = var_a3;
                     sp34 = var_t0;
-                    temp_f0_2 = func_80009258(playerId, sp38, sp44, (u16 *) var_a3);
-                    *(gTimePlayerLastTouchedFinishLine + var_a3) = temp_f0_2;
+                    *(gTimePlayerLastTouchedFinishLine + var_a3) = func_80009258(playerId, sp38, sp44);
                 }
             }
         }
@@ -1597,15 +1588,15 @@ block_25:
             }
         }
     }
-    *(&D_80163450 + (playerId * 4)) = sp44;
+    D_80163450[playerId] = sp44;
     if ((gCurrentCourseId == 4) && (D_801630E2 == 1) && ((func_80009000(playerId), temp_v0_3 = player->type, ((temp_v0_3 & 0x4000) == 0)) || (temp_v0_3 & 0x1000))) {
         func_800090F0(playerId, player);
     }
     temp_v0_4 = player->type;
     if ((temp_v0_4 & 0x4000) && !(temp_v0_4 & 0x1000)) {
-        func_800065D0(playerId, player, &D_80163448);
+        func_800065D0(playerId, player);
         if ((gModeSelection == 0) && (gPlayerCount == 2) && (playerId == 0)) {
-            if (*D_80164408 < D_8016440C) {
+            if (*D_80164408 < *(D_80164408 + 4)) {
                 D_80163478 = 0;
             } else {
                 D_80163478 = 1;
@@ -1655,21 +1646,16 @@ void func_800097E0(void) {
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-12-2023
-extern ? D_80163398;
-extern ? D_801633B0;
-
+//generated by m2c commit beb457dabfc7a01ec6540a5404a6a05097a13602 on Nov-27-2023
 void func_800098FC(u32 arg0, Player *player) {
     s32 sp1C;
     s16 *sp18;
     s16 *temp_a2;
     s16 *temp_a2_2;
     s32 temp_v0_2;
-    s32 temp_v1;
     u32 temp_v0;
 
-    temp_v1 = arg0 * 2;
-    temp_a2 = temp_v1 + &D_80163398;
+    temp_a2 = &D_80163398[arg0];
     if (*temp_a2 >= 0xB) {
         temp_v0 = player->effects;
         if (!(temp_v0 & 0x80) && !(temp_v0 & 0x40)) {
@@ -1678,13 +1664,13 @@ void func_800098FC(u32 arg0, Player *player) {
             }
         } else {
 block_6:
-            sp1C = temp_v1;
+            sp1C = arg0 * 2;
             sp18 = temp_a2;
             func_800C92CC((u8) arg0, 0x2900800AU);
             *temp_a2 = 0;
         }
     }
-    temp_a2_2 = temp_v1 + &D_801633B0;
+    temp_a2_2 = &D_801633B0[arg0];
     if (*temp_a2_2 >= 0xB) {
         temp_v0_2 = player->statusEffects;
         if (!(temp_v0_2 & 0x400000) && !(temp_v0_2 & 0x01000000) && !(temp_v0_2 & 2) && !(temp_v0_2 & 4)) {
@@ -1703,271 +1689,144 @@ block_15:
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800098FC.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-12-2023
-extern ? D_80163398;
-extern ? D_801633B0;
-extern ? D_801633C8;
-
-void func_800099EC(s32 arg0, s32 arg1) {
-    s32 sp40;
-    s16 *temp_s7;
-    s16 *temp_v0_2;
-    s16 *temp_v0_3;
-    s16 temp_v1_2;
-    s16 temp_v1_3;
-    s32 *var_s2;
-    s32 temp_t6;
-    s32 temp_v0;
-    s32 temp_v1;
+void func_800099EC(s32 playerId, Player *unused) {
     s32 var_s0;
-    s32 var_s1;
 
-    temp_t6 = arg0 * 2;
-    temp_s7 = temp_t6 + &D_801633C8;
-    sp40 = temp_t6;
-    if (*temp_s7 >= 0x65) {
-        var_s0 = 0;
-        if (gPlayerCount > 0) {
-            var_s2 = gGPCurrentRaceRankByPlayerId;
-            var_s1 = 0;
-            do {
-                temp_v0 = gGPCurrentRaceRankByPlayerId[arg0];
-                temp_v1 = *var_s2;
-                if ((temp_v0 < temp_v1) && (temp_v0 == *(D_801643E0 + var_s1)) && (temp_v1 == D_801643E0[arg0])) {
-                    func_800C92CC(arg0 & 0xFF, 0x2900800DU);
-                    *temp_s7 = 0;
-                }
-                var_s0 += 1;
-                var_s1 += 4;
-                var_s2 += 4;
-            } while (var_s0 < gPlayerCount);
+    if (D_801633C8[playerId] >= 0x65) {
+        for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
+            if ((gGPCurrentRaceRankByPlayerId[playerId] < gGPCurrentRaceRankByPlayerId[var_s0]) &&
+                (gGPCurrentRaceRankByPlayerId[playerId] == D_801643E0[var_s0]) &&
+                (gGPCurrentRaceRankByPlayerId[var_s0] == D_801643E0[playerId])) {
+                func_800C92CC(playerId, 0x2900800DU);
+                D_801633C8[playerId] = 0;
+            }
         }
     }
-    if (*temp_s7 < 0x3E8) {
-        *temp_s7 += 1;
+    if (D_801633C8[playerId] < 0x3E8) {
+        D_801633C8[playerId]++;
     }
-    temp_v0_2 = sp40 + &D_80163398;
-    temp_v1_2 = *temp_v0_2;
-    if (temp_v1_2 < 0xC8) {
-        *temp_v0_2 = temp_v1_2 + 1;
+    if (D_80163398[playerId] < 0xC8) {
+        D_80163398[playerId]++;
     }
-    temp_v0_3 = sp40 + &D_801633B0;
-    temp_v1_3 = *temp_v0_3;
-    if (temp_v1_3 < 0xC8) {
-        *temp_v0_3 = temp_v1_3 + 1;
+    if (D_801633B0[playerId] < 0xC8) {
+        D_801633B0[playerId]++;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800099EC.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-12-2023
-? func_80008424(s32, ?32, Player *);                /* extern */
-? func_8000929C(s32, Player *);                     /* extern */
-? func_800099EC(s32, Player *);                     /* extern */
-? func_8000B140(s32);                               /* extern */
-? func_8000D438(s32, u16);                          /* extern */
-extern s16 D_80162FD0;
-extern ? D_80162FF8;
-extern ? D_80163028;
-extern ? D_80163050;
-extern ? D_80163090;
-extern ? D_801630B8;
-extern u16 D_801630E0;
-extern s16 D_801630E2;
-extern ? D_801630E8;
-extern ? D_80163100;
-extern ? D_80163178;
-extern ? D_801631A0;
-extern ? D_801631F8;
-extern ?32 D_8016320C;
-extern ? D_80163210;
-extern ? D_80163240;
-extern ? D_80163300;
-extern ? D_80163330;
-extern ? D_8016334C;
-extern s32 D_80163378;
-extern ? D_801633E0;
-extern ? D_80163418;
-extern ? D_80163438;
-extern s16 D_8016344A;
-extern ? D_801634FC;
-extern ? D_80163504;
-s16 gCurrentCourseId;                               /* unable to generate initializer */
-static s16 D_800DCA20[0];                           /* unable to generate initializer */
-f32 D_800DCA4C[0x15] = {
-    50.0f,
-    35.0f,
-    35.0f,
-    40.0f,
-    35.0f,
-    50.0f,
-    50.0f,
-    50.0f,
-    50.0f,
-    50.0f,
-    50.0f,
-    50.0f,
-    50.0f,
-    50.0f,
-    50.0f,
-    -1.0f,
-    -1.0f,
-    -1.0f,
-    40.0f,
-    -1.0f,
-    40.0f,
-};
-static ?32 D_800ECFB4 = 0x41055555;                 /* const */
-static ?32 D_800ECFC8 = 0x40555555;                 /* const */
+#ifdef NON_MATCHING
+#define FAKEMATCH1 0
+#define FAKEMATCH2 0
+// https://decomp.me/scratch/uJCh3
+// Lots of register allocation differences, but messing around seems to suggest they stem from 2 specific areas
+// MISMATCH1: something about the loading of `playerId` is off
+// MISMATCH2: something about the handling of the math is off. Not sure exactly what though
+// MISMATCH3: there's a small instruction ordering issue concerning `D_8015F6F0`. No idea what to do about it
+// FAKEMATCH1 is the best improvement I've seen yet, MISMATCH2/3 become the only issues.
 
 void func_80009B60(s32 playerId) {
-    s16 sp94;
-    Player *sp40;
-    ?32 *sp3C;
-    s32 sp38;
-    s32 sp34;                                       /* compiler-managed */
-    s32 sp30;                                       /* compiler-managed */
-    u16 *sp2C;
-    f32 *sp28;
-    u16 *sp24;
-    u16 *sp20;
-    f32 *sp1C;
-    ?32 *var_t0;
-    ?32 *var_t0_2;
-    ?32 *var_v0_2;
-    ?32 *var_v1_3;
-    Player *temp_v1;
-    Test *temp_v1_2;
-    Test *temp_v1_3;
-    Test *temp_v1_6;
-    f32 *temp_a2_2;
-    f32 *temp_v0_9;
-    f32 *temp_v1_5;
-    f32 *temp_v1_7;
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f0_3;
-    f32 temp_f0_4;
-    f32 temp_f0_5;
-    f32 temp_f2;
-    f32 temp_f2_2;
-    s16 *temp_v0_2;
-    s16 *temp_v1_4;
-    s16 temp_v0_10;
-    s16 temp_v0_12;
-    s16 temp_v0_13;
-    s16 temp_v0_14;
-    s16 temp_v0_3;
-    s16 temp_v0_5;
-    s16 temp_v0_6;
-    s16 temp_v0_7;
-    s16 temp_v1_8;
+    s32 stackPadding00;
+    s32 stackPadding01;
+    s32 stackPadding02;
+    s32 stackPadding03;
+    s32 stackPadding04;
+    s32 stackPadding05;
+    s32 stackPadding06;
+    s32 stackPadding07;
+    s32 stackPadding08;
+    s32 stackPadding09;
+    s32 stackPadding0A;
+    s32 stackPadding0B;
+    s32 stackPadding0C;
+    s32 stackPadding0D;
     s16 var_a0_2;
     s16 var_a1;
-    s16 var_a1_2;
+    s32 stackPadding0E;
+    s32 stackPadding0F;
+    s32 stackPadding10;
+    s32 stackPadding11;
+    s32 stackPadding12;
+    s32 stackPadding13;
+    s32 stackPadding14;
+    s32 stackPadding15;
+    s32 stackPadding16;
+    s32 stackPadding17;
+    s32 stackPadding18;
+    u16 stackPadding19;
+    u16 stackPadding1A;
+    f32 temp_f0;
+    f32 temp_f2;
     s16 var_a2;
-    s16 var_v0;
     s16 var_v1;
-    s16 var_v1_2;
-    s32 *temp_v0;
-    s32 temp_a1_2;
-    s32 temp_a2;
-    s32 temp_a3;
-    s32 temp_f10;
     s32 temp_f6;
-    s32 temp_t5;
-    s32 temp_t6;
-    u16 *temp_a1;
-    u16 *temp_a3_2;
-    u16 *temp_t0;
-    u16 *temp_t0_2;
-    u16 *temp_t6_2;
-    u16 *temp_t8;
-    u16 temp_a0;
-    u16 var_a0;
-    u32 temp_v0_11;
-    u32 temp_v0_4;
-    void *temp_v0_8;
+    Player *player;
+    TrackWaypoint *waypoint;
+    f32 athing = 1.5f;
 
-    temp_a3 = playerId * 4;
-    temp_v0 = temp_a3 + &D_80163100;
+    player = &gPlayers[playerId];
     if ((s32) D_800DCA4C[gCurrentCourseId] >= 0) {
-        *temp_v0 += 1;
+        D_80163100[playerId] += 1;
         if (playerId == 0) {
-            temp_t6 = D_80163378 + 1;
-            D_80163378 = temp_t6;
-            if (temp_t6 & 1) {
+            D_80163378++;
+            if (D_80163378 & 1) {
                 D_80163488 += 1;
             }
         }
-        temp_v1 = &gPlayers[playerId];
-        temp_a2 = playerId * 2;
-        if (!(temp_v1->type & 0x8000)) {
+        if (!(player->type & 0x8000)) {
             D_80164450[playerId] = -0x00000014;
             gCourseCompletionPercentByPlayerId[playerId] = -1000.0f;
             gLapCompletionPercentByPlayerId[playerId] = -1000.0f;
             return;
         }
-        temp_v0_2 = temp_a2 + &D_801633E0;
-        *temp_v0_2 = 0;
-        if (temp_v1->pos[0] < (f32) D_8015F6EA) {
-            *temp_v0_2 = 1;
+        D_801633E0[playerId] = 0;
+        if (player->pos[0] < D_8015F6EA) {
+            D_801633E0[playerId] = 1;
         }
-        if ((f32) D_8015F6E8 < temp_v1->pos[0]) {
-            *temp_v0_2 = 2;
+        if (D_8015F6E8 < player->pos[0]) {
+            D_801633E0[playerId] = 2;
         }
-        if (temp_v1->pos[2] < (f32) D_8015F6F2) {
-            *temp_v0_2 = 3;
+        if (player->pos[2] < D_8015F6F2) {
+            D_801633E0[playerId] = 3;
         }
-        if ((f32) D_8015F6F0 < temp_v1->pos[2]) {
-            *temp_v0_2 = 4;
+        // MISMATCH3
+        if (D_8015F6F0 < player->pos[2]) {
+            D_801633E0[playerId] = 4;
         }
-        temp_v0_3 = temp_v1->unk_0CA;
-        if (!(temp_v0_3 & 2) && !(temp_v0_3 & 8)) {
-            temp_a0 = gPathIndexByPlayerId[playerId];
-            sp40 = temp_v1;
-            sp34 = temp_a2;
-            sp38 = temp_a3;
-            D_80163448 = (s32) temp_a0;
-            func_80008DC0((s32) temp_a0);
+        if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8)) {
+            D_80163448 = gPathIndexByPlayerId[playerId];
+            func_80008DC0(D_80163448);
             switch (gCurrentCourseId) {             /* irregular */
             case 11:
-                func_80012DC0(playerId, sp40);
+                func_80012DC0(playerId, player);
                 if (playerId == 0) {
                     func_80013054();
                 }
                 break;
             case 18:
-                func_80013854(sp40);
+                func_80013854(player);
                 break;
             case 10:
-                func_800148C4(playerId, sp40);
-                func_80014A18(playerId, sp40);
-                func_80014B6C(playerId, sp40);
-                func_80014CC0(playerId, sp40);
+                func_800148C4(playerId, player);
+                func_80014A18(playerId, player);
+                func_80014B6C(playerId, player);
+                func_80014CC0(playerId, player);
                 break;
             }
-            if (sp40->type & 0x800) {
-                sp40->effects &= 0xFFBFFFFF;
-                sp40->unk_044 &= 0xFFFE;
+            if (player->type & 0x800) {
+                player->effects &= ~0x00400000;
+                player->unk_044 &= ~0x0001;
             }
-            func_8000929C(playerId, sp40);
-            if ((gCurrentCourseId != 0x0014) && ((*(&D_80163240 + sp34) == 1) || (playerId == 0))) {
+            func_8000929C(playerId, player);
+            if ((gCurrentCourseId != 0x0014) && ((D_80163240[playerId] == 1) || (playerId == 0))) {
                 set_places();
             }
-            if (sp40->type & 0x1000) {
+            if (player->type & 0x1000) {
                 if ((D_801630E2 == 1) && (gCurrentCourseId != 0x0014)) {
                     func_80011E38(playerId);
                 }
-                temp_t5 = playerId & 1;
-                sp30 = temp_t5;
-                if ((D_80163378 & 1) != temp_t5) {
+                if ((playerId & 1) != (D_80163378 & 1)) {
                     func_8001AC10(playerId);
                 }
-                func_800099EC(playerId, sp40);
+                func_800099EC(playerId, player);
                 D_80162FD0 = 0;
                 switch (gModeSelection) {           /* switch 1; irregular */
                 case 1:                             /* switch 1 */
@@ -1977,517 +1836,376 @@ void func_80009B60(s32 playerId) {
                 case 0:                             /* switch 1 */
                     break;
                 }
-                temp_a1 = sp34 + D_801631E0;
-                *temp_a1 = 0;
-                if ((sp40->effects & 0x1000) && (gCurrentCourseId != 0x0014)) {
-                    *temp_a1 = 1;
+                D_801631E0[playerId] = 0;
+                if ((player->effects & 0x1000) && (gCurrentCourseId != 0x0014)) {
+                    D_801631E0[playerId] = 1;
                 }
-                if (((u16) D_801646CC == 1) || (sp40->type & 0x800) || (gCurrentCourseId == 0x0014)) {
+                if ((D_801646CC == 1) || (player->type & 0x800) || (gCurrentCourseId == 0x0014)) {
                     if (gCurrentCourseId != 0x000A) {
-                        *(&D_801634FC + (playerId * 0x10)) = 0.0f;
+                        D_801634F8[playerId].unk4 = 0.0f;
                     }
-                    *(&D_80163504 + (playerId * 0x10)) = 0.0f;
+                    D_801634F8[playerId].unkC = 0.0f;
                 }
                 if (D_80163448 > 0) {
-                    temp_v1_2 = &D_801634F8[playerId];
-                    temp_v1_2->unk4 = 0.0f;
-                    temp_v1_2->unkC = 0.0f;
+                    D_801634F8[playerId].unk4 = 0.0f;
+                    D_801634F8[playerId].unkC = 0.0f;
                 }
-                temp_t6_2 = sp34 + gNearestWaypointByPlayerId;
-                sp24 = temp_t6_2;
-                temp_a2_2 = sp38 + D_80164510;
-                temp_a3_2 = sp34 + &D_801631F8;
-                *temp_a2_2 = (f32) D_80164550[D_80163448][*temp_t6_2].posY + 4.3f;
-                if ((*temp_a3_2 == 1) && (*temp_a1 == 0)) {
-                    sp2C = temp_a1;
-                    sp28 = temp_a2_2;
-                    sp20 = temp_a3_2;
-                    func_8002E4C4(sp40);
+                // gNearestWaypointByPlayerId[playerId] might need to be saved to a temp
+                D_80164510[playerId] = D_80164550[D_80163448][gNearestWaypointByPlayerId[playerId]].posY + 4.3f;
+                if ((D_801631F8[playerId] == 1) && (D_801631E0[playerId] == 0)) {
+                    func_8002E4C4(player);
                 }
-                if (*temp_a1 == 1) {
-                    sp40->pos[1] = *temp_a2_2;
+                if (D_801631E0[playerId] == 1) {
+                    player->pos[1] = D_80164510[playerId];
                 }
-                *temp_a3_2 = *temp_a1;
-                if (gCurrentCourseId != 4) {
-                    if (gCurrentCourseId != 0x000A) {
-                        var_a0 = *temp_a1;
-                        if (gCurrentCourseId != 0x0014) {
-
-                        } else {
-                            goto block_63;
-                        }
-                    } else {
-                        sp2C = temp_a1;
-                        func_8001490C(playerId);
-                        func_80014A60(playerId);
-                        func_80014BB4(playerId);
-                        func_80014D08(playerId);
-                        var_a0 = *temp_a1;
-                    }
-                } else {
-                    var_a0 = *temp_a1;
-block_63:
-                    *(&D_801634FC + (playerId * 0x10)) = 0.0f;
+                D_801631F8[playerId] = D_801631E0[playerId];
+                switch (gCurrentCourseId) {
+                case 4:
+                case 0x0014:
+                    D_801634F8[playerId].unk4 = 0.0f;
+                    break;
+                default:
+                    break;
+                case 10:
+                    func_8001490C(playerId);
+                    func_80014A60(playerId);
+                    func_80014BB4(playerId);
+                    func_80014D08(playerId);
+                    break;
                 }
-                if (var_a0 == 1) {
-                    *(&D_801630E8 + sp34) = 0;
-                    sp40->effects &= ~0x10;
-                    if ((D_80163378 & 1) != sp30) {
-                        func_8003680C(sp40, 0);
-                        func_80008424(playerId, *(&D_80163210 + sp38), sp40);
+                if (D_801631E0[playerId] == 1) {
+                    D_801630E8[playerId] = 0;
+                    player->effects &= ~0x10;
+                    if ((playerId & 1) != (D_80163378 & 1)) {
+                        func_8003680C(player, 0);
+                        func_80008424(playerId, D_80163210[playerId], player);
                         return;
                     }
-                    if ((gPlayerCount > 0) && (gPlayerCount < 3) && (*(&D_80163330 + sp34) == 1) && ((s32) *(&D_8016334C + sp34) < *(gGPCurrentRaceRankByPlayerId + sp38))) {
-                        var_t0 = sp38 + &D_80163210;
-                        *var_t0 = 0x41055555;
+                    if ((gPlayerCount > 0) && (gPlayerCount < 3) && (D_80163330[playerId] == 1) && (D_8016334C[playerId] < gGPCurrentRaceRankByPlayerId[playerId])) {
+                        D_80163210[playerId] = 8.333333f;
                     } else if (D_80162FD0 == (s16) 1U) {
-                        temp_v1_3 = &D_801634F8[playerId];
-                        sp30 = temp_v1_3;
-                        var_t0 = sp38 + &D_80163210;
-                        *var_t0 = *segmented_to_virtual_dupe_2((gCurrentCourseId * 0x10) + (gCCSelection * 4) + D_0D0096B8);
-                        temp_v1_3->unk4 = -0.5f;
+                        D_80163210[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D0096B8[gCurrentCourseId][gCCSelection]);
+                        D_801634F8[playerId].unk4 = -0.5f;
                     } else if (D_801645E0[D_80162FCE] > 0) {
-                        var_t0 = sp38 + &D_80163210;
-                        *var_t0 = *segmented_to_virtual_dupe_2((gCurrentCourseId * 0x10) + (gCCSelection * 4) + D_0D009418);
+                        D_80163210[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D009418[gCurrentCourseId][gCCSelection]);
                     } else {
-                        var_t0 = sp38 + &D_80163210;
-                        *var_t0 = *segmented_to_virtual_dupe_2((gCurrentCourseId * 0x10) + (gCCSelection * 4) + D_0D009568);
+                        D_80163210[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D009568[gCurrentCourseId][gCCSelection]);
                     }
-                    sp3C = var_t0;
                     func_800131DC(playerId);
                     func_8000D3B8(playerId);
                     func_8000D438(playerId, D_801630E0);
-                    temp_v0_4 = sp40->effects;
-                    temp_f0 = D_80162FA0->unk0 - sp40->pos[0];
-                    var_t0_2 = var_t0;
-                    temp_f2 = D_80162FA0->unk8 - sp40->pos[2];
-                    if (!(temp_v0_4 & 0x80) && !(temp_v0_4 & 0x40) && !(temp_v0_4 & 0x800)) {
+                    temp_f0 = D_80162FA0[0] - player->pos[0];
+                    temp_f2 = D_80162FA0[2] - player->pos[2];
+                    if (!(player->effects & 0x80) && !(player->effects & 0x40) && !(player->effects & 0x800)) {
                         if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) > 6400.0f) {
                             if (D_80163448 == 0) {
-                                sp3C = var_t0_2;
                                 func_8000B140(playerId);
-                                if (*(&D_80162FF8 + sp34) > 0) {
-                                    sp3C = var_t0_2;
-                                    func_8000BBD8(((s32) ((D_801630E0 + 5) & 0xFFFF) % (s32) D_80164430) & 0xFFFF, *(&D_80163090 + sp38), D_8016344A);
+                                if (D_80162FF8[playerId] > 0) {
+                                    stackPadding1A = D_801630E0 + 5;
+                                    stackPadding1A %= D_80164430;
+                                    func_8000BBD8(stackPadding1A, D_80163090[playerId], D_80163448);
                                 }
                             }
-                            sp3C = var_t0_2;
-                            sp40->unk_02C[1] = -get_angle_between_points(sp40->pos, D_80162FA0);
+                            player->unk_02C[1] = -get_angle_between_points(player->pos, D_80162FA0);
                         } else {
-                            sp40->unk_02C[1] = D_80164590[D_80163448][(s32) (D_801630E0 + 4) % (s32) D_80164430];
+                            player->unk_02C[1] = D_80164590[D_80163448][(D_801630E0 + 4) % D_80164430];
                         }
                     }
-                    sp3C = var_t0_2;
-                    func_8003680C(sp40, 0);
-                    func_80008424(playerId, *var_t0_2, sp40);
+                    func_8003680C(player, 0);
+                    func_80008424(playerId, D_80163210[playerId], player);
                     return;
                 }
-                temp_t8 = sp34 + &D_801630E8;
-                sp2C = temp_t8;
-                var_v0 = *temp_t8;
-                if ((var_v0 == (s16) 1U) || (var_v0 == -1)) {
-                    sp40->effects |= 0x10;
-                    var_v0 = (s16) *sp2C;
+                if ((D_801630E8[playerId] == 1) || (D_801630E8[playerId] == -1)) {
+                    player->effects |= 0x10;
                 }
-                if (var_v0 != 0) {
-                    temp_v1_4 = sp34 + &D_80163300;
-                    *temp_v1_4 = -get_angle_between_points(&sp40->rotX, sp40->pos);
-                    var_a0_2 = (s16) ((s32) ((s16) D_801631DC[(s32) (D_80162FCE + 2) % (s32) D_80164430] * 0x168) / 65535);
-                    var_a1 = (s16) ((s32) (*temp_v1_4 * 0x168) / 65535);
+                if (D_801630E8[playerId] != 0) {
+                    D_80163300[playerId] = -get_angle_between_points(&player->rotX, player->pos);
+                    var_a0_2 = (D_801631DC[(D_80162FCE + 2) % D_80164430] * 0x168) / 65535;
+                    var_a1 = (D_80163300[playerId] * 0x168) / 65535;
                     if (var_a0_2 < -0xB4) {
                         var_a0_2 += 0x168;
                     }
-                    if (var_a0_2 >= 0xB5) {
+                    if (var_a0_2 > 0xB4) {
                         var_a0_2 -= 0x168;
                     }
                     if (var_a1 < -0xB4) {
                         var_a1 += 0x168;
                     }
-                    if (var_a1 >= 0xB5) {
+                    if (var_a1 > 0xB4) {
                         var_a1 -= 0x168;
                     }
-                    temp_v0_5 = var_a0_2 - var_a1;
-                    var_v1 = temp_v0_5;
-                    if (temp_v0_5 < -0xB4) {
-                        var_v1 = temp_v0_5 + 0x168;
+                    var_v1 = var_a0_2 - var_a1;
+                    if (var_v1 < -0xB4) {
+                        var_v1 += 0x168;
                     }
-                    if (var_v1 >= 0xB5) {
+                    if (var_v1 > 0xB4) {
                         var_v1 -= 0x168;
                     }
-                    temp_v0_6 = (s16) *sp2C;
-                    switch (temp_v0_6) {            /* switch 2; irregular */
-                    case -1:                        /* switch 2 */
-                        if (var_v1 >= 6) {
-                            *sp2C = 0;
-                            sp40->effects &= ~0x10;
+                    switch (D_801630E8[playerId]) {
+                    case -1:
+                        if (var_v1 > 5) {
+                            D_801630E8[playerId] = 0;
+                            player->effects &= ~0x10;
                         }
                         break;
-                    case 1:                         /* switch 2 */
+                    case 1:
                         if (var_v1 < -5) {
-                            *sp2C = 0;
-                            sp40->effects &= ~0x10;
+                            D_801630E8[playerId] = 0;
+                            player->effects &= ~0x10;
                         }
+                        break;
+                    default:
                         break;
                     }
                 }
-                if ((D_80163378 & 1) != sp30) {
-                    func_8003680C(sp40, *(&D_80163050 + sp34));
-                    func_80008424(playerId, *(&D_80163210 + sp38), sp40);
+                // MISMATCH1
+#if FAKEMATCH2 == 1
+                stackPadding00 = (playerId & 1) != (D_80163378 & 1);
+                if (stackPadding00) {
+#else
+                if ((playerId & 1) != (D_80163378 & 1)) {
+#endif
+                    func_8003680C(player, D_80163050[playerId]);
+                    func_80008424(playerId, D_80163210[playerId], player);
                     return;
                 }
-                sp1C = sp40->pos;
-                temp_v1_5 = sp38 + &D_801630B8;
-                *temp_v1_5 = func_8000B7E4(playerId, (u16) D_80162FCE);
-                sp28 = temp_v1_5;
-                func_8000D438(playerId, (u16) D_80162FCE);
+                D_801630B8[playerId] = func_8000B7E4(playerId, D_80162FCE);
+                func_8000D438(playerId, D_80162FCE);
                 if (gCurrentCourseId != 0x0014) {
-                    temp_a1_2 = *(D_80164450 + sp38);
-                    if (temp_a1_2 < 0xB) {
-                        temp_v1_6 = &D_801634F8[playerId];
-                        if ((temp_a1_2 > 0) && (gCurrentCourseId == 0x000A)) {
-                            sp30 = temp_v1_6;
-                            func_8000BBD8(((s32) ((D_801630E0 + 0x14) & 0xFFFF) % (s32) D_80164430) & 0xFFFF, 0.0f, 0);
-                            temp_v1_6->unk4 = 0.0f;
+                    if (D_80164450[playerId] < 0xB) {
+                        stackPadding1A = D_801630E0;
+                        if ((D_80164450[playerId] > 0) && (gCurrentCourseId == 0x000A)) {
+                            stackPadding1A += 0x14;
+                            stackPadding1A %= D_80164430;
+                            func_8000BBD8(stackPadding1A, 0.0f, 0);
+                            D_801634F8[playerId].unk4 = 0.0f;
                         } else {
-                            temp_t0 = sp38 + D_80163068;
-                            sp20 = temp_t0;
-                            sp30 = temp_v1_6;
-                            func_8000BBD8(((s32) ((D_801630E0 + 8) & 0xFFFF) % (s32) D_80164430) & 0xFFFF, *temp_t0, D_8016344A);
-                            temp_v1_6->unk0 = *temp_t0;
+                            stackPadding1A += 8;
+                            stackPadding1A %= D_80164430;
+                            func_8000BBD8(stackPadding1A, D_80163068[playerId], D_80163448);
+                            D_801634F8[playerId].unk0 = D_80163068[playerId];
                         }
                     }
-                    if ((D_80162FD0 == 1) && (*(&D_80162FF8 + sp34) == 0)) {
-                        func_8000BBD8(((s32) ((D_801630E0 + 7) & 0xFFFF) % (s32) D_80164430) & 0xFFFF, -0.7f, D_8016344A);
+                    if ((D_80162FD0 == 1) && (D_80162FF8[playerId] == 0)) {
+                        stackPadding1A = D_801630E0 + 7;
+                        stackPadding1A %= D_80164430;
+                        func_8000BBD8(stackPadding1A, -0.7f, D_80163448);
                     }
                     if (D_80163448 == 0) {
-                        sp3C = sp34 + &D_80162FF8;
                         func_8000B140(playerId);
-                        if (*sp3C > 0) {
-                            func_8000BBD8(((s32) ((D_801630E0 + 5) & 0xFFFF) % (s32) D_80164430) & 0xFFFF, *(&D_80163090 + sp38), D_8016344A);
+                        if (D_80162FF8[playerId] > 0) {
+                            stackPadding1A = D_801630E0 + 5;
+#if FAKEMATCH1 == 1
+                            if (1) { } if (1) { } if (1) { } if (1) { } if (1) { } if (1) { }
+#endif
+                            stackPadding1A %= D_80164430;
+                            func_8000BBD8(stackPadding1A, D_80163090[playerId], D_80163448);
                         }
                     }
                 }
-                temp_t0_2 = sp38 + D_80163068;
                 if (gCurrentCourseId == 0x0014) {
-                    temp_v0_7 = *(D_80163410 + sp34);
-                    switch (temp_v0_7) {            /* switch 3; irregular */
+                    switch (D_80163410[playerId]) {            /* switch 3; irregular */
                     case 3:                         /* switch 3 */
-                        D_80162FA0->unk0 = *(&D_80163418 + sp38);
-                        D_80162FA0->unk8 = (f32) *(&D_80163438 + sp38);
+                        D_80162FA0[0] = D_80163418[playerId];
+                        D_80162FA0[2] = D_80163438[playerId];
                         break;
                     case 4:                         /* switch 3 */
-                        temp_v0_8 = (((s32) (*sp24 + 0xA) % (s32) *(gWaypointCountByPathIndex + sp34)) * 8) + *(D_80164550 + sp38);
-                        D_80162FA0->unk0 = (f32) temp_v0_8->unk0;
-                        D_80162FA0->unk8 = (f32) temp_v0_8->unk4;
+                        waypoint = &D_80164550[playerId][(gNearestWaypointByPlayerId[playerId] + 0xA) % gWaypointCountByPathIndex[playerId]];
+                        D_80162FA0[0] = waypoint->posX;
+                        D_80162FA0[2] = waypoint->posZ;
                         break;
                     }
                 }
-                temp_v0_9 = sp38 + &D_80163178;
-                temp_v1_7 = sp38 + &D_801631A0;
-                D_80162FA0->unk0 = (D_80162FA0->unk0 + *temp_v0_9) * 0.5f;
-                D_80162FA0->unk8 = (f32) ((D_80162FA0->unk8 + *temp_v1_7) * 0.5f);
-                *temp_v0_9 = D_80162FA0->unk0;
-                sp20 = temp_t0_2;
-                *temp_v1_7 = D_80162FA0->unk8;
-                temp_f2_2 = 1.5f * 182.0f;
-                temp_v1_8 = -get_angle_between_points(sp1C, D_80162FA0) - sp40->unk_02C[1];
-                temp_f10 = (s32) temp_f2_2;
-                var_a2 = temp_v1_8;
-                temp_f6 = (s32) (-1.5f * 182.0f);
-                if ((s16) temp_f10 < temp_v1_8) {
-                    var_a2 = (s16) temp_f10;
+                D_80162FA0[0] = (D_80163178[playerId] + D_80162FA0[0]) * 0.5f;
+                D_80162FA0[2] = (D_801631A0[playerId] + D_80162FA0[2]) * 0.5f;
+                D_80163178[playerId] = D_80162FA0[0];
+                D_801631A0[playerId] = D_80162FA0[2];
+                temp_f2 = athing * 182.0f;
+                temp_f6 = -athing * 182.0f;
+                // MISMATCH2
+                // This fixes part of the register allocation problems, makes fixing others
+                // harder though. Needs more investigation
+                // var_a2 = (-get_angle_between_points(player->pos, D_80162FA0)) - (var_a1 = player->unk_02C[1]);
+                stackPadding19 = -get_angle_between_points(player->pos, D_80162FA0) - player->unk_02C[1];
+                var_a1 = stackPadding19;
+                var_a2 = var_a1;
+                if ((s16) temp_f2 < var_a1) {
+                    var_a2 = temp_f2;
                 }
                 if (var_a2 < (s16) temp_f6) {
-                    var_a2 = (s16) temp_f6;
+                    var_a2 = temp_f6;
                 }
-                temp_v0_10 = *(D_801631D8 + sp34);
-                var_v1_2 = D_800DCA20[gCurrentCourseId];
-                switch (temp_v0_10) {               /* switch 4; irregular */
+                var_v1 = D_800DCA20[gCurrentCourseId];
+                switch (D_801631D8[playerId]) {               /* switch 4; irregular */
                 case 2:                             /* switch 4 */
-                    temp_f0_2 = *temp_t0_2;
-                    if (temp_f0_2 > 0.5f) {
-                        var_v1_2 = 0x0014;
+                    if (D_80163068[playerId] > (0.5f * 1.0f)) {
+                        var_v1 = 0x0014;
                     }
-                    if (temp_f0_2 < -0.5f) {
-                        var_v1_2 = 0x0035;
+                    if (D_80163068[playerId] < -0.5f) {
+                        var_v1 = 0x0035;
                     }
                     break;
                 case 3:                             /* switch 4 */
-                    temp_f0_3 = *temp_t0_2;
-                    if (temp_f0_3 > 0.5f) {
-                        var_v1_2 = 0x0035;
+                    if (D_80163068[playerId] > 0.5f) {
+                        var_v1 = 0x0035;
                     }
-                    if (temp_f0_3 < -0.5f) {
-                        var_v1_2 = 0x0014;
+                    if (D_80163068[playerId] < -0.5f) {
+                        var_v1 = 0x0014;
                     }
                     break;
                 }
-                if ((*(D_801632E8 + sp34) == 2) && ((temp_f0_4 = *temp_t0_2, (temp_f0_4 > 0.9f)) || (temp_f0_4 < -0.9f))) {
-                    *sp2C = 0;
-                    sp40->effects &= ~0x10;
+                if ((D_801632E8[playerId] == 2) && ((D_80163068[playerId] > 0.9f) || (D_80163068[playerId] < -0.9f))) {
+                    D_801630E8[playerId] = 0;
+                    player->effects &= ~0x10;
                 }
-                temp_v0_11 = sp40->effects;
-                if (temp_v0_11 & 2) {
-                    temp_v0_12 = (s16) *sp2C;
-                    var_a1_2 = -0x0035;
-                    if (temp_v0_12 != -1) {
-                        var_a1_2 = 0x0035;
-                        if (temp_v0_12 != 1) {
-                            var_v0_2 = sp34 + &D_80163050;
-                            var_a1_2 = (s16) (s32) (((f32) *var_v0_2 + ((f32) (var_a2 * var_v1_2) / temp_f2_2)) / 2.0f);
-                        } else {
-                            var_v0_2 = sp34 + &D_80163050;
-                        }
-                    } else {
-                        var_v0_2 = sp34 + &D_80163050;
+                if (player->effects & 2) {
+                    switch (D_801630E8[playerId]) {
+                    case 1:
+                        var_a1 = 0x0035;
+                        break;
+                    case -1:
+                        var_a1 = -0x0035;
+                        break;
+                    default:
+                        var_a1 = (D_80163050[playerId] + ((var_a2 * var_v1) / temp_f2)) / 2;
+                        break;
                     }
-                } else if (temp_v0_11 & 0x1000000C) {
-                    var_a1_2 = 0;
-                    var_v0_2 = sp34 + &D_80163050;
+                } else if (player->effects & 0x1000000C) {
+                    var_a1 = 0;
                 } else {
-                    var_v0_2 = sp34 + &D_80163050;
-                    var_a1_2 = (s16) (s32) (((f32) *var_v0_2 + ((f32) (var_a2 * var_v1_2) / temp_f2_2)) / 2.0f);
+                    var_a1 = (D_80163050[playerId] + ((var_a2 * var_v1) / temp_f2)) / 2;
                 }
-                sp3C = var_v0_2;
-                sp94 = var_a1_2;
-                sp20 = temp_t0_2;
-                func_8003680C(sp40, var_a1_2);
-                *var_v0_2 = var_a1_2;
-                if (((bitwise s32) *sp28 == 1) || (temp_v0_13 = (s16) *sp2C, (temp_v0_13 == 1)) || (temp_v0_13 == -1) || (sp40->effects & 0x1000000C)) {
-                    sp20 = temp_t0_2;
-                    var_v1_3 = sp38 + &D_80163028;
-                    *var_v1_3 = *segmented_to_virtual_dupe_2((gCurrentCourseId * 0x10) + (gCCSelection * 4) + D_0D009418);
+                func_8003680C(player, var_a1);
+                D_80163050[playerId] = var_a1;
+                if ((D_801630B8[playerId] == 1) || (D_801630E8[playerId] == 1) || (D_801630E8[playerId] == -1) || (player->effects & 0x1000000C)) {
+                    D_80163028[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D009418[gCurrentCourseId][gCCSelection]);
                 } else {
-                    sp20 = temp_t0_2;
-                    var_v1_3 = sp38 + &D_80163028;
-                    *var_v1_3 = *segmented_to_virtual_dupe_2((gCurrentCourseId * 0x10) + (gCCSelection * 4) + D_0D009568);
+                    D_80163028[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D009568[gCurrentCourseId][gCCSelection]);
                 }
-                temp_f0_5 = *temp_t0_2;
-                if ((temp_f0_5 > 0.9f) || (temp_f0_5 < -0.9f)) {
-                    sp34 = var_v1_3;
-                    *var_v1_3 = *segmented_to_virtual_dupe_2((gCurrentCourseId * 0x10) + (gCCSelection * 4) + D_0D009808);
+                if ((D_80163068[playerId] > 0.9f) || (D_80163068[playerId] < -0.9f)) {
+                    D_80163028[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D009808[gCurrentCourseId][gCCSelection]);
                 }
                 if (D_80162FD0 == 1) {
-                    sp34 = var_v1_3;
-                    *var_v1_3 = *segmented_to_virtual_dupe_2((gCurrentCourseId * 0x10) + (gCCSelection * 4) + D_0D0096B8);
+                    D_80163028[playerId] = *(f32*)segmented_to_virtual_dupe_2(&D_0D0096B8[gCurrentCourseId][gCCSelection]);
                 }
-                temp_v0_14 = (s16) *sp2C;
-                if ((temp_v0_14 == 2) || (temp_v0_14 == -2) || (temp_v0_14 == 3)) {
-                    *var_v1_3 = 0x40555555;
+                if ((D_801630E8[playerId] == 2) || (D_801630E8[playerId] == -2) || (D_801630E8[playerId] == 3)) {
+                    D_80163028[playerId] = 3.3333333f;
                 }
-                D_8016320C = *var_v1_3;
-                sp40->effects &= 0xFFDFFFFF;
-                *(&D_80163210 + sp38) = D_8016320C;
+                D_8016320C = D_80163028[playerId];
+                player->effects &= ~0x00200000;
+                D_80163210[playerId] = D_8016320C;
                 func_800131DC(playerId);
-                func_80008424(playerId, D_8016320C, sp40);
+                func_80008424(playerId, D_8016320C, player);
             }
         }
     }
 }
+#undef FAKEMATCH1
+#undef FAKEMATCH2
 #else
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80009B60.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-12-2023
-extern ? D_80162FF8;
-extern ? D_80163010;
-extern ? D_80163090;
-extern ? D_801630E8;
-
+#ifdef NON_MATCHING
+// Lots of work left to do, might be funtionally accurate?
 void func_8000B140(s32 playerId) {
-    s32 spFC;
-    s32 spF0;
-    s16 spE6;
-    s16 spE4;
-    f32 spDC;
-    ? spC0;
-    s16 sp9C;
-    f32 sp60;
-    s32 sp5C;
-    s32 sp58;
-    f32 *sp54;
-    s16 *sp4C;
-    Player *temp_v0_4;
-    Player *temp_v1;
-    f32 *temp_a0;
-    f32 *temp_t8;
-    f32 temp_f0;
+    f32 stackPadding0;
+    f32 stackPadding1;
+    f32 stackPadding2;
+    f32 stackPadding3;
+    f32 stackPadding4;
+    f32 stackPadding5;
+    f32 stackPadding6;
+    f32 stackPadding7;
     f32 temp_f0_2;
-    f32 temp_f0_3;
-    f32 temp_f0_4;
-    f32 temp_f0_5;
     f32 temp_f12;
-    f32 temp_f12_2;
-    f32 temp_f12_3;
     f32 temp_f14;
-    f32 temp_f14_2;
-    f32 temp_f14_3;
     f32 temp_f16;
     f32 temp_f22;
     f32 temp_f2;
-    f32 temp_f2_2;
-    f32 temp_f2_3;
-    f32 temp_f2_4;
     f32 var_f18;
     f32 var_f20;
-    s16 *temp_a2;
-    s16 *temp_t8_2;
-    s16 *temp_v0_6;
-    s16 *var_a1;
-    s16 *var_a1_2;
-    s16 *var_v0;
-    s16 temp_a1_2;
-    s16 temp_t4;
-    s16 temp_t9;
-    s16 temp_v0;
-    s16 temp_v0_3;
+    s16 spB0[8];
+    f32 stackPadding8;
+    s16 sp9C[8];
+    f32 stackPadding9;
+    f32 sp74[8];
+    s32 temp_a1_2;
     s16 temp_v1_2;
     s16 var_t1;
-    s32 temp_t5;
-    s32 temp_v0_5;
-    s32 var_t0;
-    s32 var_t0_2;
     s32 var_t2;
-    s32 var_v0_2;
-    u16 temp_v0_2;
-    u32 temp_a1;
+    s32 someIndex;
+    Player *player;
 
-    temp_v1 = &gPlayers[playerId];
-    temp_a1 = temp_v1->effects;
-    if (!(temp_a1 & 0x10) && (temp_t5 = playerId * 2, temp_v0 = *(&D_801630E8 + temp_t5), sp5C = temp_t5, (temp_v0 != 1)) && (temp_v0 != -1) && (temp_t8 = &D_80163068[playerId], sp54 = temp_t8, sp58 = playerId * 4, temp_f0 = *temp_t8, !(temp_f0 < -1.0f)) && !(temp_f0 > 1.0f) && (temp_v0_2 = temp_v1->characterId, (temp_v0_2 != 5)) && (temp_v0_2 != 7) && (temp_v0_2 != 4) && !(temp_a1 & 0x200)) {
-        var_t1 = (s16) gNearestWaypointByPlayerId[playerId];
-        var_a1 = &sp9C;
-        var_v0 = &spB0[0];
-        var_t2 = 0;
-        temp_f22 = (temp_v1->unk_094 / 18.0f) * 216.0f;
-        do {
-            var_v0 += 2;
-            var_a1 += 2;
-            var_a1->unk-2 = -1;
-            var_v0->unk-2 = 0x03E8;
-        } while ((u32) var_v0 < (u32) &spC0);
-        temp_t8_2 = sp5C + &D_80163010;
-        sp4C = temp_t8_2;
-        temp_v0_3 = *temp_t8_2;
-        temp_t9 = temp_v0_3 - 1;
-        if (temp_v0_3 > 0) {
-            *temp_t8_2 = temp_t9;
-            if (temp_t9 <= 0) {
-                *(&D_80162FF8 + sp5C) = 0;
+    player = &gPlayers[playerId];
+    if (!(player->effects & 0x10) &&
+        (D_801630E8[playerId] !=  1) &&
+        (D_801630E8[playerId] != -1) &&
+        !(D_80163068[playerId] < -1.0f) &&
+        !(D_80163068[playerId] >  1.0f) &&
+        (player->characterId != 5) &&
+        (player->characterId != 7) &&
+        (player->characterId != 4) &&
+        !(player->effects & 0x200)) {
+        var_t1 = gNearestWaypointByPlayerId[playerId];
+        temp_f22 = (player->unk_094 / 18.0f) * 216.0f;
+        for (someIndex = 0; someIndex < 8; someIndex++) {
+            sp9C[someIndex] = -1;
+            spB0[someIndex] = 0x03E8;
+        }
+        if (D_80163010[playerId] > 0) {
+            D_80163010[playerId]--;
+            if (D_80163010[playerId] <= 0) {
+                D_80162FF8[playerId] = 0;
             }
         }
-        var_t0 = 0;
-loop_15:
-        if (var_t0 != playerId) {
-            temp_v0_4 = &gPlayers[var_t0];
-            if (temp_v0_4->type & 0x8000) {
-                temp_f2 = temp_f22 - 5.0f;
-                temp_v1_2 = (s16) gNearestWaypointByPlayerId[var_t0];
-                temp_f0_2 = (temp_v0_4->unk_094 / 18.0f) * 216.0f;
-                if (temp_f0_2 < temp_f2) {
-                    spE4 = temp_v1_2;
-                    spFC = var_t0;
-                    spE6 = var_t1;
-                    spF0 = var_t2;
-                    spDC = temp_f0_2;
-                    sp60 = temp_f2;
-                    temp_v0_5 = func_80007BF8(temp_v1_2 & 0xFFFF, var_t1 & 0xFFFF, 0U, 0x0014U, (u16) (s32) D_80164430);
-                    if (temp_v0_5 > 0) {
-                        temp_a1_2 = temp_v1_2 - var_t1;
-                        (sp + (var_t2 * 2))->unk9C = (s16) var_t0;
-                        temp_a0 = &(&sp74[0])[var_t2];
-                        temp_a2 = &(&spB0[0])[var_t2];
-                        if (temp_a1_2 > 0) {
-                            *temp_a2 = temp_a1_2;
-                        } else {
-                            *temp_a2 = (temp_v1_2 + D_80164430) - var_t1;
-                        }
-                        var_t2 += 1;
-                        *temp_a0 = temp_f2 - temp_f0_2;
+        var_t2 = 0;
+        for (someIndex = 0; (var_t2 < 2) && (someIndex < 8); someIndex++) {
+            if (someIndex == playerId) continue;
+            player = &gPlayers[someIndex];
+            if (!(player->type & 0x8000)) continue;
+            temp_f2 = (temp_f22) - 5.0f;
+            temp_v1_2 = gNearestWaypointByPlayerId[someIndex];
+            temp_f0_2 = (player->unk_094 / 18.0f) * 216.0f;
+            if (temp_f0_2 < temp_f2) {
+                if (func_80007BF8(temp_v1_2, var_t1, 0U, 0x0014U, D_80164430) > 0) {
+                    temp_a1_2 = temp_v1_2 - var_t1;
+                    sp9C[var_t2] = someIndex;
+                    if (temp_a1_2 > 0) {
+                        spB0[var_t2] = temp_a1_2;
+                    } else {
+                        spB0[var_t2] = (temp_v1_2 + D_80164430) - var_t1;
                     }
+                    sp74[var_t2] = temp_f2 - temp_f0_2;
+                    var_t2 += 1;
                 }
             }
         }
-        var_t0 += 1;
-        if ((var_t2 < 2) && (var_t0 < 8)) {
-            goto loop_15;
-        }
-        var_t0_2 = 0;
         if (var_t2 != 0) {
             var_f18 = 1.0f;
             var_f20 = -1.0f;
-            if (var_t2 > 0) {
-                if (var_t2 & 1) {
-                    temp_f2_2 = *(D_80163068 + (sp9C * 4));
-                    var_t0_2 = 1;
-                    if ((temp_f2_2 > -1.0f) && (temp_f2_2 < 1.0f)) {
-                        temp_f12 = ((sp74[0] + 10.0f) * (0.2f * (20.0f / ((f32) spB0[0] + 20.0f)))) / 20.0f;
-                        if ((1.0f == 1.0f) && (-1.0f == -1.0f)) {
-                            var_f18 = temp_f2_2 - temp_f12;
-                            var_f20 = temp_f2_2 + temp_f12;
-                        } else {
-                            temp_f14 = temp_f2_2 - temp_f12;
-                            temp_f16 = temp_f2_2 + temp_f12;
-                            if ((temp_f14 < 1.0f) && ((temp_f2_2 + temp_f12) > 1.0f)) {
-                                var_f18 = temp_f14;
-                            }
-                            if ((temp_f16 > -1.0f) && (temp_f14 < -1.0f)) {
-                                var_f20 = temp_f16;
-                            }
+            for (someIndex = 0; someIndex < var_t2; someIndex++) {
+                temp_f2 = D_80163068[sp9C[someIndex]];
+                if ((temp_f2 > -1.0f) && (temp_f2 < 1.0f)) {
+                    temp_f12 = sp74[someIndex] + 10.0f;
+                    temp_f12 *= 0.2f * (20.0f / (spB0[someIndex] + 20.0f));
+                    temp_f12 /= 20.0f;
+                    if ((var_f18 == 1.0f) && (var_f20 == -1.0f)) {
+                        var_f18 = temp_f2 - temp_f12;
+                        var_f20 = temp_f2 + temp_f12;
+                    } else {
+                        temp_f14 = temp_f2 - temp_f12;
+                        temp_f16 = temp_f2 + temp_f12;
+                        if ((temp_f14 < 1.0f) && (temp_f16 > 1.0f)) {
+                            var_f18 = temp_f14;
+                        }
+                        if ((temp_f16 > -1.0f) && (temp_f14 < -1.0f)) {
+                            var_f20 = temp_f16;
                         }
                     }
-                    if (var_t2 != 1) {
-                        goto block_40;
-                    }
-                } else {
-block_40:
-                    var_v0_2 = var_t0_2 * 2;
-                    var_a1_2 = &(&sp9C)[var_t0_2];
-                    do {
-                        temp_f2_3 = *(D_80163068 + (var_a1_2->unk0 * 4));
-                        if ((temp_f2_3 > -1.0f) && (temp_f2_3 < 1.0f)) {
-                            temp_f0_3 = (((&sp74[0])[var_t0_2].unk0 + 10.0f) * (0.2f * (20.0f / ((f32) *(&spB0[0] + var_v0_2) + 20.0f)))) / 20.0f;
-                            if ((var_f18 == 1.0f) && (var_f20 == -1.0f)) {
-                                var_f18 = temp_f2_3 - temp_f0_3;
-                                var_f20 = temp_f2_3 + temp_f0_3;
-                            } else {
-                                temp_f12_2 = temp_f2_3 - temp_f0_3;
-                                temp_f14_2 = temp_f2_3 + temp_f0_3;
-                                if ((temp_f12_2 < var_f18) && (var_f18 < (temp_f2_3 + temp_f0_3))) {
-                                    var_f18 = temp_f12_2;
-                                }
-                                if ((var_f20 < temp_f14_2) && (temp_f12_2 < var_f20)) {
-                                    var_f20 = temp_f14_2;
-                                }
-                            }
-                        }
-                        temp_t4 = var_a1_2->unk2;
-                        var_a1_2 += 4;
-                        temp_f0_4 = *(D_80163068 + (temp_t4 * 4));
-                        if ((temp_f0_4 > -1.0f) && (temp_f0_4 < 1.0f)) {
-                            temp_f2_4 = (((&sp74[0])[var_t0_2].unk4 + 10.0f) * (0.2f * (20.0f / ((f32) (&spB0[0] + var_v0_2)->unk2 + 20.0f)))) / 20.0f;
-                            if ((var_f18 == 1.0f) && (var_f20 == -1.0f)) {
-                                var_f18 = temp_f0_4 - temp_f2_4;
-                                var_f20 = temp_f0_4 + temp_f2_4;
-                            } else {
-                                temp_f12_3 = temp_f0_4 - temp_f2_4;
-                                temp_f14_3 = temp_f0_4 + temp_f2_4;
-                                if ((temp_f12_3 < var_f18) && (var_f18 < (temp_f0_4 + temp_f2_4))) {
-                                    var_f18 = temp_f12_3;
-                                }
-                                if ((var_f20 < temp_f14_3) && (temp_f12_3 < var_f20)) {
-                                    var_f20 = temp_f14_3;
-                                }
-                            }
-                        }
-                        var_t0_2 += 2;
-                        var_v0_2 += 4;
-                    } while (var_t0_2 != var_t2);
                 }
             }
-            if (!(var_f20 < var_f18) && (temp_f0_5 = *sp54, !(temp_f0_5 < var_f18)) && !(var_f20 < temp_f0_5)) {
-                temp_v0_6 = sp5C + &D_80162FF8;
+            if (!(var_f20 < var_f18) && !(D_80163068[playerId] < var_f18) && !(var_f20 < D_80163068[playerId])) {
                 if (var_f20 > 1.0f) {
                     var_f20 = 1.0f;
                 }
@@ -2495,14 +2213,14 @@ block_40:
                     var_f18 = -1.0f;
                 }
                 if ((var_f18 + 1.0f) < (1.0f - var_f20)) {
-                    *sp4C = 0x003C;
-                    *temp_v0_6 = 1;
-                    *(&D_80163090 + sp58) = var_f20;
-                    return;
+                    D_80163010[playerId] = 0x003C;
+                    D_80162FF8[playerId] = 1;
+                    D_80163090[playerId] = var_f20;
+                } else {
+                    D_80163010[playerId] = 0x003C;
+                    D_80162FF8[playerId] = 2;
+                    D_80163090[playerId] = var_f18;
                 }
-                *sp4C = 0x003C;
-                *temp_v0_6 = 2;
-                *(&D_80163090 + sp58) = var_f18;
             }
         }
     }
@@ -3006,57 +2724,38 @@ block_17:
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000CD24.s")
 #endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-12-2023
-extern s32 D_80163598;
-extern s32 D_8016359C;
+s16 func_8000D100(f32 xPos, f32 yPos, f32 zPos, s16 arg3) {
+    f32 xdiff;
+    f32 zdiff;
+    f32 minimumDistance;
+    f32 considerSquaredDistance;
+    s16 realIndex;
+    s16 minimumIndex;
+    s16 considerIndex;
+    PathNoY *considerWaypoint;
 
-s16 func_8000D100(f32 arg0, f32 arg1, f32 arg2, s16 arg3) {
-    f32 temp_f14;
-    f32 temp_f16;
-    f32 temp_f2;
-    f32 var_f0;
-    s16 temp_a0;
-    s16 temp_v0;
-    s16 var_a0;
-    s16 var_v0;
-    s16 var_v1;
-    s32 temp_a1;
-    s32 temp_hi;
-    void *temp_t0;
-
-    temp_a0 = arg3 - 2;
-    var_f0 = 250000.0f;
-    temp_a1 = arg3 + 7;
-    var_v1 = -1;
-    var_v0 = temp_a0;
-    if (temp_a0 < temp_a1) {
-        do {
-            var_a0 = var_v0;
-            if (var_v0 < 0) {
-                var_a0 = var_v0 + D_8016359C;
-            }
-            temp_hi = var_a0 % (s32) D_8016359C;
-            temp_t0 = ((s16) temp_hi * 4) + D_80163598;
-            temp_v0 = var_v0 + 1;
-            temp_f2 = (f32) temp_t0->unk0 - arg0;
-            temp_f14 = (f32) temp_t0->unk2 - arg2;
-            temp_f16 = (temp_f2 * temp_f2) + (temp_f14 * temp_f14);
-            if (temp_f16 < var_f0) {
-                var_f0 = temp_f16;
-                var_v1 = (s16) temp_hi;
-            }
-            var_v0 = temp_v0;
-        } while (temp_v0 < temp_a1);
+    minimumDistance = 250000.0f;
+    minimumIndex = -1;
+    for (realIndex = arg3 - 2; realIndex < arg3 + 7; realIndex++) {
+        considerIndex = realIndex;
+        if (realIndex < 0) {
+            considerIndex = realIndex + D_8016359C;
+        }
+        considerIndex %= D_8016359C;
+        considerWaypoint = &D_80163598[considerIndex];
+        xdiff = considerWaypoint->x - xPos;
+        zdiff = considerWaypoint->z - zPos;
+        considerSquaredDistance = (xdiff * xdiff) + (zdiff * zdiff);
+        if (considerSquaredDistance < minimumDistance) {
+            minimumDistance = considerSquaredDistance;
+            minimumIndex = considerIndex;
+        }
     }
-    if (var_v1 == -1) {
-        var_v1 = arg3;
+    if (minimumIndex == -1) {
+        minimumIndex = arg3;
     }
-    return var_v1;
+    return minimumIndex;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000D100.s")
-#endif
 
 s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32 *pathIndex) {
     UNUSED s32 pad;
@@ -3110,95 +2809,82 @@ f32 func_8000D3B8(s32 playerId) {
     return var_f2;
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-09-2023
-? func_8000BBD8(s32, f32, s16, u16);                /* extern */
-extern ? D_80162FA0;
-extern ? D_80163380;
-extern s16 D_8016344A;
-s16 gCurrentCourseId;                               /* unable to generate initializer */
-
 void func_8000D438(s32 arg0, u16 arg1) {
+    s32 stackPadding0;
     f32 sp48;
     f32 sp44;
+    s32 stackPadding1;
+    s32 stackPadding2;
+    s32 stackPadding3;
+    f32 stackPadding4;
+    f32 stackPadding5;
     f32 sp2C;
-    s32 sp28;
-    s16 sp26;
-    s32 sp1C;
-    f32 temp_f0;
-    s16 *temp_v1_2;
-    s16 temp_v0;
-    s16 temp_v1;
-    s32 temp_hi;
     s32 var_a2;
-    s32 var_a2_2;
-    u16 temp_a3;
-    u16 temp_a3_2;
+    s16 temp_v1;
+    u16 thing;
 
-    temp_a3 = arg1 & 0xFFFF;
-    temp_v1 = D_801645E0[temp_a3];
-    sp28 = 6;
-    sp1C = temp_a3 * 2;
-    arg1 = temp_a3;
-    sp26 = temp_v1;
+    temp_v1 = D_801645E0[arg1];
     var_a2 = 6;
     sp2C = func_8000D3B8(arg0);
-    if (gCurrentCourseId != 4) {
-        if (gCurrentCourseId != 0x000A) {
-            if (gCurrentCourseId == 0x0014) {
-                var_a2 = 1;
-            } else if (temp_v1 < 6) {
-                var_a2 = 8;
-            } else if (temp_v1 >= 0x15) {
-                var_a2 = 0x00000014;
-            }
-        } else {
-            var_a2 = 7;
-        }
-    }
-    if (var_a2 >= 8) {
-        temp_f0 = D_80163068[arg0];
-        if ((temp_f0 > 0.75f) && (D_801631D8[temp_a3] == 0)) {
-            var_a2 = 7;
-        }
-        if ((temp_f0 < -0.75f) && (D_801631D8[temp_a3] == 1)) {
-            var_a2 = 7;
-        }
-    }
-    sp28 = var_a2;
-    var_a2_2 = var_a2;
-    temp_a3_2 = arg1;
-    if (func_8000B820(arg0) == 1) {
-        var_a2_2 = 5;
-    }
-    temp_v1_2 = (arg0 * 2) + &D_80163380;
-    temp_v0 = *temp_v1_2;
-    if (temp_v0 < var_a2_2) {
-        *temp_v1_2 = temp_v0 + 1;
-    }
-    if (var_a2_2 < *temp_v1_2) {
-        *temp_v1_2 -= 1;
-    }
-    temp_hi = (s32) (*temp_v1_2 + temp_a3_2) % (s32) D_80164430;
-    arg1 = (u16) temp_hi;
-    func_8000BBD8(temp_hi & 0xFFFF, sp2C, D_8016344A, temp_a3_2);
-    sp48 = D_80162FA0.unk0;
-    sp44 = D_80162FA0.unk8;
-    func_8000BBD8(((s32) (arg1 + 1) % (s32) D_80164430) & 0xFFFF, sp2C, D_8016344A, arg1);
-    D_80162FA0.unk0 = (f32) ((sp48 + D_80162FA0.unk0) * 0.5f);
-    D_80162FA0.unk8 = (f32) ((sp44 + D_80162FA0.unk8) * 0.5f);
-}
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000D438.s")
-#endif
+    thing = arg1;
 
-#ifdef NON_MATCHING
-// Something about the handling of D_80162FA0 is really off, can't figure out what
+    switch(gCurrentCourseId) {
+    case COURSE_AWARD_CEREMONY:
+        var_a2 = 1;
+        break;
+    case COURSE_TOADS_TURNPIKE:
+        var_a2 = 7;
+        break;
+    case COURSE_YOSHI_VALLEY:
+        break;
+    default:
+        if (temp_v1 < 6) {
+            var_a2 = 8;
+        } else if (temp_v1 >= 0x15) {
+            var_a2 = 20;
+        }
+        break;
+    }
+
+    if (var_a2 >= 8) {
+        if ((D_80163068[arg0] > 0.75f) && (D_801631D8[thing] == 0)) {
+            var_a2 = 7;
+        }
+        if ((D_80163068[arg0] < -0.75f) && (D_801631D8[thing] == 1)) {
+            var_a2 = 7;
+        }
+    }
+    if (func_8000B820(arg0) == 1) {
+        var_a2 = 5;
+    }
+    if (D_80163380[arg0] < var_a2) {
+        D_80163380[arg0]++;
+    }
+    if (var_a2 < D_80163380[arg0]) {
+        D_80163380[arg0]--;
+    }
+    arg1 = (D_80163380[arg0] + arg1) % D_80164430;
+    func_8000BBD8(arg1, sp2C, D_80163448);
+    sp48 = D_80162FA0[0];
+    sp44 = D_80162FA0[2];
+    func_8000BBD8(((arg1 + 1) % D_80164430) & 0xFFFF, sp2C, D_80163448);
+    stackPadding5 = D_80162FA0[0];
+    D_80162FA0[0] = (sp48 + stackPadding5) * 0.5f;
+    stackPadding4 = D_80162FA0[2];
+    D_80162FA0[2] = (sp44 + stackPadding4) * 0.5f;
+}
+
 s16 func_8000D6D0(Vec3f arg0, s16 *waypointIndex, f32 arg2, f32 arg3, s16 pathIndex, s16 arg5) {
-    UNUSED s32 pad[4];
-    s16 waypoint2;
+    f32 temp1;
+    f32 temp2;
+    f32 midX;
+    s16 stackPadding1;
     s16 waypoint1;
-    UNUSED s32 pad2[4];
+    s16 waypoint2;
+    f32 pad3;
+    f32 midY;
+    f32 pad4;
+    f32 midZ;
     f32 distance;
     f32 temp_f20;
     f32 temp_f22;
@@ -3227,10 +2913,17 @@ s16 func_8000D6D0(Vec3f arg0, s16 *waypointIndex, f32 arg2, f32 arg3, s16 pathIn
     waypoint1 = temp_v1 % gWaypointCountByPathIndex[pathIndex];
     waypoint2 = (temp_v1 + 1) % gWaypointCountByPathIndex[pathIndex];
     func_8000BBD8(waypoint1, arg3, pathIndex);
+    pad3 = D_80162FA0[0];
+    pad4 = D_80162FA0[2];
     func_8000BBD8(waypoint2, arg3, pathIndex);
-    ydiff = ((path[waypoint2].posY + path[waypoint1].posY) * 0.5f) - temp_f22;
-    xdiff = ((D_80162FA0[0] + D_80162FA0[0]) * 0.5f) - temp_f20;
-    zdiff = ((D_80162FA0[2] + D_80162FA0[2]) * 0.5f) - temp_f24;
+    temp1 = D_80162FA0[0];
+    temp2 = D_80162FA0[2];
+    midY = (path[waypoint1].posY + path[waypoint2].posY) * 0.5f;
+    midX = (pad3 + temp1) * 0.5f;
+    midZ = (pad4 + temp2) * 0.5f;
+    xdiff = midX - temp_f20;
+    ydiff = midY - temp_f22;
+    zdiff = midZ - temp_f24;
     distance = sqrtf((xdiff * xdiff) + (ydiff * ydiff) + (zdiff * zdiff));
     if (distance > 0.01f) {
         var_f2  = ((xdiff * arg2) / distance) + temp_f20;
@@ -3246,17 +2939,20 @@ s16 func_8000D6D0(Vec3f arg0, s16 *waypointIndex, f32 arg2, f32 arg3, s16 pathIn
     arg0[2] = var_f14;
     return func_80005FD0(sp50, arg0);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000D6D0.s")
-#endif
 
-#ifdef NON_MATCHING
-// Something about the handling of D_80162FA0 is really off, can't figure out what
 s16 func_8000D940(f32 *arg0, s16 *waypointIndex, f32 arg2, f32 arg3, s16 pathIndex) {
-    UNUSED s32 pad[4];
-    s16 waypoint2;
+    f32 pad;
+    f32 thing1;
+    f32 thing2;
+    s16 stackPadding1;
     s16 waypoint1;
-    UNUSED s32 pad2[4];
+    s16 waypoint2;
+    s16 stackPadding2;
+    f32 pad2;
+    f32 midX;
+    f32 pad3;
+    f32 midY;
+    f32 midZ;
     f32 distance;
     f32 temp_f20;
     f32 temp_f22;
@@ -3265,13 +2961,11 @@ s16 func_8000D940(f32 *arg0, s16 *waypointIndex, f32 arg2, f32 arg3, s16 pathInd
     f32 var_f12;
     f32 var_f14;
     s16 temp_v0;
-    s32 waypointCount;
     f32 xdiff;
     f32 ydiff;
     f32 zdiff;
+    s32 waypointCount;
     Vec3f sp54;
-    UNUSED s32 pad3;
-    TrackWaypoint *path;
 
     sp54[0] = arg0[0];
     sp54[1] = arg0[1];
@@ -3285,10 +2979,17 @@ s16 func_8000D940(f32 *arg0, s16 *waypointIndex, f32 arg2, f32 arg3, s16 pathInd
     waypoint1 = ((temp_v0 + waypointCount) - 3) % waypointCount;
     waypoint2 = ((temp_v0 + waypointCount) - 4) % waypointCount;
     func_8000BBD8(waypoint1, arg3, pathIndex);
+    pad2 = D_80162FA0[0];
+    pad3 = D_80162FA0[2];
     func_8000BBD8(waypoint2, arg3, pathIndex);
-    ydiff = ((D_80164550[pathIndex][waypoint2].posY + D_80164550[pathIndex][waypoint1].posY) * 0.5f) - temp_f22;
-    xdiff = ((D_80162FA0[0] + D_80162FA0[0]) * 0.5f) - temp_f20;
-    zdiff = ((D_80162FA0[2] + D_80162FA0[2]) * 0.5f) - temp_f24;
+    thing1 = D_80162FA0[0];
+    thing2 = D_80162FA0[2];
+    midY = (D_80164550[pathIndex][waypoint1].posY + D_80164550[pathIndex][waypoint2].posY) * 0.5f;
+    midX = (pad2 + thing1) * 0.5f;
+    midZ = (pad3 + thing2) * 0.5f;
+    xdiff = midX - temp_f20;
+    ydiff = midY - temp_f22;
+    zdiff = midZ - temp_f24;
     distance = sqrtf((xdiff * xdiff) + (ydiff * ydiff) + (zdiff * zdiff));
     if (distance > 0.01f) {
         var_f2  = ((xdiff * arg2) / distance) + temp_f20;
@@ -3304,80 +3005,63 @@ s16 func_8000D940(f32 *arg0, s16 *waypointIndex, f32 arg2, f32 arg3, s16 pathInd
     arg0[2] = var_f14;
     return func_80005FD0(sp54, arg0);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000D940.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit 3b40ab93768f52ac241c5ae84ef58ef6bc4cb1de
-s16 func_8000D100(f32, f32, f32, s16);              /* extern */
-extern TrackWaypoint *D_80163598;
-
 
 s16 func_8000DBAC(Vec3f pos, s16 *waypointIndex, f32 speed) {
-    f32 sp98;
-    f32 sp94;
-    //f32 sp40;
-    //f32 sp3C;
-    Vec3f sp38;
-    f32 sp34;
-    f32 sp30;
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f14;
-    f32 temp_f16;
-    f32 temp_f18;
-    f32 temp_f2;
+    f32 origXPos;
+    f32 origYPos;
+    f32 origZPos;
+    s32 stackPadding0;
+    s32 stackPadding1;
+    s32 stackPadding2;
+    s32 stackPadding3;
+    s32 stackPadding4;
+    s32 stackPadding5;
+    s32 stackPadding6;
+    s32 stackPadding7;
+    s32 stackPadding8;
+    f32 midX;
+    f32 midZ;
+    f32 x_dist;
+    f32 y_dist;
+    f32 distance;
     f32 var_f12;
     f32 var_f14;
     s16 temp_v0;
-    s32 temp_a1;
-    s32 temp_v1;
-    void *temp_a0;
-    void *temp_a2;
+    s16 anIndex;
+    s16 anIndex2;
+    PathNoY *temp_a0;
+    PathNoY *temp_a2;
+    Vec3f sp38;
 
-    temp_f12 = pos[0];
-    temp_f14 = pos[1];
-    temp_f2 = pos[2];
-
+    origXPos = pos[0];
+    origYPos = pos[1];
+    origZPos = pos[2];
     sp38[0] = pos[0];
     sp38[1] = pos[1];
     sp38[2] = pos[2];
-
-    sp98 = temp_f14;
-    sp94 = temp_f2;
-    temp_v0 = func_8000D100(temp_f12, temp_f14, temp_f2, *waypointIndex);
+    temp_v0 = func_8000D100(origXPos, origYPos, origZPos, *waypointIndex);
     *waypointIndex = temp_v0;
-
-    temp_a0 = ((s16) ((s32) (temp_v0 + 3) % temp_v1));
-    temp_a2 = ((s16) ((s32) (temp_v0 + 4) % temp_v1));
-
-    temp_v1 = D_8016359C[temp_a0];
-    temp_a1 = D_80163598[temp_a2];
-
-    temp_f16 = ((f32) (temp_v1->waypointX + temp_a1->waypointX) * 0.5f) - temp_f12;
-    temp_f18 = ((f32) (temp_v1->waypointY + temp_a1->waypointY) * 0.5f) - temp_f2;
-    
-    sp34 = temp_f16;
-    sp30 = temp_f18;
-
-    temp_f0 = sqrtf((temp_f16 * temp_f16) + (temp_f18 * temp_f18));
-
-    if (temp_f0 > 0.01f) {
-        var_f12 = ((temp_f16 * speed) / temp_f0) + temp_f12;
-        var_f14 = ((temp_f18 * speed) / temp_f0) + temp_f2;
+    anIndex = (temp_v0 + 3) % D_8016359C;
+    anIndex2 = (temp_v0 + 4) % D_8016359C;
+    temp_a0 = &D_80163598[anIndex];
+    temp_a2 = &D_80163598[anIndex2];
+    midX = (temp_a0->x + temp_a2->x) * 0.5f;
+    midZ = (temp_a0->z + temp_a2->z) * 0.5f;
+    x_dist = midX - origXPos;
+    y_dist = midZ - origZPos;
+    distance = sqrtf((x_dist * x_dist) + (y_dist * y_dist));
+    if (distance > 0.01f) {
+        var_f12 = ((x_dist * speed) / distance) + origXPos;
+        var_f14 = ((y_dist * speed) / distance) + origZPos;
     } else {
-        var_f12 = temp_f12;
-        var_f14 = temp_f2;
+        var_f12 = origXPos;
+        var_f14 = origZPos;
     }
     pos[0] = var_f12;
-    pos[1] = sp98;
+    pos[1] = origYPos;
     pos[2] = var_f14;
-    return func_80005FD0(&sp38, pos);
+    return func_80005FD0(sp38, pos);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000DBAC.s")
-#endif
 
 void set_bomb_kart_spawn_positions(void) {
     Collision *var_s2;
@@ -3437,340 +3121,274 @@ void set_bomb_kart_spawn_positions(void) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit eefca95b040d7ee0c617bc58f9ac6cd1cf7bce87 on Aug-17-2023
-extern f32 D_80162FB0;
-extern f32 D_80162FC0;
-extern s16 D_8016347C;
-extern s16 D_8016347E;
-extern Collision D_80164038;
-extern u16 D_8016443E;
-extern s32 D_8016455C;
-extern u16 D_801645CE;
-s16 gCurrentCourseId;                               /* unable to generate initializer */
-
-void func_8000DF8C(s32 arg0) {
+#ifdef NON_MATCHING
+// https://decomp.me/scratch/H61yp
+// Really really close, functinally matching as it stands
+// There's an ordering issue concerning the handling of `sp7E` at the top of the function.
+// Removing the first `if(1)` fakematch fixes the misordering but introduces other, large mismatches
+void func_8000DF8C(s32 bombKartId) {
+    s32 stackPadding0;
     f32 sp118;
-    f32 sp114;
-    TrackWaypoint *sp110;
+    f32 var_f18;
+    TrackWaypoint *temp_v0_2;
+    f32 temp_f0_3;
     f32 sp108;
-    f32 spF8;
-    f32 spF0;
-    u16 spCA;                                       /* compiler-managed */
+    s32 stackPadding1;
+    s32 stackPadding2;
+    s32 stackPadding3;
+    f32 temp_f14;
+    s32 stackPadding4;
+    f32 temp_f16;
+    s32 stackPadding5;
+    s32 stackPadding6;
+    s32 stackPadding7;
+    s32 stackPadding8;
+    s32 stackPadding9;
+    s32 stackPaddingA;
+    s32 stackPaddingB;
+    f32 temp_f0;
+    f32 temp_f0_4;
+    u16 spCA;
     f32 spC4;
     u16 spC2;
-    f32 spAC;
-    f32 spA0;
-    f32 sp94;
-    f32 sp88;
-    u16 sp7E;
-    u16 sp7C;
-    s32 sp4C;                                       /* compiler-managed */
-    s32 sp48;                                       /* compiler-managed */
-    s32 sp44;
-    Player *var_v0;
-    Collision *temp_a0_4;
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f0_3;
-    f32 temp_f0_4;
-    f32 temp_f0_5;
     f32 temp_f12;
-    f32 temp_f12_2;
     f32 temp_f12_3;
     f32 temp_f12_4;
-    f32 temp_f12_5;
-    f32 temp_f14;
     f32 temp_f14_2;
-    f32 temp_f16;
+    f32 spAC;
+    s32 stackPaddingC;
     f32 temp_f16_2;
-    f32 temp_f18;
+    f32 spA0;
     f32 temp_f2;
-    f32 temp_f2_2;
-    f32 temp_f2_3;
     f32 temp_f2_4;
-    f32 temp_f2_5;
-    f32 var_f12;
-    f32 var_f18;
+    f32 sp94;
+    s32 stackPaddingD;
     f32 var_f20;
+    f32 sp88;
     f32 var_f22;
     f32 var_f24;
-    f32 var_f6;
-    f64 temp_f10;
-    f64 temp_f4;
-    f64 temp_f8;
-    s16 temp_v0_5;
-    s32 temp_a0;
-    s32 temp_a0_2;
-    s32 temp_a0_3;
-    s32 temp_at;
-    s32 temp_t2;
-    s32 temp_t2_2;
-    s32 temp_t6;
-    s32 temp_t7;
-    s32 temp_t7_2;
-    s32 temp_t9_2;
-    s32 var_a0;
-    s8 var_v1;
-    TrackWaypoint *temp_v0_2;
-    TrackWaypoint *temp_v0_4;
-    TrackWaypoint *temp_v0_7;
-    TrackWaypoint *temp_v1_2;
-    BombKart *temp_s0;
-    u16 temp_t4;
-    u16 temp_t9;
-    u16 temp_v0;
-    u16 temp_v0_3;
+    u16 sp7E;
+    u16 sp7C;
+    u16 sp4C;
+    u16 temp_t6;
+    u16 temp_t7;
     u16 var_s1;
-    void *temp_v0_6;
-    void *temp_v1;
+    s32 var_a0;
+    s32 stackPaddingE;
+    TrackWaypoint *temp_v0_4;
+    BombKart *bombKart;
+    BombKart *bombKart2;
+    Collision *temp_a0_4;
+    Player *var_v0;
 
-    temp_s0 = &gBombKarts[arg0];
-    temp_t9 = (u16) temp_s0->state;
-    temp_t2 = temp_t9 & 0xFFFF;
-    sp4C = temp_t2;
-    sp7E = temp_t9;
-    if ((temp_t2 != 0) && (((u16) temp_s0->unk_4A != 1) || (gCurrentCourseId == COURSE_AWARD_CEREMONY))) {
-        var_f22 = temp_s0->bombPos[0];
-        var_f20 = temp_s0->bombPos[1];
-        var_f24 = temp_s0->bombPos[2];
-        spCA = (u16) temp_s0->waypointIndex;
-        spC4 = temp_s0->unk_3C;
-        spC2 = (u16) temp_s0->someRot;
-        sp7C = (u16) temp_s0->bounceTimer;
-        var_s1 = (u16) temp_s0->circleTimer;
-        if ((sp4C != 0) && (sp4C != 4)) {
-            if (gCurrentCourseId == 0x0014) {
-                if (D_8016347E == (s16) 1U) {
-                    temp_f0 = var_f22 - gPlayerFour->pos[0];
-                    temp_f2 = var_f20 - gPlayerFour->pos[1];
-                    temp_f12 = var_f24 - gPlayerFour->pos[2];
+    bombKart = &gBombKarts[bombKartId];
+    if (1) {}
+    sp7E = bombKart->state;
+    if ((sp7E != 0) && ((bombKart->unk_4A != 1) || (gCurrentCourseId == COURSE_AWARD_CEREMONY))) {
+        var_f22 = bombKart->bombPos[0];
+        var_f20 = bombKart->bombPos[1];
+        var_f24 = bombKart->bombPos[2];
+        spCA = bombKart->waypointIndex;
+        spC4 = bombKart->unk_3C;
+        spC2 = bombKart->someRot;
+        sp7C = bombKart->bounceTimer;
+        var_s1 = bombKart->circleTimer;
+        if ((sp7E != 0) && (sp7E != 4)) {
+            if (1) {}
+            if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
+                if (D_8016347E == 1) {
+                    var_v0 = gPlayerFour;
+                    temp_f0 = var_f22 - var_v0->pos[0];
+                    temp_f2 = var_f20 - var_v0->pos[1];
+                    temp_f12 = var_f24 - var_v0->pos[2];
                     if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12)) < 25.0f) {
-                        sp7E = 4;
-                        gPlayerFour->statusEffects |= REVERSE_EFFECT;
-                        gPlayerFour->type &= ~0x2000;
                         var_s1 = 0;
-                        sp4C = 4;
+                        sp7E = 4;
+                        var_v0->statusEffects |= 0x400000;
+                        var_v0->type &= ~0x2000;
                     }
                 }
             } else {
-                var_v1 = gPlayerCount;
-                var_a0 = 0;
-                if (var_v1 > 0) {
-                    var_v0 = gPlayers;
-                    do {
-                        var_a0 += 1;
-                        if (!(var_v0->effects & 0x80000000)) {
-                            temp_f0_2 = var_f22 - var_v0->pos[0];
-                            temp_f2_2 = var_f20 - var_v0->pos[1];
-                            temp_f12_2 = var_f24 - var_v0->pos[2];
-                            if (((temp_f0_2 * temp_f0_2) + (temp_f2_2 * temp_f2_2) + (temp_f12_2 * temp_f12_2)) < 25.0f) {
-                                sp7E = 4;
-                                var_s1 = 0;
-                                if (gCurrentCourseId == 5) {
-                                    var_v0->statusEffects |= HIT_BY_ITEM_EFFECT;
-                                } else {
-                                    var_v0->statusEffects |= REVERSE_EFFECT;
-                                }
-                                var_v1 = gPlayerCount;
+                for (var_a0 = 0; var_a0 < gPlayerCount; var_a0++) {
+                    var_v0 = &gPlayers[var_a0];
+                    if (!(var_v0->effects & 0x80000000)) {
+                        temp_f0 = var_f22 - var_v0->pos[0];
+                        temp_f2 = var_f20 - var_v0->pos[1];
+                        temp_f12 = var_f24 - var_v0->pos[2];
+                        if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12)) < 25.0f) {
+                            sp7E = 4;
+                            var_s1 = 0;
+                            if (gCurrentCourseId == COURSE_FRAPPE_SNOWLAND) {
+                                var_v0->statusEffects |= 0x01000000;
+                            } else {
+                                var_v0->statusEffects |= 0x400000;
                             }
                         }
-                        var_v0 += 0xDD8;
-                    } while (var_a0 < var_v1);
-                    sp4C = (s32) sp7E;
+                    }
                 }
             }
         }
-        switch (sp4C) {
+        switch (sp7E) {
         case 1:
-            temp_t4 = ((s32) (var_s1 + 0x164) % 360) & 0xFFFF;
-            temp_t6 = ((s32) (temp_t4 * 0xFFFF) / 360) & 0xFFFF;
-            temp_v0 = temp_t4;
-            var_s1 = temp_t4;
-            sp48 = (s32) temp_v0;
-            sp44 = temp_t6;
-            sp118 = (f32) ((f64) coss((u16) temp_t6) * 25.0);
-            temp_f0_3 = sins((u16) sp44);
-            temp_v0_2 = &(*D_80164550)[spCA];
-            var_f20 = temp_s0->yPos + 3.5f;
-            temp_t7 = ((s32) (((s32) (sp48 + 1) % 360) * 0xFFFF) / 360) & 0xFFFF;
-            var_f22 = (f32) temp_v0_2->posX + sp118;
-            D_80162FB0.unk4 = var_f20;
-            D_80162FB0.unk0 = var_f22;
-            sp44 = temp_t7;
-            sp110 = temp_v0_2;
-            var_f24 = (f32) temp_v0_2->posZ + (f32) ((f64) temp_f0_3 * 25.0);
-            D_80162FB0.unk8 = var_f24;
-            sp118 = (f32) ((f64) coss((u16) temp_t7) * 25.0);
-            temp_f10 = (f64) sins((u16) sp44);
-            D_80162FC0.unk0 = (f32) temp_v0_2->posX + sp118;
-            D_80162FC0.unk4 = (f32) temp_v0_2->posY;
-            D_80162FC0.unk8 = (f32) ((f32) temp_v0_2->posZ + (f32) (temp_f10 * 25.0));
-            spC2 = (u16) ((s32) (get_angle_between_points(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+            var_s1 = ((var_s1 + 356) % 360);
+            temp_t6 = ((var_s1 * 0xFFFF) / 360);
+            sp118 = coss(temp_t6) * 25.0;
+            temp_f0_3 = sins(temp_t6) * 25.0;
+            temp_v0_2 = &D_80164550[0][spCA];
+            var_f22 = temp_v0_2->posX + sp118;
+            var_f20 = bombKart->yPos + 3.5f;
+            var_f24 = temp_v0_2->posZ + temp_f0_3;
+            D_80162FB0[0] = var_f22;
+            D_80162FB0[1] = var_f20;
+            D_80162FB0[2] = var_f24;
+            temp_t7 = ((((var_s1 + 1) % 360) * 0xFFFF) / 360);
+            sp118 = coss(temp_t7) * 25.0;
+            temp_f0_3 = sins(temp_t7) * 25.0;
+            D_80162FC0[0] = temp_v0_2->posX + sp118;
+            D_80162FC0[1] = temp_v0_2->posY;
+            D_80162FC0[2] = temp_v0_2->posZ + temp_f0_3;
+            spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
             break;
         case 2:
-            temp_v0_3 = ((s32) (var_s1 + 4) % 360) & 0xFFFF;
-            temp_a0 = ((s32) (temp_v0_3 * 0xFFFF) / 360) & 0xFFFF;
-            var_s1 = temp_v0_3;
-            sp44 = temp_a0;
-            sp48 = (s32) temp_v0_3;
-            sp118 = (f32) ((f64) coss((u16) temp_a0) * 25.0);
-            temp_v0_4 = &(*D_80164550)[spCA];
-            var_f22 = (f32) temp_v0_4->posX + sp118;
-            var_f20 = temp_s0->yPos + 3.5f;
-            temp_f4 = (f64) sins((u16) temp_a0) * 25.0;
-            temp_a0_2 = ((s32) (((s32) (sp48 + 1) % 360) * 0xFFFF) / 360) & 0xFFFF;
-            D_80162FB0.unk0 = var_f22;
-            D_80162FB0.unk4 = var_f20;
-            sp44 = temp_a0_2;
-            sp110 = temp_v0_4;
-            var_f24 = (f32) temp_v0_4->posZ + (f32) temp_f4;
-            D_80162FB0.unk8 = var_f24;
-            sp118 = (f32) ((f64) coss((u16) temp_a0_2) * 25.0);
-            temp_f8 = (f64) sins((u16) temp_a0_2);
-            D_80162FC0.unk0 = (f32) temp_v0_4->posX + sp118;
-            D_80162FC0.unk4 = (f32) temp_v0_4->posY;
-            D_80162FC0.unk8 = (f32) ((f32) temp_v0_4->posZ + (f32) (temp_f8 * 25.0));
-            spC2 = (u16) ((s32) (get_angle_between_points(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
-        default:
+            var_s1 = ((var_s1 + 4) % 360);
+            temp_t6 = ((var_s1 * 0xFFFF) / 360);
+            sp118 = coss(temp_t6) * 25.0;
+            temp_f0_3 = sins(temp_t6) * 25.0;
+            temp_v0_2 = &D_80164550[0][spCA];
+            var_f22 = temp_v0_2->posX + sp118;
+            var_f20 = bombKart->yPos + 3.5f;
+            var_f24 = temp_v0_2->posZ + temp_f0_3;
+            D_80162FB0[0] = var_f22;
+            D_80162FB0[1] = var_f20;
+            D_80162FB0[2] = var_f24;
+            temp_t7 = ((((var_s1 + 1) % 360) * 0xFFFF) / 360);
+            sp118 = coss(temp_t7) * 25.0;
+            temp_f0_3 = sins(temp_t7) * 25.0;
+            D_80162FC0[0] = temp_v0_2->posX + sp118;
+            D_80162FC0[1] = temp_v0_2->posY;
+            D_80162FC0[2] = temp_v0_2->posZ + temp_f0_3;
+            spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
             break;
         case 3:
+            var_f20 = bombKart->yPos + 3.5f;
             spC2 = 0;
-            var_f20 = temp_s0->yPos + 3.5f;
             break;
         case 5:
-            if ((D_8016347C == 0) || ((s32) D_8016443E < 5)) {
-
+            if ((D_8016347C == 0) || (gNearestWaypointByPlayerId[3] < 5)) {
+                // wtf?
+                break;
             } else {
-                temp_v0_5 = func_8000D2B4(var_f22, var_f20, var_f24, (s16) spCA, 3);
-                temp_a0_3 = temp_v0_5 & 0xFFFF;
-                spCA = temp_v0_5;
-                if ((temp_a0_3 < 0) || ((s32) D_801645CE < temp_a0_3)) {
+                spCA = func_8000D2B4(var_f22, var_f20, var_f24, spCA, 3);
+                if ((spCA < 0) || (gWaypointCountByPathIndex[3] < spCA)) {
                     spCA = 0;
                 }
                 if ((s32) spCA < 0x1A) {
-                    temp_v0_6 = (((s32) (spCA + 1) % (s32) D_801645CE) * 8) + D_8016455C;
-                    D_80162FB0.unk0 = (f32) temp_v0_6->unk0;
-                    temp_v1 = (((s32) (spCA + 2) % (s32) D_801645CE) * 8) + D_8016455C;
-                    D_80162FB0.unk4 = (f32) temp_v0_6->unk2;
-                    D_80162FB0.unk8 = (f32) temp_v0_6->unk4;
-                    D_80162FC0.unk0 = (f32) temp_v1->unk0;
-                    D_80162FC0.unk4 = (f32) temp_v1->unk2;
-                    D_80162FC0.unk8 = (f32) temp_v1->unk4;
-                    spC2 = (u16) ((s32) (get_angle_between_points(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+                    temp_v0_2 = &D_80164550[3][(spCA + 1) % gWaypointCountByPathIndex[3]];
+                    D_80162FB0[0] = temp_v0_2->posX;
+                    D_80162FB0[1] = temp_v0_2->posY;
+                    D_80162FB0[2] = temp_v0_2->posZ;
+                    temp_v0_4   = &D_80164550[3][(spCA + 2) % gWaypointCountByPathIndex[3]];
+                    D_80162FC0[0] = temp_v0_4->posX;
+                    D_80162FC0[1] = temp_v0_4->posY;
+                    D_80162FC0[2] = temp_v0_4->posZ;
+                    spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
                 } else {
-                    D_80162FB0.unk0 = var_f22;
-                    D_80162FB0.unk4 = var_f20;
-                    D_80162FB0.unk8 = var_f24;
-                    D_80162FC0.unk0 = -2409.197f;
-                    D_80162FC0.unk4 = 0.0f;
-                    D_80162FC0.unk8 = -355.254f;
-                    spC2 = (u16) ((s32) (get_angle_between_points(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+                    D_80162FB0[0] = var_f22;
+                    D_80162FB0[1] = var_f20;
+                    D_80162FB0[2] = var_f24;
+                    D_80162FC0[0] = -2409.197f;
+                    D_80162FC0[1] = 0.0f;
+                    D_80162FC0[2] = -355.254f;
+                    spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
                 }
-                temp_f14 = ((D_80162FC0.unk0 + D_80162FB0.unk0) * 0.5f) - var_f22;
-                spF8 = temp_f14;
-                temp_f16 = ((D_80162FC0.unk8 + D_80162FB0.unk8) * 0.5f) - var_f24;
-                spF0 = temp_f16;
+                temp_f14 = ((D_80162FB0[0] + D_80162FC0[0]) * 0.5f) - var_f22;
+                temp_f16 = ((D_80162FB0[2] + D_80162FC0[2]) * 0.5f) - var_f24;
                 temp_f0_4 = sqrtf((temp_f14 * temp_f14) + (temp_f16 * temp_f16));
                 if (temp_f0_4 > 0.01f) {
-                    temp_f2_3 = temp_s0->unk_3C;
-                    var_f22 += (temp_f2_3 * temp_f14) / temp_f0_4;
-                    var_f24 += (temp_f2_3 * temp_f16) / temp_f0_4;
+                    var_f22 += (bombKart->unk_3C * temp_f14) / temp_f0_4;
+                    var_f24 += (bombKart->unk_3C * temp_f16) / temp_f0_4;
                 } else {
                     var_f22 += temp_f14 / 5.0f;
                     var_f24 += temp_f16 / 5.0f;
                 }
-                temp_a0_4 = (arg0 << 6) + &D_80164038;
-                sp48 = temp_a0_4;
+                temp_a0_4 = &D_80164038[bombKartId];
                 var_f20 = func_802ABE30(var_f22, 2000.0f, var_f24, temp_a0_4->unk3A) + 3.5f;
-                if ((f64) var_f20 < -1000.0) {
-                    var_f20 = temp_s0->bombPos[1];
+                if (var_f20 < -1000.0) {
+                    var_f20 = bombKart->bombPos[1];
                 }
                 func_802ADDC8(temp_a0_4, 10.0f, var_f22, var_f20, var_f24);
             }
             break;
         case 4:
-            temp_v0_7 = &(*D_80164550)[spCA];
-            D_80162FB0.unk0 = (f32) temp_v0_7->posX;
-            D_80162FB0.unk4 = (f32) temp_v0_7->posY;
-            D_80162FB0.unk8 = (f32) temp_v0_7->posZ;
-            temp_v1_2 = &(*D_80164550)[(s32) (spCA + 1) % (s32) *gWaypointCountByPathIndex];
-            D_80162FC0.unk0 = (f32) temp_v1_2->posX;
-            D_80162FC0.unk4 = (f32) temp_v1_2->posY;
-            var_f6 = (f32) var_s1;
-            D_80162FC0.unk8 = (f32) temp_v1_2->posZ;
-            if ((s32) var_s1 < 0) {
-                var_f6 += 4294967296.0f;
-            }
-            var_f20 += 3.0f - (var_f6 * 0.3f);
-            spC2 = (u16) ((s32) (get_angle_between_points(&D_80162FB0, &D_80162FC0) * 0xFFFF) / 65520);
+            temp_v0_2 = &D_80164550[0][spCA];
+            D_80162FB0[0] = temp_v0_2->posX;
+            D_80162FB0[1] = temp_v0_2->posY;
+            D_80162FB0[2] = temp_v0_2->posZ;
+            temp_v0_4 = &D_80164550[0][(spCA + 1) % gWaypointCountByPathIndex[0]];
+            D_80162FC0[0] = temp_v0_4->posX;
+            D_80162FC0[1] = temp_v0_4->posY;
+            D_80162FC0[2] = temp_v0_4->posZ;
+            var_f20 += 3.0f - (var_s1 * 0.3f);
+            spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
+            break;
+        default:
             break;
         }
-        if (sp4C == 4) {
-            var_f12 = (f32) var_s1;
-            if ((s32) var_s1 < 0) {
-                var_f12 += 4294967296.0f;
-            }
-            sp4C = var_f12;
-            temp_t7_2 = (0xFFFF - spC2) & 0xFFFF;
-            sp108 = 2.0f * var_f12;
-            sp48 = temp_t7_2;
-            sp118 = coss((u16) temp_t7_2) * var_f12;
-            temp_t9_2 = (var_s1 + 1) & 0xFFFF;
-            temp_at = temp_t9_2 < 0x1F;
-            var_f18 = sins((u16) sp48) * var_f12;
-            var_s1 = (u16) temp_t9_2;
+        if (sp7E == 4) {
+            sp108 = 2.0f * var_s1;
+            sp118 = coss(0xFFFF - spC2) * var_s1;
+            var_f18 = sins(0xFFFF - spC2) * var_s1;
+            var_s1++;
             temp_f2_4 = (var_f20 - 2.3f) + (sp108 / 3.0f);
             spAC = temp_f2_4;
             spA0 = temp_f2_4;
             sp94 = temp_f2_4;
             sp88 = temp_f2_4;
-            if (temp_at == 0) {
+            if (var_s1 >= 31) {
                 sp7E = 0;
             }
         } else {
-            temp_t2_2 = (0xFFFF - spC2) & 0xFFFF;
-            sp48 = temp_t2_2;
-            sp118 = coss((u16) temp_t2_2) * 1.5f;
-            temp_f18 = sins((u16) sp48) * 1.5f;
+            sp118 = coss(0xFFFF - spC2) * 1.5f;
+            var_f18 = sins(0xFFFF - spC2) * 1.5f;
             temp_f16_2 = var_f20 - 2.3f;
-            temp_f12_3 = (f32) ((s32) sp7C % 3) * 0.15f;
+            temp_f12_3 = (sp7C % 3) * 0.15f;
             temp_f14_2 = temp_f16_2 - temp_f12_3;
-            sp114 = temp_f18;
             temp_f12_4 = temp_f16_2 + temp_f12_3;
             spAC = temp_f14_2;
             sp94 = temp_f14_2;
             spA0 = temp_f12_4;
             sp88 = temp_f12_4;
-            sp4C = (s32) sp7C;
-            var_f18 = temp_f18;
-            var_f20 += sins(((s32) (sp7C * 0x13FFEC) / 360) & 0xFFFF);
-            sp7C = (u16) ((s32) (sp7C + 1) % 18);
+            var_f20 += sins(((sp7C * 0x13FFEC) / 360));
+            sp7C = (sp7C + 1) % 18;
         }
-        temp_f12_5 = -var_f18;
-        temp_f0_5 = var_f18 + sp118;
-        temp_s0->wheel1Pos[0] = (sp118 - var_f18) + var_f22;
-        temp_s0->wheel2Pos[0] = temp_f0_5 + var_f22;
-        temp_s0->wheel1Pos[1] = spAC;
-        temp_s0->wheel1Pos[2] = temp_f0_5 + var_f24;
-        temp_f2_5 = -sp118;
-        temp_s0->wheel2Pos[1] = spA0;
-        temp_s0->wheel2Pos[2] = (var_f18 - sp118) + var_f24;
-        temp_s0->wheel3Pos[0] = (temp_f2_5 - var_f18) + var_f22;
-        temp_s0->wheel3Pos[2] = temp_f12_5 + sp118 + var_f24;
-        temp_s0->wheel3Pos[1] = sp94;
-        temp_s0->wheel4Pos[0] = temp_f2_5 + var_f18 + var_f22;
-        temp_s0->bombPos[0] = var_f22;
-        temp_s0->wheel4Pos[2] = (temp_f12_5 - sp118) + var_f24;
-        temp_s0->bombPos[1] = var_f20;
-        temp_s0->bombPos[2] = var_f24;
-        temp_s0->wheel4Pos[1] = sp88;
-        temp_s0->waypointIndex = (s16) spCA;
-        temp_s0->unk_3C = spC4;
-        temp_s0->someRot = (s16) spC2;
-        temp_s0->state = (s16) sp7E;
-        temp_s0->circleTimer = (s16) var_s1;
-        temp_s0->bounceTimer = (s16) sp7C;
+
+        bombKart2 = bombKart;
+        bombKart2->wheel1Pos[0] = (sp118 - var_f18) + var_f22;
+        bombKart2->wheel1Pos[1] = spAC;
+        bombKart2->wheel1Pos[2] = var_f18 + sp118 + var_f24;
+
+        bombKart2->wheel2Pos[0] = var_f18 + sp118 + var_f22;
+        bombKart2->wheel2Pos[1] = spA0;
+        bombKart2->wheel2Pos[2] = (var_f18 - sp118) + var_f24;
+
+        bombKart2->wheel3Pos[0] = (-sp118 - var_f18) + var_f22;
+        bombKart2->wheel3Pos[1] = sp94;
+        bombKart2->wheel3Pos[2] = -var_f18 + sp118 + var_f24;
+
+        bombKart2->wheel4Pos[0] = -sp118 + var_f18 + var_f22;
+        bombKart2->wheel4Pos[1] = sp88;
+        bombKart2->wheel4Pos[2] = (-var_f18 - sp118) + var_f24;
+
+        bombKart2->bombPos[0] = var_f22;
+        bombKart2->bombPos[1] = var_f20;
+        bombKart2->bombPos[2] = var_f24;
+
+        bombKart2->waypointIndex = spCA;
+        bombKart2->unk_3C = spC4;
+        bombKart2->someRot = spC2;
+        bombKart2->state = sp7E;
+        bombKart2->bounceTimer = sp7C;
+        bombKart2->circleTimer = var_s1;
     }
 }
 #else
@@ -3907,7 +3525,7 @@ void func_8000F124(void) {
     }
     
     if (gDemoMode == 1)      { return; }
-    if (gModeSelection != 0) { return; }
+    if (gModeSelection != GRAND_PRIX) { return; }
     
     for (i = 0; i < 2; i++) {
 
@@ -3955,7 +3573,7 @@ void func_8000F2DC(void) {
     D_80163368[3] = (s32) ptr->unk6;
     
     temp = ptr->unk8;
-    D_80163598 = (uintptr_t *) get_next_available_memory_addr(temp * 4);
+    D_80163598 = get_next_available_memory_addr(temp * 4);
 
     // Podium ceremony appears to allocate 1 * 8 bytes of data. Which would be aligned to 0x10.
     for (i = 0; i < 4; i++) {
@@ -3971,7 +3589,7 @@ void func_8000F2DC(void) {
     D_801631D0 = D_80164560[0];
     D_801631D4 = D_80164570[0];
     D_801631D8 = D_80164580[0];
-    D_801631DC = *D_80164590;
+    D_801631DC = D_80164590[0];
     D_801645E0 = D_801645A0[0];
 
     // zero allocated memory?
@@ -4016,30 +3634,6 @@ void func_8000F2DC(void) {
     func_8000EEDC();
 }
 
-// static f32 D_800DCAA0[21] = {
-//     0.3f,
-//     0.3f,
-//     0.2f,
-//     0.4f,
-//     0.0f,
-//     0.3f,
-//     0.5f,
-//     0.4f,
-//     0.7f,
-//     0.5f,
-//     0.5f,
-//     0.3f,
-//     0.3f,
-//     0.4f,
-//     0.6f,
-//     0.1f,
-//     0.5f,
-//     0.5f,
-//     0.1f,
-//     0.5f,
-//     0.5f,
-// };
-
 void func_8000F628(void) {
 
     Camera *camera;
@@ -4068,7 +3662,7 @@ void func_8000F628(void) {
         gLapCountByPlayerId[i] = -1;
         gCourseCompletionPercentByPlayerId[i] = 0.0f;
         gTimePlayerLastTouchedFinishLine[i] = 0.0f;
-        if (gModeSelection == 0) {
+        if (gModeSelection == GRAND_PRIX) {
             if(1); if(1); // Maybe some debug code?
             gGPCurrentRaceRankByPlayerId[i] = (s32) D_80165270[i];
             D_801643E0[i] = (s32) D_80165270[i];
@@ -4143,8 +3737,7 @@ void func_8000F628(void) {
             D_80163330[D_80163344[0]] = 1;
             D_8016334C[D_80163344[0]] = 0;
             
-            for (i = 1; i < 2; i++)
-            {
+            for (i = 1; i < 2; i++) {
                 D_80163344[i] = cameras[i].playerId;
                 D_80163330[D_80163344[i]] = 1;
                 D_8016334C[D_80163344[i]] = i;
@@ -4160,7 +3753,7 @@ void func_8000F628(void) {
     }
 
     D_8016347A = 0;
-    if (gCCSelection == 3) {
+    if (gCCSelection == CC_EXTRA) {
         D_8016347A = 1;
     }
 
@@ -4724,38 +4317,27 @@ void func_80011AE4(s32 index) {
 }
 
 #ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-10-2023
-? func_80011EC0(s32, u16);                          /* extern */
-extern ? D_80162EB8;
-extern ? D_801630E8;
-extern void *D_801632B0;
-extern ? D_80163350;
-extern ? D_801633F8;
-extern ? D_801634FC;
-s16 gCurrentCourseId;                               /* unable to generate initializer */
-
+//generated by m2c commit beb457dabfc7a01ec6540a5404a6a05097a13602 on Dec-27-2023
 void func_80011B14(s32 playerId, Player *player) {
     u16 sp2E;
     s32 sp1C;
     Player *temp_v0;
+    UnkCommonTextureStruct0 *temp_t0;
+    UnkCommonTextureStruct0 *temp_t6;
     s16 *temp_a3;
     s16 temp_t1;
     s32 temp_t3;
-    s32 temp_v1;
     u16 temp_a2;
-    void *temp_t0;
-    void *temp_t6;
 
-    temp_v1 = playerId * 2;
     temp_a3 = &D_801632B8[playerId];
     temp_a2 = (u16) *temp_a3;
-    temp_t0 = *(&D_80162EB8 + (gCurrentCourseId * 4));
-    temp_t6 = (temp_a2 * 8) + temp_t0;
+    temp_t0 = D_80162EB8[gCurrentCourseId];
+    temp_t6 = &temp_t0[temp_a2];
     D_801632B0 = temp_t6;
     sp2E = gNearestWaypointByPlayerId[playerId];
-    temp_t1 = temp_t6->unk0;
+    temp_t1 = temp_t6->waypointId1;
     temp_t3 = temp_t6->unk4;
-    if ((temp_t1 == -1) && (temp_t6->unk2 == -1)) {
+    if ((temp_t1 == -1) && (temp_t6->waypointId2 == -1)) {
         D_801632B0 = temp_t0;
         func_80011AB8(playerId);
         return;
@@ -4766,43 +4348,43 @@ void func_80011B14(s32 playerId, Player *player) {
         *temp_a3 = temp_a2 + 1;
         switch (temp_t3) {
         case 1:
-            func_80011EC0((s32) player->unk_07C >> 0x10, sp2E);
+            func_80011EC0(playerId, player, (s32) player->unk_07C >> 0x10, (s32) sp2E);
             return;
         case 2:
-            sp1C = temp_v1;
+            sp1C = playerId * 2;
             func_8002AA50(player);
             player->effects &= ~0x10;
-            *(&D_801630E8 + temp_v1) = 0;
+            D_801630E8[playerId] = 0;
             return;
         case 3:
-            *(&D_801634FC + (playerId * 0x10)) = 0.0f;
+            *(&D_801634F8->unk4 + (playerId * 0x10)) = 0.0f;
             return;
         case 4:
-            *(&D_801634FC + (playerId * 0x10)) = -0.6f;
+            *(&D_801634F8->unk4 + (playerId * 0x10)) = -0.6f;
             return;
         case 5:
-            *(&D_801634FC + (playerId * 0x10)) = 0.6f;
+            *(&D_801634F8->unk4 + (playerId * 0x10)) = 0.6f;
             return;
         case 6:
-            *(&D_80163350 + temp_v1) = 0;
+            D_80163350[playerId] = 0;
             return;
         case 7:
-            *(&D_80163350 + temp_v1) = 1;
+            D_80163350[playerId] = 1;
             return;
         case 8:
-            *(&D_80163350 + temp_v1) = 2;
+            D_80163350[playerId] = 2;
             return;
         case 11:
-            *(&D_80163350 + temp_v1) = 3;
+            D_80163350[playerId] = 3;
             return;
         case 9:
-            *(&D_801633F8 + temp_v1) = 1;
+            D_801633F8[playerId] = 1;
             D_801631E0[playerId] = 0;
             temp_v0 = &gPlayers[playerId];
             temp_v0->effects &= ~0x1000;
             return;
         case 10:
-            *(&D_801633F8 + temp_v1) = 0;
+            D_801633F8[playerId] = 0;
             break;
         }
     } else {
@@ -4813,29 +4395,17 @@ void func_80011B14(s32 playerId, Player *player) {
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80011B14.s")
 #endif
 
-// Need to know more about D_801632B0 and D_80162EB8 and D_801632D0
-#ifdef NON_MATCHING
-//generated by mips_to_c commit bd0364fa19633bd6201f8007e2d0a7ed87825909
-//extern ? D_80162EB8;
-extern s16 D_801630E8[];
-extern s32 *D_801632B0;
-
 void func_80011D48(s32 playerIndex, Player *player) {
-    //s32 temp_a2;
-    //s32 temp_v0;
-    //s32 temp_t3;
-    //void *temp_v1;
-    u16 test;
-    s16 temp;
+    u16 nearestWaypoint;
+    u32 thing;
+    s32 temp_a2;
 
-    // temp_v0 = playerIndex * 2;
-                //              * 8) ?
-    //temp_t3 = D_801632D0[playerIndex] + D_80162EB8[gCurrentCourseId];
-    D_801632B0 = D_801632D0[playerIndex] + D_80162EB8[gCurrentCourseId];
-    test = gNearestWaypointByPlayerId[playerIndex];
-   // temp_a2 = temp_t3;
-    if (test >= (u16)*D_801632B0) {
-        switch (*D_801632B0) {
+    D_801632B0 = &D_80162EB8[gCurrentCourseId][D_801632D0[playerIndex]];
+    nearestWaypoint = gNearestWaypointByPlayerId[playerIndex];
+    temp_a2 = D_801632B0->unk4;
+    thing = D_801632B0->waypointId2;
+    if (nearestWaypoint >= thing) {
+        switch (temp_a2) {
         case 1:
             player->effects &= ~0x10;
             D_801630E8[playerIndex] = 0;
@@ -4844,7 +4414,6 @@ void func_80011D48(s32 playerIndex, Player *player) {
         case 3:
         case 4:
         case 5:
-            //temp_v1 = D_801634F8[playerIndex];
             D_801634F8[playerIndex].unk4 = D_801634F8[playerIndex].unkC;
             D_801632E8[playerIndex] = 1;
             break;
@@ -4856,14 +4425,12 @@ void func_80011D48(s32 playerIndex, Player *player) {
         case 10:
         case 11:
             D_801632E8[playerIndex] = 1;
-            /* Duplicate return node #6. Try simplifying control flow for better match */
+            break;
+        default:
             break;
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80011D48.s")
-#endif
 
 void func_80011E38(s32 playerIndex) {
     Player *player = gPlayerOne + playerIndex;
@@ -4880,64 +4447,42 @@ void func_80011E38(s32 playerIndex) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-10-2023
-extern ? D_80162FF8;
-extern ? D_801630E8;
-
 void func_80011EC0(s32 arg0, Player *player, s32 arg2, s32 arg3) {
-    s16 *sp1C;
-    f64 temp_f0;
-    f64 temp_f0_2;
-    s16 *temp_a2;
-    s16 temp_v0;
-    s32 temp_v1;
-
-    temp_v1 = arg0 * 2;
-    temp_a2 = temp_v1 + &D_801630E8;
-    if ((((player->unk_094 / 18.0f) * 216.0f) >= 45.0f) && (*temp_a2 == 0)) {
-        temp_v0 = D_801631D8[D_80162FCE];
-        switch (temp_v0) {                          /* irregular */
+    if ((((player->unk_094 / 18.0f) * 216.0f) >= 45.0f) && (D_801630E8[arg0] == 0)) {
+        switch (D_801631D8[D_80162FCE]) {
         case 0:
         case 2:
-            if ((arg2 >= -9) && (*(&D_80162FF8 + temp_v1) == 0)) {
-                temp_f0 = (f64) D_80163068[arg0];
-                if ((temp_f0 > -0.8) && (temp_f0 < 0.5)) {
-                    sp1C = temp_a2;
+            if ((arg2 >= -9) && (D_80162FF8[arg0] == 0)) {
+                if ((D_80163068[arg0] > -0.8) && (D_80163068[arg0] < 0.5)) {
                     func_8002AA50(player);
                     player->effects |= 0x10;
-                    *temp_a2 = 1;
-                    return;
+                    D_801630E8[arg0] = 1;
+                    break;
                 }
             }
-            *temp_a2 = 2;
-            return;
+            D_801630E8[arg0] = 2;
+            break;
         case 1:
         case 3:
-            if ((arg2 < 0xA) && (*(&D_80162FF8 + temp_v1) == 0)) {
-                temp_f0_2 = (f64) D_80163068[arg0];
-                if ((temp_f0_2 > -0.5) && (temp_f0_2 < 0.8)) {
-                    sp1C = temp_a2;
+            if ((arg2 < 0xA) && (D_80162FF8[arg0] == 0)) {
+                if ((D_80163068[arg0] > -0.5) && (D_80163068[arg0] < 0.8)) {
                     func_8002AA50(player);
                     player->effects |= 0x10;
-                    *temp_a2 = -1;
-                    return;
+                    D_801630E8[arg0] = -1;
+                    break;
                 }
             }
-            *temp_a2 = -2;
-            return;
+            D_801630E8[arg0] = -2;
+            break;
         }
     } else {
-        *(&D_801630E8 + (arg0 * 2)) = 3;
+        D_801630E8[arg0] = 3;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80011EC0.s")
-#endif
 
 void func_800120C8(void) {
     s32 i;
-    s16 *temp;
+    PathNoY *temp;
     TrackWaypoint *waypoint = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(
         gSegmentTable[SEGMENT_NUMBER2(d_course_kalimari_desert_track_unknown_waypoints)]
                     + SEGMENT_OFFSET(d_course_kalimari_desert_track_unknown_waypoints));
@@ -4948,9 +4493,9 @@ void func_800120C8(void) {
         }
     }
 
-    temp = (s16 *)D_80163598;
+    temp = D_80163598;
     D_8016359C = func_8001168C(temp, waypoint, i - 1);
-    D_80162EB0 = func_802AE1C0(temp[0], 2000.0f, temp[1]);
+    D_80162EB0 = func_802AE1C0(temp[0].x, 2000.0f, temp[0].z);
 }
 
 void func_80012190(void) {
@@ -5011,20 +4556,20 @@ void init_course_vehicles(void) {
     switch (gCurrentCourseId) {
     case COURSE_KALAMARI_DESERT:
         for(loopIndex = 0; loopIndex < NUM_TRAINS; loopIndex++) {
-            tempLocomotive = &sTrains[loopIndex].locomotive;
+            tempLocomotive = &gTrains[loopIndex].locomotive;
             origXPos = tempLocomotive->position[0];
             origZPos = tempLocomotive->position[2];
-            trainCarYRot = func_8000DBAC(tempLocomotive->position, &tempLocomotive->waypointIndex, sTrains[loopIndex].someMultiplier);
+            trainCarYRot = func_8000DBAC(tempLocomotive->position, &tempLocomotive->waypointIndex, gTrains[loopIndex].someMultiplier);
             tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
             tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
             vec3s_set(trainCarRot, 0, trainCarYRot, 0);
             tempLocomotive->actorIndex = addActorToEmptySlot(tempLocomotive->position, trainCarRot, tempLocomotive->velocity, ACTOR_TRAIN_ENGINE);
 
-            tempTender = &sTrains[loopIndex].tender;
+            tempTender = &gTrains[loopIndex].tender;
             if (tempTender->isActive == 1) {
                 origXPos = tempTender->position[0];
                 origZPos = tempTender->position[2];
-                trainCarYRot = func_8000DBAC(tempTender->position, &tempTender->waypointIndex, sTrains[loopIndex].someMultiplier);
+                trainCarYRot = func_8000DBAC(tempTender->position, &tempTender->waypointIndex, gTrains[loopIndex].someMultiplier);
                 tempTender->velocity[0] = tempTender->position[0] - origXPos;
                 tempTender->velocity[2] = tempTender->position[2] - origZPos;
                 vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -5032,11 +4577,11 @@ void init_course_vehicles(void) {
             }
 
             for(loopIndex2 = 0; loopIndex2 < NUM_PASSENGER_CAR_ENTRIES; loopIndex2++) {
-                tempPassengerCar = &sTrains[loopIndex].passengerCars[loopIndex2];
+                tempPassengerCar = &gTrains[loopIndex].passengerCars[loopIndex2];
                 if (tempPassengerCar->isActive == 1) {
                     origXPos = tempPassengerCar->position[0];
                     origZPos = tempPassengerCar->position[2];
-                    trainCarYRot = func_8000DBAC(tempPassengerCar->position, &tempPassengerCar->waypointIndex, sTrains[loopIndex].someMultiplier);
+                    trainCarYRot = func_8000DBAC(tempPassengerCar->position, &tempPassengerCar->waypointIndex, gTrains[loopIndex].someMultiplier);
                     tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
                     tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
                     vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -5046,7 +4591,7 @@ void init_course_vehicles(void) {
         }
         break;
     case COURSE_DK_JUNGLE:
-        for(loopIndex = 0; loopIndex < NUM_PADDLE_WHEEL_BOATS; loopIndex++) {
+        for(loopIndex = 0; loopIndex < NUM_ACTIVE_PADDLE_WHEEL_BOATS; loopIndex++) {
             tempPaddleWheelBoat = &gFerries[loopIndex];
             if(tempPaddleWheelBoat->isActive == 1) {
                 origXPos = tempPaddleWheelBoat->position[0];
@@ -5096,10 +4641,6 @@ void func_80012780(TrainCarStuff *trainCar, s16 *arg1, u16 arg2) {
     trainCar->velocity[2] = 0.0f;
 }
 
-// This is really Vec2s D_80163598[465] but that does not match.
-// Likely because this is a shared pointer between courses.
-//extern uintptr_t *D_80163598;
-
 /**
  * Set waypoint spawn locations for each rolling stock
  * The railroad has 465 waypoints
@@ -5107,7 +4648,7 @@ void func_80012780(TrainCarStuff *trainCar, s16 *arg1, u16 arg2) {
 void func_800127E0(void) {
     u16 waypointOffset;
     TrainCarStuff *ptr1;
-    s32 *ptr2;
+    PathNoY *ptr2;
     s32 i;
     s32 j;
 
@@ -5117,38 +4658,38 @@ void func_800127E0(void) {
         waypointOffset = (((i * D_8016359C) / NUM_TRAINS) + 160) % D_8016359C;
 
         // 120.0f is about the maximum usable value
-        sTrains[i].someMultiplier = 5.0f;
+        gTrains[i].someMultiplier = 5.0f;
         for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) {
             waypointOffset += 4;
-            ptr1 = &sTrains[i].passengerCars[j];
-            ptr2 = &D_80163598[waypointOffset];      
+            ptr1 = &gTrains[i].passengerCars[j];
+            ptr2 = &D_80163598[waypointOffset];
             func_80012780(ptr1, ptr2, waypointOffset);
         }
         // Smaller offset for the tender
         waypointOffset += 3;
-        ptr1 = &sTrains[i].tender;
-        ptr2 = &D_80163598[waypointOffset];      
+        ptr1 = &gTrains[i].tender;
+        ptr2 = &D_80163598[waypointOffset];
         func_80012780(ptr1, ptr2, waypointOffset);
         
         waypointOffset += 4;
-        ptr1 = &sTrains[i].locomotive;
+        ptr1 = &gTrains[i].locomotive;
         ptr2 = &D_80163598[waypointOffset];
-        func_80012780(&sTrains[i].locomotive, ptr2, waypointOffset);
+        func_80012780(ptr1, ptr2, waypointOffset);
         
         // Only use locomotive unless overwritten below.
-        sTrains[i].numCars = LOCOMOTIVE_ONLY;
+        gTrains[i].numCars = LOCOMOTIVE_ONLY;
     }
     
     // Spawn all rolling stock in single player mode.
     switch (gScreenModeSelection) {
         case SCREEN_MODE_1P: // single player
             for (i = 0; i < NUM_TRAINS; i++) {
-                sTrains[i].tender.isActive = 1;
+                gTrains[i].tender.isActive = 1;
     
                 // Same line required for matching...
-                for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) { sTrains[i].passengerCars[j].isActive = 1; }
+                for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) { gTrains[i].passengerCars[j].isActive = 1; }
                 
-                sTrains[i].numCars = NUM_TENDERS + NUM_PASSENGER_CAR_ENTRIES;
+                gTrains[i].numCars = NUM_TENDERS + NUM_PASSENGER_CAR_ENTRIES;
             }
             break;
         
@@ -5157,9 +4698,9 @@ void func_800127E0(void) {
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             if (gModeSelection != GRAND_PRIX) {
                 for (i = 0; i < NUM_TRAINS; i++) {
-                    sTrains[i].tender.isActive = 1;
-                    sTrains[i].passengerCars[4].isActive = 1;
-                    sTrains[i].numCars = NUM_TENDERS + NUM_2P_PASSENGER_CARS;
+                    gTrains[i].tender.isActive = 1;
+                    gTrains[i].passengerCars[4].isActive = 1;
+                    gTrains[i].numCars = NUM_TENDERS + NUM_2P_PASSENGER_CARS;
                 }
             }
             break;
@@ -5199,53 +4740,53 @@ void func_80012AC0(void) {
     D_80162FCC += 1;
 
     for (i = 0; i < NUM_TRAINS; i++) {
-        temp_s0 = (u16) sTrains[i].locomotive.waypointIndex;
+        temp_s0 = (u16) gTrains[i].locomotive.waypointIndex;
 
-        temp_f20 = sTrains[i].locomotive.position[0];
-        temp_f22 = sTrains[i].locomotive.position[2];
+        temp_f20 = gTrains[i].locomotive.position[0];
+        temp_f22 = gTrains[i].locomotive.position[2];
 
-        temp_v0 = func_8000DBAC(sTrains[i].locomotive.position, &sTrains[i].locomotive.waypointIndex, sTrains[i].someMultiplier);
+        temp_v0 = func_8000DBAC(gTrains[i].locomotive.position, &gTrains[i].locomotive.waypointIndex, gTrains[i].someMultiplier);
 
-        sTrains[i].locomotive.velocity[0] = sTrains[i].locomotive.position[0] - temp_f20;
-        sTrains[i].locomotive.velocity[2] = sTrains[i].locomotive.position[2] - temp_f22;
+        gTrains[i].locomotive.velocity[0] = gTrains[i].locomotive.position[0] - temp_f20;
+        gTrains[i].locomotive.velocity[2] = gTrains[i].locomotive.position[2] - temp_f22;
 
-        func_80012A48(&sTrains[i].locomotive, temp_v0);
+        func_80012A48(&gTrains[i].locomotive, temp_v0);
 
-        if ((temp_s0 != sTrains[i].locomotive.waypointIndex)
-            && ((sTrains[i].locomotive.waypointIndex == 0x00BE)
-            || (sTrains[i].locomotive.waypointIndex == 0x0140))) {
-            func_800C98B8(sTrains[i].locomotive.position, sTrains[i].locomotive.velocity, 0x1901800E);
+        if ((temp_s0 != gTrains[i].locomotive.waypointIndex)
+            && ((gTrains[i].locomotive.waypointIndex == 0x00BE)
+            || (gTrains[i].locomotive.waypointIndex == 0x0140))) {
+            func_800C98B8(gTrains[i].locomotive.position, gTrains[i].locomotive.velocity, 0x1901800E);
         } else if (random_int(100) == 0) {
-            func_800C98B8(sTrains[i].locomotive.position, sTrains[i].locomotive.velocity, 0x1901800D);
+            func_800C98B8(gTrains[i].locomotive.position, gTrains[i].locomotive.velocity, 0x1901800D);
         }
 
-        sTrains[i].someFlags = func_800061DC(sTrains[i].locomotive.position, 2000.0f, sTrains[i].someFlags);
-        if ((((s16) D_80162FCC % 5) == 0) && (sTrains[i].someFlags != 0)) {
-            sp90[0] = sTrains[i].locomotive.position[0];
-            sp90[1] = (f32) ((f64) sTrains[i].locomotive.position[1] + 65.0);
-            sp90[2] = (f32) ((f64) sTrains[i].locomotive.position[2] + 25.0);
-            func_80006114(sp90, sTrains[i].locomotive.position, temp_v0);
+        gTrains[i].someFlags = func_800061DC(gTrains[i].locomotive.position, 2000.0f, gTrains[i].someFlags);
+        if ((((s16) D_80162FCC % 5) == 0) && (gTrains[i].someFlags != 0)) {
+            sp90[0] = gTrains[i].locomotive.position[0];
+            sp90[1] = (f32) ((f64) gTrains[i].locomotive.position[1] + 65.0);
+            sp90[2] = (f32) ((f64) gTrains[i].locomotive.position[2] + 25.0);
+            func_80006114(sp90, gTrains[i].locomotive.position, temp_v0);
             func_800755FC(i, sp90, 1.1f);
         }
 
-        car = &sTrains[i].tender;
+        car = &gTrains[i].tender;
 
         if (car->isActive == 1) {
             temp_f20 = car->position[0];
             temp_f22 = car->position[2];
-            temp_v0 = func_8000DBAC(car->position, &car->waypointIndex, sTrains[i].someMultiplier);
+            temp_v0 = func_8000DBAC(car->position, &car->waypointIndex, gTrains[i].someMultiplier);
             car->velocity[0] = car->position[0] - temp_f20;
             car->velocity[2] = car->position[2] - temp_f22;
             func_80012A48(car, temp_v0);
         }
 
         for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) {
-            car = &sTrains[i].passengerCars[j];
+            car = &gTrains[i].passengerCars[j];
             if (car->isActive == 1) {
                 temp_f20 = car->position[0];
                 temp_f22 = car->position[2];
 
-                temp_v0 = func_8000DBAC(car->position, &car->waypointIndex, sTrains[i].someMultiplier);
+                temp_v0 = func_8000DBAC(car->position, &car->waypointIndex, gTrains[i].someMultiplier);
                 car->velocity[0] = car->position[0] - temp_f20;
                 car->velocity[2] = car->position[2] - temp_f22;
                 func_80012A48(car, temp_v0);
@@ -5268,7 +4809,7 @@ void func_80012DC0(s32 playerId, Player *player) {
             playerPosX = player->pos[0];
             playerPosZ = player->pos[2];
             for (trainIndex = 0; trainIndex < NUM_TRAINS; trainIndex++) {
-                trainCar = &sTrains[trainIndex].locomotive;
+                trainCar = &gTrains[trainIndex].locomotive;
                 x_dist = playerPosX - trainCar->position[0];
                 z_dist = playerPosZ - trainCar->position[2];
                 if ((x_dist > -100.0) && (x_dist < 100.0)) {
@@ -5276,7 +4817,7 @@ void func_80012DC0(s32 playerId, Player *player) {
                         if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
                             player->statusEffects |= REVERSE_EFFECT;
                         }
-                        trainCar = &sTrains[trainIndex].tender;
+                        trainCar = &gTrains[trainIndex].tender;
                         if (trainCar->isActive == 1) {
                             if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
                                 player->statusEffects |= REVERSE_EFFECT;
@@ -5286,7 +4827,7 @@ void func_80012DC0(s32 playerId, Player *player) {
                 }
 
                 for (passengerCarIndex = 0; passengerCarIndex < NUM_PASSENGER_CAR_ENTRIES; passengerCarIndex++) {
-                    trainCar = &sTrains[trainIndex].passengerCars[passengerCarIndex];
+                    trainCar = &gTrains[trainIndex].passengerCars[passengerCarIndex];
                     x_dist = playerPosX - trainCar->position[0];
                     z_dist = playerPosZ - trainCar->position[2];
                     if (trainCar->isActive == 1) {
@@ -5317,17 +4858,17 @@ void func_80013054(void) {
     isCrossingTriggeredByIndex[1] = 0;
 
     for (i = 0; i < NUM_TRAINS; i++) {
-        temp_f16 = sTrains[i].locomotive.waypointIndex / ((f32) D_8016359C);
+        temp_f16 = gTrains[i].locomotive.waypointIndex / ((f32) D_8016359C);
         temp_f18 = 0.72017354f;
         temp_f12 = 0.42299348f;
 
         if (((temp_f12 - 0.1) < temp_f16) 
-            && (temp_f16 < ((((f64) sTrains[i].numCars) * 0.01) + (temp_f12 + 0.01)))) {
+            && (temp_f16 < ((((f64) gTrains[i].numCars) * 0.01) + (temp_f12 + 0.01)))) {
 
             isCrossingTriggeredByIndex[0] = 1;
         }
         if (((temp_f18 - 0.1) < temp_f16) 
-            && (temp_f16 < ((((f64) sTrains[i].numCars) * 0.01) + (temp_f18 + 0.01)))) {
+            && (temp_f16 < ((((f64) gTrains[i].numCars) * 0.01) + (temp_f18 + 0.01)))) {
 
             isCrossingTriggeredByIndex[1] = 1;
         }
@@ -5349,7 +4890,7 @@ void func_800131DC(s32 playerId) {
            || (func_800061DC(gPlayers[playerId].pos, 1000.0f, 0))) {
 
             if ((isCrossingTriggeredByIndex[1] == 1) 
-                && ((D_801637BE) > 240)) {
+                && ((D_801637BC[1]) > 240)) {
             
                 if ((D_80162FCE > 176) && (D_80162FCE < 182)) {
                     D_801634D8[playerId] = 1;
@@ -5367,18 +4908,15 @@ void func_800131DC(s32 playerId) {
 void func_800132F4(void) {
     PaddleWheelBoatStuff *var_a1;
     s32 i;
-    TrackWaypoint *temp_a2;
+    PathNoY *temp_a2;
     u16 temp;
-    for (i = 0; i < NUM_PADDLE_WHEEL_BOATS; i++) {
+    for (i = 0; i < NUM_ACTIVE_PADDLE_WHEEL_BOATS; i++) {
         temp = i * 0xB4;
         var_a1 = &gFerries[i];
         temp_a2 = &D_80163598[temp];
-        var_a1->position[0] = (f32) temp_a2->posX;
-        var_a1->position[1] = (f32) D_80162EB2;
-        // Shouldn't this be posZ? Something doesn't seem right here.
-        // Unless temp_a2 has been converted to X,Z with no Y. In-that case our
-        // struct is wrong or the member name is wrong.
-        var_a1->position[2] = (f32) temp_a2->posY;
+        var_a1->position[0] = temp_a2->x;
+        var_a1->position[1] = D_80162EB2;
+        var_a1->position[2] = temp_a2->z;
         var_a1->waypointIndex = i * 0xB4;
         var_a1->actorIndex = -1;
         
@@ -5390,8 +4928,6 @@ void func_800132F4(void) {
         var_a1->velocity[0] = 0.0f;
         var_a1->velocity[1] = 0.0f;
         var_a1->velocity[2] = 0.0f;
-        // fakematch
-        temp_a2 = &D_80163598[temp];
         var_a1->someMultiplier = 1.6666666f;
         var_a1->rotY = 0;
     }
@@ -5400,7 +4936,7 @@ void func_800132F4(void) {
 
 void func_800133C4(void) {
     PaddleWheelBoatStuff *ferry;
-    TrackWaypoint *waypoint;
+    PathNoY *waypoint;
     s32 i;
     struct Actor *ferryActor;
     f32 temp_f26;
@@ -5415,7 +4951,7 @@ void func_800133C4(void) {
     Vec3f sp78;
     s32 pad2;
     D_801630FC += 1;
-    for (i = 0; i < NUM_PADDLE_WHEEL_BOATS; i++) {
+    for (i = 0; i < NUM_ACTIVE_PADDLE_WHEEL_BOATS; i++) {
         ferry = &gFerries[i];
         if (ferry->isActive == 1) {
             temp_f26 = ferry->position[0];
@@ -5445,10 +4981,10 @@ void func_800133C4(void) {
             sp94[0] = temp_f26;
             sp94[1] = temp_f28;
             sp94[2] = temp_f30;
-            waypoint = (TrackWaypoint *) &D_80163598[(ferry->waypointIndex + 5) % D_8016359C];
-            sp88[0] = (f32) waypoint->posX;
+            waypoint = &D_80163598[(ferry->waypointIndex + 5) % D_8016359C];
+            sp88[0] = (f32) waypoint->x;
             sp88[1] = (f32) D_80162EB0;
-            sp88[2] = (f32) waypoint->posY;
+            sp88[2] = (f32) waypoint->z;
             temp_a1 = func_80005FD0(sp94, sp88);
             temp = temp_a1 - ferry->rotY;
             var_v1 = temp;
@@ -5512,7 +5048,7 @@ void func_80013854(Player *player) {
         playerX = player->pos[0];
         playerY = player->pos[1];
         playerZ = player->pos[2];
-        for (someIndex = 0; someIndex < NUM_PADDLE_WHEEL_BOATS; someIndex++) {
+        for (someIndex = 0; someIndex < NUM_ACTIVE_PADDLE_WHEEL_BOATS; someIndex++) {
             tempPaddleWheelBoat = &gFerries[someIndex];
             if (tempPaddleWheelBoat->isActive == 1) {
                 x_diff = playerX - tempPaddleWheelBoat->position[0];
@@ -5557,7 +5093,7 @@ void func_800139E4(f32 arg0, f32 arg1, s32 arg2, s32 arg3, VehicleStuff *vehicle
                 veh->someType = random_int(3);
             }
             veh->someMultiplierTheSequel = (f32) ((f64) (f32) (veh->someType - 1) * 0.6);
-            if (((gCCSelection > 0) || (gModeSelection == 1)) && (veh->someType == 2)) {
+            if (((gCCSelection > CC_50) || (gModeSelection == TIME_TRIALS)) && (veh->someType == 2)) {
                 veh->someMultiplier = arg0;
             } else {
                 veh->someMultiplier = arg1;
@@ -5844,10 +5380,6 @@ f32 func_800145A8(s16 arg0, f32 arg1, s16 arg2) {
     return arg1;
 }
 
-#ifdef NON_MATCHING
-extern f32 D_801634FC[][4];
-// Something about the handling of `vehicle` is the source of
-// mismatch. Not sure how to fix it.
 void func_800146B8(s32 playerId, s32 arg1, VehicleStuff *vehicle) {
     s32 var_v1;
     s32 var_v0;
@@ -5858,20 +5390,17 @@ void func_800146B8(s32 playerId, s32 arg1, VehicleStuff *vehicle) {
 
     waypointCount = gWaypointCountByPathIndex[0];
     if (!(gPlayers[playerId].unk_094 < 1.6666666666666667)) {
-        for (var_s2 = 0; var_s2 < arg1; var_s2++) {
-            temp_a1 = vehicle[var_s2].waypointIndex;
-            for (var_v0 = 0, var_v1 = D_80162FCE; var_v0 < 0x18; var_v0 += 3, var_v1 += 3) {
-                if ((var_v1 % waypointCount) == temp_a1) {
-                    D_801634FC[playerId][0] = func_800145A8(vehicle[var_s2].someType, D_80163068[playerId], temp_a1);
+        for (var_s2 = 0; var_s2 < arg1; var_s2++, vehicle++) {
+            temp_a1 = vehicle->waypointIndex;
+            for (var_v0 = 0; var_v0 < 0x18; var_v0 += 3) {
+                if (((D_80162FCE + var_v0) % waypointCount) == temp_a1) {
+                    D_801634F8[playerId].unk4 = func_800145A8(vehicle->someType, D_80163068[playerId], temp_a1);
                     return;
                 }
             }
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800146B8.s")
-#endif
 
 void func_800147E0(void) {
     f32 a = ((gCCSelection * 90.0) / 216.0f) + 4.583333333333333;
@@ -5988,21 +5517,9 @@ void func_80014D30(s32 cameraId, s32 pathIndex) {
     func_802ADDC8(&cameras[cameraId].unk_54, 10.0f, (f32) temp_v0->posX, (f32) temp_v0->posY + 30.0f, (f32) temp_v0->posZ);
 }
 
-#ifdef NEEDS_BSS
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-10-2023
-//extern s32 D_80163238;
-//extern ? D_80164680;
-//extern ? D_801646C0;
-extern s32 D_801646C8;
-
-
-
-extern UnkStruct_46D0 D_801646D0[]; // size of 8
-
 void func_80014DE4(s32 arg0) {
-    UnkStruct_46D0 *temp_v1;
-  //  s32 temp_v0;
-    //temp_v0 = arg0 * 2;
+    s32 cameraId;
+
     D_801646CC = 0;
     D_80164678[arg0] = D_80164670[arg0];
     if ((gModeSelection != 1) && ((gCupCourseSelection == 0) || (gDemoMode == (u16) 1))) {
@@ -6014,21 +5531,17 @@ void func_80014DE4(s32 arg0) {
     D_80163238 = 0;
     D_801646C0[arg0] = 0;
     D_801646C8 = 0;
-    temp_v1 = &D_801646D0[arg0];
-    temp_v1->unk0 = 0;
-    temp_v1->unk2 = 0;
-    temp_v1->unk4 = 0;
+    D_801646D0[arg0].unk0 = 0;
+    D_801646D0[arg0].unk2 = 0;
+    D_801646D0[arg0].unk4 = 0;
     if ((gModeSelection == 1) && (D_8018EDFC == 0)) {
         D_80164678[arg0] = 0;
     }
 
-    for (i = 0 ; i < i++) {
-        gNearestWaypointByCameraId[i] = 0;
+    for (cameraId = 0 ; cameraId < 4; cameraId++) {
+        gNearestWaypointByCameraId[cameraId] = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80014DE4.s")
-#endif
 
 f32 func_80014EE4(f32 arg0, s32 arg1) {
     f32 temp_f0;
@@ -6234,7 +5747,7 @@ void func_80015544(s32 playerId, f32 arg1, s32 cameraId, s32 pathIndex) {
     camera->pos[2] = D_80164638[cameraId];
 }
 
-void func_8001577C(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
+void func_8001577C(Camera *camera, UNUSED Player *playerArg, s32 arg2, s32 cameraId) {
     s16 cameraWaypoint;
     s16 playerWaypoint;
     UNUSED s32 pad;
@@ -7582,7 +7095,7 @@ void func_80019118(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
     camera->pos[2] = D_80164638[cameraId];
 }
 
-void func_8001933C(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
+void func_8001933C(Camera *camera, UNUSED Player *playerArg, s32 arg2, s32 cameraId) {
     s16 cameraWaypoint;
     s16 playerWaypoint;
     UNUSED s32 pad;
@@ -7649,7 +7162,7 @@ void func_8001969C(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
     D_80164678[cameraId] = 0;
 }
 
-void func_80019760(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
+void func_80019760(Camera *camera, UNUSED Player *player, s32 arg2, s32 cameraId) {
     UNUSED s32 pad[2];
     f32 xdiff;
     f32 ydiff;
@@ -7771,69 +7284,54 @@ void func_80019B50(s32 arg0, u16 arg1) {
 }
 
 void func_80019C50(s32 arg0) {
-    switch (D_80164678[arg0]) {                              /* irregular */
+    switch (D_80164678[arg0]) {
     case 0:
-        if (D_80164608[arg0] == (s32) 1) {
+        if (D_80164608[arg0] == 1) {
             D_80164678[arg0] = 1;
-            func_800C9060(arg0 & 0xFF, 0x1900904FU);
+            func_800C9060(arg0, 0x1900904FU);
             D_80164670[arg0] = D_80164678[arg0];
         }
         break;
     case 1:
         if (D_80164608[arg0] == 1) {
             D_80164678[arg0] = 0;
-            func_800C9060(arg0 & 0xFF, 0x19009050U);
+            func_800C9060(arg0, 0x19009050U);
             D_80164670[arg0] = D_80164678[arg0];
         }
         break;
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-12-2023
-extern s32 D_80163378;
-s16 gCurrentCourseId;                               /* unable to generate initializer */
-
 void func_80019D2C(Camera *camera, Player *player, s32 arg2) {
-    s32 sp1C;
-    s16 temp_v1;
-    u16 temp_v0;
+    s32 playerId;
+    s32 nearestWaypoint;
 
-    temp_v1 = camera->playerId;
+    playerId = camera->playerId;
     if ((D_80163378 != 0) && (gCurrentCourseId == 8)) {
-        sp1C = (s32) temp_v1;
         func_800151A4(camera, arg2);
-        temp_v0 = gNearestWaypointByPlayerId[temp_v1];
-        if ((((s32) temp_v0 >= 0x65) && ((s32) temp_v0 < 0xFA)) || (((s32) temp_v0 >= 0x1AF) && ((s32) temp_v0 < 0x226))) {
-            func_80019B50(arg2, (player->unk_206 * 2) & 0xFFFF);
-            return;
+        nearestWaypoint = gNearestWaypointByPlayerId[playerId];
+        if (((nearestWaypoint >= 0x65)  && (nearestWaypoint < 0xFA)) ||
+            ((nearestWaypoint >= 0x1AF) && (nearestWaypoint < 0x226))) {
+            func_80019B50(arg2, (player->unk_206 * 2));
+        } else {
+            func_80019B50(arg2, 0U);
         }
-        func_80019B50(arg2, 0U);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80019D2C.s")
-#endif
 
 void func_80019DE4(void) {
     D_801646CC = 1;
 }
 
-#ifdef NON_MATCHING
-// It really seems like this should be it,
-// its unclear what about that for-loop is wrong
 void func_80019DF4(void) {
     s32 i;
-    for (i = 0; i < 4; i++) {
-        D_80164670[i] = D_80164678[i];
-    }
-    camera1->playerId = gGPCurrentRacePlayerIdByRank[0];
+    s32 playerId = gGPCurrentRacePlayerIdByRank[0];
+    // Has to be on a single line to match. Because IDO hates you :)
+    for (i = 0; i < 4; i++) { D_80164670[i] = D_80164678[i]; }
+    camera1->playerId = playerId;
     D_80164678[0] = 1;
     D_801646CC = 2;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80019DF4.s")
-#endif
 
 void func_80019E58(void) {
     D_80164680[0] = 1;
@@ -7864,52 +7362,31 @@ void func_80019ED0(void) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-10-2023
-extern ? D_801645D0;
-extern ? D_801645E8;
-extern ? D_80164608;
-extern ? D_80164628;
+void func_80019FB4(s32 cameraId) {
+    struct Controller *controller;
 
-void func_80019FB4(s32 arg0) {
-    s32 *temp_a0;
-    s32 *temp_a0_2;
-    s32 *temp_a1;
-    s32 *temp_v0_2;
-    s32 var_v1;
-    struct Controller *temp_v0;
-
-    temp_v0 = &gControllerOne[arg0];
-    var_v1 = arg0 * 4;
-    temp_a1 = var_v1 + &D_801645D0;
-    if (temp_v0->buttonPressed & 2) {
-        *temp_a1 += 1;
+    controller = &gControllerOne[cameraId];
+    if (controller->buttonPressed & 2) {
+        D_801645D0[cameraId] += 1;
     } else {
-        var_v1 = arg0 * 4;
-        *(&D_801645D0 + var_v1) = 0;
+        D_801645D0[cameraId] = 0;
     }
-    temp_a0 = var_v1 + &D_801645E8;
-    if (temp_v0->buttonPressed & 4) {
-        *temp_a0 += 1;
+    if (controller->buttonPressed & 4) {
+        D_801645E8[cameraId] += 1;
     } else {
-        *(&D_801645E8 + var_v1) = 0;
+        D_801645E8[cameraId] = 0;
     }
-    temp_a0_2 = var_v1 + &D_80164608;
-    if (temp_v0->buttonPressed & 8) {
-        *temp_a0_2 += 1;
+    if (controller->buttonPressed & 8) {
+        D_80164608[cameraId] += 1;
     } else {
-        *(&D_80164608 + var_v1) = 0;
+        D_80164608[cameraId] = 0;
     }
-    temp_v0_2 = var_v1 + &D_80164628;
-    if (temp_v0->buttonPressed & 1) {
-        *temp_v0_2 += 1;
-        return;
+    if (controller->buttonPressed & 1) {
+        D_80164628[cameraId] += 1;
+    } else {
+        D_80164628[cameraId] = 0;
     }
-    *(&D_80164628 + var_v1) = 0;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80019FB4.s")
-#endif
 
 void func_8001A0A4(UNUSED u16 *arg0, UNUSED Camera *arg1, UNUSED Player *arg2, UNUSED s8 arg3, s32 arg4) {
     func_80019FB4(arg4);
@@ -7946,34 +7423,34 @@ void func_8001A124(s32 arg0, s32 arg1) {
     }
 }
 
-void func_8001A220(s32 arg0, s32 arg1) {
+void func_8001A220(s32 arg0, s32 cameraId) {
     switch (random_int(6)) {
         case 0:
-            D_80164680[arg1] = 4;
+            D_80164680[cameraId] = 4;
             break;
         case 1:
-            D_80164680[arg1] = 5;
+            D_80164680[cameraId] = 5;
             break;
         case 2:
-            D_80164680[arg1] = 6;
+            D_80164680[cameraId] = 6;
             break;
         case 3:
-            D_80164680[arg1] = 7;
+            D_80164680[cameraId] = 7;
             break;
         case 4:
-            D_80164680[arg1] = 8;
+            D_80164680[cameraId] = 8;
             break;
         case 5:
-            D_80164680[arg1] = 1;
+            D_80164680[cameraId] = 1;
             break;
         default:
-            D_80164680[arg1] = 8;
+            D_80164680[cameraId] = 8;
             break;
     }
 }
 
-s32 func_8001A310(s32 arg0, s32 arg1) {
-    if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) && (arg1 != 0) && (arg0 >= 0xE7) && (arg0 < 0x1C2)) {
+s32 func_8001A310(s32 waypoint, s32 arg1) {
+    if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) && (arg1 != 0) && (waypoint >= 0xE7) && (waypoint < 0x1C2)) {
         arg1 = 0;
     }
     return arg1;
@@ -8032,178 +7509,139 @@ void func_8001A518(s32 arg0, s32 arg1, s32 arg2) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-12-2023
-? func_80015C94(Camera *, Player *, s8, s32);       /* extern */
-? func_80016494(Camera *, Player *, s8, s32);       /* extern */
-? func_80017054(Camera *, Player *, s8, s32);       /* extern */
-? func_800178F4(Camera *, Player *, s8, s32);       /* extern */
-? func_800180F0(Camera *, Player *, s8, s32);       /* extern */
-? func_800188F4(Camera *, Player *, s8, s32);       /* extern */
-? func_8001A220(?, s32, s32);                       /* extern */
-extern u32 D_801646C8;
-extern ? D_801646D0;
-
-void func_8001A588(u16 *arg0, Camera *camera, Player *arg2, s8 arg3, s32 arg4) {
-    s32 sp44;
-    s16 *sp24;
-    f64 temp_f0;
-    f64 temp_f2;
-    s16 *temp_t8;
-    s16 temp_v0_3;
-    s16 temp_v1;
-    s16 var_s0;
+void func_8001A588(u16 *localD_80152300, Camera *camera, Player *player, s8 index, s32 cameraIndex) {
     s32 var_v1;
-    u16 temp_t3;
-    u32 temp_t1;
-    u32 temp_t4;
-    u32 temp_v0;
-    u32 temp_v0_2;
-    void *temp_v0_4;
+    UnkStruct_46D0 *temp_v0_4;
+    s32 sp44;
+    s32 playerId;
+    playerId = camera->playerId;
 
-    var_s0 = camera->playerId;
-    if (gModeSelection == 1) {
-        var_s0 = 0;
+    if (gModeSelection == TIME_TRIALS) {
+        playerId = 0;
     }
-    func_80019FB4(arg4);
-    temp_f0 = (f64) camera->pos[0];
-    if ((s32) (temp_f0 * 10.0) == (s32) ((f64) camera->lookAt[0] * 10.0)) {
-        temp_f2 = (f64) camera->pos[2];
-        if ((s32) (temp_f2 * 10.0) == (s32) ((f64) camera->lookAt[2] * 10.0)) {
-            camera->pos[0] = (f32) (temp_f0 + 100.0);
-            camera->pos[2] = (f32) (temp_f2 + 100.0);
+    func_80019FB4(cameraIndex);
+
+    if ((s32) (camera->pos[0] * 10.0) == (s32) ((f64) camera->lookAt[0] * 10.0)) {
+
+        if ((s32) (camera->pos[2] * 10.0) == (s32) ((f64) camera->lookAt[2] * 10.0)) {
+            camera->pos[0] = (f32) (camera->pos[0] + 100.0);
+            camera->pos[2] = (f32) (camera->pos[2] + 100.0);
         }
     }
-    if ((gModeSelection != 3) && (D_80164680[arg4] == -1) && (arg2->type & 0x800) && ((u16) D_801646CC == 0) && (D_801646C8 == 0)) {
-        if (gModeSelection == 2) {
-            func_8001A220(0, (s32) var_s0, arg4);
+    if ((gModeSelection != BATTLE) && (D_80164680[cameraIndex] == -1) && (player->type & 0x800) && ((u16) D_801646CC == 0) && (D_801646C8 == 0)) {
+        if (gModeSelection == VERSUS) {
+            func_8001A220(playerId, cameraIndex);
         } else {
-            func_8001A124((s32) var_s0, arg4);
+            func_8001A124((s32) playerId, cameraIndex);
         }
-        func_80019890((s32) var_s0, arg4);
+        func_80019890((s32) playerId, cameraIndex);
     }
-    temp_t8 = &D_80164680[arg4];
-    sp24 = temp_t8;
-    temp_v1 = *temp_t8;
-    if ((temp_v1 == 0x000E) || (temp_v1 == 0)) {
-        func_80019D2C(camera, arg2, arg4);
+
+    if ((D_80164680[cameraIndex] == 14) || (D_80164680[cameraIndex] == 0)) {
+        func_80019D2C(camera, player, cameraIndex);
     } else {
-        D_801646C0[arg4] = 0;
-        func_800151A4(camera, arg4);
+        D_801646C0[cameraIndex] = 0;
+        func_800151A4(camera, cameraIndex);
     }
-    switch ((u16) D_801646CC) {                     /* switch 1; irregular */
-    case 1:                                         /* switch 1 */
-        temp_t1 = D_801646C8 + 1;
-        D_801646C8 = temp_t1;
-        if (temp_t1 >= 0x1F5U) {
+    switch ((u16) D_801646CC) {
+    case 1:
+        D_801646C8 += 1;
+        if (D_801646C8 >= 501) {
             D_801646C8 = 0;
         }
-        if ((arg4 == 0) && ((temp_v0 = D_801646C8, (temp_v0 == 0x0000000A)) || (temp_v0 == 0x0000000B))) {
-            func_8001A518((s32) var_s0, gGPCurrentRaceRankByPlayerId[var_s0], 0);
+        if ((cameraIndex == 0) && (((D_801646C8 == 10)) || (D_801646C8 == 11))) {
+            func_8001A518((s32) playerId, gGPCurrentRaceRankByPlayerId[playerId], 0);
         }
-        if ((gModeSelection != 1) && (arg4 == 1) && ((temp_v0_2 = D_801646C8, (temp_v0_2 == 0x00000104)) || (temp_v0_2 == 0x00000105))) {
+        if ((gModeSelection != TIME_TRIALS) && (cameraIndex == 1) && (((D_801646C8 == 260)) || (D_801646C8 == 261))) {
+            
             var_v1 = 0;
             if (gPlayerCount == 2) {
-                func_8001A518((s32) var_s0, gGPCurrentRaceRankByPlayerId[var_s0], 1);
+                func_8001A518((s32) playerId, gGPCurrentRaceRankByPlayerId[playerId], 1);
             } else {
-                sp44 = (s32) var_s0;
-loop_34:
-                var_s0 += 1;
+                sp44 = (s32) playerId;
+            while(var_v1 != 8) {
+                playerId += 1;
                 var_v1 += 1;
-                if (var_s0 >= 8) {
-                    var_s0 = 1;
+                if (playerId >= 8) {
+                    playerId = 1;
                 }
-                temp_v0_3 = gPlayers[var_s0].unk_0CA;
-                if (((temp_v0_3 & 2) || (temp_v0_3 & 8)) && (var_v1 != 8)) {
-                    goto loop_34;
+                if ((!(gPlayers[playerId].unk_0CA & 2) && !(gPlayers[playerId].unk_0CA & 8))) {
+                    break;
                 }
-                func_8001A450(sp44, arg4, (s32) var_s0);
+            }
+                func_8001A450(sp44, cameraIndex, (s32) playerId);
             }
         }
         break;
-    case 2:                                         /* switch 1 */
-        temp_t4 = D_801646C8 + 1;
-        D_801646C8 = temp_t4;
-        if (temp_t4 >= 0xFBU) {
+    case 2:
+        D_801646C8 += 1;
+        if (D_801646C8 > 250) {
             D_801646C8 = 0;
         }
-        if ((arg4 == 0) && (D_801646C8 == 0x0000000A)) {
-            func_8001A450((s32) var_s0, arg4, (s32) var_s0);
+        if ((cameraIndex == 0) && (D_801646C8 == 10)) {
+            func_8001A450((s32) playerId, cameraIndex, (s32) playerId);
         }
         break;
-    default:                                        /* switch 1 */
-        temp_v0_4 = (arg4 * 8) + &D_801646D0;
+    default:
+        temp_v0_4 = &D_801646D0[cameraIndex];
         if (temp_v0_4->unk0 == (s16) 1) {
+            playerId = temp_v0_4->unk4;
             temp_v0_4->unk0 = 0;
-            *(&cameras->playerId + (arg4 * 0xB8)) = temp_v0_4->unk4;
-            func_8001A3D8(arg4, 0.0f, (s32) temp_v0_4->unk2);
+            cameras[cameraIndex].playerId = playerId;
+            func_8001A3D8(cameraIndex, 0.0f, (s32) temp_v0_4->unk2);
         }
         break;
     }
-    func_80019C50(arg4);
-    temp_t3 = (u16) *sp24;
-    switch (temp_t3) {
+    func_80019C50(cameraIndex);
+    switch (D_80164680[cameraIndex]) {
     case 0:
-        func_80015390(camera, arg2, (s32) arg3);
-        return;
+        func_80015390(camera, player, index);
+        break;
     case 2:
     case 3:
-        func_8001577C(camera, (s32) arg2, (s32) arg3, arg4);
-        return;
+        func_8001577C(camera, player, index, cameraIndex);
+        break;
     case 6:
     case 7:
-        func_80015C94(camera, arg2, arg3, arg4);
-        return;
+        func_80015C94(camera, player, index, cameraIndex);
+        break;
     case 4:
     case 5:
-        func_80016494(camera, arg2, arg3, arg4);
-        return;
+        func_80016494(camera, player, index, cameraIndex);
+        break;
     case 9:
-        func_80017054(camera, arg2, arg3, arg4);
-        return;
+        func_80017054(camera, player, index, cameraIndex);
+        break;
     case 1:
-        func_800178F4(camera, arg2, arg3, arg4);
-        return;
+        func_800178F4(camera, player, index, cameraIndex);
+        break;
     case 14:
-        func_800180F0(camera, arg2, arg3, arg4);
-        return;
+        func_800180F0(camera, player, index, cameraIndex);
+        break;
     case 8:
-        func_800188F4(camera, arg2, arg3, arg4);
-        return;
+        func_800188F4(camera, player, index, cameraIndex);
+        break;
     case 12:
     case 13:
-        func_8001933C(camera, (s32) arg2, (s32) arg3, arg4);
-        return;
+        func_8001933C(camera, player, index, cameraIndex);
+        break;
     case 15:
     case 16:
-        func_80019760(camera, (s32) arg2, (s32) arg3, arg4);
-        return;
+        func_80019760(camera, player, index, cameraIndex);
+        break;
     default:
-        func_80015390(camera, arg2, (s32) arg3);
-        return;
+        func_80015390(camera, player, index);
+        break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8001A588.s")
-#endif
-
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-10-2023
-extern ? D_801646D0;
 
 void func_8001AAAC(s16 arg0, s16 arg1, s16 arg2) {
-    void *temp_v0;
-
-    temp_v0 = (arg0 * 8) + &D_801646D0;
-    if (temp_v0->unk0 == 0) {
-        temp_v0->unk0 = 1;
-        temp_v0->unk2 = arg1;
-        temp_v0->unk4 = arg2;
+    if (D_801646D0[arg0].unk0 == 0) {
+        D_801646D0[arg0].unk0 = 1;
+        D_801646D0[arg0].unk2 = arg1;
+        D_801646D0[arg0].unk4 = arg2;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8001AAAC.s")
-#endif
 
 void func_8001AB00(void) {
     s32 var_v1;
@@ -8246,7 +7684,7 @@ void func_8001AB74(s32 arg0, s16 *arg1, s32 arg2) {
             break;
     }
     if (value >= 0) {
-    *arg1 = value;
+        *arg1 = value;
     }
 }
 
@@ -8756,20 +8194,6 @@ void func_8001BE78(void) {
     }
 }
 
-extern s16 D_8016347C;
-extern s16 D_8016347E;
-extern s32 D_80163480;
-extern s32 D_80163484;
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-} Struct80163418;
-extern Struct80163418 D_80163418;
-extern Struct80163418 D_80163428;
-extern Struct80163418 D_80163438;
-
 void func_8001C05C(void) {
     init_segment_racing();
     gCurrentCourseId = COURSE_AWARD_CEREMONY;
@@ -8780,98 +8204,68 @@ void func_8001C05C(void) {
     func_8000F2DC();
     func_80014DE4(0);
     func_8001BE78();
-    D_80163418.unk0 = -3202.475097656f;
-    D_80163428.unk0 = 19.166999817f;
-    D_80163438.unk0 = -477.623992920f;
-    D_80163418.unk4 = -3205.080078125f;
-    D_80163428.unk4 = 19.166999817f;
-    D_80163438.unk4 = -462.851989746f;
-    D_80163418.unk8 = -3199.870117188f;
-    D_80163428.unk8 = 19.166999817f;
-    D_80163438.unk8 = -492.395996094f;
-    D_80163418.unkC = -2409.197021484f;
-    D_80163428.unkC = 0.0f;
-    D_80163438.unkC = -355.253997803;
+    D_80163418[0] = -3202.475097656f;
+    D_80163428[0] = 19.166999817f;
+    D_80163438[0] = -477.623992920f;
+    D_80163418[1] = -3205.080078125f;
+    D_80163428[1] = 19.166999817f;
+    D_80163438[1] = -462.851989746f;
+    D_80163418[2] = -3199.870117188f;
+    D_80163428[2] = 19.166999817f;
+    D_80163438[2] = -492.395996094f;
+    D_80163418[3] = -2409.197021484f;
+    D_80163428[3] = 0.0f;
+    D_80163438[3] = -355.253997803;
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-11-2023
-extern ? D_80163418;
-extern ? D_80163438;
-extern s16 D_8016347C;
-extern s16 D_8016347E;
-extern s32 D_80163480;
-extern s32 D_80163484;
-extern u16 D_80163E2C;
-
 void func_8001C14C(void) {
-    Player *temp_s0;
     f32 temp_f0;
     f32 temp_f2;
-    s32 temp_t3;
-    s32 temp_v0;
     s32 var_s1;
-    u16 temp_v1;
+    Player *temp_s0;
 
     if (D_8016347C == 1) {
         D_80163480 += 1;
     }
-    if ((D_8016347E == 1) && (D_80163E2C == 0) && (D_802874D8.unk1D >= 3)) {
-        temp_t3 = D_80163484 + 1;
-        D_80163484 = temp_t3;
-        if (temp_t3 >= 0xF) {
+    if ((D_8016347E == 1) && (gBombKarts[0].state == 0) && (D_802874D8.unk1D >= 3)) {
+        D_80163484++;
+        if (D_80163484 >= 0xF) {
             D_80163484 = 0;
             D_8016347E = 2;
             func_8009265C();
         }
     }
-    var_s1 = 0;
-loop_8:
-    if (var_s1 == 3) {
-        if (D_8016347C != 0) {
-            goto block_12;
-        }
-        return;
-    }
-block_12:
-    temp_s0 = &gPlayerOne[var_s1];
-    func_80009B60(var_s1);
-    temp_v1 = temp_s0->type;
-    temp_v0 = var_s1 * 4;
-    if (!(temp_v1 & 0x2000)) {
-        temp_f0 = *(&D_80163418 + temp_v0) - temp_s0->pos[0];
-        temp_f2 = *(&D_80163438 + temp_v0) - temp_s0->pos[2];
-        if ((f64) ((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 1.0) {
-            if (var_s1 != 3) {
-                if (D_8016347C == 0) {
-                    temp_s0->type = temp_v1 | 0x2000;
-                } else {
-                    temp_s0->type = temp_v1 & 0xDFFF;
+    for (var_s1 = 0; var_s1 < 4; var_s1++) {
+        if ((var_s1 == 3) && (D_8016347C == 0)) break;
+
+        temp_s0 = &gPlayerOne[var_s1];
+        func_80009B60(var_s1);
+        if (!(temp_s0->type & 0x2000)) {
+            temp_f0 = D_80163418[var_s1] - temp_s0->pos[0];
+            temp_f2 = D_80163438[var_s1] - temp_s0->pos[2];
+            if ((f64) ((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 1.0) {
+                if (var_s1 != 3) {
+                    if (1) {}
+                    // Why oh why is a ternary required here? Who does that?
+                    (D_8016347C == 0) ? (temp_s0->type |= 0x2000) : (temp_s0->type &= ~0x2000);
+                    if ((gPlayerOne->type & 0x2000) && (gPlayerTwo->type & 0x2000) && (gPlayerThree->type & 0x2000)) {
+                        D_8016347C = 1;
+                        D_80163480 = 0;
+                    }
+                } else if (D_8016347E == 0) {
+                    if (!(temp_s0->effects & 0x01000000)) {
+                        temp_s0->type |= 0x2000;
+                    }
+                    D_8016347E = 1;
+                    D_80163484 = 0;
+                } else if (!(temp_s0->effects & 0x01000000)) {
+                    temp_s0->type |= 0x2000;
                 }
-                if ((gPlayerOne->type & 0x2000) && (gPlayerTwo->type & 0x2000) && (gPlayerThree->type & 0x2000)) {
-                    D_8016347C = 1;
-                    D_80163480 = 0;
-                }
-            } else if (D_8016347E == 0) {
-                if (!(temp_s0->effects & 0x01000000)) {
-                    temp_s0->type = temp_v1 | 0x2000;
-                }
-                D_8016347E = 1;
-                D_80163484 = 0;
-            } else if (!(temp_s0->effects & 0x01000000)) {
-                temp_s0->type = temp_v1 | 0x2000;
             }
         }
+
     }
-    var_s1 += 1;
-    if (var_s1 == 4) {
-        return;
-    }
-    goto loop_8;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8001C14C.s")
-#endif
 
 void func_8001C3C4(s32 arg0) {
     if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {

@@ -55,7 +55,7 @@ typedef struct
     /* 0xBE */ Vec3su unk_0BE;
     /* 0xC4 */ u16 unk_0C4;
     /* 0xC6 */ u16 unk_0C6;
-    /* 0xC8 */ u16 unk_0C8;
+    /* 0xC8 */ u16 boundingBoxSize;
     /* 0xCA */ s8  unk_0CA;
     /* 0xCB */ s8  unk_0CB;
     /* 0xCC */ s8  unk_0CC;
@@ -175,10 +175,10 @@ extern s32 D_80183DB8[];
 // Appears to be a list of object list indices for the Item Window part of the HUD
 extern s32 gItemWindowObjectByPlayerId[];
 
-// Used for loop bounds when accessing D_80183EA0
+// Used for loop bounds when accessing indexObjectList1
 extern s16 D_80165750;
 // These seem to be limits on different object types in Moo Moo Farm
-// See func_80070780 in code_8006E9C0.c
+// See init_course_object in code_8006E9C0.c
 // Maybe max number of active moles in a given group of moles?
 extern s32 D_8018D1C8;
 extern s32 D_8018D1D0;
@@ -189,9 +189,9 @@ extern s32 D_8018D3C0;
 extern Collision D_8018C0B0[];
 
 /**
- * D_80183EA0, D_80183F28, D_8018BFA8, and D_8018C030 are all lists of indices in gObjectList.
- * func_80070190 initializes them in such a way that the indicies in each list are not adjacent.
- * First D_80183EA0 gets an unused index, then D_80183F28, then D_8018BFA8, then D_8018C030, and then it loops.
+ * indexObjectList1, indexObjectList2, indexObjectList3, and indexObjectList4 are all lists of indices in gObjectList.
+ * init_object_list_index initializes them in such a way that the indicies in each list are not adjacent.
+ * First indexObjectList1 gets an unused index, then indexObjectList2, then indexObjectList3, then indexObjectList4, and then it loops.
  * 
  * The objects found at the indices in each list appears to be course dependent
  **/ 
@@ -250,7 +250,7 @@ extern s16 gNumActiveThwomps;
  * Penguins in Sherbet Land?
  * Flag Poles in Yoshi Valley?
 **/
-extern s32 D_80183EA0[];
+extern s32 indexObjectList1[];
 
 
 #define NUM_SEAGULLS 10
@@ -280,7 +280,7 @@ extern Vec3s gHedgehogPatrolPoints[];
  * Hedgehogs in Yoshi Valley?
  * Spawn for big fire breath in Bowser's Castle
 **/
-extern s32 D_80183F28[];
+extern s32 indexObjectList2[];
 
 #define NUM_BOOS 0xA
 #define NUM_FIRE_BREATHS 4
@@ -291,10 +291,12 @@ extern Vec3s gFireBreathsSpawns[];
  * Boos in Banshee Boardwalk
  * Spawners for the 4 small fire breaths inside Bowser's Castle
 **/
-extern s32 D_8018BFA8[];
+extern s32 indexObjectList3[];
 
-// Appears to go entirely unused?
-extern s32 D_8018C030[];
+/**
+ * Unused list of object indices
+*/
+extern s32 indexObjectList4[];
 
 #define D_8018C1B0_SIZE 128
 #define NUM_MAX_MOLES  0x1F
@@ -379,6 +381,8 @@ extern s32 D_8018CC80[];
 extern s32 D_8018D1F0;
 // Next free spot in D_8018CC80?
 extern s32 D_8018D1F8;
+// Also next free spot in D_8018CC80?
+extern s16 D_8018D17C;
 // Something related to the display of the clouds/stars?
 extern s8 D_8018D230;
 // Some sort of limiter on how many of some object type can spawn
