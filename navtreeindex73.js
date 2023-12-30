@@ -1,5 +1,15 @@
 var NAVTREEINDEX73 =
 {
+"structSPTask.html#a4363043b6daf924a156887fca2f3a560":[2,0,159,0],
+"structSPTask.html#ac8f151d1e297976743cca4fe8f282a6b":[2,0,159,1],
+"structSPTask.html#ae55ce0fc3c5a3baccc1fad7ffaa0d7b7":[2,0,159,3],
+"structSaveData.html":[2,0,148],
+"structSaveData.html#a2ff481cd3bd1a2837891600786ff1b48":[2,0,148,1],
+"structSaveData.html#a99de92ab584841746375150797f52829":[2,0,148,2],
+"structSaveData.html#ad8a6336b0eb5b735ff5c9e7793c2a547":[2,0,148,3],
+"structSaveData.html#af99eee38007ec1e42d9fb466faf8ac5b":[2,0,148,0],
+"structSeqOrBankEntry.html":[2,0,149],
+"structSeqOrBankEntry.html#a277046429254499bb6ff951c81714d93":[2,0,149,3],
 "structSeqOrBankEntry.html#a416bfb04131bc8f88f9ef60c3ab53d79":[2,0,149,0],
 "structSeqOrBankEntry.html#a970e3bb4e58a3a033742eaaed511b551":[2,0,149,2],
 "structSeqOrBankEntry.html#aca73d6b5641e6ef48b0cb165a83c1e22":[2,0,149,1],
@@ -239,15 +249,5 @@ var NAVTREEINDEX73 =
 "structTrainCar.html#a53a7ca0d0858902e34896b12551a0859":[2,0,194,7],
 "structTrainCar.html#a56993587fa0526769f92973539dfaf43":[2,0,194,6],
 "structTrainCar.html#a5d7d62393c4c7839040a5af400d02a51":[2,0,194,1],
-"structTrainCar.html#a85c6c1f3dee440e48971207659e85be7":[2,0,194,9],
-"structTrainCar.html#a95936ae04d95261842f542e6f25fe293":[2,0,194,3],
-"structTrainCar.html#acfaf043e4d68774b9f7e9b4cf8a22822":[2,0,194,2],
-"structTrainCar.html#adbb8f8fc2875f11542ac4f46bce53cce":[2,0,194,4],
-"structTrainCarStuff.html":[2,0,195],
-"structTrainCarStuff.html#a059bbe8ef8b16f393c09ca3e71ac8ee9":[2,0,195,3],
-"structTrainCarStuff.html#a43786fb6fe33d999322ff90c221037ba":[2,0,195,5],
-"structTrainCarStuff.html#a534b8b495eec302fd11a493758be8a80":[2,0,195,0],
-"structTrainCarStuff.html#a688fcac06ef446fee8b4b5f0b1a2a767":[2,0,195,4],
-"structTrainCarStuff.html#ab209d23380269a803309b31c47a56e56":[2,0,195,2],
-"structTrainCarStuff.html#ad30b566d920820973b38f352776fba66":[2,0,195,6]
+"structTrainCar.html#a85c6c1f3dee440e48971207659e85be7":[2,0,194,9]
 };

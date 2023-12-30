@@ -1,5 +1,15 @@
 var NAVTREEINDEX70 =
 {
+"structCupTimeTrialRecords.html#acf18ab0e69f90a2eefe248ef7090bd1c":[2,0,70,0],
+"structCutscene.html":[2,0,71],
+"structCutscene.html#adf71ab9b7e76c8a387d4934437caa7e2":[2,0,71,0],
+"structCutscene.html#ae1b25b8bf4f5b72ad672f766ae617145":[2,0,71,1],
+"structCutsceneSplinePoint.html":[2,0,72],
+"structCutsceneSplinePoint.html#a56141a177956feb2bf2f1dcbf347dd2e":[2,0,72,0],
+"structCutsceneSplinePoint.html#a58d0f7ecc0595b19192b1d8397de22e0":[2,0,72,1],
+"structCutsceneSplinePoint.html#a6ac9bd7f67e1080b4154901b53b00e30":[2,0,72,2],
+"structD__80150158.html":[2,0,73],
+"structD__80150158.html#a89d74859e90572976c5094359e65f992":[2,0,73,2],
 "structD__80150158.html#a9a2b85ef05b849f1199d7a39e35c37c7":[2,0,73,0],
 "structD__80150158.html#ac538eb5518499f13c7a14e959ddfe07c":[2,0,73,1],
 "structD__80150158.html#ac8c6855d05a4b4e096b6608aaf816b5a":[2,0,73,3],
@@ -239,15 +249,5 @@ var NAVTREEINDEX70 =
 "structMkTexture.html#a95f2bda85ce81ee19e7e409daccd81b3":[2,0,102,5],
 "structMkTexture.html#aa02ac00b6dc2d6d22e083d739a096cdf":[2,0,102,6],
 "structMkTexture.html#aae0153c2f0c10370193ea227d8525b2f":[2,0,102,4],
-"structMkTexture.html#acf6e0296b8a9711bff4cba40d90ac9d0":[2,0,102,7],
-"structNote.html":[2,0,103],
-"structNote.html#a0e4515abdad43fb493d49f2faeaad16c":[2,0,103,14],
-"structNote.html#a1cbe020fa2840d75876de187e32714a2":[2,0,103,15],
-"structNote.html#a3eb33b9e8ffaa2c7a8993de8ecbedf0a":[2,0,103,5],
-"structNote.html#a6cbdb20c3942e004aefd26210196f138":[2,0,103,13],
-"structNote.html#a735fb38930defbb072e29145b7cddebb":[2,0,103,16],
-"structNote.html#a962842df6352d781b95daa1d5ef52f77":[2,0,103,12],
-"structNote.html#a9951b24128dbb11640130bf5c04e4b34":[2,0,103,8],
-"structNote.html#aaa15be4fbf957b58ad50c760e971eeb5":[2,0,103,0],
-"structNote.html#ab876ff55ca7a84677ba76c12dedf9ec5":[2,0,103,6]
+"structMkTexture.html#acf6e0296b8a9711bff4cba40d90ac9d0":[2,0,102,7]
 };

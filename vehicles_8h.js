@@ -25,5 +25,5 @@ var vehicles_8h =
     [ "gFerries", "vehicles_8h.html#addcb10530364906261cfa5b2255811db", null ],
     [ "gSchoolBusList", "vehicles_8h.html#a71aa7bba57e9949e3b3cd875f2574cae", null ],
     [ "gTankerTruckList", "vehicles_8h.html#a85a7ae4a72ab40a4ff366fb5b1c8f64e", null ],
-    [ "sTrains", "vehicles_8h.html#afcf048fe0342b0b4eae43ff41e3e80b6", null ]
+    [ "gTrains", "vehicles_8h.html#a8c4f429aeaf1bd513f784ba2377dbf5a", null ]
 ];

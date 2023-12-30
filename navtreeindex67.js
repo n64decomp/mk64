@@ -1,5 +1,15 @@
 var NAVTREEINDEX67 =
 {
+"sounds_8h.html#a428811444a6521639376b9d98377b22a":[3,0,0,20,15],
+"sounds_8h.html#a457ac1730cdbe2b3e2afcd6fa697b6ff":[3,0,0,20,44],
+"sounds_8h.html#a5865a57f13747ab147f0e395b7448bf2":[3,0,0,20,31],
+"sounds_8h.html#a5968bc4a2a126aefebd58da70768f228":[3,0,0,20,34],
+"sounds_8h.html#a59f0ba6cdca4a6c882c9ee19ed7d894d":[3,0,0,20,0],
+"sounds_8h.html#a5c5d109bed08c6739b40dacf353e4f5e":[3,0,0,20,11],
+"sounds_8h.html#a62457d08edce6bddc2b3029d48eb0673":[3,0,0,20,23],
+"sounds_8h.html#a66d12fb3207920dd7dec38578a0337d9":[3,0,0,20,1],
+"sounds_8h.html#a7318effb30d735385b466993d7c799b9":[3,0,0,20,29],
+"sounds_8h.html#a7387adc326db4114589228e2b6eb01bf":[3,0,0,20,12],
 "sounds_8h.html#a73e223da1036e51e904e433c10d82892":[3,0,0,20,27],
 "sounds_8h.html#a7871d3712b0d345b3822fe65d6326fd6":[3,0,0,20,3],
 "sounds_8h.html#a8583c6b6f41d6d7c9870b853c1b80fe7":[3,0,0,20,2],
@@ -239,15 +249,5 @@ var NAVTREEINDEX67 =
 "staff__ghosts_8c.html#aa31bfb73f37b232f095701d48a4dc494":[3,0,1,60,21],
 "staff__ghosts_8c.html#aa4bea4f1a6532442de02938ca3a6f794":[3,0,1,60,44],
 "staff__ghosts_8c.html#aaa8df3480c7ade28b5511c10c671eb33":[3,0,1,60,17],
-"staff__ghosts_8c.html#aadf834e73dfafcf240157efbda08b28c":[3,0,1,60,4],
-"staff__ghosts_8c.html#ab058af1250268afcbf7626b677f576da":[3,0,1,60,25],
-"staff__ghosts_8c.html#ab353b1e9b0d7ced01f9c307cceae24f6":[3,0,1,60,33],
-"staff__ghosts_8c.html#ab357d110a4905b09f8f712a25e9a0f0d":[3,0,1,60,51],
-"staff__ghosts_8c.html#ab70628b6b7b501c215569605b84a4043":[3,0,1,60,34],
-"staff__ghosts_8c.html#abbeddd74adb6ec0fbbfea9a1c4a6440b":[3,0,1,60,37],
-"staff__ghosts_8c.html#abe9080fe89ad39e653602c180ae77fda":[3,0,1,60,13],
-"staff__ghosts_8c.html#abfb817bf14935f3dd66b28f56d6d0bdc":[3,0,1,60,45],
-"staff__ghosts_8c.html#ac84dbc61897272194bd76679a847bcc9":[3,0,1,60,40],
-"staff__ghosts_8c.html#aca045aca7c525aa3059653f24491f699":[3,0,1,60,35],
-"staff__ghosts_8c.html#ad3fe55bff348a8b6cfc02f327bda8544":[3,0,1,60,9]
+"staff__ghosts_8c.html#aadf834e73dfafcf240157efbda08b28c":[3,0,1,60,4]
 };

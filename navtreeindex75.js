@@ -1,5 +1,15 @@
 var NAVTREEINDEX75 =
 {
+"structUnk__80191420.html#ae698acd7228d3da8b78ac37cd67d24c1":[2,0,204,0],
+"structUnk__80191420.html#aefaa7458f31f405aedb9db15455133f3":[2,0,204,4],
+"structUnk__80191420.html#aefbee6d07d3a43bb5d4c0228e95e1286":[2,0,204,5],
+"structUnk__D__800E70A0.html":[2,0,205],
+"structUnk__D__800E70A0.html#a3568de4ca5a26d43cc4cf2a40bfd387e":[2,0,205,2],
+"structUnk__D__800E70A0.html#a36748d7e5b4a6ad0591f59a7ad3457e8":[2,0,205,0],
+"structUnk__D__800E70A0.html#aabcceb1f6566aaed3021b847d616f391":[2,0,205,3],
+"structUnk__D__800E70A0.html#ab0e69f5a8689bd33772493a71c02fff2":[2,0,205,1],
+"structVblankHandler.html":[2,0,243],
+"structVblankHandler.html#a78e5c201c12778e84361f487c5dd5763":[2,0,243,0],
 "structVblankHandler.html#afc8f0516d47e98661d3308c307f64b29":[2,0,243,1],
 "structVec3fs.html":[2,0,244],
 "structVec3fs.html#a394aaa3eb271acc0bd3a9592d5399d8e":[2,0,244,0],
@@ -239,15 +249,5 @@ var NAVTREEINDEX75 =
 "structcredits__data__1FA0.html#a22db4d79a849d4523fb89e72e3b3fffe":[2,0,68,6],
 "structcredits__data__1FA0.html#a3d6e7aa450da9c9cb312e200a3231a7b":[2,0,68,12],
 "structcredits__data__1FA0.html#a45eb06bb75ecffa25fc5aa11e892894a":[2,0,68,9],
-"structcredits__data__1FA0.html#a54f01e22474563537ec9d8adb6841837":[2,0,68,16],
-"structcredits__data__1FA0.html#a5acab6a9564538a29f27adfc20675000":[2,0,68,3],
-"structcredits__data__1FA0.html#a7ce81c22cc4b44fee6fb66c64f7f0785":[2,0,68,11],
-"structcredits__data__1FA0.html#a87eeb15a308d47d851decba58cb357f2":[2,0,68,8],
-"structcredits__data__1FA0.html#a892c6898ac8801a41ee69c91a9256021":[2,0,68,7],
-"structcredits__data__1FA0.html#a960e4fdf9a02668fece6ba4431588041":[2,0,68,1],
-"structcredits__data__1FA0.html#a96c1ab64ca2de7eca828abf06b689feb":[2,0,68,13],
-"structcredits__data__1FA0.html#a9df1c6e4497e6d761373ddd40e93c931":[2,0,68,4],
-"structcredits__data__1FA0.html#aa702a62bcb95ee2d553d2a9fb4dd3c95":[2,0,68,0],
-"structcredits__data__1FA0.html#ab38b7aa03f1fb7fa7f652445b1c89ad9":[2,0,68,15],
-"structcredits__data__1FA0.html#af2cbf2d10951a249c473c7a0b9062264":[2,0,68,2]
+"structcredits__data__1FA0.html#a54f01e22474563537ec9d8adb6841837":[2,0,68,16]
 };

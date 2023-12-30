@@ -1,26 +1,26 @@
 <map id="osPiStartDma" name="osPiStartDma">
-<area shape="rect" id="node1" title=" " alt="" coords="723,1000,833,1027"/>
+<area shape="rect" id="node1" title=" " alt="" coords="723,1051,833,1077"/>
 <area shape="rect" id="node2" href="$load_8c.html#a5f475204592707b7fb57147de74f1350" title=" " alt="" coords="481,56,658,83"/>
 <area shape="rect" id="node4" href="$load_8c.html#ae3317f7c4d592849e7c2e92ecb7777e0" title=" " alt="" coords="464,157,675,184"/>
 <area shape="rect" id="node10" href="$load_8c.html#a126f56cab34b7b9a73ab2c42dc3c23e8" title=" " alt="" coords="479,361,660,402"/>
 <area shape="rect" id="node13" href="$main_8c.html#ae5fbbef129fb153082dde3d94c280b71" title=" " alt="" coords="525,565,614,592"/>
 <area shape="rect" id="node18" href="$main_8c.html#a8cd2befe9b7f9490d32bf787a7e8d44f" title=" " alt="" coords="5,645,169,672"/>
-<area shape="rect" id="node20" href="$code__80091750_8c.html#a52ee4b4555f295e2e45eaa852db8ece7" title=" " alt="" coords="478,747,661,773"/>
-<area shape="rect" id="node21" href="$code__80091750_8c.html#a8ed2c8990531f256c23e002e63f07265" title=" " alt="" coords="480,797,659,824"/>
-<area shape="rect" id="node22" href="$load_8c.html#a6997b85148386c7dc6ef34af662d44ca" title=" " alt="" coords="498,848,641,875"/>
-<area shape="rect" id="node23" href="$memory_8c.html#a1d30396665acd2f000e3927b11c9f264" title=" " alt="" coords="513,899,625,925"/>
-<area shape="rect" id="node28" href="$staff__ghosts_8c.html#a1e6c535e2e2e430c9088d9a634788aba" title=" " alt="" coords="509,949,630,976"/>
-<area shape="rect" id="node30" href="$kart__dma_8c.html#a3a8a3fb83dbcfa193854a6e1d890abbf" title=" " alt="" coords="509,1000,630,1027"/>
-<area shape="rect" id="node35" href="$kart__dma_8c.html#ae06a1b1a72f72337f689b5d580544cba" title=" " alt="" coords="507,1051,632,1077"/>
-<area shape="rect" id="node36" href="$kart__dma_8c.html#a46ca62e9031b9b2a6ebc4b9d83c3b43c" title=" " alt="" coords="508,1101,631,1128"/>
-<area shape="rect" id="node38" href="$code__8006E9C0_8c.html#a538eb148d9ff8bd9fdaf67e1c4973fea" title=" " alt="" coords="508,1152,631,1179"/>
-<area shape="rect" id="node40" href="$code__80071F00_8c.html#ae1c75502e160df439fc83386eb9cb801" title=" " alt="" coords="509,1203,630,1229"/>
-<area shape="rect" id="node42" href="$memory_8c.html#a3ae24092c659bc7eddd2b03085df357c" title=" " alt="" coords="508,1253,631,1280"/>
-<area shape="rect" id="node45" href="$memory_8c.html#a91ad47aa1fa5b5c989f3571fbef579e5" title=" " alt="" coords="508,1304,631,1331"/>
-<area shape="rect" id="node46" href="$memory_8c.html#acba0619aad0ff1115356faaad9de846a" title=" " alt="" coords="508,1355,631,1381"/>
-<area shape="rect" id="node47" href="$kart__dma_8c.html#a45e203c7a60ac07d226bec0c12c70d89" title=" " alt="" coords="502,1405,637,1432"/>
-<area shape="rect" id="node49" href="$kart__dma_8c.html#a6c923a042d0b2ff00518dd2dc12fe580" title="Place DMA mio0 compressed character textures in a buffer. Later, this data becomes decompressed." alt="" coords="501,1456,637,1483"/>
-<area shape="rect" id="node50" href="$memory_8c.html#a220674b72225f6ce3a5303f12fe958c6" title=" " alt="" coords="530,1507,609,1533"/>
+<area shape="rect" id="node20" href="$code__80091750_8c.html#a52ee4b4555f295e2e45eaa852db8ece7" title=" " alt="" coords="478,797,661,824"/>
+<area shape="rect" id="node21" href="$code__80091750_8c.html#a8ed2c8990531f256c23e002e63f07265" title=" " alt="" coords="480,848,659,875"/>
+<area shape="rect" id="node22" href="$load_8c.html#a6997b85148386c7dc6ef34af662d44ca" title=" " alt="" coords="498,899,641,925"/>
+<area shape="rect" id="node23" href="$memory_8c.html#a2d39da6af3dc580cc4d65a91c556800f" title=" " alt="" coords="513,949,625,976"/>
+<area shape="rect" id="node29" href="$staff__ghosts_8c.html#a1e6c535e2e2e430c9088d9a634788aba" title=" " alt="" coords="509,1000,630,1027"/>
+<area shape="rect" id="node31" href="$kart__dma_8c.html#a3a8a3fb83dbcfa193854a6e1d890abbf" title=" " alt="" coords="509,1051,630,1077"/>
+<area shape="rect" id="node36" href="$kart__dma_8c.html#ae06a1b1a72f72337f689b5d580544cba" title=" " alt="" coords="507,1101,632,1128"/>
+<area shape="rect" id="node37" href="$kart__dma_8c.html#a46ca62e9031b9b2a6ebc4b9d83c3b43c" title=" " alt="" coords="508,1152,631,1179"/>
+<area shape="rect" id="node39" href="$code__8006E9C0_8c.html#a538eb148d9ff8bd9fdaf67e1c4973fea" title=" " alt="" coords="508,1203,631,1229"/>
+<area shape="rect" id="node41" href="$code__80071F00_8c.html#ae1c75502e160df439fc83386eb9cb801" title=" " alt="" coords="509,1253,630,1280"/>
+<area shape="rect" id="node43" href="$memory_8c.html#a3ae24092c659bc7eddd2b03085df357c" title=" " alt="" coords="508,1304,631,1331"/>
+<area shape="rect" id="node46" href="$memory_8c.html#a91ad47aa1fa5b5c989f3571fbef579e5" title=" " alt="" coords="508,1355,631,1381"/>
+<area shape="rect" id="node47" href="$memory_8c.html#acba0619aad0ff1115356faaad9de846a" title=" " alt="" coords="508,1405,631,1432"/>
+<area shape="rect" id="node48" href="$kart__dma_8c.html#a45e203c7a60ac07d226bec0c12c70d89" title=" " alt="" coords="502,1456,637,1483"/>
+<area shape="rect" id="node49" href="$kart__dma_8c.html#a6c923a042d0b2ff00518dd2dc12fe580" title="Place DMA mio0 compressed character textures in a buffer. Later, this data becomes decompressed." alt="" coords="501,1507,637,1533"/>
+<area shape="rect" id="node50" href="$memory_8c.html#a220674b72225f6ce3a5303f12fe958c6" title=" " alt="" coords="530,1557,609,1584"/>
 <area shape="rect" id="node3" href="$load_8c.html#a0eceae7b2b85c04bd7f6b2c2f1f06345" title=" " alt="" coords="234,5,399,32"/>
 <area shape="rect" id="node5" href="$load_8c.html#a743996a6c4479f2dfd5ee9b2729cb499" title=" " alt="" coords="233,56,400,83"/>
 <area shape="rect" id="node6" href="$heap_8c.html#ae8b7a3aad224c80e7d87654d866666ae" title=" " alt="" coords="255,107,379,133"/>
@@ -37,16 +37,16 @@
 <area shape="rect" id="node24" href="$code__800029B0_8c.html#aed19d831d4870c51cb5be8739574abbe" title=" " alt="" coords="256,747,377,773"/>
 <area shape="rect" id="node25" href="$code__80057C60_8c.html#a07b43c07e7afcf3fcccf63622bb991e1" title=" " alt="" coords="255,797,378,824"/>
 <area shape="rect" id="node26" href="$code__8006E9C0_8c.html#ac35f9951d9cd04d4e9bf188746bc9c58" title=" " alt="" coords="256,848,377,875"/>
-<area shape="rect" id="node27" href="$actors_8c.html#ad4c7671a474d355b39c737fdf54caffc" title=" " alt="" coords="256,899,377,925"/>
-<area shape="rect" id="node29" href="$staff__ghosts_8c.html#ad3fe55bff348a8b6cfc02f327bda8544" title=" " alt="" coords="256,949,377,976"/>
-<area shape="rect" id="node31" href="$render__player_8c.html#aa48ec7ff2a347fb6035ad10ceebb7291" title=" " alt="" coords="256,1000,377,1027"/>
-<area shape="rect" id="node32" href="$render__player_8c.html#aea46313da3b14a71e126d88df766b2c2" title=" " alt="" coords="255,1051,378,1077"/>
-<area shape="rect" id="node33" href="$render__player_8c.html#a0168d37a71ccb859723becdd647e64b2" title=" " alt="" coords="255,1101,378,1128"/>
-<area shape="rect" id="node34" href="$render__player_8c.html#a051ce5131b81f21321b6a87e84a5dcff" title=" " alt="" coords="255,1152,378,1179"/>
-<area shape="rect" id="node37" href="$render__player_8c.html#a6c7ddf26f336d61b7f3f472b96d56a23" title=" " alt="" coords="255,1203,378,1229"/>
-<area shape="rect" id="node39" href="$code__8006E9C0_8c.html#a7035aa35df03a6428e21a10f4472d68e" title=" " alt="" coords="256,1253,377,1280"/>
-<area shape="rect" id="node41" href="$code__80071F00_8c.html#a7ce184a84c4acf9f997a2555c6ab6d8e" title=" " alt="" coords="256,1304,377,1331"/>
-<area shape="rect" id="node43" href="$memory_8c.html#ac7769c4c4cc7d9d1f5c804089baba60e" title=" " alt="" coords="255,1355,378,1381"/>
-<area shape="rect" id="node44" href="$memory_8c.html#ab7219c45afb6333187ed662e900d0c76" title=" " alt="" coords="259,1405,374,1432"/>
-<area shape="rect" id="node48" href="$spawn__players_8c.html#a786871d4fec99acdd5a14b48c1c38a7c" title=" " alt="" coords="255,1456,379,1483"/>
+<area shape="rect" id="node27" href="$code__8006E9C0_8c.html#addcb705e0abe102e25517666b6a1eb84" title=" " alt="" coords="27,873,148,900"/>
+<area shape="rect" id="node28" href="$actors_8c.html#ad4c7671a474d355b39c737fdf54caffc" title=" " alt="" coords="256,949,377,976"/>
+<area shape="rect" id="node30" href="$staff__ghosts_8c.html#ad3fe55bff348a8b6cfc02f327bda8544" title=" " alt="" coords="256,1000,377,1027"/>
+<area shape="rect" id="node32" href="$render__player_8c.html#aa48ec7ff2a347fb6035ad10ceebb7291" title=" " alt="" coords="256,1051,377,1077"/>
+<area shape="rect" id="node33" href="$render__player_8c.html#aea46313da3b14a71e126d88df766b2c2" title=" " alt="" coords="255,1101,378,1128"/>
+<area shape="rect" id="node34" href="$render__player_8c.html#a0168d37a71ccb859723becdd647e64b2" title=" " alt="" coords="255,1152,378,1179"/>
+<area shape="rect" id="node35" href="$render__player_8c.html#a051ce5131b81f21321b6a87e84a5dcff" title=" " alt="" coords="255,1203,378,1229"/>
+<area shape="rect" id="node38" href="$render__player_8c.html#a6c7ddf26f336d61b7f3f472b96d56a23" title=" " alt="" coords="255,1253,378,1280"/>
+<area shape="rect" id="node40" href="$code__8006E9C0_8c.html#a7035aa35df03a6428e21a10f4472d68e" title=" " alt="" coords="256,1304,377,1331"/>
+<area shape="rect" id="node42" href="$code__80071F00_8c.html#a7ce184a84c4acf9f997a2555c6ab6d8e" title=" " alt="" coords="256,1355,377,1381"/>
+<area shape="rect" id="node44" href="$memory_8c.html#ac7769c4c4cc7d9d1f5c804089baba60e" title=" " alt="" coords="255,1405,378,1432"/>
+<area shape="rect" id="node45" href="$memory_8c.html#ab7219c45afb6333187ed662e900d0c76" title=" " alt="" coords="259,1456,374,1483"/>
 </map>

@@ -1,5 +1,15 @@
 var NAVTREEINDEX69 =
 {
+"structAdpcmLoop.html#a849ae149b9ac258b1a22e1ee2b7a4dca":[2,0,25,4],
+"structAdpcmLoop.html#aa15c86265abd40fe83080f165c34e29b":[2,0,25,0],
+"structAdpcmLoop.html#adbfe1f5075302f1f33395111596b562c":[2,0,25,1],
+"structAdsrEnvelope.html":[2,0,26],
+"structAdsrEnvelope.html#a0cb5b8f0c8cd0c0133ef589e194dd9a1":[2,0,26,1],
+"structAdsrEnvelope.html#af71a7c7a9c830b73debec927e98a0389":[2,0,26,0],
+"structAdsrSettings.html":[2,0,27],
+"structAdsrSettings.html#a0ba2f394fb83fdd5875c58eee587c51c":[2,0,27,2],
+"structAdsrSettings.html#a6c161c86722b83a37a7a973a43c6ecfb":[2,0,27,0],
+"structAdsrSettings.html#adc9c0231e20ad7dae1590955a91a9e7c":[2,0,27,1],
 "structAdsrState.html":[2,0,28],
 "structAdsrState.html#a51b8a1b001b478e41184844fd48d238f":[2,0,28,6],
 "structAdsrState.html#a5c64cf6af6be731613ca17a777e01f99":[2,0,28,9],
@@ -239,15 +249,5 @@ var NAVTREEINDEX69 =
 "structCtlEntry.html#a51907b022593313344a628a6d593b0e5":[2,0,69,2],
 "structCtlEntry.html#a85f60eee25b2a8743d9c4b1417bbb6c4":[2,0,69,4],
 "structCtlEntry.html#ad55570c24ce8e8b3f0c6ec65862de901":[2,0,69,3],
-"structCupTimeTrialRecords.html":[2,0,70],
-"structCupTimeTrialRecords.html#acf18ab0e69f90a2eefe248ef7090bd1c":[2,0,70,0],
-"structCutscene.html":[2,0,71],
-"structCutscene.html#adf71ab9b7e76c8a387d4934437caa7e2":[2,0,71,0],
-"structCutscene.html#ae1b25b8bf4f5b72ad672f766ae617145":[2,0,71,1],
-"structCutsceneSplinePoint.html":[2,0,72],
-"structCutsceneSplinePoint.html#a56141a177956feb2bf2f1dcbf347dd2e":[2,0,72,0],
-"structCutsceneSplinePoint.html#a58d0f7ecc0595b19192b1d8397de22e0":[2,0,72,1],
-"structCutsceneSplinePoint.html#a6ac9bd7f67e1080b4154901b53b00e30":[2,0,72,2],
-"structD__80150158.html":[2,0,73],
-"structD__80150158.html#a89d74859e90572976c5094359e65f992":[2,0,73,2]
+"structCupTimeTrialRecords.html":[2,0,70]
 };

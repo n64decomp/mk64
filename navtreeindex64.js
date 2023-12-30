@@ -1,5 +1,15 @@
 var NAVTREEINDEX64 =
 {
+"render__courses_8h.html#a8f49552e0d631dbae7d47188d70184c2":[3,0,1,6,13,22],
+"render__courses_8h.html#a91d27bdc766d37970dc6fed6477c27f5":[3,0,1,6,13,18],
+"render__courses_8h.html#a95e4ea5c2df6f334ba984f7383834ec7":[3,0,1,6,13,9],
+"render__courses_8h.html#a96f37bd6129294cc3ff7d1998f3b8686":[3,0,1,6,13,40],
+"render__courses_8h.html#a9715b5098a08f8f749dfa4cfaea65378":[3,0,1,6,13,8],
+"render__courses_8h.html#aa1ea9c41fc731ce877bc5efd7860c59a":[3,0,1,6,13,30],
+"render__courses_8h.html#aadb29bf10c4381598c55927319430795":[3,0,1,6,13,3],
+"render__courses_8h.html#ab02cdf6684f984a12e7388fe973bc89a":[3,0,1,6,13,7],
+"render__courses_8h.html#ab827635a3eb8ed5429db86e5710e7858":[3,0,1,6,13,5],
+"render__courses_8h.html#abb0fa6a1637c27c1a8bd852529cbd47d":[3,0,1,6,13,17],
 "render__courses_8h.html#ac86c30d36e14f67c8255a448fce9d405":[3,0,1,6,13,25],
 "render__courses_8h.html#ad3b7c55db0ea9d4aac4bb456c4e98940":[3,0,1,6,13,29],
 "render__courses_8h.html#ada9d16c0f267204817b59f934ae62566":[3,0,1,6,13,20],
@@ -239,15 +249,5 @@ var NAVTREEINDEX64 =
 "render__player_8h.html#a85d9b96586c3b98179b33be722ebf672":[3,0,1,55,56],
 "render__player_8h.html#a87f9baa216c4a841f52bebb0d06fb75f":[3,0,1,55,88],
 "render__player_8h.html#a885daa36149c30008632018ab82e5439":[3,0,1,55,198],
-"render__player_8h.html#a88e4c1e2993bfd2870931a384d27dbd2":[3,0,1,55,31],
-"render__player_8h.html#a89673b9774522b23ac3737e963d171bc":[3,0,1,55,161],
-"render__player_8h.html#a8a098c78083c59a8c3d60d0b509bdb1f":[3,0,1,55,169],
-"render__player_8h.html#a8a9097df3a98cdfbbe9a369313fb1c2a":[3,0,1,55,203],
-"render__player_8h.html#a8e4c2cbf77aab050166c251016a80591":[3,0,1,55,221],
-"render__player_8h.html#a8eb88d98ad02e626b8383fa53be2f3f7":[3,0,1,55,194],
-"render__player_8h.html#a8fa24a0a40dec263efb7a5fc58fff819":[3,0,1,55,63],
-"render__player_8h.html#a900b2b9c3fc91ba01eececcfb3555d10":[3,0,1,55,210],
-"render__player_8h.html#a90433fe207ad8586c18f95a152c9e3a2":[3,0,1,55,37],
-"render__player_8h.html#a9101c9634762b4df7136c974e46101d6":[3,0,1,55,115],
-"render__player_8h.html#a9152a2dbee8f66c9e50c6c75fc3f5ad2":[3,0,1,55,187]
+"render__player_8h.html#a88e4c1e2993bfd2870931a384d27dbd2":[3,0,1,55,31]
 };

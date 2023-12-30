@@ -8,7 +8,7 @@ var memory_8c =
     [ "decompress_vtx", "memory_8c.html#ae66d79df7806c51c60dcc5b922352345", null ],
     [ "displaylist_unpack", "memory_8c.html#a7bd68df4b6133ad4c7ab6b7da3ce8c4c", null ],
     [ "dma_compressed_vtx", "memory_8c.html#a6a6bcc101fbe47ca4cd5dbb435e61e3f", null ],
-    [ "dma_textures", "memory_8c.html#a1d30396665acd2f000e3927b11c9f264", null ],
+    [ "dma_textures", "memory_8c.html#a2d39da6af3dc580cc4d65a91c556800f", null ],
     [ "func_802A7D54", "memory_8c.html#a63d52c7b032b06f60de721c05a4b75ff", null ],
     [ "func_802A80B0", "memory_8c.html#a3ae24092c659bc7eddd2b03085df357c", null ],
     [ "func_802A8190", "memory_8c.html#ac7769c4c4cc7d9d1f5c804089baba60e", null ],
