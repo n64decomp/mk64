@@ -89,39 +89,14 @@ void reset_object_variable(void) {
         playerHUD[thing].lapCount = 0;
         playerHUD[thing].alsoLapCount = 0;
         playerHUD[thing].unk_81 = 0;
+        // playerHUD[thing].raceCompleteBool = 0;
+    }
+    // This loop works, but only if we re-enable loop unrolling for this file
+    for (thing = 0; thing < HUD_PLAYERS_SIZE; thing++) {
         playerHUD[thing].raceCompleteBool = 0;
     }
     **/
 }
-
-
-extern s16 D_8018CF18;
-extern s16 D_8018CF20;
-extern s16 D_8018CF48;
-extern s16 D_8018CF60;
-extern s16 D_8018CF78;
-extern s16 D_8018CF90;
-extern s16 D_8018CFA8;
-extern s16 D_8018CFB0;
-extern s16 D_8018CFB8;
-extern s16 D_8018CFC0;
-extern s16 D_8018CFC8;
-extern s16 D_8018CFD0;
-extern s16 D_8018CFD8;
-extern s16 D_8018CFE0;
-extern s16 D_8018CFF0;
-extern s16 D_8018CFF8;
-extern s16 D_8018D000;
-extern s16 D_8018D008;
-extern s16 D_8018D010;
-extern s16 D_8018D018;
-extern s16 D_8018D020;
-extern s16 D_8018D048;
-extern s16 D_8018D070;
-extern s16 D_8018D098;
-extern s16 D_8018D0C0;
-extern s16 D_8018D0E8;
-extern s16 D_8018D110;
 
 void func_8006EB10(void) {
     s32 i = 0;
@@ -450,20 +425,6 @@ void func_8006F008(void) {
         D_8018D2D8[1] = 180;
     }
 }
-
-extern s8 D_801657E4;
-extern bool8 D_801657E6;
-extern bool8 D_801657E8;
-extern bool8 D_801657F0;
-extern s8 D_801657F8;
-extern s8 D_80165808;
-extern bool8 D_80165810;
-extern bool8 D_80165818;
-extern s8 D_80165820;
-extern s8 D_80165828;
-
-extern s8 D_80165800[2];
-extern s8 D_80165832[2];
 
 void func_8006F824(s32 arg0) {
     D_80165808 = D_801657E4;

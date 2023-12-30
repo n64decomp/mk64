@@ -3883,7 +3883,7 @@ void func_8007B254(s32 objectIndex, s32 arg1) {
         test = gObjectList[objectIndex].type;
         gObjectList[objectIndex].itemDisplay = test;
         gObjectList[objectIndex].unk_0A2 = test;
-        D_8018CAB8 = 0;
+        playerHUD[PLAYER_ONE].slideItemBoxY = 0;
         D_80165888 = 0;
     } else {
         func_800C8F80(arg1, 0x0100FE1CU);

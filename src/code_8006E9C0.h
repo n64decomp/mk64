@@ -31,27 +31,40 @@ void init_hud_two_player_horizontal(void);
 
 extern s16 D_800E5520[];
 extern s16 D_800E5548[];
-extern u8 *gCourseOutlineTextures[0x14];
+extern u8 *gCourseOutlineTextures[0x14]; // 800e54d0
 
 extern s16 D_80165730;
 extern s16 D_80165740;
 extern s16 D_80165748;
-extern s32 objectListSize;
-extern u8 *D_8018D1E0;
-extern intptr_t D_8018D9B0;
+extern s8 D_801657E4;
+extern bool8 D_801657E6;
+extern bool8 D_801657E8;
+extern bool8 D_801657F0;
+extern s8 D_801657F8;
+
+extern s8 D_80165800[2];
+extern s8 D_80165808;
+
+extern bool8 D_80165810;
+extern bool8 D_80165818;
+
+extern s8 D_80165820;
+extern s8 D_80165828;
+extern s8 D_80165832[2];
+
 
 // Destination for decompressed exhaust textures (I think)
 // I'm not how much I like this "pointer to an array" setup, but if it matches it matches
 extern u8 (*D_8018D220)[1024];
-
 extern s32 D_8018D240;
 extern u8 *D_8018D248[];
 extern s16 D_8018D2B0;
 extern s16 D_8018D2B8;
+
 extern s32 D_80183DA0;
 extern s32 D_80183DBC;
 
-extern hud_player playerHUD[];
+extern hud_player playerHUD[]; // 8018CA70 - 8018CC70
 // These are all *technically* hardcoded references to spots in playerHUD, but there's something weird
 // going on match wise in reset_object_variable that means we have to (for now) leave them as separate variables
 extern s8 D_8018CAE0;
@@ -70,6 +83,39 @@ extern s8 D_8018CC6C;
 extern s8 D_8018CC6D;
 extern s8 D_8018CC6E;
 extern s8 D_8018CC7D;
+
+extern s16 D_8018CF18;
+extern s16 D_8018CF20;
+extern s16 D_8018CF48;
+extern s16 D_8018CF60;
+extern s16 D_8018CF78;
+extern s16 D_8018CF90;
+extern s16 D_8018CFA8;
+extern s16 D_8018CFB0;
+extern s16 D_8018CFB8;
+extern s16 D_8018CFC0;
+extern s16 D_8018CFC8;
+extern s16 D_8018CFD0;
+extern s16 D_8018CFD8;
+extern s16 D_8018CFE0;
+extern s16 D_8018CFF0;
+extern s16 D_8018CFF8;
+
+extern s16 D_8018D000;
+extern s16 D_8018D008;
+extern s16 D_8018D010;
+extern s16 D_8018D018;
+extern s16 D_8018D020;
+extern s16 D_8018D048;
+extern s16 D_8018D070;
+extern s16 D_8018D098;
+extern s16 D_8018D0C0;
+extern s16 D_8018D0E8;
+
+extern s16 D_8018D110;
+extern u8 *D_8018D1E0;
+
+extern intptr_t D_8018D9B0;
 
 // These are found in data_code_80071F00
 extern StarSpawn D_800E6A38[];                        /* unable to generate initializer */

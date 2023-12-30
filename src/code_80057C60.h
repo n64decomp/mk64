@@ -74,6 +74,9 @@ void func_8005AA80(void);
 void func_8005AA94(s32);
 void func_8005AAF0(void);
 void func_8005AB20(void);
+void func_8005AB60(void);
+
+void func_8005B7A0(void);
 
 void func_8005B914(void);
 
@@ -232,7 +235,6 @@ void func_8006E940(Player*, s8, s8);
 // data/data_code_80071F00_2.s
 extern Vtx gBalloonVertexPlane1[];
 extern Vtx gBalloonVertexPlane2[];
-extern u8 D_800E52D0[];
 
 extern s16 D_800E4730[];
 extern u8 **D_800E4770[];
@@ -240,37 +242,118 @@ extern u8 **D_800E47A0[];
 extern s32 D_800E47DC[];
 extern s32 D_800E480C[];
 
-extern Vec3f D_8018D4D0[];
-extern Vec3f D_8018D530[];
-extern Vec3f D_8018D590[];
-extern Vec3s D_8018D620[];
-extern Vec3f D_8018D650[];
-extern Vec3f D_8018D6B0[];
-extern Vec3f D_8018D710[];
-extern Vec3s D_8018D770[];
-extern Vec3s D_8018D7A0[];
-extern Vec3s D_8018D7D0[];
-extern Vec3s D_8018D800[];
-extern Vec3s D_8018D830[];
-extern Vec3s D_8018D860[];
-extern Vec3s D_8018D890[];
-extern Vec3s D_8018D8D0[];
+struct _struct_D_800E55D0_0x3 {
+    /* 0x0 */ u8 unk0;                              /* inferred */
+    /* 0x1 */ u8 unk1;                              /* inferred */
+    /* 0x2 */ u8 unk2;                              /* inferred */
+};                                                  /* size = 0x3 */
 
-extern s8 D_801657B2;
-extern s8 D_801657C8;
-extern s32 D_8018D22C;
-extern s8 D_80165898;
-extern Gfx D_0D0076F8[];
-extern s8 D_801657E4;
-extern bool8 D_801657E6;
-extern s32 D_8018D2AC;
-extern bool8 D_801657F0;
-extern s8 D_80165800[2];
-extern s8 D_80165801;
+extern u8 D_800E52D0[];
+extern struct _struct_D_800E55D0_0x3 D_800E55D0[14];
+extern u16 D_800E55A0[];
+extern u16 D_800E55B0[16];
+
+
+
+// BSS, presumably
+
+extern f32 D_801652A0[];
+
+extern s32 D_80165590;
+extern s32 D_80165594;
+extern s32 D_80165598;
+extern s32 D_8016559C;
+extern s32 D_801655A4;
+extern s32 D_801655AC;
+extern s32 D_801655B4;
+extern s32 D_801655BC;
+extern s32 D_801655C0;
+extern s32 D_801655C4;
+extern s32 D_801655CC;
+extern s32 D_801655D8;
+extern s32 D_801655E8;
+extern s32 D_801655F0;
+extern s32 D_801655F8;
+
+extern s32 D_80165608;
+extern s32 D_80165618;
+extern s32 D_80165628;
+extern s32 D_80165638;
+extern u32 D_80165648;
+extern u32 D_80165654[];
+extern u32 D_80165658[];
+extern s32 D_80165678;
+
+extern s16 D_80165794;
+extern u16 D_8016579E;
 extern s8 D_801657B0;
-extern u8 gControllerRandom;
+extern s8 D_801657B2;
+extern s8 D_801657AE;
+extern s8 D_801657C8;
+extern s8 D_801657D8;
+extern s8 D_801657E2;
+extern s8 D_801657E3;
+extern s8 D_801657E4;
+extern s8 D_801657E5;
+extern bool8 D_801657E6;
+extern u8 D_801657E7;
+extern bool8 D_801657E8;
+extern bool8 D_801657F0;
+extern s8 D_801657F8;
+
+extern s8 D_80165800[2];
+extern s32 D_8016587C;
+extern s8 D_80165890;
+extern s8 D_80165898;
+extern s8 D_801658A8;
+extern u8 gControllerRandom; // 801658ff
+
+
+extern Player *D_8018CF1C;
+extern Player *D_8018CF28[];
+extern s16 D_8018CF50[];
+extern s16 gGPCurrentRaceCharacterIdByRank[]; // 8018cf80
+extern s16 D_8018CF98[];
+extern f32 D_8018CFE4;
+extern f32 D_8018CFEC;
+extern f32 D_8018CFF4;
+
+extern f32 D_8018D028[8];
+extern f32 D_8018D050[8];
+extern f32 D_8018D078[8];
+extern f32 D_8018D0C8[8];
+
+extern s32 gMatrixHudCount; // 8018d120
+extern s32 D_8018D114;
+extern s32 D_8018D170;
+extern s32 D_8018D178;
+extern s32 gIsHUDVisible; // 8018d188
+extern s32 D_8018D190;
+extern s32 D_8018D1A0;
+extern s32 D_8018D1B4;
+extern s32 D_8018D1D4;
+extern s32 D_8018D1CC;
+extern s32 D_8018D1FC;
+
+extern s32 D_8018D204;
+extern s32 D_8018D20C;
 extern bool D_8018D214;
+extern s32 D_8018D21C;
+extern s32 D_8018D22C;
+extern s32 D_8018D2A4;
+extern s32 D_8018D2AC;
+extern s32 D_8018D2BC;
 extern s32 D_8018D2C8[];
+
+extern s32 D_8018D314;
+extern s32 D_8018D320;
+extern s32 D_8018D3F4;
+extern s32 D_8018D3F8;
+extern s32 gRaceFrameCounter; // 8018d3fc
+
+extern s32 D_8018D400;
+extern s32 D_8018D40C;
+extern s32 D_8018D410;
 extern u8 *D_8018D420;
 extern u8 *D_8018D424;
 extern u8 *D_8018D428;
@@ -293,6 +376,8 @@ extern u8 *D_8018D468;
 extern u8 *D_8018D46C;
 extern u8 *D_8018D470;
 extern u8 *D_8018D478;
+extern u8 *D_8018D480;
+extern u8 *D_8018D484;
 extern u8 *D_8018D488;
 extern u8 *D_8018D48C;
 extern u8 *D_8018D494;
@@ -309,9 +394,27 @@ extern u8 *D_8018D4BC;
 extern u8 *D_8018D4C0;
 extern u8 *D_8018D4C4;
 extern u8 *D_8018D4C8;
+extern Vec3f D_8018D4D0[];
 
+extern Vec3f D_8018D530[];
+extern Vec3f D_8018D590[];
 extern u16 gPlayerBalloonStatus[8][3]; // D_8018D5F0
+
+extern Vec3s D_8018D620[];
+extern Vec3f D_8018D650[];
+extern Vec3f D_8018D6B0[];
+
+extern Vec3f D_8018D710[];
+extern Vec3s D_8018D770[];
+extern Vec3s D_8018D7A0[];
+extern Vec3s D_8018D7D0[];
+
+extern Vec3s D_8018D800[];
+extern Vec3s D_8018D830[];
+extern Vec3s D_8018D860[];
+extern Vec3s D_8018D890[];
 extern s16 gPlayerBalloonCount[];      // D_8018D8C0
+<<<<<<< HEAD
 
 extern s32   D_801655C0;
 extern s32   D_801655F0;
@@ -364,5 +467,7 @@ extern s32 D_8018D2A4;
 extern s32 D_8018D2BC;
 extern u8 *D_8018D480;
 extern u8 *D_8018D484;
+
+extern Vec3s D_8018D8D0[];
 
 #endif
