@@ -459,46 +459,22 @@ glabel indexObjectList4
 glabel D_8018C0B0
 .skip 256
 
-# begin D_8018C1B0, should be 512 bytes big
-# D_8018C278 is a fake variable
 glabel D_8018C1B0
-.skip 200
-
-glabel D_8018C278
-.skip 312
-# end D_8018C1B0
+.skip 512
 
 # Some Collision
 glabel D_8018C3B0
 .skip 64
 
-# begin D_8018C3F0, should be 512 bytes big
-# D_8018C404 and D_8018C490 are fake variables
 glabel D_8018C3F0
-.skip 20
-
-glabel D_8018C404
-.skip 140
-
-glabel D_8018C490 # end of 8018C3F0
-.skip 352
-# end D_8018C3F0
+.skip 512
 
 # Maybe some unused Collision?
 glabel D_8018C5F0
 .skip 64
 
-# begin D_8018C630, should be 512 bytes big
-# D_8018C6A8 and D_8018C6B0 are fake variables
 glabel D_8018C630
-.skip 120
-
-glabel D_8018C6A8
-.skip 8
-
-glabel D_8018C6B0
-.skip 384
-# end D_8018C630
+.skip 512
 
 # Some Collision
 glabel D_8018C830

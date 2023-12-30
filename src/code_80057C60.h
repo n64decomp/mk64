@@ -242,16 +242,21 @@ extern u8 **D_800E47A0[];
 extern s32 D_800E47DC[];
 extern s32 D_800E480C[];
 
-struct _struct_D_800E55D0_0x3 {
-    /* 0x0 */ u8 unk0;                              /* inferred */
-    /* 0x1 */ u8 unk1;                              /* inferred */
-    /* 0x2 */ u8 unk2;                              /* inferred */
-};                                                  /* size = 0x3 */
-
 extern u8 D_800E52D0[];
-extern struct _struct_D_800E55D0_0x3 D_800E55D0[14];
+extern u8 D_800E55D0[14][3];
 extern u16 D_800E55A0[];
 extern u16 D_800E55B0[16];
+
+extern u16 D_800E67B8[][4];
+
+extern u16 D_800E6834[][4];
+
+extern u16 D_800E694C[];
+extern u16 D_800E69B0[][4];
+extern u16 D_800E69F4[][4];
+
+extern u8 D_800E6F30[][3];
+extern u8 D_800E6F48[][3];
 
 
 
@@ -283,7 +288,13 @@ extern u32 D_80165648;
 extern u32 D_80165654[];
 extern u32 D_80165658[];
 extern s32 D_80165678;
+extern s16 D_801656F0;
 
+extern s16 D_80165718;
+extern s16 D_80165720;
+extern s16 D_80165728;
+extern s16 D_8016578C;
+extern s16 D_80165790;
 extern s16 D_80165794;
 extern u16 D_8016579E;
 extern s8 D_801657B0;
@@ -303,9 +314,11 @@ extern s8 D_801657F8;
 
 extern s8 D_80165800[2];
 extern s32 D_8016587C;
+extern u8 *D_80165880;
 extern s8 D_80165890;
 extern s8 D_80165898;
 extern s8 D_801658A8;
+extern u8 sRandomItemIndex; // 801658fd
 extern u8 gControllerRandom; // 801658ff
 
 
@@ -325,19 +338,27 @@ extern f32 D_8018D0C8[8];
 
 extern s32 gMatrixHudCount; // 8018d120
 extern s32 D_8018D114;
+extern s32 D_8018D160;
+extern s32 D_8018D168;
 extern s32 D_8018D170;
 extern s32 D_8018D178;
+extern s32 D_8018D180;
 extern s32 gIsHUDVisible; // 8018d188
 extern s32 D_8018D190;
 extern s32 D_8018D1A0;
 extern s32 D_8018D1B4;
 extern s32 D_8018D1D4;
 extern s32 D_8018D1CC;
+extern f32 D_8018D1E8;
 extern s32 D_8018D1FC;
 
+extern s16 D_8018D200;
 extern s32 D_8018D204;
+extern s16 D_8018D208;
 extern s32 D_8018D20C;
+extern s16 D_8018D210;
 extern bool D_8018D214;
+extern s16 D_8018D218;
 extern s32 D_8018D21C;
 extern s32 D_8018D22C;
 extern s32 D_8018D2A4;

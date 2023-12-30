@@ -244,6 +244,7 @@ void func_8007D8D4(s32, s32);
 void func_8007DA4C(s32);
 void func_8007DA74(s32);
 void func_8007DAF8(s32, s32);
+void func_8007DB44(void);
 void func_8007DDC0(s32);
 void init_bb_trash_bin(s32);
 void func_8007E00C(s32);
