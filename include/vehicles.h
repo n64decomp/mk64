@@ -82,7 +82,7 @@ typedef struct {
 	/* 0x32 */ // s16 compilerPadding2;
 } VehicleStuff; // size = 0x34
 
-extern TrainStuff sTrains[];
+extern TrainStuff gTrains[];
 
 // This is an array, maybe they intended to have multiple boats at some point in development?
 extern PaddleWheelBoatStuff gFerries[];

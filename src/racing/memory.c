@@ -378,7 +378,7 @@ UNUSED u8 *func_802A841C(u8* arg0, s32 arg1, s32 arg2) {
     return temp_v0;
 }
 
-u8 *dma_textures(u8 texture[], u32 arg1, u32 arg2) {
+u8 *dma_textures(u8 texture[], size_t arg1, size_t arg2) {
     u8 *temp_v0;
     void *temp_a0;
 

@@ -477,6 +477,7 @@ extern s16 D_8018D2F8;
 extern u16 D_8018D300;
 extern u16 D_8018D308;
 extern u16 D_8018D310;
+extern u16 D_8018D318;
 extern s32 D_8018D3E0; // some alpha
 extern s32 D_8018D3E4; // some red
 extern s32 D_8018D3E8; // some green
