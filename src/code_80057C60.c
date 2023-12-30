@@ -26,6 +26,7 @@
 #include "bomb_kart.h"
 #include "menus.h"
 #include "data/other_textures.h"
+#include "spawn_players.h"
 
 
 // WARNING: this macro is undef'd at the end of this file

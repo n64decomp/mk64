@@ -309,7 +309,8 @@ SECTIONS
       BUILD_DIR/src/code_80005FD0.jp.o(.bss);
       BUILD_DIR/src/camera.o(.bss);
       BUILD_DIR/src/render_player.o(.bss);
-      BUILD_DIR/asm/bss_80164AB0.o(.bss);
+      BUILD_DIR/src/spawn_players.o(.bss);
+      BUILD_DIR/asm/bss_80165590.o(.bss);
       BUILD_DIR/src/code_80091750.jp.o(.bss);
       BUILD_DIR/src/code_800AF9B0.o(.bss);
       BUILD_DIR/src/menus.o(.bss);

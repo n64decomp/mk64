@@ -190,7 +190,6 @@ extern s16 *D_800E3C30[];
 extern s16 **D_800E3C50[];
 
 extern s16 gMatrixEffectCount;
-extern Player *D_801653C0[8];
 
 extern s16 D_801656F0;
 extern s32 gRaceFrameCounter;
