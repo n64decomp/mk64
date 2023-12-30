@@ -17,6 +17,7 @@
 #include "staff_ghosts.h"
 #include "save_data.h"
 #include <sounds.h>
+#include "spawn_players.h"
 
 /** BSS **/
 s32 D_8018EDC0;

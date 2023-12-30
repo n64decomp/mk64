@@ -20,6 +20,7 @@
 #include "hud_renderer.h"
 #include "common_textures.h"
 #include "skybox_and_splitscreen.h"
+#include "spawn_players.h"
 
 s8 gRenderingFramebufferByPlayer[] = {
     0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0x02

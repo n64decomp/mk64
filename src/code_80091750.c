@@ -30,6 +30,7 @@
 #include "framebuffers.h"
 #include "racing/race_logic.h"
 #include "ending/code_80281C40.h"
+#include "spawn_players.h"
 // TODO: Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"

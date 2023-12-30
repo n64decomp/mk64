@@ -16,6 +16,7 @@
 #include "code_80057C60.h"
 #include "code_8008C1D0.h"
 #include "audio/external.h"
+#include "spawn_players.h"
 
 UNUSED void func_unnamed(void) {
 

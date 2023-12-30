@@ -4396,6 +4396,7 @@ Variable Name | Memory Address
 [D_80165320](@ref D_80165320) | 0x80165320
 [D_80165330](@ref D_80165330) | 0x80165330
 [D_80165340](@ref D_80165340) | 0x80165340
+[D_80165348](@ref D_80165348) | 0x80165348
 [D_801653C0](@ref D_801653C0) | 0x801653C0
 [gPlayerIsThrottleActive](@ref gPlayerIsThrottleActive) | 0x801653E0
 [D_80165400](@ref D_80165400) | 0x80165400
