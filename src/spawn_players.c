@@ -22,6 +22,52 @@
 #include "menus.h"
 #include "render_player.h"
 
+f32 D_80165210[8];
+f32 D_80165230[7];
+// weird D_8016524C should not exist and be in D_80165230 but don't match
+f32 D_8016524C;
+f32 D_80165250[8];
+s16 D_80165270[8];
+f32 D_80165280[8];
+f32 D_801652A0[8];
+s32 D_801652C0[8];
+s32 D_801652E0[8];
+s16 D_80165300[8];
+// Shadows values from gPathIndexByPlayerId, but is an array
+u16 D_80165310[8];
+// Shadows values from gNearestWaypointByPlayerId, but is an array
+s16 D_80165320[8];
+// Don't think this really belongs with waypoint stuff, but don't know where else to put it
+s16 D_80165330[8];
+s16 D_80165340;
+UNUSED s32 D_80165348[29];
+Player *D_801653C0[8];
+s32 gPlayerIsThrottleActive[8];
+s32 D_80165400[8];
+s32 D_80165420[8];
+s32 D_80165440[8];
+bool gIsPlayerTripleAButtonCombo[8];
+s32 D_80165480[8];
+s32 D_801654A0[8];
+s32 D_801654C0[8];
+s32 D_801654E0[8];
+s32 D_80165500[8];
+s32 D_80165520[8];
+s32 D_80165540[8];
+s16 D_80165560[7];
+// weird D_8016556E should not exist and be in D_80165560 but don't match
+s16 D_8016556E;
+s16 D_80165570;
+s16 D_80165572;
+s16 D_80165574;
+s16 D_80165576;
+s16 D_80165578;
+s16 D_8016557A;
+s16 D_8016557C;
+s16 D_8016557E;
+s16 D_80165580;
+s16 D_80165582;
+
 // arg4 is height? Or something like that?
 void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingColumn, f32 arg4, f32 arg5, u16 characterId, s16 playerType) {
     f32 ret;

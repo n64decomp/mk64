@@ -28,6 +28,7 @@
 #include "code_80091750.h"
 #include "audio/external.h"
 #include "ending/podium_ceremony_actors.h"
+#include "spawn_players.h"
 
 extern UnkCommonTextureStruct0 *D_800DC720[];
 
