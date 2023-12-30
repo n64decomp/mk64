@@ -312,8 +312,9 @@ s8 func_800C15D0(u8 bank, u8 soundId, u8 channel) {
     return var_a0;
 }
 
+// This is likely functionally equivallent.
 #ifdef NON_MATCHING
-s8 func_800C16E8(f32 arg0, f32 arg1, u8 arg2) {
+s8 func_800C16E8(f32 arg0, f32 arg1, u8 cameraId) {
     f32 var_f0;
     f32 var_f14;
     f32 var_f16;
@@ -333,19 +334,13 @@ s8 func_800C16E8(f32 arg0, f32 arg1, u8 arg2) {
             var_f16 = 5.0f;
             var_f18 = 3.3333333f;
         }
-        if (arg0 < 0.0f) {
-            var_f20 = -arg0;
-        } else {
-            var_f20 = arg0;
-        }
+        var_f20 = (arg0 < 0.0f) ? -arg0 : arg0;
+
         if (var_f2 < var_f20) {
             var_f20 = var_f2;
         }
-        if (arg1 < 0.0f) {
-            var_f0 = -arg1;
-        } else {
-            var_f0 = arg1;
-        }
+        var_f0 = (arg1 < 0.0f) ? -arg1 : arg1;
+
         if (var_f2 < var_f0) {
             var_f0 = var_f2;
         }
@@ -366,7 +361,7 @@ s8 func_800C16E8(f32 arg0, f32 arg1, u8 arg2) {
         }
         return (s8) (s32) ((var_f2 * 127.0f) + 0.5f);
     }
-    return (arg2 & 1) * 0x7F;
+    return (cameraId & 1) * 0x7F;
 }
 #else
 GLOBAL_ASM("asm/non_matchings/audio/external/func_800C16E8.s")
