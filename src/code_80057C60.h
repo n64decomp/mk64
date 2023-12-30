@@ -321,6 +321,7 @@ extern s8 D_801658A8;
 extern u8 sRandomItemIndex; // 801658fd
 extern u8 gControllerRandom; // 801658ff
 
+extern s8 D_8018CAE0;
 
 extern Player *D_8018CF1C;
 extern Player *D_8018CF28[];
@@ -434,61 +435,7 @@ extern Vec3s D_8018D800[];
 extern Vec3s D_8018D830[];
 extern Vec3s D_8018D860[];
 extern Vec3s D_8018D890[];
-extern s16 gPlayerBalloonCount[];      // D_8018D8C0
-<<<<<<< HEAD
-
-extern s32   D_801655C0;
-extern s32   D_801655F0;
-extern s32   D_80165678;
-extern s8    D_801657AE;
-extern s8    D_801657D8;
-extern bool8 D_801657E8;
-
-extern s8  D_8018CAE0;
-extern s16 gGPCurrentRaceCharacterIdByRank[];
-extern s16 D_8018CF98[];
-extern Player *D_8018CF1C;
-
-
-extern s32 D_80165590;
-extern s32 D_80165594;
-extern s32 D_80165598;
-extern s32 D_8016559C;
-extern s32 D_801655A4;
-extern s32 D_801655AC;
-extern s32 D_801655B4;
-extern s32 D_801655BC;
-extern s32 D_801655C4;
-extern s32 D_801655CC;
-extern s32 D_801655D8;
-extern s32 D_801655E8;
-extern s32 D_801655F8;
-extern s32 D_80165608;
-extern s32 D_80165618;
-extern s32 D_80165628;
-extern s8 D_801658A8;
-extern s32 D_8018D2AC;
-extern s32 D_8018D400;
-extern s32 D_8018D40C;
-extern s32 D_8018D410;
-
-extern s32 gMatrixHudCount;
-extern s32 D_8018D170;
-extern s32 D_8018D178;
-extern s32 gIsHUDVisible;
-extern s32 D_8018D190;
-extern s32 D_8018D1A0;
-extern s32 D_8018D1B4;
-extern s32 D_8018D1D4;
-extern s32 D_8018D1CC;
-extern s32 D_8018D1FC;
-extern s32 D_8018D204;
-extern s32 D_8018D21C;
-extern s32 D_8018D2A4;
-extern s32 D_8018D2BC;
-extern u8 *D_8018D480;
-extern u8 *D_8018D484;
-
 extern Vec3s D_8018D8D0[];
+extern s16 gPlayerBalloonCount[];      // D_8018D8C0
 
 #endif
