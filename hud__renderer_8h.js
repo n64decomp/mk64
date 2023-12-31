@@ -428,7 +428,6 @@ var hud__renderer_8h =
     [ "D_8016586C", "hud__renderer_8h.html#a36a9fbc01c2e25e68822e6cf0bb39a0a", null ],
     [ "D_80165878", "hud__renderer_8h.html#a7af8b49e76cbb2de1241348841df0f30", null ],
     [ "D_8016589C", "hud__renderer_8h.html#a6d4ad6aa7932e8afa8ac1c661683f61c", null ],
-    [ "D_80165908", "hud__renderer_8h.html#a19eb0ac2c0898f49ef27ce46e2a4509f", null ],
     [ "D_80183DD8", "hud__renderer_8h.html#ad9f2a1ad0d31e67b8bb69bf401b59822", null ],
     [ "D_80183E40", "hud__renderer_8h.html#a74b8fd49742da650e46bcaa76743ca72", null ],
     [ "D_80183E50", "hud__renderer_8h.html#a5a99830119cad7ff2c546b7eea2f7c27", null ],

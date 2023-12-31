@@ -59,7 +59,6 @@ var staff__ghosts_8c =
     [ "D_80162DF8", "staff__ghosts_8c.html#a992511932a32279879ff11219e11285e", null ],
     [ "D_80162DFC", "staff__ghosts_8c.html#a3ca399e359eafd83324904df83fc1ef9", null ],
     [ "D_80162E00", "staff__ghosts_8c.html#a0eb82092a448ee36c1e468dfa4765ce6", null ],
-    [ "D_8018CA78", "staff__ghosts_8c.html#a980ca52026aa999c069d65434884c79f", null ],
     [ "d_luigi_raceway_staff_ghost", "staff__ghosts_8c.html#aecfb308ae870eee68f7e40da57bca464", null ],
     [ "d_mario_raceway_staff_ghost", "staff__ghosts_8c.html#a4e58850f1fd8ab0b9cb2543d71c70316", null ],
     [ "d_royal_raceway_staff_ghost", "staff__ghosts_8c.html#a85dadecd1ef04207dc0e3e02b43e8cb4", null ],

@@ -124,18 +124,18 @@ var sectionId = 'dynsection-24';
 <path fill="none" stroke="midnightblue" d="M57.79,-266.28C79.44,-246.76 128.44,-202.61 155.2,-178.49"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="157.66,-180.99 162.74,-171.69 152.97,-175.79 157.66,-180.99"/>
 </g>
-<!-- Node295 -->
+<!-- Node296 -->
 <g id="node49" class="node">
-<title>Node295</title>
+<title>Node296</title>
 <g id="a_node49"><a xlink:href="code__80057C60_8c.html#a07b43c07e7afcf3fcccf63622bb991e1" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="128.5,-57.5 128.5,-76.5 220.5,-76.5 220.5,-57.5 128.5,-57.5"/>
 <text text-anchor="middle" x="174.5" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_8005D290</text>
 </a>
 </g>
 </g>
-<!-- Node1&#45;&gt;Node295 -->
+<!-- Node1&#45;&gt;Node296 -->
 <g id="edge59" class="edge">
-<title>Node1&#45;&gt;Node295</title>
+<title>Node1&#45;&gt;Node296</title>
 <path fill="none" stroke="midnightblue" d="M52.76,-266.48C72.36,-234.11 136.6,-127.97 162.52,-85.15"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="165.52,-86.95 167.7,-76.58 159.53,-83.32 165.52,-86.95"/>
 </g>
@@ -792,84 +792,84 @@ var sectionId = 'dynsection-24';
 <path fill="none" stroke="midnightblue" d="M213.48,-171.59C233.16,-176.56 257.39,-182.68 278.32,-187.96"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="277.74,-191.43 288.3,-190.48 279.46,-184.64 277.74,-191.43"/>
 </g>
-<!-- Node259 -->
+<!-- Node260 -->
 <g id="node45" class="node">
-<title>Node259</title>
+<title>Node260</title>
 <g id="a_node45"><a xlink:href="kart__dma_8c.html#a45e203c7a60ac07d226bec0c12c70d89" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="red" points="276.5,-152.5 276.5,-171.5 377.5,-171.5 377.5,-152.5 276.5,-152.5"/>
 <text text-anchor="middle" x="327" y="-159.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_kart_palette</text>
 </a>
 </g>
 </g>
-<!-- Node93&#45;&gt;Node259 -->
+<!-- Node93&#45;&gt;Node260 -->
 <g id="edge55" class="edge">
-<title>Node93&#45;&gt;Node259</title>
+<title>Node93&#45;&gt;Node260</title>
 <path fill="none" stroke="midnightblue" d="M221.06,-162C235.26,-162 251.14,-162 266.16,-162"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="266.4,-165.5 276.4,-162 266.4,-158.5 266.4,-165.5"/>
 </g>
-<!-- Node272 -->
+<!-- Node273 -->
 <g id="node46" class="node">
-<title>Node272</title>
+<title>Node273</title>
 <g id="a_node46"><a xlink:href="kart__dma_8c.html#a6c923a042d0b2ff00518dd2dc12fe580" target="_top" xlink:title="Place DMA mio0 compressed character textures in a buffer. Later, this data becomes decompressed.">
 <polygon fill="white" stroke="red" points="276,-114.5 276,-133.5 378,-133.5 378,-114.5 276,-114.5"/>
 <text text-anchor="middle" x="327" y="-121.5" font-family="Helvetica,sans-Serif" font-size="10.00">load_kart_texture</text>
 </a>
 </g>
 </g>
-<!-- Node93&#45;&gt;Node272 -->
+<!-- Node93&#45;&gt;Node273 -->
 <g id="edge56" class="edge">
-<title>Node93&#45;&gt;Node272</title>
+<title>Node93&#45;&gt;Node273</title>
 <path fill="none" stroke="midnightblue" d="M213.48,-152.41C233.16,-147.44 257.39,-141.32 278.32,-136.04"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="279.46,-139.36 288.3,-133.52 277.74,-132.57 279.46,-139.36"/>
 </g>
-<!-- Node273 -->
+<!-- Node274 -->
 <g id="node47" class="node">
-<title>Node273</title>
+<title>Node274</title>
 <g id="a_node47"><a xlink:href="functions_8h.html#ae4722e596a88d66404ccaaf6ea181b41" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="457,-38.5 457,-57.5 534,-57.5 534,-38.5 457,-38.5"/>
 <text text-anchor="middle" x="495.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">mio0decode</text>
 </a>
 </g>
 </g>
-<!-- Node93&#45;&gt;Node273 -->
+<!-- Node93&#45;&gt;Node274 -->
 <g id="edge57" class="edge">
-<title>Node93&#45;&gt;Node273</title>
+<title>Node93&#45;&gt;Node274</title>
 <path fill="none" stroke="midnightblue" d="M186.28,-152.43C201.16,-139.74 229.29,-117.47 257,-105 290.54,-89.91 387.67,-69.1 446.82,-57.25"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="447.56,-60.67 456.68,-55.28 446.19,-53.8 447.56,-60.67"/>
 </g>
-<!-- Node274 -->
+<!-- Node275 -->
 <g id="node48" class="node">
-<title>Node274</title>
+<title>Node275</title>
 <g id="a_node48"><a xlink:href="render__player_8c.html#a36f5d3d9beeac3aa2fdb6a242bdddbef" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="red" points="285,-38.5 285,-57.5 369,-57.5 369,-38.5 285,-38.5"/>
 <text text-anchor="middle" x="327" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">player_render</text>
 </a>
 </g>
 </g>
-<!-- Node93&#45;&gt;Node274 -->
+<!-- Node93&#45;&gt;Node275 -->
 <g id="edge58" class="edge">
-<title>Node93&#45;&gt;Node274</title>
+<title>Node93&#45;&gt;Node275</title>
 <path fill="none" stroke="midnightblue" d="M181.71,-152.41C193.98,-134.21 223.08,-94.46 257,-72 263.33,-67.81 270.46,-64.27 277.68,-61.3"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="279.39,-64.4 287.52,-57.6 276.93,-57.85 279.39,-64.4"/>
 </g>
-<!-- Node296 -->
+<!-- Node297 -->
 <g id="node50" class="node">
-<title>Node296</title>
+<title>Node297</title>
 <g id="a_node50"><a xlink:href="memory_8c.html#a2d39da6af3dc580cc4d65a91c556800f" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="red" points="285,-0.5 285,-19.5 369,-19.5 369,-0.5 285,-0.5"/>
 <text text-anchor="middle" x="327" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">dma_textures</text>
 </a>
 </g>
 </g>
-<!-- Node295&#45;&gt;Node296 -->
+<!-- Node296&#45;&gt;Node297 -->
 <g id="edge60" class="edge">
-<title>Node295&#45;&gt;Node296</title>
+<title>Node296&#45;&gt;Node297</title>
 <path fill="none" stroke="midnightblue" d="M193.9,-57.34C210.17,-49.05 234.73,-37.19 257,-29 263.42,-26.64 270.28,-24.41 277.08,-22.37"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="278.32,-25.66 286.96,-19.53 276.38,-18.93 278.32,-25.66"/>
 </g>
-<!-- Node296&#45;&gt;Node273 -->
+<!-- Node297&#45;&gt;Node274 -->
 <g id="edge61" class="edge">
-<title>Node296&#45;&gt;Node273</title>
+<title>Node297&#45;&gt;Node274</title>
 <path fill="none" stroke="midnightblue" d="M369.16,-19.39C392.77,-24.78 422.52,-31.57 447.1,-37.18"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="446.42,-40.62 456.94,-39.43 447.97,-33.79 446.42,-40.62"/>
 </g>

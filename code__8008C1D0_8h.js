@@ -1,6 +1,5 @@
 var code__8008C1D0_8h =
 [
-    [ "func_800098FC", "code__8008C1D0_8h.html#a948faf9ff7c4eb3e501134b32e00992a", null ],
     [ "func_8008C1D8", "code__8008C1D0_8h.html#a68d4fc7858a71748c5df4c517c233066", null ],
     [ "func_8008C1E0", "code__8008C1D0_8h.html#a2388902d0a1bcbe2233e71a4621118d1", null ],
     [ "func_8008C204", "code__8008C1D0_8h.html#a05a53cb305ff1e50e984272b7880aa20", null ],

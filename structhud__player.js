@@ -18,6 +18,7 @@ var structhud__player =
     [ "lapAfterImage1X", "structhud__player.html#a0f664b0540312029ddbbcb8b654e664c", null ],
     [ "lapAfterImage2X", "structhud__player.html#a7f91d07ccfbcba743200852915a9aac0", null ],
     [ "lapCompletionTimes", "structhud__player.html#a31d68239417cf344c49910aa6fc1bce1", null ],
+    [ "lapCompletionTimeXs", "structhud__player.html#a58221e9c7a0da11dccfbf84bb537a81f", null ],
     [ "lapCount", "structhud__player.html#aa24daffecc14d611f8d2d71b4fb887cf", null ],
     [ "lapDurations", "structhud__player.html#a191f8fec1b581253bc9ac3c768d68da0", null ],
     [ "lapX", "structhud__player.html#a815963db69a86eba0cd88dfad635145a", null ],

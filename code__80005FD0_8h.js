@@ -27,6 +27,7 @@ var code__80005FD0_8h =
     [ "func_80009258", "code__80005FD0_8h.html#a42de4c58fd53857f89bac6f3976edaa0", null ],
     [ "func_8000929C", "code__80005FD0_8h.html#adf1f09a246cf0d85952d741b87c711f4", null ],
     [ "func_800097E0", "code__80005FD0_8h.html#a0beffd50c650792fcea6415b153aa74f", null ],
+    [ "func_800098FC", "code__80005FD0_8h.html#aecc66a60d1601bb4b19a99ebc4e911c6", null ],
     [ "func_800099EC", "code__80005FD0_8h.html#a714210c49e4f6f21f3bc05314a6e256d", null ],
     [ "func_80009B60", "code__80005FD0_8h.html#a8d8ffba661ae7ed425922c75eeb382b1", null ],
     [ "func_8000B140", "code__80005FD0_8h.html#af5d7731b8d6e61645918c9eb5351f0b9", null ],
