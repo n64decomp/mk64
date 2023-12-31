@@ -7185,7 +7185,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         func_80099184(segmented_to_virtual_dupe(D_800E82B4[type - 0xB1]));
         break;
     case 0xBB:
-        var_ra->unk1C = func_800B5020(D_8018CA78, gCharacterSelections[0]);
+        var_ra->unk1C = func_800B5020(playerHUD[PLAYER_ONE].someTimer, gCharacterSelections[0]);
         var_ra->unk20 = func_800B5218();
         if (D_80162DD4 != 1) {
             if (func_800051C4() >= 0x3C01) {
@@ -13183,7 +13183,7 @@ void func_800AE218(struct_8018D9E0_entry *arg0) {
         if (gControllerOne->buttonPressed & 0x1000) {
             arg0->unk4 = 0x0000000F;
             play_sound2(0x49008005);
-        } else if (D_8018CAE0 != 0) {
+        } else if (playerHUD[PLAYER_ONE].raceCompleteBool != 0) {
             arg0->unk4 = 1;
             arg0->unk1C = 0;
         }
@@ -13520,8 +13520,8 @@ void func_800AEEE8(struct_8018D9E0_entry *arg0) {
 }
 
 void func_800AEF14(struct_8018D9E0_entry *arg0) {
-    if (D_8018CAE0 != 0) {
-        if ((u32) D_8018CA78 < (u32) (func_800B4E24(4) & 0xFFFFF)) {
+    if (playerHUD[PLAYER_ONE].raceCompleteBool != 0) {
+        if ((u32) playerHUD[PLAYER_ONE].someTimer < (u32) (func_800B4E24(4) & 0xFFFFF)) {
             D_8018ED90 = 1;
         }
         arg0->type = 0;
@@ -13535,7 +13535,7 @@ void func_800AEF74(struct_8018D9E0_entry *arg0) {
         if (D_80162DF8 == 1) {
             arg0->unk4 = 1;
             arg0->unk1C = 0;
-        } else if (D_8018CAE0 == (s8) 1) {
+        } else if (playerHUD[PLAYER_ONE].raceCompleteBool == (s8) 1) {
             arg0->unk4 = 2;
         }
         break;
@@ -13543,7 +13543,7 @@ void func_800AEF74(struct_8018D9E0_entry *arg0) {
         break;
     case 1:
         arg0->unk1C += 1;
-        if (D_8018CAE0 == 1) {
+        if (playerHUD[PLAYER_ONE].raceCompleteBool == 1) {
             arg0->unk4 = 2;
         }
         break;

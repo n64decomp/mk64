@@ -459,46 +459,22 @@ glabel indexObjectList4
 glabel D_8018C0B0
 .skip 256
 
-# begin D_8018C1B0, should be 512 bytes big
-# D_8018C278 is a fake variable
 glabel D_8018C1B0
-.skip 200
-
-glabel D_8018C278
-.skip 312
-# end D_8018C1B0
+.skip 512
 
 # Some Collision
 glabel D_8018C3B0
 .skip 64
 
-# begin D_8018C3F0, should be 512 bytes big
-# D_8018C404 and D_8018C490 are fake variables
 glabel D_8018C3F0
-.skip 20
-
-glabel D_8018C404
-.skip 140
-
-glabel D_8018C490 # end of 8018C3F0
-.skip 352
-# end D_8018C3F0
+.skip 512
 
 # Maybe some unused Collision?
 glabel D_8018C5F0
 .skip 64
 
-# begin D_8018C630, should be 512 bytes big
-# D_8018C6A8 and D_8018C6B0 are fake variables
 glabel D_8018C630
-.skip 120
-
-glabel D_8018C6A8
-.skip 8
-
-glabel D_8018C6B0
-.skip 384
-# end D_8018C630
+.skip 512
 
 # Some Collision
 glabel D_8018C830
@@ -516,97 +492,61 @@ glabel D_8018C970
 glabel playerHUD
 .skip 4
 
-glabel D_8018CA74
+# This is the result of some funny indexing done in save/func_800B5218
+glabel D_8018CA74 # playerHUD[PLAYER_ONE].rankScaling
 .skip 4
 
-glabel D_8018CA78
-.skip 24
+# Refrenced in code_80091750/add_8018D9E0_entry
+glabel D_8018CA78 # playerHUD[PLAYER_ONE].someTimer
+.skip 104
 
-glabel D_8018CA90
-.skip 30
-
-glabel D_8018CAAE
-.skip 2
-
-glabel D_8018CAB0
-.skip 8
-
-glabel D_8018CAB8
-.skip 6
-
-glabel D_8018CABE
-.skip 2
-
-glabel D_8018CAC0
-.skip 2
-
-glabel D_8018CAC2
-.skip 2
-
-glabel D_8018CAC4
-.skip 2
-
-glabel D_8018CAC6
-.skip 4
-
-glabel D_8018CACA
-.skip 2
-
-glabel D_8018CACC
-.skip 2
-
-glabel D_8018CACE
-.skip 18
-
-glabel D_8018CAE0
+# Everything below this point is referenced in code_8006E9C0/reset_object_variable
+glabel D_8018CAE0 # playerHUD[PLAYER_ONE].raceCompleteBool
 .skip 1
 
-glabel D_8018CAE1
+glabel D_8018CAE1 # playerHUD[PLAYER_ONE].lapCount
 .skip 1
 
-glabel D_8018CAE2
-.skip 7
-
-glabel D_8018CAE9
-.skip 8
-
-glabel D_8018CAF1
-.skip 115
-
-glabel D_8018CB64
-.skip 1
-
-glabel D_8018CB65
-.skip 1
-
-glabel D_8018CB66
+glabel D_8018CAE2 # playerHUD[PLAYER_ONE].alsoLapCount
 .skip 15
 
-glabel D_8018CB75
+glabel D_8018CAF1 # playerHUD[PLAYER_ONE].unk_81
 .skip 115
 
-glabel D_8018CBE8
+glabel D_8018CB64 # playerHUD[PLAYER_TWO].raceCompleteBool
 .skip 1
 
-glabel D_8018CBE9
+glabel D_8018CB65 # playerHUD[PLAYER_TWO].lapCount
 .skip 1
 
-glabel D_8018CBEA
+glabel D_8018CB66 # playerHUD[PLAYER_TWO].alsoLapCount
 .skip 15
 
-glabel D_8018CBF9
+glabel D_8018CB75 # playerHUD[PLAYER_TWO].unk_81
 .skip 115
 
-glabel D_8018CC6C
+glabel D_8018CBE8 # playerHUD[PLAYER_THREE].raceCompleteBool
 .skip 1
 
-glabel D_8018CC6D
+glabel D_8018CBE9 # playerHUD[PLAYER_THREE].lapCount
 .skip 1
 
-glabel D_8018CC6E
+glabel D_8018CBEA # playerHUD[PLAYER_THREE].alsoLapCount
 .skip 15
 
-glabel D_8018CC7D
+glabel D_8018CBF9 # playerHUD[PLAYER_THREE].unk_81
+.skip 115
+
+glabel D_8018CC6C # playerHUD[PLAYER_FOUR].raceCompleteBool
+.skip 1
+
+glabel D_8018CC6D # playerHUD[PLAYER_FOUR].lapCount
+.skip 1
+
+glabel D_8018CC6E # playerHUD[PLAYER_FOUR].alsoLapCount
+.skip 15
+
+glabel D_8018CC7D # playerHUD[PLAYER_FOUR].unk_81
 .skip 3
 # some hud related list end
 

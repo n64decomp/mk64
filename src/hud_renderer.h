@@ -451,8 +451,6 @@ extern s32 D_8016586C;
 extern s32 D_80165878;
 extern s32 D_8016589C;
 
-extern s8  D_80165908;
-
 extern Camera *D_8018CF14;
 extern s32 D_80183DD8[];
 extern Vec3f D_80183E40;

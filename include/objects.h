@@ -287,6 +287,11 @@ extern s32 indexObjectList2[];
 
 extern Vec3s gFireBreathsSpawns[];
 
+// These should really, really be Vec3s arrays, but that doesn't match
+extern s16 D_800E5740[];
+extern s16 D_800E579C[];
+extern s16 D_800E57F8[];
+
 /**
  * Boos in Banshee Boardwalk
  * Spawners for the 4 small fire breaths inside Bowser's Castle
@@ -352,7 +357,7 @@ extern s16 D_80165738;
 #define NUM_TORCHES 8
 
 // This should really be `extern Vec3s gTorchSpawns[];`
-extern s16 gTorchSpawns[1]; // todo: fix this extern
+extern s16 gTorchSpawns[]; // todo: fix this extern
 
 /**
  * List of object list indices. Used both for the fires in the DK Jungle cave

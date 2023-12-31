@@ -84,6 +84,7 @@ void func_800090F0(s32, Player*);
 f32  func_80009258(s32, f32, f32);
 void func_8000929C(s32, Player*);
 void func_800097E0(void);
+void func_800098FC(s32, Player*);
 void func_800099EC(s32, Player*);
 void func_80009B60(s32);
 
