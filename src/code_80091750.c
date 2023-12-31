@@ -6093,7 +6093,7 @@ func_8009CE64_label1:
                         switch (temp_v0->unk4) {            /* switch 7; irregular */
                         case 11:                        /* switch 7 */
                             func_802903B0();
-                            D_8016556E = 1;
+                            D_80165560[3] = 1;
                             break;
                         default:                        /* switch 7 */
                         case 12:                        /* switch 7 */

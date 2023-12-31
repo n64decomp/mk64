@@ -237,7 +237,7 @@ void func_8001CA78(UNUSED Player *player, Camera *camera, Vec3f arg2, f32 *arg3,
     } else {
         var_f14 = sp5C[0] + temp_s2->posX;
     }
-    temp_f16 = sp5C[2] + D_8016524C;
+    temp_f16 = D_80165230[7] + sp5C[2];
     temp_f18 = sp5C[1] + (temp_s2->posY + D_80164A30);
     arg2[0] += (var_f14 - camera->lookAt[0]) * 1;
     arg2[1] += (temp_f18 - camera->lookAt[1]) * 1;
@@ -248,7 +248,7 @@ void func_8001CA78(UNUSED Player *player, Camera *camera, Vec3f arg2, f32 *arg3,
     } else {
         var_f14 = sp68[0] + temp_s2->posX;
     }
-    temp_f16 = sp68[2] + D_8016524C;
+    temp_f16 = D_80165230[7] + sp68[2];
     temp_f18 = sp68[1] + (temp_s2->posY + D_80164A30 + 6.0f);
     move_f32_towards(&D_80164A30, 0, 0.02f);
     posX = camera->pos[0];

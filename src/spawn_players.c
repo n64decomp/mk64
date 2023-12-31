@@ -23,9 +23,7 @@
 #include "render_player.h"
 
 f32 D_80165210[8];
-f32 D_80165230[7];
-// weird D_8016524C should not exist and be in D_80165230 but don't match
-f32 D_8016524C;
+f32 D_80165230[8];
 f32 D_80165250[8];
 s16 D_80165270[8];
 f32 D_80165280[8];
@@ -55,7 +53,6 @@ s32 D_80165500[8];
 s32 D_80165520[8];
 s32 D_80165540[8];
 s16 D_80165560[7];
-// weird D_8016556E should not exist and be in D_80165560 but don't match
 s16 D_8016556E;
 s16 D_80165570;
 s16 D_80165572;
@@ -1108,9 +1105,9 @@ void func_8003D080(void) {
                 switch (gModeSelection) {
                     case GRAND_PRIX:
                         if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
-                            camera_init(0.0f, player->pos[1], D_8016524C, player->unk_02C[1], 8, 0);
+                            camera_init(0.0f, player->pos[1], D_80165230[7], player->unk_02C[1], 8, 0);
                         } else {
-                            camera_init((D_80165210[7] + D_80165210[6]) / 2, player->pos[1], D_8016524C, player->unk_02C[1], 8, 0);
+                            camera_init((D_80165210[7] + D_80165210[6]) / 2, player->pos[1], D_80165230[7], player->unk_02C[1], 8, 0);
                         }
                         break;
 
