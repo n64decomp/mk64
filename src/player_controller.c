@@ -3249,7 +3249,7 @@ void func_80030C34(Player *player) {
         }
         if (D_80165440[var_v0] == 5) {
             gIsPlayerTripleAButtonCombo[var_v0] = TRUE;
-            D_80165480[var_v0] = 0x00000078;
+            D_80165480[var_v0] = 120;
             D_80165440[var_v0] = 0;
             D_80165420[var_v0] = 0;
         }
