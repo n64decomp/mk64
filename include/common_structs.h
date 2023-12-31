@@ -451,9 +451,14 @@ typedef struct {
     /* 0x4C */ s16 unk_4C;
     /* 0x4E */ s16 timerX; // X coordinate of the on screen timer
     // These 4 X coordinates are "slide" values
-    /* 0x50 */ s16 lap1CompletionTimeX; // Pulls double-duty as timerAfterImage1X
-    /* 0x52 */ s16 lap2CompletionTimeX; // Pulls double-duty as timerAfterImage2X
-    /* 0x54 */ s16 lap3CompletionTimeX;
+    union {
+        struct {
+        /* 0x50 */ s16 lap1CompletionTimeX; // Pulls double-duty as timerAfterImage1X
+        /* 0x52 */ s16 lap2CompletionTimeX; // Pulls double-duty as timerAfterImage2X
+        /* 0x54 */ s16 lap3CompletionTimeX;
+        };
+        /* 0x50 */ s16 lapCompletionTimeXs[3];
+    };
     /* 0x56 */ s16 totalTimeX;
     /* 0x58 */ s16 timerY; // Y coordinate of the on screen timer (used as Y coordinate for lap completion times in post-race screen)
     /* 0x5A */ s16 lapX; // X coordinate of the on screen lap counter

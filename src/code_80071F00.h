@@ -304,6 +304,7 @@ void func_800821FC(void);
 void func_8008241C(s32, s32);
 void func_80082714(s32, s32);
 void func_8008275C(s32);
+void func_80082870(void);
 void init_ktb_crab(s32);
 void func_80082B34(s32, s32);
 void func_80082C30(s32);

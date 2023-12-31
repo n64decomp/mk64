@@ -115,8 +115,6 @@ s32  func_800910E4(Player*);
 void func_800911B4(Player*, s8);
 void func_80091298(Player*, s8);
 
-// code_80005FD0
-void func_800098FC(u32, Player*);
 // audio/external.c
 void func_800C9250(u8);
 void func_800CA59C(u8);

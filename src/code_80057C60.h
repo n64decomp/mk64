@@ -274,6 +274,7 @@ extern s32 D_801655B4;
 extern s32 D_801655BC;
 extern s32 D_801655C0;
 extern s32 D_801655C4;
+extern s32 D_801655C8;
 extern s32 D_801655CC;
 extern s32 D_801655D8;
 extern s32 D_801655E8;
@@ -318,8 +319,14 @@ extern u8 *D_80165880;
 extern s8 D_80165890;
 extern s8 D_80165898;
 extern s8 D_801658A8;
+extern s8 D_801658D6;
 extern u8 sRandomItemIndex; // 801658fd
 extern u8 gControllerRandom; // 801658ff
+
+extern s16 D_80165900;
+extern s8  D_80165908;
+
+extern s8 D_80165A90;
 
 extern s8 D_8018CAE0;
 
@@ -362,10 +369,13 @@ extern bool D_8018D214;
 extern s16 D_8018D218;
 extern s32 D_8018D21C;
 extern s32 D_8018D22C;
+extern f32 D_8018D2A0;
 extern s32 D_8018D2A4;
 extern s32 D_8018D2AC;
 extern s32 D_8018D2BC;
 extern s32 D_8018D2C8[];
+extern s16 D_8018D2E0;
+extern s16 D_8018D2E8;
 
 extern s32 D_8018D314;
 extern s32 D_8018D320;

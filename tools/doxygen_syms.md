@@ -3844,7 +3844,6 @@ Variable Name | Memory Address
 [D_800EF0B8](@ref D_800EF0B8) | 0x800EF0B8
 [D_800EF0C0](@ref D_800EF0C0) | 0x800EF0C0
 [D_800EF1BC](@ref D_800EF1BC) | 0x800EF1BC
-[D_800EF494](@ref D_800EF494) | 0x800EF494
 [gGlyphDisplayWidth](@ref gGlyphDisplayWidth) | 0x800EF690
 [gPerCupIndexByCourseId](@ref gPerCupIndexByCourseId) | 0x800EFD50
 [D_800EFD64](@ref D_800EFD64) | 0x800EFD64
