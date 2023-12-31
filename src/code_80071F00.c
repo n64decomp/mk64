@@ -1595,7 +1595,7 @@ void func_80075838(void) {
     if (D_80165790 != 0) {
         D_80165790 -= 1;
     }
-    if ((gTrains[0].someFlags != 0) || (D_8016578C != 0)) {
+    if ((gTrainList[0].someFlags != 0) || (D_8016578C != 0)) {
     count = 0;
         for (i = 0; i < 128; i++) {
             temp_a0 = D_8018C3F0[i];
@@ -1614,7 +1614,7 @@ void func_80075838(void) {
             D_8016578C = 100;
         }
     }
-    if ((gTrains[1].someFlags != 0) || (D_80165790 != 0)) {
+    if ((gTrainList[1].someFlags != 0) || (D_80165790 != 0)) {
         count = 0;
         for (i = 0; i < 128; i++) {
             temp_a0 = D_8018C630[i];

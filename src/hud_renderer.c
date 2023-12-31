@@ -3583,7 +3583,7 @@ void func_800541BC(s32 cameraId) {
 // Render smoke for any number of trains. Don't know enough about these variables yet.
 #ifdef AVOID_UB_WIP
     for (j = 0; j < NUM_TRAINS; j++) {
-        if ((gTrains[j].someFlags != 0) && (func_80041980(&gTrains[j].locomotive.position, camera, 0x4000U) != 0)) {
+        if ((gTrainList[j].someFlags != 0) && (func_80041980(&gTrainList[j].locomotive.position, camera, 0x4000U) != 0)) {
 
             for (i = 0; i < 128; i++) {
                 // Need to make a way to increase this array for each train.
@@ -3593,14 +3593,14 @@ void func_800541BC(s32 cameraId) {
     }
 #else
 
-    if ((gTrains[0].someFlags != 0) && (func_80041980(&gTrains[0].locomotive.position, camera, 0x4000U) != 0)) {
+    if ((gTrainList[0].someFlags != 0) && (func_80041980(&gTrainList[0].locomotive.position, camera, 0x4000U) != 0)) {
 
         for (i = 0; i < D_8018C3F0_SIZE; i++) {
             func_800540CC(D_8018C3F0[i], cameraId);
         }
 
     }
-    if ((gTrains[1].someFlags != 0) && (func_80041980(&gTrains[1].locomotive.position, camera, 0x4000U) != 0)) {
+    if ((gTrainList[1].someFlags != 0) && (func_80041980(&gTrainList[1].locomotive.position, camera, 0x4000U) != 0)) {
         for (i = 0; i < D_8018C630_SIZE; i++) {
             func_800540CC(D_8018C630[i], cameraId);
         }
