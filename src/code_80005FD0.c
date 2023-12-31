@@ -137,7 +137,7 @@ s32 D_801634F4;
 Test D_801634F8[10];
 PathNoY *D_80163598;
 s32 D_8016359C;
-TrainStuff gTrains[NUM_TRAINS];
+TrainStuff gTrainList[NUM_TRAINS];
 u16 isCrossingTriggeredByIndex[2];
 u16 D_801637BC[2];
 PaddleWheelBoatStuff gFerries[NUM_PADDLE_WHEEL_BOATS];
@@ -4527,20 +4527,20 @@ void init_course_vehicles(void) {
     switch (gCurrentCourseId) {
     case COURSE_KALAMARI_DESERT:
         for(loopIndex = 0; loopIndex < NUM_TRAINS; loopIndex++) {
-            tempLocomotive = &gTrains[loopIndex].locomotive;
+            tempLocomotive = &gTrainList[loopIndex].locomotive;
             origXPos = tempLocomotive->position[0];
             origZPos = tempLocomotive->position[2];
-            trainCarYRot = func_8000DBAC(tempLocomotive->position, &tempLocomotive->waypointIndex, gTrains[loopIndex].someMultiplier);
+            trainCarYRot = func_8000DBAC(tempLocomotive->position, &tempLocomotive->waypointIndex, gTrainList[loopIndex].someMultiplier);
             tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
             tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
             vec3s_set(trainCarRot, 0, trainCarYRot, 0);
             tempLocomotive->actorIndex = addActorToEmptySlot(tempLocomotive->position, trainCarRot, tempLocomotive->velocity, ACTOR_TRAIN_ENGINE);
 
-            tempTender = &gTrains[loopIndex].tender;
+            tempTender = &gTrainList[loopIndex].tender;
             if (tempTender->isActive == 1) {
                 origXPos = tempTender->position[0];
                 origZPos = tempTender->position[2];
-                trainCarYRot = func_8000DBAC(tempTender->position, &tempTender->waypointIndex, gTrains[loopIndex].someMultiplier);
+                trainCarYRot = func_8000DBAC(tempTender->position, &tempTender->waypointIndex, gTrainList[loopIndex].someMultiplier);
                 tempTender->velocity[0] = tempTender->position[0] - origXPos;
                 tempTender->velocity[2] = tempTender->position[2] - origZPos;
                 vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -4548,11 +4548,11 @@ void init_course_vehicles(void) {
             }
 
             for(loopIndex2 = 0; loopIndex2 < NUM_PASSENGER_CAR_ENTRIES; loopIndex2++) {
-                tempPassengerCar = &gTrains[loopIndex].passengerCars[loopIndex2];
+                tempPassengerCar = &gTrainList[loopIndex].passengerCars[loopIndex2];
                 if (tempPassengerCar->isActive == 1) {
                     origXPos = tempPassengerCar->position[0];
                     origZPos = tempPassengerCar->position[2];
-                    trainCarYRot = func_8000DBAC(tempPassengerCar->position, &tempPassengerCar->waypointIndex, gTrains[loopIndex].someMultiplier);
+                    trainCarYRot = func_8000DBAC(tempPassengerCar->position, &tempPassengerCar->waypointIndex, gTrainList[loopIndex].someMultiplier);
                     tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
                     tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
                     vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -4629,38 +4629,38 @@ void func_800127E0(void) {
         waypointOffset = (((i * D_8016359C) / NUM_TRAINS) + 160) % D_8016359C;
 
         // 120.0f is about the maximum usable value
-        gTrains[i].someMultiplier = 5.0f;
+        gTrainList[i].someMultiplier = 5.0f;
         for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) {
             waypointOffset += 4;
-            ptr1 = &gTrains[i].passengerCars[j];
+            ptr1 = &gTrainList[i].passengerCars[j];
             ptr2 = &D_80163598[waypointOffset];
             func_80012780(ptr1, ptr2, waypointOffset);
         }
         // Smaller offset for the tender
         waypointOffset += 3;
-        ptr1 = &gTrains[i].tender;
+        ptr1 = &gTrainList[i].tender;
         ptr2 = &D_80163598[waypointOffset];
         func_80012780(ptr1, ptr2, waypointOffset);
         
         waypointOffset += 4;
-        ptr1 = &gTrains[i].locomotive;
+        ptr1 = &gTrainList[i].locomotive;
         ptr2 = &D_80163598[waypointOffset];
         func_80012780(ptr1, ptr2, waypointOffset);
         
         // Only use locomotive unless overwritten below.
-        gTrains[i].numCars = LOCOMOTIVE_ONLY;
+        gTrainList[i].numCars = LOCOMOTIVE_ONLY;
     }
     
     // Spawn all rolling stock in single player mode.
     switch (gScreenModeSelection) {
         case SCREEN_MODE_1P: // single player
             for (i = 0; i < NUM_TRAINS; i++) {
-                gTrains[i].tender.isActive = 1;
+                gTrainList[i].tender.isActive = 1;
     
                 // Same line required for matching...
-                for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) { gTrains[i].passengerCars[j].isActive = 1; }
+                for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) { gTrainList[i].passengerCars[j].isActive = 1; }
                 
-                gTrains[i].numCars = NUM_TENDERS + NUM_PASSENGER_CAR_ENTRIES;
+                gTrainList[i].numCars = NUM_TENDERS + NUM_PASSENGER_CAR_ENTRIES;
             }
             break;
         
@@ -4669,9 +4669,9 @@ void func_800127E0(void) {
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             if (gModeSelection != GRAND_PRIX) {
                 for (i = 0; i < NUM_TRAINS; i++) {
-                    gTrains[i].tender.isActive = 1;
-                    gTrains[i].passengerCars[4].isActive = 1;
-                    gTrains[i].numCars = NUM_TENDERS + NUM_2P_PASSENGER_CARS;
+                    gTrainList[i].tender.isActive = 1;
+                    gTrainList[i].passengerCars[4].isActive = 1;
+                    gTrainList[i].numCars = NUM_TENDERS + NUM_2P_PASSENGER_CARS;
                 }
             }
             break;
@@ -4711,53 +4711,53 @@ void func_80012AC0(void) {
     D_80162FCC += 1;
 
     for (i = 0; i < NUM_TRAINS; i++) {
-        temp_s0 = (u16) gTrains[i].locomotive.waypointIndex;
+        temp_s0 = (u16) gTrainList[i].locomotive.waypointIndex;
 
-        temp_f20 = gTrains[i].locomotive.position[0];
-        temp_f22 = gTrains[i].locomotive.position[2];
+        temp_f20 = gTrainList[i].locomotive.position[0];
+        temp_f22 = gTrainList[i].locomotive.position[2];
 
-        temp_v0 = func_8000DBAC(gTrains[i].locomotive.position, &gTrains[i].locomotive.waypointIndex, gTrains[i].someMultiplier);
+        temp_v0 = func_8000DBAC(gTrainList[i].locomotive.position, &gTrainList[i].locomotive.waypointIndex, gTrainList[i].someMultiplier);
 
-        gTrains[i].locomotive.velocity[0] = gTrains[i].locomotive.position[0] - temp_f20;
-        gTrains[i].locomotive.velocity[2] = gTrains[i].locomotive.position[2] - temp_f22;
+        gTrainList[i].locomotive.velocity[0] = gTrainList[i].locomotive.position[0] - temp_f20;
+        gTrainList[i].locomotive.velocity[2] = gTrainList[i].locomotive.position[2] - temp_f22;
 
-        func_80012A48(&gTrains[i].locomotive, temp_v0);
+        func_80012A48(&gTrainList[i].locomotive, temp_v0);
 
-        if ((temp_s0 != gTrains[i].locomotive.waypointIndex)
-            && ((gTrains[i].locomotive.waypointIndex == 0x00BE)
-            || (gTrains[i].locomotive.waypointIndex == 0x0140))) {
-            func_800C98B8(gTrains[i].locomotive.position, gTrains[i].locomotive.velocity, 0x1901800E);
+        if ((temp_s0 != gTrainList[i].locomotive.waypointIndex)
+            && ((gTrainList[i].locomotive.waypointIndex == 0x00BE)
+            || (gTrainList[i].locomotive.waypointIndex == 0x0140))) {
+            func_800C98B8(gTrainList[i].locomotive.position, gTrainList[i].locomotive.velocity, 0x1901800E);
         } else if (random_int(100) == 0) {
-            func_800C98B8(gTrains[i].locomotive.position, gTrains[i].locomotive.velocity, 0x1901800D);
+            func_800C98B8(gTrainList[i].locomotive.position, gTrainList[i].locomotive.velocity, 0x1901800D);
         }
 
-        gTrains[i].someFlags = func_800061DC(gTrains[i].locomotive.position, 2000.0f, gTrains[i].someFlags);
-        if ((((s16) D_80162FCC % 5) == 0) && (gTrains[i].someFlags != 0)) {
-            sp90[0] = gTrains[i].locomotive.position[0];
-            sp90[1] = (f32) ((f64) gTrains[i].locomotive.position[1] + 65.0);
-            sp90[2] = (f32) ((f64) gTrains[i].locomotive.position[2] + 25.0);
-            func_80006114(sp90, gTrains[i].locomotive.position, temp_v0);
+        gTrainList[i].someFlags = func_800061DC(gTrainList[i].locomotive.position, 2000.0f, gTrainList[i].someFlags);
+        if ((((s16) D_80162FCC % 5) == 0) && (gTrainList[i].someFlags != 0)) {
+            sp90[0] = gTrainList[i].locomotive.position[0];
+            sp90[1] = (f32) ((f64) gTrainList[i].locomotive.position[1] + 65.0);
+            sp90[2] = (f32) ((f64) gTrainList[i].locomotive.position[2] + 25.0);
+            func_80006114(sp90, gTrainList[i].locomotive.position, temp_v0);
             func_800755FC(i, sp90, 1.1f);
         }
 
-        car = &gTrains[i].tender;
+        car = &gTrainList[i].tender;
 
         if (car->isActive == 1) {
             temp_f20 = car->position[0];
             temp_f22 = car->position[2];
-            temp_v0 = func_8000DBAC(car->position, &car->waypointIndex, gTrains[i].someMultiplier);
+            temp_v0 = func_8000DBAC(car->position, &car->waypointIndex, gTrainList[i].someMultiplier);
             car->velocity[0] = car->position[0] - temp_f20;
             car->velocity[2] = car->position[2] - temp_f22;
             func_80012A48(car, temp_v0);
         }
 
         for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) {
-            car = &gTrains[i].passengerCars[j];
+            car = &gTrainList[i].passengerCars[j];
             if (car->isActive == 1) {
                 temp_f20 = car->position[0];
                 temp_f22 = car->position[2];
 
-                temp_v0 = func_8000DBAC(car->position, &car->waypointIndex, gTrains[i].someMultiplier);
+                temp_v0 = func_8000DBAC(car->position, &car->waypointIndex, gTrainList[i].someMultiplier);
                 car->velocity[0] = car->position[0] - temp_f20;
                 car->velocity[2] = car->position[2] - temp_f22;
                 func_80012A48(car, temp_v0);
@@ -4780,7 +4780,7 @@ void func_80012DC0(s32 playerId, Player *player) {
             playerPosX = player->pos[0];
             playerPosZ = player->pos[2];
             for (trainIndex = 0; trainIndex < NUM_TRAINS; trainIndex++) {
-                trainCar = &gTrains[trainIndex].locomotive;
+                trainCar = &gTrainList[trainIndex].locomotive;
                 x_dist = playerPosX - trainCar->position[0];
                 z_dist = playerPosZ - trainCar->position[2];
                 if ((x_dist > -100.0) && (x_dist < 100.0)) {
@@ -4788,7 +4788,7 @@ void func_80012DC0(s32 playerId, Player *player) {
                         if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
                             player->statusEffects |= REVERSE_EFFECT;
                         }
-                        trainCar = &gTrains[trainIndex].tender;
+                        trainCar = &gTrainList[trainIndex].tender;
                         if (trainCar->isActive == 1) {
                             if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
                                 player->statusEffects |= REVERSE_EFFECT;
@@ -4798,7 +4798,7 @@ void func_80012DC0(s32 playerId, Player *player) {
                 }
 
                 for (passengerCarIndex = 0; passengerCarIndex < NUM_PASSENGER_CAR_ENTRIES; passengerCarIndex++) {
-                    trainCar = &gTrains[trainIndex].passengerCars[passengerCarIndex];
+                    trainCar = &gTrainList[trainIndex].passengerCars[passengerCarIndex];
                     x_dist = playerPosX - trainCar->position[0];
                     z_dist = playerPosZ - trainCar->position[2];
                     if (trainCar->isActive == 1) {
@@ -4829,17 +4829,17 @@ void func_80013054(void) {
     isCrossingTriggeredByIndex[1] = 0;
 
     for (i = 0; i < NUM_TRAINS; i++) {
-        temp_f16 = gTrains[i].locomotive.waypointIndex / ((f32) D_8016359C);
+        temp_f16 = gTrainList[i].locomotive.waypointIndex / ((f32) D_8016359C);
         temp_f18 = 0.72017354f;
         temp_f12 = 0.42299348f;
 
         if (((temp_f12 - 0.1) < temp_f16) 
-            && (temp_f16 < ((((f64) gTrains[i].numCars) * 0.01) + (temp_f12 + 0.01)))) {
+            && (temp_f16 < ((((f64) gTrainList[i].numCars) * 0.01) + (temp_f12 + 0.01)))) {
 
             isCrossingTriggeredByIndex[0] = 1;
         }
         if (((temp_f18 - 0.1) < temp_f16) 
-            && (temp_f16 < ((((f64) gTrains[i].numCars) * 0.01) + (temp_f18 + 0.01)))) {
+            && (temp_f16 < ((((f64) gTrainList[i].numCars) * 0.01) + (temp_f18 + 0.01)))) {
 
             isCrossingTriggeredByIndex[1] = 1;
         }

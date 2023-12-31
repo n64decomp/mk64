@@ -4248,7 +4248,7 @@ Variable Name | Memory Address
 [D_801634F8](@ref D_801634F8) | 0x801634F8
 [D_80163598](@ref D_80163598) | 0x80163598
 [D_8016359C](@ref D_8016359C) | 0x8016359C
-[gTrains](@ref gTrains) | 0x801635A0
+[gTrainList](@ref gTrainList) | 0x801635A0
 [isCrossingTriggeredByIndex](@ref isCrossingTriggeredByIndex) | 0x801637B8
 [D_801637BC](@ref D_801637BC) | 0x801637BC
 [gFerries](@ref gFerries) | 0x801637C0
