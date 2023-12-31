@@ -505,7 +505,7 @@ var code__80005FD0_8c =
     [ "gPathIndexByPlayerId", "code__80005FD0_8c.html#a0b26bdf729078d93a000712adc0d1b13", null ],
     [ "gSchoolBusList", "code__80005FD0_8c.html#a3d59d1ae4786bf64a71c2a015160e7af", null ],
     [ "gTankerTruckList", "code__80005FD0_8c.html#af4d9bb3e12dd9902c5992c5c064a0fc7", null ],
-    [ "gTrains", "code__80005FD0_8c.html#a09249d625e1a367d36fbd2863e006f1d", null ],
+    [ "gTrainList", "code__80005FD0_8c.html#a2dc210a40d4102b45970958fee517232", null ],
     [ "gUnexpiredActorsList", "code__80005FD0_8c.html#a84f9a428f9485f5a469a669ee4f0777b", null ],
     [ "gWaypointCountByPathIndex", "code__80005FD0_8c.html#ab9c90834732ff4f23dce6c23cd508fa3", null ],
     [ "isCrossingTriggeredByIndex", "code__80005FD0_8c.html#a83af9aa3b6352cd4a408bb0525bf442f", null ],

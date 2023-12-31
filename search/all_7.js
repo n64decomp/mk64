@@ -4513,7 +4513,7 @@ var searchData=
   ['gtopspeedextra_11090',['gTopSpeedExtra',['../kart__attributes_8h.html#acca55962295f1a1c20ebc9a631d7c1bd',1,'gTopSpeedExtra():&#160;kart_attributes.inc.c'],['../kart__attributes_8inc_8c.html#a510915a7a9a0a456e71c807c5a875166',1,'gTopSpeedExtra():&#160;kart_attributes.inc.c']]],
   ['gtopspeedtable_11091',['gTopSpeedTable',['../kart__attributes_8h.html#a30ffc7e2ce3b39a0e830985298f048da',1,'gTopSpeedTable():&#160;kart_attributes.inc.c'],['../kart__attributes_8inc_8c.html#a30ffc7e2ce3b39a0e830985298f048da',1,'gTopSpeedTable():&#160;kart_attributes.inc.c']]],
   ['gtorchspawns_11092',['gTorchSpawns',['../objects_8h.html#af40885efd72dc665a278c6f29e19ecf3',1,'objects.h']]],
-  ['gtrains_11093',['gTrains',['../vehicles_8h.html#a8c4f429aeaf1bd513f784ba2377dbf5a',1,'gTrains():&#160;code_80005FD0.c'],['../code__80005FD0_8c.html#a09249d625e1a367d36fbd2863e006f1d',1,'gTrains():&#160;code_80005FD0.c']]],
+  ['gtrainlist_11093',['gTrainList',['../vehicles_8h.html#ac244743e5ba49da3393199a6866f1461',1,'gTrainList():&#160;code_80005FD0.c'],['../code__80005FD0_8c.html#a2dc210a40d4102b45970958fee517232',1,'gTrainList():&#160;code_80005FD0.c']]],
   ['gu_2eh_11094',['gu.h',['../gu_8h.html',1,'']]],
   ['gu_5fpi_11095',['GU_PI',['../gu_8h.html#a771a71c2d959bf835362325d128647f2',1,'gu.h']]],
   ['gufrustum_11096',['guFrustum',['../gu_8h.html#ab2d0e72372b38fe03d85cecaf3705ebb',1,'gu.h']]],
