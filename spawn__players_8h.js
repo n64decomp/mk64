@@ -20,7 +20,6 @@ var spawn__players_8h =
     [ "spawn_players_4p_battle", "spawn__players_8h.html#a10c1c29f0d753f8249e059b58fdf1fa0", null ],
     [ "D_80165210", "spawn__players_8h.html#a29c4c7c18cf8d74c63a559fb5528f762", null ],
     [ "D_80165230", "spawn__players_8h.html#ace2db30763a056ad641c5c732e72e9e9", null ],
-    [ "D_8016524C", "spawn__players_8h.html#a06a06d18159f0640018af666035c533a", null ],
     [ "D_80165270", "spawn__players_8h.html#a2294adcb5bc9ed0c3b3d148f3ca25320", null ],
     [ "D_80165280", "spawn__players_8h.html#afd733ad65d2fae362b76ce2396f88776", null ],
     [ "D_801652A0", "spawn__players_8h.html#adcb5d1a18f4745025c29fe0a812d79ee", null ],

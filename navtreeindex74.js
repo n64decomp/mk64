@@ -1,7 +1,5 @@
 var NAVTREEINDEX74 =
 {
-"structTrainStuff.html#ad55c878cf7b149b9c47b0f1faf753145":[2,0,193,5],
-"structTrainStuff.html#ad97601b45041082812dcaab5af6fc7ce":[2,0,193,4],
 "structTrainStuff.html#af09aad0b146135b41f76a9a0bc497e4b":[2,0,193,6],
 "structTripleShellParent.html":[2,0,194],
 "structTripleShellParent.html#a13b6efc8edb8f17285a9f22419e4244a":[2,0,194,8],
@@ -249,5 +247,7 @@ var NAVTREEINDEX74 =
 "structVec3fs.html#a394aaa3eb271acc0bd3a9592d5399d8e":[2,0,241,0],
 "structVec3fs.html#a9d9b4e688edf3109fa4e263c474f8fae":[2,0,241,2],
 "structVec3fs.html#ae5aabac0675c3e62a55ebd37e819380f":[2,0,241,1],
-"structVehicleStuff.html":[2,0,242]
+"structVehicleStuff.html":[2,0,242],
+"structVehicleStuff.html#a154666f1e460a83f36963a88a8fc248b":[2,0,242,7],
+"structVehicleStuff.html#a19163eec76651a01032e2cde2efab62c":[2,0,242,5]
 };
