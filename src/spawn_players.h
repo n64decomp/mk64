@@ -41,7 +41,7 @@ extern Player *D_801653C0[];
 extern s32 gPlayerIsThrottleActive[];
 extern s32 D_80165400[];
 extern s32 gFrameSinceLastACombo[];
-extern s32 gCountAChangement[];
+extern s32 gCountASwitch[];
 extern bool gIsPlayerTripleAButtonCombo[];
 extern s32 gTimerBoostTripleACombo[];
 extern s32 gPlayerIsBrakeActive[];

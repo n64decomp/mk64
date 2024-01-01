@@ -4379,7 +4379,7 @@ Variable Name | Memory Address
 [gPlayerIsThrottleActive](@ref gPlayerIsThrottleActive) | 0x801653E0
 [D_80165400](@ref D_80165400) | 0x80165400
 [gFrameSinceLastACombo](@ref gFrameSinceLastACombo) | 0x80165420
-[gCountAChangement](@ref gCountAChangement) | 0x80165440
+[gCountASwitch](@ref gCountASwitch) | 0x80165440
 [gIsPlayerTripleAButtonCombo](@ref gIsPlayerTripleAButtonCombo) | 0x80165460
 [gTimerBoostTripleACombo](@ref gTimerBoostTripleACombo) | 0x80165480
 [gPlayerIsBrakeActive](@ref gPlayerIsBrakeActive) | 0x801654A0

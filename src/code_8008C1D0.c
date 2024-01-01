@@ -305,7 +305,7 @@ void func_8008C73C(Player *player, s8 arg1) {
         D_80165280[arg1] = player->currentSpeed;
         gTimerBoostTripleACombo[arg1] = 0;
         gIsPlayerTripleAButtonCombo[arg1] = FALSE;
-        gCountAChangement[arg1] = 0;
+        gCountASwitch[arg1] = 0;
         gFrameSinceLastACombo[arg1] = 0;
         D_8018D920[arg1] = 0;
 
@@ -1049,7 +1049,7 @@ void func_8008E6C0(Player *player, s8 arg1)
     player->unk_0B6 |= 0x40;
     gTimerBoostTripleACombo[arg1] = 0;
     gIsPlayerTripleAButtonCombo[arg1] = FALSE;
-    gCountAChangement[arg1] = 0;
+    gCountASwitch[arg1] = 0;
     gFrameSinceLastACombo[arg1] = 0;
 }
 
@@ -1149,7 +1149,7 @@ void func_8008EAE0(Player* player, s8 arg1) {
 
     gTimerBoostTripleACombo[arg1] = 0;
     gIsPlayerTripleAButtonCombo[arg1] = FALSE;
-    gCountAChangement[arg1] = 0;
+    gCountASwitch[arg1] = 0;
     gFrameSinceLastACombo[arg1] = 0;
 }
 

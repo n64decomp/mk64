@@ -43,7 +43,7 @@ Player *D_801653C0[8];
 bool gPlayerIsThrottleActive[8];
 s32 D_80165400[8];
 s32 gFrameSinceLastACombo[8];
-s32 gCountAChangement[8];
+s32 gCountASwitch[8];
 bool gIsPlayerTripleAButtonCombo[8];
 s32 gTimerBoostTripleACombo[8];
 
@@ -265,7 +265,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     D_801651D0[3][idx] = 0;
 
     gFrameSinceLastACombo[idx] = 0;
-    gCountAChangement[idx] = 0;
+    gCountASwitch[idx] = 0;
     gIsPlayerTripleAButtonCombo[idx] = FALSE;
     gTimerBoostTripleACombo[idx] = 0;
     gFrameSinceLastBCombo[idx] = 0;

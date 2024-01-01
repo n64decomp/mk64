@@ -3230,7 +3230,7 @@ void detect_triple_a_combo_a_released(Player *player) {
     if (gIsPlayerTripleAButtonCombo[playerIndex] == FALSE) {
         if (gPlayerIsThrottleActive[playerIndex] == TRUE) {
             if ((gFrameSinceLastACombo[playerIndex] < 2) || (gFrameSinceLastACombo[playerIndex] >= 9)) {
-                gCountAChangement[playerIndex] = 0;
+                gCountASwitch[playerIndex] = 0;
             }
             gFrameSinceLastACombo[playerIndex] = 0;
             D_80165400[playerIndex] = 0;
@@ -3242,14 +3242,14 @@ void detect_triple_a_combo_a_released(Player *player) {
         }
         if ((gFrameSinceLastACombo[playerIndex] >= 2) && (gFrameSinceLastACombo[playerIndex] < 9)) {
             if (D_80165400[playerIndex] == 0) {
-                gCountAChangement[playerIndex] += 1;
+                gCountASwitch[playerIndex] += 1;
             }
             D_80165400[playerIndex] = 1;
         }
-        if (gCountAChangement[playerIndex] == 5) {
+        if (gCountASwitch[playerIndex] == 5) {
             gIsPlayerTripleAButtonCombo[playerIndex] = TRUE;
             gTimerBoostTripleACombo[playerIndex] = 120;
-            gCountAChangement[playerIndex] = 0;
+            gCountASwitch[playerIndex] = 0;
             gFrameSinceLastACombo[playerIndex] = 0;
         }
     } else {
@@ -3290,7 +3290,7 @@ void detect_triple_a_combo_a_pressed(Player *player) {
     if (gIsPlayerTripleAButtonCombo[playerIndex] == FALSE) {
         if (gPlayerIsThrottleActive[playerIndex] == FALSE) {
             if ((gFrameSinceLastACombo[playerIndex] < 2) || (gFrameSinceLastACombo[playerIndex] >= 9)) {
-                gCountAChangement[playerIndex] = 0;
+                gCountASwitch[playerIndex] = 0;
             }
             gFrameSinceLastACombo[playerIndex] = 0;
             D_80165400[playerIndex] = 0;
@@ -3302,14 +3302,14 @@ void detect_triple_a_combo_a_pressed(Player *player) {
         }
         if ((gFrameSinceLastACombo[playerIndex] >= 2) && (gFrameSinceLastACombo[playerIndex] < 9)) {
             if (D_80165400[playerIndex] == 0) {
-                gCountAChangement[playerIndex] += 1;
+                gCountASwitch[playerIndex] += 1;
             }
             D_80165400[playerIndex] = 1;
         }
-        if (gCountAChangement[playerIndex] == 5) {
+        if (gCountASwitch[playerIndex] == 5) {
             gIsPlayerTripleAButtonCombo[playerIndex] = TRUE;
             gTimerBoostTripleACombo[playerIndex] = 120;
-            gCountAChangement[playerIndex] = 0;
+            gCountASwitch[playerIndex] = 0;
             gFrameSinceLastACombo[playerIndex] = 0;
         }
     } else {
