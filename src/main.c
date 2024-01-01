@@ -410,7 +410,7 @@ void end_master_display_list(void) {
 }
 
 // clear_frame_buffer from SM64, with a few edits
-//! TODO: Why did void* work for matching
+//! @todo Why did void* work for matching
 void *clear_framebuffer(s32 color) {
     gDPPipeSync(gDisplayListHead++);
 
@@ -1145,8 +1145,10 @@ void update_gamestate(void) {
             gCurrentlyLoadedCourseId = COURSE_NULL;
             break;
         case RACING:
-            // @bug Reloading this segment makes random_u16() deterministic for player spawn order.
-            // In laymens terms, random_u16() outputs the same value every time.
+            /** 
+             * @bug Reloading this segment makes random_u16() deterministic for player spawn order.
+             * In laymens terms, random_u16() outputs the same value every time.
+             */
             init_segment_racing();
             setup_race();
             break;

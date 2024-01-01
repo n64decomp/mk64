@@ -31,7 +31,8 @@ s32 osContInit(OSMesgQueue *mq, u8 *bitpattern, OSContStatus *status) {
         osSetTimer(&timer, 500000 * osClockRate / 1000000 - currentTime, 0, &timerMesgQueue, &mesg);
         osRecvMesg(&timerMesgQueue, &mesg, OS_MESG_BLOCK);
     }
-    _osContNumControllers = 4; // TODO: figure out what it means
+    //! @todo figure out what it means
+    _osContNumControllers = 4; 
     __osPackRequestData(0);
     ret = __osSiRawStartDma(OS_WRITE, _osContCmdBuf);
     osRecvMesg(mq, &mesg, OS_MESG_BLOCK);

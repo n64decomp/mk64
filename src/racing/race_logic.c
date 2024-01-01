@@ -794,7 +794,7 @@ void func_8028F970(void) {
         return;
     }
 
-    // todo: increasing players past four would require increase this loop iterator.
+    //! @todo increasing players past four would require increase this loop iterator.
     for (i = 0; i < 4; i++) {
 
         Player *player = &gPlayers[i];

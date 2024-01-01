@@ -50,7 +50,7 @@ s32 D_800DC5E0 = 32;
 // This is tracking which credit "state" we're in, decides which credits are shown (and probably other stuff)
 u16 D_800DC5E4 = 0;
 
-// TODO: gPlayerWinningIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8
+//! @todo gPlayerWinningIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8
 s32 gPlayerWinningIndex = 0;
 
 struct UnkStruct_800DC5EC D_8015F480[4];
@@ -146,7 +146,7 @@ u16 gNumPermanentActors;
 s32 code_800029B0_bss_pad2[44];
 
 struct Actor gActorList[ACTOR_LIST_SIZE];
-// @warning todo: Is this apart of the actor array?
+//! @warning todo: Is this apart of the actor array?
 UNUSED u8 D_80162578[sizeof(struct Actor)];
 
 s16 gDebugPathCount;

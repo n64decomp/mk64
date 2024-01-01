@@ -1209,7 +1209,7 @@ void render_actor_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
         0x1c00, 0x1800, 0x1400, 0x1000,
         0x0c00, 0x0800, 0x0400
     };
-    // todo: Is this making the shell spin?
+    //! @todo Is this making the shell spin?
     // Is it doing this by modifying a an address?
     uintptr_t phi_t3;
 

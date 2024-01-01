@@ -30,7 +30,7 @@
 #include "spawn_players.h"
 
 
-// WARNING: this macro is undef'd at the end of this file
+//! @warning this macro is undef'd at the end of this file
 #define MAKE_RGB(r,g,b) (((r) << 0x10) | ((g) << 0x08) | (b << 0x00))
 
 s16 D_800E4730[] = {

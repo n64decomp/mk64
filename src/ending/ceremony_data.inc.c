@@ -1884,7 +1884,7 @@ u8 texture_podium3[] = {
     #include "assets/ending_ceremony/gTexturePodium3.inc.c"
 };
 
-// Todo: rename this to left_ or right_ instead of model2.
+//! @todo rename this to left_ or right_ instead of model2.
 Vtx short_podium_model2[] = {
 
     {{{    -7,       0,     -21}, 0, {    0,    0}, {0xc8, 0xe3, 0xff, 0xff}}},

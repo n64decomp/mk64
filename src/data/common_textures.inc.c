@@ -631,7 +631,7 @@ Gfx common_model_flat_banana[] = {
 };
 
 // tlut size 8x29
-// todo: What is this?
+//! @todo What is this?
 s8 D_0D004C68[] = {
     #include "assets/trees/gTLUTTreesImport.inc.c"
 };
@@ -3011,7 +3011,7 @@ u8 gTLUTLakituCountdown[][512] = {
 };
 
 /**
- * todo: Generate tlut based on the actual texture.
+ * @todo Generate tlut based on the actual texture.
  * The textures these tluts are for are not in common_textures.inc.c
  * This applies to gTLUTLakituCheckeredFlag, gTLUTLakituSecondLap,
  * gTLUTLakituFinalLap, gTLUTLakituReverse, gTLUTLakituFishing

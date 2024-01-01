@@ -3564,7 +3564,7 @@ void func_8000F2DC(void) {
     D_801645E0 = D_801645A0[0];
 
     // zero allocated memory?
-    // @warning does not appear to zero all the above allocated variables.
+    //! @warning does not appear to zero all the above allocated variables.
     for (i = 0; i < 4; i++) {
         func_8000F2BC(D_80164550[i], D_80163368[i]);
         func_8000F2BC(D_80164560[i], D_80163368[i]);
@@ -3802,7 +3802,7 @@ void func_800100F0(s32 pathIndex) {
 
             // If path data higher than 3000 something has gone wrong.
             // Skip processing the data.
-            // todo: Confirm this comment
+            //! @todo Confirm this comment
             if (!bInvalidPath) {
                 var_v0 = func_80011014(pathDest, path, sp24, pathIndex);
                 gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
@@ -7126,7 +7126,7 @@ void func_8001969C(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
     waypoint = &D_80164550[0][gNearestWaypointByCameraId[cameraId]];
 
     D_801645F8[cameraId] = waypoint->posX;
-    //         @bug   Adding an (f32) cast changes asm, why?
+    //! @bug Adding an (f32) cast changes asm, why?
     D_80164618[cameraId] = waypoint->posY + 10.0;
     D_80164638[cameraId] = waypoint->posZ;
     D_80164648[cameraId] = 0.0f;

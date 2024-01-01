@@ -2,7 +2,8 @@
 
 #define OS_PI_MGR_MESG_BUFF_SIZE 1
 
-#ifdef VERSION_SH // TODO: In libreultra this is in an include
+//! @todo In libreultra this is in an include
+#ifdef VERSION_SH 
 extern OSPiHandle *CartRomHandle;
 extern OSPiHandle *LeoDiskHandle;
 #endif

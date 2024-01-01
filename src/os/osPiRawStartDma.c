@@ -1,7 +1,8 @@
 #include "libultra_internal.h"
 #include "hardware.h"
 
-extern u32 osRomBase; // TODO: figure out why this is like this
+//! @todo figure out why this is like this
+extern u32 osRomBase; 
 
 s32 osPiRawStartDma(s32 dir, u32 cart_addr, void *dram_addr, size_t size) {
     register int status;

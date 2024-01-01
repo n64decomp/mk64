@@ -1578,9 +1578,11 @@ void init_sequence_players(void) {
     for (i = 0; i < ARRAY_COUNT(gSequenceChannels); i++) {
         gSequenceChannels[i].seqPlayer = NULL;
         gSequenceChannels[i].enabled = FALSE;
-        // @bug Size of wrong array. Zeroes out second half of gSequenceChannels[0],
-        // all of gSequenceChannels[1..31], and part of gSequenceLayers[0].
-        // However, this is only called at startup, so it's harmless.
+        /**
+         * @bug Size of wrong array. Zeroes out second half of gSequenceChannels[0],
+         * all of gSequenceChannels[1..31], and part of gSequenceLayers[0].
+         * However, this is only called at startup, so it's harmless.
+         */
 #ifdef AVOID_UB
 #define LAYERS_SIZE LAYERS_MAX
 #else
