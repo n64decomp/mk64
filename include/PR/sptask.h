@@ -136,7 +136,7 @@ typedef u32 OSYieldResult;
 #define OS_YIELD_DATA_SIZE 0x900
 #endif
 
-// TODO: These defines shouldn't exist - PR/rcp.h has them properly defined (ultralib)
+//! @todo These defines shouldn't exist - PR/rcp.h has them properly defined (ultralib)
 /* Flags  */
 #define M_TASK_FLAG0 1
 #define M_TASK_FLAG1 2

@@ -213,7 +213,7 @@ s16 gUnknownWave7[256] = {
 
 s16 *gWaveSamples[6] = { sSawtoothWaves, sTriangleWaves, sSineWaves, sSquareWaves, sUnknownWave6, gUnknownWave7 };
 
-// TODO: file boundary?
+//! @todo file boundary?
 u32 fill[2] = {0x00000000, 0x00000000};
 
 // Transforms a pitch scale factor in -127..127 into a frequency scale factor
@@ -343,7 +343,7 @@ struct AdsrEnvelope gDefaultEnvelope[] = {
     { BSWAP16(ADSR_HANG), 0 }          // then continue staying there
 };
 
-// TODO 0x00000000800f624c                fill2
+//! @todo 0x00000000800f624c                fill2
 u32 fill2 = 0x00000000;
 
 struct NoteSubEu gZeroNoteSub = { 0 };

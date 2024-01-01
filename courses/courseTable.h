@@ -24,7 +24,7 @@ struct CourseTable {
 
 extern struct CourseTable gCourseTable[];
 
-// todo: These should probably be ptr's instead of array's?
+//! @todo These should probably be ptr's instead of array's?
 extern u8 _course_mario_raceway_dl_mio0SegmentRomStart[];
 extern u8 _course_mario_raceway_dl_mio0SegmentRomEnd[];
 extern u8 _mario_raceway_vertexSegmentRomStart[];

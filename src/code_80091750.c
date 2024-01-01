@@ -31,12 +31,14 @@
 #include "racing/race_logic.h"
 #include "ending/code_80281C40.h"
 #include "spawn_players.h"
-// TODO: Move gGfxPool out of main.h
+//! @todo Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
 
-s16 D_8018E820; // todo: these are likely arrays.
-s16 D_8018E822; // todo: This may not be the right file for them.
+//! @todo these are likely arrays.
+s16 D_8018E820; 
+//! @todo This may not be the right file for them.
+s16 D_8018E822; 
 s32 code_80091750_pad_1;
 s16 D_8018E828;
 s16 D_8018E82A;
@@ -1623,7 +1625,7 @@ void func_80091EE4(void) {
 void func_80091FA4(void) {
     s32 i;
 
-    // todo: These sizes need to be sizeof() for shiftability if possible
+    //! @todo These sizes need to be sizeof() for shiftability if possible
     D_8018D9B4 = (uintptr_t *) get_next_available_memory_addr(0x00002800);
     D_8018D9B0 = get_next_available_memory_addr(0x000124F8);
     D_8018D9B8 = (uintptr_t *) get_next_available_memory_addr(0x00001000);

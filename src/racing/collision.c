@@ -1965,10 +1965,12 @@ void func_802AF314(void) {
     }
 
     D_8015F58A = 0;
-    // @bug possibly bug. Allocate memory but not increment the pointer.
-    // This is bad, dumb code, and more importantly it's bad dumb code that doesn't make any sense here.
-    // It is incremented after this function completes using a different variable.
-    // Not good.
+    /**
+     * @bug possibly bug. Allocate memory but not increment the pointer.
+     * This is bad, dumb code, and more importantly it's bad dumb code that doesn't make any sense here.
+     * It is incremented after this function completes using a different variable.
+     * Not good.
+    */
     D_8015F584 = (u16 *) gNextFreeMemoryAddress;
 
     for (j = 0; j < 32; j++) {

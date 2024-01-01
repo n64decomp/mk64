@@ -10,7 +10,7 @@ s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, uintptr_t devAddr, v
         return -1;
     }
 
-    // TODO: name magic constants
+    //! @todo name magic constants
     if (direction == OS_READ) {
         mb->hdr.type = 11;
     } else {

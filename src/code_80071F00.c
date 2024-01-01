@@ -34,7 +34,7 @@
 #include "menus.h"
 #include "data/other_textures.h"
 
-// TODO: unused?
+//! @todo unused?
 f32 D_800E43B0[] = { 
     65536.0, 0.0,     1.0, 0.0,
     0.0,     65536.0, 0.0, 1.0,
@@ -118,7 +118,7 @@ s32 find_unused_obj_index(s32* arg0) {
     return temp_v1;
 }
 
-// @warning Does not clear struct members.
+//! @warning Does not clear struct members.
 void delete_object(s32 *objectIndex) {
     func_80072428(*objectIndex);
     gObjectList[*objectIndex].unk_0CA = 0;
@@ -1208,7 +1208,7 @@ void func_80074574(u8 *arg0, void *arg1, u16 arg2, u16 arg3) {
     func_80074510((uintptr_t) &_other_texturesSegmentRomStart[SEGMENT_OFFSET(arg0)], arg1, arg2 * arg3);
 }
 
-// todo: arg1 should likely be a u8 *
+//! @todo arg1 should likely be a u8 *
 void func_800745C8(s32 objectIndex, s32 arg1) {
     s32 phi_a1;
 
@@ -3629,7 +3629,7 @@ void consume_item(s32 playerId) {
     }
 }
 
-// todo: Cleanup this function to use array access and struct if possible.
+//! @todo Cleanup this function to use array access and struct if possible.
 u8 gen_random_item(s16 rank, s16 isCpu)
 {
     u16 rand = random_int(100);

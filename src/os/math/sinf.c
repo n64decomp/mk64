@@ -1,6 +1,6 @@
 
 // These unions are necessary to put the constants in .rodata rather than .data.
-// TODO: is it possible to remove them somehow?
+//! @todo is it possible to remove them somehow?
 
 typedef union {
 	/* 0x0 */ double d;

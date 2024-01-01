@@ -255,7 +255,7 @@ void func_800CBBE8(u32 arg0, s8 arg1) {
     func_800CBB48(arg0, &sp34);
 }
 
-// TODO: clenanup, something's weird with the variables. D_800EA4A4 is probably EuAudioCmd bc of the + 0x100
+//! @todo clenanup, something's weird with the variables. D_800EA4A4 is probably EuAudioCmd bc of the + 0x100
 void func_800CBC24(void)
 {
   s32 temp_t6;

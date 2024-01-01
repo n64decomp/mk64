@@ -31,7 +31,8 @@ s32 osPfsDeleteFile(OSPfs *pfs, u16 company_code, u32 game_code, u8 *game_name,
     for (bank = dir.start_page.inode_t.bank; bank < pfs->banks;)
     {
         ERRCK(__osPfsRWInode(pfs, &inode, OS_READ, bank));
-        ERRCK(__osPfsReleasePages(pfs, &inode, startpage, &sum, bank, &last_page, 1)); //TODO: magic constant
+        //! @todo magic constant
+        ERRCK(__osPfsReleasePages(pfs, &inode, startpage, &sum, bank, &last_page, 1)); 
         ERRCK(__osPfsRWInode(pfs, &inode, OS_WRITE, bank));
         if (last_page.ipage == 1)
             break;
@@ -84,7 +85,8 @@ s32 __osPfsReleasePages(OSPfs *pfs, __OSInode *inode, u8 start_page, u16 *sum, u
     if (next_page.inode_t.page < offset && next_page.ipage != 1)
         return PFS_ERR_INCONSISTENT;
     *last_page = next_page;
-    if (flag == 1) //TODO: magic number
+    //! @todo magic number
+    if (flag == 1) 
         inode->inode_page[start_page].ipage = 3;
 
     ERRCK(__osBlockSum(pfs, start_page, sum, bank));

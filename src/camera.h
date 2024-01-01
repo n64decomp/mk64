@@ -3,11 +3,13 @@
 
 #include "common_structs.h"
 
-// todo put this define in types.h or similar.
-// Certain functions are marked as having return values, but do not
-// actually return a value. This causes undefined behavior, which we'd rather
-// avoid on modern GCC. This only impacts -O2 and can matter for both the function
-// itself and functions that call it.
+/**
+ * @todo put this define in types.h or similar.
+ * Certain functions are marked as having return values, but do not
+ * actually return a value. This causes undefined behavior, which we'd rather
+ * avoid on modern GCC. This only impacts -O2 and can matter for both the function
+ * itself and functions that call it.
+*/
 #ifdef AVOID_UB
     #define BAD_RETURN(cmd) void
 #else

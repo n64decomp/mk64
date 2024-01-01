@@ -76,7 +76,7 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     Camera *camera = arg1->camera;
     u32 segment = SEGMENT_NUMBER2(addr);
     u32 offset = SEGMENT_OFFSET(addr);
-    // todo: Should be Gfx*
+    //! @todo Should be Gfx*
     s32 *gfx = (s32 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     s16 var_a3;
     s16 temp_v1;

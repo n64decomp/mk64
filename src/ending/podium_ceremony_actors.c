@@ -124,8 +124,8 @@ CeremonyActor *find_available_entry(void) {
 CeremonyActor *new_actor(ActorInitParams *arg0) {
     CeremonyActor *actor = find_available_entry();
 
-    // @bug No null check.
-    // todo: More indepth error checking/return value
+    //! @bug No null check.
+    //! @todo More indepth error checking/return value
     #ifdef AVOID_UB
     if (actor == NULL) {
         return (CeremonyActor*) &sPodiumActorList[0]; // Return first actor to prevent crash

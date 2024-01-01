@@ -53,7 +53,7 @@ void debug_switch_character_ceremony_cutscene(void) {
             } else {
                 gCharacterSelections[0] = MARIO;
             }
-            // todo: confirm this.
+            //! @todo confirm this.
             // Resets gCharacterIdByGPOverallRank to default?
             bcopy(&defaultCharacterIds, &gCharacterIdByGPOverallRank, 8);
         }
@@ -132,7 +132,7 @@ void load_ceremony_cutscene(void) {
     D_800DC5BC = (u16)0;
     D_800DC5C8 = (u16)0;
     gSurfaceMap = (mk64_surface_map_ram *) gNextFreeMemoryAddress;
-    // @bug these segmented addresses need to be symbols for mobility
+    //! @bug these segmented addresses need to be symbols for mobility
     set_vertex_data_with_default_section_id(0x070067E8, -1);
     set_vertex_data_with_default_section_id(0x0700AEF8, -1);
     set_vertex_data_with_default_section_id(0x0700A970, 8);
