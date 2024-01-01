@@ -250,6 +250,7 @@ void func_8001C42C(void);
 
 /* This is where I'd put my static data, if I had any */
 
+extern UnkCommonTextureStruct0 *D_800DC720[];
 // Suspected to be the "width" of each waypoint. See data_0DD0A0_1.s
 extern f32 D_800DCA4C[];
 extern s16 D_800DCA20[];

@@ -67,24 +67,6 @@ extern s32 D_80183DA0;
 extern s32 D_80183DBC;
 
 extern hud_player playerHUD[]; // 8018CA70 - 8018CC70
-// These are all *technically* hardcoded references to spots in playerHUD, but there's something weird
-// going on match wise in reset_object_variable that means we have to (for now) leave them as separate variables
-extern s8 D_8018CAE0;
-extern s8 D_8018CAE1;
-extern s8 D_8018CAE2;
-extern s8 D_8018CAF1;
-extern s8 D_8018CB64;
-extern s8 D_8018CB65;
-extern s8 D_8018CB66;
-extern s8 D_8018CB75;
-extern s8 D_8018CBE8;
-extern s8 D_8018CBE9;
-extern s8 D_8018CBEA;
-extern s8 D_8018CBF9;
-extern s8 D_8018CC6C;
-extern s8 D_8018CC6D;
-extern s8 D_8018CC6E;
-extern s8 D_8018CC7D;
 
 extern s16 D_8018CF18;
 extern s16 D_8018CF20;
