@@ -59,7 +59,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "save.c", "save_8c.html", "save_8c" ],
     [ "save.h", "save_8h.html", "save_8h" ],
     [ "spawn_players.c", "spawn__players_8c.html", "spawn__players_8c" ],
-    [ "spawn_players.h", "spawn__players_8h.html", "spawn__players_8h" ],
+    [ "spawn_players.h", "spawn__players_8h.html", null ],
     [ "staff_ghosts.c", "staff__ghosts_8c.html", "staff__ghosts_8c" ],
     [ "staff_ghosts.h", "staff__ghosts_8h.html", "staff__ghosts_8h" ],
     [ "textures.h", "textures_8h.html", "textures_8h" ]
