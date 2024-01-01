@@ -335,6 +335,8 @@ extern Player *D_8018CF28[];
 extern s16 D_8018CF50[];
 extern s16 gGPCurrentRaceCharacterIdByRank[]; // 8018cf80
 extern s16 D_8018CF98[];
+extern f32 D_8018CFCC;
+extern f32 D_8018CFD4;
 extern f32 D_8018CFE4;
 extern f32 D_8018CFEC;
 extern f32 D_8018CFF4;
@@ -342,10 +344,13 @@ extern f32 D_8018CFF4;
 extern f32 D_8018D028[8];
 extern f32 D_8018D050[8];
 extern f32 D_8018D078[8];
+extern f32 D_8018D0A0[];
 extern f32 D_8018D0C8[8];
+extern f32 D_8018D0F0[];
 
 extern s32 gMatrixHudCount; // 8018d120
 extern s32 D_8018D114;
+extern s32 D_8018D150;
 extern s32 D_8018D160;
 extern s32 D_8018D168;
 extern s32 D_8018D170;
@@ -379,6 +384,13 @@ extern s16 D_8018D2E8;
 
 extern s32 D_8018D314;
 extern s32 D_8018D320;
+extern s32 D_8018D380;
+extern s32 D_8018D384;
+extern s32 D_8018D388;
+extern s32 D_8018D3D4;
+extern s32 D_8018D3D8;
+extern s32 D_8018D3DC;
+extern s32 D_8018D3F0;
 extern s32 D_8018D3F4;
 extern s32 D_8018D3F8;
 extern s32 gRaceFrameCounter; // 8018d3fc
