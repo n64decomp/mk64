@@ -24,7 +24,7 @@
 
 f32 D_80165210[8];
 f32 D_80165230[8];
-f32 D_80165250[8];
+UNUSED f32 D_80165250[8];
 s16 D_80165270[8];
 f32 D_80165280[8];
 f32 D_801652A0[8];
@@ -32,27 +32,30 @@ s32 D_801652C0[8];
 s32 D_801652E0[8];
 s16 D_80165300[8];
 // Shadows values from gPathIndexByPlayerId, but is an array
-u16 D_80165310[8];
+u16 gCopyPathIndexByPlayerId[8];
 // Shadows values from gNearestWaypointByPlayerId, but is an array
-s16 D_80165320[8];
-// Don't think this really belongs with waypoint stuff, but don't know where else to put it
+s16 gCopyNearestWaypointByPlayerId[8];
 s16 D_80165330[8];
 s16 D_80165340;
 UNUSED s32 D_80165348[29];
 Player *D_801653C0[8];
-s32 gPlayerIsThrottleActive[8];
+
+bool gPlayerIsThrottleActive[8];
 s32 D_80165400[8];
-s32 D_80165420[8];
-s32 D_80165440[8];
+s32 gFrameSinceLastACombo[8];
+s32 gCountASwitch[8];
 bool gIsPlayerTripleAButtonCombo[8];
-s32 D_80165480[8];
-s32 D_801654A0[8];
+s32 gTimerBoostTripleACombo[8];
+
+bool gPlayerIsBrakeActive[8];
 s32 D_801654C0[8];
-s32 D_801654E0[8];
-s32 D_80165500[8];
-s32 D_80165520[8];
-s32 D_80165540[8];
-s16 D_80165560[7];
+s32 gFrameSinceLastBCombo[8];
+s32 gCountBChangement[8];
+bool gIsPlayerTripleBButtonCombo[8];
+s32 gTimerBoostTripleBCombo[8];
+
+s16 chooseCPUPlayers[7];
+
 s16 D_8016556E;
 s16 D_80165570;
 s16 D_80165572;
@@ -261,14 +264,14 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     D_801651D0[2][idx] = 0;
     D_801651D0[3][idx] = 0;
 
-    D_80165420[idx] = 0;
-    D_80165440[idx] = 0;
+    gFrameSinceLastACombo[idx] = 0;
+    gCountASwitch[idx] = 0;
     gIsPlayerTripleAButtonCombo[idx] = FALSE;
-    D_80165480[idx] = 0;
-    D_801654E0[idx] = 0;
-    D_80165500[idx] = 0;
-    D_80165520[idx] = 0;
-    D_80165540[playerIndex] = 0;
+    gTimerBoostTripleACombo[idx] = 0;
+    gFrameSinceLastBCombo[idx] = 0;
+    gCountBChangement[idx] = 0;
+    gIsPlayerTripleBButtonCombo[idx] = FALSE;
+    gTimerBoostTripleBCombo[playerIndex] = 0;
     D_8018D900[0] = 0;
 
     D_801652E0[playerIndex] = 0;
@@ -281,7 +284,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     D_801652A0[playerIndex] = 0.0f;
     gPlayerIsThrottleActive[playerIndex] = 0;
     D_80165400[playerIndex] = 0;
-    D_801654A0[playerIndex] = 0;
+    gPlayerIsBrakeActive[playerIndex] = 0;
     D_801654C0[playerIndex] = 0;
     D_80165340 = 0;
 
@@ -478,7 +481,7 @@ UNUSED f32 D_800E43A0 = 1.0f;
 UNUSED s16  D_800E43A4 = 1;
 UNUSED s16 D_800E43A8 = 0;
 
-void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
+void spawn_players_gp_one_player(f32 *arg0, f32 *arg1, f32 arg2) {
     func_80039DA4();
     if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
         (gDemoMode == 1) ||
@@ -491,16 +494,16 @@ void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
         } while(rand == gCharacterSelections[0]);
 
         // Randomize gPlayerTwo
-        D_80165560[0] = rand;
+        chooseCPUPlayers[0] = rand;
 
         // Chooses arr[0] as a fallback to prevent duplicating characters.
         // If it doesn't find the if, it will grab the final index as a fallback.
         for (i = 1; i < 7; i++) {
-            u16* arr = (u16 *) D_800E3890[gCharacterSelections[0]];
+            u16* arr = (u16 *) gCPUforPlayer[gCharacterSelections[0]];
             if (rand == arr[i]) {
-                D_80165560[i] = arr[0];
+                chooseCPUPlayers[i] = arr[0];
             } else {
-                D_80165560[i] = arr[i];
+                chooseCPUPlayers[i] = arr[i];
             }
         }
     }
@@ -508,29 +511,29 @@ void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
     D_8016556E = 0;
     if (gDemoMode == 1) {
         spawn_player(gPlayerOneCopy, 0, arg0[D_80165270[0]], arg1[D_80165270[0]], arg2, 32768.0f, gCharacterSelections[0], PLAYER_HUMAN_AND_CPU);
-        spawn_player(gPlayerTwo,     1, arg0[D_80165270[1]], arg1[D_80165270[1]], arg2, 32768.0f, D_80165560[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-        spawn_player(gPlayerThree,   2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f, D_80165560[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-        spawn_player(gPlayerFour,    3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, D_80165560[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-        spawn_player(gPlayerFive,    4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, D_80165560[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-        spawn_player(gPlayerSix,     5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, D_80165560[4], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-        spawn_player(gPlayerSeven,   6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, D_80165560[5], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-        spawn_player(gPlayerEight,   7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, D_80165560[6], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerTwo,     1, arg0[D_80165270[1]], arg1[D_80165270[1]], arg2, 32768.0f, chooseCPUPlayers[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerThree,   2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f, chooseCPUPlayers[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerFour,    3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, chooseCPUPlayers[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerFive,    4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, chooseCPUPlayers[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerSix,     5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, chooseCPUPlayers[4], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerSeven,   6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, chooseCPUPlayers[5], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerEight,   7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, chooseCPUPlayers[6], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
         D_80164A28 = 0;
     } else {
         spawn_player(gPlayerOneCopy, 0, arg0[D_80165270[0]], arg1[D_80165270[0]] + 250.0f, arg2, 32768.0f, gCharacterSelections[0], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
-        spawn_player(gPlayerTwo,     1, arg0[D_80165270[1]], arg1[D_80165270[1]] + 250.0f, arg2, 32768.0f, D_80165560[0], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        spawn_player(gPlayerThree,   2, arg0[D_80165270[3]], arg1[D_80165270[2]] + 250.0f, arg2, 32768.0f, D_80165560[1], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        spawn_player(gPlayerFour,    3, arg0[D_80165270[2]], arg1[D_80165270[3]] + 250.0f, arg2, 32768.0f, D_80165560[2], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        spawn_player(gPlayerFive,    4, arg0[D_80165270[5]], arg1[D_80165270[4]] + 250.0f, arg2, 32768.0f, D_80165560[3], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        spawn_player(gPlayerSix,     5, arg0[D_80165270[4]], arg1[D_80165270[5]] + 250.0f, arg2, 32768.0f, D_80165560[4], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        spawn_player(gPlayerSeven,   6, arg0[D_80165270[7]], arg1[D_80165270[6]] + 250.0f, arg2, 32768.0f, D_80165560[5], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        spawn_player(gPlayerEight,   7, arg0[D_80165270[6]], arg1[D_80165270[7]] + 250.0f, arg2, 32768.0f, D_80165560[6], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerTwo,     1, arg0[D_80165270[1]], arg1[D_80165270[1]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[0], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerThree,   2, arg0[D_80165270[3]], arg1[D_80165270[2]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[1], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerFour,    3, arg0[D_80165270[2]], arg1[D_80165270[3]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[2], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerFive,    4, arg0[D_80165270[5]], arg1[D_80165270[4]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[3], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerSix,     5, arg0[D_80165270[4]], arg1[D_80165270[5]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[4], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerSeven,   6, arg0[D_80165270[7]], arg1[D_80165270[6]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[5], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerEight,   7, arg0[D_80165270[6]], arg1[D_80165270[7]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[6], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
         D_80164A28 = 1;
     }
     func_80039AE4();
 }
 
-void func_8003A59C(f32 *arg0, f32 *arg1, f32 arg2) {
+void spawn_players_versus_one_player(f32 *arg0, f32 *arg1, f32 arg2) {
     spawn_player(gPlayerFour,  3, arg0[2], arg1[2], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
     spawn_player(gPlayerFive,  4, arg0[3], arg1[3], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
     spawn_player(gPlayerSix,   5, arg0[4], arg1[4], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
@@ -569,12 +572,13 @@ void func_8003A59C(f32 *arg0, f32 *arg1, f32 arg2) {
     func_80039AE4();
 }
 
-void func_8003A9F0(f32* arg0, f32* arg1, f32 arg2) {
+void spawn_players_gp_two_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
     if ((gCupCourseSelection == CUP_COURSE_ONE) || (gDemoMode == 1) || (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
         s16 i;
 
+        // @todo: this is a do-while loop
 getRand:
         rand = random_int(7);
         if (gCharacterSelections[0] == rand)
@@ -582,24 +586,24 @@ getRand:
         if (gCharacterSelections[1] == rand)
             goto getRand;
 
-        D_80165560[0] = rand;
+        chooseCPUPlayers[0] = rand;
 
         for (i = 1; i < 6; i++) {
-            u16* arr = (u16 *) D_800E3C50[gCharacterSelections[0]][gCharacterSelections[1]];
+            u16* arr = (u16 *) gCPUforTwoPlayer[gCharacterSelections[0]][gCharacterSelections[1]];
             if (rand == arr[i]) {
-                D_80165560[i] = arr[0];
+                chooseCPUPlayers[i] = arr[0];
             } else {
-                D_80165560[i] = arr[i];
+                chooseCPUPlayers[i] = arr[i];
             }
         }
     }
 
-    spawn_player(gPlayerThree, 2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f, D_80165560[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerFour,  3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, D_80165560[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerFive,  4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, D_80165560[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerSix,   5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, D_80165560[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerSeven, 6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, D_80165560[4], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerEight, 7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, D_80165560[5], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerThree, 2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f, chooseCPUPlayers[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerFour,  3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, chooseCPUPlayers[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerFive,  4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, chooseCPUPlayers[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerSix,   5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, chooseCPUPlayers[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerSeven, 6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, chooseCPUPlayers[4], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerEight, 7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, chooseCPUPlayers[5], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
 
     if (gDemoMode == 1) {
         spawn_player(gPlayerOneCopy, 0, arg0[D_80165270[0]], arg1[D_80165270[0]], arg2, 32768.0f, gCharacterSelections[0], PLAYER_HUMAN_AND_CPU);
@@ -616,7 +620,7 @@ getRand:
     func_80039AE4();
 }
 
-void func_8003AE24(f32 *arg0, f32 *arg1, f32 arg2) {
+void spawn_players_versus_two_player(f32 *arg0, f32 *arg1, f32 arg2) {
     spawn_player(gPlayerThree, 2, arg0[1], arg1[1], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
     spawn_player(gPlayerFour,  3, arg0[2], arg1[2], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
     spawn_player(gPlayerFive,  4, arg0[3], arg1[3], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
@@ -820,7 +824,7 @@ void func_8003C0F0(void) {
                             D_80165230[5] = sp5C + 0x82;
                             D_80165230[6] = sp5C + 0x96;
                             D_80165230[7] = sp5C + 0xAA;
-                            func_80039F44(D_80165210, D_80165230, sp5A);
+                            spawn_players_gp_one_player(D_80165210, D_80165230, sp5A);
                         break;
 
                         case TIME_TRIALS:
@@ -834,7 +838,7 @@ void func_8003C0F0(void) {
                             D_80165230[5] = sp5C + 0x1E;
                             D_80165230[6] = sp5C + 0x1E;
                             D_80165230[7] = sp5C + 0x1E;
-                            func_8003A59C(D_80165210, D_80165230, sp5A);
+                            spawn_players_versus_one_player(D_80165210, D_80165230, sp5A);
                         break;
                     }
                     break;
@@ -853,7 +857,7 @@ void func_8003C0F0(void) {
                             D_80165230[5] = sp5C + 0x82;
                             D_80165230[6] = sp5C + 0x96;
                             D_80165230[7] = sp5C + 0xAA;
-                            func_8003A9F0(D_80165210, D_80165230, sp5A);
+                            spawn_players_gp_two_player(D_80165210, D_80165230, sp5A);
                             break;
 
                         case VERSUS:
@@ -867,7 +871,7 @@ void func_8003C0F0(void) {
                             D_80165230[5] = sp5C + 0x1E;
                             D_80165230[6] = sp5C + 0x1E;
                             D_80165230[7] = sp5C + 0x1E;
-                            func_8003AE24(D_80165210, D_80165230, sp5A);
+                            spawn_players_versus_two_player(D_80165210, D_80165230, sp5A);
                             break;
                     }
                     break;

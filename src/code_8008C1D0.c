@@ -303,10 +303,10 @@ void func_8008C73C(Player *player, s8 arg1) {
         D_80165190[2][arg1] = 1;
         D_80165190[3][arg1] = 1;
         D_80165280[arg1] = player->currentSpeed;
-        D_80165480[arg1] = 0;
+        gTimerBoostTripleACombo[arg1] = 0;
         gIsPlayerTripleAButtonCombo[arg1] = FALSE;
-        D_80165440[arg1] = 0;
-        D_80165420[arg1] = 0;
+        gCountASwitch[arg1] = 0;
+        gFrameSinceLastACombo[arg1] = 0;
         D_8018D920[arg1] = 0;
 
         if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
@@ -388,7 +388,7 @@ void func_8008C9EC(Player *player, s8 arg1) {
         }
     }
     if ((gIsPlayerTripleAButtonCombo[arg1] == TRUE) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
-        D_80165480[arg1] = 0x00000078;
+        gTimerBoostTripleACombo[arg1] = 0x00000078;
         if (player->currentSpeed <= 90.0f) {
             player->currentSpeed = 90.0f;
         }
@@ -1047,10 +1047,10 @@ void func_8008E6C0(Player *player, s8 arg1)
 
     player->statusEffects &= ~0x00480000;
     player->unk_0B6 |= 0x40;
-    D_80165480[arg1] = 0;
+    gTimerBoostTripleACombo[arg1] = 0;
     gIsPlayerTripleAButtonCombo[arg1] = FALSE;
-    D_80165440[arg1] = 0;
-    D_80165420[arg1] = 0;
+    gCountASwitch[arg1] = 0;
+    gFrameSinceLastACombo[arg1] = 0;
 }
 
 void func_8008E884(Player* player, s8 arg1) {
@@ -1147,10 +1147,10 @@ void func_8008EAE0(Player* player, s8 arg1) {
     player->unk_0B6 |= 0x40;
     player->statusEffects &= ~0x01000002;
 
-    D_80165480[arg1] = 0;
+    gTimerBoostTripleACombo[arg1] = 0;
     gIsPlayerTripleAButtonCombo[arg1] = FALSE;
-    D_80165440[arg1] = 0;
-    D_80165420[arg1] = 0;
+    gCountASwitch[arg1] = 0;
+    gFrameSinceLastACombo[arg1] = 0;
 }
 
 void func_8008EC34(Player* player, s8 arg1) {
@@ -1637,20 +1637,20 @@ void func_8008FF08(Player *player, s8 playerId) {
         break;
     case COURSE_YOSHI_VALLEY:
     case COURSE_RAINBOW_ROAD:
-        player->nearestWaypointId = D_80165320[playerId];
+        player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
         break;
     case COURSE_FRAPPE_SNOWLAND:
         waypoint = gNearestWaypointByPlayerId[playerId];
 #ifdef VERSION_EU
         if (((waypoint >= 0xF0) && (waypoint < 0x11E)) || 
-            ((D_80165320[playerId] >= 0xF0) && (D_80165320[playerId] < 0x11E)))
+            ((gCopyNearestWaypointByPlayerId[playerId] >= 0xF0) && (gCopyNearestWaypointByPlayerId[playerId] < 0x11E)))
 #else  
         if ((waypoint >= 0xF0) && (waypoint < 0x105))
 #endif
         {
             player->nearestWaypointId = 0xF0U;
         } else {
-            player->nearestWaypointId = D_80165320[playerId];
+            player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
             if (player->nearestWaypointId < 0) {
                 player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
             }
@@ -1661,7 +1661,7 @@ void func_8008FF08(Player *player, s8 playerId) {
         if ((waypoint >= 0x258) && (waypoint < 0x2A4)) {
             player->nearestWaypointId = 0x258U;
         } else {
-            player->nearestWaypointId = D_80165320[playerId];
+            player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
             if (player->nearestWaypointId < 0) {
                 player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
             }
@@ -1716,11 +1716,11 @@ void func_80090178(Player *player, s8 playerId, Vec3f arg2, Vec3f arg3) {
     switch (gCurrentCourseId) {
     case COURSE_YOSHI_VALLEY:
         test = player->nearestWaypointId;
-        temp_v1 = &D_80164550[D_80165310[playerId]][test];
+        temp_v1 = &D_80164550[gCopyPathIndexByPlayerId[playerId]][test];
         arg2[0] = temp_v1->posX;
         arg2[1] = temp_v1->posY;
         arg2[2] = temp_v1->posZ;
-        temp_v1 = &D_80164550[D_80165310[playerId]][(player->nearestWaypointId + 5) % (gWaypointCountByPathIndex[D_80165310[playerId]] + 1)];
+        temp_v1 = &D_80164550[gCopyPathIndexByPlayerId[playerId]][(player->nearestWaypointId + 5) % (gWaypointCountByPathIndex[gCopyPathIndexByPlayerId[playerId]] + 1)];
         arg3[0] = temp_v1->posX;
         arg3[1] = temp_v1->posY;
         arg3[2] = temp_v1->posZ;
