@@ -118,7 +118,7 @@ s32 find_unused_obj_index(s32* arg0) {
     return temp_v1;
 }
 
-// @warning Does not clear struct members.
+//! @warning Does not clear struct members.
 void delete_object(s32 *objectIndex) {
     func_80072428(*objectIndex);
     gObjectList[*objectIndex].unk_0CA = 0;
