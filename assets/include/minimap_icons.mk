@@ -10,7 +10,7 @@ $(MINIMAP_ICONS_DIR)/gTextureMiniMapKartDonkeyKong.png \
 $(MINIMAP_ICONS_DIR)/gTextureMiniMapKartWario.png \
 $(MINIMAP_ICONS_DIR)/gTextureMiniMapKartPeach.png \
 $(MINIMAP_ICONS_DIR)/gTextureMiniMapKartBowser.png \
-$(MINIMAP_ICONS_DIR)/gTextureMiniMapProgressDot.png
+$(MINIMAP_ICONS_DIR)/common_texture_minimap_progress_dot.png
 
 MINIMAP_ICONS_EXPORT_SENTINEL := $(MINIMAP_ICONS_DIR)/.export
 

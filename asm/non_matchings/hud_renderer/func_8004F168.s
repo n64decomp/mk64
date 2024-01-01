@@ -96,8 +96,8 @@ glabel func_8004F168
 /* 04FED8 8004F2D8 30CCFFFF */  andi  $t4, $a2, 0xffff
 /* 04FEDC 8004F2DC 01803025 */  move  $a2, $t4
 /* 04FEE0 8004F2E0 254ACCD8 */  addiu $t2, %lo(gMiniMapKartTextures) # addiu $t2, $t2, -0x3328
-/* 04FEE4 8004F2E4 3C190D00 */  lui   $t9, %hi(D_0D005470) # $t9, 0xd00
-/* 04FEE8 8004F2E8 27395470 */  addiu $t9, %lo(D_0D005470) # addiu $t9, $t9, 0x5470
+/* 04FEE4 8004F2E4 3C190D00 */  lui   $t9, %hi(common_vtx_player_minimap_icon) # $t9, 0xd00
+/* 04FEE8 8004F2E8 27395470 */  addiu $t9, %lo(common_vtx_player_minimap_icon) # addiu $t9, $t9, 0x5470
 /* 04FEEC 8004F2EC 01AA7021 */  addu  $t6, $t5, $t2
 /* 04FEF0 8004F2F0 240C0008 */  li    $t4, 8
 /* 04FEF4 8004F2F4 240F0008 */  li    $t7, 8
@@ -122,8 +122,8 @@ glabel func_8004F168
 /* 04FF3C 8004F33C 01003025 */  move  $a2, $t0
 /* 04FF40 8004F340 25CECCD8 */  addiu $t6, %lo(gMiniMapKartTextures) # addiu $t6, $t6, -0x3328
 /* 04FF44 8004F344 000D51C0 */  sll   $t2, $t5, 7
-/* 04FF48 8004F348 3C0F0D00 */  lui   $t7, %hi(D_0D005470) # $t7, 0xd00
-/* 04FF4C 8004F34C 25EF5470 */  addiu $t7, %lo(D_0D005470) # addiu $t7, $t7, 0x5470
+/* 04FF48 8004F348 3C0F0D00 */  lui   $t7, %hi(common_vtx_player_minimap_icon) # $t7, 0xd00
+/* 04FF4C 8004F34C 25EF5470 */  addiu $t7, %lo(common_vtx_player_minimap_icon) # addiu $t7, $t7, 0x5470
 /* 04FF50 8004F350 014EC821 */  addu  $t9, $t2, $t6
 /* 04FF54 8004F354 24080008 */  li    $t0, 8
 /* 04FF58 8004F358 24090008 */  li    $t1, 8
@@ -146,9 +146,9 @@ glabel func_8004F168
 /* 04FF98 8004F398 24070008 */  li    $a3, 8
 /* 04FF9C 8004F39C 24060008 */  li    $a2, 8
 /* 04FFA0 8004F3A0 15A00009 */  bnez  $t5, .L8004F3C8
-/* 04FFA4 8004F3A4 3C0E0D03 */   lui   $t6, %hi(gTextureMiniMapProgressDot) # $t6, 0xd03
-/* 04FFA8 8004F3A8 3C0A0D03 */  lui   $t2, %hi(gTextureMiniMapProgressDot) # $t2, 0xd03
-/* 04FFAC 8004F3AC 254AD0D8 */  addiu $t2, %lo(gTextureMiniMapProgressDot) # addiu $t2, $t2, -0x2f28
+/* 04FFA4 8004F3A4 3C0E0D03 */   lui   $t6, %hi(common_texture_minimap_progress_dot) # $t6, 0xd03
+/* 04FFA8 8004F3A8 3C0A0D03 */  lui   $t2, %hi(common_texture_minimap_progress_dot) # $t2, 0xd03
+/* 04FFAC 8004F3AC 254AD0D8 */  addiu $t2, %lo(common_texture_minimap_progress_dot) # addiu $t2, $t2, -0x2f28
 /* 04FFB0 8004F3B0 AFAA0010 */  sw    $t2, 0x10($sp)
 /* 04FFB4 8004F3B4 24060008 */  li    $a2, 8
 /* 04FFB8 8004F3B8 0C013114 */  jal   func_8004C450
@@ -156,7 +156,7 @@ glabel func_8004F168
 /* 04FFC0 8004F3C0 10000005 */  b     .L8004F3D8
 /* 04FFC4 8004F3C4 8FBF002C */   lw    $ra, 0x2c($sp)
 .L8004F3C8:
-/* 04FFC8 8004F3C8 25CED0D8 */  addiu $t6, %lo(gTextureMiniMapProgressDot) # addiu $t6, $t6, -0x2f28
+/* 04FFC8 8004F3C8 25CED0D8 */  addiu $t6, %lo(common_texture_minimap_progress_dot) # addiu $t6, $t6, -0x2f28
 /* 04FFCC 8004F3CC 0C0130D9 */  jal   func_8004C364
 /* 04FFD0 8004F3D0 AFAE0010 */   sw    $t6, 0x10($sp)
 .L8004F3D4:

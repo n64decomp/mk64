@@ -741,7 +741,7 @@ Vtx D_0D005430[] = {
     {{{    -2,       1,       0}, 0, {0, 192}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Vtx D_0D005470[] = {
+Vtx common_vtx_player_minimap_icon[] = {
     {{{    -4,      -4,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,      -4,       0}, 0, {448, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,       3,       0}, 0, {448, 448}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1198,7 +1198,7 @@ Gfx common_rectangle_display[] = {
 };
 
 Gfx D_0D006950[] = {
-    gsSPVertex(D_0D005470, 4, 0),
+    gsSPVertex(common_vtx_player_minimap_icon, 4, 0),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
@@ -3194,6 +3194,6 @@ s8 gMiniMapKartTextures[][128] = {
     },
 };
 
-s8 gTextureMiniMapProgressDot[] = {
-        #include "assets/minimap_icons/gTextureMiniMapProgressDot.inc.c"
+s8 common_texture_minimap_progress_dot[] = {
+        #include "assets/minimap_icons/common_texture_minimap_progress_dot.inc.c"
 };
