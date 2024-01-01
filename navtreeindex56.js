@@ -1,8 +1,5 @@
 var NAVTREEINDEX56 =
 {
-"objects_8h.html#a39eb9b18d1dff7a7c15a60aaf9cafdec":[3,0,0,17,66],
-"objects_8h.html#a3aab530f1956ec60d006b6edab695a8b":[3,0,0,17,49],
-"objects_8h.html#a3d4dbc173044d4e189b06260bb6aa3d1":[3,0,0,17,9],
 "objects_8h.html#a3e0adbad78db24264234c9fa6916b3ed":[3,0,0,17,63],
 "objects_8h.html#a3e2e28a148d0af8de7336269697cd291":[3,0,0,17,50],
 "objects_8h.html#a42e83298344ef6c360ac7e474a99a3e6":[3,0,0,17,15],
@@ -249,5 +246,8 @@ var NAVTREEINDEX56 =
 "osPfsSearchFile_8c.html#ac2db0df25dbcd5c6bec9319681fdd138":[3,0,1,5,91,0],
 "osPiGetCmdQueue_8c.html":[3,0,1,5,92],
 "osPiGetCmdQueue_8c.html#a0993595162977d7f00c1c524741941b1":[3,0,1,5,92,1],
-"osPiGetCmdQueue_8c.html#a0fb5a57f9e199d8bb06e19ba556efac0":[3,0,1,5,92,0]
+"osPiGetCmdQueue_8c.html#a0fb5a57f9e199d8bb06e19ba556efac0":[3,0,1,5,92,0],
+"osPiRawReadIo_8c.html":[3,0,1,5,93],
+"osPiRawReadIo_8c.html#aa3a1dc7939fd49721d4353372722722c":[3,0,1,5,93,1],
+"osPiRawReadIo_8c.html#ab8c59c07ecc578959b5c68a3b34e6d77":[3,0,1,5,93,0]
 };

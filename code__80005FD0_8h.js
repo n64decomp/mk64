@@ -174,6 +174,7 @@ var code__80005FD0_8h =
     [ "set_bomb_kart_spawn_positions", "code__80005FD0_8h.html#ada59072ef0e7fec8eb6eeaabdc4ebe03", null ],
     [ "set_places", "code__80005FD0_8h.html#a52731d6b2880816d8559df507cbdb912", null ],
     [ "D_0D0076F8", "code__80005FD0_8h.html#ae81feab00ba6c7aefc2e10450af24c8b", null ],
+    [ "D_800DC720", "code__80005FD0_8h.html#a27d27378bcabb4def590d1a823d536c6", null ],
     [ "D_800DC8D0", "code__80005FD0_8h.html#aceb9f50fb1707bafae33b4a850950cbe", null ],
     [ "D_800DCA20", "code__80005FD0_8h.html#a5e8dbacb624b6405eece9cbd9c7f5f6e", null ],
     [ "D_800DCA4C", "code__80005FD0_8h.html#a6272a2b05c218151e79c1006521cfce9", null ],

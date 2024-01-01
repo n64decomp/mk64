@@ -16,6 +16,7 @@ var code__8006E9C0_8c =
     [ "func_8007055C", "code__8006E9C0_8c.html#afef0314f6f435d008ed32c2aa1e2fed0", null ],
     [ "func_80070714", "code__8006E9C0_8c.html#a34850e00e534f9bea4ee89568c0484e8", null ],
     [ "init_course_object", "code__8006E9C0_8c.html#a95bd792f4507dd26cf251c980bd9214b", null ],
+    [ "init_hud_one_player", "code__8006E9C0_8c.html#a9b35328c0ffddc0723de4730c5e41431", null ],
     [ "init_hud_three_four_player", "code__8006E9C0_8c.html#a36e7c29e21274b76d24f7c8864af5c3b", null ],
     [ "init_hud_two_player_horizontal", "code__8006E9C0_8c.html#ae0bbfee0194d6a21ab9c2133af28ae16", null ],
     [ "init_hud_two_player_vertical", "code__8006E9C0_8c.html#aa98fba14045af26e5c13a6a72442b8be", null ],

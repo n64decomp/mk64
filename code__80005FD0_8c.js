@@ -155,7 +155,6 @@ var code__80005FD0_8c =
     [ "process_path_data", "code__80005FD0_8c.html#ae7c8290f29fcf7fcdd547737e496bc98", null ],
     [ "set_bomb_kart_spawn_positions", "code__80005FD0_8c.html#ada59072ef0e7fec8eb6eeaabdc4ebe03", null ],
     [ "set_places", "code__80005FD0_8c.html#a52731d6b2880816d8559df507cbdb912", null ],
-    [ "D_800DC720", "code__80005FD0_8c.html#a27d27378bcabb4def590d1a823d536c6", null ],
     [ "D_800EB710", "code__80005FD0_8c.html#a6a4dbdf8d32ac8e5e59228c010046fd3", null ],
     [ "D_800EB728", "code__80005FD0_8c.html#a49c96c1d0e67cdd49129fb24f7f2bca2", null ],
     [ "D_800EB74C", "code__80005FD0_8c.html#a7d1620ec7bd69754e472cb05c853e204", null ],
