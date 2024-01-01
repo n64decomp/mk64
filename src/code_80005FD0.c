@@ -30,8 +30,6 @@
 #include "ending/podium_ceremony_actors.h"
 #include "spawn_players.h"
 
-extern UnkCommonTextureStruct0 *D_800DC720[];
-
 s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;
 s16 D_80162EB0; // Possibly a float.

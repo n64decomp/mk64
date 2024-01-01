@@ -488,7 +488,7 @@ glabel D_8018C970
 
 # some hud related list begin
 # playerHUD should be of size 528 (0x84 * 0x4)
-# D_8018CA74 through D_8018CC7D are all fake
+# D_8018CA74 and D_8018CA78 are fake
 glabel playerHUD
 .skip 4
 
@@ -498,56 +498,7 @@ glabel D_8018CA74 # playerHUD[PLAYER_ONE].rankScaling
 
 # Refrenced in code_80091750/add_8018D9E0_entry
 glabel D_8018CA78 # playerHUD[PLAYER_ONE].someTimer
-.skip 104
-
-# Everything below this point is referenced in code_8006E9C0/reset_object_variable
-glabel D_8018CAE0 # playerHUD[PLAYER_ONE].raceCompleteBool
-.skip 1
-
-glabel D_8018CAE1 # playerHUD[PLAYER_ONE].lapCount
-.skip 1
-
-glabel D_8018CAE2 # playerHUD[PLAYER_ONE].alsoLapCount
-.skip 15
-
-glabel D_8018CAF1 # playerHUD[PLAYER_ONE].unk_81
-.skip 115
-
-glabel D_8018CB64 # playerHUD[PLAYER_TWO].raceCompleteBool
-.skip 1
-
-glabel D_8018CB65 # playerHUD[PLAYER_TWO].lapCount
-.skip 1
-
-glabel D_8018CB66 # playerHUD[PLAYER_TWO].alsoLapCount
-.skip 15
-
-glabel D_8018CB75 # playerHUD[PLAYER_TWO].unk_81
-.skip 115
-
-glabel D_8018CBE8 # playerHUD[PLAYER_THREE].raceCompleteBool
-.skip 1
-
-glabel D_8018CBE9 # playerHUD[PLAYER_THREE].lapCount
-.skip 1
-
-glabel D_8018CBEA # playerHUD[PLAYER_THREE].alsoLapCount
-.skip 15
-
-glabel D_8018CBF9 # playerHUD[PLAYER_THREE].unk_81
-.skip 115
-
-glabel D_8018CC6C # playerHUD[PLAYER_FOUR].raceCompleteBool
-.skip 1
-
-glabel D_8018CC6D # playerHUD[PLAYER_FOUR].lapCount
-.skip 1
-
-glabel D_8018CC6E # playerHUD[PLAYER_FOUR].alsoLapCount
-.skip 15
-
-glabel D_8018CC7D # playerHUD[PLAYER_FOUR].unk_81
-.skip 3
+.skip 520
 # some hud related list end
 
 glabel D_8018CC80
