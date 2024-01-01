@@ -22,310 +22,310 @@
 extern s16 D_801633F8;
 extern s32 D_8018D168;
 
-s16 D_800E3810[] = {
-    1, 2, 3, 4, 5, 6, 7, 0
+s16 gCPUforMario[] = {
+    LUIGI, YOSHI, TOAD, DK, WARIO, PEACH, BOWSER, 0
 };
 
-s16 D_800E3820[] = {
-    0, 2, 3, 4, 5, 6, 7, 0
+s16 gCPUforLuigi[] = {
+    MARIO, YOSHI, TOAD, DK, WARIO, PEACH, BOWSER, 0
 };
 
-s16 D_800E3830[] = {
-    0, 1, 3, 4, 5, 6, 7, 0
+s16 gCPUforYoshi[] = {
+    MARIO, LUIGI, TOAD, DK, WARIO, PEACH, BOWSER, 0
 };
 
-s16 D_800E3840[] = {
-    0, 1, 2, 4, 5, 6, 7, 0
+s16 gCPUforToad[] = {
+    MARIO, LUIGI, YOSHI, DK, WARIO, PEACH, BOWSER, 0
 };
 
-s16 D_800E3850[] = {
-    0, 1, 2, 3, 5, 6, 7, 0
+s16 gCPUforDk[] = {
+    MARIO, LUIGI, YOSHI, TOAD, WARIO, PEACH, BOWSER, 0
 };
 
-s16 D_800E3860[] = {
-    0, 1, 2, 3, 4, 6, 7, 0
+s16 gCPUforWario[] = {
+    MARIO, LUIGI, YOSHI, TOAD, DK, PEACH, BOWSER, 0
 };
 
-s16 D_800E3870[] = {
-    0, 1, 2, 3, 4, 5, 7, 0
+s16 gCPUforPeach[] = {
+    MARIO, LUIGI, YOSHI, TOAD, DK, WARIO, BOWSER, 0
 };
 
-s16 D_800E3880[] = {
-    0, 1, 2, 3, 4, 5, 6, 0
+s16 gCPUforBowser[] = {
+    MARIO, LUIGI, YOSHI, TOAD, DK, WARIO, PEACH, 0
 };
 
-s16 *D_800E3890[] = {
-    D_800E3810, D_800E3820, D_800E3830, D_800E3840,
-    D_800E3850, D_800E3860, D_800E3870, D_800E3880
+s16 *gCPUforPlayer[] = {
+    gCPUforMario, gCPUforLuigi, gCPUforYoshi, gCPUforToad,
+    gCPUforDk, gCPUforWario, gCPUforPeach, gCPUforBowser
 };
 
-s16 D_800E38B0[] = {
-    2, 3, 4, 5, 6, 7
+s16 gCPUforMarioAndLuigi[] = {
+    YOSHI, TOAD, DK, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E38BC[] = {
-    1, 3, 4, 5, 6, 7
+s16 gCPUforMarioAndYoshi[] = {
+    LUIGI, TOAD, DK, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E38C8[] = {
-    1, 2, 4, 5, 6, 7
+s16 gCPUforMarioAndToad[] = {
+    LUIGI, YOSHI, DK, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E38D4[] = {
-    1, 2, 3, 5, 6, 7
+s16 gCPUforMarioAndDk[] = {
+    LUIGI, YOSHI, TOAD, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E38E0[] = {
-    1, 2, 3, 4, 6, 7
+s16 gCPUforMarioAndWario[] = {
+    LUIGI, YOSHI, TOAD, DK, PEACH, BOWSER
 };
 
-s16 D_800E38EC[] = {
-    1, 2, 3, 4, 5, 7
+s16 gCPUforMarioAndPeach[] = {
+    LUIGI, YOSHI, TOAD, DK, WARIO, BOWSER
 };
 
-s16 D_800E38F8[] = {
-    1, 2, 3, 4, 5, 6
+s16 gCPUforMarioAndBowser[] = {
+    LUIGI, YOSHI, TOAD, DK, WARIO, PEACH
 };
 
-s16 D_800E3904[] = {
-    2, 3, 4, 5, 6, 7
+s16 gCPUforLuigiAndMario[] = {
+    YOSHI, TOAD, DK, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E3910[] = {
-    0, 3, 4, 5, 6, 7
+s16 gCPUforLuigiAndYoshi[] = {
+    MARIO, TOAD, DK, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E391C[] = {
-    0, 2, 4, 5, 6, 7
+s16 gCPUforLuigiAndToad[] = {
+    MARIO, YOSHI, DK, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E3928[] = {
-    0, 2, 3, 5, 6, 7
+s16 gCPUforLuigiAndDk[] = {
+    MARIO, YOSHI, TOAD, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E3934[] = {
-    0, 2, 3, 4, 6, 7
+s16 gCPUforLuigiAndWario[] = {
+    MARIO, YOSHI, TOAD, DK, PEACH, BOWSER
 };
 
-s16 D_800E3940[] = {
-    0, 2, 3, 4, 5, 7
+s16 gCPUforLuigiAndPeach[] = {
+    MARIO, YOSHI, TOAD, DK, WARIO, BOWSER
 };
 
-s16 D_800E394C[] = {
-    0, 2, 3, 4, 5, 6
+s16 gCPUforLuigiAndBowser[] = {
+    MARIO, YOSHI, TOAD, DK, WARIO, PEACH
 };
 
-s16 D_800E3958[] = {
-    1, 3, 4, 5, 6, 7
+s16 gCPUforYoshiAndMario[] = {
+    LUIGI, TOAD, DK, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E3964[] = {
-    0, 3, 4, 5, 6, 7
+s16 gCPUforYoshiAndLuigi[] = {
+    MARIO, TOAD, DK, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E3970[] = {
-    0, 1, 4, 5, 6, 7
+s16 gCPUforYoshiAndToad[] = {
+    MARIO, LUIGI, DK, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E397C[] = {
-    0, 1, 3, 5, 6, 7
+s16 gCPUforYoshiAndDk[] = {
+    MARIO, LUIGI, TOAD, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E3988[] = {
-    0, 1, 3, 4, 6, 7
+s16 gCPUforYoshiAndWario[] = {
+    MARIO, LUIGI, TOAD, DK, PEACH, BOWSER
 };
 
-s16 D_800E3994[] = {
-    0, 1, 3, 4, 5, 7
+s16 gCPUforYoshiAndPeach[] = {
+    MARIO, LUIGI, TOAD, DK, WARIO, BOWSER
 };
 
-s16 D_800E39A0[] = {
-    0, 1, 3, 4, 5, 6
+s16 gCPUforYoshiAndBowser[] = {
+    MARIO, LUIGI, TOAD, DK, WARIO, PEACH
 };
 
-s16 D_800E39AC[] = {
-    1, 2, 4, 5, 6, 7
+s16 gCPUforToadAndMario[] = {
+    LUIGI, YOSHI, DK, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E39B8[] = {
-    0, 2, 4, 5, 6, 7
+s16 gCPUforToadAndLuigi[] = {
+    MARIO, YOSHI, DK, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E39C4[] = {
-    0, 1, 4, 5, 6, 7
+s16 gCPUforToadAndYoshi[] = {
+    MARIO, LUIGI, DK, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E39D0[] = {
-    0, 1, 2, 5, 6, 7
+s16 gCPUforToadAndDk[] = {
+    MARIO, LUIGI, YOSHI, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E39DC[] = {
-    0, 1, 2, 4, 6, 7
+s16 gCPUforToadAndWario[] = {
+    MARIO, LUIGI, YOSHI, DK, PEACH, BOWSER
 };
 
-s16 D_800E39E8[] = {
-    0, 1, 2, 4, 5, 7
+s16 gCPUforToadAndPeach[] = {
+    MARIO, LUIGI, YOSHI, DK, WARIO, BOWSER
 };
 
-s16 D_800E39F4[] = {
-    0, 1, 2, 4, 5, 6
+s16 gCPUforToadAndBowser[] = {
+    MARIO, LUIGI, YOSHI, DK, WARIO, PEACH
 };
 
-s16 D_800E3A00[] = {
-    1, 2, 3, 5, 6, 7
+s16 gCPUforDkAndMario[] = {
+    LUIGI, YOSHI, TOAD, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E3A0C[] = {
-    0, 2, 3, 5, 6, 7
+s16 gCPUforDkAndLuigi[] = {
+    MARIO, YOSHI, TOAD, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E3A18[] = {
-    0, 1, 3, 5, 6, 7
+s16 gCPUforDkAndToad[] = {
+    MARIO, LUIGI, TOAD, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E3A24[] = {
-    0, 1, 2, 5, 6, 7
+s16 gCPUforDkAndYoshi[] = {
+    MARIO, LUIGI, YOSHI, WARIO, PEACH, BOWSER
 };
 
-s16 D_800E3A30[] = {
-    0, 1, 2, 3, 6, 7
+s16 gCPUforDkAndWario[] = {
+    MARIO, LUIGI, YOSHI, TOAD, PEACH, BOWSER
 };
 
-s16 D_800E3A3C[] = {
-    0, 1, 2, 3, 5, 7
+s16 gCPUforDkAndPeach[] = {
+    MARIO, LUIGI, YOSHI, TOAD, WARIO, BOWSER
 };
 
-s16 D_800E3A48[] = {
-    0, 1, 2, 3, 5, 6
+s16 gCPUforDkAndBowser[] = {
+    MARIO, LUIGI, YOSHI, TOAD, WARIO, PEACH
 };
 
-s16 D_800E3A54[] = {
-    1, 2, 3, 4, 6, 7
+s16 gCPUforWarioAndMario[] = {
+    LUIGI, YOSHI, TOAD, DK, PEACH, BOWSER
 };
 
-s16 D_800E3A60[] = {
-    0, 2, 3, 4, 6, 7
+s16 gCPUforWarioAndLuigi[] = {
+    MARIO, YOSHI, TOAD, DK, PEACH, BOWSER
 };
 
-s16 D_800E3A6C[] = {
-    0, 1, 3, 4, 6, 7
+s16 gCPUforWarioAndYoshi[] = {
+    MARIO, LUIGI, TOAD, DK, PEACH, BOWSER
 };
 
-s16 D_800E3A78[] = {
-    0, 1, 2, 3, 6, 7
+s16 gCPUforWarioAndDk[] = {
+    MARIO, LUIGI, YOSHI, TOAD, PEACH, BOWSER
 };
 
-s16 D_800E3A84[] = {
-    0, 1, 2, 4, 6, 7
+s16 gCPUforWarioAndToad[] = {
+    MARIO, LUIGI, YOSHI, DK, PEACH, BOWSER
 };
 
-s16 D_800E3A90[] = {
-    0, 1, 2, 3, 4, 7
+s16 gCPUforWarioAndPeach[] = {
+    MARIO, LUIGI, YOSHI, TOAD, DK, BOWSER
 };
 
-s16 D_800E3A9C[] = {
-    0, 1, 2, 3, 4, 6
+s16 gCPUforWarioAndBowser[] = {
+    MARIO, LUIGI, YOSHI, TOAD, DK, PEACH
 };
 
-s16 D_800E3AA8[] = {
-    1, 2, 3, 4, 5, 7
+s16 gCPUforPeachAndMario[] = {
+    LUIGI, YOSHI, TOAD, DK, WARIO, BOWSER
 };
 
-s16 D_800E3AB4[] = {
-    0, 2, 3, 4, 5, 7
+s16 gCPUforPeachAndLuigi[] = {
+    MARIO, YOSHI, TOAD, DK, WARIO, BOWSER
 };
 
-s16 D_800E3AC0[] = {
-    0, 1, 3, 4, 5, 7
+s16 gCPUforPeachAndYoshi[] = {
+    MARIO, LUIGI, TOAD, DK, WARIO, BOWSER
 };
 
-s16 D_800E3ACC[] = {
-    0, 1, 2, 3, 5, 7
+s16 gCPUforPeachAndDk[] = {
+    MARIO, LUIGI, YOSHI, TOAD, WARIO, BOWSER
 };
 
-s16 D_800E3AD8[] = {
-    0, 1, 2, 3, 4, 7
+s16 gCPUforPeachAndWario[] = {
+    MARIO, LUIGI, YOSHI, TOAD, DK, BOWSER
 };
 
-s16 D_800E3AE4[] = {
-    0, 1, 2, 4, 5, 7
+s16 gCPUforPeachAndToad[] = {
+    MARIO, LUIGI, YOSHI, DK, WARIO, BOWSER
 };
 
-s16 D_800E3AF0[] = {
-    0, 1, 2, 3, 4, 5
+s16 gCPUforPeachAndBowser[] = {
+    MARIO, LUIGI, YOSHI, TOAD, DK, WARIO
 };
 
-s16 D_800E3AFC[] = {
-    1, 2, 3, 4, 5, 6
+s16 gCPUforBowserAndMario[] = {
+    LUIGI, YOSHI, TOAD, DK, WARIO, PEACH
 };
 
-s16 D_800E3B08[] = {
-    0, 2, 3, 4, 5, 6
+s16 gCPUforBowserAndLuigi[] = {
+    MARIO, YOSHI, TOAD, DK, WARIO, PEACH
 };
 
-s16 D_800E3B14[] = {
-    0, 1, 3, 4, 5, 6
+s16 gCPUforBowserAndYoshi[] = {
+    MARIO, LUIGI, TOAD, DK, WARIO, PEACH
 };
 
-s16 D_800E3B20[] = {
-    0, 1, 2, 3, 5, 6
+s16 gCPUforBowserAndDk[] = {
+    MARIO, LUIGI, YOSHI, TOAD, WARIO, PEACH
 };
 
-s16 D_800E3B2C[] = {
-    0, 1, 2, 3, 4, 6
+s16 gCPUforBowserAndWario[] = {
+    MARIO, LUIGI, YOSHI, TOAD, DK, PEACH
 };
 
-s16 D_800E3B38[] = {
-    0, 1, 2, 4, 5, 6
+s16 gCPUforBowserAndToad[] = {
+    MARIO, LUIGI, YOSHI, DK, WARIO, PEACH
 };
 
-s16 D_800E3B44[] = {
-    0, 1, 2, 3, 4, 5
+s16 gCPUforBowserAndPeach[] = {
+    MARIO, LUIGI, YOSHI, TOAD, DK, WARIO
 };
 
-s16 *D_800E3B50[] = {
-    D_800E38B0, D_800E38B0, D_800E38BC, D_800E38C8,
-    D_800E38D4, D_800E38E0, D_800E38EC, D_800E38F8
+s16 *gListCPUforMario[] = {
+    gCPUforMarioAndLuigi, gCPUforMarioAndLuigi, gCPUforMarioAndYoshi, gCPUforMarioAndToad,
+    gCPUforMarioAndDk, gCPUforMarioAndWario, gCPUforMarioAndPeach, gCPUforMarioAndBowser
 };
 
-s16 *D_800E3B70[] = {
-    D_800E3904, D_800E3904, D_800E3910, D_800E391C,
-    D_800E3928, D_800E3934, D_800E3940, D_800E394C
+s16 *gListCPUforLuigi[] = {
+    gCPUforLuigiAndMario, gCPUforLuigiAndMario, gCPUforLuigiAndYoshi, gCPUforLuigiAndToad,
+    gCPUforLuigiAndDk, gCPUforLuigiAndWario, gCPUforLuigiAndPeach, gCPUforLuigiAndBowser
 };
 
-s16 *D_800E3B90[] = {
-    D_800E3958, D_800E3964, D_800E3964, D_800E3970,
-    D_800E397C, D_800E3988, D_800E3994, D_800E39A0
+s16 *gListCPUforYoshi[] = {
+    gCPUforYoshiAndMario, gCPUforYoshiAndLuigi, gCPUforYoshiAndLuigi, gCPUforYoshiAndToad,
+    gCPUforYoshiAndDk, gCPUforYoshiAndWario, gCPUforYoshiAndPeach, gCPUforYoshiAndBowser
 };
 
-s16 *D_800E3BB0[] = {
-    D_800E39AC, D_800E39B8, D_800E39C4, D_800E39C4,
-    D_800E39D0, D_800E39DC, D_800E39E8, D_800E39F4
+s16 *gListCPUforToad[] = {
+    gCPUforToadAndMario, gCPUforToadAndLuigi, gCPUforToadAndYoshi, gCPUforToadAndYoshi,
+    gCPUforToadAndDk, gCPUforToadAndWario, gCPUforToadAndPeach, gCPUforToadAndBowser
 };
 
-s16 *D_800E3BD0[] = {
-    D_800E3A00, D_800E3A0C, D_800E3A18, D_800E3A24,
-    D_800E3A24, D_800E3A30, D_800E3A3C, D_800E3A48
+s16 *gListCPUforDk[] = {
+    gCPUforDkAndMario, gCPUforDkAndLuigi, gCPUforDkAndToad, gCPUforDkAndYoshi,
+    gCPUforDkAndYoshi, gCPUforDkAndWario, gCPUforDkAndPeach, gCPUforDkAndBowser
 };
 
-s16 *D_800E3BF0[] = {
-    D_800E3A54, D_800E3A60, D_800E3A6C, D_800E3A84,
-    D_800E3A78, D_800E3A78, D_800E3A90, D_800E3A9C
+s16 *gListCPUforWario[] = {
+    gCPUforWarioAndMario, gCPUforWarioAndLuigi, gCPUforWarioAndYoshi, gCPUforWarioAndToad,
+    gCPUforWarioAndDk, gCPUforWarioAndDk, gCPUforWarioAndPeach, gCPUforWarioAndBowser
 };
 
-s16 *D_800E3C10[] = {
-    D_800E3AA8, D_800E3AB4, D_800E3AC0, D_800E3AE4,
-    D_800E3ACC, D_800E3AD8, D_800E3ACC, D_800E3AF0
+s16 *gListCPUforPeach[] = {
+    gCPUforPeachAndMario, gCPUforPeachAndLuigi, gCPUforPeachAndYoshi, gCPUforPeachAndToad,
+    gCPUforPeachAndDk, gCPUforPeachAndWario, gCPUforPeachAndDk, gCPUforPeachAndBowser
 };
 
-s16 *D_800E3C30[] = {
-    D_800E3AFC, D_800E3B08, D_800E3B14, D_800E3B38,
-    D_800E3B20, D_800E3B2C, D_800E3B44, D_800E3B44
+s16 *gListCPUforBowser[] = {
+    gCPUforBowserAndMario, gCPUforBowserAndLuigi, gCPUforBowserAndYoshi, gCPUforBowserAndToad,
+    gCPUforBowserAndDk, gCPUforBowserAndWario, gCPUforBowserAndPeach, gCPUforBowserAndPeach
 };
 
-s16 **D_800E3C50[] = {
-    D_800E3B50, D_800E3B70, D_800E3B90, D_800E3BB0,
-    D_800E3BD0, D_800E3BF0, D_800E3C10, D_800E3C30
+s16 **gCPUforTwoPlayer[] = {
+    gListCPUforMario, gListCPUforLuigi, gListCPUforYoshi, gListCPUforToad,
+    gListCPUforDk, gListCPUforWario, gListCPUforPeach, gListCPUforBowser
 };
 
 // func_80027D00
@@ -1637,7 +1637,7 @@ void func_8002B830(Player *player, s8 arg1, s8 arg2) {
     }
 }
 
-void func_8002B8A4(Player *player_one, Player *player_two) {
+UNUSED void func_8002B8A4(Player *player_one, Player *player_two) {
     s32 var_v1;
 
     /*
@@ -1860,11 +1860,11 @@ void func_8002C17C(Player *player, s8 playerId) {
     case COURSE_YOSHI_VALLEY:
         if ((player->unk_110.unk3C[2] >= 600.0f) && (D_80165330[playerId] == 0)) {
             D_80165330[playerId] = 1;
-            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
-            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
         } else if (D_80165330[playerId] == 0) {
-            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
-            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
         } else if (!(player->effects & 8)) {
             if (func_802ABDF4(player->unk_110.unk3A) == 0) {
                 D_80165330[playerId] = 0;
@@ -1874,33 +1874,33 @@ void func_8002C17C(Player *player, s8 playerId) {
     case COURSE_FRAPPE_SNOWLAND:
         if ((player->unk_0F8 == 0x000B) && (D_80165330[playerId] == 0)) {
             D_80165330[playerId] = 1;
-            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
-            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
         } else if (player->unk_0F8 != 0x000B) {
             D_80165330[playerId] = 0;
-            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
-            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
         }
         break;
     case COURSE_ROYAL_RACEWAY:
         if (((player->effects & 0x100000) != 0) && (D_80165330[playerId] == 0)) {
             D_80165330[playerId] = 1;
-            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
-            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
         } else if (((player->effects & 0x100000) == 0) && !(player->effects & 8)) {
             D_80165330[playerId] = 0;
-            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
-            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
         }
         break;
     case COURSE_RAINBOW_ROAD:
         if ((player->unk_110.unk3C[2] >= 600.0f) && (D_80165330[playerId] == 0)) {
             D_80165330[playerId] = 1;
-            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
-            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
         } else if (D_80165330[playerId] == 0) {
-            D_80165320[playerId] = gNearestWaypointByPlayerId[playerId];
-            D_80165310[playerId] = gPathIndexByPlayerId[playerId];
+            gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
+            gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
         } else if (!((player->effects & 8) || (player->unk_0CA & 1))) {
             D_80165330[playerId] = 0;
         }
@@ -3200,68 +3200,7 @@ void func_80030A34(Player *player) {
     }
 }
 
-// This is likely the function responsible for detecting triple-tap "A" for "fast" acceleration
-void func_80030C34(Player *player) {
-    s32 var_v0;
-
-    if (player == gPlayerOne) {
-        var_v0 = 0;
-    }
-    if (player == gPlayerTwo) {
-        var_v0 = 1;
-    }
-    if (player == gPlayerThree) {
-        var_v0 = 2;
-    }
-    if (player == gPlayerFour) {
-        var_v0 = 3;
-    }
-    if (player == gPlayerFive) {
-        var_v0 = 4;
-    }
-    if (player == gPlayerSix) {
-        var_v0 = 5;
-    }
-    if (player == gPlayerSeven) {
-        var_v0 = 6;
-    }
-    if (player == gPlayerEight) {
-        var_v0 = 7;
-    }
-    if (gIsPlayerTripleAButtonCombo[var_v0] == FALSE) {
-        if (gPlayerIsThrottleActive[var_v0] == 1) {
-            if ((D_80165420[var_v0] < 2) || (D_80165420[var_v0] >= 9)) {
-                D_80165440[var_v0] = 0;
-            }
-            D_80165420[var_v0] = 0;
-            D_80165400[var_v0] = 0;
-        }
-        gPlayerIsThrottleActive[var_v0] = 0;
-        D_80165420[var_v0]++;
-        if (D_80165420[var_v0] >= 9) {
-            D_80165420[var_v0] = 9;
-        }
-        if ((D_80165420[var_v0] >= 2) && (D_80165420[var_v0] < 9)) {
-            if (D_80165400[var_v0] == 0) {
-                D_80165440[var_v0] += 1;
-            }
-            D_80165400[var_v0] = 1;
-        }
-        if (D_80165440[var_v0] == 5) {
-            gIsPlayerTripleAButtonCombo[var_v0] = TRUE;
-            D_80165480[var_v0] = 120;
-            D_80165440[var_v0] = 0;
-            D_80165420[var_v0] = 0;
-        }
-    } else {
-        D_80165480[var_v0]--;
-        if (D_80165480[var_v0] <= 0) {
-            gIsPlayerTripleAButtonCombo[var_v0] = FALSE;
-        }
-    }
-}
-
-void func_80030E00(Player *player) {
+void detect_triple_a_combo_a_released(Player *player) {
     s32 playerIndex;
 
     if (player == gPlayerOne) {
@@ -3289,33 +3228,93 @@ void func_80030E00(Player *player) {
         playerIndex = 7;
     }
     if (gIsPlayerTripleAButtonCombo[playerIndex] == FALSE) {
-        if (gPlayerIsThrottleActive[playerIndex] == 0) {
-            if ((D_80165420[playerIndex] < 2) || (D_80165420[playerIndex] >= 9)) {
-                D_80165440[playerIndex] = 0;
+        if (gPlayerIsThrottleActive[playerIndex] == TRUE) {
+            if ((gFrameSinceLastACombo[playerIndex] < 2) || (gFrameSinceLastACombo[playerIndex] >= 9)) {
+                gCountAChangement[playerIndex] = 0;
             }
-            D_80165420[playerIndex] = 0;
+            gFrameSinceLastACombo[playerIndex] = 0;
             D_80165400[playerIndex] = 0;
         }
-        gPlayerIsThrottleActive[playerIndex] = 1;
-        D_80165420[playerIndex]++;
-        if (D_80165420[playerIndex] >= 9) {
-            D_80165420[playerIndex] = 9;
+        gPlayerIsThrottleActive[playerIndex] = FALSE;
+        gFrameSinceLastACombo[playerIndex]++;
+        if (gFrameSinceLastACombo[playerIndex] >= 9) {
+            gFrameSinceLastACombo[playerIndex] = 9;
         }
-        if ((D_80165420[playerIndex] >= 2) && (D_80165420[playerIndex] < 9)) {
+        if ((gFrameSinceLastACombo[playerIndex] >= 2) && (gFrameSinceLastACombo[playerIndex] < 9)) {
             if (D_80165400[playerIndex] == 0) {
-                D_80165440[playerIndex] += 1;
+                gCountAChangement[playerIndex] += 1;
             }
             D_80165400[playerIndex] = 1;
         }
-        if (D_80165440[playerIndex] == 5) {
+        if (gCountAChangement[playerIndex] == 5) {
             gIsPlayerTripleAButtonCombo[playerIndex] = TRUE;
-            D_80165480[playerIndex] = 0x00000078;
-            D_80165440[playerIndex] = 0;
-            D_80165420[playerIndex] = 0;
+            gTimerBoostTripleACombo[playerIndex] = 120;
+            gCountAChangement[playerIndex] = 0;
+            gFrameSinceLastACombo[playerIndex] = 0;
         }
     } else {
-        D_80165480[playerIndex]--;
-        if (D_80165480[playerIndex] <= 0) {
+        gTimerBoostTripleACombo[playerIndex]--;
+        if (gTimerBoostTripleACombo[playerIndex] <= 0) {
+            gIsPlayerTripleAButtonCombo[playerIndex] = FALSE;
+        }
+    }
+}
+
+void detect_triple_a_combo_a_pressed(Player *player) {
+    s32 playerIndex;
+
+    if (player == gPlayerOne) {
+        playerIndex = 0;
+    }
+    if (player == gPlayerTwo) {
+        playerIndex = 1;
+    }
+    if (player == gPlayerThree) {
+        playerIndex = 2;
+    }
+    if (player == gPlayerFour) {
+        playerIndex = 3;
+    }
+    if (player == gPlayerFive) {
+        playerIndex = 4;
+    }
+    if (player == gPlayerSix) {
+        playerIndex = 5;
+    }
+    if (player == gPlayerSeven) {
+        playerIndex = 6;
+    }
+    if (player == gPlayerEight) {
+        playerIndex = 7;
+    }
+    if (gIsPlayerTripleAButtonCombo[playerIndex] == FALSE) {
+        if (gPlayerIsThrottleActive[playerIndex] == FALSE) {
+            if ((gFrameSinceLastACombo[playerIndex] < 2) || (gFrameSinceLastACombo[playerIndex] >= 9)) {
+                gCountAChangement[playerIndex] = 0;
+            }
+            gFrameSinceLastACombo[playerIndex] = 0;
+            D_80165400[playerIndex] = 0;
+        }
+        gPlayerIsThrottleActive[playerIndex] = TRUE;
+        gFrameSinceLastACombo[playerIndex]++;
+        if (gFrameSinceLastACombo[playerIndex] >= 9) {
+            gFrameSinceLastACombo[playerIndex] = 9;
+        }
+        if ((gFrameSinceLastACombo[playerIndex] >= 2) && (gFrameSinceLastACombo[playerIndex] < 9)) {
+            if (D_80165400[playerIndex] == 0) {
+                gCountAChangement[playerIndex] += 1;
+            }
+            D_80165400[playerIndex] = 1;
+        }
+        if (gCountAChangement[playerIndex] == 5) {
+            gIsPlayerTripleAButtonCombo[playerIndex] = TRUE;
+            gTimerBoostTripleACombo[playerIndex] = 120;
+            gCountAChangement[playerIndex] = 0;
+            gFrameSinceLastACombo[playerIndex] = 0;
+        }
+    } else {
+        gTimerBoostTripleACombo[playerIndex]--;
+        if (gTimerBoostTripleACombo[playerIndex] <= 0) {
             gIsPlayerTripleAButtonCombo[playerIndex] = FALSE;
         }
     }
@@ -3428,124 +3427,124 @@ void func_80031F48(Player *player, f32 arg1) {
     }
 }
 
-void func_80032050(Player *player) {
-    s32 var_v0;
+void detect_triple_b_combo_b_released(Player *player) {
+    s32 playerIndex;
 
     if (player == gPlayerOne) {
-        var_v0 = 0;
+        playerIndex = 0;
     }
     if (player == gPlayerTwo) {
-        var_v0 = 1;
+        playerIndex = 1;
     }
     if (player == gPlayerThree) {
-        var_v0 = 2;
+        playerIndex = 2;
     }
     if (player == gPlayerFour) {
-        var_v0 = 3;
+        playerIndex = 3;
     }
     if (player == gPlayerFive) {
-        var_v0 = 4;
+        playerIndex = 4;
     }
     if (player == gPlayerSix) {
-        var_v0 = 5;
+        playerIndex = 5;
     }
     if (player == gPlayerSeven) {
-        var_v0 = 6;
+        playerIndex = 6;
     }
     if (player == gPlayerEight) {
-        var_v0 = 7;
+        playerIndex = 7;
     }
 
-    if (D_80165520[var_v0] == 0) {
-        if (D_801654A0[var_v0] == 1) {
-            if ((D_801654E0[var_v0] < 2) || (D_801654E0[var_v0] >= 9)) {
-                D_80165500[var_v0] = 0;
+    if (gIsPlayerTripleBButtonCombo[playerIndex] == FALSE) {
+        if (gPlayerIsBrakeActive[playerIndex] == TRUE) {
+            if ((gFrameSinceLastBCombo[playerIndex] < 2) || (gFrameSinceLastBCombo[playerIndex] >= 9)) {
+                gCountBChangement[playerIndex] = 0;
             }
-            D_801654E0[var_v0] = 0;
-            D_801654C0[var_v0] = 0;
+            gFrameSinceLastBCombo[playerIndex] = 0;
+            D_801654C0[playerIndex] = 0;
         }
-        D_801654A0[var_v0] = 0;
-        D_801654E0[var_v0]++;
-        if (D_801654E0[var_v0] >= 9) {
-            D_801654E0[var_v0] = 9;
+        gPlayerIsBrakeActive[playerIndex] = FALSE;
+        gFrameSinceLastBCombo[playerIndex]++;
+        if (gFrameSinceLastBCombo[playerIndex] >= 9) {
+            gFrameSinceLastBCombo[playerIndex] = 9;
         }
-        if ((D_801654E0[var_v0] >= 2) && (D_801654E0[var_v0] < 9)) {
-            if (D_801654C0[var_v0] == 0) {
-                D_80165500[var_v0]++;
+        if ((gFrameSinceLastBCombo[playerIndex] >= 2) && (gFrameSinceLastBCombo[playerIndex] < 9)) {
+            if (D_801654C0[playerIndex] == 0) {
+                gCountBChangement[playerIndex]++;
             }
-            D_801654C0[var_v0] = 1;
+            D_801654C0[playerIndex] = 1;
         }
-        if (D_80165500[var_v0] == 5) {
-            D_80165520[var_v0] = 1;
-            D_80165540[var_v0] = 0x00000078;
-            D_80165500[var_v0] = 0;
-            D_801654E0[var_v0] = 0;
+        if (gCountBChangement[playerIndex] == 5) {
+            gIsPlayerTripleBButtonCombo[playerIndex] = TRUE;
+            gTimerBoostTripleBCombo[playerIndex] = 120;
+            gCountBChangement[playerIndex] = 0;
+            gFrameSinceLastBCombo[playerIndex] = 0;
         }
     } else {
-        D_80165540[var_v0]--;
-        if (D_80165540[var_v0] <= 0) {
-            D_80165520[var_v0] = 0;
+        gTimerBoostTripleBCombo[playerIndex]--;
+        if (gTimerBoostTripleBCombo[playerIndex] <= 0) {
+            gIsPlayerTripleBButtonCombo[playerIndex] = FALSE;
         }
     }
 }
 
-void func_8003221C(Player *player) {
-    s32 var_v0;
+void detect_triple_b_combo_b_pressed(Player *player) {
+    s32 playerIndex;
 
     if (player == gPlayerOne) {
-        var_v0 = 0;
+        playerIndex = 0;
     }
     if (player == gPlayerTwo) {
-        var_v0 = 1;
+        playerIndex = 1;
     }
     if (player == gPlayerThree) {
-        var_v0 = 2;
+        playerIndex = 2;
     }
     if (player == gPlayerFour) {
-        var_v0 = 3;
+        playerIndex = 3;
     }
     if (player == gPlayerFive) {
-        var_v0 = 4;
+        playerIndex = 4;
     }
     if (player == gPlayerSix) {
-        var_v0 = 5;
+        playerIndex = 5;
     }
     if (player == gPlayerSeven) {
-        var_v0 = 6;
+        playerIndex = 6;
     }
     if (player == gPlayerEight) {
-        var_v0 = 7;
+        playerIndex = 7;
     }
 
-    if (D_80165520[var_v0] == 0) {
-        if (D_801654A0[var_v0] == 0) {
-            if ((D_801654E0[var_v0] < 2) || (D_801654E0[var_v0] >= 9)) {
-                D_80165500[var_v0] = 0;
+    if (gIsPlayerTripleBButtonCombo[playerIndex] == FALSE) {
+        if (gPlayerIsBrakeActive[playerIndex] == FALSE) {
+            if ((gFrameSinceLastBCombo[playerIndex] < 2) || (gFrameSinceLastBCombo[playerIndex] >= 9)) {
+                gCountBChangement[playerIndex] = 0;
             }
-            D_801654E0[var_v0] = 0;
-            D_801654C0[var_v0] = 0;
+            gFrameSinceLastBCombo[playerIndex] = 0;
+            D_801654C0[playerIndex] = 0;
         }
-        D_801654A0[var_v0] = 1;
-        D_801654E0[var_v0]++;
-        if (D_801654E0[var_v0] >= 9) {
-            D_801654E0[var_v0] = 9;
+        gPlayerIsBrakeActive[playerIndex] = TRUE;
+        gFrameSinceLastBCombo[playerIndex]++;
+        if (gFrameSinceLastBCombo[playerIndex] >= 9) {
+            gFrameSinceLastBCombo[playerIndex] = 9;
         }
-        if ((D_801654E0[var_v0] >= 2) && (D_801654E0[var_v0] < 9)) {
-            if (D_801654C0[var_v0] == 0) {
-                D_80165500[var_v0]++;
+        if ((gFrameSinceLastBCombo[playerIndex] >= 2) && (gFrameSinceLastBCombo[playerIndex] < 9)) {
+            if (D_801654C0[playerIndex] == 0) {
+                gCountBChangement[playerIndex]++;
             }
-            D_801654C0[var_v0] = 1;
+            D_801654C0[playerIndex] = 1;
         }
-        if (D_80165500[var_v0] == 5) {
-            D_80165520[var_v0] = 1;
-            D_80165540[var_v0] = 0x00000078;
-            D_80165500[var_v0] = 0;
-            D_801654E0[var_v0] = 0;
+        if (gCountBChangement[playerIndex] == 5) {
+            gIsPlayerTripleBButtonCombo[playerIndex] = TRUE;
+            gTimerBoostTripleBCombo[playerIndex] = 120;
+            gCountBChangement[playerIndex] = 0;
+            gFrameSinceLastBCombo[playerIndex] = 0;
         }
     } else {
-        D_80165540[var_v0]--;
-        if (D_80165540[var_v0] <= 0) {
-            D_80165520[var_v0] = 0;
+        gTimerBoostTripleBCombo[playerIndex]--;
+        if (gTimerBoostTripleBCombo[playerIndex] <= 0) {
+            gIsPlayerTripleBButtonCombo[playerIndex] = FALSE;
         }
     }
 }
@@ -3601,7 +3600,7 @@ void func_800323E4(Player *player) {
                 player->unk_20C = 2.0f;
             }
         }
-        if (D_80165520[var_v1] == 1) {
+        if (gIsPlayerTripleBButtonCombo[var_v1] == TRUE) {
             if (player->unk_20C >= 2.0f) {
                 func_80031F48(player, (1.0f - var_f2) * 5.0f);
             } else {
@@ -4673,7 +4672,7 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
             if ((player->unk_044 & 1) != 1) {
                 if (controller->button & A_BUTTON) {
                     player_speed(player);
-                    func_80030E00(player);
+                    detect_triple_a_combo_a_pressed(player);
                 } else {
                     if (gModeSelection == BATTLE)
                     {
@@ -4683,14 +4682,14 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
                     {
                       func_80031F48(player, 1.0f);
                     }
-                    func_80030C34(player);
+                    detect_triple_a_combo_a_released(player);
                 }
                 if (controller->button & B_BUTTON) {
                     func_800323E4(player);
-                    func_8003221C(player);
+                    detect_triple_b_combo_b_pressed(player);
                 } else {
                     player->unk_20C = 0.0f;
-                    func_80032050(player);
+                    detect_triple_b_combo_b_released(player);
                 }
             }
             if ((!(player->effects & 0x100000)) && (!(player->effects & 4))) {
@@ -4722,11 +4721,11 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
             ((player->effects & 0x01000000) == 0x01000000)) || 
             ((player->effects & 0x02000000) == 0x02000000)) {
                 if (controller->button & A_BUTTON) {
-                    func_80030E00(player);
+                    detect_triple_a_combo_a_pressed(player);
                     func_800332E8(player, arg2);
                     return;
                 }
-                func_80030C34(player);
+                detect_triple_a_combo_a_released(player);
                 func_800337CC(player, 5.0f, arg2);
         }
     }
