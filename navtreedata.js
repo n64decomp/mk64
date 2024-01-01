@@ -28,6 +28,7 @@ var NAVTREE =
     [ "Memory Addresses", "md_tools_doxygen_syms.html", [
       [ "Memory Addresses", "md_tools_doxygen_syms.html#autotoc_md1", null ]
     ] ],
+    [ "Todo List", "todo.html", null ],
     [ "Bug List", "bug.html", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],

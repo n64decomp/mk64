@@ -17,6 +17,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -717,7 +719,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (<a class="code" href="controller_8h.html#a8907f8efb366e080f79a7c02dd71b2d8">__osCheckId</a>(pfs) == <a class="code" href="os_8h.html#a91c21244de5df949159ed5533d37d509">PFS_ERR_NEW_PACK</a>) \</div>
 <div class="line">        return <a class="code" href="os_8h.html#a91c21244de5df949159ed5533d37d509">PFS_ERR_NEW_PACK</a>;</div>
-<div class="ttc" id="acontroller_8h_html_a8907f8efb366e080f79a7c02dd71b2d8"><div class="ttname"><a href="controller_8h.html#a8907f8efb366e080f79a7c02dd71b2d8">__osCheckId</a></div><div class="ttdeci">s32 __osCheckId(OSPfs *pfs)</div><div class="ttdef"><b>Definition:</b> contpfs.c:198</div></div>
+<div class="ttc" id="acontroller_8h_html_a8907f8efb366e080f79a7c02dd71b2d8"><div class="ttname"><a href="controller_8h.html#a8907f8efb366e080f79a7c02dd71b2d8">__osCheckId</a></div><div class="ttdeci">s32 __osCheckId(OSPfs *pfs)</div><div class="ttdef"><b>Definition:</b> contpfs.c:202</div></div>
 <div class="ttc" id="aos_8h_html_a91c21244de5df949159ed5533d37d509"><div class="ttname"><a href="os_8h.html#a91c21244de5df949159ed5533d37d509">PFS_ERR_NEW_PACK</a></div><div class="ttdeci">#define PFS_ERR_NEW_PACK</div><div class="ttdef"><b>Definition:</b> os.h:433</div></div>
 </div><!-- fragment -->
 </div>
@@ -777,7 +779,7 @@ Variables</h2></td></tr>
 <div class="line">        pfs-&gt;activebank = 0;          \</div>
 <div class="line">        ERRCK(<a class="code" href="controller_8h.html#a48ae814c96ad6ad40ffceb2ee8cac6b4">__osPfsSelectBank</a>(pfs)) \</div>
 <div class="line">    }</div>
-<div class="ttc" id="acontroller_8h_html_a48ae814c96ad6ad40ffceb2ee8cac6b4"><div class="ttname"><a href="controller_8h.html#a48ae814c96ad6ad40ffceb2ee8cac6b4">__osPfsSelectBank</a></div><div class="ttdeci">s32 __osPfsSelectBank(OSPfs *pfs)</div><div class="ttdef"><b>Definition:</b> contpfs.c:286</div></div>
+<div class="ttc" id="acontroller_8h_html_a48ae814c96ad6ad40ffceb2ee8cac6b4"><div class="ttname"><a href="controller_8h.html#a48ae814c96ad6ad40ffceb2ee8cac6b4">__osPfsSelectBank</a></div><div class="ttdeci">s32 __osPfsSelectBank(OSPfs *pfs)</div><div class="ttdef"><b>Definition:</b> contpfs.c:291</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1139,6 +1141,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000033">Todo:</a></b></dt><dd>remove magic constant </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000034">Todo:</a></b></dt><dd>loads of magic constants.. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1417,6 +1421,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000045">Todo:</a></b></dt><dd>magic number </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1493,6 +1498,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000035">Todo:</a></b></dt><dd>don't like this =/ //maybe &amp;inode-&gt;inode_table[j*PFS_ONE_PAGE].ipage or something </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1569,6 +1575,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000031">Todo:</a></b></dt><dd>fix magic number </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000032">Todo:</a></b></dt><dd>remove magic constant </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

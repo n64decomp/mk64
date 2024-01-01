@@ -17,6 +17,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -125,7 +127,6 @@ $(document).ready(function(){initNavTree('internal_8h_source.html',''); initResi
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
 <div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="internal_8h.html#adb0bade39d6c3532cfe999185d0cae0b">   39</a></span>&#160;<span class="preprocessor">#define TEMPO_SCALE TATUMS_PER_BEAT</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// TODO: US_FLOAT should probably be renamed to JP_DOUBLE since eu seems to use floats too</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="internal_8h.html#aa8d5fa5d7506353e4e791caab237c721">   42</a></span>&#160;<span class="preprocessor">#define US_FLOAT(x) x ## f</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="internal_8h.html#a2f239f4efd736d565a88b9b82391fa08">   43</a></span>&#160;<span class="preprocessor">#define US_FLOAT2(x) x</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
@@ -527,8 +528,7 @@ $(document).ready(function(){initNavTree('internal_8h_source.html',''); initResi
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    <span class="comment">// that results in messy US/EU ifdefs. Instead we cast to a struct pointer</span></div>
 <div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="comment">// when needed... This breaks alignment on non-N64 platforms, which we hack</span></div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    <span class="comment">// around by skipping the padding in that case.</span></div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    <span class="comment">// TODO: use macros or something instead.</span></div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="preprocessor">#ifdef TARGET_N64</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="comment"></span><span class="preprocessor">#ifdef TARGET_N64</span></div>
 <div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <a class="code" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> pad0[12];</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>

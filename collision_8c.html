@@ -17,6 +17,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -1126,6 +1128,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <p>Appears to initialize some variables and struct members after course displaylists have been parsed. </p>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000012">Bug:</a></b></dt><dd>possibly bug. Allocate memory but not increment the pointer. This is bad, dumb code, and more importantly it's bad dumb code that doesn't make any sense here. It is incremented after this function completes using a different variable. Not good. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

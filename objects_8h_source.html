@@ -17,6 +17,8 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -384,38 +386,38 @@ $(document).ready(function(){initNavTree('objects_8h_source.html',''); initResiz
 <div class="line"><a name="l00357"></a><span class="lineno"><a class="line" href="objects_8h.html#aa03ae475a84388a1d190944e65b6d9b0">  357</a></span>&#160;<span class="preprocessor">#define NUM_TORCHES 8</span></div>
 <div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
 <div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="comment">// This should really be `extern Vec3s gTorchSpawns[];`</span></div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> <a class="code" href="objects_8h.html#af40885efd72dc665a278c6f29e19ecf3">gTorchSpawns</a>[]; <span class="comment">// todo: fix this extern</span></div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#aad299a42ee2263acf94963a65ac4169f">D_8018C870</a>[];</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="comment">// Next free spot in D_8018C870? Wraps back around to 0 if it gets bigger than D_8018C870_SIZE</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#a3aab530f1956ec60d006b6edab695a8b">D_80183E6C</a>;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="comment">// Maximum number of leaves that can be falling?</span></div>
-<div class="line"><a name="l00372"></a><span class="lineno"><a class="line" href="objects_8h.html#ae155bfb63d622e15a200034ed6170753">  372</a></span>&#160;<span class="preprocessor">#define D_8018C970_SIZE 0x40</span></div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="comment">// Number of leaves to spawn each bonk?</span></div>
-<div class="line"><a name="l00374"></a><span class="lineno"><a class="line" href="objects_8h.html#ac183eb47e1ca0af8373e866dfcecc30b">  374</a></span>&#160;<span class="preprocessor">#define D_8018C970_SPAWN_SIZE 0x14</span></div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="comment">// Seemingly a list of object list indices used for the leaves that sometimes fall</span></div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="comment">// trees when you bonk into them</span></div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#a62371f258a53667f293bd74927042864">D_8018C970</a>[];</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="comment">// Next free spot in D_8018C970? Wraps back around to 0 if it gets bigger than D_8018C970_SIZE</span></div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#a3e2e28a148d0af8de7336269697cd291">D_80183E7C</a>;</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
-<div class="line"><a name="l00381"></a><span class="lineno"><a class="line" href="objects_8h.html#aa4bf17ba1651c63ddc84841df1442ad6">  381</a></span>&#160;<span class="preprocessor">#define D_8018CC80_SIZE 0x64</span></div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="comment">// List of object list indices used by the clouds and stars in some stages</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="comment">// Also used for snowflakes like D_8018C1B0? Not sure what&#39;s up with that</span></div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#a4fd04417a966f1fc14fd50eb9edf1754">D_8018CC80</a>[];</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="comment">// Number of used spots in D_8018CC80?</span></div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#ac5f68e227d149137d2ea37aac91ed864">D_8018D1F0</a>;</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="comment">// Next free spot in D_8018CC80?</span></div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#aad8b1200aac0e7c52897cea1963426f9">D_8018D1F8</a>;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="comment">// Also next free spot in D_8018CC80?</span></div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> <a class="code" href="objects_8h.html#a69324da3551bd44e17494de25337a8ba">D_8018D17C</a>;</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="comment">// Something related to the display of the clouds/stars?</span></div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> <a class="code" href="objects_8h.html#af460d49518eff3733eaa1df293cfbc8b">D_8018D230</a>;</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="comment">// Some sort of limiter on how many of some object type can spawn</span></div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#a0e702cac7828caf10061417dc84a12fc">D_8018D3C4</a>;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160; </div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="comment"></span><span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> <a class="code" href="objects_8h.html#af40885efd72dc665a278c6f29e19ecf3">gTorchSpawns</a>[]; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#aad299a42ee2263acf94963a65ac4169f">D_8018C870</a>[];</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="comment">// Next free spot in D_8018C870? Wraps back around to 0 if it gets bigger than D_8018C870_SIZE</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#a3aab530f1956ec60d006b6edab695a8b">D_80183E6C</a>;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="comment">// Maximum number of leaves that can be falling?</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno"><a class="line" href="objects_8h.html#ae155bfb63d622e15a200034ed6170753">  373</a></span>&#160;<span class="preprocessor">#define D_8018C970_SIZE 0x40</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="comment">// Number of leaves to spawn each bonk?</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno"><a class="line" href="objects_8h.html#ac183eb47e1ca0af8373e866dfcecc30b">  375</a></span>&#160;<span class="preprocessor">#define D_8018C970_SPAWN_SIZE 0x14</span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="comment">// Seemingly a list of object list indices used for the leaves that sometimes fall</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="comment">// trees when you bonk into them</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#a62371f258a53667f293bd74927042864">D_8018C970</a>[];</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="comment">// Next free spot in D_8018C970? Wraps back around to 0 if it gets bigger than D_8018C970_SIZE</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#a3e2e28a148d0af8de7336269697cd291">D_80183E7C</a>;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00382"></a><span class="lineno"><a class="line" href="objects_8h.html#aa4bf17ba1651c63ddc84841df1442ad6">  382</a></span>&#160;<span class="preprocessor">#define D_8018CC80_SIZE 0x64</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="comment">// List of object list indices used by the clouds and stars in some stages</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="comment">// Also used for snowflakes like D_8018C1B0? Not sure what&#39;s up with that</span></div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#a4fd04417a966f1fc14fd50eb9edf1754">D_8018CC80</a>[];</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="comment">// Number of used spots in D_8018CC80?</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#ac5f68e227d149137d2ea37aac91ed864">D_8018D1F0</a>;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="comment">// Next free spot in D_8018CC80?</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#aad8b1200aac0e7c52897cea1963426f9">D_8018D1F8</a>;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="comment">// Also next free spot in D_8018CC80?</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> <a class="code" href="objects_8h.html#a69324da3551bd44e17494de25337a8ba">D_8018D17C</a>;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="comment">// Something related to the display of the clouds/stars?</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> <a class="code" href="objects_8h.html#af460d49518eff3733eaa1df293cfbc8b">D_8018D230</a>;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="comment">// Some sort of limiter on how many of some object type can spawn</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="keyword">extern</span> <a class="code" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code" href="objects_8h.html#a0e702cac7828caf10061417dc84a12fc">D_8018D3C4</a>;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="acommon__structs_8h_html"><div class="ttname"><a href="common__structs_8h.html">common_structs.h</a></div></div>
 <div class="ttc" id="acommon__structs_8h_html_a4bb48028df2f1919a4ee3cc3cc1ee8ea"><div class="ttname"><a href="common__structs_8h.html#a4bb48028df2f1919a4ee3cc3cc1ee8ea">Vec4s</a></div><div class="ttdeci">s16 Vec4s[4]</div><div class="ttdef"><b>Definition:</b> common_structs.h:10</div></div>
 <div class="ttc" id="acommon__structs_8h_html_a5290523279339ea495248ab3a36cb46e"><div class="ttname"><a href="common__structs_8h.html#a5290523279339ea495248ab3a36cb46e">Vec3f</a></div><div class="ttdeci">f32 Vec3f[3]</div><div class="ttdef"><b>Definition:</b> common_structs.h:6</div></div>
