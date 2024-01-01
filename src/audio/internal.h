@@ -38,7 +38,7 @@
 
 #define TEMPO_SCALE TATUMS_PER_BEAT
 
-// TODO: US_FLOAT should probably be renamed to JP_DOUBLE since eu seems to use floats too
+//! @todo US_FLOAT should probably be renamed to JP_DOUBLE since eu seems to use floats too
 #define US_FLOAT(x) x ## f
 #define US_FLOAT2(x) x
 
@@ -440,7 +440,7 @@ struct Note {
     // that results in messy US/EU ifdefs. Instead we cast to a struct pointer
     // when needed... This breaks alignment on non-N64 platforms, which we hack
     // around by skipping the padding in that case.
-    // TODO: use macros or something instead.
+    //! @todo use macros or something instead.
 #ifdef TARGET_N64
     u8 pad0[12];
 #endif

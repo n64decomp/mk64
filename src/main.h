@@ -20,12 +20,12 @@
 
 #define MTX_OBJECT_POOL_SIZE 128
 
-// TODO: Verify with proper documentation
+//! @todo Verify with proper documentation
 // functions called by mtxShadow multiply by 8
 // 8 CPU Players * 4 real players in coop
 #define MTX_SHADOW_POOL_SIZE 8 * 4
 
-// TODO: Verify with proper documentation
+//! @todo Verify with proper documentation
 // functions called by mtxKart multiply by 8
 // 8 CPU Players * 4 real players in coop
 #define MTX_KART_POOL_SIZE 8 * 4

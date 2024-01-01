@@ -669,7 +669,7 @@ void preload_sequence(u32 seqId, u8 preloadMask) {
     }
 
     if (preloadMask & PRELOAD_SEQUENCE) {
-        // @bug should be IS_SEQ_LOAD_COMPLETE
+        //! @bug should be IS_SEQ_LOAD_COMPLETE
         if (IS_BANK_LOAD_COMPLETE(seqId) == TRUE) {
             sequenceData = get_bank_or_seq(0, 2, seqId);
         } else {
@@ -716,9 +716,11 @@ void load_sequence_internal(u32 player, u32 seqId, s32 loadAsync) {
             if (bank_load_async(bankId, 2, seqPlayer) == NULL) {
                 return;
             }
-            // @bug This should set the last bank (i.e. the first in the JSON)
-            // as default, not the missing one. This code path never gets
-            // taken, though -- all sequence loading is synchronous.
+            /**
+             * @bug This should set the last bank (i.e. the first in the JSON)
+             * as default, not the missing one. This code path never gets
+             * taken, though -- all sequence loading is synchronous.
+             */
             seqPlayer->defaultBank[0] = bankId;
         } else {
             if (load_banks_immediate(seqId, &seqPlayer->defaultBank[0]) == NULL) {

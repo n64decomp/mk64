@@ -83,9 +83,12 @@
 #define LEO_BM_CTL_SECTOR_MASK 0x00FF0000
 #define LEO_BM_CTL_SECTOR_SHIFT 16
 
-#define LEO_CMD_TYPE_0 0 //TODO: name
-#define LEO_CMD_TYPE_1 1 //TODO: name
-#define LEO_CMD_TYPE_2 2 //TODO: name
+//! @todo name
+#define LEO_CMD_TYPE_0 0 
+//! @todo name
+#define LEO_CMD_TYPE_1 1 
+//! @todo name
+#define LEO_CMD_TYPE_2 2 
 
 #define LEO_ERROR_GOOD 0
 #define LEO_ERROR_3 3

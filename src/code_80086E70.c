@@ -1236,7 +1236,7 @@ s32 func_8008A060(s32 objectIndex, Camera *camera, u16 arg2) {
     var_v1 = 0;
     temp_t3 = (((u16)camera->rot[1] - gObjectList[objectIndex].unk_0BE[1]) + (arg2 >> 1));
     
-    // @warning Always true
+    //! @warning Always true
     if ((temp_t3 >= 0) && (arg2 >= temp_t3)) {
         var_v1 = 1;
     }

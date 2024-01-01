@@ -1,7 +1,7 @@
 #ifndef SOUNDS_H
 #define SOUNDS_H
 
-// todo: format like sm64 sounds.h
+//! @todo format like sm64 sounds.h
 // The sound cue bit fields can be split up into its basic pieces and put back together.
 
 

@@ -388,7 +388,7 @@ void func_80045F18(u8 *texture, Vtx *arg1, s32 width, s32 arg3, s32 height, s32 
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-// todo: tlut/texture unconfirmed. This could be texture1 and texture2
+//! @todo tlut/texture unconfirmed. This could be texture1 and texture2
 UNUSED void func_80046030(u8 *tlut, u8 *texture, Vtx *arg2, s32 width, s32 arg4, s32 height) {
     s32 var_s0 = 0;
     u8 *img1 = tlut;
@@ -1419,7 +1419,7 @@ void func_8004B7DC(s32 x, s32 y, s32 width, s32 height, s32 arg4, s32 arg5, s32 
     s32 yh2 = ((y + height) << 2);
 
     if (arg6 == 0) {
-        // todo: Update to F3DEX. Uses OLD definition for gspTextureRectangle.
+        //! @todo Update to F3DEX. Uses OLD definition for gspTextureRectangle.
         gSPTextureRectangle(gDisplayListHead++, xl, yl, xh, yh, G_TX_RENDERTILE, arg4 << 5, (arg5 << 5), 4 << 10, 1 << 10);
         return;
     }
@@ -1589,7 +1589,7 @@ void func_8004C268(u32 arg0, u32 arg1, u8 *texture, u32 width, u32 arg4, u32 hei
     for (i = 0; (u32)i < (arg4 / height); i++) {
         func_80043D50(img2, width, height);
         func_8004B97C(arg0, arg1, width, height, arg6);
-        // todo: fakematch?
+        //! @todo fakematch?
         #ifdef AVOID_UB
         img2 += (width * height) * 2;
         #else
