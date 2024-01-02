@@ -386,7 +386,7 @@ extern s16 D_80164478[];
 
 
 extern intptr_t D_8018D9B0;
-extern uintptr_t *D_8018D9B4;
+extern u8 *D_8018D9B4;
 extern uintptr_t *D_8018D9B8;
 extern u8 *D_8018D9BC;
 extern struct_8018EE10_entry_cont *D_8018D9C0;

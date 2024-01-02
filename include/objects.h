@@ -80,6 +80,8 @@ typedef struct
     /* 0xDF */ u8  unk_0DF;
 } Objects; // size = 0xE0
 
+extern Objects gObjectList[];
+
 typedef struct
 {
     /* 0x00 */ f32 sizeScaling;
@@ -156,10 +158,24 @@ typedef struct
 
 // This are other lists of indices in gObjectList.
 
+extern s32 D_80183DA0;
+
+extern s32 D_80183DB8[];
+
 #define DELETED_OBJECT_ID -1
+
+extern s32 gItemWindowObjectByPlayerId[];
 
 // Used for loop bounds when accessing indexObjectList1
 extern s16 D_80165750;
+
+extern s32 D_8018D1C8;
+extern s32 D_8018D1D0;
+extern s32 D_8018D1D8;
+
+extern s32 D_8018D3C0;
+
+extern Collision D_8018C0B0[];
 
 /**
  * indexObjectList1, indexObjectList2, indexObjectList3, and indexObjectList4 are all lists of indices in gObjectList.
@@ -205,11 +221,16 @@ typedef struct {
 extern ThwompSpawn gThomwpSpawns50CC[];
 extern ThwompSpawn gThwompSpawns100CCExtra[];
 extern ThwompSpawn gThomwpSpawns150CC[];
+extern ThwompSpawn *gThowmpSpawnList;
+
+extern s16 gNumActiveThwomps;
 
 #define NUM_NEON_SIGNS 10
 #define NUM_CHAIN_CHOMPS 3
 
 #define NUM_PENGUINS 15
+
+extern s32 indexObjectList1[];
 
 #define NUM_SEAGULLS 10
 #define NUM_SNOWMEN 19
@@ -230,6 +251,8 @@ typedef struct {
 extern HegdehogSpawn gHedgehogSpawns[];
 extern Vec3s gHedgehogPatrolPoints[];
 
+extern s32 indexObjectList2[];
+
 #define NUM_BOOS 0xA
 #define NUM_FIRE_BREATHS 4
 
@@ -240,16 +263,79 @@ extern s16 D_800E5740[];
 extern s16 D_800E579C[];
 extern s16 D_800E57F8[];
 
+extern s32 indexObjectList3[];
+
+extern s32 indexObjectList4[];
+
 #define D_8018C1B0_SIZE 128
 #define NUM_MAX_MOLES  0x1F
+#define NUM_GROUP1_MOLES  8
+#define NUM_GROUP2_MOLES 11
+#define NUM_GROUP3_MOLES 12
 #define NUM_SNOWFLAKES 0x32
 
 extern Vec3s gMoleSpawns[];
+
+extern s8 D_8018D198[];
+extern s8 D_8018D1A8[];
+extern s8 D_8018D1B8[];
+
+extern s32 D_8018CF10;
+
+extern s32 D_8018C1B0[];
+
+extern s32 D_80183E38;
+
+extern s16 D_8018D174;
+
+#define D_8018C3F0_SIZE 128
+
+extern s32 D_8018C3F0[];
+
+extern s32 D_80183E4C;
+
+extern s32 D_8018D3BC;
+
+#define D_8018C630_SIZE 128
+extern s32 D_8018C630[];
+extern s32 D_80183E5C;
+extern s16 D_80165730;
+
+extern s16 D_80165738;
+
+#define D_8018C870_SIZE 0x40
 
 #define NUM_TORCHES 8
 
 // This should really be `extern Vec3s gTorchSpawns[];`
 //! @todo fix this extern
 extern s16 gTorchSpawns[];
+
+extern s32 D_8018C870[];
+
+extern s32 D_80183E6C;
+
+// Maximum number of leaves that can be falling?
+#define D_8018C970_SIZE 0x40
+// Number of leaves to spawn each bonk?
+#define D_8018C970_SPAWN_SIZE 0x14
+
+extern s32 D_8018C970[];
+
+extern s32 D_80183E7C;
+
+#define D_8018C8C0_SIZE 0x64
+
+extern s32 D_8018CC80[];
+
+extern s32 D_8018D1F0;
+
+extern s32 D_8018D1F8;
+
+extern s16 D_8018D17C;
+
+extern s8 D_8018D230;
+
+extern s32 D_8018D3C4;
 
 #endif

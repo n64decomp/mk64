@@ -82,6 +82,5 @@ void rsp_set_matrix_gObjectList(s32);
 
 /* This is where I'd put my static data, if I had any */
 extern s8    D_801658FE;
-extern s32   gMatrixHudCount;
 
 #endif // MATH_UTIL_2_H

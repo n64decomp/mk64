@@ -33,6 +33,8 @@
 //! @warning this macro is undef'd at the end of this file
 #define MAKE_RGB(r,g,b) (((r) << 0x10) | ((g) << 0x08) | (b << 0x00))
 
+//! @warning there is to many variable here
+
 s32 D_80165590;
 s32 D_80165594;
 s32 D_80165598;
@@ -364,7 +366,6 @@ f32 D_8018CFCC;
 s16 D_8018CFD0;
 f32 D_8018CFD4;
 s16 D_8018CFD8;
-UNUSED s32 D_8018CFDC;
 
 s16 D_800E4730[] = {
     0x00ff, 0x0000, 0x0000,

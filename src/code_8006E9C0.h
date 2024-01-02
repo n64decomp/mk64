@@ -35,8 +35,6 @@ extern s16 D_800E5520[];
 extern s16 D_800E5548[];
 extern u8 *gCourseOutlineTextures[0x14]; // 800e54d0
 
-extern s32 D_80183DA0;
-
 // These are found in data_code_80071F00
 extern StarSpawn D_800E6A38[];                        /* unable to generate initializer */
 extern StarSpawn D_800E6AA8[];                        /* unable to generate initializer */

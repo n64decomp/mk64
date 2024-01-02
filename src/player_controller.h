@@ -189,8 +189,6 @@ extern s16 *gListCPUforPeach[];
 extern s16 *gListCPUforBowser[];
 extern s16 **gCPUforTwoPlayer[];
 
-extern s16 gMatrixEffectCount;
-
 extern s16 D_801656F0;
 
 #endif

@@ -76,6 +76,7 @@ extern s16 D_80164AB0[];
 extern s16 D_80164ABE[];
 extern s16 D_80164AC0[];
 extern Player *D_80164AD0[];
+extern s16 gMatrixEffectCount;
 extern u16 gPlayerRedEffect[];
 extern u16 gPlayerGreenEffect[];
 extern u16 gPlayerBlueEffect[];
