@@ -466,6 +466,12 @@ extern f32 D_8018CFEC;
 extern s16 D_8018CFF0;
 extern f32 D_8018CFF4;
 extern s16 D_8018CFF8;
+extern s16 D_8018D000;
+extern s16 D_8018D008;
+extern f32 D_8018D00C;
+extern s16 D_8018D010;
+extern s16 D_8018D018;
+extern f32 xOrientation;
 
 
 extern f32 D_8018D028[8];

@@ -388,7 +388,6 @@ extern s16 D_8016347C;
 extern s32 D_80165594;
 extern s32 D_80165598;
 extern s16 D_8018D018;
-extern f32 xOrientation;
 extern s16 D_8018D048;
 extern s16 D_8018D110;
 extern s32 D_8018D140;

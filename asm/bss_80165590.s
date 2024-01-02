@@ -2,42 +2,6 @@
 
 .section .bss
 
-glabel D_8018CFE4
-.skip 4
-
-glabel D_8018CFE8
-.skip 4
-
-glabel D_8018CFEC
-.skip 4
-
-glabel D_8018CFF0
-.skip 4
-
-glabel D_8018CFF4
-.skip 4
-
-glabel D_8018CFF8
-.skip 8
-
-glabel D_8018D000
-.skip 8
-
-glabel D_8018D008
-.skip 4
-
-glabel D_8018D00C
-.skip 4
-
-glabel D_8018D010
-.skip 8
-
-glabel D_8018D018
-.skip 4
-
-glabel xOrientation
-.skip 4
-
 glabel D_8018D020
 .skip 8
 

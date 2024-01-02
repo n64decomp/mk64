@@ -443,7 +443,6 @@ extern u8 *D_8018D1E0;
 
 extern f32 D_8018CFEC;
 extern f32 D_8018CFF4;
-extern f32 D_8018D00C;
 extern u8  D_8018D228;
 extern f32 D_8018D2A0;
 extern s16 D_8018D2C0[];

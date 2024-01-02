@@ -46,10 +46,6 @@ extern s16 D_8018D2B8;
 
 extern s32 D_80183DA0;
 
-extern s16 D_8018D000;
-extern s16 D_8018D008;
-extern s16 D_8018D010;
-extern s16 D_8018D018;
 extern s16 D_8018D020;
 extern s16 D_8018D048;
 extern s16 D_8018D070;
