@@ -87,7 +87,7 @@ extern Gfx D_toads_turnpike_0D0053C8[];
 extern Gfx D_toads_turnpike_0D0053F0[];
 extern Gfx D_toads_turnpike_0D005418[];
 extern Vtx D_0D005430[];
-extern Vtx D_0D005470[];
+extern Vtx common_vtx_player_minimap_icon[];
 extern Vtx D_0D0054B0[];
 extern Vtx common_vtx_rectangle[];
 extern Vtx D_0D0057B0[];
@@ -366,6 +366,6 @@ extern u8 D_0D02AC58[][1024];
 extern u8 D_0D02BC58[][1024];
 extern s8 gTextureMiniMapFinishLine[];
 extern s8 gMiniMapKartTextures[][128];
-extern s8 gTextureMiniMapProgressDot[];
+extern s8 common_texture_minimap_progress_dot[];
 
 #endif

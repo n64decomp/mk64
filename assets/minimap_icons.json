@@ -8,5 +8,5 @@
 "gTextureMiniMapKartWario":      {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2CF58", "width": 8, "height": 8, "type": "rgba16"},
 "gTextureMiniMapKartPeach":      {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2CFD8", "width": 8, "height": 8, "type": "rgba16"},
 "gTextureMiniMapKartBowser":     {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2D058", "width": 8, "height": 8, "type": "rgba16"},
-"gTextureMiniMapProgressDot":    {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2D0D8", "width": 8, "height": 8, "type": "rgba16"}
+"common_texture_minimap_progress_dot":    {"output_dir": "minimap_icons", "rom_offset": "0x132B50", "block_offset": "0x2D0D8", "width": 8, "height": 8, "type": "rgba16"}
 }
