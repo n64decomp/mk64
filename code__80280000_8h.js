@@ -8,6 +8,5 @@ var code__80280000_8h =
     [ "D_80164714", "code__80280000_8h.html#aa06424bc18bc89925596a18ed6dc5d20", null ],
     [ "D_80164716", "code__80280000_8h.html#ae3031019b54afef5b9a1e3adb8e7786b", null ],
     [ "D_80164718", "code__80280000_8h.html#a2131cb5ad13a4a75b0004ad13f64d500", null ],
-    [ "D_802874A0", "code__80280000_8h.html#a553220e4e5a342a925f731daed15286c", null ],
-    [ "gMatrixEffectCount", "code__80280000_8h.html#abeefcb4eb9df7b90bbf608d19a9294dc", null ]
+    [ "D_802874A0", "code__80280000_8h.html#a553220e4e5a342a925f731daed15286c", null ]
 ];

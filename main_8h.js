@@ -130,7 +130,6 @@ var main_8h =
     [ "gIntrMesgBuf", "main_8h.html#a9c8747138a862fafa471e4534a9a4356", null ],
     [ "gIntrMesgQueue", "main_8h.html#ac476a835c28a3328be12c7091d01dd8e", null ],
     [ "gMainReceivedMesg", "main_8h.html#a4d789d195e6fdd4b69cd8a0dd40b0647", null ],
-    [ "gMatrixEffectCount", "main_8h.html#abeefcb4eb9df7b90bbf608d19a9294dc", null ],
     [ "gMatrixObjectCount", "main_8h.html#ab0f1bebb4d74b73e1f46ece5575071ee", null ],
     [ "gMenuSelectionFromQuit", "main_8h.html#a8c8dcdcd0702a37eac8d06289266bb2f", null ],
     [ "gModeSelection", "main_8h.html#afc00985679cbd41aa08a8fcc5925e438", null ],

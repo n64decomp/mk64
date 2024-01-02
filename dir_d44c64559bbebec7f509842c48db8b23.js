@@ -15,7 +15,6 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "debug.h", "debug_8h.html", "debug_8h" ],
     [ "defines.h", "defines_8h.html", "defines_8h" ],
     [ "functions.h", "functions_8h.html", "functions_8h" ],
-    [ "global.h", "global_8h.html", null ],
     [ "hardcoded_segments.h", "hardcoded__segments_8h.html", "hardcoded__segments_8h" ],
     [ "kart_attributes.h", "kart__attributes_8h.html", "kart__attributes_8h" ],
     [ "macros.h", "macros_8h.html", "macros_8h" ],
@@ -29,7 +28,6 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "trig_tables.inc.c", "trig__tables_8inc_8c.html", "trig__tables_8inc_8c" ],
     [ "types.h", "types_8h.html", "types_8h" ],
     [ "ultra64.h", "ultra64_8h.html", "ultra64_8h" ],
-    [ "variables.h", "variables_8h.html", "variables_8h" ],
     [ "vehicles.h", "vehicles_8h.html", "vehicles_8h" ],
     [ "waypoints.h", "waypoints_8h.html", "waypoints_8h" ]
 ];

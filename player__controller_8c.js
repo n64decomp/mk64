@@ -91,7 +91,6 @@ var player__controller_8c =
     [ "func_80038C6C", "player__controller_8c.html#ae0f6e0f1235dc6879d78318ea5db353e", null ],
     [ "get_player_index_for_player", "player__controller_8c.html#aafeb0470c7da44e1440ffa4848f7d500", null ],
     [ "player_speed", "player__controller_8c.html#a84e13f8b3b653c5b3cdd4483b6e1b153", null ],
-    [ "D_801633F8", "player__controller_8c.html#a9a0e4baed227f134463d153d4088e713", null ],
     [ "D_8018D168", "player__controller_8c.html#af7d909f91b652566a1e6824dc16a96d7", null ],
     [ "gCPUforBowser", "player__controller_8c.html#a18e1117392c185a636b0a8a55792bb22", null ],
     [ "gCPUforBowserAndDk", "player__controller_8c.html#adb7d1ada5abb6ab78d079a6d4c25c320", null ],

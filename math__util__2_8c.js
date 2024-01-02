@@ -72,7 +72,5 @@ var math__util__2_8c =
     [ "vec3f_rotate", "math__util__2_8c.html#a5dc5196d61a43564b753fb6e5ba185d9", null ],
     [ "vec3f_rotate_x_y", "math__util__2_8c.html#a6f90d4d34932da48fa6a3aaa5fa67ab7", null ],
     [ "vec3f_set_xyz", "math__util__2_8c.html#ab2e1476090270a930c087f0ea946dda2", null ],
-    [ "D_801658FE", "math__util__2_8c.html#a47e5acad2eda5e173dd8b550aab8f87a", null ],
-    [ "D_80183D60", "math__util__2_8c.html#a88125386dff585682262221ecc2a3f2a", null ],
-    [ "gMatrixHudCount", "math__util__2_8c.html#aad9c206041d209aa55bc9a003fb0a21b", null ]
+    [ "D_801658FE", "math__util__2_8c.html#a47e5acad2eda5e173dd8b550aab8f87a", null ]
 ];

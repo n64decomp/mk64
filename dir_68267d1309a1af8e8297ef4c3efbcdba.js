@@ -20,6 +20,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "code_8003DC40.h", "code__8003DC40_8h.html", "code__8003DC40_8h" ],
     [ "code_80057C60.c", "code__80057C60_8c.html", "code__80057C60_8c" ],
     [ "code_80057C60.h", "code__80057C60_8h.html", "code__80057C60_8h" ],
+    [ "code_80057C60_var.c", "code__80057C60__var_8c.html", "code__80057C60__var_8c" ],
     [ "code_8006E9C0.c", "code__8006E9C0_8c.html", "code__8006E9C0_8c" ],
     [ "code_8006E9C0.h", "code__8006E9C0_8h.html", "code__8006E9C0_8h" ],
     [ "code_80071F00.c", "code__80071F00_8c.html", "code__80071F00_8c" ],

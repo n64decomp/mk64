@@ -109,5 +109,11 @@ var code__8008C1D0_8c =
     [ "func_unnamed6", "code__8008C1D0_8c.html#abedf6e772a3a7247cae03fc883a38a5f", null ],
     [ "func_unnamed7", "code__8008C1D0_8c.html#a82d9292d0fe62f19cd5a5f64593eadf5", null ],
     [ "func_unnamed8", "code__8008C1D0_8c.html#ad8f7d27adb8877a47658ec4474db7f1f", null ],
-    [ "func_unnamed9", "code__8008C1D0_8c.html#acb2ee8c76fb39d941370a9d14b0ab554", null ]
+    [ "func_unnamed9", "code__8008C1D0_8c.html#acb2ee8c76fb39d941370a9d14b0ab554", null ],
+    [ "D_8018D900", "code__8008C1D0_8c.html#a182b175354c4b3b40e3cbf158e8d6bc3", null ],
+    [ "D_8018D920", "code__8008C1D0_8c.html#a2e5bde7c91ceabaa4297a0d204a574bc", null ],
+    [ "D_8018D930", "code__8008C1D0_8c.html#afc5a4929bc094d9dbb4c15db436c7d03", null ],
+    [ "D_8018D950", "code__8008C1D0_8c.html#a8eaf5883a76972e83f8fac89a8767311", null ],
+    [ "D_8018D970", "code__8008C1D0_8c.html#aa3486768976d2ca4e3356f7f7a1fac67", null ],
+    [ "D_8018D990", "code__8008C1D0_8c.html#a2c7ebbb5b8a5f959ea6c612997ec0456", null ]
 ];

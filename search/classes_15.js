@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['yoshivalleyegg_14683',['YoshiValleyEgg',['../structYoshiValleyEgg.html',1,'']]],
-  ['yvflagpolespawn_14684',['YVFlagPoleSpawn',['../structYVFlagPoleSpawn.html',1,'']]]
+  ['yoshivalleyegg_14817',['YoshiValleyEgg',['../structYoshiValleyEgg.html',1,'']]],
+  ['yvflagpolespawn_14818',['YVFlagPoleSpawn',['../structYVFlagPoleSpawn.html',1,'']]]
 ];

@@ -164,7 +164,5 @@ var player__controller_8h =
     [ "gListCPUforPeach", "player__controller_8h.html#aa677dfd621318fb28ab34777856fe7b3", null ],
     [ "gListCPUforToad", "player__controller_8h.html#ae21d503c6959171e350500d9d4cb3eb1", null ],
     [ "gListCPUforWario", "player__controller_8h.html#a0d715cd241d30b3366f8ca6498a8957d", null ],
-    [ "gListCPUforYoshi", "player__controller_8h.html#ae8cc54d1d000865d26d95a007fb7ff09", null ],
-    [ "gMatrixEffectCount", "player__controller_8h.html#abeefcb4eb9df7b90bbf608d19a9294dc", null ],
-    [ "gRaceFrameCounter", "player__controller_8h.html#a1ab400633b3d05faceec6f04e07639a3", null ]
+    [ "gListCPUforYoshi", "player__controller_8h.html#ae8cc54d1d000865d26d95a007fb7ff09", null ]
 ];

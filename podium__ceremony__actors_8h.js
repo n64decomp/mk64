@@ -36,7 +36,6 @@ var podium__ceremony__actors_8h =
     [ "D_802874D8", "podium__ceremony__actors_8h.html#adef79cd63739d10c4236f8d811f606f3", null ],
     [ "D_802874FC", "podium__ceremony__actors_8h.html#a8c6ae9a3ae3f35735260e615607ae90c", null ],
     [ "D_80287500", "podium__ceremony__actors_8h.html#a12fd3b40fd020dcb621021b73893385b", null ],
-    [ "gMatrixEffectCount", "podium__ceremony__actors_8h.html#abeefcb4eb9df7b90bbf608d19a9294dc", null ],
     [ "initBalloon", "podium__ceremony__actors_8h.html#a0e2ee8b9ded92c8ac347a9f8ac9e8c7e", null ],
     [ "initBurst", "podium__ceremony__actors_8h.html#a5fa04bd88237c86735fa038902368d1c", null ],
     [ "initCone", "podium__ceremony__actors_8h.html#ae26375ec0f4f77b7ff9296000eebec17", null ],

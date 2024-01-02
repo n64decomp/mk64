@@ -160,14 +160,5 @@ var code__80086E70_8h =
     [ "is_within_distance_to_player", "code__80086E70_8h.html#a0103a4cf8a1906a2743bdd764058d582", null ],
     [ "is_within_horizontal_distance_of_player", "code__80086E70_8h.html#a5d4b7e79712bb1b5628511a390d24ecd", null ],
     [ "is_within_horizontal_distance_to_camera", "code__80086E70_8h.html#aa5f77976a81c96bdb4250c8624528dc0", null ],
-    [ "D_80165760", "code__80086E70_8h.html#a37f686adcf73447f95d8fe22ca5af1fe", null ],
-    [ "D_80165770", "code__80086E70_8h.html#a6f912834980d27c0605de7096922cda9", null ],
-    [ "D_80165780", "code__80086E70_8h.html#aa3c42b866be3ef4f4c2cf94dbce34024", null ],
-    [ "D_80183DA8", "code__80086E70_8h.html#a817fedb63984167eae2e66fe3fb282cc", null ],
-    [ "D_80183DC8", "code__80086E70_8h.html#afc58c71d24969efdcbf737f095efbc69", null ],
-    [ "D_80183E40", "code__80086E70_8h.html#a74b8fd49742da650e46bcaa76743ca72", null ],
-    [ "D_80183E80", "code__80086E70_8h.html#a91142f33d04fa12ba007ac50b84a0971", null ],
-    [ "D_8018C3B0", "code__80086E70_8h.html#ae033b6098a44de05a047cca9a8822cf8", null ],
-    [ "D_8018CF68", "code__80086E70_8h.html#a7ead072584056b58fc9d3b00b296f67c", null ],
     [ "gCurrentCourseId", "code__80086E70_8h.html#a0b35aa576b8ad5250674993b72300f0d", null ]
 ];
