@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
-#include "global.h"
 
 #include "code_800AF9B0.h"
 

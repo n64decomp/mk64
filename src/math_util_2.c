@@ -635,7 +635,6 @@ void func_80041EF4(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxOrtho), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 }
 
-extern s32 gMatrixHudCount;
 //void convert_to_fixed_point_matrix(Mtx*, Mat4);
 
 UNUSED void func_80041F54(s32 x, s32 y) {

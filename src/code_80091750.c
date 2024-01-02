@@ -3,7 +3,6 @@
 #include <defines.h>
 #include <PR/ultratypes.h>
 #include <config.h>
-#include <variables.h>
 #include <sounds.h>
 #include "code_800029B0.h"
 #include "code_80091750.h"
@@ -31,6 +30,7 @@
 #include "racing/race_logic.h"
 #include "ending/code_80281C40.h"
 #include "spawn_players.h"
+#include "render_player.h"
 //! @todo Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
