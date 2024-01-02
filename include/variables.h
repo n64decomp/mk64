@@ -5,8 +5,6 @@
 #include "defines.h"
 #include "common_structs.h"
 
-extern s8    gCharacterIdByGPOverallRank[8];        // D_8018D9D0
-
 extern f32  D_80164510[];
 extern s16  gMatrixEffectCount;
 

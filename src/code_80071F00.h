@@ -388,16 +388,9 @@ extern s16 D_8016347C;
 extern s32 D_80165594;
 extern s32 D_80165598;
 extern s16 D_8018D018;
-extern s16 D_8018D048;
-extern s16 D_8018D110;
-extern s32 D_8018D140;
-extern s32 D_8018D158;
 extern s8  D_8018D198[];
 extern s8  D_8018D1A8[];
 extern s8  D_8018D1B8[];
-extern s32 D_8018D1EC;
-extern s32 D_8018D224;
-extern u8* D_8018D490;
 
 // This is either 3 Vec3s as separate variables or an array of s16's or an array of vec3s.
 // The other entries appear to be unused.

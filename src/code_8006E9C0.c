@@ -22,6 +22,7 @@
 #include "menus.h"
 #include "data/other_textures.h"
 #include "hud_renderer.h"
+#include "code_80091750.h"
 
 void init_object_list(void) {
 
@@ -172,7 +173,7 @@ void func_8006EEE8(s32 courseId) {
 // I really really don't know what D_8018D9B4 is supposed to be
 // Its value is a pointer that seems to point to compressesed data
 // of some variety (sometimes TKMK, sometimes MIO0)
-extern u8 *D_8018D9B4;
+extern uintptr_t *D_8018D9B4;
 
 void func_8006EF60(void) {
     s32 var_s2;

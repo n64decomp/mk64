@@ -312,7 +312,7 @@ SECTIONS
       BUILD_DIR/src/spawn_players.o(.bss);
       BUILD_DIR/src/code_80057C60.o(.bss);
       BUILD_DIR/src/code_80057C60_var.o(.bss);
-      BUILD_DIR/asm/bss_80165590.o(.bss);
+      BUILD_DIR/src/code_8008C1D0.o(.bss);
       BUILD_DIR/src/code_80091750.jp.o(.bss);
       BUILD_DIR/src/code_800AF9B0.o(.bss);
       BUILD_DIR/src/menus.o(.bss);

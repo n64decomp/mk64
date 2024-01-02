@@ -19,6 +19,10 @@
 
 #define D_8018C8C0_SIZE 0x64
 
+#define NUM_GROUP1_MOLES  8
+#define NUM_GROUP2_MOLES 11
+#define NUM_GROUP3_MOLES 12
+
 typedef struct {
     char unk_00[0x4];
     Vec3f unk_04;
@@ -472,32 +476,54 @@ extern f32 D_8018D00C;
 extern s16 D_8018D010;
 extern s16 D_8018D018;
 extern f32 xOrientation;
-
-
-extern f32 D_8018D028[8];
-extern f32 D_8018D050[8];
-extern f32 D_8018D078[8];
+extern s16 D_8018D020;
+extern f32 D_8018D028[];
+extern s16 D_8018D048;
+extern f32 D_8018D050[];
+extern s16 D_8018D070;
+extern f32 D_8018D078[];
+extern s16 D_8018D098;
 extern f32 D_8018D0A0[];
-extern f32 D_8018D0C8[8];
+extern s16 D_8018D0C0;
+extern f32 D_8018D0C8[];
+extern s16 D_8018D0E8;
 extern f32 D_8018D0F0[];
-
-extern s32 gMatrixHudCount; // 8018d120
+extern s16 D_8018D110;
 extern s32 D_8018D114;
+extern s32 gMatrixHudCount;
+extern s32 D_8018D140;
 extern s32 D_8018D150;
+extern s32 D_8018D158;
 extern s32 D_8018D160;
 extern s32 D_8018D168;
+extern s16 D_8018D16C;
 extern s32 D_8018D170;
+extern s16 D_8018D174;
 extern s32 D_8018D178;
+extern s16 D_8018D17C;
 extern s32 D_8018D180;
-extern s32 gIsHUDVisible; // 8018d188
+extern s16 D_8018D184;
+extern s32 gIsHUDVisible;
+extern s16 D_8018D18C;
 extern s32 D_8018D190;
+extern s8 D_8018D198[];
 extern s32 D_8018D1A0;
+extern s8 D_8018D1A8[];
 extern s32 D_8018D1B4;
-extern s32 D_8018D1D4;
+extern s8 D_8018D1B8[];
+extern s32 D_8018D1C4;
+extern s32 D_8018D1C8;
 extern s32 D_8018D1CC;
+extern s32 D_8018D1D0;
+extern s32 D_8018D1D4;
+extern s32 D_8018D1D8;
+extern s32 D_8018D1DC;
+extern u8 *D_8018D1E0;
 extern f32 D_8018D1E8;
+extern s32 D_8018D1EC;
+extern s32 D_8018D1F0;
+extern s32 D_8018D1F8;
 extern s32 D_8018D1FC;
-
 extern s16 D_8018D200;
 extern s32 D_8018D204;
 extern s16 D_8018D208;
@@ -506,28 +532,50 @@ extern s16 D_8018D210;
 extern bool D_8018D214;
 extern s16 D_8018D218;
 extern s32 D_8018D21C;
+extern u8 (*D_8018D220)[1024];
+extern s32 D_8018D224;
+extern u8  D_8018D228;
 extern s32 D_8018D22C;
+extern s8 D_8018D230;
+extern s32 D_8018D240;
+extern u8 *D_8018D248[];
 extern f32 D_8018D2A0;
 extern s32 D_8018D2A4;
 extern s32 D_8018D2AC;
+extern s16 D_8018D2B0;
+extern s32 D_8018D2B4;
+extern s16 D_8018D2B8;
 extern s32 D_8018D2BC;
+extern s16 D_8018D2C0[];
 extern s32 D_8018D2C8[];
+extern s16 D_8018D2D8[];
 extern s16 D_8018D2E0;
 extern s16 D_8018D2E8;
-
+extern s16 D_8018D2F0;
+extern s16 D_8018D2F8;
+extern u16 D_8018D300;
+extern u16 D_8018D308;
+extern u16 D_8018D310;
 extern s32 D_8018D314;
+extern u16 D_8018D318;
 extern s32 D_8018D320;
 extern s32 D_8018D380;
 extern s32 D_8018D384;
 extern s32 D_8018D388;
+extern s32 D_8018D3BC;
+extern s32 D_8018D3C0;
+extern s32 D_8018D3C4;
 extern s32 D_8018D3D4;
 extern s32 D_8018D3D8;
 extern s32 D_8018D3DC;
+extern s32 D_8018D3E0;
+extern s32 D_8018D3E4;
+extern s32 D_8018D3E8;
+extern s32 D_8018D3EC;
 extern s32 D_8018D3F0;
 extern s32 D_8018D3F4;
 extern s32 D_8018D3F8;
-extern s32 gRaceFrameCounter; // 8018d3fc
-
+extern s32 gRaceFrameCounter;
 extern s32 D_8018D400;
 extern s32 D_8018D40C;
 extern s32 D_8018D410;
@@ -552,11 +600,13 @@ extern u8 *D_8018D464;
 extern u8 *D_8018D468;
 extern u8 *D_8018D46C;
 extern u8 *D_8018D470;
+extern u8 *D_8018D474;
 extern u8 *D_8018D478;
 extern u8 *D_8018D480;
 extern u8 *D_8018D484;
 extern u8 *D_8018D488;
 extern u8 *D_8018D48C;
+extern u8* D_8018D490;
 extern u8 *D_8018D494;
 extern u8 *D_8018D498;
 extern u8 *D_8018D49C;
@@ -572,11 +622,9 @@ extern u8 *D_8018D4C0;
 extern u8 *D_8018D4C4;
 extern u8 *D_8018D4C8;
 extern Vec3f D_8018D4D0[];
-
 extern Vec3f D_8018D530[];
 extern Vec3f D_8018D590[];
-extern u16 gPlayerBalloonStatus[8][3]; // D_8018D5F0
-
+extern u16 gPlayerBalloonStatus[8][3];
 extern Vec3s D_8018D620[];
 extern Vec3f D_8018D650[];
 extern Vec3f D_8018D6B0[];

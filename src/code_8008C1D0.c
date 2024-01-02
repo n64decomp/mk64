@@ -18,6 +18,13 @@
 #include "audio/external.h"
 #include "spawn_players.h"
 
+s32 D_8018D900[8];
+s16 D_8018D920[8];
+s32 D_8018D930[8];
+s32 D_8018D950[8];
+s32 D_8018D970[8];
+s32 D_8018D990[8];
+
 UNUSED void func_unnamed(void) {
 
 }

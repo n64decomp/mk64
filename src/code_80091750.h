@@ -366,6 +366,11 @@ void func_800AF740(struct_8018D9E0_entry*);
 // This really, really shouldn't be in this header file, but I don't know where else to put it
 void rmonPrintf(const char *, ...);
 
+typedef struct struct_8018EE10_entry_cont {
+    struct_8018EE10_entry arr[1];
+
+} struct_8018EE10_entry_cont;
+
 /* File specific defines */
 
 #define D_8018D9E0_SIZE 0x20
@@ -378,32 +383,40 @@ void rmonPrintf(const char *, ...);
 
 extern s32  D_800DDB24;
 extern s16 D_80164478[];
-extern u8 *D_8018D9BC;
 
 
 extern intptr_t D_8018D9B0;
-extern s8  gGPPointsByCharacterId[8];       // D_8018D9C8
-extern s8  D_8018D9D8;
-extern s8  D_8018D9D9;
-extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE]; // D_8018D9E0
-extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE]; // D_8018DEE0
+extern uintptr_t *D_8018D9B4;
+extern uintptr_t *D_8018D9B8;
+extern u8 *D_8018D9BC;
+extern struct_8018EE10_entry_cont *D_8018D9C0;
+extern s8 gGPPointsByCharacterId[8];
+extern s8 gCharacterIdByGPOverallRank[];
+extern s8 D_8018D9D8;
+extern s8 D_8018D9D9;
+extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE];
+extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
 extern s32 D_8018E060;
 extern struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
-extern s32 gD_8018E118TotalSize;                          // D_8018E110
-extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE]; // D_8018E118
-extern s32 gNumD_8018E118Entries;                         // D_8018E758
-extern Gfx *D_8018E75C;                                   // D_8018E75C
-extern s32 gNumD_8018E768Entries;                         // D_8018E760
-extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE]; // D_8018E768
-extern s32 gCycleFlashMenu; // maybe?
-extern s8  D_8018E7AC[];
-extern s8  D_8018E7B0;  // maybe?
+extern s32 gD_8018E118TotalSize;
+extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
+extern s32 gNumD_8018E118Entries;
+extern Gfx *D_8018E75C;
+extern s32 gNumD_8018E768Entries;
+extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
+extern s32 gCycleFlashMenu;
+extern s8 D_8018E7AC[];
+extern s8 D_8018E7B0;
 extern s32 D_8018E7B8[];
+extern u32 D_8018E7C8;
+extern u32 D_8018E7D0[];
 extern s32 D_8018E7E0;
-extern s8  gTextColor;                                    // D_8018E860
-extern u8  D_8018ED90;
-extern u8  D_8018ED91;
-extern s8  D_8018E838[];
+extern s16 D_8018E7F0;
+extern s16 D_8018E7F8;
+extern s8 gTextColor;
+extern u8 D_8018ED90;
+extern u8 D_8018ED91;
+extern s8 D_8018E838[];
 extern s32 D_8018E840[];
 extern s32 D_8018E850[];
 extern s32 D_8018E854;

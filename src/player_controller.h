@@ -192,6 +192,5 @@ extern s16 **gCPUforTwoPlayer[];
 extern s16 gMatrixEffectCount;
 
 extern s16 D_801656F0;
-extern s32 gRaceFrameCounter;
 
 #endif

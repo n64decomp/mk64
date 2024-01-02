@@ -160,14 +160,6 @@ typedef struct
 
 // Used for loop bounds when accessing indexObjectList1
 extern s16 D_80165750;
-// These seem to be limits on different object types in Moo Moo Farm
-// See init_course_object in code_8006E9C0.c
-// Maybe max number of active moles in a given group of moles?
-extern s32 D_8018D1C8;
-extern s32 D_8018D1D0;
-extern s32 D_8018D1D8;
-// Limit on some object type (ice chips?) in Sherbet Land
-extern s32 D_8018D3C0;
 
 /**
  * indexObjectList1, indexObjectList2, indexObjectList3, and indexObjectList4 are all lists of indices in gObjectList.
@@ -250,38 +242,14 @@ extern s16 D_800E57F8[];
 
 #define D_8018C1B0_SIZE 128
 #define NUM_MAX_MOLES  0x1F
-#define NUM_GROUP1_MOLES  8
-#define NUM_GROUP2_MOLES 11
-#define NUM_GROUP3_MOLES 12
 #define NUM_SNOWFLAKES 0x32
 
 extern Vec3s gMoleSpawns[];
-// Exact use unknown, something related to the mole groups
-// Maybe be indicating that a given mole in a given group is active?
-extern s8 D_8018D198[];
-extern s8 D_8018D1A8[];
-extern s8 D_8018D1B8[];
-
-// Used for cycling through snowflakes in func_80078790
-extern s16 D_8018D174;
-// Controls number of come object type placed into D_8018C3F0 on Frappe Snowland. So, maybe snowmen/snowflakes?
-extern s32 D_8018D3BC;
 
 #define NUM_TORCHES 8
 
 // This should really be `extern Vec3s gTorchSpawns[];`
 //! @todo fix this extern
-extern s16 gTorchSpawns[]; 
-
-// Number of used spots in D_8018CC80?
-extern s32 D_8018D1F0;
-// Next free spot in D_8018CC80?
-extern s32 D_8018D1F8;
-// Also next free spot in D_8018CC80?
-extern s16 D_8018D17C;
-// Something related to the display of the clouds/stars?
-extern s8 D_8018D230;
-// Some sort of limiter on how many of some object type can spawn
-extern s32 D_8018D3C4;
+extern s16 gTorchSpawns[];
 
 #endif

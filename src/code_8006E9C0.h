@@ -35,28 +35,7 @@ extern s16 D_800E5520[];
 extern s16 D_800E5548[];
 extern u8 *gCourseOutlineTextures[0x14]; // 800e54d0
 
-
-// Destination for decompressed exhaust textures (I think)
-// I'm not how much I like this "pointer to an array" setup, but if it matches it matches
-extern u8 (*D_8018D220)[1024];
-extern s32 D_8018D240;
-extern u8 *D_8018D248[];
-extern s16 D_8018D2B0;
-extern s16 D_8018D2B8;
-
 extern s32 D_80183DA0;
-
-extern s16 D_8018D020;
-extern s16 D_8018D048;
-extern s16 D_8018D070;
-extern s16 D_8018D098;
-extern s16 D_8018D0C0;
-extern s16 D_8018D0E8;
-
-extern s16 D_8018D110;
-extern u8 *D_8018D1E0;
-
-extern intptr_t D_8018D9B0;
 
 // These are found in data_code_80071F00
 extern StarSpawn D_800E6A38[];                        /* unable to generate initializer */

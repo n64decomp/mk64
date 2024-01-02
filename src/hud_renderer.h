@@ -439,26 +439,11 @@ extern s32 D_801655CC;
 extern u16 D_8016579E;
 
 extern Vec3su D_80183E80;
-extern u8 *D_8018D1E0;
 
 extern f32 D_8018CFEC;
 extern f32 D_8018CFF4;
-extern u8  D_8018D228;
-extern f32 D_8018D2A0;
-extern s16 D_8018D2C0[];
-extern s16 D_8018D2D8[];
 extern s16 D_8018D2E0;
 extern s16 D_8018D2E8;
-extern s16 D_8018D2F0;
-extern s16 D_8018D2F8;
-extern u16 D_8018D300;
-extern u16 D_8018D308;
-extern u16 D_8018D310;
-extern u16 D_8018D318;
-extern s32 D_8018D3E0; // some alpha
-extern s32 D_8018D3E4; // some red
-extern s32 D_8018D3E8; // some green
-extern s32 D_8018D3EC; // some blue
 
 extern s32 D_8018D400;
 extern u8* D_8018D4BC;
