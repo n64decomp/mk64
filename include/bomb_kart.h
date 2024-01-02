@@ -51,6 +51,7 @@ typedef struct {
 	/* 0x50 */ f32 yPos; // Y position of the center of the circle
 } BombKart; // size = 0x54
 
+//! Indexes for the objects associated with the Bomb Karts
 extern s32 D_80183DD8[NUM_BOMB_KARTS_MAX];
 
 extern BombKart gBombKarts[NUM_BOMB_KARTS_MAX];

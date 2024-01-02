@@ -243,6 +243,7 @@ void func_8006E8C4(Player*, s8, s8);
 void func_8006E940(Player*, s8, s8);
 
 // data/data_code_80071F00_2.s
+
 extern Vtx gBalloonVertexPlane1[];
 extern Vtx gBalloonVertexPlane2[];
 
@@ -267,10 +268,6 @@ extern u16 D_800E69F4[][4];
 
 extern u8 D_800E6F30[][3];
 extern u8 D_800E6F48[][3];
-
-
-
-// BSS, presumably
 
 extern f32 D_801652A0[];
 
@@ -307,6 +304,7 @@ extern s16 D_80165708;
 extern s16 D_80165710;
 // extern s16 D_80165730; -> objects.h
 // extern s16 D_80165738; -> objects.h
+
 extern s16 D_80165740;
 extern s16 D_80165748;
 extern s16 D_80165718;
@@ -314,6 +312,7 @@ extern s16 D_80165720;
 extern s16 D_80165728;
 
 // extern s16 gNumActiveThwomps; -> objects.h
+
 extern s32 D_80165754;
 // extern ThwompSpawn *gThowmpSpawnList; -> objects.h
 
@@ -388,42 +387,57 @@ extern s8  D_80165908;
 
 extern s8 D_80165A90;
 // extern Objects gObjectList[]; -> objects.h
+
 extern s32 objectListSize;
 extern Mtx D_80183D60;
 // extern s32 D_80183DA0; -> objects.h
+
 extern f32 D_80183DA8[];
 // extern s32 D_80183DB8[]; -> objects.h
+
 extern f32 D_80183DC8[];
 // extern s32 D_80183DD8[]; -> bomb_kart.h
 // extern s32 D_80183E38; -> objects.h
+
 extern Vec3f D_80183E40;
 // extern s32 D_80183E4C; -> objects.h
+
 extern Vec3f D_80183E50;
 // extern s32 D_80183E5C; -> objects.h
 // extern s32 D_80183E6C; -> objects.h
+
 extern Vec3f D_80183E70;
 // extern s32 D_80183E7C; -> objects.h
+
 extern Vec3su D_80183E80;
 // extern s32 gItemWindowObjectByPlayerId[]; -> objects.h
+
 extern Vec3su D_80183E98;
 // extern s32 indexObjectList1[]; -> objects.h
 // extern s32 indexObjectList2[]; -> objects.h
+
 extern u8 D_80183FA8[4][0x2000];
 // extern s32 indexObjectList3[]; -> objects.h
+
 extern u8 *D_8018C028;
 // extern s32 indexObjectList4[]; -> objects.h
 // extern Collision D_8018C0B0[]; -> objects.h
 // extern s32 D_8018C1B0[]; -> objects.h
+
 extern Collision D_8018C3B0;
 // extern s32 D_8018C3F0[]; -> objects.h
 // extern s32 D_8018C630[]; -> objects.h
+
 extern Collision D_8018C830;
 // extern s32 D_8018C870[]; -> objects.h
 // extern s32 D_8018C970[]; -> objects.h
+
 extern hud_player playerHUD[];
 // extern s32 D_8018CC80[]; -> objects.h
+
 extern struct_D_8018CE10 D_8018CE10[];
 // extern s32 D_8018CF10; -> objects.h
+
 extern Camera *D_8018CF14;
 extern s16 D_8018CF18;
 extern Player *D_8018CF1C;
@@ -482,30 +496,39 @@ extern s32 D_8018D168;
 extern s16 D_8018D16C;
 extern s32 D_8018D170;
 // extern s16 D_8018D174; -> objects.h
+
 extern s32 D_8018D178;
 // extern s16 D_8018D17C; -> objects.h
+
 extern s32 D_8018D180;
 extern s16 D_8018D184;
 extern s32 gIsHUDVisible;
 extern s16 D_8018D18C;
 extern s32 D_8018D190;
 // extern s8 D_8018D198[]; -> objects.h
+
 extern s32 D_8018D1A0;
 // extern s8 D_8018D1A8[]; -> objects.h
+
 extern s32 D_8018D1B4;
 // extern s8 D_8018D1B8[]; -> objects.h
+
 extern s32 D_8018D1C4;
 // extern s32 D_8018D1C8; -> objects.h
+
 extern s32 D_8018D1CC;
 // extern s32 D_8018D1D0; -> objects.h
+
 extern s32 D_8018D1D4;
 // extern s32 D_8018D1D8; -> objects.h
+
 extern s32 D_8018D1DC;
 extern u8 *D_8018D1E0;
 extern f32 D_8018D1E8;
 extern s32 D_8018D1EC;
 // extern s32 D_8018D1F0; -> objects.h
 // extern s32 D_8018D1F8; -> objects.h
+
 extern s32 D_8018D1FC;
 extern s16 D_8018D200;
 extern s32 D_8018D204;
@@ -520,6 +543,7 @@ extern s32 D_8018D224;
 extern u8  D_8018D228;
 extern s32 D_8018D22C;
 // extern s8 D_8018D230; -> objects.h
+
 extern s32 D_8018D240;
 extern u8 *D_8018D248[];
 extern f32 D_8018D2A0;
@@ -548,6 +572,7 @@ extern s32 D_8018D388;
 // extern s32 D_8018D3BC; -> objects.h
 // extern s32 D_8018D3C0; -> objects.h
 // extern s32 D_8018D3C4; -> objects.h
+
 extern s32 D_8018D3D4;
 extern s32 D_8018D3D8;
 extern s32 D_8018D3DC;

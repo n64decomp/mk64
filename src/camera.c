@@ -9,7 +9,6 @@
 #include "math_util.h"
 #include "racing/memory.h"
 #include "waypoints.h"
-#include "variables.h"
 #include "render_player.h"
 #include "collision.h"
 #include "code_80057C60.h"

@@ -11,7 +11,6 @@
 #include "code_80071F00.h"
 #include "objects.h"
 #include "bomb_kart.h"
-#include "variables.h"
 #include "save.h"
 #include "common_textures.h"
 #include <sounds.h>

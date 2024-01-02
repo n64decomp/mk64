@@ -7,7 +7,6 @@
 #include "actors.h"
 #include "code_800029B0.h"
 #include "racing/memory.h"
-#include <variables.h>
 #include <config.h>
 #include <defines.h>
 #include "math_util.h"
@@ -228,9 +227,7 @@ Mtx D_80183D60;
  **/
 s32 D_80183DA0;
 f32 D_80183DA8[4];
-/**
- * Lakitu?
- */
+//! Lakitu?
 s32 D_80183DB8[4];
 f32 D_80183DC8[4];
 //! Indexes for the objects associated with the Bomb Karts
@@ -307,8 +304,8 @@ Collision D_8018C3B0;
 /**
  * List of object list indices used for:
  *   Bats in Banshee's Boardwalk (but only 1 player mode?)
-**/
-s32 D_8018C3F0[128];
+ */
+s32 D_8018C3F0[D_8018C3F0_SIZE];
 // Maybe some unused Collision?
 UNUSED Collision D_8018C5F0;
 s32 D_8018C630[D_8018C630_SIZE];
@@ -317,7 +314,7 @@ Collision D_8018C830;
  * List of object list indices. Used both for the fires in the DK Jungle cave
  * and, seemingly for the trail that shells leave behind them.
  * I think they're using the same texture, which would explain the dual use
-**/
+ */
 s32 D_8018C870[D_8018C870_SIZE];
 /**
  * Seemingly a list of object list indices used for the leaves that sometimes fall
@@ -329,7 +326,7 @@ hud_player playerHUD[4];
  * List of object list indices used by the clouds and stars in some stages
  * Also used for snowflakes like D_8018C1B0? Not sure what's up with that
  */
-s32 D_8018CC80[D_8018C8C0_SIZE];
+s32 D_8018CC80[D_8018CC80_SIZE];
 struct_D_8018CE10 D_8018CE10[8];
 //! Unknown object index, only set for Kalimari Desert, never read
 s32 D_8018CF10;

@@ -3,7 +3,6 @@
 #include <common_structs.h>
 #include "math_util_2.h"
 #include "main.h"
-#include "variables.h"
 #include "math_util.h"
 #include "objects.h"
 
@@ -11,6 +10,7 @@
 #include "collision.h"
 #include "render_player.h"
 #include "code_80057C60.h"
+#include "defines.h"
 
 #pragma intrinsic (sqrtf)
 

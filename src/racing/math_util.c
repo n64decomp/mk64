@@ -2,7 +2,6 @@
 #include <mk64.h>
 #include <macros.h>
 #include <math_util.h>
-#include <variables.h>
 #include <main.h>
 #include "framebuffers.h"
 #include <PR/rcp.h>

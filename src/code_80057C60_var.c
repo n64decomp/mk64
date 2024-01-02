@@ -46,27 +46,31 @@ UNUSED s32 D_8018D164;
 s32 D_8018D168;
 s16 D_8018D16C;
 s32 D_8018D170;
-// Used for cycling through snowflakes in func_80078790
+//! Used for cycling through snowflakes in func_80078790
 s16 D_8018D174;
 s32 D_8018D178;
-// Also next free spot in D_8018CC80?
+//! Also next free spot in D_8018CC80?
 s16 D_8018D17C;
 s32 D_8018D180;
 s16 D_8018D184;
 s32 gIsHUDVisible;
 s16 D_8018D18C;
 s32 D_8018D190;
-// Exact use unknown, something related to the mole groups
-// Maybe be indicating that a given mole in a given group is active?
+/**
+ * Exact use unknown, something related to the mole groups
+ * Maybe be indicating that a given mole in a given group is active?
+ */
 s8 D_8018D198[NUM_GROUP1_MOLES];
 s32 D_8018D1A0;
 s8 D_8018D1A8[NUM_GROUP2_MOLES];
 s32 D_8018D1B4;
 s8 D_8018D1B8[NUM_GROUP3_MOLES];
 s32 D_8018D1C4;
-// These seem to be limits on different object types in Moo Moo Farm
-// See init_course_object in code_8006E9C0.c
-// Maybe max number of active moles in a given group of moles?
+/**
+ * These seem to be limits on different object types in Moo Moo Farm
+ * See init_course_object in code_8006E9C0.c
+ * Maybe max number of active moles in a given group of moles?
+ */
 s32 D_8018D1C8;
 s32 D_8018D1CC;
 s32 D_8018D1D0;
@@ -77,10 +81,10 @@ u8 *D_8018D1E0;
 UNUSED s32 D_8018D1E4;
 f32 D_8018D1E8;
 s32 D_8018D1EC;
-// Number of used spots in D_8018CC80?
+//! Number of used spots in D_8018CC80?
 s32 D_8018D1F0;
 UNUSED s32 D_8018D1F4;
-// Next free spot in D_8018CC80?
+//! Next free spot in D_8018CC80?
 s32 D_8018D1F8;
 s32 D_8018D1FC;
 s16 D_8018D200;
@@ -91,13 +95,15 @@ s16 D_8018D210;
 bool D_8018D214;
 s16 D_8018D218;
 s32 D_8018D21C;
-// Destination for decompressed exhaust textures (I think)
-// I'm not how much I like this "pointer to an array" setup, but if it matches it matches
+/**
+ * Destination for decompressed exhaust textures (I think)
+ * I'm not how much I like this "pointer to an array" setup, but if it matches it matches
+ */
 u8 (*D_8018D220)[1024];
 s32 D_8018D224;
 u8 D_8018D228;
 s32 D_8018D22C;
-// Something related to the display of the clouds/stars?
+//! Something related to the display of the clouds/stars?
 s8 D_8018D230;
 UNUSED s32 D_8018D238[2];
 s32 D_8018D240;
@@ -135,23 +141,23 @@ s32 D_8018D380;
 s32 D_8018D384;
 s32 D_8018D388;
 UNUSED s32 D_8018D390[11];
-// Controls number of come object type placed into D_8018C3F0 on Frappe Snowland. So, maybe snowmen/snowflakes?
+//! Controls number of come object type placed into D_8018C3F0 on Frappe Snowland. So, maybe snowmen/snowflakes?
 s32 D_8018D3BC;
-// Limit on some object type (ice chips?) in Sherbet Land
+//! Limit on some object type (ice chips?) in Sherbet Land
 s32 D_8018D3C0;
-// Some sort of limiter on how many of some object type can spawn
+//! Some sort of limiter on how many of some object type can spawn
 s32 D_8018D3C4;
 UNUSED s32 D_8018D3C8[3];
 s32 D_8018D3D4;
 s32 D_8018D3D8;
 s32 D_8018D3DC;
-// some alpha
+//! some alpha
 s32 D_8018D3E0; 
-// some red
+//! some red
 s32 D_8018D3E4; 
-// some green
+//! some green
 s32 D_8018D3E8; 
-// some blue
+//! some blue
 s32 D_8018D3EC; 
 s32 D_8018D3F0;
 s32 D_8018D3F4;

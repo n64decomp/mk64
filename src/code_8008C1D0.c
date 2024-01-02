@@ -2,7 +2,6 @@
 #include <macros.h>
 #include <types.h>
 #include <functions.h>
-#include <variables.h>
 #include <defines.h>
 #include <sounds.h>
 #include "code_800029B0.h"

@@ -7,7 +7,6 @@
 #include <common_structs.h>
 #include "main.h"
 #include "memory.h"
-#include "variables.h"
 #include "common_textures.h"
 #include "render_player.h"
 #include "hud_renderer.h"
