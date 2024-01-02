@@ -380,7 +380,7 @@ extern s32  D_800DDB24;
 extern s16 D_80164478[];
 extern u8 *D_8018D9BC;
 
-extern s32 D_80165754;
+
 extern intptr_t D_8018D9B0;
 extern s8  gGPPointsByCharacterId[8];       // D_8018D9C8
 extern s8  D_8018D9D8;

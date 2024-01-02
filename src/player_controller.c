@@ -18,6 +18,7 @@
 #include "main.h"
 #include "camera.h"
 #include "spawn_players.h"
+#include "code_80057C60.h"
 
 extern s16 D_801633F8;
 extern s32 D_8018D168;

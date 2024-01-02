@@ -434,31 +434,11 @@ extern f32 D_801637F0;
 
 extern s32 D_80163814;
 
-extern u16 D_801656B0;
-extern u16 D_801656C0;
 extern s32 D_801655CC;
-extern u16 D_801656D0;
-extern u16 D_801656E0;
 
-extern s16 D_80165708;
-extern s16 D_80165710;
-extern s8  D_801657D0[];
 extern u16 D_8016579E;
-extern s8  D_801657B8[16];
 
-extern s32 D_80165860;
-extern s32 D_8016586C;
-extern s32 D_80165878;
-extern s32 D_8016589C;
-
-extern Camera *D_8018CF14;
-extern s32 D_80183DD8[];
-extern Vec3f D_80183E40;
-extern Vec3f D_80183E50;
-extern Vec3f D_80183E70;
 extern Vec3su D_80183E80;
-extern Vec3su D_80183E98;
-extern Collision D_8018C830;
 extern u8 *D_8018D1E0;
 
 extern f32 D_8018CFEC;

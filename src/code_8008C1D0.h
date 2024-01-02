@@ -136,7 +136,6 @@ extern f32 D_800E37F0[];
 extern s16 D_80165190[4][8];
 extern f32 D_80165280[];
 extern s32 gFrameSinceLastACombo[];
-extern s8  D_801658BC;
 extern s32 D_8018D900[];
 extern s16 D_8018D920[];
 extern s32 D_8018D930[];

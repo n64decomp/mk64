@@ -14,6 +14,7 @@
 #include "audio/external.h"
 #include "variables.h"
 #include "main.h"
+#include "code_80057C60.h"
 
 void func_80086E70(s32 objectIndex) {
     gObjectList[objectIndex].unk_0AE = 1;// * 0xE0)) = 1;

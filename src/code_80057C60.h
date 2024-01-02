@@ -2,8 +2,30 @@
 #define CODE_80057C60_H
 
 #include "common_structs.h"
+#include "objects.h"
+#include "camera.h"
 
 // code_80057C60
+#define D_8018C3F0_SIZE 128
+
+#define D_8018C630_SIZE 128
+
+#define D_8018C870_SIZE 0x40
+
+// Maximum number of leaves that can be falling?
+#define D_8018C970_SIZE 0x40
+// Number of leaves to spawn each bonk?
+#define D_8018C970_SPAWN_SIZE 0x14
+
+#define D_8018C8C0_SIZE 0x64
+
+typedef struct {
+    char unk_00[0x4];
+    Vec3f unk_04;
+    char unk_10[0x4];
+    s32 objectIndex;
+    char unk_18[0x8];
+} struct_D_8018CE10; // size = 0x20
 
 void func_8005C674(s8 arg0, s16 *arg1, s16 *arg2, s16 *arg3);
 void func_80057C60(void);
@@ -286,22 +308,45 @@ extern s32 D_80165618;
 extern s32 D_80165628;
 extern s32 D_80165638;
 extern u32 D_80165648;
-extern u32 D_80165654[];
 extern u32 D_80165658[];
 extern s32 D_80165678;
+extern u16 D_801656B0;
+extern u16 D_801656C0;
+extern u16 D_801656D0;
+extern u16 D_801656E0;
 extern s16 D_801656F0;
-
+extern s16 D_80165708;
+extern s16 D_80165710;
+extern s16 D_80165730;
+extern s16 D_80165738;
+extern s16 D_80165740;
+extern s16 D_80165748;
 extern s16 D_80165718;
 extern s16 D_80165720;
 extern s16 D_80165728;
+
+extern s16 gNumActiveThwomps;
+extern s32 D_80165754;
+extern ThwompSpawn *gThowmpSpawnList;
+
+extern Vec4s D_80165760;
+extern s8 D_8016576A;
+extern Vec4s D_80165770;
 extern s16 D_8016578C;
+extern Vec4s D_80165780;
+
 extern s16 D_80165790;
 extern s16 D_80165794;
+extern s8 D_8016579C;
 extern u16 D_8016579E;
+extern u16 D_801657A2;
+extern s8 D_801657AE;
 extern s8 D_801657B0;
 extern s8 D_801657B2;
-extern s8 D_801657AE;
+extern s8 D_801657B4;
+extern s8 D_801657B8[];
 extern s8 D_801657C8;
+extern s8 D_801657D0[];
 extern s8 D_801657D8;
 extern s8 D_801657E2;
 extern s8 D_801657E3;
@@ -311,35 +356,117 @@ extern bool8 D_801657E6;
 extern u8 D_801657E7;
 extern bool8 D_801657E8;
 extern bool8 D_801657F0;
-extern s8 D_801657F8;
+extern bool8 D_801657F8;
+extern s32 D_801657FC;
 
 extern s8 D_80165800[2];
+extern s32 D_80165804;
+extern s8 D_80165808;
+extern s32 D_8016580C;
+extern bool8 D_80165810;
+extern s32 D_80165814;
+extern bool8 D_80165818;
+extern s32 D_8016581C;
+extern s8 D_80165820;
+extern s8 D_80165828;
+extern Vec3su D_8016582C;
+extern s8 D_80165832[2];
+extern Vec3su D_80165834;
+extern s8 D_80165840[];
+extern s32 D_80165860;
+extern s32 D_8016586C;
+extern s32 D_80165878;
 extern s32 D_8016587C;
 extern u8 *D_80165880;
+extern s8 D_80165888;
 extern s8 D_80165890;
 extern s8 D_80165898;
+extern s32 D_8016589C;
 extern s8 D_801658A8;
+extern s8 D_801658BC;
+extern s8 D_801658C6;
+extern s8 D_801658CE;
 extern s8 D_801658D6;
-extern u8 sRandomItemIndex; // 801658fd
-extern u8 gControllerRandom; // 801658ff
+extern s8 D_801658DC;
+extern s8 D_801658E4;
+extern s8 D_801658EC;
+extern s8 D_801658F4;
+extern u8 sRandomItemIndex;
+extern s8 D_801658FE;
+extern u8 gControllerRandom;
 
 extern s16 D_80165900;
 extern s8  D_80165908;
 
 extern s8 D_80165A90;
-
-extern s8 D_8018CAE0;
-
+// This is the object list
+extern Objects gObjectList[];
+extern s32 objectListSize;
+extern Mtx D_80183D60;
+extern s32 D_80183DA0;
+extern f32 D_80183DA8[];
+extern s32 D_80183DB8[];
+extern f32 D_80183DC8[];
+extern s32 D_80183DD8[];
+extern s32 D_80183E38;
+extern Vec3f D_80183E40;
+extern s32 D_80183E4C;
+extern Vec3f D_80183E50;
+extern s32 D_80183E5C;
+extern s32 D_80183E6C;
+extern Vec3f D_80183E70;
+extern s32 D_80183E7C;
+extern Vec3su D_80183E80;
+extern s32 gItemWindowObjectByPlayerId[];
+extern Vec3su D_80183E98;
+extern s32 indexObjectList1[];
+extern s32 indexObjectList2[];
+extern u8 D_80183FA8[4][0x2000];
+extern s32 indexObjectList3[];
+extern u8 *D_8018C028;
+extern s32 indexObjectList4[];
+extern Collision D_8018C0B0[];
+extern s32 D_8018C1B0[];
+extern Collision D_8018C3B0;
+extern s32 D_8018C3F0[];
+extern s32 D_8018C630[];
+extern Collision D_8018C830;
+extern s32 D_8018C870[];
+extern s32 D_8018C970[];
+extern hud_player playerHUD[];
+extern s32 D_8018CC80[];
+extern struct_D_8018CE10 D_8018CE10[];
+extern s32 D_8018CF10;
+extern Camera *D_8018CF14;
+extern s16 D_8018CF18;
 extern Player *D_8018CF1C;
+extern s16 D_8018CF20;
 extern Player *D_8018CF28[];
+extern s16 D_8018CF48;
 extern s16 D_8018CF50[];
-extern s16 gGPCurrentRaceCharacterIdByRank[]; // 8018cf80
+extern s16 D_8018CF60;
+extern s16 D_8018CF68[];
+extern s16 D_8018CF78;
+extern s16 gGPCurrentRaceCharacterIdByRank[];
+extern s16 D_8018CF90;
 extern s16 D_8018CF98[];
+extern s16 D_8018CFA8;
+extern s16 D_8018CFB0;
+extern s16 D_8018CFB8;
+extern s16 D_8018CFC0;
+extern s16 D_8018CFC8;
 extern f32 D_8018CFCC;
+extern s16 D_8018CFD0;
 extern f32 D_8018CFD4;
+extern s16 D_8018CFD8;
+extern s16 D_8018CFE0;
 extern f32 D_8018CFE4;
+extern s16 D_8018CFE8;
 extern f32 D_8018CFEC;
+extern s16 D_8018CFF0;
 extern f32 D_8018CFF4;
+extern s16 D_8018CFF8;
+
 
 extern f32 D_8018D028[8];
 extern f32 D_8018D050[8];
@@ -457,7 +584,7 @@ extern Vec3s D_8018D800[];
 extern Vec3s D_8018D830[];
 extern Vec3s D_8018D860[];
 extern Vec3s D_8018D890[];
-extern Vec3s D_8018D8D0[];
 extern s16 gPlayerBalloonCount[];      // D_8018D8C0
+extern Vec3s D_8018D8D0[];
 
 #endif

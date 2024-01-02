@@ -383,34 +383,10 @@ extern u8 *D_800E4570[];
 extern u8 *gPortraitTLUTs[];
 extern u8 *gPortraitTextures[];
 
-// Seemingly a pointer to Lakitu texture(s)
-extern u8 *D_8018C028;
-// Seemingly a list of textures for Lakitu
-// Never explicitly given data, data appears to be placed here
-// via some type of DMA.
-// I'm also not certain about its dimensions
-// I think the entires in this array are way over-sized
-extern u8 D_80183FA8[4][0x2000];
-
-// Something related to the rotation(?) of ice in Sherbet Land
-extern u16 D_801657A2;
-
-extern s8  D_801658CE;
 extern s32 D_80162DF8;
 extern s16 D_8016347C;
 extern s32 D_80165594;
 extern s32 D_80165598;
-extern s16 D_80165740;
-extern s8  D_801657B4;
-extern Vec3su D_8016582C;
-extern s8  D_80165888;
-extern s8  D_801658C6;
-extern s8  D_801658DC;
-extern s8  D_801658F4;
-extern s32 objectListSize;
-extern s16 D_8018CFB0;
-extern s16 D_8018CFE8;
-extern s16 D_8018CFF0;
 extern s16 D_8018D018;
 extern f32 xOrientation;
 extern s16 D_8018D048;

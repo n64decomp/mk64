@@ -80,9 +80,6 @@ typedef struct
     /* 0xDF */ u8  unk_0DF;
 } Objects; // size = 0xE0
 
-// This is the object list
-extern Objects gObjectList[];
-
 typedef struct
 {
     /* 0x00 */ f32 sizeScaling;
@@ -159,21 +156,7 @@ typedef struct
 
 // This are other lists of indices in gObjectList.
 
-/**
- * Use unknown. An object is reserved and its index is saved to
- * this variable, but it appears to go unreferenced
- **/
-extern s32 D_80183DA0;
-
-/**
- * Lakitu?
-**/
-extern s32 D_80183DB8[];
-
 #define DELETED_OBJECT_ID -1
-
-// Appears to be a list of object list indices for the Item Window part of the HUD
-extern s32 gItemWindowObjectByPlayerId[];
 
 // Used for loop bounds when accessing indexObjectList1
 extern s16 D_80165750;
@@ -185,8 +168,6 @@ extern s32 D_8018D1D0;
 extern s32 D_8018D1D8;
 // Limit on some object type (ice chips?) in Sherbet Land
 extern s32 D_8018D3C0;
-
-extern Collision D_8018C0B0[];
 
 /**
  * indexObjectList1, indexObjectList2, indexObjectList3, and indexObjectList4 are all lists of indices in gObjectList.
@@ -232,26 +213,11 @@ typedef struct {
 extern ThwompSpawn gThomwpSpawns50CC[];
 extern ThwompSpawn gThwompSpawns100CCExtra[];
 extern ThwompSpawn gThomwpSpawns150CC[];
-extern ThwompSpawn *gThowmpSpawnList;
-
-extern s16 gNumActiveThwomps;
 
 #define NUM_NEON_SIGNS 10
 #define NUM_CHAIN_CHOMPS 3
 
 #define NUM_PENGUINS 15
-
-/**
- * Snowmen bodies in FrappeSnowland
- * Crabs in Koopa Troopa Beach
- * Hot air balloon in Luigi Raceway?
- * Neon signs in Rainbow Road?
- * Thwomps in Bower's Castle?
- * Penguins in Sherbet Land?
- * Flag Poles in Yoshi Valley?
-**/
-extern s32 indexObjectList1[];
-
 
 #define NUM_SEAGULLS 10
 #define NUM_SNOWMEN 19
@@ -272,16 +238,6 @@ typedef struct {
 extern HegdehogSpawn gHedgehogSpawns[];
 extern Vec3s gHedgehogPatrolPoints[];
 
-/**
- * Snowmen heads in Frappe Snowland
- * Chain Chomps in RaindbowRoad?
- * Trophy in award ceremony?
- * Seagulls in Koopa Troopa Beach?
- * Hedgehogs in Yoshi Valley?
- * Spawn for big fire breath in Bowser's Castle
-**/
-extern s32 indexObjectList2[];
-
 #define NUM_BOOS 0xA
 #define NUM_FIRE_BREATHS 4
 
@@ -291,17 +247,6 @@ extern Vec3s gFireBreathsSpawns[];
 extern s16 D_800E5740[];
 extern s16 D_800E579C[];
 extern s16 D_800E57F8[];
-
-/**
- * Boos in Banshee Boardwalk
- * Spawners for the 4 small fire breaths inside Bowser's Castle
-**/
-extern s32 indexObjectList3[];
-
-/**
- * Unused list of object indices
-*/
-extern s32 indexObjectList4[];
 
 #define D_8018C1B0_SIZE 128
 #define NUM_MAX_MOLES  0x1F
@@ -317,42 +262,10 @@ extern s8 D_8018D198[];
 extern s8 D_8018D1A8[];
 extern s8 D_8018D1B8[];
 
-// Unknown object index, only set for Kalimari Desert, never read
-extern s32 D_8018CF10;
-
-/**
- * List of object list indices used for:
- *   Moles in Moo Moo Farm
- *   Snow flakes in Frappe Snowland
- *   Segments of the fire breath from the statues in Bowser's Castle
- *   Potentially other things
-**/
-extern s32 D_8018C1B0[];
-// Next free spot in D_8018C1B0? Wraps back around to 0 if it gets bigger than D_8018C1B0_SIZE
-extern s32 D_80183E38;
 // Used for cycling through snowflakes in func_80078790
 extern s16 D_8018D174;
-
-#define D_8018C3F0_SIZE 128
-/**
- * List of object list indices used for:
- *   Bats in Banshee's Boardwalk (but only 1 player mode?)
-**/
-extern s32 D_8018C3F0[];
-// Next free spot in D_8018C3F0? Wraps back around to 0 if it gets bigger than D_8018C3F0_SIZE
-extern s32 D_80183E4C;
 // Controls number of come object type placed into D_8018C3F0 on Frappe Snowland. So, maybe snowmen/snowflakes?
 extern s32 D_8018D3BC;
-
-#define D_8018C630_SIZE 128
-extern s32 D_8018C630[];
-// Next free spot in D_8018C630?
-extern s32 D_80183E5C;
-extern s16 D_80165730;
-// Tracking a count of some object type, don't know what object type yet
-extern s16 D_80165738;
-
-#define D_8018C870_SIZE 0x40
 
 #define NUM_TORCHES 8
 
@@ -360,29 +273,6 @@ extern s16 D_80165738;
 //! @todo fix this extern
 extern s16 gTorchSpawns[]; 
 
-/**
- * List of object list indices. Used both for the fires in the DK Jungle cave
- * and, seemingly for the trail that shells leave behind them.
- * I think they're using the same texture, which would explain the dual use
-**/
-extern s32 D_8018C870[];
-// Next free spot in D_8018C870? Wraps back around to 0 if it gets bigger than D_8018C870_SIZE
-extern s32 D_80183E6C;
-
-// Maximum number of leaves that can be falling?
-#define D_8018C970_SIZE 0x40
-// Number of leaves to spawn each bonk?
-#define D_8018C970_SPAWN_SIZE 0x14
-// Seemingly a list of object list indices used for the leaves that sometimes fall
-// trees when you bonk into them
-extern s32 D_8018C970[];
-// Next free spot in D_8018C970? Wraps back around to 0 if it gets bigger than D_8018C970_SIZE
-extern s32 D_80183E7C;
-
-#define D_8018CC80_SIZE 0x64
-// List of object list indices used by the clouds and stars in some stages
-// Also used for snowflakes like D_8018C1B0? Not sure what's up with that
-extern s32 D_8018CC80[];
 // Number of used spots in D_8018CC80?
 extern s32 D_8018D1F0;
 // Next free spot in D_8018CC80?

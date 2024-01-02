@@ -35,25 +35,6 @@ extern s16 D_800E5520[];
 extern s16 D_800E5548[];
 extern u8 *gCourseOutlineTextures[0x14]; // 800e54d0
 
-extern s16 D_80165730;
-extern s16 D_80165740;
-extern s16 D_80165748;
-extern s8 D_801657E4;
-extern bool8 D_801657E6;
-extern bool8 D_801657E8;
-extern bool8 D_801657F0;
-extern s8 D_801657F8;
-
-extern s8 D_80165800[2];
-extern s8 D_80165808;
-
-extern bool8 D_80165810;
-extern bool8 D_80165818;
-
-extern s8 D_80165820;
-extern s8 D_80165828;
-extern s8 D_80165832[2];
-
 
 // Destination for decompressed exhaust textures (I think)
 // I'm not how much I like this "pointer to an array" setup, but if it matches it matches
@@ -64,26 +45,6 @@ extern s16 D_8018D2B0;
 extern s16 D_8018D2B8;
 
 extern s32 D_80183DA0;
-extern s32 D_80183DBC;
-
-extern hud_player playerHUD[]; // 8018CA70 - 8018CC70
-
-extern s16 D_8018CF18;
-extern s16 D_8018CF20;
-extern s16 D_8018CF48;
-extern s16 D_8018CF60;
-extern s16 D_8018CF78;
-extern s16 D_8018CF90;
-extern s16 D_8018CFA8;
-extern s16 D_8018CFB0;
-extern s16 D_8018CFB8;
-extern s16 D_8018CFC0;
-extern s16 D_8018CFC8;
-extern s16 D_8018CFD0;
-extern s16 D_8018CFD8;
-extern s16 D_8018CFE0;
-extern s16 D_8018CFF0;
-extern s16 D_8018CFF8;
 
 extern s16 D_8018D000;
 extern s16 D_8018D008;

@@ -11,6 +11,7 @@
 #include "staff_ghosts.h"
 #include "code_8006E9C0.h"
 #include "code_80091750.h"
+#include "code_80057C60.h"
 
 extern s32 mio0encode(s32 input, s32, s32);
 extern s32 func_80040174(void *, s32, s32);

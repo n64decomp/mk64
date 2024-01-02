@@ -20,6 +20,7 @@
 #include <sounds.h>
 #include "podium_ceremony_actors.h"
 #include "code_80091750.h"
+#include "code_80057C60.h"
 
 f32 D_802856B0 = 98.0f;
 f32 D_802856B4 = 12.0f;

@@ -165,18 +165,6 @@ void func_8008BFFC(s32);
 void func_8008C1B8(s32);
 void func_8008C1C0(s32);
 
-// This may be a list of tilemap flags on a per-camera basis
-extern s16 D_8018CF68[];
-extern f32 D_80183DA8[];
-extern f32 D_80183DC8[];
-extern Collision D_8018C3B0;
 extern s16 gCurrentCourseId;
-
-extern Vec4s D_80165760;
-extern Vec4s D_80165770;
-extern Vec4s D_80165780;
-
-extern Vec3f D_80183E40;
-extern Vec3su D_80183E80;
 
 #endif

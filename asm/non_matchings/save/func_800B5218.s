@@ -7,14 +7,14 @@ glabel func_800B5218
 /* 0B5E2C 800B522C 812986A8 */  lb    $t1, %lo(gCharacterSelections)($t1)
 /* 0B5E30 800B5230 27BDFFB8 */  addiu $sp, $sp, -0x48
 /* 0B5E34 800B5234 000E7880 */  sll   $t7, $t6, 2
-/* 0B5E38 800B5238 3C058019 */  lui   $a1, %hi(D_8018CA74) # $a1, 0x8019
+/* 0B5E38 800B5238 3C058019 */  lui   $a1, %hi(playerHUD+0x4) # $a1, 0x8019
 /* 0B5E3C 800B523C 3C068019 */  lui   $a2, %hi(playerHUD) # $a2, 0x8019
 /* 0B5E40 800B5240 01F8C821 */  addu  $t9, $t7, $t8
 /* 0B5E44 800B5244 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 0B5E48 800B5248 AFB90038 */  sw    $t9, 0x38($sp)
 /* 0B5E4C 800B524C 24070001 */  li    $a3, 1
 /* 0B5E50 800B5250 24C6CA70 */  addiu $a2, %lo(playerHUD) # addiu $a2, $a2, -0x3590
-/* 0B5E54 800B5254 24A5CA74 */  addiu $a1, %lo(D_8018CA74) # addiu $a1, $a1, -0x358c
+/* 0B5E54 800B5254 24A5CA74 */  addiu $a1, %lo(playerHUD+0x4) # addiu $a1, $a1, -0x358c
 /* 0B5E58 800B5258 24020001 */  li    $v0, 1
 /* 0B5E5C 800B525C 24080003 */  li    $t0, 3
 /* 0B5E60 800B5260 AFA90028 */  sw    $t1, 0x28($sp)

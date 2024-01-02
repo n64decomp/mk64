@@ -33,6 +33,346 @@
 //! @warning this macro is undef'd at the end of this file
 #define MAKE_RGB(r,g,b) (((r) << 0x10) | ((g) << 0x08) | (b << 0x00))
 
+s32 D_80165590;
+s32 D_80165594;
+s32 D_80165598;
+s32 D_8016559C;
+UNUSED s32 D_801655A0;
+s32 D_801655A4;
+UNUSED s32 D_801655A8;
+s32 D_801655AC;
+UNUSED s32 D_801655B0;
+s32 D_801655B4;
+UNUSED s32 D_801655B8;
+s32 D_801655BC;
+s32 D_801655C0;
+s32 D_801655C4;
+s32 D_801655C8;
+s32 D_801655CC;
+UNUSED s32 D_801655D0[2];
+s32 D_801655D8;
+UNUSED s32 D_801655DC[2];
+s32 D_801655E8;
+UNUSED s32 D_801655EC;
+s32 D_801655F0;
+UNUSED s32 D_801655F4;
+s32 D_801655F8;
+UNUSED s32 D_80165600[2];
+s32 D_80165608;
+UNUSED s32 D_80165610[2];
+s32 D_80165618;
+UNUSED s32 D_80165620[2];
+s32 D_80165628;
+UNUSED s32 D_80165630[2];
+s32 D_80165638;
+UNUSED s32 D_80165640[2];
+u32 D_80165648;
+UNUSED u32 D_80165650[2];
+u32 D_80165658[8];
+s32 D_80165678;
+UNUSED s32 D_80165680[12];
+u16 D_801656B0;
+UNUSED s32 D_801656B8[2];
+u16 D_801656C0;
+UNUSED s32 D_801656C8[2];
+u16 D_801656D0;
+UNUSED s32 D_801656D8[2];
+u16 D_801656E0;
+UNUSED s32 D_801656E8[2];
+s16 D_801656F0;
+UNUSED s32 D_801656F8[4];
+s16 D_80165708;
+UNUSED s32 D_8016570C;
+s16 D_80165710;
+UNUSED s32 D_80165714;
+s16 D_80165718;
+UNUSED s32 D_8016571C;
+s16 D_80165720;
+UNUSED s32 D_80165724;
+s16 D_80165728;
+UNUSED s32 D_8016572C;
+s16 D_80165730;
+UNUSED s32 D_80165734;
+//! Tracking a count of some object type, don't know what object type yet
+s16 D_80165738;
+UNUSED s32 D_8016573C;
+s16 D_80165740;
+UNUSED s32 D_80165744;
+s16 D_80165748;
+UNUSED s32 D_8016574C;
+
+s16 gNumActiveThwomps;
+s32 D_80165754;
+ThwompSpawn *gThowmpSpawnList;
+
+Vec4s D_80165760;
+UNUSED s16 D_80165768; 
+s8 D_8016576A;
+Vec4s D_80165770;
+UNUSED s32 D_80165778;
+Vec4s D_80165780;
+UNUSED s32 D_80165788;
+s16 D_8016578C;
+UNUSED s16 D_8016578E;
+s16 D_80165790;
+UNUSED s16 D_80165792;
+s16 D_80165794;
+UNUSED s32 D_80165798;
+s8 D_8016579C;
+u16 D_8016579E;
+UNUSED s16 D_801657A0;
+//! Something related to the rotation(?) of ice in Sherbet Land
+u16 D_801657A2;
+UNUSED s32 D_801657A4;
+UNUSED s16 D_801657A8[3];
+s8 D_801657AE;
+UNUSED s8 D_801657AF;
+s8 D_801657B0;
+UNUSED s8 D_801657B1;
+s8 D_801657B2;
+UNUSED s8 D_801657B3;
+s8 D_801657B4;
+s8 D_801657B8[16];
+s8 D_801657C8;
+s8 D_801657D0[8];
+s8 D_801657D8;
+UNUSED s16 D_801657DA[2];
+UNUSED s8 D_801657E0;
+s8 D_801657E1;
+s8 D_801657E2;
+s8 D_801657E3;
+s8 D_801657E4;
+s8 D_801657E5;
+bool8 D_801657E6;
+u8 D_801657E7;
+bool8 D_801657E8;
+UNUSED s32 D_801657EC;
+bool8 D_801657F0;
+UNUSED s32 D_801657F4;
+bool8 D_801657F8;
+s32 D_801657FC;
+s8 D_80165800[2];
+s32 D_80165804;
+s8 D_80165808;
+s32 D_8016580C;
+bool8 D_80165810;
+s32 D_80165814;
+bool8 D_80165818;
+s32 D_8016581C;
+s8 D_80165820;
+UNUSED s32 D_80165824;
+s8 D_80165828;
+Vec3su D_8016582C;
+s8 D_80165832[2];
+Vec3su D_80165834;
+UNUSED s32 D_8016583A;
+s8 D_80165840[3];
+UNUSED s32 D_80165848[6];
+s32 D_80165860;
+UNUSED s32 D_80165864;
+UNUSED s32 D_80165868;
+s32 D_8016586C;
+UNUSED s32 D_80165870[2];
+s32 D_80165878;
+s32 D_8016587C;
+u8 *D_80165880;
+UNUSED s32 D_80165884;
+s8 D_80165888;
+UNUSED s32 D_8016588C;
+s8 D_80165890;
+UNUSED s32 D_80165894;
+s8 D_80165898;
+s32 D_8016589C;
+UNUSED s32 D_801658A0[2];
+s8 D_801658A8;
+UNUSED s32 D_801658B0[3];
+s8 D_801658BC;
+UNUSED s32 D_801658C0;
+UNUSED s16 D_801658C4;
+s8 D_801658C6;
+UNUSED s32 D_801658C8;
+UNUSED s16 D_801658CC;
+s8 D_801658CE;
+UNUSED s32 D_801658D0;
+UNUSED s16 D_801658D4;
+s8 D_801658D6;
+UNUSED s32 D_801658D8;
+s8 D_801658DC;
+UNUSED s32 D_801658E0;
+s8 D_801658E4;
+UNUSED s32 D_801658E8;
+s8 D_801658EC;
+UNUSED s32 D_801658F0;
+s8 D_801658F4;
+UNUSED s32 D_801658F8;
+UNUSED s8 D_801658FC;
+u8 sRandomItemIndex;
+s8 D_801658FE;
+u8 gControllerRandom;
+s16 D_80165900;
+UNUSED s32 D_80165904;
+s8 D_80165908;
+UNUSED s32 D_80165910[96];
+s8 D_80165A90;
+UNUSED s32 D_80165AA0[95];
+UNUSED s32 D_80165C14;
+Objects gObjectList[OBJECT_LIST_SIZE];
+UNUSED s32 D_80183D58;
+s32 objectListSize;
+Mtx D_80183D60;
+/**
+ * Use unknown. An object is reserved and its index is saved to
+ * this variable, but it appears to go unreferenced
+ **/
+s32 D_80183DA0;
+f32 D_80183DA8[4];
+/**
+ * Lakitu?
+ */
+s32 D_80183DB8[4];
+f32 D_80183DC8[4];
+//! Indexes for the objects associated with the Bomb Karts
+s32 D_80183DD8[NUM_BOMB_KARTS_MAX];
+UNUSED s32 D_80183DF8[16];
+//! Next free spot in D_8018C1B0? Wraps back around to 0 if it gets bigger than D_8018C1B0_SIZE
+s32 D_80183E38;
+Vec3f D_80183E40;
+//! Next free spot in D_8018C3F0? Wraps back around to 0 if it gets bigger than D_8018C3F0_SIZE
+s32 D_80183E4C;
+Vec3f D_80183E50;
+//! Next free spot in D_8018C630?
+s32 D_80183E5C;
+UNUSED s32 D_80183E60[3];
+//! Next free spot in D_8018C870? Wraps back around to 0 if it gets bigger than D_8018C870_SIZE
+s32 D_80183E6C;
+Vec3f D_80183E70;
+//! Next free spot in D_8018C970? Wraps back around to 0 if it gets bigger than D_8018C970_SIZE
+s32 D_80183E7C;
+Vec3su D_80183E80;
+//! Appears to be a list of object list indices for the Item Window part of the HUD
+s32 gItemWindowObjectByPlayerId[4];
+Vec3su D_80183E98;
+/**
+ * Snowmen bodies in FrappeSnowland
+ * Crabs in Koopa Troopa Beach
+ * Hot air balloon in Luigi Raceway?
+ * Neon signs in Rainbow Road?
+ * Thwomps in Bower's Castle?
+ * Penguins in Sherbet Land?
+ * Flag Poles in Yoshi Valley?
+ */
+s32 indexObjectList1[32];
+UNUSED s32 D_80183F20[2];
+/**
+ * Snowmen heads in Frappe Snowland
+ * Chain Chomps in RaindbowRoad?
+ * Trophy in award ceremony?
+ * Seagulls in Koopa Troopa Beach?
+ * Hedgehogs in Yoshi Valley?
+ * Spawn for big fire breath in Bowser's Castle
+ */
+s32 indexObjectList2[32];
+/**
+ * Seemingly a list of textures for Lakitu
+ * Never explicitly given data, data appears to be placed here
+ * via some type of DMA.
+ * I'm also not certain about its dimensions
+ * I think the entires in this array are way over-sized
+ */
+u8 D_80183FA8[4][0x2000];
+/**
+ * Boos in Banshee Boardwalk
+ * Spawners for the 4 small fire breaths inside Bowser's Castle
+ */
+s32 indexObjectList3[32];
+//! Seemingly a pointer to Lakitu texture(s)
+u8 *D_8018C028;
+/**
+ * Unused list of object indices
+ */
+s32 indexObjectList4[32];
+//! Array of (4) Collisions?
+Collision D_8018C0B0[4];
+/**
+ * List of object list indices used for:
+ *   Moles in Moo Moo Farm
+ *   Snow flakes in Frappe Snowland
+ *   Segments of the fire breath from the statues in Bowser's Castle
+ *   Potentially other things
+ */
+s32 D_8018C1B0[D_8018C3F0_SIZE];
+Collision D_8018C3B0;
+/**
+ * List of object list indices used for:
+ *   Bats in Banshee's Boardwalk (but only 1 player mode?)
+**/
+s32 D_8018C3F0[128];
+// Maybe some unused Collision?
+UNUSED Collision D_8018C5F0;
+s32 D_8018C630[D_8018C630_SIZE];
+Collision D_8018C830;
+/**
+ * List of object list indices. Used both for the fires in the DK Jungle cave
+ * and, seemingly for the trail that shells leave behind them.
+ * I think they're using the same texture, which would explain the dual use
+**/
+s32 D_8018C870[D_8018C870_SIZE];
+/**
+ * Seemingly a list of object list indices used for the leaves that sometimes fall
+ * trees when you bonk into them
+ */
+s32 D_8018C970[D_8018C970_SIZE];
+hud_player playerHUD[4];
+/**
+ * List of object list indices used by the clouds and stars in some stages
+ * Also used for snowflakes like D_8018C1B0? Not sure what's up with that
+ */
+s32 D_8018CC80[D_8018C8C0_SIZE];
+struct_D_8018CE10 D_8018CE10[8];
+//! Unknown object index, only set for Kalimari Desert, never read
+s32 D_8018CF10;
+Camera *D_8018CF14;
+s16 D_8018CF18;
+Player *D_8018CF1C;
+s16 D_8018CF20;
+UNUSED s32 D_8018CF24;
+Player *D_8018CF28[4];
+UNUSED s32 D_8018CF38[4];
+s16 D_8018CF48;
+s16 D_8018CF50[8];
+s16 D_8018CF60;
+//! This may be a list of tilemap flags on a per-camera basis
+s16 D_8018CF68[8];
+s16 D_8018CF78;
+/**
+ * List of half-word character IDs indicating each character's
+ * place in the current Grand Prix race's standings
+ */
+s16 gGPCurrentRaceCharacterIdByRank[8];
+s16 D_8018CF90;
+s16 D_8018CF98[8];
+s16 D_8018CFA8;
+s32 D_8018CFAC;
+s16 D_8018CFB0;
+s32 D_8018CFB4;
+s16 D_8018CFB8;
+s32 D_8018CFBC;
+s16 D_8018CFC0;
+s32 D_8018CFC4;
+s16 D_8018CFC8;
+f32 D_8018CFCC;
+s16 D_8018CFD0;
+f32 D_8018CFD4;
+s16 D_8018CFD8;
+UNUSED s32 D_8018CFDC;
+s16 D_8018CFE0;
+// f32 D_8018CFE4;
+// s16 D_8018CFE8;
+// f32 D_8018CFEC;
+// s16 D_8018CFF0;
+// f32 D_8018CFF4;
+// s16 D_8018CFF8;
+
 s16 D_800E4730[] = {
     0x00ff, 0x0000, 0x0000,
     0x00ff, 0x00ff, 0x0000,
@@ -96,7 +436,7 @@ s32 D_800E480C[] = {
 void func_80057C60(void) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_80183D60), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_80183D60), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 }
 
 void func_80057CE4(void) {
@@ -2245,7 +2585,7 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
                     }
                     func_800C90F4(0U, (player->characterId * 0x10) + 0x2900800D);
                     D_80165638 = playerHUD[playerId].someTimer1;
-                    D_80165654[lapCount] = 1;
+                    D_80165658[lapCount-1] = 1;
                     D_801657E3 = 1;
                 }
                 if ((lapCount == 3) && ((u32) playerHUD[playerId].someTimer < (u32) D_80165648)) {

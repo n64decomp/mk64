@@ -10,6 +10,7 @@
 #include "memory.h"
 #include "collision.h"
 #include "render_player.h"
+#include "code_80057C60.h"
 
 #pragma intrinsic (sqrtf)
 
@@ -605,10 +606,9 @@ void func_80041D24(void) {
 
 void guOrtho(Mtx *, f32, f32, f32, f32, f32, f32, f32); /* extern */
 extern s8 D_801658FE;
-extern Mtx D_80183D60[];
 
 void func_80041D34(void) {
-    guOrtho((Mtx *)D_80183D60, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+    guOrtho(&D_80183D60, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
     switch (gActiveScreenMode) {
     case SCREEN_MODE_1P:
         guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
