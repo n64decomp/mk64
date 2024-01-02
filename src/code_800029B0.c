@@ -4,7 +4,6 @@
 #include "code_800029B0.h"
 #include "types.h"
 #include "memory.h"
-#include "variables.h"
 #include "waypoints.h"
 #include "actors.h"
 #include "actor_types.h"

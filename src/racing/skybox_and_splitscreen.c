@@ -2,7 +2,6 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <types.h>
-#include <variables.h>
 #include <config.h>
 
 #include "skybox_and_splitscreen.h"

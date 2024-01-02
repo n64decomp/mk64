@@ -6,7 +6,6 @@
 
 #include <main.h>
 #include <code_800029B0.h>
-#include <variables.h>
 #include <types.h>
 #include "camera.h"
 #include "memory.h"
@@ -25,6 +24,7 @@
 #include "actors.h"
 #include "render_courses.h"
 #include "main.h"
+#include "render_player.h"
 
 
 s32 D_802874A0;

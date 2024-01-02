@@ -76,6 +76,7 @@ extern s16 D_80164AB0[];
 extern s16 D_80164ABE[];
 extern s16 D_80164AC0[];
 extern Player *D_80164AD0[];
+extern s16 gMatrixEffectCount;
 extern u16 gPlayerRedEffect[];
 extern u16 gPlayerGreenEffect[];
 extern u16 gPlayerBlueEffect[];
@@ -84,7 +85,6 @@ extern u16 gPlayerMagentaEffect[];
 extern u16 gPlayerYellowEffect[];
 extern s32 D_80164B80[];
 
-extern u8 *D_8018D474;
 extern s32 D_8018D930[];
 
 extern Gfx common_square_plain_render[];

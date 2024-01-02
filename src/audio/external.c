@@ -3,7 +3,6 @@
 #include <defines.h>
 #include "camera.h"
 #include "math_util_2.h"
-#include "variables.h"
 #include "audio/external.h"
 #include "audio/load.h"
 #include "audio/data.h"

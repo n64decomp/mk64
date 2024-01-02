@@ -12,7 +12,6 @@
 #include "hud_renderer.h"
 #include "objects.h"
 #include "waypoints.h"
-#include "variables.h"
 #include "code_800029B0.h"
 #include "code_80005FD0.h"
 #include "code_80057C60.h"

@@ -80,7 +80,6 @@ typedef struct
     /* 0xDF */ u8  unk_0DF;
 } Objects; // size = 0xE0
 
-// This is the object list
 extern Objects gObjectList[];
 
 typedef struct
@@ -165,25 +164,27 @@ typedef struct
  **/
 extern s32 D_80183DA0;
 
-/**
- * Lakitu?
-**/
+//! Lakitu?
 extern s32 D_80183DB8[];
 
 #define DELETED_OBJECT_ID -1
 
-// Appears to be a list of object list indices for the Item Window part of the HUD
+//! Appears to be a list of object list indices for the Item Window part of the HUD
 extern s32 gItemWindowObjectByPlayerId[];
 
 // Used for loop bounds when accessing indexObjectList1
 extern s16 D_80165750;
-// These seem to be limits on different object types in Moo Moo Farm
-// See init_course_object in code_8006E9C0.c
-// Maybe max number of active moles in a given group of moles?
+
+/**
+ * These seem to be limits on different object types in Moo Moo Farm
+ * See init_course_object in code_8006E9C0.c
+ * Maybe max number of active moles in a given group of moles?
+ */
 extern s32 D_8018D1C8;
 extern s32 D_8018D1D0;
 extern s32 D_8018D1D8;
-// Limit on some object type (ice chips?) in Sherbet Land
+
+//! Limit on some object type (ice chips?) in Sherbet Land
 extern s32 D_8018D3C0;
 
 extern Collision D_8018C0B0[];
@@ -249,9 +250,8 @@ extern s16 gNumActiveThwomps;
  * Thwomps in Bower's Castle?
  * Penguins in Sherbet Land?
  * Flag Poles in Yoshi Valley?
-**/
+ */
 extern s32 indexObjectList1[];
-
 
 #define NUM_SEAGULLS 10
 #define NUM_SNOWMEN 19
@@ -279,7 +279,7 @@ extern Vec3s gHedgehogPatrolPoints[];
  * Seagulls in Koopa Troopa Beach?
  * Hedgehogs in Yoshi Valley?
  * Spawn for big fire breath in Bowser's Castle
-**/
+ */
 extern s32 indexObjectList2[];
 
 #define NUM_BOOS 0xA
@@ -295,12 +295,12 @@ extern s16 D_800E57F8[];
 /**
  * Boos in Banshee Boardwalk
  * Spawners for the 4 small fire breaths inside Bowser's Castle
-**/
+ */
 extern s32 indexObjectList3[];
 
 /**
  * Unused list of object indices
-*/
+ */
 extern s32 indexObjectList4[];
 
 #define D_8018C1B0_SIZE 128
@@ -311,13 +311,16 @@ extern s32 indexObjectList4[];
 #define NUM_SNOWFLAKES 0x32
 
 extern Vec3s gMoleSpawns[];
-// Exact use unknown, something related to the mole groups
-// Maybe be indicating that a given mole in a given group is active?
+
+/**
+ * Exact use unknown, something related to the mole groups
+ * Maybe be indicating that a given mole in a given group is active?
+ */
 extern s8 D_8018D198[];
 extern s8 D_8018D1A8[];
 extern s8 D_8018D1B8[];
 
-// Unknown object index, only set for Kalimari Desert, never read
+//! Unknown object index, only set for Kalimari Desert, never read
 extern s32 D_8018CF10;
 
 /**
@@ -326,30 +329,36 @@ extern s32 D_8018CF10;
  *   Snow flakes in Frappe Snowland
  *   Segments of the fire breath from the statues in Bowser's Castle
  *   Potentially other things
-**/
+ */
 extern s32 D_8018C1B0[];
-// Next free spot in D_8018C1B0? Wraps back around to 0 if it gets bigger than D_8018C1B0_SIZE
+
+//! Next free spot in D_8018C1B0? Wraps back around to 0 if it gets bigger than D_8018C1B0_SIZE
 extern s32 D_80183E38;
-// Used for cycling through snowflakes in func_80078790
+
+//! Used for cycling through snowflakes in func_80078790
 extern s16 D_8018D174;
 
 #define D_8018C3F0_SIZE 128
+
 /**
  * List of object list indices used for:
  *   Bats in Banshee's Boardwalk (but only 1 player mode?)
-**/
+ */
 extern s32 D_8018C3F0[];
-// Next free spot in D_8018C3F0? Wraps back around to 0 if it gets bigger than D_8018C3F0_SIZE
+
+//! Next free spot in D_8018C3F0? Wraps back around to 0 if it gets bigger than D_8018C3F0_SIZE
 extern s32 D_80183E4C;
-// Controls number of come object type placed into D_8018C3F0 on Frappe Snowland. So, maybe snowmen/snowflakes?
+
+//! Controls number of come object type placed into D_8018C3F0 on Frappe Snowland. So, maybe snowmen/snowflakes?
 extern s32 D_8018D3BC;
 
 #define D_8018C630_SIZE 128
 extern s32 D_8018C630[];
-// Next free spot in D_8018C630?
+//! Next free spot in D_8018C630?
 extern s32 D_80183E5C;
 extern s16 D_80165730;
-// Tracking a count of some object type, don't know what object type yet
+
+//! Tracking a count of some object type, don't know what object type yet
 extern s16 D_80165738;
 
 #define D_8018C870_SIZE 0x40
@@ -358,40 +367,53 @@ extern s16 D_80165738;
 
 // This should really be `extern Vec3s gTorchSpawns[];`
 //! @todo fix this extern
-extern s16 gTorchSpawns[]; 
+extern s16 gTorchSpawns[];
 
 /**
  * List of object list indices. Used both for the fires in the DK Jungle cave
  * and, seemingly for the trail that shells leave behind them.
  * I think they're using the same texture, which would explain the dual use
-**/
+ */
 extern s32 D_8018C870[];
-// Next free spot in D_8018C870? Wraps back around to 0 if it gets bigger than D_8018C870_SIZE
+
+//! Next free spot in D_8018C870? Wraps back around to 0 if it gets bigger than D_8018C870_SIZE
 extern s32 D_80183E6C;
 
 // Maximum number of leaves that can be falling?
 #define D_8018C970_SIZE 0x40
 // Number of leaves to spawn each bonk?
 #define D_8018C970_SPAWN_SIZE 0x14
-// Seemingly a list of object list indices used for the leaves that sometimes fall
-// trees when you bonk into them
+
+/**
+ * Seemingly a list of object list indices used for the leaves that sometimes fall
+ * trees when you bonk into them
+ */
 extern s32 D_8018C970[];
-// Next free spot in D_8018C970? Wraps back around to 0 if it gets bigger than D_8018C970_SIZE
+
+//! Next free spot in D_8018C970? Wraps back around to 0 if it gets bigger than D_8018C970_SIZE
 extern s32 D_80183E7C;
 
 #define D_8018CC80_SIZE 0x64
-// List of object list indices used by the clouds and stars in some stages
-// Also used for snowflakes like D_8018C1B0? Not sure what's up with that
+
+/**
+ * List of object list indices used by the clouds and stars in some stages
+ * Also used for snowflakes like D_8018C1B0? Not sure what's up with that
+ */
 extern s32 D_8018CC80[];
-// Number of used spots in D_8018CC80?
+
+//! Number of used spots in D_8018CC80?
 extern s32 D_8018D1F0;
-// Next free spot in D_8018CC80?
+
+//! Next free spot in D_8018CC80?
 extern s32 D_8018D1F8;
-// Also next free spot in D_8018CC80?
+
+//! Also next free spot in D_8018CC80?
 extern s16 D_8018D17C;
-// Something related to the display of the clouds/stars?
+
+//! Something related to the display of the clouds/stars?
 extern s8 D_8018D230;
-// Some sort of limiter on how many of some object type can spawn
+
+//! Some sort of limiter on how many of some object type can spawn
 extern s32 D_8018D3C4;
 
 #endif

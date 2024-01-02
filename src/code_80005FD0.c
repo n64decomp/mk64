@@ -14,7 +14,6 @@
 #include "player_controller.h"
 #include "code_80071F00.h"
 #include "collision.h"
-#include "variables.h"
 #include <actor_types.h>
 #include "vehicles.h"
 #include "hud_renderer.h"

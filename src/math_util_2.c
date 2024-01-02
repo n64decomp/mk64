@@ -3,13 +3,14 @@
 #include <common_structs.h>
 #include "math_util_2.h"
 #include "main.h"
-#include "variables.h"
 #include "math_util.h"
 #include "objects.h"
 
 #include "memory.h"
 #include "collision.h"
 #include "render_player.h"
+#include "code_80057C60.h"
+#include "defines.h"
 
 #pragma intrinsic (sqrtf)
 
@@ -605,10 +606,9 @@ void func_80041D24(void) {
 
 void guOrtho(Mtx *, f32, f32, f32, f32, f32, f32, f32); /* extern */
 extern s8 D_801658FE;
-extern Mtx D_80183D60[];
 
 void func_80041D34(void) {
-    guOrtho((Mtx *)D_80183D60, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+    guOrtho(&D_80183D60, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
     switch (gActiveScreenMode) {
     case SCREEN_MODE_1P:
         guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
@@ -635,7 +635,6 @@ void func_80041EF4(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxOrtho), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 }
 
-extern s32 gMatrixHudCount;
 //void convert_to_fixed_point_matrix(Mtx*, Mat4);
 
 UNUSED void func_80041F54(s32 x, s32 y) {

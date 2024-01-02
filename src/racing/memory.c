@@ -3,7 +3,6 @@
 #include <macros.h>
 #include <types.h>
 #include <common_structs.h>
-#include <variables.h>
 #include <segments.h>
 
 #include "memory.h"
@@ -11,6 +10,7 @@
 #include "code_800029B0.h"
 #include "math_util.h"
 #include "courses/courseTable.h"
+#include "defines.h"
 
 s32 sGfxSeekPosition;
 s32 sPackedSeekPosition;

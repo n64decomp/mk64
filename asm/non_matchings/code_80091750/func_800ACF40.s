@@ -138,14 +138,14 @@ glabel L800AD01C
 glabel L800AD128
 /* 0ADD28 800AD128 8E0B0018 */  lw    $t3, 0x18($s0)
 /* 0ADD2C 800AD12C 00051080 */  sll   $v0, $a1, 2
-/* 0ADD30 800AD130 3C0D8019 */  lui   $t5, %hi(D_8018DEE4) # 0x8019
+/* 0ADD30 800AD130 3C0D8019 */  lui   $t5, %hi(D_8018DEE0+0x4) # 0x8019
 /* 0ADD34 800AD134 000B6080 */  sll   $t4, $t3, 2
 /* 0ADD38 800AD138 018B6023 */  subu  $t4, $t4, $t3
 /* 0ADD3C 800AD13C 000C60C0 */  sll   $t4, $t4, 3
 /* 0ADD40 800AD140 3C0E800F */  lui   $t6, %hi(D_800E8440)
 /* 0ADD44 800AD144 01C27021 */  addu  $t6, $t6, $v0
 /* 0ADD48 800AD148 01AC6821 */  addu  $t5, $t5, $t4
-/* 0ADD4C 800AD14C 8DADDEE4 */  lw    $t5, %lo(D_8018DEE4)($t5) # -0x211c($t5)
+/* 0ADD4C 800AD14C 8DADDEE4 */  lw    $t5, %lo(D_8018DEE0+0x4)($t5) # -0x211c($t5)
 /* 0ADD50 800AD150 8DCE8440 */  lw    $t6, %lo(D_800E8440)($t6)
 /* 0ADD54 800AD154 3C04800F */  lui   $a0, %hi(D_800E83A0) # 0x800f
 /* 0ADD58 800AD158 00822021 */  addu  $a0, $a0, $v0

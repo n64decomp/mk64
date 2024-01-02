@@ -57,7 +57,6 @@
 #include <debug.h>
 #include <defines.h>
 #include <functions.h>
-#include <global.h>
 #include <kart_attributes.h>
 #include <macros.h>
 #include <mk64.h>
@@ -68,7 +67,6 @@
 #include <trig_tables.h>
 #include <types.h>
 #include <ultra64.h>
-#include <variables.h>
 #include <vehicles.h>
 #include <waypoints.h>
 

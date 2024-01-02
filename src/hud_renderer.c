@@ -14,7 +14,6 @@
 #include "math_util.h"
 #include "math_util_2.h"
 #include "objects.h"
-#include "variables.h"
 #include "waypoints.h"
 #include "bomb_kart.h"
 #include "common_textures.h"

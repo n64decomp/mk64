@@ -6,8 +6,8 @@
 #include "code_80004740.h"
 #include "memory.h"
 #include <main.h>
-#include <variables.h>
 #include <PR/gbi.h>
+#include "code_80057C60.h"
 
 Vec3s D_80162D70;
 s16 D_80162D76;
