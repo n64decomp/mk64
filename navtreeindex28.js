@@ -1,5 +1,6 @@
 var NAVTREEINDEX28 =
 {
+"controller_8h.html#a9cf3e65d900512a0e8f8be83d47f0e7a":[4,0,1,5,35,61],
 "controller_8h.html#a9dec53d3a6f95765b1a248cedb9a2698":[4,0,1,5,35,36],
 "controller_8h.html#aa381cbffa3ae398093b4864abc15e296":[4,0,1,5,35,39],
 "controller_8h.html#aa962180453c026d747ebef163e571966":[4,0,1,5,35,62],
@@ -248,6 +249,5 @@ var NAVTREEINDEX28 =
 "data__800E8700_8h.html#ab78e50e92f00d19263cc4877967842cb":[4,0,1,2,4,0],
 "data__800E8700_8h.html#ac1dcb1a898aaa08933d575d6c4cafa7a":[4,0,1,2,4,13],
 "data__800E8700_8h.html#ac3b9a2f2e49a8bc747a8e93d9d64c610":[4,0,1,2,4,15],
-"data__800E8700_8h.html#ac721e80e1938d5d9f2fa95bdb7f1566f":[4,0,1,2,4,3],
-"data__800E8700_8h.html#acf02e658bfa0d1fe678812ea0e44ab37":[4,0,1,2,4,6]
+"data__800E8700_8h.html#ac721e80e1938d5d9f2fa95bdb7f1566f":[4,0,1,2,4,3]
 };

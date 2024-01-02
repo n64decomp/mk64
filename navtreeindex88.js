@@ -1,5 +1,6 @@
 var NAVTREEINDEX88 =
 {
+"ultratypes_8h.html#a96f1ea79f972105a14c7a4928c604b17":[4,0,0,1,27,4],
 "ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e":[4,0,0,1,27,12],
 "ultratypes_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d":[4,0,0,1,27,2],
 "ultratypes_8h.html#aa93f0eb578d23995850d61f7d61c55c1":[4,0,0,1,27,0],

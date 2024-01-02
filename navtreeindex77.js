@@ -1,5 +1,6 @@
 var NAVTREEINDEX77 =
 {
+"struct____OSContRequesFormat.html#a179c3e961ff87692e8b3b6641d47d9ca":[3,0,4,5],
 "struct____OSContRequesFormat.html#a64848b92c10902d8410c73bddc20fc73":[3,0,4,0],
 "struct____OSContRequesFormat.html#a80d4fe189a7cfba5039db54eb62474ed":[3,0,4,6],
 "struct____OSContRequesFormat.html#abdbffa59543545cc7540c4fb31428db1":[3,0,4,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX77 =
 "structmk64__Vtx__n.html#ac74388ea35b3f7ca5a96867c6b612b40":[3,0,97,0],
 "structmk64__surface__map__ram.html":[3,0,95],
 "structmk64__surface__map__ram.html#a03300ea994c7272e7d41899a42ad593f":[3,0,95,6],
-"structmk64__surface__map__ram.html#a0bd843bbec1cfc563196fac0919404fe":[3,0,95,5],
-"structmk64__surface__map__ram.html#a189c361dbf9b21b4037f9062882caa91":[3,0,95,8]
+"structmk64__surface__map__ram.html#a0bd843bbec1cfc563196fac0919404fe":[3,0,95,5]
 };

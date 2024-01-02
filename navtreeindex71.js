@@ -1,5 +1,6 @@
 var NAVTREEINDEX71 =
 {
+"structAudioSessionSettingsEU.html#ae4a9341b0913386e8fc19890619cb72f":[3,0,51,13],
 "structBananaActor.html":[3,0,52],
 "structBananaActor.html#a10bc99e6eeda7a4c8c7368dc8df52777":[3,0,52,13],
 "structBananaActor.html#a125826669f88f4663fb32d45e39fb6de":[3,0,52,7],
@@ -248,6 +249,5 @@ var NAVTREEINDEX71 =
 "structFirework.html#aa413d6457c3fb937a8621a3c5d182e87":[3,0,78,7],
 "structFirework.html#aa9f137c06f2f7ca3cde2b68e87c33776":[3,0,78,13],
 "structFirework.html#ace0b9894acdefb34812cad80c41ab12d":[3,0,78,15],
-"structFirework.html#ad04880ecb9de11af43dba5ead8545520":[3,0,78,17],
-"structFirework.html#add9d1e21774961f1dda1d52fdf4786b3":[3,0,78,8]
+"structFirework.html#ad04880ecb9de11af43dba5ead8545520":[3,0,78,17]
 };
