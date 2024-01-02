@@ -81,10 +81,6 @@ void rsp_set_matrix_transl_rot_scale(Vec3f, Vec3f, f32);
 void rsp_set_matrix_gObjectList(s32);
 
 /* This is where I'd put my static data, if I had any */
-
-extern Vec3su D_80165834;
-extern s8    D_80165840[];
 extern s8    D_801658FE;
-extern s32   gMatrixHudCount;
 
 #endif // MATH_UTIL_2_H

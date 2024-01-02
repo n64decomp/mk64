@@ -3,7 +3,6 @@
 #include <defines.h>
 #include <PR/ultratypes.h>
 #include <config.h>
-#include <variables.h>
 #include <sounds.h>
 #include "code_800029B0.h"
 #include "code_80091750.h"
@@ -31,14 +30,62 @@
 #include "racing/race_logic.h"
 #include "ending/code_80281C40.h"
 #include "spawn_players.h"
+#include "render_player.h"
 //! @todo Move gGfxPool out of main.h
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
-
+intptr_t D_8018D9B0;
+u8 *D_8018D9B4;
+uintptr_t *D_8018D9B8;
+u8 *D_8018D9BC;
+struct_8018EE10_entry_cont *D_8018D9C0;
+/**
+ * List of bytes indexed by character ID
+ * Indicates number of Grand Prix points that character
+ * has scored
+*/
+s8 gGPPointsByCharacterId[8];
+s8 gCharacterIdByGPOverallRank[8];
+s8 D_8018D9D8;
+s8 D_8018D9D9;
+struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE];
+struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
+s32 D_8018E060;
+UNUSED s32 D_8018E068[32];
+struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
+s32 gD_8018E118TotalSize;
+struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
+s32 gNumD_8018E118Entries;
+Gfx *D_8018E75C;
+s32 gNumD_8018E768Entries;
+struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
+s32 gCycleFlashMenu;
+s8 D_8018E7AC[4];
+s8  D_8018E7B0;
+s32 D_8018E7B8[4];
+u32 D_8018E7C8;
+u32 D_8018E7D0[4];
+s32 D_8018E7E0;
+struct UnkStruct_8018E7E8 D_8018E7E8[1];
+s16 D_8018E7F0;
+UNUSED s32 D_8018E7F4;
+s16 D_8018E7F8;
+//! @todo Unknown type
+s16 D_8018E7FA;
+UNUSED s32 D_8018E7FC;
+//! @todo Unknown type
+s16 D_8018E800;
+s16 D_8018E802;
+UNUSED s32 D_8018E808[2];
+struct UnkStruct_8018E7E8 D_8018E810[1];
+s16 D_8018E818;
+//! @todo Unknown type
+s16 D_8018E81A;
+UNUSED s32 D_8018E81C;
 //! @todo these are likely arrays.
-s16 D_8018E820; 
+s16 D_8018E820;
 //! @todo This may not be the right file for them.
-s16 D_8018E822; 
+s16 D_8018E822;
 s32 code_80091750_pad_1;
 s16 D_8018E828;
 s16 D_8018E82A;
@@ -1503,8 +1550,6 @@ void swap_values(s32 *arg0, s32 *arg1) {
 }
 
 extern s8 D_800E852C;
-extern uintptr_t *D_8018D9B4;
-extern uintptr_t *D_8018D9B8;
 
 void func_80091B78(void) {
     s32 why = 0;
@@ -5967,7 +6012,6 @@ void func_8009CA6C(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009CA6C.s")
 #endif
 
-extern u32 D_8018E7D0[];
 extern struct UnkStruct_8018E7E8 D_8018E7E8[];
 extern struct UnkStruct_8018E7E8 D_8018E810[];
 

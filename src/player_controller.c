@@ -2,7 +2,6 @@
 #include <macros.h>
 #include <defines.h>
 #include <mk64.h>
-#include <variables.h>
 
 #include "player_controller.h"
 #include "code_800029B0.h"
@@ -18,8 +17,9 @@
 #include "main.h"
 #include "camera.h"
 #include "spawn_players.h"
+#include "code_80057C60.h"
+#include "code_80005FD0.h"
 
-extern s16 D_801633F8;
 extern s32 D_8018D168;
 
 s16 gCPUforMario[] = {
@@ -646,7 +646,8 @@ void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
             (gModeSelection == BATTLE) || 
             ((player->unk_0CA & 2) != 0) || 
             (player->unk_0CA & 8) || 
-            ((*((&D_801633F8) + (arg2))) == ((s16) 1U))) {
+            //! @todo make a proper match
+            ((*(D_801633F8 + (arg2))) == ((s16) 1U))) {
                 player->effects &= ~0x1000;
                 if (((player->effects & 0x80) == 0x80) || 
                     ((player->effects & 0x40) == 0x40) || 

@@ -11,7 +11,6 @@
 #include "code_80071F00.h"
 #include "objects.h"
 #include "bomb_kart.h"
-#include "variables.h"
 #include "save.h"
 #include "common_textures.h"
 #include <sounds.h>
@@ -22,6 +21,7 @@
 #include "menus.h"
 #include "data/other_textures.h"
 #include "hud_renderer.h"
+#include "code_80091750.h"
 
 void init_object_list(void) {
 

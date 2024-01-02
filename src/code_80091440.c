@@ -1,4 +1,3 @@
-#include <variables.h>
 #include <actor_types.h>
 #include "main.h"
 #include "code_800029B0.h"

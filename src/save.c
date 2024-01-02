@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
-#include "global.h"
 
 #include "save.h"
 
@@ -9,6 +8,7 @@
 #include "menus.h"
 #include "save_data.h"
 #include "staff_ghosts.h"
+#include "code_80057C60.h"
 
 /*** macros ***/
 #define PFS_COMPANY_CODE(c0, c1) ((u16)(((c0) << 8) | ((c1))))

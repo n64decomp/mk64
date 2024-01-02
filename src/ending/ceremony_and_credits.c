@@ -8,7 +8,6 @@
 #include <macros.h>
 #include <types.h>
 #include <common_structs.h>
-#include "variables.h"
 #include "math_util.h"
 #include "ceremony_and_credits.h"
 #include "code_800029B0.h"
@@ -20,6 +19,8 @@
 #include <sounds.h>
 #include "podium_ceremony_actors.h"
 #include "code_80091750.h"
+#include "code_80057C60.h"
+#include "defines.h"
 
 f32 D_802856B0 = 98.0f;
 f32 D_802856B4 = 12.0f;

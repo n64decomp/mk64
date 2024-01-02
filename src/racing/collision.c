@@ -8,7 +8,6 @@
 #include "memory.h"
 #include "collision.h"
 #include "math_util.h"
-#include "variables.h"
 #include "code_800029B0.h"
 
 #pragma intrinsic (sqrtf)

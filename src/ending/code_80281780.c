@@ -5,7 +5,6 @@
 
 #include "code_80281780.h"
 #include "types.h"
-#include "variables.h"
 #include "memory.h"
 #include "camera.h"
 #include "camera_junk.h"
