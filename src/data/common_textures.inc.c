@@ -34,8 +34,8 @@ s8 gTLUTFinishLineBanner[] = { // tlut
     #include "assets/finish_line_banner/gTLUTFinishLineBanner.inc.c"
 };
 
-s8 D_0D000200[] = { // tlut
-    #include "textures/common/132B50_00200.rgba16.inc.c"
+s8 gTextureParticleFire[] = { // tlut
+    #include "textures/common/gTextureParticleFire.rgba16.inc.c"
 };
 
 Vtx D_0D001200[] = {
@@ -397,7 +397,7 @@ Vtx D_0D001EB8[] = {
 
 // D_0D001EE8
 s8 gItemBoxQuestionMark_Texture[] = {
-    #include "textures/common/132B50_01EE8.rgba16.inc.c"
+    #include "textures/common/gTextureItemBoxQuestionMark.rgba16.inc.c"
 };
 
 Gfx D_0D002EE8[] = {
@@ -579,11 +579,11 @@ Vtx common_vtx_flat_banana[] = {
 
 // D_0D003348
 s8 gBananaTexture[] = {
-    #include "textures/common/132B50_03348.rgba16.inc.c"
+    #include "textures/common/gTextureBanana.rgba16.inc.c"
 };
 
 s8 common_texture_flat_banana[] = {
-    #include "textures/common/132B50_03B48.rgba16.inc.c"
+    #include "textures/common/gTextureFlatBanana.rgba16.inc.c"
 };
 
 // 0x4B48
@@ -2566,92 +2566,92 @@ f32 D_0D009808[][4] = {
 };
 
 // Odometer speedometer
-s8 D_0D009958[] = {
-    #include "textures/common/132B50_09958.i4.inc.c"
+s8 gTextureSpeedometer[] = {
+    #include "textures/common/gTextureSpeedometer.i4.inc.c"
 };
 
 // i8? odometer needle
-s8 D_0D00A558[] = {
-    #include "textures/common/132B50_0A558.i4.inc.c"
+s8 gTextureSpeedometerNeedle[] = {
+    #include "textures/common/gTextureSpeedometerNeedle.i4.inc.c"
 };
 
 // Lap UI Texture
-s8 D_0D00A958[] = {
-    #include "textures/common/132B50_0A958.rgba16.inc.c"
+s8 gTextureHUDLap[] = {
+    #include "textures/common/gTextureHUDLap.rgba16.inc.c"
 };
 
 // 123/
-u8 D_0D00AB58[] = {
-    #include "textures/common/132B50_0AB58.rgba16.inc.c"
+u8 gTextureHUD123[] = {
+    #include "textures/common/gTextureHUD123.rgba16.inc.c"
 };
 
 // Lap
-s8 D_0D00AD58[] = {
-    #include "textures/common/132B50_0AD58.rgba16.inc.c"
+s8 gTextureHUDLapTime[] = {
+    #include "textures/common/gTextureHUDLapTime.rgba16.inc.c"
 };
 
 // 1/3
-s8 D_0D00B158[] = {
-    #include "textures/common/132B50_0B158.rgba16.inc.c"
+s8 gTextureHUDLap1On3[] = {
+    #include "textures/common/gTextureHUDLap1On3.rgba16.inc.c"
 };
 
 // 2/3
-s8 D_0D00B558[] = {
-    #include "textures/common/132B50_0B558.rgba16.inc.c"
+s8 gTextureHUDLap2On3[] = {
+    #include "textures/common/gTextureHUDLap2On3.rgba16.inc.c"
 };
 
 // 3/3
-s8 D_0D00B958[] = {
-    #include "textures/common/132B50_0B958.rgba16.inc.c"
+s8 gTextureHUDLap3On3[] = {
+    #include "textures/common/gTextureHUDLap3On3.rgba16.inc.c"
 };
 
 // total
-s8 D_0D00BD58[] = {
-    #include "textures/common/132B50_0BD58.rgba16.inc.c"
+s8 gTextureHUDTotalTime[] = {
+    #include "textures/common/gTextureHUDTotalTime.rgba16.inc.c"
 };
 
 // time
-s8 D_0D00C158[] = {
-    #include "textures/common/132B50_0C158.rgba16.inc.c"
+s8 gTextureHUDTime[] = {
+    #include "textures/common/gTextureHUDTime.rgba16.inc.c"
 };
 
 // 0123456789'"!
-u8 D_0D00C558[] = {
-    #include "textures/common/132B50_0C558.rgba16.inc.c"
+u8 gTextureHUDNormalDigit[] = {
+    #include "textures/common/gTextureHUDNormalDigit.rgba16.inc.c"
 };
 
-u8 D_0D00D258[][4096] = {
+u8 gTextureHUDPlace[][4096] = {
     // first place
     {
-        #include "textures/common/132B50_0D258.i4.inc.c"
+        #include "textures/common/gTextureHUD1st.i4.inc.c"
     },
     // second place
     {
-        #include "textures/common/132B50_0E258.i4.inc.c"
+        #include "textures/common/gTextureHUD2nd.i4.inc.c"
     },
     // third place
     {
-        #include "textures/common/132B50_0F258.i4.inc.c"
+        #include "textures/common/gTextureHUD3rd.i4.inc.c"
     },
     // fourth place
     {
-        #include "textures/common/132B50_10258.i4.inc.c"
+        #include "textures/common/gTextureHUD4th.i4.inc.c"
     },
     // fifth place
     {
-        #include "textures/common/132B50_11258.i4.inc.c"
+        #include "textures/common/gTextureHUD5th.i4.inc.c"
     },
     // sixth place
     {
-        #include "textures/common/132B50_12258.i4.inc.c"
+        #include "textures/common/gTextureHUD6th.i4.inc.c"
     },
     // seventh place
     {
-        #include "textures/common/132B50_13258.i4.inc.c"
+        #include "textures/common/gTextureHUD7th.i4.inc.c"
     },
     // eighth place
     {
-        #include "textures/common/132B50_14258.i4.inc.c"
+        #include "textures/common/gTextureHUD8th.i4.inc.c"
     },
 };
 
@@ -2675,12 +2675,12 @@ u8 D_0D015258[][2048] = {
 };
 
 // tlut for 1p, 2p, 3p, 4p
-u8 D_0D017258[] = {
+u8 gTLUTPlayerEmblem[] = {
     #include "assets/player_emblems/gTLUTPlayerEmblem.inc.c"
 };
 
 // 1p, 2p, 3p, 4p
-u8 D_0D017458[][2048] = {
+u8 gTexturePlayerEmblem[][2048] = {
     {
         #include "assets/player_emblems/gTexturePlayerEmblem1p.inc.c"
     },
@@ -3086,13 +3086,13 @@ UNUSED s8 D_0D028958[] = {
 };
 
 // leaf
-u8 D_0D028DD8[] = {
-    #include "textures/common/132B50_28DD8.rgba16.inc.c"
+u8 gTextureParticleLeaf[] = {
+    #include "textures/common/gTextureParticleLeaf.rgba16.inc.c"
 };
 
 // leaf
-s8 D_0D0291D8[] = {
-    #include "textures/common/132B50_291D8.rgba16.inc.c"
+UNUSED s8 gTextureUnusedParticleLeaf[] = {
+    #include "textures/common/gTextureUnusedParticleLeaf.rgba16.inc.c"
 };
 
 
@@ -3107,7 +3107,7 @@ s8 D_0D029458[] = {
 };
 
 // Uses 2A858 as tlut
-u8 D_0D029858[][1024] = {
+u8 gTextureBomb[][1024] = {
     {
         #include "assets/bomb/gTextureBomb1.inc.c"
     },
@@ -3132,33 +3132,33 @@ u8 D_0D02AA58[] = {
     #include "textures/common/132B50_2AA58.rgba16.inc.c"
 };
 
-u8 D_0D02AC58[][1024] = {
+u8 gTextureParticleSpark[][1024] = {
     {
-        #include "textures/common/132B50_2AC58.i8.inc.c"
+        #include "textures/common/gTextureParticleSpark1.i8.inc.c"
     },
     {
-        #include "textures/common/132B50_2B058.i8.inc.c"
+        #include "textures/common/gTextureParticleSpark2.i8.inc.c"
     },
     {
-        #include "textures/common/132B50_2B458.i8.inc.c"
+        #include "textures/common/gTextureParticleSpark3.i8.inc.c"
     },
     {
-        #include "textures/common/132B50_2B858.i8.inc.c"
+        #include "textures/common/gTextureParticleSpark4.i8.inc.c"
     },
 };
 
-u8 D_0D02BC58[][1024] = {
+u8 gTextureParticleSmoke[][1024] = {
     {
-        #include "textures/common/132B50_2BC58.i8.inc.c"
+        #include "textures/common/gTextureParticleSmoke1.i8.inc.c"
     },
     {
-        #include "textures/common/132B50_2C058.i8.inc.c"
+        #include "textures/common/gTextureParticleSmoke2.i8.inc.c"
     },
     {
-        #include "textures/common/132B50_2C458.i8.inc.c"
+        #include "textures/common/gTextureParticleSmoke3.i8.inc.c"
     },
     {
-        #include "textures/common/132B50_2C858.i8.inc.c"
+        #include "textures/common/gTextureParticleSmoke4.i8.inc.c"
     },
 };
 

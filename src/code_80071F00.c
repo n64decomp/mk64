@@ -81,7 +81,7 @@ u8 *gItemWindowTextures[] = {
 };
 
 u8 *D_800E4570[] = {
-    D_0D00B158, D_0D00B558, D_0D00B958
+    gTextureHUDLap1On3, gTextureHUDLap2On3, gTextureHUDLap3On3
 };
 
 u8 *gPortraitTLUTs[] = {
@@ -1881,8 +1881,8 @@ void func_8007634C(s32 objectIndex) {
     Objects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->activeTexture = D_0D02BC58;
-    temp_v0->textureList = D_0D02BC58;
+    temp_v0->activeTexture = gTextureParticleSmoke;
+    temp_v0->textureList = gTextureParticleSmoke;
     temp_v0->unk_0A0 = 0x00FF;
     func_8008B8BC(objectIndex, 0U, 0U, 0U);
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -2051,8 +2051,8 @@ void func_80076958(s32 objectIndex) {
     Objects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->activeTexture = D_0D02BC58;
-    temp_v0->textureList = D_0D02BC58;
+    temp_v0->activeTexture = gTextureParticleSmoke;
+    temp_v0->textureList = gTextureParticleSmoke;
     temp_v0->unk_0A0 = 0x00FF;
     func_8008B8BC(objectIndex, 0U, 0U, 0U);
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -2144,8 +2144,8 @@ void func_80076C9C(s32 objectIndex, Vec3f arg1, s16 arg2) {
     init_object(objectIndex, (s32) arg2);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_0D5 = 0x0A;
-    temp_v0->activeTexture = D_0D02BC58;
-    temp_v0->textureList = D_0D02BC58;
+    temp_v0->activeTexture = gTextureParticleSmoke;
+    temp_v0->textureList = gTextureParticleSmoke;
     temp_v0->sizeScaling = 0.3f;
     func_8008B7D4(objectIndex, arg1[0], arg1[1], arg1[2]);
     temp_v0->type = 0x00FF;
@@ -2220,8 +2220,8 @@ void func_80076FEC(s32 objectIndex, s32 flameIndex) {
     init_object(objectIndex, 3);
 
     gObjectList[objectIndex].unk_0D5 = 0xB;
-    gObjectList[objectIndex].activeTexture = D_0D02BC58;
-    gObjectList[objectIndex].textureList = D_0D02BC58;
+    gObjectList[objectIndex].activeTexture = gTextureParticleSmoke;
+    gObjectList[objectIndex].textureList = gTextureParticleSmoke;
     gObjectList[objectIndex].sizeScaling = 0.8f;
 
     gObjectList[objectIndex].unk_010[0] = (f32)*(gTorchSpawns + (flameIndex * 3) + 0) * xOrientation;
@@ -2380,8 +2380,8 @@ void func_80077700(s32 objectIndex, Vec3f arg1, s32 arg2) {
 
     init_object(objectIndex, 0);
     gObjectList[objectIndex].unk_0D5 = 7;
-    gObjectList[objectIndex].activeTLUT = (u32 *) D_0D028DD8;
-    gObjectList[objectIndex].tlutList = (u32 *) D_0D028DD8;
+    gObjectList[objectIndex].activeTLUT = (u32 *) gTextureParticleLeaf;
+    gObjectList[objectIndex].tlutList = (u32 *) gTextureParticleLeaf;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].unk_044 = arg1[1];
     switch (gCurrentCourseId) {

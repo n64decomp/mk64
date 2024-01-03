@@ -2229,7 +2229,7 @@ void func_8004E6C4(s32 playerId) {
 }
 
 void func_8004E78C(s32 playerId) {
-    func_8004CB60((s32) playerHUD[playerId].lapX, playerHUD[playerId].lapY + 3, (s32) D_0D00A958);
+    func_8004CB60((s32) playerHUD[playerId].lapX, playerHUD[playerId].lapY + 3, (s32) gTextureHUDLap);
     func_8004CB90(playerHUD[playerId].lapX + 0x1C, (s32) playerHUD[playerId].lapY, D_800E4570[playerHUD[playerId].alsoLapCount]);
 }
 
@@ -2237,11 +2237,11 @@ void func_8004E800(s32 playerId) {
     if (playerHUD[playerId].unk_81 != 0) {
         if (playerHUD[playerId].lapCount != 3) {
             func_8004A384(playerHUD[playerId].rankX + playerHUD[playerId].slideRankX, playerHUD[playerId].rankY + playerHUD[playerId].slideRankY, 0U,
-                playerHUD[playerId].rankScaling, 0x000000FF, D_800E55F8[D_8018CF98[playerId]], 0, 0x000000FF, D_0D00D258[D_8018CF98[playerId]],
+                playerHUD[playerId].rankScaling, 0x000000FF, D_800E55F8[D_8018CF98[playerId]], 0, 0x000000FF, gTextureHUDPlace[D_8018CF98[playerId]],
                 D_0D0068F0, 0x00000080, 0x00000040, 0x00000080, 0x00000040);
         } else {
             func_8004A384(playerHUD[playerId].rankX + playerHUD[playerId].slideRankX, playerHUD[playerId].rankY + playerHUD[playerId].slideRankY, 0U,
-                playerHUD[playerId].rankScaling, 0x000000FF, D_800E55F8[D_80165594], 0, 0x000000FF, D_0D00D258[gGPCurrentRaceRankByPlayerId[playerId]],
+                playerHUD[playerId].rankScaling, 0x000000FF, D_800E55F8[D_80165594], 0, 0x000000FF, gTextureHUDPlace[gGPCurrentRaceRankByPlayerId[playerId]],
                 D_0D0068F0, 0x00000080, 0x00000040, 0x00000080, 0x00000040);
         }
     }
@@ -2270,26 +2270,26 @@ void func_8004EB38(s32 playerId) {
 
     temp_s0 = &playerHUD[playerId];
     if ((u8) temp_s0->unk_7B != 0) {
-        func_8004C9D8(temp_s0->lap1CompletionTimeX - 0x13, temp_s0->timerY + 8, 0x00000080, (s32) D_0D00C158, 0x00000020, 0x00000010, 0x00000020, 0x00000010);
+        func_8004C9D8(temp_s0->lap1CompletionTimeX - 0x13, temp_s0->timerY + 8, 0x00000080, (s32) gTextureHUDTime, 0x00000020, 0x00000010, 0x00000020, 0x00000010);
         func_8004F950((s32) temp_s0->lap1CompletionTimeX, (s32) temp_s0->timerY, 0x00000080, (s32) temp_s0->someTimer);
     }
     if ((u8) temp_s0->unk_7C != 0) {
-        func_8004C9D8(temp_s0->lap2CompletionTimeX - 0x13, temp_s0->timerY + 8, 0x00000050, (s32) D_0D00C158, 0x00000020, 0x00000010, 0x00000020, 0x00000010);
+        func_8004C9D8(temp_s0->lap2CompletionTimeX - 0x13, temp_s0->timerY + 8, 0x00000050, (s32) gTextureHUDTime, 0x00000020, 0x00000010, 0x00000020, 0x00000010);
         func_8004F950((s32) temp_s0->lap2CompletionTimeX, (s32) temp_s0->timerY, 0x00000050, (s32) temp_s0->someTimer);
     }
     if ((u8) temp_s0->unk_7E != 0) {
-        func_8004C9D8((s32) temp_s0->lapAfterImage1X, temp_s0->lapY + 3, 0x00000080, (s32) D_0D00A958, 0x00000020, 8, 0x00000020, 8);
+        func_8004C9D8((s32) temp_s0->lapAfterImage1X, temp_s0->lapY + 3, 0x00000080, (s32) gTextureHUDLap, 0x00000020, 8, 0x00000020, 8);
         func_8004C9D8(temp_s0->lapAfterImage1X + 0x1C, (s32) temp_s0->lapY, 0x00000080, D_800E4570[temp_s0->alsoLapCount], 0x00000020, 0x00000010, 0x00000020, 0x00000010);
     }
     if ((u8) temp_s0->unk_7F != 0) {
-        func_8004C9D8((s32) temp_s0->lapAfterImage2X, temp_s0->lapY + 3, 0x00000050, (s32) D_0D00A958, 0x00000020, 8, 0x00000020, 8);
+        func_8004C9D8((s32) temp_s0->lapAfterImage2X, temp_s0->lapY + 3, 0x00000050, (s32) gTextureHUDLap, 0x00000020, 8, 0x00000020, 8);
         func_8004C9D8(temp_s0->lapAfterImage2X + 0x1C, (s32) temp_s0->lapY, 0x00000050, D_800E4570[temp_s0->alsoLapCount], 0x00000020, 0x00000010, 0x00000020, 0x00000010);
     }
 }
 
 void func_8004ED40(s32 arg0) {
-    func_8004A2F4(playerHUD[arg0].speedometerX, playerHUD[arg0].speedometerY, 0U, 1.0f, D_8018D300, D_8018D308, D_8018D310, 0xFF, (u8* ) D_0D009958, D_0D0064B0, 0x40, 0x60, 0x40, 0x30);
-    func_8004A258(D_8018CFEC, D_8018CFF4, D_8016579E, 1.0f, (u8* ) D_0D00A558, &D_0D005FF0, 0x40, 0x20, 0x40, 0x20);
+    func_8004A2F4(playerHUD[arg0].speedometerX, playerHUD[arg0].speedometerY, 0U, 1.0f, D_8018D300, D_8018D308, D_8018D310, 0xFF, (u8* ) gTextureSpeedometer, D_0D0064B0, 0x40, 0x60, 0x40, 0x30);
+    func_8004A258(D_8018CFEC, D_8018CFF4, D_8016579E, 1.0f, (u8* ) gTextureSpeedometerNeedle, &D_0D005FF0, 0x40, 0x20, 0x40, 0x20);
 }
 
 void func_8004EE54(s32 arg0) {
@@ -2457,7 +2457,7 @@ void print_timer(s32 arg0, s32 arg1, s32 arg2) {
     gSPDisplayList(gDisplayListHead++, D_0D008108);
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
-    func_80043D50(D_0D00C558, 104, 16);
+    func_80043D50(gTextureHUDNormalDigit, 104, 16);
     func_8004F6D0(arg2);
     func_8004F774(arg0, arg1);
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
@@ -2476,7 +2476,7 @@ void func_8004F8CC(s32 arg0, s32 arg1) {
 void func_8004F950(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
     set_transparency(arg2);
-    func_80043D50(D_0D00C558, 104, 16);
+    func_80043D50(gTextureHUDNormalDigit, 104, 16);
     func_8004F6D0(arg3);
     func_8004F8CC(arg0, arg1);
 }
@@ -2484,7 +2484,7 @@ void func_8004F950(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 void func_8004F9CC(s32 arg0, s32 arg1, s32 arg2) {
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
     func_8004B614(D_801656C0, D_801656D0, D_801656E0, 128, 128, 128, 255);
-    func_80043D50(D_0D00C558, 104, 16);
+    func_80043D50(gTextureHUDNormalDigit, 104, 16);
     func_8004F6D0(arg2);
     func_8004F8CC(arg0, arg1);
 }
@@ -2502,7 +2502,7 @@ void func_8004FA78(s32 playerId) {
                         func_8004F9CC(playerHUD[playerId].lapCompletionTimeXs[var_s0], playerHUD[playerId].timerY + (var_s0*0x10), playerHUD[playerId].lapDurations[var_s0]);
                     }
                 }
-                func_8004CB90(playerHUD[playerId].totalTimeX - 0x13, playerHUD[playerId].timerY + 0x38, D_0D00BD58);
+                func_8004CB90(playerHUD[playerId].totalTimeX - 0x13, playerHUD[playerId].timerY + 0x38, gTextureHUDTotalTime);
                 if (D_801657E5 != 0) {
                     func_8004F9CC(playerHUD[playerId].totalTimeX, playerHUD[playerId].timerY + 0x30, playerHUD[playerId].someTimer);
                 } else {
@@ -2511,10 +2511,10 @@ void func_8004FA78(s32 playerId) {
             }
         } else {
             if (playerHUD[playerId].blinkTimer == 0) {
-                func_8004CB90(playerHUD[playerId].timerX - 0x13, playerHUD[playerId].timerY + 8, D_0D00C158);
+                func_8004CB90(playerHUD[playerId].timerX - 0x13, playerHUD[playerId].timerY + 8, gTextureHUDTime);
                 print_timer(playerHUD[playerId].timerX, playerHUD[playerId].timerY, playerHUD[playerId].someTimer);
             } else {
-                func_8004CB90(playerHUD[playerId].timerX - 0x13, playerHUD[playerId].timerY + 8, D_0D00AD58);
+                func_8004CB90(playerHUD[playerId].timerX - 0x13, playerHUD[playerId].timerY + 8, gTextureHUDLapTime);
                 if (D_801657E3 != 0) {
                     func_8004F9CC(playerHUD[playerId].timerX, playerHUD[playerId].timerY, playerHUD[playerId].someTimer1);
                 } else if (playerHUD[playerId].blinkState == 0) {
@@ -2529,7 +2529,7 @@ void func_8004FC78(s16 arg0, s16 arg1, s8 arg2) {
     gSPDisplayList(gDisplayListHead++, D_0D008108);
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
-    func_80043D50(D_0D00AB58, 32, 8);
+    func_80043D50(gTextureHUD123, 32, 8);
     func_8004BA98(arg0, arg1, 8, 8, arg2 * 8, 0, 0);
     func_8004BA98(arg0 + 8, arg1, 8, 8, 24, 0, 0);
     func_8004BA98(arg0 + 16, arg1, 8, 8, 16, 0, 0);
@@ -2913,7 +2913,7 @@ void func_80051638(UNUSED s32 arg0) {
 
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
-    func_80043D50(D_0D028DD8, 0x00000020, 0x00000010);
+    func_80043D50(gTextureParticleLeaf, 0x00000020, 0x00000010);
     for(someIndex = 0; someIndex < D_8018C970_SIZE; someIndex++) {
         leafIndex = D_8018C970[someIndex];
         if (leafIndex != -1) {
@@ -3672,7 +3672,7 @@ void func_80054664(s32 cameraId) {
     s32 objectIndex;
 
     gSPDisplayList(gDisplayListHead++, D_0D007AE0);
-    func_8004477C(D_0D02BC58[D_80165598], 0x00000020, 0x00000020);
+    func_8004477C(gTextureParticleSmoke[D_80165598], 0x00000020, 0x00000020);
     func_8004B414(0, 0, 0, 0x000000FF);
     D_80183E80[0] = 0;
     D_80183E80[2] = 0x8000;
@@ -3716,7 +3716,7 @@ void func_80054938(s32 cameraId) {
 
     sp54 = &camera1[cameraId];
     gSPDisplayList(gDisplayListHead++, D_0D007AE0);
-    func_8004477C(D_0D02BC58[D_80165598], 32, 32);
+    func_8004477C(gTextureParticleSmoke[D_80165598], 32, 32);
     func_8004B72C(255, 255, 255, 255, 255, 255, 255);
     D_80183E80[0] = 0;
     D_80183E80[2] = 0x8000;
@@ -4171,7 +4171,7 @@ void func_800562E4(s32 arg0, s32 arg1, s32 arg2) {
     D_80165878 = D_800E46F8[arg0][2];
     func_8004B138(D_80165860, D_8016586C, D_80165878, arg2);
     rsp_set_matrix_transformation(D_80183E40, D_80183E80, 0.2f);
-    func_80044BF8(D_0D02AC58[arg1], 0x00000020, 0x00000020);
+    func_80044BF8(gTextureParticleSpark[arg1], 0x00000020, 0x00000020);
     gSPVertex(gDisplayListHead++, D_0D005AE0, 4, 0);
     gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
@@ -4195,7 +4195,7 @@ void func_800563DC(s32 objectIndex, s32 cameraId, s32 arg2) {
     rsp_set_matrix_transformation(D_80183E40, D_80183E80, 0.2f);
     gSPDisplayList(gDisplayListHead++, D_0D007E98);
     func_8004B310(arg2);
-    draw_rectangle_texture_overlap(D_0D02A858, D_0D029858[residue], D_0D005AE0, 0x00000020, 0x00000020, 0x00000020, 0x00000020);
+    draw_rectangle_texture_overlap(D_0D02A858, gTextureBomb[residue], D_0D005AE0, 0x00000020, 0x00000020, 0x00000020, 0x00000020);
     temp_s0 = D_8018D400;
     gSPDisplayList(gDisplayListHead++, D_0D007B00);
     func_8004B414(0, 0, 0, arg2);
@@ -4299,7 +4299,7 @@ void func_80056BF0(s32 bombIndex) {
 
     temp_v0 = D_801655CC % 6U;
     thing = D_800E471C[temp_v0];
-    bombFrame = D_0D029858[thing];
+    bombFrame = gTextureBomb[thing];
     D_80183E40[0] = sp40.bombPos[0];
     D_80183E40[1] = sp40.bombPos[1] + 1.0;
     D_80183E40[2] = sp40.bombPos[2];
