@@ -346,9 +346,9 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_110.unk54[0] = 0.0f;
     player->unk_110.unk54[1] = 0.0f;
     player->unk_110.unk54[2] = 0.0f;
-    player->unk_110.unk60[0] = 0.0f;
-    player->unk_110.unk60[1] = 0.0f;
-    player->unk_110.unk60[2] = 0.0f;
+    player->unk_110.orientationVector[0] = 0.0f;
+    player->unk_110.orientationVector[1] = 0.0f;
+    player->unk_110.orientationVector[2] = 0.0f;
 
     D_80165300[playerIndex] = 0;
     D_8018CE10[playerIndex].unk_04[0] = 0.0f;

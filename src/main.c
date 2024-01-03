@@ -125,7 +125,7 @@ f32 gCameraZoom[4]; // look like to be the fov of each character
 //f32 D_8015013C;
 UNUSED s32 D_80150140;
 UNUSED s32 D_80150144;
-f32 D_80150148;
+f32 gScreenAspect;
 f32 D_8015014C;
 f32 D_80150150;
 UNUSED f32 D_80150154;

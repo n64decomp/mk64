@@ -2249,18 +2249,18 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
         player->unk_064[2] *= -1.0f;
     }
     if ((player->boundingBoxCorners[2].surfaceType == 1) && (player->boundingBoxCorners[3].surfaceType == 1)) {
-        spB4 = (-1 * (player->unk_064[0] + sp16C[0])) + ((-player->unk_110.unk60[0] * player->kartGravity) * 0.925);
-        spB0 = (-player->unk_110.unk60[1] * player->kartGravity);
-        spAC = (-1 * (player->unk_064[2] + sp16C[2])) + ((-player->unk_110.unk60[2] * player->kartGravity) * 0.925);
+        spB4 = (-1 * (player->unk_064[0] + sp16C[0])) + ((-player->unk_110.orientationVector[0] * player->kartGravity) * 0.925);
+        spB0 = (-player->unk_110.orientationVector[1] * player->kartGravity);
+        spAC = (-1 * (player->unk_064[2] + sp16C[2])) + ((-player->unk_110.orientationVector[2] * player->kartGravity) * 0.925);
     } else {
         temp3 = (((player->unk_094 / 18.0f) * 216.0f) / 10.0f);
         if (temp3 >= 10)
         {
             temp3 = 10;
         }
-        spB4 = -1 * (player->unk_064[0] + sp16C[0]) + ((-player->unk_110.unk60[0] * player->kartGravity) * sp104[temp3]);
-        spB0 = (-player->unk_110.unk60[1] * player->kartGravity);
-        spAC = -1 * (player->unk_064[2] + sp16C[2]) + ((-player->unk_110.unk60[2] * player->kartGravity) * sp104[temp3]);
+        spB4 = -1 * (player->unk_064[0] + sp16C[0]) + ((-player->unk_110.orientationVector[0] * player->kartGravity) * sp104[temp3]);
+        spB0 = (-player->unk_110.orientationVector[1] * player->kartGravity);
+        spAC = -1 * (player->unk_064[2] + sp16C[2]) + ((-player->unk_110.orientationVector[2] * player->kartGravity) * sp104[temp3]);
     }
     if (((player->effects & 8) != 8) && ((player->effects & 0x20) == 0x20)) {
         spB4 = 0 * (player->unk_064[0] + sp16C[0]);
@@ -2548,9 +2548,9 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     if ((((player->effects & 0x80) == 0x80)
         || ((player->effects & 0x40) == 0x40))
         || ((player->effects & 0x20000) == 0x20000)) {
-        sp80 = -1 * (player->unk_064[0]) + (((-player->unk_110.unk60[0]) * player->kartGravity) * 0.1);
-        sp7C = (-player->unk_110.unk60[1]) * player->kartGravity;
-        sp78 = -1 * (player->unk_064[2]) + (((-player->unk_110.unk60[2]) * player->kartGravity) * 0.1);
+        sp80 = -1 * (player->unk_064[0]) + (((-player->unk_110.orientationVector[0]) * player->kartGravity) * 0.1);
+        sp7C = (-player->unk_110.orientationVector[1]) * player->kartGravity;
+        sp78 = -1 * (player->unk_064[2]) + (((-player->unk_110.orientationVector[2]) * player->kartGravity) * 0.1);
     } else {
         sp80 = -1 * player->unk_064[0];
         sp7C = -1 * player->kartGravity;

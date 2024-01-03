@@ -8226,14 +8226,14 @@ void func_8001C14C(void) {
     }
 }
 
-void func_8001C3C4(s32 arg0) {
+void func_8001C3C4(s32 cameraId) {
     if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
         if (gBombKarts[0].waypointIndex >= 16) {
             func_80057114(3);
         }
     } else {
         if (gModeSelection == VERSUS) {
-            func_80057114(arg0);
+            func_80057114(cameraId);
         }
     }
 }

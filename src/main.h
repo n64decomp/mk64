@@ -171,7 +171,7 @@ extern s32 D_80150120;
 extern s32 gMenuSelectionFromQuit;
 extern f32 gCameraZoom[];
 
-extern f32 D_80150148;
+extern f32 gScreenAspect;
 extern f32 D_8015014C;
 extern f32 D_80150150;
 

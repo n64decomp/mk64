@@ -1249,9 +1249,9 @@ void render_player_shadow(Player *player, s8 arg1, s8 arg2) {
         var_f2 = (f32) (1.0 - ((f64) player->unk_110.unk3C[2] * 0.02));
         if (var_f2 < 0.0f) {var_f2 = 0.0f;}
         if (var_f2 > 1.0f) {var_f2 = 1.0f;}
-        spB4[0] = player->unk_110.unk60[0];
-        spB4[2] = player->unk_110.unk60[2];
-        spB4[1] = player->unk_110.unk60[1];
+        spB4[0] = player->unk_110.orientationVector[0];
+        spB4[2] = player->unk_110.orientationVector[2];
+        spB4[1] = player->unk_110.orientationVector[1];
 
         spCC[0] = player->pos[0] + ((spB0 * sins(spC0)) + (spAC * coss(spC0)));
         spCC[1] = player->unk_074 + 1.0f;

@@ -63,9 +63,9 @@ void update_actor_falling_rocks(struct FallingRock *rock) {
     func_802ADDC8(&rock->unk30, 10.0f, rock->pos[0], rock->pos[1], rock->pos[2]);
     pad0 = rock->unk30.unk3C[2];
     if (pad0 < 0.0f) {
-        unkVec[0] = -rock->unk30.unk60[0];
-        unkVec[1] = -rock->unk30.unk60[1];
-        unkVec[2] = -rock->unk30.unk60[2];
+        unkVec[0] = -rock->unk30.orientationVector[0];
+        unkVec[1] = -rock->unk30.orientationVector[1];
+        unkVec[2] = -rock->unk30.orientationVector[2];
         rock->pos[0] += unkVec[0] * rock->unk30.unk3C[2];
         rock->pos[1] += unkVec[1] * rock->unk30.unk3C[2];
         rock->pos[2] += unkVec[2] * rock->unk30.unk3C[2];
