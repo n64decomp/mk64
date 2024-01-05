@@ -366,8 +366,8 @@ extern u8 common_TLUT_bomb[];
 extern u8 D_0D02AA58[];
 extern u8 common_texture_particle_spark[][1024];
 extern u8 common_texture_particle_smoke[][1024];
-extern s8 common_texture_mini_map_finish_line[];
-extern s8 common_texture_mini_map_kart_character[][128];
+extern s8 common_texture_minimap_finish_line[];
+extern s8 common_texture_minimap_kart_character[][128];
 extern s8 common_texture_minimap_progress_dot[];
 
 /** @endcond */

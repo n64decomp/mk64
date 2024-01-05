@@ -3163,34 +3163,34 @@ u8 common_texture_particle_smoke[][1024] = {
 };
 
 // minimap cars
-s8 common_texture_mini_map_finish_line[] = {
-    #include "assets/minimap_icons/common_texture_mini_map_finish_line.inc.c"
+s8 common_texture_minimap_finish_line[] = {
+    #include "assets/minimap_icons/common_texture_minimap_finish_line.inc.c"
 };
 
-s8 common_texture_mini_map_kart_character[][128] = {
+s8 common_texture_minimap_kart_character[][128] = {
     { // Mario
-        #include "assets/minimap_icons/common_texture_mini_map_kart_mario.inc.c"
+        #include "assets/minimap_icons/common_texture_minimap_kart_mario.inc.c"
     },
     { // Luigi
-        #include "assets/minimap_icons/common_texture_mini_map_kart_luigi.inc.c"
+        #include "assets/minimap_icons/common_texture_minimap_kart_luigi.inc.c"
     },
     { // Yoshi
-        #include "assets/minimap_icons/common_texture_mini_map_kart_yoshi.inc.c"
+        #include "assets/minimap_icons/common_texture_minimap_kart_yoshi.inc.c"
     },
     { // Toad
-        #include "assets/minimap_icons/common_texture_mini_map_kart_toad.inc.c"
+        #include "assets/minimap_icons/common_texture_minimap_kart_toad.inc.c"
     },
     { // Donkey Kong
-        #include "assets/minimap_icons/common_texture_mini_map_kart_donkey_kong.inc.c"
+        #include "assets/minimap_icons/common_texture_minimap_kart_donkey_kong.inc.c"
     },
     { // Wario
-        #include "assets/minimap_icons/common_texture_mini_map_kart_wario.inc.c"
+        #include "assets/minimap_icons/common_texture_minimap_kart_wario.inc.c"
     },
     { // Peach
-        #include "assets/minimap_icons/common_texture_mini_map_kart_peach.inc.c"
+        #include "assets/minimap_icons/common_texture_minimap_kart_peach.inc.c"
     },
     { // Bowser
-        #include "assets/minimap_icons/common_texture_mini_map_kart_bowser.inc.c"
+        #include "assets/minimap_icons/common_texture_minimap_kart_bowser.inc.c"
     },
 };
 

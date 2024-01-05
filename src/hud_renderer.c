@@ -2326,7 +2326,7 @@ void func_8004F020(s32 arg0) {
         var_f0 = var_f0 + 4.0;
         break;
     }
-    func_8004CAD0(var_f2, var_f0, common_texture_mini_map_finish_line);
+    func_8004CAD0(var_f2, var_f0, common_texture_minimap_finish_line);
 }
 
 #ifdef NON_MATCHING
@@ -2344,10 +2344,10 @@ void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
         temp_a1 = ((D_8018D2D8[arg0] + D_8018D2F8) - ((s16) D_8018D2B8 / 2)) + D_8018D2E8 + (s32) (player->pos[2] * D_8018D2A0);
         if (characterId != 8) {
             if ((gGPCurrentRaceRankByPlayerId[playerId] == 0) && (gModeSelection != BATTLE) && (gModeSelection != TIME_TRIALS)) {
-                func_80046424((s32) temp_a0, (s32) temp_a1, (player->unk_02C[1] + 0x8000) & 0xFFFF, 1.0f, (u8 *) common_texture_mini_map_kart_character[characterId], common_vtx_player_minimap_icon, 8, 8, 8, 8);
+                func_80046424((s32) temp_a0, (s32) temp_a1, (player->unk_02C[1] + 0x8000) & 0xFFFF, 1.0f, (u8 *) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon, 8, 8, 8, 8);
                 // return;
             } else {
-                func_800463B0((s32) temp_a0, (s32) temp_a1, (player->unk_02C[1] + 0x8000) & 0xFFFF, 1.0f, (u8 *) common_texture_mini_map_kart_character[characterId], common_vtx_player_minimap_icon, 8, 8, 8, 8);
+                func_800463B0((s32) temp_a0, (s32) temp_a1, (player->unk_02C[1] + 0x8000) & 0xFFFF, 1.0f, (u8 *) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon, 8, 8, 8, 8);
             }
             //return;
         } else {
