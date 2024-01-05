@@ -1,5 +1,6 @@
 var NAVTREEINDEX69 =
 {
+"sounds_8h.html#ae05892f9817132cd9148012b02c0d7bd":[4,0,0,19,24],
 "sounds_8h.html#ae06060f6d675e55c04372ae8072541af":[4,0,0,19,17],
 "sounds_8h_source.html":[4,0,0,19],
 "spawn__players_8c.html":[4,0,1,59],
@@ -248,6 +249,5 @@ var NAVTREEINDEX69 =
 "startup__logo_8inc_8h.html":[4,0,1,2,11],
 "startup__logo_8inc_8h.html#a097a363be63fd5d6e826e73b0d4ecd16":[4,0,1,2,11,0],
 "startup__logo_8inc_8h.html#a18b88401357e451e1d00b287b930e65c":[4,0,1,2,11,10],
-"startup__logo_8inc_8h.html#a2333776df237874d47c4b3a87762d40d":[4,0,1,2,11,18],
-"startup__logo_8inc_8h.html#a243b80084d0e2d5d2eff6eee4630e351":[4,0,1,2,11,24]
+"startup__logo_8inc_8h.html#a2333776df237874d47c4b3a87762d40d":[4,0,1,2,11,18]
 };
