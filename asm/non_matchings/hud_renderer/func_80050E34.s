@@ -72,8 +72,8 @@ glabel func_80050E34
 /* 051B38 80050F38 AC580000 */  sw    $t8, ($v0)
 /* 051B3C 80050F3C AC590004 */  sw    $t9, 4($v0)
 /* 051B40 80050F40 8E020000 */  lw    $v0, ($s0)
-/* 051B44 80050F44 3C180D02 */  lui   $t8, %hi(gTLUTPortraitBombKartAndQuestionMark) # $t8, 0xd02
-/* 051B48 80050F48 2718B4D8 */  addiu $t8, %lo(gTLUTPortraitBombKartAndQuestionMark) # addiu $t8, $t8, -0x4b28
+/* 051B44 80050F44 3C180D02 */  lui   $t8, %hi(common_TLUT_portrait_bomb_kart_and_question_mark) # $t8, 0xd02
+/* 051B48 80050F48 2718B4D8 */  addiu $t8, %lo(common_TLUT_portrait_bomb_kart_and_question_mark) # addiu $t8, $t8, -0x4b28
 /* 051B4C 80050F4C 244E0008 */  addiu $t6, $v0, 8
 /* 051B50 80050F50 AE0E0000 */  sw    $t6, ($s0)
 /* 051B54 80050F54 3C0FFD10 */  lui   $t7, 0xfd10
@@ -109,13 +109,13 @@ glabel func_80050E34
 /* 051BCC 80050FCC AC590000 */  sw    $t9, ($v0)
 /* 051BD0 80050FD0 8E020000 */  lw    $v0, ($s0)
 /* 051BD4 80050FD4 3C18E700 */  lui   $t8, 0xe700
-/* 051BD8 80050FD8 3C040D02 */  lui   $a0, %hi(gTexturePortraitQuestionMark) # $a0, 0xd02
+/* 051BD8 80050FD8 3C040D02 */  lui   $a0, %hi(common_texture_portrait_question_mark) # $a0, 0xd02
 /* 051BDC 80050FDC 244F0008 */  addiu $t7, $v0, 8
 /* 051BE0 80050FE0 AE0F0000 */  sw    $t7, ($s0)
 /* 051BE4 80050FE4 AC400004 */  sw    $zero, 4($v0)
 /* 051BE8 80050FE8 AC580000 */  sw    $t8, ($v0)
 /* 051BEC 80050FEC AFAD00D4 */  sw    $t5, 0xd4($sp)
-/* 051BF0 80050FF0 2484DAD8 */  addiu $a0, %lo(gTexturePortraitQuestionMark) # addiu $a0, $a0, -0x2528
+/* 051BF0 80050FF0 2484DAD8 */  addiu $a0, %lo(common_texture_portrait_question_mark) # addiu $a0, $a0, -0x2528
 /* 051BF4 80050FF4 24050020 */  li    $a1, 32
 /* 051BF8 80050FF8 0C0114A9 */  jal   rsp_load_texture
 /* 051BFC 80050FFC 24060020 */   li    $a2, 32
@@ -300,8 +300,8 @@ glabel func_80050E34
 /* 051EB8 800512B8 AC590000 */  sw    $t9, ($v0)
 .L800512BC:
 /* 051EBC 800512BC 8E020000 */  lw    $v0, ($s0)
-/* 051EC0 800512C0 3C190D02 */  lui   $t9, %hi(gTLUTHudTypeCRankTinyFont) # $t9, 0xd02
-/* 051EC4 800512C4 27399E58 */  addiu $t9, %lo(gTLUTHudTypeCRankTinyFont) # addiu $t9, $t9, -0x61a8
+/* 051EC0 800512C0 3C190D02 */  lui   $t9, %hi(common_TLUT_HUD_type_C_rank_tiny_font) # $t9, 0xd02
+/* 051EC4 800512C4 27399E58 */  addiu $t9, %lo(common_TLUT_HUD_type_C_rank_tiny_font) # addiu $t9, $t9, -0x61a8
 /* 051EC8 800512C8 244F0008 */  addiu $t7, $v0, 8
 /* 051ECC 800512CC AE0F0000 */  sw    $t7, ($s0)
 /* 051ED0 800512D0 3C18FD10 */  lui   $t8, 0xfd10
@@ -343,8 +343,8 @@ glabel func_80050E34
 /* 051F60 80051360 AC400004 */  sw    $zero, 4($v0)
 /* 051F64 80051364 AC590000 */  sw    $t9, ($v0)
 /* 051F68 80051368 8FAE00DC */  lw    $t6, 0xdc($sp)
-/* 051F6C 8005136C 3C190D02 */  lui   $t9, %hi(gTextureHudTypeCRankTinyFont) # $t9, 0xd02
-/* 051F70 80051370 2739A058 */  addiu $t9, %lo(gTextureHudTypeCRankTinyFont) # addiu $t9, $t9, -0x5fa8
+/* 051F6C 8005136C 3C190D02 */  lui   $t9, %hi(common_texture_HUD_type_C_rank_tiny_font) # $t9, 0xd02
+/* 051F70 80051370 2739A058 */  addiu $t9, %lo(common_texture_HUD_type_C_rank_tiny_font) # addiu $t9, $t9, -0x5fa8
 /* 051F74 80051374 000E7980 */  sll   $t7, $t6, 6
 /* 051F78 80051378 25F80040 */  addiu $t8, $t7, 0x40
 /* 051F7C 8005137C 0C0114A9 */  jal   rsp_load_texture
@@ -408,8 +408,8 @@ glabel func_80050E34
 /* 05205C 8005145C AFB80034 */  sw    $t8, 0x34($sp)
 /* 052060 80051460 0C012CD7 */  jal   func_8004B35C
 /* 052064 80051464 240700FF */   li    $a3, 255
-/* 052068 80051468 3C040D02 */  lui   $a0, %hi(gTextureCharacterPortraitBorder) # $a0, 0xd02
-/* 05206C 8005146C 2484A2D8 */  addiu $a0, %lo(gTextureCharacterPortraitBorder) # addiu $a0, $a0, -0x5d28
+/* 052068 80051468 3C040D02 */  lui   $a0, %hi(common_texture_character_portrait_border) # $a0, 0xd02
+/* 05206C 8005146C 2484A2D8 */  addiu $a0, %lo(common_texture_character_portrait_border) # addiu $a0, $a0, -0x5d28
 /* 052070 80051470 24050020 */  li    $a1, 32
 /* 052074 80051474 0C011249 */  jal   func_80044924
 /* 052078 80051478 24060020 */   li    $a2, 32

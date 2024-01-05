@@ -1,6 +1,6 @@
 CHECKEREDFLAG_DIR := assets/lakitu/checkeredflag
 
-CHECKEREDFLAG_PALETTE := $(CHECKEREDFLAG_DIR)/gTLUTLakituCheckeredFlag.png
+CHECKEREDFLAG_PALETTE := $(CHECKEREDFLAG_DIR)/common_TLUT_lakitu_checkered_flag.png
 
 CHECKEREDFLAG_FRAMES := \
 $(CHECKEREDFLAG_DIR)/gTextureLakituCheckeredFlag01.png \

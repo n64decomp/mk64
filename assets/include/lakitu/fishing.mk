@@ -1,6 +1,6 @@
 FISHING_DIR := assets/lakitu/fishing
 
-FISHING_PALETTE := $(FISHING_DIR)/gTLUTLakituFishing.png
+FISHING_PALETTE := $(FISHING_DIR)/common_TLUT_lakitu_fishing.png
 
 FISHING_FRAMES := \
 $(FISHING_DIR)/gTextureLakituFishing1.png \

@@ -30,12 +30,12 @@ extern s8 D_03008000[];
 extern s8 D_03008800[];
 */
 
-s8 gTLUTFinishLineBanner[] = { // tlut
-    #include "assets/finish_line_banner/gTLUTFinishLineBanner.inc.c"
+s8 common_TLUT_finish_line_banner[] = { // tlut
+    #include "assets/finish_line_banner/common_TLUT_finish_line_banner.inc.c"
 };
 
-s8 gTextureParticleFire[] = { // tlut
-    #include "textures/common/gTextureParticleFire.rgba16.inc.c"
+s8 common_texture_particle_fire[] = { // tlut
+    #include "textures/common/common_texture_particle_fire.rgba16.inc.c"
 };
 
 Vtx D_0D001200[] = {
@@ -218,7 +218,7 @@ Gfx D_0D001828[] = {
 Gfx D_0D001840[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
-    gsDPLoadTLUT_pal256(gTLUTFinishLineBanner),
+    gsDPLoadTLUT_pal256(common_TLUT_finish_line_banner),
     gsDPSetTextureLUT(G_TT_RGBA16),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
@@ -396,8 +396,8 @@ Vtx D_0D001EB8[] = {
 };
 
 // D_0D001EE8
-s8 gItemBoxQuestionMark_Texture[] = {
-    #include "textures/common/gTextureItemBoxQuestionMark.rgba16.inc.c"
+s8 common_texture_item_box_question_mark[] = {
+    #include "textures/common/common_texture_item_box_question_mark.rgba16.inc.c"
 };
 
 Gfx D_0D002EE8[] = {
@@ -430,7 +430,7 @@ Gfx common_model_fake_itembox[] = {
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 124, 252),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gItemBoxQuestionMark_Texture),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, common_texture_item_box_question_mark),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
@@ -450,7 +450,7 @@ Gfx itemBoxQuestionMarkModel[] = {
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 124, 252),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gItemBoxQuestionMark_Texture),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, common_texture_item_box_question_mark),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
@@ -578,12 +578,12 @@ Vtx common_vtx_flat_banana[] = {
 
 
 // D_0D003348
-s8 gBananaTexture[] = {
-    #include "textures/common/gTextureBanana.rgba16.inc.c"
+s8 common_texture_banana[] = {
+    #include "textures/common/common_texture_banana.rgba16.inc.c"
 };
 
 s8 common_texture_flat_banana[] = {
-    #include "textures/common/gTextureFlatBanana.rgba16.inc.c"
+    #include "textures/common/common_texture_flat_banana.rgba16.inc.c"
 };
 
 // 0x4B48
@@ -595,7 +595,7 @@ Gfx common_model_banana[] = {
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 124, 124),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gBananaTexture),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, common_texture_banana),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
@@ -632,16 +632,16 @@ Gfx common_model_flat_banana[] = {
 
 // tlut size 8x29
 //! @todo What is this?
-s8 D_0D004C68[] = {
-    #include "assets/trees/gTLUTTreesImport.inc.c"
+s8 common_TLUT_trees_import[] = {
+    #include "assets/trees/common_TLUT_trees_import.inc.c"
 };
 
-s8 gTLUTGreenShell[] = {
-    #include "assets/greenshell/gTLUTGreenShell.inc.c"
+s8 common_TLUT_green_shell[] = {
+    #include "assets/greenshell/common_TLUT_green_shell.inc.c"
 };
 // 5038
-s8 gTLUTBlueShell[] = {
-    #include "assets/blueshell/gTLUTBlueShell.inc.c"
+s8 common_TLUT_blue_shell[] = {
+    #include "assets/blueshell/common_TLUT_blue_shell.inc.c"
 };
 
 Vtx D_0D005238[] = {
@@ -1278,12 +1278,12 @@ s8 D_0D006AD8[] = {
 };
 
 // tlut
-s8 gTLUTDebugFont[] = {
-    #include "assets/debug_font/gTLUTDebugFont.inc.c"
+s8 common_TLUT_debug_font[] = {
+    #include "assets/debug_font/common_TLUT_debug_font.inc.c"
 };
 
-s8 gTextureDebugFont[] = {
-    #include "assets/debug_font/gTextureDebugFont.inc.c"
+s8 common_texture_debug_font[] = {
+    #include "assets/debug_font/common_texture_debug_font.inc.c"
 };
 
 // 0x76F8
@@ -1757,9 +1757,9 @@ Gfx D_0D008060[] = {
 Gfx D_0D008080[] = {
     gsSPDisplayList(D_0D007EF8),
     gsDPSetTextureLUT(G_TT_RGBA16),
-    gsDPLoadTLUT_pal16(0, gTLUTDebugFont),
+    gsDPLoadTLUT_pal16(0, common_TLUT_debug_font),
     gsDPLoadSync(),
-    gsDPLoadTextureBlock_4b(gTextureDebugFont, G_IM_FMT_CI, 128, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock_4b(common_texture_debug_font, G_IM_FMT_CI, 128, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSPEndDisplayList(),
 };
 
@@ -1782,7 +1782,7 @@ Gfx D_0D008138[] = {
 };
 
 // Curve graphs for generating a random item based on player race position.
-u8 gGrandPrixHumanItemCurve[8][100] = {
+u8 common_grand_prix_human_item_curve[8][100] = {
     {   // 1st
         ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,
         ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,
@@ -1881,7 +1881,7 @@ u8 gGrandPrixHumanItemCurve[8][100] = {
     },
 };
 
-u8 gGrandPrixCPUItemCurve[8][100] = {
+u8 common_grand_prix_CPU_item_curve[8][100] = {
     {
         ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,
         ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,
@@ -1980,7 +1980,7 @@ u8 gGrandPrixCPUItemCurve[8][100] = {
     },
 };
 
-u8 gVersus2PlayerItemCurve[2][100] = {
+u8 common_versus_2_player_item_curve[2][100] = {
     {
         ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,
         ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,        ITEM_BOO,           ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,
@@ -2007,7 +2007,7 @@ u8 gVersus2PlayerItemCurve[2][100] = {
     },
 };
 
-u8 gVersus3PlayerItemCurve[3][100] = {
+u8 common_versus_3_player_item_curve[3][100] = {
     {
         ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,
         ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,
@@ -2046,7 +2046,7 @@ u8 gVersus3PlayerItemCurve[3][100] = {
     },
 };
 
-u8 gVersus4PlayerItemCurve[4][100] = {
+u8 common_versus_4_player_item_curve[4][100] = {
     {
         ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,
         ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,
@@ -2097,7 +2097,7 @@ u8 gVersus4PlayerItemCurve[4][100] = {
     },
 };
 
-u8 gBattleItemCurve[1][100] = {
+u8 common_battle_item_curve[1][100] = {
     {
         ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,             ITEM_BANANA,
         ITEM_BANANA_BUNCH,       ITEM_BANANA_BUNCH,       ITEM_BANANA_BUNCH,       ITEM_BANANA_BUNCH,       ITEM_BANANA_BUNCH,       ITEM_GREEN_SHELL,        ITEM_GREEN_SHELL,        ITEM_GREEN_SHELL,        ITEM_GREEN_SHELL,        ITEM_GREEN_SHELL,
@@ -2566,92 +2566,92 @@ f32 D_0D009808[][4] = {
 };
 
 // Odometer speedometer
-s8 gTextureSpeedometer[] = {
-    #include "textures/common/gTextureSpeedometer.i4.inc.c"
+s8 common_texture_speedometer[] = {
+    #include "textures/common/common_texture_speedometer.i4.inc.c"
 };
 
 // i8? odometer needle
-s8 gTextureSpeedometerNeedle[] = {
-    #include "textures/common/gTextureSpeedometerNeedle.i4.inc.c"
+s8 common_texture_speedometer_needle[] = {
+    #include "textures/common/common_texture_speedometer_needle.i4.inc.c"
 };
 
 // Lap UI Texture
-s8 gTextureHUDLap[] = {
-    #include "textures/common/gTextureHUDLap.rgba16.inc.c"
+s8 common_texture_HUD_lap[] = {
+    #include "textures/common/common_texture_HUD_lap.rgba16.inc.c"
 };
 
 // 123/
-u8 gTextureHUD123[] = {
-    #include "textures/common/gTextureHUD123.rgba16.inc.c"
+u8 common_texture_HUD_123[] = {
+    #include "textures/common/common_texture_HUD_123.rgba16.inc.c"
 };
 
 // Lap
-s8 gTextureHUDLapTime[] = {
-    #include "textures/common/gTextureHUDLapTime.rgba16.inc.c"
+s8 common_texture_HUD_lap_time[] = {
+    #include "textures/common/common_texture_HUD_lap_time.rgba16.inc.c"
 };
 
 // 1/3
-s8 gTextureHUDLap1On3[] = {
-    #include "textures/common/gTextureHUDLap1On3.rgba16.inc.c"
+s8 common_texture_HUD_lap_1_on_3[] = {
+    #include "textures/common/common_texture_HUD_lap_1_on_3.rgba16.inc.c"
 };
 
 // 2/3
-s8 gTextureHUDLap2On3[] = {
-    #include "textures/common/gTextureHUDLap2On3.rgba16.inc.c"
+s8 common_texture_HUD_lap_2_on_3[] = {
+    #include "textures/common/common_texture_HUD_lap_2_on_3.rgba16.inc.c"
 };
 
 // 3/3
-s8 gTextureHUDLap3On3[] = {
-    #include "textures/common/gTextureHUDLap3On3.rgba16.inc.c"
+s8 common_texture_HUD_lap_3_on_3[] = {
+    #include "textures/common/common_texture_HUD_lap_3_on_3.rgba16.inc.c"
 };
 
 // total
-s8 gTextureHUDTotalTime[] = {
-    #include "textures/common/gTextureHUDTotalTime.rgba16.inc.c"
+s8 common_texture_HUD_total_time[] = {
+    #include "textures/common/common_texture_HUD_total_time.rgba16.inc.c"
 };
 
 // time
-s8 gTextureHUDTime[] = {
-    #include "textures/common/gTextureHUDTime.rgba16.inc.c"
+s8 common_texture_HUD_time[] = {
+    #include "textures/common/common_texture_HUD_time.rgba16.inc.c"
 };
 
 // 0123456789'"!
-u8 gTextureHUDNormalDigit[] = {
-    #include "textures/common/gTextureHUDNormalDigit.rgba16.inc.c"
+u8 common_texture_HUD_normal_digit[] = {
+    #include "textures/common/common_texture_HUD_normal_digit.rgba16.inc.c"
 };
 
-u8 gTextureHUDPlace[][4096] = {
+u8 common_texture_HUD_place[][4096] = {
     // first place
     {
-        #include "textures/common/gTextureHUD1st.i4.inc.c"
+        #include "textures/common/common_texture_HUD_1st.i4.inc.c"
     },
     // second place
     {
-        #include "textures/common/gTextureHUD2nd.i4.inc.c"
+        #include "textures/common/common_texture_HUD_2nd.i4.inc.c"
     },
     // third place
     {
-        #include "textures/common/gTextureHUD3rd.i4.inc.c"
+        #include "textures/common/common_texture_HUD_3rd.i4.inc.c"
     },
     // fourth place
     {
-        #include "textures/common/gTextureHUD4th.i4.inc.c"
+        #include "textures/common/common_texture_HUD_4th.i4.inc.c"
     },
     // fifth place
     {
-        #include "textures/common/gTextureHUD5th.i4.inc.c"
+        #include "textures/common/common_texture_HUD_5th.i4.inc.c"
     },
     // sixth place
     {
-        #include "textures/common/gTextureHUD6th.i4.inc.c"
+        #include "textures/common/common_texture_HUD_6th.i4.inc.c"
     },
     // seventh place
     {
-        #include "textures/common/gTextureHUD7th.i4.inc.c"
+        #include "textures/common/common_texture_HUD_7th.i4.inc.c"
     },
     // eighth place
     {
-        #include "textures/common/gTextureHUD8th.i4.inc.c"
+        #include "textures/common/common_texture_HUD_8th.i4.inc.c"
     },
 };
 
@@ -2675,424 +2675,424 @@ u8 D_0D015258[][2048] = {
 };
 
 // tlut for 1p, 2p, 3p, 4p
-u8 gTLUTPlayerEmblem[] = {
-    #include "assets/player_emblems/gTLUTPlayerEmblem.inc.c"
+u8 common_TLUT_player_emblem[] = {
+    #include "assets/player_emblems/common_TLUT_player_emblem.inc.c"
 };
 
 // 1p, 2p, 3p, 4p
-u8 gTexturePlayerEmblem[][2048] = {
+u8 common_texture_player_emblem[][2048] = {
     {
-        #include "assets/player_emblems/gTexturePlayerEmblem1p.inc.c"
+        #include "assets/player_emblems/common_texture_player_emblem_1p.inc.c"
     },
     {
-        #include "assets/player_emblems/gTexturePlayerEmblem2p.inc.c"
+        #include "assets/player_emblems/common_texture_player_emblem_2p.inc.c"
     },
     {
-        #include "assets/player_emblems/gTexturePlayerEmblem3p.inc.c"
+        #include "assets/player_emblems/common_texture_player_emblem_3p.inc.c"
     },
     {
-        #include "assets/player_emblems/gTexturePlayerEmblem4p.inc.c"
+        #include "assets/player_emblems/common_texture_player_emblem_4p.inc.c"
     },
 };
 
 // font tlut for 12345678
-u8 gTLUTHudTypeCRankFont[] = {
-   #include "assets/hud_type_c/gTLUTHudTypeCRankFont.inc.c"
+u8 common_TLUT_HUD_type_C_rank_font[] = {
+   #include "assets/hud_type_c/common_TLUT_HUD_type_C_rank_font.inc.c"
 };
  
 // font 12345678
-u8 gTextureHudTypeCRankFont[][256] = {
+u8 common_texture_HUD_type_C_rank_font[][256] = {
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankFont1.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_1.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankFont2.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_2.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankFont3.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_3.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankFont4.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_4.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankFont5.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_5.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankFont6.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_6.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankFont7.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_7.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankFont8.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_8.inc.c"
     },
 };
 
 // font tlut for 0123456789
-u8 gTLUTHudTypeCRankTinyFont[] = {
-   #include "assets/hud_type_c/gTLUTHudTypeCRankTinyFont.inc.c"
+u8 common_TLUT_HUD_type_C_rank_tiny_font[] = {
+   #include "assets/hud_type_c/common_TLUT_HUD_type_C_rank_tiny_font.inc.c"
 };
 
 // 0123456789
-u8 gTextureHudTypeCRankTinyFont[][64] = {
+u8 common_texture_HUD_type_C_rank_tiny_font[][64] = {
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont0.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_0.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont1.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_1.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont2.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_2.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont3.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_3.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont4.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_4.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont5.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_5.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont6.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_6.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont7.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_7.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont8.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_8.inc.c"
     },
     {
-        #include "assets/hud_type_c/gTextureHudTypeCRankTinyFont9.inc.c"
+        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_9.inc.c"
     },
 };
 
 // Square
-u8 gTextureCharacterPortraitBorder[] = {
-    #include "assets/hud_type_c/gTextureCharacterPortraitBorder.inc.c"
+u8 common_texture_character_portrait_border[] = {
+    #include "assets/hud_type_c/common_texture_character_portrait_border.inc.c"
 };
 
 // 1A4D8 mario tlut
-s8 gTLUTPortraitMario[] = {
-    #include "assets/character_portraits/gTLUTPortraitMario.inc.c"
+s8 common_TLUT_portrait_mario[] = {
+    #include "assets/character_portraits/common_TLUT_portrait_mario.inc.c"
 };
 
 // 1A6D8 luigi tlut
-s8 gTLUTPortraitLuigi[] = {
-    #include "assets/character_portraits/gTLUTPortraitLuigi.inc.c"
+s8 common_TLUT_portrait_luigi[] = {
+    #include "assets/character_portraits/common_TLUT_portrait_luigi.inc.c"
 };
 
 // 1A8D8 peach tlut
-s8 gTLUTPortraitPeach[] = {
-    #include "assets/character_portraits/gTLUTPortraitPeach.inc.c"
+s8 common_TLUT_portrait_peach[] = {
+    #include "assets/character_portraits/common_TLUT_portrait_peach.inc.c"
 };
 
 // 1AAD8 toad tlut
-s8 gTLUTPortraitToad[] = {
-    #include "assets/character_portraits/gTLUTPortraitToad.inc.c"
+s8 common_TLUT_portrait_toad[] = {
+    #include "assets/character_portraits/common_TLUT_portrait_toad.inc.c"
 };
 
 // 1ACD8 yoshi tlut
-s8 gTLUTPortraitYoshi[] = {
-    #include "assets/character_portraits/gTLUTPortraitYoshi.inc.c"
+s8 common_TLUT_portrait_yoshi[] = {
+    #include "assets/character_portraits/common_TLUT_portrait_yoshi.inc.c"
 };
 
 // 1AED8 dk tlut
-s8 gTLUTPortraitDonkeyKong[] = {
-    #include "assets/character_portraits/gTLUTPortraitDonkeyKong.inc.c"
+s8 common_TLUT_portrait_donkey_kong[] = {
+    #include "assets/character_portraits/common_TLUT_portrait_donkey_kong.inc.c"
 };
 
 // 1B0D8 wario tlut
-s8 gTLUTPortraitWario[] = {
-    #include "assets/character_portraits/gTLUTPortraitWario.inc.c"
+s8 common_TLUT_portrait_wario[] = {
+    #include "assets/character_portraits/common_TLUT_portrait_wario.inc.c"
 };
 
 // 1B2D8 bowser tlut
-s8 gTLUTPortraitBowser[] = {
-    #include "assets/character_portraits/gTLUTPortraitBowser.inc.c"
+s8 common_TLUT_portrait_bowser[] = {
+    #include "assets/character_portraits/common_TLUT_portrait_bowser.inc.c"
 };
 
 // 1B4D8 bob-omb tlut and question mark?
-s8 gTLUTPortraitBombKartAndQuestionMark[] = {
-    #include "assets/character_portraits/gTLUTPortraitBombKartAndQuestionMark.inc.c"
+s8 common_TLUT_portrait_bomb_kart_and_question_mark[] = {
+    #include "assets/character_portraits/common_TLUT_portrait_bomb_kart_and_question_mark.inc.c"
 };
 
 
 // Mario
-s8 gTexturePortraitMario[] = {
-    #include "assets/character_portraits/gTexturePortraitMario.inc.c"
+s8 common_texture_portrait_mario[] = {
+    #include "assets/character_portraits/common_texture_portrait_mario.inc.c"
 };
 
 // Luigi
-s8 gTexturePortraitLuigi[] = {
-    #include "assets/character_portraits/gTexturePortraitLuigi.inc.c"
+s8 common_texture_portrait_luigi[] = {
+    #include "assets/character_portraits/common_texture_portrait_luigi.inc.c"
 };
 
 // Peach
-s8 gTexturePortraitPeach[] = {
-    #include "assets/character_portraits/gTexturePortraitPeach.inc.c"
+s8 common_texture_portrait_peach[] = {
+    #include "assets/character_portraits/common_texture_portrait_peach.inc.c"
 };
 
 // Toad
-s8 gTexturePortraitToad[] = {
-    #include "assets/character_portraits/gTexturePortraitToad.inc.c"
+s8 common_texture_portrait_toad[] = {
+    #include "assets/character_portraits/common_texture_portrait_toad.inc.c"
 };
 
 // Yoshi
-s8 gTexturePortraitYoshi[] = {
-    #include "assets/character_portraits/gTexturePortraitYoshi.inc.c"
+s8 common_texture_portrait_yoshi[] = {
+    #include "assets/character_portraits/common_texture_portrait_yoshi.inc.c"
 };
 
 // Donkey Kong
-s8 gTexturePortraitDonkeyKong[] = {
-    #include "assets/character_portraits/gTexturePortraitDonkeyKong.inc.c"
+s8 common_texture_portrait_donkey_kong[] = {
+    #include "assets/character_portraits/common_texture_portrait_donkey_kong.inc.c"
 };
 
 // Wario
-s8 gTexturePortraitWario[] = {
-    #include "assets/character_portraits/gTexturePortraitWario.inc.c"
+s8 common_texture_portrait_wario[] = {
+    #include "assets/character_portraits/common_texture_portrait_wario.inc.c"
 };
 
 // Bowser
-u8 gTexturePortraitBowser[] = {
-    #include "assets/character_portraits/gTexturePortraitBowser.inc.c"
+u8 common_texture_portrait_bowser[] = {
+    #include "assets/character_portraits/common_texture_portrait_bowser.inc.c"
 };
 
 // Mini Bomb Kart
-u8 gTexturePortraitBombKart[] = {
-    #include "assets/character_portraits/gTexturePortraitBombKart.inc.c"
+u8 common_texture_portrait_bomb_kart[] = {
+    #include "assets/character_portraits/common_texture_portrait_bomb_kart.inc.c"
 };
 
 // Question Mark
-u8 gTexturePortraitQuestionMark[] = {
-    #include "assets/character_portraits/gTexturePortraitQuestionMark.inc.c"
+u8 common_texture_portrait_question_mark[] = {
+    #include "assets/character_portraits/common_texture_portrait_question_mark.inc.c"
 };
 
 // 1DED8 tlut item frames
-s8 gTLUTItemWindowNone[] = {
-    #include "assets/item_window/gTLUTItemWindowNone.inc.c"
+s8 common_TLUT_item_window_none[] = {
+    #include "assets/item_window/common_TLUT_item_window_none.inc.c"
 };
 
-s8 gTLUTItemWindowBanana[] = {
-    #include "assets/item_window/gTLUTItemWindowBanana.inc.c"
+s8 common_TLUT_item_window_banana[] = {
+    #include "assets/item_window/common_TLUT_item_window_banana.inc.c"
 };
 
-s8 gTLUTItemWindowBananaBunch[] = {
-    #include "assets/item_window/gTLUTItemWindowBananaBunch.inc.c"
+s8 common_TLUT_item_window_banana_bunch[] = {
+    #include "assets/item_window/common_TLUT_item_window_banana_bunch.inc.c"
 };
 
-s8 gTLUTItemWindowMushroom[] = {
-    #include "assets/item_window/gTLUTItemWindowMushroom.inc.c"
+s8 common_TLUT_item_window_mushroom[] = {
+    #include "assets/item_window/common_TLUT_item_window_mushroom.inc.c"
 };
 
-s8 gTLUTItemWindowDoubleMushroom[] = {
-    #include "assets/item_window/gTLUTItemWindowDoubleMushroom.inc.c"
+s8 common_TLUT_item_window_double_mushroom[] = {
+    #include "assets/item_window/common_TLUT_item_window_double_mushroom.inc.c"
 };
 
-s8 gTLUTItemWindowTripleMushroom[] = {
-    #include "assets/item_window/gTLUTItemWindowTripleMushroom.inc.c"
+s8 common_TLUT_item_window_triple_mushroom[] = {
+    #include "assets/item_window/common_TLUT_item_window_triple_mushroom.inc.c"
 };
 
-s8 gTLUTItemWindowSuperMushroom[] = {
-    #include "assets/item_window/gTLUTItemWindowSuperMushroom.inc.c"
+s8 common_TLUT_item_window_super_mushroom[] = {
+    #include "assets/item_window/common_TLUT_item_window_super_mushroom.inc.c"
 };
 
-s8 gTLUTItemWindowBlueShell[] = {
-    #include "assets/item_window/gTLUTItemWindowBlueShell.inc.c"
+s8 common_TLUT_item_window_blue_shell[] = {
+    #include "assets/item_window/common_TLUT_item_window_blue_shell.inc.c"
 };
 
-s8 gTLUTItemWindowBoo[] = {
-    #include "assets/item_window/gTLUTItemWindowBoo.inc.c"
+s8 common_TLUT_item_window_boo[] = {
+    #include "assets/item_window/common_TLUT_item_window_boo.inc.c"
 };
 
-s8 gTLUTItemWindowGreenShell[] = {
-    #include "assets/item_window/gTLUTItemWindowGreenShell.inc.c"
+s8 common_TLUT_item_window_green_shell[] = {
+    #include "assets/item_window/common_TLUT_item_window_green_shell.inc.c"
 };
 
-s8 gTLUTItemWindowTripleGreenShell[] = {
-    #include "assets/item_window/gTLUTItemWindowTripleGreenShell.inc.c"
+s8 common_TLUT_item_window_triple_green_shell[] = {
+    #include "assets/item_window/common_TLUT_item_window_triple_green_shell.inc.c"
 };
 
-s8 gTLUTItemWindowRedShell[] = {
-    #include "assets/item_window/gTLUTItemWindowRedShell.inc.c"
+s8 common_TLUT_item_window_red_shell[] = {
+    #include "assets/item_window/common_TLUT_item_window_red_shell.inc.c"
 };
 
-s8 gTLUTItemWindowTripleRedShell[] = {
-    #include "assets/item_window/gTLUTItemWindowTripleRedShell.inc.c"
+s8 common_TLUT_item_window_triple_red_shell[] = {
+    #include "assets/item_window/common_TLUT_item_window_triple_red_shell.inc.c"
 };
 
-s8 gTLUTItemWindowStar[] = {
-    #include "assets/item_window/gTLUTItemWindowStar.inc.c"
+s8 common_TLUT_item_window_star[] = {
+    #include "assets/item_window/common_TLUT_item_window_star.inc.c"
 };
 
-s8 gTLUTItemWindowThunderBolt[] = {
-    #include "assets/item_window/gTLUTItemWindowThunderBolt.inc.c"
+s8 common_TLUT_item_window_thunder_bolt[] = {
+    #include "assets/item_window/common_TLUT_item_window_thunder_bolt.inc.c"
 };
 
-s8 gTLUTItemWindowFakeItemBox[] = {
-    #include "assets/item_window/gTLUTItemWindowFakeItemBox.inc.c"
+s8 common_TLUT_item_window_fake_item_box[] = {
+    #include "assets/item_window/common_TLUT_item_window_fake_item_box.inc.c"
 };
 
 // UI Item Frames
-u8 gTextureItemWindowNone[] = {
-    #include "assets/item_window/gTextureItemWindowNone.inc.c"
+u8 common_texture_item_window_none[] = {
+    #include "assets/item_window/common_texture_item_window_none.inc.c"
 };
 
-s8 gTextureItemWindowBanana[] = {
-    #include "assets/item_window/gTextureItemWindowBanana.inc.c"
+s8 common_texture_item_window_banana[] = {
+    #include "assets/item_window/common_texture_item_window_banana.inc.c"
 };
 
-s8 gTextureItemWindowBananaBunch[] = {
-    #include "assets/item_window/gTextureItemWindowBananaBunch.inc.c"
+s8 common_texture_item_window_banana_bunch[] = {
+    #include "assets/item_window/common_texture_item_window_banana_bunch.inc.c"
 };
 
-s8 gTextureItemWindowMushroom[] = {
-    #include "assets/item_window/gTextureItemWindowMushroom.inc.c"
+s8 common_texture_item_window_mushroom[] = {
+    #include "assets/item_window/common_texture_item_window_mushroom.inc.c"
 };
 
-s8 gTextureItemWindowDoubleMushroom[] = {
-    #include "assets/item_window/gTextureItemWindowDoubleMushroom.inc.c"
+s8 common_texture_item_window_double_mushroom[] = {
+    #include "assets/item_window/common_texture_item_window_double_mushroom.inc.c"
 };
 
-s8 gTextureItemWindowTripleMushroom[] = {
-    #include "assets/item_window/gTextureItemWindowTripleMushroom.inc.c"
+s8 common_texture_item_window_triple_mushroom[] = {
+    #include "assets/item_window/common_texture_item_window_triple_mushroom.inc.c"
 };
 
-s8 gTextureItemWindowSuperMushroom[] = {
-    #include "assets/item_window/gTextureItemWindowSuperMushroom.inc.c"
+s8 common_texture_item_window_super_mushroom[] = {
+    #include "assets/item_window/common_texture_item_window_super_mushroom.inc.c"
 };
 
-s8 gTextureItemWindowBlueShell[] = {
-    #include "assets/item_window/gTextureItemWindowBlueShell.inc.c"
+s8 common_texture_item_window_blue_shell[] = {
+    #include "assets/item_window/common_texture_item_window_blue_shell.inc.c"
 };
 
-s8 gTextureItemWindowBoo[] = {
-    #include "assets/item_window/gTextureItemWindowBoo.inc.c"
+s8 common_texture_item_window_boo[] = {
+    #include "assets/item_window/common_texture_item_window_boo.inc.c"
 };
 
-s8 gTextureItemWindowGreenShell[] = {
-    #include "assets/item_window/gTextureItemWindowGreenShell.inc.c"
+s8 common_texture_item_window_green_shell[] = {
+    #include "assets/item_window/common_texture_item_window_green_shell.inc.c"
 };
 
-s8 gTextureItemWindowTripleGreenShell[] = {
-    #include "assets/item_window/gTextureItemWindowTripleGreenShell.inc.c"
+s8 common_texture_item_window_triple_green_shell[] = {
+    #include "assets/item_window/common_texture_item_window_triple_green_shell.inc.c"
 };
 
-s8 gTextureItemWindowRedShell[] = {
-    #include "assets/item_window/gTextureItemWindowRedShell.inc.c"
+s8 common_texture_item_window_red_shell[] = {
+    #include "assets/item_window/common_texture_item_window_red_shell.inc.c"
 };
 
-s8 gTextureItemWindowTripleRedShell[] = {
-    #include "assets/item_window/gTextureItemWindowTripleRedShell.inc.c"
+s8 common_texture_item_window_triple_red_shell[] = {
+    #include "assets/item_window/common_texture_item_window_triple_red_shell.inc.c"
 };
 
-s8 gTextureItemWindowStar[] = {
-    #include "assets/item_window/gTextureItemWindowStar.inc.c"
+s8 common_texture_item_window_star[] = {
+    #include "assets/item_window/common_texture_item_window_star.inc.c"
 };
 
-s8 gTextureItemWindowThunderBolt[] = {
-    #include "assets/item_window/gTextureItemWindowThunderBolt.inc.c"
+s8 common_texture_item_window_thunder_bolt[] = {
+    #include "assets/item_window/common_texture_item_window_thunder_bolt.inc.c"
 };
 
-s8 gTextureItemWindowFakeItemBox[] = {
-    #include "assets/item_window/gTextureItemWindowFakeItemBox.inc.c"
+s8 common_texture_item_window_fake_item_box[] = {
+    #include "assets/item_window/common_texture_item_window_fake_item_box.inc.c"
 };
 
-u8 gTLUTLakituCountdown[][512] = {
+u8 common_TLUT_lakitu_countdown[][512] = {
     {
-        #include "assets/lakitu/nolights/gTLUTLakituNoLights.inc.c"
+        #include "assets/lakitu/nolights/common_TLUT_lakitu_no_lights.inc.c"
     },
     {
-        #include "assets/lakitu/redlights/gTLUTLakituRedLights.inc.c"
+        #include "assets/lakitu/redlights/common_TLUT_lakitu_red_lights.inc.c"
     },
     {
-        #include "assets/lakitu/bluelight/gTLUTLakituBlueLight.inc.c"
+        #include "assets/lakitu/bluelight/common_TLUT_lakitu_blue_lights.inc.c"
     }
 };
 
 /**
  * @todo Generate tlut based on the actual texture.
  * The textures these tluts are for are not in common_textures.inc.c
- * This applies to gTLUTLakituCheckeredFlag, gTLUTLakituSecondLap,
- * gTLUTLakituFinalLap, gTLUTLakituReverse, gTLUTLakituFishing
+ * This applies to common_TLUT_lakitu_checkered_flag, common_TLUT_lakitu_second_lap,
+ * common_TLUT_lakitu_final_lap, common_TLUT_lakitu_reverse, common_TLUT_lakitu_fishing
  * Appears to be animation textures.
 */
 
-u8 gTLUTLakituCheckeredFlag[] = {
-    #include "assets/lakitu/checkeredflag/gTLUTLakituCheckeredFlag.inc.c"
+u8 common_TLUT_lakitu_checkered_flag[] = {
+    #include "assets/lakitu/checkeredflag/common_TLUT_lakitu_checkered_flag.inc.c"
 };
 
-u8 gTLUTLakituSecondLap[] = {
-    #include "assets/lakitu/secondlap/gTLUTLakituSecondLap.inc.c"
+u8 common_TLUT_lakitu_second_lap[] = {
+    #include "assets/lakitu/secondlap/common_TLUT_lakitu_second_lap.inc.c"
 };
 
-u8 gTLUTLakituFinalLap[] = {
-    #include "assets/lakitu/finallap/gTLUTLakituFinalLap.inc.c"
+u8 common_TLUT_lakitu_final_lap[] = {
+    #include "assets/lakitu/finallap/common_TLUT_lakitu_final_lap.inc.c"
 };
 
-u8 gTLUTLakituReverse[] = {
-    #include "assets/lakitu/reverse/gTLUTLakituReverse.inc.c"
+u8 common_TLUT_lakitu_reverse[] = {
+    #include "assets/lakitu/reverse/common_TLUT_lakitu_reverse.inc.c"
 };
 
-u8 gTLUTLakituFishing[] = {
-    #include "assets/lakitu/fishing/gTLUTLakituFishing.inc.c"
+u8 common_TLUT_lakitu_fishing[] = {
+    #include "assets/lakitu/fishing/common_TLUT_lakitu_fishing.inc.c"
 };
 
 // unused traffic light tlut
-UNUSED s8 D_0D025ED8[] = {
-    #include "assets/unused_traffic_light/gTLUTUnusedTrafficLight.inc.c"
+UNUSED s8 common_TLUT_traffic_light[] = {
+    #include "assets/unused_traffic_light/common_TLUT_traffic_light.inc.c"
 };
 
 // unused traffic light textures
  
-UNUSED s8 D_0D0260D8[] = {
-    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight01.inc.c"
+UNUSED s8 common_texture_traffic_light_01[] = {
+    #include "assets/unused_traffic_light/common_texture_traffic_light_01.inc.c"
 };
 
-UNUSED s8 D_0D026558[] = {
-    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight02.inc.c"
+UNUSED s8 common_texture_traffic_light_02[] = {
+    #include "assets/unused_traffic_light/common_texture_traffic_light_02.inc.c"
 };
 
-UNUSED s8 D_0D0269D8[] = {
-    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight03.inc.c"
+UNUSED s8 common_texture_traffic_light_03[] = {
+    #include "assets/unused_traffic_light/common_texture_traffic_light_03.inc.c"
 };
 
-UNUSED s8 D_0D026E58[] = {
-    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight04.inc.c"
+UNUSED s8 common_texture_traffic_light_04[] = {
+    #include "assets/unused_traffic_light/common_texture_traffic_light_04.inc.c"
 };
 
-UNUSED s8 D_0D0272D8[] = {
-    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight05.inc.c"
+UNUSED s8 common_texture_traffic_light_05[] = {
+    #include "assets/unused_traffic_light/common_texture_traffic_light_05.inc.c"
 };
 
-UNUSED s8 D_0D027758[] = {
-    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight06.inc.c"
+UNUSED s8 common_texture_traffic_light_06[] = {
+    #include "assets/unused_traffic_light/common_texture_traffic_light_06.inc.c"
 };
 
-UNUSED s8 D_0D027BD8[] = {
-    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight07.inc.c"
+UNUSED s8 common_texture_traffic_light_07[] = {
+    #include "assets/unused_traffic_light/common_texture_traffic_light_07.inc.c"
 };
 
-UNUSED s8 D_0D028058[] = {
-    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight08.inc.c"
+UNUSED s8 common_texture_traffic_light_08[] = {
+    #include "assets/unused_traffic_light/common_texture_traffic_light_08.inc.c"
 };
 
-UNUSED s8 D_0D0284D8[] = {
-    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight09.inc.c"
+UNUSED s8 common_texture_traffic_light_09[] = {
+    #include "assets/unused_traffic_light/common_texture_traffic_light_09.inc.c"
 };
 
-UNUSED s8 D_0D028958[] = {
-    #include "assets/unused_traffic_light/gTextureUnusedTrafficLight10.inc.c"
-};
-
-// leaf
-u8 gTextureParticleLeaf[] = {
-    #include "textures/common/gTextureParticleLeaf.rgba16.inc.c"
+UNUSED s8 common_texture_traffic_light_10[] = {
+    #include "assets/unused_traffic_light/common_texture_traffic_light_10.inc.c"
 };
 
 // leaf
-UNUSED s8 gTextureUnusedParticleLeaf[] = {
-    #include "textures/common/gTextureUnusedParticleLeaf.rgba16.inc.c"
+u8 common_texture_particle_leaf[] = {
+    #include "textures/common/common_texture_particle_leaf.rgba16.inc.c"
+};
+
+// leaf
+UNUSED s8 common_texture_unused_particle_leaf[] = {
+    #include "textures/common/common_texture_unused_particle_leaf.rgba16.inc.c"
 };
 
 
@@ -3107,90 +3107,90 @@ s8 D_0D029458[] = {
 };
 
 // Uses 2A858 as tlut
-u8 gTextureBomb[][1024] = {
+u8 common_texture_bomb[][1024] = {
     {
-        #include "assets/bomb/gTextureBomb1.inc.c"
+        #include "assets/bomb/common_texture_bomb_1.inc.c"
     },
     {
-        #include "assets/bomb/gTextureBomb2.inc.c"
+        #include "assets/bomb/common_texture_bomb_2.inc.c"
     },
     {
-        #include "assets/bomb/gTextureBomb3.inc.c"
+        #include "assets/bomb/common_texture_bomb_3.inc.c"
     },
     {
-        #include "assets/bomb/gTextureBomb4.inc.c"
+        #include "assets/bomb/common_texture_bomb_4.inc.c"
     },
 };
 
 // Special tlut that uses 0xFFFF as a transparent tail instead of 0x0 or 0x07FE.
 // tlut for 29858
-u8 D_0D02A858[] = {
-        #include "assets/bomb/gTLUTBomb.inc.c"
+u8 common_TLUT_bomb[] = {
+        #include "assets/bomb/common_TLUT_bomb.inc.c"
 };
 
 u8 D_0D02AA58[] = {
     #include "textures/common/132B50_2AA58.rgba16.inc.c"
 };
 
-u8 gTextureParticleSpark[][1024] = {
+u8 common_texture_particle_spark[][1024] = {
     {
-        #include "textures/common/gTextureParticleSpark1.i8.inc.c"
+        #include "textures/common/common_texture_particle_spark_1.i8.inc.c"
     },
     {
-        #include "textures/common/gTextureParticleSpark2.i8.inc.c"
+        #include "textures/common/common_texture_particle_spark_2.i8.inc.c"
     },
     {
-        #include "textures/common/gTextureParticleSpark3.i8.inc.c"
+        #include "textures/common/common_texture_particle_spark_3.i8.inc.c"
     },
     {
-        #include "textures/common/gTextureParticleSpark4.i8.inc.c"
+        #include "textures/common/common_texture_particle_spark_4.i8.inc.c"
     },
 };
 
-u8 gTextureParticleSmoke[][1024] = {
+u8 common_texture_particle_smoke[][1024] = {
     {
-        #include "textures/common/gTextureParticleSmoke1.i8.inc.c"
+        #include "textures/common/common_texture_particle_smoke_1.i8.inc.c"
     },
     {
-        #include "textures/common/gTextureParticleSmoke2.i8.inc.c"
+        #include "textures/common/common_texture_particle_smoke_2.i8.inc.c"
     },
     {
-        #include "textures/common/gTextureParticleSmoke3.i8.inc.c"
+        #include "textures/common/common_texture_particle_smoke_3.i8.inc.c"
     },
     {
-        #include "textures/common/gTextureParticleSmoke4.i8.inc.c"
+        #include "textures/common/common_texture_particle_smoke_4.i8.inc.c"
     },
 };
 
 // minimap cars
-s8 gTextureMiniMapFinishLine[] = {
-    #include "assets/minimap_icons/gTextureMiniMapFinishLine.inc.c"
+s8 common_texture_mini_map_finish_line[] = {
+    #include "assets/minimap_icons/common_texture_mini_map_finish_line.inc.c"
 };
 
-s8 gMiniMapKartTextures[][128] = {
+s8 common_texture_mini_map_kart_character[][128] = {
     { // Mario
-        #include "assets/minimap_icons/gTextureMiniMapKartMario.inc.c"
+        #include "assets/minimap_icons/common_texture_mini_map_kart_mario.inc.c"
     },
     { // Luigi
-        #include "assets/minimap_icons/gTextureMiniMapKartLuigi.inc.c"
+        #include "assets/minimap_icons/common_texture_mini_map_kart_luigi.inc.c"
     },
     { // Yoshi
-        #include "assets/minimap_icons/gTextureMiniMapKartYoshi.inc.c"
+        #include "assets/minimap_icons/common_texture_mini_map_kart_yoshi.inc.c"
     },
     { // Toad
-        #include "assets/minimap_icons/gTextureMiniMapKartToad.inc.c"
+        #include "assets/minimap_icons/common_texture_mini_map_kart_toad.inc.c"
     },
     { // Donkey Kong
-        #include "assets/minimap_icons/gTextureMiniMapKartDonkeyKong.inc.c"
+        #include "assets/minimap_icons/common_texture_mini_map_kart_donkey_kong.inc.c"
     },
     { // Wario
-        #include "assets/minimap_icons/gTextureMiniMapKartWario.inc.c"
+        #include "assets/minimap_icons/common_texture_mini_map_kart_wario.inc.c"
     },
     { // Peach
-        #include "assets/minimap_icons/gTextureMiniMapKartPeach.inc.c"
+        #include "assets/minimap_icons/common_texture_mini_map_kart_peach.inc.c"
     },
     { // Bowser
-        #include "assets/minimap_icons/gTextureMiniMapKartBowser.inc.c"
+        #include "assets/minimap_icons/common_texture_mini_map_kart_bowser.inc.c"
     },
 };
 

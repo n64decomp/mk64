@@ -150,10 +150,10 @@ void init_item_window(s32 objectIndex) {
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->currentItem = ITEM_NONE;
     temp_v0->itemDisplay = temp_v0->currentItem;
-    temp_v0->tlutList = (s32 *) gTLUTItemWindowNone;
-    temp_v0->activeTLUT = (s32 *) gTLUTItemWindowNone;
-    temp_v0->textureList = gTextureItemWindowNone;
-    temp_v0->activeTexture = gTextureItemWindowNone;
+    temp_v0->tlutList = (s32 *) common_TLUT_item_window_none;
+    temp_v0->activeTLUT = (s32 *) common_TLUT_item_window_none;
+    temp_v0->textureList = common_texture_item_window_none;
+    temp_v0->activeTexture = common_texture_item_window_none;
     temp_v0->unk_04C = -1;
     temp_v0->unk_09C = 0x00A0;  // Screen X position
     temp_v0->unk_09E = -0x0020; // Screen Y position

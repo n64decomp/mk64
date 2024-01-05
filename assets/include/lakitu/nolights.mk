@@ -1,6 +1,6 @@
 NOLIGHTS_DIR := assets/lakitu/nolights
 
-NOLIGHTS_PALETTE := $(NOLIGHTS_DIR)/gTLUTLakituNoLights.png
+NOLIGHTS_PALETTE := $(NOLIGHTS_DIR)/common_TLUT_lakitu_no_lights.png
 
 NOLIGHTS_FRAMES := \
 $(NOLIGHTS_DIR)/gTextureLakituNoLights1.png \

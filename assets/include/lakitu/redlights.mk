@@ -1,6 +1,6 @@
 REDLIGHTS_DIR := assets/lakitu/redlights
 
-REDLIGHTS_PALETTE := $(REDLIGHTS_DIR)/gTLUTLakituRedLights.png
+REDLIGHTS_PALETTE := $(REDLIGHTS_DIR)/common_TLUT_lakitu_red_lights.png
 
 REDLIGHTS_FRAMES := \
 $(REDLIGHTS_DIR)/gTextureLakituRedLights01.png \

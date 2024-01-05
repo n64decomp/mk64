@@ -392,7 +392,7 @@ void func_802977E4(Player *arg0) {
 // Invert green and red on green shell texture
 void init_red_shell_texture(void) {
     s16 *red_shell_texture = (s16 *) &gTLUTRedShell[0];
-    s16 *green_shell_texture = (s16 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(gTLUTGreenShell)] + SEGMENT_OFFSET(gTLUTGreenShell));
+    s16 *green_shell_texture = (s16 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(common_TLUT_green_shell)] + SEGMENT_OFFSET(common_TLUT_green_shell));
     s16 color_pixel, red_color, green_color, blue_color, alpha_color;
     s32 i;
     for (i = 0; i < 256; i++) {
@@ -943,7 +943,7 @@ void render_actor_tree_mario_raceway(Camera *camera, Mat4 arg1, struct Actor *ar
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_TLUT_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_tree);
     }
 }
@@ -966,7 +966,7 @@ void render_actor_tree_yoshi_valley(Camera *camera, Mat4 arg1, struct Actor *arg
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_TLUT_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_yoshi_valley_dl_tree);
     }
 }
@@ -989,7 +989,7 @@ void render_actor_tree_royal_raceway(Camera *camera, Mat4 arg1, struct Actor *ar
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_TLUT_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_royal_raceway_dl_tree);
     }
 }
@@ -1012,7 +1012,7 @@ void render_actor_tree_moo_moo_farm(Camera *camera, Mat4 arg1, struct Actor *arg
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_TLUT_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_tree);
     }
 }
@@ -1035,7 +1035,7 @@ void func_80299864(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_TLUT_trees_import);
         // Why is a TLUT being used a DL here? That makes no sense
         // Based on the TLUT being loaded above, this ought to be be another
         // tree related DL, presumably one found in a course other than Moo Moo farm
@@ -1062,7 +1062,7 @@ void render_actor_tree_bowser_castle(Camera *camera, Mat4 arg1, struct Actor *ar
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_TLUT_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_royal_raceway_dl_castle_tree);
     }
 }
@@ -1085,7 +1085,7 @@ void render_actor_bush_bowser_castle(Camera *camera, Mat4 arg1, struct Actor *ar
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_TLUT_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_bush);
     }
 }
@@ -1262,7 +1262,7 @@ UNUSED s16 D_802B8810[] = {
 };
 
 void render_actor_green_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTGreenShell); // set texture
+    gDPLoadTLUT_pal256(gDisplayListHead++, common_TLUT_green_shell); // set texture
     render_actor_shell(camera, matrix, shell);
 }
 
@@ -1273,7 +1273,7 @@ void render_actor_red_shell(Camera *camera, Mat4 matrix, struct ShellActor *shel
 
 // Middle of a tlut access
 void render_actor_blue_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTBlueShell); // set texture
+    gDPLoadTLUT_pal256(gDisplayListHead++, common_TLUT_blue_shell); // set texture
     render_actor_shell(camera, matrix, shell);
 }
 
