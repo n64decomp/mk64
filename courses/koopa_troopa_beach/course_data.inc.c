@@ -8538,7 +8538,7 @@ Gfx d_course_koopa_troopa_beach_dl_16990[] =
     gsSPEndDisplayList(),
 };
 
-//! 0x60169b0, @todo convert to Gfx
+//! 0x60169b
 u32 d_course_koopa_troopa_beach_unk4[] = {
     0x00000001,
     0x00000002,
