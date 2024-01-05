@@ -1,6 +1,6 @@
 /**
  * @file code_80057C60.c
- * @warning there is to many variable here
+ * @warning there are too many variables here
 */
 
 #include <ultra64.h>
