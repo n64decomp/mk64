@@ -100,7 +100,7 @@ s16  func_8000BD94(f32, f32, f32, s32);
 s16  func_8000C0BC(f32, f32, f32, u16, s32*);
 s16  func_8000C884(f32, f32, f32, s16, s32, u16);
 s16  func_8000C9DC(f32, f32, f32, s16, s32);
-void func_8000CBA4(f32, f32, f32, s16*);
+void func_8000CBA4(f32, f32, f32, s16*, s32);
 void func_8000CBF8(f32, f32, f32, s16*, s32);
 s16  func_8000CC88(f32, f32, f32, Player*, s32, s32*);
 s16  func_8000CD24(f32, f32, f32, s16, Player*, s32, s32);
