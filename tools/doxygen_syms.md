@@ -4006,7 +4006,7 @@ Variable Name | Memory Address
 [gCameraZoom](@ref gCameraZoom) | 0x80150130
 [D_80150140](@ref D_80150140) | 0x80150140
 [D_80150144](@ref D_80150144) | 0x80150144
-[D_80150148](@ref D_80150148) | 0x80150148
+[gScreenAspect](@ref gScreenAspect) | 0x80150148
 [D_8015014C](@ref D_8015014C) | 0x8015014C
 [D_80150150](@ref D_80150150) | 0x80150150
 [D_80150154](@ref D_80150154) | 0x80150154

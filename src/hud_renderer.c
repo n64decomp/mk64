@@ -1195,7 +1195,7 @@ void func_8004A630(Collision *arg0, Vec3f arg1, f32 arg2) {
         D_80183E50[0] = arg1[0];
         D_80183E50[1] = func_802ABE30(arg1[0], 0.0f, arg1[2], arg0->unk3A) + 0.8;
         D_80183E50[2] = arg1[2];
-        rsp_set_matrix_transl_rot_scale(D_80183E50, arg0->unk60, arg2);
+        rsp_set_matrix_transl_rot_scale(D_80183E50, arg0->orientationVector, arg2);
         gSPDisplayList(gDisplayListHead++, D_0D007B98);
     }
 }
@@ -4239,7 +4239,7 @@ void func_800568A0(s32 objectIndex, s32 playerId) {
     D_80183E50[0] = gObjectList[objectIndex].pos[0];
     D_80183E50[1] = gObjectList[objectIndex].unk_044 + 0.8;
     D_80183E50[2] = gObjectList[objectIndex].pos[2];
-    set_transform_matrix(sp30, player->unk_110.unk60, D_80183E50, 0U, 0.5f);
+    set_transform_matrix(sp30, player->unk_110.orientationVector, D_80183E50, 0U, 0.5f);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D007B98);
@@ -4338,15 +4338,15 @@ void func_80056E24(s32 bombIndex, Vec3f arg1) {
 }
 
 void func_80056FCC(s32 bombIndex) {
-    Mat4 sp30;
+    Mat4 mat;
     BombKart *temp_v0;
 
     temp_v0 = &gBombKarts[bombIndex];
     D_80183E50[0] = temp_v0->bombPos[0];
     D_80183E50[1] = temp_v0->yPos + 1.0;
     D_80183E50[2] = temp_v0->bombPos[2];
-    set_transform_matrix(sp30, D_80164038[bombIndex].unk60, D_80183E50, 0U, 0.5f);
-    convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
+    set_transform_matrix(mat, D_80164038[bombIndex].orientationVector, D_80183E50, 0U, 0.5f);
+    convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], mat);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_LOAD | G_MTX_NOPUSH| G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D007B98);
 }

@@ -445,7 +445,6 @@ extern f32 D_8018CFF4;
 extern s16 D_8018D2E0;
 extern s16 D_8018D2E8;
 
-extern s32 D_8018D400;
 extern u8* D_8018D4BC;
 extern u8* D_8018D4C0;
 

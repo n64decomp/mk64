@@ -210,7 +210,7 @@ void func_8028E438(void) {
             if (temp_v0->screenStartX == 160) {
                 phi_v1_4++;
             }
-            D_80150148 = (f32) ((f32) temp_v0->screenWidth / (f32) temp_v0->screenHeight);
+            gScreenAspect = (f32) ((f32) temp_v0->screenWidth / (f32) temp_v0->screenHeight);
             if (phi_v1_4 == 4) {
                 D_8015F894 = 2;
                 gActiveScreenMode = SCREEN_MODE_1P;
@@ -292,7 +292,7 @@ void func_8028E678(void) {
                 phi_a0_10++;
             }
 
-            D_80150148 = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
+            gScreenAspect = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
             if (phi_a0_10 == 4) {
                 D_8015F894 = 3;
                 func_80092500();
@@ -326,7 +326,7 @@ void func_8028E678(void) {
                 phi_a0_10++;
             }
 
-            D_80150148 = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
+            gScreenAspect = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
             if (phi_a0_10 == 4) {
                 D_8015F894 = 3;
                 func_80092500();
@@ -349,7 +349,7 @@ void func_8028E678(void) {
                 D_800DC5F0->screenStartY = D_800DC5EC->screenStartY;
 
                 gActiveScreenMode = SCREEN_MODE_2P_SPLITSCREEN_VERTICAL;
-                D_80150148 = 1.33333337;
+                gScreenAspect = 1.33333337;
                 gPlayerCountSelection1 = 2;
                 func_8003DB5C();
                 func_8005994C();
