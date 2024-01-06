@@ -421,7 +421,6 @@ var hud__renderer_8h =
     [ "D_8018CFF4", "hud__renderer_8h.html#a9da78ab735bc895545752d3d70bf7382", null ],
     [ "D_8018D2E0", "hud__renderer_8h.html#ae6281c2382d25685f64fa99f94d601e5", null ],
     [ "D_8018D2E8", "hud__renderer_8h.html#a1d63f7cf5ccdcb1928e42ceae9015b71", null ],
-    [ "D_8018D400", "hud__renderer_8h.html#a4de49d29ae529a55cff9df5bf6926cdf", null ],
     [ "D_8018D4BC", "hud__renderer_8h.html#a5a10eabe7ee944c4ad4bd6cc34d2a4dc", null ],
     [ "D_8018D4C0", "hud__renderer_8h.html#aeb3738c027de7196ec230b0c47468baf", null ],
     [ "d_course_bowsers_castle_thwomp_tlut", "hud__renderer_8h.html#adc9789813be81d9c2143b07c8626b27e", null ],

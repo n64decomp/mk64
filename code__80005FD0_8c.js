@@ -151,7 +151,7 @@ var code__80005FD0_8c =
     [ "func_8001BE78", "code__80005FD0_8c.html#a7808902aee426ba4433e92cde1feb8a1", null ],
     [ "func_8001C05C", "code__80005FD0_8c.html#a325ddded54aab32025174f6aedd5e391", null ],
     [ "func_8001C14C", "code__80005FD0_8c.html#a0056485e80d615faffaf2715a906c294", null ],
-    [ "func_8001C3C4", "code__80005FD0_8c.html#a6af7a63f39828725c3c2709c55384318", null ],
+    [ "func_8001C3C4", "code__80005FD0_8c.html#a761381294ee13d0b5b7ecad6fb27c1e7", null ],
     [ "func_8001C42C", "code__80005FD0_8c.html#afbc58d59e671bfa6c0b95008ab3caa02", null ],
     [ "init_course_vehicles", "code__80005FD0_8c.html#afd6fa1e9b8e8378fffcaa462fdc81ef6", null ],
     [ "process_path_data", "code__80005FD0_8c.html#ae7c8290f29fcf7fcdd547737e496bc98", null ],
