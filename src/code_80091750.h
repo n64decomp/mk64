@@ -169,7 +169,10 @@ void func_8009A76C(s32, s32, s32, s32);
 void func_8009A7EC(s32, s32, s32, s32, s32);
 MkTexture *func_8009A878(struct_8018DEE0_entry*);
 MkTexture *func_8009A944(struct_8018DEE0_entry*, s32);
-void func_8009B0A4(s32, s32);
+void func_8009A9FC(s32, s32, u32, s32);
+void func_8009AB7C(s32);
+void func_8009AD78(s32, s32);
+void func_8009B0A4(s32, u32);
 void func_8009B538(s32, s32, s32, s32, s32);
 s32  func_8009B8C4(u64*);
 void func_8009B938(void);
@@ -365,6 +368,7 @@ void func_800AF740(struct_8018D9E0_entry*);
 
 // This really, really shouldn't be in this header file, but I don't know where else to put it
 void rmonPrintf(const char *, ...);
+void tkmk00decode(u8*, u8*, u8*, s32);
 
 typedef struct struct_8018EE10_entry_cont {
     struct_8018EE10_entry arr[1];
@@ -385,9 +389,9 @@ extern s32  D_800DDB24;
 extern s16 D_80164478[];
 
 
-extern intptr_t D_8018D9B0;
+extern u16 *D_8018D9B0;
 extern u8 *D_8018D9B4;
-extern uintptr_t *D_8018D9B8;
+extern u8 *D_8018D9B8;
 extern u8 *D_8018D9BC;
 extern struct_8018EE10_entry_cont *D_8018D9C0;
 extern s8 gGPPointsByCharacterId[8];
