@@ -21,6 +21,10 @@
 #include "menus.h"
 #include "render_courses.h"
 
+#include "courses/all_course_data.h"
+#include "courses/all_course_packed.h"
+#include "courses/all_course_offsets.h"
+
 u8 defaultCharacterIds[] = {
     1, 2, 3, 4, 5, 6, 7, 0
 };
@@ -132,16 +136,16 @@ void load_ceremony_cutscene(void) {
     D_800DC5C8 = (u16)0;
     gSurfaceMap = (mk64_surface_map_ram *) gNextFreeMemoryAddress;
     //! @bug these segmented addresses need to be symbols for mobility
-    set_vertex_data_with_default_section_id(0x070067E8, -1);
-    set_vertex_data_with_default_section_id(0x0700AEF8, -1);
-    set_vertex_data_with_default_section_id(0x0700A970, 8);
-    set_vertex_data_with_default_section_id(0x0700AC30, 8);
-    set_vertex_data_with_default_section_id(0x07000CE0, 0x10);
-    set_vertex_data_with_default_section_id(0x07000E88, 0x10);
-    set_vertex_data_with_default_section_id(0x0700A618, -1);
-    set_vertex_data_with_default_section_id(0x0700A618, -1);
-    set_vertex_data_with_default_section_id(0x070023F8, 1);
-    set_vertex_data_with_default_section_id(0x07002478, 1);
+    set_vertex_data_with_default_section_id(d_course_royal_raceway_packed_dl_67E8, -1);
+    set_vertex_data_with_default_section_id(d_course_royal_raceway_packed_dl_AEF8, -1);
+    set_vertex_data_with_default_section_id(d_course_royal_raceway_packed_dl_A970, 8);
+    set_vertex_data_with_default_section_id(d_course_royal_raceway_packed_dl_AC30, 8);
+    set_vertex_data_with_default_section_id(d_course_royal_raceway_packed_dl_CE0, 0x10);
+    set_vertex_data_with_default_section_id(d_course_royal_raceway_packed_dl_E88, 0x10);
+    set_vertex_data_with_default_section_id(d_course_royal_raceway_packed_dl_A618, -1);
+    set_vertex_data_with_default_section_id(d_course_royal_raceway_packed_dl_A618, -1);
+    set_vertex_data_with_default_section_id(d_course_royal_raceway_packed_dl_23F8, 1);
+    set_vertex_data_with_default_section_id(d_course_royal_raceway_packed_dl_2478, 1);
     func_80295C6C();
     debug_switch_character_ceremony_cutscene();
     func_802818BC();
