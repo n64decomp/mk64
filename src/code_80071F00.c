@@ -4557,7 +4557,7 @@ void func_8007D070(void) {
                 temp_s2 = random_int(0x012CU);
                 temp_s3 = random_int(0x1000U) - 0x800;
                 temp_t5 = random_int(0x000FU) - 5;
-                gObjectList[objectIndex].unk_0BE[1] = D_8018CF1C->unk_02C[1] + 0x8000;
+                gObjectList[objectIndex].unk_0BE[1] = D_8018CF1C->rotation[1] + 0x8000;
                 temp_t2 = (D_8018CF14->rot[1] + temp_s3);
                 gObjectList[objectIndex].unk_010[0] = D_8018CF1C->pos[0] + (sins(temp_t2) * temp_s2);
                 gObjectList[objectIndex].unk_010[1] = temp_t5;
