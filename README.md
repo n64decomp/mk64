@@ -1,4 +1,18 @@
-# Mario Kart 64
+# Unspaghettify Kart 64
+
+You have a fanatic love for spaghetti. Its delicious, tasty, and outright brilliant flavours bring life to your arduous developer lifestyle. It's 1996 with your IRIX workstation in front of you as you work on Mario Ka... Er, work on a wonderous plate of spaghetti perilously close to the computer keyboard. You're two-thirds through a nearly sixteen hour day and in a catatonic dream-like caffinated stupor. Suddenly, Miyamoto appears around your shoulder and shouts, "_What are you doing?!?_" Panic! Assert! Error 508, your spasming freakout knocks the plate of spaghetti into the keyboard vaulting it up, over, and into the air. Spaghetti goodness has flown _everywhere_. Spaghetti on you. Spaghetti on Miyamoto. Spaghetti on the keyboard. Spaghetti hanging off the computer monitor. You notice tomato sauce dripping into the mainframe. _This can't be good_. Despite previous preconceptions, code and spaghetti do _not_ mix and your workstation is now infected by the delectable tomato sauce! The monitor fades to black. When it comes back on, you find some serious data corruption. Suddenly your code files are tens of thousands of lines long, you have features spread across files in a haphazard, inconsistent, and unorganized manner. Your once majestic memory management routines are no longer existant, replaced by a manually typed DMA's everytime one is used. The sweet actor behaviour routines are now spread between two completely different actor setups in no conceptual or coordinated manner. You and Miyamoto look upon the project in horror with Miyamoto quietly whispering "_What have you done?_" Your fantastic state of the art 3D kart models having been replaced with sprites as a final insult to injury. You would put your head in your hands and cry, so much hard work, gone! But alas, Miyamoto has already made it clear that crying is a waste of resources and not allowed during company time. All you can do is shake your head as you diligently place your attention back to the code. No time to fix the corruption, your final deadline is only a month away afterall...
+
+This modding repo seeks to declutter the code-base and add some new fun features.
+
+## Contributing
+* Place new features that effect gameplay behind a condition so they can be toggled on/off.
+* A new segment for new standalone code files will be setup.
+* Try to describe all your changes in your PR. PR commits should be very descriptive to help reverts and bug investigations.
+* Test your changes that you haven't effected other gameplay elements in a negative way.
+* Have fun!
+
+## Decomp Readme
+
 This work-in-progress decompilation of Mario Kart 64 pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality. See [progress](#Progress) for more information.
 
 This repository does not contain assets. Compiling requires asset extraction from a prior copy of the game.
