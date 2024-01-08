@@ -236,7 +236,7 @@ void func_8001A518(s32, s32, s32);
 void func_8001A588(u16*, Camera*, Player*, s8, s32);
 void func_8001AAAC(s16, s16, s16);
 void func_8001AB00(void);
-void cpu_descisions_branch_item(s32, s16*, s32);
+void cpu_decisions_branch_item(s32, s16*, s32);
 void func_8001ABE0(s32, D_801642D8_entry*);
 void func_8001ABEC(struct struct_801642D8*);
 void cpu_use_item_strategy(s32);

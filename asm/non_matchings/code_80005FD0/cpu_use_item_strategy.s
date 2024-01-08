@@ -100,7 +100,7 @@ glabel L8001ACAC
 /* 01B938 8001AD38 85A50002 */   lh    $a1, 2($t5)
 /* 01B93C 8001AD3C 8FA40030 */  lw    $a0, 0x30($sp)
 /* 01B940 8001AD40 02002825 */  move  $a1, $s0
-/* 01B944 8001AD44 0C006ADD */  jal   cpu_descisions_branch_item
+/* 01B944 8001AD44 0C006ADD */  jal   cpu_decisions_branch_item
 /* 01B948 8001AD48 00403025 */   move  $a2, $v0
 /* 01B94C 8001AD4C 10000003 */  b     .L8001AD5C
 /* 01B950 8001AD50 00000000 */   nop

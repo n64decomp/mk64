@@ -343,7 +343,7 @@ Variable Name | Memory Address
 [func_8001A588](@ref func_8001A588) | 0x8001A588
 [func_8001AAAC](@ref func_8001AAAC) | 0x8001AAAC
 [func_8001AB00](@ref func_8001AB00) | 0x8001AB00
-[cpu_descisions_branch_item](@ref cpu_descisions_branch_item) | 0x8001AB74
+[cpu_decisions_branch_item](@ref cpu_decisions_branch_item) | 0x8001AB74
 [func_8001ABE0](@ref func_8001ABE0) | 0x8001ABE0
 [func_8001ABEC](@ref func_8001ABEC) | 0x8001ABEC
 [cpu_use_item_strategy](@ref cpu_use_item_strategy) | 0x8001AC10

@@ -7576,7 +7576,7 @@ void func_8001AB00(void) {
     }
 }
 
-void cpu_descisions_branch_item(s32 arg0, s16 *arg1, s32 arg2) {
+void cpu_decisions_branch_item(s32 arg0, s16 *arg1, s32 arg2) {
     s32 value = -1;
     switch (arg2) {
         case ITEM_FAKE_ITEM_BOX:
@@ -7643,7 +7643,7 @@ void cpu_use_item_strategy(s32 playerId) {
         case 0:
             temp_s0->actorIndex = -1;
             if ((((playerId * 0x14) + 0x64) < D_80164450[playerId]) && (temp_s0->unk_04 >= 0x259) && (temp_s0->unk_06 < 3) && (gLapCountByPlayerId[playerId] < 3)) {
-                cpu_descisions_branch_item(playerId, &temp_s0->unk_00, gen_random_item_cpu((s16)gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]));
+                cpu_decisions_branch_item(playerId, &temp_s0->unk_00, gen_random_item_cpu((s16)gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]));
             } else {
                 func_8001ABE0(playerId, temp_s0);
             }
