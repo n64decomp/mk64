@@ -2075,6 +2075,7 @@ Variable Name | Memory Address
 [func_8009E020](@ref func_8009E020) | 0x8009E020
 [func_8009E088](@ref func_8009E088) | 0x8009E088
 [func_8009E0F0](@ref func_8009E0F0) | 0x8009E0F0
+[func_8009E17C](@ref func_8009E17C) | 0x8009E17C
 [func_8009E1C0](@ref func_8009E1C0) | 0x8009E1C0
 [func_8009E1E4](@ref func_8009E1E4) | 0x8009E1E4
 [func_8009E208](@ref func_8009E208) | 0x8009E208
