@@ -3,7 +3,7 @@ var structMkTexture =
     [ "dX", "structMkTexture.html#a2789184e64d8438421c44ea98535d583", null ],
     [ "dY", "structMkTexture.html#a6e71d716bd5a15cdc5863f2cf82afde6", null ],
     [ "height", "structMkTexture.html#a44c5e3d94124f429abe927eb8baa022a", null ],
-    [ "size", "structMkTexture.html#a5843cf15fafebe42d90cef68b6560558", null ],
+    [ "size", "structMkTexture.html#a6ad4a586ede40d8f5c838d59c8270708", null ],
     [ "textureData", "structMkTexture.html#aae0153c2f0c10370193ea227d8525b2f", null ],
     [ "type", "structMkTexture.html#a95f2bda85ce81ee19e7e409daccd81b3", null ],
     [ "unused1", "structMkTexture.html#aa02ac00b6dc2d6d22e083d739a096cdf", null ],
