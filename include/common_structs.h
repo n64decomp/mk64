@@ -118,7 +118,7 @@ typedef struct {
     /* 0x0C */ Vec3f unk3C;
     /* 0x18 */ Vec3f unk48;
     /* 0x24 */ Vec3f unk54;
-    /* 0x30 */ Vec3f unk60;
+    /* 0x30 */ Vec3f orientationVector;
     /* 0x3C */ f32 unk6C;
 } Collision;
 
