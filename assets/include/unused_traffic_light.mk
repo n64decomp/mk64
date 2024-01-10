@@ -1,6 +1,6 @@
 UNUSED_TRAFFIC_LIGHT_DIR := assets/unused_traffic_light
 
-UNUSED_TRAFFIC_LIGHT_PALETTE := $(UNUSED_TRAFFIC_LIGHT_DIR)/common_TLUT_traffic_light.png
+UNUSED_TRAFFIC_LIGHT_PALETTE := $(UNUSED_TRAFFIC_LIGHT_DIR)/common_tlut_traffic_light.png
 
 UNUSED_TRAFFIC_LIGHT_PNG := \
 $(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_01.png \

@@ -1,6 +1,6 @@
 REVERSE_DIR := assets/lakitu/reverse
 
-REVERSE_PALETTE := $(REVERSE_DIR)/common_TLUT_lakitu_reverse.png
+REVERSE_PALETTE := $(REVERSE_DIR)/common_tlut_lakitu_reverse.png
 
 REVERSE_FRAMES := \
 $(REVERSE_DIR)/gTextureLakituReverse01.png \

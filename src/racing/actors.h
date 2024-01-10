@@ -124,7 +124,7 @@ extern s16 gCurrentCourseId;
 extern u16 isCrossingTriggeredByIndex[];
 extern Lights1 D_800DC610[];
 
-extern s8 common_TLUT_trees_import[];
+extern s8 common_tlut_trees_import[];
 extern Gfx D_0D005338[];
 extern Gfx D_0D005368[];
 extern Gfx D_0D007B20[];

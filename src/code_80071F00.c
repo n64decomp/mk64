@@ -67,10 +67,10 @@ Vtx D_800E44B0[] = {
 };
 
 u8 *gItemWindowTLUTs[] = {
-    common_TLUT_item_window_none, common_TLUT_item_window_banana, common_TLUT_item_window_banana_bunch, common_TLUT_item_window_green_shell,
-    common_TLUT_item_window_triple_green_shell, common_TLUT_item_window_red_shell, common_TLUT_item_window_triple_red_shell, common_TLUT_item_window_blue_shell,
-    common_TLUT_item_window_thunder_bolt, common_TLUT_item_window_fake_item_box, common_TLUT_item_window_star, common_TLUT_item_window_boo,
-    common_TLUT_item_window_mushroom, common_TLUT_item_window_double_mushroom, common_TLUT_item_window_triple_mushroom, common_TLUT_item_window_super_mushroom
+    common_tlut_item_window_none, common_tlut_item_window_banana, common_tlut_item_window_banana_bunch, common_tlut_item_window_green_shell,
+    common_tlut_item_window_triple_green_shell, common_tlut_item_window_red_shell, common_tlut_item_window_triple_red_shell, common_tlut_item_window_blue_shell,
+    common_tlut_item_window_thunder_bolt, common_tlut_item_window_fake_item_box, common_tlut_item_window_star, common_tlut_item_window_boo,
+    common_tlut_item_window_mushroom, common_tlut_item_window_double_mushroom, common_tlut_item_window_triple_mushroom, common_tlut_item_window_super_mushroom
 };
 
 u8 *gItemWindowTextures[] = {
@@ -81,12 +81,12 @@ u8 *gItemWindowTextures[] = {
 };
 
 u8 *D_800E4570[] = {
-    common_texture_HUD_lap_1_on_3, common_texture_HUD_lap_2_on_3, common_texture_HUD_lap_3_on_3
+    common_texture_hud_lap_1_on_3, common_texture_hud_lap_2_on_3, common_texture_hud_lap_3_on_3
 };
 
 u8 *gPortraitTLUTs[] = {
-    common_TLUT_portrait_mario, common_TLUT_portrait_luigi, common_TLUT_portrait_yoshi, common_TLUT_portrait_toad,
-    common_TLUT_portrait_donkey_kong, common_TLUT_portrait_wario, common_TLUT_portrait_peach, common_TLUT_portrait_bowser
+    common_tlut_portrait_mario, common_tlut_portrait_luigi, common_tlut_portrait_yoshi, common_tlut_portrait_toad,
+    common_tlut_portrait_donkey_kong, common_tlut_portrait_wario, common_tlut_portrait_peach, common_tlut_portrait_bowser
 };
 
 u8 *gPortraitTextures[] = {
@@ -2976,7 +2976,7 @@ void func_800792D8(s32 objectIndex, s32 arg1) {
         D_801656F0 = 0;
         D_8018D168 = 0;
     }
-    init_texture_object(objectIndex, (u8 *) common_TLUT_lakitu_countdown, gTextureLakituNoLights1, 0x38U, (u16) 0x00000048);
+    init_texture_object(objectIndex, (u8 *) common_tlut_lakitu_countdown, gTextureLakituNoLights1, 0x38U, (u16) 0x00000048);
     gObjectList[objectIndex].vertex = D_0D005EB0;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     set_object_flag_unk_054_false(objectIndex, 0x00000010);
@@ -3067,7 +3067,7 @@ void func_8007963C(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, common_TLUT_lakitu_checkered_flag, gTextureLakituCheckeredFlag01, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, common_tlut_lakitu_checkered_flag, gTextureLakituCheckeredFlag01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
     temp_v0->vertex = D_0D006730;
@@ -3144,7 +3144,7 @@ void func_8007993C(s32 objectIndex, Player *player) {
 
 void func_800799A8(s32 objectIndex, s32 arg1) {
     func_800791F0(objectIndex, arg1);
-    init_texture_object(objectIndex, common_TLUT_lakitu_fishing, gTextureLakituFishing1, 0x38U, (u16) 0x00000048);
+    init_texture_object(objectIndex, common_tlut_lakitu_fishing, gTextureLakituFishing1, 0x38U, (u16) 0x00000048);
     gObjectList[objectIndex].vertex = D_0D005F30;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     func_80086E70(objectIndex);
@@ -3317,7 +3317,7 @@ void func_8007A060(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, common_TLUT_lakitu_second_lap, gTextureLakituSecondLap01, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, common_tlut_lakitu_second_lap, gTextureLakituSecondLap01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
     temp_v0->vertex = D_0D006730;
@@ -3365,7 +3365,7 @@ void func_8007A228(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, common_TLUT_lakitu_final_lap, gTextureLakituFinalLap01, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, common_tlut_lakitu_final_lap, gTextureLakituFinalLap01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
     temp_v0->vertex = D_0D006730;
@@ -3412,7 +3412,7 @@ void func_8007A2EC(s32 objectIndex, s32 playerIndex) {
 void func_8007A3F0(s32 objectIndex, s32 arg1) {
     f32 var = 5000.0f;
     func_800791F0(objectIndex, arg1);
-    init_texture_object(objectIndex, common_TLUT_lakitu_reverse, gTextureLakituReverse01, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, common_tlut_lakitu_reverse, gTextureLakituReverse01, 0x48U, (u16) 0x00000038);
     gObjectList[objectIndex].activeTexture = D_8018C028;
     gObjectList[objectIndex].vertex = D_0D006730;
     gObjectList[objectIndex].pos[2] = var;
@@ -3660,7 +3660,7 @@ u8 gen_random_item(s16 rank, s16 isCpu)
             curve = segmented_to_virtual((void *) common_grand_prix_human_item_curve);
         }
         else {
-            curve = segmented_to_virtual((void *) common_grand_prix_CPU_item_curve);
+            curve = segmented_to_virtual((void *) common_grand_prix_cpu_item_curve);
         }
         randomItem =  *((rank * 100) + curve + sRandomItemIndex);
     }
@@ -3762,7 +3762,7 @@ void func_8007B254(s32 objectIndex, s32 arg1) {
     func_80072428(objectIndex);
     gObjectList[objectIndex].state = 2;
     gObjectList[objectIndex].type = 0;
-    gObjectList[objectIndex].tlutList = (u8 *) common_TLUT_item_window_none;
+    gObjectList[objectIndex].tlutList = (u8 *) common_tlut_item_window_none;
     gObjectList[objectIndex].textureList = common_texture_item_window_none;
     gObjectList[objectIndex].textureWidth = 0x28;
     gObjectList[objectIndex].textureHeight = 0x20;

@@ -72,8 +72,8 @@ glabel func_80050E34
 /* 051B38 80050F38 AC580000 */  sw    $t8, ($v0)
 /* 051B3C 80050F3C AC590004 */  sw    $t9, 4($v0)
 /* 051B40 80050F40 8E020000 */  lw    $v0, ($s0)
-/* 051B44 80050F44 3C180D02 */  lui   $t8, %hi(common_TLUT_portrait_bomb_kart_and_question_mark) # $t8, 0xd02
-/* 051B48 80050F48 2718B4D8 */  addiu $t8, %lo(common_TLUT_portrait_bomb_kart_and_question_mark) # addiu $t8, $t8, -0x4b28
+/* 051B44 80050F44 3C180D02 */  lui   $t8, %hi(common_tlut_portrait_bomb_kart_and_question_mark) # $t8, 0xd02
+/* 051B48 80050F48 2718B4D8 */  addiu $t8, %lo(common_tlut_portrait_bomb_kart_and_question_mark) # addiu $t8, $t8, -0x4b28
 /* 051B4C 80050F4C 244E0008 */  addiu $t6, $v0, 8
 /* 051B50 80050F50 AE0E0000 */  sw    $t6, ($s0)
 /* 051B54 80050F54 3C0FFD10 */  lui   $t7, 0xfd10
@@ -300,8 +300,8 @@ glabel func_80050E34
 /* 051EB8 800512B8 AC590000 */  sw    $t9, ($v0)
 .L800512BC:
 /* 051EBC 800512BC 8E020000 */  lw    $v0, ($s0)
-/* 051EC0 800512C0 3C190D02 */  lui   $t9, %hi(common_TLUT_HUD_type_C_rank_tiny_font) # $t9, 0xd02
-/* 051EC4 800512C4 27399E58 */  addiu $t9, %lo(common_TLUT_HUD_type_C_rank_tiny_font) # addiu $t9, $t9, -0x61a8
+/* 051EC0 800512C0 3C190D02 */  lui   $t9, %hi(common_tlut_hud_type_C_rank_tiny_font) # $t9, 0xd02
+/* 051EC4 800512C4 27399E58 */  addiu $t9, %lo(common_tlut_hud_type_C_rank_tiny_font) # addiu $t9, $t9, -0x61a8
 /* 051EC8 800512C8 244F0008 */  addiu $t7, $v0, 8
 /* 051ECC 800512CC AE0F0000 */  sw    $t7, ($s0)
 /* 051ED0 800512D0 3C18FD10 */  lui   $t8, 0xfd10
@@ -343,8 +343,8 @@ glabel func_80050E34
 /* 051F60 80051360 AC400004 */  sw    $zero, 4($v0)
 /* 051F64 80051364 AC590000 */  sw    $t9, ($v0)
 /* 051F68 80051368 8FAE00DC */  lw    $t6, 0xdc($sp)
-/* 051F6C 8005136C 3C190D02 */  lui   $t9, %hi(common_texture_HUD_type_C_rank_tiny_font) # $t9, 0xd02
-/* 051F70 80051370 2739A058 */  addiu $t9, %lo(common_texture_HUD_type_C_rank_tiny_font) # addiu $t9, $t9, -0x5fa8
+/* 051F6C 8005136C 3C190D02 */  lui   $t9, %hi(common_texture_hud_type_C_rank_tiny_font) # $t9, 0xd02
+/* 051F70 80051370 2739A058 */  addiu $t9, %lo(common_texture_hud_type_C_rank_tiny_font) # addiu $t9, $t9, -0x5fa8
 /* 051F74 80051374 000E7980 */  sll   $t7, $t6, 6
 /* 051F78 80051378 25F80040 */  addiu $t8, $t7, 0x40
 /* 051F7C 8005137C 0C0114A9 */  jal   rsp_load_texture

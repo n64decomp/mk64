@@ -30,8 +30,8 @@ extern s8 D_03008000[];
 extern s8 D_03008800[];
 */
 
-s8 common_TLUT_finish_line_banner[] = { // tlut
-    #include "assets/finish_line_banner/common_TLUT_finish_line_banner.inc.c"
+s8 common_tlut_finish_line_banner[] = { // tlut
+    #include "assets/finish_line_banner/common_tlut_finish_line_banner.inc.c"
 };
 
 s8 common_texture_particle_fire[] = { // tlut
@@ -218,7 +218,7 @@ Gfx D_0D001828[] = {
 Gfx D_0D001840[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPPipeSync(),
-    gsDPLoadTLUT_pal256(common_TLUT_finish_line_banner),
+    gsDPLoadTLUT_pal256(common_tlut_finish_line_banner),
     gsDPSetTextureLUT(G_TT_RGBA16),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
@@ -632,16 +632,16 @@ Gfx common_model_flat_banana[] = {
 
 // tlut size 8x29
 //! @todo What is this?
-s8 common_TLUT_trees_import[] = {
-    #include "assets/trees/common_TLUT_trees_import.inc.c"
+s8 common_tlut_trees_import[] = {
+    #include "assets/trees/common_tlut_trees_import.inc.c"
 };
 
-s8 common_TLUT_green_shell[] = {
-    #include "assets/greenshell/common_TLUT_green_shell.inc.c"
+s8 common_tlut_green_shell[] = {
+    #include "assets/greenshell/common_tlut_green_shell.inc.c"
 };
 // 5038
-s8 common_TLUT_blue_shell[] = {
-    #include "assets/blueshell/common_TLUT_blue_shell.inc.c"
+s8 common_tlut_blue_shell[] = {
+    #include "assets/blueshell/common_tlut_blue_shell.inc.c"
 };
 
 Vtx D_0D005238[] = {
@@ -1278,8 +1278,8 @@ s8 D_0D006AD8[] = {
 };
 
 // tlut
-s8 common_TLUT_debug_font[] = {
-    #include "assets/debug_font/common_TLUT_debug_font.inc.c"
+s8 common_tlut_debug_font[] = {
+    #include "assets/debug_font/common_tlut_debug_font.inc.c"
 };
 
 s8 common_texture_debug_font[] = {
@@ -1757,7 +1757,7 @@ Gfx D_0D008060[] = {
 Gfx D_0D008080[] = {
     gsSPDisplayList(D_0D007EF8),
     gsDPSetTextureLUT(G_TT_RGBA16),
-    gsDPLoadTLUT_pal16(0, common_TLUT_debug_font),
+    gsDPLoadTLUT_pal16(0, common_tlut_debug_font),
     gsDPLoadSync(),
     gsDPLoadTextureBlock_4b(common_texture_debug_font, G_IM_FMT_CI, 128, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSPEndDisplayList(),
@@ -1881,7 +1881,7 @@ u8 common_grand_prix_human_item_curve[8][100] = {
     },
 };
 
-u8 common_grand_prix_CPU_item_curve[8][100] = {
+u8 common_grand_prix_cpu_item_curve[8][100] = {
     {
         ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,
         ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,
@@ -2576,82 +2576,82 @@ s8 common_texture_speedometer_needle[] = {
 };
 
 // Lap UI Texture
-s8 common_texture_HUD_lap[] = {
-    #include "textures/common/common_texture_HUD_lap.rgba16.inc.c"
+s8 common_texture_hud_lap[] = {
+    #include "textures/common/common_texture_hud_lap.rgba16.inc.c"
 };
 
 // 123/
-u8 common_texture_HUD_123[] = {
-    #include "textures/common/common_texture_HUD_123.rgba16.inc.c"
+u8 common_texture_hud_123[] = {
+    #include "textures/common/common_texture_hud_123.rgba16.inc.c"
 };
 
 // Lap
-s8 common_texture_HUD_lap_time[] = {
-    #include "textures/common/common_texture_HUD_lap_time.rgba16.inc.c"
+s8 common_texture_hud_lap_time[] = {
+    #include "textures/common/common_texture_hud_lap_time.rgba16.inc.c"
 };
 
 // 1/3
-s8 common_texture_HUD_lap_1_on_3[] = {
-    #include "textures/common/common_texture_HUD_lap_1_on_3.rgba16.inc.c"
+s8 common_texture_hud_lap_1_on_3[] = {
+    #include "textures/common/common_texture_hud_lap_1_on_3.rgba16.inc.c"
 };
 
 // 2/3
-s8 common_texture_HUD_lap_2_on_3[] = {
-    #include "textures/common/common_texture_HUD_lap_2_on_3.rgba16.inc.c"
+s8 common_texture_hud_lap_2_on_3[] = {
+    #include "textures/common/common_texture_hud_lap_2_on_3.rgba16.inc.c"
 };
 
 // 3/3
-s8 common_texture_HUD_lap_3_on_3[] = {
-    #include "textures/common/common_texture_HUD_lap_3_on_3.rgba16.inc.c"
+s8 common_texture_hud_lap_3_on_3[] = {
+    #include "textures/common/common_texture_hud_lap_3_on_3.rgba16.inc.c"
 };
 
 // total
-s8 common_texture_HUD_total_time[] = {
-    #include "textures/common/common_texture_HUD_total_time.rgba16.inc.c"
+s8 common_texture_hud_total_time[] = {
+    #include "textures/common/common_texture_hud_total_time.rgba16.inc.c"
 };
 
 // time
-s8 common_texture_HUD_time[] = {
-    #include "textures/common/common_texture_HUD_time.rgba16.inc.c"
+s8 common_texture_hud_time[] = {
+    #include "textures/common/common_texture_hud_time.rgba16.inc.c"
 };
 
 // 0123456789'"!
-u8 common_texture_HUD_normal_digit[] = {
-    #include "textures/common/common_texture_HUD_normal_digit.rgba16.inc.c"
+u8 common_texture_hud_normal_digit[] = {
+    #include "textures/common/common_texture_hud_normal_digit.rgba16.inc.c"
 };
 
-u8 common_texture_HUD_place[][4096] = {
+u8 common_texture_hud_place[][4096] = {
     // first place
     {
-        #include "textures/common/common_texture_HUD_1st.i4.inc.c"
+        #include "textures/common/common_texture_hud_1st.i4.inc.c"
     },
     // second place
     {
-        #include "textures/common/common_texture_HUD_2nd.i4.inc.c"
+        #include "textures/common/common_texture_hud_2nd.i4.inc.c"
     },
     // third place
     {
-        #include "textures/common/common_texture_HUD_3rd.i4.inc.c"
+        #include "textures/common/common_texture_hud_3rd.i4.inc.c"
     },
     // fourth place
     {
-        #include "textures/common/common_texture_HUD_4th.i4.inc.c"
+        #include "textures/common/common_texture_hud_4th.i4.inc.c"
     },
     // fifth place
     {
-        #include "textures/common/common_texture_HUD_5th.i4.inc.c"
+        #include "textures/common/common_texture_hud_5th.i4.inc.c"
     },
     // sixth place
     {
-        #include "textures/common/common_texture_HUD_6th.i4.inc.c"
+        #include "textures/common/common_texture_hud_6th.i4.inc.c"
     },
     // seventh place
     {
-        #include "textures/common/common_texture_HUD_7th.i4.inc.c"
+        #include "textures/common/common_texture_hud_7th.i4.inc.c"
     },
     // eighth place
     {
-        #include "textures/common/common_texture_HUD_8th.i4.inc.c"
+        #include "textures/common/common_texture_hud_8th.i4.inc.c"
     },
 };
 
@@ -2675,8 +2675,8 @@ u8 D_0D015258[][2048] = {
 };
 
 // tlut for 1p, 2p, 3p, 4p
-u8 common_TLUT_player_emblem[] = {
-    #include "assets/player_emblems/common_TLUT_player_emblem.inc.c"
+u8 common_tlut_player_emblem[] = {
+    #include "assets/player_emblems/common_tlut_player_emblem.inc.c"
 };
 
 // 1p, 2p, 3p, 4p
@@ -2696,74 +2696,74 @@ u8 common_texture_player_emblem[][2048] = {
 };
 
 // font tlut for 12345678
-u8 common_TLUT_HUD_type_C_rank_font[] = {
-   #include "assets/hud_type_c/common_TLUT_HUD_type_C_rank_font.inc.c"
+u8 common_tlut_hud_type_C_rank_font[] = {
+   #include "assets/hud_type_c/common_tlut_hud_type_C_rank_font.inc.c"
 };
  
 // font 12345678
-u8 common_texture_HUD_type_C_rank_font[][256] = {
+u8 common_texture_hud_type_C_rank_font[][256] = {
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_1.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_font_1.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_2.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_font_2.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_3.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_font_3.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_4.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_font_4.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_5.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_font_5.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_6.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_font_6.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_7.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_font_7.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_font_8.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_font_8.inc.c"
     },
 };
 
 // font tlut for 0123456789
-u8 common_TLUT_HUD_type_C_rank_tiny_font[] = {
-   #include "assets/hud_type_c/common_TLUT_HUD_type_C_rank_tiny_font.inc.c"
+u8 common_tlut_hud_type_C_rank_tiny_font[] = {
+   #include "assets/hud_type_c/common_tlut_hud_type_C_rank_tiny_font.inc.c"
 };
 
 // 0123456789
-u8 common_texture_HUD_type_C_rank_tiny_font[][64] = {
+u8 common_texture_hud_type_C_rank_tiny_font[][64] = {
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_0.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_tiny_font_0.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_1.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_tiny_font_1.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_2.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_tiny_font_2.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_3.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_tiny_font_3.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_4.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_tiny_font_4.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_5.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_tiny_font_5.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_6.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_tiny_font_6.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_7.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_tiny_font_7.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_8.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_tiny_font_8.inc.c"
     },
     {
-        #include "assets/hud_type_c/common_texture_HUD_type_C_rank_tiny_font_9.inc.c"
+        #include "assets/hud_type_c/common_texture_hud_type_C_rank_tiny_font_9.inc.c"
     },
 };
 
@@ -2773,48 +2773,48 @@ u8 common_texture_character_portrait_border[] = {
 };
 
 // 1A4D8 mario tlut
-s8 common_TLUT_portrait_mario[] = {
-    #include "assets/character_portraits/common_TLUT_portrait_mario.inc.c"
+s8 common_tlut_portrait_mario[] = {
+    #include "assets/character_portraits/common_tlut_portrait_mario.inc.c"
 };
 
 // 1A6D8 luigi tlut
-s8 common_TLUT_portrait_luigi[] = {
-    #include "assets/character_portraits/common_TLUT_portrait_luigi.inc.c"
+s8 common_tlut_portrait_luigi[] = {
+    #include "assets/character_portraits/common_tlut_portrait_luigi.inc.c"
 };
 
 // 1A8D8 peach tlut
-s8 common_TLUT_portrait_peach[] = {
-    #include "assets/character_portraits/common_TLUT_portrait_peach.inc.c"
+s8 common_tlut_portrait_peach[] = {
+    #include "assets/character_portraits/common_tlut_portrait_peach.inc.c"
 };
 
 // 1AAD8 toad tlut
-s8 common_TLUT_portrait_toad[] = {
-    #include "assets/character_portraits/common_TLUT_portrait_toad.inc.c"
+s8 common_tlut_portrait_toad[] = {
+    #include "assets/character_portraits/common_tlut_portrait_toad.inc.c"
 };
 
 // 1ACD8 yoshi tlut
-s8 common_TLUT_portrait_yoshi[] = {
-    #include "assets/character_portraits/common_TLUT_portrait_yoshi.inc.c"
+s8 common_tlut_portrait_yoshi[] = {
+    #include "assets/character_portraits/common_tlut_portrait_yoshi.inc.c"
 };
 
 // 1AED8 dk tlut
-s8 common_TLUT_portrait_donkey_kong[] = {
-    #include "assets/character_portraits/common_TLUT_portrait_donkey_kong.inc.c"
+s8 common_tlut_portrait_donkey_kong[] = {
+    #include "assets/character_portraits/common_tlut_portrait_donkey_kong.inc.c"
 };
 
 // 1B0D8 wario tlut
-s8 common_TLUT_portrait_wario[] = {
-    #include "assets/character_portraits/common_TLUT_portrait_wario.inc.c"
+s8 common_tlut_portrait_wario[] = {
+    #include "assets/character_portraits/common_tlut_portrait_wario.inc.c"
 };
 
 // 1B2D8 bowser tlut
-s8 common_TLUT_portrait_bowser[] = {
-    #include "assets/character_portraits/common_TLUT_portrait_bowser.inc.c"
+s8 common_tlut_portrait_bowser[] = {
+    #include "assets/character_portraits/common_tlut_portrait_bowser.inc.c"
 };
 
 // 1B4D8 bob-omb tlut and question mark?
-s8 common_TLUT_portrait_bomb_kart_and_question_mark[] = {
-    #include "assets/character_portraits/common_TLUT_portrait_bomb_kart_and_question_mark.inc.c"
+s8 common_tlut_portrait_bomb_kart_and_question_mark[] = {
+    #include "assets/character_portraits/common_tlut_portrait_bomb_kart_and_question_mark.inc.c"
 };
 
 
@@ -2869,68 +2869,68 @@ u8 common_texture_portrait_question_mark[] = {
 };
 
 // 1DED8 tlut item frames
-s8 common_TLUT_item_window_none[] = {
-    #include "assets/item_window/common_TLUT_item_window_none.inc.c"
+s8 common_tlut_item_window_none[] = {
+    #include "assets/item_window/common_tlut_item_window_none.inc.c"
 };
 
-s8 common_TLUT_item_window_banana[] = {
-    #include "assets/item_window/common_TLUT_item_window_banana.inc.c"
+s8 common_tlut_item_window_banana[] = {
+    #include "assets/item_window/common_tlut_item_window_banana.inc.c"
 };
 
-s8 common_TLUT_item_window_banana_bunch[] = {
-    #include "assets/item_window/common_TLUT_item_window_banana_bunch.inc.c"
+s8 common_tlut_item_window_banana_bunch[] = {
+    #include "assets/item_window/common_tlut_item_window_banana_bunch.inc.c"
 };
 
-s8 common_TLUT_item_window_mushroom[] = {
-    #include "assets/item_window/common_TLUT_item_window_mushroom.inc.c"
+s8 common_tlut_item_window_mushroom[] = {
+    #include "assets/item_window/common_tlut_item_window_mushroom.inc.c"
 };
 
-s8 common_TLUT_item_window_double_mushroom[] = {
-    #include "assets/item_window/common_TLUT_item_window_double_mushroom.inc.c"
+s8 common_tlut_item_window_double_mushroom[] = {
+    #include "assets/item_window/common_tlut_item_window_double_mushroom.inc.c"
 };
 
-s8 common_TLUT_item_window_triple_mushroom[] = {
-    #include "assets/item_window/common_TLUT_item_window_triple_mushroom.inc.c"
+s8 common_tlut_item_window_triple_mushroom[] = {
+    #include "assets/item_window/common_tlut_item_window_triple_mushroom.inc.c"
 };
 
-s8 common_TLUT_item_window_super_mushroom[] = {
-    #include "assets/item_window/common_TLUT_item_window_super_mushroom.inc.c"
+s8 common_tlut_item_window_super_mushroom[] = {
+    #include "assets/item_window/common_tlut_item_window_super_mushroom.inc.c"
 };
 
-s8 common_TLUT_item_window_blue_shell[] = {
-    #include "assets/item_window/common_TLUT_item_window_blue_shell.inc.c"
+s8 common_tlut_item_window_blue_shell[] = {
+    #include "assets/item_window/common_tlut_item_window_blue_shell.inc.c"
 };
 
-s8 common_TLUT_item_window_boo[] = {
-    #include "assets/item_window/common_TLUT_item_window_boo.inc.c"
+s8 common_tlut_item_window_boo[] = {
+    #include "assets/item_window/common_tlut_item_window_boo.inc.c"
 };
 
-s8 common_TLUT_item_window_green_shell[] = {
-    #include "assets/item_window/common_TLUT_item_window_green_shell.inc.c"
+s8 common_tlut_item_window_green_shell[] = {
+    #include "assets/item_window/common_tlut_item_window_green_shell.inc.c"
 };
 
-s8 common_TLUT_item_window_triple_green_shell[] = {
-    #include "assets/item_window/common_TLUT_item_window_triple_green_shell.inc.c"
+s8 common_tlut_item_window_triple_green_shell[] = {
+    #include "assets/item_window/common_tlut_item_window_triple_green_shell.inc.c"
 };
 
-s8 common_TLUT_item_window_red_shell[] = {
-    #include "assets/item_window/common_TLUT_item_window_red_shell.inc.c"
+s8 common_tlut_item_window_red_shell[] = {
+    #include "assets/item_window/common_tlut_item_window_red_shell.inc.c"
 };
 
-s8 common_TLUT_item_window_triple_red_shell[] = {
-    #include "assets/item_window/common_TLUT_item_window_triple_red_shell.inc.c"
+s8 common_tlut_item_window_triple_red_shell[] = {
+    #include "assets/item_window/common_tlut_item_window_triple_red_shell.inc.c"
 };
 
-s8 common_TLUT_item_window_star[] = {
-    #include "assets/item_window/common_TLUT_item_window_star.inc.c"
+s8 common_tlut_item_window_star[] = {
+    #include "assets/item_window/common_tlut_item_window_star.inc.c"
 };
 
-s8 common_TLUT_item_window_thunder_bolt[] = {
-    #include "assets/item_window/common_TLUT_item_window_thunder_bolt.inc.c"
+s8 common_tlut_item_window_thunder_bolt[] = {
+    #include "assets/item_window/common_tlut_item_window_thunder_bolt.inc.c"
 };
 
-s8 common_TLUT_item_window_fake_item_box[] = {
-    #include "assets/item_window/common_TLUT_item_window_fake_item_box.inc.c"
+s8 common_tlut_item_window_fake_item_box[] = {
+    #include "assets/item_window/common_tlut_item_window_fake_item_box.inc.c"
 };
 
 // UI Item Frames
@@ -2998,49 +2998,49 @@ s8 common_texture_item_window_fake_item_box[] = {
     #include "assets/item_window/common_texture_item_window_fake_item_box.inc.c"
 };
 
-u8 common_TLUT_lakitu_countdown[][512] = {
+u8 common_tlut_lakitu_countdown[][512] = {
     {
-        #include "assets/lakitu/nolights/common_TLUT_lakitu_no_lights.inc.c"
+        #include "assets/lakitu/nolights/common_tlut_lakitu_no_lights.inc.c"
     },
     {
-        #include "assets/lakitu/redlights/common_TLUT_lakitu_red_lights.inc.c"
+        #include "assets/lakitu/redlights/common_tlut_lakitu_red_lights.inc.c"
     },
     {
-        #include "assets/lakitu/bluelight/common_TLUT_lakitu_blue_lights.inc.c"
+        #include "assets/lakitu/bluelight/common_tlut_lakitu_blue_lights.inc.c"
     }
 };
 
 /**
  * @todo Generate tlut based on the actual texture.
  * The textures these tluts are for are not in common_textures.inc.c
- * This applies to common_TLUT_lakitu_checkered_flag, common_TLUT_lakitu_second_lap,
- * common_TLUT_lakitu_final_lap, common_TLUT_lakitu_reverse, common_TLUT_lakitu_fishing
+ * This applies to common_tlut_lakitu_checkered_flag, common_tlut_lakitu_second_lap,
+ * common_tlut_lakitu_final_lap, common_tlut_lakitu_reverse, common_tlut_lakitu_fishing
  * Appears to be animation textures.
 */
 
-u8 common_TLUT_lakitu_checkered_flag[] = {
-    #include "assets/lakitu/checkeredflag/common_TLUT_lakitu_checkered_flag.inc.c"
+u8 common_tlut_lakitu_checkered_flag[] = {
+    #include "assets/lakitu/checkeredflag/common_tlut_lakitu_checkered_flag.inc.c"
 };
 
-u8 common_TLUT_lakitu_second_lap[] = {
-    #include "assets/lakitu/secondlap/common_TLUT_lakitu_second_lap.inc.c"
+u8 common_tlut_lakitu_second_lap[] = {
+    #include "assets/lakitu/secondlap/common_tlut_lakitu_second_lap.inc.c"
 };
 
-u8 common_TLUT_lakitu_final_lap[] = {
-    #include "assets/lakitu/finallap/common_TLUT_lakitu_final_lap.inc.c"
+u8 common_tlut_lakitu_final_lap[] = {
+    #include "assets/lakitu/finallap/common_tlut_lakitu_final_lap.inc.c"
 };
 
-u8 common_TLUT_lakitu_reverse[] = {
-    #include "assets/lakitu/reverse/common_TLUT_lakitu_reverse.inc.c"
+u8 common_tlut_lakitu_reverse[] = {
+    #include "assets/lakitu/reverse/common_tlut_lakitu_reverse.inc.c"
 };
 
-u8 common_TLUT_lakitu_fishing[] = {
-    #include "assets/lakitu/fishing/common_TLUT_lakitu_fishing.inc.c"
+u8 common_tlut_lakitu_fishing[] = {
+    #include "assets/lakitu/fishing/common_tlut_lakitu_fishing.inc.c"
 };
 
 // unused traffic light tlut
-UNUSED s8 common_TLUT_traffic_light[] = {
-    #include "assets/unused_traffic_light/common_TLUT_traffic_light.inc.c"
+UNUSED s8 common_tlut_traffic_light[] = {
+    #include "assets/unused_traffic_light/common_tlut_traffic_light.inc.c"
 };
 
 // unused traffic light textures
@@ -3124,8 +3124,8 @@ u8 common_texture_bomb[][1024] = {
 
 // Special tlut that uses 0xFFFF as a transparent tail instead of 0x0 or 0x07FE.
 // tlut for 29858
-u8 common_TLUT_bomb[] = {
-        #include "assets/bomb/common_TLUT_bomb.inc.c"
+u8 common_tlut_bomb[] = {
+        #include "assets/bomb/common_tlut_bomb.inc.c"
 };
 
 u8 D_0D02AA58[] = {

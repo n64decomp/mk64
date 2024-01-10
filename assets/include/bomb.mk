@@ -1,6 +1,6 @@
 BOMB_DIR := assets/bomb
 
-BOMB_PALETTE := $(BOMB_DIR)/common_TLUT_bomb.png
+BOMB_PALETTE := $(BOMB_DIR)/common_tlut_bomb.png
 
 BOMB_FRAMES := \
 $(BOMB_DIR)/common_texture_bomb_1.png \

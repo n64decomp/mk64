@@ -1,6 +1,6 @@
 GREENSHELL_DIR := assets/greenshell
 
-GREENSHELL_PALETTE := $(GREENSHELL_DIR)/common_TLUT_green_shell.png
+GREENSHELL_PALETTE := $(GREENSHELL_DIR)/common_tlut_green_shell.png
 
 GREENSHELL_FRAMES := \
 $(GREENSHELL_DIR)/gTextureGreenShell0.png \

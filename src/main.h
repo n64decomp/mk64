@@ -10,12 +10,12 @@
 #define MESG_START_GFX_SPTASK 103
 #define MESG_NMI_REQUEST 104
 
-#define MTX_HUD_POOL_SIZE 800
+#define MTX_hud_POOL_SIZE 800
 
 #ifdef AVOID_UB
-#define MTX_HUD_POOL_SIZE_MAX MTX_HUD_POOL_SIZE
+#define MTX_hud_POOL_SIZE_MAX MTX_hud_POOL_SIZE
 #else
-#define MTX_HUD_POOL_SIZE_MAX MTX_HUD_POOL_SIZE - 50
+#define MTX_hud_POOL_SIZE_MAX MTX_hud_POOL_SIZE - 50
 #endif
 
 #define MTX_OBJECT_POOL_SIZE 128
@@ -47,7 +47,7 @@ struct GfxPool {
     /* 0x00140 */ Mtx mtxOrtho; // Matrix for ortho hud screen modes
     /* 0x00180 */ Mtx mtxUnk; // Matrix unused
     /* 0x001C0 */ Mtx mtxLookAt[4]; // Matrix for lookat screen modes
-    /* 0x002C0 */ Mtx mtxHud[MTX_HUD_POOL_SIZE]; // Matrix hud elements and 2D related effects
+    /* 0x002C0 */ Mtx mtxHud[MTX_hud_POOL_SIZE]; // Matrix hud elements and 2D related effects
     /* 0x0CAC0 */ Mtx mtxObject[MTX_OBJECT_POOL_SIZE]; // Matrix course objects
     /* 0x0EAC0 */ Mtx mtxShadow[MTX_SHADOW_POOL_SIZE]; // Matrix shadow characters
     /* 0x0F2C0 */ Mtx mtxKart[MTX_KART_POOL_SIZE]; // Matrix kart characters

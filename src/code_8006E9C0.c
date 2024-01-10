@@ -150,8 +150,8 @@ void init_item_window(s32 objectIndex) {
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->currentItem = ITEM_NONE;
     temp_v0->itemDisplay = temp_v0->currentItem;
-    temp_v0->tlutList = (s32 *) common_TLUT_item_window_none;
-    temp_v0->activeTLUT = (s32 *) common_TLUT_item_window_none;
+    temp_v0->tlutList = (s32 *) common_tlut_item_window_none;
+    temp_v0->activeTLUT = (s32 *) common_tlut_item_window_none;
     temp_v0->textureList = common_texture_item_window_none;
     temp_v0->activeTexture = common_texture_item_window_none;
     temp_v0->unk_04C = -1;

@@ -1,6 +1,6 @@
 FINALLAP_DIR := assets/lakitu/finallap
 
-FINALLAP_PALETTE := $(FINALLAP_DIR)/common_TLUT_lakitu_final_lap.png
+FINALLAP_PALETTE := $(FINALLAP_DIR)/common_tlut_lakitu_final_lap.png
 
 FINALLAP_FRAMES := \
 $(FINALLAP_DIR)/gTextureLakituFinalLap01.png \

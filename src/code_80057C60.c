@@ -1076,7 +1076,7 @@ void func_80059360(void) {
     if (D_801657B0 == 0) {
         func_8004FA78(0);
         if (playerHUD[PLAYER_ONE].lapCount != 3) {
-            func_8004CB60(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, common_texture_HUD_lap);
+            func_8004CB60(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, common_texture_hud_lap);
             func_8004FC78(playerHUD[PLAYER_ONE].lapX + 0xC, playerHUD[PLAYER_ONE].lapY - 4, playerHUD[PLAYER_ONE].alsoLapCount);
             func_8004E638(0);
         }
@@ -1091,7 +1091,7 @@ void func_800593F8(void) {
     if (D_801657B0 == 0) {
         func_8004FA78(1);
         if (playerHUD[PLAYER_TWO].lapCount != 3) {
-            func_8004CB60(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, common_texture_HUD_lap);
+            func_8004CB60(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, common_texture_hud_lap);
             func_8004FC78(playerHUD[PLAYER_TWO].lapX + 0xC, playerHUD[PLAYER_TWO].lapY - 4, playerHUD[PLAYER_TWO].alsoLapCount);
             func_8004E638(1);
         }
@@ -1129,12 +1129,12 @@ void func_80059530(void) {
 void func_80059560(s32 arg0) {
     if (gModeSelection != BATTLE) {
         if (D_801657F8 && gIsHUDVisible) {
-            func_8004CB60(playerHUD[arg0].lapX, playerHUD[arg0].lapY, common_texture_HUD_lap);
+            func_8004CB60(playerHUD[arg0].lapX, playerHUD[arg0].lapY, common_texture_hud_lap);
             func_8004FC78(playerHUD[arg0].lapX - 12, playerHUD[arg0].lapY + 4, playerHUD[arg0].alsoLapCount);
         }
         if (D_801657E4 == 2) {
             if (playerHUD[arg0].unk_74 && D_80165608) {
-                func_80047910(playerHUD[arg0].unk_6C, playerHUD[arg0].unk_6E, 0, 1.0f, common_TLUT_portrait_bomb_kart_and_question_mark, common_texture_portrait_bomb_kart, D_0D005AE0, 0x20, 0x20, 0x20, 0x20);
+                func_80047910(playerHUD[arg0].unk_6C, playerHUD[arg0].unk_6E, 0, 1.0f, common_tlut_portrait_bomb_kart_and_question_mark, common_texture_portrait_bomb_kart, D_0D005AE0, 0x20, 0x20, 0x20, 0x20);
             }
         }
     }

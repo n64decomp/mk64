@@ -1,6 +1,6 @@
 PLAYER_EMBLEM_DIR := assets/player_emblems
 
-PLAYER_EMBLEM_PALETTE := $(PLAYER_EMBLEM_DIR)/common_TLUT_player_emblem.png
+PLAYER_EMBLEM_PALETTE := $(PLAYER_EMBLEM_DIR)/common_tlut_player_emblem.png
 
 PLAYER_EMBLEM_PNGS := \
 $(PLAYER_EMBLEM_DIR)/common_texture_player_emblem_1p.png \

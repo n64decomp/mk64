@@ -1,6 +1,6 @@
 FINISH_LINE_BANNER_DIR := assets/finish_line_banner
 
-FINISH_LINE_BANNER_PALETTE := $(FINISH_LINE_BANNER_DIR)/common_TLUT_finish_line_banner.png
+FINISH_LINE_BANNER_PALETTE := $(FINISH_LINE_BANNER_DIR)/common_tlut_finish_line_banner.png
 
 FINISH_LINE_BANNER_PNG := \
 $(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner1.png \

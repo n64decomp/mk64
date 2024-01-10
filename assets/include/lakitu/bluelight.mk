@@ -1,6 +1,6 @@
 BLUELIGHT_DIR := assets/lakitu/bluelight
 
-BLUELIGHT_PALETTE := $(BLUELIGHT_DIR)/common_TLUT_lakitu_blue_lights.png
+BLUELIGHT_PALETTE := $(BLUELIGHT_DIR)/common_tlut_lakitu_blue_lights.png
 
 BLUELIGHT_FRAMES := \
 $(BLUELIGHT_DIR)/gTextureLakituBlueLight1.png \
