@@ -15,7 +15,7 @@ typedef struct {
     /* 0x0A */ u16 height;
     /* 0x0C */ u16 dX;
     /* 0x0E */ u16 dY;
-    /* 0x10 */ s16 size; // This size is NOT equal to width*height. Its likely the size of the compressed texture
+    /* 0x10 */ u16 size; // This size is NOT equal to width*height. Its likely the size of the compressed texture
     /* 0x12 */ s16 unused2;
 } MkTexture; // size = 0x14
 
