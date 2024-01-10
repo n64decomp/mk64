@@ -1323,7 +1323,7 @@ void func_8002AA50(Player *player) {
   * Parameters:
   *     Player *player - A pointer to a Player
 
-  * First kartHopJerk is subtracted from kartHopAcceleration
+  * First kartHopJerk is added from kartHopAcceleration
   * Then kartHopAcceleration is added to kartHopVelocity.
 
   * If kartHopVelocity is less than or equal to zero, all three
@@ -1335,7 +1335,7 @@ void func_8002AA50(Player *player) {
   * kartHopAcceleration is restricted to values in [-9.0f, 9.0f]
 **/
 void func_8002AAC0(Player *player) {
-    player->kartHopAcceleration -= player->kartHopJerk;
+    player->kartHopAcceleration += player->kartHopJerk;
     if (player->kartHopAcceleration >= 9.0f) {
         player->kartHopAcceleration = 9.0f;
     }
