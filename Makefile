@@ -7,6 +7,7 @@ default: all
 
 # Preprocessor definitions
 DEFINES :=
+UNAME_S := $(shell uname -s)
 
 #==============================================================================#
 # Build Options                                                                #
@@ -561,11 +562,14 @@ COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_d
 #==============================================================================#
 # Source Code Generation                                                       #
 #==============================================================================#
-
 $(BUILD_DIR)/%.jp.c: %.c
 	$(call print,Encoding:,$<,$@)
-	iconv -t EUC-JP -f UTF-8 $< -o $@
-
+  ifeq ($(UNAME_S), Darwin)
+	  iconv -t EUC-JP -f UTF-8 $< > $@
+  endif
+  ifeq ($(UNAME_S), Darwin)
+    iconv -t EUC-JP -f UTF-8 $< -o $@
+  endif
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
