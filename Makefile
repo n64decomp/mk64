@@ -567,7 +567,7 @@ $(BUILD_DIR)/%.jp.c: %.c
   ifeq ($(UNAME_S), Darwin)
 	  iconv -t EUC-JP -f UTF-8 $< > $@
   endif
-  ifeq ($(UNAME_S), Darwin)
+  ifeq ($(UNAME_S), Linux)
     iconv -t EUC-JP -f UTF-8 $< -o $@
   endif
 $(BUILD_DIR)/%.o: %.c
