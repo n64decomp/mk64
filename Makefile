@@ -564,7 +564,7 @@ COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_d
 
 $(BUILD_DIR)/%.jp.c: %.c
 	$(call print,Encoding:,$<,$@)
-	iconv -t EUC-JP -f UTF-8 $< > $@
+	iconv -t EUC-JP -f UTF-8 $< -o $@
 
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
