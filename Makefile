@@ -564,17 +564,8 @@ COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_d
 #==============================================================================#
 $(BUILD_DIR)/%.jp.c: %.c
 	$(call print,Encoding:,$<,$@)
-<<<<<<< HEAD
-  ifeq ($(UNAME_S), Darwin)
-	  iconv -t EUC-JP -f UTF-8 $< > $@
-  endif
-  ifeq ($(UNAME_S), Linux)
-    iconv -t EUC-JP -f UTF-8 $< -o $@
-  endif
-=======
 	iconv -t EUC-JP -f UTF-8 $< > $@
 
->>>>>>> parent of 2ec090f80 (Revert "Fixes the error "iconv: invalid option -- o" by redirecting stdout to the desired file. Fixes build errors on macos")
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
