@@ -1,3 +1,4 @@
+@page basics "Understanding the Basics"
 #### Definitions
 * `Jump/Branch/Function` - Tells the cpu to execute instructions somewhere else and come back here when done.
 * `Hexadecimal` - A [numbering system](https://en.wikipedia.org/wiki/Hexadecimal) just like decimal (also called base-ten) or roman numerals. An easy method for programmers and computers to understand each other which groups/separates bytes of information in a readable format. Representing information as decimal results in an unreadable mess.
