@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bug_20list_29145',['Bug List',['../bug.html',1,'']]]
+  ['_22understanding_20the_20basics_22_29145',['&quot;Understanding the Basics&quot;',['../basics.html',1,'md_docs_Understanding_the_Basics_index']]]
 ];
