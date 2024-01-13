@@ -1,2 +1,2 @@
-@subpage basics "test"
+\subpage basics "test"
 # test
