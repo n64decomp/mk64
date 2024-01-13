@@ -1,4 +1,4 @@
-@subpage basics "Compiling"
+\subpage basics "Compiling"
 
 ## Compiling mk64 Decomp In Windows
 
