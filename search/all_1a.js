@@ -1,12 +1,14 @@
 var searchData=
 [
-  ['y_14548',['Y',['../structuObjMtx__t.html#a77cba098affd2443453774614aecc253',1,'uObjMtx_t::Y()'],['../structuObjSubMtx__t.html#acaddc66617be3440fa68c567fd41e1b8',1,'uObjSubMtx_t::Y()']]],
-  ['y_14549',['y',['../structVec3fs.html#ae5aabac0675c3e62a55ebd37e819380f',1,'Vec3fs::y()'],['../structUnkStruct__8018E7E8.html#abf41ca30a4f528282f2330a58c29b03b',1,'UnkStruct_8018E7E8::y()']]],
-  ['yoshi_14550',['YOSHI',['../defines_8h.html#a6a404189274b097f2b1d7d6bde0d490d',1,'defines.h']]],
-  ['yoshi_5fsize_14551',['YOSHI_SIZE',['../defines_8h.html#a7c821aaafac23cd14652df9992dc2fb5',1,'defines.h']]],
-  ['yoshivalleyegg_14552',['YoshiValleyEgg',['../structYoshiValleyEgg.html',1,'']]],
-  ['youngerindex_14553',['youngerIndex',['../structBananaActor.html#ad686614e95607653ffbf00b39cd10397',1,'BananaActor']]],
-  ['ypos_14554',['yPos',['../structBombKart.html#a8cc2966d931e376e71aa0942dfb85af3',1,'BombKart']]],
-  ['yscale_14555',['yScale',['../structOSViFieldRegs.html#a1a39cfe1ebe1efe3da6765e009a6d252',1,'OSViFieldRegs']]],
-  ['yvflagpolespawn_14556',['YVFlagPoleSpawn',['../structYVFlagPoleSpawn.html',1,'']]]
+  ['z_14558',['z',['../structPathNoY.html#a3477bbc6f262cf99873551a3fc624cc7',1,'PathNoY::z()'],['../structVec3fs.html#a9d9b4e688edf3109fa4e263c474f8fae',1,'Vec3fs::z()']]],
+  ['z_14559',['Z',['../common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7baa70478ce277ffc322f8e1e3418e07355',1,'common_structs.h']]],
+  ['z_5fcmp_14560',['Z_CMP',['../gbi_8h.html#a81e8b0738e46043adaffc6992f696066',1,'gbi.h']]],
+  ['z_5ftrig_14561',['Z_TRIG',['../os_8h.html#a3c1de5b3b5a9360fb2104131e6525bdd',1,'Z_TRIG():&#160;os.h'],['../os__cont_8h.html#a3c1de5b3b5a9360fb2104131e6525bdd',1,'Z_TRIG():&#160;os_cont.h']]],
+  ['z_5fupd_14562',['Z_UPD',['../gbi_8h.html#a00533e8f40438b75e00e2343f7772434',1,'gbi.h']]],
+  ['zero_14563',['zero',['../structuObjTxtrTLUT__t.html#a38959f822cce627bc704ed281a91dd8f',1,'uObjTxtrTLUT_t::zero()'],['../cosf_8c.html#a930c6354299da6653ced4e299fa5a39c',1,'zero():&#160;cosf.c'],['../sinf_8c.html#a930c6354299da6653ced4e299fa5a39c',1,'zero():&#160;sinf.c']]],
+  ['zero_5fplayers_5fselected_14564',['ZERO_PLAYERS_SELECTED',['../defines_8h.html#a0148c6452ed48b143e5517e0b0d11096',1,'defines.h']]],
+  ['zmode_5fdec_14565',['ZMODE_DEC',['../gbi_8h.html#a5893ccbd3d1931f9faccc0ef4b20c4d6',1,'gbi.h']]],
+  ['zmode_5finter_14566',['ZMODE_INTER',['../gbi_8h.html#a1f948f9e404c280113937768b01d430f',1,'gbi.h']]],
+  ['zmode_5fopa_14567',['ZMODE_OPA',['../gbi_8h.html#af13471985854dc9015656f7c5e87d73c',1,'gbi.h']]],
+  ['zmode_5fxlu_14568',['ZMODE_XLU',['../gbi_8h.html#afdbffa9b3e098d497e548da07b322314',1,'gbi.h']]]
 ];

@@ -1,8 +1,12 @@
 var searchData=
 [
-  ['x_14543',['x',['../structPathNoY.html#a28e8ea5f9986cdf262a92d66818738c9',1,'PathNoY::x()'],['../structVec3fs.html#a394aaa3eb271acc0bd3a9592d5399d8e',1,'Vec3fs::x()'],['../structUnkStruct__8018E7E8.html#a04cfa77998a4b1efc2731bee573d127b',1,'UnkStruct_8018E7E8::x()']]],
-  ['x_14544',['X',['../structuObjMtx__t.html#adde5a6fc203ebdc9a58f6e89536d9060',1,'uObjMtx_t::X()'],['../structuObjSubMtx__t.html#ae09ac59d3708c981d785789f38739eef',1,'uObjSubMtx_t::X()']]],
-  ['xorientation_14545',['xOrientation',['../code__80057C60__var_8c.html#aa8baaee38198253cb48457f67d39e877',1,'code_80057C60_var.c']]],
-  ['xscale_14546',['xScale',['../structOSViCommonRegs.html#a2308a0898eb785a26737abdd5c0d8432',1,'OSViCommonRegs']]],
-  ['xut_5fvec_14547',['XUT_VEC',['../R4300_8h.html#a1288557520f0c6731ec24c82c4afd420',1,'R4300.h']]]
+  ['y_14549',['Y',['../structuObjMtx__t.html#a77cba098affd2443453774614aecc253',1,'uObjMtx_t::Y()'],['../structuObjSubMtx__t.html#acaddc66617be3440fa68c567fd41e1b8',1,'uObjSubMtx_t::Y()']]],
+  ['y_14550',['y',['../structVec3fs.html#ae5aabac0675c3e62a55ebd37e819380f',1,'Vec3fs::y()'],['../structUnkStruct__8018E7E8.html#abf41ca30a4f528282f2330a58c29b03b',1,'UnkStruct_8018E7E8::y()']]],
+  ['yoshi_14551',['YOSHI',['../defines_8h.html#a6a404189274b097f2b1d7d6bde0d490d',1,'defines.h']]],
+  ['yoshi_5fsize_14552',['YOSHI_SIZE',['../defines_8h.html#a7c821aaafac23cd14652df9992dc2fb5',1,'defines.h']]],
+  ['yoshivalleyegg_14553',['YoshiValleyEgg',['../structYoshiValleyEgg.html',1,'']]],
+  ['youngerindex_14554',['youngerIndex',['../structBananaActor.html#ad686614e95607653ffbf00b39cd10397',1,'BananaActor']]],
+  ['ypos_14555',['yPos',['../structBombKart.html#a8cc2966d931e376e71aa0942dfb85af3',1,'BombKart']]],
+  ['yscale_14556',['yScale',['../structOSViFieldRegs.html#a1a39cfe1ebe1efe3da6765e009a6d252',1,'OSViFieldRegs']]],
+  ['yvflagpolespawn_14557',['YVFlagPoleSpawn',['../structYVFlagPoleSpawn.html',1,'']]]
 ];

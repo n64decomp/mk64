@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['bug_20list_29146',['Bug List',['../bug.html',1,'']]],
-  ['build_5fwindows_29147',['BUILD_WINDOWS',['../md_docs_BUILD_WINDOWS.html',1,'']]]
+  ['compiling_20mk64_29149',['Compiling mk64',['../compiling.html',1,'basics']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Mario Kart 64: BUILD_WINDOWS</title>
+<title>Mario Kart 64: $title</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,7 +64,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('md_docs_BUILD_WINDOWS.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('build.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -82,13 +82,8 @@ $(document).ready(function(){initNavTree('md_docs_BUILD_WINDOWS.html',''); initR
 </iframe>
 </div>
 
-<div class="PageDoc"><div class="header">
-  <div class="headertitle">
-<div class="title">BUILD_WINDOWS </div>  </div>
-</div><!--header-->
-<div class="contents">
-<div class="textblock"><p><a class="el" href="basics.html">Compiling</a></p>
-<h2><a class="anchor" id="autotoc_md0"></a>
+<div class="PageDoc"><div class="contents">
+<div class="textblock"><h2><a class="anchor" id="autotoc_md3"></a>
 Compiling mk64 Decomp In Windows</h2>
 <p><em><b>This method is not recommended nor supported. However, it is the only solution to build in W7/W8. WSL is the path of least resistance, use that not this</b></em></p>
 <blockquote class="doxtable">
@@ -96,36 +91,36 @@ Compiling mk64 Decomp In Windows</h2>
 </blockquote>
 <p>- leogames</p>
 <p>The extraneous and convoluted process to building mk64 decomp on Windows begins with disabling your anti-virus program or adding an exception to the mk64 decomp folder and the msys2 installation folder. Please note that this action may impact the security of your system. Prior to proceeding, make sure to understand the increased security risks that may result from this step. Nobody except you, is responsible and liable for your system and its security.</p>
-<h3><a class="anchor" id="autotoc_md1"></a>
+<h3><a class="anchor" id="autotoc_md4"></a>
 Preamble</h3>
 <p>Any misteps may require a complete uninstall of <code>MSYS2 MinGW x64</code> and restarting from the very beginning. <br  />
  It is unknown if <code>MSYS MinGW x32</code> is supported (most likely not).</p>
-<h3><a class="anchor" id="autotoc_md2"></a>
+<h3><a class="anchor" id="autotoc_md5"></a>
 Step 1: Download MSYS2 MinGW x64</h3>
 <p><a href="https://www.msys2.org/">https://www.msys2.org/</a></p>
 <p>Follow the initial instructions to update the base packages. Ignore installing any extra packages in-case they conflict with the below steps.</p>
 <p>MinGW is a separate program from Msys2. However, it must be wrapped right into msys2. Compiling recomp requires steps using<br  />
 <code>MSYS2 MSYS</code> <em>and</em> <code>MSYS2 MinGW x64</code>. The instructions will clearly differentiate which terminal program to launch and run in the section titles.</p>
-<p><a class="anchor" id="autotoc_md3"></a> </p><h5><em>Why flip-flop between both?</em></h5>
+<p><a class="anchor" id="autotoc_md6"></a> </p><h5><em>Why flip-flop between both?</em></h5>
 <p>Compiling the recomp executable that generates the source files for compiling the compiler requires capstone. A disassembly, analysis, and reverse-engineering framework. Capstone is only available on <code>MSYS2 MinGW x64</code>. It is not available on <code>MSYS2 MSYS</code>. However, compiling the compiler itself requires <code>MSYS2 MSYS</code> because it contains an equivallent dependency for <code>mman</code>. A memory mapping library. <code>MSYS2 MinGW x64</code> does not contain an equivallent dependancy.</p>
-<h3><a class="anchor" id="autotoc_md4"></a>
+<h3><a class="anchor" id="autotoc_md7"></a>
 Step 2: Install Dependancies in MSYS2 MinGW x64</h3>
 <div class="fragment"><div class="line">pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-capstone pkgconf make python3 git</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md8"></a>
 Step 3: Install Dependencies in MSYS2 MSYS</h3>
 <div class="fragment"><div class="line">pacman -S gcc</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md6"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md9"></a>
 Step 3.5: Rename include in recomp.cpp</h3>
 <p>For some reason on Windows capstone is inside of a capstone folder. </p><div class="fragment"><div class="line">#include &lt;capstone/capstone.h&gt;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md10"></a>
 Step 4: Get Binutils</h3>
 <p>Download and install the mips64 tool chain: <br  />
  <a href="https://github.com/N64-tools/mips64-gcc-toolchain">https://github.com/N64-tools/mips64-gcc-toolchain</a></p>
 <p>Merge the inner folders (bin, share, etc.) with the respective folders in <code>C:\msys64\mingw64\</code></p>
-<h3><a class="anchor" id="autotoc_md8"></a>
+<h3><a class="anchor" id="autotoc_md11"></a>
 Step 5: Compiling recomp.exe in &lt;tt&gt;MSYS2 MinGW x64&lt;/tt&gt;</h3>
 <p>In <code>MSYS2 MinGW x64</code> run in <code>mk64/tools/ido5.3_recomp/</code>: </p><div class="fragment"><div class="line">g++ recomp.cpp -o recomp -g -lcapstone -Dugen53</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md12"></a>
 Step 6: Generate Recomp Source Files in &lt;tt&gt;MSYS2 MinGW x64&lt;/tt&gt;</h3>
 <p>Generate the .c files which will compile into the recomp binaries. mk64 requires the following compiler binaries: <code>as1, cc, cfe, copt, ugen, ujoin, uld, umerge, uopt</code></p>
 <p>In <code>MSYS2 MinGW x64</code> run in the directory <code>mk64/tools/ido5.3_recomp/</code>: </p><div class="fragment"><div class="line">./recomp ../ido5.3_compiler/usr/lib/as1 &gt; as1_c.c</div>
@@ -138,7 +133,7 @@ Step 6: Generate Recomp Source Files in &lt;tt&gt;MSYS2 MinGW x64&lt;/tt&gt;</h3
 <div class="line">./recomp ../ido5.3_compiler/usr/lib/umerge &gt; umerge_c.c</div>
 <div class="line">./recomp ../ido5.3_compiler/usr/lib/uopt &gt; uopt_c.c</div>
 </div><!-- fragment --><p> If you get an assertion failed error. Then the directory to the compiler is incorrect. The binary for cc is in <code>/ido5.3_compiler/usr/bin/</code> so do: </p><div class="fragment"><div class="line">./recomp ../ido5.3_compiler/usr/bin/cc &gt; cc_c.c</div>
-</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md10"></a>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md13"></a>
 Step 7: Compiling the recomp compiler in &lt;tt&gt;MSYS2 MSYS&lt;/tt&gt;</h3>
 <p>In <code>MSYS2 MSYS</code> run in the directory <code>mk64/tools/ido5.3_recomp/</code>: </p><div class="fragment"><div class="line">gcc libc_impl.c as1_c.c -o as1 -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2</div>
 <div class="line">gcc libc_impl.c cc_c.c -o cc -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2</div>
@@ -151,7 +146,7 @@ Step 7: Compiling the recomp compiler in &lt;tt&gt;MSYS2 MSYS&lt;/tt&gt;</h3>
 <div class="line">gcc libc_impl.c uopt_c.c -o uopt -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2</div>
 </div><!-- fragment --><p> <code>-O2</code> is an optional optimization flag. <br  />
 </p>
-<h3><a class="anchor" id="autotoc_md11"></a>
+<h3><a class="anchor" id="autotoc_md14"></a>
 Step 8: Compile mk64 in &lt;tt&gt;MSYS2 MinGW x64&lt;/tt&gt;</h3>
 <p>In <code>/mk64/</code> run: </p><div class="fragment"><div class="line">make -j#</div>
 </div><!-- fragment --><p> Replace # with your number of CPU cores for quicker compilation. </p>
@@ -161,6 +156,7 @@ Step 8: Compile mk64 in &lt;tt&gt;MSYS2 MinGW x64&lt;/tt&gt;</h3>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
+    <li class="navelem"><a class="el" href="basics.html">Understanding the Basics</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>
