@@ -1,9 +1,10 @@
 var basics =
 [
-    [ "Compiling mk64", "compiling.html", null ],
-    [ "concepts", "concepts.html", null ],
-    [ "build", "build.html", null ],
+    [ "Installing mk64 Decomp", "compiling.html", null ],
+    [ "Basic Concepts", "concepts.html", null ],
     [ "test", "test.html", [
-      [ "test", "test.html#autotoc_md23", null ]
-    ] ]
+      [ "test", "test.html#autotoc_md26", null ]
+    ] ],
+    [ "Terminology", "terminology.html", null ],
+    [ "Compiling for Windows", "buildwindows.html", null ]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['compiling_20mk64_29149',['Compiling mk64',['../compiling.html',1,'basics']]]
+  ['basic_20concepts_29167',['Basic Concepts',['../concepts.html',1,'basics']]],
+  ['bug_20list_29168',['Bug List',['../bug.html',1,'']]]
 ];

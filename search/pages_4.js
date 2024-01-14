@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['understanding_20the_20basics_29152',['Understanding the Basics',['../basics.html',1,'']]]
+  ['installing_20mk64_20decomp_29172',['Installing mk64 Decomp',['../compiling.html',1,'basics']]]
 ];
