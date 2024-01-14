@@ -1,54 +1,47 @@
-@page compiling Compiling mk64
-## Dependencies
-
+@page compiling Installing mk64 Decomp
+## Build Instructions
 The build system has the following package requirements:
 
     binutils-mips >= 2.27
     python3 >= 3.6
     libaudiofile
 
+* [Linux and WSL](#linux)
+* [Arch](#arch)
+* [Windows](#windows)
+* [macOS](#macos)
+* [Docker](#docker)
+
+### Compiling
+* [US](#building-us)
+* [EU](#building-eu)
+
+
+
 To add submodules run `git submodule update --init --recursive` after cloning.
 
-## EU Specific Steps (All versions)
-Both EU builds first requires US to be built first:
-```
-make -j
-```
-
-Now build either EU 1.0 `eu-1.0` or EU 1.1 `eu-final`
-```
-make -j VERSION=eu-final
-```
-
-diff/first-diff commands
-```
-python3 first-diff.py --eu
-./diff <function> -eu
-```
-
-#### Debian / Ubuntu
+## Linux
 ```
 sudo apt install build-essential pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev
 ```
 
-#### Arch Linux
+### Arch
 
-To install build dependencies:
 ```
 sudo pacman -S base-devel capstone python
 ```
-Install the following AUR packages:
+Install the following AUR package:
 * [mips64-elf-binutils](https://aur.archlinux.org/packages/mips64-elf-binutils) (AUR)
 
-Review the n64decomp/sm64 readme for instructions to compile in other distributions.
+Review the [n64decomp/sm64](https://github.com/n64decomp/sm64) readme for instructions to compile in other distributions.
 
-#### Windows
+## Windows
 
-Compiling on Windows requires `MSYS2 MinGW x64`. The setup process is a tad intensive.  
+Not recommended. Use WSL unless this is your only option. 
 
 [Instructions here](docs/BUILD_WINDOWS.md)
 
-#### macOS
+## macOS
 
 Install [Homebrew](https://brew.sh), then install the following dependencies:
 ```
@@ -56,9 +49,9 @@ brew update
 brew install python3 capstone coreutils make pkg-config tehzz/n64-dev/mips64-elf-binutils
 ```
 
-When building, use `gmake` to ensure that homebrew `make` is used instead of the old, macOS system `make`.
+Build using `gmake` ensuring homebrew `make` is used instead of the old macOS system `make`.
 
-#### Docker
+## Docker
 
 Build the Docker image:
 ```
@@ -76,12 +69,35 @@ docker run --rm -v ${PWD}:/mk64 mk64 make -C tools
 docker run --rm -v ${PWD}:/mk64 mk64 make
 ```
 
-## Building
+## Building US
 
 Place a US version of Mario Kart 64 called `baserom.us.z64` into the project folder for asset extraction.
 
 Run the following commands after pulling:
 ```bash
 make -C tools
-make
+make -j
+```
+
+## Building EU
+
+Building EU requires US to be built first. See above.
+
+mk64 decomp supports two EU versions
+* EU 1.0 `eu-1.0`
+* EU 1.1 `eu-final`
+
+Build using
+```
+make -j VERSION=eu-1.0
+```
+or
+```
+make -j VERSION=eu-final
+```
+
+First-diff/diff commands for EU
+```
+python3 first-diff.py --eu
+./diff <function> -eu
 ```
