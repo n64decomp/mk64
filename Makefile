@@ -396,7 +396,6 @@ endif
 doc:
 	$(PYTHON) tools/doxygen_symbol_gen.py
 	doxygen
-	cp docs/basics/placeholder.png docs/html/placeholder.png
 
 clean:
 	$(RM) -r $(BUILD_DIR)
