@@ -14,12 +14,25 @@ Essential skills and concepts to help you get started with mk64 decomp.
     display: block;
     background-color: rgb(40, 44, 52);
     width: 320px;
+    box-shadow: 0 0 0 0;
+    transition: 0.3s ease;
+}
+.pagelink:hover {
+  box-shadow: 0 5px 15px 5px rgba(0,0,0,1);
+
+}
+.pagelink:hover img {
+  transform: scale3d(1.1,1.1,1.1);
+
 }
 .pageimg {
     display: inline-block;
     width: 100%;
     position: relative;
     overflow: hidden;
+}
+.pageimg img {
+    transition: 0.3s ease;
 }
 .content {
     color: white;
@@ -32,6 +45,7 @@ Essential skills and concepts to help you get started with mk64 decomp.
     font-size: 18px;
     color: white;
     font-weight: bold;
+    text-decoration: none;
 }
 .pagedescription {
     color: #fff;
@@ -47,9 +61,22 @@ Essential skills and concepts to help you get started with mk64 decomp.
     line-height: 1.64em;
     font-size: 1em;
     font-weight: normal;
+    text-decoration: none;
 }
 .pagea {
     display: inline-block;
+}
+.pagea:link {
+    text-decoration: none;
+}
+.pagea:visited {
+    text-decoration: none;
+}
+.pagea:hover {
+    text-decoration: none;
+}
+.pagea:active {
+    text-decoration: none;
 }
 p {
     margin: 0;
@@ -59,7 +86,7 @@ p {
 <div class="pagebutton">
 <a class="pagea" href="compiling.html">
 <div class="pagelink">
-  <div class="pageimg"><img width=320 src="placeholder.png" /></div>
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
     <div class="pageheading">Installing mk64 Decomp</div>
     <div class="pagedescription">
@@ -73,7 +100,7 @@ p {
 <div class="pagebutton">
 <a class="pagea" href="test.html">
 <div class="pagelink">
-  <div class="pageimg"><img width=320 src="placeholder.png" /></div>
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
     <div class="pageheading">test</div>
     <div class="pagedescription">
@@ -91,7 +118,7 @@ p {
 <div class="pagebutton">
 <a class="pagea" href="basicconcepts.html">
 <div class="pagelink">
-  <div class="pageimg"><img width=320 src="placeholder.png" /></div>
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
     <div class="pageheading">Basic Concepts</div>
     <div class="pagedescription">
@@ -105,7 +132,7 @@ p {
 <div class="pagebutton">
 <a class="pagea" href="terminology.html">
 <div class="pagelink">
-  <div class="pageimg"><img width=320 src="placeholder.png" /></div>
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
     <div class="pageheading">Decomp Terminology</div>
     <div class="pagedescription">
