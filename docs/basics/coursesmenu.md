@@ -14,12 +14,25 @@ How courses work in mk64
     display: block;
     background-color: rgb(40, 44, 52);
     width: 320px;
+    box-shadow: 0 0 0 0;
+    transition: 0.3s ease;
+}
+.pagelink:hover {
+  box-shadow: 0 5px 15px 5px rgba(0,0,0,1);
+
+}
+.pagelink:hover img {
+  transform: scale3d(1.1,1.1,1.1);
+
 }
 .pageimg {
     display: inline-block;
     width: 100%;
     position: relative;
     overflow: hidden;
+}
+.pageimg img {
+    transition: 0.3s ease;
 }
 .content {
     color: white;
@@ -32,6 +45,7 @@ How courses work in mk64
     font-size: 18px;
     color: white;
     font-weight: bold;
+    text-decoration: none;
 }
 .pagedescription {
     color: #fff;
@@ -47,9 +61,22 @@ How courses work in mk64
     line-height: 1.64em;
     font-size: 1em;
     font-weight: normal;
+    text-decoration: none;
 }
 .pagea {
     display: inline-block;
+}
+.pagea:link {
+    text-decoration: none;
+}
+.pagea:visited {
+    text-decoration: none;
+}
+.pagea:hover {
+    text-decoration: none;
+}
+.pagea:active {
+    text-decoration: none;
 }
 p {
     margin: 0;
