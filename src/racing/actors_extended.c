@@ -28,7 +28,7 @@ void func_802B0210(Collision *arg0, Collision *arg1) {
 
     vec3f_copy_return(arg1->unk48, arg0->unk48);
     vec3f_copy_return(arg1->unk54, arg0->unk54);
-    vec3f_copy_return(arg1->unk60, arg0->unk60);
+    vec3f_copy_return(arg1->orientationVector, arg0->orientationVector);
 }
 
 void func_802B02B4(struct ShellActor *shell, s32 shellType) {
@@ -769,9 +769,9 @@ void update_actor_banana(struct BananaActor *banana) {
             func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
             banana->unk30.unk34 = 1;
             if ((banana->unk30.unk34 != 0) && (banana->unk30.unk3C[2] < 0.0f)) {
-                someOtherVelocity[0] = -banana->unk30.unk60[0];
-                someOtherVelocity[1] = -banana->unk30.unk60[1];
-                someOtherVelocity[2] = -banana->unk30.unk60[2];
+                someOtherVelocity[0] = -banana->unk30.orientationVector[0];
+                someOtherVelocity[1] = -banana->unk30.orientationVector[1];
+                someOtherVelocity[2] = -banana->unk30.orientationVector[2];
                 banana->pos[0] += someOtherVelocity[0] * banana->unk30.unk3C[2];
                 banana->pos[1] += someOtherVelocity[1] * banana->unk30.unk3C[2];
                 banana->pos[2] += someOtherVelocity[2] * banana->unk30.unk3C[2];
@@ -1770,9 +1770,9 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
 
 void func_802B4E30(struct Actor *arg0) {
     if ((arg0->unk30.unk3C[2] < 0.0f) && (arg0->unk30.unk34 == 1)) {
-        arg0->pos[0] -= (arg0->unk30.unk60[0] * arg0->unk30.unk3C[2]);
-        arg0->pos[1] -= (arg0->unk30.unk60[1] * arg0->unk30.unk3C[2]);
-        arg0->pos[2] -= (arg0->unk30.unk60[2] * arg0->unk30.unk3C[2]);
+        arg0->pos[0] -= (arg0->unk30.orientationVector[0] * arg0->unk30.unk3C[2]);
+        arg0->pos[1] -= (arg0->unk30.orientationVector[1] * arg0->unk30.unk3C[2]);
+        arg0->pos[2] -= (arg0->unk30.orientationVector[2] * arg0->unk30.unk3C[2]);
     }
     if ((arg0->unk30.unk3C[0] < 0.0f) && (arg0->unk30.unk30 == 1)) {
         arg0->pos[0] -= (arg0->unk30.unk48[0] * arg0->unk30.unk3C[0]);

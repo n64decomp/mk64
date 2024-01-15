@@ -359,9 +359,9 @@ void func_802976EC(Collision *arg0, Vec3s arg1) {
     }
     //sp1C = arg0->unk30;
 
-    x = arg0->unk60[0];
-    y = arg0->unk60[1];
-    z = arg0->unk60[2];
+    x = arg0->orientationVector[0];
+    y = arg0->orientationVector[1];
+    z = arg0->orientationVector[2];
 
     arg1[0] = atan2s(z, y) + 0x4000;
     arg1[1] = 0;

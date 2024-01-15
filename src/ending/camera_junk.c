@@ -37,7 +37,7 @@ void func_802816B8(void) {
     cameras[0].up[1] = 1.0f;
     cameras[0].up[2] = 0.0f;
     gCameraZoom[0] = 40.0f;
-    D_80150148 = 1.33333333f;
+    gScreenAspect = 1.33333333f;
     D_80150150 = 3.0f;
     D_8015014C = 6800.0f;
     init_cinematic_camera();

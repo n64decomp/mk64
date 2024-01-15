@@ -642,9 +642,9 @@ void func_8001E0C4(Camera *camera, Player *player, s8 arg2) {
     camera->someBitFlags &= ~0x0004;
     temp_t7 = func_802ADDC8(&camera->unk_54, test, sp74, sp70, sp6C);
     if (camera->unk_54.unk3C[2] < 0.0f) {
-        sp74 += -camera->unk_54.unk60[0] * camera->unk_54.unk3C[2] * 1;
-        sp70 += -camera->unk_54.unk60[1] * camera->unk_54.unk3C[2] * 0.5;
-        sp6C += -camera->unk_54.unk60[2] * camera->unk_54.unk3C[2] * 1;
+        sp74 += -camera->unk_54.orientationVector[0] * camera->unk_54.unk3C[2] * 1;
+        sp70 += -camera->unk_54.orientationVector[1] * camera->unk_54.unk3C[2] * 0.5;
+        sp6C += -camera->unk_54.orientationVector[2] * camera->unk_54.unk3C[2] * 1;
     }
     if (camera->unk_54.unk3C[0] < 0.0f) {
         camera->someBitFlags = camera->someBitFlags | 4 | 2;

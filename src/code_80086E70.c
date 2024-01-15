@@ -531,8 +531,8 @@ s32 func_80088538(s32 objectIndex) {
             set_object_flag_unk_054_true(objectIndex, 0x00800000);
         }
         gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
-        gObjectList[objectIndex].unk_0B8[0] = atan2s(D_8018C3B0.unk60[2], D_8018C3B0.unk60[1]) + 0x4000;
-        gObjectList[objectIndex].unk_0B8[2] = atan2s(D_8018C3B0.unk60[0], D_8018C3B0.unk60[1]);
+        gObjectList[objectIndex].unk_0B8[0] = atan2s(D_8018C3B0.orientationVector[2], D_8018C3B0.orientationVector[1]) + 0x4000;
+        gObjectList[objectIndex].unk_0B8[2] = atan2s(D_8018C3B0.orientationVector[0], D_8018C3B0.orientationVector[1]);
     }
     return sp2C;
 }
@@ -549,9 +549,9 @@ s32 func_8008861C(s32 objectIndex) {
             set_object_flag_unk_054_true(objectIndex, 0x00800000);
         }
         gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
-        gObjectList[objectIndex].unk_01C[0] = D_8018C3B0.unk60[0];
-        gObjectList[objectIndex].unk_01C[1] = D_8018C3B0.unk60[1];
-        gObjectList[objectIndex].unk_01C[2] = D_8018C3B0.unk60[2];
+        gObjectList[objectIndex].unk_01C[0] = D_8018C3B0.orientationVector[0];
+        gObjectList[objectIndex].unk_01C[1] = D_8018C3B0.orientationVector[1];
+        gObjectList[objectIndex].unk_01C[2] = D_8018C3B0.orientationVector[2];
     }
     return sp2C;
 }
@@ -561,8 +561,8 @@ void func_800886F4(s32 objectIndex) {
     if (D_8018C3B0.unk34 == 1) {
         set_object_flag_unk_054_true(objectIndex, 0x00800000);
         gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
-        gObjectList[objectIndex].unk_0B8[0] = atan2s(D_8018C3B0.unk60[2], D_8018C3B0.unk60[1]) + 0x4000;
-        gObjectList[objectIndex].unk_0B8[2] = atan2s(D_8018C3B0.unk60[0], D_8018C3B0.unk60[1]);
+        gObjectList[objectIndex].unk_0B8[0] = atan2s(D_8018C3B0.orientationVector[2], D_8018C3B0.orientationVector[1]) + 0x4000;
+        gObjectList[objectIndex].unk_0B8[2] = atan2s(D_8018C3B0.orientationVector[0], D_8018C3B0.orientationVector[1]);
         return;
     }
     set_object_flag_unk_054_false(objectIndex, 0x00800000);
@@ -573,9 +573,9 @@ void func_800887C0(s32 objectIndex) {
     if (D_8018C3B0.unk34 == 1) {
         set_object_flag_unk_054_true(objectIndex, 0x00800000);
         gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
-        gObjectList[objectIndex].velocity[0] = D_8018C3B0.unk60[0];
-        gObjectList[objectIndex].velocity[1] = D_8018C3B0.unk60[1];
-        gObjectList[objectIndex].velocity[2] = D_8018C3B0.unk60[2];
+        gObjectList[objectIndex].velocity[0] = D_8018C3B0.orientationVector[0];
+        gObjectList[objectIndex].velocity[1] = D_8018C3B0.orientationVector[1];
+        gObjectList[objectIndex].velocity[2] = D_8018C3B0.orientationVector[2];
         return;
     }
     set_object_flag_unk_054_false(objectIndex, 0x00800000);

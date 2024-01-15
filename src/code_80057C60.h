@@ -15,7 +15,9 @@ typedef struct {
     char unk_18[0x8];
 } struct_D_8018CE10; // size = 0x20
 
-void func_8005C674(s8 arg0, s16 *arg1, s16 *arg2, s16 *arg3);
+/** @cond */
+
+void func_8005C674(s8, s16 *, s16 *, s16 *);
 void func_80057C60(void);
 void func_80057CE4(void);
 void func_80057DD0(void);
@@ -648,5 +650,7 @@ extern Vec3s D_8018D860[];
 extern Vec3s D_8018D890[];
 extern s16 gPlayerBalloonCount[];      // D_8018D8C0
 extern Vec3s D_8018D8D0[];
+
+/** @endcond */
 
 #endif
