@@ -1,0 +1,2 @@
+\page courses Courses
+# Courses
