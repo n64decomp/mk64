@@ -60,7 +60,7 @@ p {
 <div class="pagebutton">
 <a class="pagea" href="courses.html">
 <div class="pagelink">
-  <div class="pageimg"><img width=320 src="placeholder.png" /></div>
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
     <div class="pageheading">Courses</div>
     <div class="pagedescription">
