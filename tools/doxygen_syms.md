@@ -2015,6 +2015,8 @@ Variable Name | Memory Address
 [segmented_to_virtual_dupe](@ref segmented_to_virtual_dupe) | 0x80099124
 [segmented_to_virtual_dupe_2](@ref segmented_to_virtual_dupe_2) | 0x80099154
 [func_80099184](@ref func_80099184) | 0x80099184
+[func_80099394](@ref func_80099394) | 0x80099394
+[func_8009952C](@ref func_8009952C) | 0x8009952C
 [func_8009969C](@ref func_8009969C) | 0x8009969C
 [func_800996BC](@ref func_800996BC) | 0x800996BC
 [func_80099958](@ref func_80099958) | 0x80099958
@@ -2073,6 +2075,7 @@ Variable Name | Memory Address
 [func_8009E020](@ref func_8009E020) | 0x8009E020
 [func_8009E088](@ref func_8009E088) | 0x8009E088
 [func_8009E0F0](@ref func_8009E0F0) | 0x8009E0F0
+[func_8009E17C](@ref func_8009E17C) | 0x8009E17C
 [func_8009E1C0](@ref func_8009E1C0) | 0x8009E1C0
 [func_8009E1E4](@ref func_8009E1E4) | 0x8009E1E4
 [func_8009E208](@ref func_8009E208) | 0x8009E208
@@ -3863,8 +3866,6 @@ Variable Name | Memory Address
 [D_800F0C98](@ref D_800F0C98) | 0x800F0C98
 [D_800F0C9C](@ref D_800F0C9C) | 0x800F0C9C
 [D_800F0CA0](@ref D_800F0CA0) | 0x800F0CA0
-[D_800F0CC0](@ref D_800F0CC0) | 0x800F0CC0
-[D_800F0CC8](@ref D_800F0CC8) | 0x800F0CC8
 [D_800F0CD0](@ref D_800F0CD0) | 0x800F0CD0
 [D_800F15E0](@ref D_800F15E0) | 0x800F15E0
 [D_800F1AC8](@ref D_800F1AC8) | 0x800F1AC8

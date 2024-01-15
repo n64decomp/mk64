@@ -1,3 +1,4 @@
+\page buildwindows Compiling for Windows
 ## Compiling mk64 Decomp In Windows
 
 ***This method is not recommended nor supported. However, it is the only solution to build in W7/W8. WSL is the path of least resistance, use that not this***
