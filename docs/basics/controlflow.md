@@ -1,5 +1,19 @@
 \page controlflow Control Flow
 
+# Introduction to State
+The developers wrote mk64 using a state-driven paradigm. This manifests itself in a variety of ways but as a quick example lets discuss the following variables. `gGamestate`, `gGameMode`, and `gCurrentCourseId`. Code for menus, racing, and credits must be modularized in some fashion. The gamestate variable contains the current state and during runtime branches into the relevant code while skipping code not pertaining to the current state. The racing code does not run while the user operates the menu. Let's inspect a simple example of a state-driven mechanism:
+```c
+switch(gCurrentCourseId) {
+    case YOSHI_VALLEY:
+        load_and_render_yoshi_egg();
+        break;
+    case MARIO_RACEWAY:
+        load_and_render_pipe();
+        break;
+}
+```
+This code loads resources based on a specific course. An entire spaghetti tree of code may be imagined based on many series of conditional statements.
+
 # Threading
 The game begins by setting up its four threads; idle, video, audio, and the game loop.
 The idle thread allows the cpu to sleep. Without it, if at any time execution of all threads were paused, the cpu would never be able to continue. The idle thread is active if all the other threads are paused.
