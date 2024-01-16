@@ -2918,7 +2918,7 @@ void func_80051638(UNUSED s32 arg0) {
         leafIndex = D_8018C970[someIndex];
         if (leafIndex != -1) {
             object = &gObjectList[leafIndex];
-            if ((object->state >= 2) && (object->unk_0D5 == 7) && (gMatrixHudCount <= MTX_hud_POOL_SIZE_MAX)) {
+            if ((object->state >= 2) && (object->unk_0D5 == 7) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 rsp_set_matrix_gObjectList(leafIndex);
                 gSPDisplayList(gDisplayListHead++, D_0D0069C8);
             }
@@ -3243,7 +3243,7 @@ void func_800528EC(s32 arg0) {
             objectIndex = D_8018C3F0[var_s3];
             if (objectIndex != -1) {
                 object = &gObjectList[objectIndex];
-                if ((object->state > 0) && (arg0 == object->unk_084[7]) && (gMatrixHudCount <= MTX_hud_POOL_SIZE_MAX)) {
+                if ((object->state > 0) && (arg0 == object->unk_084[7]) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                     rsp_set_matrix_transformation(object->pos, D_80183E80, object->sizeScaling);
                     gSPVertex(gDisplayListHead++, D_0D005BD0, 3, 0);
                     gSPDisplayList(gDisplayListHead++, D_0D006930);
@@ -3490,7 +3490,7 @@ void func_80053870(s32 cameraId) {
         temp_s1 = D_8018C630[var_s2];
         if (temp_s1 != -1) {
             temp_v0 = &gObjectList[temp_s1];
-            if ((temp_v0->state > 0) && (temp_v0->unk_0D5 == 3) && (gMatrixHudCount <= MTX_hud_POOL_SIZE_MAX)) {
+            if ((temp_v0->state > 0) && (temp_v0->unk_0D5 == 3) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 rsp_set_matrix_transformation(temp_v0->pos, temp_v0->unk_0B2, temp_v0->sizeScaling);
                 gSPVertex(gDisplayListHead++, D_0D005C00, 3, 0);
                 gSPDisplayList(gDisplayListHead++, D_0D006930);
@@ -3509,7 +3509,7 @@ void func_80053870(s32 cameraId) {
         temp_s1 = D_8018C3F0[var_s2];
         if (temp_s1 != -1) {
             temp_v0 = &gObjectList[temp_s1];
-            if ((temp_v0->state >= 2) && (temp_v0->unk_0D5 == 2) && (gMatrixHudCount <= MTX_hud_POOL_SIZE_MAX)) {
+            if ((temp_v0->state >= 2) && (temp_v0->unk_0D5 == 2) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 func_8004B138(0x000000FF, 0x000000FF, 0x000000FF, (s32) temp_v0->unk_0A0);
                 D_80183E80[1] = func_800418AC(temp_v0->pos[0], temp_v0->pos[2], camera->pos);
                 func_800431B0(temp_v0->pos, D_80183E80, temp_v0->sizeScaling, D_0D005AE0);
@@ -3521,7 +3521,7 @@ void func_80053870(s32 cameraId) {
 void func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 vertexIndex) {
     Objects *temp_v0;
 
-    if (gMatrixHudCount <= MTX_hud_POOL_SIZE_MAX) {
+    if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
         temp_v0 = &gObjectList[objectIndex];
         D_80183E80[2] = (s16) (temp_v0->unk_084[6] + 0x8000);
         rsp_set_matrix_transformation(temp_v0->pos, (u16 *) D_80183E80, temp_v0->sizeScaling);
@@ -3562,7 +3562,7 @@ void func_800540CC(s32 objectIndex, s32 cameraId) {
 
     camera = &camera1[cameraId];
     if (objectIndex != -1) {
-        if ((gObjectList[objectIndex].state >= 2) && (gObjectList[objectIndex].unk_0D5 == 1) && (gMatrixHudCount <= MTX_hud_POOL_SIZE_MAX)) {
+        if ((gObjectList[objectIndex].state >= 2) && (gObjectList[objectIndex].unk_0D5 == 1) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
             func_8004B1C8((s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, 0, 0, 0, (s32) gObjectList[objectIndex].unk_0A0);
             D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
             func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling, D_0D005AE0);
@@ -3617,7 +3617,7 @@ void func_80054324(s32 objectIndex, s32 cameraId) {
 
     camera = &camera1[cameraId];
     if (objectIndex != -1) {
-        if ((gObjectList[objectIndex].state >= 2) && (gObjectList[objectIndex].unk_0D5 == 6) && (gMatrixHudCount <= MTX_hud_POOL_SIZE_MAX)) {
+        if ((gObjectList[objectIndex].state >= 2) && (gObjectList[objectIndex].unk_0D5 == 6) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
             func_8004B1C8((s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, (s32) gObjectList[objectIndex].type, gObjectList[objectIndex].unk_0A2, gObjectList[objectIndex].unk_0A2, gObjectList[objectIndex].unk_0A2, (s32) gObjectList[objectIndex].unk_0A0);
             D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
             func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling, D_0D005AE0);
@@ -3655,7 +3655,7 @@ void func_8005457C(s32 objectIndex, s32 cameraId) {
     Objects *temp_s0;
 
     camera = &camera1[cameraId];
-    if (gMatrixHudCount <= MTX_hud_POOL_SIZE_MAX) {
+    if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
         temp_s0 = &gObjectList[objectIndex];
         if (temp_s0->unk_0D5 == 9) {
             func_8004B72C(255, (s32) temp_s0->type, 0, (s32) temp_s0->unk_0A2, 0, 0, (s32) temp_s0->unk_0A0);
@@ -3685,7 +3685,7 @@ void func_80054664(s32 cameraId) {
 }
 
 void func_8005477C(s32 objectIndex, u8 arg1, Vec3f arg2) {
-    if (gMatrixHudCount <= MTX_hud_POOL_SIZE_MAX) {
+    if (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX) {
         switch (arg1) {                          /* irregular */
         case 0:
             func_8004B1C8(0x000000E6, 0x000000FF, 0x000000FF, 0, 0, 0x000000FF, (s32) gObjectList[objectIndex].unk_0A0);
@@ -3818,7 +3818,7 @@ void func_80054F04(s32 cameraId) {
         object = &gObjectList[objectIndex];
         if (object->state > 0) {
             func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000000C8);
-            if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (gMatrixHudCount <= MTX_hud_POOL_SIZE_MAX)) {
+            if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 object->unk_0B2[1] = func_800418AC(object->pos[0], object->pos[2], sp44->pos);
                 rsp_set_matrix_gObjectList(objectIndex);
                 gSPDisplayList(gDisplayListHead++, D_0D006980);
