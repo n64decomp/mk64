@@ -3,7 +3,7 @@
 \htmlonly
 
 Essential skills and concepts to help you get started with mk64 decomp.
-
+<br>
 <style>
 .pagebutton {
     display: inline-block;
