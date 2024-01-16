@@ -2971,7 +2971,7 @@ void func_800791F0(s32 objectIndex, s32 playerId) {
     func_800C9018(playerId, 0x0100FA28);
 }
 
-void init_obj_laikitu_red_flag_coutdown(s32 objectIndex, s32 arg1) {
+void init_obj_laikitu_red_flag_countdown(s32 objectIndex, s32 arg1) {
     if (arg1 == 0) {
         D_801656F0 = 0;
         D_8018D168 = 0;
@@ -2984,13 +2984,13 @@ void init_obj_laikitu_red_flag_coutdown(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].unk_048 = D_8018D180;
 }
 
-void update_obj_laikitu_coutdown(s32 objectIndex, s32 arg1) {
+void update_obj_laikitu_countdown(s32 objectIndex, s32 arg1) {
     UNUSED s32 pad;
     switch (gObjectList[objectIndex].state) {
         case 0:
             break;
         case 1:
-            init_obj_laikitu_red_flag_coutdown(objectIndex, arg1);
+            init_obj_laikitu_red_flag_countdown(objectIndex, arg1);
             break;
         case 2:
             func_8007278C(objectIndex, gObjectList[objectIndex].unk_048);
@@ -3515,7 +3515,7 @@ void update_obj_laikitu(s32 playerId) {
         case 0:
             break;
         case 1:
-            update_obj_laikitu_coutdown(objectIndex, playerId);
+            update_obj_laikitu_countdown(objectIndex, playerId);
             func_8008BFFC(objectIndex);
             break;
         case 2:

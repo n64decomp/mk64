@@ -1464,8 +1464,8 @@ Variable Name | Memory Address
 [func_800790E4](@ref func_800790E4) | 0x800790E4
 [func_80079114](@ref func_80079114) | 0x80079114
 [func_800791F0](@ref func_800791F0) | 0x800791F0
-[init_obj_laikitu_red_flag_coutdown](@ref init_obj_laikitu_red_flag_coutdown) | 0x800792D8
-[update_obj_laikitu_coutdown](@ref update_obj_laikitu_coutdown) | 0x80079380
+[init_obj_laikitu_red_flag_countdown](@ref init_obj_laikitu_red_flag_countdown) | 0x800792D8
+[update_obj_laikitu_countdown](@ref update_obj_laikitu_countdown) | 0x80079380
 [init_obj_laikitu_red_flag](@ref init_obj_laikitu_red_flag) | 0x8007963C
 [update_obj_laikitu_red_flag](@ref update_obj_laikitu_red_flag) | 0x80079700
 [func_800797AC](@ref func_800797AC) | 0x800797AC
