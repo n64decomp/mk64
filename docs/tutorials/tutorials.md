@@ -1,6 +1,7 @@
 \page tutorials Tutorials
 # Tutorials
 
+\htmlonly
 <style>
 .pagebutton {
     display: inline-block;
@@ -93,3 +94,7 @@ p {
 </div>
 </a>
 </div>
+
+\endhtmlonly
+
+\subpage boostramps
