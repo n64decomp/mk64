@@ -89,6 +89,38 @@ $(document).ready(function(){initNavTree('actors.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="autotoc_md0"></a>
 Actors</h1>
+<p>If you are familiar with oot or sm64 prepare to be very disappointed. Both games split actors into separate files. In an unorderly fashion, mk64 appears to place all actors in the same file save for the odd exception.</p>
+<p><a class="el" href="structActor.html">Actor</a> setup: </p><div class="fragment"><div class="line"><span class="comment">// Loop through the actor list and run that particular actors behaviour.</span></div>
+<div class="line"><span class="keywordflow">for</span> actorListSize {</div>
+<div class="line">  actor = <a class="code" href="code__800029B0_8c.html#a37d0e0553a4cd552f52174f4b33b798d">gActorList</a>[i]</div>
+<div class="line">  <span class="keywordflow">switch</span>(actor-&gt;type) {</div>
+<div class="line">    <span class="keywordflow">case</span> ACTOR1: </div>
+<div class="line">      actor_name(args, actor); </div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
+<div class="line">    <span class="keywordflow">case</span> ACTOR2:</div>
+<div class="line">      another_actor(args, actor);</div>
+<div class="line">      <span class="keywordflow">break</span>;</div>
+<div class="line">  }</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Camera/Mat4 are optional</span></div>
+<div class="line"><span class="keywordtype">void</span> actor_name(<a class="code" href="structCamera.html">Camera</a>, <a class="code" href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a>, actor) {</div>
+<div class="line">  actor-&gt;pos[x] += 10; <span class="comment">// Increase the actors X position by ten every frame or game loop.</span></div>
+<div class="line">  actor-&gt;rot[y] -= 1; <span class="comment">// Decrease the actors Y rotation by one every frame or game loop.</span></div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// Increase the actors velocity until it reaches fifteen.</span></div>
+<div class="line">  <span class="keywordflow">if</span> (actor-&gt;velocity[z] &lt; 15) {</div>
+<div class="line">    actor-&gt;velocity[z] += 5 <span class="comment">// Increase the actors Z velocity by five every frame.</span></div>
+<div class="line">  }</div>
+<div class="line">}</div>
+<div class="ttc" id="acode__800029B0_8c_html_a37d0e0553a4cd552f52174f4b33b798d"><div class="ttname"><a href="code__800029B0_8c.html#a37d0e0553a4cd552f52174f4b33b798d">gActorList</a></div><div class="ttdeci">struct Actor gActorList[ACTOR_LIST_SIZE]</div><div class="ttdef"><b>Definition:</b> code_800029B0.c:147</div></div>
+<div class="ttc" id="acommon__structs_8h_html_ab7160f77e736961cfa2aff581aeee005"><div class="ttname"><a href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a></div><div class="ttdeci">f32 Mat4[4][4]</div><div class="ttdef"><b>Definition:</b> common_structs.h:13</div></div>
+<div class="ttc" id="astructCamera_html"><div class="ttname"><a href="structCamera.html">Camera</a></div><div class="ttdef"><b>Definition:</b> camera.h:26</div></div>
+</div><!-- fragment --><p> Check <a class="el" href="actor__types_8h.html">actor_types.h</a> for a full list of options. You can create a new actor struct for your actor and customize it or use a predefined one. All actor structs must retain the same size. Generally, the types in the struct may be modified so long as <code>type</code> and <code>flags</code> stay the same as those are used elsewhere.</p>
+<p>See <code>update_obj_railroad_crossing</code> for an example of how a timer may be setup and used. <br  />
+</p>
+<p>Audio may be activated in the following method: <code>func_800C98B8(actor-&gt;pos, actor-&gt;velocity, s32_audio_flag);</code></p>
+<p>For more complex uses such as distanceFrom and collision, you will need to analyze the other actors. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
