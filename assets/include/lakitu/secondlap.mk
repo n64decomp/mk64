@@ -1,6 +1,6 @@
 SECONDLAP_DIR := assets/lakitu/secondlap
 
-SECONDLAP_PALETTE := $(SECONDLAP_DIR)/gTLUTLakituSecondLap.png
+SECONDLAP_PALETTE := $(SECONDLAP_DIR)/common_tlut_lakitu_second_lap.png
 
 SECONDLAP_FRAMES := \
 $(SECONDLAP_DIR)/gTextureLakituSecondLap01.png \
