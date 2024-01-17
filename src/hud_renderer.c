@@ -2835,7 +2835,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
         object->pos[0] = object->unk_028[0] + ((f32) (spD0 + 0x20));
         object->pos[1] = object->unk_028[1] + ((f32) (spC4 + spCC));
         object->pos[2] = object->unk_028[2];
-        rsp_set_matrix_transformation(object->pos, object->unk_0BE, object->sizeScaling);
+        rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0069E0);
     } else {
         gDPLoadTLUT_pal256(gDisplayListHead++, gPortraitTLUTs[characterId]);
@@ -2850,7 +2850,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
         object->pos[0] = object->unk_028[0] + ((f32) (spD0 + 0x20));
         object->pos[1] = object->unk_028[1] + ((f32) (spC4 + spCC));
         object->pos[2] = object->unk_028[2];
-        rsp_set_matrix_transformation(object->pos, object->unk_0BE, object->sizeScaling);
+        rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
         if (spB8 != 0) {
             gSPDisplayList(gDisplayListHead++, D_0D0069F8);
         } else {
@@ -2868,7 +2868,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
             gSPDisplayList(gDisplayListHead++, D_0D007A40);
             func_8004B35C(D_8018D3E4, D_8018D3E8, D_8018D3EC, 0x000000FF);
             func_80044924(common_texture_character_portrait_border, 0x00000020, 0x00000020);
-            rsp_set_matrix_transformation(object->pos, object->unk_0BE, object->sizeScaling);
+            rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
             gSPDisplayList(gDisplayListHead++, D_0D0069E0);
         }
     }
@@ -2914,8 +2914,8 @@ void func_80051638(UNUSED s32 arg0) {
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     func_80043D50(common_texture_particle_leaf, 0x00000020, 0x00000010);
-    for(someIndex = 0; someIndex < D_8018C970_SIZE; someIndex++) {
-        leafIndex = D_8018C970[someIndex];
+    for(someIndex = 0; someIndex < gLeafParticle_SIZE; someIndex++) {
+        leafIndex = gLeafParticle[someIndex];
         if (leafIndex != -1) {
             object = &gObjectList[leafIndex];
             if ((object->state >= 2) && (object->unk_0D5 == 7) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
@@ -2936,7 +2936,7 @@ void func_800517C8(void) {
     gDPSetCombineLERP(gDisplayListHead++, 1, 0, SHADE, 0, 0, 0, 0, TEXEL0, 1, 0, SHADE, 0, 0, 0, 0, TEXEL0);
     func_80044F34(D_0D0293D8, 0x10, 0x10);
     for (someIndex = 0; someIndex < NUM_SNOWFLAKES; someIndex++) {
-        snowflakeIndex = D_8018C1B0[someIndex];
+        snowflakeIndex = gObjectParticle1[someIndex];
         if (gObjectList[snowflakeIndex].state >= 2) {
             rsp_set_matrix_gObjectList(snowflakeIndex);
             gSPDisplayList(gDisplayListHead++, D_0D006980);
@@ -3099,7 +3099,7 @@ void func_8005217C(s32 arg0) {
     object = &gObjectList[temp_a3];
     if (object->state >= 2) {
         if (is_obj_index_flag_unk_054_active(temp_a3, 0x00000010) != 0) {
-            rsp_set_matrix_transformation(object->pos, object->unk_0BE, object->sizeScaling);
+            rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
             func_800520C0(temp_a3);
 
             gSPDisplayList(gDisplayListHead++, D_0D007828);
@@ -3121,14 +3121,14 @@ void func_8005217C(s32 arg0) {
 
 void func_800523B8(s32 objectIndex, s32 arg1, u32 arg2) {
     UNUSED s32 pad[2];
-    Objects *temp_v1;
+    Objects *object;
     Camera *camera = &camera1[arg1];
 
-    temp_v1 = &gObjectList[objectIndex];
-    temp_v1->unk_0B2[1] = func_800418AC(temp_v1->pos[0], temp_v1->pos[2], camera->pos);
-    func_800484BC(temp_v1->pos, temp_v1->unk_0B2, temp_v1->sizeScaling, temp_v1->unk_0A0, (u8 *) temp_v1->activeTLUT, temp_v1->activeTexture, temp_v1->vertex, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
+    object = &gObjectList[objectIndex];
+    object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
+    func_800484BC(object->pos, object->orientation, object->sizeScaling, object->unk_0A0, (u8 *) object->activeTLUT, object->activeTexture, object->vertex, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
     if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) && (arg2 < 0x15F91U)) {
-        func_8004A630(&D_8018C830, temp_v1->pos, 0.4f);
+        func_8004A630(&D_8018C830, object->pos, 0.4f);
     }
 }
 
@@ -3150,33 +3150,33 @@ void func_800524B4(s32 arg0) {
 
 void func_80052590(s32 cameraId) {
     s32 var_s2;
-    s32 temp_s0;
+    s32 objectIndex;
     Camera *temp_s7;
 
-    temp_s0 = indexObjectList1[0];
+    objectIndex = indexObjectList1[0];
     temp_s7 = &camera1[cameraId];
-    func_80046F60(gObjectList[temp_s0].activeTLUT, gObjectList[temp_s0].activeTexture, 0x00000020, 0x00000040, 5);
-    D_80183E80[0] = gObjectList[temp_s0].unk_0B2[0];
-    D_80183E80[2] = gObjectList[temp_s0].unk_0B2[2];
+    func_80046F60(gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, 0x00000020, 0x00000040, 5);
+    D_80183E80[0] = gObjectList[objectIndex].orientation[0];
+    D_80183E80[2] = gObjectList[objectIndex].orientation[2];
     if ((D_8018CFB0 != 0) || (D_8018CFC8 != 0)) {
         for (var_s2 = 0; var_s2 < 40; var_s2++) {
-            temp_s0 = D_8018C3F0[var_s2];
-            if (temp_s0 == -1) continue;
+            objectIndex = gObjectParticle2[var_s2];
+            if (objectIndex == -1) continue;
 
-            if ((gObjectList[temp_s0].state >= 2) && (gMatrixHudCount < 0x2EF)) {
-                D_80183E80[1] = func_800418AC(gObjectList[temp_s0].pos[0], gObjectList[temp_s0].pos[2], temp_s7->pos);
-                func_800431B0(gObjectList[temp_s0].pos, D_80183E80, gObjectList[temp_s0].sizeScaling, D_0D0062B0);
+            if ((gObjectList[objectIndex].state >= 2) && (gMatrixHudCount < 0x2EF)) {
+                D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], temp_s7->pos);
+                func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling, D_0D0062B0);
             }
         }
     }
     if ((D_8018CFE8 != 0) || (D_8018D000 != 0)) {
         for (var_s2 = 0; var_s2 < 30; var_s2++) {
-            temp_s0 = D_8018C630[var_s2];
-            if (temp_s0 == -1) continue;
+            objectIndex = gObjectParticle3[var_s2];
+            if (objectIndex == -1) continue;
 
-            if ((gObjectList[temp_s0].state >= 2) && (gMatrixHudCount < 0x2EF)) {
-                D_80183E80[1] = func_800418AC(gObjectList[temp_s0].pos[0], gObjectList[temp_s0].pos[2], temp_s7->pos);
-                func_800431B0(gObjectList[temp_s0].pos, D_80183E80, gObjectList[temp_s0].sizeScaling, D_0D0062B0);
+            if ((gObjectList[objectIndex].state >= 2) && (gMatrixHudCount < 0x2EF)) {
+                D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], temp_s7->pos);
+                func_800431B0(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling, D_0D0062B0);
             }
         }
     }
@@ -3192,7 +3192,7 @@ void func_800527D8(s32 cameraId) {
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
         object = &gObjectList[objectIndex];
         if (object->state >= 2) {
-            func_80043220(object->pos, object->unk_0B2, object->sizeScaling, object->unk_070);
+            func_80043220(object->pos, object->orientation, object->sizeScaling, object->model);
         }
     }
 }
@@ -3227,8 +3227,8 @@ void func_800528EC(s32 arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_LIGHTING | G_SHADING_SMOOTH);
     func_800441E0(d_course_sherbet_land_ice, 0x00000020, 0x00000020);
     if (gPlayerCountSelection1 < 3) {
-        for (var_s3 = 0; var_s3 < D_8018C3F0_SIZE; var_s3++) {
-            objectIndex = D_8018C3F0[var_s3];
+        for (var_s3 = 0; var_s3 < gObjectParticle2_SIZE; var_s3++) {
+            objectIndex = gObjectParticle2[var_s3];
             if (objectIndex != -1) {
                 object = &gObjectList[objectIndex];
                 if (object->state > 0) {
@@ -3239,8 +3239,8 @@ void func_800528EC(s32 arg0) {
             }
         }
     } else {
-        for (var_s3 = 0; var_s3 < D_8018C3F0_SIZE; var_s3++) {
-            objectIndex = D_8018C3F0[var_s3];
+        for (var_s3 = 0; var_s3 < gObjectParticle2_SIZE; var_s3++) {
+            objectIndex = gObjectParticle2[var_s3];
             if (objectIndex != -1) {
                 object = &gObjectList[objectIndex];
                 if ((object->state > 0) && (arg0 == object->unk_084[7]) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
@@ -3266,7 +3266,7 @@ void func_80052C60(s32 arg0) {
     gSPLight(gDisplayListHead++, &D_800E4620.l[0], LIGHT_1);
     gSPLight(gDisplayListHead++, &D_800E4620.a, LIGHT_2);
     for (playerId = 0; playerId < gPlayerCountSelection1; playerId++) {
-        objectIndex = D_80183DB8[playerId];
+        objectIndex = gIndexLakituList[playerId];
         if (objectIndex) {}
         if (func_80072320(objectIndex, 4) != 0) {
             func_8005285C(playerId);
@@ -3281,7 +3281,7 @@ void func_80052D70(s32 playerId) {
     Player *temp_v1;
 
     temp_v1 = &gPlayerOne[playerId];
-    test = D_80183DB8[playerId];
+    test = gIndexLakituList[playerId];
     if (func_80072320(test, 8) != 0) {
         D_80183E40[0] = temp_v1->pos[0];
         D_80183E40[1] = temp_v1->unk_074 - 6.5;
@@ -3313,18 +3313,18 @@ void func_80052F20(s32 cameraId) {
     Camera *sp44;
     s32 someIndex;
     s32 objectIndex;
-    Objects *temp_s1;
+    Objects *object;
 
     sp44 = &camera1[cameraId];
     func_80046E60(d_course_frappe_snowland_snow_tlut, d_course_frappe_snowland_snow, 0x00000020, 0x00000020);
-    for (someIndex = 0; someIndex < D_8018C3F0_SIZE; someIndex++) {
-        objectIndex = D_8018C3F0[someIndex];
+    for (someIndex = 0; someIndex < gObjectParticle2_SIZE; someIndex++) {
+        objectIndex = gObjectParticle2[someIndex];
         if (objectIndex != -1) {
-            temp_s1 = &gObjectList[objectIndex];
-            if (temp_s1->state > 0) {
+            object = &gObjectList[objectIndex];
+            if (object->state > 0) {
                 func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000001F4);
                 if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
-                    temp_s1->unk_0B2[1] = func_800418AC(temp_s1->pos[0], temp_s1->pos[2], sp44->pos);
+                    object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], sp44->pos);
                     rsp_set_matrix_gObjectList(objectIndex);
                     gSPDisplayList(gDisplayListHead++, D_0D0069E0);
                 }
@@ -3345,15 +3345,15 @@ void func_8005309C(s32 cameraId) {
         if (gObjectList[objectIndex].state >= 2) {
             func_8008A364(objectIndex, cameraId, 0x2AABU, 0x00000258);
             if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
-                D_80183E80[0] = (s16) gObjectList[objectIndex].unk_0B2[0];
+                D_80183E80[0] = (s16) gObjectList[objectIndex].orientation[0];
                 D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
-                D_80183E80[2] = (u16) gObjectList[objectIndex].unk_0B2[2];
+                D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
                 if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000010) != 0) {
                     func_800480B4(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
                 }
                 objectIndex = indexObjectList2[var_s4];
-                D_80183E80[0] = (s16) gObjectList[objectIndex].unk_0B2[0];
-                D_80183E80[2] = (u16) gObjectList[objectIndex].unk_0B2[2];
+                D_80183E80[0] = (s16) gObjectList[objectIndex].orientation[0];
+                D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
                 func_800480B4(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
         }
@@ -3373,17 +3373,17 @@ void func_800532A4(s32 cameraId) {
     s32 objectIndex;
     Objects *object;
 
-    objectIndex = D_80183DB8[cameraId];
+    objectIndex = gIndexLakituList[cameraId];
     camera = &camera1[cameraId];
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000010) != 0) {
         object = &gObjectList[objectIndex];
-        object->unk_0B2[0] = 0;
-        object->unk_0B2[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
-        object->unk_0B2[2] = 0x8000;
+        object->orientation[0] = 0;
+        object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
+        object->orientation[2] = 0x8000;
         if (func_80072354(objectIndex, 2) != 0) {
-            func_800480B4(object->pos, object->unk_0B2, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, object->vertex, (s32) object->textureWidth, (s32) object->textureHeight, (s32) object->textureWidth, (s32) object->textureHeight / 2);
+            func_800480B4(object->pos, object->orientation, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, object->vertex, (s32) object->textureWidth, (s32) object->textureHeight, (s32) object->textureWidth, (s32) object->textureHeight / 2);
         } else {
-            func_800485C4(object->pos, object->unk_0B2, object->sizeScaling, (s32) object->unk_0A0, (u8 *) object->activeTLUT, object->activeTexture, object->vertex, (s32) object->textureWidth, (s32) object->textureHeight, (s32) object->textureWidth, (s32) object->textureHeight / 2);
+            func_800485C4(object->pos, object->orientation, object->sizeScaling, (s32) object->unk_0A0, (u8 *) object->activeTLUT, object->activeTexture, object->vertex, (s32) object->textureWidth, (s32) object->textureHeight, (s32) object->textureWidth, (s32) object->textureHeight / 2);
         }
         if (gScreenModeSelection == SCREEN_MODE_1P) {
             var_f0 = object->pos[0] - D_8018CF14->pos[0];
@@ -3439,13 +3439,13 @@ void func_800534E8(s32 objectIndex) {
 void func_800536C8(s32 objectIndex) {
     if ((gObjectList[objectIndex].state >= 2) && (func_80072354(objectIndex, 0x00000040) != 0)) {
         func_8004A7AC(objectIndex, 1.75f);
-        rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0B2, gObjectList[objectIndex].sizeScaling);
+        rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling);
         func_800534E8(objectIndex);
         gSPDisplayList(gDisplayListHead++, D_0D007828);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
         gDPLoadTLUT_pal256(gDisplayListHead++, d_course_bowsers_castle_thwomp_tlut);
         rsp_load_texture_mask(gObjectList[objectIndex].activeTexture, 0x00000010, 0x00000040, 4);
-        gSPDisplayList(gDisplayListHead++, gObjectList[objectIndex].unk_070);
+        gSPDisplayList(gDisplayListHead++, gObjectList[objectIndex].model);
     }
 }
 
@@ -3455,7 +3455,7 @@ void func_80053870(s32 cameraId) {
     s32 stackPadding0;
     s16 minusone, plusone;
     Camera *camera;
-    Objects *temp_v0;
+    Objects *object;
 
     camera = &camera1[cameraId];
     if (cameraId == 0) {
@@ -3486,12 +3486,12 @@ void func_80053870(s32 cameraId) {
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_LIGHTING | G_SHADING_SMOOTH);
     func_80043D50(d_course_bowsers_castle_thwomp_side, 0x00000020, 0x00000020);
-    for (var_s2 = 0; var_s2 < D_8018C630_SIZE; var_s2++) {
-        temp_s1 = D_8018C630[var_s2];
+    for (var_s2 = 0; var_s2 < gObjectParticle3_SIZE; var_s2++) {
+        temp_s1 = gObjectParticle3[var_s2];
         if (temp_s1 != -1) {
-            temp_v0 = &gObjectList[temp_s1];
-            if ((temp_v0->state > 0) && (temp_v0->unk_0D5 == 3) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
-                rsp_set_matrix_transformation(temp_v0->pos, temp_v0->unk_0B2, temp_v0->sizeScaling);
+            object = &gObjectList[temp_s1];
+            if ((object->state > 0) && (object->unk_0D5 == 3) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+                rsp_set_matrix_transformation(object->pos, object->orientation, object->sizeScaling);
                 gSPVertex(gDisplayListHead++, D_0D005C00, 3, 0);
                 gSPDisplayList(gDisplayListHead++, D_0D006930);
             }
@@ -3505,14 +3505,14 @@ void func_80053870(s32 cameraId) {
     func_8004B3C8(0);
     D_80183E80[0] = 0;
     D_80183E80[2] = 0x8000;
-    for (var_s2 = 0; var_s2 < D_8018C3F0_SIZE; var_s2++) {
-        temp_s1 = D_8018C3F0[var_s2];
+    for (var_s2 = 0; var_s2 < gObjectParticle2_SIZE; var_s2++) {
+        temp_s1 = gObjectParticle2[var_s2];
         if (temp_s1 != -1) {
-            temp_v0 = &gObjectList[temp_s1];
-            if ((temp_v0->state >= 2) && (temp_v0->unk_0D5 == 2) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
-                func_8004B138(0x000000FF, 0x000000FF, 0x000000FF, (s32) temp_v0->unk_0A0);
-                D_80183E80[1] = func_800418AC(temp_v0->pos[0], temp_v0->pos[2], camera->pos);
-                func_800431B0(temp_v0->pos, D_80183E80, temp_v0->sizeScaling, D_0D005AE0);
+            object = &gObjectList[temp_s1];
+            if ((object->state >= 2) && (object->unk_0D5 == 2) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+                func_8004B138(0x000000FF, 0x000000FF, 0x000000FF, (s32) object->unk_0A0);
+                D_80183E80[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
+                func_800431B0(object->pos, D_80183E80, object->sizeScaling, D_0D005AE0);
             }
         }
     }
@@ -3542,14 +3542,14 @@ void func_80053E6C(s32 arg0) {
     D_80183E80[1] = 0x8000;
     rsp_load_texture(D_8018D4BC, 0x40, 0x20);
     for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
-        objectIndex = D_8018C630[var_s1];
+        objectIndex = gObjectParticle3[var_s1];
         if ((objectIndex != -1) && (gObjectList[objectIndex].state >= 2)) {
             func_80053D74(objectIndex, arg0, 0);
         }
     }
     rsp_load_texture(D_8018D4C0, 0x40, 0x20);
     for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
-        objectIndex = D_8018C630[var_s1];
+        objectIndex = gObjectParticle3[var_s1];
         if ((objectIndex != -1) && (gObjectList[objectIndex].state >= 2)) {
             func_80053D74(objectIndex, arg0, 4);
         }
@@ -3591,7 +3591,7 @@ void func_800541BC(s32 cameraId) {
 
             for (i = 0; i < 128; i++) {
                 // Need to make a way to increase this array for each train.
-                func_800540CC(D_8018C3F0[i], cameraId);
+                func_800540CC(gObjectParticle2[i], cameraId);
             }
         }
     }
@@ -3599,14 +3599,14 @@ void func_800541BC(s32 cameraId) {
 
     if ((gTrainList[0].someFlags != 0) && (func_80041980(&gTrainList[0].locomotive.position, camera, 0x4000U) != 0)) {
 
-        for (i = 0; i < D_8018C3F0_SIZE; i++) {
-            func_800540CC(D_8018C3F0[i], cameraId);
+        for (i = 0; i < gObjectParticle2_SIZE; i++) {
+            func_800540CC(gObjectParticle2[i], cameraId);
         }
 
     }
     if ((gTrainList[1].someFlags != 0) && (func_80041980(&gTrainList[1].locomotive.position, camera, 0x4000U) != 0)) {
-        for (i = 0; i < D_8018C630_SIZE; i++) {
-            func_800540CC(D_8018C630[i], cameraId);
+        for (i = 0; i < gObjectParticle3_SIZE; i++) {
+            func_800540CC(gObjectParticle3[i], cameraId);
         }
     }
 #endif
@@ -3639,13 +3639,13 @@ void func_80054414(s32 cameraId) {
     D_80183E80[0] = 0;
     D_80183E80[2] = 0x8000;
     if ((gFerries[0].someFlags != 0) && (func_80041980(gFerries[0].position, camera, 0x4000U) != 0)) {
-        for (i = 0; i < D_8018C3F0_SIZE; i++) {
-            func_80054324(D_8018C3F0[i], cameraId);
+        for (i = 0; i < gObjectParticle2_SIZE; i++) {
+            func_80054324(gObjectParticle2[i], cameraId);
         }
     }
     if ((gFerries[1].someFlags != 0) && (func_80041980(gFerries[1].position, camera, 0x4000U) != 0)) {
-        for (i = 0; i < D_8018C630_SIZE; i++) {
-            func_80054324(D_8018C630[i], cameraId);
+        for (i = 0; i < gObjectParticle3_SIZE; i++) {
+            func_80054324(gObjectParticle3[i], cameraId);
         }
     }
 }
@@ -3676,8 +3676,8 @@ void func_80054664(s32 cameraId) {
     func_8004B414(0, 0, 0, 0x000000FF);
     D_80183E80[0] = 0;
     D_80183E80[2] = 0x8000;
-    for (var_s0 = 0; var_s0 < D_8018C1B0_SIZE; var_s0++) {
-        objectIndex = D_8018C1B0[var_s0];
+    for (var_s0 = 0; var_s0 < gObjectParticle1_SIZE; var_s0++) {
+        objectIndex = gObjectParticle1[var_s0];
         if ((objectIndex != -1) && (gObjectList[objectIndex].state >= 3)) {
             func_8005457C(objectIndex, cameraId);
         }
@@ -3720,8 +3720,8 @@ void func_80054938(s32 cameraId) {
     func_8004B72C(255, 255, 255, 255, 255, 255, 255);
     D_80183E80[0] = 0;
     D_80183E80[2] = 0x8000;
-    for (var_s0 = 0; var_s0 < D_8018C870_SIZE; var_s0++) {
-        objectIndex = D_8018C870[var_s0];
+    for (var_s0 = 0; var_s0 < gObjectParticle4_SIZE; var_s0++) {
+        objectIndex = gObjectParticle4[var_s0];
         if (objectIndex != -1) {
             object = &gObjectList[objectIndex];
             if (object->state >= 2) {
@@ -3741,7 +3741,7 @@ void func_80054938(s32 cameraId) {
 void func_80054AFC(s32 objectIndex, Vec3f arg1) {
     D_80183E80[0] = func_800418E8(gObjectList[objectIndex].pos[2], gObjectList[objectIndex].pos[1], arg1);
     D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], arg1);
-    D_80183E80[2] = (u16) gObjectList[objectIndex].unk_0B2[2];
+    D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
     func_8004B138((s32) gObjectList[objectIndex].unk_084[0], (s32) gObjectList[objectIndex].unk_084[1], (s32) gObjectList[objectIndex].unk_084[2], (s32) gObjectList[objectIndex].unk_0A0);
     rsp_set_matrix_transformation(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling);
     gSPVertex(gDisplayListHead++, D_0D005AE0, 4, 0);
@@ -3758,8 +3758,8 @@ void func_80054BE8(s32 cameraId) {
     func_800444B0(D_8018D488, 0x00000020, 0x00000020);
     func_8004B35C(0x000000FF, 0x000000FF, 0, 0x000000FF);
     D_80183E80[0] = 0;
-    for (var_s0 = 0; var_s0 < D_8018C630_SIZE; var_s0++) {
-        temp_a0 = D_8018C630[var_s0];
+    for (var_s0 = 0; var_s0 < gObjectParticle3_SIZE; var_s0++) {
+        temp_a0 = gObjectParticle3[var_s0];
         if ((temp_a0 != -1) && (gObjectList[temp_a0].state >= 2)) {
             func_80054AFC(temp_a0, camera->pos);
         }
@@ -3773,9 +3773,9 @@ void func_80054D00(s32 objectIndex, s32 cameraId) {
     if (gObjectList[objectIndex].state >= 3) {
         func_8008A364(objectIndex, cameraId, 0x2AABU, 0x0000012C);
         if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
-            D_80183E80[0] = (s16) gObjectList[objectIndex].unk_0B2[0];
+            D_80183E80[0] = (s16) gObjectList[objectIndex].orientation[0];
             D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
-            D_80183E80[2] = (u16) gObjectList[objectIndex].unk_0B2[2];
+            D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
             func_80048130(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, D_0D0062B0, 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
         }
     }
@@ -3787,9 +3787,9 @@ void func_80054E10(s32 objectIndex) {
             D_80183E50[0] = gObjectList[objectIndex].pos[0];
             D_80183E50[1] = gObjectList[objectIndex].unk_044 + 0.8;
             D_80183E50[2] = gObjectList[objectIndex].pos[2];
-            D_80183E70[0] = gObjectList[objectIndex].unk_038[0];
-            D_80183E70[1] = gObjectList[objectIndex].unk_038[1];
-            D_80183E70[2] = gObjectList[objectIndex].unk_038[2];
+            D_80183E70[0] = gObjectList[objectIndex].velocity[0];
+            D_80183E70[1] = gObjectList[objectIndex].velocity[1];
+            D_80183E70[2] = gObjectList[objectIndex].velocity[2];
             func_8004A9B8(gObjectList[objectIndex].sizeScaling);
         }
     }
@@ -3800,7 +3800,7 @@ void func_80054EB8(UNUSED s32 unused) {
     s32 someIndex;
 
     for (someIndex = 0; someIndex < NUM_MAX_MOLES; someIndex++) {
-        func_80054E10(D_8018C1B0[someIndex]);
+        func_80054E10(gObjectParticle1[someIndex]);
     }
 }
 
@@ -3813,13 +3813,13 @@ void func_80054F04(s32 cameraId) {
     sp44 = &camera1[cameraId];
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
     func_80043D50(d_course_moo_moo_farm_mole_dirt, 0x00000010, 0x00000010);
-    for (var_s2 = 0; var_s2 < D_8018C3F0_SIZE; var_s2++) {
-        objectIndex = D_8018C3F0[var_s2];
+    for (var_s2 = 0; var_s2 < gObjectParticle2_SIZE; var_s2++) {
+        objectIndex = gObjectParticle2[var_s2];
         object = &gObjectList[objectIndex];
         if (object->state > 0) {
             func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000000C8);
             if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
-                object->unk_0B2[1] = func_800418AC(object->pos[0], object->pos[2], sp44->pos);
+                object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], sp44->pos);
                 rsp_set_matrix_gObjectList(objectIndex);
                 gSPDisplayList(gDisplayListHead++, D_0D006980);
             }
@@ -3847,11 +3847,11 @@ void func_800550A4(s32 arg0) {
 void func_80055164(s32 objectIndex) {
     if (gObjectList[objectIndex].state >= 2) {
         gSPDisplayList(gDisplayListHead++, D_0D0077A0);
-        rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0BE, gObjectList[objectIndex].sizeScaling);
+        rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle, gObjectList[objectIndex].sizeScaling);
         if (gIsGamePaused == 0) {
-            gObjectList[objectIndex].unk_0A2 = func_80004DFC((animation_type_1 *) gObjectList[objectIndex].unk_070, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
+            gObjectList[objectIndex].unk_0A2 = func_80004DFC((animation_type_1 *) gObjectList[objectIndex].model, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
         } else {
-            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].unk_070, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
+            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].model, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
         }
     }
 }
@@ -3871,12 +3871,12 @@ void func_80055228(s32 cameraId) {
 
 void func_800552BC(s32 objectIndex) {
     if (gObjectList[objectIndex].state >= 2) {
-        rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0BE, gObjectList[objectIndex].sizeScaling);
+        rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle, gObjectList[objectIndex].sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0077D0);
         if (gIsGamePaused == 0) {
-            gObjectList[objectIndex].unk_0A2 = func_80004DFC((animation_type_1 *) gObjectList[objectIndex].unk_070, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
+            gObjectList[objectIndex].unk_0A2 = func_80004DFC((animation_type_1 *) gObjectList[objectIndex].model, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
         } else {
-            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].unk_070, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
+            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].model, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, gObjectList[objectIndex].unk_0A2);
         }
     }
 }
@@ -3903,8 +3903,8 @@ void func_80055458(s32 objectIndex, s32 cameraId) {
     if (gObjectList[objectIndex].state >= 2) {
         camera = &camera1[cameraId];
         func_8004A6EC(objectIndex, 0.5f);
-        gObjectList[objectIndex].unk_0B2[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
-        func_800480B4(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0B2, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+        gObjectList[objectIndex].orientation[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+        func_800480B4(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
     }
 }
 
@@ -3927,8 +3927,8 @@ void func_800555BC(s32 objectIndex, s32 cameraId) {
     if (gObjectList[objectIndex].state >= 2) {
         camera = &camera1[cameraId];
         func_8004A870(objectIndex, 0.7f);
-        gObjectList[objectIndex].unk_0B2[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
-        func_800480B4(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0B2, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 64, 64, 64, 32);
+        gObjectList[objectIndex].orientation[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
+        func_800480B4(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 64, 64, 64, 32);
     }
 }
 
@@ -3963,27 +3963,27 @@ UNUSED void func_800557AC() {
 
 void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
     Vec3f sp34;
-    Objects *temp_s0;
+    Objects *object;
 
-    temp_s0 = &gObjectList[objectIndex];
-    if (temp_s0->state >= 2) {
+    object = &gObjectList[objectIndex];
+    if (object->state >= 2) {
         if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) {
             if (func_80072320(objectIndex, 4) != 0) {
                 if (arg2 >= arg1) {
-                    sp34[0] = temp_s0->pos[0];
-                    sp34[1] = temp_s0->pos[1] - 1.0;
-                    sp34[2] = temp_s0->pos[2];
-                    rsp_set_matrix_transformation_inverted_x_y_orientation(sp34, temp_s0->unk_0B2, temp_s0->sizeScaling);
+                    sp34[0] = object->pos[0];
+                    sp34[1] = object->pos[1] - 1.0;
+                    sp34[2] = object->pos[2];
+                    rsp_set_matrix_transformation_inverted_x_y_orientation(sp34, object->orientation, object->sizeScaling);
                     gSPDisplayList(gDisplayListHead++, D_0D0077D0);
-                    func_80004DFC((animation_type_1 *) temp_s0->unk_070, (animation_type_2 **) temp_s0->vertex, (s16) temp_s0->unk_0D8, (s16) temp_s0->itemDisplay);
+                    func_80004DFC((animation_type_1 *) object->model, (animation_type_2 **) object->vertex, (s16) object->unk_0D8, (s16) object->itemDisplay);
                 }
             } else if (arg1 < 0x15F91U) {
                 func_8004A7AC(objectIndex, 1.5f);
             }
         }
-        rsp_set_matrix_transformation(temp_s0->pos, temp_s0->unk_0B2, temp_s0->sizeScaling);
+        rsp_set_matrix_transformation(object->pos, object->orientation, object->sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0077D0);
-        func_80004DFC((animation_type_1 *) temp_s0->unk_070, (animation_type_2 **) temp_s0->vertex, (s16) temp_s0->unk_0D8, (s16) temp_s0->itemDisplay);
+        func_80004DFC((animation_type_1 *) object->model, (animation_type_2 **) object->vertex, (s16) object->unk_0D8, (s16) object->itemDisplay);
     }
 }
 
@@ -4045,9 +4045,9 @@ void func_80055AB8(s32 objectIndex, s32 cameraId) {
             D_80183E80[2] = 0x8000;
             func_800468E0(D_80183E40, D_80183E80, 0.54f, d_course_rainbow_road_sphere, D_0D0062B0, 0x00000020, 0x00000040, 0x00000020, 0x00000040, 5);
         } else {
-            rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].unk_0BE, gObjectList[objectIndex].sizeScaling);
+            rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle, gObjectList[objectIndex].sizeScaling);
             gSPDisplayList(gDisplayListHead++, D_0D0077D0);
-            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].unk_070, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, (s16) gObjectList[objectIndex].itemDisplay);
+            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].model, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, (s16) gObjectList[objectIndex].itemDisplay);
         }
     }
 }
@@ -4076,16 +4076,16 @@ void func_80055CCC(s32 objectIndex, s32 cameraId) {
         test = gObjectList[objectIndex].pos[1] - gObjectList[objectIndex].unk_044;
         func_8004A6EC(objectIndex, (20.0 / test) + 0.5);
         if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x00100000) != 0) {
-            func_80043328(gObjectList[objectIndex].pos, (u16 *) gObjectList[objectIndex].unk_0BE, gObjectList[objectIndex].sizeScaling, d_course_luigi_raceway_dl_F960);
+            func_80043328(gObjectList[objectIndex].pos, (u16 *) gObjectList[objectIndex].direction_angle, gObjectList[objectIndex].sizeScaling, d_course_luigi_raceway_dl_F960);
             gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_F650);
         } else {
-            D_80183E80[0] = (s16) gObjectList[objectIndex].unk_0BE[0];
+            D_80183E80[0] = (s16) gObjectList[objectIndex].direction_angle[0];
             D_80183E80[1] = (s16) (func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos) + 0x8000);
-            D_80183E80[2] = (u16) gObjectList[objectIndex].unk_0BE[2];
+            D_80183E80[2] = (u16) gObjectList[objectIndex].direction_angle[2];
             func_80043328(gObjectList[objectIndex].pos, D_80183E80, gObjectList[objectIndex].sizeScaling, d_course_luigi_raceway_dl_FBE0);
             gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_FA20);
             if (gPlayerCountSelection1 == 1) {
-                gObjectList[objectIndex].unk_0BE[1] = 0;
+                gObjectList[objectIndex].direction_angle[1] = 0;
             }
         }
     }
@@ -4110,7 +4110,7 @@ void func_80055EF4(s32 objectIndex, UNUSED s32 arg1) {
 
     object = &gObjectList[objectIndex];
     if (object->state >= 2) {
-        func_80043220(object->pos, object->unk_0BE, object->sizeScaling, object->unk_070);
+        func_80043220(object->pos, object->direction_angle, object->sizeScaling, object->model);
     }
 }
 
@@ -4131,11 +4131,11 @@ void func_80055FA0(s32 objectIndex, UNUSED s32 arg1) {
     if (object->state >= 2) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        mtxf_set_matrix_transformation(someMatrix1,object->pos, object->unk_0BE, object->sizeScaling);
+        mtxf_set_matrix_transformation(someMatrix1,object->pos, object->direction_angle, object->sizeScaling);
         convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], someMatrix1);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, D_0D0077A0);
-        gSPDisplayList(gDisplayListHead++, object->unk_070);
+        gSPDisplayList(gDisplayListHead++, object->model);
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
         mtxf_identity(someMatrix2);
         render_set_position(someMatrix2, 0);
@@ -4158,8 +4158,8 @@ void func_80056188(s32 cameraId) {
         if (D_8018E838[cameraId] == 0) {
             object = &gObjectList[objectIndex];
             if ((object->state >= 2) && (is_obj_index_flag_unk_054_inactive(objectIndex, 0x00080000) != 0) && (func_8008A140(objectIndex, camera, 0x2AABU) != 0)) {
-                object->unk_0B2[1] = angle_between_object_camera(objectIndex, camera);
-                func_800480B4(object->pos, object->unk_0B2, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                object->orientation[1] = angle_between_object_camera(objectIndex, camera);
+                func_800480B4(object->pos, object->orientation, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
         }
     }

@@ -404,32 +404,32 @@ s32 func_80041770(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     return atan2s(arg1 - arg0, arg3 - arg2);
 }
 
-u16 func_800417B4(u16 arg0, u16 arg1) {
-    u16 ret;
+u16 func_800417B4(u16 angle1, u16 angle2) {
+    u16 out_angle;
 
-    if ((arg0 >> 8) != (arg1 >> 8)) {
-        ret = arg1 - arg0;
-        if (ret < 0x400) {
-            ret = arg0 + 0x80;
-        } else if (ret < 0x800) {
-            ret = arg0 + 0x200;
-        } else if (ret < 0x4000) {
-            ret = arg0 + 0x400;
-        } else if (ret < 0x8000) {
-            ret = arg0 + 0x700;
-        } else if (ret < 0xC000) {
-            ret = arg0 - 0x700;
-        }else if (ret < 0xF800) {
-            ret = arg0 - 0x400;
-        } else if (ret < 0xFC00) {
-            ret = arg0 - 0x200;
+    if ((angle1 >> 8) != (angle2 >> 8)) {
+        out_angle = angle2 - angle1;
+        if (out_angle < 0x400) {
+            out_angle = angle1 + 0x80;
+        } else if (out_angle < 0x800) {
+            out_angle = angle1 + 0x200;
+        } else if (out_angle < 0x4000) {
+            out_angle = angle1 + 0x400;
+        } else if (out_angle < 0x8000) {
+            out_angle = angle1 + 0x700;
+        } else if (out_angle < 0xC000) {
+            out_angle = angle1 - 0x700;
+        }else if (out_angle < 0xF800) {
+            out_angle = angle1 - 0x400;
+        } else if (out_angle < 0xFC00) {
+            out_angle = angle1 - 0x200;
         } else {
-            ret = arg0 - 0x80;
+            out_angle = angle1 - 0x80;
         }
     } else {
-        ret = arg1;
+        out_angle = angle2;
     }
-    return ret;
+    return out_angle;
 }
 
 s32 func_800418AC(f32 arg0, f32 arg1, Vec3f arg2) {
@@ -463,13 +463,13 @@ s32 func_80041980(Vec3f arg0, Camera *arg1, u16 arg2) {
 }
 
 void func_800419F8(void) {
-    Vec3f sp18;
+    Vec3f pos;
     Vec3f vec;
 
-    sp18[0] = 0.0f;
-    sp18[1] = 0.0f;
-    sp18[2] = 120.0f;
-    vec3f_rotate_x_y(vec, sp18, D_80165834);
+    pos[0] = 0.0f;
+    pos[1] = 0.0f;
+    pos[2] = 120.0f;
+    vec3f_rotate_x_y(vec, pos, D_80165834);
     D_80165840[0] = vec[0];
     D_80165840[1] = vec[1];
     D_80165840[2] = vec[2];
@@ -808,12 +808,12 @@ void mtxf_set_matrix_gObjectList(s32 objectIndex, Mat4 transformMatrix) {
     f32 cosZ;
     f32 cosX;
 
-    sinX = sins(temp_s0->unk_0B2[0]);
-    cosX = coss(temp_s0->unk_0B2[0]);
-    sinY = sins(temp_s0->unk_0B2[1]);
-    cosY = coss(temp_s0->unk_0B2[1]);
-    sinZ = sins(temp_s0->unk_0B2[2]);
-    cosZ = coss(temp_s0->unk_0B2[2]);
+    sinX = sins(temp_s0->orientation[0]);
+    cosX = coss(temp_s0->orientation[0]);
+    sinY = sins(temp_s0->orientation[1]);
+    cosY = coss(temp_s0->orientation[1]);
+    sinZ = sins(temp_s0->orientation[2]);
+    cosZ = coss(temp_s0->orientation[2]);
 
     transformMatrix[0][0] = temp_s0->sizeScaling * ((cosY * cosZ) + (sinX * sinY * sinZ));
     transformMatrix[1][0] = temp_s0->sizeScaling * ((-cosY * sinZ) + sinX * sinY * cosZ);
