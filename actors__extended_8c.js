@@ -1,6 +1,6 @@
 var actors__extended_8c =
 [
-    [ "func_802B0210", "actors__extended_8c.html#a35be93ffe7cd05e44eca73e5470669c9", null ],
+    [ "copy_collision", "actors__extended_8c.html#ae1af475a3dbbdfa4ef5e3e79567c6fc1", null ],
     [ "func_802B02B4", "actors__extended_8c.html#a3eba7e1c414d7e2b66a26b6a18ab94bc", null ],
     [ "func_802B039C", "actors__extended_8c.html#a093f702b462b6657ba7ab789941ef800", null ],
     [ "func_802B0464", "actors__extended_8c.html#ab349562338ca47f2b524137864704d0e", null ],
@@ -10,7 +10,6 @@ var actors__extended_8c =
     [ "func_802B0788", "actors__extended_8c.html#a87d7f1fdb71b4ffb9b0b6961d5f4fb65", null ],
     [ "func_802B09C0", "actors__extended_8c.html#a37199f633d5cab2cbbc3c506b177a68e", null ],
     [ "func_802B2914", "actors__extended_8c.html#ac03bad0075e21f3e3ce262eedd8f056b", null ],
-    [ "func_802B2FA0", "actors__extended_8c.html#ab87815d2f55adac2b8f7f39dc5f91ef7", null ],
     [ "func_802B30EC", "actors__extended_8c.html#affe4d62e8904ae798166bff9d8bcfc75", null ],
     [ "func_802B3B44", "actors__extended_8c.html#a10550a4f6cb14493d6b16ac44a3c9484", null ],
     [ "func_802B3E7C", "actors__extended_8c.html#a0cc339b71fb81e84d30eb55dc05b1a04", null ],
@@ -19,6 +18,7 @@ var actors__extended_8c =
     [ "func_802B4E30", "actors__extended_8c.html#a78e98c146f1f4dd6e3608016486172a4", null ],
     [ "init_triple_shell", "actors__extended_8c.html#ac7b01b29ffe49800d142fc2e8a308120", null ],
     [ "is_shell_exist", "actors__extended_8c.html#af4b1443024248be2d1a9bd97e203b079", null ],
+    [ "player_use_item", "actors__extended_8c.html#a6c53567ce07da53daa086cb9b09076a1", null ],
     [ "update_actor_banana", "actors__extended_8c.html#a1b699acb507ca2e080f46ea632573993", null ],
     [ "update_actor_banana_bunch", "actors__extended_8c.html#a34694840e4ed5e496ed3ba98429b0558", null ],
     [ "update_actor_green_shell", "actors__extended_8c.html#a4fd275676bf11ca2e15556db08264a90", null ],

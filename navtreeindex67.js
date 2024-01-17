@@ -1,5 +1,6 @@
 var NAVTREEINDEX67 =
 {
+"structEuAudioCmd.html#a90a2a2776f1137187e96aa98fea0f404":[7,0,74,12],
 "structEuAudioCmd.html#a95993d0cb757c03dcee975f5c3fd86c7":[7,0,74,5],
 "structEuAudioCmd.html#a97a7720c1b2c0d5571b907b1d0e9869a":[7,0,74,1],
 "structEuAudioCmd.html#a9ad4aff4cdbe855ab7332cae8cd4eae0":[7,0,74,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX67 =
 "structNotePlaybackState.html#a9710bdd1fc7def7209a116c6de6267e9":[7,0,102,5],
 "structNotePlaybackState.html#a99113f76344dff4efccf6290485ba914":[7,0,102,7],
 "structNotePlaybackState.html#aa53bad77bd6c23f7e41288f14b9739d0":[7,0,102,8],
-"structNotePlaybackState.html#aed3a0a2b7802c3dbf53f9515104ddfe9":[7,0,102,10],
-"structNotePlaybackState.html#af5453206d2ea339bc8aa5804ed50b7a1":[7,0,102,0]
+"structNotePlaybackState.html#aed3a0a2b7802c3dbf53f9515104ddfe9":[7,0,102,10]
 };

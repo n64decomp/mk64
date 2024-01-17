@@ -1,5 +1,6 @@
 var code__80005FD0_8c =
 [
+    [ "cpu_decisions_branch_item", "code__80005FD0_8c.html#a4d8b2e480ae893503546c6b66dadca37", null ],
     [ "func_80005FD0", "code__80005FD0_8c.html#ac0d96d9d8c5772c7fe5edbb8da736086", null ],
     [ "func_80006018", "code__80005FD0_8c.html#af639a4e2e4579c87c7cb1660bc901724", null ],
     [ "func_80006114", "code__80005FD0_8c.html#a4e2ffaf7380570c3c94e7083566d4e91", null ],
@@ -145,7 +146,6 @@ var code__80005FD0_8c =
     [ "func_8001A588", "code__80005FD0_8c.html#ae88f0c7a86e0153973ae7265e8e873ca", null ],
     [ "func_8001AAAC", "code__80005FD0_8c.html#ac6119d7238dcb3fe9cbb416e70e61b7e", null ],
     [ "func_8001AB00", "code__80005FD0_8c.html#afb7a20357b7271b1854444f3a66eaaea", null ],
-    [ "func_8001AB74", "code__80005FD0_8c.html#a71136223272c77a01361af3b2a84ad1b", null ],
     [ "func_8001ABE0", "code__80005FD0_8c.html#abb9e308dd71034b4ad3ad432349d2809", null ],
     [ "func_8001ABEC", "code__80005FD0_8c.html#a392f325e9a0821837f5a11609b13bfc2", null ],
     [ "func_8001BE78", "code__80005FD0_8c.html#a7808902aee426ba4433e92cde1feb8a1", null ],

@@ -96,14 +96,14 @@ var sectionId = 'dynsection-0';
 <polygon fill="#9a32cd" stroke="#9a32cd" points="59.55,-677.94 54.34,-668.71 52.66,-679.17 59.55,-677.94"/>
 <text text-anchor="middle" x="295" y="-900" font-family="Helvetica,sans-Serif" font-size="10.00"> boostPower</text>
 <text text-anchor="middle" x="295" y="-889" font-family="Helvetica,sans-Serif" font-size="10.00">boundingBoxSize</text>
-<text text-anchor="middle" x="295" y="-878" font-family="Helvetica,sans-Serif" font-size="10.00">currentSpeed</text>
-<text text-anchor="middle" x="295" y="-867" font-family="Helvetica,sans-Serif" font-size="10.00">kartFriction</text>
-<text text-anchor="middle" x="295" y="-856" font-family="Helvetica,sans-Serif" font-size="10.00">kartGravity</text>
-<text text-anchor="middle" x="295" y="-845" font-family="Helvetica,sans-Serif" font-size="10.00">kartHopAcceleration</text>
-<text text-anchor="middle" x="295" y="-834" font-family="Helvetica,sans-Serif" font-size="10.00">kartHopJerk</text>
-<text text-anchor="middle" x="295" y="-823" font-family="Helvetica,sans-Serif" font-size="10.00">kartHopVelocity</text>
-<text text-anchor="middle" x="295" y="-812" font-family="Helvetica,sans-Serif" font-size="10.00">orientationMatrix</text>
-<text text-anchor="middle" x="295" y="-801" font-family="Helvetica,sans-Serif" font-size="10.00">pos</text>
+<text text-anchor="middle" x="295" y="-878" font-family="Helvetica,sans-Serif" font-size="10.00">copy_rotation_x</text>
+<text text-anchor="middle" x="295" y="-867" font-family="Helvetica,sans-Serif" font-size="10.00">copy_rotation_y</text>
+<text text-anchor="middle" x="295" y="-856" font-family="Helvetica,sans-Serif" font-size="10.00">copy_rotation_z</text>
+<text text-anchor="middle" x="295" y="-845" font-family="Helvetica,sans-Serif" font-size="10.00">currentSpeed</text>
+<text text-anchor="middle" x="295" y="-834" font-family="Helvetica,sans-Serif" font-size="10.00">kartFriction</text>
+<text text-anchor="middle" x="295" y="-823" font-family="Helvetica,sans-Serif" font-size="10.00">kartGravity</text>
+<text text-anchor="middle" x="295" y="-812" font-family="Helvetica,sans-Serif" font-size="10.00">kartHopAcceleration</text>
+<text text-anchor="middle" x="295" y="-801" font-family="Helvetica,sans-Serif" font-size="10.00">kartHopJerk</text>
 <text text-anchor="middle" x="295" y="-790" font-family="Helvetica,sans-Serif" font-size="10.00">...</text>
 </g>
 <!-- Node3&#45;&gt;Node2 -->
@@ -338,7 +338,7 @@ var sectionId = 'dynsection-0';
 <title>Node11&#45;&gt;Node1</title>
 <path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M333.42,-54.69C375.22,-43.5 442.56,-33.47 485,-68 513.52,-91.2 522.83,-212.67 524.97,-248.22"/>
 <polygon fill="#9a32cd" stroke="#9a32cd" points="332.3,-51.37 323.63,-57.46 334.21,-58.1 332.3,-51.37"/>
-<text text-anchor="middle" x="432.5" y="-115" font-family="Helvetica,sans-Serif" font-size="10.00"> unk_02C</text>
+<text text-anchor="middle" x="432.5" y="-115" font-family="Helvetica,sans-Serif" font-size="10.00"> rotation</text>
 <text text-anchor="middle" x="432.5" y="-104" font-family="Helvetica,sans-Serif" font-size="10.00">unk_048</text>
 <text text-anchor="middle" x="432.5" y="-93" font-family="Helvetica,sans-Serif" font-size="10.00">unk_050</text>
 <text text-anchor="middle" x="432.5" y="-82" font-family="Helvetica,sans-Serif" font-size="10.00">unk_0CC</text>

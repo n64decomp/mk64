@@ -1,5 +1,6 @@
 var NAVTREEINDEX68 =
 {
+"structNotePlaybackState.html#af5453206d2ea339bc8aa5804ed50b7a1":[7,0,102,0],
 "structNotePlaybackState.html#afdd48f62f9137b20e5e86221d4994f85":[7,0,102,2],
 "structNotePool.html":[7,0,103],
 "structNotePool.html#a7057a6481ff7c9f5891bd08136c8da22":[7,0,103,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX68 =
 "structPalmTree.html#a1e41348476da8814cccc1f5f50e0238a":[7,0,127,8],
 "structPalmTree.html#a1e77cf569eede02407cdde66a34fe85b":[7,0,127,4],
 "structPalmTree.html#a4577da79d940d2a483863e3d41c2b854":[7,0,127,6],
-"structPalmTree.html#a7083bb91aea5762ae443c6268456f828":[7,0,127,9],
-"structPalmTree.html#a939bcfc384f24f1cafcf739c4fc2993c":[7,0,127,1]
+"structPalmTree.html#a7083bb91aea5762ae443c6268456f828":[7,0,127,9]
 };

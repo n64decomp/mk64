@@ -720,9 +720,9 @@ var sectionId = 'dynsection-34';
 <!-- Node36 -->
 <g id="node36" class="node">
 <title>Node36</title>
-<g id="a_node36"><a xlink:href="actors__extended_8c.html#ab87815d2f55adac2b8f7f39dc5f91ef7" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="1154,-38.5 1154,-57.5 1245,-57.5 1245,-38.5 1154,-38.5"/>
-<text text-anchor="middle" x="1199.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_802B2FA0</text>
+<g id="a_node36"><a xlink:href="actors__extended_8c.html#a6c53567ce07da53daa086cb9b09076a1" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="1150.5,-38.5 1150.5,-57.5 1248.5,-57.5 1248.5,-38.5 1150.5,-38.5"/>
+<text text-anchor="middle" x="1199.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">player_use_item</text>
 </a>
 </g>
 </g>
@@ -744,8 +744,8 @@ var sectionId = 'dynsection-34';
 <!-- Node36&#45;&gt;Node37 -->
 <g id="edge54" class="edge">
 <title>Node36&#45;&gt;Node37</title>
-<path fill="none" stroke="midnightblue" d="M1143.63,-54.2C1127.02,-56.07 1108.98,-58.11 1093.1,-59.91"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="1144.21,-57.65 1153.75,-53.05 1143.42,-50.7 1144.21,-57.65"/>
+<path fill="none" stroke="midnightblue" d="M1140.33,-54.57C1124.63,-56.34 1107.88,-58.24 1093.02,-59.91"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="1140.92,-58.03 1150.47,-53.43 1140.14,-51.07 1140.92,-58.03"/>
 </g>
 <!-- Node37&#45;&gt;Node28 -->
 <g id="edge55" class="edge">
@@ -756,7 +756,7 @@ var sectionId = 'dynsection-34';
 <!-- Node38&#45;&gt;Node36 -->
 <g id="edge57" class="edge">
 <title>Node38&#45;&gt;Node36</title>
-<path fill="none" stroke="midnightblue" d="M1450.65,-63.09C1389.3,-59.39 1298.85,-53.93 1245.19,-50.7"/>
+<path fill="none" stroke="midnightblue" d="M1450.86,-63.1C1390.82,-59.48 1302.77,-54.17 1248.67,-50.91"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1450.8,-66.6 1460.99,-63.71 1451.22,-59.62 1450.8,-66.6"/>
 </g>
 <!-- Node39 -->
@@ -777,7 +777,7 @@ var sectionId = 'dynsection-34';
 <!-- Node39&#45;&gt;Node36 -->
 <g id="edge59" class="edge">
 <title>Node39&#45;&gt;Node36</title>
-<path fill="none" stroke="midnightblue" d="M1286.72,-37.33C1272.68,-39.07 1258.21,-40.86 1245.23,-42.46"/>
+<path fill="none" stroke="midnightblue" d="M1286.68,-37.33C1273.87,-38.92 1260.71,-40.55 1248.65,-42.04"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="1287.35,-40.78 1296.84,-36.07 1286.49,-33.83 1287.35,-40.78"/>
 </g>
 <!-- Node41 -->

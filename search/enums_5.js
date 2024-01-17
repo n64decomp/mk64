@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['sptaskstate_26784',['SpTaskState',['../types_8h.html#a4bb374aee872d45ca8292940f2a0ed03',1,'types.h']]],
-  ['surface_5ftype_26785',['SURFACE_TYPE',['../common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98',1,'common_structs.h']]]
+  ['profilergameevent_26786',['ProfilerGameEvent',['../profiler_8h.html#a464075ec8b898dea3a20b3166dd123bf',1,'profiler.h']]],
+  ['profilergfxevent_26787',['ProfilerGfxEvent',['../profiler_8h.html#af588a3a9b27840d837d5417d4be531e8',1,'profiler.h']]]
 ];

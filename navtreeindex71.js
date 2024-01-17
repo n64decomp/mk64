@@ -1,5 +1,6 @@
 var NAVTREEINDEX71 =
 {
+"structUnk1Pool.html#acd0c0850a2885a27818620587bd67670":[7,0,196,0],
 "structUnkActorSpawnData.html":[7,0,203],
 "structUnkActorSpawnData.html#a0504e28886dacafd17078992a6ec9239":[7,0,203,0],
 "structUnkActorSpawnData.html#a33553f422d028601d6f3267daa4d047d":[7,0,203,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX71 =
 "structVibratoState.html#a61aedc3462f8aa140ba58d724bba4dde":[7,0,243,0],
 "structVibratoState.html#a764da96013725ad7ca6b5bebc9e37619":[7,0,243,8],
 "structVibratoState.html#a87e0a6727c5d3f8126380b96f0a25514":[7,0,243,1],
-"structVibratoState.html#ac7b0ebaf890134933a4888c2be0fbfc9":[7,0,243,2],
-"structVibratoState.html#ad999ff2598868fa4ebe80cf441e4fe11":[7,0,243,6]
+"structVibratoState.html#ac7b0ebaf890134933a4888c2be0fbfc9":[7,0,243,2]
 };

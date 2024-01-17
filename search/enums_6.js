@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['time_5ftrial_5fdata_5findex_26786',['TIME_TRIAL_DATA_INDEX',['../common__structs_8h.html#af99386c6c69e4c7491c1ca0f1a4b44cc',1,'common_structs.h']]]
+  ['sptaskstate_26788',['SpTaskState',['../types_8h.html#a4bb374aee872d45ca8292940f2a0ed03',1,'types.h']]],
+  ['surface_5ftype_26789',['SURFACE_TYPE',['../common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98',1,'common_structs.h']]]
 ];

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['b_520',['B',['../structuObjMtx__t.html#a87aae46e87f2cb767e062ee1c5dc3841',1,'uObjMtx_t::B()'],['../common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7ba3f2a77ecd272aa6d6b5902faa5e5fc68',1,'B():&#160;common_structs.h']]],
-  ['b_521',['b',['../unionuObjBg.html#a4c7b764ed0f65c46029a1af38ca912e7',1,'uObjBg']]],
+  ['b_520',['b',['../unionuObjBg.html#a4c7b764ed0f65c46029a1af38ca912e7',1,'uObjBg']]],
+  ['b_521',['B',['../common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7ba3f2a77ecd272aa6d6b5902faa5e5fc68',1,'B():&#160;common_structs.h'],['../structuObjMtx__t.html#a87aae46e87f2cb767e062ee1c5dc3841',1,'uObjMtx_t::B()']]],
   ['b_5fbutton_522',['B_BUTTON',['../os_8h.html#a2454c318caf152737fd63bebddd58ea2',1,'B_BUTTON():&#160;os.h'],['../os__cont_8h.html#a2454c318caf152737fd63bebddd58ea2',1,'B_BUTTON():&#160;os_cont.h']]],
   ['back_5fleft_5ftyre_523',['BACK_LEFT_TYRE',['../common__structs_8h.html#a849c8786b0a5b6569dca0e06b054ceb9',1,'common_structs.h']]],
   ['back_5fright_5ftyre_524',['BACK_RIGHT_TYRE',['../common__structs_8h.html#a16246d54a0e62c3f77d896cfdf506fa2',1,'common_structs.h']]],

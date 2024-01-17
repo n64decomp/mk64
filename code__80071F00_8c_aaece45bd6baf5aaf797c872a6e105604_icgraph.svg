@@ -390,16 +390,16 @@ var sectionId = 'dynsection-14';
 <!-- Node16 -->
 <g id="node5" class="node">
 <title>Node16</title>
-<g id="a_node5"><a xlink:href="actors__extended_8c.html#ab87815d2f55adac2b8f7f39dc5f91ef7" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="461,-996.52 461,-1015.52 552,-1015.52 552,-996.52 461,-996.52"/>
-<text text-anchor="middle" x="506.5" y="-1003.52" font-family="Helvetica,sans-Serif" font-size="10.00">func_802B2FA0</text>
+<g id="a_node5"><a xlink:href="actors__extended_8c.html#a6c53567ce07da53daa086cb9b09076a1" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="457.5,-996.52 457.5,-1015.52 555.5,-1015.52 555.5,-996.52 457.5,-996.52"/>
+<text text-anchor="middle" x="506.5" y="-1003.52" font-family="Helvetica,sans-Serif" font-size="10.00">player_use_item</text>
 </a>
 </g>
 </g>
 <!-- Node2&#45;&gt;Node16 -->
 <g id="edge4" class="edge">
 <title>Node2&#45;&gt;Node16</title>
-<path fill="none" stroke="midnightblue" d="M601.47,-1006.02C585.24,-1006.02 567.62,-1006.02 552.07,-1006.02"/>
+<path fill="none" stroke="midnightblue" d="M601.71,-1006.02C586.66,-1006.02 570.41,-1006.02 555.71,-1006.02"/>
 <polygon fill="midnightblue" stroke="midnightblue" points="601.9,-1009.52 611.9,-1006.02 601.9,-1002.52 601.9,-1009.52"/>
 </g>
 <!-- Node4 -->
