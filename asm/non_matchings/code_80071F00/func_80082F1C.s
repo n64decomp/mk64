@@ -49,7 +49,7 @@ glabel func_80082F1C
 /* 083BBC 80082FBC 46802120 */  cvt.s.w $f4, $f4
 /* 083BC0 80082FC0 44058000 */  mfc1  $a1, $f16
 /* 083BC4 80082FC4 44072000 */  mfc1  $a3, $f4
-/* 083BC8 80082FC8 0C022DF5 */  jal   func_8008B7D4
+/* 083BC8 80082FC8 0C022DF5 */  jal   set_obj_origin_pos
 /* 083BCC 80082FCC 00000000 */   nop   
 /* 083BD0 80082FD0 44800000 */  mtc1  $zero, $f0
 /* 083BD4 80082FD4 02002025 */  move  $a0, $s0
@@ -62,7 +62,7 @@ glabel func_80082F1C
 /* 083BF0 80082FF0 02002025 */  move  $a0, $s0
 /* 083BF4 80082FF4 00002825 */  move  $a1, $zero
 /* 083BF8 80082FF8 00003825 */  move  $a3, $zero
-/* 083BFC 80082FFC 0C022E22 */  jal   func_8008B888
+/* 083BFC 80082FFC 0C022E22 */  jal   set_obj_direction_angle
 /* 083C00 80083000 94460006 */   lhu   $a2, 6($v0)
 /* 083C04 80083004 8FBF001C */  lw    $ra, 0x1c($sp)
 /* 083C08 80083008 8FB00018 */  lw    $s0, 0x18($sp)

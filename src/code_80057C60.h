@@ -77,7 +77,7 @@ void func_8005A14C(s32);
 void func_8005A380(void);
 void func_8005A3C0(void);
 void func_8005A71C(void);
-void func_8005A74C(void);
+void update_obj(void);
 void func_8005A99C(void);
 void func_8005AA34(void);
 void func_8005AA4C(void);
@@ -395,21 +395,21 @@ extern Mtx D_80183D60;
 // extern s32 D_80183DA0; -> objects.h
 
 extern f32 D_80183DA8[];
-// extern s32 D_80183DB8[]; -> objects.h
+// extern s32 gIndexLakituList[]; -> objects.h
 
 extern f32 D_80183DC8[];
 // extern s32 D_80183DD8[]; -> bomb_kart.h
-// extern s32 D_80183E38; -> objects.h
+// extern s32 gNextFreeObjectParticle1; -> objects.h
 
 extern Vec3f D_80183E40;
-// extern s32 D_80183E4C; -> objects.h
+// extern s32 gNextFreeObjectParticle2; -> objects.h
 
 extern Vec3f D_80183E50;
-// extern s32 D_80183E5C; -> objects.h
-// extern s32 D_80183E6C; -> objects.h
+// extern s32 gNextFreeObjectParticle3; -> objects.h
+// extern s32 gNextFreeObjectParticle4; -> objects.h
 
 extern Vec3f D_80183E70;
-// extern s32 D_80183E7C; -> objects.h
+// extern s32 gNextFreeLeafParticle; -> objects.h
 
 extern Vec3su D_80183E80;
 // extern s32 gItemWindowObjectByPlayerId[]; -> objects.h
@@ -424,15 +424,15 @@ extern u8 D_80183FA8[4][0x2000];
 extern u8 *D_8018C028;
 // extern s32 indexObjectList4[]; -> objects.h
 // extern Collision D_8018C0B0[]; -> objects.h
-// extern s32 D_8018C1B0[]; -> objects.h
+// extern s32 gObjectParticle1[]; -> objects.h
 
 extern Collision D_8018C3B0;
-// extern s32 D_8018C3F0[]; -> objects.h
-// extern s32 D_8018C630[]; -> objects.h
+// extern s32 gObjectParticle2[]; -> objects.h
+// extern s32 gObjectParticle3[]; -> objects.h
 
 extern Collision D_8018C830;
-// extern s32 D_8018C870[]; -> objects.h
-// extern s32 D_8018C970[]; -> objects.h
+// extern s32 gObjectParticle4[]; -> objects.h
+// extern s32 gLeafParticle[]; -> objects.h
 
 extern hud_player playerHUD[];
 // extern s32 D_8018CC80[]; -> objects.h
