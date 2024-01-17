@@ -1,11 +1,9 @@
-\mainpage mk64 API
-
-Complete resources for learning about mk64 decomp
+#### Complete resources for learning about mk64 decomp
 
 \htmlonly
 
 Essential skills and concepts to help you get started with mk64 decomp.
-<br>
+<br><br>
 <style>
 .pagebutton {
     display: inline-block;
@@ -86,7 +84,7 @@ p {
 }
 </style>
 <div class="pagebutton">
-<a class="pagea" href="basicsmenu.html">
+<a class="pagea" href="basics.html">
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">

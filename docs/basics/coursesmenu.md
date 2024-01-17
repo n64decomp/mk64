@@ -3,7 +3,7 @@
 \htmlonly
 
 How courses work in mk64
-<br>
+<br><br>
 <style>
 .pagebutton {
     display: inline-block;
