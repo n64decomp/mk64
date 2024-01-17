@@ -48,7 +48,7 @@ if (edges && edges.length) {
 <script type="text/javascript">
 var viewWidth = 778;
 var viewHeight = 373;
-var sectionId = 'dynsection-123';
+var sectionId = 'dynsection-122';
 </script>
 <script xlink:href="svgpan.js"/>
 <svg id="graph" class="graph">
@@ -97,7 +97,7 @@ var sectionId = 'dynsection-123';
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node12"><a xlink:href="code__80071F00_8h.html#ae288a36d96a4db6977d95327e246ec12" target="_top" xlink:title=" ">
+<g id="a_node12"><a xlink:href="osPiStartDma_8c.html#ae288a36d96a4db6977d95327e246ec12" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="258.5,-236.41 258.5,-255.41 341.5,-255.41 341.5,-236.41 258.5,-236.41"/>
 <text text-anchor="middle" x="300" y="-243.41" font-family="Helvetica,sans-Serif" font-size="10.00">osPiStartDma</text>
 </a>
@@ -112,7 +112,7 @@ var sectionId = 'dynsection-123';
 <!-- Node4 -->
 <g id="node4" class="node">
 <title>Node4</title>
-<g id="a_node4"><a xlink:href="code__80071F00_8h.html#a4283cbf896ea7ca31653640f6dd237af" target="_top" xlink:title=" ">
+<g id="a_node4"><a xlink:href="crash__screen_8c.html#a4283cbf896ea7ca31653640f6dd237af" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="397,-170.41 397,-189.41 475,-189.41 475,-170.41 397,-170.41"/>
 <text text-anchor="middle" x="436" y="-177.41" font-family="Helvetica,sans-Serif" font-size="10.00">osRecvMesg</text>
 </a>

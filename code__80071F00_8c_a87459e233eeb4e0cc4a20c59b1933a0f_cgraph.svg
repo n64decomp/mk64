@@ -48,7 +48,7 @@ if (edges && edges.length) {
 <script type="text/javascript">
 var viewWidth = 684;
 var viewHeight = 950;
-var sectionId = 'dynsection-548';
+var sectionId = 'dynsection-518';
 </script>
 <script xlink:href="svgpan.js"/>
 <svg id="graph" class="graph">
@@ -203,7 +203,7 @@ var sectionId = 'dynsection-548';
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node11"><a xlink:href="code__80086E70_8c.html#ad12360536bf504d049ba649b40ed2115" target="_top" xlink:title=" ">
+<g id="a_node11"><a xlink:href="code__80086E70_8c.html#a57281d11df278e3297deb216108761fe" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="256.5,-732 256.5,-751 348.5,-751 348.5,-732 256.5,-732"/>
 <text text-anchor="middle" x="302.5" y="-739" font-family="Helvetica,sans-Serif" font-size="10.00">func_80087A0C</text>
 </a>
@@ -680,9 +680,9 @@ var sectionId = 'dynsection-548';
 <!-- Node34 -->
 <g id="node34" class="node">
 <title>Node34</title>
-<g id="a_node34"><a xlink:href="code__80086E70_8c.html#af02c0c488214c8679a92743da1214311" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="408.5,-164 408.5,-183 501.5,-183 501.5,-164 408.5,-164"/>
-<text text-anchor="middle" x="455" y="-171" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008B8BC</text>
+<g id="a_node34"><a xlink:href="code__80071F00_8c.html#aaac380231c672b17a8fda8b451572c4c" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="401,-164 401,-183 509,-183 509,-164 401,-164"/>
+<text text-anchor="middle" x="455" y="-171" font-family="Helvetica,sans-Serif" font-size="10.00">init_texture_object</text>
 </a>
 </g>
 </g>
@@ -695,9 +695,9 @@ var sectionId = 'dynsection-548';
 <!-- Node35 -->
 <g id="node35" class="node">
 <title>Node35</title>
-<g id="a_node35"><a xlink:href="code__80071F00_8c.html#aaac380231c672b17a8fda8b451572c4c" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="401,-126 401,-145 509,-145 509,-126 401,-126"/>
-<text text-anchor="middle" x="455" y="-133" font-family="Helvetica,sans-Serif" font-size="10.00">init_texture_object</text>
+<g id="a_node35"><a xlink:href="code__80086E70_8c.html#ad745ffd7b6ecd50c57336a484979b258" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="400,-126 400,-145 510,-145 510,-126 400,-126"/>
+<text text-anchor="middle" x="455" y="-133" font-family="Helvetica,sans-Serif" font-size="10.00">set_obj_orientation</text>
 </a>
 </g>
 </g>

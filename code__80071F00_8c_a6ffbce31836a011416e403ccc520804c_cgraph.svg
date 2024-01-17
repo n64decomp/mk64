@@ -66,24 +66,24 @@
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="code__80086E70_8c.html#af02c0c488214c8679a92743da1214311" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="126,-88 126,-107 219,-107 219,-88 126,-88"/>
-<text text-anchor="middle" x="172.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008B8BC</text>
+<g id="a_node7"><a xlink:href="code__80071F00_8c.html#aaac380231c672b17a8fda8b451572c4c" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="118.5,-88 118.5,-107 226.5,-107 226.5,-88 118.5,-88"/>
+<text text-anchor="middle" x="172.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">init_texture_object</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node7 -->
 <g id="edge7" class="edge">
 <title>Node1&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M80.15,-110.8C91.42,-109.16 103.92,-107.34 115.97,-105.58"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="116.56,-109.04 125.95,-104.13 115.55,-102.11 116.56,-109.04"/>
+<path fill="none" stroke="midnightblue" d="M80.15,-110.8C89.07,-109.5 98.76,-108.09 108.39,-106.69"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="108.98,-110.14 118.37,-105.23 107.97,-103.21 108.98,-110.14"/>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node8"><a xlink:href="code__80071F00_8c.html#aaac380231c672b17a8fda8b451572c4c" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="118.5,-50 118.5,-69 226.5,-69 226.5,-50 118.5,-50"/>
-<text text-anchor="middle" x="172.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">init_texture_object</text>
+<g id="a_node8"><a xlink:href="code__80086E70_8c.html#ad745ffd7b6ecd50c57336a484979b258" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="117.5,-50 117.5,-69 227.5,-69 227.5,-50 117.5,-50"/>
+<text text-anchor="middle" x="172.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">set_obj_orientation</text>
 </a>
 </g>
 </g>

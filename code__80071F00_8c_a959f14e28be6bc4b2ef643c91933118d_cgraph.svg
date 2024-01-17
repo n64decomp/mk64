@@ -48,7 +48,7 @@ if (edges && edges.length) {
 <script type="text/javascript">
 var viewWidth = 709;
 var viewHeight = 1268;
-var sectionId = 'dynsection-446';
+var sectionId = 'dynsection-417';
 </script>
 <script xlink:href="svgpan.js"/>
 <svg id="graph" class="graph">
@@ -818,24 +818,24 @@ var sectionId = 'dynsection-446';
 <!-- Node36 -->
 <g id="node36" class="node">
 <title>Node36</title>
-<g id="a_node36"><a xlink:href="code__80086E70_8c.html#adeb6debba4f90a8bfdcba5d19d78bf6a" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="437,-342.5 437,-361.5 529,-361.5 529,-342.5 437,-342.5"/>
-<text text-anchor="middle" x="483" y="-349.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008B888</text>
+<g id="a_node36"><a xlink:href="code__80071F00_8c.html#aaac380231c672b17a8fda8b451572c4c" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="429,-342.5 429,-361.5 537,-361.5 537,-342.5 429,-342.5"/>
+<text text-anchor="middle" x="483" y="-349.5" font-family="Helvetica,sans-Serif" font-size="10.00">init_texture_object</text>
 </a>
 </g>
 </g>
 <!-- Node33&#45;&gt;Node36 -->
 <g id="edge67" class="edge">
 <title>Node33&#45;&gt;Node36</title>
-<path fill="none" stroke="midnightblue" d="M364.4,-352C383.75,-352 406.48,-352 426.79,-352"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="426.84,-355.5 436.84,-352 426.84,-348.5 426.84,-355.5"/>
+<path fill="none" stroke="midnightblue" d="M364.4,-352C381.18,-352 400.5,-352 418.58,-352"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="418.76,-355.5 428.76,-352 418.76,-348.5 418.76,-355.5"/>
 </g>
 <!-- Node37 -->
 <g id="node37" class="node">
 <title>Node37</title>
-<g id="a_node37"><a xlink:href="code__80086E70_8c.html#af02c0c488214c8679a92743da1214311" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="436.5,-304.5 436.5,-323.5 529.5,-323.5 529.5,-304.5 436.5,-304.5"/>
-<text text-anchor="middle" x="483" y="-311.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008B8BC</text>
+<g id="a_node37"><a xlink:href="code__80086E70_8c.html#af0e1570f9594db6104157d24386b80cb" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="417,-304.5 417,-323.5 549,-323.5 549,-304.5 417,-304.5"/>
+<text text-anchor="middle" x="483" y="-311.5" font-family="Helvetica,sans-Serif" font-size="10.00">set_obj_direction_angle</text>
 </a>
 </g>
 </g>
@@ -848,9 +848,9 @@ var sectionId = 'dynsection-446';
 <!-- Node38 -->
 <g id="node38" class="node">
 <title>Node38</title>
-<g id="a_node38"><a xlink:href="code__80071F00_8c.html#aaac380231c672b17a8fda8b451572c4c" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="429,-266.5 429,-285.5 537,-285.5 537,-266.5 429,-266.5"/>
-<text text-anchor="middle" x="483" y="-273.5" font-family="Helvetica,sans-Serif" font-size="10.00">init_texture_object</text>
+<g id="a_node38"><a xlink:href="code__80086E70_8c.html#ad745ffd7b6ecd50c57336a484979b258" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="428,-266.5 428,-285.5 538,-285.5 538,-266.5 428,-266.5"/>
+<text text-anchor="middle" x="483" y="-273.5" font-family="Helvetica,sans-Serif" font-size="10.00">set_obj_orientation</text>
 </a>
 </g>
 </g>

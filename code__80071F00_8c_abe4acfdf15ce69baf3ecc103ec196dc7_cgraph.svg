@@ -48,7 +48,7 @@ if (edges && edges.length) {
 <script type="text/javascript">
 var viewWidth = 540;
 var viewHeight = 318;
-var sectionId = 'dynsection-544';
+var sectionId = 'dynsection-514';
 </script>
 <script xlink:href="svgpan.js"/>
 <svg id="graph" class="graph">
@@ -223,9 +223,9 @@ var sectionId = 'dynsection-544';
 <!-- Node11 -->
 <g id="node11" class="node">
 <title>Node11</title>
-<g id="a_node11"><a xlink:href="code__80086E70_8c.html#af02c0c488214c8679a92743da1214311" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="272.5,-38.5 272.5,-57.5 365.5,-57.5 365.5,-38.5 272.5,-38.5"/>
-<text text-anchor="middle" x="319" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008B8BC</text>
+<g id="a_node11"><a xlink:href="code__80071F00_8c.html#aaac380231c672b17a8fda8b451572c4c" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="265,-38.5 265,-57.5 373,-57.5 373,-38.5 265,-38.5"/>
+<text text-anchor="middle" x="319" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">init_texture_object</text>
 </a>
 </g>
 </g>
@@ -238,9 +238,9 @@ var sectionId = 'dynsection-544';
 <!-- Node12 -->
 <g id="node12" class="node">
 <title>Node12</title>
-<g id="a_node12"><a xlink:href="code__80071F00_8c.html#aaac380231c672b17a8fda8b451572c4c" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="265,-0.5 265,-19.5 373,-19.5 373,-0.5 265,-0.5"/>
-<text text-anchor="middle" x="319" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">init_texture_object</text>
+<g id="a_node12"><a xlink:href="code__80086E70_8c.html#ad745ffd7b6ecd50c57336a484979b258" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="264,-0.5 264,-19.5 374,-19.5 374,-0.5 264,-0.5"/>
+<text text-anchor="middle" x="319" y="-7.5" font-family="Helvetica,sans-Serif" font-size="10.00">set_obj_orientation</text>
 </a>
 </g>
 </g>

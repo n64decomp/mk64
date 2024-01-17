@@ -261,24 +261,24 @@
 <!-- Node15 -->
 <g id="node15" class="node">
 <title>Node15</title>
-<g id="a_node15"><a xlink:href="code__80086E70_8c.html#a925609e6a022913e4442f91da642e437" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="263.5,-44.5 263.5,-63.5 356.5,-63.5 356.5,-44.5 263.5,-44.5"/>
-<text text-anchor="middle" x="310" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008B7D4</text>
+<g id="a_node15"><a xlink:href="code__80071F00_8c.html#aaac380231c672b17a8fda8b451572c4c" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="256,-44.5 256,-63.5 364,-63.5 364,-44.5 256,-44.5"/>
+<text text-anchor="middle" x="310" y="-51.5" font-family="Helvetica,sans-Serif" font-size="10.00">init_texture_object</text>
 </a>
 </g>
 </g>
 <!-- Node11&#45;&gt;Node15 -->
 <g id="edge27" class="edge">
 <title>Node11&#45;&gt;Node15</title>
-<path fill="none" stroke="midnightblue" d="M220.04,-66.57C230.65,-65.07 242.08,-63.45 253.09,-61.9"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="253.64,-65.35 263.05,-60.49 252.66,-58.42 253.64,-65.35"/>
+<path fill="none" stroke="midnightblue" d="M220.04,-66.57C228.25,-65.41 236.95,-64.18 245.57,-62.96"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="246.2,-66.41 255.61,-61.54 245.22,-59.47 246.2,-66.41"/>
 </g>
 <!-- Node16 -->
 <g id="node16" class="node">
 <title>Node16</title>
-<g id="a_node16"><a xlink:href="code__80071F00_8c.html#aaac380231c672b17a8fda8b451572c4c" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="256,-6.5 256,-25.5 364,-25.5 364,-6.5 256,-6.5"/>
-<text text-anchor="middle" x="310" y="-13.5" font-family="Helvetica,sans-Serif" font-size="10.00">init_texture_object</text>
+<g id="a_node16"><a xlink:href="code__80086E70_8c.html#a670bd4aa157a5ec3dd6a4f4335a13ea4" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="256.5,-6.5 256.5,-25.5 363.5,-25.5 363.5,-6.5 256.5,-6.5"/>
+<text text-anchor="middle" x="310" y="-13.5" font-family="Helvetica,sans-Serif" font-size="10.00">set_obj_origin_pos</text>
 </a>
 </g>
 </g>
@@ -312,9 +312,9 @@
 <!-- Node14 -->
 <g id="node14" class="node">
 <title>Node14</title>
-<g id="a_node14"><a xlink:href="code__80086E70_8c.html#af02c0c488214c8679a92743da1214311" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="415.5,-38.5 415.5,-57.5 508.5,-57.5 508.5,-38.5 415.5,-38.5"/>
-<text text-anchor="middle" x="462" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008B8BC</text>
+<g id="a_node14"><a xlink:href="code__80086E70_8c.html#ad745ffd7b6ecd50c57336a484979b258" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="407,-38.5 407,-57.5 517,-57.5 517,-38.5 407,-38.5"/>
+<text text-anchor="middle" x="462" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">set_obj_orientation</text>
 </a>
 </g>
 </g>

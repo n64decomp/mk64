@@ -97,7 +97,7 @@ var sectionId = 'dynsection-3';
 <!-- Node3 -->
 <g id="node3" class="node">
 <title>Node3</title>
-<g id="a_node3"><a xlink:href="code__80071F00_8h.html#ae288a36d96a4db6977d95327e246ec12" target="_top" xlink:title=" ">
+<g id="a_node3"><a xlink:href="osPiStartDma_8c.html#ae288a36d96a4db6977d95327e246ec12" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="278,-217.41 278,-236.41 361,-236.41 361,-217.41 278,-217.41"/>
 <text text-anchor="middle" x="319.5" y="-224.41" font-family="Helvetica,sans-Serif" font-size="10.00">osPiStartDma</text>
 </a>
@@ -112,7 +112,7 @@ var sectionId = 'dynsection-3';
 <!-- Node14 -->
 <g id="node14" class="node">
 <title>Node14</title>
-<g id="a_node14"><a xlink:href="code__80071F00_8h.html#a4283cbf896ea7ca31653640f6dd237af" target="_top" xlink:title=" ">
+<g id="a_node14"><a xlink:href="crash__screen_8c.html#a4283cbf896ea7ca31653640f6dd237af" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="412,-284.41 412,-303.41 490,-303.41 490,-284.41 412,-284.41"/>
 <text text-anchor="middle" x="451" y="-291.41" font-family="Helvetica,sans-Serif" font-size="10.00">osRecvMesg</text>
 </a>

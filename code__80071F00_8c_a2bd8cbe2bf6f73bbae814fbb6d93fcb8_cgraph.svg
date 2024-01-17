@@ -66,24 +66,24 @@
 <!-- Node7 -->
 <g id="node7" class="node">
 <title>Node7</title>
-<g id="a_node7"><a xlink:href="code__80086E70_8c.html#af02c0c488214c8679a92743da1214311" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="138,-88 138,-107 231,-107 231,-88 138,-88"/>
-<text text-anchor="middle" x="184.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008B8BC</text>
+<g id="a_node7"><a xlink:href="code__80071F00_8c.html#aaac380231c672b17a8fda8b451572c4c" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="130.5,-88 130.5,-107 238.5,-107 238.5,-88 130.5,-88"/>
+<text text-anchor="middle" x="184.5" y="-95" font-family="Helvetica,sans-Serif" font-size="10.00">init_texture_object</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node7 -->
 <g id="edge7" class="edge">
 <title>Node1&#45;&gt;Node7</title>
-<path fill="none" stroke="midnightblue" d="M92.07,-110.23C103.37,-108.65 115.62,-106.95 127.37,-105.31"/>
-<polygon fill="midnightblue" stroke="midnightblue" points="128.12,-108.74 137.54,-103.9 127.15,-101.81 128.12,-108.74"/>
+<path fill="none" stroke="midnightblue" d="M92.07,-110.23C101.18,-108.96 110.91,-107.6 120.5,-106.27"/>
+<polygon fill="midnightblue" stroke="midnightblue" points="120.99,-109.73 130.42,-104.89 120.03,-102.8 120.99,-109.73"/>
 </g>
 <!-- Node8 -->
 <g id="node8" class="node">
 <title>Node8</title>
-<g id="a_node8"><a xlink:href="code__80071F00_8c.html#aaac380231c672b17a8fda8b451572c4c" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="black" points="130.5,-50 130.5,-69 238.5,-69 238.5,-50 130.5,-50"/>
-<text text-anchor="middle" x="184.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">init_texture_object</text>
+<g id="a_node8"><a xlink:href="code__80086E70_8c.html#ad745ffd7b6ecd50c57336a484979b258" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="black" points="129.5,-50 129.5,-69 239.5,-69 239.5,-50 129.5,-50"/>
+<text text-anchor="middle" x="184.5" y="-57" font-family="Helvetica,sans-Serif" font-size="10.00">set_obj_orientation</text>
 </a>
 </g>
 </g>
