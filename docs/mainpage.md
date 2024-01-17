@@ -1,6 +1,4 @@
-\mainpage mk64 API
-
-Complete resources for learning about mk64 decomp
+# Complete resources for learning about mk64 decomp
 
 \htmlonly
 
