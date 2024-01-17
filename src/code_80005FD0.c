@@ -663,7 +663,7 @@ void func_800065D0(s32 playerId, Player *player) {
     a = (s16) gPathIndexByPlayerId[playerId];
     b = gNearestWaypointByPlayerId[playerId];
 
-    temp_t2 = (s16) ((s16) player->unk_02C[1] / 182);
+    temp_t2 = (s16) ((s16) player->rotation[1] / 182);
     temp_t3 = (s16) ((s16) D_80164590[a][b] / 182);
 
     var_t1 = temp_t2 - temp_t3;
@@ -1792,7 +1792,7 @@ void func_80009B60(s32 playerId) {
                     func_80011E38(playerId);
                 }
                 if ((playerId & 1) != (D_80163378 & 1)) {
-                    func_8001AC10(playerId);
+                    cpu_use_item_strategy(playerId);
                 }
                 func_800099EC(playerId, player);
                 D_80162FD0 = 0;
@@ -1874,9 +1874,9 @@ void func_80009B60(s32 playerId) {
                                     func_8000BBD8(stackPadding1A, D_80163090[playerId], D_80163448);
                                 }
                             }
-                            player->unk_02C[1] = -get_angle_between_points(player->pos, D_80162FA0);
+                            player->rotation[1] = -get_angle_between_points(player->pos, D_80162FA0);
                         } else {
-                            player->unk_02C[1] = D_80164590[D_80163448][(D_801630E0 + 4) % D_80164430];
+                            player->rotation[1] = D_80164590[D_80163448][(D_801630E0 + 4) % D_80164430];
                         }
                     }
                     func_8003680C(player, 0);
@@ -1887,7 +1887,7 @@ void func_80009B60(s32 playerId) {
                     player->effects |= 0x10;
                 }
                 if (D_801630E8[playerId] != 0) {
-                    D_80163300[playerId] = -get_angle_between_points(&player->rotX, player->pos);
+                    D_80163300[playerId] = -get_angle_between_points(&player->copy_rotation_x, player->pos);
                     var_a0_2 = (D_801631DC[(D_80162FCE + 2) % D_80164430] * 0x168) / 65535;
                     var_a1 = (D_80163300[playerId] * 0x168) / 65535;
                     if (var_a0_2 < -0xB4) {
@@ -1993,8 +1993,8 @@ void func_80009B60(s32 playerId) {
                 // MISMATCH2
                 // This fixes part of the register allocation problems, makes fixing others
                 // harder though. Needs more investigation
-                // var_a2 = (-get_angle_between_points(player->pos, D_80162FA0)) - (var_a1 = player->unk_02C[1]);
-                stackPadding19 = -get_angle_between_points(player->pos, D_80162FA0) - player->unk_02C[1];
+                // var_a2 = (-get_angle_between_points(player->pos, D_80162FA0)) - (var_a1 = player->rotation[1]);
+                stackPadding19 = -get_angle_between_points(player->pos, D_80162FA0) - player->rotation[1];
                 var_a1 = stackPadding19;
                 var_a2 = var_a1;
                 if ((s16) temp_f2 < var_a1) {
@@ -5586,7 +5586,7 @@ void func_80015314(s32 playerId, UNUSED f32 arg1, s32 cameraId) {
     temp_a0 = camera1;
     temp_a1 += playerId;
     temp_a0 += cameraId;
-    temp_a0->unk_2C = temp_a1->unk_02C[1];
+    temp_a0->unk_2C = temp_a1->rotation[1];
     func_80015390(temp_a0, temp_a1, 0);
 }
 
@@ -5619,7 +5619,7 @@ void func_80015390(Camera *camera, UNUSED Player *player, UNUSED s32 arg2) {
         var_a2 = 0xA0 + (temp_s1->unk_078 / 16);
     }
     if (!((temp_s1->effects & 0x80) || (temp_s1->effects & 0x40))) {
-        adjust_angle(&camera->unk_2C, temp_s1->unk_02C[1], var_a2);
+        adjust_angle(&camera->unk_2C, temp_s1->rotation[1], var_a2);
     }
     func_8001D794(temp_s1, camera, sp64, &sp84, &sp80, &sp7C, camera->unk_2C);
     func_802ADDC8(&camera->unk_54, 10.0f, sp84, sp80, sp7C);
@@ -7574,7 +7574,7 @@ void func_8001AB00(void) {
     }
 }
 
-void func_8001AB74(s32 arg0, s16 *arg1, s32 arg2) {
+void cpu_decisions_branch_item(s32 arg0, s16 *arg1, s32 arg2) {
     s32 value = -1;
     switch (arg2) {
         case ITEM_FAKE_ITEM_BOX:
@@ -7623,7 +7623,7 @@ void func_8001ABEC(struct struct_801642D8 *arg0) {
 // The use of several different actor types might make getting a match hard(er),
 // might have to get creative/ugly with just a single generic `Actor` variable.
 // https://decomp.me/scratch/FOlbG
-void func_8001AC10(s32 playerId) {
+void cpu_use_item_strategy(s32 playerId) {
     s32 var_v0;
     Player *player;
     TrackWaypoint *waypoint;
@@ -7641,7 +7641,7 @@ void func_8001AC10(s32 playerId) {
         case 0:
             temp_s0->actorIndex = -1;
             if ((((playerId * 0x14) + 0x64) < D_80164450[playerId]) && (temp_s0->unk_04 >= 0x259) && (temp_s0->unk_06 < 3) && (gLapCountByPlayerId[playerId] < 3)) {
-                func_8001AB74(playerId, &temp_s0->unk_00, gen_random_item_cpu((s16)gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]));
+                cpu_decisions_branch_item(playerId, &temp_s0->unk_00, gen_random_item_cpu((s16)gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]));
             } else {
                 func_8001ABE0(playerId, temp_s0);
             }
@@ -8072,7 +8072,7 @@ void func_8001AC10(s32 playerId) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8001AC10.s")
+GLOBAL_ASM("asm/non_matchings/code_80005FD0/cpu_use_item_strategy.s")
 #endif
 
 void func_8001BE78(void) {
@@ -8106,7 +8106,7 @@ void func_8001BE78(void) {
         temp_s1->pos[0] = (f32) temp_s0->posX;
         temp_s1->pos[1] = func_802AE1C0((f32) temp_s0->posX, 2000.0f, (f32) temp_s0->posZ) + temp_s1->boundingBoxSize;
         temp_s1->pos[2] = (f32) temp_s0->posZ;
-        temp_s1->unk_02C[1] = (s16) *D_80164590[i];
+        temp_s1->rotation[1] = (s16) *D_80164590[i];
         func_8003680C(temp_s1, 0);
         temp_s1++;
         D_80163410[i] = 0;

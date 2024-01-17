@@ -852,7 +852,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
     u16 var_a0;
 
     player->unk_048[arg2] = atan2s(player->pos[0] - camera->pos[0], player->pos[2] - camera->pos[2]);
-    player->animFrameSelector[arg2] = (u16) ( (((player->unk_048[arg2]) + player->unk_02C[1] + player->unk_0C0))) / 128;
+    player->animFrameSelector[arg2] = (u16) ( (((player->unk_048[arg2]) + player->rotation[1] + player->unk_0C0))) / 128;
 
     temp_f2 = (gCharacterSize[player->characterId] * 18.0f) * player->size;
     temp_f0 = player->unk_230 - player->unk_23C;
@@ -872,9 +872,9 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
     }
     else {
         if (((player->animFrameSelector[arg2]) >= 0) && ((player->animFrameSelector[arg2]) < 0x101)) {
-            var_f0 = player->rotY - player->pos[1];
+            var_f0 = player->copy_rotation_y - player->pos[1];
         } else {
-            var_f0 = player->pos[1] - player->rotY;
+            var_f0 = player->pos[1] - player->copy_rotation_y;
         }
         player->unk_0D4[arg2] = (s16) ((s32) (((f64) func_802B7C40(var_f0 / temp_f2)) * 0.5));
     }
@@ -882,7 +882,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
         player->unk_0D4[arg2] = (s16) ((s32) player->unk_D9C);
     }
     func_80029200(player, arg2);
-    temp_a0 = ((player->unk_048[arg2] + player->unk_02C[1]) + player->unk_0C0);
+    temp_a0 = ((player->unk_048[arg2] + player->rotation[1]) + player->unk_0C0);
     temp_a0 = (s16) player->unk_0D4[arg2] * sins((u16) temp_a0) + player->unk_0CC[arg2] * coss((u16) temp_a0);
     move_s16_towards(&player->unk_050[arg2], temp_a0, 0.5f);
     var_a0 = player->animFrameSelector[arg2];
@@ -918,7 +918,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
         && ((player->unk_0CA & 2) == 2)) {
         player->unk_050[arg2] = 0;
     }
-    var_a0 = (player->unk_048[arg2] + player->unk_02C[1] + player->unk_0C0);
+    var_a0 = (player->unk_048[arg2] + player->rotation[1] + player->unk_0C0);
     if (((player->effects & 0x80) == 0x80)
         || ((player->effects & 0x40) == 0x40)
         || ((player->effects & 0x80000) == 0x80000)
@@ -1016,7 +1016,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
         var_f12 = 18.0f * (gCharacterSize[player->characterId] / 2);
     }
     
-    calculate_orientation_matrix(sp5C, 0.0f, 1.0f, 0.0f, (player->unk_02C[1] + player->unk_0C0));
+    calculate_orientation_matrix(sp5C, 0.0f, 1.0f, 0.0f, (player->rotation[1] + player->unk_0C0));
     sp8C[0] = var_f12 - 3.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = var_f12 - 2.0f;
@@ -1089,7 +1089,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
         move_s16_towards(&player->slopeAccel, func_802B7C40(temp_f0_2 / temp_f2_3), 0.5f);
     }
     else {
-        temp_f0_2 = player->rotY - arg2;
+        temp_f0_2 = player->copy_rotation_y - arg2;
         temp_v0 = func_802B7C40(temp_f0_2 / temp_f2_3);
         if (temp_f0_2 >= 0.0f) {
             temp_v0 /= 4;
@@ -1125,7 +1125,7 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     UNUSED s32 pad2;
     f32 temp_f0;
 
-    temp_v1 = -player->unk_02C[1] - player->unk_0C0;
+    temp_v1 = -player->rotation[1] - player->unk_0C0;
     if ((player->effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) {
         var_f20 = (((gCharacterSize[player->characterId] * 18) / 2) * (player->size * 1.5)) - 1;
     } else {
@@ -1169,7 +1169,7 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
         temp_f0 = (player->unk_1F8 - player->unk_1FC);
         move_s16_towards(&player->slopeAccel, func_802B7C40(temp_f0 / var_f20), 0.5f);
     } else {
-        temp_f0 = player->rotY - arg2;
+        temp_f0 = player->copy_rotation_y - arg2;
         temp_v0 = func_802B7C40(temp_f0 / var_f20);
         if (temp_f0 >= 0.0f) {
             var_a1 = temp_v0 * 2;
@@ -1425,8 +1425,8 @@ void func_8002AE38(Player *player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     s16 temp_a0;
     s32 var_v1;
 
-    sp28     = (sins(-player->unk_02C[1]) * player->unk_094) + arg2;
-    temp_f16 = (coss(-player->unk_02C[1]) * player->unk_094) + arg3;
+    sp28     = (sins(-player->rotation[1]) * player->unk_094) + arg2;
+    temp_f16 = (coss(-player->rotation[1]) * player->unk_094) + arg3;
     if (
         ((player->effects & 0x800) != 0x800) &&
         ((player->effects & 0x10) != 0x10) &&
@@ -1695,8 +1695,8 @@ void func_8002B9CC(Player *player, s8 arg1, UNUSED s32 arg2) {
                 func_8008C73C(player, arg1);
             }
         }
-        temp = (-(s16)get_angle_between_points(player->pos, &player->rotX));
-        temp2 = (player->unk_02C[1] - player->unk_0C0);
+        temp = (-(s16)get_angle_between_points(player->pos, &player->copy_rotation_x));
+        temp2 = (player->rotation[1] - player->unk_0C0);
         temp = temp - temp2;
         player->unk_234 = temp / 182;
 
@@ -1732,14 +1732,14 @@ void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, UNUSED s8 arg3, UNUSED 
     
     mtxf_translate_vec3f_mat3(sp58, sp64);
     
-    sp4C[0] = player->rotX;
+    sp4C[0] = player->copy_rotation_x;
     sp4C[1] = 0;
-    sp4C[2] = player->rotZ;
+    sp4C[2] = player->copy_rotation_z;
     
     mtxf_translate_vec3f_mat3(sp4C, sp64);
 
     var_v0 = -(s16)get_angle_between_points(sp58, sp4C);
-    t0 = player->unk_02C[1];
+    t0 = player->rotation[1];
     var_v0 = 0x10000 + (t0 - var_v0);
     var_v0 /= 182;
     
@@ -1758,9 +1758,9 @@ void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, UNUSED s8 arg3, UNUSED 
     }
     
     if ((player->unk_07C >> 0x10) < 0) {
-        player->unk_02C[1] -= sp30[var_v0];
+        player->rotation[1] -= sp30[var_v0];
     } else {
-        player->unk_02C[1] += sp30[var_v0];
+        player->rotation[1] += sp30[var_v0];
     }
 }
  
@@ -2160,7 +2160,7 @@ void func_8002D028(Player *player, s8 arg1) {
     sp4C[2] = D_80165230[D_80165270[arg1]];
 
     temp = -(s16)get_angle_between_points(player->pos, sp4C);
-    temp2 = player->unk_02C[1];
+    temp2 = player->rotation[1];
     temp = (temp - temp2);
 
     thing0 = 8;
@@ -2179,8 +2179,8 @@ void func_8002D028(Player *player, s8 arg1) {
 
     temp_f18 = sqrtf((sp4C[0] - player->pos[0]) * (sp4C[0] - player->pos[0])+ (sp4C[2] - player->pos[2]) * (sp4C[2] - player->pos[2]));
     if (temp_f18 <= 8.0f) {
-        adjust_angle(&player->unk_02C[1], -0x8000, 0x016C);
-        if ((player->unk_02C[1] < (-0x7F41)) || (player->unk_02C[1] > 0x7F41)) {
+        adjust_angle(&player->rotation[1], -0x8000, 0x016C);
+        if ((player->rotation[1] < (-0x7F41)) || (player->rotation[1] > 0x7F41)) {
             player->type &= ~0x0200;
         }
         player->unk_08C = 0;
@@ -2272,7 +2272,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
         spB0 = -1 * player->kartGravity;
         spAC = 0 * (player->unk_064[2] + sp16C[2]);
     }
-    temp_f2_2 = ((player->rotZ - player->pos[2]) * coss(player->unk_02C[1] + player->unk_0C0)) + (-(player->rotX - player->pos[0]) * sins(player->unk_02C[1] + player->unk_0C0));
+    temp_f2_2 = ((player->copy_rotation_z - player->pos[2]) * coss(player->rotation[1] + player->unk_0C0)) + (-(player->copy_rotation_x - player->pos[0]) * sins(player->rotation[1] + player->unk_0C0));
     if (temp_f2_2 > 0.1) {
         player->unk_044 |= 8;
     } else {
@@ -2324,9 +2324,9 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
     posY = player->pos[1];
     posZ = player->pos[2];
         
-    player->rotX = player->pos[0];
-    player->rotZ = player->pos[2];
-    player->rotY = player->pos[1];
+    player->copy_rotation_x = player->pos[0];
+    player->copy_rotation_z = player->pos[2];
+    player->copy_rotation_y = player->pos[1];
     spFC = posX + player->velocity[0] + D_8018CE10[playerId].unk_04[0];
     spF8 = posY + player->velocity[1];
     spF4 = posZ + player->velocity[2] + D_8018CE10[playerId].unk_04[2];
@@ -2339,14 +2339,14 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
         spF8 += player->kartHopVelocity;
         spF8 -= 0.02;
     }
-    func_802AD950(&player->unk_110, player->boundingBoxSize, spFC, spF8, spF4, player->rotX, player->rotY, player->rotZ);
+    func_802AD950(&player->unk_110, player->boundingBoxSize, spFC, spF8, spF4, player->copy_rotation_x, player->copy_rotation_y, player->copy_rotation_z);
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
     player->unk_05C = 1.0f;
     if ((player->unk_044 & 1) != 1) {
-        calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
+        calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->rotation[1]);
     } else {
-        calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1] + 0x8000);
+        calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->rotation[1] + 0x8000);
     }
     player->effects |= 8;
     player->unk_0C2 += 1;
@@ -2503,7 +2503,7 @@ void func_8002E4C4(Player *player) {
     player->kartHopVelocity = 0.0f;
     player->pos[1] = func_802AE1C0(player->pos[0], D_80164510[player_index] + 10.0f, player->pos[2]) + player->boundingBoxSize;
     if (((player->pos[1] - D_80164510[player_index]) > 1200.0f) || ((player->pos[1] - D_80164510[player_index]) < -1200.0f)) {
-        player->pos[1] = player->rotY;
+        player->pos[1] = player->copy_rotation_y;
     }
     player->velocity[1] = 0.0f;
 }
@@ -2558,10 +2558,10 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     }
     func_8002C7E4(player, arg3, arg2);
     if (sp46 == 1) {
-        calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, (s16) ((s32) player->unk_02C[1]));
+        calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, (s16) ((s32) player->rotation[1]));
         calculate_orientation_matrix(player->unk_150, player->unk_058, player->unk_05C, player->unk_060, (s16) ((s32) player->unk_0AE));
     } else {
-        calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, (s16) ((s32) player->unk_02C[1]));
+        calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, (s16) ((s32) player->rotation[1]));
     }
     spEC[2] = func_80030150(player, arg3);
     if (sp46 == 1) {
@@ -2595,16 +2595,16 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     posY = player->pos[1];
     posZ = player->pos[2];
         
-    player->rotX = player->pos[0];
-    player->rotY = player->pos[1];
-    player->rotZ = player->pos[2];
+    player->copy_rotation_x = player->pos[0];
+    player->copy_rotation_y = player->pos[1];
+    player->copy_rotation_z = player->pos[2];
         
     spD0 = posX + player->velocity[0] + D_8018CE10[arg3].unk_04[0];
     spCC = posY + player->velocity[1];
     spC8 = posZ + player->velocity[2] + D_8018CE10[arg3].unk_04[2];
     func_8002AAC0(player);
     spCC += player->kartHopVelocity;
-    func_802AD950(&player->unk_110, player->boundingBoxSize, spD0, spCC, spC8, player->rotX, player->rotY, player->rotZ);
+    func_802AD950(&player->unk_110, player->boundingBoxSize, spD0, spCC, spC8, player->copy_rotation_x, player->copy_rotation_y, player->copy_rotation_z);
     player->effects |= 8;
     player->unk_0C2 += 1;
     player->unk_058 = 0.0f;
@@ -2788,16 +2788,16 @@ void control_cpu_movement(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg
     sp68[2] = player->velocity[2];
     sp68[0] += (((spF4[0] + sp84) + spD0[0]) - (sp68[0] * (0.12 * player->kartFriction))) / 6000.0;
     sp68[2] += (((spF4[2] + sp7C) + spD0[2]) - (sp68[2] * (0.12 * player->kartFriction))) / 6000.0;
-    player->rotX = player->pos[0];
-    player->rotY = test;
-    player->rotZ = player->pos[2];
+    player->copy_rotation_x = player->pos[0];
+    player->copy_rotation_y = test;
+    player->copy_rotation_z = player->pos[2];
     spCC = player->pos[0] + player->velocity[0];
     spC4 = player->pos[2] + player->velocity[2];
     player->unk_0C0 = 0;
     player->kartHopJerk = 0;
     player->kartHopAcceleration = 0;
     player->kartHopVelocity = 0;
-    calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
+    calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->rotation[1]);
     player->unk_0C2 = 0;
     player->effects &= ~2;
     player->effects &= ~8;
@@ -2869,9 +2869,9 @@ void func_8002F730(Player *player, UNUSED Camera *camera, UNUSED s8 arg2, s8 arg
     spB8 = player->pos[2];
 
 
-    player->rotX = player->pos[0];
-    player->rotY = player->pos[1];
-    player->rotZ = player->pos[2];
+    player->copy_rotation_x = player->pos[0];
+    player->copy_rotation_y = player->pos[1];
+    player->copy_rotation_z = player->pos[2];
 
     spCC = player->velocity[0] + spC0;
     spC8 = player->velocity[1] + sp44;
@@ -2880,11 +2880,11 @@ void func_8002F730(Player *player, UNUSED Camera *camera, UNUSED s8 arg2, s8 arg
     func_8002AAC0(player);
 
     spC8 += player->kartHopVelocity;
-    func_802AD950(&player->unk_110, player->boundingBoxSize, spCC, spC8, spC4, player->rotX, player->rotY, player->rotZ);
+    func_802AD950(&player->unk_110, player->boundingBoxSize, spCC, spC8, spC4, player->copy_rotation_x, player->copy_rotation_y, player->copy_rotation_z);
     player->unk_058 = 0.0f;
     player->unk_05C = 1.0f;
     player->unk_060 = 0.0f;
-    calculate_orientation_matrix(player->orientationMatrix, 0.0f, 1.0f, 0.0f, (s16) (s32) player->unk_02C[1]);
+    calculate_orientation_matrix(player->orientationMatrix, 0.0f, 1.0f, 0.0f, (s16) (s32) player->rotation[1]);
     player->effects &= ~8;
     sp78 = player->unk_110.unk3C[2];
     if (sp78 <= 0.0f) {
@@ -4601,7 +4601,7 @@ void func_80037BB4(Player *player, Vec3f arg1) {
     } else {
         if (player->unk_078 < 0) {
             if (((player->effects & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
-                player->unk_02C[1] += player->unk_078;
+                player->rotation[1] += player->unk_078;
             }
             if (!(player->type & PLAYER_CPU)) {
                 if (gModeSelection == BATTLE) {
@@ -4614,7 +4614,7 @@ void func_80037BB4(Player *player, Vec3f arg1) {
             }
         } else {
             if (((player->effects & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
-                player->unk_02C[1] += player->unk_078;
+                player->rotation[1] += player->unk_078;
             }
             if (!(player->type & PLAYER_CPU)) {
                 if (gModeSelection == BATTLE) {
@@ -4969,7 +4969,7 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     player->topSpeed = 250.0f;
     func_8002B830(player, arg3, arg2);
     func_8002CD48(player, arg3, arg2);
-    player->unk_02C[1] += player->unk_078;
+    player->rotation[1] += player->unk_078;
     spF0[0] = 0;
     spF0[1] = 0;
     spF0[2] = 0;
@@ -5001,9 +5001,9 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     posY = player->pos[1];
     posZ = player->pos[2];
 
-    player->rotX = player->pos[0];
-    player->rotY = player->pos[1];
-    player->rotZ = player->pos[2];
+    player->copy_rotation_x = player->pos[0];
+    player->copy_rotation_y = player->pos[1];
+    player->copy_rotation_z = player->pos[2];
 
     spEC = posX + player->velocity[0];
     spE8 = posY + player->velocity[1];
@@ -5011,11 +5011,11 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 arg3) {
     func_8002AAC0(player);
     spE8 += player->kartHopVelocity;
     spE8 -= 0.02;
-    func_802AD950(&player->unk_110, player->boundingBoxSize, spEC, spE8, spE4, player->rotX, player->rotY, player->rotZ);
+    func_802AD950(&player->unk_110, player->boundingBoxSize, spEC, spE8, spE4, player->copy_rotation_x, player->copy_rotation_y, player->copy_rotation_z);
     player->unk_058 = 0;
     player->unk_060 = 0;
     player->unk_05C = 1.0f;
-    calculate_orientation_matrix(player->orientationMatrix, 0, 1.0f, 0, player->unk_02C[1]);
+    calculate_orientation_matrix(player->orientationMatrix, 0, 1.0f, 0, player->rotation[1]);
     player->effects |= 8;
     player->unk_0C2 += 1;
     sp98 = player->unk_110.unk3C[2];

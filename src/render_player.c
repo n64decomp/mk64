@@ -153,12 +153,12 @@ u16 func_8001FD78(Player *player, f32 posX, UNUSED f32 arg2, f32 posZ) {
 
     ret = FALSE;
 
-    sp58 = (70.0f * coss(((player->unk_0C0 - player->unk_02C[1]) -  0x71C))) + player->pos[2];
-    sp64 = (70.0f * sins(((player->unk_0C0 - player->unk_02C[1]) -  0x71C))) + player->pos[0];
-    sp54 = (70.0f * coss(((player->unk_0C0 - player->unk_02C[1]) +  0x71C))) + player->pos[2];
-    sp60 = (70.0f * sins(((player->unk_0C0 - player->unk_02C[1]) +  0x71C))) + player->pos[0];
-    sp50 = (10.0f * coss(((player->unk_0C0 - player->unk_02C[1]) + 0x1C70))) + player->pos[2];
-    sp5c = (10.0f * sins(((player->unk_0C0 - player->unk_02C[1]) + 0x1C70))) + player->pos[0];
+    sp58 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) -  0x71C))) + player->pos[2];
+    sp64 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) -  0x71C))) + player->pos[0];
+    sp54 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) +  0x71C))) + player->pos[2];
+    sp60 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) +  0x71C))) + player->pos[0];
+    sp50 = (10.0f * coss(((player->unk_0C0 - player->rotation[1]) + 0x1C70))) + player->pos[2];
+    sp5c = (10.0f * sins(((player->unk_0C0 - player->rotation[1]) + 0x1C70))) + player->pos[0];
 
     temp_f14 = ((sp58 - posZ) * (sp60 - posX)) - ((sp54 - posZ) * (sp64 - posX));
     thing0   = ((sp54 - posZ) * (sp5c - posX)) - ((sp50 - posZ) * (sp60 - posX));
@@ -1230,8 +1230,8 @@ void render_player_shadow(Player *player, s8 arg1, s8 arg2) {
     UNUSED Vec3f pad2;
     f32 var_f2;
 
-    temp_t9 = (u16)(player->unk_048[arg2] + player->unk_02C[1] + player->unk_0C0) / 128; // << 7) & 0xFFFF;
-    spC0 = -player->unk_02C[1] - player->unk_0C0;
+    temp_t9 = (u16)(player->unk_048[arg2] + player->rotation[1] + player->unk_0C0) / 128; // << 7) & 0xFFFF;
+    spC0 = -player->rotation[1] - player->unk_0C0;
 
     spB0 = -coss(temp_t9 << 7) * 2;
     spAC = -sins(temp_t9 << 7) * 2;
@@ -1305,8 +1305,8 @@ void render_player_shadow_credits(Player *player, s8 playerId, s8 arg2) {
     UNUSED Vec3f pad3;
     Vec3f sp94 = { 9.0f, 7.0f, 5.0f };
 
-    temp_t9 = (u16)(player->unk_048[arg2] + player->unk_02C[1] + player->unk_0C0) / 128;
-    spC0 = -player->unk_02C[1] - player->unk_0C0;
+    temp_t9 = (u16)(player->unk_048[arg2] + player->rotation[1] + player->unk_0C0) / 128;
+    spC0 = -player->rotation[1] - player->unk_0C0;
 
     spB0 = -coss(temp_t9 << 7) * 3;
     spAC = -sins(temp_t9 << 7) * 3;
@@ -1365,7 +1365,7 @@ void kart_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
         sp154[0] = player->pos[0] + sp148;
         sp154[2] = player->pos[2] + sp140;
     } else {
-        thing = (u16)(player->unk_048[arg2] + player->unk_02C[1] + player->unk_0C0);
+        thing = (u16)(player->unk_048[arg2] + player->rotation[1] + player->unk_0C0);
         temp_v1 = player->unk_0CC[arg2] * sins(thing);
         if ((player->effects & 8) == 8) {
             sp14C[0] = cameras[arg2].rot[0] - 0x4000;
@@ -1496,7 +1496,7 @@ void ghost_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     } else {
         spC2 = 0x0070;
     }
-    thing = (u16)(player->unk_048[arg2] - player->unk_02C[1]);
+    thing = (u16)(player->unk_048[arg2] - player->rotation[1]);
     spD4[0] = (-(s16)(sins(thing) * (0.0f * 0.0f)) * 0.8);
     spD4[1] = player->unk_048[arg2];
     spD4[2] = player->unk_050[arg2];
@@ -1552,9 +1552,9 @@ void func_80025DE8(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     Vec3f sp9C;
     Vec3s sp94;
 
-    sp9C[0] = player->pos[0] + (sins(-player->unk_02C[1]) * -1.5);
+    sp9C[0] = player->pos[0] + (sins(-player->rotation[1]) * -1.5);
     sp9C[1] = ((player->pos[1] - player->boundingBoxSize) + player->unk_108) + 0.1;
-    sp9C[2] = player->pos[2] + (coss(-player->unk_02C[1]) * -1.5);
+    sp9C[2] = player->pos[2] + (coss(-player->rotation[1]) * -1.5);
     sp94[0] = -0x00B6;
     sp94[1] = player->unk_048[arg2];
     sp94[2] = player->unk_050[arg2];
