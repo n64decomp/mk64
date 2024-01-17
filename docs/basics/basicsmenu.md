@@ -116,7 +116,7 @@ p {
 <p>Become familiar with technical and low-level concepts.</p>
 
 <div class="pagebutton">
-<a class="pagea" href="basicconcepts.html">
+<a class="pagea" href="concepts.html">
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
