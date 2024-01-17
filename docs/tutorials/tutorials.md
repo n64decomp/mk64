@@ -1,7 +1,8 @@
 \page tutorials Tutorials
-# Tutorials
+Topics discussing how to work with certain features.
 
 \htmlonly
+<br><br>
 <style>
 .pagebutton {
     display: inline-block;
