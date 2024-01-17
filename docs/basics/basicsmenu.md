@@ -3,7 +3,7 @@
 \htmlonly
 
 Essential skills and concepts to help you get started with mk64 decomp.
-<br>
+<br><br>
 <style>
 .pagebutton {
     display: inline-block;
@@ -114,7 +114,7 @@ p {
 
 <h2>Foundational Knowledge</h2>
 <p>Become familiar with technical and low-level concepts.</p>
-
+<br>
 <div class="pagebutton">
 <a class="pagea" href="concepts.html">
 <div class="pagelink">

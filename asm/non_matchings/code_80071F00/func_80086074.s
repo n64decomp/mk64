@@ -16,7 +16,7 @@ glabel func_80086074
 /* 086CAC 800860AC 8C460004 */  lw    $a2, 4($v0)
 /* 086CB0 800860B0 8C470008 */  lw    $a3, 8($v0)
 /* 086CB4 800860B4 44054000 */  mfc1  $a1, $f8
-/* 086CB8 800860B8 0C022DF5 */  jal   func_8008B7D4
+/* 086CB8 800860B8 0C022DF5 */  jal   set_obj_origin_pos
 /* 086CBC 800860BC 00000000 */   nop   
 /* 086CC0 800860C0 8FA80024 */  lw    $t0, 0x24($sp)
 /* 086CC4 800860C4 3C0A0600 */  lui   $t2, %hi(d_course_rainbow_road_static_tluts) # $t2, 0x600

@@ -232,25 +232,25 @@ Mtx D_80183D60;
 s32 D_80183DA0;
 f32 D_80183DA8[4];
 //! Lakitu?
-s32 D_80183DB8[4];
+s32 gIndexLakituList[4];
 f32 D_80183DC8[4];
 //! Indexes for the objects associated with the Bomb Karts
 s32 D_80183DD8[NUM_BOMB_KARTS_MAX];
 UNUSED s32 D_80183DF8[16];
-//! Next free spot in D_8018C1B0? Wraps back around to 0 if it gets bigger than D_8018C1B0_SIZE
-s32 D_80183E38;
+//! Next free spot in gObjectParticle1? Wraps back around to 0 if it gets bigger than gObjectParticle1_SIZE
+s32 gNextFreeObjectParticle1;
 Vec3f D_80183E40;
-//! Next free spot in D_8018C3F0? Wraps back around to 0 if it gets bigger than D_8018C3F0_SIZE
-s32 D_80183E4C;
+//! Next free spot in gObjectParticle2? Wraps back around to 0 if it gets bigger than gObjectParticle2_SIZE
+s32 gNextFreeObjectParticle2;
 Vec3f D_80183E50;
-//! Next free spot in D_8018C630?
-s32 D_80183E5C;
+//! Next free spot in gObjectParticle3?
+s32 gNextFreeObjectParticle3;
 UNUSED s32 D_80183E60[3];
-//! Next free spot in D_8018C870? Wraps back around to 0 if it gets bigger than D_8018C870_SIZE
-s32 D_80183E6C;
+//! Next free spot in gObjectParticle4? Wraps back around to 0 if it gets bigger than gObjectParticle4_SIZE
+s32 gNextFreeObjectParticle4;
 Vec3f D_80183E70;
-//! Next free spot in D_8018C970? Wraps back around to 0 if it gets bigger than D_8018C970_SIZE
-s32 D_80183E7C;
+//! Next free spot in gLeafParticle? Wraps back around to 0 if it gets bigger than gLeafParticle_SIZE
+s32 gNextFreeLeafParticle;
 Vec3su D_80183E80;
 //! Appears to be a list of object list indices for the Item Window part of the HUD
 s32 gItemWindowObjectByPlayerId[4];
@@ -303,32 +303,32 @@ Collision D_8018C0B0[4];
  *   Segments of the fire breath from the statues in Bowser's Castle
  *   Potentially other things
  */
-s32 D_8018C1B0[D_8018C3F0_SIZE];
+s32 gObjectParticle1[gObjectParticle2_SIZE];
 Collision D_8018C3B0;
 /**
  * List of object list indices used for:
  *   Bats in Banshee's Boardwalk (but only 1 player mode?)
  */
-s32 D_8018C3F0[D_8018C3F0_SIZE];
+s32 gObjectParticle2[gObjectParticle2_SIZE];
 // Maybe some unused Collision?
 UNUSED Collision D_8018C5F0;
-s32 D_8018C630[D_8018C630_SIZE];
+s32 gObjectParticle3[gObjectParticle3_SIZE];
 Collision D_8018C830;
 /**
  * List of object list indices. Used both for the fires in the DK Jungle cave
  * and, seemingly for the trail that shells leave behind them.
  * I think they're using the same texture, which would explain the dual use
  */
-s32 D_8018C870[D_8018C870_SIZE];
+s32 gObjectParticle4[gObjectParticle4_SIZE];
 /**
  * Seemingly a list of object list indices used for the leaves that sometimes fall
  * trees when you bonk into them
  */
-s32 D_8018C970[D_8018C970_SIZE];
+s32 gLeafParticle[gLeafParticle_SIZE];
 hud_player playerHUD[4];
 /**
  * List of object list indices used by the clouds and stars in some stages
- * Also used for snowflakes like D_8018C1B0? Not sure what's up with that
+ * Also used for snowflakes like gObjectParticle1? Not sure what's up with that
  */
 s32 D_8018CC80[D_8018CC80_SIZE];
 struct_D_8018CE10 D_8018CE10[8];
@@ -699,7 +699,7 @@ void func_8005884C(void) {
     func_80058B58(3);
 }
 
-void func_800588F4(s32 arg0) {
+void func_800588F4(s32 cameraId) {
 
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
@@ -707,68 +707,68 @@ void func_800588F4(s32 arg0) {
         case COURSE_CHOCO_MOUNTAIN:
             break;
         case COURSE_BOWSER_CASTLE:
-            func_80053870(arg0);
-            func_80054664(arg0);
+            func_80053870(cameraId);
+            func_80054664(cameraId);
             break;
         case COURSE_BANSHEE_BOARDWALK:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_800527D8(arg0);
-                func_80052590(arg0);
-                func_8005217C(arg0);
-                func_800524B4(arg0);
+                func_800527D8(cameraId);
+                func_80052590(cameraId);
+                func_8005217C(cameraId);
+                func_800524B4(cameraId);
             }
             break;
         case COURSE_YOSHI_VALLEY:
-            func_80055228(arg0);
+            func_80055228(cameraId);
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_8005568C(arg0);
+                func_8005568C(cameraId);
             }
             break;
         case COURSE_FRAPPE_SNOWLAND:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_8005327C(arg0);
+                func_8005327C(cameraId);
             }
             break;
         case COURSE_KOOPA_BEACH:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80055528(arg0);
+                func_80055528(cameraId);
             }
             if (gGamestate != CREDITS_SEQUENCE) {
 
                 if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
-                    func_80055380(arg0);
+                    func_80055380(cameraId);
                 }
             } else {
-                func_80055380(arg0);
+                func_80055380(cameraId);
             }
             break;
         case COURSE_ROYAL_RACEWAY:
             break;
         case COURSE_LUIGI_RACEWAY:
             if (D_80165898 != 0) {
-                func_80055E68(arg0);
+                func_80055E68(cameraId);
             }
             break;
         case COURSE_MOO_MOO_FARM:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_800550A4(arg0);
+                func_800550A4(cameraId);
             }
             break;
         case COURSE_TOADS_TURNPIKE:
             break;
         case COURSE_KALAMARI_DESERT:
-            func_800541BC(arg0);
+            func_800541BC(cameraId);
             break;
         case COURSE_SHERBET_LAND:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80052E30(arg0);
+                func_80052E30(cameraId);
             }
-            func_8005592C(arg0);
+            func_8005592C(cameraId);
             break;
         case COURSE_RAINBOW_ROAD:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80056188(arg0);
-                func_80055C38(arg0);
+                func_80056188(cameraId);
+                func_80055C38(cameraId);
             }
             break;
         case COURSE_WARIO_STADIUM:
@@ -781,19 +781,19 @@ void func_800588F4(s32 arg0) {
             break;
         case COURSE_DK_JUNGLE:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80054414(arg0);
+                func_80054414(cameraId);
             }
             break;
     }
 
-    func_80054938(arg0);
-    func_80051638(arg0);
+    func_80054938(cameraId);
+    func_80051638(cameraId);
 
     if (D_80165730 != 0) {
-        func_80053E6C(arg0);
+        func_80053E6C(cameraId);
     }
     if (gModeSelection == BATTLE) {
-        func_80056AC0(arg0);
+        func_80056AC0(cameraId);
     }
 }
 
@@ -1247,7 +1247,7 @@ void func_8005995C(void) {
 void func_80059A88(s32 playerId) {
     func_80059820(playerId);
     if (!gDemoMode) {
-        func_8007A948(playerId);
+        update_obj_laikitu(playerId);
         func_8007BB9C(playerId);
     }
 }
@@ -1334,7 +1334,7 @@ void func_80059D00(void) {
                 func_80059820(PLAYER_TWO);
                 func_80078C70(2);
             }
-            func_8005A74C();
+            update_obj();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             randomize_seed_from_controller(PLAYER_ONE);
@@ -1353,7 +1353,7 @@ void func_80059D00(void) {
             }
             func_80078C70(2);
             func_8005D1F4(1);
-            func_8005A74C();
+            update_obj();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             randomize_seed_from_controller(PLAYER_ONE);
@@ -1372,7 +1372,7 @@ void func_80059D00(void) {
             }
             func_80078C70(4);
             func_8005D1F4(1);
-            func_8005A74C();
+            update_obj();
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             randomize_seed_from_controller(PLAYER_ONE);
@@ -1405,7 +1405,7 @@ void func_80059D00(void) {
                 }
                 func_8005D1F4(3);
             }
-            func_8005A74C();
+            update_obj();
             break;
         }
         func_800744CC();
@@ -1427,7 +1427,7 @@ void func_8005A070(void) {
         } else if (gGamestate == CREDITS_SEQUENCE) {
             func_80059820(PLAYER_ONE);
             func_80078C70(0);
-            func_8005A74C();
+            update_obj();
         } else {
             func_80059D00();
         }
@@ -1447,10 +1447,10 @@ void func_8005A14C(s32 playerId) {
     lapCount = gLapCountByPlayerId[playerId];
     if (player->type & PLAYER_EXISTS) {
         if (player->effects & 0x204C0) {
-            gObjectList[objectIndex].unk_0BE[2] += 0x1000;
+            gObjectList[objectIndex].direction_angle[2] += 0x1000;
         } else {
-            if (gObjectList[objectIndex].unk_0BE[2] != 0) {
-                gObjectList[objectIndex].unk_0BE[2] += 0x1000;
+            if (gObjectList[objectIndex].direction_angle[2] != 0) {
+                gObjectList[objectIndex].direction_angle[2] += 0x1000;
             }
         }
         if (player->effects & LIGHTNING_EFFECT) {
@@ -1459,9 +1459,9 @@ void func_8005A14C(s32 playerId) {
             f32_step_towards(&gObjectList[objectIndex].sizeScaling, 0.6f, 0.02f);
         }
         if (player->effects & 0x04000000) {
-            u16_step_up_towards(&gObjectList[objectIndex].unk_0BE[0], 0x0C00U, 0x0100U);
+            u16_step_up_towards(&gObjectList[objectIndex].direction_angle[0], 0x0C00U, 0x0100U);
         } else {
-            u16_step_down_towards(&gObjectList[objectIndex].unk_0BE[0], 0, 0x00000100);
+            u16_step_down_towards(&gObjectList[objectIndex].direction_angle[0], 0, 0x00000100);
         }
         if (player->effects & 0x03000000) {
             func_80087D24(objectIndex, 6.0f, 1.5f, 0.0f);
@@ -1474,9 +1474,9 @@ void func_8005A14C(s32 playerId) {
             gObjectList[objectIndex].unk_0A0 = 0x00FF;
         }
         if (lapCount >= 3) {
-            gObjectList[objectIndex].unk_0BE[2] = 0;
-            gObjectList[objectIndex].unk_0BE[1] = 0;
-            gObjectList[objectIndex].unk_0BE[0] = 0;
+            gObjectList[objectIndex].direction_angle[2] = 0;
+            gObjectList[objectIndex].direction_angle[1] = 0;
+            gObjectList[objectIndex].direction_angle[0] = 0;
             gObjectList[objectIndex].unk_028[2] = 0.0f;
             gObjectList[objectIndex].unk_028[1] = 0.0f;
             gObjectList[objectIndex].unk_028[0] = 0.0f;
@@ -1576,14 +1576,14 @@ void func_8005A71C(void) {
     }
 }
 
-void func_8005A74C(void) {
+void update_obj(void) {
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
     case COURSE_CHOCO_MOUNTAIN:
         break;
     case COURSE_BOWSER_CASTLE:
         func_80081208();
-        func_80076B84();
+        update_particle_bowser_castle();
         break;
     case COURSE_BANSHEE_BOARDWALK:
         if (gGamestate != CREDITS_SEQUENCE) {
@@ -1637,7 +1637,7 @@ void func_8005A74C(void) {
         break;
     case COURSE_RAINBOW_ROAD:
         if (gGamestate != CREDITS_SEQUENCE) {
-            func_800861E0();
+            update_neon();
             func_80085AA8();
         }
         break;
