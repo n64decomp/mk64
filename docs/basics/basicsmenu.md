@@ -98,13 +98,13 @@ p {
 </div>
 
 <div class="pagebutton">
-<a class="pagea" href="test.html">
+<a class="pagea" href="controlflow.html">
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
-    <div class="pageheading">test</div>
+    <div class="pageheading">Control Flow</div>
     <div class="pagedescription">
-      <p>test</p>
+      <p>Introduction to mk64's operating states and threading. Acclimate to the codebase with this essential read.</p>
     </div>
   </div>
 </div>
@@ -147,6 +147,6 @@ p {
 
 \subpage compiling
 \subpage concepts
-\subpage test
+\subpage controlflow
 \subpage terminology
 \subpage buildwindows
