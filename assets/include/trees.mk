@@ -4,8 +4,8 @@ TREES_DIR := assets/trees
 # So we do something a little strange. We extract 2 versions of the TLUT.
 # gTLUTTrees is 16x16, meaning that is has some other TLUT data filling out the backend. This is the one used to extract/import the rest of
 # the tree pictures
-# gTLUTTreesImport is 8x29. Only used as an inc.c file.
-TREES_PALETTE_IMPORT := $(TREES_DIR)/gTLUTTreesImport.png
+# common_tlut_trees_import is 8x29. Only used as an inc.c file.
+TREES_PALETTE_IMPORT := $(TREES_DIR)/common_tlut_trees_import.png
 TREES_PALETTE := $(TREES_DIR)/gTLUTTrees.png
 
 TREES_PNG := \
