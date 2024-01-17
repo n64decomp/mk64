@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['terminology_29148',['Terminology',['../terminology.html',1,'basics']]],
-  ['todo_20list_29149',['Todo List',['../todo.html',1,'']]]
+  ['surface_20types_29159',['Surface Types',['../surfacetypes.html',1,'coursesmenu']]]
 ];
