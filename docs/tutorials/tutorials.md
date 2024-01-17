@@ -1,9 +1,7 @@
-\page coursesmenu Courses
+\page tutorials Tutorials
+# Tutorials
 
 \htmlonly
-
-How courses work in mk64
-<br>
 <style>
 .pagebutton {
     display: inline-block;
@@ -83,30 +81,14 @@ p {
     padding: 0;
 }
 </style>
-
 <div class="pagebutton">
-<a class="pagea" href="courses.html">
+<a class="pagea" href="boostramps.html">
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
-    <div class="pageheading">Courses</div>
+    <div class="pageheading">Boostramps</div>
     <div class="pagedescription">
-      <p>Some course related stuff</p>
-    </div>
-  </div>
-</div>
-</a>
-</div>
-
-
-<div class="pagebutton">
-<a class="pagea" href="surfacetypes.html">
-<div class="pagelink">
-  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
-  <div class="content">
-    <div class="pageheading">Surface Types</div>
-    <div class="pagedescription">
-      <p>Surface types in mk64</p>
+      <p>Steps for creating your own boostramps</p>
     </div>
   </div>
 </div>
@@ -115,6 +97,4 @@ p {
 
 \endhtmlonly
 
-\subpage courses
-\subpage surfacetypes
-
+\subpage boostramps
