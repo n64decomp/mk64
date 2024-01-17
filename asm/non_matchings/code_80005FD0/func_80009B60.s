@@ -257,7 +257,7 @@ glabel func_80009B60
 /* 00AABC 80009EBC 318D0001 */  andi  $t5, $t4, 1
 /* 00AAC0 80009EC0 11ED0003 */  beq   $t7, $t5, .L80009ED0
 /* 00AAC4 80009EC4 AFAD0030 */   sw    $t5, 0x30($sp)
-/* 00AAC8 80009EC8 0C006B04 */  jal   func_8001AC10
+/* 00AAC8 80009EC8 0C006B04 */  jal   cpu_use_item_strategy
 /* 00AACC 80009ECC 01802025 */   move  $a0, $t4
 .L80009ED0:
 /* 00AAD0 80009ED0 8FA400D0 */  lw    $a0, 0xd0($sp)

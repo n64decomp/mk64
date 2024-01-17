@@ -343,10 +343,10 @@ Variable Name | Memory Address
 [func_8001A588](@ref func_8001A588) | 0x8001A588
 [func_8001AAAC](@ref func_8001AAAC) | 0x8001AAAC
 [func_8001AB00](@ref func_8001AB00) | 0x8001AB00
-[func_8001AB74](@ref func_8001AB74) | 0x8001AB74
+[cpu_decisions_branch_item](@ref cpu_decisions_branch_item) | 0x8001AB74
 [func_8001ABE0](@ref func_8001ABE0) | 0x8001ABE0
 [func_8001ABEC](@ref func_8001ABEC) | 0x8001ABEC
-[func_8001AC10](@ref func_8001AC10) | 0x8001AC10
+[cpu_use_item_strategy](@ref cpu_use_item_strategy) | 0x8001AC10
 [func_8001BE78](@ref func_8001BE78) | 0x8001BE78
 [func_8001C05C](@ref func_8001C05C) | 0x8001C05C
 [func_8001C14C](@ref func_8001C14C) | 0x8001C14C
@@ -5097,7 +5097,7 @@ Variable Name | Memory Address
 [render_dks_jungle_parkway](@ref render_dks_jungle_parkway) | 0x80295310
 [render_big_donut](@ref render_big_donut) | 0x802954E8
 [func_8029569C](@ref func_8029569C) | 0x8029569C
-[func_80295A38](@ref func_80295A38) | 0x80295A38
+[render_course](@ref render_course) | 0x80295A38
 [func_80295BF8](@ref func_80295BF8) | 0x80295BF8
 [func_80295C6C](@ref func_80295C6C) | 0x80295C6C
 [func_80295D50](@ref func_80295D50) | 0x80295D50
@@ -5357,7 +5357,7 @@ Variable Name | Memory Address
 [find_vtx_and_set_colours](@ref find_vtx_and_set_colours) | 0x802AF8BC
 [subtract_scaled_vector](@ref subtract_scaled_vector) | 0x802AF9F0
 [process_collision](@ref process_collision) | 0x802AFA34
-[func_802B0210](@ref func_802B0210) | 0x802B0210
+[copy_collision](@ref copy_collision) | 0x802B0210
 [func_802B02B4](@ref func_802B02B4) | 0x802B02B4
 [func_802B039C](@ref func_802B039C) | 0x802B039C
 [func_802B0464](@ref func_802B0464) | 0x802B0464
@@ -5380,7 +5380,7 @@ Variable Name | Memory Address
 [use_fake_itembox_item](@ref use_fake_itembox_item) | 0x802B2C40
 [use_banana_item](@ref use_banana_item) | 0x802B2D70
 [use_thunder_item](@ref use_thunder_item) | 0x802B2EBC
-[func_802B2FA0](@ref func_802B2FA0) | 0x802B2FA0
+[player_use_item](@ref player_use_item) | 0x802B2FA0
 [func_802B30EC](@ref func_802B30EC) | 0x802B30EC
 [update_actor_green_shell](@ref update_actor_green_shell) | 0x802B32C4
 [func_802B3B44](@ref func_802B3B44) | 0x802B3B44
