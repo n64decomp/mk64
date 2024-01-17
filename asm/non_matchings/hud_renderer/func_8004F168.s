@@ -88,14 +88,14 @@ glabel func_8004F168
 /* 04FEB8 8004F2B8 1041001B */  beq   $v0, $at, .L8004F328
 /* 04FEBC 8004F2BC 24010001 */   li    $at, 1
 /* 04FEC0 8004F2C0 10410019 */  beq   $v0, $at, .L8004F328
-/* 04FEC4 8004F2C4 3C0A0D03 */   lui   $t2, %hi(gMiniMapKartTextures) # $t2, 0xd03
+/* 04FEC4 8004F2C4 3C0A0D03 */   lui   $t2, %hi(common_texture_minimap_kart_character) # $t2, 0xd03
 /* 04FEC8 8004F2C8 8466002E */  lh    $a2, 0x2e($v1)
 /* 04FECC 8004F2CC 34018000 */  li    $at, 32768
 /* 04FED0 8004F2D0 000869C0 */  sll   $t5, $t0, 7
 /* 04FED4 8004F2D4 00C13021 */  addu  $a2, $a2, $at
 /* 04FED8 8004F2D8 30CCFFFF */  andi  $t4, $a2, 0xffff
 /* 04FEDC 8004F2DC 01803025 */  move  $a2, $t4
-/* 04FEE0 8004F2E0 254ACCD8 */  addiu $t2, %lo(gMiniMapKartTextures) # addiu $t2, $t2, -0x3328
+/* 04FEE0 8004F2E0 254ACCD8 */  addiu $t2, %lo(common_texture_minimap_kart_character) # addiu $t2, $t2, -0x3328
 /* 04FEE4 8004F2E4 3C190D00 */  lui   $t9, %hi(common_vtx_player_minimap_icon) # $t9, 0xd00
 /* 04FEE8 8004F2E8 27395470 */  addiu $t9, %lo(common_vtx_player_minimap_icon) # addiu $t9, $t9, 0x5470
 /* 04FEEC 8004F2EC 01AA7021 */  addu  $t6, $t5, $t2
@@ -116,11 +116,11 @@ glabel func_8004F168
 .L8004F328:
 /* 04FF28 8004F328 8466002E */  lh    $a2, 0x2e($v1)
 /* 04FF2C 8004F32C 34018000 */  li    $at, 32768
-/* 04FF30 8004F330 3C0E0D03 */  lui   $t6, %hi(gMiniMapKartTextures) # $t6, 0xd03
+/* 04FF30 8004F330 3C0E0D03 */  lui   $t6, %hi(common_texture_minimap_kart_character) # $t6, 0xd03
 /* 04FF34 8004F334 00C13021 */  addu  $a2, $a2, $at
 /* 04FF38 8004F338 30C8FFFF */  andi  $t0, $a2, 0xffff
 /* 04FF3C 8004F33C 01003025 */  move  $a2, $t0
-/* 04FF40 8004F340 25CECCD8 */  addiu $t6, %lo(gMiniMapKartTextures) # addiu $t6, $t6, -0x3328
+/* 04FF40 8004F340 25CECCD8 */  addiu $t6, %lo(common_texture_minimap_kart_character) # addiu $t6, $t6, -0x3328
 /* 04FF44 8004F344 000D51C0 */  sll   $t2, $t5, 7
 /* 04FF48 8004F348 3C0F0D00 */  lui   $t7, %hi(common_vtx_player_minimap_icon) # $t7, 0xd00
 /* 04FF4C 8004F34C 25EF5470 */  addiu $t7, %lo(common_vtx_player_minimap_icon) # addiu $t7, $t7, 0x5470
