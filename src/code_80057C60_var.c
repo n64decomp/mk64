@@ -141,7 +141,7 @@ s32 D_8018D380;
 s32 D_8018D384;
 s32 D_8018D388;
 UNUSED s32 D_8018D390[11];
-//! Controls number of come object type placed into D_8018C3F0 on Frappe Snowland. So, maybe snowmen/snowflakes?
+//! Controls number of come object type placed into gObjectParticle2 on Frappe Snowland. So, maybe snowmen/snowflakes?
 s32 D_8018D3BC;
 //! Limit on some object type (ice chips?) in Sherbet Land
 s32 D_8018D3C0;

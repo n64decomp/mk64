@@ -12,11 +12,13 @@ typedef struct {
     u16 id;
 } StarSpawn;
 
+/** @cond */
+
 void func_80077D5C(s32);
 s32  find_unused_obj_index(s32*);
 void delete_object(s32*);
 s32  func_80071FBC(void);
-s32  func_80072044(s32*, s32*, s32);
+s32  add_unused_obj_index(s32*, s32*, s32);
 void delete_object_wrapper(s32*);
 void func_80072120(s32*, s32);
 void func_80072180(void);
@@ -66,7 +68,7 @@ void func_80073404(s32, u8, u8, Vtx*);
 void init_texture_object(s32, u8*, u8*, u8, u16);
 void func_8007348C(s32, u8*, u8, u8, Vtx *);
 void func_800734D4(void);
-void func_800734DC(s32);
+void update_neon_texture(s32);
 void func_80073514(s32);
 void func_80073568(void);
 void func_800735BC(s32, Gfx*, f32);
@@ -151,7 +153,7 @@ void func_80076958(s32);
 void func_800769D8(s32);
 void func_80076AEC(s32);
 void func_80076B7C(void);
-void func_80076B84(void);
+void update_particle_bowser_castle(void);
 void func_80076C9C(s32, Vec3f, s16);
 void func_80076D70(Vec3f, f32, s16);
 void func_80076DC4(s32);
@@ -165,7 +167,7 @@ void func_80077428(s32);
 void func_80077450(s32);
 void func_80077584(s32);
 void func_80077640(void);
-void func_80077700(s32, Vec3f, s32);
+void init_leaf_particle(s32, Vec3f, s32);
 s32  func_80077A54(Vec3f, s32);
 void func_80077AB0(Vec3f, s32);
 void func_80077B14(s32);
@@ -198,7 +200,7 @@ void func_8007A778(s32, Player*, Camera*);
 void func_8007A884(void);
 void func_8007A88C(s32);
 void func_8007A910(s32);
-void func_8007A948(s32);
+void update_obj_laikitu(s32);
 void func_8007AA44(s32);
 void func_8007ABFC(s32, s32);
 void consume_item(s32);
@@ -213,7 +215,7 @@ void func_8007BB9C(s32);
 void func_8007BBBC(s32);
 void func_8007BD04(s32);
 void func_8007BDA8(void);
-void func_8007BDE0(s32);
+void init_var_cheep_cheep(s32);
 void func_8007BEC8(s32);
 void func_8007BFB0(s32);
 void func_8007C280(void);
@@ -350,7 +352,7 @@ void func_80085878(s32, s32);
 void func_800859C8(s32, s32);
 void func_80085AA8(void);
 void func_80085BB4(s32);
-void func_80085C20(s32);
+void init_obj_neon_mushroom(s32);
 void func_80085CA0(s32);
 void func_80085DB8(s32);
 void func_80085E38(s32);
@@ -358,8 +360,8 @@ void func_80085EF8(s32);
 void func_80085F74(s32);
 void func_80086074(s32, s32);
 void func_80086110(s32, s32);
-void func_80086158(s32, s32);
-void func_800861E0(void);
+void update_obj_neon(s32, s32);
+void update_neon(void);
 void func_8008629C(s32, s32);
 void func_80086424(s32);
 void func_80086528(s32, s32);
@@ -405,5 +407,7 @@ extern s16 *D_800E5D9C[5];
 extern s8   D_800E5DB4[];
 extern s16 *D_800E633C[];
 extern s16 *D_800E672C[2];
+
+/** @endcond */
 
 #endif
