@@ -1,18 +1,18 @@
 UNUSED_TRAFFIC_LIGHT_DIR := assets/unused_traffic_light
 
-UNUSED_TRAFFIC_LIGHT_PALETTE := $(UNUSED_TRAFFIC_LIGHT_DIR)/gTLUTUnusedTrafficLight.png
+UNUSED_TRAFFIC_LIGHT_PALETTE := $(UNUSED_TRAFFIC_LIGHT_DIR)/common_tlut_traffic_light.png
 
 UNUSED_TRAFFIC_LIGHT_PNG := \
-$(UNUSED_TRAFFIC_LIGHT_DIR)/gTextureUnusedTrafficLight01.png \
-$(UNUSED_TRAFFIC_LIGHT_DIR)/gTextureUnusedTrafficLight02.png \
-$(UNUSED_TRAFFIC_LIGHT_DIR)/gTextureUnusedTrafficLight03.png \
-$(UNUSED_TRAFFIC_LIGHT_DIR)/gTextureUnusedTrafficLight04.png \
-$(UNUSED_TRAFFIC_LIGHT_DIR)/gTextureUnusedTrafficLight05.png \
-$(UNUSED_TRAFFIC_LIGHT_DIR)/gTextureUnusedTrafficLight06.png \
-$(UNUSED_TRAFFIC_LIGHT_DIR)/gTextureUnusedTrafficLight07.png \
-$(UNUSED_TRAFFIC_LIGHT_DIR)/gTextureUnusedTrafficLight08.png \
-$(UNUSED_TRAFFIC_LIGHT_DIR)/gTextureUnusedTrafficLight09.png \
-$(UNUSED_TRAFFIC_LIGHT_DIR)/gTextureUnusedTrafficLight10.png
+$(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_01.png \
+$(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_02.png \
+$(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_03.png \
+$(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_04.png \
+$(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_05.png \
+$(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_06.png \
+$(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_07.png \
+$(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_08.png \
+$(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_09.png \
+$(UNUSED_TRAFFIC_LIGHT_DIR)/common_texture_traffic_light_10.png
 
 UNUSED_TRAFFIC_LIGHT_EXPORT_SENTINEL := $(UNUSED_TRAFFIC_LIGHT_DIR)/.export
 
