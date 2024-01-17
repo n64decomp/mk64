@@ -13,7 +13,6 @@ var NAVTREEINDEX83 =
 "trig__tables_8inc_8c.html#a3b30c2040031f1807fad7d104800543d":[9,0,1,21,1],
 "trig__tables_8inc_8c.html#a8cd29d4c79eecb60c083fa81ecc005b9":[9,0,1,21,0],
 "tutorials.html":[4],
-"tutorials.html#autotoc_md32":[4,0],
 "types_8h.html":[9,0,1,22],
 "types_8h.html#a4bb374aee872d45ca8292940f2a0ed03":[9,0,1,22,10],
 "types_8h.html#a4bb374aee872d45ca8292940f2a0ed03a27835f996fe92824161464f3cd8a369b":[9,0,1,22,10,2],

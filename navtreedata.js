@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "Mario Kart 64", "index.html", [
-    [ "mk64 API", "index.html", null ],
+    [ "Complete resources for learning about mk64 decomp", "index.html", null ],
     [ "Actors", "actorsmenu.html", "actorsmenu" ],
     [ "Understanding the Basics", "basics.html", "basics" ],
     [ "Courses", "coursesmenu.html", "coursesmenu" ],
