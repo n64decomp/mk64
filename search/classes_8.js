@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['hegdehogspawn_14647',['HegdehogSpawn',['../structHegdehogSpawn.html',1,'']]],
-  ['hud_5fplayer_14648',['hud_player',['../structhud__player.html',1,'']]]
+  ['hegdehogspawn_14646',['HegdehogSpawn',['../structHegdehogSpawn.html',1,'']]],
+  ['hud_5fplayer_14647',['hud_player',['../structhud__player.html',1,'']]]
 ];

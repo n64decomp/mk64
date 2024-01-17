@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['courses_26780',['COURSES',['../common__structs_8h.html#acf250ad4ca05ca435a61203c41d4ca88',1,'common_structs.h']]]
+  ['courses_26779',['COURSES',['../common__structs_8h.html#acf250ad4ca05ca435a61203c41d4ca88',1,'common_structs.h']]]
 ];
