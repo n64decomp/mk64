@@ -1,8 +1,6 @@
-#### Complete resources for learning about mk64 decomp
+Complete resources for learning about mk64 decomp
 
 \htmlonly
-
-Essential skills and concepts to help you get started with mk64 decomp.
 <br><br>
 <style>
 .pagebutton {
