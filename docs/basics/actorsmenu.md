@@ -14,7 +14,7 @@ The actor code has two main parts; the update code and the render code. The upda
 
 `gObjectList` contains:
 ```
-thwomps, bowser fire-breath, moles, hedgehogs, snowmen, crabs, etc (also, probably penguins and birds).
+thwomps, bowser fire-breath, moles, hedgehogs, snowmen, crabs, particles, leaves, etc (also, probably penguins and birds).
 ```
 The object system is much more complex than actors and is not well documented.
 

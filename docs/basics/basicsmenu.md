@@ -19,11 +19,9 @@ Essential skills and concepts to help you get started with mk64 decomp.
 }
 .pagelink:hover {
   box-shadow: 0 5px 15px 5px rgba(0,0,0,1);
-
 }
 .pagelink:hover img {
   transform: scale3d(1.1,1.1,1.1);
-
 }
 .pageimg {
     display: inline-block;
