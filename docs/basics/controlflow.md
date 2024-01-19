@@ -15,7 +15,7 @@ switch(gCurrentCourseId) {
 This code loads resources based on a specific course. An entire spaghetti tree of code may be imagined based on many series of conditional statements.
 
 # Threading
-The game begins by setting up its four threads; idle, video, audio, and the game loop.
+After boot, the game begins by setting up its four threads; idle, video, audio, and the game loop.
 The idle thread allows the cpu to sleep. Without it, if at any time execution of all threads were paused, the cpu would never be able to continue. The idle thread is active if all the other threads are paused.
 
 As such, the idle thread runs the following loop: `while(TRUE);` (it runs in a perpetual loop of nothing; sleep). In mips assembly it looks like this:
