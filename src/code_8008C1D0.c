@@ -1197,7 +1197,7 @@ void func_8008EDC0(Player* player) {
     if ((u16) player->unk_256 > 0) {
         player->currentSpeed = 0.0f;
     }
-    if ((player->unk_0F8 != 0xFE) && ((player->effects & 8) != 8)) {
+    if ((player->surfaceType != BOOST_PAD) && ((player->effects & 8) != 8)) {
         move_f32_towards(&player->boostPower, 0, 1.0f);
     } else {
         move_f32_towards(&player->boostPower, 400.0f, 0.01f);
@@ -1241,7 +1241,7 @@ void func_8008EEE4(Player* player, s8 arg1) {
 void func_8008F008(Player* player) {
     player->currentSpeed = gTopSpeedTable[0][player->characterId];
 
-    if ((player->unk_0F8 != 0xFC) && ((player->effects & 8) != 8)) {
+    if ((player->surfaceType != BOOST_RAMP) && ((player->effects & 8) != 8)) {
         move_f32_towards(&player->boostPower, 0, 1.0f);
     } else {
         move_f32_towards(&player->boostPower, 300.0f, 0.1f);

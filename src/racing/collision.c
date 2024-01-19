@@ -76,14 +76,14 @@ f32 func_802AAB4C(Player *player) {
             }
             return 0.8f;
         case COURSE_SHERBET_LAND:
-            if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == 5) {
+            if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == SNOW) {
                 return (f32) (D_8015F6EE - 0xA);
             }
             return D_8015F8E4;
         case COURSE_DK_JUNGLE:
             temp_v1 = func_802ABD40(player->unk_110.unk3A) & 0xFF;
             if (temp_v1 == 0xFF) {
-                if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == 0xF) {
+                if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == CAVE) {
                     return -475.0f;
                 }
                 if (playerX > -478.0f) {
@@ -2007,7 +2007,7 @@ void func_802AF314(void) {
  * Recursive search for vtx and set surfaceTypes to -1 and sectionId's to 0xFF
  */
 void set_vertex_data_with_defaults(Gfx *gfx) {
-    find_and_set_vertex_data(gfx, -1, 0xFF);
+    find_and_set_vertex_data(gfx, SURFACE_DEFAULT, 0xFF);
 }
 
 /**

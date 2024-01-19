@@ -3125,7 +3125,7 @@ void func_80079860(s32 playerId) {
         (
             ((func_802ABDF4(player->unk_110.unk3A) != 0) && (player->unk_110.unk3C[2] <= 3.0f)) ||
             (player->unk_0CA & 1) ||
-            ((player->unk_0F8 == 0x00FD) && !(player->effects & 8))
+            ((player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & 8))
         )
         ) {
         func_80090778(player);
@@ -3268,7 +3268,7 @@ void update_obj_laikitu_fishing2(s32 objectIndex, s32 playerId) {
             func_80073654(objectIndex);
             break;
         case 3:
-            if ((temp_s1->unk_0F8 == 9) && !(temp_s1->unk_0CA & 1) && ((f64) temp_s1->unk_110.unk3C[2] <= 30.0)) {
+            if ((temp_s1->surfaceType == ICE) && !(temp_s1->unk_0CA & 1) && ((f64) temp_s1->unk_110.unk3C[2] <= 30.0)) {
                 func_800722A4(objectIndex, 8);
             }
             if (!(temp_s1->unk_0CA & 2)) {

@@ -1646,7 +1646,7 @@ void player_render(Player *player, s8 playerId, s8 arg2) {
     }
     func_80023BF0(player, playerId, arg2, var_v1);
     temp_t1 = 8 << (arg2 * 4);
-    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_110.unk3C[2] <= 50.0f) && (player->unk_0F8 != 9)) {
+    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_110.unk3C[2] <= 50.0f) && (player->surfaceType != ICE)) {
         if ((player->effects & 0x80000000) == 0x80000000) {
             if (playerId == arg2) {
                 render_player_shadow(player, playerId, arg2);
@@ -1661,7 +1661,7 @@ void player_render(Player *player, s8 playerId, s8 arg2) {
         ghost_render(player, playerId, arg2, var_v1);
     }
     osRecvMesg(&gDmaMesgQueue, &sp34, OS_MESG_BLOCK);
-    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_0F8 == 9) && ((player->unk_0CA & 1) != 1) && (player->unk_110.unk3C[2] <= 30.0f)) {
+    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) && ((player->unk_0CA & 1) != 1) && (player->unk_110.unk3C[2] <= 30.0f)) {
         player_ice_reflection_render(player, playerId, arg2, var_v1);
     }
     if (player->boostPower >= 2.0f) {

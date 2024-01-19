@@ -65,28 +65,32 @@ typedef enum {
     /* 0x10 */ NUM_TIME_TRIAL_DATA
 } TIME_TRIAL_DATA_INDEX;
 
+/**
+ * @brief The different types of surface in the game.
+*/
 enum SURFACE_TYPE {
+    /* -0x1 */ SURFACE_DEFAULT = -1,
     /* 0x00 */ AIRBORNE,
-    /* 0x01 */ PAVEMENT, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
-    /* 0x02 */ SAND_ONE, // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK Jungle on course, Yoshi Valley
-    /* 0x03 */ SAND_TWO, // Koopa Troopa Beach light color, Royal Raceway
-    /* 0x04 */ STONE_TWO, // Royal Raceway castle entrance, Bowser's Castle
-    /* 0x05 */ SNOW_ONE, // Frappe Snowland on course, Sherber Land tunnel
-    /* 0x06 */ STONE_ONE, // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
-    /* 0x07 */ SAND_FIVE, // Mario Raceway
+    /* 0x01 */ BITUMEN, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
+    /* 0x02 */ DIRT, // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK Jungle on course, Yoshi Valley
+    /* 0x03 */ SAND, // Koopa Troopa Beach light color, Royal Raceway
+    /* 0x04 */ STONE, // Royal Raceway castle entrance, Bowser's Castle
+    /* 0x05 */ SNOW, // Frappe Snowland on course, Sherber Land tunnel
+    /* 0x06 */ BRIDGE, // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
+    /* 0x07 */ SAND_OFF_ROAD, // Mario Raceway
     /* 0x08 */ GRASS, // Luigi's Raceway, Mario Raceway, Royal Raceway, Bowser's Castle, DK Jungle, Yoshi Valley
     /* 0x09 */ ICE, // Sherbert Land
-    /* 0x0A */ SAND_THREE, // Koop Troopa Beach dark color
-    /* 0x0B */ SNOW_TWO, // Frappe Snowland off course
+    /* 0x0A */ WET_SAND, // Koop Troopa Beach dark color
+    /* 0x0B */ SNOW_OFF_ROAD, // Frappe Snowland off course
     /* 0x0C */ CLIFF, // Koopa Troopa Beach, Choco Mountain
-    /* 0x0D */ SAND_FOUR, // Kalimari Desert off course
+    /* 0x0D */ DIRT_OFF_ROAD, // Kalimari Desert off course
     /* 0x0E */ TRAIN_TRACK, // Kalimari Desert
-    /* 0x0F */ DIRT, // DK Jungle cave
-    /* 0x10 */ WOOD_TWO, // Bowser's Castle bridge 2, DK Jungle bridge
-    /* 0x11 */ WOOD_ONE, // Frappe Snowland bridge, Bowser's Castle bridge 1,3, Yoshi Valley bridge 2
-    /* 0xFC */ BOOST_PAD_TWO = 0xFC, // DK Jungle
+    /* 0x0F */ CAVE, // DK Jungle cave
+    /* 0x10 */ ROPE_BRIDGE, // Bowser's Castle bridge 2, DK Jungle bridge
+    /* 0x11 */ WOOD_BRIDGE, // Frappe Snowland bridge, Bowser's Castle bridge 1,3, Yoshi Valley bridge 2
+    /* 0xFC */ BOOST_RAMP = 0xFC, // DK Jungle
     /* 0xFD */ OUT_OF_BOUNDS, // DK Jungle river island
-    /* 0xFE */ BOOST_PAD_ONE, // Royal Raceway
+    /* 0xFE */ BOOST_PAD, // Royal Raceway
     /* 0xFF */ RAMP // Koopa Troopa beach
 };
 
@@ -156,15 +160,9 @@ typedef struct {
 typedef struct {
     s16 ob[3];    /* x, y, z */
     s16 tc[2];    /* texture coord */
-    u8  ca[4];    /* color & alpha */
+    s8  ca[4];    /* color & alpha */
 
-} mk64_Vtx;
-
-typedef struct {
-    s16 ob[3];    /* x, y, z */
-    s16 tc[2];    /* texture coord */
-    s8  n[3];    /* color & alpha */
-} mk64_Vtx_n;
+} Course_Vtx;
 
 /*
 This struct has been copied (with only minor modifications) from
@@ -313,7 +311,7 @@ typedef struct {
     /* 0x00EC */ f32 kartHopVelocity;
     /* 0x00F0 */ f32 kartHopJerk;
     /* 0x00F4 */ f32 kartHopAcceleration;
-    /* 0x00F8 */ u16 unk_0F8;
+    /* 0x00F8 */ u16 surfaceType;
     /* 0x00FA */ s16 unk_0FA;
     /* 0x00FC */ f32 kartFriction;
     /* 0x0100 */ f32 kartGravity;

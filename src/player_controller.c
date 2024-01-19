@@ -1102,13 +1102,13 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     if (((player->effects & 8) == 8) && ((player->unk_0CA & 2) == 2)) {
         player->slopeAccel = (s16) ((s32) player->unk_D9C);
     }
-    player->unk_0F8 = get_surface_type(player->unk_110.unk3A) & 0xFF;
-    if (player->unk_0F8 == 0xFE) {
+    player->surfaceType = get_surface_type(player->unk_110.unk3A) & 0xFF;
+    if (player->surfaceType == BOOST_PAD) {
         if (((player->effects & 0x100000) != 0x100000) && ((player->effects & 8) != 8)) {
             player->statusEffects |= 0x800000;
         }
     }
-    if (player->unk_0F8 == 0xFC) {
+    if (player->surfaceType == BOOST_RAMP) {
         if (((player->effects & 4) != 4) && ((player->effects & 8) != 8)) {
             player->statusEffects |= 0x8000;
         }
@@ -1157,11 +1157,11 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
         player->unk_1FC = (player->boundingBoxCorners[1].cornerGroundY + player->boundingBoxCorners[0].cornerGroundY) / 2;
         player->unk_1F8 = (player->boundingBoxCorners[3].cornerGroundY + player->boundingBoxCorners[2].cornerGroundY) / 2;
     }
-    player->unk_0F8 = (u8)get_surface_type(player->unk_110.unk3A);
-    player->boundingBoxCorners[3].surfaceType = player->unk_0F8;
-    player->boundingBoxCorners[2].surfaceType = player->unk_0F8;
-    player->boundingBoxCorners[1].surfaceType = player->unk_0F8;
-    player->boundingBoxCorners[0].surfaceType = player->unk_0F8;
+    player->surfaceType = (u8)get_surface_type(player->unk_110.unk3A);
+    player->boundingBoxCorners[3].surfaceType = player->surfaceType;
+    player->boundingBoxCorners[2].surfaceType = player->surfaceType;
+    player->boundingBoxCorners[1].surfaceType = player->surfaceType;
+    player->boundingBoxCorners[0].surfaceType = player->surfaceType;
     var_f20 = (gCharacterSize[player->characterId] * 18) + 1;
     temp_f0 = (player->unk_23C - player->unk_230);
     player->unk_206 = -func_802B7C40(temp_f0 / var_f20);
@@ -1183,12 +1183,12 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     } else {
         player->boundingBoxCorners[3].unk_14 &= ~1;
     }
-    if (player->unk_0F8 == 0x00FE) {
+    if (player->surfaceType == BOOST_PAD) {
         if (((player->effects & 0x100000) != 0x100000) && ((player->effects & 8) != 8)) {
             player->statusEffects |= 0x800000;
         }
     }
-    if (player->unk_0F8 == 0x00FC) {
+    if (player->surfaceType == BOOST_RAMP) {
         if (((player->effects & 4) != 4) && ((player->effects & 8) != 8)) {
             player->statusEffects |= 0x8000;
         }
@@ -1873,11 +1873,11 @@ void func_8002C17C(Player *player, s8 playerId) {
         }
         break;
     case COURSE_FRAPPE_SNOWLAND:
-        if ((player->unk_0F8 == 0x000B) && (D_80165330[playerId] == 0)) {
+        if ((player->surfaceType == SNOW_OFF_ROAD) && (D_80165330[playerId] == 0)) {
             D_80165330[playerId] = 1;
             gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
             gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
-        } else if (player->unk_0F8 != 0x000B) {
+        } else if (player->surfaceType != SNOW_OFF_ROAD) {
             D_80165330[playerId] = 0;
             gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
             gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
@@ -1962,7 +1962,7 @@ void func_8002C4F8(Player *player, s8 arg1) {
             func_80090868(player);
         }
     }
-    if ((player->type & PLAYER_CPU) && (player->unk_0F8 == 0x00FD) && !(player->effects & 8)) {
+    if ((player->type & PLAYER_CPU) && (player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & 8)) {
         func_80090778(player);
         func_80090868(player);
     }
@@ -2248,7 +2248,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
         player->unk_064[0] *= -1.0f;
         player->unk_064[2] *= -1.0f;
     }
-    if ((player->boundingBoxCorners[2].surfaceType == 1) && (player->boundingBoxCorners[3].surfaceType == 1)) {
+    if ((player->boundingBoxCorners[2].surfaceType == BITUMEN) && (player->boundingBoxCorners[3].surfaceType == BITUMEN)) {
         spB4 = (-1 * (player->unk_064[0] + sp16C[0])) + ((-player->unk_110.orientationVector[0] * player->kartGravity) * 0.925);
         spB0 = (-player->unk_110.orientationVector[1] * player->kartGravity);
         spAC = (-1 * (player->unk_064[2] + sp16C[2])) + ((-player->unk_110.orientationVector[2] * player->kartGravity) * 0.925);
@@ -3002,10 +3002,10 @@ void func_8002FE84(Player *player, f32 arg1) {
         var_f0 += (temp_lo * 0.025) / 1.2;
     }
     player->unk_098 = arg1 * (1.0f - var_f0);
-    if (player->boundingBoxCorners[3].surfaceType == 8) {
+    if (player->boundingBoxCorners[3].surfaceType == GRASS) {
         var_f0 += D_800E2E90[player->characterId][player->boundingBoxCorners[3].surfaceType] * 0.7;
     }
-    if (player->boundingBoxCorners[2].surfaceType == 8) {
+    if (player->boundingBoxCorners[2].surfaceType == GRASS) {
         // The unecessary "* 1.0" here is to force the compiler to save this 0.7 as a separate RO value from the 0.7 just above this comment
         var_f0 += D_800E2E90[player->characterId][player->boundingBoxCorners[2].surfaceType] * (0.7 * 1.0);
     }
@@ -3158,28 +3158,28 @@ void func_80030A34(Player *player) {
 
     if (((player->unk_0CA & 2) != 2) && ((player->unk_0CA & 8) != 8)) {
         if ((((player->unk_094 / 18.0f) * 216.0f) >= 8.0f) && (player->unk_DB4.unkC < 1.0f)) {
-            switch (player->unk_0F8) {                    /* irregular */
-            case 1:
-                if (random_int(0x000AU) != 8) {
-                    var_f0 = 0.35f;
-                    var_f2 = 0.55f;
-                } else {
-                    player->unk_07A = 0;
-                    player->unk_108 = 0.0f;
-                    var_f0 = 0.0f;
-                    var_f2 = 0.0f;
-                }
-                break;
-            case 14:
-            case 16:
-                var_f0 = 0.94f;
-                var_f2 = 0.85f;
-                break;
-            default:
-                if(1){}
-                var_f0 = 0.46f;
-                var_f2 = 0.48f;
-                break;
+            switch (player->surfaceType) {                    /* irregular */
+                case BITUMEN:
+                    if (random_int(0x000AU) != 8) {
+                        var_f0 = 0.35f;
+                        var_f2 = 0.55f;
+                    } else {
+                        player->unk_07A = 0;
+                        player->unk_108 = 0.0f;
+                        var_f0 = 0.0f;
+                        var_f2 = 0.0f;
+                    }
+                    break;
+                case TRAIN_TRACK:
+                case ROPE_BRIDGE:
+                    var_f0 = 0.94f;
+                    var_f2 = 0.85f;
+                    break;
+                default:
+                    if(1){}
+                    var_f0 = 0.46f;
+                    var_f2 = 0.48f;
+                    break;
             }
         } else if (random_int(0x000AU) != 8) {
             var_f0 = 0.3f;
