@@ -100,7 +100,7 @@ p {
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
-    <div class="pageheading">Control Flow</div>
+    <div class="pageheading">Intro to mk64</div>
     <div class="pagedescription">
       <p>Introduction to mk64's operating states and threading. Acclimate to the codebase with this essential read.</p>
     </div>
@@ -120,7 +120,7 @@ p {
   <div class="content">
     <div class="pageheading">Basic Concepts</div>
     <div class="pagedescription">
-      <p>Decomp, hexadecimal, cpu threads, addresses, and types to provide foundation knowledge.</p>
+      <p>n64 addressing, alignment, and basic types.</p>
     </div>
   </div>
 </div>

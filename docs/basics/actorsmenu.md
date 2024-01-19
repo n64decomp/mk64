@@ -19,7 +19,7 @@ thwomps, bowser fire-breath, moles, hedgehogs, snowmen, crabs, particles, leaves
 The object system is much more complex than actors and is not well documented.
 
 \htmlonly
-<br><br>
+<br>
 <style>
 .pagebutton {
     display: inline-block;
