@@ -100,9 +100,9 @@ p {
 <div class="pagelink">
   <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
   <div class="content">
-    <div class="pageheading">Intro to mk64</div>
+    <div class="pageheading">Codebase Overview</div>
     <div class="pagedescription">
-      <p>Introduction to mk64's operating states and threading. Acclimate to the codebase with this essential read.</p>
+      <p>Introduction to mk64's functionality, operating states, and threading. Acclimate to the codebase with this essential read.</p>
     </div>
   </div>
 </div>
