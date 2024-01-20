@@ -1,7 +1,7 @@
 Complete resources for learning about mk64 decomp
 
 \htmlonly
-<br><br>
+<br>
 <style>
 .pagebutton {
     display: inline-block;

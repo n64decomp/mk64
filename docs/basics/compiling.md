@@ -1,26 +1,16 @@
 @page compiling Installing mk64 Decomp
-## Build Instructions
+# Build Instructions
 The build system has the following package requirements:
 
     binutils-mips >= 2.27
     python3 >= 3.6
     libaudiofile
 
-* [Linux and WSL](#linux)
-* [Arch](#arch)
-* [Windows](#windows)
-* [macOS](#macos)
-* [Docker](#docker)
-
-### Compiling
-* [US](#building-us)
-* [EU](#building-eu)
-
-
+[TOC]
 
 To add submodules run `git submodule update --init --recursive` after cloning.
 
-## Linux
+# Linux
 ```
 sudo apt install build-essential pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev
 ```
@@ -35,13 +25,13 @@ Install the following AUR package:
 
 Review the [n64decomp/sm64](https://github.com/n64decomp/sm64) readme for instructions to compile in other distributions.
 
-## Windows
+# Windows
 
 Not recommended. Use WSL unless this is your only option. 
 
-[Instructions here](docs/BUILD_WINDOWS.md)
+[Instructions here](buildwindows.html)
 
-## macOS
+# macOS
 
 Install [Homebrew](https://brew.sh), then install the following dependencies:
 ```
@@ -51,7 +41,7 @@ brew install python3 capstone coreutils make pkg-config tehzz/n64-dev/mips64-elf
 
 Build using `gmake` ensuring homebrew `make` is used instead of the old macOS system `make`.
 
-## Docker
+# Docker
 
 Build the Docker image:
 ```
@@ -69,7 +59,7 @@ docker run --rm -v ${PWD}:/mk64 mk64 make -C tools
 docker run --rm -v ${PWD}:/mk64 mk64 make
 ```
 
-## Building US
+# Building US
 
 Place a US version of Mario Kart 64 called `baserom.us.z64` into the project folder for asset extraction.
 
@@ -79,7 +69,7 @@ make -C tools
 make -j
 ```
 
-## Building EU
+# Building EU
 
 Building EU requires US to be built first. See above.
 
