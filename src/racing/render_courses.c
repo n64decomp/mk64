@@ -272,6 +272,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
                 case 31:
                 case 37:
                     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
+                    // d_course_koopa_troopa_beach_packed_dl_9E70
                     gSPDisplayList(gDisplayListHead++, 0x07009E70);
                     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
                     break;
@@ -286,7 +287,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            load_surface_map(d_course_koopa_troopa_beach_dl_list2, arg0);
+            load_surface_map((uintptr_t)d_course_koopa_troopa_beach_dl_list2, arg0);
             gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
@@ -311,6 +312,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
                 gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER);
                 gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
                 gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+                // d_course_sherbet_land_packed_dl_2B48
                 gSPDisplayList(gDisplayListHead++, 0x07002B48);
             }
             gDPPipeSync(gDisplayListHead++);
@@ -342,6 +344,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
             gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
             gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
+            // d_course_wario_stadium_packed_dl_EC0
             gSPDisplayList(gDisplayListHead++, 0x07000EC0);
             gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
@@ -364,36 +367,46 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
 
             if (pathCounter < 17) {
                 gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+                // d_course_dks_jungle_parkway_packed_dl_3E40
                 gSPDisplayList(gDisplayListHead++, 0x07003E40);
+                // d_course_dks_jungle_parkway_packed_dl_3EB0
                 gSPDisplayList(gDisplayListHead++, 0x07003EB0);
                 if ((pathCounter >= 6) && (pathCounter < 13)) {
                     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+                    // d_course_dks_jungle_parkway_packed_dl_3DD0
                     gSPDisplayList(gDisplayListHead++, 0x07003DD0);
                 }
             } else if ((pathCounter == 21) || (pathCounter == 22)) {
                     if (playerDirection == 3) {
                         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
+                        // d_course_dks_jungle_parkway_packed_dl_36A8
                         gSPDisplayList(gDisplayListHead++, 0x070036A8);
                     }
                     if ((playerDirection == 1) || (playerDirection == 0)) {
                         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
+                        // d_course_dks_jungle_parkway_packed_dl_36A8
                         gSPDisplayList(gDisplayListHead++, 0x070036A8);
                     } else {
                         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+                        // d_course_dks_jungle_parkway_packed_dl_3F30
                         gSPDisplayList(gDisplayListHead++, 0x07003F30);
+                        // d_course_dks_jungle_parkway_packed_dl_36A8
                         gSPDisplayList(gDisplayListHead++, 0x070036A8);
                     }
                 } else if (pathCounter == 24) {
                     if ((playerDirection == 0) || (playerDirection == 3)) {
                         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
+                        // d_course_dks_jungle_parkway_packed_dl_36A8
                         gSPDisplayList(gDisplayListHead++, 0x070036A8);
                     }
                 } else if (pathCounter == 23) {
                     if (playerDirection == 3) {
                         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
+                        // d_course_dks_jungle_parkway_packed_dl_36A8
                         gSPDisplayList(gDisplayListHead++, 0x070036A8);
                     } else if (playerDirection == 0) {
                         gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
+                        // d_course_dks_jungle_parkway_packed_dl_36A8
                         gSPDisplayList(gDisplayListHead++, 0x070036A8);
                     }
                 }
@@ -401,27 +414,38 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
             switch (pathCounter) {
                 case 5:
                     if (playerDirection != 3) {
+                        // d_course_dks_jungle_parkway_packed_dl_3DD0
                         gSPDisplayList(gDisplayListHead++, 0x07003DD0);
                     }
                     break;
                 case 17:
                     switch (playerDirection) {
                         case 0:
+                            // d_course_dks_jungle_parkway_packed_dl_3E40
                             gSPDisplayList(gDisplayListHead++, 0x07003E40);
+                            // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
                             break;
                         case 1:
+                            // d_course_dks_jungle_parkway_packed_dl_3DD0
                             gSPDisplayList(gDisplayListHead++, 0x07003DD0);
+                            // d_course_dks_jungle_parkway_packed_dl_3E40
                             gSPDisplayList(gDisplayListHead++, 0x07003E40);
+                            // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
                             break;
                         case 2:
+                            // d_course_dks_jungle_parkway_packed_dl_
                             gSPDisplayList(gDisplayListHead++, 0x07003E40);
+                            // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
+                            // d_course_dks_jungle_parkway_packed_dl_3F30
                             gSPDisplayList(gDisplayListHead++, 0x07003F30);
                             break;
                         case 3:
+                            // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
+                            // d_course_dks_jungle_parkway_packed_dl_3F30
                             gSPDisplayList(gDisplayListHead++, 0x07003F30);
                             break;
                     }
@@ -429,36 +453,49 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 arg1) {
                 case 18:
                     switch (playerDirection) {
                         case 0:
+                            // d_course_dks_jungle_parkway_packed_dl_3E40
                             gSPDisplayList(gDisplayListHead++, 0x07003E40);
+                            // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
                             break;
                         case 1:
+                            // d_course_dks_jungle_parkway_packed_dl_3DD0
                             gSPDisplayList(gDisplayListHead++, 0x07003DD0);
+                            // d_course_dks_jungle_parkway_packed_dl_3E40
                             gSPDisplayList(gDisplayListHead++, 0x07003E40);
+                            // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
                             break;
                         case 2:
+                            // d_course_dks_jungle_parkway_packed_dl_3E40
                             gSPDisplayList(gDisplayListHead++, 0x07003E40);
+                            // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
                             break;
                     }
                     break;
                 case 21:
                     if ((playerDirection == 0) || (playerDirection == 1)) {
+                        // d_course_dks_jungle_parkway_packed_dl_3E40
                         gSPDisplayList(gDisplayListHead++, 0x07003E40);
+                        // d_course_dks_jungle_parkway_packed_dl_3EB0
                         gSPDisplayList(gDisplayListHead++, 0x07003EB0);
+                        // d_course_dks_jungle_parkway_packed_dl_3F30
                         gSPDisplayList(gDisplayListHead++, 0x07003F30);
                     } else {
+                        // d_course_dks_jungle_parkway_packed_dl_3EB0
                         gSPDisplayList(gDisplayListHead++, 0x07003EB0);
                     }
                     break;
                 case 22:
                     if (playerDirection == 0) {
+                        // d_course_dks_jungle_parkway_packed_dl_3F30
                         gSPDisplayList(gDisplayListHead++, 0x07003F30);
                     }
                     break;
                 case 23:
                     if (playerDirection != 1) {
+                        // d_course_dks_jungle_parkway_packed_dl_3F30
                         gSPDisplayList(gDisplayListHead++, 0x07003F30);
                     }
                     break;
@@ -1628,7 +1665,7 @@ void func_802966A0(void) {
             if (D_802B87BC >= 0x100) {
                 D_802B87BC = 0;
             }
-            find_and_set_tile_size(d_course_banshee_boardwalk_dl_B278, 0, D_802B87BC);
+            find_and_set_tile_size((uintptr_t)d_course_banshee_boardwalk_dl_B278, 0, D_802B87BC);
             break;
         case COURSE_ROYAL_RACEWAY:
             D_802B87BC -= 20;
