@@ -59,6 +59,13 @@ Racing segment loads after selecting a grand prix. Note that it is always reload
 
 # Code Breakdown
 
+## Menus
+|file|desc|
+|---|---|
+|menus.c | Menu related code |
+|save.c| Save related |
+|data/startup_logo.inc.c|Startup logo|
+
 ## Players
 Player related code resides in
 |file|desc|
