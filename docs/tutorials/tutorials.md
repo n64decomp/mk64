@@ -96,6 +96,20 @@ p {
 </a>
 </div>
 
+<div class="pagebutton">
+<a class="pagea" href="paths.html">
+<div class="pagelink">
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
+  <div class="content">
+    <div class="pageheading">Paths</div>
+    <div class="pagedescription">
+      <p>Overview of the many types of pathing</p>
+    </div>
+  </div>
+</div>
+</a>
+</div>
+
 \endhtmlonly
 
 \subpage boostramps
