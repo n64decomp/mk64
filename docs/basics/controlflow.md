@@ -72,6 +72,7 @@ Actor related code resides in
 |---|---|
 |actors.c|Variety of [actors](actorsmenu.html), see link for specifics.|
 |actors_extended.c|Shells and bananas|
+|code_80005FD0.c| Vehicles; trains, cars, trucks, boats |
 
 ## Objects
 Object related code resides in
@@ -108,6 +109,7 @@ Course related code resides in
 |file|desc|
 |---|---|
 |collision.c| |
+|code_80005FD0| Pathing code |
 
 ## Math
 Math related code resides in
