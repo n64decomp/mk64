@@ -2812,7 +2812,7 @@ void func_8005D794(Player* player, UnkPlayerStruct258* arg1, f32 arg2, f32 arg3,
     arg1->unk_000[2] = arg4;
     arg1->unk_000[0] = arg2;
     arg1->unk_000[1] = arg3;
-    arg1->unk_020 = -player->unk_02C[1];
+    arg1->unk_020 = -player->rotation[1];
     arg1->unk_014 = arg5;
     arg1->unk_010 = arg6;
 }
@@ -3689,7 +3689,7 @@ void func_800612F8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
     for (var_s2 = 0; var_s2 < 10; var_s2++){
         player->unk_258[0x1E + var_s2].unk_01C = 1;
         player->unk_258[0x1E + var_s2].unk_028 = player->pos[1] + 5.0f;
-        player->unk_258[0x1E + var_s2].unk_020 = (0x1C70 * var_s2) - player->unk_02C[1];
+        player->unk_258[0x1E + var_s2].unk_020 = (0x1C70 * var_s2) - player->rotation[1];
         player->unk_258[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.5;
         player->unk_258[0x1E + var_s2].unk_03A = 0;
         player->unk_258[0x1E + var_s2].unk_012 = 1;
@@ -3707,7 +3707,7 @@ void func_80061430(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
     for (var_s2 = 0; var_s2 < 7; var_s2++){
         player->unk_258[0x1E + var_s2].unk_01C = 1;
         player->unk_258[0x1E + var_s2].unk_028 = player->pos[1] - 4.0f;
-        player->unk_258[0x1E + var_s2].unk_020 = (0x1C70 * var_s2) - player->unk_02C[1];
+        player->unk_258[0x1E + var_s2].unk_020 = (0x1C70 * var_s2) - player->rotation[1];
         // ???
         player->unk_258[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.9;
         player->unk_258[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.5;
@@ -3732,7 +3732,7 @@ void func_800615AC(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3) {
         player->unk_258[0x1E + arg1].unk_01C = 1;
         player->unk_258[0x1E + arg1].unk_000[0] = player->pos[0];
         player->unk_258[0x1E + arg1].unk_000[2] = player->pos[2];
-        player->unk_258[0x1E + arg1].unk_020 = -player->unk_02C[1] + sp28[arg1];
+        player->unk_258[0x1E + arg1].unk_020 = -player->rotation[1] + sp28[arg1];
         player->unk_258[0x1E + arg1].unk_018 = random_int(1U) + 2.0f;
         temp_f0 = random_int(4U);
         temp_f0 -= test;
@@ -3828,7 +3828,7 @@ void func_80061D4C(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3) {
         player->unk_258[0x1E + arg1].unk_000[0] = player->pos[0];
         player->unk_258[0x1E + arg1].unk_000[1] = player->pos[1] + 2.0f;
         player->unk_258[0x1E + arg1].unk_000[2] = player->pos[2];
-        player->unk_258[0x1E + arg1].unk_020 = -player->unk_02C[1] + sp20[arg1];
+        player->unk_258[0x1E + arg1].unk_020 = -player->rotation[1] + sp20[arg1];
         player->unk_258[0x1E + arg1].unk_018 = random_int(3U) + 2.0f;
         player->unk_258[0x1E + arg1].unk_014 = random_int(4U);
         player->unk_258[0x1E + arg1].unk_014 -= test;
@@ -3870,8 +3870,8 @@ void func_80061EF4(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
             } else {
                 player->unk_258[0x1E + arg1].unk_020 -= 0x888;
             }
-            player->unk_258[0x1E + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[0x1E + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
-            player->unk_258[0x1E + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[0x1E + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
+            player->unk_258[0x1E + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[0x1E + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
+            player->unk_258[0x1E + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[0x1E + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
         } else if (player->unk_258[0x1E + arg2].unk_01E > 0) {
             func_8005D794(player, &player->unk_258[0x1E + arg1], 0.0f, var_f2, 0.0f, (s8) var_t0, (s8) var_t1);
             func_8005D7D8(&player->unk_258[0x1E + arg1], 3, 0.5f);
@@ -3882,8 +3882,8 @@ void func_80061EF4(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
             } else {
                 player->unk_258[0x1E + arg1].unk_020 -= 0x888;
             }
-            player->unk_258[0x1E + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[0x1E + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
-            player->unk_258[0x1E + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[0x1E + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
+            player->unk_258[0x1E + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[0x1E + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
+            player->unk_258[0x1E + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[0x1E + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
         }
     }
 }
@@ -3925,8 +3925,8 @@ void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
                 player->unk_258[30 + arg1].unk_020 -= 2184;
             }
 
-            player->unk_258[30 + arg1].unk_000[2] = player->pos[2] + (coss((player->unk_258[30 + arg1].unk_020 - player->unk_02C[1]) - player->unk_0C0) * 5.0f);
-            player->unk_258[30 + arg1].unk_000[0] = player->pos[0] + (sins((player->unk_258[30 + arg1].unk_020 - player->unk_02C[1]) - player->unk_0C0) * 5.0f);
+            player->unk_258[30 + arg1].unk_000[2] = player->pos[2] + (coss((player->unk_258[30 + arg1].unk_020 - player->rotation[1]) - player->unk_0C0) * 5.0f);
+            player->unk_258[30 + arg1].unk_000[0] = player->pos[0] + (sins((player->unk_258[30 + arg1].unk_020 - player->rotation[1]) - player->unk_0C0) * 5.0f);
             return;
         }
 
@@ -3943,8 +3943,8 @@ void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
             }
 
             new_var = new_var2;
-            new_var->unk_258[30 + arg1].unk_000[2] = new_var->pos[2] + (coss((new_var->unk_258[30 + arg1].unk_020 - new_var->unk_02C[1]) - new_var->unk_0C0) * 5.0f);
-            new_var->unk_258[30 + arg1].unk_000[0] = new_var->pos[0] + (sins((new_var->unk_258[30 + arg1].unk_020 - new_var->unk_02C[1]) - new_var->unk_0C0) * 5.0f);
+            new_var->unk_258[30 + arg1].unk_000[2] = new_var->pos[2] + (coss((new_var->unk_258[30 + arg1].unk_020 - new_var->rotation[1]) - new_var->unk_0C0) * 5.0f);
+            new_var->unk_258[30 + arg1].unk_000[0] = new_var->pos[0] + (sins((new_var->unk_258[30 + arg1].unk_020 - new_var->rotation[1]) - new_var->unk_0C0) * 5.0f);
         }
     }
 }
@@ -3954,7 +3954,7 @@ void func_80062484(Player* player, UnkPlayerStruct258* arg1, s32 arg2) {
     arg1->unk_000[1] = player->unk_074 + 1.0f;
     arg1->unk_000[2] = player->pos[2];
     arg1->unk_000[0] = player->pos[0];
-    arg1->unk_020 = (arg2 * 0x1998) - player->unk_02C[1];
+    arg1->unk_020 = (arg2 * 0x1998) - player->rotation[1];
     arg1->unk_012 = 4;
     arg1->unk_01E = 0;
 }
@@ -4051,7 +4051,7 @@ void func_800624D8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
 
 void func_800628C0(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_01C = 1;
-    player->unk_258[20 + arg3].unk_020 = -player->unk_02C[1];
+    player->unk_258[20 + arg3].unk_020 = -player->rotation[1];
     player->unk_258[20 + arg3].unk_012 = 2;
     player->unk_258[20 + arg3].unk_01E = 0;
     player->unk_258[20 + arg3].unk_00C =  0.2f;
@@ -4059,7 +4059,7 @@ void func_800628C0(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 
 void func_80062914(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_01C = 1;
-    player->unk_258[20 + arg3].unk_020 = -player->unk_02C[1];
+    player->unk_258[20 + arg3].unk_020 = -player->rotation[1];
     player->unk_258[20 + arg3].unk_012 = 4;
     player->unk_258[20 + arg3].unk_01E = 0;
     player->unk_258[20 + arg3].unk_00C = 1.0f;
@@ -4067,7 +4067,7 @@ void func_80062914(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 
 void func_80062968(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_01C = 1;
-    player->unk_258[20 + arg3].unk_020 = -player->unk_02C[1];
+    player->unk_258[20 + arg3].unk_020 = -player->rotation[1];
     player->unk_258[20 + arg3].unk_012 = 5;
     player->unk_258[20 + arg3].unk_01E = 0;
     player->unk_258[20 + arg3].unk_00C = 0.2f;
@@ -4075,7 +4075,7 @@ void func_80062968(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 
 void func_800629BC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_01C = 1;
-    player->unk_258[20 + arg3].unk_020 = -player->unk_02C[1];
+    player->unk_258[20 + arg3].unk_020 = -player->rotation[1];
     player->unk_258[20 + arg3].unk_012 = 6;
     player->unk_258[20 + arg3].unk_01E = 0;
     player->unk_258[20 + arg3].unk_00C = 0.2f;
@@ -4674,8 +4674,8 @@ void func_80064C74(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         player->unk_258[30 + arg1].unk_020 -= 2184;
     }
     
-    player->unk_258[30 + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[30 + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
-    player->unk_258[30 + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[30 + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
+    player->unk_258[30 + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[30 + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
+    player->unk_258[30 + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[30 + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
     player->unk_258[30 + arg1].unk_000[1] = player->pos[1] - 1.0f;
     player->unk_258[30 + arg1].unk_00C += 0.4;
     ++player->unk_258[30 + arg1].unk_01E;
@@ -5248,9 +5248,9 @@ void func_80067D3C(Player *player, s8 arg1, u8 *texture, s8 arg3, f32 arg4, s32 
         sp74[0] = 0;
         sp74[1] = player->unk_048[arg1];
         sp74[2] = 0;
-        sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->unk_02C[1] + player->unk_0C0)) * arg4);
+        sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
         sp7C[1] = player->pos[1] + player->boundingBoxSize - sp54[player->characterId] - 2.0f;
-        sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->unk_02C[1] + player->unk_0C0)) * arg4);
+        sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
         func_800652D4(sp7C, sp74, player->unk_258[20 + arg3].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5275,9 +5275,9 @@ void func_8006801C(Player *player, s8 arg1, u8 *texture, s8 arg3, f32 arg4, s32 
         sp74[0] = 0;
         sp74[1] = player->unk_048[arg1];
         sp74[2] = 0;
-        sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->unk_02C[1] + player->unk_0C0)) * arg4);
+        sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
         sp7C[1] = player->pos[1] + player->boundingBoxSize - sp54[player->characterId] - 2.0f;
-        sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->unk_02C[1] + player->unk_0C0)) * arg4);
+        sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
         func_800652D4(sp7C, sp74, player->unk_258[20 + arg3].unk_00C * player->size * 0.8);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5624,8 +5624,8 @@ void func_8006A50C(Player *player, f32 arg1, f32 arg2, s8 arg3, s8 arg4, s16 arg
     D_8018D7D0[arg3][arg4] = 0;
     D_8018D800[arg3][arg4] = 5;
     D_8018D830[arg3][arg4] = 1;
-    D_8018D620[arg3][arg4] = -player->unk_02C[1] - player->unk_0C0;
-    func_80062B18(&someX, &someY, &someZ, arg1, 4.0f, arg2 + -3.8, -player->unk_02C[1], 0);
+    D_8018D620[arg3][arg4] = -player->rotation[1] - player->unk_0C0;
+    func_80062B18(&someX, &someY, &someZ, arg1, 4.0f, arg2 + -3.8, -player->rotation[1], 0);
     D_8018D4D0[arg3][arg4] = player->pos[0] + someX;
     D_8018D590[arg3][arg4] = player->pos[2] + someZ;
     D_8018D530[arg3][arg4] = (player->pos[1] - player->boundingBoxSize) + someY;
@@ -5669,7 +5669,7 @@ void func_8006A7C0(Player *player, f32 arg1, f32 arg2, s8 arg3, s8 arg4) {
             D_8018D6B0[arg3][arg4] = 0.0f;
             D_8018D710[arg3][arg4] = 0.0f;
         }
-        D_8018D620[arg3][arg4] = -player->unk_02C[1] - player->unk_0C0;
+        D_8018D620[arg3][arg4] = -player->rotation[1] - player->unk_0C0;
         move_s16_towards(&D_8018D890[arg3][arg4], player->unk_094 * 182.0f, 0.1f);
     }
     if (D_8018D830[arg3][arg4] == 1) {
@@ -5750,7 +5750,7 @@ void func_8006AFD0(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     envRed    = (envColors[player->characterId]  >> 0x10) & 0xFF;
     envGreen  = (envColors[player->characterId]  >> 0x08) & 0xFF;
     envBlue   = (envColors[player->characterId]  >> 0x00) & 0xFF;
-    temp_t1 = (((player->unk_048[arg3] + player->unk_02C[1] + player->unk_0C0) & 0xFFFF) / 128);
+    temp_t1 = (((player->unk_048[arg3] + player->rotation[1] + player->unk_0C0) & 0xFFFF) / 128);
     temp_t1 <<= 7;
     if (arg3 == arg1) {
         var_f20 = 0.3f;

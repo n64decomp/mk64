@@ -60,7 +60,7 @@ void func_80280038(void) {
     gCurrentCourseId = gCreditsCourseId;
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
-    func_80295A38(D_800DC5EC);
+    render_course(D_800DC5EC);
     render_course_actors(D_800DC5EC);
     func_80058090(0);
     func_80058538(0);
