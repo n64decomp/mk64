@@ -77,13 +77,13 @@ enum SURFACE_TYPE {
     /* 0x04 */ STONE, // Royal Raceway castle entrance, Bowser's Castle
     /* 0x05 */ SNOW, // Frappe Snowland on course, Sherber Land tunnel
     /* 0x06 */ BRIDGE, // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
-    /* 0x07 */ SAND_OFF_ROAD, // Mario Raceway
+    /* 0x07 */ SAND_OFFROAD, // Mario Raceway
     /* 0x08 */ GRASS, // Luigi's Raceway, Mario Raceway, Royal Raceway, Bowser's Castle, DK Jungle, Yoshi Valley
     /* 0x09 */ ICE, // Sherbert Land
     /* 0x0A */ WET_SAND, // Koop Troopa Beach dark color
-    /* 0x0B */ SNOW_OFF_ROAD, // Frappe Snowland off course
+    /* 0x0B */ SNOW_OFFROAD, // Frappe Snowland off course
     /* 0x0C */ CLIFF, // Koopa Troopa Beach, Choco Mountain
-    /* 0x0D */ DIRT_OFF_ROAD, // Kalimari Desert off course
+    /* 0x0D */ DIRT_OFFROAD, // Kalimari Desert off course
     /* 0x0E */ TRAIN_TRACK, // Kalimari Desert
     /* 0x0F */ CAVE, // DK Jungle cave
     /* 0x10 */ ROPE_BRIDGE, // Bowser's Castle bridge 2, DK Jungle bridge
@@ -162,7 +162,7 @@ typedef struct {
     s16 tc[2];    /* texture coord */
     s8  ca[4];    /* color & alpha */
 
-} Course_Vtx;
+} CourseVtx;
 
 /*
 This struct has been copied (with only minor modifications) from

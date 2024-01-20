@@ -1,7 +1,7 @@
 #include "types.h"
 #include "courses/course_macro.h"
 
-Course_Vtx d_course_koopa_troopa_beach_vertex[] = {
+CourseVtx d_course_koopa_troopa_beach_vertex[] = {
     {{ -370,      11,   -1114}, { -2686,     0}, {MACRO_COLOR_FLAG(0x98, 0x98, 0x98, 4), 0x00}},
     {{ -370,       1,   -1113}, { -2686,  1023}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 4), 0x00}},
     {{ -358,       0,   -1152}, {  3164,  1023}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 4), 0x00}},

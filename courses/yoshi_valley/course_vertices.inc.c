@@ -1,7 +1,7 @@
 #include "types.h"
 #include "courses/course_macro.h"
 
-Course_Vtx d_course_yoshi_valley_vertex[] = {
+CourseVtx d_course_yoshi_valley_vertex[] = {
     {{-1627,    -100,    -730}, { -1858,  2252}, {MACRO_COLOR_FLAG(0x88, 0x88, 0x88, 0), 0x00}},
     {{-1627,     -89,    -730}, { -1858,     0}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 0), 0x00}},
     {{-1601,     -97,    -608}, { 10930,     0}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 0), 0x00}},

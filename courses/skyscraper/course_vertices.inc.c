@@ -1,7 +1,7 @@
 #include "types.h"
 #include "courses/course_macro.h"
 
-Course_Vtx d_course_skyscraper_vertex[] = {
+CourseVtx d_course_skyscraper_vertex[] = {
     {{  -54,     485,     320}, { -4060,     0}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 0), 0x00}},
     {{  -24,     480,     300}, { -6108,  1013}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 0), 0x00}},
     {{ -120,     480,     300}, {   444,  1013}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 0), 0x00}},

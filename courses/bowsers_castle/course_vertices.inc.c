@@ -1,7 +1,7 @@
 #include "types.h"
 #include "courses/course_macro.h"
 
-Course_Vtx d_course_bowsers_castle_vertex[] = {
+CourseVtx d_course_bowsers_castle_vertex[] = {
 
     {{ 1393,      50,   -1820}, {     0,     0}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 4), 0x00}},
     {{ 1393,      50,   -1880}, {  2048,     0}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 4), 0x00}},

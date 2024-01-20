@@ -1,7 +1,7 @@
 #include "types.h"
 #include "courses/course_macro.h"
 
-Course_Vtx d_course_big_donut_vertex[] = {
+CourseVtx d_course_big_donut_vertex[] = {
     {{  609,     270,     794}, {  1024,  1024}, {MACRO_COLOR_FLAG(0x48, 0x48, 0xfc, 0), 0x00}},
     {{  609,     340,     794}, {  1024,     0}, {MACRO_COLOR_FLAG(0x48, 0x48, 0xfc, 0), 0x00}},
     {{  707,     340,     707}, {     0,     0}, {MACRO_COLOR_FLAG(0x48, 0x48, 0xfc, 0), 0x00}},

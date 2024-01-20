@@ -2743,7 +2743,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 4;
                 }
                 break;
-            case SAND_OFF_ROAD:                                     /* switch 3 */
+            case SAND_OFFROAD:                                     /* switch 3 */
                 if (D_800E9E74[playerId] == 0x0000000C) {
                     D_800E9E74[playerId] = 0x0000000A;
                 } else if (D_800EA1C0 == 0) {
@@ -2752,7 +2752,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 0x0000000A;
                 }
                 break;
-            case DIRT_OFF_ROAD:                                    /* switch 3 */
+            case DIRT_OFFROAD:                                    /* switch 3 */
                 if (D_800E9E74[playerId] == 0x00000018) {
                     D_800E9E74[playerId] = 0x00000016;
                 } else if (D_800EA1C0 == 0) {
@@ -2761,7 +2761,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 0x00000016;
                 }
                 break;
-            case SNOW_OFF_ROAD:                                    /* switch 3 */
+            case SNOW_OFFROAD:                                    /* switch 3 */
                 if (D_800E9E74[playerId] == 0x0000001F) {
                     D_800E9E74[playerId] = 0x0000001D;
                 } else if (D_800EA1C0 == 0) {
@@ -2803,7 +2803,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 4;
                 }
                 break;
-            case SAND_OFF_ROAD:                                     /* switch 4 */
+            case SAND_OFFROAD:                                     /* switch 4 */
                 if (D_800E9E74[playerId] == 0x0000000B) {
                     D_800E9E74[playerId] = 0x0000000A;
                 } else if (D_800EA1C0 == 0) {
@@ -2812,7 +2812,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 0x0000000A;
                 }
                 break;
-            case DIRT_OFF_ROAD:                                    /* switch 4 */
+            case DIRT_OFFROAD:                                    /* switch 4 */
                 if (D_800E9E74[playerId] == 0x00000017) {
                     D_800E9E74[playerId] = 0x00000016;
                 } else if (D_800EA1C0 == 0) {
@@ -2821,7 +2821,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 0x00000016;
                 }
                 break;
-            case SNOW_OFF_ROAD:                                    /* switch 4 */
+            case SNOW_OFFROAD:                                    /* switch 4 */
                 if (D_800E9E74[playerId] == 0x0000001E) {
                     D_800E9E74[playerId] = 0x0000001D;
                 } else if (D_800EA1C0 == 0) {

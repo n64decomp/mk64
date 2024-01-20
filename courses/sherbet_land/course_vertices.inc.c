@@ -1,7 +1,7 @@
 #include "types.h"
 #include "courses/course_macro.h"
 
-Course_Vtx d_course_sherbet_land_vertex[] = {
+CourseVtx d_course_sherbet_land_vertex[] = {
     {{ -1834,     -60,    1192}, {  4096,     0}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 4), 0x00}},
     {{ -1867,     -60,    1119}, { -4096,     0}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 4), 0x00}},
     {{ -1867,     -80,    1119}, { -4096,  1024}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 4), 0x00}},

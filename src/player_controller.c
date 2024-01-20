@@ -1873,11 +1873,11 @@ void func_8002C17C(Player *player, s8 playerId) {
         }
         break;
     case COURSE_FRAPPE_SNOWLAND:
-        if ((player->surfaceType == SNOW_OFF_ROAD) && (D_80165330[playerId] == 0)) {
+        if ((player->surfaceType == SNOW_OFFROAD) && (D_80165330[playerId] == 0)) {
             D_80165330[playerId] = 1;
             gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
             gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
-        } else if (player->surfaceType != SNOW_OFF_ROAD) {
+        } else if (player->surfaceType != SNOW_OFFROAD) {
             D_80165330[playerId] = 0;
             gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
             gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];

@@ -1,7 +1,7 @@
 #include "types.h"
 #include "courses/course_macro.h"
 
-Course_Vtx d_course_rainbow_road_vertex[] = {
+CourseVtx d_course_rainbow_road_vertex[] = {
     {{-1418,     657,    -847}, {   -27,   -34}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0x00, 0), 0x00}},
     {{-1418,     647,    -847}, {  -102,  1024}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0x00, 0), 0x00}},
     {{-1466,     651,    -816}, {  5677,  1023}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0x00, 0), 0x00}},

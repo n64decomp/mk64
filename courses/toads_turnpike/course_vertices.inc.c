@@ -1,7 +1,7 @@
 #include "types.h"
 #include "courses/course_macro.h"
 
-Course_Vtx d_course_toads_turnpike_vertex[] = {
+CourseVtx d_course_toads_turnpike_vertex[] = {
     {{-2064,      50,   -3157}, {  2048,   479}, {MACRO_COLOR_FLAG(0x7c, 0x7c, 0xc0, 0), 0x00}},
     {{-2064,      63,   -3157}, {  2048,   -32}, {MACRO_COLOR_FLAG(0x00, 0x00, 0x00, 0), 0x00}},
     {{-2064,      63,   -3107}, {     0,   -32}, {MACRO_COLOR_FLAG(0x00, 0x00, 0x00, 0), 0x00}},

@@ -1,7 +1,7 @@
 #include "types.h"
 #include "courses/course_macro.h"
 
-Course_Vtx d_course_banshee_boardwalk_vertex[] = {
+CourseVtx d_course_banshee_boardwalk_vertex[] = {
     {{-1384,      12,    -187}, {  2303,  -256}, {MACRO_COLOR_FLAG(0x7c, 0x7c, 0x7c, 0), 0x00}},
     {{-1384,      52,    -187}, {  1279, -1280}, {MACRO_COLOR_FLAG(0x7c, 0x7c, 0x7c, 0), 0x00}},
     {{-1384,      52,    -247}, { -1791,  1791}, {MACRO_COLOR_FLAG(0x7c, 0x7c, 0x7c, 0), 0x00}},

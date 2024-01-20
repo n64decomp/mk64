@@ -1,7 +1,7 @@
 #include "types.h"
 #include "courses/course_macro.h"
 
-Course_Vtx d_course_choco_mountain_vertex[] = {
+CourseVtx d_course_choco_mountain_vertex[] = {
     {{ 1364,       0,     796}, {  3158,  1024}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 0), 0x00}},
     {{ 1363,      10,     796}, {  3085,   290}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 0), 0x00}},
     {{ 1326,      40,     794}, { -2284,   276}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 0), 0x00}},

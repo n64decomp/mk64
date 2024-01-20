@@ -1,7 +1,7 @@
 #include "types.h"
 #include "courses/course_macro.h"
 
-Course_Vtx d_course_wario_stadium_vertex[] = {
+CourseVtx d_course_wario_stadium_vertex[] = {
     {{-3350,     362,    -650}, {  3107,  1023}, {MACRO_COLOR_FLAG(0xcc, 0xcc, 0xcc, 4), 0x00}},
     {{-3350,     362,   -1034}, {  5109,  1023}, {MACRO_COLOR_FLAG(0xcc, 0xcc, 0xcc, 4), 0x00}},
     {{-3350,     412,   -1034}, {  5109,   511}, {MACRO_COLOR_FLAG(0x68, 0x68, 0x68, 4), 0x00}},

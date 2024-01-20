@@ -1,7 +1,7 @@
 #include "types.h"
 #include "courses/course_macro.h"
 
-Course_Vtx d_course_block_fort_vertex[] = {
+CourseVtx d_course_block_fort_vertex[] = {
     {{   85,       0,     476}, {     0,     0}, {MACRO_COLOR_FLAG(0xb8, 0xb0, 0xcc, 0), 0x00}},
     {{   85,       0,     476}, {     0,     0}, {MACRO_COLOR_FLAG(0xb8, 0xb0, 0xcc, 0), 0x00}},
     {{   85,       0,     476}, {     0,     0}, {MACRO_COLOR_FLAG(0xb8, 0xb0, 0xcc, 0), 0x00}},

@@ -2990,7 +2990,7 @@ void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
             }
             player->unk_258[10 + arg1].unk_000[1] -= 1.5;
             break;
-        case SAND_OFF_ROAD:
+        case SAND_OFFROAD:
             if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
                 if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
                     func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
@@ -3035,7 +3035,7 @@ void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
             break;
-        case DIRT_OFF_ROAD:
+        case DIRT_OFFROAD:
             if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
                 if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
                     func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
@@ -3052,7 +3052,7 @@ void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
             }
             break;
         case SNOW:
-        case SNOW_OFF_ROAD:
+        case SNOW_OFFROAD:
             if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
                 if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
                     func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
@@ -3225,7 +3225,7 @@ void func_8005ED48(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
             }
             player->unk_258[10 + arg1].unk_000[1] -= 1.5;
             break;
-        case SAND_OFF_ROAD:
+        case SAND_OFFROAD:
             if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
@@ -3264,7 +3264,7 @@ void func_8005ED48(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
             break;
-        case DIRT_OFF_ROAD:
+        case DIRT_OFFROAD:
             if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
@@ -3278,7 +3278,7 @@ void func_8005ED48(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
             }
             break;
         case SNOW:
-        case SNOW_OFF_ROAD:
+        case SNOW_OFFROAD:
             if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
@@ -3402,7 +3402,7 @@ void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
             }
             player->unk_258[10 + arg1].unk_000[1] -= 1.5;
             break;
-        case SAND_OFF_ROAD:
+        case SAND_OFFROAD:
             if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
                 func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
@@ -3441,7 +3441,7 @@ void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
             break;
-        case DIRT_OFF_ROAD:
+        case DIRT_OFFROAD:
             if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
                 func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
@@ -3455,7 +3455,7 @@ void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
             }
             break;
         case SNOW:
-        case SNOW_OFF_ROAD:
+        case SNOW_OFFROAD:
             if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
                 func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
@@ -3994,7 +3994,7 @@ void func_800624D8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
             }
             player->unk_044 &= ~0x0100;
             break;
-        case SAND_OFF_ROAD:
+        case SAND_OFFROAD:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
                 func_8005DAD8(&player->unk_258[0x1E + var_s1], 2, 1, 0x00A8);
                 func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
@@ -4015,7 +4015,7 @@ void func_800624D8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
             }
             player->unk_044 &= ~0x0100;
             break;
-        case DIRT_OFF_ROAD:
+        case DIRT_OFFROAD:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
                 func_8005DAD8(&player->unk_258[0x1E + var_s1], 5, 1, 0x00A8);
                 func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
@@ -4023,7 +4023,7 @@ void func_800624D8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
             player->unk_044 &= ~0x0100;
             break;
         case SNOW:
-        case SNOW_OFF_ROAD:
+        case SNOW_OFFROAD:
             for (var_s1 = 0; var_s1 < 10; var_s1++) {
                 func_8005DAD8(&player->unk_258[0x1E + var_s1], 6, 1, 0x00A8);
                 func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);

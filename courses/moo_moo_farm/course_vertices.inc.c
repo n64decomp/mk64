@@ -1,7 +1,7 @@
 #include "types.h"
 #include "courses/course_macro.h"
 
-Course_Vtx d_course_moo_moo_farm_vertex[] = {
+CourseVtx d_course_moo_moo_farm_vertex[] = {
     {{  114,      44,   -2058}, {   819,  -204}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 0), 0x00}},
     {{  114,      24,   -2058}, {   819,  1024}, {MACRO_COLOR_FLAG(0xb0, 0xb0, 0xb0, 0), 0x00}},
     {{  233,      28,   -2115}, {  7739,  1024}, {MACRO_COLOR_FLAG(0xb0, 0xb0, 0xb0, 0), 0x00}},
