@@ -50,13 +50,13 @@ https://github.com/N64-tools/mips64-gcc-toolchain
 
 Merge the inner folders (bin, share, etc.) with the respective folders in `C:\msys64\mingw64\`
 
-### Step 5: Compiling recomp.exe in `MSYS2 MinGW x64`
+### Step 5: Compiling recomp.exe in MSYS2 MinGW x64
 In `MSYS2 MinGW x64` run in `mk64/tools/ido5.3_recomp/`:
 ```
 g++ recomp.cpp -o recomp -g -lcapstone -Dugen53
 ```
 
-### Step 6: Generate Recomp Source Files in `MSYS2 MinGW x64`
+### Step 6: Generate Recomp Source Files in MSYS2 MinGW x64
 
 Generate the .c files which will compile into the recomp binaries.
 mk64 requires the following compiler binaries: `as1, cc, cfe, copt, ugen, ujoin, uld, umerge, uopt`
@@ -78,7 +78,7 @@ The binary for cc is in `/ido5.3_compiler/usr/bin/` so do:
 ```
 ./recomp ../ido5.3_compiler/usr/bin/cc > cc_c.c
 ```
-### Step 7: Compiling the recomp compiler in `MSYS2 MSYS`
+### Step 7: Compiling the recomp compiler in MSYS2 MSYS
 In `MSYS2 MSYS` run in the directory `mk64/tools/ido5.3_recomp/`:
 ```
 gcc libc_impl.c as1_c.c -o as1 -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
@@ -93,7 +93,7 @@ gcc libc_impl.c uopt_c.c -o uopt -g -fno-strict-aliasing -lm -no-pie -DIDO53 -O2
 ```
 `-O2` is an optional optimization flag.  
 
-### Step 8: Compile mk64 in `MSYS2 MinGW x64`
+### Step 8: Compile mk64 in MSYS2 MinGW x64
 In `/mk64/` run:
 ```
 make -j#

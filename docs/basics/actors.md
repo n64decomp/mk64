@@ -2,7 +2,7 @@
 # Actors
 If you are familiar with oot or sm64 prepare to be very disappointed. Both games split actors into separate files. In an unorderly fashion, mk64 appears to place all actors in the same file save for the odd exception.
 
-Actor setup:
+Example actor setup based on @ref update_course_actors
 ```c
 // Loop through the actor list and run that particular actors behaviour.
 for actorListSize {
@@ -32,7 +32,7 @@ Check actor_types.h for a full list of options. You can create a new actor struc
 
 See `update_obj_railroad_crossing` for an example of how a timer may be setup and used.   
 
-Audio may be activated in the following method:
-`func_800C98B8(actor->pos, actor->velocity, s32_audio_flag);`
+Audio may be activated using the following method:
+@ref func_800C98B8
 
 For more complex uses such as distanceFrom and collision, you will need to analyze the other actors.
