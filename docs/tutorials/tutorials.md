@@ -110,7 +110,22 @@ p {
 </a>
 </div>
 
+<div class="pagebutton">
+<a class="pagea" href="audio.html">
+<div class="pagelink">
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
+  <div class="content">
+    <div class="pageheading">Audio</div>
+    <div class="pagedescription">
+      <p>Basic ways to work with audio</p>
+    </div>
+  </div>
+</div>
+</a>
+</div>
+
 \endhtmlonly
 
 \subpage boostramps
 \subpage paths
+\subpage tutorialaudio
