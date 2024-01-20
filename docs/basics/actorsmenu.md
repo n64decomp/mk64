@@ -128,6 +128,20 @@ p {
 </a>
 </div>
 
+<div class="pagebutton">
+<a class="pagea" href="vehicles.html">
+<div class="pagelink">
+  <div class="pageimg"><img width=320 src="buttonimage.png" /></div>
+  <div class="content">
+    <div class="pageheading">Vehicles</div>
+    <div class="pagedescription">
+      <p>Trains, boats, cars, trucks, and more.</p>
+    </div>
+  </div>
+</div>
+</a>
+</div>
+
 \endhtmlonly
 
 \subpage actors
