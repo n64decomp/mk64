@@ -87,8 +87,54 @@ $(document).ready(function(){initNavTree('surfacetypes.html',''); initResizable(
 <div class="title">Surface Types </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md29"></a>
-Surface Types</h1>
+<div class="textblock"><p>Surfaces produce effects, driven on sounds, and other behaviour. <a class="el" href="structNote.html">Note</a> that surface type is not generally used for out of bounds behaviour. As such, out of bounds areas may use any combination of surface types or flags. <br  />
+</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">id   </th><th class="markdownTableHeadNone">Name   </th><th class="markdownTableHeadNone">Desc   </th><th class="markdownTableHeadNone">Courses    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">Solid   </td><td class="markdownTableBodyNone">Pavement, tunnel walls/floor   </td><td class="markdownTableBodyNone">Koopa Troopa Beach, Rainbow Road    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">Dirt   </td><td class="markdownTableBodyNone">Several courses, edge of water   </td><td class="markdownTableBodyNone">Royal Raceway    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">Sand   </td><td class="markdownTableBodyNone">Dirt track and oob beach sand   </td><td class="markdownTableBodyNone">Koopa Troopa Beach    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">Cement   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone">Snow   </td><td class="markdownTableBodyNone">Ice cave interior   </td><td class="markdownTableBodyNone">Frappe Snowland, Sherbet Land    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">6   </td><td class="markdownTableBodyNone">Bridge   </td><td class="markdownTableBodyNone">Bridges and guardrails, castle bridge   </td><td class="markdownTableBodyNone">Royal Raceway    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">7   </td><td class="markdownTableBodyNone">Dirt Off-road   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">8   </td><td class="markdownTableBodyNone">Grass   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">9   </td><td class="markdownTableBodyNone">Ice   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Sherbet Land    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">10   </td><td class="markdownTableBodyNone">Wet Sand   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Koopa Troopa Beach    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">11   </td><td class="markdownTableBodyNone">Snow Off-road   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">12   </td><td class="markdownTableBodyNone">Rock Walls   </td><td class="markdownTableBodyNone">Also used for choco walls   </td><td class="markdownTableBodyNone">Choco Mountain    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">13   </td><td class="markdownTableBodyNone">Dirt Off-road   </td><td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Kalimari Desert    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">14   </td><td class="markdownTableBodyNone">Track Ballast   </td><td class="markdownTableBodyNone">The dirt used in railways   </td><td class="markdownTableBodyNone">Kalimari Desert    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">15   </td><td class="markdownTableBodyNone">Cave   </td><td class="markdownTableBodyNone">Cave interior   </td><td class="markdownTableBodyNone">Jungle Parkway    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">16   </td><td class="markdownTableBodyNone">Rope Bridge   </td><td class="markdownTableBodyNone">Rickety   </td><td class="markdownTableBodyNone">Jungle Parkway    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">17   </td><td class="markdownTableBodyNone">Wood Bridge   </td><td class="markdownTableBodyNone">Solid wood   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">252   </td><td class="markdownTableBodyNone">Boost Ramp   </td><td class="markdownTableBodyNone">Locks speed to ~60km/h   </td><td class="markdownTableBodyNone">Jungle Parkway    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">253   </td><td class="markdownTableBodyNone">Out of Bounds   </td><td class="markdownTableBodyNone">Lakitu activates on touch   </td><td class="markdownTableBodyNone">Jungle Parkway    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">254   </td><td class="markdownTableBodyNone">Gravity Ramp   </td><td class="markdownTableBodyNone">Boost ramp that locks speed with reduced gravity   </td><td class="markdownTableBodyNone">Royal Raceway    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">255   </td><td class="markdownTableBodyNone">Walls/Ramps   </td><td class="markdownTableBodyNone">Walls and ramps   </td><td class="markdownTableBodyNone">Koopa Troopa Beach   </td></tr>
+</table>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

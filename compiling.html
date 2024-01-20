@@ -87,57 +87,57 @@ $(document).ready(function(){initNavTree('compiling.html',''); initResizable(); 
 <div class="title">Installing mk64 Decomp </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h2><a class="anchor" id="autotoc_md15"></a>
-Build Instructions</h2>
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#autotoc_md17">Build Instructions</a></li>
+<li class="level1"><a href="#autotoc_md18">Linux</a><ul><ul><li class="level3"><a href="#autotoc_md19">Arch</a></li>
+</ul>
+</ul>
+</li>
+<li class="level1"><a href="#autotoc_md20">Windows</a></li>
+<li class="level1"><a href="#autotoc_md21">macOS</a></li>
+<li class="level1"><a href="#autotoc_md22">Docker</a></li>
+<li class="level1"><a href="#autotoc_md23">Building US</a></li>
+<li class="level1"><a href="#autotoc_md24">Building EU</a></li>
+</ul>
+</div>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md17"></a>
+Build Instructions</h1>
 <p>The build system has the following package requirements: </p><pre class="fragment">binutils-mips &gt;= 2.27
 python3 &gt;= 3.6
 libaudiofile
-</pre><ul>
-<li><a href="#linux">Linux and WSL</a></li>
-<li><a href="#arch">Arch</a></li>
-<li><a href="#windows">Windows</a></li>
-<li><a href="#macos">macOS</a></li>
-<li><a href="#docker">Docker</a></li>
-</ul>
-<h3><a class="anchor" id="autotoc_md16"></a>
-Compiling</h3>
-<ul>
-<li><a href="#building-us">US</a></li>
-<li><a href="#building-eu">EU</a></li>
-</ul>
-<p>To add submodules run <code>git submodule update --init --recursive</code> after cloning.</p>
-<h2><a class="anchor" id="autotoc_md17"></a>
-Linux</h2>
+</pre><p>To add submodules run <code>git submodule update --init --recursive</code> after cloning.</p>
+<h1><a class="anchor" id="autotoc_md18"></a>
+Linux</h1>
 <div class="fragment"><div class="line">sudo apt install build-essential pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md18"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md19"></a>
 Arch</h3>
 <div class="fragment"><div class="line">sudo pacman -S base-devel capstone python</div>
 </div><!-- fragment --><p> Install the following AUR package:</p><ul>
 <li><a href="https://aur.archlinux.org/packages/mips64-elf-binutils">mips64-elf-binutils</a> (AUR)</li>
 </ul>
 <p>Review the <a href="https://github.com/n64decomp/sm64">n64decomp/sm64</a> readme for instructions to compile in other distributions.</p>
-<h2><a class="anchor" id="autotoc_md19"></a>
-Windows</h2>
+<h1><a class="anchor" id="autotoc_md20"></a>
+Windows</h1>
 <p>Not recommended. Use WSL unless this is your only option.</p>
-<p>Instructions here</p>
-<h2><a class="anchor" id="autotoc_md20"></a>
-macOS</h2>
+<p><a href="buildwindows.html">Instructions here</a></p>
+<h1><a class="anchor" id="autotoc_md21"></a>
+macOS</h1>
 <p>Install <a href="https://brew.sh">Homebrew</a>, then install the following dependencies: </p><div class="fragment"><div class="line">brew update</div>
 <div class="line">brew install python3 capstone coreutils make pkg-config tehzz/n64-dev/mips64-elf-binutils</div>
 </div><!-- fragment --><p>Build using <code>gmake</code> ensuring homebrew <code>make</code> is used instead of the old macOS system <code>make</code>.</p>
-<h2><a class="anchor" id="autotoc_md21"></a>
-Docker</h2>
+<h1><a class="anchor" id="autotoc_md22"></a>
+Docker</h1>
 <p>Build the Docker image: </p><div class="fragment"><div class="line">docker build -t mk64 .</div>
 </div><!-- fragment --><p>When building and using other tools, append the following in front of every command you run: </p><div class="fragment"><div class="line">docker run --rm -v ${PWD}:/mk64 mk64</div>
 </div><!-- fragment --><p>For example: </p><div class="fragment"><div class="line">docker run --rm -v ${PWD}:/mk64 mk64 make -C tools</div>
 <div class="line">docker run --rm -v ${PWD}:/mk64 mk64 make</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md22"></a>
-Building US</h2>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md23"></a>
+Building US</h1>
 <p>Place a US version of Mario Kart 64 called <code>baserom.us.z64</code> into the project folder for asset extraction.</p>
 <p>Run the following commands after pulling: </p><div class="fragment"><div class="line">make -C tools</div>
 <div class="line">make -j</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md23"></a>
-Building EU</h2>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md24"></a>
+Building EU</h1>
 <p>Building EU requires US to be built first. See above.</p>
 <p>mk64 decomp supports two EU versions</p><ul>
 <li>EU 1.0 <code>eu-1.0</code></li>

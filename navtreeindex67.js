@@ -1,5 +1,17 @@
 var NAVTREEINDEX67 =
 {
+"structDrum.html#a042ebd42088ca9bb904e2c1410ff20a0":[7,0,72,2],
+"structDrum.html#a594bcec833a2b26bbf8a9134a9b16f9e":[7,0,72,1],
+"structDrum.html#a73e4e7022f0c3df80a3a4bae4352d132":[7,0,72,0],
+"structDrum.html#a7fa01f66282a6c93f8a1bc88feee7350":[7,0,72,4],
+"structDrum.html#a94e4457930c5d90b51ee4a78da53df56":[7,0,72,3],
+"structEuAudioCmd.html":[7,0,74],
+"structEuAudioCmd.html#a068bbf2068bc573348dadd447addee28":[7,0,74,3],
+"structEuAudioCmd.html#a19a94c8e21fba5358de8bc6a024976d8":[7,0,74,10],
+"structEuAudioCmd.html#a44ee160469c9b32e444a3773f1b10344":[7,0,74,4],
+"structEuAudioCmd.html#a477905af6a47c662f2fef066cdc3a0e1":[7,0,74,9],
+"structEuAudioCmd.html#a7471e14ccc5988f858400815f7cc791e":[7,0,74,8],
+"structEuAudioCmd.html#a7ba659e77d517bec320acfefdbb45b70":[7,0,74,7],
 "structEuAudioCmd.html#a90a2a2776f1137187e96aa98fea0f404":[7,0,74,12],
 "structEuAudioCmd.html#a95993d0cb757c03dcee975f5c3fd86c7":[7,0,74,5],
 "structEuAudioCmd.html#a97a7720c1b2c0d5571b907b1d0e9869a":[7,0,74,1],
@@ -237,17 +249,5 @@ var NAVTREEINDEX67 =
 "structNoteAttributes.html#a08edf68ad9a386d153b4c5d615e19cbc":[7,0,101,3],
 "structNoteAttributes.html#a2aed01830182a032b9f80fa82350cb0b":[7,0,101,1],
 "structNoteAttributes.html#a8d30d0e2b40bc57474ba096e0c08063f":[7,0,101,0],
-"structNoteAttributes.html#ae62f03ddde236383cc621ba19812e1a5":[7,0,101,2],
-"structNotePlaybackState.html":[7,0,102],
-"structNotePlaybackState.html#a00a5896be7369da3dcffdab178c3a4d9":[7,0,102,9],
-"structNotePlaybackState.html#a2e190d106b92bd7874f54cdcd5bd5342":[7,0,102,3],
-"structNotePlaybackState.html#a42402672c3ba2a53b238c7adb4897d59":[7,0,102,12],
-"structNotePlaybackState.html#a6cf98229883cf91541670eec1b32eb22":[7,0,102,6],
-"structNotePlaybackState.html#a7666d5b626f3b4105bf56c9a880f443a":[7,0,102,4],
-"structNotePlaybackState.html#a7eb648642ad7186925ebeaa472e72d6e":[7,0,102,11],
-"structNotePlaybackState.html#a9417db8e706b9a178da3867f842755af":[7,0,102,1],
-"structNotePlaybackState.html#a9710bdd1fc7def7209a116c6de6267e9":[7,0,102,5],
-"structNotePlaybackState.html#a99113f76344dff4efccf6290485ba914":[7,0,102,7],
-"structNotePlaybackState.html#aa53bad77bd6c23f7e41288f14b9739d0":[7,0,102,8],
-"structNotePlaybackState.html#aed3a0a2b7802c3dbf53f9515104ddfe9":[7,0,102,10]
+"structNoteAttributes.html#ae62f03ddde236383cc621ba19812e1a5":[7,0,101,2]
 };

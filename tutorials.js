@@ -1,6 +1,6 @@
 var tutorials =
 [
-    [ "Boostramps", "boostramps.html", [
-      [ "Boostramps", "boostramps.html#autotoc_md31", null ]
+    [ "Boost Ramps", "boostramps.html", [
+      [ "Boost Ramps", "boostramps.html#autotoc_md42", null ]
     ] ]
 ];

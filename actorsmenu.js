@@ -4,6 +4,6 @@ var actorsmenu =
       [ "Actors", "actors.html#autotoc_md0", null ]
     ] ],
     [ "objects", "objects.html", [
-      [ "Objects", "objects.html#autotoc_md28", null ]
+      [ "Objects", "objects.html#autotoc_md40", null ]
     ] ]
 ];

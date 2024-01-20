@@ -1,5 +1,17 @@
 var NAVTREEINDEX61 =
 {
+"render__courses_8c.html#acfcbf9a4823e15ce73fef8bb3389b314":[8,0,2,6,12,7],
+"render__courses_8c.html#ad7284ffc2e41a12ca87537ef21156453":[8,0,2,6,12,35],
+"render__courses_8c.html#ad9249651e952db9fc1a120dccdaa213c":[8,0,2,6,12,24],
+"render__courses_8c.html#adaf0146aebec362e665f14f817109d20":[8,0,2,6,12,16],
+"render__courses_8c.html#adfb1515e3d4215d1be339ed41f86bed5":[8,0,2,6,12,23],
+"render__courses_8c.html#ae011ede59d279d8a45115114099b1cda":[8,0,2,6,12,31],
+"render__courses_8c.html#ae210e2fd9803f318bc80bd382c6ae064":[8,0,2,6,12,28],
+"render__courses_8c.html#ae3ff5a3807c9059521b167eece3a806f":[8,0,2,6,12,40],
+"render__courses_8c.html#ae5d8d5cab3be4c4409c0b5f71a8a2fd5":[8,0,2,6,12,26],
+"render__courses_8c.html#aead5c755690f3f103495c17c97de3ec8":[8,0,2,6,12,37],
+"render__courses_8c.html#aee88ee3e4f8a82e2e6135f10370570a4":[8,0,2,6,12,1],
+"render__courses_8c.html#af2e49ecda77989002c880514dc7048cf":[8,0,2,6,12,29],
 "render__courses_8c.html#af86d505614f3fe7f894b12a9d7ffc35c":[8,0,2,6,12,3],
 "render__courses_8c.html#afa7a12f363eeadd8ea6926eaf62657ef":[8,0,2,6,12,9],
 "render__courses_8c.html#afbb4dd9882a0ef44bce101c478e79de4":[8,0,2,6,12,42],
@@ -237,17 +249,5 @@ var NAVTREEINDEX61 =
 "render__player_8h.html#a53e0d8d0fd131e0f6922ef99663b4705":[8,0,2,56,213],
 "render__player_8h.html#a55de3efb83bddfe00d617951cd418771":[8,0,2,56,27],
 "render__player_8h.html#a5a12986639406a92fce0f0d0587fd5cf":[8,0,2,56,151],
-"render__player_8h.html#a5a5c0bd5004d082371e4939e03dc441e":[8,0,2,56,129],
-"render__player_8h.html#a5cbc9aaaf90fc3c764fccfaa21606b5d":[8,0,2,56,85],
-"render__player_8h.html#a5f408825aae1b3f56803671ce3ee21fd":[8,0,2,56,211],
-"render__player_8h.html#a60278eddbb121a75e99dc6ecd5815654":[8,0,2,56,87],
-"render__player_8h.html#a63209452694c894810e36f7cbfc11e07":[8,0,2,56,204],
-"render__player_8h.html#a63c63c210bd42c8ad3acdfd078ce5130":[8,0,2,56,97],
-"render__player_8h.html#a658f57ff442d04203b1b4f75b2bd7be5":[8,0,2,56,126],
-"render__player_8h.html#a66e61f69f6885f7670a9487f0dabb9d2":[8,0,2,56,226],
-"render__player_8h.html#a68976a398fda97f1349fda137a3eaa26":[8,0,2,56,51],
-"render__player_8h.html#a6a6a5ac5fc4bccb612570fd16c53a6d7":[8,0,2,56,78],
-"render__player_8h.html#a6bc32c583b2a3886183f09447e213be8":[8,0,2,56,52],
-"render__player_8h.html#a6d85c29d4b4441b59befc08825b6f47e":[8,0,2,56,109],
-"render__player_8h.html#a6e9984d17cd4e5ee72d96c5abd7f6403":[8,0,2,56,32]
+"render__player_8h.html#a5a5c0bd5004d082371e4939e03dc441e":[8,0,2,56,129]
 };

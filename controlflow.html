@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Mario Kart 64: Control Flow</title>
+<title>Mario Kart 64: Codebase Overview</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -84,30 +84,40 @@ $(document).ready(function(){initNavTree('controlflow.html',''); initResizable()
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">Control Flow </div>  </div>
+<div class="title">Codebase Overview </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md24"></a>
-Introduction to State</h1>
-<p>The developers wrote mk64 using a state-driven paradigm. This manifests itself in a variety of ways but as a quick example lets discuss the following variables. <code>gGamestate</code>, <code>gGameMode</code>, and <code>gCurrentCourseId</code>. Code for menus, racing, and credits must be modularized in some fashion. The gamestate variable contains the current state and during runtime branches into the relevant code while skipping code not pertaining to the current state. The racing code does not run while the user operates the menu. Let's inspect a simple example of a state-driven mechanism: </p><div class="fragment"><div class="line"><span class="keywordflow">switch</span>(<a class="code" href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a>) {</div>
-<div class="line">    <span class="keywordflow">case</span> YOSHI_VALLEY:</div>
-<div class="line">        load_and_render_yoshi_egg();</div>
-<div class="line">        <span class="keywordflow">break</span>;</div>
-<div class="line">    <span class="keywordflow">case</span> MARIO_RACEWAY:</div>
-<div class="line">        load_and_render_pipe();</div>
-<div class="line">        <span class="keywordflow">break</span>;</div>
-<div class="line">}</div>
-<div class="ttc" id="acode__800029B0_8c_html_a0b35aa576b8ad5250674993b72300f0d"><div class="ttname"><a href="code__800029B0_8c.html#a0b35aa576b8ad5250674993b72300f0d">gCurrentCourseId</a></div><div class="ttdeci">s16 gCurrentCourseId</div><div class="ttdef"><b>Definition:</b> code_800029B0.c:30</div></div>
-</div><!-- fragment --><p> This code loads resources based on a specific course. An entire spaghetti tree of code may be imagined based on many series of conditional statements.</p>
-<h1><a class="anchor" id="autotoc_md25"></a>
+<div class="toc"><h3>Table of Contents</h3>
+<ul><li class="level1"><a href="#autotoc_md25">Paradigm</a></li>
+<li class="level1"><a href="#autotoc_md26">Threading</a></li>
+<li class="level1"><a href="#autotoc_md27">Overall Control Flow</a></li>
+<li class="level1"><a href="#autotoc_md28">Segments</a></li>
+<li class="level1"><a href="#autotoc_md29">Code Breakdown</a><ul><li class="level2"><a href="#autotoc_md30">Players</a></li>
+<li class="level2"><a href="#autotoc_md31">Actors</a></li>
+<li class="level2"><a href="#autotoc_md32">Objects</a></li>
+<li class="level2"><a href="#autotoc_md33">Courses</a><ul><li class="level3"><a href="#autotoc_md34">Course Folder</a></li>
+</ul>
+</li>
+<li class="level2"><a href="#autotoc_md35">UI &amp; Other 2D Screen data</a></li>
+<li class="level2"><a href="#autotoc_md36">Engine</a></li>
+<li class="level2"><a href="#autotoc_md37">Math</a></li>
+<li class="level2"><a href="#autotoc_md38">Ending</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md25"></a>
+Paradigm</h1>
+<p>The developers wrote mk64 using a state-driven paradigm. Gamestate, gamemode, course, actors, structs, and more decide which branches code should follow. As an example, a condition can check the current course to load that courses resources or run logic based on that.</p>
+<h1><a class="anchor" id="autotoc_md26"></a>
 Threading</h1>
-<p>The game begins by setting up its four threads; idle, video, audio, and the game loop. The idle thread allows the cpu to sleep. Without it, if at any time execution of all threads were paused, the cpu would never be able to continue. The idle thread is active if all the other threads are paused.</p>
+<p>After boot, the game begins by setting up its four threads; idle, video, audio, and the game loop. The idle thread allows the cpu to sleep. Without it, if at any time execution of all threads were paused, the cpu would never be able to continue. The idle thread is active if all the other threads are paused.</p>
 <p>As such, the idle thread runs the following loop: <code>while(TRUE);</code> (it runs in a perpetual loop of nothing; sleep). In mips assembly it looks like this: </p><div class="fragment"><div class="line">.L800005B8:</div>
 <div class="line">b     .L800005B8</div>
 <div class="line">nop   </div>
 </div><!-- fragment --><p> b stands for branch which acts akin to a goto. In this case, branch to the label <code>.L800005B8</code>. This creates an infinite loop. Whenever the cpu branches it always runs the next instruction as well which is called a delay slot. This means the cpu will continuously branch then run <code>nop</code> or <code>no operation</code> with no method of escaping the loop (except for when another thread has a higher priority which means the cpu switches to that thread and stops running the idle thread).</p>
 <p>N64 threads are ran based on priority running whichever thread holds the most of it. Threads can also pause and wait for events. <a class="el" href="structNote.html">Note</a> that the N64 is not multi-threaded by modern standards as the other threads contain specific purposes which slightly differs from the concept of splitting a single program into multiple processes for efficiency.</p>
-<h1><a class="anchor" id="autotoc_md26"></a>
+<h1><a class="anchor" id="autotoc_md27"></a>
 Overall Control Flow</h1>
 <div class="fragment"><div class="line">init_threads:</div>
 <div class="line">  idle, video, audio, gameloop</div>
@@ -131,7 +141,121 @@ Overall Control Flow</h1>
 <div class="line">  most of all, handles which step of rendering a frame the cpu is in.</div>
 <div class="line">  Checks when new to start new sp tasks</div>
 </div><!-- fragment --><p> If mk64 is in a menu state it will branch off to the menu code, running relevant bits of code based on more flags such as which particular menu the user is in. This will loop until the state changes to a different one such as race mode. If mk64 is in a race state, then race related code is ran and it spaghetti's off into a wide series of branches. This may include concepts such as <code>isLinedUp, isRacing, isRaceFinished, gotoNextCourse, isHuman, and isAI</code>.</p>
-<p>This relatively primitive design could be defined as a state machine from an abstract point of view. This would differ from an OOP design that uses objects and hierarchy. You will become very familiar with this design principle as you explore the code-base. During any step of the game loop, a switch can be setup to check a flag then run code relevant to the situation. For instance, a flag can check whether a race is in-progress or complete. If in-progress set the player to human controlled. If complete, set player to AI controlled. </p>
+<p>This relatively primitive design could be defined as a state machine from an abstract point of view. This would differ from an OOP design that uses objects and hierarchy. You will become very familiar with this design principle as you explore the code-base. During any step of the game loop, a switch can be setup to check a flag then run code relevant to the situation. For instance, a flag can check whether a race is in-progress or complete. If in-progress set the player to human controlled. If complete, set player to AI controlled.</p>
+<h1><a class="anchor" id="autotoc_md28"></a>
+Segments</h1>
+<p>mk64 code is split into three sections </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Segment   </th><th class="markdownTableHeadNone">desc    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Main   </td><td class="markdownTableBodyNone">Menus, audio, libultra, rsp    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">Racing   </td><td class="markdownTableBodyNone">Memory management, courses, players, actors, skybox, collision, math    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">Ending   </td><td class="markdownTableBodyNone">Podium ceremony, credits   </td></tr>
+</table>
+<p>Racing segment loads after selecting a grand prix. <a class="el" href="structNote.html">Note</a> that it is always reloaded preventing randomization of cpu's at the start of the first race due to no time for the random seed to actually become random.</p>
+<h1><a class="anchor" id="autotoc_md29"></a>
+Code Breakdown</h1>
+<h2><a class="anchor" id="autotoc_md30"></a>
+Players</h2>
+<p><a class="el" href="structPlayer.html">Player</a> related code resides in </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">file   </th><th class="markdownTableHeadNone">desc    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="player__controller_8c.html">player_controller.c</a>   </td><td class="markdownTableBodyNone">Applies physics to players    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="camera_8c.html">camera.c</a>   </td><td class="markdownTableBodyNone"><a class="el" href="structPlayer.html">Player</a> cameras   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md31"></a>
+Actors</h2>
+<p><a class="el" href="structActor.html">Actor</a> related code resides in </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">file   </th><th class="markdownTableHeadNone">desc    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="actors_8c.html">actors.c</a>   </td><td class="markdownTableBodyNone">Variety of <a href="actorsmenu.html">actors</a>, see link for specifics.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="actors__extended_8c.html">actors_extended.c</a>   </td><td class="markdownTableBodyNone">Shells and bananas   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md32"></a>
+Objects</h2>
+<p>Object related code resides in </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">file   </th><th class="markdownTableHeadNone">desc    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="code__80057C60_8c.html">code_80057C60.c</a>   </td><td class="markdownTableBodyNone"><a class="el" href="structObjects.html">Objects</a>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="code__80071F00_8c.html">code_80071F00.c</a>   </td><td class="markdownTableBodyNone"><a class="el" href="structObjects.html">Objects</a>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="code__80086E70_8c.html">code_80086E70.c</a>   </td><td class="markdownTableBodyNone"><a class="el" href="structObjects.html">Objects</a>   </td></tr>
+</table>
+<p>Documentation of the specifics still in-progress. See <a href="actorsmenu.html">actors</a> for more information.</p>
+<h2><a class="anchor" id="autotoc_md33"></a>
+Courses</h2>
+<p>Course related code resides in </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">file   </th><th class="markdownTableHeadNone">desc    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="memory_8c.html">memory.c</a>   </td><td class="markdownTableBodyNone">Loads and extracts course data    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="render__courses_8c.html">render_courses.c</a>   </td><td class="markdownTableBodyNone">Renders course content    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="common__textures_8inc_8c.html">common_textures.inc.c</a>   </td><td class="markdownTableBodyNone">Content accessible to every course such as items and portraits   </td></tr>
+</table>
+<h3><a class="anchor" id="autotoc_md34"></a>
+Course Folder</h3>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">file   </th><th class="markdownTableHeadNone">desc    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">courses/course_name/course_data.inc.c   </td><td class="markdownTableBodyNone">Course data    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">courses/course_name/course_vertices.inc.c   </td><td class="markdownTableBodyNone">Course vertices (this + _displaylists.inc.c makes the course geography)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">courses/course_name/course_displaylists.inc.c   </td><td class="markdownTableBodyNone">Course displaylists (these get compressed during compile)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">courses/course_name/course_offsets.inc.c   </td><td class="markdownTableBodyNone">Textures used in the course   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md35"></a>
+UI &amp; Other 2D Screen data</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">file   </th><th class="markdownTableHeadNone">desc    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="hud__renderer_8c.html">hud_renderer.c</a>   </td><td class="markdownTableBodyNone">ItemWindows   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md36"></a>
+Engine</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">file   </th><th class="markdownTableHeadNone">desc    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="collision_8c.html">collision.c</a>   </td><td class="markdownTableBodyNone"></td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md37"></a>
+Math</h2>
+<p>Math related code resides in </p><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">file   </th><th class="markdownTableHeadNone">desc    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="math__util_8c.html">math_util.c</a>   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="math__util__2_8c.html">math_util_2.c</a>   </td><td class="markdownTableBodyNone"></td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md38"></a>
+Ending</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">file   </th><th class="markdownTableHeadNone">desc    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="ceremony__and__credits_8c.html">ceremony_and_credits.c</a>   </td><td class="markdownTableBodyNone"><a class="el" href="structCamera.html">Camera</a> rails for podium ceremony and credits    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="podium__ceremony__actors_8c.html">podium_ceremony_actors.c</a>   </td><td class="markdownTableBodyNone">Fireworks and balloons for podium ceremony    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="ceremony__data_8inc_8c.html">ceremony_data.inc.c</a>   </td><td class="markdownTableBodyNone">Trophies and podium models. Paths.    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="credits_8c.html">credits.c</a>   </td><td class="markdownTableBodyNone">Credits text and UI positions   </td></tr>
+</table>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

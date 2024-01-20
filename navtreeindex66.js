@@ -1,5 +1,17 @@
 var NAVTREEINDEX66 =
 {
+"structAllCourseTimeTrialRecords.html#a0c436a089651d34cdc8a4d32bfb71dfd":[7,0,34,0],
+"structAllocOnlyPool.html":[7,0,35],
+"structAllocOnlyPool.html#a2414eda610456cf4b49677904e9fd452":[7,0,35,1],
+"structAllocOnlyPool.html#a35f92b08706806346c9579f39bd2b820":[7,0,35,3],
+"structAllocOnlyPool.html#a95718024cfe44d46414c21223cc6c2b8":[7,0,35,2],
+"structAllocOnlyPool.html#ad7c514cf095a5604a5cd5231cfb6c290":[7,0,35,0],
+"structAudioBank.html":[7,0,45],
+"structAudioBank.html#a18135a07ed4e0a146a36c2f3fdefd57c":[7,0,45,1],
+"structAudioBank.html#a24a599791d5abf0ba92582f55d2e9149":[7,0,45,0],
+"structAudioBankSample.html":[7,0,46],
+"structAudioBankSample.html#a024100001b19351bd6ce4e92dc9fa070":[7,0,46,4],
+"structAudioBankSample.html#a4a8e416b277a7be4501e5cee2eca2cb5":[7,0,46,1],
 "structAudioBankSample.html#a9e849c9f116154a815392d77a155fbc2":[7,0,46,3],
 "structAudioBankSample.html#ad188e9d6ef8fb385d84bc3c635927469":[7,0,46,2],
 "structAudioBankSample.html#ad598652b025155d5a15a99251dd97828":[7,0,46,5],
@@ -237,17 +249,5 @@ var NAVTREEINDEX66 =
 "structD__801642D8__entry.html#a863db9bd3ca624505a96ab2bf1cca052":[7,0,71,4],
 "structD__801642D8__entry.html#ab901f04dfac76bb4eed81356ef6be568":[7,0,71,3],
 "structD__801642D8__entry.html#abf0df00e5788611960d349b7e943bcff":[7,0,71,2],
-"structDrum.html":[7,0,72],
-"structDrum.html#a042ebd42088ca9bb904e2c1410ff20a0":[7,0,72,2],
-"structDrum.html#a594bcec833a2b26bbf8a9134a9b16f9e":[7,0,72,1],
-"structDrum.html#a73e4e7022f0c3df80a3a4bae4352d132":[7,0,72,0],
-"structDrum.html#a7fa01f66282a6c93f8a1bc88feee7350":[7,0,72,4],
-"structDrum.html#a94e4457930c5d90b51ee4a78da53df56":[7,0,72,3],
-"structEuAudioCmd.html":[7,0,74],
-"structEuAudioCmd.html#a068bbf2068bc573348dadd447addee28":[7,0,74,3],
-"structEuAudioCmd.html#a19a94c8e21fba5358de8bc6a024976d8":[7,0,74,10],
-"structEuAudioCmd.html#a44ee160469c9b32e444a3773f1b10344":[7,0,74,4],
-"structEuAudioCmd.html#a477905af6a47c662f2fef066cdc3a0e1":[7,0,74,9],
-"structEuAudioCmd.html#a7471e14ccc5988f858400815f7cc791e":[7,0,74,8],
-"structEuAudioCmd.html#a7ba659e77d517bec320acfefdbb45b70":[7,0,74,7]
+"structDrum.html":[7,0,72]
 };

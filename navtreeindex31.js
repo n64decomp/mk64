@@ -1,5 +1,17 @@
 var NAVTREEINDEX31 =
 {
+"hardcoded__segments_8h_source.html":[8,0,1,11],
+"hardware_8h.html":[8,0,2,5,49],
+"hardware_8h.html#a01340d42f61864fc447129197c32302d":[8,0,2,5,49,74],
+"hardware_8h.html#a02004a5d471e0e9110041dfefa5ba4d0":[8,0,2,5,49,54],
+"hardware_8h.html#a073eb5f8ab6db71f47cc21486e9b1b3a":[8,0,2,5,49,4],
+"hardware_8h.html#a0a11bb115bc7b87616fd4eff7f76b784":[8,0,2,5,49,14],
+"hardware_8h.html#a0ae3260548ebbc45065f36373558a979":[8,0,2,5,49,19],
+"hardware_8h.html#a0bcb0fb2f469cfc8a745c99893eb3d77":[8,0,2,5,49,25],
+"hardware_8h.html#a0f6bba18235eeebd0515cff53ca2d154":[8,0,2,5,49,86],
+"hardware_8h.html#a0fc82be210410943f92b75a0b70192ff":[8,0,2,5,49,6],
+"hardware_8h.html#a15843286b09a49dff41ce29fd1560eaa":[8,0,2,5,49,80],
+"hardware_8h.html#a16465c417cc0231826fd02ba1f9894e7":[8,0,2,5,49,89],
 "hardware_8h.html#a1719643f789249714343639beda6917a":[8,0,2,5,49,82],
 "hardware_8h.html#a1fd8bab4a431b3faeee37e9a019c7034":[8,0,2,5,49,39],
 "hardware_8h.html#a206f2314e9af042cc5dc4ed9f71b05f8":[8,0,2,5,49,1],
@@ -237,17 +249,5 @@ var NAVTREEINDEX31 =
 "heap_8h.html#adbb1e24473cb805202524f27baf94648":[8,0,2,1,8,51],
 "heap_8h.html#ade2c9102c6cf6b79baf2d70ac19dfec3":[8,0,2,1,8,61],
 "heap_8h.html#ae1259c2a2b59eb3363f37701b26b7487":[8,0,2,1,8,65],
-"heap_8h.html#ae3f3bbe0e12ec14f29180c34a9e2dce5":[8,0,2,1,8,71],
-"heap_8h.html#aeee449d728d74cff589ce63f9b5087a8":[8,0,2,1,8,56],
-"heap_8h.html#af42e078f70fa8da3fb944c1f8115acee":[8,0,2,1,8,34],
-"heap_8h_source.html":[8,0,2,1,8],
-"hud__renderer_8c.html":[8,0,2,41],
-"hud__renderer_8c.html#a0021816304c83125b7b3f19441e91e83":[8,0,2,41,337],
-"hud__renderer_8c.html#a0176ac6600444525b2d02772648b5f56":[8,0,2,41,183],
-"hud__renderer_8c.html#a01bc499dd41ca4911d4e2e8e1b34a806":[8,0,2,41,16],
-"hud__renderer_8c.html#a01f1c93f475b407a8e57888c6a6dd45b":[8,0,2,41,33],
-"hud__renderer_8c.html#a026ee5d79e81aae9d613c00dcdd68cdc":[8,0,2,41,344],
-"hud__renderer_8c.html#a054978ffa85702d6deb73675527cce8d":[8,0,2,41,192],
-"hud__renderer_8c.html#a0624454f7798ff22171facee57a00d36":[8,0,2,41,244],
-"hud__renderer_8c.html#a06e8102af912728d2759eb58e57caef4":[8,0,2,41,25]
+"heap_8h.html#ae3f3bbe0e12ec14f29180c34a9e2dce5":[8,0,2,1,8,71]
 };

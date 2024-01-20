@@ -1,5 +1,17 @@
 var NAVTREEINDEX64 =
 {
+"skybox__and__splitscreen_8h.html#a8c8ae70998ecd6b5b4773008bc82efeb":[8,0,2,6,15,2],
+"skybox__and__splitscreen_8h.html#a94c46fe3fe5eef642ce3520b68504133":[8,0,2,6,15,29],
+"skybox__and__splitscreen_8h.html#a9be31591c8a78c96ca86c1b87c3ec0a8":[8,0,2,6,15,30],
+"skybox__and__splitscreen_8h.html#a9e0359eea0d69204abb0f5a866ca0173":[8,0,2,6,15,37],
+"skybox__and__splitscreen_8h.html#aa58c449ec64b285fd3b4def5e261ff97":[8,0,2,6,15,23],
+"skybox__and__splitscreen_8h.html#aa627a5166fe0e9f01475246065b6923c":[8,0,2,6,15,44],
+"skybox__and__splitscreen_8h.html#aa9561e7be092d9cd53decc5700218e26":[8,0,2,6,15,46],
+"skybox__and__splitscreen_8h.html#ab0061fbdffa3d6f0a7a58b866cfd2336":[8,0,2,6,15,21],
+"skybox__and__splitscreen_8h.html#ab481a35d4548245b2a89ab574f460a14":[8,0,2,6,15,43],
+"skybox__and__splitscreen_8h.html#ab4d59c5fb18fa704f1f4a74d79204e3a":[8,0,2,6,15,10],
+"skybox__and__splitscreen_8h.html#ab8435f5b83d0fc118a6bbad43a0a806d":[8,0,2,6,15,3],
+"skybox__and__splitscreen_8h.html#acbee56a803ead7946e1c703e7039930a":[8,0,2,6,15,6],
 "skybox__and__splitscreen_8h.html#accb6af916ac72e9b2186f11211419818":[8,0,2,6,15,34],
 "skybox__and__splitscreen_8h.html#acdf96ac83288ec562406d39e4dce3e01":[8,0,2,6,15,33],
 "skybox__and__splitscreen_8h.html#adbeb0599946e6477e4aa0c65e9fea6a8":[8,0,2,6,15,28],
@@ -237,17 +249,5 @@ var NAVTREEINDEX64 =
 "staff__ghosts_8c.html#af6c62afd5728b82a28891df193917e66":[8,0,2,61,36],
 "staff__ghosts_8c.html#afda159bf8a817e2f8e267e5704336095":[8,0,2,61,41],
 "staff__ghosts_8c.html#afda27d96ad3f22d39e6c9179f1b44c6a":[8,0,2,61,24],
-"staff__ghosts_8c.html#afebe5180f0e5ab47821836cb24601809":[8,0,2,61,32],
-"staff__ghosts_8h.html":[8,0,2,62],
-"staff__ghosts_8h.html#a0eb82092a448ee36c1e468dfa4765ce6":[8,0,2,62,28],
-"staff__ghosts_8h.html#a1a6ef299ab3b94fc793a3c13bdac9598":[8,0,2,62,22],
-"staff__ghosts_8h.html#a1e6c535e2e2e430c9088d9a634788aba":[8,0,2,62,0],
-"staff__ghosts_8h.html#a20a0e567751bb2d0520ae189eaaab2e0":[8,0,2,62,11],
-"staff__ghosts_8h.html#a26fc0e5f675f4602960709d90df9ac8f":[8,0,2,62,21],
-"staff__ghosts_8h.html#a33271f262e4e65181182b313cf6bcc2e":[8,0,2,62,13],
-"staff__ghosts_8h.html#a3c4cb1f93d431addad4c91c97bc08231":[8,0,2,62,12],
-"staff__ghosts_8h.html#a4170fda73f68122eda29f002371524e4":[8,0,2,62,8],
-"staff__ghosts_8h.html#a6391b1c00d3b9e1d73c43ca096ca1997":[8,0,2,62,25],
-"staff__ghosts_8h.html#a6c93bd66a22613771face974257523c8":[8,0,2,62,17],
-"staff__ghosts_8h.html#a765650c60bc8d34ec297e6ac6d152aa0":[8,0,2,62,26]
+"staff__ghosts_8c.html#afebe5180f0e5ab47821836cb24601809":[8,0,2,61,32]
 };

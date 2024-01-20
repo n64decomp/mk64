@@ -87,14 +87,26 @@ $(document).ready(function(){initNavTree('terminology.html',''); initResizable()
 <div class="title">Terminology </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h4><a class="anchor" id="autotoc_md30"></a>
+<div class="textblock"><h4><a class="anchor" id="autotoc_md41"></a>
 Definitions</h4>
 <ul>
 <li><code>Jump/Branch/Function</code> - Tells the cpu to execute instructions somewhere else and come back here when done.</li>
-<li><code>Hexadecimal</code> - A <a href="https://en.wikipedia.org/wiki/Hexadecimal">numbering system</a> just like decimal (also called base-ten) or roman numerals. An easy method for programmers and computers to understand each other which groups/separates bytes of information in a readable format. Representing information as decimal results in an unreadable mess.</li>
+<li><code>Hexadecimal</code> - A <a href="https://en.wikipedia.org/wiki/Hexadecimal">numbering system</a>. Similar numbering sytems include decimal (also called base-ten) and roman numerals.<ul>
+<li>Easy method for programmers and computers to understand each other which groups/separates bytes of information in a readable format.</li>
+<li>Representing computer numbers as decimal results in an unreadable mess.</li>
+</ul>
+</li>
 <li><code>s32/word/int</code> - A max size for a number. Data represented as 32 bits or 4 bytes: <code>0x00000001</code>. It consists of eight digits.</li>
 <li><code>s16/half-word/short</code> - A number represented as 16 bits or 2 bytes: <code>0x0001</code>. It consists of four digits. Maximum value 65,535 (0xFFFF).</li>
-<li><code>s8/byte/char</code> - A number represented as 8 bits or 1 byte: <code>0x01</code>. It consists of two digits. Maximum value 255 (0xFF). </li>
+<li><code>s8/byte/char</code> - A number represented as 8 bits or 1 byte: <code>0x01</code>. It consists of two digits. Maximum value 255 (0xFF).</li>
+<li><code>unsigned</code> - A positive integer. 0, 1 to maximum value.</li>
+<li><code>signed</code> - A positive or negative integer. 0, -1 to -max, 1 to max.<ul>
+<li>Max value slightly lower than unsigned due to a bit being used to set whether negative or positive.</li>
+<li>Google "Two's complement" for an indepth technical explanation.</li>
+</ul>
+</li>
+<li><code>f32/float</code> - A positive or negative value containing a decimals such as <code>5.0f</code> or <code>5.1f</code> or <code>5.148282f</code></li>
+<li><code>f64/double</code> - A positive or negative value of high-precision. Ex. <code>5.5784298538832</code> (many decimals). </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

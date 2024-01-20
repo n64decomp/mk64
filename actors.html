@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('actors.html',''); initResizable(); });
 <div class="textblock"><h1><a class="anchor" id="autotoc_md0"></a>
 Actors</h1>
 <p>If you are familiar with oot or sm64 prepare to be very disappointed. Both games split actors into separate files. In an unorderly fashion, mk64 appears to place all actors in the same file save for the odd exception.</p>
-<p><a class="el" href="structActor.html">Actor</a> setup: </p><div class="fragment"><div class="line"><span class="comment">// Loop through the actor list and run that particular actors behaviour.</span></div>
+<p>Example actor setup based on <a class="el" href="actors_8h.html#aa6387502059c64a81d32c944b39d78f9">update_course_actors</a> </p><div class="fragment"><div class="line"><span class="comment">// Loop through the actor list and run that particular actors behaviour.</span></div>
 <div class="line"><span class="keywordflow">for</span> actorListSize {</div>
 <div class="line">  actor = <a class="code" href="code__800029B0_8c.html#a37d0e0553a4cd552f52174f4b33b798d">gActorList</a>[i]</div>
 <div class="line">  <span class="keywordflow">switch</span>(actor-&gt;type) {</div>
@@ -119,7 +119,7 @@ Actors</h1>
 </div><!-- fragment --><p> Check <a class="el" href="actor__types_8h.html">actor_types.h</a> for a full list of options. You can create a new actor struct for your actor and customize it or use a predefined one. All actor structs must retain the same size. Generally, the types in the struct may be modified so long as <code>type</code> and <code>flags</code> stay the same as those are used elsewhere.</p>
 <p>See <code>update_obj_railroad_crossing</code> for an example of how a timer may be setup and used. <br  />
 </p>
-<p>Audio may be activated in the following method: <code>func_800C98B8(actor-&gt;pos, actor-&gt;velocity, s32_audio_flag);</code></p>
+<p>Audio may be activated using the following method: <a class="el" href="actors_8h.html#a2f37ef11eaac95c7a485cb0f4c42365b">func_800C98B8</a></p>
 <p>For more complex uses such as distanceFrom and collision, you will need to analyze the other actors. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
