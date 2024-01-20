@@ -113,3 +113,4 @@ p {
 \endhtmlonly
 
 \subpage boostramps
+\subpage paths
