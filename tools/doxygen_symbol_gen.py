@@ -31,6 +31,12 @@ def process_map_file(map_file_path):
                         continue
                     if function_name.startswith("jpt_"):
                         continue
+                    if function_name.startswith("0x"):
+                        continue
+                    if function_name.startswith("("):
+                        continue
+                    if function_name.startswith("__"):
+                        continue
 
                     # Format the information into the Doxygen style
                     result += f"[{function_name}](@ref {function_name}) | {address}\n"

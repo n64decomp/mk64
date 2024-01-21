@@ -85,7 +85,7 @@ Some menu textures are compressed using a format called tkmk00. A byte-matching 
 
 Documentation available online at [https://n64decomp.github.io/mk64/](https://n64decomp.github.io/mk64/).
 
-Documentation generated using [Doxygen](https://www.doxygen.nl/index.html). Run `make doc -j` to test locally. Documentation resides in `docs/html`. Open index.html to view the site.
+Documentation generated using [Doxygen](https://www.doxygen.nl/index.html). Run `make doc` to test locally. Documentation resides in `docs/html`. Open index.html to view the site.
 
 ## Contributing
 

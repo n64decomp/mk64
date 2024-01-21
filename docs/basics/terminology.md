@@ -1,4 +1,4 @@
-\page terminology Terminology
+@page terminology Terminology
 #### Definitions
 * `Jump/Branch/Function` - Tells the cpu to execute instructions somewhere else and come back here when done.
 * `Hexadecimal` - A [numbering system](https://en.wikipedia.org/wiki/Hexadecimal). Similar numbering sytems include decimal (also called base-ten) and roman numerals.
