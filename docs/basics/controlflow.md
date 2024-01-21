@@ -59,6 +59,13 @@ Racing segment loads after selecting a grand prix. Note that it is always reload
 
 # Code Breakdown
 
+## Menus
+|file|desc|
+|---|---|
+|menus.c | Menu related code |
+|save.c| Save related |
+|data/startup_logo.inc.c|Startup logo|
+
 ## Players
 Player related code resides in
 |file|desc|
@@ -72,6 +79,7 @@ Actor related code resides in
 |---|---|
 |actors.c|Variety of [actors](actorsmenu.html), see link for specifics.|
 |actors_extended.c|Shells and bananas|
+|code_80005FD0.c| Vehicles; trains, cars, trucks, boats |
 
 ## Objects
 Object related code resides in
@@ -108,6 +116,7 @@ Course related code resides in
 |file|desc|
 |---|---|
 |collision.c| |
+|code_80005FD0| Pathing code |
 
 ## Math
 Math related code resides in
