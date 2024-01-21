@@ -412,7 +412,7 @@ u32 MIO0_0F(u8 *arg0, u32 arg1, u32 arg2) {
 }
 
 void func_802A86A8(CourseVtx *data, u32 arg1) {
-    CourseVtx *CourseVtx = data;
+    CourseVtx *courseVtx = data;
     Vtx *vtx;
     s32 tmp = ALIGN16(arg1 * 0x10);
 #ifdef AVOID_UB
@@ -430,28 +430,28 @@ void func_802A86A8(CourseVtx *data, u32 arg1) {
     // s32 to u32 comparison required for matching.
     for (i = 0; i < arg1; i++) {
         if (gIsMirrorMode) {
-            vtx->v.ob[0] = -CourseVtx->ob[0];
+            vtx->v.ob[0] = -courseVtx->ob[0];
         } else {
-            vtx->v.ob[0] = CourseVtx->ob[0];
+            vtx->v.ob[0] = courseVtx->ob[0];
         }
 
-        vtx->v.ob[1] = (CourseVtx->ob[1] * vtxStretchY);
-        temp_a0 = CourseVtx->ca[0];
-        temp_a3 = CourseVtx->ca[1];
+        vtx->v.ob[1] = (courseVtx->ob[1] * vtxStretchY);
+        temp_a0 = courseVtx->ca[0];
+        temp_a3 = courseVtx->ca[1];
 
         flags = temp_a0 & 3;
         flags |= (temp_a3 << 2) & 0xC;
 
-        vtx->v.ob[2] = CourseVtx->ob[2];
-        vtx->v.tc[0] = CourseVtx->tc[0];
-        vtx->v.tc[1] = CourseVtx->tc[1];
+        vtx->v.ob[2] = courseVtx->ob[2];
+        vtx->v.tc[0] = courseVtx->tc[0];
+        vtx->v.tc[1] = courseVtx->tc[1];
         vtx->v.cn[0] = (temp_a0 & 0xFC);
         vtx->v.cn[1] = (temp_a3 & 0xFC);
-        vtx->v.cn[2] = CourseVtx->ca[2];
+        vtx->v.cn[2] = courseVtx->ca[2];
         vtx->v.flag = flags;
         vtx->v.cn[3] = 0xFF;
         vtx++;
-        CourseVtx++;
+        courseVtx++;
     }
 }
 
