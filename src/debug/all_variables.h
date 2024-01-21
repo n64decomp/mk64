@@ -20,7 +20,7 @@
 #include <code_8006E9C0.h>
 #include <code_80071F00.h>
 #include <code_80086E70.h>
-#include <code_8008C1D0.h>
+#include <effects.h>
 #include <code_80091440.h>
 #include <code_80091750.h>
 #include <code_800AF9B0.h>

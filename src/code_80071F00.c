@@ -23,7 +23,7 @@
 #include <actors.h>
 #include "race_logic.h"
 #include "collision.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 #include "code_80091440.h"
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
@@ -3125,7 +3125,7 @@ void func_80079860(s32 playerId) {
         (
             ((func_802ABDF4(player->unk_110.unk3A) != 0) && (player->unk_110.unk3C[2] <= 3.0f)) ||
             (player->unk_0CA & 1) ||
-            ((player->unk_0F8 == 0x00FD) && !(player->effects & 8))
+            ((player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & 8))
         )
         ) {
         func_80090778(player);
@@ -3268,7 +3268,7 @@ void update_obj_laikitu_fishing2(s32 objectIndex, s32 playerId) {
             func_80073654(objectIndex);
             break;
         case 3:
-            if ((temp_s1->unk_0F8 == 9) && !(temp_s1->unk_0CA & 1) && ((f64) temp_s1->unk_110.unk3C[2] <= 30.0)) {
+            if ((temp_s1->surfaceType == ICE) && !(temp_s1->unk_0CA & 1) && ((f64) temp_s1->unk_110.unk3C[2] <= 30.0)) {
                 func_800722A4(objectIndex, 8);
             }
             if (!(temp_s1->unk_0CA & 2)) {
@@ -5936,7 +5936,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
 
     temp_s0 = &gPlayerOne[playerId];
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
-        if (!(temp_s0->statusEffects & 0x100)) {
+        if (!(temp_s0->soundEffects & 0x100)) {
             temp_f0 = func_80088F54(objectIndex, temp_s0);
             if ((temp_f0 <= 9.0) && !(temp_s0->effects & 0x04000000) && (has_collided_horizontally_with_player(objectIndex, temp_s0) != 0)) {
                 if ((temp_s0->type & 0x8000) && !(temp_s0->type & 0x100)) {
@@ -5964,7 +5964,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
                     func_800722A4(objectIndex, 2);
                     temp_s0->unk_040 = (s16) objectIndex;
                     temp_s0->unk_046 |= 2;
-                    temp_s0->statusEffects |= 0x100;
+                    temp_s0->soundEffects |= 0x100;
                     func_80088FF0(temp_s0);
                 }
             }
@@ -5981,7 +5981,7 @@ void func_80080DE4(s32 arg0) {
     player = gPlayerOne;
     for (var_v1 = 0; var_v1 < NUM_PLAYERS; var_v1++, player++) {
         if (arg0 == player->unk_040) {
-            player->statusEffects &= ~0x100;
+            player->soundEffects &= ~0x100;
             player->unk_040 = -1;
         }
     }
@@ -6113,7 +6113,7 @@ void func_80081210(void) {
         player->unk_046 &= ~0x0006;
         for (var_s2_3 = 0; var_s2_3 < gNumActiveThwomps; var_s2_3++) {
             objectIndex = indexObjectList1[var_s2_3];
-            if (!(player->effects & 0x80000000)) {
+            if (!(player->effects & BOO_EFFECT)) {
                 func_80080B28(objectIndex, var_s4);
             }
             if (is_obj_index_flag_unk_054_active(objectIndex, 0x00020000) != 0) {
@@ -6343,7 +6343,7 @@ void func_80081D34(s32 objectIndex) {
                 if (var_s1->effects & 0x200) {
                     func_800C9060(var_s2, 0x1900A046U);
                 } else {
-                    var_s1->statusEffects |= 2;
+                    var_s1->soundEffects |= 2;
                 }
                 temp_s0->direction_angle[1] = var_s4->rot[1];
                 temp_s0->velocity[1] = (var_s1->unk_094 / 2) + 3.0;

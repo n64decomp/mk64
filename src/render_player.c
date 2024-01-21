@@ -12,7 +12,7 @@
 #include "objects.h"
 #include "render_player.h"
 #include "code_80057C60.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 #include "framebuffers.h"
 #include "waypoints.h"
 #include "player_controller.h"
@@ -1159,7 +1159,7 @@ void func_800235AC(Player *player, s8 arg1) {
         }
         return;
     }
-    if ((player->effects & 0x200) != 0) {
+    if ((player->effects & STAR_EFFECT) != 0) {
         temp = (s32)gCourseTimer - D_8018D930[arg1];
         if (temp <= 8) {
 
@@ -1242,7 +1242,7 @@ void render_player_shadow(Player *player, s8 arg1, s8 arg2) {
         || ((player->effects & 0x800000) == 0x800000)
         || ((player->effects & 0x400) == 0x400)
         || ((player->unk_0CA & 2) == 2)
-        || ((player->effects & 0x02000000) == 0x02000000)
+        || ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT)
         || ((player->effects & 0x10000) == 0x10000)
         || ((player->effects & 8) == 8)) {
 
@@ -1402,7 +1402,7 @@ void kart_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     mtxf_scale2(sp1A4, gCharacterSize[player->characterId] * player->size);
     convert_to_fixed_point_matrix(&gGfxPool->mtxKart[playerId + (arg2 * 8)], sp1A4);
 
-    if ((player->effects & 0x80000000) == 0x80000000) {
+    if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
         if (arg2 == playerId) {
             gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             gSPDisplayList(gDisplayListHead++, common_setting_render_character);
@@ -1434,7 +1434,7 @@ void kart_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
             );
             gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
         }
-    } else if (((player->unk_0CA & 4) == 4) || (player->statusEffects & 0x08000000) || (player->statusEffects & 0x04000000)) {
+    } else if (((player->unk_0CA & 4) == 4) || (player->soundEffects & 0x08000000) || (player->soundEffects & 0x04000000)) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, common_setting_render_character);
         gDPLoadTLUT_pal256(gDisplayListHead++, gPlayerPalette);
@@ -1646,8 +1646,8 @@ void player_render(Player *player, s8 playerId, s8 arg2) {
     }
     func_80023BF0(player, playerId, arg2, var_v1);
     temp_t1 = 8 << (arg2 * 4);
-    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_110.unk3C[2] <= 50.0f) && (player->unk_0F8 != 9)) {
-        if ((player->effects & 0x80000000) == 0x80000000) {
+    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_110.unk3C[2] <= 50.0f) && (player->surfaceType != ICE)) {
+        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (playerId == arg2) {
                 render_player_shadow(player, playerId, arg2);
             }
@@ -1661,7 +1661,7 @@ void player_render(Player *player, s8 playerId, s8 arg2) {
         ghost_render(player, playerId, arg2, var_v1);
     }
     osRecvMesg(&gDmaMesgQueue, &sp34, OS_MESG_BLOCK);
-    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_0F8 == 9) && ((player->unk_0CA & 1) != 1) && (player->unk_110.unk3C[2] <= 30.0f)) {
+    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) && ((player->unk_0CA & 1) != 1) && (player->unk_110.unk3C[2] <= 30.0f)) {
         player_ice_reflection_render(player, playerId, arg2, var_v1);
     }
     if (player->boostPower >= 2.0f) {

@@ -65,28 +65,32 @@ typedef enum {
     /* 0x10 */ NUM_TIME_TRIAL_DATA
 } TIME_TRIAL_DATA_INDEX;
 
+/**
+ * @brief The different types of surface in the game.
+*/
 enum SURFACE_TYPE {
+    /* -0x1 */ SURFACE_DEFAULT = -1,
     /* 0x00 */ AIRBORNE,
-    /* 0x01 */ PAVEMENT, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
-    /* 0x02 */ SAND_ONE, // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK Jungle on course, Yoshi Valley
-    /* 0x03 */ SAND_TWO, // Koopa Troopa Beach light color, Royal Raceway
-    /* 0x04 */ STONE_TWO, // Royal Raceway castle entrance, Bowser's Castle
-    /* 0x05 */ SNOW_ONE, // Frappe Snowland on course, Sherber Land tunnel
-    /* 0x06 */ STONE_ONE, // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
-    /* 0x07 */ SAND_FIVE, // Mario Raceway
+    /* 0x01 */ ASPHALT, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
+    /* 0x02 */ DIRT, // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK Jungle on course, Yoshi Valley
+    /* 0x03 */ SAND, // Koopa Troopa Beach light color, Royal Raceway
+    /* 0x04 */ STONE, // Royal Raceway castle entrance, Bowser's Castle
+    /* 0x05 */ SNOW, // Frappe Snowland on course, Sherber Land tunnel
+    /* 0x06 */ BRIDGE, // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
+    /* 0x07 */ SAND_OFFROAD, // Mario Raceway
     /* 0x08 */ GRASS, // Luigi's Raceway, Mario Raceway, Royal Raceway, Bowser's Castle, DK Jungle, Yoshi Valley
     /* 0x09 */ ICE, // Sherbert Land
-    /* 0x0A */ SAND_THREE, // Koop Troopa Beach dark color
-    /* 0x0B */ SNOW_TWO, // Frappe Snowland off course
+    /* 0x0A */ WET_SAND, // Koop Troopa Beach dark color
+    /* 0x0B */ SNOW_OFFROAD, // Frappe Snowland off course
     /* 0x0C */ CLIFF, // Koopa Troopa Beach, Choco Mountain
-    /* 0x0D */ SAND_FOUR, // Kalimari Desert off course
+    /* 0x0D */ DIRT_OFFROAD, // Kalimari Desert off course
     /* 0x0E */ TRAIN_TRACK, // Kalimari Desert
-    /* 0x0F */ DIRT, // DK Jungle cave
-    /* 0x10 */ WOOD_TWO, // Bowser's Castle bridge 2, DK Jungle bridge
-    /* 0x11 */ WOOD_ONE, // Frappe Snowland bridge, Bowser's Castle bridge 1,3, Yoshi Valley bridge 2
-    /* 0xFC */ BOOST_PAD_TWO = 0xFC, // DK Jungle
+    /* 0x0F */ CAVE, // DK Jungle cave
+    /* 0x10 */ ROPE_BRIDGE, // Bowser's Castle bridge 2, DK Jungle bridge
+    /* 0x11 */ WOOD_BRIDGE, // Frappe Snowland bridge, Bowser's Castle bridge 1,3, Yoshi Valley bridge 2
+    /* 0xFC */ BOOST_RAMP_WOOD = 0xFC, // DK Jungle
     /* 0xFD */ OUT_OF_BOUNDS, // DK Jungle river island
-    /* 0xFE */ BOOST_PAD_ONE, // Royal Raceway
+    /* 0xFE */ BOOST_RAMP_ASPHALT, // Royal Raceway
     /* 0xFF */ RAMP // Koopa Troopa beach
 };
 
@@ -156,15 +160,9 @@ typedef struct {
 typedef struct {
     s16 ob[3];    /* x, y, z */
     s16 tc[2];    /* texture coord */
-    u8  ca[4];    /* color & alpha */
+    s8  ca[4];    /* color & alpha */
 
-} mk64_Vtx;
-
-typedef struct {
-    s16 ob[3];    /* x, y, z */
-    s16 tc[2];    /* texture coord */
-    s8  n[3];    /* color & alpha */
-} mk64_Vtx_n;
+} CourseVtx;
 
 /*
 This struct has been copied (with only minor modifications) from
@@ -251,7 +249,7 @@ typedef struct {
     /* 0x0006 */ u16 unk_006;
     /* 0x0008 */ s16 lapCount;
     /* 0x000A */ char unk_00A[0x2];
-    /* 0x000C */ s32 statusEffects; // Bitflag.
+    /* 0x000C */ s32 soundEffects; // Bitflag.
     /* 0x0010 */ s16 currentItemCopy; // Has no effect on what item the players has, It is just a synced copy
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;
@@ -313,7 +311,7 @@ typedef struct {
     /* 0x00EC */ f32 kartHopVelocity;
     /* 0x00F0 */ f32 kartHopJerk;
     /* 0x00F4 */ f32 kartHopAcceleration;
-    /* 0x00F8 */ u16 unk_0F8;
+    /* 0x00F8 */ u16 surfaceType;
     /* 0x00FA */ s16 unk_0FA;
     /* 0x00FC */ f32 kartFriction;
     /* 0x0100 */ f32 kartGravity;
