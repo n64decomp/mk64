@@ -2097,16 +2097,16 @@ void apply_effect(Player *player, s8 arg1, s8 arg2) {
         func_8008DC08(player, arg1);
     }
     if ((player->effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) {
-        func_8008E118(player, arg1);
+        apply_lightning_effect(player, arg1);
     }
     if ((player->effects & 0x10000) == 0x10000) {
         func_8008F3F4(player, arg1);
     }
     if ((player->effects & STAR_EFFECT) == STAR_EFFECT) {
-        func_8008F650(player, arg1);
+        apply_star_effect(player, arg1);
     }
     if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
-        func_8008F8DC(player, arg1);
+        apply_boo_effect(player, arg1);
     }
     if (((player->effects & 0x20000000) == 0x20000000) && (player->unk_228 >= 0x64)) {
         func_80031F48(player, 4.0f);
@@ -2121,7 +2121,7 @@ void apply_effect(Player *player, s8 arg1, s8 arg2) {
         func_8008E4A4(player, arg1);
     }
     if ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) {
-        func_8008E8D8(player, arg1);
+        apply_hit_by_item_effect(player, arg1);
     }
     if ((player->effects & 0x4000) == 0x4000) {
         func_8008F1B8(player, arg1);

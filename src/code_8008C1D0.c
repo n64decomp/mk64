@@ -887,7 +887,7 @@ void apply_hit_rotating_sound_effect(Player* player, s8 arg1) {
     }
 }
 
-void func_8008E118(Player *player, s8 arg1) {
+void apply_lightning_effect(Player *player, s8 arg1) {
     s16 test;
     if (((player->effects & 0x8000) == 0x8000) && ((player->effects & 0x04000000) != 0x04000000)) {
         player->effects &= ~0x20000;
@@ -895,7 +895,7 @@ void func_8008E118(Player *player, s8 arg1) {
         player->unk_07C = 0;
         player->unk_0C0 = 0;
         player->rotation[1] = player->unk_0AE;
-        func_8008E3C0(player, arg1);
+        remove_lightning_effect(player, arg1);
         D_80165190[0][arg1] = 1;
         D_80165190[1][arg1] = 1;
         D_80165190[2][arg1] = 1;
@@ -930,7 +930,7 @@ void func_8008E118(Player *player, s8 arg1) {
             move_f32_towards(&player->size, 0.7f, 0.1f);
             move_f32_towards(&player->boundingBoxSize, (f32) ((f64) gKartBoundingBoxSizeTable[player->characterId] * 0.9), 0.1f);
         } else {
-            func_8008E3C0(player, arg1);
+            remove_lightning_effect(player, arg1);
             if (player->type & PLAYER_HUMAN) {
                 func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008008);
             }
@@ -938,7 +938,7 @@ void func_8008E118(Player *player, s8 arg1) {
     }
 }
 
-void func_8008E3C0(Player* player, UNUSED s8 arg1) {
+void remove_lightning_effect(Player* player, UNUSED s8 arg1) {
     move_f32_towards(&player->size, 1.0f, 0.1f);
     move_f32_towards(&player->boundingBoxSize, gKartBoundingBoxSizeTable[player->characterId], 0.1f);
     
@@ -1070,7 +1070,7 @@ void func_8008E884(Player* player, s8 arg1) {
     player->unk_042 = 0;
 }
 
-void func_8008E8D8(Player *player, s8 arg1) {
+void apply_hit_by_item_effect(Player *player, s8 arg1) {
     player->unk_206 = 0;
     player->slopeAccel = 0;
     player->unk_0C0 = 0;
@@ -1397,7 +1397,7 @@ void func_8008F5A4(Player* player, s8 arg1) {
     player->unk_042 = 0;
 }
 
-void func_8008F650(Player* player, s8 arg1) {
+void apply_star_effect(Player* player, s8 arg1) {
     if (((s32) gCourseTimer - D_8018D930[arg1]) >= 9) {
         D_8018D900[arg1] = 1;
 
@@ -1439,7 +1439,7 @@ void apply_star_sound_effect(Player* player, s8 arg1) {
 }
 
 void func_8008F86C(Player* player, s8 arg1) {
-    player->effects &= ~0x200;
+    player->effects &= ~STAR_EFFECT;
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         func_800CA730(arg1);
         return;
@@ -1447,7 +1447,7 @@ void func_8008F86C(Player* player, s8 arg1) {
     func_800CAACC(arg1);
 }
 
-void func_8008F8DC(Player* arg0, s8 arg1) {
+void apply_boo_effect(Player* arg0, s8 arg1) {
     s32 tmp;
     tmp = ((s32) gCourseTimer) - D_8018D950[arg1];
     if (tmp < 7) {
@@ -1802,7 +1802,7 @@ void func_80090778(Player* player) {
             player->unk_0C0 = 0;
             player->rotation[1] = player->unk_0AE;
         }
-        func_8008E3C0(player, playerIndex);
+        remove_lightning_effect(player, playerIndex);
     }
     player->effects &= ~0x20;
 }
