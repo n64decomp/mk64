@@ -2840,7 +2840,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
     } else {
         gDPLoadTLUT_pal256(gDisplayListHead++, gPortraitTLUTs[characterId]);
         gSPDisplayList(gDisplayListHead++, D_0D007DB8);
-        if (player->effects & 0x200) {
+        if (player->effects & STAR_EFFECT) {
             func_8004B614((s32) D_801656C0, (s32) D_801656D0, (s32) D_801656E0, 0x00000080, 0x00000080, 0x00000080, (s32) gObjectList[objectIndex].unk_0A0);
         } else {
             set_transparency((s32) gObjectList[objectIndex].unk_0A0);

@@ -13,7 +13,7 @@
 #include "actors_extended.h"
 #include "audio/external.h"
 #include "code_80071F00.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 
 void copy_collision(Collision *arg0, Collision *arg1) {
     arg1->unk30 = arg0->unk30;
@@ -292,7 +292,7 @@ void update_actor_banana_bunch(struct BananaBunchParent *banana_bunch) {
         }
         if (someCount == 0) {
             destroy_actor((struct Actor *) banana_bunch);
-            owner->statusEffects &= ~HOLD_BANANA_EFFECT;
+            owner->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
         } else if ((owner->type & 0x4000) != 0) {
             controller = &gControllers[banana_bunch->playerId];
             if ((controller->buttonPressed & Z_TRIG) != 0) {
@@ -520,7 +520,7 @@ s32 use_banana_bunch_item(Player *player) {
     bananaBunch = (struct BananaBunchParent *) &gActorList[actorIndex];
     bananaBunch->state = 0;
     bananaBunch->playerId = player - gPlayerOne;
-    player->statusEffects |= HOLD_BANANA_EFFECT;
+    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -726,7 +726,7 @@ void update_actor_banana(struct BananaActor *banana) {
                 controller->buttonDepressed &= ~Z_TRIG;
                 banana->state = 1;
                 banana->unk_04 = 0x00B4;
-                player->statusEffects &= ~HOLD_BANANA_EFFECT;
+                player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
                 func_800C9060(player - gPlayerOne, 0x19008012U);
                 pad3 = controller->rawStickY;
                 if ((pad3 > 30.0f) && (controller->rawStickX < 10) && (controller->rawStickX >= -9)) {
@@ -969,7 +969,7 @@ s32 use_fake_itembox_item(Player *player) {
     itemBox = (struct FakeItemBox*)&gActorList[actorIndex];
     itemBox->playerId = (player - gPlayerOne);
     itemBox->state = HELD_FAKE_ITEM_BOX;
-    player->statusEffects |= HOLD_BANANA_EFFECT;
+    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -1016,7 +1016,7 @@ s32 use_banana_item(Player *player) {
     banana->playerId = playerId;
     banana->state = HELD_BANANA;
     banana->unk_04 = 0x0014;
-    player->statusEffects |= HOLD_BANANA_EFFECT;
+    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -1038,7 +1038,7 @@ void use_thunder_item(Player *player) {
     for (index = 0; index < NUM_PLAYERS; index++) {
         otherPlayer = &gPlayers[index];
         if (player != otherPlayer) {
-            otherPlayer->statusEffects |= HIT_ROTATING_EFFECT;
+            otherPlayer->soundEffects |= HIT_ROTATING_SOUND_EFFECT;
         }
     }
 }
@@ -1064,22 +1064,22 @@ void player_use_item(Player *player) {
         use_banana_bunch_item(player);
         break;
     case ITEM_MUSHROOM:
-        player->statusEffects |= BOOST_EFFECT;
+        player->soundEffects |= BOOST_SOUND_EFFECT;
         break;
     case ITEM_DOUBLE_MUSHROOM:
-        player->statusEffects |= BOOST_EFFECT;
+        player->soundEffects |= BOOST_SOUND_EFFECT;
         break;
     case ITEM_TRIPLE_MUSHROOM:
-        player->statusEffects |= BOOST_EFFECT;
+        player->soundEffects |= BOOST_SOUND_EFFECT;
         break;
     case ITEM_SUPER_MUSHROOM:
-        player->statusEffects |= BOOST_EFFECT;
+        player->soundEffects |= BOOST_SOUND_EFFECT;
         break;
     case ITEM_BOO:
-        player->statusEffects |= BOO_EFFECT;
+        player->soundEffects |= BOO_SOUND_EFFECT;
         break;
     case ITEM_STAR:
-        player->statusEffects |= STAR_EFFECT;
+        player->soundEffects |= STAR_SOUND_EFFECT;
         break;
     case ITEM_THUNDERBOLT:
         use_thunder_item(player);
@@ -1446,7 +1446,7 @@ void func_802B3E7C(struct ShellActor *shell, Player *player) {
     shell->velocity[1] = -2.0f;
     shell->velocity[2] = z_velocity;
 
-    if (player->effects & 0x80000000) {
+    if (player->effects & BOO_EFFECT) {
         func_8029FDC8((struct Actor *) shell);
     } else {
         func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], newPosition[0], newPosition[1], newPosition[2]);

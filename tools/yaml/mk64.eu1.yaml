@@ -68,7 +68,7 @@ segments:
       - [0x6F5A0, c, code_8006E9C0]
       - [0x72AE0, c, code_80071F00]
       - [0x87A50, c, code_80086E70]
-      - [0x8CDB0, c, code_8008C1D0]
+      - [0x8CDB0, c, effects]
       - [0x920A0, c, code_800914A0]
       - [0x92350, c, code_80091750]
       - [0xB05B0, c, code_800AF9B0]

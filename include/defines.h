@@ -322,18 +322,30 @@ typedef enum {
 #define MAX_TIME 0x927C0
 
 /**
- * @brief effect of player's
- * for statusEffect
+ * @brief sound effect of player's
+ * for soundEffect
  */
-#define BOOST_EFFECT        0x200 // being boosted by trigger a mushroom or star
-#define BOO_EFFECT          0x800 // being a boo
-#define STAR_EFFECT         0x2000 // being a star
-#define HIT_ROTATING_EFFECT 0x4000 // hitting a rotating object
-#define HOLD_BANANA_EFFECT  0x40000 // holding a banana
-#define REVERSE_EFFECT      0x400000 // being in the wrong direction
-#define HIT_BY_ITEM_EFFECT  0x1000000 // being hit by an item
-#define LIGHTNING_EFFECT    0x40000000 // being hit by lightning
+#define BOOST_SOUND_EFFECT        0x200 // being boosted by trigger a mushroom
+#define BOO_SOUND_EFFECT          0x800 // being a boo
+#define STAR_SOUND_EFFECT         0x2000 // being a star
+#define HIT_ROTATING_SOUND_EFFECT 0x4000 // hitting a rotating object
+#define BOOST_RAMP_WOOD_SOUND_EFFECT   0x8000 // being boosted by a ramp
+#define HOLD_BANANA_SOUND_EFFECT  0x40000 // holding a banana
+#define REVERSE_SOUND_EFFECT      0x400000 // being in the wrong direction
+#define BOOST_RAMP_ASPHALT_SOUND_EFFECT    0x800000 // being boosted by a boost pad
+#define HIT_BY_ITEM_SOUND_EFFECT  0x1000000 // being hit by an item
 
+/**
+ * @brief effect of player's
+ * for effects
+ */
+#define BOOST_RAMP_WOOD_EFFECT         0x4 // being boosted by a ramp
+#define STAR_EFFECT                    0x200 // being a star
+#define BOOST_EFFECT                   0x2000 // being boosted by trigger a mushroom
+#define BOOST_RAMP_ASPHALT_EFFECT      0x100000 // being boosted by a boost pad
+#define HIT_BY_ITEM_EFFECT             0x2000000 // being hit by an item
+#define LIGHTNING_EFFECT               0x40000000 // being hit by lightning
+#define BOO_EFFECT                     0x80000000 // being a boo
 
 /**
  * @brief shell state

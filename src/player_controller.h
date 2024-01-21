@@ -45,7 +45,7 @@ void func_8002AE30(void);
 void func_8002AE38(Player*, s8, f32, f32, f32, f32);
 
 void func_8002B218(Player*);
-void func_8002B308(Player*, s8, s8);
+void apply_sound_effect(Player*, s8, s8);
 void func_8002B5C0(Player*, s8, s8);
 void func_8002B830(Player*, s8, s8);
 void func_8002B8A4(Player*, Player*);
@@ -58,7 +58,7 @@ void func_8002C17C(Player*, s8);
 void func_8002C4F8(Player*, s8);
 void func_8002C7E4(Player*, s8, s8);
 void func_8002C954(Player*, s8, Vec3f);
-void func_8002CD48(Player*, s8, s8);
+void apply_effect(Player*, s8, s8);
 
 void func_8002D028(Player*, s8);
 void func_8002D268(Player*, Camera*, s8, s8);

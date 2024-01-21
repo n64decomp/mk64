@@ -21,7 +21,7 @@
 #include "menus.h"
 #include "render_player.h"
 #include "code_80091750.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 
 f32 D_80165210[8];
 f32 D_80165230[8];
@@ -153,7 +153,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_DAC = 0.0f;
     player->unk_044 = 0;
     player->unk_046 = 0;
-    player->statusEffects = 0;
+    player->soundEffects = 0;
     player->unk_0C6 = 0xFF;
 
 

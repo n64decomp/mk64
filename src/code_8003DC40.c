@@ -3,8 +3,9 @@
 #include "math_util.h"
 #include "common_structs.h"
 #include "player_controller.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 #include "code_8003DC40.h"
+#include "defines.h"
 
 void func_8003DC40(Player *player) {
     player->unk_DAC = 1.0f;
@@ -68,8 +69,8 @@ void func_8003E048(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
         func_80031F48(player, 4.0f);
         player->unk_DAC = 0.5f;
-        if ((player->effects & 0x2000) != 0) {
-            func_8008D554(player);
+        if ((player->effects & BOOST_EFFECT) != 0) {
+            remove_boost_effect(player);
             player->currentSpeed /= 2;
             player->unk_08C /= 2;
         }
@@ -89,15 +90,15 @@ void func_8003E37C(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
     *arg6 += arg1[1] * player->unk_110.unk3C[2] * 0.2;
     *arg7 += arg1[2] * player->unk_110.unk3C[2] * 1;
     func_8002A5F4(arg1, *arg4, arg2, 0.5f, 2);
-    if ((player->unk_110.orientationVector[1] <= 0.7318f) || (player->unk_0F8 == 0x000C)) {
+    if ((player->unk_110.orientationVector[1] <= 0.7318f) || (player->surfaceType == CLIFF)) {
         arg3[0] = ((player->unk_206 / 182) * 0xB4);
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
         if (((player->unk_094 / 18.0f) * 216.0f) >= 8.0f) {
             func_80031F48(player, 5.0f);
         }
         player->unk_DAC = 0.5f;
-        if ((player->effects & 0x2000) != 0) {
-            func_8008D554(player);
+        if ((player->effects & BOOST_EFFECT) != 0) {
+            remove_boost_effect(player);
             player->currentSpeed /= 2;
             player->unk_08C /= 2;
         }
@@ -145,7 +146,7 @@ void func_8003E9EC(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         func_8003DC40(player);
     } else {
         if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
-            if ((player->boundingBoxCorners[2].surfaceType == 1) || (player->boundingBoxCorners[3].surfaceType == 1) || (player->boundingBoxCorners[1].surfaceType == 1) || (player->boundingBoxCorners[0].surfaceType == 1)) {
+            if ((player->boundingBoxCorners[2].surfaceType == ASPHALT) || (player->boundingBoxCorners[3].surfaceType == ASPHALT) || (player->boundingBoxCorners[1].surfaceType == ASPHALT) || (player->boundingBoxCorners[0].surfaceType == ASPHALT)) {
                 arg3[0] = ((player->unk_206 / 182) * 5);
             } else {
                 arg3[0] = ((player->unk_206 / 182) * 0x28);
@@ -190,7 +191,7 @@ void func_8003F138(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
     *arg6 += arg1[1] * player->unk_110.unk3C[2] * 0.1;
     *arg7 += arg1[2] * player->unk_110.unk3C[2] * 1;
     func_8002A5F4(arg1, *arg4, arg2, 0.5f, 2);
-    if (player->unk_0F8 == 8) {
+    if (player->surfaceType == GRASS) {
         player->unk_044 &= ~1;
     }
     if (player->unk_110.orientationVector[1] <= 0.8357f) {

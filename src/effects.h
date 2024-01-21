@@ -1,5 +1,5 @@
-#ifndef CODE_8008C1D0_H
-#define CODE_8008C1D0_H
+#ifndef EFFECTS_H
+#define EFFECTS_H
 
 #include "common_structs.h"
 
@@ -46,7 +46,7 @@ void func_unnamed32(void);
 void func_unnamed33(void);
 void func_8008C310(Player*);
 void func_unnamed34(void);
-void func_8008C354(Player*, s8);
+void clean_effect(Player*, s8);
 void func_8008C528(Player*, s8);
 void func_8008C62C(Player*, s8);
 void func_8008C6D0(Player*, s8);
@@ -59,9 +59,9 @@ void func_8008D0E4(Player*, s8);
 void func_8008D0FC(Player*, s8);
 void func_8008D170(Player*, s8);
 void func_8008D3B0(Player*, s8);
-void func_8008D3C4(Player*, s8);
-void func_8008D4B4(Player*);
-void func_8008D554(Player*);
+void apply_boost_sound_effect(Player*, s8);
+void apply_boost_effect(Player*);
+void remove_boost_effect(Player*);
 void func_8008D570(Player*, s8);
 void func_8008D698(Player*, s8);
 void func_8008D760(Player*);
@@ -71,32 +71,32 @@ void func_8008D97C(Player*);
 void func_8008D9C0(Player*);
 void func_8008DABC(Player*, s8);
 void func_8008DC08(Player*, s8);
-void func_8008DF98(Player*, s8);
-void func_8008E118(Player*, s8);
-void func_8008E3C0(Player*, s8);
+void apply_hit_rotating_sound_effect(Player*, s8);
+void apply_lightning_effect(Player*, s8);
+void remove_lightning_effect(Player*, s8);
 void func_8008E4A4(Player*, s8);
-void func_8008E6C0(Player*, s8);
+void apply_reverse_sound_effect(Player*, s8);
 void func_8008E884(Player*, s8);
-void func_8008E8D8(Player*, s8);
-void func_8008EAE0(Player*, s8);
-void func_8008EC34(Player*, s8);
-void func_8008EC88(Player*, s8);
-void func_8008EDC0(Player*);
-void func_8008EEC4(Player*);
-void func_8008EEE4(Player*, s8);
-void func_8008F008(Player*);
-void func_8008F0E8(Player*);
+void apply_hit_by_item_effect(Player*, s8);
+void apply_hit_by_item_sound_effect(Player*, s8);
+void remove_hit_by_item_effect(Player*, s8);
+void apply_boost_ramp_asphalt_sound_effect(Player*, s8);
+void apply_boost_ramp_asphalt_effect(Player*);
+void remove_boost_ramp_asphalt_effect(Player*);
+void apply_boost_ramp_wood_sound_effect(Player*, s8);
+void apply_boost_ramp_wood_effect(Player*);
+void remove_boost_ramp_wood_effect(Player*);
 void func_8008F104(Player*, s8);
 void func_8008F1B8(Player*, s8);
 void func_8008F3E0(Player*);
 void func_8008F3F4(Player*, s8);
 void func_8008F494(Player*, s8);
 void func_8008F5A4(Player*, s8);
-void func_8008F650(Player*, s8);
-void func_8008F778(Player*, s8);
+void apply_star_effect(Player*, s8);
+void apply_star_sound_effect(Player*, s8);
 void func_8008F86C(Player*, s8);
-void func_8008F8DC(Player*, s8);
-void func_8008FA38(Player*, s8);
+void apply_boo_effect(Player*, s8);
+void apply_boo_sound_effect(Player*, s8);
 void func_8008FB30(Player*, s8);
 void func_8008FC1C(Player*);
 void func_8008FC64(Player*, s8);
