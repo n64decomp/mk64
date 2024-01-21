@@ -71,7 +71,7 @@ typedef enum {
 enum SURFACE_TYPE {
     /* -0x1 */ SURFACE_DEFAULT = -1,
     /* 0x00 */ AIRBORNE,
-    /* 0x01 */ BITUMEN, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
+    /* 0x01 */ ASPHALT, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
     /* 0x02 */ DIRT, // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK Jungle on course, Yoshi Valley
     /* 0x03 */ SAND, // Koopa Troopa Beach light color, Royal Raceway
     /* 0x04 */ STONE, // Royal Raceway castle entrance, Bowser's Castle
@@ -90,7 +90,7 @@ enum SURFACE_TYPE {
     /* 0x11 */ WOOD_BRIDGE, // Frappe Snowland bridge, Bowser's Castle bridge 1,3, Yoshi Valley bridge 2
     /* 0xFC */ BOOST_RAMP_WOOD = 0xFC, // DK Jungle
     /* 0xFD */ OUT_OF_BOUNDS, // DK Jungle river island
-    /* 0xFE */ BOOST_RAMP_BITUMEN, // Royal Raceway
+    /* 0xFE */ BOOST_RAMP_ASPHALT, // Royal Raceway
     /* 0xFF */ RAMP // Koopa Troopa beach
 };
 

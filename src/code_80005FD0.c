@@ -1073,7 +1073,7 @@ void func_80008424(s32 playerId, f32 arg1, Player *player) {
         !(player->soundEffects & 4)) {
         if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
             func_80007FA4(playerId, player, var_f2);
-        } else if ((D_801634D8[playerId] == 1) && !(player->effects & 0x80000200)) {
+        } else if ((D_801634D8[playerId] == 1) && !(player->effects & (STAR_EFFECT | BOO_EFFECT))) {
             func_80031F48(player, 10.0f);
             if (player->currentSpeed == 0.0) {
                 player->velocity[0] = 0.0f;
@@ -1508,7 +1508,7 @@ void func_8000929C(s32 playerId, Player *player) {
         var_t0 = 0;
         if (gCurrentCourseId == 0x000B) {
             D_801634EC = 0;
-            if (player->effects & 0x200) {
+            if (player->effects & STAR_EFFECT) {
                 D_801634EC = 1;
             }
             if (gIsMirrorMode != 0) {
@@ -2114,7 +2114,7 @@ void func_8000B140(s32 playerId) {
         (player->characterId != 5) &&
         (player->characterId != 7) &&
         (player->characterId != 4) &&
-        !(player->effects & 0x200)) {
+        !(player->effects & STAR_EFFECT)) {
         var_t1 = gNearestWaypointByPlayerId[playerId];
         temp_f22 = (player->unk_094 / 18.0f) * 216.0f;
         for (someIndex = 0; someIndex < 8; someIndex++) {
@@ -4965,7 +4965,7 @@ void func_80013854(Player *player) {
     f32 playerZ;
     f32 playerY;
 
-    if (!((player->effects & 0x01000000)) && (!(player->effects & 0x02000000))) {
+    if (!((player->effects & 0x01000000)) && (!(player->effects & HIT_BY_ITEM_EFFECT))) {
         playerX = player->pos[0];
         playerY = player->pos[1];
         playerZ = player->pos[2];
@@ -8000,7 +8000,7 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case 26:
-            if (!(player->effects & 0x200)) {
+            if (!(player->effects & STAR_EFFECT)) {
                 temp_s0->unk_00 = 0;
             }
             temp_s0->unk_04 = 0;
@@ -8014,7 +8014,7 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case 28:
-            if (!(player->effects & 0x80000000)) {
+            if (!(player->effects & BOO_EFFECT)) {
                 temp_s0->unk_00 = 0;
             }
             temp_s0->unk_04 = 0;
@@ -8066,7 +8066,7 @@ void cpu_use_item_strategy(s32 playerId) {
         if (temp_s0->unk_04 < 0x2710) {
             temp_s0->unk_04 += 1;
         }
-        if (player->effects & 0x80002200) {
+        if (player->effects & (BOO_EFFECT | BOOST_EFFECT | STAR_EFFECT)) { // 0x80002200
             temp_s0->unk_04 = 0;
         }
     }

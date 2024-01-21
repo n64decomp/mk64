@@ -1446,7 +1446,7 @@ void func_802B3E7C(struct ShellActor *shell, Player *player) {
     shell->velocity[1] = -2.0f;
     shell->velocity[2] = z_velocity;
 
-    if (player->effects & 0x80000000) {
+    if (player->effects & BOO_EFFECT) {
         func_8029FDC8((struct Actor *) shell);
     } else {
         func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], newPosition[0], newPosition[1], newPosition[2]);

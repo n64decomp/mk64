@@ -207,11 +207,11 @@ void clean_effect(Player *player, s8 arg1) {
     if ((player->effects & 0x1000000) == 0x1000000) {
         func_8008E884(player, arg1);
     }
-    if ((player->effects & 0x2000000) == 0x2000000) {
-        func_8008EC34(player, arg1);
+    if ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) {
+        remove_hit_by_item_effect(player, arg1);
     }
-    if ((player->effects & BOOST_RAMP_BITUMEN_EFFECT) == BOOST_RAMP_BITUMEN_EFFECT) {
-        remove_BOOST_RAMP_BITUMEN_effect(player);
+    if ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT) {
+        remove_boost_ramp_asphalt_effect(player);
     }
     if ((player->effects & BOOST_RAMP_WOOD_EFFECT) == BOOST_RAMP_WOOD_EFFECT) {
         remove_boost_ramp_wood_effect(player);
@@ -1051,7 +1051,7 @@ void apply_reverse_sound_effect(Player *player, s8 arg1)
         func_800098FC(arg1, player);
     }
 
-    player->soundEffects &= ~0x00480000;
+    player->soundEffects &= ~(REVERSE_SOUND_EFFECT | 0x80000);
     player->unk_0B6 |= 0x40;
     gTimerBoostTripleACombo[arg1] = 0;
     gIsPlayerTripleAButtonCombo[arg1] = FALSE;
@@ -1086,7 +1086,7 @@ void func_8008E8D8(Player *player, s8 arg1) {
     }
 
     if (player->unk_0E0 == 4) {
-        player->effects &= ~0x02000000;
+        player->effects &= ~HIT_BY_ITEM_EFFECT;
         player->unk_0A8 = 0;
         player->unk_236 = 0;
         D_80165190[3][arg1] = 1;
@@ -1108,7 +1108,7 @@ void func_8008E8D8(Player *player, s8 arg1) {
             player->unk_0A8 = 0;
             --player->unk_236;
             if (player->unk_236 == 0) {
-                player->effects &= ~0x02000000;
+                player->effects &= ~HIT_BY_ITEM_EFFECT;
                 player->unk_236 = 0;
                 D_80165190[0][arg1] = 1;
                 D_80165190[1][arg1] = 1;
@@ -1149,7 +1149,7 @@ void apply_hit_by_item_sound_effect(Player* player, s8 arg1) {
         func_800098FC(arg1, player);
     }
     
-    player->effects |= 0x02000000;
+    player->effects |= HIT_BY_ITEM_EFFECT;
     player->unk_0B6 |= 0x40;
     player->soundEffects &= ~0x01000002;
 
@@ -1159,8 +1159,8 @@ void apply_hit_by_item_sound_effect(Player* player, s8 arg1) {
     gFrameSinceLastACombo[arg1] = 0;
 }
 
-void func_8008EC34(Player* player, s8 arg1) {
-    player->effects &= ~0x02000000;
+void remove_hit_by_item_effect(Player* player, s8 arg1) {
+    player->effects &= ~HIT_BY_ITEM_EFFECT;
     player->unk_0A8 = 0;
     player->unk_236 = 0;
     D_80165190[0][arg1] = 1;
@@ -1170,11 +1170,11 @@ void func_8008EC34(Player* player, s8 arg1) {
     player->unk_042 = 0;
 }
 
-void apply_BOOST_RAMP_BITUMEN_sound_effect(Player* player, s8 playerId) {
+void apply_boost_ramp_asphalt_sound_effect(Player* player, s8 playerId) {
     clean_effect(player, playerId);
 
-    player->effects |= BOOST_RAMP_BITUMEN_EFFECT;
-    player->soundEffects &= ~BOOST_RAMP_BITUMEN_SOUND_EFFECT;
+    player->effects |= BOOST_RAMP_ASPHALT_EFFECT;
+    player->soundEffects &= ~BOOST_RAMP_ASPHALT_SOUND_EFFECT;
     player->unk_DB4.unk0 = 0;
     player->unk_DB4.unk8 = 8.0f;
     if (D_8015F890 != 1) {
@@ -1190,20 +1190,20 @@ void apply_BOOST_RAMP_BITUMEN_sound_effect(Player* player, s8 playerId) {
     player->effects &= ~0x20;
 }
 
-void apply_BOOST_RAMP_BITUMEN_effect(Player* player) {
+void apply_boost_ramp_asphalt_effect(Player* player) {
     f64 temp_f0;
 
     player->currentSpeed = player->topSpeed;
     if ((u16) player->unk_256 > 0) {
         player->currentSpeed = 0.0f;
     }
-    if ((player->surfaceType != BOOST_RAMP_BITUMEN) && ((player->effects & 8) != 8)) {
+    if ((player->surfaceType != BOOST_RAMP_ASPHALT) && ((player->effects & 8) != 8)) {
         move_f32_towards(&player->boostPower, 0, 1.0f);
     } else {
         move_f32_towards(&player->boostPower, 400.0f, 0.01f);
     }
     if (player->boostPower <= 1.0f) {
-        player->effects &= ~BOOST_RAMP_BITUMEN_EFFECT;
+        player->effects &= ~BOOST_RAMP_ASPHALT_EFFECT;
         player->boostPower = 0.0f;
         if (player->unk_0C2 >= 0x33) {
             temp_f0 = 0.7;
@@ -1213,8 +1213,8 @@ void apply_BOOST_RAMP_BITUMEN_effect(Player* player) {
     }
 }
 
-void remove_BOOST_RAMP_BITUMEN_effect(Player* player) {
-    player->effects &= ~BOOST_RAMP_BITUMEN_EFFECT;
+void remove_boost_ramp_asphalt_effect(Player* player) {
+    player->effects &= ~BOOST_RAMP_ASPHALT_EFFECT;
     player->boostPower = 0.0f;
 }
 
@@ -1350,7 +1350,7 @@ void func_8008F494(Player* player, s8 arg1) {
     if ((((player->effects & 0x80) != 0) ||
          ((player->effects & 0x40) != 0) ||
          ((player->effects & 0x01000000)) ||
-         ((player->effects & 0x02000000)) ||
+         ((player->effects & HIT_BY_ITEM_EFFECT)) ||
          ((player->effects & 0x400) != 0)) && (gModeSelection == BATTLE)) {
         player->unk_044 |= 0x8000;
     }
@@ -1413,7 +1413,7 @@ void func_8008F650(Player* player, s8 arg1) {
     }
 
     if (((s32) gCourseTimer - D_8018D930[arg1]) >= 0xA) {
-        player->effects &= ~0x200;
+        player->effects &= ~STAR_EFFECT;
     }
 }
 
@@ -1421,7 +1421,7 @@ void func_8008F650(Player* player, s8 arg1) {
 void apply_star_sound_effect(Player* player, s8 arg1) {
     clean_effect(player, arg1);
 
-    player->effects |= 0x200;
+    player->effects |= STAR_EFFECT;
     player->soundEffects &= ~STAR_SOUND_EFFECT;
     D_8018D930[arg1] = gCourseTimer;
     D_8018D900[arg1] = 1;
@@ -1498,7 +1498,7 @@ void apply_boo_sound_effect(Player* player, s8 arg1) {
 
     clean_effect(player, arg1);
 
-    player->effects |= 0x80000000;
+    player->effects |= BOO_EFFECT;
     player->soundEffects &= ~BOO_SOUND_EFFECT;
     D_8018D950[arg1] = gCourseTimer;
     D_8018D970[arg1] = 0xFF;
@@ -1879,7 +1879,7 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
                 player->unk_0C6 = 0x00FF;
             }
         }
-        if ((player->effects & 0x80000000) == 0x80000000) {
+        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             func_8008FB30(player, arg1);
         }
         break;

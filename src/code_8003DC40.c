@@ -97,7 +97,7 @@ void func_8003E37C(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
             func_80031F48(player, 5.0f);
         }
         player->unk_DAC = 0.5f;
-        if ((player->effects & 0x2000) != 0) {
+        if ((player->effects & BOOST_EFFECT) != 0) {
             remove_boost_effect(player);
             player->currentSpeed /= 2;
             player->unk_08C /= 2;
@@ -146,7 +146,7 @@ void func_8003E9EC(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         func_8003DC40(player);
     } else {
         if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
-            if ((player->boundingBoxCorners[2].surfaceType == BITUMEN) || (player->boundingBoxCorners[3].surfaceType == BITUMEN) || (player->boundingBoxCorners[1].surfaceType == BITUMEN) || (player->boundingBoxCorners[0].surfaceType == BITUMEN)) {
+            if ((player->boundingBoxCorners[2].surfaceType == ASPHALT) || (player->boundingBoxCorners[3].surfaceType == ASPHALT) || (player->boundingBoxCorners[1].surfaceType == ASPHALT) || (player->boundingBoxCorners[0].surfaceType == ASPHALT)) {
                 arg3[0] = ((player->unk_206 / 182) * 5);
             } else {
                 arg3[0] = ((player->unk_206 / 182) * 0x28);

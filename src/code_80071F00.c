@@ -6113,7 +6113,7 @@ void func_80081210(void) {
         player->unk_046 &= ~0x0006;
         for (var_s2_3 = 0; var_s2_3 < gNumActiveThwomps; var_s2_3++) {
             objectIndex = indexObjectList1[var_s2_3];
-            if (!(player->effects & 0x80000000)) {
+            if (!(player->effects & BOO_EFFECT)) {
                 func_80080B28(objectIndex, var_s4);
             }
             if (is_obj_index_flag_unk_054_active(objectIndex, 0x00020000) != 0) {

@@ -1892,10 +1892,10 @@ Variable Name | Memory Address
 [func_8008E884](@ref func_8008E884) | 0x8008E884
 [func_8008E8D8](@ref func_8008E8D8) | 0x8008E8D8
 [apply_hit_by_item_sound_effect](@ref apply_hit_by_item_sound_effect) | 0x8008EAE0
-[func_8008EC34](@ref func_8008EC34) | 0x8008EC34
-[apply_BOOST_RAMP_BITUMEN_sound_effect](@ref apply_BOOST_RAMP_BITUMEN_sound_effect) | 0x8008EC88
-[apply_BOOST_RAMP_BITUMEN_effect](@ref apply_BOOST_RAMP_BITUMEN_effect) | 0x8008EDC0
-[remove_BOOST_RAMP_BITUMEN_effect](@ref remove_BOOST_RAMP_BITUMEN_effect) | 0x8008EEC4
+[remove_hit_by_item_effect](@ref remove_hit_by_item_effect) | 0x8008EC34
+[apply_boost_ramp_asphalt_sound_effect](@ref apply_boost_ramp_asphalt_sound_effect) | 0x8008EC88
+[apply_boost_ramp_asphalt_effect](@ref apply_boost_ramp_asphalt_effect) | 0x8008EDC0
+[remove_boost_ramp_asphalt_effect](@ref remove_boost_ramp_asphalt_effect) | 0x8008EEC4
 [apply_boost_ramp_wood_sound_effect](@ref apply_boost_ramp_wood_sound_effect) | 0x8008EEE4
 [apply_boost_ramp_wood_effect](@ref apply_boost_ramp_wood_effect) | 0x8008F008
 [remove_boost_ramp_wood_effect](@ref remove_boost_ramp_wood_effect) | 0x8008F0E8

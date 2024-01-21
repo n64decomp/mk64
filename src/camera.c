@@ -1016,7 +1016,7 @@ void func_8001F394(Player *player, f32 *arg1) {
         if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
             D_80164A08[playerIndex] = 2;
         }
-        if ((player->effects & BOOST_RAMP_BITUMEN_EFFECT) == BOOST_RAMP_BITUMEN_EFFECT) {
+        if ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT) {
             D_80164A08[playerIndex] = 3;
         }
         if ((player->soundEffects & 0x100) == 0x100) {
@@ -1055,7 +1055,7 @@ void func_8001F394(Player *player, f32 *arg1) {
         }
         break;
     case 3:
-        if (((player->effects & BOOST_RAMP_BITUMEN_EFFECT) == BOOST_RAMP_BITUMEN_EFFECT) && ((player->effects & 8) == 8)) {
+        if (((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT) && ((player->effects & 8) == 8)) {
             move_f32_towards(&D_80164498[playerIndex], 20.0f, 0.1f);
         } else {
             if (D_80164498[playerIndex] > 1.0f) {
