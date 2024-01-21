@@ -1,5 +1,5 @@
-#ifndef CODE_8008C1D0_H
-#define CODE_8008C1D0_H
+#ifndef EFFECTS_H
+#define EFFECTS_H
 
 #include "common_structs.h"
 
