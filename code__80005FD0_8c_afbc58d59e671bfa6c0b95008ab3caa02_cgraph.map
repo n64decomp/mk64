@@ -1,6 +1,9 @@
 <map id="func_8001C42C" name="func_8001C42C">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,128,57"/>
-<area shape="rect" id="node2" href="$code__80057C60_8c.html#a4baa810ff1285519b37da7ac9b184b56" title=" " alt="" coords="176,5,299,32"/>
-<area shape="rect" id="node3" href="$code__80057C60_8c.html#a23591c50e334e347e1af59fcd68c0a5f" title=" " alt="" coords="176,56,299,83"/>
-<area shape="rect" id="node4" href="$skybox__and__splitscreen_8c.html#ae4ccafca07028b0c92356fdf52e84180" title=" " alt="" coords="347,56,469,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,128,56"/>
+<area shape="rect" id="Node000002" href="$code__80057C60_8c.html#a4baa810ff1285519b37da7ac9b184b56" title=" " alt="" coords="176,5,299,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,32,162,26,163,32,129,37"/>
+<area shape="rect" id="Node000003" href="$code__80057C60_8c.html#a23591c50e334e347e1af59fcd68c0a5f" title=" " alt="" coords="176,55,299,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="129,49,163,54,162,59,128,55"/>
+<area shape="rect" id="Node000004" href="$skybox__and__splitscreen_8c.html#ae4ccafca07028b0c92356fdf52e84180" title=" " alt="" coords="347,55,469,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="299,65,333,65,333,70,299,70"/>
 </map>

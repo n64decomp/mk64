@@ -1,9 +1,15 @@
 <map id="func_8007AFB0" name="func_8007AFB0">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,128,57"/>
-<area shape="rect" id="node2" href="$code__80071F00_8c.html#a232231dfa81c570456984fd2af82e60a" title=" " alt="" coords="211,5,333,32"/>
-<area shape="rect" id="node3" href="$code__80071F00_8c.html#a475d92dfa4779b85886956f18cc59a0c" title=" " alt="" coords="176,56,368,83"/>
-<area shape="rect" id="node4" href="$code__80071F00_8c.html#a5d5e90510363f2db4ec1d76839b76d95" title=" " alt="" coords="416,56,556,83"/>
-<area shape="rect" id="node5" href="$math__util_8c.html#a151b63b8adf9af7e4054b3b84bd226dc" title=" " alt="" coords="638,31,734,57"/>
-<area shape="rect" id="node7" href="$memory_8c.html#ad31a98de0c0dbd4cb4092d70a71d0d38" title="converts an RSP segment + offset address to a normal memory address" alt="" coords="604,81,768,108"/>
-<area shape="rect" id="node6" href="$math__util_8c.html#a062850863585005ad1d0a75d9ff70693" title=" " alt="" coords="816,31,919,57"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,128,56"/>
+<area shape="rect" id="Node000002" href="$code__80071F00_8c.html#a232231dfa81c570456984fd2af82e60a" title=" " alt="" coords="211,5,333,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,33,197,25,197,30,129,38"/>
+<area shape="rect" id="Node000003" href="$code__80071F00_8c.html#a475d92dfa4779b85886956f18cc59a0c" title=" " alt="" coords="176,55,368,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="129,48,163,52,162,57,128,53"/>
+<area shape="rect" id="Node000004" href="$code__80071F00_8c.html#a5d5e90510363f2db4ec1d76839b76d95" title=" " alt="" coords="416,55,556,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="368,65,403,65,403,70,368,70"/>
+<area shape="rect" id="Node000005" href="$math__util_8c.html#a151b63b8adf9af7e4054b3b84bd226dc" title=" " alt="" coords="638,29,734,55"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="556,56,624,47,624,52,557,61"/>
+<area shape="rect" id="Node000007" href="$memory_8c.html#a78aef9786c00b1e9cfb9665ebdb2c694" title="converts an RSP segment + offset address to a normal memory address" alt="" coords="604,79,768,104"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="557,73,591,77,590,83,556,78"/>
+<area shape="rect" id="Node000006" href="$math__util_8c.html#a062850863585005ad1d0a75d9ff70693" title=" " alt="" coords="816,29,919,55"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="734,39,802,39,802,45,734,45"/>
 </map>

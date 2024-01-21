@@ -1,5 +1,7 @@
 <map id="osViBlack" name="osViBlack">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,92,57"/>
-<area shape="rect" id="node2" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="141,5,258,32"/>
-<area shape="rect" id="node3" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="140,56,259,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,92,56"/>
+<area shape="rect" id="Node000002" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="141,5,258,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,34,127,28,127,33,92,39"/>
+<area shape="rect" id="Node000003" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="140,55,259,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="92,48,127,53,126,58,92,53"/>
 </map>

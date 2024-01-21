@@ -1,8 +1,13 @@
 <map id="guRotateF" name="guRotateF">
-<area shape="rect" id="node1" title=" " alt="" coords="5,81,95,108"/>
-<area shape="rect" id="node2" href="$cosf_8c.html#a7b126b2344591e649c21c9ab0b8adb40" title=" " alt="" coords="171,5,220,32"/>
-<area shape="rect" id="node3" href="$guMtxF2L_8c.html#a257a86497fc08677370948eda3163595" title=" " alt="" coords="143,56,247,83"/>
-<area shape="rect" id="node4" href="$guNormalize_8c.html#a7ad49cccf7be1e598544b9f0b35b5e28" title=" " alt="" coords="143,107,248,133"/>
-<area shape="rect" id="node6" href="$sinf_8c.html#a8a7dc2a88e109f4e15b661247665709a" title=" " alt="" coords="172,157,219,184"/>
-<area shape="rect" id="node5" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="296,107,348,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,95,105"/>
+<area shape="rect" id="Node000002" href="$cosf_8c.html#a7b126b2344591e649c21c9ab0b8adb40" title=" " alt="" coords="171,5,220,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,78,141,40,157,32,159,37,144,44,75,82"/>
+<area shape="rect" id="Node000003" href="$guMtxF2L_8c.html#a257a86497fc08677370948eda3163595" title=" " alt="" coords="143,55,247,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="94,82,130,76,130,81,95,88"/>
+<area shape="rect" id="Node000004" href="$guNormalize_8c.html#a7ad49cccf7be1e598544b9f0b35b5e28" title=" " alt="" coords="143,104,248,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="95,97,129,103,128,108,94,103"/>
+<area shape="rect" id="Node000006" href="$sinf_8c.html#a8a7dc2a88e109f4e15b661247665709a" title=" " alt="" coords="172,153,219,179"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="77,103,144,138,161,147,159,152,141,143,74,108"/>
+<area shape="rect" id="Node000005" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="296,104,348,129"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="248,114,282,114,282,119,248,119"/>
 </map>

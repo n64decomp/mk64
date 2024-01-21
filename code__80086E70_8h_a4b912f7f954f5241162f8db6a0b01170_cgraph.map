@@ -1,6 +1,9 @@
 <map id="func_8008A454" name="func_8008A454">
-<area shape="rect" id="node1" title=" " alt="" coords="5,78,128,105"/>
-<area shape="rect" id="node2" href="$code__80086E70_8c.html#abee4ac0bf830479754bf7a3054719714" title="Returns the distance between the object and the camera." alt="" coords="176,5,353,47"/>
-<area shape="rect" id="node3" href="$code__80071F00_8c.html#a9d0d6fe8e02dc86bf4f9f8c8214ee326" title=" " alt="" coords="189,71,340,112"/>
-<area shape="rect" id="node4" href="$code__80071F00_8c.html#a946b33c1ed166b19b04e4528c3641b9a" title=" " alt="" coords="189,136,340,177"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,128,102"/>
+<area shape="rect" id="Node000002" href="$code__80086E70_8c.html#abee4ac0bf830479754bf7a3054719714" title="Returns the distance between the object and the camera." alt="" coords="176,5,353,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,74,188,47,190,52,108,79"/>
+<area shape="rect" id="Node000003" href="$code__80071F00_8c.html#a9d0d6fe8e02dc86bf4f9f8c8214ee326" title=" " alt="" coords="189,69,340,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,87,176,87,176,92,128,92"/>
+<area shape="rect" id="Node000004" href="$code__80071F00_8c.html#a946b33c1ed166b19b04e4528c3641b9a" title=" " alt="" coords="189,133,340,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="108,100,190,126,188,132,106,105"/>
 </map>

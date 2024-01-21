@@ -1,20 +1,38 @@
 <map id="func_80052F20" name="func_80052F20">
-<area shape="rect" id="node1" title=" " alt="" coords="5,160,127,187"/>
-<area shape="rect" id="node2" href="$math__util__2_8c.html#a99d173c040cb4a9d0184df2605d71e32" title=" " alt="" coords="680,13,803,40"/>
-<area shape="rect" id="node5" href="$hud__renderer_8c.html#a48098b2e124ccb0979db85ed1e0d4c74" title=" " alt="" coords="213,80,335,107"/>
-<area shape="rect" id="node7" href="$code__80086E70_8c.html#a364496b44c479b8d7937d98d2283c89e" title=" " alt="" coords="213,160,335,187"/>
-<area shape="rect" id="node13" href="$code__80071F00_8c.html#a5d62494ea345d5a576d4440772111136" title=" " alt="" coords="191,211,357,253"/>
-<area shape="rect" id="node14" href="$math__util__2_8c.html#aca064a66dc29c36e1db7b79a6b679e25" title=" " alt="" coords="175,356,373,383"/>
-<area shape="rect" id="node3" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="851,52,917,79"/>
-<area shape="rect" id="node4" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="965,52,1075,79"/>
-<area shape="rect" id="node6" href="$hud__renderer_8c.html#a8a3e9d3da5a6ac97b84b553fdc5d7d59" title=" " alt="" coords="461,51,592,77"/>
-<area shape="rect" id="node8" href="$code__80086E70_8c.html#a8b9297822d5c76ed2210ab884878bc1b" title=" " alt="" coords="465,101,588,128"/>
-<area shape="rect" id="node10" href="$code__80086E70_8c.html#abee4ac0bf830479754bf7a3054719714" title="Returns the distance between the object and the camera." alt="" coords="438,153,615,194"/>
-<area shape="rect" id="node11" href="$code__80071F00_8c.html#a9d0d6fe8e02dc86bf4f9f8c8214ee326" title=" " alt="" coords="451,218,602,259"/>
-<area shape="rect" id="node12" href="$code__80071F00_8c.html#a946b33c1ed166b19b04e4528c3641b9a" title=" " alt="" coords="451,283,602,325"/>
-<area shape="rect" id="node9" href="$math__util__2_8c.html#a10e63f3a453c537f806fbb5371bde67c" title=" " alt="" coords="681,89,802,116"/>
-<area shape="rect" id="node15" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="442,349,611,390"/>
-<area shape="rect" id="node16" href="$math__util__2_8c.html#ab532579cd51233e25a8f3f9ea21fb25c" title="Tried to put the definitions in the declares. However, sp3C wants to be at the top...." alt="" coords="421,415,632,441"/>
-<area shape="rect" id="node17" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="716,389,767,416"/>
-<area shape="rect" id="node18" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="717,440,765,467"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,158,127,184"/>
+<area shape="rect" id="Node000002" href="$math__util__2_8c.html#a99d173c040cb4a9d0184df2605d71e32" title=" " alt="" coords="680,14,803,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,156,113,110,141,85,173,65,237,40,304,22,372,11,439,5,565,5,667,13,666,19,565,10,439,10,372,16,305,27,239,45,176,69,144,89,117,114,78,160"/>
+<area shape="rect" id="Node000005" href="$hud__renderer_8c.html#a48098b2e124ccb0979db85ed1e0d4c74" title=" " alt="" coords="213,80,335,105"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="100,156,226,107,228,112,102,161"/>
+<area shape="rect" id="Node000007" href="$code__80086E70_8c.html#a364496b44c479b8d7937d98d2283c89e" title=" " alt="" coords="213,158,335,184"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="127,168,199,168,199,174,127,174"/>
+<area shape="rect" id="Node000013" href="$code__80071F00_8c.html#a5d62494ea345d5a576d4440772111136" title=" " alt="" coords="191,208,357,248"/>
+<area shape="poly" id="edge13_Node000001_Node000013" title=" " alt="" coords="114,181,189,202,187,207,112,186"/>
+<area shape="rect" id="Node000014" href="$math__util__2_8c.html#aca064a66dc29c36e1db7b79a6b679e25" title=" " alt="" coords="175,350,373,376"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="83,182,251,339,247,343,80,186"/>
+<area shape="rect" id="Node000003" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="851,52,917,77"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="791,37,838,50,837,55,790,42"/>
+<area shape="rect" id="Node000004" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="965,52,1075,77"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="918,62,951,62,951,67,918,67"/>
+<area shape="rect" id="Node000006" href="$hud__renderer_8c.html#a8a3e9d3da5a6ac97b84b553fdc5d7d59" title=" " alt="" coords="461,52,592,77"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="335,83,447,70,448,76,336,88"/>
+<area shape="rect" id="Node000008" href="$code__80086E70_8c.html#a8b9297822d5c76ed2210ab884878bc1b" title=" " alt="" coords="465,101,588,126"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="330,156,456,127,458,132,331,161"/>
+<area shape="rect" id="Node000010" href="$code__80086E70_8c.html#abee4ac0bf830479754bf7a3054719714" title="Returns the distance between the object and the camera." alt="" coords="438,151,615,191"/>
+<area shape="poly" id="edge10_Node000007_Node000010" title=" " alt="" coords="336,168,424,168,424,174,336,174"/>
+<area shape="rect" id="Node000011" href="$code__80071F00_8c.html#a9d0d6fe8e02dc86bf4f9f8c8214ee326" title=" " alt="" coords="451,215,602,255"/>
+<area shape="poly" id="edge11_Node000007_Node000011" title=" " alt="" coords="326,181,439,210,437,215,325,186"/>
+<area shape="rect" id="Node000012" href="$code__80071F00_8c.html#a946b33c1ed166b19b04e4528c3641b9a" title=" " alt="" coords="451,279,602,319"/>
+<area shape="poly" id="edge12_Node000007_Node000012" title=" " alt="" coords="337,177,375,194,392,212,400,230,408,248,423,265,440,275,438,280,420,269,403,251,395,232,387,215,372,199,335,182"/>
+<area shape="rect" id="Node000009" href="$math__util__2_8c.html#a10e63f3a453c537f806fbb5371bde67c" title=" " alt="" coords="681,89,802,114"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="588,108,667,103,667,108,588,113"/>
+<area shape="poly" id="edge9_Node000009_Node000003" title=" " alt="" coords="790,86,837,74,838,79,791,92"/>
+<area shape="rect" id="Node000015" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="442,343,611,383"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="373,360,428,360,428,366,373,366"/>
+<area shape="rect" id="Node000016" href="$math__util__2_8c.html#ab532579cd51233e25a8f3f9ea21fb25c" title="Tried to put the definitions in the declares. However, sp3C wants to be at the top...." alt="" coords="421,408,632,433"/>
+<area shape="poly" id="edge16_Node000014_Node000016" title=" " alt="" coords="331,373,458,402,456,407,330,378"/>
+<area shape="rect" id="Node000017" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="716,382,767,408"/>
+<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="632,405,702,397,703,402,632,411"/>
+<area shape="rect" id="Node000018" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="717,432,765,457"/>
+<area shape="poly" id="edge18_Node000016_Node000018" title=" " alt="" coords="632,429,704,438,704,443,632,435"/>
 </map>

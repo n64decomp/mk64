@@ -1,6 +1,9 @@
 <map id="TrackSections" name="TrackSections">
-<area shape="rect" id="node1" title=" " alt="" coords="45,109,155,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,51,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="75,5,125,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="190,5,229,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="45,108,155,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,51,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="40,42,63,82,87,106,83,110,59,86,36,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="75,5,125,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="103,45,103,108,97,108,97,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="190,5,229,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="205,45,196,66,182,86,163,100,142,110,140,105,160,96,178,82,192,63,200,43"/>
 </map>

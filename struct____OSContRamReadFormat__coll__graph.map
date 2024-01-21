@@ -1,5 +1,7 @@
 <map id="__OSContRamReadFormat" name="__OSContRamReadFormat">
-<area shape="rect" id="node1" title=" " alt="" coords="5,168,199,195"/>
-<area shape="rect" id="node2" title=" " alt="" coords="37,5,87,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="124,5,163,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,167,199,192"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="37,5,87,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="59,44,56,91,58,117,66,142,74,154,86,165,82,168,70,158,61,144,53,118,50,91,54,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="124,5,163,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,45,117,143,109,167,104,165,111,142,136,44"/>
 </map>

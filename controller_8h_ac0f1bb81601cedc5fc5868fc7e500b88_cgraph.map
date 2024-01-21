@@ -1,24 +1,56 @@
 <map id="__osContRamWrite" name="__osContRamWrite">
-<area shape="rect" id="node1" title=" " alt="" coords="5,177,152,204"/>
-<area shape="rect" id="node2" href="$controller_8h.html#a3da2a6d11716fef869b6be888c9b7263" title=" " alt="" coords="222,25,355,52"/>
-<area shape="rect" id="node3" href="$contramwrite_8c.html#a5a8e6638b28caf3b5faba67df76d099c" title=" " alt="" coords="200,76,377,102"/>
-<area shape="rect" id="node5" href="$contramwrite_8c.html#a1d45a82b9161aa7445ddbc4fba1e0fd1" title=" " alt="" coords="221,126,356,153"/>
-<area shape="rect" id="node6" href="$____osSiCreateAccessQueue_8c.html#ae0373fb01ccb4831c6c9783b23524a07" title=" " alt="" coords="223,278,354,305"/>
-<area shape="rect" id="node17" href="$crash__screen_8c.html#a4283cbf896ea7ca31653640f6dd237af" title=" " alt="" coords="693,228,797,254"/>
-<area shape="rect" id="node18" href="$____osSiRawStartDma_8c.html#a469384eba4ccec319dbec8745f22bd2f" title=" " alt="" coords="212,329,365,356"/>
-<area shape="rect" id="node22" href="$____osSiCreateAccessQueue_8c.html#aa6dbd69637149484f5fad08232892b50" title=" " alt="" coords="457,126,587,153"/>
-<area shape="rect" id="node4" href="$controller_8h.html#a5ab8a1ce418d27ff12d648c447c8ab6e" title=" " alt="" coords="445,76,599,102"/>
-<area shape="rect" id="node7" href="$____osSiCreateAccessQueue_8c.html#a7520cad725d80a88735d29f75a3de94a" title=" " alt="" coords="425,177,619,204"/>
-<area shape="rect" id="node8" href="$osCreateMesgQueue_8c.html#aab783cab54141cb60618b45f534104b9" title=" " alt="" coords="667,177,824,204"/>
-<area shape="rect" id="node9" href="$osSendMesg_8c.html#a413bd1b0a16c54dcc9e59c48b3d7f142" title=" " alt="" coords="693,126,797,153"/>
-<area shape="rect" id="node10" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="1057,25,1174,52"/>
-<area shape="rect" id="node11" href="$libultra__internal_8h.html#afe9c3abc4ca93d9fe18a87d9f108d5cb" title=" " alt="" coords="1033,101,1197,128"/>
-<area shape="rect" id="node12" href="$libultra__internal_8h.html#a82b6b8e6a4311b516950168ef4078e33" title=" " alt="" coords="1055,329,1175,356"/>
-<area shape="rect" id="node13" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="1056,253,1175,280"/>
-<area shape="rect" id="node14" href="$osStartThread_8c.html#a3b144e814933e16a2fbf2642ad098ed3" title=" " alt="" coords="872,177,985,204"/>
-<area shape="rect" id="node15" href="$libultra__internal_8h.html#a650b788ebd5efde9c8cbccc1ee832445" title=" " alt="" coords="1039,152,1192,178"/>
-<area shape="rect" id="node16" href="$libultra__internal_8h.html#ac9d6cfd19de5565e74f1d74a14e9092d" title=" " alt="" coords="1039,202,1191,229"/>
-<area shape="rect" id="node19" href="$____osSiDeviceBusy_8c.html#ad812ec86e9d0b5929797407de1b3ecbc" title=" " alt="" coords="452,380,592,406"/>
-<area shape="rect" id="node20" href="$osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570" title=" " alt="" coords="448,329,596,356"/>
-<area shape="rect" id="node21" href="$libultra__internal_8h.html#a4f7c83166c9481713d4b56defd0888c7" title=" " alt="" coords="689,329,801,356"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,178,152,203"/>
+<area shape="rect" id="Node000002" href="$crc_8c.html#a3da2a6d11716fef869b6be888c9b7263" title=" " alt="" coords="222,29,355,54"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,176,130,121,162,90,199,63,211,57,213,61,201,68,166,94,134,125,91,179"/>
+<area shape="rect" id="Node000003" href="$contramwrite_8c.html#a5a8e6638b28caf3b5faba67df76d099c" title=" " alt="" coords="200,78,377,103"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="95,176,140,144,199,112,218,105,219,110,201,117,143,149,98,180"/>
+<area shape="rect" id="Node000005" href="$contramwrite_8c.html#a1d45a82b9161aa7445ddbc4fba1e0fd1" title=" " alt="" coords="221,127,356,153"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="132,175,222,153,223,158,133,180"/>
+<area shape="rect" id="Node000006" href="$____osSiCreateAccessQueue_8c.html#ae0373fb01ccb4831c6c9783b23524a07" title=" " alt="" coords="223,279,354,305"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="101,201,146,229,201,258,236,272,234,277,199,262,144,233,98,206"/>
+<area shape="rect" id="Node000017" href="$osRecvMesg_8c.html#aa254dc33e373f235a99e17f7717493dc" title=" " alt="" coords="693,229,797,254"/>
+<area shape="poly" id="edge32_Node000001_Node000017" title=" " alt="" coords="153,193,680,234,679,239,152,199"/>
+<area shape="rect" id="Node000018" href="$____osSiRawStartDma_8c.html#a469384eba4ccec319dbec8745f22bd2f" title=" " alt="" coords="212,330,365,355"/>
+<area shape="poly" id="edge26_Node000001_Node000018" title=" " alt="" coords="91,202,134,256,166,287,201,314,219,323,216,327,199,318,162,291,130,259,87,205"/>
+<area shape="rect" id="Node000022" href="$____osSiCreateAccessQueue_8c.html#aa6dbd69637149484f5fad08232892b50" title=" " alt="" coords="457,129,587,154"/>
+<area shape="poly" id="edge30_Node000001_Node000022" title=" " alt="" coords="152,183,377,161,443,152,444,157,378,167,152,188"/>
+<area shape="rect" id="Node000004" href="$crc_8c.html#a5ab8a1ce418d27ff12d648c447c8ab6e" title=" " alt="" coords="445,78,599,103"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="378,88,431,88,431,93,378,93"/>
+<area shape="rect" id="Node000007" href="$____osSiCreateAccessQueue_8c.html#a7520cad725d80a88735d29f75a3de94a" title=" " alt="" coords="425,178,619,203"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="318,277,478,206,481,211,320,282"/>
+<area shape="poly" id="edge20_Node000006_Node000017" title=" " alt="" coords="354,284,618,257,679,249,679,254,619,263,355,289"/>
+<area shape="rect" id="Node000008" href="$osCreateMesgQueue_8c.html#aab783cab54141cb60618b45f534104b9" title=" " alt="" coords="667,178,824,203"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="619,188,653,188,653,193,619,193"/>
+<area shape="rect" id="Node000009" href="$osSendMesg_8c.html#a413bd1b0a16c54dcc9e59c48b3d7f142" title=" " alt="" coords="693,129,797,154"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="580,175,679,153,680,158,581,180"/>
+<area shape="rect" id="Node000010" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="1057,26,1174,51"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="753,127,771,102,797,71,831,40,871,17,921,5,973,4,1022,10,1064,19,1063,25,1021,15,972,9,922,10,873,22,834,45,801,75,775,105,757,130"/>
+<area shape="rect" id="Node000011" href="$libultra__internal_8h.html#afe9c3abc4ca93d9fe18a87d9f108d5cb" title=" " alt="" coords="1033,105,1197,130"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="797,129,872,119,1020,113,1020,118,872,124,798,134"/>
+<area shape="rect" id="Node000012" href="$libultra__internal_8h.html#aaadded63bebce6cfdda5ecda193fc9ea" title=" " alt="" coords="1055,330,1175,355"/>
+<area shape="poly" id="edge11_Node000009_Node000012" title=" " alt="" coords="799,148,826,163,844,187,851,210,857,233,874,255,913,283,956,303,1001,319,1042,329,1041,334,999,324,954,308,910,287,870,259,852,235,846,212,839,189,822,167,796,153"/>
+<area shape="rect" id="Node000013" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="1056,253,1175,278"/>
+<area shape="poly" id="edge12_Node000009_Node000013" title=" " alt="" coords="798,151,825,163,841,176,850,189,859,201,873,212,915,231,959,244,1043,259,1042,264,957,249,913,236,871,217,855,205,846,192,837,179,823,168,796,155"/>
+<area shape="rect" id="Node000014" href="$osStartThread_8c.html#a3b144e814933e16a2fbf2642ad098ed3" title=" " alt="" coords="872,178,985,203"/>
+<area shape="poly" id="edge13_Node000009_Node000014" title=" " alt="" coords="794,151,868,172,867,177,792,157"/>
+<area shape="poly" id="edge14_Node000014_Node000010" title=" " alt="" coords="940,176,980,136,1032,90,1080,56,1083,61,1035,94,983,140,944,180"/>
+<area shape="poly" id="edge16_Node000014_Node000011" title=" " alt="" coords="953,175,1032,139,1053,132,1054,137,1034,144,955,180"/>
+<area shape="poly" id="edge18_Node000014_Node000012" title=" " alt="" coords="944,202,983,241,1035,287,1083,320,1080,325,1032,291,980,245,940,205"/>
+<area shape="poly" id="edge19_Node000014_Node000013" title=" " alt="" coords="955,201,1034,237,1057,246,1056,251,1032,242,953,206"/>
+<area shape="rect" id="Node000015" href="$libultra__internal_8h.html#a650b788ebd5efde9c8cbccc1ee832445" title=" " alt="" coords="1039,154,1192,179"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="985,181,1025,176,1025,181,986,186"/>
+<area shape="rect" id="Node000016" href="$libultra__internal_8h.html#ac9d6cfd19de5565e74f1d74a14e9092d" title=" " alt="" coords="1039,203,1191,229"/>
+<area shape="poly" id="edge17_Node000014_Node000016" title=" " alt="" coords="986,196,1026,201,1025,206,985,201"/>
+<area shape="poly" id="edge21_Node000017_Node000010" title=" " alt="" coords="796,227,822,213,839,192,846,171,853,149,870,127,911,99,955,77,1001,60,1042,49,1044,54,1002,66,957,82,913,103,874,131,858,152,851,173,843,195,826,217,799,232"/>
+<area shape="poly" id="edge22_Node000017_Node000011" title=" " alt="" coords="794,226,823,212,837,200,845,188,855,175,871,163,907,147,945,134,1019,120,1020,125,946,140,908,152,873,168,859,179,850,191,841,204,825,217,796,231"/>
+<area shape="poly" id="edge23_Node000017_Node000012" title=" " alt="" coords="762,252,873,359,922,371,972,372,1021,366,1063,357,1064,362,1022,371,973,377,921,376,871,364,758,256"/>
+<area shape="poly" id="edge24_Node000017_Node000013" title=" " alt="" coords="798,248,872,257,960,262,1042,263,1042,269,960,267,872,263,797,253"/>
+<area shape="poly" id="edge25_Node000017_Node000014" title=" " alt="" coords="792,226,868,204,870,210,793,231"/>
+<area shape="rect" id="Node000019" href="$____osSiDeviceBusy_8c.html#ad812ec86e9d0b5929797407de1b3ecbc" title=" " alt="" coords="452,379,592,405"/>
+<area shape="poly" id="edge27_Node000018_Node000019" title=" " alt="" coords="350,353,448,374,447,379,349,358"/>
+<area shape="rect" id="Node000020" href="$osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570" title=" " alt="" coords="448,330,596,355"/>
+<area shape="poly" id="edge28_Node000018_Node000020" title=" " alt="" coords="366,340,434,340,434,345,366,345"/>
+<area shape="rect" id="Node000021" href="$libultra__internal_8h.html#a4f7c83166c9481713d4b56defd0888c7" title=" " alt="" coords="689,330,801,355"/>
+<area shape="poly" id="edge29_Node000020_Node000021" title=" " alt="" coords="596,340,675,340,675,345,596,345"/>
+<area shape="poly" id="edge31_Node000022_Node000009" title=" " alt="" coords="587,139,680,139,680,144,587,144"/>
 </map>

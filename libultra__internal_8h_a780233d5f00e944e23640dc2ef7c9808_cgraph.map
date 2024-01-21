@@ -1,6 +1,9 @@
 <map id="__osSiRawStartDma" name="__osSiRawStartDma">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,159,57"/>
-<area shape="rect" id="node2" href="$____osSiDeviceBusy_8c.html#ad812ec86e9d0b5929797407de1b3ecbc" title=" " alt="" coords="211,5,351,32"/>
-<area shape="rect" id="node3" href="$osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570" title=" " alt="" coords="207,56,355,83"/>
-<area shape="rect" id="node4" href="$libultra__internal_8h.html#a4f7c83166c9481713d4b56defd0888c7" title=" " alt="" coords="403,56,515,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,159,56"/>
+<area shape="rect" id="Node000002" href="$____osSiDeviceBusy_8c.html#ad812ec86e9d0b5929797407de1b3ecbc" title=" " alt="" coords="211,5,351,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,31,196,26,197,31,159,36"/>
+<area shape="rect" id="Node000003" href="$osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570" title=" " alt="" coords="207,55,355,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="159,50,193,54,192,59,159,55"/>
+<area shape="rect" id="Node000004" href="$libultra__internal_8h.html#a4f7c83166c9481713d4b56defd0888c7" title=" " alt="" coords="403,55,515,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="355,65,389,65,389,70,355,70"/>
 </map>

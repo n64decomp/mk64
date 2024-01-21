@@ -1,8 +1,14 @@
 <map id="PalmTree" name="PalmTree">
-<area shape="rect" id="node1" title=" " alt="" coords="222,304,304,331"/>
-<area shape="rect" id="node2" href="$structCollision.html" title=" " alt="" coords="154,177,233,203"/>
-<area shape="rect" id="node3" title=" " alt="" coords="10,5,60,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="135,5,274,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="258,177,380,203"/>
-<area shape="rect" id="node6" title=" " alt="" coords="416,177,454,203"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="148,303,229,328"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,176,44,201"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="36,213,52,246,78,277,112,295,149,306,147,311,110,300,75,281,48,249,31,216"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="69,176,191,201"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="127,215,125,247,128,263,134,277,145,291,160,300,157,305,141,295,129,280,123,264,120,247,122,215"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="245,5,295,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="271,44,258,168,246,234,231,280,208,304,204,301,226,277,241,232,252,167,266,44"/>
+<area shape="rect" id="Node000005" href="$structCollision.html" title=" " alt="" coords="389,176,468,201"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="274,44,285,93,296,118,312,141,397,173,395,178,308,145,291,121,280,94,269,45"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="398,210,267,281,216,305,214,300,265,276,396,206"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="370,5,509,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="440,45,432,176,427,176,435,44"/>
 </map>

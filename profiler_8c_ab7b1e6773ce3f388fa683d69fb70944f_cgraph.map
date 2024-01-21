@@ -1,6 +1,9 @@
 <map id="resource_display" name="resource_display">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,137,57"/>
-<area shape="rect" id="node2" href="$profiler_8c.html#a8fa248cbfa2814628c14198dfb97602a" title=" " alt="" coords="185,31,352,57"/>
-<area shape="rect" id="node3" href="$profiler_8c.html#a6ccbcacd3a0082d450e5a6c94af2c928" title=" " alt="" coords="438,5,573,32"/>
-<area shape="rect" id="node4" href="$profiler_8c.html#a4633c7695a2c15f3bbef2f83eefd9168" title=" " alt="" coords="400,56,611,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,137,56"/>
+<area shape="rect" id="Node000002" href="$profiler_8c.html#a8fa248cbfa2814628c14198dfb97602a" title=" " alt="" coords="185,31,352,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,41,172,41,172,46,137,46"/>
+<area shape="rect" id="Node000003" href="$profiler_8c.html#a6ccbcacd3a0082d450e5a6c94af2c928" title=" " alt="" coords="438,5,573,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="352,32,424,24,425,29,353,37"/>
+<area shape="rect" id="Node000004" href="$profiler_8c.html#a4633c7695a2c15f3bbef2f83eefd9168" title=" " alt="" coords="400,55,611,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="353,49,387,53,386,58,352,54"/>
 </map>

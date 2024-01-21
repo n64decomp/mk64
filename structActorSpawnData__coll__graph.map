@@ -1,6 +1,9 @@
 <map id="ActorSpawnData" name="ActorSpawnData">
-<area shape="rect" id="node1" title=" " alt="" coords="152,109,283,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,128,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="152,5,283,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="307,5,445,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="156,108,287,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,40,102,62,124,82,149,95,175,105,173,110,147,100,121,86,98,66,80,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="152,5,291,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="224,45,224,108,219,108,219,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="315,5,445,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="353,40,281,86,242,110,240,105,279,82,350,36"/>
 </map>

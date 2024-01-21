@@ -1,6 +1,9 @@
 <map id="note_vibrato_update" name="note_vibrato_update">
-<area shape="rect" id="node1" title=" " alt="" coords="5,42,161,69"/>
-<area shape="rect" id="node2" href="$audio_2effects_8c.html#a845808744962457cb36c3867fdf2457e" title=" " alt="" coords="215,5,374,47"/>
-<area shape="rect" id="node3" href="$audio_2effects_8c.html#aa411cc3ba6223d8ee256d8e9861546e9" title=" " alt="" coords="209,71,380,98"/>
-<area shape="rect" id="node4" href="$audio_2effects_8c.html#a928724b2f42c619cfb4bba62ffce4855" title=" " alt="" coords="428,71,617,98"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,42,161,67"/>
+<area shape="rect" id="Node000002" href="$audio_2effects_8c.html#a845808744962457cb36c3867fdf2457e" title=" " alt="" coords="215,5,374,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,41,202,36,202,41,162,46"/>
+<area shape="rect" id="Node000003" href="$audio_2effects_8c.html#aa411cc3ba6223d8ee256d8e9861546e9" title=" " alt="" coords="209,70,380,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="162,62,196,67,195,72,161,68"/>
+<area shape="rect" id="Node000004" href="$audio_2effects_8c.html#a928724b2f42c619cfb4bba62ffce4855" title=" " alt="" coords="428,70,617,95"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="381,80,415,80,415,85,381,85"/>
 </map>

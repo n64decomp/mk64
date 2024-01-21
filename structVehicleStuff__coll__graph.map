@@ -1,7 +1,11 @@
 <map id="VehicleStuff" name="VehicleStuff">
-<area shape="rect" id="node1" title=" " alt="" coords="251,139,349,165"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="176,5,227,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="337,5,460,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="485,5,523,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="202,137,301,163"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,44,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="24,45,27,80,32,97,42,111,68,125,109,135,202,144,201,149,108,140,66,130,39,115,28,99,21,81,19,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="127,5,178,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="148,44,146,79,149,96,156,112,177,130,203,140,201,145,174,134,152,115,144,98,140,79,143,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="289,5,411,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="350,45,342,80,323,115,306,129,288,140,285,135,303,125,319,112,337,78,345,44"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="435,5,486,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="455,45,437,82,424,100,408,115,382,130,355,140,301,150,300,145,354,135,380,125,404,111,420,96,433,79,450,43"/>
 </map>

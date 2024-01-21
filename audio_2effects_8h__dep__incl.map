@@ -1,8 +1,13 @@
 <map id="src/audio/effects.h" name="src/audio/effects.h">
-<area shape="rect" id="node1" title=" " alt="" coords="313,5,455,32"/>
-<area shape="rect" id="node2" href="$data_8c.html" title=" " alt="" coords="5,80,131,107"/>
-<area shape="rect" id="node3" href="$audio_2effects_8c.html" title=" " alt="" coords="155,80,295,107"/>
-<area shape="rect" id="node4" href="$heap_8c.html" title=" " alt="" coords="320,80,448,107"/>
-<area shape="rect" id="node5" href="$playback_8c.html" title=" " alt="" coords="472,80,627,107"/>
-<area shape="rect" id="node6" href="$seqplayer_8c.html" title=" " alt="" coords="651,80,810,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="313,5,455,31"/>
+<area shape="rect" id="Node000002" href="$data_8c.html" title=" " alt="" coords="5,79,131,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="321,36,120,81,119,76,319,31"/>
+<area shape="rect" id="Node000003" href="$audio_2effects_8c.html" title=" " alt="" coords="155,79,295,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="347,39,252,81,250,76,345,34"/>
+<area shape="rect" id="Node000004" href="$heap_8c.html" title=" " alt="" coords="320,79,448,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="387,44,387,79,381,79,381,44"/>
+<area shape="rect" id="Node000005" href="$playback_8c.html" title=" " alt="" coords="472,79,627,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="424,34,523,76,521,81,422,38"/>
+<area shape="rect" id="Node000006" href="$seqplayer_8c.html" title=" " alt="" coords="651,79,810,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="454,31,675,76,674,81,453,36"/>
 </map>

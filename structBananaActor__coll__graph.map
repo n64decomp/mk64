@@ -1,8 +1,14 @@
 <map id="BananaActor" name="BananaActor">
-<area shape="rect" id="node1" title=" " alt="" coords="187,421,293,448"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,177,136,203"/>
-<area shape="rect" id="node3" href="$structCollision.html" title=" " alt="" coords="326,177,405,203"/>
-<area shape="rect" id="node4" title=" " alt="" coords="181,5,232,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="307,5,445,32"/>
-<area shape="rect" id="node6" title=" " alt="" coords="429,177,552,203"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="179,420,285,445"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,176,128,201"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="62,215,55,254,52,302,58,351,67,374,81,394,96,404,120,412,180,423,179,429,119,417,93,409,77,398,63,376,53,352,46,302,49,253,57,214"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="173,5,224,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,45,192,167,192,210,212,333,232,419,226,421,206,334,187,211,187,167,194,44"/>
+<area shape="rect" id="Node000005" href="$structCollision.html" title=" " alt="" coords="318,176,397,201"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="203,44,213,93,223,118,239,141,327,173,325,178,236,145,219,121,208,94,198,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="421,176,552,201"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="484,216,473,256,454,305,425,356,407,378,386,398,362,413,336,423,285,433,284,427,335,418,360,408,382,394,403,375,421,353,449,303,468,254,479,214"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="347,215,240,421,236,419,343,212"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="299,5,437,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="369,45,361,176,355,176,364,44"/>
 </map>

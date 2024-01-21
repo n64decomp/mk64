@@ -1,6 +1,9 @@
 <map id="osCreateThread" name="osCreateThread">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,131,83"/>
-<area shape="rect" id="node2" href="$osCreateThread_8c.html#a5312a6863cfe9ea4d40aaf956bd0c968" title=" " alt="" coords="179,5,328,32"/>
-<area shape="rect" id="node3" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="195,56,312,83"/>
-<area shape="rect" id="node4" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="194,107,313,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,131,80"/>
+<area shape="rect" id="Node000002" href="$osCreateThread_8c.html#a5312a6863cfe9ea4d40aaf956bd0c968" title=" " alt="" coords="179,5,328,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,52,191,32,192,37,117,57"/>
+<area shape="rect" id="Node000003" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="195,55,312,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="131,65,181,65,181,70,131,70"/>
+<area shape="rect" id="Node000004" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="194,104,313,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="117,77,192,98,191,103,116,83"/>
 </map>

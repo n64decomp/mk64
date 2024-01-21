@@ -1,5 +1,7 @@
 <map id="uObjSprite_t" name="uObjSprite_t">
-<area shape="rect" id="node1" title=" " alt="" coords="35,241,138,268"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="123,5,162,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="28,240,131,265"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,44,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="21,44,14,80,10,124,13,171,28,215,39,228,53,238,50,242,35,232,24,217,8,172,5,124,8,79,15,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="110,5,161,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="138,45,132,123,123,171,108,217,93,241,88,238,104,215,118,170,127,123,133,44"/>
 </map>

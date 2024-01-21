@@ -1,12 +1,23 @@
 <map id="osViSwapBuffer" name="osViSwapBuffer">
-<area shape="rect" id="node1" title=" " alt="" coords="940,56,1064,83"/>
-<area shape="rect" id="node2" href="$crash__screen__enhancement_8c.html#ac9d1ab766e51eed3b97fcc56ccb64df9" title=" " alt="" coords="729,5,876,32"/>
-<area shape="rect" id="node7" href="$crash__screen_8c.html#affae45bedac61b2d5c4e3f57283ba099" title=" " alt="" coords="713,56,892,83"/>
-<area shape="rect" id="node8" href="$main_8c.html#ab0ea8291cbf3e787fbd55baf553f25ab" title=" " alt="" coords="730,107,875,133"/>
-<area shape="rect" id="node3" href="$crash__screen_8c.html#a2e20d402bdeb53a8b6accfcc60491a2c" title="Retrieves faulted thread and displays debug info after the user inputs the button sequence...." alt="" coords="501,56,665,83"/>
-<area shape="rect" id="node4" href="$crash__screen_8c.html#a77471bbea209b9d664b6569191c60787" title=" " alt="" coords="295,56,453,83"/>
-<area shape="rect" id="node5" href="$main_8c.html#a1e35d2b842121e6aea373f09381616e5" title=" " alt="" coords="144,81,247,108"/>
-<area shape="rect" id="node6" href="$main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" title=" " alt="" coords="5,81,96,108"/>
-<area shape="rect" id="node9" href="$main_8c.html#a633ed517e458daeb768f5361895dcac9" title=" " alt="" coords="508,107,659,133"/>
-<area shape="rect" id="node10" href="$main_8c.html#a023b8f272e4efbd33f371e91ffff6b30" title=" " alt="" coords="317,107,431,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="940,55,1064,80"/>
+<area shape="rect" id="Node000002" href="$crash__screen__enhancement_8c.html#ac9d1ab766e51eed3b97fcc56ccb64df9" title=" " alt="" coords="729,5,876,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="936,54,854,33,855,28,938,49"/>
+<area shape="rect" id="Node000007" href="$crash__screen_8c.html#affae45bedac61b2d5c4e3f57283ba099" title=" " alt="" coords="713,55,892,80"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="926,70,892,70,892,65,926,65"/>
+<area shape="rect" id="Node000008" href="$main_8c.html#ab0ea8291cbf3e787fbd55baf553f25ab" title=" " alt="" coords="730,104,875,129"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="938,86,855,107,854,101,936,81"/>
+<area shape="rect" id="Node000003" href="$crash__screen_8c.html#a2e20d402bdeb53a8b6accfcc60491a2c" title="Retrieves faulted thread and displays debug info after the user inputs the button sequence...." alt="" coords="501,55,665,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="733,36,641,57,640,52,732,31"/>
+<area shape="rect" id="Node000004" href="$crash__screen_8c.html#a77471bbea209b9d664b6569191c60787" title=" " alt="" coords="295,55,453,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="487,70,453,70,453,65,487,65"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#a1e35d2b842121e6aea373f09381616e5" title=" " alt="" coords="144,80,247,105"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="282,83,247,88,246,83,281,78"/>
+<area shape="rect" id="Node000006" href="$main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" title=" " alt="" coords="5,80,96,105"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="131,95,96,95,96,90,131,90"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="700,70,665,70,665,65,700,65"/>
+<area shape="rect" id="Node000009" href="$main_8c.html#a633ed517e458daeb768f5361895dcac9" title=" " alt="" coords="508,104,659,129"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="716,119,659,119,659,114,716,114"/>
+<area shape="rect" id="Node000010" href="$main_8c.html#a023b8f272e4efbd33f371e91ffff6b30" title=" " alt="" coords="317,104,431,129"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="494,119,431,119,431,114,494,114"/>
+<area shape="poly" id="edge11_Node000010_Node000005" title=" " alt="" coords="303,110,247,102,247,97,303,105"/>
 </map>

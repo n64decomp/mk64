@@ -1,6 +1,9 @@
 <map id="__osLeoAbnormalResume" name="__osLeoAbnormalResume">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,196,57"/>
-<area shape="rect" id="node2" href="$____osLeoInterrupt_8c.html#a03b0545d83bdc97631cbf825cbfb9bfd" title=" " alt="" coords="244,31,371,57"/>
-<area shape="rect" id="node3" href="$libultra__internal_8h.html#ac9d6cfd19de5565e74f1d74a14e9092d" title=" " alt="" coords="419,5,571,32"/>
-<area shape="rect" id="node4" href="$libultra__internal_8h.html#a82b6b8e6a4311b516950168ef4078e33" title=" " alt="" coords="435,56,555,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,196,56"/>
+<area shape="rect" id="Node000002" href="$____osLeoInterrupt_8c.html#a03b0545d83bdc97631cbf825cbfb9bfd" title=" " alt="" coords="244,31,371,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,41,230,41,230,46,196,46"/>
+<area shape="rect" id="Node000003" href="$libultra__internal_8h.html#ac9d6cfd19de5565e74f1d74a14e9092d" title=" " alt="" coords="419,5,571,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="370,32,405,27,405,33,371,37"/>
+<area shape="rect" id="Node000004" href="$libultra__internal_8h.html#aaadded63bebce6cfdda5ecda193fc9ea" title=" " alt="" coords="435,55,555,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="371,49,421,55,420,61,370,54"/>
 </map>

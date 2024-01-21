@@ -1,9 +1,15 @@
 <map id="func_800518F8" name="func_800518F8">
-<area shape="rect" id="node1" title=" " alt="" coords="5,70,127,97"/>
-<area shape="rect" id="node2" href="$math__util__2_8c.html#a22aa509214eeed1ba3197762e76d7bed" title=" " alt="" coords="176,45,297,71"/>
-<area shape="rect" id="node7" href="$hud__renderer_8c.html#a7e222e4426a0c151a8580e2982336170" title=" " alt="" coords="175,95,299,122"/>
-<area shape="rect" id="node3" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="347,5,516,47"/>
-<area shape="rect" id="node4" href="$math__util__2_8c.html#a54b1e79ca4e8d2f7f7256891f9c4e772" title="arg1 and arg2 are s32&#39;s into floats?!?" alt="" coords="347,71,515,112"/>
-<area shape="rect" id="node5" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="564,53,615,79"/>
-<area shape="rect" id="node6" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="565,103,613,130"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,70,127,95"/>
+<area shape="rect" id="Node000002" href="$math__util__2_8c.html#a22aa509214eeed1ba3197762e76d7bed" title=" " alt="" coords="176,45,297,70"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,71,162,66,163,71,127,76"/>
+<area shape="rect" id="Node000007" href="$hud__renderer_8c.html#a7e222e4426a0c151a8580e2982336170" title=" " alt="" coords="175,94,299,119"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="127,89,161,93,160,99,127,94"/>
+<area shape="rect" id="Node000003" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="347,5,516,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="297,45,332,39,333,44,298,50"/>
+<area shape="rect" id="Node000004" href="$math__util__2_8c.html#a54b1e79ca4e8d2f7f7256891f9c4e772" title="arg1 and arg2 are s32&#39;s into floats?!?" alt="" coords="347,69,515,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="298,65,334,71,333,76,297,70"/>
+<area shape="rect" id="Node000005" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="564,51,615,77"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="515,73,550,67,551,73,516,78"/>
+<area shape="rect" id="Node000006" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="565,101,613,126"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="516,99,552,105,551,110,515,105"/>
 </map>

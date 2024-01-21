@@ -1,5 +1,7 @@
 <map id="unkStruct" name="unkStruct">
-<area shape="rect" id="node1" title=" " alt="" coords="25,168,109,195"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="83,5,122,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="25,167,109,192"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="28,44,25,91,27,117,34,142,42,154,53,165,49,168,38,157,30,144,22,118,20,91,23,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="83,5,122,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="100,45,72,167,67,166,94,44"/>
 </map>

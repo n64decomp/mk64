@@ -1,5 +1,7 @@
 <map id="SnowmanSpawn" name="SnowmanSpawn">
-<area shape="rect" id="node1" title=" " alt="" coords="12,95,141,121"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,44,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="69,5,191,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="54,93,183,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,41,114,91,109,94,79,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="153,5,191,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,44,128,94,124,91,155,41"/>
 </map>

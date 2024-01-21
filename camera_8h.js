@@ -3,7 +3,7 @@ var camera_8h =
     [ "UnkCameraInner", "structUnkCameraInner.html", "structUnkCameraInner" ],
     [ "Camera", "structCamera.html", "structCamera" ],
     [ "BAD_RETURN", "camera_8h.html#a5d473430986a7e9d5ceca3b538321cc8", null ],
-    [ "CameraEvent", "camera_8h.html#aa3bbd5cf3ba0ad8952c8985ed4bed22c", null ],
+    [ "CameraEvent", "camera_8h.html#a0d4f7c7abf5f3ce08a23c4ca571bc3eb", null ],
     [ "CutsceneShot", "camera_8h.html#a25230c5365692f85c8116f544fdce1cd", null ],
     [ "camera_init", "camera_8h.html#afff3d5f1241a08287d814fd95e3d16e9", null ],
     [ "func_8001CA10", "camera_8h.html#ac5c90fc9c417ded1c7e1ecb3352ecffe", null ],

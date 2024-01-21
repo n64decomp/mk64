@@ -1,5 +1,7 @@
 <map id="func_800B58C4" name="func_800B58C4">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,128,57"/>
-<area shape="rect" id="node2" href="$save_8h.html#a5355f13c326e5484178d857443e02450" title=" " alt="" coords="176,5,299,32"/>
-<area shape="rect" id="node3" href="$save_8c.html#a553981415832f82a0e8ba0b1671f1408" title=" " alt="" coords="176,56,299,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,128,56"/>
+<area shape="rect" id="Node000002" href="$save_8h.html#a5355f13c326e5484178d857443e02450" title=" " alt="" coords="176,5,299,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,32,162,26,163,32,129,37"/>
+<area shape="rect" id="Node000003" href="$save_8c.html#a553981415832f82a0e8ba0b1671f1408" title=" " alt="" coords="176,55,299,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="129,49,163,54,162,59,128,55"/>
 </map>

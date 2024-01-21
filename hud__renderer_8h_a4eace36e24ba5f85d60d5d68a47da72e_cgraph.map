@@ -1,11 +1,19 @@
 <map id="func_80047B9C" name="func_80047B9C">
-<area shape="rect" id="node1" title=" " alt="" coords="5,133,128,159"/>
-<area shape="rect" id="node2" href="$math__util__2_8c.html#a22aa509214eeed1ba3197762e76d7bed" title=" " alt="" coords="183,78,304,105"/>
-<area shape="rect" id="node7" href="$hud__renderer_8c.html#aa6a427e62eecd9fda1e3fa16ed4285b6" title=" " alt="" coords="183,133,304,159"/>
-<area shape="rect" id="node9" href="$hud__renderer_8c.html#ad92ac25c074d6586a5b7c7331fccdb21" title=" " alt="" coords="176,183,311,210"/>
-<area shape="rect" id="node3" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="359,5,528,47"/>
-<area shape="rect" id="node4" href="$math__util__2_8c.html#a54b1e79ca4e8d2f7f7256891f9c4e772" title="arg1 and arg2 are s32&#39;s into floats?!?" alt="" coords="359,71,527,112"/>
-<area shape="rect" id="node5" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="576,53,627,79"/>
-<area shape="rect" id="node6" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="577,103,625,130"/>
-<area shape="rect" id="node8" href="$hud__renderer_8c.html#a8a3e9d3da5a6ac97b84b553fdc5d7d59" title=" " alt="" coords="378,137,509,163"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,130,128,155"/>
+<area shape="rect" id="Node000002" href="$math__util__2_8c.html#a22aa509214eeed1ba3197762e76d7bed" title=" " alt="" coords="183,77,304,102"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,127,187,103,188,109,110,132"/>
+<area shape="rect" id="Node000007" href="$hud__renderer_8c.html#aa6a427e62eecd9fda1e3fa16ed4285b6" title=" " alt="" coords="183,130,304,155"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="128,140,169,140,169,145,128,145"/>
+<area shape="rect" id="Node000009" href="$hud__renderer_8c.html#ad92ac25c074d6586a5b7c7331fccdb21" title=" " alt="" coords="176,179,311,205"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="114,153,184,173,183,178,112,158"/>
+<area shape="rect" id="Node000003" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="359,5,528,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="283,74,366,47,368,52,285,79"/>
+<area shape="rect" id="Node000004" href="$math__util__2_8c.html#a54b1e79ca4e8d2f7f7256891f9c4e772" title="arg1 and arg2 are s32&#39;s into floats?!?" alt="" coords="359,69,527,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="304,87,346,87,346,92,304,92"/>
+<area shape="rect" id="Node000005" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="576,53,627,78"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="527,74,562,69,563,74,528,79"/>
+<area shape="rect" id="Node000006" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="577,102,625,127"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="528,100,564,106,563,111,527,105"/>
+<area shape="rect" id="Node000008" href="$hud__renderer_8c.html#a8a3e9d3da5a6ac97b84b553fdc5d7d59" title=" " alt="" coords="378,134,509,159"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="304,141,364,142,364,148,304,147"/>
 </map>

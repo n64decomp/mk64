@@ -1,7 +1,11 @@
 <map id="KartBoundingBoxCorner" name="KartBoundingBoxCorner">
-<area shape="rect" id="node1" title=" " alt="" coords="157,109,335,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="155,5,206,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="269,5,356,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="381,5,519,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="137,108,316,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="32,44,36,65,46,82,60,91,82,98,137,109,136,114,80,103,58,96,42,86,31,66,27,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="94,5,207,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,44,156,64,165,82,178,96,195,106,192,110,175,100,160,86,151,66,148,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="232,5,371,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="288,44,258,86,239,109,235,106,254,82,284,41"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="397,5,483,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="433,45,420,67,400,86,360,106,317,117,316,112,358,101,397,82,415,63,428,42"/>
 </map>

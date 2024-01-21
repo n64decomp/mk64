@@ -1,10 +1,17 @@
 <map id="guRotate" name="guRotate">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,87,83"/>
-<area shape="rect" id="node2" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="136,31,223,57"/>
-<area shape="rect" id="node3" href="$guRotateF_8c.html#a6bf4235e1732340bfcbde49454bd63ff" title=" " alt="" coords="135,81,224,108"/>
-<area shape="rect" id="node4" href="$cosf_8c.html#a7b126b2344591e649c21c9ab0b8adb40" title=" " alt="" coords="300,5,349,32"/>
-<area shape="rect" id="node5" href="$guMtxF2L_8c.html#a257a86497fc08677370948eda3163595" title=" " alt="" coords="273,56,377,83"/>
-<area shape="rect" id="node6" href="$guNormalize_8c.html#a7ad49cccf7be1e598544b9f0b35b5e28" title=" " alt="" coords="272,107,377,133"/>
-<area shape="rect" id="node8" href="$sinf_8c.html#a8a7dc2a88e109f4e15b661247665709a" title=" " alt="" coords="301,157,348,184"/>
-<area shape="rect" id="node7" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="425,107,477,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,87,81"/>
+<area shape="rect" id="Node000002" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="136,31,223,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,58,122,51,123,57,87,64"/>
+<area shape="rect" id="Node000003" href="$guRotateF_8c.html#a6bf4235e1732340bfcbde49454bd63ff" title=" " alt="" coords="135,80,224,105"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="87,73,122,80,121,85,86,79"/>
+<area shape="rect" id="Node000004" href="$cosf_8c.html#a7b126b2344591e649c21c9ab0b8adb40" title=" " alt="" coords="300,5,349,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="201,78,271,40,286,32,288,37,273,44,204,82"/>
+<area shape="rect" id="Node000005" href="$guMtxF2L_8c.html#a257a86497fc08677370948eda3163595" title=" " alt="" coords="273,55,377,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="224,82,259,76,260,81,225,88"/>
+<area shape="rect" id="Node000006" href="$guNormalize_8c.html#a7ad49cccf7be1e598544b9f0b35b5e28" title=" " alt="" coords="272,104,377,129"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="225,97,259,103,258,108,224,103"/>
+<area shape="rect" id="Node000008" href="$sinf_8c.html#a8a7dc2a88e109f4e15b661247665709a" title=" " alt="" coords="301,153,348,179"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="206,103,273,138,290,147,288,152,271,143,203,108"/>
+<area shape="rect" id="Node000007" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="425,104,477,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="378,114,412,114,412,119,378,119"/>
 </map>

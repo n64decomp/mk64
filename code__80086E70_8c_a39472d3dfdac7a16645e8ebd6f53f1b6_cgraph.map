@@ -1,5 +1,7 @@
 <map id="angle_between_object_camera" name="angle_between_object_camera">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,173,47"/>
-<area shape="rect" id="node2" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="221,13,288,39"/>
-<area shape="rect" id="node3" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="336,13,445,39"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,173,45"/>
+<area shape="rect" id="Node000002" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="221,13,288,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,23,208,23,208,28,173,28"/>
+<area shape="rect" id="Node000003" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="336,13,445,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="288,23,322,23,322,28,288,28"/>
 </map>

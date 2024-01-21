@@ -1,8 +1,13 @@
 <map id="printf_struct" name="printf_struct">
-<area shape="rect" id="node1" title=" " alt="" coords="189,241,291,268"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,72,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="96,5,147,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="171,5,309,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="334,5,373,32"/>
-<area shape="rect" id="node6" title=" " alt="" coords="464,5,515,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="129,240,231,265"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="32,44,34,82,40,127,55,174,66,195,81,214,103,231,130,241,128,246,101,236,77,218,62,198,50,176,35,128,28,82,27,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="80,5,147,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="115,44,120,123,129,170,146,215,166,238,162,242,142,217,124,172,114,124,110,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="171,5,210,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="186,44,184,55,179,109,179,162,182,240,176,240,173,162,174,109,179,54,181,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="268,5,407,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="344,44,347,82,345,128,334,176,324,198,310,218,293,232,273,242,232,253,231,247,272,237,290,228,306,214,320,195,329,174,340,127,342,82,339,45"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="431,5,481,31"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="458,45,454,83,444,130,424,178,410,199,392,218,364,232,323,241,231,251,231,246,322,236,363,227,389,214,406,196,420,175,439,129,449,82,453,44"/>
 </map>

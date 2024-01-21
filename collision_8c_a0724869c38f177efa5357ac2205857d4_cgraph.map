@@ -1,6 +1,9 @@
 <map id="func_802AD950" name="func_802AD950">
-<area shape="rect" id="node1" title=" " alt="" coords="5,71,129,98"/>
-<area shape="rect" id="node2" href="$collision_8c.html#a9ec62ee67d55805a587752d82d66abd8" title=" " alt="" coords="177,5,368,47"/>
-<area shape="rect" id="node3" href="$collision_8c.html#aa77fc5aaa5aa3a6f71ad00bc71b04788" title=" " alt="" coords="187,71,359,98"/>
-<area shape="rect" id="node4" href="$collision_8c.html#a728bd4102d2ed3ba18d68d39b707c0f4" title=" " alt="" coords="187,122,359,149"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,70,129,95"/>
+<area shape="rect" id="Node000002" href="$collision_8c.html#a9ec62ee67d55805a587752d82d66abd8" title=" " alt="" coords="177,5,368,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,67,187,46,188,52,114,73"/>
+<area shape="rect" id="Node000003" href="$collision_8c.html#aa77fc5aaa5aa3a6f71ad00bc71b04788" title=" " alt="" coords="187,70,359,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="129,80,173,80,173,85,129,85"/>
+<area shape="rect" id="Node000004" href="$collision_8c.html#a728bd4102d2ed3ba18d68d39b707c0f4" title=" " alt="" coords="187,119,359,145"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="121,93,206,113,205,119,120,98"/>
 </map>

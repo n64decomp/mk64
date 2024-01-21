@@ -1,9 +1,15 @@
 <map id="src/kart_dma.h" name="src/kart_dma.h">
-<area shape="rect" id="node1" title=" " alt="" coords="290,5,409,32"/>
-<area shape="rect" id="node2" href="$all__variables_8h.html" title=" " alt="" coords="5,80,189,107"/>
-<area shape="rect" id="node5" href="$kart__dma_8c.html" title=" " alt="" coords="213,80,331,107"/>
-<area shape="rect" id="node6" href="$render__player_8c.html" title=" " alt="" coords="355,80,501,107"/>
-<area shape="rect" id="node7" href="$spawn__players_8c.html" title=" " alt="" coords="525,80,678,107"/>
-<area shape="rect" id="node3" href="$debug_8inc_8c.html" title=" " alt="" coords="16,155,179,181"/>
-<area shape="rect" id="node4" href="$debug_8c.html" title=" " alt="" coords="27,229,167,256"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="290,5,409,31"/>
+<area shape="rect" id="Node000002" href="$all__variables_8h.html" title=" " alt="" coords="5,79,189,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="296,37,139,81,137,76,295,32"/>
+<area shape="rect" id="Node000005" href="$kart__dma_8c.html" title=" " alt="" coords="213,79,331,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="329,42,286,80,283,76,325,38"/>
+<area shape="rect" id="Node000006" href="$render__player_8c.html" title=" " alt="" coords="355,79,501,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="374,38,417,76,413,80,370,42"/>
+<area shape="rect" id="Node000007" href="$spawn__players_8c.html" title=" " alt="" coords="525,79,678,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="404,32,561,76,560,81,402,37"/>
+<area shape="rect" id="Node000003" href="$debug_8inc_8c.html" title=" " alt="" coords="16,152,179,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="100,118,100,152,95,152,95,118"/>
+<area shape="rect" id="Node000004" href="$debug_8c.html" title=" " alt="" coords="27,225,167,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="100,191,100,225,95,225,95,191"/>
 </map>

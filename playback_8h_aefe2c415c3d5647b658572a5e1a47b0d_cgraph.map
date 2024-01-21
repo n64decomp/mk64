@@ -1,6 +1,9 @@
 <map id="seq_channel_layer_note_release" name="seq_channel_layer_note_release">
-<area shape="rect" id="node1" title=" " alt="" coords="5,23,184,65"/>
-<area shape="rect" id="node2" href="$playback_8c.html#a689ccfe046fe63da331758ee7eec972a" title=" " alt="" coords="232,23,421,65"/>
-<area shape="rect" id="node3" href="$playback_8c.html#aaa06908b1c008a03b28ed11241c45b19" title=" " alt="" coords="469,5,631,32"/>
-<area shape="rect" id="node4" href="$playback_8c.html#a1a384aa226aef66cdab12750f1fde133" title=" " alt="" coords="479,56,621,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,184,63"/>
+<area shape="rect" id="Node000002" href="$playback_8c.html#a689ccfe046fe63da331758ee7eec972a" title=" " alt="" coords="232,23,421,63"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,41,218,41,218,46,184,46"/>
+<area shape="rect" id="Node000003" href="$playback_8c.html#aaa06908b1c008a03b28ed11241c45b19" title=" " alt="" coords="469,5,631,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="421,30,455,26,456,31,422,35"/>
+<area shape="rect" id="Node000004" href="$playback_8c.html#a1a384aa226aef66cdab12750f1fde133" title=" " alt="" coords="479,55,621,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="422,51,465,56,465,61,421,56"/>
 </map>

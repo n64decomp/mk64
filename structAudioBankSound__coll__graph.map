@@ -1,11 +1,21 @@
 <map id="AudioBankSound" name="AudioBankSound">
-<area shape="rect" id="node1" title=" " alt="" coords="177,347,309,373"/>
-<area shape="rect" id="node2" title=" " alt="" coords="181,257,231,284"/>
-<area shape="rect" id="node3" href="$structAudioBankSample.html" title=" " alt="" coords="255,257,397,284"/>
-<area shape="rect" id="node4" href="$structAdpcmBook.html" title=" " alt="" coords="83,139,183,165"/>
-<area shape="rect" id="node5" title=" " alt="" coords="5,5,92,32"/>
-<area shape="rect" id="node6" title=" " alt="" coords="135,5,258,32"/>
-<area shape="rect" id="node9" href="$structAdpcmLoop.html" title=" " alt="" coords="207,139,306,165"/>
-<area shape="rect" id="node7" title=" " alt="" coords="459,139,572,165"/>
-<area shape="rect" id="node8" title=" " alt="" coords="292,5,395,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="211,343,343,368"/>
+<area shape="rect" id="Node000002" href="$structAudioBankSample.html" title=" " alt="" coords="146,255,287,280"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="235,290,270,341,266,344,231,293"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,137,119,163"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="60,177,61,204,65,217,72,229,83,237,100,243,146,254,145,259,99,249,80,241,68,232,60,220,56,205,55,177"/>
+<area shape="rect" id="Node000004" href="$structAdpcmLoop.html" title=" " alt="" coords="271,137,370,163"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="303,175,229,256,225,253,299,171"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="125,5,228,31"/>
+<area shape="poly" id="edge9_Node000002_Node000005" title=" " alt="" coords="177,45,176,99,182,162,197,213,213,253,209,255,192,215,177,163,171,99,172,44"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="199,39,274,111,305,135,302,139,271,115,195,43"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="263,5,386,31"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="325,45,325,55,323,137,318,137,319,55,320,44"/>
+<area shape="rect" id="Node000007" href="$structAdpcmBook.html" title=" " alt="" coords="395,137,495,163"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="348,38,361,53,384,83,407,112,432,135,429,139,403,115,380,86,357,56,344,42"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="421,173,378,203,326,233,261,257,259,252,324,228,375,199,418,169"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="413,5,500,31"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="457,45,448,137,443,137,452,44"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="311,255,362,280"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="326,294,309,320,290,344,286,340,305,317,322,291"/>
 </map>

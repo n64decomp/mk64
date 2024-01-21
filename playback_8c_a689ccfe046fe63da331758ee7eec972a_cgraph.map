@@ -1,5 +1,7 @@
 <map id="seq_channel_layer_decay_release_internal" name="seq_channel_layer_decay_release_internal">
-<area shape="rect" id="node1" title=" " alt="" coords="5,23,195,65"/>
-<area shape="rect" id="node2" href="$playback_8c.html#aaa06908b1c008a03b28ed11241c45b19" title=" " alt="" coords="243,5,404,32"/>
-<area shape="rect" id="node3" href="$playback_8c.html#a1a384aa226aef66cdab12750f1fde133" title=" " alt="" coords="252,56,395,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,195,63"/>
+<area shape="rect" id="Node000002" href="$playback_8c.html#aaa06908b1c008a03b28ed11241c45b19" title=" " alt="" coords="243,5,404,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="195,30,229,26,229,31,195,35"/>
+<area shape="rect" id="Node000003" href="$playback_8c.html#a1a384aa226aef66cdab12750f1fde133" title=" " alt="" coords="252,55,395,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,51,239,56,238,61,195,56"/>
 </map>

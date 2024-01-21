@@ -1,6 +1,9 @@
 <map id="init_note_free_list" name="init_note_free_list">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,144,57"/>
-<area shape="rect" id="node2" href="$seqplayer_8c.html#ad6bdf40a669a4ec92be6fb203b2abf0a" title=" " alt="" coords="192,5,353,32"/>
-<area shape="rect" id="node3" href="$playback_8c.html#acd59fb0284ed814274e41b89fac21c20" title=" " alt="" coords="216,56,329,83"/>
-<area shape="rect" id="node4" href="$playback_8c.html#af2c50034d061fb61593fc5e7969a4b59" title=" " alt="" coords="401,56,508,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,144,56"/>
+<area shape="rect" id="Node000002" href="$seqplayer_8c.html#ad6bdf40a669a4ec92be6fb203b2abf0a" title=" " alt="" coords="192,5,353,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,32,178,27,179,33,145,37"/>
+<area shape="rect" id="Node000003" href="$playback_8c.html#acd59fb0284ed814274e41b89fac21c20" title=" " alt="" coords="216,55,329,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="145,49,203,56,202,61,144,54"/>
+<area shape="rect" id="Node000004" href="$playback_8c.html#af2c50034d061fb61593fc5e7969a4b59" title=" " alt="" coords="401,55,508,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="330,65,388,65,388,70,330,70"/>
 </map>

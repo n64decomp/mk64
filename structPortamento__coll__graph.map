@@ -1,5 +1,7 @@
 <map id="Portamento" name="Portamento">
-<area shape="rect" id="node1" title=" " alt="" coords="19,124,117,151"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="80,5,131,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="19,123,117,148"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="30,45,31,71,37,98,55,121,51,124,32,100,25,72,25,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="80,5,131,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="100,44,74,123,69,122,95,43"/>
 </map>

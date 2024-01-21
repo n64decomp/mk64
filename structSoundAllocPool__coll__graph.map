@@ -1,5 +1,7 @@
 <map id="SoundAllocPool" name="SoundAllocPool">
-<area shape="rect" id="node1" title=" " alt="" coords="50,109,173,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="143,5,181,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="50,108,173,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,119,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="76,42,108,107,103,109,71,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="143,5,181,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,44,119,109,115,107,148,42"/>
 </map>

@@ -1,9 +1,15 @@
 <map id="func_80051638" name="func_80051638">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,127,57"/>
-<area shape="rect" id="node2" href="$hud__renderer_8c.html#ad1c5daceb565b2768d02b2308bbf18d2" title=" " alt="" coords="213,5,335,32"/>
-<area shape="rect" id="node3" href="$math__util__2_8c.html#aca064a66dc29c36e1db7b79a6b679e25" title=" " alt="" coords="175,56,373,83"/>
-<area shape="rect" id="node4" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="442,19,611,61"/>
-<area shape="rect" id="node5" href="$math__util__2_8c.html#ab532579cd51233e25a8f3f9ea21fb25c" title="Tried to put the definitions in the declares. However, sp3C wants to be at the top...." alt="" coords="421,85,632,112"/>
-<area shape="rect" id="node6" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="680,60,731,87"/>
-<area shape="rect" id="node7" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="681,111,729,137"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,127,56"/>
+<area shape="rect" id="Node000002" href="$hud__renderer_8c.html#ad1c5daceb565b2768d02b2308bbf18d2" title=" " alt="" coords="213,5,335,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,33,198,24,199,30,127,39"/>
+<area shape="rect" id="Node000003" href="$math__util__2_8c.html#aca064a66dc29c36e1db7b79a6b679e25" title=" " alt="" coords="175,55,373,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="127,48,161,52,161,57,126,53"/>
+<area shape="rect" id="Node000004" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="442,18,611,58"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="373,53,428,47,428,52,374,58"/>
+<area shape="rect" id="Node000005" href="$math__util__2_8c.html#ab532579cd51233e25a8f3f9ea21fb25c" title="Tried to put the definitions in the declares. However, sp3C wants to be at the top...." alt="" coords="421,83,632,108"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="374,76,408,79,407,85,373,81"/>
+<area shape="rect" id="Node000006" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="680,57,731,83"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="616,80,666,73,666,78,617,85"/>
+<area shape="rect" id="Node000007" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="681,107,729,132"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="622,105,668,112,668,117,621,111"/>
 </map>

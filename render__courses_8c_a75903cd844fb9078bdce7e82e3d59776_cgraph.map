@@ -1,8 +1,13 @@
 <map id="render_moo_moo_farm" name="render_moo_moo_farm">
-<area shape="rect" id="node1" title=" " alt="" coords="5,81,180,108"/>
-<area shape="rect" id="node2" href="$math__util_8c.html#aeedfb800465850c03caa0f3224c24dee" title=" " alt="" coords="237,56,361,83"/>
-<area shape="rect" id="node5" href="$render__courses_8c.html#a5b7ecc4ef4612910f390c1f7a16dc7e4" title=" " alt="" coords="228,107,369,133"/>
-<area shape="rect" id="node3" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="455,5,505,32"/>
-<area shape="rect" id="node4" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="456,56,504,83"/>
-<area shape="rect" id="node6" href="$collision_8c.html#af3327ccb63774d1f6603c18d70097061" title=" " alt="" coords="417,107,543,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,180,105"/>
+<area shape="rect" id="Node000002" href="$math__util_8c.html#aeedfb800465850c03caa0f3224c24dee" title=" " alt="" coords="237,55,361,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="180,79,222,74,223,79,181,85"/>
+<area shape="rect" id="Node000005" href="$render__courses_8c.html#a5b7ecc4ef4612910f390c1f7a16dc7e4" title=" " alt="" coords="228,104,369,129"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="181,100,214,104,214,109,180,105"/>
+<area shape="rect" id="Node000003" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="455,5,505,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="345,52,440,26,442,31,347,57"/>
+<area shape="rect" id="Node000004" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="456,55,504,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="361,65,443,65,443,70,361,70"/>
+<area shape="rect" id="Node000006" href="$collision_8c.html#af3327ccb63774d1f6603c18d70097061" title=" " alt="" coords="417,104,543,129"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="370,114,404,114,404,119,370,119"/>
 </map>

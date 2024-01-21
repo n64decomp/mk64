@@ -1,8 +1,13 @@
 <map id="func_8004DCA4" name="func_8004DCA4">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,131,57"/>
-<area shape="rect" id="node2" href="$hud__renderer_8c.html#ad65e3d3adf3550145b16048ff349cdfa" title=" " alt="" coords="179,31,301,57"/>
-<area shape="rect" id="node3" href="$hud__renderer_8c.html#a097c657af30994ba520f680ab2dc3cc4" title=" " alt="" coords="349,31,472,57"/>
-<area shape="rect" id="node4" href="$hud__renderer_8c.html#aee7de73afb3145aa3f4138937f6c4feb" title=" " alt="" coords="520,5,643,32"/>
-<area shape="rect" id="node5" href="$hud__renderer_8c.html#ac22e89e30eb787d96c44dd83f683930e" title=" " alt="" coords="520,56,643,83"/>
-<area shape="rect" id="node6" href="$hud__renderer_8c.html#acaa477cfbccd1a5fae43a67a655accdb" title=" " alt="" coords="691,56,816,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,131,56"/>
+<area shape="rect" id="Node000002" href="$hud__renderer_8c.html#ad65e3d3adf3550145b16048ff349cdfa" title=" " alt="" coords="179,31,301,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,41,165,41,165,46,131,46"/>
+<area shape="rect" id="Node000003" href="$hud__renderer_8c.html#a097c657af30994ba520f680ab2dc3cc4" title=" " alt="" coords="349,31,472,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="302,41,335,41,335,46,302,46"/>
+<area shape="rect" id="Node000004" href="$hud__renderer_8c.html#aee7de73afb3145aa3f4138937f6c4feb" title=" " alt="" coords="520,5,643,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="472,32,506,26,507,32,473,37"/>
+<area shape="rect" id="Node000005" href="$hud__renderer_8c.html#ac22e89e30eb787d96c44dd83f683930e" title=" " alt="" coords="520,55,643,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="473,49,507,54,506,59,472,55"/>
+<area shape="rect" id="Node000006" href="$hud__renderer_8c.html#acaa477cfbccd1a5fae43a67a655accdb" title=" " alt="" coords="691,55,816,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="643,65,677,65,677,70,643,70"/>
 </map>

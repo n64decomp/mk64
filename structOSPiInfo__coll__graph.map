@@ -1,5 +1,7 @@
 <map id="OSPiInfo" name="OSPiInfo">
-<area shape="rect" id="node1" title=" " alt="" coords="83,95,161,121"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="143,5,221,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="83,93,161,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,119,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="80,41,116,91,111,94,76,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="143,5,221,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,44,133,94,128,91,164,41"/>
 </map>

@@ -1,11 +1,21 @@
 <map id="__osSpSetPc" name="__osSpSetPc">
-<area shape="rect" id="node1" title=" " alt="" coords="973,56,1076,83"/>
-<area shape="rect" id="node2" href="$osSpTaskLoadGo_8c.html#a1a7e41a12f9ade8d32f68d637cd4a608" title=" " alt="" coords="812,56,925,83"/>
-<area shape="rect" id="node3" href="$main_8c.html#aad8e1bffd4b596136b4b9ebbe974b696" title=" " alt="" coords="661,56,764,83"/>
-<area shape="rect" id="node4" href="$main_8c.html#ac787ae111abe00ee69fdd117c6917276" title=" " alt="" coords="457,5,613,32"/>
-<area shape="rect" id="node8" href="$main_8c.html#a720f132930eedc22c2c0163a3d2ffed8" title=" " alt="" coords="477,56,594,83"/>
-<area shape="rect" id="node9" href="$main_8c.html#af424460885c2b2b048e6972d3e1f96d0" title=" " alt="" coords="470,107,601,133"/>
-<area shape="rect" id="node5" href="$main_8c.html#a023b8f272e4efbd33f371e91ffff6b30" title=" " alt="" coords="295,56,409,83"/>
-<area shape="rect" id="node6" href="$main_8c.html#a1e35d2b842121e6aea373f09381616e5" title=" " alt="" coords="144,56,247,83"/>
-<area shape="rect" id="node7" href="$main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" title=" " alt="" coords="5,56,96,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="973,55,1076,80"/>
+<area shape="rect" id="Node000002" href="$osSpTaskLoadGo_8c.html#a1a7e41a12f9ade8d32f68d637cd4a608" title=" " alt="" coords="812,55,925,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="960,70,926,70,926,65,960,65"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#aad8e1bffd4b596136b4b9ebbe974b696" title=" " alt="" coords="661,55,764,80"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="799,70,764,70,764,65,799,65"/>
+<area shape="rect" id="Node000004" href="$main_8c.html#ac787ae111abe00ee69fdd117c6917276" title=" " alt="" coords="457,5,613,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="652,53,581,33,583,28,654,48"/>
+<area shape="rect" id="Node000008" href="$main_8c.html#a720f132930eedc22c2c0163a3d2ffed8" title=" " alt="" coords="477,55,594,80"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="648,70,594,70,594,65,648,65"/>
+<area shape="rect" id="Node000009" href="$main_8c.html#af424460885c2b2b048e6972d3e1f96d0" title=" " alt="" coords="470,104,601,129"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="654,86,583,106,581,101,652,81"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#a023b8f272e4efbd33f371e91ffff6b30" title=" " alt="" coords="295,55,409,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="475,37,401,57,400,52,474,32"/>
+<area shape="rect" id="Node000006" href="$main_8c.html#a1e35d2b842121e6aea373f09381616e5" title=" " alt="" coords="144,55,247,80"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="281,70,247,70,247,65,281,65"/>
+<area shape="rect" id="Node000007" href="$main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" title=" " alt="" coords="5,55,96,80"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="131,70,96,70,96,65,131,65"/>
+<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="463,70,410,70,410,65,463,65"/>
+<area shape="poly" id="edge10_Node000009_Node000005" title=" " alt="" coords="474,103,400,83,401,78,475,98"/>
 </map>

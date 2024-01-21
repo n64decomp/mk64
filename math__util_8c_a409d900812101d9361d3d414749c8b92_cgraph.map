@@ -1,6 +1,9 @@
 <map id="mtxf_rotate_y" name="mtxf_rotate_y">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,120,83"/>
-<area shape="rect" id="node2" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="198,5,249,32"/>
-<area shape="rect" id="node3" href="$math__util_8c.html#ac22eee16b1def67d2441ce919df0c5ac" title=" " alt="" coords="168,56,279,83"/>
-<area shape="rect" id="node4" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="199,107,247,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,120,80"/>
+<area shape="rect" id="Node000002" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="198,5,249,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,52,184,27,186,32,105,57"/>
+<area shape="rect" id="Node000003" href="$math__util_8c.html#ac22eee16b1def67d2441ce919df0c5ac" title=" " alt="" coords="168,55,279,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="120,65,154,65,154,70,120,70"/>
+<area shape="rect" id="Node000004" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="199,104,247,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="105,77,187,103,185,108,104,83"/>
 </map>

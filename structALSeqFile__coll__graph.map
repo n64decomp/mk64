@@ -1,7 +1,11 @@
 <map id="ALSeqFile" name="ALSeqFile">
-<area shape="rect" id="node1" title=" " alt="" coords="165,199,250,225"/>
-<area shape="rect" id="node2" href="$structALSeqData.html" title=" " alt="" coords="77,95,170,121"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="143,5,229,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="194,95,317,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="80,196,165,221"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,128,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,131,90,171,111,194,107,198,86,173,70,133"/>
+<area shape="rect" id="Node000003" href="$structALSeqData.html" title=" " alt="" coords="152,93,245,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="184,131,133,198,129,194,180,128"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="79,5,193,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="155,40,192,91,188,94,150,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="217,5,303,31"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="246,44,209,94,205,91,241,41"/>
 </map>

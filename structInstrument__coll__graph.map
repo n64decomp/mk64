@@ -1,13 +1,27 @@
 <map id="Instrument" name="Instrument">
-<area shape="rect" id="node1" title=" " alt="" coords="201,509,294,536"/>
-<area shape="rect" id="node2" href="$structAudioBankSound.html" title=" " alt="" coords="181,391,313,417"/>
-<area shape="rect" id="node3" title=" " alt="" coords="162,257,213,284"/>
-<area shape="rect" id="node4" href="$structAudioBankSample.html" title=" " alt="" coords="237,257,378,284"/>
-<area shape="rect" id="node5" href="$structAdpcmBook.html" title=" " alt="" coords="413,139,513,165"/>
-<area shape="rect" id="node6" title=" " alt="" coords="264,5,351,32"/>
-<area shape="rect" id="node7" title=" " alt="" coords="422,5,545,32"/>
-<area shape="rect" id="node10" href="$structAdpcmLoop.html" title=" " alt="" coords="290,139,389,165"/>
-<area shape="rect" id="node11" href="$structAdsrEnvelope.html" title=" " alt="" coords="489,198,600,225"/>
-<area shape="rect" id="node8" title=" " alt="" coords="5,139,119,165"/>
-<area shape="rect" id="node9" title=" " alt="" coords="136,5,239,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="199,504,293,529"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,137,119,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,177,69,262,79,313,98,361,127,407,164,447,201,479,231,502,227,506,197,483,160,451,123,410,93,364,74,314,64,262,58,177"/>
+<area shape="rect" id="Node000006" href="$structAudioBankSample.html" title=" " alt="" coords="246,255,387,280"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="82,172,110,202,147,228,188,241,246,253,245,258,187,246,145,233,107,206,78,176"/>
+<area shape="rect" id="Node000003" href="$structAdsrEnvelope.html" title=" " alt="" coords="535,196,645,221"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="581,235,552,286,507,353,448,423,415,455,378,482,336,502,294,513,292,507,335,497,375,478,411,451,445,419,503,350,547,283,576,232"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="255,5,378,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="344,38,358,53,366,70,369,84,373,98,383,112,419,141,460,164,501,181,540,193,538,199,500,186,457,169,416,146,379,115,368,100,364,86,361,72,353,56,340,42"/>
+<area shape="rect" id="Node000007" href="$structAdpcmLoop.html" title=" " alt="" coords="267,137,366,163"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="319,44,319,137,314,137,314,44"/>
+<area shape="rect" id="Node000009" href="$structAdpcmBook.html" title=" " alt="" coords="143,137,243,163"/>
+<area shape="poly" id="edge12_Node000009_Node000004" title=" " alt="" coords="293,41,276,57,235,101,204,139,200,135,231,98,272,53,289,37"/>
+<area shape="rect" id="Node000005" href="$structAudioBankSound.html" title=" " alt="" coords="180,387,312,412"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="249,425,249,504,243,504,243,425"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="306,294,268,364,255,388,250,385,264,361,302,291"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="319,176,319,255,314,255,314,176"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="432,5,535,31"/>
+<area shape="poly" id="edge13_Node000006_Node000008" title=" " alt="" coords="496,43,503,77,503,96,498,114,483,140,465,164,423,204,379,236,342,257,339,252,376,231,419,200,461,160,479,137,493,112,498,95,498,78,491,44"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="466,43,456,56,448,72,443,87,438,101,425,115,397,133,367,143,365,138,395,128,422,111,433,98,438,85,443,70,452,53,461,40"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="215,171,276,229,304,252,300,257,272,233,212,174"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="97,5,184,31"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="138,45,136,78,138,96,144,112,155,125,168,135,165,139,151,129,140,115,133,97,130,79,132,44"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="171,255,222,280"/>
+<area shape="poly" id="edge14_Node000005_Node000011" title=" " alt="" coords="203,293,211,326,223,361,238,385,234,388,218,364,205,328,198,294"/>
 </map>

@@ -1,6 +1,9 @@
 <map id="func_80089CBC" name="func_80089CBC">
-<area shape="rect" id="node1" title=" " alt="" coords="5,64,129,91"/>
-<area shape="rect" id="node2" href="$code__80071F00_8c.html#ae57757eefbb9b9d12420ed66ad408175" title=" " alt="" coords="210,5,331,32"/>
-<area shape="rect" id="node3" href="$code__80086E70_8c.html#afe1f36d1519487b6b5aa69bf0ea3b4e6" title="Returns if the object collided with the player and is closer than the distance in the y axis." alt="" coords="177,57,364,98"/>
-<area shape="rect" id="node4" href="$code__80071F00_8c.html#a5d62494ea345d5a576d4440772111136" title=" " alt="" coords="188,122,353,163"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,63,129,88"/>
+<area shape="rect" id="Node000002" href="$code__80071F00_8c.html#ae57757eefbb9b9d12420ed66ad408175" title=" " alt="" coords="210,5,331,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,60,177,41,209,32,210,37,178,46,112,65"/>
+<area shape="rect" id="Node000003" href="$code__80086E70_8c.html#afe1f36d1519487b6b5aa69bf0ea3b4e6" title="Returns if the object collided with the player and is closer than the distance in the y axis." alt="" coords="177,55,364,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="129,73,164,73,164,78,129,78"/>
+<area shape="rect" id="Node000004" href="$code__80071F00_8c.html#a5d62494ea345d5a576d4440772111136" title=" " alt="" coords="188,119,353,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="110,86,194,113,193,118,108,91"/>
 </map>

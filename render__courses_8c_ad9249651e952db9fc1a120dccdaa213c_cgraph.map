@@ -1,6 +1,9 @@
 <map id="render_koopa_troopa_beach" name="render_koopa_troopa_beach">
-<area shape="rect" id="node1" title=" " alt="" coords="5,23,164,65"/>
-<area shape="rect" id="node2" href="$render__courses_8c.html#a9a9119b96bf015cf8b5a168485f67e3f" title=" " alt="" coords="221,5,344,32"/>
-<area shape="rect" id="node3" href="$render__courses_8c.html#a5b7ecc4ef4612910f390c1f7a16dc7e4" title=" " alt="" coords="212,56,353,83"/>
-<area shape="rect" id="node4" href="$collision_8c.html#af3327ccb63774d1f6603c18d70097061" title=" " alt="" coords="401,56,527,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,164,63"/>
+<area shape="rect" id="Node000002" href="$render__courses_8c.html#a9a9119b96bf015cf8b5a168485f67e3f" title=" " alt="" coords="221,5,344,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,31,207,25,208,30,165,36"/>
+<area shape="rect" id="Node000003" href="$render__courses_8c.html#a5b7ecc4ef4612910f390c1f7a16dc7e4" title=" " alt="" coords="212,55,353,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,50,199,54,198,60,164,56"/>
+<area shape="rect" id="Node000004" href="$collision_8c.html#af3327ccb63774d1f6603c18d70097061" title=" " alt="" coords="401,55,527,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="354,65,388,65,388,70,354,70"/>
 </map>

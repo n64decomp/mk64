@@ -1,7 +1,12 @@
 <map id="__osLeoResume" name="__osLeoResume">
-<area shape="rect" id="node1" title=" " alt="" coords="703,31,829,57"/>
-<area shape="rect" id="node2" href="$____osLeoInterrupt_8c.html#a1c1300e21785fc616ac700c66ff3a4e8" title=" " alt="" coords="464,5,655,32"/>
-<area shape="rect" id="node3" href="$____osLeoInterrupt_8c.html#afbaa4c704d84fbecef4ef9fc6364a5bb" title=" " alt="" coords="285,31,416,57"/>
-<area shape="rect" id="node4" href="$osInitialize_8c.html#acfb0fdf45b4ccc5ad77f155cf184c910" title=" " alt="" coords="144,31,237,57"/>
-<area shape="rect" id="node5" href="$main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" title=" " alt="" coords="5,31,96,57"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="703,31,829,56"/>
+<area shape="rect" id="Node000002" href="$____osLeoInterrupt_8c.html#a1c1300e21785fc616ac700c66ff3a4e8" title=" " alt="" coords="464,5,655,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="689,37,655,32,655,27,689,31"/>
+<area shape="rect" id="Node000003" href="$____osLeoInterrupt_8c.html#afbaa4c704d84fbecef4ef9fc6364a5bb" title=" " alt="" coords="285,31,416,56"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="689,46,416,46,416,41,689,41"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="450,34,417,38,416,33,450,29"/>
+<area shape="rect" id="Node000004" href="$osInitialize_8c.html#acfb0fdf45b4ccc5ad77f155cf184c910" title=" " alt="" coords="144,31,237,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="271,46,237,46,237,41,271,41"/>
+<area shape="rect" id="Node000005" href="$main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" title=" " alt="" coords="5,31,96,56"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="130,46,96,46,96,41,130,41"/>
 </map>

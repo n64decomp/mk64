@@ -1,6 +1,9 @@
 <map id="render_choco_mountain" name="render_choco_mountain">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,184,57"/>
-<area shape="rect" id="node2" href="$render__courses_8c.html#a9a9119b96bf015cf8b5a168485f67e3f" title=" " alt="" coords="241,5,364,32"/>
-<area shape="rect" id="node3" href="$render__courses_8c.html#a5b7ecc4ef4612910f390c1f7a16dc7e4" title=" " alt="" coords="232,56,373,83"/>
-<area shape="rect" id="node4" href="$collision_8c.html#af3327ccb63774d1f6603c18d70097061" title=" " alt="" coords="421,56,547,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,184,56"/>
+<area shape="rect" id="Node000002" href="$render__courses_8c.html#a9a9119b96bf015cf8b5a168485f67e3f" title=" " alt="" coords="241,5,364,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="184,30,227,24,228,30,185,35"/>
+<area shape="rect" id="Node000003" href="$render__courses_8c.html#a5b7ecc4ef4612910f390c1f7a16dc7e4" title=" " alt="" coords="232,55,373,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,51,219,55,218,60,184,56"/>
+<area shape="rect" id="Node000004" href="$collision_8c.html#af3327ccb63774d1f6603c18d70097061" title=" " alt="" coords="421,55,547,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="374,65,408,65,408,70,374,70"/>
 </map>

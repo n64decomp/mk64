@@ -1,7 +1,13 @@
 <map id="AudioListItem" name="AudioListItem">
-<area shape="rect" id="node1" title=" " alt="" coords="127,96,239,123"/>
-<area shape="rect" id="node4" href="$structNotePool.html" title=" " alt="" coords="143,231,224,257"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,116,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="140,5,227,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="251,5,313,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="79,95,191,121"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="206,99,217,108,209,116,191,119,190,114,207,111,212,108,203,103"/>
+<area shape="rect" id="Node000005" href="$structNotePool.html" title=" " alt="" coords="94,229,175,255"/>
+<area shape="poly" id="edge6_Node000005_Node000001" title=" " alt="" coords="102,131,88,148,79,176,88,204,98,217,111,227,108,231,94,221,83,207,74,176,83,145,98,127"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,67,31"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="59,39,90,67,121,93,118,97,86,71,55,42"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="91,5,178,31"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="137,44,137,95,132,95,132,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="202,5,313,31"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="232,41,152,97,149,93,229,36"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="146,216,149,205,154,176,149,147,139,122,144,120,155,146,159,176,155,206,151,217"/>
 </map>

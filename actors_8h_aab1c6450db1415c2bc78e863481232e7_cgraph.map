@@ -1,6 +1,9 @@
 <map id="update_actor_railroad_crossing" name="update_actor_railroad_crossing">
-<area shape="rect" id="node1" title=" " alt="" coords="5,23,169,65"/>
-<area shape="rect" id="node2" href="$external_8c.html#acb60983213d09ee795e80ca3c8b5975e" title=" " alt="" coords="217,31,340,57"/>
-<area shape="rect" id="node3" href="$external_8h.html#ae064a1a7293d05787ee9c3e311b70b46" title=" " alt="" coords="388,5,511,32"/>
-<area shape="rect" id="node4" href="$external_8c.html#a62e16f9600e7e9beda2c9d2df10f3561" title=" " alt="" coords="401,56,497,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,169,63"/>
+<area shape="rect" id="Node000002" href="$external_8c.html#acb60983213d09ee795e80ca3c8b5975e" title=" " alt="" coords="217,31,340,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,41,203,41,203,46,170,46"/>
+<area shape="rect" id="Node000003" href="$external_8h.html#ae82eb9565bbd324f028121f490e7c9a7" title=" " alt="" coords="388,5,511,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="340,32,374,26,375,32,341,37"/>
+<area shape="rect" id="Node000004" href="$external_8c.html#a62e16f9600e7e9beda2c9d2df10f3561" title=" " alt="" coords="401,55,497,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="341,49,388,56,387,61,340,55"/>
 </map>

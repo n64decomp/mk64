@@ -1,9 +1,15 @@
 <map id="apply_boo_effect" name="apply_boo_effect">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,139,83"/>
-<area shape="rect" id="node2" href="$external_8c.html#aa00f6fbb1195ee18da20e61bd6ef5d97" title=" " alt="" coords="187,56,309,83"/>
-<area shape="rect" id="node3" href="$external_8c.html#ad79a8b3dfe27cebca94c2d9e2cc54d2b" title=" " alt="" coords="357,5,480,32"/>
-<area shape="rect" id="node4" href="$external_8c.html#a77dd28bb660c9e64fef58443fb7a1f0e" title=" " alt="" coords="357,56,480,83"/>
-<area shape="rect" id="node6" href="$external_8c.html#a1a1bdc0f5d3b6fd4a86b9d62e93a076e" title=" " alt="" coords="357,107,480,133"/>
-<area shape="rect" id="node5" href="$external_8h.html#a69165d21844ba08a94405ec729d386d4" title=" " alt="" coords="528,56,651,83"/>
-<area shape="rect" id="node7" href="$external_8c.html#a62e16f9600e7e9beda2c9d2df10f3561" title=" " alt="" coords="541,107,637,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,139,80"/>
+<area shape="rect" id="Node000002" href="$external_8c.html#aa00f6fbb1195ee18da20e61bd6ef5d97" title=" " alt="" coords="187,55,309,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,65,173,65,173,70,139,70"/>
+<area shape="rect" id="Node000003" href="$external_8c.html#ad79a8b3dfe27cebca94c2d9e2cc54d2b" title=" " alt="" coords="357,5,480,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="292,52,360,32,361,37,293,57"/>
+<area shape="rect" id="Node000004" href="$external_8c.html#a77dd28bb660c9e64fef58443fb7a1f0e" title=" " alt="" coords="357,55,480,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="310,65,343,65,343,70,310,70"/>
+<area shape="rect" id="Node000006" href="$external_8c.html#a1a1bdc0f5d3b6fd4a86b9d62e93a076e" title=" " alt="" coords="357,104,480,129"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="293,77,361,97,360,102,292,83"/>
+<area shape="rect" id="Node000005" href="$external_8h.html#a69165d21844ba08a94405ec729d386d4" title=" " alt="" coords="528,55,651,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="480,65,514,65,514,70,480,70"/>
+<area shape="rect" id="Node000007" href="$external_8c.html#a62e16f9600e7e9beda2c9d2df10f3561" title=" " alt="" coords="541,104,637,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="480,114,527,114,527,119,480,119"/>
 </map>

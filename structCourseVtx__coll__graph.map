@@ -1,5 +1,7 @@
 <map id="CourseVtx" name="CourseVtx">
-<area shape="rect" id="node1" title=" " alt="" coords="76,109,165,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,103,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="127,5,250,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="89,108,178,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,41,128,107,124,109,80,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="153,5,250,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="188,44,143,109,139,106,184,41"/>
 </map>

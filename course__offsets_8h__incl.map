@@ -1,5 +1,8 @@
 <map id="include/course_offsets.h" name="include/course_offsets.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,184,32"/>
-<area shape="rect" id="node2" href="$ultratypes_8h.html" title=" " alt="" coords="34,80,155,107"/>
-<area shape="rect" id="node3" href="$stddef_8h.html" title=" " alt="" coords="57,155,132,181"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,184,31"/>
+<area shape="rect" id="Node000002" href="$ultratypes_8h.html" title=" " alt="" coords="34,79,155,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,31,97,65,92,65,92,31"/>
+<area shape="rect" id="Node000003" href="$stddef_8h.html" title=" " alt="" coords="57,152,132,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="90,104,89,139,83,138,85,104"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="99,152,101,118,106,118,104,152"/>
 </map>

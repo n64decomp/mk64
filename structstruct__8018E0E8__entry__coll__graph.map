@@ -1,8 +1,13 @@
 <map id="struct_8018E0E8_entry" name="struct_8018E0E8_entry">
-<area shape="rect" id="node1" title=" " alt="" coords="123,257,294,284"/>
-<area shape="rect" id="node2" href="$structMkTexture.html" title="struct for a texture use in menu mainly" alt="" coords="103,153,194,180"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,63,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="87,5,210,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="234,5,373,32"/>
-<area shape="rect" id="node6" title=" " alt="" coords="249,153,288,180"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="156,255,327,280"/>
+<area shape="rect" id="Node000002" href="$structMkTexture.html" title="struct for a texture use in menu mainly" alt="" coords="136,152,227,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="179,191,179,211,185,229,196,242,211,252,208,257,193,246,180,232,174,211,174,191"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="76,43,94,84,122,126,138,139,155,150,153,154,135,144,118,130,89,87,72,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="153,5,210,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="184,45,184,152,179,152,179,45"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="235,5,373,31"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="305,45,295,87,285,110,271,130,251,146,228,156,226,151,248,141,267,126,281,107,290,86,299,44"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="282,152,321,177"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="295,191,274,232,255,256,251,253,270,229,290,189"/>
 </map>

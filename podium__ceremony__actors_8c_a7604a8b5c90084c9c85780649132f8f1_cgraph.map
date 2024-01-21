@@ -1,10 +1,17 @@
 <map id="firework_cone_update_and_spawn_burst" name="firework_cone_update_and_spawn_burst">
-<area shape="rect" id="node1" title=" " alt="" coords="5,78,171,119"/>
-<area shape="rect" id="node2" href="$podium__ceremony__actors_8c.html#a47b226368687c26f3f50c7c2b4a9d305" title=" " alt="" coords="251,56,341,83"/>
-<area shape="rect" id="node6" href="$podium__ceremony__actors_8c.html#ab4a2b3023e104635f01e66a08874f578" title=" " alt="" coords="219,111,373,137"/>
-<area shape="rect" id="node3" href="$podium__ceremony__actors_8c.html#a50de4a94676053c94f4206e9ba364b53" title=" " alt="" coords="429,5,584,32"/>
-<area shape="rect" id="node5" href="$podium__ceremony__actors_8c.html#ade046f0ae71fd0bf16b218c94452509d" title=" " alt="" coords="434,56,579,83"/>
-<area shape="rect" id="node4" href="$bstring_8h.html#ab828ad07c8ebf898973f27778c543651" title=" " alt="" coords="688,5,747,32"/>
-<area shape="rect" id="node7" href="$podium__ceremony__actors_8c.html#a75ee72f9d8cc3f7bbb219fdeb11a3916" title=" " alt="" coords="421,107,592,149"/>
-<area shape="rect" id="node8" href="$podium__ceremony__actors_8c.html#a1ac704186b642f21eef90523a8545c17" title=" " alt="" coords="640,115,795,141"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,77,171,117"/>
+<area shape="rect" id="Node000002" href="$podium__ceremony__actors_8c.html#a8f084b11598b111cbea7b52e49b26c8b" title=" " alt="" coords="251,55,341,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,82,237,73,238,78,171,88"/>
+<area shape="rect" id="Node000006" href="$podium__ceremony__actors_8c.html#ab4a2b3023e104635f01e66a08874f578" title=" " alt="" coords="219,108,373,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="171,104,205,108,205,113,171,109"/>
+<area shape="rect" id="Node000003" href="$podium__ceremony__actors_8c.html#a7af822e673ca2eb51ebe9d4a10d6d86b" title=" " alt="" coords="429,5,584,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="340,54,438,31,439,36,342,60"/>
+<area shape="rect" id="Node000005" href="$podium__ceremony__actors_8c.html#ade046f0ae71fd0bf16b218c94452509d" title=" " alt="" coords="434,55,579,80"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="341,65,420,65,420,70,341,70"/>
+<area shape="rect" id="Node000004" href="$bstring_8h.html#ab828ad07c8ebf898973f27778c543651" title=" " alt="" coords="688,5,747,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="584,15,675,15,675,21,584,21"/>
+<area shape="rect" id="Node000007" href="$podium__ceremony__actors_8c.html#a75ee72f9d8cc3f7bbb219fdeb11a3916" title=" " alt="" coords="421,105,592,145"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="374,119,408,120,408,125,374,125"/>
+<area shape="rect" id="Node000008" href="$podium__ceremony__actors_8c.html#a1ac704186b642f21eef90523a8545c17" title=" " alt="" coords="640,112,795,137"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="592,122,626,122,626,127,592,127"/>
 </map>

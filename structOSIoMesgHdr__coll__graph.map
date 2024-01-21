@@ -1,6 +1,9 @@
 <map id="OSIoMesgHdr" name="OSIoMesgHdr">
-<area shape="rect" id="node1" title=" " alt="" coords="152,109,263,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="143,5,271,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="295,5,434,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="170,108,281,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,144,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,36,210,106,207,110,102,41"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="169,5,282,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="228,45,228,108,223,108,223,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="307,5,435,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="344,41,243,110,240,106,341,36"/>
 </map>

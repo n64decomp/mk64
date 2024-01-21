@@ -1,7 +1,12 @@
 <map id="YoshiValleyEgg" name="YoshiValleyEgg">
-<area shape="rect" id="node1" title=" " alt="" coords="130,392,249,419"/>
-<area shape="rect" id="node2" href="$structCollision.html" title=" " alt="" coords="150,184,229,211"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="131,5,269,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="253,184,291,211"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="37,391,156,416"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,183,44,209"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="20,222,14,253,11,291,14,329,28,365,41,379,57,388,54,393,37,383,24,368,9,331,5,291,9,252,15,221"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="94,5,145,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="120,45,111,167,100,390,95,390,106,167,115,44"/>
+<area shape="rect" id="Node000004" href="$structCollision.html" title=" " alt="" coords="239,183,317,209"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="124,44,134,93,145,118,161,141,175,151,188,156,220,164,256,181,254,186,218,169,186,161,172,156,157,145,141,121,129,94,119,45"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="261,221,109,392,105,389,257,217"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="219,5,358,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="290,45,281,183,276,183,284,44"/>
 </map>

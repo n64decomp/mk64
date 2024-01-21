@@ -1,7 +1,12 @@
 <map id="FakeItemBox" name="FakeItemBox">
-<area shape="rect" id="node1" title=" " alt="" coords="139,392,245,419"/>
-<area shape="rect" id="node2" href="$structCollision.html" title=" " alt="" coords="153,199,231,225"/>
-<area shape="rect" id="node3" title=" " alt="" coords="8,5,59,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="133,5,272,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="256,199,379,225"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="123,391,229,416"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,198,128,223"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,237,62,266,62,300,69,334,85,365,102,380,124,390,121,395,99,385,81,368,64,336,57,300,56,266,59,237"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="173,5,224,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,45,191,167,179,390,174,390,185,167,194,44"/>
+<area shape="rect" id="Node000004" href="$structCollision.html" title=" " alt="" coords="318,198,397,223"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="203,44,214,93,225,118,241,141,254,151,267,155,282,157,300,164,345,196,342,200,297,169,281,163,266,160,252,156,237,145,220,121,209,94,198,45"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="339,235,189,392,185,389,335,232"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="299,5,437,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="369,45,361,198,355,198,364,44"/>
 </map>

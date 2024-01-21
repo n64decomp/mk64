@@ -1,5 +1,7 @@
 <map id="fu" name="fu">
-<area shape="rect" id="node1" title=" " alt="" coords="46,95,85,121"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="81,5,119,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="46,93,85,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="43,43,63,92,58,94,38,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="81,5,119,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="93,45,73,94,68,92,88,43"/>
 </map>

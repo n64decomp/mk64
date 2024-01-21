@@ -1,9 +1,15 @@
 <map id="func_802B3B44" name="func_802B3B44">
-<area shape="rect" id="node1" title=" " alt="" coords="5,122,128,149"/>
-<area shape="rect" id="node2" href="$collision_8c.html#a0724869c38f177efa5357ac2205857d4" title=" " alt="" coords="176,71,300,98"/>
-<area shape="rect" id="node6" href="$actors__extended_8c.html#a78e98c146f1f4dd6e3608016486172a4" title=" " alt="" coords="177,122,299,149"/>
-<area shape="rect" id="node7" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="212,173,264,199"/>
-<area shape="rect" id="node3" href="$collision_8c.html#a9ec62ee67d55805a587752d82d66abd8" title=" " alt="" coords="348,5,539,47"/>
-<area shape="rect" id="node4" href="$collision_8c.html#aa77fc5aaa5aa3a6f71ad00bc71b04788" title=" " alt="" coords="357,71,529,98"/>
-<area shape="rect" id="node5" href="$collision_8c.html#a728bd4102d2ed3ba18d68d39b707c0f4" title=" " alt="" coords="357,122,529,149"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,119,128,145"/>
+<area shape="rect" id="Node000002" href="$collision_8c.html#a0724869c38f177efa5357ac2205857d4" title=" " alt="" coords="176,70,300,95"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,117,179,97,180,102,112,122"/>
+<area shape="rect" id="Node000006" href="$actors__extended_8c.html#a78e98c146f1f4dd6e3608016486172a4" title=" " alt="" coords="177,119,299,145"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="128,129,162,129,162,135,128,135"/>
+<area shape="rect" id="Node000007" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="212,169,264,194"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="112,142,199,168,198,173,111,147"/>
+<area shape="rect" id="Node000003" href="$collision_8c.html#a9ec62ee67d55805a587752d82d66abd8" title=" " alt="" coords="348,5,539,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="284,67,357,46,359,52,285,73"/>
+<area shape="rect" id="Node000004" href="$collision_8c.html#aa77fc5aaa5aa3a6f71ad00bc71b04788" title=" " alt="" coords="357,70,529,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="300,80,344,80,344,85,300,85"/>
+<area shape="rect" id="Node000005" href="$collision_8c.html#a728bd4102d2ed3ba18d68d39b707c0f4" title=" " alt="" coords="357,119,529,145"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="292,93,377,113,376,119,291,98"/>
 </map>

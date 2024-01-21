@@ -1,5 +1,7 @@
 <map id="ReverbRingBufferItem" name="ReverbRingBufferItem">
-<area shape="rect" id="node1" title=" " alt="" coords="65,153,231,180"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,128,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="211,5,250,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="63,152,229,177"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,44,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="20,44,15,86,19,107,28,126,44,141,64,151,61,156,41,146,24,130,14,109,10,86,15,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="207,5,330,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="271,45,263,88,255,110,241,130,223,144,203,154,200,149,221,140,237,126,250,107,258,86,266,44"/>
 </map>

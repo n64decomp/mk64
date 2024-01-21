@@ -1,7 +1,12 @@
 <map id="FallingRock" name="FallingRock">
-<area shape="rect" id="node1" title=" " alt="" coords="142,363,238,389"/>
-<area shape="rect" id="node2" href="$structCollision.html" title=" " alt="" coords="150,184,229,211"/>
-<area shape="rect" id="node3" title=" " alt="" coords="6,5,56,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="131,5,270,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="254,184,376,211"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="132,361,228,387"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,183,128,209"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="62,222,56,248,54,278,58,309,70,336,83,348,98,357,132,368,131,373,96,362,79,352,66,339,52,310,49,278,51,248,56,221"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="177,5,228,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="203,45,195,167,183,361,178,361,189,166,198,44"/>
+<area shape="rect" id="Node000004" href="$structCollision.html" title=" " alt="" coords="322,183,401,209"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="207,44,218,93,229,118,245,141,258,151,271,156,304,164,339,181,337,186,302,169,269,161,255,156,241,145,224,121,213,94,202,45"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="342,220,194,363,190,359,338,216"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="303,5,441,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="373,45,365,183,359,183,368,44"/>
 </map>

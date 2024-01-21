@@ -1,7 +1,12 @@
 <map id="struct_80286A04" name="struct_80286A04">
-<area shape="rect" id="node1" title=" " alt="" coords="84,201,215,228"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node4" href="$structstruct__80285D80.html" title=" " alt="" coords="83,96,215,123"/>
-<area shape="rect" id="node3" title=" " alt="" coords="239,96,278,123"/>
-<area shape="rect" id="node5" title=" " alt="" coords="88,5,211,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="84,200,215,225"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="28,44,26,82,29,103,36,121,53,147,76,168,124,198,122,202,73,172,49,150,31,124,24,104,21,83,23,44"/>
+<area shape="rect" id="Node000003" href="$structstruct__80285D80.html" title=" " alt="" coords="83,95,215,121"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="59,37,135,93,132,97,56,41"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="152,135,152,200,147,200,147,135"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="88,5,211,31"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="152,44,152,95,147,95,147,44"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="239,95,278,121"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="240,133,194,178,166,202,162,198,190,174,236,129"/>
 </map>

@@ -1,9 +1,15 @@
 <map id="hud_player" name="hud_player">
-<area shape="rect" id="node1" title=" " alt="" coords="338,241,433,268"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="157,5,208,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="232,5,363,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="387,5,517,32"/>
-<area shape="rect" id="node6" title=" " alt="" coords="542,5,581,32"/>
-<area shape="rect" id="node7" title=" " alt="" coords="649,5,780,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="344,240,439,265"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="9,5,59,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="27,44,16,82,9,128,13,174,20,195,33,214,48,221,76,228,161,238,344,247,344,253,160,243,75,233,46,226,30,218,16,198,7,175,4,127,11,81,22,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="152,5,191,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="164,44,153,81,146,127,149,174,157,195,169,214,180,223,197,230,242,240,344,248,344,253,242,245,195,235,178,227,165,218,152,197,144,175,141,127,148,80,159,43"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="215,5,346,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="309,39,320,53,332,76,338,97,342,135,346,172,362,215,380,238,376,241,357,217,341,173,337,135,333,98,327,78,316,56,305,42"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="370,5,501,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="433,45,396,240,391,239,428,44"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="525,5,655,31"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="583,45,540,128,507,175,468,218,448,232,427,242,425,237,445,227,464,214,503,172,535,125,578,42"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="679,5,730,31"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="703,45,694,84,677,131,651,179,634,200,614,218,583,232,538,241,439,252,439,246,537,236,581,227,611,214,630,196,647,176,672,129,689,83,698,44"/>
 </map>

@@ -1,6 +1,9 @@
 <map id="guScale" name="guScale">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,79,57"/>
-<area shape="rect" id="node2" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="127,5,213,32"/>
-<area shape="rect" id="node3" href="$guScaleF_8c.html#a19b9397a765b8eb04c94f9cdd554cdba" title=" " alt="" coords="129,56,211,83"/>
-<area shape="rect" id="node4" href="$guMtxF2L_8c.html#a257a86497fc08677370948eda3163595" title=" " alt="" coords="261,56,365,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,79,56"/>
+<area shape="rect" id="Node000002" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="127,5,213,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="78,34,112,27,114,32,79,39"/>
+<area shape="rect" id="Node000003" href="$guScaleF_8c.html#a19b9397a765b8eb04c94f9cdd554cdba" title=" " alt="" coords="129,55,211,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="79,48,116,55,115,60,78,53"/>
+<area shape="rect" id="Node000004" href="$guMtxF2L_8c.html#a257a86497fc08677370948eda3163595" title=" " alt="" coords="261,55,365,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="211,65,248,65,248,70,211,70"/>
 </map>

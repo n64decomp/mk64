@@ -1,6 +1,9 @@
 <map id="Unk_8018EFD8" name="Unk_8018EFD8">
-<area shape="rect" id="node1" title=" " alt="" coords="66,241,187,268"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="101,5,152,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="179,5,218,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="45,240,166,265"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="31,45,30,80,33,124,43,171,61,215,72,228,85,238,82,242,68,231,56,217,38,173,28,125,25,80,26,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="80,5,131,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="108,45,108,240,103,240,103,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="182,5,221,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="207,45,209,81,206,126,196,174,174,218,160,232,142,242,140,238,156,228,170,214,191,172,201,126,203,81,202,45"/>
 </map>

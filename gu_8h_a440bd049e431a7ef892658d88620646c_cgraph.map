@@ -1,6 +1,9 @@
 <map id="guPerspectiveF" name="guPerspectiveF">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,128,83"/>
-<area shape="rect" id="node2" href="$cosf_8c.html#a7b126b2344591e649c21c9ab0b8adb40" title=" " alt="" coords="203,5,253,32"/>
-<area shape="rect" id="node3" href="$guMtxF2L_8c.html#a257a86497fc08677370948eda3163595" title=" " alt="" coords="176,56,280,83"/>
-<area shape="rect" id="node4" href="$sinf_8c.html#a8a7dc2a88e109f4e15b661247665709a" title=" " alt="" coords="205,107,251,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,128,80"/>
+<area shape="rect" id="Node000002" href="$cosf_8c.html#a7b126b2344591e649c21c9ab0b8adb40" title=" " alt="" coords="203,5,253,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,52,189,27,191,32,110,57"/>
+<area shape="rect" id="Node000003" href="$guMtxF2L_8c.html#a257a86497fc08677370948eda3163595" title=" " alt="" coords="176,55,280,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,65,162,65,162,70,128,70"/>
+<area shape="rect" id="Node000004" href="$sinf_8c.html#a8a7dc2a88e109f4e15b661247665709a" title=" " alt="" coords="205,104,251,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="110,77,192,103,191,108,108,83"/>
 </map>

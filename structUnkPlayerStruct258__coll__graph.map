@@ -1,5 +1,7 @@
 <map id="UnkPlayerStruct258" name="UnkPlayerStruct258">
-<area shape="rect" id="node1" title=" " alt="" coords="5,241,156,268"/>
-<area shape="rect" id="node2" title=" " alt="" coords="10,5,61,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="107,5,145,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,240,156,265"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="10,5,61,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="32,45,25,80,22,123,25,170,39,215,48,228,61,238,57,242,44,231,34,217,20,171,17,123,20,79,26,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="107,5,145,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="127,45,119,122,99,217,89,241,84,239,94,215,114,122,122,44"/>
 </map>

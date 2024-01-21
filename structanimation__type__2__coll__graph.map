@@ -1,6 +1,9 @@
 <map id="animation_type_2" name="animation_type_2">
-<area shape="rect" id="node1" title=" " alt="" coords="171,153,309,180"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,128,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="221,5,259,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="350,5,546,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="163,152,302,177"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,44,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="26,44,31,87,39,108,52,126,69,136,97,144,164,155,163,160,95,149,67,141,48,130,34,111,26,88,21,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="171,5,294,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="235,45,235,152,230,152,230,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="319,5,515,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="418,45,408,88,398,111,383,130,365,143,345,153,303,164,301,158,343,148,362,138,379,126,393,108,403,87,413,44"/>
 </map>

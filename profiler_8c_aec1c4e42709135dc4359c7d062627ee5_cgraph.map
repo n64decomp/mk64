@@ -1,7 +1,11 @@
 <map id="profiler_log_vblank_time" name="profiler_log_vblank_time">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,188,83"/>
-<area shape="rect" id="node2" href="$osGetTime_8c.html#ac9a040dcda7f29a608413f5a5c8963bf" title=" " alt="" coords="236,56,329,83"/>
-<area shape="rect" id="node3" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="378,5,495,32"/>
-<area shape="rect" id="node4" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="377,56,496,83"/>
-<area shape="rect" id="node5" href="$os__misc_8h.html#ade84d2da5a97b7796811e6c1f7cb7bc1" title=" " alt="" coords="387,107,486,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,188,80"/>
+<area shape="rect" id="Node000002" href="$osGetTime_8c.html#ac9a040dcda7f29a608413f5a5c8963bf" title=" " alt="" coords="236,55,329,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,65,222,65,222,70,188,70"/>
+<area shape="rect" id="Node000003" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="378,5,495,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="322,52,382,33,384,38,324,57"/>
+<area shape="rect" id="Node000004" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="377,55,496,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="329,65,364,65,364,70,329,70"/>
+<area shape="rect" id="Node000005" href="$os__misc_8h.html#ade84d2da5a97b7796811e6c1f7cb7bc1" title=" " alt="" coords="387,104,486,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="324,78,384,97,382,102,322,83"/>
 </map>

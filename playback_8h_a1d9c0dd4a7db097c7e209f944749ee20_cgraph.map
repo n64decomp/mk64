@@ -1,6 +1,9 @@
 <map id="note_init_for_layer" name="note_init_for_layer">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,149,57"/>
-<area shape="rect" id="node2" href="$playback_8c.html#acd82370edabb02666da36b6537ef7ed2" title=" " alt="" coords="197,5,360,32"/>
-<area shape="rect" id="node3" href="$playback_8c.html#a80dd9595a3ab00862f65d4987c2c082b" title=" " alt="" coords="239,56,318,83"/>
-<area shape="rect" id="node4" href="$audio_2effects_8c.html#ae1b1e83a3d593efb77b595f6c14f1c75" title=" " alt="" coords="408,56,487,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,149,56"/>
+<area shape="rect" id="Node000002" href="$playback_8c.html#acd82370edabb02666da36b6537ef7ed2" title=" " alt="" coords="197,5,360,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,32,184,27,184,33,150,37"/>
+<area shape="rect" id="Node000003" href="$playback_8c.html#a80dd9595a3ab00862f65d4987c2c082b" title=" " alt="" coords="239,55,318,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="150,49,226,58,225,64,150,55"/>
+<area shape="rect" id="Node000004" href="$audio_2effects_8c.html#ae1b1e83a3d593efb77b595f6c14f1c75" title=" " alt="" coords="408,55,487,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="318,65,394,65,394,70,318,70"/>
 </map>

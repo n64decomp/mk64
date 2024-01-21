@@ -1,7 +1,11 @@
 <map id="src/audio/synthesis.h" name="src/audio/synthesis.h">
-<area shape="rect" id="node1" title=" " alt="" coords="219,5,378,32"/>
-<area shape="rect" id="node2" href="$heap_8c.html" title=" " alt="" coords="5,80,133,107"/>
-<area shape="rect" id="node3" href="$load_8c.html" title=" " alt="" coords="158,80,282,107"/>
-<area shape="rect" id="node4" href="$port__eu_8c.html" title=" " alt="" coords="306,80,451,107"/>
-<area shape="rect" id="node5" href="$synthesis_8c.html" title=" " alt="" coords="475,80,634,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="219,5,378,31"/>
+<area shape="rect" id="Node000002" href="$heap_8c.html" title=" " alt="" coords="5,79,133,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,37,107,81,106,76,248,32"/>
+<area shape="rect" id="Node000003" href="$load_8c.html" title=" " alt="" coords="158,79,282,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="278,42,235,80,231,76,274,38"/>
+<area shape="rect" id="Node000004" href="$port__eu_8c.html" title=" " alt="" coords="306,79,451,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="323,38,367,76,364,80,320,42"/>
+<area shape="rect" id="Node000005" href="$synthesis_8c.html" title=" " alt="" coords="475,79,634,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="353,32,514,76,513,81,352,37"/>
 </map>

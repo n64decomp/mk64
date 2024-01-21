@@ -1,12 +1,24 @@
 <map id="include/libc/stdarg.h" name="include/libc/stdarg.h">
-<area shape="rect" id="node1" title=" " alt="" coords="358,5,511,32"/>
-<area shape="rect" id="node2" href="$crash__screen_8c.html" title=" " alt="" coords="5,87,147,114"/>
-<area shape="rect" id="node3" href="$crash__screen__enhancement_8c.html" title=" " alt="" coords="171,80,346,121"/>
-<area shape="rect" id="node4" href="$__Printf_8c.html" title=" " alt="" coords="199,169,315,196"/>
-<area shape="rect" id="node5" href="$is__debug_8c.html" title=" " alt="" coords="340,169,473,196"/>
-<area shape="rect" id="node6" href="$osSyncPrintf_8c.html" title=" " alt="" coords="659,87,813,114"/>
-<area shape="rect" id="node7" href="$printf_8h.html" title=" " alt="" coords="473,87,583,114"/>
-<area shape="rect" id="node10" href="$sprintf_8c.html" title=" " alt="" coords="779,169,895,196"/>
-<area shape="rect" id="node8" href="$__Ldtob_8c.html" title=" " alt="" coords="637,169,755,196"/>
-<area shape="rect" id="node9" href="$__Litob_8c.html" title=" " alt="" coords="497,169,612,196"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="358,5,511,31"/>
+<area shape="rect" id="Node000002" href="$crash__screen_8c.html" title=" " alt="" coords="5,86,147,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="368,36,159,81,126,89,125,83,158,76,367,31"/>
+<area shape="rect" id="Node000003" href="$crash__screen__enhancement_8c.html" title=" " alt="" coords="171,79,346,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="398,39,302,81,300,76,395,34"/>
+<area shape="rect" id="Node000004" href="$__Printf_8c.html" title=" " alt="" coords="199,167,315,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="423,44,396,82,360,121,322,149,284,169,282,164,319,144,357,117,392,79,418,41"/>
+<area shape="rect" id="Node000005" href="$is__debug_8c.html" title=" " alt="" coords="340,167,473,192"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="433,45,411,167,406,166,428,44"/>
+<area shape="rect" id="Node000006" href="$osSyncPrintf_8c.html" title=" " alt="" coords="659,86,813,111"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="492,31,693,83,691,89,491,37"/>
+<area shape="rect" id="Node000007" href="$printf_8h.html" title=" " alt="" coords="473,86,583,111"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="461,38,516,84,512,88,457,42"/>
+<area shape="rect" id="Node000010" href="$sprintf_8c.html" title=" " alt="" coords="779,167,895,192"/>
+<area shape="poly" id="edge12_Node000001_Node000010" title=" " alt="" coords="490,32,543,51,597,76,623,97,648,116,717,145,783,164,782,169,715,150,645,121,620,101,595,81,541,56,488,37"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="476,118,297,169,296,164,475,113"/>
+<area shape="poly" id="edge10_Node000007_Node000005" title=" " alt="" coords="500,121,426,169,423,164,497,117"/>
+<area shape="rect" id="Node000008" href="$__Ldtob_8c.html" title=" " alt="" coords="637,167,755,192"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="566,115,673,164,670,169,564,120"/>
+<area shape="rect" id="Node000009" href="$__Litob_8c.html" title=" " alt="" coords="497,167,612,192"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="539,123,553,166,548,167,534,125"/>
+<area shape="poly" id="edge11_Node000007_Node000010" title=" " alt="" coords="587,112,793,164,792,169,585,117"/>
 </map>

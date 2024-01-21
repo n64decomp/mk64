@@ -1,13 +1,23 @@
 <map id="func_80056E24" name="func_80056E24">
-<area shape="rect" id="node1" title=" " alt="" coords="5,63,127,89"/>
-<area shape="rect" id="node2" href="$math__util__2_8c.html#a99d173c040cb4a9d0184df2605d71e32" title=" " alt="" coords="175,11,297,37"/>
-<area shape="rect" id="node5" href="$hud__renderer_8c.html#abfc36be592b2cbf423febe66fa12ec34" title=" " alt="" coords="175,63,297,89"/>
-<area shape="rect" id="node11" href="$hud__renderer_8c.html#ad1c5daceb565b2768d02b2308bbf18d2" title=" " alt="" coords="175,113,297,140"/>
-<area shape="rect" id="node3" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="423,9,490,36"/>
-<area shape="rect" id="node4" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="679,5,788,32"/>
-<area shape="rect" id="node6" href="$math__util__2_8c.html#a2eff0e02deb703653ee3230fbc02eb14" title="set the matrix to a transformation matrix" alt="" coords="345,64,568,91"/>
-<area shape="rect" id="node7" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="649,57,818,98"/>
-<area shape="rect" id="node8" href="$math__util__2_8c.html#a88742c6110738fc1c35a57f50920a81f" title=" " alt="" coords="616,123,851,149"/>
-<area shape="rect" id="node9" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="899,97,949,124"/>
-<area shape="rect" id="node10" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="900,148,948,175"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,61,127,87"/>
+<area shape="rect" id="Node000002" href="$math__util__2_8c.html#a99d173c040cb4a9d0184df2605d71e32" title=" " alt="" coords="175,11,297,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,59,179,37,180,43,110,64"/>
+<area shape="rect" id="Node000005" href="$hud__renderer_8c.html#abfc36be592b2cbf423febe66fa12ec34" title=" " alt="" coords="175,61,297,87"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="127,71,161,71,161,77,127,77"/>
+<area shape="rect" id="Node000011" href="$hud__renderer_8c.html#ad1c5daceb565b2768d02b2308bbf18d2" title=" " alt="" coords="175,111,297,136"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="111,84,179,104,177,109,110,89"/>
+<area shape="rect" id="Node000003" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="423,9,490,35"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="297,20,409,20,409,25,297,26"/>
+<area shape="rect" id="Node000004" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="679,5,788,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="490,19,665,16,665,22,491,24"/>
+<area shape="rect" id="Node000006" href="$math__util__2_8c.html#a2eff0e02deb703653ee3230fbc02eb14" title="set the matrix to a transformation matrix" alt="" coords="345,63,568,88"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="297,72,332,72,332,77,297,77"/>
+<area shape="rect" id="Node000007" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="649,55,818,95"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="568,73,635,73,635,78,568,78"/>
+<area shape="rect" id="Node000008" href="$math__util__2_8c.html#a88742c6110738fc1c35a57f50920a81f" title=" " alt="" coords="616,120,851,145"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="519,85,659,115,658,120,518,91"/>
+<area shape="rect" id="Node000009" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="899,95,949,120"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="829,117,885,110,886,115,830,123"/>
+<area shape="rect" id="Node000010" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="900,144,948,169"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="835,143,887,149,886,155,834,148"/>
 </map>

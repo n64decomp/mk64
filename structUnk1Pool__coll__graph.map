@@ -1,7 +1,13 @@
 <map id="Unk1Pool" name="Unk1Pool">
-<area shape="rect" id="node1" title=" " alt="" coords="117,213,201,240"/>
-<area shape="rect" id="node2" href="$structSoundAllocPool.html" title=" " alt="" coords="23,124,146,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node5" href="$structSeqOrBankEntry.html" title=" " alt="" coords="170,124,298,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="149,5,188,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="117,211,201,236"/>
+<area shape="rect" id="Node000002" href="$structSoundAllocPool.html" title=" " alt="" coords="23,123,146,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,157,151,208,147,212,102,160"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,119,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="40,42,31,56,25,77,31,97,42,110,56,120,53,125,38,114,26,100,20,77,26,54,35,39"/>
+<area shape="rect" id="Node000005" href="$structSeqOrBankEntry.html" title=" " alt="" coords="170,123,298,148"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="65,44,71,72,86,97,118,108,174,120,173,125,116,113,83,101,66,74,60,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="149,5,188,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="150,43,140,56,115,100,97,124,92,121,110,97,136,53,146,40"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="202,17,247,26,268,37,285,53,292,65,294,76,286,100,275,114,261,125,258,120,271,110,281,97,288,76,287,67,281,56,265,41,245,31,201,22"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="217,160,172,212,168,208,213,157"/>
 </map>

@@ -1,9 +1,15 @@
 <map id="func_80080A4C" name="func_80080A4C">
-<area shape="rect" id="node1" title=" " alt="" coords="5,81,128,108"/>
-<area shape="rect" id="node2" href="$camera_8c.html#a850647b1c2f5f5e37f03d7d52d987663" title=" " alt="" coords="191,5,313,32"/>
-<area shape="rect" id="node3" href="$code__80071F00_8c.html#a4c4dc6e8e1872a3123736a7b62a35808" title=" " alt="" coords="191,56,313,83"/>
-<area shape="rect" id="node4" href="$external_8c.html#acb60983213d09ee795e80ca3c8b5975e" title=" " alt="" coords="191,107,313,133"/>
-<area shape="rect" id="node7" href="$code__80086E70_8c.html#a0016b956bdb165395946c82215bd0954" title="Returns if the object is closer than the distance to the player." alt="" coords="176,158,328,199"/>
-<area shape="rect" id="node5" href="$external_8h.html#ae064a1a7293d05787ee9c3e311b70b46" title=" " alt="" coords="376,81,499,108"/>
-<area shape="rect" id="node6" href="$external_8c.html#a62e16f9600e7e9beda2c9d2df10f3561" title=" " alt="" coords="389,132,485,159"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,128,105"/>
+<area shape="rect" id="Node000002" href="$camera_8c.html#a850647b1c2f5f5e37f03d7d52d987663" title=" " alt="" coords="191,5,313,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,77,175,40,194,33,196,38,177,44,94,82"/>
+<area shape="rect" id="Node000003" href="$code__80071F00_8c.html#a4c4dc6e8e1872a3123736a7b62a35808" title=" " alt="" coords="191,55,313,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,82,177,75,178,80,129,87"/>
+<area shape="rect" id="Node000004" href="$external_8c.html#acb60983213d09ee795e80ca3c8b5975e" title=" " alt="" coords="191,104,313,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="129,98,177,104,177,110,128,103"/>
+<area shape="rect" id="Node000007" href="$code__80086E70_8c.html#a0016b956bdb165395946c82215bd0954" title="Returns if the object is closer than the distance to the player." alt="" coords="176,154,328,194"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="97,103,177,140,192,146,190,151,175,144,94,108"/>
+<area shape="rect" id="Node000005" href="$external_8h.html#ae82eb9565bbd324f028121f490e7c9a7" title=" " alt="" coords="376,80,499,105"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="313,106,362,100,363,105,314,111"/>
+<area shape="rect" id="Node000006" href="$external_8c.html#a62e16f9600e7e9beda2c9d2df10f3561" title=" " alt="" coords="389,129,485,155"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="314,122,376,131,375,136,313,128"/>
 </map>

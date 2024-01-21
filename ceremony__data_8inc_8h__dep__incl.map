@@ -1,5 +1,7 @@
 <map id="src/ending/ceremony_data.inc.h" name="src/ending/ceremony_data.inc.h">
-<area shape="rect" id="node1" title=" " alt="" coords="96,5,255,47"/>
-<area shape="rect" id="node2" href="$code__80071F00_8c.html" title=" " alt="" coords="5,102,164,129"/>
-<area shape="rect" id="node3" href="$ceremony__data_8inc_8c.html" title=" " alt="" coords="188,95,347,136"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="96,5,255,45"/>
+<area shape="rect" id="Node000002" href="$code__80071F00_8c.html" title=" " alt="" coords="5,101,164,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,57,99,102,95,98,144,53"/>
+<area shape="rect" id="Node000003" href="$ceremony__data_8inc_8c.html" title=" " alt="" coords="188,93,347,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="207,53,249,91,245,95,204,57"/>
 </map>

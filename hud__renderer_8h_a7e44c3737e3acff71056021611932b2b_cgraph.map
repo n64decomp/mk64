@@ -1,13 +1,24 @@
 <map id="func_800536C8" name="func_800536C8">
-<area shape="rect" id="node1" title=" " alt="" coords="5,122,128,149"/>
-<area shape="rect" id="node2" href="$hud__renderer_8c.html#afbf522fbac558ae375119cb8820d0f40" title=" " alt="" coords="201,21,325,47"/>
-<area shape="rect" id="node4" href="$math__util__2_8c.html#a2eff0e02deb703653ee3230fbc02eb14" title="set the matrix to a transformation matrix" alt="" coords="399,71,621,98"/>
-<area shape="rect" id="node9" href="$hud__renderer_8c.html#a42d1ae42457409811a8f7f66097c4c74" title=" " alt="" coords="203,122,324,149"/>
-<area shape="rect" id="node10" href="$code__80071F00_8c.html#ab7e91b1ebcbec57dfed6e185a2f67580" title=" " alt="" coords="203,173,324,199"/>
-<area shape="rect" id="node11" href="$hud__renderer_8c.html#a96f71e7de2b291bd06dd92188b107b53" title=" " alt="" coords="176,223,351,250"/>
-<area shape="rect" id="node3" href="$code__80071F00_8c.html#a5d62494ea345d5a576d4440772111136" title=" " alt="" coords="427,5,593,47"/>
-<area shape="rect" id="node5" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="702,35,871,76"/>
-<area shape="rect" id="node6" href="$math__util__2_8c.html#a88742c6110738fc1c35a57f50920a81f" title=" " alt="" coords="669,101,904,127"/>
-<area shape="rect" id="node7" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="952,75,1003,102"/>
-<area shape="rect" id="node8" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="953,126,1001,153"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,121,128,146"/>
+<area shape="rect" id="Node000002" href="$hud__renderer_8c.html#afbf522fbac558ae375119cb8820d0f40" title=" " alt="" coords="201,19,325,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,118,124,91,175,62,209,47,211,52,177,66,127,95,87,123"/>
+<area shape="rect" id="Node000004" href="$math__util__2_8c.html#a2eff0e02deb703653ee3230fbc02eb14" title="set the matrix to a transformation matrix" alt="" coords="399,70,621,95"/>
+<area shape="poly" id="edge11_Node000001_Node000004" title=" " alt="" coords="118,118,176,107,282,94,385,86,385,91,283,99,176,112,119,123"/>
+<area shape="rect" id="Node000009" href="$hud__renderer_8c.html#a42d1ae42457409811a8f7f66097c4c74" title=" " alt="" coords="203,121,324,146"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="128,131,189,131,189,136,128,136"/>
+<area shape="rect" id="Node000010" href="$code__80071F00_8c.html#ab7e91b1ebcbec57dfed6e185a2f67580" title=" " alt="" coords="203,170,324,195"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="119,143,200,164,198,169,117,149"/>
+<area shape="rect" id="Node000011" href="$hud__renderer_8c.html#a96f71e7de2b291bd06dd92188b107b53" title=" " alt="" coords="176,219,351,245"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="85,144,125,175,177,206,194,213,192,217,175,210,122,179,81,148"/>
+<area shape="rect" id="Node000003" href="$code__80071F00_8c.html#a5d62494ea345d5a576d4440772111136" title=" " alt="" coords="427,5,593,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="326,28,413,25,414,31,326,33"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="326,42,435,65,434,70,325,47"/>
+<area shape="rect" id="Node000005" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="702,33,871,73"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="621,68,688,61,689,66,622,74"/>
+<area shape="rect" id="Node000006" href="$math__util__2_8c.html#a88742c6110738fc1c35a57f50920a81f" title=" " alt="" coords="669,98,904,123"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="622,91,656,95,655,100,621,97"/>
+<area shape="rect" id="Node000007" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="952,73,1003,98"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="882,95,938,88,939,93,883,101"/>
+<area shape="rect" id="Node000008" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="953,122,1001,147"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="888,121,940,127,939,133,887,126"/>
 </map>

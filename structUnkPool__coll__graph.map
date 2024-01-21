@@ -1,8 +1,16 @@
 <map id="UnkPool" name="UnkPool">
-<area shape="rect" id="node1" title=" " alt="" coords="132,216,208,243"/>
-<area shape="rect" id="node2" href="$structSoundAllocPool.html" title=" " alt="" coords="109,125,232,152"/>
-<area shape="rect" id="node3" title=" " alt="" coords="222,5,335,32"/>
-<area shape="rect" id="node5" href="$structUnkEntry.html" title=" " alt="" coords="266,125,349,152"/>
-<area shape="rect" id="node4" title=" " alt="" coords="8,5,47,32"/>
-<area shape="rect" id="node6" title=" " alt="" coords="380,5,430,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="132,215,208,240"/>
+<area shape="rect" id="Node000002" href="$structSoundAllocPool.html" title=" " alt="" coords="109,125,232,150"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,164,173,214,168,214,168,164"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="222,5,335,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="265,43,257,56,245,79,231,101,196,127,192,122,227,97,241,76,252,53,260,41"/>
+<area shape="rect" id="Node000005" href="$structUnkEntry.html" title=" " alt="" coords="266,125,349,150"/>
+<area shape="poly" id="edge7_Node000005_Node000003" title=" " alt="" coords="290,43,293,54,308,124,303,125,288,55,285,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="8,5,47,31"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="20,44,13,69,9,96,10,125,21,151,44,175,73,194,104,207,133,216,131,221,102,212,70,199,40,179,16,153,5,126,3,96,8,67,15,43"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="24,45,22,72,25,85,31,97,42,105,61,113,109,125,108,130,59,118,40,110,27,100,20,87,17,72,18,44"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="61,18,115,27,144,37,171,53,180,64,184,76,188,86,196,97,225,110,267,123,265,128,223,115,193,101,183,89,179,77,176,67,167,57,142,42,114,32,60,23"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="280,160,190,217,187,212,277,155"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="380,5,430,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="397,45,383,73,363,101,330,127,327,122,359,97,378,70,393,42"/>
 </map>

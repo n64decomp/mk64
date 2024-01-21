@@ -1,11 +1,23 @@
 <map id="dispatch_audio_sptask" name="dispatch_audio_sptask">
-<area shape="rect" id="node1" title=" " alt="" coords="5,132,176,159"/>
-<area shape="rect" id="node2" href="$osSendMesg_8c.html#a413bd1b0a16c54dcc9e59c48b3d7f142" title=" " alt="" coords="224,132,328,159"/>
-<area shape="rect" id="node3" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="561,5,678,32"/>
-<area shape="rect" id="node4" href="$libultra__internal_8h.html#afe9c3abc4ca93d9fe18a87d9f108d5cb" title=" " alt="" coords="537,56,701,83"/>
-<area shape="rect" id="node5" href="$libultra__internal_8h.html#a82b6b8e6a4311b516950168ef4078e33" title=" " alt="" coords="559,208,679,235"/>
-<area shape="rect" id="node6" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="560,259,679,285"/>
-<area shape="rect" id="node7" href="$osStartThread_8c.html#a3b144e814933e16a2fbf2642ad098ed3" title=" " alt="" coords="376,132,489,159"/>
-<area shape="rect" id="node8" href="$libultra__internal_8h.html#a650b788ebd5efde9c8cbccc1ee832445" title=" " alt="" coords="543,107,696,133"/>
-<area shape="rect" id="node9" href="$libultra__internal_8h.html#ac9d6cfd19de5565e74f1d74a14e9092d" title=" " alt="" coords="543,157,695,184"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,113,176,139"/>
+<area shape="rect" id="Node000002" href="$osSendMesg_8c.html#a413bd1b0a16c54dcc9e59c48b3d7f142" title=" " alt="" coords="224,113,328,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,123,210,123,210,129,176,129"/>
+<area shape="rect" id="Node000003" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="561,5,678,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="296,111,332,91,375,72,464,45,547,27,548,32,465,50,377,76,335,96,299,116"/>
+<area shape="rect" id="Node000004" href="$libultra__internal_8h.html#afe9c3abc4ca93d9fe18a87d9f108d5cb" title=" " alt="" coords="537,55,701,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="322,111,375,98,523,75,524,80,377,103,323,116"/>
+<area shape="rect" id="Node000005" href="$libultra__internal_8h.html#aaadded63bebce6cfdda5ecda193fc9ea" title=" " alt="" coords="559,203,679,228"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="326,136,557,197,555,202,325,141"/>
+<area shape="rect" id="Node000006" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="560,252,679,277"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="297,137,333,161,377,185,421,203,456,215,538,238,562,245,560,251,537,243,455,220,419,208,375,190,330,165,294,141"/>
+<area shape="rect" id="Node000007" href="$osStartThread_8c.html#a3b144e814933e16a2fbf2642ad098ed3" title=" " alt="" coords="376,113,489,139"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="328,123,362,123,362,129,328,129"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="444,111,483,76,536,40,551,33,553,38,539,44,486,80,448,115"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="470,111,537,89,560,81,562,87,538,94,472,116"/>
+<area shape="poly" id="edge11_Node000007_Node000005" title=" " alt="" coords="455,137,539,188,558,196,556,201,536,192,452,141"/>
+<area shape="poly" id="edge12_Node000007_Node000006" title=" " alt="" coords="444,137,481,187,508,215,539,238,550,244,547,249,536,243,504,218,477,190,440,140"/>
+<area shape="rect" id="Node000008" href="$libultra__internal_8h.html#a650b788ebd5efde9c8cbccc1ee832445" title=" " alt="" coords="543,104,696,129"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="490,121,529,119,529,124,490,126"/>
+<area shape="rect" id="Node000009" href="$libultra__internal_8h.html#ac9d6cfd19de5565e74f1d74a14e9092d" title=" " alt="" coords="543,153,695,179"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="490,136,547,148,545,153,489,141"/>
 </map>

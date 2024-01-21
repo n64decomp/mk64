@@ -13,7 +13,7 @@ var external_8c =
     [ "func_800C1DA4", "external_8c.html#a360b202a07e541937d60beafe572232d", null ],
     [ "func_800C1E2C", "external_8c.html#a0c3150592b1dfe1b910c0e18975dfd22", null ],
     [ "func_800C1F8C", "external_8c.html#a9101650b9d48873724dacc81ddf1f359", null ],
-    [ "func_800C21E8", "external_8c.html#ad82a0575bb5b71ccfaf0d187f378f0b3", null ],
+    [ "func_800C21E8", "external_8c.html#a1c8490eb4720c317dd29ed76a1c4ea32", null ],
     [ "func_800C2474", "external_8c.html#a8df97ee0af4a2ff4bee8fd13a42f4c83", null ],
     [ "func_800C29B4", "external_8c.html#a1e78bb5bdb91c4a9a807d4c8e35445d1", null ],
     [ "func_800C3448", "external_8c.html#ac48b7cbfcaa7737f892877ead85e4ba7", null ],

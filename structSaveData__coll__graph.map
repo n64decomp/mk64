@@ -1,10 +1,18 @@
 <map id="SaveData" name="SaveData">
-<area shape="rect" id="node1" title=" " alt="" coords="261,448,346,475"/>
-<area shape="rect" id="node2" href="$structAllCourseTimeTrialRecords.html" title=" " alt="" coords="5,344,201,371"/>
-<area shape="rect" id="node3" href="$structCupTimeTrialRecords.html" title=" " alt="" coords="21,225,180,252"/>
-<area shape="rect" id="node4" href="$structCourseTimeTrialRecords.html" title=" " alt="" coords="49,124,227,151"/>
-<area shape="rect" id="node5" title=" " alt="" coords="164,5,277,32"/>
-<area shape="rect" id="node6" href="$structOnlyBestTimeTrialRecords.html" title=" " alt="" coords="208,175,401,201"/>
-<area shape="rect" id="node7" href="$structStuff.html" title=" " alt="" coords="411,344,463,371"/>
-<area shape="rect" id="node8" title=" " alt="" coords="482,225,533,252"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="261,441,346,467"/>
+<area shape="rect" id="Node000002" href="$structAllCourseTimeTrialRecords.html" title=" " alt="" coords="5,339,201,364"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,378,101,398,109,416,133,429,172,439,261,448,260,454,171,444,131,434,105,419,96,399,95,378"/>
+<area shape="rect" id="Node000003" href="$structCupTimeTrialRecords.html" title=" " alt="" coords="21,221,180,247"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="104,260,106,339,100,339,99,260"/>
+<area shape="rect" id="Node000004" href="$structCourseTimeTrialRecords.html" title=" " alt="" coords="49,123,227,148"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="109,158,98,173,94,197,99,220,94,221,89,198,93,171,105,155"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="164,5,277,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="187,40,169,56,151,91,142,123,137,122,146,89,165,53,184,36"/>
+<area shape="rect" id="Node000008" href="$structOnlyBestTimeTrialRecords.html" title=" " alt="" coords="208,172,401,197"/>
+<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="252,37,267,53,284,85,295,118,306,171,301,172,290,119,279,87,262,56,249,41"/>
+<area shape="rect" id="Node000006" href="$structStuff.html" title=" " alt="" coords="411,339,463,364"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="412,374,320,443,317,439,409,370"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="482,221,533,247"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="504,261,495,289,480,316,456,340,452,337,476,313,490,286,499,260"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="305,211,302,271,302,369,305,441,300,441,297,369,297,271,300,211"/>
 </map>

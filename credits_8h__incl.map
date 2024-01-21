@@ -1,5 +1,8 @@
 <map id="src/ending/credits.h" name="src/ending/credits.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,155,32"/>
-<area shape="rect" id="node2" href="$ultratypes_8h.html" title=" " alt="" coords="19,80,141,107"/>
-<area shape="rect" id="node3" href="$stddef_8h.html" title=" " alt="" coords="43,155,117,181"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,155,31"/>
+<area shape="rect" id="Node000002" href="$ultratypes_8h.html" title=" " alt="" coords="19,79,141,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,31,83,65,77,65,77,31"/>
+<area shape="rect" id="Node000003" href="$stddef_8h.html" title=" " alt="" coords="43,152,117,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="76,104,74,139,69,138,70,104"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="84,152,86,118,91,118,90,152"/>
 </map>

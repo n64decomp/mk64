@@ -1,7 +1,12 @@
 <map id="src/ending/credits.c" name="src/ending/credits.c">
-<area shape="rect" id="node1" title=" " alt="" coords="44,5,192,32"/>
-<area shape="rect" id="node2" href="$credits_8h.html" title=" " alt="" coords="27,80,105,107"/>
-<area shape="rect" id="node5" href="$defines_8h.html" title=" " alt="" coords="129,80,211,107"/>
-<area shape="rect" id="node3" href="$ultratypes_8h.html" title=" " alt="" coords="5,155,127,181"/>
-<area shape="rect" id="node4" href="$stddef_8h.html" title=" " alt="" coords="29,229,103,256"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="44,5,192,31"/>
+<area shape="rect" id="Node000002" href="$credits_8h.html" title=" " alt="" coords="27,79,105,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,33,85,69,80,66,107,29"/>
+<area shape="rect" id="Node000005" href="$defines_8h.html" title=" " alt="" coords="129,79,211,104"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="129,29,156,66,151,69,124,33"/>
+<area shape="rect" id="Node000003" href="$ultratypes_8h.html" title=" " alt="" coords="5,152,127,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="69,104,69,138,63,138,63,104"/>
+<area shape="rect" id="Node000004" href="$stddef_8h.html" title=" " alt="" coords="29,225,103,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="62,178,60,212,55,212,56,178"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="70,225,72,191,77,191,76,225"/>
 </map>

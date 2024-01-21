@@ -1,8 +1,13 @@
 <map id="src/data_segment2.h" name="src/data_segment2.h">
-<area shape="rect" id="node1" title=" " alt="" coords="216,5,375,32"/>
-<area shape="rect" id="node2" href="$code__80091750_8c.html" title=" " alt="" coords="5,80,164,107"/>
-<area shape="rect" id="node3" href="$data__segment2_8inc_8c.html" title=" " alt="" coords="189,80,402,107"/>
-<area shape="rect" id="node4" href="$all__variables_8h.html" title=" " alt="" coords="426,80,610,107"/>
-<area shape="rect" id="node5" href="$debug_8inc_8c.html" title=" " alt="" coords="437,155,599,181"/>
-<area shape="rect" id="node6" href="$debug_8c.html" title=" " alt="" coords="448,229,588,256"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="216,5,375,31"/>
+<area shape="rect" id="Node000002" href="$code__80091750_8c.html" title=" " alt="" coords="5,79,164,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="250,37,120,81,118,76,248,32"/>
+<area shape="rect" id="Node000003" href="$data__segment2_8inc_8c.html" title=" " alt="" coords="189,79,402,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="298,44,298,79,293,79,293,44"/>
+<area shape="rect" id="Node000004" href="$all__variables_8h.html" title=" " alt="" coords="426,79,610,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="345,32,483,76,481,81,343,37"/>
+<area shape="rect" id="Node000005" href="$debug_8inc_8c.html" title=" " alt="" coords="437,152,599,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="521,118,521,152,515,152,515,118"/>
+<area shape="rect" id="Node000006" href="$debug_8c.html" title=" " alt="" coords="448,225,588,251"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="521,191,521,225,515,225,515,191"/>
 </map>

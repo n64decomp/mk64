@@ -1,13 +1,26 @@
 <map id="start_sptask" name="start_sptask">
-<area shape="rect" id="node1" title=" " alt="" coords="5,183,108,209"/>
-<area shape="rect" id="node2" href="$osSpTaskLoadGo_8c.html#a1a7e41a12f9ade8d32f68d637cd4a608" title=" " alt="" coords="165,132,278,159"/>
-<area shape="rect" id="node11" href="$osSpTaskLoadGo_8c.html#ad5b72d5132a9f85e6c02a18bd67f6c2c" title=" " alt="" coords="156,208,287,235"/>
-<area shape="rect" id="node3" href="$____osSpDeviceBusy_8c.html#a21a4135251f586467a7805b70ec0b645" title=" " alt="" coords="554,157,698,184"/>
-<area shape="rect" id="node4" href="$____osSpRawStartDma_8c.html#af00271e6db83d4ce21ee26c0aa7a622d" title=" " alt="" coords="341,107,498,133"/>
-<area shape="rect" id="node7" href="$____osSpSetPc_8c.html#ab758ecffb0f9c905cdc7d044770535cb" title=" " alt="" coords="368,5,471,32"/>
-<area shape="rect" id="node8" href="$____osSpSetStatus_8c.html#a29b072707af89f28d1f34595c865b9ba" title=" " alt="" coords="355,208,484,235"/>
-<area shape="rect" id="node9" href="$osSpTaskLoadGo_8c.html#a91fa4a6b1efa4b528ed6b311c9163208" title=" " alt="" coords="335,56,504,83"/>
-<area shape="rect" id="node5" href="$osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570" title=" " alt="" coords="552,107,700,133"/>
-<area shape="rect" id="node6" href="$libultra__internal_8h.html#a4f7c83166c9481713d4b56defd0888c7" title=" " alt="" coords="748,107,860,133"/>
-<area shape="rect" id="node10" href="$bstring_8h.html#aa4c3aee2deb111efd7af25f98541c29a" title=" " alt="" coords="595,56,657,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,180,108,205"/>
+<area shape="rect" id="Node000002" href="$osSpTaskLoadGo_8c.html#a1a7e41a12f9ade8d32f68d637cd4a608" title=" " alt="" coords="165,129,278,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,177,165,156,167,161,100,182"/>
+<area shape="rect" id="Node000011" href="$osSpTaskLoadGo_8c.html#ad5b72d5132a9f85e6c02a18bd67f6c2c" title=" " alt="" coords="156,205,287,231"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="109,198,143,203,142,209,108,203"/>
+<area shape="rect" id="Node000003" href="$____osSpDeviceBusy_8c.html#a21a4135251f586467a7805b70ec0b645" title=" " alt="" coords="554,155,698,180"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="278,143,540,159,540,165,278,148"/>
+<area shape="rect" id="Node000004" href="$____osSpRawStartDma_8c.html#af00271e6db83d4ce21ee26c0aa7a622d" title=" " alt="" coords="341,104,498,129"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="278,132,327,126,328,131,278,137"/>
+<area shape="rect" id="Node000007" href="$____osSpSetPc_8c.html#ab758ecffb0f9c905cdc7d044770535cb" title=" " alt="" coords="368,5,471,31"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="231,127,273,85,302,60,333,40,354,30,356,35,336,44,305,65,277,88,235,131"/>
+<area shape="rect" id="Node000008" href="$____osSpSetStatus_8c.html#a29b072707af89f28d1f34595c865b9ba" title=" " alt="" coords="355,205,484,231"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="256,152,336,184,373,198,371,203,334,188,254,157"/>
+<area shape="rect" id="Node000009" href="$osSpTaskLoadGo_8c.html#accd51a65f4790f07ecb0371923455ffd" title=" " alt="" coords="335,55,504,80"/>
+<area shape="poly" id="edge9_Node000002_Node000009" title=" " alt="" coords="247,127,334,89,355,82,357,87,336,94,249,132"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="473,127,561,149,560,154,472,132"/>
+<area shape="rect" id="Node000005" href="$osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570" title=" " alt="" coords="552,104,700,129"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="498,114,538,114,538,119,498,119"/>
+<area shape="rect" id="Node000006" href="$libultra__internal_8h.html#a4f7c83166c9481713d4b56defd0888c7" title=" " alt="" coords="748,104,860,129"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="700,114,735,114,735,119,700,119"/>
+<area shape="rect" id="Node000010" href="$bstring_8h.html#aa4c3aee2deb111efd7af25f98541c29a" title=" " alt="" coords="595,55,657,80"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="504,65,581,65,581,70,504,70"/>
+<area shape="poly" id="edge12_Node000011_Node000003" title=" " alt="" coords="264,228,313,240,373,249,439,251,503,241,530,231,555,217,598,187,601,191,558,221,532,235,505,246,439,256,373,254,312,245,263,233"/>
+<area shape="poly" id="edge13_Node000011_Node000008" title=" " alt="" coords="287,215,341,215,341,221,287,221"/>
 </map>

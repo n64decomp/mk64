@@ -7,7 +7,7 @@ var crash__screen_8c =
     [ "crash_screen_draw_info", "crash__screen_8c.html#affae45bedac61b2d5c4e3f57283ba099", null ],
     [ "crash_screen_set_framebuffer", "crash__screen_8c.html#a904039e86b5ade46346d24fb1e274134", null ],
     [ "create_debug_thread", "crash__screen_8c.html#a77471bbea209b9d664b6569191c60787", null ],
-    [ "get_faulted_thread", "crash__screen_8c.html#a4c1beff3342ed707c45da94091476ec3", null ],
+    [ "get_faulted_thread", "crash__screen_8c.html#a120b1d5cd1311a72bb588594cbd55016", null ],
     [ "osRecvMesg", "crash__screen_8c.html#a4283cbf896ea7ca31653640f6dd237af", null ],
     [ "osSetEventMesg", "crash__screen_8c.html#a7b6487cfc60fe33c16e07b6d60ab275f", null ],
     [ "start_debug_thread", "crash__screen_8c.html#add85775f85281c0d872cb52845635ea2", null ],

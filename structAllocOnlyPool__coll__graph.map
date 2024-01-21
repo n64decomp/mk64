@@ -1,5 +1,7 @@
 <map id="AllocOnlyPool" name="AllocOnlyPool">
-<area shape="rect" id="node1" title=" " alt="" coords="67,109,179,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="143,5,229,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="54,108,166,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,92,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="56,44,63,63,72,82,95,106,91,110,68,86,58,65,51,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="116,5,229,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="166,45,146,85,125,110,121,106,141,83,161,42"/>
 </map>

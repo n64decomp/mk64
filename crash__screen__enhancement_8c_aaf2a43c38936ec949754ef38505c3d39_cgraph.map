@@ -1,8 +1,13 @@
 <map id="crash_screen_sleep" name="crash_screen_sleep">
-<area shape="rect" id="node1" title=" " alt="" coords="5,81,155,108"/>
-<area shape="rect" id="node2" href="$osGetTime_8c.html#ac9a040dcda7f29a608413f5a5c8963bf" title=" " alt="" coords="203,56,296,83"/>
-<area shape="rect" id="node6" href="$osSetTime_8c.html#a0d98a2d307753fb3c3764940365ecb65" title=" " alt="" coords="204,107,295,133"/>
-<area shape="rect" id="node3" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="345,5,462,32"/>
-<area shape="rect" id="node4" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="344,56,463,83"/>
-<area shape="rect" id="node5" href="$os__misc_8h.html#ade84d2da5a97b7796811e6c1f7cb7bc1" title=" " alt="" coords="354,107,453,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,155,105"/>
+<area shape="rect" id="Node000002" href="$osGetTime_8c.html#ac9a040dcda7f29a608413f5a5c8963bf" title=" " alt="" coords="203,55,296,80"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,79,189,74,190,79,155,84"/>
+<area shape="rect" id="Node000006" href="$osSetTime_8c.html#a0d98a2d307753fb3c3764940365ecb65" title=" " alt="" coords="204,104,295,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="155,101,191,106,190,111,155,106"/>
+<area shape="rect" id="Node000003" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="345,5,462,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="289,52,349,33,350,38,290,57"/>
+<area shape="rect" id="Node000004" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="344,55,463,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="296,65,330,65,330,70,296,70"/>
+<area shape="rect" id="Node000005" href="$os__misc_8h.html#ade84d2da5a97b7796811e6c1f7cb7bc1" title=" " alt="" coords="354,104,453,129"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="290,78,350,97,349,102,289,83"/>
 </map>

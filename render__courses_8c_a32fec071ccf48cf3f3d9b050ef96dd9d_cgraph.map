@@ -1,6 +1,9 @@
 <map id="render_bowsers_castle" name="render_bowsers_castle">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,176,57"/>
-<area shape="rect" id="node2" href="$render__courses_8c.html#a9a9119b96bf015cf8b5a168485f67e3f" title=" " alt="" coords="233,5,356,32"/>
-<area shape="rect" id="node3" href="$render__courses_8c.html#a5b7ecc4ef4612910f390c1f7a16dc7e4" title=" " alt="" coords="224,56,365,83"/>
-<area shape="rect" id="node4" href="$collision_8c.html#af3327ccb63774d1f6603c18d70097061" title=" " alt="" coords="413,56,539,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,176,56"/>
+<area shape="rect" id="Node000002" href="$render__courses_8c.html#a9a9119b96bf015cf8b5a168485f67e3f" title=" " alt="" coords="233,5,356,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,30,220,25,220,30,177,35"/>
+<area shape="rect" id="Node000003" href="$render__courses_8c.html#a5b7ecc4ef4612910f390c1f7a16dc7e4" title=" " alt="" coords="224,55,365,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="177,51,210,55,210,60,176,56"/>
+<area shape="rect" id="Node000004" href="$collision_8c.html#af3327ccb63774d1f6603c18d70097061" title=" " alt="" coords="413,55,539,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="366,65,400,65,400,70,366,70"/>
 </map>

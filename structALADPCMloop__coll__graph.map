@@ -1,5 +1,7 @@
 <map id="ALADPCMloop" name="ALADPCMloop">
-<area shape="rect" id="node1" title=" " alt="" coords="73,124,187,151"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,121,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="145,5,248,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="66,123,181,148"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,108,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="73,41,119,121,114,124,68,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="132,5,248,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="181,45,151,100,134,124,130,121,146,97,176,42"/>
 </map>

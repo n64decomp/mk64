@@ -1,7 +1,13 @@
 <map id="__osSyncPutChars" name="__osSyncPutChars">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,145,83"/>
-<area shape="rect" id="node2" href="$____osAtomicDec_8c.html#ac45eb3972d12f74ac4d93cc1ee0a6d6c" title=" " alt="" coords="193,31,316,57"/>
-<area shape="rect" id="node3" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="365,5,482,32"/>
-<area shape="rect" id="node4" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="364,56,483,83"/>
-<area shape="rect" id="node5" href="$libultra__internal_8h.html#a4982ff3eff4a9e9bc3835b0f3d2fe7fa" title=" " alt="" coords="197,132,312,159"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,145,80"/>
+<area shape="rect" id="Node000002" href="$____osAtomicDec_8c.html#ac45eb3972d12f74ac4d93cc1ee0a6d6c" title=" " alt="" coords="193,29,316,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,55,179,50,180,55,146,60"/>
+<area shape="rect" id="Node000003" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="365,5,482,31"/>
+<area shape="poly" id="edge4_Node000001_Node000003" title=" " alt="" coords="97,52,140,31,193,14,274,5,351,7,351,13,275,11,194,19,142,36,100,57"/>
+<area shape="rect" id="Node000004" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="364,55,483,80"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="146,65,350,65,350,70,146,70"/>
+<area shape="rect" id="Node000005" href="$libultra__internal_8h.html#a4982ff3eff4a9e9bc3835b0f3d2fe7fa" title=" " alt="" coords="197,131,312,156"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="107,78,212,123,210,128,105,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="316,31,350,26,351,31,317,36"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="317,49,350,54,350,59,316,54"/>
 </map>

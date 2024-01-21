@@ -87,7 +87,7 @@ var piint_8h =
     [ "__osPiDeviceBusy", "piint_8h.html#ad92a3d6e56fcdcad8d7891a35cecbb4c", null ],
     [ "__osPiGetAccess", "piint_8h.html#afd543b327be2093794db8fbef3a28149", null ],
     [ "__osPiRelAccess", "piint_8h.html#a063e76e89640a5d0e522c1c9fa92191d", null ],
-    [ "osPiGetCmdQueue", "piint_8h.html#a0fb5a57f9e199d8bb06e19ba556efac0", null ],
+    [ "osPiGetCmdQueue", "piint_8h.html#a758cb1b861d52fc7655d52ac7144ac88", null ],
     [ "__osCurrentHandle", "piint_8h.html#a9fa1009aa04cc2ee91859ce8812151ad", null ],
     [ "__osPiAccessQueue", "piint_8h.html#a0873b195f073e8ad5304c52f86395775", null ],
     [ "__osPiAccessQueueEnabled", "piint_8h.html#a62517581454ce3e9286d0adb4df8b003", null ],

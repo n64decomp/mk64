@@ -1,6 +1,9 @@
 <map id="src/racing/actors_extended.h" name="src/racing/actors_extended.h">
-<area shape="rect" id="node1" title=" " alt="" coords="155,5,365,32"/>
-<area shape="rect" id="node2" href="$code__80005FD0_8c.html" title=" " alt="" coords="5,80,165,107"/>
-<area shape="rect" id="node3" href="$actors_8c.html" title=" " alt="" coords="190,80,330,107"/>
-<area shape="rect" id="node4" href="$actors__extended_8c.html" title=" " alt="" coords="355,80,563,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="155,5,365,31"/>
+<area shape="rect" id="Node000002" href="$code__80005FD0_8c.html" title=" " alt="" coords="5,79,165,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,38,115,81,113,76,218,33"/>
+<area shape="rect" id="Node000003" href="$actors_8c.html" title=" " alt="" coords="190,79,330,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="263,44,263,79,257,79,257,44"/>
+<area shape="rect" id="Node000004" href="$actors__extended_8c.html" title=" " alt="" coords="355,79,563,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="306,33,427,76,425,81,304,38"/>
 </map>

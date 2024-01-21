@@ -1,10 +1,17 @@
 <map id="src/racing/race_logic.h" name="src/racing/race_logic.h">
-<area shape="rect" id="node1" title=" " alt="" coords="380,5,547,32"/>
-<area shape="rect" id="node2" href="$code__80071F00_8c.html" title=" " alt="" coords="5,80,164,107"/>
-<area shape="rect" id="node3" href="$code__80091750_8c.html" title=" " alt="" coords="188,80,347,107"/>
-<area shape="rect" id="node4" href="$all__variables_8h.html" title=" " alt="" coords="371,80,555,107"/>
-<area shape="rect" id="node7" href="$main_8c.html" title=" " alt="" coords="580,80,669,107"/>
-<area shape="rect" id="node8" href="$race__logic_8c.html" title=" " alt="" coords="693,80,860,107"/>
-<area shape="rect" id="node5" href="$debug_8inc_8c.html" title=" " alt="" coords="382,155,545,181"/>
-<area shape="rect" id="node6" href="$debug_8c.html" title=" " alt="" coords="393,229,533,256"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="380,5,547,31"/>
+<area shape="rect" id="Node000002" href="$code__80071F00_8c.html" title=" " alt="" coords="5,79,164,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="390,36,146,81,145,76,389,31"/>
+<area shape="rect" id="Node000003" href="$code__80091750_8c.html" title=" " alt="" coords="188,79,347,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="420,38,300,81,298,76,418,33"/>
+<area shape="rect" id="Node000004" href="$all__variables_8h.html" title=" " alt="" coords="371,79,555,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="466,44,466,79,461,79,461,44"/>
+<area shape="rect" id="Node000007" href="$main_8c.html" title=" " alt="" coords="580,79,669,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="503,34,599,76,597,81,501,39"/>
+<area shape="rect" id="Node000008" href="$race__logic_8c.html" title=" " alt="" coords="693,79,860,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="527,31,727,76,725,81,526,36"/>
+<area shape="rect" id="Node000005" href="$debug_8inc_8c.html" title=" " alt="" coords="382,152,545,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="466,118,466,152,461,152,461,118"/>
+<area shape="rect" id="Node000006" href="$debug_8c.html" title=" " alt="" coords="393,225,533,251"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="466,191,466,225,461,225,461,191"/>
 </map>

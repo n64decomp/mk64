@@ -1,5 +1,7 @@
 <map id="get_angle_between_points" name="get_angle_between_points">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,201,32"/>
-<area shape="rect" id="node2" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="249,5,316,32"/>
-<area shape="rect" id="node3" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="364,5,473,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,201,31"/>
+<area shape="rect" id="Node000002" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="249,5,316,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="202,15,236,15,236,21,202,21"/>
+<area shape="rect" id="Node000003" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="364,5,473,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="316,15,350,15,350,21,316,21"/>
 </map>

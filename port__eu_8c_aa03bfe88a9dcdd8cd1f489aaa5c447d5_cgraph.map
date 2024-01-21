@@ -1,5 +1,7 @@
 <map id="func_800CBF48" name="func_800CBF48">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,128,32"/>
-<area shape="rect" id="node2" href="$port__eu_8c.html#af4e3a3f93500d1e3d4fae08bf9c3b81e" title=" " alt="" coords="176,5,301,32"/>
-<area shape="rect" id="node3" href="$osCreateMesgQueue_8c.html#aab783cab54141cb60618b45f534104b9" title=" " alt="" coords="349,5,507,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,128,31"/>
+<area shape="rect" id="Node000002" href="$port__eu_8c.html#af4e3a3f93500d1e3d4fae08bf9c3b81e" title=" " alt="" coords="176,5,301,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,15,162,15,162,21,128,21"/>
+<area shape="rect" id="Node000003" href="$osCreateMesgQueue_8c.html#aab783cab54141cb60618b45f534104b9" title=" " alt="" coords="349,5,507,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="302,15,335,15,335,21,302,21"/>
 </map>

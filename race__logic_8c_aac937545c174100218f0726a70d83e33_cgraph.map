@@ -1,8 +1,13 @@
 <map id="func_8028FC34" name="func_8028FC34">
-<area shape="rect" id="node1" title=" " alt="" coords="5,35,128,61"/>
-<area shape="rect" id="node2" href="$race__logic_8c.html#a4f316a53a95dde1e4ff1d2a89ff934aa" title=" " alt="" coords="176,35,300,61"/>
-<area shape="rect" id="node3" href="$external_8c.html#ab8fa6fbe4bd78d8282bb696133e77f6c" title=" " alt="" coords="348,8,471,35"/>
-<area shape="rect" id="node5" href="$external_8c.html#a21151c55b3a7f562cacf743bde8a2efe" title=" " alt="" coords="348,60,471,87"/>
-<area shape="rect" id="node4" href="$external_8c.html#ac48b7cbfcaa7737f892877ead85e4ba7" title=" " alt="" coords="540,5,663,32"/>
-<area shape="rect" id="node6" href="$external_8c.html#a6f30b8a58790a4ee08f797faf98f24d6" title=" " alt="" coords="519,57,684,98"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,35,128,60"/>
+<area shape="rect" id="Node000002" href="$race__logic_8c.html#a4f316a53a95dde1e4ff1d2a89ff934aa" title=" " alt="" coords="176,35,300,60"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,45,162,45,162,50,128,50"/>
+<area shape="rect" id="Node000003" href="$external_8c.html#ab8fa6fbe4bd78d8282bb696133e77f6c" title=" " alt="" coords="348,8,471,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="300,35,334,30,335,35,301,40"/>
+<area shape="rect" id="Node000005" href="$external_8c.html#a21151c55b3a7f562cacf743bde8a2efe" title=" " alt="" coords="348,59,471,84"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="301,53,335,58,334,64,300,59"/>
+<area shape="rect" id="Node000004" href="$external_8c.html#ac48b7cbfcaa7737f892877ead85e4ba7" title=" " alt="" coords="540,5,663,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="471,17,526,16,526,22,471,22"/>
+<area shape="rect" id="Node000006" href="$external_8c.html#a6f30b8a58790a4ee08f797faf98f24d6" title=" " alt="" coords="519,55,684,95"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="471,70,505,71,505,76,471,75"/>
 </map>

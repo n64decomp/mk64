@@ -1,5 +1,7 @@
 <map id="interrupt_gfx_sptask" name="interrupt_gfx_sptask">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,161,32"/>
-<area shape="rect" id="node2" href="$osSpTaskYield_8c.html#ac8c09ee2c394376309833268ca43db9b" title=" " alt="" coords="209,5,324,32"/>
-<area shape="rect" id="node3" href="$____osSpSetStatus_8c.html#a29b072707af89f28d1f34595c865b9ba" title=" " alt="" coords="372,5,501,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,161,31"/>
+<area shape="rect" id="Node000002" href="$osSpTaskYield_8c.html#ac8c09ee2c394376309833268ca43db9b" title=" " alt="" coords="209,5,324,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,15,196,15,196,21,162,21"/>
+<area shape="rect" id="Node000003" href="$____osSpSetStatus_8c.html#a29b072707af89f28d1f34595c865b9ba" title=" " alt="" coords="372,5,501,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="324,15,358,15,358,21,324,21"/>
 </map>

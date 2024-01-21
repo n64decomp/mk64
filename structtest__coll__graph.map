@@ -1,6 +1,9 @@
 <map id="test" name="test">
-<area shape="rect" id="node1" title=" " alt="" coords="149,109,195,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,128,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="153,5,191,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="216,5,355,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="165,108,211,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,144,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,38,147,82,175,106,172,110,144,86,95,42"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="169,5,207,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="191,45,191,108,185,108,185,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="232,5,355,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="274,42,228,86,202,110,199,106,225,82,270,39"/>
 </map>

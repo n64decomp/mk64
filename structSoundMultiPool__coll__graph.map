@@ -1,9 +1,22 @@
 <map id="SoundMultiPool" name="SoundMultiPool">
-<area shape="rect" id="node1" title=" " alt="" coords="350,303,473,329"/>
-<area shape="rect" id="node2" href="$structPersistentPool.html" title=" " alt="" coords="213,213,327,240"/>
-<area shape="rect" id="node3" href="$structSoundAllocPool.html" title=" " alt="" coords="203,124,326,151"/>
-<area shape="rect" id="node7" href="$structTemporaryPool.html" title=" " alt="" coords="352,213,471,240"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node6" href="$structSeqOrBankEntry.html" title=" " alt="" coords="49,124,177,151"/>
-<area shape="rect" id="node5" title=" " alt="" coords="387,5,425,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="350,299,473,324"/>
+<area shape="rect" id="Node000002" href="$structPersistentPool.html" title=" " alt="" coords="213,211,327,236"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="296,243,338,272,385,296,382,301,335,277,293,247"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="387,5,425,31"/>
+<area shape="poly" id="edge13_Node000001_Node000003" title=" " alt="" coords="439,30,466,45,495,65,522,91,542,122,550,161,544,200,524,238,492,277,474,291,453,301,451,296,471,286,488,273,519,235,539,198,545,161,537,124,518,94,492,69,464,49,437,35"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="404,45,388,129,379,167,371,188,351,204,329,214,326,210,348,200,367,185,374,165,383,128,399,44"/>
+<area shape="rect" id="Node000004" href="$structSoundAllocPool.html" title=" " alt="" coords="203,123,326,148"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="373,25,301,35,269,44,249,56,243,72,245,89,259,121,254,123,240,90,238,71,245,53,266,40,300,30,372,19"/>
+<area shape="rect" id="Node000006" href="$structSeqOrBankEntry.html" title=" " alt="" coords="49,123,177,148"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="373,24,262,34,207,44,170,57,152,72,138,90,120,124,115,121,134,87,149,68,167,52,206,39,262,29,373,18"/>
+<area shape="rect" id="Node000007" href="$structTemporaryPool.html" title=" " alt="" coords="352,211,471,236"/>
+<area shape="poly" id="edge10_Node000007_Node000003" title=" " alt="" coords="427,40,453,76,474,122,474,149,463,174,446,196,428,212,425,208,442,192,458,172,469,148,469,123,448,79,423,43"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="269,162,272,210,267,210,264,162"/>
+<area shape="poly" id="edge11_Node000007_Node000004" title=" " alt="" coords="298,153,393,208,390,213,295,157"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,5,119,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="67,44,75,72,92,97,133,109,204,122,203,127,132,114,88,101,70,74,62,45"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="45,43,39,56,33,78,34,87,39,97,52,111,68,120,66,125,48,115,34,100,29,88,28,77,34,54,40,41"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="108,162,109,174,113,185,128,195,152,203,213,214,212,219,151,208,126,200,109,188,104,176,103,162"/>
+<area shape="poly" id="edge12_Node000007_Node000006" title=" " alt="" coords="145,153,177,170,212,184,352,210,351,215,211,189,174,174,142,158"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="414,250,414,298,409,298,409,250"/>
 </map>

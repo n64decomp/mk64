@@ -1,6 +1,9 @@
 <map id="decompress_vtx" name="decompress_vtx">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,135,83"/>
-<area shape="rect" id="node2" href="$memory_8c.html#ada643077e70877094bfe3c638396ffd9" title=" " alt="" coords="211,5,334,32"/>
-<area shape="rect" id="node3" href="$functions_8h.html#ae4722e596a88d66404ccaaf6ea181b41" title=" " alt="" coords="221,56,324,83"/>
-<area shape="rect" id="node4" href="$memory_8c.html#ac3218ec03e916f72bffc829d420ba5f7" title="Stores the physical memory addr for segmented memory in gSegmentTable using the segment number as an ..." alt="" coords="183,107,363,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,135,80"/>
+<area shape="rect" id="Node000002" href="$memory_8c.html#ada643077e70877094bfe3c638396ffd9" title=" " alt="" coords="211,5,334,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,52,206,31,207,37,123,57"/>
+<area shape="rect" id="Node000003" href="$functions_8h.html#ae4722e596a88d66404ccaaf6ea181b41" title=" " alt="" coords="221,55,324,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="135,65,207,65,207,70,135,70"/>
+<area shape="rect" id="Node000004" href="$memory_8c.html#ac3218ec03e916f72bffc829d420ba5f7" title="Stores the physical memory addr for segmented memory in gSegmentTable using the segment number as an ..." alt="" coords="183,104,363,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="123,77,207,98,206,103,122,83"/>
 </map>

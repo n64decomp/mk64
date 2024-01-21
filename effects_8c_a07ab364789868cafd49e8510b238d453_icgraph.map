@@ -1,6 +1,9 @@
 <map id="remove_lightning_effect" name="remove_lightning_effect">
-<area shape="rect" id="node1" title=" " alt="" coords="389,31,569,57"/>
-<area shape="rect" id="node2" href="$effects_8c.html#afcd934606edb08e59bff1545a7e447f7" title=" " alt="" coords="175,5,341,32"/>
-<area shape="rect" id="node3" href="$effects_8c.html#a17332237b5c2a4249328a35071e23bf7" title=" " alt="" coords="197,56,319,83"/>
-<area shape="rect" id="node4" href="$effects_8c.html#afaeabb9e08b6568f56117c24edad5945" title=" " alt="" coords="5,56,127,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="389,31,569,56"/>
+<area shape="rect" id="Node000002" href="$effects_8c.html#afcd934606edb08e59bff1545a7e447f7" title=" " alt="" coords="175,5,341,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="375,34,341,30,342,25,376,29"/>
+<area shape="rect" id="Node000003" href="$effects_8c.html#a17332237b5c2a4249328a35071e23bf7" title=" " alt="" coords="197,55,319,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="376,57,319,63,319,58,375,52"/>
+<area shape="rect" id="Node000004" href="$effects_8c.html#afaeabb9e08b6568f56117c24edad5945" title=" " alt="" coords="5,55,127,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="184,70,127,70,127,65,184,65"/>
 </map>

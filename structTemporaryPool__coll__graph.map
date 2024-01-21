@@ -1,7 +1,14 @@
 <map id="TemporaryPool" name="TemporaryPool">
-<area shape="rect" id="node1" title=" " alt="" coords="187,213,305,240"/>
-<area shape="rect" id="node2" href="$structSoundAllocPool.html" title=" " alt="" coords="185,124,307,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node5" href="$structSeqOrBankEntry.html" title=" " alt="" coords="33,124,161,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="227,5,265,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="92,211,211,236"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="27,5,65,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="33,43,21,66,11,93,9,121,16,147,34,168,57,185,106,208,104,213,54,190,30,172,12,149,3,121,6,92,16,64,28,41"/>
+<area shape="rect" id="Node000003" href="$structSoundAllocPool.html" title=" " alt="" coords="239,123,362,148"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="80,30,115,53,123,65,127,77,131,87,140,96,177,108,240,121,239,126,175,113,137,101,126,90,122,78,119,67,111,57,77,34"/>
+<area shape="rect" id="Node000005" href="$structSeqOrBankEntry.html" title=" " alt="" coords="87,123,215,148"/>
+<area shape="poly" id="edge7_Node000005_Node000002" title=" " alt="" coords="42,44,41,72,44,85,50,97,67,113,88,123,86,128,64,117,45,100,38,87,36,72,37,44"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="270,157,173,213,170,208,268,153"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="283,5,396,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="346,44,346,72,339,100,330,114,319,124,315,121,326,110,334,98,341,71,341,44"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="321,43,311,56,300,80,295,90,285,101,255,114,212,125,211,120,253,109,282,96,291,87,295,77,306,53,317,40"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="154,162,154,210,149,210,149,162"/>
 </map>

@@ -1,8 +1,14 @@
 <map id="RailroadCrossing" name="RailroadCrossing">
-<area shape="rect" id="node1" title=" " alt="" coords="146,348,278,375"/>
-<area shape="rect" id="node2" href="$structCollision.html" title=" " alt="" coords="86,184,165,211"/>
-<area shape="rect" id="node3" title=" " alt="" coords="6,5,56,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="131,5,270,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="190,184,312,211"/>
-<area shape="rect" id="node6" title=" " alt="" coords="337,184,376,211"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="93,347,225,372"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,183,44,209"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="20,222,15,246,13,272,17,298,28,321,37,328,53,335,94,346,92,351,51,340,35,333,24,324,12,299,8,272,10,245,14,221"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="117,5,167,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="141,45,134,125,133,175,135,225,146,294,159,346,154,347,141,295,130,226,128,175,129,125,136,44"/>
+<area shape="rect" id="Node000005" href="$structCollision.html" title=" " alt="" coords="197,183,276,209"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="142,44,145,92,151,118,162,141,184,165,210,181,208,185,180,169,157,144,146,119,140,93,137,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="301,183,423,209"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="351,222,314,273,289,301,261,325,236,339,209,349,207,344,233,334,258,320,286,297,310,270,346,219"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="228,222,167,348,162,345,223,220"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="242,5,381,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="312,45,303,92,284,144,269,167,252,185,248,181,265,163,280,141,298,91,306,44"/>
 </map>

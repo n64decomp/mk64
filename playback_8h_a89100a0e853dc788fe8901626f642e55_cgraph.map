@@ -1,7 +1,12 @@
 <map id="note_pool_fill" name="note_pool_fill">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,115,83"/>
-<area shape="rect" id="node2" href="$seqplayer_8c.html#a9ffe9f45bfee3113b078cbc0b4084218" title=" " alt="" coords="163,5,317,32"/>
-<area shape="rect" id="node3" href="$seqplayer_8c.html#ad6bdf40a669a4ec92be6fb203b2abf0a" title=" " alt="" coords="365,56,527,83"/>
-<area shape="rect" id="node4" href="$playback_8c.html#ab7a932f7c71e6b0511e3dbff42208251" title=" " alt="" coords="177,107,303,133"/>
-<area shape="rect" id="node5" href="$playback_8c.html#a1a384aa226aef66cdab12750f1fde133" title=" " alt="" coords="375,107,517,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,56,115,81"/>
+<area shape="rect" id="Node000002" href="$seqplayer_8c.html#aff01bffc83a074f3f9603d10869539a3" title=" " alt="" coords="163,5,317,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,53,180,32,182,37,107,58"/>
+<area shape="rect" id="Node000003" href="$seqplayer_8c.html#ad6bdf40a669a4ec92be6fb203b2abf0a" title=" " alt="" coords="365,57,527,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="115,66,352,67,351,72,115,72"/>
+<area shape="rect" id="Node000004" href="$playback_8c.html#ab7a932f7c71e6b0511e3dbff42208251" title=" " alt="" coords="177,107,303,132"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="107,79,182,100,180,105,105,84"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="293,104,378,83,380,89,294,109"/>
+<area shape="rect" id="Node000005" href="$playback_8c.html#a1a384aa226aef66cdab12750f1fde133" title=" " alt="" coords="375,107,517,132"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="303,117,361,117,361,122,303,122"/>
 </map>

@@ -1,8 +1,15 @@
 <map id="SynthesisReverb" name="SynthesisReverb">
-<area shape="rect" id="node1" title=" " alt="" coords="348,436,479,463"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,221,56,247"/>
-<area shape="rect" id="node3" title=" " alt="" coords="137,5,260,32"/>
-<area shape="rect" id="node6" href="$structReverbRingBufferItem.html" title=" " alt="" coords="330,221,497,247"/>
-<area shape="rect" id="node4" title=" " alt="" coords="481,5,519,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="769,221,935,247"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="372,435,503,460"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,220,56,245"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="24,259,16,293,11,333,15,374,22,393,34,409,50,417,80,423,170,433,372,442,372,448,169,439,79,429,48,422,30,413,18,395,10,375,5,333,10,292,19,258"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="179,5,218,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,45,186,98,181,167,183,205,189,242,200,278,217,312,235,335,256,356,304,390,354,415,399,432,397,437,352,420,301,395,252,360,231,339,212,315,195,280,184,244,178,205,176,167,180,97,190,44"/>
+<area shape="rect" id="Node000006" href="$structReverbRingBufferItem.html" title=" " alt="" coords="354,220,521,245"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="199,44,203,87,210,108,222,126,241,140,261,142,283,143,309,150,374,184,423,218,420,222,371,189,307,154,282,148,260,148,239,144,218,130,205,110,198,88,194,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="479,5,601,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="585,36,601,53,609,73,609,90,601,129,586,214,567,281,537,343,486,412,458,437,455,433,482,409,533,340,562,279,580,213,596,127,604,90,604,74,596,56,581,40"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="488,39,467,56,455,76,447,98,437,145,436,188,438,219,433,220,431,188,432,145,441,97,451,74,463,53,484,35"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="771,220,938,245"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="837,257,803,292,756,335,699,378,637,413,604,426,569,435,503,445,502,440,568,430,602,421,635,408,696,373,752,331,799,288,834,254"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="440,259,440,435,435,435,435,259"/>
 </map>

@@ -1,5 +1,7 @@
 <map id="__OSEventState" name="__OSEventState">
-<area shape="rect" id="node1" title=" " alt="" coords="69,95,195,121"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,123,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="163,5,237,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="69,93,195,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,123,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="62,45,63,57,68,68,80,81,96,91,93,95,77,85,63,71,58,58,57,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="163,5,237,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="191,44,173,71,148,95,145,91,169,68,186,41"/>
 </map>

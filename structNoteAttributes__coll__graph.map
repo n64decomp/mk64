@@ -1,5 +1,7 @@
 <map id="NoteAttributes" name="NoteAttributes">
-<area shape="rect" id="node1" title=" " alt="" coords="57,109,174,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="143,5,194,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="57,108,174,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,119,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,44,71,64,79,83,101,106,97,110,74,85,66,65,61,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="143,5,194,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="161,45,142,85,126,109,122,106,137,83,156,42"/>
 </map>

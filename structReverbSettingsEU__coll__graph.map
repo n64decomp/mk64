@@ -1,5 +1,7 @@
 <map id="ReverbSettingsEU" name="ReverbSettingsEU">
-<area shape="rect" id="node1" title=" " alt="" coords="35,109,173,136"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="159,5,198,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="35,108,173,133"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="28,44,28,64,34,83,47,96,63,106,61,110,44,100,30,85,23,65,23,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="159,5,198,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,44,164,65,151,86,124,110,121,106,147,82,160,63,169,42"/>
 </map>

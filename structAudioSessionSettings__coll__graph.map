@@ -1,6 +1,9 @@
 <map id="AudioSessionSettings" name="AudioSessionSettings">
-<area shape="rect" id="node1" title=" " alt="" coords="173,153,335,180"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="203,5,305,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="350,5,489,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="141,152,303,177"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,108,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,44,63,87,71,108,84,126,110,145,141,156,140,161,108,149,80,130,66,110,58,88,53,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="165,5,279,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="225,45,225,152,219,152,219,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="345,5,483,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="417,45,410,88,401,111,386,130,373,139,353,146,304,156,303,151,352,140,370,134,383,126,396,108,405,87,412,44"/>
 </map>

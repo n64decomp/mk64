@@ -1,5 +1,7 @@
 <map id="StarSpawn" name="StarSpawn">
-<area shape="rect" id="node1" title=" " alt="" coords="35,95,126,121"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,44,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="69,5,207,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="85,93,176,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,144,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,41,125,91,121,94,87,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="169,5,207,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="175,44,141,94,136,91,170,41"/>
 </map>

@@ -1,8 +1,15 @@
 <map id="CeremonyActor" name="CeremonyActor">
-<area shape="rect" id="node1" title=" " alt="" coords="199,421,322,448"/>
-<area shape="rect" id="node2" href="$structActorInitParams.html" title=" " alt="" coords="87,206,213,233"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,103,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="163,5,286,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="326,206,377,233"/>
-<area shape="rect" id="node6" title=" " alt="" coords="401,206,488,233"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="207,420,330,445"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,205,92,231"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="45,244,40,278,39,318,46,359,55,378,66,394,88,407,124,416,208,426,207,431,123,421,86,412,63,398,50,380,41,361,34,319,35,277,40,243"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="111,5,234,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="167,44,154,93,143,157,141,228,146,264,155,298,175,336,203,370,255,418,251,422,199,374,171,339,150,300,140,265,136,228,137,156,149,91,162,43"/>
+<area shape="rect" id="Node000006" href="$structActorInitParams.html" title=" " alt="" coords="206,205,331,231"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="187,42,265,204,261,206,182,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="295,5,392,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="359,43,363,54,366,84,363,113,365,157,370,196,382,262,385,294,381,326,371,360,349,398,335,412,317,422,315,418,332,408,345,394,366,358,376,325,379,294,377,263,365,196,359,158,358,113,360,84,358,55,354,44"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="332,44,326,56,294,141,274,206,269,204,289,139,321,54,327,41"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="441,205,491,231"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="466,245,460,279,448,320,429,362,400,398,367,418,331,429,330,424,365,413,396,394,424,359,443,319,455,278,461,244"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="271,244,271,420,266,420,266,244"/>
 </map>

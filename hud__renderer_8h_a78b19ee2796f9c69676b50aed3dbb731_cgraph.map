@@ -1,6 +1,9 @@
 <map id="func_8005762C" name="func_8005762C">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,128,57"/>
-<area shape="rect" id="node2" href="$hud__renderer_8c.html#ac65015c8c4cb9f586b55bba6caec40e1" title=" " alt="" coords="176,5,311,32"/>
-<area shape="rect" id="node3" href="$hud__renderer_8c.html#a65760e3e635799078e6ef7b04a2685e0" title=" " alt="" coords="183,56,304,83"/>
-<area shape="rect" id="node4" href="$hud__renderer_8c.html#acaa477cfbccd1a5fae43a67a655accdb" title=" " alt="" coords="359,56,484,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,128,56"/>
+<area shape="rect" id="Node000002" href="$hud__renderer_8c.html#ac65015c8c4cb9f586b55bba6caec40e1" title=" " alt="" coords="176,5,311,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,32,162,27,163,32,129,37"/>
+<area shape="rect" id="Node000003" href="$hud__renderer_8c.html#a65760e3e635799078e6ef7b04a2685e0" title=" " alt="" coords="183,55,304,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="129,49,169,55,169,60,128,54"/>
+<area shape="rect" id="Node000004" href="$hud__renderer_8c.html#acaa477cfbccd1a5fae43a67a655accdb" title=" " alt="" coords="359,55,484,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="304,65,345,65,345,70,304,70"/>
 </map>

@@ -1,8 +1,15 @@
 <map id="include/PR/gu.h" name="include/PR/gu.h">
-<area shape="rect" id="node1" title=" " alt="" coords="116,5,239,32"/>
-<area shape="rect" id="node2" href="$mbi_8h.html" title=" " alt="" coords="99,80,179,107"/>
-<area shape="rect" id="node4" href="$ultratypes_8h.html" title=" " alt="" coords="69,229,190,256"/>
-<area shape="rect" id="node3" href="$gbi_8h.html" title=" " alt="" coords="5,155,80,181"/>
-<area shape="rect" id="node6" href="$abi_8h.html" title=" " alt="" coords="104,155,179,181"/>
-<area shape="rect" id="node5" href="$stddef_8h.html" title=" " alt="" coords="92,304,167,331"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="116,5,239,31"/>
+<area shape="rect" id="Node000002" href="$mbi_8h.html" title=" " alt="" coords="99,79,179,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,32,154,68,149,65,169,30"/>
+<area shape="rect" id="Node000004" href="$ultratypes_8h.html" title=" " alt="" coords="69,225,190,251"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="184,30,193,57,201,95,202,137,193,178,179,201,161,219,157,215,175,197,188,176,197,137,195,96,188,59,179,32"/>
+<area shape="rect" id="Node000003" href="$gbi_8h.html" title=" " alt="" coords="5,152,80,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="125,106,71,146,68,141,122,102"/>
+<area shape="rect" id="Node000006" href="$abi_8h.html" title=" " alt="" coords="104,152,179,177"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="142,104,143,138,138,139,136,104"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="58,175,106,214,103,219,55,179"/>
+<area shape="rect" id="Node000005" href="$stddef_8h.html" title=" " alt="" coords="92,299,167,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="125,251,123,285,118,285,120,251"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="134,298,135,264,141,265,139,299"/>
 </map>

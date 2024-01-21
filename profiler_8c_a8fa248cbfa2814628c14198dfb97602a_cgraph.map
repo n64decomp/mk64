@@ -1,5 +1,7 @@
 <map id="draw_profiler_mode_0" name="draw_profiler_mode_0">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,172,57"/>
-<area shape="rect" id="node2" href="$profiler_8c.html#a6ccbcacd3a0082d450e5a6c94af2c928" title=" " alt="" coords="258,5,393,32"/>
-<area shape="rect" id="node3" href="$profiler_8c.html#a4633c7695a2c15f3bbef2f83eefd9168" title=" " alt="" coords="220,56,431,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,172,56"/>
+<area shape="rect" id="Node000002" href="$profiler_8c.html#a6ccbcacd3a0082d450e5a6c94af2c928" title=" " alt="" coords="258,5,393,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,32,244,24,245,29,173,37"/>
+<area shape="rect" id="Node000003" href="$profiler_8c.html#a4633c7695a2c15f3bbef2f83eefd9168" title=" " alt="" coords="220,55,431,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="173,49,207,53,206,58,172,54"/>
 </map>

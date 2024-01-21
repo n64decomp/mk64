@@ -1,11 +1,23 @@
 <map id="func_800744CC" name="func_800744CC">
-<area shape="rect" id="node1" title=" " alt="" coords="5,132,128,159"/>
-<area shape="rect" id="node2" href="$crash__screen_8c.html#a4283cbf896ea7ca31653640f6dd237af" title=" " alt="" coords="176,132,280,159"/>
-<area shape="rect" id="node3" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="513,5,630,32"/>
-<area shape="rect" id="node4" href="$libultra__internal_8h.html#afe9c3abc4ca93d9fe18a87d9f108d5cb" title=" " alt="" coords="489,56,653,83"/>
-<area shape="rect" id="node5" href="$libultra__internal_8h.html#a82b6b8e6a4311b516950168ef4078e33" title=" " alt="" coords="511,208,631,235"/>
-<area shape="rect" id="node6" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="512,259,631,285"/>
-<area shape="rect" id="node7" href="$osStartThread_8c.html#a3b144e814933e16a2fbf2642ad098ed3" title=" " alt="" coords="328,132,441,159"/>
-<area shape="rect" id="node8" href="$libultra__internal_8h.html#a650b788ebd5efde9c8cbccc1ee832445" title=" " alt="" coords="495,107,648,133"/>
-<area shape="rect" id="node9" href="$libultra__internal_8h.html#ac9d6cfd19de5565e74f1d74a14e9092d" title=" " alt="" coords="495,157,647,184"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,113,128,139"/>
+<area shape="rect" id="Node000002" href="$osRecvMesg_8c.html#aa254dc33e373f235a99e17f7717493dc" title=" " alt="" coords="176,113,280,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,123,162,123,162,129,128,129"/>
+<area shape="rect" id="Node000003" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="513,5,630,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="248,111,284,91,327,72,416,45,499,27,500,32,417,50,329,76,287,96,251,116"/>
+<area shape="rect" id="Node000004" href="$libultra__internal_8h.html#afe9c3abc4ca93d9fe18a87d9f108d5cb" title=" " alt="" coords="489,55,653,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="274,111,327,98,475,75,476,80,329,103,275,116"/>
+<area shape="rect" id="Node000005" href="$libultra__internal_8h.html#aaadded63bebce6cfdda5ecda193fc9ea" title=" " alt="" coords="511,203,631,228"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="278,136,509,197,507,202,277,141"/>
+<area shape="rect" id="Node000006" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="512,252,631,277"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="249,137,285,161,329,185,373,203,408,215,490,238,514,245,512,251,489,243,407,220,371,208,327,190,282,165,246,141"/>
+<area shape="rect" id="Node000007" href="$osStartThread_8c.html#a3b144e814933e16a2fbf2642ad098ed3" title=" " alt="" coords="328,113,441,139"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="280,123,314,123,314,129,280,129"/>
+<area shape="poly" id="edge7_Node000007_Node000003" title=" " alt="" coords="396,111,435,76,488,40,503,33,505,38,491,44,438,80,400,115"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="422,111,489,89,512,81,514,87,490,94,424,116"/>
+<area shape="poly" id="edge11_Node000007_Node000005" title=" " alt="" coords="407,137,491,188,510,196,508,201,488,192,404,141"/>
+<area shape="poly" id="edge12_Node000007_Node000006" title=" " alt="" coords="396,137,433,187,460,215,491,238,502,244,499,249,488,243,456,218,429,190,392,140"/>
+<area shape="rect" id="Node000008" href="$libultra__internal_8h.html#a650b788ebd5efde9c8cbccc1ee832445" title=" " alt="" coords="495,104,648,129"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="442,121,481,119,481,124,442,126"/>
+<area shape="rect" id="Node000009" href="$libultra__internal_8h.html#ac9d6cfd19de5565e74f1d74a14e9092d" title=" " alt="" coords="495,153,647,179"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="442,136,499,148,497,153,441,141"/>
 </map>

@@ -1,13 +1,27 @@
 <map id="Drum" name="Drum">
-<area shape="rect" id="node1" title=" " alt="" coords="198,465,257,492"/>
-<area shape="rect" id="node2" href="$structAudioBankSound.html" title=" " alt="" coords="161,376,293,403"/>
-<area shape="rect" id="node3" title=" " alt="" coords="142,257,193,284"/>
-<area shape="rect" id="node4" href="$structAudioBankSample.html" title=" " alt="" coords="217,257,358,284"/>
-<area shape="rect" id="node5" href="$structAdpcmBook.html" title=" " alt="" coords="413,139,513,165"/>
-<area shape="rect" id="node6" title=" " alt="" coords="264,5,351,32"/>
-<area shape="rect" id="node7" title=" " alt="" coords="422,5,545,32"/>
-<area shape="rect" id="node10" href="$structAdpcmLoop.html" title=" " alt="" coords="290,139,389,165"/>
-<area shape="rect" id="node11" href="$structAdsrEnvelope.html" title=" " alt="" coords="488,198,599,225"/>
-<area shape="rect" id="node8" title=" " alt="" coords="5,139,119,165"/>
-<area shape="rect" id="node9" title=" " alt="" coords="136,5,239,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="222,460,281,485"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,137,119,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="62,176,61,203,65,230,78,269,97,306,120,340,146,372,198,424,238,458,234,462,194,428,142,375,116,344,93,309,73,271,59,231,56,203,56,176"/>
+<area shape="rect" id="Node000004" href="$structAudioBankSample.html" title=" " alt="" coords="121,255,262,280"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="67,176,75,203,91,229,109,243,130,252,128,257,106,247,87,232,70,206,62,177"/>
+<area shape="rect" id="Node000003" href="$structAudioBankSound.html" title=" " alt="" coords="185,372,317,397"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="254,411,254,459,249,459,249,411"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="204,291,231,347,246,370,241,373,226,349,199,294"/>
+<area shape="rect" id="Node000005" href="$structAdpcmLoop.html" title=" " alt="" coords="290,137,389,163"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="315,173,208,257,204,253,312,169"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="167,5,269,31"/>
+<area shape="poly" id="edge11_Node000004_Node000006" title=" " alt="" coords="216,45,201,138,194,255,189,254,195,137,210,44"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="236,40,263,75,296,111,324,135,321,139,292,115,259,78,232,44"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="365,5,487,31"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="381,39,361,56,351,76,345,98,341,137,336,137,339,97,346,74,357,53,378,35"/>
+<area shape="rect" id="Node000008" href="$structAdpcmBook.html" title=" " alt="" coords="464,137,564,163"/>
+<area shape="poly" id="edge10_Node000008_Node000007" title=" " alt="" coords="454,38,467,53,481,82,492,112,508,136,503,139,488,115,476,84,462,56,450,42"/>
+<area shape="rect" id="Node000011" href="$structAdsrEnvelope.html" title=" " alt="" coords="345,196,456,221"/>
+<area shape="poly" id="edge14_Node000011_Node000007" title=" " alt="" coords="425,45,405,196,400,195,420,44"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="509,177,494,207,470,233,453,241,429,246,374,252,274,257,262,259,262,254,274,252,374,247,429,241,451,236,467,229,490,204,504,175"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="519,5,605,31"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="558,45,535,114,523,138,518,136,530,112,553,43"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="286,255,337,280"/>
+<area shape="poly" id="edge12_Node000003_Node000010" title=" " alt="" coords="307,294,298,321,284,349,265,373,261,370,280,347,293,319,302,292"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="398,236,388,278,369,332,341,388,323,414,303,438,272,462,269,458,299,434,319,411,336,385,364,330,382,277,393,234"/>
 </map>

@@ -1,5 +1,7 @@
 <map id="osViSetEvent" name="osViSetEvent">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,113,57"/>
-<area shape="rect" id="node2" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="162,5,279,32"/>
-<area shape="rect" id="node3" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="161,56,280,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,113,56"/>
+<area shape="rect" id="Node000002" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="162,5,279,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,32,148,27,149,32,114,38"/>
+<area shape="rect" id="Node000003" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="161,55,280,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="114,49,148,54,147,59,113,54"/>
 </map>

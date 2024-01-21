@@ -1,6 +1,9 @@
 <map id="src/os/osAi.h" name="src/os/osAi.h">
-<area shape="rect" id="node1" title=" " alt="" coords="243,5,347,32"/>
-<area shape="rect" id="node2" href="$osAiGetLength_8c.html" title=" " alt="" coords="5,80,176,107"/>
-<area shape="rect" id="node3" href="$osAiSetFrequency_8c.html" title=" " alt="" coords="200,80,389,107"/>
-<area shape="rect" id="node4" href="$osAiSetNextBuffer_8c.html" title=" " alt="" coords="414,80,607,107"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="243,5,347,31"/>
+<area shape="rect" id="Node000002" href="$osAiGetLength_8c.html" title=" " alt="" coords="5,79,176,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="250,38,125,81,123,76,248,33"/>
+<area shape="rect" id="Node000003" href="$osAiSetFrequency_8c.html" title=" " alt="" coords="200,79,389,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="297,44,297,79,292,79,292,44"/>
+<area shape="rect" id="Node000004" href="$osAiSetNextBuffer_8c.html" title=" " alt="" coords="414,79,607,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="343,32,477,76,475,81,342,37"/>
 </map>

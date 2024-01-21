@@ -1,6 +1,9 @@
 <map id="is_player_under_light_luigi_raceway" name="is_player_under_light_luigi_raceway">
-<area shape="rect" id="node1" title=" " alt="" coords="5,39,167,80"/>
-<area shape="rect" id="node2" href="$render__player_8c.html#a009cdad636fecfb5282fedd1bd0e309a" title=" " alt="" coords="215,5,371,47"/>
-<area shape="rect" id="node4" href="$render__player_8c.html#a07dbadab7ba48d1fcb9ec5987f329ad0" title=" " alt="" coords="215,71,371,112"/>
-<area shape="rect" id="node3" href="$render__player_8c.html#ae2617cc0ed2c6786543b6fd58d27a857" title=" " alt="" coords="419,13,568,39"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,37,167,77"/>
+<area shape="rect" id="Node000002" href="$render__player_8c.html#a009cdad636fecfb5282fedd1bd0e309a" title=" " alt="" coords="215,5,371,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="166,42,201,37,202,42,167,48"/>
+<area shape="rect" id="Node000004" href="$render__player_8c.html#a07dbadab7ba48d1fcb9ec5987f329ad0" title=" " alt="" coords="215,69,371,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="167,67,202,73,201,78,166,72"/>
+<area shape="rect" id="Node000003" href="$render__player_8c.html#ae2617cc0ed2c6786543b6fd58d27a857" title=" " alt="" coords="419,13,568,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="371,23,405,23,405,28,371,28"/>
 </map>

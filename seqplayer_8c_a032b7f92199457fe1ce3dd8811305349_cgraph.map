@@ -1,9 +1,15 @@
 <map id="seq_channel_layer_free" name="seq_channel_layer_free">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,181,57"/>
-<area shape="rect" id="node2" href="$seqplayer_8c.html#ad6bdf40a669a4ec92be6fb203b2abf0a" title=" " alt="" coords="247,5,409,32"/>
-<area shape="rect" id="node3" href="$seqplayer_8c.html#a656b06579fc7235de0a9ead95b4aeb29" title=" " alt="" coords="229,56,427,83"/>
-<area shape="rect" id="node4" href="$playback_8c.html#a5a8c503b0091f9054e70f88feb90a603" title=" " alt="" coords="475,49,653,90"/>
-<area shape="rect" id="node5" href="$playback_8c.html#a689ccfe046fe63da331758ee7eec972a" title=" " alt="" coords="701,49,891,90"/>
-<area shape="rect" id="node6" href="$playback_8c.html#aaa06908b1c008a03b28ed11241c45b19" title=" " alt="" coords="939,31,1100,57"/>
-<area shape="rect" id="node7" href="$playback_8c.html#a1a384aa226aef66cdab12750f1fde133" title=" " alt="" coords="948,81,1091,108"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,181,56"/>
+<area shape="rect" id="Node000002" href="$seqplayer_8c.html#ad6bdf40a669a4ec92be6fb203b2abf0a" title=" " alt="" coords="247,5,409,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,31,233,26,234,31,182,36"/>
+<area shape="rect" id="Node000003" href="$seqplayer_8c.html#a656b06579fc7235de0a9ead95b4aeb29" title=" " alt="" coords="229,55,427,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,50,216,53,215,59,181,55"/>
+<area shape="rect" id="Node000004" href="$playback_8c.html#a5a8c503b0091f9054e70f88feb90a603" title=" " alt="" coords="475,47,653,87"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="427,65,461,65,461,70,427,70"/>
+<area shape="rect" id="Node000005" href="$playback_8c.html#a689ccfe046fe63da331758ee7eec972a" title=" " alt="" coords="701,47,891,87"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="653,65,688,65,688,70,653,70"/>
+<area shape="rect" id="Node000006" href="$playback_8c.html#aaa06908b1c008a03b28ed11241c45b19" title=" " alt="" coords="939,29,1100,55"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="891,54,925,50,925,55,891,59"/>
+<area shape="rect" id="Node000007" href="$playback_8c.html#a1a384aa226aef66cdab12750f1fde133" title=" " alt="" coords="948,79,1091,104"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="891,75,935,80,934,85,891,80"/>
 </map>

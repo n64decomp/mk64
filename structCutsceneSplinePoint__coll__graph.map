@@ -1,6 +1,9 @@
 <map id="CutsceneSplinePoint" name="CutsceneSplinePoint">
-<area shape="rect" id="node1" title=" " alt="" coords="127,95,282,121"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="143,5,266,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="291,5,388,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="106,93,261,119"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,103,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="84,36,167,91,164,95,81,40"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="127,5,240,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="186,45,186,93,181,93,181,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="265,5,387,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="297,40,204,95,201,91,294,35"/>
 </map>

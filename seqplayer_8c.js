@@ -1,8 +1,8 @@
 var seqplayer_8c =
 [
     [ "LAYERS_SIZE", "seqplayer_8c.html#a1c2bc3a7fa1967eff9a0213b839bd6fa", null ],
-    [ "allocate_sequence_channel", "seqplayer_8c.html#a8a29fff3970e833770ab17aaec8f11ce", null ],
-    [ "audio_list_pop_back", "seqplayer_8c.html#a9ffe9f45bfee3113b078cbc0b4084218", null ],
+    [ "allocate_sequence_channel", "seqplayer_8c.html#aea038950d972b74b6dc9bca4072c9706", null ],
+    [ "audio_list_pop_back", "seqplayer_8c.html#aff01bffc83a074f3f9603d10869539a3", null ],
     [ "audio_list_push_back", "seqplayer_8c.html#ad6bdf40a669a4ec92be6fb203b2abf0a", null ],
     [ "get_instrument", "seqplayer_8c.html#a871f0f8bdc0a57e8df53235a753f47a6", null ],
     [ "init_layer_freelist", "seqplayer_8c.html#a14f8f77c95fa472cc9940eb47624f422", null ],

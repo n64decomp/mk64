@@ -1,6 +1,9 @@
 <map id="AudioBufferParametersEU" name="AudioBufferParametersEU">
-<area shape="rect" id="node1" title=" " alt="" coords="150,197,341,224"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="184,5,307,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="364,5,503,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="159,196,350,221"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,44,64,73,67,107,76,141,94,170,120,183,161,193,159,199,118,188,90,174,71,143,61,108,59,74,60,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="185,5,324,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="257,45,257,196,252,196,252,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="348,5,399,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="378,44,378,73,374,107,364,142,346,174,329,188,310,198,307,194,326,184,342,170,359,140,369,106,373,73,373,44"/>
 </map>

@@ -1,7 +1,11 @@
 <map id="func_8002E4C4" name="func_8002E4C4">
-<area shape="rect" id="node1" title=" " alt="" coords="5,60,128,87"/>
-<area shape="rect" id="node2" href="$collision_8c.html#a9a1bda13e8f2cefd24b255d6ff15252f" title=" " alt="" coords="194,31,317,57"/>
-<area shape="rect" id="node5" href="$player__controller_8c.html#aafeb0470c7da44e1440ffa4848f7d500" title=" " alt="" coords="176,82,335,123"/>
-<area shape="rect" id="node3" href="$collision_8c.html#a226294470ac12b9ca399e3f071990ac1" title=" " alt="" coords="383,5,507,32"/>
-<area shape="rect" id="node4" href="$collision_8c.html#afa1243eb9b3a14bc92434a8a19c162be" title=" " alt="" coords="383,56,506,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,59,128,84"/>
+<area shape="rect" id="Node000002" href="$collision_8c.html#a9a1bda13e8f2cefd24b255d6ff15252f" title=" " alt="" coords="194,29,317,55"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,59,180,51,181,56,129,64"/>
+<area shape="rect" id="Node000005" href="$player__controller_8c.html#aafeb0470c7da44e1440ffa4848f7d500" title=" " alt="" coords="176,79,335,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="129,78,163,83,162,88,128,83"/>
+<area shape="rect" id="Node000003" href="$collision_8c.html#a226294470ac12b9ca399e3f071990ac1" title=" " alt="" coords="383,5,507,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="316,32,368,25,369,30,317,37"/>
+<area shape="rect" id="Node000004" href="$collision_8c.html#afa1243eb9b3a14bc92434a8a19c162be" title=" " alt="" coords="383,55,506,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="317,48,369,55,369,60,316,53"/>
 </map>

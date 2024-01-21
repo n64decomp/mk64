@@ -1,7 +1,11 @@
 <map id="__osViInit" name="__osViInit">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,91,57"/>
-<area shape="rect" id="node2" href="$____osViSwapContext_8c.html#a40fa51b61afa287bc3adec46942edd07" title=" " alt="" coords="139,5,289,32"/>
-<area shape="rect" id="node5" href="$bstring_8h.html#ab828ad07c8ebf898973f27778c543651" title=" " alt="" coords="185,56,243,83"/>
-<area shape="rect" id="node3" href="$osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570" title=" " alt="" coords="337,5,485,32"/>
-<area shape="rect" id="node4" href="$libultra__internal_8h.html#a4f7c83166c9481713d4b56defd0888c7" title=" " alt="" coords="533,5,645,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,91,56"/>
+<area shape="rect" id="Node000002" href="$____osViSwapContext_8c.html#a40fa51b61afa287bc3adec46942edd07" title=" " alt="" coords="139,5,289,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,34,124,29,125,34,91,40"/>
+<area shape="rect" id="Node000005" href="$bstring_8h.html#ab828ad07c8ebf898973f27778c543651" title=" " alt="" coords="185,55,243,80"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="91,47,172,59,171,64,91,52"/>
+<area shape="rect" id="Node000003" href="$osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570" title=" " alt="" coords="337,5,485,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="289,15,323,15,323,21,289,21"/>
+<area shape="rect" id="Node000004" href="$libultra__internal_8h.html#a4f7c83166c9481713d4b56defd0888c7" title=" " alt="" coords="533,5,645,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="486,15,520,15,520,21,486,21"/>
 </map>

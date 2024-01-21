@@ -1,6 +1,9 @@
 <map id="__osLeoAbnormalResume" name="__osLeoAbnormalResume">
-<area shape="rect" id="node1" title=" " alt="" coords="464,5,655,32"/>
-<area shape="rect" id="node2" href="$____osLeoInterrupt_8c.html#afbaa4c704d84fbecef4ef9fc6364a5bb" title=" " alt="" coords="285,5,416,32"/>
-<area shape="rect" id="node3" href="$osInitialize_8c.html#acfb0fdf45b4ccc5ad77f155cf184c910" title=" " alt="" coords="144,5,237,32"/>
-<area shape="rect" id="node4" href="$main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" title=" " alt="" coords="5,5,96,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="464,5,655,31"/>
+<area shape="rect" id="Node000002" href="$____osLeoInterrupt_8c.html#afbaa4c704d84fbecef4ef9fc6364a5bb" title=" " alt="" coords="285,5,416,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="450,21,417,21,417,15,450,15"/>
+<area shape="rect" id="Node000003" href="$osInitialize_8c.html#acfb0fdf45b4ccc5ad77f155cf184c910" title=" " alt="" coords="144,5,237,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="271,21,237,21,237,15,271,15"/>
+<area shape="rect" id="Node000004" href="$main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" title=" " alt="" coords="5,5,96,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="130,21,96,21,96,15,130,15"/>
 </map>

@@ -1,5 +1,7 @@
 <map id="ISVDbg" name="ISVDbg">
-<area shape="rect" id="node1" title=" " alt="" coords="93,124,162,151"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="143,5,245,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="87,123,157,148"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,108,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,41,118,121,113,124,68,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="132,5,245,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="180,45,151,100,134,124,129,121,146,97,176,42"/>
 </map>

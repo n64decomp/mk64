@@ -1,5 +1,7 @@
 <map id="AdpcmLoop" name="AdpcmLoop">
-<area shape="rect" id="node1" title=" " alt="" coords="85,139,184,165"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,128,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="153,5,255,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="75,137,174,163"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,108,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,42,121,136,116,138,67,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="133,5,255,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,44,154,115,137,138,133,135,149,112,182,42"/>
 </map>

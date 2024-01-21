@@ -2,11 +2,11 @@ var main_8c =
 [
     [ "STRANGE_MAIN_HEADER_H", "main_8c.html#abf70aa8e2b34f1c64623922b5484ce9e", null ],
     [ "audio_init", "main_8c.html#a1057a490ba85ab32c800c0e3c9e85c78", null ],
-    [ "clear_framebuffer", "main_8c.html#a8fa00601d510540676d7af3af095c569", null ],
+    [ "clear_framebuffer", "main_8c.html#ac6df158ad2a863eb16f6b82e12ea26e4", null ],
     [ "config_gfx_pool", "main_8c.html#a9b253735194a23ab701e8ab9cdc7b128", null ],
     [ "create_debug_thread", "main_8c.html#a77471bbea209b9d664b6569191c60787", null ],
     [ "create_gfx_task_structure", "main_8c.html#ac1eb673d52197b3566bdd06480dd5a7b", null ],
-    [ "create_next_audio_frame_task", "main_8c.html#aa136d9ba80ebfd484d7abc25534bfdc6", null ],
+    [ "create_next_audio_frame_task", "main_8c.html#a17e6cb53d677ce7a809303aa122cb4cf", null ],
     [ "create_thread", "main_8c.html#afb8d0b987e9455cf9afbd21bfccb378d", null ],
     [ "dispatch_audio_sptask", "main_8c.html#a065e21eae1e48d149df9ab4583ec7441", null ],
     [ "display_and_vsync", "main_8c.html#ab0ea8291cbf3e787fbd55baf553f25ab", null ],

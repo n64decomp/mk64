@@ -1,9 +1,15 @@
 <map id="AudioSessionSettingsEU" name="AudioSessionSettingsEU">
-<area shape="rect" id="node1" title=" " alt="" coords="229,287,409,313"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,109,119,136"/>
-<area shape="rect" id="node3" href="$structReverbSettingsEU.html" title=" " alt="" coords="170,109,309,136"/>
-<area shape="rect" id="node4" title=" " alt="" coords="139,5,190,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="293,5,332,32"/>
-<area shape="rect" id="node6" title=" " alt="" coords="333,109,436,136"/>
-<area shape="rect" id="node7" title=" " alt="" coords="481,109,619,136"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="228,284,408,309"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,108,108,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="52,147,47,173,45,203,50,233,64,258,89,273,129,283,228,292,227,297,128,288,87,278,60,262,45,235,40,203,41,173,47,146"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="165,108,279,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="216,147,209,173,206,202,209,232,220,258,234,272,251,281,248,286,230,276,216,262,203,233,201,202,204,172,211,146"/>
+<area shape="rect" id="Node000004" href="$structReverbSettingsEU.html" title=" " alt="" coords="329,108,467,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="405,147,406,202,400,233,387,262,373,276,356,286,353,282,369,272,382,258,395,231,401,202,400,147"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="298,5,349,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="318,44,316,64,322,83,335,96,351,106,349,110,331,100,317,85,311,65,313,44"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="452,5,491,31"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="466,45,444,86,418,110,414,106,440,82,461,42"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="491,108,630,133"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="561,147,556,174,547,205,533,236,510,262,493,271,469,279,409,290,408,284,467,274,491,267,507,258,528,233,542,204,551,173,556,146"/>
 </map>

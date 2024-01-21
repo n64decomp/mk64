@@ -1,6 +1,9 @@
 <map id="__osSpRawStartDma" name="__osSpRawStartDma">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,163,57"/>
-<area shape="rect" id="node2" href="$____osSpDeviceBusy_8c.html#a21a4135251f586467a7805b70ec0b645" title=" " alt="" coords="213,5,357,32"/>
-<area shape="rect" id="node3" href="$osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570" title=" " alt="" coords="211,56,359,83"/>
-<area shape="rect" id="node4" href="$libultra__internal_8h.html#a4f7c83166c9481713d4b56defd0888c7" title=" " alt="" coords="407,56,519,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,163,56"/>
+<area shape="rect" id="Node000002" href="$____osSpDeviceBusy_8c.html#a21a4135251f586467a7805b70ec0b645" title=" " alt="" coords="213,5,357,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,31,199,26,199,31,163,36"/>
+<area shape="rect" id="Node000003" href="$osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570" title=" " alt="" coords="211,55,359,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="163,50,197,54,197,59,163,55"/>
+<area shape="rect" id="Node000004" href="$libultra__internal_8h.html#a4f7c83166c9481713d4b56defd0888c7" title=" " alt="" coords="407,55,519,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="359,65,393,65,393,70,359,70"/>
 </map>

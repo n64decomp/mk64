@@ -7,7 +7,7 @@ var osint_8h =
     [ "__osEnqueueAndYield", "osint_8h.html#afe9c3abc4ca93d9fe18a87d9f108d5cb", null ],
     [ "__osEnqueueThread", "osint_8h.html#ac9d6cfd19de5565e74f1d74a14e9092d", null ],
     [ "__osInsertTimer", "osint_8h.html#ad952d60bddbd10431f0b5856b68d0fe2", null ],
-    [ "__osPopThread", "osint_8h.html#a82b6b8e6a4311b516950168ef4078e33", null ],
+    [ "__osPopThread", "osint_8h.html#aaadded63bebce6cfdda5ecda193fc9ea", null ],
     [ "__osProbeTLB", "osint_8h.html#a4f7c83166c9481713d4b56defd0888c7", null ],
     [ "__osSetTimerIntr", "osint_8h.html#a2e6546384f8d57866a1afe6d5251b06b", null ],
     [ "__osSpDeviceBusy", "osint_8h.html#ae7860f826ed77c96b9a22078399d4528", null ],

@@ -1,9 +1,15 @@
 <map id="ALADPCMWaveInfo" name="ALADPCMWaveInfo">
-<area shape="rect" id="node1" title=" " alt="" coords="187,213,335,240"/>
-<area shape="rect" id="node2" href="$structALADPCMloop.html" title=" " alt="" coords="133,124,247,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,121,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="145,5,248,32"/>
-<area shape="rect" id="node5" href="$structALADPCMBook.html" title=" " alt="" coords="271,124,391,151"/>
-<area shape="rect" id="node6" title=" " alt="" coords="283,5,369,32"/>
-<area shape="rect" id="node7" title=" " alt="" coords="394,5,517,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="183,211,331,236"/>
+<area shape="rect" id="Node000002" href="$structALADPCMloop.html" title=" " alt="" coords="129,123,243,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,157,249,208,245,212,202,160"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,108,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="80,39,142,97,172,120,169,125,139,101,76,43"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="132,5,248,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="192,44,189,123,184,123,186,44"/>
+<area shape="rect" id="Node000005" href="$structALADPCMBook.html" title=" " alt="" coords="267,123,387,148"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="311,160,269,212,264,208,307,157"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="280,5,367,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="327,44,330,123,324,123,322,44"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="391,5,514,31"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="447,45,433,74,412,101,392,115,370,125,368,120,389,110,408,97,428,71,442,43"/>
 </map>

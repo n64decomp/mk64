@@ -1,8 +1,13 @@
 <map id="render_mario_raceway" name="render_mario_raceway">
-<area shape="rect" id="node1" title=" " alt="" coords="5,81,176,108"/>
-<area shape="rect" id="node2" href="$render__courses_8c.html#a9a9119b96bf015cf8b5a168485f67e3f" title=" " alt="" coords="233,5,356,32"/>
-<area shape="rect" id="node3" href="$render__courses_8c.html#aee88ee3e4f8a82e2e6135f10370570a4" title=" " alt="" coords="234,56,355,83"/>
-<area shape="rect" id="node4" href="$render__courses_8c.html#a81294bbba45ac1192a1b2fefc53d3a9f" title=" " alt="" coords="233,107,356,133"/>
-<area shape="rect" id="node5" href="$render__courses_8c.html#a5b7ecc4ef4612910f390c1f7a16dc7e4" title=" " alt="" coords="224,157,365,184"/>
-<area shape="rect" id="node6" href="$collision_8c.html#af3327ccb63774d1f6603c18d70097061" title=" " alt="" coords="413,157,539,184"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,80,176,105"/>
+<area shape="rect" id="Node000002" href="$render__courses_8c.html#a9a9119b96bf015cf8b5a168485f67e3f" title=" " alt="" coords="233,5,356,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,77,223,39,242,33,244,38,225,45,125,82"/>
+<area shape="rect" id="Node000003" href="$render__courses_8c.html#aee88ee3e4f8a82e2e6135f10370570a4" title=" " alt="" coords="234,55,355,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,79,220,74,221,79,177,85"/>
+<area shape="rect" id="Node000004" href="$render__courses_8c.html#a81294bbba45ac1192a1b2fefc53d3a9f" title=" " alt="" coords="233,104,356,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="177,100,220,105,220,111,176,105"/>
+<area shape="rect" id="Node000005" href="$render__courses_8c.html#a5b7ecc4ef4612910f390c1f7a16dc7e4" title=" " alt="" coords="224,153,365,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="128,103,246,146,245,151,126,108"/>
+<area shape="rect" id="Node000006" href="$collision_8c.html#af3327ccb63774d1f6603c18d70097061" title=" " alt="" coords="413,153,539,179"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="366,163,400,163,400,169,366,169"/>
 </map>

@@ -19,16 +19,12 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "code_8003DC40.c", "code__8003DC40_8c.html", "code__8003DC40_8c" ],
     [ "code_8003DC40.h", "code__8003DC40_8h.html", "code__8003DC40_8h" ],
     [ "code_80057C60.c", "code__80057C60_8c.html", "code__80057C60_8c" ],
-    [ "code_80057C60.h", "code__80057C60_8h.html", [
-      [ "struct_D_8018CE10", "structstruct__D__8018CE10.html", "structstruct__D__8018CE10" ]
-    ] ],
+    [ "code_80057C60.h", "code__80057C60_8h.html", "code__80057C60_8h" ],
     [ "code_80057C60_var.c", "code__80057C60__var_8c.html", "code__80057C60__var_8c" ],
     [ "code_8006E9C0.c", "code__8006E9C0_8c.html", "code__8006E9C0_8c" ],
     [ "code_8006E9C0.h", "code__8006E9C0_8h.html", "code__8006E9C0_8h" ],
     [ "code_80071F00.c", "code__80071F00_8c.html", "code__80071F00_8c" ],
-    [ "code_80071F00.h", "code__80071F00_8h.html", [
-      [ "StarSpawn", "structStarSpawn.html", "structStarSpawn" ]
-    ] ],
+    [ "code_80071F00.h", "code__80071F00_8h.html", "code__80071F00_8h" ],
     [ "code_80086E70.c", "code__80086E70_8c.html", "code__80086E70_8c" ],
     [ "code_80086E70.h", "code__80086E70_8h.html", "code__80086E70_8h" ],
     [ "code_8008C1D0.c", "code__8008C1D0_8c.html", "code__8008C1D0_8c" ],
@@ -38,9 +34,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "code_80091750.h", "code__80091750_8h.html", "code__80091750_8h" ],
     [ "code_800AF9B0.c", "code__800AF9B0_8c.html", "code__800AF9B0_8c" ],
     [ "code_800AF9B0.h", "code__800AF9B0_8h.html", "code__800AF9B0_8h" ],
-    [ "common_textures.h", "common__textures_8h.html", [
-      [ "UnkCommonTextureStruct0", "structUnkCommonTextureStruct0.html", "structUnkCommonTextureStruct0" ]
-    ] ],
+    [ "common_textures.h", "common__textures_8h.html", "common__textures_8h" ],
     [ "crash_screen.c", "crash__screen_8c.html", "crash__screen_8c" ],
     [ "crash_screen.h", "crash__screen_8h.html", "crash__screen_8h" ],
     [ "data_segment2.h", "data__segment2_8h.html", "data__segment2_8h" ],

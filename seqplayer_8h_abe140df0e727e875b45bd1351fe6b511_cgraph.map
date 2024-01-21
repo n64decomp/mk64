@@ -1,5 +1,7 @@
 <map id="set_instrument" name="set_instrument">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,125,32"/>
-<area shape="rect" id="node2" href="$seqplayer_8c.html#a871f0f8bdc0a57e8df53235a753f47a6" title=" " alt="" coords="173,5,295,32"/>
-<area shape="rect" id="node3" href="$playback_8c.html#aee54772a4d715b28a06a62e56561a601" title=" " alt="" coords="343,5,504,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,125,31"/>
+<area shape="rect" id="Node000002" href="$seqplayer_8c.html#a871f0f8bdc0a57e8df53235a753f47a6" title=" " alt="" coords="173,5,295,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,15,160,15,160,21,126,21"/>
+<area shape="rect" id="Node000003" href="$playback_8c.html#af209b9fbed576f8935d36ad761fa82d8" title=" " alt="" coords="343,5,504,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="295,15,329,15,329,21,295,21"/>
 </map>

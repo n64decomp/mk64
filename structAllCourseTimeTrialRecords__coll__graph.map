@@ -1,6 +1,9 @@
 <map id="AllCourseTimeTrialRecords" name="AllCourseTimeTrialRecords">
-<area shape="rect" id="node1" title=" " alt="" coords="5,303,201,329"/>
-<area shape="rect" id="node2" href="$structCupTimeTrialRecords.html" title=" " alt="" coords="24,213,183,240"/>
-<area shape="rect" id="node3" href="$structCourseTimeTrialRecords.html" title=" " alt="" coords="14,124,193,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="47,5,160,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,299,201,324"/>
+<area shape="rect" id="Node000002" href="$structCupTimeTrialRecords.html" title=" " alt="" coords="24,211,183,236"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,250,106,298,101,298,101,250"/>
+<area shape="rect" id="Node000003" href="$structCourseTimeTrialRecords.html" title=" " alt="" coords="14,123,193,148"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="106,162,106,210,101,210,101,162"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="47,5,160,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="106,44,106,123,101,123,101,44"/>
 </map>

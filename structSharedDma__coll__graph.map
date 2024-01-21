@@ -1,7 +1,11 @@
 <map id="SharedDma" name="SharedDma">
-<area shape="rect" id="node1" title=" " alt="" coords="173,124,271,151"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="143,5,194,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="257,5,296,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="345,5,422,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="173,123,271,148"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,119,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,41,101,70,130,97,154,110,179,120,177,125,152,115,127,101,97,73,75,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="143,5,221,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="181,44,181,71,187,98,196,110,207,121,203,125,192,114,182,100,175,72,175,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="245,5,284,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="258,44,229,124,224,122,253,43"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="343,5,394,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="365,45,353,74,333,101,304,119,272,129,271,124,302,114,330,97,349,71,360,43"/>
 </map>

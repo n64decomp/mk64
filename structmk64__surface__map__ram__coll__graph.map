@@ -1,6 +1,9 @@
 <map id="mk64_surface_map_ram" name="mk64_surface_map_ram">
-<area shape="rect" id="node1" title=" " alt="" coords="22,197,205,224"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="94,5,133,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="195,5,250,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="43,196,225,221"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,44,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="25,44,24,73,27,106,35,140,52,170,67,184,86,194,83,198,64,188,48,174,31,142,22,107,19,73,19,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="107,5,161,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="137,45,137,196,131,196,131,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="201,5,251,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="230,45,225,106,216,141,199,174,184,188,167,198,165,194,181,184,195,170,211,140,220,106,225,44"/>
 </map>

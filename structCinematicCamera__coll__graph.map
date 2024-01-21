@@ -1,6 +1,9 @@
 <map id="CinematicCamera" name="CinematicCamera">
-<area shape="rect" id="node1" title=" " alt="" coords="99,212,238,239"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="143,5,194,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="218,5,341,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="68,211,207,236"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="36,44,52,112,67,150,87,185,100,198,115,208,112,213,97,202,83,188,62,152,47,113,31,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="81,5,194,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,44,140,211,135,211,135,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="219,5,341,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="277,45,254,114,234,153,207,189,190,203,171,213,168,208,187,198,203,185,229,150,249,112,272,43"/>
 </map>

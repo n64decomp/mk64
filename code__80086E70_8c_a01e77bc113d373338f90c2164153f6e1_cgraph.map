@@ -1,11 +1,19 @@
 <map id="func_8008A830" name="func_8008A830">
-<area shape="rect" id="node1" title=" " alt="" coords="5,97,128,124"/>
-<area shape="rect" id="node2" href="$code__80086E70_8c.html#a6e45fa53e2d0e566e0275afa3bbbc1f9" title=" " alt="" coords="176,97,301,124"/>
-<area shape="rect" id="node3" href="$code__80086E70_8c.html#a8b9297822d5c76ed2210ab884878bc1b" title=" " alt="" coords="368,5,491,32"/>
-<area shape="rect" id="node7" href="$code__80086E70_8c.html#a212c7d92f5bac3eedbd693abaee4f7f2" title="Returns if the object is between the distance_min and distance_max to the camera." alt="" coords="349,57,509,98"/>
-<area shape="rect" id="node8" href="$code__80071F00_8c.html#a9d0d6fe8e02dc86bf4f9f8c8214ee326" title=" " alt="" coords="354,122,505,163"/>
-<area shape="rect" id="node9" href="$code__80071F00_8c.html#a946b33c1ed166b19b04e4528c3641b9a" title=" " alt="" coords="354,187,505,229"/>
-<area shape="rect" id="node4" href="$math__util__2_8c.html#a10e63f3a453c537f806fbb5371bde67c" title=" " alt="" coords="557,5,679,32"/>
-<area shape="rect" id="node5" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="727,5,793,32"/>
-<area shape="rect" id="node6" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="841,5,951,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,95,128,120"/>
+<area shape="rect" id="Node000002" href="$code__80086E70_8c.html#a6e45fa53e2d0e566e0275afa3bbbc1f9" title=" " alt="" coords="176,95,301,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,105,162,105,162,110,128,110"/>
+<area shape="rect" id="Node000003" href="$code__80086E70_8c.html#a8b9297822d5c76ed2210ab884878bc1b" title=" " alt="" coords="368,5,491,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="258,92,298,67,348,41,369,33,371,38,350,46,301,72,260,97"/>
+<area shape="rect" id="Node000007" href="$code__80086E70_8c.html#a212c7d92f5bac3eedbd693abaee4f7f2" title="Returns if the object is between the distance_min and distance_max to the camera." alt="" coords="349,55,509,95"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="301,94,335,88,336,94,302,99"/>
+<area shape="rect" id="Node000008" href="$code__80071F00_8c.html#a9d0d6fe8e02dc86bf4f9f8c8214ee326" title=" " alt="" coords="354,119,505,159"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="302,115,341,122,340,127,301,120"/>
+<area shape="rect" id="Node000009" href="$code__80071F00_8c.html#a946b33c1ed166b19b04e4528c3641b9a" title=" " alt="" coords="354,183,505,223"/>
+<area shape="poly" id="edge8_Node000002_Node000009" title=" " alt="" coords="261,118,351,169,364,175,362,180,348,174,258,122"/>
+<area shape="rect" id="Node000004" href="$math__util__2_8c.html#a10e63f3a453c537f806fbb5371bde67c" title=" " alt="" coords="557,5,679,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="491,15,544,15,544,21,491,21"/>
+<area shape="rect" id="Node000005" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="727,5,793,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="679,15,713,15,713,21,679,21"/>
+<area shape="rect" id="Node000006" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="841,5,951,31"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="794,15,827,15,827,21,794,21"/>
 </map>

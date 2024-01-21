@@ -1,6 +1,9 @@
 <map id="src/crash_screen.h" name="src/crash_screen.h">
-<area shape="rect" id="node1" title=" " alt="" coords="187,5,330,32"/>
-<area shape="rect" id="node2" href="$crash__screen_8c.html" title=" " alt="" coords="5,87,147,114"/>
-<area shape="rect" id="node3" href="$crash__screen__enhancement_8c.html" title=" " alt="" coords="171,80,346,121"/>
-<area shape="rect" id="node4" href="$main_8c.html" title=" " alt="" coords="370,87,459,114"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="187,5,330,31"/>
+<area shape="rect" id="Node000002" href="$crash__screen_8c.html" title=" " alt="" coords="5,86,147,111"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,39,104,88,102,84,218,34"/>
+<area shape="rect" id="Node000003" href="$crash__screen__enhancement_8c.html" title=" " alt="" coords="171,79,346,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="261,44,261,79,256,79,256,44"/>
+<area shape="rect" id="Node000004" href="$main_8c.html" title=" " alt="" coords="370,86,459,111"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="295,34,393,84,391,88,292,39"/>
 </map>

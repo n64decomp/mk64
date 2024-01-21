@@ -1,8 +1,13 @@
 <map id="func_800437F8" name="func_800437F8">
-<area shape="rect" id="node1" title=" " alt="" coords="5,46,127,73"/>
-<area shape="rect" id="node2" href="$math__util__2_8c.html#a22aa509214eeed1ba3197762e76d7bed" title=" " alt="" coords="175,46,296,73"/>
-<area shape="rect" id="node3" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="344,5,513,47"/>
-<area shape="rect" id="node4" href="$math__util__2_8c.html#a54b1e79ca4e8d2f7f7256891f9c4e772" title="arg1 and arg2 are s32&#39;s into floats?!?" alt="" coords="345,71,513,112"/>
-<area shape="rect" id="node5" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="561,53,612,79"/>
-<area shape="rect" id="node6" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="563,103,611,130"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,45,127,70"/>
+<area shape="rect" id="Node000002" href="$math__util__2_8c.html#a22aa509214eeed1ba3197762e76d7bed" title=" " alt="" coords="175,45,296,70"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,55,161,55,161,60,127,60"/>
+<area shape="rect" id="Node000003" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="344,5,513,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="296,45,330,39,331,44,297,50"/>
+<area shape="rect" id="Node000004" href="$math__util__2_8c.html#a54b1e79ca4e8d2f7f7256891f9c4e772" title="arg1 and arg2 are s32&#39;s into floats?!?" alt="" coords="345,69,513,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="297,65,332,71,331,76,296,70"/>
+<area shape="rect" id="Node000005" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="561,51,612,77"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="512,73,547,67,548,73,513,78"/>
+<area shape="rect" id="Node000006" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="563,101,611,126"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="513,99,549,105,548,110,512,105"/>
 </map>

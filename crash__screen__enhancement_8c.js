@@ -8,7 +8,7 @@ var crash__screen__enhancement_8c =
     [ "crash_screen_print_float_reg", "crash__screen__enhancement_8c.html#ad469ea8a8241855db4ad965f34c01616", null ],
     [ "crash_screen_print_fpcsr", "crash__screen__enhancement_8c.html#a678f4cb4c9cd6227a92df070e05ab23b", null ],
     [ "crash_screen_sleep", "crash__screen__enhancement_8c.html#aaf2a43c38936ec949754ef38505c3d39", null ],
-    [ "write_to_buf", "crash__screen__enhancement_8c.html#aa3de68050db22d8f263afce49332c445", null ],
+    [ "write_to_buf", "crash__screen__enhancement_8c.html#a731c8ca71f9c17edf1f694ef5f432a10", null ],
     [ "crashScreenFont2", "crash__screen__enhancement_8c.html#a4fff883477bf4d899d2521757ab57c14", null ],
     [ "gCauseDesc", "crash__screen__enhancement_8c.html#a2ad22896ced78c6e1f61b251dedd729f", null ],
     [ "gCrashScreenCharToGlyph", "crash__screen__enhancement_8c.html#a5ad3e8ebf9de6f3c33a388ff10da7947", null ],

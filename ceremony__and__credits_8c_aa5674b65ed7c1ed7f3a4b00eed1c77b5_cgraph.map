@@ -1,7 +1,11 @@
 <map id="func_80282E58" name="func_80282E58">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,127,57"/>
-<area shape="rect" id="node2" href="$ceremony__and__credits_8c.html#a1d267875e7f1f73c656b8170663a690c" title=" " alt="" coords="207,5,330,32"/>
-<area shape="rect" id="node4" href="$ceremony__and__credits_8c.html#af65dda3bde550db84829813b6ce6d41f" title=" " alt="" coords="175,56,363,83"/>
-<area shape="rect" id="node3" href="$ceremony__and__credits_8c.html#a2a6075e13264bc880b886b8f17edf96f" title=" " alt="" coords="411,5,533,32"/>
-<area shape="rect" id="node5" href="$ceremony__and__credits_8c.html#a91bb0c91f83f609dc208775a0446f2b8" title=" " alt="" coords="411,56,533,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,127,56"/>
+<area shape="rect" id="Node000002" href="$ceremony__and__credits_8c.html#a1d267875e7f1f73c656b8170663a690c" title=" " alt="" coords="207,5,330,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,33,193,25,194,30,127,38"/>
+<area shape="rect" id="Node000004" href="$ceremony__and__credits_8c.html#af65dda3bde550db84829813b6ce6d41f" title=" " alt="" coords="175,55,363,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="127,48,161,52,161,57,126,53"/>
+<area shape="rect" id="Node000003" href="$ceremony__and__credits_8c.html#a2a6075e13264bc880b886b8f17edf96f" title=" " alt="" coords="411,5,533,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="330,15,397,15,397,21,330,21"/>
+<area shape="rect" id="Node000005" href="$ceremony__and__credits_8c.html#a91bb0c91f83f609dc208775a0446f2b8" title=" " alt="" coords="411,55,533,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="363,65,398,65,398,70,363,70"/>
 </map>

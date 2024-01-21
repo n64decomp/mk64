@@ -1,9 +1,15 @@
 <map id="func_80004A1C" name="func_80004A1C">
-<area shape="rect" id="node1" title=" " alt="" coords="5,56,128,83"/>
-<area shape="rect" id="node2" href="$code__80004740_8c.html#af54096619f890ac80e64e68e06177ebd" title=" " alt="" coords="201,5,323,32"/>
-<area shape="rect" id="node4" href="$code__80004740_8c.html#aeb97315dd56d597266cd896be4613533" title=" " alt="" coords="176,56,348,83"/>
-<area shape="rect" id="node7" href="$memory_8c.html#ad31a98de0c0dbd4cb4092d70a71d0d38" title="converts an RSP segment + offset address to a normal memory address" alt="" coords="180,107,344,133"/>
-<area shape="rect" id="node3" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="396,5,483,32"/>
-<area shape="rect" id="node5" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="414,56,465,83"/>
-<area shape="rect" id="node6" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="415,107,463,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,55,128,80"/>
+<area shape="rect" id="Node000002" href="$code__80004740_8c.html#af54096619f890ac80e64e68e06177ebd" title=" " alt="" coords="201,5,323,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,52,197,32,198,37,118,57"/>
+<area shape="rect" id="Node000004" href="$code__80004740_8c.html#aeb97315dd56d597266cd896be4613533" title=" " alt="" coords="176,55,348,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="128,65,162,65,162,70,128,70"/>
+<area shape="rect" id="Node000007" href="$memory_8c.html#a78aef9786c00b1e9cfb9665ebdb2c694" title="converts an RSP segment + offset address to a normal memory address" alt="" coords="180,104,344,129"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="118,77,198,98,197,103,117,83"/>
+<area shape="rect" id="Node000003" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="396,5,483,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="323,15,382,15,382,21,323,21"/>
+<area shape="rect" id="Node000005" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="414,55,465,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="348,65,400,65,400,70,348,70"/>
+<area shape="rect" id="Node000006" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="415,104,463,129"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="309,77,403,104,401,109,308,83"/>
 </map>

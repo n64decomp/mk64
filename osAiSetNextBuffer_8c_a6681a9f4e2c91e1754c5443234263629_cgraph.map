@@ -1,6 +1,9 @@
 <map id="osAiSetNextBuffer" name="osAiSetNextBuffer">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,147,57"/>
-<area shape="rect" id="node2" href="$____osAiDeviceBusy_8c.html#aa9e8840bd3019cfee79abcb10f96ae55" title=" " alt="" coords="198,5,339,32"/>
-<area shape="rect" id="node3" href="$osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570" title=" " alt="" coords="195,56,343,83"/>
-<area shape="rect" id="node4" href="$libultra__internal_8h.html#a4f7c83166c9481713d4b56defd0888c7" title=" " alt="" coords="391,56,503,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,147,56"/>
+<area shape="rect" id="Node000002" href="$____osAiDeviceBusy_8c.html#aa9e8840bd3019cfee79abcb10f96ae55" title=" " alt="" coords="198,5,339,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,31,184,26,185,32,147,37"/>
+<area shape="rect" id="Node000003" href="$osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570" title=" " alt="" coords="195,55,343,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="147,49,182,54,181,59,147,55"/>
+<area shape="rect" id="Node000004" href="$libultra__internal_8h.html#a4f7c83166c9481713d4b56defd0888c7" title=" " alt="" coords="391,55,503,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="343,65,377,65,377,70,343,70"/>
 </map>

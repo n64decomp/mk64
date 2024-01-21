@@ -1,6 +1,9 @@
 <map id="render_frappe_snowland" name="render_frappe_snowland">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,188,57"/>
-<area shape="rect" id="node2" href="$render__courses_8c.html#a9a9119b96bf015cf8b5a168485f67e3f" title=" " alt="" coords="245,5,368,32"/>
-<area shape="rect" id="node3" href="$render__courses_8c.html#a5b7ecc4ef4612910f390c1f7a16dc7e4" title=" " alt="" coords="236,56,377,83"/>
-<area shape="rect" id="node4" href="$collision_8c.html#af3327ccb63774d1f6603c18d70097061" title=" " alt="" coords="425,56,551,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,188,56"/>
+<area shape="rect" id="Node000002" href="$render__courses_8c.html#a9a9119b96bf015cf8b5a168485f67e3f" title=" " alt="" coords="245,5,368,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,30,231,24,232,30,189,35"/>
+<area shape="rect" id="Node000003" href="$render__courses_8c.html#a5b7ecc4ef4612910f390c1f7a16dc7e4" title=" " alt="" coords="236,55,377,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="189,51,223,55,222,60,188,56"/>
+<area shape="rect" id="Node000004" href="$collision_8c.html#af3327ccb63774d1f6603c18d70097061" title=" " alt="" coords="425,55,551,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="378,65,412,65,412,70,378,70"/>
 </map>

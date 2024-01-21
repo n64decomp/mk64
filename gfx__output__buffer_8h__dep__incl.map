@@ -1,6 +1,9 @@
 <map id="src/data/gfx_output_buffer.h" name="src/data/gfx_output_buffer.h">
-<area shape="rect" id="node1" title=" " alt="" coords="153,5,301,47"/>
-<area shape="rect" id="node2" href="$load_8c.html" title=" " alt="" coords="5,102,129,129"/>
-<area shape="rect" id="node3" href="$gfx__output__buffer_8c.html" title=" " alt="" coords="153,95,301,136"/>
-<area shape="rect" id="node4" href="$main_8c.html" title=" " alt="" coords="325,102,415,129"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="153,5,301,45"/>
+<area shape="rect" id="Node000002" href="$load_8c.html" title=" " alt="" coords="5,101,129,126"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,54,90,103,87,98,179,49"/>
+<area shape="rect" id="Node000003" href="$gfx__output__buffer_8c.html" title=" " alt="" coords="153,93,301,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="230,59,230,93,225,93,225,59"/>
+<area shape="rect" id="Node000004" href="$main_8c.html" title=" " alt="" coords="325,101,415,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="271,50,352,98,350,103,269,55"/>
 </map>

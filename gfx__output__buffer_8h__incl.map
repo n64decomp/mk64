@@ -1,5 +1,8 @@
 <map id="src/data/gfx_output_buffer.h" name="src/data/gfx_output_buffer.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,153,47"/>
-<area shape="rect" id="node2" href="$ultratypes_8h.html" title=" " alt="" coords="19,95,140,121"/>
-<area shape="rect" id="node3" href="$stddef_8h.html" title=" " alt="" coords="42,169,117,196"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,153,45"/>
+<area shape="rect" id="Node000002" href="$ultratypes_8h.html" title=" " alt="" coords="19,93,140,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,46,82,79,77,79,77,46"/>
+<area shape="rect" id="Node000003" href="$stddef_8h.html" title=" " alt="" coords="42,167,117,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="75,119,73,153,68,153,70,119"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="84,166,85,132,91,133,89,167"/>
 </map>

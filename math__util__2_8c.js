@@ -67,10 +67,10 @@ var math__util__2_8c =
     [ "u16_step_down_towards", "math__util__2_8c.html#a1c0c67231cf4fe9230d20d951708f008", null ],
     [ "u16_step_up_towards", "math__util__2_8c.html#a37da8b4baad8a893b5110622ecbeadfe", null ],
     [ "vec3f_copy", "math__util__2_8c.html#aee48c2a1f73130cf3ecdf18203828664", null ],
-    [ "vec3f_cross_product", "math__util__2_8c.html#a510a123c00b58f48f37217320c9ba5a1", null ],
-    [ "vec3f_normalize", "math__util__2_8c.html#a6ebf837ab85f700648e0492994affc27", null ],
+    [ "vec3f_cross_product", "math__util__2_8c.html#ab05a6d20123383498f07f82db7b6fb8d", null ],
+    [ "vec3f_normalize", "math__util__2_8c.html#ad692d06c2c62cfc4e1b91e03cc0acf00", null ],
     [ "vec3f_rotate", "math__util__2_8c.html#a5dc5196d61a43564b753fb6e5ba185d9", null ],
     [ "vec3f_rotate_x_y", "math__util__2_8c.html#a6f90d4d34932da48fa6a3aaa5fa67ab7", null ],
-    [ "vec3f_set_xyz", "math__util__2_8c.html#ab2e1476090270a930c087f0ea946dda2", null ],
+    [ "vec3f_set_xyz", "math__util__2_8c.html#a03ebc759ba50db479384b0ad89225f1e", null ],
     [ "D_801658FE", "math__util__2_8c.html#a47e5acad2eda5e173dd8b550aab8f87a", null ]
 ];

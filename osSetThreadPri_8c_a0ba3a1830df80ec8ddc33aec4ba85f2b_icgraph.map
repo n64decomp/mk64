@@ -1,7 +1,13 @@
 <map id="osSetThreadPri" name="osSetThreadPri">
-<area shape="rect" id="node1" title=" " alt="" coords="493,56,613,83"/>
-<area shape="rect" id="node2" href="$osCreatePiManager_8c.html#a75139a417f68f985cd7bb9a2ca166f98" title=" " alt="" coords="295,5,445,32"/>
-<area shape="rect" id="node3" href="$main_8c.html#a1e35d2b842121e6aea373f09381616e5" title=" " alt="" coords="144,56,247,83"/>
-<area shape="rect" id="node5" href="$osCreateViManager_8c.html#a0b32162ed7cfeee6f51f2187052268e2" title=" " alt="" coords="295,107,445,133"/>
-<area shape="rect" id="node4" href="$main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" title=" " alt="" coords="5,56,96,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="493,56,613,81"/>
+<area shape="rect" id="Node000002" href="$osCreatePiManager_8c.html#a75139a417f68f985cd7bb9a2ca166f98" title=" " alt="" coords="295,5,445,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="493,55,416,33,418,28,494,50"/>
+<area shape="rect" id="Node000003" href="$main_8c.html#a1e35d2b842121e6aea373f09381616e5" title=" " alt="" coords="144,56,247,81"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="480,71,247,71,247,66,480,66"/>
+<area shape="rect" id="Node000005" href="$osCreateViManager_8c.html#a0b32162ed7cfeee6f51f2187052268e2" title=" " alt="" coords="295,107,445,132"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="494,88,418,109,416,104,493,83"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="313,37,241,58,239,53,311,32"/>
+<area shape="rect" id="Node000004" href="$main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" title=" " alt="" coords="5,56,96,81"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="131,71,96,71,96,66,131,66"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="311,105,239,84,241,79,313,100"/>
 </map>

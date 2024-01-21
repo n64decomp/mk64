@@ -1,10 +1,18 @@
 <map id="balloon_update" name="balloon_update">
-<area shape="rect" id="node1" title=" " alt="" coords="5,173,128,199"/>
-<area shape="rect" id="node2" href="$code__80057C60_8c.html#a756339e9120a7a20e2e8cdfaec8227e7" title=" " alt="" coords="176,122,295,149"/>
-<area shape="rect" id="node8" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="561,223,609,250"/>
-<area shape="rect" id="node3" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="343,5,512,47"/>
-<area shape="rect" id="node4" href="$hud__renderer_8c.html#a3412bd1100bae2a7228c53d260c4c5c5" title=" " alt="" coords="366,71,489,98"/>
-<area shape="rect" id="node5" href="$render__player_8c.html#af0b657a736763c8b33412ed9d3111a61" title=" " alt="" coords="376,122,479,149"/>
-<area shape="rect" id="node6" href="$render__player_8c.html#a565e21fd6aa0dacea58fb8a0e4304772" title=" " alt="" coords="345,173,509,199"/>
-<area shape="rect" id="node7" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="560,173,611,199"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,170,128,195"/>
+<area shape="rect" id="Node000002" href="$code__80057C60_8c.html#a756339e9120a7a20e2e8cdfaec8227e7" title=" " alt="" coords="176,119,295,145"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,167,178,146,180,151,111,172"/>
+<area shape="rect" id="Node000008" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="561,218,609,243"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="128,186,548,225,547,230,128,191"/>
+<area shape="rect" id="Node000003" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="343,5,512,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="250,117,290,87,341,55,355,48,357,53,344,60,293,91,254,121"/>
+<area shape="rect" id="Node000004" href="$hud__renderer_8c.html#a3412bd1100bae2a7228c53d260c4c5c5" title=" " alt="" coords="366,70,489,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="285,117,363,96,364,101,286,122"/>
+<area shape="rect" id="Node000005" href="$render__player_8c.html#af0b657a736763c8b33412ed9d3111a61" title=" " alt="" coords="376,119,479,145"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="295,129,362,129,362,135,295,135"/>
+<area shape="rect" id="Node000006" href="$render__player_8c.html#a565e21fd6aa0dacea58fb8a0e4304772" title=" " alt="" coords="345,169,509,194"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="286,142,364,163,363,168,285,147"/>
+<area shape="rect" id="Node000007" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="560,169,611,194"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="510,179,546,179,546,184,510,184"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="469,191,549,217,547,222,468,197"/>
 </map>

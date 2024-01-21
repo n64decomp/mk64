@@ -1,10 +1,21 @@
 <map id="osJamMesg" name="osJamMesg">
-<area shape="rect" id="node1" title=" " alt="" coords="5,132,103,159"/>
-<area shape="rect" id="node2" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="335,5,453,32"/>
-<area shape="rect" id="node3" href="$libultra__internal_8h.html#afe9c3abc4ca93d9fe18a87d9f108d5cb" title=" " alt="" coords="312,56,476,83"/>
-<area shape="rect" id="node4" href="$libultra__internal_8h.html#a82b6b8e6a4311b516950168ef4078e33" title=" " alt="" coords="334,208,454,235"/>
-<area shape="rect" id="node5" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="335,259,453,285"/>
-<area shape="rect" id="node6" href="$osStartThread_8c.html#a3b144e814933e16a2fbf2642ad098ed3" title=" " alt="" coords="151,132,264,159"/>
-<area shape="rect" id="node7" href="$libultra__internal_8h.html#a650b788ebd5efde9c8cbccc1ee832445" title=" " alt="" coords="317,107,471,133"/>
-<area shape="rect" id="node8" href="$libultra__internal_8h.html#ac9d6cfd19de5565e74f1d74a14e9092d" title=" " alt="" coords="318,157,470,184"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,113,103,139"/>
+<area shape="rect" id="Node000002" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="335,5,453,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,111,108,91,150,72,238,44,321,27,322,32,239,50,152,76,111,95,76,115"/>
+<area shape="rect" id="Node000003" href="$libultra__internal_8h.html#afe9c3abc4ca93d9fe18a87d9f108d5cb" title=" " alt="" coords="312,55,476,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="98,111,150,98,298,75,298,80,151,103,99,116"/>
+<area shape="rect" id="Node000004" href="$libultra__internal_8h.html#aaadded63bebce6cfdda5ecda193fc9ea" title=" " alt="" coords="334,203,454,228"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="104,136,332,197,331,202,102,141"/>
+<area shape="rect" id="Node000005" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="335,252,453,277"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="75,136,110,159,152,182,231,214,313,238,336,245,335,251,311,243,229,219,150,187,107,164,72,141"/>
+<area shape="rect" id="Node000006" href="$osStartThread_8c.html#a3b144e814933e16a2fbf2642ad098ed3" title=" " alt="" coords="151,113,264,139"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="103,123,137,123,137,129,103,129"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="219,111,258,76,311,40,325,33,328,38,313,44,261,80,223,115"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="245,111,311,89,335,81,337,87,313,94,247,116"/>
+<area shape="poly" id="edge10_Node000006_Node000004" title=" " alt="" coords="230,137,313,188,333,196,331,201,311,192,227,141"/>
+<area shape="poly" id="edge11_Node000006_Node000005" title=" " alt="" coords="219,137,256,187,283,215,313,238,324,244,322,249,311,243,279,218,252,190,215,140"/>
+<area shape="rect" id="Node000007" href="$libultra__internal_8h.html#a650b788ebd5efde9c8cbccc1ee832445" title=" " alt="" coords="317,104,471,129"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="264,121,304,119,304,124,265,126"/>
+<area shape="rect" id="Node000008" href="$libultra__internal_8h.html#ac9d6cfd19de5565e74f1d74a14e9092d" title=" " alt="" coords="318,153,470,179"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="265,136,321,148,320,153,264,141"/>
 </map>

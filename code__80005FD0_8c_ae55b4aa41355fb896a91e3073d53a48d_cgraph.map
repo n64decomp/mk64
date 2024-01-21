@@ -1,8 +1,13 @@
 <map id="func_800120C8" name="func_800120C8">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,128,57"/>
-<area shape="rect" id="node2" href="$code__80005FD0_8c.html#a44ea4a37a75c21ba00822cc689a15e00" title=" " alt="" coords="176,5,299,32"/>
-<area shape="rect" id="node4" href="$collision_8c.html#a9a1bda13e8f2cefd24b255d6ff15252f" title=" " alt="" coords="176,56,299,83"/>
-<area shape="rect" id="node3" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="383,5,435,32"/>
-<area shape="rect" id="node5" href="$collision_8c.html#a226294470ac12b9ca399e3f071990ac1" title=" " alt="" coords="347,56,471,83"/>
-<area shape="rect" id="node6" href="$collision_8c.html#afa1243eb9b3a14bc92434a8a19c162be" title=" " alt="" coords="347,107,470,133"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,128,56"/>
+<area shape="rect" id="Node000002" href="$code__80005FD0_8c.html#a44ea4a37a75c21ba00822cc689a15e00" title=" " alt="" coords="176,5,299,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,32,162,26,163,32,129,37"/>
+<area shape="rect" id="Node000004" href="$collision_8c.html#a9a1bda13e8f2cefd24b255d6ff15252f" title=" " alt="" coords="176,55,299,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="129,49,163,54,162,59,128,55"/>
+<area shape="rect" id="Node000003" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="383,5,435,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="299,15,369,15,369,21,299,21"/>
+<area shape="rect" id="Node000005" href="$collision_8c.html#a226294470ac12b9ca399e3f071990ac1" title=" " alt="" coords="347,55,471,80"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="299,65,333,65,333,70,299,70"/>
+<area shape="rect" id="Node000006" href="$collision_8c.html#afa1243eb9b3a14bc92434a8a19c162be" title=" " alt="" coords="347,104,470,129"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="283,77,351,97,349,102,281,83"/>
 </map>

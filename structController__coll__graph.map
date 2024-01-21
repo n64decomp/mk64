@@ -1,5 +1,7 @@
 <map id="Controller" name="Controller">
-<area shape="rect" id="node1" title=" " alt="" coords="101,168,187,195"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,128,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="152,5,291,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="101,167,187,192"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,128,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,42,125,141,139,165,134,168,120,144,74,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="152,5,291,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="223,45,215,93,207,119,194,144,182,158,167,169,164,164,178,154,190,141,202,117,210,92,218,44"/>
 </map>

@@ -1,9 +1,17 @@
 <map id="ReverbInfo" name="ReverbInfo">
-<area shape="rect" id="node1" title=" " alt="" coords="177,405,271,432"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,301,56,328"/>
-<area shape="rect" id="node3" title=" " alt="" coords="223,5,273,32"/>
-<area shape="rect" id="node6" href="$unionReverbBits.html" title=" " alt="" coords="177,301,271,328"/>
-<area shape="rect" id="node7" href="$structReverbBitsData.html" title=" " alt="" coords="322,183,446,209"/>
-<area shape="rect" id="node4" title=" " alt="" coords="295,301,417,328"/>
-<area shape="rect" id="node5" title=" " alt="" coords="442,301,481,328"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="185,401,278,427"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="108,5,158,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,42,73,85,34,142,19,175,10,208,9,241,18,274,32,298,51,320,96,356,146,382,191,399,189,404,144,387,94,360,47,324,28,301,13,276,4,242,5,207,14,173,29,140,69,81,108,39"/>
+<area shape="rect" id="Node000003" href="$unionReverbBits.html" title=" " alt="" coords="86,299,180,324"/>
+<area shape="poly" id="edge5_Node000003_Node000002" title=" " alt="" coords="136,44,136,298,130,298,130,44"/>
+<area shape="rect" id="Node000004" href="$structReverbBitsData.html" title=" " alt="" coords="207,181,331,207"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="152,40,262,179,258,183,148,43"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="139,337,145,357,156,376,173,389,192,399,189,404,170,394,152,379,140,359,134,338"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="247,217,148,301,145,297,243,213"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="206,299,257,324"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="234,338,234,401,229,401,229,338"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="308,299,347,324"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="323,338,314,359,300,379,283,393,264,404,262,399,280,389,296,376,309,357,318,336"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="372,299,494,324"/>
+<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="420,337,400,359,374,380,327,400,279,410,278,405,325,395,372,375,396,356,416,333"/>
 </map>

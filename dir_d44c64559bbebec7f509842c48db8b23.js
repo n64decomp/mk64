@@ -6,12 +6,8 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "bomb_kart.h", "bomb__kart_8h.html", "bomb__kart_8h" ],
     [ "common_structs.h", "common__structs_8h.html", "common__structs_8h" ],
     [ "config.h", "config_8h.html", "config_8h" ],
-    [ "course.h", "course_8h.html", [
-      [ "TrackSections", "structTrackSections.html", "structTrackSections" ]
-    ] ],
-    [ "course_offsets.h", "course__offsets_8h.html", [
-      [ "course_texture", "structcourse__texture.html", "structcourse__texture" ]
-    ] ],
+    [ "course.h", "course_8h.html", "course_8h" ],
+    [ "course_offsets.h", "course__offsets_8h.html", "course__offsets_8h" ],
     [ "debug.h", "debug_8h.html", "debug_8h" ],
     [ "defines.h", "defines_8h.html", "defines_8h" ],
     [ "functions.h", "functions_8h.html", "functions_8h" ],

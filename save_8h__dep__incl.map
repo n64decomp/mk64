@@ -1,11 +1,19 @@
 <map id="src/save.h" name="src/save.h">
-<area shape="rect" id="node1" title=" " alt="" coords="502,5,590,32"/>
-<area shape="rect" id="node2" href="$code__8006E9C0_8c.html" title=" " alt="" coords="5,80,164,107"/>
-<area shape="rect" id="node3" href="$code__80091750_8c.html" title=" " alt="" coords="188,80,347,107"/>
-<area shape="rect" id="node4" href="$all__variables_8h.html" title=" " alt="" coords="371,80,555,107"/>
-<area shape="rect" id="node7" href="$menus_8c.html" title=" " alt="" coords="580,80,680,107"/>
-<area shape="rect" id="node8" href="$save_8c.html" title=" " alt="" coords="704,80,791,107"/>
-<area shape="rect" id="node9" href="$staff__ghosts_8c.html" title=" " alt="" coords="815,80,949,107"/>
-<area shape="rect" id="node5" href="$debug_8inc_8c.html" title=" " alt="" coords="382,155,545,181"/>
-<area shape="rect" id="node6" href="$debug_8c.html" title=" " alt="" coords="393,229,533,256"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="502,5,590,31"/>
+<area shape="rect" id="Node000002" href="$code__8006E9C0_8c.html" title=" " alt="" coords="5,79,164,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="489,31,159,81,159,76,488,25"/>
+<area shape="rect" id="Node000003" href="$code__80091750_8c.html" title=" " alt="" coords="188,79,347,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="489,36,313,81,312,76,488,31"/>
+<area shape="rect" id="Node000004" href="$all__variables_8h.html" title=" " alt="" coords="371,79,555,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="524,42,479,80,475,76,521,38"/>
+<area shape="rect" id="Node000007" href="$menus_8c.html" title=" " alt="" coords="580,79,680,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="572,38,618,76,615,80,568,42"/>
+<area shape="rect" id="Node000008" href="$save_8c.html" title=" " alt="" coords="704,79,791,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="592,33,715,76,714,81,591,38"/>
+<area shape="rect" id="Node000009" href="$staff__ghosts_8c.html" title=" " alt="" coords="815,79,949,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="604,29,828,76,827,81,603,34"/>
+<area shape="rect" id="Node000005" href="$debug_8inc_8c.html" title=" " alt="" coords="382,152,545,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="466,118,466,152,461,152,461,118"/>
+<area shape="rect" id="Node000006" href="$debug_8c.html" title=" " alt="" coords="393,225,533,251"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="466,191,466,225,461,225,461,191"/>
 </map>

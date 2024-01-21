@@ -11,7 +11,7 @@ var podium__ceremony__actors_8h =
       [ "FireworkBurst", "podium__ceremony__actors_8h.html#a06ad3f803827afd107e7682c8c22d990acd6298014fbb57273242cd3aeefed514", null ]
     ] ],
     [ "balloons_and_fireworks_init", "podium__ceremony__actors_8h.html#a627072a12cb9f239d1e7b629161b4b45", null ],
-    [ "find_available_entry", "podium__ceremony__actors_8h.html#a50de4a94676053c94f4206e9ba364b53", null ],
+    [ "find_available_entry", "podium__ceremony__actors_8h.html#a7af822e673ca2eb51ebe9d4a10d6d86b", null ],
     [ "firework_cone_update_and_spawn_burst", "podium__ceremony__actors_8h.html#a17908c2fe92c53a74bfb0cb156e3cfa6", null ],
     [ "func_80280650", "podium__ceremony__actors_8h.html#af0064673e49f1ecc7ff7886bc92e0745", null ],
     [ "func_80280884", "podium__ceremony__actors_8h.html#abe5e7d6664a9f39449fbf6848898baa1", null ],
@@ -24,7 +24,7 @@ var podium__ceremony__actors_8h =
     [ "func_80281530", "podium__ceremony__actors_8h.html#aa7db12bbf2b4620e89db609cd18c273a", null ],
     [ "func_80281538", "podium__ceremony__actors_8h.html#a190709fdb2bba052cf7b638e54adb79c", null ],
     [ "func_80281540", "podium__ceremony__actors_8h.html#a4cf29946cafbb5ecec991aad64b2c8a0", null ],
-    [ "new_actor", "podium__ceremony__actors_8h.html#a7ffe637e3fd15e6b6f358a294fe3fc98", null ],
+    [ "new_actor", "podium__ceremony__actors_8h.html#a186674a03da1d9fce04a3211d6f4ec4d", null ],
     [ "podium_ceremony_loop", "podium__ceremony__actors_8h.html#a7ea229c65f264670fc828b95e8321154", null ],
     [ "random_float_between_0_and_1", "podium__ceremony__actors_8h.html#a75ee72f9d8cc3f7bbb219fdeb11a3916", null ],
     [ "random_u16_credits", "podium__ceremony__actors_8h.html#a1ac704186b642f21eef90523a8545c17", null ],

@@ -1,5 +1,8 @@
 <map id="include/kart_attributes.h" name="include/kart_attributes.h">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,185,32"/>
-<area shape="rect" id="node2" href="$ultratypes_8h.html" title=" " alt="" coords="35,80,156,107"/>
-<area shape="rect" id="node3" href="$stddef_8h.html" title=" " alt="" coords="58,155,133,181"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,185,31"/>
+<area shape="rect" id="Node000002" href="$ultratypes_8h.html" title=" " alt="" coords="35,79,156,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,31,98,65,93,65,93,31"/>
+<area shape="rect" id="Node000003" href="$stddef_8h.html" title=" " alt="" coords="58,152,133,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="91,104,89,139,84,138,86,104"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="100,152,101,118,107,118,105,152"/>
 </map>

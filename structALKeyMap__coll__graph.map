@@ -1,5 +1,7 @@
 <map id="ALKeyMap" name="ALKeyMap">
-<area shape="rect" id="node1" title=" " alt="" coords="81,153,171,180"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="143,5,240,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="81,152,171,177"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,119,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="64,44,68,85,74,106,83,127,94,139,107,150,103,154,90,143,78,129,69,108,63,86,59,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="143,5,240,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="191,45,182,86,164,129,143,153,139,150,160,127,177,84,186,44"/>
 </map>

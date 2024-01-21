@@ -1,5 +1,7 @@
 <map id="TrainCarStuff" name="TrainCarStuff">
-<area shape="rect" id="node1" title=" " alt="" coords="22,153,127,180"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="99,5,138,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="41,152,147,177"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,44,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="21,45,17,85,20,107,28,127,41,140,57,150,54,154,37,144,24,129,15,108,12,86,15,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="139,5,190,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="165,45,156,86,138,129,114,154,110,150,133,127,151,84,160,43"/>
 </map>

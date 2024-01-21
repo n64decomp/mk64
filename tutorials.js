@@ -1,12 +1,12 @@
 var tutorials =
 [
     [ "Boost Ramps", "boostramps.html", [
-      [ "Boost Ramps", "boostramps.html#autotoc_md47", null ]
+      [ "Boost Ramps", "boostramps.html#boost-ramps", null ]
     ] ],
     [ "Paths", "paths.html", [
-      [ "Course Paths", "paths.html#autotoc_md48", null ],
-      [ "Horizontal Paths (no Y coordinate)", "paths.html#autotoc_md49", null ],
-      [ "Camera Rails", "paths.html#autotoc_md50", null ]
+      [ "Course Paths", "paths.html#course-paths", null ],
+      [ "Horizontal Paths (no Y coordinate)", "paths.html#horizontal-paths-no-y-coordinate", null ],
+      [ "Camera Rails", "paths.html#camera-rails", null ]
     ] ],
     [ "Audio", "tutorialaudio.html", null ]
 ];

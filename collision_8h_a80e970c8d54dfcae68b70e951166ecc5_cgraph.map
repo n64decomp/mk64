@@ -1,5 +1,7 @@
 <map id="func_802AE1C0" name="func_802AE1C0">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,128,57"/>
-<area shape="rect" id="node2" href="$collision_8c.html#a226294470ac12b9ca399e3f071990ac1" title=" " alt="" coords="176,5,300,32"/>
-<area shape="rect" id="node3" href="$collision_8c.html#afa1243eb9b3a14bc92434a8a19c162be" title=" " alt="" coords="177,56,299,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,128,56"/>
+<area shape="rect" id="Node000002" href="$collision_8c.html#a226294470ac12b9ca399e3f071990ac1" title=" " alt="" coords="176,5,300,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,32,162,27,162,32,129,37"/>
+<area shape="rect" id="Node000003" href="$collision_8c.html#afa1243eb9b3a14bc92434a8a19c162be" title=" " alt="" coords="177,55,299,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="129,49,163,54,162,59,128,55"/>
 </map>

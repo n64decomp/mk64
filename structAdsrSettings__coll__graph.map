@@ -1,6 +1,9 @@
 <map id="AdsrSettings" name="AdsrSettings">
-<area shape="rect" id="node1" title=" " alt="" coords="71,213,175,240"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,109,119,136"/>
-<area shape="rect" id="node3" href="$structAdsrEnvelope.html" title=" " alt="" coords="143,109,253,136"/>
-<area shape="rect" id="node4" title=" " alt="" coords="137,5,259,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="71,211,175,236"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,108,119,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,146,68,166,76,185,88,198,102,208,99,213,84,202,72,188,63,168,60,147"/>
+<area shape="rect" id="Node000003" href="$structAdsrEnvelope.html" title=" " alt="" coords="143,108,253,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,147,159,188,138,212,134,208,155,185,182,144"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="137,5,259,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="201,45,201,108,195,108,195,45"/>
 </map>

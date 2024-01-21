@@ -1,7 +1,12 @@
 <map id="KiwanoFruit" name="KiwanoFruit">
-<area shape="rect" id="node1" title=" " alt="" coords="136,392,235,419"/>
-<area shape="rect" id="node2" href="$structCollision.html" title=" " alt="" coords="146,184,225,211"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node4" title=" " alt="" coords="131,5,269,32"/>
-<area shape="rect" id="node5" title=" " alt="" coords="249,184,372,211"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="127,391,225,416"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,183,128,209"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="63,223,58,254,56,292,62,331,78,365,100,383,127,394,125,399,97,388,74,368,57,332,51,292,52,254,58,222"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="173,5,224,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,45,191,167,179,390,174,390,185,167,194,44"/>
+<area shape="rect" id="Node000004" href="$structCollision.html" title=" " alt="" coords="314,183,393,209"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="203,44,212,93,223,118,238,141,251,151,264,156,296,164,331,181,329,186,294,169,262,161,248,156,234,144,218,121,207,94,197,45"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="336,221,188,392,184,389,332,217"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="299,5,437,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="369,44,357,183,352,183,363,44"/>
 </map>

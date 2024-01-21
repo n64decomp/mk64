@@ -1,7 +1,14 @@
 <map id="PersistentPool" name="PersistentPool">
-<area shape="rect" id="node1" title=" " alt="" coords="189,213,303,240"/>
-<area shape="rect" id="node2" href="$structSoundAllocPool.html" title=" " alt="" coords="185,124,307,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,119,32"/>
-<area shape="rect" id="node5" href="$structSeqOrBankEntry.html" title=" " alt="" coords="33,124,161,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="227,5,265,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="112,211,227,236"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="27,5,66,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="33,44,21,67,11,94,9,121,17,147,36,169,60,186,86,199,113,208,111,213,84,204,57,190,32,173,12,149,3,122,6,92,16,65,29,41"/>
+<area shape="rect" id="Node000003" href="$structSoundAllocPool.html" title=" " alt="" coords="257,123,380,148"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="80,30,115,53,124,65,128,77,131,87,140,96,184,109,258,122,257,127,183,114,137,101,127,90,123,78,119,67,111,57,77,34"/>
+<area shape="rect" id="Node000005" href="$structSeqOrBankEntry.html" title=" " alt="" coords="105,123,233,148"/>
+<area shape="poly" id="edge7_Node000005_Node000002" title=" " alt="" coords="43,44,41,72,44,85,50,97,71,110,106,120,105,125,69,115,46,100,39,87,36,72,37,44"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="288,157,191,213,188,208,285,153"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="283,5,397,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="345,44,344,71,340,99,329,123,324,121,335,98,339,71,339,44"/>
+<area shape="poly" id="edge6_Node000005_Node000004" title=" " alt="" coords="322,43,312,56,301,79,296,90,286,101,261,116,234,126,233,121,259,111,282,97,291,87,296,77,307,53,317,40"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="172,162,172,210,167,210,167,162"/>
 </map>

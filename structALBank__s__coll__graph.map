@@ -1,20 +1,48 @@
 <map id="ALBank_s" name="ALBank_s">
-<area shape="rect" id="node1" title=" " alt="" coords="1065,840,1151,867"/>
-<area shape="rect" id="node2" title=" " alt="" coords="898,243,1011,269"/>
-<area shape="rect" id="node5" href="$structALInstrument.html" title=" " alt="" coords="867,736,976,763"/>
-<area shape="rect" id="node6" href="$structALSound__s.html" title=" " alt="" coords="782,645,874,672"/>
-<area shape="rect" id="node7" href="$structALWaveTable__s.html" title=" " alt="" coords="515,399,637,426"/>
-<area shape="rect" id="node16" href="$structALEnvelope.html" title=" " alt="" coords="681,399,780,426"/>
-<area shape="rect" id="node17" href="$structALKeyMap.html" title=" " alt="" coords="949,399,1040,426"/>
-<area shape="rect" id="node3" title=" " alt="" coords="657,5,743,32"/>
-<area shape="rect" id="node12" href="$structALADPCMBook.html" title=" " alt="" coords="292,124,412,151"/>
-<area shape="rect" id="node4" title=" " alt="" coords="9,5,132,32"/>
-<area shape="rect" id="node8" href="$structALADPCMWaveInfo.html" title=" " alt="" coords="147,243,295,269"/>
-<area shape="rect" id="node9" href="$structALADPCMloop.html" title=" " alt="" coords="153,124,268,151"/>
-<area shape="rect" id="node10" title=" " alt="" coords="157,5,273,32"/>
-<area shape="rect" id="node11" title=" " alt="" coords="357,5,459,32"/>
-<area shape="rect" id="node14" href="$structALRawLoop.html" title=" " alt="" coords="437,124,534,151"/>
-<area shape="rect" id="node13" href="$structALRAWWaveInfo.html" title=" " alt="" coords="319,243,449,269"/>
-<area shape="rect" id="node15" title=" " alt="" coords="473,243,636,269"/>
-<area shape="rect" id="node18" title=" " alt="" coords="1105,243,1202,269"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1081,835,1167,860"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="48,5,171,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,40,54,57,31,79,15,105,8,134,8,745,17,754,44,763,145,781,292,797,467,810,827,831,1081,842,1081,847,826,836,466,816,291,802,144,786,42,768,14,758,3,747,3,134,10,103,27,76,50,53,74,36"/>
+<area shape="rect" id="Node000005" href="$structALInstrument.html" title=" " alt="" coords="909,732,1019,757"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="112,45,112,134,112,655,118,669,137,681,168,691,208,701,313,716,439,727,705,738,909,741,909,746,705,744,438,733,312,722,207,706,166,697,135,685,114,672,107,657,107,134,107,45"/>
+<area shape="rect" id="Node000015" href="$structALADPCMBook.html" title=" " alt="" coords="444,123,564,148"/>
+<area shape="poly" id="edge23_Node000015_Node000002" title=" " alt="" coords="185,23,222,34,256,53,266,64,270,76,273,87,281,96,444,122,443,127,279,101,268,90,265,78,261,67,253,57,220,39,183,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="827,240,941,265"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="955,258,1058,271,1100,279,1123,287,1145,314,1154,341,1155,407,1155,746,1152,772,1146,797,1132,836,1127,834,1141,795,1147,771,1149,746,1149,407,1149,342,1141,317,1120,292,1099,284,1057,276,954,263"/>
+<area shape="poly" id="edge5_Node000005_Node000003" title=" " alt="" coords="955,262,995,272,1011,279,1022,288,1030,304,1033,346,1012,616,1010,664,1008,684,998,709,980,733,976,730,994,707,1002,683,1005,663,1007,616,1027,346,1025,306,1018,291,1009,284,994,277,953,267"/>
+<area shape="rect" id="Node000006" href="$structALSound__s.html" title=" " alt="" coords="791,642,883,667"/>
+<area shape="poly" id="edge28_Node000006_Node000003" title=" " alt="" coords="831,273,799,291,784,309,776,327,768,346,751,365,731,374,712,375,695,377,681,388,671,406,666,423,668,460,683,498,707,534,737,568,769,597,823,640,819,644,765,601,733,571,703,537,678,500,662,461,661,423,666,404,677,385,693,372,711,370,729,369,748,361,763,343,771,325,779,306,796,287,828,268"/>
+<area shape="rect" id="Node000007" href="$structALEnvelope.html" title=" " alt="" coords="788,396,887,421"/>
+<area shape="poly" id="edge10_Node000007_Node000003" title=" " alt="" coords="833,274,816,291,808,309,807,324,816,362,832,395,827,397,811,364,801,325,802,307,811,288,829,270"/>
+<area shape="rect" id="Node000008" href="$structALKeyMap.html" title=" " alt="" coords="911,396,1001,421"/>
+<area shape="poly" id="edge12_Node000008_Node000003" title=" " alt="" coords="903,275,910,288,954,395,949,397,906,291,898,278"/>
+<area shape="rect" id="Node000010" href="$structALWaveTable__s.html" title=" " alt="" coords="493,396,614,421"/>
+<area shape="poly" id="edge15_Node000010_Node000003" title=" " alt="" coords="814,261,763,271,715,292,694,308,683,326,671,345,651,365,619,384,587,398,585,394,617,379,648,361,667,342,678,323,690,305,712,287,762,266,813,256"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="661,5,747,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="761,17,891,23,968,30,1044,40,1115,55,1173,74,1196,87,1213,100,1224,116,1228,134,1228,746,1220,777,1201,802,1176,822,1151,837,1148,832,1173,818,1197,799,1215,774,1223,746,1223,134,1219,118,1209,104,1193,91,1171,79,1113,60,1044,45,967,35,891,28,761,23"/>
+<area shape="poly" id="edge9_Node000007_Node000004" title=" " alt="" coords="709,44,718,103,735,184,762,274,779,319,800,361,826,394,822,397,795,364,774,321,757,276,730,185,713,104,704,45"/>
+<area shape="poly" id="edge16_Node000010_Node000004" title=" " alt="" coords="703,44,671,211,646,302,633,338,618,364,599,384,578,398,575,393,596,379,614,361,628,336,641,300,666,209,698,43"/>
+<area shape="poly" id="edge22_Node000015_Node000004" title=" " alt="" coords="648,31,613,41,579,57,558,72,540,90,514,124,509,121,536,87,555,68,576,52,611,36,647,26"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="994,763,1064,808,1105,832,1102,837,1061,813,991,767"/>
+<area shape="poly" id="edge7_Node000005_Node000006" title=" " alt="" coords="866,673,949,730,946,734,863,677"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="840,436,840,642,835,642,835,436"/>
+<area shape="poly" id="edge11_Node000006_Node000008" title=" " alt="" coords="955,436,939,534,926,584,910,618,893,633,874,644,871,640,890,629,906,614,921,582,933,533,950,435"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="1034,240,1131,265"/>
+<area shape="poly" id="edge13_Node000008_Node000009" title=" " alt="" coords="1076,280,1055,321,1025,364,1003,384,980,398,977,394,999,379,1021,361,1051,319,1071,277"/>
+<area shape="poly" id="edge14_Node000006_Node000010" title=" " alt="" coords="550,435,544,475,543,523,552,572,562,595,577,614,591,624,612,632,669,643,733,649,791,651,791,656,733,654,668,648,610,637,588,629,573,618,557,597,547,574,537,524,538,474,545,435"/>
+<area shape="rect" id="Node000011" href="$structALADPCMWaveInfo.html" title=" " alt="" coords="301,240,449,265"/>
+<area shape="poly" id="edge17_Node000010_Node000011" title=" " alt="" coords="391,276,421,318,462,361,491,380,522,394,519,398,489,384,458,365,416,322,386,279"/>
+<area shape="rect" id="Node000012" href="$structALADPCMloop.html" title=" " alt="" coords="305,123,420,148"/>
+<area shape="poly" id="edge18_Node000011_Node000012" title=" " alt="" coords="368,161,376,240,371,240,363,162"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="218,5,321,31"/>
+<area shape="poly" id="edge19_Node000012_Node000013" title=" " alt="" coords="305,36,325,53,343,84,360,121,355,124,338,87,321,56,302,40"/>
+<area shape="rect" id="Node000017" href="$structALRawLoop.html" title=" " alt="" coords="163,123,261,148"/>
+<area shape="poly" id="edge26_Node000017_Node000013" title=" " alt="" coords="230,40,216,56,210,73,208,90,212,122,206,123,203,90,204,71,211,53,226,36"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="366,5,482,31"/>
+<area shape="poly" id="edge20_Node000012_Node000014" title=" " alt="" coords="420,45,411,72,397,100,377,124,373,121,392,97,406,70,415,43"/>
+<area shape="poly" id="edge21_Node000011_Node000015" title=" " alt="" coords="483,159,389,242,386,238,479,155"/>
+<area shape="rect" id="Node000016" href="$structALRAWWaveInfo.html" title=" " alt="" coords="147,240,277,265"/>
+<area shape="poly" id="edge24_Node000010_Node000016" title=" " alt="" coords="231,274,273,319,300,342,329,360,370,377,412,389,493,402,492,407,411,394,368,382,327,365,296,346,269,323,227,278"/>
+<area shape="poly" id="edge25_Node000016_Node000017" title=" " alt="" coords="215,161,215,240,209,240,209,161"/>
+<area shape="rect" id="Node000018" title=" " alt="" coords="473,240,636,265"/>
+<area shape="poly" id="edge27_Node000010_Node000018" title=" " alt="" coords="554,279,553,289,553,349,555,396,550,396,548,349,548,289,549,279"/>
 </map>

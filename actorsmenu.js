@@ -1,15 +1,15 @@
 var actorsmenu =
 [
     [ "How Actors Work", "actors.html", [
-      [ "Actors", "actors.html#autotoc_md0", null ]
+      [ "Actors", "actors.html#actors", null ]
     ] ],
-    [ "objects", "objects.html", [
-      [ "Objects", "objects.html#autotoc_md41", null ]
+    [ "Objects", "objects.html", [
+      [ "Objects", "objects.html#objects", null ]
     ] ],
     [ "Vehicles", "vehicles.html", [
-      [ "Trains", "vehicles.html#autotoc_md44", null ],
-      [ "Cars & Trucks", "vehicles.html#autotoc_md45", null ],
-      [ "Boats", "vehicles.html#autotoc_md46", null ]
+      [ "Trains", "vehicles.html#trains", null ],
+      [ "Cars & Trucks", "vehicles.html#cars--trucks", null ],
+      [ "Boats", "vehicles.html#boats", null ]
     ] ],
     [ "Items", "items.html", null ]
 ];

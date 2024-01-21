@@ -1,5 +1,7 @@
 <map id="osViSwapBuffer" name="osViSwapBuffer">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,129,57"/>
-<area shape="rect" id="node2" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="178,5,295,32"/>
-<area shape="rect" id="node3" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="177,56,296,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,129,56"/>
+<area shape="rect" id="Node000002" href="$libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16" title=" " alt="" coords="178,5,295,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,31,164,26,165,31,130,37"/>
+<area shape="rect" id="Node000003" href="$libultra__internal_8h.html#aecafa57b85fd739d6033705808194def" title=" " alt="" coords="177,55,296,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="130,49,164,54,163,60,129,55"/>
 </map>

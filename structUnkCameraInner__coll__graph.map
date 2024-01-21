@@ -1,5 +1,7 @@
 <map id="UnkCameraInner" name="UnkCameraInner">
-<area shape="rect" id="node1" title=" " alt="" coords="5,124,137,151"/>
-<area shape="rect" id="node2" title=" " alt="" coords="9,5,59,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="89,5,128,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,137,148"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="9,5,59,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="32,45,32,71,38,98,46,110,57,121,53,124,42,114,33,100,27,72,27,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="89,5,128,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="103,44,78,123,72,122,98,43"/>
 </map>

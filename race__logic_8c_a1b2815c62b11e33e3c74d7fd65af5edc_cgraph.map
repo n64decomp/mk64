@@ -1,9 +1,15 @@
 <map id="start_race" name="start_race">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,92,57"/>
-<area shape="rect" id="node2" href="$race__logic_8c.html#a81fc82f45c9f9fcbf0d71fd2e0d6853c" title=" " alt="" coords="140,31,263,57"/>
-<area shape="rect" id="node3" href="$code__800029B0_8c.html#a7f2e9212dffa5894377677511e9aea7a" title=" " alt="" coords="311,5,434,32"/>
-<area shape="rect" id="node6" href="$external_8c.html#afcb6c1c892ff72b06f548327e6e21586" title=" " alt="" coords="311,56,435,83"/>
-<area shape="rect" id="node4" href="$external_8c.html#af284aef5378575cf597e04e3dfaac044" title=" " alt="" coords="483,5,605,32"/>
-<area shape="rect" id="node5" href="$external_8c.html#ad79a8b3dfe27cebca94c2d9e2cc54d2b" title=" " alt="" coords="653,5,776,32"/>
-<area shape="rect" id="node7" href="$external_8c.html#ac48b7cbfcaa7737f892877ead85e4ba7" title=" " alt="" coords="483,56,605,83"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,92,56"/>
+<area shape="rect" id="Node000002" href="$race__logic_8c.html#a81fc82f45c9f9fcbf0d71fd2e0d6853c" title=" " alt="" coords="140,31,263,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,41,126,41,126,46,92,46"/>
+<area shape="rect" id="Node000003" href="$code__800029B0_8c.html#a7f2e9212dffa5894377677511e9aea7a" title=" " alt="" coords="311,5,434,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="263,32,297,26,298,32,263,37"/>
+<area shape="rect" id="Node000006" href="$external_8c.html#afcb6c1c892ff72b06f548327e6e21586" title=" " alt="" coords="311,55,435,80"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="263,49,297,54,296,59,263,55"/>
+<area shape="rect" id="Node000004" href="$external_8c.html#af284aef5378575cf597e04e3dfaac044" title=" " alt="" coords="483,5,605,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="434,15,468,15,468,21,434,21"/>
+<area shape="rect" id="Node000005" href="$external_8c.html#ad79a8b3dfe27cebca94c2d9e2cc54d2b" title=" " alt="" coords="653,5,776,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="606,15,639,15,639,21,606,21"/>
+<area shape="rect" id="Node000007" href="$external_8c.html#ac48b7cbfcaa7737f892877ead85e4ba7" title=" " alt="" coords="483,55,605,80"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="435,65,469,65,469,70,435,70"/>
 </map>

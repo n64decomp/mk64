@@ -1,5 +1,7 @@
 <map id="BombKartSpawn" name="BombKartSpawn">
-<area shape="rect" id="node1" title=" " alt="" coords="24,153,155,180"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,56,32"/>
-<area shape="rect" id="node3" title=" " alt="" coords="80,5,219,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="73,152,204,177"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,144,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,44,67,85,70,107,78,127,90,140,106,150,103,154,87,144,74,129,65,108,62,85,66,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="177,5,228,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="202,45,193,86,176,129,155,154,151,150,171,127,188,84,197,44"/>
 </map>

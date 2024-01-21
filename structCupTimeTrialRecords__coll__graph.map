@@ -1,5 +1,7 @@
 <map id="CupTimeTrialRecords" name="CupTimeTrialRecords">
-<area shape="rect" id="node1" title=" " alt="" coords="15,213,174,240"/>
-<area shape="rect" id="node2" href="$structCourseTimeTrialRecords.html" title=" " alt="" coords="5,124,184,151"/>
-<area shape="rect" id="node3" title=" " alt="" coords="38,5,151,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="15,211,174,236"/>
+<area shape="rect" id="Node000002" href="$structCourseTimeTrialRecords.html" title=" " alt="" coords="5,123,184,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,162,97,210,92,210,92,162"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="38,5,151,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,44,97,123,92,123,92,44"/>
 </map>

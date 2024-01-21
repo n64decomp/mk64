@@ -1,13 +1,23 @@
 <map id="include/functions.h" name="include/functions.h">
-<area shape="rect" id="node1" title=" " alt="" coords="659,5,804,32"/>
-<area shape="rect" id="node2" href="$code__8006E9C0_8c.html" title=" " alt="" coords="5,80,164,107"/>
-<area shape="rect" id="node3" href="$code__80071F00_8c.html" title=" " alt="" coords="188,80,347,107"/>
-<area shape="rect" id="node4" href="$code__8008C1D0_8c.html" title=" " alt="" coords="371,80,532,107"/>
-<area shape="rect" id="node5" href="$all__variables_8h.html" title=" " alt="" coords="557,80,741,107"/>
-<area shape="rect" id="node8" href="$effects_8c.html" title=" " alt="" coords="765,80,865,107"/>
-<area shape="rect" id="node9" href="$main_8c.html" title=" " alt="" coords="889,80,979,107"/>
-<area shape="rect" id="node10" href="$render__player_8c.html" title=" " alt="" coords="1003,80,1148,107"/>
-<area shape="rect" id="node11" href="$staff__ghosts_8c.html" title=" " alt="" coords="1172,80,1307,107"/>
-<area shape="rect" id="node6" href="$debug_8inc_8c.html" title=" " alt="" coords="567,155,730,181"/>
-<area shape="rect" id="node7" href="$debug_8c.html" title=" " alt="" coords="579,229,719,256"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="659,5,804,31"/>
+<area shape="rect" id="Node000002" href="$code__8006E9C0_8c.html" title=" " alt="" coords="5,79,164,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="645,31,177,81,165,83,164,77,176,76,645,25"/>
+<area shape="rect" id="Node000003" href="$code__80071F00_8c.html" title=" " alt="" coords="188,79,347,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="645,35,342,81,341,76,644,30"/>
+<area shape="rect" id="Node000004" href="$code__8008C1D0_8c.html" title=" " alt="" coords="371,79,532,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="674,37,497,81,496,76,673,31"/>
+<area shape="rect" id="Node000005" href="$all__variables_8h.html" title=" " alt="" coords="557,79,741,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="709,42,664,80,660,76,706,38"/>
+<area shape="rect" id="Node000008" href="$effects_8c.html" title=" " alt="" coords="765,79,865,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="757,38,803,76,800,80,754,42"/>
+<area shape="rect" id="Node000009" href="$main_8c.html" title=" " alt="" coords="889,79,979,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="777,33,902,76,900,81,776,38"/>
+<area shape="rect" id="Node000010" href="$render__player_8c.html" title=" " alt="" coords="1003,79,1148,104"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="800,31,1020,76,1019,81,799,36"/>
+<area shape="rect" id="Node000011" href="$staff__ghosts_8c.html" title=" " alt="" coords="1172,79,1307,104"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="818,28,1161,76,1172,78,1172,83,1160,81,817,34"/>
+<area shape="rect" id="Node000006" href="$debug_8inc_8c.html" title=" " alt="" coords="567,152,730,177"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="651,118,651,152,646,152,646,118"/>
+<area shape="rect" id="Node000007" href="$debug_8c.html" title=" " alt="" coords="579,225,719,251"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="651,191,651,225,646,225,646,191"/>
 </map>
