@@ -61,7 +61,7 @@ SECTIONS
       BUILD_DIR/src/code_8006E9C0.o(.text);
       BUILD_DIR/src/code_80071F00.o(.text);
       BUILD_DIR/src/code_80086E70.o(.text);
-      BUILD_DIR/src/code_8008C1D0.o(.text);
+      BUILD_DIR/src/effects.o(.text);
       BUILD_DIR/src/code_80091440.o(.text);
       BUILD_DIR/src/code_80091750.jp.o(.text);
       BUILD_DIR/src/code_800AF9B0.o(.text);
@@ -219,7 +219,7 @@ SECTIONS
       BUILD_DIR/src/data/data_800E45C0.o(.data);
       BUILD_DIR/src/code_80057C60.o(.data);
       BUILD_DIR/data/data_code_80071F00_2.o(.data);
-      BUILD_DIR/src/code_8008C1D0.o(.data);
+      BUILD_DIR/src/effects.o(.data);
       BUILD_DIR/src/code_80091440.o(.data);
       BUILD_DIR/src/code_80091750.jp.o(.data);
       BUILD_DIR/src/code_800AF9B0.o(.data);
@@ -268,7 +268,7 @@ SECTIONS
       BUILD_DIR/src/code_8006E9C0.o(.rodata);
       BUILD_DIR/src/code_80071F00.o(.rodata);
       BUILD_DIR/src/code_80086E70.o(.rodata);
-      BUILD_DIR/src/code_8008C1D0.o(.rodata);
+      BUILD_DIR/src/effects.o(.rodata);
       BUILD_DIR/src/code_80091750.jp.o(.rodata);
       BUILD_DIR/src/code_800AF9B0.o(.rodata);
       BUILD_DIR/src/menus.o(.rodata);
@@ -312,7 +312,7 @@ SECTIONS
       BUILD_DIR/src/spawn_players.o(.bss);
       BUILD_DIR/src/code_80057C60.o(.bss);
       BUILD_DIR/src/code_80057C60_var.o(.bss);
-      BUILD_DIR/src/code_8008C1D0.o(.bss);
+      BUILD_DIR/src/effects.o(.bss);
       BUILD_DIR/src/code_80091750.jp.o(.bss);
       BUILD_DIR/src/code_800AF9B0.o(.bss);
       BUILD_DIR/src/menus.o(.bss);

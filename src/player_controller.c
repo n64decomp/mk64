@@ -9,7 +9,7 @@
 #include "racing/memory.h"
 #include "math_util.h"
 #include "render_player.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 #include "collision.h"
 #include "waypoints.h"
 #include "audio/external.h"

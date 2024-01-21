@@ -21,7 +21,7 @@
 #include "menus.h"
 #include "render_player.h"
 #include "code_80091750.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 
 f32 D_80165210[8];
 f32 D_80165230[8];

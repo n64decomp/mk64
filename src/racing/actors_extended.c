@@ -13,7 +13,7 @@
 #include "actors_extended.h"
 #include "audio/external.h"
 #include "code_80071F00.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 
 void copy_collision(Collision *arg0, Collision *arg1) {
     arg1->unk30 = arg0->unk30;

@@ -23,7 +23,7 @@
 #include <actors.h>
 #include "race_logic.h"
 #include "collision.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 #include "code_80091440.h"
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"

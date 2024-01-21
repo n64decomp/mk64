@@ -22,7 +22,7 @@
 #include "code_8006E9C0.h"
 #include "code_80071F00.h"
 #include "code_80086E70.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 #include "src/data/data_800E8700.h"
 #include "skybox_and_splitscreen.h"
 #include "common_textures.h"

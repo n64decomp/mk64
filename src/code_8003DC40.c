@@ -3,7 +3,7 @@
 #include "math_util.h"
 #include "common_structs.h"
 #include "player_controller.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 #include "code_8003DC40.h"
 #include "defines.h"
 

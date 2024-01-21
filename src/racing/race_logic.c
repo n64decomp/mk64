@@ -19,7 +19,7 @@
 #include "race_logic.h"
 #include "skybox_and_splitscreen.h"
 #include "math_util_2.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 #include "math.h"
 #include "menus.h"
 
