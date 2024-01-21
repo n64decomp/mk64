@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ldiv_5ft_26745',['ldiv_t',['../stdlib_8h.html#a10ef0aefc570d851e0e15e98758cde3e',1,'stdlib.h']]],
-  ['lldiv_5ft_26746',['lldiv_t',['../stdlib_8h.html#a51d8facb71b482170b8bf45b9961df48',1,'stdlib.h']]]
+  ['ldiv_5ft_26756',['ldiv_t',['../stdlib_8h.html#a10ef0aefc570d851e0e15e98758cde3e',1,'stdlib.h']]],
+  ['lldiv_5ft_26757',['lldiv_t',['../stdlib_8h.html#a51d8facb71b482170b8bf45b9961df48',1,'stdlib.h']]]
 ];

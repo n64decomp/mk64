@@ -92,16 +92,17 @@ $(document).ready(function(){initNavTree('controlflow.html',''); initResizable()
 <li class="level1"><a href="#autotoc_md26">Threading</a></li>
 <li class="level1"><a href="#autotoc_md27">Overall Control Flow</a></li>
 <li class="level1"><a href="#autotoc_md28">Segments</a></li>
-<li class="level1"><a href="#autotoc_md29">Code Breakdown</a><ul><li class="level2"><a href="#autotoc_md30">Players</a></li>
-<li class="level2"><a href="#autotoc_md31">Actors</a></li>
-<li class="level2"><a href="#autotoc_md32">Objects</a></li>
-<li class="level2"><a href="#autotoc_md33">Courses</a><ul><li class="level3"><a href="#autotoc_md34">Course Folder</a></li>
+<li class="level1"><a href="#autotoc_md29">Code Breakdown</a><ul><li class="level2"><a href="#autotoc_md30">Menus</a></li>
+<li class="level2"><a href="#autotoc_md31">Players</a></li>
+<li class="level2"><a href="#autotoc_md32">Actors</a></li>
+<li class="level2"><a href="#autotoc_md33">Objects</a></li>
+<li class="level2"><a href="#autotoc_md34">Courses</a><ul><li class="level3"><a href="#autotoc_md35">Course Folder</a></li>
 </ul>
 </li>
-<li class="level2"><a href="#autotoc_md35">UI &amp; Other 2D Screen data</a></li>
-<li class="level2"><a href="#autotoc_md36">Engine</a></li>
-<li class="level2"><a href="#autotoc_md37">Math</a></li>
-<li class="level2"><a href="#autotoc_md38">Ending</a></li>
+<li class="level2"><a href="#autotoc_md36">UI &amp; Other 2D Screen data</a></li>
+<li class="level2"><a href="#autotoc_md37">Engine</a></li>
+<li class="level2"><a href="#autotoc_md38">Math</a></li>
+<li class="level2"><a href="#autotoc_md39">Ending</a></li>
 </ul>
 </li>
 </ul>
@@ -158,6 +159,18 @@ Segments</h1>
 <h1><a class="anchor" id="autotoc_md29"></a>
 Code Breakdown</h1>
 <h2><a class="anchor" id="autotoc_md30"></a>
+Menus</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">file   </th><th class="markdownTableHeadNone">desc    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="menus_8c.html">menus.c</a>   </td><td class="markdownTableBodyNone">Menu related code    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><a class="el" href="save_8c.html">save.c</a>   </td><td class="markdownTableBodyNone">Save related    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="startup__logo_8inc_8c.html">data/startup_logo.inc.c</a>   </td><td class="markdownTableBodyNone">Startup logo   </td></tr>
+</table>
+<h2><a class="anchor" id="autotoc_md31"></a>
 Players</h2>
 <p><a class="el" href="structPlayer.html">Player</a> related code resides in </p><table class="markdownTable">
 <tr class="markdownTableHead">
@@ -167,7 +180,7 @@ Players</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a class="el" href="camera_8c.html">camera.c</a>   </td><td class="markdownTableBodyNone"><a class="el" href="structPlayer.html">Player</a> cameras   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md31"></a>
+<h2><a class="anchor" id="autotoc_md32"></a>
 Actors</h2>
 <p><a class="el" href="structActor.html">Actor</a> related code resides in </p><table class="markdownTable">
 <tr class="markdownTableHead">
@@ -175,9 +188,11 @@ Actors</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><a class="el" href="actors_8c.html">actors.c</a>   </td><td class="markdownTableBodyNone">Variety of <a href="actorsmenu.html">actors</a>, see link for specifics.    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone"><a class="el" href="actors__extended_8c.html">actors_extended.c</a>   </td><td class="markdownTableBodyNone">Shells and bananas   </td></tr>
+<td class="markdownTableBodyNone"><a class="el" href="actors__extended_8c.html">actors_extended.c</a>   </td><td class="markdownTableBodyNone">Shells and bananas    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><a class="el" href="code__80005FD0_8c.html">code_80005FD0.c</a>   </td><td class="markdownTableBodyNone">Vehicles; trains, cars, trucks, boats   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md32"></a>
+<h2><a class="anchor" id="autotoc_md33"></a>
 Objects</h2>
 <p>Object related code resides in </p><table class="markdownTable">
 <tr class="markdownTableHead">
@@ -190,7 +205,7 @@ Objects</h2>
 <td class="markdownTableBodyNone"><a class="el" href="code__80086E70_8c.html">code_80086E70.c</a>   </td><td class="markdownTableBodyNone"><a class="el" href="structObjects.html">Objects</a>   </td></tr>
 </table>
 <p>Documentation of the specifics still in-progress. See <a href="actorsmenu.html">actors</a> for more information.</p>
-<h2><a class="anchor" id="autotoc_md33"></a>
+<h2><a class="anchor" id="autotoc_md34"></a>
 Courses</h2>
 <p>Course related code resides in </p><table class="markdownTable">
 <tr class="markdownTableHead">
@@ -202,7 +217,7 @@ Courses</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><a class="el" href="common__textures_8inc_8c.html">common_textures.inc.c</a>   </td><td class="markdownTableBodyNone">Content accessible to every course such as items and portraits   </td></tr>
 </table>
-<h3><a class="anchor" id="autotoc_md34"></a>
+<h3><a class="anchor" id="autotoc_md35"></a>
 Course Folder</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -216,7 +231,7 @@ Course Folder</h3>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">courses/course_name/course_offsets.inc.c   </td><td class="markdownTableBodyNone">Textures used in the course   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md35"></a>
+<h2><a class="anchor" id="autotoc_md36"></a>
 UI &amp; Other 2D Screen data</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -224,15 +239,17 @@ UI &amp; Other 2D Screen data</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><a class="el" href="hud__renderer_8c.html">hud_renderer.c</a>   </td><td class="markdownTableBodyNone">ItemWindows   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md36"></a>
+<h2><a class="anchor" id="autotoc_md37"></a>
 Engine</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">file   </th><th class="markdownTableHeadNone">desc    </th></tr>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><a class="el" href="collision_8c.html">collision.c</a>   </td><td class="markdownTableBodyNone"></td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">code_80005FD0   </td><td class="markdownTableBodyNone">Pathing code   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md37"></a>
+<h2><a class="anchor" id="autotoc_md38"></a>
 Math</h2>
 <p>Math related code resides in </p><table class="markdownTable">
 <tr class="markdownTableHead">
@@ -242,7 +259,7 @@ Math</h2>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><a class="el" href="math__util__2_8c.html">math_util_2.c</a>   </td><td class="markdownTableBodyNone"></td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md38"></a>
+<h2><a class="anchor" id="autotoc_md39"></a>
 Ending</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">

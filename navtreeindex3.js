@@ -137,7 +137,7 @@ var NAVTREEINDEX3 =
 "bomb__kart_8h.html#aea94c908d9d67e818ad45594a1c29a57":[8,0,1,3,2],
 "bomb__kart_8h_source.html":[8,0,1,3],
 "boostramps.html":[3,0],
-"boostramps.html#autotoc_md42":[3,0,0],
+"boostramps.html#autotoc_md47":[3,0,0],
 "bstring_8h.html":[8,0,2,5,31],
 "bstring_8h.html#a41defc2ecf285507e63eb254a8b427fd":[8,0,2,5,31,0],
 "bstring_8h.html#a8f1a0f470802fada1c57bec05015a780":[8,0,2,5,31,2],

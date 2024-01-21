@@ -1,5 +1,7 @@
 var NAVTREEINDEX53 =
 {
+"menus_8h.html#aab38426f6400fc9ad6153eaabeda1fdc":[8,0,2,50,7],
+"menus_8h.html#ab03d9dd47a411a5ab79754c67662d5e8":[8,0,2,50,62],
 "menus_8h.html#ab5fff14dc492768fd5c750535597cae0":[8,0,2,50,6],
 "menus_8h.html#abb2ea38cf7a38ac58573450daaa644d9":[8,0,2,50,19],
 "menus_8h.html#abb69fde563b1c13c84b24b19f3b49dd5":[8,0,2,50,68],
@@ -42,7 +44,7 @@ var NAVTREEINDEX53 =
 "new__func_8h.html#ac8095e2ec1adbd7e74e655c578968a36":[8,0,2,5,56,0],
 "new__func_8h_source.html":[8,0,2,5,56],
 "objects.html":[0,1],
-"objects.html#autotoc_md40":[0,1,0],
+"objects.html#autotoc_md41":[0,1,0],
 "objects_8h.html":[8,0,1,16],
 "objects_8h.html#a02bd29e49d2089bb6bd1bfe33e360584":[8,0,1,16,83],
 "objects_8h.html#a0ab89bd423e1e6f866245bc1be8b4561":[8,0,1,16,38],
@@ -247,7 +249,5 @@ var NAVTREEINDEX53 =
 "osGetThreadPri_8c.html":[8,0,2,5,76],
 "osGetThreadPri_8c.html#a1ace3e57703be3788f8084ad40666e2b":[8,0,2,5,76,0],
 "osGetTime_8c.html":[8,0,2,5,77],
-"osGetTime_8c.html#a4af0cb38d6a9bc36e9ee5dda55d7726e":[8,0,2,5,77,2],
-"osGetTime_8c.html#ac9a040dcda7f29a608413f5a5c8963bf":[8,0,2,5,77,0],
-"osGetTime_8c.html#ae56f9e39bb4b420a9a2d02e6ca1fecfa":[8,0,2,5,77,1]
+"osGetTime_8c.html#a4af0cb38d6a9bc36e9ee5dda55d7726e":[8,0,2,5,77,2]
 };

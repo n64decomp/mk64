@@ -22,19 +22,23 @@ var basics =
       [ "Overall Control Flow", "controlflow.html#autotoc_md27", null ],
       [ "Segments", "controlflow.html#autotoc_md28", null ],
       [ "Code Breakdown", "controlflow.html#autotoc_md29", [
-        [ "Players", "controlflow.html#autotoc_md30", null ],
-        [ "Actors", "controlflow.html#autotoc_md31", null ],
-        [ "Objects", "controlflow.html#autotoc_md32", null ],
-        [ "Courses", "controlflow.html#autotoc_md33", [
+        [ "Menus", "controlflow.html#autotoc_md30", null ],
+        [ "Players", "controlflow.html#autotoc_md31", null ],
+        [ "Actors", "controlflow.html#autotoc_md32", null ],
+        [ "Objects", "controlflow.html#autotoc_md33", null ],
+        [ "Courses", "controlflow.html#autotoc_md34", [
           [ "Arch", "compiling.html#autotoc_md19", null ],
-          [ "Course Folder", "controlflow.html#autotoc_md34", null ]
+          [ "Course Folder", "controlflow.html#autotoc_md35", null ]
         ] ],
-        [ "UI & Other 2D Screen data", "controlflow.html#autotoc_md35", null ],
-        [ "Engine", "controlflow.html#autotoc_md36", null ],
-        [ "Math", "controlflow.html#autotoc_md37", null ],
-        [ "Ending", "controlflow.html#autotoc_md38", null ]
+        [ "UI & Other 2D Screen data", "controlflow.html#autotoc_md36", null ],
+        [ "Engine", "controlflow.html#autotoc_md37", null ],
+        [ "Math", "controlflow.html#autotoc_md38", null ],
+        [ "Ending", "controlflow.html#autotoc_md39", null ]
       ] ]
     ] ],
-    [ "Terminology", "terminology.html", null ],
+    [ "Terminology", "terminology.html", [
+      [ "Technical Definitions", "terminology.html#autotoc_md42", null ],
+      [ "Racing Terminology", "terminology.html#autotoc_md43", null ]
+    ] ],
     [ "Compiling for Windows", "buildwindows.html", null ]
 ];

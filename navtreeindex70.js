@@ -1,5 +1,11 @@
 var NAVTREEINDEX70 =
 {
+"structSequenceChannel.html#a0c4e31ade0f8dc78c3256b39c3b377ea":[7,0,147,15],
+"structSequenceChannel.html#a0db3a4e22eeb5c551db2522eee9e097b":[7,0,147,46],
+"structSequenceChannel.html#a15cad4ea8bf40de2eb3dd631741725fc":[7,0,147,6],
+"structSequenceChannel.html#a21462ffb79a5c13b003709ec8eea0db9":[7,0,147,13],
+"structSequenceChannel.html#a2539dddc70bd6159d5927d6c82e974da":[7,0,147,23],
+"structSequenceChannel.html#a27e24351e14a4c394673fea7c71c04a4":[7,0,147,41],
 "structSequenceChannel.html#a2df4dd94b4ca99190ac1310b345a26e9":[7,0,147,8],
 "structSequenceChannel.html#a35bf2219b76321032b4e9b77bf742f4e":[7,0,147,16],
 "structSequenceChannel.html#a374893f359c69077e1a52c2de92a3477":[7,0,147,11],
@@ -243,11 +249,5 @@ var NAVTREEINDEX70 =
 "structTrainStuff.html#a29dec0c29f3b10ea96120cb5e23f74f9":[7,0,193,0],
 "structTrainStuff.html#a8344fa8f68f35cd2ae1c69a98c9a0635":[7,0,193,1],
 "structTrainStuff.html#aa81aa49f9bff937d02fe7b1dae3fa48c":[7,0,193,2],
-"structTrainStuff.html#ad55c878cf7b149b9c47b0f1faf753145":[7,0,193,5],
-"structTrainStuff.html#ad97601b45041082812dcaab5af6fc7ce":[7,0,193,4],
-"structTrainStuff.html#af09aad0b146135b41f76a9a0bc497e4b":[7,0,193,6],
-"structTripleShellParent.html":[7,0,194],
-"structTripleShellParent.html#a13b6efc8edb8f17285a9f22419e4244a":[7,0,194,8],
-"structTripleShellParent.html#a155bcf238c032e374d9de55e12e3c117":[7,0,194,1],
-"structTripleShellParent.html#a25ce5ab0e6ba023314d79736809ae8e4":[7,0,194,6]
+"structTrainStuff.html#ad55c878cf7b149b9c47b0f1faf753145":[7,0,193,5]
 };
