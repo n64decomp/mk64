@@ -62,27 +62,35 @@ Racing segment loads after selecting a grand prix. Note that it is always reload
 
 # Code Breakdown
 
+## Menus
+|file|desc|
+|---|---|
+|[menus](@ref menus.c)| Menu related code |
+|[save](@ref save.c)| Save related |
+|[startup_logo](@ref data/startup_logo.inc.c)|Startup logo|
+
 ## Players
 Player related code resides in
 |file|desc|
 |---|---|
-|@ref player_controller.c| Applies physics to players |
-|@ref camera.c| Player cameras |
+|[player_controller](@ref player_controller.c)| Applies physics to players |
+|[camera](@ref camera.c)| Player cameras |
 
 ## Actors
 Actor related code resides in
 |file|desc|
 |---|---|
-|@ref actors.c|Variety of [actors](actorsmenu.html), see link for specifics.|
-|@ref actors_extended.c|Shells and bananas|
+|[actors](@ref actors.c)|Variety of [actors](actorsmenu.html), see link for specifics.|
+|[actors_extended](@ref actors_extended.c)|Shells and bananas|
+|[code_80005FD0](@ref code_80005FD0.c)| Vehicles; trains, cars, trucks, boats |
 
 ## Objects
 Object related code resides in
 |file|desc|
 |---|---|
-|@ref code_80057C60.c|Objects|
-|@ref code_80071F00.c|Objects|
-|@ref code_80086E70.c|Objects|
+|[code_80057C60](@ref code_80057C60.c)|Objects|
+|[code_80071F00](@ref code_80071F00.c)|Objects|
+|[code_80086E70](@ref code_80086E70.c)|Objects|
 
 Documentation of the specifics still in-progress. See [actors](actorsmenu.html) for more information.
 
@@ -90,9 +98,9 @@ Documentation of the specifics still in-progress. See [actors](actorsmenu.html) 
 Course related code resides in
 |file|desc|
 |---|---|
-|@ref memory.c| Loads and extracts course data|
-|@ref render_courses.c|Renders course content|
-|@ref common_textures.inc.c|Content accessible to every course such as items and portraits|
+|[memory](@ref memory.c)| Loads and extracts course data|
+|[render_courses](@ref render_courses.c)|Renders course content|
+|[common_textures](@ref common_textures.inc.c)|Content accessible to every course such as items and portraits|
 
 ### Course Folder
 [course folder link][@ref courses]
@@ -106,24 +114,25 @@ Course related code resides in
 ## UI & Other 2D Screen data
 |file|desc|
 |---|---|
-|@ref hud_renderer.c|ItemWindows|
+|[hud_renderer](@ref hud_renderer.c)|ItemWindows|
 
 ## Engine
 |file|desc|
 |---|---|
-|@ref collision.c| |
+|[collision](@ref collision.c)| |
+|[code_80005FD0](@ref code_80005FD0.c)| Pathing code |
 
 ## Math
 Math related code resides in
 |file|desc|
 |---|---|
-|@ref math_util.c| |
-|@ref math_util_2.c| |  
+|[math_util](@ref math_util.c)| |
+|[math_util_2](@ref math_util_2.c)| |  
 
 ## Ending
 |file|desc|
 |---|---|
-|@ref ceremony_and_credits.c|Camera rails for podium ceremony and credits|
-|@ref podium_ceremony_actors.c|Fireworks and balloons for podium ceremony|
-|@ref ceremony_data.inc.c|Trophies and podium models. Paths.|
-|@ref credits.c|Credits text and UI positions|  
+|[ceremony_and_credits](@ref ceremony_and_credits.c)|Camera rails for podium ceremony and credits|
+|[podium_ceremony_actors](@ref podium_ceremony_actors.c)|Fireworks and balloons for podium ceremony|
+|[ceremony_data](@ref ceremony_data.inc.c)|Trophies and podium models. Paths.|
+|[credits](@ref credits.c)|Credits text and UI positions|  
