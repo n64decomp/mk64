@@ -161,7 +161,7 @@ var sectionId = 'dynsection-5';
 <!-- Node80 -->
 <g id="node42" class="node">
 <title>Node80</title>
-<g id="a_node42"><a xlink:href="effects_8c.html#ac6b3be4c7d0c4a4f7f02153b12d59d38" target="_top" xlink:title=" ">
+<g id="a_node42"><a xlink:href="audio_2effects_8c.html#ac6b3be4c7d0c4a4f7f02153b12d59d38" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="315,-313.5 315,-343.5 457,-343.5 457,-313.5 315,-313.5"/>
 <text text-anchor="start" x="323" y="-331.5" font-family="Helvetica,sans-Serif" font-size="10.00">sequence_player_process</text>
 <text text-anchor="middle" x="386" y="-320.5" font-family="Helvetica,sans-Serif" font-size="10.00">_sound</text>
@@ -177,7 +177,7 @@ var sectionId = 'dynsection-5';
 <!-- Node5 -->
 <g id="node5" class="node">
 <title>Node5</title>
-<g id="a_node5"><a xlink:href="effects_8c.html#a6201aa1f5129a2ef87c4d34a0cc935dc" target="_top" xlink:title=" ">
+<g id="a_node5"><a xlink:href="audio_2effects_8c.html#a6201aa1f5129a2ef87c4d34a0cc935dc" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="902,-628 902,-647 979,-647 979,-628 902,-628"/>
 <text text-anchor="middle" x="940.5" y="-635" font-family="Helvetica,sans-Serif" font-size="10.00">adsr_update</text>
 </a>
@@ -297,7 +297,7 @@ var sectionId = 'dynsection-5';
 <!-- Node16 -->
 <g id="node15" class="node">
 <title>Node16</title>
-<g id="a_node15"><a xlink:href="effects_8c.html#a25e39b4b3790d36958bb854307d5f9d7" target="_top" xlink:title=" ">
+<g id="a_node15"><a xlink:href="audio_2effects_8c.html#a25e39b4b3790d36958bb854307d5f9d7" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="891,-742 891,-761 990,-761 990,-742 891,-742"/>
 <text text-anchor="middle" x="940.5" y="-749" font-family="Helvetica,sans-Serif" font-size="10.00">note_vibrato_init</text>
 </a>
@@ -312,7 +312,7 @@ var sectionId = 'dynsection-5';
 <!-- Node17 -->
 <g id="node16" class="node">
 <title>Node17</title>
-<g id="a_node16"><a xlink:href="effects_8c.html#ab80cf39e4b3e31a75657ba722018d9b9" target="_top" xlink:title=" ">
+<g id="a_node16"><a xlink:href="audio_2effects_8c.html#ab80cf39e4b3e31a75657ba722018d9b9" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="882,-704 882,-723 999,-723 999,-704 882,-704"/>
 <text text-anchor="middle" x="940.5" y="-711" font-family="Helvetica,sans-Serif" font-size="10.00">note_vibrato_update</text>
 </a>
@@ -394,7 +394,7 @@ var sectionId = 'dynsection-5';
 <!-- Node18 -->
 <g id="node17" class="node">
 <title>Node18</title>
-<g id="a_node17"><a xlink:href="effects_8c.html#a845808744962457cb36c3867fdf2457e" target="_top" xlink:title=" ">
+<g id="a_node17"><a xlink:href="audio_2effects_8c.html#a845808744962457cb36c3867fdf2457e" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="1061.5,-742.5 1061.5,-772.5 1180.5,-772.5 1180.5,-742.5 1061.5,-742.5"/>
 <text text-anchor="start" x="1069.5" y="-760.5" font-family="Helvetica,sans-Serif" font-size="10.00">get_portamento_freq</text>
 <text text-anchor="middle" x="1121" y="-749.5" font-family="Helvetica,sans-Serif" font-size="10.00">_scale</text>
@@ -410,7 +410,7 @@ var sectionId = 'dynsection-5';
 <!-- Node19 -->
 <g id="node18" class="node">
 <title>Node19</title>
-<g id="a_node18"><a xlink:href="effects_8c.html#aa411cc3ba6223d8ee256d8e9861546e9" target="_top" xlink:title=" ">
+<g id="a_node18"><a xlink:href="audio_2effects_8c.html#aa411cc3ba6223d8ee256d8e9861546e9" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="red" points="1057,-704 1057,-723 1185,-723 1185,-704 1057,-704"/>
 <text text-anchor="middle" x="1121" y="-711" font-family="Helvetica,sans-Serif" font-size="10.00">get_vibrato_freq_scale</text>
 </a>
@@ -862,7 +862,7 @@ var sectionId = 'dynsection-5';
 <!-- Node81 -->
 <g id="node43" class="node">
 <title>Node81</title>
-<g id="a_node43"><a xlink:href="effects_8c.html#ad233b78e677de7deb61ad8146e56298a" target="_top" xlink:title=" ">
+<g id="a_node43"><a xlink:href="audio_2effects_8c.html#ad233b78e677de7deb61ad8146e56298a" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="black" points="493,-98.5 493,-128.5 642,-128.5 642,-98.5 493,-98.5"/>
 <text text-anchor="start" x="501" y="-116.5" font-family="Helvetica,sans-Serif" font-size="10.00">sequence_channel_process</text>
 <text text-anchor="middle" x="567.5" y="-105.5" font-family="Helvetica,sans-Serif" font-size="10.00">_sound</text>

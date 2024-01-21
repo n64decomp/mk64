@@ -112,9 +112,7 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structUnkPlayerStruct258.html">UnkPlayerStruct258</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmk64__Vtx.html">mk64_Vtx</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmk64__Vtx__n.html">mk64_Vtx_n</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCourseVtx.html">CourseVtx</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmk64__surface__map__ram.html">mk64_surface_map_ram</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -220,35 +218,37 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="separator:af99386c6c69e4c7491c1ca0f1a4b44cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5344f2bdca4f9506c40f044e08ea8c98"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98">SURFACE_TYPE</a> { <br />
-&#160;&#160;<a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aae231593748597efa2fddd103805f4f0">AIRBORNE</a>
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a2774eadca3e1d086bcadd0d68bd6a35d">PAVEMENT</a>
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a3d74c27c9b19c7d4a6fda57e9686df81">SAND_ONE</a>
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a4b594364b485faed3881bb42dd999cb5">SAND_TWO</a>
-, <br />
-&#160;&#160;<a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98ae180997cca069995cd3d8732261e4064">STONE_TWO</a>
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a55295f2a7d535f0391e8b88e5b0c3a34">SNOW_ONE</a>
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a31c9d2d531d525e49613c1e1680d7018">STONE_ONE</a>
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98af5ddb8e0bd187d596924437815d6f1ab">SAND_FIVE</a>
-, <br />
-&#160;&#160;<a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98adbed8401e35adba25dab2e1729ee55fa">GRASS</a>
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a6d7134828b81adf5407a447d1aa6f672">ICE</a>
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a682ae6b388520a4c5f72eb0dbff3a230">SAND_THREE</a>
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98abd1da7385eb1a71dd11bddda4a871e5e">SNOW_TWO</a>
-, <br />
-&#160;&#160;<a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98ac73ff93c632d693d7e8eb610091ce637">CLIFF</a>
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98ac07c07109994d795a80564aede49b35b">SAND_FOUR</a>
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98ab1f262658c993afeba3aead30f94108f">TRAIN_TRACK</a>
+&#160;&#160;<a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aa6970bca9abd16aa3e5dc8c83ed9ffac">SURFACE_DEFAULT</a> = -1
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aae231593748597efa2fddd103805f4f0">AIRBORNE</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>
 , <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98acc4e9a6b72b8cb231cf382b6320aeed2">DIRT</a>
 , <br />
-&#160;&#160;<a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a4b5b25f6538779b93b711a1f8be61d97">WOOD_TWO</a>
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98ab6a8526eb199f45568f8bf5fb796a985">WOOD_ONE</a>
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98ab38845f803390169468423997fa0a2a8">BOOST_PAD_TWO</a> = 0xFC
-, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aa1e81e4fe9fc3d41fffdb945abc5d4d7">OUT_OF_BOUNDS</a>
+&#160;&#160;<a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aa4b82daa92a2c6388ae0dedd6e48b331">SAND</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a0fca859752b1db047acd56aca4021d2d">STONE</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a9e6e4a865dcb327f484752cf5af49846">SNOW</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a68d3880946f8e8f3fb64b7f635aaba1e">BRIDGE</a>
 , <br />
-&#160;&#160;<a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98ac9aeca1c22e7192518e82d3296e729ee">BOOST_PAD_ONE</a>
+&#160;&#160;<a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a922956be740c1fa2c08c1b66069507d7">SAND_OFFROAD</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98adbed8401e35adba25dab2e1729ee55fa">GRASS</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a6d7134828b81adf5407a447d1aa6f672">ICE</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a4b22654c70b44a07d6066f1801236c31">WET_SAND</a>
+, <br />
+&#160;&#160;<a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a9f2c03dfb50f9e0126e6256f44f8cbf7">SNOW_OFFROAD</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98ac73ff93c632d693d7e8eb610091ce637">CLIFF</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a9b7899bece29ab1a6a42237ddbb1b5a8">DIRT_OFFROAD</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98ab1f262658c993afeba3aead30f94108f">TRAIN_TRACK</a>
+, <br />
+&#160;&#160;<a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a9d0088ba6996e384373949563ed748a2">CAVE</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a840c6af15539978eb506fbb93491bde4">ROPE_BRIDGE</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a42cbce75b358c45ca5ca25e555dddc6c">WOOD_BRIDGE</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a9b293f81c6f8c72814562333d5341cda">BOOST_RAMP_WOOD</a> = 0xFC
+, <br />
+&#160;&#160;<a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aa1e81e4fe9fc3d41fffdb945abc5d4d7">OUT_OF_BOUNDS</a>
+, <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aa11589879ff008cf99b438493894e142">BOOST_RAMP_ASPHALT</a>
 , <a class="el" href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a291e3bb43cd8449155161d1fa023348b">RAMP</a>
 <br />
  }</td></tr>
+<tr class="memdesc:a5344f2bdca4f9506c40f044e08ea8c98"><td class="mdescLeft">&#160;</td><td class="mdescRight">The different types of surface in the game.  <a href="common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98">More...</a><br /></td></tr>
 <tr class="separator:a5344f2bdca4f9506c40f044e08ea8c98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d202d94ae5f52685624a11fe72ecc7b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7b">GhostController</a> { <a class="el" href="common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7ba42a4ade1acd55a49164099104990e09f">A</a> = 0x80
 , <a class="el" href="common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7ba3f2a77ecd272aa6d6b5902faa5e5fc68">B</a> = 0x40
@@ -497,28 +497,31 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The different types of surface in the game. </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98aae231593748597efa2fddd103805f4f0"></a>AIRBORNE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a2774eadca3e1d086bcadd0d68bd6a35d"></a>PAVEMENT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a3d74c27c9b19c7d4a6fda57e9686df81"></a>SAND_ONE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a4b594364b485faed3881bb42dd999cb5"></a>SAND_TWO&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98ae180997cca069995cd3d8732261e4064"></a>STONE_TWO&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a55295f2a7d535f0391e8b88e5b0c3a34"></a>SNOW_ONE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a31c9d2d531d525e49613c1e1680d7018"></a>STONE_ONE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98af5ddb8e0bd187d596924437815d6f1ab"></a>SAND_FIVE&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98aa6970bca9abd16aa3e5dc8c83ed9ffac"></a>SURFACE_DEFAULT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98aae231593748597efa2fddd103805f4f0"></a>AIRBORNE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb"></a>ASPHALT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98acc4e9a6b72b8cb231cf382b6320aeed2"></a>DIRT&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98aa4b82daa92a2c6388ae0dedd6e48b331"></a>SAND&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a0fca859752b1db047acd56aca4021d2d"></a>STONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a9e6e4a865dcb327f484752cf5af49846"></a>SNOW&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a68d3880946f8e8f3fb64b7f635aaba1e"></a>BRIDGE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a922956be740c1fa2c08c1b66069507d7"></a>SAND_OFFROAD&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98adbed8401e35adba25dab2e1729ee55fa"></a>GRASS&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a6d7134828b81adf5407a447d1aa6f672"></a>ICE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a682ae6b388520a4c5f72eb0dbff3a230"></a>SAND_THREE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98abd1da7385eb1a71dd11bddda4a871e5e"></a>SNOW_TWO&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a4b22654c70b44a07d6066f1801236c31"></a>WET_SAND&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a9f2c03dfb50f9e0126e6256f44f8cbf7"></a>SNOW_OFFROAD&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98ac73ff93c632d693d7e8eb610091ce637"></a>CLIFF&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98ac07c07109994d795a80564aede49b35b"></a>SAND_FOUR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a9b7899bece29ab1a6a42237ddbb1b5a8"></a>DIRT_OFFROAD&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98ab1f262658c993afeba3aead30f94108f"></a>TRAIN_TRACK&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98acc4e9a6b72b8cb231cf382b6320aeed2"></a>DIRT&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a4b5b25f6538779b93b711a1f8be61d97"></a>WOOD_TWO&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98ab6a8526eb199f45568f8bf5fb796a985"></a>WOOD_ONE&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98ab38845f803390169468423997fa0a2a8"></a>BOOST_PAD_TWO&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a9d0088ba6996e384373949563ed748a2"></a>CAVE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a840c6af15539978eb506fbb93491bde4"></a>ROPE_BRIDGE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a42cbce75b358c45ca5ca25e555dddc6c"></a>WOOD_BRIDGE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a9b293f81c6f8c72814562333d5341cda"></a>BOOST_RAMP_WOOD&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98aa1e81e4fe9fc3d41fffdb945abc5d4d7"></a>OUT_OF_BOUNDS&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98ac9aeca1c22e7192518e82d3296e729ee"></a>BOOST_PAD_ONE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98aa11589879ff008cf99b438493894e142"></a>BOOST_RAMP_ASPHALT&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a5344f2bdca4f9506c40f044e08ea8c98a291e3bb43cd8449155161d1fa023348b"></a>RAMP&#160;</td><td class="fielddoc"></td></tr>
 </table>
 

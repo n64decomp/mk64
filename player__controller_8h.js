@@ -1,5 +1,7 @@
 var player__controller_8h =
 [
+    [ "apply_effect", "player__controller_8h.html#a182bc38fa6f5d56393682021517b00ea", null ],
+    [ "apply_sound_effect", "player__controller_8h.html#a33b2eaac4346dd5f6e9250f62036c7b9", null ],
     [ "control_cpu_movement", "player__controller_8h.html#a2ef880d5e041dfaf33557670a675e3e4", null ],
     [ "detect_triple_a_combo_a_pressed", "player__controller_8h.html#a159d20956b9301d34f80c7369791f074", null ],
     [ "detect_triple_a_combo_a_released", "player__controller_8h.html#a2a57be910cde349bb7377bfbaad62a7d", null ],
@@ -35,7 +37,6 @@ var player__controller_8h =
     [ "func_8002AE30", "player__controller_8h.html#a8e98cbfdf84ad6deaf09f8e7cee39958", null ],
     [ "func_8002AE38", "player__controller_8h.html#a11051adab50ba30277a86027780548e8", null ],
     [ "func_8002B218", "player__controller_8h.html#ad0360ca8b1a94658f00f728130df375c", null ],
-    [ "func_8002B308", "player__controller_8h.html#a14483257d16662913dd5d14096fc44cc", null ],
     [ "func_8002B5C0", "player__controller_8h.html#a57d836b6a21fcc25c9f703d5e1b15946", null ],
     [ "func_8002B830", "player__controller_8h.html#aff4f400b8c5b8cb136256ee52ccd6e78", null ],
     [ "func_8002B8A4", "player__controller_8h.html#ae4e4c2aa68964d2c44d5ad1927b472de", null ],
@@ -47,7 +48,6 @@ var player__controller_8h =
     [ "func_8002C4F8", "player__controller_8h.html#a5f2d6dace2643074ccdb59a3839268bc", null ],
     [ "func_8002C7E4", "player__controller_8h.html#af917f12b29f31fbc3e06e36390b08cae", null ],
     [ "func_8002C954", "player__controller_8h.html#a4379cf9352fe960f8cf917cf4856f4ed", null ],
-    [ "func_8002CD48", "player__controller_8h.html#a2cf0e800f92d3f495545df4fc7414eb2", null ],
     [ "func_8002D028", "player__controller_8h.html#a9c34653b2d0d6553978358b8b1188788", null ],
     [ "func_8002D268", "player__controller_8h.html#aa62e3bb71c2d01a3ab74fea94d8d633f", null ],
     [ "func_8002E4C4", "player__controller_8h.html#a23af3130cfcd9af775d97ef725b91720", null ],
