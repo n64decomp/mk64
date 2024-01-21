@@ -1010,16 +1010,16 @@ void func_8001F394(Player *player, f32 *arg1) {
     }
 
     if (D_80164A08[playerIndex] == 0) {
-        if (player->statusEffects & HOLD_BANANA_EFFECT) {
+        if (player->soundEffects & HOLD_BANANA_SOUND_EFFECT) {
             D_80164A08[playerIndex] = 1;
         }
-        if ((player->effects & 0x2000) == 0x2000) {
+        if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
             D_80164A08[playerIndex] = 2;
         }
-        if ((player->effects & 0x100000) == 0x100000) {
+        if ((player->effects & BOOST_RAMP_BITUMEN_EFFECT) == BOOST_RAMP_BITUMEN_EFFECT) {
             D_80164A08[playerIndex] = 3;
         }
-        if ((player->statusEffects & 0x100) == 0x100) {
+        if ((player->soundEffects & 0x100) == 0x100) {
             D_80164A08[playerIndex] = 4;
         }
         if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40)) {
@@ -1029,7 +1029,7 @@ void func_8001F394(Player *player, f32 *arg1) {
     }
     switch (D_80164A08[playerIndex]) {
     case 1:
-        if (player->statusEffects & HOLD_BANANA_EFFECT) {
+        if (player->soundEffects & HOLD_BANANA_SOUND_EFFECT) {
             move_f32_towards(&D_80164498[playerIndex], 20.0f, 0.2f);
         } else {
             if (D_80164498[playerIndex] > 1.0f) {
@@ -1041,7 +1041,7 @@ void func_8001F394(Player *player, f32 *arg1) {
         }
         break;
     case 2:
-        if ((player->effects & 0x2000) == 0x2000) {
+        if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
             if (player->boostTimer != 0) {
                 move_f32_towards(&D_80164498[playerIndex], 8.0f, 0.2f);
             }
@@ -1055,7 +1055,7 @@ void func_8001F394(Player *player, f32 *arg1) {
         }
         break;
     case 3:
-        if (((player->effects & 0x100000) == 0x100000) && ((player->effects & 8) == 8)) {
+        if (((player->effects & BOOST_RAMP_BITUMEN_EFFECT) == BOOST_RAMP_BITUMEN_EFFECT) && ((player->effects & 8) == 8)) {
             move_f32_towards(&D_80164498[playerIndex], 20.0f, 0.1f);
         } else {
             if (D_80164498[playerIndex] > 1.0f) {
@@ -1067,7 +1067,7 @@ void func_8001F394(Player *player, f32 *arg1) {
         }
         break;
     case 4:
-        if ((player->statusEffects & 0x100) == 0x100) {
+        if ((player->soundEffects & 0x100) == 0x100) {
             move_f32_towards(&D_80164498[playerIndex], 25.0f, 1.0f);
         } else {
             if (D_80164498[playerIndex] > 1.0f) {

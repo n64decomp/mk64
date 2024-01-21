@@ -3527,7 +3527,7 @@ void func_80060504(Player *player, s16 arg1, s32 arg2, s32 arg3) {
     player->unk_258[arg1].unk_024 = 0.0f;
     if ((player->unk_044 & 0x20) == 0x20) {
         player->unk_258[arg1].unk_040 = 0;
-        if ((player->effects & 0x2000) == 0x2000) {
+        if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
             func_8005D800(&player->unk_258[arg1], 0x00FFFF00, 0x0080);
             player->unk_258[arg1].unk_038 = 1;
         } else {
@@ -3536,7 +3536,7 @@ void func_80060504(Player *player, s16 arg1, s32 arg2, s32 arg3) {
         }
     } else {
         player->unk_258[arg1].unk_040 = 1;
-        if ((player->effects & 0x2000) == 0x2000) {
+        if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
             func_8005D800(&player->unk_258[arg1], 0x00FFFF00, 0x0080);
             player->unk_258[arg1].unk_038 = 1;
         } else {
@@ -4178,7 +4178,7 @@ void func_80062C74(Player *player, s16 arg1, UNUSED s32 arg2, s32 arg3) {
     } else {
         var_f6 = -((player->unk_098 / 6000.0f) + 0.1);
     }
-    if (((player->effects & 0x2000) == 0x2000) && (player->unk_258[arg1].unk_01E >= 6)) {
+    if (((player->effects & BOOST_EFFECT) == BOOST_EFFECT) && (player->unk_258[arg1].unk_01E >= 6)) {
         player->unk_258[arg1].unk_00C = player->unk_258[arg1].unk_00C + 0.06;
     }
     player->unk_258[arg1].unk_010++;
@@ -6142,11 +6142,11 @@ void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if ((player->effects & 0x2000) && (player->type & PLAYER_HUMAN)) {
+        if ((player->effects & BOOST_EFFECT) && (player->type & PLAYER_HUMAN)) {
             func_800621BC(player, arg1, sp28, arg2);
             return;
         }
-        if (((player->effects & 0x200000) || (player->effects & 0x100000)) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+        if (((player->effects & 0x200000) || (player->effects & BOOST_RAMP_BITUMEN_EFFECT)) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
             func_80061EF4(player, arg1, sp28, arg2);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;

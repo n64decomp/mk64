@@ -88,9 +88,9 @@ enum SURFACE_TYPE {
     /* 0x0F */ CAVE, // DK Jungle cave
     /* 0x10 */ ROPE_BRIDGE, // Bowser's Castle bridge 2, DK Jungle bridge
     /* 0x11 */ WOOD_BRIDGE, // Frappe Snowland bridge, Bowser's Castle bridge 1,3, Yoshi Valley bridge 2
-    /* 0xFC */ BOOST_RAMP = 0xFC, // DK Jungle
+    /* 0xFC */ BOOST_RAMP_WOOD = 0xFC, // DK Jungle
     /* 0xFD */ OUT_OF_BOUNDS, // DK Jungle river island
-    /* 0xFE */ BOOST_PAD, // Royal Raceway
+    /* 0xFE */ BOOST_RAMP_BITUMEN, // Royal Raceway
     /* 0xFF */ RAMP // Koopa Troopa beach
 };
 
@@ -249,7 +249,7 @@ typedef struct {
     /* 0x0006 */ u16 unk_006;
     /* 0x0008 */ s16 lapCount;
     /* 0x000A */ char unk_00A[0x2];
-    /* 0x000C */ s32 statusEffects; // Bitflag.
+    /* 0x000C */ s32 soundEffects; // Bitflag.
     /* 0x0010 */ s16 currentItemCopy; // Has no effect on what item the players has, It is just a synced copy
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;

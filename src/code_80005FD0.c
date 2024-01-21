@@ -1067,10 +1067,10 @@ void func_80008424(s32 playerId, f32 arg1, Player *player) {
     if (!(player->effects & 0x80) &&
         !(player->effects & 0x40) &&
         !(player->effects & 0x20000) &&
-        !(player->statusEffects & 0x400000) &&
-        !(player->statusEffects & 0x01000000) &&
-        !(player->statusEffects & 2) &&
-        !(player->statusEffects & 4)) {
+        !(player->soundEffects & 0x400000) &&
+        !(player->soundEffects & 0x01000000) &&
+        !(player->soundEffects & 2) &&
+        !(player->soundEffects & 4)) {
         if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
             func_80007FA4(playerId, player, var_f2);
         } else if ((D_801634D8[playerId] == 1) && !(player->effects & 0x80000200)) {
@@ -1650,7 +1650,7 @@ void func_800098FC(s32 arg0, Player *player) {
         }
     }
     if (D_801633B0[arg0] >= 0xB) {
-        if ((player->statusEffects & 0x400000) || (player->statusEffects & 0x01000000) || (player->statusEffects & 2) || (player->statusEffects & 4) || (player->effects & 0x04000000)) {
+        if ((player->soundEffects & 0x400000) || (player->soundEffects & 0x01000000) || (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & 0x04000000)) {
 	        func_800C92CC(arg0, 0x2900800BU);
 	        D_801633B0[arg0] = 0;
 	    }
@@ -3125,7 +3125,7 @@ void func_8000DF8C(s32 bombKartId) {
                     if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12)) < 25.0f) {
                         var_s1 = 0;
                         sp7E = 4;
-                        var_v0->statusEffects |= 0x400000;
+                        var_v0->soundEffects |= 0x400000;
                         var_v0->type &= ~0x2000;
                     }
                 }
@@ -3140,9 +3140,9 @@ void func_8000DF8C(s32 bombKartId) {
                             sp7E = 4;
                             var_s1 = 0;
                             if (gCurrentCourseId == COURSE_FRAPPE_SNOWLAND) {
-                                var_v0->statusEffects |= 0x01000000;
+                                var_v0->soundEffects |= 0x01000000;
                             } else {
-                                var_v0->statusEffects |= 0x400000;
+                                var_v0->soundEffects |= 0x400000;
                             }
                         }
                     }
@@ -3705,7 +3705,7 @@ void func_8000F628(void) {
 
             for (i = 0; i < NUM_PLAYERS; i++) {
                 if (D_80163330[i] == 1) {
-                    gPlayers[i].statusEffects |= 0x02000000;
+                    gPlayers[i].soundEffects |= 0x02000000;
                 }
             }
         }
@@ -4736,12 +4736,12 @@ void func_80012DC0(s32 playerId, Player *player) {
                 if ((x_dist > -100.0) && (x_dist < 100.0)) {
                     if ((z_dist > -100.0) && (z_dist < 100.0)) {
                         if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                            player->statusEffects |= REVERSE_EFFECT;
+                            player->soundEffects |= REVERSE_SOUND_EFFECT;
                         }
                         trainCar = &gTrainList[trainIndex].tender;
                         if (trainCar->isActive == 1) {
                             if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                                player->statusEffects |= REVERSE_EFFECT;
+                                player->soundEffects |= REVERSE_SOUND_EFFECT;
                             }
                         }
                     }
@@ -4755,7 +4755,7 @@ void func_80012DC0(s32 playerId, Player *player) {
                         if ((x_dist > -100.0) && (x_dist < 100.0)) {
                             if ((z_dist > -100.0) && (z_dist < 100.0)) {
                                 if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                                    player->statusEffects |= REVERSE_EFFECT;
+                                    player->soundEffects |= REVERSE_SOUND_EFFECT;
                                 }
                             }
                         }
@@ -4978,7 +4978,7 @@ void func_80013854(Player *player) {
                 if ((x_diff > -300.0) && (x_diff < 300.0)) {
                     if ((z_diff > -300.0) && (z_diff < 300.0)) {
                         if ((func_80006018(tempPaddleWheelBoat->position[0], tempPaddleWheelBoat->position[2], tempPaddleWheelBoat->velocity[0], tempPaddleWheelBoat->velocity[2], 200.0f, 60.0f, playerX, playerZ) == 1) && (y_diff < 60.0)) {
-                            player->statusEffects |= 0x80000;
+                            player->soundEffects |= 0x80000;
                         }
                     }
                 }
@@ -5155,7 +5155,7 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
  
                         if (((temp_f14) > -100.0) && ((temp_f14) < 100.0)) {
                             if (func_80006018(vehicle->position[0], vehicle->position[2], vehicle->velocity[0], vehicle->velocity[2], arg3, arg4, spC4, spBC) == (s32) 1) {
-                            player->statusEffects |= REVERSE_EFFECT;
+                            player->soundEffects |= REVERSE_SOUND_EFFECT;
                             }
                         }
                     }
@@ -7671,7 +7671,7 @@ void cpu_use_item_strategy(s32 playerId) {
             } else if (temp_s0->unk_00 == 1) {
                 temp_s0->actorIndex = use_banana_item(player);
                 if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
-                    player->statusEffects |= HOLD_BANANA_EFFECT;
+                    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
                     temp_s0->unk_00 = 2;
                     temp_s0->unk_04 = 0;
                     temp_s0->unk_06 += 1;
@@ -7688,7 +7688,7 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((!(banana->flags & 0x8000)) || (banana->type != 6) || (banana->state != 0) || (playerId != banana->playerId)) {
                 temp_s0->unk_00 = 0;
                 temp_s0->unk_04 = 0;
-                player->statusEffects &= ~0x00040000;
+                player->soundEffects &= ~0x00040000;
             } else if (temp_s0->unk_0E < temp_s0->unk_04) {
                 temp_s0->unk_00 = 3;
             }
@@ -7707,7 +7707,7 @@ void cpu_use_item_strategy(s32 playerId) {
                   banana->pos[1] = func_802AE1C0(player->pos[0], (f32) (((f64) player->pos[1]) + 30.0), player->pos[2]) + (banana->boundingBoxSize + 1.0f);
                 }
             }
-            player->statusEffects &= ~0x00040000;
+            player->soundEffects &= ~0x00040000;
             temp_s0->unk_04 = 0;
             temp_s0->unk_00 = 0;
             break;
@@ -7717,7 +7717,7 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
                 banana = (struct BananaActor*)&gActorList[temp_s0->actorIndex];
                 banana->state = 4;
-                player->statusEffects |= HOLD_BANANA_EFFECT;
+                player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
                 temp_s0->unk_00 = 0x0023;
                 temp_s0->unk_04 = 0;
                 temp_s0->unk_06 += 1;
@@ -7739,7 +7739,7 @@ void cpu_use_item_strategy(s32 playerId) {
             if ((((!(banana->flags & 0x8000)) || (banana->type != 6)) || (banana->state != 4)) || (playerId != banana->playerId)) {
                 temp_s0->unk_00 = 0;
                 temp_s0->unk_04 = 0;
-                player->statusEffects &= ~0x00040000;
+                player->soundEffects &= ~0x00040000;
             } else {
                 banana->velocity[1] -= 0.4;
                 banana->pos[0] += banana->velocity[0];
@@ -7762,7 +7762,7 @@ void cpu_use_item_strategy(s32 playerId) {
                 banana->velocity[2] = 0.0f;
                 banana->pos[1] = func_802AE1C0(banana->pos[0], (f32) (((f64) banana->pos[1]) + 30.0), banana->pos[2]) + (banana->boundingBoxSize + 1.0f);
             }
-            player->statusEffects &= ~0x00040000;
+            player->soundEffects &= ~0x00040000;
             temp_s0->unk_00 = 0;
             temp_s0->unk_04 = 0;
             break;
@@ -7993,7 +7993,7 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case 25:
-            player->statusEffects |= STAR_EFFECT;
+            player->soundEffects |= STAR_SOUND_EFFECT;
             temp_s0->unk_00 = 0x001A;
             temp_s0->unk_04 = 0;
             temp_s0->unk_06 += 1;
@@ -8007,7 +8007,7 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case 27:
-            player->statusEffects |= BOO_EFFECT;
+            player->soundEffects |= BOO_SOUND_EFFECT;
             temp_s0->unk_00 = 0x001C;
             temp_s0->unk_04 = 0;
             temp_s0->unk_06 += 1;
@@ -8021,7 +8021,7 @@ void cpu_use_item_strategy(s32 playerId) {
             break;
 
         case 29:
-            player->statusEffects |= BOOST_EFFECT;
+            player->soundEffects |= BOOST_SOUND_EFFECT;
             temp_s0->unk_00 = 0;
             temp_s0->unk_04 = 0;
             temp_s0->unk_06 += 1;
@@ -8029,7 +8029,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case 30:
             if (temp_s0->unk_04 >= 0x3D) {
-                player->statusEffects |= BOOST_EFFECT;
+                player->soundEffects |= BOOST_SOUND_EFFECT;
                 temp_s0->unk_00 = 0x001D;
                 temp_s0->unk_04 = 0;
             }
@@ -8037,7 +8037,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case 31:
             if (temp_s0->unk_04 >= 0x3D) {
-                player->statusEffects |= BOOST_EFFECT;
+                player->soundEffects |= BOOST_SOUND_EFFECT;
                 temp_s0->unk_00 = 0x001E;
                 temp_s0->unk_04 = 0;
             }
@@ -8051,7 +8051,7 @@ void cpu_use_item_strategy(s32 playerId) {
 
         case 33:
             if ((((s16) temp_s0->unk_04) % 60) == 0) {
-                player->statusEffects |= BOOST_EFFECT;
+                player->soundEffects |= BOOST_SOUND_EFFECT;
                 if (temp_s0->unk_0E < temp_s0->unk_04) {
                     temp_s0->unk_00 = 0;
                     temp_s0->unk_04 = 0;

@@ -171,7 +171,7 @@ UNUSED void func_unnamed33(void) {
 
 
 void func_8008C310(Player *player) {
-    if ((player->statusEffects & 2) || (player->statusEffects & 4) || ((player->statusEffects << 9) < 0) || (player->statusEffects & HIT_BY_ITEM_EFFECT)) {
+    if ((player->soundEffects & 2) || (player->soundEffects & 4) || ((player->soundEffects << 9) < 0) || (player->soundEffects & HIT_BY_ITEM_SOUND_EFFECT)) {
         player->unk_0B6 = ((u16)player->unk_0B6 | 0x1000);
     }
 }
@@ -180,7 +180,7 @@ UNUSED void func_unnamed34(void) {
 
 }
 
-void func_8008C354(Player *player, s8 arg1) {
+void clean_effect(Player *player, s8 arg1) {
 
     if ((player->effects & 0x400) == 0x400) {
         func_8008C6D0(player, arg1);
@@ -195,8 +195,8 @@ void func_8008C354(Player *player, s8 arg1) {
     if ((player->unk_044 & 0x4000) != 0) { 
         func_8008D3B0(player, arg1);
     }
-    if ((player->effects & 0x2000) == 0x2000) {
-        func_8008D554(player);
+    if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
+        remove_boost_effect(player);
     }
     if ((player->effects & 0x80000) == 0x80000) {
         func_8008D760(player);
@@ -210,11 +210,11 @@ void func_8008C354(Player *player, s8 arg1) {
     if ((player->effects & 0x2000000) == 0x2000000) {
         func_8008EC34(player, arg1);
     }
-    if ((player->effects & 0x100000) == 0x100000) {
-        func_8008EEC4(player);
+    if ((player->effects & BOOST_RAMP_BITUMEN_EFFECT) == BOOST_RAMP_BITUMEN_EFFECT) {
+        remove_BOOST_RAMP_BITUMEN_effect(player);
     }
-    if ((player->effects & 4) == 4) {
-        func_8008F0E8(player);
+    if ((player->effects & BOOST_RAMP_WOOD_EFFECT) == BOOST_RAMP_WOOD_EFFECT) {
+        remove_boost_ramp_wood_effect(player);
     }
     if ((player->effects & 0x4000) == 0x4000) {
         func_8008F3E0(player);
@@ -232,7 +232,7 @@ void func_8008C354(Player *player, s8 arg1) {
 void func_8008C528(Player *player, s8 arg1) {
     UNUSED s32 sp24;
     s32 temp_v1;
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
     func_8008C310(player);
     temp_v1 = player->characterId;
     player->unk_0C2 = 0;
@@ -252,7 +252,7 @@ void func_8008C528(Player *player, s8 arg1) {
     } else {
         func_800098FC(arg1, player);
     }
-    player->statusEffects = (s32) (player->statusEffects & ~4);
+    player->soundEffects = (s32) (player->soundEffects & ~4);
 }
 
 void func_8008C62C(Player *player, s8 arg1) {
@@ -292,7 +292,7 @@ void func_8008C6D0(Player *player, s8 arg1) {
 }
 
 void func_8008C73C(Player *player, s8 arg1) {
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
     if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40)) {
         player->effects &= ~0x10;
 
@@ -343,7 +343,7 @@ void func_8008C8C4(Player* player, s8 playerId) {
         player->currentSpeed = (f32) (player->currentSpeed + 100.0f);
     }
     if ((gModeSelection == VERSUS) && ((player->type & PLAYER_CPU) == PLAYER_CPU) && (!gDemoMode) && ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[playerId] != 0)) {
-        player->statusEffects = (s32) (player->statusEffects | REVERSE_EFFECT);
+        player->soundEffects = (s32) (player->soundEffects | REVERSE_SOUND_EFFECT);
     }
 }
 
@@ -402,9 +402,9 @@ void func_8008C9EC(Player *player, s8 arg1) {
 }
 
 void func_8008CDC0(Player* player, s8 arg1) {
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
 
-    player->statusEffects &= ~1;
+    player->soundEffects &= ~1;
     player->unk_0B4 = 0;
     player->unk_0B8 = 3.0f;
     player->unk_0AC = 1;
@@ -474,9 +474,9 @@ void func_8008D0E4(Player* player, UNUSED s8 arg1) {
 }
 
 void func_8008D0FC(Player *player, s8 arg1) {
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
 
-    player->statusEffects &= ~0x80;
+    player->soundEffects &= ~0x80;
     player->unk_0B4 = 0;
     player->unk_0B8 = 2.0f;
     player->unk_0AC = 1;
@@ -539,12 +539,12 @@ void func_8008D3B0(Player* player, UNUSED s8 arg1) {
     player->unk_044 &= 0xBFFF;
 }
 
-void func_8008D3C4(Player* player, s8 arg1) {
+void apply_boost_sound_effect(Player* player, s8 arg1) {
 
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
 
-    player->effects |= 0x2000;
-    player->statusEffects &= ~BOOST_EFFECT;
+    player->effects |= BOOST_EFFECT;
+    player->soundEffects &= ~BOOST_SOUND_EFFECT;
     player->unk_DB4.unk0 = 0;
     player->unk_DB4.unk8 = 8.0f;
     
@@ -563,7 +563,7 @@ void func_8008D3C4(Player* player, s8 arg1) {
     player->boostTimer = 0x50;
 }
 
-void func_8008D4B4(Player* player) {
+void apply_boost_effect(Player* player) {
     player->currentSpeed = (f32) player->topSpeed;
     if ( player->boostTimer > 0) {
         --player->boostTimer;
@@ -576,22 +576,22 @@ void func_8008D4B4(Player* player) {
     }
     
     if (player->boostPower <= 1.0f) {
-        player->effects &= ~0x2000;
+        player->effects &= ~BOOST_EFFECT;
     }
 }
 
-void func_8008D554(Player* player) {
-    player->effects &= ~0x2000;
+void remove_boost_effect(Player* player) {
+    player->effects &= ~BOOST_EFFECT;
     player->boostPower = 0.0f;
 }
 
 void func_8008D570(Player *player, s8 arg1) {
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
 
     player->unk_0AE = player->rotation[1];
     player->effects |= 0x80000;
     player->effects &= ~0x10;
-    player->statusEffects &= ~0x1000;
+    player->soundEffects &= ~0x1000;
     player->kartHopJerk = D_800E3730[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = (f32) D_800E3710[player->characterId];
@@ -643,12 +643,12 @@ void func_8008D760(Player* player) {
 }
 
 void func_8008D7B0(Player* player, s8 arg1) {
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
 
     player->unk_0AE = player->rotation[1];
     player->effects |= 0x800000;
     player->effects &= ~0x10;
-    player->statusEffects &= 0xFFFDFFFF;
+    player->soundEffects &= ~0x20000;
     player->kartHopJerk = D_800E3770[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = D_800E3750[player->characterId];
@@ -717,7 +717,7 @@ void func_8008D9C0(Player* player) {
 }
 
 void func_8008DABC(Player *player, s8 arg1) {
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
 
     if ((player->effects & 0x4000000) == 0) {
         player->unk_DB4.unk2 = 0;
@@ -733,7 +733,7 @@ void func_8008DABC(Player *player, s8 arg1) {
         player->unk_D9C = 0.0f;
         player->unk_DA0 = 65.0f;
 
-        if ((player->statusEffects & 0x100) != 0) {
+        if ((player->soundEffects & 0x100) != 0) {
             player->unk_046 |= 0x80;
         }
 
@@ -765,7 +765,7 @@ void func_8008DC08(Player* player, s8 arg1) {
         }
 
         if ((player->unk_046 & 0x80) != 0) {
-            if ((player->statusEffects & 0x100) == 0) {
+            if ((player->soundEffects & 0x100) == 0) {
                 D_8018D990[arg1] = 1;
                 player->unk_238 = 0;
                 if ((player->type & PLAYER_HUMAN) != 0) {
@@ -854,10 +854,10 @@ void func_8008DC08(Player* player, s8 arg1) {
     }
 }
 
-void func_8008DF98(Player* player, s8 arg1) {
-    func_8008C354(player, arg1);
+void apply_hit_rotating_sound_effect(Player* player, s8 arg1) {
+    clean_effect(player, arg1);
 
-    player->statusEffects &= ~HIT_ROTATING_EFFECT;
+    player->soundEffects &= ~HIT_ROTATING_SOUND_EFFECT;
     player->effects |= 0x40020000;
     player->effects &= ~0x10;
     player->unk_08C *= 0.6;
@@ -1017,9 +1017,9 @@ void func_8008E4A4(Player* player, s8 arg1) {
     }
 }
 
-void func_8008E6C0(Player *player, s8 arg1)
+void apply_reverse_sound_effect(Player *player, s8 arg1)
 {
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
     func_8008C310(player);
 
     player->unk_0A8 = 0;
@@ -1051,7 +1051,7 @@ void func_8008E6C0(Player *player, s8 arg1)
         func_800098FC(arg1, player);
     }
 
-    player->statusEffects &= ~0x00480000;
+    player->soundEffects &= ~0x00480000;
     player->unk_0B6 |= 0x40;
     gTimerBoostTripleACombo[arg1] = 0;
     gIsPlayerTripleAButtonCombo[arg1] = FALSE;
@@ -1127,8 +1127,8 @@ void func_8008E8D8(Player *player, s8 arg1) {
     }
 }
 
-void func_8008EAE0(Player* player, s8 arg1) {
-    func_8008C354(player, arg1);
+void apply_hit_by_item_sound_effect(Player* player, s8 arg1) {
+    clean_effect(player, arg1);
     func_8008C310(player);
 
     player->unk_0A8 = 0;
@@ -1151,7 +1151,7 @@ void func_8008EAE0(Player* player, s8 arg1) {
     
     player->effects |= 0x02000000;
     player->unk_0B6 |= 0x40;
-    player->statusEffects &= ~0x01000002;
+    player->soundEffects &= ~0x01000002;
 
     gTimerBoostTripleACombo[arg1] = 0;
     gIsPlayerTripleAButtonCombo[arg1] = FALSE;
@@ -1170,40 +1170,40 @@ void func_8008EC34(Player* player, s8 arg1) {
     player->unk_042 = 0;
 }
 
-void func_8008EC88(Player* player, s8 arg1) {
-    func_8008C354(player, arg1);
+void apply_BOOST_RAMP_BITUMEN_sound_effect(Player* player, s8 playerId) {
+    clean_effect(player, playerId);
 
-    player->effects |= 0x100000;
-    player->statusEffects &= ~0x00800000;
+    player->effects |= BOOST_RAMP_BITUMEN_EFFECT;
+    player->soundEffects &= ~BOOST_RAMP_BITUMEN_SOUND_EFFECT;
     player->unk_DB4.unk0 = 0;
     player->unk_DB4.unk8 = 8.0f;
     if (D_8015F890 != 1) {
         if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
-            func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008001);
-            func_800C9060(arg1, 0x1900A40B);
+            func_800C90F4(playerId, (player->characterId * 0x10) + 0x29008001);
+            func_800C9060(playerId, 0x1900A40B);
         }
     } else if (player == gPlayerOne) {
-        func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008001);
-        func_800C9060(arg1, 0x1900A40B);
+        func_800C90F4(playerId, (player->characterId * 0x10) + 0x29008001);
+        func_800C9060(playerId, 0x1900A40B);
     }
     player->unk_044 &= ~0x1;
     player->effects &= ~0x20;
 }
 
-void func_8008EDC0(Player* player) {
+void apply_BOOST_RAMP_BITUMEN_effect(Player* player) {
     f64 temp_f0;
 
     player->currentSpeed = player->topSpeed;
     if ((u16) player->unk_256 > 0) {
         player->currentSpeed = 0.0f;
     }
-    if ((player->surfaceType != BOOST_PAD) && ((player->effects & 8) != 8)) {
+    if ((player->surfaceType != BOOST_RAMP_BITUMEN) && ((player->effects & 8) != 8)) {
         move_f32_towards(&player->boostPower, 0, 1.0f);
     } else {
         move_f32_towards(&player->boostPower, 400.0f, 0.01f);
     }
     if (player->boostPower <= 1.0f) {
-        player->effects &= ~0x00100000;
+        player->effects &= ~BOOST_RAMP_BITUMEN_EFFECT;
         player->boostPower = 0.0f;
         if (player->unk_0C2 >= 0x33) {
             temp_f0 = 0.7;
@@ -1213,55 +1213,55 @@ void func_8008EDC0(Player* player) {
     }
 }
 
-void func_8008EEC4(Player* player) {
-    player->effects &= ~0x00100000;
+void remove_BOOST_RAMP_BITUMEN_effect(Player* player) {
+    player->effects &= ~BOOST_RAMP_BITUMEN_EFFECT;
     player->boostPower = 0.0f;
 }
 
-void func_8008EEE4(Player* player, s8 arg1) {
-    func_8008C354(player, arg1);
+void apply_boost_ramp_wood_sound_effect(Player* player, s8 playerId) {
+    clean_effect(player, playerId);
 
-    player->effects |= 0x4;
-    player->statusEffects &= ~0x8000;
+    player->effects |= BOOST_RAMP_WOOD_EFFECT;
+    player->soundEffects &= ~BOOST_RAMP_WOOD_SOUND_EFFECT;
 
     if (D_8015F890 != 1) {
         if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0)) {
-            func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008001);
-            func_800C9060(arg1, 0x1900A40B);
+            func_800C90F4(playerId, (player->characterId * 0x10) + 0x29008001);
+            func_800C9060(playerId, 0x1900A40B);
         }
     } else if (player == gPlayerOne) {
-        func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008001);
-        func_800C9060(arg1, 0x1900A40B);
+        func_800C90F4(playerId, (player->characterId * 0x10) + 0x29008001);
+        func_800C9060(playerId, 0x1900A40B);
     }
 
     player->unk_044 &= ~0x1;
     player->effects &= ~0x20;
 }
 
-void func_8008F008(Player* player) {
+void apply_boost_ramp_wood_effect(Player* player) {
     player->currentSpeed = gTopSpeedTable[0][player->characterId];
 
-    if ((player->surfaceType != BOOST_RAMP) && ((player->effects & 8) != 8)) {
+    if ((player->surfaceType != BOOST_RAMP_WOOD) && ((player->effects & 8) != 8)) {
         move_f32_towards(&player->boostPower, 0, 1.0f);
     } else {
         move_f32_towards(&player->boostPower, 300.0f, 0.1f);
     }
     
     if (player->boostPower <= 1.0f) {
-        player->effects &= ~0x4;
+        player->effects &= ~BOOST_RAMP_WOOD_EFFECT;
         player->boostPower = 0.0f;
         player->currentSpeed /= 2;
         player->unk_08C /= 2;
     }
 }
 
-void func_8008F0E8(Player* player) {
-    player->effects &= ~4;
+void remove_boost_ramp_wood_effect(Player* player) {
+    player->effects &= ~BOOST_RAMP_WOOD_EFFECT;
     player->boostPower = 0.0f;
 }
 
 void func_8008F104(Player* player, s8 arg1) {
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
 
     player->unk_0AE = player->rotation[1];
     player->unk_0B2 = 2;
@@ -1355,7 +1355,7 @@ void func_8008F494(Player* player, s8 arg1) {
         player->unk_044 |= 0x8000;
     }
 
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
     func_8008F86C(player, arg1);
  
     player->unk_0A8 = 0;
@@ -1418,11 +1418,11 @@ void func_8008F650(Player* player, s8 arg1) {
 }
 
 // Star item
-void func_8008F778(Player* player, s8 arg1) {
-    func_8008C354(player, arg1);
+void apply_star_sound_effect(Player* player, s8 arg1) {
+    clean_effect(player, arg1);
 
     player->effects |= 0x200;
-    player->statusEffects &= ~STAR_EFFECT;
+    player->soundEffects &= ~STAR_SOUND_EFFECT;
     D_8018D930[arg1] = gCourseTimer;
     D_8018D900[arg1] = 1;
 
@@ -1483,7 +1483,7 @@ void func_8008F8DC(Player* arg0, s8 arg1) {
     }
 }
 
-void func_8008FA38(Player* player, s8 arg1) {
+void apply_boo_sound_effect(Player* player, s8 arg1) {
     s16 temp_v1;
 
     if ((player->type & PLAYER_HUMAN) != 0) {
@@ -1496,10 +1496,10 @@ void func_8008FA38(Player* player, s8 arg1) {
         }
     }
 
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
 
     player->effects |= 0x80000000;
-    player->statusEffects &= ~BOO_EFFECT;
+    player->soundEffects &= ~BOO_SOUND_EFFECT;
     D_8018D950[arg1] = gCourseTimer;
     D_8018D970[arg1] = 0xFF;
 
@@ -1545,8 +1545,8 @@ void func_8008FC64(Player* player, s8 arg1) {
     player->unk_0C6 -= 4;
     if (player->unk_0C6 < 5) {
         player->unk_0C6 = 0;
-        player->statusEffects &= 0xFBFFFFFF;
-        player->statusEffects |= 0x08000000;
+        player->soundEffects &= 0xFBFFFFFF;
+        player->soundEffects |= 0x08000000;
         player->type |= PLAYER_UNKNOWN_0x40;
         
         func_8008FDA8(player, arg1);
@@ -1558,7 +1558,7 @@ void func_8008FCDC(Player* player, s8 arg1) {
     player->unk_0C6 += 2;
     if (player->unk_0C6 >= 0xF0) {
         player->unk_0C6 = 0xFF;
-        player->statusEffects &= ~0x08000000;
+        player->soundEffects &= ~0x08000000;
     }
 
     func_80056A40(arg1, (u32) player->unk_0C6);
@@ -1567,7 +1567,7 @@ void func_8008FCDC(Player* player, s8 arg1) {
 void func_8008FD4C(Player* player, UNUSED s8 arg1) {
     s16 temp_v0;
     
-    player->statusEffects |= 0x04000000;
+    player->soundEffects |= 0x04000000;
     player->unk_044 |= 0x200;
 
     for (temp_v0 = 0; temp_v0 < 10; ++temp_v0) {
@@ -1588,13 +1588,13 @@ void func_8008FDA8(Player* player, UNUSED s8 arg1) {
 }
 
 void func_8008FDF4(Player* player, UNUSED s8 arg1) {
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
     
     player->effects &= ~0x10;
     player->kartHopJerk =  D_800E37F0[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = D_800E37D0[player->characterId];
-    player->statusEffects &= ~0x00100000;
+    player->soundEffects &= ~0x00100000;
     player->effects |= 0x10000000;
 }
 
@@ -1788,7 +1788,7 @@ void func_80090778(Player* player) {
     player->unk_222 = 0;
     player->unk_08C = 0.0f;
 
-    func_8008C354(player, playerIndex);
+    clean_effect(player, playerIndex);
     func_8008F86C(player, playerIndex);
  
     player->unk_DB4.unk0 = 0;
@@ -1852,7 +1852,7 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
     player->unk_07C = 0;
     player->unk_0C0 = 0;
     player->unk_08C = 0.0f;
-    func_8008C354(player, arg1);
+    clean_effect(player, arg1);
     switch (player->unk_222) {
     case 0:
         if ((player->unk_0CA & 1) == 1) {

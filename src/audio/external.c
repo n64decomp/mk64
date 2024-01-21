@@ -3369,13 +3369,13 @@ void func_800C9018(u8 arg0, s32 arg1) {
     func_800C5578(D_800E9F7C[arg0].pos, arg1);
 }
 
-void func_800C9060(u8 arg0, u32 arg1) {
+void func_800C9060(u8 playerId, u32 arg1) {
     if (D_800EA108 == 0) {
-        switch(D_800EA0EC[arg0]) {
+        switch(D_800EA0EC[playerId]) {
             case 2:
-                D_800EA0EC[arg0] = 1;
+                D_800EA0EC[playerId] = 1;
             case 0:
-                play_sound(arg1, D_800E9F7C[arg0].pos, arg0, &D_800EA1D4, &D_800EA1D4, &D_800E9F7C[arg0].unk_14);
+                play_sound(arg1, D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4, &D_800E9F7C[playerId].unk_14);
                 break;
             }
     }

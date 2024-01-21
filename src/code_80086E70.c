@@ -1147,7 +1147,7 @@ s32 func_80089B50(s32 objectIndex) {
         for (var_s1 = 0; var_s1 < D_8018D158; var_s1++, player++, test++) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x81000000) && (player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (has_collided_horizontally_with_player(objectIndex, player) != 0)) {
                 if (!(player->effects & 0x200)) {
-                    player->statusEffects |= REVERSE_EFFECT;
+                    player->soundEffects |= REVERSE_SOUND_EFFECT;
                     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
@@ -1173,7 +1173,7 @@ s32 func_80089CBC(s32 objectIndex, f32 arg1) {
             if ((gObjectList[objectIndex].state != 0) && !(player->effects & 0x81000000)) {
                 if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_INVISIBLE_OR_BOMB) && (has_collided_with_player_and_within_height(objectIndex, player, arg1) != 0)) {
                     if (!(player->effects & 0x200)) {
-                        player->statusEffects |= REVERSE_EFFECT;
+                        player->soundEffects |= REVERSE_SOUND_EFFECT;
                         if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                             func_80072180();
                         }
@@ -1199,7 +1199,7 @@ s32 func_80089E18(s32 objectIndex) {
                 if (player->effects & 0x200) {
                     var_s6 = 1;
                 } else {
-                    player->statusEffects |= 1;
+                    player->soundEffects |= 1;
                 }
             }
         }
@@ -1222,7 +1222,7 @@ s32 func_80089F24(s32 objectIndex) {
                     if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
-                    player->statusEffects |= 0x200000;
+                    player->soundEffects |= 0x200000;
                 }
             }
         }

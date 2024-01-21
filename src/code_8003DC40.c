@@ -5,6 +5,7 @@
 #include "player_controller.h"
 #include "code_8008C1D0.h"
 #include "code_8003DC40.h"
+#include "defines.h"
 
 void func_8003DC40(Player *player) {
     player->unk_DAC = 1.0f;
@@ -68,8 +69,8 @@ void func_8003E048(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         arg3[2] = (-(player->slopeAccel / 182) * 0xB4);
         func_80031F48(player, 4.0f);
         player->unk_DAC = 0.5f;
-        if ((player->effects & 0x2000) != 0) {
-            func_8008D554(player);
+        if ((player->effects & BOOST_EFFECT) != 0) {
+            remove_boost_effect(player);
             player->currentSpeed /= 2;
             player->unk_08C /= 2;
         }
@@ -97,7 +98,7 @@ void func_8003E37C(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         }
         player->unk_DAC = 0.5f;
         if ((player->effects & 0x2000) != 0) {
-            func_8008D554(player);
+            remove_boost_effect(player);
             player->currentSpeed /= 2;
             player->unk_08C /= 2;
         }
