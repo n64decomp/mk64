@@ -1,4 +1,4 @@
-\page vehicles Vehicles
+@page vehicles Vehicles
 
 [TOC]
 

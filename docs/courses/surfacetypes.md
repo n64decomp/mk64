@@ -1,6 +1,8 @@
-\page surfacetypes Surface Types
+@page surfacetypes Surface Types
 
-Surfaces produce effects, driven on sounds, and other behaviour. Note that surface type is not generally used for out of bounds behaviour. As such, out of bounds areas may use any combination of surface types or flags.  
+Surfaces produce effects, driven on sounds, and other behaviour. Note that surface type is not generally used for out of bounds behaviour. As such, out of bounds areas may use any combination of surface types or flags.
+
+extract from [SURFACE_TYPE](@ref SURFACE_TYPE)
 
 | id | Name | Desc | Courses |
 |---|---|---|---|

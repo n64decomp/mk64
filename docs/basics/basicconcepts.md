@@ -14,7 +14,7 @@ Computers use addresses to jump through code. This works similar to a house numb
 A typical N64 address: `0x80160158`
 
 In an N64 program, addresses begin at `0x80000000`. As you create code, data, and the like, the compiler will add onto this base number and assign variables to an address.
-```
+```c
 s32 a = 2; // 0x80000004
 s32 b = 7; // 0x80000008
 s32 c = 5; // 0x8000000C
@@ -22,7 +22,7 @@ s32 d = 1; // 0x80000010
 s32 e = 3; // 0x80000014
 ```
 Replacing a variable with a hard-coded address grabs the value at that address.
-```
+```c
 print(0x80000004); // or
 print(a);
 ```
@@ -40,7 +40,7 @@ Texture a_texture[] = {
 };
 ```
 The address of this could extend from `0x80000100` to `0x800000534`. However, you would not see data begin at `0x80000533`. The compiler generally aligns objects to 4, 8, 0xC, or 0x10. With the exception being when you're working with s16 and s8. If you have:
-```
+```c
 s16 a = 3; // Value compiled to 0x0003
 s32 b = 5; // Value compiled to 0x00000005
 ```
@@ -52,7 +52,7 @@ The compiler aligned `b` to the nearest 0x4. If there were two s16's then the bl
 
 # How Errors Happen
 The maximum value of an s8 (0x00) is 0xFF or 255. `0xFF + 1 = 0x100` imagine this scenario:
-```
+```c
 s8 a = 1;
 s8 b = 2;
 s8 c = 3;

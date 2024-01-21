@@ -1,4 +1,4 @@
-\page actors How Actors Work
+@page actors How Actors Work
 # Actors
 If you are familiar with oot or sm64 prepare to be very disappointed. Both games split actors into separate files. In an unorderly fashion, mk64 appears to place all actors in the same file save for the odd exception.
 

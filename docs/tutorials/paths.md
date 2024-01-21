@@ -1,4 +1,4 @@
-\page paths Paths
+@page paths Paths
 The game uses multiple types of course paths
 
 # Course Paths
