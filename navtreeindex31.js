@@ -1,5 +1,7 @@
 var NAVTREEINDEX31 =
 {
+"controlflow.html#paradigm":[1,2,0],
+"controlflow.html#players":[1,2,4,1],
 "controlflow.html#segments":[1,2,3],
 "controlflow.html#threading":[1,2,1],
 "controlflow.html#ui--other-2d-screen-data":[1,2,4,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX31 =
 "course__macro_8h.html#ab34a07fcda62ff7494db5d447db8f436":[8,0,0,24,0],
 "course__macro_8h_source.html":[8,0,0,24],
 "course__offsets_8h.html":[8,0,2,7],
-"course__offsets_8h_source.html":[8,0,2,7],
-"courses.html":[2,0],
-"courses.html#courses-1":[2,0,0]
+"course__offsets_8h_source.html":[8,0,2,7]
 };

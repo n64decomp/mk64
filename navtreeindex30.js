@@ -1,5 +1,7 @@
 var NAVTREEINDEX30 =
 {
+"common__textures_8inc_8c.html#a702c4d6f577245aef450d630bab0bed3":[8,0,3,2,0,159],
+"common__textures_8inc_8c.html#a71df2376b42f05a72aba80cb16d80d93":[8,0,3,2,0,194],
 "common__textures_8inc_8c.html#a727ff5d4a43a7631890bc76cc7ce1dbb":[8,0,3,2,0,251],
 "common__textures_8inc_8c.html#a7299b703939f9e9958b0db60892972dd":[8,0,3,2,0,131],
 "common__textures_8inc_8c.html#a7332eee0294b4c77f30dec70b6c5a1f3":[8,0,3,2,0,339],
@@ -241,13 +243,11 @@ var NAVTREEINDEX30 =
 "controlflow.html#actors-1":[1,2,4,2],
 "controlflow.html#code-breakdown":[1,2,4],
 "controlflow.html#course-folder":[1,2,4,4,0],
-"controlflow.html#courses":[1,2,4,4],
+"controlflow.html#courses-1":[1,2,4,4],
 "controlflow.html#ending":[1,2,4,8],
 "controlflow.html#engine":[1,2,4,6],
 "controlflow.html#math":[1,2,4,7],
 "controlflow.html#menus":[1,2,4,0],
 "controlflow.html#objects-1":[1,2,4,3],
-"controlflow.html#overall-control-flow":[1,2,2],
-"controlflow.html#paradigm":[1,2,0],
-"controlflow.html#players":[1,2,4,1]
+"controlflow.html#overall-control-flow":[1,2,2]
 };
