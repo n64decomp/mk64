@@ -2894,7 +2894,7 @@ void func_8005DAD8(UnkPlayerStruct258* arg0, s16 arg1, s16 arg2, s16 arg3) {
     arg0->unk_040 = arg2;
 }
 
-void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
+void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) {
     UNUSED s32 stackPadding;
     s32 surfaceType;
     s32 var_t3;
@@ -3089,7 +3089,7 @@ void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
     }
 }
 
-void func_8005EA94(Player *player, s16 arg1, s32 arg2, s8 arg3) {
+void func_8005EA94(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     s32 temp_v0;
     s32 var_t0;
     s32 var_t1;
@@ -3134,7 +3134,7 @@ void func_8005EA94(Player *player, s16 arg1, s32 arg2, s8 arg3) {
     }
 }
 
-void func_8005ED48(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
+void func_8005ED48(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) {
     s32 temp_v0;
     s32 surfaceType;
     s32 var_t3;
@@ -3316,7 +3316,7 @@ void func_8005ED48(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
 // Permuter hasn't found anything
 // https://decomp.me/scratch/WjMqd
 
-void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
+void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) {
     s32 var_t1;
     u8 surfaceType;
     f32 var_f0;
@@ -3596,7 +3596,7 @@ void func_80060B14(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-void func_80060BCC(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
+void func_80060BCC(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) {
     s32 sp54;
     UNUSED s32 pad;
     s32 sp4C;
@@ -4693,7 +4693,7 @@ void func_80064C74(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     }
 }
 
-void func_80064DEC(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+void func_80064DEC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 
     player->unk_258[20 + arg3].unk_000[1] = player->pos[1];
     ++player->unk_258[20 + arg3].unk_01E;
@@ -4711,7 +4711,7 @@ void func_80064DEC(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 }
 
-void func_80064EA4(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+void func_80064EA4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->unk_258[20 + arg3].unk_01E;
     if (player->unk_258[20 + arg3].unk_01E < 4) {
         player->unk_258[20 + arg3].unk_00C += 1.2;
@@ -4729,7 +4729,7 @@ void func_80064EA4(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 }
 
-void func_80064F88(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+void func_80064F88(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->unk_258[20 + arg3].unk_01E;
     player->unk_258[20 + arg3].unk_00C += 0.15;
     
@@ -4744,7 +4744,7 @@ void func_80064F88(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 }
 
-void func_80065030(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+void func_80065030(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->unk_258[20 + arg3].unk_01E;
 
     player->unk_258[20 + arg3].unk_000[1] += 0.8;
@@ -4761,7 +4761,7 @@ void func_80065030(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 }
 
-void func_800650FC(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+void func_800650FC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_000[2] = (f32) player->pos[2];
     player->unk_258[20 + arg3].unk_000[0] = (f32) player->pos[0];
     player->unk_258[20 + arg3].unk_000[1] = (f32) (player->pos[1] + 4.0f);
@@ -4783,7 +4783,7 @@ void func_800650FC(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 }
 
-void func_800651F4(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+void func_800651F4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->unk_258[20 + arg3].unk_01E;
     if (player->unk_258[20 + arg3].unk_01E < 8) {
         player->unk_258[20 + arg3].unk_00C += 0.2;
@@ -5984,14 +5984,8 @@ void func_8006C4D4(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha, s16 arg4) {
     gMatrixEffectCount += 1;
 }
 
-#ifdef NON_MATCHING
-/**
- * Similar to func_8006C9B8, something about arg3 is very
- * weird here.
- * It seems plausible that several functions called by this one
- * actually take one more argument than they are currently expected to?
-**/
 void func_8006C6AC(Player *player, s16 arg1, s8 arg2, s8 arg3) {
+    s8 arg2_copy = arg2;
     s32 sp28;
 
     sp28 = arg1 - 1;
@@ -6001,55 +5995,47 @@ void func_8006C6AC(Player *player, s16 arg1, s8 arg2, s8 arg3) {
     if (player->unk_258[10 + arg1].unk_01C == 1) {
         switch (player->unk_258[10 + arg1].unk_012) {
         case 1:
-            func_80063408(player, arg1, arg2, arg3);
+            func_80063408(player, arg1, arg2_copy, arg3);
             break;
         case 2:
-            func_800635D4(player, arg1, arg2, arg3);
+            func_800635D4(player, arg1, arg2_copy, arg3);
             break;
         case 3:
-            func_80063BD4(player, arg1, arg2, arg3);
+            func_80063BD4(player, arg1, arg2_copy, arg3);
             break;
         case 4:
-            func_800643A8(player, arg1, arg2, arg3);
+            func_800643A8(player, arg1, arg2_copy, arg3);
             break;
         case 5:
-            func_800639DC(player, arg1, arg2, arg3);
+            func_800639DC(player, arg1, arg2_copy, arg3);
             break;
         case 9:
-            func_80063D58(player, arg1, arg2, arg3);
+            func_80063D58(player, arg1, arg2_copy, arg3);
             break;
         case 11:
-            func_80062F98(player, arg1, arg2, arg3);
+            func_80062F98(player, arg1, arg2_copy, arg3);
             break;
         default:
             break;
         }
     } else {
         if (player->unk_0DE & 1) {
-            // func_80060BCC(player, arg1, sp28, (s32) arg2, /* extra? */ (s32) arg3);
-            func_80060BCC(player, arg1, sp28, (s32) arg2);
+            func_80060BCC(player, arg1, sp28, arg2_copy, arg3);
         } else if (!(player->effects & 8) && !(player->effects & 2)) {
             if (((player->effects & 0x10) == 0x10) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
-                func_8005DA30(player, arg1, sp28, arg2, (s8) (s32) arg3);
-            } else if (((f64) (D_801652A0[arg2] - player->boundingBoxCorners[3].cornerGroundY) >= 3.5) || ((f64) (D_801652A0[arg2] - player->boundingBoxCorners[2].cornerGroundY) >= 3.5)) {
-                // func_8005EA94(player, arg1, sp28, arg2, /* extra? */ (s32) arg3);
-                func_8005EA94(player, arg1, sp28, arg2);
+                func_8005DA30(player, arg1, sp28, arg2_copy, arg3);
+            } else if (((f64) (D_801652A0[arg2_copy] - player->boundingBoxCorners[3].cornerGroundY) >= 3.5) || ((f64) (D_801652A0[arg2_copy] - player->boundingBoxCorners[2].cornerGroundY) >= 3.5)) {
+                func_8005EA94(player, arg1, sp28, arg2_copy, arg3);
             } else if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40)) {
-                // func_8005F90C(player, arg1, sp28, (s32) arg2, /* extra? */ (s32) arg3);
-                func_8005F90C(player, arg1, sp28, (s32) arg2);
-            } else if (((player->effects & 0x4000) && !(player->type & PLAYER_STAGING)) || (player->effects & 0x800) || (player->effects & 0x20) || (player->unk_044 & 0x4000)) {
-                // func_8005ED48(player, arg1, sp28, (s32) arg2, /* extra? */ (s32) arg3);
-                func_8005ED48(player, arg1, sp28, (s32) arg2);
+                func_8005F90C(player, arg1, sp28, arg2_copy, arg3);
+            } else if (((player->effects & 0x4000) && !(player->type & PLAYER_START_SEQUENCE)) || (player->effects & 0x800) || (player->effects & 0x20) || (player->unk_044 & 0x4000)) {
+                func_8005ED48(player, arg1, sp28, arg2_copy, arg3);
             } else {
-                // func_8005DAF4(player, arg1, sp28, (s32) arg2, /* extra? */ (s32) arg3);
-                func_8005DAF4(player, arg1, sp28, (s32) arg2);
+                func_8005DAF4(player, arg1, sp28, arg2_copy, arg3);
             }
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006C6AC.s")
-#endif
 
 #ifdef NON_MATCHING
 /**
@@ -6247,11 +6233,6 @@ void func_8006CEC0(Player *arg0, s16 arg1, s8 arg2, s8 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006CEC0.s")
 #endif
 
-#ifdef NON_MATCHING
-// So, a lot of the functions called by this function have their argument types
-// slightly wrong.
-// For example, func_80064DEC, arg1 is currently marked as an s16 but based on
-// this function it ought to be an s8
 void func_8006D194(Player *player, s8 arg1, s8 arg2) {
     if (player->unk_258[0x14].unk_01C == 1) {
         switch (player->unk_258[0x14].unk_012) {
@@ -6296,9 +6277,6 @@ void func_8006D194(Player *player, s8 arg1, s8 arg2) {
         func_80062AA8(player, arg1, arg2, 1);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006D194.s")
-#endif
 
 void func_8006D474(Player *player, s8 arg1, s8 arg2) {
     s16 var_s2;

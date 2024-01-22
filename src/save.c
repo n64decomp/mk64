@@ -761,21 +761,16 @@ s32 func_800B6088(s32 arg0) {
     return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_WRITE, arg0 * 0x80 /* 0x80 == sizeof(struct_8018EE10_entry) */, sizeof(struct_8018EE10_entry), (u8*) temp_v1);
 }
 
-#ifdef NON_MATCHING
-// Register allocation issues
 u8 func_800B60E8(s32 page) {
-    s32 multiplier = page + 1;
-    s32 checksum = 0;
-    u8 *addr = &((u8 *) D_800DC714)[page << 8];
     s32 i;
-    for (i = 0; i < 0x100; i++) {
-        checksum = (*addr++ * multiplier + i) + checksum;
+    u32 checksum = 0;
+    u8 *addr;
+    
+    for (i = 0, addr = (u8*) &((u8*)D_800DC714)[page * 256]; i < 256; i++) {
+        checksum += (*addr++ * (page + 1) + i);
     }
     return checksum;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/save/func_800B60E8.s")
-#endif
 
 s32 func_800B6178(s32 arg0) {
     s32 var_v0;
