@@ -45,9 +45,9 @@
 #define SOUND_BANK_COUNT 6
 
 // Almost certainly an expanded version of struct Sound from SM64
-struct Unk_8018FC20 {
+struct Sound {
     /* 0x00 */ u32 soundBits;
-    /* 0x04 */ f32 *position;
+    /* 0x04 */ Vec3f *position;
     /* 0x08 */ u8  cameraId; // playerId? some indicator of "who" the sound is desitned for
     /* 0x09 */ // u8  compilerPadding0[3];
 	/* 0x0C */ f32 *unk0C;
@@ -98,9 +98,9 @@ struct Unk_8018EFD8 {
 }; // size = 0x3C
 
 // This is almost certainly an expanded version of SoundCharacteristics from SM64
-struct Unk_80191420 {
+struct SoundCharacteristics {
 	// These f32 pointers appear to point to the `Vec3f unk18` members in a struct Unk_8018EFD8
-	/* 0x00 */ f32 *unk00;
+	/* 0x00 */ Vec3f *unk00;
 	/* 0x04 */ f32 *unk04;
 	/* 0x08 */ f32 *unk08;
 	/* 0x0C */ u8 cameraId; // playerId? some indicator of "who" the sound is desitned for
@@ -191,7 +191,7 @@ typedef struct {
 void func_800C94A4(u8);
 void func_800CADD0(u8, f32);
 void func_800C13F0(void);
-void func_800C13FC(OSMesg);
+void audio_reset_session_eu(OSMesg);
 f32  func_800C1480(u8, u8);
 s8   func_800C15D0(u8, u8, u8);
 s8   func_800C16E8(f32, f32, u8);
@@ -202,13 +202,14 @@ void func_800C1DA4(Camera*, Vec3s, struct Unk_8018EFD8*);
 void func_800C1E2C(Camera*, Vec3f, struct Unk_8018EFD8*);
 void func_800C1F8C(void);
 
-f32 *func_800C21E8(Vec3f, u32);
+Vec3f *func_800C21E8(Vec3f, u32);
 void func_800C2274(u8);
 void func_800C2474(void);
 void func_800C284C(u8, u8, u8, u16);
 void func_800C29B4(u8, u16);
 
 void func_800C3724(void);
+void func_800C2A2C(u32);
 void func_800C3448(u32);
 void func_800C3478(void);
 u16  func_800C3508(u8);
@@ -221,17 +222,17 @@ void func_800C3F70(void);
 void func_800C400C(void);
 void func_800C4084(u16);
 void func_800C40F0(u8);
-void play_sound(u32, f32*, u8, f32*, f32*, u8*);
-void func_800C41CC(u8, struct Unk_80191420*);
+void play_sound(u32, Vec3f*, u8, f32*, f32*, u8*);
+void func_800C41CC(u8, struct SoundCharacteristics*);
 void func_800C4398(void);
 void delete_sound_from_bank(u8, u8);
 void func_800C4888(u8);
 void func_800C4FE4(u8);
 
 void func_800C5278(u8);
-void func_800C5384(u8, f32*);
-void func_800C54B8(u8, f32*);
-void func_800C550C(s32);
+void func_800C5384(u8, Vec3f*);
+void func_800C54B8(u8, Vec3f*);
+void func_800C550C(Vec3f*);
 void func_800C5578(Vec3f, u32);
 u8   func_800C56F0(u32);
 void func_800C5848(void);
@@ -325,13 +326,13 @@ extern struct Unk_8018EFD8 D_8018EFD8[];
 // These are indexes for D_8018EFD8, but their purpose is unknown
 extern u8 D_8018FB90;
 extern u8 D_8018FB91;
-extern Camera *D_8018FB98[4];
-extern Vec3f D_8018FBA8[4];
-extern Vec3f D_8018FBD8[4];
+extern Camera *gCopyCamera[4];
+extern Vec3f gVelocityCamera[4];
+extern Vec3f gCameraLastPos[4];
 extern u8 D_8018FC08;
 extern u16 D_8018FC10[4][2];
 
-extern struct Unk_80191420 sSoundBanks[SOUND_BANK_COUNT][20];
+extern struct SoundCharacteristics sSoundBanks[SOUND_BANK_COUNT][20];
 extern u8 sSoundBankUsedListBack[SOUND_BANK_COUNT];
 extern u8 sSoundBankFreeListFront[SOUND_BANK_COUNT];
 extern u8 sNumSoundsInBank[SOUND_BANK_COUNT];
@@ -345,7 +346,7 @@ extern u32 D_80192CD0[256];
 extern struct_D_801930D0_entry D_801930D0[3];
 extern u8 sNumProcessedSoundRequests;
 extern u8 sSoundRequestCount;
-extern struct Unk_8018FC20 sSoundRequests[0x100];
+extern struct Sound sSoundRequests[0x100];
 
 // Data entries
 extern u8  D_800E9DA0;

@@ -2349,7 +2349,7 @@ Variable Name | Memory Address
 [init_sequence_player](@ref init_sequence_player) | 0x800C11B0
 [init_sequence_players](@ref init_sequence_players) | 0x800C125C
 [func_800C13F0](@ref func_800C13F0) | 0x800C13F0
-[func_800C13FC](@ref func_800C13FC) | 0x800C13FC
+[audio_reset_session_eu](@ref audio_reset_session_eu) | 0x800C13FC
 [func_800C1480](@ref func_800C1480) | 0x800C1480
 [func_800C15D0](@ref func_800C15D0) | 0x800C15D0
 [func_800C16E8](@ref func_800C16E8) | 0x800C16E8
@@ -4794,9 +4794,9 @@ Variable Name | Memory Address
 [D_8018EFD8](@ref D_8018EFD8) | 0x8018EFD8
 [D_8018FB90](@ref D_8018FB90) | 0x8018FB90
 [D_8018FB91](@ref D_8018FB91) | 0x8018FB91
-[D_8018FB98](@ref D_8018FB98) | 0x8018FB98
-[D_8018FBA8](@ref D_8018FBA8) | 0x8018FBA8
-[D_8018FBD8](@ref D_8018FBD8) | 0x8018FBD8
+[gCopyCamera](@ref gCopyCamera) | 0x8018FB98
+[gVelocityCamera](@ref gVelocityCamera) | 0x8018FBA8
+[gCameraLastPos](@ref gCameraLastPos) | 0x8018FBD8
 [D_8018FC08](@ref D_8018FC08) | 0x8018FC08
 [D_8018FC10](@ref D_8018FC10) | 0x8018FC10
 [sSoundRequests](@ref sSoundRequests) | 0x8018FC20
