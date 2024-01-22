@@ -188,6 +188,8 @@ typedef struct {
     u8  unk9;
 } UnkStruct8018EF18; // size = 0xC
 
+/* @cond */
+
 void func_800C94A4(u8);
 void func_800CADD0(u8, f32);
 void func_800C13F0(void);
@@ -421,5 +423,7 @@ extern s8 D_800EA16C;
 
 extern OSMesgQueue *D_800EA3B0;
 extern OSMesgQueue *D_800EA3B4;
+
+/* @endcond */
 
 #endif
