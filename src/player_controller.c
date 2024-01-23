@@ -19,6 +19,7 @@
 #include "spawn_players.h"
 #include "code_80057C60.h"
 #include "code_80005FD0.h"
+#include "sounds.h"
 
 extern s32 D_8018D168;
 
@@ -495,7 +496,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                             func_800CA2B8(playerId);
                         }
                         if (D_80165300[playerId] == 2) {
-                            func_800C9018(playerId, 0x0170802D);
+                            func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x70, 0x80, 0x2D));
                         }
                         D_80165300[playerId] = 0;
                     }

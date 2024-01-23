@@ -2467,14 +2467,14 @@ Variable Name | Memory Address
 [eu_process_audio_cmd](@ref eu_process_audio_cmd) | 0x800CB818
 [seq_player_fade_to_zero_volume](@ref seq_player_fade_to_zero_volume) | 0x800CBA08
 [func_800CBA64](@ref func_800CBA64) | 0x800CBA64
-[func_800CBAB4](@ref func_800CBAB4) | 0x800CBAB4
+[port_eu_init_queues](@ref port_eu_init_queues) | 0x800CBAB4
 [func_800CBB48](@ref func_800CBB48) | 0x800CBB48
 [func_800CBB88](@ref func_800CBB88) | 0x800CBB88
 [func_800CBBB8](@ref func_800CBBB8) | 0x800CBBB8
 [func_800CBBE8](@ref func_800CBBE8) | 0x800CBBE8
 [func_800CBC24](@ref func_800CBC24) | 0x800CBC24
 [func_800CBCB0](@ref func_800CBCB0) | 0x800CBCB0
-[func_800CBF48](@ref func_800CBF48) | 0x800CBF48
+[port_eu_init](@ref port_eu_init) | 0x800CBF48
 [osCreateThread](@ref osCreateThread) | 0x800CBF70
 [osInitialize](@ref osInitialize) | 0x800CC0C0
 [osStartThread](@ref osStartThread) | 0x800CC360

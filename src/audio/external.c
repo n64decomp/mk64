@@ -3,11 +3,11 @@
 #include <defines.h>
 #include "camera.h"
 #include "math_util_2.h"
+#include <sounds.h>
 #include "audio/external.h"
 #include "audio/load.h"
 #include "audio/data.h"
-#include <sounds.h>
-#include "port_eu.h"
+#include "audio/port_eu.h"
 #include "code_800029B0.h"
 #include "code_80091750.h"
 
@@ -29,7 +29,7 @@ u8 sSoundBankFreeListFront[SOUND_BANK_COUNT];
 u8 sNumSoundsInBank[SOUND_BANK_COUNT];
 u8 D_80192AB8[SOUND_BANK_COUNT][8][8];
 u8 D_80192C38;
-u8 sSoundBankDisabled[SOUND_BANK_COUNT];
+ubool8 sSoundBankDisabled[SOUND_BANK_COUNT];
 struct ChannelVolumeScaleFade D_80192C48[SOUND_BANK_COUNT];
 u8 D_80192CA8[3][10];
 u8 D_80192CC6[3];
@@ -69,7 +69,7 @@ u8  D_800E9F24[] = {
     0, 0, 0, 0,
     0, 0, 0, 0
 };
-u8  D_800E9F2C[] = {
+u8  D_800E9F2C[NUM_PLAYERS] = {
     0, 0, 0, 0,
     0, 0, 0, 0
 };
@@ -706,7 +706,7 @@ void func_800C2474(void) {
         D_800E9F74[var_v0] = 0;
         D_800E9F78[var_v0] = 0;
     }
-    for (var_v0 = 0; var_v0 < 8; var_v0++) {
+    for (var_v0 = 0; var_v0 < NUM_PLAYERS; var_v0++) {
         D_800E9F24[var_v0] = 0;
         D_800E9F2C[var_v0] = 0;
         D_800E9F34[var_v0] = 0.0f;
@@ -2281,11 +2281,11 @@ void sound_init(void) {
     sSoundRequestCount = 0;
     sNumProcessedSoundRequests = 0;
     D_800EA1C4 = 0;
-    for (var_v0 = 0; var_v0 < 6; var_v0++) {
+    for (var_v0 = 0; var_v0 < SOUND_BANK_COUNT; var_v0++) {
         sSoundBankUsedListBack[var_v0] = 0;
         sSoundBankFreeListFront[var_v0] = 1;
         sNumSoundsInBank[var_v0] = 0;
-        sSoundBankDisabled[var_v0] = 0;
+        sSoundBankDisabled[var_v0] = FALSE;
         D_80192C48[var_v0].current = 1.0f;
         D_80192C48[var_v0].remainingFrames = 0;
     }
@@ -2379,9 +2379,9 @@ void func_800C5E38(u8 playerId) {
                     case 0:
                         if ((D_800E9F74[playerId] == 0) && (gPlayers[playerId].characterId != 3)) {
                             if ((s32) D_800EA1C0 < 2) {
-                                play_sound(0x0100F926U, &D_800E9F7C[playerId].pos, playerId, &D_800E9F7C[playerId].unk_38, &D_800E9F04[playerId], (u8 *) &D_800E9F7C[playerId].unk_14);
+                                play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF9, 0x26), &D_800E9F7C[playerId].pos, playerId, &D_800E9F7C[playerId].unk_38, &D_800E9F04[playerId], (u8 *) &D_800E9F7C[playerId].unk_14);
                             } else {
-                                play_sound(0x01008026U, &D_800E9F7C[playerId].pos, playerId, &D_800E9F7C[playerId].unk_38, &D_800E9F04[playerId], (u8 *) &D_800E9F7C[playerId].unk_14);
+                                play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26), &D_800E9F7C[playerId].pos, playerId, &D_800E9F7C[playerId].unk_38, &D_800E9F04[playerId], (u8 *) &D_800E9F7C[playerId].unk_14);
                             }
                         }
                         break;
@@ -2392,9 +2392,9 @@ void func_800C5E38(u8 playerId) {
         } else {
             if (D_800E9E24[playerId] == 0x0000000A) {
                 if ((s32) D_800EA1C0 < 2) {
-                    func_800C9018(playerId, 0x0100F926);
+                    func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xF9, 0x26));
                 } else {
-                    func_800C9018(playerId, 0x01008026);
+                    func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26));
                 }
             }
             D_800E9E14[playerId] = 0;
@@ -2415,7 +2415,7 @@ void func_800C6108(u8 playerId) {
     D_800E9E64[playerId] = (temp_v1->unk_098 / D_800E9DC4[playerId]) + D_800E9DD4[playerId];
     if ((temp_v1->unk_098 < 1800.0f) && ((temp_v1->unk_044 & 0x20) != 0x20)) {
         D_800E9E64[playerId] = (temp_v1->unk_098 / D_800E9F7C[playerId].unk_34) + D_800E9F7C[playerId].unk_28;
-        if (D_800E9EC4) {} // ?
+        if(D_800E9EC4){} // ?
     }
     if (temp_v1->unk_094 > 4.75f) {
         if (D_800E9EB4[playerId] < (D_800E9F7C[playerId].unk_18 + 0.4f)) {
@@ -2546,117 +2546,117 @@ void func_800C683C(u8 cameraId) {
             switch (D_800E9E74[cameraId]) {
                 case 3:
                     play_sound(SOUND_ACTION_TYRE_SQUEAL, &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F908;
+                    D_800E9E94[cameraId] = SOUND_ACTION_TYRE_SQUEAL;
                     break;
                 case 18:
-                    play_sound(0x0100F81DU, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F81D;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF8, 0x1D), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF8, 0x1D);
                     break;
                 case 19:
-                    play_sound(0x0100F822U, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F822;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF8, 0x22), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF8, 0x22);
                     break;
                 case 1:
-                    play_sound(0x0100F009U, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F009;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x09), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x09);
                     break;
                 case 2:
-                    play_sound(0x0100F40AU, &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F40A;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF4, 0x0A), &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF4, 0x0A);
                     break;
                 case 17:
-                    play_sound(0x0100F01EU, &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F01E;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x1E), &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x1E);
                     break;
                 case 15:
-                    play_sound(0x0100F01FU, &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F01F;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x1F), &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x1F);
                     break;
                 case 16:
-                    play_sound(0x0100F021U, &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F021;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x21), &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x21);
                     break;
                 case 20:
-                    play_sound(0x0100F027U, &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F027;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x27), &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x27);
                     break;
                 case 25:
-                    play_sound(0x0100F020U, &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F020;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x20), &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x20);
                     break;
                 case 26:
-                    play_sound(0x0100F023U, &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F023;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x23), &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x23);
                     break;
                 case 27:
-                    play_sound(0x01008046U, &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x01008046;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x46), &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x46);
                     break;
                 case 28:
-                    play_sound(0x0100F025U, &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F025;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x25), &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800EA1D4, (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x25);
                     break;
                 case 4:
-                    play_sound(0x0100F00BU, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F00B;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0B), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0B);
                     break;
                 case 5:
-                    play_sound(0x0100F00CU, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F00C;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0C), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0C);
                     break;
                 case 6:
-                    play_sound(0x0100F00DU, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F00D;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0D), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0D);
                     break;
                 case 7:
-                    play_sound(0x0100F00EU, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F00E;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0E), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0E);
                     break;
                 case 8:
-                    play_sound(0x0100F00FU, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F00F;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0F), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x0F);
                     break;
                 case 9:
-                    play_sound(0x0100F010U, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F010;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x10), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x10);
                     break;
                 case 10:
                 case 14:
-                    play_sound(0x0100F011U, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F011;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x11), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x11);
                     break;
                 case 11:
-                    play_sound(0x0100F012U, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F012;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x12), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x12);
                     break;
                 case 12:
-                    play_sound(0x0100F013U, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F013;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x13), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x13);
                     break;
                 case 29:
-                    play_sound(0x0100F048U, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F048;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x48), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x48);
                     break;
                 case 30:
-                    play_sound(0x0100F049U, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F049;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x49), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x49);
                     break;
                 case 31:
-                    play_sound(0x0100F04AU, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F04A;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x4A), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x4A);
                     break;
                 case 13:
                 case 22:
-                    play_sound(0x0100F029U, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F029;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x29), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x29);
                     break;
                 case 23:
-                    play_sound(0x0100F02AU, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F02A;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x2A), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x2A);
                     break;
                 case 24:
-                    play_sound(0x0100F02BU, &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
-                    D_800E9E94[cameraId] = 0x0100F02B;
+                    play_sound(SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x2B), &D_800E9F7C[cameraId].pos, cameraId, &D_800EA1D4, &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
+                    D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x2B);
                     break;
                 default:
                     func_800C5578(D_800E9F7C[cameraId].pos, D_800E9E94[cameraId]);
@@ -2875,15 +2875,15 @@ void func_800C76C0(u8 playerId) {
             D_800E9EA4[playerId]++;
         }
         if (D_800E9EA4[playerId] == 2) {
-            func_800C9018(playerId, 0x0100FA28);
-            func_800C9018(playerId, 0x0100FF2C);
-            func_800C9018(playerId, 0x0100FA4C);
+            func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
+            func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFF, 0x2C));
+            func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x4C));
             func_800C5578(D_800E9F7C[playerId].pos, D_800E9E94[playerId]);
             D_800E9E74[playerId] = 0;
             switch (gModeSelection) {               /* irregular */
                 case GRAND_PRIX:
                     D_800EA0EC[playerId] = 2;
-                    func_800C9060(playerId, 0x1900F103U);
+                    func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0xF1, 0x03));
                     if (D_800EA1C0 == 0) {
                         func_800C3448(0x100100FF);
                         func_800C3448(0x110100FF);
@@ -3012,27 +3012,27 @@ void func_800C76C0(u8 playerId) {
                             func_800C3448(0x100100FF);
                             func_800C3448(0x110100FF);
                             func_800C5278(5U);
-                            func_800C9018(playerId, 0x0100F926);
+                            func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xF9, 0x26));
                             func_800C8EF8(0x0017U);
                             D_800EA0EC[playerId] = 2;
-                            func_800C90F4(playerId, (gPlayers[gPlayerWinningIndex].characterId * 0x10) + 0x2900800D);
+                            func_800C90F4(playerId, (gPlayers[gPlayerWinningIndex].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
                             break;
                         case 2:                             /* switch 2 */
                             if ((D_800EA0EC[0] == 1) && (D_800EA0EC[1] == 1) && (D_800EA0EC[2] == 1)) {
                                 func_800C5278(5U);
-                                func_800C9018(playerId, 0x01008026);
+                                func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26));
                                 func_800C8EF8(0x0017U);
                                 D_800EA0EC[playerId] = 2;
-                                func_800C90F4(playerId, (gPlayers[gPlayerWinningIndex].characterId * 0x10) + 0x2900800D);
+                                func_800C90F4(playerId, (gPlayers[gPlayerWinningIndex].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
                             }
                             break;
                         case 3:                             /* switch 2 */
                             if ((D_800EA0EC[0] == 1) && (D_800EA0EC[1] == 1) && (D_800EA0EC[2] == 1) && (D_800EA0EC[3] == 1)) {
                                 func_800C5278(5U);
-                                func_800C9018(playerId, 0x01008026);
+                                func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26));
                                 func_800C8EF8(0x0017U);
                                 D_800EA0EC[playerId] = 2;
-                                func_800C90F4(playerId, (gPlayers[gPlayerWinningIndex].characterId * 0x10) + 0x2900800D);
+                                func_800C90F4(playerId, (gPlayers[gPlayerWinningIndex].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
                             }
                             break;
                     }
@@ -3048,28 +3048,28 @@ void func_800C76C0(u8 playerId) {
                 case GRAND_PRIX:                                 /* switch 3 */
                     if (gPlayers[playerId].currentRank == 0) {
                         D_800EA0EC[playerId] = 2;
-                        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + 0x29008007);
+                        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x07));
                     } else if (gPlayers[playerId].currentRank < 4) {
                         D_800EA0EC[playerId] = 2;
-                        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + 0x2900800D);
+                        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
                     } else {
                         D_800EA0EC[playerId] = 2;
-                        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + 0x29008003);
+                        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x03));
                     }
                     break;
                 case VERSUS:                                 /* switch 3 */
                     if (gPlayers[playerId].currentRank == 0) {
                         D_800EA0EC[playerId] = 2;
-                        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + 0x2900800D);
+                        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
                     }
                     break;
                 case TIME_TRIALS:                                 /* switch 3 */
                     if (D_801657E5 == 1) {
                         D_800EA0EC[playerId] = 2;
-                        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + 0x29008007);
+                        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x07));
                     } else if (D_8018ED90 == (u8) 1) {
                         D_800EA0EC[playerId] = 2;
-                        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + 0x2900800D);
+                        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
                     }
                     break;
             }
@@ -3143,9 +3143,9 @@ void func_800C847C(u8 playerId) {
     if ((gPlayers[playerId].unk_0DE & 1) == 1) {
         if (D_800E9F74[playerId] == 0) {
             if ((s32) D_800EA1C0 < 2) {
-                func_800C9018(playerId, 0x0100F926);
+                func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xF9, 0x26));
             } else {
-                func_800C9018(playerId, 0x01008026);
+                func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0x80, 0x26));
             }
             func_800C97C4(playerId);
             D_800E9F74[playerId] = 1;
@@ -3160,7 +3160,7 @@ void func_800C847C(u8 playerId) {
                 || (gCurrentCourseId == COURSE_SHERBET_LAND)
                 || (gCurrentCourseId == COURSE_DK_JUNGLE)
                 || (gCurrentCourseId == COURSE_BIG_DONUT)) && (D_800EA0EC[playerId] == 0)) {
-                play_sound((gPlayers[playerId].characterId * 0x10) + 0x29008005, &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4, (u8 *) &D_800E9F7C[playerId].unk_14);
+                play_sound((gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x05), &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4, (u8 *) &D_800E9F7C[playerId].unk_14);
             }
         }
     } else {
@@ -3170,7 +3170,7 @@ void func_800C847C(u8 playerId) {
             func_800C94A4(playerId);
             D_800E9F74[playerId] = 0;
             if ((gCurrentCourseId == COURSE_KOOPA_BEACH) && (D_800EA0EC[playerId] == 0)) {
-                play_sound((gPlayers[playerId].characterId * 0x10) + 0x29008008, &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4, (u8 *) &D_800E9F7C[playerId].unk_14);
+                play_sound((gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x08), &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4, (u8 *) &D_800E9F7C[playerId].unk_14);
             }
         }
     }
@@ -3178,7 +3178,7 @@ void func_800C847C(u8 playerId) {
 
 void func_800C86D8(u8 playerId) {
     if (((gPlayers[playerId].effects & 0x40000000) != 0x40000000) && (D_800E9F24[playerId] == 1)) {
-        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + 0x29008008);
+        func_800C90F4(playerId, (gPlayers[playerId].characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x08));
     }
 }
 
@@ -3354,47 +3354,47 @@ void func_800C8F44(u8 arg0) {
     func_800C36C4(0, 0, arg0, 1);
 }
 
-void func_800C8F80(u8 arg0, u32 arg1) {
+void func_800C8F80(u8 arg0, u32 soundBits) {
     if (D_800EA108 == 0) {
         switch(D_800EA0EC[arg0]) {
             case 2:
                 D_800EA0EC[arg0] = 1;
             case 0:
-                play_sound(arg1, &D_800E9F7C[arg0].pos, arg0, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
+                play_sound(soundBits, &D_800E9F7C[arg0].pos, arg0, &D_800EA1D4, &D_800EA1D4, &D_800EA1DC);
                 break;
         }
     }
 }
 
-void func_800C9018(u8 arg0, s32 soundBits) {
+void func_800C9018(u8 arg0, u32 soundBits) {
     func_800C5578(D_800E9F7C[arg0].pos, soundBits);
 }
 
-void func_800C9060(u8 playerId, u32 arg1) {
+void func_800C9060(u8 playerId, u32 soundBits) {
     if (D_800EA108 == 0) {
         switch(D_800EA0EC[playerId]) {
             case 2:
                 D_800EA0EC[playerId] = 1;
             case 0:
-                play_sound(arg1, &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4,(u8 *) &D_800E9F7C[playerId].unk_14);
+                play_sound(soundBits, &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4,(u8 *) &D_800E9F7C[playerId].unk_14);
                 break;
             }
     }
 }
 
-void func_800C90F4(u8 playerId, u32 arg1) {
+void func_800C90F4(u8 playerId, u32 soundBits) {
     if (D_800EA108 == 0) {
         switch (D_800EA0EC[playerId]) {
             case 2:
                 D_800EA0EC[playerId] = 1;
             case 0:
-                if (((arg1 & ~0xF0) == 0x29008003) || ((arg1 & ~0xF0) == 0x29008004) || ((arg1 & ~0xF0) == 0x29008005)) {
+                if (((soundBits & ~0xF0) == SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x03)) || ((soundBits & ~0xF0) == SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x04)) || ((soundBits & ~0xF0) == SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x05))) {
                     D_800EA180 = 1;
                 }
                 if (((gPlayers[playerId].effects & 0x40000000) == 0x40000000) && ((s32) D_800E9F2C[playerId] >= 0x1F)) {
-                    play_sound(arg1, &D_800E9F7C[playerId].pos, playerId, &D_800EA150, &D_800EA1D4, (u8 *) &D_800E9F7C[playerId].unk_14);
+                    play_sound(soundBits, &D_800E9F7C[playerId].pos, playerId, &D_800EA150, &D_800EA1D4, (u8 *) &D_800E9F7C[playerId].unk_14);
                 } else {
-                    play_sound(arg1, &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4, (u8 *) &D_800E9F7C[playerId].unk_14);
+                    play_sound(soundBits, &D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4, (u8 *) &D_800E9F7C[playerId].unk_14);
                 }
                 break;
             default:
@@ -3404,7 +3404,7 @@ void func_800C90F4(u8 playerId, u32 arg1) {
 }
 
 void func_800C9250(u8 arg0) {
-    func_800C90F4(arg0, (gPlayers[arg0].characterId * 0x10) + (gAudioRandom & 1) + 0x29008001);
+    func_800C90F4(arg0, (gPlayers[arg0].characterId * 0x10) + (gAudioRandom & 1) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x01));
 }
 
 void func_800C92CC(u8 playerId, u32 soundBits) {
@@ -3518,11 +3518,11 @@ void func_800C94A4(u8 playerId) {
 }
 
 void func_800C97C4(u8 arg0) {
-    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + 0x0104FF00);
-    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + 0x0104FF14);
-    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + 0x0104FF2E);
-    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + 0x0104FF36);
-    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + 0x0104FF3E);
+    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x00));
+    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x14));
+    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x2E));
+    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x36));
+    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x3E));
 }
 
 void func_800C98B8(Vec3f position, Vec3f velocity, u32 soundBits) {
@@ -3591,7 +3591,7 @@ void func_800C9A88(u8 playerId) {
                 }
                 if (D_800EA1C0 < 2) {
                     for (var_s0 = 0; var_s0 < D_800EA1C0 + 1; var_s0++) {
-                        soundBits = gPlayers[playerId].characterId + 0x31028000;
+                        soundBits = gPlayers[playerId].characterId + SOUND_ARG_LOAD(0x31, 0x02, 0x80, 0x00);
                         temp_v0_6 = func_800C1C88(playerId, gPlayers[playerId].pos, gPlayers[playerId].velocity, &gPlayers[playerId].unk_098, var_s0, soundBits);
                         if (temp_v0_6 != NULL) {
                             temp_v0_6->unk34 = 40.0f;
@@ -3619,7 +3619,7 @@ void func_800C9D80(Vec3f position, Vec3f velocity, u32 soundBits) {
             temp_v0 = func_800C1C88(0U, position, velocity, D_800EA1C8, (u8) var_s0, soundBits);
             if (temp_v0 != 0) {
                 temp_v0->unk34 = 170.0f;
-                if (soundBits == 0x5103700B) {
+                if (soundBits == SOUND_ARG_LOAD(0x51, 0x03, 0x70, 0x0B)) {
                     play_sound(soundBits, &temp_v0->unk18, var_s0, &D_800EA178, &D_800EA17C, &D_800EA1DC);
                 } else {
                     play_sound(soundBits, &temp_v0->unk18, var_s0, &temp_v0->unk2C, &D_800EA1D4, &D_800EA1DC);
@@ -3813,14 +3813,14 @@ void func_800CA59C(u8 playerId) {
 void func_800CA730(u8 arg0) {
     if (D_800EA0EC[arg0] == 0) {
         if ((D_800EA108 == 0) && (D_800EA10C[arg0] != 0)) {
-            play_sound(gPlayers[arg0].characterId * 0x10 + 0x29008008, &D_800E9F7C[arg0].pos, arg0, &D_800EA1D4, &D_800EA1D4, (u8*) &D_800E9F7C[arg0].unk_14);
+            play_sound(gPlayers[arg0].characterId * 0x10 + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x08), &D_800E9F7C[arg0].pos, arg0, &D_800EA1D4, &D_800EA1D4, (u8*) &D_800E9F7C[arg0].unk_14);
             if (D_800EA10C[arg0] != 0) {
                 if ((s32) D_800EA1C0 >= 2) {
-                    func_800C9018(arg0, 0x0100FF2C);
+                    func_800C9018(arg0, SOUND_ARG_LOAD(0x01, 0x00, 0xFF, 0x2C));
                 } else {
                     D_800EA10C[arg0] = 0;
                     if (D_800EA104 != 0) {
-                        func_800C9018(arg0, 0x0100FF2C);
+                        func_800C9018(arg0, SOUND_ARG_LOAD(0x01, 0x00, 0xFF, 0x2C));
                     } else if ((D_800EA10C[0] == 0) && (D_800EA10C[1] == 0)) {
                         if (D_8018FC08 != 0) {
                             if (((u32) (gSequencePlayers[1].enabled)) == 0) {
@@ -3986,8 +3986,8 @@ void func_800CB064(u8 arg0) {
             if ((u8) D_800EA168 == 0) {
                 func_800C36C4(0, 1U, 0x7FU, 0x19);
             }
-            func_800C90F4(arg0, gPlayers[arg0].characterId * 0x10 + 0x29008008);
-            func_800C9018(arg0, 0x0100FA4C);
+            func_800C90F4(arg0, gPlayers[arg0].characterId * 0x10 + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x08));
+            func_800C9018(arg0, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x4C));
             D_800EA170[arg0] = 0;
         }
     }

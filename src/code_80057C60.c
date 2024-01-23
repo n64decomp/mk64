@@ -32,6 +32,8 @@
 #include "menus.h"
 #include "data/other_textures.h"
 #include "spawn_players.h"
+#include "sounds.h"
+#include "code_80071F00.h"
 
 
 //! @warning this macro is undef'd at the end of this file
@@ -68,7 +70,7 @@ s32 D_80165618;
 UNUSED s32 D_80165620[2];
 s32 D_80165628;
 UNUSED s32 D_80165630[2];
-s32 D_80165638;
+u32 D_80165638;
 UNUSED s32 D_80165640[2];
 u32 D_80165648;
 UNUSED u32 D_80165650[2];
@@ -1080,7 +1082,7 @@ void func_80059360(void) {
     if (D_801657B0 == 0) {
         func_8004FA78(0);
         if (playerHUD[PLAYER_ONE].lapCount != 3) {
-            func_8004CB60(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, common_texture_hud_lap);
+            func_8004CB60(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, (u8*) common_texture_hud_lap);
             func_8004FC78(playerHUD[PLAYER_ONE].lapX + 0xC, playerHUD[PLAYER_ONE].lapY - 4, playerHUD[PLAYER_ONE].alsoLapCount);
             func_8004E638(0);
         }
@@ -1095,7 +1097,7 @@ void func_800593F8(void) {
     if (D_801657B0 == 0) {
         func_8004FA78(1);
         if (playerHUD[PLAYER_TWO].lapCount != 3) {
-            func_8004CB60(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, common_texture_hud_lap);
+            func_8004CB60(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, (u8*) common_texture_hud_lap);
             func_8004FC78(playerHUD[PLAYER_TWO].lapX + 0xC, playerHUD[PLAYER_TWO].lapY - 4, playerHUD[PLAYER_TWO].alsoLapCount);
             func_8004E638(1);
         }
@@ -1133,12 +1135,12 @@ void func_80059530(void) {
 void func_80059560(s32 playerId) {
     if (gModeSelection != BATTLE) {
         if (D_801657F8 && gIsHUDVisible) {
-            func_8004CB60(playerHUD[playerId].lapX, playerHUD[playerId].lapY, common_texture_hud_lap);
+            func_8004CB60(playerHUD[playerId].lapX, playerHUD[playerId].lapY, (u8*) common_texture_hud_lap);
             func_8004FC78(playerHUD[playerId].lapX - 12, playerHUD[playerId].lapY + 4, playerHUD[playerId].alsoLapCount);
         }
         if (D_801657E4 == 2) {
             if (playerHUD[playerId].unk_74 && D_80165608) {
-                func_80047910(playerHUD[playerId].unk_6C, playerHUD[playerId].unk_6E, 0, 1.0f, common_tlut_portrait_bomb_kart_and_question_mark, common_texture_portrait_bomb_kart, D_0D005AE0, 0x20, 0x20, 0x20, 0x20);
+                func_80047910(playerHUD[playerId].unk_6C, playerHUD[playerId].unk_6E, 0, 1.0f, (u8*) common_tlut_portrait_bomb_kart_and_question_mark, common_texture_portrait_bomb_kart, D_0D005AE0, 0x20, 0x20, 0x20, 0x20);
             }
         }
     }
@@ -2574,11 +2576,11 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
                 playerHUD[playerId].someTimer = playerHUD[playerId].lapCompletionTimes[*huh];
             }
             if (gModeSelection == (s32) 1) {
-                if ((u32) D_80165638 >= playerHUD[playerId].someTimer1) {
+                if (D_80165638 >= playerHUD[playerId].someTimer1) {
                     if (D_80165638 != playerHUD[playerId].someTimer1) {
                         D_80165658[0] = D_80165658[1] = 0;
                     }
-                    func_800C90F4(0U, (player->characterId * 0x10) + 0x2900800D);
+                    func_800C90F4(0U, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
                     D_80165638 = playerHUD[playerId].someTimer1;
                     D_80165658[lapCount-1] = 1;
                     D_801657E3 = 1;
@@ -2598,7 +2600,7 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
                 break;
             case 1:                                 /* switch 1 */
                 func_80079084(playerId);
-                func_800C9060(playerId, 0x1900F015U);
+                func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0xF0, 0x15));
                 if ((gCurrentCourseId == 8) && (D_80165898 == 0) && (gModeSelection != (s32) 1)) {
                     D_80165898 = 1;
                 }
@@ -2894,7 +2896,7 @@ void func_8005DAD8(UnkPlayerStruct258* arg0, s16 arg1, s16 arg2, s16 arg3) {
     arg0->unk_040 = arg2;
 }
 
-void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) {
+void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     UNUSED s32 stackPadding;
     s32 surfaceType;
     s32 var_t3;
@@ -3071,13 +3073,13 @@ void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) 
         case STONE:
         case BRIDGE:
             if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-                if ((((player->unk_094 / 18.0f) * 216.0f) >= 30.0f) && ((((player->unk_0C0 / 182) > 0x14) || ((player->unk_0C0 / 182) < (-0x14)))) || ((player->unk_22C - player->unk_094) >= 0.04)) {
+                if (((((player->unk_094 / 18.0f) * 216.0f) >= 30.0f) && ((((player->unk_0C0 / 182) > 0x14) || ((player->unk_0C0 / 182) < (-0x14))))) || ((player->unk_22C - player->unk_094) >= 0.04)) {
                     func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
                     func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
                     func_8005DAD8(&player->unk_258[10 + arg1], 0, 0, 0x0080);
                     player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
                 }
-            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && ((((player->unk_094 / 18.0f) * 216.0f) >= 30.0f) && (((player->unk_0C0 / 182) >= 0x15) || ((player->unk_0C0 / 182) < -0x14)) || ((player->unk_22C - player->unk_094) >= 0.04))) {
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((((player->unk_094 / 18.0f) * 216.0f) >= 30.0f) && (((player->unk_0C0 / 182) >= 0x15) || ((player->unk_0C0 / 182) < -0x14))) || ((player->unk_22C - player->unk_094) >= 0.04))) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
                 func_8005DAD8(&player->unk_258[10 + arg1], 0, 0, 0x0080);
@@ -3089,7 +3091,7 @@ void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) 
     }
 }
 
-void func_8005EA94(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
+void func_8005EA94(Player *player, s16 arg1, s32 arg2, s8 arg3, UNUSED s8 arg4) {
     s32 temp_v0;
     s32 var_t0;
     s32 var_t1;
@@ -3134,7 +3136,7 @@ void func_8005EA94(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-void func_8005ED48(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) {
+void func_8005ED48(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 temp_v0;
     s32 surfaceType;
     s32 var_t3;
@@ -3316,7 +3318,7 @@ void func_8005ED48(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) 
 // Permuter hasn't found anything
 // https://decomp.me/scratch/WjMqd
 
-void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) {
+void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 var_t1;
     u8 surfaceType;
     f32 var_f0;
@@ -3491,7 +3493,7 @@ void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) 
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005F90C.s")
 #endif
 
-void func_80060504(Player *player, s16 arg1, s32 arg2, s32 arg3) {
+void func_80060504(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
     UNUSED s32 thing1;
     s16 thing2;
     UNUSED s32 thing3;
@@ -3596,7 +3598,7 @@ void func_80060B14(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-void func_80060BCC(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) {
+void func_80060BCC(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 sp54;
     UNUSED s32 pad;
     s32 sp4C;
@@ -3818,7 +3820,7 @@ void func_80061A34(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
 
 void func_80061D4C(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3) {
     s32 test = 2;
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
     f32 sp20[10] = { -182.0f, 182.0f, 364.0f, -364.0f, 546.0f, -546.0f, 728.0f, -728.0f, 910.0f, -910.0f };
@@ -4138,7 +4140,7 @@ void func_80062B18(f32 *arg0, f32 *arg1, f32 *arg2, f32 arg3, f32 arg4, f32 arg5
     *arg2 = (coss(arg6) * arg5) + (((arg3 * temp_f20) * sp30) + ((arg4 * sp2C) * sp28));
 }
 
-void func_80062C74(Player *player, s16 arg1, UNUSED s32 arg2, s32 arg3) {
+void func_80062C74(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
     f32 sp48[8] = { 4.5f, 4.5f, 4.5f, 4.5f, 4.5f, 5.5f, 4.5f, 6.5f };
     f32 var_f6;
     f32 sp40;
@@ -4967,7 +4969,7 @@ void func_80065F0C(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         spD4[0] = 0;
         spD4[1] = player->unk_048[arg3];
         spD4[2] = 0;
-        func_800652D4(&spDC, &spD4, player->unk_258[10 + arg2].unk_00C * player->size);
+        func_800652D4(spDC, spD4, player->unk_258[10 + arg2].unk_00C * player->size);
         if ((s32)player->unk_258[10 + arg2].unk_014 != 8) {
             primRed   = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x10) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
             primGreen = ((D_800E47DC[player->unk_258[10 + arg2].unk_038] >> 0x08) & 0xFF) - player->unk_258[10 + arg2].unk_03A;
@@ -5816,7 +5818,7 @@ void func_8006B8B4(Player *player, s8 playerIndex) {
         gPlayerBalloonStatus[playerIndex][gPlayerBalloonCount[playerIndex]] &= ~1;
         gPlayerBalloonStatus[playerIndex][gPlayerBalloonCount[playerIndex]] |= 2;
         gPlayerBalloonCount[playerIndex]--;
-        func_800C9060(playerIndex, 0x19009051U);
+        func_800C9060(playerIndex, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x51));
         if (gPlayerBalloonCount[playerIndex] < 0) {
             func_8008FD4C(player, playerIndex);
         }
@@ -5888,8 +5890,8 @@ void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     spF4[0] = 0;
     spF4[1] = camera1->rot[1];
     spF4[2] = arg2;
-    mtxf_translate_rotate(sp108[0], spFC, spF4);
-    mtxf_scale2(sp108[0], arg1);
+    mtxf_translate_rotate(sp108, spFC, spF4);
+    mtxf_scale2(sp108, arg1);
     convert_to_fixed_point_matrix(&gGfxPool->mtxEffect[gMatrixEffectCount], sp108);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D008DB8);

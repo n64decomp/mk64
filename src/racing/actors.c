@@ -532,14 +532,14 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
             fruit->velocity[1] = 2.3f;
             fruit->velocity[2] = 0.0f;
             if ((player->effects & STAR_EFFECT) != 0) {
-                func_800C9060(player - gPlayerOne, 0x1900A052U);
+                func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0xA0, 0x52));
             } else {
                 player->effects |= 0x8000;
                 player->pos[0]     -= temp_f2  * 4.0f;
                 player->pos[2]     -= temp_f14 * 4.0f;
                 player->velocity[0] -= temp_f2  * 0.7f;
                 player->velocity[2] -= temp_f14 * 0.7f;
-                func_800C9060(player - gPlayerOne, 0x19007018U);
+                func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x70, 0x18));
                 if (gModeSelection != GRAND_PRIX) {
                     D_80162DF8 = 1;
                 }
@@ -732,7 +732,7 @@ void func_802986B4(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     struct ActorSpawnData *var_s1;
     struct ActorSpawnData *var_s5;
     Vec3f sp88;
-    u32 soundThing = 0x1901904D;
+    u32 soundThing = SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x4D);
     s32 segment = SEGMENT_NUMBER2(d_course_moo_moo_farm_cow_spawn);
     s32 offset = SEGMENT_OFFSET(d_course_moo_moo_farm_cow_spawn);
 
@@ -811,12 +811,12 @@ void func_80298AC0(Player *player) {
         sp64[2] = data->pos[2];
         if (func_8029EEB8(player, sp64, 5.0f, 40.0f, 0.8f) == 1) {
             if ((player->effects & STAR_EFFECT) != 0) {
-                func_800C98B8(player->pos, player->velocity, 0x19018010);
-                func_800C90F4((u8) (player - gPlayerOne), (player->characterId * 0x10) + 0x2900800D);
+                func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
+                func_800C90F4((u8) (player - gPlayerOne), (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
                 data->someId |= 0x400;
             }
             if ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) {
-                func_800C9060((u8) (player - gPlayerOne), 0x19007018);
+                func_800C9060((u8) (player - gPlayerOne), SOUND_ARG_LOAD(0x19, 0x00, 0x70, 0x18));
             }
             break;
         }
@@ -1338,7 +1338,7 @@ void update_actor_railroad_crossing(struct RailroadCrossing *crossing) {
         }
         // Play Bell sound when timer hits 20 or 1.
         if ((crossing->someTimer == 1) || (crossing->someTimer == 20)) {
-            func_800C98B8(crossing->pos, crossing->velocity, 0x19017016);
+            func_800C98B8(crossing->pos, crossing->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x70, 0x16));
         }
     }
 }
@@ -2386,15 +2386,15 @@ void func_8029E7DC(struct Actor *actor) {
     s16 temp_v0 = actor->flags;
 
     if ((temp_v0 & 0x200) != 0) {
-        func_800C99E0(actor->pos, 0x19019053);
+        func_800C99E0(actor->pos, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
         return;
     }
     if ((temp_v0 & 0x100) != 0) {
-        func_800C99E0(actor->pos, 0x19018010);
+        func_800C99E0(actor->pos, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
         return;
     }
     if ((temp_v0 & 0x80) != 0) {
-        func_800C99E0(actor->pos, 0x19008054);
+        func_800C99E0(actor->pos, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));
     }
 }
 
@@ -2669,10 +2669,10 @@ s32 func_8029F1F8(Player *player, struct Actor *marioRacewaySign) {
         if ((player->type & PLAYER_HUMAN) != 0) {
             if ((player->effects & STAR_EFFECT) != 0) {
                 marioRacewaySign->flags |= 0x400;
-                func_800C98B8(player->pos, player->velocity, 0x19018010U);
-                func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
+                func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
+                func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
             } else if ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) {
-                func_800C9060(player - gPlayerOne, 0x1900701AU);
+                func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x70, 0x1A));
             }
         }
         return 1;
@@ -2685,10 +2685,10 @@ s32 func_8029F2FC(Player *player, struct PiranhaPlant *plant) {
         if ((player->type & PLAYER_HUMAN) != 0) {
             if ((player->effects & STAR_EFFECT) != 0) {
                 plant->flags |= 0x400;
-                func_800C98B8(player->pos, player->velocity, 0x1901A24AU);
-                func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
+                func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0xA2, 0x4A));
+                func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
             } else if ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) {
-                func_800C9060(player - gPlayerOne, 0x1900A052U);
+                func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0xA0, 0x52));
             }
         }
         return 1;
@@ -2737,8 +2737,8 @@ s32 func_8029F408(Player *player, struct YoshiValleyEgg *egg) {
         if ((player->effects & STAR_EFFECT) != 0) {
             egg->flags |= 0x400;
             egg->pathCenter[1] = 8.0f;
-            func_800C98B8(player->pos, player->velocity, 0x19018010);
-            func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
+            func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
+            func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
         } else {
             func_8008DABC(player, player - gPlayerOne);
             if ((gModeSelection == TIME_TRIALS) && ((player->type & PLAYER_CPU) == 0)) {
@@ -2801,12 +2801,12 @@ s32 func_8029F69C(Player *player, struct Actor *actor) {
     if (player->type & PLAYER_HUMAN) {
         if (player->effects & STAR_EFFECT) {
             actor->flags |= 0x400;
-            func_800C98B8(player->pos, player->velocity, 0x19018010U);
-            func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
+            func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
+            func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
             return 1;
         }
         if (!(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
-            func_800C9060(player - gPlayerOne, 0x19007018U);
+            func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x70, 0x18));
         }
     }
     if (!(player->effects & STAR_EFFECT)) {
@@ -2988,7 +2988,7 @@ void func_8029FDC8(struct Actor *actor) {
             		case GREEN_SHELL_HIT_A_RACER:
             		case BLUE_SHELL_LOCK_ON:
             		case BLUE_SHELL_TARGET_ELIMINATED:
-                		func_800C9EF4(shell->pos, 0x51018008);
+                		func_800C9EF4(shell->pos, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
                 		func_8000EE58(actor - gActorList);
                 		/* fallthrough */
             		case HELD_SHELL:
@@ -3050,28 +3050,28 @@ void func_802A00E8(struct Actor *arg0, struct Actor *arg1) {
         case ACTOR_GREEN_SHELL:
             if ((arg0->state == HELD_SHELL) || (arg0->state == TRIPLE_GREEN_SHELL)) {
                 arg0->flags |= 0x200;
-                func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
+                func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
                 return;
             }
             break;
         case ACTOR_RED_SHELL:
             if ((arg0->state == HELD_SHELL) || (arg0->state == TRIPLE_RED_SHELL)) {
                 arg0->flags |= 0x200;
-                func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
+                func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
             	return;
             }
             break;
         case ACTOR_BLUE_SPINY_SHELL:
             if (arg0->state == HELD_SHELL) {
                 arg0->flags |= 0x200;
-                func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
+                func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
                 return;
             }
             break;
         case ACTOR_FAKE_ITEM_BOX:
             if (arg0->state == HELD_FAKE_ITEM_BOX) {
                 arg0->flags |= 0x200;
-                func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
+                func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
                 return;
             }
             break;
@@ -3081,35 +3081,35 @@ void func_802A00E8(struct Actor *arg0, struct Actor *arg1) {
         case ACTOR_GREEN_SHELL:
             if ((arg1->state == HELD_SHELL) || (arg1->state == TRIPLE_GREEN_SHELL)) {
             	arg1->flags |= 0x200;
-            	func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
+            	func_800C98B8(arg1->pos, arg1->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
         		return;
             }
             break;
         case ACTOR_RED_SHELL:
             if ((arg1->state == HELD_SHELL) || (arg1->state == TRIPLE_RED_SHELL)) {
                 arg1->flags |= 0x200;
-                func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
+                func_800C98B8(arg1->pos, arg1->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
                 return;
             }
             break;
         case ACTOR_BLUE_SPINY_SHELL:
             if (arg1->state == HELD_SHELL) {
                 arg1->flags |= 0x200;
-                func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
+                func_800C98B8(arg1->pos, arg1->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
                 return;
             }
             break;
         case ACTOR_FAKE_ITEM_BOX:
             if (arg1->state == HELD_FAKE_ITEM_BOX) {
                 arg1->flags |= 0x200;
-                func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
+                func_800C98B8(arg1->pos, arg1->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
                 return;
             }
             break;
     }
 
     arg0->flags |= 0x100;
-    func_800C98B8(arg0->pos, arg0->velocity, 0x19018010);
+    func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
 }
 
 void func_802A0350(struct Actor *arg0, struct Actor *arg1) {
@@ -3118,7 +3118,7 @@ void func_802A0350(struct Actor *arg0, struct Actor *arg1) {
             func_8029FDC8(arg0);
             func_8029FDC8(arg1);
             arg0->flags |= 256;
-            func_800C98B8(arg0->pos, arg0->velocity, 0x19018010);
+            func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             return;
         }
         if (arg0->type == ACTOR_BLUE_SPINY_SHELL) {
@@ -3165,13 +3165,13 @@ void func_802A0450(Player *player, struct Actor *actor) {
         if (owner->type & 0x4000) {
             if (actor->flags & 0xF) {
                 if (temp_lo != temp_v1) {
-                    func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+                    func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
                 }
             } else {
                 temp_f0 = actor->pos[0] - owner->pos[0];
                 temp_f2 = actor->pos[2] - owner->pos[2];
                 if ((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 360000.0f) && (temp_lo != temp_v1)) {
-                    func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+                    func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
                 }
             }
         }
@@ -3183,10 +3183,10 @@ void func_802A0450(Player *player, struct Actor *actor) {
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
         player->soundEffects |= 4;
-        func_800C98B8(player->pos, player->velocity, 0x19018010U);
+        func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
         owner = &gPlayers[temp_v1];
         if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
-            func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+            func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
         }
         func_8029FDC8(actor);
         break;
@@ -3196,11 +3196,11 @@ void func_802A0450(Player *player, struct Actor *actor) {
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
         if (!(player->effects & BOO_EFFECT)) {
             player->soundEffects |= 2;
-            func_800C98B8(player->pos, player->velocity, 0x19018010U);
+            func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
         }
         owner = &gPlayers[temp_v1];
         if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
-            func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+            func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
         }
         if (temp_lo == actor->unk_04) {
             func_8029FDC8(actor);
@@ -3214,11 +3214,11 @@ void func_802A0450(Player *player, struct Actor *actor) {
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
         if (!(player->effects & BOO_EFFECT)) {
             player->soundEffects |= 2;
-            func_800C98B8(player->pos, player->velocity, 0x19018010U);
+            func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
         }
         owner = &gPlayers[temp_v1];
         if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
-            func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+            func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
         }
         func_8029FDC8(actor);
         break;
@@ -3273,13 +3273,13 @@ void func_802A0450(Player *player, struct Actor *actor) {
             if (owner->type & 0x4000) {
                 if (actor->flags & 0xF) {
                     if (temp_lo != temp_v1) {
-                        func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+                        func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
                     }
                 } else {
                     temp_f0 = actor->pos[0] - owner->pos[0];
                     temp_f2 = actor->pos[2] - owner->pos[2];
                     if ((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 360000.0f) && (temp_lo != temp_v1)) {
-                        func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+                        func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
                     }
                 }
                 if (actor->state == 0) {
@@ -3452,7 +3452,7 @@ void update_actor_fake_item_box(struct FakeItemBox *fake_item_box) {
                     temp_v1_3->buttonDepressed &= 0xDFFF;
                     func_802A1064(fake_item_box);
                     temp_v0_4->soundEffects &= 0xFFFBFFFF;
-                    func_800C9060((u8)(temp_v0_4 - gPlayerOne), 0x19008012);
+                    func_800C9060((u8)(temp_v0_4 - gPlayerOne), SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                 }
             }
             break;

@@ -243,6 +243,8 @@ void func_8006E7CC(Player*, s8, s8);
 void func_8006E848(Player*, s8, s8);
 void func_8006E8C4(Player*, s8, s8);
 void func_8006E940(Player*, s8, s8);
+void func_80075CA8(void);
+void func_80085214();
 
 // data/data_code_80071F00_2.s
 
@@ -293,7 +295,7 @@ extern s32 D_801655F8;
 extern s32 D_80165608;
 extern s32 D_80165618;
 extern s32 D_80165628;
-extern s32 D_80165638;
+extern u32 D_80165638;
 extern u32 D_80165648;
 extern u32 D_80165658[];
 extern s32 D_80165678;
