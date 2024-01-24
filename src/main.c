@@ -19,7 +19,7 @@
 #include "race_logic.h"
 #include "skybox_and_splitscreen.h"
 #include "hud_renderer.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 #include "code_80281780.h"
 #include "audio/external.h"
 #include "code_800029B0.h"

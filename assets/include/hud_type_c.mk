@@ -1,32 +1,32 @@
 HUD_TYPE_C_DIR := assets/hud_type_c
 
-HUD_TYPE_C_FONT_PALETTE := $(HUD_TYPE_C_DIR)/gTLUTHudTypeCRankFont.png
+HUD_TYPE_C_FONT_PALETTE := $(HUD_TYPE_C_DIR)/common_tlut_hud_type_C_rank_font.png
 
 HUD_TYPE_C_FONT_PNG := \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankFont1.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankFont2.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankFont3.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankFont4.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankFont5.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankFont6.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankFont7.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankFont8.png
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_font_1.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_font_2.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_font_3.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_font_4.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_font_5.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_font_6.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_font_7.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_font_8.png
 
-HUD_TYPE_C_TINY_FONT_PALETTE := $(HUD_TYPE_C_DIR)/gTLUTHudTypeCRankTinyFont.png
+HUD_TYPE_C_TINY_FONT_PALETTE := $(HUD_TYPE_C_DIR)/common_tlut_hud_type_C_rank_tiny_font.png
 
 HUD_TYPE_C_TINY_FONT_PNG := \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankTinyFont0.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankTinyFont1.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankTinyFont2.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankTinyFont3.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankTinyFont4.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankTinyFont5.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankTinyFont6.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankTinyFont7.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankTinyFont8.png \
-$(HUD_TYPE_C_DIR)/gTextureHudTypeCRankTinyFont9.png
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_tiny_font_0.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_tiny_font_1.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_tiny_font_2.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_tiny_font_3.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_tiny_font_4.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_tiny_font_5.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_tiny_font_6.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_tiny_font_7.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_tiny_font_8.png \
+$(HUD_TYPE_C_DIR)/common_texture_hud_type_C_rank_tiny_font_9.png
 
-HUD_TYPE_C_PORTRAIT_BORDER_PNG := $(HUD_TYPE_C_DIR)/gTextureCharacterPortraitBorder.png
+HUD_TYPE_C_PORTRAIT_BORDER_PNG := $(HUD_TYPE_C_DIR)/common_texture_character_portrait_border.png
 
 HUD_TYPE_C_EXPORT_SENTINEL := $(HUD_TYPE_C_DIR)/.export
 

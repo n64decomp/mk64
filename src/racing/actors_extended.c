@@ -13,9 +13,9 @@
 #include "actors_extended.h"
 #include "audio/external.h"
 #include "code_80071F00.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 
-void func_802B0210(Collision *arg0, Collision *arg1) {
+void copy_collision(Collision *arg0, Collision *arg1) {
     arg1->unk30 = arg0->unk30;
     arg1->unk32 = arg0->unk32;
     arg1->unk34 = arg0->unk34;
@@ -192,7 +192,7 @@ void func_802B0788(s16 rawStickY, struct BananaBunchParent *banana_bunch, Player
         var_f12 = (player->unk_094 * 0.75f) + 4.5f + var_f0;
     }
     vec3f_set(velocity, 0.0f, var_f0, var_f12);
-    func_802B64C4(velocity, player->unk_02C[1] + player->unk_0C0);
+    func_802B64C4(velocity, player->rotation[1] + player->unk_0C0);
     banana->velocity[0] = velocity[0];
     banana->velocity[1] = velocity[1];
     banana->velocity[2] = velocity[2];
@@ -292,7 +292,7 @@ void update_actor_banana_bunch(struct BananaBunchParent *banana_bunch) {
         }
         if (someCount == 0) {
             destroy_actor((struct Actor *) banana_bunch);
-            owner->statusEffects &= ~HOLD_BANANA_EFFECT;
+            owner->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
         } else if ((owner->type & 0x4000) != 0) {
             controller = &gControllers[banana_bunch->playerId];
             if ((controller->buttonPressed & Z_TRIG) != 0) {
@@ -429,7 +429,7 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     someVelocity[0] = 0;
                     someVelocity[1] = 0;
                     someVelocity[2] = 8;
-                    func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
+                    func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
                     shell->velocity[0] = someVelocity[0];
                     shell->velocity[1] = someVelocity[1];
                     shell->velocity[2] = someVelocity[2];
@@ -454,7 +454,7 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     someVelocity[0] = 0;
                     someVelocity[1] = 0;
                     someVelocity[2] = 8;
-                    func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
+                    func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
                     shell->velocity[0] = someVelocity[0];
                     shell->velocity[1] = someVelocity[1];
                     shell->velocity[2] = someVelocity[2];
@@ -479,7 +479,7 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     someVelocity[0] = 0;
                     someVelocity[1] = 0;
                     someVelocity[2] = 8;
-                    func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
+                    func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
                     shell->velocity[0] = someVelocity[0];
                     shell->velocity[1] = someVelocity[1];
                     shell->velocity[2] = someVelocity[2];
@@ -520,7 +520,7 @@ s32 use_banana_bunch_item(Player *player) {
     bananaBunch = (struct BananaBunchParent *) &gActorList[actorIndex];
     bananaBunch->state = 0;
     bananaBunch->playerId = player - gPlayerOne;
-    player->statusEffects |= HOLD_BANANA_EFFECT;
+    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -664,7 +664,7 @@ s32 use_red_shell_item(Player *player) {
     func_802B4E30((struct Actor *)shell);
     shell->state = HELD_SHELL;
     shell->rotVelocity = 0;
-    shell->rotAngle = player->unk_02C[1] - 0x8000;
+    shell->rotAngle = player->rotation[1] - 0x8000;
     shell->playerId = player - gPlayerOne;
     return actorIndex;
 }
@@ -726,7 +726,7 @@ void update_actor_banana(struct BananaActor *banana) {
                 controller->buttonDepressed &= ~Z_TRIG;
                 banana->state = 1;
                 banana->unk_04 = 0x00B4;
-                player->statusEffects &= ~HOLD_BANANA_EFFECT;
+                player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
                 func_800C9060(player - gPlayerOne, 0x19008012U);
                 pad3 = controller->rawStickY;
                 if ((pad3 > 30.0f) && (controller->rawStickX < 10) && (controller->rawStickX >= -9)) {
@@ -738,7 +738,7 @@ void update_actor_banana(struct BananaActor *banana) {
                         temp_f0 = (player->unk_094 * 0.75f) + 3.5f + pad3;
                     }
                     vec3f_set(someVelocity, 0, pad3, temp_f0);
-                    func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
+                    func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
                     banana->velocity[0] = someVelocity[0];
                     banana->velocity[1] = someVelocity[1];
                     banana->velocity[2] = someVelocity[2];
@@ -784,7 +784,7 @@ void update_actor_banana(struct BananaActor *banana) {
         someVelocity[0] = 0.0f;
         someVelocity[1] = 0.0f;
         someVelocity[2] = -5.0f;
-        func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
+        func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
         unkX = player->pos[0] + someVelocity[0];
         unkY = player->pos[1] + someVelocity[1];
         unkZ = player->pos[2] + someVelocity[2];
@@ -969,7 +969,7 @@ s32 use_fake_itembox_item(Player *player) {
     itemBox = (struct FakeItemBox*)&gActorList[actorIndex];
     itemBox->playerId = (player - gPlayerOne);
     itemBox->state = HELD_FAKE_ITEM_BOX;
-    player->statusEffects |= HOLD_BANANA_EFFECT;
+    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -1016,7 +1016,7 @@ s32 use_banana_item(Player *player) {
     banana->playerId = playerId;
     banana->state = HELD_BANANA;
     banana->unk_04 = 0x0014;
-    player->statusEffects |= HOLD_BANANA_EFFECT;
+    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -1038,13 +1038,13 @@ void use_thunder_item(Player *player) {
     for (index = 0; index < NUM_PLAYERS; index++) {
         otherPlayer = &gPlayers[index];
         if (player != otherPlayer) {
-            otherPlayer->statusEffects |= HIT_ROTATING_EFFECT;
+            otherPlayer->soundEffects |= HIT_ROTATING_SOUND_EFFECT;
         }
     }
 }
 
 // Handles item use?
-void func_802B2FA0(Player *player) {
+void player_use_item(Player *player) {
     s32 playerId = player - gPlayerOne;
 
     switch (player->currentItemCopy) {
@@ -1064,22 +1064,22 @@ void func_802B2FA0(Player *player) {
         use_banana_bunch_item(player);
         break;
     case ITEM_MUSHROOM:
-        player->statusEffects |= BOOST_EFFECT;
+        player->soundEffects |= BOOST_SOUND_EFFECT;
         break;
     case ITEM_DOUBLE_MUSHROOM:
-        player->statusEffects |= BOOST_EFFECT;
+        player->soundEffects |= BOOST_SOUND_EFFECT;
         break;
     case ITEM_TRIPLE_MUSHROOM:
-        player->statusEffects |= BOOST_EFFECT;
+        player->soundEffects |= BOOST_SOUND_EFFECT;
         break;
     case ITEM_SUPER_MUSHROOM:
-        player->statusEffects |= BOOST_EFFECT;
+        player->soundEffects |= BOOST_SOUND_EFFECT;
         break;
     case ITEM_BOO:
-        player->statusEffects |= BOO_EFFECT;
+        player->soundEffects |= BOO_SOUND_EFFECT;
         break;
     case ITEM_STAR:
-        player->statusEffects |= STAR_EFFECT;
+        player->soundEffects |= STAR_SOUND_EFFECT;
         break;
     case ITEM_THUNDERBOLT:
         use_thunder_item(player);
@@ -1122,7 +1122,7 @@ void func_802B30EC(void) {
             if (((player->type & PLAYER_HUMAN) != 0) && (player->currentItemCopy != ITEM_NONE) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
                 if ((controller->buttonPressed & Z_TRIG) != 0) {
                     controller->buttonPressed &= ~Z_TRIG;
-                    func_802B2FA0(player);
+                    player_use_item(player);
                 }
             }
         }
@@ -1158,7 +1158,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
     switch (shell->state) {
     case HELD_SHELL:
         player = &gPlayers[shell->playerId];
-        func_802B0210(&player->unk_110, &shell->unk30);
+        copy_collision(&player->unk_110, &shell->unk30);
         somePosVel[0] = 0.0f;
         somePosVel[1] = player->boundingBoxSize;
         somePosVel[2] = -(player->boundingBoxSize + shell->boundingBoxSize + 2.0f);
@@ -1185,7 +1185,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
                     somePosVel[0] = 0.0f;
                     somePosVel[1] = 0.0f;
                     somePosVel[2] = -var_f2;
-                    func_802B64C4(somePosVel, player->unk_02C[1] + player->unk_0C0);
+                    func_802B64C4(somePosVel, player->rotation[1] + player->unk_0C0);
                     shell->velocity[0] = somePosVel[0];
                     shell->velocity[1] = somePosVel[1];
                     shell->velocity[2] = somePosVel[2];
@@ -1234,7 +1234,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
             somePosVel[0] = 0.0f;
             somePosVel[1] = 0.0f;
             somePosVel[2] = var_f2;
-            func_802B64C4(somePosVel, player->unk_02C[1] + player->unk_0C0);
+            func_802B64C4(somePosVel, player->rotation[1] + player->unk_0C0);
             shell->velocity[0] = somePosVel[0];
             shell->velocity[1] = somePosVel[1];
             shell->velocity[2] = somePosVel[2];
@@ -1446,7 +1446,7 @@ void func_802B3E7C(struct ShellActor *shell, Player *player) {
     shell->velocity[1] = -2.0f;
     shell->velocity[2] = z_velocity;
 
-    if (player->effects & 0x80000000) {
+    if (player->effects & BOO_EFFECT) {
         func_8029FDC8((struct Actor *) shell);
     } else {
         func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], newPosition[0], newPosition[1], newPosition[2]);
@@ -1537,7 +1537,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
     switch (shell->state) {
     case HELD_SHELL:
         player = &gPlayers[shell->playerId];
-        func_802B0210(&player->unk_110, &shell->unk30);
+        copy_collision(&player->unk_110, &shell->unk30);
         somePosVel[0] = 0.0f;
         somePosVel[1] = player->boundingBoxSize;
         somePosVel[2] = -(player->boundingBoxSize + shell->boundingBoxSize + 2.0f);
@@ -1612,7 +1612,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             somePosVel[0] = 0.0f;
             somePosVel[1] = 0.0f;
             somePosVel[2] = temp_f0;
-            func_802B64C4(somePosVel, (s16) (player->unk_02C[1] + player->unk_0C0));
+            func_802B64C4(somePosVel, (s16) (player->rotation[1] + player->unk_0C0));
             shell->velocity[0] = somePosVel[0];
             shell->velocity[1] = somePosVel[1];
             shell->velocity[2] = somePosVel[2];

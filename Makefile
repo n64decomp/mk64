@@ -7,6 +7,7 @@ default: all
 
 # Preprocessor definitions
 DEFINES :=
+UNAME_S := $(shell uname -s)
 
 #==============================================================================#
 # Build Options                                                                #
@@ -374,7 +375,9 @@ all: $(ROM)
 
 doc:
 	$(PYTHON) tools/doxygen_symbol_gen.py
-	doxygen
+	doxygen 
+	@$(PRINT) "$(GREEN)Documentation generated in docs/html$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Results can be viewed by opening docs/html/index.html in a web browser$(NO_COL)\n"
 
 clean:
 	$(RM) -r $(BUILD_DIR)
@@ -541,10 +544,9 @@ COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_d
 #==============================================================================#
 # Source Code Generation                                                       #
 #==============================================================================#
-
 $(BUILD_DIR)/%.jp.c: %.c
 	$(call print,Encoding:,$<,$@)
-	iconv -t EUC-JP -f UTF-8 $< -o $@
+	iconv -t EUC-JP -f UTF-8 $< > $@
 
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)

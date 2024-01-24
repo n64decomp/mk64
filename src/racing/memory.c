@@ -411,8 +411,8 @@ u32 MIO0_0F(u8 *arg0, u32 arg1, u32 arg2) {
     return oldHeapEndPtr;
 }
 
-void func_802A86A8(mk64_Vtx *data, u32 arg1) {
-    mk64_Vtx_n *vtx_n = (mk64_Vtx_n *) data;
+void func_802A86A8(CourseVtx *data, u32 arg1) {
+    CourseVtx *courseVtx = data;
     Vtx *vtx;
     s32 tmp = ALIGN16(arg1 * 0x10);
 #ifdef AVOID_UB
@@ -427,35 +427,35 @@ void func_802A86A8(mk64_Vtx *data, u32 arg1) {
     gHeapEndPtr -= tmp;
     vtx = (Vtx *) gHeapEndPtr;
 
-        // s32 to u32 comparison required for matching.
-        for (i = 0; i < arg1; i++) {
-            if (gIsMirrorMode) {
-                vtx->n.ob[0] = -vtx_n->ob[0];
-            } else {
-                vtx->n.ob[0] = vtx_n->ob[0];
-            }
-
-            vtx->n.ob[1] = (vtx_n->ob[1] * vtxStretchY);
-            temp_a0 = vtx_n->n[0];
-            temp_a3 = vtx_n->n[1];
-
-            flags = temp_a0 & 3;
-            flags |= (temp_a3 * 4) & 0xC;
-
-            vtx->n.ob[2] = vtx_n->ob[2];
-            vtx->n.tc[0] = vtx_n->tc[0];
-            vtx->n.tc[1] = vtx_n->tc[1];
-            vtx->n.n[0] = (temp_a0 & 0xFC);
-            vtx->n.n[1] = (temp_a3 & 0xFC);
-            vtx->n.n[2] = vtx_n->n[2];
-            vtx->n.flag = flags;
-            vtx->n.a = 0xFF;
-            vtx++;
-            vtx_n++;
+    // s32 to u32 comparison required for matching.
+    for (i = 0; i < arg1; i++) {
+        if (gIsMirrorMode) {
+            vtx->v.ob[0] = -courseVtx->ob[0];
+        } else {
+            vtx->v.ob[0] = courseVtx->ob[0];
         }
+
+        vtx->v.ob[1] = (courseVtx->ob[1] * vtxStretchY);
+        temp_a0 = courseVtx->ca[0];
+        temp_a3 = courseVtx->ca[1];
+
+        flags = temp_a0 & 3;
+        flags |= (temp_a3 << 2) & 0xC;
+
+        vtx->v.ob[2] = courseVtx->ob[2];
+        vtx->v.tc[0] = courseVtx->tc[0];
+        vtx->v.tc[1] = courseVtx->tc[1];
+        vtx->v.cn[0] = (temp_a0 & 0xFC);
+        vtx->v.cn[1] = (temp_a3 & 0xFC);
+        vtx->v.cn[2] = courseVtx->ca[2];
+        vtx->v.flag = flags;
+        vtx->v.cn[3] = 0xFF;
+        vtx++;
+        courseVtx++;
+    }
 }
 
-void decompress_vtx(mk64_Vtx *arg0, u32 vertexCount) {
+void decompress_vtx(CourseVtx *arg0, u32 vertexCount) {
     s32 size = ALIGN16(vertexCount * 0x18);
     u32 segment = SEGMENT_NUMBER2(arg0);
     u32 offset = SEGMENT_OFFSET(arg0);
@@ -467,7 +467,7 @@ void decompress_vtx(mk64_Vtx *arg0, u32 vertexCount) {
     gNextFreeMemoryAddress += size;
 
     mio0decode(vtxCompressed, (u8 *) freeSpace);
-    func_802A86A8((mk64_Vtx *) freeSpace, vertexCount);
+    func_802A86A8((CourseVtx *) freeSpace, vertexCount);
     set_segment_base_addr(4, (void *) gHeapEndPtr);
 }
 
@@ -1330,7 +1330,7 @@ u8 *load_course(s32 courseId) {
     u8 *vertexRomEnd;
     UNUSED s32 pad2[2];
     u32 *textures;
-    mk64_Vtx *vertexStart; // mio0 compressed
+    CourseVtx *vertexStart; // mio0 compressed
     u8 *packedStart;
     u32 vertexCount;
     uintptr_t finalDisplaylistOffset;

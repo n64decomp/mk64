@@ -22,7 +22,7 @@
 #include "code_8006E9C0.h"
 #include "code_80071F00.h"
 #include "code_80086E70.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 #include "src/data/data_800E8700.h"
 #include "skybox_and_splitscreen.h"
 #include "common_textures.h"
@@ -232,25 +232,25 @@ Mtx D_80183D60;
 s32 D_80183DA0;
 f32 D_80183DA8[4];
 //! Lakitu?
-s32 D_80183DB8[4];
+s32 gIndexLakituList[4];
 f32 D_80183DC8[4];
 //! Indexes for the objects associated with the Bomb Karts
 s32 D_80183DD8[NUM_BOMB_KARTS_MAX];
 UNUSED s32 D_80183DF8[16];
-//! Next free spot in D_8018C1B0? Wraps back around to 0 if it gets bigger than D_8018C1B0_SIZE
-s32 D_80183E38;
+//! Next free spot in gObjectParticle1? Wraps back around to 0 if it gets bigger than gObjectParticle1_SIZE
+s32 gNextFreeObjectParticle1;
 Vec3f D_80183E40;
-//! Next free spot in D_8018C3F0? Wraps back around to 0 if it gets bigger than D_8018C3F0_SIZE
-s32 D_80183E4C;
+//! Next free spot in gObjectParticle2? Wraps back around to 0 if it gets bigger than gObjectParticle2_SIZE
+s32 gNextFreeObjectParticle2;
 Vec3f D_80183E50;
-//! Next free spot in D_8018C630?
-s32 D_80183E5C;
+//! Next free spot in gObjectParticle3?
+s32 gNextFreeObjectParticle3;
 UNUSED s32 D_80183E60[3];
-//! Next free spot in D_8018C870? Wraps back around to 0 if it gets bigger than D_8018C870_SIZE
-s32 D_80183E6C;
+//! Next free spot in gObjectParticle4? Wraps back around to 0 if it gets bigger than gObjectParticle4_SIZE
+s32 gNextFreeObjectParticle4;
 Vec3f D_80183E70;
-//! Next free spot in D_8018C970? Wraps back around to 0 if it gets bigger than D_8018C970_SIZE
-s32 D_80183E7C;
+//! Next free spot in gLeafParticle? Wraps back around to 0 if it gets bigger than gLeafParticle_SIZE
+s32 gNextFreeLeafParticle;
 Vec3su D_80183E80;
 //! Appears to be a list of object list indices for the Item Window part of the HUD
 s32 gItemWindowObjectByPlayerId[4];
@@ -303,32 +303,32 @@ Collision D_8018C0B0[4];
  *   Segments of the fire breath from the statues in Bowser's Castle
  *   Potentially other things
  */
-s32 D_8018C1B0[D_8018C3F0_SIZE];
+s32 gObjectParticle1[gObjectParticle2_SIZE];
 Collision D_8018C3B0;
 /**
  * List of object list indices used for:
  *   Bats in Banshee's Boardwalk (but only 1 player mode?)
  */
-s32 D_8018C3F0[D_8018C3F0_SIZE];
+s32 gObjectParticle2[gObjectParticle2_SIZE];
 // Maybe some unused Collision?
 UNUSED Collision D_8018C5F0;
-s32 D_8018C630[D_8018C630_SIZE];
+s32 gObjectParticle3[gObjectParticle3_SIZE];
 Collision D_8018C830;
 /**
  * List of object list indices. Used both for the fires in the DK Jungle cave
  * and, seemingly for the trail that shells leave behind them.
  * I think they're using the same texture, which would explain the dual use
  */
-s32 D_8018C870[D_8018C870_SIZE];
+s32 gObjectParticle4[gObjectParticle4_SIZE];
 /**
  * Seemingly a list of object list indices used for the leaves that sometimes fall
  * trees when you bonk into them
  */
-s32 D_8018C970[D_8018C970_SIZE];
+s32 gLeafParticle[gLeafParticle_SIZE];
 hud_player playerHUD[4];
 /**
  * List of object list indices used by the clouds and stars in some stages
- * Also used for snowflakes like D_8018C1B0? Not sure what's up with that
+ * Also used for snowflakes like gObjectParticle1? Not sure what's up with that
  */
 s32 D_8018CC80[D_8018CC80_SIZE];
 struct_D_8018CE10 D_8018CE10[8];
@@ -699,7 +699,7 @@ void func_8005884C(void) {
     func_80058B58(3);
 }
 
-void func_800588F4(s32 arg0) {
+void func_800588F4(s32 cameraId) {
 
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
@@ -707,68 +707,68 @@ void func_800588F4(s32 arg0) {
         case COURSE_CHOCO_MOUNTAIN:
             break;
         case COURSE_BOWSER_CASTLE:
-            func_80053870(arg0);
-            func_80054664(arg0);
+            func_80053870(cameraId);
+            func_80054664(cameraId);
             break;
         case COURSE_BANSHEE_BOARDWALK:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_800527D8(arg0);
-                func_80052590(arg0);
-                func_8005217C(arg0);
-                func_800524B4(arg0);
+                func_800527D8(cameraId);
+                func_80052590(cameraId);
+                func_8005217C(cameraId);
+                func_800524B4(cameraId);
             }
             break;
         case COURSE_YOSHI_VALLEY:
-            func_80055228(arg0);
+            func_80055228(cameraId);
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_8005568C(arg0);
+                func_8005568C(cameraId);
             }
             break;
         case COURSE_FRAPPE_SNOWLAND:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_8005327C(arg0);
+                func_8005327C(cameraId);
             }
             break;
         case COURSE_KOOPA_BEACH:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80055528(arg0);
+                func_80055528(cameraId);
             }
             if (gGamestate != CREDITS_SEQUENCE) {
 
                 if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
-                    func_80055380(arg0);
+                    func_80055380(cameraId);
                 }
             } else {
-                func_80055380(arg0);
+                func_80055380(cameraId);
             }
             break;
         case COURSE_ROYAL_RACEWAY:
             break;
         case COURSE_LUIGI_RACEWAY:
             if (D_80165898 != 0) {
-                func_80055E68(arg0);
+                func_80055E68(cameraId);
             }
             break;
         case COURSE_MOO_MOO_FARM:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_800550A4(arg0);
+                func_800550A4(cameraId);
             }
             break;
         case COURSE_TOADS_TURNPIKE:
             break;
         case COURSE_KALAMARI_DESERT:
-            func_800541BC(arg0);
+            func_800541BC(cameraId);
             break;
         case COURSE_SHERBET_LAND:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80052E30(arg0);
+                func_80052E30(cameraId);
             }
-            func_8005592C(arg0);
+            func_8005592C(cameraId);
             break;
         case COURSE_RAINBOW_ROAD:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80056188(arg0);
-                func_80055C38(arg0);
+                func_80056188(cameraId);
+                func_80055C38(cameraId);
             }
             break;
         case COURSE_WARIO_STADIUM:
@@ -781,19 +781,19 @@ void func_800588F4(s32 arg0) {
             break;
         case COURSE_DK_JUNGLE:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80054414(arg0);
+                func_80054414(cameraId);
             }
             break;
     }
 
-    func_80054938(arg0);
-    func_80051638(arg0);
+    func_80054938(cameraId);
+    func_80051638(cameraId);
 
     if (D_80165730 != 0) {
-        func_80053E6C(arg0);
+        func_80053E6C(cameraId);
     }
     if (gModeSelection == BATTLE) {
-        func_80056AC0(arg0);
+        func_80056AC0(cameraId);
     }
 }
 
@@ -1080,7 +1080,7 @@ void func_80059360(void) {
     if (D_801657B0 == 0) {
         func_8004FA78(0);
         if (playerHUD[PLAYER_ONE].lapCount != 3) {
-            func_8004CB60(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, D_0D00A958);
+            func_8004CB60(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, common_texture_hud_lap);
             func_8004FC78(playerHUD[PLAYER_ONE].lapX + 0xC, playerHUD[PLAYER_ONE].lapY - 4, playerHUD[PLAYER_ONE].alsoLapCount);
             func_8004E638(0);
         }
@@ -1095,7 +1095,7 @@ void func_800593F8(void) {
     if (D_801657B0 == 0) {
         func_8004FA78(1);
         if (playerHUD[PLAYER_TWO].lapCount != 3) {
-            func_8004CB60(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, D_0D00A958);
+            func_8004CB60(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, common_texture_hud_lap);
             func_8004FC78(playerHUD[PLAYER_TWO].lapX + 0xC, playerHUD[PLAYER_TWO].lapY - 4, playerHUD[PLAYER_TWO].alsoLapCount);
             func_8004E638(1);
         }
@@ -1133,12 +1133,12 @@ void func_80059530(void) {
 void func_80059560(s32 playerId) {
     if (gModeSelection != BATTLE) {
         if (D_801657F8 && gIsHUDVisible) {
-            func_8004CB60(playerHUD[playerId].lapX, playerHUD[playerId].lapY, D_0D00A958);
+            func_8004CB60(playerHUD[playerId].lapX, playerHUD[playerId].lapY, common_texture_hud_lap);
             func_8004FC78(playerHUD[playerId].lapX - 12, playerHUD[playerId].lapY + 4, playerHUD[playerId].alsoLapCount);
         }
         if (D_801657E4 == 2) {
             if (playerHUD[playerId].unk_74 && D_80165608) {
-                func_80047910(playerHUD[playerId].unk_6C, playerHUD[playerId].unk_6E, 0, 1.0f, gTLUTPortraitBombKartAndQuestionMark, gTexturePortraitBombKart, D_0D005AE0, 0x20, 0x20, 0x20, 0x20);
+                func_80047910(playerHUD[playerId].unk_6C, playerHUD[playerId].unk_6E, 0, 1.0f, common_tlut_portrait_bomb_kart_and_question_mark, common_texture_portrait_bomb_kart, D_0D005AE0, 0x20, 0x20, 0x20, 0x20);
             }
         }
     }
@@ -1247,7 +1247,7 @@ void func_8005995C(void) {
 void func_80059A88(s32 playerId) {
     func_80059820(playerId);
     if (!gDemoMode) {
-        func_8007A948(playerId);
+        update_obj_laikitu(playerId);
         func_8007BB9C(playerId);
     }
 }
@@ -1334,7 +1334,7 @@ void func_80059D00(void) {
                 func_80059820(PLAYER_TWO);
                 func_80078C70(2);
             }
-            func_8005A74C();
+            update_obj();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             randomize_seed_from_controller(PLAYER_ONE);
@@ -1353,7 +1353,7 @@ void func_80059D00(void) {
             }
             func_80078C70(2);
             func_8005D1F4(1);
-            func_8005A74C();
+            update_obj();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             randomize_seed_from_controller(PLAYER_ONE);
@@ -1372,7 +1372,7 @@ void func_80059D00(void) {
             }
             func_80078C70(4);
             func_8005D1F4(1);
-            func_8005A74C();
+            update_obj();
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             randomize_seed_from_controller(PLAYER_ONE);
@@ -1405,7 +1405,7 @@ void func_80059D00(void) {
                 }
                 func_8005D1F4(3);
             }
-            func_8005A74C();
+            update_obj();
             break;
         }
         func_800744CC();
@@ -1427,7 +1427,7 @@ void func_8005A070(void) {
         } else if (gGamestate == CREDITS_SEQUENCE) {
             func_80059820(PLAYER_ONE);
             func_80078C70(0);
-            func_8005A74C();
+            update_obj();
         } else {
             func_80059D00();
         }
@@ -1447,10 +1447,10 @@ void func_8005A14C(s32 playerId) {
     lapCount = gLapCountByPlayerId[playerId];
     if (player->type & PLAYER_EXISTS) {
         if (player->effects & 0x204C0) {
-            gObjectList[objectIndex].unk_0BE[2] += 0x1000;
+            gObjectList[objectIndex].direction_angle[2] += 0x1000;
         } else {
-            if (gObjectList[objectIndex].unk_0BE[2] != 0) {
-                gObjectList[objectIndex].unk_0BE[2] += 0x1000;
+            if (gObjectList[objectIndex].direction_angle[2] != 0) {
+                gObjectList[objectIndex].direction_angle[2] += 0x1000;
             }
         }
         if (player->effects & LIGHTNING_EFFECT) {
@@ -1459,24 +1459,24 @@ void func_8005A14C(s32 playerId) {
             f32_step_towards(&gObjectList[objectIndex].sizeScaling, 0.6f, 0.02f);
         }
         if (player->effects & 0x04000000) {
-            u16_step_up_towards(&gObjectList[objectIndex].unk_0BE[0], 0x0C00U, 0x0100U);
+            u16_step_up_towards(&gObjectList[objectIndex].direction_angle[0], 0x0C00U, 0x0100U);
         } else {
-            u16_step_down_towards(&gObjectList[objectIndex].unk_0BE[0], 0, 0x00000100);
+            u16_step_down_towards(&gObjectList[objectIndex].direction_angle[0], 0, 0x00000100);
         }
         if (player->effects & 0x03000000) {
             func_80087D24(objectIndex, 6.0f, 1.5f, 0.0f);
         } else {
             f32_step_towards(&gObjectList[objectIndex].unk_028[1], 0.0f, 1.0f);
         }
-        if ((player->type & PLAYER_INVISIBLE_OR_BOMB) || (player->effects & 0x80000000)) {
+        if ((player->type & PLAYER_INVISIBLE_OR_BOMB) || (player->effects & BOO_EFFECT)) {
             gObjectList[objectIndex].unk_0A0 = 0x0050;
         } else {
             gObjectList[objectIndex].unk_0A0 = 0x00FF;
         }
         if (lapCount >= 3) {
-            gObjectList[objectIndex].unk_0BE[2] = 0;
-            gObjectList[objectIndex].unk_0BE[1] = 0;
-            gObjectList[objectIndex].unk_0BE[0] = 0;
+            gObjectList[objectIndex].direction_angle[2] = 0;
+            gObjectList[objectIndex].direction_angle[1] = 0;
+            gObjectList[objectIndex].direction_angle[0] = 0;
             gObjectList[objectIndex].unk_028[2] = 0.0f;
             gObjectList[objectIndex].unk_028[1] = 0.0f;
             gObjectList[objectIndex].unk_028[0] = 0.0f;
@@ -1576,14 +1576,14 @@ void func_8005A71C(void) {
     }
 }
 
-void func_8005A74C(void) {
+void update_obj(void) {
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
     case COURSE_CHOCO_MOUNTAIN:
         break;
     case COURSE_BOWSER_CASTLE:
         func_80081208();
-        func_80076B84();
+        update_particle_bowser_castle();
         break;
     case COURSE_BANSHEE_BOARDWALK:
         if (gGamestate != CREDITS_SEQUENCE) {
@@ -1637,7 +1637,7 @@ void func_8005A74C(void) {
         break;
     case COURSE_RAINBOW_ROAD:
         if (gGamestate != CREDITS_SEQUENCE) {
-            func_800861E0();
+            update_neon();
             func_80085AA8();
         }
         break;
@@ -2808,12 +2808,12 @@ void func_8005D6C0(Player* player) {
     }
 }
 
-void func_8005D794(Player* player, UnkPlayerStruct258* arg1, f32 arg2, f32 arg3, f32 arg4, s8 arg5, s8 arg6) {
+void func_8005D794(Player* player, UnkPlayerStruct258* arg1, f32 arg2, f32 arg3, f32 arg4, s8 surfaceType, s8 arg6) {
     arg1->unk_000[2] = arg4;
     arg1->unk_000[0] = arg2;
     arg1->unk_000[1] = arg3;
-    arg1->unk_020 = -player->unk_02C[1];
-    arg1->unk_014 = arg5;
+    arg1->unk_020 = -player->rotation[1];
+    arg1->unk_014 = surfaceType;
     arg1->unk_010 = arg6;
 }
 
@@ -2894,9 +2894,9 @@ void func_8005DAD8(UnkPlayerStruct258* arg0, s16 arg1, s16 arg2, s16 arg3) {
     arg0->unk_040 = arg2;
 }
 
-void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
+void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) {
     UNUSED s32 stackPadding;
-    s32 var_t1;
+    s32 surfaceType;
     s32 var_t3;
     f32 var_f2;
     f32 var_f12;
@@ -2904,27 +2904,50 @@ void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
     s32 temp_v0;
     static s32 test = 8;
 
-    var_t1 = 0x000000FF;
+    surfaceType = 0x000000FF;
     temp_v0 = random_int(test);
     if ((temp_v0 == 0) || (temp_v0 == 4)) {
         var_f2  = player->boundingBoxCorners[2].cornerPos[0];
         var_f12 = player->boundingBoxCorners[2].cornerGroundY + 2.0f;
         var_f14 = player->boundingBoxCorners[2].cornerPos[2];
         var_t3 = 1;
-        var_t1 = player->boundingBoxCorners[2].surfaceType;
+        surfaceType = player->boundingBoxCorners[2].surfaceType;
     }
     if ((temp_v0 == 2) || (temp_v0 == 6)) {
         var_f2  = player->boundingBoxCorners[3].cornerPos[0];
         var_f12 = player->boundingBoxCorners[3].cornerGroundY + 2.0f;
         var_f14 = player->boundingBoxCorners[3].cornerPos[2];
         var_t3 = 0;
-        var_t1 = player->boundingBoxCorners[3].surfaceType;
+        surfaceType = player->boundingBoxCorners[3].surfaceType;
     }
-    switch (var_t1) {
-    case 2:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
-                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
+    switch (surfaceType) {
+        case DIRT:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                    func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
+                    func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
+                    if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
+                        func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
+                    }
+                    if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
+                        func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
+                    }
+                    if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
+                        func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
+                    }
+                    if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
+                        func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
+                    }
+                    if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+                        func_8005DAD8(&player->unk_258[10 + arg1], 10, 0, 0x0080);
+                    }
+                    if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+                        func_8005DAD8(&player->unk_258[10 + arg1], 11, 0, 0x0080);
+                    }
+                    player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+                }
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
                 if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
@@ -2946,150 +2969,127 @@ void func_8005DAF4(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
                 }
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-        } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
-            if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
-            }
-            if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
-            }
-            if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
-            }
-            if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
-            }
-            if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 10, 0, 0x0080);
-            }
-            if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 11, 0, 0x0080);
-            }
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 8:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
-                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
+            break;
+        case GRASS:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                    func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
+                    func_8005D7D8(&player->unk_258[10 + arg1], 3, 1.0f);
+                    func_8005D800(&player->unk_258[10 + arg1], 0x00FFFFFF, 0x00FF);
+                    player->unk_258[10 + arg1].unk_038 -= arg1 * 8;
+                    player->unk_258[10 + arg1].unk_03A -= arg1 * 8;
+                    player->unk_258[10 + arg1].unk_03C -= arg1 * 8;
+                }
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 3, 1.0f);
                 func_8005D800(&player->unk_258[10 + arg1], 0x00FFFFFF, 0x00FF);
                 player->unk_258[10 + arg1].unk_038 -= arg1 * 8;
                 player->unk_258[10 + arg1].unk_03A -= arg1 * 8;
                 player->unk_258[10 + arg1].unk_03C -= arg1 * 8;
             }
-        } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 3, 1.0f);
-            func_8005D800(&player->unk_258[10 + arg1], 0x00FFFFFF, 0x00FF);
-            player->unk_258[10 + arg1].unk_038 -= arg1 * 8;
-            player->unk_258[10 + arg1].unk_03A -= arg1 * 8;
-            player->unk_258[10 + arg1].unk_03C -= arg1 * 8;
-        }
-        player->unk_258[10 + arg1].unk_000[1] -= 1.5;
-        break;
-    case 7:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
-                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
+            player->unk_258[10 + arg1].unk_000[1] -= 1.5;
+            break;
+        case SAND_OFFROAD:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                    func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
+                    func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
+                    func_8005DAD8(&player->unk_258[10 + arg1], 2, 1, 0x00A8);
+                    player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+                }
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
                 func_8005DAD8(&player->unk_258[10 + arg1], 2, 1, 0x00A8);
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-        } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 2, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 3:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
-                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
+            break;
+        case SAND:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                    func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
+                    func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
+                    func_8005DAD8(&player->unk_258[10 + arg1], 3, 1, 0x00A8);
+                    player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+                }
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
                 func_8005DAD8(&player->unk_258[10 + arg1], 3, 1, 0x00A8);
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-        } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 3, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 10:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
-                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
+            break;
+        case WET_SAND:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                    func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
+                    func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
+                    func_8005DAD8(&player->unk_258[10 + arg1], 4, 1, 0x00A8);
+                    player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+                }
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
                 func_8005DAD8(&player->unk_258[10 + arg1], 4, 1, 0x00A8);
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-        } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 4, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 13:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
-                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
+            break;
+        case DIRT_OFFROAD:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                    func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
+                    func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
+                    func_8005DAD8(&player->unk_258[10 + arg1], 5, 1, 0x00A8);
+                    player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+                }
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
+                func_8005D82C(&player->unk_258[10 + arg1], 0x00FFA54F, 0x00AF);
                 func_8005DAD8(&player->unk_258[10 + arg1], 5, 1, 0x00A8);
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-        } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
-            func_8005D82C(&player->unk_258[10 + arg1], 0x00FFA54F, 0x00AF);
-            func_8005DAD8(&player->unk_258[10 + arg1], 5, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 5:
-    case 11:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
-                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
+            break;
+        case SNOW:
+        case SNOW_OFFROAD:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                if (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f) {
+                    func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
+                    func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
+                    func_8005DAD8(&player->unk_258[10 + arg1], 6, 1, 0x00A8);
+                    player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+                }
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
                 func_8005DAD8(&player->unk_258[10 + arg1], 6, 1, 0x00A8);
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-        } else if ((player->unk_258[10 + arg2].unk_01E > 0) && (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 6, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 1:
-    case 4:
-    case 6:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            if ((((player->unk_094 / 18.0f) * 216.0f) >= 30.0f) && ((((player->unk_0C0 / 182) > 0x14) || ((player->unk_0C0 / 182) < (-0x14)))) || ((player->unk_22C - player->unk_094) >= 0.04)) {
-                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
+            break;
+        case ASPHALT:
+        case STONE:
+        case BRIDGE:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                if ((((player->unk_094 / 18.0f) * 216.0f) >= 30.0f) && ((((player->unk_0C0 / 182) > 0x14) || ((player->unk_0C0 / 182) < (-0x14)))) || ((player->unk_22C - player->unk_094) >= 0.04)) {
+                    func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
+                    func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
+                    func_8005DAD8(&player->unk_258[10 + arg1], 0, 0, 0x0080);
+                    player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+                }
+            } else if ((player->unk_258[10 + arg2].unk_01E > 0) && ((((player->unk_094 / 18.0f) * 216.0f) >= 30.0f) && (((player->unk_0C0 / 182) >= 0x15) || ((player->unk_0C0 / 182) < -0x14)) || ((player->unk_22C - player->unk_094) >= 0.04))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) surfaceType, (s8) var_t3);
                 func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
                 func_8005DAD8(&player->unk_258[10 + arg1], 0, 0, 0x0080);
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-        } else if ((player->unk_258[10 + arg2].unk_01E > 0) && ((((player->unk_094 / 18.0f) * 216.0f) >= 30.0f) && (((player->unk_0C0 / 182) >= 0x15) || ((player->unk_0C0 / 182) < -0x14)) || ((player->unk_22C - player->unk_094) >= 0.04))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f2, var_f12, var_f14, (s8) var_t1, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 2, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 0, 0, 0x0080);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    default:
-        break;
+            break;
+        default:
+            break;
     }
 }
 
-void func_8005EA94(Player *player, s16 arg1, s32 arg2, s8 arg3) {
+void func_8005EA94(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     s32 temp_v0;
     s32 var_t0;
     s32 var_t1;
@@ -3134,180 +3134,180 @@ void func_8005EA94(Player *player, s16 arg1, s32 arg2, s8 arg3) {
     }
 }
 
-void func_8005ED48(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
+void func_8005ED48(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) {
     s32 temp_v0;
-    s32 var_t2;
+    s32 surfaceType;
     s32 var_t3;
     f32 var_f0;
     f32 var_f2;
     f32 var_f12;
     static s32 test = 8;
 
-    var_t2 = 0x000000FF;
+    surfaceType = 0x000000FF;
     temp_v0 = random_int(test);
     if ((temp_v0 == 2) || (temp_v0 == 4)) {
         var_f0 = player->boundingBoxCorners[2].cornerPos[0];
         var_f2 = player->boundingBoxCorners[2].cornerGroundY + 2.0f;
         var_f12 = player->boundingBoxCorners[2].cornerPos[2];
         var_t3 = 1;
-        var_t2 = player->boundingBoxCorners[2].surfaceType;
+        surfaceType = player->boundingBoxCorners[2].surfaceType;
     }
     if ((temp_v0 == 0) || (temp_v0 == 6)) {
         var_f0 = player->boundingBoxCorners[3].cornerPos[0];
         var_f2 = player->boundingBoxCorners[3].cornerGroundY + 2.0f;
         var_f12 = player->boundingBoxCorners[3].cornerPos[2];
         var_t3 = 0;
-        var_t2 = player->boundingBoxCorners[3].surfaceType;
+        surfaceType = player->boundingBoxCorners[3].surfaceType;
     }
-    switch (var_t2) {
-    case 2:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_t2, var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
+    switch (surfaceType) {
+        case DIRT:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
+                }
+                if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
+                }
+                if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
+                }
+                if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
+                }
+                if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 10, 0, 0x0080);
+                }
+                if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 11, 0, 0x0080);
+                }
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
+                }
+                if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
+                }
+                if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
+                }
+                if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
+                }
+                if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
+                }
+                if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
+                }
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
+            break;
+        case GRASS:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.1f);
+                func_8005D800(&player->unk_258[10 + arg1], 0x00FFFFFF, 0x00FF);
+                player->unk_258[10 + arg1].unk_038 -= arg1 * 8;
+                player->unk_258[10 + arg1].unk_03A -= arg1 * 8;
+                player->unk_258[10 + arg1].unk_03C -= arg1 * 8;
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.1f);
+                func_8005D800(&player->unk_258[10 + arg1], 0x00FFFFFF, 0x00FF);
+                player->unk_258[10 + arg1].unk_038 -= arg1 * 8;
+                player->unk_258[10 + arg1].unk_03A -= arg1 * 8;
+                player->unk_258[10 + arg1].unk_03C -= arg1 * 8;
             }
-            if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
+            player->unk_258[10 + arg1].unk_000[1] -= 1.5;
+            break;
+        case SAND_OFFROAD:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 2, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 2, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
+            break;
+        case SAND:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 3, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 3, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 10, 0, 0x0080);
+            break;
+        case WET_SAND:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 4, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 4, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 11, 0, 0x0080);
+            break;
+        case DIRT_OFFROAD:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 5, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 5, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_t2, var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
+            break;
+        case SNOW:
+        case SNOW_OFFROAD:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 6, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 6, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
+            break;
+        case ASPHALT:
+        case STONE:
+        case BRIDGE:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 0, 0, 0x0080);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) surfaceType, (s8) var_t3);
+                func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 0, 0, 0x0080);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
-            }
-            if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
-            }
-            if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
-            }
-            if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
-            }
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 8:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.1f);
-            func_8005D800(&player->unk_258[10 + arg1], 0x00FFFFFF, 0x00FF);
-            player->unk_258[10 + arg1].unk_038 -= arg1 * 8;
-            player->unk_258[10 + arg1].unk_03A -= arg1 * 8;
-            player->unk_258[10 + arg1].unk_03C -= arg1 * 8;
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.1f);
-            func_8005D800(&player->unk_258[10 + arg1], 0x00FFFFFF, 0x00FF);
-            player->unk_258[10 + arg1].unk_038 -= arg1 * 8;
-            player->unk_258[10 + arg1].unk_03A -= arg1 * 8;
-            player->unk_258[10 + arg1].unk_03C -= arg1 * 8;
-        }
-        player->unk_258[10 + arg1].unk_000[1] -= 1.5;
-        break;
-    case 7:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 2, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 2, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 3:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 3, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 3, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 10:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 4, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 4, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 13:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 5, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 5, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 5:
-    case 11:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 6, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 6, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 1:
-    case 4:
-    case 6:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 0, 0, 0x0080);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, (s8) var_t2, (s8) var_t3);
-            func_8005D7D8(&player->unk_258[10 + arg1], 5, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 0, 0, 0x0080);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    default:
-        break;
+            break;
+        default:
+            break;
     }
 }
 
@@ -3316,9 +3316,9 @@ void func_8005ED48(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
 // Permuter hasn't found anything
 // https://decomp.me/scratch/WjMqd
 
-void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
+void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) {
     s32 var_t1;
-    u8 var_v0;
+    u8 surfaceType;
     f32 var_f0;
     f32 var_f2;
     f32 var_f12;
@@ -3329,162 +3329,162 @@ void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
         var_f2 = player->pos[1] - player->boundingBoxSize;
         var_f12 = player->pos[2];
         var_t1 = 1;
-        var_v0 = player->boundingBoxCorners[2].surfaceType;
+        surfaceType = player->boundingBoxCorners[2].surfaceType;
     } else {
         var_f0 = player->pos[0];
         var_f2 = player->pos[1] - player->boundingBoxSize;
         var_f12 = player->pos[2];
-        var_v0 = player->boundingBoxCorners[3].surfaceType;
+        surfaceType = player->boundingBoxCorners[3].surfaceType;
     }
-    switch (var_v0) {
-    case 2:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            if ((gCurrentCourseId == 1) || (gCurrentCourseId == 7)) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
+    switch (surfaceType) {
+        case DIRT:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                if ((gCurrentCourseId == 1) || (gCurrentCourseId == 7)) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
+                }
+                if (gCurrentCourseId == 0x000B) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
+                }
+                if (gCurrentCourseId == 9) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
+                }
+                if (gCurrentCourseId == 0x000E) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
+                }
+                if (gCurrentCourseId == 4) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
+                }
+                if (gCurrentCourseId == 0x0012) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
+                }
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                if ((gCurrentCourseId == 1) || (gCurrentCourseId == 7)) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
+                }
+                if (gCurrentCourseId == 0x000B) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
+                }
+                if (gCurrentCourseId == 9) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
+                }
+                if (gCurrentCourseId == 0x000E) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
+                }
+                if (gCurrentCourseId == 4) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
+                }
+                if (gCurrentCourseId == 0x0012) {
+                    func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
+                }
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            if (gCurrentCourseId == 0x000B) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
+            break;
+        case GRASS:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.1f);
+                func_8005D800(&player->unk_258[10 + arg1], 0x00FFFFFF, 0x00FF);
+                player->unk_258[10 + arg1].unk_038 -= arg1 * 8;
+                player->unk_258[10 + arg1].unk_03A -= arg1 * 8;
+                player->unk_258[10 + arg1].unk_03C -= arg1 * 8;
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.1f);
+                func_8005D800(&player->unk_258[10 + arg1], 0x00FFFFFF, 0x00FF);
+                player->unk_258[10 + arg1].unk_038 -= arg1 * 8;
+                player->unk_258[10 + arg1].unk_03A -= arg1 * 8;
+                player->unk_258[10 + arg1].unk_03C -= arg1 * 8;
             }
-            if (gCurrentCourseId == 9) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
+            player->unk_258[10 + arg1].unk_000[1] -= 1.5;
+            break;
+        case SAND_OFFROAD:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 2, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 2, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            if (gCurrentCourseId == 0x000E) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
+            break;
+        case SAND:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 3, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 3, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            if (gCurrentCourseId == 4) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
+            break;
+        case WET_SAND:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 4, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 4, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            if (gCurrentCourseId == 0x0012) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
+            break;
+        case DIRT_OFFROAD:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 5, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 5, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            if ((gCurrentCourseId == 1) || (gCurrentCourseId == 7)) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
+            break;
+        case SNOW:
+        case SNOW_OFFROAD:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 6, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 6, 1, 0x00A8);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            if (gCurrentCourseId == 0x000B) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
+            break;
+        case ASPHALT:
+        case STONE:
+        case BRIDGE:
+            if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 0, 0, 0x0080);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
+            } else if (player->unk_258[10 + arg2].unk_01E > 0) {
+                func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
+                func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
+                func_8005DAD8(&player->unk_258[10 + arg1], 0, 0, 0x0080);
+                player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             }
-            if (gCurrentCourseId == 9) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
-            }
-            if (gCurrentCourseId == 0x000E) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
-            }
-            if (gCurrentCourseId == 4) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
-            }
-            if (gCurrentCourseId == 0x0012) {
-                func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
-            }
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 8:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.1f);
-            func_8005D800(&player->unk_258[10 + arg1], 0x00FFFFFF, 0x00FF);
-            player->unk_258[10 + arg1].unk_038 -= arg1 * 8;
-            player->unk_258[10 + arg1].unk_03A -= arg1 * 8;
-            player->unk_258[10 + arg1].unk_03C -= arg1 * 8;
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.1f);
-            func_8005D800(&player->unk_258[10 + arg1], 0x00FFFFFF, 0x00FF);
-            player->unk_258[10 + arg1].unk_038 -= arg1 * 8;
-            player->unk_258[10 + arg1].unk_03A -= arg1 * 8;
-            player->unk_258[10 + arg1].unk_03C -= arg1 * 8;
-        }
-        player->unk_258[10 + arg1].unk_000[1] -= 1.5;
-        break;
-    case 7:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 2, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 2, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 3:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 3, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 3, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 10:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 4, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 4, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 13:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 5, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 5, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 5:
-    case 11:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 6, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 6, 1, 0x00A8);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    case 1:
-    case 4:
-    case 6:
-        if ((arg1 == 0) && ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 0, 0, 0x0080);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        } else if (player->unk_258[10 + arg2].unk_01E > 0) {
-            func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, var_v0, var_t1);
-            func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-            func_8005DAD8(&player->unk_258[10 + arg1], 0, 0, 0x0080);
-            player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
-        }
-        break;
-    default:
-        break;
+            break;
+        default:
+            break;
     }
 }
 #else
@@ -3527,7 +3527,7 @@ void func_80060504(Player *player, s16 arg1, s32 arg2, s32 arg3) {
     player->unk_258[arg1].unk_024 = 0.0f;
     if ((player->unk_044 & 0x20) == 0x20) {
         player->unk_258[arg1].unk_040 = 0;
-        if ((player->effects & 0x2000) == 0x2000) {
+        if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
             func_8005D800(&player->unk_258[arg1], 0x00FFFF00, 0x0080);
             player->unk_258[arg1].unk_038 = 1;
         } else {
@@ -3536,7 +3536,7 @@ void func_80060504(Player *player, s16 arg1, s32 arg2, s32 arg3) {
         }
     } else {
         player->unk_258[arg1].unk_040 = 1;
-        if ((player->effects & 0x2000) == 0x2000) {
+        if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
             func_8005D800(&player->unk_258[arg1], 0x00FFFF00, 0x0080);
             player->unk_258[arg1].unk_038 = 1;
         } else {
@@ -3596,7 +3596,7 @@ void func_80060B14(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-void func_80060BCC(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
+void func_80060BCC(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, s8 arg4) {
     s32 sp54;
     UNUSED s32 pad;
     s32 sp4C;
@@ -3689,7 +3689,7 @@ void func_800612F8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
     for (var_s2 = 0; var_s2 < 10; var_s2++){
         player->unk_258[0x1E + var_s2].unk_01C = 1;
         player->unk_258[0x1E + var_s2].unk_028 = player->pos[1] + 5.0f;
-        player->unk_258[0x1E + var_s2].unk_020 = (0x1C70 * var_s2) - player->unk_02C[1];
+        player->unk_258[0x1E + var_s2].unk_020 = (0x1C70 * var_s2) - player->rotation[1];
         player->unk_258[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.5;
         player->unk_258[0x1E + var_s2].unk_03A = 0;
         player->unk_258[0x1E + var_s2].unk_012 = 1;
@@ -3707,7 +3707,7 @@ void func_80061430(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
     for (var_s2 = 0; var_s2 < 7; var_s2++){
         player->unk_258[0x1E + var_s2].unk_01C = 1;
         player->unk_258[0x1E + var_s2].unk_028 = player->pos[1] - 4.0f;
-        player->unk_258[0x1E + var_s2].unk_020 = (0x1C70 * var_s2) - player->unk_02C[1];
+        player->unk_258[0x1E + var_s2].unk_020 = (0x1C70 * var_s2) - player->rotation[1];
         // ???
         player->unk_258[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.9;
         player->unk_258[0x1E + var_s2].unk_024 = (random_int(0x0064U) / 100.0f) + 1.5;
@@ -3732,7 +3732,7 @@ void func_800615AC(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3) {
         player->unk_258[0x1E + arg1].unk_01C = 1;
         player->unk_258[0x1E + arg1].unk_000[0] = player->pos[0];
         player->unk_258[0x1E + arg1].unk_000[2] = player->pos[2];
-        player->unk_258[0x1E + arg1].unk_020 = -player->unk_02C[1] + sp28[arg1];
+        player->unk_258[0x1E + arg1].unk_020 = -player->rotation[1] + sp28[arg1];
         player->unk_258[0x1E + arg1].unk_018 = random_int(1U) + 2.0f;
         temp_f0 = random_int(4U);
         temp_f0 -= test;
@@ -3760,7 +3760,7 @@ void func_80061754(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3, U
     sp48 = random_int(2U);
     func_8005D794(player, &player->unk_258[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
     func_8005D7D8(&player->unk_258[0x1E + arg1], 6, 1.0f);
-    if ((player->effects & 0x02000000) || ((player->effects) & 0x01000000) || ((player->effects) & 0x400) || ((player->effects) & 0x80000000)) {
+    if ((player->effects & HIT_BY_ITEM_EFFECT) || ((player->effects) & 0x01000000) || ((player->effects) & 0x400) || ((player->effects) & BOO_EFFECT)) {
         func_8005D800(&player->unk_258[0x1E + arg1], 0x00FFFFFF, 0x00A0);
         player->unk_258[0x1E + arg1].unk_038 -= temp_s1;
         player->unk_258[0x1E + arg1].unk_03A -= temp_s1;
@@ -3828,7 +3828,7 @@ void func_80061D4C(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3) {
         player->unk_258[0x1E + arg1].unk_000[0] = player->pos[0];
         player->unk_258[0x1E + arg1].unk_000[1] = player->pos[1] + 2.0f;
         player->unk_258[0x1E + arg1].unk_000[2] = player->pos[2];
-        player->unk_258[0x1E + arg1].unk_020 = -player->unk_02C[1] + sp20[arg1];
+        player->unk_258[0x1E + arg1].unk_020 = -player->rotation[1] + sp20[arg1];
         player->unk_258[0x1E + arg1].unk_018 = random_int(3U) + 2.0f;
         player->unk_258[0x1E + arg1].unk_014 = random_int(4U);
         player->unk_258[0x1E + arg1].unk_014 -= test;
@@ -3870,8 +3870,8 @@ void func_80061EF4(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
             } else {
                 player->unk_258[0x1E + arg1].unk_020 -= 0x888;
             }
-            player->unk_258[0x1E + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[0x1E + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
-            player->unk_258[0x1E + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[0x1E + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
+            player->unk_258[0x1E + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[0x1E + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
+            player->unk_258[0x1E + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[0x1E + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
         } else if (player->unk_258[0x1E + arg2].unk_01E > 0) {
             func_8005D794(player, &player->unk_258[0x1E + arg1], 0.0f, var_f2, 0.0f, (s8) var_t0, (s8) var_t1);
             func_8005D7D8(&player->unk_258[0x1E + arg1], 3, 0.5f);
@@ -3882,8 +3882,8 @@ void func_80061EF4(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
             } else {
                 player->unk_258[0x1E + arg1].unk_020 -= 0x888;
             }
-            player->unk_258[0x1E + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[0x1E + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
-            player->unk_258[0x1E + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[0x1E + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
+            player->unk_258[0x1E + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[0x1E + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
+            player->unk_258[0x1E + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[0x1E + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
         }
     }
 }
@@ -3925,8 +3925,8 @@ void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
                 player->unk_258[30 + arg1].unk_020 -= 2184;
             }
 
-            player->unk_258[30 + arg1].unk_000[2] = player->pos[2] + (coss((player->unk_258[30 + arg1].unk_020 - player->unk_02C[1]) - player->unk_0C0) * 5.0f);
-            player->unk_258[30 + arg1].unk_000[0] = player->pos[0] + (sins((player->unk_258[30 + arg1].unk_020 - player->unk_02C[1]) - player->unk_0C0) * 5.0f);
+            player->unk_258[30 + arg1].unk_000[2] = player->pos[2] + (coss((player->unk_258[30 + arg1].unk_020 - player->rotation[1]) - player->unk_0C0) * 5.0f);
+            player->unk_258[30 + arg1].unk_000[0] = player->pos[0] + (sins((player->unk_258[30 + arg1].unk_020 - player->rotation[1]) - player->unk_0C0) * 5.0f);
             return;
         }
 
@@ -3943,8 +3943,8 @@ void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
             }
 
             new_var = new_var2;
-            new_var->unk_258[30 + arg1].unk_000[2] = new_var->pos[2] + (coss((new_var->unk_258[30 + arg1].unk_020 - new_var->unk_02C[1]) - new_var->unk_0C0) * 5.0f);
-            new_var->unk_258[30 + arg1].unk_000[0] = new_var->pos[0] + (sins((new_var->unk_258[30 + arg1].unk_020 - new_var->unk_02C[1]) - new_var->unk_0C0) * 5.0f);
+            new_var->unk_258[30 + arg1].unk_000[2] = new_var->pos[2] + (coss((new_var->unk_258[30 + arg1].unk_020 - new_var->rotation[1]) - new_var->unk_0C0) * 5.0f);
+            new_var->unk_258[30 + arg1].unk_000[0] = new_var->pos[0] + (sins((new_var->unk_258[30 + arg1].unk_020 - new_var->rotation[1]) - new_var->unk_0C0) * 5.0f);
         }
     }
 }
@@ -3954,7 +3954,7 @@ void func_80062484(Player* player, UnkPlayerStruct258* arg1, s32 arg2) {
     arg1->unk_000[1] = player->unk_074 + 1.0f;
     arg1->unk_000[2] = player->pos[2];
     arg1->unk_000[0] = player->pos[0];
-    arg1->unk_020 = (arg2 * 0x1998) - player->unk_02C[1];
+    arg1->unk_020 = (arg2 * 0x1998) - player->rotation[1];
     arg1->unk_012 = 4;
     arg1->unk_01E = 0;
 }
@@ -3962,96 +3962,96 @@ void func_80062484(Player* player, UnkPlayerStruct258* arg1, s32 arg2) {
 void func_800624D8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 arg3) {
     s32 var_s1;
 
-    switch (player->unk_0F8) {
-    case 2:
-        for (var_s1 = 0; var_s1 < 10; var_s1++) {
-            if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
-                func_8005DAD8(&player->unk_258[0x1E + var_s1], 1, 0, 0x00A8);
+    switch (player->surfaceType) {
+        case DIRT:
+            for (var_s1 = 0; var_s1 < 10; var_s1++) {
+                if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
+                    func_8005DAD8(&player->unk_258[0x1E + var_s1], 1, 0, 0x00A8);
+                }
+                if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
+                    func_8005DAD8(&player->unk_258[0x1E + var_s1], 7, 0, 0x00A8);
+                }
+                if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
+                    func_8005DAD8(&player->unk_258[0x1E + var_s1], 8, 0, 0x00A8);
+                }
+                if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
+                    func_8005DAD8(&player->unk_258[0x1E + var_s1], 9, 0, 0x00A8);
+                }
+                if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
+                    func_8005DAD8(&player->unk_258[0x1E + var_s1], 0x000A, 0, 0x00A8);
+                }
+                if (gCurrentCourseId == COURSE_DK_JUNGLE) {
+                    func_8005DAD8(&player->unk_258[0x1E + var_s1], 0x000B, 0, 0x00A8);
+                }
+                func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
             }
-            if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
-                func_8005DAD8(&player->unk_258[0x1E + var_s1], 7, 0, 0x00A8);
+            player->unk_044 &= ~0x0100;
+            break;
+        case GRASS:
+            for (var_s1 = 0; var_s1 < 10; var_s1++) {
+                func_8005DAD8(&player->unk_258[0x1E + var_s1], 2, 1, 0x00A8);
+                func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
             }
-            if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
-                func_8005DAD8(&player->unk_258[0x1E + var_s1], 8, 0, 0x00A8);
+            player->unk_044 &= ~0x0100;
+            break;
+        case SAND_OFFROAD:
+            for (var_s1 = 0; var_s1 < 10; var_s1++) {
+                func_8005DAD8(&player->unk_258[0x1E + var_s1], 2, 1, 0x00A8);
+                func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
             }
-            if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
-                func_8005DAD8(&player->unk_258[0x1E + var_s1], 9, 0, 0x00A8);
+            player->unk_044 &= ~0x0100;
+            break;
+        case SAND:
+            for (var_s1 = 0; var_s1 < 10; var_s1++) {
+                func_8005DAD8(&player->unk_258[0x1E + var_s1], 3, 1, 0x00A8);
+                func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
             }
-            if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
-                func_8005DAD8(&player->unk_258[0x1E + var_s1], 0x000A, 0, 0x00A8);
+            player->unk_044 &= ~0x0100;
+            break;
+        case WET_SAND:
+            for (var_s1 = 0; var_s1 < 10; var_s1++) {
+                func_8005DAD8(&player->unk_258[0x1E + var_s1], 4, 1, 0x00A8);
+                func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
             }
-            if (gCurrentCourseId == COURSE_DK_JUNGLE) {
-                func_8005DAD8(&player->unk_258[0x1E + var_s1], 0x000B, 0, 0x00A8);
+            player->unk_044 &= ~0x0100;
+            break;
+        case DIRT_OFFROAD:
+            for (var_s1 = 0; var_s1 < 10; var_s1++) {
+                func_8005DAD8(&player->unk_258[0x1E + var_s1], 5, 1, 0x00A8);
+                func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
             }
-            func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
-        }
-        player->unk_044 &= ~0x0100;
-        break;
-    case 8:
-        for (var_s1 = 0; var_s1 < 10; var_s1++) {
-            func_8005DAD8(&player->unk_258[0x1E + var_s1], 2, 1, 0x00A8);
-            func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
-        }
-        player->unk_044 &= ~0x0100;
-        break;
-    case 7:
-        for (var_s1 = 0; var_s1 < 10; var_s1++) {
-            func_8005DAD8(&player->unk_258[0x1E + var_s1], 2, 1, 0x00A8);
-            func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
-        }
-        player->unk_044 &= ~0x0100;
-        break;
-    case 3:
-        for (var_s1 = 0; var_s1 < 10; var_s1++) {
-            func_8005DAD8(&player->unk_258[0x1E + var_s1], 3, 1, 0x00A8);
-            func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
-        }
-        player->unk_044 &= ~0x0100;
-        break;
-    case 10:
-        for (var_s1 = 0; var_s1 < 10; var_s1++) {
-            func_8005DAD8(&player->unk_258[0x1E + var_s1], 4, 1, 0x00A8);
-            func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
-        }
-        player->unk_044 &= ~0x0100;
-        break;
-    case 13:
-        for (var_s1 = 0; var_s1 < 10; var_s1++) {
-            func_8005DAD8(&player->unk_258[0x1E + var_s1], 5, 1, 0x00A8);
-            func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
-        }
-        player->unk_044 &= ~0x0100;
-        break;
-    case 5:
-    case 11:
-        for (var_s1 = 0; var_s1 < 10; var_s1++) {
-            func_8005DAD8(&player->unk_258[0x1E + var_s1], 6, 1, 0x00A8);
-            func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
-        }
-        player->unk_044 &= ~0x0100;
-        break;
-    case 1:
-    case 4:
-    case 6:
-        for (var_s1 = 0; var_s1 < 10; var_s1++) {
-            func_8005DAD8(&player->unk_258[0x1E + var_s1], 0, 0, 0x00A8);
-            func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
-        }
-        player->unk_044 &= ~0x0100;
-        break;
-    default:
-        for (var_s1 = 0; var_s1 < 10; var_s1++) {
-            func_8005DAD8(&player->unk_258[0x1E + var_s1], 0, 0, 0x00A8);
-            func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
-        }
-        player->unk_044 &= ~0x0100;
-        break;
+            player->unk_044 &= ~0x0100;
+            break;
+        case SNOW:
+        case SNOW_OFFROAD:
+            for (var_s1 = 0; var_s1 < 10; var_s1++) {
+                func_8005DAD8(&player->unk_258[0x1E + var_s1], 6, 1, 0x00A8);
+                func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
+            }
+            player->unk_044 &= ~0x0100;
+            break;
+        case ASPHALT:
+        case STONE:
+        case BRIDGE:
+            for (var_s1 = 0; var_s1 < 10; var_s1++) {
+                func_8005DAD8(&player->unk_258[0x1E + var_s1], 0, 0, 0x00A8);
+                func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
+            }
+            player->unk_044 &= ~0x0100;
+            break;
+        default:
+            for (var_s1 = 0; var_s1 < 10; var_s1++) {
+                func_8005DAD8(&player->unk_258[0x1E + var_s1], 0, 0, 0x00A8);
+                func_80062484(player, &player->unk_258[0x1E + var_s1], var_s1);
+            }
+            player->unk_044 &= ~0x0100;
+            break;
     }
 }
 
 void func_800628C0(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_01C = 1;
-    player->unk_258[20 + arg3].unk_020 = -player->unk_02C[1];
+    player->unk_258[20 + arg3].unk_020 = -player->rotation[1];
     player->unk_258[20 + arg3].unk_012 = 2;
     player->unk_258[20 + arg3].unk_01E = 0;
     player->unk_258[20 + arg3].unk_00C =  0.2f;
@@ -4059,7 +4059,7 @@ void func_800628C0(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 
 void func_80062914(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_01C = 1;
-    player->unk_258[20 + arg3].unk_020 = -player->unk_02C[1];
+    player->unk_258[20 + arg3].unk_020 = -player->rotation[1];
     player->unk_258[20 + arg3].unk_012 = 4;
     player->unk_258[20 + arg3].unk_01E = 0;
     player->unk_258[20 + arg3].unk_00C = 1.0f;
@@ -4067,7 +4067,7 @@ void func_80062914(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 
 void func_80062968(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_01C = 1;
-    player->unk_258[20 + arg3].unk_020 = -player->unk_02C[1];
+    player->unk_258[20 + arg3].unk_020 = -player->rotation[1];
     player->unk_258[20 + arg3].unk_012 = 5;
     player->unk_258[20 + arg3].unk_01E = 0;
     player->unk_258[20 + arg3].unk_00C = 0.2f;
@@ -4075,7 +4075,7 @@ void func_80062968(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 
 void func_800629BC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_01C = 1;
-    player->unk_258[20 + arg3].unk_020 = -player->unk_02C[1];
+    player->unk_258[20 + arg3].unk_020 = -player->rotation[1];
     player->unk_258[20 + arg3].unk_012 = 6;
     player->unk_258[20 + arg3].unk_01E = 0;
     player->unk_258[20 + arg3].unk_00C = 0.2f;
@@ -4178,7 +4178,7 @@ void func_80062C74(Player *player, s16 arg1, UNUSED s32 arg2, s32 arg3) {
     } else {
         var_f6 = -((player->unk_098 / 6000.0f) + 0.1);
     }
-    if (((player->effects & 0x2000) == 0x2000) && (player->unk_258[arg1].unk_01E >= 6)) {
+    if (((player->effects & BOOST_EFFECT) == BOOST_EFFECT) && (player->unk_258[arg1].unk_01E >= 6)) {
         player->unk_258[arg1].unk_00C = player->unk_258[arg1].unk_00C + 0.06;
     }
     player->unk_258[arg1].unk_010++;
@@ -4622,9 +4622,9 @@ void func_800649F4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     f32 temp;
     temp = player->unk_258[30 + arg1].unk_018;
    
-  player->unk_258[30 + arg1].unk_000[2] = player->unk_21C + (((-temp) * player->unk_258[30 + arg1].unk_01E) * coss(player->unk_258[30 + arg1].unk_020));
-  player->unk_258[30 + arg1].unk_000[0] = player->unk_218 + (((-temp) * player->unk_258[30 + arg1].unk_01E) * sins(player->unk_258[30 + arg1].unk_020));
-  player->unk_258[30 + arg1].unk_000[1] = player->pos[1] + player->unk_258[30 + arg1].unk_014;
+    player->unk_258[30 + arg1].unk_000[2] = player->unk_21C + (((-temp) * player->unk_258[30 + arg1].unk_01E) * coss(player->unk_258[30 + arg1].unk_020));
+    player->unk_258[30 + arg1].unk_000[0] = player->unk_218 + (((-temp) * player->unk_258[30 + arg1].unk_01E) * sins(player->unk_258[30 + arg1].unk_020));
+    player->unk_258[30 + arg1].unk_000[1] = player->pos[1] + player->unk_258[30 + arg1].unk_014;
     player->unk_258[30 + arg1].unk_00C += 0.04;
 
     ++player->unk_258[30 + arg1].unk_01E;
@@ -4674,8 +4674,8 @@ void func_80064C74(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         player->unk_258[30 + arg1].unk_020 -= 2184;
     }
     
-    player->unk_258[30 + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[30 + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
-    player->unk_258[30 + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[30 + arg1].unk_020 - player->unk_02C[1] - player->unk_0C0) * 5.0f);
+    player->unk_258[30 + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[30 + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
+    player->unk_258[30 + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[30 + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
     player->unk_258[30 + arg1].unk_000[1] = player->pos[1] - 1.0f;
     player->unk_258[30 + arg1].unk_00C += 0.4;
     ++player->unk_258[30 + arg1].unk_01E;
@@ -4693,7 +4693,7 @@ void func_80064C74(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     }
 }
 
-void func_80064DEC(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+void func_80064DEC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 
     player->unk_258[20 + arg3].unk_000[1] = player->pos[1];
     ++player->unk_258[20 + arg3].unk_01E;
@@ -4711,7 +4711,7 @@ void func_80064DEC(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 }
 
-void func_80064EA4(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+void func_80064EA4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->unk_258[20 + arg3].unk_01E;
     if (player->unk_258[20 + arg3].unk_01E < 4) {
         player->unk_258[20 + arg3].unk_00C += 1.2;
@@ -4729,7 +4729,7 @@ void func_80064EA4(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 }
 
-void func_80064F88(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+void func_80064F88(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->unk_258[20 + arg3].unk_01E;
     player->unk_258[20 + arg3].unk_00C += 0.15;
     
@@ -4744,7 +4744,7 @@ void func_80064F88(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 }
 
-void func_80065030(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+void func_80065030(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->unk_258[20 + arg3].unk_01E;
 
     player->unk_258[20 + arg3].unk_000[1] += 0.8;
@@ -4761,7 +4761,7 @@ void func_80065030(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 }
 
-void func_800650FC(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+void func_800650FC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     player->unk_258[20 + arg3].unk_000[2] = (f32) player->pos[2];
     player->unk_258[20 + arg3].unk_000[0] = (f32) player->pos[0];
     player->unk_258[20 + arg3].unk_000[1] = (f32) (player->pos[1] + 4.0f);
@@ -4783,7 +4783,7 @@ void func_800650FC(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
     }
 }
 
-void func_800651F4(Player* player, UNUSED s16 arg1, UNUSED s8 arg2, s8 arg3) {
+void func_800651F4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->unk_258[20 + arg3].unk_01E;
     if (player->unk_258[20 + arg3].unk_01E < 8) {
         player->unk_258[20 + arg3].unk_00C += 0.2;
@@ -4830,7 +4830,7 @@ void func_8006538C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
         spAC[0] = 0;
         spAC[1] = player->unk_048[arg3];
         spAC[2] = 0;
-        if ((player->effects & 0x200) && (((s32) gCourseTimer - D_8018D930[arg1]) < 9)) {
+        if ((player->effects & STAR_EFFECT) && (((s32) gCourseTimer - D_8018D930[arg1]) < 9)) {
             primRed   = (primColors[1] >> 0x10) & 0xFF;
             primGreen = (primColors[1] >> 0x08) & 0xFF;
             primBlue  = (primColors[1] >> 0x00) & 0xFF;
@@ -4840,7 +4840,7 @@ void func_8006538C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
             primAlpha = player->unk_258[arg2].unk_03E;
             func_800652D4(spB4, spAC, ((player->unk_258[arg2].unk_00C * player->size) * 1.4));
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-            gDPLoadTextureBlock(gDisplayListHead++, D_0D02BC58[player->unk_258[arg2].unk_010], G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+            gDPLoadTextureBlock(gDisplayListHead++, common_texture_particle_smoke[player->unk_258[arg2].unk_010], G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_DITHER);
             gSPDisplayList(gDisplayListHead++, D_0D008E48);
@@ -4854,7 +4854,7 @@ void func_8006538C(Player *player, s8 arg1, s16 arg2, s8 arg3) {
             primAlpha = player->unk_258[arg2].unk_03E;
             func_800652D4(spB4, spAC, player->unk_258[arg2].unk_00C * player->size);
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-            gDPLoadTextureBlock(gDisplayListHead++, D_0D02BC58[player->unk_258[arg2].unk_010], G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+            gDPLoadTextureBlock(gDisplayListHead++, common_texture_particle_smoke[player->unk_258[arg2].unk_010], G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
             gSPDisplayList(gDisplayListHead++, D_0D008E48);
         }
@@ -5059,7 +5059,7 @@ void func_80066714(Player *player, UNUSED s32 arg1, s16 arg2, s8 arg3) {
         func_800652D4(sp5C, sp54, player->unk_258[10 + arg2].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008C90);
         gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
-        gDPLoadTextureBlock(gDisplayListHead++, D_0D000200, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+        gDPLoadTextureBlock(gDisplayListHead++, common_texture_particle_fire, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
         func_8004B35C(red, green, blue, alpha);
         gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
         gSPVertex(gDisplayListHead++, D_800E8B00, 4, 0);
@@ -5194,12 +5194,12 @@ void func_80067604(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         func_800652D4(sp8C, sp84, player->unk_258[30 + arg2].unk_00C * player->size);
         if (player->unk_258[30 + arg2].unk_010 == 1) {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-            gDPLoadTextureBlock(gDisplayListHead++, D_0D02AC58, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+            gDPLoadTextureBlock(gDisplayListHead++, common_texture_particle_spark, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(0x000000FF, 0x000000FF, 0x000000DF, 0x000000FF, 0x0000005F, 0, 0x00000060);
             gSPDisplayList(gDisplayListHead++, D_0D008E70);
         } else {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-            gDPLoadTextureBlock(gDisplayListHead++, D_0D02AC58, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+            gDPLoadTextureBlock(gDisplayListHead++, common_texture_particle_spark, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(0x000000FF, 0x000000FF, 0x000000DF, 0x000000FF, 0x0000005F, 0, 0x00000060);
             gSPDisplayList(gDisplayListHead++, D_0D008E48);
         }
@@ -5248,9 +5248,9 @@ void func_80067D3C(Player *player, s8 arg1, u8 *texture, s8 arg3, f32 arg4, s32 
         sp74[0] = 0;
         sp74[1] = player->unk_048[arg1];
         sp74[2] = 0;
-        sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->unk_02C[1] + player->unk_0C0)) * arg4);
+        sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
         sp7C[1] = player->pos[1] + player->boundingBoxSize - sp54[player->characterId] - 2.0f;
-        sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->unk_02C[1] + player->unk_0C0)) * arg4);
+        sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
         func_800652D4(sp7C, sp74, player->unk_258[20 + arg3].unk_00C * player->size);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5275,9 +5275,9 @@ void func_8006801C(Player *player, s8 arg1, u8 *texture, s8 arg3, f32 arg4, s32 
         sp74[0] = 0;
         sp74[1] = player->unk_048[arg1];
         sp74[2] = 0;
-        sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->unk_02C[1] + player->unk_0C0)) * arg4);
+        sp7C[0] = player->pos[0] + (sins((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
         sp7C[1] = player->pos[1] + player->boundingBoxSize - sp54[player->characterId] - 2.0f;
-        sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->unk_02C[1] + player->unk_0C0)) * arg4);
+        sp7C[2] = player->pos[2] + (coss((0x4000 & 0xFFFFFFFF) - (player->rotation[1] + player->unk_0C0)) * arg4);
         func_800652D4(sp7C, sp74, player->unk_258[20 + arg3].unk_00C * player->size * 0.8);
         gSPDisplayList(gDisplayListHead++, D_0D008DB8);
         gDPLoadTextureBlock(gDisplayListHead++, texture, G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
@@ -5624,8 +5624,8 @@ void func_8006A50C(Player *player, f32 arg1, f32 arg2, s8 arg3, s8 arg4, s16 arg
     D_8018D7D0[arg3][arg4] = 0;
     D_8018D800[arg3][arg4] = 5;
     D_8018D830[arg3][arg4] = 1;
-    D_8018D620[arg3][arg4] = -player->unk_02C[1] - player->unk_0C0;
-    func_80062B18(&someX, &someY, &someZ, arg1, 4.0f, arg2 + -3.8, -player->unk_02C[1], 0);
+    D_8018D620[arg3][arg4] = -player->rotation[1] - player->unk_0C0;
+    func_80062B18(&someX, &someY, &someZ, arg1, 4.0f, arg2 + -3.8, -player->rotation[1], 0);
     D_8018D4D0[arg3][arg4] = player->pos[0] + someX;
     D_8018D590[arg3][arg4] = player->pos[2] + someZ;
     D_8018D530[arg3][arg4] = (player->pos[1] - player->boundingBoxSize) + someY;
@@ -5669,7 +5669,7 @@ void func_8006A7C0(Player *player, f32 arg1, f32 arg2, s8 arg3, s8 arg4) {
             D_8018D6B0[arg3][arg4] = 0.0f;
             D_8018D710[arg3][arg4] = 0.0f;
         }
-        D_8018D620[arg3][arg4] = -player->unk_02C[1] - player->unk_0C0;
+        D_8018D620[arg3][arg4] = -player->rotation[1] - player->unk_0C0;
         move_s16_towards(&D_8018D890[arg3][arg4], player->unk_094 * 182.0f, 0.1f);
     }
     if (D_8018D830[arg3][arg4] == 1) {
@@ -5750,7 +5750,7 @@ void func_8006AFD0(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     envRed    = (envColors[player->characterId]  >> 0x10) & 0xFF;
     envGreen  = (envColors[player->characterId]  >> 0x08) & 0xFF;
     envBlue   = (envColors[player->characterId]  >> 0x00) & 0xFF;
-    temp_t1 = (((player->unk_048[arg3] + player->unk_02C[1] + player->unk_0C0) & 0xFFFF) / 128);
+    temp_t1 = (((player->unk_048[arg3] + player->rotation[1] + player->unk_0C0) & 0xFFFF) / 128);
     temp_t1 <<= 7;
     if (arg3 == arg1) {
         var_f20 = 0.3f;
@@ -5978,20 +5978,14 @@ void func_8006C4D4(Vec3f arg0, f32 arg1, s32 rgb, s16 alpha, s16 arg4) {
     sp44[2] = 0;
     func_800652D4(sp4C, sp44, arg1);
     gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-    gDPLoadTextureBlock(gDisplayListHead++, D_0D02AC58[arg4], G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureBlock(gDisplayListHead++, common_texture_particle_spark[arg4], G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     func_8004B414(red, green, blue, alpha);
     gSPDisplayList(gDisplayListHead++, D_0D008E48);
     gMatrixEffectCount += 1;
 }
 
-#ifdef NON_MATCHING
-/**
- * Similar to func_8006C9B8, something about arg3 is very
- * weird here.
- * It seems plausible that several functions called by this one
- * actually take one more argument than they are currently expected to?
-**/
 void func_8006C6AC(Player *player, s16 arg1, s8 arg2, s8 arg3) {
+    s8 arg2_copy = arg2;
     s32 sp28;
 
     sp28 = arg1 - 1;
@@ -6001,55 +5995,47 @@ void func_8006C6AC(Player *player, s16 arg1, s8 arg2, s8 arg3) {
     if (player->unk_258[10 + arg1].unk_01C == 1) {
         switch (player->unk_258[10 + arg1].unk_012) {
         case 1:
-            func_80063408(player, arg1, arg2, arg3);
+            func_80063408(player, arg1, arg2_copy, arg3);
             break;
         case 2:
-            func_800635D4(player, arg1, arg2, arg3);
+            func_800635D4(player, arg1, arg2_copy, arg3);
             break;
         case 3:
-            func_80063BD4(player, arg1, arg2, arg3);
+            func_80063BD4(player, arg1, arg2_copy, arg3);
             break;
         case 4:
-            func_800643A8(player, arg1, arg2, arg3);
+            func_800643A8(player, arg1, arg2_copy, arg3);
             break;
         case 5:
-            func_800639DC(player, arg1, arg2, arg3);
+            func_800639DC(player, arg1, arg2_copy, arg3);
             break;
         case 9:
-            func_80063D58(player, arg1, arg2, arg3);
+            func_80063D58(player, arg1, arg2_copy, arg3);
             break;
         case 11:
-            func_80062F98(player, arg1, arg2, arg3);
+            func_80062F98(player, arg1, arg2_copy, arg3);
             break;
         default:
             break;
         }
     } else {
         if (player->unk_0DE & 1) {
-            // func_80060BCC(player, arg1, sp28, (s32) arg2, /* extra? */ (s32) arg3);
-            func_80060BCC(player, arg1, sp28, (s32) arg2);
+            func_80060BCC(player, arg1, sp28, arg2_copy, arg3);
         } else if (!(player->effects & 8) && !(player->effects & 2)) {
             if (((player->effects & 0x10) == 0x10) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
-                func_8005DA30(player, arg1, sp28, arg2, (s8) (s32) arg3);
-            } else if (((f64) (D_801652A0[arg2] - player->boundingBoxCorners[3].cornerGroundY) >= 3.5) || ((f64) (D_801652A0[arg2] - player->boundingBoxCorners[2].cornerGroundY) >= 3.5)) {
-                // func_8005EA94(player, arg1, sp28, arg2, /* extra? */ (s32) arg3);
-                func_8005EA94(player, arg1, sp28, arg2);
+                func_8005DA30(player, arg1, sp28, arg2_copy, arg3);
+            } else if (((f64) (D_801652A0[arg2_copy] - player->boundingBoxCorners[3].cornerGroundY) >= 3.5) || ((f64) (D_801652A0[arg2_copy] - player->boundingBoxCorners[2].cornerGroundY) >= 3.5)) {
+                func_8005EA94(player, arg1, sp28, arg2_copy, arg3);
             } else if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40)) {
-                // func_8005F90C(player, arg1, sp28, (s32) arg2, /* extra? */ (s32) arg3);
-                func_8005F90C(player, arg1, sp28, (s32) arg2);
-            } else if (((player->effects & 0x4000) && !(player->type & PLAYER_STAGING)) || (player->effects & 0x800) || (player->effects & 0x20) || (player->unk_044 & 0x4000)) {
-                // func_8005ED48(player, arg1, sp28, (s32) arg2, /* extra? */ (s32) arg3);
-                func_8005ED48(player, arg1, sp28, (s32) arg2);
+                func_8005F90C(player, arg1, sp28, arg2_copy, arg3);
+            } else if (((player->effects & 0x4000) && !(player->type & PLAYER_START_SEQUENCE)) || (player->effects & 0x800) || (player->effects & 0x20) || (player->unk_044 & 0x4000)) {
+                func_8005ED48(player, arg1, sp28, arg2_copy, arg3);
             } else {
-                // func_8005DAF4(player, arg1, sp28, (s32) arg2, /* extra? */ (s32) arg3);
-                func_8005DAF4(player, arg1, sp28, (s32) arg2);
+                func_8005DAF4(player, arg1, sp28, arg2_copy, arg3);
             }
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006C6AC.s")
-#endif
 
 #ifdef NON_MATCHING
 /**
@@ -6113,7 +6099,7 @@ void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if (((((player->unk_0CA & 0x1000) == 0x1000) || ((player->unk_0E0 < 2) && (player->effects & 0x01000000))) || ((player->unk_0E0 < 2) && (player->effects & 0x02000000))) || (player->effects & 0x400)) {
+        if (((((player->unk_0CA & 0x1000) == 0x1000) || ((player->unk_0E0 < 2) && (player->effects & 0x01000000))) || ((player->unk_0E0 < 2) && (player->effects & HIT_BY_ITEM_EFFECT))) || (player->effects & 0x400)) {
             func_8006199C(player, arg1, sp28, arg2, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
@@ -6125,7 +6111,7 @@ void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if ((player->effects & 0x200) && ((((s32) gCourseTimer) - D_8018D930[arg2]) < 9)) {
+        if ((player->effects & STAR_EFFECT) && ((((s32) gCourseTimer) - D_8018D930[arg2]) < 9)) {
             func_800615AC(player, arg1, sp28, arg2);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
@@ -6142,11 +6128,11 @@ void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if ((player->effects & 0x2000) && (player->type & PLAYER_HUMAN)) {
+        if ((player->effects & BOOST_EFFECT) && (player->type & PLAYER_HUMAN)) {
             func_800621BC(player, arg1, sp28, arg2);
             return;
         }
-        if (((player->effects & 0x200000) || (player->effects & 0x100000)) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+        if (((player->effects & 0x200000) || (player->effects & BOOST_RAMP_ASPHALT_EFFECT)) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
             func_80061EF4(player, arg1, sp28, arg2);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
@@ -6247,11 +6233,6 @@ void func_8006CEC0(Player *arg0, s16 arg1, s8 arg2, s8 arg3) {
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006CEC0.s")
 #endif
 
-#ifdef NON_MATCHING
-// So, a lot of the functions called by this function have their argument types
-// slightly wrong.
-// For example, func_80064DEC, arg1 is currently marked as an s16 but based on
-// this function it ought to be an s8
 void func_8006D194(Player *player, s8 arg1, s8 arg2) {
     if (player->unk_258[0x14].unk_01C == 1) {
         switch (player->unk_258[0x14].unk_012) {
@@ -6296,9 +6277,6 @@ void func_8006D194(Player *player, s8 arg1, s8 arg2) {
         func_80062AA8(player, arg1, arg2, 1);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006D194.s")
-#endif
 
 void func_8006D474(Player *player, s8 arg1, s8 arg2) {
     s16 var_s2;
@@ -6609,7 +6587,7 @@ void func_8006E420(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E5AC(Player* player, s8 arg1, s8 arg2) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->effects & 0x80000000) == 0x80000000) {
+        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (arg1 == arg2) {
                 func_8006D474(player, arg1, arg2);
             }
@@ -6622,7 +6600,7 @@ void func_8006E5AC(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E634(Player* player, s8 arg1, s8 arg2) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->effects & 0x80000000) == 0x80000000) {
+        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (arg1 == arg2) {
                 func_8006D474(player, arg1, arg2);
             }
@@ -6635,7 +6613,7 @@ void func_8006E634(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E6BC(Player* player, s8 arg1, s8 arg2) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->effects & 0x80000000) == 0x80000000) {
+        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (arg1 == arg2) {
                 func_8006D474(player, arg1, arg2);
             }
@@ -6648,7 +6626,7 @@ void func_8006E6BC(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E744(Player* player, s8 arg1, s8 arg2) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->effects & 0x80000000) == 0x80000000) {
+        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (arg1 == arg2) {
                 func_8006D474(player, arg1, arg2);
             }
@@ -6661,7 +6639,7 @@ void func_8006E744(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E7CC(Player* player, s8 arg1, s8 arg2) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->effects & 0x80000000) == 0x80000000) {
+        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (arg1 == arg2) {
                 func_8006DD3C(player, arg1, arg2);
             }
@@ -6673,7 +6651,7 @@ void func_8006E7CC(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E848(Player* player, s8 arg1, s8 arg2) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->effects & 0x80000000) == 0x80000000) {
+        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (arg1 == arg2) {
                 func_8006DD3C(player, arg1, arg2);
             }
@@ -6685,7 +6663,7 @@ void func_8006E848(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E8C4(Player* player, s8 arg1, s8 arg2) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->effects & 0x80000000) == 0x80000000) {
+        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (arg1 == arg2) {
                 func_8006DD3C(player, arg1, arg2);
             }
@@ -6697,7 +6675,7 @@ void func_8006E8C4(Player* player, s8 arg1, s8 arg2) {
 
 void func_8006E940(Player* player, s8 arg1, s8 arg2) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->effects & 0x80000000) == 0x80000000) {
+        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (arg1 == arg2) {
                 func_8006DD3C(player, arg1, arg2);
             }

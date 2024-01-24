@@ -18,7 +18,7 @@
 #include "macros.h"
 #include "code_80005FD0.h"
 #include "code_80071F00.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 #include "collision.h"
 #include "audio/external.h"
 #include "common_textures.h"
@@ -392,7 +392,7 @@ void func_802977E4(Player *arg0) {
 // Invert green and red on green shell texture
 void init_red_shell_texture(void) {
     s16 *red_shell_texture = (s16 *) &gTLUTRedShell[0];
-    s16 *green_shell_texture = (s16 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(gTLUTGreenShell)] + SEGMENT_OFFSET(gTLUTGreenShell));
+    s16 *green_shell_texture = (s16 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(common_tlut_green_shell)] + SEGMENT_OFFSET(common_tlut_green_shell));
     s16 color_pixel, red_color, green_color, blue_color, alpha_color;
     s32 i;
     for (i = 0; i < 256; i++) {
@@ -507,7 +507,7 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
     }
     switch (fruit->state) {                               /* irregular */
     case 0:
-        if ((get_surface_type(player->unk_110.unk3A) & 0xFF) != 8) {
+        if ((get_surface_type(player->unk_110.unk3A) & 0xFF) != GRASS) {
             return;
         }
         fruit->state = 1;
@@ -531,7 +531,7 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
             fruit->velocity[0] = 0.0f;
             fruit->velocity[1] = 2.3f;
             fruit->velocity[2] = 0.0f;
-            if ((player->effects & 0x200) != 0) {
+            if ((player->effects & STAR_EFFECT) != 0) {
                 func_800C9060(player - gPlayerOne, 0x1900A052U);
             } else {
                 player->effects |= 0x8000;
@@ -810,7 +810,7 @@ void func_80298AC0(Player *player) {
         sp64[1] = data->pos[1];
         sp64[2] = data->pos[2];
         if (func_8029EEB8(player, sp64, 5.0f, 40.0f, 0.8f) == 1) {
-            if ((player->effects & 0x200) != 0) {
+            if ((player->effects & STAR_EFFECT) != 0) {
                 func_800C98B8(player->pos, player->velocity, 0x19018010);
                 func_800C90F4((u8) (player - gPlayerOne), (player->characterId * 0x10) + 0x2900800D);
                 data->someId |= 0x400;
@@ -943,7 +943,7 @@ void render_actor_tree_mario_raceway(Camera *camera, Mat4 arg1, struct Actor *ar
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_tree);
     }
 }
@@ -966,7 +966,7 @@ void render_actor_tree_yoshi_valley(Camera *camera, Mat4 arg1, struct Actor *arg
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_yoshi_valley_dl_tree);
     }
 }
@@ -989,7 +989,7 @@ void render_actor_tree_royal_raceway(Camera *camera, Mat4 arg1, struct Actor *ar
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_royal_raceway_dl_tree);
     }
 }
@@ -1012,7 +1012,7 @@ void render_actor_tree_moo_moo_farm(Camera *camera, Mat4 arg1, struct Actor *arg
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_tree);
     }
 }
@@ -1035,7 +1035,7 @@ void func_80299864(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         // Why is a TLUT being used a DL here? That makes no sense
         // Based on the TLUT being loaded above, this ought to be be another
         // tree related DL, presumably one found in a course other than Moo Moo farm
@@ -1062,7 +1062,7 @@ void render_actor_tree_bowser_castle(Camera *camera, Mat4 arg1, struct Actor *ar
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_royal_raceway_dl_castle_tree);
     }
 }
@@ -1085,7 +1085,7 @@ void render_actor_bush_bowser_castle(Camera *camera, Mat4 arg1, struct Actor *ar
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_bush);
     }
 }
@@ -1262,7 +1262,7 @@ UNUSED s16 D_802B8810[] = {
 };
 
 void render_actor_green_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTGreenShell); // set texture
+    gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_green_shell); // set texture
     render_actor_shell(camera, matrix, shell);
 }
 
@@ -1273,7 +1273,7 @@ void render_actor_red_shell(Camera *camera, Mat4 matrix, struct ShellActor *shel
 
 // Middle of a tlut access
 void render_actor_blue_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTBlueShell); // set texture
+    gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_blue_shell); // set texture
     render_actor_shell(camera, matrix, shell);
 }
 
@@ -2629,7 +2629,7 @@ s32 func_8029EEB8(Player *player, Vec3f pos, f32 arg2, f32 arg3, f32 arg4) {
     sp28 = temp_f0_3 - arg2;
     temp_f16 = player->velocity[0];
     temp_f18 = player->velocity[2];
-    if (player->effects & 0x200) {
+    if (player->effects & STAR_EFFECT) {
         return 1;
     }
     if (temp_f0_3 < 0.1f) {
@@ -2667,7 +2667,7 @@ s32 func_8029EEB8(Player *player, Vec3f pos, f32 arg2, f32 arg3, f32 arg4) {
 s32 func_8029F1F8(Player *player, struct Actor *marioRacewaySign) {
     if (func_8029EEB8(player, marioRacewaySign->pos, 7.0f, 200.0f, 0.8f) == 1) {
         if ((player->type & PLAYER_HUMAN) != 0) {
-            if ((player->effects & 0x200) != 0) {
+            if ((player->effects & STAR_EFFECT) != 0) {
                 marioRacewaySign->flags |= 0x400;
                 func_800C98B8(player->pos, player->velocity, 0x19018010U);
                 func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
@@ -2683,7 +2683,7 @@ s32 func_8029F1F8(Player *player, struct Actor *marioRacewaySign) {
 s32 func_8029F2FC(Player *player, struct PiranhaPlant *plant) {
     if (func_8029EEB8(player, plant->pos, plant->boundingBoxSize, plant->boundingBoxSize, 2.5f) == 1) {
         if ((player->type & PLAYER_HUMAN) != 0) {
-            if ((player->effects & 0x200) != 0) {
+            if ((player->effects & STAR_EFFECT) != 0) {
                 plant->flags |= 0x400;
                 func_800C98B8(player->pos, player->velocity, 0x1901A24AU);
                 func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
@@ -2734,7 +2734,7 @@ s32 func_8029F408(Player *player, struct YoshiValleyEgg *egg) {
         return 0;
     }
     if ((player->type & PLAYER_HUMAN) != 0) {
-        if ((player->effects & 0x200) != 0) {
+        if ((player->effects & STAR_EFFECT) != 0) {
             egg->flags |= 0x400;
             egg->pathCenter[1] = 8.0f;
             func_800C98B8(player->pos, player->velocity, 0x19018010);
@@ -2799,7 +2799,7 @@ s32 func_8029F69C(Player *player, struct Actor *actor) {
     sp48 = player->velocity[0];
     sp44 = player->velocity[2];
     if (player->type & PLAYER_HUMAN) {
-        if (player->effects & 0x200) {
+        if (player->effects & STAR_EFFECT) {
             actor->flags |= 0x400;
             func_800C98B8(player->pos, player->velocity, 0x19018010U);
             func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
@@ -2809,7 +2809,7 @@ s32 func_8029F69C(Player *player, struct Actor *actor) {
             func_800C9060(player - gPlayerOne, 0x19007018U);
         }
     }
-    if (!(player->effects & 0x200)) {
+    if (!(player->effects & STAR_EFFECT)) {
         player->effects |= 0x8000;
     }
     sp20[0] = actor->pos[0];
@@ -2941,7 +2941,7 @@ void func_8029FDC8(struct Actor *actor) {
             		break;
         		case HELD_BANANA:
             		player = &gPlayers[banana->playerId];
-            		player->statusEffects &= ~0x00040000;
+            		player->soundEffects &= ~0x00040000;
             		/* fallthrough */
         		case BANANA_ON_GROUND:
             		banana->flags = -0x8000;
@@ -3036,7 +3036,7 @@ void func_8029FDC8(struct Actor *actor) {
         	fakeItemBox = (struct FakeItemBox *)actor;
         	player = &gPlayers[(s16)fakeItemBox->playerId];
         	if (fakeItemBox->state == HELD_FAKE_ITEM_BOX) {
-            	player->statusEffects &= ~0x00040000;
+            	player->soundEffects &= ~0x00040000;
         	}
         	fakeItemBox->state = DESTROYED_FAKE_ITEM_BOX;
         	fakeItemBox->flags = -0x8000;
@@ -3151,16 +3151,16 @@ void func_802A0450(Player *player, struct Actor *actor) {
     temp_lo = player - gPlayerOne;
     switch (actor->type) {
     case ACTOR_YOSHI_VALLEY_EGG:
-        if (!(player->effects & 0x80000000) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
+        if (!(player->effects & BOO_EFFECT) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
             func_8029F408(player, (struct YoshiValleyEgg *) actor);
         }
         break;
     case ACTOR_BANANA:
         if (player->effects & 0x800008C0) { break; }
-        if (player->statusEffects & 1) { break; }
+        if (player->soundEffects & 1) { break; }
         temp_v1 = actor->rot[0];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        player->statusEffects |= 1;
+        player->soundEffects |= 1;
         owner = &gPlayers[temp_v1];
         if (owner->type & 0x4000) {
             if (actor->flags & 0xF) {
@@ -3179,10 +3179,10 @@ void func_802A0450(Player *player, struct Actor *actor) {
         break;
     case ACTOR_GREEN_SHELL:
         if (player->effects & 0x80000400) { break; }
-        if (player->statusEffects & 4) { break; }
+        if (player->soundEffects & 4) { break; }
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        player->statusEffects |= 4;
+        player->soundEffects |= 4;
         func_800C98B8(player->pos, player->velocity, 0x19018010U);
         owner = &gPlayers[temp_v1];
         if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
@@ -3191,11 +3191,11 @@ void func_802A0450(Player *player, struct Actor *actor) {
         func_8029FDC8(actor);
         break;
     case ACTOR_BLUE_SPINY_SHELL:
-        if (player->statusEffects & 2) { break; }
+        if (player->soundEffects & 2) { break; }
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        if (!(player->effects & 0x80000000)) {
-            player->statusEffects |= 2;
+        if (!(player->effects & BOO_EFFECT)) {
+            player->soundEffects |= 2;
             func_800C98B8(player->pos, player->velocity, 0x19018010U);
         }
         owner = &gPlayers[temp_v1];
@@ -3209,11 +3209,11 @@ void func_802A0450(Player *player, struct Actor *actor) {
     case ACTOR_RED_SHELL:
         temp_v1 = actor->rot[2];
         if (player->effects & 0x01000000) { break; }
-        if (player->statusEffects & 2) { break; }
+        if (player->soundEffects & 2) { break; }
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        if (!(player->effects & 0x80000000)) {
-            player->statusEffects |= 2;
+        if (!(player->effects & BOO_EFFECT)) {
+            player->soundEffects |= 2;
             func_800C98B8(player->pos, player->velocity, 0x19018010U);
         }
         owner = &gPlayers[temp_v1];
@@ -3223,12 +3223,12 @@ void func_802A0450(Player *player, struct Actor *actor) {
         func_8029FDC8(actor);
         break;
     case ACTOR_PIRANHA_PLANT:
-        if (!(player->effects & 0x80000000)) {
+        if (!(player->effects & BOO_EFFECT)) {
             func_8029F2FC(player, (struct PiranhaPlant *) actor);
         }
         break;
     case ACTOR_MARIO_RACEWAY_SIGN:
-        if (!(player->effects & 0x80000000)) {
+        if (!(player->effects & BOO_EFFECT)) {
             func_8029F1F8(player, actor);
         }
         break;
@@ -3244,18 +3244,18 @@ void func_802A0450(Player *player, struct Actor *actor) {
     case 31:
     case 32:
     case 33:
-        if (!(player->effects & 0x80000000)) {
+        if (!(player->effects & BOO_EFFECT)) {
             func_8029F69C(player, actor);
         }
         break;
     case ACTOR_FALLING_ROCK:
-        if (!(player->effects & 0x80000000) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
+        if (!(player->effects & BOO_EFFECT) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
             if (func_8029FB80(player, actor) == 1) {
                 func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
                 if ((gModeSelection == TIME_TRIALS) && !(player->type & PLAYER_CPU)) {
                     D_80162DF8 = 1;
                 }
-                if (player->effects & 0x200) {
+                if (player->effects & STAR_EFFECT) {
                     actor->velocity[1] = 10.0f;
                 } else {
                     func_8008DABC(player, player - gPlayerOne);
@@ -3265,10 +3265,10 @@ void func_802A0450(Player *player, struct Actor *actor) {
         break;
     case ACTOR_FAKE_ITEM_BOX:
         temp_v1 = actor->velocity[0];
-        if (player->effects & 0x80000000) { break; }
+        if (player->effects & BOO_EFFECT) { break; }
         temp_v1 = actor->velocity[0];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-            player->statusEffects |= REVERSE_EFFECT;
+            player->soundEffects |= REVERSE_SOUND_EFFECT;
             owner = &gPlayers[temp_v1];
             if (owner->type & 0x4000) {
                 if (actor->flags & 0xF) {
@@ -3283,7 +3283,7 @@ void func_802A0450(Player *player, struct Actor *actor) {
                     }
                 }
                 if (actor->state == 0) {
-                    owner->statusEffects &= ~0x00040000;
+                    owner->soundEffects &= ~0x00040000;
                 }
             }
             actor->state = 2;
@@ -3451,7 +3451,7 @@ void update_actor_fake_item_box(struct FakeItemBox *fake_item_box) {
                 if ((temp_v1_3->buttonDepressed & Z_TRIG) != 0) {
                     temp_v1_3->buttonDepressed &= 0xDFFF;
                     func_802A1064(fake_item_box);
-                    temp_v0_4->statusEffects &= 0xFFFBFFFF;
+                    temp_v0_4->soundEffects &= 0xFFFBFFFF;
                     func_800C9060((u8)(temp_v0_4 - gPlayerOne), 0x19008012);
                 }
             }

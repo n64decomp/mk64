@@ -1,5 +1,5 @@
 {
-"gTLUTTreesImport": {"output_dir": "trees", "rom_offset": "0x132B50", "block_offset": "0x04C68", "width": 8,  "height": 29, "type": "rgba16"},
+"common_tlut_trees_import": {"output_dir": "trees", "rom_offset": "0x132B50", "block_offset": "0x04C68", "width": 8,  "height": 29, "type": "rgba16"},
 "gTLUTTrees":       {"output_dir": "trees", "rom_offset": "0x132B50", "block_offset": "0x04C68", "width": 16, "height": 16, "type": "rgba16"},
 "gTextureTrees1":      {"output_dir": "trees", "rom_offset": "0x6913CC", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees"},
 "gTextureTrees2":      {"output_dir": "trees", "rom_offset": "0x691714", "width": 32, "height": 64, "type": "ci8", "tlut": "gTLUTTrees"},

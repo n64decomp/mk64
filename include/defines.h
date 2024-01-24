@@ -290,22 +290,24 @@
 /**
  * @brief Item IDs
  */
-#define ITEM_NONE                0
-#define ITEM_BANANA              1
-#define ITEM_BANANA_BUNCH        2
-#define ITEM_GREEN_SHELL         3
-#define ITEM_TRIPLE_GREEN_SHELL  4
-#define ITEM_RED_SHELL           5
-#define ITEM_TRIPLE_RED_SHELL    6
-#define ITEM_BLUE_SPINY_SHELL    7
-#define ITEM_THUNDERBOLT         8
-#define ITEM_FAKE_ITEM_BOX       9
-#define ITEM_STAR                10
-#define ITEM_BOO                 11
-#define ITEM_MUSHROOM            12
-#define ITEM_DOUBLE_MUSHROOM     13
-#define ITEM_TRIPLE_MUSHROOM     14
-#define ITEM_SUPER_MUSHROOM      15
+typedef enum {
+    /* 0x00 */ ITEM_NONE = 0,
+    /* 0x01 */ ITEM_BANANA,
+    /* 0x02 */ ITEM_BANANA_BUNCH,
+    /* 0x03 */ ITEM_GREEN_SHELL,
+    /* 0x04 */ ITEM_TRIPLE_GREEN_SHELL,
+    /* 0x05 */ ITEM_RED_SHELL,
+    /* 0x06 */ ITEM_TRIPLE_RED_SHELL,
+    /* 0x07 */ ITEM_BLUE_SPINY_SHELL,
+    /* 0x08 */ ITEM_THUNDERBOLT,
+    /* 0x09 */ ITEM_FAKE_ITEM_BOX,
+    /* 0x0A */ ITEM_STAR,
+    /* 0x0B */ ITEM_BOO,
+    /* 0x0C */ ITEM_MUSHROOM,
+    /* 0x0D */ ITEM_DOUBLE_MUSHROOM,
+    /* 0x0E */ ITEM_TRIPLE_MUSHROOM,
+    /* 0x0F */ ITEM_SUPER_MUSHROOM
+} ITEMS;
 
 /**
  * @brief Balloon status
@@ -320,18 +322,30 @@
 #define MAX_TIME 0x927C0
 
 /**
- * @brief effect of player's
- * for statusEffect
+ * @brief sound effect of player's
+ * for soundEffect
  */
-#define BOOST_EFFECT        0x200 // being boosted by trigger a mushroom or star
-#define BOO_EFFECT          0x800 // being a boo
-#define STAR_EFFECT         0x2000 // being a star
-#define HIT_ROTATING_EFFECT 0x4000 // hitting a rotating object
-#define HOLD_BANANA_EFFECT  0x40000 // holding a banana
-#define REVERSE_EFFECT      0x400000 // being in the wrong direction
-#define HIT_BY_ITEM_EFFECT  0x1000000 // being hit by an item
-#define LIGHTNING_EFFECT    0x40000000 // being hit by lightning
+#define BOOST_SOUND_EFFECT        0x200 // being boosted by trigger a mushroom
+#define BOO_SOUND_EFFECT          0x800 // being a boo
+#define STAR_SOUND_EFFECT         0x2000 // being a star
+#define HIT_ROTATING_SOUND_EFFECT 0x4000 // hitting a rotating object
+#define BOOST_RAMP_WOOD_SOUND_EFFECT   0x8000 // being boosted by a ramp
+#define HOLD_BANANA_SOUND_EFFECT  0x40000 // holding a banana
+#define REVERSE_SOUND_EFFECT      0x400000 // being in the wrong direction
+#define BOOST_RAMP_ASPHALT_SOUND_EFFECT    0x800000 // being boosted by a boost pad
+#define HIT_BY_ITEM_SOUND_EFFECT  0x1000000 // being hit by an item
 
+/**
+ * @brief effect of player's
+ * for effects
+ */
+#define BOOST_RAMP_WOOD_EFFECT         0x4 // being boosted by a ramp
+#define STAR_EFFECT                    0x200 // being a star
+#define BOOST_EFFECT                   0x2000 // being boosted by trigger a mushroom
+#define BOOST_RAMP_ASPHALT_EFFECT      0x100000 // being boosted by a boost pad
+#define HIT_BY_ITEM_EFFECT             0x2000000 // being hit by an item
+#define LIGHTNING_EFFECT               0x40000000 // being hit by lightning
+#define BOO_EFFECT                     0x80000000 // being a boo
 
 /**
  * @brief shell state

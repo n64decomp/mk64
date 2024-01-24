@@ -65,24 +65,24 @@ void reset_object_variable(void) {
 void func_8006EB10(void) {
     s32 i;
     
-    for (i = 0; i < 128; i++) {
-        D_8018C1B0[i] = -1;
+    for (i = 0; i < gObjectParticle1_SIZE; i++) {
+        gObjectParticle1[i] = NULL_OBJECT_ID;
     }
 
-    for (i = 0; i < 128; i++) {
-        D_8018C3F0[i] = -1;
+    for (i = 0; i < gObjectParticle2_SIZE; i++) {
+        gObjectParticle2[i] = NULL_OBJECT_ID;
     }
 
-    for (i = 0; i < 128; i++) {
-        D_8018C630[i] = -1;
+    for (i = 0; i < gObjectParticle3_SIZE; i++) {
+        gObjectParticle3[i] = NULL_OBJECT_ID;
     }
 
-    for (i = 0; i < 64; i++) {
-        D_8018C870[i] = -1;
+    for (i = 0; i < gObjectParticle4_SIZE; i++) {
+        gObjectParticle4[i] = NULL_OBJECT_ID;
     }
 
     // Has to be on one line, because IDO hates you :)
-    for (i = 0; i < D_8018C970_SIZE; i++) { D_8018C970[i] = -1; }
+    for (i = 0; i < gLeafParticle_SIZE; i++) { gLeafParticle[i] = NULL_OBJECT_ID; }
     
     D_8018CFA8 = 0;
     D_8018CF90 = D_8018CFA8;
@@ -112,11 +112,11 @@ void func_8006EB10(void) {
     D_8018D070 = D_8018D098;
     D_8018D048 = D_8018D070;
     D_8018D020 = D_8018D048;
-    D_80183E7C = 0;
-    D_80183E6C = D_80183E7C;
-    D_80183E5C = D_80183E6C;
-    D_80183E4C = D_80183E5C;
-    D_80183E38 = D_80183E4C;
+    gNextFreeLeafParticle = 0;
+    gNextFreeObjectParticle4 = gNextFreeLeafParticle;
+    gNextFreeObjectParticle3 = gNextFreeObjectParticle4;
+    gNextFreeObjectParticle2 = gNextFreeObjectParticle3;
+    gNextFreeObjectParticle1 = gNextFreeObjectParticle2;
 }
 
 void clear_object_list() {
@@ -150,10 +150,10 @@ void init_item_window(s32 objectIndex) {
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->currentItem = ITEM_NONE;
     temp_v0->itemDisplay = temp_v0->currentItem;
-    temp_v0->tlutList = (s32 *) gTLUTItemWindowNone;
-    temp_v0->activeTLUT = (s32 *) gTLUTItemWindowNone;
-    temp_v0->textureList = gTextureItemWindowNone;
-    temp_v0->activeTexture = gTextureItemWindowNone;
+    temp_v0->tlutList = (s32 *) common_tlut_item_window_none;
+    temp_v0->activeTLUT = (s32 *) common_tlut_item_window_none;
+    temp_v0->textureList = common_texture_item_window_none;
+    temp_v0->activeTexture = common_texture_item_window_none;
     temp_v0->unk_04C = -1;
     temp_v0->unk_09C = 0x00A0;  // Screen X position
     temp_v0->unk_09E = -0x0020; // Screen Y position
@@ -710,7 +710,7 @@ void func_80070250(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_0D5 = arg2->id;
     temp_v0->currentItem = ITEM_NONE;
-    temp_v0->unk_0BE[1] = arg2->pos[0];
+    temp_v0->direction_angle[1] = arg2->pos[0];
     temp_v0->unk_09E = arg2->pos[1];
     temp_v0->sizeScaling = (f32) arg2->pos[2] / 100.0;
     temp_v0->activeTexture = &D_8018D220[arg2->id];
@@ -753,7 +753,7 @@ void func_800703E0(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_0D5 = arg2->id; // No idea, all 0's for stars
     temp_v0->currentItem = ITEM_BANANA;
-    temp_v0->unk_0BE[1] = arg2->pos[0]; // No idea
+    temp_v0->direction_angle[1] = arg2->pos[0]; // No idea
     temp_v0->unk_09E = arg2->pos[1]; // screen Y position
     temp_v0->sizeScaling = (f32)arg2->pos[2] / 100.0; // some type of scaling on the texture
     temp_v0->activeTexture = D_0D0293D8;
@@ -852,8 +852,8 @@ void init_course_object(void) {
                 func_80070714();
             }
             for (i = 0; i < D_80165738; i++) {
-                find_unused_obj_index(&D_8018C630[i]);
-                init_object(D_8018C630[i], 0);
+                find_unused_obj_index(&gObjectParticle3[i]);
+                init_object(gObjectParticle3[i], 0);
             }
         }
         break;
@@ -876,8 +876,8 @@ void init_course_object(void) {
         for (i = 0; i < gNumActiveThwomps; i++) {
             objectId = indexObjectList1[i];
             init_object(objectId, 0);
-            gObjectList[objectId].unk_010[0] = gThowmpSpawnList[i].startX * xOrientation;
-            gObjectList[objectId].unk_010[2] = gThowmpSpawnList[i].startZ;
+            gObjectList[objectId].origin_pos[0] = gThowmpSpawnList[i].startX * xOrientation;
+            gObjectList[objectId].origin_pos[2] = gThowmpSpawnList[i].startZ;
             gObjectList[objectId].unk_0D5 = gThowmpSpawnList[i].unk_4;
             gObjectList[objectId].unk_0A0 = gThowmpSpawnList[i].unk_6;
         }
@@ -894,9 +894,9 @@ void init_course_object(void) {
             gObjectList[objectId].pos[0] = gFireBreathsSpawns[i][0] * xOrientation;
             gObjectList[objectId].pos[1] = gFireBreathsSpawns[i][1];
             gObjectList[objectId].pos[2] = gFireBreathsSpawns[i][2];
-            gObjectList[objectId].unk_0BE[1] = 0;
+            gObjectList[objectId].direction_angle[1] = 0;
             if (i % 2U) {
-                gObjectList[objectId].unk_0BE[1] += 0x8000;
+                gObjectList[objectId].direction_angle[1] += 0x8000;
             }
         }
         for (i = 0; i < 32; i++) {
@@ -907,9 +907,9 @@ void init_course_object(void) {
         if (gGamestate != 9) {
             objectId = indexObjectList1[0];
             init_texture_object(objectId, d_course_banshee_boardwalk_bat_tlut, *d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
-            gObjectList[objectId].unk_0B2[0] = 0;
-            gObjectList[objectId].unk_0B2[1] = 0;
-            gObjectList[objectId].unk_0B2[2] = 0x8000;
+            gObjectList[objectId].orientation[0] = 0;
+            gObjectList[objectId].orientation[1] = 0;
+            gObjectList[objectId].orientation[2] = 0x8000;
             init_object(indexObjectList1[1], 0);
             init_object(indexObjectList1[2], 0);
         }
@@ -922,9 +922,9 @@ void init_course_object(void) {
             for (i = 0; i < NUM_HEDGEHOGS; i++) {
                 objectId = indexObjectList2[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].pos[0] = gObjectList[objectId].unk_010[0] = gHedgehogSpawns[i].pos[0] * xOrientation;
+                gObjectList[objectId].pos[0] = gObjectList[objectId].origin_pos[0] = gHedgehogSpawns[i].pos[0] * xOrientation;
                 gObjectList[objectId].pos[1] = gObjectList[objectId].unk_044 = gHedgehogSpawns[i].pos[1] + 6.0;
-                gObjectList[objectId].pos[2] = gObjectList[objectId].unk_010[2] = gHedgehogSpawns[i].pos[2];
+                gObjectList[objectId].pos[2] = gObjectList[objectId].origin_pos[2] = gHedgehogSpawns[i].pos[2];
                 gObjectList[objectId].unk_0D5 = gHedgehogSpawns[i].unk_06;
                 gObjectList[objectId].unk_09C = gHedgehogPatrolPoints[i][0] * xOrientation;
                 gObjectList[objectId].unk_09E = gHedgehogPatrolPoints[i][2];
@@ -933,20 +933,20 @@ void init_course_object(void) {
         break;
     case COURSE_FRAPPE_SNOWLAND:
         for (i = 0; i < NUM_SNOWFLAKES; i++) {
-            find_unused_obj_index(&D_8018C1B0[i]);
+            find_unused_obj_index(&gObjectParticle1[i]);
         }
         if (gGamestate != 9) {
             for (i = 0; i < NUM_SNOWMEN; i++) {
                 objectId = indexObjectList2[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].unk_010[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
-                gObjectList[objectId].unk_010[1] = gSnowmanSpawns[i].pos[1] + 5.0 + 3.0;
-                gObjectList[objectId].unk_010[2] = gSnowmanSpawns[i].pos[2];
+                gObjectList[objectId].origin_pos[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
+                gObjectList[objectId].origin_pos[1] = gSnowmanSpawns[i].pos[1] + 5.0 + 3.0;
+                gObjectList[objectId].origin_pos[2] = gSnowmanSpawns[i].pos[2];
                 objectId = indexObjectList1[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].unk_010[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
-                gObjectList[objectId].unk_010[1] = gSnowmanSpawns[i].pos[1] + 3.0;
-                gObjectList[objectId].unk_010[2] = gSnowmanSpawns[i].pos[2];
+                gObjectList[objectId].origin_pos[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
+                gObjectList[objectId].origin_pos[1] = gSnowmanSpawns[i].pos[1] + 3.0;
+                gObjectList[objectId].origin_pos[2] = gSnowmanSpawns[i].pos[2];
                 gObjectList[objectId].unk_0D5 = gSnowmanSpawns[i].unk_6;
             }
         }
@@ -956,10 +956,10 @@ void init_course_object(void) {
             for (i = 0; i < NUM_CRABS; i++) {
                 objectId = indexObjectList1[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].pos[0] = gObjectList[objectId].unk_010[0] = gCrabSpawns[i].startX * xOrientation;
+                gObjectList[objectId].pos[0] = gObjectList[objectId].origin_pos[0] = gCrabSpawns[i].startX * xOrientation;
                 gObjectList[objectId].unk_01C[0] = gCrabSpawns[i].patrolX * xOrientation;
 
-                gObjectList[objectId].pos[2] = gObjectList[objectId].unk_010[2] = gCrabSpawns[i].startZ;
+                gObjectList[objectId].pos[2] = gObjectList[objectId].origin_pos[2] = gCrabSpawns[i].startZ;
                 gObjectList[objectId].unk_01C[2] = gCrabSpawns[i].patrolZ;
             }
         }
@@ -979,8 +979,8 @@ void init_course_object(void) {
                 func_80070714();
             }
             for (i = 0; i < D_80165738; i++) {
-                find_unused_obj_index(&D_8018C630[i]);
-                init_object(D_8018C630[i], 0);
+                find_unused_obj_index(&gObjectParticle3[i]);
+                init_object(gObjectParticle3[i], 0);
             }
         }
         break;
@@ -992,8 +992,8 @@ void init_course_object(void) {
             D_80165898 = 0;
             init_object(indexObjectList1[0], 0);
             for (i = 0; i < D_80165738; i++) {
-                find_unused_obj_index(&D_8018C630[i]);
-                init_object(D_8018C630[i], 0);
+                find_unused_obj_index(&gObjectParticle3[i]);
+                init_object(gObjectParticle3[i], 0);
             }
         }
         break;
@@ -1040,16 +1040,16 @@ void init_course_object(void) {
                 find_unused_obj_index(&indexObjectList1[i]);
             }
             for (i = 0; i < NUM_MAX_MOLES; i++) {
-                find_unused_obj_index(&D_8018C1B0[i]);
-                objectId = D_8018C1B0[i];
+                find_unused_obj_index(&gObjectParticle1[i]);
+                objectId = gObjectParticle1[i];
                 init_object(objectId, 0);
                 gObjectList[objectId].pos[0] = gMoleSpawns[i][0] * xOrientation;
                 gObjectList[objectId].pos[2] = gMoleSpawns[i][2];
                 func_800887C0(objectId);
                 gObjectList[objectId].sizeScaling = 0.7f;
             }
-            for (i = 0; i < D_8018C3F0_SIZE; i++) {
-                find_unused_obj_index(&D_8018C3F0[i]);
+            for (i = 0; i < gObjectParticle2_SIZE; i++) {
+                find_unused_obj_index(&gObjectParticle2[i]);
             }
         }
         break;
@@ -1058,13 +1058,13 @@ void init_course_object(void) {
             find_unused_obj_index(&D_8018CF10);
             init_object(D_8018CF10, 0);
             for (i = 0; i < 50; i++) {
-                find_unused_obj_index(&D_8018C1B0[i]);
+                find_unused_obj_index(&gObjectParticle1[i]);
             }
             for (i = 0; i < 5; i++) {
-                find_unused_obj_index(&D_8018C3F0[i]);
+                find_unused_obj_index(&gObjectParticle2[i]);
             }
             for (i = 0; i < 32; i++) {
-                find_unused_obj_index(&D_8018C630[i]);
+                find_unused_obj_index(&gObjectParticle3[i]);
             }
         }
         break;
@@ -1106,8 +1106,8 @@ void init_hud_one_player(void) {
     D_8018D150 = 0;
     D_8018CFCC = 1.0f;
     find_unused_obj_index(&D_80183DA0);
-    find_unused_obj_index(&D_80183DB8[0]);
-    find_unused_obj_index(&D_80183DB8[1]);
+    find_unused_obj_index(&gIndexLakituList[0]);
+    find_unused_obj_index(&gIndexLakituList[1]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
     init_object_list_index();
@@ -1185,8 +1185,8 @@ void init_hud_one_player(void) {
 void init_hud_two_player_vertical(void) {
     find_unused_obj_index(&D_80183DA0);
 
-    find_unused_obj_index(&D_80183DB8[0]);
-    find_unused_obj_index(&D_80183DB8[1]);
+    find_unused_obj_index(&gIndexLakituList[0]);
+    find_unused_obj_index(&gIndexLakituList[1]);
 
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
@@ -1255,8 +1255,8 @@ void init_hud_two_player_vertical(void) {
 void init_hud_two_player_horizontal() {
     find_unused_obj_index(&D_80183DA0);
 
-    find_unused_obj_index(&D_80183DB8[0]);
-    find_unused_obj_index(&D_80183DB8[1]);
+    find_unused_obj_index(&gIndexLakituList[0]);
+    find_unused_obj_index(&gIndexLakituList[1]);
 
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
@@ -1331,10 +1331,10 @@ void init_hud_two_player_horizontal() {
 void init_hud_three_four_player(void) {
     find_unused_obj_index(&D_80183DA0);
 
-    find_unused_obj_index(&D_80183DB8[0]);
-    find_unused_obj_index(&D_80183DB8[1]);
-    find_unused_obj_index(&D_80183DB8[2]);
-    find_unused_obj_index(&D_80183DB8[3]);
+    find_unused_obj_index(&gIndexLakituList[0]);
+    find_unused_obj_index(&gIndexLakituList[1]);
+    find_unused_obj_index(&gIndexLakituList[2]);
+    find_unused_obj_index(&gIndexLakituList[3]);
 
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);

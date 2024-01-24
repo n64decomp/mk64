@@ -2672,31 +2672,31 @@ void func_800C70A8(u8 playerId) {
         if ((D_800E9E54[playerId] > 3500.0f) || ((gPlayers[playerId].effects & 0x10) == 0x10)) {
             D_800E9E74[playerId] = 1;
             switch (gPlayers[playerId].boundingBoxCorners[AUDIO_LEFT_TYRE].surfaceType) {
-                case 2:                                 /* switch 1 */
+                case DIRT:                                 /* switch 1 */
                     D_800E9E74[playerId] = 0x0000000D;
                     break;
-                case 3:                                 /* switch 1 */
+                case SAND:                                 /* switch 1 */
                     D_800E9E74[playerId] = 0x0000000E;
                     break;
-                case 6:                                 /* switch 1 */
+                case BRIDGE:                                 /* switch 1 */
                     D_800E9E74[playerId] = 0x00000011;
                     break;
-                case 4:                                 /* switch 1 */
+                case STONE:                                 /* switch 1 */
                     D_800E9E74[playerId] = 0x0000000F;
                     break;
-                case 5:                                 /* switch 1 */
+                case SNOW:                                 /* switch 1 */
                     D_800E9E74[playerId] = 0x00000010;
                     break;
-                case 9:                                 /* switch 1 */
+                case ICE:                                 /* switch 1 */
                     D_800E9E74[playerId] = 0x00000014;
                     break;
-                case 16:                                /* switch 1 */
+                case ROPE_BRIDGE:                                /* switch 1 */
                     D_800E9E74[playerId] = 0x00000019;
                     break;
-                case 17:                                /* switch 1 */
+                case WOOD_BRIDGE:                                /* switch 1 */
                     D_800E9E74[playerId] = 0x0000001A;
                     break;
-                case 14:                                /* switch 1 */
+                case TRAIN_TRACK:                                /* switch 1 */
                     D_800E9E74[playerId] = 0x0000001B;
                     break;
             }
@@ -2704,37 +2704,37 @@ void func_800C70A8(u8 playerId) {
         if ((gPlayers[playerId].effects & 0x10) == 0x10) {
             D_800E9E74[playerId] = 2;
             switch (gPlayers[playerId].boundingBoxCorners[AUDIO_LEFT_TYRE].surfaceType) {                      /* switch 2 */
-                case 2:                                 /* switch 2 */
+                case DIRT:                                 /* switch 2 */
                     D_800E9E74[playerId] = 0x0000000D;
                     break;
-                case 3:                                 /* switch 2 */
+                case SAND:                                 /* switch 2 */
                     D_800E9E74[playerId] = 0x0000000E;
                     break;
-                case 6:                                 /* switch 2 */
+                case BRIDGE:                                 /* switch 2 */
                     D_800E9E74[playerId] = 0x00000011;
                     break;
-                case 4:                                 /* switch 2 */
+                case STONE:                                 /* switch 2 */
                     D_800E9E74[playerId] = 0x0000000F;
                     break;
-                case 5:                                 /* switch 2 */
+                case SNOW:                                 /* switch 2 */
                     D_800E9E74[playerId] = 0x00000010;
                     break;
-                case 9:                                 /* switch 2 */
+                case ICE:                                 /* switch 2 */
                     D_800E9E74[playerId] = 0x00000014;
                     break;
-                case 16:                                /* switch 2 */
+                case ROPE_BRIDGE:                                /* switch 2 */
                     D_800E9E74[playerId] = 0x00000019;
                     break;
-                case 17:                                /* switch 2 */
+                case WOOD_BRIDGE:                                /* switch 2 */
                     D_800E9E74[playerId] = 0x0000001A;
                     break;
-                case 14:                                /* switch 2 */
+                case TRAIN_TRACK:                                /* switch 2 */
                     D_800E9E74[playerId] = 0x0000001B;
                     break;
             }
         }
         switch (gPlayers[playerId].boundingBoxCorners[AUDIO_LEFT_TYRE].surfaceType) {                          /* switch 3 */
-            case 8:                                     /* switch 3 */
+            case GRASS:                                     /* switch 3 */
                 if (D_800E9E74[playerId] == 6) {
                     D_800E9E74[playerId] = 4;
                 } else if (D_800EA1C0 == 0) {
@@ -2743,7 +2743,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 4;
                 }
                 break;
-            case 7:                                     /* switch 3 */
+            case SAND_OFFROAD:                                     /* switch 3 */
                 if (D_800E9E74[playerId] == 0x0000000C) {
                     D_800E9E74[playerId] = 0x0000000A;
                 } else if (D_800EA1C0 == 0) {
@@ -2752,7 +2752,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 0x0000000A;
                 }
                 break;
-            case 13:                                    /* switch 3 */
+            case DIRT_OFFROAD:                                    /* switch 3 */
                 if (D_800E9E74[playerId] == 0x00000018) {
                     D_800E9E74[playerId] = 0x00000016;
                 } else if (D_800EA1C0 == 0) {
@@ -2761,7 +2761,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 0x00000016;
                 }
                 break;
-            case 11:                                    /* switch 3 */
+            case SNOW_OFFROAD:                                    /* switch 3 */
                 if (D_800E9E74[playerId] == 0x0000001F) {
                     D_800E9E74[playerId] = 0x0000001D;
                 } else if (D_800EA1C0 == 0) {
@@ -2770,7 +2770,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 0x0000001D;
                 }
                 break;
-            case 10:                                    /* switch 3 */
+            case WET_SAND:                                    /* switch 3 */
                 if (D_800E9F74[playerId] == 0) {
                     if (D_800E9E74[playerId] == 9) {
                         D_800E9E74[playerId] = 7;
@@ -2783,18 +2783,18 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 0x0000001C;
                 }
                 break;
-            case 16:                                    /* switch 3 */
+            case ROPE_BRIDGE:                                    /* switch 3 */
                 D_800E9E74[playerId] = 0x00000019;
                 break;
-            case 17:                                    /* switch 3 */
+            case WOOD_BRIDGE:                                    /* switch 3 */
                 D_800E9E74[playerId] = 0x0000001A;
                 break;
-            case 14:                                    /* switch 3 */
+            case TRAIN_TRACK:                                    /* switch 3 */
                 D_800E9E74[playerId] = 0x0000001B;
                 break;
         }
         switch (gPlayers[playerId].boundingBoxCorners[AUDIO_RIGHT_TYRE].surfaceType) {                          /* switch 4 */
-            case 8:                                     /* switch 4 */
+            case GRASS:                                     /* switch 4 */
                 if (D_800E9E74[playerId] == 5) {
                     D_800E9E74[playerId] = 4;
                 } else if (D_800EA1C0 == 0) {
@@ -2803,7 +2803,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 4;
                 }
                 break;
-            case 7:                                     /* switch 4 */
+            case SAND_OFFROAD:                                     /* switch 4 */
                 if (D_800E9E74[playerId] == 0x0000000B) {
                     D_800E9E74[playerId] = 0x0000000A;
                 } else if (D_800EA1C0 == 0) {
@@ -2812,7 +2812,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 0x0000000A;
                 }
                 break;
-            case 13:                                    /* switch 4 */
+            case DIRT_OFFROAD:                                    /* switch 4 */
                 if (D_800E9E74[playerId] == 0x00000017) {
                     D_800E9E74[playerId] = 0x00000016;
                 } else if (D_800EA1C0 == 0) {
@@ -2821,7 +2821,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 0x00000016;
                 }
                 break;
-            case 11:                                    /* switch 4 */
+            case SNOW_OFFROAD:                                    /* switch 4 */
                 if (D_800E9E74[playerId] == 0x0000001E) {
                     D_800E9E74[playerId] = 0x0000001D;
                 } else if (D_800EA1C0 == 0) {
@@ -2830,7 +2830,7 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 0x0000001D;
                 }
                 break;
-            case 10:                                    /* switch 4 */
+            case WET_SAND:                                    /* switch 4 */
                 if (D_800E9F74[playerId] == 0) {
                     if (D_800E9E74[playerId] == 8) {
                         D_800E9E74[playerId] = 7;
@@ -2843,13 +2843,13 @@ void func_800C70A8(u8 playerId) {
                     D_800E9E74[playerId] = 0x0000001C;
                 }
                 break;
-            case 16:                                    /* switch 4 */
+            case ROPE_BRIDGE:                                    /* switch 4 */
                 D_800E9E74[playerId] = 0x00000019;
                 break;
-            case 17:                                    /* switch 4 */
+            case WOOD_BRIDGE:                                    /* switch 4 */
                 D_800E9E74[playerId] = 0x0000001A;
                 break;
-            case 14:                                    /* switch 4 */
+            case TRAIN_TRACK:                                    /* switch 4 */
                 D_800E9E74[playerId] = 0x0000001B;
                 break;
         }
@@ -3369,13 +3369,13 @@ void func_800C9018(u8 arg0, s32 arg1) {
     func_800C5578(D_800E9F7C[arg0].pos, arg1);
 }
 
-void func_800C9060(u8 arg0, u32 arg1) {
+void func_800C9060(u8 playerId, u32 arg1) {
     if (D_800EA108 == 0) {
-        switch(D_800EA0EC[arg0]) {
+        switch(D_800EA0EC[playerId]) {
             case 2:
-                D_800EA0EC[arg0] = 1;
+                D_800EA0EC[playerId] = 1;
             case 0:
-                play_sound(arg1, D_800E9F7C[arg0].pos, arg0, &D_800EA1D4, &D_800EA1D4, &D_800E9F7C[arg0].unk_14);
+                play_sound(arg1, D_800E9F7C[playerId].pos, playerId, &D_800EA1D4, &D_800EA1D4, &D_800E9F7C[playerId].unk_14);
                 break;
             }
     }

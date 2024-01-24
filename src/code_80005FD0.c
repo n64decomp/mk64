@@ -663,7 +663,7 @@ void func_800065D0(s32 playerId, Player *player) {
     a = (s16) gPathIndexByPlayerId[playerId];
     b = gNearestWaypointByPlayerId[playerId];
 
-    temp_t2 = (s16) ((s16) player->unk_02C[1] / 182);
+    temp_t2 = (s16) ((s16) player->rotation[1] / 182);
     temp_t3 = (s16) ((s16) D_80164590[a][b] / 182);
 
     var_t1 = temp_t2 - temp_t3;
@@ -1067,13 +1067,13 @@ void func_80008424(s32 playerId, f32 arg1, Player *player) {
     if (!(player->effects & 0x80) &&
         !(player->effects & 0x40) &&
         !(player->effects & 0x20000) &&
-        !(player->statusEffects & 0x400000) &&
-        !(player->statusEffects & 0x01000000) &&
-        !(player->statusEffects & 2) &&
-        !(player->statusEffects & 4)) {
+        !(player->soundEffects & 0x400000) &&
+        !(player->soundEffects & 0x01000000) &&
+        !(player->soundEffects & 2) &&
+        !(player->soundEffects & 4)) {
         if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
             func_80007FA4(playerId, player, var_f2);
-        } else if ((D_801634D8[playerId] == 1) && !(player->effects & 0x80000200)) {
+        } else if ((D_801634D8[playerId] == 1) && !(player->effects & (STAR_EFFECT | BOO_EFFECT))) {
             func_80031F48(player, 10.0f);
             if (player->currentSpeed == 0.0) {
                 player->velocity[0] = 0.0f;
@@ -1508,7 +1508,7 @@ void func_8000929C(s32 playerId, Player *player) {
         var_t0 = 0;
         if (gCurrentCourseId == 0x000B) {
             D_801634EC = 0;
-            if (player->effects & 0x200) {
+            if (player->effects & STAR_EFFECT) {
                 D_801634EC = 1;
             }
             if (gIsMirrorMode != 0) {
@@ -1650,7 +1650,7 @@ void func_800098FC(s32 arg0, Player *player) {
         }
     }
     if (D_801633B0[arg0] >= 0xB) {
-        if ((player->statusEffects & 0x400000) || (player->statusEffects & 0x01000000) || (player->statusEffects & 2) || (player->statusEffects & 4) || (player->effects & 0x04000000)) {
+        if ((player->soundEffects & 0x400000) || (player->soundEffects & 0x01000000) || (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & 0x04000000)) {
 	        func_800C92CC(arg0, 0x2900800BU);
 	        D_801633B0[arg0] = 0;
 	    }
@@ -1792,7 +1792,7 @@ void func_80009B60(s32 playerId) {
                     func_80011E38(playerId);
                 }
                 if ((playerId & 1) != (D_80163378 & 1)) {
-                    func_8001AC10(playerId);
+                    cpu_use_item_strategy(playerId);
                 }
                 func_800099EC(playerId, player);
                 D_80162FD0 = 0;
@@ -1874,9 +1874,9 @@ void func_80009B60(s32 playerId) {
                                     func_8000BBD8(stackPadding1A, D_80163090[playerId], D_80163448);
                                 }
                             }
-                            player->unk_02C[1] = -get_angle_between_points(player->pos, D_80162FA0);
+                            player->rotation[1] = -get_angle_between_points(player->pos, D_80162FA0);
                         } else {
-                            player->unk_02C[1] = D_80164590[D_80163448][(D_801630E0 + 4) % D_80164430];
+                            player->rotation[1] = D_80164590[D_80163448][(D_801630E0 + 4) % D_80164430];
                         }
                     }
                     func_8003680C(player, 0);
@@ -1887,7 +1887,7 @@ void func_80009B60(s32 playerId) {
                     player->effects |= 0x10;
                 }
                 if (D_801630E8[playerId] != 0) {
-                    D_80163300[playerId] = -get_angle_between_points(&player->rotX, player->pos);
+                    D_80163300[playerId] = -get_angle_between_points(&player->copy_rotation_x, player->pos);
                     var_a0_2 = (D_801631DC[(D_80162FCE + 2) % D_80164430] * 0x168) / 65535;
                     var_a1 = (D_80163300[playerId] * 0x168) / 65535;
                     if (var_a0_2 < -0xB4) {
@@ -1993,8 +1993,8 @@ void func_80009B60(s32 playerId) {
                 // MISMATCH2
                 // This fixes part of the register allocation problems, makes fixing others
                 // harder though. Needs more investigation
-                // var_a2 = (-get_angle_between_points(player->pos, D_80162FA0)) - (var_a1 = player->unk_02C[1]);
-                stackPadding19 = -get_angle_between_points(player->pos, D_80162FA0) - player->unk_02C[1];
+                // var_a2 = (-get_angle_between_points(player->pos, D_80162FA0)) - (var_a1 = player->rotation[1]);
+                stackPadding19 = -get_angle_between_points(player->pos, D_80162FA0) - player->rotation[1];
                 var_a1 = stackPadding19;
                 var_a2 = var_a1;
                 if ((s16) temp_f2 < var_a1) {
@@ -2114,7 +2114,7 @@ void func_8000B140(s32 playerId) {
         (player->characterId != 5) &&
         (player->characterId != 7) &&
         (player->characterId != 4) &&
-        !(player->effects & 0x200)) {
+        !(player->effects & STAR_EFFECT)) {
         var_t1 = gNearestWaypointByPlayerId[playerId];
         temp_f22 = (player->unk_094 / 18.0f) * 216.0f;
         for (someIndex = 0; someIndex < 8; someIndex++) {
@@ -3125,7 +3125,7 @@ void func_8000DF8C(s32 bombKartId) {
                     if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12)) < 25.0f) {
                         var_s1 = 0;
                         sp7E = 4;
-                        var_v0->statusEffects |= 0x400000;
+                        var_v0->soundEffects |= 0x400000;
                         var_v0->type &= ~0x2000;
                     }
                 }
@@ -3140,9 +3140,9 @@ void func_8000DF8C(s32 bombKartId) {
                             sp7E = 4;
                             var_s1 = 0;
                             if (gCurrentCourseId == COURSE_FRAPPE_SNOWLAND) {
-                                var_v0->statusEffects |= 0x01000000;
+                                var_v0->soundEffects |= 0x01000000;
                             } else {
-                                var_v0->statusEffects |= 0x400000;
+                                var_v0->soundEffects |= 0x400000;
                             }
                         }
                     }
@@ -3705,7 +3705,7 @@ void func_8000F628(void) {
 
             for (i = 0; i < NUM_PLAYERS; i++) {
                 if (D_80163330[i] == 1) {
-                    gPlayers[i].statusEffects |= 0x02000000;
+                    gPlayers[i].soundEffects |= 0x02000000;
                 }
             }
         }
@@ -4736,12 +4736,12 @@ void func_80012DC0(s32 playerId, Player *player) {
                 if ((x_dist > -100.0) && (x_dist < 100.0)) {
                     if ((z_dist > -100.0) && (z_dist < 100.0)) {
                         if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 60.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                            player->statusEffects |= REVERSE_EFFECT;
+                            player->soundEffects |= REVERSE_SOUND_EFFECT;
                         }
                         trainCar = &gTrainList[trainIndex].tender;
                         if (trainCar->isActive == 1) {
                             if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                                player->statusEffects |= REVERSE_EFFECT;
+                                player->soundEffects |= REVERSE_SOUND_EFFECT;
                             }
                         }
                     }
@@ -4755,7 +4755,7 @@ void func_80012DC0(s32 playerId, Player *player) {
                         if ((x_dist > -100.0) && (x_dist < 100.0)) {
                             if ((z_dist > -100.0) && (z_dist < 100.0)) {
                                 if (func_80006018(trainCar->position[0], trainCar->position[2], trainCar->velocity[0], trainCar->velocity[2], 30.0f, 20.0f, playerPosX, playerPosZ) == 1) {
-                                    player->statusEffects |= REVERSE_EFFECT;
+                                    player->soundEffects |= REVERSE_SOUND_EFFECT;
                                 }
                             }
                         }
@@ -4965,7 +4965,7 @@ void func_80013854(Player *player) {
     f32 playerZ;
     f32 playerY;
 
-    if (!((player->effects & 0x01000000)) && (!(player->effects & 0x02000000))) {
+    if (!((player->effects & 0x01000000)) && (!(player->effects & HIT_BY_ITEM_EFFECT))) {
         playerX = player->pos[0];
         playerY = player->pos[1];
         playerZ = player->pos[2];
@@ -4978,7 +4978,7 @@ void func_80013854(Player *player) {
                 if ((x_diff > -300.0) && (x_diff < 300.0)) {
                     if ((z_diff > -300.0) && (z_diff < 300.0)) {
                         if ((func_80006018(tempPaddleWheelBoat->position[0], tempPaddleWheelBoat->position[2], tempPaddleWheelBoat->velocity[0], tempPaddleWheelBoat->velocity[2], 200.0f, 60.0f, playerX, playerZ) == 1) && (y_diff < 60.0)) {
-                            player->statusEffects |= 0x80000;
+                            player->soundEffects |= 0x80000;
                         }
                     }
                 }
@@ -5155,7 +5155,7 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
  
                         if (((temp_f14) > -100.0) && ((temp_f14) < 100.0)) {
                             if (func_80006018(vehicle->position[0], vehicle->position[2], vehicle->velocity[0], vehicle->velocity[2], arg3, arg4, spC4, spBC) == (s32) 1) {
-                            player->statusEffects |= REVERSE_EFFECT;
+                            player->soundEffects |= REVERSE_SOUND_EFFECT;
                             }
                         }
                     }
@@ -5586,7 +5586,7 @@ void func_80015314(s32 playerId, UNUSED f32 arg1, s32 cameraId) {
     temp_a0 = camera1;
     temp_a1 += playerId;
     temp_a0 += cameraId;
-    temp_a0->unk_2C = temp_a1->unk_02C[1];
+    temp_a0->unk_2C = temp_a1->rotation[1];
     func_80015390(temp_a0, temp_a1, 0);
 }
 
@@ -5619,7 +5619,7 @@ void func_80015390(Camera *camera, UNUSED Player *player, UNUSED s32 arg2) {
         var_a2 = 0xA0 + (temp_s1->unk_078 / 16);
     }
     if (!((temp_s1->effects & 0x80) || (temp_s1->effects & 0x40))) {
-        adjust_angle(&camera->unk_2C, temp_s1->unk_02C[1], var_a2);
+        adjust_angle(&camera->unk_2C, temp_s1->rotation[1], var_a2);
     }
     func_8001D794(temp_s1, camera, sp64, &sp84, &sp80, &sp7C, camera->unk_2C);
     func_802ADDC8(&camera->unk_54, 10.0f, sp84, sp80, sp7C);
@@ -6140,10 +6140,8 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80016494.s")
 #endif
 
 #ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-11-2023
-s16 gCurrentCourseId;                               /* unable to generate initializer */
-
-void func_80016C3C(s32 arg0, s32 arg1, s32 cameraId) {
+//generated by m2c commit a39b70e85329b0bcaeb4350510ddb23dc9840dce on Jan-03-2024
+void func_80016C3C(s32 arg0, f32 arg1, s32 cameraId) {
     f32 sp5C;
     f32 sp54;
     u16 sp44;
@@ -7576,7 +7574,7 @@ void func_8001AB00(void) {
     }
 }
 
-void func_8001AB74(s32 arg0, s16 *arg1, s32 arg2) {
+void cpu_decisions_branch_item(s32 arg0, s16 *arg1, s32 arg2) {
     s32 value = -1;
     switch (arg2) {
         case ITEM_FAKE_ITEM_BOX:
@@ -7625,7 +7623,7 @@ void func_8001ABEC(struct struct_801642D8 *arg0) {
 // The use of several different actor types might make getting a match hard(er),
 // might have to get creative/ugly with just a single generic `Actor` variable.
 // https://decomp.me/scratch/FOlbG
-void func_8001AC10(s32 playerId) {
+void cpu_use_item_strategy(s32 playerId) {
     s32 var_v0;
     Player *player;
     TrackWaypoint *waypoint;
@@ -7643,7 +7641,7 @@ void func_8001AC10(s32 playerId) {
         case 0:
             temp_s0->actorIndex = -1;
             if ((((playerId * 0x14) + 0x64) < D_80164450[playerId]) && (temp_s0->unk_04 >= 0x259) && (temp_s0->unk_06 < 3) && (gLapCountByPlayerId[playerId] < 3)) {
-                func_8001AB74(playerId, &temp_s0->unk_00, gen_random_item_cpu((s16)gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]));
+                cpu_decisions_branch_item(playerId, &temp_s0->unk_00, gen_random_item_cpu((s16)gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]));
             } else {
                 func_8001ABE0(playerId, temp_s0);
             }
@@ -7673,7 +7671,7 @@ void func_8001AC10(s32 playerId) {
             } else if (temp_s0->unk_00 == 1) {
                 temp_s0->actorIndex = use_banana_item(player);
                 if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
-                    player->statusEffects |= HOLD_BANANA_EFFECT;
+                    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
                     temp_s0->unk_00 = 2;
                     temp_s0->unk_04 = 0;
                     temp_s0->unk_06 += 1;
@@ -7690,7 +7688,7 @@ void func_8001AC10(s32 playerId) {
             if ((!(banana->flags & 0x8000)) || (banana->type != 6) || (banana->state != 0) || (playerId != banana->playerId)) {
                 temp_s0->unk_00 = 0;
                 temp_s0->unk_04 = 0;
-                player->statusEffects &= ~0x00040000;
+                player->soundEffects &= ~0x00040000;
             } else if (temp_s0->unk_0E < temp_s0->unk_04) {
                 temp_s0->unk_00 = 3;
             }
@@ -7709,7 +7707,7 @@ void func_8001AC10(s32 playerId) {
                   banana->pos[1] = func_802AE1C0(player->pos[0], (f32) (((f64) player->pos[1]) + 30.0), player->pos[2]) + (banana->boundingBoxSize + 1.0f);
                 }
             }
-            player->statusEffects &= ~0x00040000;
+            player->soundEffects &= ~0x00040000;
             temp_s0->unk_04 = 0;
             temp_s0->unk_00 = 0;
             break;
@@ -7719,7 +7717,7 @@ void func_8001AC10(s32 playerId) {
             if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
                 banana = (struct BananaActor*)&gActorList[temp_s0->actorIndex];
                 banana->state = 4;
-                player->statusEffects |= HOLD_BANANA_EFFECT;
+                player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
                 temp_s0->unk_00 = 0x0023;
                 temp_s0->unk_04 = 0;
                 temp_s0->unk_06 += 1;
@@ -7741,7 +7739,7 @@ void func_8001AC10(s32 playerId) {
             if ((((!(banana->flags & 0x8000)) || (banana->type != 6)) || (banana->state != 4)) || (playerId != banana->playerId)) {
                 temp_s0->unk_00 = 0;
                 temp_s0->unk_04 = 0;
-                player->statusEffects &= ~0x00040000;
+                player->soundEffects &= ~0x00040000;
             } else {
                 banana->velocity[1] -= 0.4;
                 banana->pos[0] += banana->velocity[0];
@@ -7764,7 +7762,7 @@ void func_8001AC10(s32 playerId) {
                 banana->velocity[2] = 0.0f;
                 banana->pos[1] = func_802AE1C0(banana->pos[0], (f32) (((f64) banana->pos[1]) + 30.0), banana->pos[2]) + (banana->boundingBoxSize + 1.0f);
             }
-            player->statusEffects &= ~0x00040000;
+            player->soundEffects &= ~0x00040000;
             temp_s0->unk_00 = 0;
             temp_s0->unk_04 = 0;
             break;
@@ -7995,35 +7993,35 @@ void func_8001AC10(s32 playerId) {
             break;
 
         case 25:
-            player->statusEffects |= STAR_EFFECT;
+            player->soundEffects |= STAR_SOUND_EFFECT;
             temp_s0->unk_00 = 0x001A;
             temp_s0->unk_04 = 0;
             temp_s0->unk_06 += 1;
             break;
 
         case 26:
-            if (!(player->effects & 0x200)) {
+            if (!(player->effects & STAR_EFFECT)) {
                 temp_s0->unk_00 = 0;
             }
             temp_s0->unk_04 = 0;
             break;
 
         case 27:
-            player->statusEffects |= BOO_EFFECT;
+            player->soundEffects |= BOO_SOUND_EFFECT;
             temp_s0->unk_00 = 0x001C;
             temp_s0->unk_04 = 0;
             temp_s0->unk_06 += 1;
             break;
 
         case 28:
-            if (!(player->effects & 0x80000000)) {
+            if (!(player->effects & BOO_EFFECT)) {
                 temp_s0->unk_00 = 0;
             }
             temp_s0->unk_04 = 0;
             break;
 
         case 29:
-            player->statusEffects |= BOOST_EFFECT;
+            player->soundEffects |= BOOST_SOUND_EFFECT;
             temp_s0->unk_00 = 0;
             temp_s0->unk_04 = 0;
             temp_s0->unk_06 += 1;
@@ -8031,7 +8029,7 @@ void func_8001AC10(s32 playerId) {
 
         case 30:
             if (temp_s0->unk_04 >= 0x3D) {
-                player->statusEffects |= BOOST_EFFECT;
+                player->soundEffects |= BOOST_SOUND_EFFECT;
                 temp_s0->unk_00 = 0x001D;
                 temp_s0->unk_04 = 0;
             }
@@ -8039,7 +8037,7 @@ void func_8001AC10(s32 playerId) {
 
         case 31:
             if (temp_s0->unk_04 >= 0x3D) {
-                player->statusEffects |= BOOST_EFFECT;
+                player->soundEffects |= BOOST_SOUND_EFFECT;
                 temp_s0->unk_00 = 0x001E;
                 temp_s0->unk_04 = 0;
             }
@@ -8053,7 +8051,7 @@ void func_8001AC10(s32 playerId) {
 
         case 33:
             if ((((s16) temp_s0->unk_04) % 60) == 0) {
-                player->statusEffects |= BOOST_EFFECT;
+                player->soundEffects |= BOOST_SOUND_EFFECT;
                 if (temp_s0->unk_0E < temp_s0->unk_04) {
                     temp_s0->unk_00 = 0;
                     temp_s0->unk_04 = 0;
@@ -8068,13 +8066,13 @@ void func_8001AC10(s32 playerId) {
         if (temp_s0->unk_04 < 0x2710) {
             temp_s0->unk_04 += 1;
         }
-        if (player->effects & 0x80002200) {
+        if (player->effects & (BOO_EFFECT | BOOST_EFFECT | STAR_EFFECT)) { // 0x80002200
             temp_s0->unk_04 = 0;
         }
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8001AC10.s")
+GLOBAL_ASM("asm/non_matchings/code_80005FD0/cpu_use_item_strategy.s")
 #endif
 
 void func_8001BE78(void) {
@@ -8108,7 +8106,7 @@ void func_8001BE78(void) {
         temp_s1->pos[0] = (f32) temp_s0->posX;
         temp_s1->pos[1] = func_802AE1C0((f32) temp_s0->posX, 2000.0f, (f32) temp_s0->posZ) + temp_s1->boundingBoxSize;
         temp_s1->pos[2] = (f32) temp_s0->posZ;
-        temp_s1->unk_02C[1] = (s16) *D_80164590[i];
+        temp_s1->rotation[1] = (s16) *D_80164590[i];
         func_8003680C(temp_s1, 0);
         temp_s1++;
         D_80163410[i] = 0;
