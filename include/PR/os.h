@@ -582,8 +582,10 @@ extern OSPiHandle      *__osDiskHandle; /* For exceptasm to get disk info*/
  *
  */
 
-/* Thread operations */
+/* Init osSyncPrintf */
+void isPrintfInit(void);
 
+/* Thread operations */
 extern void        osCreateThread(OSThread *, OSId, void (*)(void *),
                        void *, void *, OSPri);
 extern void        osDestroyThread(OSThread *);

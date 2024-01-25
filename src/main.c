@@ -204,15 +204,12 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
     thread->queue = NULL;
     osCreateThread(thread, id, entry, arg, sp, pri);
 }
-void isPrintfInit(void);
+
 void main_func(void) {
 #ifdef VERSION_EU
     osTvType = TV_TYPE_PAL;
 #endif
     osInitialize();
-#ifdef DEBUG
-    isPrintfInit(); // init osSyncPrintf
-#endif
     create_thread(&gIdleThread, 1, &thread1_idle, NULL, gIdleThreadStack + ARRAY_COUNT(gIdleThreadStack), 100);
     osStartThread(&gIdleThread);
 }
@@ -488,6 +485,14 @@ void init_segment_racing(void) {
     osInvalDCache((void *) SEG_RACING, RACING_SEQUENCE_SIZE);
 }
 
+void init_segment_modding(void) {
+    bzero((void *) SEG_MODS, MODDING_SEGMENT_SIZE);
+    osWritebackDCacheAll();
+    dma_copy((u8 *) SEG_MODS, (u8 *) &_modsSegmentRomStart, ALIGN16((u32)&_modsSegmentRomEnd - (u32)&_modsSegmentRomStart));
+    osInvalICache((void *) SEG_MODS, MODDING_SEGMENT_SIZE);
+    osInvalDCache((void *) SEG_MODS, MODDING_SEGMENT_SIZE);
+}
+
 void dma_copy(u8 *dest, u8 *romAddr, u32 size) {
 
     osInvalDCache(dest, size);
@@ -550,6 +555,13 @@ void setup_game_memory(void) {
     // Common course data does not get reloaded when the race state resets.
     // Therefore, only reset the memory ptr to after the common course data.
     gFreeMemoryResetAnchor = gNextFreeMemoryAddress;
+}
+
+void setup_modding_memory(void) {
+    init_segment_modding();
+    isPrintfInit();
+    osSyncPrintf("Modding segment loaded\n");
+    mod_DVDL_ACTIVE = FALSE;
 }
 
 /**
@@ -843,9 +855,9 @@ void race_logic_loop(void) {
     func_802A4300();
     func_800591B4();
     func_80093E20();
-#if DVDL
-	display_dvdl();
-#endif
+    if (mod_DVDL_ACTIVE) {
+	    display_dvdl();
+    }
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
 }
@@ -864,7 +876,6 @@ void race_logic_loop(void) {
  */
 
 void game_state_handler(void) {
-#if DVDL
 	if ((gControllerOne->button & L_TRIG) &&
 		(gControllerOne->button & R_TRIG) &&
 		(gControllerOne->button & Z_TRIG) &&
@@ -876,7 +887,6 @@ void game_state_handler(void) {
 		(gControllerOne->button & B_BUTTON)) {
 			gGamestateNext = ENDING_SEQUENCE;
 	}
-#endif
 
     switch (gGamestate) {
         case 7:
@@ -891,9 +901,9 @@ void game_state_handler(void) {
             update_menus();
             init_rcp();
             func_80094A64(gGfxPool);
-#if DVDL
-			display_dvdl();
-#endif
+            if (mod_DVDL_ACTIVE) {
+ 			    display_dvdl();
+            }
             break;
         case RACING:
             race_logic_loop();
@@ -1071,6 +1081,7 @@ void thread3_video(UNUSED void *arg0) {
     }
     setup_mesg_queues();
     setup_game_memory();
+    setup_modding_memory();
 
     create_thread(&gAudioThread, 4, &thread4_audio, 0, gAudioThreadStack + ARRAY_COUNT(gAudioThreadStack), 20);
     osStartThread(&gAudioThread);

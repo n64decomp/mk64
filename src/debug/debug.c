@@ -3,9 +3,8 @@
 #include "debug.inc.c"
 #include <libc/stdio.h>
 
-#if DVDL
-
 u8 sDisplayListState = OK;
+bool mod_DVDL_ACTIVE = FALSE;
 
 static u32 variable_to_u64(variableWatchAttributes *);
 static void round_up_float(u32 *, u8);
@@ -247,5 +246,3 @@ static void _memcpy(char *destStr, const char *copyStr, u32 copySize) {
 		copyStr++;
 	}	
 }
-
-#endif

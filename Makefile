@@ -26,10 +26,6 @@ TARGET_N64 ?= 1
 COMPILER ?= ido
 $(eval $(call validate-option,COMPILER,ido gcc))
 
-# Add debug tools with 'make DEBUG=1' and modify the macros in include/debug.h
-# Run make clean first. Add '#define CRASH_SCREEN_ENHANCEMENT' to the top of main.c
-DEBUG ?= 0
-
 # VERSION - selects the version of the game to build
 #   us - builds the 1997 North American version
 #   eu - builds the 1997 1.1 PAL version
@@ -45,10 +41,6 @@ else ifeq ($(VERSION),eu-1.0)
 else ifeq ($(VERSION),eu-final)
   DEFINES += VERSION_EU=1 VERSION_EU_1_1=1
   GRUCODE   ?= f3dex_old
-endif
-
-ifeq ($(DEBUG),1)
-  DEFINES += DEBUG=1
 endif
 
 TARGET := mk64.$(VERSION)
@@ -191,7 +183,7 @@ DATA_DIR       := data
 INCLUDE_DIRS   := include
 
 # Directories containing source files
-SRC_DIRS       := src src/data src/racing src/ending src/audio src/debug src/os src/os/math courses
+SRC_DIRS       := src src/mods src/data src/racing src/ending src/audio src/debug src/os src/os/math courses
 ASM_DIRS       := asm asm/os asm/unused $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
 
 

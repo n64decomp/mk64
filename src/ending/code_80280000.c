@@ -111,9 +111,9 @@ void credits_loop(void) {
         } else {
             func_80280000();
             func_80280038();
-#if DVDL
-			display_dvdl();
-#endif
+            if (mod_DVDL_ACTIVE) {
+    			display_dvdl();
+            }
             gDPFullSync(gDisplayListHead++);
             gSPEndDisplayList(gDisplayListHead++);
         }

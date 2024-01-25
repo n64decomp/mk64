@@ -7,6 +7,10 @@ extern u8 _endingSequencesSegmentStart[];
 extern u8 _endingSequencesSegmentRomStart[];
 extern u8 _endingSequencesSegmentRomEnd[];
 
+extern u8 _modsSegmentStart[];
+extern u8 _modsSegmentRomStart[];
+extern u8 _modsSegmentRomEnd[];
+
 extern u8 _racingSegmentStart[];
 extern u8 _racingSegmentRomStart[];
 extern u8 _racingSegmentRomEnd[];
@@ -28,6 +32,7 @@ extern u8 _data_802BA370SegmentStart[];
 
 #define ENDING_SEQUENCE_SIZE 0xDF00
 #define RACING_SEQUENCE_SIZE 0x2C470
+#define MODDING_SEGMENT_SIZE 0x20000
 
 
 #ifdef AVOID_UB
@@ -40,10 +45,12 @@ extern u8 _data_802BA370SegmentStart[];
     #define SEG_ENDING_SEQUENCES &_endingSequencesSegmentStart
     #define SEG_RACING &_racingSegmentStart
     #define SEG_802BA370 &_data_802BA370SegmentStart
+    #define SEG_MODS &_modsSegmentStart
 #else
     #define SEG_ENDING_SEQUENCES 0x80280000
     #define SEG_RACING 0x8028DF00
     #define SEG_802BA370 0x802BA370 //0x802BA370
+    #define SEG_MODS 0x80400000
 #endif // AVOID_UB
 
 #define SEG_FRAMEBUFFERS 0x802BA290

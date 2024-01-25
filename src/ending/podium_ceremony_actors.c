@@ -475,9 +475,9 @@ void podium_ceremony_loop(void) {
     }
     func_80281D00();
     func_80281540();
-#if DVDL
-	display_dvdl();	 
-#endif
+    if (mod_DVDL_ACTIVE) {
+	    display_dvdl();
+    }
     gDPFullSync(gDisplayListHead++);
     gSPEndDisplayList(gDisplayListHead++);
 }

@@ -231,12 +231,7 @@ void thread9_crash_screen(UNUSED void *arg0)
                     }
                 }
 #endif
-#ifdef CRASH_SCREEN_ENHANCEMENT
                 crash_screen_draw(thread);
-#else
-                crash_screen_draw_info(pFramebuffer, thread);
-#endif
-                
             }
             if (sCounter < 5) {        
                 sCounter++;

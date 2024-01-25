@@ -20,6 +20,7 @@
 #include "common_textures.h"
 #include "skybox_and_splitscreen.h"
 #include "spawn_players.h"
+#include "mods/flycam.h"
 
 s8 gRenderingFramebufferByPlayer[] = {
     0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0x02
@@ -104,6 +105,10 @@ u16 check_player_camera_collision(Player *player, Camera *camera, f32 arg2, f32 
     f32 sp44;
     s16 var_v0;
     u16 ret;
+
+    if (isFlycam) {
+        return 1;
+    }
 
     ret = FALSE;
     switch (gActiveScreenMode) {                              /* irregular */

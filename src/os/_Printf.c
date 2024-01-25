@@ -3,11 +3,7 @@
 #include <string.h>
 #include "printf.h"
 
-#if DEBUG
 #define STATIC
-#else
-#define STATIC static
-#endif
 
 #define ATOI(i, a)                                                                                     \
     for (i = 0; *a >= '0' && *a <= '9'; a++)                                                           \
