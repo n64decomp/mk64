@@ -69,7 +69,7 @@ void parse_course_displaylists(uintptr_t addr) {
     }
 }
 
-extern u32 isFlycam;
+extern u32 mod_isFlycam;
 
 void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     Player *player = arg1->player;

@@ -5642,7 +5642,7 @@ Variable Name | Memory Address
 [gMainVariableWatchList](@ref gMainVariableWatchList) | 0x80402090
 [sDisplayListState](@ref sDisplayListState) | 0x80402828
 [mod_DVDL_ACTIVE](@ref mod_DVDL_ACTIVE) | 0x8040282C
-[isFlycam](@ref isFlycam) | 0x80402830
+[mod_isFlycam](@ref mod_isFlycam) | 0x80402830
 [fRankIndex](@ref fRankIndex) | 0x80402834
 [fTargetPlayer](@ref fTargetPlayer) | 0x80402838
 [fModeInit](@ref fModeInit) | 0x8040283C

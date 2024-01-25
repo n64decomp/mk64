@@ -19,7 +19,7 @@
 #define SENSITIVITY_X 0.0003f
 #define SENSITIVITY_Y 0.0003f
 
-u32 isFlycam = FALSE;
+u32 mod_isFlycam = FALSE;
 u32 fRankIndex = 0;
 u32 fTargetPlayer = FALSE;
 u32 fMode; // flycam mode should probably be an enum
@@ -76,19 +76,19 @@ void flycam(Camera *camera, Player *player, s8 index) {
     f32 length;
     
     if (controller->buttonPressed & L_TRIG) {
-        isFlycam = !isFlycam;
+        mod_isFlycam = !mod_isFlycam;
 
         // Don't use `bool = !bool` here as the game code can swap these on you.
         // Which will confuse the code. This forces it to always be correct
-        if (isFlycam) {
+        if (mod_isFlycam) {
             player->type |= PLAYER_CPU;
         } else {
             player->type &= PLAYER_CPU;
         }
 
-        gIsHUDVisible = !isFlycam;
+        gIsHUDVisible = !mod_isFlycam;
 
-        if (isFlycam) {
+        if (mod_isFlycam) {
 
             if (fMode && fModeInit) {
                 flycam_load_state(camera);
@@ -106,7 +106,7 @@ void flycam(Camera *camera, Player *player, s8 index) {
     }
 
     // Driving mode
-    if (!isFlycam) {
+    if (!mod_isFlycam) {
         // Use normal camera code
         func_8001E45C(camera, &gPlayers[fRankIndex], index);
         return;
