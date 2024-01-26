@@ -1339,8 +1339,8 @@ Variable Name | Memory Address
 [func_80076E14](@ref func_80076E14) | 0x80076E14
 [func_80076ED8](@ref func_80076ED8) | 0x80076ED8
 [func_80076F2C](@ref func_80076F2C) | 0x80076F2C
-[func_80076FEC](@ref func_80076FEC) | 0x80076FEC
-[func_800770F0](@ref func_800770F0) | 0x800770F0
+[init_object_smoke_particules](@ref init_object_smoke_particules) | 0x80076FEC
+[init_smoke_particules](@ref init_smoke_particules) | 0x800770F0
 [func_80077138](@ref func_80077138) | 0x80077138
 [func_800773D8](@ref func_800773D8) | 0x800773D8
 [func_80077428](@ref func_80077428) | 0x80077428

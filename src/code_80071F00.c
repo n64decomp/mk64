@@ -2216,7 +2216,7 @@ void func_80076F2C(void) {
     }
 }
 
-void func_80076FEC(s32 objectIndex, s32 flameIndex) {
+void init_object_smoke_particules(s32 objectIndex, s32 flameIndex) {
     init_object(objectIndex, 3);
 
     gObjectList[objectIndex].unk_0D5 = 0xB;
@@ -2235,12 +2235,12 @@ void func_80076FEC(s32 objectIndex, s32 flameIndex) {
     func_8008B80C(objectIndex, 0, 0, 0);
 }
 
-void func_800770F0(s32 arg0) {
+void init_smoke_particules(s32 arg0) {
     s32 objectIndex;
 
     objectIndex = add_unused_obj_index(gObjectParticle4, &gNextFreeObjectParticle4, gObjectParticle4_SIZE);
     if (objectIndex != NULL_OBJECT_ID) {
-        func_80076FEC(objectIndex, arg0);
+        init_object_smoke_particules(objectIndex, arg0);
     }
 }
 
