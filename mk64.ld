@@ -430,8 +430,25 @@ SECTIONS
    _endingSequencesSegmentNoloadSizeLo = _endingSequencesSegmentNoloadSize & 0xFFFF;
 
 
+   BEGIN_SEG(mods, SEG_MODS)
+   {
+      BUILD_DIR/generate_file/mods.o(.text)
+      BUILD_DIR/generate_file/vanilla.o(.text)
+      BUILD_DIR/generate_file/mods.o(.data)
+      BUILD_DIR/generate_file/vanilla.o(.data)
+      BUILD_DIR/generate_file/mods.o(.rodata)
+      BUILD_DIR/generate_file/vanilla.o(.rodata)
+      . = ALIGN(0x10);
+   }
+   END_NOLOAD(mods)
 
-
+   BEGIN_NOLOAD(mods)
+   {
+      BUILD_DIR/generate_file/mods.o(.bss)
+      BUILD_DIR/generate_file/vanilla.o(.bss)
+      . = ALIGN(0x10);
+   }
+   END_NOLOAD(mods)
    /* 0x801978D0 12AAE0-132B50 [8070] */
    /* texture tables and DLs, set as segment 0x02 */
    BEGIN_SEG(data_segment2, 0x02000000)
