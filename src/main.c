@@ -609,7 +609,7 @@ void race_logic_loop(void) {
             sNumVBlanks = 0;
             profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
             D_8015F788 = 0;
-            func_802A59A4();
+            render_player_one_1p_screen();
             if (!gEnableDebugMode) {
                 D_800DC514 = FALSE;
             } else {
@@ -681,11 +681,11 @@ void race_logic_loop(void) {
                 }
                 D_8015F788 = 0;
                 if (gPlayerWinningIndex == 0) {
-                    func_802A5FAC();
-                    func_802A5CB4();
+                    render_player_two_2p_screen_vertical();
+                    render_player_one_2p_screen_vertical();
                 } else {
-                    func_802A5CB4();
-                    func_802A5FAC();
+                    render_player_one_2p_screen_vertical();
+                    render_player_two_2p_screen_vertical();
                 }
             break;
 
@@ -727,11 +727,11 @@ void race_logic_loop(void) {
             }
             D_8015F788 = 0;
             if (gPlayerWinningIndex == 0) {
-                func_802A65B8();
-                func_802A62A4();
+                render_player_two_2p_screen_horizontal();
+                render_player_one_2p_screen_horizontal();
             } else {
-                func_802A62A4();
-                func_802A65B8();
+                render_player_one_2p_screen_horizontal();
+                render_player_two_2p_screen_horizontal();
             }
 
             break;
@@ -799,25 +799,25 @@ void race_logic_loop(void) {
         }
         D_8015F788 = 0;
         if (gPlayerWinningIndex == 0) {
-            func_802A6BB0();
-            func_802A6E94();
-            func_802A7178();
-            func_802A68CC();
+            render_player_two_3p_4p_screen();
+            render_player_three_3p_4p_screen();
+            render_player_four_3p_4p_screen();
+            render_player_one_3p_4p_screen();
         } else if (gPlayerWinningIndex == 1) {
-            func_802A68CC();
-            func_802A6E94();
-            func_802A7178();
-            func_802A6BB0();
+            render_player_one_3p_4p_screen();
+            render_player_three_3p_4p_screen();
+            render_player_four_3p_4p_screen();
+            render_player_two_3p_4p_screen();
         } else if (gPlayerWinningIndex == 2) {
-            func_802A68CC();
-            func_802A6BB0();
-            func_802A7178();
-            func_802A6E94();
+            render_player_one_3p_4p_screen();
+            render_player_two_3p_4p_screen();
+            render_player_four_3p_4p_screen();
+            render_player_three_3p_4p_screen();
         } else {
-            func_802A68CC();
-            func_802A6BB0();
-            func_802A6E94();
-            func_802A7178();
+            render_player_one_3p_4p_screen();
+            render_player_two_3p_4p_screen();
+            render_player_three_3p_4p_screen();
+            render_player_four_3p_4p_screen();
         }
         break;
     }

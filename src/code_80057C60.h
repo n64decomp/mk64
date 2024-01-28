@@ -398,7 +398,7 @@ extern f32 D_80183DA8[];
 // extern s32 gIndexLakituList[]; -> objects.h
 
 extern f32 D_80183DC8[];
-// extern s32 D_80183DD8[]; -> bomb_kart.h
+// extern s32 gIndexObjectBombKart[]; -> bomb_kart.h
 // extern s32 gNextFreeObjectParticle1; -> objects.h
 
 extern Vec3f D_80183E40;

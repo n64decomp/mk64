@@ -1608,7 +1608,7 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000929C.s")
 
 void func_800097E0(void) {
     s32 i;
-    func_8000EF20();
+    generate_player_smoke();
     D_8016337C++;
 
     if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
@@ -3385,7 +3385,7 @@ void func_8000EEDC(void) {
     }
 }
 
-void func_8000EF20(void) {
+void generate_player_smoke(void) {
     s32 someIndex;
     f32 var_f20;
     struct Actor *temp_s1;
@@ -3397,33 +3397,33 @@ void func_8000EF20(void) {
             temp_s1 = &gActorList[var_s0->actorIndex];
             var_s0->unk14++;
             switch (var_s0->unk10) {
-            case 0:
-                if (var_s0->unk14 < 0xA) {
-                    var_f20 = 0.3f;
-                } else {
-                    var_f20 = 0.9f;
-                }
-                break;
-            case 1:
-                if (var_s0->unk14 < 0xA) {
-                    var_f20 = 0.15f;
-                } else {
-                    var_f20 = 0.45f;
-                }
-                break;
-            case 2:
-                if (var_s0->unk14 < 0xA) {
-                    var_f20 = 0.15f;
-                } else {
-                    var_f20 = 0.45f;
-                }
-                break;
-            default:
-                var_f20 = 1.0f;
-                break;
+                case 0:
+                    if (var_s0->unk14 < 0xA) {
+                        var_f20 = 0.3f;
+                    } else {
+                        var_f20 = 0.9f;
+                    }
+                    break;
+                case 1:
+                    if (var_s0->unk14 < 0xA) {
+                        var_f20 = 0.15f;
+                    } else {
+                        var_f20 = 0.45f;
+                    }
+                    break;
+                case 2:
+                    if (var_s0->unk14 < 0xA) {
+                        var_f20 = 0.15f;
+                    } else {
+                        var_f20 = 0.45f;
+                    }
+                    break;
+                default:
+                    var_f20 = 1.0f;
+                    break;
             }
             if (!(var_s0->unk14 & 1)) {
-                func_80076D70(temp_s1->pos, ((random_int(30) + 20) * var_f20) / 50.0f, var_s0->unk10);
+                init_smoke_paticle(temp_s1->pos, ((random_int(30) + 20) * var_f20) / 50.0f, var_s0->unk10);
             }
         }
     }
@@ -8189,7 +8189,7 @@ void func_8001C14C(void) {
 void func_8001C3C4(s32 cameraId) {
     if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
         if (gBombKarts[0].waypointIndex >= 16) {
-            func_80057114(3);
+            func_80057114(PLAYER_FOUR);
         }
     } else {
         if (gModeSelection == VERSUS) {

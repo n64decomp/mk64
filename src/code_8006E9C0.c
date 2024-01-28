@@ -699,7 +699,7 @@ void init_object_list_index(void) {
     }
 
     for(loopIndex = 0; loopIndex < NUM_BOMB_KARTS_VERSUS; loopIndex++) {
-        find_unused_obj_index(&D_80183DD8[loopIndex]);
+        find_unused_obj_index(&gIndexObjectBombKart[loopIndex]);
     }
 }
 
@@ -715,7 +715,7 @@ void func_80070250(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     temp_v0->sizeScaling = (f32) arg2->pos[2] / 100.0;
     temp_v0->activeTexture = &D_8018D220[arg2->id];
     func_80073404(objectIndex, 0x40U, 0x20U, &D_0D005FB0);
-    temp_v0->unk_0A0 = 0x00FF;
+    temp_v0->primAlpha = 0x00FF;
 }
 
 void func_80070328(StarSpawn *arg0) {
@@ -879,7 +879,7 @@ void init_course_object(void) {
             gObjectList[objectId].origin_pos[0] = gThowmpSpawnList[i].startX * xOrientation;
             gObjectList[objectId].origin_pos[2] = gThowmpSpawnList[i].startZ;
             gObjectList[objectId].unk_0D5 = gThowmpSpawnList[i].unk_4;
-            gObjectList[objectId].unk_0A0 = gThowmpSpawnList[i].unk_6;
+            gObjectList[objectId].primAlpha = gThowmpSpawnList[i].unk_6;
         }
         // Handle the big statue's fire breath
         objectId = indexObjectList2[0];

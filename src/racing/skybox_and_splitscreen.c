@@ -766,7 +766,7 @@ void func_802A5760(void) {
     }
 }
 
-void func_802A59A4(void) {
+void render_player_one_1p_screen(void) {
     Camera *camera = &cameras[0];
     UNUSED s32 pad[4];
     u16 perspNorm;
@@ -826,7 +826,7 @@ void func_802A59A4(void) {
     }
 }
 
-void func_802A5CB4(void) {
+void render_player_one_2p_screen_vertical(void) {
     Camera *camera = &cameras[0];
     UNUSED s32 pad[2];
     u16 perspNorm;
@@ -883,7 +883,7 @@ void func_802A5CB4(void) {
     D_8015F788 += 1;
 }
 
-void func_802A5FAC(void) {
+void render_player_two_2p_screen_vertical(void) {
     Camera *camera = &cameras[1];
     UNUSED s32 pad[2];
     u16 perspNorm;
@@ -937,7 +937,7 @@ void func_802A5FAC(void) {
     D_8015F788 += 1;
 }
 
-void func_802A62A4(void) {
+void render_player_one_2p_screen_horizontal(void) {
     Camera *camera = &cameras[0];
     UNUSED s32 pad[2];
     u16 perspNorm;
@@ -995,7 +995,7 @@ void func_802A62A4(void) {
     D_8015F788 += 1;
 }
 
-void func_802A65B8(void) {
+void render_player_two_2p_screen_horizontal(void) {
     Camera *camera = &cameras[1];
     UNUSED s32 pad[2];
     u16 perspNorm;
@@ -1052,7 +1052,7 @@ void func_802A65B8(void) {
     D_8015F788 += 1;
 }
 
-void func_802A68CC(void) {
+void render_player_one_3p_4p_screen(void) {
     Camera *camera = camera1;
     UNUSED s32 pad[2];
     u16 perspNorm;
@@ -1106,7 +1106,7 @@ void func_802A68CC(void) {
     D_8015F788 += 1;
 }
 
-void func_802A6BB0(void) {
+void render_player_two_3p_4p_screen(void) {
     Camera *camera = camera2;
     UNUSED s32 pad[2];
     u16 perspNorm;
@@ -1160,7 +1160,7 @@ void func_802A6BB0(void) {
     D_8015F788 += 1;
 }
 
-void func_802A6E94(void) {
+void render_player_three_3p_4p_screen(void) {
     Camera *camera = camera3;
     UNUSED s32 pad[2];
     u16 perspNorm;
@@ -1215,7 +1215,7 @@ void func_802A6E94(void) {
     D_8015F788 += 1;
 }
 
-void func_802A7178(void) {
+void render_player_four_3p_4p_screen(void) {
     Camera *camera = camera4;
     UNUSED s32 pad[2];
     u16 perspNorm;

@@ -123,7 +123,7 @@ s32  func_8000EDC8(s32);
 s32  func_8000EE10(s32);
 void func_8000EE58(s32);
 void func_8000EEDC(void);
-void func_8000EF20(void);
+void generate_player_smoke(void);
 
 void func_8000F0E0(void);
 void func_8000F124(void);

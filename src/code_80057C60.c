@@ -235,7 +235,7 @@ f32 D_80183DA8[4];
 s32 gIndexLakituList[4];
 f32 D_80183DC8[4];
 //! Indexes for the objects associated with the Bomb Karts
-s32 D_80183DD8[NUM_BOMB_KARTS_MAX];
+s32 gIndexObjectBombKart[NUM_BOMB_KARTS_MAX];
 UNUSED s32 D_80183DF8[16];
 //! Next free spot in gObjectParticle1? Wraps back around to 0 if it gets bigger than gObjectParticle1_SIZE
 s32 gNextFreeObjectParticle1;
@@ -577,7 +577,7 @@ void func_800581C8(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
-    func_8001C3C4(0);
+    func_8001C3C4(PLAYER_ONE);
     if (gGamestate == ENDING_SEQUENCE) {
         func_80055F48(0);
         func_80056160(0);
@@ -588,7 +588,7 @@ void func_800581C8(void) {
     if (!gDemoMode) {
         func_800532A4(0);
     }
-    func_800588F4(0);
+    func_800588F4(PLAYER_ONE);
 }
 
 void func_800582CC(void) {
@@ -596,22 +596,22 @@ void func_800582CC(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(1);
+    func_8001C3C4(PLAYER_TWO);
     if (!gDemoMode) {
         func_800532A4(1);
     }
-    func_800588F4(1);
+    func_800588F4(PLAYER_TWO);
 }
 
 void func_80058394(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(2);
+    func_8001C3C4(PLAYER_THREE);
     if (!gDemoMode) {
         func_800532A4(2);
     }
-    func_800588F4(2);
+    func_800588F4(PLAYER_THREE);
 }
 
 void func_8005845C(void) {
@@ -619,11 +619,11 @@ void func_8005845C(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(3);
+    func_8001C3C4(PLAYER_FOUR);
     if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
         func_800532A4(3);
     }
-    func_800588F4(3);
+    func_800588F4(PLAYER_FOUR);
 }
 
 void func_80058538(u32 arg0) {
@@ -786,14 +786,14 @@ void func_800588F4(s32 cameraId) {
             break;
     }
 
-    func_80054938(cameraId);
-    func_80051638(cameraId);
+    render_smoke_particlue(cameraId);
+    render_leaf_particle(cameraId);
 
     if (D_80165730 != 0) {
         func_80053E6C(cameraId);
     }
     if (gModeSelection == BATTLE) {
-        func_80056AC0(cameraId);
+        render_bomb_kart(cameraId);
     }
 }
 
@@ -1469,9 +1469,9 @@ void func_8005A14C(s32 playerId) {
             f32_step_towards(&gObjectList[objectIndex].unk_028[1], 0.0f, 1.0f);
         }
         if ((player->type & PLAYER_INVISIBLE_OR_BOMB) || (player->effects & BOO_EFFECT)) {
-            gObjectList[objectIndex].unk_0A0 = 0x0050;
+            gObjectList[objectIndex].primAlpha = 0x0050;
         } else {
-            gObjectList[objectIndex].unk_0A0 = 0x00FF;
+            gObjectList[objectIndex].primAlpha = 0x00FF;
         }
         if (lapCount >= 3) {
             gObjectList[objectIndex].direction_angle[2] = 0;
@@ -1481,7 +1481,7 @@ void func_8005A14C(s32 playerId) {
             gObjectList[objectIndex].unk_028[1] = 0.0f;
             gObjectList[objectIndex].unk_028[0] = 0.0f;
             gObjectList[objectIndex].sizeScaling = 0.6f;
-            gObjectList[objectIndex].unk_0A0 = 0x00FF;
+            gObjectList[objectIndex].primAlpha = 0x00FF;
         }
     }
 }
@@ -1578,79 +1578,79 @@ void func_8005A71C(void) {
 
 void update_obj(void) {
     switch (gCurrentCourseId) {
-    case COURSE_MARIO_RACEWAY:
-    case COURSE_CHOCO_MOUNTAIN:
-        break;
-    case COURSE_BOWSER_CASTLE:
-        func_80081208();
-        update_particle_bowser_castle();
-        break;
-    case COURSE_BANSHEE_BOARDWALK:
-        if (gGamestate != CREDITS_SEQUENCE) {
-            func_8007E1AC();
-            func_8007E4C4();
-            if (gModeSelection != TIME_TRIALS) {
-                func_8007DB44();
+        case COURSE_MARIO_RACEWAY:
+        case COURSE_CHOCO_MOUNTAIN:
+            break;
+        case COURSE_BOWSER_CASTLE:
+            func_80081208();
+            update_particle_bowser_castle();
+            break;
+        case COURSE_BANSHEE_BOARDWALK:
+            if (gGamestate != CREDITS_SEQUENCE) {
+                func_8007E1AC();
+                func_8007E4C4();
+                if (gModeSelection != TIME_TRIALS) {
+                    func_8007DB44();
+                }
+                func_8007C340();
+                func_8007C2F8(0);
             }
-            func_8007C340();
-            func_8007C2F8(0);
-        }
-        break;
-    case COURSE_YOSHI_VALLEY:
-        func_80083080();
-        if (gGamestate != CREDITS_SEQUENCE) {
-            func_800834B8();
-        }
-        break;
-    case COURSE_FRAPPE_SNOWLAND:
-        if (gGamestate != CREDITS_SEQUENCE) {
-            func_80083D60();
-        }
-        func_80078838();
-        break;
-    case COURSE_KOOPA_BEACH:
-        if (gGamestate != CREDITS_SEQUENCE) {
-            func_80082E5C();
-        }
-        if ((gPlayerCount == 1) || (gPlayerCount == 2) || (gGamestate == CREDITS_SEQUENCE)) {
-            func_80082870();
-        }
-        break;
-    case COURSE_LUIGI_RACEWAY:
-        if (D_80165898 != 0) {
-            func_800857C0();
-        }
-        break;
-    case COURSE_MOO_MOO_FARM:
-        if (gGamestate != CREDITS_SEQUENCE) {
-            func_800821FC();
-        }
-        break;
-    case COURSE_KALAMARI_DESERT:
-        func_80075838();
-        break;
-    case COURSE_SHERBET_LAND:
-        if (gGamestate != CREDITS_SEQUENCE) {
-            func_800842C8();
-        }
-        func_80085214();
-        break;
-    case COURSE_RAINBOW_ROAD:
-        if (gGamestate != CREDITS_SEQUENCE) {
-            update_neon();
-            func_80085AA8();
-        }
-        break;
-    case COURSE_DK_JUNGLE:
-        func_80075CA8();
-        break;
+            break;
+        case COURSE_YOSHI_VALLEY:
+            func_80083080();
+            if (gGamestate != CREDITS_SEQUENCE) {
+                func_800834B8();
+            }
+            break;
+        case COURSE_FRAPPE_SNOWLAND:
+            if (gGamestate != CREDITS_SEQUENCE) {
+                func_80083D60();
+            }
+            func_80078838();
+            break;
+        case COURSE_KOOPA_BEACH:
+            if (gGamestate != CREDITS_SEQUENCE) {
+                func_80082E5C();
+            }
+            if ((gPlayerCount == 1) || (gPlayerCount == 2) || (gGamestate == CREDITS_SEQUENCE)) {
+                func_80082870();
+            }
+            break;
+        case COURSE_LUIGI_RACEWAY:
+            if (D_80165898 != 0) {
+                func_800857C0();
+            }
+            break;
+        case COURSE_MOO_MOO_FARM:
+            if (gGamestate != CREDITS_SEQUENCE) {
+                func_800821FC();
+            }
+            break;
+        case COURSE_KALAMARI_DESERT:
+            func_80075838();
+            break;
+        case COURSE_SHERBET_LAND:
+            if (gGamestate != CREDITS_SEQUENCE) {
+                func_800842C8();
+            }
+            func_80085214();
+            break;
+        case COURSE_RAINBOW_ROAD:
+            if (gGamestate != CREDITS_SEQUENCE) {
+                update_neon();
+                func_80085AA8();
+            }
+            break;
+        case COURSE_DK_JUNGLE:
+            func_80075CA8();
+            break;
     }
     if (D_80165730 != 0) {
         func_80074EE8();
     }
     func_80076F2C();
     if ((s16) gCurrentCourseId != COURSE_FRAPPE_SNOWLAND) {
-        func_80077C9C();
+        update_leaf();
     }
 }
 

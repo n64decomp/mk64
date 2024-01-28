@@ -41,7 +41,7 @@ typedef struct
     /* 0x9A */ u16 unk_09A;
     /* 0x9C */ s16 unk_09C;
     /* 0x9E */ s16 unk_09E;
-    /* 0xA0 */ s16 unk_0A0;
+    /* 0xA0 */ s16 primAlpha;
     /* 0xA2 */ s16 unk_0A2;
     /* 0xA4 */ s16 type;
     /* 0xA6 */ s16 state;
@@ -117,7 +117,7 @@ typedef struct
     /* 0x9A */ u16 unk_09A;
     /* 0x9C */ s16 unk_09C;
     /* 0x9E */ s16 unk_09E;
-    /* 0xA0 */ s16 unk_0A0;
+    /* 0xA0 */ s16 primAlpha;
     /* 0xA2 */ s16 unk_0A2;
     /* 0xA4 */ s16 currentItem;
     /* 0xA6 */ s16 itemDisplayState; // Usually a state tracker

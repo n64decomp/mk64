@@ -2816,7 +2816,7 @@ s32 func_8029F69C(Player *player, struct Actor *actor) {
     sp20[1] = actor->pos[1];
     sp20[2] = actor->pos[2];
     if (((gCurrentCourseId == COURSE_MARIO_RACEWAY) || (gCurrentCourseId == COURSE_YOSHI_VALLEY) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY) || (gCurrentCourseId == COURSE_LUIGI_RACEWAY)) && (player->unk_094 > 1.0f)) {
-        func_80077AB0(sp20, 0);
+        spawn_leaf(sp20, 0);
     }
     if (xz_dist < 0.1f) {
         sqrtf((sp48 * sp48) + (sp44 * sp44));
