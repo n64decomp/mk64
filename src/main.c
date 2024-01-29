@@ -53,9 +53,9 @@ struct VblankHandler *gVblankHandler2 = NULL;
 
 struct SPTask *gActiveSPTask = NULL;
 struct SPTask *sCurrentAudioSPTask = NULL;
-struct SPTask* sCurrentDisplaySPTask = NULL;
-struct SPTask* sNextAudioSPTask = NULL;
-struct SPTask* sNextDisplaySPTask = NULL;
+struct SPTask *sCurrentDisplaySPTask = NULL;
+struct SPTask *sNextAudioSPTask = NULL;
+struct SPTask *sNextDisplaySPTask = NULL;
 
 
 struct Controller gControllers[NUM_PLAYERS];
