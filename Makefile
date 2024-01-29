@@ -23,7 +23,7 @@ TARGET_N64 ?= 1
 #   ido - uses the SGI IRIS Development Option compiler, which is used to build
 #         an original matching N64 ROM
 #   gcc - uses the GNU C Compiler
-COMPILER ?= gcc
+COMPILER ?= ido
 $(eval $(call validate-option,COMPILER,ido gcc))
 
 # Add debug tools with 'make DEBUG=1' and modify the macros in include/debug.h
