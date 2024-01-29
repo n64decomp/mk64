@@ -62,8 +62,8 @@ void func_80280038(void) {
     render_set_position(matrix, 0);
     render_course(D_800DC5EC);
     render_course_actors(D_800DC5EC);
-    func_80058090(0);
-    func_80058538(0);
+    func_80058090(PLAYER_ONE+SCREEN_MODE_1P);
+    render_snowy_effect_player(PLAYER_ONE+SCREEN_MODE_1P);
     transition_sliding_borders();
     func_80281C40();
     init_rdp();

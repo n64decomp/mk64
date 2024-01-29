@@ -532,19 +532,19 @@ void func_80058090(u32 arg0) {
 
 
     switch (arg0) {
-        case 0:
+        case PLAYER_ONE+SCREEN_MODE_1P:
             func_800581C8();
             break;
-        case 1:
+        case PLAYER_ONE+SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             func_800581C8();
             break;
-        case 2:
+        case PLAYER_TWO+SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             func_800582CC();
             break;
-        case 3:
+        case PLAYER_ONE+SCREEN_MODE_2P_SPLITSCREEN_VERTICAL+1:
             func_800581C8();
             break;
-        case 4:
+        case PLAYER_TWO+SCREEN_MODE_2P_SPLITSCREEN_VERTICAL+1:
             func_800582CC();
             break;
         case 5:
@@ -556,16 +556,16 @@ void func_80058090(u32 arg0) {
         case 7:
             func_80058394();
             break;
-        case 8:
+        case PLAYER_ONE+SCREEN_MODE_3P_4P_SPLITSCREEN+5:
             func_800581C8();
             break;
-        case 9:
+        case PLAYER_TWO+SCREEN_MODE_3P_4P_SPLITSCREEN+5:
             func_800582CC();
             break;
-        case 10:
+        case PLAYER_THREE+SCREEN_MODE_3P_4P_SPLITSCREEN+5:
             func_80058394();
             break;
-        case 11:
+        case PLAYER_FOUR+SCREEN_MODE_3P_4P_SPLITSCREEN+5:
             func_8005845C();
             break;
     }
@@ -586,9 +586,9 @@ void func_800581C8(void) {
         return;
     }
     if (!gDemoMode) {
-        func_800532A4(0);
+        render_lakitu(PLAYER_ONE);
     }
-    func_800588F4(PLAYER_ONE);
+    render_object(PLAYER_ONE);
 }
 
 void func_800582CC(void) {
@@ -598,9 +598,9 @@ void func_800582CC(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     func_8001C3C4(PLAYER_TWO);
     if (!gDemoMode) {
-        func_800532A4(1);
+        render_lakitu(PLAYER_TWO);
     }
-    func_800588F4(PLAYER_TWO);
+    render_object(PLAYER_TWO);
 }
 
 void func_80058394(void) {
@@ -609,9 +609,9 @@ void func_80058394(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     func_8001C3C4(PLAYER_THREE);
     if (!gDemoMode) {
-        func_800532A4(2);
+        render_lakitu(PLAYER_THREE);
     }
-    func_800588F4(PLAYER_THREE);
+    render_object(PLAYER_THREE);
 }
 
 void func_8005845C(void) {
@@ -621,12 +621,12 @@ void func_8005845C(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     func_8001C3C4(PLAYER_FOUR);
     if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
-        func_800532A4(3);
+        render_lakitu(PLAYER_FOUR);
     }
-    func_800588F4(PLAYER_FOUR);
+    render_object(PLAYER_FOUR);
 }
 
-void func_80058538(u32 arg0) {
+void render_snowy_effect_player(u32 arg0) {
     UNUSED Gfx *temp_v1;
 
     if (D_801657B0 != 0) {
@@ -639,67 +639,67 @@ void func_80058538(u32 arg0) {
         return;
     }
     switch (arg0) {
-        case 0:
-            func_80058640();
+        case PLAYER_ONE+SCREEN_MODE_1P:
+            render_snowy_effect_player_one();
             break;
-        case 1:
-            func_80058640();
+        case PLAYER_ONE+SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            render_snowy_effect_player_one();
             break;
-        case 2:
-            func_800586FC();
+        case PLAYER_TWO+SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
+            render_snowy_effect_player_two();
             break;
-        case 3:
-            func_80058640();
+        case PLAYER_ONE+SCREEN_MODE_2P_SPLITSCREEN_VERTICAL+1:
+            render_snowy_effect_player_one();
             break;
-        case 4:
-            func_800586FC();
+        case PLAYER_TWO+SCREEN_MODE_2P_SPLITSCREEN_VERTICAL+1:
+            render_snowy_effect_player_two();
             break;
-        case 8:
-            func_80058640();
+        case PLAYER_ONE+SCREEN_MODE_3P_4P_SPLITSCREEN+5:
+            render_snowy_effect_player_one();
             break;
-        case 9:
-            func_800586FC();
+        case PLAYER_TWO+SCREEN_MODE_3P_4P_SPLITSCREEN+5:
+            render_snowy_effect_player_two();
             break;
-        case 10:
-            func_800587A4();
+        case PLAYER_THREE+SCREEN_MODE_3P_4P_SPLITSCREEN+5:
+            render_snowy_effect_player_three();
             break;
-        case 11:
-            func_8005884C();
+        case PLAYER_FOUR+SCREEN_MODE_3P_4P_SPLITSCREEN+5:
+            render_snowy_effect_player_four();
             break;
     }
 }
 
-void func_80058640(void) {
+void render_snowy_effect_player_one(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     if (gGamestate != ENDING_SEQUENCE) {
-        func_80058B58(0);
+        render_snowy_effect(PLAYER_ONE);
     }
 }
 
-void func_800586FC(void) {
+void render_snowy_effect_player_two(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_80058B58(1);
+    render_snowy_effect(PLAYER_TWO);
 }
 
-void func_800587A4(void) {
+void render_snowy_effect_player_three(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_80058B58(2);
+    render_snowy_effect(PLAYER_THREE);
 }
 
-void func_8005884C(void) {
+void render_snowy_effect_player_four(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_80058B58(3);
+    render_snowy_effect(PLAYER_FOUR);
 }
 
-void func_800588F4(s32 cameraId) {
+void render_object(s32 cameraId) {
 
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
@@ -707,8 +707,8 @@ void func_800588F4(s32 cameraId) {
         case COURSE_CHOCO_MOUNTAIN:
             break;
         case COURSE_BOWSER_CASTLE:
-            func_80053870(cameraId);
-            func_80054664(cameraId);
+            render_twomps(cameraId);
+            render_bowser_flame(cameraId);
             break;
         case COURSE_BANSHEE_BOARDWALK:
             if (gGamestate != CREDITS_SEQUENCE) {
@@ -797,19 +797,19 @@ void func_800588F4(s32 cameraId) {
     }
 }
 
-void func_80058B58(s32 arg0) {
+void render_snowy_effect(s32 arg0) {
     switch(gCurrentCourseId) {
         case COURSE_FRAPPE_SNOWLAND:
             if (gGamestate != 9) {
                 if ((D_8015F894 == 0) && (gPlayerCountSelection1 == 1)) {
-                    func_800517C8();
+                    render_snowflakes_particules();
                 }
             } else {
-                func_800517C8();
+                render_snowflakes_particules();
             }
             break;
         case COURSE_SHERBET_LAND:
-            func_80052C60(arg0);
+            render_ice_block(arg0);
             break;
     }
 }

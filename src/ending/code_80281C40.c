@@ -13,6 +13,7 @@
 #include "ceremony_and_credits.h"
 #include "podium_ceremony_actors.h"
 #include "render_player.h"
+#include "defines.h"
 
 struct UnkStruct80287560 {
     s16 unk0;
@@ -79,7 +80,7 @@ void func_80281D00(void) {
     render_players_on_screen_one();
     gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284EE0));
     update_actors_loop();
-    func_80058090(0);
+    func_80058090(PLAYER_ONE+SCREEN_MODE_1P);
     func_80021B0C();
     gSPDisplayList(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(&D_80284EE0));
     func_80093F10();
