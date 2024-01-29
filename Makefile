@@ -23,7 +23,7 @@ TARGET_N64 ?= 1
 #   ido - uses the SGI IRIS Development Option compiler, which is used to build
 #         an original matching N64 ROM
 #   gcc - uses the GNU C Compiler
-COMPILER ?= ido
+COMPILER ?= gcc
 $(eval $(call validate-option,COMPILER,ido gcc))
 
 # Add debug tools with 'make DEBUG=1' and modify the macros in include/debug.h
@@ -113,7 +113,13 @@ ifeq ($(NON_MATCHING),1)
   COMPARE := 0
 endif
 
+ifeq ($(COMPILER),gcc)
+  DEFINES += AVOID_UB=1 GCC=1
+endif
 
+ifeq ($(AVOID_UB),1)
+  DEFINES += AVOID_UB=1
+endif
 
 # COMPARE - whether to verify the SHA-1 hash of the ROM after building
 #   1 - verifies the SHA-1 hash of the selected version of the game
@@ -180,12 +186,17 @@ ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
     endif
   endif
 
-  # Make tools if out of date
-  DUMMY != make -s -C $(TOOLS_DIR) $(if $(filter-out ido0,$(COMPILER)$(USE_QEMU_IRIX)),all-except-recomp,) >&2 || echo FAIL
-  ifeq ($(DUMMY),FAIL)
-    $(error Failed to build tools)
+  # Skip if using gcc otherwise the below just fails everytime.
+  ifneq ($(COMPILER),gcc)
+
+    # Make tools if out of date
+    DUMMY != make -s -C $(TOOLS_DIR) $(if $(filter-out ido0,$(COMPILER)$(USE_QEMU_IRIX)),all-except-recomp,) >&2 || echo FAIL
+    ifeq ($(DUMMY),FAIL)
+      $(error Failed to build tools)
+    endif
+    $(info Building ROM...)
+    
   endif
-  $(info Building ROM...)
 
 endif
 
