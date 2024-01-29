@@ -58,7 +58,7 @@ struct SPTask* sNextAudioSPTask = NULL;
 struct SPTask* sNextDisplaySPTask = NULL;
 
 
-struct Controller gControllers[8];
+struct Controller gControllers[NUM_PLAYERS];
 struct Controller *gControllerOne = &gControllers[0];
 struct Controller *gControllerTwo = &gControllers[1];
 struct Controller *gControllerThree = &gControllers[2];
@@ -68,7 +68,7 @@ struct Controller *gControllerSix = &gControllers[5];
 struct Controller *gControllerSeven = &gControllers[6];
 struct Controller *gControllerEight = &gControllers[7];
 
-Player gPlayers[8];
+Player gPlayers[NUM_PLAYERS];
 Player *gPlayerOne = &gPlayers[0];
 Player *gPlayerTwo = &gPlayers[1];
 Player *gPlayerThree = &gPlayers[2];
