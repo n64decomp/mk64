@@ -2111,7 +2111,7 @@ void func_80076B7C(void) {
 
 }
 
-void update_particle_bowser_castle(void) {
+void update_flame_particle(void) {
     s32 someIndex;
     s32 objectIndex;
     Objects *object;
@@ -2984,7 +2984,7 @@ void init_obj_laikitu_red_flag_countdown(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].unk_048 = D_8018D180;
 }
 
-void update_obj_laikitu_countdown(s32 objectIndex, s32 arg1) {
+void update_object_laikitu_countdown(s32 objectIndex, s32 arg1) {
     UNUSED s32 pad;
     switch (gObjectList[objectIndex].state) {
         case 0:
@@ -3080,7 +3080,7 @@ void init_obj_laikitu_red_flag(s32 objectIndex, s32 playerIndex) {
     func_80072488(objectIndex);
 }
 
-void update_obj_laikitu_red_flag(s32 objectIndex, s32 playerIndex) {
+void update_object_laikitu_red_flag(s32 objectIndex, s32 playerIndex) {
     switch (gObjectList[objectIndex].state) {
         case 0:
             break;
@@ -3180,7 +3180,7 @@ void func_80079A5C(s32 objectIndex, UNUSED Player *player) {
     }
 }
 
-void update_obj_laikitu_fishing(s32 objectIndex, s32 playerId) {
+void update_object_laikitu_fishing(s32 objectIndex, s32 playerId) {
     Player *player = &gPlayerOne[playerId];
 
     switch (gObjectList[objectIndex].state) {                              /* switch 1; irregular */
@@ -3234,7 +3234,7 @@ void update_obj_laikitu_fishing(s32 objectIndex, s32 playerId) {
     func_80079A5C(objectIndex, player);
 }
 
-void update_obj_laikitu_fishing2(s32 objectIndex, s32 playerId) {
+void update_object_laikitu_fishing2(s32 objectIndex, s32 playerId) {
 
     Player *temp_s1;
 
@@ -3330,7 +3330,7 @@ void func_8007A060(s32 objectIndex, s32 playerIndex) {
     func_80072488(objectIndex);
 }
 
-void update_obj_laikitu_second_lap(s32 objectIndex, s32 playerIndex) {
+void update_object_laikitu_second_lap(s32 objectIndex, s32 playerIndex) {
     switch (gObjectList[objectIndex].state) {
         case 0:
             break;
@@ -3378,7 +3378,7 @@ void func_8007A228(s32 objectIndex, s32 playerIndex) {
     func_80072488(objectIndex);
 }
 
-void update_obj_laikitu_final_lap(s32 objectIndex, s32 playerIndex) {
+void update_object_laikitu_final_lap(s32 objectIndex, s32 playerIndex) {
     switch (gObjectList[objectIndex].state) {
         case 0:
             break;
@@ -3426,7 +3426,7 @@ void func_8007A3F0(s32 objectIndex, s32 arg1) {
     func_800C8F80((u8)arg1, 0x0100FA28);
 }
 
-void update_obj_laikitu_reverse(s32 objectIndex, s32 playerId) {
+void update_object_laikitu_reverse(s32 objectIndex, s32 playerId) {
     Player *sp2C = &gPlayerOne[playerId];
 
     switch (gObjectList[objectIndex].state) {
@@ -3508,37 +3508,37 @@ void func_8007A910(s32 arg0) {
     func_80079860(arg0);
 }
 
-void update_obj_laikitu(s32 playerId) {
+void update_object_laikitu(s32 playerId) {
     s32 objectIndex = gIndexLakituList[playerId];
 
     switch (gObjectList[objectIndex].unk_0D8) {
         case 0:
             break;
         case 1:
-            update_obj_laikitu_countdown(objectIndex, playerId);
+            update_object_laikitu_countdown(objectIndex, playerId);
             func_8008BFFC(objectIndex);
             break;
         case 2:
-            update_obj_laikitu_red_flag(objectIndex, playerId);
+            update_object_laikitu_red_flag(objectIndex, playerId);
             func_8008BFFC(objectIndex);
             break;
         case 3:
-            update_obj_laikitu_fishing(objectIndex, playerId);
+            update_object_laikitu_fishing(objectIndex, playerId);
             break;
         case 4:
-            update_obj_laikitu_second_lap(objectIndex, playerId);
+            update_object_laikitu_second_lap(objectIndex, playerId);
             func_8008BFFC(objectIndex);
             break;
         case 5:
-            update_obj_laikitu_final_lap(objectIndex, playerId);
+            update_object_laikitu_final_lap(objectIndex, playerId);
             func_8008BFFC(objectIndex);
             break;
         case 6:
-            update_obj_laikitu_reverse(objectIndex, playerId);
+            update_object_laikitu_reverse(objectIndex, playerId);
             func_8008BFFC(objectIndex);
             break;
         case 7:
-            update_obj_laikitu_fishing2(objectIndex, playerId);
+            update_object_laikitu_fishing2(objectIndex, playerId);
             break;
     }
 }
@@ -7766,7 +7766,7 @@ void func_80086110(s32 objectIndex, s32 arg1) {
     }
 }
 
-void update_obj_neon(s32 objectIndex, s32 id) {
+void update_object_neon(s32 objectIndex, s32 id) {
     switch (id) {                                 /* irregular */
         case 0:
             func_80085CA0(objectIndex);
@@ -7790,7 +7790,7 @@ void update_neon(void) {
     for (id = 0; id < NUM_NEON_SIGNS; id++) {
         objectIndex = indexObjectList1[id];
         if (gObjectList[objectIndex].state != 0) {
-            update_obj_neon(objectIndex, id);
+            update_object_neon(objectIndex, id);
             if (gObjectList[objectIndex].state >= 2) {
                 update_neon_texture(objectIndex);
                 func_8008BF18(objectIndex);

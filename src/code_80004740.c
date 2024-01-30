@@ -103,7 +103,7 @@ void func_80004A1C(animation_type_1 *arg0, s16 *arg1, animation_type_3_triplet a
     }
 }
 
-void func_80004C30(u32 *arg0, animation_type_2 *arg1, s16 arg2) {
+void func_80004C30(u32 *arg0, animation_type_2 *arg1, s16 time_cycle) {
     u32 *temp;
     s16 *sp40;
     s32 some_offset;
@@ -116,8 +116,8 @@ void func_80004C30(u32 *arg0, animation_type_2 *arg1, s16 arg2) {
     D_80162D7A = 0;
     D_80162D76 = 0;
     for (someIndex = 0; someIndex < 3; someIndex++) {
-        if (arg2 < (*temp_v0)[someIndex].some_limiter) {
-            some_offset = arg2;
+        if (time_cycle < (*temp_v0)[someIndex].some_limiter) {
+            some_offset = time_cycle;
         } else {
             some_offset = 0;
         }
@@ -142,7 +142,7 @@ void func_80004C30(u32 *arg0, animation_type_2 *arg1, s16 arg2) {
                 gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
                 D_80162D7A -= 1;
             }
-            func_80004A1C(arg0, sp40, *temp_v0, (s32) arg2);
+            func_80004A1C(arg0, sp40, *temp_v0, (s32) time_cycle);
             D_80162D78 = 0;
             temp_v0++;
             break;
@@ -151,7 +151,7 @@ void func_80004C30(u32 *arg0, animation_type_2 *arg1, s16 arg2) {
     } while (new_var != 3);
 }
 
-s16 func_80004DFC(animation_type_1 *arg0, animation_type_2 **arg1, s16 arg2, s16 arg3) {
+s16 func_80004DFC(animation_type_1 *arg0, animation_type_2 **arg1, s16 arg2, s16 time_cycle) {
     animation_type_1 *sp24;
     animation_type_2 *temp_v0;
     animation_type_2 **sp20;
@@ -159,15 +159,15 @@ s16 func_80004DFC(animation_type_1 *arg0, animation_type_2 **arg1, s16 arg2, s16
     sp24 = segmented_to_virtual(arg0);
     sp20 = segmented_to_virtual(arg1); // Convert the array's address
     temp_v0 = segmented_to_virtual(sp20[arg2]); // Convert an array element's address
-    if (arg3 >= temp_v0->animation_length) {
-        arg3 = 0;
+    if (time_cycle >= temp_v0->animation_length) {
+        time_cycle = 0;
     }
-    func_80004C30(sp24, temp_v0, arg3);
-    arg3++;
-    if (arg3 >= temp_v0->animation_length) {
-        arg3 = 0;
+    func_80004C30(sp24, temp_v0, time_cycle);
+    time_cycle++;
+    if (time_cycle >= temp_v0->animation_length) {
+        time_cycle = 0;
     }
-    return arg3;
+    return time_cycle;
 }
 
 s16 func_80004EAC(void *addr, s16 offset) {

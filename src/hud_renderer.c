@@ -577,7 +577,7 @@ UNUSED void func_80046DF4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *
     func_800465B8(arg0, arg1, arg2, arg3, arg4, texture, D_0D0060B0, 64, 64, 64, 32);
 }
 
-void func_80046E60(u8 *tlut, u8 *texture, s32 width, s32 height) {
+void load_texture_and_tlut(u8 *tlut, u8 *texture, s32 width, s32 height) {
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     gDPLoadTLUT_pal256(gDisplayListHead++, tlut);
     rsp_load_texture(texture, width, height);
@@ -754,7 +754,7 @@ UNUSED void func_80048038(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *textu
     func_80047068(tlut, texture, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_800480B4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
+void draw_2d_texture_at(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9) {
     rsp_set_matrix_transformation(arg0, arg1, arg2);
     gSPDisplayList(gDisplayListHead++, D_0D007D78);
     draw_rectangle_texture_overlap(tlut, texture, arg5, arg6, arg7, arg8, arg9);
@@ -890,7 +890,7 @@ UNUSED void func_80048BE8(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *textu
 }
 
 UNUSED void func_80048C3C(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5) {
-    func_800480B4(arg0, arg1, arg2, tlut, texture, arg5, 64, 64, 64, 32);
+    draw_2d_texture_at(arg0, arg1, arg2, tlut, texture, arg5, 64, 64, 64, 32);
 }
 
 UNUSED void func_80048C90(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *texture, Vtx *arg6) {
@@ -922,7 +922,7 @@ UNUSED void func_80048ED0(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *tlut, u8 *
 }
 
 UNUSED void func_80048F38(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *tlut, u8 *texture, Vtx *arg5) {
-    func_800480B4(arg0, arg1, arg2, tlut, texture, arg5, 72, 48, 72, 24);
+    draw_2d_texture_at(arg0, arg1, arg2, tlut, texture, arg5, 72, 48, 72, 24);
 }
 
 void func_80048F8C(u8 *texture, Vtx *arg1, s32 arg2, s32 arg3, s32 width, s32 height) {
@@ -3148,7 +3148,7 @@ void func_800524B4(s32 arg0) {
     }
 }
 
-void func_80052590(s32 cameraId) {
+void render_bat(s32 cameraId) {
     s32 var_s2;
     s32 objectIndex;
     Camera *temp_s7;
@@ -3308,7 +3308,7 @@ void func_80052E30(UNUSED s32 arg0) {
     }
 }
 
-void func_80052F20(s32 cameraId) {
+void render_snowman_list_2(s32 cameraId) {
     UNUSED s32 stackPadding[2];
     Camera *sp44;
     s32 someIndex;
@@ -3316,7 +3316,7 @@ void func_80052F20(s32 cameraId) {
     Objects *object;
 
     sp44 = &camera1[cameraId];
-    func_80046E60(d_course_frappe_snowland_snow_tlut, d_course_frappe_snowland_snow, 0x00000020, 0x00000020);
+    load_texture_and_tlut(d_course_frappe_snowland_snow_tlut, d_course_frappe_snowland_snow, 0x00000020, 0x00000020);
     for (someIndex = 0; someIndex < gObjectParticle2_SIZE; someIndex++) {
         objectIndex = gObjectParticle2[someIndex];
         if (objectIndex != NULL_OBJECT_ID) {
@@ -3334,13 +3334,13 @@ void func_80052F20(s32 cameraId) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void func_8005309C(s32 cameraId) {
+void render_snowman_list_1(s32 cameraId) {
     s32 var_s4;
     s32 objectIndex;
     Camera *camera;
 
     camera = &camera1[cameraId];
-    for (var_s4 = 0; var_s4 < 0x13; var_s4++) {
+    for (var_s4 = 0; var_s4 < NUM_SNOWMEN; var_s4++) {
         objectIndex = indexObjectList1[var_s4];
         if (gObjectList[objectIndex].state >= 2) {
             func_8008A364(objectIndex, cameraId, 0x2AABU, 0x00000258);
@@ -3349,20 +3349,20 @@ void func_8005309C(s32 cameraId) {
                 D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
                 D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
                 if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000010) != 0) {
-                    func_800480B4(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                    draw_2d_texture_at(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
                 }
                 objectIndex = indexObjectList2[var_s4];
                 D_80183E80[0] = (s16) gObjectList[objectIndex].orientation[0];
                 D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
-                func_800480B4(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                draw_2d_texture_at(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
         }
     }
 }
 
-void func_8005327C(s32 arg0) {
-    func_8005309C(arg0);
-    func_80052F20(arg0);
+void render_snowman(s32 arg0) {
+    render_snowman_list_1(arg0);
+    render_snowman_list_2(arg0);
 }
 
 void render_lakitu(s32 cameraId) {
@@ -3381,7 +3381,7 @@ void render_lakitu(s32 cameraId) {
         object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
         object->orientation[2] = 0x8000;
         if (func_80072354(objectIndex, 2) != 0) {
-            func_800480B4(object->pos, object->orientation, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, object->vertex, (s32) object->textureWidth, (s32) object->textureHeight, (s32) object->textureWidth, (s32) object->textureHeight / 2);
+            draw_2d_texture_at(object->pos, object->orientation, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, object->vertex, (s32) object->textureWidth, (s32) object->textureHeight, (s32) object->textureWidth, (s32) object->textureHeight / 2);
         } else {
             func_800485C4(object->pos, object->orientation, object->sizeScaling, (s32) object->primAlpha, (u8 *) object->activeTLUT, object->activeTexture, object->vertex, (s32) object->textureWidth, (s32) object->textureHeight, (s32) object->textureWidth, (s32) object->textureHeight / 2);
         }
@@ -3898,26 +3898,26 @@ void func_80055380(s32 arg0) {
     }
 }
 
-void func_80055458(s32 objectIndex, s32 cameraId) {
+void draw_crabs(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     if (gObjectList[objectIndex].state >= 2) {
         camera = &camera1[cameraId];
         func_8004A6EC(objectIndex, 0.5f);
         gObjectList[objectIndex].orientation[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
-        func_800480B4(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+        draw_2d_texture_at(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
     }
 }
 
-void func_80055528(s32 arg0) {
+void render_crabs(s32 arg0) {
     s32 someIndex;
     s32 test;
 
-    for (someIndex = 0; someIndex < 10; someIndex++) {
+    for (someIndex = 0; someIndex < NUM_CRABS; someIndex++) {
         test = indexObjectList1[someIndex];
         func_8008A364(test, arg0, 0x2AABU, 0x00000320);
         if (is_obj_index_flag_unk_054_active(test, 0x00040000) != 0) {
-            func_80055458(test, arg0);
+            draw_crabs(test, arg0);
         }
     }
 }
@@ -3929,16 +3929,16 @@ void func_800555BC(s32 objectIndex, s32 cameraId) {
         camera = &camera1[cameraId];
         func_8004A870(objectIndex, 0.7f);
         gObjectList[objectIndex].orientation[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
-        func_800480B4(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 64, 64, 64, 32);
+        draw_2d_texture_at(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 64, 64, 64, 32);
     }
 }
 
-void func_8005568C(s32 arg0) {
+void render_hedgehogs(s32 arg0) {
     s32 test;
     u32 something;
     s32 someIndex;
 
-    for (someIndex = 0; someIndex < 15; someIndex++) {
+    for (someIndex = 0; someIndex < NUM_HEDGEHOGS; someIndex++) {
         test = indexObjectList2[someIndex];
         something = func_8008A364(test, arg0, 0x4000U, 0x000003E8);
         if (is_obj_index_flag_unk_054_active(test, 0x00040000) != 0) {
@@ -4160,7 +4160,7 @@ void func_80056188(s32 cameraId) {
             object = &gObjectList[objectIndex];
             if ((object->state >= 2) && (is_obj_index_flag_unk_054_inactive(objectIndex, 0x00080000) != 0) && (func_8008A140(objectIndex, camera, 0x2AABU) != 0)) {
                 object->orientation[1] = angle_between_object_camera(objectIndex, camera);
-                func_800480B4(object->pos, object->orientation, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                draw_2d_texture_at(object->pos, object->orientation, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
         }
     }
@@ -4304,7 +4304,7 @@ void func_80056BF0(s32 bombIndex) {
     D_80183E40[0] = sp40.bombPos[0];
     D_80183E40[1] = sp40.bombPos[1] + 1.0;
     D_80183E40[2] = sp40.bombPos[2];
-    func_800480B4(D_80183E40, D_80183E80, 0.25f, common_tlut_bomb, bombFrame, D_0D005AE0, 0x20, 0x20, 0x20, 0x20);
+    draw_2d_texture_at(D_80183E40, D_80183E80, 0.25f, common_tlut_bomb, bombFrame, D_0D005AE0, 0x20, 0x20, 0x20, 0x20);
     temp_s0 = D_8018D400;
     gSPDisplayList(gDisplayListHead++, D_0D007B00);
     func_8004B414(0, 0, 0, 0xFF);

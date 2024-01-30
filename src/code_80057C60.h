@@ -77,7 +77,7 @@ void func_8005A14C(s32);
 void func_8005A380(void);
 void func_8005A3C0(void);
 void func_8005A71C(void);
-void update_obj(void);
+void update_object(void);
 void func_8005A99C(void);
 void func_8005AA34(void);
 void func_8005AA4C(void);

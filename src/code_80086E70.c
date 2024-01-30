@@ -1260,14 +1260,14 @@ s32 func_8008A0B4(s32 objectIndex, Player *player, Camera *camera, u16 arg3) {
     return var_t0;
 }
 
-s32 func_8008A140(s32 objectIndex, Camera *camera, u16 arg2) {
+bool func_8008A140(s32 objectIndex, Camera *camera, u16 arg2) {
     u16 temp_t2;
     s32 var_t0;
 
-    var_t0 = 0;
+    var_t0 = FALSE;
     temp_t2 = (func_80041770(camera->pos[0], gObjectList[objectIndex].pos[0], camera->pos[2], gObjectList[objectIndex].pos[2]) + ((s32) arg2 / 2)) - camera->rot[1];
     if ((temp_t2 >= 0) && (arg2 >= temp_t2)) {
-        var_t0 = 1;
+        var_t0 = TRUE;
     }
     return var_t0;
 }

@@ -713,7 +713,7 @@ void render_object(s32 cameraId) {
         case COURSE_BANSHEE_BOARDWALK:
             if (gGamestate != CREDITS_SEQUENCE) {
                 func_800527D8(cameraId);
-                func_80052590(cameraId);
+                render_bat(cameraId);
                 func_8005217C(cameraId);
                 func_800524B4(cameraId);
             }
@@ -721,17 +721,17 @@ void render_object(s32 cameraId) {
         case COURSE_YOSHI_VALLEY:
             func_80055228(cameraId);
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_8005568C(cameraId);
+                render_hedgehogs(cameraId);
             }
             break;
         case COURSE_FRAPPE_SNOWLAND:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_8005327C(cameraId);
+                render_snowman(cameraId);
             }
             break;
         case COURSE_KOOPA_BEACH:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80055528(cameraId);
+                render_crabs(cameraId);
             }
             if (gGamestate != CREDITS_SEQUENCE) {
 
@@ -1247,7 +1247,7 @@ void func_8005995C(void) {
 void func_80059A88(s32 playerId) {
     func_80059820(playerId);
     if (!gDemoMode) {
-        update_obj_laikitu(playerId);
+        update_object_laikitu(playerId);
         func_8007BB9C(playerId);
     }
 }
@@ -1334,7 +1334,7 @@ void func_80059D00(void) {
                 func_80059820(PLAYER_TWO);
                 func_80078C70(2);
             }
-            update_obj();
+            update_object();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             randomize_seed_from_controller(PLAYER_ONE);
@@ -1353,7 +1353,7 @@ void func_80059D00(void) {
             }
             func_80078C70(2);
             func_8005D1F4(1);
-            update_obj();
+            update_object();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             randomize_seed_from_controller(PLAYER_ONE);
@@ -1372,7 +1372,7 @@ void func_80059D00(void) {
             }
             func_80078C70(4);
             func_8005D1F4(1);
-            update_obj();
+            update_object();
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             randomize_seed_from_controller(PLAYER_ONE);
@@ -1405,7 +1405,7 @@ void func_80059D00(void) {
                 }
                 func_8005D1F4(3);
             }
-            update_obj();
+            update_object();
             break;
         }
         func_800744CC();
@@ -1427,7 +1427,7 @@ void func_8005A070(void) {
         } else if (gGamestate == CREDITS_SEQUENCE) {
             func_80059820(PLAYER_ONE);
             func_80078C70(0);
-            update_obj();
+            update_object();
         } else {
             func_80059D00();
         }
@@ -1576,14 +1576,14 @@ void func_8005A71C(void) {
     }
 }
 
-void update_obj(void) {
+void update_object(void) {
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
         case COURSE_CHOCO_MOUNTAIN:
             break;
         case COURSE_BOWSER_CASTLE:
             func_80081208();
-            update_particle_bowser_castle();
+            update_flame_particle();
             break;
         case COURSE_BANSHEE_BOARDWALK:
             if (gGamestate != CREDITS_SEQUENCE) {
