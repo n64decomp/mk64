@@ -115,12 +115,9 @@ ifeq ($(NON_MATCHING),1)
   COMPARE := 0
 endif
 
+# GCC define is to link gcc's std lib.
 ifeq ($(COMPILER),gcc)
   DEFINES += AVOID_UB=1 GCC=1
-endif
-
-ifeq ($(AVOID_UB),1)
-  DEFINES += AVOID_UB=1
 endif
 
 # COMPARE - whether to verify the SHA-1 hash of the ROM after building
