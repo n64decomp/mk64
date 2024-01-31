@@ -2,6 +2,8 @@
 
 include util.mk
 
+include test.mk
+
 # Default target
 default: all
 
@@ -579,11 +581,22 @@ $(BUILD_DIR)/%.jp.c: %.c
 	$(call print,Encoding:,$<,$@)
 	iconv -t EUC-JP -f UTF-8 $< > $@
 
+GCC := $(CROSS)gcc
+GCCFLAGS := -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
+GCC_CHECK := gcc -m32
+
 $(BUILD_DIR)/%.o: %.c
-	$(call print,Compiling:,$<,$@)
-	$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) tools/set_o32abi_bit.py $@
+ifeq (,$(findstring $<,$(GCC_SAFE_FILES)))
+		$(call print,GCC Compiling:,$<,$@)
+		$(V)$(GCC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+		$(V)$(GCC) -c $(GCCFLAGS) -o $@ $<
+		$(PYTHON) tools/set_o32abi_bit.py $@
+else
+		$(call print,IDO Compiling:,$<,$@)
+		$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+		$(V)$(CC) -c $(CFLAGS) -o $@ $<
+		$(PYTHON) tools/set_o32abi_bit.py $@
+endif
 
 $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 	$(call print,Compiling:,$<,$@)
