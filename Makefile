@@ -25,7 +25,7 @@ TARGET_N64 ?= 1
 #   ido - uses the SGI IRIS Development Option compiler, which is used to build
 #         an original matching N64 ROM
 #   gcc - uses the GNU C Compiler
-COMPILER ?= ido
+COMPILER ?= gcc
 $(eval $(call validate-option,COMPILER,ido gcc))
 
 # Add debug tools with 'make DEBUG=1' and modify the macros in include/debug.h
@@ -323,6 +323,7 @@ else
   CPPFLAGS := -P -Wno-trigraphs $(DEF_INC_CFLAGS)
 endif
 
+
 # Check code syntax with host compiler
 CC_CHECK := gcc
 CC_CHECK_CFLAGS := -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) -std=gnu90 -Wall -Wempty-body -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(DEF_INC_CFLAGS)
@@ -330,11 +331,11 @@ CC_CHECK_CFLAGS := -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) -st
 # C compiler options
 HIDE_WARNINGS := -woff 838,649
 CFLAGS = -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS)
-ifeq ($(COMPILER),gcc)
-  CFLAGS += -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
-else
-  CFLAGS += $(HIDE_WARNINGS) -non_shared -Wab,-r4300_mul -Xcpluscomm -Xfullwarn -signed -32
-endif
+#ifeq ($(COMPILER),gcc)
+#  CFLAGS += -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
+#else
+CFLAGS += $(HIDE_WARNINGS) -non_shared -Wab,-r4300_mul -Xcpluscomm -Xfullwarn -signed -32
+#endif
 
 ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) $(foreach d,$(DEFINES),--defsym $(d))
 
@@ -354,6 +355,11 @@ endif
 # Prevent a crash with -sopt
 export LANG := C
 
+ifeq ($(COMPILER),gcc)
+  $(GCC_SAFE_FILES): CC := $(CROSS)gcc
+  $(GCC_SAFE_FILES): CFLAGS := -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
+  $(GCC_SAFE_FILES): CC_CHECK := gcc -m32
+endif
 
 
 #==============================================================================#
@@ -581,22 +587,11 @@ $(BUILD_DIR)/%.jp.c: %.c
 	$(call print,Encoding:,$<,$@)
 	iconv -t EUC-JP -f UTF-8 $< > $@
 
-GCC := $(CROSS)gcc
-GCCFLAGS := -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
-GCC_CHECK := gcc -m32
-
 $(BUILD_DIR)/%.o: %.c
-ifeq (,$(findstring $<,$(GCC_SAFE_FILES)))
-		$(call print,GCC Compiling:,$<,$@)
-		$(V)$(GCC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-		$(V)$(GCC) -c $(GCCFLAGS) -o $@ $<
-		$(PYTHON) tools/set_o32abi_bit.py $@
-else
 		$(call print,IDO Compiling:,$<,$@)
 		$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 		$(V)$(CC) -c $(CFLAGS) -o $@ $<
 		$(PYTHON) tools/set_o32abi_bit.py $@
-endif
 
 $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 	$(call print,Compiling:,$<,$@)
