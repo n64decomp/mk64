@@ -167,7 +167,7 @@ TOOLS_DIR := tools
 # on tools and assets, and we use directory globs further down
 # in the makefile that we want should cover assets.)
 
-PYTHON := python3
+PYTHON := python
 
 ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
 
@@ -181,10 +181,10 @@ ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
   endif
 
   # Make tools if out of date
-  DUMMY != make -s -C $(TOOLS_DIR) $(if $(filter-out ido0,$(COMPILER)$(USE_QEMU_IRIX)),all-except-recomp,) >&2 || echo FAIL
-  ifeq ($(DUMMY),FAIL)
-    $(error Failed to build tools)
-  endif
+  # DUMMY != make -s -C $(TOOLS_DIR) $(if $(filter-out ido0,$(COMPILER)$(USE_QEMU_IRIX)),all-except-recomp,) >&2 || echo FAIL
+  # ifeq ($(DUMMY),FAIL)
+  #   $(error Failed to build tools)
+  # endif
   $(info Building ROM...)
 
 endif
@@ -212,7 +212,11 @@ ASM_DIRS       := asm asm/os asm/unused $(DATA_DIR) $(DATA_DIR)/sound_data $(DAT
 
 
 # Directories containing course source and data files
+ifeq ($(OS),Windows_NT)
+COURSE_DIRS := $(shell powershell.exe "Get-ChildItem -Directory courses | Resolve-Path -Relative")
+else
 COURSE_DIRS := $(shell find courses -mindepth 1 -type d)
+endif
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
@@ -259,16 +263,23 @@ GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_
 #==============================================================================#
 
 # detect prefix for MIPS toolchain
-ifneq      ($(call find-command,mips-linux-gnu-ld),)
-  CROSS := mips-linux-gnu-
-else ifneq ($(call find-command,mips64-linux-gnu-ld),)
-  CROSS := mips64-linux-gnu-
-else ifneq ($(call find-command,mips64-elf-ld),)
-  CROSS := mips64-elf-
+ifeq ($(OS),Windows_NT)
+    $(info Detected Windows)
+	export TMPDIR=tmp
+	CROSS := .\mingw64\bin\mips64-elf-
+	ICONV := ./mingw64/bin/iconv
 else
-  $(error Unable to detect a suitable MIPS toolchain installed)
+	ifneq      ($(call find-command,mips-linux-gnu-ld),)
+		CROSS := mips-linux-gnu-
+	else ifneq ($(call find-command,mips64-linux-gnu-ld),)
+		CROSS := mips64-linux-gnu-
+	else ifneq ($(call find-command,mips64-elf-ld),)
+		CROSS := mips64-elf-
+	else
+		$(error Unable to detect a suitable MIPS toolchain installed)
+	endif
+	ICONV := iconv
 endif
-
 AS      := $(CROSS)as
 ifeq ($(COMPILER),gcc)
   CC      := $(CROSS)gcc
@@ -431,8 +442,12 @@ $(BUILD_DIR)/%: %.png
 $(BUILD_DIR)/textures/%.mio0: $(BUILD_DIR)/textures/%
 	$(MIO0TOOL) -c $< $@
 
+ifeq ($(OS),Windows_NT)
+ASSET_INCLUDES := $(shell powershell.exe "Get-ChildItem -File -Recurse assets/include -Include *.mk | Resolve-Path -Relative")
+else
 ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name "*.mk")
-
+endif
+include assets/include/other_textures.mk
 $(foreach inc,$(ASSET_INCLUDES),$(eval include $(inc)))
 
 
@@ -465,6 +480,7 @@ $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
 #==============================================================================#
 
 TEXTURE_FILES := $(foreach dir,$(TEXTURE_DIRS),$(subst .png, , $(wildcard $(dir)/*)))
+TEXTURE_STANDALONE := $(foreach dir,$(TEXTURES_DIR)/standalone,$(subst .png,.inc.c, $(wildcard $(dir)/*.png)))
 
 TEXTURE_FILES_TLUT := $(foreach dir,$(TEXTURE_DIRS)/tlut,$(subst .png, , $(wildcard $(dir)/*)))
 
@@ -566,10 +582,11 @@ COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_d
 #==============================================================================#
 $(BUILD_DIR)/%.jp.c: %.c
 	$(call print,Encoding:,$<,$@)
-	iconv -t EUC-JP -f UTF-8 $< > $@
+	$(ICONV) -t EUC-JP -f UTF-8 $< > $@
 
-$(BUILD_DIR)/%.o: %.c
+$(BUILD_DIR)/%.o: %.c $(TEXTURE_STANDALONE)
 	$(call print,Compiling:,$<,$@)
+	echo $(TEXTURE_STANDALONE)
 	$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@

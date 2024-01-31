@@ -87,3 +87,6 @@ expected/*
 
 # Doxygen
 docs/html/*
+
+# windows build
+mingw64/

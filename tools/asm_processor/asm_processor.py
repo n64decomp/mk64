@@ -1021,6 +1021,7 @@ def fixup_objfile(objfile_name, functions, asm_prelude, assembler, output_enc, d
         s_file.close()
         ret = os.system(assembler + " " + s_name + " -o " + o_name)
         if ret != 0:
+            input()
             raise Failure("failed to assemble")
         with open(o_name, 'rb') as f:
             asm_objfile = ElfFile(f.read())
@@ -1317,7 +1318,7 @@ def run_wrapped(argv, outfile, functions):
         if args.asm_prelude:
             with open(args.asm_prelude, 'rb') as f:
                 asm_prelude = f.read()
-        fixup_objfile(args.objfile, functions, asm_prelude, args.assembler, args.output_enc, args.drop_mdebug_gptab)
+        fixup_objfile(args.objfile, functions, asm_prelude, args.assembler.replace("'", ""), args.output_enc, args.drop_mdebug_gptab)
 
 def run(argv, outfile=sys.stdout.buffer, functions=None):
     try:
