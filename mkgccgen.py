@@ -57,7 +57,7 @@ for directory in os.walk("src"):
     global_asm_count = contents.count("GLOBAL_ASM")
     # NOTE: As of now there is no distinction between unattempted files and unfinished ones.
     if nonm_count + noneq_count == global_asm_count :
-      outfile.write("    build/")
+      outfile.write("    build/us/")
       outfile.write(os.path.splitext(filename)[0])
       outfile.write(".o    \\\n")
     infile.close()

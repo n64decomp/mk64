@@ -25,7 +25,7 @@ TARGET_N64 ?= 1
 #   ido - uses the SGI IRIS Development Option compiler, which is used to build
 #         an original matching N64 ROM
 #   gcc - uses the GNU C Compiler
-COMPILER ?= gcc
+COMPILER ?= ido
 $(eval $(call validate-option,COMPILER,ido gcc))
 
 # Add debug tools with 'make DEBUG=1' and modify the macros in include/debug.h
@@ -94,7 +94,7 @@ ifeq      ($(COMPILER),ido)
 
   MIPSISET := -mips2
 else ifeq ($(COMPILER),gcc)
-  NON_MATCHING := 1
+#  NON_MATCHING := 1
   MIPSISET     := -mips3
 endif
 
@@ -116,9 +116,10 @@ ifeq ($(NON_MATCHING),1)
 endif
 
 # GCC define is to link gcc's std lib.
-ifeq ($(COMPILER),gcc)
-  DEFINES += AVOID_UB=1 GCC=1
-endif
+#ifeq ($(COMPILER),gcc)
+#DEFINES += AVOID_UB=1
+#endif
+DEFINES += GCC=1
 
 # COMPARE - whether to verify the SHA-1 hash of the ROM after building
 #   1 - verifies the SHA-1 hash of the selected version of the game
@@ -175,7 +176,6 @@ TOOLS_DIR := tools
 PYTHON := python3
 
 ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
-
 # Make sure assets exist
   NOEXTRACT ?= 0
   ifeq ($(NOEXTRACT),0)
@@ -185,18 +185,12 @@ ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
     endif
   endif
 
-  # Skip if using gcc otherwise the below just fails everytime.
-  ifneq ($(COMPILER),gcc)
-
-    # Make tools if out of date
-    DUMMY != make -s -C $(TOOLS_DIR) $(if $(filter-out ido0,$(COMPILER)$(USE_QEMU_IRIX)),all-except-recomp,) >&2 || echo FAIL
-    ifeq ($(DUMMY),FAIL)
-      $(error Failed to build tools)
-    endif
-    $(info Building ROM...)
-    
+  # Make tools if out of date
+  DUMMY != make -s -C $(TOOLS_DIR) $(if $(filter-out ido0,$(COMPILER)$(USE_QEMU_IRIX)),all-except-recomp,) >&2 || echo FAIL
+  ifeq ($(DUMMY),FAIL)
+    $(error Failed to build tools)
   endif
-
+  $(info Building ROM...)
 endif
 
 
@@ -281,7 +275,7 @@ endif
 
 AS      := $(CROSS)as
 ifeq ($(COMPILER),gcc)
-  CC      := $(CROSS)gcc
+CC      := $(CROSS)gcc
 else
   ifeq ($(USE_QEMU_IRIX),1)
     IRIX_ROOT := $(TOOLS_DIR)/ido5.3_compiler
@@ -328,11 +322,11 @@ CC_CHECK_CFLAGS := -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) -st
 # C compiler options
 HIDE_WARNINGS := -woff 838,649
 CFLAGS = -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS)
-#ifeq ($(COMPILER),gcc)
-#  CFLAGS += -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
-#else
+ifeq ($(COMPILER),gcc)
+  CFLAGS += -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
+else
 CFLAGS += $(HIDE_WARNINGS) -non_shared -Wab,-r4300_mul -Xcpluscomm -Xfullwarn -signed -32
-#endif
+endif
 
 ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) $(foreach d,$(DEFINES),--defsym $(d))
 
@@ -352,11 +346,6 @@ endif
 # Prevent a crash with -sopt
 export LANG := C
 
-ifeq ($(COMPILER),gcc)
-  $(GCC_SAFE_FILES): CC := $(CROSS)gcc
-  $(GCC_SAFE_FILES): CFLAGS := -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
-  $(GCC_SAFE_FILES): CC_CHECK := gcc -m32
-endif
 
 
 #==============================================================================#
@@ -397,6 +386,11 @@ define print
   @$(PRINT) "$(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
 endef
 
+
+$(SAFE_C_FILES): CC       := $(CROSS)gcc
+$(SAFE_C_FILES): MIPSISET := -mips3
+$(SAFE_C_FILES): CFLAGS   := -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS) -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
+$(SAFE_C_FILES): CC_CHECK := gcc -m32
 
 
 #==============================================================================#
@@ -585,7 +579,8 @@ $(BUILD_DIR)/%.jp.c: %.c
 	iconv -t EUC-JP -f UTF-8 $< > $@
 
 $(BUILD_DIR)/%.o: %.c
-		$(call print,IDO Compiling:,$<,$@)
+		$(call print,$(CC))
+		$(call print,Compiling:,$<,$@)
 		$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 		$(V)$(CC) -c $(CFLAGS) -o $@ $<
 		$(PYTHON) tools/set_o32abi_bit.py $@
