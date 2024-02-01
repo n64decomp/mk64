@@ -117,9 +117,8 @@ endif
 
 # GCC define is to link gcc's std lib.
 #ifeq ($(COMPILER),gcc)
-#DEFINES += AVOID_UB=1
+DEFINES += AVOID_UB=1 GCC=1
 #endif
-DEFINES += GCC=1
 
 # COMPARE - whether to verify the SHA-1 hash of the ROM after building
 #   1 - verifies the SHA-1 hash of the selected version of the game
