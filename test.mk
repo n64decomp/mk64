@@ -15,5 +15,6 @@ SAFE_C_FILES :=    \
     build/us/src/code_80086E70.o    \
     build/us/src/staff_ghosts.o    \
     build/us/src/kart_dma.o    \
+    build/us/src/gbiMacro.o    \
     build/us/src/main.o    \
- 
+
