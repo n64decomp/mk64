@@ -213,7 +213,7 @@ ASM_DIRS       := asm asm/os asm/unused $(DATA_DIR) $(DATA_DIR)/sound_data $(DAT
 
 # Directories containing course source and data files
 ifeq ($(OS),Windows_NT)
-COURSE_DIRS := $(shell powershell.exe "Get-ChildItem -Directory courses | Resolve-Path -Relative")
+COURSE_DIRS := $(subst ./,,$(subst \,/,$(shell powershell.exe "Get-ChildItem -Directory courses | Resolve-Path -Relative")))
 else
 COURSE_DIRS := $(shell find courses -mindepth 1 -type d)
 endif
