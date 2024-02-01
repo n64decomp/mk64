@@ -167,7 +167,21 @@ TOOLS_DIR := tools
 # on tools and assets, and we use directory globs further down
 # in the makefile that we want should cover assets.)
 
-PYTHON := python
+ifneq ($(PYTHON),)
+else ifneq ($(call find-command,python3),)
+  PYTHON := python3
+else ifneq ($(call find-command,python),)
+  PYTHON := python
+else ifeq ($(OS),Windows_NT)
+  PYTHON := mingw64/bin/python
+else
+  $(error Unable to find python)
+endif
+
+DUMMY != $(PYTHON) --version >&2 || echo FAIL
+ifeq ($(DUMMY),FAIL)
+  $(error Unable to find python)
+endif
 
 ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
 
@@ -262,24 +276,45 @@ GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_
 # Compiler Options                                                             #
 #==============================================================================#
 
-# detect prefix for MIPS toolchain
-ifeq ($(OS),Windows_NT)
-    $(info Detected Windows)
-	export TMPDIR=tmp
-	CROSS := .\mingw64\bin\mips64-elf-
-	ICONV := ./mingw64/bin/iconv
-else
-	ifneq      ($(call find-command,mips-linux-gnu-ld),)
-		CROSS := mips-linux-gnu-
-	else ifneq ($(call find-command,mips64-linux-gnu-ld),)
-		CROSS := mips64-linux-gnu-
-	else ifneq ($(call find-command,mips64-elf-ld),)
-		CROSS := mips64-elf-
-	else
-		$(error Unable to detect a suitable MIPS toolchain installed)
-	endif
+# detect iconv
+ifneq ($(ICONV),)
+else ifneq ($(call find-command,iconv),)
 	ICONV := iconv
+else ifeq ($(OS),Windows_NT)
+	ICONV := mingw64/bin/iconv
+else
+	$(error Unable to find iconv)
 endif
+
+DUMMY != $(ICONV) --version >&2 || echo FAIL
+ifeq ($(DUMMY),FAIL)
+	$(error Unable to find iconv)
+endif
+
+# define TMPDIR
+ifeq ($(OS),Windows_NT)
+	export TMPDIR=$(TEMP)
+endif
+
+# detect prefix for MIPS toolchain
+ifneq ($(CROSS),)
+else ifneq      ($(call find-command,mips-linux-gnu-ld),)
+	CROSS := mips-linux-gnu-
+else ifneq ($(call find-command,mips64-linux-gnu-ld),)
+	CROSS := mips64-linux-gnu-
+else ifneq ($(call find-command,mips64-elf-ld),)
+	CROSS := mips64-elf-
+else ifeq ($(OS),Windows_NT)
+	CROSS := mingw64/bin/mips64-elf-
+else
+	$(error Unable to detect a suitable MIPS toolchain installed)
+endif
+
+DUMMY != $(CROSS)ld --version >&2 || echo FAIL
+ifeq ($(DUMMY),FAIL)
+	$(error Unable to detect a suitable MIPS toolchain installed)
+endif
+
 AS      := $(CROSS)as
 ifeq ($(COMPILER),gcc)
   CC      := $(CROSS)gcc
