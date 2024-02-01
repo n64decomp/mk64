@@ -268,6 +268,7 @@ SECTIONS
       BUILD_DIR/src/player_controller.o(.rodata*);
       BUILD_DIR/src/spawn_players.o(.rodata*);
       BUILD_DIR/src/code_8003DC40.o(.rodata*);
+      BUILD_DIR/src/gbiMacro.o(.rodata*);
       BUILD_DIR/src/hud_renderer.o(.rodata*);
       BUILD_DIR/src/code_80057C60.o(.rodata*);
       BUILD_DIR/src/code_8006E9C0.o(.rodata*);
@@ -364,6 +365,7 @@ SECTIONS
       BUILD_DIR/src/racing/actors.o(.text*);
       BUILD_DIR/src/racing/skybox_and_splitscreen.o(.text*);
       BUILD_DIR/src/racing/memory.o(.text*);
+      BUILD_DIR/asm/pad_asm.o(.text*);
       BUILD_DIR/src/racing/collision.o(.text*);
       BUILD_DIR/src/racing/actors_extended.o(.text*);
       BUILD_DIR/src/racing/math_util.o(.text*);
