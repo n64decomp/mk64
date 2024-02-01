@@ -94,7 +94,7 @@ ifeq      ($(COMPILER),ido)
 
   MIPSISET := -mips2
 else ifeq ($(COMPILER),gcc)
-#  NON_MATCHING := 1
+  NON_MATCHING := 1
   MIPSISET     := -mips3
 endif
 
@@ -116,9 +116,7 @@ ifeq ($(NON_MATCHING),1)
 endif
 
 # GCC define is to link gcc's std lib.
-#ifeq ($(COMPILER),gcc)
 DEFINES += AVOID_UB=1 GCC=1
-#endif
 
 # COMPARE - whether to verify the SHA-1 hash of the ROM after building
 #   1 - verifies the SHA-1 hash of the selected version of the game
@@ -175,6 +173,7 @@ TOOLS_DIR := tools
 PYTHON := python3
 
 ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
+
 # Make sure assets exist
   NOEXTRACT ?= 0
   ifeq ($(NOEXTRACT),0)
@@ -190,6 +189,7 @@ ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
     $(error Failed to build tools)
   endif
   $(info Building ROM...)
+
 endif
 
 
@@ -274,7 +274,7 @@ endif
 
 AS      := $(CROSS)as
 ifeq ($(COMPILER),gcc)
-CC      := $(CROSS)gcc
+  CC      := $(CROSS)gcc
 else
   ifeq ($(USE_QEMU_IRIX),1)
     IRIX_ROOT := $(TOOLS_DIR)/ido5.3_compiler
@@ -313,7 +313,6 @@ else
   CPPFLAGS := -P -Wno-trigraphs $(DEF_INC_CFLAGS)
 endif
 
-
 # Check code syntax with host compiler
 CC_CHECK := gcc
 CC_CHECK_CFLAGS := -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) -std=gnu90 -Wall -Wempty-body -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(DEF_INC_CFLAGS)
@@ -324,7 +323,7 @@ CFLAGS = -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS)
 ifeq ($(COMPILER),gcc)
   CFLAGS += -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
 else
-CFLAGS += $(HIDE_WARNINGS) -non_shared -Wab,-r4300_mul -Xcpluscomm -Xfullwarn -signed -32
+  CFLAGS += $(HIDE_WARNINGS) -non_shared -Wab,-r4300_mul -Xcpluscomm -Xfullwarn -signed -32
 endif
 
 ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) $(foreach d,$(DEFINES),--defsym $(d))
@@ -382,7 +381,7 @@ endif
 
 # Common build print status function
 define print
-  @$(PRINT) "$(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
+  @$(PRINT) "$(CC), $(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
 endef
 
 
@@ -578,11 +577,10 @@ $(BUILD_DIR)/%.jp.c: %.c
 	iconv -t EUC-JP -f UTF-8 $< > $@
 
 $(BUILD_DIR)/%.o: %.c
-		$(call print,$(CC))
-		$(call print,Compiling:,$<,$@)
-		$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
-		$(V)$(CC) -c $(CFLAGS) -o $@ $<
-		$(PYTHON) tools/set_o32abi_bit.py $@
+	$(call print,Compiling:,$<,$@)
+	$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+	$(V)$(CC) -c $(CFLAGS) -o $@ $<
+	$(PYTHON) tools/set_o32abi_bit.py $@
 
 $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 	$(call print,Compiling:,$<,$@)
