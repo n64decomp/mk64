@@ -381,7 +381,7 @@ endif
 
 # Common build print status function
 define print
-  @$(PRINT) "$(CC), $(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
+  @$(PRINT) "$(RED)$(CC), $(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
 endef
 
 
