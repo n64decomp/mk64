@@ -447,7 +447,6 @@ ASSET_INCLUDES := $(shell powershell.exe "Get-ChildItem -File -Recurse assets/in
 else
 ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name "*.mk")
 endif
-include assets/include/other_textures.mk
 $(foreach inc,$(ASSET_INCLUDES),$(eval include $(inc)))
 
 
@@ -480,7 +479,6 @@ $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
 #==============================================================================#
 
 TEXTURE_FILES := $(foreach dir,$(TEXTURE_DIRS),$(subst .png, , $(wildcard $(dir)/*)))
-TEXTURE_STANDALONE := $(foreach dir,$(TEXTURES_DIR)/standalone,$(subst .png,.inc.c, $(wildcard $(dir)/*.png)))
 
 TEXTURE_FILES_TLUT := $(foreach dir,$(TEXTURE_DIRS)/tlut,$(subst .png, , $(wildcard $(dir)/*)))
 
@@ -584,9 +582,8 @@ $(BUILD_DIR)/%.jp.c: %.c
 	$(call print,Encoding:,$<,$@)
 	$(ICONV) -t EUC-JP -f UTF-8 $< > $@
 
-$(BUILD_DIR)/%.o: %.c $(TEXTURE_STANDALONE)
+$(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
-	echo $(TEXTURE_STANDALONE)
 	$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 	$(PYTHON) tools/set_o32abi_bit.py $@
