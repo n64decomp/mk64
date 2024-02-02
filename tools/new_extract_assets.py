@@ -86,7 +86,7 @@ def asset_from_block(asset_block, asset):
     asset_block.seek(block_offset, os.SEEK_CUR)
     asset_data = asset_block.read(asset_size)
     asset_block.close()
-    asset_file = tempfile.NamedTemporaryFile(mode="wb", prefix="raw_asset_", delete=False, dir='tmp')
+    asset_file = tempfile.NamedTemporaryFile(mode="wb", prefix="raw_asset_", delete=False)
     file_open.append(asset_file.name)
     asset_file.write(asset_data)
     asset_file.flush()
@@ -109,7 +109,7 @@ def extract_mio0_block(baserom, asset):
         mio0_blocks[rom_offset].seek(0)
         return mio0_blocks[rom_offset]
 
-    mio0_file = tempfile.NamedTemporaryFile(prefix="mio0_block_",delete=False,dir='tmp')
+    mio0_file = tempfile.NamedTemporaryFile(prefix="mio0_block_",delete=False)
     file_open.append(mio0_file.name)
     mio0_file.close()
     subprocess.run(
@@ -133,7 +133,7 @@ def extract_mio0_block(baserom, asset):
 def extract_tkmk_block(baserom, asset):
     rom_offset = asset["rom_offset"]
     alpha = asset.get("alpha", "0x01")
-    tkmk_block = tempfile.NamedTemporaryFile(mode="rb", prefix="tkmk_block_", delete=False, dir='tmp')
+    tkmk_block = tempfile.NamedTemporaryFile(mode="rb", prefix="tkmk_block_", delete=False)
     file_open.append(tkmk_block.name)
     subprocess.run(
         [
@@ -150,7 +150,7 @@ def extract_tkmk_block(baserom, asset):
     return tkmk_block
 
 def export_stitched_palette(baserom:BufferedReader, asset, asset_list):
-    palette_raw = tempfile.NamedTemporaryFile(mode="wb", prefix="stitched_palette", delete=False, dir='tmp')
+    palette_raw = tempfile.NamedTemporaryFile(mode="wb", prefix="stitched_palette", delete=False)
     file_open.append(palette_raw.name)
 
     # For stitched palettes, expect the "tlut" key to be a list of strings

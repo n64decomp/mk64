@@ -1019,8 +1019,6 @@ def fixup_objfile(objfile_name, functions, asm_prelude, assembler, output_enc, d
         for line in asm:
             s_file.write(line.encode(output_enc) + b'\n')
         s_file.close()
-        if os.name == "nt":
-            assembler = "powershell "+assembler
         ret = os.system(assembler + " " + s_name + " -o " + o_name)
         if ret != 0:
             raise Failure("failed to assemble")

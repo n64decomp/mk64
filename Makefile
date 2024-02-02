@@ -173,7 +173,7 @@ else ifneq ($(call find-command,python3),)
 else ifneq ($(call find-command,python),)
   PYTHON := python
 else ifeq ($(OS),Windows_NT)
-  PYTHON := mingw64/bin/python
+  PYTHON := "mingw64/bin/python"
 else
   $(error Unable to find python)
 endif
@@ -260,6 +260,16 @@ O_FILES := \
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d) $(BUILD_DIR)/$(LD_SCRIPT).d
 
+# detect grep
+ifneq ($(GREP),)
+else ifneq ($(call find-command,grep),)
+	GREP := grep
+else ifeq ($(OS),Windows_NT)
+	GREP := "mingw64/bin/grep"
+else
+	$(error Unable to find grep)
+endif
+
 # Files with GLOBAL_ASM blocks
 GLOBAL_ASM_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/*.c)
 GLOBAL_ASM_OS_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/os/*.c)
@@ -281,7 +291,7 @@ ifneq ($(ICONV),)
 else ifneq ($(call find-command,iconv),)
 	ICONV := iconv
 else ifeq ($(OS),Windows_NT)
-	ICONV := mingw64/bin/iconv
+	ICONV := "mingw64/bin/iconv"
 else
 	$(error Unable to find iconv)
 endif
@@ -305,7 +315,7 @@ else ifneq ($(call find-command,mips64-linux-gnu-ld),)
 else ifneq ($(call find-command,mips64-elf-ld),)
 	CROSS := mips64-elf-
 else ifeq ($(OS),Windows_NT)
-	CROSS := mingw64/bin/mips64-elf-
+	CROSS := powershell mingw64/bin/mips64-elf-
 else
 	$(error Unable to detect a suitable MIPS toolchain installed)
 endif
@@ -462,8 +472,11 @@ load: $(ROM)
 	$(LOADER) $(LOADER_FLAGS) $<
 
 # Make sure build directory exists before compiling anything
+ifeq ($(OS),Windows_NT)
+DUMMY != $(foreach dir,$(ALL_DIRS), $(shell powershell.exe New-Item $(dir) -ItemType Directory -ea 0)) || echo FAIL
+else
 DUMMY != mkdir -p $(ALL_DIRS)
-
+endif
 
 
 #==============================================================================#

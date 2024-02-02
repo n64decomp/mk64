@@ -213,7 +213,7 @@ def main():
             os.makedirs(os.path.dirname(asset), exist_ok=True)
             if asset.endswith(".png"):
                 name_file = ""
-                with tempfile.NamedTemporaryFile(prefix="asset", delete=False, dir="tmp") as tex_file:
+                with tempfile.NamedTemporaryFile(prefix="asset", delete=False) as tex_file:
                     name_file = tex_file.name
                     tex_file.write(input)
                     tex_file.flush()
