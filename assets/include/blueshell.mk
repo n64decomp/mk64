@@ -31,7 +31,7 @@ $(BLUESHELL_FRAMES) $(BLUESHELL_PALETTE): $(BLUESHELL_EXPORT_SENTINEL) ;
 
 $(BLUESHELL_EXPORT_SENTINEL): $(ASSET_DIR)/blueshell.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_blueshell
 distclean_blueshell:

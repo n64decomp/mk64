@@ -1499,7 +1499,7 @@ $(DONKEYKONG_KART_FRAME_PNG) $(DONKEYKONG_KART_PALETTE_PNG): $(DONKEYKONG_EXPORT
 
 $(DONKEYKONG_EXPORT_SENTINEL): $(ASSET_DIR)/karts/donkeykong_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_donkeykong_kart
 distclean_donkeykong_kart:

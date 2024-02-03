@@ -74,7 +74,7 @@ $(MOO_MOO_FARM_SIGN_PNG) $(MOO_MOO_FARM_DIRT_PNG): $(MOO_MOO_FARM_EXPORT_SENTINE
 
 $(MOO_MOO_FARM_EXPORT_SENTINEL): $(ASSET_DIR)/courses/moo_moo_farm.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_moo_moo_farm
 distclean_moo_moo_farm:

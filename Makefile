@@ -7,7 +7,6 @@ default: all
 
 # Preprocessor definitions
 DEFINES :=
-UNAME_S := $(shell uname -s)
 
 #==============================================================================#
 # Build Options                                                                #
@@ -296,11 +295,6 @@ else
 	$(error Unable to find iconv)
 endif
 
-DUMMY != $(ICONV) --version >&2 || echo FAIL
-ifeq ($(DUMMY),FAIL)
-	$(error Unable to find iconv)
-endif
-
 # define TMPDIR
 ifeq ($(OS),Windows_NT)
 	export TMPDIR=$(TEMP)
@@ -361,13 +355,26 @@ DEF_INC_CFLAGS := $(foreach i,$(INCLUDE_DIRS),-I$(i)) $(C_DEFINES)
 ifneq (,$(call find-command,clang))
   CPP      := clang
   CPPFLAGS := -E -P -x c -Wno-trigraphs $(DEF_INC_CFLAGS)
-else
+else ifneq (,$(call find-command,cpp))
   CPP      := cpp
   CPPFLAGS := -P -Wno-trigraphs $(DEF_INC_CFLAGS)
+else ifeq ($(OS),Windows_NT)
+  CPP := "mingw64/bin/cpp"
+  CPPFLAGS := -P -Wno-trigraphs $(DEF_INC_CFLAGS)
+else
+  $(error Unable to find cpp or clang)
 endif
 
 # Check code syntax with host compiler
-CC_CHECK := gcc
+# detect gcc
+ifneq ($(CC_CHECK),)
+else ifneq ($(call find-command,grep),)
+	CC_CHECK := gcc
+else ifeq ($(OS),Windows_NT)
+	CC_CHECK := "mingw64/bin/gcc"
+else
+	$(error Unable to find gcc)
+endif
 CC_CHECK_CFLAGS := -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) -std=gnu90 -Wall -Wempty-body -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(DEF_INC_CFLAGS)
 
 # C compiler options
@@ -403,12 +410,12 @@ export LANG := C
 # Miscellaneous Tools                                                          #
 #==============================================================================#
 
-MIO0TOOL              := $(TOOLS_DIR)/mio0
-N64CKSUM              := $(TOOLS_DIR)/n64cksum
-N64GRAPHICS           := $(TOOLS_DIR)/n64graphics
-DLPACKER              := $(TOOLS_DIR)/displaylist_packer
+MIO0TOOL              := "$(TOOLS_DIR)/mio0"
+N64CKSUM              := "$(TOOLS_DIR)/n64cksum"
+N64GRAPHICS           := "$(TOOLS_DIR)/n64graphics"
+DLPACKER              := "$(TOOLS_DIR)/displaylist_packer"
 BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
-EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
+EXTRACT_DATA_FOR_MIO  := "$(TOOLS_DIR)/extract_data_for_mio"
 ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
 LINKONLY_GENERATOR    := $(PYTHON) $(TOOLS_DIR)/linkonly_generator.py
 EMULATOR               = mupen64plus
@@ -416,7 +423,23 @@ EMU_FLAGS              = --noosd
 LOADER                 = loader64
 LOADER_FLAGS           = -vwf
 SHA1SUM                = sha1sum
-PRINT                  = printf
+ifneq ($(PRINT),)
+else ifneq ($(call find-command,printf),)
+  PRINT := printf
+else ifeq ($(OS),Windows_NT)
+  PRINT := "mingw64/bin/printf"
+else
+  $(error Unable to find printf)
+endif
+
+ifneq ($(TOUCH),)
+else ifneq ($(call find-command,touch),)
+  TOUCH := touch
+else ifeq ($(OS),Windows_NT)
+  TOUCH := "mingw64/bin/touch"
+else
+  $(error Unable to find touch)
+endif
 
 ifeq ($(COLOR),1)
 NO_COL  := \033[0m
@@ -473,7 +496,7 @@ load: $(ROM)
 
 # Make sure build directory exists before compiling anything
 ifeq ($(OS),Windows_NT)
-DUMMY != $(foreach dir,$(ALL_DIRS), $(shell powershell.exe New-Item $(dir) -ItemType Directory -ea 0)) || echo FAIL
+DUMMY != $(foreach dir,$(ALL_DIRS),$(shell powershell New-Item $(dir) -ItemType Directory -ea 0))
 else
 DUMMY != mkdir -p $(ALL_DIRS)
 endif
@@ -513,7 +536,7 @@ $(BUILD_DIR)/%.mio0.o: $(BUILD_DIR)/%.mio0.s
 
 $(BUILD_DIR)/%.mio0.s: $(BUILD_DIR)/%.mio0
 	$(call print,Generating mio0 asm:,$<,$@)
-	printf ".section .data\n\n.balign 4\n\n.incbin \"$<\"\n" > $@
+	$(PRINT) ".section .data\n\n.balign 4\n\n.incbin \"$<\"\n" > $@
 
 $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
 	@$(PRINT) "$(GREEN)Compiling Crash Screen:  $(BLUE)$@ $(NO_COL)\n"
@@ -595,8 +618,7 @@ COURSE_GEOGRAPHY_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/cou
 
 # Course vertices and displaylists are included together due to no alignment between the two files.
 %/course_geography.inc.mio0.s: %/course_vertices.inc.mio0 %/course_displaylists_packed.inc.bin
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_vertex\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
-
+	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_vertex\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
 
 
 #==============================================================================#
@@ -619,8 +641,7 @@ COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_d
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/course_data.inc.mio0.s: %/course_data.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
-
+	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
 
 
 #==============================================================================#
@@ -698,7 +719,8 @@ LDFLAGS += -R $(BUILD_DIR)/src/ending/ceremony_data.inc.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/ceremony_data.inc.mio0.s: %/ceremony_data.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel data_821D10_end\n" > $@
+	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel data_821D10_end\n" > $@
+
 
 #==============================================================================#
 # Compile Startup Logo                                                         #
@@ -717,7 +739,7 @@ LDFLAGS += -R $(BUILD_DIR)/src/data/startup_logo.inc.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/startup_logo.inc.mio0.s: %/startup_logo.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel data_825800_end\n" > $@
+	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel data_825800_end\n" > $@
 
 #==============================================================================#
 # Compile Common Textures                                                      #
@@ -736,7 +758,7 @@ LDFLAGS += -R $(BUILD_DIR)/src/data/common_textures.inc.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/common_textures.inc.mio0.s: %/common_textures.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
+	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
 
 
 

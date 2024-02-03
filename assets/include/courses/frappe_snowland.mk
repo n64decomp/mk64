@@ -43,7 +43,7 @@ $(FRAPPE_SNOWLAND_SNOWMAN_PALETTE) $(FRAPPE_SNOWLAND_SNOW_PALETTE) $(FRAPPE_SNOW
 
 $(FRAPPE_SNOWLAND_EXPORT_SENTINEL): $(ASSET_DIR)/courses/frappe_snowland.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_frappe_snowland
 distclean_frappe_snowland:
