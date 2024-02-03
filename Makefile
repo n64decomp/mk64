@@ -422,7 +422,24 @@ EMULATOR               = mupen64plus
 EMU_FLAGS              = --noosd
 LOADER                 = loader64
 LOADER_FLAGS           = -vwf
-SHA1SUM                = sha1sum
+ifneq ($(SHA1SUM),)
+else ifneq ($(call find-command,sha1sum),)
+  SHA1SUM := sha1sum
+else ifeq ($(OS),Windows_NT)
+  SHA1SUM := "mingw64/bin/sha1sum"
+else
+  $(error Unable to find sha1sum)
+endif
+
+ifneq ($(FALSE),)
+else ifneq ($(call find-command,false),)
+  FALSE := false
+else ifeq ($(OS),Windows_NT)
+  FALSE := "mingw64/bin/false"
+else
+  $(error Unable to find false)
+endif
+
 ifneq ($(PRINT),)
 else ifneq ($(call find-command,printf),)
   PRINT := printf
@@ -469,7 +486,7 @@ endef
 all: $(ROM)
 ifeq ($(COMPARE),1)
 	@$(PRINT) "$(GREEN)Checking if ROM matches.. $(NO_COL)\n"
-	@$(SHA1SUM) --quiet -c $(TARGET).sha1 && $(PRINT) "$(TARGET): $(GREEN)OK$(NO_COL)\n" || ($(PRINT) "$(YELLOW)Building the ROM file has succeeded, but does not match the original ROM.\nThis is expected, and not an error, if you are making modifications.\nTo silence this message, use 'make COMPARE=0.' $(NO_COL)\n" && false)
+	@$(SHA1SUM) -c $(TARGET).sha1 && $(PRINT) "$(TARGET): $(GREEN)OK$(NO_COL)\n" || ($(PRINT) "$(YELLOW)Building the ROM file has succeeded, but does not match the original ROM.\nThis is expected, and not an error, if you are making modifications.\nTo silence this message, use 'make COMPARE=0.' $(NO_COL)\n" && $(FALSE))
 endif
 
 doc:
