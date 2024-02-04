@@ -343,7 +343,7 @@ glabel L8000E1F4
 /* 00F01C 8000E41C 00000000 */  nop
 /* 00F020 8000E420 468051A0 */  cvt.s.w $f6, $f10
 /* 00F024 8000E424 46083100 */  add.s $f4, $f6, $f8
-/* 00F028 8000E428 0C0AD489 */  jal   get_angle_between_points
+/* 00F028 8000E428 0C0AD489 */  jal   get_angle_between_two_vector
 /* 00F02C 8000E42C E4A40008 */   swc1  $f4, 8($a1)
 /* 00F030 8000E430 3403FFFF */  li    $v1, 65535
 /* 00F034 8000E434 00430019 */  multu $v0, $v1
@@ -458,7 +458,7 @@ glabel L8000E45C
 /* 00F1E4 8000E5E4 00000000 */  nop
 /* 00F1E8 8000E5E8 468042A0 */  cvt.s.w $f10, $f8
 /* 00F1EC 8000E5EC 46065100 */  add.s $f4, $f10, $f6
-/* 00F1F0 8000E5F0 0C0AD489 */  jal   get_angle_between_points
+/* 00F1F0 8000E5F0 0C0AD489 */  jal   get_angle_between_two_vector
 /* 00F1F4 8000E5F4 E4A40008 */   swc1  $f4, 8($a1)
 /* 00F1F8 8000E5F8 00027400 */  sll   $t6, $v0, 0x10
 /* 00F1FC 8000E5FC 01C27023 */  subu  $t6, $t6, $v0
@@ -583,7 +583,7 @@ glabel L8000E634
 /* 00F3B0 8000E7B0 44984000 */  mtc1  $t8, $f8
 /* 00F3B4 8000E7B4 00000000 */  nop
 /* 00F3B8 8000E7B8 468042A0 */  cvt.s.w $f10, $f8
-/* 00F3BC 8000E7BC 0C0AD489 */  jal   get_angle_between_points
+/* 00F3BC 8000E7BC 0C0AD489 */  jal   get_angle_between_two_vector
 /* 00F3C0 8000E7C0 E4AA0008 */   swc1  $f10, 8($a1)
 /* 00F3C4 8000E7C4 00027C00 */  sll   $t7, $v0, 0x10
 /* 00F3C8 8000E7C8 01E27823 */  subu  $t7, $t7, $v0
@@ -608,7 +608,7 @@ glabel L8000E634
 /* 00F410 8000E810 E4A60000 */  swc1  $f6, ($a1)
 /* 00F414 8000E814 E4A40004 */  swc1  $f4, 4($a1)
 /* 00F418 8000E818 C428D020 */  lwc1  $f8, %lo(D_800ED020)($at)
-/* 00F41C 8000E81C 0C0AD489 */  jal   get_angle_between_points
+/* 00F41C 8000E81C 0C0AD489 */  jal   get_angle_between_two_vector
 /* 00F420 8000E820 E4A80008 */   swc1  $f8, 8($a1)
 /* 00F424 8000E824 00025C00 */  sll   $t3, $v0, 0x10
 /* 00F428 8000E828 01625823 */  subu  $t3, $t3, $v0
@@ -767,7 +767,7 @@ glabel L8000E968
 /* 00F66C 8000EA6C 46083282 */  mul.s $f10, $f6, $f8
 /* 00F670 8000EA70 00C02025 */  move  $a0, $a2
 /* 00F674 8000EA74 460A2181 */  sub.s $f6, $f4, $f10
-/* 00F678 8000EA78 0C0AD489 */  jal   get_angle_between_points
+/* 00F678 8000EA78 0C0AD489 */  jal   get_angle_between_two_vector
 /* 00F67C 8000EA7C 4606A500 */   add.s $f20, $f20, $f6
 /* 00F680 8000EA80 00026400 */  sll   $t4, $v0, 0x10
 /* 00F684 8000EA84 01826023 */  subu  $t4, $t4, $v0

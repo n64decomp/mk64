@@ -4,7 +4,7 @@
 #include "common_structs.h"
 #include "code_80071F00.h"
 
-void init_object_list(void);
+void init_hud(void);
 void reset_object_variable(void);
 void func_8006EB10(void);
 void clear_object_list(void);

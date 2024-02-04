@@ -681,7 +681,7 @@ void play_sound_congratulation(UNUSED struct CinematicCamera *camera) {
 }
 
 /**
- * Played in ceremony opening with ballons.
+ * Played in ceremony opening with balloons.
  */
 void play_sound_balloon_pop(UNUSED struct CinematicCamera *camera) {
     play_sound2(SOUND_CEREMONY_BALLOON_POP);

@@ -33,7 +33,7 @@ u8 *D_802BA054;
 u8 *D_802BA058;
 
 
-struct Actor *D_802BA05C;
+struct Actor *gActorHotAirBalloonItemBox;
 s8 gTLUTRedShell[512]; // tlut 256
 u16 D_802BA260;
 
@@ -3498,21 +3498,21 @@ void update_actor_fake_item_box(struct FakeItemBox *fake_item_box) {
     }
 }
 
-void func_802A14BC(f32 arg0, f32 arg1, f32 arg2) {
-    Vec3f sp34;
-    Vec3f sp28;
-    Vec3s sp20;
-    s16 temp_a0;
+void func_802A14BC(f32 x, f32 y, f32 z) {
+    Vec3f pos;
+    Vec3f velocity;
+    Vec3s rot;
+    s16 id;
 
     if (gModeSelection == TIME_TRIALS) { return; }
 
-    vec3s_set(sp20, 0, 0, 0);
-    vec3f_set(sp28, 0, 0, 0);
-    sp34[0] = arg0;
-    sp34[1] = arg1;
-    sp34[2] = arg2;
-    temp_a0 = addActorToEmptySlot(sp34, sp20, sp28, 43);
-    D_802BA05C = &gActorList[temp_a0];
+    vec3s_set(rot, 0, 0, 0);
+    vec3f_set(velocity, 0, 0, 0);
+    pos[0] = x;
+    pos[1] = y;
+    pos[2] = z;
+    id = addActorToEmptySlot(pos, rot, velocity, ACTOR_HOT_AIR_BALLOON_ITEM_BOX);
+    gActorHotAirBalloonItemBox = &gActorList[id];
 }
 
 void update_actor_item_box_hot_air_balloon(struct ItemBox *itemBox) {

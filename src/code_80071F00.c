@@ -181,7 +181,7 @@ void func_80072120(s32 *arg0, s32 arg1) {
     s32 i;
 
     for (i = 0; i < arg1; i++) {
-            set_object_flag_unk_054_false(*arg0, 0x00600000);
+            set_object_flag_status_false(*arg0, 0x00600000);
             arg0++;
     }
 }
@@ -195,29 +195,29 @@ void func_80072180(void) {
     }
 }
 
-void set_object_flag_unk_054_true(s32 objectIndex, s32 flag) {
-    gObjectList[objectIndex].unk_054 |= flag;
+void set_object_flag_status_true(s32 objectIndex, s32 flag) {
+    gObjectList[objectIndex].status |= flag;
 }
 
-void set_object_flag_unk_054_false(s32 objectIndex, s32 flag) {
-    gObjectList[objectIndex].unk_054 &= ~flag;
+void set_object_flag_status_false(s32 objectIndex, s32 flag) {
+    gObjectList[objectIndex].status &= ~flag;
 }
 
 UNUSED void func_80072214(s32 objectIndex, s32 arg1) {
-    gObjectList[objectIndex].unk_054 ^= arg1;
+    gObjectList[objectIndex].status ^= arg1;
 }
 
-bool is_obj_index_flag_unk_054_active(s32 objectIndex, s32 arg1) {
+bool is_obj_flag_status_active(s32 objectIndex, s32 arg1) {
     s32 phi_v1 = FALSE;
-    if ((gObjectList[objectIndex].unk_054 & arg1) != 0) {
+    if ((gObjectList[objectIndex].status & arg1) != 0) {
         phi_v1 = TRUE;
     }
     return phi_v1;
 }
 
-s32 is_obj_index_flag_unk_054_inactive(s32 objectIndex, s32 arg1) {
+s32 is_obj_index_flag_status_inactive(s32 objectIndex, s32 arg1) {
     s32 phi_v1 = 0;
-    if ((gObjectList[objectIndex].unk_054 & arg1) == 0) {
+    if ((gObjectList[objectIndex].status & arg1) == 0) {
         phi_v1 = 1;
     }
     return phi_v1;
@@ -256,7 +256,7 @@ void set_object_unk_0CB(s32 objectIndex, s32 arg1) {
 }
 
 void init_object(s32 objectIndex, s32 arg1) {
-    gObjectList[objectIndex].unk_054 = 0;
+    gObjectList[objectIndex].status = 0;
     gObjectList[objectIndex].unk_058 = 0;
     gObjectList[objectIndex].unk_05C = 0;
     gObjectList[objectIndex].unk_0CD = 0;
@@ -274,7 +274,7 @@ void func_80072428(s32 objectIndex) {
     gObjectList[objectIndex].state = 0;
     gObjectList[objectIndex].unk_0D8 = 0;
     set_object_unk_0CB(objectIndex, 0);
-    gObjectList[objectIndex].unk_054 = 0;
+    gObjectList[objectIndex].status = 0;
     gObjectList[objectIndex].unk_058 = 0;
     gObjectList[objectIndex].unk_05C = 0;
     func_80086F60(objectIndex);
@@ -282,7 +282,7 @@ void func_80072428(s32 objectIndex) {
 
 void func_80072488(s32 objectIndex) {
     set_object_unk_0CB(objectIndex,  0);
-    set_object_flag_unk_054_false(objectIndex, 0x2000);
+    set_object_flag_status_false(objectIndex, 0x2000);
     gObjectList[objectIndex].state++;
 }
 
@@ -302,8 +302,8 @@ s16 func_80072530(s32 objectIndex) {
 
 void func_80072568(s32 objectIndex, s32 arg1) {
     set_object_unk_0CB(objectIndex, 0);
-    set_object_flag_unk_054_false(objectIndex, 0x2000);
-    set_object_flag_unk_054_false(objectIndex, 8);
+    set_object_flag_status_false(objectIndex, 0x2000);
+    set_object_flag_status_false(objectIndex, 8);
     func_80072488(objectIndex);
     func_800724F8(objectIndex, gObjectList[objectIndex].state);
     gObjectList[objectIndex].state = arg1;
@@ -311,8 +311,8 @@ void func_80072568(s32 objectIndex, s32 arg1) {
 
 void func_800725E8(s32 objectIndex, s32 arg1, s32 arg2) {
     set_object_unk_0CB(objectIndex, 0);
-    set_object_flag_unk_054_false(objectIndex, 0x2000);
-    set_object_flag_unk_054_false(objectIndex, 8);
+    set_object_flag_status_false(objectIndex, 0x2000);
+    set_object_flag_status_false(objectIndex, 8);
     gObjectList[objectIndex].state = arg2;
     func_800724F8(objectIndex, gObjectList[objectIndex].state);
     gObjectList[objectIndex].state =  arg1;
@@ -322,14 +322,14 @@ s16 func_80072530(s32); // extern
 
 void func_8007266C(s32 objectIndex) {
     set_object_unk_0CB(objectIndex, 0);
-    set_object_flag_unk_054_false(objectIndex, 0x2000);
-    set_object_flag_unk_054_false(objectIndex, 8);
+    set_object_flag_status_false(objectIndex, 0x2000);
+    set_object_flag_status_false(objectIndex, 8);
     gObjectList[objectIndex].state = func_80072530(objectIndex);
 }
 
 void func_800726CC(s32 objectIndex, s32 arg1) {
     set_object_unk_0CB(objectIndex, 0);
-    set_object_flag_unk_054_false(objectIndex, 0x2000);
+    set_object_flag_status_false(objectIndex, 0x2000);
     gObjectList[objectIndex].state = arg1;
 }
 
@@ -475,14 +475,14 @@ s32 func_80072B48(s32 objectIndex, s32 arg1) {
     phi_v1 = 0;
     if (gObjectList[objectIndex].unk_0CB == 0) {
         set_object_unk_0CB(objectIndex, 1);
-        set_object_flag_unk_054_true(objectIndex, 0x80000);
+        set_object_flag_status_true(objectIndex, 0x80000);
         gObjectList[objectIndex].itemDisplay = D_8018D140;
         gObjectList[objectIndex].unk_050 = arg1;
     }
 
     gObjectList[objectIndex].unk_050--;
     if (gObjectList[objectIndex].unk_050 < 0) {
-        set_object_flag_unk_054_false(objectIndex, 0x80000);
+        set_object_flag_status_false(objectIndex, 0x80000);
         set_object_unk_0CB(objectIndex, 0);
         func_80072488(objectIndex);
         phi_v1 = 1;
@@ -492,21 +492,21 @@ s32 func_80072B48(s32 objectIndex, s32 arg1) {
 }
 
 void func_80072C00(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3) {
-    if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x2000) != 0) {
+    if (is_obj_index_flag_status_inactive(objectIndex, 0x2000) != 0) {
         gObjectList[objectIndex].unk_050 = arg2;
         gObjectList[objectIndex].itemDisplay = arg1;
         gObjectList[objectIndex].unk_0D4 = 1;
         gObjectList[objectIndex].unk_0CC = arg3;
-        set_object_flag_unk_054_true(objectIndex, 0x2000);
+        set_object_flag_status_true(objectIndex, 0x2000);
     } else {
         gObjectList[objectIndex].unk_050--;
         if (gObjectList[objectIndex].unk_050 < 0) {
             gObjectList[objectIndex].unk_050 = arg2;
             gObjectList[objectIndex].unk_0D4--;
             if ((gObjectList[objectIndex].unk_0D4 & 1) != 0) {
-                set_object_flag_unk_054_false(objectIndex, 0x80000);
+                set_object_flag_status_false(objectIndex, 0x80000);
             } else {
-                set_object_flag_unk_054_true(objectIndex, 0x80000);
+                set_object_flag_status_true(objectIndex, 0x80000);
             }
 
             if (gObjectList[objectIndex].unk_0D4 < 0) {
@@ -517,7 +517,7 @@ void func_80072C00(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3) {
                 }
 
                 if (gObjectList[objectIndex].unk_0CC == 0) {
-                    set_object_flag_unk_054_false(objectIndex, 0x2000);
+                    set_object_flag_status_false(objectIndex, 0x2000);
                     func_80072488(objectIndex);
                 }
             }
@@ -526,12 +526,12 @@ void func_80072C00(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3) {
 }
 
 void func_80072D3C(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-    if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x2000) != 0) {
+    if (is_obj_index_flag_status_inactive(objectIndex, 0x2000) != 0) {
         gObjectList[objectIndex].unk_050 = arg3;
         gObjectList[objectIndex].itemDisplay = arg1;
         gObjectList[objectIndex].unk_0D4 = 1;
         gObjectList[objectIndex].unk_0CC = arg4;
-        set_object_flag_unk_054_true(objectIndex, 0x2000);
+        set_object_flag_status_true(objectIndex, 0x2000);
         return;
     }
 
@@ -552,7 +552,7 @@ void func_80072D3C(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
             }
 
             if (gObjectList[objectIndex].unk_0CC == 0) {
-                set_object_flag_unk_054_false(objectIndex, 0x2000);
+                set_object_flag_status_false(objectIndex, 0x2000);
                 func_80072488(objectIndex);
             }
         }
@@ -563,12 +563,12 @@ s32 func_80072E54(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
     s32 sp24;
 
     sp24 = 0;
-    if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x2000) != 0) {
+    if (is_obj_index_flag_status_inactive(objectIndex, 0x2000) != 0) {
         gObjectList[objectIndex].itemDisplay = arg1;
         gObjectList[objectIndex].unk_050 = arg4;
         gObjectList[objectIndex].unk_0CC = arg5;
         set_object_unk_0CB(objectIndex, 1);
-        set_object_flag_unk_054_true(objectIndex, 0x2000);
+        set_object_flag_status_true(objectIndex, 0x2000);
     } else {
         gObjectList[objectIndex].unk_050--;
         if (gObjectList[objectIndex].unk_050 <= 0) {
@@ -581,7 +581,7 @@ s32 func_80072E54(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
                 }
                 if (gObjectList[objectIndex].unk_0CC == 0) {
                     gObjectList[objectIndex].itemDisplay = arg2;
-                    set_object_flag_unk_054_false(objectIndex, 0x2000);
+                    set_object_flag_status_false(objectIndex, 0x2000);
                     set_object_unk_0CB(objectIndex, 0);
                     func_80072488(objectIndex);
                     sp24 = 1;
@@ -598,12 +598,12 @@ bool func_80072F88(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
     s32 sp24;
 
     sp24 = FALSE;
-    if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x2000) != 0) {
+    if (is_obj_index_flag_status_inactive(objectIndex, 0x2000) != 0) {
         gObjectList[objectIndex].itemDisplay = arg1;
         gObjectList[objectIndex].unk_050 = arg4;
         gObjectList[objectIndex].unk_0CC = arg5;
         set_object_unk_0CB(objectIndex, 1);
-        set_object_flag_unk_054_true(objectIndex, 0x2000);
+        set_object_flag_status_true(objectIndex, 0x2000);
     } else {
         gObjectList[objectIndex].unk_050--;
         if (gObjectList[objectIndex].unk_050 <= 0) {
@@ -615,7 +615,7 @@ bool func_80072F88(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
                 }
                 if (gObjectList[objectIndex].unk_0CC == 0) {
                     gObjectList[objectIndex].itemDisplay = arg2;
-                    set_object_flag_unk_054_false(objectIndex, 0x2000);
+                    set_object_flag_status_false(objectIndex, 0x2000);
                     set_object_unk_0CB(objectIndex, 0);
                     func_80072488(objectIndex);
                     sp24 = TRUE;
@@ -632,22 +632,22 @@ bool func_800730BC(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
     s32 sp24;
 
     sp24 = FALSE;
-    if (is_obj_index_flag_unk_054_inactive(objectIndex ,0x2000) != 0) {
+    if (is_obj_index_flag_status_inactive(objectIndex ,0x2000) != 0) {
         gObjectList[objectIndex].itemDisplay = arg1;
         gObjectList[objectIndex].unk_050 = arg4;
         gObjectList[objectIndex].unk_0CC = arg5;
         set_object_unk_0CB(objectIndex, 1);
-        set_object_flag_unk_054_true(objectIndex, 0x2000);
-        set_object_flag_unk_054_false(objectIndex, 0x4000);
+        set_object_flag_status_true(objectIndex, 0x2000);
+        set_object_flag_status_false(objectIndex, 0x4000);
     } else {
         gObjectList[objectIndex].unk_050--;
         if (gObjectList[objectIndex].unk_050 <= 0) {
             gObjectList[objectIndex].unk_050 = arg4;
-            if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x4000) != 0) {
+            if (is_obj_index_flag_status_inactive(objectIndex, 0x4000) != 0) {
                 gObjectList[objectIndex].itemDisplay += arg3;
                 if (gObjectList[objectIndex].itemDisplay >= arg2) {
                     gObjectList[objectIndex].itemDisplay = arg2;
-                    set_object_flag_unk_054_true(objectIndex, 0x4000);
+                    set_object_flag_status_true(objectIndex, 0x4000);
                 }
             } else {
                 gObjectList[objectIndex].itemDisplay -= arg3;
@@ -658,14 +658,14 @@ bool func_800730BC(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
                     }
 
                     if (gObjectList[objectIndex].unk_0CC == 0) {
-                        set_object_flag_unk_054_false(objectIndex, 0x80);
-                        set_object_flag_unk_054_false(objectIndex, 0x2000);
+                        set_object_flag_status_false(objectIndex, 0x80);
+                        set_object_flag_status_false(objectIndex, 0x2000);
                         set_object_unk_0CB(objectIndex, 0);
                         func_80072488(objectIndex);
                         sp24 = TRUE;
                     } else {
-                        set_object_flag_unk_054_false(objectIndex, 0x4000);
-                        set_object_flag_unk_054_true(objectIndex, 0x80);
+                        set_object_flag_status_false(objectIndex, 0x4000);
+                        set_object_flag_status_true(objectIndex, 0x80);
                     }
                 }
             }
@@ -678,22 +678,22 @@ s32 func_8007326C(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
     s32 sp24;
 
     sp24 = 0;
-    if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x2000) != 0) {
+    if (is_obj_index_flag_status_inactive(objectIndex, 0x2000) != 0) {
         gObjectList[objectIndex].itemDisplay = arg1;
         gObjectList[objectIndex].unk_050 = arg4;
         gObjectList[objectIndex].unk_0CC = arg5;
         set_object_unk_0CB(objectIndex, 1);
-        set_object_flag_unk_054_true(objectIndex, 0x2000);
-        set_object_flag_unk_054_false(objectIndex, 0x4000);
+        set_object_flag_status_true(objectIndex, 0x2000);
+        set_object_flag_status_false(objectIndex, 0x4000);
     } else {
         gObjectList[objectIndex].unk_050--;
         if (gObjectList[objectIndex].unk_050 <= 0) {
             gObjectList[objectIndex].unk_050 = arg4;
-            if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x4000) != 0) {
+            if (is_obj_index_flag_status_inactive(objectIndex, 0x4000) != 0) {
                 gObjectList[objectIndex].itemDisplay -= arg3;
                 if (arg2 >= gObjectList[objectIndex].itemDisplay) {
                     gObjectList[objectIndex].itemDisplay = arg2;
-                    set_object_flag_unk_054_true(objectIndex, 0x4000);
+                    set_object_flag_status_true(objectIndex, 0x4000);
                 }
             } else {
                 gObjectList[objectIndex].itemDisplay += arg3;
@@ -703,12 +703,12 @@ s32 func_8007326C(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
                         gObjectList[objectIndex].unk_0CC--;
                     }
                     if (gObjectList[objectIndex].unk_0CC == 0) {
-                        set_object_flag_unk_054_false(objectIndex, 0x2000);
+                        set_object_flag_status_false(objectIndex, 0x2000);
                         set_object_unk_0CB(objectIndex, 0);
                         func_80072488(objectIndex);
                         sp24 = 1;
                     } else {
-                        set_object_flag_unk_054_false(objectIndex, 0x4000);
+                        set_object_flag_status_false(objectIndex, 0x4000);
                     }
                 }
             }
@@ -723,7 +723,7 @@ void func_80073404(s32 objectIndex, u8 arg1, u8 arg2, Vtx *arg3) {
   gObjectList[objectIndex].textureHeight = arg2;
   gObjectList[objectIndex].itemDisplay = 0;
   gObjectList[objectIndex].unk_0D3 = -1;
-  gObjectList[objectIndex].unk_054 = 0;
+  gObjectList[objectIndex].status = 0;
 }
 
 void init_texture_object(s32 objectIndex, u8 *texture, u8* arg2, u8 arg3, u16 arg4) {
@@ -733,7 +733,7 @@ void init_texture_object(s32 objectIndex, u8 *texture, u8* arg2, u8 arg3, u16 ar
     gObjectList[objectIndex].textureHeight = arg4;
     gObjectList[objectIndex].itemDisplay = 0;
     gObjectList[objectIndex].unk_0D3 = -1;
-    gObjectList[objectIndex].unk_054 = 0;
+    gObjectList[objectIndex].status = 0;
 }
 
 UNUSED void func_8007348C(s32 objectIndex, u8 *arg1, u8 arg2, u8 arg3, Vtx *arg4) {
@@ -744,7 +744,7 @@ UNUSED void func_8007348C(s32 objectIndex, u8 *arg1, u8 arg2, u8 arg3, Vtx *arg4
     gObjectList[objectIndex].vertex = arg4;
     gObjectList[objectIndex].itemDisplay = 0;
     gObjectList[objectIndex].unk_0D3 = -1;
-    gObjectList[objectIndex].unk_054 = 0;
+    gObjectList[objectIndex].status = 0;
 }
 
 UNUSED void func_800734D4() {
@@ -775,7 +775,7 @@ UNUSED void func_80073570(s32 objectIndex) {
 } 
 
 void func_800735BC(s32 objectIndex, Gfx *arg1, f32 arg2) {
-    gObjectList[objectIndex].unk_054 = 0;
+    gObjectList[objectIndex].status = 0;
     gObjectList[objectIndex].model = arg1;
     gObjectList[objectIndex].sizeScaling = arg2;
     func_80072488(objectIndex);
@@ -785,26 +785,26 @@ void func_80073600(s32 objectIndex) {
     set_object_unk_0CB(objectIndex, 0);
     gObjectList[objectIndex].unk_0D6 = 0;
     gObjectList[objectIndex].unk_04C = -1;
-    set_object_flag_unk_054_false(objectIndex, 0x8000);
+    set_object_flag_status_false(objectIndex, 0x8000);
 }
 
 void func_80073654(s32 objectIndex) {
-    set_object_flag_unk_054_false(objectIndex, 0x8000);
+    set_object_flag_status_false(objectIndex, 0x8000);
     ++gObjectList[objectIndex].unk_0D6;
 }
 
 UNUSED void func_8007369C(s32 objectIndex, s32 arg1) {
-    set_object_flag_unk_054_false(objectIndex, 0x8000);
+    set_object_flag_status_false(objectIndex, 0x8000);
     gObjectList[objectIndex].unk_0D6 = arg1;
 }
 
 void func_800736E0(s32 objectIndex) {
-    set_object_flag_unk_054_false(objectIndex, 0x8000);
+    set_object_flag_status_false(objectIndex, 0x8000);
     gObjectList[objectIndex].unk_0D6 = 1;
 }
 
 void func_80073720(s32 objectIndex) {
-    set_object_flag_unk_054_false(objectIndex, 0x8000);
+    set_object_flag_status_false(objectIndex, 0x8000);
     gObjectList[objectIndex].unk_0D6 = 0;
 }
 
@@ -812,13 +812,13 @@ bool func_8007375C(s32 objectIndex, s32 arg1) {
     s32 sp24;
 
     sp24 = FALSE;
-    if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x00008000) != 0) {
+    if (is_obj_index_flag_status_inactive(objectIndex, 0x00008000) != 0) {
         gObjectList[objectIndex].unk_04C = arg1;
-        set_object_flag_unk_054_true(objectIndex, 0x00008000);
+        set_object_flag_status_true(objectIndex, 0x00008000);
     }
     gObjectList[objectIndex].unk_04C--;
     if (gObjectList[objectIndex].unk_04C < 0) {
-        set_object_flag_unk_054_false(objectIndex, 0x00008000);
+        set_object_flag_status_false(objectIndex, 0x00008000);
         func_80073654(objectIndex);
         sp24 = TRUE;
     }
@@ -1183,11 +1183,11 @@ void func_80074344(s32 objectIndex, f32* arg1, f32 arg2, f32 arg3, f32 arg4, s32
 }
 
 void func_80074478(s32 objectIndex) {
-    gObjectList[objectIndex].unk_054 |= 1;
+    gObjectList[objectIndex].status |= 1;
 }
 
 void func_800744A0(s32 objectIndex) {
-    gObjectList[objectIndex].unk_054 &= ~1;
+    gObjectList[objectIndex].status &= ~1;
 }
 
 void func_800744CC(void) {
@@ -1211,14 +1211,14 @@ void func_80074574(u8 *arg0, void *arg1, u16 arg2, u16 arg3) {
 void func_800745C8(s32 objectIndex, s32 arg1) {
     s32 phi_a1;
 
-    if ((gObjectList[objectIndex].unk_054 & 1) != 0) {
+    if ((gObjectList[objectIndex].status & 1) != 0) {
         phi_a1 = 0;
         if (gObjectList[objectIndex].tlutList != gObjectList[objectIndex].activeTLUT) {
             gObjectList[objectIndex].activeTLUT = gObjectList[objectIndex].tlutList;
         }
 
-        gObjectList[objectIndex].unk_054 ^= 2;
-        if ((gObjectList[objectIndex].unk_054 & 2) != 0) {
+        gObjectList[objectIndex].status ^= 2;
+        if ((gObjectList[objectIndex].status & 2) != 0) {
             phi_a1 = 1;
         }
         
@@ -1230,12 +1230,12 @@ void func_800745C8(s32 objectIndex, s32 arg1) {
 void func_8007466C(s32 objectIndex, s32 arg1) {
     s32 phi_a1;
 
-    if ((gObjectList[objectIndex].unk_054 & 1) != 0) {
+    if ((gObjectList[objectIndex].status & 1) != 0) {
         // I have no idea why this typecase works
         gObjectList[objectIndex].activeTLUT = (u32*)gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].unk_0D3 << 7) ;
-        gObjectList[objectIndex].unk_054 ^= 2;
+        gObjectList[objectIndex].status ^= 2;
         phi_a1 = 0;
-        if ((gObjectList[objectIndex].unk_054 & 2) != 0) {
+        if ((gObjectList[objectIndex].status & 2) != 0) {
             phi_a1 = 1;
         }
         gObjectList[objectIndex].activeTexture = (u8 *) (gObjectList[objectIndex].textureWidth * gObjectList[objectIndex].textureHeight * phi_a1) + arg1;
@@ -1246,11 +1246,11 @@ void func_8007466C(s32 objectIndex, s32 arg1) {
 void func_80074704(s32 objectIndex, s32 arg1) {
     s32 phi_a1;
     
-    if ((gObjectList[objectIndex].unk_054 & 1) != 0) {
+    if ((gObjectList[objectIndex].status & 1) != 0) {
         gObjectList[objectIndex].activeTLUT = gObjectList[objectIndex].tlutList;
-        gObjectList[objectIndex].unk_054 ^= 2;
+        gObjectList[objectIndex].status ^= 2;
         phi_a1 = 0;
-        if ((gObjectList[objectIndex].unk_054 & 2) != 0) {
+        if ((gObjectList[objectIndex].status & 2) != 0) {
             phi_a1 = 1;
         }
         gObjectList[objectIndex].activeTexture = (u8 *) (gObjectList[objectIndex].textureWidth * gObjectList[objectIndex].textureHeight * phi_a1) + arg1;
@@ -1261,9 +1261,9 @@ void func_80074704(s32 objectIndex, s32 arg1) {
 u8 *func_80074790(s32 objectIndex, u8 *arg1) {
     s32 phi_a2;
 
-    gObjectList[objectIndex].unk_054 ^= 4;
+    gObjectList[objectIndex].status ^= 4;
     phi_a2 = 0;
-    if ((gObjectList[objectIndex].unk_054 & 4) != 0) {
+    if ((gObjectList[objectIndex].status & 4) != 0) {
         phi_a2 = 1;
     }
     return (gObjectList[objectIndex].textureWidth * gObjectList[objectIndex].textureHeight * phi_a2) + arg1;
@@ -1360,7 +1360,7 @@ void func_80074924(s32 objectIndex) {
 
 void func_80074D94(s32 objectIndex) {
     if (gObjectList[objectIndex].unk_0AE == 1) {
-        if ((D_80165740 <= gObjectList[objectIndex].unk_028[1]) && (s16_step_down_towards(&gObjectList[objectIndex].primAlpha, 0, 8) != 0)) {
+        if ((D_80165740 <= gObjectList[objectIndex].speed[1]) && (s16_step_down_towards(&gObjectList[objectIndex].primAlpha, 0, 8) != 0)) {
             func_80086F60(objectIndex);
         }
         func_800877C4(objectIndex);
@@ -1552,9 +1552,9 @@ void func_80075698(s32 objectIndex) {
     gObjectList[objectIndex].direction_angle[1] = 0;
     gObjectList[objectIndex].orientation[0] = 0;
     gObjectList[objectIndex].orientation[2] = 0;
-    gObjectList[objectIndex].unk_028[0] = 0.0f;
-    gObjectList[objectIndex].unk_028[1] = 0.0f;
-    gObjectList[objectIndex].unk_028[2] = 0.0f;
+    gObjectList[objectIndex].speed[0] = 0.0f;
+    gObjectList[objectIndex].speed[1] = 0.0f;
+    gObjectList[objectIndex].speed[2] = 0.0f;
     gObjectList[objectIndex].sizeScaling = 0.5f;
     func_80072488(objectIndex);
 }
@@ -1566,7 +1566,7 @@ void func_80075714(s32 objectIndex) {
         break;
     case 2:
         gObjectList[objectIndex].velocity[1] -= 0.03;
-        f32_step_up_towards(&gObjectList[objectIndex].unk_028[1], 100.0f, gObjectList[objectIndex].velocity[1]);
+        f32_step_up_towards(&gObjectList[objectIndex].speed[1], 100.0f, gObjectList[objectIndex].velocity[1]);
         func_8007415C(objectIndex, &gObjectList[objectIndex].sizeScaling, 0.55f, 1.0f, 0.1f, 1, 0);
         if (func_80073B00(objectIndex, &gObjectList[objectIndex].primAlpha, 0xFF, 0x1E, 7, 0, 0) != 0) {
             func_80072488(objectIndex);
@@ -1673,9 +1673,9 @@ void func_80075B08(s32 objectIndex) {
     gObjectList[objectIndex].direction_angle[1] = 0;
     gObjectList[objectIndex].orientation[0] = 0;
     gObjectList[objectIndex].orientation[2] = 0;
-    gObjectList[objectIndex].unk_028[0] = 0.0f;
-    gObjectList[objectIndex].unk_028[1] = 0.0f;
-    gObjectList[objectIndex].unk_028[2] = 0.0f;
+    gObjectList[objectIndex].speed[0] = 0.0f;
+    gObjectList[objectIndex].speed[1] = 0.0f;
+    gObjectList[objectIndex].speed[2] = 0.0f;
     gObjectList[objectIndex].sizeScaling = 0.5f;
     func_80072488(objectIndex);
 }
@@ -1687,7 +1687,7 @@ void func_80075B84(s32 objectIndex) {
         break;
     case 2:
         gObjectList[objectIndex].velocity[1] -= 0.03;
-        f32_step_up_towards(&gObjectList[objectIndex].unk_028[1], 100.0f, gObjectList[objectIndex].velocity[1]);
+        f32_step_up_towards(&gObjectList[objectIndex].speed[1], 100.0f, gObjectList[objectIndex].velocity[1]);
         func_8007415C(objectIndex, &gObjectList[objectIndex].sizeScaling, 0.55f, 1.0f, 0.1f, 1, 0);
         if (func_80073B00(objectIndex, &gObjectList[objectIndex].primAlpha, 0xFF, 0x1E, 7, 0, 0) != 0) {
             func_80072488(objectIndex);
@@ -1809,7 +1809,7 @@ void func_8007601C(s32 objectIndex) {
 
     if (gObjectList[objectIndex].unk_04C == 0) {
         func_8008A6DC(objectIndex, 300.0f);
-        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x40000) != 0) && (func_80072354(objectIndex, 1) != 0)) {
+        if ((is_obj_flag_status_active(objectIndex, VISIBLE) != 0) && (func_80072354(objectIndex, 1) != 0)) {
             func_800722A4(objectIndex, 1);
             func_80075F98(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle[1], 1.0f);
             func_800C9D80(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, 0x5102800A);
@@ -1968,7 +1968,7 @@ void func_8007661C(void) {
     }
     if (gObjectList[objectIndex].unk_04C == 0) {
         func_8008A6DC(objectIndex, 750.0f);
-        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (func_80072354(objectIndex, 1) != 0)) {
+        if ((is_obj_flag_status_active(objectIndex, VISIBLE) != 0) && (func_80072354(objectIndex, 1) != 0)) {
             func_800722A4(objectIndex, 1);
             func_800762DC(gObjectList[objectIndex].pos, 1.0f);
             func_800C9D80(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, 0x51038009U);
@@ -2523,7 +2523,7 @@ void func_80077E20(s32 objectIndex) {
     temp_v0->textureHeight = 0x10;
     temp_v0->textureWidth = temp_v0->textureHeight;
     temp_v0->sizeScaling = 0.15f;
-    set_object_flag_unk_054_true(objectIndex, 0x00000010);
+    set_object_flag_status_true(objectIndex, 0x00000010);
     func_80086EF0(objectIndex);
     temp_v0->primAlpha = 0x00FF;
     temp_v0->unk_0D5 = 0;
@@ -2536,11 +2536,11 @@ void func_80077EB8(s32 objectIndex, u16 arg1, Camera *camera) {
 
     temp_v0 = camera->rot[1] - arg1;
     if ((temp_v0 >= D_8018D210) || (D_8018D208 >= temp_v0)) {
-        gObjectList[objectIndex].unk_028[0] = D_8018D218 + (D_8018D1E8 * (f32) temp_v0);
-        set_object_flag_unk_054_true(objectIndex, 0x00000010);
+        gObjectList[objectIndex].speed[0] = D_8018D218 + (D_8018D1E8 * (f32) temp_v0);
+        set_object_flag_status_true(objectIndex, 0x00000010);
         return;
     }
-    set_object_flag_unk_054_false(objectIndex, 0x00000010);
+    set_object_flag_status_false(objectIndex, 0x00000010);
 }
 
 void func_80077F64(s32 objectIndex, Camera *camera) {
@@ -2554,8 +2554,8 @@ void func_80077F64(s32 objectIndex, Camera *camera) {
             rand = random_int(0x0064U);
 
             gObjectList[objectIndex].velocity[1] = (f32) (-0.75 - (f64) (f32) (rand * 0.01));
-            gObjectList[objectIndex].unk_028[0] = 0.0f;
-            gObjectList[objectIndex].unk_028[1] = 0.0f;
+            gObjectList[objectIndex].speed[0] = 0.0f;
+            gObjectList[objectIndex].speed[1] = 0.0f;
             func_80086FD4(objectIndex);
             return;
         case 2:
@@ -2641,8 +2641,8 @@ void func_80078288(s32 objectIndex) {
             gObjectList[objectIndex].unk_0C4 = random_int(0x0400U) + 0x100;
             gObjectList[objectIndex].unk_01C[0] = (f32) (((f32) random_int(0x0064U) * 0.03) + 2.0);
             gObjectList[objectIndex].velocity[1] = (f32) (-0.3 - (f64) (f32) (random_int(0x0032U) * 0.01));
-            gObjectList[objectIndex].unk_028[0] = 0.0f;
-            gObjectList[objectIndex].unk_028[1] = 0.0f;
+            gObjectList[objectIndex].speed[0] = 0.0f;
+            gObjectList[objectIndex].speed[1] = 0.0f;
             func_80086FD4(objectIndex);
         } else {
             sp3C = random_int(0x0064U) + 0x28;
@@ -2653,15 +2653,15 @@ void func_80078288(s32 objectIndex) {
             gObjectList[objectIndex].unk_0C4 = random_int(0x0400U) + 0x100;
             gObjectList[objectIndex].unk_01C[0] = (f32) (((f32) random_int(0x0064U) * 0.03) + 2.0);
             gObjectList[objectIndex].velocity[1] = (f32) (-0.6 - (f64) (f32) (random_int(0x0032U) * 0.01));
-            gObjectList[objectIndex].unk_028[0] = 0.0f;
-            gObjectList[objectIndex].unk_028[1] = 0.0f;
+            gObjectList[objectIndex].speed[0] = 0.0f;
+            gObjectList[objectIndex].speed[1] = 0.0f;
             func_80086FD4(objectIndex);
         }
         break;
     case 2:
         func_800877C4(objectIndex);
         gObjectList[objectIndex].direction_angle[0] += gObjectList[objectIndex].unk_0C4;
-        gObjectList[objectIndex].unk_028[0] = sins(gObjectList[objectIndex].direction_angle[0]) * gObjectList[objectIndex].unk_01C[0];
+        gObjectList[objectIndex].speed[0] = sins(gObjectList[objectIndex].direction_angle[0]) * gObjectList[objectIndex].unk_01C[0];
         func_8008BF18(objectIndex);
         if ((f64) gObjectList[objectIndex].pos[1] <= 0.0) {
             func_80086FD4(objectIndex);
@@ -2734,10 +2734,10 @@ void func_800788F8(s32 objectIndex, u16 rot, Camera *camera) {
     temp_v0 = camera->rot[1] + rot;
     if ((temp_v0 >= D_8018D210) && (D_8018D208 >= temp_v0)) {
         gObjectList[objectIndex].unk_09C = (D_8018D218 + (D_8018D1E8 * temp_v0));
-        set_object_flag_unk_054_true(objectIndex, 0x00000010);
+        set_object_flag_status_true(objectIndex, 0x00000010);
         return;
     }
-    set_object_flag_unk_054_false(objectIndex, 0x00000010);
+    set_object_flag_status_false(objectIndex, 0x00000010);
 }
 
 #ifdef MIPS_TO_C
@@ -2979,7 +2979,7 @@ void init_obj_laikitu_red_flag_countdown(s32 objectIndex, s32 arg1) {
     init_texture_object(objectIndex, (u8 *) common_tlut_lakitu_countdown, gTextureLakituNoLights1, 0x38U, (u16) 0x00000048);
     gObjectList[objectIndex].vertex = D_0D005EB0;
     gObjectList[objectIndex].sizeScaling = 0.15f;
-    set_object_flag_unk_054_false(objectIndex, 0x00000010);
+    set_object_flag_status_false(objectIndex, 0x00000010);
     func_80072488(objectIndex);
     gObjectList[objectIndex].unk_048 = D_8018D180;
 }
@@ -2999,7 +2999,7 @@ void update_object_laikitu_countdown(s32 objectIndex, s32 arg1) {
             }
             break;
         case 3:
-            set_object_flag_unk_054_true(objectIndex, 0x00000010);
+            set_object_flag_status_true(objectIndex, 0x00000010);
             func_80086F10(objectIndex, 1, D_800E67B8);
             func_80072488(objectIndex);
             break;
@@ -3076,7 +3076,7 @@ void init_obj_laikitu_red_flag(s32 objectIndex, s32 playerIndex) {
     temp_v0->pos[0] = 5000.0f;
     temp_v0->sizeScaling = 0.15f;
     func_80086F10(objectIndex, 2, D_800E6834);
-    set_object_flag_unk_054_false(objectIndex, 0x00000010);
+    set_object_flag_status_false(objectIndex, 0x00000010);
     func_80072488(objectIndex);
 }
 
@@ -3088,7 +3088,7 @@ void update_object_laikitu_red_flag(s32 objectIndex, s32 playerIndex) {
             init_obj_laikitu_red_flag(objectIndex, playerIndex);
             break;
         case 2:
-            set_object_flag_unk_054_true(objectIndex, 0x00000010);
+            set_object_flag_status_true(objectIndex, 0x00000010);
             func_80072488(objectIndex);
             break;
         case 3:
@@ -3148,7 +3148,7 @@ void init_obj_laikitu_red_flag_fishing(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].vertex = D_0D005F30;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     func_80086E70(objectIndex);
-    set_object_flag_unk_054_false(objectIndex, 0x00000010);
+    set_object_flag_status_false(objectIndex, 0x00000010);
     func_80073720(objectIndex);
     func_80072488(objectIndex);
     func_800C8F80((u8)arg1, 0x0100FA28);
@@ -3162,18 +3162,18 @@ void func_80079A5C(s32 objectIndex, UNUSED Player *player) {
         gObjectList[objectIndex].origin_pos[2] = 0.0f;
         gObjectList[objectIndex].origin_pos[1] = 0.0f;
         gObjectList[objectIndex].origin_pos[0] = 0.0f;
-        gObjectList[objectIndex].unk_028[2] = 0.0f;
-        gObjectList[objectIndex].unk_028[0] = 0.0f;
-        gObjectList[objectIndex].unk_028[1] = 80.0f;
+        gObjectList[objectIndex].speed[2] = 0.0f;
+        gObjectList[objectIndex].speed[0] = 0.0f;
+        gObjectList[objectIndex].speed[1] = 80.0f;
         func_80086FD4(objectIndex);
         break;
     case 2:
-        if (f32_step_down_towards(&gObjectList[objectIndex].unk_028[1], 5.0f, 1.0f) != 0) {
+        if (f32_step_down_towards(&gObjectList[objectIndex].speed[1], 5.0f, 1.0f) != 0) {
             func_80086F60(objectIndex);
         }
         break;
     case 3:
-        if (f32_step_up_towards(&gObjectList[objectIndex].unk_028[1], 100.0f, 1.0f) != 0) {
+        if (f32_step_up_towards(&gObjectList[objectIndex].speed[1], 100.0f, 1.0f) != 0) {
             func_80086F60(objectIndex);
         }
         break;
@@ -3190,7 +3190,7 @@ void update_object_laikitu_fishing(s32 objectIndex, s32 playerId) {
             init_obj_laikitu_red_flag_fishing(objectIndex, playerId);
             break;
         case 2:                                         /* switch 1 */
-            set_object_flag_unk_054_true(objectIndex, 0x00000010);
+            set_object_flag_status_true(objectIndex, 0x00000010);
             func_800736E0(objectIndex);
             func_80072488(objectIndex);
             break;
@@ -3246,7 +3246,7 @@ void update_object_laikitu_fishing2(s32 objectIndex, s32 playerId) {
             init_obj_laikitu_red_flag_fishing(objectIndex, playerId);
             break;
         case 2:                                         /* switch 1 */
-            set_object_flag_unk_054_true(objectIndex, 0x00000010);
+            set_object_flag_status_true(objectIndex, 0x00000010);
             func_800736E0(objectIndex);
             temp_s1->unk_0CA |= 0x80;
             func_80072488(objectIndex);
@@ -3325,7 +3325,7 @@ void func_8007A060(s32 objectIndex, s32 playerIndex) {
     temp_v0->pos[1] = 5000.0f;
     temp_v0->pos[0] = 5000.0f;
     temp_v0->sizeScaling = 0.15f;
-    set_object_flag_unk_054_false(objectIndex, 0x00000010);
+    set_object_flag_status_false(objectIndex, 0x00000010);
     func_80086F10(objectIndex, 5, &D_800E694C);
     func_80072488(objectIndex);
 }
@@ -3338,7 +3338,7 @@ void update_object_laikitu_second_lap(s32 objectIndex, s32 playerIndex) {
             func_8007A060(objectIndex, playerIndex);
             break;
         case 2:
-            set_object_flag_unk_054_true(objectIndex, 0x00000010);
+            set_object_flag_status_true(objectIndex, 0x00000010);
             func_80072488(objectIndex);
             break;
         case 3:
@@ -3373,7 +3373,7 @@ void func_8007A228(s32 objectIndex, s32 playerIndex) {
     temp_v0->pos[1] = 5000.0f;
     temp_v0->pos[0] = 5000.0f;
     temp_v0->sizeScaling = 0.15f;
-    set_object_flag_unk_054_false(objectIndex, 0x00000010);
+    set_object_flag_status_false(objectIndex, 0x00000010);
     func_80086F10(objectIndex, 5, &D_800E694C);
     func_80072488(objectIndex);
 }
@@ -3386,7 +3386,7 @@ void update_object_laikitu_final_lap(s32 objectIndex, s32 playerIndex) {
             func_8007A228(objectIndex, playerIndex);
             break;
         case 2:
-            set_object_flag_unk_054_true(objectIndex, 0x00000010);
+            set_object_flag_status_true(objectIndex, 0x00000010);
             func_80072488(objectIndex);
             break;
         case 3:
@@ -3419,7 +3419,7 @@ void func_8007A3F0(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].pos[1] = var;
     gObjectList[objectIndex].pos[0] = var;
     gObjectList[objectIndex].sizeScaling = 0.15f;
-    set_object_flag_unk_054_false(objectIndex, 0x00000010);
+    set_object_flag_status_false(objectIndex, 0x00000010);
     func_80086F10(objectIndex, 6, D_800E69B0);
     gObjectList[objectIndex].unk_0D6 = 0;
     func_80072488(objectIndex);
@@ -3436,7 +3436,7 @@ void update_object_laikitu_reverse(s32 objectIndex, s32 playerId) {
             func_8007A3F0(objectIndex, playerId);
             break;
         case 2:
-            set_object_flag_unk_054_true(objectIndex, 0x00000010);
+            set_object_flag_status_true(objectIndex, 0x00000010);
             gObjectList[objectIndex].unk_0D6 = 1;
             func_80072488(objectIndex);
             break;
@@ -3471,18 +3471,18 @@ void func_8007A66C(s32 objectIndex, Player *player, Camera *camera) {
     u16 temp_t8;
 
     temp_t8 = 0x8000 - camera->rot[1];
-    gObjectList[objectIndex].pos[0] = (player->pos[0] + (coss(temp_t8) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].unk_028[0]))) - (sins(temp_t8) * (gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].unk_028[2]));
-    gObjectList[objectIndex].pos[1] = player->unk_074 + gObjectList[objectIndex].origin_pos[1] + gObjectList[objectIndex].unk_028[1];
-    gObjectList[objectIndex].pos[2] = (player->pos[2] + (sins(temp_t8) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].unk_028[0]))) + (coss(temp_t8) * (gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].unk_028[2]));
+    gObjectList[objectIndex].pos[0] = (player->pos[0] + (coss(temp_t8) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].speed[0]))) - (sins(temp_t8) * (gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].speed[2]));
+    gObjectList[objectIndex].pos[1] = player->unk_074 + gObjectList[objectIndex].origin_pos[1] + gObjectList[objectIndex].speed[1];
+    gObjectList[objectIndex].pos[2] = (player->pos[2] + (sins(temp_t8) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].speed[0]))) + (coss(temp_t8) * (gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].speed[2]));
 }
 
 void func_8007A778(s32 objectIndex, Player *player, Camera *camera) {
     u16 temp_t8;
 
     temp_t8 = 0x8000 - camera->rot[1];
-    gObjectList[objectIndex].pos[0] = (player->pos[0] + (coss(temp_t8) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].unk_028[0]))) - (sins(temp_t8) * (gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].unk_028[2]));
-    gObjectList[objectIndex].pos[1] = player->pos[1] + gObjectList[objectIndex].origin_pos[1] + gObjectList[objectIndex].unk_028[1];
-    gObjectList[objectIndex].pos[2] = (player->pos[2] + (sins(temp_t8) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].unk_028[0]))) + (coss(temp_t8) * (gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].unk_028[2]));
+    gObjectList[objectIndex].pos[0] = (player->pos[0] + (coss(temp_t8) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].speed[0]))) - (sins(temp_t8) * (gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].speed[2]));
+    gObjectList[objectIndex].pos[1] = player->pos[1] + gObjectList[objectIndex].origin_pos[1] + gObjectList[objectIndex].speed[1];
+    gObjectList[objectIndex].pos[2] = (player->pos[2] + (sins(temp_t8) * (gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].speed[0]))) + (coss(temp_t8) * (gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].speed[2]));
 }
 
 UNUSED void func_8007A884(void) {
@@ -3989,7 +3989,7 @@ void func_8007BBBC(s32 objectIndex) {
     switch (temp_s1->state) {                              /* irregular */
     case 1:
         func_800735BC(objectIndex, d_course_banshee_boardwalk_dl_cheep_cheep, 2.0f);
-        set_object_flag_unk_054_true(objectIndex, 0x00000010);
+        set_object_flag_status_true(objectIndex, 0x00000010);
         temp_s1->unk_0D5 = 0;
         break;
     case 2:
@@ -4041,7 +4041,7 @@ void init_var_cheep_cheep(s32 objectIndex) {
 
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_0D5 = 1;
-    temp_v0->unk_054 = 0;
+    temp_v0->status = 0;
     temp_v0->model = d_course_banshee_boardwalk_dl_cheep_cheep;
     temp_v0->sizeScaling = 0.2f;
     func_80072488(objectIndex);
@@ -4060,7 +4060,7 @@ void func_8007BEC8(s32 objectIndex) {
         break;
     case 2:
         if (func_8007278C(objectIndex, 0x0000003C) != 0) {
-            set_object_flag_unk_054_true(objectIndex, 0x00000010);
+            set_object_flag_status_true(objectIndex, 0x00000010);
             func_80086E70(objectIndex);
         }
         break;
@@ -4094,8 +4094,8 @@ void func_8007BFB0(s32 objectIndex) {
         break;
     case 1:
         temp_s0->velocity[1] = -0.2f;
-        if ((f64) temp_s0->unk_028[1] <= 0.0) {
-            temp_s0->unk_028[1] = 0.0f;
+        if ((f64) temp_s0->speed[1] <= 0.0) {
+            temp_s0->speed[1] = 0.0f;
             temp_s0->velocity[1] = 0.0f;
             func_80086F60(objectIndex);
         }
@@ -4140,7 +4140,7 @@ void func_8007BFB0(s32 objectIndex) {
     case 7:
         temp_s0->sizeScaling = (f32) ((f64) temp_s0->sizeScaling - 0.05);
         if ((f64) temp_s0->sizeScaling <= 0.01) {
-            set_object_flag_unk_054_false(objectIndex, 0x00000010);
+            set_object_flag_status_false(objectIndex, 0x00000010);
             temp_s0->sizeScaling = 0.000001f;
             func_80086FD4(objectIndex);
         }
@@ -4205,13 +4205,13 @@ void func_8007C360(s32 objectIndex, Camera *camera) {
     if (temp_t2 < 0x13) {
         sp20 = temp_a2;
         sp1C = temp_t2;
-        set_object_flag_unk_054_false(objectIndex, 0x00000080);
+        set_object_flag_status_false(objectIndex, 0x00000080);
         temp_a2->itemDisplay = (s8) sp1C;
         return;
     }
     sp20 = temp_a2;
     sp1C = temp_t2;
-    set_object_flag_unk_054_true(objectIndex, 0x00000080);
+    set_object_flag_status_true(objectIndex, 0x00000080);
     temp_a2->itemDisplay = 0x24 - temp_t2;
 }
 #else
@@ -4252,13 +4252,13 @@ void func_8007C4A4(s32 objectIndex) {
     if (temp_t0 < 0x13) {
         sp20 = temp_v1;
         sp1C = temp_t0;
-        set_object_flag_unk_054_false(objectIndex, 0x00000080);
+        set_object_flag_status_false(objectIndex, 0x00000080);
         temp_v1->itemDisplay = (s8) sp1C;
         return;
     }
     sp20 = temp_v1;
     sp1C = temp_t0;
-    set_object_flag_unk_054_true(objectIndex, 0x00000080);
+    set_object_flag_status_true(objectIndex, 0x00000080);
     temp_v1->itemDisplay = 0x24 - temp_t0;
 }
 #else
@@ -4278,7 +4278,7 @@ void func_8007C5B4(s32 objectIndex) {
     temp_s0->pos[0] = 0.0f;
     temp_s0->pos[1] = 0.0f;
     temp_s0->pos[2] = 0.0f;
-    set_object_flag_unk_054_true(objectIndex, 0x00000020);
+    set_object_flag_status_true(objectIndex, 0x00000020);
     func_80072488(objectIndex);
     temp_s0->primAlpha = 0;
     func_80073844(objectIndex);
@@ -4286,7 +4286,7 @@ void func_8007C5B4(s32 objectIndex) {
     temp_s0->unk_034 = 1.0f;
     func_80073FD4(objectIndex);
     func_80086EF0(objectIndex);
-    set_object_flag_unk_054_true(objectIndex, 0x00000800);
+    set_object_flag_status_true(objectIndex, 0x00000800);
     temp_s0->orientation[0] = 0;
     temp_s0->orientation[2] = 0x8000;
 }
@@ -4455,11 +4455,11 @@ void func_8007CC00(void) {
             player = &gPlayerOne[object->unk_0D1];
             camera = &camera1[object->unk_0D1];
             temp_t4 = (0x8000 - camera->rot[1]);
-            object->pos[0] = player->pos[0] + (coss(temp_t4) * (object->origin_pos[0] + object->unk_028[0])) - (sins(temp_t4) * (object->origin_pos[2] + object->unk_028[2]));
-            object->pos[1] = 6.5 + player->unk_074 + object->origin_pos[1] + object->unk_028[1];
-            object->pos[2] = player->pos[2] + (sins(temp_t4) * (object->origin_pos[0] + object->unk_028[0])) + (coss(temp_t4) * (object->origin_pos[2] + object->unk_028[2]));
+            object->pos[0] = player->pos[0] + (coss(temp_t4) * (object->origin_pos[0] + object->speed[0])) - (sins(temp_t4) * (object->origin_pos[2] + object->speed[2]));
+            object->pos[1] = 6.5 + player->unk_074 + object->origin_pos[1] + object->speed[1];
+            object->pos[2] = player->pos[2] + (sins(temp_t4) * (object->origin_pos[0] + object->speed[0])) + (coss(temp_t4) * (object->origin_pos[2] + object->speed[2]));
             func_8007C550(objectIndex);
-            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000080) != 0) {
+            if (is_obj_flag_status_active(objectIndex, 0x00000080) != 0) {
                 object->vertex = D_800E44B0;
             } else {
                 object->vertex = D_800E4470;
@@ -4571,11 +4571,11 @@ void func_8007D070(void) {
         if (gObjectList[objectIndex].state != 0) {
             func_8007CEDC(objectIndex);
             func_8008B724(objectIndex);
-            gObjectList[objectIndex].pos[0] = gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].unk_028[0];
-            gObjectList[objectIndex].pos[1] = D_8018CF1C->unk_074 + gObjectList[objectIndex].origin_pos[1] + gObjectList[objectIndex].unk_028[1];
-            gObjectList[objectIndex].pos[2] = gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].unk_028[2];
+            gObjectList[objectIndex].pos[0] = gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].speed[0];
+            gObjectList[objectIndex].pos[1] = D_8018CF1C->unk_074 + gObjectList[objectIndex].origin_pos[1] + gObjectList[objectIndex].speed[1];
+            gObjectList[objectIndex].pos[2] = gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].speed[2];
             func_8007C420(objectIndex, D_8018CF1C, D_8018CF14);
-            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000080) != 0) {
+            if (is_obj_flag_status_active(objectIndex, 0x00000080) != 0) {
                 gObjectList[objectIndex].vertex = D_800E44B0;
             } else {
                 gObjectList[objectIndex].vertex = D_800E4470;
@@ -4605,7 +4605,7 @@ void func_8007D360(s32 objectIndex, s32 arg1) {
         gObjectList[objectIndex].direction_angle[0] = 0;
         gObjectList[objectIndex].unk_0C6 = 0;
     }
-    gObjectList[objectIndex].direction_angle[1] = func_80041770(gObjectList[objectIndex].origin_pos[0], gObjectList[objectIndex].unk_01C[0], gObjectList[objectIndex].origin_pos[2], gObjectList[objectIndex].unk_01C[2]);
+    gObjectList[objectIndex].direction_angle[1] = get_angle_between_two_coordinate(gObjectList[objectIndex].origin_pos[0], gObjectList[objectIndex].unk_01C[0], gObjectList[objectIndex].origin_pos[2], gObjectList[objectIndex].unk_01C[2]);
     gObjectList[objectIndex].direction_angle[2] = 0;
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
     gObjectList[objectIndex].unk_0B0 = 0;
@@ -4624,7 +4624,7 @@ void func_8007D6A8(s32 objectIndex, s32 arg1) {
     temp_v0->unk_0D5 = 0x0D;
     func_8007D360(objectIndex, arg1);
     temp_v0->sizeScaling = 0.1f;
-    set_object_flag_unk_054_true(objectIndex, 0x00000200);
+    set_object_flag_status_true(objectIndex, 0x00000200);
     temp_v0->boundingBoxSize = 3;
 }
 
@@ -4658,7 +4658,7 @@ s32 func_8007D804(s32 objectIndex) {
 
     someCount = 0;
     for (loopIndex = 0; loopIndex < gPlayerCountSelection1; loopIndex++) {
-        if (func_8008A140(objectIndex, &camera1[loopIndex], 0x4000U) != 0) {
+        if (is_object_visible_on_camera(objectIndex, &camera1[loopIndex], 0x4000U) != 0) {
             someCount += 1;
         }
     }
@@ -4813,7 +4813,7 @@ void func_8007DDC0(s32 objectIndex) {
             sp2C = 1150.0f;
         }
         func_8008A6DC(objectIndex, sp2C);
-        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (func_80072354(objectIndex, 1) != 0)) {
+        if ((is_obj_flag_status_active(objectIndex, VISIBLE) != 0) && (func_80072354(objectIndex, 1) != 0)) {
             func_800722A4(objectIndex, 1);
             func_800C9D80(temp_s0->pos, temp_s0->velocity, 0x51028006U);
             func_800726CC(objectIndex, 3);
@@ -4931,7 +4931,7 @@ void func_8007E1F4(s32 objectIndex) {
             sp2C = 700.0f;
         }
         func_8008A6DC(objectIndex, sp2C);
-        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (func_80072354(objectIndex, 1) != 0)) {
+        if ((is_obj_flag_status_active(objectIndex, VISIBLE) != 0) && (func_80072354(objectIndex, 1) != 0)) {
             func_800722A4(objectIndex, 1);
             func_800C9D80(temp_s0->pos, temp_s0->velocity, 0x51028006U);
             func_800726CC(objectIndex, 3);
@@ -5030,26 +5030,26 @@ s32 func_8007E59C(s32 objectIndex) {
 void func_8007E63C(s32 objectIndex) {
     switch (gObjectList[objectIndex].state) {                              /* irregular */
     case 0x32:
-        if (f32_step_up_towards(&gObjectList[objectIndex].unk_028[1], gObjectList[objectIndex].unk_01C[1] + 15.0, 1.5f) != 0) {
-            set_object_flag_unk_054_true(objectIndex, 0x00000200);
+        if (f32_step_up_towards(&gObjectList[objectIndex].speed[1], gObjectList[objectIndex].unk_01C[1] + 15.0, 1.5f) != 0) {
+            set_object_flag_status_true(objectIndex, 0x00000200);
             func_800722A4(objectIndex, 1);
             func_800722CC(objectIndex, 2);
             func_80072488(objectIndex);
         }
         break;
     case 0x33:
-        if (f32_step_down_towards(&gObjectList[objectIndex].unk_028[1], 0.0f, 2.0f) != 0) {
-            if (gObjectList[objectIndex].unk_028[1] >= 16.0f) {
+        if (f32_step_down_towards(&gObjectList[objectIndex].speed[1], 0.0f, 2.0f) != 0) {
+            if (gObjectList[objectIndex].speed[1] >= 16.0f) {
                 gObjectList[objectIndex].itemDisplay = 0;
-            } else if (gObjectList[objectIndex].unk_028[1] >= 8.0f) {
+            } else if (gObjectList[objectIndex].speed[1] >= 8.0f) {
                 gObjectList[objectIndex].itemDisplay = 1;
             } else {
                 gObjectList[objectIndex].itemDisplay = 2;
             }
             func_800722CC(objectIndex, 1);
-            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00010000) != 0) {
+            if (is_obj_flag_status_active(objectIndex, 0x00010000) != 0) {
                 func_800722A4(objectIndex, 0x00000010);
-                if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+                if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
                     func_800722A4(objectIndex, 0x00000020);
                 }
             }
@@ -5067,13 +5067,13 @@ void func_8007E63C(s32 objectIndex) {
         func_80072AAC(objectIndex, 2, 0x00000032);
         break;
     case 0x36:
-        if (gObjectList[objectIndex].unk_028[1] >= 20.0f) {
+        if (gObjectList[objectIndex].speed[1] >= 20.0f) {
             gObjectList[objectIndex].itemDisplay = 0;
-        } else if (gObjectList[objectIndex].unk_028[1] >= 18.0f) {
+        } else if (gObjectList[objectIndex].speed[1] >= 18.0f) {
             gObjectList[objectIndex].itemDisplay = 1;
         }
-        if (f32_step_up_towards(&gObjectList[objectIndex].unk_028[1], gObjectList[objectIndex].unk_01C[1], 0.5f) != 0) {
-            set_object_flag_unk_054_false(objectIndex, 0x00000200);
+        if (f32_step_up_towards(&gObjectList[objectIndex].speed[1], gObjectList[objectIndex].unk_01C[1], 0.5f) != 0) {
+            set_object_flag_status_false(objectIndex, 0x00000200);
             func_8007266C(objectIndex);
         }
         break;
@@ -5084,15 +5084,15 @@ void func_8007E63C(s32 objectIndex) {
         func_8007278C(objectIndex, 0x0000001E);
         break;
     case 0x66:
-        if (f32_step_up_towards(&gObjectList[objectIndex].unk_028[1], 20.0f, 1.5f) != 0) {
+        if (f32_step_up_towards(&gObjectList[objectIndex].speed[1], 20.0f, 1.5f) != 0) {
             func_80072488(objectIndex);
         }
         break;
     case 0x67:
-        if (f32_step_down_towards(&gObjectList[objectIndex].unk_028[1], 0.0f, 1.5f) != 0) {
-            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00020000) != 0) {
+        if (f32_step_down_towards(&gObjectList[objectIndex].speed[1], 0.0f, 1.5f) != 0) {
+            if (is_obj_flag_status_active(objectIndex, 0x00020000) != 0) {
                 func_800722A4(objectIndex, 0x00000010);
-                if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+                if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
                     func_800722A4(objectIndex, 0x00000020);
                 }
             }
@@ -5100,15 +5100,15 @@ void func_8007E63C(s32 objectIndex) {
         }
         break;
     case 0x68:
-        if (f32_step_up_towards(&gObjectList[objectIndex].unk_028[1], 12.0f, 1.5f) != 0) {
+        if (f32_step_up_towards(&gObjectList[objectIndex].speed[1], 12.0f, 1.5f) != 0) {
             func_80072488(objectIndex);
         }
         break;
     case 0x69:
-        if (f32_step_down_towards(&gObjectList[objectIndex].unk_028[1], 0.0f, 1.5f) != 0) {
-            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00020000) != 0) {
+        if (f32_step_down_towards(&gObjectList[objectIndex].speed[1], 0.0f, 1.5f) != 0) {
+            if (is_obj_flag_status_active(objectIndex, 0x00020000) != 0) {
                 func_800722A4(objectIndex, 0x00000010);
-                if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+                if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
                     func_800722A4(objectIndex, 0x00000020);
                 }
             }
@@ -5122,20 +5122,20 @@ void func_8007E63C(s32 objectIndex) {
         }
         break;
     case 0x6B:
-        if (gObjectList[objectIndex].unk_028[1] >= 22.0f) {
+        if (gObjectList[objectIndex].speed[1] >= 22.0f) {
             gObjectList[objectIndex].itemDisplay = 0;
-        } else if (gObjectList[objectIndex].unk_028[1] >= 20.0f) {
+        } else if (gObjectList[objectIndex].speed[1] >= 20.0f) {
             gObjectList[objectIndex].itemDisplay = 1;
-        } else if (gObjectList[objectIndex].unk_028[1] >= 18.0f) {
+        } else if (gObjectList[objectIndex].speed[1] >= 18.0f) {
             gObjectList[objectIndex].itemDisplay = 2;
-        } else if (gObjectList[objectIndex].unk_028[1] >= 16.0f) {
+        } else if (gObjectList[objectIndex].speed[1] >= 16.0f) {
             gObjectList[objectIndex].itemDisplay = 3;
-        } else if (gObjectList[objectIndex].unk_028[1] >= 14.0f) {
+        } else if (gObjectList[objectIndex].speed[1] >= 14.0f) {
             gObjectList[objectIndex].itemDisplay = 4;
         } else {
             func_800730BC(objectIndex, 3, 5, 1, 6, -1);
         }
-        if (f32_step_up_towards(&gObjectList[objectIndex].unk_028[1], gObjectList[objectIndex].unk_01C[1], 0.5f) != 0) {
+        if (f32_step_up_towards(&gObjectList[objectIndex].speed[1], gObjectList[objectIndex].unk_01C[1], 0.5f) != 0) {
             set_object_unk_0CB(objectIndex, 0);
             func_80072488(objectIndex);
         }
@@ -5143,7 +5143,7 @@ void func_8007E63C(s32 objectIndex) {
     case 0x6C:
         if (func_8007278C(objectIndex, 0x00000064) != 0) {
             func_800722CC(objectIndex, 2);
-            set_object_flag_unk_054_false(objectIndex, 0x00000200);
+            set_object_flag_status_false(objectIndex, 0x00000200);
             func_8007266C(objectIndex);
         }
         break;
@@ -5182,7 +5182,7 @@ void func_8007EC30(s32 objectIndex) {
     temp_s1->boundingBoxSize = 0x000C;
     temp_s1->sizeScaling = 1.0f;
     temp_s1->unk_01C[1] = 30.0f;
-    set_object_flag_unk_054_true(objectIndex, 0x05000220);
+    set_object_flag_status_true(objectIndex, 0x05000220);
     temp_s1->type = 0;
     temp_s1->unk_0DF = 6;
     func_800724DC(objectIndex);
@@ -5225,7 +5225,7 @@ void func_8007EE5C(s32 objectIndex) {
     temp_s0->sizeScaling = 1.0f;
     temp_s0->model = d_course_bowsers_castle_dl_thwomp;
     temp_s0->boundingBoxSize = 0x000C;
-    set_object_flag_unk_054_true(objectIndex, 0x04000220);
+    set_object_flag_status_true(objectIndex, 0x04000220);
     temp_s0->type = 0;
     temp_s0->unk_0DF = 6;
     func_80086E70(objectIndex);
@@ -5258,7 +5258,7 @@ void func_8007EFBC(s32 objectIndex) {
         }
         break;
     case 2:
-        if (f32_step_towards(gObjectList[objectIndex].unk_028, gObjectList[objectIndex].unk_01C[0], 4.0f) != 0) {
+        if (f32_step_towards(gObjectList[objectIndex].speed, gObjectList[objectIndex].unk_01C[0], 4.0f) != 0) {
             func_80086FD4(objectIndex);
         }
         break;
@@ -5274,7 +5274,7 @@ void func_8007EFBC(s32 objectIndex) {
         }
         break;
     case 6:
-        if (f32_step_down_towards(&gObjectList[objectIndex].unk_028[2], -100.0f, 2.0f) != 0) {
+        if (f32_step_down_towards(&gObjectList[objectIndex].speed[2], -100.0f, 2.0f) != 0) {
             func_80086FD4(objectIndex);
         }
         break;
@@ -5290,7 +5290,7 @@ void func_8007EFBC(s32 objectIndex) {
         }
         break;
     case 10:
-        if (f32_step_towards(gObjectList[objectIndex].unk_028, 0.0f, 4.0f) != 0) {
+        if (f32_step_towards(gObjectList[objectIndex].speed, 0.0f, 4.0f) != 0) {
             func_80086FD4(objectIndex);
         }
         break;
@@ -5306,7 +5306,7 @@ void func_8007EFBC(s32 objectIndex) {
         }
         break;
     case 14:
-        if (f32_step_up_towards(&gObjectList[objectIndex].unk_028[2], 0.0f, 2.0f) != 0) {
+        if (f32_step_up_towards(&gObjectList[objectIndex].speed[2], 0.0f, 2.0f) != 0) {
             func_80086FD4(objectIndex);
         }
         break;
@@ -5334,7 +5334,7 @@ void func_8007F280(s32 objectIndex) {
         }
         break;
     case 2:
-        if (f32_step_towards(gObjectList[objectIndex].unk_028, gObjectList[objectIndex].unk_01C[0], 4.0f) != 0) {
+        if (f32_step_towards(gObjectList[objectIndex].speed, gObjectList[objectIndex].unk_01C[0], 4.0f) != 0) {
             func_80086FD4(objectIndex);
         }
         break;
@@ -5350,7 +5350,7 @@ void func_8007F280(s32 objectIndex) {
         }
         break;
     case 6:
-        if (f32_step_up_towards(&gObjectList[objectIndex].unk_028[2], 100.0f, 2.0f) != 0) {
+        if (f32_step_up_towards(&gObjectList[objectIndex].speed[2], 100.0f, 2.0f) != 0) {
             func_80086FD4(objectIndex);
         }
         break;
@@ -5366,7 +5366,7 @@ void func_8007F280(s32 objectIndex) {
         }
         break;
     case 10:
-        if (f32_step_towards(gObjectList[objectIndex].unk_028, 0.0f, 4.0f) != 0) {
+        if (f32_step_towards(gObjectList[objectIndex].speed, 0.0f, 4.0f) != 0) {
             func_80086FD4(objectIndex);
         }
         break;
@@ -5382,7 +5382,7 @@ void func_8007F280(s32 objectIndex) {
         }
         break;
     case 14:
-        if (f32_step_down_towards(&gObjectList[objectIndex].unk_028[2], 0.0f, 2.0f) != 0) {
+        if (f32_step_down_towards(&gObjectList[objectIndex].speed[2], 0.0f, 2.0f) != 0) {
             func_80086FD4(objectIndex);
         }
         break;
@@ -5524,7 +5524,7 @@ void func_8007FA08(s32 objectIndex) {
     temp_s0->model = d_course_bowsers_castle_dl_thwomp;
     temp_s0->boundingBoxSize = 0x000C;
     temp_s0->sizeScaling = 1.0f;
-    set_object_flag_unk_054_true(objectIndex, 0x04000220);
+    set_object_flag_status_true(objectIndex, 0x04000220);
     temp_s0->type = 0;
     temp_s0->unk_044 = 0.0f;
     temp_s0->origin_pos[1] = 0.0f;
@@ -5539,7 +5539,7 @@ void func_8007FA08(s32 objectIndex) {
     temp_s0->direction_angle[1] = temp_s0->orientation[1];
     temp_s0->unk_0DD = 1;
     temp_s0->unk_0DF = 8;
-    temp_s0->unk_028[1] = 15.0f;
+    temp_s0->speed[1] = 15.0f;
     temp_s0->unk_01C[1] = 15.0f;
     func_80072488(objectIndex);
 }
@@ -5553,8 +5553,8 @@ void func_8007FB48(s32 objectIndex) {
     switch (gObjectList[objectIndex].unk_0AE) {
     case 1:
         gObjectList[objectIndex].unk_0B0 = 0x00A0;
-        gObjectList[objectIndex].unk_028[0] = 0.0f;
-        gObjectList[objectIndex].unk_028[2] = 0.0f;
+        gObjectList[objectIndex].speed[0] = 0.0f;
+        gObjectList[objectIndex].speed[2] = 0.0f;
         gObjectList[objectIndex].velocity[2] = 0.0f;
         func_80086FD4(objectIndex);
         break;
@@ -5569,10 +5569,10 @@ void func_8007FB48(s32 objectIndex) {
                 }
             }
             if (gObjectList[objectIndex].velocity[2] >= 0.0) {
-                if (gObjectList[objectIndex].unk_028[2] >= 40.0) {
+                if (gObjectList[objectIndex].speed[2] >= 40.0) {
                     gObjectList[objectIndex].velocity[2] = -1.5f;
                 }
-            } else if ((f64) gObjectList[objectIndex].unk_028[2] <= -40.0) {
+            } else if ((f64) gObjectList[objectIndex].speed[2] <= -40.0) {
                 gObjectList[objectIndex].velocity[2] = 1.5f;
             }
         }
@@ -5585,10 +5585,10 @@ void func_8007FB48(s32 objectIndex) {
         }
         var_v0 = 0;
         if (gIsMirrorMode != 0) {
-            if (gObjectList[objectIndex].unk_028[0] <= -1000.0) {
+            if (gObjectList[objectIndex].speed[0] <= -1000.0) {
                 var_v0 = 1;
             }
-        } else if (gObjectList[objectIndex].unk_028[0] >= 1000.0) {
+        } else if (gObjectList[objectIndex].speed[0] >= 1000.0) {
             var_v0 = 1;
         }
         gObjectList[objectIndex].unk_0B0--;
@@ -5599,9 +5599,9 @@ void func_8007FB48(s32 objectIndex) {
         }
         break;
     case 4:
-        f32_step_towards(&gObjectList[objectIndex].unk_028[2], 0.0f, 2.0f);
-        f32_step_towards(gObjectList[objectIndex].unk_028, 0.0f, 5.0f);
-        if ((gObjectList[objectIndex].unk_028[0] + gObjectList[objectIndex].unk_028[2]) == 0.0) {
+        f32_step_towards(&gObjectList[objectIndex].speed[2], 0.0f, 2.0f);
+        f32_step_towards(gObjectList[objectIndex].speed, 0.0f, 5.0f);
+        if ((gObjectList[objectIndex].speed[0] + gObjectList[objectIndex].speed[2]) == 0.0) {
             func_80086FD4(objectIndex);
         }
         break;
@@ -5626,7 +5626,7 @@ void func_8007FEA4(s32 objectIndex) {
     temp_v1 = &gObjectList[objectIndex];
     switch (temp_v1->unk_0AE) {
     case 1:
-        if (f32_step_towards(&temp_v1->unk_028[0], temp_v1->unk_01C[0], 5.0f) != 0) {
+        if (f32_step_towards(&temp_v1->speed[0], temp_v1->unk_01C[0], 5.0f) != 0) {
             func_800726CC(objectIndex, 3);
             func_80086FD4(objectIndex);
             break;
@@ -5635,7 +5635,7 @@ void func_8007FEA4(s32 objectIndex) {
     case 2:
         break;
     case 3:
-        if (f32_step_towards(&temp_v1->unk_028[0], 0.0f, 5.0f) != 0) {
+        if (f32_step_towards(&temp_v1->speed[0], 0.0f, 5.0f) != 0) {
             func_80086FD4(objectIndex);
             func_800722CC(objectIndex, 8);
         }
@@ -5684,7 +5684,7 @@ void func_80080078(s32 objectIndex) {
     temp_s0->model = d_course_bowsers_castle_dl_thwomp;
     temp_s0->boundingBoxSize = 0x000C;
     temp_s0->sizeScaling = 1.0f;
-    set_object_flag_unk_054_true(objectIndex, 0x04000220);
+    set_object_flag_status_true(objectIndex, 0x04000220);
     temp_s0->type = 2;
     temp_s0->unk_0DF = 8;
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
@@ -5751,22 +5751,22 @@ void func_800802C0(s32 objectIndex) {
     temp_s0->itemDisplay = 0;
     temp_s0->boundingBoxSize = 0x000C;
     temp_s0->sizeScaling = 1.5f;
-    set_object_flag_unk_054_true(objectIndex, 0x05000220);
+    set_object_flag_status_true(objectIndex, 0x05000220);
     temp_s0->type = 1;
     temp_s0->unk_0DF = 6;
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
     temp_s0->unk_044 = 0.0f;
     temp_s0->origin_pos[1] = 0.0f;
-    temp_s0->unk_028[1] = 10.0f;
+    temp_s0->speed[1] = 10.0f;
     temp_s0->unk_01C[1] = 10.0f;
     if (gIsMirrorMode != 0) {
         set_obj_orientation(objectIndex, 0U, 0x4000U, 0U);
     } else {
         set_obj_orientation(objectIndex, 0U, 0xC000U, 0U);
     }
-    temp_s0->unk_028[0] = 0.0f;
-    temp_s0->unk_028[2] = 0.0f;
+    temp_s0->speed[0] = 0.0f;
+    temp_s0->speed[2] = 0.0f;
     func_800724DC(objectIndex);
     func_80072488(objectIndex);
 }
@@ -5780,7 +5780,7 @@ void func_80080408(s32 objectIndex) {
         break;
     case 2:
         func_8008A6DC(objectIndex, 100.0f);
-        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+        if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
             func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, 0x19018045U);
             func_80072488(objectIndex);
         }
@@ -5809,7 +5809,7 @@ void func_80080524(s32 objectIndex) {
     temp_s0->boundingBoxSize = 0x000C;
     temp_s0->itemDisplay = 0;
     temp_s0->sizeScaling = 1.0f;
-    set_object_flag_unk_054_true(objectIndex, 0x04000220);
+    set_object_flag_status_true(objectIndex, 0x04000220);
     temp_s0->type = 0;
     temp_s0->unk_0DF = 0x0A;
     func_80086E70(objectIndex);
@@ -5842,13 +5842,13 @@ void func_800806BC(s32 objectIndex) {
     case 0:
         break;
     case 1:
-        if (f32_step_towards(&gObjectList[objectIndex].unk_028[2], 250.0f, gObjectList[objectIndex].velocity[2]) != 0) {
+        if (f32_step_towards(&gObjectList[objectIndex].speed[2], 250.0f, gObjectList[objectIndex].velocity[2]) != 0) {
             gObjectList[objectIndex].velocity[2] = -gObjectList[objectIndex].velocity[2];
             func_80086FD4(objectIndex);
         }
         break;
     case 2:
-        if (f32_step_towards(&gObjectList[objectIndex].unk_028[2], 0.0f, gObjectList[objectIndex].velocity[2]) != 0) {
+        if (f32_step_towards(&gObjectList[objectIndex].speed[2], 0.0f, gObjectList[objectIndex].velocity[2]) != 0) {
             gObjectList[objectIndex].velocity[2] = -gObjectList[objectIndex].velocity[2];
             func_8008701C(objectIndex, 1);
         }
@@ -5861,13 +5861,13 @@ void func_8008078C(s32 objectIndex) {
     case 0:
         break;
     case 1:
-        if (f32_step_towards(&gObjectList[objectIndex].unk_028[2], -250.0f, gObjectList[objectIndex].velocity[2]) != 0) {
+        if (f32_step_towards(&gObjectList[objectIndex].speed[2], -250.0f, gObjectList[objectIndex].velocity[2]) != 0) {
             gObjectList[objectIndex].velocity[2] = -gObjectList[objectIndex].velocity[2];
             func_80086FD4(objectIndex);
         }
         break;
     case 2:
-        if (f32_step_towards(&gObjectList[objectIndex].unk_028[2], 0.0f, gObjectList[objectIndex].velocity[2]) != 0) {
+        if (f32_step_towards(&gObjectList[objectIndex].speed[2], 0.0f, gObjectList[objectIndex].velocity[2]) != 0) {
             gObjectList[objectIndex].velocity[2] = -gObjectList[objectIndex].velocity[2];
             func_8008701C(objectIndex, 1);
         }
@@ -5935,7 +5935,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
     Player *temp_s0;
 
     temp_s0 = &gPlayerOne[playerId];
-    if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) {
+    if (is_obj_flag_status_active(objectIndex, 0x00000200) != 0) {
         if (!(temp_s0->soundEffects & 0x100)) {
             temp_f0 = func_80088F54(objectIndex, temp_s0);
             if ((temp_f0 <= 9.0) && !(temp_s0->effects & 0x04000000) && (has_collided_horizontally_with_player(objectIndex, temp_s0) != 0)) {
@@ -5950,7 +5950,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
                         }
                         func_80080DE4(objectIndex);
                         func_80075304(gObjectList[objectIndex].pos, 3, 3, D_8018D3C4);
-                        set_object_flag_unk_054_false(objectIndex, 0x00000200);
+                        set_object_flag_status_false(objectIndex, 0x00000200);
                         func_800722A4(objectIndex, 0x00000040);
                         func_80086F60(objectIndex);
                         func_800726CC(objectIndex, 0x000000C8);
@@ -5958,7 +5958,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
                 }
             } else if ((temp_f0 <= 17.5) && (func_80072320(objectIndex, 1) != 0) && (is_within_horizontal_distance_of_player(objectIndex, temp_s0, (temp_s0->unk_094 * 0.5) + 7.0) != 0)) {
                 if ((temp_s0->type & 0x8000) && !(temp_s0->type & 0x100)) {
-                    if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
+                    if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
                     func_800722A4(objectIndex, 2);
@@ -6035,9 +6035,9 @@ void func_80081080(s32 objectIndex) {
     temp_v0->direction_angle[1] = 0;
     temp_v0->orientation[0] = 0;
     temp_v0->orientation[2] = 0;
-    temp_v0->unk_028[0] = 0.0f;
-    temp_v0->unk_028[1] = 0.0f;
-    temp_v0->unk_028[2] = 0.0f;
+    temp_v0->speed[0] = 0.0f;
+    temp_v0->speed[1] = 0.0f;
+    temp_v0->speed[2] = 0.0f;
     temp_v0->sizeScaling = 0.25f;
     func_80072488(objectIndex);
 }
@@ -6051,7 +6051,7 @@ void func_800810F4(s32 objectIndex) {
         break;
     case 2:
         func_8008775C(objectIndex);
-        f32_step_up_towards(&gObjectList[objectIndex].unk_028[1], 14.0f, 0.5f);
+        f32_step_up_towards(&gObjectList[objectIndex].speed[1], 14.0f, 0.5f);
         func_8007415C(objectIndex, &gObjectList[objectIndex].sizeScaling, 0.25f, 0.75f, 0.025f, 1, 0);
         if (func_80073B00(objectIndex, &gObjectList[objectIndex].primAlpha, 0x000000FF, 0, 4, 0, 0) != 0) {
             func_80072488(objectIndex);
@@ -6064,6 +6064,7 @@ void func_800810F4(s32 objectIndex) {
     func_8008BF18(objectIndex);
 }
 
+// update twomp I think
 void func_80081208(void) {
 
 }
@@ -6116,10 +6117,10 @@ void func_80081210(void) {
             if (!(player->effects & BOO_EFFECT)) {
                 func_80080B28(objectIndex, var_s4);
             }
-            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00020000) != 0) {
+            if (is_obj_flag_status_active(objectIndex, 0x00020000) != 0) {
                 func_80080A14(objectIndex, player);
             }
-            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00010000) != 0) {
+            if (is_obj_flag_status_active(objectIndex, 0x00010000) != 0) {
                 func_80080A4C(objectIndex, var_s4);
             }
         }
@@ -6204,14 +6205,14 @@ void func_80081848(s32 objectIndex) {
     set_obj_orientation(objectIndex, 0U, 0U, 0x8000U);
     gObjectList[objectIndex].boundingBoxSize = 6;
     gObjectList[objectIndex].velocity[1] = 4.0f;
-    set_object_flag_unk_054_true(objectIndex, 0x04000000);
+    set_object_flag_status_true(objectIndex, 0x04000000);
     func_80072488(objectIndex);
 }
 
 void func_80081924(s32 objectIndex) {
     switch (gObjectList[objectIndex].unk_0AE) {
     case 1:
-        if (f32_step_up_towards(&gObjectList[objectIndex].unk_028[1], 9.0f, 0.7f) != 0) {
+        if (f32_step_up_towards(&gObjectList[objectIndex].speed[1], 9.0f, 0.7f) != 0) {
             func_80086FD4(objectIndex);
         }
         break;
@@ -6219,7 +6220,7 @@ void func_80081924(s32 objectIndex) {
         func_800871AC(objectIndex, 0x0000000A);
         break;
     case 3:
-        if (f32_step_down_towards(&gObjectList[objectIndex].unk_028[1], 3.0f, 1.0f) != 0) {
+        if (f32_step_down_towards(&gObjectList[objectIndex].speed[1], 3.0f, 1.0f) != 0) {
             func_80086F60(objectIndex);
         }
         break;
@@ -6271,7 +6272,7 @@ void func_80081AFC(s32 objectIndex, s32 arg1) {
         if (temp_s0->unk_04C == 0) {
             func_80086EAC(objectIndex, 2, 1);
             func_80072488(objectIndex);
-            set_object_flag_unk_054_true(objectIndex, 0x00000200);
+            set_object_flag_status_true(objectIndex, 0x00000200);
         } else {
             temp_s0->unk_04C--;
         }
@@ -6297,7 +6298,7 @@ void func_80081AFC(s32 objectIndex, s32 arg1) {
         break;
     case 0x64:
         if (temp_s0->unk_0AE == 0) {
-            set_object_flag_unk_054_false(objectIndex, 0x00000200);
+            set_object_flag_status_false(objectIndex, 0x00000200);
             func_80072428(objectIndex);
             switch (arg1) {                         /* switch 1; irregular */
             case 1:                                 /* switch 1 */
@@ -6333,11 +6334,11 @@ void func_80081D34(s32 objectIndex) {
     var_s1 = gPlayerOne;
     var_s4 = camera1;
     for (var_s2 = 0; var_s2 < D_8018D158; var_s2++, var_s1++, var_s4++) {
-        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000200) != 0) && !(var_s1->effects & 0x80000000) && (has_collided_with_player(objectIndex, var_s1) != 0)) {
+        if ((is_obj_flag_status_active(objectIndex, 0x00000200) != 0) && !(var_s1->effects & 0x80000000) && (has_collided_with_player(objectIndex, var_s1) != 0)) {
             if ((var_s1->type & 0x8000) && !(var_s1->type & 0x100)) {
                 var_s5 = 1;
                 temp_s0 = &gObjectList[objectIndex];
-                if (is_obj_index_flag_unk_054_active(objectIndex, 0x04000000) != 0) {
+                if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                     func_80072180();
                 }
                 if (var_s1->effects & 0x200) {
@@ -6359,7 +6360,7 @@ void func_80081D34(s32 objectIndex) {
     }
     if (var_s5 != 0) {
         temp_s0 = &gObjectList[objectIndex];
-        set_object_flag_unk_054_false(objectIndex, 0x00000200);
+        set_object_flag_status_false(objectIndex, 0x00000200);
         func_80086F60(objectIndex);
         set_obj_origin_pos(objectIndex, temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2]);
         func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -6509,7 +6510,7 @@ void func_8008241C(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].unk_034 = 1.0f;
     func_80086EF0(objectIndex);
     gObjectList[objectIndex].unk_080 = D_800E633C[arg1 % 4];
-    set_object_flag_unk_054_true(objectIndex, 0x00000800);
+    set_object_flag_status_true(objectIndex, 0x00000800);
     func_80072488(objectIndex);
 }
 
@@ -6535,11 +6536,11 @@ void func_8008275C(s32 objectIndex) {
         func_8008B78C(objectIndex);
         vec3f_copy(gObjectList[objectIndex].unk_01C, gObjectList[objectIndex].pos);
         func_8000D940(gObjectList[objectIndex].origin_pos, &gObjectList[objectIndex].unk_0C6, gObjectList[objectIndex].unk_034, 0.0f, 0);
-        gObjectList[objectIndex].unk_028[0] *= 2.0;
-        gObjectList[objectIndex].unk_028[1] *= 2.5;
-        gObjectList[objectIndex].unk_028[2] *= 2.0;
+        gObjectList[objectIndex].speed[0] *= 2.0;
+        gObjectList[objectIndex].speed[1] *= 2.5;
+        gObjectList[objectIndex].speed[2] *= 2.0;
         func_8008BF18(objectIndex);
-        gObjectList[objectIndex].direction_angle[1] = get_angle_between_points(gObjectList[objectIndex].unk_01C, gObjectList[objectIndex].pos);
+        gObjectList[objectIndex].direction_angle[1] = get_angle_between_two_vector(gObjectList[objectIndex].unk_01C, gObjectList[objectIndex].pos);
         break;
     }
     func_800873F4(objectIndex);
@@ -6602,12 +6603,12 @@ void init_ktb_crab(s32 objectIndex) {
     object->itemDisplay = 0;
     func_80072488(objectIndex);
     object->boundingBoxSize = 1;
-    set_object_flag_unk_054_true(objectIndex, 0x04000420);
+    set_object_flag_status_true(objectIndex, 0x04000420);
     func_80086EAC(objectIndex, 0, 1);
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
     set_obj_orientation(objectIndex, 0U, 0U, 0x8000U);
     object->unk_034 = 1.5f;
-    set_object_flag_unk_054_true(objectIndex, 0x00000200);
+    set_object_flag_status_true(objectIndex, 0x00000200);
 }
 
 void func_80082B34(s32 objectIndex, s32 unused) {
@@ -6664,7 +6665,7 @@ void func_80082C30(s32 objectIndex) {
         break;
     }
     func_8008BF18(objectIndex);
-    if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+    if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
         func_80088538(objectIndex);
         gObjectList[objectIndex].pos[1] = (f32) (gObjectList[objectIndex].unk_044 + 2.5);
     }
@@ -6750,7 +6751,7 @@ void func_8008311C(s32 objectIndex, s32 arg1) {
     set_obj_orientation(objectIndex, 0U, 0U, 0x8000U);
     temp_s0->unk_034 = ((arg1 % 6) * 0.1) + 0.5;
     func_80086E70(objectIndex);
-    set_object_flag_unk_054_true(objectIndex, 0x04000600);
+    set_object_flag_status_true(objectIndex, 0x04000600);
     temp_s0->boundingBoxSize = 2;
 }
 
@@ -6778,8 +6779,8 @@ void func_80083248(s32 objectIndex) {
         break;
     }
     func_8008BF18(objectIndex);
-    if (is_obj_index_flag_unk_054_active(objectIndex, 0x00200000) != 0) {
-        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00400000) != 0) {
+    if (is_obj_flag_status_active(objectIndex, 0x00200000) != 0) {
+        if (is_obj_flag_status_active(objectIndex, 0x00400000) != 0) {
             func_8008861C(objectIndex);
         }
         gObjectList[objectIndex].pos[1] = gObjectList[objectIndex].unk_044 + 6.0;
@@ -6890,7 +6891,7 @@ void func_80083868(s32 objectIndex) {
     temp_s0->primAlpha = random_int(0x2000U) - 0x1000;
     func_80086E70(objectIndex);
     temp_s0->unk_034 = 1.5f;
-    set_object_flag_unk_054_true(objectIndex, 0x00000200);
+    set_object_flag_status_true(objectIndex, 0x00000200);
 }
 
 void func_80083948(s32 objectIndex) {
@@ -6911,7 +6912,7 @@ void func_80083948(s32 objectIndex) {
         func_80087D24(objectIndex, 0.0f, 0.2f, -7.0f);
         break;
     case 20:
-        if (f32_step_up_towards(&gObjectList[objectIndex].unk_028[1], 0.0f, 0.2f) != 0) {
+        if (f32_step_up_towards(&gObjectList[objectIndex].speed[1], 0.0f, 0.2f) != 0) {
             func_80073800(objectIndex, 0);
             func_8008701C(objectIndex, 1);
         }
@@ -6951,7 +6952,7 @@ void func_80083B0C(s32 objectIndex) {
     gObjectList[objectIndex].orientation[2] = 0x8000;
     gObjectList[objectIndex].boundingBoxSize = 2;
     gObjectList[objectIndex].unk_034 = 1.5f;
-    set_object_flag_unk_054_true(objectIndex, 0x04000210);
+    set_object_flag_status_true(objectIndex, 0x04000210);
 }
 
 void func_80083BE4(s32 objectIndex) {
@@ -6978,7 +6979,7 @@ void func_80083C04(s32 objectIndex) {
         break;
     case 11:
         if (func_8007278C(objectIndex, 0x0000000A) != 0) {
-            set_object_flag_unk_054_true(objectIndex, 0x00000010);
+            set_object_flag_status_true(objectIndex, 0x00000010);
             temp_s1->sizeScaling = 0.001f;
         }
         break;
@@ -6989,7 +6990,7 @@ void func_80083C04(s32 objectIndex) {
         break;
     case 13:
         func_800726CC(objectIndex, 2);
-        set_object_flag_unk_054_false(objectIndex, 0x00001000);
+        set_object_flag_status_false(objectIndex, 0x00001000);
         break;
     }
     if (temp_s1->state >= 2) {
@@ -7022,11 +7023,11 @@ void func_80083D60(void) {
         var_s3 = indexObjectList2[var_s0];
         func_80083A94(var_s3);
         func_80083C04(var_s4);
-        if (is_obj_index_flag_unk_054_inactive(var_s4, 0x00001000) != 0) {
+        if (is_obj_index_flag_status_inactive(var_s4, 0x00001000) != 0) {
             temp_s1 = &gObjectList[var_s4];
             if ((func_8008A8B0(temp_s1->unk_0D5 - 1, temp_s1->unk_0D5 + 1) != 0) && (func_80089B50(var_s4) != 0)) {
-                set_object_flag_unk_054_true(var_s4, 0x00001000);
-                set_object_flag_unk_054_false(var_s4, 0x00000010);
+                set_object_flag_status_true(var_s4, 0x00001000);
+                set_object_flag_status_false(var_s4, 0x00000010);
                 func_800726CC(var_s4, 0x0000000A);
                 func_8008701C(var_s3, 0x0000000A);
                 func_800836F0(temp_s1->pos);
@@ -7130,7 +7131,7 @@ void func_80084430(s32 objectIndex, s32 arg1) {
     temp_s0->unk_0DD = 1;
     func_80086EF0(objectIndex);
     temp_s0->unk_080 = *D_800E672C;
-    set_object_flag_unk_054_true(objectIndex, 0x04000800);
+    set_object_flag_status_true(objectIndex, 0x04000800);
     temp_s0->type = func_80004EAC(d_course_sherbet_land_unk_data11, 0);
     func_80072488(objectIndex);
 }
@@ -7160,7 +7161,7 @@ void func_800845C8(s32 objectIndex, s32 arg1) {
     temp_s0->boundingBoxSize = 4;
     temp_s0->unk_09C = 2;
     temp_s0->unk_04C = random_int(0x012CU);
-    set_object_flag_unk_054_true(objectIndex, 0x04000220);
+    set_object_flag_status_true(objectIndex, 0x04000220);
     if ((arg1 > 0) && (arg1 < 9)) {
         if ((arg1 == 1) || (arg1 == 2)) {
             set_obj_origin_pos(objectIndex, xOrientation * -2960.0, -80.0f, 1521.0f);
@@ -7465,14 +7466,14 @@ void func_80085214(void) {
         } else {
             func_80089820(objectIndex, 1.5f, 1.25f, 0x1900A046U);
         }
-        if ((is_obj_index_flag_unk_054_active(objectIndex, 0x02000000) != 0) && (func_80072354(objectIndex, 0x00000020) != 0)) {
+        if ((is_obj_flag_status_active(objectIndex, 0x02000000) != 0) && (func_80072354(objectIndex, 0x00000020) != 0)) {
             func_800722A4(objectIndex, 0x00000060);
-            set_object_flag_unk_054_false(objectIndex, 0x02000000);
+            set_object_flag_status_false(objectIndex, 0x02000000);
         }
     }
 }
 
-void func_800853DC(s32 objectIndex) {
+void init_hot_air_balloon(s32 objectIndex) {
     gObjectList[objectIndex].sizeScaling = 1.0f;
     gObjectList[objectIndex].model = d_course_luigi_raceway_dl_F960;
     if (gGamestate != 9) {
@@ -7493,7 +7494,7 @@ void func_800853DC(s32 objectIndex) {
 void func_80085534(s32 objectIndex) {
     switch (gObjectList[objectIndex].unk_0AE) {
     case 1:
-        if (gObjectList[objectIndex].unk_028[1] <= 18.0) {
+        if (gObjectList[objectIndex].speed[1] <= 18.0) {
             func_80086FD4(objectIndex);
         }
         break;
@@ -7544,7 +7545,7 @@ void func_80085534(s32 objectIndex) {
 void func_80085768(s32 objectIndex) {
     switch (gObjectList[objectIndex].state) {                              /* irregular */
     case 1:
-        func_800853DC(objectIndex);
+        init_hot_air_balloon(objectIndex);
         break;
     case 0:
     case 2:
@@ -7552,7 +7553,7 @@ void func_80085768(s32 objectIndex) {
     }
 }
 
-void func_800857C0(void) {
+void update_hot_air_balloon(void) {
     s32 objectIndex;
 
     objectIndex = indexObjectList1[0];
@@ -7561,9 +7562,9 @@ void func_800857C0(void) {
         func_80085534(objectIndex);
         func_8008BF18(objectIndex);
         if (gObjectList[objectIndex].state >= 2) {
-            D_802BA05C->pos[0] = gObjectList[objectIndex].pos[0];
-            D_802BA05C->pos[1] = gObjectList[objectIndex].pos[1] - 10.0;
-            D_802BA05C->pos[2] = gObjectList[objectIndex].pos[2];
+            gActorHotAirBalloonItemBox->pos[0] = gObjectList[objectIndex].pos[0];
+            gActorHotAirBalloonItemBox->pos[1] = gObjectList[objectIndex].pos[1] - 10.0;
+            gActorHotAirBalloonItemBox->pos[2] = gObjectList[objectIndex].pos[2];
         }
     }
 }
@@ -7578,7 +7579,7 @@ void func_80085878(s32 objectIndex, s32 arg1) {
     temp_s0->vertex = d_rainbow_road_unk3;
     temp_s0->sizeScaling = 0.03f;
     temp_s0->boundingBoxSize = 0x000A;
-    set_object_flag_unk_054_true(objectIndex, 0x04000200);
+    set_object_flag_status_true(objectIndex, 0x04000200);
     temp_s0->unk_084[8] = (arg1 * 0x12C) + 0x1F4;
     set_obj_origin_pos(objectIndex, 0.0f, -15.0f, 0.0f);
     temp_v0 = &D_80164490[(u16)temp_s0->unk_084[8]];
@@ -7619,9 +7620,9 @@ void func_80085AA8(void) {
         temp_s0 = &gObjectList[objectIndex];
         if (temp_s0->state != 0) {
             func_800859C8(objectIndex, var_s4);
-            vec3f_copy(temp_s0->unk_01C, temp_s0->unk_028);
-            func_8000D940(temp_s0->unk_028, &temp_s0->unk_084[8], temp_s0->unk_034, temp_s0->unk_044, 0);
-            temp_s0->direction_angle[1] = get_angle_between_points(temp_s0->unk_01C, temp_s0->unk_028);
+            vec3f_copy(temp_s0->unk_01C, temp_s0->speed);
+            func_8000D940(temp_s0->speed, &temp_s0->unk_084[8], temp_s0->unk_034, temp_s0->unk_044, 0);
+            temp_s0->direction_angle[1] = get_angle_between_two_vector(temp_s0->unk_01C, temp_s0->speed);
             func_8008BF18(objectIndex);
             func_80089CBC(objectIndex, 30.0f);
         }
@@ -7833,12 +7834,12 @@ void func_80086424(s32 objectIndex) {
         func_80086FD4(objectIndex);
         break;
     case 2:
-        if (gObjectList[objectIndex].unk_028[1] >= -2.0) {
+        if (gObjectList[objectIndex].speed[1] >= -2.0) {
             gObjectList[objectIndex].velocity[1] -= 0.1;
         }
         func_800877C4(objectIndex);
-        if (gObjectList[objectIndex].unk_028[1] >= 0.0) {
-            gObjectList[objectIndex].unk_028[1] = 0.0f;
+        if (gObjectList[objectIndex].speed[1] >= 0.0) {
+            gObjectList[objectIndex].speed[1] = 0.0f;
             gObjectList[objectIndex].velocity[1] = 0.0f;
             func_80086F60(objectIndex);
         }
@@ -7956,7 +7957,7 @@ void func_80086940(s32 objectIndex) {
         temp_s0->velocity[1] = -0.4f;
         func_80086FD4(objectIndex);
         temp_s0->origin_pos[1] = 90.0f;
-        temp_s0->unk_028[1] = 60.0f;
+        temp_s0->speed[1] = 60.0f;
         switch (D_802874D8.unk1D) {                          /* switch 1; irregular */
         case 1:                                     /* switch 1 */
             temp_s0->origin_pos[0] -= 3.0;
@@ -7969,11 +7970,11 @@ void func_80086940(s32 objectIndex) {
         }
         break;
     case 5:
-        if ((f64) temp_s0->unk_028[1] <= 8.0) {
+        if ((f64) temp_s0->speed[1] <= 8.0) {
             f32_step_towards(&temp_s0->velocity[1], -0.1f, -0.01f);
         }
         func_800877C4(objectIndex);
-        if ((f64) temp_s0->unk_028[1] <= 0.0) {
+        if ((f64) temp_s0->speed[1] <= 0.0) {
             func_80086FD4(objectIndex);
         }
         break;

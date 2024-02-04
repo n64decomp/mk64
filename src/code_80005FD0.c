@@ -549,7 +549,7 @@ s16 func_80005FD0(Vec3f arg0, Vec3f arg1) {
     s16 temp_ret;
     s16 phi_v1;
 
-    temp_ret = get_angle_between_points(arg0, arg1);
+    temp_ret = get_angle_between_two_vector(arg0, arg1);
     phi_v1 = temp_ret;
     if (gIsMirrorMode != 0) {
         phi_v1 = -temp_ret;
@@ -1874,7 +1874,7 @@ void func_80009B60(s32 playerId) {
                                     func_8000BBD8(stackPadding1A, D_80163090[playerId], D_80163448);
                                 }
                             }
-                            player->rotation[1] = -get_angle_between_points(player->pos, D_80162FA0);
+                            player->rotation[1] = -get_angle_between_two_vector(player->pos, D_80162FA0);
                         } else {
                             player->rotation[1] = D_80164590[D_80163448][(D_801630E0 + 4) % D_80164430];
                         }
@@ -1887,7 +1887,7 @@ void func_80009B60(s32 playerId) {
                     player->effects |= 0x10;
                 }
                 if (D_801630E8[playerId] != 0) {
-                    D_80163300[playerId] = -get_angle_between_points(&player->copy_rotation_x, player->pos);
+                    D_80163300[playerId] = -get_angle_between_two_vector(&player->copy_rotation_x, player->pos);
                     var_a0_2 = (D_801631DC[(D_80162FCE + 2) % D_80164430] * 0x168) / 65535;
                     var_a1 = (D_80163300[playerId] * 0x168) / 65535;
                     if (var_a0_2 < -0xB4) {
@@ -1993,8 +1993,8 @@ void func_80009B60(s32 playerId) {
                 // MISMATCH2
                 // This fixes part of the register allocation problems, makes fixing others
                 // harder though. Needs more investigation
-                // var_a2 = (-get_angle_between_points(player->pos, D_80162FA0)) - (var_a1 = player->rotation[1]);
-                stackPadding19 = -get_angle_between_points(player->pos, D_80162FA0) - player->rotation[1];
+                // var_a2 = (-get_angle_between_two_vector(player->pos, D_80162FA0)) - (var_a1 = player->rotation[1]);
+                stackPadding19 = -get_angle_between_two_vector(player->pos, D_80162FA0) - player->rotation[1];
                 var_a1 = stackPadding19;
                 var_a2 = var_a1;
                 if ((s16) temp_f2 < var_a1) {
@@ -3168,7 +3168,7 @@ void func_8000DF8C(s32 bombKartId) {
             D_80162FC0[0] = temp_v0_2->posX + sp118;
             D_80162FC0[1] = temp_v0_2->posY;
             D_80162FC0[2] = temp_v0_2->posZ + temp_f0_3;
-            spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
+            spC2 = (get_angle_between_two_vector(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
             break;
         case 2:
             var_s1 = ((var_s1 + 4) % 360);
@@ -3188,7 +3188,7 @@ void func_8000DF8C(s32 bombKartId) {
             D_80162FC0[0] = temp_v0_2->posX + sp118;
             D_80162FC0[1] = temp_v0_2->posY;
             D_80162FC0[2] = temp_v0_2->posZ + temp_f0_3;
-            spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
+            spC2 = (get_angle_between_two_vector(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
             break;
         case 3:
             var_f20 = bombKart->yPos + 3.5f;
@@ -3212,7 +3212,7 @@ void func_8000DF8C(s32 bombKartId) {
                     D_80162FC0[0] = temp_v0_4->posX;
                     D_80162FC0[1] = temp_v0_4->posY;
                     D_80162FC0[2] = temp_v0_4->posZ;
-                    spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
+                    spC2 = (get_angle_between_two_vector(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
                 } else {
                     D_80162FB0[0] = var_f22;
                     D_80162FB0[1] = var_f20;
@@ -3220,7 +3220,7 @@ void func_8000DF8C(s32 bombKartId) {
                     D_80162FC0[0] = -2409.197f;
                     D_80162FC0[1] = 0.0f;
                     D_80162FC0[2] = -355.254f;
-                    spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
+                    spC2 = (get_angle_between_two_vector(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
                 }
                 temp_f14 = ((D_80162FB0[0] + D_80162FC0[0]) * 0.5f) - var_f22;
                 temp_f16 = ((D_80162FB0[2] + D_80162FC0[2]) * 0.5f) - var_f24;
@@ -3250,7 +3250,7 @@ void func_8000DF8C(s32 bombKartId) {
             D_80162FC0[1] = temp_v0_4->posY;
             D_80162FC0[2] = temp_v0_4->posZ;
             var_f20 += 3.0f - (var_s1 * 0.3f);
-            spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
+            spC2 = (get_angle_between_two_vector(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
             break;
         default:
             break;
@@ -3932,7 +3932,7 @@ s16 func_80010CB0(s32 pathIndex, s32 waypointIndex) {
     sp24[0] = temp_v0->posX;
     sp24[1] = temp_v0->posY;
     sp24[2] = temp_v0->posZ;
-    ret = get_angle_between_points(sp30, sp24);
+    ret = get_angle_between_two_vector(sp30, sp24);
     return -ret;
 }
 
@@ -5106,7 +5106,7 @@ void func_80013D20(VehicleStuff *vehicle) {
     sp34[0] = vehicle->position[1];
     sp34[1] = 0.0f;
     sp34[2] = sqrtf((temp_f0_3 * temp_f0_3) + (temp_f2_2 * temp_f2_2));
-    thing = get_angle_between_points(sp40, sp34);
+    thing = get_angle_between_two_vector(sp40, sp34);
     adjust_angle(&vehicle->rotation[0], -thing, 100);
     vehicle->velocity[0] = vehicle->position[0] - sp5C;
     vehicle->velocity[1] = vehicle->position[1] - sp58;

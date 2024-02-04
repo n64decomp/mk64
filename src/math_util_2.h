@@ -54,7 +54,7 @@ Vec3f *vec3f_cross_product(Vec3f, Vec3f, Vec3f);
 s32 func_80041658(f32, f32);
 f32 func_800416D8(f32, f32, u16);
 f32 func_80041724(f32, f32, u16);
-s32 func_80041770(f32, f32, f32, f32);
+s32 get_angle_between_two_coordinate(f32, f32, f32, f32);
 u16 func_800417B4(u16, u16);
 s32 func_800418AC(f32, f32, Vec3f);
 s32 func_800418E8(f32, f32, Vec3f);

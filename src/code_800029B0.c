@@ -200,7 +200,7 @@ void setup_race(void) {
     func_802969F8();
     func_80005310();
     func_8003D080();
-    init_object_list();
+    init_hud();
     D_800DC510 = 0;
     gNumSpawnedShells = 0;
     D_800DC5B8 = 0;

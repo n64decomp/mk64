@@ -579,10 +579,10 @@ void func_800581C8(void) {
 
     func_8001C3C4(PLAYER_ONE);
     if (gGamestate == ENDING_SEQUENCE) {
-        func_80055F48(0);
-        func_80056160(0);
-        func_8005217C(0);
-        func_80054BE8(0);
+        func_80055F48(PLAYER_ONE);
+        func_80056160(PLAYER_ONE);
+        func_8005217C(PLAYER_ONE);
+        func_80054BE8(PLAYER_ONE);
         return;
     }
     if (!gDemoMode) {
@@ -746,29 +746,29 @@ void render_object(s32 cameraId) {
             break;
         case COURSE_LUIGI_RACEWAY:
             if (D_80165898 != 0) {
-                func_80055E68(cameraId);
+                render_hot_air_balloon(cameraId);
             }
             break;
         case COURSE_MOO_MOO_FARM:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_800550A4(cameraId);
+                render_moles(cameraId);
             }
             break;
         case COURSE_TOADS_TURNPIKE:
             break;
         case COURSE_KALAMARI_DESERT:
-            func_800541BC(cameraId);
+            render_train_smoke(cameraId);
             break;
         case COURSE_SHERBET_LAND:
             if (gGamestate != CREDITS_SEQUENCE) {
                 func_80052E30(cameraId);
             }
-            func_8005592C(cameraId);
+            render_penguins(cameraId);
             break;
         case COURSE_RAINBOW_ROAD:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80056188(cameraId);
-                func_80055C38(cameraId);
+                render_neon(cameraId);
+                render_chain_chomps(cameraId);
             }
             break;
         case COURSE_WARIO_STADIUM:
@@ -1466,7 +1466,7 @@ void func_8005A14C(s32 playerId) {
         if (player->effects & 0x03000000) {
             func_80087D24(objectIndex, 6.0f, 1.5f, 0.0f);
         } else {
-            f32_step_towards(&gObjectList[objectIndex].unk_028[1], 0.0f, 1.0f);
+            f32_step_towards(&gObjectList[objectIndex].speed[1], 0.0f, 1.0f);
         }
         if ((player->type & PLAYER_INVISIBLE_OR_BOMB) || (player->effects & BOO_EFFECT)) {
             gObjectList[objectIndex].primAlpha = 0x0050;
@@ -1477,9 +1477,9 @@ void func_8005A14C(s32 playerId) {
             gObjectList[objectIndex].direction_angle[2] = 0;
             gObjectList[objectIndex].direction_angle[1] = 0;
             gObjectList[objectIndex].direction_angle[0] = 0;
-            gObjectList[objectIndex].unk_028[2] = 0.0f;
-            gObjectList[objectIndex].unk_028[1] = 0.0f;
-            gObjectList[objectIndex].unk_028[0] = 0.0f;
+            gObjectList[objectIndex].speed[2] = 0.0f;
+            gObjectList[objectIndex].speed[1] = 0.0f;
+            gObjectList[objectIndex].speed[0] = 0.0f;
             gObjectList[objectIndex].sizeScaling = 0.6f;
             gObjectList[objectIndex].primAlpha = 0x00FF;
         }
@@ -1618,7 +1618,7 @@ void update_object(void) {
             break;
         case COURSE_LUIGI_RACEWAY:
             if (D_80165898 != 0) {
-                func_800857C0();
+                update_hot_air_balloon();
             }
             break;
         case COURSE_MOO_MOO_FARM:

@@ -164,7 +164,7 @@ void load_credits(void) {
     camera->up[2] = 0.0f;
     init_cinematic_camera();
     func_80003040();
-    init_object_list();
+    init_hud();
     func_80093E60();
     func_80092688();
     if (D_800DC5EC) {}

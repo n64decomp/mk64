@@ -23,7 +23,7 @@
 #include "hud_renderer.h"
 #include "code_80091750.h"
 
-void init_object_list(void) {
+void init_hud(void) {
 
     reset_object_variable();
     func_8006FA94();
@@ -904,7 +904,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_BANSHEE_BOARDWALK:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             objectId = indexObjectList1[0];
             init_texture_object(objectId, d_course_banshee_boardwalk_bat_tlut, *d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
             gObjectList[objectId].orientation[0] = 0;
@@ -918,7 +918,7 @@ void init_course_object(void) {
         for (i = 0; i < 4; i++) {
             init_object(indexObjectList1[i], 0);
         }
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             for (i = 0; i < NUM_HEDGEHOGS; i++) {
                 objectId = indexObjectList2[i];
                 init_object(objectId, 0);
@@ -935,7 +935,7 @@ void init_course_object(void) {
         for (i = 0; i < NUM_SNOWFLAKES; i++) {
             find_unused_obj_index(&gObjectParticle1[i]);
         }
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             for (i = 0; i < NUM_SNOWMEN; i++) {
                 objectId = indexObjectList2[i];
                 init_object(objectId, 0);
@@ -952,7 +952,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_KOOPA_BEACH:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             for (i = 0; i < NUM_CRABS; i++) {
                 objectId = indexObjectList1[i];
                 init_object(objectId, 0);
@@ -974,7 +974,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_ROYAL_RACEWAY:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
@@ -985,7 +985,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_LUIGI_RACEWAY:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
@@ -998,7 +998,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_MOO_MOO_FARM:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == VERSUS))) {
                 switch (gCCSelection) {             /* switch 2; irregular */
                 case CC_50:                             /* switch 2 */
@@ -1054,7 +1054,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_KALAMARI_DESERT:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             find_unused_obj_index(&D_8018CF10);
             init_object(D_8018CF10, 0);
             for (i = 0; i < 50; i++) {
@@ -1074,7 +1074,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_RAINBOW_ROAD:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             for (i = 0; i < NUM_NEON_SIGNS; i++) {
                 init_object(indexObjectList1[i], 0);
             }

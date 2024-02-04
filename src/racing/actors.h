@@ -114,7 +114,7 @@ extern void func_800C99E0(Vec3f, s32);
 extern u8 *D_802BA050;
 extern u8 *D_802BA054;
 extern u8 *D_802BA058;
-extern struct Actor *D_802BA05C;
+extern struct Actor *gActorHotAirBalloonItemBox;
 extern s8 gTLUTRedShell[]; // tlut 256
 extern u16 D_802BA260; // Box Truck sub-type?
 

@@ -1203,7 +1203,7 @@ void func_8004A630(Collision *arg0, Vec3f arg1, f32 arg2) {
 void func_8004A6EC(s32 objectIndex, f32 scale) {
     Objects *temp_v0;
 
-    if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) && (is_obj_index_flag_unk_054_active(objectIndex, 0x00800000) != 0)) {
+    if ((is_obj_flag_status_active(objectIndex, 0x00000020) != 0) && (is_obj_flag_status_active(objectIndex, 0x00800000) != 0)) {
         temp_v0 = &gObjectList[objectIndex];
         D_80183E50[0] = temp_v0->pos[0];
         D_80183E50[1] = temp_v0->unk_044 + 0.8;
@@ -1216,7 +1216,7 @@ void func_8004A6EC(s32 objectIndex, f32 scale) {
 void func_8004A7AC(s32 objectIndex, f32 arg1) {
     Objects *temp_v0;
 
-    if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) {
+    if (is_obj_flag_status_active(objectIndex, 0x00000020) != 0) {
         temp_v0 = &gObjectList[objectIndex];
         D_80183E50[0] = temp_v0->pos[0];
         D_80183E50[1] = temp_v0->unk_044 + 0.8;
@@ -1233,7 +1233,7 @@ void func_8004A870(s32 objectIndex, f32 arg1) {
     Mat4 sp30;
     Objects *temp_v0;
 
-    if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) && (is_obj_index_flag_unk_054_active(objectIndex, 0x00800000) != 0)) {
+    if ((is_obj_flag_status_active(objectIndex, 0x00000020) != 0) && (is_obj_flag_status_active(objectIndex, 0x00800000) != 0)) {
         temp_v0 = &gObjectList[objectIndex];
         D_80183E50[0] = temp_v0->pos[0];
         D_80183E50[1] = temp_v0->unk_044 + 0.8;
@@ -2947,7 +2947,7 @@ void render_snowflakes_particules(void) {
 
 void func_800518F8(s32 objectIndex, s16 arg1, s16 arg2) {
     UNUSED s32 pad[1];
-    if (gObjectList[objectIndex].unk_054 & 0x10) {
+    if (gObjectList[objectIndex].status & 0x10) {
         if (D_8018D228 != gObjectList[objectIndex].unk_0D5) {
             D_8018D228 = gObjectList[objectIndex].unk_0D5;
             func_80044DA0(gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].textureWidth, gObjectList[objectIndex].textureHeight);
@@ -2959,7 +2959,7 @@ void func_800518F8(s32 objectIndex, s16 arg1, s16 arg2) {
 }
 
 void func_800519D4(s32 objectIndex, s16 arg1, s16 arg2) {
-    if (gObjectList[objectIndex].unk_054 & 0x10) {
+    if (gObjectList[objectIndex].status & 0x10) {
         if (D_8018D228 != gObjectList[objectIndex].unk_0D5) {
             D_8018D228 = gObjectList[objectIndex].unk_0D5;
             func_80044DA0(gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].textureWidth, gObjectList[objectIndex].textureHeight);
@@ -3098,7 +3098,7 @@ void func_8005217C(UNUSED s32 arg0) {
     temp_a3 = indexObjectList2[0];
     object = &gObjectList[temp_a3];
     if (object->state >= 2) {
-        if (is_obj_index_flag_unk_054_active(temp_a3, 0x00000010) != 0) {
+        if (is_obj_flag_status_active(temp_a3, 0x00000010) != 0) {
             rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
             func_800520C0(temp_a3);
 
@@ -3127,7 +3127,7 @@ void func_800523B8(s32 objectIndex, s32 arg1, u32 arg2) {
     object = &gObjectList[objectIndex];
     object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
     func_800484BC(object->pos, object->orientation, object->sizeScaling, object->primAlpha, (u8 *) object->activeTLUT, object->activeTexture, object->vertex, 0x00000030, 0x00000028, 0x00000030, 0x00000028);
-    if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) && (arg2 < 0x15F91U)) {
+    if ((is_obj_flag_status_active(objectIndex, 0x00000020) != 0) && (arg2 < 0x15F91U)) {
         func_8004A630(&D_8018C830, object->pos, 0.4f);
     }
 }
@@ -3141,7 +3141,7 @@ void func_800524B4(s32 arg0) {
         objectIndex = indexObjectList3[someIndex];
         if (gObjectList[objectIndex].state >= 2) {
             temp_s2 = func_8008A364(objectIndex, arg0, 0x4000U, 0x00000320);
-            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+            if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
                 func_800523B8(objectIndex, arg0, temp_s2);
             }
         }
@@ -3189,7 +3189,7 @@ void func_800527D8(s32 cameraId) {
 
     objectIndex = indexObjectList1[1];
     func_8008A364(objectIndex, cameraId, 0x5555U, 0x00000320);
-    if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+    if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
         object = &gObjectList[objectIndex];
         if (object->state >= 2) {
             func_80043220(object->pos, object->orientation, object->sizeScaling, object->model);
@@ -3323,7 +3323,7 @@ void render_snowman_list_2(s32 cameraId) {
             object = &gObjectList[objectIndex];
             if (object->state > 0) {
                 func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000001F4);
-                if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+                if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
                     object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], sp44->pos);
                     rsp_set_matrix_gObjectList(objectIndex);
                     gSPDisplayList(gDisplayListHead++, D_0D0069E0);
@@ -3344,11 +3344,11 @@ void render_snowman_list_1(s32 cameraId) {
         objectIndex = indexObjectList1[var_s4];
         if (gObjectList[objectIndex].state >= 2) {
             func_8008A364(objectIndex, cameraId, 0x2AABU, 0x00000258);
-            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+            if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
                 D_80183E80[0] = (s16) gObjectList[objectIndex].orientation[0];
                 D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
                 D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
-                if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000010) != 0) {
+                if (is_obj_flag_status_active(objectIndex, 0x00000010) != 0) {
                     draw_2d_texture_at(gObjectList[objectIndex].pos, (u16 *) D_80183E80, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, gObjectList[objectIndex].vertex, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
                 }
                 objectIndex = indexObjectList2[var_s4];
@@ -3375,7 +3375,7 @@ void render_lakitu(s32 cameraId) {
 
     objectIndex = gIndexLakituList[cameraId];
     camera = &camera1[cameraId];
-    if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000010) != 0) {
+    if (is_obj_flag_status_active(objectIndex, 0x00000010) != 0) {
         object = &gObjectList[objectIndex];
         object->orientation[0] = 0;
         object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], camera->pos);
@@ -3461,7 +3461,7 @@ void render_twomps(s32 cameraId) {
     if (cameraId == PLAYER_ONE) {
         for (i = 0; i < gNumActiveThwomps; i++) {
             objectIndex = indexObjectList1[i];
-            set_object_flag_unk_054_false(objectIndex, 0x00070000);
+            set_object_flag_status_false(objectIndex, 0x00070000);
             func_800722CC(objectIndex, 0x00000110);
         }
     }
@@ -3472,7 +3472,7 @@ void render_twomps(s32 cameraId) {
         minusone = gObjectList[objectIndex].unk_0DF - 1;
         plusone = gObjectList[objectIndex].unk_0DF + 1;
         if (gGamestate != 9) {
-            if ((D_8018CF68[cameraId] >= minusone) && (plusone >= D_8018CF68[cameraId]) && (func_8008A140(objectIndex, camera, 0x8000U) != 0)) {
+            if ((D_8018CF68[cameraId] >= minusone) && (plusone >= D_8018CF68[cameraId]) && (is_object_visible_on_camera(objectIndex, camera, 0x8000U) != 0)) {
                 render_twomps_model(objectIndex);
             }
         } else {
@@ -3558,7 +3558,7 @@ void func_80053E6C(s32 arg0) {
 }
 
 
-void func_800540CC(s32 objectIndex, s32 cameraId) {
+void render_object_smoke_train(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
@@ -3572,7 +3572,7 @@ void func_800540CC(s32 objectIndex, s32 cameraId) {
 }
 
 // Train smoke?
-void func_800541BC(s32 cameraId) {
+void render_train_smoke(s32 cameraId) {
     UNUSED s32 pad;
     UNUSED s32 j;
     Camera *camera;
@@ -3592,7 +3592,7 @@ void func_800541BC(s32 cameraId) {
 
             for (i = 0; i < 128; i++) {
                 // Need to make a way to increase this array for each train.
-                func_800540CC(gObjectParticle2[i], cameraId);
+                render_object_smoke_train(gObjectParticle2[i], cameraId);
             }
         }
     }
@@ -3601,13 +3601,13 @@ void func_800541BC(s32 cameraId) {
     if ((gTrainList[0].someFlags != 0) && (func_80041980(gTrainList[0].locomotive.position, camera, 0x4000U) != 0)) {
 
         for (i = 0; i < gObjectParticle2_SIZE; i++) {
-            func_800540CC(gObjectParticle2[i], cameraId);
+            render_object_smoke_train(gObjectParticle2[i], cameraId);
         }
 
     }
     if ((gTrainList[1].someFlags != 0) && (func_80041980(gTrainList[1].locomotive.position, camera, 0x4000U) != 0)) {
         for (i = 0; i < gObjectParticle3_SIZE; i++) {
-            func_800540CC(gObjectParticle3[i], cameraId);
+            render_object_smoke_train(gObjectParticle3[i], cameraId);
         }
     }
 #endif
@@ -3731,7 +3731,7 @@ void render_smoke_particlue(s32 cameraId) {
                 } else {
                     func_8008A364(objectIndex, cameraId, 0x4000U, 0x000001F4);
                 }
-                if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+                if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
                     func_8005477C(objectIndex, object->unk_0D8, sp54->pos);
                 }
             }
@@ -3773,7 +3773,7 @@ void func_80054D00(s32 objectIndex, s32 cameraId) {
     camera = &camera1[cameraId];
     if (gObjectList[objectIndex].state >= 3) {
         func_8008A364(objectIndex, cameraId, 0x2AABU, 0x0000012C);
-        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+        if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
             D_80183E80[0] = (s16) gObjectList[objectIndex].orientation[0];
             D_80183E80[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
             D_80183E80[2] = (u16) gObjectList[objectIndex].orientation[2];
@@ -3784,7 +3784,7 @@ void func_80054D00(s32 objectIndex, s32 cameraId) {
 
 void func_80054E10(s32 objectIndex) {
     if (gObjectList[objectIndex].state > 0) {
-        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00800000) != 0) {
+        if (is_obj_flag_status_active(objectIndex, 0x00800000) != 0) {
             D_80183E50[0] = gObjectList[objectIndex].pos[0];
             D_80183E50[1] = gObjectList[objectIndex].unk_044 + 0.8;
             D_80183E50[2] = gObjectList[objectIndex].pos[2];
@@ -3819,7 +3819,7 @@ void func_80054F04(s32 cameraId) {
         object = &gObjectList[objectIndex];
         if (object->state > 0) {
             func_8008A364(objectIndex, cameraId, 0x2AABU, 0x000000C8);
-            if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
+            if ((is_obj_flag_status_active(objectIndex, VISIBLE) != 0) && (gMatrixHudCount <= MTX_HUD_POOL_SIZE_MAX)) {
                 object->orientation[1] = func_800418AC(object->pos[0], object->pos[2], sp44->pos);
                 rsp_set_matrix_gObjectList(objectIndex);
                 gSPDisplayList(gDisplayListHead++, D_0D006980);
@@ -3829,20 +3829,20 @@ void func_80054F04(s32 cameraId) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void func_800550A4(s32 arg0) {
-    s32 var_s0;
+void render_moles(s32 cameraId) {
+    s32 i;
 
-    for (var_s0 = 0; var_s0 < 8; var_s0++) {
-        func_80054D00(indexObjectList1[var_s0], arg0);
+    for (i = 0; i < NUM_GROUP1_MOLES; i++) {
+        func_80054D00(indexObjectList1[i], cameraId);
     }
-    for (var_s0 = 0; var_s0 < 11; var_s0++) {
-        func_80054D00(indexObjectList2[var_s0], arg0);
+    for (i = 0; i < NUM_GROUP2_MOLES; i++) {
+        func_80054D00(indexObjectList2[i], cameraId);
     }
-    for (var_s0 = 0; var_s0 < 12; var_s0++) {
-        func_80054D00(indexObjectList3[var_s0], arg0);
+    for (i = 0; i < NUM_GROUP3_MOLES; i++) {
+        func_80054D00(indexObjectList3[i], cameraId);
     }
-    func_80054EB8(arg0);
-    func_80054F04(arg0);
+    func_80054EB8(cameraId);
+    func_80054F04(cameraId);
 }
 
 void func_80055164(s32 objectIndex) {
@@ -3864,7 +3864,7 @@ void func_80055228(s32 cameraId) {
     for (var_s1 = 0; var_s1 < 4; var_s1++) {
         temp_s0 = indexObjectList1[var_s1];
         func_8008A364(temp_s0, cameraId, 0x4000U, 0x000005DC);
-        if (is_obj_index_flag_unk_054_active(temp_s0, 0x00040000) != 0) {
+        if (is_obj_flag_status_active(temp_s0, VISIBLE) != 0) {
             func_80055164(temp_s0);
         }
     }
@@ -3892,7 +3892,7 @@ void func_80055380(s32 arg0) {
             D_80165908 = 1;
             func_800722A4(var_s1, 2);
         }
-        if (is_obj_index_flag_unk_054_active(var_s1, 0x00040000) != 0) {
+        if (is_obj_flag_status_active(var_s1, VISIBLE) != 0) {
             func_800552BC(var_s1);
         }
     }
@@ -3916,7 +3916,7 @@ void render_crabs(s32 arg0) {
     for (someIndex = 0; someIndex < NUM_CRABS; someIndex++) {
         test = indexObjectList1[someIndex];
         func_8008A364(test, arg0, 0x2AABU, 0x00000320);
-        if (is_obj_index_flag_unk_054_active(test, 0x00040000) != 0) {
+        if (is_obj_flag_status_active(test, VISIBLE) != 0) {
             draw_crabs(test, arg0);
         }
     }
@@ -3941,15 +3941,15 @@ void render_hedgehogs(s32 arg0) {
     for (someIndex = 0; someIndex < NUM_HEDGEHOGS; someIndex++) {
         test = indexObjectList2[someIndex];
         something = func_8008A364(test, arg0, 0x4000U, 0x000003E8);
-        if (is_obj_index_flag_unk_054_active(test, 0x00040000) != 0) {
-            set_object_flag_unk_054_true(test, 0x00200000);
+        if (is_obj_flag_status_active(test, VISIBLE) != 0) {
+            set_object_flag_status_true(test, 0x00200000);
             if (something < 0x2711U) {
-                set_object_flag_unk_054_true(test, 0x00000020);
+                set_object_flag_status_true(test, 0x00000020);
             } else {
-                set_object_flag_unk_054_false(test, 0x00000020);
+                set_object_flag_status_false(test, 0x00000020);
             }
             if (something < 0x57E41U) {
-                set_object_flag_unk_054_true(test, 0x00400000);
+                set_object_flag_status_true(test, 0x00400000);
             }
             if (something < 0x52211U) {
                 func_800555BC(test, arg0);
@@ -3968,7 +3968,7 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
 
     object = &gObjectList[objectIndex];
     if (object->state >= 2) {
-        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00000020) != 0) {
+        if (is_obj_flag_status_active(objectIndex, 0x00000020) != 0) {
             if (func_80072320(objectIndex, 4) != 0) {
                 if (arg2 >= arg1) {
                     sp34[0] = object->pos[0];
@@ -3988,8 +3988,8 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
     }
 }
 
-void func_8005592C(s32 cameraId) {
-    s32 var_s2;
+void render_penguins(s32 cameraId) {
+    s32 i;
     s32 objectIndex;
     s32 temp_s1;
     s32 var_a3;
@@ -4003,12 +4003,12 @@ void func_8005592C(s32 cameraId) {
     } else {
         var_s3 = 0x00015F90;
     }
-    for (var_s2 = 0; var_s2 < 15; var_s2++) {
-        objectIndex = indexObjectList1[var_s2];
+    for (i = 0; i < NUM_PENGUINS; i++) {
+        objectIndex = indexObjectList1[i];
         if (gObjectList[objectIndex].state >= 2) {
             if (gPlayerCountSelection1 == 1) {
                 var_s1 = 0x4000;
-                if (var_s2 == 0) {
+                if (i == 0) {
                     var_a3 = 0x000005DC;
                 } else if (func_80072320(objectIndex, 8) != 0) {
                     var_a3 = 0x00000320;
@@ -4025,7 +4025,7 @@ void func_8005592C(s32 cameraId) {
                 }
             }
             temp_s1 = func_8008A364(objectIndex, cameraId, var_s1, var_a3);
-            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+            if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
                 func_800557B4(objectIndex, (u32) temp_s1, var_s3);
             }
         }
@@ -4037,7 +4037,7 @@ void func_80055AB8(s32 objectIndex, s32 cameraId) {
 
     camera = &camera1[cameraId];
     if (gObjectList[objectIndex].state >= 2) {
-        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00100000) != 0) {
+        if (is_obj_flag_status_active(objectIndex, 0x00100000) != 0) {
             D_80183E40[0] = gObjectList[objectIndex].pos[0];
             D_80183E40[1] = gObjectList[objectIndex].pos[1] + 16.0;
             D_80183E40[2] = gObjectList[objectIndex].pos[2];
@@ -4053,14 +4053,14 @@ void func_80055AB8(s32 objectIndex, s32 cameraId) {
     }
 }
 
-void func_80055C38(s32 cameraId) {
+void render_chain_chomps(s32 cameraId) {
     s32 var_s1;
     s32 objectIndex;
 
     for (var_s1 = 0; var_s1 < 3; var_s1++) {
         objectIndex = indexObjectList2[var_s1];
         func_8008A1D0(objectIndex, cameraId, 0x000005DC, 0x000009C4);
-        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+        if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
             func_80055AB8(objectIndex, cameraId);
         }
     }
@@ -4076,7 +4076,7 @@ void func_80055CCC(s32 objectIndex, s32 cameraId) {
         func_8008A454(objectIndex, cameraId, 0x0000012C);
         test = gObjectList[objectIndex].pos[1] - gObjectList[objectIndex].unk_044;
         func_8004A6EC(objectIndex, (20.0 / test) + 0.5);
-        if (is_obj_index_flag_unk_054_inactive(objectIndex, 0x00100000) != 0) {
+        if (is_obj_index_flag_status_inactive(objectIndex, 0x00100000) != 0) {
             func_80043328(gObjectList[objectIndex].pos, (u16 *) gObjectList[objectIndex].direction_angle, gObjectList[objectIndex].sizeScaling, d_course_luigi_raceway_dl_F960);
             gSPDisplayList(gDisplayListHead++, d_course_luigi_raceway_dl_F650);
         } else {
@@ -4092,16 +4092,16 @@ void func_80055CCC(s32 objectIndex, s32 cameraId) {
     }
 }
 
-void func_80055E68(s32 arg0) {
+void render_hot_air_balloon(s32 arg0) {
     s32 objectIndex;
     objectIndex = indexObjectList1[0];
     if (gGamestate != 9) {
         func_8008A1D0(objectIndex, arg0, 0x000005DC, 0x00000BB8);
-        if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
+        if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
             func_80055CCC(objectIndex, arg0);
         }
     } else {
-        set_object_flag_unk_054_false(objectIndex, 0x00100000);
+        set_object_flag_status_false(objectIndex, 0x00100000);
         func_80055CCC(objectIndex, arg0);
     }
 }
@@ -4147,7 +4147,7 @@ void func_80056160(s32 arg0) {
     func_80055FA0(indexObjectList1[3], arg0);
 }
 
-void func_80056188(s32 cameraId) {
+void render_neon(s32 cameraId) {
     Camera *camera;
     s32 var_s2;
     s32 objectIndex;
@@ -4158,7 +4158,7 @@ void func_80056188(s32 cameraId) {
         objectIndex = indexObjectList1[var_s2];
         if (D_8018E838[cameraId] == 0) {
             object = &gObjectList[objectIndex];
-            if ((object->state >= 2) && (is_obj_index_flag_unk_054_inactive(objectIndex, 0x00080000) != 0) && (func_8008A140(objectIndex, camera, 0x2AABU) != 0)) {
+            if ((object->state >= 2) && (is_obj_index_flag_status_inactive(objectIndex, 0x00080000) != 0) && (is_object_visible_on_camera(objectIndex, camera, 0x2AABU) != 0)) {
                 object->orientation[1] = angle_between_object_camera(objectIndex, camera);
                 draw_2d_texture_at(object->pos, object->orientation, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
@@ -4367,12 +4367,12 @@ void func_80057114(s32 cameraId) {
     if (cameraId == PLAYER_ONE) {
         for (i = 0; i < NUM_BOMB_KARTS_VERSUS; i++) {
             objectIndex = gIndexObjectBombKart[i];
-            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00200000) != 0) {
+            if (is_obj_flag_status_active(objectIndex, 0x00200000) != 0) {
                 gBombKarts[i].unk_4A = 0;
             } else if (gGamestate != 5) {
                 gBombKarts[i].unk_4A = 1;
             }
-            set_object_flag_unk_054_false(objectIndex, 0x00200000);
+            set_object_flag_status_false(objectIndex, 0x00200000);
         }
     }
 
@@ -4386,8 +4386,8 @@ void func_80057114(s32 cameraId) {
             gObjectList[objectIndex].pos[1] = var_s1_2->bombPos[1];
             gObjectList[objectIndex].pos[2] = var_s1_2->bombPos[2];
             temp_s4 = func_8008A364(objectIndex, cameraId, 0x31C4U, 0x000001F4);
-            if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
-                set_object_flag_unk_054_true(objectIndex, 0x00200000);
+            if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
+                set_object_flag_status_true(objectIndex, 0x00200000);
                 D_80183E80[0] = 0;
                 D_80183E80[1] = func_800418AC(var_s1_2->bombPos[0], var_s1_2->bombPos[2], camera->pos);
                 D_80183E80[2] = 0x8000;
