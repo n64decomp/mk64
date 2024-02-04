@@ -520,12 +520,15 @@ void setup_game_memory(void) {
     set_segment_base_addr(0, (void *) SEG_START);
     
     // Memory pool size of 0xAB630
-    initialize_memory_pool((uintptr_t) &_mainSegmentNoloadEnd, (uintptr_t) MEMORY_POOL_END);
+    initialize_memory_pool((uintptr_t) MEMORY_POOL_START, (uintptr_t) MEMORY_POOL_END);
 
     func_80000BEC();
-    osInvalDCache((void *) SEG_TRIG_TABLES, 0x5810);
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_trigTablesSegmentRomStart, (void *) SEG_TRIG_TABLES, 0x5810, &gDmaMesgQueue);
+
+    // Initialize trig tables
+    osInvalDCache((void *) SEG_TRIG_TABLES, TRIG_TABLES_SIZE);
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_trigTablesSegmentRomStart, (void *) SEG_TRIG_TABLES, TRIG_TABLES_SIZE, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+
     set_segment_base_addr(2, (void *) load_data((uintptr_t) &_data_segment2SegmentRomStart, (uintptr_t) &_data_segment2SegmentRomEnd));
     
     commonCourseDataSize = (uintptr_t)&_common_texturesSegmentRomEnd - (uintptr_t)&_common_texturesSegmentRomStart;

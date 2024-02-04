@@ -1,8 +1,9 @@
 #include <ultra64.h>
 #include <macros.h>
+#include <segments.h>
 
 /**
  * Memory pool setup to prevent other code segments flowing into the memory pool
  * and for easier portability.
 */
-u8 memoryPool[0xAB630];
+u8 memoryPool[MEMORY_POOL_SIZE];

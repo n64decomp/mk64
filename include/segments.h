@@ -12,8 +12,16 @@ extern u8 _racingSegmentRomStart[];
 extern u8 _racingSegmentRomEnd[];
 
 extern u8 _trigTablesSegmentStart[];
+extern u8 _trigtablesSegmentEnd[];
+extern u8 _trigTablesSegmentSize[];
 
+extern u8 _trigTablesSegmentRomStart[];
+extern u8 _trigTablesSegmentRomEnd[];
 
+extern u8 _memoryPoolSegmentNoloadStart[];
+extern u8 _memoryPoolSegmentNoloadEnd[];
+
+extern u8 _memoryPoolSegmentNoloadSize[];
 /**
  * mk64 has three segments:
  *     main   0x80000400
@@ -26,12 +34,22 @@ extern u8 _trigTablesSegmentStart[];
 #define SEG_MAIN     0x80000400
 
 
+
+
 #define ENDING_SEQUENCE_SIZE 0xDF00
 #define RACING_SEQUENCE_SIZE 0x2C470
 
-
 #ifdef AVOID_UB
-    #define MEMORY_POOL_END (&_mainSegmentNoloadEnd[0] + 0xAB630)
+#define TRIG_TABLES_SIZE _trigTablesSegmentSize
+#else
+#define TRIG_TABLES_SIZE 0x5810
+#endif
+
+#define MEMORY_POOL_SIZE 0xAB630
+
+#define MEMORY_POOL_START &_memoryPoolSegmentNoloadStart
+#ifdef AVOID_UB
+    #define MEMORY_POOL_END (&_memoryPoolSegmentNoloadStart[0] + MEMORY_POOL_SIZE)
 #else
     #define MEMORY_POOL_END 0x80242F00
 #endif // AVOID_UB

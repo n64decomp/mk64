@@ -13,6 +13,7 @@ OUTPUT_ARCH (mips)
 #define END_SEG(name) \
     _##name##SegmentEnd = ADDR(.name) + SIZEOF(.name); \
     _##name##SegmentRomEnd = __romPos + SIZEOF(.name); \
+    _##name##SegmentSize = SIZEOF(.name); \
     __romPos += SIZEOF(.name);
 
 #define BEGIN_NOLOAD(name) \
