@@ -520,11 +520,11 @@ void setup_game_memory(void) {
     set_segment_base_addr(0, (void *) SEG_START);
     
     // Memory pool size of 0xAB630
-    initialize_memory_pool((uintptr_t) &_mainSegNoloadEnd, (uintptr_t) MEMORY_POOL_END);
+    initialize_memory_pool((uintptr_t) &_mainSegmentNoloadEnd, (uintptr_t) MEMORY_POOL_END);
 
     func_80000BEC();
-    osInvalDCache((void *) SEG_802BA370, 0x5810);
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_data_802BA370SegmentRomStart, (void *) SEG_802BA370, 0x5810, &gDmaMesgQueue);
+    osInvalDCache((void *) SEG_TRIG_TABLES, 0x5810);
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_trigTablesSegmentRomStart, (void *) SEG_TRIG_TABLES, 0x5810, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     set_segment_base_addr(2, (void *) load_data((uintptr_t) &_data_segment2SegmentRomStart, (uintptr_t) &_data_segment2SegmentRomEnd));
     

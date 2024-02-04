@@ -16,11 +16,11 @@ OUTPUT_ARCH (mips)
     __romPos += SIZEOF(.name);
 
 #define BEGIN_NOLOAD(name) \
-    _##name##SegNoloadStart = ADDR(.name.noload); \
+    _##name##SegmentNoloadStart = ADDR(.name.noload); \
     .name.noload (NOLOAD) :
 	
 #define END_NOLOAD(name) \
-    _##name##SegNoloadEnd = ADDR(.name.noload) + SIZEOF(.name.noload);
+    _##name##SegmentNoloadEnd = ADDR(.name.noload) + SIZEOF(.name.noload);
 
 SECTIONS
 {
@@ -488,12 +488,12 @@ SECTIONS
    END_SEG(other_textures)
 
    /* 0x802BA370 724220-729A30 [0x5810] */
-   BEGIN_SEG(data_802BA370, SEG_802BA370)
+   BEGIN_SEG(trigTables, SEG_TRIG_TABLES)
    {
         BUILD_DIR/src/data/trig_tables.o(.data);
         . = ALIGN(0x10);
    }
-   END_SEG(data_802BA370)
+   END_SEG(trigTables)
 
    /* 0x0A000000 729A30-7E684F [BCE20] */
    BEGIN_SEG(textures_0a, 0x0A000000)
@@ -653,9 +653,9 @@ SECTIONS
       *(*);
    }
 
-   ASSERT((_mainSegNoloadEnd <= _memoryPoolSegNoloadStart), "Error: Main segment extended into the racing segment.")
-   ASSERT((_memoryPoolSegNoloadEnd <= _endingSequencesSegmentStart), "Error: Main segment extended into the racing segment.")
-   ASSERT((_endingSequencesSegNoloadEnd <= _racingSegmentStart), "Error: Buffers segment extended into the ending segment")
-   ASSERT((_racingSegNoloadEnd <= _buffersSegNoloadStart), "Error: Racing segment extended into the buffers segment.")
-   ASSERT((_buffersSegNoloadEnd <= RDRAM_END), "Error: Buffers segment extended into the ending segment")
+   ASSERT((_mainSegmentNoloadEnd <= _memoryPoolSegmentNoloadStart), "Error: Main segment extended into the memory pool.")
+   ASSERT((_memoryPoolSegmentNoloadEnd <= _endingSequencesSegmentStart), "Error: Memory pool extended into the ending segment.")
+   ASSERT((_endingSequencesSegmentNoloadEnd <= _racingSegmentStart), "Error: Ending segment extended into the racing segment")
+   ASSERT((_racingSegmentNoloadEnd <= _buffersSegmentNoloadStart), "Error: Racing segment extended into the buffers segment.")
+   ASSERT((_buffersSegmentNoloadEnd <= RDRAM_END), "Error: Buffers segment extended past 8MB of memory")
 }
