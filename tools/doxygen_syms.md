@@ -4841,6 +4841,7 @@ Variable Name | Memory Address
 [D_8019769C](@ref D_8019769C) | 0x8019769C
 [D_801976A0](@ref D_801976A0) | 0x801976A0
 [LeoDiskHandle](@ref LeoDiskHandle) | 0x80197850
+[memoryPool](@ref memoryPool) | 0x801978D0
 [func_8028DF00](@ref func_8028DF00) | 0x8028DF00
 [func_8028DF38](@ref func_8028DF38) | 0x8028DF38
 [func_8028E028](@ref func_8028E028) | 0x8028E028
@@ -19907,6 +19908,11 @@ Variable Name | Memory Address
 [seq_1C_end](@ref seq_1C_end) | 0x002821F0
 [seq_1D_end](@ref seq_1D_end) | 0x00282E70
 [instrument_sets](@ref instrument_sets) | 0x00282E80
+[segment.)](@ref segment.)) | 0x00000001
+[segment.)](@ref segment.)) | 0x00000001
+[segment)](@ref segment)) | 0x00000001
+[segment.)](@ref segment.)) | 0x00000001
+[segment)](@ref segment)) | 0x00000001
 
 Note: This information is generated during the compilation process.
 

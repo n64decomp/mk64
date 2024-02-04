@@ -89,7 +89,7 @@
 #include "src/ending/code_80281C40.h"
 #include "src/ending/credits.h"
 #include "src/ending/podium_ceremony_actors.h"
-#include "src/framebuffers.h"
+#include "src/buffers.h"
 #include "src/hud_renderer.h"
 #include "src/kart_dma.h"
 #include "src/main.h"

@@ -26,7 +26,7 @@
 #include "podium_ceremony_actors.h"
 #include "skybox_and_splitscreen.h"
 #include "src/data/startup_logo.inc.h"
-#include "framebuffers.h"
+#include "buffers.h"
 #include "racing/race_logic.h"
 #include "ending/code_80281C40.h"
 #include "spawn_players.h"

@@ -13,7 +13,7 @@
 #include "render_player.h"
 #include "code_80057C60.h"
 #include "effects.h"
-#include "framebuffers.h"
+#include "buffers.h"
 #include "waypoints.h"
 #include "player_controller.h"
 #include "hud_renderer.h"
@@ -1691,7 +1691,7 @@ void func_80026A48(Player *player, s8 arg1) {
     }
 }
 
-// Properly define struct pointers, see framebuffers.h comment for more information.
+// Properly define struct pointers, see buffers.h comment for more information.
 #ifdef AVOID_UB
 #define D_802F1F80_WHEEL(a, b, c) &D_802F1F80[a][b][c].wheel_palette
 #else

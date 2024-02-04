@@ -7,6 +7,8 @@
 
 #define SEG_START    0x80000000
 #define SEG_MAIN     0x80000400
+// End of Jumper pak memory
+#define RDRAM_END         0x807FFFFF
 
 #ifdef AVOID_UB
     // addr need to be manually updated when game is shifted

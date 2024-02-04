@@ -5,7 +5,7 @@
 #include "kart_attributes.h"
 #include "memory.h"
 #include "waypoints.h"
-#include "framebuffers.h"
+#include "buffers.h"
 #include "kart_dma.h"
 #include "camera.h"
 #include "math_util.h"

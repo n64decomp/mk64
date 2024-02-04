@@ -344,6 +344,12 @@ SECTIONS
    }
    END_NOLOAD(main)
 
+   /* Checks that segments are not overlapping into the memory pool but is not strictly necessary */
+   BEGIN_NOLOAD(memoryPool)
+   {
+      BUILD_DIR/src/data/memory_pool.o(.bss);
+   }
+   END_NOLOAD(memoryPool)
    
    /* 0x8028DF00 0F7510-123640 [2C130] */
    BEGIN_SEG(racing, SEG_RACING)
@@ -380,7 +386,18 @@ SECTIONS
       BUILD_DIR/src/racing/race_logic.o(.bss*);
       BUILD_DIR/src/racing/actors.o(.bss*);
       BUILD_DIR/src/racing/memory.o(.bss*);
-      BUILD_DIR/src/data/framebuffers.o(.bss*);
+      . = ALIGN(0x10);
+   }
+   END_NOLOAD(racing)
+   
+   _racingSegmentNoloadSize = SIZEOF(.racing.noload) + 0x10;
+   
+   _racingSegmentNoloadSizeHi = _racingSegmentNoloadSize >> 16;
+   _racingSegmentNoloadSizeLo = _racingSegmentNoloadSize & 0xFFFF;
+
+   BEGIN_NOLOAD(buffers)
+   {
+      BUILD_DIR/src/data/buffers.o(.bss*);
       BUILD_DIR/src/data/gfx_output_buffer.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/src/audio/heap.o(.bss*);
@@ -388,12 +405,8 @@ SECTIONS
       BUILD_DIR/src/audio/data.o(.bss);
       . = ALIGN(0x8);
    }
-   END_NOLOAD(racing)
+   END_NOLOAD(buffers)
 
-   _racingSegmentNoloadSize = SIZEOF(.racing.noload) + 0x10;
-   
-   _racingSegmentNoloadSizeHi = _racingSegmentNoloadSize >> 16;
-   _racingSegmentNoloadSizeLo = _racingSegmentNoloadSize & 0xFFFF;
 
    /* 0x80280000 123640-12AAE0 [74A0] */
    BEGIN_SEG(endingSequences, SEG_ENDING_SEQUENCES)
@@ -477,7 +490,7 @@ SECTIONS
    /* 0x802BA370 724220-729A30 [0x5810] */
    BEGIN_SEG(data_802BA370, SEG_802BA370)
    {
-        BUILD_DIR/src/data/framebuffers.o(.data);
+        BUILD_DIR/src/data/trig_tables.o(.data);
         . = ALIGN(0x10);
    }
    END_SEG(data_802BA370)
@@ -639,4 +652,10 @@ SECTIONS
    {
       *(*);
    }
+
+   ASSERT((_mainSegNoloadEnd <= _memoryPoolSegNoloadStart), "Error: Main segment extended into the racing segment.")
+   ASSERT((_memoryPoolSegNoloadEnd <= _endingSequencesSegmentStart), "Error: Main segment extended into the racing segment.")
+   ASSERT((_endingSequencesSegNoloadEnd <= _racingSegmentStart), "Error: Buffers segment extended into the ending segment")
+   ASSERT((_racingSegNoloadEnd <= _buffersSegNoloadStart), "Error: Racing segment extended into the buffers segment.")
+   ASSERT((_buffersSegNoloadEnd <= RDRAM_END), "Error: Buffers segment extended into the ending segment")
 }

@@ -13,7 +13,7 @@
 #include <segments.h>
 #include <common_structs.h>
 #include <defines.h>
-#include "framebuffers.h"
+#include "buffers.h"
 #include "camera.h"
 #include "profiler.h"
 #include "race_logic.h"
