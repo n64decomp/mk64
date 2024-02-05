@@ -475,7 +475,7 @@ void display_and_vsync(void) {
 void init_segment_ending_sequences(void) {
     bzero((void *) SEG_ENDING, SEG_ENDING_SIZE);
     osWritebackDCacheAll();
-    dma_copy((u8 *) SEG_ENDING, SEG_ENDING_ROM_START, SEG_ENDING_ROM_SIZE);
+    dma_copy((u8 *) SEG_ENDING, (u8 *) SEG_ENDING_ROM_START, SEG_ENDING_ROM_SIZE);
     osInvalICache((void *) SEG_ENDING, SEG_ENDING_SIZE);
     osInvalDCache((void *) SEG_ENDING, SEG_ENDING_SIZE);
 }
@@ -483,7 +483,7 @@ void init_segment_ending_sequences(void) {
 void init_segment_racing(void) {
     bzero((void *) SEG_RACING, SEG_RACING_SIZE);
     osWritebackDCacheAll();
-    dma_copy((u8 *) SEG_RACING, SEG_RACING_ROM_START, SEG_RACING_ROM_SIZE);
+    dma_copy((u8 *) SEG_RACING, (u8 *) SEG_RACING_ROM_START, SEG_RACING_ROM_SIZE);
     osInvalICache((void *) SEG_RACING, SEG_RACING_SIZE);
     osInvalDCache((void *) SEG_RACING, SEG_RACING_SIZE);
 }

@@ -3,7 +3,7 @@
 
 OUTPUT_ARCH (mips)
 
-#include "include/hardcoded_segments.h"
+#include "include/linker_segments.h"
 
 #define BEGIN_SEG(name, addr) \
     _##name##SegmentStart = ADDR(.name); \
@@ -35,7 +35,7 @@ SECTIONS
    END_SEG(boot)
 
    /* 0x80000400 001000-0D9B70 [D8B70] */
-   BEGIN_SEG(main, SEG_MAIN) SUBALIGN(0x10)
+   BEGIN_SEG(main, LINKER_MAIN) SUBALIGN(0x10)
    {
       BUILD_DIR/asm/entry.o(.text);
       BUILD_DIR/src/main.o(.text*);
@@ -353,7 +353,7 @@ SECTIONS
    END_NOLOAD(memoryPool)
    
    /* 0x8028DF00 0F7510-123640 [2C130] */
-   BEGIN_SEG(racing, SEG_RACING)
+   BEGIN_SEG(racing, LINKER_RACING)
    {
       BUILD_DIR/src/racing/race_logic.o(.text*);
       BUILD_DIR/src/racing/render_courses.o(.text*);
@@ -405,7 +405,7 @@ SECTIONS
 
 
    /* 0x80280000 123640-12AAE0 [74A0] */
-   BEGIN_SEG(ending, SEG_ENDING)
+   BEGIN_SEG(ending, LINKER_ENDING)
    {
       BUILD_DIR/src/ending/code_80280000.o(.text);
       BUILD_DIR/src/ending/podium_ceremony_actors.o(.text);
@@ -476,7 +476,7 @@ SECTIONS
    END_SEG(other_textures)
 
    /* 0x802BA370 724220-729A30 [0x5810] */
-   BEGIN_SEG(trigTables, TRIG_TABLES)
+   BEGIN_SEG(trigTables, LINKER_TRIG_TABLES)
    {
         BUILD_DIR/src/data/trig_tables.o(.data);
         . = ALIGN(0x10);

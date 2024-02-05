@@ -61,7 +61,6 @@
 #include <macros.h>
 #include <mk64.h>
 #include <objects.h>
-#include <hardcoded_segments.h>
 #include <segments.h>
 #include <sounds.h>
 #include "data/trig_tables.h"
