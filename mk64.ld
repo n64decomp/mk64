@@ -390,11 +390,6 @@ SECTIONS
       . = ALIGN(0x10);
    }
    END_NOLOAD(racing)
-   
-   _racingSegmentNoloadSize = SIZEOF(.racing.noload) + 0x10;
-   
-   _racingSegmentNoloadSizeHi = _racingSegmentNoloadSize >> 16;
-   _racingSegmentNoloadSizeLo = _racingSegmentNoloadSize & 0xFFFF;
 
    BEGIN_NOLOAD(buffers)
    {
