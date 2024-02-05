@@ -50,6 +50,10 @@ extern u8 _startupLogoSegmentRomEnd[];
 
     #define SEG_ENDING                (uintptr_t) &_endingSegmentStart[0]
     #define SEG_ENDING_ROM_START      (uintptr_t) &_endingSegmentRomStart[0]
+    /** 
+     * Ending segment original size is 0xDF00 but much of that remains unused.
+     * This auto fits the segment to its proper size.
+     */
     #define SEG_ENDING_SIZE           (size_t)    ALIGN16( (ptrdiff_t) (&_endingSegmentNoloadEnd[0] - &_endingSegmentStart[0]) )
     #define SEG_ENDING_ROM_SIZE       (size_t)    ALIGN16( (ptrdiff_t) (&_endingSegmentRomEnd[0] - &_endingSegmentRomStart[0]) )
 
