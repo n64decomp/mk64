@@ -488,7 +488,7 @@ void init_segment_racing(void) {
     osInvalDCache((void *) SEG_RACING, SEG_RACING_SIZE);
 }
 
-void dma_copy(u8 *dest, u8 *romAddr, u32 size) {
+void dma_copy(u8 *dest, u8 *romAddr, size_t size) {
 
     osInvalDCache(dest, size);
     while(size > 0x100) {

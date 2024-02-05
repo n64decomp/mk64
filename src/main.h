@@ -82,7 +82,7 @@ void config_gfx_pool(void);
 void display_and_vsync(void);
 void init_segment_ending_sequences(void);
 void init_segment_racing(void);
-void dma_copy(u8*, u8*, u32);
+void dma_copy(u8*, u8*, size_t);
 void setup_game_memory(void);
 void game_init_clear_framebuffer(void);
 void race_logic_loop(void);

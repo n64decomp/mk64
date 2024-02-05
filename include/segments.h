@@ -8,11 +8,14 @@ extern u8 _memoryPoolSegmentNoloadEnd[];
 extern u8 _memoryPoolSegmentNoloadSize[];
 
 extern u8 _endingSegmentStart[];
+extern u8 _endingSegmentEnd[];
 extern u8 _endingSegmentRomStart[];
 extern u8 _endingSegmentRomEnd[];
+extern u8 _endingSegmentNoloadEnd[];
 extern u8 _endingSegmentSize[];
 
 extern u8 _racingSegmentStart[];
+extern u8 _racingSegmentNoloadEnd[];
 extern u8 _racingSegmentRomStart[];
 extern u8 _racingSegmentRomEnd[];
 
@@ -49,12 +52,12 @@ extern u8 _common_texturesSegmentRomEnd[];
 
     #define SEG_ENDING                (uintptr_t) &_endingSegmentStart[0]
     #define SEG_ENDING_ROM_START      (uintptr_t) &_endingSegmentRomStart[0]
-    #define SEG_ENDING_SIZE           (size_t)    0xDF00
+    #define SEG_ENDING_SIZE           (size_t)    ALIGN16((ptrdiff_t)((&_endingSegmentNoloadEnd[0] - &_endingSegmentStart[0])) )
     #define SEG_ENDING_ROM_SIZE       (size_t)    ALIGN16( (ptrdiff_t) (&_endingSegmentRomEnd[0] - &_endingSegmentRomStart[0]) )
 
     #define SEG_RACING                (uintptr_t) &_racingSegmentStart[0]
     #define SEG_RACING_ROM_START      (uintptr_t) &_racingSegmentRomStart[0]
-    #define SEG_RACING_SIZE           (size_t)    0x2C470
+    #define SEG_RACING_SIZE           (size_t)    ALIGN16((ptrdiff_t)((&_racingSegmentNoloadEnd[0] - &_racingSegmentStart[0])) )
     #define SEG_RACING_ROM_SIZE       (size_t)    ALIGN16( (ptrdiff_t) (&_racingSegmentRomEnd[0] - &_racingSegmentRomStart[0]) )
 
     #define TRIG_TABLES               (uintptr_t) &_trigTablesSegmentStart[0]
@@ -74,13 +77,15 @@ extern u8 _common_texturesSegmentRomEnd[];
     #define MEMORY_POOL_END           (uintptr_t) 0x80242F00
 
     #define SEG_ENDING                (uintptr_t) 0x80280000
-    #define SEG_ENDING_ROM_START      (u8 *) &_endingSegmentRomStart[0]
+    #define SEG_ENDING_ROM_START      (u8 *)      &_endingSegmentRomStart[0]
+    
     #define SEG_ENDING_SIZE           (size_t)    0xDF00
     #define SEG_ENDING_ROM_SIZE       (size_t)    ALIGN16( (ptrdiff_t) (&_endingSegmentRomEnd[0] - &_endingSegmentRomStart[0]) )
 
     #define SEG_RACING                (uintptr_t) 0x8028DF00
-    #define SEG_RACING_ROM_START      (u8 *) &_racingSegmentRomStart[0]
+    #define SEG_RACING_ROM_START      (u8 *)      &_racingSegmentRomStart[0]
     #define SEG_RACING_SIZE           (size_t)    0x2C470
+
     #define SEG_RACING_ROM_SIZE       (size_t)    ALIGN16( (ptrdiff_t) (&_racingSegmentRomEnd[0] - &_racingSegmentRomStart[0]) )
 
     #define TRIG_TABLES               (uintptr_t) 0x802BA370
