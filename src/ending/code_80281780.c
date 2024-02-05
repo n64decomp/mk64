@@ -96,7 +96,7 @@ void load_ceremony_cutscene(void) {
     gCurrentCourseId = COURSE_ROYAL_RACEWAY;
     D_800DC5B4 = (u16)1;
     gIsMirrorMode = 0;
-    gMenuSelectionFromEndingSequence = 0xFFFF;
+    gGotoMenu = 0xFFFF;
     D_80287554 = 0;
     func_802A4D18();
     func_802A74BC();

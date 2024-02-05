@@ -410,7 +410,7 @@ SECTIONS
 
 
    /* 0x80280000 123640-12AAE0 [74A0] */
-   BEGIN_SEG(endingSequences, SEG_ENDING_SEQUENCES)
+   BEGIN_SEG(ending, SEG_ENDING)
    {
       BUILD_DIR/src/ending/code_80280000.o(.text);
       BUILD_DIR/src/ending/podium_ceremony_actors.o(.text);
@@ -428,23 +428,15 @@ SECTIONS
       BUILD_DIR/src/ending/credits.jp.o(.rodata);
       BUILD_DIR/src/ending/ceremony_and_credits.o(.rodata);
    }
-   END_SEG(endingSequences)
+   END_SEG(ending)
 
-   BEGIN_NOLOAD(endingSequences) {
+   BEGIN_NOLOAD(ending) {
       BUILD_DIR/src/ending/code_80280000.o(.bss);
       BUILD_DIR/src/ending/podium_ceremony_actors.o(.bss);
       BUILD_DIR/src/ending/code_80281C40.o(.bss);
       BUILD_DIR/src/ending/ceremony_and_credits.o(.bss);
    }
-   END_NOLOAD(endingSequences)
-
-   _endingSequencesSegmentNoloadSize = SIZEOF(.endingSequences.noload) + 0x10;
-   
-   _endingSequencesSegmentNoloadSizeHi = _endingSequencesSegmentNoloadSize >> 16;
-   _endingSequencesSegmentNoloadSizeLo = _endingSequencesSegmentNoloadSize & 0xFFFF;
-
-
-
+   END_NOLOAD(ending)
 
    /* 0x801978D0 12AAE0-132B50 [8070] */
    /* texture tables and DLs, set as segment 0x02 */
@@ -489,7 +481,7 @@ SECTIONS
    END_SEG(other_textures)
 
    /* 0x802BA370 724220-729A30 [0x5810] */
-   BEGIN_SEG(trigTables, SEG_TRIG_TABLES)
+   BEGIN_SEG(trigTables, TRIG_TABLES)
    {
         BUILD_DIR/src/data/trig_tables.o(.data);
         . = ALIGN(0x10);
@@ -655,8 +647,8 @@ SECTIONS
    }
 
    ASSERT((_mainSegmentNoloadEnd <= _memoryPoolSegmentNoloadStart), "Error: Main segment extended into the memory pool.")
-   ASSERT((_memoryPoolSegmentNoloadEnd <= _endingSequencesSegmentStart), "Error: Memory pool extended into the ending segment.")
-   ASSERT((_endingSequencesSegmentNoloadEnd <= _racingSegmentStart), "Error: Ending segment extended into the racing segment")
+   ASSERT((_memoryPoolSegmentNoloadEnd <= _endingSegmentStart), "Error: Memory pool extended into the ending segment.")
+   ASSERT((_endingSegmentNoloadEnd <= _racingSegmentStart), "Error: Ending segment extended into the racing segment")
    ASSERT((_racingSegmentNoloadEnd <= _buffersSegmentNoloadStart), "Error: Racing segment extended into the buffers segment.")
    ASSERT((_buffersSegmentNoloadEnd <= RDRAM_END), "Error: Buffers segment extended past 8MB of memory")
 }

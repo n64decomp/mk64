@@ -617,7 +617,7 @@ void func_80021B0C(void) {
         func_8006E7CC(gPlayerSeven, 6, 0);
         func_8006E7CC(gPlayerEight, 7, 0);
     }
-    if (gGamestate == ENDING_SEQUENCE) {
+    if (gGamestate == ENDING) {
         if (gPlayerOne->unk_044 & 0x2000) {
             render_player_shadow_credits(gPlayerOne, 0, 0);
         }

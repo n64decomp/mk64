@@ -366,7 +366,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
 void func_80039AE4(void) {
     switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            if (gGamestate == ENDING_SEQUENCE) {
+            if (gGamestate == ENDING) {
                 D_80165578 = 0x898;
                 D_8016557A = 0;
                 D_8016557C = 0x384;
@@ -1099,7 +1099,7 @@ void func_8003D080(void) {
     Player* player = &gPlayers[0];
 
     func_8005D290();
-    if (gGamestate == ENDING_SEQUENCE) {
+    if (gGamestate == ENDING) {
         func_8003CD78();
     } else {
         func_8003C0F0();

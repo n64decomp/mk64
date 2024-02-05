@@ -58,7 +58,7 @@
  * @brief Options for gDebugGotoScene
  */
 #define DEBUG_GOTO_RACING 0
-#define DEBUG_GOTO_ENDING_SEQUENCE 1
+#define DEBUG_GOTO_ENDING 1
 #define DEBUG_GOTO_CREDITS_SEQUENCE_CC_50 2
 #define DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA 3
 
@@ -187,14 +187,14 @@
 #define RACING_DUPLICATE 14
 
 /**
- * @brief Options for gGameState gMenuSelectionFromQuit and gMenuSelectionFromEndingSequence
+ * @brief Options for gGameState gGotoMode and gGotoMenu
  */
 #define START_MENU_FROM_QUIT 0
 #define MAIN_MENU_FROM_QUIT 1
 #define PLAYER_SELECT_MENU_FROM_QUIT 2
 #define COURSE_SELECT_MENU_FROM_QUIT 3
 #define RACING 4
-#define ENDING_SEQUENCE 5
+#define ENDING 5
 #define CREDITS_SEQUENCE 9
 
 /**

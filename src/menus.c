@@ -1199,7 +1199,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
 
                 if (controller->button & Z_TRIG) {
                     if (btnAndStick & A_BUTTON) {
-                        gDebugGotoScene = DEBUG_GOTO_ENDING_SEQUENCE;
+                        gDebugGotoScene = DEBUG_GOTO_ENDING;
                     } else {
                         gDebugGotoScene = DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA;
                     }

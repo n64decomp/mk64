@@ -116,7 +116,7 @@ u16 wasSoftReset;
 u16 D_8015011E;
 
 s32 D_80150120;
-s32 gMenuSelectionFromQuit;
+s32 gGotoMode;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
 f32 gCameraZoom[4]; // look like to be the fov of each character
@@ -473,19 +473,19 @@ void display_and_vsync(void) {
 }
 
 void init_segment_ending_sequences(void) {
-    bzero((void *) SEG_ENDING_SEQUENCES, ENDING_SEQUENCE_SIZE);
+    bzero((void *) SEG_ENDING, SEG_ENDING_SIZE);
     osWritebackDCacheAll();
-    dma_copy((u8 *) SEG_ENDING_SEQUENCES, (u8 *) &_endingSequencesSegmentRomStart, ALIGN16((u32)&_endingSequencesSegmentRomEnd - (u32)&_endingSequencesSegmentRomStart));
-    osInvalICache((void *) SEG_ENDING_SEQUENCES, ENDING_SEQUENCE_SIZE);
-    osInvalDCache((void *) SEG_ENDING_SEQUENCES, ENDING_SEQUENCE_SIZE);
+    dma_copy((u8 *) SEG_ENDING, SEG_ENDING_ROM_START, SEG_ENDING_ROM_SIZE);
+    osInvalICache((void *) SEG_ENDING, SEG_ENDING_SIZE);
+    osInvalDCache((void *) SEG_ENDING, SEG_ENDING_SIZE);
 }
 
 void init_segment_racing(void) {
-    bzero((void *) SEG_RACING, RACING_SEQUENCE_SIZE);
+    bzero((void *) SEG_RACING, SEG_RACING_SIZE);
     osWritebackDCacheAll();
-    dma_copy((u8 *) SEG_RACING, (u8 *) &_racingSegmentRomStart, ALIGN16((u32)&_racingSegmentRomEnd - (u32)&_racingSegmentRomStart));
-    osInvalICache((void *) SEG_RACING, RACING_SEQUENCE_SIZE);
-    osInvalDCache((void *) SEG_RACING, RACING_SEQUENCE_SIZE);
+    dma_copy((u8 *) SEG_RACING, SEG_RACING_ROM_START, SEG_RACING_ROM_SIZE);
+    osInvalICache((void *) SEG_RACING, SEG_RACING_SIZE);
+    osInvalDCache((void *) SEG_RACING, SEG_RACING_SIZE);
 }
 
 void dma_copy(u8 *dest, u8 *romAddr, u32 size) {
@@ -516,30 +516,30 @@ void setup_game_memory(void) {
     UNUSED s32 unknown_padding;
 
     init_segment_racing();
-    gHeapEndPtr = (uintptr_t) SEG_RACING;
+    gHeapEndPtr = SEG_RACING;
     set_segment_base_addr(0, (void *) SEG_START);
     
     // Memory pool size of 0xAB630
-    initialize_memory_pool((uintptr_t) MEMORY_POOL_START, (uintptr_t) MEMORY_POOL_END);
+    initialize_memory_pool(MEMORY_POOL_START, MEMORY_POOL_END);
 
     func_80000BEC();
 
-    // Initialize trig tables
-    osInvalDCache((void *) SEG_TRIG_TABLES, TRIG_TABLES_SIZE);
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_trigTablesSegmentRomStart, (void *) SEG_TRIG_TABLES, TRIG_TABLES_SIZE, &gDmaMesgQueue);
+    // Initialize trig tables segment
+    osInvalDCache((void *) TRIG_TABLES, TRIG_TABLES_SIZE);
+    osPiStartDma(&gDmaIoMesg, 0, 0, TRIG_TABLES_ROM_START, (void *) TRIG_TABLES, TRIG_TABLES_SIZE, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
-    set_segment_base_addr(2, (void *) load_data((uintptr_t) &_data_segment2SegmentRomStart, (uintptr_t) &_data_segment2SegmentRomEnd));
+    set_segment_base_addr(2, (void *) load_data(SEG_DATA_START, SEG_DATA_END));
     
-    commonCourseDataSize = (uintptr_t)&_common_texturesSegmentRomEnd - (uintptr_t)&_common_texturesSegmentRomStart;
+    commonCourseDataSize = COMMON_TEXTURES_SIZE;
     commonCourseDataSize = ALIGN16(commonCourseDataSize);
 
 #ifdef AVOID_UB
-    textureSegStart = (ptrdiff_t) SEG_RACING[0] - commonCourseDataSize;
+    textureSegStart = (ptrdiff_t) SEG_RACING - commonCourseDataSize;
 #else
     textureSegStart = SEG_RACING - commonCourseDataSize;
 #endif  
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_common_texturesSegmentRomStart, (void *) textureSegStart, commonCourseDataSize, &gDmaMesgQueue);
+    osPiStartDma(&gDmaIoMesg, 0, 0, COMMON_TEXTURES_ROM_START, (void *) textureSegStart, commonCourseDataSize, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
     textureSegSize = *(uintptr_t *)(textureSegStart + 4);
@@ -877,7 +877,7 @@ void game_state_handler(void) {
 		(gControllerOne->button & R_TRIG) &&
 		(gControllerOne->button & Z_TRIG) &&
 		(gControllerOne->button & B_BUTTON)) {
-			gGamestateNext = ENDING_SEQUENCE;
+			gGamestateNext = ENDING;
 	}
 #endif
 
@@ -901,7 +901,7 @@ void game_state_handler(void) {
         case RACING:
             race_logic_loop();
             break;
-        case ENDING_SEQUENCE:
+        case ENDING:
             podium_ceremony_loop();
             break;
         case CREDITS_SEQUENCE:
@@ -1155,7 +1155,7 @@ void update_gamestate(void) {
             init_segment_racing();
             setup_race();
             break;
-        case ENDING_SEQUENCE:
+        case ENDING:
             gCurrentlyLoadedCourseId = COURSE_NULL;
             init_segment_ending_sequences();
             load_ceremony_cutscene();

@@ -6037,10 +6037,10 @@ func_8009CE64_label2:
         }
 func_8009CE64_label1:
         if (var_a1) {
-            gMenuSelectionFromEndingSequence = 9;
+            gGotoMenu = 9;
             gCreditsCourseId = 8;
         } else {
-            gMenuSelectionFromEndingSequence = 1;
+            gGotoMenu = 1;
             gMenuSelection = 0x0000000B;
         }
     } else if (gGamestate == 4) {

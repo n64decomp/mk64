@@ -168,7 +168,7 @@ extern u16 wasSoftReset;
 extern u16 D_8015011E;
 
 extern s32 D_80150120;
-extern s32 gMenuSelectionFromQuit;
+extern s32 gGotoMode;
 extern f32 gCameraZoom[];
 
 extern f32 gScreenAspect;
@@ -234,11 +234,6 @@ extern f32 gCourseTimer;
 extern u64 gGfxSPTaskOutputBuffer[];
 extern u32 gGfxSPTaskOutputBufferSize;
 
-extern u8 _data_segment2SegmentRomStart[];
-extern u8 _data_segment2SegmentRomEnd[];
-extern u8 _common_texturesSegmentRomStart[];
-extern u8 _common_texturesSegmentRomEnd[];
-extern u8 _trigTablesSegmentRomStart[];
 extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?
 
 #endif

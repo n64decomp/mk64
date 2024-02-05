@@ -3818,7 +3818,7 @@ Variable Name | Memory Address
 [wasSoftReset](@ref wasSoftReset) | 0x8015011C
 [D_8015011E](@ref D_8015011E) | 0x8015011E
 [D_80150120](@ref D_80150120) | 0x80150120
-[gMenuSelectionFromQuit](@ref gMenuSelectionFromQuit) | 0x80150124
+[gGotoMode](@ref gGotoMode) | 0x80150124
 [D_80150128](@ref D_80150128) | 0x80150128
 [D_8015012C](@ref D_8015012C) | 0x8015012C
 [gCameraZoom](@ref gCameraZoom) | 0x80150130
@@ -5590,7 +5590,7 @@ Variable Name | Memory Address
 [sPodiumActorList](@ref sPodiumActorList) | 0x802874F8
 [D_802874FC](@ref D_802874FC) | 0x802874FC
 [D_80287500](@ref D_80287500) | 0x80287500
-[gMenuSelectionFromEndingSequence](@ref gMenuSelectionFromEndingSequence) | 0x80287550
+[gGotoMenu](@ref gGotoMenu) | 0x80287550
 [D_80287554](@ref D_80287554) | 0x80287554
 [D_80281C40_pad](@ref D_80281C40_pad) | 0x80287558
 [D_80287560](@ref D_80287560) | 0x80287560
