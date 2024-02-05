@@ -2832,9 +2832,9 @@ void func_80050E34(s32 playerId, s32 arg1) {
         gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_portrait_bomb_kart_and_question_mark);
         rsp_load_texture(common_texture_portrait_question_mark, 0x00000020, 0x00000020);
         object = &gObjectList[objectIndex];
-        object->pos[0] = object->unk_028[0] + ((f32) (spD0 + 0x20));
-        object->pos[1] = object->unk_028[1] + ((f32) (spC4 + spCC));
-        object->pos[2] = object->unk_028[2];
+        object->pos[0] = object->speed[0] + ((f32) (spD0 + 0x20));
+        object->pos[1] = object->speed[1] + ((f32) (spC4 + spCC));
+        object->pos[2] = object->speed[2];
         rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0069E0);
     } else {
@@ -2847,9 +2847,9 @@ void func_80050E34(s32 playerId, s32 arg1) {
         }
         rsp_load_texture(gPortraitTextures[characterId], 0x00000020, 0x00000020);
         object = &gObjectList[objectIndex];
-        object->pos[0] = object->unk_028[0] + ((f32) (spD0 + 0x20));
-        object->pos[1] = object->unk_028[1] + ((f32) (spC4 + spCC));
-        object->pos[2] = object->unk_028[2];
+        object->pos[0] = object->speed[0] + ((f32) (spD0 + 0x20));
+        object->pos[1] = object->speed[1] + ((f32) (spC4 + spCC));
+        object->pos[2] = object->speed[2];
         rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
         if (spB8 != 0) {
             gSPDisplayList(gDisplayListHead++, D_0D0069F8);

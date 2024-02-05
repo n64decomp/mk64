@@ -1164,7 +1164,7 @@ Variable Name | Memory Address
 [func_8006E848](@ref func_8006E848) | 0x8006E848
 [func_8006E8C4](@ref func_8006E8C4) | 0x8006E8C4
 [func_8006E940](@ref func_8006E940) | 0x8006E940
-[init_object_list](@ref init_object_list) | 0x8006E9C0
+[init_hud](@ref init_hud) | 0x8006E9C0
 [reset_object_variable](@ref reset_object_variable) | 0x8006EA5C
 [func_8006EB10](@ref func_8006EB10) | 0x8006EB10
 [clear_object_list](@ref clear_object_list) | 0x8006ED60
