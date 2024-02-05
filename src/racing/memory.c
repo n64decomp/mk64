@@ -4,6 +4,7 @@
 #include <types.h>
 #include <common_structs.h>
 #include <segments.h>
+#include <decode.h>
 
 #include "memory.h"
 #include "main.h"

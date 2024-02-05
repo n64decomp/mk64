@@ -502,18 +502,19 @@ SECTIONS
 
    /* TODO: 0x825800 -> 0x8028B230 (0x100) ...
             0x828400 -> 0x8028DE30 (0xD0) */
-   BEGIN_SEG(data_821D10, 0x0B000000)
+   BEGIN_SEG(ceremonyData, 0x0B000000)
    {
       BUILD_DIR/src/ending/ceremony_data.inc.mio0.o(.data);
       . = ALIGN(0x10);
    }
-   END_SEG(data_821D10)
-   BEGIN_SEG(data_825800, 0x06000000)
+   END_SEG(ceremonyData)
+
+   BEGIN_SEG(startupLogo, 0x06000000)
    {
       BUILD_DIR/src/data/startup_logo.inc.mio0.o(.data);
       . = ALIGN(0x10);
    }
-   END_SEG(data_825800)
+   END_SEG(startupLogo)
 
 
    /* Segment Six Course Data (Displaylists, models, textures, course paths, etc.) */

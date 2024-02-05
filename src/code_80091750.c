@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
+#include <segments.h>
 #include <PR/ultratypes.h>
 #include <config.h>
 #include <sounds.h>
@@ -1566,7 +1567,7 @@ void func_80091B78(void) {
     }
     if (gMenuSelection == LOGO_INTRO_MENU) {
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
-        set_segment_base_addr(6, decompress_segments((u8 *) &_data_825800SegmentRomStart, (u8 *) &_course_mario_raceway_dl_mio0SegmentRomStart));
+        set_segment_base_addr(6, decompress_segments((u8 *) STARTUP_LOGO_ROM_START, (u8 *) STARTUP_LOGO_ROM_END));
     }
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     // Hypothetically, this should be a ptr... But only hypothetically.
@@ -2510,9 +2511,9 @@ void func_80093E40(void) {
 void func_80093E60(void) {
     s32 i;
 
-    D_8018D9B4 = get_next_available_memory_addr(0x00002800U);
-    D_8018D9B0 = get_next_available_memory_addr(0x000124F8U);
-    D_8018D9B8 = get_next_available_memory_addr(0x00001000U);
+    D_8018D9B4 = get_next_available_memory_addr(0x00002800);
+    D_8018D9B0 = get_next_available_memory_addr(0x000124F8);
+    D_8018D9B8 = get_next_available_memory_addr(0x00001000);
     D_8018D9BC = get_next_available_memory_addr(4U);
 
     for (i = 0; i < 5; i++) {

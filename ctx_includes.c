@@ -6,7 +6,7 @@
 #include "include/config.h"
 #include "include/course_offsets.h"
 #include "include/defines.h"
-#include "include/functions.h"
+#include "include/decode.h"
 #include "include/kart_attributes.h"
 #include "include/libc/math.h"
 #include "include/libc/stdarg.h"

@@ -636,7 +636,7 @@ LDFLAGS += -R $(BUILD_DIR)/src/ending/ceremony_data.inc.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/ceremony_data.inc.mio0.s: %/ceremony_data.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel data_821D10_end\n" > $@
+	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel ceremonyData_end\n" > $@
 
 #==============================================================================#
 # Compile Startup Logo                                                         #
@@ -655,7 +655,7 @@ LDFLAGS += -R $(BUILD_DIR)/src/data/startup_logo.inc.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/startup_logo.inc.mio0.s: %/startup_logo.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel data_825800_end\n" > $@
+	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel startupLogo_end\n" > $@
 
 #==============================================================================#
 # Compile Common Textures                                                      #

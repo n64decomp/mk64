@@ -1,18 +1,13 @@
 #ifndef SEGMENTS_H
 #define SEGMENTS_H
 
-extern u8 _mainSegmentNoloadEnd[];
-
 extern u8 _memoryPoolSegmentNoloadStart[];
 extern u8 _memoryPoolSegmentNoloadEnd[];
-extern u8 _memoryPoolSegmentNoloadSize[];
 
 extern u8 _endingSegmentStart[];
-extern u8 _endingSegmentEnd[];
 extern u8 _endingSegmentRomStart[];
 extern u8 _endingSegmentRomEnd[];
 extern u8 _endingSegmentNoloadEnd[];
-extern u8 _endingSegmentSize[];
 
 extern u8 _racingSegmentStart[];
 extern u8 _racingSegmentNoloadEnd[];
@@ -20,10 +15,8 @@ extern u8 _racingSegmentRomStart[];
 extern u8 _racingSegmentRomEnd[];
 
 extern u8 _trigTablesSegmentStart[];
-extern u8 _trigTablesSegmentEnd[];
 extern u8 _trigTablesSegmentSize[];
 extern u8 _trigTablesSegmentRomStart[];
-extern u8 _trigTablesSegmentRomEnd[];
 
 extern u8 _data_segment2SegmentRomStart[];
 extern u8 _data_segment2SegmentRomEnd[];
@@ -31,6 +24,11 @@ extern u8 _data_segment2SegmentRomEnd[];
 extern u8 _common_texturesSegmentRomStart[];
 extern u8 _common_texturesSegmentRomEnd[];
 
+extern u8 _ceremonyDataSegmentRomStart[];
+extern u8 _ceremonyDataSegmentRomEnd[];
+
+extern u8 _startupLogoSegmentRomStart[];
+extern u8 _startupLogoSegmentRomEnd[];
 
 /**
  * mk64 has three code segments:
@@ -52,12 +50,12 @@ extern u8 _common_texturesSegmentRomEnd[];
 
     #define SEG_ENDING                (uintptr_t) &_endingSegmentStart[0]
     #define SEG_ENDING_ROM_START      (uintptr_t) &_endingSegmentRomStart[0]
-    #define SEG_ENDING_SIZE           (size_t)    ALIGN16((ptrdiff_t)((&_endingSegmentNoloadEnd[0] - &_endingSegmentStart[0])) )
+    #define SEG_ENDING_SIZE           (size_t)    ALIGN16( (ptrdiff_t) (&_endingSegmentNoloadEnd[0] - &_endingSegmentStart[0]) )
     #define SEG_ENDING_ROM_SIZE       (size_t)    ALIGN16( (ptrdiff_t) (&_endingSegmentRomEnd[0] - &_endingSegmentRomStart[0]) )
 
     #define SEG_RACING                (uintptr_t) &_racingSegmentStart[0]
     #define SEG_RACING_ROM_START      (uintptr_t) &_racingSegmentRomStart[0]
-    #define SEG_RACING_SIZE           (size_t)    ALIGN16((ptrdiff_t)((&_racingSegmentNoloadEnd[0] - &_racingSegmentStart[0])) )
+    #define SEG_RACING_SIZE           (size_t)    ALIGN16( (ptrdiff_t) (&_racingSegmentNoloadEnd[0] - &_racingSegmentStart[0]) )
     #define SEG_RACING_ROM_SIZE       (size_t)    ALIGN16( (ptrdiff_t) (&_racingSegmentRomEnd[0] - &_racingSegmentRomStart[0]) )
 
     #define TRIG_TABLES               (uintptr_t) &_trigTablesSegmentStart[0]
@@ -70,6 +68,11 @@ extern u8 _common_texturesSegmentRomEnd[];
     #define COMMON_TEXTURES_ROM_START (uintptr_t) &_common_texturesSegmentRomStart[0]
     #define COMMON_TEXTURES_SIZE      (ptrdiff_t) (&_common_texturesSegmentRomEnd[0] - &_common_texturesSegmentRomStart[0])
 
+    #define CEREMONY_DATA_ROM_START   &_ceremonyDataSegmentRomStart[0]
+    #define CEREMONY_DATA_ROM_END     &_ceremonyDataSegmentRomEnd[0]
+
+    #define STARTUP_LOGO_ROM_START    &_startupLogoSegmentRomStart[0]
+    #define STARTUP_LOGO_ROM_END      &_startupLogoSegmentRomEnd[0]
 
 #else // Required for ok
 
@@ -97,6 +100,12 @@ extern u8 _common_texturesSegmentRomEnd[];
 
     #define COMMON_TEXTURES_ROM_START (uintptr_t) &_common_texturesSegmentRomStart[0]
     #define COMMON_TEXTURES_SIZE      (ptrdiff_t) ((uintptr_t)&_common_texturesSegmentRomEnd - (uintptr_t)&_common_texturesSegmentRomStart)
+
+    #define CEREMONY_DATA_ROM_START   &_ceremonyDataSegmentRomStart[0]
+    #define CEREMONY_DATA_ROM_END     &_ceremonyDataSegmentRomEnd[0]
+
+    #define STARTUP_LOGO_ROM_START    &_startupLogoSegmentRomStart[0]
+    #define STARTUP_LOGO_ROM_END      &_startupLogoSegmentRomEnd[0]
 
 #endif /* AVOID_UB */
 

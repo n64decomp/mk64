@@ -7,7 +7,7 @@
 #include "math_util.h"
 #include "math_util_2.h"
 #include "main.h"
-#include "functions.h"
+#include "decode.h"
 #include "kart_dma.h"
 #include "objects.h"
 #include "render_player.h"

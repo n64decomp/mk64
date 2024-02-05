@@ -3,7 +3,7 @@
 #include <types.h>
 #include <common_structs.h>
 #include <defines.h>
-#include <functions.h>
+#include <decode.h>
 #include "main.h"
 #include "code_800029B0.h"
 #include "buffers.h"

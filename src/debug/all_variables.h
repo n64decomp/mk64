@@ -56,7 +56,7 @@
 #include <course_offsets.h>
 #include <debug.h>
 #include <defines.h>
-#include <functions.h>
+#include <decode.h>
 #include <kart_attributes.h>
 #include <macros.h>
 #include <mk64.h>

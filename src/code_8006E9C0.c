@@ -14,7 +14,7 @@
 #include "save.h"
 #include "common_textures.h"
 #include <sounds.h>
-#include <functions.h>
+#include <decode.h>
 #include "audio/external.h"
 #include "courses/all_course_data.h"
 #include "main.h"
