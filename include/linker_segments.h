@@ -6,8 +6,6 @@
   *  Only used in the linker
  **/
 
-// End of Jumper pak memory
-#define RDRAM_END         0x807FFFFF
 
 #define LINKER_MAIN        0x80000400
 
@@ -17,5 +15,7 @@
 
 #define LINKER_TRIG_TABLES 0x802BA370
 
+// End of Jumper pak memory
+#define RDRAM_END         0x807FFFFF
 
 #endif /* HARDCODED_SEGMENTS_H */

@@ -1,6 +1,9 @@
 #ifndef SEGMENTS_H
 #define SEGMENTS_H
 
+#include <ultra64.h>
+#include <macros.h>
+
 extern u8 _memoryPoolSegmentNoloadStart[];
 extern u8 _memoryPoolSegmentNoloadEnd[];
 
@@ -39,7 +42,6 @@ extern u8 _startupLogoSegmentRomEnd[];
 
 
 #define SEG_START    0x80000000
-#define SEG_MAIN     0x80000400
 
 
 // Defines duplicated even if the same for both for easier readability
