@@ -19758,9 +19758,9 @@ Variable Name | Memory Address
 [gTextureGoldBar](@ref gTextureGoldBar) | 0x0B026C00
 [gTextureGoldBar_end](@ref gTextureGoldBar_end) | 0x0B027950
 [ceremony_data](@ref ceremony_data) | 0x0B000000
-[data_821D10_end](@ref data_821D10_end) | 0x0B003AF0
+[ceremonyData_end](@ref ceremonyData_end) | 0x0B003AF0
 [startup_logo](@ref startup_logo) | 0x06000000
-[data_825800_end](@ref data_825800_end) | 0x06002CD0
+[startupLogo_end](@ref startupLogo_end) | 0x06002CD0
 [mario_raceway_textures](@ref mario_raceway_textures) | 0x09000000
 [mario_raceway_dls](@ref mario_raceway_dls) | 0x090001F0
 [choco_mountain_textures](@ref choco_mountain_textures) | 0x09000000
