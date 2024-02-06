@@ -112,8 +112,8 @@ s32 func_800871AC(s32 objectIndex, s32 arg1) {
 }
 
 UNUSED void func_80087258(s32 objectIndex, UNUSED s32 arg1, f32 arg2) {
-    gObjectList[objectIndex].speed[1] += arg2;
-    gObjectList[objectIndex].speed[2] -= arg2;
+    gObjectList[objectIndex].offset[1] += arg2;
+    gObjectList[objectIndex].offset[2] -= arg2;
 }
 
 UNUSED s32 get_angle_between_player_object(s32 objectIndex, Player *player) {
@@ -173,41 +173,41 @@ void func_80087620(s32 objectIndex) {
 }
 
 void func_800876A0(s32 objectIndex) {
-    gObjectList[objectIndex].speed[0] += gObjectList[objectIndex].unk_034 * sins(gObjectList[objectIndex].direction_angle[1]);
-    gObjectList[objectIndex].speed[2] += gObjectList[objectIndex].unk_034 * coss(gObjectList[objectIndex].direction_angle[1]);
+    gObjectList[objectIndex].offset[0] += gObjectList[objectIndex].unk_034 * sins(gObjectList[objectIndex].direction_angle[1]);
+    gObjectList[objectIndex].offset[2] += gObjectList[objectIndex].unk_034 * coss(gObjectList[objectIndex].direction_angle[1]);
 }
 
-void func_80087710(s32 objectIndex) {
-    gObjectList[objectIndex].speed[0] += gObjectList[objectIndex].velocity[0];
-    gObjectList[objectIndex].speed[1] += gObjectList[objectIndex].velocity[1];
-    gObjectList[objectIndex].speed[2] += gObjectList[objectIndex].velocity[2];
+void object_add_velocity_offset_xyz(s32 objectIndex) {
+    gObjectList[objectIndex].offset[0] += gObjectList[objectIndex].velocity[0];
+    gObjectList[objectIndex].offset[1] += gObjectList[objectIndex].velocity[1];
+    gObjectList[objectIndex].offset[2] += gObjectList[objectIndex].velocity[2];
 }
 
-void func_8008775C(s32 objectIndex) {
-    gObjectList[objectIndex].speed[0] += gObjectList[objectIndex].velocity[0];
-    gObjectList[objectIndex].speed[2] += gObjectList[objectIndex].velocity[2];
+void object_add_velocity_offset_xz(s32 objectIndex) {
+    gObjectList[objectIndex].offset[0] += gObjectList[objectIndex].velocity[0];
+    gObjectList[objectIndex].offset[2] += gObjectList[objectIndex].velocity[2];
 }
 
-UNUSED void func_80087798(s32 objectIndex) {
-    gObjectList[objectIndex].speed[0] += gObjectList[objectIndex].velocity[0];
+UNUSED void object_add_velocity_offset_x(s32 objectIndex) {
+    gObjectList[objectIndex].offset[0] += gObjectList[objectIndex].velocity[0];
 }
 
-void func_800877C4(s32 objectIndex) {
-    gObjectList[objectIndex].speed[1] += gObjectList[objectIndex].velocity[1];
+void object_add_velocity_offset_y(s32 objectIndex) {
+    gObjectList[objectIndex].offset[1] += gObjectList[objectIndex].velocity[1];
 }
 
-UNUSED void func_800877F0(s32 objectIndex) {
-    gObjectList[objectIndex].speed[2] += gObjectList[objectIndex].velocity[2];
+UNUSED void object_add_velocity_offset_z(s32 objectIndex) {
+    gObjectList[objectIndex].offset[2] += gObjectList[objectIndex].velocity[2];
 }
 
 void func_8008781C(s32 arg0) {
     func_8008751C(arg0);
-    func_8008775C(arg0);
+    object_add_velocity_offset_xz(arg0);
 }
 
 void func_80087844(s32 arg0) {
     func_8008757C(arg0);
-    func_80087710(arg0);
+    object_add_velocity_offset_xyz(arg0);
 }
 
 f32 func_8008786C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
@@ -228,7 +228,7 @@ s32 func_8008789C(s32 objectIndex, s32 arg1) {
         set_object_flag_status_false(objectIndex, 8);
         sp24 = 1;
     } else {
-        func_8008775C(objectIndex);
+        object_add_velocity_offset_xz(objectIndex);
     }
     return sp24;
 }
@@ -247,7 +247,7 @@ s32 func_80087954(s32 objectIndex, s32 arg1) {
         set_object_flag_status_false(objectIndex, 8);
         sp24 = 1;
     } else {
-        func_8008775C(objectIndex);
+        object_add_velocity_offset_xz(objectIndex);
     }
     return sp24;
 }
@@ -274,7 +274,7 @@ bool func_80087A0C(s32 objectIndex, s16 arg1, s16 arg2, s16 arg3, s16 arg4) {
         set_object_flag_status_false(objectIndex, 8);
         sp2C = TRUE;
     } else {
-        func_8008775C(objectIndex);
+        object_add_velocity_offset_xz(objectIndex);
     }
     return sp2C;
 }
@@ -287,7 +287,7 @@ s32 func_80087B84(s32 objectIndex, f32 arg1, f32 arg2) {
         set_object_flag_status_true(objectIndex, 8);
         gObjectList[objectIndex].velocity[1] = -arg1;
     }
-    func_800877C4(objectIndex);
+    object_add_velocity_offset_y(objectIndex);
     if (gObjectList[objectIndex].pos[1] <= arg2) {
         set_object_flag_status_false(objectIndex, 8);
         func_80086FD4(objectIndex);
@@ -312,7 +312,7 @@ s32 func_80087C48(s32 objectIndex, f32 arg1, f32 arg2, s32 arg3) {
         sp24 = 1;
     } else {
         gObjectList[objectIndex].velocity[1] -= arg2;
-        func_800877C4(objectIndex);
+        object_add_velocity_offset_y(objectIndex);
     }
     return sp24;
 }
@@ -326,10 +326,10 @@ s32 func_80087D24(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3) {
         gObjectList[objectIndex].velocity[1] = arg1;
     }
     gObjectList[objectIndex].velocity[1] -= arg2;
-    func_800877C4(objectIndex);
-    if (gObjectList[objectIndex].speed[1] <= arg3) {
+    object_add_velocity_offset_y(objectIndex);
+    if (gObjectList[objectIndex].offset[1] <= arg3) {
         set_object_flag_status_false(objectIndex, 8);
-        gObjectList[objectIndex].speed[1] = arg3;
+        gObjectList[objectIndex].offset[1] = arg3;
         func_80086FD4(objectIndex);
         sp24 = 1;
     }
@@ -343,9 +343,9 @@ bool func_80087E08(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s32 
     sp2C = FALSE;
     if (is_obj_index_flag_status_inactive(objectIndex, 8) != 0) {
         set_object_flag_status_true(objectIndex, 8);
-        gObjectList[objectIndex].speed[2] = 0.0f;
-        gObjectList[objectIndex].speed[1] = 0.0f;
-        gObjectList[objectIndex].speed[0] = 0.0f;
+        gObjectList[objectIndex].offset[2] = 0.0f;
+        gObjectList[objectIndex].offset[1] = 0.0f;
+        gObjectList[objectIndex].offset[0] = 0.0f;
         gObjectList[objectIndex].unk_034 = arg3;
         gObjectList[objectIndex].velocity[1] = arg1;
         gObjectList[objectIndex].direction_angle[1] = arg4;
@@ -359,7 +359,7 @@ bool func_80087E08(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s32 
         sp2C = TRUE;
     } else {
         gObjectList[objectIndex].velocity[1] -= arg2;
-        func_80087710(objectIndex);
+        object_add_velocity_offset_xyz(objectIndex);
     }
     return sp2C;
 }
@@ -371,22 +371,22 @@ UNUSED s32 func_80087F14(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3, s16 arg4
     sp2C = 0;
     if (is_obj_index_flag_status_inactive(objectIndex, 8) != 0) {
         set_object_flag_status_true(objectIndex, 8);
-        gObjectList[objectIndex].speed[2] = 0.0f;
-        gObjectList[objectIndex].speed[1] = 0.0f;
-        gObjectList[objectIndex].speed[0] = 0.0f;
+        gObjectList[objectIndex].offset[2] = 0.0f;
+        gObjectList[objectIndex].offset[1] = 0.0f;
+        gObjectList[objectIndex].offset[0] = 0.0f;
         gObjectList[objectIndex].unk_034 = arg3;
         gObjectList[objectIndex].velocity[1] = arg1;
         gObjectList[objectIndex].direction_angle[1] = arg4;
         func_8008751C(objectIndex);
         gObjectList[objectIndex].unk_0B0 = gVBlankTimer;
     }
-    if (gObjectList[objectIndex].speed[1] <= arg5) {
+    if (gObjectList[objectIndex].offset[1] <= arg5) {
         set_object_flag_status_false(objectIndex, 8);
         func_80086FD4(objectIndex);
         sp2C = 1;
     } else {
         gObjectList[objectIndex].velocity[1] -= arg2;
-        func_80087710(objectIndex);
+        object_add_velocity_offset_xyz(objectIndex);
     }
     return sp2C;
 }
@@ -395,13 +395,13 @@ void func_80088038(s32 objectIndex, f32 arg1, u16 arg2) {
     f32 temp_f4;
     f32 sp20;
 
-    temp_f4 = gObjectList[objectIndex].speed[0];
-    sp20    = gObjectList[objectIndex].speed[2];
+    temp_f4 = gObjectList[objectIndex].offset[0];
+    sp20    = gObjectList[objectIndex].offset[2];
     gObjectList[objectIndex].unk_0C4 += arg2;
-    gObjectList[objectIndex].speed[0] = sins(gObjectList[objectIndex].unk_0C4) * arg1;
-    gObjectList[objectIndex].speed[2] = coss(gObjectList[objectIndex].unk_0C4) * arg1;
-    gObjectList[objectIndex].velocity[0] = gObjectList[objectIndex].speed[0] - temp_f4;
-    gObjectList[objectIndex].velocity[2] = gObjectList[objectIndex].speed[2] - sp20;
+    gObjectList[objectIndex].offset[0] = sins(gObjectList[objectIndex].unk_0C4) * arg1;
+    gObjectList[objectIndex].offset[2] = coss(gObjectList[objectIndex].unk_0C4) * arg1;
+    gObjectList[objectIndex].velocity[0] = gObjectList[objectIndex].offset[0] - temp_f4;
+    gObjectList[objectIndex].velocity[2] = gObjectList[objectIndex].offset[2] - sp20;
 }
 
 UNUSED void func_800880DC(void) {
@@ -447,9 +447,9 @@ void func_80088228(s32 objectIndex) {
   (&gObjectList[objectIndex])->unk_084[9] = 0;
   (&gObjectList[objectIndex])->unk_07C = (s16 (*)[4]) temp_v1;
   (&gObjectList[objectIndex])->unk_084[8] = temp_v1[-1];
-  (&gObjectList[objectIndex])->speed[0] = temp_v1[0];
-  (&gObjectList[objectIndex])->speed[1] = temp_v1[1];
-  temp_v0->speed[2] = temp_v1[2];
+  (&gObjectList[objectIndex])->offset[0] = temp_v1[0];
+  (&gObjectList[objectIndex])->offset[1] = temp_v1[1];
+  temp_v0->offset[2] = temp_v1[2];
   func_80086FD4(objectIndex);
 }
 
@@ -461,9 +461,9 @@ s32 func_800882B0(s32 objectIndex, s32 arg1) {
     s32 var_v1;
 
     var_v1 = 0;
-    temp_f0  = (s32)((D_80165760[1] - gObjectList[objectIndex].speed[0]) * (D_80165760[1] - gObjectList[objectIndex].speed[0]));
-    temp_f12 = (s32)((D_80165770[1] - gObjectList[objectIndex].speed[1]) * (D_80165770[1] - gObjectList[objectIndex].speed[1]));
-    temp_f2  = (s32)((D_80165780[1] - gObjectList[objectIndex].speed[2]) * (D_80165780[1] - gObjectList[objectIndex].speed[2]));
+    temp_f0  = (s32)((D_80165760[1] - gObjectList[objectIndex].offset[0]) * (D_80165760[1] - gObjectList[objectIndex].offset[0]));
+    temp_f12 = (s32)((D_80165770[1] - gObjectList[objectIndex].offset[1]) * (D_80165770[1] - gObjectList[objectIndex].offset[1]));
+    temp_f2  = (s32)((D_80165780[1] - gObjectList[objectIndex].offset[2]) * (D_80165780[1] - gObjectList[objectIndex].offset[2]));
     if ((temp_f0 + temp_f12 + temp_f2 - (arg1 * arg1)) <= 0) {
         var_v1 = 1;
     }
@@ -1465,9 +1465,9 @@ void func_8008AA3C(s32 objectIndex) {
     (&gObjectList[objectIndex])->unk_084[9] = 0;
     (&gObjectList[objectIndex])->timer = 0;
     (&gObjectList[objectIndex])->unk_084[8] = temp_v1[-1];
-    (&gObjectList[objectIndex])->speed[0] = (f32) temp_v1[0];
-    (&gObjectList[objectIndex])->speed[1] = (f32) temp_v1[1];
-    (&gObjectList[objectIndex])->speed[2] = (f32) temp_v1[2];
+    (&gObjectList[objectIndex])->offset[0] = (f32) temp_v1[0];
+    (&gObjectList[objectIndex])->offset[1] = (f32) temp_v1[1];
+    (&gObjectList[objectIndex])->offset[2] = (f32) temp_v1[2];
     (&gObjectList[objectIndex])->unk_09A = (s16) (0x2710 / (s16) temp_v1[3]);
     func_8008A920(objectIndex);
     func_80086FD4(objectIndex);
@@ -1478,9 +1478,9 @@ void func_8008AB10(s32 objectIndex) {
     Objects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->speed[0] += temp_v0->velocity[0];
-    temp_v0->speed[1] += temp_v0->velocity[1];
-    temp_v0->speed[2] += temp_v0->velocity[2];
+    temp_v0->offset[0] += temp_v0->velocity[0];
+    temp_v0->offset[1] += temp_v0->velocity[1];
+    temp_v0->offset[2] += temp_v0->velocity[2];
     temp_v0->timer += (u16)temp_v0->unk_09A;
     if (temp_v0->timer >= 0x2710) {
         temp_v0->unk_084[9] = (u16)temp_v0->unk_084[9] + 1;
@@ -1604,9 +1604,9 @@ void func_8008B038(s32 objectIndex) {
     Objects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->speed[0] = (D_80183DA8[0] * D_80165760[0]) + (D_80183DA8[1] * D_80165760[1]) + (D_80183DA8[2] * D_80165760[2]) + (D_80183DA8[3] * D_80165760[3]);
-    temp_v0->speed[1] = (D_80183DA8[0] * D_80165770[0]) + (D_80183DA8[1] * D_80165770[1]) + (D_80183DA8[2] * D_80165770[2]) + (D_80183DA8[3] * D_80165770[3]);
-    temp_v0->speed[2] = (D_80183DA8[0] * D_80165780[0]) + (D_80183DA8[1] * D_80165780[1]) + (D_80183DA8[2] * D_80165780[2]) + (D_80183DA8[3] * D_80165780[3]);
+    temp_v0->offset[0] = (D_80183DA8[0] * D_80165760[0]) + (D_80183DA8[1] * D_80165760[1]) + (D_80183DA8[2] * D_80165760[2]) + (D_80183DA8[3] * D_80165760[3]);
+    temp_v0->offset[1] = (D_80183DA8[0] * D_80165770[0]) + (D_80183DA8[1] * D_80165770[1]) + (D_80183DA8[2] * D_80165770[2]) + (D_80183DA8[3] * D_80165770[3]);
+    temp_v0->offset[2] = (D_80183DA8[0] * D_80165780[0]) + (D_80183DA8[1] * D_80165780[1]) + (D_80183DA8[2] * D_80165780[2]) + (D_80183DA8[3] * D_80165780[3]);
 }
 
 void func_8008B17C(s32 objectIndex, f32 arg1) {
@@ -1784,18 +1784,18 @@ void set_obj_origin_pos(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3) {
     gObjectList[objectIndex].origin_pos[2] = arg3;
 }
 
-void func_8008B80C(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3) {
-    gObjectList[objectIndex].speed[0] = arg1;
-    gObjectList[objectIndex].speed[1] = arg2;
-    gObjectList[objectIndex].speed[2] = arg3;
+void set_obj_origin_offset(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3) {
+    gObjectList[objectIndex].offset[0] = arg1;
+    gObjectList[objectIndex].offset[1] = arg2;
+    gObjectList[objectIndex].offset[2] = arg3;
 }
 
 void func_8008B844(s32 objectIndex) {
     f32 temp_f0 = gObjectList[objectIndex].origin_pos[0];
 
-    gObjectList[objectIndex].pos[0] = gObjectList[objectIndex].speed[0] + temp_f0;
-    gObjectList[objectIndex].pos[1] = gObjectList[objectIndex].speed[1] + temp_f0;
-    gObjectList[objectIndex].pos[2] = gObjectList[objectIndex].speed[2] + temp_f0;
+    gObjectList[objectIndex].pos[0] = gObjectList[objectIndex].offset[0] + temp_f0;
+    gObjectList[objectIndex].pos[1] = gObjectList[objectIndex].offset[1] + temp_f0;
+    gObjectList[objectIndex].pos[2] = gObjectList[objectIndex].offset[2] + temp_f0;
 }
 
 void set_obj_direction_angle(s32 objectIndex, u16 arg1, u16 arg2, u16 arg3) {
@@ -1832,63 +1832,63 @@ void func_8008B928(s32 objectIndex, s16 arg1, s16 arg2, s16 arg3, s16 arg4[][4])
     temp_s0->direction_angle[0] = get_x_direction_angle(objectIndex);
 }
 
-UNUSED void func_8008BA40(s32 objectIndex, s16 arg1, u16 arg2) {
-    s16 test;
+UNUSED void object_origin_pos_randomise_around_x(s32 objectIndex, s16 x, u16 arg2) {
+    s16 offset_x;
 
-    test = random_int(arg2) - (arg2 / 2);
-    gObjectList[objectIndex].origin_pos[0] = arg1 + test;
+    offset_x = random_int(arg2) - (arg2 / 2);
+    gObjectList[objectIndex].origin_pos[0] = x + offset_x;
 }
 
-void func_8008BAB4(s32 objectIndex, s16 arg1, u16 arg2) {
-    s16 test;
+void object_origin_pos_randomise_around_y(s32 objectIndex, s16 y, u16 arg2) {
+    s16 offset_y;
 
-    test = random_int(arg2) - (arg2 / 2);
-    gObjectList[objectIndex].origin_pos[1] = arg1 + test;
+    offset_y = random_int(arg2) - (arg2 / 2);
+    gObjectList[objectIndex].origin_pos[1] = y + offset_y;
 }
 
-UNUSED void func_8008BB28(s32 objectIndex, s16 arg1, u16 arg2) {
-    s16 test;
+UNUSED void object_origin_pos_randomise_around_z(s32 objectIndex, s16 z, u16 arg2) {
+    s16 offset_z;
 
-    test = random_int(arg2) - (arg2 / 2);
-    gObjectList[objectIndex].origin_pos[2] = arg1 + test;
+    offset_z = random_int(arg2) - (arg2 / 2);
+    gObjectList[objectIndex].origin_pos[2] = z + offset_z;
 }
 
-UNUSED void func_8008BB9C(s32 objectIndex, s16 arg1, s16 arg2, u16 arg3, u16 arg4) {
-    s16 sp1E;
-    s16 temp_v0;
+UNUSED void object_origin_pos_randomise_around_xy(s32 objectIndex, s16 x, s16 y, u16 arg3, u16 arg4) {
+    s16 offset_x;
+    s16 offset_y;
 
-    sp1E    = random_int(arg3) - ((s32) arg3 / 2);
-    temp_v0 = random_int(arg4) - ((s32) arg4 / 2);
-    gObjectList[objectIndex].origin_pos[0] = arg1 + sp1E;
-    gObjectList[objectIndex].origin_pos[1] = arg2 + temp_v0;
+    offset_x    = random_int(arg3) - ((s32) arg3 / 2);
+    offset_y    = random_int(arg4) - ((s32) arg4 / 2);
+    gObjectList[objectIndex].origin_pos[0] = x + offset_x;
+    gObjectList[objectIndex].origin_pos[1] = y + offset_y;
 }
 
-UNUSED void func_8008BC58(s32 objectIndex, s16 arg1, s16 arg2, u16 arg3, u16 arg4) {
-    s16 sp1E;
-    s16 temp_v0;
+UNUSED void object_origin_pos_randomise_around_xz(s32 objectIndex, s16 x, s16 z, u16 arg3, u16 arg4) {
+    s16 offset_x;
+    s16 offset_z;
 
-    sp1E    = random_int(arg3) - ((s32) arg3 / 2);
-    temp_v0 = random_int(arg4) - ((s32) arg4 / 2);
-    gObjectList[objectIndex].origin_pos[0] = arg1 + sp1E;
-    gObjectList[objectIndex].origin_pos[2] = arg2 + temp_v0;
+    offset_x    = random_int(arg3) - ((s32) arg3 / 2);
+    offset_z    = random_int(arg4) - ((s32) arg4 / 2);
+    gObjectList[objectIndex].origin_pos[0] = x + offset_x;
+    gObjectList[objectIndex].origin_pos[2] = z + offset_z;
 }
 
-void func_8008BD14(s32 objectIndex, s16 arg1, s16 arg2, s16 arg3, u16 arg4, u16 arg5, u16 arg6) {
-    s16 sp1E;
-    s16 sp1C;
-    s16 temp_v0;
+void object_origin_pos_randomise_around_xyz(s32 objectIndex, s16 x, s16 y, s16 z, u16 arg4, u16 arg5, u16 arg6) {
+    s16 offset_x;
+    s16 offset_y;
+    s16 offset_z;
 
-    sp1E    = random_int(arg4) - ((s32) arg4 / 2);
-    sp1C    = random_int(arg5) - ((s32) arg5 / 2);
-    temp_v0 = random_int(arg6) - ((s32) arg6 / 2);
-    gObjectList[objectIndex].origin_pos[0] = arg1 + sp1E;
-    gObjectList[objectIndex].origin_pos[1] = arg2 + sp1C;
-    gObjectList[objectIndex].origin_pos[2] = arg3 + temp_v0;
+    offset_x    = random_int(arg4) - ((s32) arg4 / 2);
+    offset_y    = random_int(arg5) - ((s32) arg5 / 2);
+    offset_z    = random_int(arg6) - ((s32) arg6 / 2);
+    gObjectList[objectIndex].origin_pos[0] = x + offset_x;
+    gObjectList[objectIndex].origin_pos[1] = y + offset_y;
+    gObjectList[objectIndex].origin_pos[2] = z + offset_z;
 }
 
-void func_8008BE0C(s32 objectIndex, s16 arg1, u16 arg2) {
-    gObjectList[objectIndex].origin_pos[0] = gPlayerOneCopy->pos[0] + (sins(arg2) * arg1);
-    gObjectList[objectIndex].origin_pos[2] = gPlayerOneCopy->pos[2] + (coss(arg2) * arg1);
+void object_origin_pos_around_player_one(s32 objectIndex, s16 dist, u16 angle) {
+    gObjectList[objectIndex].origin_pos[0] = gPlayerOneCopy->pos[0] + (sins(angle) * dist);
+    gObjectList[objectIndex].origin_pos[2] = gPlayerOneCopy->pos[2] + (coss(angle) * dist);
 }
 
 UNUSED void func_8008BEA4(s32 objectIndex, u16 arg1, u16 arg2) {
@@ -1897,13 +1897,13 @@ UNUSED void func_8008BEA4(s32 objectIndex, u16 arg1, u16 arg2) {
 
     thing  = random_int(arg1);
     thing2 = camera1->rot[1] + random_int(arg2) - ((s32) arg2 / 2);
-    func_8008BE0C(objectIndex, thing, thing2);
+    object_origin_pos_around_player_one(objectIndex, thing, thing2);
 }
 
-void func_8008BF18(s32 objectIndex) {
-    gObjectList[objectIndex].pos[0] = gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].speed[0];
-    gObjectList[objectIndex].pos[1] = gObjectList[objectIndex].origin_pos[1] + gObjectList[objectIndex].speed[1];
-    gObjectList[objectIndex].pos[2] = gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].speed[2];
+void object_calculate_new_pos_offset(s32 objectIndex) {
+    gObjectList[objectIndex].pos[0] = gObjectList[objectIndex].origin_pos[0] + gObjectList[objectIndex].offset[0];
+    gObjectList[objectIndex].pos[1] = gObjectList[objectIndex].origin_pos[1] + gObjectList[objectIndex].offset[1];
+    gObjectList[objectIndex].pos[2] = gObjectList[objectIndex].origin_pos[2] + gObjectList[objectIndex].offset[2];
 }
 
 void func_8008BF64(s32 objectIndex) {

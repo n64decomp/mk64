@@ -712,10 +712,10 @@ void render_object(s32 cameraId) {
             break;
         case COURSE_BANSHEE_BOARDWALK:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_800527D8(cameraId);
+                render_trash_bin(cameraId);
                 render_bat(cameraId);
                 func_8005217C(cameraId);
-                func_800524B4(cameraId);
+                render_boos(cameraId);
             }
             break;
         case COURSE_YOSHI_VALLEY:
@@ -736,10 +736,10 @@ void render_object(s32 cameraId) {
             if (gGamestate != CREDITS_SEQUENCE) {
 
                 if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
-                    func_80055380(cameraId);
+                    render_seaguls(cameraId);
                 }
             } else {
-                func_80055380(cameraId);
+                render_seaguls(cameraId);
             }
             break;
         case COURSE_ROYAL_RACEWAY:
@@ -781,7 +781,7 @@ void render_object(s32 cameraId) {
             break;
         case COURSE_DK_JUNGLE:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80054414(cameraId);
+                render_ferries_smoke(cameraId);
             }
             break;
     }
@@ -1422,7 +1422,7 @@ void func_8005A070(void) {
         if (gGamestate == ENDING_SEQUENCE) {
             func_80086604();
             func_80086D80();
-            func_8007C2F8(1);
+            update_cheep_cheep(1);
             func_80077640();
         } else if (gGamestate == CREDITS_SEQUENCE) {
             func_80059820(PLAYER_ONE);
@@ -1466,7 +1466,7 @@ void func_8005A14C(s32 playerId) {
         if (player->effects & 0x03000000) {
             func_80087D24(objectIndex, 6.0f, 1.5f, 0.0f);
         } else {
-            f32_step_towards(&gObjectList[objectIndex].speed[1], 0.0f, 1.0f);
+            f32_step_towards(&gObjectList[objectIndex].offset[1], 0.0f, 1.0f);
         }
         if ((player->type & PLAYER_INVISIBLE_OR_BOMB) || (player->effects & BOO_EFFECT)) {
             gObjectList[objectIndex].primAlpha = 0x0050;
@@ -1477,9 +1477,9 @@ void func_8005A14C(s32 playerId) {
             gObjectList[objectIndex].direction_angle[2] = 0;
             gObjectList[objectIndex].direction_angle[1] = 0;
             gObjectList[objectIndex].direction_angle[0] = 0;
-            gObjectList[objectIndex].speed[2] = 0.0f;
-            gObjectList[objectIndex].speed[1] = 0.0f;
-            gObjectList[objectIndex].speed[0] = 0.0f;
+            gObjectList[objectIndex].offset[2] = 0.0f;
+            gObjectList[objectIndex].offset[1] = 0.0f;
+            gObjectList[objectIndex].offset[0] = 0.0f;
             gObjectList[objectIndex].sizeScaling = 0.6f;
             gObjectList[objectIndex].primAlpha = 0x00FF;
         }
@@ -1587,33 +1587,33 @@ void update_object(void) {
             break;
         case COURSE_BANSHEE_BOARDWALK:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_8007E1AC();
+                update_trash_bin();
                 func_8007E4C4();
                 if (gModeSelection != TIME_TRIALS) {
-                    func_8007DB44();
+                    update_bat();
                 }
-                func_8007C340();
-                func_8007C2F8(0);
+                wrapper_update_boos();
+                update_cheep_cheep(0);
             }
             break;
         case COURSE_YOSHI_VALLEY:
             func_80083080();
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_800834B8();
+                update_hedgehogs();
             }
             break;
         case COURSE_FRAPPE_SNOWLAND:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80083D60();
+                update_snowmen();
             }
-            func_80078838();
+            update_snowflakes();
             break;
         case COURSE_KOOPA_BEACH:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80082E5C();
+                update_crabs();
             }
             if ((gPlayerCount == 1) || (gPlayerCount == 2) || (gGamestate == CREDITS_SEQUENCE)) {
-                func_80082870();
+                update_seagulls();
             }
             break;
         case COURSE_LUIGI_RACEWAY:
@@ -1623,26 +1623,26 @@ void update_object(void) {
             break;
         case COURSE_MOO_MOO_FARM:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_800821FC();
+                update_moles();
             }
             break;
         case COURSE_KALAMARI_DESERT:
-            func_80075838();
+            update_train_smoke();
             break;
         case COURSE_SHERBET_LAND:
             if (gGamestate != CREDITS_SEQUENCE) {
                 func_800842C8();
             }
-            func_80085214();
+            update_penguins();
             break;
         case COURSE_RAINBOW_ROAD:
             if (gGamestate != CREDITS_SEQUENCE) {
                 update_neon();
-                func_80085AA8();
+                update_chain_chomps();
             }
             break;
         case COURSE_DK_JUNGLE:
-            func_80075CA8();
+            update_ferries_smoke_particle();
             break;
     }
     if (D_80165730 != 0) {

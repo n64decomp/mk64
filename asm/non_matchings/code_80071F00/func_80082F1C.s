@@ -56,7 +56,7 @@ glabel func_80082F1C
 /* 083BD8 80082FD8 44050000 */  mfc1  $a1, $f0
 /* 083BDC 80082FDC 44060000 */  mfc1  $a2, $f0
 /* 083BE0 80082FE0 44070000 */  mfc1  $a3, $f0
-/* 083BE4 80082FE4 0C022E03 */  jal   func_8008B80C
+/* 083BE4 80082FE4 0C022E03 */  jal   set_obj_origin_offset
 /* 083BE8 80082FE8 00000000 */   nop   
 /* 083BEC 80082FEC 8FA20024 */  lw    $v0, 0x24($sp)
 /* 083BF0 80082FF0 02002025 */  move  $a0, $s0

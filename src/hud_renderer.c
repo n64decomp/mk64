@@ -2832,9 +2832,9 @@ void func_80050E34(s32 playerId, s32 arg1) {
         gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_portrait_bomb_kart_and_question_mark);
         rsp_load_texture(common_texture_portrait_question_mark, 0x00000020, 0x00000020);
         object = &gObjectList[objectIndex];
-        object->pos[0] = object->speed[0] + ((f32) (spD0 + 0x20));
-        object->pos[1] = object->speed[1] + ((f32) (spC4 + spCC));
-        object->pos[2] = object->speed[2];
+        object->pos[0] = object->offset[0] + ((f32) (spD0 + 0x20));
+        object->pos[1] = object->offset[1] + ((f32) (spC4 + spCC));
+        object->pos[2] = object->offset[2];
         rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0069E0);
     } else {
@@ -2847,9 +2847,9 @@ void func_80050E34(s32 playerId, s32 arg1) {
         }
         rsp_load_texture(gPortraitTextures[characterId], 0x00000020, 0x00000020);
         object = &gObjectList[objectIndex];
-        object->pos[0] = object->speed[0] + ((f32) (spD0 + 0x20));
-        object->pos[1] = object->speed[1] + ((f32) (spC4 + spCC));
-        object->pos[2] = object->speed[2];
+        object->pos[0] = object->offset[0] + ((f32) (spD0 + 0x20));
+        object->pos[1] = object->offset[1] + ((f32) (spC4 + spCC));
+        object->pos[2] = object->offset[2];
         rsp_set_matrix_transformation(object->pos, object->direction_angle, object->sizeScaling);
         if (spB8 != 0) {
             gSPDisplayList(gDisplayListHead++, D_0D0069F8);
@@ -2906,7 +2906,7 @@ void func_800514BC(void) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void render_leaf_particle(UNUSED s32 render_leaf_particle) {
+void render_leaf_particle(UNUSED s32 cameraId) {
     s32 someIndex;
     s32 leafIndex;
     Objects *object;
@@ -3132,12 +3132,12 @@ void func_800523B8(s32 objectIndex, s32 arg1, u32 arg2) {
     }
 }
 
-void func_800524B4(s32 arg0) {
+void render_boos(s32 arg0) {
     u32 temp_s2;
     s32 someIndex;
     s32 objectIndex;
 
-    for (someIndex = 0; someIndex < 10; someIndex++) {
+    for (someIndex = 0; someIndex < NUM_BOOS; someIndex++) {
         objectIndex = indexObjectList3[someIndex];
         if (gObjectList[objectIndex].state >= 2) {
             temp_s2 = func_8008A364(objectIndex, arg0, 0x4000U, 0x00000320);
@@ -3183,7 +3183,7 @@ void render_bat(s32 cameraId) {
     gSPTexture(gDisplayListHead++, 0x0001, 0x0001, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void func_800527D8(s32 cameraId) {
+void render_trash_bin(s32 cameraId) {
     s32 objectIndex;
     Objects *object;
 
@@ -3613,7 +3613,7 @@ void render_train_smoke(s32 cameraId) {
 #endif
 }
 
-void func_80054324(s32 objectIndex, s32 cameraId) {
+void render_ferry_smoke_particules(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
@@ -3627,7 +3627,7 @@ void func_80054324(s32 objectIndex, s32 cameraId) {
 }
 
 // Likely smoke related.
-void func_80054414(s32 cameraId) {
+void render_ferries_smoke(s32 cameraId) {
     UNUSED s32 pad[2];
     Camera *camera;
     s32 i;
@@ -3641,12 +3641,12 @@ void func_80054414(s32 cameraId) {
     D_80183E80[2] = 0x8000;
     if ((gFerries[0].someFlags != 0) && (func_80041980(gFerries[0].position, camera, 0x4000U) != 0)) {
         for (i = 0; i < gObjectParticle2_SIZE; i++) {
-            func_80054324(gObjectParticle2[i], cameraId);
+            render_ferry_smoke_particules(gObjectParticle2[i], cameraId);
         }
     }
     if ((gFerries[1].someFlags != 0) && (func_80041980(gFerries[1].position, camera, 0x4000U) != 0)) {
         for (i = 0; i < gObjectParticle3_SIZE; i++) {
-            func_80054324(gObjectParticle3[i], cameraId);
+            render_ferry_smoke_particules(gObjectParticle3[i], cameraId);
         }
     }
 }
@@ -3882,11 +3882,11 @@ void func_800552BC(s32 objectIndex) {
     }
 }
 
-void func_80055380(s32 arg0) {
+void render_seaguls(s32 arg0) {
     s32 i;
     s32 var_s1;
 
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < NUM_SEAGULLS; i++) {
         var_s1 = indexObjectList2[i];
         if (func_8008A364(var_s1, arg0, 0x5555U, 0x000005DC) < 0x9C401) {
             D_80165908 = 1;

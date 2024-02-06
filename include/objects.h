@@ -12,7 +12,7 @@ typedef struct
     /* 0x04 */ Vec3f pos;
     /* 0x10 */ Vec3f origin_pos;
     /* 0x1C */ Vec3f unk_01C;
-    /* 0x28 */ Vec3f speed;
+    /* 0x28 */ Vec3f offset;
     /* 0x34 */ f32 unk_034;
     /* 0x38 */ Vec3f velocity; // acceleration
     /* 0x44 */ f32 unk_044;
@@ -88,7 +88,7 @@ typedef struct
     /* 0x04 */ Vec3f pos;
     /* 0x10 */ Vec3f origin_pos;
     /* 0x1C */ Vec3f unk_01C;
-    /* 0x28 */ Vec3f speed;
+    /* 0x28 */ Vec3f offset;
     /* 0x34 */ f32 unk_034;
     /* 0x38 */ Vec3f velocity;
     /* 0x44 */ f32 unk_044;

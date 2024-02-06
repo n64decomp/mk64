@@ -915,7 +915,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_YOSHI_VALLEY:
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < NUM_YV_FLAG_POLES; i++) {
             init_object(indexObjectList1[i], 0);
         }
         if (gGamestate != CREDITS_SEQUENCE) {
