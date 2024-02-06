@@ -8,9 +8,9 @@ u16 gRandomSeed16;
 u8 randomSeedPadding[216];
 
 #ifdef VERSION_EU
-u8 frameBufferPadding[0x5750];
+u8 trigTablesPadding[0x5750];
 #else
-u8 frameBufferPadding[0x5810];
+u8 trigTablesPadding[0x5810];
 #endif
 
 struct_D_802BFB80 D_802BFB80[2][2][8];

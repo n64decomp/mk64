@@ -13,7 +13,7 @@
 
 #define LINKER_RACING      0x8028DF00
 
-#define LINKER_TRIG_TABLES 0x802BA370
+#define LINKER_TRIG_TABLES 0x802b8460
 
 // End of Jumper pak memory
 #define RDRAM_END         0x807FFFFF

@@ -18,4 +18,10 @@ SAFE_C_FILES :=    \
     build/us/src/gbiMacro.o    \
     build/us/src/main.o    \
     build/us/src/math_util_2.o\
-
+    build/us/src/racing/collision.o    \
+    build/us/src/racing/skybox_and_splitscreen.o    \
+    build/us/src/racing/memory.o    \
+    build/us/src/racing/race_logic.o    \
+    build/us/src/racing/actors_extended.o    \
+    build/us/src/racing/render_courses.o    \
+    build/us/src/racing/actors.o
