@@ -175,11 +175,11 @@ void func_8006EEE8(s32 courseId) {
 extern u8 *D_8018D9B4;
 
 void func_8006EF60(void) {
-    s32 var_s2;
+    s32 i;
 
-    for (var_s2 = 0; var_s2 < 0x14; var_s2++) {
-        D_8018D248[var_s2] = func_8006ED94(gCourseOutlineTextures[var_s2], D_8018D9B4, D_800E5520[var_s2], D_800E5520[var_s2]);
-        D_8018D9B4 += D_800E5520[var_s2];
+    for (i = 0; i < 0x14; i++) {
+        D_8018D248[i] = func_8006ED94(gCourseOutlineTextures[i], D_8018D9B4, D_800E5520[i], D_800E5520[i]);
+        D_8018D9B4 += D_800E5520[i];
     }
 }
 #else
