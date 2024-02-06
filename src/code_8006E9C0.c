@@ -714,7 +714,7 @@ void func_80070250(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
     temp_v0->unk_09E = arg2->pos[1];
     temp_v0->sizeScaling = (f32) arg2->pos[2] / 100.0;
     temp_v0->activeTexture = &D_8018D220[arg2->id];
-    func_80073404(objectIndex, 0x40U, 0x20U, &D_0D005FB0);
+    func_80073404(objectIndex, 0x40U, 0x20U, &D_0D005FB0[0]);
     temp_v0->unk_0A0 = 0x00FF;
 }
 
