@@ -39,7 +39,7 @@ SECTIONS
    {
       BUILD_DIR/asm/entry.o(.text);
       BUILD_DIR/src/main.o(.text*);
-         BUILD_DIR/src/code_800029B0.o(.text*);
+      BUILD_DIR/src/code_800029B0.o(.text*);
       BUILD_DIR/src/profiler.o(.text*);
       BUILD_DIR/src/crash_screen.o(.text*);
       BUILD_DIR/src/code_80004740.o(.text*);
@@ -276,6 +276,7 @@ SECTIONS
       BUILD_DIR/src/code_80071F00.o(.rodata*);
       BUILD_DIR/src/code_80086E70.o(.rodata*);
       BUILD_DIR/src/effects.o(.rodata*);
+      BUILD_DIR/src/code_80091440.o(.rodata*);
       BUILD_DIR/src/code_80091750.jp.o(.rodata*);
       BUILD_DIR/src/code_800AF9B0.o(.rodata*);
       BUILD_DIR/src/menus.o(.rodata*);
@@ -408,7 +409,6 @@ SECTIONS
       . = ALIGN(0x8);
    }
    END_NOLOAD(buffers)
-
 
    /* 0x80280000 123640-12AAE0 [74A0] */
    BEGIN_SEG(ending, LINKER_ENDING)
