@@ -191,13 +191,13 @@ extern u16 D_80152300[];
 extern u16 D_80152308;
 
 extern OSThread gIdleThread;
-extern ALIGNED8 u8 gIdleThreadStack[];
+extern u8 gIdleThreadStack[];
 extern OSThread gVideoThread;
-extern ALIGNED8 u8 gVideoThreadStack[];
+extern u8 gVideoThreadStack[];
 extern OSThread gGameLoopThread;
-extern ALIGNED8 u8 gGameLoopThreadStack[];
+extern u8 gGameLoopThreadStack[];
 extern OSThread gAudioThread;
-extern ALIGNED8 u8 gAudioThreadStack[];
+extern u8 gAudioThreadStack[];
 
 extern u8 gGfxSPTaskYieldBuffer[];
 extern u32 gGfxSPTaskStack[];
