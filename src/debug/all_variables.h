@@ -63,7 +63,7 @@
 #include <objects.h>
 #include <segments.h>
 #include <sounds.h>
-#include "data/trig_tables.h"
+#include "src/data/trig_tables.h"
 #include <types.h>
 #include <ultra64.h>
 #include <vehicles.h>
