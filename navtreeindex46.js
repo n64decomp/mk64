@@ -1,16 +1,5 @@
 var NAVTREEINDEX46 =
 {
-"hardware_8h.html#a3949e617d780b9c8f577690ab7e875b5":[8,0,3,5,49,13],
-"hardware_8h.html#a3990c5960e58f7a15e50b99881784a2d":[8,0,3,5,49,66],
-"hardware_8h.html#a3e90845955a076f7271afd5d7761c043":[8,0,3,5,49,24],
-"hardware_8h.html#a40cd1cb446e4799f4679d6672b1cf109":[8,0,3,5,49,87],
-"hardware_8h.html#a4138c8147efc92a9309dc2197ccac3bb":[8,0,3,5,49,91],
-"hardware_8h.html#a445fa45861dbf8a5dbabb9c2ea8618f6":[8,0,3,5,49,56],
-"hardware_8h.html#a46eef774c6670d30da448d344d12295f":[8,0,3,5,49,40],
-"hardware_8h.html#a4821f69a5605c2618cd4dc4d3f60979c":[8,0,3,5,49,15],
-"hardware_8h.html#a4a3c93b6b0e710a39f1eaba88f74b412":[8,0,3,5,49,23],
-"hardware_8h.html#a4b1c40d95d5de54f094184b453af2b9d":[8,0,3,5,49,68],
-"hardware_8h.html#a516a6a8811f1fe646481475b96fb783b":[8,0,3,5,49,65],
 "hardware_8h.html#a53d9f99bd26a77569e2b052afe2c66d0":[8,0,3,5,49,33],
 "hardware_8h.html#a542644a8d4207743fc96528c181c5601":[8,0,3,5,49,34],
 "hardware_8h.html#a55cf08cec537e733ed36b65b696fbe70":[8,0,3,5,49,88],
@@ -249,5 +238,16 @@ var NAVTREEINDEX46 =
 "hud__renderer_8c.html#a0f077b9b03b813485f0c45fd516a346c":[8,0,3,42,202],
 "hud__renderer_8c.html#a0f506bac7d9077d130368f59aa040e45":[8,0,3,42,94],
 "hud__renderer_8c.html#a0fe297f891905105fc0a983e07d1c603":[8,0,3,42,246],
-"hud__renderer_8c.html#a1023837f73e0a587f19538f6b2b6ae6e":[8,0,3,42,174]
+"hud__renderer_8c.html#a1023837f73e0a587f19538f6b2b6ae6e":[8,0,3,42,174],
+"hud__renderer_8c.html#a108a2ed9254584e7d12f3410ee1185ad":[8,0,3,42,255],
+"hud__renderer_8c.html#a108b5f93d4a4f068fa7655c287be1dda":[8,0,3,42,346],
+"hud__renderer_8c.html#a1149930f50b8128b98bef4f45cc27a1b":[8,0,3,42,254],
+"hud__renderer_8c.html#a11b93b94f668a841d51489531a6fc963":[8,0,3,42,87],
+"hud__renderer_8c.html#a1394409606c1ef5555adb61ce4c6f826":[8,0,3,42,219],
+"hud__renderer_8c.html#a1448b788fd3107f3dc2f8cd25b40377b":[8,0,3,42,213],
+"hud__renderer_8c.html#a177b409a09064a27359b1dc5db7ec445":[8,0,3,42,401],
+"hud__renderer_8c.html#a178d89cdff8fdbdd155c7697bbed4605":[8,0,3,42,44],
+"hud__renderer_8c.html#a17f9b05a746ef42ad0faca7d579356cd":[8,0,3,42,263],
+"hud__renderer_8c.html#a18a9621cc0a51f64087fb663659a6e32":[8,0,3,42,119],
+"hud__renderer_8c.html#a195a1e375ca5fcef1d0fdef922e43e49":[8,0,3,42,248]
 };

@@ -47,7 +47,7 @@ var searchData=
   ['fp8_44',['fp8',['../struct____OSThreadContext.html#a9aabf877b60333e3d81b671cc434140e',1,'__OSThreadContext']]],
   ['fpcsr_45',['fpcsr',['../struct____OSThreadContext.html#a877788485cdeac4f6db3833f0944d830',1,'__OSThreadContext']]],
   ['frame_5flength_46',['frame_length',['../structMkAnimation.html#a4f074740af380889740d462c41efbd16',1,'MkAnimation']]],
-  ['framebufferpadding_47',['frameBufferPadding',['../framebuffers_8c.html#a8d41a87f21c332742464afc1f22eff4c',1,'framebuffers.c']]],
+  ['framebufferpadding_47',['frameBufferPadding',['../buffers_8c.html#a8d41a87f21c332742464afc1f22eff4c',1,'buffers.c']]],
   ['framecountdown_48',['frameCountDown',['../structstruct__8018DEE0__entry.html#a628cdff4d1e4263f569a0310e413b3c3',1,'struct_8018DEE0_entry']]],
   ['frameduration_49',['frameDuration',['../structStaffGhost.html#a7b637771b83c668ccfe34d8a0154a273',1,'StaffGhost']]],
   ['frameh_50',['frameH',['../structuObjBg__t.html#a0e443b12d01dba224d55c257e268da75',1,'uObjBg_t::frameH'],['../structuObjScaleBg__t.html#aec884c1291ccce0e9ac0cc14202861e8',1,'uObjScaleBg_t::frameH']]],

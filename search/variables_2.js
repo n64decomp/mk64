@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['b_0',['B',['../structuObjMtx__t.html#a87aae46e87f2cb767e062ee1c5dc3841',1,'uObjMtx_t']]],
-  ['b_1',['b',['../unionuObjBg.html#a4c7b764ed0f65c46029a1af38ca912e7',1,'uObjBg']]],
+  ['b_0',['b',['../unionuObjBg.html#a4c7b764ed0f65c46029a1af38ca912e7',1,'uObjBg']]],
+  ['b_1',['B',['../structuObjMtx__t.html#a87aae46e87f2cb767e062ee1c5dc3841',1,'uObjMtx_t']]],
   ['backup_2',['backup',['../structSaveData.html#a2ff481cd3bd1a2837891600786ff1b48',1,'SaveData']]],
   ['badvaddr_3',['badvaddr',['../struct____OSThreadContext.html#a198bd5d346a218eb2a4bbc8e10b0d002',1,'__OSThreadContext']]],
   ['bananaid_4',['bananaId',['../structBananaActor.html#ab30bfa430265f8e869e8b3ebf8bb9d03',1,'BananaActor']]],

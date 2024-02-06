@@ -49,11 +49,14 @@ var searchData=
   ['tlbwired_5fwiredmask_46',['TLBWIRED_WIREDMASK',['../R4300_8h.html#ae6da5bb0eeb6229beecb89e3817e4205',1,'R4300.h']]],
   ['toad_47',['TOAD',['../defines_8h.html#afd95aa649c35f54671dc41e1f757b89c',1,'defines.h']]],
   ['toad_5fsize_48',['TOAD_SIZE',['../defines_8h.html#aefc3b587853ceba930d4b7989cb84a51',1,'defines.h']]],
-  ['triple_5fgreen_5fshell_49',['TRIPLE_GREEN_SHELL',['../actor__types_8h.html#a15085d9256c17708128d49a8e35adc88',1,'actor_types.h']]],
-  ['triple_5fred_5fshell_50',['TRIPLE_RED_SHELL',['../actor__types_8h.html#a32942b6bcb167490429561cb34cfc23c',1,'actor_types.h']]],
-  ['true_51',['TRUE',['../ultratypes_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d',1,'ultratypes.h']]],
-  ['tv_5ftype_5fmpal_52',['TV_TYPE_MPAL',['../libultra_8h.html#a8ecebeabce268a200f5522d5717d29c8',1,'libultra.h']]],
-  ['tv_5ftype_5fntsc_53',['TV_TYPE_NTSC',['../libultra_8h.html#aa12ab0b4f45c62d6acb605ce5f1cea43',1,'libultra.h']]],
-  ['tv_5ftype_5fpal_54',['TV_TYPE_PAL',['../libultra_8h.html#af3b80d8e5ece36f04d37f84313008993',1,'libultra.h']]],
-  ['two_5fplayers_5fselected_55',['TWO_PLAYERS_SELECTED',['../defines_8h.html#a98748f4c5112d0a0081d909822d4c8ab',1,'defines.h']]]
+  ['trig_5ftables_49',['TRIG_TABLES',['../segments_8h.html#a761c05cde348942fdce0754b88fb1ca6',1,'segments.h']]],
+  ['trig_5ftables_5from_5fstart_50',['TRIG_TABLES_ROM_START',['../segments_8h.html#a20d77c6ed229d04a4e116f6efee58b65',1,'segments.h']]],
+  ['trig_5ftables_5fsize_51',['TRIG_TABLES_SIZE',['../segments_8h.html#a2e9dea20b55782f35a2f810a20bea0ab',1,'segments.h']]],
+  ['triple_5fgreen_5fshell_52',['TRIPLE_GREEN_SHELL',['../actor__types_8h.html#a15085d9256c17708128d49a8e35adc88',1,'actor_types.h']]],
+  ['triple_5fred_5fshell_53',['TRIPLE_RED_SHELL',['../actor__types_8h.html#a32942b6bcb167490429561cb34cfc23c',1,'actor_types.h']]],
+  ['true_54',['TRUE',['../ultratypes_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d',1,'ultratypes.h']]],
+  ['tv_5ftype_5fmpal_55',['TV_TYPE_MPAL',['../libultra_8h.html#a8ecebeabce268a200f5522d5717d29c8',1,'libultra.h']]],
+  ['tv_5ftype_5fntsc_56',['TV_TYPE_NTSC',['../libultra_8h.html#aa12ab0b4f45c62d6acb605ce5f1cea43',1,'libultra.h']]],
+  ['tv_5ftype_5fpal_57',['TV_TYPE_PAL',['../libultra_8h.html#af3b80d8e5ece36f04d37f84313008993',1,'libultra.h']]],
+  ['two_5fplayers_5fselected_58',['TWO_PLAYERS_SELECTED',['../defines_8h.html#a98748f4c5112d0a0081d909822d4c8ab',1,'defines.h']]]
 ];

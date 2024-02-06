@@ -1,16 +1,5 @@
 var NAVTREEINDEX73 =
 {
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a7babff3fe1e53566737a4b4e916deeed":[8,0,0,9,3,193],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a7cf18b95237e612f21d07c26f4cd086f":[8,0,0,9,3,3],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a8084726df08e1aeeb35f4fcb79e33c99":[8,0,0,9,3,76],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a808a1e64a71d4c23da9f01a722ad3d05":[8,0,0,9,3,273],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a81fb92948f856e9c6d030ab9218f5424":[8,0,0,9,3,12],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a841fdd17737d30959414b373465f55b1":[8,0,0,9,3,80],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a858bd6b2d3da49f787192bd6dca0fad1":[8,0,0,9,3,196],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a8596f3394ef5d0afefb5a3460b82758a":[8,0,0,9,3,125],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a859e538e8c84f5a55e40161e52afd12d":[8,0,0,9,3,55],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a85c78be177ee926c487919f9c905fce4":[8,0,0,9,3,207],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a85d09cfe58a6c1065cf57b6d42dc1a01":[8,0,0,9,3,267],
 "koopa__troopa__beach_2course__displaylists_8inc_8h.html#a862975dfe8eb429baac0d15c69a07416":[8,0,0,9,3,21],
 "koopa__troopa__beach_2course__displaylists_8inc_8h.html#a892855d0670e9b0f76eadc2379397eed":[8,0,0,9,3,276],
 "koopa__troopa__beach_2course__displaylists_8inc_8h.html#a8a22583f9a7a55d4ac9f566e3381d5d7":[8,0,0,9,3,47],
@@ -249,5 +238,16 @@ var NAVTREEINDEX73 =
 "libultra__internal_8h.html#afb2210900f6a21df4cd55972368b87ba":[8,0,3,5,54,38],
 "libultra__internal_8h.html#afbaa4c704d84fbecef4ef9fc6364a5bb":[8,0,3,5,54,15],
 "libultra__internal_8h.html#afc496f4056d156cbaf6043ff54bca313":[8,0,3,5,54,16],
-"libultra__internal_8h.html#afd543b327be2093794db8fbef3a28149":[8,0,3,5,54,17]
+"libultra__internal_8h.html#afd543b327be2093794db8fbef3a28149":[8,0,3,5,54,17],
+"libultra__internal_8h.html#afe9c3abc4ca93d9fe18a87d9f108d5cb":[8,0,3,5,54,10],
+"libultra__internal_8h_source.html":[8,0,3,5,54],
+"linker__segments_8h.html":[8,0,2,12],
+"linker__segments_8h.html#a0a85ba71579a5b6128b8fe3791c28ba3":[8,0,2,12,1],
+"linker__segments_8h.html#a2b5717c2dbe8788999e087a81e519028":[8,0,2,12,4],
+"linker__segments_8h.html#a59074ab0bccd319816cb73863e3314a8":[8,0,2,12,2],
+"linker__segments_8h.html#aa5cdaa9057cd367a99ac3fcd81dff75d":[8,0,2,12,0],
+"linker__segments_8h.html#aac74798ffdb89f0f9cd607f6a1f7bf71":[8,0,2,12,3],
+"linker__segments_8h_source.html":[8,0,2,12],
+"llconv_8c.html":[8,0,3,5,0,1],
+"llconv_8c.html#a0f3948a7f0fa180167a7cfdbe7ca38b5":[8,0,3,5,0,1,2]
 };

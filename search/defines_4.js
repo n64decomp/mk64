@@ -58,7 +58,7 @@ var searchData=
   ['dcache_5fsize_55',['DCACHE_SIZE',['../R4300_8h.html#a11677b965695c567f2802f8cd8f4980f',1,'R4300.h']]],
   ['debug_5fgoto_5fcredits_5fsequence_5fcc_5f50_56',['DEBUG_GOTO_CREDITS_SEQUENCE_CC_50',['../defines_8h.html#ac5cea0f7498061ce280b21215b1065ba',1,'defines.h']]],
   ['debug_5fgoto_5fcredits_5fsequence_5fcc_5fextra_57',['DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA',['../defines_8h.html#a58817db62f89caa0d1a738f449e5ae04',1,'defines.h']]],
-  ['debug_5fgoto_5fending_5fsequence_58',['DEBUG_GOTO_ENDING_SEQUENCE',['../defines_8h.html#aaffb44836d713fabead0e1131aaa02f0',1,'defines.h']]],
+  ['debug_5fgoto_5fending_58',['DEBUG_GOTO_ENDING',['../defines_8h.html#ab886b50cbb81df73f0d156f0a69a71d9',1,'defines.h']]],
   ['debug_5fgoto_5fracing_59',['DEBUG_GOTO_RACING',['../defines_8h.html#a8653f7d5725d79d009994c0e405b74b4',1,'defines.h']]],
   ['debug_5fmenu_60',['DEBUG_MENU',['../defines_8h.html#ab38d05f6bbe1a269f32480e1928e6fea',1,'defines.h']]],
   ['debug_5fmenu_5fcourse_61',['DEBUG_MENU_COURSE',['../defines_8h.html#ae96a59b4a02eb30df8045170f9036103',1,'defines.h']]],

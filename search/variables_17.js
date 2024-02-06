@@ -11,7 +11,7 @@ var searchData=
   ['wario_5fstadium_5ftextures_8',['wario_stadium_textures',['../all__course__offsets_8h.html#afb2d218c3ac46e16ee4d7938502db297',1,'wario_stadium_textures:&#160;course_offsets.inc.c'],['../courseTable_8h.html#a31c7877a7347c7a71f52aa41b1f16803',1,'wario_stadium_textures:&#160;course_offsets.inc.c'],['../wario__stadium_2course__offsets_8inc_8c.html#a377ad398269c408a9628e432c39dbe05',1,'wario_stadium_textures:&#160;course_offsets.inc.c']]],
   ['wassoftreset_9',['wasSoftReset',['../main_8c.html#a2fa45adadd9db50419593273a86d5875',1,'wasSoftReset:&#160;main.c'],['../main_8h.html#a2fa45adadd9db50419593273a86d5875',1,'wasSoftReset:&#160;main.c']]],
   ['waveid_10',['waveId',['../structNotePlaybackState.html#a42402672c3ba2a53b238c7adb4897d59',1,'NotePlaybackState::waveId'],['../structNote.html#a735fb38930defbb072e29145b7cddebb',1,'Note::waveId']]],
-  ['waveinfo_11',['waveInfo',['../structALWaveTable__s.html#ae5f31319471de15d1420ddbf0884bcea',1,'ALWaveTable_s']]],
+  ['waveinfo_11',['waveInfo',['../structALWaveTable__s.html#a9c57eb36c46ed8f511614226ee96e4f4',1,'ALWaveTable_s']]],
   ['wavetable_12',['wavetable',['../structALSound__s.html#a8bb355521feffe02dfa992b5fd23ae87',1,'ALSound_s']]],
   ['waypointid1_13',['waypointId1',['../structUnkCommonTextureStruct0.html#a9dd8c5f4ee2e99daac76258eeb3c24c2',1,'UnkCommonTextureStruct0']]],
   ['waypointid2_14',['waypointId2',['../structUnkCommonTextureStruct0.html#abccfbf8f82b0c041395975c5c3a0968a',1,'UnkCommonTextureStruct0']]],
