@@ -80,7 +80,7 @@ u8 *gItemWindowTextures[] = {
     common_texture_item_window_mushroom, common_texture_item_window_double_mushroom, common_texture_item_window_triple_mushroom, common_texture_item_window_super_mushroom
 };
 
-u8 *D_800E4570[] = {
+u8 *gHudLapTextures[] = {
     common_texture_hud_lap_1_on_3, common_texture_hud_lap_2_on_3, common_texture_hud_lap_3_on_3
 };
 

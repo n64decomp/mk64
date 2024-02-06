@@ -1604,12 +1604,12 @@ UNUSED void func_8004C354() {
 UNUSED void func_8004C35C() {
 }
 
-void func_8004C364(s32 arg0, s32 arg1, u32 arg2, u32 arg3, u8 *texture) {
+void draw_hud_2d_texture(s32 x, s32 y, u32 width, u32 height, u8 *texture) {
     gSPDisplayList(gDisplayListHead++, D_0D008108);
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
-    load_texture_block_rgba16_mirror(texture, arg2, arg3);
-    func_8004B97C(arg0 - (arg2 >> 1), arg1 - (arg3 >> 1), arg2, arg3, 0);
+    load_texture_block_rgba16_mirror(texture, width, height);
+    func_8004B97C(x - (width >> 1), y - (height >> 1), width, height, 0);
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
@@ -1717,48 +1717,48 @@ void func_8004CA58(s32 arg0, s32 arg1, f32 arg2, u8 *texture, s32 arg4, s32 arg5
     func_8004BB3C(arg0, arg1, arg4, arg5, arg2);
 }
 
-void func_8004CAD0(s32 arg0, s32 arg1, u8 *texture) {
-    func_8004C364(arg0, arg1, 8, 8, texture);
+void draw_hud_2d_texture_8x8(s32 x, s32 y, u8 *texture) {
+    draw_hud_2d_texture(x, y, 8, 8, texture);
 }
 
-UNUSED void func_8004CB00(s32 arg0, s32 arg1, u8 *texture) {
-    func_8004C364(arg0, arg1, 8, 16, texture);
+UNUSED void draw_hud_2d_texture_8x16(s32 x, s32 y, u8 *texture) {
+    draw_hud_2d_texture(x, y, 8, 16, texture);
 }
 
-UNUSED void func_8004CB30(s32 arg0, s32 arg1, u8 *texture) {
-    func_8004C364(arg0, arg1, 16, 16, texture);
+UNUSED void draw_hud_2d_texture_16x16(s32 x, s32 y, u8 *texture) {
+    draw_hud_2d_texture(x, y, 16, 16, texture);
 }
 
-void func_8004CB60(s32 arg0, s32 arg1, u8 *texture) {
-    func_8004C364(arg0, arg1, 32, 8, texture);
+void draw_hud_2d_texture_32x8(s32 x, s32 y, u8 *texture) {
+    draw_hud_2d_texture(x, y, 32, 8, texture);
 }
 
-void func_8004CB90(s32 arg0, s32 arg1, u8 *texture) {
-    func_8004C364(arg0, arg1, 32, 16, texture);
+void draw_hud_2d_texture_32x16(s32 x, s32 y, u8 *texture) {
+    draw_hud_2d_texture(x, y, 32, 16, texture);
 }
 
 UNUSED void func_8004CBC0(s32 arg0, s32 arg1, f32 arg2, u8 *texture) {
     func_8004CA58(arg0, arg1, arg2, texture, 32, 16);
 }
 
-UNUSED void func_8004CBF4(s32 arg0, s32 arg1, u8 *texture) {
-    func_8004C364(arg0, arg1, 32, 32, texture);
+UNUSED void draw_hud_2d_texture_32x32(s32 x, s32 y, u8 *texture) {
+    draw_hud_2d_texture(x, y, 32, 32, texture);
 }
 
 UNUSED void func_8004CC24(s32 arg0, s32 arg1, u8 *texture) {
     func_8004C628(arg0, arg1, 32, 32, texture);
 }
 
-UNUSED void func_8004CC54(s32 arg0, s32 arg1, u8 *texture) {
-    func_8004C364(arg0, arg1, 40, 32, texture);
+UNUSED void draw_hud_2d_texture_40x32(s32 x, s32 y, u8 *texture) {
+    draw_hud_2d_texture(x, y, 40, 32, texture);
 }
 
-UNUSED void func_8004CC84(s32 arg0, s32 arg1, u8 *texture) {
-    func_8004C91C(arg0, arg1, texture, 48, 48, 24);
+UNUSED void func_8004CC84(s32 x, s32 y, u8 *texture) {
+    func_8004C91C(x, y, texture, 48, 48, 24);
 }
 
-UNUSED void func_8004CCB4(s32 arg0, s32 arg1, u8 *texture) {
-    func_8004C364(arg0, arg1, 64, 32, texture);
+UNUSED void func_8004CCB4(s32 x, s32 y, u8 *texture) {
+    draw_hud_2d_texture(x, y, 64, 32, texture);
 }
 
 UNUSED void func_8004CCE4(s32 arg0, s32 arg1, f32 arg2, u8 *texture) {
@@ -2202,7 +2202,7 @@ UNUSED void func_8004E604(s32 arg0, s32 arg1, u8 *tlut, u8 *texture) {
     func_8004E240(arg0, arg1, tlut, texture, SCREEN_WIDTH, SCREEN_HEIGHT, 6);
 }
 
-void func_8004E638(s32 playerId) {
+void draw_item_window(s32 playerId) {
     s32 objectIndex;
     Objects *temp_v1;
     hud_player *temp_v0;
@@ -2228,9 +2228,9 @@ void func_8004E6C4(s32 playerId) {
     }
 }
 
-void func_8004E78C(s32 playerId) {
-    func_8004CB60((s32) playerHUD[playerId].lapX, playerHUD[playerId].lapY + 3, common_texture_hud_lap);
-    func_8004CB90(playerHUD[playerId].lapX + 0x1C, (s32) playerHUD[playerId].lapY, D_800E4570[playerHUD[playerId].alsoLapCount]);
+void draw_simplified_lap_count(s32 playerId) {
+    draw_hud_2d_texture_32x8((s32) playerHUD[playerId].lapX, playerHUD[playerId].lapY + 3, common_texture_hud_lap);
+    draw_hud_2d_texture_32x16(playerHUD[playerId].lapX + 0x1C, (s32) playerHUD[playerId].lapY, gHudLapTextures[playerHUD[playerId].alsoLapCount]);
 }
 
 void func_8004E800(s32 playerId) {
@@ -2279,11 +2279,11 @@ void func_8004EB38(s32 playerId) {
     }
     if ((u8) temp_s0->unk_7E != 0) {
         func_8004C9D8((s32) temp_s0->lapAfterImage1X, temp_s0->lapY + 3, 0x00000080, common_texture_hud_lap, 0x00000020, 8, 0x00000020, 8);
-        func_8004C9D8(temp_s0->lapAfterImage1X + 0x1C, (s32) temp_s0->lapY, 0x00000080, D_800E4570[temp_s0->alsoLapCount], 0x00000020, 0x00000010, 0x00000020, 0x00000010);
+        func_8004C9D8(temp_s0->lapAfterImage1X + 0x1C, (s32) temp_s0->lapY, 0x00000080, gHudLapTextures[temp_s0->alsoLapCount], 0x00000020, 0x00000010, 0x00000020, 0x00000010);
     }
     if ((u8) temp_s0->unk_7F != 0) {
         func_8004C9D8((s32) temp_s0->lapAfterImage2X, temp_s0->lapY + 3, 0x00000050, common_texture_hud_lap, 0x00000020, 8, 0x00000020, 8);
-        func_8004C9D8(temp_s0->lapAfterImage2X + 0x1C, (s32) temp_s0->lapY, 0x00000050, D_800E4570[temp_s0->alsoLapCount], 0x00000020, 0x00000010, 0x00000020, 0x00000010);
+        func_8004C9D8(temp_s0->lapAfterImage2X + 0x1C, (s32) temp_s0->lapY, 0x00000050, gHudLapTextures[temp_s0->alsoLapCount], 0x00000020, 0x00000010, 0x00000020, 0x00000010);
     }
 }
 
@@ -2326,7 +2326,7 @@ void func_8004F020(s32 arg0) {
         var_f0 = var_f0 + 4.0;
         break;
     }
-    func_8004CAD0(var_f2, var_f0, common_texture_minimap_finish_line);
+    draw_hud_2d_texture_8x8(var_f2, var_f0, common_texture_minimap_finish_line);
 }
 
 #ifdef NON_MATCHING
@@ -2355,7 +2355,7 @@ void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
                 func_8004C450((s32) temp_a0, (s32) temp_a1, 8, 8, (u8 *) common_texture_minimap_progress_dot);
                 //return;
             } else {
-                func_8004C364((s32) temp_a0, (s32) temp_a1, 8, 8, (u8 *) common_texture_minimap_progress_dot);
+                draw_hud_2d_texture((s32) temp_a0, (s32) temp_a1, 8, 8, (u8 *) common_texture_minimap_progress_dot);
             }
         }
     }
@@ -2481,7 +2481,7 @@ void func_8004F950(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_8004F8CC(arg0, arg1);
 }
 
-void func_8004F9CC(s32 arg0, s32 arg1, s32 arg2) {
+void print_timer_rainbow(s32 arg0, s32 arg1, s32 arg2) {
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
     func_8004B614(D_801656C0, D_801656D0, D_801656E0, 128, 128, 128, 255);
     load_texture_block_rgba16_mirror(common_texture_hud_normal_digit, 104, 16);
@@ -2489,7 +2489,7 @@ void func_8004F9CC(s32 arg0, s32 arg1, s32 arg2) {
     func_8004F8CC(arg0, arg1);
 }
 
-void func_8004FA78(s32 playerId) {
+void render_hud_timer(s32 playerId) {
     s32 var_s0;
 
     if ((gModeSelection != 2) && (gModeSelection != 3)) {
@@ -2499,24 +2499,24 @@ void func_8004FA78(s32 playerId) {
                     if (D_80165658[var_s0] == 0) {
                         print_timer(playerHUD[playerId].lapCompletionTimeXs[var_s0], playerHUD[playerId].timerY + (var_s0*0x10), playerHUD[playerId].lapDurations[var_s0]);
                     } else {
-                        func_8004F9CC(playerHUD[playerId].lapCompletionTimeXs[var_s0], playerHUD[playerId].timerY + (var_s0*0x10), playerHUD[playerId].lapDurations[var_s0]);
+                        print_timer_rainbow(playerHUD[playerId].lapCompletionTimeXs[var_s0], playerHUD[playerId].timerY + (var_s0*0x10), playerHUD[playerId].lapDurations[var_s0]);
                     }
                 }
-                func_8004CB90(playerHUD[playerId].totalTimeX - 0x13, playerHUD[playerId].timerY + 0x38, common_texture_hud_total_time);
+                draw_hud_2d_texture_32x16(playerHUD[playerId].totalTimeX - 0x13, playerHUD[playerId].timerY + 0x38, common_texture_hud_total_time);
                 if (D_801657E5 != 0) {
-                    func_8004F9CC(playerHUD[playerId].totalTimeX, playerHUD[playerId].timerY + 0x30, playerHUD[playerId].someTimer);
+                    print_timer_rainbow(playerHUD[playerId].totalTimeX, playerHUD[playerId].timerY + 0x30, playerHUD[playerId].someTimer);
                 } else {
                     print_timer(playerHUD[playerId].totalTimeX, playerHUD[playerId].timerY + 0x30, playerHUD[playerId].someTimer);
                 }
             }
         } else {
             if (playerHUD[playerId].blinkTimer == 0) {
-                func_8004CB90(playerHUD[playerId].timerX - 0x13, playerHUD[playerId].timerY + 8, common_texture_hud_time);
+                draw_hud_2d_texture_32x16(playerHUD[playerId].timerX - 0x13, playerHUD[playerId].timerY + 8, common_texture_hud_time);
                 print_timer(playerHUD[playerId].timerX, playerHUD[playerId].timerY, playerHUD[playerId].someTimer);
             } else {
-                func_8004CB90(playerHUD[playerId].timerX - 0x13, playerHUD[playerId].timerY + 8, common_texture_hud_lap_time);
+                draw_hud_2d_texture_32x16(playerHUD[playerId].timerX - 0x13, playerHUD[playerId].timerY + 8, common_texture_hud_lap_time);
                 if (D_801657E3 != 0) {
-                    func_8004F9CC(playerHUD[playerId].timerX, playerHUD[playerId].timerY, playerHUD[playerId].someTimer1);
+                    print_timer_rainbow(playerHUD[playerId].timerX, playerHUD[playerId].timerY, playerHUD[playerId].someTimer1);
                 } else if (playerHUD[playerId].blinkState == 0) {
                     print_timer(playerHUD[playerId].timerX, playerHUD[playerId].timerY, playerHUD[playerId].someTimer1);
                 }
@@ -2525,14 +2525,14 @@ void func_8004FA78(s32 playerId) {
     }
 }
 
-void func_8004FC78(s16 arg0, s16 arg1, s8 arg2) {
+void draw_lap_count(s16 lapX, s16 lapY, s8 lap) {
     gSPDisplayList(gDisplayListHead++, D_0D008108);
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
     load_texture_block_rgba16_mirror(common_texture_hud_123, 32, 8);
-    func_8004BA98(arg0, arg1, 8, 8, arg2 * 8, 0, 0);
-    func_8004BA98(arg0 + 8, arg1, 8, 8, 24, 0, 0);
-    func_8004BA98(arg0 + 16, arg1, 8, 8, 16, 0, 0);
+    func_8004BA98(lapX     , lapY, 8, 8, lap * 8, 0, 0); // display the digit
+    func_8004BA98(lapX + 8 , lapY, 8, 8,      24, 0, 0); // display the /
+    func_8004BA98(lapX + 16, lapY, 8, 8,      16, 0, 0); // display the 3
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
@@ -3558,7 +3558,7 @@ void func_80053E6C(s32 arg0) {
 }
 
 
-void render_object_smoke_train(s32 objectIndex, s32 cameraId) {
+void render_object_for_player_smoke_train(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
@@ -3592,7 +3592,7 @@ void render_train_smoke(s32 cameraId) {
 
             for (i = 0; i < 128; i++) {
                 // Need to make a way to increase this array for each train.
-                render_object_smoke_train(gObjectParticle2[i], cameraId);
+                render_object_for_player_smoke_train(gObjectParticle2[i], cameraId);
             }
         }
     }
@@ -3601,13 +3601,13 @@ void render_train_smoke(s32 cameraId) {
     if ((gTrainList[0].someFlags != 0) && (func_80041980(gTrainList[0].locomotive.position, camera, 0x4000U) != 0)) {
 
         for (i = 0; i < gObjectParticle2_SIZE; i++) {
-            render_object_smoke_train(gObjectParticle2[i], cameraId);
+            render_object_for_player_smoke_train(gObjectParticle2[i], cameraId);
         }
 
     }
     if ((gTrainList[1].someFlags != 0) && (func_80041980(gTrainList[1].locomotive.position, camera, 0x4000U) != 0)) {
         for (i = 0; i < gObjectParticle3_SIZE; i++) {
-            render_object_smoke_train(gObjectParticle3[i], cameraId);
+            render_object_for_player_smoke_train(gObjectParticle3[i], cameraId);
         }
     }
 #endif

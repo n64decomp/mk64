@@ -810,19 +810,19 @@ void render_player_one_1p_screen(void) {
         render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5EC);
-    func_80058090(PLAYER_ONE+SCREEN_MODE_1P);
+    render_object(RENDER_SCREEN_MODE_1P_PLAYER_ONE);
     render_players_on_screen_one();
-    func_8029122C(D_800DC5EC, 0);
+    func_8029122C(D_800DC5EC, PLAYER_ONE);
     func_80021B0C();
     func_802A2F34(D_800DC5EC);
-    render_snowy_effect_player(PLAYER_ONE+SCREEN_MODE_1P);
+    render_snowy_effect_player(RENDER_SCREEN_MODE_1P_PLAYER_ONE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
-        func_80058C20(0);
+        func_80058C20(RENDER_SCREEN_MODE_1P_PLAYER_ONE);
     }
-    func_80093A5C(0);
+    func_80093A5C(RENDER_SCREEN_MODE_1P_PLAYER_ONE);
     if (D_800DC5B8 != 0) {
-        func_80058DB4(0);
+        render_hud(RENDER_SCREEN_MODE_1P_PLAYER_ONE);
     }
 }
 
@@ -866,19 +866,19 @@ void render_player_one_2p_screen_vertical(void) {
         render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5EC);
-    func_80058090(PLAYER_ONE+SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL);
+    render_object(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE);
     render_players_on_screen_one();
-    func_8029122C(D_800DC5EC, 0);
+    func_8029122C(D_800DC5EC, PLAYER_ONE);
     func_80021B0C();
     func_802A2F34(D_800DC5EC);
-    render_snowy_effect_player(PLAYER_ONE+SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL);
+    render_snowy_effect_player(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
-        func_80058C20(1);
+        func_80058C20(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE);
     }
-    func_80093A5C(1);
+    func_80093A5C(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE);
     if (D_800DC5B8 != 0) {
-        func_80058DB4(1);
+        render_hud(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE);
     }
     D_8015F788 += 1;
 }
@@ -920,19 +920,19 @@ void render_player_two_2p_screen_vertical(void) {
         render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5F0);
-    func_80058090(PLAYER_TWO+SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL);
+    render_object(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO);
     render_players_on_screen_two();
-    func_8029122C(D_800DC5F0, 1);
+    func_8029122C(D_800DC5F0, PLAYER_TWO);
     func_80021C78();
     func_802A2F34(D_800DC5F0);
     func_80058BF4();
-    render_snowy_effect_player(PLAYER_TWO+SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL);
+    render_snowy_effect_player(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO);
     if (D_800DC5B8 != 0) {
-        func_80058C20(2);
+        func_80058C20(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO);
     }
-    func_80093A5C(2);
+    func_80093A5C(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO);
     if (D_800DC5B8 != 0) {
-        func_80058DB4(2);
+        render_hud(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO);
     }
     D_8015F788 += 1;
 }
@@ -978,19 +978,19 @@ void render_player_one_2p_screen_horizontal(void) {
         render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5EC);
-    func_80058090(PLAYER_ONE+SCREEN_MODE_2P_SPLITSCREEN_VERTICAL+1);
+    render_object(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE);
     render_players_on_screen_one();
-    func_8029122C(D_800DC5EC, 0);
+    func_8029122C(D_800DC5EC, PLAYER_ONE);
     func_80021B0C();
     func_802A2F34(D_800DC5EC);
-    render_snowy_effect_player(PLAYER_ONE+SCREEN_MODE_2P_SPLITSCREEN_VERTICAL+1);
+    render_snowy_effect_player(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
-        func_80058C20(3);
+        func_80058C20(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE);
     }
-    func_80093A5C(3);
+    func_80093A5C(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE);
     if (D_800DC5B8 != 0) {
-        func_80058DB4(3);
+        render_hud(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE);
     }
     D_8015F788 += 1;
 }
@@ -1035,19 +1035,19 @@ void render_player_two_2p_screen_horizontal(void) {
         render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5F0);
-    func_80058090(PLAYER_TWO+SCREEN_MODE_2P_SPLITSCREEN_VERTICAL+1);
+    render_object(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO);
     render_players_on_screen_two();
-    func_8029122C(D_800DC5F0, 1);
+    func_8029122C(D_800DC5F0, PLAYER_TWO);
     func_80021C78();
     func_802A2F34(D_800DC5F0);
-    render_snowy_effect_player(PLAYER_TWO+SCREEN_MODE_2P_SPLITSCREEN_VERTICAL+1);
+    render_snowy_effect_player(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
-        func_80058C20(4);
+        func_80058C20(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO);
     }
-    func_80093A5C(4);
+    func_80093A5C(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO);
     if (D_800DC5B8 != 0) {
-        func_80058DB4(4);
+        render_hud(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO);
     }
     D_8015F788 += 1;
 }
@@ -1089,19 +1089,19 @@ void render_player_one_3p_4p_screen(void) {
         render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5EC);
-    func_80058090(PLAYER_ONE+SCREEN_MODE_3P_4P_SPLITSCREEN+5);
+    render_object(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE);
     render_players_on_screen_one();
-    func_8029122C(D_800DC5EC, 0);
+    func_8029122C(D_800DC5EC, PLAYER_ONE);
     func_80021B0C();
     func_802A2F34(D_800DC5EC);
-    render_snowy_effect_player(PLAYER_ONE+SCREEN_MODE_3P_4P_SPLITSCREEN+5);
+    render_snowy_effect_player(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
-        func_80058C20(8);
+        func_80058C20(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE);
     }
-    func_80093A5C(8);
+    func_80093A5C(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE);
     if (D_800DC5B8 != 0) {
-        func_80058DB4(8);
+        render_hud(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE);
     }
     D_8015F788 += 1;
 }
@@ -1143,19 +1143,19 @@ void render_player_two_3p_4p_screen(void) {
         render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5F0);
-    func_80058090(PLAYER_TWO+SCREEN_MODE_3P_4P_SPLITSCREEN+5);
+    render_object(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO);
     render_players_on_screen_two();
-    func_8029122C(D_800DC5F0, 1);
+    func_8029122C(D_800DC5F0, PLAYER_TWO);
     func_80021C78();
     func_802A2F34(D_800DC5F0);
-    render_snowy_effect_player(PLAYER_TWO+SCREEN_MODE_3P_4P_SPLITSCREEN+5);
+    render_snowy_effect_player(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
-        func_80058C20(9);
+        func_80058C20(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO);
     }
-    func_80093A5C(9);
+    func_80093A5C(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO);
     if (D_800DC5B8 != 0) {
-        func_80058DB4(9);
+        render_hud(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO);
     }
     D_8015F788 += 1;
 }
@@ -1198,19 +1198,19 @@ void render_player_three_3p_4p_screen(void) {
         render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5F4);
-    func_80058090(PLAYER_THREE+SCREEN_MODE_3P_4P_SPLITSCREEN+5);
+    render_object(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE);
     render_players_on_screen_three();
-    func_8029122C(D_800DC5F4, 2);
+    func_8029122C(D_800DC5F4, PLAYER_THREE);
     func_80021D40();
     func_802A2F34(D_800DC5F4);
-    render_snowy_effect_player(PLAYER_THREE+SCREEN_MODE_3P_4P_SPLITSCREEN+5);
+    render_snowy_effect_player(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
-        func_80058C20(10);
+        func_80058C20(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE);
     }
-    func_80093A5C(10);
+    func_80093A5C(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE);
     if (D_800DC5B8 != 0) {
-        func_80058DB4(10);
+        render_hud(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE);
     }
     D_8015F788 += 1;
 }
@@ -1227,9 +1227,9 @@ void render_player_four_3p_4p_screen(void) {
 
     func_802A5760();
     if (gPlayerCountSelection1 == 3) {
-        func_80093A5C(11);
+        func_80093A5C(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
         if (D_800DC5B8 != 0) {
-            func_80058DB4(11);
+            render_hud(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
         }
         D_8015F788 += 1;
         return;
@@ -1261,19 +1261,19 @@ void render_player_four_3p_4p_screen(void) {
         render_set_position(matrix, 0);
     }
     render_course_actors(D_800DC5F8);
-    func_80058090(PLAYER_FOUR+SCREEN_MODE_3P_4P_SPLITSCREEN+5);
+    render_object(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
     render_players_on_screen_four();
-    func_8029122C(D_800DC5F8, 3);
+    func_8029122C(D_800DC5F8, PLAYER_FOUR);
     func_80021DA8();
     func_802A2F34(D_800DC5F8);
-    render_snowy_effect_player(PLAYER_FOUR+SCREEN_MODE_3P_4P_SPLITSCREEN+5);
+    render_snowy_effect_player(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
-        func_80058C20(11);
+        func_80058C20(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
     }
-    func_80093A5C(0xB);
+    func_80093A5C(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
     if (D_800DC5B8 != 0) {
-        func_80058DB4(11);
+        render_hud(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
     }
     D_8015F788 += 1;
 }

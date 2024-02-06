@@ -381,7 +381,7 @@ extern Vtx D_800E4470[];
 extern Vtx D_800E44B0[];
 extern u8 *gItemWindowTLUTs[];
 extern u8 *gItemWindowTextures[];
-extern u8 *D_800E4570[];
+extern u8 *gHudLapTextures[];
 extern u8 *gPortraitTLUTs[];
 extern u8 *gPortraitTextures[];
 
@@ -400,7 +400,7 @@ extern s8  D_8018D1B8[];
 extern Vec3s D_800E634C[3]; // static?
 extern Vtx D_800E4470[];
 extern Vtx D_800E44B0[];
-extern u8 *D_800E4570[];
+extern u8 *gHudLapTextures[];
 // The exact type here is a little unknown, but s16* works for now
 extern s16 *D_800E5D54[];
 extern s16 *D_800E5D9C[5];

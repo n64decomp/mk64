@@ -2414,23 +2414,23 @@ void func_80093A5C(u32 arg0) {
         func_8009C918();
     }
     switch (arg0) {
-    case 0:
+    case RENDER_SCREEN_MODE_1P_PLAYER_ONE:
         func_800940EC((s32) D_800F0B1C[arg0]);
         break;
-    case 1:
-    case 2:
-    case 3:
-    case 4:
+    case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE:
+    case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
+    case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
+    case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
         if (D_8015F788 == 0) {
             func_80093C1C((s32) D_800F0B1C[arg0]);
         } else {
             func_800940EC((s32) D_800F0B1C[arg0]);
         }
         break;
-    case 8:
-    case 9:
-    case 10:
-    case 11:
+    case RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE:
+    case RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO:
+    case RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE:
+    case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR:
         if (D_8015F788 == 3) {
             func_800940EC((s32) D_800F0B1C[arg0]);
         } else {

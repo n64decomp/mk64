@@ -631,7 +631,7 @@ void func_80041D34(void) {
     }
 }
 
-void func_80041EF4(void) {
+void set_matrix_hud_screen(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxOrtho), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 }
