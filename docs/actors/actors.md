@@ -30,7 +30,7 @@ void actor_name(Camera, Mat4, actor) {
 ```
 Check actor_types.h for a full list of options. You can create a new actor struct for your actor and customize it or use a predefined one. All actor structs must retain the same size. Generally, the types in the struct may be modified so long as `type` and `flags` stay the same as those are used elsewhere.
 
-See `update_object_railroad_crossing` for an example of how a timer may be setup and used.   
+See `update_actor_railroad_crossing` for an example of how a timer may be setup and used.   
 
 Audio may be activated using the following method:
 @ref func_800C98B8
