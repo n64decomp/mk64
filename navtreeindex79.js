@@ -1,5 +1,7 @@
 var NAVTREEINDEX79 =
 {
+"luigi__raceway_2course__offsets_8inc_8c.html#a30b980f37596d8c08149b5031405704d":[8,0,0,10,4,5],
+"luigi__raceway_2course__offsets_8inc_8c.html#a3116663b6fe0b81a607eb30951ceae27":[8,0,0,10,4,14],
 "luigi__raceway_2course__offsets_8inc_8c.html#a3f6bb9e9efaa8db2476c8c88691cf9fb":[8,0,0,10,4,16],
 "luigi__raceway_2course__offsets_8inc_8c.html#a3fd978b53ba5bbd671c986d9b5830ede":[8,0,0,10,4,19],
 "luigi__raceway_2course__offsets_8inc_8c.html#a40bb12ce00d4de55f36e861398f0083d":[8,0,0,10,4,26],
@@ -121,7 +123,7 @@ var NAVTREEINDEX79 =
 "main_8c.html#a591e42939dde9d7d96f2c57aedf62ab7":[8,0,3,46,96],
 "main_8c.html#a599875641fe660588f2c4b522eb59264":[8,0,3,46,98],
 "main_8c.html#a5ba352e44958486fef83d7a2ae5da53d":[8,0,3,46,155],
-"main_8c.html#a5c727626e801d3eb97b65ab26e57e6dc":[8,0,3,46,99],
+"main_8c.html#a5f24aafa500466dbf1a7154ff7041fc2":[8,0,3,46,148],
 "main_8c.html#a5fdc2bb7087bae7c274b1a04608c0c18":[8,0,3,46,77],
 "main_8c.html#a604a5ed26da9392d52cb441d31ba8dfe":[8,0,3,46,82],
 "main_8c.html#a630c9afdf0ccf0ef2d914c608d920a47":[8,0,3,46,118],
@@ -142,7 +144,6 @@ var NAVTREEINDEX79 =
 "main_8c.html#a720f132930eedc22c2c0163a3d2ffed8":[8,0,3,46,23],
 "main_8c.html#a729fe3cc996858fd4436ed29f60aa49e":[8,0,3,46,48],
 "main_8c.html#a753fddc62059f70c07c0b83147998762":[8,0,3,46,19],
-"main_8c.html#a7639e8ead57a5c20cc96a5ae71facb51":[8,0,3,46,148],
 "main_8c.html#a77471bbea209b9d664b6569191c60787":[8,0,3,46,4],
 "main_8c.html#a79930102a5242fef2ad659a427b0fcd3":[8,0,3,46,61],
 "main_8c.html#a7cb76d457774b28aaedb740c5c609231":[8,0,3,46,143],
@@ -161,6 +162,7 @@ var NAVTREEINDEX79 =
 "main_8c.html#a8d46561e10d019ff438d78c75101488b":[8,0,3,46,153],
 "main_8c.html#a92444a5a2e391f246366c8a94af5139a":[8,0,3,46,137],
 "main_8c.html#a94413a2d89ab2aef9ac256206bb39e45":[8,0,3,46,124],
+"main_8c.html#a977a26348d9f8d421d2f927f19d50693":[8,0,3,46,99],
 "main_8c.html#a9b253735194a23ab701e8ab9cdc7b128":[8,0,3,46,3],
 "main_8c.html#a9e7593aa87c416de7929e66aa995e4e3":[8,0,3,46,95],
 "main_8c.html#a9ed5341e2dcf5e4c53f04dd06d5abd91":[8,0,3,46,117],
@@ -247,7 +249,5 @@ var NAVTREEINDEX79 =
 "main_8h.html#a063033f9c922e60071eddb7280c596c9":[8,0,3,47,165],
 "main_8h.html#a07dfa3f5a6c56a4d3b03bd165e4e4273":[8,0,3,47,4],
 "main_8h.html#a0ac827018b8a5e6f5d51f5bbeb905939":[8,0,3,47,103],
-"main_8h.html#a0cefd6a5aac022c45cd46e14c90122e2":[8,0,3,47,151],
-"main_8h.html#a121438ed666b9774455ab1c9c77c8e72":[8,0,3,47,97],
-"main_8h.html#a123ceafce0f6cff4173e8f09d6cffe78":[8,0,3,47,38]
+"main_8h.html#a0cefd6a5aac022c45cd46e14c90122e2":[8,0,3,47,151]
 };

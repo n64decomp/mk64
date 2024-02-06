@@ -1,5 +1,7 @@
 var NAVTREEINDEX101 =
 {
+"royal__raceway_2course__displaylists_8inc_8c.html#ac30cc36474ea0999e271629871d8153d":[8,0,0,14,2,263],
+"royal__raceway_2course__displaylists_8inc_8c.html#ac3465461c6ebb54586ed82f61d770a99":[8,0,0,14,2,93],
 "royal__raceway_2course__displaylists_8inc_8c.html#ac37b3fb4da94411167334410336b0ffd":[8,0,0,14,2,227],
 "royal__raceway_2course__displaylists_8inc_8c.html#ac595c974a9eefbbcc0c3567417f8ac74":[8,0,0,14,2,173],
 "royal__raceway_2course__displaylists_8inc_8c.html#ac60c30925649fb527b796b62429db2a4":[8,0,0,14,2,298],
@@ -247,7 +249,5 @@ var NAVTREEINDEX101 =
 "royal__raceway_2course__displaylists_8inc_8h.html#a8deaff776483e3d346a58d643f36dd9b":[8,0,0,14,3,27],
 "royal__raceway_2course__displaylists_8inc_8h.html#a8ea84f58942fec23abd75e7e85440a11":[8,0,0,14,3,122],
 "royal__raceway_2course__displaylists_8inc_8h.html#a8f80cc3721817d2331b068062d8f47ac":[8,0,0,14,3,185],
-"royal__raceway_2course__displaylists_8inc_8h.html#a909a724a2e0e7871c5e1c14f28326c4d":[8,0,0,14,3,159],
-"royal__raceway_2course__displaylists_8inc_8h.html#a90eb3fde5f686e8846bf49052f727172":[8,0,0,14,3,92],
-"royal__raceway_2course__displaylists_8inc_8h.html#a9140d74dd8972cbb6f4ea90afcfeb5c2":[8,0,0,14,3,52]
+"royal__raceway_2course__displaylists_8inc_8h.html#a909a724a2e0e7871c5e1c14f28326c4d":[8,0,0,14,3,159]
 };

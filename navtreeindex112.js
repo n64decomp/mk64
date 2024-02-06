@@ -1,5 +1,7 @@
 var NAVTREEINDEX112 =
 {
+"structObjects.html#ad8ea061778fd78ac9e7427a729edbb86":[7,0,107,45],
+"structObjects.html#ad8ef439307ffc96b14046ea90e453574":[7,0,107,1],
 "structObjects.html#ad9bd376ce6122714531ac80e31434f5e":[7,0,107,31],
 "structObjects.html#adbbb8edc90e8b628e51f504499bb9252":[7,0,107,40],
 "structObjects.html#adc5e7117d059cabe69e51cf38c9bea13":[7,0,107,36],
@@ -247,7 +249,5 @@ var NAVTREEINDEX112 =
 "structReverbRingBufferItem.html#a5a7f1207d11bc90f650436b92a5e9ff4":[7,0,141,5],
 "structReverbRingBufferItem.html#a7468acef467cc33032ebc71a9213f201":[7,0,141,2],
 "structReverbRingBufferItem.html#ad0aaeb3ac2e8c6de0e2379fd4ffdc43e":[7,0,141,1],
-"structReverbRingBufferItem.html#adfe49013fb298b93af3d76538fa5b667":[7,0,141,6],
-"structReverbRingBufferItem.html#ae7d1e45b22c2ec70d50e3dcf0a142983":[7,0,141,3],
-"structReverbRingBufferItem.html#aecb154fdd65e01e1dc121b3b204943c3":[7,0,141,0]
+"structReverbRingBufferItem.html#adfe49013fb298b93af3d76538fa5b667":[7,0,141,6]
 };

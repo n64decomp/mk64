@@ -1,5 +1,7 @@
 var NAVTREEINDEX32 =
 {
+"course__offsets_8h.html":[8,0,2,7],
+"course__offsets_8h_source.html":[8,0,2,7],
 "courses.html":[2,0],
 "courses.html#courses":[2,0,0],
 "coursesmenu.html":[2],
@@ -247,7 +249,5 @@ var NAVTREEINDEX32 =
 "data__segment2_8h.html#a3960fe9a045688f6ba99538f101a138d":[8,0,3,37,60],
 "data__segment2_8h.html#a3b6b20e4868a0e766210be182a568ab8":[8,0,3,37,20],
 "data__segment2_8h.html#a3f774ecf7f79b7cda597c1fd9432ab3f":[8,0,3,37,58],
-"data__segment2_8h.html#a4255467c4f335c4155dc1126e44a9a96":[8,0,3,37,21],
-"data__segment2_8h.html#a425c4d92a9969cfdb501d6685a3e15a0":[8,0,3,37,15],
-"data__segment2_8h.html#a456143e944e409956bde7fe903c28f99":[8,0,3,37,39]
+"data__segment2_8h.html#a4255467c4f335c4155dc1126e44a9a96":[8,0,3,37,21]
 };
