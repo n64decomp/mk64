@@ -333,63 +333,36 @@ Gfx D_0D001C88[] = {
 };
 
 
-Vtx D_0D001CE8[] = {
+Vtx common_vtx_itembox_question_mark[] = {
     {{{    -5,       0,      -5}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x80}}},
     {{{    -5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x80}}},
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x80}}},
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x80}}},
-};
-
-Vtx common_vtx_itembox_question_mark[] = {
     {{{     3,      -5,       0}, 0, {1024, 1945}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,       5,       0}, 0, {1024, 65434}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,       5,       0}, 0, {0, 65434}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,      -5,       0}, 0, {0, 1945}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-Vtx D_0D001D68[] = {
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
-};
-
-Vtx D_0D001D98[] = {
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
-};
-
-Vtx D_0D001DC8[] = {
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
-};
-
-Vtx D_0D001DF8[] = {
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
-};
-
-Vtx D_0D001E28[] = {
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
-};
-
-Vtx D_0D001E58[] = {  
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
-
-};
-Vtx D_0D001E88[] = {
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
-};
-
-Vtx D_0D001EB8[] = {
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
@@ -407,7 +380,7 @@ Gfx D_0D002EE8[] = {
     gsDPSetBlendMask(0xFF),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsDPSetRenderMode(G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2),
-    gsSPVertex(D_0D001CE8, 4, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[0], 4, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSP1Triangle(0, 2, 3, 0),
     gsDPSetAlphaCompare(G_AC_NONE),
@@ -455,7 +428,7 @@ Gfx itemBoxQuestionMarkModel[] = {
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 256),
-    gsSPVertex(common_vtx_itembox_question_mark, 4, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[4], 4, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
@@ -465,7 +438,7 @@ Gfx D_0D003090[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001D68, 24, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[8], 24, 0),
     gsSP1Triangle(9, 10, 11, 0),
     gsSP1Triangle(6, 7, 8, 0),
     gsSP1Triangle(3, 4, 5, 0),
@@ -481,7 +454,7 @@ Gfx D_0D0030F8[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001D68, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[8], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -490,7 +463,7 @@ Gfx D_0D003128[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001D98, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[11], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -499,7 +472,7 @@ Gfx D_0D003158[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001DC8, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[14], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -508,7 +481,7 @@ Gfx D_0D003188[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001DF8, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[17], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -517,7 +490,7 @@ Gfx D_0D0031B8[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001E28, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[20], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -526,7 +499,7 @@ Gfx D_0D0031E8[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001E58, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[23], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -535,7 +508,7 @@ Gfx D_0D003218[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001E88, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[26], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -544,7 +517,7 @@ Gfx D_0D003248[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001EB8, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[29], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -652,7 +625,6 @@ Vtx D_0D005238[] = {
 };
 
 Vtx D_0D005278[] = {
-
     {{{     3,       6,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,       6,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,       0,       0}, 0, {1984, 1920}, {0xff, 0xff, 0xff, 0xff}}},

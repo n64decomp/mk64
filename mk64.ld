@@ -486,7 +486,7 @@ SECTIONS
    END_SEG(other_textures)
 
    /* 0x802BA370 724220-729A30 [0x5810] */
-   BEGIN_SEG(trigTables, LINKER_TRIG_TABLES)
+   BEGIN_SEG(trigTables, _buffersSegmentNoloadStart + 0xDA)
    {
         BUILD_DIR/src/data/trig_tables.o(.data);
         . = ALIGN(0x10);

@@ -200,7 +200,7 @@ void func_8007A778(s32, Player*, Camera*);
 void func_8007A884(void);
 void func_8007A88C(s32);
 void func_8007A910(s32);
-void update_obj_laikitu(s32);
+void update_obj_lakitu(s32);
 void func_8007AA44(s32);
 void func_8007ABFC(s32, s32);
 void consume_item(s32);
