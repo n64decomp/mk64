@@ -263,10 +263,7 @@ void func_800CBC24(void){
     temp_t6 = D_800EA3A0[0] - D_800EA3A4[0];
     test = (u8) temp_t6;
     test = (test + 0x100) & 0xFF;
-    do
-    {
-    }
-    while (0);
+    do {} while (0);
     if (D_800EA4A4 < test) {
         D_800EA4A4 = test;
     }
