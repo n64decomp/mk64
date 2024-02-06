@@ -104,168 +104,168 @@ Gfx D_02007818[] = {
 
 Gfx D_02007838[] = {
     gsSPVertex(D_02007BB8, 2, 0),
-    gsSPVertex(D_02007BD8, 2, 2),
+    gsSPVertex(&D_02007BB8[2], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007858[] = {
     gsSPVertex(D_02007BB8, 2, 0),
-    gsSPVertex(D_02007BF8, 2, 2),
+    gsSPVertex(&D_02007BB8[4], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007878[] = {
     gsSPVertex(D_02007BB8, 2, 0),
-    gsSPVertex(D_02007C18, 2, 2),
+    gsSPVertex(&D_02007BB8[6], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007898[] = {
     gsSPVertex(D_02007BB8, 2, 0),
-    gsSPVertex(D_02007C38, 2, 2),
+    gsSPVertex(&D_02007BB8[8], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_020078B8[] = {
     gsSPVertex(D_02007BB8, 2, 0),
-    gsSPVertex(D_02007C58, 2, 2),
+    gsSPVertex(&D_02007BB8[10], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_020078D8[] = {
     gsSPVertex(D_02007BB8, 2, 0),
-    gsSPVertex(D_02007C78, 2, 2),
+    gsSPVertex(&D_02007BB8[12], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_020078F8[] = {
     gsSPVertex(D_02007BB8, 2, 0),
-    gsSPVertex(D_02007C98, 2, 2),
+    gsSPVertex(&D_02007BB8[14], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007918[] = {
     gsSPVertex(D_02007BB8, 2, 0),
-    gsSPVertex(D_02007CB8, 2, 2),
+    gsSPVertex(&D_02007BB8[16], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007938[] = {
-    gsSPVertex(D_02007CD8, 2, 0),
-    gsSPVertex(D_02007CF8, 2, 2),
+    gsSPVertex(&D_02007BB8[18], 2, 0),
+    gsSPVertex(&D_02007BB8[20], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007958[] = {
-    gsSPVertex(D_02007CD8, 2, 0),
-    gsSPVertex(D_02007D18, 2, 2),
+    gsSPVertex(&D_02007BB8[18], 2, 0),
+    gsSPVertex(&D_02007BB8[22], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007978[] = {
-    gsSPVertex(D_02007CD8, 2, 0),
-    gsSPVertex(D_02007D38, 2, 2),
+    gsSPVertex(&D_02007BB8[18], 2, 0),
+    gsSPVertex(&D_02007BB8[24], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007998[] = {
-    gsSPVertex(D_02007CD8, 2, 0),
-    gsSPVertex(D_02007D58, 2, 2),
+    gsSPVertex(&D_02007BB8[18], 2, 0),
+    gsSPVertex(&D_02007BB8[26], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_020079B8[] = {
-    gsSPVertex(D_02007CD8, 2, 0),
-    gsSPVertex(D_02007D78, 2, 2),
+    gsSPVertex(&D_02007BB8[18], 2, 0),
+    gsSPVertex(&D_02007BB8[28], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_020079D8[] = {
-    gsSPVertex(D_02007CD8, 2, 0),
-    gsSPVertex(D_02007D98, 2, 2),
+    gsSPVertex(&D_02007BB8[18], 2, 0),
+    gsSPVertex(&D_02007BB8[30], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_020079F8[] = {
-    gsSPVertex(D_02007CD8, 2, 0),
-    gsSPVertex(D_02007DB8, 2, 2),
+    gsSPVertex(&D_02007BB8[18], 2, 0),
+    gsSPVertex(&D_02007BB8[32], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007A18[] = {
-    gsSPVertex(D_02007CD8, 2, 0),
-    gsSPVertex(D_02007DD8, 2, 2),
+    gsSPVertex(&D_02007BB8[18], 2, 0),
+    gsSPVertex(&D_02007BB8[34], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007A38[] = {
-    gsSPVertex(D_02007DF8, 2, 0),
-    gsSPVertex(D_02007E18, 2, 2),
+    gsSPVertex(&D_02007BB8[36], 2, 0),
+    gsSPVertex(&D_02007BB8[38], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007A58[] = {
-    gsSPVertex(D_02007DF8, 2, 0),
-    gsSPVertex(D_02007E38, 2, 2),
+    gsSPVertex(&D_02007BB8[36], 2, 0),
+    gsSPVertex(&D_02007BB8[40], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007A78[] = {
-    gsSPVertex(D_02007DF8, 2, 0),
-    gsSPVertex(D_02007E58, 2, 2),
+    gsSPVertex(&D_02007BB8[36], 2, 0),
+    gsSPVertex(&D_02007BB8[42], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007A98[] = {
-    gsSPVertex(D_02007DF8, 2, 0),
-    gsSPVertex(D_02007E78, 2, 2),
+    gsSPVertex(&D_02007BB8[36], 2, 0),
+    gsSPVertex(&D_02007BB8[44], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007AB8[] = {
-    gsSPVertex(D_02007DF8, 2, 0),
-    gsSPVertex(D_02007E98, 2, 2),
+    gsSPVertex(&D_02007BB8[36], 2, 0),
+    gsSPVertex(&D_02007BB8[46], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007AD8[] = {
-    gsSPVertex(D_02007DF8, 2, 0),
-    gsSPVertex(D_02007EB8, 2, 2),
+    gsSPVertex(&D_02007BB8[36], 2, 0),
+    gsSPVertex(&D_02007BB8[48], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007AF8[] = {
-    gsSPVertex(D_02007DF8, 2, 0),
-    gsSPVertex(D_02007ED8, 2, 2),
+    gsSPVertex(&D_02007BB8[36], 2, 0),
+    gsSPVertex(&D_02007BB8[50], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
 
 Gfx D_02007B18[] = {
-    gsSPVertex(D_02007DF8, 2, 0),
-    gsSPVertex(D_02007EF8, 2, 2),
+    gsSPVertex(&D_02007BB8[36], 2, 0),
+    gsSPVertex(&D_02007BB8[52], 2, 2),
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
@@ -281,139 +281,59 @@ UNUSED Vtx D_02007B38[] = {
     {{{  0,  0,  0}, 0, {  0, 448}, {0xff, 0x00, 0x00, 0xff}}},
 };
 
-//! @todo Place all these vertices in a single array
-// Access the correct vertex using sym[value]
 Vtx D_02007BB8[] = {
     {{{ 0, 65520, 0}, 0, {   0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{26, 65520, 0}, 0, {1600, 0}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-Vtx D_02007BD8[] = {
     {{{26, 0, 0}, 0, {1600, 960}, {0x00, 0x00, 0xff, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 960}, {0x00, 0x00, 0xff, 0xff}}},
-};
-
-Vtx D_02007BF8[] = {
     {{{26, 0, 0}, 0, {1600, 960}, {0x00, 0xff, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 960}, {0x00, 0xff, 0x00, 0xff}}},
-};
-
-Vtx D_02007C18[] = {
     {{{26, 0, 0}, 0, {1600, 960}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 960}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007C38[] = {
     {{{26, 0, 0}, 0, {1600, 960}, {0xff, 0xff, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 960}, {0xff, 0xff, 0x00, 0xff}}},
-};
-
-Vtx D_02007C58[] = {
     {{{26, 0, 0}, 0, {1600, 960}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 960}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007C78[] = {
     {{{26, 0, 0}, 0, {1600, 960}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 960}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007C98[] = {
     {{{26, 0, 0}, 0, {1600, 960}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 960}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007CB8[] = {
     {{{26, 0, 0}, 0, {1600, 960}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 960}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007CD8[] = {
     {{{ 0, 65520, 0}, 0, {  0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{16, 65520, 0}, 0, {960, 0}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-Vtx D_02007CF8[] = {
     {{{16, 0, 0}, 0, {960, 960}, {0x00, 0x00, 0xff, 0xff}}},
     {{{ 0, 0, 0}, 0, {  0, 960}, {0x00, 0x00, 0xff, 0xff}}},
-};
-
-Vtx D_02007D18[] = {
     {{{16, 0, 0}, 0, {960, 960}, {0x00, 0xff, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {  0, 960}, {0x00, 0xff, 0x00, 0xff}}},
-};
-
-Vtx D_02007D38[] = {
     {{{16, 0, 0}, 0, {960, 960}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {  0, 960}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007D58[] = {
     {{{16, 0, 0}, 0, {960, 960}, {0xff, 0xff, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {  0, 960}, {0xff, 0xff, 0x00, 0xff}}},
-};
-
-Vtx D_02007D78[] = {
     {{{16, 0, 0}, 0, {960, 960}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {  0, 960}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007D98[] = {
     {{{16, 0, 0}, 0, {960, 960}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {  0, 960}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007DB8[] = {
     {{{16, 0, 0}, 0, {960, 960}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {  0, 960}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007DD8[] = {
     {{{16, 0, 0}, 0, {960, 960}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {  0, 960}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007DF8[] = {
     {{{ 0, 65504, 0}, 0, {   0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{30, 65504, 0}, 0, {1856, 0}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-Vtx D_02007E18[] = {
     {{{30, 0, 0}, 0, {1856, 1984}, {0x00, 0x00, 0xff, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 1984}, {0x00, 0x00, 0xff, 0xff}}},
-};
-
-Vtx D_02007E38[] = {
     {{{30, 0, 0}, 0, {1856, 1984}, {0x00, 0xff, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 1984}, {0x00, 0xff, 0x00, 0xff}}},
-};
-
-Vtx D_02007E58[] = {
     {{{30, 0, 0}, 0, {1856, 1984}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 1984}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007E78[] = {
     {{{30, 0, 0}, 0, {1856, 1984}, {0xff, 0xff, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 1984}, {0xff, 0xff, 0x00, 0xff}}},
-};
-
-Vtx D_02007E98[] = {
     {{{30, 0, 0}, 0, {1856, 1984}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 1984}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007EB8[] = {
     {{{30, 0, 0}, 0, {1856, 1984}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 1984}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007ED8[] = {
     {{{30, 0, 0}, 0, {1856, 1984}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 1984}, {0xff, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_02007EF8[] = {
     {{{30, 0, 0}, 0, {1856, 1984}, {0xff, 0x00, 0x00, 0xff}}},
     {{{ 0, 0, 0}, 0, {   0, 1984}, {0xff, 0x00, 0x00, 0xff}}},
 };

@@ -1300,7 +1300,7 @@ s32 D_800E84A0[] = {
 };
 
 Vtx *D_800E84C0[] = {
-    D_02007BB8, D_02007CD8, D_02007DF8,
+    &D_02007BB8[0], &D_02007BB8[18], &D_02007BB8[36],
 };
 
 Gfx *D_800E84CC[] = {
@@ -2949,9 +2949,9 @@ Gfx *func_800959F8(Gfx *displayListHead, Vtx *arg1) {
     }
     if (arg1 == D_02007BB8) {
         gSPDisplayList(displayListHead++, D_800E84CC[index]);
-    } else if (arg1 == D_02007CD8) {
+    } else if (arg1 == &D_02007BB8[18]) {
         gSPDisplayList(displayListHead++, D_800E84EC[index]);
-    } else if (arg1 == D_02007DF8) {
+    } else if (arg1 == &D_02007BB8[36]) {
         gSPDisplayList(displayListHead++, D_800E850C[index]);
     }
     return displayListHead;
@@ -3019,16 +3019,16 @@ func_80095BD0_label2:
     gDPLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4, arg5, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     switch (arg4) {
     default:
-        var_a1 = D_02007CD8;
+        var_a1 = &D_02007BB8[18];
         break;
     case 16:
-        var_a1 = D_02007CD8;
+        var_a1 = &D_02007BB8[18];
         break;
     case 26:
         var_a1 = D_02007BB8;
         break;
     case 30:
-        var_a1 = D_02007DF8;
+        var_a1 = &D_02007BB8[36];
         break;
     }
 

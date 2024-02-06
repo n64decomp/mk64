@@ -37,6 +37,8 @@
 #include "crash_screen.h"
 #include "data/gfx_output_buffer.h"
 
+#define CRASH_SCREEN_ENHANCEMENT
+
 // Declarations (not in this file)
 void func_80091B78(void);
 

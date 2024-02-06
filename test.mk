@@ -16,7 +16,6 @@ SAFE_C_FILES :=    \
     build/us/src/staff_ghosts.o    \
     build/us/src/kart_dma.o    \
     build/us/src/gbiMacro.o    \
-    build/us/src/main.o    \
     build/us/src/math_util_2.o\
     build/us/src/racing/collision.o    \
     build/us/src/racing/skybox_and_splitscreen.o    \
