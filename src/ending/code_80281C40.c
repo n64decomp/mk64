@@ -22,7 +22,7 @@ struct UnkStruct80287560 {
 }; // 0xC
 
 /** bss **/
-s32 gMenuSelectionFromEndingSequence;
+s32 gGotoMenu;
 s32 D_80287554;
 s32 D_80281C40_pad[2];
 struct UnkStruct80287560 D_80287560[30];
@@ -57,11 +57,11 @@ void func_80281D00(void) {
 
     func_802A53A4();
     init_rdp();
-    if (gMenuSelectionFromEndingSequence != 0xFFFF) {
+    if (gGotoMenu != 0xFFFF) {
         clear_framebuffer(0);
         if (D_80287554 >= 4) {
             gIsInQuitToMenuTransition = 0;
-            gGamestateNext = gMenuSelectionFromEndingSequence;
+            gGamestateNext = gGotoMenu;
         }
         D_80287554++;
         return;

@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <defines.h>
 #include <config.h>
+#include <segments.h>
 
 #include "code_80281780.h"
 #include "types.h"
@@ -96,7 +97,7 @@ void load_ceremony_cutscene(void) {
     gCurrentCourseId = COURSE_ROYAL_RACEWAY;
     D_800DC5B4 = (u16)1;
     gIsMirrorMode = 0;
-    gMenuSelectionFromEndingSequence = 0xFFFF;
+    gGotoMenu = 0xFFFF;
     D_80287554 = 0;
     func_802A4D18();
     func_802A74BC();
@@ -112,7 +113,7 @@ void load_ceremony_cutscene(void) {
     gModeSelection = GRAND_PRIX;
     load_course(gCurrentCourseId);
     D_8015F730 = (s32) gNextFreeMemoryAddress;
-    set_segment_base_addr(0xB, (void *) decompress_segments((u8 *) &_data_821D10SegmentRomStart, (u8 *) &_data_825800SegmentRomStart));
+    set_segment_base_addr(0xB, (void *) decompress_segments((u8 *) CEREMONY_DATA_ROM_START, (u8 *) CEREMONY_DATA_ROM_END));
     set_segment_base_addr(6, (void *) decompress_segments((u8 *) &_course_banshee_boardwalk_dl_mio0SegmentRomStart, (u8 *) &_course_yoshi_valley_dl_mio0SegmentRomStart));
     D_8015F8E4 = -2000.0f;
 

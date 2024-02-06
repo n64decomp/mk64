@@ -3808,7 +3808,7 @@ Variable Name | Memory Address
 [wasSoftReset](@ref wasSoftReset) | 0x8015011C
 [D_8015011E](@ref D_8015011E) | 0x8015011E
 [D_80150120](@ref D_80150120) | 0x80150120
-[gMenuSelectionFromQuit](@ref gMenuSelectionFromQuit) | 0x80150124
+[gGotoMode](@ref gGotoMode) | 0x80150124
 [D_80150128](@ref D_80150128) | 0x80150128
 [D_8015012C](@ref D_8015012C) | 0x8015012C
 [gCameraZoom](@ref gCameraZoom) | 0x80150130
@@ -4831,6 +4831,7 @@ Variable Name | Memory Address
 [D_8019769C](@ref D_8019769C) | 0x8019769C
 [D_801976A0](@ref D_801976A0) | 0x801976A0
 [LeoDiskHandle](@ref LeoDiskHandle) | 0x80197850
+[memoryPool](@ref memoryPool) | 0x801978D0
 [func_8028DF00](@ref func_8028DF00) | 0x8028DF00
 [func_8028DF38](@ref func_8028DF38) | 0x8028DF38
 [func_8028E028](@ref func_8028E028) | 0x8028E028
@@ -5579,7 +5580,7 @@ Variable Name | Memory Address
 [sPodiumActorList](@ref sPodiumActorList) | 0x802874F8
 [D_802874FC](@ref D_802874FC) | 0x802874FC
 [D_80287500](@ref D_80287500) | 0x80287500
-[gMenuSelectionFromEndingSequence](@ref gMenuSelectionFromEndingSequence) | 0x80287550
+[gGotoMenu](@ref gGotoMenu) | 0x80287550
 [D_80287554](@ref D_80287554) | 0x80287554
 [D_80281C40_pad](@ref D_80281C40_pad) | 0x80287558
 [D_80287560](@ref D_80287560) | 0x80287560
@@ -19747,9 +19748,9 @@ Variable Name | Memory Address
 [gTextureGoldBar](@ref gTextureGoldBar) | 0x0B026C00
 [gTextureGoldBar_end](@ref gTextureGoldBar_end) | 0x0B027950
 [ceremony_data](@ref ceremony_data) | 0x0B000000
-[data_821D10_end](@ref data_821D10_end) | 0x0B003AF0
+[ceremonyData_end](@ref ceremonyData_end) | 0x0B003AF0
 [startup_logo](@ref startup_logo) | 0x06000000
-[data_825800_end](@ref data_825800_end) | 0x06002CD0
+[startupLogo_end](@ref startupLogo_end) | 0x06002CD0
 [mario_raceway_textures](@ref mario_raceway_textures) | 0x09000000
 [mario_raceway_dls](@ref mario_raceway_dls) | 0x090001F0
 [choco_mountain_textures](@ref choco_mountain_textures) | 0x09000000
@@ -19897,6 +19898,11 @@ Variable Name | Memory Address
 [seq_1C_end](@ref seq_1C_end) | 0x002821F0
 [seq_1D_end](@ref seq_1D_end) | 0x00282E70
 [instrument_sets](@ref instrument_sets) | 0x00282E80
+[pool.)](@ref pool.)) | 0x00000001
+[segment.)](@ref segment.)) | 0x00000001
+[segment)](@ref segment)) | 0x00000001
+[segment.)](@ref segment.)) | 0x00000001
+[memory)](@ref memory)) | 0x00000001
 
 Note: This information is generated during the compilation process.
 

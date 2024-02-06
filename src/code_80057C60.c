@@ -578,7 +578,7 @@ void func_800581C8(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
     func_8001C3C4(0);
-    if (gGamestate == ENDING_SEQUENCE) {
+    if (gGamestate == ENDING) {
         func_80055F48(0);
         func_80056160(0);
         func_8005217C(0);
@@ -673,7 +673,7 @@ void func_80058640(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    if (gGamestate != ENDING_SEQUENCE) {
+    if (gGamestate != ENDING) {
         func_80058B58(0);
     }
 }
@@ -1419,7 +1419,7 @@ void func_8005A070(void) {
     func_80041D34();
     if (gIsGamePaused == FALSE) {
         func_8005C728();
-        if (gGamestate == ENDING_SEQUENCE) {
+        if (gGamestate == ENDING) {
             func_80086604();
             func_80086D80();
             func_8007C2F8(1);
@@ -1495,7 +1495,7 @@ void func_8005A380(void) {
 
 void func_8005A3C0(void) {
     bool b = FALSE;
-    if ((gGamestate != ENDING_SEQUENCE) && (gGamestate != CREDITS_SEQUENCE) && !D_8018D204) {
+    if ((gGamestate != ENDING) && (gGamestate != CREDITS_SEQUENCE) && !D_8018D204) {
         switch (gPlayerCountSelection1) {
         case 1:
             if (gControllerOne->buttonPressed & R_CBUTTONS) {
@@ -6573,7 +6573,7 @@ void func_8006E420(Player* player, s8 arg1, s8 arg2) {
    
         for (temp_s0 = 0; temp_s0 < 10; ++temp_s0) {
             func_8006CEC0(player, temp_s0, arg1, arg2);
-            if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) || (gGamestate == ENDING_SEQUENCE)) {
+            if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) || (gGamestate == ENDING)) {
                 func_8006C9B8(player, temp_s0, arg1, arg2);
             }
             func_8006C6AC(player, temp_s0, arg1, arg2);

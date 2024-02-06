@@ -1,5 +1,5 @@
-#ifndef FRAMEBUFFERS_H
-#define FRAMEBUFFERS_H
+#ifndef BUFFERS_H
+#define BUFFERS_H
 
 #include <PR/ultratypes.h>
 #include "config.h"
@@ -89,4 +89,4 @@ extern u16 gFramebuffer1[SCREEN_WIDTH * SCREEN_HEIGHT];
 extern u16 gFramebuffer2[SCREEN_WIDTH * SCREEN_HEIGHT];
 #endif
 
-#endif // FRAMEBUFFERS_H
+#endif // BUFFERS_H

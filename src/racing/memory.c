@@ -4,6 +4,7 @@
 #include <types.h>
 #include <common_structs.h>
 #include <segments.h>
+#include <decode.h>
 
 #include "memory.h"
 #include "main.h"
@@ -1354,14 +1355,14 @@ u8 *load_course(s32 courseId) {
     finalDisplaylistOffset = gCourseTable[courseId].finalDisplaylistOffset;
     unknown1 = gCourseTable[courseId].unknown1;
 
-    if ((gGamestate == ENDING_SEQUENCE) || (gGamestate == CREDITS_SEQUENCE)) {
-        gHeapEndPtr = (uintptr_t) SEG_ENDING_SEQUENCES;
+    if ((gGamestate == ENDING) || (gGamestate == CREDITS_SEQUENCE)) {
+        gHeapEndPtr = SEG_ENDING;
     } else {
-        gHeapEndPtr = (uintptr_t) SEG_RACING;
+        gHeapEndPtr = SEG_RACING;
     }
     set_segment_base_addr(9, load_data((uintptr_t)offsetRomStart, (uintptr_t) offsetRomEnd));
 
-    if (gGamestate != ENDING_SEQUENCE) {
+    if (gGamestate != ENDING) {
         set_segment_base_addr(6, decompress_segments(courseDataRomStart, courseDataRomEnd));
     }
     prevLoadedAddress_saved = gNextFreeMemoryAddress;

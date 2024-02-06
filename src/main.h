@@ -82,7 +82,7 @@ void config_gfx_pool(void);
 void display_and_vsync(void);
 void init_segment_ending_sequences(void);
 void init_segment_racing(void);
-void dma_copy(u8*, u8*, u32);
+void dma_copy(u8*, u8*, size_t);
 void setup_game_memory(void);
 void game_init_clear_framebuffer(void);
 void race_logic_loop(void);
@@ -168,7 +168,7 @@ extern u16 wasSoftReset;
 extern u16 D_8015011E;
 
 extern s32 D_80150120;
-extern s32 gMenuSelectionFromQuit;
+extern s32 gGotoMode;
 extern f32 gCameraZoom[];
 
 extern f32 gScreenAspect;
@@ -234,11 +234,6 @@ extern f32 gCourseTimer;
 extern u64 gGfxSPTaskOutputBuffer[];
 extern u32 gGfxSPTaskOutputBufferSize;
 
-extern u8 _data_segment2SegmentRomStart[];
-extern u8 _data_segment2SegmentRomEnd[];
-extern u8 _common_texturesSegmentRomStart[];
-extern u8 _common_texturesSegmentRomEnd[];
-extern u8 _data_802BA370SegmentRomStart[];
 extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?
 
 #endif

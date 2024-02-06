@@ -1,9 +1,7 @@
 #include <ultra64.h>
 
 #include "config.h"
-#include "framebuffers.h"
-
-#include "trig_tables.inc.c"
+#include "buffers.h"
 
 u16 gRandomSeed16;
 
