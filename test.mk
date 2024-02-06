@@ -24,4 +24,13 @@ SAFE_C_FILES :=    \
     build/us/src/racing/race_logic.o    \
     build/us/src/racing/actors_extended.o    \
     build/us/src/racing/render_courses.o    \
-    build/us/src/racing/actors.o
+    build/us/src/racing/actors.o\
+    build/us/src/ending/credits.o    \
+    build/us/src/ending/code_80280000.o    \
+    build/us/src/ending/ceremony_and_credits.o    \
+    build/us/src/ending/code_80281780.o    \
+    build/us/src/ending/podium_ceremony_actors.o    \
+    build/us/src/ending/dl_unk_80284EE0.inc.o    \
+    build/us/src/ending/ceremony_data.inc.o    \
+    build/us/src/ending/code_80281C40.o    \
+    build/us/src/ending/camera_junk.o    \

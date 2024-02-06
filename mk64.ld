@@ -424,8 +424,11 @@ SECTIONS
       BUILD_DIR/src/ending/dl_unk_80284EE0.inc.o(.data*);
       BUILD_DIR/src/ending/credits.jp.o(.data*);
       BUILD_DIR/src/ending/ceremony_and_credits.o(.data*);
+      BUILD_DIR/src/ending/code_80280000.o(.rodata*);
       BUILD_DIR/src/ending/podium_ceremony_actors.o(.rodata*);
       BUILD_DIR/src/ending/camera_junk.o(.rodata*);
+      BUILD_DIR/src/ending/code_80281780.o(.rodata*);
+      BUILD_DIR/src/ending/code_80281C40.o(.rodata*);
       BUILD_DIR/src/ending/credits.jp.o(.rodata*);
       BUILD_DIR/src/ending/ceremony_and_credits.o(.rodata*);
    }
