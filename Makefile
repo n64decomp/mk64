@@ -2,6 +2,8 @@
 
 include util.mk
 
+include test.mk
+
 # Default target
 default: all
 
@@ -113,7 +115,8 @@ ifeq ($(NON_MATCHING),1)
   COMPARE := 0
 endif
 
-
+# GCC define is to link gcc's std lib.
+DEFINES += AVOID_UB=1 GCC=1
 
 # COMPARE - whether to verify the SHA-1 hash of the ROM after building
 #   1 - verifies the SHA-1 hash of the selected version of the game
@@ -171,7 +174,7 @@ PYTHON := python3
 
 ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
 
-# Make sure assets exist
+  # Make sure assets exist
   NOEXTRACT ?= 0
   ifeq ($(NOEXTRACT),0)
     DUMMY != $(PYTHON) extract_assets.py $(VERSION) >&2 || echo FAIL
@@ -378,9 +381,13 @@ endif
 
 # Common build print status function
 define print
-  @$(PRINT) "$(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
+  @$(PRINT) "$(RED)$(CC), $(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
 endef
 
+$(SAFE_C_FILES): CC       := $(CROSS)gcc
+$(SAFE_C_FILES): MIPSISET := -mips3
+$(SAFE_C_FILES): CFLAGS   := -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS) -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
+$(SAFE_C_FILES): CC_CHECK := gcc -m32
 
 
 #==============================================================================#
