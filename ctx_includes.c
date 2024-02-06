@@ -48,7 +48,7 @@
 #include "include/save_data.h"
 #include "include/segments.h"
 #include "include/sounds.h"
-#include "include/trig_tables.h"
+#include "src/data/trig_tables.h"
 #include "include/types.h"
 #include "include/ultra64.h"
 #include "include/vehicles.h"

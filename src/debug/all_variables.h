@@ -64,7 +64,7 @@
 #include <hardcoded_segments.h>
 #include <segments.h>
 #include <sounds.h>
-#include <trig_tables.h>
+#include "src/data/trig_tables.h"
 #include <types.h>
 #include <ultra64.h>
 #include <vehicles.h>

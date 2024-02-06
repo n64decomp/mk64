@@ -17,4 +17,5 @@ SAFE_C_FILES :=    \
     build/us/src/kart_dma.o    \
     build/us/src/gbiMacro.o    \
     build/us/src/main.o    \
+    build/us/src/math_util_2.o\
 
