@@ -11,7 +11,7 @@ extern u32 _course_mario_raceway_dl_mio0SegmentRomStart[];
 
 typedef struct {
     /* 0x00 */ s32 type; // id maybe?
-    /* 0x04 */ s32 unk4; // sound mode, maybe some other stuff
+    /* 0x04 */ s32 cursor; // sound mode, maybe some other stuff
     /* 0x08 */ s32 unk8; // This is used but I can't tell what for
     /* 0x0C */ s32 column;
     /* 0x10 */ s32 row;
@@ -78,8 +78,8 @@ void func_80091EE4(void);
 void func_80091FA4(void);
 void func_80092148(void);
 void func_800921B4(void);
-void func_800921C0(s32, s32, s32);
-void func_80092224(s32, s32, s32);
+void set_text_color_rainbow_if_selected_and_detect_kind_menu(s32, s32, s32);
+void set_text_color_rainbow_if_selected(s32, s32, s32);
 void func_80092258(void);
 void func_80092290(s32, s32*, s32*);
 void func_80092500(void);
@@ -253,11 +253,11 @@ void func_800A3E60(struct_8018D9E0_entry*);
 void func_800A4550(s32, s32, s32);
 void func_800A474C(s32, s32, s32);
 void func_800A4A24(struct_8018D9E0_entry*);
-void func_800A4B38(struct_8018D9E0_entry*);
-void func_800A4BC8(struct_8018D9E0_entry*);
-void func_800A4EF8(struct_8018D9E0_entry*);
-void func_800A5084(struct_8018D9E0_entry*);
-void func_800A5360(struct_8018D9E0_entry*);
+void render_pause_menu(struct_8018D9E0_entry*);
+void render_pause_menu_time_trials(struct_8018D9E0_entry*);
+void render_pause_menu_versus(struct_8018D9E0_entry*);
+void render_pause_grand_prix(struct_8018D9E0_entry*);
+void render_pause_battle(struct_8018D9E0_entry*);
 void func_800A54EC(void);
 void func_800A5738(struct_8018D9E0_entry*);
 void func_800A6034(struct_8018D9E0_entry*);
@@ -482,7 +482,7 @@ extern char *D_800E7728[];
 extern char *D_800E7730;
 extern char *D_800E7734[];
 extern char *D_800E7744[];
-extern char *D_800E775C[];
+extern char *gTextPauseButton[];
 extern char *D_800E7778[];
 extern char D_800E7780[];
 extern char *D_800E77A0[];

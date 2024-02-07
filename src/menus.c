@@ -258,20 +258,20 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 sp2C = TRUE;
                 sp38->unk8 = -1;
             }
-            if (sp2C && gSoundMode != sp38->unk4) {
+            if (sp2C && gSoundMode != sp38->cursor) {
                 gSaveData.main.soundMode = gSoundMode;
                 write_save_data_grand_prix_points_and_sound_mode();
                 update_save_data_backup();
-                sp38->unk4 = gSoundMode;
+                sp38->cursor = gSoundMode;
             }
             if (btnAndStick & B_BUTTON) {
                 func_8009E280();
                 play_sound2(SOUND_MENU_GO_BACK);
-                if (gSoundMode != sp38->unk4) {
+                if (gSoundMode != sp38->cursor) {
                     gSaveData.main.soundMode = gSoundMode;
                     write_save_data_grand_prix_points_and_sound_mode();
                     update_save_data_backup();
-                    sp38->unk4 = gSoundMode;
+                    sp38->cursor = gSoundMode;
                 }
                 return;
             }
@@ -305,7 +305,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                         switch (sp2C) {
                         case PFS_INVALID_DATA:
                             D_8018EDEC = 0x46;
-                            sp38->unk4 = 0;
+                            sp38->cursor = 0;
                             play_sound2(SOUND_MENU_SELECT);
                             break;
                         case PFS_NO_ERROR:
@@ -486,7 +486,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                     D_8018EDEC = 0x38;
                 } else {
                     D_8018EDEC = 0x3A;
-                    sp38->unk4 = 0;
+                    sp38->cursor = 0;
                 }
                 play_sound2(SOUND_MENU_SELECT);
             }
@@ -540,7 +540,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 } else {
                     D_8018EDEC = 0x3A;
                     play_sound2(SOUND_MENU_SELECT);
-                    sp38->unk4 = 0;
+                    sp38->cursor = 0;
                 }
             }
             // return?
@@ -549,9 +549,9 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
         case 0x3A:
         {
             if (arg1 == 0) {
-                sp38->unk4 += 1;
+                sp38->cursor += 1;
             }
-            if (sp38->unk4 >= 3) {
+            if (sp38->cursor >= 3) {
                 D_8018EDEC = 0x3B;
             }
             break;
@@ -584,9 +584,9 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
         case 0x46:
         {
             if (arg1 == 0) {
-                sp38->unk4 += 1;
+                sp38->cursor += 1;
             }
-            if (sp38->unk4 >= 3) {
+            if (sp38->cursor >= 3) {
                 D_8018EDEC = 0x47;
             }
             break;
@@ -1986,12 +1986,12 @@ void func_800B44BC(void) {
 }
 
 // Likely checks that the user is actually in the menus and not racing.
-s32 func_800B4520(void) {
+bool func_800B4520(void) {
 
     if ((D_8018E7B0 == 2) || (D_8018E7B0 == 3) || (D_8018E7B0 == 4) || (D_8018E7B0 == 7)) {
-        return 1;
+        return TRUE;
     }
-    return 0;
+    return FALSE;
 }
 
 UNUSED void func_800B4560(s32 arg0, s32 arg1) {

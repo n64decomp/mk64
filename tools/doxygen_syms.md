@@ -1856,8 +1856,8 @@ Variable Name | Memory Address
 [func_80091FA4](@ref func_80091FA4) | 0x80091FA4
 [func_80092148](@ref func_80092148) | 0x80092148
 [func_800921B4](@ref func_800921B4) | 0x800921B4
-[func_800921C0](@ref func_800921C0) | 0x800921C0
-[func_80092224](@ref func_80092224) | 0x80092224
+[set_text_color_rainbow_if_selected_and_detect_kind_menu](@ref set_text_color_rainbow_if_selected_and_detect_kind_menu) | 0x800921C0
+[set_text_color_rainbow_if_selected](@ref set_text_color_rainbow_if_selected) | 0x80092224
 [func_80092258](@ref func_80092258) | 0x80092258
 [func_80092290](@ref func_80092290) | 0x80092290
 [func_80092500](@ref func_80092500) | 0x80092500
@@ -2035,11 +2035,11 @@ Variable Name | Memory Address
 [func_800A4550](@ref func_800A4550) | 0x800A4550
 [func_800A474C](@ref func_800A474C) | 0x800A474C
 [func_800A4A24](@ref func_800A4A24) | 0x800A4A24
-[func_800A4B38](@ref func_800A4B38) | 0x800A4B38
-[func_800A4BC8](@ref func_800A4BC8) | 0x800A4BC8
-[func_800A4EF8](@ref func_800A4EF8) | 0x800A4EF8
-[func_800A5084](@ref func_800A5084) | 0x800A5084
-[func_800A5360](@ref func_800A5360) | 0x800A5360
+[render_pause_menu](@ref render_pause_menu) | 0x800A4B38
+[render_pause_menu_time_trials](@ref render_pause_menu_time_trials) | 0x800A4BC8
+[render_pause_menu_versus](@ref render_pause_menu_versus) | 0x800A4EF8
+[render_pause_grand_prix](@ref render_pause_grand_prix) | 0x800A5084
+[render_pause_battle](@ref render_pause_battle) | 0x800A5360
 [func_800A54EC](@ref func_800A54EC) | 0x800A54EC
 [func_800A5738](@ref func_800A5738) | 0x800A5738
 [func_800A6034](@ref func_800A6034) | 0x800A6034
@@ -3247,7 +3247,7 @@ Variable Name | Memory Address
 [D_800E7730](@ref D_800E7730) | 0x800E7730
 [D_800E7734](@ref D_800E7734) | 0x800E7734
 [D_800E7744](@ref D_800E7744) | 0x800E7744
-[D_800E775C](@ref D_800E775C) | 0x800E775C
+[gTextPauseButton](@ref gTextPauseButton) | 0x800E775C
 [D_800E7778](@ref D_800E7778) | 0x800E7778
 [D_800E7780](@ref D_800E7780) | 0x800E7780
 [D_800E77A0](@ref D_800E77A0) | 0x800E77A0

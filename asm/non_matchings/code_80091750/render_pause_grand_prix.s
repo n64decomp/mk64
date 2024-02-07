@@ -1,4 +1,4 @@
-glabel func_800A5084
+glabel render_pause_grand_prix
 /* 0A5C84 800A5084 27BDFFB0 */  addiu $sp, $sp, -0x50
 /* 0A5C88 800A5088 AFB00034 */  sw    $s0, 0x34($sp)
 /* 0A5C8C 800A508C 3C10800E */  lui   $s0, %hi(gIsGamePaused) # $s0, 0x800e
@@ -151,9 +151,9 @@ glabel func_800A5084
 /* 0A5ED0 800A52D0 0C024DBB */  jal   draw_text
 /* 0A5ED4 800A52D4 24A5FFE2 */   addiu $a1, $a1, -0x1e
 /* 0A5ED8 800A52D8 3C013F40 */  li    $at, 0x3F400000 # 0.750000
-/* 0A5EDC 800A52DC 3C12800E */  lui   $s2, %hi(D_800E775C) # $s2, 0x800e
+/* 0A5EDC 800A52DC 3C12800E */  lui   $s2, %hi(gTextPauseButton) # $s2, 0x800e
 /* 0A5EE0 800A52E0 4481A000 */  mtc1  $at, $f20
-/* 0A5EE4 800A52E4 2652775C */  addiu $s2, %lo(D_800E775C) # addiu $s2, $s2, 0x775c
+/* 0A5EE4 800A52E4 2652775C */  addiu $s2, %lo(gTextPauseButton) # addiu $s2, $s2, 0x775c
 /* 0A5EE8 800A52E8 00008025 */  move  $s0, $zero
 /* 0A5EEC 800A52EC 00008825 */  move  $s1, $zero
 /* 0A5EF0 800A52F0 24140002 */  li    $s4, 2
@@ -161,7 +161,7 @@ glabel func_800A5084
 /* 0A5EF4 800A52F4 8EA40004 */  lw    $a0, 4($s5)
 /* 0A5EF8 800A52F8 02002825 */  move  $a1, $s0
 /* 0A5EFC 800A52FC 24060003 */  li    $a2, 3
-/* 0A5F00 800A5300 0C024870 */  jal   func_800921C0
+/* 0A5F00 800A5300 0C024870 */  jal   set_text_color_rainbow_if_selected_and_detect_kind_menu
 /* 0A5F04 800A5304 2484FFE1 */   addiu $a0, $a0, -0x1f
 /* 0A5F08 800A5308 866F0002 */  lh    $t7, 2($s3)
 /* 0A5F0C 800A530C 86640000 */  lh    $a0, ($s3)

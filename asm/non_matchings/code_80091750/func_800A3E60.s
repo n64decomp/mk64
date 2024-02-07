@@ -123,8 +123,8 @@ glabel func_800A3E60
 /* 0A4B9C 800A3F9C 01200008 */  jr    $t1
 /* 0A4BA0 800A3FA0 00000000 */   nop   
 glabel L800A3FA4
-/* 0A4BA4 800A3FA4 3C10800E */  lui   $s0, %hi(D_800E775C) # $s0, 0x800e
-/* 0A4BA8 800A3FA8 2610775C */  addiu $s0, %lo(D_800E775C) # addiu $s0, $s0, 0x775c
+/* 0A4BA4 800A3FA4 3C10800E */  lui   $s0, %hi(gTextPauseButton) # $s0, 0x800e
+/* 0A4BA8 800A3FA8 2610775C */  addiu $s0, %lo(gTextPauseButton) # addiu $s0, $s0, 0x775c
 /* 0A4BAC 800A3FAC 00008825 */  move  $s1, $zero
 /* 0A4BB0 800A3FB0 00009025 */  move  $s2, $zero
 .L800A3FB4:
@@ -132,7 +132,7 @@ glabel L800A3FA4
 /* 0A4BB8 800A3FB8 AFA0006C */  sw    $zero, 0x6c($sp)
 /* 0A4BBC 800A3FBC 02202825 */  move  $a1, $s1
 /* 0A4BC0 800A3FC0 24060001 */  li    $a2, 1
-/* 0A4BC4 800A3FC4 0C024870 */  jal   func_800921C0
+/* 0A4BC4 800A3FC4 0C024870 */  jal   set_text_color_rainbow_if_selected_and_detect_kind_menu
 /* 0A4BC8 800A3FC8 2484FFFB */   addiu $a0, $a0, -5
 /* 0A4BCC 800A3FCC 24010004 */  li    $at, 4
 /* 0A4BD0 800A3FD0 12210006 */  beq   $s1, $at, .L800A3FEC
@@ -263,7 +263,7 @@ glabel L800A412C
 /* 0A4D9C 800A419C 8E640004 */  lw    $a0, 4($s3)
 /* 0A4DA0 800A41A0 02202825 */  move  $a1, $s1
 /* 0A4DA4 800A41A4 24060001 */  li    $a2, 1
-/* 0A4DA8 800A41A8 0C024870 */  jal   func_800921C0
+/* 0A4DA8 800A41A8 0C024870 */  jal   set_text_color_rainbow_if_selected_and_detect_kind_menu
 /* 0A4DAC 800A41AC 2484FFEF */   addiu $a0, $a0, -0x11
 /* 0A4DB0 800A41B0 26240001 */  addiu $a0, $s1, 1
 /* 0A4DB4 800A41B4 AFA40054 */  sw    $a0, 0x54($sp)
@@ -389,7 +389,7 @@ glabel L800A4308
 /* 0A4F70 800A4370 8E640004 */  lw    $a0, 4($s3)
 /* 0A4F74 800A4374 02202825 */  move  $a1, $s1
 /* 0A4F78 800A4378 24060001 */  li    $a2, 1
-/* 0A4F7C 800A437C 0C024870 */  jal   func_800921C0
+/* 0A4F7C 800A437C 0C024870 */  jal   set_text_color_rainbow_if_selected_and_detect_kind_menu
 /* 0A4F80 800A4380 2484FFEC */   addiu $a0, $a0, -0x14
 /* 0A4F84 800A4384 8E6B000C */  lw    $t3, 0xc($s3)
 /* 0A4F88 800A4388 240D00C8 */  li    $t5, 200
