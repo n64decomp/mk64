@@ -181,7 +181,7 @@ void func_8009B998(void);
 Gfx *func_8009B9D0(Gfx*, MkTexture*);
 Gfx *func_8009BA74(Gfx*, MkTexture*, s32, s32);
 Gfx *func_8009BC9C(Gfx*, MkTexture*, s32, s32, s32, s32);
-Gfx *func_8009BEF0(Gfx*, MkTexture*, f32, f32, s32, f32,f32);
+Gfx *print_letter(Gfx*, MkTexture*, f32, f32, s32, f32,f32);
 Gfx *func_8009C204(Gfx*, MkTexture*, s32, s32, s32);
 Gfx *func_8009C434(Gfx*, struct_8018DEE0_entry*, s32, s32, s32);
 Gfx *func_8009C708(Gfx*, struct_8018DEE0_entry *, s32, s32, s32, s32);

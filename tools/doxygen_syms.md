@@ -1961,7 +1961,7 @@ Variable Name | Memory Address
 [func_8009B9D0](@ref func_8009B9D0) | 0x8009B9D0
 [func_8009BA74](@ref func_8009BA74) | 0x8009BA74
 [func_8009BC9C](@ref func_8009BC9C) | 0x8009BC9C
-[func_8009BEF0](@ref func_8009BEF0) | 0x8009BEF0
+[print_letter](@ref print_letter) | 0x8009BEF0
 [func_8009C204](@ref func_8009C204) | 0x8009C204
 [func_8009C434](@ref func_8009C434) | 0x8009C434
 [func_8009C708](@ref func_8009C708) | 0x8009C708

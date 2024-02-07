@@ -2233,7 +2233,7 @@ UNUSED void func_800930E4(s32 arg0, s32 arg1, char *arg2) {
 }
 
 // "tracking" is a uniform spacing between all characters in a given word
-void print_text0(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale, s32 arg6) {
+void print_text0(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32 y_scale, s32 mode) {
     s32 stringWidth = 0;
     s32 glyphIndex;
 
@@ -2243,7 +2243,7 @@ void print_text0(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
             glyphIndex = char_to_glyph_index(text);
             if (glyphIndex >= 0) {
                 func_80099184((MkTexture *)segmented_to_virtual_dupe((const void *) gGlyphTextureLUT[glyphIndex]));
-                gDisplayListHead = func_8009BEF0(gDisplayListHead, (MkTexture *) segmented_to_virtual_dupe((const void *) gGlyphTextureLUT[glyphIndex]), column + (stringWidth * x_scale), row, arg6, x_scale, y_scale);
+                gDisplayListHead = print_letter(gDisplayListHead, (MkTexture *) segmented_to_virtual_dupe((const void *) gGlyphTextureLUT[glyphIndex]), column + (stringWidth * x_scale), row, mode, x_scale, y_scale);
                 stringWidth += gGlyphDisplayWidth[glyphIndex] + tracking;
             }
             else if ((glyphIndex != -2) && (glyphIndex == -1)) {
@@ -2324,7 +2324,7 @@ void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
         glyphIndex = char_to_glyph_index(text);
         if (glyphIndex >= 0) {
             func_80099184(segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]));
-            gDisplayListHead = func_8009BEF0(gDisplayListHead, segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]), column, row, sp60, x_scale, y_scale);
+            gDisplayListHead = print_letter(gDisplayListHead, segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]), column, row, sp60, x_scale, y_scale);
             column = column + (s32)((gGlyphDisplayWidth[glyphIndex] + tracking) * x_scale);
         }
         else if ((glyphIndex != -2) && (glyphIndex == -1)) {
@@ -2371,7 +2371,7 @@ void print_text2(s32 column, s32 row, char *text, s32 tracking, f32 x_scale, f32
             if (glyphIndex >= 0) {
                 glyphTexture = (MkTexture *) segmented_to_virtual_dupe((const void *)gGlyphTextureLUT[glyphIndex]);
                 func_80099184(glyphTexture);
-                gDisplayListHead = func_8009BEF0(gDisplayListHead, glyphTexture, column - (gGlyphDisplayWidth[glyphIndex] / 2), row, arg6, x_scale, y_scale);
+                gDisplayListHead = print_letter(gDisplayListHead, glyphTexture, column - (gGlyphDisplayWidth[glyphIndex] / 2), row, arg6, x_scale, y_scale);
                 if ((glyphIndex >= 0xD5) && (glyphIndex < 0xE0)) {
                     characterWidth = 0x20;
                 } else {
@@ -5531,21 +5531,21 @@ void func_8009B538(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
 
 s32 func_8009B8C4(u64 *arg0) {
     UNUSED s32 pad[2];
-    s32 sp4;
+    s32 offset;
     s32 found;
     s32 someIndex;
 
-    found = 0;
+    found = NULL;
     for (someIndex = 0; someIndex < gNumD_8018E118Entries; someIndex++) {
         if (arg0 == D_8018E118[someIndex].textureData) {
             found = 1;
-            sp4 = D_8018E118[someIndex].offset;
+            offset = D_8018E118[someIndex].offset;
             break;
         }
     }
 
-    if (found != 0) {
-        return &D_8018D9B0[sp4];
+    if (found != NULL) {
+        return &D_8018D9B0[offset];
     }
     return 0;
 }
@@ -5671,14 +5671,14 @@ Gfx *func_8009BC9C(Gfx *arg0, MkTexture *arg1, s32 arg2, s32 arg3, s32 arg4, s32
     return arg0;
 }
 
-Gfx *func_8009BEF0(Gfx *arg0, MkTexture *arg1, f32 arg2, f32 arg3, s32 arg4, f32 arg5, f32 arg6) {
+Gfx *print_letter(Gfx *arg0, MkTexture *glyphTexture, f32 arg2, f32 arg3, s32 mode, f32 scale_x, f32 scale_y) {
     s32 var_v0;
     s32 temp_v0_2;
     f32 thing0;
     f32 thing1;
     MkTexture *var_s0;
 
-    var_s0 = segmented_to_virtual_dupe(arg1);
+    var_s0 = segmented_to_virtual_dupe(glyphTexture);
     while (var_s0->textureData != NULL) {
         var_v0 = 0;
 
@@ -5686,7 +5686,7 @@ Gfx *func_8009BEF0(Gfx *arg0, MkTexture *arg1, f32 arg2, f32 arg3, s32 arg4, f32
         if (thing0 > 320.0f) {
             var_v0 = 1;
         }
-        thing0 += var_s0->width * arg5;
+        thing0 += var_s0->width * scale_x;
         if (thing0 < 0.0f) {
             var_v0 += 1;
         }
@@ -5694,7 +5694,7 @@ Gfx *func_8009BEF0(Gfx *arg0, MkTexture *arg1, f32 arg2, f32 arg3, s32 arg4, f32
         if (thing1 < 0.0f) {
             var_v0 += 1;
         }
-        thing1 -= var_s0->height * arg6;
+        thing1 -= var_s0->height * scale_y;
         if (thing1 > 240.0f) {
             var_v0 += 1;
         }
@@ -5703,15 +5703,15 @@ Gfx *func_8009BEF0(Gfx *arg0, MkTexture *arg1, f32 arg2, f32 arg3, s32 arg4, f32
             var_s0++;
         } else {
             temp_v0_2 = func_8009B8C4(var_s0->textureData);
-            if (temp_v0_2 != 0) {
-                switch (arg4) {                 /* irregular */
+            if (temp_v0_2 != NULL) {
+                switch (mode) {                 /* irregular */
                 case 1:
                     gSPDisplayList(arg0++, D_020077F8);
-                    arg0 = func_80095BD0(arg0, (u8 *) temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3, var_s0->width, var_s0->height, arg5, arg6);
+                    arg0 = func_80095BD0(arg0, (u8 *) temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3, var_s0->width, var_s0->height, scale_x, scale_y);
                     break;
                 case 2:
                     gSPDisplayList(arg0++, D_02007818);
-                    arg0 = func_80095BD0(arg0, (u8 *) temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3, var_s0->width, var_s0->height, arg5, arg6);
+                    arg0 = func_80095BD0(arg0, (u8 *) temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3, var_s0->width, var_s0->height, scale_x, scale_y);
                     break;
                 }
             }
