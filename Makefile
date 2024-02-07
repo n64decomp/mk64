@@ -154,13 +154,13 @@ ifeq ($(filter clean distclean,$(MAKECMDGOALS)),)
   $(info =======================)
 endif
 
-
-
 #==============================================================================#
 # Universal Dependencies                                                       #
 #==============================================================================#
 
 TOOLS_DIR := tools
+
+export PATH := mingw64/bin:$(PATH)
 
 # (This is a bit hacky, but a lot of rules implicitly depend
 # on tools and assets, and we use directory globs further down
@@ -194,10 +194,10 @@ ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
   endif
 
   # Make tools if out of date
-  # DUMMY != make -s -C $(TOOLS_DIR) $(if $(filter-out ido0,$(COMPILER)$(USE_QEMU_IRIX)),all-except-recomp,) >&2 || echo FAIL
-  # ifeq ($(DUMMY),FAIL)
-  #   $(error Failed to build tools)
-  # endif
+  DUMMY != make -C $(TOOLS_DIR)
+  ifeq ($(DUMMY),FAIL)
+    $(error Failed to build tools)
+  endif
   $(info Building ROM...)
 
 endif
