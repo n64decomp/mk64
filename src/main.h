@@ -145,14 +145,14 @@ extern struct VblankHandler gGameVblankHandler;
 extern struct VblankHandler sSoundVblankHandler;
 extern OSMesgQueue gDmaMesgQueue, gGameVblankQueue, gGfxVblankQueue, unused_gMsgQueue, gIntrMesgQueue, gSPTaskMesgQueue;
 extern OSMesgQueue sSoundMesgQueue;
-extern OSMesg sSoundMesgBuf[];
-extern OSMesg gDmaMesgBuf[], gGameMesgBuf;
+extern OSMesg sSoundMesgBuf[1];
+extern OSMesg gDmaMesgBuf[1], gGameMesgBuf;
 extern OSMesg gGfxMesgBuf[];
-extern OSMesg gIntrMesgBuf[], gSPTaskMesgBuf[];
+extern OSMesg gIntrMesgBuf[16], gSPTaskMesgBuf[16];
 extern OSMesg gMainReceivedMesg;
 extern OSIoMesg gDmaIoMesg;
 extern OSMesgQueue gSIEventMesgQueue;
-extern OSMesg gSIEventMesgBuf[];
+extern OSMesg gSIEventMesgBuf[3];
 
 extern OSContStatus gControllerStatuses[];
 
@@ -182,7 +182,7 @@ extern struct SPTask *gGfxSPTask;
 extern s32 D_801502A0;
 extern s32 D_801502A4;
 extern u16 *gPhysicalFramebuffers[];
-extern u32 D_801502B4;
+extern u16 *D_801502B4;
 extern Mat4 D_801502C0;
 
 extern s32 padding[];
@@ -191,23 +191,26 @@ extern u16 D_80152300[];
 extern u16 D_80152308;
 
 extern OSThread gIdleThread;
-extern u8 gIdleThreadStack[];
+extern u8 gIdleThreadStack[0x2000];
 extern OSThread gVideoThread;
-extern u8 gVideoThreadStack[];
+extern u8 gVideoThreadStack[0x2000];
 extern OSThread gGameLoopThread;
-extern u8 gGameLoopThreadStack[];
+extern u8 gGameLoopThreadStack[0x2000];
 extern OSThread gAudioThread;
-extern u8 gAudioThreadStack[];
+extern u8 gAudioThreadStack[0x2000];
 
 extern u8 gGfxSPTaskYieldBuffer[];
 extern u32 gGfxSPTaskStack[];
-extern OSMesg gPIMesgBuf[];
+extern OSMesg gPIMesgBuf[32];
 extern OSMesgQueue gPIMesgQueue;
-
+void race_logic_loop(void);
 extern s32 gGamestate;
-#ifndef STRANGE_MAIN_HEADER_H
-extern s32 D_800DC510;
-#endif
+//#ifndef STRANGE_MAIN_HEADER_H
+extern u16 D_800DC514;
+extern u16 D_800DC510;
+
+
+//#endif
 extern u16 creditsRenderMode;
 extern u16 gDemoMode;
 extern u16 gEnableDebugMode;
@@ -231,7 +234,7 @@ extern f32 gCourseTimer;
 
 // end of definition of main.c variables
 
-extern u64 gGfxSPTaskOutputBuffer[];
+extern u64 gGfxSPTaskOutputBuffer[0x3f00];
 extern u32 gGfxSPTaskOutputBufferSize;
 
 extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?

@@ -1,4 +1,3 @@
-#define STRANGE_MAIN_HEADER_H
 #include <ultra64.h>
 #include <PR/os.h>
 #include <PR/ucode.h>
@@ -105,16 +104,15 @@ OSMesgQueue gSIEventMesgQueue;
 OSMesg gSIEventMesgBuf[3];
 
 OSContStatus gControllerStatuses[4];
-
 OSContPad gControllerPads[4];
-u8 gControllerBits;
-
+ALIGNED8 u8 gControllerBits;
 struct UnkStruct_8015F584 D_8014F110[1024];
-u16 gNumActors;
-u16 gMatrixObjectCount;
+ALIGNED8 u16 gNumActors;
+ALIGNED8 u16 gMatrixObjectCount;
 s32 gTickSpeed;
 f32 D_80150118;
-u16 wasSoftReset;
+
+ALIGNED16 u16 wasSoftReset;
 u16 D_8015011E;
 
 s32 D_80150120;
@@ -122,9 +120,6 @@ s32 gGotoMode;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
 f32 gCameraZoom[4]; // look like to be the fov of each character
-//f32 D_80150134;
-//f32 D_80150138;
-//f32 D_8015013C;
 UNUSED s32 D_80150140;
 UNUSED s32 D_80150144;
 f32 gScreenAspect;
@@ -133,16 +128,17 @@ f32 D_80150150;
 UNUSED f32 D_80150154;
 
 struct D_80150158 gD_80150158[16];
-uintptr_t gSegmentTable[16];
+ALIGNED16 uintptr_t gSegmentTable[16];
 Gfx *gDisplayListHead;
+
 struct SPTask *gGfxSPTask;
 s32 D_801502A0;
 s32 D_801502A4;
-u16 *gPhysicalFramebuffers[3];
-u32 D_801502B4;
+ALIGNED8 u16 *gPhysicalFramebuffers[3];
+ALIGNED8 u16 *D_801502B4;
 UNUSED u32 D_801502B8;
 UNUSED u32 D_801502BC;
-Mat4 D_801502C0;
+ALIGNED16 Mat4 D_801502C0;
 
 s32 padding[2048];
 
@@ -163,8 +159,8 @@ ALIGNED8 u8 gAudioThreadStack[STACKSIZE];
 UNUSED OSThread D_8015CD30;
 UNUSED ALIGNED8 u8 D_8015CD30_Stack[STACKSIZE / 2];
 
-u8 gGfxSPTaskYieldBuffer[4352];
-u32 gGfxSPTaskStack[256];
+ALIGNED16 u8 gGfxSPTaskYieldBuffer[4352];
+ALIGNED16 u32 gGfxSPTaskStack[256];
 OSMesg gPIMesgBuf[32];
 OSMesgQueue gPIMesgQueue;
 
