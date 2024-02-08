@@ -7,13 +7,13 @@
 #include "math_util.h"
 #include "math_util_2.h"
 #include "main.h"
-#include "functions.h"
+#include "decode.h"
 #include "kart_dma.h"
 #include "objects.h"
 #include "render_player.h"
 #include "code_80057C60.h"
 #include "effects.h"
-#include "framebuffers.h"
+#include "buffers.h"
 #include "waypoints.h"
 #include "player_controller.h"
 #include "hud_renderer.h"
@@ -617,7 +617,7 @@ void func_80021B0C(void) {
         func_8006E7CC(gPlayerSeven, 6, 0);
         func_8006E7CC(gPlayerEight, 7, 0);
     }
-    if (gGamestate == ENDING_SEQUENCE) {
+    if (gGamestate == ENDING) {
         if (gPlayerOne->unk_044 & 0x2000) {
             render_player_shadow_credits(gPlayerOne, 0, 0);
         }
@@ -1691,7 +1691,7 @@ void func_80026A48(Player *player, s8 arg1) {
     }
 }
 
-// Properly define struct pointers, see framebuffers.h comment for more information.
+// Properly define struct pointers, see buffers.h comment for more information.
 #ifdef AVOID_UB
 #define D_802F1F80_WHEEL(a, b, c) &D_802F1F80[a][b][c].wheel_palette
 #else

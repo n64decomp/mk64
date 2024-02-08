@@ -150,7 +150,7 @@ void func_80011AE4(s32);
 void func_80011B14(s32, Player*);
 void func_80011D48(s32, Player*);
 void func_80011E38(s32);
-void func_80011EC0(s32, Player*, s32, s32);
+void func_80011EC0(s32, Player*, s32, u16);
 
 void func_800120C8(void);
 void func_80012190(void);
@@ -409,7 +409,7 @@ extern f32 D_800DCAA0[];
 
 
 // See bss_80005FD0.s
-extern f32 gCourseCompletionPercentByRank[8];
+extern f32 gCourseCompletionPercentByRank[NUM_PLAYERS];
 extern s32 D_801643E0[];
 extern s32 D_8016448C;
 extern u16 D_801637BE;

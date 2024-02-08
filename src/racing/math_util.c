@@ -3,9 +3,9 @@
 #include <macros.h>
 #include <math_util.h>
 #include <main.h>
-#include "framebuffers.h"
+#include "buffers.h"
 #include <PR/rcp.h>
-#include <trig_tables.h>
+#include "data/trig_tables.h"
 #include "math.h"
 
 #pragma intrinsic (sqrtf,fabs)

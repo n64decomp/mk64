@@ -21,8 +21,6 @@ extern s32 D_00835BA0;
 extern u8 defaultCharacterIds[];
 extern s8 gGPOverallRanks[8];
 
-extern u8 *_data_821D10SegmentRomStart;
-extern u8 *_data_825800SegmentRomStart;
 extern s32 _course_banshee_boardwalk_dl_mio0SegmentRomStart;
 extern s32 _course_yoshi_valley_dl_mio0SegmentRomStart;
 

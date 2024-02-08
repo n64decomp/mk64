@@ -3,7 +3,7 @@
 
 #include "types.h"
 #include "common_structs.h"
-#include "framebuffers.h"
+#include "buffers.h"
 
 #define SOME_TEXTURE_POINTER_MATH 0x800
 

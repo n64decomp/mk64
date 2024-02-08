@@ -126,13 +126,13 @@ void func_802A38B4(void) {
         gQuitToMenuTransitionCounter--;
         return;
     }
-    gGamestateNext = gMenuSelectionFromQuit;
+    gGamestateNext = gGotoMode;
     gGamestate = 255;
     gIsInQuitToMenuTransition = 0;
     gQuitToMenuTransitionCounter = 0;
     D_800E86A4 = 1;
 
-    switch(gMenuSelectionFromQuit) {
+    switch(gGotoMode) {
         case START_MENU_FROM_QUIT:
             if (gMenuSelection != LOGO_INTRO_MENU) {
                 gMenuSelection = START_MENU;
