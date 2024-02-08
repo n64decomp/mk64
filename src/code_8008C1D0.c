@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <types.h>
-#include <functions.h>
+#include <decode.h>
 #include <defines.h>
 #include <sounds.h>
 #include "code_800029B0.h"

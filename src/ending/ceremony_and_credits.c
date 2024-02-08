@@ -7,6 +7,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <types.h>
+#include <segments.h>
 #include <common_structs.h>
 #include "math_util.h"
 #include "ceremony_and_credits.h"
@@ -507,7 +508,7 @@ s32 func_8028336C(UNUSED struct CinematicCamera *arg0, UNUSED Camera *camera) {
   }
   switch (gGamestate)
   {
-    case ENDING_SEQUENCE:
+    case ENDING:
       D_802876D8 = sp20[D_802874D8.unk1D];
       break;
 
@@ -568,7 +569,7 @@ void init_cinematic_camera(void) {
 
     D_802856C0 = 0.0f;
 
-    if (gGamestate == ENDING_SEQUENCE) {
+    if (gGamestate == ENDING) {
         D_802856B0 = 120.0f;
         D_802856B4 = 12.0f;
         D_802856B8 = 120.0f;

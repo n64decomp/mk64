@@ -148,16 +148,16 @@ void func_8028E3A0(void) {
     if (D_80150120) {
 
         if (gCupCourseSelection == CUP_COURSE_FOUR) {
-            gMenuSelectionFromQuit = ENDING_SEQUENCE;
+            gGotoMode = ENDING;
         } else {
             D_800DC544++;
             gCupCourseSelection++;
-            gMenuSelectionFromQuit = RACING;
+            gGotoMode = RACING;
         }
     } else {
         D_800DC544++;
         gCupCourseSelection++;
-        gMenuSelectionFromQuit = RACING;
+        gGotoMode = RACING;
     }
 }
 
@@ -407,7 +407,7 @@ void func_8028E678(void) {
 }
 
 void func_8028EC38(s32 arg0) {
-    gMenuSelectionFromQuit = arg0;
+    gGotoMode = arg0;
     D_800DC510 = 6;
     func_800CA330(25);
     func_800CA388(25);
@@ -684,7 +684,7 @@ void func_8028F4E8(void) {
 
             func_800CA330(0x19);
             func_800CA388(0x19);
-            gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
+            gGotoMode = START_MENU_FROM_QUIT;
             D_800DC510 = 6;
             D_800DC5B4 = 1;
             D_800DC5B0 = 1;
@@ -864,7 +864,7 @@ void func_8028F970(void) {
 }
 
 void func_8028FBD4(void) {
-    gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
+    gGotoMode = START_MENU_FROM_QUIT;
     D_800DC510 = 6;
     func_800CA330(25);
     func_800CA388(25);
@@ -1079,31 +1079,31 @@ void func_8028FCBC(void) {
 UNUSED void func_80290314(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
+    gGotoMode = START_MENU_FROM_QUIT;
 }
 
 void func_80290338(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = MAIN_MENU_FROM_QUIT;
+    gGotoMode = MAIN_MENU_FROM_QUIT;
 }
 
 void func_80290360(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = PLAYER_SELECT_MENU_FROM_QUIT;
+    gGotoMode = PLAYER_SELECT_MENU_FROM_QUIT;
 }
 
 void func_80290388(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = COURSE_SELECT_MENU_FROM_QUIT;
+    gGotoMode = COURSE_SELECT_MENU_FROM_QUIT;
 }
 
 void func_802903B0(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = RACING;
+    gGotoMode = RACING;
 }
 
 void func_802903D8(Player *playerOne, Player *playerTwo) {

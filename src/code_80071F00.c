@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
-#include <functions.h>
+#include <decode.h>
 
 #include "code_80071F00.h"
 #include "main.h"

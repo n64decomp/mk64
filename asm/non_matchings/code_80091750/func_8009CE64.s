@@ -59,17 +59,17 @@ glabel func_8009CE64
 /* 09DAD4 8009CED4 10A00008 */  beqz  $a1, .L8009CEF8
 /* 09DAD8 8009CED8 3C04800F */   lui   $a0, %hi(gMenuSelection) # $a0, 0x800f
 /* 09DADC 8009CEDC 24180009 */  li    $t8, 9
-/* 09DAE0 8009CEE0 3C018028 */  lui   $at, %hi(gMenuSelectionFromEndingSequence) # $at, 0x8028
-/* 09DAE4 8009CEE4 AC387550 */  sw    $t8, %lo(gMenuSelectionFromEndingSequence)($at)
+/* 09DAE0 8009CEE0 3C018028 */  lui   $at, %hi(gGotoMenu) # $at, 0x8028
+/* 09DAE4 8009CEE4 AC387550 */  sw    $t8, %lo(gGotoMenu)($at)
 /* 09DAE8 8009CEE8 3C01800E */  lui   $at, %hi(gCreditsCourseId) # $at, 0x800e
 /* 09DAEC 8009CEEC 24190008 */  li    $t9, 8
 /* 09DAF0 8009CEF0 1000021E */  b     .L8009D76C
 /* 09DAF4 8009CEF4 A439C644 */   sh    $t9, %lo(gCreditsCourseId)($at)
 .L8009CEF8:
 /* 09DAF8 8009CEF8 24050001 */  li    $a1, 1
-/* 09DAFC 8009CEFC 3C018028 */  lui   $at, %hi(gMenuSelectionFromEndingSequence) # $at, 0x8028
+/* 09DAFC 8009CEFC 3C018028 */  lui   $at, %hi(gGotoMenu) # $at, 0x8028
 /* 09DB00 8009CF00 248486A0 */  addiu $a0, %lo(gMenuSelection) # addiu $a0, $a0, -0x7960
-/* 09DB04 8009CF04 AC257550 */  sw    $a1, %lo(gMenuSelectionFromEndingSequence)($at)
+/* 09DB04 8009CF04 AC257550 */  sw    $a1, %lo(gGotoMenu)($at)
 /* 09DB08 8009CF08 240E000B */  li    $t6, 11
 /* 09DB0C 8009CF0C 10000217 */  b     .L8009D76C
 /* 09DB10 8009CF10 AC8E0000 */   sw    $t6, ($a0)

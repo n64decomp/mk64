@@ -33,7 +33,7 @@
 #include <common_textures.h>
 #include <credits.h>
 #include <data_segment2.h>
-#include <framebuffers.h>
+#include <buffers.h>
 #include <hud_renderer.h>
 #include <kart_dma.h>
 #include <main.h>
@@ -56,15 +56,14 @@
 #include <course_offsets.h>
 #include <debug.h>
 #include <defines.h>
-#include <functions.h>
+#include <decode.h>
 #include <kart_attributes.h>
 #include <macros.h>
 #include <mk64.h>
 #include <objects.h>
-#include <hardcoded_segments.h>
 #include <segments.h>
 #include <sounds.h>
-#include <trig_tables.h>
+#include "data/trig_tables.h"
 #include <types.h>
 #include <ultra64.h>
 #include <vehicles.h>

@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include "main.h"
-#include "framebuffers.h"
+#include "buffers.h"
 #include "common_structs.h"
 #include "kart_dma.h"
 #include "defines.h"

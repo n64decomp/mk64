@@ -732,7 +732,7 @@ void func_80028D3C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
 void func_80028E70(Player *player, Camera *camera, s8 arg2, s8 arg3)  {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         switch (gGamestate) {
-            case ENDING_SEQUENCE:
+            case ENDING:
                 if (!(player->type & PLAYER_START_SEQUENCE)) {
                     func_80038C6C(player, camera, arg3, arg2);
                 } else {
