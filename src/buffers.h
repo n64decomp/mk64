@@ -53,8 +53,6 @@ typedef struct {
     /* 0x180 */ RGBA5551 wheel_palette[0x40];
 } struct_D_802F1F80; // size = 0x200
 
-extern u16 gRandomSeed16;
-extern u8 randomSeedPadding[216];
 extern u8 trigTablesPadding[];
 extern struct_D_802BFB80 D_802BFB80[][2][8];
 extern struct_D_802DFB80 D_802DFB80[][2][8];

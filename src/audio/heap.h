@@ -116,7 +116,6 @@ void *unk_pool1_lookup(s32 poolIdx, s32 id);
 void func_800BA8B0(s32, s32);
 
 extern s32 D_800EA5D0;
-extern u8 D_803B71B0[];
 
 extern u8 gAudioResetPresetIdToLoad; // D_803B0501
 extern s32 gMaxAudioCmds; // D_803B70AC

@@ -1,6 +1,8 @@
 # This file is auto-generated. DO NOT MODIFY!
 
 SAFE_C_FILES :=    \
+    build/us/src/main.o\
+    build/us/src/code_800029B0.o\
     build/us/src/camera.o    \
     build/us/src/spawn_players.o    \
     build/us/src/code_8008C1D0.o    \
@@ -39,4 +41,3 @@ SAFE_C_FILES :=    \
     build/us/src/data/startup_logo.inc.o    \
     build/us/src/data/textures.inc.o    \
     build/us/src/data/memory_pool.o    \
-

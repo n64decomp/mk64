@@ -211,7 +211,7 @@ void thread9_crash_screen(UNUSED void *arg0)
             // Run only on the first iteration.
             if (sCounter == 0) {
                 crash_screen_draw_square(pFramebuffer);
-#define SKIP_DRAW_SQUARE
+//#define SKIP_DRAW_SQUARE
 #ifndef SKIP_DRAW_SQUARE
                 while(TRUE)
                 {

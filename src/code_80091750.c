@@ -2947,6 +2947,7 @@ Gfx *func_800959F8(Gfx *displayListHead, Vtx *arg1) {
     } else {
         index = ((gTextColor * 2) + ((s32) gGlobalTimer % 2)) - 4;
     }
+#ifdef AVOID_UB
     if (arg1 == D_02007BB8) {
         gSPDisplayList(displayListHead++, D_800E84CC[index]);
     } else if (arg1 == &D_02007BB8[18]) {
@@ -2954,6 +2955,17 @@ Gfx *func_800959F8(Gfx *displayListHead, Vtx *arg1) {
     } else if (arg1 == &D_02007BB8[36]) {
         gSPDisplayList(displayListHead++, D_800E850C[index]);
     }
+#else
+    if (arg1 == D_02007BB8) {
+        gSPDisplayList(displayListHead++, D_800E84CC[index]);
+    } else if (arg1 == D_02007CD8) {
+        gSPDisplayList(displayListHead++, D_800E84EC[index]);
+    } else if (arg1 == D_02007DF8) {
+        gSPDisplayList(displayListHead++, D_800E850C[index]);
+    }
+#endif
+
+
     return displayListHead;
 }
 

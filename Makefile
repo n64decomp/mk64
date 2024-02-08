@@ -32,6 +32,9 @@ $(eval $(call validate-option,COMPILER,ido gcc))
 # Run make clean first. Add '#define CRASH_SCREEN_ENHANCEMENT' to the top of main.c
 DEBUG ?= 0
 
+# For testing using the GCC compiler.
+GCC ?= 0
+
 # VERSION - selects the version of the game to build
 #   us - builds the 1997 North American version
 #   eu - builds the 1997 1.1 PAL version
@@ -116,7 +119,9 @@ ifeq ($(NON_MATCHING),1)
 endif
 
 # GCC define is to link gcc's std lib.
-DEFINES += AVOID_UB=1 GCC=1
+ifeq ($(GCC), 1)
+  DEFINES += AVOID_UB=1 GCC=1
+endif
 
 # COMPARE - whether to verify the SHA-1 hash of the ROM after building
 #   1 - verifies the SHA-1 hash of the selected version of the game
@@ -384,11 +389,14 @@ define print
   @$(PRINT) "$(RED)$(CC), $(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
 endef
 
-$(SAFE_C_FILES): CC       := $(CROSS)gcc
-$(SAFE_C_FILES): MIPSISET := -mips3
-$(SAFE_C_FILES): CFLAGS   := -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS) -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
-$(SAFE_C_FILES): CC_CHECK := gcc -m32
-
+ifeq ($(GCC),1)
+  $(BUILD_DIR)/src/main.o:        OPT_FLAGS := -g
+  $(BUILD_DIR)/src/racing/skybox_and_splitscreen.o:        OPT_FLAGS := -g
+  $(SAFE_C_FILES): CC       := $(CROSS)gcc
+  $(SAFE_C_FILES): MIPSISET := -mips3
+  $(SAFE_C_FILES): CFLAGS   := -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS) -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
+  $(SAFE_C_FILES): CC_CHECK := gcc -m32
+endif
 
 #==============================================================================#
 # Main Targets                                                                 #

@@ -349,6 +349,7 @@ SECTIONS
       BUILD_DIR/src/os/osEepromWrite.o(.bss);
       BUILD_DIR/asm/os/__osException.o(.bss);
       BUILD_DIR/src/os/osLeoDiskInit.o(.bss);
+      . = ALIGN(0x10);
    }
    END_NOLOAD(main)
 
@@ -356,6 +357,7 @@ SECTIONS
    BEGIN_NOLOAD(memoryPool)
    {
       BUILD_DIR/src/data/memory_pool.o(.bss);
+      . = ALIGN(0x10);
    }
    END_NOLOAD(memoryPool)
    
@@ -406,7 +408,7 @@ SECTIONS
       BUILD_DIR/src/audio/heap.o(.bss*);
       BUILD_DIR/src/audio/load.o(.bss*);
       BUILD_DIR/src/audio/data.o(.bss*);
-      . = ALIGN(0x8);
+      . = ALIGN(0x10);
    }
    END_NOLOAD(buffers)
 
@@ -486,7 +488,7 @@ SECTIONS
    END_SEG(other_textures)
 
    /* 0x802BA370 724220-729A30 [0x5810] */
-   BEGIN_SEG(trigTables, _buffersSegmentNoloadStart + 0xDA)
+   BEGIN_SEG(trigTables, _buffersSegmentNoloadStart)
    {
         BUILD_DIR/src/data/trig_tables.o(.data);
         . = ALIGN(0x10);

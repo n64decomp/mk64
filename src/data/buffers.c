@@ -4,10 +4,6 @@
 #include "config.h"
 #include "buffers.h"
 
-u16 gRandomSeed16;
-
-u8 randomSeedPadding[216];
-
 #ifdef VERSION_EU
 ALIGNED8 u8 trigTablesPadding[0x5750];
 #else

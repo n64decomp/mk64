@@ -136,11 +136,9 @@ extern Player *gPlayerEight;
 extern Player *gPlayerOneCopy;
 extern Player *gPlayerTwoCopy;
 
-extern s32 D_800FD850[];
 extern struct GfxPool gGfxPools[];
 extern struct GfxPool *gGfxPool;
 
-extern s32 gfxPool_padding;
 extern struct VblankHandler gGameVblankHandler;
 extern struct VblankHandler sSoundVblankHandler;
 extern OSMesgQueue gDmaMesgQueue, gGameVblankQueue, gGfxVblankQueue, unused_gMsgQueue, gIntrMesgQueue, gSPTaskMesgQueue;
@@ -182,7 +180,7 @@ extern struct SPTask *gGfxSPTask;
 extern s32 D_801502A0;
 extern s32 D_801502A4;
 extern u16 *gPhysicalFramebuffers[];
-extern u16 *D_801502B4;
+extern uintptr_t gPhysicalZBuffer;
 extern Mat4 D_801502C0;
 
 extern s32 padding[];
@@ -205,12 +203,17 @@ extern OSMesg gPIMesgBuf[32];
 extern OSMesgQueue gPIMesgQueue;
 void race_logic_loop(void);
 extern s32 gGamestate;
-//#ifndef STRANGE_MAIN_HEADER_H
+#ifndef D_800DC510_AS_U16
+  // Prevent overlapping writes in gcc
+  // Whether D_800DC510 was intended to be a separate variable in main.c from the rest of the game is unknown
+  #ifdef GCC
+  extern u16 D_800DC510;
+  #else
+  extern s32 D_800DC510;
+  #endif
+#endif
+
 extern u16 D_800DC514;
-extern u16 D_800DC510;
-
-
-//#endif
 extern u16 creditsRenderMode;
 extern u16 gDemoMode;
 extern u16 gEnableDebugMode;
@@ -233,10 +236,5 @@ extern f32 gVBlankTimer;
 extern f32 gCourseTimer;
 
 // end of definition of main.c variables
-
-extern u64 gGfxSPTaskOutputBuffer[0x3f00];
-extern u32 gGfxSPTaskOutputBufferSize;
-
-extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?
 
 #endif
