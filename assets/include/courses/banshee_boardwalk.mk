@@ -57,13 +57,7 @@ $(BANSHEE_BOARDWALK_DIR)/boo_frames.mio0: $(BANSHEE_BOARDWALK_DIR)/boo_frames.bi
 # $(DATA_DIR)/boo_frames.bin: $(DATA_DIR)/boo_frames.o
 # 	$(OBJCOPY) --only-section=.data -O binary $@ $<
 # cat'ing the files together is easier though
-ifneq ($(call find-command,cat),)
-CAT := cat
-else ifeq ($(OS),Windows_NT)
-CAT := "mingw64/bin/cat"
-else
-$(error Unable to find error of find cat)
-endif
+CAT ?= cat
 
 $(BANSHEE_BOARDWALK_DIR)/boo_frames.bin: $(BANSHEE_BOARDWALK_BOO_FRAMES:%.png=%.bin)
 	$(CAT) $^ > $@
