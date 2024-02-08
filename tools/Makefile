@@ -37,8 +37,8 @@ all: $(PROGRAMS) subsystem
 
 # Build recomp
 subsystem:
-	$(MAKE) -C ido-static-recomp setup
-	$(MAKE) -C ido-static-recomp VERSION=5.3
+	$(MAKE) -C ido-static-recomp RELEASE=1 setup
+	$(MAKE) -C ido-static-recomp RELEASE=1 VERSION=5.3
 
 # Remove generated files
 clean:

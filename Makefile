@@ -29,6 +29,8 @@ $(eval $(call validate-option,COMPILER,ido gcc))
 # Run make clean first. Add '#define CRASH_SCREEN_ENHANCEMENT' to the top of main.c
 DEBUG ?= 0
 
+export PATH := tools/mingw64/bin:$(PATH)
+
 # VERSION - selects the version of the game to build
 #   us - builds the 1997 North American version
 #   eu - builds the 1997 1.1 PAL version
@@ -160,8 +162,6 @@ endif
 
 TOOLS_DIR := tools
 
-export PATH := mingw64/bin:$(PATH)
-
 # (This is a bit hacky, but a lot of rules implicitly depend
 # on tools and assets, and we use directory globs further down
 # in the makefile that we want should cover assets.)
@@ -171,8 +171,6 @@ else ifneq ($(call find-command,python3),)
   PYTHON := python3
 else ifneq ($(call find-command,python),)
   PYTHON := python
-else ifeq ($(OS),Windows_NT)
-  PYTHON := "mingw64/bin/python"
 else
   $(error Unable to find python)
 endif
@@ -260,14 +258,7 @@ O_FILES := \
 DEP_FILES := $(O_FILES:.o=.d) $(BUILD_DIR)/$(LD_SCRIPT).d
 
 # detect grep
-ifneq ($(GREP),)
-else ifneq ($(call find-command,grep),)
-	GREP := grep
-else ifeq ($(OS),Windows_NT)
-	GREP := "mingw64/bin/grep"
-else
-	$(error Unable to find grep)
-endif
+GREP ?= grep
 
 # Files with GLOBAL_ASM blocks
 GLOBAL_ASM_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/*.c)
@@ -286,14 +277,7 @@ GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_
 #==============================================================================#
 
 # detect iconv
-ifneq ($(ICONV),)
-else ifneq ($(call find-command,iconv),)
-	ICONV := iconv
-else ifeq ($(OS),Windows_NT)
-	ICONV := "mingw64/bin/iconv"
-else
-	$(error Unable to find iconv)
-endif
+ICONV ?= iconv
 
 # define TMPDIR
 ifeq ($(OS),Windows_NT)
@@ -308,8 +292,6 @@ else ifneq ($(call find-command,mips64-linux-gnu-ld),)
 	CROSS := mips64-linux-gnu-
 else ifneq ($(call find-command,mips64-elf-ld),)
 	CROSS := mips64-elf-
-else ifeq ($(OS),Windows_NT)
-	CROSS := powershell mingw64/bin/mips64-elf-
 else
 	$(error Unable to detect a suitable MIPS toolchain installed)
 endif
@@ -327,7 +309,7 @@ else
     IRIX_ROOT := $(TOOLS_DIR)/ido5.3_compiler
     CC      := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/bin/cc
   else
-    IDO_ROOT := $(TOOLS_DIR)/ido5.3_recomp
+    IDO_ROOT := $(TOOLS_DIR)/ido-static-recomp/build/5.3/out
     CC      := $(IDO_ROOT)/cc
   endif
 endif
@@ -358,9 +340,6 @@ ifneq (,$(call find-command,clang))
 else ifneq (,$(call find-command,cpp))
   CPP      := cpp
   CPPFLAGS := -P -Wno-trigraphs $(DEF_INC_CFLAGS)
-else ifeq ($(OS),Windows_NT)
-  CPP := "mingw64/bin/cpp"
-  CPPFLAGS := -P -Wno-trigraphs $(DEF_INC_CFLAGS)
 else
   $(error Unable to find cpp or clang)
 endif
@@ -370,8 +349,6 @@ endif
 ifneq ($(CC_CHECK),)
 else ifneq ($(call find-command,grep),)
 	CC_CHECK := gcc
-else ifeq ($(OS),Windows_NT)
-	CC_CHECK := "mingw64/bin/gcc"
 else
 	$(error Unable to find gcc)
 endif
@@ -422,41 +399,10 @@ EMULATOR               = mupen64plus
 EMU_FLAGS              = --noosd
 LOADER                 = loader64
 LOADER_FLAGS           = -vwf
-ifneq ($(SHA1SUM),)
-else ifneq ($(call find-command,sha1sum),)
-  SHA1SUM := sha1sum
-else ifeq ($(OS),Windows_NT)
-  SHA1SUM := "mingw64/bin/sha1sum"
-else
-  $(error Unable to find sha1sum)
-endif
-
-ifneq ($(FALSE),)
-else ifneq ($(call find-command,false),)
-  FALSE := false
-else ifeq ($(OS),Windows_NT)
-  FALSE := "mingw64/bin/false"
-else
-  $(error Unable to find false)
-endif
-
-ifneq ($(PRINT),)
-else ifneq ($(call find-command,printf),)
-  PRINT := printf
-else ifeq ($(OS),Windows_NT)
-  PRINT := "mingw64/bin/printf"
-else
-  $(error Unable to find printf)
-endif
-
-ifneq ($(TOUCH),)
-else ifneq ($(call find-command,touch),)
-  TOUCH := touch
-else ifeq ($(OS),Windows_NT)
-  TOUCH := "mingw64/bin/touch"
-else
-  $(error Unable to find touch)
-endif
+SHA1SUM               ?= sha1sum
+FALSE                 ?= false
+PRINT                 ?= printf
+TOUCH                 ?= touch
 
 ifeq ($(COLOR),1)
 NO_COL  := \033[0m
