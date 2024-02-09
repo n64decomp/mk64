@@ -33,12 +33,14 @@ extract_data_for_mio_SOURCES := extract_data_for_mio.c
 export PATH := mingw64/bin:$(PATH)
 
 # Build tools and recomp
-all: $(PROGRAMS) subsystem
+all: program subsystem
 
 # Build recomp
 subsystem:
 	$(MAKE) -C ido-static-recomp RELEASE=1 setup
 	$(MAKE) -C ido-static-recomp RELEASE=1 VERSION=5.3
+
+program: $(PROGRAMS)
 
 # Remove generated files
 clean:

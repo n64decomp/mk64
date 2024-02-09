@@ -1,0 +1,7 @@
+GNU ld (GNU Binutils) 2.39
+Copyright (C) 2022 Free Software Foundation, Inc.
+This program is free software; you may redistribute it under the terms of
+the GNU General Public License version 3 or (at your option) a later version.
+This program has absolutely no warranty.
+process_begin: CreateProcess(NULL, getconf LONG_BIT, ...) failed.
+Makefile:373: pipe: Bad file descriptor

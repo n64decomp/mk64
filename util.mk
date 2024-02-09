@@ -13,4 +13,4 @@ define validate-option
 endef
 
 # Returns the path to the command $(1) if exists. Otherwise returns an empty string.
-find-command = $(shell which $(1) 2>/dev/null)
+find-command = $(shell which $(1) 2> null)

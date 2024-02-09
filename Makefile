@@ -167,15 +167,15 @@ TOOLS_DIR := tools
 # in the makefile that we want should cover assets.)
 
 ifneq ($(PYTHON),)
-else ifneq ($(call find-command,python3),)
-  PYTHON := python3
 else ifneq ($(call find-command,python),)
   PYTHON := python
+else ifneq ($(call find-command,python3),)
+  PYTHON := python3
 else
   $(error Unable to find python)
 endif
 
-DUMMY != $(PYTHON) --version >&2 || echo FAIL
+DUMMY != $(PYTHON) --version || echo FAIL
 ifeq ($(DUMMY),FAIL)
   $(error Unable to find python)
 endif
@@ -192,7 +192,7 @@ ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
   endif
 
   # Make tools if out of date
-  DUMMY != make -C $(TOOLS_DIR)
+  DUMMY != make -C $(TOOLS_DIR) program
   ifeq ($(DUMMY),FAIL)
     $(error Failed to build tools)
   endif
@@ -223,7 +223,11 @@ ASM_DIRS       := asm asm/os asm/unused $(DATA_DIR) $(DATA_DIR)/sound_data $(DAT
 
 
 # Directories containing course source and data files
+ifeq ($(OS),Windows_NT)
+COURSE_DIRS := $(subst ./,,$(subst \,/,$(shell powershell.exe "Get-ChildItem -Directory courses | Resolve-Path -Relative")))
+else
 COURSE_DIRS := $(shell find courses -mindepth 1 -type d)
+endif
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
@@ -306,7 +310,7 @@ else
     CC      := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/bin/cc
   else
     IDO_ROOT := $(TOOLS_DIR)/ido-static-recomp/build/5.3/out
-    CC      := $(IDO_ROOT)/cc
+    CC      := "$(IDO_ROOT)/cc"
   endif
 endif
 LD      := $(CROSS)ld
@@ -454,8 +458,11 @@ load: $(ROM)
 	$(LOADER) $(LOADER_FLAGS) $<
 
 # Make sure build directory exists before compiling anything
+ifeq ($(OS),Windows_NT)
+DUMMY != $(foreach dir,$(ALL_DIRS),$(shell powershell New-Item $(dir) -ItemType Directory -ea 0))
+else # because the mkdir on windows don't work as the same then linux
 DUMMY != mkdir -p $(ALL_DIRS)
-
+endif
 
 #==============================================================================#
 # Texture Generation                                                           #
@@ -468,7 +475,11 @@ $(BUILD_DIR)/%: %.png
 $(BUILD_DIR)/textures/%.mio0: $(BUILD_DIR)/textures/%
 	$(MIO0TOOL) -c $< $@
 
+ifeq ($(OS),Windows_NT)
+ASSET_INCLUDES := $(shell powershell.exe "Get-ChildItem -File -Recurse assets/include -Include *.mk | Resolve-Path -Relative")
+else
 ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name "*.mk")
+endif
 
 $(foreach inc,$(ASSET_INCLUDES),$(eval include $(inc)))
 
