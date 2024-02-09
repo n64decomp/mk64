@@ -88,7 +88,7 @@ Vtx D_0D001360[] = {
     {{{    -4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x9b, 0x00}}},
 };
 
-Vtx D_0D001390[] = {
+Vtx common_vtx_finish_line_banner[] = {
     {{{   -80,     100,       0}, 0, {0, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -40,     100,       0}, 0, {2012, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -40,     115,       0}, 0, {2012, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -123,7 +123,7 @@ Vtx D_0D001390[] = {
     {{{    40,     100,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Vtx common_vertex_finish_post[] = {
+Vtx common_vtx_finish_post[] = {
     {{{   -92,       0,       0}, 0, {0, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -89,       0,       0}, 0, {990, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -89,     115,       0}, 0, {990, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -224,7 +224,7 @@ Gfx D_0D001840[] = {
     gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0xFC, 0x7C),
     gsDPLoadTextureBlock(0x03004000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
-    gsSPVertex(D_0D001390, 32, 0),
+    gsSPVertex(common_vtx_finish_line_banner, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsDPLoadTextureBlock(0x03004800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),
@@ -252,7 +252,7 @@ Gfx common_model_finish_post[] = {
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 124, 124),
-    gsSPVertex(common_vertex_finish_post, 24, 0),
+    gsSPVertex(common_vtx_finish_post, 24, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, 0x03008800),
@@ -1203,11 +1203,6 @@ Gfx D_0D006A40[] = {
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
-
-
-
-
-
 
 // Texture Block shadow i4
 s8 D_0D006A58[] = {

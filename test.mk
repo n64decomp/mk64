@@ -1,7 +1,6 @@
 # This file is auto-generated. DO NOT MODIFY!
 
 SAFE_C_FILES :=    \
-    build/us/src/main.o\
     build/us/src/code_800029B0.o\
     build/us/src/camera.o    \
     build/us/src/spawn_players.o    \
@@ -33,11 +32,9 @@ SAFE_C_FILES :=    \
     build/us/src/ending/code_80281C40.o    \
     build/us/src/ending/camera_junk.o    \
     build/us/src/code_80091440.o    \
-    build/us/src/data/common_textures.inc.o    \
     build/us/src/data/data_segment2.inc.o    \
     build/us/src/data/data_800E8700.o    \
     build/us/src/data/data_800E45C0.o    \
     build/us/src/data/kart_attributes.inc.o    \
     build/us/src/data/startup_logo.inc.o    \
     build/us/src/data/textures.inc.o    \
-    build/us/src/data/memory_pool.o    \
