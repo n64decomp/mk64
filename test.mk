@@ -41,3 +41,4 @@ SAFE_C_FILES :=    \
     build/us/src/data/gfx_output_buffer.o    \
     build/us/src/data/buffers.o    \
     build/us/src/data/trig_tables_bss.o\
+
