@@ -309,7 +309,7 @@ else
     IRIX_ROOT := $(TOOLS_DIR)/ido5.3_compiler
     CC      := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/bin/cc
   else
-    IDO_ROOT := $(TOOLS_DIR)/ido-static-recomp/build/5.3/out
+    IDO_ROOT := $(TOOLS_DIR)/ido-recomp/build/5.3/out
     CC      := "$(IDO_ROOT)/cc"
   endif
 endif
