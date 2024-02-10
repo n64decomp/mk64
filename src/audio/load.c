@@ -378,7 +378,7 @@ void func_800BB43C(ALSeqFile *f, u8 *base) {
 
 void patch_sound(struct AudioBankSound *sound, u8 *memBase, u8 *offsetBase) {
     struct AudioBankSample *sample;
-    u8 *patched;
+    void *patched;
     u8 *mem;
 
 #define PATCH(x, base) (patched = (void *)((uintptr_t) (x) + (uintptr_t) base))
@@ -395,10 +395,10 @@ void patch_sound(struct AudioBankSound *sound, u8 *memBase, u8 *offsetBase) {
             PATCH(sample->sampleAddr, offsetBase);
             mem = soundAlloc(&gNotesAndBuffersPool, sample->sampleSize);
             if (mem == NULL) {
-                sample->sampleAddr = patched;
+                sample->sampleAddr = (u8 *) patched;
                 sample->loaded = 1;
             } else {
-                audio_dma_copy_immediate(patched, mem, sample->sampleSize);
+                audio_dma_copy_immediate((u8 *) patched, mem, sample->sampleSize);
                 sample->loaded = 0x81;
                 sample->sampleAddr = mem;
             }
