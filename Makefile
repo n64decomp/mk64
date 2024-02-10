@@ -165,7 +165,8 @@ TOOLS_DIR := tools
 # (This is a bit hacky, but a lot of rules implicitly depend
 # on tools and assets, and we use directory globs further down
 # in the makefile that we want should cover assets.)
-
+ifeq ($(OS),Windows_NT)
+# dumb windows
 ifneq ($(PYTHON),)
 else ifneq ($(call find-command,python),)
   PYTHON := python
@@ -173,6 +174,10 @@ else ifneq ($(call find-command,python3),)
   PYTHON := python3
 else
   $(error Unable to find python)
+endif
+
+else
+PYTHON ?= python3
 endif
 
 DUMMY != $(PYTHON) --version || echo FAIL
