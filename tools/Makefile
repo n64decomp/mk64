@@ -37,6 +37,7 @@ all: program subsystem
 
 # Build recomp
 subsystem:
+	[ -z "$(find "ido-recomp" -maxdepth 0 -empty)" ] || rm ido-recomp && git clone --no-checkout https://github.com/decompals/ido-static-recomp.git ido-recomp
 	$(MAKE) -C ido-recomp RELEASE=1 setup
 	$(MAKE) -C ido-recomp RELEASE=1 VERSION=5.3
 
