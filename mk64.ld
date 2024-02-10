@@ -402,6 +402,7 @@ SECTIONS
 
    BEGIN_NOLOAD(buffers)
    {
+      BUILD_DIR/src/data/trig_tables_bss.o(.bss*);
       BUILD_DIR/src/data/buffers.o(.bss*);
       BUILD_DIR/src/data/gfx_output_buffer.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);

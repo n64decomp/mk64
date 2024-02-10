@@ -4,12 +4,6 @@
 #include "config.h"
 #include "buffers.h"
 
-#ifdef VERSION_EU
-ALIGNED8 u8 trigTablesPadding[0x5750];
-#else
-ALIGNED8 u8 trigTablesPadding[0x5810];
-#endif
-
 ALIGNED8 struct_D_802BFB80 D_802BFB80[2][2][8];
 ALIGNED8 struct_D_802DFB80 D_802DFB80[2][2][8];
 #ifdef AVOID_UB

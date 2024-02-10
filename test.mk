@@ -1,6 +1,7 @@
 # This file is auto-generated. DO NOT MODIFY!
 
 SAFE_C_FILES :=    \
+    build/us/src/profiler.o    \
     build/us/src/code_800029B0.o\
     build/us/src/camera.o    \
     build/us/src/spawn_players.o    \
@@ -28,7 +29,6 @@ SAFE_C_FILES :=    \
     build/us/src/ending/code_80281780.o    \
     build/us/src/ending/podium_ceremony_actors.o    \
     build/us/src/ending/dl_unk_80284EE0.inc.o    \
-    build/us/src/ending/ceremony_data.inc.o    \
     build/us/src/ending/code_80281C40.o    \
     build/us/src/ending/camera_junk.o    \
     build/us/src/code_80091440.o    \
@@ -36,5 +36,8 @@ SAFE_C_FILES :=    \
     build/us/src/data/data_800E8700.o    \
     build/us/src/data/data_800E45C0.o    \
     build/us/src/data/kart_attributes.inc.o    \
-    build/us/src/data/startup_logo.inc.o    \
     build/us/src/data/textures.inc.o    \
+    build/us/src/code_80057C60_var.o    \
+    build/us/src/data/gfx_output_buffer.o    \
+    build/us/src/data/buffers.o    \
+    build/us/src/data/trig_tables_bss.o\

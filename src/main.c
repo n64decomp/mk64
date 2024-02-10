@@ -537,7 +537,7 @@ void setup_game_memory(void) {
     textureSegStart = (ptrdiff_t) SEG_RACING - commonCourseDataSize;
 #else
     textureSegStart = SEG_RACING - commonCourseDataSize;
-#endif  
+#endif
     osPiStartDma(&gDmaIoMesg, 0, 0, COMMON_TEXTURES_ROM_START, (void *) textureSegStart, commonCourseDataSize, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
