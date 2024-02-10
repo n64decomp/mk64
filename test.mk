@@ -41,4 +41,15 @@ SAFE_C_FILES :=    \
     build/us/src/data/gfx_output_buffer.o    \
     build/us/src/data/buffers.o    \
     build/us/src/data/trig_tables_bss.o\
+    build/us/src/os/guMtxF2L.o    \
+    build/us/src/os/osEepromRead.o    \
+    build/us/src/os/__osViInit.o    \
+    build/us/src/os/__osPiCreateAccessQueue.o    \
+    build/us/src/os/__osSpGetStatus.o    \
+    build/us/src/os/osCreateThread.o    \
+    build/us/src/os/guRotateF.o    \
+    build/us/src/os/_Litob.o    \
+    build/us/src/os/guPerspectiveF.o    \
+    build/us/src/os/__osSpSetPc.o    \
+    build/us/src/os/guScaleF.o    \
 
