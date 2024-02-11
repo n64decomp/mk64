@@ -5,7 +5,7 @@ But with this setup normally work in 99% of the cases. But keep in mind some iss
 
 ### Requirements
 - Clone the repo or download the zip on your computer
-- Dowload toolchain from [here](https://github.com/coco875/mk64-tools/releases/download/v0.0.3/mips-tools-chain-windows.zip)
+- Dowload toolchain from [here](https://github.com/coco875/mk64-tools/releases/download/v0.0.4/mips-tools-chain-windows.zip)
 
 ### Setup
 1. Extract the toolchain in the same folder as the repo (so merge the tools folder with the one who are in zip)
