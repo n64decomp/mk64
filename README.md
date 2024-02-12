@@ -1,8 +1,11 @@
-# Unspaghettify Kart 64
+<p align="center">
+    <img src="https://avatars.githubusercontent.com/u/155843345?v=4" style="width: 128px;" alt="Unspaghettify Kart 64 logo"/>
+</p>
 
-You have a fanatic love for spaghetti. Its delicious, tasty, and outright brilliant flavours bring life to your arduous developer lifestyle. It's 1996 with your IRIX workstation in front of you as you work on Mario Ka... Er, work on a wonderous plate of spaghetti perilously close to the computer keyboard. You're two-thirds through a nearly sixteen hour day and in a catatonic dream-like caffinated stupor. Suddenly, Miyamoto appears around your shoulder and shouts, "_What are you doing?!?_" Panic! Assert! Error 508, your spasming freakout knocks the plate of spaghetti into the keyboard vaulting it up, over, and into the air. Spaghetti goodness has flown _everywhere_. Spaghetti on you. Spaghetti on Miyamoto. Spaghetti on the keyboard. Spaghetti hanging off the computer monitor. You notice tomato sauce dripping into the mainframe. _This can't be good_. Despite previous preconceptions, code and spaghetti do _not_ mix and your workstation is now infected by the delectable tomato sauce! The monitor fades to black. When it comes back on, you find some serious data corruption. Suddenly your code files are tens of thousands of lines long, you have features spread across files in a haphazard, inconsistent, and unorganized manner. Your once majestic memory management routines are no longer existant, replaced by manually typed DMA's everytime one is used. The sweet actor behaviour routines are now spread between two completely different actor setups in no conceptual or coordinated manner. You and Miyamoto look upon the project in horror with Miyamoto quietly whispering "_What have you done?_" Agast, you respond "_I think the code has become the spaghetti..._" As a final insult to injury, your fantastic state of the art 3D kart models having been replaced with sprites. You would put your head in your hands and cry, so much work just, gone! But alas, Miyamoto has already made it clear that such an outburst of emotions is a waste of resources and not allowed during company time. All you can do is shake your head as you diligently place your attention back to the code. No time to fix the corruption, your final deadline is only a month away afterall...
+<h1 align="center"> Unspaghettify Kart 64 </h1>
 
-This modding repo seeks to declutter the code-base and add some new fun features.
+This repo seeks to refurbish the fossil from computing antiquity that is mk64. This includes decluttering the code-base, fixing bugs, and adding fun features.  
+View the projects [lore](https://n64decomp.github.io/mk64/lore.html)
 
 ## Contributing
 * Place new features that effect gameplay behind a condition so they can be toggled on/off.
