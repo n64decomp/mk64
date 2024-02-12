@@ -5,7 +5,7 @@
 <h1 align="center"> Unspaghettify Kart 64 </h1>
 
 This repo seeks to refurbish the fossil from computing antiquity that is mk64. This includes decluttering the code-base, fixing bugs, and adding fun features.  
-View the projects [lore](https://n64decomp.github.io/mk64/lore.html)
+View the projects [lore](https://unspaghettifykart.github.io/uk64/md_docs_2lore.html)
 
 ## Contributing
 * Place new features that effect gameplay behind a condition so they can be toggled on/off.
@@ -58,7 +58,7 @@ make -j
 
 ## Building
 
-Build instructions located in the [API docs](https://n64decomp.github.io/mk64/compiling.html)  
+Build instructions located in the [API docs](https://unspaghettifykart.github.io/uk64/compiling.html)   
 See also, the comprehensive API and documentation which includes an overview of the code-base while also discussing significant concepts, features, and modding.
 
 ## Current State
@@ -100,7 +100,7 @@ Some menu textures are compressed using a format called tkmk00. A byte-matching 
 
 ## Documentation
 
-Documentation available online at [https://n64decomp.github.io/mk64/](https://n64decomp.github.io/mk64/).
+Documentation available online at [https://n64decomp.github.io/mk64/](https://unspaghettifykart.github.io/uk64).
 
 Documentation generated using [Doxygen](https://www.doxygen.nl/index.html). Run `make doc` to test locally. Documentation resides in `docs/html`. Open index.html to view the site.
 
