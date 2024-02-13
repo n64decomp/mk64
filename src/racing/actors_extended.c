@@ -14,6 +14,7 @@
 #include "audio/external.h"
 #include "code_80071F00.h"
 #include "effects.h"
+#include "sounds.h"
 
 void copy_collision(Collision *arg0, Collision *arg1) {
     arg1->unk30 = arg0->unk30;
@@ -100,7 +101,7 @@ void func_802B0570(struct BananaActor *banana) {
     func_802B0464(banana->youngerIndex);
     func_802B04E8(banana, banana->elderIndex);
     if ((gPlayers[banana->playerId].type & 0x4000) != 0) {
-        func_800C9060(banana->playerId, 0x19019053);
+        func_800C9060(banana->playerId, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
     }
     banana->flags = -0x8000;
     banana->unk_04 = 0x003C;
@@ -297,7 +298,7 @@ void update_actor_banana_bunch(struct BananaBunchParent *banana_bunch) {
             controller = &gControllers[banana_bunch->playerId];
             if ((controller->buttonPressed & Z_TRIG) != 0) {
                 controller->buttonPressed &= ~Z_TRIG;
-                func_800C9060(owner - gPlayerOne, 0x19008012);
+                func_800C9060(owner - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                 if ((controller->rawStickY >= 0x1F) && ((controller->rawStickX < 0x28) && (controller->rawStickX >= -0x27))) {
                     func_802B0788(controller->rawStickY, banana_bunch, owner);
                 } else {
@@ -347,7 +348,7 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
     switch (parent->state) {
     case SPAWN_FIRST_SHELL:
         if (init_triple_shell(parent, &gPlayers[playerId], shellType, 0U) != -1) {
-            func_800C9060(playerId, 0x19008012);
+            func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
             parent->shellsAvailable += 1;
         }
         parent->state = SPAWN_SECOND_SHELL;
@@ -356,7 +357,7 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
         if (parent->rotVelocity > 0) {
             if (someRotAngle >= 0xD556) {
                 if (init_triple_shell(parent, &gPlayers[playerId], shellType, 1U) != -1) {
-                    func_800C9060(playerId, 0x19008012);
+                    func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                     parent->shellsAvailable += 1;
                 }
                 parent->state = SPAWN_THIRD_SHELL;
@@ -364,7 +365,7 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
         } else {
             if (someRotAngle < 0x2AAA) {
                 if (init_triple_shell(parent, &gPlayers[playerId], shellType, 1U) != -1) {
-                    func_800C9060(playerId, 0x19008012);
+                    func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                     parent->shellsAvailable += 1;
                 }
                 parent->state = SPAWN_THIRD_SHELL;
@@ -375,14 +376,14 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
         if (parent->rotVelocity > 0) {
             if ((someRotAngle >= 0x2AAB) && (someRotAngle < 0x31C7)) {
                 if (init_triple_shell(parent, &gPlayers[playerId], shellType, 2U) != -1) {
-                    func_800C9060(playerId, 0x19008012);
+                    func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                     parent->shellsAvailable += 1;
                 }
                 parent->state = 3;
             }
         } else if ((someRotAngle < 0xD555) && (someRotAngle >= 0xCE39)) {
             if (init_triple_shell(parent, &gPlayers[playerId], shellType, 2U) != -1) {
-                func_800C9060(playerId, 0x19008012);
+                func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                 parent->shellsAvailable += 1;
             }
             parent->state = 3;
@@ -435,8 +436,8 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     shell->velocity[2] = someVelocity[2];
                     shell->state = MOVING_SHELL;
                     shell->someTimer = 0x001E;
-                    func_800C9060(parent->playerId, 0x19008004);
-                    func_800C90F4(parent->playerId, (player->characterId * 0x10) + 0x29008000);
+                    func_800C9060(parent->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                    func_800C90F4(parent->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                     if (parent->type == ACTOR_TRIPLE_RED_SHELL) {
                         func_8000ED80(parent->shellIndices[0]);
                     } else {
@@ -460,8 +461,8 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     shell->velocity[2] = someVelocity[2];
                     shell->state = MOVING_SHELL;
                     shell->someTimer = 0x001E;
-                    func_800C90F4(parent->playerId, (player->characterId * 0x10) + 0x29008000);
-                    func_800C9060(parent->playerId, 0x19008004);
+                    func_800C90F4(parent->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
+                    func_800C9060(parent->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
                     if (parent->type == ACTOR_TRIPLE_RED_SHELL) {
                         func_8000ED80(parent->shellIndices[1]);
                     } else {
@@ -485,8 +486,8 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     shell->velocity[2] = someVelocity[2];
                     shell->state = MOVING_SHELL;
                     shell->someTimer = 0x001E;
-                    func_800C9060(parent->playerId, 0x19008004);
-                    func_800C90F4(parent->playerId, (player->characterId * 0x10) + 0x29008000);
+                    func_800C9060(parent->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                    func_800C90F4(parent->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                     if (parent->type == ACTOR_TRIPLE_RED_SHELL) {
                         func_8000ED80(parent->shellIndices[2]);
                     } else {
@@ -727,7 +728,7 @@ void update_actor_banana(struct BananaActor *banana) {
                 banana->state = 1;
                 banana->unk_04 = 0x00B4;
                 player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
-                func_800C9060(player - gPlayerOne, 0x19008012U);
+                func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                 pad3 = controller->rawStickY;
                 if ((pad3 > 30.0f) && (controller->rawStickX < 10) && (controller->rawStickX >= -9)) {
                     pad3 = pad3 - ((f32) 30);
@@ -926,7 +927,7 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
             break;
         }
         if ((player->type & PLAYER_HUMAN) != 0) {
-            func_800C9060(player - gPlayerOne, 0x19008012);
+            func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
         }
     }
 }
@@ -1190,8 +1191,8 @@ void update_actor_green_shell(struct ShellActor *shell) {
                     shell->velocity[1] = somePosVel[1];
                     shell->velocity[2] = somePosVel[2];
                     shell->state = 2;
-                    func_800C9060(shell->playerId, 0x19008004U);
-                    func_800C90F4(shell->playerId, (player->characterId * 0x10) + 0x29008000);
+                    func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                    func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                     func_8000EDC8((struct Actor*)shell - gActorList);
                     return;
                 } else {
@@ -1212,8 +1213,8 @@ void update_actor_green_shell(struct ShellActor *shell) {
             if (shell->rotAngle < 0) {
                 shell->state = 2;
                 shell->someTimer = 0x001E;
-                func_800C9060(shell->playerId, 0x19008004U);
-                func_800C90F4(shell->playerId, (player->characterId * 0x10) + 0x29008000);
+                func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                 func_8000EDC8((struct Actor*)shell - gActorList);
             }
         } else {
@@ -1221,8 +1222,8 @@ void update_actor_green_shell(struct ShellActor *shell) {
             if (shell->rotAngle > 0) {
                 shell->state = 2;
                 shell->someTimer = 0x001E;
-                func_800C9060(shell->playerId, 0x19008004U);
-                func_800C90F4(shell->playerId, (player->characterId * 0x10) + 0x29008000);
+                func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                 func_8000EDC8((struct Actor*)shell - gActorList);
             }
         }
@@ -1269,7 +1270,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
         func_802B4E30((struct Actor *) shell);
         if ((shell->unk30.unk3C[0] < 0.0f) || (shell->unk30.unk3C[1] < 0.0f)) {
             shell_collision(&shell->unk30, shell->velocity);
-            func_800C98B8(shell->pos, shell->velocity, 0x19008054U);
+            func_800C98B8(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));
             shell->flags |= 0x80;
         }
         break;
@@ -1486,11 +1487,11 @@ s16 func_802B3FD0(Player *owner, struct ShellActor *shell) {
 void func_802B4104(struct ShellActor *shell) {
     if ((shell->unk30.unk3C[0] < 0.0f) && ((shell->unk30.unk48[1] < 0.25f) || (shell->unk30.unk48[1] > -0.25f))) {
         func_8029FDC8((struct Actor *) shell);
-        func_800C98B8(shell->pos, shell->velocity, 0x19008054U);
+        func_800C98B8(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));
         shell->flags |= 0x80;
     } else if ((shell->unk30.unk3C[1] < 0.0f) && ((shell->unk30.unk54[1] < 0.25f) || (shell->unk30.unk54[1] < -0.25f))) {
         func_8029FDC8((struct Actor *) shell);
-        func_800C98B8(shell->pos, shell->velocity, 0x19008054U);
+        func_800C98B8(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));
         shell->flags |= 0x80;
     }
 }
@@ -1580,26 +1581,26 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             shell->rotAngle -= 0x71C;
             if (shell->rotAngle < 0) {
                 shell->state = MOVING_SHELL;
-                func_800C9060(shell->playerId, 0x19008004U);
-                func_800C90F4(shell->playerId, (player->characterId * 0x10) + 0x29008000);
+                func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                 if (pad13 == ACTOR_RED_SHELL) {
                     func_8000ED80((struct Actor*)shell - gActorList);
                 } else {
                     func_8000EE10((struct Actor*)shell - gActorList);
-                    func_800C9D80(shell->pos, shell->velocity, 0x51018008U);
+                    func_800C9D80(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
                 }
             }
         } else {
             shell->rotAngle += 0x71C;
             if (shell->rotAngle > 0) {
                 shell->state = MOVING_SHELL;
-                func_800C9060(shell->playerId, 0x19008004U);
-                func_800C90F4(shell->playerId, (player->characterId * 0x10) + 0x29008000);
+                func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                 if (pad13 == ACTOR_RED_SHELL) {
                     func_8000ED80((struct Actor*)shell - gActorList);
                 } else {
                     func_8000EE10((struct Actor*)shell - gActorList);
-                    func_800C9D80(shell->pos, shell->velocity, 0x51018008U);
+                    func_800C9D80(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
                 }
             }
         }
