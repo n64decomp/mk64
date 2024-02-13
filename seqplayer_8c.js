@@ -11,7 +11,7 @@ var seqplayer_8c =
     [ "m64_read_compressed_u16", "seqplayer_8c.html#abcda66ab5417ab720b0a66461988183d", null ],
     [ "m64_read_s16", "seqplayer_8c.html#ad808ff76a3f8e4b5997129a92c800472", null ],
     [ "m64_read_u8", "seqplayer_8c.html#a33c4f51f4ee935a960f2ef32e1b94b39", null ],
-    [ "process_sequences", "seqplayer_8c.html#ac346f9d8e5c5a7e6266c2529510b673d", null ],
+    [ "process_sequences", "seqplayer_8c.html#a017a1ff1f0545e2cde4fa43261892349", null ],
     [ "seq_channel_layer_disable", "seqplayer_8c.html#a656b06579fc7235de0a9ead95b4aeb29", null ],
     [ "seq_channel_layer_free", "seqplayer_8c.html#a032b7f92199457fe1ce3dd8811305349", null ],
     [ "seq_channel_layer_process_script", "seqplayer_8c.html#aa502aaa2a2da31ea46aa1cd8b25ff668", null ],

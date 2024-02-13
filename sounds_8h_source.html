@@ -113,116 +113,127 @@ $(function(){initNavTree('sounds_8h_source.html',''); initResizable(); });
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// The sound cue bit fields can be split up into its basic pieces and put back together.</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">/* Intro */</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="sounds_8h.html#a239f1dc95db6144765e510bacf8286fa">    9</a></span><span class="preprocessor">#define SOUND_INTRO_LOGO 0x49018008</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// Welcome to Mario Kart. Used in intro and credits.</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="sounds_8h.html#a62457d08edce6bddc2b3029d48eb0673">   11</a></span><span class="preprocessor">#define SOUND_INTRO_WELCOME 0x49009009</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="sounds_8h.html#a92fcb94caa204d4c359e1a3d2c8ed13c">   12</a></span><span class="preprocessor">#define SOUND_INTRO_ENTER_MENU 0x4900801A</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">/* Menus */</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="sounds_8h.html#a8b8e58b3962c205d63b4056a981634ea">   15</a></span><span class="preprocessor">#define SOUND_MENU_OK_CLICKED 0x49008016</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// Sound Magic Definition:</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">// First Byte (Upper Nibble): Sound Bank (not the same as audio bank!)</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// First Byte (Lower Nibble): Bitflags for audio playback?</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// Third/Second Byte: Priority</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// Third/Second Byte (Upper Nibble): More bitflags</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// Third/Second Byte (Lower Nibble): Sound Status (this is set to SOUND_STATUS_PLAYING when passed to the audio driver.)</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// Fourth Byte: Sound ID</span></div>
+<div class="foldopen" id="foldopen00014" data-start="" data-end="">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="sounds_8h.html#a71288c0bb15b503d4570b441a05013f4">   14</a></span><span class="preprocessor">#define SOUND_ARG_LOAD(sound_bank, byte2, byte3, sound_id) \</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">    ((sound_bank &lt;&lt; 24) | (byte2 &lt;&lt; 16) | (byte3 &lt;&lt; 8) | sound_id)</span></div>
+</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="sounds_8h.html#a73e223da1036e51e904e433c10d82892">   17</a></span><span class="preprocessor">#define SOUND_MENU_CURSOR_MOVE 0x49008000</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="sounds_8h.html#a5865a57f13747ab147f0e395b7448bf2">   18</a></span><span class="preprocessor">#define SOUND_MENU_GO_BACK 0x49008002</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// Used elsewhere, seems same as above sound.</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="sounds_8h.html#ac4e9894101eaffbd37146777874c92cf">   20</a></span><span class="preprocessor">#define SOUND_ACTION_GO_BACK_2 0x49008005</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="sounds_8h.html#a7387adc326db4114589228e2b6eb01bf">   22</a></span><span class="preprocessor">#define SOUND_ACTION_UNKNOWN_CONFIRMATION 0x49008006</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="sounds_8h.html#aa5335f0ac28393128f9e2241552c39cc">   24</a></span><span class="preprocessor">#define SOUND_MENU_SELECT 0x49008001</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">/* Intro */</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="sounds_8h.html#a239f1dc95db6144765e510bacf8286fa">   18</a></span><span class="preprocessor">#define SOUND_INTRO_LOGO SOUND_ARG_LOAD(0x49, 0x01, 0x80, 0x08) </span><span class="comment">//SOUND_ARG_LOAD(0x49, 0x01, 0x80, 0x08)</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// Welcome to Mario Kart. Used in intro and credits.</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="sounds_8h.html#a62457d08edce6bddc2b3029d48eb0673">   20</a></span><span class="preprocessor">#define SOUND_INTRO_WELCOME SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x09)</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="sounds_8h.html#a92fcb94caa204d4c359e1a3d2c8ed13c">   21</a></span><span class="preprocessor">#define SOUND_INTRO_ENTER_MENU SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1A)</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">/* Menus */</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="sounds_8h.html#a8b8e58b3962c205d63b4056a981634ea">   24</a></span><span class="preprocessor">#define SOUND_MENU_OK_CLICKED SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x16)</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">// Mario Grand Prix</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="sounds_8h.html#a1a4322388122e9f502c855bd992e4e52">   27</a></span><span class="preprocessor">#define SOUND_MENU_GP 0x4900900A</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// Versus</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="sounds_8h.html#a457ac1730cdbe2b3e2afcd6fa697b6ff">   29</a></span><span class="preprocessor">#define SOUND_MENU_VERSUS 0x4900900C</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">// Time Trials</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="sounds_8h.html#a178c673b7d1cfa01a2fb1957d674762d">   31</a></span><span class="preprocessor">#define SOUND_MENU_TIME_TRIALS 0x4900900B</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">// Battle</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="sounds_8h.html#a00df58f1188e87739bc20406c0ba6729">   33</a></span><span class="preprocessor">#define SOUND_MENU_BATTLE 0x4900900D</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">// Select a level (Select a CC)</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="sounds_8h.html#a8fcb1775e3c2d93ca21936b67541164d">   35</a></span><span class="preprocessor">#define SOUND_MENU_SELECT_LEVEL 0x4900900E</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// OK?</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="sounds_8h.html#add1b4cfe8874a1467f247276123d325c">   37</a></span><span class="preprocessor">#define SOUND_MENU_OK 0x4900900F</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// Select your player</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="sounds_8h.html#accdc6dfaa039039a066acbc8cac43bfb">   40</a></span><span class="preprocessor">#define SOUND_MENU_SELECT_PLAYER 0x49009012</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">// Select map</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="sounds_8h.html#a24a363b6d18669439fb7ef28d60682d9">   43</a></span><span class="preprocessor">#define SOUND_MENU_SELECT_MAP 0x49009013</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// Plays in option if no controller pak.</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="sounds_8h.html#a86a19f9e4242ae461794ec16e961f2f5">   46</a></span><span class="preprocessor">#define SOUND_MENU_FILE_NOT_FOUND 0x4900FF07</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="sounds_8h.html#a73e223da1036e51e904e433c10d82892">   26</a></span><span class="preprocessor">#define SOUND_MENU_CURSOR_MOVE SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x00)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="sounds_8h.html#a5865a57f13747ab147f0e395b7448bf2">   27</a></span><span class="preprocessor">#define SOUND_MENU_GO_BACK SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x02)</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">// Used elsewhere, seems same as above sound.</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="sounds_8h.html#ac4e9894101eaffbd37146777874c92cf">   29</a></span><span class="preprocessor">#define SOUND_ACTION_GO_BACK_2 SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x05)</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="sounds_8h.html#a7387adc326db4114589228e2b6eb01bf">   31</a></span><span class="preprocessor">#define SOUND_ACTION_UNKNOWN_CONFIRMATION SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x06)</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="sounds_8h.html#aa5335f0ac28393128f9e2241552c39cc">   33</a></span><span class="preprocessor">#define SOUND_MENU_SELECT SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x01)</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// Mario Grand Prix</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="sounds_8h.html#a1a4322388122e9f502c855bd992e4e52">   36</a></span><span class="preprocessor">#define SOUND_MENU_GP SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x0A)</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">// Versus</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="sounds_8h.html#a457ac1730cdbe2b3e2afcd6fa697b6ff">   38</a></span><span class="preprocessor">#define SOUND_MENU_VERSUS SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x0C)</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// Time Trials</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="sounds_8h.html#a178c673b7d1cfa01a2fb1957d674762d">   40</a></span><span class="preprocessor">#define SOUND_MENU_TIME_TRIALS SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x0B)</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// Battle</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="sounds_8h.html#a00df58f1188e87739bc20406c0ba6729">   42</a></span><span class="preprocessor">#define SOUND_MENU_BATTLE SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x0D)</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">// Select a level (Select a CC)</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="sounds_8h.html#a8fcb1775e3c2d93ca21936b67541164d">   44</a></span><span class="preprocessor">#define SOUND_MENU_SELECT_LEVEL SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x0E)</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// OK?</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="sounds_8h.html#add1b4cfe8874a1467f247276123d325c">   46</a></span><span class="preprocessor">#define SOUND_MENU_OK SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x0F)</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// Option</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="sounds_8h.html#ac4b9557ff90d356c9baea1e2fca97920">   49</a></span><span class="preprocessor">#define SOUND_MENU_OPTION 0x49009010</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">// Data</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="sounds_8h.html#a00a5c24036feb9b013b73aea5baab131">   51</a></span><span class="preprocessor">#define SOUND_MENU_DATA 0x49009011</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">// On delete course record?</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="sounds_8h.html#a7318effb30d735385b466993d7c799b9">   54</a></span><span class="preprocessor">#define SOUND_MENU_EXPLOSION 0x4900801D</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="sounds_8h.html#a3fd728a58940cffdd78dac4be87e1152">   56</a></span><span class="preprocessor">#define SOUND_MENU_STEREO 0x49008024</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="sounds_8h.html#aa14e7b7e427ac43141b3ad2861d7b8f8">   57</a></span><span class="preprocessor">#define SOUND_MENU_HEADPHONES 0x49008025</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="sounds_8h.html#a5968bc4a2a126aefebd58da70768f228">   58</a></span><span class="preprocessor">#define SOUND_MENU_MONO 0x49008029</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">/* Staging */</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">// Red and orange staging lights that Lakitu holds.</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="sounds_8h.html#a8583c6b6f41d6d7c9870b853c1b80fe7">   63</a></span><span class="preprocessor">#define SOUND_ACTION_COUNTDOWN_LIGHT 0x49008003</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="sounds_8h.html#a2300168391b3789bd5f7cc0191deffa4">   64</a></span><span class="preprocessor">#define SOUND_ACTION_GREEN_LIGHT 0x49008004</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">// Activates when light turns green.</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="sounds_8h.html#a36709aa349e1544f55f5165961de3877">   66</a></span><span class="preprocessor">#define SOUND_ACTION_REV_ENGINE 0x49008018</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="sounds_8h.html#a40ac62f48c8c25185994212e0f4a9e13">   67</a></span><span class="preprocessor">#define SOUND_ACTION_REV_ENGINE_2 0x49008019</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// Select your player</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="sounds_8h.html#accdc6dfaa039039a066acbc8cac43bfb">   49</a></span><span class="preprocessor">#define SOUND_MENU_SELECT_PLAYER SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x12)</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">// Select map</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="sounds_8h.html#a24a363b6d18669439fb7ef28d60682d9">   52</a></span><span class="preprocessor">#define SOUND_MENU_SELECT_MAP SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x13)</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">// Plays in option if no controller pak.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="sounds_8h.html#a86a19f9e4242ae461794ec16e961f2f5">   55</a></span><span class="preprocessor">#define SOUND_MENU_FILE_NOT_FOUND SOUND_ARG_LOAD(0x49, 0x00, 0xFF, 0x07)</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">// Option</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="sounds_8h.html#ac4b9557ff90d356c9baea1e2fca97920">   58</a></span><span class="preprocessor">#define SOUND_MENU_OPTION SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x10)</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">// Data</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="sounds_8h.html#a00a5c24036feb9b013b73aea5baab131">   60</a></span><span class="preprocessor">#define SOUND_MENU_DATA SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x11)</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">// On delete course record?</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="sounds_8h.html#a7318effb30d735385b466993d7c799b9">   63</a></span><span class="preprocessor">#define SOUND_MENU_EXPLOSION SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1D)</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="sounds_8h.html#a3fd728a58940cffdd78dac4be87e1152">   65</a></span><span class="preprocessor">#define SOUND_MENU_STEREO SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x24)</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="sounds_8h.html#aa14e7b7e427ac43141b3ad2861d7b8f8">   66</a></span><span class="preprocessor">#define SOUND_MENU_HEADPHONES SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x25)</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="sounds_8h.html#a5968bc4a2a126aefebd58da70768f228">   67</a></span><span class="preprocessor">#define SOUND_MENU_MONO SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x29)</span></div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">/* Racing */</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">// Volume Mode and unknown</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="sounds_8h.html#a27dfbf00d9f3991408b891b5cd9a9495">   72</a></span><span class="preprocessor">#define SOUND_ACTION_PING 0x4900801C</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="sounds_8h.html#a5c5d109bed08c6739b40dacf353e4f5e">   74</a></span><span class="preprocessor">#define SOUND_ACTION_TYRE_SQUEAL 0x100F908</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">// Falling rock and bomb sound.</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="sounds_8h.html#a7871d3712b0d345b3822fe65d6326fd6">   77</a></span><span class="preprocessor">#define SOUND_ACTION_EXPLOSION 0x19009005</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="sounds_8h.html#ab59fc4e1f11577b8c20ee8c136cf0172">   79</a></span><span class="preprocessor">#define SOUND_ACTION_EXPLOSION_2 0x1900F00C</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">/* Items */</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">// There&#39;s likely more of these but they are in func arguments.</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment">// Did not rename in-case unrelated.</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="sounds_8h.html#ae05892f9817132cd9148012b02c0d7bd">   84</a></span><span class="preprocessor">#define SOUND_ITEM_STAR 0x31029008</span></div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="sounds_8h.html#ababe19e841b4ff40b2e5d882d7cba29b">   85</a></span><span class="preprocessor">#define SOUND_ITEM_THUNDERBOLT 0x5101C00C</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">/* Staging */</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">// Red and orange staging lights that Lakitu holds.</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="sounds_8h.html#a8583c6b6f41d6d7c9870b853c1b80fe7">   72</a></span><span class="preprocessor">#define SOUND_ACTION_COUNTDOWN_LIGHT SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x03)</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="sounds_8h.html#a2300168391b3789bd5f7cc0191deffa4">   73</a></span><span class="preprocessor">#define SOUND_ACTION_GREEN_LIGHT SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x04)</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">// Activates when light turns green.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="sounds_8h.html#a36709aa349e1544f55f5165961de3877">   75</a></span><span class="preprocessor">#define SOUND_ACTION_REV_ENGINE SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x18)</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="sounds_8h.html#a40ac62f48c8c25185994212e0f4a9e13">   76</a></span><span class="preprocessor">#define SOUND_ACTION_REV_ENGINE_2 SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x19)</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">/* Racing */</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">// Volume Mode and unknown</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="sounds_8h.html#a27dfbf00d9f3991408b891b5cd9a9495">   81</a></span><span class="preprocessor">#define SOUND_ACTION_PING SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1C)</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="sounds_8h.html#a5c5d109bed08c6739b40dacf353e4f5e">   83</a></span><span class="preprocessor">#define SOUND_ACTION_TYRE_SQUEAL SOUND_ARG_LOAD(0x01, 0x00, 0xF9, 0x08)</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">// Falling rock and bomb sound.</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="sounds_8h.html#a7871d3712b0d345b3822fe65d6326fd6">   86</a></span><span class="preprocessor">#define SOUND_ACTION_EXPLOSION SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x05)</span></div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">/* Score Screen */</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">// Coin pickup sound (perfect fourth; B to E)</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="sounds_8h.html#a66d12fb3207920dd7dec38578a0337d9">   90</a></span><span class="preprocessor">#define SOUND_ACTION_COUNT_SCORE 0x49008017</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="sounds_8h.html#a8dd68f2283736c117dd7227dc381c8f7">   91</a></span><span class="preprocessor">#define SOUND_ACTION_NEXT_COURSE 0x49008015</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">// Same sound as ENTER_MENU</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="sounds_8h.html#a59f0ba6cdca4a6c882c9ee19ed7d894d">   93</a></span><span class="preprocessor">#define SOUND_ACTION_CONTINUE_UNKNOWN 0x4900801B</span></div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="sounds_8h.html#ab59fc4e1f11577b8c20ee8c136cf0172">   88</a></span><span class="preprocessor">#define SOUND_ACTION_EXPLOSION_2 SOUND_ARG_LOAD(0x19, 0x00, 0xF0, 0x0C)</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment">/* Items */</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment">// There&#39;s likely more of these but they are in func arguments.</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">// Did not rename in-case unrelated.</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="sounds_8h.html#ae05892f9817132cd9148012b02c0d7bd">   93</a></span><span class="preprocessor">#define SOUND_ITEM_STAR SOUND_ARG_LOAD(0x31, 0x02, 0x90, 0x08)</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="sounds_8h.html#ababe19e841b4ff40b2e5d882d7cba29b">   94</a></span><span class="preprocessor">#define SOUND_ITEM_THUNDERBOLT SOUND_ARG_LOAD(0x51, 0x01, 0xC0, 0x0C)</span></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">/* Ceremony */</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">// Congratulation</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="sounds_8h.html#ad5c3461c52d2fdc3a45f89ca9d0a82f8">   98</a></span><span class="preprocessor">#define SOUND_CEREMONY_CONGRATULATION 0x49009014</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="sounds_8h.html#ab5236912e8d24461f8aa2504368c2811">   99</a></span><span class="preprocessor">#define SOUND_CEREMONY_BALLOON_POP 0x4900801E</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="sounds_8h.html#a428811444a6521639376b9d98377b22a">  100</a></span><span class="preprocessor">#define SOUND_CEREMONY_FISH 0x4900801F</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="sounds_8h.html#a2c80cabdf72f644d51b18c21b66786b9">  101</a></span><span class="preprocessor">#define SOUND_CEREMONY_FISH_2 0x49008020</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="sounds_8h.html#aa720157811885c6030eae2e6584c9fec">  102</a></span><span class="preprocessor">#define SOUND_CEREMONY_SHOOT_TROPHY 0x49008021</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="sounds_8h.html#ae06060f6d675e55c04372ae8072541af">  103</a></span><span class="preprocessor">#define SOUND_CEREMONY_PODIUM 0x49008022</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">/* Score Screen */</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">// Coin pickup sound (perfect fourth; B to E)</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="sounds_8h.html#a66d12fb3207920dd7dec38578a0337d9">   99</a></span><span class="preprocessor">#define SOUND_ACTION_COUNT_SCORE SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x17)</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="sounds_8h.html#a8dd68f2283736c117dd7227dc381c8f7">  100</a></span><span class="preprocessor">#define SOUND_ACTION_NEXT_COURSE SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x15)</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">// Same sound as ENTER_MENU</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="sounds_8h.html#a59f0ba6cdca4a6c882c9ee19ed7d894d">  102</a></span><span class="preprocessor">#define SOUND_ACTION_CONTINUE_UNKNOWN SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1B)</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">// The sound of the trophy. Plays in the background</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="sounds_8h.html#a198ddf554f1d4c910fbb75b81eeaff81">  106</a></span><span class="preprocessor">#define SOUND_CEREMONY_TROPHY 0x49008023</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">/* Credits */</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment">// Hey, you&#39;re very good. See you next time!</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="sounds_8h.html#a233f9259c10be70f2f335aca718a4c50">  110</a></span><span class="preprocessor">#define SOUND_CREDITS_FAREWELL 0x49008026</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">/* Ceremony */</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">// Congratulation</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="sounds_8h.html#ad5c3461c52d2fdc3a45f89ca9d0a82f8">  107</a></span><span class="preprocessor">#define SOUND_CEREMONY_CONGRATULATION SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x14)</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="sounds_8h.html#ab5236912e8d24461f8aa2504368c2811">  108</a></span><span class="preprocessor">#define SOUND_CEREMONY_BALLOON_POP SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1E)</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="sounds_8h.html#a428811444a6521639376b9d98377b22a">  109</a></span><span class="preprocessor">#define SOUND_CEREMONY_FISH SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1F)</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="sounds_8h.html#a2c80cabdf72f644d51b18c21b66786b9">  110</a></span><span class="preprocessor">#define SOUND_CEREMONY_FISH_2 SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x20)</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="sounds_8h.html#aa720157811885c6030eae2e6584c9fec">  111</a></span><span class="preprocessor">#define SOUND_CEREMONY_SHOOT_TROPHY SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x21)</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="sounds_8h.html#ae06060f6d675e55c04372ae8072541af">  112</a></span><span class="preprocessor">#define SOUND_CEREMONY_PODIUM SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x22)</span></div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor">#endif </span><span class="comment">// SOUNDS_H</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">// The sound of the trophy. Plays in the background</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="sounds_8h.html#a198ddf554f1d4c910fbb75b81eeaff81">  115</a></span><span class="preprocessor">#define SOUND_CEREMONY_TROPHY SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x23)</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment">/* Credits */</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">// Hey, you&#39;re very good. See you next time!</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="sounds_8h.html#a233f9259c10be70f2f335aca718a4c50">  119</a></span><span class="preprocessor">#define SOUND_CREDITS_FAREWELL SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x26)</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">#endif </span><span class="comment">// SOUNDS_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

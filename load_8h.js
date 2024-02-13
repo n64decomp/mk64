@@ -6,7 +6,7 @@ var load_8h =
     [ "PRELOAD_BANKS", "load_8h.html#afffbf9a87f813e52ed7cf238f21a0405", null ],
     [ "PRELOAD_SEQUENCE", "load_8h.html#a6e02c49376843af189a363f33ce8ad34", null ],
     [ "audio_dma_copy_async", "load_8h.html#a4b2e2248fd2c62a38e204077327fbda5", null ],
-    [ "audio_dma_copy_immediate", "load_8h.html#ae3317f7c4d592849e7c2e92ecb7777e0", null ],
+    [ "audio_dma_copy_immediate", "load_8h.html#a7512c5eea1c942521c019a033b962fd1", null ],
     [ "audio_dma_partial_copy_async", "load_8h.html#a4f3c39697cc74a48e1393a64a241bef2", null ],
     [ "bank_load_async", "load_8h.html#a1fba068a271b6c5373450b2012880837", null ],
     [ "bank_load_immediate", "load_8h.html#a6419f1b73da584071051dcccbdab2537", null ],

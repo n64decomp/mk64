@@ -48,7 +48,7 @@ var player__controller_8c =
     [ "func_8002C17C", "player__controller_8c.html#adb29ff51f9d63ef953d1dcda830a7603", null ],
     [ "func_8002C4F8", "player__controller_8c.html#aa3c944dd9f5b01d337472bdaa34389e1", null ],
     [ "func_8002C7E4", "player__controller_8c.html#ad6c601ce040f0a4f5827e1e7a92efacf", null ],
-    [ "func_8002C954", "player__controller_8c.html#abb6ce82a573668de6510f4e6e234d57a", null ],
+    [ "func_8002C954", "player__controller_8c.html#acc1e9598973b865fd8624608edb5cfae", null ],
     [ "func_8002D028", "player__controller_8c.html#ae84c50ebfb4641214c2da3210ab5e7e2", null ],
     [ "func_8002D268", "player__controller_8c.html#aafe8b94ccd61104120a9bf0ee954a901", null ],
     [ "func_8002E4C4", "player__controller_8c.html#a8dbe93afd801930176ea85ce8715329a", null ],

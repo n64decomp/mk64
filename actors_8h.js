@@ -1,6 +1,6 @@
 var actors_8h =
 [
-    [ "actor_init", "actors_8h.html#a31e936f35648ca3d1cf666103a5765fe", null ],
+    [ "actor_init", "actors_8h.html#a30812a50a35e6ab5e25db08b062f1ab7", null ],
     [ "addActorToEmptySlot", "actors_8h.html#aa22a69ae369b6be8f1fa5a16901de596", null ],
     [ "cleanup_red_and_green_shells", "actors_8h.html#a4c7c9e640a28fc221f580e466b80a379", null ],
     [ "destroy_actor", "actors_8h.html#a718c1759a1824a992860812567d03526", null ],
@@ -36,7 +36,7 @@ var actors_8h =
     [ "func_8029CF0C", "actors_8h.html#abf332cca9a196e71945b5772e01d998d", null ],
     [ "func_8029E158", "actors_8h.html#ad4c7671a474d355b39c737fdf54caffc", null ],
     [ "func_8029E7DC", "actors_8h.html#aaf3833f35114a4dac9e508f392193305", null ],
-    [ "func_8029E890", "actors_8h.html#a3a5eb3bef11cea38ab1d4ce36c864872", null ],
+    [ "func_8029E890", "actors_8h.html#a1b1a73efdb561c2b671290b5d334505d", null ],
     [ "func_8029ED38", "actors_8h.html#aacb8c65ab88198a25078e414ba4b5102", null ],
     [ "func_8029EEB8", "actors_8h.html#a47d6b08cf3224883372e98c75a452dae", null ],
     [ "func_8029F1F8", "actors_8h.html#a3c60222b3744ffe2d035b91158fb1679", null ],

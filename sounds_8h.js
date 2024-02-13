@@ -13,6 +13,7 @@ var sounds_8h =
     [ "SOUND_ACTION_REV_ENGINE_2", "sounds_8h.html#a40ac62f48c8c25185994212e0f4a9e13", null ],
     [ "SOUND_ACTION_TYRE_SQUEAL", "sounds_8h.html#a5c5d109bed08c6739b40dacf353e4f5e", null ],
     [ "SOUND_ACTION_UNKNOWN_CONFIRMATION", "sounds_8h.html#a7387adc326db4114589228e2b6eb01bf", null ],
+    [ "SOUND_ARG_LOAD", "sounds_8h.html#a71288c0bb15b503d4570b441a05013f4", null ],
     [ "SOUND_CEREMONY_BALLOON_POP", "sounds_8h.html#ab5236912e8d24461f8aa2504368c2811", null ],
     [ "SOUND_CEREMONY_CONGRATULATION", "sounds_8h.html#ad5c3461c52d2fdc3a45f89ca9d0a82f8", null ],
     [ "SOUND_CEREMONY_FISH", "sounds_8h.html#a428811444a6521639376b9d98377b22a", null ],

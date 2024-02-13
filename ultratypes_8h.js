@@ -16,6 +16,7 @@ var ultratypes_8h =
     [ "u32", "ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049", null ],
     [ "u64", "ultratypes_8h.html#ac0b0e5ad15a599850f4ca02c451110ba", null ],
     [ "u8", "ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de", null ],
+    [ "ubool8", "ultratypes_8h.html#ac732361b9548b4f326ab0ba6776ffc19", null ],
     [ "vs16", "ultratypes_8h.html#a84c4ebe721fa065d9bd514ce8d76c455", null ],
     [ "vs32", "ultratypes_8h.html#a6c6cf6e3aedfd399080c6f52c2870063", null ],
     [ "vs64", "ultratypes_8h.html#a484adfab567791250a9fdbf0db8d3144", null ],

@@ -9,7 +9,7 @@ var load_8c =
     [ "PATCH", "load_8c.html#ae6f2c925e86efb824ed050683f9b5113", null ],
     [ "PATCH_MEM", "load_8c.html#a4fdc1cc46a0916dacca69b87d684ba09", null ],
     [ "audio_dma_copy_async", "load_8c.html#a5f475204592707b7fb57147de74f1350", null ],
-    [ "audio_dma_copy_immediate", "load_8c.html#ae3317f7c4d592849e7c2e92ecb7777e0", null ],
+    [ "audio_dma_copy_immediate", "load_8c.html#a7512c5eea1c942521c019a033b962fd1", null ],
     [ "audio_dma_partial_copy_async", "load_8c.html#a126f56cab34b7b9a73ab2c42dc3c23e8", null ],
     [ "bank_load_async", "load_8c.html#a16ddfd81ca9e185b484920b7eb9d70d7", null ],
     [ "bank_load_immediate", "load_8c.html#a50bf1c2ea23d6f19ae9fc9e59ccda202", null ],

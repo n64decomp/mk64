@@ -1,13 +1,17 @@
 <map id="src/audio/seqplayer.h" name="src/audio/seqplayer.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="319,5,479,31"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="469,5,629,31"/>
 <area shape="rect" id="Node000002" href="$audio_2effects_8c.html" title=" " alt="" coords="5,79,145,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="335,36,128,81,127,76,333,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="459,35,146,82,145,77,459,30"/>
 <area shape="rect" id="Node000003" href="$heap_8c.html" title=" " alt="" coords="170,79,298,104"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="361,38,262,81,260,76,359,34"/>
-<area shape="rect" id="Node000004" href="$playback_8c.html" title=" " alt="" coords="322,79,477,104"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="402,44,402,79,397,79,397,44"/>
-<area shape="rect" id="Node000005" href="$port__eu_8c.html" title=" " alt="" coords="501,79,647,104"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="441,33,546,76,544,81,439,38"/>
-<area shape="rect" id="Node000006" href="$seqplayer_8c.html" title=" " alt="" coords="671,79,829,104"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="469,31,694,76,693,81,468,36"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="485,36,286,81,284,76,484,31"/>
+<area shape="rect" id="Node000004" href="$load_8c.html" title=" " alt="" coords="323,79,447,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="511,39,413,81,410,76,509,34"/>
+<area shape="rect" id="Node000005" href="$playback_8c.html" title=" " alt="" coords="471,79,626,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="551,44,551,79,546,79,546,44"/>
+<area shape="rect" id="Node000006" href="$port__eu_8c.html" title=" " alt="" coords="651,79,796,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="590,33,696,76,694,81,588,38"/>
+<area shape="rect" id="Node000007" href="$seqplayer_8c.html" title=" " alt="" coords="820,79,979,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="619,31,843,76,842,81,618,36"/>
+<area shape="rect" id="Node000008" href="$synthesis_8c.html" title=" " alt="" coords="1003,79,1161,104"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="643,29,1003,77,1002,82,642,34"/>
 </map>

@@ -1,11 +1,9 @@
 <map id="destroy_actor" name="destroy_actor">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,116,56"/>
-<area shape="rect" id="Node000002" href="$actors_8c.html#a15517665ab054722a5c980c0f1008cd0" title=" " alt="" coords="164,31,288,56"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,41,150,41,150,46,116,46"/>
-<area shape="rect" id="Node000003" href="$external_8c.html#a7a3355f3444c31e7deb571c6d76db628" title=" " alt="" coords="336,31,459,56"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="288,41,322,41,322,46,288,46"/>
-<area shape="rect" id="Node000004" href="$external_8c.html#a1c8490eb4720c317dd29ed76a1c4ea32" title=" " alt="" coords="507,5,629,31"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="458,32,493,26,493,32,459,37"/>
-<area shape="rect" id="Node000005" href="$external_8h.html#a69165d21844ba08a94405ec729d386d4" title=" " alt="" coords="507,55,629,80"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="459,49,493,54,493,59,458,55"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,116,31"/>
+<area shape="rect" id="Node000002" href="$actors_8c.html#a15517665ab054722a5c980c0f1008cd0" title=" " alt="" coords="164,5,288,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,15,150,15,150,21,116,21"/>
+<area shape="rect" id="Node000003" href="$external_8c.html#ae72057869772019e4464c87d4e16c682" title=" " alt="" coords="336,5,459,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="288,15,322,15,322,21,288,21"/>
+<area shape="rect" id="Node000004" href="$external_8c.html#aeb87c527482a244173df36a1f3d4f446" title=" " alt="" coords="507,5,629,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="459,15,493,15,493,21,459,21"/>
 </map>
