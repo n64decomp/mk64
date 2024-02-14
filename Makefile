@@ -98,6 +98,7 @@ ifeq      ($(COMPILER),ido)
   MIPSISET := -mips2
 else ifeq ($(COMPILER),gcc)
   NON_MATCHING := 1
+  VERSION_ASFLAGS := --defsym AVOID_UB=1
   MIPSISET     := -mips3
 endif
 
@@ -115,6 +116,7 @@ endif
 
 ifeq ($(NON_MATCHING),1)
   DEFINES += NON_MATCHING=1 AVOID_UB=1
+  VERSION_ASFLAGS := --defsym AVOID_UB=1
   COMPARE := 0
 endif
 
@@ -331,7 +333,7 @@ else
   CFLAGS += $(HIDE_WARNINGS) -non_shared -Wab,-r4300_mul -Xcpluscomm -Xfullwarn -signed -32
 endif
 
-ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) $(foreach d,$(DEFINES),--defsym $(d))
+ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) $(VERSION_ASFLAGS) $(foreach d,$(DEFINES),--defsym $(d))
 
 # Fills end of rom
 OBJCOPYFLAGS = --pad-to=0xC00000 --gap-fill=0xFF
