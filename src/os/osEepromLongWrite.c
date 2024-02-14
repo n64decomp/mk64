@@ -1,13 +1,12 @@
 #include "libultra_internal.h"
+#include "controller.h"
 
-extern u64 osClockRate;
 extern u8 D_80365D20;
-extern u8 _osContNumControllers;
 extern OSTimer D_80196548;
 extern OSMesgQueue _osContMesgQueue;
-extern OSMesg _osContMesgBuff[4];
-// exactly the same as osEepromLongRead except for osEepromWrite call
+extern OSMesg _osContMesgBuff[4];\
 
+// exactly the same as osEepromLongRead except for osEepromWrite call
 s32 osEepromLongWrite(OSMesgQueue *mq, u8 address, u8 *buffer, int nbytes) {
     s32 result = 0;
     if (address > 0x40) {

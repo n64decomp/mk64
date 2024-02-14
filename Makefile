@@ -392,9 +392,11 @@ define print
 endef
 
 ifeq ($(GCC),1)
-  $(BUILD_DIR)/src/main.o:        OPT_FLAGS := -g
-  $(BUILD_DIR)/src/racing/skybox_and_splitscreen.o:        OPT_FLAGS := -g
-  $(BUILD_DIR)/src/racing/render_courses.o:        OPT_FLAGS := -g
+  $(BUILD_DIR)/src/main.o:                          OPT_FLAGS := -g
+  $(BUILD_DIR)/src/racing/skybox_and_splitscreen.o: OPT_FLAGS := -g
+  $(BUILD_DIR)/src/racing/render_courses.o:         OPT_FLAGS := -g
+  $(BUILD_DIR)/src/os/osEepromLongWrite.o:          OPT_FLAGS := -g
+  $(BUILD_DIR)/src/os/math/llmuldiv.o:                   OPT_FLAGS := -g
   $(SAFE_C_FILES): OPT_FLAGS := -O3
   $(SAFE_C_FILES): CC       := $(CROSS)gcc
   $(SAFE_C_FILES): MIPSISET := -mips3
