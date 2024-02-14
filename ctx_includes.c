@@ -78,6 +78,8 @@
 #include "src/common_textures.h"
 #include "src/data/data_800E45C0.h"
 #include "src/data/data_800E8700.h"
+#include "src/data/some_data.h"
+#include "src/data/some_data_2.h"
 #include "src/data/trig_tables.h"
 #include "src/data_segment2.h"
 #include "src/effects.h"

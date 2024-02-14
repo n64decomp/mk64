@@ -32,6 +32,7 @@
 #include "src/ending/ceremony_and_credits.h"
 #include "menus.h"
 #include "data/other_textures.h"
+#include "data/some_data.h"
 
 //! @todo unused?
 f32 D_800E43B0[] = { 
@@ -3000,7 +3001,7 @@ void update_obj_laikitu_countdown(s32 objectIndex, s32 arg1) {
             break;
         case 3:
             set_object_flag_unk_054_true(objectIndex, 0x00000010);
-            func_80086F10(objectIndex, 1, D_800E67B8);
+            func_80086F10(objectIndex, 1, &D_800E67B8);
             func_80072488(objectIndex);
             break;
         case 4:
@@ -3075,7 +3076,7 @@ void init_obj_laikitu_red_flag(s32 objectIndex, s32 playerIndex) {
     temp_v0->pos[1] = 5000.0f;
     temp_v0->pos[0] = 5000.0f;
     temp_v0->sizeScaling = 0.15f;
-    func_80086F10(objectIndex, 2, D_800E6834);
+    func_80086F10(objectIndex, 2, &D_800E6834);
     set_object_flag_unk_054_false(objectIndex, 0x00000010);
     func_80072488(objectIndex);
 }
@@ -3420,7 +3421,7 @@ void func_8007A3F0(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].pos[0] = var;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     set_object_flag_unk_054_false(objectIndex, 0x00000010);
-    func_80086F10(objectIndex, 6, D_800E69B0);
+    func_80086F10(objectIndex, 6, &D_800E69B0);
     gObjectList[objectIndex].unk_0D6 = 0;
     func_80072488(objectIndex);
     func_800C8F80((u8)arg1, 0x0100FA28);
@@ -3450,7 +3451,7 @@ void update_obj_laikitu_reverse(s32 objectIndex, s32 playerId) {
     switch (gObjectList[objectIndex].unk_0D6) {                              /* switch 1; irregular */
         case 1:                                         /* switch 1 */
             if ((gObjectList[objectIndex].state >= 3) && (!(sp2C->effects & 0x400000))) {
-                func_80086F10(objectIndex, 6, D_800E69F4);
+                func_80086F10(objectIndex, 6, &D_800E69F4);
                 gObjectList[objectIndex].unk_0D6 = 2;
                 gObjectList[objectIndex].unk_04C = 0x00000050;
                 func_800C9018((u8) playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
@@ -4328,7 +4329,7 @@ void func_8007C7B4(s32 someIndex, s32 arg1) {
     s16 temp_s1_2;
     s16 temp_s4;
     s16 temp_s5;
-    s16 *something;
+    SplineData *something;
 
     for (temp_a0 = 0; temp_a0 < 5; temp_a0++) {
         objectIndex = indexObjectList3[someIndex + temp_a0];
@@ -4339,7 +4340,7 @@ void func_8007C7B4(s32 someIndex, s32 arg1) {
         temp_s5 = random_int(0x0050U) - 0x28;
         random_int(0x1000U);
         something = D_800E5D9C[temp_a0];
-        gObjectList[objectIndex].unk_080 = (Vec4s *) something;
+        gObjectList[objectIndex].spline = something;
         gObjectList[objectIndex].origin_pos[0] = (f32) temp_s1_2;
         gObjectList[objectIndex].origin_pos[1] = (f32) temp_s4;
         gObjectList[objectIndex].origin_pos[2] = (f32) temp_s5;
@@ -4562,7 +4563,7 @@ void func_8007D070(void) {
                 gObjectList[objectIndex].origin_pos[0] = D_8018CF1C->pos[0] + (sins(temp_t2) * temp_s2);
                 gObjectList[objectIndex].origin_pos[1] = temp_t5;
                 gObjectList[objectIndex].origin_pos[2] = D_8018CF1C->pos[2] + (coss(temp_t2) * temp_s2);
-                gObjectList[objectIndex].unk_080 = (Vec4s *) D_800E5D54;
+                gObjectList[objectIndex].spline = &D_800E5D54;
             }
         }
     }
@@ -5988,8 +5989,8 @@ void func_80080DE4(s32 arg0) {
 }
 
 #ifdef NON_MATCHING
-extern f32 D_800E594C[5][2];
-extern s16 D_800E597C[6];
+extern f32 D_800E594C[][2];
+extern u16 D_800E597C[6];
 
 void func_80080E8C(s32 objectIndex1, s32 objectIndex2, s32 arg2) {
     u16 anAngle;
@@ -6508,7 +6509,7 @@ void func_8008241C(s32 objectIndex, s32 arg1) {
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
     gObjectList[objectIndex].unk_034 = 1.0f;
     func_80086EF0(objectIndex);
-    gObjectList[objectIndex].unk_080 = (Vec4s *) D_800E633C[arg1 % 4];
+    gObjectList[objectIndex].spline = D_800E633C[arg1 % 4];
     set_object_flag_unk_054_true(objectIndex, 0x00000800);
     func_80072488(objectIndex);
 }
@@ -7129,7 +7130,7 @@ void func_80084430(s32 objectIndex, UNUSED s32 arg1) {
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
     temp_s0->unk_0DD = 1;
     func_80086EF0(objectIndex);
-    temp_s0->unk_080 = (Vec4s *) *D_800E672C;
+    temp_s0->spline = D_800E672C[0];
     set_object_flag_unk_054_true(objectIndex, 0x04000800);
     temp_s0->type = func_80004EAC(d_course_sherbet_land_unk_data11, 0);
     func_80072488(objectIndex);
