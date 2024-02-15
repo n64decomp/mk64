@@ -112,7 +112,7 @@ s32 gControllerPak1NumPagesFree;
 s32 gControllerPak1FileNote;
 s32 gControllerPak2FileNote;
 s32 code_80091750_bss_pad2;
-SaveData gSaveData;
+ALIGNED8 SaveData gSaveData;
 
 u8 D_8018ED90;
 u8 D_8018ED91;

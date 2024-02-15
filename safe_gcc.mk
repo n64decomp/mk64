@@ -1,58 +1,53 @@
 # This file is auto-generated. DO NOT MODIFY!
 
 SAFE_C_FILES :=    \
-    build/us/src/profiler.o    \
-    build/us/src/code_800029B0.o\
+    build/us/src/main.o    \
     build/us/src/camera.o    \
     build/us/src/spawn_players.o    \
     build/us/src/code_8008C1D0.o    \
     build/us/src/code_8003DC40.o    \
     build/us/src/effects.o    \
+    build/us/src/code_80057C60_var.o    \
+    build/us/src/code_800029B0.o    \
     build/us/src/code_80004740.o    \
     build/us/src/player_controller.o    \
+    build/us/src/profiler.o    \
     build/us/src/render_player.o    \
     build/us/src/code_80086E70.o    \
     build/us/src/staff_ghosts.o    \
-    build/us/src/kart_dma.o    \
     build/us/src/gbiMacro.o    \
-    build/us/src/math_util_2.o\
-    build/us/src/racing/collision.o    \
-    build/us/src/racing/skybox_and_splitscreen.o    \
-    build/us/src/racing/memory.o    \
-    build/us/src/racing/race_logic.o    \
-    build/us/src/racing/actors_extended.o    \
-    build/us/src/racing/render_courses.o    \
-    build/us/src/racing/actors.o\
+    build/us/src/kart_dma.o    \
+    build/us/src/math_util_2.o    \
+    build/us/src/data/gfx_output_buffer.o    \
+    build/us/src/data/data_segment2.inc.o    \
+    build/us/src/data/trig_tables.o    \
+    build/us/src/data/buffers.o    \
+    build/us/src/data/data_800E8700.o    \
+    build/us/src/data/data_800E45C0.o    \
+    build/us/src/data/kart_attributes.inc.o    \
+    build/us/src/data/trig_tables_bss.o    \
+    build/us/src/data/startup_logo.inc.o    \
+    build/us/src/data/textures.inc.o    \
     build/us/src/ending/credits.o    \
     build/us/src/ending/code_80280000.o    \
     build/us/src/ending/ceremony_and_credits.o    \
     build/us/src/ending/code_80281780.o    \
     build/us/src/ending/podium_ceremony_actors.o    \
     build/us/src/ending/dl_unk_80284EE0.inc.o    \
+    build/us/src/ending/ceremony_data.inc.o    \
     build/us/src/ending/code_80281C40.o    \
     build/us/src/ending/camera_junk.o    \
-    build/us/src/code_80091440.o    \
-    build/us/src/data/data_segment2.inc.o    \
-    build/us/src/data/data_800E8700.o    \
-    build/us/src/data/data_800E45C0.o    \
-    build/us/src/data/kart_attributes.inc.o    \
-    build/us/src/data/textures.inc.o    \
-    build/us/src/code_80057C60_var.o    \
-    build/us/src/data/gfx_output_buffer.o    \
-    build/us/src/data/buffers.o    \
-    build/us/src/data/trig_tables_bss.o\
-    build/us/src/os/guMtxF2L.o    \
-    build/us/src/os/osEepromRead.o    \
-    build/us/src/os/__osViInit.o    \
-    build/us/src/os/__osPiCreateAccessQueue.o    \
-    build/us/src/os/__osSpGetStatus.o    \
-    build/us/src/os/osCreateThread.o    \
-    build/us/src/os/guRotateF.o    \
-    build/us/src/os/_Litob.o    \
-    build/us/src/os/guPerspectiveF.o    \
-    build/us/src/os/__osSpSetPc.o    \
-    build/us/src/os/guScaleF.o    \
-    build/us/src/os/guOrthoF.o\
+    build/us/src/debug/debug.o    \
+    build/us/src/debug/debug.inc.o    \
+    build/us/src/debug/crash_screen_enhancement.o    \
+    build/us/src/racing/collision.o    \
+    build/us/src/racing/skybox_and_splitscreen.o    \
+    build/us/src/racing/memory.o    \
+    build/us/src/racing/race_logic.o    \
+    build/us/src/racing/actors_extended.o    \
+    build/us/src/racing/render_courses.o    \
+    build/us/src/racing/actors.o    \
+    build/us/src/os/guOrthoF.o    \
     build/us/src/os/guLookAtF.o    \
     build/us/src/os/__osSiDeviceBusy.o    \
     build/us/src/os/_Litob.o    \
@@ -96,6 +91,7 @@ SAFE_C_FILES :=    \
     build/us/src/os/sprintf.o    \
     build/us/src/os/_Printf.o    \
     build/us/src/os/osViTable.o    \
+    build/us/src/os/osEepromLongWrite.o    \
     build/us/src/os/__osEPiRawWriteIo.o    \
     build/us/src/os/osViSetEvent.o    \
     build/us/src/os/__osGetCurrFaultedThread.o    \
@@ -148,6 +144,7 @@ SAFE_C_FILES :=    \
     build/us/src/os/guNormalize.o    \
     build/us/src/os/osLeoDiskInit.o    \
     build/us/src/os/__osSpGetStatus.o    \
+    build/us/src/os/osEepromLongRead.o    \
     build/us/src/os/_Ldtob.o    \
     build/us/src/os/guMtxF2L.o    \
     build/us/src/os/osEPiRawStartDma.o    \
@@ -161,4 +158,5 @@ SAFE_C_FILES :=    \
     build/us/src/os/guTranslateF.o    \
     build/us/src/os/math/llconv.o    \
     build/us/src/os/math/cosf.o    \
+    build/us/src/os/math/llmuldiv.o    \
     build/us/src/os/math/sinf.o    \

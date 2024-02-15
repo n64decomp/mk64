@@ -298,7 +298,8 @@ SECTIONS
       BUILD_DIR/src/os/guScaleF.o(.rodata*);
       BUILD_DIR/src/os/guPerspectiveF.o(.rodata*);
       BUILD_DIR/src/os/guLookAtF.o(.rodata*);
-      BUILD_DIR/src/os/osAiSetFrequency.o(.rodata*);      
+      BUILD_DIR/src/os/osAiSetFrequency.o(.rodata*);
+      BUILD_DIR/src/os/osEepromLongRead.o(.rodata*);
       BUILD_DIR/asm/os/__osException.o(.rodata);
       BUILD_DIR/src/os/__osViSwapContext.o(.rodata*);
       BUILD_DIR/src/os/__osDevMgrMain.o(.rodata*);
