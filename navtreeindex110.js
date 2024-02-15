@@ -1,5 +1,6 @@
 var NAVTREEINDEX110 =
 {
+"structItemWindowObjects.html#abf86afd104adf83d755c95ff25e652e5":[7,0,89,34],
 "structItemWindowObjects.html#ac1e211a49afe3c6a7b2f55d9316155fa":[7,0,89,0],
 "structItemWindowObjects.html#ac53a02812237fe62c88b83734ae121b5":[7,0,89,53],
 "structItemWindowObjects.html#ac73898b6c483d6ac48bbd0d039cb7566":[7,0,89,10],
@@ -248,6 +249,5 @@ var NAVTREEINDEX110 =
 "structOSViFieldRegs.html#a3417725dbcfd81463ffe191a381eafa9":[7,0,123,0],
 "structOSViMode.html":[7,0,124],
 "structOSViMode.html#a8851ba308e363d7def1bf1036bc6d31a":[7,0,124,2],
-"structOSViMode.html#ab5edc702da6949a163d2461821983bda":[7,0,124,0],
-"structOSViMode.html#ab6feaae6755f702c1d2106301c166307":[7,0,124,1]
+"structOSViMode.html#ab5edc702da6949a163d2461821983bda":[7,0,124,0]
 };
