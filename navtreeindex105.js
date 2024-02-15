@@ -1,12 +1,5 @@
 var NAVTREEINDEX105 =
 {
-"sherbet__land_2course__displaylists_8inc_8c.html#aa09f4db5a313f9b5df8d2c39da113c30":[8,0,0,15,2,6],
-"sherbet__land_2course__displaylists_8inc_8c.html#aa25e0aaa7bc83c3f43369f46b1670bad":[8,0,0,15,2,83],
-"sherbet__land_2course__displaylists_8inc_8c.html#aa53307fb10487ecb861ff9577b455524":[8,0,0,15,2,58],
-"sherbet__land_2course__displaylists_8inc_8c.html#aa5656e5a09982876b1343475c074210f":[8,0,0,15,2,51],
-"sherbet__land_2course__displaylists_8inc_8c.html#aa8a78ec047ed847348d0a91891b2713c":[8,0,0,15,2,27],
-"sherbet__land_2course__displaylists_8inc_8c.html#aaae124abf1652028aaaf240f18f082e1":[8,0,0,15,2,80],
-"sherbet__land_2course__displaylists_8inc_8c.html#aade24d80126422ba3c67d866d55ede28":[8,0,0,15,2,1],
 "sherbet__land_2course__displaylists_8inc_8c.html#ab09bbb32dbdd123fbccad52061d6542d":[8,0,0,15,2,57],
 "sherbet__land_2course__displaylists_8inc_8c.html#ab3522b86a13a610548ea68137ddd951a":[8,0,0,15,2,41],
 "sherbet__land_2course__displaylists_8inc_8c.html#ab71ed21dd3cbf68a3db61536a121a69e":[8,0,0,15,2,72],
@@ -249,5 +242,12 @@ var NAVTREEINDEX105 =
 "skybox__and__splitscreen_8h.html#aa58c449ec64b285fd3b4def5e261ff97":[8,0,3,6,15,23],
 "skybox__and__splitscreen_8h.html#aa627a5166fe0e9f01475246065b6923c":[8,0,3,6,15,44],
 "skybox__and__splitscreen_8h.html#aa9561e7be092d9cd53decc5700218e26":[8,0,3,6,15,46],
-"skybox__and__splitscreen_8h.html#ab0061fbdffa3d6f0a7a58b866cfd2336":[8,0,3,6,15,21]
+"skybox__and__splitscreen_8h.html#ab0061fbdffa3d6f0a7a58b866cfd2336":[8,0,3,6,15,21],
+"skybox__and__splitscreen_8h.html#ab481a35d4548245b2a89ab574f460a14":[8,0,3,6,15,43],
+"skybox__and__splitscreen_8h.html#ab4d59c5fb18fa704f1f4a74d79204e3a":[8,0,3,6,15,10],
+"skybox__and__splitscreen_8h.html#ab8435f5b83d0fc118a6bbad43a0a806d":[8,0,3,6,15,3],
+"skybox__and__splitscreen_8h.html#acbee56a803ead7946e1c703e7039930a":[8,0,3,6,15,6],
+"skybox__and__splitscreen_8h.html#accb6af916ac72e9b2186f11211419818":[8,0,3,6,15,34],
+"skybox__and__splitscreen_8h.html#acdf96ac83288ec562406d39e4dce3e01":[8,0,3,6,15,33],
+"skybox__and__splitscreen_8h.html#adbeb0599946e6477e4aa0c65e9fea6a8":[8,0,3,6,15,28]
 };

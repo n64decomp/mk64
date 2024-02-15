@@ -165,6 +165,7 @@ var annotated_dup =
     [ "struct_801642D8", "structstruct__801642D8.html", "structstruct__801642D8" ],
     [ "struct_8018D9E0_entry", "structstruct__8018D9E0__entry.html", "structstruct__8018D9E0__entry" ],
     [ "struct_8018DEE0_entry", "structstruct__8018DEE0__entry.html", "structstruct__8018DEE0__entry" ],
+    [ "struct_8018E060_entry", "structstruct__8018E060__entry.html", "structstruct__8018E060__entry" ],
     [ "struct_8018E0E8_entry", "structstruct__8018E0E8__entry.html", "structstruct__8018E0E8__entry" ],
     [ "struct_8018E118_entry", "structstruct__8018E118__entry.html", "structstruct__8018E118__entry" ],
     [ "struct_8018E768_entry", "structstruct__8018E768__entry.html", "structstruct__8018E768__entry" ],

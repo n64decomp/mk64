@@ -1,12 +1,5 @@
 var NAVTREEINDEX69 =
 {
-"koopa__troopa__beach_2course__data_8inc_8h.html#a1f91034470dbf9ee7ca0e5116e0635f6":[8,0,0,9,1,2],
-"koopa__troopa__beach_2course__data_8inc_8h.html#a200ed6b62113cbaad83d9250119d6fb6":[8,0,0,9,1,313],
-"koopa__troopa__beach_2course__data_8inc_8h.html#a205a20fd67ca10a8f4f4988792de27b9":[8,0,0,9,1,62],
-"koopa__troopa__beach_2course__data_8inc_8h.html#a20d13d3bea80ae746621b78baba243aa":[8,0,0,9,1,124],
-"koopa__troopa__beach_2course__data_8inc_8h.html#a214635ec69341520c3e292815aaa9516":[8,0,0,9,1,92],
-"koopa__troopa__beach_2course__data_8inc_8h.html#a21ee476c563745bd0c9fbbb563a5263f":[8,0,0,9,1,200],
-"koopa__troopa__beach_2course__data_8inc_8h.html#a24c8b4c40f0a3fca425b40a923093786":[8,0,0,9,1,177],
 "koopa__troopa__beach_2course__data_8inc_8h.html#a25e23da1ec9d1ef13fa1d9b71079e2c6":[8,0,0,9,1,104],
 "koopa__troopa__beach_2course__data_8inc_8h.html#a26e173ada639cc192b00468026d159df":[8,0,0,9,1,52],
 "koopa__troopa__beach_2course__data_8inc_8h.html#a27a3d0705fd85cbf55f028cf4faf3d48":[8,0,0,9,1,282],
@@ -249,5 +242,12 @@ var NAVTREEINDEX69 =
 "koopa__troopa__beach_2course__data_8inc_8h.html#ad462a232a6009b200d771c73b6623815":[8,0,0,9,1,43],
 "koopa__troopa__beach_2course__data_8inc_8h.html#ad4c6ec85176fab707c04a132febaf223":[8,0,0,9,1,202],
 "koopa__troopa__beach_2course__data_8inc_8h.html#ad80191ff6c6b51735c12885b668776e1":[8,0,0,9,1,302],
-"koopa__troopa__beach_2course__data_8inc_8h.html#ad8198cf4b3772d9ce643a07a7f1045db":[8,0,0,9,1,195]
+"koopa__troopa__beach_2course__data_8inc_8h.html#ad8198cf4b3772d9ce643a07a7f1045db":[8,0,0,9,1,195],
+"koopa__troopa__beach_2course__data_8inc_8h.html#ad8849a26a5b16b2a55411f0684d6e682":[8,0,0,9,1,240],
+"koopa__troopa__beach_2course__data_8inc_8h.html#ad89356ae5dec0f5c2282811ce117b781":[8,0,0,9,1,183],
+"koopa__troopa__beach_2course__data_8inc_8h.html#ad8ae20cbf418ec77ba0eb81a8d7b4b4a":[8,0,0,9,1,236],
+"koopa__troopa__beach_2course__data_8inc_8h.html#ad978130dc73840492df4a41c494cfb8a":[8,0,0,9,1,343],
+"koopa__troopa__beach_2course__data_8inc_8h.html#ad987e970ad4a6b80088a5657324da139":[8,0,0,9,1,259],
+"koopa__troopa__beach_2course__data_8inc_8h.html#ad9cdc7a3b36cadd764fad548296edc66":[8,0,0,9,1,227],
+"koopa__troopa__beach_2course__data_8inc_8h.html#adbcc8eacdcb61343ef694172c074b3b4":[8,0,0,9,1,204]
 };

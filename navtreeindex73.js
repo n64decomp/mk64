@@ -1,12 +1,5 @@
 var NAVTREEINDEX73 =
 {
-"libultra__internal_8h.html#a650b788ebd5efde9c8cbccc1ee832445":[8,0,3,5,54,9],
-"libultra__internal_8h.html#a690cad10244bbcfa0cc27e601a642c2f":[8,0,3,5,54,21],
-"libultra__internal_8h.html#a780233d5f00e944e23640dc2ef7c9808":[8,0,3,5,54,30],
-"libultra__internal_8h.html#a819958c8a197964df2aae10a13aee885":[8,0,3,5,54,23],
-"libultra__internal_8h.html#a836d4fff66c3d0cf5eec17c4579df564":[8,0,3,5,54,7],
-"libultra__internal_8h.html#a88e1c1713b33b8f41ca47f5e7ad61e1a":[8,0,3,5,54,40],
-"libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16":[8,0,3,5,54,8],
 "libultra__internal_8h.html#a95bd5a78cf0d49f922eb22c02533774e":[8,0,3,5,54,45],
 "libultra__internal_8h.html#a9886ad7553ac8a105022fe706777fb6f":[8,0,3,5,54,14],
 "libultra__internal_8h.html#a9c635fa9aba62511dbbac0a605830ab8":[8,0,3,5,54,46],
@@ -249,5 +242,12 @@ var NAVTREEINDEX73 =
 "luigi__raceway_2course__data_8inc_8c.html#a152d20f8249f93f3a406660cb26bb843":[8,0,0,10,0,31],
 "luigi__raceway_2course__data_8inc_8c.html#a1552dca8a09a7184788e0a59b5f7dc21":[8,0,0,10,0,26],
 "luigi__raceway_2course__data_8inc_8c.html#a1759182a809534f9c6a61f0a19c871c6":[8,0,0,10,0,143],
-"luigi__raceway_2course__data_8inc_8c.html#a187c83294e50440d545aec02209d3c63":[8,0,0,10,0,33]
+"luigi__raceway_2course__data_8inc_8c.html#a187c83294e50440d545aec02209d3c63":[8,0,0,10,0,33],
+"luigi__raceway_2course__data_8inc_8c.html#a1ec959b10ffbf7995cdaeb70dcf03aed":[8,0,0,10,0,131],
+"luigi__raceway_2course__data_8inc_8c.html#a20f19ed7c8e199a6006409b2b7f74faf":[8,0,0,10,0,67],
+"luigi__raceway_2course__data_8inc_8c.html#a21372ede5f44a373a37c5aa3f5a11a82":[8,0,0,10,0,109],
+"luigi__raceway_2course__data_8inc_8c.html#a22fd1b71c27fe1b62441f22b56cbd57c":[8,0,0,10,0,123],
+"luigi__raceway_2course__data_8inc_8c.html#a23d7feef395fbd5877e8931cb2f3cc48":[8,0,0,10,0,115],
+"luigi__raceway_2course__data_8inc_8c.html#a23e97aa1eb3de444124191e4534559df":[8,0,0,10,0,79],
+"luigi__raceway_2course__data_8inc_8c.html#a24015107a2fb932d632458684339633a":[8,0,0,10,0,99]
 };

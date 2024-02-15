@@ -9,7 +9,6 @@ var types_8h =
     [ "UnkStruct_800DDB40", "structUnkStruct__800DDB40.html", "structUnkStruct__800DDB40" ],
     [ "UnkStruct_802B53C8", "structUnkStruct__802B53C8.html", "structUnkStruct__802B53C8" ],
     [ "UnkStruct_800DDB68", "structUnkStruct__800DDB68.html", "structUnkStruct__800DDB68" ],
-    [ "UnkStruct_8018E7E8", "structUnkStruct__8018E7E8.html", "structUnkStruct__8018E7E8" ],
     [ "SpTaskState", "types_8h.html#a4bb374aee872d45ca8292940f2a0ed03", [
       [ "SPTASK_STATE_NOT_STARTED", "types_8h.html#a4bb374aee872d45ca8292940f2a0ed03aa1d36cbdfdd74c1dffec49c527c434e2", null ],
       [ "SPTASK_STATE_RUNNING", "types_8h.html#a4bb374aee872d45ca8292940f2a0ed03a9afa6ccb46b744f4b86c4c8c3e882f0a", null ],

@@ -1,12 +1,5 @@
 var NAVTREEINDEX72 =
 {
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a61f26cd082fc6e5ac846a3d9c842fa4e":[8,0,0,9,3,59],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a622be2109a7f7d43b2f2b8f04d085c37":[8,0,0,9,3,87],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a62e8e6f500c88eadac0d5d6730370342":[8,0,0,9,3,269],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a6371c712351874d2ed422ab2026a9255":[8,0,0,9,3,256],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a63f50c9b4d267a1e18d23bc6d6e8fdc6":[8,0,0,9,3,136],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a657a7636784e748a532d36c7604d254c":[8,0,0,9,3,102],
-"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a66156b0246fba1d954021fc41fc5359d":[8,0,0,9,3,160],
 "koopa__troopa__beach_2course__displaylists_8inc_8h.html#a66c8d4177be1186f925df21491c6b7d1":[8,0,0,9,3,135],
 "koopa__troopa__beach_2course__displaylists_8inc_8h.html#a69c7abfd395a9521cae819c8a0e81997":[8,0,0,9,3,120],
 "koopa__troopa__beach_2course__displaylists_8inc_8h.html#a6a9ca1c84b6526ae911c7c1724677067":[8,0,0,9,3,230],
@@ -249,5 +242,12 @@ var NAVTREEINDEX72 =
 "libultra__internal_8h.html#a4c57f3342a3bc2e836d06b78c85d70f0":[8,0,3,5,54,44],
 "libultra__internal_8h.html#a4d832a218d99011b10bb8d7747e9df50":[8,0,3,5,54,37],
 "libultra__internal_8h.html#a4f7c83166c9481713d4b56defd0888c7":[8,0,3,5,54,19],
-"libultra__internal_8h.html#a550e12685f4a306e726991aecb305bb4":[8,0,3,5,54,29]
+"libultra__internal_8h.html#a550e12685f4a306e726991aecb305bb4":[8,0,3,5,54,29],
+"libultra__internal_8h.html#a650b788ebd5efde9c8cbccc1ee832445":[8,0,3,5,54,9],
+"libultra__internal_8h.html#a690cad10244bbcfa0cc27e601a642c2f":[8,0,3,5,54,21],
+"libultra__internal_8h.html#a780233d5f00e944e23640dc2ef7c9808":[8,0,3,5,54,30],
+"libultra__internal_8h.html#a819958c8a197964df2aae10a13aee885":[8,0,3,5,54,23],
+"libultra__internal_8h.html#a836d4fff66c3d0cf5eec17c4579df564":[8,0,3,5,54,7],
+"libultra__internal_8h.html#a88e1c1713b33b8f41ca47f5e7ad61e1a":[8,0,3,5,54,40],
+"libultra__internal_8h.html#a8ad9db8aa6bfc4437abdd0363b663b16":[8,0,3,5,54,8]
 };

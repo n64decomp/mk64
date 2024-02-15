@@ -1,12 +1,5 @@
 var NAVTREEINDEX74 =
 {
-"luigi__raceway_2course__data_8inc_8c.html#a1ec959b10ffbf7995cdaeb70dcf03aed":[8,0,0,10,0,131],
-"luigi__raceway_2course__data_8inc_8c.html#a20f19ed7c8e199a6006409b2b7f74faf":[8,0,0,10,0,67],
-"luigi__raceway_2course__data_8inc_8c.html#a21372ede5f44a373a37c5aa3f5a11a82":[8,0,0,10,0,109],
-"luigi__raceway_2course__data_8inc_8c.html#a22fd1b71c27fe1b62441f22b56cbd57c":[8,0,0,10,0,123],
-"luigi__raceway_2course__data_8inc_8c.html#a23d7feef395fbd5877e8931cb2f3cc48":[8,0,0,10,0,115],
-"luigi__raceway_2course__data_8inc_8c.html#a23e97aa1eb3de444124191e4534559df":[8,0,0,10,0,79],
-"luigi__raceway_2course__data_8inc_8c.html#a24015107a2fb932d632458684339633a":[8,0,0,10,0,99],
 "luigi__raceway_2course__data_8inc_8c.html#a266abd52d5abf3e8fe1380d307ce3702":[8,0,0,10,0,117],
 "luigi__raceway_2course__data_8inc_8c.html#a26e92a20c1dc629207653a63f17ab3cf":[8,0,0,10,0,138],
 "luigi__raceway_2course__data_8inc_8c.html#a27c2ee38258f097b5fcf60e8ddf0b9e7":[8,0,0,10,0,86],
@@ -249,5 +242,12 @@ var NAVTREEINDEX74 =
 "luigi__raceway_2course__data_8inc_8h.html#aa23d6b1702c6cfe6d1fde22c0562b070":[8,0,0,10,1,95],
 "luigi__raceway_2course__data_8inc_8h.html#aa2a6c0a7a83c3d01320958fd5b90d603":[8,0,0,10,1,136],
 "luigi__raceway_2course__data_8inc_8h.html#aa6ce47ffc0dfb48b63879817bd4e930c":[8,0,0,10,1,84],
-"luigi__raceway_2course__data_8inc_8h.html#aa7c44b7a9e7a4abf7d9996ba9c79b3ab":[8,0,0,10,1,4]
+"luigi__raceway_2course__data_8inc_8h.html#aa7c44b7a9e7a4abf7d9996ba9c79b3ab":[8,0,0,10,1,4],
+"luigi__raceway_2course__data_8inc_8h.html#aa94677e60c990e6f5b7486540aaa6ffd":[8,0,0,10,1,157],
+"luigi__raceway_2course__data_8inc_8h.html#aaccdd43466354a38afeae067ab6d8c5e":[8,0,0,10,1,75],
+"luigi__raceway_2course__data_8inc_8h.html#aae5848bf86f045a314a6f2ed27387657":[8,0,0,10,1,55],
+"luigi__raceway_2course__data_8inc_8h.html#ab1c6263c10882d7ef922ca72835fa29c":[8,0,0,10,1,14],
+"luigi__raceway_2course__data_8inc_8h.html#ab21c151a85313468f91f4973b57639b6":[8,0,0,10,1,82],
+"luigi__raceway_2course__data_8inc_8h.html#ab3d2fb55f0f546c713e27c621cb1e03c":[8,0,0,10,1,154],
+"luigi__raceway_2course__data_8inc_8h.html#ab5f1dab2b059d080f7e906d677980f66":[8,0,0,10,1,113]
 };

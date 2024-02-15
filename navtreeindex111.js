@@ -1,12 +1,5 @@
 var NAVTREEINDEX111 =
 {
-"structOSViFieldRegs.html#a258c670f50cd3b157316404ae3892ea8":[7,0,123,2],
-"structOSViFieldRegs.html#a25ada5d28742b95c120f71e297dcb28d":[7,0,123,3],
-"structOSViFieldRegs.html#a3417725dbcfd81463ffe191a381eafa9":[7,0,123,0],
-"structOSViMode.html":[7,0,124],
-"structOSViMode.html#a8851ba308e363d7def1bf1036bc6d31a":[7,0,124,2],
-"structOSViMode.html#ab5edc702da6949a163d2461821983bda":[7,0,124,0],
-"structOSViMode.html#ab6feaae6755f702c1d2106301c166307":[7,0,124,1],
 "structObjects.html":[7,0,107],
 "structObjects.html#a0194330215c4b351adeb6e975f80a319":[7,0,107,47],
 "structObjects.html#a04fcbfde0a10741e0a8ddbab49b14d32":[7,0,107,30],
@@ -249,5 +242,12 @@ var NAVTREEINDEX111 =
 "structPoolSplit.html":[7,0,132],
 "structPoolSplit.html#a032ee33fb54cbd6eea6c67964b5d2aa2":[7,0,132,2],
 "structPoolSplit.html#a0e988945af59d7ca4b1ae41eb97e3554":[7,0,132,0],
-"structPoolSplit.html#a573b5f0745a8ad7c723b003545988170":[7,0,132,1]
+"structPoolSplit.html#a573b5f0745a8ad7c723b003545988170":[7,0,132,1],
+"structPoolSplit.html#a8b3aa0f7abfe6076fb6b59e6d5825a15":[7,0,132,3],
+"structPoolSplit2.html":[7,0,133],
+"structPoolSplit2.html#ac284dd1e3bcc85a2a5e4e27a27bb434a":[7,0,133,1],
+"structPoolSplit2.html#ad9e2ea7832ecaf83e69508a475c1a145":[7,0,133,0],
+"structPortamento.html":[7,0,134],
+"structPortamento.html#a2054af42de80730e8c81b0a12bfa87cd":[7,0,134,2],
+"structPortamento.html#a294bb832235d86c8e01736a1e42c9785":[7,0,134,0]
 };
