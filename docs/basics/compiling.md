@@ -35,7 +35,7 @@ Review the [n64decomp/sm64](https://github.com/n64decomp/sm64) readme for instru
 
 ## Setup
 1. Extract the toolchain in the same folder as the repo (so merge the tools folder with the one who are in zip)
-2. Open a terminal (cmd or powershell) in the repo folder and run `"tools/mingw64/bin/make"`
+2. Open a terminal (cmd or powershell) in the repo folder and run `"tools/mingw64/bin/make"` (the ouput on terminal have issue so to get error and output you can use this command `"tools/mingw64/bin/make" > file.txt 2> error.txt`)
 3. Wait for the build to finish and Enjoy!
 
 # macOS

@@ -375,7 +375,9 @@ OBJCOPYFLAGS = --pad-to=0xC00000 --gap-fill=0xFF
 
 LDFLAGS = -T undefined_syms.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/$(TARGET).map --no-check-sections
 
-ifeq ($(shell getconf LONG_BIT), 32)
+ifeq ($(OS),Windows_NT)
+  CC_CHECK += -m32
+else ifeq ($(shell getconf LONG_BIT), 32)
   # Work around memory allocation bug in QEMU
   export QEMU_GUEST_BASE := 1
 else
@@ -464,7 +466,7 @@ load: $(ROM)
 
 # Make sure build directory exists before compiling anything
 ifeq ($(OS),Windows_NT)
-DUMMY != $(foreach dir,$(ALL_DIRS),$(shell powershell New-Item $(dir) -ItemType Directory -ea 0))
+DUMMY != $(foreach dir,$(ALL_DIRS),$(shell powershell New-Item $(dir) -ItemType Directory -ea 0 > nul 2> nul))
 else # because the mkdir on windows don't work as the same then linux
 DUMMY != mkdir -p $(ALL_DIRS)
 endif
