@@ -187,7 +187,14 @@ endif
 
 ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
 
-# Make sure assets exist
+ # Make tools if out of date
+  DUMMY != make -C $(TOOLS_DIR) program
+  ifeq ($(DUMMY),FAIL)
+    $(error Failed to build tools)
+  endif
+  $(info Building ROM...)
+
+  # Make sure assets exist
   NOEXTRACT ?= 0
   ifeq ($(NOEXTRACT),0)
     DUMMY != $(PYTHON) extract_assets.py $(VERSION) >&2 || echo FAIL
@@ -195,14 +202,6 @@ ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
       $(error Failed to extract assets)
     endif
   endif
-
-  # Make tools if out of date
-  DUMMY != make -C $(TOOLS_DIR) program
-  ifeq ($(DUMMY),FAIL)
-    $(error Failed to build tools)
-  endif
-  $(info Building ROM...)
-
 endif
 
 
