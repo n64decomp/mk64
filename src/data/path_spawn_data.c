@@ -1,4 +1,4 @@
-#include "data/some_data_2.h"
+#include "data/path_spawn_data.h"
 #include "courses/all_course_data.h"
 #include "ending/ceremony_data.inc.h"
 

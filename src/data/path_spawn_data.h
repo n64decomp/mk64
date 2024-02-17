@@ -1,5 +1,5 @@
-#ifndef SOME_DATA_2_H
-#define SOME_DATA_2_H
+#ifndef PATH_SPAWN_DATA_H
+#define PATH_SPAWN_DATA_H
 
 #include "waypoints.h"
 #include "common_structs.h"
