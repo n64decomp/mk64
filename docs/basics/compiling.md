@@ -27,13 +27,13 @@ Review the [n64decomp/sm64](https://github.com/n64decomp/sm64) readme for instru
 
 # Windows
 
-***N64 decomp does not mesh well with Windows. However, this process has been refined to be as painless as possible. WSL is a great alternative if issues arise.***
+*N64 decomp does not mesh well with Windows. However, this process has been refined to be as painless as possible. WSL is a great alternative if issues arise.*
 
-## Requirements
+### Requirements
 - Clone the repo or download the zip on your computer
 - Dowload toolchain from [here](https://github.com/coco875/mk64-tools/releases/download/v0.0.5/mips-tools-chain-windows.zip)
 
-## Setup
+### Setup
 1. Extract the toolchain in the same folder as the repo (so merge the tools folder with the one who are in zip)
 2. Open a terminal (cmd or powershell) in the repo folder and run `"tools\mingw64\w64devkit.exe"` and after `make`
 3. Wait for the build to finish and Enjoy!

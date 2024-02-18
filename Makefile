@@ -164,7 +164,7 @@ TOOLS_DIR := tools
 # on tools and assets, and we use directory globs further down
 # in the makefile that we want should cover assets.)
 ifeq ($(OS),Windows_NT)
-# dumb windows
+# because when python 3 is installed on windows, it's just called python
 ifneq ($(PYTHON),)
 else ifneq ($(call find-command,python),)
   PYTHON := python
