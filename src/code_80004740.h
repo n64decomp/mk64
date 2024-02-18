@@ -194,7 +194,7 @@ void func_80004740(Mtx *dest, Mat4 src);
 void mtxf_translate_rotate2(Mat4 dest, Vec3f b, Vec3s c);
 s16  func_80004EAC(void*, s16);
 void func_80004A1C(animation_type_1*, s16*, animation_type_3_triplet, s32);
-void func_80004C30(u32*, animation_type_2*, s16);
+void func_80004C30(animation_type_1*, animation_type_2*, s16);
 s16  func_80004DFC(animation_type_1*, animation_type_2**, s16, s16);
 
 #endif

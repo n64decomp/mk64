@@ -36,6 +36,11 @@ typedef struct {
 } struct_8018DEE0_entry; // size = 0x18
 
 typedef struct {
+    /* 0x0 */ MkTexture *texture;
+    /* 0x4 */ s32 unk_4;
+} struct_8018E060_entry; // size = 0x8
+
+typedef struct {
     /* 0x0 */ MkTexture *mk64Texture;
     /* 0x4 */ s16 unk4;
     /* 0x6 */ s16 unk6;
@@ -56,6 +61,13 @@ typedef struct {
     /* 0x00 */ MkTexture *textures;
     /* 0x04 */ Gfx *displayList;
 } struct_8018E768_entry; // size = 0x08
+
+struct UnkStruct_8018E7E8 {
+    /* 0x0 */ s16 x;
+    /* 0x2 */ s16 y;
+    /* 0x4 */ s16 unk1;
+    /* 0x6 */ s16 unk2;
+}; // size = 0x8
 
 typedef struct {
     /* 0x00 */ s16 column;
@@ -196,6 +208,7 @@ void func_8009CE64(s32);
 void func_8009D77C(s32,s32,s32);
 void func_8009D958(s32, s32);
 void func_8009D978(s32, s32);
+void func_8009D998(s32);
 void func_8009DAA8(void);
 void func_8009DB8C(void);
 void func_8009DEF8(u32, u32);
@@ -214,7 +227,7 @@ void func_8009E230(void);
 void func_8009E258(void);
 void func_8009E280(void);
 void func_8009E2A8(s32);
-void func_8009E2F0(void);
+void func_8009E2F0(s32);
 void func_8009E5BC(void);
 void func_8009E5FC(s32);
 void func_8009E620(void);
@@ -381,9 +394,12 @@ typedef struct struct_8018EE10_entry_cont {
 
 #define D_8018D9E0_SIZE 0x20
 #define D_8018DEE0_SIZE 0x10
+#define D_8018E060_SIZE 0x10
 #define D_8018E0E8_SIZE 0x05
 #define D_8018E118_SIZE 0xC8
 #define D_8018E768_SIZE 0x08
+#define D_8018E7E8_SIZE 0x05
+#define D_8018E810_SIZE 0x05
 
 /* This is where I'd put my static data, if I had any */
 
@@ -402,7 +418,7 @@ extern s8 D_8018D9D8;
 extern s8 D_8018D9D9;
 extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE];
 extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
-extern s32 D_8018E060;
+extern struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
 extern struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
 extern s32 gD_8018E118TotalSize;
 extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
@@ -417,8 +433,8 @@ extern s32 D_8018E7B8[];
 extern u32 D_8018E7C8;
 extern u32 D_8018E7D0[];
 extern s32 D_8018E7E0;
-extern s16 D_8018E7F0;
-extern s16 D_8018E7F8;
+extern struct UnkStruct_8018E7E8 D_8018E7E8[D_8018E7E8_SIZE];
+extern struct UnkStruct_8018E7E8 D_8018E810[D_8018E810_SIZE];
 extern s8 gTextColor;
 extern u8 D_8018ED90;
 extern u8 D_8018ED91;

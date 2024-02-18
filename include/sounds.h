@@ -4,110 +4,119 @@
 //! @todo format like sm64 sounds.h
 // The sound cue bit fields can be split up into its basic pieces and put back together.
 
+// Sound Magic Definition:
+// First Byte (Upper Nibble): Sound Bank (not the same as audio bank!)
+// First Byte (Lower Nibble): Bitflags for audio playback?
+// Third/Second Byte: Priority
+// Third/Second Byte (Upper Nibble): More bitflags
+// Third/Second Byte (Lower Nibble): Sound Status (this is set to SOUND_STATUS_PLAYING when passed to the audio driver.)
+// Fourth Byte: Sound ID
+#define SOUND_ARG_LOAD(sound_bank, byte2, byte3, sound_id) \
+    ((sound_bank << 24) | (byte2 << 16) | (byte3 << 8) | sound_id)
 
 /* Intro */
-#define SOUND_INTRO_LOGO 0x49018008
+#define SOUND_INTRO_LOGO SOUND_ARG_LOAD(0x49, 0x01, 0x80, 0x08) //SOUND_ARG_LOAD(0x49, 0x01, 0x80, 0x08)
 // Welcome to Mario Kart. Used in intro and credits.
-#define SOUND_INTRO_WELCOME 0x49009009
-#define SOUND_INTRO_ENTER_MENU 0x4900801A
+#define SOUND_INTRO_WELCOME SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x09)
+#define SOUND_INTRO_ENTER_MENU SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1A)
 
 /* Menus */
-#define SOUND_MENU_OK_CLICKED 0x49008016
+#define SOUND_MENU_OK_CLICKED SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x16)
 
-#define SOUND_MENU_CURSOR_MOVE 0x49008000
-#define SOUND_MENU_GO_BACK 0x49008002
+#define SOUND_MENU_CURSOR_MOVE SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x00)
+#define SOUND_MENU_GO_BACK SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x02)
 // Used elsewhere, seems same as above sound.
-#define SOUND_ACTION_GO_BACK_2 0x49008005
+#define SOUND_ACTION_GO_BACK_2 SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x05)
 
-#define SOUND_ACTION_UNKNOWN_CONFIRMATION 0x49008006
+#define SOUND_ACTION_UNKNOWN_CONFIRMATION SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x06)
 
-#define SOUND_MENU_SELECT 0x49008001
+#define SOUND_MENU_SELECT SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x01)
 
 // Mario Grand Prix
-#define SOUND_MENU_GP 0x4900900A
+#define SOUND_MENU_GP SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x0A)
 // Versus
-#define SOUND_MENU_VERSUS 0x4900900C
+#define SOUND_MENU_VERSUS SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x0C)
 // Time Trials
-#define SOUND_MENU_TIME_TRIALS 0x4900900B
+#define SOUND_MENU_TIME_TRIALS SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x0B)
 // Battle
-#define SOUND_MENU_BATTLE 0x4900900D
+#define SOUND_MENU_BATTLE SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x0D)
 // Select a level (Select a CC)
-#define SOUND_MENU_SELECT_LEVEL 0x4900900E
+#define SOUND_MENU_SELECT_LEVEL SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x0E)
 // OK?
-#define SOUND_MENU_OK 0x4900900F
+#define SOUND_MENU_OK SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x0F)
 
 // Select your player
-#define SOUND_MENU_SELECT_PLAYER 0x49009012
+#define SOUND_MENU_SELECT_PLAYER SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x12)
 
 // Select map
-#define SOUND_MENU_SELECT_MAP 0x49009013
+#define SOUND_MENU_SELECT_MAP SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x13)
 
 // Plays in option if no controller pak.
-#define SOUND_MENU_FILE_NOT_FOUND 0x4900FF07
+#define SOUND_MENU_FILE_NOT_FOUND SOUND_ARG_LOAD(0x49, 0x00, 0xFF, 0x07)
 
 // Option
-#define SOUND_MENU_OPTION 0x49009010
+#define SOUND_MENU_OPTION SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x10)
 // Data
-#define SOUND_MENU_DATA 0x49009011
+#define SOUND_MENU_DATA SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x11)
 
 // On delete course record?
-#define SOUND_MENU_EXPLOSION 0x4900801D
+#define SOUND_MENU_EXPLOSION SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1D)
 
-#define SOUND_MENU_STEREO 0x49008024
-#define SOUND_MENU_HEADPHONES 0x49008025
-#define SOUND_MENU_MONO 0x49008029
+#define SOUND_MENU_STEREO SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x24)
+#define SOUND_MENU_HEADPHONES SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x25)
+#define SOUND_MENU_MONO SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x29)
 
 
 /* Staging */
 // Red and orange staging lights that Lakitu holds.
-#define SOUND_ACTION_COUNTDOWN_LIGHT 0x49008003
-#define SOUND_ACTION_GREEN_LIGHT 0x49008004
+#define SOUND_ACTION_COUNTDOWN_LIGHT SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x03)
+#define SOUND_ACTION_GREEN_LIGHT SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x04)
 // Activates when light turns green.
-#define SOUND_ACTION_REV_ENGINE 0x49008018
-#define SOUND_ACTION_REV_ENGINE_2 0x49008019
+#define SOUND_ACTION_REV_ENGINE SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x18)
+#define SOUND_ACTION_REV_ENGINE_2 SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x19)
 
 /* Racing */
 
 // Volume Mode and unknown
-#define SOUND_ACTION_PING 0x4900801C
+#define SOUND_ACTION_PING SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1C)
 
-#define SOUND_ACTION_TYRE_SQUEAL 0x100F908
+#define SOUND_ACTION_TYRE_SQUEAL SOUND_ARG_LOAD(0x01, 0x00, 0xF9, 0x08)
 
 // Falling rock and bomb sound.
-#define SOUND_ACTION_EXPLOSION 0x19009005
+#define SOUND_ACTION_EXPLOSION SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x05)
 
-#define SOUND_ACTION_EXPLOSION_2 0x1900F00C
+#define SOUND_ACTION_EXPLOSION_2 SOUND_ARG_LOAD(0x19, 0x00, 0xF0, 0x0C)
 
 /* Items */
 // There's likely more of these but they are in func arguments.
 // Did not rename in-case unrelated.
-#define SOUND_ITEM_STAR 0x31029008
-#define SOUND_ITEM_THUNDERBOLT 0x5101C00C
+#define SOUND_ITEM_STAR SOUND_ARG_LOAD(0x31, 0x02, 0x90, 0x08)
+#define SOUND_ITEM_THUNDERBOLT SOUND_ARG_LOAD(0x51, 0x01, 0xC0, 0x0C)
 
 
 /* Score Screen */
 // Coin pickup sound (perfect fourth; B to E)
-#define SOUND_ACTION_COUNT_SCORE 0x49008017
-#define SOUND_ACTION_NEXT_COURSE 0x49008015
+#define SOUND_ACTION_COUNT_SCORE SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x17)
+#define SOUND_ACTION_NEXT_COURSE SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x15)
 // Same sound as ENTER_MENU
-#define SOUND_ACTION_CONTINUE_UNKNOWN 0x4900801B
+#define SOUND_ACTION_CONTINUE_UNKNOWN SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1B)
 
 
 /* Ceremony */
 // Congratulation
-#define SOUND_CEREMONY_CONGRATULATION 0x49009014
-#define SOUND_CEREMONY_BALLOON_POP 0x4900801E
-#define SOUND_CEREMONY_FISH 0x4900801F
-#define SOUND_CEREMONY_FISH_2 0x49008020
-#define SOUND_CEREMONY_SHOOT_TROPHY 0x49008021
-#define SOUND_CEREMONY_PODIUM 0x49008022
+#define SOUND_CEREMONY_CONGRATULATION SOUND_ARG_LOAD(0x49, 0x00, 0x90, 0x14)
+#define SOUND_CEREMONY_BALLOON_POP SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1E)
+#define SOUND_CEREMONY_FISH SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x1F)
+#define SOUND_CEREMONY_FISH_2 SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x20)
+#define SOUND_CEREMONY_SHOOT_TROPHY SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x21)
+#define SOUND_CEREMONY_PODIUM SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x22)
 
 // The sound of the trophy. Plays in the background
-#define SOUND_CEREMONY_TROPHY 0x49008023
+#define SOUND_CEREMONY_TROPHY SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x23)
 
 /* Credits */
 // Hey, you're very good. See you next time!
-#define SOUND_CREDITS_FAREWELL 0x49008026
+#define SOUND_CREDITS_FAREWELL SOUND_ARG_LOAD(0x49, 0x00, 0x80, 0x26)
 
 
 

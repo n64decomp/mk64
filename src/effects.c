@@ -1838,7 +1838,7 @@ void func_80090868(Player* player) {
     }
 }
 
-void func_80090970(Player *player, s8 arg1, s8 arg2) {
+void func_80090970(Player *player, s8 playerId, s8 arg2) {
     s32 stackPadding0;
     s32 stackPadding1;
     Vec3f sp44;
@@ -1852,7 +1852,7 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
     player->unk_07C = 0;
     player->unk_0C0 = 0;
     player->unk_08C = 0.0f;
-    clean_effect(player, arg1);
+    clean_effect(player, playerId);
     switch (player->unk_222) {
     case 0:
         if ((player->unk_0CA & 1) == 1) {
@@ -1862,9 +1862,9 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
                     player->unk_0C8 = 0x003C;
                 }
             } else {
-                move_f32_towards(&player->pos[1], D_801652A0[arg1] + 100.0f, 0.012f);
+                move_f32_towards(&player->pos[1], D_801652A0[playerId] + 100.0f, 0.012f);
                 move_s16_towards(&player->unk_0CC[arg2], 0, 0.2f);
-                if ((D_801652A0[arg1] + 40.0f) <= player->pos[1]) {
+                if ((D_801652A0[playerId] + 40.0f) <= player->pos[1]) {
                     player->unk_222 = 1;
                     player->unk_0CA |= 4;
                     player->unk_0C6 = 0x00FF;
@@ -1880,15 +1880,15 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
             }
         }
         if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
-            func_8008FB30(player, arg1);
+            func_8008FB30(player, playerId);
         }
         break;
     case 1:
         if (((player->type & PLAYER_HUMAN) == 0x4000) && ((player->type & PLAYER_CPU) == 0)) {
-            func_8009E088(arg1, 0xA);
+            func_8009E088(playerId, 0xA);
         }
         if ((player->unk_0CA & 1) == 1) {
-            move_f32_towards(&player->pos[1], D_801652A0[arg1] + 40.0f, 0.02f);
+            move_f32_towards(&player->pos[1], D_801652A0[playerId] + 40.0f, 0.02f);
             player->unk_0C6 -= 8;
             if (player->unk_0C6 < 9) {
                 player->unk_0C6 = 0;
@@ -1906,7 +1906,7 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
         player->unk_0CA &= ~0x2000;
         break;
     case 2:
-        func_80090178(player, arg1, sp44, sp38);
+        func_80090178(player, playerId, sp44, sp38);
         // Fakematch found by Verti, who knows what's going on here
         player->rotation[1] = (u16) -get_angle_between_points(sp44, sp38) & 0xFFFF;
         player->pos[0] = sp44[0];
@@ -1915,16 +1915,16 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
         player->unk_222 = 3;
         break;
     case 3:
-        D_80165330[arg1] = 0;
+        D_80165330[playerId] = 0;
         if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_CPU) == 0)) {
-            func_8009E020(arg1, 0x14);
+            func_8009E020(playerId, 0x14);
         }
-        func_80090178(player, arg1, sp44, sp38);
+        func_80090178(player, playerId, sp44, sp38);
         player->pos[0] = sp44[0];
         player->pos[1] = sp44[1] + 40.0f;
         player->pos[2] = sp44[2];
-        player->pos[2] = player->pos[2] + coss((arg1 * 0x1C70) - player->rotation[1]) * -5.0f;
-        player->pos[0] = player->pos[0] + sins((arg1 * 0x1C70) - player->rotation[1]) * -5.0f;
+        player->pos[2] = player->pos[2] + coss((playerId * 0x1C70) - player->rotation[1]) * -5.0f;
+        player->pos[0] = player->pos[0] + sins((playerId * 0x1C70) - player->rotation[1]) * -5.0f;
         player->unk_0C6 += 8;
         if (player->unk_0C6 >= 0xF0) {
             player->unk_0C6 = 0x00FF;
@@ -1950,17 +1950,17 @@ void func_80090970(Player *player, s8 arg1, s8 arg2) {
             player->unk_0CA &= ~0x1000;
             if (player->unk_0C8 >= 0x5B) {
                 if (player->type & PLAYER_HUMAN) {
-                    func_800C9018(arg1, 0x0100FA28);
+                    func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
                 }
                 if (gModeSelection == BATTLE) {
-                    func_8006B8B4(player, arg1);
+                    func_8006B8B4(player, playerId);
                 }
                 player->unk_0CA &= ~0x0002;
                 player->unk_0DE &= ~0x0004;
                 if ((player->unk_0CA & 0x80) != 0x80) {
                     player->unk_0CA &= ~0x0008;
                     if ((player->topSpeed * 0.9) <= player->currentSpeed) {
-                        func_8008F104(player, arg1);
+                        func_8008F104(player, playerId);
                     }
                 }
             }

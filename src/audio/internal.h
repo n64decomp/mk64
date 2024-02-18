@@ -157,9 +157,9 @@ struct Instrument {
 }; // size = 0x20
 
 struct Drum {
-    u8 releaseRate;
-    u8 pan;
-    u8 loaded;
+    /*0x00*/ u8 releaseRate;
+    /*0x01*/ u8 pan;
+    /*0x02*/ u8 loaded;
     struct AudioBankSound sound;
     struct AdsrEnvelope *envelope;
 };
@@ -602,11 +602,11 @@ struct EuAudioCmd {
     union {
         struct {
             u8 op;
-            u8 arg1;
+            u8 bankId;
             u8 arg2;
             u8 arg3;
         } s;
-        s32 first;
+        u32 first;
     } u;
     union {
         s32 as_s32;
