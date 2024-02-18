@@ -137,11 +137,6 @@ def main():
             print(fname + " has the wrong hash! Found " + sha1 + ", expected " + expected_sha1)
             sys.exit(1)
 
-    # Make sure tools exist
-    # subprocess.check_call(
-    #     ["make", "-s", "-C", "tools/", "mio0", "n64graphics", "tkmk00"]
-    # )
-
     # Go through the assets in roughly alphabetical order (but assets in the same
     # compressed block still go together).
     keys = sorted(list(todo.keys()), key=lambda k: todo[k][0][0])

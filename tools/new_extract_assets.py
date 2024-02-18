@@ -210,8 +210,6 @@ def export_image(baserom, asset, asset_list):
         "-h", str(asset["height"]),
     ]
 
-    palette_file = None
-
     if asset["type"] in ("ci4", "ci8"):
         # This is hightly specific to MK64:
         # Some TLUT images have a "stitched palette". This means that they're palette is actually

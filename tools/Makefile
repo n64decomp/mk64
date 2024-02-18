@@ -30,8 +30,6 @@ n64cksum_CFLAGS := -DN64CKSUM_STANDALONE
 
 extract_data_for_mio_SOURCES := extract_data_for_mio.c
 
-export PATH := mingw64/bin:$(PATH)
-
 # Build tools and recomp
 all: program subsystem
 

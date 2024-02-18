@@ -29,8 +29,6 @@ $(eval $(call validate-option,COMPILER,ido gcc))
 # Run make clean first. Add '#define CRASH_SCREEN_ENHANCEMENT' to the top of main.c
 DEBUG ?= 0
 
-export PATH := tools/mingw64/bin:$(PATH)
-
 # VERSION - selects the version of the game to build
 #   us - builds the 1997 North American version
 #   eu - builds the 1997 1.1 PAL version
@@ -227,11 +225,7 @@ ASM_DIRS       := asm asm/os asm/unused $(DATA_DIR) $(DATA_DIR)/sound_data $(DAT
 
 
 # Directories containing course source and data files
-ifeq ($(OS),Windows_NT)
-COURSE_DIRS := $(subst ./,,$(subst \,/,$(shell powershell.exe "Get-ChildItem -Directory courses | Resolve-Path -Relative")))
-else
 COURSE_DIRS := $(shell find courses -mindepth 1 -type d)
-endif
 TEXTURES_DIR = textures
 TEXTURE_DIRS := textures/common
 
@@ -464,11 +458,7 @@ load: $(ROM)
 	$(LOADER) $(LOADER_FLAGS) $<
 
 # Make sure build directory exists before compiling anything
-ifeq ($(OS),Windows_NT)
-DUMMY != $(foreach dir,$(ALL_DIRS),$(shell powershell New-Item $(dir) -ItemType Directory -ea 0 > nul 2> nul))
-else # because the mkdir on windows don't work as the same then linux
 DUMMY != mkdir -p $(ALL_DIRS)
-endif
 
 #==============================================================================#
 # Texture Generation                                                           #
@@ -481,11 +471,7 @@ $(BUILD_DIR)/%: %.png
 $(BUILD_DIR)/textures/%.mio0: $(BUILD_DIR)/textures/%
 	$(MIO0TOOL) -c $< $@
 
-ifeq ($(OS),Windows_NT)
-ASSET_INCLUDES := $(shell powershell.exe "Get-ChildItem -File -Recurse assets/include -Include *.mk | Resolve-Path -Relative")
-else
 ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name "*.mk")
-endif
 
 $(foreach inc,$(ASSET_INCLUDES),$(eval include $(inc)))
 

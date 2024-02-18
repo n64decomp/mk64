@@ -31,11 +31,11 @@ Review the [n64decomp/sm64](https://github.com/n64decomp/sm64) readme for instru
 
 ## Requirements
 - Clone the repo or download the zip on your computer
-- Dowload toolchain from [here](https://github.com/coco875/mk64-tools/releases/download/v0.0.4/mips-tools-chain-windows.zip)
+- Dowload toolchain from [here](https://github.com/coco875/mk64-tools/releases/download/v0.0.5/mips-tools-chain-windows.zip)
 
 ## Setup
 1. Extract the toolchain in the same folder as the repo (so merge the tools folder with the one who are in zip)
-2. Open a terminal (cmd or powershell) in the repo folder and run `"tools/mingw64/bin/make"` (the ouput on terminal have issue so to get error and output you can use this command `"tools/mingw64/bin/make" > file.txt 2> error.txt`)
+2. Open a terminal (cmd or powershell) in the repo folder and run `"tools\mingw64\w64devkit.exe"` and after `make`
 3. Wait for the build to finish and Enjoy!
 
 # macOS
