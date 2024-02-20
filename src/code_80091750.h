@@ -186,7 +186,7 @@ void func_8009AB7C(s32);
 void func_8009AD78(s32, s32);
 void func_8009B0A4(s32, u32);
 void func_8009B538(s32, s32, s32, s32, s32);
-s32  func_8009B8C4(u64*);
+u16 *func_8009B8C4(u64*);
 void func_8009B938(void);
 void func_8009B954(MkTexture*);
 void func_8009B998(void);

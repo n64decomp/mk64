@@ -5454,7 +5454,7 @@ void func_8009B538(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     }
 }
 
-s32 func_8009B8C4(u64 *arg0) {
+u16 *func_8009B8C4(u64 *arg0) {
     UNUSED s32 pad[2];
     s32 sp4;
     s32 found;
@@ -5472,7 +5472,7 @@ s32 func_8009B8C4(u64 *arg0) {
     if (found != 0) {
         return &D_8018D9B0[sp4];
     }
-    return 0;
+    return NULL;
 }
 
 // D_8018D9C0 is a little weird. In code_800AF9B0 its treated as a
@@ -5904,10 +5904,6 @@ void func_8009CE1C(void) {
     }
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/NSiHw
-// Register allocation difference concerning the use of `gModeSelection`
-// See the `REGALLOC DIFF HERE` comment
 void func_8009CE64(s32 arg0) {
     s32 thing;
     s32 var_a1;
@@ -6183,9 +6179,11 @@ func_8009CE64_label1:
             }
             func_8000F124();
             if (gScreenModeSelection == 3) {
-                // REGALLOC DIFF HERE
-                if ((gModeSelection == 0) || (1 == gModeSelection)) {
+                switch (gModeSelection) {
+                case 0:
+                case 1:
                     gModeSelection = 2;
+                    break;
                 }
             }
             switch (gCurrentCourseId) {
@@ -6231,9 +6229,6 @@ func_8009CE64_label1:
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009CE64.s")
-#endif
 
 void func_8009D77C(s32 arg0, s32 arg1, s32 arg2) {
     s16 var_ra;
@@ -6596,8 +6591,7 @@ void func_8009E620(void) {
 
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/1BHpa
-// Mostly register allocation stuff, but near `case 0xD4` there's a missing `move v0,zero` instruction
-// I have no idea what's up with that.
+// Stack differences, can't figure out how to fix them
 void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
     struct_8018D9E0_entry *var_ra;
     s32 stackPadding0;
@@ -6613,7 +6607,10 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
 
     var_v0 = 0;
     var_ra = D_8018D9E0;
-    while (1) {
+    // ????????
+    // Credit to Vetri for the idea to mess around with this loop
+    // to fix the issue near the 0xD4 case
+    while (1 & 0xFFFFFFFFFFFFFFFF) {
         var_v0++;
         if (var_ra->type == 0) break;
 
@@ -6631,7 +6628,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
     var_ra->visible = one;
     var_ra->unk1C = 0;
     var_ra->unk20 = 0;
-    switch (type) {                                 /* irregular */
+    switch (type) {
     case 0xFA:
         s8018ED94 = 0;
         D_800E8530 = 0.0f;
@@ -6827,7 +6824,6 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         if (controller_pak_1_status() == 0) {
             func_800B6708();
         } else {
-            // ? D_8018EE10[1].ghostDataSaved =  D_8018EE10[0].ghostDataSaved = 0;
             D_8018EE10[0].ghostDataSaved = 0;
             D_8018EE10[1].ghostDataSaved = 0;
         }
@@ -6843,7 +6839,6 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         if (controller_pak_1_status() == 0) {
             func_800B6708();
         } else {
-            // ? D_8018EE10[1].ghostDataSaved =  D_8018EE10[0].ghostDataSaved = 0;
             D_8018EE10[0].ghostDataSaved = 0;
             D_8018EE10[1].ghostDataSaved = 0;
         }
@@ -6904,7 +6899,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         func_80099184(segmented_to_virtual_dupe(D_800E82B4[type - 0xB1]));
         break;
     case 0xBB:
-        var_ra->unk1C = func_800B5020(playerHUD[PLAYER_ONE].someTimer, gCharacterSelections[0]);
+        var_ra->unk1C = func_800B5020(playerHUD[0].someTimer, gCharacterSelections[0]);
         var_ra->unk20 = func_800B5218();
         if (D_80162DD4 != 1) {
             if (func_800051C4() >= 0x3C01) {
@@ -6912,7 +6907,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             }
         }
         if ((var_ra->unk1C == 0) || (var_ra->unk20 != 0)) {
-            func_800B559C(gCupCourseSelection + (gCupSelection * 4));
+            func_800B559C((gCupSelection * 4) + gCupCourseSelection);
         }
         break;
     case 0xE6:
