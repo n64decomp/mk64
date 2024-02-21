@@ -1,0 +1,69 @@
+{
+    "courses/dks_jungle_parkway/course_data.inc.c": [
+        "d_course_dks_jungle_parkway_dl_E730",
+        "d_course_dks_jungle_parkway_dl_E058",
+        "d_course_dks_jungle_parkway_dl_FC28",
+        "d_course_dks_jungle_parkway_dl_kiwano_fruit",
+        "d_course_dks_jungle_parkway_dl_palm_tree",
+        "d_course_dks_jungle_parkway_dl_13878",
+        "d_course_dks_jungle_parkway_dl_tree3",
+        "d_course_dks_jungle_parkway_dl_tree2",
+        "d_course_dks_jungle_parkway_dl_tree1"
+    ],
+    "courses/banshee_boardwalk/course_data.inc.c": [
+        "d_course_banshee_boardwalk_dl_B278",
+        "d_course_banshee_boardwalk_dl_trash_bin",
+        "d_course_banshee_boardwalk_dl_cheep_cheep"
+    ],
+    "courses/bowsers_castle/course_data.inc.c": [
+        "d_course_bowsers_castle_dl_thwomp",
+        "d_course_bowsers_castle_dl_bush"
+    ],
+    "courses/choco_mountain/course_data.inc.c":[
+        "d_course_choco_mountain_dl_falling_rock"
+    ],
+    "courses/frappe_snowland/course_data.inc.c":[
+        "d_course_frappe_snowland_dl_tree"
+    ],
+    "courses/kalimari_desert/course_data.inc.c":[
+        "d_course_kalimari_desert_dl_cactus1",
+        "d_course_kalimari_desert_dl_cactus2",
+        "d_course_kalimari_desert_dl_cactus3",
+        "d_course_kalimari_desert_dl_crossing_right_active",
+        "d_course_kalimari_desert_dl_crossing_left_active",
+        "d_course_kalimari_desert_dl_crossing_both_inactive",
+        "d_course_kalimari_desert_dl_1B978",
+        "d_course_kalimari_desert_dl_1C0F0",
+        "d_course_kalimari_desert_dl_1D160",
+        "d_course_kalimari_desert_dl_1D670",
+        "d_course_kalimari_desert_dl_1E480",
+        "d_course_kalimari_desert_dl_1E910",
+        "d_course_kalimari_desert_dl_1F228",
+        "d_course_kalimari_desert_dl_1F708",
+        "d_course_kalimari_desert_dl_1FAF8",
+        "d_course_kalimari_desert_dl_20A20",
+        "d_course_kalimari_desert_dl_21220",
+        "d_course_kalimari_desert_dl_21550",
+        "d_course_kalimari_desert_dl_21A80",
+        "d_course_kalimari_desert_dl_21C90",
+        "d_course_kalimari_desert_dl_22D28",
+        "d_course_kalimari_desert_dl_22D70",
+        "d_course_kalimari_desert_dl_22DB8"
+    ],
+    "courses/koopa_troopa_beach/course_data.inc.c":[
+        "d_course_koopa_troopa_beach_dl_16630",
+        "d_course_koopa_troopa_beach_dl_tree_top1",
+        "d_course_koopa_troopa_beach_dl_tree_trunk1",
+        "d_course_koopa_troopa_beach_dl_tree_top2",
+        "d_course_koopa_troopa_beach_dl_tree_trunk2",
+        "d_course_koopa_troopa_beach_dl_tree_top3",
+        "d_course_koopa_troopa_beach_dl_tree_trunk3"
+    ],
+    "courses/luigi_raceway/course_data.inc.c": [
+        "d_course_luigi_raceway_dl_F650",
+        "d_course_luigi_raceway_dl_F960",
+        "d_course_luigi_raceway_dl_FA20",
+        "d_course_luigi_raceway_dl_FBE0",
+        "d_course_luigi_raceway_dl_FC70"
+    ]
+}
