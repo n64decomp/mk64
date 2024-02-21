@@ -62,7 +62,6 @@ docker run --rm -v .:/mk64 mk64
 
 For example:
 ```bash
-docker run --rm -v .:/mk64 mk64 make -C tools
 docker run --rm -v .:/mk64 mk64 make
 ```
 
@@ -72,7 +71,6 @@ Place a US version of Mario Kart 64 called `baserom.us.z64` into the project fol
 
 Run the following commands after pulling:
 ```bash
-make -C tools
 make -j
 ```
 

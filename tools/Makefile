@@ -31,9 +31,7 @@ n64cksum_CFLAGS := -DN64CKSUM_STANDALONE
 extract_data_for_mio_SOURCES := extract_data_for_mio.c
 
 # Build tools and recomp
-all: program
-
-program: $(PROGRAMS)
+all: $(PROGRAMS)
 
 # Remove generated files
 clean:

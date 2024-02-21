@@ -181,7 +181,7 @@ endif
 ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
 
  # Make tools if out of date
-  DUMMY != make -C $(TOOLS_DIR) program
+  DUMMY != make -C $(TOOLS_DIR)
   ifeq ($(DUMMY),FAIL)
     $(error Failed to build tools)
   endif
