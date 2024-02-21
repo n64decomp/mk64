@@ -284,11 +284,6 @@ else
 	$(error Unable to detect a suitable MIPS toolchain installed)
 endif
 
-DUMMY != $(CROSS)ld --version >&2 || echo FAIL
-ifeq ($(DUMMY),FAIL)
-	$(error Unable to detect a suitable MIPS toolchain installed)
-endif
-
 AS      := $(CROSS)as
 ifeq ($(COMPILER),gcc)
   CC      := $(CROSS)gcc
