@@ -158,7 +158,7 @@ TOOLS_DIR := tools
 # (This is a bit hacky, but a lot of rules implicitly depend
 # on tools and assets, and we use directory globs further down
 # in the makefile that we want should cover assets.)
-ifeq ($(OS),Windows_NT)
+ifeq ($(DETECTED_OS),windows)
 # because when python 3 is installed on windows, it's just called python
 ifneq ($(PYTHON),)
 else ifneq ($(call find-command,python),)
@@ -250,9 +250,6 @@ O_FILES := \
 # Automatic dependency files
 DEP_FILES := $(O_FILES:.o=.d) $(BUILD_DIR)/$(LD_SCRIPT).d
 
-# detect grep
-GREP ?= grep
-
 # Files with GLOBAL_ASM blocks
 GLOBAL_ASM_C_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/*.c)
 GLOBAL_ASM_OS_FILES != grep -rl 'GLOBAL_ASM(' $(wildcard src/os/*.c)
@@ -324,12 +321,7 @@ endif
 
 # Check code syntax with host compiler
 # detect gcc
-ifneq ($(CC_CHECK),)
-else ifneq ($(call find-command,grep),)
-	CC_CHECK := gcc
-else
-	$(error Unable to find gcc)
-endif
+CC_CHECK ?= gcc
 CC_CHECK_CFLAGS := -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) -std=gnu90 -Wall -Wempty-body -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(DEF_INC_CFLAGS)
 
 # C compiler options
@@ -348,15 +340,8 @@ OBJCOPYFLAGS = --pad-to=0xC00000 --gap-fill=0xFF
 
 LDFLAGS = -T undefined_syms.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/$(TARGET).map --no-check-sections
 
-ifeq ($(OS),Windows_NT)
-  CC_CHECK += -m32
-else ifeq ($(shell getconf LONG_BIT), 32)
-  # Work around memory allocation bug in QEMU
-  export QEMU_GUEST_BASE := 1
-else
-  # Ensure that gcc treats the code as 32-bit
-  CC_CHECK += -m32
-endif
+# Ensure that gcc treats the code as 32-bit
+CC_CHECK += -m32
 
 # Prevent a crash with -sopt
 export LANG := C
