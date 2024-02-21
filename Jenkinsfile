@@ -30,7 +30,6 @@ pipeline {
     }
     stage('Build U Source') {
       steps {
-        sh 'chmod 777 tools/ido-recomp/linux/*'
         sh 'make -j4 VERSION=us'
       }
     }
