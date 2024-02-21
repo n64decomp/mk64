@@ -72,23 +72,7 @@ else ifeq ($(GRUCODE),f3dex2) # Fast3DEX2
   DEFINES += F3DEX_GBI_2=1 F3DEX_GBI_SHARED=1
 endif
 
-
-
-# USE_QEMU_IRIX - when ido is selected, select which way to emulate IRIX programs
-#   1 - use qemu-irix
-#   0 - statically recompile the IRIX programs
-USE_QEMU_IRIX ?= 0
-$(eval $(call validate-option,USE_QEMU_IRIX,0 1))
-
 ifeq      ($(COMPILER),ido)
-  ifeq ($(USE_QEMU_IRIX),1)
-  # Verify that qemu-irix exists
-  QEMU_IRIX := $(call find-command,qemu-irix)
-  ifeq (,$(QEMU_IRIX))
-    $(error Using the IDO compiler requires qemu-irix. Please install qemu-irix package or set the QEMU_IRIX environment variable to the full qemu-irix binary path)
-    endif
-  endif
-
   MIPSISET := -mips2
 else ifeq ($(COMPILER),gcc)
   NON_MATCHING := 1
@@ -133,7 +117,18 @@ endif
 # Whether to colorize build messages
 COLOR ?= 1
 
-
+ifeq ($(OS),Windows_NT)
+    DETECTED_OS=windows
+	# define TMPDIR
+	export TMPDIR=$(TEMP)
+else
+	UNAME_S := $(shell uname -s)
+	ifeq ($(UNAME_S),Linux)
+		DETECTED_OS=linux
+	else ifeq ($(UNAME_S),Darwin)
+		DETECTED_OS=macos
+	endif
+endif
 
 # display selected options unless 'make clean' or 'make distclean' is run
 ifeq ($(filter clean distclean,$(MAKECMDGOALS)),)
@@ -277,11 +272,6 @@ GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_
 # detect iconv
 ICONV ?= iconv
 
-# define TMPDIR
-ifeq ($(OS),Windows_NT)
-	export TMPDIR=$(TEMP)
-endif
-
 # detect prefix for MIPS toolchain
 ifneq ($(CROSS),)
 else ifneq      ($(call find-command,mips-linux-gnu-ld),)
@@ -303,13 +293,8 @@ AS      := $(CROSS)as
 ifeq ($(COMPILER),gcc)
   CC      := $(CROSS)gcc
 else
-  ifeq ($(USE_QEMU_IRIX),1)
-    IRIX_ROOT := $(TOOLS_DIR)/ido5.3_compiler
-    CC      := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/bin/cc
-  else
-    IDO_ROOT := $(TOOLS_DIR)/ido-recomp/build/5.3/out
-    CC      := "$(IDO_ROOT)/cc"
-  endif
+  IDO_ROOT := $(TOOLS_DIR)/ido-recomp/$(DETECTED_OS)
+  CC      := $(IDO_ROOT)/cc
 endif
 LD      := $(CROSS)ld
 AR      := $(CROSS)ar
@@ -387,12 +372,12 @@ export LANG := C
 # Miscellaneous Tools                                                          #
 #==============================================================================#
 
-MIO0TOOL              := "$(TOOLS_DIR)/mio0"
-N64CKSUM              := "$(TOOLS_DIR)/n64cksum"
-N64GRAPHICS           := "$(TOOLS_DIR)/n64graphics"
-DLPACKER              := "$(TOOLS_DIR)/displaylist_packer"
+MIO0TOOL              := $(TOOLS_DIR)/mio0
+N64CKSUM              := $(TOOLS_DIR)/n64cksum
+N64GRAPHICS           := $(TOOLS_DIR)/n64graphics
+DLPACKER              := $(TOOLS_DIR)/displaylist_packer
 BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
-EXTRACT_DATA_FOR_MIO  := "$(TOOLS_DIR)/extract_data_for_mio"
+EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
 ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
 LINKONLY_GENERATOR    := $(PYTHON) $(TOOLS_DIR)/linkonly_generator.py
 EMULATOR               = mupen64plus
@@ -437,7 +422,7 @@ endif
 
 doc:
 	$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
-	doxygen 
+	doxygen
 	@$(PRINT) "$(GREEN)Documentation generated in docs/html$(NO_COL)\n"
 	@$(PRINT) "$(GREEN)Results can be viewed by opening docs/html/index.html in a web browser$(NO_COL)\n"
 
@@ -533,7 +518,7 @@ $(BUILD_DIR)/src/data/common_textures.inc.o: src/data/common_textures.inc.c $(TE
 %/course_textures.linkonly.c %/course_textures.linkonly.h: %/course_offsets.inc.c
 	$(V)$(LINKONLY_GENERATOR) $(lastword $(subst /, ,$*))
 
-# Its unclear why this is necessary. Everything I undesrtand about `make` says that just 
+# Its unclear why this is necessary. Everything I undesrtand about `make` says that just
 # `$(BUILD_DIR)/%/course_displaylists.inc.o: %/course_textures.linkonly.h`
 # Should work identical to this. But in practice it doesn't :(
 COURSE_DISPLAYLIST_OFILES := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_displaylists.inc.o)
@@ -548,7 +533,7 @@ $(COURSE_DISPLAYLIST_OFILES): $(BUILD_DIR)/%/course_displaylists.inc.o: %/course
 %/course_displaylists.inc.bin: %/course_displaylists.inc.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-# Displaylists are packed using a custom format 
+# Displaylists are packed using a custom format
 %/course_displaylists_packed.inc.bin: %/course_displaylists.inc.bin
 	@$(PRINT) "$(GREEN)Compressing Course Displaylists:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(DLPACKER) $< $@
@@ -741,7 +726,7 @@ $(ROM): $(ELF)
 $(BUILD_DIR)/$(TARGET).hex: $(TARGET).z64
 	xxd $< > $@
 
-$(BUILD_DIR)/$(TARGET).objdump: $(ELF) 
+$(BUILD_DIR)/$(TARGET).objdump: $(ELF)
 	$(OBJDUMP) -D $< > $@
 
 

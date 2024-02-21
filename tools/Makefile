@@ -31,20 +31,13 @@ n64cksum_CFLAGS := -DN64CKSUM_STANDALONE
 extract_data_for_mio_SOURCES := extract_data_for_mio.c
 
 # Build tools and recomp
-all: program subsystem
-
-# Build recomp
-subsystem:
-	[ -z "`find "ido-recomp" -maxdepth 0 -empty`" ] || rm -r ido-recomp && git clone https://github.com/decompals/ido-static-recomp.git ido-recomp
-	$(MAKE) -C ido-recomp RELEASE=1 setup
-	$(MAKE) -C ido-recomp RELEASE=1 VERSION=5.3
+all: program
 
 program: $(PROGRAMS)
 
 # Remove generated files
 clean:
 	$(RM) $(PROGRAMS)
-	$(MAKE) -C ido-recomp clean
 
 
 
