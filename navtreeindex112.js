@@ -1,5 +1,7 @@
 var NAVTREEINDEX112 =
 {
+"structPortamento.html#a2054af42de80730e8c81b0a12bfa87cd":[7,0,134,2],
+"structPortamento.html#a294bb832235d86c8e01736a1e42c9785":[7,0,134,0],
 "structPortamento.html#abeaa0c52b6f04de60293bf7d1cc0f72c":[7,0,134,3],
 "structPortamento.html#ac7660f33c488db8ffb6dc7a68b7ec60d":[7,0,134,1],
 "structProfilerFrameData.html":[7,0,136],
@@ -247,7 +249,5 @@ var NAVTREEINDEX112 =
 "structSoundAllocPool.html#a9b2b1c76eab64b571efb98902d779b6b":[7,0,155,3],
 "structSoundAllocPool.html#ad48e26eee6c2166e6a5c61cb2c0f2357":[7,0,155,0],
 "structSoundCharacteristics.html":[7,0,156],
-"structSoundCharacteristics.html#a06cc8442d6aee033c23aa8b3d207bad9":[7,0,156,4],
-"structSoundCharacteristics.html#a1af2be27492a201328f26d06880769ec":[7,0,156,1],
-"structSoundCharacteristics.html#a23cdfbbc3abdc36d63de48c9a0a5e8d4":[7,0,156,5]
+"structSoundCharacteristics.html#a06cc8442d6aee033c23aa8b3d207bad9":[7,0,156,4]
 };
