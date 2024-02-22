@@ -48,7 +48,7 @@
 <script type="application/ecmascript">
 var viewWidth = 1289;
 var viewHeight = 1032;
-var sectionId = 'dynsection-19';
+var sectionId = 'dynsection-21';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -652,7 +652,7 @@ var sectionId = 'dynsection-19';
 <!-- Node31 -->
 <g id="Node000031" class="node">
 <title>Node31</title>
-<g id="a_Node000031"><a xlink:href="code__8008C1D0_8c.html#ab044d6f7bf1cacf740cf0a27ea0902b5" target="_top" xlink:title=" ">
+<g id="a_Node000031"><a xlink:href="effects_8c.html#ab044d6f7bf1cacf740cf0a27ea0902b5" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="804,-908.98 703,-908.98 703,-889.98 804,-889.98 804,-908.98"/>
 <text text-anchor="middle" x="753.5" y="-896.98" font-family="Helvetica,sans-Serif" font-size="10.00">apply_star_effect</text>
 </a>
@@ -670,7 +670,7 @@ var sectionId = 'dynsection-19';
 <!-- Node49 -->
 <g id="Node000049" class="node">
 <title>Node49</title>
-<g id="a_Node000049"><a xlink:href="code__8008C1D0_8c.html#ae1bacd987d7f12fc5960f838a7dbe137" target="_top" xlink:title=" ">
+<g id="a_Node000049"><a xlink:href="effects_8c.html#ae1bacd987d7f12fc5960f838a7dbe137" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="799.5,-871.98 707.5,-871.98 707.5,-852.98 799.5,-852.98 799.5,-871.98"/>
 <text text-anchor="middle" x="753.5" y="-859.98" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008F86C</text>
 </a>
@@ -841,7 +841,7 @@ var sectionId = 'dynsection-19';
 <!-- Node79 -->
 <g id="Node000079" class="node">
 <title>Node79</title>
-<g id="a_Node000079"><a xlink:href="code__8008C1D0_8c.html#a1ae16ef10ed322ad47b3cff5a8efc83e" target="_top" xlink:title=" ">
+<g id="a_Node000079"><a xlink:href="effects_8c.html#a1ae16ef10ed322ad47b3cff5a8efc83e" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="821,-571.98 686,-571.98 686,-552.98 821,-552.98 821,-571.98"/>
 <text text-anchor="middle" x="753.5" y="-559.98" font-family="Helvetica,sans-Serif" font-size="10.00">apply_star_sound_effect</text>
 </a>

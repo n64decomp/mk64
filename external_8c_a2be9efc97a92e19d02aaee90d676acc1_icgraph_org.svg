@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="code__8008C1D0_8c.html#a525127b997f2f6a0a48d4d9ecda6cdbb" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="effects_8c.html#a525127b997f2f6a0a48d4d9ecda6cdbb" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="439,-1548 291,-1548 291,-1518 439,-1518 439,-1548"/>
 <text text-anchor="start" x="299" y="-1536" font-family="Helvetica,sans-Serif" font-size="10.00">apply_boost_ramp_asphalt</text>
 <text text-anchor="middle" x="365" y="-1525" font-family="Helvetica,sans-Serif" font-size="10.00">_sound_effect</text>
@@ -39,7 +39,7 @@
 <!-- Node28 -->
 <g id="Node000028" class="node">
 <title>Node28</title>
-<g id="a_Node000028"><a xlink:href="code__8008C1D0_8c.html#a595d8d70bde8a985884d02eba98a1b3d" target="_top" xlink:title=" ">
+<g id="a_Node000028"><a xlink:href="effects_8c.html#a595d8d70bde8a985884d02eba98a1b3d" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="434,-1500 296,-1500 296,-1470 434,-1470 434,-1500"/>
 <text text-anchor="start" x="304" y="-1488" font-family="Helvetica,sans-Serif" font-size="10.00">apply_boost_ramp_wood</text>
 <text text-anchor="middle" x="365" y="-1477" font-family="Helvetica,sans-Serif" font-size="10.00">_sound_effect</text>
@@ -58,7 +58,7 @@
 <!-- Node29 -->
 <g id="Node000029" class="node">
 <title>Node29</title>
-<g id="a_Node000029"><a xlink:href="code__8008C1D0_8c.html#ab5250b798d170f8dd9f6012eff39743c" target="_top" xlink:title=" ">
+<g id="a_Node000029"><a xlink:href="effects_8c.html#ab5250b798d170f8dd9f6012eff39743c" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="436.5,-1451.5 293.5,-1451.5 293.5,-1432.5 436.5,-1432.5 436.5,-1451.5"/>
 <text text-anchor="middle" x="365" y="-1439.5" font-family="Helvetica,sans-Serif" font-size="10.00">apply_boost_sound_effect</text>
 </a>
@@ -76,7 +76,7 @@
 <!-- Node30 -->
 <g id="Node000030" class="node">
 <title>Node30</title>
-<g id="a_Node000030"><a xlink:href="code__8008C1D0_8c.html#a4db388444870e3607555465cde8d2b69" target="_top" xlink:title=" ">
+<g id="a_Node000030"><a xlink:href="effects_8c.html#a4db388444870e3607555465cde8d2b69" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="435.5,-1756 294.5,-1756 294.5,-1726 435.5,-1726 435.5,-1756"/>
 <text text-anchor="start" x="302.5" y="-1744" font-family="Helvetica,sans-Serif" font-size="10.00">apply_hit_by_item_sound</text>
 <text text-anchor="middle" x="365" y="-1733" font-family="Helvetica,sans-Serif" font-size="10.00">_effect</text>
@@ -95,7 +95,7 @@
 <!-- Node31 -->
 <g id="Node000031" class="node">
 <title>Node31</title>
-<g id="a_Node000031"><a xlink:href="code__8008C1D0_8c.html#a5332b3e2f6c9720f7fd0eea6b7af3359" target="_top" xlink:title=" ">
+<g id="a_Node000031"><a xlink:href="effects_8c.html#a5332b3e2f6c9720f7fd0eea6b7af3359" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="425,-1708 305,-1708 305,-1678 425,-1678 425,-1708"/>
 <text text-anchor="start" x="313" y="-1696" font-family="Helvetica,sans-Serif" font-size="10.00">apply_reverse_sound</text>
 <text text-anchor="middle" x="365" y="-1685" font-family="Helvetica,sans-Serif" font-size="10.00">_effect</text>
@@ -420,7 +420,7 @@
 <!-- Node63 -->
 <g id="Node000063" class="node">
 <title>Node63</title>
-<g id="a_Node000063"><a xlink:href="code__8008C1D0_8c.html#a6fc4c8f6786be15941bfce0c8575b7cf" target="_top" xlink:title=" ">
+<g id="a_Node000063"><a xlink:href="effects_8c.html#a6fc4c8f6786be15941bfce0c8575b7cf" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="411,-1622.5 319,-1622.5 319,-1603.5 411,-1603.5 411,-1622.5"/>
 <text text-anchor="middle" x="365" y="-1610.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008C528</text>
 </a>
@@ -438,7 +438,7 @@
 <!-- Node71 -->
 <g id="Node000071" class="node">
 <title>Node71</title>
-<g id="a_Node000071"><a xlink:href="code__8008C1D0_8c.html#afeee12fd4248e8c5c1eeeba01d3a4d03" target="_top" xlink:title=" ">
+<g id="a_Node000071"><a xlink:href="effects_8c.html#afeee12fd4248e8c5c1eeeba01d3a4d03" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="411,-1585.5 319,-1585.5 319,-1566.5 411,-1566.5 411,-1585.5"/>
 <text text-anchor="middle" x="365" y="-1573.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008D570</text>
 </a>
@@ -456,7 +456,7 @@
 <!-- Node120 -->
 <g id="Node000120" class="node">
 <title>Node120</title>
-<g id="a_Node000120"><a xlink:href="code__8008C1D0_8c.html#a2005ea5cf3fa7eb61f74f99a596f9e0e" target="_top" xlink:title=" ">
+<g id="a_Node000120"><a xlink:href="effects_8c.html#a2005ea5cf3fa7eb61f74f99a596f9e0e" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="411.5,-816.5 318.5,-816.5 318.5,-797.5 411.5,-797.5 411.5,-816.5"/>
 <text text-anchor="middle" x="365" y="-804.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008DC08</text>
 </a>

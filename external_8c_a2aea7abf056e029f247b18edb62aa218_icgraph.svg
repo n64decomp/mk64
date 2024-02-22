@@ -48,7 +48,7 @@
 <script type="application/ecmascript">
 var viewWidth = 2212;
 var viewHeight = 289;
-var sectionId = 'dynsection-22';
+var sectionId = 'dynsection-24';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -102,7 +102,7 @@ var sectionId = 'dynsection-22';
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="code__8008C1D0_8c.html#a1ae16ef10ed322ad47b3cff5a8efc83e" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="effects_8c.html#a1ae16ef10ed322ad47b3cff5a8efc83e" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1947,-147 1812,-147 1812,-128 1947,-128 1947,-147"/>
 <text text-anchor="middle" x="1879.5" y="-135" font-family="Helvetica,sans-Serif" font-size="10.00">apply_star_sound_effect</text>
 </a>
@@ -678,7 +678,7 @@ var sectionId = 'dynsection-22';
 <!-- Node30 -->
 <g id="Node000030" class="node">
 <title>Node30</title>
-<g id="a_Node000030"><a xlink:href="code__8008C1D0_8c.html#ab044d6f7bf1cacf740cf0a27ea0902b5" target="_top" xlink:title=" ">
+<g id="a_Node000030"><a xlink:href="effects_8c.html#ab044d6f7bf1cacf740cf0a27ea0902b5" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1930,-44 1829,-44 1829,-25 1930,-25 1930,-44"/>
 <text text-anchor="middle" x="1879.5" y="-32" font-family="Helvetica,sans-Serif" font-size="10.00">apply_star_effect</text>
 </a>
@@ -696,7 +696,7 @@ var sectionId = 'dynsection-22';
 <!-- Node32 -->
 <g id="Node000032" class="node">
 <title>Node32</title>
-<g id="a_Node000032"><a xlink:href="code__8008C1D0_8c.html#ae1bacd987d7f12fc5960f838a7dbe137" target="_top" xlink:title=" ">
+<g id="a_Node000032"><a xlink:href="effects_8c.html#ae1bacd987d7f12fc5960f838a7dbe137" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1925.5,-81 1833.5,-81 1833.5,-62 1925.5,-62 1925.5,-81"/>
 <text text-anchor="middle" x="1879.5" y="-69" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008F86C</text>
 </a>
@@ -768,7 +768,7 @@ var sectionId = 'dynsection-22';
 <!-- Node33 -->
 <g id="Node000033" class="node">
 <title>Node33</title>
-<g id="a_Node000033"><a xlink:href="code__8008C1D0_8c.html#a71c3c746ea434e798865e3256180ee0a" target="_top" xlink:title=" ">
+<g id="a_Node000033"><a xlink:href="effects_8c.html#a71c3c746ea434e798865e3256180ee0a" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1629,-227 1538,-227 1538,-208 1629,-208 1629,-227"/>
 <text text-anchor="middle" x="1583.5" y="-215" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008F494</text>
 </a>
@@ -786,7 +786,7 @@ var sectionId = 'dynsection-22';
 <!-- Node35 -->
 <g id="Node000035" class="node">
 <title>Node35</title>
-<g id="a_Node000035"><a xlink:href="code__8008C1D0_8c.html#a17332237b5c2a4249328a35071e23bf7" target="_top" xlink:title=" ">
+<g id="a_Node000035"><a xlink:href="effects_8c.html#a17332237b5c2a4249328a35071e23bf7" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1766,-76 1675,-76 1675,-57 1766,-57 1766,-76"/>
 <text text-anchor="middle" x="1720.5" y="-64" font-family="Helvetica,sans-Serif" font-size="10.00">func_80090778</text>
 </a>
@@ -903,7 +903,7 @@ var sectionId = 'dynsection-22';
 <!-- Node44 -->
 <g id="Node000044" class="node">
 <title>Node44</title>
-<g id="a_Node000044"><a xlink:href="code__8008C1D0_8c.html#afaeabb9e08b6568f56117c24edad5945" target="_top" xlink:title=" ">
+<g id="a_Node000044"><a xlink:href="effects_8c.html#afaeabb9e08b6568f56117c24edad5945" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1629,-95 1538,-95 1538,-76 1629,-76 1629,-95"/>
 <text text-anchor="middle" x="1583.5" y="-83" font-family="Helvetica,sans-Serif" font-size="10.00">func_8008F3F4</text>
 </a>
