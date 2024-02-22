@@ -121,27 +121,27 @@ void func_8005ED48(Player*, s16, s32, s8, s8);
 
 void func_8005F90C(Player*, s16, s32, s8, s8);
 
-void func_80060504(Player*, s16, s32, s32);
+void func_80060504(Player*, s16, s32, s8, s8);
 void func_800608E0(Player*, s16, s32, s8, s8);
 void func_80060B14(Player*, s16, s32, s8, s8);
 void func_80060BCC(Player*, s16, s32, s8, s8);
-void func_80060F50(Player*, s16, s8, s8, s8);
+void func_80060F50(Player*, s16, s32, s8, s8);
 
-void func_80061094(Player*, s16, s8, s8, s8);
+void func_80061094(Player*, s16, s32, s8, s8);
 void func_80061130(Player*, s16, s32, s8, s8);
 void func_80061224(Player*, s16, s32, s8, s8);
-void func_800612F8(Player*, s32, s32, s8);
-void func_80061430(Player*, s32, s32, s8);
-void func_800615AC(Player*, s16, s32, s8);
+void func_800612F8(Player*, s32, s32, s8, s8);
+void func_80061430(Player*, s32, s32, s8, s8);
+void func_800615AC(Player*, s16, s32, s8, s8);
 void func_80061754(Player*, s16, s32, s32, s32);
 void func_8006199C(Player*, s16, s32, s8, s8);
-void func_80061A34(Player*, s16, s32, s8);
-void func_80061D4C(Player*, s16, s32, s8);
-void func_80061EF4(Player*, s16, s32, s8);
+void func_80061A34(Player*, s16, s32, s8, s8);
+void func_80061D4C(Player*, s16, s32, s8, s8);
+void func_80061EF4(Player*, s16, s32, s8, s8);
 
-void func_800621BC(Player*, s16, s32, s8);
+void func_800621BC(Player*, s16, s32, s8, s8);
 void func_80062484(Player*, UnkPlayerStruct258*, s32);
-void func_800624D8(Player*, s32, s32, s8);
+void func_800624D8(Player*, s32, s32, s8, s8);
 void func_800628C0(Player*, s8, s8, s8);
 void func_80062914(Player*, s8, s8, s8);
 void func_80062968(Player*, s8, s8, s8);
