@@ -33,7 +33,7 @@ $(LUIGI_SELECT_PNG): $(LUIGI_SELECT_EXPORT_SENTINEL) ;
 
 $(LUIGI_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/luigi_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_luigi_select
 distclean_luigi_select:

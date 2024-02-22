@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# note, this quick hack only works with three arguments.
-# if you're trying to use four arguments, you need to add another `$4` etc.
-
-python3 tools/decomp-permuter/permuter.py $1 $2 $3
-

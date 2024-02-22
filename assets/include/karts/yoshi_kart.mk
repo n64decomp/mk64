@@ -1499,7 +1499,7 @@ $(YOSHI_KART_FRAME_PNG) $(YOSHI_KART_PALETTE_PNG): $(YOSHI_EXPORT_SENTINEL) ;
 
 $(YOSHI_EXPORT_SENTINEL): $(ASSET_DIR)/karts/yoshi_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_yoshi_kart
 distclean_yoshi_kart:

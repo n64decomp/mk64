@@ -13,7 +13,7 @@ $(REFLECTION_MAP): $(STARTUP_LOGO_EXPORT_SENTINEL) ;
 
 $(STARTUP_LOGO_EXPORT_SENTINEL): $(ASSET_DIR)/startup_logo.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_startup_logo
 distclean_startup_logo:

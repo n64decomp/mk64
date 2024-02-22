@@ -18,7 +18,7 @@ $(DEBUG_FONT_PNG) $(DEBUG_FONT_PALETTE): $(DEBUG_FONT_EXPORT_SENTINEL) ;
 
 $(DEBUG_FONT_EXPORT_SENTINEL): $(ASSET_DIR)/debug_font.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_debug_font
 distclean_debug_font:

@@ -137,11 +137,6 @@ def main():
             print(fname + " has the wrong hash! Found " + sha1 + ", expected " + expected_sha1)
             sys.exit(1)
 
-    # Make sure tools exist
-    subprocess.check_call(
-        ["make", "-s", "-C", "tools/", "mio0", "n64graphics", "tkmk00"]
-    )
-
     # Go through the assets in roughly alphabetical order (but assets in the same
     # compressed block still go together).
     keys = sorted(list(todo.keys()), key=lambda k: todo[k][0][0])
@@ -212,7 +207,9 @@ def main():
             input = image[pos : pos + size]
             os.makedirs(os.path.dirname(asset), exist_ok=True)
             if asset.endswith(".png"):
-                with tempfile.NamedTemporaryFile(prefix="asset") as tex_file:
+                name_file = ""
+                with tempfile.NamedTemporaryFile(prefix="asset", delete=False) as tex_file:
+                    name_file = tex_file.name
                     tex_file.write(input)
                     tex_file.flush()
                     cmd = [
@@ -250,7 +247,8 @@ def main():
                             "-c", ci_fmt,
                             "-p", tmp_pal.name
                         ])
-                    subprocess.run(cmd, check=True)
+                subprocess.run(cmd, check=True)
+                os.remove(name_file)
             else:
                 with open(asset, "wb") as f:
                     f.write(input)

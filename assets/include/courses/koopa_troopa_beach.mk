@@ -33,7 +33,7 @@ $(KOOPA_TROOPA_BEACH_CRAB_PALETTE) $(KOOPA_TROOPA_BEACH_CRAB_FRAMES) $(KOOPA_TRO
 
 $(KOOPA_TROOPA_BEACH_EXPORT_SENTINEL): $(ASSET_DIR)/courses/koopa_troopa_beach.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_koopa_troopa_beach
 distclean_koopa_troopa_beach:

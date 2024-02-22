@@ -21,7 +21,7 @@ $(TROHPY_PNG) $(PODIUM_PNG): $(ENDING_CEREMONY_EXPORT_SENTINEL) ;
 
 $(ENDING_CEREMONY_EXPORT_SENTINEL): $(ASSET_DIR)/ending_ceremony.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_ending_ceremony
 distclean_ending_ceremony:
