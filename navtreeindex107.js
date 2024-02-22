@@ -1,6 +1,5 @@
 var NAVTREEINDEX107 =
 {
-"staff__ghosts_8c.html#a0eb82092a448ee36c1e468dfa4765ce6":[8,0,3,62,58],
 "staff__ghosts_8c.html#a1a6ef299ab3b94fc793a3c13bdac9598":[8,0,3,62,48],
 "staff__ghosts_8c.html#a1e6c535e2e2e430c9088d9a634788aba":[8,0,3,62,3],
 "staff__ghosts_8c.html#a26fc0e5f675f4602960709d90df9ac8f":[8,0,3,62,47],
@@ -249,5 +248,6 @@ var NAVTREEINDEX107 =
 "structALSeqFile.html":[7,0,39],
 "structALSeqFile.html#a39d25b1d4bc1b7c5ec3849b78c96e8f6":[7,0,39,0],
 "structALSeqFile.html#a7d7496c23b05b7f01cab093832182197":[7,0,39,2],
-"structALSeqFile.html#abb6866cc44247035b94fb14d2a4c288d":[7,0,39,1]
+"structALSeqFile.html#abb6866cc44247035b94fb14d2a4c288d":[7,0,39,1],
+"structALSound__s.html":[7,0,40]
 };

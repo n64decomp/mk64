@@ -38,6 +38,5 @@ var basics =
     [ "Terminology", "terminology.html", [
       [ "Technical Definitions", "terminology.html#technical-definitions", null ],
       [ "Racing Terminology", "terminology.html#racing-terminology", null ]
-    ] ],
-    [ "Compiling for Windows", "buildwindows.html", null ]
+    ] ]
 ];

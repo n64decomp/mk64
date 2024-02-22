@@ -29,8 +29,7 @@ var NAVTREEINDEX10 =
 "buffers_8h.html#ad69c72ff050917ed80fee1f0a4b6e373":[8,0,3,7,11],
 "buffers_8h.html#ad9140e069d65bc5b5da75424d09e9e57":[8,0,3,7,12],
 "buffers_8h_source.html":[8,0,3,7],
-"bug.html":[5],
-"buildwindows.html":[1,4],
+"bug.html":[6],
 "camera_8c.html":[8,0,3,8],
 "camera_8c.html#a0044cd79d56fa26de4dfd49bc77e3471":[8,0,3,8,13],
 "camera_8c.html#a005d75adccaa470b61adba174ce1a631":[8,0,3,8,33],
@@ -249,5 +248,6 @@ var NAVTREEINDEX10 =
 "ceremony__and__credits_8c.html#ae4d1ba9de9cc78e60f7ec880a9055b17":[8,0,3,4,1,139],
 "ceremony__and__credits_8c.html#ae536c5125cf4b0f00a7a986342b8d897":[8,0,3,4,1,118],
 "ceremony__and__credits_8c.html#ae68f2b462a9b90f0a251c466859df0c7":[8,0,3,4,1,29],
-"ceremony__and__credits_8c.html#aed398d4f2353243d48ad2b45d9348964":[8,0,3,4,1,140]
+"ceremony__and__credits_8c.html#aed398d4f2353243d48ad2b45d9348964":[8,0,3,4,1,140],
+"ceremony__and__credits_8c.html#aee02d75d0b98c6df07f3089b172e586d":[8,0,3,4,1,85]
 };

@@ -1,6 +1,5 @@
 var NAVTREEINDEX111 =
 {
-"structOSViMode.html#ab6feaae6755f702c1d2106301c166307":[7,0,124,1],
 "structObjects.html":[7,0,107],
 "structObjects.html#a0194330215c4b351adeb6e975f80a319":[7,0,107,47],
 "structObjects.html#a04fcbfde0a10741e0a8ddbab49b14d32":[7,0,107,30],
@@ -249,5 +248,6 @@ var NAVTREEINDEX111 =
 "structPoolSplit2.html#ac284dd1e3bcc85a2a5e4e27a27bb434a":[7,0,133,1],
 "structPoolSplit2.html#ad9e2ea7832ecaf83e69508a475c1a145":[7,0,133,0],
 "structPortamento.html":[7,0,134],
-"structPortamento.html#a2054af42de80730e8c81b0a12bfa87cd":[7,0,134,2]
+"structPortamento.html#a2054af42de80730e8c81b0a12bfa87cd":[7,0,134,2],
+"structPortamento.html#a294bb832235d86c8e01736a1e42c9785":[7,0,134,0]
 };
