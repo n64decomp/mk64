@@ -119,15 +119,15 @@ COLOR ?= 1
 
 ifeq ($(OS),Windows_NT)
     DETECTED_OS=windows
-	# define TMPDIR
-	export TMPDIR=$(TEMP)
+    # Set Windows temporary directory to its environment variable
+    export TMPDIR=$(TEMP)
 else
-	UNAME_S := $(shell uname -s)
-	ifeq ($(UNAME_S),Linux)
-		DETECTED_OS=linux
-	else ifeq ($(UNAME_S),Darwin)
-		DETECTED_OS=macos
-	endif
+    UNAME_S := $(shell uname -s)
+    ifeq ($(UNAME_S),Linux)
+        DETECTED_OS=linux
+    else ifeq ($(UNAME_S),Darwin)
+        DETECTED_OS=macos
+    endif
 endif
 
 # display selected options unless 'make clean' or 'make distclean' is run
@@ -159,18 +159,15 @@ TOOLS_DIR := tools
 # on tools and assets, and we use directory globs further down
 # in the makefile that we want should cover assets.)
 ifeq ($(DETECTED_OS),windows)
-# because when python 3 is installed on windows, it's just called python
-ifneq ($(PYTHON),)
-else ifneq ($(call find-command,python),)
-  PYTHON := python
-else ifneq ($(call find-command,python3),)
-  PYTHON := python3
+# because python3 is a command to trigger windows store, and python on windows it's just called python
+  ifneq ($(PYTHON),)
+  else ifneq ($(call find-command,python),)
+    PYTHON := python
+  else ifneq ($(call find-command,python3),)
+    PYTHON := python3
+  endif
 else
-  $(error Unable to find python)
-endif
-
-else
-PYTHON ?= python3
+  PYTHON ?= python3
 endif
 
 DUMMY != $(PYTHON) --version || echo FAIL
@@ -266,9 +263,6 @@ GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_
 # Compiler Options                                                             #
 #==============================================================================#
 
-# detect iconv
-ICONV ?= iconv
-
 # detect prefix for MIPS toolchain
 ifneq ($(CROSS),)
 else ifneq      ($(call find-command,mips-linux-gnu-ld),)
@@ -320,7 +314,6 @@ else
 endif
 
 # Check code syntax with host compiler
-# detect gcc
 CC_CHECK ?= gcc
 CC_CHECK_CFLAGS := -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) -std=gnu90 -Wall -Wempty-body -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(DEF_INC_CFLAGS)
 
