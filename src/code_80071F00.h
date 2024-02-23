@@ -130,6 +130,7 @@ void func_80075574(s32, Vec3f, f32);
 s32  func_800755FC(s32, Vec3f, f32);
 void func_80075698(s32);
 void func_80075714(s32);
+void func_80075838(void);
 void func_800759EC(s32, Vec3f, f32);
 s32  func_80075A6C(s32, Vec3f, f32);
 void func_80075B08(s32);

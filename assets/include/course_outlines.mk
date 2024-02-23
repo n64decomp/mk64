@@ -36,7 +36,7 @@ $(COURSE_OUTLINE_PNG): $(COURSE_OUTLINE_EXPORT_SENTINEL) ;
 
 $(COURSE_OUTLINE_EXPORT_SENTINEL): $(ASSET_DIR)/course_outlines.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_course_outlines
 distclean_course_outlines:

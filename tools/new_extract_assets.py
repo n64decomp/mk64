@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from io import BufferedReader
 import os
 import sys
 import math
@@ -8,12 +9,15 @@ import shutil
 import struct
 import tempfile
 import subprocess
+import traceback
 
 # Maps asset names to temporary files containing the raw asset data
 # Only really useful for asset groups that use shared palettes
 # Otherwise, its a little overkill
 raw_asset_files = dict()
 assets_requested = set()
+
+file_open = []
 
 def get_asset_raw(baserom, asset):
     global raw_asset_files
@@ -22,6 +26,8 @@ def get_asset_raw(baserom, asset):
     asset_name = asset["name"]
     # If available, return a saved file handle to the asset
     if asset_name in raw_asset_files:
+        if raw_asset_files[asset_name].closed:
+            raw_asset_files[asset_name] = open(raw_asset_files[asset_name].name, "rb")
         raw_asset_files[asset_name].seek(0)
         return raw_asset_files[asset_name]
 
@@ -37,8 +43,10 @@ def get_asset_raw(baserom, asset):
 
     return raw_file
 
-def extract_asset(baserom, asset):
+def extract_asset(baserom:BufferedReader, asset):
     rom_offset = int(asset["rom_offset"], 16)
+    if baserom.closed:
+        baserom = open(baserom.name, "rb")
     baserom.seek(rom_offset)
     asset_magic = baserom.read(4)
 
@@ -77,8 +85,9 @@ def asset_from_block(asset_block, asset):
     # For MIO0 and TKMK this should make no difference
     asset_block.seek(block_offset, os.SEEK_CUR)
     asset_data = asset_block.read(asset_size)
-
-    asset_file = tempfile.NamedTemporaryFile(mode="wb", prefix="raw_asset_")
+    asset_block.close()
+    asset_file = tempfile.NamedTemporaryFile(mode="wb", prefix="raw_asset_", delete=False)
+    file_open.append(asset_file.name)
     asset_file.write(asset_data)
     asset_file.flush()
 
@@ -95,10 +104,14 @@ def extract_mio0_block(baserom, asset):
 
     rom_offset = asset["rom_offset"]
     if rom_offset in mio0_blocks:
+        if mio0_blocks[rom_offset].closed:
+            mio0_blocks[rom_offset] = open(mio0_blocks[rom_offset].name, "rb")
         mio0_blocks[rom_offset].seek(0)
         return mio0_blocks[rom_offset]
 
-    mio0_file = tempfile.NamedTemporaryFile(mode="rb", prefix="mio0_block_")
+    mio0_file = tempfile.NamedTemporaryFile(prefix="mio0_block_",delete=False)
+    file_open.append(mio0_file.name)
+    mio0_file.close()
     subprocess.run(
         [
             "./tools/mio0",
@@ -109,7 +122,7 @@ def extract_mio0_block(baserom, asset):
         ],
         check=True
     )
-
+    mio0_file = open(mio0_file.name, "rb")
     if rom_offset in mio0s_requested:
         mio0_blocks[rom_offset] = mio0_file
     else:
@@ -120,7 +133,8 @@ def extract_mio0_block(baserom, asset):
 def extract_tkmk_block(baserom, asset):
     rom_offset = asset["rom_offset"]
     alpha = asset.get("alpha", "0x01")
-    tkmk_block = tempfile.NamedTemporaryFile(mode="rb", prefix="tkmk_block_")
+    tkmk_block = tempfile.NamedTemporaryFile(mode="rb", prefix="tkmk_block_", delete=False)
+    file_open.append(tkmk_block.name)
     subprocess.run(
         [
             "./tools/tkmk00",
@@ -135,8 +149,9 @@ def extract_tkmk_block(baserom, asset):
 
     return tkmk_block
 
-def export_stitched_palette(baserom, asset, asset_list):
-    palette_raw = tempfile.NamedTemporaryFile(mode="wb", prefix="stitched_palette")
+def export_stitched_palette(baserom:BufferedReader, asset, asset_list):
+    palette_raw = tempfile.NamedTemporaryFile(mode="wb", prefix="stitched_palette", delete=False)
+    file_open.append(palette_raw.name)
 
     # For stitched palettes, expect the "tlut" key to be a list of strings
     for tlut_name in asset["tlut"]:
@@ -214,7 +229,9 @@ def export_image(baserom, asset, asset_list):
             "-c", "rgba16", # I don't think anything other than rgba16 is even valid for N64 stuff...
             "-p", palette_file.name
         ])
+        palette_file.close()
 
+    asset_file.close()
     subprocess.run(cmd, check=True)
 
 def export_bin(baserom, asset):
@@ -254,6 +271,8 @@ try:
             else:
                 # Should we raise here?
                 print(f"Unexpected asset type {0}", asset["type"])
-
+    for f in file_open:
+        os.remove(f)
 except Exception as e:
-    print(e.strerror)
+    print(traceback.format_exc())
+    exit(1)

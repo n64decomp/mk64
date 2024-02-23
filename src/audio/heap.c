@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
+
 #include "audio/data.h"
 #include "audio/effects.h"
 #include "audio/heap.h"
@@ -703,8 +704,8 @@ void func_800BA8B0(s32 poolIdx, s32 id) {
     s32 temp_a2;
     u32 temp_a1;
     u8 *var_a3;
-    u8 *temp_v0;
-    s32 pad;
+    UNUSED u8 *temp_v0;
+    UNUSED s32 pad;
 
     switch (poolIdx) {                              /* irregular */
     case 0:
@@ -718,7 +719,7 @@ void func_800BA8B0(s32 poolIdx, s32 id) {
         break;
     }
     if (sp3C->seqArray[id].len == 0) {
-        id = sp3C->seqArray[id].offset;
+        id = (s32) sp3C->seqArray[id].offset;
     }
     if (unk_pool1_lookup(poolIdx, id) == NULL) {
         temp_a2 = gUnkPool1.pool.numAllocatedEntries;

@@ -36,7 +36,7 @@ $(SECONDLAP_FRAMES) $(SECONDLAP_PALETTE): $(SECONDLAP_EXPORT_SENTINEL) ;
 
 $(SECONDLAP_EXPORT_SENTINEL): assets/lakitu/secondlap.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_secondlap
 distclean_lakitu_secondlap:

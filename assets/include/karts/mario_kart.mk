@@ -1499,7 +1499,7 @@ $(MARIO_KART_FRAME_PNG) $(MARIO_KART_PALETTE_PNG): $(MARIO_EXPORT_SENTINEL) ;
 
 $(MARIO_EXPORT_SENTINEL): $(ASSET_DIR)/karts/mario_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_mario_kart
 distclean_mario_kart:

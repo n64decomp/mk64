@@ -31,7 +31,7 @@ $(GREENSHELL_FRAMES) $(GREENSHELL_PALETTE): $(GREENSHELL_EXPORT_SENTINEL) ;
 
 $(GREENSHELL_EXPORT_SENTINEL): $(ASSET_DIR)/greenshell.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_greenshell
 distclean_greenshell:

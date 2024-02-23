@@ -686,7 +686,7 @@ glabel L800C33E0
 /* 0C3FF4 800C33F4 306400FF */  andi  $a0, $v1, 0xff
 /* 0C3FF8 800C33F8 00801825 */  move  $v1, $a0
 /* 0C3FFC 800C33FC AFC40048 */  sw    $a0, 0x48($fp)
-/* 0C4000 800C3400 0C0304FF */  jal   func_800C13FC
+/* 0C4000 800C3400 0C0304FF */  jal   audio_reset_session_eu
 /* 0C4004 800C3404 AFCE004C */   sw    $t6, 0x4c($fp)
 /* 0C4008 800C3408 8FC5004C */  lw    $a1, 0x4c($fp)
 /* 0C400C 800C340C 8FCD0048 */  lw    $t5, 0x48($fp)

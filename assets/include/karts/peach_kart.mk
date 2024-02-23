@@ -1499,7 +1499,7 @@ $(PEACH_KART_FRAME_PNG) $(PEACH_KART_PALETTE_PNG): $(PEACH_EXPORT_SENTINEL) ;
 
 $(PEACH_EXPORT_SENTINEL): $(ASSET_DIR)/karts/peach_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_peach_kart
 distclean_peach_kart:

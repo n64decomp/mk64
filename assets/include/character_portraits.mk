@@ -50,7 +50,7 @@ $(PORTRAIT_PNG) $(SPECIAL_PORTRAIT_PNG) $(PORTRAIT_PALETTES) $(SPECIAL_PORTRAIT_
 
 $(PORTRAIT_EXPORT_SENTINEL): $(ASSET_DIR)/character_portraits.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_character_portraits
 distclean_character_portraits:

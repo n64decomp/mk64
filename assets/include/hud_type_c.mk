@@ -55,7 +55,7 @@ $(HUD_TYPE_C_PORTRAIT_BORDER_PNG): $(HUD_TYPE_C_EXPORT_SENTINEL) ;
 
 $(HUD_TYPE_C_EXPORT_SENTINEL): $(ASSET_DIR)/hud_type_c.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_hud_type_c
 distclean_hud_type_c:

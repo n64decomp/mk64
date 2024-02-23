@@ -50,7 +50,7 @@ $(ITEM_WINDOW_PNG) $(ITEM_WINDOW_PALETTES): $(ITEM_WINDOW_EXPORT_SENTINEL) ;
 
 $(ITEM_WINDOW_EXPORT_SENTINEL): $(ASSET_DIR)/item_window.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_item_window
 distclean_item_window:

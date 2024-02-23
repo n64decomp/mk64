@@ -811,7 +811,7 @@ void func_8028F970(void) {
                 if (D_800DC5A8 >= 3) {
                     D_800DC5A8 = 0;
                 }
-                play_sound2(0x4900801C);
+                play_sound2(SOUND_ACTION_PING);
                 func_800029B0();
             }
         }

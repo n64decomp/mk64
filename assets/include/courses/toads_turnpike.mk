@@ -47,7 +47,7 @@ $(TOADS_TURNPIKE_PNG): $(TOADS_TURNPIKE_EXPORT_SENTINEL) ;
 
 $(TOADS_TURNPIKE_EXPORT_SENTINEL): $(ASSET_DIR)/courses/toads_turnpike.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_toads_turnpike
 distclean_toads_turnpike:

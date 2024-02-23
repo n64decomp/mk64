@@ -13,7 +13,7 @@ $(ROYAL_RACEWAY_PIRANHA_PLANT_PALETTE): $(ROYAL_RACEWAY_EXPORT_SENTINEL) ;
 
 $(ROYAL_RACEWAY_EXPORT_SENTINEL): $(ASSET_DIR)/courses/royal_raceway.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_royal_raceway
 distclean_royal_raceway:

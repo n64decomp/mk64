@@ -1803,7 +1803,7 @@ void func_8007601C(s32 objectIndex) {
     if (gObjectList[objectIndex].unk_048 > 0) {
         gObjectList[objectIndex].unk_048--;
         if (gObjectList[objectIndex].unk_048 == 0) {
-            func_800C9EF4(gObjectList[objectIndex].pos, 0x5102800A);
+            func_800C9EF4(gObjectList[objectIndex].pos, SOUND_ARG_LOAD(0x51, 0x02, 0x80, 0x0A));
         }
     }
 
@@ -1812,7 +1812,7 @@ void func_8007601C(s32 objectIndex) {
         if ((is_obj_index_flag_unk_054_active(objectIndex, 0x40000) != 0) && (func_80072354(objectIndex, 1) != 0)) {
             func_800722A4(objectIndex, 1);
             func_80075F98(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle[1], 1.0f);
-            func_800C9D80(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, 0x5102800A);
+            func_800C9D80(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, SOUND_ARG_LOAD(0x51, 0x02, 0x80, 0x0A));
             if (gObjectList[objectIndex].type > 0) {
                 gObjectList[objectIndex].type--;
                 gObjectList[objectIndex].unk_04C = 0x5A;
@@ -1963,7 +1963,7 @@ void func_8007661C(void) {
     if (gObjectList[objectIndex].unk_048 > 0) {
         gObjectList[objectIndex].unk_048--;
         if (gObjectList[objectIndex].unk_048 == 0) {
-            func_800C9EF4(gObjectList[objectIndex].pos, 0x51038009U);
+            func_800C9EF4(gObjectList[objectIndex].pos, SOUND_ARG_LOAD(0x51, 0x03, 0x80, 0x09));
         }
     }
     if (gObjectList[objectIndex].unk_04C == 0) {
@@ -2968,7 +2968,7 @@ void func_800791F0(s32 objectIndex, s32 playerId) {
         func_800722CC(objectIndex, 0x00000010);
         temp_v1->unk_0CA &= 0xFFDF;
     }
-    func_800C9018(playerId, 0x0100FA28);
+    func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
 }
 
 void init_obj_lakitu_red_flag_countdown(s32 objectIndex, s32 arg1) {
@@ -3223,7 +3223,7 @@ void update_obj_lakitu_fishing(s32 objectIndex, s32 playerId) {
             break;
         case 5:
             func_800722CC(objectIndex, 1);
-            func_800C9018((u8) playerId, 0x0100FA28);
+            func_800C9018((u8) playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
             func_80072428(objectIndex);
             func_80073720(objectIndex);
             break;
@@ -3303,7 +3303,7 @@ void update_obj_lakitu_fishing2(s32 objectIndex, s32 playerId) {
             func_80072428(objectIndex);
             temp_s1->unk_0CA &= 0xFFDF;
             func_800722CC(objectIndex, 1);
-            func_800C9018((u8) playerId, 0x0100FA28);
+            func_800C9018((u8) playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
             break;
     }
 
@@ -3453,7 +3453,7 @@ void update_obj_lakitu_reverse(s32 objectIndex, s32 playerId) {
                 func_80086F10(objectIndex, 6, D_800E69F4);
                 gObjectList[objectIndex].unk_0D6 = 2;
                 gObjectList[objectIndex].unk_04C = 0x00000050;
-                func_800C9018((u8) playerId, 0x0100FA28);
+                func_800C9018((u8) playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
                 return;
             }
             return;
@@ -3845,8 +3845,8 @@ void func_8007B34C(s32 playerId) {
         temp_t0->unk_04C = 8;
         temp_t0->unk_0D6 = 2;
         func_80072488(temp_s0);
-        func_800C9018((u8) playerId, 0x0100FE1C);
-        func_800C8F80((u8) playerId, 0x0100FE47U);
+        func_800C9018((u8) playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFE, 0x1C));
+        func_800C8F80((u8) playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFE, 0x47));
         break;
     case 7:
         func_80072D3C(temp_s0, (s32) temp_t0->unk_0A2, 0, 8, 0x0000000A);
@@ -4339,7 +4339,7 @@ void func_8007C7B4(s32 someIndex, s32 arg1) {
         temp_s5 = random_int(0x0050U) - 0x28;
         random_int(0x1000U);
         something = D_800E5D9C[temp_a0];
-        gObjectList[objectIndex].unk_080 = something;
+        gObjectList[objectIndex].unk_080 = (Vec4s *) something;
         gObjectList[objectIndex].origin_pos[0] = (f32) temp_s1_2;
         gObjectList[objectIndex].origin_pos[1] = (f32) temp_s4;
         gObjectList[objectIndex].origin_pos[2] = (f32) temp_s5;
@@ -4535,8 +4535,8 @@ void func_8007CEDC(s32 objectIndex) {
 }
 
 void func_8007D070(void) {
-    s32 stackPadding;
-    s32 stackPadding2;
+    UNUSED s32 stackPadding;
+    UNUSED s32 stackPadding2;
     u16 temp_s3;
     s16 temp_t5;
     s16 temp_s2;
@@ -4562,7 +4562,7 @@ void func_8007D070(void) {
                 gObjectList[objectIndex].origin_pos[0] = D_8018CF1C->pos[0] + (sins(temp_t2) * temp_s2);
                 gObjectList[objectIndex].origin_pos[1] = temp_t5;
                 gObjectList[objectIndex].origin_pos[2] = D_8018CF1C->pos[2] + (coss(temp_t2) * temp_s2);
-                gObjectList[objectIndex].unk_080 = D_800E5D54;
+                gObjectList[objectIndex].unk_080 = (Vec4s *) D_800E5D54;
             }
         }
     }
@@ -4805,7 +4805,7 @@ void func_8007DDC0(s32 objectIndex) {
     if (temp_s0->unk_048 > 0) {
         temp_s0->unk_048--;
         if (temp_s0->unk_048 == 0) {
-            func_800C9EF4(temp_s0->pos, 0x51028006U);
+            func_800C9EF4(temp_s0->pos, SOUND_ARG_LOAD(0x51, 0x02, 0x80, 0x06));
         }
     }
     if (temp_s0->unk_04C == 0) {
@@ -4815,7 +4815,7 @@ void func_8007DDC0(s32 objectIndex) {
         func_8008A6DC(objectIndex, sp2C);
         if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (func_80072354(objectIndex, 1) != 0)) {
             func_800722A4(objectIndex, 1);
-            func_800C9D80(temp_s0->pos, temp_s0->velocity, 0x51028006U);
+            func_800C9D80(temp_s0->pos, temp_s0->velocity, SOUND_ARG_LOAD(0x51, 0x02, 0x80, 0x06));
             func_800726CC(objectIndex, 3);
             if (temp_s0->type > 0) {
                 temp_s0->type--;
@@ -4876,7 +4876,7 @@ void func_8007E00C(s32 objectIndex) {
         func_80073CB0(objectIndex, &gObjectList[objectIndex].unk_0A0, -0x00002000, 0, 0x00000400, 0, -1);
         gObjectList[objectIndex].orientation[2] = gObjectList[objectIndex].unk_0A0;
         if (gObjectList[objectIndex].unk_084[7] == 0) {
-            func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, 0x1901904EU);
+            func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x4E));
             gObjectList[objectIndex].unk_084[7] = 0x0014;
         } else {
             gObjectList[objectIndex].unk_084[7]--;
@@ -4923,7 +4923,7 @@ void func_8007E1F4(s32 objectIndex) {
     if (temp_s0->unk_048 > 0) {
         temp_s0->unk_048--;
         if (temp_s0->unk_048 == 0) {
-            func_800C9EF4(temp_s0->pos, 0x51028006U);
+            func_800C9EF4(temp_s0->pos, SOUND_ARG_LOAD(0x51, 0x02, 0x80, 0x06));
         }
     }
     if (temp_s0->unk_04C == 0) {
@@ -4933,7 +4933,7 @@ void func_8007E1F4(s32 objectIndex) {
         func_8008A6DC(objectIndex, sp2C);
         if ((is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) && (func_80072354(objectIndex, 1) != 0)) {
             func_800722A4(objectIndex, 1);
-            func_800C9D80(temp_s0->pos, temp_s0->velocity, 0x51028006U);
+            func_800C9D80(temp_s0->pos, temp_s0->velocity, SOUND_ARG_LOAD(0x51, 0x02, 0x80, 0x06));
             func_800726CC(objectIndex, 3);
             if (temp_s0->type > 0) {
                 temp_s0->type--;
@@ -5112,7 +5112,7 @@ void func_8007E63C(s32 objectIndex) {
                     func_800722A4(objectIndex, 0x00000020);
                 }
             }
-            func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, 0x19018045U);
+            func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x45));
             func_80072488(objectIndex);
         }
         break;
@@ -5177,7 +5177,7 @@ void func_8007EC30(s32 objectIndex) {
         set_obj_direction_angle(objectIndex, 0U, 0xC000U, 0U);
         set_obj_orientation(objectIndex, 0U, 0xC000U, 0U);
     }
-    init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, (u8*) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s1->model = d_course_bowsers_castle_dl_thwomp;
     temp_s1->boundingBoxSize = 0x000C;
     temp_s1->sizeScaling = 1.0f;
@@ -5190,7 +5190,7 @@ void func_8007EC30(s32 objectIndex) {
 }
 
 void func_8007ED6C(s32 objectIndex) {
-    s32 stackPadding[4];
+    UNUSED s32 stackPadding[4];
     switch (gObjectList[objectIndex].state) {
     case 0:
         break;
@@ -5220,7 +5220,7 @@ void func_8007ED6C(s32 objectIndex) {
 void func_8007EE5C(s32 objectIndex) {
     Objects *temp_s0;
 
-    init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, (u8*) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->sizeScaling = 1.0f;
     temp_s0->model = d_course_bowsers_castle_dl_thwomp;
@@ -5519,7 +5519,7 @@ void func_8007F8D8(void) {
 void func_8007FA08(s32 objectIndex) {
     Objects *temp_s0;
 
-    init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, (u8*) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->model = d_course_bowsers_castle_dl_thwomp;
     temp_s0->boundingBoxSize = 0x000C;
@@ -5546,7 +5546,7 @@ void func_8007FA08(s32 objectIndex) {
 
 void func_8007FB48(s32 objectIndex) {
     s32 var_v0;
-    s32 stackPadding;
+    UNUSED s32 stackPadding;
     Player *player;
 
     player = &gPlayerOne[gObjectList[objectIndex].unk_0D1];
@@ -5679,7 +5679,7 @@ void func_8007FFC0(s32 objectIndex) {
 void func_80080078(s32 objectIndex) {
     Objects *temp_s0;
 
-    init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, (u8*) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->model = d_course_bowsers_castle_dl_thwomp;
     temp_s0->boundingBoxSize = 0x000C;
@@ -5746,7 +5746,7 @@ void func_800802C0(s32 objectIndex) {
 
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->unk_0D8 = 0;
-    init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, (u8*) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0->model = d_course_bowsers_castle_dl_thwomp;
     temp_s0->itemDisplay = 0;
     temp_s0->boundingBoxSize = 0x000C;
@@ -5781,7 +5781,7 @@ void func_80080408(s32 objectIndex) {
     case 2:
         func_8008A6DC(objectIndex, 100.0f);
         if (is_obj_index_flag_unk_054_active(objectIndex, 0x00040000) != 0) {
-            func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, 0x19018045U);
+            func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x45));
             func_80072488(objectIndex);
         }
         break;
@@ -5803,7 +5803,7 @@ void func_80080408(s32 objectIndex) {
 void func_80080524(s32 objectIndex) {
     Objects *temp_s0;
 
-    init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_bowsers_castle_thwomp_tlut, (u8*) d_course_bowsers_castle_thwomp_faces, 0x10U, (u16) 0x00000040);
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->model = d_course_bowsers_castle_dl_thwomp;
     temp_s0->boundingBoxSize = 0x000C;
@@ -5904,10 +5904,10 @@ void func_800808CC(s32 objectIndex) {
         func_80073514(objectIndex);
         if (gGamestate != 9) {
             if ((D_8018D40C == 0) && (gObjectList[objectIndex].state == 2)) {
-                func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, 0x19036045U);
+                func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, SOUND_ARG_LOAD(0x19, 0x03, 0x60, 0x45));
             }
         } else if ((gCutsceneShotTimer < 0xBF) && (((s16) gCutsceneShotTimer % 88) == 0x0000001E)) {
-            func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, 0x19036045U);
+            func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, SOUND_ARG_LOAD(0x19, 0x03, 0x60, 0x45));
         }
     }
 }
@@ -5923,9 +5923,9 @@ void func_80080A4C(s32 objectIndex, s32 cameraPlayerId) {
     Player *player = &gPlayerOne[cameraPlayerId];
 
     if (gScreenModeSelection != SCREEN_MODE_3P_4P_SPLITSCREEN) {
-        if ((func_80072320(objectIndex, 0x00000010) != 0) && (is_within_horizontal_distance_of_player(objectIndex, player, 500.0f) != 0)) {
+        if ((func_80072320(objectIndex, 0x00000010) != 0) && (is_within_horizontal_distance_of_player(objectIndex, player, 500.0f) != FALSE)) {
             func_8001CA10(camera);
-            func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, 0x1900800FU);
+            func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x0F));
         }
     }
 }
@@ -5941,12 +5941,12 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
             if ((temp_f0 <= 9.0) && !(temp_s0->effects & 0x04000000) && (has_collided_horizontally_with_player(objectIndex, temp_s0) != 0)) {
                 if ((temp_s0->type & 0x8000) && !(temp_s0->type & 0x100)) {
                     if (!(temp_s0->effects & 0x200)) {
-                        func_80089474(objectIndex, playerId, 1.4f, 1.1f, 0x1900A04CU);
+                        func_80089474(objectIndex, playerId, 1.4f, 1.1f, SOUND_ARG_LOAD(0x19, 0x00, 0xA0, 0x4C));
                     } else if (func_80072354(objectIndex, 0x00000040) != 0) {
                         if (temp_s0->type & 0x1000) {
-                            func_800C98B8(temp_s0->pos, temp_s0->velocity, 0x1901A24AU);
+                            func_800C98B8(temp_s0->pos, temp_s0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0xA2, 0x4A));
                         } else {
-                            func_800C9060((u8) playerId, 0x1901A24AU);
+                            func_800C9060((u8) playerId, SOUND_ARG_LOAD(0x19, 0x01, 0xA2, 0x4A));
                         }
                         func_80080DE4(objectIndex);
                         func_80075304(gObjectList[objectIndex].pos, 3, 3, D_8018D3C4);
@@ -6143,7 +6143,7 @@ void func_80081210(void) {
 }
 
 void func_8008153C(s32 objectIndex) {
-    s32 stackPadding[3];
+    UNUSED s32 stackPadding[3];
     s32 sp70;
     s32 var_s1;
     s32 var_s7;
@@ -6196,7 +6196,7 @@ void func_80081790(s32 objectIndex) {
 }
 
 void func_80081848(s32 objectIndex) {
-    init_texture_object(objectIndex, d_course_moo_moo_farm_mole_tlut, d_course_moo_moo_farm_mole_frames, 0x20U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_moo_moo_farm_mole_tlut, (u8*) d_course_moo_moo_farm_mole_frames, 0x20U, (u16) 0x00000040);
     gObjectList[objectIndex].sizeScaling = 0.15f;
     gObjectList[objectIndex].itemDisplay = 0;
     func_8008B80C(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -6281,7 +6281,7 @@ void func_80081AFC(s32 objectIndex, s32 arg1) {
             func_80086EAC(objectIndex, 2, 4);
             func_8008153C(objectIndex);
             func_80072488(objectIndex);
-            func_800C98B8(temp_s0->pos, temp_s0->velocity, 0x19018007U);
+            func_800C98B8(temp_s0->pos, temp_s0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x07));
         }
         break;
     case 0x4:
@@ -6380,8 +6380,8 @@ void func_80081D34(s32 objectIndex) {
  * So there' something kind of fucky happening
  **/
 void func_80081FF4(s32 objectIndex, s32 arg1) {
-    s32 stackPadding0;
-    s32 stackPadding1;
+    UNUSED s32 stackPadding0;
+    UNUSED s32 stackPadding1;
     s32 moleCount;
     s16 var_v1;
     s16 offset;
@@ -6441,7 +6441,7 @@ void func_800821AC(s32 objectIndex, s32 arg1) {
 void func_800821FC(void) {
     s32 var_s1;
     s32 objectIndex;
-    s32 stackPadding;
+    UNUSED s32 stackPadding;
 
     for (var_s1 = 0; var_s1 < D_8018D1C8; var_s1++) {
         objectIndex = indexObjectList1[var_s1];
@@ -6485,7 +6485,7 @@ void func_800821FC(void) {
 }
 
 void func_8008241C(s32 objectIndex, s32 arg1) {
-    s16 stackPadding0;
+    UNUSED s16 stackPadding0;
     s16 temp_f4;
     s16 sp22;
     s16 sp20;
@@ -6508,7 +6508,7 @@ void func_8008241C(s32 objectIndex, s32 arg1) {
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
     gObjectList[objectIndex].unk_034 = 1.0f;
     func_80086EF0(objectIndex);
-    gObjectList[objectIndex].unk_080 = D_800E633C[arg1 % 4];
+    gObjectList[objectIndex].unk_080 = (Vec4s *) D_800E633C[arg1 % 4];
     set_object_flag_unk_054_true(objectIndex, 0x00000800);
     func_80072488(objectIndex);
 }
@@ -6525,7 +6525,7 @@ void func_80082714(s32 objectIndex, s32 arg1) {
 }
 
 void func_8008275C(s32 objectIndex) {
-    s32 stackPadding;
+    UNUSED s32 stackPadding;
     switch (gObjectList[objectIndex].unk_0DD) {                              /* irregular */
     case 1:
         func_8008B78C(objectIndex);
@@ -6534,7 +6534,7 @@ void func_8008275C(s32 objectIndex) {
     case 2:
         func_8008B78C(objectIndex);
         vec3f_copy(gObjectList[objectIndex].unk_01C, gObjectList[objectIndex].pos);
-        func_8000D940(gObjectList[objectIndex].origin_pos, &gObjectList[objectIndex].unk_0C6, gObjectList[objectIndex].unk_034, 0.0f, 0);
+        func_8000D940(gObjectList[objectIndex].origin_pos, (s16 *) &gObjectList[objectIndex].unk_0C6, gObjectList[objectIndex].unk_034, 0.0f, 0);
         gObjectList[objectIndex].unk_028[0] *= 2.0;
         gObjectList[objectIndex].unk_028[1] *= 2.5;
         gObjectList[objectIndex].unk_028[2] *= 2.0;
@@ -6547,7 +6547,7 @@ void func_8008275C(s32 objectIndex) {
 
 void func_80082870(void) {
     Objects *temp_s1;
-    s32 *var_s4;
+    UNUSED s32 *var_s4;
     s32 temp_s0;
     s32 var_s3;
 
@@ -6567,12 +6567,12 @@ void func_80082870(void) {
                 D_80183E40[1] = 0.0f;
                 D_80183E40[2] = 0.0f;
                 if (gGamestate != 9) {
-                    func_800C98B8(temp_s1->pos, D_80183E40, 0x19017043U);
+                    func_800C98B8(temp_s1->pos, D_80183E40, SOUND_ARG_LOAD(0x19, 0x01, 0x70, 0x43));
                 } else {
                     temp_s0 = indexObjectList2[1];
                     if (gCutsceneShotTimer < 0x97) {
                         temp_s1 = &gObjectList[temp_s0];
-                        func_800C98B8(temp_s1->pos, D_80183E40, 0x19017043U);
+                        func_800C98B8(temp_s1->pos, D_80183E40, SOUND_ARG_LOAD(0x19, 0x01, 0x70, 0x43));
                     }
                 }
             }
@@ -6596,7 +6596,7 @@ void func_80082870(void) {
 void init_ktb_crab(s32 objectIndex) {
     Objects *object;
 
-    init_texture_object(objectIndex, d_course_koopa_troopa_beach_crab_tlut, d_course_koopa_troopa_beach_crab_frames, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, d_course_koopa_troopa_beach_crab_tlut, (u8*) d_course_koopa_troopa_beach_crab_frames, 0x40U, (u16) 0x00000040);
     object = &gObjectList[objectIndex];
     object->sizeScaling = 0.15f;
     object->itemDisplay = 0;
@@ -6610,7 +6610,7 @@ void init_ktb_crab(s32 objectIndex) {
     set_object_flag_unk_054_true(objectIndex, 0x00000200);
 }
 
-void func_80082B34(s32 objectIndex, s32 unused) {
+void func_80082B34(s32 objectIndex, UNUSED s32 unused) {
     switch (gObjectList[objectIndex].state) {                               /* irregular */
     case 0:
         break;
@@ -6695,8 +6695,8 @@ void func_80082E5C(void) {
 // https://decomp.me/scratch/RquH0
 // Gollygee I sure love register allocation :^)
 void func_80082F1C(s32 objectIndex, s32 arg1) {
-    gObjectList[objectIndex].model = d_course_yoshi_valley_unk5;
-    gObjectList[objectIndex].vertex = d_course_yoshi_valley_unk4;
+    gObjectList[objectIndex].model = (Gfx *) d_course_yoshi_valley_unk5;
+    gObjectList[objectIndex].vertex = (Vtx *) d_course_yoshi_valley_unk4;
     gObjectList[objectIndex].sizeScaling = 0.027f;
     func_80072488(objectIndex);
     set_obj_origin_pos(objectIndex, D_800E5DF4[arg1].pos[0] * xOrientation, D_800E5DF4[arg1].pos[1], D_800E5DF4[arg1].pos[2]);
@@ -7074,7 +7074,7 @@ void func_80083FD0(s32 objectIndex, s32 arg1, s32 playerId) {
     temp_s0->origin_pos[2] = (sp20->pos[2] + random_int(0x0014U)) - 10.0f;
 }
 
-void func_8008421C(s32 arg0, s32 playerId) {
+void func_8008421C(UNUSED s32 arg0, s32 playerId) {
     s32 objectIndex;
     s32 var_s0;
 
@@ -7115,7 +7115,7 @@ void func_800842C8(void) {
     }
 }
 
-void func_80084430(s32 objectIndex, s32 arg1) {
+void func_80084430(s32 objectIndex, UNUSED s32 arg1) {
     Objects *temp_s0;
 
     temp_s0 = &gObjectList[objectIndex];
@@ -7129,7 +7129,7 @@ void func_80084430(s32 objectIndex, s32 arg1) {
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
     temp_s0->unk_0DD = 1;
     func_80086EF0(objectIndex);
-    temp_s0->unk_080 = *D_800E672C;
+    temp_s0->unk_080 = (Vec4s *) *D_800E672C;
     set_object_flag_unk_054_true(objectIndex, 0x04000800);
     temp_s0->type = func_80004EAC(d_course_sherbet_land_unk_data11, 0);
     func_80072488(objectIndex);
@@ -7155,8 +7155,8 @@ void func_800845C8(s32 objectIndex, s32 arg1) {
 
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->unk_0D8 = 0;
-    temp_s0->model = d_course_sherbet_land_unk_data1;
-    temp_s0->vertex = d_course_sherbet_land_unk_data11;
+    temp_s0->model = (Gfx *) d_course_sherbet_land_unk_data1;
+    temp_s0->vertex = (Vtx *) d_course_sherbet_land_unk_data11;
     temp_s0->boundingBoxSize = 4;
     temp_s0->unk_09C = 2;
     temp_s0->unk_04C = random_int(0x012CU);
@@ -7293,9 +7293,9 @@ void func_80084B7C(s32 objectIndex, s32 arg1) {
     if (func_80072320(objectIndex, 0x00000080) != 0) {
         func_800722CC(objectIndex, 0x00000080);
         if (func_80072320(objectIndex, 0x00000010) != 0) {
-            func_800C98B8(temp_s0->pos, temp_s0->velocity, 0x19007049U);
+            func_800C98B8(temp_s0->pos, temp_s0->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x70, 0x49));
         } else {
-            func_800C98B8(temp_s0->pos, temp_s0->velocity, 0x19007017U);
+            func_800C98B8(temp_s0->pos, temp_s0->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x70, 0x17));
         }
     }
 }
@@ -7444,7 +7444,7 @@ void func_800850B0(s32 objectIndex, s32 arg1) {
 }
 
 void func_80085214(void) {
-    s32 var_s2;
+    UNUSED s32 var_s2;
     s32 objectIndex;
     s32 var_s1;
 
@@ -7574,8 +7574,8 @@ void func_80085878(s32 objectIndex, s32 arg1) {
 
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->unk_0D8 = 1;
-    temp_s0->model = d_rainbow_road_unk4;
-    temp_s0->vertex = d_rainbow_road_unk3;
+    temp_s0->model = (Gfx *) d_rainbow_road_unk4;
+    temp_s0->vertex = (Vtx *) d_rainbow_road_unk3;
     temp_s0->sizeScaling = 0.03f;
     temp_s0->boundingBoxSize = 0x000A;
     set_object_flag_unk_054_true(objectIndex, 0x04000200);
@@ -7604,7 +7604,7 @@ void func_800859C8(s32 objectIndex, s32 arg1) {
         break;
     }
     if (D_8018D40C == 0) {
-        func_800C98B8(temp_s0->pos, temp_s0->velocity, 0x19018057U);
+        func_800C98B8(temp_s0->pos, temp_s0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x57));
     }
     func_80074344(objectIndex, &temp_s0->unk_044, -0.8f, 0.8f, 0.03f, 0, -1);
 }
@@ -7637,7 +7637,7 @@ void func_80085BB4(s32 objectIndex) {
 
 void init_obj_neon_mushroom(s32 objectIndex) {
     set_obj_origin_pos(objectIndex, xOrientation * -1431.0, 827.0f, -2957.0f);
-    init_texture_object(objectIndex, d_course_rainbow_road_neon_mushroom_tlut_list, d_course_rainbow_road_neon_mushroom, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, (u8*) d_course_rainbow_road_neon_mushroom_tlut_list, d_course_rainbow_road_neon_mushroom, 0x40U, (u16) 0x00000040);
     func_80085BB4(objectIndex);
 }
 
@@ -7675,7 +7675,7 @@ void func_80085CA0(s32 objectIndex) {
 
 void func_80085DB8(s32 objectIndex) {
     set_obj_origin_pos(objectIndex, xOrientation * 799.0, 1193.0f, -5891.0f);
-    init_texture_object(objectIndex, d_course_rainbow_road_neon_mario_tlut_list, d_course_rainbow_road_neon_mario, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, (u8*) d_course_rainbow_road_neon_mario_tlut_list, d_course_rainbow_road_neon_mario, 0x40U, (u16) 0x00000040);
     func_80085BB4(objectIndex);
 }
 
@@ -7704,7 +7704,7 @@ void func_80085E38(s32 objectIndex) {
 
 void func_80085EF8(s32 objectIndex) {
     set_obj_origin_pos(objectIndex, xOrientation * -2013.0, 555.0f, 0.0f);
-    init_texture_object(objectIndex, d_course_rainbow_road_neon_boo_tlut_list, d_course_rainbow_road_neon_boo, 0x40U, (u16) 0x00000040);
+    init_texture_object(objectIndex, (u8*) d_course_rainbow_road_neon_boo_tlut_list, d_course_rainbow_road_neon_boo, 0x40U, (u16) 0x00000040);
     func_80085BB4(objectIndex);
 }
 

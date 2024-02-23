@@ -33,7 +33,7 @@ $(TOAD_SELECT_PNG): $(TOAD_SELECT_EXPORT_SENTINEL) ;
 
 $(TOAD_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/toad_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_toad_select
 distclean_toad_select:

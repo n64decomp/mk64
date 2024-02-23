@@ -23,7 +23,7 @@ $(MINIMAP_ICONS_PNG): $(MINIMAP_ICONS_EXPORT_SENTINEL) ;
 
 $(MINIMAP_ICONS_EXPORT_SENTINEL): $(ASSET_DIR)/minimap_icons.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_minimap_icons
 distclean_minimap_icons:

@@ -33,7 +33,7 @@ $(PEACH_SELECT_PNG): $(PEACH_SELECT_EXPORT_SENTINEL) ;
 
 $(PEACH_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/peach_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_peach_select
 distclean_peach_select:
