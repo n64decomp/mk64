@@ -389,12 +389,7 @@ endif
 
 # Common build print status function
 define print
-  ifeq ($(GCC),1)
-  # Adds which compiler is being used on a file.
-  @$(PRINT) "$(RED)$(CC), $(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
-  else
   @$(PRINT) "$(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
-  endif
 endef
 
 # Override commmands for GCC Safe Files
