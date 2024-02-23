@@ -27,16 +27,13 @@ Review the [n64decomp/sm64](https://github.com/n64decomp/sm64) readme for instru
 
 # Windows
 
-*N64 decomp does not mesh well with Windows. However, this process has been refined to be as painless as possible. WSL is a great alternative if issues arise.*
-
-### Requirements
-- Clone the repo or download the zip on your computer
-- Dowload toolchain from [here](https://github.com/coco875/mk64-tools/releases/download/v0.0.6/mips-tools-chain-windows.zip)
+- Clone the repo or download the zip.
+- Download and extract the toolchain from [here](https://github.com/coco875/mk64-tools/releases/download/v0.0.6/mips-tools-chain-windows.zip)
 
 ### Setup
-1. copy from mips-tools-chain-windows.zip the folder `mingw64` into tools folder in the repo
-2. Open a terminal (cmd or powershell) in the repo folder and run `"tools\mingw64\w64devkit.exe"` and after `make`
-3. Wait for the build to finish and Enjoy!
+- Place the `mingw64` folder from the toolchain into the tools folder like so: `mk64/tools/mingw64`.
+- Open a terminal (cmd or powershell) in the repo folder and run `"tools\mingw64\w64devkit.exe"` and after `make`
+- Wait for the build to finish and Enjoy!
 
 # macOS
 
