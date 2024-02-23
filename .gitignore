@@ -87,3 +87,8 @@ expected/*
 
 # Doxygen
 docs/html/*
+
+# windows build
+mingw64/
+.ash_history
+!tools/ido-recomp/*/*

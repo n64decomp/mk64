@@ -33,7 +33,7 @@ $(MARIO_SELECT_PNG): $(MARIO_SELECT_EXPORT_SENTINEL) ;
 
 $(MARIO_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/mario_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_mario_select
 distclean_mario_select:

@@ -36,6 +36,11 @@ typedef struct {
 } struct_8018DEE0_entry; // size = 0x18
 
 typedef struct {
+    /* 0x0 */ MkTexture *texture;
+    /* 0x4 */ s32 unk_4;
+} struct_8018E060_entry; // size = 0x8
+
+typedef struct {
     /* 0x0 */ MkTexture *mk64Texture;
     /* 0x4 */ s16 unk4;
     /* 0x6 */ s16 unk6;
@@ -56,6 +61,13 @@ typedef struct {
     /* 0x00 */ MkTexture *textures;
     /* 0x04 */ Gfx *displayList;
 } struct_8018E768_entry; // size = 0x08
+
+struct UnkStruct_8018E7E8 {
+    /* 0x0 */ s16 x;
+    /* 0x2 */ s16 y;
+    /* 0x4 */ s16 unk1;
+    /* 0x6 */ s16 unk2;
+}; // size = 0x8
 
 typedef struct {
     /* 0x00 */ s16 column;
@@ -174,7 +186,7 @@ void func_8009AB7C(s32);
 void func_8009AD78(s32, s32);
 void func_8009B0A4(s32, u32);
 void func_8009B538(s32, s32, s32, s32, s32);
-s32  func_8009B8C4(u64*);
+u16 *func_8009B8C4(u64*);
 void func_8009B938(void);
 void func_8009B954(MkTexture*);
 void func_8009B998(void);
@@ -196,6 +208,7 @@ void func_8009CE64(s32);
 void func_8009D77C(s32,s32,s32);
 void func_8009D958(s32, s32);
 void func_8009D978(s32, s32);
+void func_8009D998(s32);
 void func_8009DAA8(void);
 void func_8009DB8C(void);
 void func_8009DEF8(u32, u32);
@@ -214,7 +227,7 @@ void func_8009E230(void);
 void func_8009E258(void);
 void func_8009E280(void);
 void func_8009E2A8(s32);
-void func_8009E2F0(void);
+void func_8009E2F0(s32);
 void func_8009E5BC(void);
 void func_8009E5FC(s32);
 void func_8009E620(void);
@@ -381,9 +394,12 @@ typedef struct struct_8018EE10_entry_cont {
 
 #define D_8018D9E0_SIZE 0x20
 #define D_8018DEE0_SIZE 0x10
+#define D_8018E060_SIZE 0x10
 #define D_8018E0E8_SIZE 0x05
 #define D_8018E118_SIZE 0xC8
 #define D_8018E768_SIZE 0x08
+#define D_8018E7E8_SIZE 0x05
+#define D_8018E810_SIZE 0x05
 
 /* This is where I'd put my static data, if I had any */
 
@@ -402,7 +418,7 @@ extern s8 D_8018D9D8;
 extern s8 D_8018D9D9;
 extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE];
 extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
-extern s32 D_8018E060;
+extern struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
 extern struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
 extern s32 gD_8018E118TotalSize;
 extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
@@ -417,8 +433,8 @@ extern s32 D_8018E7B8[];
 extern u32 D_8018E7C8;
 extern u32 D_8018E7D0[];
 extern s32 D_8018E7E0;
-extern s16 D_8018E7F0;
-extern s16 D_8018E7F8;
+extern struct UnkStruct_8018E7E8 D_8018E7E8[D_8018E7E8_SIZE];
+extern struct UnkStruct_8018E7E8 D_8018E810[D_8018E810_SIZE];
 extern s8 gTextColor;
 extern u8 D_8018ED90;
 extern u8 D_8018ED91;
@@ -437,14 +453,14 @@ extern Unk_D_800E70A0 D_800E70E8[];
 extern Unk_D_800E70A0 D_800E7108[][4];
 extern Unk_D_800E70A0 D_800E7148[];
 extern Unk_D_800E70A0 D_800E7168[];
-extern Unk_D_800E70A0 D_800E7188[][4];
+extern Unk_D_800E70A0 D_800E7188[];
 extern Unk_D_800E70A0 D_800E7208[][2];
 extern Unk_D_800E70A0 D_800E7248[];
 extern Unk_D_800E70A0 D_800E7258[];
 extern Unk_D_800E70A0 D_800E7268[];
 extern Unk_D_800E70A0 D_800E7278[];
 extern Unk_D_800E70A0 D_800E72F8;
-extern Unk_D_800E70A0 D_800E7300[][4];
+extern Unk_D_800E70A0 D_800E7300[];
 extern Unk_D_800E70A0 D_800E7360[];
 extern Unk_D_800E70A0 D_800E7380[];
 extern Unk_D_800E70A0 D_800E7390[];
@@ -497,17 +513,17 @@ extern char *D_800E7860[];
 extern char *D_800E7868[];
 extern char *D_800E7878[];
 extern char *D_800E7884[];
-extern char *D_800E7890[][4];
-extern char *D_800E78D0[][3];
-extern char *D_800E7900[][3];
+extern char *D_800E7890[];
+extern char *D_800E78D0[];
+extern char *D_800E7900[];
 extern char *D_800E7918[];
 extern char *D_800E7920[];
 extern char *D_800E7928[];
 extern char *D_800E7930[];
 extern char *D_800E7938[];
-extern char *D_800E7940[][4];
+extern char *D_800E7940[];
 extern char *D_800E7980[];
-extern char *D_800E798C[][7];
+extern char *D_800E798C[];
 extern char *D_800E7A34[];
 extern char *D_800E7A3C[];
 extern char *D_800E7A44;
@@ -546,7 +562,7 @@ extern MkTexture *D_800E8174[];
 extern MkTexture *D_800E817C[];
 extern MkTexture *D_800E81E4[];
 extern MkTexture *D_800E822C[];
-extern MkTexture *D_800E8234[][2];
+extern MkTexture *D_800E8234[];
 extern MkTexture *D_800E824C[];
 extern MkTexture *D_800E8254[];
 extern MkTexture *D_800E8274[];
@@ -575,9 +591,9 @@ extern s8 D_800E852C;
 extern f32 D_800E8530;
 extern f32 D_800E8534;
 extern Unk_D_800E70A0 D_800E8538[];
-extern Unk_D_800E70A0 D_800E8540[][4];
-extern Unk_D_800E70A0 D_800E85C0[][4];
-extern Unk_D_800E70A0 D_800E8600[][4];
+extern Unk_D_800E70A0 D_800E8540[];
+extern Unk_D_800E70A0 D_800E85C0[];
+extern Unk_D_800E70A0 D_800E8600[];
 
 extern s32 gControllerPak1NumPagesFree;
 extern s32 gControllerPak1FileNote;

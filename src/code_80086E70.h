@@ -7,7 +7,7 @@
 void func_80086E70(s32);
 void func_80086EAC(s32, s32, s16);
 void func_80086EF0(s32);
-void func_80086F10(s32, s32, u16[][4]);
+void func_80086F10(s32, s32, Vec4s[]);
 void func_80086F60(s32);
 s32  func_80086FA4(s32);
 void func_80086FD4(s32);

@@ -386,18 +386,18 @@ UNUSED s32 func_800416AC(f32 arg0, f32 arg1) {
     return atan2s(arg1, arg0);
 }
 
-f32 func_800416D8(f32 arg0, f32 arg1, u16 arg2) {
-    f32 sp1C;
+f32 func_800416D8(f32 x, f32 z, u16 angle) {
+    f32 cosAngle;
 
-    sp1C = coss(arg2);
-    return (sp1C * arg0) - (sins(arg2) * arg1);
+    cosAngle = coss(angle);
+    return (cosAngle * x) - (sins(angle) * z);
 }
 
-f32 func_80041724(f32 arg0, f32 arg1, u16 arg2) {
-    f32 sp1C;
+f32 func_80041724(f32 x, f32 z, u16 angle) {
+    f32 sinAngle;
 
-    sp1C = sins(arg2);
-    return (coss(arg2) * arg1) + (sp1C * arg0);
+    sinAngle = sins(angle);
+    return (coss(angle) * z) + (sinAngle * x);
 }
 
 

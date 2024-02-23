@@ -33,7 +33,7 @@ $(BOWSER_SELECT_PNG): $(BOWSER_SELECT_EXPORT_SENTINEL) ;
 
 $(BOWSER_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/bowser_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_bowser_select
 distclean_bowser_select:

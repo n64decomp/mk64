@@ -2349,7 +2349,7 @@ Variable Name | Memory Address
 [init_sequence_player](@ref init_sequence_player) | 0x800C11B0
 [init_sequence_players](@ref init_sequence_players) | 0x800C125C
 [func_800C13F0](@ref func_800C13F0) | 0x800C13F0
-[func_800C13FC](@ref func_800C13FC) | 0x800C13FC
+[audio_reset_session_eu](@ref audio_reset_session_eu) | 0x800C13FC
 [func_800C1480](@ref func_800C1480) | 0x800C1480
 [func_800C15D0](@ref func_800C15D0) | 0x800C15D0
 [func_800C16E8](@ref func_800C16E8) | 0x800C16E8
@@ -2467,14 +2467,14 @@ Variable Name | Memory Address
 [eu_process_audio_cmd](@ref eu_process_audio_cmd) | 0x800CB818
 [seq_player_fade_to_zero_volume](@ref seq_player_fade_to_zero_volume) | 0x800CBA08
 [func_800CBA64](@ref func_800CBA64) | 0x800CBA64
-[func_800CBAB4](@ref func_800CBAB4) | 0x800CBAB4
+[port_eu_init_queues](@ref port_eu_init_queues) | 0x800CBAB4
 [func_800CBB48](@ref func_800CBB48) | 0x800CBB48
 [func_800CBB88](@ref func_800CBB88) | 0x800CBB88
 [func_800CBBB8](@ref func_800CBBB8) | 0x800CBBB8
 [func_800CBBE8](@ref func_800CBBE8) | 0x800CBBE8
 [func_800CBC24](@ref func_800CBC24) | 0x800CBC24
 [func_800CBCB0](@ref func_800CBCB0) | 0x800CBCB0
-[func_800CBF48](@ref func_800CBF48) | 0x800CBF48
+[port_eu_init](@ref port_eu_init) | 0x800CBF48
 [osCreateThread](@ref osCreateThread) | 0x800CBF70
 [osInitialize](@ref osInitialize) | 0x800CC0C0
 [osStartThread](@ref osStartThread) | 0x800CC360
@@ -3625,16 +3625,6 @@ Variable Name | Memory Address
 [D_800ECFCC](@ref D_800ECFCC) | 0x800ECFCC
 [D_800ECFD0](@ref D_800ECFD0) | 0x800ECFD0
 [D_800ECFD4](@ref D_800ECFD4) | 0x800ECFD4
-[D_800ED01C](@ref D_800ED01C) | 0x800ED01C
-[D_800ED020](@ref D_800ED020) | 0x800ED020
-[D_800ED024](@ref D_800ED024) | 0x800ED024
-[D_800ED028](@ref D_800ED028) | 0x800ED028
-[D_800ED030](@ref D_800ED030) | 0x800ED030
-[D_800ED034](@ref D_800ED034) | 0x800ED034
-[D_800ED038](@ref D_800ED038) | 0x800ED038
-[D_800ED03C](@ref D_800ED03C) | 0x800ED03C
-[D_800ED0AC](@ref D_800ED0AC) | 0x800ED0AC
-[D_800ED0B0](@ref D_800ED0B0) | 0x800ED0B0
 [D_800ED230](@ref D_800ED230) | 0x800ED230
 [D_800ED238](@ref D_800ED238) | 0x800ED238
 [D_800ED240](@ref D_800ED240) | 0x800ED240
@@ -3684,8 +3674,6 @@ Variable Name | Memory Address
 [D_800F0C70](@ref D_800F0C70) | 0x800F0C70
 [D_800F0C74](@ref D_800F0C74) | 0x800F0C74
 [D_800F0C78](@ref D_800F0C78) | 0x800F0C78
-[D_800F0C98](@ref D_800F0C98) | 0x800F0C98
-[D_800F0C9C](@ref D_800F0C9C) | 0x800F0C9C
 [D_800F0CA0](@ref D_800F0CA0) | 0x800F0CA0
 [D_800F0CD0](@ref D_800F0CD0) | 0x800F0CD0
 [D_800F15E0](@ref D_800F15E0) | 0x800F15E0
@@ -3695,9 +3683,6 @@ Variable Name | Memory Address
 [D_800F1AF4](@ref D_800F1AF4) | 0x800F1AF4
 [D_800F1AF8](@ref D_800F1AF8) | 0x800F1AF8
 [D_800F1AFC](@ref D_800F1AFC) | 0x800F1AFC
-[D_800F1B14](@ref D_800F1B14) | 0x800F1B14
-[D_800F1B54](@ref D_800F1B54) | 0x800F1B54
-[D_800F1B58](@ref D_800F1B58) | 0x800F1B58
 [D_800F1C28](@ref D_800F1C28) | 0x800F1C28
 [D_800F1C2C](@ref D_800F1C2C) | 0x800F1C2C
 [D_800F1C30](@ref D_800F1C30) | 0x800F1C30
@@ -3706,12 +3691,6 @@ Variable Name | Memory Address
 [D_800F1C3C](@ref D_800F1C3C) | 0x800F1C3C
 [D_800F1C40](@ref D_800F1C40) | 0x800F1C40
 [D_800F1C44](@ref D_800F1C44) | 0x800F1C44
-[D_800F1CCC](@ref D_800F1CCC) | 0x800F1CCC
-[D_800F1D48](@ref D_800F1D48) | 0x800F1D48
-[D_800F1D4C](@ref D_800F1D4C) | 0x800F1D4C
-[D_800F1D50](@ref D_800F1D50) | 0x800F1D50
-[D_800F1D54](@ref D_800F1D54) | 0x800F1D54
-[D_800F1D58](@ref D_800F1D58) | 0x800F1D58
 [D_800F1DC8](@ref D_800F1DC8) | 0x800F1DC8
 [D_800F1DD8](@ref D_800F1DD8) | 0x800F1DD8
 [D_800F1E80](@ref D_800F1E80) | 0x800F1E80
@@ -3723,8 +3702,6 @@ Variable Name | Memory Address
 [D_800F1E98](@ref D_800F1E98) | 0x800F1E98
 [D_800F1F18](@ref D_800F1F18) | 0x800F1F18
 [D_800F1F20](@ref D_800F1F20) | 0x800F1F20
-[D_800F24A0](@ref D_800F24A0) | 0x800F24A0
-[D_800F24A4](@ref D_800F24A4) | 0x800F24A4
 [D_800F2B38](@ref D_800F2B38) | 0x800F2B38
 [D_800F2B40](@ref D_800F2B40) | 0x800F2B40
 [D_800F2B44](@ref D_800F2B44) | 0x800F2B44
@@ -3818,7 +3795,7 @@ Variable Name | Memory Address
 [wasSoftReset](@ref wasSoftReset) | 0x8015011C
 [D_8015011E](@ref D_8015011E) | 0x8015011E
 [D_80150120](@ref D_80150120) | 0x80150120
-[gMenuSelectionFromQuit](@ref gMenuSelectionFromQuit) | 0x80150124
+[gGotoMode](@ref gGotoMode) | 0x80150124
 [D_80150128](@ref D_80150128) | 0x80150128
 [D_8015012C](@ref D_8015012C) | 0x8015012C
 [gCameraZoom](@ref gCameraZoom) | 0x80150130
@@ -4687,7 +4664,7 @@ Variable Name | Memory Address
 [D_8018D9E0](@ref D_8018D9E0) | 0x8018D9E0
 [D_8018DEE0](@ref D_8018DEE0) | 0x8018DEE0
 [D_8018E060](@ref D_8018E060) | 0x8018E060
-[D_8018E068](@ref D_8018E068) | 0x8018E068
+[code_80091750_bss_padding0](@ref code_80091750_bss_padding0) | 0x8018E0E0
 [D_8018E0E8](@ref D_8018E0E8) | 0x8018E0E8
 [gD_8018E118TotalSize](@ref gD_8018E118TotalSize) | 0x8018E110
 [D_8018E118](@ref D_8018E118) | 0x8018E118
@@ -4703,24 +4680,7 @@ Variable Name | Memory Address
 [D_8018E7D0](@ref D_8018E7D0) | 0x8018E7D0
 [D_8018E7E0](@ref D_8018E7E0) | 0x8018E7E0
 [D_8018E7E8](@ref D_8018E7E8) | 0x8018E7E8
-[D_8018E7F0](@ref D_8018E7F0) | 0x8018E7F0
-[D_8018E7F4](@ref D_8018E7F4) | 0x8018E7F4
-[D_8018E7F8](@ref D_8018E7F8) | 0x8018E7F8
-[D_8018E7FA](@ref D_8018E7FA) | 0x8018E7FA
-[D_8018E7FC](@ref D_8018E7FC) | 0x8018E7FC
-[D_8018E800](@ref D_8018E800) | 0x8018E800
-[D_8018E802](@ref D_8018E802) | 0x8018E802
-[D_8018E808](@ref D_8018E808) | 0x8018E808
 [D_8018E810](@ref D_8018E810) | 0x8018E810
-[D_8018E818](@ref D_8018E818) | 0x8018E818
-[D_8018E81A](@ref D_8018E81A) | 0x8018E81A
-[D_8018E81C](@ref D_8018E81C) | 0x8018E81C
-[D_8018E820](@ref D_8018E820) | 0x8018E820
-[D_8018E822](@ref D_8018E822) | 0x8018E822
-[code_80091750_pad_1](@ref code_80091750_pad_1) | 0x8018E824
-[D_8018E828](@ref D_8018E828) | 0x8018E828
-[D_8018E82A](@ref D_8018E82A) | 0x8018E82A
-[code_80091750_pad_2](@ref code_80091750_pad_2) | 0x8018E830
 [D_8018E838](@ref D_8018E838) | 0x8018E838
 [D_8018E83C](@ref D_8018E83C) | 0x8018E83C
 [D_8018E840](@ref D_8018E840) | 0x8018E840
@@ -4794,9 +4754,9 @@ Variable Name | Memory Address
 [D_8018EFD8](@ref D_8018EFD8) | 0x8018EFD8
 [D_8018FB90](@ref D_8018FB90) | 0x8018FB90
 [D_8018FB91](@ref D_8018FB91) | 0x8018FB91
-[D_8018FB98](@ref D_8018FB98) | 0x8018FB98
-[D_8018FBA8](@ref D_8018FBA8) | 0x8018FBA8
-[D_8018FBD8](@ref D_8018FBD8) | 0x8018FBD8
+[gCopyCamera](@ref gCopyCamera) | 0x8018FB98
+[gVelocityCamera](@ref gVelocityCamera) | 0x8018FBA8
+[gCameraLastPos](@ref gCameraLastPos) | 0x8018FBD8
 [D_8018FC08](@ref D_8018FC08) | 0x8018FC08
 [D_8018FC10](@ref D_8018FC10) | 0x8018FC10
 [sSoundRequests](@ref sSoundRequests) | 0x8018FC20
@@ -4841,6 +4801,7 @@ Variable Name | Memory Address
 [D_8019769C](@ref D_8019769C) | 0x8019769C
 [D_801976A0](@ref D_801976A0) | 0x801976A0
 [LeoDiskHandle](@ref LeoDiskHandle) | 0x80197850
+[memoryPool](@ref memoryPool) | 0x801978D0
 [func_8028DF00](@ref func_8028DF00) | 0x8028DF00
 [func_8028DF38](@ref func_8028DF38) | 0x8028DF38
 [func_8028E028](@ref func_8028E028) | 0x8028E028
@@ -5589,7 +5550,7 @@ Variable Name | Memory Address
 [sPodiumActorList](@ref sPodiumActorList) | 0x802874F8
 [D_802874FC](@ref D_802874FC) | 0x802874FC
 [D_80287500](@ref D_80287500) | 0x80287500
-[gMenuSelectionFromEndingSequence](@ref gMenuSelectionFromEndingSequence) | 0x80287550
+[gGotoMenu](@ref gGotoMenu) | 0x80287550
 [D_80287554](@ref D_80287554) | 0x80287554
 [D_80281C40_pad](@ref D_80281C40_pad) | 0x80287558
 [D_80287560](@ref D_80287560) | 0x80287560
@@ -19757,9 +19718,9 @@ Variable Name | Memory Address
 [gTextureGoldBar](@ref gTextureGoldBar) | 0x0B026C00
 [gTextureGoldBar_end](@ref gTextureGoldBar_end) | 0x0B027950
 [ceremony_data](@ref ceremony_data) | 0x0B000000
-[data_821D10_end](@ref data_821D10_end) | 0x0B003AF0
+[ceremonyData_end](@ref ceremonyData_end) | 0x0B003AF0
 [startup_logo](@ref startup_logo) | 0x06000000
-[data_825800_end](@ref data_825800_end) | 0x06002CD0
+[startupLogo_end](@ref startupLogo_end) | 0x06002CD0
 [mario_raceway_textures](@ref mario_raceway_textures) | 0x09000000
 [mario_raceway_dls](@ref mario_raceway_dls) | 0x090001F0
 [choco_mountain_textures](@ref choco_mountain_textures) | 0x09000000
@@ -19907,6 +19868,11 @@ Variable Name | Memory Address
 [seq_1C_end](@ref seq_1C_end) | 0x002821F0
 [seq_1D_end](@ref seq_1D_end) | 0x00282E70
 [instrument_sets](@ref instrument_sets) | 0x00282E80
+[pool.)](@ref pool.)) | 0x00000001
+[segment.)](@ref segment.)) | 0x00000001
+[segment)](@ref segment)) | 0x00000001
+[segment.)](@ref segment.)) | 0x00000001
+[memory)](@ref memory)) | 0x00000001
 
 Note: This information is generated during the compilation process.
 

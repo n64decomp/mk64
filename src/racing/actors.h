@@ -5,7 +5,7 @@
 #include "actor_types.h"
 
 void cleanup_red_and_green_shells(struct ShellActor*);
-void actor_init(struct Actor*, Vec3f, s16*, f32*, s16);
+void actor_init(struct Actor*, Vec3f, Vec3s, Vec3f, s16);
 void func_80297230(Camera*, struct Actor*);
 void func_802972B8(Camera*, struct Actor*);
 void func_80297340(Camera*);
@@ -75,7 +75,7 @@ void place_course_actors(void);
 void func_8029E158(void);
 void func_8029E7DC(struct Actor*);
 void destroy_actor(struct Actor*);
-s16  func_8029E890(f32*, s16*, f32*, s16);
+s16  func_8029E890(Vec3f, Vec3s, Vec3f, s16);
 s16  addActorToEmptySlot(Vec3f, Vec3s, Vec3f, s16);
 s16  func_8029ED38(Vec3f, s16);
 s32  func_8029EEB8(Player*, Vec3f, f32, f32, f32);

@@ -15,7 +15,7 @@ $(CHOCO_MOUNTAIN_PNG): $(CHOCO_MOUNTAIN_EXPORT_SENTINEL) ;
 
 $(CHOCO_MOUNTAIN_EXPORT_SENTINEL): $(ASSET_DIR)/courses/choco_mountain.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_choco_mountain
 distclean_choco_mountain:

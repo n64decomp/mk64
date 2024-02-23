@@ -31,10 +31,10 @@ void func_80086EF0(s32 objectIndex) {
     func_80086E70(objectIndex);
 }
 
-void func_80086F10(s32 objectIndex, s32 arg1, u16 arg2[][4]) {
+void func_80086F10(s32 objectIndex, s32 arg1, Vec4s arg2[]) {
     func_80086E70(objectIndex);
     gObjectList[objectIndex].unk_0DE = arg1;
-    gObjectList[objectIndex].unk_080 = (u16 *) arg2;
+    gObjectList[objectIndex].unk_080 = arg2;
 }
 
 void func_80086F60(s32 objectIndex) {
@@ -1031,8 +1031,8 @@ f32 func_8008933C(Player *player, s32 objectIndex, f32 arg2, f32 arg3) {
     return var_f2;
 }
 
-void func_80089474(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 arg4) {
-    s32 stackPadding;
+void func_80089474(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 soundBits) {
+    UNUSED s32 stackPadding;
     Player *player;
 
     player = &gPlayerOne[playerId];
@@ -1040,17 +1040,17 @@ void func_80089474(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 arg4) 
         func_80072180();
     }
     if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
-        func_800C9060(playerId, arg4);
+        func_800C9060(playerId, soundBits);
     }
 }
 
-void func_80089538(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 arg4) {
-    s32 stackPadding;
+void func_80089538(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 soundBits) {
+    UNUSED s32 stackPadding;
     Player *player;
 
     player = &gPlayerOne[playerId];
     if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
-        func_800C9060((u8) playerId, arg4);
+        func_800C9060((u8) playerId, soundBits);
     }
 }
 
@@ -1444,7 +1444,7 @@ void func_8008A920(s32 objectIndex) {
 }
 
 void func_8008A9B8(s32 objectIndex) {
-    s32 temp_t9;
+    UNUSED s32 temp_t9;
     Objects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
@@ -1474,7 +1474,7 @@ void func_8008AA3C(s32 objectIndex) {
 }
 
 void func_8008AB10(s32 objectIndex) {
-    s16 temp_t3;
+    UNUSED s16 temp_t3;
     Objects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
@@ -1668,7 +1668,7 @@ void func_8008B284(s32 objectIndex) {
         D_80165780[someIndex] = (*test)[2];
         if (sp0 == someIndex) {
             // Huh???????? This makes no sense
-            test = &gObjectList[objectIndex].unk_080[0][1];
+            test = (Vec4s *) &gObjectList[objectIndex].unk_080[0][1];
         } else {
             test++;
         }
@@ -1676,14 +1676,14 @@ void func_8008B284(s32 objectIndex) {
 }
 
 void func_8008B3E4(s32 objectIndex) {
-    Vec4s *test;
+    UNUSED Vec4s *test;
     Objects *temp_v0;
 
     if (is_obj_index_flag_status_inactive(objectIndex, 8) != 0) {
         temp_v0 = &gObjectList[objectIndex];
         temp_v0->unk_084[9] = 0;
         temp_v0->timer = 0;
-        temp_v0->unk_07C = &gObjectList[objectIndex].unk_080[0][1];
+        temp_v0->unk_07C = (Vec4s *) &gObjectList[objectIndex].unk_080[0][1];
         // Huh????????? Negative array indexing is a near certain sign
         // that something has gone wrong on our end.
         temp_v0->unk_084[8] = temp_v0->unk_07C[0][-1];
@@ -1699,7 +1699,7 @@ void func_8008B44C(s32 objectIndex) {
 void func_8008B478(s32 objectIndex, s32 arg1) {
     f32 sp34;
     f32 temp;
-    f32 temp2;
+    UNUSED f32 temp2;
     f32 var_f6;
 
     func_8008B3E4(objectIndex);
@@ -1723,7 +1723,7 @@ void func_8008B478(s32 objectIndex, s32 arg1) {
 }
 
 void func_8008B620(s32 objectIndex) {
-    s16 temp_t0;
+    UNUSED s16 temp_t0;
     Objects *temp_v0;
 
     func_8008B478(objectIndex, 0);

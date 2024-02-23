@@ -7,7 +7,6 @@ default: all
 
 # Preprocessor definitions
 DEFINES :=
-UNAME_S := $(shell uname -s)
 
 #==============================================================================#
 # Build Options                                                                #
@@ -73,23 +72,7 @@ else ifeq ($(GRUCODE),f3dex2) # Fast3DEX2
   DEFINES += F3DEX_GBI_2=1 F3DEX_GBI_SHARED=1
 endif
 
-
-
-# USE_QEMU_IRIX - when ido is selected, select which way to emulate IRIX programs
-#   1 - use qemu-irix
-#   0 - statically recompile the IRIX programs
-USE_QEMU_IRIX ?= 0
-$(eval $(call validate-option,USE_QEMU_IRIX,0 1))
-
 ifeq      ($(COMPILER),ido)
-  ifeq ($(USE_QEMU_IRIX),1)
-  # Verify that qemu-irix exists
-  QEMU_IRIX := $(call find-command,qemu-irix)
-  ifeq (,$(QEMU_IRIX))
-    $(error Using the IDO compiler requires qemu-irix. Please install qemu-irix package or set the QEMU_IRIX environment variable to the full qemu-irix binary path)
-    endif
-  endif
-
   MIPSISET := -mips2
 else ifeq ($(COMPILER),gcc)
   NON_MATCHING := 1
@@ -134,7 +117,18 @@ endif
 # Whether to colorize build messages
 COLOR ?= 1
 
-
+ifeq ($(OS),Windows_NT)
+    DETECTED_OS=windows
+    # Set Windows temporary directory to its environment variable
+    export TMPDIR=$(TEMP)
+else
+    UNAME_S := $(shell uname -s)
+    ifeq ($(UNAME_S),Linux)
+        DETECTED_OS=linux
+    else ifeq ($(UNAME_S),Darwin)
+        DETECTED_OS=macos
+    endif
+endif
 
 # display selected options unless 'make clean' or 'make distclean' is run
 ifeq ($(filter clean distclean,$(MAKECMDGOALS)),)
@@ -155,8 +149,6 @@ ifeq ($(filter clean distclean,$(MAKECMDGOALS)),)
   $(info =======================)
 endif
 
-
-
 #==============================================================================#
 # Universal Dependencies                                                       #
 #==============================================================================#
@@ -166,12 +158,33 @@ TOOLS_DIR := tools
 # (This is a bit hacky, but a lot of rules implicitly depend
 # on tools and assets, and we use directory globs further down
 # in the makefile that we want should cover assets.)
+ifeq ($(DETECTED_OS),windows)
+# because python3 is a command to trigger windows store, and python on windows it's just called python
+  ifneq ($(PYTHON),)
+  else ifneq ($(call find-command,python),)
+    PYTHON := python
+  else ifneq ($(call find-command,python3),)
+    PYTHON := python3
+  endif
+else
+  PYTHON ?= python3
+endif
 
-PYTHON := python3
+DUMMY != $(PYTHON) --version || echo FAIL
+ifeq ($(DUMMY),FAIL)
+  $(error Unable to find python)
+endif
 
 ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
 
-# Make sure assets exist
+ # Make tools if out of date
+  DUMMY != make -C $(TOOLS_DIR)
+  ifeq ($(DUMMY),FAIL)
+    $(error Failed to build tools)
+  endif
+  $(info Building ROM...)
+
+  # Make sure assets exist
   NOEXTRACT ?= 0
   ifeq ($(NOEXTRACT),0)
     DUMMY != $(PYTHON) extract_assets.py $(VERSION) >&2 || echo FAIL
@@ -179,14 +192,6 @@ ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
       $(error Failed to extract assets)
     endif
   endif
-
-  # Make tools if out of date
-  DUMMY != make -s -C $(TOOLS_DIR) $(if $(filter-out ido0,$(COMPILER)$(USE_QEMU_IRIX)),all-except-recomp,) >&2 || echo FAIL
-  ifeq ($(DUMMY),FAIL)
-    $(error Failed to build tools)
-  endif
-  $(info Building ROM...)
-
 endif
 
 
@@ -259,27 +264,23 @@ GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_
 #==============================================================================#
 
 # detect prefix for MIPS toolchain
-ifneq      ($(call find-command,mips-linux-gnu-ld),)
-  CROSS := mips-linux-gnu-
+ifneq ($(CROSS),)
+else ifneq      ($(call find-command,mips-linux-gnu-ld),)
+	CROSS := mips-linux-gnu-
 else ifneq ($(call find-command,mips64-linux-gnu-ld),)
-  CROSS := mips64-linux-gnu-
+	CROSS := mips64-linux-gnu-
 else ifneq ($(call find-command,mips64-elf-ld),)
-  CROSS := mips64-elf-
+	CROSS := mips64-elf-
 else
-  $(error Unable to detect a suitable MIPS toolchain installed)
+	$(error Unable to detect a suitable MIPS toolchain installed)
 endif
 
 AS      := $(CROSS)as
 ifeq ($(COMPILER),gcc)
   CC      := $(CROSS)gcc
 else
-  ifeq ($(USE_QEMU_IRIX),1)
-    IRIX_ROOT := $(TOOLS_DIR)/ido5.3_compiler
-    CC      := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/bin/cc
-  else
-    IDO_ROOT := $(TOOLS_DIR)/ido5.3_recomp
-    CC      := $(IDO_ROOT)/cc
-  endif
+  IDO_ROOT := $(TOOLS_DIR)/ido-recomp/$(DETECTED_OS)
+  CC      := $(IDO_ROOT)/cc
 endif
 LD      := $(CROSS)ld
 AR      := $(CROSS)ar
@@ -305,13 +306,15 @@ DEF_INC_CFLAGS := $(foreach i,$(INCLUDE_DIRS),-I$(i)) $(C_DEFINES)
 ifneq (,$(call find-command,clang))
   CPP      := clang
   CPPFLAGS := -E -P -x c -Wno-trigraphs $(DEF_INC_CFLAGS)
-else
+else ifneq (,$(call find-command,cpp))
   CPP      := cpp
   CPPFLAGS := -P -Wno-trigraphs $(DEF_INC_CFLAGS)
+else
+  $(error Unable to find cpp or clang)
 endif
 
 # Check code syntax with host compiler
-CC_CHECK := gcc
+CC_CHECK ?= gcc
 CC_CHECK_CFLAGS := -fsyntax-only -fsigned-char $(CC_CFLAGS) $(TARGET_CFLAGS) -std=gnu90 -Wall -Wempty-body -Wextra -Wno-format-security -Wno-main -DNON_MATCHING -DAVOID_UB $(DEF_INC_CFLAGS)
 
 # C compiler options
@@ -330,13 +333,8 @@ OBJCOPYFLAGS = --pad-to=0xC00000 --gap-fill=0xFF
 
 LDFLAGS = -T undefined_syms.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/$(TARGET).map --no-check-sections
 
-ifeq ($(shell getconf LONG_BIT), 32)
-  # Work around memory allocation bug in QEMU
-  export QEMU_GUEST_BASE := 1
-else
-  # Ensure that gcc treats the code as 32-bit
-  CC_CHECK += -m32
-endif
+# Ensure that gcc treats the code as 32-bit
+CC_CHECK += -m32
 
 # Prevent a crash with -sopt
 export LANG := C
@@ -359,8 +357,10 @@ EMULATOR               = mupen64plus
 EMU_FLAGS              = --noosd
 LOADER                 = loader64
 LOADER_FLAGS           = -vwf
-SHA1SUM                = sha1sum
-PRINT                  = printf
+SHA1SUM               ?= sha1sum
+FALSE                 ?= false
+PRINT                 ?= printf
+TOUCH                 ?= touch
 
 ifeq ($(COLOR),1)
 NO_COL  := \033[0m
@@ -390,12 +390,12 @@ endef
 all: $(ROM)
 ifeq ($(COMPARE),1)
 	@$(PRINT) "$(GREEN)Checking if ROM matches.. $(NO_COL)\n"
-	@$(SHA1SUM) --quiet -c $(TARGET).sha1 && $(PRINT) "$(TARGET): $(GREEN)OK$(NO_COL)\n" || ($(PRINT) "$(YELLOW)Building the ROM file has succeeded, but does not match the original ROM.\nThis is expected, and not an error, if you are making modifications.\nTo silence this message, use 'make COMPARE=0.' $(NO_COL)\n" && false)
+	@$(SHA1SUM) -c $(TARGET).sha1 > $(NULL_OUT) && $(PRINT) "$(TARGET): $(GREEN)OK$(NO_COL)\n" || ($(PRINT) "$(YELLOW)Building the ROM file has succeeded, but does not match the original ROM.\nThis is expected, and not an error, if you are making modifications.\nTo silence this message, use 'make COMPARE=0.' $(NO_COL)\n" && $(FALSE))
 endif
 
 doc:
-	$(PYTHON) tools/doxygen_symbol_gen.py
-	doxygen 
+	$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
+	doxygen
 	@$(PRINT) "$(GREEN)Documentation generated in docs/html$(NO_COL)\n"
 	@$(PRINT) "$(GREEN)Results can be viewed by opening docs/html/index.html in a web browser$(NO_COL)\n"
 
@@ -405,7 +405,7 @@ clean:
 distclean: distclean_assets
 	$(RM) -r $(BUILD_DIR_BASE)
 	./extract_assets.py --clean
-	make -C tools clean
+	make -C $(TOOLS_DIR) clean
 
 distclean_assets: ;
 
@@ -417,8 +417,6 @@ load: $(ROM)
 
 # Make sure build directory exists before compiling anything
 DUMMY != mkdir -p $(ALL_DIRS)
-
-
 
 #==============================================================================#
 # Texture Generation                                                           #
@@ -451,14 +449,14 @@ $(BUILD_DIR)/%.mio0.o: $(BUILD_DIR)/%.mio0.s
 
 $(BUILD_DIR)/%.mio0.s: $(BUILD_DIR)/%.mio0
 	$(call print,Generating mio0 asm:,$<,$@)
-	printf ".section .data\n\n.balign 4\n\n.incbin \"$<\"\n" > $@
+	$(PRINT) ".section .data\n\n.balign 4\n\n.incbin \"$<\"\n" > $@
 
 $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
 	@$(PRINT) "$(GREEN)Compiling Crash Screen:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/crash_screen/crash_screen_font.ia1.inc.c -g textures/crash_screen/crash_screen_font.ia1.png -f ia1 -s u8
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) tools/set_o32abi_bit.py $@
+	$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
 
 #==============================================================================#
 # Common Textures Segment Generation                                           #
@@ -481,7 +479,7 @@ $(BUILD_DIR)/src/data/common_textures.inc.o: src/data/common_textures.inc.c $(TE
 	@$(PRINT) "$(GREEN)Compiling Common Textures:  $(BLUE)$@ $(NO_COL)\n"
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) tools/set_o32abi_bit.py $@
+	$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
 
 
 
@@ -493,7 +491,7 @@ $(BUILD_DIR)/src/data/common_textures.inc.o: src/data/common_textures.inc.c $(TE
 %/course_textures.linkonly.c %/course_textures.linkonly.h: %/course_offsets.inc.c
 	$(V)$(LINKONLY_GENERATOR) $(lastword $(subst /, ,$*))
 
-# Its unclear why this is necessary. Everything I undesrtand about `make` says that just 
+# Its unclear why this is necessary. Everything I undesrtand about `make` says that just
 # `$(BUILD_DIR)/%/course_displaylists.inc.o: %/course_textures.linkonly.h`
 # Should work identical to this. But in practice it doesn't :(
 COURSE_DISPLAYLIST_OFILES := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_displaylists.inc.o)
@@ -508,7 +506,7 @@ $(COURSE_DISPLAYLIST_OFILES): $(BUILD_DIR)/%/course_displaylists.inc.o: %/course
 %/course_displaylists.inc.bin: %/course_displaylists.inc.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-# Displaylists are packed using a custom format 
+# Displaylists are packed using a custom format
 %/course_displaylists_packed.inc.bin: %/course_displaylists.inc.bin
 	@$(PRINT) "$(GREEN)Compressing Course Displaylists:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(DLPACKER) $< $@
@@ -533,8 +531,7 @@ COURSE_GEOGRAPHY_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/cou
 
 # Course vertices and displaylists are included together due to no alignment between the two files.
 %/course_geography.inc.mio0.s: %/course_vertices.inc.mio0 %/course_displaylists_packed.inc.bin
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_vertex\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
-
+	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_vertex\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
 
 
 #==============================================================================#
@@ -557,8 +554,7 @@ COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_d
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/course_data.inc.mio0.s: %/course_data.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
-
+	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
 
 
 #==============================================================================#
@@ -572,7 +568,7 @@ $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) tools/set_o32abi_bit.py $@
+	$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
 
 $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 	$(call print,Compiling:,$<,$@)
@@ -582,15 +578,15 @@ $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 $(BUILD_DIR)/%.o: %.s $(MIO0_FILES) $(RAW_TEXTURE_FILES)
 	$(AS) $(ASFLAGS) -o $@ $<
 
-$(EUC_JP_FILES:%.c=$(BUILD_DIR)/%.jp.o): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
+$(EUC_JP_FILES:%.c=$(BUILD_DIR)/%.jp.o): CC := $(PYTHON) $(TOOLS_DIR)/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
-$(GLOBAL_ASM_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
+$(GLOBAL_ASM_O_FILES): CC := $(PYTHON) $(TOOLS_DIR)/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
-$(GLOBAL_ASM_OS_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
+$(GLOBAL_ASM_OS_O_FILES): CC := $(PYTHON) $(TOOLS_DIR)/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
-$(GLOBAL_ASM_AUDIO_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
+$(GLOBAL_ASM_AUDIO_O_FILES): CC := $(PYTHON) $(TOOLS_DIR)/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
-$(GLOBAL_ASM_RACING_O_FILES): CC := $(PYTHON) tools/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
+$(GLOBAL_ASM_RACING_O_FILES): CC := $(PYTHON) $(TOOLS_DIR)/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
 #==============================================================================#
 # Libultra Definitions                                                         #
@@ -636,7 +632,8 @@ LDFLAGS += -R $(BUILD_DIR)/src/ending/ceremony_data.inc.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/ceremony_data.inc.mio0.s: %/ceremony_data.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel data_821D10_end\n" > $@
+	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel ceremonyData_end\n" > $@
+
 
 #==============================================================================#
 # Compile Startup Logo                                                         #
@@ -655,7 +652,7 @@ LDFLAGS += -R $(BUILD_DIR)/src/data/startup_logo.inc.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/startup_logo.inc.mio0.s: %/startup_logo.inc.mio0
-	printf ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel data_825800_end\n" > $@
+	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel startupLogo_end\n" > $@
 
 #==============================================================================#
 # Compile Common Textures                                                      #
@@ -674,7 +671,7 @@ LDFLAGS += -R $(BUILD_DIR)/src/data/common_textures.inc.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/common_textures.inc.mio0.s: %/common_textures.inc.mio0
-	printf ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
+	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
 
 
 
@@ -697,12 +694,12 @@ $(ROM): $(ELF)
 	$(call print,Building ROM:,$<,$@)
 	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $(@:.z64=.bin) -O binary
 	$(V)$(N64CKSUM) $(@:.z64=.bin) $@
-	$(PYTHON) tools/doxygen_symbol_gen.py
+	$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
 
 $(BUILD_DIR)/$(TARGET).hex: $(TARGET).z64
 	xxd $< > $@
 
-$(BUILD_DIR)/$(TARGET).objdump: $(ELF) 
+$(BUILD_DIR)/$(TARGET).objdump: $(ELF)
 	$(OBJDUMP) -D $< > $@
 
 

@@ -57,8 +57,10 @@ $(BANSHEE_BOARDWALK_DIR)/boo_frames.mio0: $(BANSHEE_BOARDWALK_DIR)/boo_frames.bi
 # $(DATA_DIR)/boo_frames.bin: $(DATA_DIR)/boo_frames.o
 # 	$(OBJCOPY) --only-section=.data -O binary $@ $<
 # cat'ing the files together is easier though
+CAT ?= cat
+
 $(BANSHEE_BOARDWALK_DIR)/boo_frames.bin: $(BANSHEE_BOARDWALK_BOO_FRAMES:%.png=%.bin)
-	cat $^ > $@
+	$(CAT) $^ > $@
 
 $(BANSHEE_BOARDWALK_BOO_FRAMES:%.png=%.bin): %.bin : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(BANSHEE_BOARDWALK_BOO_PALETTE)
@@ -79,7 +81,7 @@ $(BANSHEE_BOARDWALK_PNG): $(BANSHEE_BOARDWALK_EXPORT_SENTINEL) ;
 
 $(BANSHEE_BOARDWALK_EXPORT_SENTINEL): $(ASSET_DIR)/courses/banshee_boardwalk.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_banshee_boardwalk
 distclean_banshee_boardwalk:

@@ -5,6 +5,8 @@ import shlex
 import subprocess
 import tempfile
 import uuid
+import sys
+sys.path.append("tools/asm_processor")
 import asm_processor
 
 # Boolean for debugging purposes

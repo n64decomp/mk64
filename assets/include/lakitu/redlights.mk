@@ -36,7 +36,7 @@ $(REDLIGHTS_FRAMES) $(REDLIGHTS_PALETTE): $(REDLIGHTS_EXPORT_SENTINEL) ;
 
 $(REDLIGHTS_EXPORT_SENTINEL): assets/lakitu/redlights.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_redlights
 distclean_lakitu_redlights:

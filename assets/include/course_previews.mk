@@ -36,7 +36,7 @@ $(COURSE_PREVIEW_PNG): $(COURSE_PREVIEW_EXPORT_SENTINEL) ;
 
 $(COURSE_PREVIEW_EXPORT_SENTINEL): $(ASSET_DIR)/course_previews.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_course_previews
 distclean_course_previews:

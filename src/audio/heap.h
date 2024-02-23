@@ -118,14 +118,12 @@ void func_800BA8B0(s32, s32);
 extern s32 D_800EA5D0;
 extern u8 D_803B71B0[];
 
-extern u8 gAudioResetPresetIdToLoad; // D_803B0501
-extern s32 gMaxAudioCmds; // D_803B70AC
-extern s16 gTempoInternalToExternal; // D_803B70B4
-extern u64 *gAudioCmdBuffers[]; // D_803B70C8
+extern s32 gMaxAudioCmds;
+extern s16 gTempoInternalToExternal;
 extern f32 D_803B7178;
-extern s32 gRefreshRate; // D_803B717C
-extern u32 gSampleDmaNumListItems; // D_803B6E58
-extern struct AudioSessionSettingsEU gAudioSessionPresets[]; // D_800EA4D8
+extern s32 gRefreshRate;
+extern u32 gSampleDmaNumListItems;
+extern struct AudioSessionSettingsEU gAudioSessionPresets[];
 
 
 // Note: In some .asm files D_803AFBC8 has been replaced with gLeftVolRampings

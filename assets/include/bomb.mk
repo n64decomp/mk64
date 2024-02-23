@@ -22,7 +22,7 @@ $(BOMB_FRAMES) $(BOMB_PALETTE): $(BOMB_EXPORT_SENTINEL) ;
 
 $(BOMB_EXPORT_SENTINEL): $(ASSET_DIR)/bomb.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_bomb
 distclean_bomb:

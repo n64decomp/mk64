@@ -27,7 +27,7 @@ $(THWOMP_PALETTE) $(THWOMP_FACE_FRAMES) $(THOWMP_SIDE_PNG): $(BOWSERS_CASTLE_EXP
 
 $(BOWSERS_CASTLE_EXPORT_SENTINEL): $(ASSET_DIR)/courses/bowsers_castle.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_bowsers_castle
 distclean_bowsers_castle:

@@ -33,7 +33,7 @@ $(YOSHI_SELECT_PNG): $(YOSHI_SELECT_EXPORT_SENTINEL) ;
 
 $(YOSHI_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/yoshi_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_yoshi_select
 distclean_yoshi_select:
