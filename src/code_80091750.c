@@ -5460,7 +5460,7 @@ u16 *func_8009B8C4(u64 *arg0) {
     s32 found;
     s32 someIndex;
 
-    found = NULL;
+    found = 0;
     for (someIndex = 0; someIndex < gNumD_8018E118Entries; someIndex++) {
         if (arg0 == D_8018E118[someIndex].textureData) {
             found = 1;
@@ -5469,7 +5469,7 @@ u16 *func_8009B8C4(u64 *arg0) {
         }
     }
 
-    if (found != NULL) {
+    if (found != 0) {
         return &D_8018D9B0[offset];
     }
     return NULL;
@@ -5628,7 +5628,7 @@ Gfx *print_letter(Gfx *arg0, MkTexture *glyphTexture, f32 arg2, f32 arg3, s32 mo
             var_s0++;
         } else {
             temp_v0_2 = func_8009B8C4(var_s0->textureData);
-            if (temp_v0_2 != NULL) {
+            if (temp_v0_2 != 0) {
                 switch (mode) {                 /* irregular */
                 case 1:
                     gSPDisplayList(arg0++, D_020077F8);
@@ -8528,7 +8528,7 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
     case 30:                                    /* switch 1 */
         for (var_s1 = 0; var_s1 < 6; var_s1++) {
             var_v1 = 0;
-            func_800921C0(arg0->cursor - 5, var_s1, 1);
+            set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 5, var_s1, 1);
             switch (var_s1) {                 /* switch 3; irregular */
             case 4:                             /* switch 3 */
                 if (D_80162DF8 == 1) {
@@ -8544,9 +8544,9 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
             if (var_v1 != 0) {
                 set_text_color(0);
                 gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, 0x96);
-                func_80093358(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93, D_800E775C[var_s1 + 1], 0, 0.75f, 0.75f);
+                func_80093358(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93, gTextPauseButton[var_s1 + 1], 0, 0.75f, 0.75f);
             } else {
-                func_80093324(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93, D_800E775C[var_s1 + 1], 0, 0.75f, 0.75f);
+                func_80093324(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93, gTextPauseButton[var_s1 + 1], 0, 0.75f, 0.75f);
             }
         }
         break;
@@ -8569,7 +8569,7 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
             func_80093324(0x000000A5, arg0->row + (0xD * var_s1) + 0x8C, D_800E7A3C[var_s1], 0, 0.7f, 0.7f);
         }
         for (var_s1 = 0; var_s1 < 2; var_s1++) {
-            func_800921C0(arg0->cursor - 0x11, var_s1, 1);
+            set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 0x11, var_s1, 1);
             convert_number_to_ascii(var_s1 + 1, sp60);
             func_80093324(0xB1 - arg0->column, 0xAA + (0x1E * var_s1), &sp60[1], 0, 0.6f, 0.6f);
             if (D_8018EE10[var_s1].ghostDataSaved == 0) {
@@ -8593,7 +8593,7 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
             func_80093324(0x000000A3, arg0->row + (0xD * var_s1) + 0x8C, D_800E7A60[var_s1], 0, 0.67f, 0.67f);
         }
         for (var_s1 = 0; var_s1 < 2; var_s1++) {
-            func_800921C0(arg0->cursor - 0x14, var_s1, 1);
+            set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 0x14, var_s1, 1);
             func_80093324(0xC8 - arg0->column, 0xB9 + (0xF * var_s1), D_800E7A6C[var_s1], 0, 0.75f, 0.75f);
         }
         break;
@@ -8952,7 +8952,7 @@ void func_800A54EC(void) {
     }
     whyTheSequel = D_800F0B50[why];
     sp50.column = var_v1->column - 8;
-    sp50.row = (var_v1->row + ((sp48->unk4 - whyTheSequel) * 0xD)) - 8;
+    sp50.row = (var_v1->row + ((sp48->cursor - whyTheSequel) * 0xD)) - 8;
     func_800A66A8(sp48, &sp50);
 }
 #else
@@ -9031,7 +9031,7 @@ void func_800A5738(struct_8018D9E0_entry *arg0) {
             text_draw(0x000000B3, 0x00000089, sp84, 0, 0.8f, 0.8f);
             for (var_s1 = 0; var_s1 < 6; var_s1++) {
                 set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 0xB, var_s1, TEXT_GREEN);
-                func_80093358(D_800E8538[zero].column, D_800E8538[zero].row + (0xD * var_s1), D_800E775C[var_s1 + 1], 0, 0.75f, 0.75f);
+                func_80093358(D_800E8538[zero].column, D_800E8538[zero].row + (0xD * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.75f, 0.75f);
             }
             break;
         case 21:                                    /* switch 1 */

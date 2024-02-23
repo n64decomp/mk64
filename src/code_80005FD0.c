@@ -3173,7 +3173,7 @@ void func_8000DF8C(s32 bombKartId) {
                 D_80162FC0[0] = temp_v0_2->posX + sp118;
                 D_80162FC0[1] = temp_v0_2->posY;
                 D_80162FC0[2] = temp_v0_2->posZ + temp_f0_3;
-                spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
+                spC2 = (get_angle_between_two_vector(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
                 break;
             case 2:
                 var_s1 = (var_s1 + 4) % 360;
@@ -3193,7 +3193,7 @@ void func_8000DF8C(s32 bombKartId) {
                 D_80162FC0[0] = temp_v0_2->posX + sp118;
                 D_80162FC0[1] = temp_v0_2->posY;
                 D_80162FC0[2] = temp_v0_2->posZ + temp_f0_3;
-                spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
+                spC2 = (get_angle_between_two_vector(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
                 break;
             case 3:
                 var_f20 = bombKart->yPos + 3.5f;
@@ -3217,7 +3217,7 @@ void func_8000DF8C(s32 bombKartId) {
                         D_80162FC0[0] = temp_v0_4->posX;
                         D_80162FC0[1] = temp_v0_4->posY;
                         D_80162FC0[2] = temp_v0_4->posZ;
-                        spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
+                        spC2 = (get_angle_between_two_vector(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
                     } else {
                         D_80162FB0[0] = var_f22;
                         D_80162FB0[1] = var_f20;
@@ -3225,7 +3225,7 @@ void func_8000DF8C(s32 bombKartId) {
                         D_80162FC0[0] = -2409.197f;
                         D_80162FC0[1] = 0.0f;
                         D_80162FC0[2] = -355.254f;
-                        spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
+                        spC2 = (get_angle_between_two_vector(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
                     }
                     temp_f14 = ((D_80162FB0[0] + D_80162FC0[0]) * 0.5f) - var_f22;
                     temp_f16 = ((D_80162FB0[2] + D_80162FC0[2]) * 0.5f) - var_f24;
@@ -3255,7 +3255,7 @@ void func_8000DF8C(s32 bombKartId) {
                 D_80162FC0[1] = temp_v0_4->posY;
                 D_80162FC0[2] = temp_v0_4->posZ;
                 var_f20 += 3.0f - (var_s1 * 0.3f);
-                spC2 = (get_angle_between_points(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
+                spC2 = (get_angle_between_two_vector(D_80162FB0, D_80162FC0) * 0xFFFF) / 65520;
                 break;
             default:
                 break;
