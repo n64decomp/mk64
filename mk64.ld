@@ -300,12 +300,17 @@ SECTIONS
          BUILD_DIR/src/debug/debug.o(.rodata*);
          BUILD_DIR/src/os/sprintf.o(.rodata*);
       #endif
+      BUILD_DIR/src/os/guOrthoF.o(.rodata*);
       BUILD_DIR/src/os/guRotateF.o(.rodata*);
       BUILD_DIR/src/os/guScaleF.o(.rodata*);
       BUILD_DIR/src/os/guPerspectiveF.o(.rodata*);
-      BUILD_DIR/asm/os/__osException.o(.rodata);
+      BUILD_DIR/src/os/guLookAtF.o(.rodata*);
+      BUILD_DIR/src/os/osAiSetFrequency.o(.rodata*);
+      BUILD_DIR/asm/os/__osException.o(.rodata*);
+      BUILD_DIR/src/os/__osViSwapContext.o(.rodata*);
       BUILD_DIR/src/os/__osDevMgrMain.o(.rodata*);
       BUILD_DIR/src/os/guMtxF2L.o(.rodata*);
+      BUILD_DIR/src/os/guNormalize.o(.rodata*);
       BUILD_DIR/src/os/math/sinf.o(.rodata*);
       BUILD_DIR/src/os/math/cosf.o(.rodata*);
       BUILD_DIR/src/os/_Printf.o(.rodata*);
