@@ -88,7 +88,7 @@ Vtx D_0D001360[] = {
     {{{    -4,       0,       0}, 0, {0, 0}, {0x00, 0x00, 0x9b, 0x00}}},
 };
 
-Vtx D_0D001390[] = {
+Vtx common_vtx_finish_line_banner[] = {
     {{{   -80,     100,       0}, 0, {0, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -40,     100,       0}, 0, {2012, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -40,     115,       0}, 0, {2012, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -123,7 +123,7 @@ Vtx D_0D001390[] = {
     {{{    40,     100,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Vtx common_vertex_finish_post[] = {
+Vtx common_vtx_finish_post[] = {
     {{{   -92,       0,       0}, 0, {0, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -89,       0,       0}, 0, {990, 990}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -89,     115,       0}, 0, {990, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -224,7 +224,7 @@ Gfx D_0D001840[] = {
     gsDPSetTile(G_IM_FMT_CI, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0xFC, 0x7C),
     gsDPLoadTextureBlock(0x03004000, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
-    gsSPVertex(D_0D001390, 32, 0),
+    gsSPVertex(common_vtx_finish_line_banner, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsDPLoadTextureBlock(0x03004800, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),
     gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),
@@ -252,7 +252,7 @@ Gfx common_model_finish_post[] = {
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 124, 124),
-    gsSPVertex(common_vertex_finish_post, 24, 0),
+    gsSPVertex(common_vtx_finish_post, 24, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, 0x03008800),
@@ -333,63 +333,36 @@ Gfx D_0D001C88[] = {
 };
 
 
-Vtx D_0D001CE8[] = {
+Vtx common_vtx_itembox_question_mark[] = {
     {{{    -5,       0,      -5}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x80}}},
     {{{    -5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x80}}},
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x80}}},
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0x00, 0x00, 0x80}}},
-};
-
-Vtx common_vtx_itembox_question_mark[] = {
     {{{     3,      -5,       0}, 0, {1024, 1945}, {0xff, 0xff, 0xff, 0xff}}},
     {{{     3,       5,       0}, 0, {1024, 65434}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,       5,       0}, 0, {0, 65434}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,      -5,       0}, 0, {0, 1945}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-Vtx D_0D001D68[] = {
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
-};
-
-Vtx D_0D001D98[] = {
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
-};
-
-Vtx D_0D001DC8[] = {
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
-};
-
-Vtx D_0D001DF8[] = {
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{     0,       7,       0}, 0, {0, 0}, {0x00, 0xff, 0x00, 0x99}}},
-};
-
-Vtx D_0D001E28[] = {
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
-};
-
-Vtx D_0D001E58[] = {  
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{     5,       0,       5}, 0, {0, 0}, {0x00, 0x00, 0xff, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
-
-};
-Vtx D_0D001E88[] = {
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{     5,       0,      -5}, 0, {0, 0}, {0x00, 0xff, 0xff, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
-};
-
-Vtx D_0D001EB8[] = {
     {{{    -5,       0,       5}, 0, {0, 0}, {0xff, 0xff, 0x00, 0x99}}},
     {{{    -5,       0,      -5}, 0, {0, 0}, {0xff, 0x82, 0x00, 0x99}}},
     {{{     0,      -7,       0}, 0, {0, 0}, {0xff, 0x00, 0x04, 0x99}}},
@@ -407,7 +380,7 @@ Gfx D_0D002EE8[] = {
     gsDPSetBlendMask(0xFF),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsDPSetRenderMode(G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2),
-    gsSPVertex(D_0D001CE8, 4, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[0], 4, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSP1Triangle(0, 2, 3, 0),
     gsDPSetAlphaCompare(G_AC_NONE),
@@ -455,7 +428,7 @@ Gfx itemBoxQuestionMarkModel[] = {
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 256),
-    gsSPVertex(common_vtx_itembox_question_mark, 4, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[4], 4, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
@@ -465,7 +438,7 @@ Gfx D_0D003090[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001D68, 24, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[8], 24, 0),
     gsSP1Triangle(9, 10, 11, 0),
     gsSP1Triangle(6, 7, 8, 0),
     gsSP1Triangle(3, 4, 5, 0),
@@ -481,7 +454,7 @@ Gfx D_0D0030F8[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001D68, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[8], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -490,7 +463,7 @@ Gfx D_0D003128[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001D98, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[11], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -499,7 +472,7 @@ Gfx D_0D003158[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001DC8, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[14], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -508,7 +481,7 @@ Gfx D_0D003188[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001DF8, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[17], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -517,7 +490,7 @@ Gfx D_0D0031B8[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001E28, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[20], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -526,7 +499,7 @@ Gfx D_0D0031E8[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001E58, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[23], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -535,7 +508,7 @@ Gfx D_0D003218[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001E88, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[26], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -544,7 +517,7 @@ Gfx D_0D003248[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPTexture(1, 1, 0, G_TX_RENDERTILE, G_OFF),
-    gsSPVertex(D_0D001EB8, 3, 0),
+    gsSPVertex(&common_vtx_itembox_question_mark[29], 3, 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList(),
 };
@@ -652,7 +625,6 @@ Vtx D_0D005238[] = {
 };
 
 Vtx D_0D005278[] = {
-
     {{{     3,       6,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,       6,       0}, 0, {1984, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    -3,       0,       0}, 0, {1984, 1920}, {0xff, 0xff, 0xff, 0xff}}},
@@ -945,23 +917,17 @@ Vtx D_0D005C30[] = {
     {{{    23,       0,       0}, 0, {3008, 1472}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -24,       0,       0}, 0, {0, 1472}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -24,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-Vtx D_0D005E80[] = {
     {{{    23,       0,       0}, 0, {3008, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    23,      23,       0}, 0, {3008, 1472}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -24,      23,       0}, 0, {0, 1472}, {0xff, 0xff, 0xff, 0xff}}},
 };
-
+// Lakitu vtx
 Vtx D_0D005EB0[] = {
     {{{   -28,     -35,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    27,     -35,       0}, 0, {3520, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    27,       0,       0}, 0, {3520, 2240}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -28,       0,       0}, 0, {0, 2240}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -28,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
-};
-    
-Vtx D_0D005F00[] = {
     {{{    27,       0,       0}, 0, {3520, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    27,      35,       0}, 0, {3520, 2240}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -28,      35,       0}, 0, {0, 2240}, {0xff, 0xff, 0xff, 0xff}}},
@@ -973,25 +939,20 @@ Vtx D_0D005F30[] = {
     {{{    45,       0,       0}, 0, {3520, 2240}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -10,       0,       0}, 0, {0, 2240}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -10,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-Vtx D_0D005F80[] = {
     {{{    45,       0,       0}, 0, {3520, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    45,      35,       0}, 0, {3520, 2240}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -10,      35,       0}, 0, {0, 2240}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Vtx D_0D005FB0 = {{{ -32, -16, 0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}};
-
-Vtx D_0D005FC0[] = {
+Vtx D_0D005FB0[] = {
+    {{{   -32,     -16,       0}, 0, {0,   0 }, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,     -16,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,      15,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      15,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
 };
 
-Vtx D_0D005FF0 = {{{ -53, -16, 0}, 0, {0, 0}, {0xff, 0x00, 0x00, 0xff}}};
-
-Vtx D_0D006000[] = {
+Vtx D_0D005FF0[] = {
+    {{{   -53,     -16,       0}, 0, {0, 0}, {0xff, 0x00, 0x00, 0xff}}},
     {{{    10,     -16,       0}, 0, {4032, 0}, {0xff, 0x00, 0x00, 0xff}}},
     {{{    10,      15,       0}, 0, {4032, 1984}, {0xff, 0x00, 0x00, 0xff}}},
     {{{   -53,      15,       0}, 0, {0, 1984}, {0xff, 0x00, 0x00, 0xff}}},
@@ -1003,23 +964,18 @@ Vtx D_0D006030[] = {
     {{{    31,      31,       0}, 0, {4032, 4032}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      31,       0}, 0, {0, 4032}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,     -32,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_0D006080[] = {  
     {{{    31,     -32,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
     {{{    31,      31,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
     {{{   -32,      31,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
 };
 
+// Hedgehog
 Vtx D_0D0060B0[] = {  
     {{{   -32,     -31,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,     -31,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,       0,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,       0,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-Vtx D_0D006100[] = {
     {{{    31,       0,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,      31,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      31,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1030,10 +986,7 @@ Vtx D_0D006130[] = {
     {{{    31,     -31,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,       0,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,       0,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   -32,       0,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-Vtx D_0D006180[] = {  
+    {{{   -32,       0,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}}, 
     {{{    31,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,      31,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      31,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1053,9 +1006,6 @@ Vtx D_0D0061B0[] = {
     {{{    31,       0,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,       0,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,       0,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-Vtx D_0D006280[] = {  
     {{{    31,       0,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,      31,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      31,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1091,9 +1041,6 @@ Vtx D_0D0062B0[] = {
     {{{    31,      15,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      15,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      15,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-Vtx D_0D006480[] = {
     {{{    31,      15,       0}, 0, {4032, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    31,      47,       0}, 0, {4032, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -32,      47,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1137,14 +1084,11 @@ Vtx D_0D0064B0[] = {
     {{{    35,       0,       0}, 0, {4544, 1504}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -36,       0,       0}, 0, {0, 1504}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -36,       0,       0}, 0, {0, 32}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-Vtx D_0D006700[] = {
     {{{    35,       0,       0}, 0, {4544, 32}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    35,      23,       0}, 0, {4544, 1504}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -36,      23,       0}, 0, {0, 1504}, {0xff, 0xff, 0xff, 0xff}}},
 };
-
+// Also lakitu vtx
 Vtx D_0D006730[] = {
     {{{   -36,     -27,       0}, 0, {0, 0}, {0xff, 0xff, 0xff, 0xff}}},
     {{{    35,     -27,       0}, 0, {4544, 0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -1171,9 +1115,6 @@ Vtx D_0D006730[] = {
     {{{    55,      15,       0}, 0, {7104, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -56,      15,       0}, 0, {0, 1984}, {0xff, 0xff, 0xff, 0xff}}},
     {{{   -56,     -16,       0}, 0, {0, 0}, {0x00, 0x00, 0x00, 0xff}}},
-};
-
-Vtx D_0D0068C0[] = {
     {{{    55,     -16,       0}, 0, {7104, 0}, {0x00, 0x00, 0x00, 0xff}}},
     {{{    55,      15,       0}, 0, {7104, 1984}, {0x00, 0x00, 0x00, 0xff}}},
     {{{   -56,      15,       0}, 0, {0, 1984}, {0x00, 0x00, 0x00, 0xff}}},
@@ -1262,11 +1203,6 @@ Gfx D_0D006A40[] = {
     gsSPDisplayList(common_rectangle_display),
     gsSPEndDisplayList(),
 };
-
-
-
-
-
 
 // Texture Block shadow i4
 s8 D_0D006A58[] = {

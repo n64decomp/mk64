@@ -211,8 +211,7 @@ void thread9_crash_screen(UNUSED void *arg0)
             // Run only on the first iteration.
             if (sCounter == 0) {
                 crash_screen_draw_square(pFramebuffer);
-//#define SKIP_DRAW_SQUARE
-#ifndef SKIP_DRAW_SQUARE
+#ifndef DEBUG
                 while(TRUE)
                 {
                     read_controllers();
@@ -231,7 +230,7 @@ void thread9_crash_screen(UNUSED void *arg0)
                     }
                 }
 #endif
-#ifdef CRASH_SCREEN_ENHANCEMENT
+#if DEBUG
                 crash_screen_draw(thread);
 #else
                 crash_screen_draw_info(pFramebuffer, thread);

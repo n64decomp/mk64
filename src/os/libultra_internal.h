@@ -1,6 +1,7 @@
 #ifndef _LIBULTRA_INTERNAL_H_
 #define _LIBULTRA_INTERNAL_H_
 #include <ultra64.h>
+#include <PR/os_thread.h>
 #include "macros.h"
 
 typedef struct __OSEventState
@@ -15,15 +16,41 @@ typedef struct __osThreadTail
     OSPri priority;
 } OSThreadTail;
 
+/*
+ * This define is needed because the original definitions in __osDequeueThread.c are declared
+ * seperately instead of part of a single struct, however some code alises over this memory
+ * assuming a unified structure. To fix this, we declare the full type here and then alias the
+ * symbol names to the correct members in AVOID_UB.
+ */
+typedef struct
+{
+    /*0x00*/ struct OSThread_s *next;
+    /*0x04*/ OSPri priority;
+    /*0x08*/ struct OSThread_s *queue;
+    /*0x0C*/ struct OSThread_s *tlnext;
+    /*0x10*/ struct OSThread_s *unk10;
+    /*0x14*/ u32 unk14;
+} OSThread_ListHead;
+#ifdef AVOID_UB
+
+// Now fix the symbols to the new one.
+extern OSThread_ListHead __osThreadTail_fix;
+
+#define __osThreadTail __osThreadTail_fix.next
+#define D_80334894 __osThreadTail_fix.priority
+#define __osRunQueue __osThreadTail_fix.queue
+#define __osActiveQueue __osThreadTail_fix.tlnext
+#define __osRunningThread __osThreadTail_fix.unk10
+#else
 // Original OSThread_ListHead definitions
-extern OSThreadTail __osThreadTail;
+extern OSThread *__osThreadTail;
 extern OSThread *__osActiveQueue;
 extern OSThread *__osRunQueue;
 extern OSThread *__osRunningThread;
-
+#endif
 
 // Original EEPROM definitions
-extern ALIGNED8 u32 D_80365E00[15];
+extern u32 D_80365E00[15];
 extern u32 D_80365E3C;
 
 typedef struct {

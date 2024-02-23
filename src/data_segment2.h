@@ -51,6 +51,7 @@ extern Gfx D_02008058[];
 extern Gfx common_rectangle_display[];
 
 extern Vtx D_02007BB8[];
+#ifndef AVOID_UB
 extern Vtx D_02007BD8[];
 extern Vtx D_02007BF8[];
 extern Vtx D_02007C18[];
@@ -77,5 +78,7 @@ extern Vtx D_02007E98[];
 extern Vtx D_02007EB8[];
 extern Vtx D_02007ED8[];
 extern Vtx D_02007EF8[];
+#endif
+
 
 #endif

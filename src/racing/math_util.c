@@ -7,6 +7,7 @@
 #include <PR/rcp.h>
 #include "data/trig_tables.h"
 #include "math.h"
+#include "memory.h"
 
 #pragma intrinsic (sqrtf,fabs)
 

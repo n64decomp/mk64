@@ -25,6 +25,9 @@ glabel D_801976A0
 
 .section .text, "ax"
 
+.ifdef AVOID_UB
+.set __osThreadTail, __osThreadTail_fix
+.endif
 
 glabel __osExceptionPreamble
 /* 0D1DB0 800D11B0 3C1A800D */  lui   $k0, %hi(__osException) # $k0, 0x800d
@@ -46,8 +49,8 @@ glabel __osException
 /* 0D1DEC 800D11EC AF400018 */  sw    $zero, 0x18($k0)
 /* 0D1DF0 800D11F0 40086800 */  mfc0  $t0, $13
 /* 0D1DF4 800D11F4 03404025 */  move  $t0, $k0
-/* 0D1DF8 800D11F8 3C1A800F */  lui   $k0, %hi(__osRunningThread) # $k0, 0x800f
-/* 0D1DFC 800D11FC 8F5AB3B0 */  lw    $k0, %lo(__osRunningThread)($k0)
+/* 0D1DF8 800D11F8 3C1A800F */  lui   $k0, %hi(__osThreadTail+0x10) # $k0, 0x800f
+/* 0D1DFC 800D11FC 8F5AB3B0 */  lw    $k0, %lo(__osThreadTail+0x10)($k0)
 /* 0D1E00 800D1200 DD090020 */  ld    $t1, 0x20($t0)
 /* 0D1E04 800D1204 FF490020 */  sd    $t1, 0x20($k0)
 /* 0D1E08 800D1208 DD090118 */  ld    $t1, 0x118($t0)
@@ -320,8 +323,8 @@ glabel L800D15B4
 /* 0D21E4 800D15E4 AD2A0000 */  sw    $t2, ($t1)
 /* 0D21E8 800D15E8 0C0345B9 */  jal   func_800D16E4
 /* 0D21EC 800D15EC 24040070 */   li    $a0, 112
-/* 0D21F0 800D15F0 3C0A800F */  lui   $t2, %hi(__osRunQueue) # $t2, 0x800f
-/* 0D21F4 800D15F4 8D4AB3A8 */  lw    $t2, %lo(__osRunQueue)($t2)
+/* 0D21F0 800D15F0 3C0A800F */  lui   $t2, %hi(__osThreadTail+0x8) # $t2, 0x800f
+/* 0D21F4 800D15F4 8D4AB3A8 */  lw    $t2, %lo(__osThreadTail+0x8)($t2)
 /* 0D21F8 800D15F8 2401EFFF */  li    $at, -4097
 /* 0D21FC 800D15FC 02018024 */  and   $s0, $s0, $at
 /* 0D2200 800D1600 8D5B0118 */  lw    $k1, 0x118($t2)
@@ -355,31 +358,31 @@ glabel L800D1630
 /* 0D2264 800D1664 00000000 */   nop   
 .L800D1668:
 glabel L800D1668
-/* 0D2268 800D1668 3C0A800F */  lui   $t2, %hi(__osRunQueue) # $t2, 0x800f
-/* 0D226C 800D166C 8D4AB3A8 */  lw    $t2, %lo(__osRunQueue)($t2)
+/* 0D2268 800D1668 3C0A800F */  lui   $t2, %hi(__osThreadTail+0x8) # $t2, 0x800f
+/* 0D226C 800D166C 8D4AB3A8 */  lw    $t2, %lo(__osThreadTail+0x8)($t2)
 /* 0D2270 800D1670 8F490004 */  lw    $t1, 4($k0)
 /* 0D2274 800D1674 8D4B0004 */  lw    $t3, 4($t2)
 /* 0D2278 800D1678 012B082A */  slt   $at, $t1, $t3
 /* 0D227C 800D167C 10200007 */  beqz  $at, .L800D169C
 /* 0D2280 800D1680 00000000 */   nop   
-/* 0D2284 800D1684 3C04800F */  lui   $a0, %hi(__osRunQueue) # $a0, 0x800f
+/* 0D2284 800D1684 3C04800F */  lui   $a0, %hi(__osThreadTail+0x8) # $a0, 0x800f
 /* 0D2288 800D1688 03402825 */  move  $a1, $k0
 /* 0D228C 800D168C 0C034633 */  jal   __osEnqueueThread
-/* 0D2290 800D1690 2484B3A8 */   addiu $a0, %lo(__osRunQueue) # addiu $a0, $a0, -0x4c58
+/* 0D2290 800D1690 2484B3A8 */   addiu $a0, %lo(__osThreadTail+0x8) # addiu $a0, $a0, -0x4c58
 /* 0D2294 800D1694 08034649 */  j     __osDispatchThread
 /* 0D2298 800D1698 00000000 */   nop   
 
 .L800D169C:
-/* 0D229C 800D169C 3C09800F */  lui   $t1, %hi(__osRunQueue) # $t1, 0x800f
-/* 0D22A0 800D16A0 2529B3A8 */  addiu $t1, %lo(__osRunQueue) # addiu $t1, $t1, -0x4c58
+/* 0D229C 800D169C 3C09800F */  lui   $t1, %hi(__osThreadTail+0x8) # $t1, 0x800f
+/* 0D22A0 800D16A0 2529B3A8 */  addiu $t1, %lo(__osThreadTail+0x8) # addiu $t1, $t1, -0x4c58
 /* 0D22A4 800D16A4 8D2A0000 */  lw    $t2, ($t1)
 /* 0D22A8 800D16A8 AF4A0000 */  sw    $t2, ($k0)
 /* 0D22AC 800D16AC 08034649 */  j     __osDispatchThread
 /* 0D22B0 800D16B0 AD3A0000 */   sw    $k0, ($t1)
 
 .L800D16B4:
-/* 0D22B4 800D16B4 3C01800F */  lui   $at, %hi(__osFaultedThread) # $at, 0x800f
-/* 0D22B8 800D16B8 AC3AB3B4 */  sw    $k0, %lo(__osFaultedThread)($at)
+/* 0D22B4 800D16B4 3C01800F */  lui   $at, %hi(__osThreadTail+0x14) # $at, 0x800f
+/* 0D22B8 800D16B8 AC3AB3B4 */  sw    $k0, %lo(__osThreadTail+0x14)($at)
 /* 0D22BC 800D16BC 24090001 */  li    $t1, 1
 /* 0D22C0 800D16C0 A7490010 */  sh    $t1, 0x10($k0)
 /* 0D22C4 800D16C4 24090002 */  li    $t1, 2
@@ -433,10 +436,10 @@ glabel func_800D16E4
 /* 0D2374 800D1774 0C034645 */  jal   __osPopThread
 /* 0D2378 800D1778 01202025 */   move  $a0, $t1
 /* 0D237C 800D177C 00405025 */  move  $t2, $v0
-/* 0D2380 800D1780 3C04800F */  lui   $a0, %hi(__osRunQueue) # $a0, 0x800f
+/* 0D2380 800D1780 3C04800F */  lui   $a0, %hi(__osThreadTail+0x8) # $a0, 0x800f
 /* 0D2384 800D1784 01402825 */  move  $a1, $t2
 /* 0D2388 800D1788 0C034633 */  jal   __osEnqueueThread
-/* 0D238C 800D178C 2484B3A8 */   addiu $a0, %lo(__osRunQueue) # addiu $a0, $a0, -0x4c58
+/* 0D238C 800D178C 2484B3A8 */   addiu $a0, %lo(__osThreadTail+0x8) # addiu $a0, $a0, -0x4c58
 .L800D1790:
 /* 0D2390 800D1790 02400008 */  jr    $s2
 /* 0D2394 800D1794 00000000 */   nop   
@@ -455,8 +458,8 @@ glabel func_800D16E4
 /* 0D23C4 800D17C4 1000FFB5 */  b     .L800D169C
 /* 0D23C8 800D17C8 AF5B0118 */   sw    $k1, 0x118($k0)
 glabel __osEnqueueAndYield
-/* 0D23CC 800D17CC 3C05800F */  lui   $a1, %hi(__osRunningThread) # $a1, 0x800f
-/* 0D23D0 800D17D0 8CA5B3B0 */  lw    $a1, %lo(__osRunningThread)($a1)
+/* 0D23CC 800D17CC 3C05800F */  lui   $a1, %hi(__osThreadTail+0x10) # $a1, 0x800f
+/* 0D23D0 800D17D0 8CA5B3B0 */  lw    $a1, %lo(__osThreadTail+0x10)($a1)
 /* 0D23D4 800D17D4 40086000 */  mfc0  $t0, $12
 /* 0D23D8 800D17D8 8CBB0018 */  lw    $k1, 0x18($a1)
 /* 0D23DC 800D17DC 35080002 */  ori   $t0, $t0, 2
@@ -553,11 +556,11 @@ glabel __osPopThread
 /* 0D2520 800D1920 AC990000 */   sw    $t9, ($a0)
 
 glabel __osDispatchThread
-/* 0D2524 800D1924 3C04800F */  lui   $a0, %hi(__osRunQueue) # $a0, 0x800f
+/* 0D2524 800D1924 3C04800F */  lui   $a0, %hi(__osThreadTail+0x8) # $a0, 0x800f
 /* 0D2528 800D1928 0C034645 */  jal   __osPopThread
-/* 0D252C 800D192C 2484B3A8 */   addiu $a0, %lo(__osRunQueue) # addiu $a0, $a0, -0x4c58
-/* 0D2530 800D1930 3C01800F */  lui   $at, %hi(__osRunningThread) # $at, 0x800f
-/* 0D2534 800D1934 AC22B3B0 */  sw    $v0, %lo(__osRunningThread)($at)
+/* 0D252C 800D192C 2484B3A8 */   addiu $a0, %lo(__osThreadTail+0x8) # addiu $a0, $a0, -0x4c58
+/* 0D2530 800D1930 3C01800F */  lui   $at, %hi(__osThreadTail+0x10) # $at, 0x800f
+/* 0D2534 800D1934 AC22B3B0 */  sw    $v0, %lo(__osThreadTail+0x10)($at)
 /* 0D2538 800D1938 24080004 */  li    $t0, 4
 /* 0D253C 800D193C A4480010 */  sh    $t0, 0x10($v0)
 /* 0D2540 800D1940 0040D025 */  move  $k0, $v0

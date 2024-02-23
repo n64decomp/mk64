@@ -1136,7 +1136,7 @@ Variable Name | Memory Address
 [func_8006A280](@ref func_8006A280) | 0x8006A280
 [func_8006A50C](@ref func_8006A50C) | 0x8006A50C
 [func_8006A7C0](@ref func_8006A7C0) | 0x8006A7C0
-[func_8006AFD0](@ref func_8006AFD0) | 0x8006AFD0
+[render_battle_balloon](@ref render_battle_balloon) | 0x8006AFD0
 [func_8006B7E4](@ref func_8006B7E4) | 0x8006B7E4
 [func_8006B87C](@ref func_8006B87C) | 0x8006B87C
 [func_8006B8B4](@ref func_8006B8B4) | 0x8006B8B4
@@ -1377,29 +1377,29 @@ Variable Name | Memory Address
 [func_800790E4](@ref func_800790E4) | 0x800790E4
 [func_80079114](@ref func_80079114) | 0x80079114
 [func_800791F0](@ref func_800791F0) | 0x800791F0
-[init_obj_laikitu_red_flag_countdown](@ref init_obj_laikitu_red_flag_countdown) | 0x800792D8
-[update_obj_laikitu_countdown](@ref update_obj_laikitu_countdown) | 0x80079380
-[init_obj_laikitu_red_flag](@ref init_obj_laikitu_red_flag) | 0x8007963C
-[update_obj_laikitu_red_flag](@ref update_obj_laikitu_red_flag) | 0x80079700
+[init_obj_lakitu_red_flag_countdown](@ref init_obj_lakitu_red_flag_countdown) | 0x800792D8
+[update_obj_lakitu_countdown](@ref update_obj_lakitu_countdown) | 0x80079380
+[init_obj_lakitu_red_flag](@ref init_obj_lakitu_red_flag) | 0x8007963C
+[update_obj_lakitu_red_flag](@ref update_obj_lakitu_red_flag) | 0x80079700
 [func_800797AC](@ref func_800797AC) | 0x800797AC
 [func_80079860](@ref func_80079860) | 0x80079860
 [func_8007993C](@ref func_8007993C) | 0x8007993C
-[init_obj_laikitu_red_flag_fishing](@ref init_obj_laikitu_red_flag_fishing) | 0x800799A8
+[init_obj_lakitu_red_flag_fishing](@ref init_obj_lakitu_red_flag_fishing) | 0x800799A8
 [func_80079A5C](@ref func_80079A5C) | 0x80079A5C
-[update_obj_laikitu_fishing](@ref update_obj_laikitu_fishing) | 0x80079B40
-[update_obj_laikitu_fishing2](@ref update_obj_laikitu_fishing2) | 0x80079D44
+[update_obj_lakitu_fishing](@ref update_obj_lakitu_fishing) | 0x80079B40
+[update_obj_lakitu_fishing2](@ref update_obj_lakitu_fishing2) | 0x80079D44
 [func_8007A060](@ref func_8007A060) | 0x8007A060
-[update_obj_laikitu_second_lap](@ref update_obj_laikitu_second_lap) | 0x8007A124
+[update_obj_lakitu_second_lap](@ref update_obj_lakitu_second_lap) | 0x8007A124
 [func_8007A228](@ref func_8007A228) | 0x8007A228
-[update_obj_laikitu_final_lap](@ref update_obj_laikitu_final_lap) | 0x8007A2EC
+[update_obj_lakitu_final_lap](@ref update_obj_lakitu_final_lap) | 0x8007A2EC
 [func_8007A3F0](@ref func_8007A3F0) | 0x8007A3F0
-[update_obj_laikitu_reverse](@ref update_obj_laikitu_reverse) | 0x8007A4D4
+[update_obj_lakitu_reverse](@ref update_obj_lakitu_reverse) | 0x8007A4D4
 [func_8007A66C](@ref func_8007A66C) | 0x8007A66C
 [func_8007A778](@ref func_8007A778) | 0x8007A778
 [func_8007A884](@ref func_8007A884) | 0x8007A884
 [func_8007A88C](@ref func_8007A88C) | 0x8007A88C
 [func_8007A910](@ref func_8007A910) | 0x8007A910
-[update_obj_laikitu](@ref update_obj_laikitu) | 0x8007A948
+[update_obj_lakitu](@ref update_obj_lakitu) | 0x8007A948
 [func_8007AA44](@ref func_8007AA44) | 0x8007AA44
 [func_8007ABFC](@ref func_8007ABFC) | 0x8007ABFC
 [consume_item](@ref consume_item) | 0x8007AC9C
@@ -2669,6 +2669,7 @@ Variable Name | Memory Address
 [gIsMirrorMode](@ref gIsMirrorMode) | 0x800DC604
 [vtxStretchY](@ref vtxStretchY) | 0x800DC608
 [D_800DC610](@ref D_800DC610) | 0x800DC610
+[pad_800029B0](@ref pad_800029B0) | 0x800DC640
 [gCreditsCourseId](@ref gCreditsCourseId) | 0x800DC644
 [gPlaceItemBoxes](@ref gPlaceItemBoxes) | 0x800DC648
 [gEnableResourceMeters](@ref gEnableResourceMeters) | 0x800DC660
@@ -3812,7 +3813,7 @@ Variable Name | Memory Address
 [D_801502A0](@ref D_801502A0) | 0x801502A0
 [D_801502A4](@ref D_801502A4) | 0x801502A4
 [gPhysicalFramebuffers](@ref gPhysicalFramebuffers) | 0x801502A8
-[D_801502B4](@ref D_801502B4) | 0x801502B4
+[gPhysicalZBuffer](@ref gPhysicalZBuffer) | 0x801502B4
 [D_801502B8](@ref D_801502B8) | 0x801502B8
 [D_801502BC](@ref D_801502BC) | 0x801502BC
 [D_801502C0](@ref D_801502C0) | 0x801502C0
@@ -5262,9 +5263,10 @@ Variable Name | Memory Address
 [sPoolFreeSpace](@ref sPoolFreeSpace) | 0x802BA278
 [sPoolListHeadL](@ref sPoolListHeadL) | 0x802BA27C
 [sPoolListHeadR](@ref sPoolListHeadR) | 0x802BA280
+[memoryPadding](@ref memoryPadding) | 0x802BA288
 [gRandomSeed16](@ref gRandomSeed16) | 0x802BA290
 [randomSeedPadding](@ref randomSeedPadding) | 0x802BA298
-[frameBufferPadding](@ref frameBufferPadding) | 0x802BA370
+[trigTablesPadding](@ref trigTablesPadding) | 0x802BA370
 [D_802BFB80](@ref D_802BFB80) | 0x802BFB80
 [D_802DFB80](@ref D_802DFB80) | 0x802DFB80
 [D_802F1F80](@ref D_802F1F80) | 0x802F1F80
@@ -19870,9 +19872,9 @@ Variable Name | Memory Address
 [instrument_sets](@ref instrument_sets) | 0x00282E80
 [pool.)](@ref pool.)) | 0x00000001
 [segment.)](@ref segment.)) | 0x00000001
-[segment)](@ref segment)) | 0x00000001
 [segment.)](@ref segment.)) | 0x00000001
-[memory)](@ref memory)) | 0x00000001
+[segment.)](@ref segment.)) | 0x00000001
+[segment.)](@ref segment.)) | 0x00000001
 
 Note: This information is generated during the compilation process.
 

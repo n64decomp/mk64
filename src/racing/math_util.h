@@ -21,6 +21,7 @@ s32  render_set_position(Mat4, s32);
 f32  func_802B51E8(Vec3f, Vec3f);
 s32  get_angle_between_points(Vec3f, Vec3f);
 u32  func_802B5258(Vec3f, Vec3s);
+void func_802B5794(Mat4, Vec3f, Vec3f);
 void vec3f_set(Vec3f, f32, f32, f32);
 void vec3s_set(Vec3s, s16, s16, s16);
 void *vec3f_copy_return(Vec3f, Vec3f);
@@ -67,9 +68,5 @@ f32  is_within_render_distance(Vec3f, Vec3f, u16, f32, f32, f32);
 
 extern s32 D_802B91C0[];
 extern Vec3f D_802B91C8;
-
-// end of math_util.c variables
-
-extern u16 gRandomSeed16;
 
 #endif // MATH_UTIL_H
