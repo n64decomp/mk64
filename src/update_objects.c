@@ -3,7 +3,7 @@
 #include <defines.h>
 #include <decode.h>
 
-#include "code_80071F00.h"
+#include "update_objects.h"
 #include "main.h"
 #include "memory.h"
 #include "camera.h"
