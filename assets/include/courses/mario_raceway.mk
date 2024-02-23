@@ -36,7 +36,7 @@ $(PIRANHA_PLANT_FRAMES) $(MARIO_RACEWAY_PIRANHA_PLANT_PALETTE) $(MARIO_RACEWAY_S
 
 $(PIRANHA_PLANT_EXPORT_SENTINEL): $(ASSET_DIR)/courses/mario_raceway.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_mario_raceway
 distclean_mario_raceway:

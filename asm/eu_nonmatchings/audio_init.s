@@ -59,7 +59,7 @@ glabel audio_init
 /* BCD98 800BC198 240E0032 */  addiu      $t6, $zero, 0x32
 /* BCD9C 800BC19C E4247178 */  swc1       $ft0, %lo(D_803B7178)($at)
 /* BCDA0 800BC1A0 3C01803B */  lui        $at, %hi(gRefreshRate)
-/* BCDA4 800BC1A4 0C032FF6 */  jal        func_800CBF48
+/* BCDA4 800BC1A4 0C032FF6 */  jal        port_eu_init
 /* BCDA8 800BC1A8 AC2E717C */   sw        $t6, %lo(gRefreshRate)($at)
 /* BCDAC 800BC1AC 3C02803B */  lui        $v0, %hi(gAiBufferLengths)
 /* BCDB0 800BC1B0 3C04803B */  lui        $a0, %hi(D_803B7192)

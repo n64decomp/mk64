@@ -21,7 +21,7 @@ struct SharedDma {
     /*0xE*/ u8 ttl;           // duration after which the DMA can be discarded
 };                            // size = 0x10
 
-void audio_dma_copy_immediate(uintptr_t devAddr, void *vAddr, size_t nbytes);
+void audio_dma_copy_immediate(u8* devAddr, void *vAddr, size_t nbytes);
 void audio_dma_copy_async(uintptr_t, void*, size_t, OSMesgQueue*, OSIoMesg*);
 void audio_dma_partial_copy_async(uintptr_t*, u8**, ssize_t*, OSMesgQueue*, OSIoMesg*);
 void decrease_sample_dma_ttls(void);

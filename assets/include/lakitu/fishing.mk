@@ -24,7 +24,7 @@ $(FISHING_FRAMES) $(FISHING_PALETTE): $(FISHING_EXPORT_SENTINEL) ;
 
 $(FISHING_EXPORT_SENTINEL): assets/lakitu/fishing.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_fishing
 distclean_lakitu_fishing:

@@ -1499,7 +1499,7 @@ $(LUIGI_KART_FRAME_PNG) $(LUIGI_KART_PALETTE_PNG): $(LUIGI_EXPORT_SENTINEL) ;
 
 $(LUIGI_EXPORT_SENTINEL): $(ASSET_DIR)/karts/luigi_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_luigi_kart
 distclean_luigi_kart:

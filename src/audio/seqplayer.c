@@ -812,10 +812,10 @@ void sequence_channel_process_script(struct SequenceChannel *seqChannel) {
             if (cmd > 0xc0) {
                 switch (cmd) {
                 case 0xFF:
-                    if (state->depth);
-                    if(1);
-                    if(1);
-                    if(1);
+                    if(state->depth){};
+                    if(1){};
+                    if(1){};
+                    if(1){};
                     if (state->depth == 0) {
                         sequence_channel_disable(seqChannel);
                         goto out;
@@ -1068,7 +1068,7 @@ void sequence_channel_process_script(struct SequenceChannel *seqChannel) {
 
                 case 0xE4:
                     if (value != (-1)) {
-                        if (state->depth);
+                        if (state->depth){};
                         seqData = (*seqChannel->dynTable)[value];
                         state->stack[state->depth++] = state->pc;
                         sp38 = (u16) ((seqData[0] << 8) + seqData[1]);
@@ -1540,7 +1540,7 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
     }
 }
 
-void process_sequences(s32 iterationsRemaining) {
+void process_sequences(UNUSED s32 iterationsRemaining) {
     s32 i;
     for (i = 0; i < SEQUENCE_PLAYERS; i++) {
         if (gSequencePlayers[i].enabled == TRUE) {

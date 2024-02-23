@@ -38,7 +38,7 @@ $(TREES_PNG) $(TREES_PALETTE) $(TREES_PALETTE_IMPORT): $(TREES_EXPORT_SENTINEL) 
 
 $(TREES_EXPORT_SENTINEL): $(ASSET_DIR)/trees.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_trees
 distclean_trees:

@@ -429,8 +429,8 @@ f32 gDefaultPanVolume[128] = {
 
 s32 gAudioTaskIndex;
 s32 gCurrAiBufferIndex;
-u64 *gAudioCmdBuffers[2]; // probably wrong
-u64 *gAudioCmd;
+Acmd *gAudioCmdBuffers[2]; // probably wrong
+Acmd *gAudioCmd;
 struct SPTask *gAudioTask; // gAudioTask?
 struct SPTask gAudioTasks[2]; // gAudioTasks?
 f32 D_803B7178;

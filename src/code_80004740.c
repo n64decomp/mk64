@@ -103,8 +103,8 @@ void func_80004A1C(animation_type_1 *arg0, s16 *arg1, animation_type_3_triplet a
     }
 }
 
-void func_80004C30(u32 *arg0, animation_type_2 *arg1, s16 arg2) {
-    u32 *temp;
+void func_80004C30(animation_type_1 *arg0, animation_type_2 *arg1, s16 arg2) {
+    UNUSED u32 *temp;
     s16 *sp40;
     s32 some_offset;
     animation_type_3_triplet *temp_v0;
@@ -126,7 +126,7 @@ void func_80004C30(u32 *arg0, animation_type_2 *arg1, s16 arg2) {
     temp_v0++;
     D_80162D78 = 0;
     do {
-        new_var = ((animation_type_1 *) arg0)->type;
+        new_var = arg0->type;
         switch (new_var) {                          /* irregular */
         case 3:
             break;
@@ -147,7 +147,7 @@ void func_80004C30(u32 *arg0, animation_type_2 *arg1, s16 arg2) {
             temp_v0++;
             break;
         }
-        arg0 += ((animation_type_1*)arg0)->size;
+        arg0 = (animation_type_1 *) ((u32 *) arg0 + arg0->size);
     } while (new_var != 3);
 }
 

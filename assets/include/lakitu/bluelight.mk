@@ -28,7 +28,7 @@ $(BLUELIGHT_FRAMES) $(BLUELIGHT_PALETTE): $(BLUELIGHT_EXPORT_SENTINEL) ;
 
 $(BLUELIGHT_EXPORT_SENTINEL): assets/lakitu/bluelight.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_bluelight
 distclean_lakitu_bluelight:

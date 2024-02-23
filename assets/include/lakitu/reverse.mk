@@ -36,7 +36,7 @@ $(REVERSE_FRAMES) $(REVERSE_PALETTE): $(REVERSE_EXPORT_SENTINEL) ;
 
 $(REVERSE_EXPORT_SENTINEL): assets/lakitu/reverse.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_reverse
 distclean_lakitu_reverse:

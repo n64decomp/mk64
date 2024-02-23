@@ -28,6 +28,7 @@
 #include "audio/external.h"
 #include "ending/podium_ceremony_actors.h"
 #include "spawn_players.h"
+#include "sounds.h"
 
 s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;
@@ -4659,9 +4660,9 @@ void func_80012AC0(void) {
         if ((temp_s0 != gTrainList[i].locomotive.waypointIndex)
             && ((gTrainList[i].locomotive.waypointIndex == 0x00BE)
             || (gTrainList[i].locomotive.waypointIndex == 0x0140))) {
-            func_800C98B8(gTrainList[i].locomotive.position, gTrainList[i].locomotive.velocity, 0x1901800E);
+            func_800C98B8(gTrainList[i].locomotive.position, gTrainList[i].locomotive.velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x0E));
         } else if (random_int(100) == 0) {
-            func_800C98B8(gTrainList[i].locomotive.position, gTrainList[i].locomotive.velocity, 0x1901800D);
+            func_800C98B8(gTrainList[i].locomotive.position, gTrainList[i].locomotive.velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x0D));
         }
 
         gTrainList[i].someFlags = func_800061DC(gTrainList[i].locomotive.position, 2000.0f, gTrainList[i].someFlags);
@@ -4877,9 +4878,9 @@ void func_800133C4(void) {
             }
             if (random_int(100) == 0) {
                 if (random_int(2) == 0) {
-                    func_800C98B8(ferry->position, ferry->velocity, 0x19018047U);
+                    func_800C98B8(ferry->position, ferry->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x47));
                 } else {
-                    func_800C98B8(ferry->position, ferry->velocity, 0x19018048U);
+                    func_800C98B8(ferry->position, ferry->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x48));
                 }
             }
             sp94[0] = temp_f26;
@@ -5110,7 +5111,7 @@ void func_80013D20(VehicleStuff *vehicle) {
     vehicleActor->velocity[2] = vehicle->velocity[2];
 }
 
-void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3, f32 arg4, s32 arg5, u32 arg6) {
+void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3, f32 arg4, s32 arg5, u32 soundBits) {
     f32 temp_f12;
     f32 temp_f14;
     f32 temp_f22;
@@ -5149,14 +5150,14 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
                         if ((D_801631C8 > 0) && (vehicle->someFlags == 0)) {
                             D_801631C8 -= 1;
                             vehicle->someFlags |= (1 << playerId);
-                            func_800C9D80(vehicle->position, vehicle->velocity, arg6);
+                            func_800C9D80(vehicle->position, vehicle->velocity, soundBits);
                         }
                     } else {
                         if (vehicle->someFlags != 0) {
                             vehicle->someFlags &= ~(1 << playerId);
                             if (vehicle->someFlags == 0) {
                                 D_801631C8 += 1;
-                                func_800C9EF4(vehicle->position, arg6);
+                                func_800C9EF4(vehicle->position, soundBits);
                             }
                         }
                     }
@@ -5199,39 +5200,39 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
                             }
                             if (var_s1 == 1) {
                                 
-                                u32 var_a2 = 0x1901703B;
+                                u32 soundBits2 = SOUND_ARG_LOAD(0x19, 0x01, 0x70, 0x3B);
                                 
-                                switch (arg6) {
-                                case 0x51018005:
-                                    var_a2 = 0x1901703B;
+                                switch (soundBits) {
+                                case SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x05):
+                                    soundBits2 = SOUND_ARG_LOAD(0x19, 0x01, 0x70, 0x3B);
                                     if (random_int(4) == 0) {
-                                        var_a2 = 0x1901703C;
+                                        soundBits2 = SOUND_ARG_LOAD(0x19, 0x01, 0x70, 0x3C);
                                     }
                                     break;
-                                case 0x51018002:
+                                case SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x02):
                                     if (random_int(2) != 0) {
-                                        var_a2 = 0x1901703D;
+                                        soundBits2 = SOUND_ARG_LOAD(0x19, 0x01, 0x70, 0x3D);
                                     } else {
-                                        var_a2 = 0x1901703E;
+                                        soundBits2 = SOUND_ARG_LOAD(0x19, 0x01, 0x70, 0x3E);
                                     }
                                     break;
-                                case 0x51018003:
+                                case SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x03):
                                     if (random_int(2) != 0) {
-                                        var_a2 = 0x1901703F;
+                                        soundBits2 = SOUND_ARG_LOAD(0x19, 0x01, 0x70, 0x3F);
                                     } else {
-                                        var_a2 = 0x19017040;
+                                        soundBits2 = SOUND_ARG_LOAD(0x19, 0x01, 0x70, 0x40);
                                     }
                                     break;
-                                case 0x51018004:
+                                case SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x04):
                                     if (random_int(2) != 0) {
-                                        var_a2 = 0x19017041;
+                                        soundBits2 = SOUND_ARG_LOAD(0x19, 0x01, 0x70, 0x41);
                                     } else {
-                                        var_a2 = 0x19017042;
+                                        soundBits2 = SOUND_ARG_LOAD(0x19, 0x01, 0x70, 0x42);
                                     }
                                     break;
                                 }
                                 vehicle->someFlagsTheSequel |= ((1 << playerId));
-                                func_800C98B8(vehicle->position, vehicle->velocity, var_a2);
+                                func_800C98B8(vehicle->position, vehicle->velocity, soundBits2);
                             }
                         }
                     } else {
@@ -5324,7 +5325,7 @@ void func_8001487C(void) {
 }
 
 void func_800148C4(s32 playerId, Player *player) {
-    func_80013F7C(playerId, player, gBoxTruckList, 55.0f, 12.5f, NUM_RACE_BOX_TRUCKS, 0x51018003);
+    func_80013F7C(playerId, player, gBoxTruckList, 55.0f, 12.5f, NUM_RACE_BOX_TRUCKS, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x03));
 }
 
 void func_8001490C(s32 playerId) {
@@ -5351,7 +5352,7 @@ void func_800149D0(void) {
 }
 
 void func_80014A18(s32 playerId, Player *player) {
-    func_80013F7C(playerId, player, gSchoolBusList, 70.0f, 12.5f, NUM_RACE_SCHOOL_BUSES, 0x51018002);
+    func_80013F7C(playerId, player, gSchoolBusList, 70.0f, 12.5f, NUM_RACE_SCHOOL_BUSES, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x02));
 }
 
 void func_80014A60(s32 playerId) {
@@ -5378,7 +5379,7 @@ void func_80014B24(void) {
 }
 
 void func_80014B6C(s32 playerId, Player *player) {
-    func_80013F7C(playerId, player, gTankerTruckList, 55.0f, 12.5f, NUM_RACE_TANKER_TRUCKS, 0x51018004);
+    func_80013F7C(playerId, player, gTankerTruckList, 55.0f, 12.5f, NUM_RACE_TANKER_TRUCKS, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x04));
 }
 
 void func_80014BB4(s32 playerId) {
@@ -5405,7 +5406,7 @@ void func_80014C78(void) {
 }
 
 void func_80014CC0(s32 playerId, Player *player) {
-    func_80013F7C(playerId, player, gCarList, 11.5f, 8.5f, NUM_RACE_CARS, 0x51018005);
+    func_80013F7C(playerId, player, gCarList, 11.5f, 8.5f, NUM_RACE_CARS, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x05));
 }
 
 void func_80014D08(s32 playerId) {
@@ -7192,14 +7193,14 @@ void func_80019C50(s32 arg0) {
     case 0:
         if (D_80164608[arg0] == 1) {
             D_80164678[arg0] = 1;
-            func_800C9060(arg0, 0x1900904FU);
+            func_800C9060(arg0, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x4F));
             D_80164670[arg0] = D_80164678[arg0];
         }
         break;
     case 1:
         if (D_80164608[arg0] == 1) {
             D_80164678[arg0] = 0;
-            func_800C9060(arg0, 0x19009050U);
+            func_800C9060(arg0, SOUND_ARG_LOAD(0x19, 0x00, 0x90, 0x50));
             D_80164670[arg0] = D_80164678[arg0];
         }
         break;
@@ -7711,8 +7712,8 @@ void cpu_use_item_strategy(s32 playerId) {
                 banana->velocity[1] = ((waypoint->posY - player->pos[1]) / 20.0) + 4.0;
                 banana->velocity[2] =  (waypoint->posZ - player->pos[2]) / 20.0;
                 banana->pos[1] = player->pos[1];
-                func_800C92CC(playerId, 0x29008009U);
-                func_800C98B8(player->pos, player->velocity, 0x19018014U);
+                func_800C92CC(playerId, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x09));
+                func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x14));
             } else {
                 temp_s0->unk_00 = 0;
                 temp_s0->unk_04 = 0;

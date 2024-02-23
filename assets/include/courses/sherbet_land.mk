@@ -20,7 +20,7 @@ $(SHERBET_LAND_PNG) $(PENGUIN_PNG) $(SHERBET_LAND_ICE): $(SHERBET_LAND_EXPORT_SE
 
 $(SHERBET_LAND_EXPORT_SENTINEL): $(ASSET_DIR)/courses/sherbet_land.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_sherbet_land
 distclean_sherbet_land:

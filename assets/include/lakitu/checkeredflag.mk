@@ -52,7 +52,7 @@ $(CHECKEREDFLAG_FRAMES) $(CHECKEREDFLAG_PALETTE): $(CHECKEREDFLAG_EXPORT_SENTINE
 
 $(CHECKEREDFLAG_EXPORT_SENTINEL): assets/lakitu/checkeredflag.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_checkeredflag
 distclean_lakitu_checkeredflag:

@@ -58,7 +58,7 @@ $(KALIMARI_DESERT_PNG): $(KALIMARI_DESERT_EXPORT_SENTINEL) ;
 
 $(KALIMARI_DESERT_EXPORT_SENTINEL): $(ASSET_DIR)/courses/kalimari_desert.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_kalimari_desert
 distclean_kalimari_desert:
