@@ -109,8 +109,7 @@ $(function(){initNavTree('compiling.html',''); initResizable(); });
 </ul>
 </ul>
 </li>
-<li class="level1"><a href="#windows">Windows</a><ul><ul><li class="level3"><a href="#requirements">Requirements</a></li>
-<li class="level3"><a href="#setup">Setup</a></li>
+<li class="level1"><a href="#windows">Windows</a><ul><ul><li class="level3"><a href="#setup">Setup</a></li>
 </ul>
 </ul>
 </li>
@@ -138,20 +137,17 @@ Arch</h3>
 <p>Review the <a href="https://github.com/n64decomp/sm64">n64decomp/sm64</a> readme for instructions to compile in other distributions.</p>
 <h1><a class="anchor" id="windows"></a>
 Windows</h1>
-<p><em>N64 decomp does not mesh well with Windows. However, this process has been refined to be as painless as possible. WSL is a great alternative if issues arise.</em></p>
-<h3><a class="anchor" id="requirements"></a>
-Requirements</h3>
 <ul>
-<li>Clone the repo or download the zip on your computer</li>
-<li>Dowload toolchain from <a href="https://github.com/coco875/mk64-tools/releases/download/v0.0.6/mips-tools-chain-windows.zip">here</a></li>
+<li>Clone the repo or download the zip.</li>
+<li>Download and extract the toolchain from <a href="https://github.com/coco875/mk64-tools/releases/download/v0.0.6/mips-tools-chain-windows.zip">here</a></li>
 </ul>
 <h3><a class="anchor" id="setup"></a>
 Setup</h3>
-<ol type="1">
-<li>copy from mips-tools-chain-windows.zip the folder <code>mingw64</code> into tools folder in the repo</li>
+<ul>
+<li>Place the <code>mingw64</code> folder from the toolchain into the tools folder like so: <code>mk64/tools/mingw64</code>.</li>
 <li>Open a terminal (cmd or powershell) in the repo folder and run <code>"tools\mingw64\w64devkit.exe"</code> and after <code>make</code></li>
 <li>Wait for the build to finish and Enjoy!</li>
-</ol>
+</ul>
 <h1><a class="anchor" id="macos"></a>
 macOS</h1>
 <p>Install <a href="https://brew.sh">Homebrew</a>, then install the following dependencies: </p><div class="fragment"><div class="line">brew update</div>
