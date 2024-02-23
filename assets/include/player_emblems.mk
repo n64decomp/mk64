@@ -22,7 +22,7 @@ $(PLAYER_EMBLEM_PNGS) $(PLAYER_EMBLEM_PALETTE): $(PLAYER_EMBLEM_EXPORT_SENTINEL)
 
 $(PLAYER_EMBLEM_EXPORT_SENTINEL): $(ASSET_DIR)/player_emblems.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_player_emblems
 distclean_player_emblems:

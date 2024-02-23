@@ -3,10 +3,10 @@
 #include <types.h>
 #include <common_structs.h>
 #include <defines.h>
-#include <functions.h>
+#include <decode.h>
 #include "main.h"
 #include "code_800029B0.h"
-#include "framebuffers.h"
+#include "buffers.h"
 #include "save.h"
 #include "staff_ghosts.h"
 #include "code_8006E9C0.h"

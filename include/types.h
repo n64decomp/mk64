@@ -109,11 +109,4 @@ struct UnkStruct_800DDB68 {
     s32 *D_800ED620; s32 *D_800ED628; s32 *D_800ED630; s32 *D_800ED638;
 };
 
-struct UnkStruct_8018E7E8 {
-    s16 x;
-    s16 y;
-    s16 unk1;
-    s16 unk2;
-};
-
 #endif /* TYPES_H */

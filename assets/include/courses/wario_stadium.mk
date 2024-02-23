@@ -17,7 +17,7 @@ $(WARIO_STADIUM_SIGN): $(WARIO_STADIUM_EXPORT_SENTINEL) ;
 
 $(WARIO_STADIUM_EXPORT_SENTINEL): $(ASSET_DIR)/courses/wario_stadium.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_wario_stadium
 distclean_wario_stadium:

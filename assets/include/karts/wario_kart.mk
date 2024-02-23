@@ -1499,7 +1499,7 @@ $(WARIO_KART_FRAME_PNG) $(WARIO_KART_PALETTE_PNG): $(WARIO_EXPORT_SENTINEL) ;
 
 $(WARIO_EXPORT_SENTINEL): $(ASSET_DIR)/karts/wario_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_wario_kart
 distclean_wario_kart:

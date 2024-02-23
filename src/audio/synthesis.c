@@ -4,7 +4,7 @@
 #include "audio/heap.h"
 #include "audio/data.h"
 #include "audio/load.h"
-//#include "audio/seqplayer.h"
+#include "audio/seqplayer.h"
 #include "audio/internal.h"
 //#include "audio/external.h"
 #include "PR/abi.h"
@@ -162,7 +162,7 @@ Acmd *synthesis_execute(Acmd *acmd, s32 *writtenCmds, s16 *aiBuf, s32 bufLen) {
         synthesis_load_note_subs_eu(gAudioBufferParameters.updatesPerFrame - i);
     }
     aSegment(cmd++, 0, 0);
-    aiBufPtr = aiBuf;
+    aiBufPtr = (u32 *) aiBuf;
     for (i = gAudioBufferParameters.updatesPerFrame; i > 0; i--) {
         if (i == 1) {
             chunkLen = bufLen;
@@ -698,16 +698,16 @@ Acmd *final_resample(Acmd *acmd, struct NoteSynthesisState *synthesisState, s32 
 // What's here appears to have the right "shape" based on
 // the M2C output, but beyond that I can't really tell what's
 // going on
-Acmd *func_800B86A0(Acmd *cmd, struct NoteSubEu *note, struct NoteSynthesisState *synthesisState, s32 nSamples, u16 inBuf, s32 headsetPanSettings, u32 flags) {
+Acmd *func_800B86A0(Acmd *cmd, struct NoteSubEu *note, struct NoteSynthesisState *synthesisState, s32 nSamples, u16 inBuf, s32 headsetPanSettings, UNUSED u32 flags) {
     u16 sourceRight;
     u16 sourceLeft;
     u16 targetLeft;
     u16 targetRight;
     s32 rampLeft;
     s32 rampRight;
-    s32 sourceReverbVol;
-    s16 rampReverb;
-    s32 reverbVolDiff = 0;
+    UNUSED s32 sourceReverbVol;
+    UNUSED s16 rampReverb;
+    UNUSED s32 reverbVolDiff = 0;
 
     sourceLeft = synthesisState->curVolLeft;
     sourceRight = synthesisState->curVolRight;

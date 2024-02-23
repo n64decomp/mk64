@@ -19,6 +19,7 @@
 #include "spawn_players.h"
 #include "code_80057C60.h"
 #include "code_80005FD0.h"
+#include "sounds.h"
 
 extern s32 D_8018D168;
 
@@ -495,7 +496,7 @@ void func_80027EDC(Player *player, s8 playerId) {
                             func_800CA2B8(playerId);
                         }
                         if (D_80165300[playerId] == 2) {
-                            func_800C9018(playerId, 0x0170802D);
+                            func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x70, 0x80, 0x2D));
                         }
                         D_80165300[playerId] = 0;
                     }
@@ -731,7 +732,7 @@ void func_80028D3C(Player *player, Camera *camera, s8 arg2, s8 arg3) {
 void func_80028E70(Player *player, Camera *camera, s8 arg2, s8 arg3)  {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         switch (gGamestate) {
-            case ENDING_SEQUENCE:
+            case ENDING:
                 if (!(player->type & PLAYER_START_SEQUENCE)) {
                     func_80038C6C(player, camera, arg3, arg2);
                 } else {
@@ -2008,7 +2009,7 @@ void func_8002C7E4(Player *player, s8 arg1, s8 arg2) {
     }
 }
 
-void func_8002C954(Player *player, s8 arg1, Vec3f arg2) {
+void func_8002C954(Player *player, s8 playerId, Vec3f arg2) {
     f32 temp_f0;
     f32 var_f14;
     f32 xdist;
@@ -2026,7 +2027,7 @@ void func_8002C954(Player *player, s8 arg1, Vec3f arg2) {
         ((player->effects & 0x10000) == 0))) && 
         (((player->unk_0CA & 2) == 0) || 
         (!(player->unk_0CA & 8)))) {
-            func_8008F494(player, arg1);
+            func_8008F494(player, playerId);
     }
     if ((player->unk_046 & 0x20) != 0x20) {
         if ((player->unk_110.unk3C[0] < (-1.0f)) || (player->unk_110.unk3C[1] < (-1.0f))) {
@@ -2046,10 +2047,10 @@ void func_8002C954(Player *player, s8 arg1, Vec3f arg2) {
         func_80031F48(player, 18.0f);
     }
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-        xdist = D_80165070[arg1][0] - arg2[0];
-        var_f14 = D_80165070[arg1][1] - arg2[1];
+        xdist = D_80165070[playerId][0] - arg2[0];
+        var_f14 = D_80165070[playerId][1] - arg2[1];
         ydist = var_f14; // okay
-        zdist = D_80165070[arg1][2] - arg2[2];
+        zdist = D_80165070[playerId][2] - arg2[2];
         var_f14 = sqrtf((xdist * xdist) + (ydist * ydist) + (zdist * zdist)) / 3; 
         if (var_f14 >= 1.0) {
             var_f14 = 1.0f;
@@ -2057,14 +2058,14 @@ void func_8002C954(Player *player, s8 arg1, Vec3f arg2) {
         if ((var_f14 <= 0.6) && 
             (((player->unk_094 / 18.0f) * 216.0f) >= 40.0f) && 
             (!(player->type & PLAYER_INVISIBLE_OR_BOMB))) {
-                func_800CAEC4(arg1, 0.6F);
+                func_800CAEC4(playerId, 0.6F);
         } else if (!(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
             if ((var_f14 <= 0.6) && 
                 (((player->unk_094 / 18.0f) * 216.0f) < 40.0f) && 
                 (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
-                    func_800CAEC4(arg1, 0.3F);
+                    func_800CAEC4(playerId, 0.3F);
             } else {
-                func_800CAEC4(arg1, var_f14);
+                func_800CAEC4(playerId, var_f14);
             }
         }
     }

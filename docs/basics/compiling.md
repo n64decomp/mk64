@@ -27,9 +27,16 @@ Review the [n64decomp/sm64](https://github.com/n64decomp/sm64) readme for instru
 
 # Windows
 
-Not recommended. Use WSL unless this is your only option. 
+*N64 decomp does not mesh well with Windows. However, this process has been refined to be as painless as possible. WSL is a great alternative if issues arise.*
 
-[Instructions here](buildwindows.html)
+### Requirements
+- Clone the repo or download the zip on your computer
+- Dowload toolchain from [here](https://github.com/coco875/mk64-tools/releases/download/v0.0.6/mips-tools-chain-windows.zip)
+
+### Setup
+1. copy from mips-tools-chain-windows.zip the folder `mingw64` into tools folder in the repo
+2. Open a terminal (cmd or powershell) in the repo folder and run `"tools\mingw64\w64devkit.exe"` and after `make`
+3. Wait for the build to finish and Enjoy!
 
 # macOS
 
@@ -55,7 +62,6 @@ docker run --rm -v .:/mk64 mk64
 
 For example:
 ```bash
-docker run --rm -v .:/mk64 mk64 make -C tools
 docker run --rm -v .:/mk64 mk64 make
 ```
 
@@ -65,7 +71,6 @@ Place a US version of Mario Kart 64 called `baserom.us.z64` into the project fol
 
 Run the following commands after pulling:
 ```bash
-make -C tools
 make -j
 ```
 

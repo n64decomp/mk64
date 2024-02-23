@@ -2,18 +2,19 @@
 
 glabel D_800F0C6C
 .asciiz "'"
-
 .balign 4
+
 glabel D_800F0C70
 .asciiz "\""
-
 .balign 4
+
 glabel D_800F0C74
 .asciiz "'"
-
 .balign 4
+
 glabel D_800F0C78
 .asciiz "\""
+.balign 4
 
 .section .late_rodata
 

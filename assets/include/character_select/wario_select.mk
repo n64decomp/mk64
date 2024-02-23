@@ -33,7 +33,7 @@ $(WARIO_SELECT_PNG): $(WARIO_SELECT_EXPORT_SENTINEL) ;
 
 $(WARIO_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/wario_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_wario_select
 distclean_wario_select:

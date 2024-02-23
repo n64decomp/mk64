@@ -28,7 +28,7 @@ $(UNUSED_TRAFFIC_LIGHT_PNG) $(UNUSED_TRAFFIC_LIGHT_PALETTE): $(UNUSED_TRAFFIC_LI
 
 $(UNUSED_TRAFFIC_LIGHT_EXPORT_SENTINEL): $(ASSET_DIR)/unused_traffic_light.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_unused_traffic_light
 distclean_unused_traffic_light:
