@@ -3,7 +3,10 @@
 
 OUTPUT_ARCH (mips)
 
-#include "include/linker_segments.h"
+LINKER_MAIN   = 0x80000400
+LINKER_ENDING = 0x80280000
+LINKER_RACING = 0x8028DF00
+RDRAM_END     = 0x807FFFFF
 
 #define BEGIN_SEG(name, addr) \
     _##name##SegmentStart = ADDR(.name); \
