@@ -408,7 +408,7 @@ glabel L800A23DC
 /* 0A30E4 800A24E4 8339EDEC */  lb    $t9, %lo(D_8018EDEC)($t9)
 /* 0A30E8 800A24E8 02002825 */  move  $a1, $s0
 /* 0A30EC 800A24EC 24060001 */  li    $a2, 1
-/* 0A30F0 800A24F0 0C024870 */  jal   set_text_color_rainbow_if_selected_and_detect_kind_menu
+/* 0A30F0 800A24F0 0C024870 */  jal   text_rainbow_effect
 /* 0A30F4 800A24F4 03352023 */   subu  $a0, $t9, $s5
 /* 0A30F8 800A24F8 3C088019 */  lui   $t0, %hi(D_8018EDEC) # $t0, 0x8019
 /* 0A30FC 800A24FC 8108EDEC */  lb    $t0, %lo(D_8018EDEC)($t0)
@@ -735,7 +735,7 @@ glabel L800A26A8
 /* 0A3584 800A2984 A7B100E0 */  sh    $s1, 0xe0($sp)
 /* 0A3588 800A2988 A7AF00E2 */  sh    $t7, 0xe2($sp)
 .L800A298C:
-/* 0A358C 800A298C 0C024870 */  jal   set_text_color_rainbow_if_selected_and_detect_kind_menu
+/* 0A358C 800A298C 0C024870 */  jal   text_rainbow_effect
 /* 0A3590 800A2990 24060003 */   li    $a2, 3
 /* 0A3594 800A2994 02202025 */  move  $a0, $s1
 /* 0A3598 800A2998 240500D2 */  li    $a1, 210

@@ -90,7 +90,7 @@ void func_80091EE4(void);
 void func_80091FA4(void);
 void func_80092148(void);
 void func_800921B4(void);
-void set_text_color_rainbow_if_selected_and_detect_kind_menu(s32, s32, s32);
+void text_rainbow_effect(s32, s32, s32);
 void set_text_color_rainbow_if_selected(s32, s32, s32);
 void func_80092258(void);
 void func_80092290(s32, s32*, s32*);

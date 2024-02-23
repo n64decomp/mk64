@@ -3420,7 +3420,7 @@ void generate_player_smoke(void) {
                     break;
             }
             if (!(var_s0->unk14 & 1)) {
-                init_smoke_paticle(temp_s1->pos, ((random_int(30) + 20) * var_f20) / 50.0f, var_s0->unk10);
+                init_smoke_particle(temp_s1->pos, ((random_int(30) + 20) * var_f20) / 50.0f, var_s0->unk10);
             }
         }
     }

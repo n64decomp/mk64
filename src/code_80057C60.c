@@ -628,7 +628,7 @@ void render_object_p4(void) {
     render_object_for_player(PLAYER_FOUR);
 }
 
-void render_snowy_effect_player(u32 arg0) {
+void render_player_snow_effect(u32 arg0) {
     UNUSED Gfx *temp_v1;
 
     if (gHUDDisable != 0) {
@@ -642,36 +642,36 @@ void render_snowy_effect_player(u32 arg0) {
     }
     switch (arg0) {
         case RENDER_SCREEN_MODE_1P_PLAYER_ONE:
-            render_snowy_effect_player_one();
+            render_player_snow_effect_one();
             break;
         case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE:
-            render_snowy_effect_player_one();
+            render_player_snow_effect_one();
             break;
         case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
-            render_snowy_effect_player_two();
+            render_player_snow_effect_two();
             break;
         case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
-            render_snowy_effect_player_one();
+            render_player_snow_effect_one();
             break;
         case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
-            render_snowy_effect_player_two();
+            render_player_snow_effect_two();
             break;
         case RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE:
-            render_snowy_effect_player_one();
+            render_player_snow_effect_one();
             break;
         case RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO:
-            render_snowy_effect_player_two();
+            render_player_snow_effect_two();
             break;
         case RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE:
-            render_snowy_effect_player_three();
+            render_player_snow_effect_three();
             break;
         case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR:
-            render_snowy_effect_player_four();
+            render_player_snow_effect_four();
             break;
     }
 }
 
-void render_snowy_effect_player_one(void) {
+void render_player_snow_effect_one(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
@@ -680,21 +680,21 @@ void render_snowy_effect_player_one(void) {
     }
 }
 
-void render_snowy_effect_player_two(void) {
+void render_player_snow_effect_two(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     render_snowy_effect(PLAYER_TWO);
 }
 
-void render_snowy_effect_player_three(void) {
+void render_player_snow_effect_three(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     render_snowy_effect(PLAYER_THREE);
 }
 
-void render_snowy_effect_player_four(void) {
+void render_player_snow_effect_four(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
@@ -709,7 +709,7 @@ void render_object_for_player(s32 cameraId) {
         case COURSE_CHOCO_MOUNTAIN:
             break;
         case COURSE_BOWSER_CASTLE:
-            render_twomps(cameraId);
+            render_thwomps(cameraId);
             render_bowser_flame(cameraId);
             break;
         case COURSE_BANSHEE_BOARDWALK:
@@ -738,10 +738,10 @@ void render_object_for_player(s32 cameraId) {
             if (gGamestate != CREDITS_SEQUENCE) {
 
                 if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
-                    render_seaguls(cameraId);
+                    render_seagulls(cameraId);
                 }
             } else {
-                render_seaguls(cameraId);
+                render_seagulls(cameraId);
             }
             break;
         case COURSE_ROYAL_RACEWAY:
@@ -788,7 +788,7 @@ void render_object_for_player(s32 cameraId) {
             break;
     }
 
-    render_smoke_particlue(cameraId);
+    render_smoke_particles(cameraId);
     render_leaf_particle(cameraId);
 
     if (D_80165730 != 0) {
@@ -804,10 +804,10 @@ void render_snowy_effect(s32 arg0) {
         case COURSE_FRAPPE_SNOWLAND:
             if (gGamestate != 9) {
                 if ((D_8015F894 == 0) && (gPlayerCountSelection1 == 1)) {
-                    render_snowflakes_particules();
+                    render_snowflakes_particles();
                 }
             } else {
-                render_snowflakes_particules();
+                render_snowflakes_particles();
             }
             break;
         case COURSE_SHERBET_LAND:

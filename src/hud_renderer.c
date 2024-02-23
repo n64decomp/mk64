@@ -2928,7 +2928,7 @@ void render_leaf_particle(UNUSED s32 cameraId) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void render_snowflakes_particules(void) {
+void render_snowflakes_particles(void) {
     s32 someIndex;
     s32 snowflakeIndex;
 
@@ -3436,7 +3436,7 @@ void func_800534E8(s32 objectIndex) {
     }
 }
 
-void render_twomps_model(s32 objectIndex) {
+void render_thwomps_model(s32 objectIndex) {
     if ((gObjectList[objectIndex].state >= 2) && (func_80072354(objectIndex, 0x00000040) != 0)) {
         func_8004A7AC(objectIndex, 1.75f);
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling);
@@ -3449,7 +3449,7 @@ void render_twomps_model(s32 objectIndex) {
     }
 }
 
-void render_twomps(s32 cameraId) {
+void render_thwomps(s32 cameraId) {
     s32 objectIndex;
     s32 i;
     UNUSED s32 stackPadding0;
@@ -3473,10 +3473,10 @@ void render_twomps(s32 cameraId) {
         plusone = gObjectList[objectIndex].unk_0DF + 1;
         if (gGamestate != 9) {
             if ((D_8018CF68[cameraId] >= minusone) && (plusone >= D_8018CF68[cameraId]) && (is_object_visible_on_camera(objectIndex, camera, 0x8000U) != 0)) {
-                render_twomps_model(objectIndex);
+                render_thwomps_model(objectIndex);
             }
         } else {
-            render_twomps_model(objectIndex);
+            render_thwomps_model(objectIndex);
         }
     }
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
@@ -3558,7 +3558,7 @@ void func_80053E6C(s32 arg0) {
 }
 
 
-void render_object_for_player_smoke_train(s32 objectIndex, s32 cameraId) {
+void render_train_smoke(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
@@ -3588,32 +3588,32 @@ void render_train_smoke(s32 cameraId) {
 // Render smoke for any number of trains. Don't know enough about these variables yet.
 #ifdef AVOID_UB_WIP
     for (j = 0; j < NUM_TRAINS; j++) {
-        if ((gTrainList[j].someFlags != 0) && (func_80041980(&gTrainList[j].locomotive.position, camera, 0x4000U) != 0)) {
+        if ((gTrainList[j].someFlags != 0) && (is_particle_on_screen(&gTrainList[j].locomotive.position, camera, 0x4000U) != 0)) {
 
             for (i = 0; i < 128; i++) {
                 // Need to make a way to increase this array for each train.
-                render_object_for_player_smoke_train(gObjectParticle2[i], cameraId);
+                render_train_smoke(gObjectParticle2[i], cameraId);
             }
         }
     }
 #else
 
-    if ((gTrainList[0].someFlags != 0) && (func_80041980(gTrainList[0].locomotive.position, camera, 0x4000U) != 0)) {
+    if ((gTrainList[0].someFlags != 0) && (is_particle_on_screen(gTrainList[0].locomotive.position, camera, 0x4000U) != 0)) {
 
         for (i = 0; i < gObjectParticle2_SIZE; i++) {
-            render_object_for_player_smoke_train(gObjectParticle2[i], cameraId);
+            render_train_smoke(gObjectParticle2[i], cameraId);
         }
 
     }
-    if ((gTrainList[1].someFlags != 0) && (func_80041980(gTrainList[1].locomotive.position, camera, 0x4000U) != 0)) {
+    if ((gTrainList[1].someFlags != 0) && (is_particle_on_screen(gTrainList[1].locomotive.position, camera, 0x4000U) != 0)) {
         for (i = 0; i < gObjectParticle3_SIZE; i++) {
-            render_object_for_player_smoke_train(gObjectParticle3[i], cameraId);
+            render_train_smoke(gObjectParticle3[i], cameraId);
         }
     }
 #endif
 }
 
-void render_ferry_smoke_particules(s32 objectIndex, s32 cameraId) {
+void render_ferry_smoke_particles(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
@@ -3639,14 +3639,14 @@ void render_ferries_smoke(s32 cameraId) {
     func_8004B72C(255, 255, 255, 255, 255, 255, 255);
     D_80183E80[0] = 0;
     D_80183E80[2] = 0x8000;
-    if ((gFerries[0].someFlags != 0) && (func_80041980(gFerries[0].position, camera, 0x4000U) != 0)) {
+    if ((gFerries[0].someFlags != 0) && (is_particle_on_screen(gFerries[0].position, camera, 0x4000U) != 0)) {
         for (i = 0; i < gObjectParticle2_SIZE; i++) {
-            render_ferry_smoke_particules(gObjectParticle2[i], cameraId);
+            render_ferry_smoke_particles(gObjectParticle2[i], cameraId);
         }
     }
-    if ((gFerries[1].someFlags != 0) && (func_80041980(gFerries[1].position, camera, 0x4000U) != 0)) {
+    if ((gFerries[1].someFlags != 0) && (is_particle_on_screen(gFerries[1].position, camera, 0x4000U) != 0)) {
         for (i = 0; i < gObjectParticle3_SIZE; i++) {
-            render_ferry_smoke_particules(gObjectParticle3[i], cameraId);
+            render_ferry_smoke_particles(gObjectParticle3[i], cameraId);
         }
     }
 }
@@ -3708,7 +3708,7 @@ void func_8005477C(s32 objectIndex, u8 arg1, Vec3f arg2) {
     }
 }
 
-void render_smoke_particlue(s32 cameraId) {
+void render_smoke_particles(s32 cameraId) {
     UNUSED s32 stackPadding[2];
     Camera *sp54;
     s32 var_s0;
@@ -3882,7 +3882,7 @@ void func_800552BC(s32 objectIndex) {
     }
 }
 
-void render_seaguls(s32 arg0) {
+void render_seagulls(s32 arg0) {
     s32 i;
     s32 var_s1;
 

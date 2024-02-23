@@ -117,7 +117,7 @@ UNUSED void func_80087258(s32 objectIndex, UNUSED s32 arg1, f32 arg2) {
 }
 
 UNUSED s32 get_angle_between_player_object(s32 objectIndex, Player *player) {
-    return get_angle_between_two_coordinate(player->pos[0], gObjectList[objectIndex].pos[0], player->pos[2], gObjectList[objectIndex].pos[2]);
+    return get_angle_between_xy(player->pos[0], gObjectList[objectIndex].pos[0], player->pos[2], gObjectList[objectIndex].pos[2]);
 }
 
 s32 angle_between_object_camera(s32 objectIndex, Camera *camera) {
@@ -1265,7 +1265,7 @@ bool is_object_visible_on_camera(s32 objectIndex, Camera *camera, u16 angle) {
     s32 var_t0;
 
     var_t0 = FALSE;
-    temp_t2 = (get_angle_between_two_coordinate(camera->pos[0], gObjectList[objectIndex].pos[0], camera->pos[2], gObjectList[objectIndex].pos[2]) + ((s32) angle / 2)) - camera->rot[1];
+    temp_t2 = (get_angle_between_xy(camera->pos[0], gObjectList[objectIndex].pos[0], camera->pos[2], gObjectList[objectIndex].pos[2]) + ((s32) angle / 2)) - camera->rot[1];
     if ((temp_t2 >= 0) && (angle >= temp_t2)) {
         var_t0 = TRUE;
     }
@@ -1832,28 +1832,28 @@ void func_8008B928(s32 objectIndex, s16 arg1, s16 arg2, s16 arg3, s16 arg4[][4])
     temp_s0->direction_angle[0] = get_x_direction_angle(objectIndex);
 }
 
-UNUSED void object_origin_pos_randomise_around_x(s32 objectIndex, s16 x, u16 arg2) {
+UNUSED void object_origin_pos_randomize_around_x(s32 objectIndex, s16 x, u16 arg2) {
     s16 offset_x;
 
     offset_x = random_int(arg2) - (arg2 / 2);
     gObjectList[objectIndex].origin_pos[0] = x + offset_x;
 }
 
-void object_origin_pos_randomise_around_y(s32 objectIndex, s16 y, u16 arg2) {
+void object_origin_pos_randomize_around_y(s32 objectIndex, s16 y, u16 arg2) {
     s16 offset_y;
 
     offset_y = random_int(arg2) - (arg2 / 2);
     gObjectList[objectIndex].origin_pos[1] = y + offset_y;
 }
 
-UNUSED void object_origin_pos_randomise_around_z(s32 objectIndex, s16 z, u16 arg2) {
+UNUSED void object_origin_pos_randomize_around_z(s32 objectIndex, s16 z, u16 arg2) {
     s16 offset_z;
 
     offset_z = random_int(arg2) - (arg2 / 2);
     gObjectList[objectIndex].origin_pos[2] = z + offset_z;
 }
 
-UNUSED void object_origin_pos_randomise_around_xy(s32 objectIndex, s16 x, s16 y, u16 arg3, u16 arg4) {
+UNUSED void object_origin_pos_randomize_around_xy(s32 objectIndex, s16 x, s16 y, u16 arg3, u16 arg4) {
     s16 offset_x;
     s16 offset_y;
 
@@ -1863,7 +1863,7 @@ UNUSED void object_origin_pos_randomise_around_xy(s32 objectIndex, s16 x, s16 y,
     gObjectList[objectIndex].origin_pos[1] = y + offset_y;
 }
 
-UNUSED void object_origin_pos_randomise_around_xz(s32 objectIndex, s16 x, s16 z, u16 arg3, u16 arg4) {
+UNUSED void object_origin_pos_randomize_around_xz(s32 objectIndex, s16 x, s16 z, u16 arg3, u16 arg4) {
     s16 offset_x;
     s16 offset_z;
 
@@ -1873,7 +1873,7 @@ UNUSED void object_origin_pos_randomise_around_xz(s32 objectIndex, s16 x, s16 z,
     gObjectList[objectIndex].origin_pos[2] = z + offset_z;
 }
 
-void object_origin_pos_randomise_around_xyz(s32 objectIndex, s16 x, s16 y, s16 z, u16 arg4, u16 arg5, u16 arg6) {
+void object_origin_pos_randomize_around_xyz(s32 objectIndex, s16 x, s16 y, s16 z, u16 arg4, u16 arg5, u16 arg6) {
     s16 offset_x;
     s16 offset_y;
     s16 offset_z;

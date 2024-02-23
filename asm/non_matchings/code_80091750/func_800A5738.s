@@ -338,7 +338,7 @@ glabel L800A5940
 /* 0A674C 800A5B4C AFA20050 */  sw    $v0, 0x50($sp)
 /* 0A6750 800A5B50 02202825 */  move  $a1, $s1
 /* 0A6754 800A5B54 24060001 */  li    $a2, 1
-/* 0A6758 800A5B58 0C024870 */  jal   set_text_color_rainbow_if_selected_and_detect_kind_menu
+/* 0A6758 800A5B58 0C024870 */  jal   text_rainbow_effect
 /* 0A675C 800A5B5C 2484FFF5 */   addiu $a0, $a0, -0xb
 /* 0A6760 800A5B60 3C0E800F */  lui   $t6, %hi(D_800E8538 + 2) # $t6, 0x800f
 /* 0A6764 800A5B64 8FA20050 */  lw    $v0, 0x50($sp)
@@ -425,7 +425,7 @@ glabel L800A5C18
 /* 0A6894 800A5C94 8E640004 */  lw    $a0, 4($s3)
 /* 0A6898 800A5C98 02202825 */  move  $a1, $s1
 /* 0A689C 800A5C9C 24060001 */  li    $a2, 1
-/* 0A68A0 800A5CA0 0C024870 */  jal   set_text_color_rainbow_if_selected_and_detect_kind_menu
+/* 0A68A0 800A5CA0 0C024870 */  jal   text_rainbow_effect
 /* 0A68A4 800A5CA4 2484FFE2 */   addiu $a0, $a0, -0x1e
 /* 0A68A8 800A5CA8 26240001 */  addiu $a0, $s1, 1
 /* 0A68AC 800A5CAC AFA40054 */  sw    $a0, 0x54($sp)
@@ -556,7 +556,7 @@ glabel L800A5E00
 /* 0A6A7C 800A5E7C AFA20050 */  sw    $v0, 0x50($sp)
 /* 0A6A80 800A5E80 02202825 */  move  $a1, $s1
 /* 0A6A84 800A5E84 24060001 */  li    $a2, 1
-/* 0A6A88 800A5E88 0C024870 */  jal   set_text_color_rainbow_if_selected_and_detect_kind_menu
+/* 0A6A88 800A5E88 0C024870 */  jal   text_rainbow_effect
 /* 0A6A8C 800A5E8C 2484FFDD */   addiu $a0, $a0, -0x23
 /* 0A6A90 800A5E90 8FA20050 */  lw    $v0, 0x50($sp)
 /* 0A6A94 800A5E94 8E6F000C */  lw    $t7, 0xc($s3)

@@ -1666,7 +1666,8 @@ void func_800921B4(void) {
     D_8018D9D9 = 0;
 }
 
-void set_text_color_rainbow_if_selected_and_detect_kind_menu(s32 test, s32 target, s32 alternative_color) {
+// if selected and detect kind menu
+void text_rainbow_effect(s32 test, s32 target, s32 alternative_color) {
     if (test == target) {
         if (func_800B4520() != 0) {
             set_text_color(gGlobalTimer % 3);
@@ -8093,7 +8094,7 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
             draw_text(0x5C + (0x82 * var_s1), 0x0000007D, D_800E7918[var_s1], 0, 0.75f, 0.75f);
             for (var_s2 = 0; var_s2 < 2; var_s2++) {
                 if (var_s1 != var_s4) {
-                    set_text_color_rainbow_if_selected_and_detect_kind_menu(D_8018EDEC - var_s5, var_s2, TEXT_GREEN);
+                    text_rainbow_effect(D_8018EDEC - var_s5, var_s2, TEXT_GREEN);
                     if (var_s2 == (D_8018EDEC - var_s5)) {
                         spE0.column = 0x20 + (0x89 * var_s1);
                         spE0.row = 0x96 + (0x1E * var_s2);
@@ -8158,7 +8159,7 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
                 spE0.column = 0x6E + (0x32 * var_s2);
                 spE0.row = 0x00D2;
             }
-            set_text_color_rainbow_if_selected_and_detect_kind_menu((D_8018EDEC - 0x38), var_s2, TEXT_YELLOW);
+            text_rainbow_effect((D_8018EDEC - 0x38), var_s2, TEXT_YELLOW);
             func_80093324(0x6E + (0x32 * var_s2), 0x000000D2, D_800E7930[var_s2], 0, 0.75f, 0.75f);
         }
         break;
@@ -8528,7 +8529,7 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
     case 30:                                    /* switch 1 */
         for (var_s1 = 0; var_s1 < 6; var_s1++) {
             var_v1 = 0;
-            set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 5, var_s1, 1);
+            text_rainbow_effect(arg0->cursor - 5, var_s1, 1);
             switch (var_s1) {                 /* switch 3; irregular */
             case 4:                             /* switch 3 */
                 if (D_80162DF8 == 1) {
@@ -8569,7 +8570,7 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
             func_80093324(0x000000A5, arg0->row + (0xD * var_s1) + 0x8C, D_800E7A3C[var_s1], 0, 0.7f, 0.7f);
         }
         for (var_s1 = 0; var_s1 < 2; var_s1++) {
-            set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 0x11, var_s1, 1);
+            text_rainbow_effect(arg0->cursor - 0x11, var_s1, 1);
             convert_number_to_ascii(var_s1 + 1, sp60);
             func_80093324(0xB1 - arg0->column, 0xAA + (0x1E * var_s1), &sp60[1], 0, 0.6f, 0.6f);
             if (D_8018EE10[var_s1].ghostDataSaved == 0) {
@@ -8593,7 +8594,7 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
             func_80093324(0x000000A3, arg0->row + (0xD * var_s1) + 0x8C, D_800E7A60[var_s1], 0, 0.67f, 0.67f);
         }
         for (var_s1 = 0; var_s1 < 2; var_s1++) {
-            set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 0x14, var_s1, 1);
+            text_rainbow_effect(arg0->cursor - 0x14, var_s1, 1);
             func_80093324(0xC8 - arg0->column, 0xB9 + (0xF * var_s1), D_800E7A6C[var_s1], 0, 0.75f, 0.75f);
         }
         break;
@@ -8823,7 +8824,7 @@ void render_pause_menu_time_trials(struct_8018D9E0_entry *arg0) {
     get_time_record_centiseconds(temp_a0, sp68);
     func_800939C8(0x000000B3, 0x00000089, sp68, 0, 0.8f, 0.8f);
     for (var_s0 = 0; var_s0 < 5; var_s0++) {
-        set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 11, var_s0, TEXT_GREEN);
+        text_rainbow_effect(arg0->cursor - 11, var_s0, TEXT_GREEN);
         func_80093324(D_800E8538[zero].column, D_800E8538[zero].row + (13 * var_s0), gTextPauseButton[var_s0], 0, 0.75f, 0.75f);
     }
 }
@@ -8851,7 +8852,7 @@ void render_pause_menu_versus(struct_8018D9E0_entry *arg0) {
         } else {
             var_s1 = var_s0;
         }
-        set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 0x15, var_s0, TEXT_YELLOW);
+        text_rainbow_effect(arg0->cursor - 0x15, var_s0, TEXT_YELLOW);
         func_80093324(temp_s3->column - 2, temp_s3->row + (13 * var_s0), gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
     }
 }
@@ -8884,7 +8885,7 @@ void render_pause_grand_prix(struct_8018D9E0_entry *arg0) {
     set_text_color(TEXT_YELLOW);
     draw_text(160, temp_s3->row - 30, D_800E7574[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f, 1.0f);
     for (var_s0 = 0; var_s0 < 2; var_s0++) {
-        set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 31, var_s0, TEXT_YELLOW);
+        text_rainbow_effect(arg0->cursor - 31, var_s0, TEXT_YELLOW);
         func_80093324(temp_s3->column, temp_s3->row + (var_s0 * 13), gTextPauseButton[var_s0 * 4], 0, 0.75f, 0.75f);
     }
 }
@@ -8912,7 +8913,7 @@ void render_pause_battle(struct_8018D9E0_entry *arg0) {
         } else {
             var_s1 = var_a1;
         }
-        set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 0x29, var_a1, TEXT_YELLOW);
+        text_rainbow_effect(arg0->cursor - 0x29, var_a1, TEXT_YELLOW);
         func_80093324(temp_s3->column - 2, temp_s3->row + 13 * var_a1, gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
     }
 }
@@ -9030,7 +9031,7 @@ void func_800A5738(struct_8018D9E0_entry *arg0) {
             get_time_record_centiseconds(temp_a0, sp84);
             text_draw(0x000000B3, 0x00000089, sp84, 0, 0.8f, 0.8f);
             for (var_s1 = 0; var_s1 < 6; var_s1++) {
-                set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 0xB, var_s1, TEXT_GREEN);
+                text_rainbow_effect(arg0->cursor - 0xB, var_s1, TEXT_GREEN);
                 func_80093358(D_800E8538[zero].column, D_800E8538[zero].row + (0xD * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.75f, 0.75f);
             }
             break;
@@ -9053,7 +9054,7 @@ void func_800A5738(struct_8018D9E0_entry *arg0) {
                 func_80093324(0x0000005A, arg0->row + (0xD * var_s1) + 0x6E, D_800E7A3C[var_s1], 0, 0.8f, 0.8f);
             }
             for (var_s1 = 0; var_s1 < 2; var_s1++) {
-                set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 0x1E, var_s1, TEXT_GREEN);
+                text_rainbow_effect(arg0->cursor - 0x1E, var_s1, TEXT_GREEN);
                 convert_number_to_ascii(var_s1 + 1, sp5C);
                 func_80093324(0x5A - arg0->column, (0x96 + (0x14 * var_s1)), &sp5C[1], 0, 0.75f, 0.75f);
                 if (D_8018EE10[var_s1].ghostDataSaved == 0) {
@@ -9076,7 +9077,7 @@ void func_800A5738(struct_8018D9E0_entry *arg0) {
                 func_80093324(0x00000055, arg0->row + (0xD * var_s1) + 0x6E, D_800E7A60[var_s1], 0, 0.8f, 0.8f);
             }
             for (var_s1 = 0; var_s1 < 2; var_s1++) {
-                set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 0x23, var_s1, TEXT_GREEN);
+                text_rainbow_effect(arg0->cursor - 0x23, var_s1, TEXT_GREEN);
                 func_80093324(0x7D - arg0->column, 0x9B + (0xF * var_s1), D_800E7A6C[var_s1], 0, 0.8f, 0.8f);
             }
             break;
@@ -9155,7 +9156,7 @@ void func_800A6154(struct_8018D9E0_entry *arg0) {
     } else {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x00000064);
         for (var_s1 = 0, var_s0 = 0x96; var_s1 < 2; var_s1++, var_s0 += 0x14) {
-            set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 0xB, var_s1, TEXT_YELLOW);
+            text_rainbow_effect(arg0->cursor - 0xB, var_s1, TEXT_YELLOW);
             func_80093324(0x0000008C, var_s0, gTextPauseButton[(var_s1 * 3) + 1], 0, 1.0f, 1.0f);
         }
     }
@@ -9215,7 +9216,7 @@ void func_800A638C(struct_8018D9E0_entry *arg0) {
     }
     if (arg0->cursor >= 10) {
         for (var_s1 = 0; var_s1 < 4; var_s1++) {
-            set_text_color_rainbow_if_selected_and_detect_kind_menu(arg0->cursor - 0xA, var_s1, TEXT_GREEN);
+            text_rainbow_effect(arg0->cursor - 0xA, var_s1, TEXT_GREEN);
             func_80093324(0x00000069, 0xAE + (0xF * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.8f, 0.8f);
         }
         func_800A66A8(arg0, &D_800E7360[arg0->cursor - 10]);

@@ -2154,7 +2154,7 @@ void init_object_smoke_paticle(s32 objectIndex, Vec3f arg1, s16 arg2) {
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
 }
 
-void init_smoke_paticle(Vec3f arg0, UNUSED f32 arg1, s16 arg2) {
+void init_smoke_particle(Vec3f arg0, UNUSED f32 arg1, s16 arg2) {
     s32 objectIndex;
 
     objectIndex = add_unused_obj_index(gObjectParticle4, &gNextFreeObjectParticle4, gObjectParticle4_SIZE);
@@ -2216,7 +2216,7 @@ void func_80076F2C(void) {
     }
 }
 
-void init_object_smoke_particules(s32 objectIndex, s32 flameIndex) {
+void init_object_smoke_particle(s32 objectIndex, s32 flameIndex) {
     init_object(objectIndex, 3);
 
     gObjectList[objectIndex].unk_0D5 = 0xB;
@@ -2235,12 +2235,12 @@ void init_object_smoke_particules(s32 objectIndex, s32 flameIndex) {
     set_obj_origin_offset(objectIndex, 0, 0, 0);
 }
 
-void init_smoke_particules(s32 arg0) {
+void init_smoke_particles(s32 arg0) {
     s32 objectIndex;
 
     objectIndex = add_unused_obj_index(gObjectParticle4, &gNextFreeObjectParticle4, gObjectParticle4_SIZE);
     if (objectIndex != NULL_OBJECT_ID) {
-        init_object_smoke_particules(objectIndex, arg0);
+        init_object_smoke_particle(objectIndex, arg0);
     }
 }
 
@@ -2386,22 +2386,22 @@ void init_object_leaf_particle(s32 objectIndex, Vec3f arg1, s32 num) {
     gObjectList[objectIndex].unk_044 = arg1[1];
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
-            object_origin_pos_randomise_around_xyz(objectIndex, arg1[0], arg1[1] + 25.0, arg1[2], 0x14, 0x1E, 0x14);
+            object_origin_pos_randomize_around_xyz(objectIndex, arg1[0], arg1[1] + 25.0, arg1[2], 0x14, 0x1E, 0x14);
             gObjectList[objectIndex].unk_034 = 1.5f;
             gObjectList[objectIndex].velocity[1] = 1.5f;
             break;
         case COURSE_YOSHI_VALLEY:
-            object_origin_pos_randomise_around_xyz(objectIndex, arg1[0], arg1[1] + 25.0, arg1[2], 0x14, 0x1E, 0x14);
+            object_origin_pos_randomize_around_xyz(objectIndex, arg1[0], arg1[1] + 25.0, arg1[2], 0x14, 0x1E, 0x14);
             gObjectList[objectIndex].unk_034 = 2.0f;
             gObjectList[objectIndex].velocity[1] = 2.0f;
             break;
         case COURSE_ROYAL_RACEWAY:
-            object_origin_pos_randomise_around_xyz(objectIndex, arg1[0], arg1[1] + 30.0, arg1[2], 0x10, 0x28, 0x10);
+            object_origin_pos_randomize_around_xyz(objectIndex, arg1[0], arg1[1] + 30.0, arg1[2], 0x10, 0x28, 0x10);
             gObjectList[objectIndex].unk_034 = 2.0f;
             gObjectList[objectIndex].velocity[1] = 2.0f;
             break;
         case COURSE_LUIGI_RACEWAY:
-            object_origin_pos_randomise_around_xyz(objectIndex, arg1[0], arg1[1] + 25.0, arg1[2], 0x14, 0x1E, 0x14);
+            object_origin_pos_randomize_around_xyz(objectIndex, arg1[0], arg1[1] + 25.0, arg1[2], 0x14, 0x1E, 0x14);
             gObjectList[objectIndex].unk_034 = 1.5f;
             gObjectList[objectIndex].velocity[1] = 1.0f;
             break;
@@ -2550,7 +2550,7 @@ void func_80077F64(s32 objectIndex, Camera *camera) {
     switch (gObjectList[objectIndex].unk_0AE) {                              /* irregular */
         case 1:
             gObjectList[objectIndex].direction_angle[1] = (camera->rot[1] + random_int(0x4000U)) - 0x2000;
-            object_origin_pos_randomise_around_y(objectIndex, 0x00B4, 0x0014U);
+            object_origin_pos_randomize_around_y(objectIndex, 0x00B4, 0x0014U);
             rand = random_int(0x0064U);
 
             gObjectList[objectIndex].velocity[1] = (f32) (-0.75 - (f64) (f32) (rand * 0.01));
@@ -2984,7 +2984,7 @@ void init_obj_laikitu_red_flag_countdown(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].unk_048 = D_8018D180;
 }
 
-void update_object_laikitu_countdown(s32 objectIndex, s32 arg1) {
+void update_object_lakitu_countdown(s32 objectIndex, s32 arg1) {
     UNUSED s32 pad;
     switch (gObjectList[objectIndex].state) {
         case 0:
@@ -3515,7 +3515,7 @@ void update_object_laikitu(s32 playerId) {
         case 0:
             break;
         case 1:
-            update_object_laikitu_countdown(objectIndex, playerId);
+            update_object_lakitu_countdown(objectIndex, playerId);
             func_8008BFFC(objectIndex);
             break;
         case 2:
@@ -4605,7 +4605,7 @@ void func_8007D360(s32 objectIndex, s32 arg1) {
         gObjectList[objectIndex].direction_angle[0] = 0;
         gObjectList[objectIndex].unk_0C6 = 0;
     }
-    gObjectList[objectIndex].direction_angle[1] = get_angle_between_two_coordinate(gObjectList[objectIndex].origin_pos[0], gObjectList[objectIndex].unk_01C[0], gObjectList[objectIndex].origin_pos[2], gObjectList[objectIndex].unk_01C[2]);
+    gObjectList[objectIndex].direction_angle[1] = get_angle_between_xy(gObjectList[objectIndex].origin_pos[0], gObjectList[objectIndex].unk_01C[0], gObjectList[objectIndex].origin_pos[2], gObjectList[objectIndex].unk_01C[2]);
     gObjectList[objectIndex].direction_angle[2] = 0;
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
     gObjectList[objectIndex].unk_0B0 = 0;

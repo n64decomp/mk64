@@ -986,7 +986,7 @@ void init_course_object(void) {
         break;
     case COURSE_DK_JUNGLE:
         for (i = 0; i < NUM_TORCHES; i++) {
-            init_smoke_particules(i);
+            init_smoke_particles(i);
             // wtf?
             if (D_8018CF10){}
         }
