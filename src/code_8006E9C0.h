@@ -2,7 +2,7 @@
 #define CODE_8006E9C0_H
 
 #include "common_structs.h"
-#include "code_80071F00.h"
+#include "update_objects.h"
 
 void init_hud(void);
 void reset_object_variable(void);
@@ -35,7 +35,7 @@ extern s16 D_800E5520[];
 extern s16 D_800E5548[];
 extern u8 *gCourseOutlineTextures[0x14]; // 800e54d0
 
-// These are found in data_code_80071F00
+// These are found in data_update_objects
 extern StarSpawn D_800E6A38[];                        /* unable to generate initializer */
 extern StarSpawn D_800E6AA8[];                        /* unable to generate initializer */
 extern StarSpawn D_800E6B00[];                        /* unable to generate initializer */

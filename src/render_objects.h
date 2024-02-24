@@ -1,5 +1,5 @@
-#ifndef hud_renderer_H
-#define hud_renderer_H
+#ifndef RENDER_OBJECTS_H
+#define RENDER_OBJECTS_H
 
 #include "common_structs.h"
 #include "main.h"
@@ -348,7 +348,7 @@ void render_thwomps(s32);
 void func_80053D74(s32, s32, s32);
 void func_80053E6C(s32);
 
-void render_train_smoke(s32, s32);
+void render_train_smoke_particle(s32, s32);
 void render_train_smoke(s32);
 void render_ferry_smoke_particles(s32, s32);
 void render_ferries_smoke(s32);

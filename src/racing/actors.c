@@ -17,7 +17,7 @@
 #include "waypoints.h"
 #include "macros.h"
 #include "code_80005FD0.h"
-#include "code_80071F00.h"
+#include "update_objects.h"
 #include "effects.h"
 #include "collision.h"
 #include "audio/external.h"

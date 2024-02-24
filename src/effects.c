@@ -11,7 +11,7 @@
 #include "code_80005FD0.h"
 #include "render_player.h"
 #include "player_controller.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
 #include "code_80057C60.h"
 #include "effects.h"
 #include "audio/external.h"
@@ -1908,7 +1908,7 @@ void func_80090970(Player *player, s8 playerId, s8 arg2) {
     case 2:
         func_80090178(player, playerId, sp44, sp38);
         // Fakematch found by Verti, who knows what's going on here
-        player->rotation[1] = (u16) -get_angle_between_two_vector(sp44, sp38) & 0xFFFF;
+        player->rotation[1] = (u16) -get_angle_between_two_vectors(sp44, sp38) & 0xFFFF;
         player->pos[0] = sp44[0];
         player->pos[1] = sp44[1] + 40.0f;
         player->pos[2] = sp44[2];

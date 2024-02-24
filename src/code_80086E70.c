@@ -9,7 +9,7 @@
 #include "math_util.h"
 #include "math_util_2.h"
 #include "racing/memory.h"
-#include "code_80071F00.h"
+#include "update_objects.h"
 #include "collision.h"
 #include "audio/external.h"
 #include "main.h"

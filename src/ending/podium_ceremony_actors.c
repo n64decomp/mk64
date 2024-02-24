@@ -9,7 +9,7 @@
 #include "memory.h"
 #include "common_textures.h"
 #include "render_player.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
 #include "podium_ceremony_actors.h"
 #include "camera_junk.h"
 #include "player_controller.h"

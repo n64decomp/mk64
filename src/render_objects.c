@@ -1,5 +1,5 @@
 /**
- * @file hud_renderer.c renders hud elements
+ * @file render_objects.c renders hud elements
  * A more suitable name may be print.c
 **/
 
@@ -23,7 +23,7 @@
 #include "code_80057C60.h"
 #include "code_8006E9C0.h"
 #include "render_objects.h"
-#include "code_80071F00.h"
+#include "update_objects.h"
 #include "code_80091750.h"
 #include "collision.h"
 #include "main.h"
@@ -1690,7 +1690,7 @@ void func_8004C6FC(s16 arg0, s16 arg1, s8 *arg2, u32 arg3, u32 arg4) {
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8004C6FC.s")
+GLOBAL_ASM("asm/non_matchings/render_objects/func_8004C6FC.s")
 #endif
 
 void func_8004C8D4(s16 arg0, s16 arg1) {
@@ -1914,7 +1914,7 @@ UNUSED void func_8004D654(s32 arg0, s32 arg1, u8 *texture, f32 arg3, s32 arg4, s
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8004D654.s")
+GLOBAL_ASM("asm/non_matchings/render_objects/func_8004D654.s")
 #endif
 
 void func_8004D7B4(s32 arg0, s32 arg1, u8 *texture, s32 arg3, s32 arg4) {
@@ -2361,7 +2361,7 @@ void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_8004F168.s")
+GLOBAL_ASM("asm/non_matchings/render_objects/func_8004F168.s")
 #endif
 
 // WTF is up with the gPlayerOne access in this function?
@@ -2874,7 +2874,7 @@ void func_80050E34(s32 playerId, s32 arg1) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/hud_renderer/func_80050E34.s")
+GLOBAL_ASM("asm/non_matchings/render_objects/func_80050E34.s")
 #endif
 
 void func_800514BC(void) {
@@ -3558,7 +3558,7 @@ void func_80053E6C(s32 arg0) {
 }
 
 
-void render_train_smoke(s32 objectIndex, s32 cameraId) {
+void render_train_smoke_particle(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
@@ -3592,7 +3592,7 @@ void render_train_smoke(s32 cameraId) {
 
             for (i = 0; i < 128; i++) {
                 // Need to make a way to increase this array for each train.
-                render_train_smoke(gObjectParticle2[i], cameraId);
+                render_train_smoke_particle(gObjectParticle2[i], cameraId);
             }
         }
     }
@@ -3601,13 +3601,13 @@ void render_train_smoke(s32 cameraId) {
     if ((gTrainList[0].someFlags != 0) && (is_particle_on_screen(gTrainList[0].locomotive.position, camera, 0x4000U) != 0)) {
 
         for (i = 0; i < gObjectParticle2_SIZE; i++) {
-            render_train_smoke(gObjectParticle2[i], cameraId);
+            render_train_smoke_particle(gObjectParticle2[i], cameraId);
         }
 
     }
     if ((gTrainList[1].someFlags != 0) && (is_particle_on_screen(gTrainList[1].locomotive.position, camera, 0x4000U) != 0)) {
         for (i = 0; i < gObjectParticle3_SIZE; i++) {
-            render_train_smoke(gObjectParticle3[i], cameraId);
+            render_train_smoke_particle(gObjectParticle3[i], cameraId);
         }
     }
 #endif

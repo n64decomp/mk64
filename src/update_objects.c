@@ -9,7 +9,7 @@
 #include "camera.h"
 #include "math_util.h"
 #include "math_util_2.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
 #include "objects.h"
 #include "waypoints.h"
 #include "code_800029B0.h"
@@ -2764,7 +2764,7 @@ void func_800789AC(s32 arg0, Camera *arg1, s16 (*arg2)[4]) {
     */
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_800789AC.s")
+GLOBAL_ASM("asm/non_matchings/update_objects/func_800789AC.s")
 #endif
 
 typedef struct {
@@ -2971,7 +2971,7 @@ void func_800791F0(s32 objectIndex, s32 playerId) {
     func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
 }
 
-void init_obj_laikitu_red_flag_countdown(s32 objectIndex, s32 arg1) {
+void init_obj_lakitu_red_flag_countdown(s32 objectIndex, s32 arg1) {
     if (arg1 == 0) {
         D_801656F0 = 0;
         D_8018D168 = 0;
@@ -2990,7 +2990,7 @@ void update_object_lakitu_countdown(s32 objectIndex, s32 arg1) {
         case 0:
             break;
         case 1:
-            init_obj_laikitu_red_flag_countdown(objectIndex, arg1);
+            init_obj_lakitu_red_flag_countdown(objectIndex, arg1);
             break;
         case 2:
             func_8007278C(objectIndex, gObjectList[objectIndex].unk_048);
@@ -3063,7 +3063,7 @@ void update_object_lakitu_countdown(s32 objectIndex, s32 arg1) {
     }
 }
 
-void init_obj_laikitu_red_flag(s32 objectIndex, s32 playerIndex) {
+void init_obj_lakitu_red_flag(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
@@ -3080,12 +3080,12 @@ void init_obj_laikitu_red_flag(s32 objectIndex, s32 playerIndex) {
     func_80072488(objectIndex);
 }
 
-void update_object_laikitu_red_flag(s32 objectIndex, s32 playerIndex) {
+void update_object_lakitu_red_flag(s32 objectIndex, s32 playerIndex) {
     switch (gObjectList[objectIndex].state) {
         case 0:
             break;
         case 1:
-            init_obj_laikitu_red_flag(objectIndex, playerIndex);
+            init_obj_lakitu_red_flag(objectIndex, playerIndex);
             break;
         case 2:
             set_object_flag_status_true(objectIndex, 0x00000010);
@@ -3142,7 +3142,7 @@ void func_8007993C(s32 objectIndex, Player *player) {
     func_800722CC(objectIndex, 2);
 }
 
-void init_obj_laikitu_red_flag_fishing(s32 objectIndex, s32 arg1) {
+void init_obj_lakitu_red_flag_fishing(s32 objectIndex, s32 arg1) {
     func_800791F0(objectIndex, arg1);
     init_texture_object(objectIndex, common_tlut_lakitu_fishing, gTextureLakituFishing1, 0x38U, (u16) 0x00000048);
     gObjectList[objectIndex].vertex = D_0D005F30;
@@ -3180,14 +3180,14 @@ void func_80079A5C(s32 objectIndex, UNUSED Player *player) {
     }
 }
 
-void update_object_laikitu_fishing(s32 objectIndex, s32 playerId) {
+void update_object_lakitu_fishing(s32 objectIndex, s32 playerId) {
     Player *player = &gPlayerOne[playerId];
 
     switch (gObjectList[objectIndex].state) {                              /* switch 1; irregular */
         case 0:                                         /* switch 1 */
             break;
         case 1:                                         /* switch 1 */
-            init_obj_laikitu_red_flag_fishing(objectIndex, playerId);
+            init_obj_lakitu_red_flag_fishing(objectIndex, playerId);
             break;
         case 2:                                         /* switch 1 */
             set_object_flag_status_true(objectIndex, 0x00000010);
@@ -3234,7 +3234,7 @@ void update_object_laikitu_fishing(s32 objectIndex, s32 playerId) {
     func_80079A5C(objectIndex, player);
 }
 
-void update_object_laikitu_fishing2(s32 objectIndex, s32 playerId) {
+void update_object_lakitu_fishing2(s32 objectIndex, s32 playerId) {
 
     Player *temp_s1;
 
@@ -3243,7 +3243,7 @@ void update_object_laikitu_fishing2(s32 objectIndex, s32 playerId) {
         case 0:                                         /* switch 1 */
             break;
         case 1:                                         /* switch 1 */
-            init_obj_laikitu_red_flag_fishing(objectIndex, playerId);
+            init_obj_lakitu_red_flag_fishing(objectIndex, playerId);
             break;
         case 2:                                         /* switch 1 */
             set_object_flag_status_true(objectIndex, 0x00000010);
@@ -3330,7 +3330,7 @@ void func_8007A060(s32 objectIndex, s32 playerIndex) {
     func_80072488(objectIndex);
 }
 
-void update_object_laikitu_second_lap(s32 objectIndex, s32 playerIndex) {
+void update_object_lakitu_second_lap(s32 objectIndex, s32 playerIndex) {
     switch (gObjectList[objectIndex].state) {
         case 0:
             break;
@@ -3378,7 +3378,7 @@ void func_8007A228(s32 objectIndex, s32 playerIndex) {
     func_80072488(objectIndex);
 }
 
-void update_object_laikitu_final_lap(s32 objectIndex, s32 playerIndex) {
+void update_object_lakitu_final_lap(s32 objectIndex, s32 playerIndex) {
     switch (gObjectList[objectIndex].state) {
         case 0:
             break;
@@ -3426,7 +3426,7 @@ void func_8007A3F0(s32 objectIndex, s32 arg1) {
     func_800C8F80((u8)arg1, 0x0100FA28);
 }
 
-void update_object_laikitu_reverse(s32 objectIndex, s32 playerId) {
+void update_object_lakitu_reverse(s32 objectIndex, s32 playerId) {
     Player *sp2C = &gPlayerOne[playerId];
 
     switch (gObjectList[objectIndex].state) {
@@ -3508,7 +3508,7 @@ void func_8007A910(s32 arg0) {
     func_80079860(arg0);
 }
 
-void update_object_laikitu(s32 playerId) {
+void update_object_lakitu(s32 playerId) {
     s32 objectIndex = gIndexLakituList[playerId];
 
     switch (gObjectList[objectIndex].unk_0D8) {
@@ -3519,26 +3519,26 @@ void update_object_laikitu(s32 playerId) {
             func_8008BFFC(objectIndex);
             break;
         case 2:
-            update_object_laikitu_red_flag(objectIndex, playerId);
+            update_object_lakitu_red_flag(objectIndex, playerId);
             func_8008BFFC(objectIndex);
             break;
         case 3:
-            update_object_laikitu_fishing(objectIndex, playerId);
+            update_object_lakitu_fishing(objectIndex, playerId);
             break;
         case 4:
-            update_object_laikitu_second_lap(objectIndex, playerId);
+            update_object_lakitu_second_lap(objectIndex, playerId);
             func_8008BFFC(objectIndex);
             break;
         case 5:
-            update_object_laikitu_final_lap(objectIndex, playerId);
+            update_object_lakitu_final_lap(objectIndex, playerId);
             func_8008BFFC(objectIndex);
             break;
         case 6:
-            update_object_laikitu_reverse(objectIndex, playerId);
+            update_object_lakitu_reverse(objectIndex, playerId);
             func_8008BFFC(objectIndex);
             break;
         case 7:
-            update_object_laikitu_fishing2(objectIndex, playerId);
+            update_object_lakitu_fishing2(objectIndex, playerId);
             break;
     }
 }
@@ -3753,7 +3753,7 @@ s32 func_8007B040(s32 objectIndex, s32 playerId) {
     return var_t3;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007B040.s")
+GLOBAL_ASM("asm/non_matchings/update_objects/func_8007B040.s")
 #endif
 
 void func_8007B254(s32 objectIndex, s32 arg1) {
@@ -4215,7 +4215,7 @@ void func_8007C360(s32 objectIndex, Camera *camera) {
     temp_a2->itemDisplay = 0x24 - temp_t2;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007C360.s")
+GLOBAL_ASM("asm/non_matchings/update_objects/func_8007C360.s")
 #endif
 
 void func_8007C420(s32 objectIndex, Player *player, Camera *camera) {
@@ -4262,7 +4262,7 @@ void func_8007C4A4(s32 objectIndex) {
     temp_v1->itemDisplay = 0x24 - temp_t0;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_8007C4A4.s")
+GLOBAL_ASM("asm/non_matchings/update_objects/func_8007C4A4.s")
 #endif
 
 void func_8007C550(s32 objectIndex) {
@@ -6011,7 +6011,7 @@ void func_80080E8C(s32 objectIndex1, s32 objectIndex2, s32 arg2) {
     gObjectList[objectIndex1].velocity[2] = coss(anAngle) * 0.6;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80080E8C.s")
+GLOBAL_ASM("asm/non_matchings/update_objects/func_80080E8C.s")
 #endif
 
 void func_80080FEC(s32 arg0) {
@@ -6428,7 +6428,7 @@ void func_80081FF4(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].origin_pos[2] = gMoleSpawns[var_v1][offset + 2];
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80081FF4.s")
+GLOBAL_ASM("asm/non_matchings/update_objects/func_80081FF4.s")
 #endif
 
 void func_800821AC(s32 objectIndex, s32 arg1) {
@@ -6540,7 +6540,7 @@ void func_8008275C(s32 objectIndex) {
         gObjectList[objectIndex].offset[1] *= 2.5;
         gObjectList[objectIndex].offset[2] *= 2.0;
         object_calculate_new_pos_offset(objectIndex);
-        gObjectList[objectIndex].direction_angle[1] = get_angle_between_two_vector(gObjectList[objectIndex].unk_01C, gObjectList[objectIndex].pos);
+        gObjectList[objectIndex].direction_angle[1] = get_angle_between_two_vectors(gObjectList[objectIndex].unk_01C, gObjectList[objectIndex].pos);
         break;
     }
     func_800873F4(objectIndex);
@@ -6705,7 +6705,7 @@ void func_80082F1C(s32 objectIndex, s32 arg1) {
     set_obj_direction_angle(objectIndex, 0U, D_800E5DF4[arg1].rot, 0U);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80082F1C.s")
+GLOBAL_ASM("asm/non_matchings/update_objects/func_80082F1C.s")
 #endif
 
 void func_80083018(s32 objectIndex, s32 arg1) {
@@ -7622,7 +7622,7 @@ void update_chain_chomps(void) {
             func_800859C8(objectIndex, var_s4);
             vec3f_copy(temp_s0->unk_01C, temp_s0->offset);
             func_8000D940(temp_s0->offset, &temp_s0->unk_084[8], temp_s0->unk_034, temp_s0->unk_044, 0);
-            temp_s0->direction_angle[1] = get_angle_between_two_vector(temp_s0->unk_01C, temp_s0->offset);
+            temp_s0->direction_angle[1] = get_angle_between_two_vectors(temp_s0->unk_01C, temp_s0->offset);
             object_calculate_new_pos_offset(objectIndex);
             func_80089CBC(objectIndex, 30.0f);
         }
@@ -7754,7 +7754,7 @@ void func_80086074(s32 objectIndex, s32 arg1) {
     func_80085BB4(objectIndex);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80071F00/func_80086074.s")
+GLOBAL_ASM("asm/non_matchings/update_objects/func_80086074.s")
 #endif
 
 void func_80086110(s32 objectIndex, s32 arg1) {

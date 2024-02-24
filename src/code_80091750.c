@@ -18,7 +18,7 @@
 #include "code_80281780.h"
 #include "memory.h"
 #include "audio/external.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
 #include "staff_ghosts.h"
 #include "common_textures.h"
 #include "textures.h"

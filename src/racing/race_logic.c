@@ -11,7 +11,7 @@
 #include "main.h"
 #include "code_800029B0.h"
 #include "code_80057C60.h"
-#include "code_80071F00.h"
+#include "update_objects.h"
 #include "code_80091750.h"
 #include "code_80005FD0.h"
 #include "spawn_players.h"

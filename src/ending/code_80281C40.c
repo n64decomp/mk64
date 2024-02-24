@@ -6,7 +6,7 @@
 #include "main.h"
 #include "math_util.h"
 #include "skybox_and_splitscreen.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
 #include "code_80057C60.h"
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"

@@ -18,9 +18,9 @@
 #include "math_util_2.h"
 #include "code_80005FD0.h"
 #include "render_player.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
 #include "code_8006E9C0.h"
-#include "code_80071F00.h"
+#include "update_objects.h"
 #include "code_80086E70.h"
 #include "effects.h"
 #include "src/data/data_800E8700.h"
@@ -33,7 +33,7 @@
 #include "data/other_textures.h"
 #include "spawn_players.h"
 #include "sounds.h"
-#include "code_80071F00.h"
+#include "update_objects.h"
 
 
 //! @warning this macro is undef'd at the end of this file
@@ -676,7 +676,7 @@ void render_player_snow_effect_one(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     if (gGamestate != ENDING) {
-        render_snowy_effect(PLAYER_ONE);
+        render_snowing_effect(PLAYER_ONE);
     }
 }
 
@@ -684,21 +684,21 @@ void render_player_snow_effect_two(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    render_snowy_effect(PLAYER_TWO);
+    render_snowing_effect(PLAYER_TWO);
 }
 
 void render_player_snow_effect_three(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    render_snowy_effect(PLAYER_THREE);
+    render_snowing_effect(PLAYER_THREE);
 }
 
 void render_player_snow_effect_four(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    render_snowy_effect(PLAYER_FOUR);
+    render_snowing_effect(PLAYER_FOUR);
 }
 
 void render_object_for_player(s32 cameraId) {
@@ -799,7 +799,7 @@ void render_object_for_player(s32 cameraId) {
     }
 }
 
-void render_snowy_effect(s32 arg0) {
+void render_snowing_effect(s32 arg0) {
     switch(gCurrentCourseId) {
         case COURSE_FRAPPE_SNOWLAND:
             if (gGamestate != 9) {
@@ -1249,7 +1249,7 @@ void func_8005995C(void) {
 void func_80059A88(s32 playerId) {
     func_80059820(playerId);
     if (!gDemoMode) {
-        update_object_laikitu(playerId);
+        update_object_lakitu(playerId);
         func_8007BB9C(playerId);
     }
 }

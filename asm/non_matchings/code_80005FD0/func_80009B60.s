@@ -652,7 +652,7 @@ glabel func_80009B60
 .L8000A488:
 /* 00B088 8000A488 00E02825 */  move  $a1, $a3
 /* 00B08C 8000A48C AFA8003C */  sw    $t0, 0x3c($sp)
-/* 00B090 8000A490 0C0AD489 */  jal   get_angle_between_two_vector
+/* 00B090 8000A490 0C0AD489 */  jal   get_angle_between_two_vectors
 /* 00B094 8000A494 24C40014 */   addiu $a0, $a2, 0x14
 /* 00B098 8000A498 8FA60040 */  lw    $a2, 0x40($sp)
 /* 00B09C 8000A49C 8FA8003C */  lw    $t0, 0x3c($sp)
@@ -718,7 +718,7 @@ glabel func_80009B60
 /* 00B16C 8000A56C 1040008A */  beqz  $v0, .L8000A798
 /* 00B170 8000A570 8FAE0040 */   lw    $t6, 0x40($sp)
 /* 00B174 8000A574 25C40020 */  addiu $a0, $t6, 0x20
-/* 00B178 8000A578 0C0AD489 */  jal   get_angle_between_two_vector
+/* 00B178 8000A578 0C0AD489 */  jal   get_angle_between_two_vectors
 /* 00B17C 8000A57C 25C50014 */   addiu $a1, $t6, 0x14
 /* 00B180 8000A580 8FAC0034 */  lw    $t4, 0x34($sp)
 /* 00B184 8000A584 3C188016 */  lui   $t8, %hi(D_80163300) # $t8, 0x8016
@@ -1172,7 +1172,7 @@ glabel func_80009B60
 /* 00B7F8 8000ABF8 C4A80008 */  lwc1  $f8, 8($a1)
 /* 00B7FC 8000ABFC AFA80020 */  sw    $t0, 0x20($sp)
 /* 00B800 8000AC00 8FA4001C */  lw    $a0, 0x1c($sp)
-/* 00B804 8000AC04 0C0AD489 */  jal   get_angle_between_two_vector
+/* 00B804 8000AC04 0C0AD489 */  jal   get_angle_between_two_vectors
 /* 00B808 8000AC08 E4680000 */   swc1  $f8, ($v1)
 /* 00B80C 8000AC0C 3C013FC0 */  li    $at, 0x3FC00000 # 1.500000
 /* 00B810 8000AC10 44810000 */  mtc1  $at, $f0

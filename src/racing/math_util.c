@@ -78,7 +78,7 @@ f32 func_802B51E8(Vec3f arg0, Vec3f arg1) {
     return (sub_x * sub_x) + (sub_y * sub_y) + sub_z + sub_z;
 }
 
-s32 get_angle_between_two_vector(Vec3f arg0, Vec3f arg1) {
+s32 get_angle_between_two_vectors(Vec3f arg0, Vec3f arg1) {
     f32 temp_v1;
     f32 temp_v2;
     temp_v1 = arg1[0] - arg0[0];
@@ -87,7 +87,7 @@ s32 get_angle_between_two_vector(Vec3f arg0, Vec3f arg1) {
     return atan2s(temp_v1, temp_v2);
 }
 
-// get_angle_between_two_vector
+// get_angle_between_two_vectors
 u32 func_802B5258(Vec3f arg0, Vec3s arg1) {
     f32 temp_v1;
     f32 temp_v2;
@@ -1143,7 +1143,7 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
         return -1.0f;
     }
 
-    angleObject = get_angle_between_two_vector(cameraPos, objectPos);
+    angleObject = get_angle_between_two_vectors(cameraPos, objectPos);
     minus_fov_angle = (orientationY - extended_fov);
     plus_fov_angle = (orientationY + extended_fov);
 

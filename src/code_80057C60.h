@@ -44,7 +44,7 @@ void render_player_snow_effect_two(void);
 void render_player_snow_effect_three(void);
 void render_player_snow_effect_four(void);
 void render_object_for_player(s32);
-void render_snowy_effect(s32);
+void render_snowing_effect(s32);
 void func_80058BF4(void);
 void func_80058C20(u32);
 void render_hud(u32);

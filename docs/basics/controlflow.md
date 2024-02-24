@@ -89,7 +89,7 @@ Object related code resides in
 |file|desc|
 |---|---|
 |[code_80057C60](@ref code_80057C60.c)|Objects|
-|[code_80071F00](@ref code_80071F00.c)|Objects|
+|[update_objects](@ref update_objects.c)|Objects|
 |[code_80086E70](@ref code_80086E70.c)|Objects|
 
 Documentation of the specifics still in-progress. See [actors](actorsmenu.html) for more information.
@@ -114,7 +114,7 @@ Course related code resides in
 ## UI & Other 2D Screen data
 |file|desc|
 |---|---|
-|[hud_renderer](@ref hud_renderer.c)|ItemWindows|
+|[render_objects](@ref render_objects.c)|ItemWindows|
 
 ## Engine
 |file|desc|

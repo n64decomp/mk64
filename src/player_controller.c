@@ -1696,7 +1696,7 @@ void func_8002B9CC(Player *player, s8 arg1, UNUSED s32 arg2) {
                 func_8008C73C(player, arg1);
             }
         }
-        temp = (-(s16)get_angle_between_two_vector(player->pos, &player->copy_rotation_x));
+        temp = (-(s16)get_angle_between_two_vectors(player->pos, &player->copy_rotation_x));
         temp2 = (player->rotation[1] - player->unk_0C0);
         temp = temp - temp2;
         player->unk_234 = temp / 182;
@@ -1739,7 +1739,7 @@ void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, UNUSED s8 arg3, UNUSED 
     
     mtxf_translate_vec3f_mat3(sp4C, sp64);
 
-    var_v0 = -(s16)get_angle_between_two_vector(sp58, sp4C);
+    var_v0 = -(s16)get_angle_between_two_vectors(sp58, sp4C);
     t0 = player->rotation[1];
     var_v0 = 0x10000 + (t0 - var_v0);
     var_v0 /= 182;
@@ -2160,7 +2160,7 @@ void func_8002D028(Player *player, s8 arg1) {
     sp4C[1] = 0;
     sp4C[2] = D_80165230[D_80165270[arg1]];
 
-    temp = -(s16)get_angle_between_two_vector(player->pos, sp4C);
+    temp = -(s16)get_angle_between_two_vectors(player->pos, sp4C);
     temp2 = player->rotation[1];
     temp = (temp - temp2);
 
