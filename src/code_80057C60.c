@@ -3493,7 +3493,7 @@ void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005F90C.s")
 #endif
 
-void func_80060504(Player *player, s16 arg1, s32 arg2, UNUSED s32 arg3) {
+void func_80060504(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     UNUSED s32 thing1;
     s16 thing2;
     UNUSED s32 thing3;
@@ -3634,7 +3634,7 @@ void func_80060BCC(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
     }
 }
 
-void func_80060F50(Player* player, s16 arg1, UNUSED s8 arg2, s8 arg3, UNUSED s8 arg4) {
+void func_80060F50(Player* player, s16 arg1, UNUSED s32 arg2, s8 arg3, UNUSED s8 arg4) {
     func_8005D794(player, &player->unk_258[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
     func_8005D7D8(&player->unk_258[arg1], 5, 4.0f);
 
@@ -3650,7 +3650,7 @@ void func_80060F50(Player* player, s16 arg1, UNUSED s8 arg2, s8 arg3, UNUSED s8 
     player->unk_0DE &= ~0x0008;
 }
 
-void func_80061094(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
+void func_80061094(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     if (arg1 == 0) {
         func_8005D794(player, &player->unk_258[arg1], 0.0f, 0.0f, 0.0f, 0, 0);
         func_8005D7D8(&player->unk_258[arg1], 6, 3.8f);
@@ -3685,7 +3685,7 @@ void func_80061224(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-void func_800612F8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 arg3) {
+void func_800612F8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 var_s2;
 
     for (var_s2 = 0; var_s2 < 10; var_s2++){
@@ -3703,7 +3703,7 @@ void func_800612F8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
     player->unk_046 &= ~0x0008;
 }
 
-void func_80061430(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 arg3) {
+void func_80061430(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 var_s2;
 
     for (var_s2 = 0; var_s2 < 7; var_s2++){
@@ -3723,7 +3723,7 @@ void func_80061430(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 a
     player->unk_044 &= ~0x1000;
 }
 
-void func_800615AC(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3) {
+void func_800615AC(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 test = 2;
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
@@ -3788,7 +3788,7 @@ void func_8006199C(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-void func_80061A34(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
+void func_80061A34(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 sp54;
     UNUSED s32 stackPadding0;
     s32 sp4C;
@@ -3818,7 +3818,7 @@ void func_80061A34(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
     }
 }
 
-void func_80061D4C(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3) {
+void func_80061D4C(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 test = 2;
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
@@ -3841,7 +3841,7 @@ void func_80061D4C(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3) {
     }
 }
 
-void func_80061EF4(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
+void func_80061EF4(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     UNUSED s32 stackPadding0;
     s32 var_t0 = 0x000000FF;
     s32 var_t1;
@@ -3890,7 +3890,7 @@ void func_80061EF4(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
     }
 }
 
-void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3) {
+void func_800621BC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 temp_v1;
     s32 phi_t0;
     s32 phi_t1;
@@ -3961,7 +3961,7 @@ void func_80062484(Player* player, UnkPlayerStruct258* arg1, s32 arg2) {
     arg1->unk_01E = 0;
 }
 
-void func_800624D8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 arg3) {
+void func_800624D8(Player *player, UNUSED s32 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     s32 var_s1;
 
     switch (player->surfaceType) {
@@ -6039,14 +6039,6 @@ void func_8006C6AC(Player *player, s16 arg1, s8 arg2, s8 arg3) {
     }
 }
 
-#ifdef NON_MATCHING
-/**
- * https://decomp.me/scratch/pKyCf
- * There's something very very wrong about the handling of arg3
- * In the target assembly arg3 keeps getting (re?)converted to
- * an s8, but in this decomp attempt that never happens.
- * I don't know what's going on.
-**/
 void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
     UNUSED s32 stackPadding;
     s32 sp28;
@@ -6097,7 +6089,7 @@ void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
         }
     } else {
         if (player->unk_044 & 0x1000) {
-            func_80061430(player, arg1, sp28, arg2);
+            func_80061430(player, arg1, sp28, arg2, arg3);
             player->unk_044 &= ~0x0100;
             return;
         }
@@ -6108,60 +6100,45 @@ void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
             return;
         }
         if ((player->unk_0CA & 0x2000) == 0x2000) {
-            func_80061A34(player, arg1, sp28, arg2);
+            func_80061A34(player, arg1, sp28, arg2, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
             return;
         }
         if ((player->effects & STAR_EFFECT) && ((((s32) gCourseTimer) - D_8018D930[arg2]) < 9)) {
-            func_800615AC(player, arg1, sp28, arg2);
+            func_800615AC(player, arg1, sp28, arg2, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
             return;
         }
         if ((player->unk_046 & 8) == 8) {
-            func_800612F8(player, arg1, sp28, arg2);
+            func_800612F8(player, arg1, sp28, arg2, arg3);
             player->unk_044 &= ~0x0100;
             return;
         }
         if (((player->unk_046 & 0x20) == 0x20) && (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
-            func_80061D4C(player, arg1, sp28, arg2);
+            func_80061D4C(player, arg1, sp28, arg2, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
             return;
         }
         if ((player->effects & BOOST_EFFECT) && (player->type & PLAYER_HUMAN)) {
-            func_800621BC(player, arg1, sp28, arg2);
+            func_800621BC(player, arg1, sp28, arg2, arg3);
             return;
         }
         if (((player->effects & 0x200000) || (player->effects & BOOST_RAMP_ASPHALT_EFFECT)) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
-            func_80061EF4(player, arg1, sp28, arg2);
+            func_80061EF4(player, arg1, sp28, arg2, arg3);
             player->unk_046 &= ~0x0008;
             player->unk_044 &= ~0x0100;
             return;
         }
         if ((player->unk_044 & 0x100) == 0x100) {
-            func_800624D8(player, arg1, sp28, arg2);
+            func_800624D8(player, arg1, sp28, arg2, arg3);
             player->unk_046 &= ~0x0008;
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006C9B8.s")
-#endif
 
-#ifdef NON_MATCHING
-// Something really wrong with arg3 on these functions, could be fake?
-void func_80062C74(Player *player, s16 arg1, s32 arg2, s32 arg3);
-void func_80064184(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3);
-void func_800630C0(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3);
-void func_800631A8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3);
-void func_80063268(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3);
-
-extern s32 gActiveScreenMode;
-
-// Replacing arg3 with 0 seems to make the percentage higher.
-// func_80060504 args could be wrong as well.
 void func_8006CEC0(Player *arg0, s16 arg1, s8 arg2, s8 arg3) {
     UNUSED u16 temp_v0_3;
     s32 sp20 = arg1;
@@ -6208,8 +6185,7 @@ void func_8006CEC0(Player *arg0, s16 arg1, s8 arg2, s8 arg3) {
                 && ((arg0->effects & 0x400) != 0x400)
                 && ((arg0->effects & 0x01000000) != 0x01000000))  {
                 if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100))  {
-                    //func_80060504(arg0, arg1, sp20, arg2, arg3);
-                    func_80060504(arg0, sp20, arg2, arg3);
+                    func_80060504(arg0, arg1, sp20, arg2, arg3);
                 }
             }
             break;
@@ -6223,17 +6199,13 @@ void func_8006CEC0(Player *arg0, s16 arg1, s8 arg2, s8 arg3) {
                 && ((arg0->effects & 0x400) != 0x400)
                 && ((arg0->effects & 0x01000000) != 0x01000000)) {
                 if (((arg0->unk_0CA & 2) != 2) && ((arg0->unk_0CA & 0x10) != 0x10) && !(arg0->unk_0CA & 0x100))  {
-                    //func_80060504(arg0, arg1, sp20, arg2, arg3);
-                    func_80060504(arg0, sp20, arg2, arg3);
+                    func_80060504(arg0, arg1, sp20, arg2, arg3);
                 }
             }
             break;
         }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8006CEC0.s")
-#endif
 
 void func_8006D194(Player *player, s8 arg1, s8 arg2) {
     if (player->unk_258[0x14].unk_01C == 1) {

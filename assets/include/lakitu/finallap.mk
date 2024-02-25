@@ -36,7 +36,7 @@ $(FINALLAP_FRAMES) $(FINALLAP_PALETTE): $(FINALLAP_EXPORT_SENTINEL) ;
 
 $(FINALLAP_EXPORT_SENTINEL): assets/lakitu/finallap.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_finallap
 distclean_lakitu_finallap:

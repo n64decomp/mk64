@@ -28,7 +28,7 @@ $(NOLIGHTS_FRAMES) $(NOLIGHTS_PALETTE): $(NOLIGHTS_EXPORT_SENTINEL) ;
 
 $(NOLIGHTS_EXPORT_SENTINEL): assets/lakitu/nolights.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_nolights
 distclean_lakitu_nolights:

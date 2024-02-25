@@ -17,7 +17,7 @@ $(LUIGI_RACEWAY_PNG): $(LUIGI_RACEWAY_EXPORT_SENTINEL) ;
 
 $(LUIGI_RACEWAY_EXPORT_SENTINEL): $(ASSET_DIR)/courses/luigi_raceway.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_luigi_raceway
 distclean_luigi_raceway:

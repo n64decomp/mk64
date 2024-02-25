@@ -24,7 +24,7 @@ $(YOSHI_VALLEY_PNG): $(YOSHI_VALLEY_EXPORT_SENTINEL) ;
 
 $(YOSHI_VALLEY_EXPORT_SENTINEL): $(ASSET_DIR)/courses/yoshi_valley.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_yoshi_valley
 distclean_yoshi_valley:

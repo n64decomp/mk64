@@ -87,5 +87,11 @@ expected/*
 
 # Doxygen
 docs/html/*
-objects
-tools/mingw64
+
+# windows build
+mingw64/
+.ash_history
+!tools/ido-recomp/*/*
+
+# models
+models

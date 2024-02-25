@@ -33,7 +33,7 @@ $(DONKEYKONG_SELECT_PNG): $(DONKEYKONG_SELECT_EXPORT_SENTINEL) ;
 
 $(DONKEYKONG_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/donkeykong_select.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_donkeykong_select
 distclean_donkeykong_select:

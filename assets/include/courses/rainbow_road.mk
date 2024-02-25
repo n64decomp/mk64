@@ -99,7 +99,7 @@ $(RAINBOW_ROAD_PNG): $(RAINBOW_ROAD_EXPORT_SENTINEL) ;
 
 $(RAINBOW_ROAD_EXPORT_SENTINEL): $(ASSET_DIR)/courses/rainbow_road.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_rainbow_road
 distclean_rainbow_road:
