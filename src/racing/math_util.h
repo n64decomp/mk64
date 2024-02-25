@@ -40,7 +40,7 @@ void func_802B5CAC(s16, s16, Vec3f);
 void func_802B5D30(s16, s16, s32);
 void func_802B5D64(uintptr_t, s16, s16, s32);
 void mtxf_scale(Mat4, f32);
-void func_802B5F74(Mat4, Vec3f, Vec3s);
+void mtxf_pos_rotation_xyz(Mat4, Vec3f, Vec3s);
 void mtxf_translate_vec3f_mat3(Vec3f, Mat3);
 void mtxf_translate_vec3f_mat4(Vec3f, Mat4);
 void func_802B64C4(Vec3f, s16);

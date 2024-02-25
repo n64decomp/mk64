@@ -471,7 +471,7 @@ void podium_ceremony_loop(void) {
     func_8005A070();
     if (D_802874D8.unk1C != 0) {
         func_8001C14C();
-        func_800097E0();
+        update_vehicle();
     }
     func_80281D00();
     func_80281540();

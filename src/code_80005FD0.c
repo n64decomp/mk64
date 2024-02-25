@@ -138,7 +138,7 @@ s32 D_8016359C;
 TrainStuff gTrainList[NUM_TRAINS];
 u16 isCrossingTriggeredByIndex[2];
 u16 D_801637BC[2];
-PaddleWheelBoatStuff gFerries[NUM_PADDLE_WHEEL_BOATS];
+PaddleBoatStuff gPaddleBoats[NUM_PADDLE_BOATS];
 VehicleStuff gBoxTruckList[NUM_RACE_BOX_TRUCKS];
 VehicleStuff gSchoolBusList[NUM_RACE_SCHOOL_BUSES];
 VehicleStuff gTankerTruckList[NUM_RACE_TANKER_TRUCKS];
@@ -1607,7 +1607,7 @@ block_25:
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000929C.s")
 #endif
 
-void func_800097E0(void) {
+void update_vehicle(void) {
     s32 i;
     generate_player_smoke();
     D_8016337C++;
@@ -1628,10 +1628,10 @@ void func_800097E0(void) {
 
         switch(gCurrentCourseId) {
             case COURSE_KALAMARI_DESERT:
-                func_80012AC0();
+                update_vehicle_trains();
                 break;
             case COURSE_DK_JUNGLE:
-                func_800133C4();
+                update_vehicle_paddle_boats();
                 break;
             case COURSE_TOADS_TURNPIKE:
                 func_8001487C();
@@ -4451,7 +4451,7 @@ void init_course_vehicles(void) {
     VehicleStuff *tempSchoolBus;
     VehicleStuff *tempTankerTruck;
     VehicleStuff *tempCar;
-    PaddleWheelBoatStuff *tempPaddleWheelBoat;
+    PaddleBoatStuff *tempPaddleWheelBoat;
     Vec3s paddleWheelBoatRot;
     s32 loopIndex;
     s32 loopIndex2;
@@ -4496,8 +4496,8 @@ void init_course_vehicles(void) {
         }
         break;
     case COURSE_DK_JUNGLE:
-        for(loopIndex = 0; loopIndex < NUM_ACTIVE_PADDLE_WHEEL_BOATS; loopIndex++) {
-            tempPaddleWheelBoat = &gFerries[loopIndex];
+        for(loopIndex = 0; loopIndex < NUM_ACTIVE_PADDLE_BOATS; loopIndex++) {
+            tempPaddleWheelBoat = &gPaddleBoats[loopIndex];
             if(tempPaddleWheelBoat->isActive == 1) {
                 origXPos = tempPaddleWheelBoat->position[0];
                 origZPos = tempPaddleWheelBoat->position[2];
@@ -4505,7 +4505,7 @@ void init_course_vehicles(void) {
                 tempPaddleWheelBoat->velocity[0] = tempPaddleWheelBoat->position[0] - origXPos;
                 tempPaddleWheelBoat->velocity[2] = tempPaddleWheelBoat->position[2] - origZPos;
                 vec3s_set(paddleWheelBoatRot, 0, tempPaddleWheelBoat->rotY, 0);
-                tempPaddleWheelBoat->actorIndex = addActorToEmptySlot(tempPaddleWheelBoat->position, paddleWheelBoatRot, tempPaddleWheelBoat->velocity, ACTOR_PADDLE_WHEEL_BOAT);
+                tempPaddleWheelBoat->actorIndex = addActorToEmptySlot(tempPaddleWheelBoat->position, paddleWheelBoatRot, tempPaddleWheelBoat->velocity, ACTOR_PADDLE_BOAT);
             }
         }
         break;
@@ -4631,7 +4631,7 @@ void func_80012A48(TrainCarStuff *trainCar, s16 arg1) {
     trainCarActor->velocity[2] = trainCar->velocity[2];
 }
 
-void func_80012AC0(void) {
+void update_vehicle_trains(void) {
     UNUSED s32 pad[3];
     f32 temp_f20;
     TrainCarStuff *car;
@@ -4811,13 +4811,13 @@ void func_800131DC(s32 playerId) {
 }
 
 void func_800132F4(void) {
-    PaddleWheelBoatStuff *var_a1;
+    PaddleBoatStuff *var_a1;
     s32 i;
     PathNoY *temp_a2;
     u16 temp;
-    for (i = 0; i < NUM_ACTIVE_PADDLE_WHEEL_BOATS; i++) {
+    for (i = 0; i < NUM_ACTIVE_PADDLE_BOATS; i++) {
         temp = i * 0xB4;
-        var_a1 = &gFerries[i];
+        var_a1 = &gPaddleBoats[i];
         temp_a2 = &D_80163598[temp];
         var_a1->position[0] = temp_a2->x;
         var_a1->position[1] = D_80162EB2;
@@ -4839,11 +4839,11 @@ void func_800132F4(void) {
     D_801630FC = 0;
 }
 
-void func_800133C4(void) {
-    PaddleWheelBoatStuff *ferry;
+void update_vehicle_paddle_boats(void) {
+    PaddleBoatStuff *paddleBoat;
     PathNoY *waypoint;
     s32 i;
-    struct Actor *ferryActor;
+    struct Actor *paddleBoatActor;
     f32 temp_f26;
     f32 temp_f28;
     f32 temp_f30;
@@ -4856,92 +4856,92 @@ void func_800133C4(void) {
     Vec3f sp78;
     s32 pad2;
     D_801630FC += 1;
-    for (i = 0; i < NUM_ACTIVE_PADDLE_WHEEL_BOATS; i++) {
-        ferry = &gFerries[i];
-        if (ferry->isActive == 1) {
-            temp_f26 = ferry->position[0];
-            temp_f28 = ferry->position[1];
-            temp_f30 = ferry->position[2];
-            func_8000DBAC(ferry->position, &ferry->waypointIndex, ferry->someMultiplier);
-            ferry->someFlags = func_800061DC(ferry->position, 2000.0f, ferry->someFlags);
-            if ((((s16) D_801630FC % 10) == 0) && (ferry->someFlags != 0)) {
-                sp78[0] = (f32) ((f64) ferry->position[0] - 30.0);
-                sp78[1] = (f32) ((f64) ferry->position[1] + 180.0);
-                sp78[2] = (f32) ((f64) ferry->position[2] + 45.0);
-                func_80006114(sp78, ferry->position, ferry->rotY);
+    for (i = 0; i < NUM_ACTIVE_PADDLE_BOATS; i++) {
+        paddleBoat = &gPaddleBoats[i];
+        if (paddleBoat->isActive == 1) {
+            temp_f26 = paddleBoat->position[0];
+            temp_f28 = paddleBoat->position[1];
+            temp_f30 = paddleBoat->position[2];
+            func_8000DBAC(paddleBoat->position, &paddleBoat->waypointIndex, paddleBoat->someMultiplier);
+            paddleBoat->someFlags = func_800061DC(paddleBoat->position, 2000.0f, paddleBoat->someFlags);
+            if ((((s16) D_801630FC % 10) == 0) && (paddleBoat->someFlags != 0)) {
+                sp78[0] = (f32) ((f64) paddleBoat->position[0] - 30.0);
+                sp78[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
+                sp78[2] = (f32) ((f64) paddleBoat->position[2] + 45.0);
+                func_80006114(sp78, paddleBoat->position, paddleBoat->rotY);
                 func_80075A6C(i, sp78, 1.1f);
-                sp78[0] = (f32) ((f64) ferry->position[0] + 30.0);
-                sp78[1] = (f32) ((f64) ferry->position[1] + 180.0);
-                sp78[2] = (f32) ((f64) ferry->position[2] + 45.0);
-                func_80006114(sp78, ferry->position, ferry->rotY);
+                sp78[0] = (f32) ((f64) paddleBoat->position[0] + 30.0);
+                sp78[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
+                sp78[2] = (f32) ((f64) paddleBoat->position[2] + 45.0);
+                func_80006114(sp78, paddleBoat->position, paddleBoat->rotY);
                 func_80075A6C(i, sp78, 1.1f);
             }
             if (random_int(100) == 0) {
                 if (random_int(2) == 0) {
-                    func_800C98B8(ferry->position, ferry->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x47));
+                    func_800C98B8(paddleBoat->position, paddleBoat->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x47));
                 } else {
-                    func_800C98B8(ferry->position, ferry->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x48));
+                    func_800C98B8(paddleBoat->position, paddleBoat->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x48));
                 }
             }
             sp94[0] = temp_f26;
             sp94[1] = temp_f28;
             sp94[2] = temp_f30;
-            waypoint = &D_80163598[(ferry->waypointIndex + 5) % D_8016359C];
+            waypoint = &D_80163598[(paddleBoat->waypointIndex + 5) % D_8016359C];
             sp88[0] = (f32) waypoint->x;
             sp88[1] = (f32) D_80162EB0;
             sp88[2] = (f32) waypoint->z;
             temp_a1 = func_80005FD0(sp94, sp88);
-            temp = temp_a1 - ferry->rotY;
+            temp = temp_a1 - paddleBoat->rotY;
             var_v1 = temp;
             if (var_v1 < 0) {
                 var_v1 = -var_v1;
             }
             if (var_v1 >= 0x1771) {
-                if (ferry->someMultiplier > 0.2) {
-                    ferry->someMultiplier -= 0.04;
+                if (paddleBoat->someMultiplier > 0.2) {
+                    paddleBoat->someMultiplier -= 0.04;
                 }
                 if (var_v1 >= 0x3D) {
                     var_v1 = 0x003C;
                 }
             } else {
-                if (ferry->someMultiplier < 2.0) {
-                    ferry->someMultiplier += 0.02;
+                if (paddleBoat->someMultiplier < 2.0) {
+                    paddleBoat->someMultiplier += 0.02;
                 }
                 if (var_v1 >= 0x1F) {
                     var_v1 = 0x001E;
                 }
             }
             if (temp >= 0x8000) {
-                ferry->rotY -= var_v1;
+                paddleBoat->rotY -= var_v1;
             } else if (temp > 0) {
-                ferry->rotY += var_v1;
+                paddleBoat->rotY += var_v1;
             } else if (temp < -0x7FFF) {
-                ferry->rotY += var_v1;
+                paddleBoat->rotY += var_v1;
             } else if (temp < 0) {
-                ferry->rotY -= var_v1;
+                paddleBoat->rotY -= var_v1;
             }
-            ferry->velocity[0] = ferry->position[0] - temp_f26;
-            ferry->velocity[1] = ferry->position[1] - temp_f28;
-            ferry->velocity[2] = ferry->position[2] - temp_f30;
-            ferryActor = &gActorList[ferry->actorIndex];
-            ferryActor->pos[0] = ferry->position[0];
-            ferryActor->pos[1] = ferry->position[1];
-            ferryActor->pos[2] = ferry->position[2];
+            paddleBoat->velocity[0] = paddleBoat->position[0] - temp_f26;
+            paddleBoat->velocity[1] = paddleBoat->position[1] - temp_f28;
+            paddleBoat->velocity[2] = paddleBoat->position[2] - temp_f30;
+            paddleBoatActor = &gActorList[paddleBoat->actorIndex];
+            paddleBoatActor->pos[0] = paddleBoat->position[0];
+            paddleBoatActor->pos[1] = paddleBoat->position[1];
+            paddleBoatActor->pos[2] = paddleBoat->position[2];
             if (gIsMirrorMode != 0) {
-                ferryActor->rot[1] = -ferry->rotY;
+                paddleBoatActor->rot[1] = -paddleBoat->rotY;
             } else {
-                ferryActor->rot[1] = ferry->rotY;
+                paddleBoatActor->rot[1] = paddleBoat->rotY;
             }
-            ferryActor->velocity[0] = ferry->velocity[0];
-            ferryActor->velocity[1] = ferry->velocity[1];
-            ferryActor->velocity[2] = ferry->velocity[2];
+            paddleBoatActor->velocity[0] = paddleBoat->velocity[0];
+            paddleBoatActor->velocity[1] = paddleBoat->velocity[1];
+            paddleBoatActor->velocity[2] = paddleBoat->velocity[2];
         }
     }
 }
 
 void func_80013854(Player *player) {
     s32 someIndex;
-    PaddleWheelBoatStuff *tempPaddleWheelBoat;
+    PaddleBoatStuff *tempPaddleWheelBoat;
     f32 x_diff;
     f32 y_diff;
     f32 z_diff;
@@ -4953,8 +4953,8 @@ void func_80013854(Player *player) {
         playerX = player->pos[0];
         playerY = player->pos[1];
         playerZ = player->pos[2];
-        for (someIndex = 0; someIndex < NUM_ACTIVE_PADDLE_WHEEL_BOATS; someIndex++) {
-            tempPaddleWheelBoat = &gFerries[someIndex];
+        for (someIndex = 0; someIndex < NUM_ACTIVE_PADDLE_BOATS; someIndex++) {
+            tempPaddleWheelBoat = &gPaddleBoats[someIndex];
             if (tempPaddleWheelBoat->isActive == 1) {
                 x_diff = playerX - tempPaddleWheelBoat->position[0];
                 y_diff = playerY - tempPaddleWheelBoat->position[1];

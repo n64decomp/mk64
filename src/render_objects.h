@@ -350,7 +350,7 @@ void func_80053E6C(s32);
 
 void render_train_smoke_particle(s32, s32);
 void render_train_smoke(s32);
-void render_ferry_smoke_particles(s32, s32);
+void render_paddleBoat_smoke_particles(s32, s32);
 void render_ferries_smoke(s32);
 void render_bowser_flame_particle(s32, s32);
 void render_bowser_flame(s32);

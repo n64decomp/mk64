@@ -2530,6 +2530,7 @@ void draw_lap_count(s16 lapX, s16 lapY, s8 lap) {
     gSPDisplayList(gDisplayListHead++, D_0D007EF8);
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
     load_texture_block_rgba16_mirror(common_texture_hud_123, 32, 8);
+    // Display current lap. Ex. 1/3
     func_8004BA98(lapX     , lapY, 8, 8, lap * 8, 0, 0); // display the digit
     func_8004BA98(lapX + 8 , lapY, 8, 8,      24, 0, 0); // display the /
     func_8004BA98(lapX + 16, lapY, 8, 8,      16, 0, 0); // display the 3
@@ -3613,7 +3614,7 @@ void render_train_smoke(s32 cameraId) {
 #endif
 }
 
-void render_ferry_smoke_particles(s32 objectIndex, s32 cameraId) {
+void render_paddleBoat_smoke_particles(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
@@ -3639,14 +3640,14 @@ void render_ferries_smoke(s32 cameraId) {
     func_8004B72C(255, 255, 255, 255, 255, 255, 255);
     D_80183E80[0] = 0;
     D_80183E80[2] = 0x8000;
-    if ((gFerries[0].someFlags != 0) && (is_particle_on_screen(gFerries[0].position, camera, 0x4000U) != 0)) {
+    if ((gPaddleBoats[0].someFlags != 0) && (is_particle_on_screen(gPaddleBoats[0].position, camera, 0x4000U) != 0)) {
         for (i = 0; i < gObjectParticle2_SIZE; i++) {
-            render_ferry_smoke_particles(gObjectParticle2[i], cameraId);
+            render_paddleBoat_smoke_particles(gObjectParticle2[i], cameraId);
         }
     }
-    if ((gFerries[1].someFlags != 0) && (is_particle_on_screen(gFerries[1].position, camera, 0x4000U) != 0)) {
+    if ((gPaddleBoats[1].someFlags != 0) && (is_particle_on_screen(gPaddleBoats[1].position, camera, 0x4000U) != 0)) {
         for (i = 0; i < gObjectParticle3_SIZE; i++) {
-            render_ferry_smoke_particles(gObjectParticle3[i], cameraId);
+            render_paddleBoat_smoke_particles(gObjectParticle3[i], cameraId);
         }
     }
 }

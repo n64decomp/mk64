@@ -3,7 +3,7 @@
 
 #include "common_structs.h"
 
-enum ActorType {
+enum CeremonyActorType {
     Initial,
     Balloon,
     FireworkCone,

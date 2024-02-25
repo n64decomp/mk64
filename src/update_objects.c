@@ -1715,7 +1715,7 @@ void update_ferries_smoke_particle(void) {
     if (D_80165790 != 0) {
         D_80165790 -= 1;
     }
-    if ((gFerries[0].someFlags != 0) || (D_8016578C != 0)) {
+    if ((gPaddleBoats[0].someFlags != 0) || (D_8016578C != 0)) {
         count = 0;
         for (i = 0; i < 128; i++) {
             temp_a0 = gObjectParticle2[i];
@@ -1734,7 +1734,7 @@ void update_ferries_smoke_particle(void) {
             D_8016578C = 100;
         }
     }
-    if ((gFerries[1].someFlags != 0) || (D_80165790 != 0)) {
+    if ((gPaddleBoats[1].someFlags != 0) || (D_80165790 != 0)) {
         count = 0;
         for (i = 0; i < 128; i++) {
             temp_a0 = gObjectParticle3[i];
