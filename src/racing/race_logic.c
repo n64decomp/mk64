@@ -670,7 +670,7 @@ void func_8028F474(void) {
             }
         case 1:
         case 2:
-            update_vehicle();
+            update_vehicles();
             break;
     }
 }

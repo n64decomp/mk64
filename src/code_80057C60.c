@@ -709,68 +709,68 @@ void render_object_for_player(s32 cameraId) {
         case COURSE_CHOCO_MOUNTAIN:
             break;
         case COURSE_BOWSER_CASTLE:
-            render_thwomps(cameraId);
-            render_bowser_flame(cameraId);
+            render_object_thwomps(cameraId);
+            render_object_bowser_flame(cameraId);
             break;
         case COURSE_BANSHEE_BOARDWALK:
             if (gGamestate != CREDITS_SEQUENCE) {
-                render_trash_bin(cameraId);
-                render_bat(cameraId);
+                render_object_trash_bin(cameraId);
+                render_object_bat(cameraId);
                 func_8005217C(cameraId);
-                render_boos(cameraId);
+                render_object_boos(cameraId);
             }
             break;
         case COURSE_YOSHI_VALLEY:
             func_80055228(cameraId);
             if (gGamestate != CREDITS_SEQUENCE) {
-                render_hedgehogs(cameraId);
+                render_object_hedgehogs(cameraId);
             }
             break;
         case COURSE_FRAPPE_SNOWLAND:
             if (gGamestate != CREDITS_SEQUENCE) {
-                render_snowman(cameraId);
+                render_object_snowmans(cameraId);
             }
             break;
         case COURSE_KOOPA_BEACH:
             if (gGamestate != CREDITS_SEQUENCE) {
-                render_crabs(cameraId);
+                render_object_crabs(cameraId);
             }
             if (gGamestate != CREDITS_SEQUENCE) {
 
                 if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
-                    render_seagulls(cameraId);
+                    render_object_seagulls(cameraId);
                 }
             } else {
-                render_seagulls(cameraId);
+                render_object_seagulls(cameraId);
             }
             break;
         case COURSE_ROYAL_RACEWAY:
             break;
         case COURSE_LUIGI_RACEWAY:
             if (D_80165898 != 0) {
-                render_hot_air_balloon(cameraId);
+                render_object_hot_air_balloon(cameraId);
             }
             break;
         case COURSE_MOO_MOO_FARM:
             if (gGamestate != CREDITS_SEQUENCE) {
-                render_moles(cameraId);
+                render_object_moles(cameraId);
             }
             break;
         case COURSE_TOADS_TURNPIKE:
             break;
         case COURSE_KALAMARI_DESERT:
-            render_train_smoke(cameraId);
+            render_object_train_smoke_particles(cameraId);
             break;
         case COURSE_SHERBET_LAND:
             if (gGamestate != CREDITS_SEQUENCE) {
                 func_80052E30(cameraId);
             }
-            render_penguins(cameraId);
+            render_object_train_penguins(cameraId);
             break;
         case COURSE_RAINBOW_ROAD:
             if (gGamestate != CREDITS_SEQUENCE) {
-                render_neon(cameraId);
-                render_chain_chomps(cameraId);
+                render_object_neon(cameraId);
+                render_object_chain_chomps(cameraId);
             }
             break;
         case COURSE_WARIO_STADIUM:
@@ -783,19 +783,19 @@ void render_object_for_player(s32 cameraId) {
             break;
         case COURSE_DK_JUNGLE:
             if (gGamestate != CREDITS_SEQUENCE) {
-                render_ferries_smoke(cameraId);
+                render_object_paddle_boat_smoke_particles(cameraId);
             }
             break;
     }
 
-    render_smoke_particles(cameraId);
-    render_leaf_particle(cameraId);
+    render_object_smoke_particles(cameraId);
+    render_object_leaf_particle(cameraId);
 
     if (D_80165730 != 0) {
         func_80053E6C(cameraId);
     }
     if (gModeSelection == BATTLE) {
-        render_bomb_kart(cameraId);
+        render_object_bomb_kart(cameraId);
     }
 }
 
@@ -804,10 +804,10 @@ void render_snowing_effect(s32 arg0) {
         case COURSE_FRAPPE_SNOWLAND:
             if (gGamestate != 9) {
                 if ((D_8015F894 == 0) && (gPlayerCountSelection1 == 1)) {
-                    render_snowflakes_particles();
+                    render_object_snowflakes_particles();
                 }
             } else {
-                render_snowflakes_particles();
+                render_object_snowflakes_particles();
             }
             break;
         case COURSE_SHERBET_LAND:

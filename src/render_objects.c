@@ -2907,7 +2907,7 @@ void func_800514BC(void) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void render_leaf_particle(UNUSED s32 cameraId) {
+void render_object_leaf_particle(UNUSED s32 cameraId) {
     s32 someIndex;
     s32 leafIndex;
     Objects *object;
@@ -2929,7 +2929,7 @@ void render_leaf_particle(UNUSED s32 cameraId) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void render_snowflakes_particles(void) {
+void render_object_snowflakes_particles(void) {
     s32 someIndex;
     s32 snowflakeIndex;
 
@@ -3133,7 +3133,7 @@ void func_800523B8(s32 objectIndex, s32 arg1, u32 arg2) {
     }
 }
 
-void render_boos(s32 arg0) {
+void render_object_boos(s32 arg0) {
     u32 temp_s2;
     s32 someIndex;
     s32 objectIndex;
@@ -3149,7 +3149,7 @@ void render_boos(s32 arg0) {
     }
 }
 
-void render_bat(s32 cameraId) {
+void render_object_bat(s32 cameraId) {
     s32 var_s2;
     s32 objectIndex;
     Camera *temp_s7;
@@ -3184,7 +3184,7 @@ void render_bat(s32 cameraId) {
     gSPTexture(gDisplayListHead++, 0x0001, 0x0001, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void render_trash_bin(s32 cameraId) {
+void render_object_trash_bin(s32 cameraId) {
     s32 objectIndex;
     Objects *object;
 
@@ -3309,7 +3309,7 @@ void func_80052E30(UNUSED s32 arg0) {
     }
 }
 
-void render_snowman_list_2(s32 cameraId) {
+void render_object_snowmans_list_2(s32 cameraId) {
     UNUSED s32 stackPadding[2];
     Camera *sp44;
     s32 someIndex;
@@ -3335,7 +3335,7 @@ void render_snowman_list_2(s32 cameraId) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void render_snowman_list_1(s32 cameraId) {
+void render_object_snowmans_list_1(s32 cameraId) {
     s32 var_s4;
     s32 objectIndex;
     Camera *camera;
@@ -3361,9 +3361,9 @@ void render_snowman_list_1(s32 cameraId) {
     }
 }
 
-void render_snowman(s32 arg0) {
-    render_snowman_list_1(arg0);
-    render_snowman_list_2(arg0);
+void render_object_snowmans(s32 arg0) {
+    render_object_snowmans_list_1(arg0);
+    render_object_snowmans_list_2(arg0);
 }
 
 void render_lakitu(s32 cameraId) {
@@ -3437,7 +3437,7 @@ void func_800534E8(s32 objectIndex) {
     }
 }
 
-void render_thwomps_model(s32 objectIndex) {
+void render_object_thwomps_model(s32 objectIndex) {
     if ((gObjectList[objectIndex].state >= 2) && (func_80072354(objectIndex, 0x00000040) != 0)) {
         func_8004A7AC(objectIndex, 1.75f);
         rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling);
@@ -3450,7 +3450,7 @@ void render_thwomps_model(s32 objectIndex) {
     }
 }
 
-void render_thwomps(s32 cameraId) {
+void render_object_thwomps(s32 cameraId) {
     s32 objectIndex;
     s32 i;
     UNUSED s32 stackPadding0;
@@ -3474,10 +3474,10 @@ void render_thwomps(s32 cameraId) {
         plusone = gObjectList[objectIndex].unk_0DF + 1;
         if (gGamestate != 9) {
             if ((D_8018CF68[cameraId] >= minusone) && (plusone >= D_8018CF68[cameraId]) && (is_object_visible_on_camera(objectIndex, camera, 0x8000U) != 0)) {
-                render_thwomps_model(objectIndex);
+                render_object_thwomps_model(objectIndex);
             }
         } else {
-            render_thwomps_model(objectIndex);
+            render_object_thwomps_model(objectIndex);
         }
     }
     gSPDisplayList(gDisplayListHead++, D_0D0079C8);
@@ -3559,7 +3559,7 @@ void func_80053E6C(s32 arg0) {
 }
 
 
-void render_train_smoke_particle(s32 objectIndex, s32 cameraId) {
+void render_object_train_smoke_particle(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
@@ -3573,7 +3573,7 @@ void render_train_smoke_particle(s32 objectIndex, s32 cameraId) {
 }
 
 // Train smoke?
-void render_train_smoke(s32 cameraId) {
+void render_object_train_smoke_particles(s32 cameraId) {
     UNUSED s32 pad;
     UNUSED s32 j;
     Camera *camera;
@@ -3593,7 +3593,7 @@ void render_train_smoke(s32 cameraId) {
 
             for (i = 0; i < 128; i++) {
                 // Need to make a way to increase this array for each train.
-                render_train_smoke_particle(gObjectParticle2[i], cameraId);
+                render_object_train_smoke_particle(gObjectParticle2[i], cameraId);
             }
         }
     }
@@ -3602,19 +3602,19 @@ void render_train_smoke(s32 cameraId) {
     if ((gTrainList[0].someFlags != 0) && (is_particle_on_screen(gTrainList[0].locomotive.position, camera, 0x4000U) != 0)) {
 
         for (i = 0; i < gObjectParticle2_SIZE; i++) {
-            render_train_smoke_particle(gObjectParticle2[i], cameraId);
+            render_object_train_smoke_particle(gObjectParticle2[i], cameraId);
         }
 
     }
     if ((gTrainList[1].someFlags != 0) && (is_particle_on_screen(gTrainList[1].locomotive.position, camera, 0x4000U) != 0)) {
         for (i = 0; i < gObjectParticle3_SIZE; i++) {
-            render_train_smoke_particle(gObjectParticle3[i], cameraId);
+            render_object_train_smoke_particle(gObjectParticle3[i], cameraId);
         }
     }
 #endif
 }
 
-void render_paddleBoat_smoke_particles(s32 objectIndex, s32 cameraId) {
+void render_object_paddle_boat_smoke_particle(s32 objectIndex, s32 cameraId) {
     Camera *camera;
 
     camera = &camera1[cameraId];
@@ -3628,7 +3628,7 @@ void render_paddleBoat_smoke_particles(s32 objectIndex, s32 cameraId) {
 }
 
 // Likely smoke related.
-void render_ferries_smoke(s32 cameraId) {
+void render_object_paddle_boat_smoke_particles(s32 cameraId) {
     UNUSED s32 pad[2];
     Camera *camera;
     s32 i;
@@ -3642,17 +3642,17 @@ void render_ferries_smoke(s32 cameraId) {
     D_80183E80[2] = 0x8000;
     if ((gPaddleBoats[0].someFlags != 0) && (is_particle_on_screen(gPaddleBoats[0].position, camera, 0x4000U) != 0)) {
         for (i = 0; i < gObjectParticle2_SIZE; i++) {
-            render_paddleBoat_smoke_particles(gObjectParticle2[i], cameraId);
+            render_object_paddle_boat_smoke_particle(gObjectParticle2[i], cameraId);
         }
     }
     if ((gPaddleBoats[1].someFlags != 0) && (is_particle_on_screen(gPaddleBoats[1].position, camera, 0x4000U) != 0)) {
         for (i = 0; i < gObjectParticle3_SIZE; i++) {
-            render_paddleBoat_smoke_particles(gObjectParticle3[i], cameraId);
+            render_object_paddle_boat_smoke_particle(gObjectParticle3[i], cameraId);
         }
     }
 }
 
-void render_bowser_flame_particle(s32 objectIndex, s32 cameraId) {
+void render_object_bowser_flame_particle(s32 objectIndex, s32 cameraId) {
     Camera *camera;
     Objects *temp_s0;
 
@@ -3669,7 +3669,7 @@ void render_bowser_flame_particle(s32 objectIndex, s32 cameraId) {
     }
 }
 
-void render_bowser_flame(s32 cameraId) {
+void render_object_bowser_flame(s32 cameraId) {
     s32 var_s0;
     s32 objectIndex;
 
@@ -3681,7 +3681,7 @@ void render_bowser_flame(s32 cameraId) {
     for (var_s0 = 0; var_s0 < gObjectParticle1_SIZE; var_s0++) {
         objectIndex = gObjectParticle1[var_s0];
         if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 3)) {
-            render_bowser_flame_particle(objectIndex, cameraId);
+            render_object_bowser_flame_particle(objectIndex, cameraId);
         }
     }
 }
@@ -3709,7 +3709,7 @@ void func_8005477C(s32 objectIndex, u8 arg1, Vec3f arg2) {
     }
 }
 
-void render_smoke_particles(s32 cameraId) {
+void render_object_smoke_particles(s32 cameraId) {
     UNUSED s32 stackPadding[2];
     Camera *sp54;
     s32 var_s0;
@@ -3830,7 +3830,7 @@ void func_80054F04(s32 cameraId) {
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
 
-void render_moles(s32 cameraId) {
+void render_object_moles(s32 cameraId) {
     s32 i;
 
     for (i = 0; i < NUM_GROUP1_MOLES; i++) {
@@ -3883,7 +3883,7 @@ void func_800552BC(s32 objectIndex) {
     }
 }
 
-void render_seagulls(s32 arg0) {
+void render_object_seagulls(s32 arg0) {
     s32 i;
     s32 var_s1;
 
@@ -3910,7 +3910,7 @@ void draw_crabs(s32 objectIndex, s32 cameraId) {
     }
 }
 
-void render_crabs(s32 arg0) {
+void render_object_crabs(s32 arg0) {
     s32 someIndex;
     s32 test;
 
@@ -3934,7 +3934,7 @@ void func_800555BC(s32 objectIndex, s32 cameraId) {
     }
 }
 
-void render_hedgehogs(s32 arg0) {
+void render_object_hedgehogs(s32 arg0) {
     s32 test;
     u32 something;
     s32 someIndex;
@@ -3989,7 +3989,7 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
     }
 }
 
-void render_penguins(s32 cameraId) {
+void render_object_train_penguins(s32 cameraId) {
     s32 i;
     s32 objectIndex;
     s32 temp_s1;
@@ -4054,7 +4054,7 @@ void func_80055AB8(s32 objectIndex, s32 cameraId) {
     }
 }
 
-void render_chain_chomps(s32 cameraId) {
+void render_object_chain_chomps(s32 cameraId) {
     s32 var_s1;
     s32 objectIndex;
 
@@ -4093,7 +4093,7 @@ void func_80055CCC(s32 objectIndex, s32 cameraId) {
     }
 }
 
-void render_hot_air_balloon(s32 arg0) {
+void render_object_hot_air_balloon(s32 arg0) {
     s32 objectIndex;
     objectIndex = indexObjectList1[0];
     if (gGamestate != 9) {
@@ -4148,7 +4148,7 @@ void func_80056160(s32 arg0) {
     func_80055FA0(indexObjectList1[3], arg0);
 }
 
-void render_neon(s32 cameraId) {
+void render_object_neon(s32 cameraId) {
     Camera *camera;
     s32 var_s2;
     s32 objectIndex;
@@ -4267,7 +4267,7 @@ void func_80056A94(s32 playerIndex) {
     func_80072428(gIndexObjectBombKart[playerIndex]);
 }
 
-void render_bomb_kart(s32 cameraId) {
+void render_object_bomb_kart(s32 cameraId) {
     Player *temp_v0;
     s32 temp_s1;
     s32 temp_s0;

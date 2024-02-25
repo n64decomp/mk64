@@ -1607,7 +1607,7 @@ block_25:
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000929C.s")
 #endif
 
-void update_vehicle(void) {
+void update_vehicles(void) {
     s32 i;
     generate_player_smoke();
     D_8016337C++;
@@ -1628,10 +1628,10 @@ void update_vehicle(void) {
 
         switch(gCurrentCourseId) {
             case COURSE_KALAMARI_DESERT:
-                update_vehicle_trains();
+                update_vehicles_trains();
                 break;
             case COURSE_DK_JUNGLE:
-                update_vehicle_paddle_boats();
+                update_vehicles_paddle_boats();
                 break;
             case COURSE_TOADS_TURNPIKE:
                 func_8001487C();
@@ -4631,7 +4631,7 @@ void func_80012A48(TrainCarStuff *trainCar, s16 arg1) {
     trainCarActor->velocity[2] = trainCar->velocity[2];
 }
 
-void update_vehicle_trains(void) {
+void update_vehicles_trains(void) {
     UNUSED s32 pad[3];
     f32 temp_f20;
     TrainCarStuff *car;
@@ -4839,7 +4839,7 @@ void func_800132F4(void) {
     D_801630FC = 0;
 }
 
-void update_vehicle_paddle_boats(void) {
+void update_vehicles_paddle_boats(void) {
     PaddleBoatStuff *paddleBoat;
     PathNoY *waypoint;
     s32 i;
