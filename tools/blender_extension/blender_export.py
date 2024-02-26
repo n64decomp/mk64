@@ -48,4 +48,4 @@ importMeshC(
     drawLayer,
     F3DContext(get_F3D_GBI(), basePath, createF3DMat(None)),
 )
-bpy.ops.wm.save_as_mainfile(filepath="objects/"+obj+".blend")
+bpy.ops.wm.save_as_mainfile(filepath="models/"+obj+".blend")

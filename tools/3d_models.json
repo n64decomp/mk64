@@ -65,5 +65,103 @@
         "d_course_luigi_raceway_dl_FA20",
         "d_course_luigi_raceway_dl_FBE0",
         "d_course_luigi_raceway_dl_FC70"
+    ],
+    "courses/mario_raceway/course_data.inc.c": [
+        "d_course_mario_raceway_dl_piranha_plant",
+        "d_course_mario_raceway_dl_tree",
+        "d_course_mario_raceway_dl_sign"
+    ],
+    "courses/moo_moo_farm/course_data.inc.c": [
+        "d_course_moo_moo_farm_dl_cow1",
+        "d_course_moo_moo_farm_dl_cow2",
+        "d_course_moo_moo_farm_dl_cow3",
+        "d_course_moo_moo_farm_dl_cow4",
+        "d_course_moo_moo_farm_dl_cow5",
+        "d_course_moo_moo_farm_dl_tree"
+    ],
+    "courses/rainbow_road/course_data.inc.c": [
+        "d_course_rainbow_road_dl_151A8",
+        "d_course_rainbow_road_dl_15550",
+        "d_course_rainbow_road_dl_158C0",
+        "d_course_rainbow_road_dl_15C68",
+        "d_course_rainbow_road_dl_15F18"
+    ],
+    "courses/royal_raceway/course_data.inc.c": [
+        "d_course_royal_raceway_dl_tree",
+        "d_course_royal_raceway_dl_castle_tree",
+        "d_course_royal_raceway_dl_piranha_plant"
+    ],
+    "courses/sherbet_land/course_data.inc.c": [
+        "d_course_sherbet_land_dl_ice_block",
+        "d_course_sherbet_land_dl_8E00"
+    ],
+    "courses/toads_turnpike/course_data.inc.c": [
+        "d_course_toads_turnpike_dl_19020",
+        "d_course_toads_turnpike_dl_19518",
+        "d_course_toads_turnpike_dl_19DF0",
+        "d_course_toads_turnpike_dl_1A068",
+        "d_course_toads_turnpike_dl_1A5F8",
+        "d_course_toads_turnpike_dl_1A6C8",
+        "d_course_toads_turnpike_dl_1B778",
+        "d_course_toads_turnpike_dl_1BE48",
+        "d_course_toads_turnpike_dl_1C700",
+        "d_course_toads_turnpike_dl_1CAA8",
+        "d_course_toads_turnpike_dl_1CE70",
+        "d_course_toads_turnpike_dl_1D018",
+        "d_course_toads_turnpike_dl_1E458",
+        "d_course_toads_turnpike_dl_1EB48",
+        "d_course_toads_turnpike_dl_1F9D0",
+        "d_course_toads_turnpike_dl_20008",
+        "d_course_toads_turnpike_dl_20510",
+        "d_course_toads_turnpike_dl_205A8",
+        "d_course_toads_turnpike_dl_21780",
+        "d_course_toads_turnpike_dl_21E28",
+        "d_course_toads_turnpike_dl_22BA0",
+        "d_course_toads_turnpike_dl_23078",
+        "d_course_toads_turnpike_dl_237F8",
+        "d_course_toads_turnpike_dl_23848",
+        "d_course_toads_turnpike_dl_23858",
+        "d_course_toads_turnpike_dl_238A0",
+        "d_course_toads_turnpike_dl_238E8"
+    ],
+    "courses/wario_stadium/course_data.inc.c":[
+        "d_course_wario_stadium_dl_sign"
+    ],
+    "courses/yoshi_valley/course_data.inc.c":[
+        "d_course_yoshi_valley_dl_142C0",
+        "d_course_yoshi_valley_dl_143C8",
+        "d_course_yoshi_valley_dl_144A8",
+        "d_course_yoshi_valley_dl_14500",
+        "d_course_yoshi_valley_dl_14558",
+        "d_course_yoshi_valley_dl_145D0",
+        "d_course_yoshi_valley_dl_tree",
+        "d_course_yoshi_valley_dl_16D70",
+        "d_course_yoshi_valley_dl_egg_lod0"
+    ],
+    "src/data/common_textures.inc.c": [
+        "D_0D001B90",
+        "D_0D001BD8",
+        "D_0D001C20",
+        "D_0D001C88",
+        "D_0D002EE8",
+        "common_model_fake_itembox",
+        "itemBoxQuestionMarkModel",
+        "D_0D0030F8",
+        "D_0D003128",
+        "D_0D003158",
+        "D_0D003188",
+        "D_0D0031B8",
+        "D_0D0031E8",
+        "D_0D003218",
+        "D_0D003248",
+        "D_0D003288",
+        "common_model_banana",
+        "common_model_flat_banana",
+        "D_0D0052B8",
+        "D_0D005338",
+        "D_0D005368",
+        "D_0D007B20",
+        "D_0D007B98",
+        "D_0D007C10"
     ]
 }
