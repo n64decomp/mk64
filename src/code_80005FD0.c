@@ -1628,10 +1628,10 @@ void update_vehicles(void) {
 
         switch(gCurrentCourseId) {
             case COURSE_KALAMARI_DESERT:
-                update_vehicles_trains();
+                update_vehicle_trains();
                 break;
             case COURSE_DK_JUNGLE:
-                update_vehicles_paddle_boats();
+                update_vehicle_paddle_boats();
                 break;
             case COURSE_TOADS_TURNPIKE:
                 func_8001487C();
@@ -4631,7 +4631,7 @@ void func_80012A48(TrainCarStuff *trainCar, s16 arg1) {
     trainCarActor->velocity[2] = trainCar->velocity[2];
 }
 
-void update_vehicles_trains(void) {
+void update_vehicle_trains(void) {
     UNUSED s32 pad[3];
     f32 temp_f20;
     TrainCarStuff *car;
@@ -4839,7 +4839,7 @@ void func_800132F4(void) {
     D_801630FC = 0;
 }
 
-void update_vehicles_paddle_boats(void) {
+void update_vehicle_paddle_boats(void) {
     PaddleBoatStuff *paddleBoat;
     PathNoY *waypoint;
     s32 i;

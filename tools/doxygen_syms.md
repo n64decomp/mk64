@@ -180,12 +180,12 @@ Variable Name | Memory Address
 [func_80012780](@ref func_80012780) | 0x80012780
 [func_800127E0](@ref func_800127E0) | 0x800127E0
 [func_80012A48](@ref func_80012A48) | 0x80012A48
-[update_vehicles_trains](@ref update_vehicles_trains) | 0x80012AC0
+[update_vehicle_trains](@ref update_vehicle_trains) | 0x80012AC0
 [func_80012DC0](@ref func_80012DC0) | 0x80012DC0
 [func_80013054](@ref func_80013054) | 0x80013054
 [func_800131DC](@ref func_800131DC) | 0x800131DC
 [func_800132F4](@ref func_800132F4) | 0x800132F4
-[update_vehicles_paddle_boats](@ref update_vehicles_paddle_boats) | 0x800133C4
+[update_vehicle_paddle_boats](@ref update_vehicle_paddle_boats) | 0x800133C4
 [func_80013854](@ref func_80013854) | 0x80013854
 [func_800139E4](@ref func_800139E4) | 0x800139E4
 [func_80013C74](@ref func_80013C74) | 0x80013C74

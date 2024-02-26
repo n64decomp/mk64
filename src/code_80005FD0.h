@@ -159,13 +159,13 @@ void init_course_vehicles(void);
 void func_80012780(TrainCarStuff*, s16*, u16);
 void func_800127E0(void);
 void func_80012A48(TrainCarStuff*, s16);
-void update_vehicles_trains(void);
+void update_vehicle_trains(void);
 void func_80012DC0(s32, Player*);
 
 void func_80013054(void);
 void func_800131DC(s32);
 void func_800132F4(void);
-void update_vehicles_paddle_boats(void);
+void update_vehicle_paddle_boats(void);
 void func_80013854(Player*);
 void func_800139E4(f32, f32, s32, s32, VehicleStuff*, TrackWaypoint*);
 f32  func_80013C74(s16, s16);
