@@ -7,6 +7,7 @@ var objects_8h =
     [ "ThwompSpawn", "structThwompSpawn.html", "structThwompSpawn" ],
     [ "SnowmanSpawn", "structSnowmanSpawn.html", "structSnowmanSpawn" ],
     [ "HegdehogSpawn", "structHegdehogSpawn.html", "structHegdehogSpawn" ],
+    [ "StarSpawn", "structStarSpawn.html", "structStarSpawn" ],
     [ "D_8018CC80_SIZE", "objects_8h.html#aa4bf17ba1651c63ddc84841df1442ad6", null ],
     [ "DELETED_OBJECT_ID", "objects_8h.html#a5da8f460a22c441fb5bb00bd5b3bac2a", null ],
     [ "gLeafParticle_SIZE", "objects_8h.html#ad463925aa001dd8d8ca09a69c7e01283", null ],

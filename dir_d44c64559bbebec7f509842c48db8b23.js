@@ -20,6 +20,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "save_data.h", "save__data_8h.html", "save__data_8h" ],
     [ "segments.h", "segments_8h.html", "segments_8h" ],
     [ "sounds.h", "sounds_8h.html", "sounds_8h" ],
+    [ "spline.h", "spline_8h.html", "spline_8h" ],
     [ "types.h", "types_8h.html", "types_8h" ],
     [ "ultra64.h", "ultra64_8h.html", "ultra64_8h" ],
     [ "vehicles.h", "vehicles_8h.html", "vehicles_8h" ],

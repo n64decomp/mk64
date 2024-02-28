@@ -1,13 +1,5 @@
 var NAVTREEINDEX37 =
 {
-"dks__jungle__parkway_2course__displaylists_8inc_8h.html#ab8f93ed44b6c1c2e788a7e21de1ab91c":[8,0,0,5,3,90],
-"dks__jungle__parkway_2course__displaylists_8inc_8h.html#ab9b92e9a90d5eec1e4dea93431a16194":[8,0,0,5,3,183],
-"dks__jungle__parkway_2course__displaylists_8inc_8h.html#abb5f31f48594f17e851c731407548e30":[8,0,0,5,3,34],
-"dks__jungle__parkway_2course__displaylists_8inc_8h.html#abb7c36011dfdef5199dfedafa23993d7":[8,0,0,5,3,106],
-"dks__jungle__parkway_2course__displaylists_8inc_8h.html#abc69754fdac3a346e01cfe610a7cefa8":[8,0,0,5,3,60],
-"dks__jungle__parkway_2course__displaylists_8inc_8h.html#abcb36f23bb75a3506c2b119c3110ebf2":[8,0,0,5,3,16],
-"dks__jungle__parkway_2course__displaylists_8inc_8h.html#abf5f247d8533791ae1d1e426e147e6c3":[8,0,0,5,3,48],
-"dks__jungle__parkway_2course__displaylists_8inc_8h.html#ac040d34b7d74db1651c774743c43a844":[8,0,0,5,3,102],
 "dks__jungle__parkway_2course__displaylists_8inc_8h.html#ac10866d8f62f831ffe06b9c5d6c1e4bf":[8,0,0,5,3,84],
 "dks__jungle__parkway_2course__displaylists_8inc_8h.html#ac1e10be0880b6ee7b7d0c4d8dcd2ba9e":[8,0,0,5,3,9],
 "dks__jungle__parkway_2course__displaylists_8inc_8h.html#ac3fc945af9ae65a264269436aaa55c96":[8,0,0,5,3,14],
@@ -249,5 +241,13 @@ var NAVTREEINDEX37 =
 "effects_8h.html#a048a1536aedfc09fd26a3bb2a3d1115d":[8,0,3,39,58],
 "effects_8h.html#a05a53cb305ff1e50e984272b7880aa20":[8,0,3,39,18],
 "effects_8h.html#a05f8f246024f3d0b4470302c2959384f":[8,0,3,39,68],
-"effects_8h.html#a0654dc602d89268130fcb426e0077977":[8,0,3,39,8]
+"effects_8h.html#a0654dc602d89268130fcb426e0077977":[8,0,3,39,8],
+"effects_8h.html#a0da23becb5bab5305acdfe3bd3b49333":[8,0,3,39,26],
+"effects_8h.html#a0f594b2d5abc59e84b6b247c83d676e4":[8,0,3,39,55],
+"effects_8h.html#a101b266fcfcc52a91c4e453265f2c8c3":[8,0,3,39,112],
+"effects_8h.html#a10973deea03f96575de006aebdb53f04":[8,0,3,39,125],
+"effects_8h.html#a111cafbf6020cdd077014f523986d237":[8,0,3,39,33],
+"effects_8h.html#a1296812f6715dcf9ed89f9dcfc849337":[8,0,3,39,72],
+"effects_8h.html#a135d847236fa6bc82d679c9611c3a1ae":[8,0,3,39,24],
+"effects_8h.html#a1592f0d5d4718b7c1aaf90860a6e0909":[8,0,3,39,10]
 };

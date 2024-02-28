@@ -158,6 +158,9 @@ var yoshi__valley_2course__data_8inc_8h =
     [ "d_course_yoshi_valley_item_box_spawns", "yoshi__valley_2course__data_8inc_8h.html#a74dc48543aebe04360c813e4eee3886e", null ],
     [ "d_course_yoshi_valley_lights4", "yoshi__valley_2course__data_8inc_8h.html#a770eb4ffecfdc850a1a41b92958fe36c", null ],
     [ "d_course_yoshi_valley_track_waypoints0", "yoshi__valley_2course__data_8inc_8h.html#ae302a4cc2e8b36e0ab36a6ca1cf3b731", null ],
+    [ "d_course_yoshi_valley_track_waypoints1", "yoshi__valley_2course__data_8inc_8h.html#af18974d319b58f39eb08ad9fda72335c", null ],
+    [ "d_course_yoshi_valley_track_waypoints2", "yoshi__valley_2course__data_8inc_8h.html#a9fec6fb38474f6771eac17455bd22b85", null ],
+    [ "d_course_yoshi_valley_track_waypoints3", "yoshi__valley_2course__data_8inc_8h.html#a2bddfa0e5d70cad078fafd29b95a536f", null ],
     [ "d_course_yoshi_valley_tree_model", "yoshi__valley_2course__data_8inc_8h.html#a67a12e0b54fef6528aec2236083a4a65", null ],
     [ "d_course_yoshi_valley_tree_spawn", "yoshi__valley_2course__data_8inc_8h.html#a788c7461f82ee46721b1c49889b80fcc", null ],
     [ "d_course_yoshi_valley_unk1", "yoshi__valley_2course__data_8inc_8h.html#a1b0c944d8397b716e08b552eabe5b2f7", null ],
@@ -172,5 +175,8 @@ var yoshi__valley_2course__data_8inc_8h =
     [ "d_course_yoshi_valley_unknown_light4", "yoshi__valley_2course__data_8inc_8h.html#ae84b662cbd61c30b317f43a3d404f29e", null ],
     [ "d_course_yoshi_valley_unknown_light5", "yoshi__valley_2course__data_8inc_8h.html#a523cc653fa80ad51e484356501d63302", null ],
     [ "d_course_yoshi_valley_unknown_waypoints0", "yoshi__valley_2course__data_8inc_8h.html#ac7bb9aacc36a64d640f2a12736694c2f", null ],
+    [ "d_course_yoshi_valley_unknown_waypoints1", "yoshi__valley_2course__data_8inc_8h.html#a1c2fe486b68574eea2b6670181b0d64e", null ],
+    [ "d_course_yoshi_valley_unknown_waypoints2", "yoshi__valley_2course__data_8inc_8h.html#a47bc1daddd38b9f37a598219e1101da0", null ],
+    [ "d_course_yoshi_valley_unknown_waypoints3", "yoshi__valley_2course__data_8inc_8h.html#a7d70f7d438e145c8a3da071bd1f7ada5", null ],
     [ "d_course_yoshi_valley_yoshi_flag", "yoshi__valley_2course__data_8inc_8h.html#acb1382b606b50a4a82d93a919416ec23", null ]
 ];
