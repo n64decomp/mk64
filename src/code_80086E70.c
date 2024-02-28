@@ -31,10 +31,10 @@ void func_80086EF0(s32 objectIndex) {
     func_80086E70(objectIndex);
 }
 
-void func_80086F10(s32 objectIndex, s32 arg1, Vec4s arg2[]) {
+void func_80086F10(s32 objectIndex, s32 arg1, SplineData *spline) {
     func_80086E70(objectIndex);
     gObjectList[objectIndex].unk_0DE = arg1;
-    gObjectList[objectIndex].unk_080 = arg2;
+    gObjectList[objectIndex].spline = spline;
 }
 
 void func_80086F60(s32 objectIndex) {
@@ -409,18 +409,18 @@ UNUSED void func_800880DC(void) {
 }
 
 void func_800880E4(s32 objectIndex) {
-    Vec4s *phi_v0;
+    SplineControlPoint *phi_v0;
     s32 someIndex;
-    phi_v0 = gObjectList[objectIndex].unk_07C;
+    phi_v0 = gObjectList[objectIndex].controlPoints;
     for (someIndex = 0; someIndex < 2; someIndex++, phi_v0++) {
-        D_80165760[someIndex] = (*phi_v0)[0];
-        D_80165770[someIndex] = (*phi_v0)[1];
-        D_80165780[someIndex] = (*phi_v0)[2];
+        D_80165760[someIndex] = phi_v0->pos[0];
+        D_80165770[someIndex] = phi_v0->pos[1];
+        D_80165780[someIndex] = phi_v0->pos[2];
     }
 }
 
 void func_80088150(s32 arg0) {
-    gObjectList[arg0].unk_07C++;
+    gObjectList[arg0].controlPoints++;
 }
 
 void func_80088178(s32 objectIndex, s32 arg1) {
@@ -439,18 +439,20 @@ void func_80088178(s32 objectIndex, s32 arg1) {
 
 // if the code is too ugly for you, then go fix it without tampering with the register allocations
 void func_80088228(s32 objectIndex) {
-  s16 *temp_v1;
-  Objects *temp_v0;
-  temp_v0 = &gObjectList[objectIndex];
-  temp_v1 = temp_v0->unk_080[0];
-  temp_v1 = &temp_v0->unk_080[0][1];
-  (&gObjectList[objectIndex])->unk_084[9] = 0;
-  (&gObjectList[objectIndex])->unk_07C = (s16 (*)[4]) temp_v1;
-  (&gObjectList[objectIndex])->unk_084[8] = temp_v1[-1];
-  (&gObjectList[objectIndex])->unk_028[0] = temp_v1[0];
-  (&gObjectList[objectIndex])->unk_028[1] = temp_v1[1];
-  temp_v0->unk_028[2] = temp_v1[2];
-  func_80086FD4(objectIndex);
+    Objects *temp_v0;
+    temp_v0 = &gObjectList[objectIndex];
+    temp_v0->unk_084[9] = 0;
+    temp_v0->controlPoints = temp_v0->spline->controlPoints;
+    /*
+    This is INCREDIBLY stupid. This should really be
+    temp_v0->unk_084[8] = temp_v0->spline->numControlPoints;
+    but for some unholy reason that doesn't match
+    */
+    temp_v0->unk_084[8] = *((s16*)temp_v0->controlPoints - 1);
+    temp_v0->unk_028[0] = temp_v0->controlPoints[0].pos[0];
+    temp_v0->unk_028[1] = temp_v0->controlPoints[0].pos[1];
+    temp_v0->unk_028[2] = temp_v0->controlPoints[0].pos[2];
+    func_80086FD4(objectIndex);
 }
 
 
@@ -1435,12 +1437,12 @@ s32 func_8008A8B0(s16 arg0, s16 arg1) {
 }
 
 void func_8008A920(s32 objectIndex) {
-    Vec4s *temp_v0;
+    SplineControlPoint *temp_v0;
 
-    temp_v0 = gObjectList[objectIndex].unk_07C;
-    gObjectList[objectIndex].velocity[0] = (f32) (temp_v0[1][0] - temp_v0[0][0]) / (f32) temp_v0[0][3];
-    gObjectList[objectIndex].velocity[1] = (f32) (temp_v0[1][1] - temp_v0[0][1]) / (f32) temp_v0[0][3];
-    gObjectList[objectIndex].velocity[2] = (f32) (temp_v0[1][2] - temp_v0[0][2]) / (f32) temp_v0[0][3];
+    temp_v0 = gObjectList[objectIndex].controlPoints;
+    gObjectList[objectIndex].velocity[0] = (f32) (temp_v0[1].pos[0] - temp_v0[0].pos[0]) / (f32) temp_v0[0].velocity;
+    gObjectList[objectIndex].velocity[1] = (f32) (temp_v0[1].pos[1] - temp_v0[0].pos[1]) / (f32) temp_v0[0].velocity;
+    gObjectList[objectIndex].velocity[2] = (f32) (temp_v0[1].pos[2] - temp_v0[0].pos[2]) / (f32) temp_v0[0].velocity;
 }
 
 void func_8008A9B8(s32 objectIndex) {
@@ -1448,27 +1450,28 @@ void func_8008A9B8(s32 objectIndex) {
     Objects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->unk_07C++;
-    temp_v0->unk_09A = (s16) (0x2710 / (s16) (*temp_v0->unk_07C)[3]);
+    temp_v0->controlPoints++;
+    temp_v0->unk_09A = (s16) (10000 / (s16) (temp_v0->controlPoints[0].velocity));
     temp_v0->timer = 0;
     func_8008A920(objectIndex);
 }
 
 void func_8008AA3C(s32 objectIndex) {
-    s16* temp_v1;
-    Objects* temp_v0;
-
+    Objects *temp_v0;
     temp_v0 = &gObjectList[objectIndex];
-    temp_v1 = temp_v0->unk_080[0];
-    temp_v1 = &temp_v0->unk_080[0][1];
-    (&gObjectList[objectIndex])->unk_07C = (s16 (*)[4]) temp_v1;
-    (&gObjectList[objectIndex])->unk_084[9] = 0;
-    (&gObjectList[objectIndex])->timer = 0;
-    (&gObjectList[objectIndex])->unk_084[8] = temp_v1[-1];
-    (&gObjectList[objectIndex])->unk_028[0] = (f32) temp_v1[0];
-    (&gObjectList[objectIndex])->unk_028[1] = (f32) temp_v1[1];
-    (&gObjectList[objectIndex])->unk_028[2] = (f32) temp_v1[2];
-    (&gObjectList[objectIndex])->unk_09A = (s16) (0x2710 / (s16) temp_v1[3]);
+    temp_v0->controlPoints = temp_v0->spline->controlPoints;
+    temp_v0->unk_084[9] = 0;
+    temp_v0->timer = 0;
+    /*
+    This is INCREDIBLY stupid. This should really be
+    temp_v0->unk_084[8] = temp_v0->spline->numControlPoints;
+    but for some unholy reason that doesn't match
+    */
+    temp_v0->unk_084[8] = *((s16*)temp_v0->controlPoints - 1);
+    temp_v0->unk_028[0] = temp_v0->controlPoints[0].pos[0];
+    temp_v0->unk_028[1] = temp_v0->controlPoints[0].pos[1];
+    temp_v0->unk_028[2] = temp_v0->controlPoints[0].pos[2];
+    temp_v0->unk_09A = (s16) (10000 / temp_v0->controlPoints[0].velocity);
     func_8008A920(objectIndex);
     func_80086FD4(objectIndex);
 }
@@ -1540,6 +1543,7 @@ UNUSED void func_8008ACD8(void) {
 
 }
 
+// Evaluate the Bernstein polynomials for a B-spline at `arg1` (which is `t`)
 void func_8008ACE0(f32 arg0[], f32 arg1) {
     arg0[0] = (f32) ((f64) ((f32) (1.0 - arg1) * (f32) (1.0 - arg1) * (f32) (1.0 - arg1)) / 6.0);
     arg0[1] = (f32) ((((f64) (arg1 * arg1 * arg1) * 0.5) - arg1 * arg1) + 0.6666666666666666);
@@ -1555,6 +1559,7 @@ UNUSED void func_8008ADC8(void) {
 
 }
 
+// Evaluate the Bernstein polynomials for the derivative of a B-spline at `arg1` (which is `t`)
 void func_8008ADD0(f32 arg0[], f32 arg1) {
     arg0[0] = (f32) (1.0 - arg1) * -0.5 * (f32) (1.0 - arg1);
     arg0[1] = arg1 * arg1 * 1.5 - 2.0 * arg1;
@@ -1570,6 +1575,7 @@ UNUSED void func_8008AE94(void) {
 
 }
 
+// D_80183DC8 is where the spline's derivative polynomial calculations are stored
 void func_8008AE9C(s32 objectIndex) {
     Objects *temp_v0;
 
@@ -1600,6 +1606,7 @@ UNUSED void func_8008B030(void) {
 
 }
 
+// D_80183DA8 is where the spline's polynomial calculations are stored
 void func_8008B038(s32 objectIndex) {
     Objects *temp_v0;
 
@@ -1632,13 +1639,13 @@ UNUSED void func_8008B1CC(void) {
 
 void func_8008B1D4(s32 objectIndex) {
     s32 someIndex;
-    Vec4s *test;
+    SplineControlPoint *test;
 
-    test = gObjectList[objectIndex].unk_07C;
+    test = gObjectList[objectIndex].controlPoints;
     for (someIndex = 0; someIndex < 4; someIndex++) {
-        D_80165760[someIndex] = (*test)[0];
-        D_80165770[someIndex] = (*test)[1];
-        D_80165780[someIndex] = (*test)[2];
+        D_80165760[someIndex] = test->pos[0];
+        D_80165770[someIndex] = test->pos[1];
+        D_80165780[someIndex] = test->pos[2];
         test++;
     }
 }
@@ -1648,13 +1655,13 @@ void func_8008B284(s32 objectIndex) {
     s32 sp0;
     s32 temp_a1;
     s32 temp_a2;
-    Vec4s *test;
+    SplineControlPoint *test;
 
-    test = gObjectList[objectIndex].unk_07C;
+    test = gObjectList[objectIndex].controlPoints;
     temp_a1 = gObjectList[objectIndex].unk_084[9];
     temp_a2 = (u16) gObjectList[objectIndex].unk_084[8];
     if ((temp_a2 - 4) >= temp_a1) {
-        sp0 = 0x00002710;
+        sp0 = 10000;
     } else if ((temp_a1 + 3) == temp_a2) {
         sp0 = 2;
     } else if ((temp_a1 + 2) == temp_a2) {
@@ -1663,12 +1670,12 @@ void func_8008B284(s32 objectIndex) {
         sp0 = 0;
     }
     for (someIndex = 0; someIndex < 4; someIndex++) {
-        D_80165760[someIndex] = (*test)[0];
-        D_80165770[someIndex] = (*test)[1];
-        D_80165780[someIndex] = (*test)[2];
+        D_80165760[someIndex] = test->pos[0];
+        D_80165770[someIndex] = test->pos[1];
+        D_80165780[someIndex] = test->pos[2];
         if (sp0 == someIndex) {
-            // Huh???????? This makes no sense
-            test = (Vec4s *) &gObjectList[objectIndex].unk_080[0][1];
+            // Reset back to start of the spline path
+            test = gObjectList[objectIndex].spline->controlPoints;
         } else {
             test++;
         }
@@ -1676,24 +1683,28 @@ void func_8008B284(s32 objectIndex) {
 }
 
 void func_8008B3E4(s32 objectIndex) {
-    UNUSED Vec4s *test;
     Objects *temp_v0;
+    SplineData *spline;
 
     if (is_obj_index_flag_unk_054_inactive(objectIndex, 8) != 0) {
         temp_v0 = &gObjectList[objectIndex];
         temp_v0->unk_084[9] = 0;
         temp_v0->timer = 0;
-        temp_v0->unk_07C = (Vec4s *) &gObjectList[objectIndex].unk_080[0][1];
-        // Huh????????? Negative array indexing is a near certain sign
-        // that something has gone wrong on our end.
-        temp_v0->unk_084[8] = temp_v0->unk_07C[0][-1];
+        temp_v0->controlPoints = temp_v0->spline->controlPoints;
+        /*
+        This is INCREDIBLY stupid. This should really be
+        temp_v0->unk_084[8] = temp_v0->spline->numControlPoints;
+        but for some unholy reason that doesn't match
+        */
+        temp_v0->unk_084[8] = *(((s16*)temp_v0->controlPoints) - 1);
+
         set_object_flag_unk_054_true(objectIndex, 8);
     }
 }
 
 void func_8008B44C(s32 objectIndex) {
     gObjectList[objectIndex].timer = 0;
-    gObjectList[objectIndex].unk_07C++;
+    gObjectList[objectIndex].controlPoints++;
 }
 
 void func_8008B478(s32 objectIndex, s32 arg1) {
@@ -1709,14 +1720,20 @@ void func_8008B478(s32 objectIndex, s32 arg1) {
         func_8008B1D4(objectIndex);
     }
 
+    // I think the game treats each spline as being having a lenght of 10000
+    // This is getting the percent along the spline we want to reach,
+    // which is then treated as the `t` value given to the curve calculations
     sp34 = ((f32)gObjectList[objectIndex].timer / 10000.0);
+    // Calculate the curve at `t`
     func_8008B17C(objectIndex, sp34);
     if (is_obj_index_flag_unk_054_active(objectIndex, 0x800) != 0) {
+        // Calculate the curve's derivative at `t`
         func_8008AFE0(objectIndex, sp34);
     }
 
-    var_f6 = gObjectList[objectIndex].unk_07C[0][3];
-    temp = gObjectList[objectIndex].unk_07C[0][7];
+    // These values somehow control how fast we travel along the curve
+    var_f6 = gObjectList[objectIndex].controlPoints[0].velocity;
+    temp = gObjectList[objectIndex].controlPoints[1].velocity;
 
     gObjectList[objectIndex].unk_09A = 10000.0 / (((temp - var_f6) * sp34) + var_f6);
     gObjectList[objectIndex].timer += gObjectList[objectIndex].unk_09A;
@@ -1816,17 +1833,17 @@ void set_obj_velocity(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3) {
     gObjectList[objectIndex].velocity[2] = arg3;
 }
 
-void func_8008B928(s32 objectIndex, s16 arg1, s16 arg2, s16 arg3, s16 arg4[][4]) {
+void func_8008B928(s32 objectIndex, s16 arg1, s16 arg2, s16 arg3, SplineData *spline) {
     Objects *temp_s0;
 
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->origin_pos[0] = (f32) arg1;
     temp_s0->origin_pos[1] = (f32) arg2;
-    temp_s0->unk_080 = arg4;
+    temp_s0->spline = spline;
     temp_s0->origin_pos[2] = (f32) arg3;
-    temp_s0->velocity[0] = (f32) (arg4[1][1] - arg4[0][1]);
-    temp_s0->velocity[1] = (f32) (arg4[1][2] - arg4[0][2]);
-    temp_s0->velocity[2] = (f32) (arg4[1][3] - arg4[0][3]);
+    temp_s0->velocity[0] = (f32) (spline->controlPoints[1].pos[0] - spline->controlPoints[0].pos[0]);
+    temp_s0->velocity[1] = (f32) (spline->controlPoints[1].pos[1] - spline->controlPoints[0].pos[1]);
+    temp_s0->velocity[2] = (f32) (spline->controlPoints[1].pos[2] - spline->controlPoints[0].pos[2]);
     temp_s0->direction_angle[1] = get_y_direction_angle(objectIndex);
     temp_s0->velocity[2] = func_800416D8(temp_s0->velocity[2], temp_s0->velocity[0], -temp_s0->direction_angle[1]);
     temp_s0->direction_angle[0] = get_x_direction_angle(objectIndex);

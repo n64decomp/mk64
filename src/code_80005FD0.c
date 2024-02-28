@@ -29,6 +29,7 @@
 #include "ending/podium_ceremony_actors.h"
 #include "spawn_players.h"
 #include "sounds.h"
+#include "data/path_spawn_data.h"
 
 s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;

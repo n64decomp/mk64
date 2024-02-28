@@ -458,14 +458,6 @@ extern Lights1 D_800E4668;
 extern Lights1 D_800E4680;
 extern Lights1 D_800E4698;
 
-extern u8  D_800E52D0[];
-extern s32 D_800E55F8[];
-extern s32 D_800E5618[4];// = { 0x000000FF, 0x000000D7, 0x000000A2, 0x00000061 };
-extern s8  D_800E5628[];
-extern s8  D_800E5655[0x15]; //[0x15] = { 0x2B, 0x24, 0x2D, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0x2C, 0x36, 0x3C, 0x2F, 0x3D, 0x28, 0x30, 0x0A, };
-extern s8  D_800E5670[];
-extern s8  D_800E566A[];
-
 extern u8 d_course_bowsers_castle_thwomp_tlut[]; // Some type of pallette?
 
 #endif

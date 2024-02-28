@@ -33,6 +33,7 @@
 #include "src/data/data_800E45C0.h"
 #include "courses/all_course_data.h"
 #include <vehicles.h>
+#include "data/some_data.h"
 
 void func_800431B0(Vec3f pos, Vec3su orientation, f32 scale, Vtx *vtx) {
     rsp_set_matrix_transformation(pos, orientation, scale);
@@ -4466,7 +4467,7 @@ void debug_print_number(s32 *x, s32 *y, s32 number, u32 numDigits)
     debug_wrap_text(x, y);
     n = number;
     if (n < 0) {
-        func_800573E4(*x, *y, *D_800E5655);
+        func_800573E4(*x, *y, D_800E5628[0x2D]);
         debug_wrap_text(x, y);
         n = -number;
     }
@@ -4553,25 +4554,25 @@ UNUSED void func_80057814(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
 UNUSED void func_80057858(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     debug_print_string(&arg0, &arg1, arg2);
     debug_print_number(&arg0, &arg1, arg3, 16);
-    func_800573E4(arg0, arg1, D_800E5670[0]);
+    func_800573E4(arg0, arg1, D_800E5628[0x48]);
 }
 
 UNUSED void func_800578B0(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     debug_print_string(&arg0, &arg1, arg2);
     func_8005762C(&arg0, &arg1, arg3, 16);
-    func_800573E4(arg0, arg1, D_800E5670[0]);
+    func_800573E4(arg0, arg1, D_800E5628[0x48]);
 }
 
 UNUSED void func_80057908(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     debug_print_string(&arg0, &arg1, arg2);
     debug_print_number(&arg0, &arg1, arg3, 2);
-    func_800573E4(arg0, arg1, D_800E566A[0]);
+    func_800573E4(arg0, arg1, D_800E5628[0x42]);
 }
 
 UNUSED void func_80057960(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     debug_print_string(&arg0, &arg1, arg2);
     func_8005762C(&arg0, &arg1, arg3, 2);
-    func_800573E4(arg0, arg1, D_800E566A[0]);
+    func_800573E4(arg0, arg1, D_800E5628[0x42]);
 }
 
 UNUSED void func_800579B8(s32 arg0, s32 arg1, char *arg2) {
@@ -4598,7 +4599,7 @@ UNUSED void func_80057AA8(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     load_debug_font();
     debug_print_string(&arg0, &arg1, arg2);
     debug_print_number(&arg0, &arg1, arg3, 16);
-    func_800573E4(arg0, arg1, D_800E5670[0]);
+    func_800573E4(arg0, arg1, D_800E5628[0x48]);
     func_80057778();
 }
 
@@ -4606,7 +4607,7 @@ UNUSED void func_80057B14(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     load_debug_font();
     debug_print_string(&arg0, &arg1, arg2);
     func_8005762C(&arg0, &arg1, arg3, 16);
-    func_800573E4(arg0, arg1, D_800E5670[0]);
+    func_800573E4(arg0, arg1, D_800E5628[0x48]);
     func_80057778();
 }
 
@@ -4614,7 +4615,7 @@ UNUSED void func_80057B80(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     load_debug_font();
     debug_print_string(&arg0, &arg1, arg2);
     debug_print_number(&arg0, &arg1, arg3, 2);
-    func_800573E4(arg0, arg1, D_800E566A[0]);
+    func_800573E4(arg0, arg1, D_800E5628[0x42]);
     func_80057778();
 }
 
@@ -4622,6 +4623,6 @@ UNUSED void func_80057BEC(s32 arg0, s32 arg1, char *arg2, u32 arg3) {
     load_debug_font();
     debug_print_string(&arg0, &arg1, arg2);
     func_8005762C(&arg0, &arg1, arg3, 2);
-    func_800573E4(arg0, arg1, D_800E566A[0]);
+    func_800573E4(arg0, arg1, D_800E5628[0x42]);
     func_80057778();
 }
