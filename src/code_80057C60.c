@@ -34,6 +34,7 @@
 #include "spawn_players.h"
 #include "sounds.h"
 #include "code_80071F00.h"
+#include "data/some_data.h"
 
 
 //! @warning this macro is undef'd at the end of this file

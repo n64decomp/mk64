@@ -3,11 +3,12 @@
 
 #include "common_structs.h"
 #include "camera.h"
+#include "objects.h"
 
 void func_80086E70(s32);
 void func_80086EAC(s32, s32, s16);
 void func_80086EF0(s32);
-void func_80086F10(s32, s32, Vec4s[]);
+void func_80086F10(s32, s32, SplineData*);
 void func_80086F60(s32);
 s32  func_80086FA4(s32);
 void func_80086FD4(s32);
@@ -149,7 +150,7 @@ void func_8008B844(s32);
 void set_obj_direction_angle(s32, u16, u16, u16);
 void set_obj_orientation(s32, u16, u16, u16);
 void set_obj_velocity(s32, f32, f32, f32);
-void func_8008B928(s32, s16, s16, s16, s16[][4]);
+void func_8008B928(s32, s16, s16, s16, SplineData*);
 void func_8008BA40(s32, s16, u16);
 void func_8008BAB4(s32, s16, u16);
 void func_8008BB28(s32, s16, u16);
