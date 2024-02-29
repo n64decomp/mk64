@@ -13,7 +13,10 @@ if not os.path.exists("models"):
 
 models = json.load(open("tools/3d_models.json"))
 
-blender = "c:/Program Files/Blender Foundation/Blender 4.0/blender.exe"
+if os.name == "nt":
+    blender = "c:/Program Files/Blender Foundation/Blender 4.0/blender.exe"
+else:
+    blender = "blender"
 
 args_blender = [
     "--background",
