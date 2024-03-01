@@ -3,8 +3,8 @@
 #include <PR/gbi.h>
 #include <course.h>
 
-#include <courses/choco_mountain/course_displaylists.inc.h>
-#include <courses/choco_mountain/course_textures.linkonly.h>
+#include "course_displaylists.inc.h"
+#include "course_textures.linkonly.h"
 
 Gfx d_course_choco_mountain_packed_dl_0[] =
 {

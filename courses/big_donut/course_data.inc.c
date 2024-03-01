@@ -4,7 +4,7 @@
 #include <PR/gbi.h>
 #include <actor_types.h>
 
-#include <courses/big_donut/course_displaylists.inc.h>
+#include "course_displaylists.inc.h"
 
 Gfx d_course_big_donut_dl[] = {
     gsDPSetCombineMode(G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA),
