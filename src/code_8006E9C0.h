@@ -19,10 +19,10 @@ void func_8006F8CC(void);
 void func_8006FA94(void);
 void func_80070148(void);
 void init_object_list_index(void);
-void func_80070250(s32, s32, StarSpawn*);
-void func_80070328(StarSpawn*);
-void func_800703E0(s32, s32, StarSpawn*);
-void func_800704A0(StarSpawn*);
+void func_80070250(s32, s32, StarCloudData*);
+void func_80070328(StarCloudData*);
+void func_800703E0(s32, s32, StarCloudData*);
+void func_800704A0(StarCloudData*);
 void func_8007055C(void);
 void func_80070714(void);
 void init_course_object(void);
@@ -34,15 +34,5 @@ void init_hud_two_player_horizontal(void);
 extern s16 D_800E5520[];
 extern s16 D_800E5548[];
 extern u8 *gCourseOutlineTextures[0x14]; // 800e54d0
-
-// These are found in data_update_objects
-extern StarSpawn D_800E6A38[];                        /* unable to generate initializer */
-extern StarSpawn D_800E6AA8[];                        /* unable to generate initializer */
-extern StarSpawn D_800E6B00[];                        /* unable to generate initializer */
-extern StarSpawn D_800E6B38[];                        /* unable to generate initializer */
-extern StarSpawn D_800E6BA8[];                        /* unable to generate initializer */
-extern StarSpawn D_800E6C10[];                        /* unable to generate initializer */
-extern StarSpawn D_800E6C80[];                        /* unable to generate initializer */
-extern StarSpawn D_800E6DE0[];                        /* unable to generate initializer */
 
 #endif
