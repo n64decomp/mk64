@@ -250,26 +250,6 @@ void func_8001C42C(void);
 
 /* This is where I'd put my static data, if I had any */
 
-extern UnkCommonTextureStruct0 *D_800DC720[];
-// Suspected to be the "width" of each waypoint. See data_0DD0A0_1.s
-extern f32 D_800DCA4C[];
-extern s16 D_800DCA20[];
-
-struct _struct_D_800DD9D0_0x10 {
-    /* 0x00 */ u16 unk0;
-    /* 0x02 */ u16 unk2;
-    /* 0x04 */ u16 unk4;
-    /* 0x06 */ u16 unk6;
-    /* 0x08 */ u16 unk8;
-    /* 0x0A */ char padA[6];
-};  // size 0x10
-
-extern uintptr_t gCoursePathTable[20][4];
-extern uintptr_t D_800DC8D0[20][4];
-// An array of 21 items. The final element is for podium ceremony.
-extern struct _struct_D_800DD9D0_0x10 D_800DD9D0[];
-
-
 extern Collision D_80162E70;
 extern s16 D_80162EB0; // Possibly a float.
 extern s16 D_80162EB2; // possibly [3]
@@ -405,8 +385,6 @@ extern u32 D_801646C8;
 extern u16 D_801646CC;
 extern UnkStruct_46D0 D_801646D0[];
 
-extern f32 D_800DCAA0[];
-
 
 // See bss_80005FD0.s
 extern f32 gCourseCompletionPercentByRank[NUM_PLAYERS];
@@ -416,7 +394,5 @@ extern u16 D_801637BE;
 extern u16 D_80163E2A;
 
 extern Gfx D_0D0076F8[];
-
-extern s32 D_800DDB20;
 
 #endif

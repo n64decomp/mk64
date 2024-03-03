@@ -4,13 +4,7 @@
 #include "code_80004740.h"
 #include "common_structs.h"
 #include "camera.h"
-
-// This struct is used by a lot of different objects
-// Stars, clouds, exahust smoke (I think?)
-typedef struct {
-    Vec3su pos;
-    u16 id;
-} StarSpawn;
+#include "objects.h"
 
 /** @cond */
 
@@ -394,20 +388,6 @@ extern s16 D_8018D018;
 extern s8  D_8018D198[];
 extern s8  D_8018D1A8[];
 extern s8  D_8018D1B8[];
-
-// This is either 3 Vec3s as separate variables or an array of s16's or an array of vec3s.
-// The other entries appear to be unused.
-// data/data_code_80071F00_2.s
-extern Vec3s D_800E634C[3]; // static?
-extern Vtx D_800E4470[];
-extern Vtx D_800E44B0[];
-extern u8 *gHudLapTextures[];
-// The exact type here is a little unknown, but s16* works for now
-extern s16 *D_800E5D54[];
-extern s16 *D_800E5D9C[5];
-extern s8   D_800E5DB4[];
-extern s16 *D_800E633C[];
-extern s16 *D_800E672C[2];
 
 /** @endcond */
 

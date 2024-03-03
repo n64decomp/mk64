@@ -209,7 +209,7 @@ SECTIONS
       BUILD_DIR/src/profiler.o(.data);
       BUILD_DIR/src/crash_screen.o(.data);
       BUILD_DIR/src/staff_ghosts.o(.data);
-      BUILD_DIR/data/data_0DD0A0_1.o(.data);
+      BUILD_DIR/src/data/path_spawn_data.o(.data);
       BUILD_DIR/src/camera.o(.data);
       BUILD_DIR/src/render_player.o(.data);
       BUILD_DIR/src/kart_dma.o(.data);
@@ -219,7 +219,7 @@ SECTIONS
       BUILD_DIR/src/update_objects.o(.data);
       BUILD_DIR/src/data/data_800E45C0.o(.data);
       BUILD_DIR/src/code_80057C60.o(.data);
-      BUILD_DIR/data/data_code_80071F00_2.o(.data);
+      BUILD_DIR/src/data/some_data.o(.data);
       BUILD_DIR/src/effects.o(.data);
       BUILD_DIR/src/code_80091440.o(.data);
       BUILD_DIR/src/code_80091750.jp.o(.data);

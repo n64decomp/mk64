@@ -256,32 +256,11 @@ void func_8006E940(Player*, s8, s8);
 void func_80075CA8(void);
 void func_80085214();
 
-// data/data_code_80071F00_2.s
-
-extern Vtx gBalloonVertexPlane1[];
-extern Vtx gBalloonVertexPlane2[];
-
 extern s16 D_800E4730[];
 extern u8 **D_800E4770[];
 extern u8 **D_800E47A0[];
 extern s32 D_800E47DC[];
 extern s32 D_800E480C[];
-
-extern u8 D_800E52D0[];
-extern u8 D_800E55D0[14][3];
-extern u16 D_800E55A0[];
-extern u16 D_800E55B0[16];
-
-extern u16 D_800E67B8[][4];
-
-extern u16 D_800E6834[][4];
-
-extern u16 D_800E694C[];
-extern u16 D_800E69B0[][4];
-extern u16 D_800E69F4[][4];
-
-extern u8 D_800E6F30[][3];
-extern u8 D_800E6F48[][3];
 
 extern f32 D_801652A0[];
 

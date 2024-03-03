@@ -1,6 +1,7 @@
 #ifndef OBJECTS_H
 #define OBJECTS_H
 
+#include "spline.h"
 #include "common_structs.h"
 
 #define OBJECT_LIST_SIZE 0x226
@@ -34,8 +35,8 @@ typedef struct
     /* 0x70 */ Gfx *model;
     /* 0x74 */ Vtx *vertex;
     /* 0x78 */ s8  unk_078[0x04];
-    /* 0x7C */ Vec4s *unk_07C;
-    /* 0x80 */ Vec4s *unk_080; // unk_080[][4]?
+    /* 0x7C */ SplineControlPoint *controlPoints;
+    /* 0x80 */ SplineData *spline;
     /* 0x84 */ s16 unk_084[0xA];
     /* 0x98 */ u16 timer;
     /* 0x9A */ u16 unk_09A;
@@ -287,6 +288,13 @@ extern Vec3s gHedgehogPatrolPoints[];
  * Spawn for big fire breath in Bowser's Castle
  */
 extern s32 indexObjectList2[];
+
+// This struct is used by a lot of different objects
+// Stars, clouds, exahust smoke (I think?)
+typedef struct {
+    Vec3su pos;
+    u16 id;
+} StarSpawn;
 
 #define NUM_BOOS 0xA
 #define NUM_FIRE_BREATHS 4

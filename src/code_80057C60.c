@@ -33,7 +33,8 @@
 #include "data/other_textures.h"
 #include "spawn_players.h"
 #include "sounds.h"
-#include "update_objects.h"
+#include "code_80071F00.h"
+#include "data/some_data.h"
 
 
 //! @warning this macro is undef'd at the end of this file
