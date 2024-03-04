@@ -109,7 +109,7 @@ $(function(){initNavTree('bug.html',''); initResizable(); });
 <dt>Global <a class="el" href="defines_8h.html#ac80a3592e72fd96b772ee47a7d8e0d0a">DEBUG_MODE</a>  </dt>
 <dd><a class="anchor" id="_bug000014"></a>This looks like it should work at any point in the race. </dd>
 <dt>Global <a class="el" href="code__80005FD0_8h.html#af57e67da25ab96ad12852d4530711b8a">func_8001969C</a>  (s32, f32, s32, s16)</dt>
-<dd><a class="anchor" id="_bug000009"></a>Adding an (f32) cast changes asm, why?  </dd>
+<dd><a class="anchor" id="_bug000008"></a>Adding an (f32) cast changes asm, why?  </dd>
 <dt>Global <a class="el" href="heap_8h.html#ab4f80aff560307d96b2c40b5c0ed82f8">func_800B9BE4</a>  (f32, f32, u16 *)</dt>
 <dd><a class="anchor" id="_bug000001"></a>they probably meant to store the value to tmp[i] and tmp[8 + i]  </dd>
 <dt>Global <a class="el" href="load_8h.html#ab3527402c5b0ba729e379fb33e802291">func_800BB388</a>  (s32 bankId, s32 instId, s32 arg2)</dt>
@@ -119,7 +119,7 @@ $(function(){initNavTree('bug.html',''); initResizable(); });
 <dt>Global <a class="el" href="seqplayer_8h.html#a96fd2718691a0e1c86de13d55670a8b1">init_sequence_players</a>  (void)</dt>
 <dd><a class="anchor" id="_bug000006"></a>Size of wrong array. Zeroes out second half of gSequenceChannels[0], all of gSequenceChannels[1..31], and part of gSequenceLayers[0]. However, this is only called at startup, so it's harmless.  </dd>
 <dt>Global <a class="el" href="code__80281780_8h.html#af227cfd0f1fd3d6adbe9a29ad59b4dc8">load_ceremony_cutscene</a>  (void)</dt>
-<dd><a class="anchor" id="_bug000008"></a>these segmented addresses need to be symbols for mobility  </dd>
+<dd><a class="anchor" id="_bug000009"></a>these segmented addresses need to be symbols for mobility  </dd>
 <dt>Global <a class="el" href="load_8h.html#a2481529a2e9892b5e55865a80299c48b">load_sequence_internal</a>  (u32, u32, s32)</dt>
 <dd><a class="anchor" id="_bug000004"></a>This should set the last bank (i.e. the first in the JSON) as default, not the missing one. This code path never gets taken, though &ndash; all sequence loading is synchronous.  </dd>
 <dt>Global <a class="el" href="podium__ceremony__actors_8h.html#a186674a03da1d9fce04a3211d6f4ec4d">new_actor</a>  (<a class="el" href="structActorInitParams.html">ActorInitParams</a> *)</dt>

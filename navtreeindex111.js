@@ -1,5 +1,7 @@
 var NAVTREEINDEX111 =
 {
+"structRailroadCrossing.html#ada3db7bde004fe66a5b0ff43eadc32dd":[7,0,137,6],
+"structRailroadCrossing.html#adb9d15641f3264973cacf57821f9eab9":[7,0,137,2],
 "structRailroadCrossing.html#ae8dffede0df7f0e6c6eef1e9c9a131d8":[7,0,137,4],
 "structReverbBitsData.html":[7,0,139],
 "structReverbBitsData.html#a42316602952126aea4ef731d64cfbed5":[7,0,139,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX111 =
 "structSplineData12.html#ad31318541ed6c4bd847d2589e3731118":[7,0,160,1],
 "structSplineData15.html":[7,0,161],
 "structSplineData15.html#a5738c91f8058dd9b04e7094ec9062de9":[7,0,161,1],
-"structSplineData15.html#a57dceffd9523e23d9b83bdc11834549f":[7,0,161,0],
-"structSplineData21.html":[7,0,162],
-"structSplineData21.html#a24bceac84e7ddc8eb48053b5acb777c1":[7,0,162,0]
+"structSplineData15.html#a57dceffd9523e23d9b83bdc11834549f":[7,0,161,0]
 };

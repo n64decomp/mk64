@@ -1,5 +1,7 @@
 var NAVTREEINDEX134 =
 {
+"waypoints_8h.html#a7612b610419d04a95577c2ca8c3a190c":[8,0,2,24,23],
+"waypoints_8h.html#a76902b248cceab4188595952d1e90fc6":[8,0,2,24,3],
 "waypoints_8h.html#a77dc77cd6f5d44ecf6bbc70a92487ff0":[8,0,2,24,21],
 "waypoints_8h.html#a85904da90b18c414860f964712f7bb85":[8,0,2,24,26],
 "waypoints_8h.html#a9c20e076ea3312f8b44ee45233a8aa53":[8,0,2,24,22],
@@ -247,7 +249,5 @@ var NAVTREEINDEX134 =
 "yoshi__valley_2course__data_8inc_8h.html#a4337b2ff9339daae18d3a38f61c1f609":[8,0,0,19,1,21],
 "yoshi__valley_2course__data_8inc_8h.html#a45cbab0ee8c2d00f9ec5372122e67153":[8,0,0,19,1,70],
 "yoshi__valley_2course__data_8inc_8h.html#a4616e30b82e47aa53db2da50f33199ca":[8,0,0,19,1,43],
-"yoshi__valley_2course__data_8inc_8h.html#a47869b20d1ca93da481b460a7fedbb20":[8,0,0,19,1,143],
-"yoshi__valley_2course__data_8inc_8h.html#a47bc1daddd38b9f37a598219e1101da0":[8,0,0,19,1,176],
-"yoshi__valley_2course__data_8inc_8h.html#a493e7a8de9e0e5588802183f7df5061e":[8,0,0,19,1,10]
+"yoshi__valley_2course__data_8inc_8h.html#a47869b20d1ca93da481b460a7fedbb20":[8,0,0,19,1,143]
 };

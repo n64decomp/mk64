@@ -1,5 +1,7 @@
 var NAVTREEINDEX113 =
 {
+"structUnkStruct__800DDB68.html#aead90c24f0027d806d6acd24d28ba626":[7,0,232,4],
+"structUnkStruct__800DDB68.html#af09e26866c5a02b9fbb82cfcff389e44":[7,0,232,2],
 "structUnkStruct__800DDB68.html#af0c9f94a845419cb6ee47480354afb9f":[7,0,232,1],
 "structUnkStruct__800DDB68.html#af2b4aa6dc460fa4cd41cf9436dfb1547":[7,0,232,6],
 "structUnkStruct__8015F584.html":[7,0,233],
@@ -247,7 +249,5 @@ var NAVTREEINDEX113 =
 "struct____OSThreadContext.html#ae15b802ae8eb0917a7745406577e358f":[7,0,13,51],
 "struct____OSThreadContext.html#ae2a07c202e1d02986011b18706f89452":[7,0,13,16],
 "struct____OSThreadContext.html#ae4b35f4af291321df075c0344dd87cf4":[7,0,13,18],
-"struct____OSThreadContext.html#af365f032516859ba5f788e7d4dd9780c":[7,0,13,36],
-"struct____OSThreadContext.html#af9379c2223768103f41cea04c19bcb86":[7,0,13,39],
-"struct____OSThreadContext.html#afd618336af19bdbf7ae7f38de8d9a8f8":[7,0,13,33]
+"struct____OSThreadContext.html#af365f032516859ba5f788e7d4dd9780c":[7,0,13,36]
 };

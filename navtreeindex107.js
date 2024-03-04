@@ -1,5 +1,7 @@
 var NAVTREEINDEX107 =
 {
+"structActorInitParams.html#aa1552101fcd8a100d1c9f68b9b4d393b":[7,0,19,2],
+"structActorInitParams.html#ab495c52104edc7ea6f64ac588d0b9e7a":[7,0,19,5],
 "structActorInitParams.html#ac4ecfe8518fd4440bb06cec29488c8b4":[7,0,19,3],
 "structActorInitParams.html#ae91c98d7141b436d77f3188e7efdedc7":[7,0,19,0],
 "structActorInitParams.html#aee3fc8bb9d007d475565866fcf3e5324":[7,0,19,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX107 =
 "structController.html#a8c4688ece90c09c9c228512234b82fbb":[7,0,61,2],
 "structController.html#aa5d1a358227833467d015fe3b2b35967":[7,0,61,0],
 "structController.html#ac44615b87b1ed88181861c5050783a03":[7,0,61,7],
-"structController.html#af68b8dc9459d69a7dfdf57dabf8dbae5":[7,0,61,1],
-"structCourseTable.html":[7,0,63],
-"structCourseTable.html#a183500b9277fec956b18c017fd1e7b40":[7,0,63,0]
+"structController.html#af68b8dc9459d69a7dfdf57dabf8dbae5":[7,0,61,1]
 };
