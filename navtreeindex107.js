@@ -1,5 +1,16 @@
 var NAVTREEINDEX107 =
 {
+"structActorInitParams.html#ac4ecfe8518fd4440bb06cec29488c8b4":[7,0,19,3],
+"structActorInitParams.html#ae91c98d7141b436d77f3188e7efdedc7":[7,0,19,0],
+"structActorInitParams.html#aee3fc8bb9d007d475565866fcf3e5324":[7,0,19,4],
+"structActorSpawnData.html":[7,0,20],
+"structActorSpawnData.html#abe56902c1485bde757178d94912f36d6":[7,0,20,1],
+"structActorSpawnData.html#accbc5f2097f1317afa9519a2e4d5833c":[7,0,20,0],
+"structActorSpawnData.html#adbbe576bada169e0b7b635882881fcf8":[7,0,20,2],
+"structAdpcmBook.html":[7,0,21],
+"structAdpcmBook.html#a0eb3e41da17a5a3bca82a2a1c9e3ed18":[7,0,21,0],
+"structAdpcmBook.html#a2b65aeb852554f8b1cefb7d450eb4f70":[7,0,21,1],
+"structAdpcmBook.html#a8f02d253f000fc09cbcaf0ae0c23f9b9":[7,0,21,2],
 "structAdpcmLoop.html":[7,0,22],
 "structAdpcmLoop.html#a0ee9c17cdba7580e018b4c6a5e4bf239":[7,0,22,2],
 "structAdpcmLoop.html#a13d41bcdd3f96e3bf95f2eced7def36e":[7,0,22,3],
@@ -238,16 +249,5 @@ var NAVTREEINDEX107 =
 "structController.html#ac44615b87b1ed88181861c5050783a03":[7,0,61,7],
 "structController.html#af68b8dc9459d69a7dfdf57dabf8dbae5":[7,0,61,1],
 "structCourseTable.html":[7,0,63],
-"structCourseTable.html#a183500b9277fec956b18c017fd1e7b40":[7,0,63,0],
-"structCourseTable.html#a28a03004624fc1b834eb2e96ed60e986":[7,0,63,7],
-"structCourseTable.html#a3cf1bf38e79a6dec2cd2708a095e624f":[7,0,63,12],
-"structCourseTable.html#a5262f9e65471d1bbd8ed086bffe11533":[7,0,63,2],
-"structCourseTable.html#a662d764edc256fea0e6bce1ee5997d34":[7,0,63,8],
-"structCourseTable.html#a6fc9a543955a768600f7fad522a7e720":[7,0,63,5],
-"structCourseTable.html#a81aa94f89154c0a29d84b5b10306f816":[7,0,63,11],
-"structCourseTable.html#a8e87e0567e202aed3856d9e653665cf6":[7,0,63,9],
-"structCourseTable.html#ab3a7aa2b05671688a96e9b657bd6623a":[7,0,63,3],
-"structCourseTable.html#ac8cd9a4c39f0f06665b451ff3c523dff":[7,0,63,4],
-"structCourseTable.html#ad879d31ac49f90c48ed960e6f6336348":[7,0,63,1],
-"structCourseTable.html#adff350097d0d5770bc1e5139622b499c":[7,0,63,6]
+"structCourseTable.html#a183500b9277fec956b18c017fd1e7b40":[7,0,63,0]
 };

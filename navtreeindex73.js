@@ -1,5 +1,16 @@
 var NAVTREEINDEX73 =
 {
+"luigi__raceway_2course__offsets_8inc_8c.html#ac8f2ff3ac2cb7a40478b6294655184d8":[8,0,0,10,4,24],
+"luigi__raceway_2course__offsets_8inc_8c.html#ac9159a0b190ec56380d6bfa4c76f461d":[8,0,0,10,4,23],
+"luigi__raceway_2course__offsets_8inc_8c.html#ad2ee947bfbe5cd4ba72dd4884b82227e":[8,0,0,10,4,1],
+"luigi__raceway_2course__offsets_8inc_8c.html#afe4fbe8cd1d58805fc55a58b6dc15727":[8,0,0,10,4,34],
+"luigi__raceway_2course__vertices_8inc_8c.html":[8,0,0,10,5],
+"luigi__raceway_2course__vertices_8inc_8c.html#ad0fde735a3df05d80381934087e1b749":[8,0,0,10,5,0],
+"luigi__raceway_2staff__ghost_8incl_8c.html":[8,0,0,10,6],
+"luigi__raceway_2staff__ghost_8incl_8c_source.html":[8,0,0,10,6],
+"macros_8h.html":[8,0,2,13],
+"macros_8h.html#a08b2c3c00c27891c0b0179c9d8a1c2b6":[8,0,2,13,0],
+"macros_8h.html#a3fcac48969e76bd4245894796b40b7b6":[8,0,2,13,1],
 "macros_8h.html#a4bf0a01781df461ad257e5391ac09ae7":[8,0,2,13,3],
 "macros_8h.html#a635e1ead21634c60d387a6602b27ada8":[8,0,2,13,4],
 "macros_8h.html#a8aacf963fc7253845c961ed3912d78a2":[8,0,2,13,7],
@@ -238,16 +249,5 @@ var NAVTREEINDEX73 =
 "main_8h.html#a38a4e512ff60dd55adb533c7abb821f1":[8,0,3,42,23],
 "main_8h.html#a393ed93dbcc21cf420c007add64c2d97":[8,0,3,42,163],
 "main_8h.html#a3a0697cf1e2b0c4ec6ddbf605926eac4":[8,0,3,42,28],
-"main_8h.html#a3c23059382c9061b9ee0db7c5ff9fbe7":[8,0,3,42,8],
-"main_8h.html#a3d572287c841364c09bd7f092b13b927":[8,0,3,42,74],
-"main_8h.html#a3e7f5dc57f158b3772b2ab86f730b3d7":[8,0,3,42,12],
-"main_8h.html#a3e8b07d4dfd3c346ab1e694d67caec7b":[8,0,3,42,57],
-"main_8h.html#a400f2d70bc82560a81bed876f0314be7":[8,0,3,42,159],
-"main_8h.html#a43a622e651d4173986079d972ce4b032":[8,0,3,42,118],
-"main_8h.html#a46357dddbcd84888275e4cfc4716ffc5":[8,0,3,42,130],
-"main_8h.html#a46ae4f8ebb457fce4caa008ac292b6f6":[8,0,3,42,113],
-"main_8h.html#a47a548bbf988125912df970a7ec6aa64":[8,0,3,42,31],
-"main_8h.html#a4b6820ecb517ae844d72cb317e76c4e6":[8,0,3,42,68],
-"main_8h.html#a4d789d195e6fdd4b69cd8a0dd40b0647":[8,0,3,42,124],
-"main_8h.html#a4e4114ca0a38ca93f3df2c94b56c73a9":[8,0,3,42,48]
+"main_8h.html#a3c23059382c9061b9ee0db7c5ff9fbe7":[8,0,3,42,8]
 };

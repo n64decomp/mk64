@@ -1,5 +1,16 @@
 var NAVTREEINDEX108 =
 {
+"structCourseTable.html#a28a03004624fc1b834eb2e96ed60e986":[7,0,63,7],
+"structCourseTable.html#a3cf1bf38e79a6dec2cd2708a095e624f":[7,0,63,12],
+"structCourseTable.html#a5262f9e65471d1bbd8ed086bffe11533":[7,0,63,2],
+"structCourseTable.html#a662d764edc256fea0e6bce1ee5997d34":[7,0,63,8],
+"structCourseTable.html#a6fc9a543955a768600f7fad522a7e720":[7,0,63,5],
+"structCourseTable.html#a81aa94f89154c0a29d84b5b10306f816":[7,0,63,11],
+"structCourseTable.html#a8e87e0567e202aed3856d9e653665cf6":[7,0,63,9],
+"structCourseTable.html#ab3a7aa2b05671688a96e9b657bd6623a":[7,0,63,3],
+"structCourseTable.html#ac8cd9a4c39f0f06665b451ff3c523dff":[7,0,63,4],
+"structCourseTable.html#ad879d31ac49f90c48ed960e6f6336348":[7,0,63,1],
+"structCourseTable.html#adff350097d0d5770bc1e5139622b499c":[7,0,63,6],
 "structCourseTable.html#ae64dfa535621d0e69175d027ed501628":[7,0,63,10],
 "structCourseTimeTrialRecords.html":[7,0,64],
 "structCourseTimeTrialRecords.html#a3b556cec6168ce7530e88e6828c9fdfb":[7,0,64,1],
@@ -238,16 +249,5 @@ var NAVTREEINDEX108 =
 "structKiwanoFruit.html#a42e01e9caa040b6c495d7d30a93536c2":[7,0,91,12],
 "structKiwanoFruit.html#a45799822f9f1e3ac2fd213a6012ff510":[7,0,91,0],
 "structKiwanoFruit.html#a74ede07f322e736b2e7ac5269352fc13":[7,0,91,1],
-"structKiwanoFruit.html#a75579b57acf1c579a4d1c76630e63d06":[7,0,91,8],
-"structKiwanoFruit.html#a84bcafb455436df44151349caf4f7946":[7,0,91,11],
-"structKiwanoFruit.html#a950aff93d9e44ce1ef637f94c0211df3":[7,0,91,10],
-"structKiwanoFruit.html#aa0f27c3d651683f99a007212680bdf40":[7,0,91,4],
-"structKiwanoFruit.html#ac2024c25671678292ad713fc6a337fe2":[7,0,91,7],
-"structKiwanoFruit.html#ac3f39d0c46c091b04cb44a6dbc51a478":[7,0,91,5],
-"structKiwanoFruit.html#adf70a7f3dc53798340be6b62a77cdf43":[7,0,91,6],
-"structM64ScriptState.html":[7,0,94],
-"structM64ScriptState.html#a1aae4070b924b65d1a69253f2f5bf565":[7,0,94,0],
-"structM64ScriptState.html#a3722f02366a20f7f2c075c03af593bcc":[7,0,94,2],
-"structM64ScriptState.html#a55c9181d0f0d8aa6001e77ea57b330b1":[7,0,94,3],
-"structM64ScriptState.html#ac0b70c21099f0e964bb0e294ef4cb74f":[7,0,94,1]
+"structKiwanoFruit.html#a75579b57acf1c579a4d1c76630e63d06":[7,0,91,8]
 };

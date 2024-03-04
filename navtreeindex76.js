@@ -1,5 +1,16 @@
 var NAVTREEINDEX76 =
 {
+"mario__raceway_2course__displaylists_8inc_8h.html#a035d0329c9b0769753973e07e7ec8b42":[8,0,0,11,3,46],
+"mario__raceway_2course__displaylists_8inc_8h.html#a046d0f1696ccdad421fc6adc6f06b6e4":[8,0,0,11,3,42],
+"mario__raceway_2course__displaylists_8inc_8h.html#a062b199caf59f92cc244332768a5a5bb":[8,0,0,11,3,32],
+"mario__raceway_2course__displaylists_8inc_8h.html#a07de909ea04a6d4a9468cf2bea9b29e4":[8,0,0,11,3,99],
+"mario__raceway_2course__displaylists_8inc_8h.html#a087012e7b449f41528f0d9cce0435f2f":[8,0,0,11,3,118],
+"mario__raceway_2course__displaylists_8inc_8h.html#a09eccb5235db32d2067c060eaa70cf9c":[8,0,0,11,3,34],
+"mario__raceway_2course__displaylists_8inc_8h.html#a0b6fdf17e3c6c60cc162ac5698665d25":[8,0,0,11,3,54],
+"mario__raceway_2course__displaylists_8inc_8h.html#a0bab035fa3cae8bfdc91348d5f0f5026":[8,0,0,11,3,18],
+"mario__raceway_2course__displaylists_8inc_8h.html#a0c45f8fa46ab13d4101b2128f5da3a1f":[8,0,0,11,3,98],
+"mario__raceway_2course__displaylists_8inc_8h.html#a0c51696aadda7c1d46e688c942d12776":[8,0,0,11,3,49],
+"mario__raceway_2course__displaylists_8inc_8h.html#a0f1bd72b726e6ad88505597079f0686b":[8,0,0,11,3,148],
 "mario__raceway_2course__displaylists_8inc_8h.html#a126954b23f546a80f11df147a6409d0e":[8,0,0,11,3,37],
 "mario__raceway_2course__displaylists_8inc_8h.html#a134b4882d938295211a63dd786d6256f":[8,0,0,11,3,40],
 "mario__raceway_2course__displaylists_8inc_8h.html#a13db8a5c19feb297c21c57b80ba66983":[8,0,0,11,3,93],
@@ -238,16 +249,5 @@ var NAVTREEINDEX76 =
 "math__util_8c.html#a6b73fbe82121bd63b14ffbae6f6be6aa":[8,0,3,6,6,30],
 "math__util_8c.html#a6ce747f206d5212bbd7f4a17c44ad8e6":[8,0,3,6,6,3],
 "math__util_8c.html#a6ecb143724b00642b0cca4273509a5b0":[8,0,3,6,6,61],
-"math__util_8c.html#a7085bb4bb08bdc39c0fa0b98f25176ef":[8,0,3,6,6,43],
-"math__util_8c.html#a79fd07a0971ec96a3ff0801963a2fa7f":[8,0,3,6,6,57],
-"math__util_8c.html#a7a733526eedafdec1d9e37b72771af7d":[8,0,3,6,6,33],
-"math__util_8c.html#a84cf9d4ec33146a64c230ed4cec56632":[8,0,3,6,6,36],
-"math__util_8c.html#a9092c945c52b3a3481228b2724991e3c":[8,0,3,6,6,60],
-"math__util_8c.html#a9252bc29d37286f93be8726e151d6ef2":[8,0,3,6,6,29],
-"math__util_8c.html#a9315e183b99d008d2179cbfce85a8ff3":[8,0,3,6,6,32],
-"math__util_8c.html#a9593fb456bacc9c69fda24d718e44969":[8,0,3,6,6,9],
-"math__util_8c.html#a9fac0ad3d9b29974486905779554714e":[8,0,3,6,6,13],
-"math__util_8c.html#aa23f6384122bc45f13a81ef0fa86c099":[8,0,3,6,6,54],
-"math__util_8c.html#aa7f03785fe0e64d1fde8e9b02651cfd9":[8,0,3,6,6,11],
-"math__util_8c.html#aaa39a297477f56051975259f4bddd829":[8,0,3,6,6,4]
+"math__util_8c.html#a7085bb4bb08bdc39c0fa0b98f25176ef":[8,0,3,6,6,43]
 };
