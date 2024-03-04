@@ -6,6 +6,9 @@ glabel D_800ED270
 glabel D_800ED278
 .double 10000.0
 
+glabel D_800ED280
+.double 10000.0
+
 .section .text
 
 glabel func_80017054
