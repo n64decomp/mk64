@@ -30,6 +30,7 @@ drawLayer = bpy.context.scene.DLImportDrawLayer
 
 file = argv[0]
 obj = argv[1]
+out_file = argv[2]
 
 clean_scene()
 if bpy.context.mode != "OBJECT":
@@ -48,4 +49,4 @@ importMeshC(
     drawLayer,
     F3DContext(get_F3D_GBI(), basePath, createF3DMat(None)),
 )
-bpy.ops.wm.save_as_mainfile(filepath="models/"+obj+".blend")
+bpy.ops.wm.save_as_mainfile(filepath=out_file)
