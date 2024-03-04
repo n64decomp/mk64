@@ -2741,27 +2741,27 @@ void func_800788F8(s32 objectIndex, u16 rot, Camera *camera) {
     set_object_flag_status_false(objectIndex, 0x00000010);
 }
 
-void func_800789AC(s32 arg0, Camera *arg1, StarCloudData *starData) {
-    s32 starIndex;
+void update_clouds(s32 arg0, Camera *arg1, CloudData *cloudList) {
+    s32 cloudIndex;
     s32 objectIndex;
-    StarCloudData *starTemp;
+    CloudData *cloud;
 
-    for (starIndex = 0; starIndex < D_8018D1F0; starIndex++) {
-        starTemp = &starData[starIndex];
-        objectIndex = D_8018CC80[arg0 + starIndex];
-        func_800788F8(objectIndex, starTemp->rotY, arg1);
+    for (cloudIndex = 0; cloudIndex < D_8018D1F0; cloudIndex++) {
+        cloud = &cloudList[cloudIndex];
+        objectIndex = D_8018CC80[arg0 + cloudIndex];
+        func_800788F8(objectIndex, cloud->rotY, arg1);
     }
 }
 
-void func_80078A44(s32 arg0, Camera *camera, StarCloudData *starData) {
+void update_stars(s32 arg0, Camera *camera, StarData *starList) {
     s32 starIndex;
     s32 objectIndex;
-    StarCloudData *starTemp;
+    StarData *star;
 
     for (starIndex = 0; starIndex < D_8018D1F0; starIndex++) {
-        starTemp = &starData[starIndex];
+        star = &starList[starIndex];
         objectIndex = D_8018CC80[arg0 + starIndex];
-        func_800788F8(objectIndex, starTemp->rotY, camera);
+        func_800788F8(objectIndex, star->rotY, camera);
         switch (starIndex % 5U) {
             case 0:
                 func_80073CB0(objectIndex, &gObjectList[objectIndex].primAlpha, 0x00000028, 0x000000B4, 0x000000FF, 0, -1);
@@ -2826,40 +2826,40 @@ void func_80078C70(s32 arg0) {
         switch (gCurrentCourseId) {                          /* switch 2 */
             case COURSE_MARIO_RACEWAY:                                     /* switch 2 */
                 // Uses Luigi Raceway's clouds for display purposes?
-                func_800789AC(sp1C, camera, gLuigiRacewayClouds);
+                update_clouds(sp1C, camera, gLuigiRacewayClouds);
                 break;
             case COURSE_YOSHI_VALLEY:                                     /* switch 2 */
-                func_800789AC(sp1C, camera, gYoshiValleyMooMooFarmClouds);
+                update_clouds(sp1C, camera, gYoshiValleyMooMooFarmClouds);
                 break;
             case COURSE_FRAPPE_SNOWLAND:                                     /* switch 2 */
                 func_80078170(sp1C, camera);
                 break;
             case COURSE_KOOPA_BEACH:                                     /* switch 2 */
-                func_800789AC(sp1C, camera, gKoopaTroopaBeachClouds);
+                update_clouds(sp1C, camera, gKoopaTroopaBeachClouds);
                 break;
             case COURSE_ROYAL_RACEWAY:                                     /* switch 2 */
-                func_800789AC(sp1C, camera, gRoyalRacewayClouds);
+                update_clouds(sp1C, camera, gRoyalRacewayClouds);
                 break;
             case COURSE_LUIGI_RACEWAY:                                     /* switch 2 */
-                func_800789AC(sp1C, camera, gLuigiRacewayClouds);
+                update_clouds(sp1C, camera, gLuigiRacewayClouds);
                 break;
             case COURSE_MOO_MOO_FARM:                                     /* switch 2 */
-                func_800789AC(sp1C, camera, gYoshiValleyMooMooFarmClouds);
+                update_clouds(sp1C, camera, gYoshiValleyMooMooFarmClouds);
                 break;
             case COURSE_TOADS_TURNPIKE:                                    /* switch 2 */
-                func_80078A44(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
+                update_stars(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
                 break;
             case COURSE_KALAMARI_DESERT:                                    /* switch 2 */
-                func_800789AC(sp1C, camera, gKalimariDesertClouds);
+                update_clouds(sp1C, camera, gKalimariDesertClouds);
                 break;
             case COURSE_SHERBET_LAND:                                    /* switch 2 */
-                func_800789AC(sp1C, camera, gSherbetLandClouds);
+                update_clouds(sp1C, camera, gSherbetLandClouds);
                 break;
             case COURSE_RAINBOW_ROAD:                                    /* switch 2 */
-                func_80078A44(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
+                update_stars(sp1C, camera, gToadsTurnpikeRainbowRoadStars);
                 break;
             case COURSE_WARIO_STADIUM:                                    /* switch 2 */
-                func_80078A44(sp1C, camera, gWarioStadiumStars);
+                update_stars(sp1C, camera, gWarioStadiumStars);
                 break;
         }
     }

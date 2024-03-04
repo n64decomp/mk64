@@ -414,7 +414,7 @@ typedef struct {
     // There are a couple different cloud shapes, this decides which one is used
     // For stars, this is always 0 since they don't have multiple textures
     /* 0x06 */ u16 subType;
-} StarCloudData; // size = 0x8
+} StarData, CloudData; // size = 0x8
 
 #define D_8018CC80_SIZE 0x64
 

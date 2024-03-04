@@ -605,7 +605,7 @@ void init_object_list_index(void) {
     }
 }
 
-void func_80070250(s32 objectIndex, s32 arg1, StarCloudData *arg2) {
+void init_cloud_object(s32 objectIndex, s32 arg1, CloudData *arg2) {
     ItemWindowObjects *temp_v0;
 
     init_object(objectIndex, arg1);
@@ -620,12 +620,12 @@ void func_80070250(s32 objectIndex, s32 arg1, StarCloudData *arg2) {
     temp_v0->primAlpha = 0x00FF;
 }
 
-void func_80070328(StarCloudData *arg0) {
+void init_clouds(CloudData *cloudList) {
     s32 var_s0 = 0;
-    StarCloudData *test = arg0;
+    CloudData *test = &cloudList[0];
     do {
         if(1) {}
-        func_80070250(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
+        init_cloud_object(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
         var_s0++;
         test++;
     } while (test->rotY != 0xFFFF);
@@ -648,7 +648,7 @@ void func_80070328(StarCloudData *arg0) {
  * sizeScaling is some sort of size scaling on the start texture.
  * unk_0A2 is an alpha value, used to make the star twinkle.
 **/
-void func_800703E0(s32 objectIndex, s32 arg1, StarCloudData *arg2) {
+void init_star_object(s32 objectIndex, s32 arg1, StarData *arg2) {
     ItemWindowObjects *temp_v0;
 
     init_object(objectIndex, arg1);
@@ -662,12 +662,12 @@ void func_800703E0(s32 objectIndex, s32 arg1, StarCloudData *arg2) {
     func_80073404(objectIndex, 0x10U, 0x10U, common_vtx_rectangle);
 }
 
-void func_800704A0(StarCloudData *arg0) {
+void init_stars(StarData *starList) {
     s32 var_s0 = 0;
-    StarCloudData *test = arg0;
+    StarData *test = &starList[0];
     do {
         if(1) {}
-        func_800703E0(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
+        init_star_object(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
         var_s0++;
         test++;
     } while (test->rotY != 0xFFFF);
@@ -683,10 +683,10 @@ void func_8007055C(void) {
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
         // Uses Kalimari Desert's clouds for initialization?
-        func_80070328(gKalimariDesertClouds);
+        init_clouds(gKalimariDesertClouds);
         break;
     case COURSE_YOSHI_VALLEY:
-        func_80070328(gYoshiValleyMooMooFarmClouds);
+        init_clouds(gYoshiValleyMooMooFarmClouds);
         break;
     case COURSE_FRAPPE_SNOWLAND:
         if (gPlayerCount == 1) {
@@ -701,31 +701,31 @@ void func_8007055C(void) {
         D_8018D1F0 = var_s0;
         break;
     case COURSE_KOOPA_BEACH:
-        func_80070328(gKoopaTroopaBeachClouds);
+        init_clouds(gKoopaTroopaBeachClouds);
         break;
     case COURSE_ROYAL_RACEWAY:
-        func_80070328(gRoyalRacewayClouds);
+        init_clouds(gRoyalRacewayClouds);
         break;
     case COURSE_LUIGI_RACEWAY:
-        func_80070328(gLuigiRacewayClouds);
+        init_clouds(gLuigiRacewayClouds);
         break;
     case COURSE_MOO_MOO_FARM:
-        func_80070328(gYoshiValleyMooMooFarmClouds);
+        init_clouds(gYoshiValleyMooMooFarmClouds);
         break;
     case COURSE_TOADS_TURNPIKE:
-        func_800704A0(gToadsTurnpikeRainbowRoadStars);
+        init_stars(gToadsTurnpikeRainbowRoadStars);
         break;
     case COURSE_KALAMARI_DESERT:
-        func_80070328(gKalimariDesertClouds);
+        init_clouds(gKalimariDesertClouds);
         break;
     case COURSE_SHERBET_LAND:
-        func_80070328(gSherbetLandClouds);
+        init_clouds(gSherbetLandClouds);
         break;
     case COURSE_RAINBOW_ROAD:
-        func_800704A0(gToadsTurnpikeRainbowRoadStars);
+        init_stars(gToadsTurnpikeRainbowRoadStars);
         break;
     case COURSE_WARIO_STADIUM:
-        func_800704A0(gWarioStadiumStars);
+        init_stars(gWarioStadiumStars);
         break;
     }
     func_8008C23C();

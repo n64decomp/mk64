@@ -1071,7 +1071,7 @@ SplineData8 D_800E69F4 = {
     }
 };
 
-StarCloudData gLuigiRacewayClouds[] = {
+CloudData gLuigiRacewayClouds[] = {
     { 0x04fa, 0xfff6, 0x0096, 0x0000 },
     { 0x4718, 0x003c, 0x007d, 0x0000 },
     { 0x5550, 0x0046, 0x0096, 0x0000 },
@@ -1088,7 +1088,7 @@ StarCloudData gLuigiRacewayClouds[] = {
     { 0xffff, 0x0000, 0x0000, 0x0000 },
 };
 
-StarCloudData gYoshiValleyMooMooFarmClouds[] = {
+CloudData gYoshiValleyMooMooFarmClouds[] = {
     { 0x00b6, 0x0050, 0x0041, 0x0000 },
     { 0x4718, 0x003c, 0x0064, 0x0000 },
     { 0x18e2, 0x0032, 0x004b, 0x0000 },
@@ -1102,7 +1102,7 @@ StarCloudData gYoshiValleyMooMooFarmClouds[] = {
     { 0xffff, 0x0000, 0x0000, 0x0000 },
 };
 
-StarCloudData gKoopaTroopaBeachClouds[] = {
+CloudData gKoopaTroopaBeachClouds[] = {
     { 0x1554, 0x001e, 0x00c8, 0x0000 },
     { 0xce2c, 0x001e, 0x00c8, 0x0000 },
     { 0xa384, 0x001e, 0x00c8, 0x0001 },
@@ -1112,7 +1112,7 @@ StarCloudData gKoopaTroopaBeachClouds[] = {
     { 0xffff, 0x0000, 0x0000, 0x0000 },
 };
 
-StarCloudData gRoyalRacewayClouds[] = {
+CloudData gRoyalRacewayClouds[] = {
     { 0x60b0, 0x003c, 0x007d, 0x0000 },
     { 0xb8d8, 0x0037, 0x0064, 0x0000 },
     { 0xd548, 0x000a, 0x0082, 0x0000 },
@@ -1129,7 +1129,7 @@ StarCloudData gRoyalRacewayClouds[] = {
     { 0xffff, 0x0000, 0x0000, 0x0000 },
 };
 
-StarCloudData gSherbetLandClouds[] = {
+CloudData gSherbetLandClouds[] = {
     { 0x4718, 0x003c, 0x007d, 0x0000 },
     { 0x5550, 0x0046, 0x0096, 0x0000 },
     { 0x954c, 0x002d, 0x004b, 0x0000 },
@@ -1145,7 +1145,7 @@ StarCloudData gSherbetLandClouds[] = {
     { 0xffff, 0x0000, 0x0000, 0x0000 },
 };
 
-StarCloudData gKalimariDesertClouds[] = {
+CloudData gKalimariDesertClouds[] = {
     { 0x1ffe, 0x0028, 0x004b, 0x0000 },
     { 0x60b0, 0x003c, 0x007d, 0x0000 },
     { 0xb8d8, 0x0037, 0x0064, 0x0000 },
@@ -1162,7 +1162,7 @@ StarCloudData gKalimariDesertClouds[] = {
     { 0xffff, 0x0000, 0x0000, 0x0000 },
 };
 
-StarCloudData gToadsTurnpikeRainbowRoadStars[] = {
+StarData gToadsTurnpikeRainbowRoadStars[] = {
     { 0x0222, 0x0032, 0x000a, 0x0000 },
     { 0x04fa, 0x0046, 0x000f, 0x0000 },
     { 0x093e, 0x000a, 0x0014, 0x0000 },
@@ -1209,7 +1209,7 @@ StarCloudData gToadsTurnpikeRainbowRoadStars[] = {
     { 0xffff, 0x0000, 0x0000, 0x0000 },
 };
 
-StarCloudData gWarioStadiumStars[] = {
+StarData gWarioStadiumStars[] = {
     { 0x0222, 0x0050, 0x000a, 0x0000 },
     { 0x04fa, 0x0064, 0x000f, 0x0000 },
     { 0x093e, 0x005a, 0x0014, 0x0000 },
