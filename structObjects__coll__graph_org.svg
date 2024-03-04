@@ -34,11 +34,11 @@
 <polygon fill="#9a32cd" stroke="#9a32cd" points="483.65,-523.19 473.32,-525.57 482.88,-530.14 483.65,-523.19"/>
 </a>
 </g>
-<text text-anchor="middle" x="563.5" y="-606.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> origin_pos</text>
-<text text-anchor="middle" x="563.5" y="-595.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">pos</text>
-<text text-anchor="middle" x="563.5" y="-584.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">sizeScaling</text>
-<text text-anchor="middle" x="563.5" y="-573.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_01C</text>
-<text text-anchor="middle" x="563.5" y="-562.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_028</text>
+<text text-anchor="middle" x="563.5" y="-606.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> offset</text>
+<text text-anchor="middle" x="563.5" y="-595.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">origin_pos</text>
+<text text-anchor="middle" x="563.5" y="-584.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">pos</text>
+<text text-anchor="middle" x="563.5" y="-573.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">sizeScaling</text>
+<text text-anchor="middle" x="563.5" y="-562.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_01C</text>
 <text text-anchor="middle" x="563.5" y="-551.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_034</text>
 <text text-anchor="middle" x="563.5" y="-540.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_044</text>
 <text text-anchor="middle" x="563.5" y="-529.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">velocity</text>
@@ -61,15 +61,15 @@
 </a>
 </g>
 <text text-anchor="middle" x="340" y="-518.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> boundingBoxSize</text>
-<text text-anchor="middle" x="340" y="-507.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">state</text>
-<text text-anchor="middle" x="340" y="-496.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">timer</text>
-<text text-anchor="middle" x="340" y="-485.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">type</text>
-<text text-anchor="middle" x="340" y="-474.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_048</text>
-<text text-anchor="middle" x="340" y="-463.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_04C</text>
-<text text-anchor="middle" x="340" y="-452.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_050</text>
-<text text-anchor="middle" x="340" y="-441.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_054</text>
-<text text-anchor="middle" x="340" y="-430.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_058</text>
-<text text-anchor="middle" x="340" y="-419.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_05C</text>
+<text text-anchor="middle" x="340" y="-507.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">primAlpha</text>
+<text text-anchor="middle" x="340" y="-496.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">state</text>
+<text text-anchor="middle" x="340" y="-485.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">status</text>
+<text text-anchor="middle" x="340" y="-474.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">timer</text>
+<text text-anchor="middle" x="340" y="-463.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">type</text>
+<text text-anchor="middle" x="340" y="-452.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_048</text>
+<text text-anchor="middle" x="340" y="-441.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_04C</text>
+<text text-anchor="middle" x="340" y="-430.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_050</text>
+<text text-anchor="middle" x="340" y="-419.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_058</text>
 <text text-anchor="middle" x="340" y="-408.56" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">...</text>
 </g>
 <!-- Node8 -->

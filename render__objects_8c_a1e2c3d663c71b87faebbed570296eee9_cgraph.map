@@ -1,0 +1,57 @@
+<map id="render_object_snowmans" name="render_object_snowmans">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,149,193,175"/>
+<area shape="rect" id="Node000002" href="$render__objects_8c.html#ad12d0f435aa679cb908afb15b833e545" title=" " alt="" coords="241,174,429,214"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,172,228,177,227,182,193,177"/>
+<area shape="rect" id="Node000021" href="$render__objects_8c.html#aa20fcdc83fc42d62457d11112e5249a7" title=" " alt="" coords="241,110,429,150"/>
+<area shape="poly" id="edge21_Node000001_Node000021" title=" " alt="" coords="193,147,227,142,228,147,194,152"/>
+<area shape="rect" id="Node000003" href="$render__objects_8c.html#ae89cd1d1754673139a38e26c08235467" title=" " alt="" coords="484,175,635,200"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="430,189,470,187,470,193,430,194"/>
+<area shape="rect" id="Node000011" href="$math__util__2_8c.html#a99d173c040cb4a9d0184df2605d71e32" title=" " alt="" coords="498,224,621,249"/>
+<area shape="poly" id="edge10_Node000002_Node000011" title=" " alt="" coords="430,209,485,220,484,225,429,215"/>
+<area shape="rect" id="Node000014" href="$code__80086E70_8c.html#a364496b44c479b8d7937d98d2283c89e" title=" " alt="" coords="498,309,621,335"/>
+<area shape="poly" id="edge13_Node000002_Node000014" title=" " alt="" coords="373,212,525,300,523,305,370,216"/>
+<area shape="rect" id="Node000020" href="$update__objects_8c.html#ae85ab923e54f707801592c71f2a847cd" title=" " alt="" coords="490,110,629,150"/>
+<area shape="poly" id="edge20_Node000002_Node000020" title=" " alt="" coords="405,171,476,151,477,156,407,176"/>
+<area shape="rect" id="Node000004" href="$render__objects_8c.html#ae26e654f6475a589c21479ac8d294084" title=" " alt="" coords="713,51,889,91"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="615,172,640,160,655,146,663,131,672,116,688,101,699,95,702,99,691,105,676,119,668,134,659,149,643,164,618,177"/>
+<area shape="rect" id="Node000006" href="$math__util__2_8c.html#a2eff0e02deb703653ee3230fbc02eb14" title="set the matrix to a transformation matrix" alt="" coords="689,173,912,199"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="635,184,676,184,676,189,635,190"/>
+<area shape="rect" id="Node000005" href="$render__objects_8c.html#a8a3e9d3da5a6ac97b84b553fdc5d7d59" title=" " alt="" coords="1012,5,1143,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="888,52,998,31,999,36,889,57"/>
+<area shape="rect" id="Node000007" href="$render__player_8c.html#af0bbe78d8dc64400663d3702812f9ad8" title=" " alt="" coords="993,109,1162,149"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="862,171,978,146,980,152,863,176"/>
+<area shape="rect" id="Node000008" href="$math__util__2_8c.html#a88742c6110738fc1c35a57f50920a81f" title=" " alt="" coords="960,173,1195,199"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="912,183,946,183,946,189,912,189"/>
+<area shape="rect" id="Node000009" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="1251,76,1301,101"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="1161,171,1193,158,1226,136,1253,110,1257,114,1230,140,1196,163,1163,176"/>
+<area shape="rect" id="Node000010" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="1252,157,1300,183"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="1195,174,1238,170,1239,176,1195,179"/>
+<area shape="rect" id="Node000012" href="$math__util_8c.html#aaa39a297477f56051975259f4bddd829" title=" " alt="" coords="1243,295,1309,320"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="621,237,912,259,1088,279,1229,298,1229,303,1087,285,912,265,621,243"/>
+<area shape="rect" id="Node000013" href="$math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9" title=" " alt="" coords="1357,295,1467,320"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="1310,305,1343,305,1343,310,1310,310"/>
+<area shape="rect" id="Node000015" href="$code__80086E70_8c.html#abee4ac0bf830479754bf7a3054719714" title="Returns the distance between the object and the camera." alt="" coords="712,389,889,429"/>
+<area shape="poly" id="edge14_Node000014_Node000015" title=" " alt="" coords="589,332,690,374,713,382,712,387,688,379,587,337"/>
+<area shape="rect" id="Node000016" href="$code__80086E70_8c.html#abe4dd4c208100b3bca1036d0a14074f2" title=" " alt="" coords="724,453,877,493"/>
+<area shape="poly" id="edge15_Node000014_Node000016" title=" " alt="" coords="573,333,620,384,654,413,691,438,712,449,710,453,688,443,650,417,617,388,569,337"/>
+<area shape="rect" id="Node000018" href="$update__objects_8c.html#ad33541b9fed7857e59b2d745298f2d44" title=" " alt="" coords="717,274,884,314"/>
+<area shape="poly" id="edge18_Node000014_Node000018" title=" " alt="" coords="621,312,703,303,704,308,621,318"/>
+<area shape="rect" id="Node000019" href="$update__objects_8c.html#a00a4e96fc9576ef2552de1c51cf2aa7c" title=" " alt="" coords="701,339,901,364"/>
+<area shape="poly" id="edge19_Node000014_Node000019" title=" " alt="" coords="621,327,688,335,687,340,621,332"/>
+<area shape="rect" id="Node000017" href="$math__util__2_8c.html#a13e56d0f66165ef2bfef5122f7de73b6" title=" " alt="" coords="991,367,1163,392"/>
+<area shape="poly" id="edge16_Node000016_Node000017" title=" " alt="" coords="873,450,911,438,1031,395,1032,400,913,443,875,455"/>
+<area shape="poly" id="edge17_Node000017_Node000012" title=" " alt="" coords="1112,364,1229,321,1230,326,1114,369"/>
+<area shape="poly" id="edge22_Node000021_Node000011" title=" " alt="" coords="408,148,431,160,446,173,455,186,464,198,479,210,490,216,488,221,476,215,460,202,451,189,442,177,428,164,405,152"/>
+<area shape="poly" id="edge23_Node000021_Node000014" title=" " alt="" coords="414,148,431,160,450,185,458,209,464,234,479,260,501,282,525,300,522,304,498,286,475,264,459,236,453,211,446,187,427,164,411,152"/>
+<area shape="poly" id="edge24_Node000021_Node000020" title=" " alt="" coords="430,127,476,127,476,133,430,133"/>
+<area shape="rect" id="Node000022" href="$render__objects_8c.html#a1997892d9b0912660a6d9f51422e9bb8" title=" " alt="" coords="477,5,641,31"/>
+<area shape="poly" id="edge25_Node000021_Node000022" title=" " alt="" coords="371,108,476,52,514,34,517,39,479,56,373,112"/>
+<area shape="rect" id="Node000023" href="$math__util__2_8c.html#aca064a66dc29c36e1db7b79a6b679e25" title=" " alt="" coords="701,116,900,141"/>
+<area shape="poly" id="edge27_Node000021_Node000023" title=" " alt="" coords="410,107,477,95,559,90,642,95,735,111,734,116,641,101,559,95,478,101,411,113"/>
+<area shape="poly" id="edge26_Node000022_Node000005" title=" " alt="" coords="642,15,998,15,998,21,642,21"/>
+<area shape="poly" id="edge28_Node000023_Node000007" title=" " alt="" coords="900,126,979,126,979,131,900,131"/>
+<area shape="rect" id="Node000024" href="$math__util__2_8c.html#ab532579cd51233e25a8f3f9ea21fb25c" title="Tried to put the definitions in the declares. However, sp3C wants to be at the top...." alt="" coords="972,59,1183,84"/>
+<area shape="poly" id="edge29_Node000023_Node000024" title=" " alt="" coords="862,113,1002,84,1003,89,863,119"/>
+<area shape="poly" id="edge30_Node000024_Node000009" title=" " alt="" coords="1183,78,1238,83,1237,88,1183,83"/>
+<area shape="poly" id="edge31_Node000024_Node000010" title=" " alt="" coords="1163,82,1196,94,1230,118,1257,145,1253,148,1226,122,1193,99,1161,86"/>
+</map>

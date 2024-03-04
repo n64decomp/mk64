@@ -34,11 +34,11 @@
 <polygon fill="#9a32cd" stroke="#9a32cd" points="81.63,-771.1 71.19,-772.94 80.5,-778.01 81.63,-771.1"/>
 </a>
 </g>
-<text text-anchor="middle" x="179" y="-858.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> origin_pos</text>
-<text text-anchor="middle" x="179" y="-847.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">pos</text>
-<text text-anchor="middle" x="179" y="-836.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">sizeScaling</text>
-<text text-anchor="middle" x="179" y="-825.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_01C</text>
-<text text-anchor="middle" x="179" y="-814.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_028</text>
+<text text-anchor="middle" x="179" y="-858.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> offset</text>
+<text text-anchor="middle" x="179" y="-847.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">origin_pos</text>
+<text text-anchor="middle" x="179" y="-836.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">pos</text>
+<text text-anchor="middle" x="179" y="-825.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">sizeScaling</text>
+<text text-anchor="middle" x="179" y="-814.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_01C</text>
 <text text-anchor="middle" x="179" y="-803.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_034</text>
 <text text-anchor="middle" x="179" y="-792.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_044</text>
 <text text-anchor="middle" x="179" y="-781.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">velocity</text>
@@ -60,10 +60,10 @@
 <polygon fill="#9a32cd" stroke="#9a32cd" points="94.58,-676.46 84.64,-680.13 94.7,-683.46 94.58,-676.46"/>
 </a>
 </g>
-<text text-anchor="middle" x="179" y="-736.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk_048</text>
-<text text-anchor="middle" x="179" y="-725.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_04C</text>
-<text text-anchor="middle" x="179" y="-714.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_050</text>
-<text text-anchor="middle" x="179" y="-703.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_054</text>
+<text text-anchor="middle" x="179" y="-736.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> status</text>
+<text text-anchor="middle" x="179" y="-725.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_048</text>
+<text text-anchor="middle" x="179" y="-714.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_04C</text>
+<text text-anchor="middle" x="179" y="-703.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_050</text>
 <text text-anchor="middle" x="179" y="-692.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_058</text>
 <text text-anchor="middle" x="179" y="-681.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_05C</text>
 </g>
@@ -202,10 +202,10 @@
 </g>
 <text text-anchor="middle" x="179" y="-253.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> currentItem</text>
 <text text-anchor="middle" x="179" y="-242.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">itemDisplayState</text>
-<text text-anchor="middle" x="179" y="-231.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_084</text>
-<text text-anchor="middle" x="179" y="-220.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_09C</text>
-<text text-anchor="middle" x="179" y="-209.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_09E</text>
-<text text-anchor="middle" x="179" y="-198.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0A0</text>
+<text text-anchor="middle" x="179" y="-231.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">primAlpha</text>
+<text text-anchor="middle" x="179" y="-220.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_084</text>
+<text text-anchor="middle" x="179" y="-209.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_09C</text>
+<text text-anchor="middle" x="179" y="-198.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_09E</text>
 <text text-anchor="middle" x="179" y="-187.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0A2</text>
 <text text-anchor="middle" x="179" y="-176.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0A8</text>
 <text text-anchor="middle" x="179" y="-165.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0AA</text>

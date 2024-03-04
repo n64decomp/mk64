@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['paddlewheelboat_0',['PaddleWheelBoat',['../structPaddleWheelBoat.html',1,'']]],
-  ['paddlewheelboatstuff_1',['PaddleWheelBoatStuff',['../structPaddleWheelBoatStuff.html',1,'']]],
+  ['paddleboatstuff_0',['PaddleBoatStuff',['../structPaddleBoatStuff.html',1,'']]],
+  ['paddlewheelboat_1',['PaddleWheelBoat',['../structPaddleWheelBoat.html',1,'']]],
   ['palmtree_2',['PalmTree',['../structPalmTree.html',1,'']]],
   ['pathnoy_3',['PathNoY',['../structPathNoY.html',1,'']]],
   ['persistentpool_4',['PersistentPool',['../structPersistentPool.html',1,'']]],

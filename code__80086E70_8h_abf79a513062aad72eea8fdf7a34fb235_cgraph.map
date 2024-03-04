@@ -1,19 +1,19 @@
 <map id="func_80089820" name="func_80089820">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,161,127,187"/>
-<area shape="rect" id="Node000002" href="$code__80071F00_8c.html#ae57757eefbb9b9d12420ed66ad408175" title=" " alt="" coords="207,5,329,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,160,109,102,138,68,173,40,193,30,196,34,176,44,142,72,114,105,76,163"/>
-<area shape="rect" id="Node000003" href="$code__80086E70_8c.html#a89d2ee49e7cccb69972483f2f8dcb214" title=" " alt="" coords="207,55,329,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="79,159,119,124,173,89,193,81,195,86,176,94,122,128,82,163"/>
-<area shape="rect" id="Node000004" href="$external_8c.html#a2be9efc97a92e19d02aaee90d676acc1" title=" " alt="" coords="207,104,329,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="109,159,174,139,206,130,208,135,175,145,110,164"/>
-<area shape="rect" id="Node000006" href="$code__80086E70_8c.html#a3c54cb4036c93218b440fc6eb1cf88a9" title="Returns if the object collided with the player." alt="" coords="175,154,361,194"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="127,171,161,171,161,177,127,177"/>
-<area shape="rect" id="Node000007" href="$code__80071F00_8c.html#a5d62494ea345d5a576d4440772111136" title=" " alt="" coords="185,218,351,258"/>
-<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="108,184,192,211,190,216,106,189"/>
-<area shape="rect" id="Node000008" href="$code__80071F00_8c.html#a9d0d6fe8e02dc86bf4f9f8c8214ee326" title=" " alt="" coords="193,282,343,322"/>
-<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="81,185,120,225,147,248,176,268,188,274,185,279,173,272,144,252,117,229,77,189"/>
-<area shape="rect" id="Node000009" href="$code__80071F00_8c.html#a946b33c1ed166b19b04e4528c3641b9a" title=" " alt="" coords="193,346,343,386"/>
-<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="75,186,111,255,140,296,176,332,184,337,181,341,173,336,136,300,106,258,70,188"/>
-<area shape="rect" id="Node000005" href="$external_8c.html#a4227847f3da303aee53cf69d2760a595" title=" " alt="" coords="409,104,505,129"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="329,114,396,114,396,119,329,119"/>
+<area shape="rect" id="Node000002" href="$update__objects_8c.html#ae57757eefbb9b9d12420ed66ad408175" title=" " alt="" coords="214,5,335,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="72,160,109,102,138,68,173,40,199,27,202,32,176,44,142,72,113,105,76,163"/>
+<area shape="rect" id="Node000003" href="$code__80086E70_8c.html#a89d2ee49e7cccb69972483f2f8dcb214" title=" " alt="" coords="213,55,336,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="78,159,119,124,173,89,199,79,201,84,176,94,122,128,82,163"/>
+<area shape="rect" id="Node000004" href="$external_8c.html#a2be9efc97a92e19d02aaee90d676acc1" title=" " alt="" coords="213,104,336,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="108,159,174,139,208,130,210,135,175,145,109,164"/>
+<area shape="rect" id="Node000006" href="$code__80086E70_8c.html#a3c54cb4036c93218b440fc6eb1cf88a9" title="Returns if the object collided with the player." alt="" coords="181,154,368,194"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="127,171,168,171,168,177,127,177"/>
+<area shape="rect" id="Node000007" href="$update__objects_8c.html#ae85ab923e54f707801592c71f2a847cd" title=" " alt="" coords="205,218,344,258"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="109,184,197,211,195,216,108,189"/>
+<area shape="rect" id="Node000008" href="$update__objects_8c.html#ad33541b9fed7857e59b2d745298f2d44" title=" " alt="" coords="191,282,358,322"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="80,185,120,226,147,248,176,268,188,274,186,279,173,272,144,252,117,230,77,189"/>
+<area shape="rect" id="Node000009" href="$update__objects_8c.html#a00a4e96fc9576ef2552de1c51cf2aa7c" title=" " alt="" coords="175,347,375,372"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="75,186,88,216,109,256,139,297,176,332,188,339,185,344,173,336,135,300,105,258,83,218,70,188"/>
+<area shape="rect" id="Node000005" href="$external_8c.html#a4227847f3da303aee53cf69d2760a595" title=" " alt="" coords="423,104,519,129"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="336,114,408,114,408,119,336,119"/>
 </map>

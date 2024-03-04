@@ -1,9 +1,9 @@
 <map id="src/ending/ceremony_data.inc.h" name="src/ending/ceremony_data.inc.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="187,5,345,45"/>
-<area shape="rect" id="Node000002" href="$code__80071F00_8c.html" title=" " alt="" coords="5,101,164,126"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,54,110,103,108,98,213,49"/>
-<area shape="rect" id="Node000003" href="$path__spawn__data_8c.html" title=" " alt="" coords="188,93,344,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="269,59,269,93,263,93,263,59"/>
-<area shape="rect" id="Node000004" href="$ceremony__data_8inc_8c.html" title=" " alt="" coords="368,93,527,133"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="319,49,409,91,406,96,317,54"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="185,5,344,45"/>
+<area shape="rect" id="Node000002" href="$path__spawn__data_8c.html" title=" " alt="" coords="5,93,161,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,54,124,96,122,91,212,49"/>
+<area shape="rect" id="Node000003" href="$ceremony__data_8inc_8c.html" title=" " alt="" coords="185,93,344,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="267,59,267,93,262,93,262,59"/>
+<area shape="rect" id="Node000004" href="$update__objects_8c.html" title=" " alt="" coords="369,101,523,126"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="318,49,423,98,421,103,316,54"/>
 </map>

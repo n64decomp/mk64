@@ -43,5 +43,6 @@ var searchData=
   ['vi_5fx_5fscale_5freg_40',['VI_X_SCALE_REG',['../hardware_8h.html#a6ddd799f7135fd0d9195166d8d04f6ed',1,'VI_X_SCALE_REG:&#160;hardware.h'],['../rcp_8h.html#a6ddd799f7135fd0d9195166d8d04f6ed',1,'VI_X_SCALE_REG:&#160;rcp.h']]],
   ['vi_5fy_5fscale_5freg_41',['VI_Y_SCALE_REG',['../hardware_8h.html#a38ee0ea45ba06bb669cdbd889a7672cc',1,'VI_Y_SCALE_REG:&#160;hardware.h'],['../rcp_8h.html#a38ee0ea45ba06bb669cdbd889a7672cc',1,'VI_Y_SCALE_REG:&#160;rcp.h']]],
   ['virtual_5fto_5fphysical_42',['VIRTUAL_TO_PHYSICAL',['../macros_8h.html#af0a1d439c0dd0d6ceb64be64f1650bbc',1,'macros.h']]],
-  ['virtual_5fto_5fphysical2_43',['VIRTUAL_TO_PHYSICAL2',['../macros_8h.html#ac33bc9457f1c1be3f60fcf54fab88ee7',1,'macros.h']]]
+  ['virtual_5fto_5fphysical2_43',['VIRTUAL_TO_PHYSICAL2',['../macros_8h.html#ac33bc9457f1c1be3f60fcf54fab88ee7',1,'macros.h']]],
+  ['visible_44',['VISIBLE',['../objects_8h.html#aff75e2cc4508bdd299a60047eda5888e',1,'objects.h']]]
 ];

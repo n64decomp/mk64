@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="code__80071F00_8c.html#ae57757eefbb9b9d12420ed66ad408175" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="update__objects_8c.html#ae57757eefbb9b9d12420ed66ad408175" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="242.5,-115.5 151.5,-115.5 151.5,-96.5 242.5,-96.5 242.5,-115.5"/>
 <text text-anchor="middle" x="197" y="-103.5" font-family="Helvetica,sans-Serif" font-size="10.00">func_80072180</text>
 </a>
@@ -57,10 +57,10 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="code__80071F00_8c.html#a5d62494ea345d5a576d4440772111136" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="259,-30 135,-30 135,0 259,0 259,-30"/>
-<text text-anchor="start" x="143" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">is_obj_index_flag_unk</text>
-<text text-anchor="middle" x="197" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">_054_active</text>
+<g id="a_Node000004"><a xlink:href="update__objects_8c.html#ae85ab923e54f707801592c71f2a847cd" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="249,-30 145,-30 145,0 249,0 249,-30"/>
+<text text-anchor="start" x="153" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">is_obj_flag_status</text>
+<text text-anchor="middle" x="197" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">_active</text>
 </a>
 </g>
 </g>

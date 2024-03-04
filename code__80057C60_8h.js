@@ -1,4 +1,13 @@
 var code__80057C60_8h =
 [
-    [ "struct_D_8018CE10", "structstruct__D__8018CE10.html", "structstruct__D__8018CE10" ]
+    [ "struct_D_8018CE10", "structstruct__D__8018CE10.html", "structstruct__D__8018CE10" ],
+    [ "RENDER_SCREEN_MODE_1P_PLAYER_ONE", "code__80057C60_8h.html#ac063eb184ca34d29c1f02880e6fe194d", null ],
+    [ "RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE", "code__80057C60_8h.html#a70c79416062af8ad412d1a99a0107764", null ],
+    [ "RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO", "code__80057C60_8h.html#a652a72188686271833ad0e1c0cd1d6e7", null ],
+    [ "RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE", "code__80057C60_8h.html#a23a107af671f6f1fef93b09cb8a5fbed", null ],
+    [ "RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO", "code__80057C60_8h.html#a1b7a4c424a260f4e1d6c974e5a0b7142", null ],
+    [ "RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR", "code__80057C60_8h.html#a81cffb21b9c92bc5835021f72825d691", null ],
+    [ "RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE", "code__80057C60_8h.html#a5cb321481d4c2d4f2c722d85667cf3f5", null ],
+    [ "RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE", "code__80057C60_8h.html#a5e23b3e219e51cec59d8a8fdb34f8747", null ],
+    [ "RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO", "code__80057C60_8h.html#a1781fa8494c26519dc213f23fc0c6e53", null ]
 ];

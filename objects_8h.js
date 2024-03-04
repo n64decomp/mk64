@@ -38,6 +38,7 @@ var objects_8h =
     [ "NUM_YV_FLAG_POLES", "objects_8h.html#abacb93f7d2283190e380097bca4ecc31", null ],
     [ "OBJECT_LIST_SIZE", "objects_8h.html#af7ef5aaeef379ad60dbcd28caaa320ea", null ],
     [ "SOME_OBJECT_INDEX_LIST_SIZE", "objects_8h.html#af63656ae6040e4380cf20939128e9efb", null ],
+    [ "VISIBLE", "objects_8h.html#aff75e2cc4508bdd299a60047eda5888e", null ],
     [ "D_800E5740", "objects_8h.html#a786764b3c763cfbc69d10f381fb03d65", null ],
     [ "D_800E579C", "objects_8h.html#a0ab89bd423e1e6f866245bc1be8b4561", null ],
     [ "D_800E57F8", "objects_8h.html#ab92a33f74c91826a23b7a8a072db2901", null ],

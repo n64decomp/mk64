@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['y_0',['Y',['../structuObjMtx__t.html#a77cba098affd2443453774614aecc253',1,'uObjMtx_t::Y'],['../structuObjSubMtx__t.html#acaddc66617be3440fa68c567fd41e1b8',1,'uObjSubMtx_t::Y']]],
-  ['y_1',['y',['../structUnkStruct__8018E7E8.html#abf41ca30a4f528282f2330a58c29b03b',1,'UnkStruct_8018E7E8::y'],['../structVec3fs.html#ae5aabac0675c3e62a55ebd37e819380f',1,'Vec3fs::y']]],
+  ['y_0',['y',['../structUnkStruct__8018E7E8.html#abf41ca30a4f528282f2330a58c29b03b',1,'UnkStruct_8018E7E8::y'],['../structVec3fs.html#ae5aabac0675c3e62a55ebd37e819380f',1,'Vec3fs::y']]],
+  ['y_1',['Y',['../structuObjMtx__t.html#a77cba098affd2443453774614aecc253',1,'uObjMtx_t::Y'],['../structuObjSubMtx__t.html#acaddc66617be3440fa68c567fd41e1b8',1,'uObjSubMtx_t::Y']]],
   ['y_20coordinate_2',['Horizontal Paths (no Y coordinate)',['../paths.html#horizontal-paths-no-y-coordinate',1,'']]],
   ['yoshi_3',['YOSHI',['../defines_8h.html#a6a404189274b097f2b1d7d6bde0d490d',1,'defines.h']]],
   ['yoshi_5fsize_4',['YOSHI_SIZE',['../defines_8h.html#a7c821aaafac23cd14652df9992dc2fb5',1,'defines.h']]],

@@ -24,8 +24,6 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "code_80057C60_var.c", "code__80057C60__var_8c.html", "code__80057C60__var_8c" ],
     [ "code_8006E9C0.c", "code__8006E9C0_8c.html", "code__8006E9C0_8c" ],
     [ "code_8006E9C0.h", "code__8006E9C0_8h.html", "code__8006E9C0_8h" ],
-    [ "code_80071F00.c", "code__80071F00_8c.html", "code__80071F00_8c" ],
-    [ "code_80071F00.h", "code__80071F00_8h.html", null ],
     [ "code_80086E70.c", "code__80086E70_8c.html", "code__80086E70_8c" ],
     [ "code_80086E70.h", "code__80086E70_8h.html", "code__80086E70_8h" ],
     [ "code_80091440.c", "code__80091440_8c.html", "code__80091440_8c" ],
@@ -41,8 +39,6 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "effects.c", "effects_8c.html", "effects_8c" ],
     [ "effects.h", "effects_8h.html", "effects_8h" ],
     [ "gbiMacro.c", "gbiMacro_8c.html", "gbiMacro_8c" ],
-    [ "hud_renderer.c", "hud__renderer_8c.html", "hud__renderer_8c" ],
-    [ "hud_renderer.h", "hud__renderer_8h.html", "hud__renderer_8h" ],
     [ "kart_dma.c", "kart__dma_8c.html", "kart__dma_8c" ],
     [ "kart_dma.h", "kart__dma_8h.html", "kart__dma_8h" ],
     [ "main.c", "main_8c.html", "main_8c" ],
@@ -55,6 +51,8 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "player_controller.h", "player__controller_8h.html", "player__controller_8h" ],
     [ "profiler.c", "profiler_8c.html", "profiler_8c" ],
     [ "profiler.h", "profiler_8h.html", "profiler_8h" ],
+    [ "render_objects.c", "render__objects_8c.html", "render__objects_8c" ],
+    [ "render_objects.h", "render__objects_8h.html", "render__objects_8h" ],
     [ "render_player.c", "render__player_8c.html", "render__player_8c" ],
     [ "render_player.h", "render__player_8h.html", "render__player_8h" ],
     [ "save.c", "save_8c.html", "save_8c" ],
@@ -63,5 +61,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "spawn_players.h", "spawn__players_8h.html", null ],
     [ "staff_ghosts.c", "staff__ghosts_8c.html", "staff__ghosts_8c" ],
     [ "staff_ghosts.h", "staff__ghosts_8h.html", "staff__ghosts_8h" ],
-    [ "textures.h", "textures_8h.html", "textures_8h" ]
+    [ "textures.h", "textures_8h.html", "textures_8h" ],
+    [ "update_objects.c", "update__objects_8c.html", "update__objects_8c" ],
+    [ "update_objects.h", "update__objects_8h.html", null ]
 ];

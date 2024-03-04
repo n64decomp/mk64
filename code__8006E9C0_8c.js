@@ -17,12 +17,12 @@ var code__8006E9C0_8c =
     [ "func_8007055C", "code__8006E9C0_8c.html#afef0314f6f435d008ed32c2aa1e2fed0", null ],
     [ "func_80070714", "code__8006E9C0_8c.html#a34850e00e534f9bea4ee89568c0484e8", null ],
     [ "init_course_object", "code__8006E9C0_8c.html#a95bd792f4507dd26cf251c980bd9214b", null ],
+    [ "init_hud", "code__8006E9C0_8c.html#a47667a5a47fd4ca740865e963ce795c9", null ],
     [ "init_hud_one_player", "code__8006E9C0_8c.html#a9b35328c0ffddc0723de4730c5e41431", null ],
     [ "init_hud_three_four_player", "code__8006E9C0_8c.html#a36e7c29e21274b76d24f7c8864af5c3b", null ],
     [ "init_hud_two_player_horizontal", "code__8006E9C0_8c.html#ae0bbfee0194d6a21ab9c2133af28ae16", null ],
     [ "init_hud_two_player_vertical", "code__8006E9C0_8c.html#aa98fba14045af26e5c13a6a72442b8be", null ],
     [ "init_item_window", "code__8006E9C0_8c.html#a7fd371a62513a311ab8903e23511dc9b", null ],
-    [ "init_object_list", "code__8006E9C0_8c.html#a5def87b038bc54365398158abfa0bbfb", null ],
     [ "init_object_list_index", "code__8006E9C0_8c.html#ac9869b321dfbda91715daf48a65b2075", null ],
     [ "reset_object_variable", "code__8006E9C0_8c.html#a90b6f11f43c81c8c033805cfddb8fc89", null ]
 ];

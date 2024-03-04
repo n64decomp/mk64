@@ -4,11 +4,11 @@ var podium__ceremony__actors_8h =
     [ "ActorInitParams", "structActorInitParams.html", "structActorInitParams" ],
     [ "CeremonyActor", "structCeremonyActor.html", "structCeremonyActor" ],
     [ "Firework", "structFirework.html", "structFirework" ],
-    [ "ActorType", "podium__ceremony__actors_8h.html#a06ad3f803827afd107e7682c8c22d990", [
-      [ "Initial", "podium__ceremony__actors_8h.html#a06ad3f803827afd107e7682c8c22d990a3392b59c8aa0ec56670fbcd5638cbfde", null ],
-      [ "Balloon", "podium__ceremony__actors_8h.html#a06ad3f803827afd107e7682c8c22d990a89c90112ee446ec0618ac4c7b7e7c738", null ],
-      [ "FireworkCone", "podium__ceremony__actors_8h.html#a06ad3f803827afd107e7682c8c22d990ab8ae9bb6efd7bf172d15949c6c0cc897", null ],
-      [ "FireworkBurst", "podium__ceremony__actors_8h.html#a06ad3f803827afd107e7682c8c22d990acd6298014fbb57273242cd3aeefed514", null ]
+    [ "CeremonyActorType", "podium__ceremony__actors_8h.html#a698a9866415b2f1874f87d9dfc960c67", [
+      [ "Initial", "podium__ceremony__actors_8h.html#a698a9866415b2f1874f87d9dfc960c67a3392b59c8aa0ec56670fbcd5638cbfde", null ],
+      [ "Balloon", "podium__ceremony__actors_8h.html#a698a9866415b2f1874f87d9dfc960c67a89c90112ee446ec0618ac4c7b7e7c738", null ],
+      [ "FireworkCone", "podium__ceremony__actors_8h.html#a698a9866415b2f1874f87d9dfc960c67ab8ae9bb6efd7bf172d15949c6c0cc897", null ],
+      [ "FireworkBurst", "podium__ceremony__actors_8h.html#a698a9866415b2f1874f87d9dfc960c67acd6298014fbb57273242cd3aeefed514", null ]
     ] ],
     [ "balloons_and_fireworks_init", "podium__ceremony__actors_8h.html#a627072a12cb9f239d1e7b629161b4b45", null ],
     [ "find_available_entry", "podium__ceremony__actors_8h.html#a7af822e673ca2eb51ebe9d4a10d6d86b", null ],

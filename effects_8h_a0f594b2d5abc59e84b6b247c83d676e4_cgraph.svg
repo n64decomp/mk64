@@ -30,7 +30,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="hud__renderer_8c.html#a48c37261398c106dd6b80a4c2ea27499" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="render__objects_8c.html#a54afab0f30f5eedf8312200c0dfbcc0e" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="222,-19 130,-19 130,0 222,0 222,-19"/>
 <text text-anchor="middle" x="176" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">func_80056A40</text>
 </a>
@@ -48,7 +48,7 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="code__80071F00_8c.html#abdebd086b5ff081f83af3d9205f39cd3" target="_top" xlink:title=" ">
+<g id="a_Node000003"><a xlink:href="update__objects_8c.html#abdebd086b5ff081f83af3d9205f39cd3" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="326,-19 258,-19 258,0 326,0 326,-19"/>
 <text text-anchor="middle" x="292" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">init_object</text>
 </a>
@@ -66,7 +66,7 @@
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="code__80071F00_8c.html#a4b4f00a7df0f9bc44914cd922c3cd51b" target="_top" xlink:title=" ">
+<g id="a_Node000004"><a xlink:href="update__objects_8c.html#a4b4f00a7df0f9bc44914cd922c3cd51b" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="477,-19 362,-19 362,0 477,0 477,-19"/>
 <text text-anchor="middle" x="419.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">set_object_unk_0CB</text>
 </a>

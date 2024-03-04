@@ -210,9 +210,9 @@ var sectionId = 'dynsection-9';
 <!-- Node67 -->
 <g id="Node000067" class="node">
 <title>Node67</title>
-<g id="a_Node000067"><a xlink:href="code__8006E9C0_8c.html#a5def87b038bc54365398158abfa0bbfb" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="220,-152 132,-152 132,-133 220,-133 220,-152"/>
-<text text-anchor="middle" x="176" y="-140" font-family="Helvetica,sans-Serif" font-size="10.00">init_object_list</text>
+<g id="a_Node000067"><a xlink:href="code__8006E9C0_8c.html#a47667a5a47fd4ca740865e963ce795c9" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="204,-152 148,-152 148,-133 204,-133 204,-152"/>
+<text text-anchor="middle" x="176" y="-140" font-family="Helvetica,sans-Serif" font-size="10.00">init_hud</text>
 </a>
 </g>
 </g>
@@ -926,8 +926,8 @@ var sectionId = 'dynsection-9';
 <g id="edge51_Node000067_Node000102" class="edge">
 <title>Node67&#45;&gt;Node102</title>
 <g id="a_edge51_Node000067_Node000102"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M220.26,-147.91C237.9,-150.11 258.69,-152.71 278.2,-155.15"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="277.9,-158.64 288.25,-156.41 278.76,-151.69 277.9,-158.64"/>
+<path fill="none" stroke="#63b8ff" d="M204.37,-145.92C224.39,-148.42 252.46,-151.93 278.26,-155.16"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="278.03,-158.66 288.39,-156.42 278.9,-151.71 278.03,-158.66"/>
 </a>
 </g>
 </g>
@@ -944,8 +944,8 @@ var sectionId = 'dynsection-9';
 <g id="edge52_Node000067_Node000103" class="edge">
 <title>Node67&#45;&gt;Node103</title>
 <g id="a_edge52_Node000067_Node000103"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M220.26,-136.83C236.83,-134.66 256.19,-132.13 274.65,-129.71"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="275.33,-133.15 284.79,-128.38 274.42,-126.21 275.33,-133.15"/>
+<path fill="none" stroke="#63b8ff" d="M204.37,-138.92C223.49,-136.41 249.94,-132.95 274.75,-129.7"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="275.42,-133.14 284.88,-128.37 274.51,-126.2 275.42,-133.14"/>
 </a>
 </g>
 </g>

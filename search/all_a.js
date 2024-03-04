@@ -61,9 +61,9 @@ var searchData=
   ['hegdehogspawn_58',['HegdehogSpawn',['../structHegdehogSpawn.html',1,'']]],
   ['height_59',['height',['../structMkTexture.html#a44c5e3d94124f429abe927eb8baa022a',1,'MkTexture::height'],['../structmk64__surface__map__ram.html#af5f37238b85b56afb888488792e461eb',1,'mk64_surface_map_ram::height']]],
   ['height2_60',['height2',['../structmk64__surface__map__ram.html#a435d3b5b1b2dcd3a0d6679f4cd9230b5',1,'mk64_surface_map_ram']]],
-  ['held_5fbanana_61',['HELD_BANANA',['../actor__types_8h.html#a8f688b18df1ff7bd49e1349827c95ef3',1,'actor_types.h']]],
+  ['held_5fbanana_61',['HELD_BANANA',['../actor__types_8h.html#ac1412f2ed50826478acf5d826cb0e4bca9c93e2cf1f7b12a51a2c6034bea0622d',1,'actor_types.h']]],
   ['held_5ffake_5fitem_5fbox_62',['HELD_FAKE_ITEM_BOX',['../actor__types_8h.html#ae07d85ac7035dc21319b791b430d4246',1,'actor_types.h']]],
-  ['held_5fshell_63',['HELD_SHELL',['../actor__types_8h.html#aac2f1d2a5d0677ebc3c631191b1a023c',1,'actor_types.h']]],
+  ['held_5fshell_63',['HELD_SHELL',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495ba514b7d298fa86789854ef2056f82f7fd',1,'actor_types.h']]],
   ['hi_64',['hi',['../uniondu.html#ac24ce7d9a78b6632965424039e4362c3',1,'du::hi'],['../struct____OSThreadContext.html#a22b3930da4f78d513776547d37123599',1,'__OSThreadContext::hi']]],
   ['highnotessound_65',['highNotesSound',['../structInstrument.html#abbc84184dcd31c9fc2108450d2cff01a',1,'Instrument']]],
   ['hit_5fby_5fitem_5feffect_66',['HIT_BY_ITEM_EFFECT',['../defines_8h.html#a01e33a3b3c84b76ba1db69ff99f1602d',1,'defines.h']]],
@@ -78,7 +78,5 @@ var searchData=
   ['hsync_75',['hSync',['../structOSViCommonRegs.html#a6273a66b0a2c26876d752f7c83a12714',1,'OSViCommonRegs']]],
   ['hud_5fplayer_76',['hud_player',['../structhud__player.html',1,'']]],
   ['hud_5fplayers_5fsize_77',['HUD_PLAYERS_SIZE',['../common__structs_8h.html#ad02ffef6c3b5923607677815162c71a8',1,'common_structs.h']]],
-  ['hud_5frenderer_2ec_78',['hud_renderer.c',['../hud__renderer_8c.html',1,'']]],
-  ['hud_5frenderer_2eh_79',['hud_renderer.h',['../hud__renderer_8h.html',1,'']]],
-  ['hw_5freg_80',['HW_REG',['../hardware_8h.html#a4a3c93b6b0e710a39f1eaba88f74b412',1,'hardware.h']]]
+  ['hw_5freg_78',['HW_REG',['../hardware_8h.html#a4a3c93b6b0e710a39f1eaba88f74b412',1,'hardware.h']]]
 ];

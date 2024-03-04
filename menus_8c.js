@@ -8,7 +8,7 @@ var menus_8c =
     [ "func_800B3F74", "menus_8c.html#a7e237b5fa61d543f8aedfd821d4aa48b", null ],
     [ "func_800B44AC", "menus_8c.html#a1ac3b3bddfd5cdbc1bbbbb79fdceebf9", null ],
     [ "func_800B44BC", "menus_8c.html#a6a7fe841b2312b5d5bfb88939ef86df9", null ],
-    [ "func_800B4520", "menus_8c.html#a14ab660d89fba15b26612b62c5baca99", null ],
+    [ "func_800B4520", "menus_8c.html#aedd5438c1d912ced575b7f6255444285", null ],
     [ "func_800B4560", "menus_8c.html#a435e357e2be690dd693adf08e30442aa", null ],
     [ "is_character_spot_free", "menus_8c.html#a4b11994b1b802cd7af3ade61dac14ca5", null ],
     [ "logo_intro_menu_act", "menus_8c.html#a2624e9b264715a18c2bb23c5c71d5108", null ],
