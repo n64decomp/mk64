@@ -74,7 +74,7 @@ glabel func_8004C6FC
 /* 04D410 8004C810 02003025 */  move  $a2, $s0
 /* 04D414 8004C814 00008812 */  mflo  $s1
 /* 04D418 8004C818 00116880 */  sll   $t5, $s1, 2
-/* 04D41C 8004C81C 0C010F0A */  jal   func_80043C28
+/* 04D41C 8004C81C 0C010F0A */  jal   load_texture_tile_rgba32_nomirror
 /* 04D420 8004C820 01A08825 */   move  $s1, $t5
 /* 04D424 8004C824 240E0001 */  li    $t6, 1
 /* 04D428 8004C828 AFAE0010 */  sw    $t6, 0x10($sp)

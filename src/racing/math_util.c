@@ -78,7 +78,7 @@ f32 func_802B51E8(Vec3f arg0, Vec3f arg1) {
     return (sub_x * sub_x) + (sub_y * sub_y) + sub_z + sub_z;
 }
 
-s32 get_angle_between_points(Vec3f arg0, Vec3f arg1) {
+s32 get_angle_between_two_vectors(Vec3f arg0, Vec3f arg1) {
     f32 temp_v1;
     f32 temp_v2;
     temp_v1 = arg1[0] - arg0[0];
@@ -87,7 +87,7 @@ s32 get_angle_between_points(Vec3f arg0, Vec3f arg1) {
     return atan2s(temp_v1, temp_v2);
 }
 
-// get_angle_between_points
+// get_angle_between_two_vectors
 u32 func_802B5258(Vec3f arg0, Vec3s arg1) {
     f32 temp_v1;
     f32 temp_v2;
@@ -483,7 +483,7 @@ void mtxf_scale(Mat4 mat, f32 coef) {
 }
 
 // look like create a translation and rotation matrix with arg1 position and arg2 rotation
-void func_802B5F74(Mat4 arg0, Vec3f arg1, Vec3s arg2) {
+void mtxf_pos_rotation_xyz(Mat4 out, Vec3f pos, Vec3s orientation) {
     f32 sine1;
     f32 cosine1;
     f32 sine2;
@@ -491,28 +491,28 @@ void func_802B5F74(Mat4 arg0, Vec3f arg1, Vec3s arg2) {
     f32 sine3;
     f32 cosine3;
 
-    sine1   = sins(arg2[0]);
-    cosine1 = coss(arg2[0]);
-    sine2   = sins(arg2[1]);
-    cosine2 = coss(arg2[1]);
-    sine3   = sins(arg2[2]);
-    cosine3 = coss(arg2[2]);
-    arg0[0][0] = (cosine2 * cosine3) + ((sine1 * sine2) * sine3);
-    arg0[1][0] = (-cosine2 * sine3) + ((sine1 * sine2) * cosine3);
-    arg0[2][0] = cosine1 * sine2;
-    arg0[3][0] = arg1[0];
-    arg0[0][1] = cosine1 * sine3;
-    arg0[1][1] = cosine1 * cosine3;
-    arg0[2][1] = -sine1;
-    arg0[3][1] = arg1[1];
-    arg0[0][2] = (-sine2 * cosine3) + ((sine1 * cosine2) * sine3);
-    arg0[1][2] = (sine2 * sine3) + ((sine1 * cosine2) * cosine3);
-    arg0[2][2] = cosine1 * cosine2;
-    arg0[3][2] = arg1[2];
-    arg0[0][3] = 0.0f;
-    arg0[1][3] = 0.0f;
-    arg0[2][3] = 0.0f;
-    arg0[3][3] = 1.0f;
+    sine1   = sins(orientation[0]);
+    cosine1 = coss(orientation[0]);
+    sine2   = sins(orientation[1]);
+    cosine2 = coss(orientation[1]);
+    sine3   = sins(orientation[2]);
+    cosine3 = coss(orientation[2]);
+    out[0][0] = (cosine2 * cosine3) + ((sine1 * sine2) * sine3);
+    out[1][0] = (-cosine2 * sine3) + ((sine1 * sine2) * cosine3);
+    out[2][0] = cosine1 * sine2;
+    out[3][0] = pos[0];
+    out[0][1] = cosine1 * sine3;
+    out[1][1] = cosine1 * cosine3;
+    out[2][1] = -sine1;
+    out[3][1] = pos[1];
+    out[0][2] = (-sine2 * cosine3) + ((sine1 * cosine2) * sine3);
+    out[1][2] = (sine2 * sine3) + ((sine1 * cosine2) * cosine3);
+    out[2][2] = cosine1 * cosine2;
+    out[3][2] = pos[2];
+    out[0][3] = 0.0f;
+    out[1][3] = 0.0f;
+    out[2][3] = 0.0f;
+    out[3][3] = 1.0f;
 }
 
 UNUSED void func_802B60B4(Mat4 arg0, Vec3s arg1, Vec3s arg2) {
@@ -1143,7 +1143,7 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
         return -1.0f;
     }
 
-    angleObject = get_angle_between_points(cameraPos, objectPos);
+    angleObject = get_angle_between_two_vectors(cameraPos, objectPos);
     minus_fov_angle = (orientationY - extended_fov);
     plus_fov_angle = (orientationY + extended_fov);
 

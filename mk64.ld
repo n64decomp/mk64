@@ -57,10 +57,10 @@ SECTIONS
       BUILD_DIR/asm/tkmk00_decode.o(.text);
       BUILD_DIR/src/gbiMacro.o(.text);
       BUILD_DIR/src/math_util_2.o(.text);
-      BUILD_DIR/src/hud_renderer.o(.text);
+      BUILD_DIR/src/render_objects.o(.text);
       BUILD_DIR/src/code_80057C60.o(.text);
       BUILD_DIR/src/code_8006E9C0.o(.text);
-      BUILD_DIR/src/code_80071F00.o(.text);
+      BUILD_DIR/src/update_objects.o(.text);
       BUILD_DIR/src/code_80086E70.o(.text);
       BUILD_DIR/src/effects.o(.text);
       BUILD_DIR/src/code_80091440.o(.text);
@@ -216,7 +216,7 @@ SECTIONS
       BUILD_DIR/src/data/kart_attributes.inc.o(.data);
       BUILD_DIR/src/player_controller.o(.data);
       BUILD_DIR/src/spawn_players.o(.data);
-      BUILD_DIR/src/code_80071F00.o(.data);
+      BUILD_DIR/src/update_objects.o(.data);
       BUILD_DIR/src/data/data_800E45C0.o(.data);
       BUILD_DIR/src/code_80057C60.o(.data);
       BUILD_DIR/src/data/some_data.o(.data);
@@ -264,10 +264,10 @@ SECTIONS
       BUILD_DIR/src/player_controller.o(.rodata);
       BUILD_DIR/src/spawn_players.o(.rodata);
       BUILD_DIR/src/code_8003DC40.o(.rodata);
-      BUILD_DIR/src/hud_renderer.o(.rodata);
+      BUILD_DIR/src/render_objects.o(.rodata);
       BUILD_DIR/src/code_80057C60.o(.rodata);
       BUILD_DIR/src/code_8006E9C0.o(.rodata);
-      BUILD_DIR/src/code_80071F00.o(.rodata);
+      BUILD_DIR/src/update_objects.o(.rodata);
       BUILD_DIR/src/code_80086E70.o(.rodata);
       BUILD_DIR/src/effects.o(.rodata);
       BUILD_DIR/src/code_80091750.jp.o(.rodata);

@@ -16,7 +16,7 @@
 #include "buffers.h"
 #include "waypoints.h"
 #include "player_controller.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
 #include "common_textures.h"
 #include "skybox_and_splitscreen.h"
 #include "spawn_players.h"

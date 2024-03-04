@@ -30,7 +30,7 @@ glabel func_8007C360
 /* 07CFCC 8007C3CC 01403825 */   move  $a3, $t2
 /* 07CFD0 8007C3D0 24050080 */  li    $a1, 128
 /* 07CFD4 8007C3D4 AFA60020 */  sw    $a2, 0x20($sp)
-/* 07CFD8 8007C3D8 0C01C87A */  jal   set_object_flag_unk_054_false
+/* 07CFD8 8007C3D8 0C01C87A */  jal   set_object_flag_status_false
 /* 07CFDC 8007C3DC AFAA001C */   sw    $t2, 0x1c($sp)
 /* 07CFE0 8007C3E0 8FA60020 */  lw    $a2, 0x20($sp)
 /* 07CFE4 8007C3E4 8FA7001C */  lw    $a3, 0x1c($sp)
@@ -38,7 +38,7 @@ glabel func_8007C360
 /* 07CFEC 8007C3EC A0C700D2 */   sb    $a3, 0xd2($a2)
 .L8007C3F0:
 /* 07CFF0 8007C3F0 AFA60020 */  sw    $a2, 0x20($sp)
-/* 07CFF4 8007C3F4 0C01C870 */  jal   set_object_flag_unk_054_true
+/* 07CFF4 8007C3F4 0C01C870 */  jal   set_object_flag_status_true
 /* 07CFF8 8007C3F8 AFA7001C */   sw    $a3, 0x1c($sp)
 /* 07CFFC 8007C3FC 8FA7001C */  lw    $a3, 0x1c($sp)
 /* 07D000 8007C400 8FA60020 */  lw    $a2, 0x20($sp)

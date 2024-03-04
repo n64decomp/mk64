@@ -63,8 +63,8 @@ void func_80280038(void) {
     render_set_position(matrix, 0);
     render_course(D_800DC5EC);
     render_course_actors(D_800DC5EC);
-    func_80058090(0);
-    func_80058538(0);
+    render_object(PLAYER_ONE+SCREEN_MODE_1P);
+    render_player_snow_effect(PLAYER_ONE+SCREEN_MODE_1P);
     transition_sliding_borders();
     func_80281C40();
     init_rdp();
@@ -165,7 +165,7 @@ void load_credits(void) {
     camera->up[2] = 0.0f;
     init_cinematic_camera();
     func_80003040();
-    init_object_list();
+    init_hud();
     func_80093E60();
     func_80092688();
     if (D_800DC5EC) {}

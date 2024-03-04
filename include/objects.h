@@ -13,14 +13,14 @@ typedef struct
     /* 0x04 */ Vec3f pos;
     /* 0x10 */ Vec3f origin_pos;
     /* 0x1C */ Vec3f unk_01C;
-    /* 0x28 */ Vec3f unk_028;
+    /* 0x28 */ Vec3f offset;
     /* 0x34 */ f32 unk_034;
-    /* 0x38 */ Vec3f velocity;
+    /* 0x38 */ Vec3f velocity; // acceleration
     /* 0x44 */ f32 unk_044;
     /* 0x48 */ s32 unk_048;
     /* 0x4C */ s32 unk_04C;
     /* 0x50 */ s32 unk_050;
-    /* 0x54 */ s32 unk_054;
+    /* 0x54 */ s32 status;
     /* 0x58 */ s32 unk_058;
     /* 0x5C */ s32 unk_05C;
     /* 0x60 */ u8 *activeTLUT;
@@ -42,7 +42,7 @@ typedef struct
     /* 0x9A */ u16 unk_09A;
     /* 0x9C */ s16 unk_09C;
     /* 0x9E */ s16 unk_09E;
-    /* 0xA0 */ s16 unk_0A0;
+    /* 0xA0 */ s16 primAlpha;
     /* 0xA2 */ s16 unk_0A2;
     /* 0xA4 */ s16 type;
     /* 0xA6 */ s16 state;
@@ -89,14 +89,14 @@ typedef struct
     /* 0x04 */ Vec3f pos;
     /* 0x10 */ Vec3f origin_pos;
     /* 0x1C */ Vec3f unk_01C;
-    /* 0x28 */ Vec3f unk_028;
+    /* 0x28 */ Vec3f offset;
     /* 0x34 */ f32 unk_034;
     /* 0x38 */ Vec3f velocity;
     /* 0x44 */ f32 unk_044;
     /* 0x48 */ s32 unk_048;
     /* 0x4C */ s32 unk_04C;
     /* 0x50 */ s32 unk_050;
-    /* 0x54 */ s32 unk_054;
+    /* 0x54 */ s32 status;
     /* 0x58 */ s32 unk_058;
     /* 0x5C */ s32 unk_05C;
     /* 0x60 */ u8 *activeTLUT;
@@ -118,7 +118,7 @@ typedef struct
     /* 0x9A */ u16 unk_09A;
     /* 0x9C */ s16 unk_09C;
     /* 0x9E */ s16 unk_09E;
-    /* 0xA0 */ s16 unk_0A0;
+    /* 0xA0 */ s16 primAlpha;
     /* 0xA2 */ s16 unk_0A2;
     /* 0xA4 */ s16 currentItem;
     /* 0xA6 */ s16 itemDisplayState; // Usually a state tracker
@@ -158,6 +158,11 @@ typedef struct
 } ItemWindowObjects; // size = 0xE0
 
 // This are other lists of indices in gObjectList.
+
+/**
+ * @brief Status flags for objects
+ */
+#define VISIBLE 0x00040000
 
 /**
  * Use unknown. An object is reserved and its index is saved to

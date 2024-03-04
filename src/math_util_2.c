@@ -400,8 +400,8 @@ f32 func_80041724(f32 x, f32 z, u16 angle) {
     return (coss(angle) * z) + (sinAngle * x);
 }
 
-s32 func_80041770(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
-    return atan2s(arg1 - arg0, arg3 - arg2);
+s32 get_angle_between_xy(f32 x1, f32 x2, f32 y1, f32 y2) {
+    return atan2s(x2 - x1, y2 - y1);
 }
 
 u16 func_800417B4(u16 angle1, u16 angle2) {
@@ -450,14 +450,14 @@ s32 func_80041924(Collision *arg0, Vec3f arg1) {
     return ret;
 }
 
-s32 func_80041980(Vec3f arg0, Camera *arg1, u16 arg2) {
+bool is_particle_on_screen(Vec3f arg0, Camera *arg1, u16 arg2) {
     u16 temp_t9;
     s32 ret;
 
-    ret = 0;
-    temp_t9 = (func_80041770(arg1->pos[0], arg0[0], arg1->pos[2], arg0[2]) + (arg2 / 2)) - arg1->rot[1];
+    ret = FALSE;
+    temp_t9 = (get_angle_between_xy(arg1->pos[0], arg0[0], arg1->pos[2], arg0[2]) + (arg2 / 2)) - arg1->rot[1];
     if ((temp_t9 >= 0) && (arg2 >= temp_t9)) {
-        ret = 1;
+        ret = TRUE;
     }
     return ret;
 }
@@ -630,7 +630,7 @@ void func_80041D34(void) {
     }
 }
 
-void func_80041EF4(void) {
+void set_matrix_hud_screen(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxOrtho), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 }

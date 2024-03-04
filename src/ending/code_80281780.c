@@ -157,7 +157,7 @@ void load_ceremony_cutscene(void) {
     debug_switch_character_ceremony_cutscene();
     func_802818BC();
     func_8003D080();
-    init_object_list();
+    init_hud();
     func_8001C05C();
     balloons_and_fireworks_init();
     func_802816B8();

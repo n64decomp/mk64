@@ -157,7 +157,7 @@ glabel func_8004F168
 /* 04FFC4 8004F3C4 8FBF002C */   lw    $ra, 0x2c($sp)
 .L8004F3C8:
 /* 04FFC8 8004F3C8 25CED0D8 */  addiu $t6, %lo(common_texture_minimap_progress_dot) # addiu $t6, $t6, -0x2f28
-/* 04FFCC 8004F3CC 0C0130D9 */  jal   func_8004C364
+/* 04FFCC 8004F3CC 0C0130D9 */  jal   draw_hud_2d_texture
 /* 04FFD0 8004F3D0 AFAE0010 */   sw    $t6, 0x10($sp)
 .L8004F3D4:
 /* 04FFD4 8004F3D4 8FBF002C */  lw    $ra, 0x2c($sp)

@@ -9,7 +9,7 @@
 #include "memory.h"
 #include "common_textures.h"
 #include "render_player.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
 #include "podium_ceremony_actors.h"
 #include "camera_junk.h"
 #include "player_controller.h"
@@ -471,7 +471,7 @@ void podium_ceremony_loop(void) {
     func_8005A070();
     if (D_802874D8.unk1C != 0) {
         func_8001C14C();
-        func_800097E0();
+        update_vehicles();
     }
     func_80281D00();
     func_80281540();

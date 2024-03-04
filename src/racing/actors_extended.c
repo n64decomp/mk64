@@ -12,7 +12,7 @@
 #include "actors.h"
 #include "actors_extended.h"
 #include "audio/external.h"
-#include "code_80071F00.h"
+#include "update_objects.h"
 #include "effects.h"
 #include "sounds.h"
 
