@@ -289,13 +289,6 @@ extern Vec3s gHedgehogPatrolPoints[];
  */
 extern s32 indexObjectList2[];
 
-// This struct is used by a lot of different objects
-// Stars, clouds, exahust smoke (I think?)
-typedef struct {
-    Vec3su pos;
-    u16 id;
-} StarSpawn;
-
 #define NUM_BOOS 0xA
 #define NUM_FIRE_BREATHS 4
 
@@ -406,6 +399,22 @@ extern s32 gLeafParticle[];
 
 //! Next free spot in gLeafParticle? Wraps back around to 0 if it gets bigger than gLeafParticle_SIZE
 extern s32 gNextFreeLeafParticle;
+
+// Struct used for clouds and stars
+// See `func_80070328` and `func_80070250` for cloud initialization
+// See `func_800704A0` and `func_800703E0` for star initialization
+typedef struct {
+    // rotY and posY seem relative to the camera.
+    // See `func_800788F8` to see how rotY is used to decide whether and where to display clouds/stars
+    // See `func_80078A44` and `func_800789AC` to see how stars and clouds (respectively) are looped over
+    /* 0x00 */ u16 rotY;
+    /* 0x02 */ u16 posY;
+    // Can be bigger than 100!
+    /* 0x04 */ u16 scalePercent;
+    // There are a couple different cloud shapes, this decides which one is used
+    // For stars, this is always 0 since they don't have multiple textures
+    /* 0x06 */ u16 subType;
+} StarData, CloudData; // size = 0x8
 
 #define D_8018CC80_SIZE 0x64
 

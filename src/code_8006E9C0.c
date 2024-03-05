@@ -22,6 +22,7 @@
 #include "data/other_textures.h"
 #include "render_objects.h"
 #include "code_80091750.h"
+#include "src/data/some_data.h"
 
 void init_hud(void) {
 
@@ -604,30 +605,30 @@ void init_object_list_index(void) {
     }
 }
 
-void func_80070250(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
+void init_cloud_object(s32 objectIndex, s32 arg1, CloudData *arg2) {
     ItemWindowObjects *temp_v0;
 
     init_object(objectIndex, arg1);
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->unk_0D5 = arg2->id;
+    temp_v0->unk_0D5 = arg2->subType;
     temp_v0->currentItem = ITEM_NONE;
-    temp_v0->direction_angle[1] = arg2->pos[0];
-    temp_v0->unk_09E = arg2->pos[1];
-    temp_v0->sizeScaling = (f32) arg2->pos[2] / 100.0;
-    temp_v0->activeTexture = &D_8018D220[arg2->id];
+    temp_v0->direction_angle[1] = arg2->rotY;
+    temp_v0->unk_09E = arg2->posY;
+    temp_v0->sizeScaling = (f32) arg2->scalePercent / 100.0;
+    temp_v0->activeTexture = &D_8018D220[arg2->subType];
     func_80073404(objectIndex, 0x40U, 0x20U, &D_0D005FB0);
     temp_v0->primAlpha = 0x00FF;
 }
 
-void func_80070328(StarSpawn *arg0) {
+void init_clouds(CloudData *cloudList) {
     s32 var_s0 = 0;
-    StarSpawn *test = arg0;
+    CloudData *test = &cloudList[0];
     do {
         if(1) {}
-        func_80070250(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
+        init_cloud_object(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
         var_s0++;
         test++;
-    } while (test->pos[0] != 0xFFFF);
+    } while (test->rotY != 0xFFFF);
     D_8018D1F8 += var_s0;
     D_8018D1F0 = var_s0;
     D_8018D230 = 0;
@@ -642,34 +643,34 @@ void func_80070328(StarSpawn *arg0) {
  * The stars in Wario's Stadium, Toad's Turnpike, and Rainbow Road are not part of the skybox.
  * They are instead objects that seemingly hover in the air around the player
  * They have no true x/y/z position, instead they seem to be kept in a position relative to the
- * player they hang around. There is however an x/y position for where they should be on screen
+ * player they hang around. There is however an y rotation and y position for where they should be on screen
  * when they are visbile (unk_09E[0] and [1]).
  * sizeScaling is some sort of size scaling on the start texture.
  * unk_0A2 is an alpha value, used to make the star twinkle.
 **/
-void func_800703E0(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
+void init_star_object(s32 objectIndex, s32 arg1, StarData *arg2) {
     ItemWindowObjects *temp_v0;
 
     init_object(objectIndex, arg1);
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->unk_0D5 = arg2->id; // No idea, all 0's for stars
+    temp_v0->unk_0D5 = arg2->subType;
     temp_v0->currentItem = ITEM_BANANA;
-    temp_v0->direction_angle[1] = arg2->pos[0]; // No idea
-    temp_v0->unk_09E = arg2->pos[1]; // screen Y position
-    temp_v0->sizeScaling = (f32)arg2->pos[2] / 100.0; // some type of scaling on the texture
+    temp_v0->direction_angle[1] = arg2->rotY;
+    temp_v0->unk_09E = arg2->posY; // screen Y position
+    temp_v0->sizeScaling = (f32) arg2->scalePercent / 100.0; // some type of scaling on the texture
     temp_v0->activeTexture = D_0D0293D8;
     func_80073404(objectIndex, 0x10U, 0x10U, common_vtx_rectangle);
 }
 
-void func_800704A0(StarSpawn *arg0) {
+void init_stars(StarData *starList) {
     s32 var_s0 = 0;
-    StarSpawn *test = arg0;
+    StarData *test = &starList[0];
     do {
         if(1) {}
-        func_800703E0(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
+        init_star_object(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
         var_s0++;
         test++;
-    } while (test->pos[0] != 0xFFFF);
+    } while (test->rotY != 0xFFFF);
     D_8018D1F8 += var_s0;
     D_8018D1F0 = var_s0;
     D_8018D230 = 1;
@@ -681,10 +682,11 @@ void func_8007055C(void) {
 
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
-        func_80070328(&D_800E6C10);
+        // Uses Kalimari Desert's clouds for initialization?
+        init_clouds(gKalimariDesertClouds);
         break;
     case COURSE_YOSHI_VALLEY:
-        func_80070328(&D_800E6AA8);
+        init_clouds(gYoshiValleyMooMooFarmClouds);
         break;
     case COURSE_FRAPPE_SNOWLAND:
         if (gPlayerCount == 1) {
@@ -699,31 +701,31 @@ void func_8007055C(void) {
         D_8018D1F0 = var_s0;
         break;
     case COURSE_KOOPA_BEACH:
-        func_80070328(D_800E6B00);
+        init_clouds(gKoopaTroopaBeachClouds);
         break;
     case COURSE_ROYAL_RACEWAY:
-        func_80070328(D_800E6B38);
+        init_clouds(gRoyalRacewayClouds);
         break;
     case COURSE_LUIGI_RACEWAY:
-        func_80070328(D_800E6A38);
+        init_clouds(gLuigiRacewayClouds);
         break;
     case COURSE_MOO_MOO_FARM:
-        func_80070328(D_800E6AA8);
+        init_clouds(gYoshiValleyMooMooFarmClouds);
         break;
     case COURSE_TOADS_TURNPIKE:
-        func_800704A0(D_800E6C80);
+        init_stars(gToadsTurnpikeRainbowRoadStars);
         break;
     case COURSE_KALAMARI_DESERT:
-        func_80070328(D_800E6C10);
+        init_clouds(gKalimariDesertClouds);
         break;
     case COURSE_SHERBET_LAND:
-        func_80070328(D_800E6BA8);
+        init_clouds(gSherbetLandClouds);
         break;
     case COURSE_RAINBOW_ROAD:
-        func_800704A0(D_800E6C80);
+        init_stars(gToadsTurnpikeRainbowRoadStars);
         break;
     case COURSE_WARIO_STADIUM:
-        func_800704A0(D_800E6DE0);
+        init_stars(gWarioStadiumStars);
         break;
     }
     func_8008C23C();
