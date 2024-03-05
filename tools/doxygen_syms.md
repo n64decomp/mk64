@@ -4887,7 +4887,7 @@ Variable Name | Memory Address
 [render_actor_red_shell](@ref render_actor_red_shell) | 0x8029A75C
 [render_actor_blue_shell](@ref render_actor_blue_shell) | 0x8029A828
 [render_actor_banana](@ref render_actor_banana) | 0x8029A8F4
-[update_actor_wario_stadium_sign](@ref update_actor_wario_stadium_sign) | 0x8029AAC8
+[update_actor_wario_sign](@ref update_actor_wario_sign) | 0x8029AAC8
 [update_actor_railroad_crossing](@ref update_actor_railroad_crossing) | 0x8029AAD8
 [update_actor_mario_raceway_sign](@ref update_actor_mario_raceway_sign) | 0x8029AB60
 [func_8029ABD4](@ref func_8029ABD4) | 0x8029ABD4

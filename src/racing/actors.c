@@ -476,7 +476,7 @@ void render_actor_cows(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     var_s5 = NULL;
     var_s1 = var_t1;
-    while (var_s1->pos[0] != (-0x8000)) {
+    while (var_s1->pos[0] != END_OF_SPAWN_DATA) {
         sp88[0] = var_s1->pos[0] * gCourseDirection;
         sp88[1] = var_s1->pos[1];
         sp88[2] = var_s1->pos[2];
@@ -538,7 +538,7 @@ void func_80298AC0(Player *player) {
     s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
     struct UnkActorSpawnData *data = (struct UnkActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
 
-    while (data->pos[0] != -0x8000) {
+    while (data->pos[0] != END_OF_SPAWN_DATA) {
         sp64[0] = data->pos[0] * gCourseDirection;
         sp64[1] = data->pos[1];
         sp64[2] = data->pos[2];
@@ -573,7 +573,7 @@ void func_80298D10(void) {
     s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
     struct UnkActorSpawnData *temp_v1 = (struct UnkActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
 
-    while (temp_v1->pos[0] != -0x8000) {
+    while (temp_v1->pos[0] != END_OF_SPAWN_DATA) {
         temp_v1->pos[1] = temp_v1->unk8;
         temp_v1->someId &= 0xF;
         temp_v1++;
@@ -601,7 +601,7 @@ void func_80298D7C(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
-    while (var_s1->pos[0] != -0x8000) {
+    while (var_s1->pos[0] != END_OF_SPAWN_DATA) {
         test = var_s1->someId;
         if (test & 0x0800) {
             var_s1++;
@@ -725,68 +725,13 @@ UNUSED s16 D_802B8810[] = {
     0x0000, 0x0000, 0xffff, 0xffff
 };
 
-void render_actor_green_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_green_shell); // set texture
-    render_actor_shell(camera, matrix, shell);
-}
+#include "actors/green_shell/render.inc.c"
 
-void render_actor_red_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, &gTLUTRedShell); // set texture
-    render_actor_shell(camera, matrix, shell);
-}
+#include "actors/other_shell/render.inc.c"
 
-// Middle of a tlut access
-void render_actor_blue_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_blue_shell); // set texture
-    render_actor_shell(camera, matrix, shell);
-}
+#include "actors/banana/render.inc.c"
 
-// A little strange this render banana
-void render_actor_banana(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *banana) {
-    UNUSED s32 pad[2];
-    s32 maxObjectsReached;
-    Vec3s sp7C;
-    Mat4 sp3C;
-
-    f32 temp = is_within_render_distance(camera->pos, banana->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 490000.0f);
-    if (temp < 0.0f) {
-        func_80297230(camera, (struct Actor *) banana);
-        return;
-    }
-
-    if ((banana->pos[1] > D_8015F6EC + 800.0f)) {
-        func_80297230(camera, (struct Actor *) banana);
-        return;
-    }
-    if (banana->pos[1] < (D_8015F6EE - 800.0f)) {
-        func_80297230(camera, (struct Actor *) banana);
-        return;
-    }
-
-    func_802972B8(camera, (struct Actor *) banana);
-
-    if (banana->state == 5) {
-        mtxf_pos_rotation_xyz(sp3C, banana->pos, banana->rot);
-    } else {
-        sp7C[0] = 0;
-        sp7C[1] = 0;
-        sp7C[2] = 0;
-        mtxf_pos_rotation_xyz(sp3C, banana->pos, sp7C);
-    }
-
-    maxObjectsReached = render_set_position(sp3C, 0) == 0;
-    if (maxObjectsReached) { return; }
-
-    if (banana->state != 5) {
-        gSPDisplayList(gDisplayListHead++, &common_model_banana);
-    } else {
-        gSPDisplayList(gDisplayListHead++, &common_model_flat_banana);
-    }
-}
-
-void update_actor_wario_stadium_sign(struct Actor *arg0) {
-    arg0->rot[1] += 0xB6;
-}
+#include "actors/wario_sign/update.inc.c"
 
 /**
  * If train close activate bell sound according to timing
@@ -1062,7 +1007,7 @@ void place_piranha_plants(struct ActorSpawnData *spawnData) {
     vec3f_set(startingVelocity, 0, 0, 0);
     vec3s_set(startingRot, 0, 0, 0);
 
-    while (temp_s0->pos[0] != -0x8000) {
+    while (temp_s0->pos[0] != END_OF_SPAWN_DATA) {
         startingPos[0] = temp_s0->pos[0] * gCourseDirection;
         startingPos[1] = temp_s0->pos[1];
         startingPos[2] = temp_s0->pos[2];
@@ -1093,7 +1038,7 @@ void place_palm_trees(struct ActorSpawnData *spawnData) {
     vec3f_set(startingVelocity, 0, 0, 0);
     vec3s_set(startingRot, 0, 0, 0);
 
-    while (temp_s0->pos[0] != -0x8000) {
+    while (temp_s0->pos[0] != END_OF_SPAWN_DATA) {
         startingPos[0] = temp_s0->pos[0] * gCourseDirection;
         startingPos[1] = temp_s0->pos[1];
         startingPos[2] = temp_s0->pos[2];
@@ -1128,7 +1073,7 @@ void spawn_foliage(struct ActorSpawnData *arg0) {
     rotation[1] = 0;
     rotation[2] = 0;
 
-    while (var_s3->pos[0] != (-0x8000)) {
+    while (var_s3->pos[0] != END_OF_SPAWN_DATA) {
         position[0] = var_s3->pos[0] * gCourseDirection;
         position[2] = var_s3->pos[2];
         position[1] = var_s3->pos[1];
@@ -1205,7 +1150,7 @@ void place_all_item_boxes(struct ActorSpawnData *spawnData) {
     if ((gModeSelection == TIME_TRIALS) || (gPlaceItemBoxes == 0)) { return; }
 
     vec3f_set(startingVelocity, 0, 0, 0);
-    while(temp_s0->pos[0] != -0x8000) {
+    while(temp_s0->pos[0] != END_OF_SPAWN_DATA) {
         startingPos[0] = temp_s0->pos[0] * gCourseDirection;
         startingPos[1] = temp_s0->pos[1];
         startingPos[2] = temp_s0->pos[2];
@@ -1691,7 +1636,7 @@ UNUSED void func_8029ED98(Player *player, uintptr_t arg1) {
     s32 offset = SEGMENT_OFFSET(arg1);
 
     var_s0 = (struct test *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
-    while (var_s0->thing[0] != -0x8000) {
+    while (var_s0->thing[0] != END_OF_SPAWN_DATA) {
         sp64[0] = var_s0->thing[0] * gCourseDirection;
         sp64[1] = var_s0->thing[1];
         sp64[2] = var_s0->thing[2];
@@ -2983,21 +2928,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
     }
 }
 
-void render_actor_wario_sign(Camera *arg0, struct Actor *arg1) {
-    Mat4 sp38;
-    f32 unk = is_within_render_distance(arg0->pos, arg1->pos, arg0->rot[1], 0, gCameraZoom[arg0 - camera1], 16000000.0f);
-
-    if (!(unk < 0.0f)) {
-        gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
-        gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-
-        mtxf_pos_rotation_xyz(sp38, arg1->pos, arg1->rot);
-        if (render_set_position(sp38, 0) != 0) {
-
-            gSPDisplayList(gDisplayListHead++, d_course_wario_stadium_dl_sign);
-        }
-    }
-}
+#include "actors/wario_sign/render.inc.c"
 
 #include "actors/yoshi_egg/render.inc.c"
 
@@ -3342,7 +3273,7 @@ void update_course_actors(void) {
                 update_actor_mario_raceway_sign(actor);
                 break;
             case ACTOR_WARIO_SIGN:
-                update_actor_wario_stadium_sign(actor);
+                update_actor_wario_sign(actor);
                 break;
             case ACTOR_RAILROAD_CROSSING:
                 update_actor_railroad_crossing((struct RailroadCrossing *) actor);

@@ -4,6 +4,8 @@
 #include "types.h"
 #include "actor_types.h"
 
+#define END_OF_SPAWN_DATA -0x8000
+
 void cleanup_red_and_green_shells(struct ShellActor*);
 void actor_init(struct Actor*, Vec3f, Vec3s, Vec3f, s16);
 void func_80297230(Camera*, struct Actor*);
@@ -49,7 +51,7 @@ void render_actor_green_shell(Camera*, Mat4, struct ShellActor*);
 void render_actor_red_shell(Camera*, Mat4, struct ShellActor*);
 void render_actor_blue_shell(Camera*, Mat4, struct ShellActor*);
 void render_actor_banana(Camera*, Mat4, struct BananaActor*);
-void update_actor_wario_stadium_sign(struct Actor*);
+void update_actor_wario_sign(struct Actor*);
 void update_actor_railroad_crossing(struct RailroadCrossing*);
 void update_actor_mario_raceway_sign(struct Actor*);
 void func_8029AC18(Camera*, Mat4, struct Actor*);
