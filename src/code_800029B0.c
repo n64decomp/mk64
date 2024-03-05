@@ -320,7 +320,7 @@ void func_80003040(void) {
         case COURSE_YOSHI_VALLEY:
             vec3f_set(position, -2300.0f, 0.0f, 634.0f);
             position[0] *= gCourseDirection;
-            addActorToEmptySlot(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
+            addActorToEmptySlot(position, rotation, velocity, ACTOR_YOSHI_EGG);
             break;
         case COURSE_MOO_MOO_FARM:
             dma_textures(gTextureTrees4Left,  0x3E8, 0x800);

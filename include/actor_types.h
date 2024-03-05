@@ -43,7 +43,7 @@ enum ActorType {
     ACTOR_BANANA,
     ACTOR_GREEN_SHELL,
     ACTOR_RED_SHELL,
-    ACTOR_YOSHI_VALLEY_EGG,
+    ACTOR_YOSHI_EGG,
     ACTOR_PIRANHA_PLANT,
     ACTOR_ITEM_BOX = 0x0C,
     ACTOR_FAKE_ITEM_BOX,
@@ -261,17 +261,17 @@ struct PiranhaPlant {
     /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
-// Copied from PiranhaPlant, may not be accurate.
 struct PalmTree {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
-    /* 0x04 */ Vec4s visibilityStates; // A per-camera visibilty state tracker
+    /* 0x04 */ s16 variant; // four different types of palm trees
+    /* 0x06 */ s16 state;
+    /* 0x08 */ f32 unk_08;
     /* 0x0C */ f32 boundingBoxSize;
-    /* 0x10 */ Vec3s unk10;
-    /* 0x16 */ s16 unk16;
+    /* 0x10 */ Vec3s rot;
+    /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
-    /* 0x24 */ Vec4s timers; // A per-camera timer. Might be more appropriate to call this state
-    /* 0x2C */ f32 unk_02C;
+    /* 0x24 */ Vec3f velocity;
     /* 0x30 */ Collision unk30;
 }; // size = 0x70
 

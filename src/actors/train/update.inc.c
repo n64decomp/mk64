@@ -1,3 +1,5 @@
+#include <actors.h>
+
 // wheels
 void update_actor_train_engine(struct TrainCar *arg0) {
     arg0->wheelRot -= 0x666;
@@ -9,11 +11,11 @@ void update_actor_train_engine(struct TrainCar *arg0) {
 }
 
 // wheels
-void update_actor_train_car1(struct TrainCar *tender) {
+void update_actor_train_tender(struct TrainCar *tender) {
     tender->wheelRot -= 0x4FA;
 }
 
 // wheels
-void update_actor_train_car2(struct TrainCar *arg0) {
+void update_actor_train_passenger_car(struct TrainCar *arg0) {
     arg0->wheelRot -= 0x666;
 }
