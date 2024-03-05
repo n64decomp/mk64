@@ -1,13 +1,13 @@
 import bpy
 import os
 import sys
-sys.path.append('tools')
+sys.path.append('tools/blender')
 import fast64
 from fast64.fast64_internal.f3d.f3d_gbi import get_F3D_GBI
 from fast64.fast64_internal.f3d.f3d_material import createF3DMat
 from fast64.fast64_internal.f3d.f3d_parser import F3DContext, getImportData, importMeshC
 
-from blender_extension.clean_scene import clean_scene
+from clean_scene import clean_scene
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 dir_path = dir_path.replace("\\", "/")

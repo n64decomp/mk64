@@ -11,7 +11,7 @@ args = parser.parse_args()
 if not os.path.exists("models"):
     os.makedirs("models")
 
-models:list[dict[str, str|list[str]]] = json.load(open("tools/3d_models.json"))
+models:list[dict[str, str|list[str]]] = json.load(open("tools/blender/3d_models.json"))
 
 if os.name == "nt":
     blender = "c:/Program Files/Blender Foundation/Blender 4.0/blender.exe"
@@ -21,7 +21,7 @@ else:
 args_blender = [
     "--background",
     "--python",
-    "tools/blender_extension/blender_export.py",
+    "tools/blender/blender_export.py",
     "--",
 ]
 
