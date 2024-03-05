@@ -1,7 +1,5 @@
 var update__objects_8c =
 [
-    [ "test", "structtest.html", "structtest" ],
-    [ "testA", "update__objects_8c.html#af74c549a286920508a0c8a01c3de355e", null ],
     [ "add_unused_obj_index", "update__objects_8c.html#a6e56a43ec98e81db05f2410893efa437", null ],
     [ "consume_item", "update__objects_8c.html#abe0750bafe0e01a419bd8a8ad6b59bd5", null ],
     [ "delete_object", "update__objects_8c.html#a93e8c6d4dd528426ac3f3d7da2e063f6", null ],
@@ -158,7 +156,6 @@ var update__objects_8c =
     [ "func_800786EC", "update__objects_8c.html#ab41f725550186878218b0d8b3b0fa5d4", null ],
     [ "func_80078790", "update__objects_8c.html#a2148e6b0dcd319d5fdde7400d2f660a4", null ],
     [ "func_800788F8", "update__objects_8c.html#a8b7689c2c0fc4076761bcf04424aae4f", null ],
-    [ "func_80078A44", "update__objects_8c.html#a3c3337a85f0a74b8c73bfaf0ca6d6adb", null ],
     [ "func_80078C68", "update__objects_8c.html#a3713f52864b01664ecd8eb817e481911", null ],
     [ "func_80078C70", "update__objects_8c.html#a65833b533abd5f0cd07d07217d923e07", null ],
     [ "func_80078F64", "update__objects_8c.html#af214e5ebd86c8bf754b1a2ac747fb99e", null ],
@@ -350,6 +347,7 @@ var update__objects_8c =
     [ "update_cheep_cheep", "update__objects_8c.html#afe7f74bd946f2a208e57a00e5e7c7c0b", null ],
     [ "update_cheep_cheep_ending", "update__objects_8c.html#a00d8bc1af58aee7d1680260a84b131ed", null ],
     [ "update_cheep_cheep_race", "update__objects_8c.html#abd248feb63b445a2df7b828ed5f6fc21", null ],
+    [ "update_clouds", "update__objects_8c.html#a2326b08767752a10a773c5c9afa0468a", null ],
     [ "update_crabs", "update__objects_8c.html#ad484d9ed5fed719399192a6ca10102db", null ],
     [ "update_ferries_smoke_particle", "update__objects_8c.html#a690661e495441e81ca9878adf2b39d14", null ],
     [ "update_flame_particle", "update__objects_8c.html#adb84f91341a8ce4d15d3242630d3e5e2", null ],
@@ -372,6 +370,7 @@ var update__objects_8c =
     [ "update_seagulls", "update__objects_8c.html#ae061dff0cfaf1ef11c4609d97c895440", null ],
     [ "update_snowflakes", "update__objects_8c.html#aa48fd49d06dac7e1948b468b4f260477", null ],
     [ "update_snowmen", "update__objects_8c.html#a7daf082dede03d6e5cff2ae18ed0d289", null ],
+    [ "update_stars", "update__objects_8c.html#aa8f45d9faeaae2c86b272f979f68b788", null ],
     [ "update_train_smoke", "update__objects_8c.html#a15790cbcb67f86644f6cad58073f6c19", null ],
     [ "update_trash_bin", "update__objects_8c.html#a91fdfda23cbd779bc79c9718aad2791e", null ],
     [ "wrapper_update_boos", "update__objects_8c.html#a33a1f1842134707236eefdf272dfdbae", null ],

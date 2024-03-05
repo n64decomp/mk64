@@ -1,13 +1,5 @@
 var NAVTREEINDEX30 =
 {
-"courseTable_8h.html#ad078696fa38b027421d4bf64625eec3e":[8,0,0,25,51],
-"courseTable_8h.html#ad0c11607518d89ee870a1d2114da7973":[8,0,0,25,14],
-"courseTable_8h.html#ad3ee293d1645417e733b8f375d136422":[8,0,0,25,19],
-"courseTable_8h.html#ad95268b79847f477895a987c933dbe4a":[8,0,0,25,7],
-"courseTable_8h.html#ad95c5fb73421d949a1ae07752514b7ad":[8,0,0,25,125],
-"courseTable_8h.html#adade6409e9d41f80f0d2164a874592e1":[8,0,0,25,2],
-"courseTable_8h.html#ae3eb46cc914a015c044f63e817ec5c8d":[8,0,0,25,53],
-"courseTable_8h.html#ae5b71cac418b1535eb44cc3c7ae347a9":[8,0,0,25,42],
 "courseTable_8h.html#ae6050b6bae7e233dd13c0b2122ef3969":[8,0,0,25,135],
 "courseTable_8h.html#ae62236e629a44d514cb4f7f6125bdd68":[8,0,0,25,62],
 "courseTable_8h.html#ae8c52d700873001c43696588fa4dc4b3":[8,0,0,25,9],
@@ -39,7 +31,7 @@ var NAVTREEINDEX30 =
 "course__offsets_8h.html":[8,0,2,7],
 "course__offsets_8h_source.html":[8,0,2,7],
 "courses.html":[2,0],
-"courses.html#courses":[2,0,0],
+"courses.html#courses-1":[2,0,0],
 "coursesmenu.html":[2],
 "crash__screen_8c.html":[8,0,3,33],
 "crash__screen_8c.html#a05a53ff72bcf7daf24b3ab616665ffaa":[8,0,3,33,20],
@@ -249,5 +241,13 @@ var NAVTREEINDEX30 =
 "data__800E8700_8h.html#a2f12a5b74bedc5a88a5d2d062f841de0":[8,0,3,2,5,9],
 "data__800E8700_8h.html#a4654654deb0e3fa69958679d4c2e9da4":[8,0,3,2,5,19],
 "data__800E8700_8h.html#a4726490c0beea709d1743e1cf60f15eb":[8,0,3,2,5,12],
-"data__800E8700_8h.html#a538f9c766912d1ece67cdb176c55d799":[8,0,3,2,5,14]
+"data__800E8700_8h.html#a538f9c766912d1ece67cdb176c55d799":[8,0,3,2,5,14],
+"data__800E8700_8h.html#a7816d8a2b319761db7f3b6a9ab6a347b":[8,0,3,2,5,18],
+"data__800E8700_8h.html#a8b02ee50c1069eb73c299b2d09fb89f5":[8,0,3,2,5,17],
+"data__800E8700_8h.html#a9cccedbc7999db2f5c1e30b12ebb7899":[8,0,3,2,5,8],
+"data__800E8700_8h.html#aadd1d44cc08e24d4417552e88cfe2d60":[8,0,3,2,5,20],
+"data__800E8700_8h.html#ab78e50e92f00d19263cc4877967842cb":[8,0,3,2,5,0],
+"data__800E8700_8h.html#ac1dcb1a898aaa08933d575d6c4cafa7a":[8,0,3,2,5,13],
+"data__800E8700_8h.html#ac3b9a2f2e49a8bc747a8e93d9d64c610":[8,0,3,2,5,15],
+"data__800E8700_8h.html#ac721e80e1938d5d9f2fa95bdb7f1566f":[8,0,3,2,5,3]
 };

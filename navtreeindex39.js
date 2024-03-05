@@ -1,13 +1,5 @@
 var NAVTREEINDEX39 =
 {
-"frappe__snowland_2course__displaylists_8inc_8c.html#a86cead865572c3902816e37e3917721d":[8,0,0,7,2,4],
-"frappe__snowland_2course__displaylists_8inc_8c.html#a86d0c66c71410eac0b8a4b1d8e6b5288":[8,0,0,7,2,24],
-"frappe__snowland_2course__displaylists_8inc_8c.html#a881d6cc233ed2bf704e50ac534f31914":[8,0,0,7,2,125],
-"frappe__snowland_2course__displaylists_8inc_8c.html#a8a7927cc2dabe057ebb9f844979c5ac4":[8,0,0,7,2,111],
-"frappe__snowland_2course__displaylists_8inc_8c.html#a8b1031881df5a6b8722379719e9d388f":[8,0,0,7,2,136],
-"frappe__snowland_2course__displaylists_8inc_8c.html#a8cbcf776099bc9789fc55d0da193db5e":[8,0,0,7,2,110],
-"frappe__snowland_2course__displaylists_8inc_8c.html#a8dfda72d78d67ec9263c77b84a2a2651":[8,0,0,7,2,85],
-"frappe__snowland_2course__displaylists_8inc_8c.html#a8e50c7bdc52c72cc4da26d9d1f9e5f70":[8,0,0,7,2,95],
 "frappe__snowland_2course__displaylists_8inc_8c.html#a91195763cb3a7a25de5aa27f6dfe3534":[8,0,0,7,2,50],
 "frappe__snowland_2course__displaylists_8inc_8c.html#a930b8c4a34fb3180804d1d6087939bae":[8,0,0,7,2,109],
 "frappe__snowland_2course__displaylists_8inc_8c.html#a93e7a02c13a157bf4bb0d8382cd6759d":[8,0,0,7,2,45],
@@ -226,8 +218,8 @@ var NAVTREEINDEX39 =
 "frappe__snowland_2course__offsets_8inc_8c.html#aef3d2299eea3705d2331e91eb310cc03":[8,0,0,7,4,7],
 "frappe__snowland_2course__vertices_8inc_8c.html":[8,0,0,7,5],
 "frappe__snowland_2course__vertices_8inc_8c.html#a1ec683eb9d6c6022a1131cd35cf8d7e8":[8,0,0,7,5,0],
-"functions.html":[7,2,0],
 "functions.html":[7,2,0,0],
+"functions.html":[7,2,0],
 "functions_b.html":[7,2,0,1],
 "functions_c.html":[7,2,0,2],
 "functions_d.html":[7,2,0,3],
@@ -248,6 +240,14 @@ var NAVTREEINDEX39 =
 "functions_t.html":[7,2,0,18],
 "functions_u.html":[7,2,0,19],
 "functions_v.html":[7,2,0,20],
+"functions_vars.html":[7,2,1,0],
 "functions_vars.html":[7,2,1],
-"functions_vars.html":[7,2,1,0]
+"functions_vars_b.html":[7,2,1,1],
+"functions_vars_c.html":[7,2,1,2],
+"functions_vars_d.html":[7,2,1,3],
+"functions_vars_e.html":[7,2,1,4],
+"functions_vars_f.html":[7,2,1,5],
+"functions_vars_g.html":[7,2,1,6],
+"functions_vars_h.html":[7,2,1,7],
+"functions_vars_i.html":[7,2,1,8]
 };

@@ -171,7 +171,7 @@ var annotated_dup =
     [ "SplineDataUnused4", "structSplineDataUnused4.html", "structSplineDataUnused4" ],
     [ "SPTask", "structSPTask.html", "structSPTask" ],
     [ "StaffGhost", "structStaffGhost.html", "structStaffGhost" ],
-    [ "StarSpawn", "structStarSpawn.html", "structStarSpawn" ],
+    [ "StarData", "structStarData.html", "structStarData" ],
     [ "stru_80004EAC", "structstru__80004EAC.html", "structstru__80004EAC" ],
     [ "struct_801642D8", "structstruct__801642D8.html", "structstruct__801642D8" ],
     [ "struct_8018D9E0_entry", "structstruct__8018D9E0__entry.html", "structstruct__8018D9E0__entry" ],

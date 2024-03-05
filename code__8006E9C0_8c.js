@@ -10,12 +10,10 @@ var code__8006E9C0_8c =
     [ "func_8006F824", "code__8006E9C0_8c.html#a29fb6001891ade9e060f510c2b9bb90a", null ],
     [ "func_8006F8CC", "code__8006E9C0_8c.html#a22fb6641b6733568bce5847c9e1c8ae3", null ],
     [ "func_80070148", "code__8006E9C0_8c.html#a7ce8b772e14372f2078703a39e676d2a", null ],
-    [ "func_80070250", "code__8006E9C0_8c.html#afc1c21ebff7f2ec70a11244a842f499a", null ],
-    [ "func_80070328", "code__8006E9C0_8c.html#a5945e5ad978f80b31110f73ae96fdd36", null ],
-    [ "func_800703E0", "code__8006E9C0_8c.html#aec20eb24672e626b55347e4791b04bfd", null ],
-    [ "func_800704A0", "code__8006E9C0_8c.html#a077b9c8a1cdcf10353e8f23db63ec1d8", null ],
     [ "func_8007055C", "code__8006E9C0_8c.html#afef0314f6f435d008ed32c2aa1e2fed0", null ],
     [ "func_80070714", "code__8006E9C0_8c.html#a34850e00e534f9bea4ee89568c0484e8", null ],
+    [ "init_cloud_object", "code__8006E9C0_8c.html#a8b7161c599a6246ac3f2bd86e47a3495", null ],
+    [ "init_clouds", "code__8006E9C0_8c.html#ac7ae9fc93c7e19a1387f35ab5dd0f54f", null ],
     [ "init_course_object", "code__8006E9C0_8c.html#a95bd792f4507dd26cf251c980bd9214b", null ],
     [ "init_hud", "code__8006E9C0_8c.html#a47667a5a47fd4ca740865e963ce795c9", null ],
     [ "init_hud_one_player", "code__8006E9C0_8c.html#a9b35328c0ffddc0723de4730c5e41431", null ],
@@ -24,5 +22,7 @@ var code__8006E9C0_8c =
     [ "init_hud_two_player_vertical", "code__8006E9C0_8c.html#aa98fba14045af26e5c13a6a72442b8be", null ],
     [ "init_item_window", "code__8006E9C0_8c.html#a7fd371a62513a311ab8903e23511dc9b", null ],
     [ "init_object_list_index", "code__8006E9C0_8c.html#ac9869b321dfbda91715daf48a65b2075", null ],
+    [ "init_star_object", "code__8006E9C0_8c.html#a2e1170fd8a18dbe09ee7d4a2bea8a8b3", null ],
+    [ "init_stars", "code__8006E9C0_8c.html#a60668034c4dbddceebb8a6fb822f9206", null ],
     [ "reset_object_variable", "code__8006E9C0_8c.html#a90b6f11f43c81c8c033805cfddb8fc89", null ]
 ];

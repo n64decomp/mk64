@@ -1,12 +1,5 @@
 var NAVTREEINDEX112 =
 {
-"structSplineData21.html":[7,0,162],
-"structSplineData21.html#a24bceac84e7ddc8eb48053b5acb777c1":[7,0,162,0],
-"structSplineData21.html#a6d72ac516205cbf9e188ae1e7a23bbb5":[7,0,162,1],
-"structSplineData23.html":[7,0,163],
-"structSplineData23.html#a46b1fc78bfc6f0a2c712cc24d3dbbd88":[7,0,163,1],
-"structSplineData23.html#a532d98b7c862b09f7e48178825bc5d5d":[7,0,163,0],
-"structSplineData24.html":[7,0,164],
 "structSplineData24.html#a1c6b739bb4530de06ef6a32cba054460":[7,0,164,1],
 "structSplineData24.html#a246aee4b3f83c9d391c0fcc17a6436f7":[7,0,164,0],
 "structSplineData25.html":[7,0,165],
@@ -26,9 +19,11 @@ var NAVTREEINDEX112 =
 "structStaffGhost.html#a7b637771b83c668ccfe34d8a0154a273":[7,0,170,1],
 "structStaffGhost.html#aa6b1baf853d009a3439c9d3f5165f1a5":[7,0,170,0],
 "structStaffGhost.html#adc1d77033d97bab9ec68db249b693959":[7,0,170,3],
-"structStarSpawn.html":[7,0,171],
-"structStarSpawn.html#a46ee5aef634d1227ead4b4da5cecc0d7":[7,0,171,1],
-"structStarSpawn.html#a5eae8c76eeeec38df9cdc775fba2f6fb":[7,0,171,0],
+"structStarData.html":[7,0,171],
+"structStarData.html#a6984b4d8fec7b0eac1fe0d20d247f0d9":[7,0,171,0],
+"structStarData.html#a779d7b566d72a9b631dde8fea0405aef":[7,0,171,1],
+"structStarData.html#ab7a3aee7b0b1607421aa85fbf6943380":[7,0,171,3],
+"structStarData.html#af73a76a93b8b9b191084f98a497c9ed3":[7,0,171,2],
 "structStuff.html":[7,0,197],
 "structStuff.html#a5d05d567fd557e75dfcd63663963255a":[7,0,197,2],
 "structStuff.html#a65a6fa726f8d6a9070d7631d313a8af3":[7,0,197,1],
@@ -249,5 +244,10 @@ var NAVTREEINDEX112 =
 "structUnkStruct__800DDB68.html#a343355467bd686b4687784cb3f211456":[7,0,232,0],
 "structUnkStruct__800DDB68.html#a54d1ac4cc95c9ee2f95678befd8d6a2b":[7,0,232,7],
 "structUnkStruct__800DDB68.html#adb896d2c5f0322e2e48f9adca25f2ad6":[7,0,232,5],
-"structUnkStruct__800DDB68.html#aeaa28abedc2e152ab27837b829916920":[7,0,232,3]
+"structUnkStruct__800DDB68.html#aeaa28abedc2e152ab27837b829916920":[7,0,232,3],
+"structUnkStruct__800DDB68.html#aead90c24f0027d806d6acd24d28ba626":[7,0,232,4],
+"structUnkStruct__800DDB68.html#af09e26866c5a02b9fbb82cfcff389e44":[7,0,232,2],
+"structUnkStruct__800DDB68.html#af0c9f94a845419cb6ee47480354afb9f":[7,0,232,1],
+"structUnkStruct__800DDB68.html#af2b4aa6dc460fa4cd41cf9436dfb1547":[7,0,232,6],
+"structUnkStruct__8015F584.html":[7,0,233]
 };

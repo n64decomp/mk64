@@ -26,7 +26,7 @@ var searchData=
   ['splinedataunused4_23',['SplineDataUnused4',['../structSplineDataUnused4.html',1,'']]],
   ['sptask_24',['SPTask',['../structSPTask.html',1,'']]],
   ['staffghost_25',['StaffGhost',['../structStaffGhost.html',1,'']]],
-  ['starspawn_26',['StarSpawn',['../structStarSpawn.html',1,'']]],
+  ['stardata_26',['StarData',['../structStarData.html',1,'']]],
   ['stru_5f80004eac_27',['stru_80004EAC',['../structstru__80004EAC.html',1,'']]],
   ['struct_5f801642d8_28',['struct_801642D8',['../structstruct__801642D8.html',1,'']]],
   ['struct_5f8018d9e0_5fentry_29',['struct_8018D9E0_entry',['../structstruct__8018D9E0__entry.html',1,'']]],
