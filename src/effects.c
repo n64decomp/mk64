@@ -716,10 +716,10 @@ void func_8008D9C0(Player* player) {
     }
 }
 
-void func_8008DABC(Player *player, s8 arg1) {
+void apply_hit_sound_effect(Player *player, s8 arg1) {
     clean_effect(player, arg1);
 
-    if ((player->effects & 0x4000000) == 0) {
+    if ((player->effects & HIT_EFFECT) == 0) {
         player->unk_DB4.unk2 = 0;
         player->unk_238 = 0;
         player->unk_DB4.unk10 = 4.5f;
@@ -737,18 +737,18 @@ void func_8008DABC(Player *player, s8 arg1) {
             player->unk_046 |= 0x80;
         }
 
-        if (((player->type & PLAYER_HUMAN) != 0) && ((player->effects & 0x04000000) == 0)) {
-            func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008005);
+        if (((player->type & PLAYER_HUMAN) != 0) && ((player->effects & HIT_EFFECT) == 0)) {
+            func_800C90F4(arg1, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x05));
         }
 
-        player->effects |= 0x04000000;
+        player->effects |= HIT_EFFECT;
         if (((player->type) & 0x1000) != 0) {
             func_800098FC(arg1, player);
         }
     }
 }
 
-void func_8008DC08(Player* player, s8 arg1) {
+void apply_hit_effect(Player* player, s8 arg1) {
     player->unk_0C2 = 0;
     player->unk_0A8 = 0;
     player->unk_07C = 0;
@@ -837,7 +837,7 @@ void func_8008DC08(Player* player, s8 arg1) {
         break;
     case 3:
         player->unk_DB4.unk10 = 3.0f;
-        player->effects &= ~0x04000000;
+        player->effects &= ~HIT_EFFECT;
         player->unk_DB4.unk2 = 0;
         player->effects |= 0x08000000;
         player->size = 1.0f;
@@ -889,7 +889,7 @@ void apply_hit_rotating_sound_effect(Player* player, s8 arg1) {
 
 void apply_lightning_effect(Player *player, s8 arg1) {
     s16 test;
-    if (((player->effects & 0x8000) == 0x8000) && ((player->effects & 0x04000000) != 0x04000000)) {
+    if (((player->effects & 0x8000) == 0x8000) && ((player->effects & HIT_EFFECT) != HIT_EFFECT)) {
         player->effects &= ~0x20000;
         player->unk_0A8 = 0;
         player->unk_07C = 0;
@@ -900,7 +900,7 @@ void apply_lightning_effect(Player *player, s8 arg1) {
         D_80165190[1][arg1] = 1;
         D_80165190[2][arg1] = 1;
         D_80165190[3][arg1] = 1;
-        func_8008DABC(player, arg1);
+        apply_hit_sound_effect(player, arg1);
     } else if ((player->effects & 0x20000) == 0x20000) {
         player->rotation[1] -= 0x5B0;
         D_8018D920[arg1]   -= 0x5B0;

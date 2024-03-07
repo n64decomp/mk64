@@ -5,11 +5,11 @@
 #include "actor_types.h"
 
 void copy_collision(Collision*, Collision*);
-void func_802B02B4(struct ShellActor*, s32);
+void triple_shell_actor_collide_with_player(struct ShellActor*, s32);
 void func_802B039C(struct BananaActor*);
 void func_802B0464(s16);
 void func_802B04E8(struct BananaActor*, s16);
-void func_802B0570(struct BananaActor*);
+void destroy_a_banana_in_bunch_banana(struct BananaActor*);
 void func_802B0648(struct BananaBunchParent*);
 void func_802B0788(s16, struct BananaBunchParent*, Player*);
 s32  func_802B09C0(s16);

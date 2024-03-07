@@ -32,7 +32,7 @@ void copy_collision(Collision *arg0, Collision *arg1) {
     vec3f_copy_return(arg1->orientationVector, arg0->orientationVector);
 }
 
-void func_802B02B4(struct ShellActor *shell, s32 shellType) {
+void triple_shell_actor_collide_with_player(struct ShellActor *shell, s32 shellType) {
     TripleShellParent *parent = (TripleShellParent *) &gActorList[shell->parentIndex];
 
     parent->shellsAvailable--;
@@ -95,7 +95,7 @@ void func_802B04E8(UNUSED struct BananaActor *arg0, s16 bananaIndex) {
 }
 
 // Handle a banana being ran over while it is still part of a banana bunch
-void func_802B0570(struct BananaActor *banana) {
+void destroy_a_banana_in_bunch_banana(struct BananaActor *banana) {
     struct BananaBunchParent *temp_v0_2;
 
     func_802B0464(banana->youngerIndex);
@@ -439,9 +439,9 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     func_800C9060(parent->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
                     func_800C90F4(parent->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                     if (parent->type == ACTOR_TRIPLE_RED_SHELL) {
-                        func_8000ED80(parent->shellIndices[0]);
+                        add_red_shell_in_unexpired_actor_list(parent->shellIndices[0]);
                     } else {
-                        func_8000EDC8(parent->shellIndices[0]);
+                        add_green_shell_in_unexpired_actor_list(parent->shellIndices[0]);
                     }
                     parent->shellIndices[0] = -1.0f;
                     parent->shellsAvailable -= 1;
@@ -464,9 +464,9 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     func_800C90F4(parent->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                     func_800C9060(parent->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
                     if (parent->type == ACTOR_TRIPLE_RED_SHELL) {
-                        func_8000ED80(parent->shellIndices[1]);
+                        add_red_shell_in_unexpired_actor_list(parent->shellIndices[1]);
                     } else {
-                        func_8000EDC8(parent->shellIndices[1]);
+                        add_green_shell_in_unexpired_actor_list(parent->shellIndices[1]);
                     }
                     parent->shellIndices[1] = -1.0f;
                     parent->shellsAvailable -= 1;
@@ -489,9 +489,9 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     func_800C9060(parent->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
                     func_800C90F4(parent->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                     if (parent->type == ACTOR_TRIPLE_RED_SHELL) {
-                        func_8000ED80(parent->shellIndices[2]);
+                        add_red_shell_in_unexpired_actor_list(parent->shellIndices[2]);
                     } else {
-                        func_8000EDC8(parent->shellIndices[2]);
+                        add_green_shell_in_unexpired_actor_list(parent->shellIndices[2]);
                     }
                     parent->shellIndices[2] = -1.0f;
                     parent->shellsAvailable -= 1;

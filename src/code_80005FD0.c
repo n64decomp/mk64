@@ -1606,7 +1606,7 @@ void func_800098FC(s32 arg0, Player *player) {
         }
     }
     if (D_801633B0[arg0] >= 0xB) {
-        if ((player->soundEffects & 0x400000) || (player->soundEffects & 0x01000000) || (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & 0x04000000)) {
+        if ((player->soundEffects & 0x400000) || (player->soundEffects & 0x01000000) || (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & HIT_EFFECT)) {
 	        func_800C92CC(arg0, 0x2900800BU);
 	        D_801633B0[arg0] = 0;
 	    }
@@ -1644,7 +1644,7 @@ void func_800099EC(s32 playerId, Player *unused) {
 // Lots of register allocation differences, but messing around seems to suggest they stem from 2 specific areas
 // MISMATCH1: something about the loading of `playerId` is off
 // MISMATCH2: something about the handling of the math is off. Not sure exactly what though
-// MISMATCH3: there's a small instruction ordering issue concerning `D_8015F6F0`. No idea what to do about it
+// MISMATCH3: there's a small instruction ordering issue concerning `gMapMaxX`. No idea what to do about it
 // FAKEMATCH1 is the best improvement I've seen yet, MISMATCH2/3 become the only issues.
 
 void func_80009B60(s32 playerId) {
@@ -1702,17 +1702,17 @@ void func_80009B60(s32 playerId) {
             return;
         }
         D_801633E0[playerId] = 0;
-        if (player->pos[0] < D_8015F6EA) {
+        if (player->pos[0] < gMapMinX) {
             D_801633E0[playerId] = 1;
         }
-        if (D_8015F6E8 < player->pos[0]) {
+        if (gMapMaxX < player->pos[0]) {
             D_801633E0[playerId] = 2;
         }
-        if (player->pos[2] < D_8015F6F2) {
+        if (player->pos[2] < gMapMinZ) {
             D_801633E0[playerId] = 3;
         }
         // MISMATCH3
-        if (D_8015F6F0 < player->pos[2]) {
+        if (gMapMaxZ < player->pos[2]) {
             D_801633E0[playerId] = 4;
         }
         if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8)) {
@@ -3268,11 +3268,11 @@ void func_8000DF8C(s32 bombKartId) {
     }
 }
 
-s32 func_8000ED14(s32 actorIndex, s16 arg1) {
+s32 add_actor_in_unexpired_actor_list(s32 actorIndex, s16 arg1) {
     s32 i;
     s32 a2 = 0;
 
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < NUM_PLAYERS; i++) {
 
         if (gUnexpiredActorsList[i].unkC == 0) {
             gUnexpiredActorsList[i].unkC = 1;
@@ -3289,31 +3289,31 @@ s32 func_8000ED14(s32 actorIndex, s16 arg1) {
     return 0;
 }
 
-s32 func_8000ED80(s32 actorIndex) {
+s32 add_red_shell_in_unexpired_actor_list(s32 actorIndex) {
     struct Actor *actor = &gActorList[actorIndex];
-    if (actor->type != 8) {
+    if (actor->type != ACTOR_RED_SHELL) {
         return -1;
     }
-    return func_8000ED14(actorIndex, 0);
+    return add_actor_in_unexpired_actor_list(actorIndex, 0);
 }
 
-s32 func_8000EDC8(s32 actorIndex) {
+s32 add_green_shell_in_unexpired_actor_list(s32 actorIndex) {
     struct Actor *actor = &gActorList[actorIndex];
-    if (actor->type != 7) {
+    if (actor->type != ACTOR_GREEN_SHELL) {
         return -1;
     }
-    return func_8000ED14(actorIndex, 1);
+    return add_actor_in_unexpired_actor_list(actorIndex, 1);
 }
 
-s32 func_8000EE10(s32 arg0) {
+s32 add_blue_shell_in_unexpired_actor_list(s32 arg0) {
     struct Actor *actor = &gActorList[arg0];
-    if (actor->type != 42) {
+    if (actor->type != ACTOR_BLUE_SPINY_SHELL) {
         return -1;
     }
-    return func_8000ED14(arg0, 2);
+    return add_actor_in_unexpired_actor_list(arg0, 2);
 }
 
-void func_8000EE58(s32 actorIndex) {
+void remove_actor_in_unexpired_actor_list(s32 actorIndex) {
     struct unexpiredActors *phi;
     s32 i;
 

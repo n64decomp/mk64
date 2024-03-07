@@ -2,6 +2,7 @@
 #include <main.h>
 #include <types.h>
 #include <code_800029B0.h>
+#include <defines.h>
 
 void update_actor_green_shell(struct ShellActor *shell) {
     Player *player;
@@ -25,8 +26,8 @@ void update_actor_green_shell(struct ShellActor *shell) {
     pad0 = shell->pos[0];
     pad6 = shell->pos[1];
     pad1 = shell->pos[2];
-    if ((pad1 < D_8015F6F2) || (D_8015F6F0 < pad1) || (pad0 < D_8015F6EA) || (D_8015F6E8 < pad0) || (pad6 < D_8015F6EE)) {
-        func_8029FDC8((struct Actor *) shell);
+    if ((pad1 < gMapMinZ) || (gMapMaxZ < pad1) || (pad0 < gMapMinX) || (gMapMaxX < pad0) || (pad6 < gMapMinY)) {
+        destroy_destructable_actor((struct Actor *) shell);
     }
     shell->rotVelocity += 0x71C;
     switch (shell->state) {
@@ -66,7 +67,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
                         shell->state = 2;
                         func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
                         func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
-                        func_8000EDC8((struct Actor*)shell - gActorList);
+                        add_green_shell_in_unexpired_actor_list((struct Actor*)shell - gActorList);
                         return;
                     } else {
                         shell->state = 1;
@@ -88,7 +89,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
                     shell->someTimer = 0x001E;
                     func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
                     func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
-                    func_8000EDC8((struct Actor*)shell - gActorList);
+                    add_green_shell_in_unexpired_actor_list((struct Actor*)shell - gActorList);
                 }
             } else {
                 shell->rotAngle += 0xE38;
@@ -97,7 +98,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
                     shell->someTimer = 0x001E;
                     func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
                     func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
-                    func_8000EDC8((struct Actor*)shell - gActorList);
+                    add_green_shell_in_unexpired_actor_list((struct Actor*)shell - gActorList);
                 }
             }
             if (shell->state == 2) {
@@ -151,7 +152,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
             player = &gPlayers[shell->playerId];
             parent = (TripleShellParent *) &gActorList[shell->parentIndex];
             if (parent->type != ACTOR_TRIPLE_GREEN_SHELL) {
-                func_8029FDC8((struct Actor *) shell);
+                destroy_destructable_actor((struct Actor *) shell);
             } else {
                 shell->rotAngle += parent->rotVelocity;
                 somePosVel[0] = sins(shell->rotAngle) * 8.0f;

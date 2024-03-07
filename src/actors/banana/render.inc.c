@@ -15,11 +15,11 @@ void render_actor_banana(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *b
         return;
     }
 
-    if ((banana->pos[1] > D_8015F6EC + 800.0f)) {
+    if ((banana->pos[1] > gMapMaxY + 800.0f)) {
         func_80297230(camera, (struct Actor *) banana);
         return;
     }
-    if (banana->pos[1] < (D_8015F6EE - 800.0f)) {
+    if (banana->pos[1] < (gMapMinY - 800.0f)) {
         func_80297230(camera, (struct Actor *) banana);
         return;
     }

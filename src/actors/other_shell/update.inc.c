@@ -140,7 +140,7 @@ void func_802B3E7C(struct ShellActor *shell, Player *player) {
     shell->velocity[2] = z_velocity;
 
     if (player->effects & BOO_EFFECT) {
-        func_8029FDC8((struct Actor *) shell);
+        destroy_destructable_actor((struct Actor *) shell);
     } else {
         func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], newPosition[0], newPosition[1], newPosition[2]);
         func_802B4E30((struct Actor *) shell);
@@ -178,11 +178,11 @@ s16 func_802B3FD0(Player *owner, struct ShellActor *shell) {
 
 void func_802B4104(struct ShellActor *shell) {
     if ((shell->unk30.unk3C[0] < 0.0f) && ((shell->unk30.unk48[1] < 0.25f) || (shell->unk30.unk48[1] > -0.25f))) {
-        func_8029FDC8((struct Actor *) shell);
+        destroy_destructable_actor((struct Actor *) shell);
         func_800C98B8(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));
         shell->flags |= 0x80;
     } else if ((shell->unk30.unk3C[1] < 0.0f) && ((shell->unk30.unk54[1] < 0.25f) || (shell->unk30.unk54[1] < -0.25f))) {
-        func_8029FDC8((struct Actor *) shell);
+        destroy_destructable_actor((struct Actor *) shell);
         func_800C98B8(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));
         shell->flags |= 0x80;
     }
@@ -222,8 +222,8 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
     pad0 = shell->pos[2];
     pad2 = shell->pos[1];
     pad13 = shell->type;
-    if ((pad0 < (f32) D_8015F6F2) || ((f32) D_8015F6F0 < pad0) || (pad1 < (f32) D_8015F6EA) || ((f32) D_8015F6E8 < pad1) || (pad2 < (f32) D_8015F6EE)) {
-        func_8029FDC8((struct Actor *) shell);
+    if ((pad0 < (f32) gMapMinZ) || ((f32) gMapMaxZ < pad0) || (pad1 < (f32) gMapMinX) || ((f32) gMapMaxX < pad1) || (pad2 < (f32) gMapMinY)) {
+        destroy_destructable_actor((struct Actor *) shell);
     }
 
     shell->rotVelocity += 0x71C;
@@ -276,9 +276,9 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
                 func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
                 func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                 if (pad13 == ACTOR_RED_SHELL) {
-                    func_8000ED80((struct Actor*)shell - gActorList);
+                    add_red_shell_in_unexpired_actor_list((struct Actor*)shell - gActorList);
                 } else {
-                    func_8000EE10((struct Actor*)shell - gActorList);
+                    add_blue_shell_in_unexpired_actor_list((struct Actor*)shell - gActorList);
                     func_800C9D80(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
                 }
             }
@@ -289,9 +289,9 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
                 func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
                 func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                 if (pad13 == ACTOR_RED_SHELL) {
-                    func_8000ED80((struct Actor*)shell - gActorList);
+                    add_red_shell_in_unexpired_actor_list((struct Actor*)shell - gActorList);
                 } else {
-                    func_8000EE10((struct Actor*)shell - gActorList);
+                    add_blue_shell_in_unexpired_actor_list((struct Actor*)shell - gActorList);
                     func_800C9D80(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
                 }
             }
@@ -391,7 +391,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
         func_802B3B44(shell);
         if (shell->someTimer == 0) {
             if ((shell->flags & 0xF) == 0) {
-                func_8029FDC8((struct Actor *) shell);
+                destroy_destructable_actor((struct Actor *) shell);
             } else {
                 shell->someTimer -= 1;
             }
@@ -412,7 +412,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
         player = &gPlayers[shell->playerId];
         parent = (TripleShellParent *) &gActorList[shell->parentIndex];
         if (parent->type != ACTOR_TRIPLE_RED_SHELL) {
-            func_8029FDC8((struct Actor *) shell);
+            destroy_destructable_actor((struct Actor *) shell);
         } else {
             shell->rotAngle += parent->rotVelocity;
             somePosVel[0] = sins(shell->rotAngle) * 8.0f;

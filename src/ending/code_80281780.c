@@ -117,13 +117,13 @@ void load_ceremony_cutscene(void) {
     set_segment_base_addr(6, (void *) decompress_segments((u8 *) &_course_banshee_boardwalk_dl_mio0SegmentRomStart, (u8 *) &_course_yoshi_valley_dl_mio0SegmentRomStart));
     D_8015F8E4 = -2000.0f;
 
-    D_8015F6EA = -0x15A1;
-    D_8015F6EE = -0x15A1;
-    D_8015F6F2 = -0x15A1;
+    gMapMinX = -0x15A1;
+    gMapMinY = -0x15A1;
+    gMapMinZ = -0x15A1;
 
-    D_8015F6E8 = 0x15A1;
-    D_8015F6EC = 0x15A1;
-    D_8015F6F0 = 0x15A1;
+    gMapMaxX = 0x15A1;
+    gMapMaxY = 0x15A1;
+    gMapMaxZ = 0x15A1;
 
     D_8015F59C = 0;
     D_8015F5A0 = 0;

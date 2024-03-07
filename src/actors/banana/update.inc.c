@@ -1,4 +1,7 @@
 #include <actors.h>
+#include <code_800029B0.h>
+#include <defines.h>
+#include <main.h>
 
 void update_actor_banana(struct BananaActor *banana) {
     UNUSED f32 pad;
@@ -88,8 +91,8 @@ void update_actor_banana(struct BananaActor *banana) {
             banana->velocity[1] -= 0.15f;
         }
         banana->pos[1] += banana->velocity[1];
-        if ((banana->pos[2] < (f32) D_8015F6F2) || ((f32) D_8015F6F0 < banana->pos[2]) || (banana->pos[0] < (f32) D_8015F6EA) || ((f32) D_8015F6E8 < banana->pos[0]) || (banana->pos[1] < (f32) D_8015F6EE)) {
-            func_8029FDC8((struct Actor *) banana);
+        if ((banana->pos[2] < (f32) gMapMinZ) || ((f32) gMapMaxZ < banana->pos[2]) || (banana->pos[0] < (f32) gMapMinX) || ((f32) gMapMaxX < banana->pos[0]) || (banana->pos[1] < (f32) gMapMinY)) {
+            destroy_destructable_actor((struct Actor *) banana);
         } else {
             func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
             banana->unk30.unk34 = 1;
