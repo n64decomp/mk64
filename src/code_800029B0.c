@@ -322,7 +322,7 @@ void func_80003040(void) {
         case COURSE_YOSHI_VALLEY:
             vec3f_set(position, -2300.0f, 0.0f, 634.0f);
             position[0] *= gCourseDirection;
-            addActorToEmptySlot(position, rotation, velocity, ACTOR_YOSHI_EGG);
+            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
             break;
         case COURSE_MOO_MOO_FARM:
             dma_textures(gTextureTrees4Left,  0x3E8, 0x800);
@@ -355,11 +355,11 @@ void func_80003040(void) {
             break;
         case COURSE_WARIO_STADIUM:
             vec3f_set(position, -131.0f, 83.0f, 286.0f);
-            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
             vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
-            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
             vec3f_set(position, -2622.0f, 79.0f, 739.0f);
-            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
             // d_course_wario_stadium_packed_dl_C50
             find_vtx_and_set_colours(0x07000C50, 0x64, 0xFF, 0xFF, 0xFF);
             // d_course_wario_stadium_packed_dl_BD8

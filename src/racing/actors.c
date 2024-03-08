@@ -387,10 +387,10 @@ void func_802977B0(Player *arg0) {
 }
 
 void func_802977E4(Player *arg0) {
-    arg0->boundingBoxCorners[1].unk_14 &= 0xFFFD;
-    arg0->boundingBoxCorners[0].unk_14 &= 0xFFFD;
-    arg0->boundingBoxCorners[3].unk_14 &= 0xFFFD;
-    arg0->boundingBoxCorners[2].unk_14 &= 0xFFFD;
+    arg0->boundingBoxCorners[1].unk_14 &= ~2 & 0xFFFF;
+    arg0->boundingBoxCorners[0].unk_14 &= ~2 & 0xFFFF;
+    arg0->boundingBoxCorners[3].unk_14 &= ~2 & 0xFFFF;
+    arg0->boundingBoxCorners[2].unk_14 &= ~2 & 0xFFFF;
 }
 
 // Invert green and red on green shell texture
@@ -406,7 +406,7 @@ void init_red_shell_texture(void) {
         blue_color = color_pixel & 0x3E;
         alpha_color = color_pixel & 0x1;
 
-        *red_shell_texture = (red_color >> 5) | (green_color << 5) | blue_color | alpha_color; // Invert color
+        *red_shell_texture = (red_color >> 5) | (green_color << 5) | blue_color | alpha_color; // Invert green and red
         green_shell_texture++;
         red_shell_texture++;
     }
@@ -414,28 +414,27 @@ void init_red_shell_texture(void) {
 
 UNUSED void func_80297944(void) {};
 
-void func_8029794C(Vec3f arg0, Vec3s arg1, f32 arg2) {
+void func_8029794C(Vec3f pos, Vec3s rot, f32 scale) {
     Mat4 sp20;
-    arg0[1] += 2.0f;
+    pos[1] += 2.0f;
 
-    mtxf_pos_rotation_xyz(sp20, arg0, arg1);
-    mtxf_scale(sp20, arg2);
+    mtxf_pos_rotation_xyz(sp20, pos, rot);
+    mtxf_scale(sp20, scale);
     if (render_set_position(sp20, 0) != 0) {
-
         gSPDisplayList(gDisplayListHead++, D_0D007B20);
-        arg0[1] -= 2.0f;
+        pos[1] -= 2.0f;
     }
 }
 
 void func_802979F8(struct Actor *arg0, UNUSED f32 arg1) {
-    Vec3f sp24;
-    Vec3s sp1C;
+    Vec3f pos;
+    Vec3s rot;
 
     if (arg0->unk30.unk34 != 0) {
 
-        func_802976EC(&arg0->unk30, sp1C); // arg0 + 0x30
-        func_80297760(arg0, sp24);
-        func_8029794C(sp24, sp1C, 0.45f);
+        func_802976EC(&arg0->unk30, rot); // arg0 + 0x30
+        func_80297760(arg0, pos);
+        func_8029794C(pos, rot, 0.45f);
     }
 }
 
@@ -743,7 +742,7 @@ UNUSED s16 D_802B8810[] = {
 
 UNUSED void func_8029ABD4(f32 *pos, s16 state) {
     gNumActors = 0;
-    gActorList[func_8029ED38(pos, 0x0014)].state = state;
+    gActorList[allocate_actor_with_new_position(pos, 0x0014)].state = state;
 }
 
 void func_8029AC18(Camera *camera, Mat4 arg1, struct Actor *arg2) {
@@ -821,7 +820,7 @@ void place_piranha_plants(struct ActorSpawnData *spawnData) {
         startingPos[0] = temp_s0->pos[0] * gCourseDirection;
         startingPos[1] = temp_s0->pos[1];
         startingPos[2] = temp_s0->pos[2];
-        temp = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_PIRANHA_PLANT);
+        temp = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_PIRANHA_PLANT);
         temp_v1 = (struct PiranhaPlant *) &gActorList[temp];
         temp_v1->visibilityStates[0] = 0;
         temp_v1->visibilityStates[1] = 0;
@@ -852,7 +851,7 @@ void place_palm_trees(struct ActorSpawnData *spawnData) {
         startingPos[0] = temp_s0->pos[0] * gCourseDirection;
         startingPos[1] = temp_s0->pos[1];
         startingPos[2] = temp_s0->pos[2];
-        temp = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_PALM_TREE);
+        temp = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_PALM_TREE);
         temp_v1 = (struct PalmTree *) &gActorList[temp];
 
         temp_v1->variant = temp_s0->someId;
@@ -932,7 +931,7 @@ void spawn_foliage(struct ActorSpawnData *arg0) {
             break;
         }
 
-        temp_s0 = &gActorList[addActorToEmptySlot(position, rotation, velocity, actorType)];
+        temp_s0 = &gActorList[add_actor_to_empty_slot(position, rotation, velocity, actorType)];
         if (gGamestate == CREDITS_SEQUENCE) {
             func_802976D8(temp_s0->rot);
         } else {
@@ -967,7 +966,7 @@ void place_all_item_boxes(struct ActorSpawnData *spawnData) {
         startingRot[0] = random_u16();
         startingRot[1] = random_u16();
         startingRot[2] = random_u16();
-        temp_s1 = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_ITEM_BOX);
+        temp_s1 = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_ITEM_BOX);
         temp_f0 = func_802AE1C0(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
 
         // Should be struct ItemBox but not enough space in the stack.
@@ -1004,7 +1003,7 @@ void init_kiwano_fruit(void) {
         if ((phi_s1->type & 0x4000) == 0) { continue; }
         if ((phi_s1->type & 0x100) != 0) { continue; }
 
-        phi_s0 = addActorToEmptySlot(sp64, sp50, sp58, ACTOR_KIWANO_FRUIT);
+        phi_s0 = add_actor_to_empty_slot(sp64, sp50, sp58, ACTOR_KIWANO_FRUIT);
         actor = &gActorList[phi_s0];
         actor->unk_04 = i;
     }
@@ -1044,10 +1043,10 @@ void place_course_actors(void) {
         place_all_item_boxes(d_course_mario_raceway_item_box_spawns);
         vec3f_set(position, 150.0f, 40.0f, -1300.0f);
         position[0] *= gCourseDirection;
-        addActorToEmptySlot(position, rotation, velocity, ACTOR_MARIO_SIGN);
+        add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
         vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
         position[0] *= gCourseDirection;
-        actor = &gActorList[addActorToEmptySlot(position, rotation, velocity, ACTOR_MARIO_SIGN)];
+        actor = &gActorList[add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN)];
         actor->flags |= 0x4000;
         break;
     case COURSE_CHOCO_MOUNTAIN:
@@ -1066,7 +1065,7 @@ void place_course_actors(void) {
         place_all_item_boxes(d_course_yoshi_valley_item_box_spawns);
         vec3f_set(position, -2300.0f, 0.0f, 634.0f);
         position[0] *= gCourseDirection;
-        addActorToEmptySlot(position, rotation, velocity, ACTOR_YOSHI_EGG);
+        add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
         break;
     case COURSE_FRAPPE_SNOWLAND:
         spawn_foliage(d_course_frappe_snowland_tree_spawns);
@@ -1100,20 +1099,20 @@ void place_course_actors(void) {
         place_all_item_boxes(d_course_kalimari_desert_item_box_spawns);
         vec3f_set(position, -1680.0f, 2.0f, 35.0f);
         position[0] *= gCourseDirection;
-        rrxing = (struct RailroadCrossing *)&gActorList[addActorToEmptySlot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
+        rrxing = (struct RailroadCrossing *)&gActorList[add_actor_to_empty_slot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
         rrxing->crossingId = 1;
         vec3f_set(position, -1600.0f, 2.0f, 35.0f);
         position[0] *= gCourseDirection;
-        rrxing = (struct RailroadCrossing *)&gActorList[addActorToEmptySlot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
+        rrxing = (struct RailroadCrossing *)&gActorList[add_actor_to_empty_slot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
         rrxing->crossingId = 1;
         vec3s_set(rotation, 0, -0x2000, 0);
         vec3f_set(position, -2459.0f, 2.0f, 2263.0f);
         position[0] *= gCourseDirection;
-        rrxing = (struct RailroadCrossing *)&gActorList[addActorToEmptySlot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
+        rrxing = (struct RailroadCrossing *)&gActorList[add_actor_to_empty_slot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
         rrxing->crossingId = 0;
         vec3f_set(position, -2467.0f, 2.0f, 2375.0f);
         position[0] *= gCourseDirection;
-        rrxing = (struct RailroadCrossing *)&gActorList[addActorToEmptySlot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
+        rrxing = (struct RailroadCrossing *)&gActorList[add_actor_to_empty_slot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
         rrxing->crossingId = 0;
         break;
     case COURSE_SHERBET_LAND:
@@ -1126,13 +1125,13 @@ void place_course_actors(void) {
         place_all_item_boxes(d_course_wario_stadium_item_box_spawns);
         vec3f_set(position, -131.0f, 83.0f, 286.0f);
         position[0] *= gCourseDirection;
-        addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+        add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
         vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
         position[0] *= gCourseDirection;
-        addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+        add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
         vec3f_set(position, -2622.0f, 79.0f, 739.0f);
         position[0] *= gCourseDirection;
-        addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+        add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
         break;
     case COURSE_BLOCK_FORT:
         place_all_item_boxes(d_course_block_fort_item_box_spawns);
@@ -1256,7 +1255,7 @@ void func_8029E158(void) {
     init_course_vehicles();
 }
 
-void func_8029E7DC(struct Actor *actor) {
+void play_sound_before_destroy(struct Actor *actor) {
     s16 temp_v0 = actor->flags;
 
     if ((temp_v0 & 0x200) != 0) {
@@ -1285,7 +1284,7 @@ void func_8029E7DC(struct Actor *actor) {
  * @param Actor to destroy
  */
 void destroy_actor(struct Actor *actor) {
-    func_8029E7DC(actor);
+    play_sound_before_destroy(actor);
     actor->flags = 0;
     actor->type = 0;
     gNumActors--;
@@ -1309,7 +1308,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                 		case BLUE_SHELL_TARGET_ELIMINATED:
                     		remove_actor_in_unexpired_actor_list(actorIndex);
                 		case DESTROYED_SHELL:
-                    		func_8029E7DC((struct Actor *) compare);
+                    		play_sound_before_destroy((struct Actor *) compare);
                     		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                     		return actorIndex;
                 		default:
@@ -1321,7 +1320,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                 		case MOVING_SHELL:
                     		remove_actor_in_unexpired_actor_list(actorIndex);
                 		case DESTROYED_SHELL:
-                    		func_8029E7DC((struct Actor *) compare);
+                    		play_sound_before_destroy((struct Actor *) compare);
                     		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                     		return actorIndex;
                 	}
@@ -1331,7 +1330,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                 		case DROPPED_BANANA:
                 		case BANANA_ON_GROUND:
                 		case DESTROYED_BANANA:
-                    		func_8029E7DC((struct Actor *) compare);
+                    		play_sound_before_destroy((struct Actor *) compare);
                     		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                     		return actorIndex;
                 	}
@@ -1340,7 +1339,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
                 	switch(compare->state) {
                 		case FAKE_ITEM_BOX_ON_GROUND:
                 		case DESTROYED_FAKE_ITEM_BOX:
-                    		func_8029E7DC((struct Actor *) compare);
+                    		play_sound_before_destroy((struct Actor *) compare);
                     		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                     		return actorIndex;
                 	}
@@ -1364,7 +1363,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
             		case BLUE_SHELL_TARGET_ELIMINATED:
                 		remove_actor_in_unexpired_actor_list(actorIndex);
             		case DESTROYED_SHELL:
-                		func_8029E7DC((struct Actor *) compare);
+                		play_sound_before_destroy((struct Actor *) compare);
                 		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                 		return actorIndex;
             		default:
@@ -1376,7 +1375,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
             		case MOVING_SHELL:
                 		remove_actor_in_unexpired_actor_list(actorIndex);
             		case DESTROYED_SHELL:
-                		func_8029E7DC((struct Actor *) compare);
+                		play_sound_before_destroy((struct Actor *) compare);
                 		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                 		return actorIndex;
             	}
@@ -1386,7 +1385,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
             		case DROPPED_BANANA:
             		case BANANA_ON_GROUND:
             		case DESTROYED_BANANA:
-                		func_8029E7DC((struct Actor *) compare);
+                		play_sound_before_destroy((struct Actor *) compare);
                 		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                 		return actorIndex;
             	}
@@ -1395,7 +1394,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
             	switch(compare->state) {
             		case FAKE_ITEM_BOX_ON_GROUND:
             		case DESTROYED_FAKE_ITEM_BOX:
-                		func_8029E7DC((struct Actor *) compare);
+                		play_sound_before_destroy((struct Actor *) compare);
                 		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                 		return actorIndex;
             	}
@@ -1409,7 +1408,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
 }
 
 // returns actor index if any slot avaible returns -1
-s16 addActorToEmptySlot(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
+s16 add_actor_to_empty_slot(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
     s32 index;
 
     if (gNumActors >= ACTOR_LIST_SIZE) {
@@ -1425,21 +1424,21 @@ s16 addActorToEmptySlot(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
     return -1;
 }
 
-s16 func_8029ED38(Vec3f pos, s16 actorType) {
+s16 allocate_actor_with_new_position(Vec3f pos, s16 actorType) {
     Vec3f vel;
     Vec3s rot;
 
     vec3f_set(vel, 0.0f, 0.0f, 0.0f);
     vec3s_set(rot, 0, 0, 0);
-    return addActorToEmptySlot(pos, rot, vel, actorType);
+    return add_actor_to_empty_slot(pos, rot, vel, actorType);
 }
 
-// I swear we have a struct that looks like this already but I cannot find it anywhere
+// not ActorSpawnData but very similar in structure and use
 struct test {
     Vec3s thing;
 };
 
-UNUSED void func_8029ED98(Player *player, uintptr_t arg1) {
+UNUSED void proto_loading_actor_spawn_data(Player *player, uintptr_t arg1) {
     Vec3f sp64;
     struct test *var_s0;
     s32 segment = SEGMENT_NUMBER2(arg1);
@@ -2391,7 +2390,7 @@ void func_802A14BC(f32 x, f32 y, f32 z) {
     pos[0] = x;
     pos[1] = y;
     pos[2] = z;
-    id = addActorToEmptySlot(pos, rot, velocity, ACTOR_HOT_AIR_BALLOON_ITEM_BOX);
+    id = add_actor_to_empty_slot(pos, rot, velocity, ACTOR_HOT_AIR_BALLOON_ITEM_BOX);
     gActorHotAirBalloonItemBox = &gActorList[id];
 }
 

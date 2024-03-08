@@ -514,7 +514,7 @@ s32 use_banana_bunch_item(Player *player) {
     struct BananaBunchParent *bananaBunch;
 
     // this have a animation of spawning so see update_actor_banana_bunch
-    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_BANANA_BUNCH);
+    actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_BANANA_BUNCH);
     if (actorIndex < 0) {
         return actorIndex;
     }
@@ -533,7 +533,7 @@ s32 use_triple_shell_item(Player *player, s16 tripleShellType) {
     TripleShellParent *parent;
 
     // this have a animation of spawning so see update_actor_triple_shell
-    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, tripleShellType);
+    actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, tripleShellType);
     if (actorIndex < 0) {
         return actorIndex;
     }
@@ -562,7 +562,7 @@ s32 init_triple_shell(TripleShellParent *parent, Player *player, s16 shellType, 
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
 
-    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, shellType);
+    actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, shellType);
     if (actorIndex < 0) {
         parent->shellIndices[shellId] = -1.0f;
         return -1;
@@ -613,7 +613,7 @@ s32 use_green_shell_item(Player *player) {
     startingPos[2] += player->pos[2];
     
     // spawn the shell
-    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_GREEN_SHELL);
+    actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_GREEN_SHELL);
     if (actorIndex < 0) {
         return actorIndex;
     }
@@ -652,7 +652,7 @@ s32 use_red_shell_item(Player *player) {
     startingPos[2] += player->pos[2];
 
     // spawn the shell
-    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_RED_SHELL);
+    actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_RED_SHELL);
     if (actorIndex < 0) {
         return actorIndex;
     }
@@ -702,7 +702,7 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
     startingRot[0] = 0;
     startingRot[1] = 0;
     startingRot[2] = 0;
-    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_BANANA);
+    actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_BANANA);
     if (actorIndex >= 0) {
         newBanana = (struct BananaActor*)&gActorList[actorIndex];
         startingPos[0] = player->pos[0];
@@ -788,7 +788,7 @@ s32 use_fake_itembox_item(Player *player) {
     startingRot[2] = 0;
 
     // spawn the itembox
-    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_FAKE_ITEM_BOX);
+    actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_FAKE_ITEM_BOX);
     if (actorIndex < 0) {
         return actorIndex;
     }
@@ -834,7 +834,7 @@ s32 use_banana_item(Player *player) {
     startingRot[1] = 0;
     startingRot[2] = 0;
 
-    actorIndex = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_BANANA); // spawn banana
+    actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_BANANA); // spawn banana
     if (actorIndex < 0) {
         return actorIndex;
     }

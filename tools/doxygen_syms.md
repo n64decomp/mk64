@@ -4913,12 +4913,12 @@ Variable Name | Memory Address
 [destroy_all_actors](@ref destroy_all_actors) | 0x8029DAB8
 [place_course_actors](@ref place_course_actors) | 0x8029DB44
 [func_8029E158](@ref func_8029E158) | 0x8029E158
-[func_8029E7DC](@ref func_8029E7DC) | 0x8029E7DC
+[play_sound_before_destroy](@ref play_sound_before_destroy) | 0x8029E7DC
 [destroy_actor](@ref destroy_actor) | 0x8029E854
 [func_8029E890](@ref func_8029E890) | 0x8029E890
-[addActorToEmptySlot](@ref addActorToEmptySlot) | 0x8029EC88
-[func_8029ED38](@ref func_8029ED38) | 0x8029ED38
-[func_8029ED98](@ref func_8029ED98) | 0x8029ED98
+[add_actor_to_empty_slot](@ref add_actor_to_empty_slot) | 0x8029EC88
+[allocate_actor_with_new_position](@ref allocate_actor_with_new_position) | 0x8029ED38
+[proto_loading_actor_spawn_data](@ref proto_loading_actor_spawn_data) | 0x8029ED98
 [is_collide_and_apply](@ref is_collide_and_apply) | 0x8029EEB8
 [collide_mario_sign](@ref collide_mario_sign) | 0x8029F1F8
 [collide_piranha_plant](@ref collide_piranha_plant) | 0x8029F2FC
