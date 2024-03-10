@@ -1701,7 +1701,7 @@ void func_802966A0(void) {
             }
             // d_course_dks_jungle_parkway_packed_dl_9880
             find_and_set_tile_size((uintptr_t)0x07009880, 0, D_802B87C4);
-            func_80298C94();
+            evaluate_collision_players_palm_trees();
             break;
     }
 }

@@ -11,20 +11,20 @@ void render_actor_banana(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *b
 
     f32 temp = is_within_render_distance(camera->pos, banana->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 490000.0f);
     if (temp < 0.0f) {
-        func_80297230(camera, (struct Actor *) banana);
+        actor_not_render_on_a_camera(camera, (struct Actor *) banana);
         return;
     }
 
     if ((banana->pos[1] > gMapMaxY + 800.0f)) {
-        func_80297230(camera, (struct Actor *) banana);
+        actor_not_render_on_a_camera(camera, (struct Actor *) banana);
         return;
     }
     if (banana->pos[1] < (gMapMinY - 800.0f)) {
-        func_80297230(camera, (struct Actor *) banana);
+        actor_not_render_on_a_camera(camera, (struct Actor *) banana);
         return;
     }
 
-    func_802972B8(camera, (struct Actor *) banana);
+    actor_render_on_a_camera(camera, (struct Actor *) banana);
 
     if (banana->state == 5) {
         mtxf_pos_rotation_xyz(sp3C, banana->pos, banana->rot);

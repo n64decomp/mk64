@@ -129,188 +129,188 @@ void actor_init(struct Actor *actor, Vec3f startingPos, Vec3s startingRot, Vec3f
     actor->boundingBoxSize = 0.0f;
     func_802AAAAC(&actor->unk30);
     switch (actorType) {
-    case ACTOR_BOX_TRUCK:
-        if ((s32) D_802BA260 >= 3) {
-            D_802BA260 = 0;
-		}
-        actor->state = (s16) D_802BA260;
-        D_802BA260 += 1;
-        break;
-    case ACTOR_YOSHI_EGG:
-        actor->flags |= 0x4000;
-        actor->unk_08 = 70.0f;
-        actor->boundingBoxSize = 20.0f;
-        actor->velocity[0] = actor->pos[0];
-        actor->velocity[1] = actor->pos[1];
-        actor->velocity[2] = actor->pos[2] + 70.0f;
-        break;
-    case ACTOR_KIWANO_FRUIT:
-        actor->state = 0;
-        actor->rot[0] = 0;
-        actor->rot[1] = 0;
-        actor->rot[2] = 0;
-        actor->boundingBoxSize = 2.0f;
-        break;
-    case ACTOR_FALLING_ROCK:
-        actor->flags |= 0x4000;
-        actor->boundingBoxSize = 10.0f;
-        break;
-    case ACTOR_TRAIN_ENGINE:
-        actor->unk_08 = 10.0f;
-        break;
-    case ACTOR_BANANA:
-        actor->flags = actor->flags | 0x4000 | 0x1000;
-        actor->boundingBoxSize = 2.0f;
-        break;
-    case ACTOR_GREEN_SHELL:
-        gNumSpawnedShells += 1;
-        actor->unk_04 = 0;
-        actor->boundingBoxSize = 4.0f;
-        actor->flags = actor->flags | 0x4000 | 0x2000 | 0x1000;
-        if ((s32) gNumSpawnedShells >= 0x15) {
-            cleanup_red_and_green_shells((struct ShellActor *) actor);
-        }
-        break;
-    case ACTOR_RED_SHELL:
-        gNumSpawnedShells += 1;
-        actor->unk_04 = 0;
-        actor->boundingBoxSize = 4.0f;
-        actor->flags = actor->flags | 0x4000 | 0x2000 | 0x1000;
-        if ((s32) gNumSpawnedShells >= 0x15) {
-            cleanup_red_and_green_shells((struct ShellActor *) actor);
-        }
-        break;
-    case ACTOR_TREE_MARIO_RACEWAY:
-        gNumSpawnedShells += 1;
-        actor->flags |= 0x4000;
-        actor->state = 0x0043;
-        actor->boundingBoxSize = 3.0f;
-        actor->unk_08 = 20.0f;
-        break;
-    case ACTOR_TREE_YOSHI_VALLEY:
-        actor->flags |= 0x4000;
-        actor->state = 0x0043;
-        actor->boundingBoxSize = 3.0f;
-        actor->unk_08 = 23.0f;
-        break;
-    case ACTOR_TREE_ROYAL_RACEWAY:
-        actor->flags |= 0x4000;
-        actor->state = 0x0043;
-        actor->boundingBoxSize = 3.0f;
-        actor->unk_08 = 17.0f;
-        break;
-    case ACTOR_TREE_MOO_MOO_FARM:
-        actor->state = 0x0043;
-        actor->flags = -0x8000;
-        actor->boundingBoxSize = 3.0f;
-        actor->unk_08 = 17.0f;
-        break;
-    case 26:
-        actor->flags |= 0x4000;
-        actor->state = 0x0043;
-        actor->boundingBoxSize = 3.0f;
-        actor->unk_08 = 17.0f;
-        break;
-    case 28:
-        actor->state = 0x0043;
-        actor->flags = -0x8000;
-        actor->boundingBoxSize = 3.0f;
-        actor->unk_08 = 17.0f;
-        break;
-    case 33:
-        actor->flags |= 0x4000;
-        actor->state = 0x0043;
-        actor->boundingBoxSize = 3.0f;
-        actor->unk_08 = 17.0f;
-        break;
-    case 29:
-        actor->flags |= 0x4000;
-        actor->state = 0x0043;
-        actor->boundingBoxSize = 3.0f;
-        actor->unk_08 = 17.0f;
-        break;
-    case 30:
-        actor->flags |= 0x4000;
-        actor->state = 0x0019;
-        actor->boundingBoxSize = 3.0f;
-        actor->unk_08 = 7.0f;
-        break;
-    case 31:
-        actor->flags |= 0x4000;
-        actor->state = 0x0019;
-        actor->boundingBoxSize = 3.0f;
-        actor->unk_08 = 7.0f;
-        break;
-    case 32:
-        actor->flags |= 0x4000;
-        actor->state = 0x0019;
-        actor->boundingBoxSize = 3.0f;
-        actor->unk_08 = 7.0f;
-        break;
-    case ACTOR_PALM_TREE:
-        actor->flags |= 0x4000;
-        actor->state = 0x003C;
-        actor->boundingBoxSize = 3.0f;
-        actor->unk_08 = 13.0f;
-        break;
-    case ACTOR_FAKE_ITEM_BOX:
-        actor->flags = actor->flags | 0x4000 | 0x1000;
-        actor->unk_08 = 0.35f;
-        actor->boundingBoxSize = 1.925f;
-        func_802ADDC8(&actor->unk30, 1.925f, actor->pos[0], actor->pos[1], actor->pos[2]);
-        break;
-    case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
-        actor->flags |= 0x4000;
-        actor->unk_04 = 0;
-        actor->state = 5;
-        actor->boundingBoxSize = 5.5f;
-        break;
-    case ACTOR_ITEM_BOX:
-        actor->flags |= 0x4000;
-        actor->unk_04 = 0;
-        actor->state = 0;
-        actor->boundingBoxSize = 5.5f;
-        break;
-    case ACTOR_PIRANHA_PLANT:
-        actor->flags |= 0x4000;
-        actor->state = 0x001E;
-        actor->boundingBoxSize = 5.0f;
-        break;
-    default:
-        break;
+        case ACTOR_BOX_TRUCK:
+            if ((s32) D_802BA260 >= 3) {
+                D_802BA260 = 0;
+            }
+            actor->state = (s16) D_802BA260;
+            D_802BA260 += 1;
+            break;
+        case ACTOR_YOSHI_EGG:
+            actor->flags |= 0x4000;
+            actor->unk_08 = 70.0f;
+            actor->boundingBoxSize = 20.0f;
+            actor->velocity[0] = actor->pos[0];
+            actor->velocity[1] = actor->pos[1];
+            actor->velocity[2] = actor->pos[2] + 70.0f;
+            break;
+        case ACTOR_KIWANO_FRUIT:
+            actor->state = 0;
+            actor->rot[0] = 0;
+            actor->rot[1] = 0;
+            actor->rot[2] = 0;
+            actor->boundingBoxSize = 2.0f;
+            break;
+        case ACTOR_FALLING_ROCK:
+            actor->flags |= 0x4000;
+            actor->boundingBoxSize = 10.0f;
+            break;
+        case ACTOR_TRAIN_ENGINE:
+            actor->unk_08 = 10.0f;
+            break;
+        case ACTOR_BANANA:
+            actor->flags = actor->flags | 0x4000 | 0x1000;
+            actor->boundingBoxSize = 2.0f;
+            break;
+        case ACTOR_GREEN_SHELL:
+            gNumSpawnedShells += 1;
+            actor->unk_04 = 0;
+            actor->boundingBoxSize = 4.0f;
+            actor->flags = actor->flags | 0x4000 | 0x2000 | 0x1000;
+            if ((s32) gNumSpawnedShells >= 0x15) {
+                cleanup_red_and_green_shells((struct ShellActor *) actor);
+            }
+            break;
+        case ACTOR_RED_SHELL:
+            gNumSpawnedShells += 1;
+            actor->unk_04 = 0;
+            actor->boundingBoxSize = 4.0f;
+            actor->flags = actor->flags | 0x4000 | 0x2000 | 0x1000;
+            if ((s32) gNumSpawnedShells >= 0x15) {
+                cleanup_red_and_green_shells((struct ShellActor *) actor);
+            }
+            break;
+        case ACTOR_TREE_MARIO_RACEWAY:
+            gNumSpawnedShells += 1;
+            actor->flags |= 0x4000;
+            actor->state = 0x0043;
+            actor->boundingBoxSize = 3.0f;
+            actor->unk_08 = 20.0f;
+            break;
+        case ACTOR_TREE_YOSHI_VALLEY:
+            actor->flags |= 0x4000;
+            actor->state = 0x0043;
+            actor->boundingBoxSize = 3.0f;
+            actor->unk_08 = 23.0f;
+            break;
+        case ACTOR_TREE_ROYAL_RACEWAY:
+            actor->flags |= 0x4000;
+            actor->state = 0x0043;
+            actor->boundingBoxSize = 3.0f;
+            actor->unk_08 = 17.0f;
+            break;
+        case ACTOR_TREE_MOO_MOO_FARM:
+            actor->state = 0x0043;
+            actor->flags = -0x8000;
+            actor->boundingBoxSize = 3.0f;
+            actor->unk_08 = 17.0f;
+            break;
+        case 26:
+            actor->flags |= 0x4000;
+            actor->state = 0x0043;
+            actor->boundingBoxSize = 3.0f;
+            actor->unk_08 = 17.0f;
+            break;
+        case 28:
+            actor->state = 0x0043;
+            actor->flags = -0x8000;
+            actor->boundingBoxSize = 3.0f;
+            actor->unk_08 = 17.0f;
+            break;
+        case 33:
+            actor->flags |= 0x4000;
+            actor->state = 0x0043;
+            actor->boundingBoxSize = 3.0f;
+            actor->unk_08 = 17.0f;
+            break;
+        case 29:
+            actor->flags |= 0x4000;
+            actor->state = 0x0043;
+            actor->boundingBoxSize = 3.0f;
+            actor->unk_08 = 17.0f;
+            break;
+        case 30:
+            actor->flags |= 0x4000;
+            actor->state = 0x0019;
+            actor->boundingBoxSize = 3.0f;
+            actor->unk_08 = 7.0f;
+            break;
+        case 31:
+            actor->flags |= 0x4000;
+            actor->state = 0x0019;
+            actor->boundingBoxSize = 3.0f;
+            actor->unk_08 = 7.0f;
+            break;
+        case 32:
+            actor->flags |= 0x4000;
+            actor->state = 0x0019;
+            actor->boundingBoxSize = 3.0f;
+            actor->unk_08 = 7.0f;
+            break;
+        case ACTOR_PALM_TREE:
+            actor->flags |= 0x4000;
+            actor->state = 0x003C;
+            actor->boundingBoxSize = 3.0f;
+            actor->unk_08 = 13.0f;
+            break;
+        case ACTOR_FAKE_ITEM_BOX:
+            actor->flags = actor->flags | 0x4000 | 0x1000;
+            actor->unk_08 = 0.35f;
+            actor->boundingBoxSize = 1.925f;
+            func_802ADDC8(&actor->unk30, 1.925f, actor->pos[0], actor->pos[1], actor->pos[2]);
+            break;
+        case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
+            actor->flags |= 0x4000;
+            actor->unk_04 = 0;
+            actor->state = 5;
+            actor->boundingBoxSize = 5.5f;
+            break;
+        case ACTOR_ITEM_BOX:
+            actor->flags |= 0x4000;
+            actor->unk_04 = 0;
+            actor->state = 0;
+            actor->boundingBoxSize = 5.5f;
+            break;
+        case ACTOR_PIRANHA_PLANT:
+            actor->flags |= 0x4000;
+            actor->state = 0x001E;
+            actor->boundingBoxSize = 5.0f;
+            break;
+        default:
+            break;
     }
 }
 
-void func_80297230(Camera *arg0, struct Actor *arg1) {
+void actor_not_render_on_a_camera(Camera *arg0, struct Actor *arg1) {
     switch(arg0 - camera1) {
         case PLAYER_ONE:
-            arg1->flags &= ~1;
+            arg1->flags &= ~(1<<PLAYER_ONE);
             break;
         case PLAYER_TWO:
-            arg1->flags &= ~2;
+            arg1->flags &= ~(1<<PLAYER_TWO);
             break;
         case PLAYER_THREE:
-            arg1->flags &= ~4;
+            arg1->flags &= ~(1<<PLAYER_THREE);
             break;
         case PLAYER_FOUR:
-            arg1->flags &= ~8;
+            arg1->flags &= ~(1<<PLAYER_FOUR);
             break;
     }
 }
 
-void func_802972B8(Camera *arg0, struct Actor *arg1) {
+void actor_render_on_a_camera(Camera *arg0, struct Actor *arg1) {
    	switch(arg0 - camera1) {
         case PLAYER_ONE:
-            arg1->flags |= 1;
+            arg1->flags |= 1<<PLAYER_ONE;
             break;
         case PLAYER_TWO:
-            arg1->flags |= 2;
+            arg1->flags |= 1<<PLAYER_TWO;
             break;
         case PLAYER_THREE:
-            arg1->flags |= 4;
+            arg1->flags |= 1<<PLAYER_THREE;
             break;
         case PLAYER_FOUR:
-            arg1->flags |= 8;
+            arg1->flags |= 1<<PLAYER_FOUR;
             break;
     }
 }
@@ -535,17 +535,17 @@ void render_actor_cows(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     }
 }
 
-void func_80298AC0(Player *player) {
-    Vec3f sp64;
+void evaluate_collision_player_palm_trees(Player *player) {
+    Vec3f pos;
     s32 segment = SEGMENT_NUMBER2(d_course_dks_jungle_parkway_tree_spawn);
     s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
     struct UnkActorSpawnData *data = (struct UnkActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
 
     while (data->pos[0] != END_OF_SPAWN_DATA) {
-        sp64[0] = data->pos[0] * gCourseDirection;
-        sp64[1] = data->pos[1];
-        sp64[2] = data->pos[2];
-        if (is_collide_and_apply(player, sp64, 5.0f, 40.0f, 0.8f) == TRUE) {
+        pos[0] = data->pos[0] * gCourseDirection;
+        pos[1] = data->pos[1];
+        pos[2] = data->pos[2];
+        if (is_collide_and_apply(player, pos, 5.0f, 40.0f, 0.8f) == TRUE) {
             if ((player->effects & STAR_EFFECT) != 0) {
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
                 func_800C90F4((u8) (player - gPlayerOne), (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
@@ -560,13 +560,13 @@ void func_80298AC0(Player *player) {
     }
 }
 
-void func_80298C94(void) {
+void evaluate_collision_players_palm_trees(void) {
     s32 index;
 
     for (index = 0; index < 4; index++){
-        // wtf is up with the << 0x18 >> 0x18? is it some weird type conversion?
-        if (((gPlayers[index].type & 0xC000) != 0) && (((get_surface_type(gPlayers[index].unk_110.unk3A) << 0x18) >> 0x18) == 8)) {
-            func_80298AC0(&gPlayers[index]);
+        // wtf is up with the << 0x18 >> 0x18? is it some weird type conversion? just use & 0xFF have the same effect to keep 8 first bit
+        if (((gPlayers[index].type & 0xC000) != 0) && (((get_surface_type(gPlayers[index].unk_110.unk3A) << 24) >> 24) == GRASS)) {
+            evaluate_collision_player_palm_trees(&gPlayers[index]);
         }
     }
 }
@@ -683,11 +683,11 @@ void render_actor_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
     f32 temp_f0 = is_within_render_distance(camera->pos, shell->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 490000.0f);
     s32 maxObjectsReached;
     if (temp_f0 < 0.0f) {
-        func_80297230(camera, (struct Actor *)shell);
+        actor_not_render_on_a_camera(camera, (struct Actor *)shell);
         return;
     }
 
-    func_802972B8(camera, (struct Actor *) shell);
+    actor_render_on_a_camera(camera, (struct Actor *) shell);
     if (temp_f0 < 40000.0f) {
         func_802979F8((struct Actor *) shell, 3.4f);
     }
@@ -1256,17 +1256,17 @@ void func_8029E158(void) {
 }
 
 void play_sound_before_destroy(struct Actor *actor) {
-    s16 temp_v0 = actor->flags;
+    s16 flags = actor->flags;
 
-    if ((temp_v0 & 0x200) != 0) {
+    if ((flags & 0x200) != 0) {
         func_800C99E0(actor->pos, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
         return;
     }
-    if ((temp_v0 & 0x100) != 0) {
+    if ((flags & 0x100) != 0) {
         func_800C99E0(actor->pos, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
         return;
     }
-    if ((temp_v0 & 0x80) != 0) {
+    if ((flags & 0x80) != 0) {
         func_800C99E0(actor->pos, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));
     }
 }
@@ -1765,40 +1765,40 @@ bool func_8029FB80(Player *arg0, struct Actor *arg1) {
     return TRUE;
 }
 
-bool func_8029FCA4(struct Actor *arg0, struct Actor *arg1) {
+bool is_two_actor_collide(struct Actor *arg0, struct Actor *arg1) {
     f32 temp_f0;
-    f32 temp_f12_2;
-    f32 temp_f14;
-    f32 temp_f16;
-    f32 temp_f2;
+    f32 dist;
+    f32 dist_y;
+    f32 dist_z;
+    f32 dist_x;
 
     temp_f0 = arg0->boundingBoxSize + arg1->boundingBoxSize;
-    temp_f2 = arg0->pos[0] - arg1->pos[0];
-    if (temp_f0 < temp_f2) {
+    dist_x = arg0->pos[0] - arg1->pos[0];
+    if (temp_f0 < dist_x) {
         return FALSE;
     }
-    if (temp_f2 < -temp_f0) {
+    if (dist_x < -temp_f0) {
         return FALSE;
     }
-    temp_f14 = arg0->pos[1] - arg1->pos[1];
-    if (temp_f0 < temp_f14) {
+    dist_y = arg0->pos[1] - arg1->pos[1];
+    if (temp_f0 < dist_y) {
         return FALSE;
     }
-    if (temp_f14 < -temp_f0) {
+    if (dist_y < -temp_f0) {
         return FALSE;
     }
-    temp_f16 = arg0->pos[2] - arg1->pos[2];
-    if (temp_f0 < temp_f16) {
+    dist_z = arg0->pos[2] - arg1->pos[2];
+    if (temp_f0 < dist_z) {
         return FALSE;
     }
-    if (temp_f16 < -temp_f0) {
+    if (dist_z < -temp_f0) {
         return FALSE;
     }
-    temp_f12_2 = (temp_f2 * temp_f2) + (temp_f14 * temp_f14) + (temp_f16 * temp_f16);
-    if (temp_f12_2 < 0.1f) {
+    dist = (dist_x * dist_x) + (dist_y * dist_y) + (dist_z * dist_z);
+    if (dist < 0.1f) {
         return FALSE;
     }
-    if ((temp_f0 * temp_f0) < temp_f12_2) {
+    if ((temp_f0 * temp_f0) < dist) {
         return FALSE;
     }
     return TRUE;
@@ -1924,7 +1924,7 @@ void destroy_destructable_actor(struct Actor *actor) {
     }
 }
 
-void func_802A00E8(struct Actor *arg0, struct Actor *arg1) {
+void make_sound_between_two_destroyables_collide(struct Actor *arg0, struct Actor *arg1) {
     switch(arg0->type) {
         case ACTOR_GREEN_SHELL:
             if ((arg0->state == HELD_SHELL) || (arg0->state == TRIPLE_GREEN_SHELL)) {
@@ -1991,34 +1991,34 @@ void func_802A00E8(struct Actor *arg0, struct Actor *arg1) {
     func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
 }
 
-void func_802A0350(struct Actor *arg0, struct Actor *arg1) {
-    if (func_8029FCA4(arg0, arg1) == 1) {
-        if ((arg0->type == ACTOR_BLUE_SPINY_SHELL) && (arg1->type == ACTOR_BLUE_SPINY_SHELL)) {
-            destroy_destructable_actor(arg0);
-            destroy_destructable_actor(arg1);
-            arg0->flags |= 256;
-            func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
+void evaluate_actor_collision_between_two_destroyables(struct Actor *actor1, struct Actor *actor2) {
+    if (is_two_actor_collide(actor1, actor2) == TRUE) {
+        if ((actor1->type == ACTOR_BLUE_SPINY_SHELL) && (actor2->type == ACTOR_BLUE_SPINY_SHELL)) {
+            destroy_destructable_actor(actor1);
+            destroy_destructable_actor(actor2);
+            actor1->flags |= 0x100;
+            func_800C98B8(actor1->pos, actor1->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             return;
         }
-        if (arg0->type == ACTOR_BLUE_SPINY_SHELL) {
-            if (arg0->state == HELD_SHELL) {
-                destroy_destructable_actor(arg0);
+        if (actor1->type == ACTOR_BLUE_SPINY_SHELL) {
+            if (actor1->state == HELD_SHELL) {
+                destroy_destructable_actor(actor1);
             }
         } else {
-            destroy_destructable_actor(arg0);
+            destroy_destructable_actor(actor1); // automatically destroy if it's something different of a blueshell
         }
-        if (arg1->type == ACTOR_BLUE_SPINY_SHELL) {
-            if (arg1->state == HELD_SHELL) {
-                destroy_destructable_actor(arg1);
+        if (actor2->type == ACTOR_BLUE_SPINY_SHELL) {
+            if (actor2->state == HELD_SHELL) {
+                destroy_destructable_actor(actor2);
             }
         } else {
-            destroy_destructable_actor(arg1);
+            destroy_destructable_actor(actor2); // automatically destroy if it's something different of a blueshell
         }
-        func_802A00E8(arg0, arg1);
+        make_sound_between_two_destroyables_collide(actor1, actor2);
     }
 }
 
-void func_802A0450(Player *player, struct Actor *actor) {
+void evaluate_collision_between_player_actor(Player *player, struct Actor *actor) {
     UNUSED s32 pad;
     s16 temp_lo;
     UNUSED s32 pad2[2];
@@ -2029,125 +2029,17 @@ void func_802A0450(Player *player, struct Actor *actor) {
 
     temp_lo = player - gPlayerOne;
     switch (actor->type) {
-    case ACTOR_YOSHI_EGG:
-        if (!(player->effects & BOO_EFFECT) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
-            collision_yoshi_egg(player, (struct YoshiValleyEgg *) actor);
-        }
-        break;
-    case ACTOR_BANANA:
-        if (player->effects & (BOO_EFFECT | 0x8C0)) { break; }
-        if (player->soundEffects & 1) { break; }
-        temp_v1 = actor->rot[0];
-        if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        player->soundEffects |= 1;
-        owner = &gPlayers[temp_v1];
-        if (owner->type & 0x4000) {
-            if (actor->flags & 0xF) {
-                if (temp_lo != temp_v1) {
-                    func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
-                }
-            } else {
-                temp_f0 = actor->pos[0] - owner->pos[0];
-                temp_f2 = actor->pos[2] - owner->pos[2];
-                if ((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 360000.0f) && (temp_lo != temp_v1)) {
-                    func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
-                }
+        case ACTOR_YOSHI_EGG:
+            if (!(player->effects & BOO_EFFECT) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
+                collision_yoshi_egg(player, (struct YoshiValleyEgg *) actor);
             }
-        }
-        destroy_destructable_actor(actor);
-        break;
-    case ACTOR_GREEN_SHELL:
-        if (player->effects & 0x80000400) { break; }
-        if (player->soundEffects & 4) { break; }
-        temp_v1 = actor->rot[2];
-        if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        player->soundEffects |= 4;
-        func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
-        owner = &gPlayers[temp_v1];
-        if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
-            func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
-        }
-        destroy_destructable_actor(actor);
-        break;
-    case ACTOR_BLUE_SPINY_SHELL:
-        if (player->soundEffects & 2) { break; }
-        temp_v1 = actor->rot[2];
-        if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        if (!(player->effects & BOO_EFFECT)) {
-            player->soundEffects |= 2;
-            func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
-        }
-        owner = &gPlayers[temp_v1];
-        if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
-            func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
-        }
-        if (temp_lo == actor->unk_04) {
-            destroy_destructable_actor(actor);
-        }
-        break;
-    case ACTOR_RED_SHELL:
-        temp_v1 = actor->rot[2];
-        if (player->effects & 0x01000000) { break; }
-        if (player->soundEffects & 2) { break; }
-        temp_v1 = actor->rot[2];
-        if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        if (!(player->effects & BOO_EFFECT)) {
-            player->soundEffects |= 2;
-            func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
-        }
-        owner = &gPlayers[temp_v1];
-        if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
-            func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
-        }
-        destroy_destructable_actor(actor);
-        break;
-    case ACTOR_PIRANHA_PLANT:
-        if (!(player->effects & BOO_EFFECT)) {
-            collide_piranha_plant(player, (struct PiranhaPlant *) actor);
-        }
-        break;
-    case ACTOR_MARIO_SIGN:
-        if (!(player->effects & BOO_EFFECT)) {
-            collide_mario_sign(player, actor);
-        }
-        break;
-    case 2:
-    case 3:
-    case 4:
-    case 19:
-    case 25:
-    case 26:
-    case 28:
-    case 29:
-    case 30:
-    case 31:
-    case 32:
-    case 33:
-        if (!(player->effects & BOO_EFFECT)) {
-            func_8029F69C(player, actor);
-        }
-        break;
-    case ACTOR_FALLING_ROCK:
-        if (!(player->effects & BOO_EFFECT) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
-            if (func_8029FB80(player, actor) == 1) {
-                func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
-                if ((gModeSelection == TIME_TRIALS) && !(player->type & PLAYER_CPU)) {
-                    D_80162DF8 = 1;
-                }
-                if (player->effects & STAR_EFFECT) {
-                    actor->velocity[1] = 10.0f;
-                } else {
-                    apply_hit_sound_effect(player, player - gPlayerOne);
-                }
-            }
-        }
-        break;
-    case ACTOR_FAKE_ITEM_BOX:
-        temp_v1 = actor->velocity[0];
-        if (player->effects & BOO_EFFECT) { break; }
-        temp_v1 = actor->velocity[0];
-        if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-            player->soundEffects |= REVERSE_SOUND_EFFECT;
+            break;
+        case ACTOR_BANANA:
+            if (player->effects & (BOO_EFFECT | 0x8C0)) { break; }
+            if (player->soundEffects & 1) { break; }
+            temp_v1 = actor->rot[0];
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
+            player->soundEffects |= 1;
             owner = &gPlayers[temp_v1];
             if (owner->type & 0x4000) {
                 if (actor->flags & 0xF) {
@@ -2161,46 +2053,154 @@ void func_802A0450(Player *player, struct Actor *actor) {
                         func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
                     }
                 }
-                if (actor->state == 0) {
-                    owner->soundEffects &= ~0x00040000;
+            }
+            destroy_destructable_actor(actor);
+            break;
+        case ACTOR_GREEN_SHELL:
+            if (player->effects & 0x80000400) { break; }
+            if (player->soundEffects & 4) { break; }
+            temp_v1 = actor->rot[2];
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
+            player->soundEffects |= 4;
+            func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
+            owner = &gPlayers[temp_v1];
+            if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
+                func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
+            }
+            destroy_destructable_actor(actor);
+            break;
+        case ACTOR_BLUE_SPINY_SHELL:
+            if (player->soundEffects & 2) { break; }
+            temp_v1 = actor->rot[2];
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
+            if (!(player->effects & BOO_EFFECT)) {
+                player->soundEffects |= 2;
+                func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
+            }
+            owner = &gPlayers[temp_v1];
+            if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
+                func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
+            }
+            if (temp_lo == actor->unk_04) {
+                destroy_destructable_actor(actor);
+            }
+            break;
+        case ACTOR_RED_SHELL:
+            temp_v1 = actor->rot[2];
+            if (player->effects & 0x01000000) { break; }
+            if (player->soundEffects & 2) { break; }
+            temp_v1 = actor->rot[2];
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
+            if (!(player->effects & BOO_EFFECT)) {
+                player->soundEffects |= 2;
+                func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
+            }
+            owner = &gPlayers[temp_v1];
+            if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
+                func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
+            }
+            destroy_destructable_actor(actor);
+            break;
+        case ACTOR_PIRANHA_PLANT:
+            if (!(player->effects & BOO_EFFECT)) {
+                collide_piranha_plant(player, (struct PiranhaPlant *) actor);
+            }
+            break;
+        case ACTOR_MARIO_SIGN:
+            if (!(player->effects & BOO_EFFECT)) {
+                collide_mario_sign(player, actor);
+            }
+            break;
+        case 2:
+        case 3:
+        case 4:
+        case 19:
+        case 25:
+        case 26:
+        case 28:
+        case 29:
+        case 30:
+        case 31:
+        case 32:
+        case 33:
+            if (!(player->effects & BOO_EFFECT)) {
+                func_8029F69C(player, actor);
+            }
+            break;
+        case ACTOR_FALLING_ROCK:
+            if (!(player->effects & BOO_EFFECT) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
+                if (func_8029FB80(player, actor) == 1) {
+                    func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
+                    if ((gModeSelection == TIME_TRIALS) && !(player->type & PLAYER_CPU)) {
+                        D_80162DF8 = 1;
+                    }
+                    if (player->effects & STAR_EFFECT) {
+                        actor->velocity[1] = 10.0f;
+                    } else {
+                        apply_hit_sound_effect(player, player - gPlayerOne);
+                    }
                 }
             }
-            actor->state = 2;
-            actor->flags = -0x8000;
-            actor->unk_04 = 0;
-        break;
-    case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
-        if (func_8029FB80(player, actor) == 1) {
-            actor->state = 3;
-            actor->flags = -0x8000;
-            actor->unk_04 = 0;
-            if (player->type & PLAYER_HUMAN) {
-                func_8007ABFC(player - gPlayerOne, 7);
+            break;
+        case ACTOR_FAKE_ITEM_BOX:
+            temp_v1 = actor->velocity[0];
+            if (player->effects & BOO_EFFECT) { break; }
+            temp_v1 = actor->velocity[0];
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
+                player->soundEffects |= REVERSE_SOUND_EFFECT;
+                owner = &gPlayers[temp_v1];
+                if (owner->type & 0x4000) {
+                    if (actor->flags & 0xF) {
+                        if (temp_lo != temp_v1) {
+                            func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
+                        }
+                    } else {
+                        temp_f0 = actor->pos[0] - owner->pos[0];
+                        temp_f2 = actor->pos[2] - owner->pos[2];
+                        if ((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 360000.0f) && (temp_lo != temp_v1)) {
+                            func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
+                        }
+                    }
+                    if (actor->state == 0) {
+                        owner->soundEffects &= ~0x00040000;
+                    }
+                }
+                actor->state = 2;
+                actor->flags = -0x8000;
+                actor->unk_04 = 0;
+            break;
+        case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
+            if (func_8029FB80(player, actor) == 1) {
+                actor->state = 3;
+                actor->flags = -0x8000;
+                actor->unk_04 = 0;
+                if (player->type & PLAYER_HUMAN) {
+                    func_8007ABFC(player - gPlayerOne, 7);
+                }
+            } else if (actor->state == 0) {
+                actor->state = 1;
+                actor->flags = -0x8000;
             }
-        } else if (actor->state == 0) {
-            actor->state = 1;
-            actor->flags = -0x8000;
-        }
-        break;
-    case ACTOR_ITEM_BOX:
-        if (func_8029FB80(player, actor) == (s32) 1) {
-            actor->state = 3;
-            actor->flags = -0x8000;
-            actor->unk_04 = 0;
-            if (player->type & PLAYER_HUMAN) {
-                func_8007ABFC(player - gPlayerOne, 0);
+            break;
+        case ACTOR_ITEM_BOX:
+            if (func_8029FB80(player, actor) == (s32) 1) {
+                actor->state = 3;
+                actor->flags = -0x8000;
+                actor->unk_04 = 0;
+                if (player->type & PLAYER_HUMAN) {
+                    func_8007ABFC(player - gPlayerOne, 0);
+                }
+            } else if (actor->state == 0) {
+                actor->state = 1;
+                actor->flags = -0x8000;
             }
-        } else if (actor->state == 0) {
-            actor->state = 1;
-            actor->flags = -0x8000;
-        }
-        break;
-    default:
-        break;
+            break;
+        default:
+            break;
     }
 }
 
-void evaluate_player_collision(void) {
+void evaluate_player_actors_collision(void) {
     struct Actor *temp_a1;
     s32 i, j;
     Player *phi_s1;
@@ -2210,34 +2210,34 @@ void evaluate_player_collision(void) {
 
         if (((phi_s1->type & 0x8000) != 0) && ((phi_s1->effects & 0x4000000) == 0)) {
             func_802977E4(phi_s1);
-                for (j = 0; j < ACTOR_LIST_SIZE; j++) {
-                    temp_a1 = &gActorList[j];
+            for (j = 0; j < ACTOR_LIST_SIZE; j++) {
+                temp_a1 = &gActorList[j];
 
-                    if ((phi_s1->effects & 0x4000000) == 0) {
-                       // temp_v0 = temp_a1->unk2;
-                        if (((temp_a1->flags & 0x8000) != 0) && ((temp_a1->flags & 0x4000) != 0)) {
-                            func_802A0450(phi_s1, temp_a1);
-                        }
+                if ((phi_s1->effects & 0x4000000) == 0) {
+                    // temp_v0 = temp_a1->unk2;
+                    if (((temp_a1->flags & 0x8000) != 0) && ((temp_a1->flags & 0x4000) != 0)) {
+                        evaluate_collision_between_player_actor(phi_s1, temp_a1);
                     }
+                }
             }
         }
     }
 }
 
 // It's look like to check collision between item and other different item
-void func_802A0E44(void) {
-    struct Actor *phi_s0;
-    struct Actor *temp_a1;
+void evaluate_destroyables_destroyables_actor_collision(void) {
+    struct Actor *actor1;
+    struct Actor *actor2;
     s32 i, j;
     UNUSED s32 pad;
 
     for (i = gNumPermanentActors; i < (ACTOR_LIST_SIZE - 1); i++) {
-        phi_s0 = &gActorList[i];
+        actor1 = &gActorList[i];
 
-        if ((phi_s0->flags & 0x8000) == 0) { continue; }
-        if ((phi_s0->flags & 0x4000) == 0) { continue; }
+        if ((actor1->flags & 0x8000) == 0) { continue; }
+        if ((actor1->flags & 0x4000) == 0) { continue; }
 
-        switch(phi_s0->type) {
+        switch(actor1->type) {
             case ACTOR_BANANA:
             case ACTOR_GREEN_SHELL:
             case ACTOR_RED_SHELL:
@@ -2245,34 +2245,34 @@ void func_802A0E44(void) {
             case ACTOR_FAKE_ITEM_BOX:
 
                 for (j = i + 1; j < ACTOR_LIST_SIZE; j++) {
-                    temp_a1 = &gActorList[j];
+                    actor2 = &gActorList[j];
 
-                    if ((phi_s0->flags & 0x8000) == 0) {continue;}
-                    if  ((phi_s0->flags & 0x4000) == 0) {continue;}
+                    if ((actor1->flags & 0x8000) == 0) {continue;}
+                    if  ((actor1->flags & 0x4000) == 0) {continue;}
 
-                    if ((temp_a1->flags & 0x8000) == 0) { continue; }
-                    if ((temp_a1->flags & 0x4000) == 0) { continue; }
+                    if ((actor2->flags & 0x8000) == 0) { continue; }
+                    if ((actor2->flags & 0x4000) == 0) { continue; }
 
-                    switch(temp_a1->type) {
+                    switch(actor2->type) {
                         case ACTOR_BANANA:
-                            if (phi_s0->type == ACTOR_BANANA) { continue; }
-                                func_802A0350(phi_s0, temp_a1);
+                            if (actor1->type == ACTOR_BANANA) { continue; }
+                            evaluate_actor_collision_between_two_destroyables(actor1, actor2);
                             break;
                         case ACTOR_GREEN_SHELL:
-                            if (phi_s0->type == ACTOR_GREEN_SHELL) {
-                                if (phi_s0->rot[2] == temp_a1->rot[2]) { continue; }
+                            if (actor1->type == ACTOR_GREEN_SHELL) {
+                                if (actor1->rot[2] == actor2->rot[2]) { continue; }
                             }
-                            func_802A0350(phi_s0, temp_a1);
+                            evaluate_actor_collision_between_two_destroyables(actor1, actor2);
                             break;
                         case ACTOR_RED_SHELL:
-                            if (phi_s0->type == ACTOR_RED_SHELL) {
-                                if (phi_s0->rot[2] == temp_a1->rot[2]) { continue; }
+                            if (actor1->type == ACTOR_RED_SHELL) {
+                                if (actor1->rot[2] == actor2->rot[2]) { continue; }
                             }
-                            func_802A0350(phi_s0, temp_a1);
+                            evaluate_actor_collision_between_two_destroyables(actor1, actor2);
                             break;
                         case ACTOR_BLUE_SPINY_SHELL:
                         case ACTOR_FAKE_ITEM_BOX:
-                            func_802A0350(phi_s0, temp_a1);
+                            evaluate_actor_collision_between_two_destroyables(actor1, actor2);
                             break;
                     }
                 }
@@ -2465,19 +2465,19 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
     f32 someMultiplier;
 
     if (is_within_render_distance(camera->pos, fakeItemBox->pos, camera->rot[1], 2500.0f, gCameraZoom[camera - camera1], 1000000.0f) < 0) {
-        func_80297230(camera, (struct Actor *) fakeItemBox);
+        actor_not_render_on_a_camera(camera, (struct Actor *) fakeItemBox);
         return;
     }
     if (((f32) gMapMaxY + 800.0f) < fakeItemBox->pos[1]) {
-        func_80297230(camera, (struct Actor *) fakeItemBox);
+        actor_not_render_on_a_camera(camera, (struct Actor *) fakeItemBox);
         return;
     }
     if (fakeItemBox->pos[1] < ((f32) gMapMinY - 800.0f)) {
-        func_80297230(camera, (struct Actor *) fakeItemBox);
+        actor_not_render_on_a_camera(camera, (struct Actor *) fakeItemBox);
         return;
     }
 
-    func_802972B8(camera, (struct Actor *) fakeItemBox);
+    actor_render_on_a_camera(camera, (struct Actor *) fakeItemBox);
     someRot[0] = 0;
     someRot[1] = fakeItemBox->rot[1];
     someRot[2] = 0;
@@ -2794,7 +2794,7 @@ void render_actor_palm_tree(Camera *arg0, UNUSED Mat4 arg1, struct PalmTree *arg
     }
 }
 
-void func_802A2F34(struct UnkStruct_800DC5EC *arg0) {
+void render_item_boxs(struct UnkStruct_800DC5EC *arg0) {
     Camera *camera = arg0->camera;
     struct Actor *actor;
     s32 i;
@@ -3064,8 +3064,8 @@ void update_course_actors(void) {
             case ACTOR_YOSHI_EGG:
                 update_actor_yoshi_egg((struct YoshiValleyEgg *) actor);
                 break;
-            }
         }
-    func_802A0E44();
+    }
+    evaluate_destroyables_destroyables_actor_collision();
     func_802B30EC();
 }
