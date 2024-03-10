@@ -4946,7 +4946,7 @@ void func_80099AEC(void) {
         var_s0 = ((var_s0 / 8) * 8) + 8;
     }
     osInvalDCache(D_8018D9B4, var_s0);
-    osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[(uintptr_t)temp_s2->textureData & 0xFFFFFF], D_8018D9B4, var_s0, &gDmaMesgQueue);
+    osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     while (1) {
         if ((var_s1 + 1)->texture == NULL) {
@@ -4963,7 +4963,7 @@ void func_80099AEC(void) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
             osInvalDCache(D_8018D9B4 + sp60*4, var_s0);
-            osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[(uintptr_t)temp_s2->textureData & 0xFFFFFF], D_8018D9B4 + sp60*4, var_s0, &gDmaMesgQueue);
+            osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + sp60*4, var_s0, &gDmaMesgQueue);
         }
         mio0decode(D_8018D9B4, &D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
         var_s1->texture = NULL;
@@ -4984,7 +4984,7 @@ void func_80099AEC(void) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
             osInvalDCache(D_8018D9B4, var_s0);
-            osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[(uintptr_t)temp_s2->textureData & 0xFFFFFF], D_8018D9B4, var_s0, &gDmaMesgQueue);
+            osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
         }
         mio0decode(D_8018D9B4 + sp60*4, &D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
         var_s1->texture = NULL;
@@ -5045,10 +5045,10 @@ void func_80099EC4(void) {
         var_s0 = ((var_s0 / 8) * 8) + 8;
     }
     osInvalDCache(D_8018D9B4, var_s0);
-    test = &_textures_0aSegmentRomStart[(uintptr_t)temp_s2->textureData & 0xFFFFFF];
+    test = &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)];
     osPiStartDma(&sp68, 0, 0, test, D_8018D9B4, var_s0, &gDmaMesgQueue);
     if ((var_s0 && var_s0) && var_s0) {}
-    // osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[(uintptr_t)temp_s2->textureData & 0xFFFFFF], D_8018D9B4, var_s0, &gDmaMesgQueue);
+    // osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     while (1) {
         if ((var_s1 + 1)->mk64Texture == NULL) {
@@ -5065,7 +5065,7 @@ void func_80099EC4(void) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
             osInvalDCache(D_8018D9B4 + 0x1400, var_s0);
-            osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[(uintptr_t)temp_s2->textureData & 0xFFFFFF], D_8018D9B4 + 0x1400, var_s0, &gDmaMesgQueue);
+            osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4 + 0x1400, var_s0, &gDmaMesgQueue);
         }
         mio0decode(D_8018D9B4, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
@@ -5086,7 +5086,7 @@ void func_80099EC4(void) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
             osInvalDCache(D_8018D9B4, var_s0);
-            osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[(uintptr_t)temp_s2->textureData & 0xFFFFFF], D_8018D9B4, var_s0, &gDmaMesgQueue);
+            osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0, &gDmaMesgQueue);
         }
         mio0decode(D_8018D9B4 + 0x1400, D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
