@@ -1,6 +1,6 @@
 NOLIGHTS_DIR := assets/lakitu/nolights
 
-NOLIGHTS_PALETTE := $(NOLIGHTS_DIR)/gTLUTLakituNoLights.png
+NOLIGHTS_PALETTE := $(NOLIGHTS_DIR)/common_tlut_lakitu_no_lights.png
 
 NOLIGHTS_FRAMES := \
 $(NOLIGHTS_DIR)/gTextureLakituNoLights1.png \
@@ -28,7 +28,7 @@ $(NOLIGHTS_FRAMES) $(NOLIGHTS_PALETTE): $(NOLIGHTS_EXPORT_SENTINEL) ;
 
 $(NOLIGHTS_EXPORT_SENTINEL): assets/lakitu/nolights.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_nolights
 distclean_lakitu_nolights:

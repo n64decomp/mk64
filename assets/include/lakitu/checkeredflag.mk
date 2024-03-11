@@ -1,6 +1,6 @@
 CHECKEREDFLAG_DIR := assets/lakitu/checkeredflag
 
-CHECKEREDFLAG_PALETTE := $(CHECKEREDFLAG_DIR)/gTLUTLakituCheckeredFlag.png
+CHECKEREDFLAG_PALETTE := $(CHECKEREDFLAG_DIR)/common_tlut_lakitu_checkered_flag.png
 
 CHECKEREDFLAG_FRAMES := \
 $(CHECKEREDFLAG_DIR)/gTextureLakituCheckeredFlag01.png \
@@ -52,7 +52,7 @@ $(CHECKEREDFLAG_FRAMES) $(CHECKEREDFLAG_PALETTE): $(CHECKEREDFLAG_EXPORT_SENTINE
 
 $(CHECKEREDFLAG_EXPORT_SENTINEL): assets/lakitu/checkeredflag.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_checkeredflag
 distclean_lakitu_checkeredflag:

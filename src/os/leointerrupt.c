@@ -8,7 +8,7 @@ u8 leoDiskStack[OS_PIM_STACKSIZE]; // technically should have a OS_LEO_STACKSIZE
 
 #ifdef VERSION_SH
 
-// TODO: so many magic constants :'(
+//! @todo so many magic constants :'(
 static void __osLeoResume(void);
 static void __osLeoAbnormalResume(void);
 

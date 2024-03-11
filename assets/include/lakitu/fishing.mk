@@ -1,6 +1,6 @@
 FISHING_DIR := assets/lakitu/fishing
 
-FISHING_PALETTE := $(FISHING_DIR)/gTLUTLakituFishing.png
+FISHING_PALETTE := $(FISHING_DIR)/common_tlut_lakitu_fishing.png
 
 FISHING_FRAMES := \
 $(FISHING_DIR)/gTextureLakituFishing1.png \
@@ -24,7 +24,7 @@ $(FISHING_FRAMES) $(FISHING_PALETTE): $(FISHING_EXPORT_SENTINEL) ;
 
 $(FISHING_EXPORT_SENTINEL): assets/lakitu/fishing.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_fishing
 distclean_lakitu_fishing:

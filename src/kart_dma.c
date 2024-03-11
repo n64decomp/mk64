@@ -1,10 +1,10 @@
 #include <ultra64.h>
 #include <macros.h>
 #include "main.h"
-#include "variables.h"
-#include "framebuffers.h"
+#include "buffers.h"
 #include "common_structs.h"
 #include "kart_dma.h"
+#include "defines.h"
 
 // Seemingly the largest compressed size for a frame for a given character
 // They seem slightly oversized too, either an alignemnt or safety thing

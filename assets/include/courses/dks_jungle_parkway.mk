@@ -43,7 +43,7 @@ $(DKS_JUNGLE_PARKWAY_PNG): $(DKS_JUNGLE_PARKWAY_EXPORT_SENTINEL) ;
 
 $(DKS_JUNGLE_PARKWAY_EXPORT_SENTINEL): $(ASSET_DIR)/courses/dks_jungle_parkway.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_dks_junk_parkway
 distclean_dks_junk_parkway:

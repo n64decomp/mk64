@@ -3,13 +3,15 @@
 #include <types.h>
 #include <common_structs.h>
 #include <defines.h>
-#include <functions.h>
+#include <decode.h>
 #include "main.h"
 #include "code_800029B0.h"
-#include "framebuffers.h"
+#include "buffers.h"
 #include "save.h"
 #include "staff_ghosts.h"
+#include "code_8006E9C0.h"
 #include "code_80091750.h"
+#include "code_80057C60.h"
 
 extern s32 mio0encode(s32 input, s32, s32);
 extern s32 func_80040174(void *, s32, s32);
@@ -62,7 +64,6 @@ u32 *D_800DC714 = (u32 *) &D_802BFB80[1][1][3];
 extern u8 _kart_texturesSegmentRomStart;
 
 extern s32 gLapCountByPlayerId[];
-extern s32 D_8018CA78;
 
 extern StaffGhost *d_mario_raceway_staff_ghost;
 extern StaffGhost *d_royal_raceway_staff_ghost;
@@ -483,7 +484,7 @@ void func_80005B18(void) {
                 D_80162DE0 = gPlayerOne->characterId;
                 D_80162DE8 = gPlayerOne->characterId;
                 D_80162E00 = 0;
-                D_80162DFC = D_8018CA78;
+                D_80162DFC = playerHUD[PLAYER_ONE].someTimer;
                 func_80005AE8(gPlayerTwo);
                 func_80005AE8(gPlayerThree);
             } else if (gLapCountByPlayerId[1] != 3) {
@@ -491,7 +492,7 @@ void func_80005B18(void) {
                 func_800052A4();
                 D_80162DDC = 1;
                 D_80162DE0 = gPlayerOne->characterId;
-                D_80162DFC = D_8018CA78;
+                D_80162DFC = playerHUD[PLAYER_ONE].someTimer;
                 D_80162E00 = 0;
                 D_80162DE8 = gPlayerOne->characterId;
                 func_80005AE8(gPlayerTwo);

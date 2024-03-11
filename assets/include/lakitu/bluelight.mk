@@ -1,6 +1,6 @@
 BLUELIGHT_DIR := assets/lakitu/bluelight
 
-BLUELIGHT_PALETTE := $(BLUELIGHT_DIR)/gTLUTLakituBlueLight.png
+BLUELIGHT_PALETTE := $(BLUELIGHT_DIR)/common_tlut_lakitu_blue_lights.png
 
 BLUELIGHT_FRAMES := \
 $(BLUELIGHT_DIR)/gTextureLakituBlueLight1.png \
@@ -28,7 +28,7 @@ $(BLUELIGHT_FRAMES) $(BLUELIGHT_PALETTE): $(BLUELIGHT_EXPORT_SENTINEL) ;
 
 $(BLUELIGHT_EXPORT_SENTINEL): assets/lakitu/bluelight.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_bluelight
 distclean_lakitu_bluelight:

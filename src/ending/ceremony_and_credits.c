@@ -7,8 +7,8 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <types.h>
+#include <segments.h>
 #include <common_structs.h>
-#include "variables.h"
 #include "math_util.h"
 #include "ceremony_and_credits.h"
 #include "code_800029B0.h"
@@ -20,6 +20,8 @@
 #include <sounds.h>
 #include "podium_ceremony_actors.h"
 #include "code_80091750.h"
+#include "code_80057C60.h"
+#include "defines.h"
 
 f32 D_802856B0 = 98.0f;
 f32 D_802856B4 = 12.0f;
@@ -377,7 +379,7 @@ dummy_label_888430: ;
   }
 }
 
-// todo: Cast to normal Camera? Or from CinematicCamera?
+//! @todo Cast to normal Camera? Or from CinematicCamera?
 s32 func_80282D90(struct CinematicCamera *camera, struct struct_80286A04 *arg1, struct struct_80286A04 *arg2, s32 arg3) {
     s32 res;
 
@@ -497,7 +499,7 @@ s32 func_80283330(s32 arg0) {
 
 extern s32 D_802876D8;
 
-// todo: Does this match as a return of s8?
+//! @todo Does this match as a return of s8?
 s32 func_8028336C(UNUSED struct CinematicCamera *arg0, UNUSED Camera *camera) {
   u8 sp20[] = { 2, 3, 4, 5, 5, 5, 5, 5 };
   if (D_802876D8 != 0)
@@ -506,7 +508,7 @@ s32 func_8028336C(UNUSED struct CinematicCamera *arg0, UNUSED Camera *camera) {
   }
   switch (gGamestate)
   {
-    case ENDING_SEQUENCE:
+    case ENDING:
       D_802876D8 = sp20[D_802874D8.unk1D];
       break;
 
@@ -567,7 +569,7 @@ void init_cinematic_camera(void) {
 
     D_802856C0 = 0.0f;
 
-    if (gGamestate == ENDING_SEQUENCE) {
+    if (gGamestate == ENDING) {
         D_802856B0 = 120.0f;
         D_802856B4 = 12.0f;
         D_802856B8 = 120.0f;
@@ -680,7 +682,7 @@ void play_sound_congratulation(UNUSED struct CinematicCamera *camera) {
 }
 
 /**
- * Played in ceremony opening with ballons.
+ * Played in ceremony opening with balloons.
  */
 void play_sound_balloon_pop(UNUSED struct CinematicCamera *camera) {
     play_sound2(SOUND_CEREMONY_BALLOON_POP);
@@ -1177,7 +1179,7 @@ void func_802846B4(struct CinematicCamera *camera) {
     func_80282D90(camera, (struct struct_80286A04 *) D_80285C38, (struct struct_80286A04 *) D_80285C74, 0);
 }
 
-// todo: What does this even do?
+//! @todo What does this even do?
 void func_802846E4(struct CinematicCamera *camera) {
 
     func_80282D90(camera, (struct struct_80286A04 *) D_80285CB0, (struct struct_80286A04 *) D_80285CE0, 0);

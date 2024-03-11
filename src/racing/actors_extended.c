@@ -12,10 +12,11 @@
 #include "actors.h"
 #include "actors_extended.h"
 #include "audio/external.h"
-#include "code_80071F00.h"
-#include "code_8008C1D0.h"
+#include "update_objects.h"
+#include "effects.h"
+#include "sounds.h"
 
-void func_802B0210(Collision *arg0, Collision *arg1) {
+void copy_collision(Collision *arg0, Collision *arg1) {
     arg1->unk30 = arg0->unk30;
     arg1->unk32 = arg0->unk32;
     arg1->unk34 = arg0->unk34;
@@ -28,7 +29,7 @@ void func_802B0210(Collision *arg0, Collision *arg1) {
 
     vec3f_copy_return(arg1->unk48, arg0->unk48);
     vec3f_copy_return(arg1->unk54, arg0->unk54);
-    vec3f_copy_return(arg1->unk60, arg0->unk60);
+    vec3f_copy_return(arg1->orientationVector, arg0->orientationVector);
 }
 
 void func_802B02B4(struct ShellActor *shell, s32 shellType) {
@@ -100,7 +101,7 @@ void func_802B0570(struct BananaActor *banana) {
     func_802B0464(banana->youngerIndex);
     func_802B04E8(banana, banana->elderIndex);
     if ((gPlayers[banana->playerId].type & 0x4000) != 0) {
-        func_800C9060(banana->playerId, 0x19019053);
+        func_800C9060(banana->playerId, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
     }
     banana->flags = -0x8000;
     banana->unk_04 = 0x003C;
@@ -192,7 +193,7 @@ void func_802B0788(s16 rawStickY, struct BananaBunchParent *banana_bunch, Player
         var_f12 = (player->unk_094 * 0.75f) + 4.5f + var_f0;
     }
     vec3f_set(velocity, 0.0f, var_f0, var_f12);
-    func_802B64C4(velocity, player->unk_02C[1] + player->unk_0C0);
+    func_802B64C4(velocity, player->rotation[1] + player->unk_0C0);
     banana->velocity[0] = velocity[0];
     banana->velocity[1] = velocity[1];
     banana->velocity[2] = velocity[2];
@@ -292,12 +293,12 @@ void update_actor_banana_bunch(struct BananaBunchParent *banana_bunch) {
         }
         if (someCount == 0) {
             destroy_actor((struct Actor *) banana_bunch);
-            owner->statusEffects &= ~HOLD_BANANA_EFFECT;
+            owner->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
         } else if ((owner->type & 0x4000) != 0) {
             controller = &gControllers[banana_bunch->playerId];
             if ((controller->buttonPressed & Z_TRIG) != 0) {
                 controller->buttonPressed &= ~Z_TRIG;
-                func_800C9060(owner - gPlayerOne, 0x19008012);
+                func_800C9060(owner - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                 if ((controller->rawStickY >= 0x1F) && ((controller->rawStickX < 0x28) && (controller->rawStickX >= -0x27))) {
                     func_802B0788(controller->rawStickY, banana_bunch, owner);
                 } else {
@@ -347,7 +348,7 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
     switch (parent->state) {
     case SPAWN_FIRST_SHELL:
         if (init_triple_shell(parent, &gPlayers[playerId], shellType, 0U) != -1) {
-            func_800C9060(playerId, 0x19008012);
+            func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
             parent->shellsAvailable += 1;
         }
         parent->state = SPAWN_SECOND_SHELL;
@@ -356,7 +357,7 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
         if (parent->rotVelocity > 0) {
             if (someRotAngle >= 0xD556) {
                 if (init_triple_shell(parent, &gPlayers[playerId], shellType, 1U) != -1) {
-                    func_800C9060(playerId, 0x19008012);
+                    func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                     parent->shellsAvailable += 1;
                 }
                 parent->state = SPAWN_THIRD_SHELL;
@@ -364,7 +365,7 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
         } else {
             if (someRotAngle < 0x2AAA) {
                 if (init_triple_shell(parent, &gPlayers[playerId], shellType, 1U) != -1) {
-                    func_800C9060(playerId, 0x19008012);
+                    func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                     parent->shellsAvailable += 1;
                 }
                 parent->state = SPAWN_THIRD_SHELL;
@@ -375,14 +376,14 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
         if (parent->rotVelocity > 0) {
             if ((someRotAngle >= 0x2AAB) && (someRotAngle < 0x31C7)) {
                 if (init_triple_shell(parent, &gPlayers[playerId], shellType, 2U) != -1) {
-                    func_800C9060(playerId, 0x19008012);
+                    func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                     parent->shellsAvailable += 1;
                 }
                 parent->state = 3;
             }
         } else if ((someRotAngle < 0xD555) && (someRotAngle >= 0xCE39)) {
             if (init_triple_shell(parent, &gPlayers[playerId], shellType, 2U) != -1) {
-                func_800C9060(playerId, 0x19008012);
+                func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                 parent->shellsAvailable += 1;
             }
             parent->state = 3;
@@ -429,14 +430,14 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     someVelocity[0] = 0;
                     someVelocity[1] = 0;
                     someVelocity[2] = 8;
-                    func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
+                    func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
                     shell->velocity[0] = someVelocity[0];
                     shell->velocity[1] = someVelocity[1];
                     shell->velocity[2] = someVelocity[2];
                     shell->state = MOVING_SHELL;
                     shell->someTimer = 0x001E;
-                    func_800C9060(parent->playerId, 0x19008004);
-                    func_800C90F4(parent->playerId, (player->characterId * 0x10) + 0x29008000);
+                    func_800C9060(parent->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                    func_800C90F4(parent->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                     if (parent->type == ACTOR_TRIPLE_RED_SHELL) {
                         func_8000ED80(parent->shellIndices[0]);
                     } else {
@@ -454,14 +455,14 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     someVelocity[0] = 0;
                     someVelocity[1] = 0;
                     someVelocity[2] = 8;
-                    func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
+                    func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
                     shell->velocity[0] = someVelocity[0];
                     shell->velocity[1] = someVelocity[1];
                     shell->velocity[2] = someVelocity[2];
                     shell->state = MOVING_SHELL;
                     shell->someTimer = 0x001E;
-                    func_800C90F4(parent->playerId, (player->characterId * 0x10) + 0x29008000);
-                    func_800C9060(parent->playerId, 0x19008004);
+                    func_800C90F4(parent->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
+                    func_800C9060(parent->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
                     if (parent->type == ACTOR_TRIPLE_RED_SHELL) {
                         func_8000ED80(parent->shellIndices[1]);
                     } else {
@@ -479,14 +480,14 @@ void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
                     someVelocity[0] = 0;
                     someVelocity[1] = 0;
                     someVelocity[2] = 8;
-                    func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
+                    func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
                     shell->velocity[0] = someVelocity[0];
                     shell->velocity[1] = someVelocity[1];
                     shell->velocity[2] = someVelocity[2];
                     shell->state = MOVING_SHELL;
                     shell->someTimer = 0x001E;
-                    func_800C9060(parent->playerId, 0x19008004);
-                    func_800C90F4(parent->playerId, (player->characterId * 0x10) + 0x29008000);
+                    func_800C9060(parent->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                    func_800C90F4(parent->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                     if (parent->type == ACTOR_TRIPLE_RED_SHELL) {
                         func_8000ED80(parent->shellIndices[2]);
                     } else {
@@ -520,7 +521,7 @@ s32 use_banana_bunch_item(Player *player) {
     bananaBunch = (struct BananaBunchParent *) &gActorList[actorIndex];
     bananaBunch->state = 0;
     bananaBunch->playerId = player - gPlayerOne;
-    player->statusEffects |= HOLD_BANANA_EFFECT;
+    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -664,7 +665,7 @@ s32 use_red_shell_item(Player *player) {
     func_802B4E30((struct Actor *)shell);
     shell->state = HELD_SHELL;
     shell->rotVelocity = 0;
-    shell->rotAngle = player->unk_02C[1] - 0x8000;
+    shell->rotAngle = player->rotation[1] - 0x8000;
     shell->playerId = player - gPlayerOne;
     return actorIndex;
 }
@@ -726,8 +727,8 @@ void update_actor_banana(struct BananaActor *banana) {
                 controller->buttonDepressed &= ~Z_TRIG;
                 banana->state = 1;
                 banana->unk_04 = 0x00B4;
-                player->statusEffects &= ~HOLD_BANANA_EFFECT;
-                func_800C9060(player - gPlayerOne, 0x19008012U);
+                player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                 pad3 = controller->rawStickY;
                 if ((pad3 > 30.0f) && (controller->rawStickX < 10) && (controller->rawStickX >= -9)) {
                     pad3 = pad3 - ((f32) 30);
@@ -738,7 +739,7 @@ void update_actor_banana(struct BananaActor *banana) {
                         temp_f0 = (player->unk_094 * 0.75f) + 3.5f + pad3;
                     }
                     vec3f_set(someVelocity, 0, pad3, temp_f0);
-                    func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
+                    func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
                     banana->velocity[0] = someVelocity[0];
                     banana->velocity[1] = someVelocity[1];
                     banana->velocity[2] = someVelocity[2];
@@ -769,9 +770,9 @@ void update_actor_banana(struct BananaActor *banana) {
             func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
             banana->unk30.unk34 = 1;
             if ((banana->unk30.unk34 != 0) && (banana->unk30.unk3C[2] < 0.0f)) {
-                someOtherVelocity[0] = -banana->unk30.unk60[0];
-                someOtherVelocity[1] = -banana->unk30.unk60[1];
-                someOtherVelocity[2] = -banana->unk30.unk60[2];
+                someOtherVelocity[0] = -banana->unk30.orientationVector[0];
+                someOtherVelocity[1] = -banana->unk30.orientationVector[1];
+                someOtherVelocity[2] = -banana->unk30.orientationVector[2];
                 banana->pos[0] += someOtherVelocity[0] * banana->unk30.unk3C[2];
                 banana->pos[1] += someOtherVelocity[1] * banana->unk30.unk3C[2];
                 banana->pos[2] += someOtherVelocity[2] * banana->unk30.unk3C[2];
@@ -784,7 +785,7 @@ void update_actor_banana(struct BananaActor *banana) {
         someVelocity[0] = 0.0f;
         someVelocity[1] = 0.0f;
         someVelocity[2] = -5.0f;
-        func_802B64C4(someVelocity, player->unk_02C[1] + player->unk_0C0);
+        func_802B64C4(someVelocity, player->rotation[1] + player->unk_0C0);
         unkX = player->pos[0] + someVelocity[0];
         unkY = player->pos[1] + someVelocity[1];
         unkZ = player->pos[2] + someVelocity[2];
@@ -926,7 +927,7 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
             break;
         }
         if ((player->type & PLAYER_HUMAN) != 0) {
-            func_800C9060(player - gPlayerOne, 0x19008012);
+            func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
         }
     }
 }
@@ -969,7 +970,7 @@ s32 use_fake_itembox_item(Player *player) {
     itemBox = (struct FakeItemBox*)&gActorList[actorIndex];
     itemBox->playerId = (player - gPlayerOne);
     itemBox->state = HELD_FAKE_ITEM_BOX;
-    player->statusEffects |= HOLD_BANANA_EFFECT;
+    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -1016,7 +1017,7 @@ s32 use_banana_item(Player *player) {
     banana->playerId = playerId;
     banana->state = HELD_BANANA;
     banana->unk_04 = 0x0014;
-    player->statusEffects |= HOLD_BANANA_EFFECT;
+    player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
     return actorIndex;
 }
 
@@ -1038,13 +1039,13 @@ void use_thunder_item(Player *player) {
     for (index = 0; index < NUM_PLAYERS; index++) {
         otherPlayer = &gPlayers[index];
         if (player != otherPlayer) {
-            otherPlayer->statusEffects |= HIT_ROTATING_EFFECT;
+            otherPlayer->soundEffects |= HIT_ROTATING_SOUND_EFFECT;
         }
     }
 }
 
 // Handles item use?
-void func_802B2FA0(Player *player) {
+void player_use_item(Player *player) {
     s32 playerId = player - gPlayerOne;
 
     switch (player->currentItemCopy) {
@@ -1064,22 +1065,22 @@ void func_802B2FA0(Player *player) {
         use_banana_bunch_item(player);
         break;
     case ITEM_MUSHROOM:
-        player->statusEffects |= BOOST_EFFECT;
+        player->soundEffects |= BOOST_SOUND_EFFECT;
         break;
     case ITEM_DOUBLE_MUSHROOM:
-        player->statusEffects |= BOOST_EFFECT;
+        player->soundEffects |= BOOST_SOUND_EFFECT;
         break;
     case ITEM_TRIPLE_MUSHROOM:
-        player->statusEffects |= BOOST_EFFECT;
+        player->soundEffects |= BOOST_SOUND_EFFECT;
         break;
     case ITEM_SUPER_MUSHROOM:
-        player->statusEffects |= BOOST_EFFECT;
+        player->soundEffects |= BOOST_SOUND_EFFECT;
         break;
     case ITEM_BOO:
-        player->statusEffects |= BOO_EFFECT;
+        player->soundEffects |= BOO_SOUND_EFFECT;
         break;
     case ITEM_STAR:
-        player->statusEffects |= STAR_EFFECT;
+        player->soundEffects |= STAR_SOUND_EFFECT;
         break;
     case ITEM_THUNDERBOLT:
         use_thunder_item(player);
@@ -1122,7 +1123,7 @@ void func_802B30EC(void) {
             if (((player->type & PLAYER_HUMAN) != 0) && (player->currentItemCopy != ITEM_NONE) && ((player->type & PLAYER_START_SEQUENCE) == 0)) {
                 if ((controller->buttonPressed & Z_TRIG) != 0) {
                     controller->buttonPressed &= ~Z_TRIG;
-                    func_802B2FA0(player);
+                    player_use_item(player);
                 }
             }
         }
@@ -1158,7 +1159,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
     switch (shell->state) {
     case HELD_SHELL:
         player = &gPlayers[shell->playerId];
-        func_802B0210(&player->unk_110, &shell->unk30);
+        copy_collision(&player->unk_110, &shell->unk30);
         somePosVel[0] = 0.0f;
         somePosVel[1] = player->boundingBoxSize;
         somePosVel[2] = -(player->boundingBoxSize + shell->boundingBoxSize + 2.0f);
@@ -1185,13 +1186,13 @@ void update_actor_green_shell(struct ShellActor *shell) {
                     somePosVel[0] = 0.0f;
                     somePosVel[1] = 0.0f;
                     somePosVel[2] = -var_f2;
-                    func_802B64C4(somePosVel, player->unk_02C[1] + player->unk_0C0);
+                    func_802B64C4(somePosVel, player->rotation[1] + player->unk_0C0);
                     shell->velocity[0] = somePosVel[0];
                     shell->velocity[1] = somePosVel[1];
                     shell->velocity[2] = somePosVel[2];
                     shell->state = 2;
-                    func_800C9060(shell->playerId, 0x19008004U);
-                    func_800C90F4(shell->playerId, (player->characterId * 0x10) + 0x29008000);
+                    func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                    func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                     func_8000EDC8((struct Actor*)shell - gActorList);
                     return;
                 } else {
@@ -1212,8 +1213,8 @@ void update_actor_green_shell(struct ShellActor *shell) {
             if (shell->rotAngle < 0) {
                 shell->state = 2;
                 shell->someTimer = 0x001E;
-                func_800C9060(shell->playerId, 0x19008004U);
-                func_800C90F4(shell->playerId, (player->characterId * 0x10) + 0x29008000);
+                func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                 func_8000EDC8((struct Actor*)shell - gActorList);
             }
         } else {
@@ -1221,8 +1222,8 @@ void update_actor_green_shell(struct ShellActor *shell) {
             if (shell->rotAngle > 0) {
                 shell->state = 2;
                 shell->someTimer = 0x001E;
-                func_800C9060(shell->playerId, 0x19008004U);
-                func_800C90F4(shell->playerId, (player->characterId * 0x10) + 0x29008000);
+                func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                 func_8000EDC8((struct Actor*)shell - gActorList);
             }
         }
@@ -1234,7 +1235,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
             somePosVel[0] = 0.0f;
             somePosVel[1] = 0.0f;
             somePosVel[2] = var_f2;
-            func_802B64C4(somePosVel, player->unk_02C[1] + player->unk_0C0);
+            func_802B64C4(somePosVel, player->rotation[1] + player->unk_0C0);
             shell->velocity[0] = somePosVel[0];
             shell->velocity[1] = somePosVel[1];
             shell->velocity[2] = somePosVel[2];
@@ -1269,7 +1270,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
         func_802B4E30((struct Actor *) shell);
         if ((shell->unk30.unk3C[0] < 0.0f) || (shell->unk30.unk3C[1] < 0.0f)) {
             shell_collision(&shell->unk30, shell->velocity);
-            func_800C98B8(shell->pos, shell->velocity, 0x19008054U);
+            func_800C98B8(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));
             shell->flags |= 0x80;
         }
         break;
@@ -1446,7 +1447,7 @@ void func_802B3E7C(struct ShellActor *shell, Player *player) {
     shell->velocity[1] = -2.0f;
     shell->velocity[2] = z_velocity;
 
-    if (player->effects & 0x80000000) {
+    if (player->effects & BOO_EFFECT) {
         func_8029FDC8((struct Actor *) shell);
     } else {
         func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], newPosition[0], newPosition[1], newPosition[2]);
@@ -1486,11 +1487,11 @@ s16 func_802B3FD0(Player *owner, struct ShellActor *shell) {
 void func_802B4104(struct ShellActor *shell) {
     if ((shell->unk30.unk3C[0] < 0.0f) && ((shell->unk30.unk48[1] < 0.25f) || (shell->unk30.unk48[1] > -0.25f))) {
         func_8029FDC8((struct Actor *) shell);
-        func_800C98B8(shell->pos, shell->velocity, 0x19008054U);
+        func_800C98B8(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));
         shell->flags |= 0x80;
     } else if ((shell->unk30.unk3C[1] < 0.0f) && ((shell->unk30.unk54[1] < 0.25f) || (shell->unk30.unk54[1] < -0.25f))) {
         func_8029FDC8((struct Actor *) shell);
-        func_800C98B8(shell->pos, shell->velocity, 0x19008054U);
+        func_800C98B8(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));
         shell->flags |= 0x80;
     }
 }
@@ -1537,7 +1538,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
     switch (shell->state) {
     case HELD_SHELL:
         player = &gPlayers[shell->playerId];
-        func_802B0210(&player->unk_110, &shell->unk30);
+        copy_collision(&player->unk_110, &shell->unk30);
         somePosVel[0] = 0.0f;
         somePosVel[1] = player->boundingBoxSize;
         somePosVel[2] = -(player->boundingBoxSize + shell->boundingBoxSize + 2.0f);
@@ -1580,26 +1581,26 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             shell->rotAngle -= 0x71C;
             if (shell->rotAngle < 0) {
                 shell->state = MOVING_SHELL;
-                func_800C9060(shell->playerId, 0x19008004U);
-                func_800C90F4(shell->playerId, (player->characterId * 0x10) + 0x29008000);
+                func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                 if (pad13 == ACTOR_RED_SHELL) {
                     func_8000ED80((struct Actor*)shell - gActorList);
                 } else {
                     func_8000EE10((struct Actor*)shell - gActorList);
-                    func_800C9D80(shell->pos, shell->velocity, 0x51018008U);
+                    func_800C9D80(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
                 }
             }
         } else {
             shell->rotAngle += 0x71C;
             if (shell->rotAngle > 0) {
                 shell->state = MOVING_SHELL;
-                func_800C9060(shell->playerId, 0x19008004U);
-                func_800C90F4(shell->playerId, (player->characterId * 0x10) + 0x29008000);
+                func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
+                func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
                 if (pad13 == ACTOR_RED_SHELL) {
                     func_8000ED80((struct Actor*)shell - gActorList);
                 } else {
                     func_8000EE10((struct Actor*)shell - gActorList);
-                    func_800C9D80(shell->pos, shell->velocity, 0x51018008U);
+                    func_800C9D80(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
                 }
             }
         }
@@ -1612,7 +1613,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             somePosVel[0] = 0.0f;
             somePosVel[1] = 0.0f;
             somePosVel[2] = temp_f0;
-            func_802B64C4(somePosVel, (s16) (player->unk_02C[1] + player->unk_0C0));
+            func_802B64C4(somePosVel, (s16) (player->rotation[1] + player->unk_0C0));
             shell->velocity[0] = somePosVel[0];
             shell->velocity[1] = somePosVel[1];
             shell->velocity[2] = somePosVel[2];
@@ -1770,9 +1771,9 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
 
 void func_802B4E30(struct Actor *arg0) {
     if ((arg0->unk30.unk3C[2] < 0.0f) && (arg0->unk30.unk34 == 1)) {
-        arg0->pos[0] -= (arg0->unk30.unk60[0] * arg0->unk30.unk3C[2]);
-        arg0->pos[1] -= (arg0->unk30.unk60[1] * arg0->unk30.unk3C[2]);
-        arg0->pos[2] -= (arg0->unk30.unk60[2] * arg0->unk30.unk3C[2]);
+        arg0->pos[0] -= (arg0->unk30.orientationVector[0] * arg0->unk30.unk3C[2]);
+        arg0->pos[1] -= (arg0->unk30.orientationVector[1] * arg0->unk30.unk3C[2]);
+        arg0->pos[2] -= (arg0->unk30.orientationVector[2] * arg0->unk30.unk3C[2]);
     }
     if ((arg0->unk30.unk3C[0] < 0.0f) && (arg0->unk30.unk30 == 1)) {
         arg0->pos[0] -= (arg0->unk30.unk48[0] * arg0->unk30.unk3C[0]);

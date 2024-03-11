@@ -8,7 +8,6 @@
 #include "memory.h"
 #include "collision.h"
 #include "math_util.h"
-#include "variables.h"
 #include "code_800029B0.h"
 
 #pragma intrinsic (sqrtf)
@@ -37,7 +36,7 @@ void func_802AAAAC(Collision *collision) {
     collision->unk3C[2] = 0;
     vec3f_set(collision->unk48, 0.0f, 0.0f, 1.0f);
     vec3f_set(collision->unk54, 1.0f, 0.0f, 0.0f);
-    vec3f_set(collision->unk60, 0.0f, 1.0f, 0.0f);
+    vec3f_set(collision->orientationVector, 0.0f, 1.0f, 0.0f);
 }
 
 f32 func_802AAB4C(Player *player) {
@@ -77,14 +76,14 @@ f32 func_802AAB4C(Player *player) {
             }
             return 0.8f;
         case COURSE_SHERBET_LAND:
-            if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == 5) {
+            if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == SNOW) {
                 return (f32) (D_8015F6EE - 0xA);
             }
             return D_8015F8E4;
         case COURSE_DK_JUNGLE:
             temp_v1 = func_802ABD40(player->unk_110.unk3A) & 0xFF;
             if (temp_v1 == 0xFF) {
-                if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == 0xF) {
+                if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == CAVE) {
                     return -475.0f;
                 }
                 if (playerX > -478.0f) {
@@ -197,9 +196,9 @@ s32 func_802AAE4C(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
             collision->unk34 = 1;
             collision->unk3A = index;
             collision->unk3C[2] = temp_f0_5;
-            collision->unk60[0] = surfaceMap->height;
-            collision->unk60[1] = surfaceMap->gravity;
-            collision->unk60[2] = surfaceMap->rotation;
+            collision->orientationVector[0] = surfaceMap->height;
+            collision->orientationVector[1] = surfaceMap->gravity;
+            collision->orientationVector[2] = surfaceMap->rotation;
         }
         return 0;
     }
@@ -208,9 +207,9 @@ s32 func_802AAE4C(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
         collision->unk34 = 1;
         collision->unk3A = index;
         collision->unk3C[2] = temp_f0_5;
-        collision->unk60[0] = surfaceMap->height;
-        collision->unk60[1] = surfaceMap->gravity;
-        collision->unk60[2] = surfaceMap->rotation;
+        collision->orientationVector[0] = surfaceMap->height;
+        collision->orientationVector[1] = surfaceMap->gravity;
+        collision->orientationVector[2] = surfaceMap->rotation;
         return 1;
     }
     return 0;
@@ -849,9 +848,9 @@ s32 is_colliding_with_drivable_surface(Collision *collision, f32 boundingBoxSize
             collision->unk34 = 1;
             collision->unk3A = index;
             collision->unk3C[2] = temp_f0_4 - boundingBoxSize;
-            collision->unk60[0] = tile->height;
-            collision->unk60[1] = tile->gravity;
-            collision->unk60[2] = tile->rotation;
+            collision->orientationVector[0] = tile->height;
+            collision->orientationVector[1] = tile->gravity;
+            collision->orientationVector[2] = tile->rotation;
         }
         return 0;
     }
@@ -864,9 +863,9 @@ s32 is_colliding_with_drivable_surface(Collision *collision, f32 boundingBoxSize
         collision->unk34 = 1;
         collision->unk3A = index;
         collision->unk3C[2] = temp_f0_4 - boundingBoxSize;
-        collision->unk60[0] = tile->height;
-        collision->unk60[1] = tile->gravity;
-        collision->unk60[2] = tile->rotation;
+        collision->orientationVector[0] = tile->height;
+        collision->orientationVector[1] = tile->gravity;
+        collision->orientationVector[2] = tile->rotation;
         return 1;
 }
 
@@ -1965,10 +1964,12 @@ void func_802AF314(void) {
     }
 
     D_8015F58A = 0;
-    // @bug possibly bug. Allocate memory but not increment the pointer.
-    // This is bad, dumb code, and more importantly it's bad dumb code that doesn't make any sense here.
-    // It is incremented after this function completes using a different variable.
-    // Not good.
+    /**
+     * @bug possibly bug. Allocate memory but not increment the pointer.
+     * This is bad, dumb code, and more importantly it's bad dumb code that doesn't make any sense here.
+     * It is incremented after this function completes using a different variable.
+     * Not good.
+    */
     D_8015F584 = (u16 *) gNextFreeMemoryAddress;
 
     for (j = 0; j < 32; j++) {
@@ -2006,7 +2007,7 @@ void func_802AF314(void) {
  * Recursive search for vtx and set surfaceTypes to -1 and sectionId's to 0xFF
  */
 void set_vertex_data_with_defaults(Gfx *gfx) {
-    find_and_set_vertex_data(gfx, -1, 0xFF);
+    find_and_set_vertex_data(gfx, SURFACE_DEFAULT, 0xFF);
 }
 
 /**
@@ -2196,7 +2197,7 @@ u16 process_collision(Player *player, KartBoundingBoxCorner *corner, f32 cornerP
                 temp_f0 = func_802ABE30(cornerPos1, cornerPos2, cornerPos3, corner->surfaceMapIndex);
                 if (!(player->pos[1] < temp_f0) && !((2 * boundingBoxSize) < (player->pos[1] - temp_f0))) {
                     corner->cornerGroundY = temp_f0;
-                    subtract_scaled_vector(collision->unk60, collision->unk3C[2], corner->cornerPos);
+                    subtract_scaled_vector(collision->orientationVector, collision->unk3C[2], corner->cornerPos);
                     return 1;
                 }
             }
@@ -2248,7 +2249,7 @@ u16 process_collision(Player *player, KartBoundingBoxCorner *corner, f32 cornerP
                     temp_f0 = func_802ABE30(cornerPos1, cornerPos2, cornerPos3, surfaceMapIndex);
 
                     if (!(player->pos[1] < temp_f0) && !((2 * boundingBoxSize) < (player->pos[1] - temp_f0))) {
-                        subtract_scaled_vector(collision->unk60, collision->unk3C[2], corner->cornerPos);
+                        subtract_scaled_vector(collision->orientationVector, collision->unk3C[2], corner->cornerPos);
                         corner->cornerGroundY = temp_f0;
                         corner->surfaceType = (u8) gSurfaceMap[surfaceMapIndex].surfaceType;
                         corner->surfaceFlags = 0x40;

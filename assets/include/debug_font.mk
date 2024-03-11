@@ -1,8 +1,8 @@
 DEBUG_FONT_DIR := assets/debug_font
 
-DEBUG_FONT_PALETTE := $(DEBUG_FONT_DIR)/gTLUTDebugFont.png
+DEBUG_FONT_PALETTE := $(DEBUG_FONT_DIR)/common_tlut_debug_font.png
 
-DEBUG_FONT_PNG := $(DEBUG_FONT_DIR)/gTextureDebugFont.png
+DEBUG_FONT_PNG := $(DEBUG_FONT_DIR)/common_texture_debug_font.png
 
 DEBUG_FONT_EXPORT_SENTINEL := $(DEBUG_FONT_DIR)/.export
 
@@ -18,7 +18,7 @@ $(DEBUG_FONT_PNG) $(DEBUG_FONT_PALETTE): $(DEBUG_FONT_EXPORT_SENTINEL) ;
 
 $(DEBUG_FONT_EXPORT_SENTINEL): $(ASSET_DIR)/debug_font.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_debug_font
 distclean_debug_font:

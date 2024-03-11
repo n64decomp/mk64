@@ -1,6 +1,6 @@
 REVERSE_DIR := assets/lakitu/reverse
 
-REVERSE_PALETTE := $(REVERSE_DIR)/gTLUTLakituReverse.png
+REVERSE_PALETTE := $(REVERSE_DIR)/common_tlut_lakitu_reverse.png
 
 REVERSE_FRAMES := \
 $(REVERSE_DIR)/gTextureLakituReverse01.png \
@@ -36,7 +36,7 @@ $(REVERSE_FRAMES) $(REVERSE_PALETTE): $(REVERSE_EXPORT_SENTINEL) ;
 
 $(REVERSE_EXPORT_SENTINEL): assets/lakitu/reverse.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_reverse
 distclean_lakitu_reverse:

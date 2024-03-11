@@ -5,8 +5,8 @@
 #include <PR/gu.h>
 
 #include <main.h>
+#include <segments.h>
 #include <code_800029B0.h>
-#include <variables.h>
 #include <types.h>
 #include "camera.h"
 #include "memory.h"
@@ -25,6 +25,7 @@
 #include "actors.h"
 #include "render_courses.h"
 #include "main.h"
+#include "render_player.h"
 
 
 s32 D_802874A0;
@@ -52,7 +53,7 @@ void func_80280038(void) {
     func_80057FC4(0);
     
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], D_80150148, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     guLookAt(&gGfxPool->mtxLookAt[0], camera->pos[0], camera->pos[1], camera->pos[2], camera->lookAt[0], camera->lookAt[1], camera->lookAt[2], camera->up[0], camera->up[1], camera->up[2]);
@@ -60,10 +61,10 @@ void func_80280038(void) {
     gCurrentCourseId = gCreditsCourseId;
     mtxf_identity(matrix);
     render_set_position(matrix, 0);
-    func_80295A38(D_800DC5EC);
+    render_course(D_800DC5EC);
     render_course_actors(D_800DC5EC);
-    func_80058090(0);
-    func_80058538(0);
+    render_object(PLAYER_ONE+SCREEN_MODE_1P);
+    render_player_snow_effect(PLAYER_ONE+SCREEN_MODE_1P);
     transition_sliding_borders();
     func_80281C40();
     init_rdp();
@@ -139,7 +140,7 @@ void load_credits(void) {
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     load_course(gCurrentCourseId);
     D_8015F730 = gNextFreeMemoryAddress;
-    set_segment_base_addr(0xB, (void *) decompress_segments((u8 *)&_data_821D10SegmentRomStart, (u8 *)&_data_825800SegmentRomStart));
+    set_segment_base_addr(0xB, (void *) decompress_segments((u8 *) CEREMONY_DATA_ROM_START, (u8 *) CEREMONY_DATA_ROM_END));
     D_8015F6EA = -0x15A1;
     D_8015F6EE = -0x15A1;
     D_8015F6F2 = -0x15A1;
@@ -164,7 +165,7 @@ void load_credits(void) {
     camera->up[2] = 0.0f;
     init_cinematic_camera();
     func_80003040();
-    init_object_list();
+    init_hud();
     func_80093E60();
     func_80092688();
     if (D_800DC5EC) {}

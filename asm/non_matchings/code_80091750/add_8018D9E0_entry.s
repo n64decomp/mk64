@@ -987,12 +987,12 @@ glabel L8009F264
 /* 09FF80 8009F380 10000094 */  b     .L8009F5D4
 /* 09FF84 8009F384 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L8009F388
-/* 09FF88 8009F388 3C048019 */  lui   $a0, %hi(D_8018CA78) # $a0, 0x8019
+/* 09FF88 8009F388 3C048019 */  lui   $a0, %hi(playerHUD+0x8) # $a0, 0x8019
 /* 09FF8C 8009F38C 3C05800F */  lui   $a1, %hi(gCharacterSelections) # $a1, 0x800f
 /* 09FF90 8009F390 AFBF007C */  sw    $ra, 0x7c($sp)
 /* 09FF94 8009F394 80A586A8 */  lb    $a1, %lo(gCharacterSelections)($a1)
 /* 09FF98 8009F398 0C02D408 */  jal   func_800B5020
-/* 09FF9C 8009F39C 8C84CA78 */   lw    $a0, %lo(D_8018CA78)($a0)
+/* 09FF9C 8009F39C 8C84CA78 */   lw    $a0, %lo(playerHUD+0x8)($a0)
 /* 09FFA0 8009F3A0 8FBF007C */  lw    $ra, 0x7c($sp)
 /* 09FFA4 8009F3A4 AFE2001C */  sw    $v0, 0x1c($ra)
 /* 09FFA8 8009F3A8 0C02D486 */  jal   func_800B5218

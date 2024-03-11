@@ -1,6 +1,6 @@
 FINISH_LINE_BANNER_DIR := assets/finish_line_banner
 
-FINISH_LINE_BANNER_PALETTE := $(FINISH_LINE_BANNER_DIR)/gTLUTFinishLineBanner.png
+FINISH_LINE_BANNER_PALETTE := $(FINISH_LINE_BANNER_DIR)/common_tlut_finish_line_banner.png
 
 FINISH_LINE_BANNER_PNG := \
 $(FINISH_LINE_BANNER_DIR)/gTextureFinishLineBanner1.png \
@@ -31,7 +31,7 @@ $(FINISH_LINE_BANNER_PNG) $(FINISH_LINE_BANNER_PALETTE): $(FINISH_LINE_BANNER_EX
 
 $(FINISH_LINE_BANNER_EXPORT_SENTINEL): $(ASSET_DIR)/finish_line_banner.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_finish_line_banner
 distclean_finish_line_banner:

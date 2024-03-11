@@ -8,21 +8,23 @@
 #include "code_80057C60.h"
 #include "code_8006E9C0.h"
 #include "code_80086E70.h"
-#include "code_80071F00.h"
+#include "update_objects.h"
 #include "objects.h"
 #include "bomb_kart.h"
-#include "variables.h"
+#include "save.h"
 #include "common_textures.h"
 #include <sounds.h>
-#include <functions.h>
+#include <decode.h>
 #include "audio/external.h"
 #include "courses/all_course_data.h"
 #include "main.h"
 #include "menus.h"
 #include "data/other_textures.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
+#include "code_80091750.h"
+#include "src/data/some_data.h"
 
-void init_object_list(void) {
+void init_hud(void) {
 
     reset_object_variable();
     func_8006FA94();
@@ -45,124 +47,46 @@ void init_object_list(void) {
 }
 
 void reset_object_variable(void) {
+    s32 i;
+    s32 j;
     func_8006EB10();
     clear_object_list();
     bzero(playerHUD, HUD_PLAYERS_SIZE * sizeof(hud_player));
-    D_8018CAE1 = 0;
-    D_8018CAE2 = 0;
-    D_8018CAF1 = 0;
-    D_8018CB65 = 0;
-    D_8018CB66 = 0;
-    D_8018CB75 = 0;
-    D_8018CBE9 = 0;
-    D_8018CBEA = 0;
-    D_8018CBF9 = 0;
-    D_8018CC6D = 0;
-    D_8018CC6E = 0;
-    D_8018CC7D = 0;
-    D_8018CAE0 = 0;
-    D_8018CB64 = 0;
-    D_8018CBE8 = 0;
-    D_8018CC6C = 0;
 
-    /**
-    playerHUD[PLAYER_ONE].lapCount = 0;
-    playerHUD[PLAYER_ONE].alsoLapCount = 0;
-    playerHUD[PLAYER_ONE].unk_81 = 0;
-    playerHUD[PLAYER_TWO].lapCount = 0;
-    playerHUD[PLAYER_TWO].alsoLapCount = 0;
-    playerHUD[PLAYER_TWO].unk_81 = 0;
-    playerHUD[PLAYER_THREE].lapCount = 0;
-    playerHUD[PLAYER_THREE].alsoLapCount = 0;
-    playerHUD[PLAYER_THREE].unk_81 = 0;
-    playerHUD[PLAYER_FOUR].lapCount = 0;
-    playerHUD[PLAYER_FOUR].alsoLapCount = 0;
-    playerHUD[PLAYER_FOUR].unk_81 = 0;
-    playerHUD[PLAYER_ONE].raceCompleteBool = 0;
-    playerHUD[PLAYER_TWO].raceCompleteBool = 0;
-    playerHUD[PLAYER_THREE].raceCompleteBool = 0;
-    playerHUD[PLAYER_FOUR].raceCompleteBool = 0;
-
-    // This is close but it puts the raceCompletedBool stuff in the wrong place
-    // Which makes sense, but its still annoying
-    for (thing = 0; thing < HUD_PLAYERS_SIZE; thing++) {
-        playerHUD[thing].lapCount = 0;
-        playerHUD[thing].alsoLapCount = 0;
-        playerHUD[thing].unk_81 = 0;
-        playerHUD[thing].raceCompleteBool = 0;
+    for (i = 0; i < HUD_PLAYERS_SIZE; i++) {
+        playerHUD[i].lapCount = 0;
+        playerHUD[i].alsoLapCount = 0;
+        playerHUD[i].unk_81 = 0;
     }
-    **/
+    for (j = 0; j < HUD_PLAYERS_SIZE; j++) {
+        playerHUD[j].raceCompleteBool = 0;
+    }
 }
 
-
-extern s16 D_8018CF18;
-extern s16 D_8018CF20;
-extern s16 D_8018CF48;
-extern s16 D_8018CF60;
-extern s16 D_8018CF78;
-extern s16 D_8018CF90;
-extern s16 D_8018CFA8;
-extern s16 D_8018CFB0;
-extern s16 D_8018CFB8;
-extern s16 D_8018CFC0;
-extern s16 D_8018CFC8;
-extern s16 D_8018CFD0;
-extern s16 D_8018CFD8;
-extern s16 D_8018CFE0;
-extern s16 D_8018CFF0;
-extern s16 D_8018CFF8;
-extern s16 D_8018D000;
-extern s16 D_8018D008;
-extern s16 D_8018D010;
-extern s16 D_8018D018;
-extern s16 D_8018D020;
-extern s16 D_8018D048;
-extern s16 D_8018D070;
-extern s16 D_8018D098;
-extern s16 D_8018D0C0;
-extern s16 D_8018D0E8;
-extern s16 D_8018D110;
-
 void func_8006EB10(void) {
-    s32 i = 0;
+    s32 i;
     
-    for (i = 0; i < 128; i++) {
-        D_8018C1B0[i] = -1;
+    for (i = 0; i < gObjectParticle1_SIZE; i++) {
+        gObjectParticle1[i] = NULL_OBJECT_ID;
     }
 
-    for (i = 0; i < 128; i++) {
-        D_8018C3F0[i] = -1;
+    for (i = 0; i < gObjectParticle2_SIZE; i++) {
+        gObjectParticle2[i] = NULL_OBJECT_ID;
     }
 
-    for (i = 0; i < 128; i++) {
-        D_8018C630[i] = -1;
+    for (i = 0; i < gObjectParticle3_SIZE; i++) {
+        gObjectParticle3[i] = NULL_OBJECT_ID;
     }
 
-    for (i = 0; i < 64; i++) {
-        D_8018C870[i] = -1;
+    for (i = 0; i < gObjectParticle4_SIZE; i++) {
+        gObjectParticle4[i] = NULL_OBJECT_ID;
     }
 
-    for (i = 0; i < 64; i += 4) {
-        D_8018C970[i + 0] = -1;
-        D_8018C970[i + 1] = -1;
-        D_8018C970[i + 2] = -1;
-        D_8018C970[i + 3] = -1;
-    }
-    
-    D_8018CFA8 = 0;
-    D_8018CF90 = D_8018CFA8;
-    D_8018CF78 = D_8018CF90;
-    D_8018CF60 = D_8018CF78;
-    D_8018CF48 = D_8018CF60;
-    D_8018CF20 = D_8018CF48;
-    D_8018CF18 = D_8018CF20;
-    D_8018CFE0 = 0;
-    D_8018CFD8 = D_8018CFE0;
-    D_8018CFD0 = D_8018CFD8;
-    D_8018CFC8 = D_8018CFD0;
-    D_8018CFC0 = D_8018CFC8;
-    D_8018CFB8 = D_8018CFC0;
-    D_8018CFB0 = D_8018CFB8;
+    // Has to be on one line, because IDO hates you :)
+    for (i = 0; i < gLeafParticle_SIZE; i++) { gLeafParticle[i] = NULL_OBJECT_ID; }
+
+    D_8018CF18 = D_8018CF20 = D_8018CF48 = D_8018CF60 = D_8018CF78 = D_8018CF90 = D_8018CFA8 = 0;
+    D_8018CFB0 = D_8018CFB8 = D_8018CFC0 = D_8018CFC8 = D_8018CFD0 = D_8018CFD8 = D_8018CFE0 = 0;
     D_8018D018 = 0;
     D_8018D010 = 0;
     D_8018D008 = 0;
@@ -173,15 +97,8 @@ void func_8006EB10(void) {
     D_8018D110 = 0;
     D_8018D0E8 = 0;
     D_8018D0C0 = 0;
-    D_8018D098 = 0;
-    D_8018D070 = D_8018D098;
-    D_8018D048 = D_8018D070;
-    D_8018D020 = D_8018D048;
-    D_80183E7C = 0;
-    D_80183E6C = D_80183E7C;
-    D_80183E5C = D_80183E6C;
-    D_80183E4C = D_80183E5C;
-    D_80183E38 = D_80183E4C;
+    D_8018D020 = D_8018D048 = D_8018D070 = D_8018D098 = 0;
+    gNextFreeObjectParticle1 = gNextFreeObjectParticle2 = gNextFreeObjectParticle3 = gNextFreeObjectParticle4 = gNextFreeLeafParticle = 0;
 }
 
 void clear_object_list() {
@@ -215,10 +132,10 @@ void init_item_window(s32 objectIndex) {
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->currentItem = ITEM_NONE;
     temp_v0->itemDisplay = temp_v0->currentItem;
-    temp_v0->tlutList = (s32 *) gTLUTItemWindowNone;
-    temp_v0->activeTLUT = (s32 *) gTLUTItemWindowNone;
-    temp_v0->textureList = gTextureItemWindowNone;
-    temp_v0->activeTexture = gTextureItemWindowNone;
+    temp_v0->tlutList = (s32 *) common_tlut_item_window_none;
+    temp_v0->activeTLUT = (s32 *) common_tlut_item_window_none;
+    temp_v0->textureList = common_texture_item_window_none;
+    temp_v0->activeTexture = common_texture_item_window_none;
     temp_v0->unk_04C = -1;
     temp_v0->unk_09C = 0x00A0;  // Screen X position
     temp_v0->unk_09E = -0x0020; // Screen Y position
@@ -233,39 +150,16 @@ void func_8006EEE8(s32 courseId) {
     D_8018D2B8 = D_800E5548[courseId * 2 + 1];
 }
 
-#ifdef NON_MATCHING
-// I really really don't know what D_8018D9B4 is supposed to be
-// Its value is a pointer that seems to point to compressesed data
-// of some variety (sometimes TKMK, sometimes MIO0)
-extern u8 *D_8018D9B4;
-
 void func_8006EF60(void) {
-    s32 var_s2;
+    s32 i;
+    // `huh`'s and `i`'s types have to differ, for some reason
+    s16 huh;
+    u8 *wut;
 
-    for (var_s2 = 0; var_s2 < 0x14; var_s2++) {
-        D_8018D248[var_s2] = func_8006ED94(gCourseOutlineTextures[var_s2], D_8018D9B4, D_800E5520[var_s2], D_800E5520[var_s2]);
-        D_8018D9B4 += D_800E5520[var_s2];
-    }
+    wut = D_8018D9B4 + 0xFFFF0000;
+    // God forgive me for my sins...
+    huh = 0x14; if (0) {} for (i = 0; i < huh; i++) { D_8018D248[i] = func_8006ED94(gCourseOutlineTextures[i], wut, D_800E5520[i], D_800E5520[i]); wut += D_800E5520[i]; }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_8006E9C0/func_8006EF60.s")
-#endif
-
-extern s32 D_801655C8;
-extern s16 D_80165718;
-extern s16 D_80165720;
-extern s16 D_80165728;
-extern u8 *D_80165880;
-extern f32 D_8018D2A0;
-extern s16 D_8018D2E0;
-extern s16 D_8018D2E8;
-
-//static u8 gTextureExhaust0[0x479];
-//static u8 gTextureExhaust1[0x485];
-//static u8 gTextureExhaust2[0x4F4];
-//static u8 gTextureExhaust3[0x3C8];
-//static u8 gTextureExhaust4[0x3F8];
-//static u8 gTextureExhaust5[0x443];
 
 void func_8006F008(void) {
     D_801655C8 = 0;
@@ -451,20 +345,6 @@ void func_8006F008(void) {
     }
 }
 
-extern s8 D_801657E4;
-extern bool8 D_801657E6;
-extern bool8 D_801657E8;
-extern bool8 D_801657F0;
-extern s8 D_801657F8;
-extern s8 D_80165808;
-extern bool8 D_80165810;
-extern bool8 D_80165818;
-extern s8 D_80165820;
-extern s8 D_80165828;
-
-extern s8 D_80165800[2];
-extern s8 D_80165832[2];
-
 void func_8006F824(s32 arg0) {
     D_80165808 = D_801657E4;
     D_80165810 = D_801657E6;
@@ -478,49 +358,35 @@ void func_8006F824(s32 arg0) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-09-2023
-extern s8 D_801657F8;
-extern s8 D_80165808;
-extern s8 D_80165810;
-extern s8 D_80165818;
-extern s8 D_80165820;
-extern s8 D_80165828;
-extern ? D_80165832;
-extern ? D_8018D2D8;
-
 void func_8006F8CC(void) {
     if (D_8018EDFC == 0) {
         D_8018EDFC = 1;
         D_801657E4 = 0;
         D_801657E6 = 0;
-        D_80165800->unk1 = 1;
         D_801657F0 = 0;
         D_801657E8 = 1;
-        D_80165800->unk0 = D_80165800->unk1;
+        D_80165800[0] = D_80165800[1] = 1;
         if (gPlayerCount == 4) {
             if (gModeSelection != 3) {
                 D_801657E4 = 1;
                 D_801657F0 = 1;
                 D_801657F8 = 1;
-                D_80165800->unk1 = 0;
-                D_80165800->unk0 = D_80165800->unk1;
+                D_80165800[0] = D_80165800[1] = 0;
             } else {
                 D_801657F8 = 0;
-                D_80165800->unk0 = D_80165800->unk1;
+                D_80165800[0] = D_80165800[1] = 1;
             }
         } else if (gPlayerCount == 3) {
             D_801657E8 = 0;
             D_801657F8 = 1;
         } else if (gPlayerCount == 2) {
             if (gModeSelection != (s32) 3) {
-                D_80165800->unk1 = 0;
                 D_801657E4 = 1;
                 D_801657F0 = 1;
-                D_80165800->unk0 = D_80165800->unk1;
+                D_80165800[0] = D_80165800[1] = 0;
             }
-            D_8018D2D8.unk0 = 0x0041;
-            D_8018D2D8.unk2 = 0x00B4;
+            D_8018D2D8[0] = 0x0041;
+            D_8018D2D8[1] = 0x00B4;
         }
         func_8006F824(0);
     } else {
@@ -529,82 +395,25 @@ void func_8006F8CC(void) {
         D_801657F0 = D_80165820;
         D_801657E8 = D_80165818;
         D_801657F8 = D_80165828;
-        D_80165800->unk0 = D_80165832.unk0;
-        D_80165800->unk1 = (s8) D_80165832.unk1;
+        D_80165800[0] = D_80165832[0];
+        D_80165800[1] = D_80165832[1];
     }
     if (gDemoMode != 0) {
         D_801657F0 = 0;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_8006E9C0/func_8006F8CC.s")
-#endif
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 08138748803d75e73e4a94bb0c619a273754ee9c on Oct-09-2023
-? func_8006F008();                                  /* extern */
-? func_8006F8CC();                                  /* extern */
-extern ? D_80165658;
-extern s8 D_8016576A;
-extern s8 D_8016579C;
-extern s8 D_801657E1;
-extern s8 D_801657E2;
-extern s8 D_801657E3;
-extern s8 D_801657E5;
-extern s32 D_801657FC;
-extern s32 D_80165804;
-extern s32 D_8016580C;
-extern s32 D_80165814;
-extern s32 D_8016581C;
-extern s8 D_801658C6;
-extern s8 D_801658D6;
-extern s8 D_801658DC;
-extern s8 D_801658E4;
-extern s8 D_801658EC;
-extern ? D_8018CF28;
-extern ? D_8018CF50;
-extern ? D_8018CFAC;
-extern ? D_8018CFB4;
-extern ? D_8018CFBC;
-extern ? D_8018CFC4;
-extern ? D_8018D050;
-extern ? D_8018D0F0;
-extern s32 D_8018D114;
-extern s32 D_8018D160;
-extern s32 D_8018D168;
-extern s16 D_8018D16C;
-extern s16 D_8018D17C;
-extern s32 D_8018D180;
-extern s16 D_8018D184;
-extern s16 D_8018D18C;
-extern s32 D_8018D1C4;
-extern s32 D_8018D1DC;
-extern s32 D_8018D20C;
-extern s8 D_8018D228;
-extern s32 D_8018D2B4;
-extern s16 D_8018D2F0;
-extern s16 D_8018D2F8;
-extern s32 D_8018D320;
-
+#ifdef NON_MATCHING
+// Major register allocation problems in the first for-loop
+// Smaller issues elsewhere, probably some one line, multiple variable assignment shenanigans going on
+// https://decomp.me/scratch/ohbAc
 void func_8006FA94(void) {
-    ? *var_a0_2;
-    ? *var_a1;
-    ? *var_a1_2;
-    ? *var_a2;
-    ? *var_a2_2;
-    ? *var_a3;
-    ? *var_t0;
-    ? *var_v1;
-    Player *temp_v0;
-    Player *temp_v0_2;
-    Player *temp_v0_3;
-    Player *var_v0;
-    s16 var_a0;
-    struct_D_8018CE10 *var_v1_2;
+    s32 var_a0;
+    Player *player;
 
     func_8006F8CC();
     func_8006F008();
-    osSetTime(/* u64+0x0 */ 0, /* u64+0x4 */ 0);
+    osSetTime(0);
     D_8018D170 = 0;
     D_8018D190 = 0;
     gIsHUDVisible = 0;
@@ -613,9 +422,19 @@ void func_8006FA94(void) {
     D_801657E2 = 0;
     D_80165730 = 0;
     D_801658FE = 0;
+    /*
     D_801657E5 = 0;
     D_801657E3 = D_801657E5;
     D_801657E1 = D_801657E3;
+    */
+    D_801657E1 = D_801657E3 = D_801657E5 = 0;
+    /*
+    D_80165658->unk8 = 0;
+    D_80165658->unk4 = 0;
+    D_80165658->unk0 = 0;
+    */
+    D_80165658[0] = D_80165658[1] = D_80165658[2] = 0;
+    /*
     D_801658D6 = 0;
     D_801658E4 = D_801658D6;
     D_801658F4 = D_801658E4;
@@ -623,39 +442,38 @@ void func_8006FA94(void) {
     D_801658DC = D_801658EC;
     D_801658CE = D_801658DC;
     D_801658C6 = D_801658CE;
-    D_80165658.unk8 = 0;
-    D_80165658.unk4 = 0;
-    D_80165658.unk0 = 0;
     D_801658BC = D_801658C6;
+    */
+    D_801658BC = D_801658C6 = D_801658CE = D_801658DC = D_801658EC = D_801658F4 = D_801658E4 = D_801658D6 = 0;
     switch (gPlayerCount) {                         /* irregular */
     case 1:
         if (gModeSelection == 0) {
             D_8018D114 = 0;
-            D_8018D178 = 0x00000096;
-            D_8018D114 = 0x000000F0;
+            D_8018D178 = 150;
+            D_8018D180 = 240;
         } else {
             D_8018D114 = 1;
-            D_8018D178 = 0x0000000A;
+            D_8018D178 = 10;
             D_8018D180 = 0;
         }
         break;
     case 2:
-        if (gScreenModeSelection == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) {
+        if (gScreenModeSelection == 1) {
             if (gModeSelection == 0) {
                 D_8018D114 = 2;
-                D_8018D178 = 0x00000096;
-                D_8018D180 = 0x000000F0;
-                D_8018D2AC = 0x0000003C;
+                D_8018D178 = 150;
+                D_8018D180 = 240;
+                D_8018D2AC = 60;
             } else if (gModeSelection == 2) {
                 D_8018D114 = 3;
-                D_8018D178 = 0x0000001E;
-                D_8018D180 = 0x0000001E;
-                D_8018D2AC = 0x0000003C;
+                D_8018D178 = 30;
+                D_8018D180 = 30;
+                D_8018D2AC = 60;
             } else {
                 D_8018D114 = 4;
-                D_8018D178 = 0x00000028;
-                D_8018D180 = 0x00000028;
-                D_8018D2AC = 0x0000003C;
+                D_8018D178 = 40;
+                D_8018D180 = 40;
+                D_8018D2AC = 60;
             }
         } else if (gModeSelection == 0) {
             D_8018D114 = 5;
@@ -668,63 +486,54 @@ void func_8006FA94(void) {
     case 3:
         if (gModeSelection == 2) {
             D_8018D114 = 8;
-            D_8018D178 = 0x00000064;
-            D_8018D180 = 0x00000096;
-            D_8018D2AC = 0x0000003C;
+            D_8018D178 = 100;
+            D_8018D180 = 150;
+            D_8018D2AC = 60;
         } else {
-            D_8018D180 = 9;
-            D_8018D178 = 0x00000064;
-            D_8018D180 = 0x00000096;
-            D_8018D2AC = 0x0000003C;
+            D_8018D114 = 9;
+            D_8018D178 = 100;
+            D_8018D180 = 150;
+            D_8018D2AC = 60;
         }
         break;
     case 4:
         if (gModeSelection == 2) {
-            D_8018D114 = 0x0000000A;
-            D_8018D178 = 0x0000001E;
-            D_8018D180 = 0x0000001E;
+            D_8018D114 = 10;
+            D_8018D178 = 30;
+            D_8018D180 = 30;
+            D_8018D2AC = 10;
         } else {
-            D_8018D114 = 0x0000000B;
-            D_8018D178 = 0x0000001E;
-            D_8018D180 = 0x0000001E;
+            D_8018D114 = 11;
+            D_8018D178 = 30;
+            D_8018D180 = 30;
+            D_8018D2AC = 10;
         }
-        D_8018D2AC = 0x0000000A;
         break;
     }
     if (gEnableDebugMode == 0) {
         D_8016576A = 0;
         D_8016579C = 0;
     }
-    var_a0 = 0;
-    if (gPlayerCount > 0) {
-        var_a0_2 = &D_8018CFB4;
-        var_a2 = &D_8018CFC4;
-        var_a1 = &D_8018CFAC;
-        var_v1 = &D_8018CFBC;
-        do {
-            var_a0_2 += 1;
-            var_v1 += 1;
-            var_a1 += 1;
-            var_a2 += 1;
-            var_v1->unk-1 = 0;
-            var_a1->unk-1 = 0;
-            var_a2->unk-1 = 0;
-            var_a0_2->unk-1 = 0;
-        } while ((u32) var_a0_2 < (u32) (gPlayerCount + &D_8018CFB4));
-        var_a0 = 0;
+    for (var_a0 = 0; var_a0 < gPlayerCount; var_a0++) {
+        D_8018CFBC[var_a0] = 0;
+        D_8018CFAC[var_a0] = 0;
+        D_8018CFC4[var_a0] = 0;
+        D_8018CFB4[var_a0] = 0;
     }
     D_8018D204 = 1;
     D_8018D1FC = 0;
     D_8018D224 = 0;
-    D_8018D1F8 = 0;
-    D_8018D1F0 = 0;
+    D_8018D1F0 = D_8018D1F8 = 0;
     D_8018D228 = 0xFF;
+    /*
     D_80165628 = 0;
     D_80165618 = 0;
     D_80165608 = D_80165618;
     D_801655F8 = D_80165618;
     D_801655E8 = D_80165618;
     D_801655D8 = D_80165618;
+    */
+    D_801655D8 = D_801655E8 = D_801655F8 = D_80165608 = D_80165618 = D_80165628 = 0;
     D_8018D160 = 0;
     D_8018D1DC = 0;
     D_8018D1C4 = 0;
@@ -734,9 +543,9 @@ void func_8006FA94(void) {
     D_801656F0 = 0;
     D_801657B2 = 0;
     D_801657D8 = D_801657B2;
-    D_8018D214 = (s32) D_801657D8;
-    D_801657B0 = (s8) D_8018D214;
-    D_801657AE = D_801657B0;
+    D_8018D214 = D_801657D8;
+    gHUDDisable = D_8018D214;
+    D_801657AE = gHUDDisable;
     D_8018D20C = 0;
     D_8018D2F8 = 0;
     D_8018D2F0 = D_8018D2F8;
@@ -745,10 +554,10 @@ void func_8006FA94(void) {
     D_8018D2BC = 0;
     D_8018D2B4 = D_8018D2BC;
     D_8018D2A4 = D_8018D2B4;
-    D_8018D2C8->unk0 = 0;
-    D_8018D2C8->unk4 = 0;
-    D_8018D2C8->unk8 = 0;
-    D_8018D2C8->unkC = 0;
+    D_8018D2C8[0] = 0;
+    D_8018D2C8[1] = 0;
+    D_8018D2C8[2] = 0;
+    D_8018D2C8[3] = 0;
     D_8016581C = 0;
     D_8016580C = 0;
     D_80165814 = 0;
@@ -759,56 +568,15 @@ void func_8006FA94(void) {
     D_8018D16C = D_8018D18C;
     D_8018D17C = D_8018D18C;
     D_8018D174 = D_8018D18C;
-    var_v0 = gPlayerOne;
-    var_t0 = &D_8018CF28;
-    var_a3 = &D_8018CF50;
-    var_v1_2 = D_8018CE10;
-    var_a2_2 = &D_8018D0F0;
-    var_a1_2 = &D_8018D050;
-    do {
-        var_a1_2->unk0 = -32.0f;
-        var_a2_2->unk0 = -32.0f;
-        var_v1_2->unk_04[2] = 0.0f;
-        var_v1_2->unk_04[1] = 0.0f;
-        var_v1_2->unk_04[0] = 0.0f;
-        var_a3->unk0 = var_a0;
-        var_t0->unk0 = var_v0;
-        var_v0->unk_040 = -1;
-        temp_v0 = var_v0 + 0xDD8;
-        var_t0->unk4 = temp_v0;
-        var_a3->unk2 = (s16) (var_a0 + 1);
-        var_v1_2->unk24 = 0.0f;
-        var_v1_2->unk28 = 0.0f;
-        var_v1_2->unk2C = 0.0f;
-        var_a2_2->unk4 = -32.0f;
-        var_a1_2->unk4 = -32.0f;
-        temp_v0->unk_040 = -1;
-        temp_v0_2 = temp_v0 + 0xDD8;
-        var_a3->unk4 = (s16) (var_a0 + 2);
-        var_t0->unk8 = temp_v0_2;
-        var_v1_2->unk44 = 0.0f;
-        var_v1_2->unk48 = 0.0f;
-        var_v1_2->unk4C = 0.0f;
-        var_a2_2->unk8 = -32.0f;
-        var_a1_2->unk8 = -32.0f;
-        temp_v0_2->unk_040 = -1;
-        temp_v0_3 = temp_v0_2 + 0xDD8;
-        var_t0->unkC = temp_v0_3;
-        var_a3->unk6 = (s16) (var_a0 + 3);
-        var_a0 += 4;
-        var_v1_2->unk64 = 0.0f;
-        var_v1_2->unk68 = 0.0f;
-        var_v1_2->unk6C = 0.0f;
-        var_a2_2->unkC = -32.0f;
-        var_a1_2->unkC = -32.0f;
-        temp_v0_3->unk_040 = -1;
-        var_v0 = temp_v0_3 + 0xDD8;
-        var_a1_2 += 0x10;
-        var_a2_2 += 0x10;
-        var_v1_2 += 0x80;
-        var_a3 += 8;
-        var_t0 += 0x10;
-    } while (var_a0 != (s16) 8);
+    player = gPlayerOne;
+    for (var_a0 = 0; var_a0 < 8; var_a0++) {
+        D_8018D0F0[var_a0] = D_8018D050[var_a0] = -32.0f;
+        D_8018CE10[var_a0].unk_04[0] = D_8018CE10[var_a0].unk_04[1] = D_8018CE10[var_a0].unk_04[2] = 0.0f;
+        D_8018CF50[var_a0] = var_a0;
+        D_8018CF28[var_a0] = player;
+        player->unk_040 = -1;
+        player++;
+    }
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_8006E9C0/func_8006FA94.s")
@@ -833,34 +601,34 @@ void init_object_list_index(void) {
     }
 
     for(loopIndex = 0; loopIndex < NUM_BOMB_KARTS_VERSUS; loopIndex++) {
-        find_unused_obj_index(&D_80183DD8[loopIndex]);
+        find_unused_obj_index(&gIndexObjectBombKart[loopIndex]);
     }
 }
 
-void func_80070250(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
+void init_cloud_object(s32 objectIndex, s32 arg1, CloudData *arg2) {
     ItemWindowObjects *temp_v0;
 
     init_object(objectIndex, arg1);
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->unk_0D5 = arg2->id;
+    temp_v0->unk_0D5 = arg2->subType;
     temp_v0->currentItem = ITEM_NONE;
-    temp_v0->unk_0BE[1] = arg2->pos[0];
-    temp_v0->unk_09E = arg2->pos[1];
-    temp_v0->sizeScaling = (f32) arg2->pos[2] / 100.0;
-    temp_v0->activeTexture = &D_8018D220[arg2->id];
+    temp_v0->direction_angle[1] = arg2->rotY;
+    temp_v0->unk_09E = arg2->posY;
+    temp_v0->sizeScaling = (f32) arg2->scalePercent / 100.0;
+    temp_v0->activeTexture = &D_8018D220[arg2->subType];
     func_80073404(objectIndex, 0x40U, 0x20U, &D_0D005FB0);
-    temp_v0->unk_0A0 = 0x00FF;
+    temp_v0->primAlpha = 0x00FF;
 }
 
-void func_80070328(StarSpawn *arg0) {
+void init_clouds(CloudData *cloudList) {
     s32 var_s0 = 0;
-    StarSpawn *test = arg0;
+    CloudData *test = &cloudList[0];
     do {
         if(1) {}
-        func_80070250(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
+        init_cloud_object(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
         var_s0++;
         test++;
-    } while (test->pos[0] != 0xFFFF);
+    } while (test->rotY != 0xFFFF);
     D_8018D1F8 += var_s0;
     D_8018D1F0 = var_s0;
     D_8018D230 = 0;
@@ -875,34 +643,34 @@ void func_80070328(StarSpawn *arg0) {
  * The stars in Wario's Stadium, Toad's Turnpike, and Rainbow Road are not part of the skybox.
  * They are instead objects that seemingly hover in the air around the player
  * They have no true x/y/z position, instead they seem to be kept in a position relative to the
- * player they hang around. There is however an x/y position for where they should be on screen
+ * player they hang around. There is however an y rotation and y position for where they should be on screen
  * when they are visbile (unk_09E[0] and [1]).
  * sizeScaling is some sort of size scaling on the start texture.
  * unk_0A2 is an alpha value, used to make the star twinkle.
 **/
-void func_800703E0(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
+void init_star_object(s32 objectIndex, s32 arg1, StarData *arg2) {
     ItemWindowObjects *temp_v0;
 
     init_object(objectIndex, arg1);
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->unk_0D5 = arg2->id; // No idea, all 0's for stars
+    temp_v0->unk_0D5 = arg2->subType;
     temp_v0->currentItem = ITEM_BANANA;
-    temp_v0->unk_0BE[1] = arg2->pos[0]; // No idea
-    temp_v0->unk_09E = arg2->pos[1]; // screen Y position
-    temp_v0->sizeScaling = (f32)arg2->pos[2] / 100.0; // some type of scaling on the texture
+    temp_v0->direction_angle[1] = arg2->rotY;
+    temp_v0->unk_09E = arg2->posY; // screen Y position
+    temp_v0->sizeScaling = (f32) arg2->scalePercent / 100.0; // some type of scaling on the texture
     temp_v0->activeTexture = D_0D0293D8;
     func_80073404(objectIndex, 0x10U, 0x10U, common_vtx_rectangle);
 }
 
-void func_800704A0(StarSpawn *arg0) {
+void init_stars(StarData *starList) {
     s32 var_s0 = 0;
-    StarSpawn *test = arg0;
+    StarData *test = &starList[0];
     do {
         if(1) {}
-        func_800703E0(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
+        init_star_object(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
         var_s0++;
         test++;
-    } while (test->pos[0] != 0xFFFF);
+    } while (test->rotY != 0xFFFF);
     D_8018D1F8 += var_s0;
     D_8018D1F0 = var_s0;
     D_8018D230 = 1;
@@ -914,10 +682,11 @@ void func_8007055C(void) {
 
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
-        func_80070328(&D_800E6C10);
+        // Uses Kalimari Desert's clouds for initialization?
+        init_clouds(gKalimariDesertClouds);
         break;
     case COURSE_YOSHI_VALLEY:
-        func_80070328(&D_800E6AA8);
+        init_clouds(gYoshiValleyMooMooFarmClouds);
         break;
     case COURSE_FRAPPE_SNOWLAND:
         if (gPlayerCount == 1) {
@@ -932,31 +701,31 @@ void func_8007055C(void) {
         D_8018D1F0 = var_s0;
         break;
     case COURSE_KOOPA_BEACH:
-        func_80070328(D_800E6B00);
+        init_clouds(gKoopaTroopaBeachClouds);
         break;
     case COURSE_ROYAL_RACEWAY:
-        func_80070328(D_800E6B38);
+        init_clouds(gRoyalRacewayClouds);
         break;
     case COURSE_LUIGI_RACEWAY:
-        func_80070328(D_800E6A38);
+        init_clouds(gLuigiRacewayClouds);
         break;
     case COURSE_MOO_MOO_FARM:
-        func_80070328(D_800E6AA8);
+        init_clouds(gYoshiValleyMooMooFarmClouds);
         break;
     case COURSE_TOADS_TURNPIKE:
-        func_800704A0(D_800E6C80);
+        init_stars(gToadsTurnpikeRainbowRoadStars);
         break;
     case COURSE_KALAMARI_DESERT:
-        func_80070328(D_800E6C10);
+        init_clouds(gKalimariDesertClouds);
         break;
     case COURSE_SHERBET_LAND:
-        func_80070328(D_800E6BA8);
+        init_clouds(gSherbetLandClouds);
         break;
     case COURSE_RAINBOW_ROAD:
-        func_800704A0(D_800E6C80);
+        init_stars(gToadsTurnpikeRainbowRoadStars);
         break;
     case COURSE_WARIO_STADIUM:
-        func_800704A0(D_800E6DE0);
+        init_stars(gWarioStadiumStars);
         break;
     }
     func_8008C23C();
@@ -986,8 +755,8 @@ void init_course_object(void) {
                 func_80070714();
             }
             for (i = 0; i < D_80165738; i++) {
-                find_unused_obj_index(&D_8018C630[i]);
-                init_object(D_8018C630[i], 0);
+                find_unused_obj_index(&gObjectParticle3[i]);
+                init_object(gObjectParticle3[i], 0);
             }
         }
         break;
@@ -1010,10 +779,10 @@ void init_course_object(void) {
         for (i = 0; i < gNumActiveThwomps; i++) {
             objectId = indexObjectList1[i];
             init_object(objectId, 0);
-            gObjectList[objectId].unk_010[0] = gThowmpSpawnList[i].startX * xOrientation;
-            gObjectList[objectId].unk_010[2] = gThowmpSpawnList[i].startZ;
+            gObjectList[objectId].origin_pos[0] = gThowmpSpawnList[i].startX * xOrientation;
+            gObjectList[objectId].origin_pos[2] = gThowmpSpawnList[i].startZ;
             gObjectList[objectId].unk_0D5 = gThowmpSpawnList[i].unk_4;
-            gObjectList[objectId].unk_0A0 = gThowmpSpawnList[i].unk_6;
+            gObjectList[objectId].primAlpha = gThowmpSpawnList[i].unk_6;
         }
         // Handle the big statue's fire breath
         objectId = indexObjectList2[0];
@@ -1028,9 +797,9 @@ void init_course_object(void) {
             gObjectList[objectId].pos[0] = gFireBreathsSpawns[i][0] * xOrientation;
             gObjectList[objectId].pos[1] = gFireBreathsSpawns[i][1];
             gObjectList[objectId].pos[2] = gFireBreathsSpawns[i][2];
-            gObjectList[objectId].unk_0BE[1] = 0;
+            gObjectList[objectId].direction_angle[1] = 0;
             if (i % 2U) {
-                gObjectList[objectId].unk_0BE[1] += 0x8000;
+                gObjectList[objectId].direction_angle[1] += 0x8000;
             }
         }
         for (i = 0; i < 32; i++) {
@@ -1038,27 +807,27 @@ void init_course_object(void) {
         }
         break;
     case COURSE_BANSHEE_BOARDWALK:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             objectId = indexObjectList1[0];
             init_texture_object(objectId, d_course_banshee_boardwalk_bat_tlut, *d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
-            gObjectList[objectId].unk_0B2[0] = 0;
-            gObjectList[objectId].unk_0B2[1] = 0;
-            gObjectList[objectId].unk_0B2[2] = 0x8000;
+            gObjectList[objectId].orientation[0] = 0;
+            gObjectList[objectId].orientation[1] = 0;
+            gObjectList[objectId].orientation[2] = 0x8000;
             init_object(indexObjectList1[1], 0);
             init_object(indexObjectList1[2], 0);
         }
         break;
     case COURSE_YOSHI_VALLEY:
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < NUM_YV_FLAG_POLES; i++) {
             init_object(indexObjectList1[i], 0);
         }
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             for (i = 0; i < NUM_HEDGEHOGS; i++) {
                 objectId = indexObjectList2[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].pos[0] = gObjectList[objectId].unk_010[0] = gHedgehogSpawns[i].pos[0] * xOrientation;
+                gObjectList[objectId].pos[0] = gObjectList[objectId].origin_pos[0] = gHedgehogSpawns[i].pos[0] * xOrientation;
                 gObjectList[objectId].pos[1] = gObjectList[objectId].unk_044 = gHedgehogSpawns[i].pos[1] + 6.0;
-                gObjectList[objectId].pos[2] = gObjectList[objectId].unk_010[2] = gHedgehogSpawns[i].pos[2];
+                gObjectList[objectId].pos[2] = gObjectList[objectId].origin_pos[2] = gHedgehogSpawns[i].pos[2];
                 gObjectList[objectId].unk_0D5 = gHedgehogSpawns[i].unk_06;
                 gObjectList[objectId].unk_09C = gHedgehogPatrolPoints[i][0] * xOrientation;
                 gObjectList[objectId].unk_09E = gHedgehogPatrolPoints[i][2];
@@ -1067,33 +836,33 @@ void init_course_object(void) {
         break;
     case COURSE_FRAPPE_SNOWLAND:
         for (i = 0; i < NUM_SNOWFLAKES; i++) {
-            find_unused_obj_index(&D_8018C1B0[i]);
+            find_unused_obj_index(&gObjectParticle1[i]);
         }
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             for (i = 0; i < NUM_SNOWMEN; i++) {
                 objectId = indexObjectList2[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].unk_010[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
-                gObjectList[objectId].unk_010[1] = gSnowmanSpawns[i].pos[1] + 5.0 + 3.0;
-                gObjectList[objectId].unk_010[2] = gSnowmanSpawns[i].pos[2];
+                gObjectList[objectId].origin_pos[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
+                gObjectList[objectId].origin_pos[1] = gSnowmanSpawns[i].pos[1] + 5.0 + 3.0;
+                gObjectList[objectId].origin_pos[2] = gSnowmanSpawns[i].pos[2];
                 objectId = indexObjectList1[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].unk_010[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
-                gObjectList[objectId].unk_010[1] = gSnowmanSpawns[i].pos[1] + 3.0;
-                gObjectList[objectId].unk_010[2] = gSnowmanSpawns[i].pos[2];
+                gObjectList[objectId].origin_pos[0] = gSnowmanSpawns[i].pos[0] * xOrientation;
+                gObjectList[objectId].origin_pos[1] = gSnowmanSpawns[i].pos[1] + 3.0;
+                gObjectList[objectId].origin_pos[2] = gSnowmanSpawns[i].pos[2];
                 gObjectList[objectId].unk_0D5 = gSnowmanSpawns[i].unk_6;
             }
         }
         break;
     case COURSE_KOOPA_BEACH:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             for (i = 0; i < NUM_CRABS; i++) {
                 objectId = indexObjectList1[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].pos[0] = gObjectList[objectId].unk_010[0] = gCrabSpawns[i].startX * xOrientation;
+                gObjectList[objectId].pos[0] = gObjectList[objectId].origin_pos[0] = gCrabSpawns[i].startX * xOrientation;
                 gObjectList[objectId].unk_01C[0] = gCrabSpawns[i].patrolX * xOrientation;
 
-                gObjectList[objectId].pos[2] = gObjectList[objectId].unk_010[2] = gCrabSpawns[i].startZ;
+                gObjectList[objectId].pos[2] = gObjectList[objectId].origin_pos[2] = gCrabSpawns[i].startZ;
                 gObjectList[objectId].unk_01C[2] = gCrabSpawns[i].patrolZ;
             }
         }
@@ -1108,31 +877,31 @@ void init_course_object(void) {
         }
         break;
     case COURSE_ROYAL_RACEWAY:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
             for (i = 0; i < D_80165738; i++) {
-                find_unused_obj_index(&D_8018C630[i]);
-                init_object(D_8018C630[i], 0);
+                find_unused_obj_index(&gObjectParticle3[i]);
+                init_object(gObjectParticle3[i], 0);
             }
         }
         break;
     case COURSE_LUIGI_RACEWAY:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
             D_80165898 = 0;
             init_object(indexObjectList1[0], 0);
             for (i = 0; i < D_80165738; i++) {
-                find_unused_obj_index(&D_8018C630[i]);
-                init_object(D_8018C630[i], 0);
+                find_unused_obj_index(&gObjectParticle3[i]);
+                init_object(gObjectParticle3[i], 0);
             }
         }
         break;
     case COURSE_MOO_MOO_FARM:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == VERSUS))) {
                 switch (gCCSelection) {             /* switch 2; irregular */
                 case CC_50:                             /* switch 2 */
@@ -1174,31 +943,31 @@ void init_course_object(void) {
                 find_unused_obj_index(&indexObjectList1[i]);
             }
             for (i = 0; i < NUM_MAX_MOLES; i++) {
-                find_unused_obj_index(&D_8018C1B0[i]);
-                objectId = D_8018C1B0[i];
+                find_unused_obj_index(&gObjectParticle1[i]);
+                objectId = gObjectParticle1[i];
                 init_object(objectId, 0);
                 gObjectList[objectId].pos[0] = gMoleSpawns[i][0] * xOrientation;
                 gObjectList[objectId].pos[2] = gMoleSpawns[i][2];
                 func_800887C0(objectId);
                 gObjectList[objectId].sizeScaling = 0.7f;
             }
-            for (i = 0; i < D_8018C3F0_SIZE; i++) {
-                find_unused_obj_index(&D_8018C3F0[i]);
+            for (i = 0; i < gObjectParticle2_SIZE; i++) {
+                find_unused_obj_index(&gObjectParticle2[i]);
             }
         }
         break;
     case COURSE_KALAMARI_DESERT:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             find_unused_obj_index(&D_8018CF10);
             init_object(D_8018CF10, 0);
             for (i = 0; i < 50; i++) {
-                find_unused_obj_index(&D_8018C1B0[i]);
+                find_unused_obj_index(&gObjectParticle1[i]);
             }
             for (i = 0; i < 5; i++) {
-                find_unused_obj_index(&D_8018C3F0[i]);
+                find_unused_obj_index(&gObjectParticle2[i]);
             }
             for (i = 0; i < 32; i++) {
-                find_unused_obj_index(&D_8018C630[i]);
+                find_unused_obj_index(&gObjectParticle3[i]);
             }
         }
         break;
@@ -1208,7 +977,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_RAINBOW_ROAD:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             for (i = 0; i < NUM_NEON_SIGNS; i++) {
                 init_object(indexObjectList1[i], 0);
             }
@@ -1219,7 +988,7 @@ void init_course_object(void) {
         break;
     case COURSE_DK_JUNGLE:
         for (i = 0; i < NUM_TORCHES; i++) {
-            func_800770F0(i);
+            init_smoke_particles(i);
             // wtf?
             if (D_8018CF10){}
         }
@@ -1229,179 +998,98 @@ void init_course_object(void) {
     }
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit b52d92c2340f6f4ba1aafb464188bb698752fbb0 on Jul-28-2023
-? init_course_object();                                  /* extern */
-extern s32 D_80165638;
-extern s32 D_80165648;
-extern s16 D_801656B0;
-extern s16 D_80165708;
-extern s16 D_8016579E;
-extern s16 D_801657A2;
-extern s8 D_80165888;
-extern s8 D_80165890;
-extern s32 D_80183DA0;
-extern s32 D_80183DBC;
-extern f32 D_8018CFCC;
-extern f32 D_8018CFD4;
-extern f32 D_8018CFEC;
-extern f32 D_8018CFF4;
-extern f32 D_8018D00C;
-extern ? D_8018D028;
-extern ? D_8018D050;
-extern ? D_8018D078;
-extern ? D_8018D098;
-extern ? D_8018D0A0;
-extern ? D_8018D0C8;
-extern ? D_8018D0F0;
-extern s32 D_8018D150;
-extern s32 D_8018D380;
-extern s32 D_8018D384;
-extern s32 D_8018D388;
-extern s32 D_8018D3BC;
-extern s32 D_8018D3C0;
-extern s32 D_8018D3C4;
-extern s32 D_8018D3D4;
-extern s32 D_8018D3D8;
-extern s32 D_8018D3DC;
-extern s32 D_8018D3F0;
-extern s32 D_8018D3F4;
-
 void init_hud_one_player(void) {
-    ? *var_a0;
-    ? *var_a1;
-    ? *var_a2;
-    ? *var_a3;
-    ? *var_v0;
-    ? *var_v1;
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f0_3;
-    f32 var_f0;
+    s32 someIndex;
+    f32 something;
+    // permuter magic
+    long long why;
+    s32 one = 1;
 
     D_8018D140 = 0;
     D_8018D150 = 0;
     D_8018CFCC = 1.0f;
     find_unused_obj_index(&D_80183DA0);
-    find_unused_obj_index(D_80183DB8);
-    find_unused_obj_index(&D_80183DBC);
-    find_unused_obj_index(gItemWindowObjectByPlayerId);
-    find_unused_obj_index(gItemWindowObjectByPlayerId + 4);
+    find_unused_obj_index(&gIndexLakituList[0]);
+    find_unused_obj_index(&gIndexLakituList[1]);
+    find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
+    find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
     init_object_list_index();
     func_8007055C();
     func_8007055C();
     init_course_object();
-    playerHUD->speedometerX = 0x0156;
-    playerHUD->speedometerY = 0x0106;
-    D_8018CFEC = (f32) (playerHUD->speedometerX + 0x18);
-    D_8018CFF4 = (f32) (playerHUD->speedometerY + 6);
+    playerHUD[PLAYER_ONE].speedometerX = 0x0156;
+    playerHUD[PLAYER_ONE].speedometerY = 0x0106;
+    D_8018CFEC = playerHUD[PLAYER_ONE].speedometerX + 0x18;
+    D_8018CFF4 = playerHUD[PLAYER_ONE].speedometerY + 6;
     D_8016579E = 0xDD00;
-    playerHUD->rankX = 0x0034;
-    playerHUD->rankY = 0x00C8;
-    playerHUD->slideRankX = 0;
-    playerHUD->slideRankY = 0;
-    playerHUD->timerX = 0x012C;
-    playerHUD->lap1CompletionTimeX = 0x012C;
-    playerHUD->lap2CompletionTimeX = 0x012C;
-    playerHUD->timerY = 0x0011;
-    playerHUD->lapX = -0x0028;
-    playerHUD->lapAfterImage1X = -0x0028;
-    playerHUD->lapAfterImage2X = -0x0028;
-    playerHUD->lapY = 0x0019;
-    playerHUD->itemBoxX = 0x00A0;
-    playerHUD->itemBoxY = -0x0020;
-    playerHUD->slideItemBoxX = 0;
-    playerHUD->slideItemBoxY = 0;
-    playerHUD->stagingPosition = (s16) *gGPCurrentRaceRankByPlayerId;
+    playerHUD[PLAYER_ONE].rankX = 0x0034;
+    playerHUD[PLAYER_ONE].rankY = 0x00C8;
+    playerHUD[PLAYER_ONE].slideRankX = 0;
+    playerHUD[PLAYER_ONE].slideRankY = 0;
+    playerHUD[PLAYER_ONE].stagingPosition = gGPCurrentRaceRankByPlayerId[0];
+    playerHUD[PLAYER_ONE].timerX = 0x012C;
+    playerHUD[PLAYER_ONE].lapCompletionTimeXs[0] = 0x012C;
+    playerHUD[PLAYER_ONE].lapCompletionTimeXs[1] = 0x012C;
+    playerHUD[PLAYER_ONE].timerY = 0x0011;
+    playerHUD[PLAYER_ONE].lapX = -0x0028;
+    playerHUD[PLAYER_ONE].lapAfterImage1X = -0x0028;
+    playerHUD[PLAYER_ONE].lapAfterImage2X = -0x0028;
+    playerHUD[PLAYER_ONE].lapY = 0x0019;
+    playerHUD[PLAYER_ONE].itemBoxX = 0x00A0;
+    playerHUD[PLAYER_ONE].itemBoxY = -0x0020;
+    playerHUD[PLAYER_ONE].slideItemBoxX = 0;
+    playerHUD[PLAYER_ONE].slideItemBoxY = 0;
+    // permuter magic
+    why = 0x000000A0;
     init_item_window(gItemWindowObjectByPlayerId[0]);
-    var_f0 = 35.0f;
-    var_v0 = &D_8018D078;
-    var_a3 = &D_8018D0A0;
-    var_a2 = &D_8018D0F0;
-    var_a1 = &D_8018D050;
-    var_a0 = &D_8018D028;
-    var_v1 = &D_8018D0C8;
-    do {
-        var_a1->unk0 = var_f0;
-        var_a2->unk0 = var_f0;
-        var_v0 += 0x10;
-        var_v1->unk4 = 40.0f;
-        temp_f0 = (f32) ((f64) var_f0 + 32.0);
-        var_a0->unk4 = -24.0f;
-        var_a3->unk4 = 0.0f;
-        var_v0->unk-C = 0.0f;
-        var_a1->unk4 = temp_f0;
-        var_a2->unk4 = temp_f0;
-        var_v1->unk8 = 40.0f;
-        var_a0->unk8 = -24.0f;
-        temp_f0_2 = (f32) ((f64) temp_f0 + 32.0);
-        var_a3->unk8 = 0.0f;
-        var_v0->unk-8 = 0.0f;
-        var_v1->unkC = 40.0f;
-        var_a1->unk8 = temp_f0_2;
-        var_a2->unk8 = temp_f0_2;
-        var_a0->unkC = -24.0f;
-        var_a3->unkC = 0.0f;
-        temp_f0_3 = (f32) ((f64) temp_f0_2 + 32.0);
-        var_v0->unk-4 = 0.0f;
-        var_v1 += 0x10;
-        var_a0 += 0x10;
-        var_a1->unkC = temp_f0_3;
-        var_a2->unkC = temp_f0_3;
-        var_a1 += 0x10;
-        var_a2 += 0x10;
-        var_f0 = (f32) ((f64) temp_f0_3 + 32.0);
-        var_a3 += 0x10;
-        var_v1->unk-10 = 40.0f;
-        var_a0->unk-10 = -24.0f;
-        var_a3->unk-10 = 0.0f;
-        var_v0->unk-10 = 0.0f;
-    } while (var_v0 != &D_8018D098);
+    for (someIndex = 0, something = 35.0f; someIndex < 8; someIndex++, something+= 32.0) {
+        D_8018D0C8[someIndex] = 40.0f;
+        D_8018D028[someIndex] = -24.0f;
+        D_8018D050[someIndex] = something;
+        D_8018D0F0[someIndex] = something;
+        D_8018D0A0[someIndex] = 0.0f;
+        D_8018D078[someIndex] = 0.0f;
+    }
     D_8018CFD4 = 1.0f;
-    D_8018D3DC = 0x000000FF;
-    D_8018D3D8 = 0x000000FF;
-    D_8018D3D4 = 0x000000FF;
-    D_8018D3E0 = 0x000000A0;
+    D_8018D3D4 = D_8018D3D8 = D_8018D3DC = 0x000000FF;
+    D_8018D3E0 = why;
     D_8018D3E4 = 0x000000FF;
     D_8018D3E8 = 0x000000FF;
     D_8018D3EC = 0x000000FF;
     D_8018D3F0 = 0x000000FF;
-    D_8018D3F4 = 1;
-    playerHUD->unk_4C = 0x0078;
-    playerHUD->unk_4A = 0x00A0;
-    playerHUD->rankScaling = 0.5f;
+    D_8018D3F4 = one;
+    playerHUD[PLAYER_ONE].unk_4C = 0x0078;
+    playerHUD[PLAYER_ONE].unk_4A = 0x00A0;
+    playerHUD[PLAYER_ONE].rankScaling = 0.5f;
     D_801656B0 = 0;
     D_80165708 = 0x0028;
     D_8018D00C = 5.0f;
     D_8018D388 = 4;
-    D_8018D380 = (s32) 0x00A0;
-    D_8018D384 = (s32) 0x0078;
+    D_8018D380 = 0x00A0;
+    D_8018D384 = 0x0078;
     D_8018D3C4 = 0x00000032;
-    D_8018D3BC = (s32) 0x0028;
+    D_8018D3BC = 0x0028;
     D_8018D3C0 = 0x00000050;
     D_801657A2 = 0x0333;
     switch (gModeSelection) {                       /* irregular */
     case 0:
         D_8018D158 = 8;
-        return;
+        break;
     case 1:
-        D_80165638 = (func_800B4F2C(0, 40.0f, &D_8018D3DC, 1, 0x0078, 0x0028) & 0xFFFFF) - 1;
+        D_80165638 = (func_800B4F2C() & 0xFFFFF) - 1;
         D_80165648 = func_800B4E24(0) & 0xFFFFF;
         D_80165888 = 1;
         D_80165890 = 1;
-        D_8018D158 = (s32) 1;
-        return;
+        D_8018D158 = 1;
+        break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_8006E9C0/init_hud_one_player.s")
-#endif
 
 void init_hud_two_player_vertical(void) {
     find_unused_obj_index(&D_80183DA0);
 
-    find_unused_obj_index(&D_80183DB8[0]);
-    find_unused_obj_index(&D_80183DB8[1]);
+    find_unused_obj_index(&gIndexLakituList[0]);
+    find_unused_obj_index(&gIndexLakituList[1]);
 
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
@@ -1470,8 +1158,8 @@ void init_hud_two_player_vertical(void) {
 void init_hud_two_player_horizontal() {
     find_unused_obj_index(&D_80183DA0);
 
-    find_unused_obj_index(&D_80183DB8[0]);
-    find_unused_obj_index(&D_80183DB8[1]);
+    find_unused_obj_index(&gIndexLakituList[0]);
+    find_unused_obj_index(&gIndexLakituList[1]);
 
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);
@@ -1546,10 +1234,10 @@ void init_hud_two_player_horizontal() {
 void init_hud_three_four_player(void) {
     find_unused_obj_index(&D_80183DA0);
 
-    find_unused_obj_index(&D_80183DB8[0]);
-    find_unused_obj_index(&D_80183DB8[1]);
-    find_unused_obj_index(&D_80183DB8[2]);
-    find_unused_obj_index(&D_80183DB8[3]);
+    find_unused_obj_index(&gIndexLakituList[0]);
+    find_unused_obj_index(&gIndexLakituList[1]);
+    find_unused_obj_index(&gIndexLakituList[2]);
+    find_unused_obj_index(&gIndexLakituList[3]);
 
     find_unused_obj_index(&gItemWindowObjectByPlayerId[0]);
     find_unused_obj_index(&gItemWindowObjectByPlayerId[1]);

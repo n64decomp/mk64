@@ -3,11 +3,12 @@
 
 #include "common_structs.h"
 #include "camera.h"
+#include "objects.h"
 
 void func_80086E70(s32);
 void func_80086EAC(s32, s32, s16);
 void func_80086EF0(s32);
-void func_80086F10(s32, s32, u16[][4]);
+void func_80086F10(s32, s32, SplineData*);
 void func_80086F60(s32);
 s32  func_80086FA4(s32);
 void func_80086FD4(s32);
@@ -16,10 +17,10 @@ s32  func_80087060(s32, s32);
 s32  func_80087104(s32, u16);
 s32  func_800871AC(s32, s32);
 void func_80087258(s32, s32, f32);
-s32  func_80087294(s32, Player*);
+s32  get_angle_between_player_object(s32, Player*);
 s32  angle_between_object_camera(s32, Camera*);
-u16  func_80087324(s32);
-s32  func_80087368(s32);
+u16  get_x_direction_angle(s32);
+s32  get_y_direction_angle(s32);
 void func_800873A4(s32);
 void func_800873F4(s32);
 void func_80087444(s32);
@@ -29,11 +30,11 @@ void func_8008751C(s32);
 void func_8008757C(s32);
 void func_80087620(s32);
 void func_800876A0(s32);
-void func_80087710(s32);
-void func_8008775C(s32);
-void func_80087798(s32);
-void func_800877C4(s32);
-void func_800877F0(s32);
+void object_add_velocity_offset_xyz(s32);
+void object_add_velocity_offset_xz(s32);
+void object_add_velocity_offset_x(s32);
+void object_add_velocity_offset_y(s32);
+void object_add_velocity_offset_z(s32);
 void func_8008781C(s32);
 void func_80087844(s32);
 f32  func_8008786C(f32, f32, f32, f32, f32);
@@ -92,7 +93,7 @@ s32  func_80089E18(s32);
 s32  func_80089F24(s32);
 s32  func_8008A060(s32, Camera*, u16);
 s32  func_8008A0B4(s32, Player*, Camera*, u16);
-s32  func_8008A140(s32, Camera*, u16);
+s32  is_object_visible_on_camera(s32, Camera*, u16);
 void func_8008A1D0(s32, s32, s32, s32);
 void func_8008A2CC(s32, s32, u16);
 s32  func_8008A364(s32, s32, u16, s32);
@@ -143,40 +144,28 @@ void func_8008B620(s32);
 void func_8008B6A4(s32);
 void func_8008B724(s32);
 void func_8008B78C(s32);
-void func_8008B7D4(s32, f32, f32, f32);
-void func_8008B80C(s32, f32, f32, f32);
+void set_obj_origin_pos(s32, f32, f32, f32);
+void set_obj_origin_offset(s32, f32, f32, f32);
 void func_8008B844(s32);
-void func_8008B888(s32, u16, u16, u16);
-void func_8008B8BC(s32, u16, u16, u16);
-void func_8008B8F0(s32, f32, f32, f32);
-void func_8008B928(s32, s16, s16, s16, s16[][4]);
-void func_8008BA40(s32, s16, u16);
-void func_8008BAB4(s32, s16, u16);
-void func_8008BB28(s32, s16, u16);
-void func_8008BB9C(s32, s16, s16, u16, u16);
-void func_8008BC58(s32, s16, s16, u16, u16);
-void func_8008BD14(s32, s16, s16, s16, u16, u16, u16);
-void func_8008BE0C(s32, s16, u16);
+void set_obj_direction_angle(s32, u16, u16, u16);
+void set_obj_orientation(s32, u16, u16, u16);
+void set_obj_velocity(s32, f32, f32, f32);
+void func_8008B928(s32, s16, s16, s16, SplineData*);
+void object_origin_pos_randomize_around_x(s32, s16, u16);
+void object_origin_pos_randomize_around_y(s32, s16, u16);
+void object_origin_pos_randomize_around_z(s32, s16, u16);
+void object_origin_pos_randomize_around_xy(s32, s16, s16, u16, u16);
+void object_origin_pos_randomize_around_xz(s32, s16, s16, u16, u16);
+void object_origin_pos_randomize_around_xyz(s32, s16, s16, s16, u16, u16, u16);
+void object_origin_pos_around_player_one(s32, s16, u16);
 void func_8008BEA4(s32, u16, u16);
 void func_8008BFC0(s32);
-void func_8008BF18(s32);
+void object_calculate_new_pos_offset(s32);
 void func_8008BF64(s32);
 void func_8008BFFC(s32);
 void func_8008C1B8(s32);
 void func_8008C1C0(s32);
 
-// This may be a list of tilemap flags on a per-camera basis
-extern s16 D_8018CF68[];
-extern f32 D_80183DA8[];
-extern f32 D_80183DC8[];
-extern Collision D_8018C3B0;
 extern s16 gCurrentCourseId;
-
-extern Vec4s D_80165760;
-extern Vec4s D_80165770;
-extern Vec4s D_80165780;
-
-extern Vec3f D_80183E40;
-extern Vec3su D_80183E80;
 
 #endif

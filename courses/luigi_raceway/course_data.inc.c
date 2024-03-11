@@ -1,4 +1,4 @@
-// todo: Replace addresses with variables
+//! @todo Replace addresses with variables
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/gbi.h>

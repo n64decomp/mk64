@@ -3,13 +3,14 @@
 #include <common_structs.h>
 #include "math_util_2.h"
 #include "main.h"
-#include "variables.h"
 #include "math_util.h"
 #include "objects.h"
 
 #include "memory.h"
 #include "collision.h"
 #include "render_player.h"
+#include "code_80057C60.h"
+#include "defines.h"
 
 #pragma intrinsic (sqrtf)
 
@@ -385,50 +386,50 @@ UNUSED s32 func_800416AC(f32 arg0, f32 arg1) {
     return atan2s(arg1, arg0);
 }
 
-f32 func_800416D8(f32 arg0, f32 arg1, u16 arg2) {
-    f32 sp1C;
+f32 func_800416D8(f32 x, f32 z, u16 angle) {
+    f32 cosAngle;
 
-    sp1C = coss(arg2);
-    return (sp1C * arg0) - (sins(arg2) * arg1);
+    cosAngle = coss(angle);
+    return (cosAngle * x) - (sins(angle) * z);
 }
 
-f32 func_80041724(f32 arg0, f32 arg1, u16 arg2) {
-    f32 sp1C;
+f32 func_80041724(f32 x, f32 z, u16 angle) {
+    f32 sinAngle;
 
-    sp1C = sins(arg2);
-    return (coss(arg2) * arg1) + (sp1C * arg0);
+    sinAngle = sins(angle);
+    return (coss(angle) * z) + (sinAngle * x);
 }
 
-s32 func_80041770(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
-    return atan2s(arg1 - arg0, arg3 - arg2);
+s32 get_angle_between_xy(f32 x1, f32 x2, f32 y1, f32 y2) {
+    return atan2s(x2 - x1, y2 - y1);
 }
 
-u16 func_800417B4(u16 arg0, u16 arg1) {
-    u16 ret;
+u16 func_800417B4(u16 angle1, u16 angle2) {
+    u16 out_angle;
 
-    if ((arg0 >> 8) != (arg1 >> 8)) {
-        ret = arg1 - arg0;
-        if (ret < 0x400) {
-            ret = arg0 + 0x80;
-        } else if (ret < 0x800) {
-            ret = arg0 + 0x200;
-        } else if (ret < 0x4000) {
-            ret = arg0 + 0x400;
-        } else if (ret < 0x8000) {
-            ret = arg0 + 0x700;
-        } else if (ret < 0xC000) {
-            ret = arg0 - 0x700;
-        }else if (ret < 0xF800) {
-            ret = arg0 - 0x400;
-        } else if (ret < 0xFC00) {
-            ret = arg0 - 0x200;
+    if ((angle1 >> 8) != (angle2 >> 8)) {
+        out_angle = angle2 - angle1;
+        if (out_angle < 0x400) {
+            out_angle = angle1 + 0x80;
+        } else if (out_angle < 0x800) {
+            out_angle = angle1 + 0x200;
+        } else if (out_angle < 0x4000) {
+            out_angle = angle1 + 0x400;
+        } else if (out_angle < 0x8000) {
+            out_angle = angle1 + 0x700;
+        } else if (out_angle < 0xC000) {
+            out_angle = angle1 - 0x700;
+        }else if (out_angle < 0xF800) {
+            out_angle = angle1 - 0x400;
+        } else if (out_angle < 0xFC00) {
+            out_angle = angle1 - 0x200;
         } else {
-            ret = arg0 - 0x80;
+            out_angle = angle1 - 0x80;
         }
     } else {
-        ret = arg1;
+        out_angle = angle2;
     }
-    return ret;
+    return out_angle;
 }
 
 s32 func_800418AC(f32 arg0, f32 arg1, Vec3f arg2) {
@@ -449,26 +450,26 @@ s32 func_80041924(Collision *arg0, Vec3f arg1) {
     return ret;
 }
 
-s32 func_80041980(Vec3f arg0, Camera *arg1, u16 arg2) {
+bool is_particle_on_screen(Vec3f arg0, Camera *arg1, u16 arg2) {
     u16 temp_t9;
     s32 ret;
 
-    ret = 0;
-    temp_t9 = (func_80041770(arg1->pos[0], arg0[0], arg1->pos[2], arg0[2]) + (arg2 / 2)) - arg1->rot[1];
+    ret = FALSE;
+    temp_t9 = (get_angle_between_xy(arg1->pos[0], arg0[0], arg1->pos[2], arg0[2]) + (arg2 / 2)) - arg1->rot[1];
     if ((temp_t9 >= 0) && (arg2 >= temp_t9)) {
-        ret = 1;
+        ret = TRUE;
     }
     return ret;
 }
 
 void func_800419F8(void) {
-    Vec3f sp18;
+    Vec3f pos;
     Vec3f vec;
 
-    sp18[0] = 0.0f;
-    sp18[1] = 0.0f;
-    sp18[2] = 120.0f;
-    vec3f_rotate_x_y(vec, sp18, D_80165834);
+    pos[0] = 0.0f;
+    pos[1] = 0.0f;
+    pos[2] = 120.0f;
+    vec3f_rotate_x_y(vec, pos, D_80165834);
     D_80165840[0] = vec[0];
     D_80165840[1] = vec[1];
     D_80165840[2] = vec[2];
@@ -605,10 +606,9 @@ void func_80041D24(void) {
 
 void guOrtho(Mtx *, f32, f32, f32, f32, f32, f32, f32); /* extern */
 extern s8 D_801658FE;
-extern Mtx D_80183D60[];
 
 void func_80041D34(void) {
-    guOrtho((Mtx *)D_80183D60, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
+    guOrtho(&D_80183D60, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
     switch (gActiveScreenMode) {
     case SCREEN_MODE_1P:
         guOrtho(&gGfxPool->mtxOrtho, 0.0f, 320.0f, 240.0f, 0.0f, -1.0f, 1.0f, 1.0f);
@@ -630,12 +630,11 @@ void func_80041D34(void) {
     }
 }
 
-void func_80041EF4(void) {
+void set_matrix_hud_screen(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxOrtho), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 }
 
-extern s32 gMatrixHudCount;
 //void convert_to_fixed_point_matrix(Mtx*, Mat4);
 
 UNUSED void func_80041F54(s32 x, s32 y) {
@@ -809,12 +808,12 @@ void mtxf_set_matrix_gObjectList(s32 objectIndex, Mat4 transformMatrix) {
     f32 cosZ;
     f32 cosX;
 
-    sinX = sins(temp_s0->unk_0B2[0]);
-    cosX = coss(temp_s0->unk_0B2[0]);
-    sinY = sins(temp_s0->unk_0B2[1]);
-    cosY = coss(temp_s0->unk_0B2[1]);
-    sinZ = sins(temp_s0->unk_0B2[2]);
-    cosZ = coss(temp_s0->unk_0B2[2]);
+    sinX = sins(temp_s0->orientation[0]);
+    cosX = coss(temp_s0->orientation[0]);
+    sinY = sins(temp_s0->orientation[1]);
+    cosY = coss(temp_s0->orientation[1]);
+    sinZ = sins(temp_s0->orientation[2]);
+    cosZ = coss(temp_s0->orientation[2]);
 
     transformMatrix[0][0] = temp_s0->sizeScaling * ((cosY * cosZ) + (sinX * sinY * sinZ));
     transformMatrix[1][0] = temp_s0->sizeScaling * ((-cosY * sinZ) + sinX * sinY * cosZ);

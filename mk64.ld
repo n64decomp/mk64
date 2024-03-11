@@ -3,7 +3,7 @@
 
 OUTPUT_ARCH (mips)
 
-#include "include/hardcoded_segments.h"
+#include "include/linker_segments.h"
 
 #define BEGIN_SEG(name, addr) \
     _##name##SegmentStart = ADDR(.name); \
@@ -13,14 +13,15 @@ OUTPUT_ARCH (mips)
 #define END_SEG(name) \
     _##name##SegmentEnd = ADDR(.name) + SIZEOF(.name); \
     _##name##SegmentRomEnd = __romPos + SIZEOF(.name); \
+    _##name##SegmentSize = SIZEOF(.name); \
     __romPos += SIZEOF(.name);
 
 #define BEGIN_NOLOAD(name) \
-    _##name##SegNoloadStart = ADDR(.name.noload); \
+    _##name##SegmentNoloadStart = ADDR(.name.noload); \
     .name.noload (NOLOAD) :
 	
 #define END_NOLOAD(name) \
-    _##name##SegNoloadEnd = ADDR(.name.noload) + SIZEOF(.name.noload);
+    _##name##SegmentNoloadEnd = ADDR(.name.noload) + SIZEOF(.name.noload);
 
 SECTIONS
 {
@@ -34,7 +35,7 @@ SECTIONS
    END_SEG(boot)
 
    /* 0x80000400 001000-0D9B70 [D8B70] */
-   BEGIN_SEG(main, SEG_MAIN) SUBALIGN(0x10)
+   BEGIN_SEG(main, LINKER_MAIN) SUBALIGN(0x10)
    {
       BUILD_DIR/asm/entry.o(.text);
       BUILD_DIR/src/main.o(.text*);
@@ -56,12 +57,12 @@ SECTIONS
       BUILD_DIR/asm/tkmk00_decode.o(.text);
       BUILD_DIR/src/gbiMacro.o(.text);
       BUILD_DIR/src/math_util_2.o(.text);
-      BUILD_DIR/src/hud_renderer.o(.text);
+      BUILD_DIR/src/render_objects.o(.text);
       BUILD_DIR/src/code_80057C60.o(.text);
       BUILD_DIR/src/code_8006E9C0.o(.text);
-      BUILD_DIR/src/code_80071F00.o(.text);
+      BUILD_DIR/src/update_objects.o(.text);
       BUILD_DIR/src/code_80086E70.o(.text);
-      BUILD_DIR/src/code_8008C1D0.o(.text);
+      BUILD_DIR/src/effects.o(.text);
       BUILD_DIR/src/code_80091440.o(.text);
       BUILD_DIR/src/code_80091750.jp.o(.text);
       BUILD_DIR/src/code_800AF9B0.o(.text);
@@ -208,18 +209,18 @@ SECTIONS
       BUILD_DIR/src/profiler.o(.data);
       BUILD_DIR/src/crash_screen.o(.data);
       BUILD_DIR/src/staff_ghosts.o(.data);
-      BUILD_DIR/data/data_0DD0A0_1.o(.data);
+      BUILD_DIR/src/data/path_spawn_data.o(.data);
       BUILD_DIR/src/camera.o(.data);
       BUILD_DIR/src/render_player.o(.data);
       BUILD_DIR/src/kart_dma.o(.data);
       BUILD_DIR/src/data/kart_attributes.inc.o(.data);
       BUILD_DIR/src/player_controller.o(.data);
       BUILD_DIR/src/spawn_players.o(.data);
-      BUILD_DIR/src/code_80071F00.o(.data);
+      BUILD_DIR/src/update_objects.o(.data);
       BUILD_DIR/src/data/data_800E45C0.o(.data);
       BUILD_DIR/src/code_80057C60.o(.data);
-      BUILD_DIR/data/data_code_80071F00_2.o(.data);
-      BUILD_DIR/src/code_8008C1D0.o(.data);
+      BUILD_DIR/src/data/some_data.o(.data);
+      BUILD_DIR/src/effects.o(.data);
       BUILD_DIR/src/code_80091440.o(.data);
       BUILD_DIR/src/code_80091750.jp.o(.data);
       BUILD_DIR/src/code_800AF9B0.o(.data);
@@ -263,12 +264,12 @@ SECTIONS
       BUILD_DIR/src/player_controller.o(.rodata);
       BUILD_DIR/src/spawn_players.o(.rodata);
       BUILD_DIR/src/code_8003DC40.o(.rodata);
-      BUILD_DIR/src/hud_renderer.o(.rodata);
+      BUILD_DIR/src/render_objects.o(.rodata);
       BUILD_DIR/src/code_80057C60.o(.rodata);
       BUILD_DIR/src/code_8006E9C0.o(.rodata);
-      BUILD_DIR/src/code_80071F00.o(.rodata);
+      BUILD_DIR/src/update_objects.o(.rodata);
       BUILD_DIR/src/code_80086E70.o(.rodata);
-      BUILD_DIR/src/code_8008C1D0.o(.rodata);
+      BUILD_DIR/src/effects.o(.rodata);
       BUILD_DIR/src/code_80091750.jp.o(.rodata);
       BUILD_DIR/src/code_800AF9B0.o(.rodata);
       BUILD_DIR/src/menus.o(.rodata);
@@ -310,7 +311,9 @@ SECTIONS
       BUILD_DIR/src/camera.o(.bss);
       BUILD_DIR/src/render_player.o(.bss);
       BUILD_DIR/src/spawn_players.o(.bss);
-      BUILD_DIR/asm/bss_80165590.o(.bss);
+      BUILD_DIR/src/code_80057C60.o(.bss);
+      BUILD_DIR/src/code_80057C60_var.o(.bss);
+      BUILD_DIR/src/effects.o(.bss);
       BUILD_DIR/src/code_80091750.jp.o(.bss);
       BUILD_DIR/src/code_800AF9B0.o(.bss);
       BUILD_DIR/src/menus.o(.bss);
@@ -342,9 +345,15 @@ SECTIONS
    }
    END_NOLOAD(main)
 
+   /* Checks that segments are not overlapping into the memory pool but is not strictly necessary */
+   BEGIN_NOLOAD(memoryPool)
+   {
+      BUILD_DIR/src/data/memory_pool.o(.bss);
+   }
+   END_NOLOAD(memoryPool)
    
    /* 0x8028DF00 0F7510-123640 [2C130] */
-   BEGIN_SEG(racing, SEG_RACING)
+   BEGIN_SEG(racing, LINKER_RACING)
    {
       BUILD_DIR/src/racing/race_logic.o(.text*);
       BUILD_DIR/src/racing/render_courses.o(.text*);
@@ -378,7 +387,13 @@ SECTIONS
       BUILD_DIR/src/racing/race_logic.o(.bss*);
       BUILD_DIR/src/racing/actors.o(.bss*);
       BUILD_DIR/src/racing/memory.o(.bss*);
-      BUILD_DIR/src/data/framebuffers.o(.bss*);
+      . = ALIGN(0x10);
+   }
+   END_NOLOAD(racing)
+
+   BEGIN_NOLOAD(buffers)
+   {
+      BUILD_DIR/src/data/buffers.o(.bss*);
       BUILD_DIR/src/data/gfx_output_buffer.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/src/audio/heap.o(.bss*);
@@ -386,15 +401,11 @@ SECTIONS
       BUILD_DIR/src/audio/data.o(.bss);
       . = ALIGN(0x8);
    }
-   END_NOLOAD(racing)
+   END_NOLOAD(buffers)
 
-   _racingSegmentNoloadSize = SIZEOF(.racing.noload) + 0x10;
-   
-   _racingSegmentNoloadSizeHi = _racingSegmentNoloadSize >> 16;
-   _racingSegmentNoloadSizeLo = _racingSegmentNoloadSize & 0xFFFF;
 
    /* 0x80280000 123640-12AAE0 [74A0] */
-   BEGIN_SEG(endingSequences, SEG_ENDING_SEQUENCES)
+   BEGIN_SEG(ending, LINKER_ENDING)
    {
       BUILD_DIR/src/ending/code_80280000.o(.text);
       BUILD_DIR/src/ending/podium_ceremony_actors.o(.text);
@@ -412,23 +423,15 @@ SECTIONS
       BUILD_DIR/src/ending/credits.jp.o(.rodata);
       BUILD_DIR/src/ending/ceremony_and_credits.o(.rodata);
    }
-   END_SEG(endingSequences)
+   END_SEG(ending)
 
-   BEGIN_NOLOAD(endingSequences) {
+   BEGIN_NOLOAD(ending) {
       BUILD_DIR/src/ending/code_80280000.o(.bss);
       BUILD_DIR/src/ending/podium_ceremony_actors.o(.bss);
       BUILD_DIR/src/ending/code_80281C40.o(.bss);
       BUILD_DIR/src/ending/ceremony_and_credits.o(.bss);
    }
-   END_NOLOAD(endingSequences)
-
-   _endingSequencesSegmentNoloadSize = SIZEOF(.endingSequences.noload) + 0x10;
-   
-   _endingSequencesSegmentNoloadSizeHi = _endingSequencesSegmentNoloadSize >> 16;
-   _endingSequencesSegmentNoloadSizeLo = _endingSequencesSegmentNoloadSize & 0xFFFF;
-
-
-
+   END_NOLOAD(ending)
 
    /* 0x801978D0 12AAE0-132B50 [8070] */
    /* texture tables and DLs, set as segment 0x02 */
@@ -473,12 +476,12 @@ SECTIONS
    END_SEG(other_textures)
 
    /* 0x802BA370 724220-729A30 [0x5810] */
-   BEGIN_SEG(data_802BA370, SEG_802BA370)
+   BEGIN_SEG(trigTables, LINKER_TRIG_TABLES)
    {
-        BUILD_DIR/src/data/framebuffers.o(.data);
+        BUILD_DIR/src/data/trig_tables.o(.data);
         . = ALIGN(0x10);
    }
-   END_SEG(data_802BA370)
+   END_SEG(trigTables)
 
    /* 0x0A000000 729A30-7E684F [BCE20] */
    BEGIN_SEG(textures_0a, 0x0A000000)
@@ -499,18 +502,19 @@ SECTIONS
 
    /* TODO: 0x825800 -> 0x8028B230 (0x100) ...
             0x828400 -> 0x8028DE30 (0xD0) */
-   BEGIN_SEG(data_821D10, 0x0B000000)
+   BEGIN_SEG(ceremonyData, 0x0B000000)
    {
       BUILD_DIR/src/ending/ceremony_data.inc.mio0.o(.data);
       . = ALIGN(0x10);
    }
-   END_SEG(data_821D10)
-   BEGIN_SEG(data_825800, 0x06000000)
+   END_SEG(ceremonyData)
+
+   BEGIN_SEG(startupLogo, 0x06000000)
    {
       BUILD_DIR/src/data/startup_logo.inc.mio0.o(.data);
       . = ALIGN(0x10);
    }
-   END_SEG(data_825800)
+   END_SEG(startupLogo)
 
 
    /* Segment Six Course Data (Displaylists, models, textures, course paths, etc.) */
@@ -637,4 +641,10 @@ SECTIONS
    {
       *(*);
    }
+
+   ASSERT((_mainSegmentNoloadEnd <= _memoryPoolSegmentNoloadStart), "Error: Main segment extended into the memory pool.")
+   ASSERT((_memoryPoolSegmentNoloadEnd <= _endingSegmentStart), "Error: Memory pool extended into the ending segment.")
+   ASSERT((_endingSegmentNoloadEnd <= _racingSegmentStart), "Error: Ending segment extended into the racing segment")
+   ASSERT((_racingSegmentNoloadEnd <= _buffersSegmentNoloadStart), "Error: Racing segment extended into the buffers segment.")
+   ASSERT((_buffersSegmentNoloadEnd <= RDRAM_END), "Error: Buffers segment extended past 8MB of memory")
 }

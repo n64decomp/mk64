@@ -98,7 +98,7 @@ glabel audio_init
 /* 0BCE08 800BC208 3C01803B */  lui   $at, %hi(gRefreshRate) # $at, 0x803b
 /* 0BCE0C 800BC20C AC39717C */  sw    $t9, %lo(gRefreshRate)($at)
 .L800BC210:
-/* 0BCE10 800BC210 0C032FD2 */  jal   func_800CBF48
+/* 0BCE10 800BC210 0C032FD2 */  jal   port_eu_init
 /* 0BCE14 800BC214 00000000 */   nop   
 /* 0BCE18 800BC218 3C02803B */  lui   $v0, %hi(gAiBufferLengths) # $v0, 0x803b
 /* 0BCE1C 800BC21C 3C04803B */  lui   $a0, %hi(D_803B7192) # $a0, 0x803b

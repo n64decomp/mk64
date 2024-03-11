@@ -3,7 +3,7 @@
 
 #include "common_structs.h"
 
-enum ActorType {
+enum CeremonyActorType {
     Initial,
     Balloon,
     FireworkCone,
@@ -117,6 +117,5 @@ extern ActorInitParams initBurst;
 extern Gfx *D_802874D4;
 extern s32  D_802874FC;
 extern Mat4 D_80287500;
-extern s16  gMatrixEffectCount;
 
 #endif

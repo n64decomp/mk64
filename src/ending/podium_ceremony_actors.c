@@ -7,10 +7,9 @@
 #include <common_structs.h>
 #include "main.h"
 #include "memory.h"
-#include "variables.h"
 #include "common_textures.h"
 #include "render_player.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
 #include "podium_ceremony_actors.h"
 #include "camera_junk.h"
 #include "player_controller.h"
@@ -124,8 +123,8 @@ CeremonyActor *find_available_entry(void) {
 CeremonyActor *new_actor(ActorInitParams *arg0) {
     CeremonyActor *actor = find_available_entry();
 
-    // @bug No null check.
-    // todo: More indepth error checking/return value
+    //! @bug No null check.
+    //! @todo More indepth error checking/return value
     #ifdef AVOID_UB
     if (actor == NULL) {
         return (CeremonyActor*) &sPodiumActorList[0]; // Return first actor to prevent crash
@@ -472,7 +471,7 @@ void podium_ceremony_loop(void) {
     func_8005A070();
     if (D_802874D8.unk1C != 0) {
         func_8001C14C();
-        func_800097E0();
+        update_vehicles();
     }
     func_80281D00();
     func_80281540();

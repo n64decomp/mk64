@@ -11,8 +11,8 @@
 #define LOCOMOTIVE_ONLY           0
 
 // It seems like there's room for 2 Ferries, but only 1 is ever active
-#define NUM_ACTIVE_PADDLE_WHEEL_BOATS 1
-#define NUM_PADDLE_WHEEL_BOATS 2
+#define NUM_ACTIVE_PADDLE_BOATS 1
+#define NUM_PADDLE_BOATS 2
 
 #define NUM_RACE_BOX_TRUCKS    7
 #define NUM_RACE_SCHOOL_BUSES  7
@@ -59,7 +59,7 @@ typedef struct {
 	 * Probably audio related
 	 **/
 	/* 0x28 */ s32 someFlags;
-} PaddleWheelBoatStuff; // size = 0x2C
+} PaddleBoatStuff; // size = 0x2C
 
 typedef struct {
 	/* 0x00 */ s16 unused; // Gets set to 0, but doesn't seem to have any purpose
@@ -82,10 +82,10 @@ typedef struct {
 	/* 0x32 */ // s16 compilerPadding2;
 } VehicleStuff; // size = 0x34
 
-extern TrainStuff gTrains[];
+extern TrainStuff gTrainList[];
 
 // This is an array, maybe they intended to have multiple boats at some point in development?
-extern PaddleWheelBoatStuff gFerries[];
+extern PaddleBoatStuff gPaddleBoats[];
 
 // Lists for different vehicles in Toad's Turnpike
 extern VehicleStuff gBoxTruckList[];

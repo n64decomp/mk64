@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
-#include "global.h"
 
 #include "save.h"
 
@@ -9,6 +8,7 @@
 #include "menus.h"
 #include "save_data.h"
 #include "staff_ghosts.h"
+#include "code_80057C60.h"
 
 /*** macros ***/
 #define PFS_COMPANY_CODE(c0, c1) ((u16)(((c0) << 8) | ((c1))))
@@ -334,6 +334,11 @@ s32 func_800B5020(u32 time, s32 charId) {
 }
 
 #ifdef NON_MATCHING
+/**
+ * This one is some stack weirdness. If you remove the padding a ton of
+ * stack locations are wrong. Adding more padding doesn't help matters
+ * and no amount of reordering of the function variables fixes it either.
+**/
 s32 func_800B5218(void) {
     u8 *recordPointer;
     s32 prevLapTime;
@@ -488,6 +493,15 @@ void func_800B559C(s32 arg0) {
 }
 
 #ifdef NON_MATCHING
+/**
+* This one is weird. Its some type of checksum calculator, seemingly for the
+* best time trial records. But the number of bytes it operates over is
+* odd. It calculates a checksum for 51 bytes in 17 byte chunks, but that doesn't line
+* up with anything in the save data cleanly. At that byte count it would get the 48 bytes
+* for the records plus 3 of the unknown bytes.
+* 
+* But only unknown bytes 7 and 8 ever get set, so why the extra 3, and why in chunks of 17?
+**/
 s32 func_800B578C(s32 arg0) {
     u8 *var_a2;
     s32 var_a0;
@@ -747,20 +761,16 @@ s32 func_800B6088(s32 arg0) {
     return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_WRITE, arg0 * 0x80 /* 0x80 == sizeof(struct_8018EE10_entry) */, sizeof(struct_8018EE10_entry), (u8*) temp_v1);
 }
 
-#ifdef NON_MATCHING
 u8 func_800B60E8(s32 page) {
-    s32 multiplier = page + 1;
-    s32 checksum = 0;
-    u8 *addr = &((u8 *) D_800DC714)[page << 8];
     s32 i;
-    for (i = 0; i < 0x100; i++) {
-        checksum = (*addr++ * multiplier + i) + checksum;
+    u32 checksum = 0;
+    u8 *addr;
+    
+    for (i = 0, addr = (u8*) &((u8*)D_800DC714)[page * 256]; i < 256; i++) {
+        checksum += (*addr++ * (page + 1) + i);
     }
     return checksum;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/save/func_800B60E8.s")
-#endif
 
 s32 func_800B6178(s32 arg0) {
     s32 var_v0;
@@ -986,22 +996,23 @@ GLOBAL_ASM("asm/non_matchings/save/func_800B68F4.s")
 #endif
 
 #ifdef NON_MATCHING
-// nonmacthing: the calculated offset (arg0 << 7) does not go into $a3 from the start
+// Stack nonsense. As it stands now there's too much on the stack, but everything else is fine
+// But if you try to reduce the stack you get bigger issues. No idea what's going on
 s32 func_800B69BC(s32 arg0) {
-    struct_8018EE10_entry *plz;
-    s32 offset;
     s32 i;
+    s32 offset;
+    struct_8018EE10_entry *plz;
 
-    //offset = arg0 * sizeof(struct_8018EE10_entry);
+    offset = sizeof(struct_8018EE10_entry);
+    offset *= arg0;
+
     plz = &D_8018EE10[arg0];
-
     plz->ghostDataSaved = FALSE;
     plz->courseIndex = 0;
     plz->characterId = 0;
     for (i = 0; i < 60; i++) {
         plz->unk_07[i] = i;
     }
-    offset = arg0 << 7;
     plz->checksum = func_800B6828(arg0);
     return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_WRITE, offset, sizeof(struct_8018EE10_entry), (u8 *)plz);
 }

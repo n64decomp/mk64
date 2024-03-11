@@ -1,6 +1,6 @@
 SECONDLAP_DIR := assets/lakitu/secondlap
 
-SECONDLAP_PALETTE := $(SECONDLAP_DIR)/gTLUTLakituSecondLap.png
+SECONDLAP_PALETTE := $(SECONDLAP_DIR)/common_tlut_lakitu_second_lap.png
 
 SECONDLAP_FRAMES := \
 $(SECONDLAP_DIR)/gTextureLakituSecondLap01.png \
@@ -36,7 +36,7 @@ $(SECONDLAP_FRAMES) $(SECONDLAP_PALETTE): $(SECONDLAP_EXPORT_SENTINEL) ;
 
 $(SECONDLAP_EXPORT_SENTINEL): assets/lakitu/secondlap.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_secondlap
 distclean_lakitu_secondlap:

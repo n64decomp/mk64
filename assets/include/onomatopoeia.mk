@@ -15,6 +15,7 @@ $(ONOMATOPOEIA_DIR)/gTextureBalloon2.png
 ONOMATOPOEIA_EXPORT_SENTINEL := $(ONOMATOPOEIA_DIR)/.export
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(ONOMATOPOEIA_PNG:%.png=%.mio0)
+$(BUILD_DIR)/src/data/some_data.o: $(ONOMATOPOEIA_PALETTE:%.png=%.inc.c)
 
 $(ONOMATOPOEIA_PNG:%.png=%.mio0): %.mio0 : %.bin
 	$(MIO0TOOL) -c $< $@
@@ -29,7 +30,7 @@ $(ONOMATOPOEIA_PNG) $(ONOMATOPOEIA_PALETTE): $(ONOMATOPOEIA_EXPORT_SENTINEL) ;
 
 $(ONOMATOPOEIA_EXPORT_SENTINEL): $(ASSET_DIR)/onomatopoeia.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_onomatopoeia
 distclean_onomatopoeia:

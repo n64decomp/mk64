@@ -2,18 +2,19 @@
 
 glabel D_800F0C6C
 .asciiz "'"
-
 .balign 4
+
 glabel D_800F0C70
 .asciiz "\""
-
 .balign 4
+
 glabel D_800F0C74
 .asciiz "'"
-
 .balign 4
+
 glabel D_800F0C78
 .asciiz "\""
+.balign 4
 
 .section .late_rodata
 
@@ -84,8 +85,8 @@ glabel func_800A5738
 /* 0A6374 800A5774 54200228 */  bnel  $at, $zero, .L800A6018
 /* 0A6378 800A5778 8FBF0044 */   lw    $ra, 0x44($sp)
 /* 0A637C 800A577C 8DEFC54C */  lw    $t7, %lo(gGlobalTimer)($t7)
-/* 0A6380 800A5780 3C11800E */  lui   $s1, %hi(D_800E775C) # $s1, 0x800e
-/* 0A6384 800A5784 2631775C */  addiu $s1, %lo(D_800E775C) # addiu $s1, $s1, 0x775c
+/* 0A6380 800A5780 3C11800E */  lui   $s1, %hi(gTextPauseButton) # $s1, 0x800e
+/* 0A6384 800A5784 2631775C */  addiu $s1, %lo(gTextPauseButton) # addiu $s1, $s1, 0x775c
 /* 0A6388 800A5788 05E10003 */  bgez  $t7, .L800A5798
 /* 0A638C 800A578C 000FC103 */   sra   $t8, $t7, 4
 /* 0A6390 800A5790 25E1000F */  addiu $at, $t7, 0xf
@@ -326,9 +327,9 @@ glabel L800A5940
 /* 0A6724 800A5B24 0C024E7F */  jal   text_draw
 /* 0A6728 800A5B28 E7B40014 */   swc1  $f20, 0x14($sp)
 /* 0A672C 800A5B2C 3C013F40 */  li    $at, 0x3F400000 # 0.750000
-/* 0A6730 800A5B30 3C02800E */  lui   $v0, %hi(D_800E775C) # $v0, 0x800e
+/* 0A6730 800A5B30 3C02800E */  lui   $v0, %hi(gTextPauseButton) # $v0, 0x800e
 /* 0A6734 800A5B34 4481A000 */  mtc1  $at, $f20
-/* 0A6738 800A5B38 2442775C */  addiu $v0, %lo(D_800E775C) # addiu $v0, $v0, 0x775c
+/* 0A6738 800A5B38 2442775C */  addiu $v0, %lo(gTextPauseButton) # addiu $v0, $v0, 0x775c
 /* 0A673C 800A5B3C 00008825 */  move  $s1, $zero
 /* 0A6740 800A5B40 00008025 */  move  $s0, $zero
 /* 0A6744 800A5B44 24120006 */  li    $s2, 6
@@ -337,7 +338,7 @@ glabel L800A5940
 /* 0A674C 800A5B4C AFA20050 */  sw    $v0, 0x50($sp)
 /* 0A6750 800A5B50 02202825 */  move  $a1, $s1
 /* 0A6754 800A5B54 24060001 */  li    $a2, 1
-/* 0A6758 800A5B58 0C024870 */  jal   func_800921C0
+/* 0A6758 800A5B58 0C024870 */  jal   text_rainbow_effect
 /* 0A675C 800A5B5C 2484FFF5 */   addiu $a0, $a0, -0xb
 /* 0A6760 800A5B60 3C0E800F */  lui   $t6, %hi(D_800E8538 + 2) # $t6, 0x800f
 /* 0A6764 800A5B64 8FA20050 */  lw    $v0, 0x50($sp)
@@ -424,7 +425,7 @@ glabel L800A5C18
 /* 0A6894 800A5C94 8E640004 */  lw    $a0, 4($s3)
 /* 0A6898 800A5C98 02202825 */  move  $a1, $s1
 /* 0A689C 800A5C9C 24060001 */  li    $a2, 1
-/* 0A68A0 800A5CA0 0C024870 */  jal   func_800921C0
+/* 0A68A0 800A5CA0 0C024870 */  jal   text_rainbow_effect
 /* 0A68A4 800A5CA4 2484FFE2 */   addiu $a0, $a0, -0x1e
 /* 0A68A8 800A5CA8 26240001 */  addiu $a0, $s1, 1
 /* 0A68AC 800A5CAC AFA40054 */  sw    $a0, 0x54($sp)
@@ -555,7 +556,7 @@ glabel L800A5E00
 /* 0A6A7C 800A5E7C AFA20050 */  sw    $v0, 0x50($sp)
 /* 0A6A80 800A5E80 02202825 */  move  $a1, $s1
 /* 0A6A84 800A5E84 24060001 */  li    $a2, 1
-/* 0A6A88 800A5E88 0C024870 */  jal   func_800921C0
+/* 0A6A88 800A5E88 0C024870 */  jal   text_rainbow_effect
 /* 0A6A8C 800A5E8C 2484FFDD */   addiu $a0, $a0, -0x23
 /* 0A6A90 800A5E90 8FA20050 */  lw    $v0, 0x50($sp)
 /* 0A6A94 800A5E94 8E6F000C */  lw    $t7, 0xc($s3)

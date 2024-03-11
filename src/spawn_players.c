@@ -1,4 +1,3 @@
-#include <global.h>
 #include <defines.h>
 
 #include "spawn_players.h"
@@ -6,7 +5,7 @@
 #include "kart_attributes.h"
 #include "memory.h"
 #include "waypoints.h"
-#include "framebuffers.h"
+#include "buffers.h"
 #include "kart_dma.h"
 #include "camera.h"
 #include "math_util.h"
@@ -21,12 +20,12 @@
 #include "main.h"
 #include "menus.h"
 #include "render_player.h"
+#include "code_80091750.h"
+#include "effects.h"
 
 f32 D_80165210[8];
-f32 D_80165230[7];
-// weird D_8016524C should not exist and be in D_80165230 but don't match
-f32 D_8016524C;
-f32 D_80165250[8];
+f32 D_80165230[8];
+UNUSED f32 D_80165250[8];
 s16 D_80165270[8];
 f32 D_80165280[8];
 f32 D_801652A0[8];
@@ -34,28 +33,30 @@ s32 D_801652C0[8];
 s32 D_801652E0[8];
 s16 D_80165300[8];
 // Shadows values from gPathIndexByPlayerId, but is an array
-u16 D_80165310[8];
+u16 gCopyPathIndexByPlayerId[8];
 // Shadows values from gNearestWaypointByPlayerId, but is an array
-s16 D_80165320[8];
-// Don't think this really belongs with waypoint stuff, but don't know where else to put it
+s16 gCopyNearestWaypointByPlayerId[8];
 s16 D_80165330[8];
 s16 D_80165340;
 UNUSED s32 D_80165348[29];
 Player *D_801653C0[8];
-s32 gPlayerIsThrottleActive[8];
+
+bool gPlayerIsThrottleActive[8];
 s32 D_80165400[8];
-s32 D_80165420[8];
-s32 D_80165440[8];
+s32 gFrameSinceLastACombo[8];
+s32 gCountASwitch[8];
 bool gIsPlayerTripleAButtonCombo[8];
-s32 D_80165480[8];
-s32 D_801654A0[8];
+s32 gTimerBoostTripleACombo[8];
+
+bool gPlayerIsBrakeActive[8];
 s32 D_801654C0[8];
-s32 D_801654E0[8];
-s32 D_80165500[8];
-s32 D_80165520[8];
-s32 D_80165540[8];
-s16 D_80165560[7];
-// weird D_8016556E should not exist and be in D_80165560 but don't match
+s32 gFrameSinceLastBCombo[8];
+s32 gCountBChangement[8];
+bool gIsPlayerTripleBButtonCombo[8];
+s32 gTimerBoostTripleBCombo[8];
+
+s16 chooseCPUPlayers[7];
+
 s16 D_8016556E;
 s16 D_80165570;
 s16 D_80165572;
@@ -110,22 +111,22 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     ret = func_802AE1C0(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
     player->pos[2] = startingColumn;
     player->pos[1] = ret;
-    player->rotX = startingRow;
-    player->rotY = ret;
+    player->copy_rotation_x = startingRow;
+    player->copy_rotation_y = ret;
 
     D_80164510[playerIndex] = ret;
 
 
-    player->unk_02C[0] = 0;
-    player->rotZ = startingColumn;
+    player->rotation[0] = 0;
+    player->copy_rotation_z = startingColumn;
     player->unk_05C = 1.0f;
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
     player->velocity[0] = 0.0f;
     player->velocity[1] = 0.0f;
     player->velocity[2] = 0.0f;
-    player->unk_02C[1] = arg5;
-    player->unk_02C[2] = 0;
+    player->rotation[1] = arg5;
+    player->rotation[2] = 0;
     player->unk_0FA = 0;
     player->unk_002 = 0;
 
@@ -152,7 +153,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_DAC = 0.0f;
     player->unk_044 = 0;
     player->unk_046 = 0;
-    player->statusEffects = 0;
+    player->soundEffects = 0;
     player->unk_0C6 = 0xFF;
 
 
@@ -264,14 +265,14 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     D_801651D0[2][idx] = 0;
     D_801651D0[3][idx] = 0;
 
-    D_80165420[idx] = 0;
-    D_80165440[idx] = 0;
+    gFrameSinceLastACombo[idx] = 0;
+    gCountASwitch[idx] = 0;
     gIsPlayerTripleAButtonCombo[idx] = FALSE;
-    D_80165480[idx] = 0;
-    D_801654E0[idx] = 0;
-    D_80165500[idx] = 0;
-    D_80165520[idx] = 0;
-    D_80165540[playerIndex] = 0;
+    gTimerBoostTripleACombo[idx] = 0;
+    gFrameSinceLastBCombo[idx] = 0;
+    gCountBChangement[idx] = 0;
+    gIsPlayerTripleBButtonCombo[idx] = FALSE;
+    gTimerBoostTripleBCombo[playerIndex] = 0;
     D_8018D900[0] = 0;
 
     D_801652E0[playerIndex] = 0;
@@ -284,7 +285,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     D_801652A0[playerIndex] = 0.0f;
     gPlayerIsThrottleActive[playerIndex] = 0;
     D_80165400[playerIndex] = 0;
-    D_801654A0[playerIndex] = 0;
+    gPlayerIsBrakeActive[playerIndex] = 0;
     D_801654C0[playerIndex] = 0;
     D_80165340 = 0;
 
@@ -345,9 +346,9 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_110.unk54[0] = 0.0f;
     player->unk_110.unk54[1] = 0.0f;
     player->unk_110.unk54[2] = 0.0f;
-    player->unk_110.unk60[0] = 0.0f;
-    player->unk_110.unk60[1] = 0.0f;
-    player->unk_110.unk60[2] = 0.0f;
+    player->unk_110.orientationVector[0] = 0.0f;
+    player->unk_110.orientationVector[1] = 0.0f;
+    player->unk_110.orientationVector[2] = 0.0f;
 
     D_80165300[playerIndex] = 0;
     D_8018CE10[playerIndex].unk_04[0] = 0.0f;
@@ -358,14 +359,14 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     if (gModeSelection == BATTLE) {
         func_8006B7E4(player, playerIndex);
     }
-    calculate_orientation_matrix(player->unk_150, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
-    calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->unk_02C[1]);
+    calculate_orientation_matrix(player->unk_150, player->unk_058, player->unk_05C, player->unk_060, player->rotation[1]);
+    calculate_orientation_matrix(player->orientationMatrix, player->unk_058, player->unk_05C, player->unk_060, player->rotation[1]);
 }
 
 void func_80039AE4(void) {
     switch (gActiveScreenMode) {
         case SCREEN_MODE_1P:
-            if (gGamestate == ENDING_SEQUENCE) {
+            if (gGamestate == ENDING) {
                 D_80165578 = 0x898;
                 D_8016557A = 0;
                 D_8016557C = 0x384;
@@ -481,7 +482,7 @@ UNUSED f32 D_800E43A0 = 1.0f;
 UNUSED s16  D_800E43A4 = 1;
 UNUSED s16 D_800E43A8 = 0;
 
-void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
+void spawn_players_gp_one_player(f32 *arg0, f32 *arg1, f32 arg2) {
     func_80039DA4();
     if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
         (gDemoMode == 1) ||
@@ -494,16 +495,16 @@ void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
         } while(rand == gCharacterSelections[0]);
 
         // Randomize gPlayerTwo
-        D_80165560[0] = rand;
+        chooseCPUPlayers[0] = rand;
 
         // Chooses arr[0] as a fallback to prevent duplicating characters.
         // If it doesn't find the if, it will grab the final index as a fallback.
         for (i = 1; i < 7; i++) {
-            u16* arr = (u16 *) D_800E3890[gCharacterSelections[0]];
+            u16* arr = (u16 *) gCPUforPlayer[gCharacterSelections[0]];
             if (rand == arr[i]) {
-                D_80165560[i] = arr[0];
+                chooseCPUPlayers[i] = arr[0];
             } else {
-                D_80165560[i] = arr[i];
+                chooseCPUPlayers[i] = arr[i];
             }
         }
     }
@@ -511,29 +512,29 @@ void func_80039F44(f32 *arg0, f32 *arg1, f32 arg2) {
     D_8016556E = 0;
     if (gDemoMode == 1) {
         spawn_player(gPlayerOneCopy, 0, arg0[D_80165270[0]], arg1[D_80165270[0]], arg2, 32768.0f, gCharacterSelections[0], PLAYER_HUMAN_AND_CPU);
-        spawn_player(gPlayerTwo,     1, arg0[D_80165270[1]], arg1[D_80165270[1]], arg2, 32768.0f, D_80165560[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-        spawn_player(gPlayerThree,   2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f, D_80165560[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-        spawn_player(gPlayerFour,    3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, D_80165560[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-        spawn_player(gPlayerFive,    4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, D_80165560[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-        spawn_player(gPlayerSix,     5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, D_80165560[4], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-        spawn_player(gPlayerSeven,   6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, D_80165560[5], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-        spawn_player(gPlayerEight,   7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, D_80165560[6], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerTwo,     1, arg0[D_80165270[1]], arg1[D_80165270[1]], arg2, 32768.0f, chooseCPUPlayers[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerThree,   2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f, chooseCPUPlayers[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerFour,    3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, chooseCPUPlayers[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerFive,    4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, chooseCPUPlayers[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerSix,     5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, chooseCPUPlayers[4], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerSeven,   6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, chooseCPUPlayers[5], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+        spawn_player(gPlayerEight,   7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, chooseCPUPlayers[6], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
         D_80164A28 = 0;
     } else {
         spawn_player(gPlayerOneCopy, 0, arg0[D_80165270[0]], arg1[D_80165270[0]] + 250.0f, arg2, 32768.0f, gCharacterSelections[0], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_HUMAN);
-        spawn_player(gPlayerTwo,     1, arg0[D_80165270[1]], arg1[D_80165270[1]] + 250.0f, arg2, 32768.0f, D_80165560[0], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        spawn_player(gPlayerThree,   2, arg0[D_80165270[3]], arg1[D_80165270[2]] + 250.0f, arg2, 32768.0f, D_80165560[1], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        spawn_player(gPlayerFour,    3, arg0[D_80165270[2]], arg1[D_80165270[3]] + 250.0f, arg2, 32768.0f, D_80165560[2], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        spawn_player(gPlayerFive,    4, arg0[D_80165270[5]], arg1[D_80165270[4]] + 250.0f, arg2, 32768.0f, D_80165560[3], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        spawn_player(gPlayerSix,     5, arg0[D_80165270[4]], arg1[D_80165270[5]] + 250.0f, arg2, 32768.0f, D_80165560[4], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        spawn_player(gPlayerSeven,   6, arg0[D_80165270[7]], arg1[D_80165270[6]] + 250.0f, arg2, 32768.0f, D_80165560[5], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
-        spawn_player(gPlayerEight,   7, arg0[D_80165270[6]], arg1[D_80165270[7]] + 250.0f, arg2, 32768.0f, D_80165560[6], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerTwo,     1, arg0[D_80165270[1]], arg1[D_80165270[1]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[0], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerThree,   2, arg0[D_80165270[3]], arg1[D_80165270[2]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[1], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerFour,    3, arg0[D_80165270[2]], arg1[D_80165270[3]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[2], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerFive,    4, arg0[D_80165270[5]], arg1[D_80165270[4]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[3], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerSix,     5, arg0[D_80165270[4]], arg1[D_80165270[5]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[4], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerSeven,   6, arg0[D_80165270[7]], arg1[D_80165270[6]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[5], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
+        spawn_player(gPlayerEight,   7, arg0[D_80165270[6]], arg1[D_80165270[7]] + 250.0f, arg2, 32768.0f, chooseCPUPlayers[6], PLAYER_EXISTS | PLAYER_STAGING | PLAYER_START_SEQUENCE | PLAYER_CPU);
         D_80164A28 = 1;
     }
     func_80039AE4();
 }
 
-void func_8003A59C(f32 *arg0, f32 *arg1, f32 arg2) {
+void spawn_players_versus_one_player(f32 *arg0, f32 *arg1, f32 arg2) {
     spawn_player(gPlayerFour,  3, arg0[2], arg1[2], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
     spawn_player(gPlayerFive,  4, arg0[3], arg1[3], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
     spawn_player(gPlayerSix,   5, arg0[4], arg1[4], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
@@ -572,12 +573,13 @@ void func_8003A59C(f32 *arg0, f32 *arg1, f32 arg2) {
     func_80039AE4();
 }
 
-void func_8003A9F0(f32* arg0, f32* arg1, f32 arg2) {
+void spawn_players_gp_two_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
     if ((gCupCourseSelection == CUP_COURSE_ONE) || (gDemoMode == 1) || (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
         s16 i;
 
+        // @todo: this is a do-while loop
 getRand:
         rand = random_int(7);
         if (gCharacterSelections[0] == rand)
@@ -585,24 +587,24 @@ getRand:
         if (gCharacterSelections[1] == rand)
             goto getRand;
 
-        D_80165560[0] = rand;
+        chooseCPUPlayers[0] = rand;
 
         for (i = 1; i < 6; i++) {
-            u16* arr = (u16 *) D_800E3C50[gCharacterSelections[0]][gCharacterSelections[1]];
+            u16* arr = (u16 *) gCPUforTwoPlayer[gCharacterSelections[0]][gCharacterSelections[1]];
             if (rand == arr[i]) {
-                D_80165560[i] = arr[0];
+                chooseCPUPlayers[i] = arr[0];
             } else {
-                D_80165560[i] = arr[i];
+                chooseCPUPlayers[i] = arr[i];
             }
         }
     }
 
-    spawn_player(gPlayerThree, 2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f, D_80165560[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerFour,  3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, D_80165560[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerFive,  4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, D_80165560[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerSix,   5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, D_80165560[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerSeven, 6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, D_80165560[4], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
-    spawn_player(gPlayerEight, 7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, D_80165560[5], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerThree, 2, arg0[D_80165270[2]], arg1[D_80165270[2]], arg2, 32768.0f, chooseCPUPlayers[0], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerFour,  3, arg0[D_80165270[3]], arg1[D_80165270[3]], arg2, 32768.0f, chooseCPUPlayers[1], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerFive,  4, arg0[D_80165270[4]], arg1[D_80165270[4]], arg2, 32768.0f, chooseCPUPlayers[2], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerSix,   5, arg0[D_80165270[5]], arg1[D_80165270[5]], arg2, 32768.0f, chooseCPUPlayers[3], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerSeven, 6, arg0[D_80165270[6]], arg1[D_80165270[6]], arg2, 32768.0f, chooseCPUPlayers[4], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
+    spawn_player(gPlayerEight, 7, arg0[D_80165270[7]], arg1[D_80165270[7]], arg2, 32768.0f, chooseCPUPlayers[5], PLAYER_EXISTS | PLAYER_CPU | PLAYER_START_SEQUENCE);
 
     if (gDemoMode == 1) {
         spawn_player(gPlayerOneCopy, 0, arg0[D_80165270[0]], arg1[D_80165270[0]], arg2, 32768.0f, gCharacterSelections[0], PLAYER_HUMAN_AND_CPU);
@@ -619,7 +621,7 @@ getRand:
     func_80039AE4();
 }
 
-void func_8003AE24(f32 *arg0, f32 *arg1, f32 arg2) {
+void spawn_players_versus_two_player(f32 *arg0, f32 *arg1, f32 arg2) {
     spawn_player(gPlayerThree, 2, arg0[1], arg1[1], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
     spawn_player(gPlayerFour,  3, arg0[2], arg1[2], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
     spawn_player(gPlayerFive,  4, arg0[3], arg1[3], arg2, 32768.0f, gCharacterSelections[0], PLAYER_START_SEQUENCE | PLAYER_CPU);
@@ -823,7 +825,7 @@ void func_8003C0F0(void) {
                             D_80165230[5] = sp5C + 0x82;
                             D_80165230[6] = sp5C + 0x96;
                             D_80165230[7] = sp5C + 0xAA;
-                            func_80039F44(D_80165210, D_80165230, sp5A);
+                            spawn_players_gp_one_player(D_80165210, D_80165230, sp5A);
                         break;
 
                         case TIME_TRIALS:
@@ -837,7 +839,7 @@ void func_8003C0F0(void) {
                             D_80165230[5] = sp5C + 0x1E;
                             D_80165230[6] = sp5C + 0x1E;
                             D_80165230[7] = sp5C + 0x1E;
-                            func_8003A59C(D_80165210, D_80165230, sp5A);
+                            spawn_players_versus_one_player(D_80165210, D_80165230, sp5A);
                         break;
                     }
                     break;
@@ -856,7 +858,7 @@ void func_8003C0F0(void) {
                             D_80165230[5] = sp5C + 0x82;
                             D_80165230[6] = sp5C + 0x96;
                             D_80165230[7] = sp5C + 0xAA;
-                            func_8003A9F0(D_80165210, D_80165230, sp5A);
+                            spawn_players_gp_two_player(D_80165210, D_80165230, sp5A);
                             break;
 
                         case VERSUS:
@@ -870,7 +872,7 @@ void func_8003C0F0(void) {
                             D_80165230[5] = sp5C + 0x1E;
                             D_80165230[6] = sp5C + 0x1E;
                             D_80165230[7] = sp5C + 0x1E;
-                            func_8003AE24(D_80165210, D_80165230, sp5A);
+                            spawn_players_versus_two_player(D_80165210, D_80165230, sp5A);
                             break;
                     }
                     break;
@@ -1097,7 +1099,7 @@ void func_8003D080(void) {
     Player* player = &gPlayers[0];
 
     func_8005D290();
-    if (gGamestate == ENDING_SEQUENCE) {
+    if (gGamestate == ENDING) {
         func_8003CD78();
     } else {
         func_8003C0F0();
@@ -1108,18 +1110,18 @@ void func_8003D080(void) {
                 switch (gModeSelection) {
                     case GRAND_PRIX:
                         if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
-                            camera_init(0.0f, player->pos[1], D_8016524C, player->unk_02C[1], 8, 0);
+                            camera_init(0.0f, player->pos[1], D_80165230[7], player->rotation[1], 8, 0);
                         } else {
-                            camera_init((D_80165210[7] + D_80165210[6]) / 2, player->pos[1], D_8016524C, player->unk_02C[1], 8, 0);
+                            camera_init((D_80165210[7] + D_80165210[6]) / 2, player->pos[1], D_80165230[7], player->rotation[1], 8, 0);
                         }
                         break;
 
                     case TIME_TRIALS:
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 0);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 0);
                         break;
 
                     default:
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 10, 0);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 10, 0);
                         break;
                 }
                 break;
@@ -1128,45 +1130,45 @@ void func_8003D080(void) {
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                 switch (gModeSelection) {
                     case GRAND_PRIX:
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 0);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 0);
                         player++;
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 1);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 1);
                         break;
 
                     case BATTLE:
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 9, 0);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 9, 0);
                         player++;
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 9, 1);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 9, 1);
                         break;
 
                     default:
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 0);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 0);
                         player++;
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 1);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 1);
                         break;
                 }
                 break;
 
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
                 if (gModeSelection == BATTLE) {
-                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 9, 0);
+                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 9, 0);
                     player++;
-                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 9, 1);
+                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 9, 1);
                     player++;
-                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 9, 2);
+                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 9, 2);
                     if (gPlayerCountSelection1 == 4) {
                         player++;
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 9, 3);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 9, 3);
                     }
                 } else {
-                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 0);
+                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 0);
                     player++;
-                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 1);
+                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 1);
                     player++;
-                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 2);
+                    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 2);
                     if (gPlayerCountSelection1 == 4) {
                         player++;
-                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 1, 3);
+                        camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 1, 3);
                     }
                 }
                 break;
@@ -1174,24 +1176,24 @@ void func_8003D080(void) {
     } else {
         switch (gActiveScreenMode) {
             case SCREEN_MODE_1P:
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 0);
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 0);
                 break;
 
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 0);
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 0);
                 player++;
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 1);
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 1);
                 break;
 
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 0);
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 0);
                 player++;
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 1);
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 1);
                 player++;
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 2);
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 2);
                 player++;
-                camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 3);
+                camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 3);
                 break;
         }
     }
@@ -1253,8 +1255,8 @@ void func_8003DB5C(void) {
     Player *player = gPlayerOne;
     s32 playerId;
 
-    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 0);
-    camera_init(player->pos[0], player->pos[1], player->pos[2], player->unk_02C[1], 3, 1);
+    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 0);
+    camera_init(player->pos[0], player->pos[1], player->pos[2], player->rotation[1], 3, 1);
 
     for (playerId = 0; playerId < NUM_PLAYERS; playerId++, player++) {
         load_kart_palette(player, playerId, 1, 0);

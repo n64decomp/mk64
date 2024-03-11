@@ -54,12 +54,12 @@ Vec3f *vec3f_cross_product(Vec3f, Vec3f, Vec3f);
 s32 func_80041658(f32, f32);
 f32 func_800416D8(f32, f32, u16);
 f32 func_80041724(f32, f32, u16);
-s32 func_80041770(f32, f32, f32, f32);
+s32 get_angle_between_xy(f32, f32, f32, f32);
 u16 func_800417B4(u16, u16);
 s32 func_800418AC(f32, f32, Vec3f);
 s32 func_800418E8(f32, f32, Vec3f);
 s32 func_80041924(Collision*, Vec3f);
-s32 func_80041980(Vec3f, Camera*, u16);
+s32 is_particle_on_screen(Vec3f, Camera*, u16);
 void func_800419F8(void);
 void mtfx_translation_x_y(Mat4, s32, s32);
 void mtxf_u16_rotate_z(Mat4, u16);
@@ -68,7 +68,7 @@ void mtxf_rotate_z_scale_x_y(Mat4, u16, f32);
 void mtxf_translation_x_y_rotate_z_scale_x_y(Mat4, s32, s32, u16, f32);
 void func_80041D24(void);
 void func_80041D34(void);
-void func_80041EF4(void);
+void set_matrix_hud_screen(void);
 void func_80042330(s32, s32, u16, f32);
 void mtxf_set_matrix_transformation(Mat4, Vec3f, Vec3su, f32);
 void mtxf_set_matrix_scale_transl(Mat4, Vec3f, Vec3f, f32);
@@ -81,10 +81,6 @@ void rsp_set_matrix_transl_rot_scale(Vec3f, Vec3f, f32);
 void rsp_set_matrix_gObjectList(s32);
 
 /* This is where I'd put my static data, if I had any */
-
-extern Vec3su D_80165834;
-extern s8    D_80165840[];
 extern s8    D_801658FE;
-extern s32   gMatrixHudCount;
 
 #endif // MATH_UTIL_2_H

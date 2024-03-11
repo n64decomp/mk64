@@ -1,12 +1,12 @@
 PLAYER_EMBLEM_DIR := assets/player_emblems
 
-PLAYER_EMBLEM_PALETTE := $(PLAYER_EMBLEM_DIR)/gTLUTPlayerEmblem.png
+PLAYER_EMBLEM_PALETTE := $(PLAYER_EMBLEM_DIR)/common_tlut_player_emblem.png
 
 PLAYER_EMBLEM_PNGS := \
-$(PLAYER_EMBLEM_DIR)/gTexturePlayerEmblem1p.png \
-$(PLAYER_EMBLEM_DIR)/gTexturePlayerEmblem2p.png \
-$(PLAYER_EMBLEM_DIR)/gTexturePlayerEmblem3p.png \
-$(PLAYER_EMBLEM_DIR)/gTexturePlayerEmblem4p.png
+$(PLAYER_EMBLEM_DIR)/common_texture_player_emblem_1p.png \
+$(PLAYER_EMBLEM_DIR)/common_texture_player_emblem_2p.png \
+$(PLAYER_EMBLEM_DIR)/common_texture_player_emblem_3p.png \
+$(PLAYER_EMBLEM_DIR)/common_texture_player_emblem_4p.png
 
 PLAYER_EMBLEM_EXPORT_SENTINEL := $(PLAYER_EMBLEM_DIR)/.export
 
@@ -22,7 +22,7 @@ $(PLAYER_EMBLEM_PNGS) $(PLAYER_EMBLEM_PALETTE): $(PLAYER_EMBLEM_EXPORT_SENTINEL)
 
 $(PLAYER_EMBLEM_EXPORT_SENTINEL): $(ASSET_DIR)/player_emblems.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_player_emblems
 distclean_player_emblems:

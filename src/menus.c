@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
-#include <global.h>
 #include <common_structs.h>
 
 #include "menus.h"
@@ -259,20 +258,20 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 sp2C = TRUE;
                 sp38->unk8 = -1;
             }
-            if (sp2C && gSoundMode != sp38->unk4) {
+            if (sp2C && gSoundMode != sp38->cursor) {
                 gSaveData.main.soundMode = gSoundMode;
                 write_save_data_grand_prix_points_and_sound_mode();
                 update_save_data_backup();
-                sp38->unk4 = gSoundMode;
+                sp38->cursor = gSoundMode;
             }
             if (btnAndStick & B_BUTTON) {
                 func_8009E280();
                 play_sound2(SOUND_MENU_GO_BACK);
-                if (gSoundMode != sp38->unk4) {
+                if (gSoundMode != sp38->cursor) {
                     gSaveData.main.soundMode = gSoundMode;
                     write_save_data_grand_prix_points_and_sound_mode();
                     update_save_data_backup();
-                    sp38->unk4 = gSoundMode;
+                    sp38->cursor = gSoundMode;
                 }
                 return;
             }
@@ -306,7 +305,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                         switch (sp2C) {
                         case PFS_INVALID_DATA:
                             D_8018EDEC = 0x46;
-                            sp38->unk4 = 0;
+                            sp38->cursor = 0;
                             play_sound2(SOUND_MENU_SELECT);
                             break;
                         case PFS_NO_ERROR:
@@ -487,7 +486,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                     D_8018EDEC = 0x38;
                 } else {
                     D_8018EDEC = 0x3A;
-                    sp38->unk4 = 0;
+                    sp38->cursor = 0;
                 }
                 play_sound2(SOUND_MENU_SELECT);
             }
@@ -541,7 +540,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 } else {
                     D_8018EDEC = 0x3A;
                     play_sound2(SOUND_MENU_SELECT);
-                    sp38->unk4 = 0;
+                    sp38->cursor = 0;
                 }
             }
             // return?
@@ -550,9 +549,9 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
         case 0x3A:
         {
             if (arg1 == 0) {
-                sp38->unk4 += 1;
+                sp38->cursor += 1;
             }
-            if (sp38->unk4 >= 3) {
+            if (sp38->cursor >= 3) {
                 D_8018EDEC = 0x3B;
             }
             break;
@@ -585,9 +584,9 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
         case 0x46:
         {
             if (arg1 == 0) {
-                sp38->unk4 += 1;
+                sp38->cursor += 1;
             }
-            if (sp38->unk4 >= 3) {
+            if (sp38->cursor >= 3) {
                 D_8018EDEC = 0x47;
             }
             break;
@@ -1192,7 +1191,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 func_800CA330(0x19);
                 gDebugMenuSelection = DEBUG_MENU_EXITED;
 
-                if (controller->button & L_TRIG) {
+                if (controller->button & CONT_L) {
                     gDemoMode = DEMO_MODE_ACTIVE;
                 } else {
                     gDemoMode = DEMO_MODE_INACTIVE;
@@ -1200,7 +1199,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
 
                 if (controller->button & Z_TRIG) {
                     if (btnAndStick & A_BUTTON) {
-                        gDebugGotoScene = DEBUG_GOTO_ENDING_SEQUENCE;
+                        gDebugGotoScene = DEBUG_GOTO_ENDING;
                     } else {
                         gDebugGotoScene = DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA;
                     }
@@ -1212,7 +1211,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 gDebugMenuSelection = DEBUG_MENU_EXITED;
                 gDebugGotoScene = DEBUG_GOTO_CREDITS_SEQUENCE_CC_50;
                 play_sound2(SOUND_MENU_OK_CLICKED);
-            } else if (btnAndStick & R_TRIG) {
+            } else if (btnAndStick & CONT_R) {
                 gDebugMenuSelection = DEBUG_MENU_DISABLED;
                 play_sound2(SOUND_MENU_SELECT);
             }
@@ -1683,14 +1682,14 @@ GLOBAL_ASM("asm/non_matchings/menus/player_select_menu_act.s")
 void course_select_menu_act(struct Controller *arg0, u16 arg1) {
     u16 buttonAndStickPress = (arg0->buttonPressed | arg0->stickPressed);
 
-    if ((!gEnableDebugMode) && ((buttonAndStickPress & 0x1000) != 0)) {
-        buttonAndStickPress |= 0x8000;
+    if ((!gEnableDebugMode) && ((buttonAndStickPress & START_BUTTON) != 0)) {
+        buttonAndStickPress |= A_BUTTON;
     }
 
     if (func_800B4520() == 0) {
         switch (D_8018EDEC) {
         case 1:
-            if ((buttonAndStickPress & 0x100) != 0) {
+            if ((buttonAndStickPress & R_JPAD) != 0) {
                 if (gCupSelection < SPECIAL_CUP) {
                     D_8018EE0A = gCupSelection;
                     ++gCupSelection;
@@ -1698,7 +1697,7 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
             }
-            if (((buttonAndStickPress & 0x200) != 0) && (gCupSelection > MUSHROOM_CUP)) {
+            if (((buttonAndStickPress & L_JPAD) != 0) && (gCupSelection > MUSHROOM_CUP)) {
                 D_8018EE0A = gCupSelection;
                 --gCupSelection;
                 func_800B44AC();
@@ -1707,11 +1706,11 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
 
             D_800DC540 = gCupSelection;
             gCurrentCourseId = gCupCourseOrder[gCupSelection][gCupCourseSelection];
-            if ((buttonAndStickPress & 0x4000) != 0) {
+            if ((buttonAndStickPress & B_BUTTON) != 0) {
                 func_8009E208();
                 play_sound2(SOUND_MENU_GO_BACK);
             }
-            else if ((buttonAndStickPress & 0x8000) != 0) {
+            else if ((buttonAndStickPress & A_BUTTON) != 0) {
                 if (gModeSelection != GRAND_PRIX) {
                     D_8018EDEC = 2;
                     play_sound2(SOUND_MENU_SELECT);
@@ -1726,19 +1725,19 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
             break;
         case 2:
         case 4:
-            if (((buttonAndStickPress & 0x400) != 0) && (gCupCourseSelection < CUP_COURSE_FOUR)) {
+            if (((buttonAndStickPress & D_JPAD) != 0) && (gCupCourseSelection < CUP_COURSE_FOUR)) {
                     ++gCupCourseSelection;
                     func_800B44AC();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
             }
-            if (((buttonAndStickPress & 0x800) != 0) && (gCupCourseSelection > CUP_COURSE_ONE)) {
+            if (((buttonAndStickPress & U_JPAD) != 0) && (gCupCourseSelection > CUP_COURSE_ONE)) {
                 --gCupCourseSelection;
                 func_800B44AC();
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
             }
 
             gCurrentCourseId = gCupCourseOrder[gCupSelection][gCupCourseSelection];
-            if ((buttonAndStickPress & 0x4000) != 0) {
+            if ((buttonAndStickPress & B_BUTTON) != 0) {
                 if (D_8018EDEC == 2) {
                     D_8018EDEC = 1;
                 } else {
@@ -1748,7 +1747,7 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
                 play_sound2(SOUND_MENU_GO_BACK);
                 return;
             }
-            if ((buttonAndStickPress & 0x8000) != 0) {
+            if ((buttonAndStickPress & A_BUTTON) != 0) {
                 D_8018EDEC = 3;
                 play_sound2(SOUND_MENU_SELECT);
                 func_800B44AC();
@@ -1760,7 +1759,7 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
                 play_sound2(SOUND_MENU_OK);
             }
 
-            if ((buttonAndStickPress & 0x4000) != 0) {
+            if ((buttonAndStickPress & B_BUTTON) != 0) {
                 switch(gModeSelection)
                 {
                     case GRAND_PRIX:
@@ -1778,7 +1777,7 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
                 play_sound2(SOUND_MENU_GO_BACK);
                 return;
             }
-            if ((buttonAndStickPress & 0x8000) != 0) {
+            if ((buttonAndStickPress & A_BUTTON) != 0) {
                 func_8009E1C0();
                 func_800CA330(0x19);
                 play_sound2(SOUND_MENU_OK_CLICKED);
@@ -1987,12 +1986,12 @@ void func_800B44BC(void) {
 }
 
 // Likely checks that the user is actually in the menus and not racing.
-s32 func_800B4520(void) {
+bool func_800B4520(void) {
 
     if ((D_8018E7B0 == 2) || (D_8018E7B0 == 3) || (D_8018E7B0 == 4) || (D_8018E7B0 == 7)) {
-        return 1;
+        return TRUE;
     }
-    return 0;
+    return FALSE;
 }
 
 UNUSED void func_800B4560(s32 arg0, s32 arg1) {

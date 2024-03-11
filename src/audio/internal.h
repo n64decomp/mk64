@@ -38,7 +38,7 @@
 
 #define TEMPO_SCALE TATUMS_PER_BEAT
 
-// TODO: US_FLOAT should probably be renamed to JP_DOUBLE since eu seems to use floats too
+//! @todo US_FLOAT should probably be renamed to JP_DOUBLE since eu seems to use floats too
 #define US_FLOAT(x) x ## f
 #define US_FLOAT2(x) x
 
@@ -157,9 +157,9 @@ struct Instrument {
 }; // size = 0x20
 
 struct Drum {
-    u8 releaseRate;
-    u8 pan;
-    u8 loaded;
+    /*0x00*/ u8 releaseRate;
+    /*0x01*/ u8 pan;
+    /*0x02*/ u8 loaded;
     struct AudioBankSound sound;
     struct AdsrEnvelope *envelope;
 };
@@ -440,7 +440,7 @@ struct Note {
     // that results in messy US/EU ifdefs. Instead we cast to a struct pointer
     // when needed... This breaks alignment on non-N64 platforms, which we hack
     // around by skipping the padding in that case.
-    // TODO: use macros or something instead.
+    //! @todo use macros or something instead.
 #ifdef TARGET_N64
     u8 pad0[12];
 #endif
@@ -602,11 +602,11 @@ struct EuAudioCmd {
     union {
         struct {
             u8 op;
-            u8 arg1;
+            u8 bankId;
             u8 arg2;
             u8 arg3;
         } s;
-        s32 first;
+        u32 first;
     } u;
     union {
         s32 as_s32;

@@ -1,6 +1,6 @@
 REDLIGHTS_DIR := assets/lakitu/redlights
 
-REDLIGHTS_PALETTE := $(REDLIGHTS_DIR)/gTLUTLakituRedLights.png
+REDLIGHTS_PALETTE := $(REDLIGHTS_DIR)/common_tlut_lakitu_red_lights.png
 
 REDLIGHTS_FRAMES := \
 $(REDLIGHTS_DIR)/gTextureLakituRedLights01.png \
@@ -36,7 +36,7 @@ $(REDLIGHTS_FRAMES) $(REDLIGHTS_PALETTE): $(REDLIGHTS_EXPORT_SENTINEL) ;
 
 $(REDLIGHTS_EXPORT_SENTINEL): assets/lakitu/redlights.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_redlights
 distclean_lakitu_redlights:

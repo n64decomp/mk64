@@ -56,7 +56,8 @@ s32 __osRepairPackId(OSPfs *pfs, __OSPackId *badid, __OSPackId *newid)
     {
         pfs->activebank = j;
         ERRCK(__osPfsSelectBank(pfs))
-        ERRCK(__osContRamRead(pfs->queue, pfs->channel, 0, (u8*)&temp)); //TODO: fix magic number
+        //! @todo fix magic number
+        ERRCK(__osContRamRead(pfs->queue, pfs->channel, 0, (u8*)&temp)); 
         temp[0] = j | 0x80;
         for (i = 1; i < ARRLEN(temp); i++)
         {
@@ -80,7 +81,8 @@ s32 __osRepairPackId(OSPfs *pfs, __OSPackId *badid, __OSPackId *newid)
             ERRCK(__osPfsSelectBank(pfs));
             ERRCK(__osContRamRead(pfs->queue, pfs->channel, 0, (u8*)temp));
             if (temp[0] != 128)
-                break; //TODO: remove magic constant
+                //! @todo remove magic constant
+                break; 
         }
         j++;
     }
@@ -173,7 +175,8 @@ s32 __osGetId(OSPfs *pfs)
             return ret;
         }
     }
-    if ((id->deviceid & 1) == 0) //TODO: remove magic constant
+    //! @todo remove magic constant
+    if ((id->deviceid & 1) == 0) 
     {
         ERRCK(__osRepairPackId(pfs, id, &newid));
         id = &newid;
@@ -186,7 +189,8 @@ s32 __osGetId(OSPfs *pfs)
     }
     pfs->version = id->version;
     pfs->banks = id->banks;
-    pfs->inode_start_page = pfs->banks * 2 + 3; //TODO: loads of magic constants..
+    //! @todo loads of magic constants..
+    pfs->inode_start_page = pfs->banks * 2 + 3; 
     pfs->dir_size = 16;
     pfs->inode_table = 8;
     pfs->minode_table = pfs->banks * PFS_ONE_PAGE + 8;
@@ -240,7 +244,8 @@ s32 __osPfsRWInode(OSPfs *pfs, __OSInode *inode, u8 flag, u8 bank)
 
     for (j = 0; j < 8; j++)
     {
-        addr = ((u8 *)inode->inode_page + j * 32); //TODO: don't like this =/ //maybe &inode->inode_table[j*PFS_ONE_PAGE].ipage or something
+        //! @todo don't like this =/ //maybe &inode->inode_table[j*PFS_ONE_PAGE].ipage or something
+        addr = ((u8 *)inode->inode_page + j * 32); 
         if (flag == PFS_WRITE)
         {
             ret = __osContRamWrite(pfs->queue, pfs->channel, pfs->inode_table + bank * 8 + j, addr, FALSE);

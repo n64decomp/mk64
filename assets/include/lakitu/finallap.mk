@@ -1,6 +1,6 @@
 FINALLAP_DIR := assets/lakitu/finallap
 
-FINALLAP_PALETTE := $(FINALLAP_DIR)/gTLUTLakituFinalLap.png
+FINALLAP_PALETTE := $(FINALLAP_DIR)/common_tlut_lakitu_final_lap.png
 
 FINALLAP_FRAMES := \
 $(FINALLAP_DIR)/gTextureLakituFinalLap01.png \
@@ -36,7 +36,7 @@ $(FINALLAP_FRAMES) $(FINALLAP_PALETTE): $(FINALLAP_EXPORT_SENTINEL) ;
 
 $(FINALLAP_EXPORT_SENTINEL): assets/lakitu/finallap.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_lakitu_finallap
 distclean_lakitu_finallap:

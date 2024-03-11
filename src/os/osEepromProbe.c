@@ -1,6 +1,6 @@
 #include "libultra_internal.h"
 
-// TODO: merge with osEepromWrite
+//! @todo merge with osEepromWrite
 typedef struct {
     u16 unk00;
     u8 unk02;

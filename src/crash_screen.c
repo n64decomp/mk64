@@ -162,7 +162,7 @@ void crash_screen_draw_info(u16 *framebuffer, OSThread *thread) {
     faultedAddr = context->pc & (~3);
 
     // Ensure the address to the faulted instruction is a memory address.
-    // @bug if this check fails, the ra register is printed a second time.
+    //! @bug if this check fails, the ra register is printed a second time.
     if ((faultedAddr > 0x80000000) && (faultedAddr < 0x803FFF7F)) {
         // Cast the address to its value; the faulty machine code.
         crashInfo = *(u32*)faultedAddr;

@@ -3,21 +3,20 @@
 #include <common_structs.h>
 #include <defines.h>
 #include <types.h>
-#include <variables.h>
 #include "code_800029B0.h"
 #include "math_util.h"
 #include "math_util_2.h"
 #include "main.h"
-#include "functions.h"
+#include "decode.h"
 #include "kart_dma.h"
 #include "objects.h"
 #include "render_player.h"
 #include "code_80057C60.h"
-#include "code_8008C1D0.h"
-#include "framebuffers.h"
+#include "effects.h"
+#include "buffers.h"
 #include "waypoints.h"
 #include "player_controller.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
 #include "common_textures.h"
 #include "skybox_and_splitscreen.h"
 #include "spawn_players.h"
@@ -154,12 +153,12 @@ u16 func_8001FD78(Player *player, f32 posX, UNUSED f32 arg2, f32 posZ) {
 
     ret = FALSE;
 
-    sp58 = (70.0f * coss(((player->unk_0C0 - player->unk_02C[1]) -  0x71C))) + player->pos[2];
-    sp64 = (70.0f * sins(((player->unk_0C0 - player->unk_02C[1]) -  0x71C))) + player->pos[0];
-    sp54 = (70.0f * coss(((player->unk_0C0 - player->unk_02C[1]) +  0x71C))) + player->pos[2];
-    sp60 = (70.0f * sins(((player->unk_0C0 - player->unk_02C[1]) +  0x71C))) + player->pos[0];
-    sp50 = (10.0f * coss(((player->unk_0C0 - player->unk_02C[1]) + 0x1C70))) + player->pos[2];
-    sp5c = (10.0f * sins(((player->unk_0C0 - player->unk_02C[1]) + 0x1C70))) + player->pos[0];
+    sp58 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) -  0x71C))) + player->pos[2];
+    sp64 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) -  0x71C))) + player->pos[0];
+    sp54 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) +  0x71C))) + player->pos[2];
+    sp60 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) +  0x71C))) + player->pos[0];
+    sp50 = (10.0f * coss(((player->unk_0C0 - player->rotation[1]) + 0x1C70))) + player->pos[2];
+    sp5c = (10.0f * sins(((player->unk_0C0 - player->rotation[1]) + 0x1C70))) + player->pos[0];
 
     temp_f14 = ((sp58 - posZ) * (sp60 - posX)) - ((sp54 - posZ) * (sp64 - posX));
     thing0   = ((sp54 - posZ) * (sp5c - posX)) - ((sp50 - posZ) * (sp60 - posX));
@@ -618,7 +617,7 @@ void func_80021B0C(void) {
         func_8006E7CC(gPlayerSeven, 6, 0);
         func_8006E7CC(gPlayerEight, 7, 0);
     }
-    if (gGamestate == ENDING_SEQUENCE) {
+    if (gGamestate == ENDING) {
         if (gPlayerOne->unk_044 & 0x2000) {
             render_player_shadow_credits(gPlayerOne, 0, 0);
         }
@@ -1160,7 +1159,7 @@ void func_800235AC(Player *player, s8 arg1) {
         }
         return;
     }
-    if ((player->effects & 0x200) != 0) {
+    if ((player->effects & STAR_EFFECT) != 0) {
         temp = (s32)gCourseTimer - D_8018D930[arg1];
         if (temp <= 8) {
 
@@ -1231,8 +1230,8 @@ void render_player_shadow(Player *player, s8 arg1, s8 arg2) {
     UNUSED Vec3f pad2;
     f32 var_f2;
 
-    temp_t9 = (u16)(player->unk_048[arg2] + player->unk_02C[1] + player->unk_0C0) / 128; // << 7) & 0xFFFF;
-    spC0 = -player->unk_02C[1] - player->unk_0C0;
+    temp_t9 = (u16)(player->unk_048[arg2] + player->rotation[1] + player->unk_0C0) / 128; // << 7) & 0xFFFF;
+    spC0 = -player->rotation[1] - player->unk_0C0;
 
     spB0 = -coss(temp_t9 << 7) * 2;
     spAC = -sins(temp_t9 << 7) * 2;
@@ -1243,16 +1242,16 @@ void render_player_shadow(Player *player, s8 arg1, s8 arg2) {
         || ((player->effects & 0x800000) == 0x800000)
         || ((player->effects & 0x400) == 0x400)
         || ((player->unk_0CA & 2) == 2)
-        || ((player->effects & 0x02000000) == 0x02000000)
+        || ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT)
         || ((player->effects & 0x10000) == 0x10000)
         || ((player->effects & 8) == 8)) {
 
         var_f2 = (f32) (1.0 - ((f64) player->unk_110.unk3C[2] * 0.02));
         if (var_f2 < 0.0f) {var_f2 = 0.0f;}
         if (var_f2 > 1.0f) {var_f2 = 1.0f;}
-        spB4[0] = player->unk_110.unk60[0];
-        spB4[2] = player->unk_110.unk60[2];
-        spB4[1] = player->unk_110.unk60[1];
+        spB4[0] = player->unk_110.orientationVector[0];
+        spB4[2] = player->unk_110.orientationVector[2];
+        spB4[1] = player->unk_110.orientationVector[1];
 
         spCC[0] = player->pos[0] + ((spB0 * sins(spC0)) + (spAC * coss(spC0)));
         spCC[1] = player->unk_074 + 1.0f;
@@ -1306,8 +1305,8 @@ void render_player_shadow_credits(Player *player, s8 playerId, s8 arg2) {
     UNUSED Vec3f pad3;
     Vec3f sp94 = { 9.0f, 7.0f, 5.0f };
 
-    temp_t9 = (u16)(player->unk_048[arg2] + player->unk_02C[1] + player->unk_0C0) / 128;
-    spC0 = -player->unk_02C[1] - player->unk_0C0;
+    temp_t9 = (u16)(player->unk_048[arg2] + player->rotation[1] + player->unk_0C0) / 128;
+    spC0 = -player->rotation[1] - player->unk_0C0;
 
     spB0 = -coss(temp_t9 << 7) * 3;
     spAC = -sins(temp_t9 << 7) * 3;
@@ -1366,7 +1365,7 @@ void kart_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
         sp154[0] = player->pos[0] + sp148;
         sp154[2] = player->pos[2] + sp140;
     } else {
-        thing = (u16)(player->unk_048[arg2] + player->unk_02C[1] + player->unk_0C0);
+        thing = (u16)(player->unk_048[arg2] + player->rotation[1] + player->unk_0C0);
         temp_v1 = player->unk_0CC[arg2] * sins(thing);
         if ((player->effects & 8) == 8) {
             sp14C[0] = cameras[arg2].rot[0] - 0x4000;
@@ -1403,7 +1402,7 @@ void kart_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     mtxf_scale2(sp1A4, gCharacterSize[player->characterId] * player->size);
     convert_to_fixed_point_matrix(&gGfxPool->mtxKart[playerId + (arg2 * 8)], sp1A4);
 
-    if ((player->effects & 0x80000000) == 0x80000000) {
+    if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
         if (arg2 == playerId) {
             gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             gSPDisplayList(gDisplayListHead++, common_setting_render_character);
@@ -1435,7 +1434,7 @@ void kart_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
             );
             gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
         }
-    } else if (((player->unk_0CA & 4) == 4) || (player->statusEffects & 0x08000000) || (player->statusEffects & 0x04000000)) {
+    } else if (((player->unk_0CA & 4) == 4) || (player->soundEffects & 0x08000000) || (player->soundEffects & 0x04000000)) {
         gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxKart[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPDisplayList(gDisplayListHead++, common_setting_render_character);
         gDPLoadTLUT_pal256(gDisplayListHead++, gPlayerPalette);
@@ -1497,7 +1496,7 @@ void ghost_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     } else {
         spC2 = 0x0070;
     }
-    thing = (u16)(player->unk_048[arg2] - player->unk_02C[1]);
+    thing = (u16)(player->unk_048[arg2] - player->rotation[1]);
     spD4[0] = (-(s16)(sins(thing) * (0.0f * 0.0f)) * 0.8);
     spD4[1] = player->unk_048[arg2];
     spD4[2] = player->unk_050[arg2];
@@ -1553,9 +1552,9 @@ void func_80025DE8(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     Vec3f sp9C;
     Vec3s sp94;
 
-    sp9C[0] = player->pos[0] + (sins(-player->unk_02C[1]) * -1.5);
+    sp9C[0] = player->pos[0] + (sins(-player->rotation[1]) * -1.5);
     sp9C[1] = ((player->pos[1] - player->boundingBoxSize) + player->unk_108) + 0.1;
-    sp9C[2] = player->pos[2] + (coss(-player->unk_02C[1]) * -1.5);
+    sp9C[2] = player->pos[2] + (coss(-player->rotation[1]) * -1.5);
     sp94[0] = -0x00B6;
     sp94[1] = player->unk_048[arg2];
     sp94[2] = player->unk_050[arg2];
@@ -1647,8 +1646,8 @@ void player_render(Player *player, s8 playerId, s8 arg2) {
     }
     func_80023BF0(player, playerId, arg2, var_v1);
     temp_t1 = 8 << (arg2 * 4);
-    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_110.unk3C[2] <= 50.0f) && (player->unk_0F8 != 9)) {
-        if ((player->effects & 0x80000000) == 0x80000000) {
+    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_110.unk3C[2] <= 50.0f) && (player->surfaceType != ICE)) {
+        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (playerId == arg2) {
                 render_player_shadow(player, playerId, arg2);
             }
@@ -1662,7 +1661,7 @@ void player_render(Player *player, s8 playerId, s8 arg2) {
         ghost_render(player, playerId, arg2, var_v1);
     }
     osRecvMesg(&gDmaMesgQueue, &sp34, OS_MESG_BLOCK);
-    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_0F8 == 9) && ((player->unk_0CA & 1) != 1) && (player->unk_110.unk3C[2] <= 30.0f)) {
+    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) && ((player->unk_0CA & 1) != 1) && (player->unk_110.unk3C[2] <= 30.0f)) {
         player_ice_reflection_render(player, playerId, arg2, var_v1);
     }
     if (player->boostPower >= 2.0f) {
@@ -1682,7 +1681,7 @@ void func_80026A48(Player *player, s8 arg1) {
     }
 
     temp_f0 = ((player->unk_094 * (1.0f + player->unk_104)) / 18.0f) * 216.0f;
-    if ((temp_f0 <= 1.0f) || (D_80165520[arg1] == 1)) {
+    if ((temp_f0 <= 1.0f) || (gIsPlayerTripleBButtonCombo[arg1] == TRUE)) {
         player->unk_240 = 0;
     } else {
         player->unk_240 += D_800DDE74[(s32)(temp_f0 / 12.0f)];
@@ -1692,7 +1691,7 @@ void func_80026A48(Player *player, s8 arg1) {
     }
 }
 
-// Properly define struct pointers, see framebuffers.h comment for more information.
+// Properly define struct pointers, see buffers.h comment for more information.
 #ifdef AVOID_UB
 #define D_802F1F80_WHEEL(a, b, c) &D_802F1F80[a][b][c].wheel_palette
 #else

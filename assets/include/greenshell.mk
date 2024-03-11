@@ -1,6 +1,6 @@
 GREENSHELL_DIR := assets/greenshell
 
-GREENSHELL_PALETTE := $(GREENSHELL_DIR)/gTLUTGreenShell.png
+GREENSHELL_PALETTE := $(GREENSHELL_DIR)/common_tlut_green_shell.png
 
 GREENSHELL_FRAMES := \
 $(GREENSHELL_DIR)/gTextureGreenShell0.png \
@@ -31,7 +31,7 @@ $(GREENSHELL_FRAMES) $(GREENSHELL_PALETTE): $(GREENSHELL_EXPORT_SENTINEL) ;
 
 $(GREENSHELL_EXPORT_SENTINEL): $(ASSET_DIR)/greenshell.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_greenshell
 distclean_greenshell:

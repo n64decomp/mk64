@@ -1499,7 +1499,7 @@ $(BOWSER_KART_FRAME_PNG) $(BOWSER_KART_PALETTE_PNG): $(BOWSER_EXPORT_SENTINEL) ;
 
 $(BOWSER_EXPORT_SENTINEL): $(ASSET_DIR)/karts/bowser_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_bowser_kart
 distclean_bowser_kart:

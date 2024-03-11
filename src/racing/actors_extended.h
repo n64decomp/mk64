@@ -4,7 +4,7 @@
 #include "common_structs.h"
 #include "actor_types.h"
 
-void func_802B0210(Collision*, Collision*);
+void copy_collision(Collision*, Collision*);
 void func_802B02B4(struct ShellActor*, s32);
 void func_802B039C(struct BananaActor*);
 void func_802B0464(s16);
@@ -27,7 +27,7 @@ void func_802B2914(struct BananaBunchParent*, Player*, s16);
 s32  use_fake_itembox_item(Player*);
 s32  use_banana_item(Player*);
 void use_thunder_item(Player*);
-void func_802B2FA0(Player*);
+void player_use_item(Player*);
 void func_802B30EC(void);
 void update_actor_green_shell(struct ShellActor*);
 void func_802B3B44(struct ShellActor*);

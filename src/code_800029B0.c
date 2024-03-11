@@ -4,7 +4,6 @@
 #include "code_800029B0.h"
 #include "types.h"
 #include "memory.h"
-#include "variables.h"
 #include "waypoints.h"
 #include "actors.h"
 #include "actor_types.h"
@@ -50,7 +49,7 @@ s32 D_800DC5E0 = 32;
 // This is tracking which credit "state" we're in, decides which credits are shown (and probably other stuff)
 u16 D_800DC5E4 = 0;
 
-// TODO: gPlayerWinningIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8
+//! @todo gPlayerWinningIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8
 s32 gPlayerWinningIndex = 0;
 
 struct UnkStruct_800DC5EC D_8015F480[4];
@@ -146,7 +145,7 @@ u16 gNumPermanentActors;
 s32 code_800029B0_bss_pad2[44];
 
 struct Actor gActorList[ACTOR_LIST_SIZE];
-// @warning todo: Is this apart of the actor array?
+//! @warning todo: Is this apart of the actor array?
 UNUSED u8 D_80162578[sizeof(struct Actor)];
 
 s16 gDebugPathCount;
@@ -201,7 +200,7 @@ void setup_race(void) {
     func_802969F8();
     func_80005310();
     func_8003D080();
-    init_object_list();
+    init_hud();
     D_800DC510 = 0;
     gNumSpawnedShells = 0;
     D_800DC5B8 = 0;
@@ -354,11 +353,11 @@ void func_80003040(void) {
             break;
         case COURSE_WARIO_STADIUM:
             vec3f_set(position, -131.0f, 83.0f, 286.0f);
-            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
             vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
-            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
             vec3f_set(position, -2622.0f, 79.0f, 739.0f);
-            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
             // d_course_wario_stadium_packed_dl_C50
             find_vtx_and_set_colours(0x07000C50, 0x64, 0xFF, 0xFF, 0xFF);
             // d_course_wario_stadium_packed_dl_BD8

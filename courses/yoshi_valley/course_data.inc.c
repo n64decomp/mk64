@@ -1,4 +1,4 @@
-// todo: Replace addresses with variables
+//! @todo Replace addresses with variables
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/gbi.h>
@@ -10867,7 +10867,7 @@ animation_type_2 *d_course_yoshi_valley_unk4[] = {
     &d_course_yoshi_valley_unk3,
 };
 
-// 0x06014798
+//! 0x06014798
 u32 d_course_yoshi_valley_unk5[] = {
     0x00000001,
     0x00000002,

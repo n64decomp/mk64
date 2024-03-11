@@ -65,28 +65,32 @@ typedef enum {
     /* 0x10 */ NUM_TIME_TRIAL_DATA
 } TIME_TRIAL_DATA_INDEX;
 
+/**
+ * @brief The different types of surface in the game.
+*/
 enum SURFACE_TYPE {
+    /* -0x1 */ SURFACE_DEFAULT = -1,
     /* 0x00 */ AIRBORNE,
-    /* 0x01 */ PAVEMENT, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
-    /* 0x02 */ SAND_ONE, // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK Jungle on course, Yoshi Valley
-    /* 0x03 */ SAND_TWO, // Koopa Troopa Beach light color, Royal Raceway
-    /* 0x04 */ STONE_TWO, // Royal Raceway castle entrance, Bowser's Castle
-    /* 0x05 */ SNOW_ONE, // Frappe Snowland on course, Sherber Land tunnel
-    /* 0x06 */ STONE_ONE, // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
-    /* 0x07 */ SAND_FIVE, // Mario Raceway
+    /* 0x01 */ ASPHALT, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
+    /* 0x02 */ DIRT, // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK Jungle on course, Yoshi Valley
+    /* 0x03 */ SAND, // Koopa Troopa Beach light color, Royal Raceway
+    /* 0x04 */ STONE, // Royal Raceway castle entrance, Bowser's Castle
+    /* 0x05 */ SNOW, // Frappe Snowland on course, Sherber Land tunnel
+    /* 0x06 */ BRIDGE, // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
+    /* 0x07 */ SAND_OFFROAD, // Mario Raceway
     /* 0x08 */ GRASS, // Luigi's Raceway, Mario Raceway, Royal Raceway, Bowser's Castle, DK Jungle, Yoshi Valley
     /* 0x09 */ ICE, // Sherbert Land
-    /* 0x0A */ SAND_THREE, // Koop Troopa Beach dark color
-    /* 0x0B */ SNOW_TWO, // Frappe Snowland off course
+    /* 0x0A */ WET_SAND, // Koop Troopa Beach dark color
+    /* 0x0B */ SNOW_OFFROAD, // Frappe Snowland off course
     /* 0x0C */ CLIFF, // Koopa Troopa Beach, Choco Mountain
-    /* 0x0D */ SAND_FOUR, // Kalimari Desert off course
+    /* 0x0D */ DIRT_OFFROAD, // Kalimari Desert off course
     /* 0x0E */ TRAIN_TRACK, // Kalimari Desert
-    /* 0x0F */ DIRT, // DK Jungle cave
-    /* 0x10 */ WOOD_TWO, // Bowser's Castle bridge 2, DK Jungle bridge
-    /* 0x11 */ WOOD_ONE, // Frappe Snowland bridge, Bowser's Castle bridge 1,3, Yoshi Valley bridge 2
-    /* 0xFC */ BOOST_PAD_TWO = 0xFC, // DK Jungle
+    /* 0x0F */ CAVE, // DK Jungle cave
+    /* 0x10 */ ROPE_BRIDGE, // Bowser's Castle bridge 2, DK Jungle bridge
+    /* 0x11 */ WOOD_BRIDGE, // Frappe Snowland bridge, Bowser's Castle bridge 1,3, Yoshi Valley bridge 2
+    /* 0xFC */ BOOST_RAMP_WOOD = 0xFC, // DK Jungle
     /* 0xFD */ OUT_OF_BOUNDS, // DK Jungle river island
-    /* 0xFE */ BOOST_PAD_ONE, // Royal Raceway
+    /* 0xFE */ BOOST_RAMP_ASPHALT, // Royal Raceway
     /* 0xFF */ RAMP // Koopa Troopa beach
 };
 
@@ -118,7 +122,7 @@ typedef struct {
     /* 0x0C */ Vec3f unk3C;
     /* 0x18 */ Vec3f unk48;
     /* 0x24 */ Vec3f unk54;
-    /* 0x30 */ Vec3f unk60;
+    /* 0x30 */ Vec3f orientationVector;
     /* 0x3C */ f32 unk6C;
 } Collision;
 
@@ -156,15 +160,9 @@ typedef struct {
 typedef struct {
     s16 ob[3];    /* x, y, z */
     s16 tc[2];    /* texture coord */
-    u8  ca[4];    /* color & alpha */
+    s8  ca[4];    /* color & alpha */
 
-} mk64_Vtx;
-
-typedef struct {
-    s16 ob[3];    /* x, y, z */
-    s16 tc[2];    /* texture coord */
-    s8  n[3];    /* color & alpha */
-} mk64_Vtx_n;
+} CourseVtx;
 
 /*
 This struct has been copied (with only minor modifications) from
@@ -251,14 +249,14 @@ typedef struct {
     /* 0x0006 */ u16 unk_006;
     /* 0x0008 */ s16 lapCount;
     /* 0x000A */ char unk_00A[0x2];
-    /* 0x000C */ s32 statusEffects; // Bitflag.
+    /* 0x000C */ s32 soundEffects; // Bitflag.
     /* 0x0010 */ s16 currentItemCopy; // Has no effect on what item the players has, It is just a synced copy
     /* 0x0012 */ s16 unk_012;
     /* 0x0014 */ Vec3f pos;
-    /* 0x0020 */ f32 rotX;
-    /* 0x0024 */ f32 rotY;
-    /* 0x0028 */ f32 rotZ;
-    /* 0x002C */ Vec3s unk_02C;
+    /* 0x0020 */ f32 copy_rotation_x;
+    /* 0x0024 */ f32 copy_rotation_y;
+    /* 0x0028 */ f32 copy_rotation_z;
+    /* 0x002C */ Vec3s rotation;
     /* 0x0032 */ char unk_032[0x2];
     /* 0x0034 */ Vec3f velocity;
     /* 0x0040 */ s16 unk_040;
@@ -313,7 +311,7 @@ typedef struct {
     /* 0x00EC */ f32 kartHopVelocity;
     /* 0x00F0 */ f32 kartHopJerk;
     /* 0x00F4 */ f32 kartHopAcceleration;
-    /* 0x00F8 */ u16 unk_0F8;
+    /* 0x00F8 */ u16 surfaceType;
     /* 0x00FA */ s16 unk_0FA;
     /* 0x00FC */ f32 kartFriction;
     /* 0x0100 */ f32 kartGravity;
@@ -376,14 +374,6 @@ typedef struct {
     /* 0x0DD2 */ // s16 unk_DD2;
     /* 0x0DD4 */ // s16 unk_DD4;
 } Player; // size = 0xDD8
-
-typedef struct {
-    char unk_00[0x4];
-    Vec3f unk_04;
-    char unk_10[0x4];
-    s32 objectIndex;
-    char unk_18[0x8];
-} struct_D_8018CE10; // size = 0x20
 
 typedef struct
 { 
@@ -451,9 +441,14 @@ typedef struct {
     /* 0x4C */ s16 unk_4C;
     /* 0x4E */ s16 timerX; // X coordinate of the on screen timer
     // These 4 X coordinates are "slide" values
-    /* 0x50 */ s16 lap1CompletionTimeX; // Pulls double-duty as timerAfterImage1X
-    /* 0x52 */ s16 lap2CompletionTimeX; // Pulls double-duty as timerAfterImage2X
-    /* 0x54 */ s16 lap3CompletionTimeX;
+    union {
+        struct {
+        /* 0x50 */ s16 lap1CompletionTimeX; // Pulls double-duty as timerAfterImage1X
+        /* 0x52 */ s16 lap2CompletionTimeX; // Pulls double-duty as timerAfterImage2X
+        /* 0x54 */ s16 lap3CompletionTimeX;
+        };
+        /* 0x50 */ s16 lapCompletionTimeXs[3];
+    };
     /* 0x56 */ s16 totalTimeX;
     /* 0x58 */ s16 timerY; // Y coordinate of the on screen timer (used as Y coordinate for lap completion times in post-race screen)
     /* 0x5A */ s16 lapX; // X coordinate of the on screen lap counter

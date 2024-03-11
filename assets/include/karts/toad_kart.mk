@@ -1499,7 +1499,7 @@ $(TOAD_KART_FRAME_PNG) $(TOAD_KART_PALETTE_PNG): $(TOAD_EXPORT_SENTINEL) ;
 
 $(TOAD_EXPORT_SENTINEL): $(ASSET_DIR)/karts/toad_kart.json
 	$(ASSET_EXTRACT) $(BASEROM) $<
-	touch $@
+	$(TOUCH) $@
 
 .PHONY: distclean_toad_kart
 distclean_toad_kart:

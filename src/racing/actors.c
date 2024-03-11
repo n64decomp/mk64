@@ -17,8 +17,8 @@
 #include "waypoints.h"
 #include "macros.h"
 #include "code_80005FD0.h"
-#include "code_80071F00.h"
-#include "code_8008C1D0.h"
+#include "update_objects.h"
+#include "effects.h"
 #include "collision.h"
 #include "audio/external.h"
 #include "common_textures.h"
@@ -33,7 +33,7 @@ u8 *D_802BA054;
 u8 *D_802BA058;
 
 
-struct Actor *D_802BA05C;
+struct Actor *gActorHotAirBalloonItemBox;
 s8 gTLUTRedShell[512]; // tlut 256
 u16 D_802BA260;
 
@@ -359,9 +359,9 @@ void func_802976EC(Collision *arg0, Vec3s arg1) {
     }
     //sp1C = arg0->unk30;
 
-    x = arg0->unk60[0];
-    y = arg0->unk60[1];
-    z = arg0->unk60[2];
+    x = arg0->orientationVector[0];
+    y = arg0->orientationVector[1];
+    z = arg0->orientationVector[2];
 
     arg1[0] = atan2s(z, y) + 0x4000;
     arg1[1] = 0;
@@ -392,7 +392,7 @@ void func_802977E4(Player *arg0) {
 // Invert green and red on green shell texture
 void init_red_shell_texture(void) {
     s16 *red_shell_texture = (s16 *) &gTLUTRedShell[0];
-    s16 *green_shell_texture = (s16 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(gTLUTGreenShell)] + SEGMENT_OFFSET(gTLUTGreenShell));
+    s16 *green_shell_texture = (s16 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(common_tlut_green_shell)] + SEGMENT_OFFSET(common_tlut_green_shell));
     s16 color_pixel, red_color, green_color, blue_color, alpha_color;
     s32 i;
     for (i = 0; i < 256; i++) {
@@ -414,7 +414,7 @@ void func_8029794C(Vec3f arg0, Vec3s arg1, f32 arg2) {
     Mat4 sp20;
     arg0[1] += 2.0f;
 
-    func_802B5F74(sp20, arg0, arg1);
+    mtxf_pos_rotation_xyz(sp20, arg0, arg1);
     mtxf_scale(sp20, arg2);
     if (render_set_position(sp20, 0) != 0) {
 
@@ -507,7 +507,7 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
     }
     switch (fruit->state) {                               /* irregular */
     case 0:
-        if ((get_surface_type(player->unk_110.unk3A) & 0xFF) != 8) {
+        if ((get_surface_type(player->unk_110.unk3A) & 0xFF) != GRASS) {
             return;
         }
         fruit->state = 1;
@@ -531,15 +531,15 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
             fruit->velocity[0] = 0.0f;
             fruit->velocity[1] = 2.3f;
             fruit->velocity[2] = 0.0f;
-            if ((player->effects & 0x200) != 0) {
-                func_800C9060(player - gPlayerOne, 0x1900A052U);
+            if ((player->effects & STAR_EFFECT) != 0) {
+                func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0xA0, 0x52));
             } else {
                 player->effects |= 0x8000;
                 player->pos[0]     -= temp_f2  * 4.0f;
                 player->pos[2]     -= temp_f14 * 4.0f;
                 player->velocity[0] -= temp_f2  * 0.7f;
                 player->velocity[2] -= temp_f14 * 0.7f;
-                func_800C9060(player - gPlayerOne, 0x19007018U);
+                func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x70, 0x18));
                 if (gModeSelection != GRAND_PRIX) {
                     D_80162DF8 = 1;
                 }
@@ -571,7 +571,7 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
     }
 }
 
-#include "actors/boat.inc.c"
+#include "actors/paddle_boat/update.inc.c"
 
 #include "actors/train.inc.c"
 
@@ -732,7 +732,7 @@ void func_802986B4(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     struct ActorSpawnData *var_s1;
     struct ActorSpawnData *var_s5;
     Vec3f sp88;
-    u32 soundThing = 0x1901904D;
+    u32 soundThing = SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x4D);
     s32 segment = SEGMENT_NUMBER2(d_course_moo_moo_farm_cow_spawn);
     s32 offset = SEGMENT_OFFSET(d_course_moo_moo_farm_cow_spawn);
 
@@ -810,13 +810,13 @@ void func_80298AC0(Player *player) {
         sp64[1] = data->pos[1];
         sp64[2] = data->pos[2];
         if (func_8029EEB8(player, sp64, 5.0f, 40.0f, 0.8f) == 1) {
-            if ((player->effects & 0x200) != 0) {
-                func_800C98B8(player->pos, player->velocity, 0x19018010);
-                func_800C90F4((u8) (player - gPlayerOne), (player->characterId * 0x10) + 0x2900800D);
+            if ((player->effects & STAR_EFFECT) != 0) {
+                func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
+                func_800C90F4((u8) (player - gPlayerOne), (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
                 data->someId |= 0x400;
             }
             if ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) {
-                func_800C9060((u8) (player - gPlayerOne), 0x19007018);
+                func_800C9060((u8) (player - gPlayerOne), SOUND_ARG_LOAD(0x19, 0x00, 0x70, 0x18));
             }
             break;
         }
@@ -893,7 +893,7 @@ void func_80298D7C(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
         test &= 0xF;
         test = (s16)test;
         if (test == 6) {
-            func_802B5F74(sp90, spD4, sp88);
+            mtxf_pos_rotation_xyz(sp90, spD4, sp88);
             if (!(gMatrixObjectCount < MTX_OBJECT_POOL_SIZE)) { break; }
             render_set_position(sp90, 0);
             goto dummylabel;
@@ -943,7 +943,7 @@ void render_actor_tree_mario_raceway(Camera *camera, Mat4 arg1, struct Actor *ar
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_tree);
     }
 }
@@ -966,7 +966,7 @@ void render_actor_tree_yoshi_valley(Camera *camera, Mat4 arg1, struct Actor *arg
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_yoshi_valley_dl_tree);
     }
 }
@@ -989,7 +989,7 @@ void render_actor_tree_royal_raceway(Camera *camera, Mat4 arg1, struct Actor *ar
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_royal_raceway_dl_tree);
     }
 }
@@ -1012,7 +1012,7 @@ void render_actor_tree_moo_moo_farm(Camera *camera, Mat4 arg1, struct Actor *arg
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_tree);
     }
 }
@@ -1035,7 +1035,7 @@ void func_80299864(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         // Why is a TLUT being used a DL here? That makes no sense
         // Based on the TLUT being loaded above, this ought to be be another
         // tree related DL, presumably one found in a course other than Moo Moo farm
@@ -1062,7 +1062,7 @@ void render_actor_tree_bowser_castle(Camera *camera, Mat4 arg1, struct Actor *ar
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_royal_raceway_dl_castle_tree);
     }
 }
@@ -1085,7 +1085,7 @@ void render_actor_bush_bowser_castle(Camera *camera, Mat4 arg1, struct Actor *ar
     arg1[3][2] = arg2->pos[2];
 
     if (render_set_position(arg1, 0) != 0) {
-        gDPLoadTLUT_pal256(gDisplayListHead++, D_0D004C68);
+        gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_trees_import);
         gSPDisplayList(gDisplayListHead++, d_course_bowsers_castle_dl_bush);
     }
 }
@@ -1209,7 +1209,7 @@ void render_actor_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
         0x1c00, 0x1800, 0x1400, 0x1000,
         0x0c00, 0x0800, 0x0400
     };
-    // todo: Is this making the shell spin?
+    //! @todo Is this making the shell spin?
     // Is it doing this by modifying a an address?
     uintptr_t phi_t3;
 
@@ -1262,7 +1262,7 @@ UNUSED s16 D_802B8810[] = {
 };
 
 void render_actor_green_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTGreenShell); // set texture
+    gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_green_shell); // set texture
     render_actor_shell(camera, matrix, shell);
 }
 
@@ -1273,7 +1273,7 @@ void render_actor_red_shell(Camera *camera, Mat4 matrix, struct ShellActor *shel
 
 // Middle of a tlut access
 void render_actor_blue_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
-    gDPLoadTLUT_pal256(gDisplayListHead++, gTLUTBlueShell); // set texture
+    gDPLoadTLUT_pal256(gDisplayListHead++, common_tlut_blue_shell); // set texture
     render_actor_shell(camera, matrix, shell);
 }
 
@@ -1302,12 +1302,12 @@ void render_actor_banana(Camera *camera, UNUSED Mat4 arg1, struct BananaActor *b
     func_802972B8(camera, (struct Actor *) banana);
 
     if (banana->state == 5) {
-        func_802B5F74(sp3C, banana->pos, banana->rot);
+        mtxf_pos_rotation_xyz(sp3C, banana->pos, banana->rot);
     } else {
         sp7C[0] = 0;
         sp7C[1] = 0;
         sp7C[2] = 0;
-        func_802B5F74(sp3C, banana->pos, sp7C);
+        mtxf_pos_rotation_xyz(sp3C, banana->pos, sp7C);
     }
 
     maxObjectsReached = render_set_position(sp3C, 0) == 0;
@@ -1338,7 +1338,7 @@ void update_actor_railroad_crossing(struct RailroadCrossing *crossing) {
         }
         // Play Bell sound when timer hits 20 or 1.
         if ((crossing->someTimer == 1) || (crossing->someTimer == 20)) {
-            func_800C98B8(crossing->pos, crossing->velocity, 0x19017016);
+            func_800C98B8(crossing->pos, crossing->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x70, 0x16));
         }
     }
 }
@@ -1405,41 +1405,7 @@ UNUSED void func_8029AE14() {
 
 }
 
-// This likely attaches the paddle wheel to the boat
-void func_8029AE1C(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED Mat4 arg2, u16 arg3) {
-    UNUSED s32 pad[3];
-    Vec3f sp120;
-    Mat4 spE0;
-    Mat4 spA0;
-    Mat4 sp60;
-    f32 temp;
-
-    if ((arg3 > 20) && (arg3 < 25)) { return; }
-        temp = is_within_render_distance(arg0->pos, boat->pos, arg0->rot[1], 90000.0f, gCameraZoom[arg0 - camera1], 9000000.0f);
-
-    if (temp < 0.0f) { return; }
-
-        gSPSetLights1(gDisplayListHead++, D_800DC610[1]);
-        gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_LIGHTING | G_SHADING_SMOOTH);
-
-        func_802B5F74(spE0, boat->pos, boat->boatRot);
-        if (render_set_position(spE0, 1) != 0) {
-
-            gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_E730);
-            gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_E058);
-
-            mtxf_rotate_x(spE0, boat->wheelRot);
-            vec3f_set(sp120, 0, 16.0f, -255.0f);
-            mtxf_translate(spA0, sp120);
-            mtxf_multiplication(sp60, spE0, spA0);
-            if (render_set_position(sp60, 3) != 0) {
-                gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_FC28);
-                gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
-                gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            }
-        }
-}
+#include "actors/paddle_boat/render.inc.c"
 
 void func_8029B06C(Camera *arg0, struct Actor *arg1) {
     UNUSED s32 pad[6];
@@ -1451,7 +1417,7 @@ void func_8029B06C(Camera *arg0, struct Actor *arg1) {
         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-        func_802B5F74(spD8, arg1->pos, arg1->rot);
+        mtxf_pos_rotation_xyz(spD8, arg1->pos, arg1->rot);
         if (render_set_position(spD8, 0) != 0) {
 
             switch(arg1->state) {
@@ -1495,7 +1461,7 @@ void func_8029B2E4(Camera *arg0, struct Actor *arg1) {
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
 
-        func_802B5F74(spC8, arg1->pos, arg1->rot);
+        mtxf_pos_rotation_xyz(spC8, arg1->pos, arg1->rot);
         if (render_set_position(spC8, 0) != 0) {
 
             if (gActiveScreenMode == SCREEN_MODE_1P) {
@@ -1526,7 +1492,7 @@ void func_8029B4E0(Camera *arg0, struct Actor *arg1) {
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
 
-        func_802B5F74(spC8, arg1->pos, arg1->rot);
+        mtxf_pos_rotation_xyz(spC8, arg1->pos, arg1->rot);
         mtxf_scale(spC8, 0.1f);
         if (render_set_position(spC8, 0) != 0) {
 
@@ -1558,7 +1524,7 @@ void func_8029B6EC(Camera *camera, struct Actor* arg1) {
         gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-        func_802B5F74(spC8, arg1->pos, arg1->rot);
+        mtxf_pos_rotation_xyz(spC8, arg1->pos, arg1->rot);
         if (render_set_position(spC8, 0) != 0) {
 
             if (gActiveScreenMode == SCREEN_MODE_1P) {
@@ -1580,7 +1546,7 @@ void func_8029B6EC(Camera *camera, struct Actor* arg1) {
 }
 
 // Spins train wheels?
-void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
+void render_actor_train_engine(Camera *camera, struct TrainCar *actor) {
     UNUSED s32 pad[2];
     s32 maxObjectsReached;
     Vec3f sp160;
@@ -1594,7 +1560,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    func_802B5F74(sp120, actor->pos, actor->rot);
+    mtxf_pos_rotation_xyz(sp120, actor->pos, actor->rot);
     maxObjectsReached = render_set_position(sp120, 0) == 0;
     if (maxObjectsReached) { return; }
 
@@ -1706,7 +1672,7 @@ void func_8029B8E8(Camera *camera, struct TrainCar *actor) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
+void render_actor_train_tender(Camera *camera, struct TrainCar *actor) {
     Mat4 sp120;
     Vec3f sp160;
     Mat4 spE0;
@@ -1718,7 +1684,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    func_802B5F74(sp120, actor->pos, actor->rot);
+    mtxf_pos_rotation_xyz(sp120, actor->pos, actor->rot);
     if (render_set_position(sp120, 0) == 0) { return; }
 
     if (temp_f0 < 250000.0f) {
@@ -1776,7 +1742,7 @@ void func_8029BFB0(Camera *camera, struct TrainCar *actor) {
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }
 
-void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
+void render_actor_passenger_car(Camera *camera, struct TrainCar *actor) {
     Mat4 sp120;
     Vec3f sp160;
     Mat4 spE0;
@@ -1788,7 +1754,7 @@ void func_8029C3CC(Camera *camera, struct TrainCar *actor) {
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    func_802B5F74(sp120, actor->pos, actor->rot);
+    mtxf_pos_rotation_xyz(sp120, actor->pos, actor->rot);
 
     if (render_set_position(sp120, 0) == 0) { return; }
 
@@ -1915,14 +1881,14 @@ void render_actor_falling_rock(Camera *camera, struct FallingRock *rock) {
             sp98[1] = 0;
             sp98[2] = 0;
             sp8C[1] = temp_f0 + 2.0f;
-            func_802B5F74(sp4C, sp8C, sp98);
+            mtxf_pos_rotation_xyz(sp4C, sp8C, sp98);
             if (render_set_position(sp4C, 0) == 0) {
                 return;
             }
             gSPDisplayList(gDisplayListHead++, d_course_choco_mountain_dl_6F88);
         }
     }
-    func_802B5F74(sp4C, rock->pos, rock->rot);
+    mtxf_pos_rotation_xyz(sp4C, rock->pos, rock->rot);
     if (render_set_position(sp4C, 0) == 0) {
         return;
     }
@@ -2170,10 +2136,10 @@ void place_course_actors(void) {
         place_all_item_boxes(d_course_mario_raceway_item_box_spawns);
         vec3f_set(position, 150.0f, 40.0f, -1300.0f);
         position[0] *= gCourseDirection;
-        addActorToEmptySlot(position, rotation, velocity, ACTOR_MARIO_RACEWAY_SIGN);
+        addActorToEmptySlot(position, rotation, velocity, ACTOR_MARIO_SIGN);
         vec3f_set(position, 2520.0f, 0.0f, 1240.0f);
         position[0] *= gCourseDirection;
-        actor = &gActorList[addActorToEmptySlot(position, rotation, velocity, ACTOR_MARIO_RACEWAY_SIGN)];
+        actor = &gActorList[addActorToEmptySlot(position, rotation, velocity, ACTOR_MARIO_SIGN)];
         actor->flags |= 0x4000;
         break;
     case COURSE_CHOCO_MOUNTAIN:
@@ -2252,13 +2218,13 @@ void place_course_actors(void) {
         place_all_item_boxes(d_course_wario_stadium_item_box_spawns);
         vec3f_set(position, -131.0f, 83.0f, 286.0f);
         position[0] *= gCourseDirection;
-        addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+        addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
         vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
         position[0] *= gCourseDirection;
-        addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+        addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
         vec3f_set(position, -2622.0f, 79.0f, 739.0f);
         position[0] *= gCourseDirection;
-        addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_STADIUM_SIGN);
+        addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
         break;
     case COURSE_BLOCK_FORT:
         place_all_item_boxes(d_course_block_fort_item_box_spawns);
@@ -2386,15 +2352,15 @@ void func_8029E7DC(struct Actor *actor) {
     s16 temp_v0 = actor->flags;
 
     if ((temp_v0 & 0x200) != 0) {
-        func_800C99E0(actor->pos, 0x19019053);
+        func_800C99E0(actor->pos, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
         return;
     }
     if ((temp_v0 & 0x100) != 0) {
-        func_800C99E0(actor->pos, 0x19018010);
+        func_800C99E0(actor->pos, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
         return;
     }
     if ((temp_v0 & 0x80) != 0) {
-        func_800C99E0(actor->pos, 0x19008054);
+        func_800C99E0(actor->pos, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));
     }
 }
 
@@ -2629,7 +2595,7 @@ s32 func_8029EEB8(Player *player, Vec3f pos, f32 arg2, f32 arg3, f32 arg4) {
     sp28 = temp_f0_3 - arg2;
     temp_f16 = player->velocity[0];
     temp_f18 = player->velocity[2];
-    if (player->effects & 0x200) {
+    if (player->effects & STAR_EFFECT) {
         return 1;
     }
     if (temp_f0_3 < 0.1f) {
@@ -2667,12 +2633,12 @@ s32 func_8029EEB8(Player *player, Vec3f pos, f32 arg2, f32 arg3, f32 arg4) {
 s32 func_8029F1F8(Player *player, struct Actor *marioRacewaySign) {
     if (func_8029EEB8(player, marioRacewaySign->pos, 7.0f, 200.0f, 0.8f) == 1) {
         if ((player->type & PLAYER_HUMAN) != 0) {
-            if ((player->effects & 0x200) != 0) {
+            if ((player->effects & STAR_EFFECT) != 0) {
                 marioRacewaySign->flags |= 0x400;
-                func_800C98B8(player->pos, player->velocity, 0x19018010U);
-                func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
+                func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
+                func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
             } else if ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) {
-                func_800C9060(player - gPlayerOne, 0x1900701AU);
+                func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x70, 0x1A));
             }
         }
         return 1;
@@ -2683,12 +2649,12 @@ s32 func_8029F1F8(Player *player, struct Actor *marioRacewaySign) {
 s32 func_8029F2FC(Player *player, struct PiranhaPlant *plant) {
     if (func_8029EEB8(player, plant->pos, plant->boundingBoxSize, plant->boundingBoxSize, 2.5f) == 1) {
         if ((player->type & PLAYER_HUMAN) != 0) {
-            if ((player->effects & 0x200) != 0) {
+            if ((player->effects & STAR_EFFECT) != 0) {
                 plant->flags |= 0x400;
-                func_800C98B8(player->pos, player->velocity, 0x1901A24AU);
-                func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
+                func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0xA2, 0x4A));
+                func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
             } else if ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) {
-                func_800C9060(player - gPlayerOne, 0x1900A052U);
+                func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0xA0, 0x52));
             }
         }
         return 1;
@@ -2696,7 +2662,7 @@ s32 func_8029F2FC(Player *player, struct PiranhaPlant *plant) {
     return 0;
 }
 
-s32 func_8029F408(Player *player, struct YoshiValleyEgg *egg) {
+bool func_8029F408(Player *player, struct YoshiValleyEgg *egg) {
     UNUSED f32 pad[5];
     f32 z_dist;
     f32 xz_dist;
@@ -2708,37 +2674,42 @@ s32 func_8029F408(Player *player, struct YoshiValleyEgg *egg) {
 
     x_dist = egg->pos[0] - player->pos[0];
     if ((x_dist < thing2) && (x_dist < -thing)) {
-        return 0;
+        return FALSE;
     }
     if (x_dist > thing) {
-        return 0;
+        return FALSE;
     }
+
     z_dist = egg->pos[2] - player->pos[2];
     if ((z_dist < thing2) && (z_dist < -thing)) {
-        return 0;
+        return FALSE;
     }
     if (z_dist > thing) {
-        return 0;
+        return FALSE;
     }
+
     xz_dist = sqrtf((x_dist * x_dist) + (z_dist * z_dist));
     if (xz_dist > thing) {
-        return 0;
+        return FALSE;
     }
     func_802977B0(player);
+
     y_dist = player->pos[1] - egg->pos[1];
     if (y_dist < thing2) {
-        return 0;
+        return FALSE;
     }
+
     totalBox = player->boundingBoxSize + egg->boundingBoxSize;
     if (totalBox < xz_dist) {
-        return 0;
+        return FALSE;
     }
+
     if ((player->type & PLAYER_HUMAN) != 0) {
-        if ((player->effects & 0x200) != 0) {
+        if ((player->effects & STAR_EFFECT) != 0) {
             egg->flags |= 0x400;
             egg->pathCenter[1] = 8.0f;
-            func_800C98B8(player->pos, player->velocity, 0x19018010);
-            func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
+            func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
+            func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
         } else {
             func_8008DABC(player, player - gPlayerOne);
             if ((gModeSelection == TIME_TRIALS) && ((player->type & PLAYER_CPU) == 0)) {
@@ -2748,7 +2719,8 @@ s32 func_8029F408(Player *player, struct YoshiValleyEgg *egg) {
     } else {
         func_8008DABC(player, player - gPlayerOne);
     }
-    return 1;
+
+    return TRUE;
 }
 
 s32 func_8029F69C(Player *player, struct Actor *actor) {
@@ -2799,24 +2771,24 @@ s32 func_8029F69C(Player *player, struct Actor *actor) {
     sp48 = player->velocity[0];
     sp44 = player->velocity[2];
     if (player->type & PLAYER_HUMAN) {
-        if (player->effects & 0x200) {
+        if (player->effects & STAR_EFFECT) {
             actor->flags |= 0x400;
-            func_800C98B8(player->pos, player->velocity, 0x19018010U);
-            func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + 0x2900800D);
+            func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
+            func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
             return 1;
         }
         if (!(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
-            func_800C9060(player - gPlayerOne, 0x19007018U);
+            func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x70, 0x18));
         }
     }
-    if (!(player->effects & 0x200)) {
+    if (!(player->effects & STAR_EFFECT)) {
         player->effects |= 0x8000;
     }
     sp20[0] = actor->pos[0];
     sp20[1] = actor->pos[1];
     sp20[2] = actor->pos[2];
     if (((gCurrentCourseId == COURSE_MARIO_RACEWAY) || (gCurrentCourseId == COURSE_YOSHI_VALLEY) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY) || (gCurrentCourseId == COURSE_LUIGI_RACEWAY)) && (player->unk_094 > 1.0f)) {
-        func_80077AB0(sp20, 0);
+        spawn_leaf(sp20, 0);
     }
     if (xz_dist < 0.1f) {
         sqrtf((sp48 * sp48) + (sp44 * sp44));
@@ -2941,7 +2913,7 @@ void func_8029FDC8(struct Actor *actor) {
             		break;
         		case HELD_BANANA:
             		player = &gPlayers[banana->playerId];
-            		player->statusEffects &= ~0x00040000;
+            		player->soundEffects &= ~0x00040000;
             		/* fallthrough */
         		case BANANA_ON_GROUND:
             		banana->flags = -0x8000;
@@ -2988,7 +2960,7 @@ void func_8029FDC8(struct Actor *actor) {
             		case GREEN_SHELL_HIT_A_RACER:
             		case BLUE_SHELL_LOCK_ON:
             		case BLUE_SHELL_TARGET_ELIMINATED:
-                		func_800C9EF4(shell->pos, 0x51018008);
+                		func_800C9EF4(shell->pos, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
                 		func_8000EE58(actor - gActorList);
                 		/* fallthrough */
             		case HELD_SHELL:
@@ -3036,7 +3008,7 @@ void func_8029FDC8(struct Actor *actor) {
         	fakeItemBox = (struct FakeItemBox *)actor;
         	player = &gPlayers[(s16)fakeItemBox->playerId];
         	if (fakeItemBox->state == HELD_FAKE_ITEM_BOX) {
-            	player->statusEffects &= ~0x00040000;
+            	player->soundEffects &= ~0x00040000;
         	}
         	fakeItemBox->state = DESTROYED_FAKE_ITEM_BOX;
         	fakeItemBox->flags = -0x8000;
@@ -3050,28 +3022,28 @@ void func_802A00E8(struct Actor *arg0, struct Actor *arg1) {
         case ACTOR_GREEN_SHELL:
             if ((arg0->state == HELD_SHELL) || (arg0->state == TRIPLE_GREEN_SHELL)) {
                 arg0->flags |= 0x200;
-                func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
+                func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
                 return;
             }
             break;
         case ACTOR_RED_SHELL:
             if ((arg0->state == HELD_SHELL) || (arg0->state == TRIPLE_RED_SHELL)) {
                 arg0->flags |= 0x200;
-                func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
+                func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
             	return;
             }
             break;
         case ACTOR_BLUE_SPINY_SHELL:
             if (arg0->state == HELD_SHELL) {
                 arg0->flags |= 0x200;
-                func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
+                func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
                 return;
             }
             break;
         case ACTOR_FAKE_ITEM_BOX:
             if (arg0->state == HELD_FAKE_ITEM_BOX) {
                 arg0->flags |= 0x200;
-                func_800C98B8(arg0->pos, arg0->velocity, 0x19019053);
+                func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
                 return;
             }
             break;
@@ -3081,35 +3053,35 @@ void func_802A00E8(struct Actor *arg0, struct Actor *arg1) {
         case ACTOR_GREEN_SHELL:
             if ((arg1->state == HELD_SHELL) || (arg1->state == TRIPLE_GREEN_SHELL)) {
             	arg1->flags |= 0x200;
-            	func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
+            	func_800C98B8(arg1->pos, arg1->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
         		return;
             }
             break;
         case ACTOR_RED_SHELL:
             if ((arg1->state == HELD_SHELL) || (arg1->state == TRIPLE_RED_SHELL)) {
                 arg1->flags |= 0x200;
-                func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
+                func_800C98B8(arg1->pos, arg1->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
                 return;
             }
             break;
         case ACTOR_BLUE_SPINY_SHELL:
             if (arg1->state == HELD_SHELL) {
                 arg1->flags |= 0x200;
-                func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
+                func_800C98B8(arg1->pos, arg1->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
                 return;
             }
             break;
         case ACTOR_FAKE_ITEM_BOX:
             if (arg1->state == HELD_FAKE_ITEM_BOX) {
                 arg1->flags |= 0x200;
-                func_800C98B8(arg1->pos, arg1->velocity, 0x19019053);
+                func_800C98B8(arg1->pos, arg1->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x53));
                 return;
             }
             break;
     }
 
     arg0->flags |= 0x100;
-    func_800C98B8(arg0->pos, arg0->velocity, 0x19018010);
+    func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
 }
 
 void func_802A0350(struct Actor *arg0, struct Actor *arg1) {
@@ -3118,7 +3090,7 @@ void func_802A0350(struct Actor *arg0, struct Actor *arg1) {
             func_8029FDC8(arg0);
             func_8029FDC8(arg1);
             arg0->flags |= 256;
-            func_800C98B8(arg0->pos, arg0->velocity, 0x19018010);
+            func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             return;
         }
         if (arg0->type == ACTOR_BLUE_SPINY_SHELL) {
@@ -3151,27 +3123,27 @@ void func_802A0450(Player *player, struct Actor *actor) {
     temp_lo = player - gPlayerOne;
     switch (actor->type) {
     case ACTOR_YOSHI_VALLEY_EGG:
-        if (!(player->effects & 0x80000000) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
+        if (!(player->effects & BOO_EFFECT) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
             func_8029F408(player, (struct YoshiValleyEgg *) actor);
         }
         break;
     case ACTOR_BANANA:
-        if (player->effects & 0x800008C0) { break; }
-        if (player->statusEffects & 1) { break; }
+        if (player->effects & (BOO_EFFECT | 0x8C0)) { break; }
+        if (player->soundEffects & 1) { break; }
         temp_v1 = actor->rot[0];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        player->statusEffects |= 1;
+        player->soundEffects |= 1;
         owner = &gPlayers[temp_v1];
         if (owner->type & 0x4000) {
             if (actor->flags & 0xF) {
                 if (temp_lo != temp_v1) {
-                    func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+                    func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
                 }
             } else {
                 temp_f0 = actor->pos[0] - owner->pos[0];
                 temp_f2 = actor->pos[2] - owner->pos[2];
                 if ((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 360000.0f) && (temp_lo != temp_v1)) {
-                    func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+                    func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
                 }
             }
         }
@@ -3179,28 +3151,28 @@ void func_802A0450(Player *player, struct Actor *actor) {
         break;
     case ACTOR_GREEN_SHELL:
         if (player->effects & 0x80000400) { break; }
-        if (player->statusEffects & 4) { break; }
+        if (player->soundEffects & 4) { break; }
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        player->statusEffects |= 4;
-        func_800C98B8(player->pos, player->velocity, 0x19018010U);
+        player->soundEffects |= 4;
+        func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
         owner = &gPlayers[temp_v1];
         if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
-            func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+            func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
         }
         func_8029FDC8(actor);
         break;
     case ACTOR_BLUE_SPINY_SHELL:
-        if (player->statusEffects & 2) { break; }
+        if (player->soundEffects & 2) { break; }
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        if (!(player->effects & 0x80000000)) {
-            player->statusEffects |= 2;
-            func_800C98B8(player->pos, player->velocity, 0x19018010U);
+        if (!(player->effects & BOO_EFFECT)) {
+            player->soundEffects |= 2;
+            func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
         }
         owner = &gPlayers[temp_v1];
         if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
-            func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+            func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
         }
         if (temp_lo == actor->unk_04) {
             func_8029FDC8(actor);
@@ -3209,26 +3181,26 @@ void func_802A0450(Player *player, struct Actor *actor) {
     case ACTOR_RED_SHELL:
         temp_v1 = actor->rot[2];
         if (player->effects & 0x01000000) { break; }
-        if (player->statusEffects & 2) { break; }
+        if (player->soundEffects & 2) { break; }
         temp_v1 = actor->rot[2];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-        if (!(player->effects & 0x80000000)) {
-            player->statusEffects |= 2;
-            func_800C98B8(player->pos, player->velocity, 0x19018010U);
+        if (!(player->effects & BOO_EFFECT)) {
+            player->soundEffects |= 2;
+            func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
         }
         owner = &gPlayers[temp_v1];
         if ((owner->type & 0x4000) && (temp_lo != temp_v1)) {
-            func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+            func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
         }
         func_8029FDC8(actor);
         break;
     case ACTOR_PIRANHA_PLANT:
-        if (!(player->effects & 0x80000000)) {
+        if (!(player->effects & BOO_EFFECT)) {
             func_8029F2FC(player, (struct PiranhaPlant *) actor);
         }
         break;
-    case ACTOR_MARIO_RACEWAY_SIGN:
-        if (!(player->effects & 0x80000000)) {
+    case ACTOR_MARIO_SIGN:
+        if (!(player->effects & BOO_EFFECT)) {
             func_8029F1F8(player, actor);
         }
         break;
@@ -3244,18 +3216,18 @@ void func_802A0450(Player *player, struct Actor *actor) {
     case 31:
     case 32:
     case 33:
-        if (!(player->effects & 0x80000000)) {
+        if (!(player->effects & BOO_EFFECT)) {
             func_8029F69C(player, actor);
         }
         break;
     case ACTOR_FALLING_ROCK:
-        if (!(player->effects & 0x80000000) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
+        if (!(player->effects & BOO_EFFECT) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
             if (func_8029FB80(player, actor) == 1) {
                 func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
                 if ((gModeSelection == TIME_TRIALS) && !(player->type & PLAYER_CPU)) {
                     D_80162DF8 = 1;
                 }
-                if (player->effects & 0x200) {
+                if (player->effects & STAR_EFFECT) {
                     actor->velocity[1] = 10.0f;
                 } else {
                     func_8008DABC(player, player - gPlayerOne);
@@ -3265,25 +3237,25 @@ void func_802A0450(Player *player, struct Actor *actor) {
         break;
     case ACTOR_FAKE_ITEM_BOX:
         temp_v1 = actor->velocity[0];
-        if (player->effects & 0x80000000) { break; }
+        if (player->effects & BOO_EFFECT) { break; }
         temp_v1 = actor->velocity[0];
         if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
-            player->statusEffects |= REVERSE_EFFECT;
+            player->soundEffects |= REVERSE_SOUND_EFFECT;
             owner = &gPlayers[temp_v1];
             if (owner->type & 0x4000) {
                 if (actor->flags & 0xF) {
                     if (temp_lo != temp_v1) {
-                        func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+                        func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
                     }
                 } else {
                     temp_f0 = actor->pos[0] - owner->pos[0];
                     temp_f2 = actor->pos[2] - owner->pos[2];
                     if ((((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 360000.0f) && (temp_lo != temp_v1)) {
-                        func_800C90F4(temp_v1, (owner->characterId * 0x10) + 0x29008006);
+                        func_800C90F4(temp_v1, (owner->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x06));
                     }
                 }
                 if (actor->state == 0) {
-                    owner->statusEffects &= ~0x00040000;
+                    owner->soundEffects &= ~0x00040000;
                 }
             }
             actor->state = 2;
@@ -3451,8 +3423,8 @@ void update_actor_fake_item_box(struct FakeItemBox *fake_item_box) {
                 if ((temp_v1_3->buttonDepressed & Z_TRIG) != 0) {
                     temp_v1_3->buttonDepressed &= 0xDFFF;
                     func_802A1064(fake_item_box);
-                    temp_v0_4->statusEffects &= 0xFFFBFFFF;
-                    func_800C9060((u8)(temp_v0_4 - gPlayerOne), 0x19008012);
+                    temp_v0_4->soundEffects &= 0xFFFBFFFF;
+                    func_800C9060((u8)(temp_v0_4 - gPlayerOne), SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
                 }
             }
             break;
@@ -3498,21 +3470,21 @@ void update_actor_fake_item_box(struct FakeItemBox *fake_item_box) {
     }
 }
 
-void func_802A14BC(f32 arg0, f32 arg1, f32 arg2) {
-    Vec3f sp34;
-    Vec3f sp28;
-    Vec3s sp20;
-    s16 temp_a0;
+void func_802A14BC(f32 x, f32 y, f32 z) {
+    Vec3f pos;
+    Vec3f velocity;
+    Vec3s rot;
+    s16 id;
 
     if (gModeSelection == TIME_TRIALS) { return; }
 
-    vec3s_set(sp20, 0, 0, 0);
-    vec3f_set(sp28, 0, 0, 0);
-    sp34[0] = arg0;
-    sp34[1] = arg1;
-    sp34[2] = arg2;
-    temp_a0 = addActorToEmptySlot(sp34, sp20, sp28, 43);
-    D_802BA05C = &gActorList[temp_a0];
+    vec3s_set(rot, 0, 0, 0);
+    vec3f_set(velocity, 0, 0, 0);
+    pos[0] = x;
+    pos[1] = y;
+    pos[2] = z;
+    id = addActorToEmptySlot(pos, rot, velocity, ACTOR_HOT_AIR_BALLOON_ITEM_BOX);
+    gActorHotAirBalloonItemBox = &gActorList[id];
 }
 
 void update_actor_item_box_hot_air_balloon(struct ItemBox *itemBox) {
@@ -3602,14 +3574,14 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
     someRot[0] = 0;
     someRot[1] = fakeItemBox->rot[1];
     someRot[2] = 0;
-    func_802B5F74(someMatrix2, fakeItemBox->pos, someRot);
+    mtxf_pos_rotation_xyz(someMatrix2, fakeItemBox->pos, someRot);
     mtxf_scale(someMatrix2, fakeItemBox->sizeScaling);
     if (fakeItemBox->state != 2) {
 
         if (!render_set_position(someMatrix2, 0)) { return; }
 
         gSPDisplayList(gDisplayListHead++, common_model_fake_itembox);
-        func_802B5F74(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
+        mtxf_pos_rotation_xyz(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
         mtxf_scale(someMatrix2, fakeItemBox->sizeScaling);
 
         if (!render_set_position(someMatrix2, 0)) { return; }
@@ -3634,7 +3606,7 @@ void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
         gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
         gDPSetBlendMask(gDisplayListHead++, 0xFF);
         thing = fakeItemBox->someTimer;
-        func_802B5F74(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
+        mtxf_pos_rotation_xyz(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
         if (thing < 10.0f) {
             someMultiplier = 1.0f;
         } else {
@@ -3736,28 +3708,28 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
             someVec2[0] = item_box->pos[0];
             someVec2[1] = item_box->resetDistance + 2.0f;
             someVec2[2] = item_box->pos[2];
-            func_802B5F74(someMatrix1, someVec2, someRot);
+            mtxf_pos_rotation_xyz(someMatrix1, someVec2, someRot);
 
             if (!render_set_position(someMatrix1, 0)) { return; }
 
             gSPDisplayList(gDisplayListHead++, D_0D002EE8);
             someRot[1] = item_box->rot[1] * 2;
             someVec2[1] = item_box->pos[1];
-            func_802B5F74(someMatrix1, someVec2, someRot);
+            mtxf_pos_rotation_xyz(someMatrix1, someVec2, someRot);
 
             if (!render_set_position(someMatrix1, 0)) { return; }
 
             gSPDisplayList(gDisplayListHead++, itemBoxQuestionMarkModel);
         }
         if (item_box->state == 5) {
-            func_802B5F74(someMatrix1, item_box->pos, item_box->rot);
+            mtxf_pos_rotation_xyz(someMatrix1, item_box->pos, item_box->rot);
 
             if (!render_set_position(someMatrix1, 0)) { return; }
 
             gSPDisplayList(gDisplayListHead++, itemBoxQuestionMarkModel);
         }
         if (item_box->state != 3) {
-            func_802B5F74(someMatrix1, item_box->pos, item_box->rot);
+            mtxf_pos_rotation_xyz(someMatrix1, item_box->pos, item_box->rot);
 
             if (!render_set_position(someMatrix1, 0)) { return; }
 
@@ -3782,7 +3754,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
             gDPSetBlendMask(gDisplayListHead++, 0xFF);
             thing = item_box->someTimer;
-            func_802B5F74(someMatrix1, item_box->pos, item_box->rot);
+            mtxf_pos_rotation_xyz(someMatrix1, item_box->pos, item_box->rot);
             if (thing < 10.0f) {
                 someMultiplier = 1.0f;
             } else {
@@ -3858,7 +3830,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
     }
 }
 
-void func_802A269C(Camera *arg0, struct Actor *arg1) {
+void render_actor_wario_sign(Camera *arg0, struct Actor *arg1) {
     Mat4 sp38;
     f32 unk = is_within_render_distance(arg0->pos, arg1->pos, arg0->rot[1], 0, gCameraZoom[arg0 - camera1], 16000000.0f);
 
@@ -3866,7 +3838,7 @@ void func_802A269C(Camera *arg0, struct Actor *arg1) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-        func_802B5F74(sp38, arg1->pos, arg1->rot);
+        mtxf_pos_rotation_xyz(sp38, arg1->pos, arg1->rot);
         if (render_set_position(sp38, 0) != 0) {
 
             gSPDisplayList(gDisplayListHead++, d_course_wario_stadium_dl_sign);
@@ -3902,7 +3874,7 @@ void func_802A27A0(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3
         sp5C[0] = 0;
         sp5C[1] = egg->eggRot;
         sp5C[2] = 0;
-        func_802B5F74(sp60, egg->pos, sp5C);
+        mtxf_pos_rotation_xyz(sp60, egg->pos, sp5C);
         if (render_set_position(sp60, 0) == 0) { return; }
 
         gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -3919,7 +3891,7 @@ void func_802A27A0(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3
     }
 }
 
-void func_802A29BC(Camera *arg0, UNUSED Mat4 arg1, struct Actor *arg2) {
+void render_actor_mario_sign(Camera *arg0, UNUSED Mat4 arg1, struct Actor *arg2) {
     Mat4 sp40;
     f32 unk;
     s16 temp = arg2->flags;
@@ -3930,7 +3902,7 @@ void func_802A29BC(Camera *arg0, UNUSED Mat4 arg1, struct Actor *arg2) {
     if (!(unk < 0.0f)) {
         gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
         gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-        func_802B5F74(sp40, arg2->pos, arg2->rot);
+        mtxf_pos_rotation_xyz(sp40, arg2->pos, arg2->rot);
         if (render_set_position(sp40, 0) != 0) {
             gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_sign);
         }
@@ -3943,7 +3915,7 @@ void func_802A2AD0(Camera *arg0, struct RailroadCrossing *rr_crossing) {
     f32 unk = is_within_render_distance(arg0->pos, rr_crossing->pos, arg0->rot[1], 0.0f, gCameraZoom[arg0 - camera1], 4000000.0f);
 
     if (!(unk < 0.0f)) {
-        func_802B5F74(sp40, rr_crossing->pos, rr_crossing->rot);
+        mtxf_pos_rotation_xyz(sp40, rr_crossing->pos, rr_crossing->rot);
 
         if (render_set_position(sp40, 0) != 0) {
             gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -3980,7 +3952,7 @@ void func_802A2C78(Camera *arg0, UNUSED Mat4 arg1, struct Actor *arg2) {
         if (((temp_v0 & 0x400) == 0) && (temp_f0 < 250000.0f)) {
             func_8029794C(arg2->pos, arg2->rot, 2.0f);
         }
-        func_802B5F74(sp68, arg2->pos, spA8);
+        mtxf_pos_rotation_xyz(sp68, arg2->pos, spA8);
         if (render_set_position(sp68, 0) != 0) {
 
             gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
@@ -4014,7 +3986,7 @@ void func_802A2C78(Camera *arg0, UNUSED Mat4 arg1, struct Actor *arg2) {
 }
 
 void func_802A2F34(struct UnkStruct_800DC5EC *arg0) {
-    Camera *temp_s1 = arg0->camera;
+    Camera *camera = arg0->camera;
     struct Actor *actor;
     s32 i;
     D_8015F8DC = 0;
@@ -4028,13 +4000,13 @@ void func_802A2F34(struct UnkStruct_800DC5EC *arg0) {
 
         switch(actor->type) {
             case ACTOR_FAKE_ITEM_BOX:
-                func_802A171C(temp_s1, (struct FakeItemBox *) actor);
+                func_802A171C(camera, (struct FakeItemBox *) actor);
                 break;
             case ACTOR_ITEM_BOX:
-                func_802A1EA0(temp_s1, (struct ItemBox *) actor);
+                func_802A1EA0(camera, (struct ItemBox *) actor);
                 break;
             case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
-                func_802A1EA0(temp_s1, (struct ItemBox *) actor);
+                func_802A1EA0(camera, (struct ItemBox *) actor);
                 break;
         }
     }
@@ -4138,13 +4110,13 @@ void render_course_actors(struct UnkStruct_800DC5EC *arg0) {
                     render_actor_piranha_plant(camera, D_801502C0, (struct PiranhaPlant *) actor);
                     break;
                 case ACTOR_TRAIN_ENGINE:
-                    func_8029B8E8(camera, (struct TrainCar *) actor);
+                    render_actor_train_engine(camera, (struct TrainCar *) actor);
                     break;
                 case ACTOR_TRAIN_TENDER:
-                    func_8029BFB0(camera, (struct TrainCar *) actor);
+                    render_actor_train_tender(camera, (struct TrainCar *) actor);
                     break;
                 case ACTOR_TRAIN_PASSENGER_CAR:
-                    func_8029C3CC(camera, (struct TrainCar *) actor);
+                    render_actor_passenger_car(camera, (struct TrainCar *) actor);
                     break;
                 case ACTOR_COW:
                     render_actor_cow(camera, D_801502C0, actor);
@@ -4152,17 +4124,17 @@ void render_course_actors(struct UnkStruct_800DC5EC *arg0) {
                 case 0x14:
                     func_8029AC18(camera, D_801502C0, actor);
                     break;
-                case ACTOR_MARIO_RACEWAY_SIGN:
-                    func_802A29BC(camera, D_801502C0, actor);
+                case ACTOR_MARIO_SIGN:
+                    render_actor_mario_sign(camera, D_801502C0, actor);
                     break;
-                case ACTOR_WARIO_STADIUM_SIGN:
-                    func_802A269C(camera, actor);
+                case ACTOR_WARIO_SIGN:
+                    render_actor_wario_sign(camera, actor);
                     break;
                 case ACTOR_PALM_TREE:
                     func_802A2C78(camera, D_801502C0, actor);
                     break;
-                case ACTOR_PADDLE_WHEEL_BOAT:
-                    func_8029AE1C(camera, (struct PaddleWheelBoat *) actor, D_801502C0, pathCounter);
+                case ACTOR_PADDLE_BOAT:
+                    render_actor_paddle_boat(camera, (struct PaddleWheelBoat *) actor, D_801502C0, pathCounter);
                     break;
                 case ACTOR_BOX_TRUCK:
                     func_8029B06C(camera, actor);
@@ -4223,8 +4195,8 @@ void update_course_actors(void) {
             case ACTOR_BANANA:
                 update_actor_banana((struct BananaActor *) actor);
                 break;
-            case ACTOR_PADDLE_WHEEL_BOAT:
-                update_actor_paddle_wheel((struct PaddleWheelBoat *) actor);
+            case ACTOR_PADDLE_BOAT:
+                update_actor_paddle_boat((struct PaddleWheelBoat *) actor);
                 break;
             case ACTOR_TRAIN_ENGINE:
                 update_actor_train_engine((struct TrainCar *) actor);
@@ -4256,10 +4228,10 @@ void update_course_actors(void) {
             case ACTOR_TRIPLE_RED_SHELL:
                 update_actor_triple_shell((TripleShellParent *) actor, ACTOR_RED_SHELL);
                 break;
-            case ACTOR_MARIO_RACEWAY_SIGN:
+            case ACTOR_MARIO_SIGN:
                 update_actor_mario_raceway_sign(actor);
                 break;
-            case ACTOR_WARIO_STADIUM_SIGN:
+            case ACTOR_WARIO_SIGN:
                 update_actor_wario_stadium_sign(actor);
                 break;
             case ACTOR_RAILROAD_CROSSING:

@@ -3,7 +3,7 @@
 #include <PR/os.h>
 #include <PR/ucode.h>
 #include <macros.h>
-#include <functions.h>
+#include <decode.h>
 #include <types.h>
 #include <config.h>
 #include "profiler.h"
@@ -13,13 +13,13 @@
 #include <segments.h>
 #include <common_structs.h>
 #include <defines.h>
-#include "framebuffers.h"
+#include "buffers.h"
 #include "camera.h"
 #include "profiler.h"
 #include "race_logic.h"
 #include "skybox_and_splitscreen.h"
-#include "hud_renderer.h"
-#include "code_8008C1D0.h"
+#include "render_objects.h"
+#include "effects.h"
 #include "code_80281780.h"
 #include "audio/external.h"
 #include "code_800029B0.h"
@@ -58,7 +58,7 @@ struct SPTask* sNextAudioSPTask = NULL;
 struct SPTask* sNextDisplaySPTask = NULL;
 
 
-struct Controller gControllers[8];
+struct Controller gControllers[NUM_PLAYERS];
 struct Controller *gControllerOne = &gControllers[0];
 struct Controller *gControllerTwo = &gControllers[1];
 struct Controller *gControllerThree = &gControllers[2];
@@ -68,7 +68,7 @@ struct Controller *gControllerSix = &gControllers[5];
 struct Controller *gControllerSeven = &gControllers[6];
 struct Controller *gControllerEight = &gControllers[7];
 
-Player gPlayers[8];
+Player gPlayers[NUM_PLAYERS];
 Player *gPlayerOne = &gPlayers[0];
 Player *gPlayerTwo = &gPlayers[1];
 Player *gPlayerThree = &gPlayers[2];
@@ -116,7 +116,7 @@ u16 wasSoftReset;
 u16 D_8015011E;
 
 s32 D_80150120;
-s32 gMenuSelectionFromQuit;
+s32 gGotoMode;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
 f32 gCameraZoom[4]; // look like to be the fov of each character
@@ -125,7 +125,7 @@ f32 gCameraZoom[4]; // look like to be the fov of each character
 //f32 D_8015013C;
 UNUSED s32 D_80150140;
 UNUSED s32 D_80150144;
-f32 D_80150148;
+f32 gScreenAspect;
 f32 D_8015014C;
 f32 D_80150150;
 UNUSED f32 D_80150154;
@@ -410,7 +410,7 @@ void end_master_display_list(void) {
 }
 
 // clear_frame_buffer from SM64, with a few edits
-//! TODO: Why did void* work for matching
+//! @todo Why did void* work for matching
 void *clear_framebuffer(s32 color) {
     gDPPipeSync(gDisplayListHead++);
 
@@ -473,22 +473,22 @@ void display_and_vsync(void) {
 }
 
 void init_segment_ending_sequences(void) {
-    bzero((void *) SEG_ENDING_SEQUENCES, ENDING_SEQUENCE_SIZE);
+    bzero((void *) SEG_ENDING, SEG_ENDING_SIZE);
     osWritebackDCacheAll();
-    dma_copy((u8 *) SEG_ENDING_SEQUENCES, (u8 *) &_endingSequencesSegmentRomStart, ALIGN16((u32)&_endingSequencesSegmentRomEnd - (u32)&_endingSequencesSegmentRomStart));
-    osInvalICache((void *) SEG_ENDING_SEQUENCES, ENDING_SEQUENCE_SIZE);
-    osInvalDCache((void *) SEG_ENDING_SEQUENCES, ENDING_SEQUENCE_SIZE);
+    dma_copy((u8 *) SEG_ENDING, (u8 *) SEG_ENDING_ROM_START, SEG_ENDING_ROM_SIZE);
+    osInvalICache((void *) SEG_ENDING, SEG_ENDING_SIZE);
+    osInvalDCache((void *) SEG_ENDING, SEG_ENDING_SIZE);
 }
 
 void init_segment_racing(void) {
-    bzero((void *) SEG_RACING, RACING_SEQUENCE_SIZE);
+    bzero((void *) SEG_RACING, SEG_RACING_SIZE);
     osWritebackDCacheAll();
-    dma_copy((u8 *) SEG_RACING, (u8 *) &_racingSegmentRomStart, ALIGN16((u32)&_racingSegmentRomEnd - (u32)&_racingSegmentRomStart));
-    osInvalICache((void *) SEG_RACING, RACING_SEQUENCE_SIZE);
-    osInvalDCache((void *) SEG_RACING, RACING_SEQUENCE_SIZE);
+    dma_copy((u8 *) SEG_RACING, (u8 *) SEG_RACING_ROM_START, SEG_RACING_ROM_SIZE);
+    osInvalICache((void *) SEG_RACING, SEG_RACING_SIZE);
+    osInvalDCache((void *) SEG_RACING, SEG_RACING_SIZE);
 }
 
-void dma_copy(u8 *dest, u8 *romAddr, u32 size) {
+void dma_copy(u8 *dest, u8 *romAddr, size_t size) {
 
     osInvalDCache(dest, size);
     while(size > 0x100) {
@@ -516,27 +516,30 @@ void setup_game_memory(void) {
     UNUSED s32 unknown_padding;
 
     init_segment_racing();
-    gHeapEndPtr = (uintptr_t) SEG_RACING;
+    gHeapEndPtr = SEG_RACING;
     set_segment_base_addr(0, (void *) SEG_START);
     
     // Memory pool size of 0xAB630
-    initialize_memory_pool((uintptr_t) &_mainSegNoloadEnd, (uintptr_t) MEMORY_POOL_END);
+    initialize_memory_pool(MEMORY_POOL_START, MEMORY_POOL_END);
 
     func_80000BEC();
-    osInvalDCache((void *) SEG_802BA370, 0x5810);
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_data_802BA370SegmentRomStart, (void *) SEG_802BA370, 0x5810, &gDmaMesgQueue);
+
+    // Initialize trig tables segment
+    osInvalDCache((void *) TRIG_TABLES, TRIG_TABLES_SIZE);
+    osPiStartDma(&gDmaIoMesg, 0, 0, TRIG_TABLES_ROM_START, (void *) TRIG_TABLES, TRIG_TABLES_SIZE, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    set_segment_base_addr(2, (void *) load_data((uintptr_t) &_data_segment2SegmentRomStart, (uintptr_t) &_data_segment2SegmentRomEnd));
+
+    set_segment_base_addr(2, (void *) load_data(SEG_DATA_START, SEG_DATA_END));
     
-    commonCourseDataSize = (uintptr_t)&_common_texturesSegmentRomEnd - (uintptr_t)&_common_texturesSegmentRomStart;
+    commonCourseDataSize = COMMON_TEXTURES_SIZE;
     commonCourseDataSize = ALIGN16(commonCourseDataSize);
 
 #ifdef AVOID_UB
-    textureSegStart = (ptrdiff_t) SEG_RACING[0] - commonCourseDataSize;
+    textureSegStart = (ptrdiff_t) SEG_RACING - commonCourseDataSize;
 #else
     textureSegStart = SEG_RACING - commonCourseDataSize;
 #endif  
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_common_texturesSegmentRomStart, (void *) textureSegStart, commonCourseDataSize, &gDmaMesgQueue);
+    osPiStartDma(&gDmaIoMesg, 0, 0, COMMON_TEXTURES_ROM_START, (void *) textureSegStart, commonCourseDataSize, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
     textureSegSize = *(uintptr_t *)(textureSegStart + 4);
@@ -609,7 +612,7 @@ void race_logic_loop(void) {
             sNumVBlanks = 0;
             profiler_log_thread5_time(LEVEL_SCRIPT_EXECUTE);
             D_8015F788 = 0;
-            func_802A59A4();
+            render_player_one_1p_screen();
             if (!gEnableDebugMode) {
                 D_800DC514 = FALSE;
             } else {
@@ -681,11 +684,11 @@ void race_logic_loop(void) {
                 }
                 D_8015F788 = 0;
                 if (gPlayerWinningIndex == 0) {
-                    func_802A5FAC();
-                    func_802A5CB4();
+                    render_player_two_2p_screen_vertical();
+                    render_player_one_2p_screen_vertical();
                 } else {
-                    func_802A5CB4();
-                    func_802A5FAC();
+                    render_player_one_2p_screen_vertical();
+                    render_player_two_2p_screen_vertical();
                 }
             break;
 
@@ -727,11 +730,11 @@ void race_logic_loop(void) {
             }
             D_8015F788 = 0;
             if (gPlayerWinningIndex == 0) {
-                func_802A65B8();
-                func_802A62A4();
+                render_player_two_2p_screen_horizontal();
+                render_player_one_2p_screen_horizontal();
             } else {
-                func_802A62A4();
-                func_802A65B8();
+                render_player_one_2p_screen_horizontal();
+                render_player_two_2p_screen_horizontal();
             }
 
             break;
@@ -799,25 +802,25 @@ void race_logic_loop(void) {
         }
         D_8015F788 = 0;
         if (gPlayerWinningIndex == 0) {
-            func_802A6BB0();
-            func_802A6E94();
-            func_802A7178();
-            func_802A68CC();
+            render_player_two_3p_4p_screen();
+            render_player_three_3p_4p_screen();
+            render_player_four_3p_4p_screen();
+            render_player_one_3p_4p_screen();
         } else if (gPlayerWinningIndex == 1) {
-            func_802A68CC();
-            func_802A6E94();
-            func_802A7178();
-            func_802A6BB0();
+            render_player_one_3p_4p_screen();
+            render_player_three_3p_4p_screen();
+            render_player_four_3p_4p_screen();
+            render_player_two_3p_4p_screen();
         } else if (gPlayerWinningIndex == 2) {
-            func_802A68CC();
-            func_802A6BB0();
-            func_802A7178();
-            func_802A6E94();
+            render_player_one_3p_4p_screen();
+            render_player_two_3p_4p_screen();
+            render_player_four_3p_4p_screen();
+            render_player_three_3p_4p_screen();
         } else {
-            func_802A68CC();
-            func_802A6BB0();
-            func_802A6E94();
-            func_802A7178();
+            render_player_one_3p_4p_screen();
+            render_player_two_3p_4p_screen();
+            render_player_three_3p_4p_screen();
+            render_player_four_3p_4p_screen();
         }
         break;
     }
@@ -874,7 +877,7 @@ void game_state_handler(void) {
 		(gControllerOne->button & R_TRIG) &&
 		(gControllerOne->button & Z_TRIG) &&
 		(gControllerOne->button & B_BUTTON)) {
-			gGamestateNext = ENDING_SEQUENCE;
+			gGamestateNext = ENDING;
 	}
 #endif
 
@@ -898,7 +901,7 @@ void game_state_handler(void) {
         case RACING:
             race_logic_loop();
             break;
-        case ENDING_SEQUENCE:
+        case ENDING:
             podium_ceremony_loop();
             break;
         case CREDITS_SEQUENCE:
@@ -1145,12 +1148,14 @@ void update_gamestate(void) {
             gCurrentlyLoadedCourseId = COURSE_NULL;
             break;
         case RACING:
-            // @bug Reloading this segment makes random_u16() deterministic for player spawn order.
-            // In laymens terms, random_u16() outputs the same value every time.
+            /** 
+             * @bug Reloading this segment makes random_u16() deterministic for player spawn order.
+             * In laymens terms, random_u16() outputs the same value every time.
+             */
             init_segment_racing();
             setup_race();
             break;
-        case ENDING_SEQUENCE:
+        case ENDING:
             gCurrentlyLoadedCourseId = COURSE_NULL;
             init_segment_ending_sequences();
             load_ceremony_cutscene();

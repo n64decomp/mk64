@@ -93,13 +93,13 @@ struct SPTask *create_next_audio_frame_task(void) {
     gCurrAudioFrameDmaCount = 0;
     decrease_sample_dma_ttls();
     if (osRecvMesg(D_800EA3B0, &sp58, 0) != -1) {
-        gAudioResetPresetIdToLoad = (u8) sp58;
+        gAudioResetPresetIdToLoad = (u8) (u32) sp58;
         gAudioResetStatus = 5;
     }
     if (gAudioResetStatus != 0) {
         if (audio_shut_down_and_reset_step() == 0) {
             if (gAudioResetStatus == 0) {
-                osSendMesg(D_800EA3B4, (OSMesg) gAudioResetPresetIdToLoad, OS_MESG_NOBLOCK);
+                osSendMesg(D_800EA3B4, (OSMesg) (u32) gAudioResetPresetIdToLoad, OS_MESG_NOBLOCK);
             }
             return NULL;
         }
@@ -142,7 +142,7 @@ struct SPTask *create_next_audio_frame_task(void) {
     task->dram_stack_size = 0;
     task->output_buff = NULL;
     task->output_buff_size = NULL;
-    task->data_ptr = gAudioCmdBuffers[index];
+    task->data_ptr = (u64 *) gAudioCmdBuffers[index];
     task->data_size = writtenCmds * sizeof(u64);
     task->yield_data_ptr = NULL;
     task->yield_data_size = 0;
@@ -163,17 +163,17 @@ void eu_process_audio_cmd(struct EuAudioCmd *cmd) {
 
         case 0x82:
         case 0x88:
-            load_sequence(cmd->u.s.arg1, cmd->u.s.arg2, cmd->u.s.arg3);
-            func_800CBA64(cmd->u.s.arg1, cmd->u2.as_s32);
+            load_sequence(cmd->u.s.bankId, cmd->u.s.arg2, cmd->u.s.arg3);
+            func_800CBA64(cmd->u.s.bankId, cmd->u2.as_s32);
             break;
 
         case 0x83:
-            if (gSequencePlayers[cmd->u.s.arg1].enabled != FALSE) {
+            if (gSequencePlayers[cmd->u.s.bankId].enabled != FALSE) {
                 if (cmd->u2.as_s32 == 0) {
-                    sequence_player_disable(&gSequencePlayers[cmd->u.s.arg1]);
+                    sequence_player_disable(&gSequencePlayers[cmd->u.s.bankId]);
                 }
                 else {
-                    seq_player_fade_to_zero_volume(cmd->u.s.arg1, cmd->u2.as_s32);
+                    seq_player_fade_to_zero_volume(cmd->u.s.bankId, cmd->u2.as_s32);
                 }
             }
             break;
@@ -196,7 +196,7 @@ void eu_process_audio_cmd(struct EuAudioCmd *cmd) {
             }
             break;
     case 0xF3:
-        func_800BB388(cmd->u.s.arg1, cmd->u.s.arg2, cmd->u.s.arg3);
+        func_800BB388(cmd->u.s.bankId, cmd->u.s.arg2, cmd->u.s.arg3);
         break;
     }
 }
@@ -226,7 +226,7 @@ void func_800CBA64(s32 playerIndex, s32 fadeInTime) {
     }
 }
 
-void func_800CBAB4(void) {
+void port_eu_init_queues(void) {
     D_800EA3A0[0] = 0;
     D_800EA3A4[0] = 0;
     osCreateMesgQueue(D_800EA3A8, D_80194020, 1);
@@ -247,7 +247,7 @@ void func_800CBB88(u32 arg0, f32 arg1) {
 }
 
 void func_800CBBB8(u32 arg0, u32 arg1) {
-    func_800CBB48(arg0, &arg1);
+    func_800CBB48(arg0, (s32 *) &arg1);
 }
 
 void func_800CBBE8(u32 arg0, s8 arg1) {
@@ -255,26 +255,21 @@ void func_800CBBE8(u32 arg0, s8 arg1) {
     func_800CBB48(arg0, &sp34);
 }
 
-// TODO: clenanup, something's weird with the variables. D_800EA4A4 is probably EuAudioCmd bc of the + 0x100
-void func_800CBC24(void)
-{
-  s32 temp_t6;
-  s32 test;
-  OSMesg thing;
-  temp_t6 = D_800EA3A0[0] - D_800EA3A4[0];
-  test = (u8) temp_t6;
-  test = (test + 0x100) & 0xFF;
-  do
-  {
-  }
-  while (0);
-  if (D_800EA4A4 < test)
-  {
-    D_800EA4A4 = test;
-  }
-  thing = (OSMesg) ((D_800EA3A0[0] & 0xFF) | ((D_800EA3A4[0] & 0xFF) << 8));
-  osSendMesg(D_800EA3AC, thing, 0);
-  D_800EA3A4[0] = D_800EA3A0[0];
+//! @todo clenanup, something's weird with the variables. D_800EA4A4 is probably EuAudioCmd bc of the + 0x100
+void func_800CBC24(void){
+    s32 temp_t6;
+    s32 test;
+    OSMesg thing;
+    temp_t6 = D_800EA3A0[0] - D_800EA3A4[0];
+    test = (u8) temp_t6;
+    test = (test + 0x100) & 0xFF;
+    do {} while (0);
+    if (D_800EA4A4 < test) {
+        D_800EA4A4 = test;
+    }
+    thing = (OSMesg) ((D_800EA3A0[0] & 0xFF) | ((D_800EA3A4[0] & 0xFF) << 8));
+    osSendMesg(D_800EA3AC, thing, 0);
+    D_800EA3A4[0] = D_800EA3A0[0];
 }
 
 void func_800CBCB0(u32 arg0) {
@@ -293,8 +288,8 @@ void func_800CBCB0(u32 arg0) {
             goto why;
         }
 
-        if (cmd->u.s.arg1 < SEQUENCE_PLAYERS) {
-            seqPlayer = &gSequencePlayers[cmd->u.s.arg1];
+        if (cmd->u.s.bankId < SEQUENCE_PLAYERS) {
+            seqPlayer = &gSequencePlayers[cmd->u.s.bankId];
             if ((cmd->u.s.op & 0x80) != 0) {
                 eu_process_audio_cmd(cmd);
             }
@@ -358,6 +353,6 @@ void func_800CBCB0(u32 arg0) {
     }
 }
 
-void func_800CBF48() {
-    func_800CBAB4();
+void port_eu_init() {
+    port_eu_init_queues();
 }

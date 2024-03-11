@@ -11,7 +11,7 @@
 #include "main.h"
 #include "code_800029B0.h"
 #include "code_80057C60.h"
-#include "code_80071F00.h"
+#include "update_objects.h"
 #include "code_80091750.h"
 #include "code_80005FD0.h"
 #include "spawn_players.h"
@@ -19,7 +19,7 @@
 #include "race_logic.h"
 #include "skybox_and_splitscreen.h"
 #include "math_util_2.h"
-#include "code_8008C1D0.h"
+#include "effects.h"
 #include "math.h"
 #include "menus.h"
 
@@ -148,16 +148,16 @@ void func_8028E3A0(void) {
     if (D_80150120) {
 
         if (gCupCourseSelection == CUP_COURSE_FOUR) {
-            gMenuSelectionFromQuit = ENDING_SEQUENCE;
+            gGotoMode = ENDING;
         } else {
             D_800DC544++;
             gCupCourseSelection++;
-            gMenuSelectionFromQuit = RACING;
+            gGotoMode = RACING;
         }
     } else {
         D_800DC544++;
         gCupCourseSelection++;
-        gMenuSelectionFromQuit = RACING;
+        gGotoMode = RACING;
     }
 }
 
@@ -210,7 +210,7 @@ void func_8028E438(void) {
             if (temp_v0->screenStartX == 160) {
                 phi_v1_4++;
             }
-            D_80150148 = (f32) ((f32) temp_v0->screenWidth / (f32) temp_v0->screenHeight);
+            gScreenAspect = (f32) ((f32) temp_v0->screenWidth / (f32) temp_v0->screenHeight);
             if (phi_v1_4 == 4) {
                 D_8015F894 = 2;
                 gActiveScreenMode = SCREEN_MODE_1P;
@@ -292,7 +292,7 @@ void func_8028E678(void) {
                 phi_a0_10++;
             }
 
-            D_80150148 = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
+            gScreenAspect = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
             if (phi_a0_10 == 4) {
                 D_8015F894 = 3;
                 func_80092500();
@@ -326,7 +326,7 @@ void func_8028E678(void) {
                 phi_a0_10++;
             }
 
-            D_80150148 = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
+            gScreenAspect = (f32) ((f32) D_800DC5EC->screenWidth / (f32) D_800DC5EC->screenHeight);
             if (phi_a0_10 == 4) {
                 D_8015F894 = 3;
                 func_80092500();
@@ -349,7 +349,7 @@ void func_8028E678(void) {
                 D_800DC5F0->screenStartY = D_800DC5EC->screenStartY;
 
                 gActiveScreenMode = SCREEN_MODE_2P_SPLITSCREEN_VERTICAL;
-                D_80150148 = 1.33333337;
+                gScreenAspect = 1.33333337;
                 gPlayerCountSelection1 = 2;
                 func_8003DB5C();
                 func_8005994C();
@@ -407,7 +407,7 @@ void func_8028E678(void) {
 }
 
 void func_8028EC38(s32 arg0) {
-    gMenuSelectionFromQuit = arg0;
+    gGotoMode = arg0;
     D_800DC510 = 6;
     func_800CA330(25);
     func_800CA388(25);
@@ -502,7 +502,7 @@ void start_race(void) {
 
 f32 func_8028EE8C(s32 arg0) {
     f32 temp_v0 = gPlayers[arg0].pos[2];
-    f32 temp_v1 = gPlayers[arg0].rotZ;
+    f32 temp_v1 = gPlayers[arg0].copy_rotation_z;
     f32 temp_f14 = D_8015F8D0[2] - temp_v0;
     f32 temp_f16 = temp_v1 - D_8015F8D0[2];
     return gCourseTimer - ((0.01666666f * temp_f14) / (temp_f14 + temp_f16));
@@ -572,7 +572,7 @@ void func_8028EF28(void) {
                                 }
                                 D_800DC510 = 5;
                                 i = gPlayerPositionLUT[1];
-                                gPlayers[i].statusEffects |= 0x200000;
+                                gPlayers[i].soundEffects |= 0x200000;
                                 gPlayers[i].type |= PLAYER_CPU;
                                 func_800CA118((u8)i);
                                 break;
@@ -590,7 +590,7 @@ void func_8028EF28(void) {
                                     if (*(gNmiUnknown2 + i * 3 + 2) > 99) {
                                         *(gNmiUnknown2 + i * 3 + 2) = 99;
                                     }
-                                    gPlayers[i].statusEffects |= 0x200000;
+                                    gPlayers[i].soundEffects |= 0x200000;
                                     gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8)i);
                                 }
@@ -605,7 +605,7 @@ void func_8028EF28(void) {
                                 if (currentPosition == 2) {
                                     D_800DC510 = 5;
                                     i = gPlayerPositionLUT[3];
-                                    gPlayers[i].statusEffects |= 0x200000;
+                                    gPlayers[i].soundEffects |= 0x200000;
                                     gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8)i);
                                 }
@@ -670,7 +670,7 @@ void func_8028F474(void) {
             }
         case 1:
         case 2:
-            func_800097E0();
+            update_vehicles();
             break;
     }
 }
@@ -684,7 +684,7 @@ void func_8028F4E8(void) {
 
             func_800CA330(0x19);
             func_800CA388(0x19);
-            gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
+            gGotoMode = START_MENU_FROM_QUIT;
             D_800DC510 = 6;
             D_800DC5B4 = 1;
             D_800DC5B0 = 1;
@@ -794,7 +794,7 @@ void func_8028F970(void) {
         return;
     }
 
-    // todo: increasing players past four would require increase this loop iterator.
+    //! @todo increasing players past four would require increase this loop iterator.
     for (i = 0; i < 4; i++) {
 
         Player *player = &gPlayers[i];
@@ -811,7 +811,7 @@ void func_8028F970(void) {
                 if (D_800DC5A8 >= 3) {
                     D_800DC5A8 = 0;
                 }
-                play_sound2(0x4900801C);
+                play_sound2(SOUND_ACTION_PING);
                 func_800029B0();
             }
         }
@@ -864,7 +864,7 @@ void func_8028F970(void) {
 }
 
 void func_8028FBD4(void) {
-    gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
+    gGotoMode = START_MENU_FROM_QUIT;
     D_800DC510 = 6;
     func_800CA330(25);
     func_800CA388(25);
@@ -1079,31 +1079,31 @@ void func_8028FCBC(void) {
 UNUSED void func_80290314(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = START_MENU_FROM_QUIT;
+    gGotoMode = START_MENU_FROM_QUIT;
 }
 
 void func_80290338(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = MAIN_MENU_FROM_QUIT;
+    gGotoMode = MAIN_MENU_FROM_QUIT;
 }
 
 void func_80290360(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = PLAYER_SELECT_MENU_FROM_QUIT;
+    gGotoMode = PLAYER_SELECT_MENU_FROM_QUIT;
 }
 
 void func_80290388(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = COURSE_SELECT_MENU_FROM_QUIT;
+    gGotoMode = COURSE_SELECT_MENU_FROM_QUIT;
 }
 
 void func_802903B0(void) {
     gIsInQuitToMenuTransition = 1;
     gQuitToMenuTransitionCounter = 5;
-    gMenuSelectionFromQuit = RACING;
+    gGotoMode = RACING;
 }
 
 void func_802903D8(Player *playerOne, Player *playerTwo) {
@@ -1146,22 +1146,22 @@ void func_802903D8(Player *playerOne, Player *playerTwo) {
             func_800C9060((playerTwo - gPlayerOne), 0x19008001U);
             return;
         } else {
-            playerTwo->statusEffects |= REVERSE_EFFECT;
+            playerTwo->soundEffects |= REVERSE_SOUND_EFFECT;
             func_8008FC1C(playerOne);
             func_800C9060((playerTwo - gPlayerOne), 0x19008001U);
         }
     } else if (playerTwo->type & PLAYER_UNKNOWN_0x40) {
-        playerOne->statusEffects |= REVERSE_EFFECT;
+        playerOne->soundEffects |= REVERSE_SOUND_EFFECT;
         func_8008FC1C(playerTwo);
         func_800C9060(playerOne - gPlayerOne, 0x19008001U);
         return;
     }
     if (playerOne->effects & 0x200) {
         if (!(playerTwo->effects & 0x200)) {
-            playerTwo->statusEffects |= HIT_BY_ITEM_EFFECT;
+            playerTwo->soundEffects |= HIT_BY_ITEM_SOUND_EFFECT;
         }
     } else if (playerTwo->effects & 0x200) {
-        playerOne->statusEffects |= HIT_BY_ITEM_EFFECT;
+        playerOne->soundEffects |= HIT_BY_ITEM_SOUND_EFFECT;
     } else {
         playerOne->effects |= 0x8000;
         playerTwo->effects |= 0x8000;
