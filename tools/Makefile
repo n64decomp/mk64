@@ -29,11 +29,16 @@ n64cksum_CFLAGS := -DN64CKSUM_STANDALONE
 extract_data_for_mio_SOURCES := extract_data_for_mio.c
 
 # Build tools and recomp
-all: $(PROGRAMS)
+all: $(PROGRAMS) torch
+
+torch:
+	@echo "Building torch..."
+	make -C Torch type=release -j
 
 # Remove generated files
 clean:
 	$(RM) $(PROGRAMS)
+	$(RM) -rf Torch/build
 
 
 

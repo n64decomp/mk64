@@ -1,6 +1,6 @@
 579c48e211ae952530ffc8738709f078d5dd215e:
   name: Mario Kart 64 [US]
-  path: torch/us
+  path: yamls/us
   config:
     gbi: F3DEX_MK64
     sort: OFFSET
@@ -8,7 +8,7 @@
       binary: mkcube.otr
       headers: include
       code: code
-  tables: [torch/courses]
+  tables: [yamls/courses]
   segments:
     - 0x000000
     - 0x000000

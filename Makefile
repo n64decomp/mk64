@@ -353,6 +353,7 @@ BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
 ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
 LINKONLY_GENERATOR    := $(PYTHON) $(TOOLS_DIR)/linkonly_generator.py
+TORCH                 := tools/torch/cmake-build-release/torch
 EMULATOR               = mupen64plus
 EMU_FLAGS              = --noosd
 LOADER                 = loader64
@@ -392,6 +393,12 @@ ifeq ($(COMPARE),1)
 	@$(PRINT) "$(GREEN)Checking if ROM matches.. $(NO_COL)\n"
 	@$(SHA1SUM) -c $(TARGET).sha1 > $(NULL_OUT) && $(PRINT) "$(TARGET): $(GREEN)OK$(NO_COL)\n" || ($(PRINT) "$(YELLOW)Building the ROM file has succeeded, but does not match the original ROM.\nThis is expected, and not an error, if you are making modifications.\nTo silence this message, use 'make COMPARE=0.' $(NO_COL)\n" && $(FALSE))
 endif
+
+assets:
+	@echo "Extracting torch assets..."
+	@$(TORCH) code $(BASEROM) -v
+	@$(TORCH) header $(BASEROM)
+	@$(TORCH) modding export $(BASEROM)
 
 doc:
 	$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
