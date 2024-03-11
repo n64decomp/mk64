@@ -33,12 +33,12 @@ all: $(PROGRAMS) torch
 
 torch:
 	@echo "Building torch..."
-	make -C Torch type=release -j
+	make -C torch type=release -j
 
 # Remove generated files
 clean:
 	$(RM) $(PROGRAMS)
-	$(RM) -rf Torch/build
+	$(RM) -rf torch/build
 
 
 
