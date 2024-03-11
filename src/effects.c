@@ -1987,10 +1987,10 @@ void func_80090970(Player *player, s8 playerId, s8 arg2) {
     }
 }
 
-s32 func_800910E4(Player *player) {
+bool func_800910E4(Player *player) {
     s32 phi_v0 = 0;
     if ((((((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) || ((player->type & PLAYER_UNKNOWN_0x40) != 0)) || ((player->type & PLAYER_CINEMATIC_MODE) != 0)) || ((player->type & PLAYER_EXISTS) == 0)) {
-        return 1;
+        return TRUE;
     }
 
     switch (player->currentItemCopy) {
@@ -1999,7 +1999,7 @@ s32 func_800910E4(Player *player) {
     case ITEM_TRIPLE_MUSHROOM:
     case ITEM_SUPER_MUSHROOM:
         if ((player->effects & 8) != 0) {
-            return 1;
+            return TRUE;
         }
         phi_v0 = 0x5F934EC4;
         goto func_800910E4_label;
@@ -2010,9 +2010,9 @@ s32 func_800910E4(Player *player) {
 func_800910E4_label:
     default:
         if ((player->effects & phi_v0) != 0) {
-            return 1;
+            return TRUE;
         }
-        return 0;
+        return FALSE;
     }
 }
 
