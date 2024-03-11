@@ -1,11 +1,14 @@
 579c48e211ae952530ffc8738709f078d5dd215e:
   name: Mario Kart 64 [US]
-  path: assets/mk64/us
+  path: torch/us
   config:
     gbi: F3DEX_MK64
     sort: OFFSET
     output:
       binary: mkcube.otr
+      headers: include
+      code: code
+  tables: [torch/courses]
   segments:
     - 0x000000
     - 0x000000
@@ -23,5 +26,3 @@
     - 0x132b50
     - 0x000000
     - 0x145470
-
-
