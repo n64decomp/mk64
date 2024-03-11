@@ -212,7 +212,8 @@ DATA_DIR       := data
 INCLUDE_DIRS   := include
 
 # Directories containing source files
-SRC_DIRS       := src src/data src/racing src/ending src/audio src/debug src/os src/os/math courses
+SRC_ASSETS_DIR := assets/code/ceremony_data assets/code/startup_logo
+SRC_DIRS       := src src/data src/racing src/ending src/audio src/debug src/os src/os/math courses assets/code/ceremony_data assets/code/startup_logo
 ASM_DIRS       := asm asm/os asm/unused $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
 
 
@@ -233,7 +234,7 @@ include $(MAKEFILE_SPLIT)
 # We filter them out from the regular C_FILES since we don't need nor want the
 # UTF-8 versions getting compiled
 EUC_JP_FILES := src/ending/credits.c src/code_80005FD0.c src/code_80091750.c
-C_FILES := $(filter-out $(EUC_JP_FILES),$(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c)))
+C_FILES := $(filter-out %.inc.c,$(filter-out $(EUC_JP_FILES),$(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c))))
 S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s))
 COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(wildcard $(dir)/*.inc.c))
 
@@ -626,19 +627,19 @@ endif
 # Compile Trophy and Podium Models                                             #
 #==============================================================================#
 
-LDFLAGS += -R $(BUILD_DIR)/src/ending/ceremony_data.inc.elf
+LDFLAGS += -R $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.elf
 
-%/ceremony_data.inc.elf: %/ceremony_data.inc.o
+%/ceremony_data.elf: %/ceremony_data.o
 	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $@.map -o $@ $< --no-check-sections
 
-%/ceremony_data.inc.bin: %/ceremony_data.inc.elf
+%/ceremony_data.bin: %/ceremony_data.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-%/ceremony_data.inc.mio0: %/ceremony_data.inc.bin
+%/ceremony_data.mio0: %/ceremony_data.bin
 	@$(PRINT) "$(GREEN)Compressing Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(MIO0TOOL) -c $< $@
 
-%/ceremony_data.inc.mio0.s: %/ceremony_data.inc.mio0
+%/ceremony_data.mio0.s: %/ceremony_data.mio0
 	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel ceremonyData_end\n" > $@
 
 
@@ -692,7 +693,7 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/data/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.mio0.o $(BUILD_DIR)/src/data/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 

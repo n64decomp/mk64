@@ -123,6 +123,10 @@ gold_trophy_dl15:
   symbol: gold_trophy_dl15
   type: gfx
   offset: 0x6B68
+light1:
+  symbol: light1
+  type: lights
+  offset: 0x6BB8
 texture_podium1:
   symbol: gTexturePodium1
   type: texture
@@ -147,6 +151,10 @@ podium_dl4:
   symbol: podium_dl4
   type: gfx
   offset: 0x7600
+light2:
+  symbol: light2
+  type: lights
+  offset: 0x7748
 texture_podium2:
   symbol: gTexturePodium2
   type: texture
@@ -171,6 +179,10 @@ podium2_dl4:
   symbol: podium2_dl4
   type: gfx
   offset: 0x8050
+light3:
+  symbol: light3
+  type: lights
+  offset: 0x8058
 texture_podium3:
   symbol: gTexturePodium3
   type: texture
