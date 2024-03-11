@@ -721,3 +721,5 @@ MAKEFLAGS += --no-builtin-rules
 
 
 print-% : ; $(info $* is a $(flavor $*) variable set to [$($*)]) @true
+
+.PHONY: all clean default torch
