@@ -710,7 +710,7 @@ $(BUILD_DIR)/$(TARGET).objdump: $(ELF)
 	$(OBJDUMP) -D $< > $@
 
 
-.PHONY: all clean distclean distclean_assets default diff test load torch
+.PHONY: all clean distclean distclean_assets default diff test load assets
 # with no prerequisites, .SECONDARY causes no intermediate target to be removed
 .SECONDARY:
 
