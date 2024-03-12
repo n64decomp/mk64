@@ -3,7 +3,10 @@
     - [0x0B, 0x821D10]
   header: 
     code:
-      - '#include "src/ending/ceremony_data.inc.h"'
+    - '#include <ceremony_data.h>'
+    header:
+    - '#include <types.h>'
+    - '#include <waypoints.h>'
 
 silver_trophy_dl:
   symbol: silver_trophy_dl
