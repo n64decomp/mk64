@@ -32,7 +32,7 @@ extract_data_for_mio_SOURCES := extract_data_for_mio.c
 all: $(PROGRAMS) torch
 
 torch:
-	echo "Building torch..."
+	$(PRINT) "Building torch..."
 	make -C torch type=release -j
 
 # Remove generated files
