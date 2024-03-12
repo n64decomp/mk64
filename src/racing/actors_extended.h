@@ -28,7 +28,7 @@ s32  use_fake_itembox_item(Player*);
 s32  use_banana_item(Player*);
 void use_thunder_item(Player*);
 void player_use_item(Player*);
-void func_802B30EC(void);
+void check_player_use_item(void);
 void update_actor_green_shell(struct ShellActor*);
 void func_802B3B44(struct ShellActor*);
 void func_802B3E7C(struct ShellActor*, Player*);

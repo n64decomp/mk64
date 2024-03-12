@@ -2602,5 +2602,5 @@ void update_course_actors(void) {
         }
     }
     evaluate_destroyables_destroyables_actor_collision();
-    func_802B30EC();
+    check_player_use_item();
 }

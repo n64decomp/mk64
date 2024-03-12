@@ -924,7 +924,7 @@ void player_use_item(Player *player) {
 }
 
 // Check if a player is using an item?
-void func_802B30EC(void) {
+void check_player_use_item(void) {
     Player *player;
     struct Controller *target;
     struct Controller *controller;

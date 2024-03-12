@@ -5116,7 +5116,7 @@ Variable Name | Memory Address
 [use_banana_item](@ref use_banana_item) | 0x802B2D70
 [use_thunder_item](@ref use_thunder_item) | 0x802B2EBC
 [player_use_item](@ref player_use_item) | 0x802B2FA0
-[func_802B30EC](@ref func_802B30EC) | 0x802B30EC
+[check_player_use_item](@ref check_player_use_item) | 0x802B30EC
 [update_actor_green_shell](@ref update_actor_green_shell) | 0x802B32C4
 [func_802B3B44](@ref func_802B3B44) | 0x802B3B44
 [func_802B3E7C](@ref func_802B3E7C) | 0x802B3E7C
