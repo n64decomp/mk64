@@ -1987,7 +1987,7 @@ void func_80090970(Player *player, s8 playerId, s8 arg2) {
     }
 }
 
-bool func_800910E4(Player *player) {
+bool can_player_not_use_item(Player *player) {
     s32 phi_v0 = 0;
     if ((((((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) || ((player->type & PLAYER_UNKNOWN_0x40) != 0)) || ((player->type & PLAYER_CINEMATIC_MODE) != 0)) || ((player->type & PLAYER_EXISTS) == 0)) {
         return TRUE;
@@ -2001,13 +2001,69 @@ bool func_800910E4(Player *player) {
         if ((player->effects & 8) != 0) {
             return TRUE;
         }
-        phi_v0 = 0x5F934EC4;
-        goto func_800910E4_label;
+        phi_v0 = (
+            LIGHTNING_EFFECT|
+            0x10000000|
+            0x8000000|
+            HIT_EFFECT|
+            HIT_BY_ITEM_EFFECT|
+            0x1000000|
+            0x800000|
+            BOOST_RAMP_ASPHALT_EFFECT|
+            0x20000|
+            0x10000|
+            0x4000|
+            0x800|
+            0x400|
+            STAR_EFFECT|
+            0x80|
+            0x40|
+            BOOST_RAMP_WOOD_EFFECT
+        );
+        goto can_player_not_use_item_label;
     case ITEM_STAR:
-        phi_v0 = 0xDF934EC4;
+        phi_v0 = (
+            BOO_EFFECT|
+            LIGHTNING_EFFECT|
+            0x10000000|
+            0x8000000|
+            HIT_EFFECT|
+            HIT_BY_ITEM_EFFECT|
+            0x1000000|
+            0x800000|
+            BOOST_RAMP_ASPHALT_EFFECT|
+            0x20000|
+            0x10000|
+            0x4000|
+            0x800|
+            0x400|
+            STAR_EFFECT|
+            0x80|
+            0x40|
+            BOOST_RAMP_WOOD_EFFECT
+        );
     case ITEM_BOO:
-        phi_v0 = phi_v0 | 0xDF934EC4;
-func_800910E4_label:
+        phi_v0 = phi_v0 | (
+            BOO_EFFECT|
+            LIGHTNING_EFFECT|
+            0x10000000|
+            0x8000000|
+            HIT_EFFECT|
+            HIT_BY_ITEM_EFFECT|
+            0x1000000|
+            0x800000|
+            BOOST_RAMP_ASPHALT_EFFECT|
+            0x20000|
+            0x10000|
+            0x4000|
+            0x800|
+            0x400|
+            STAR_EFFECT|
+            0x80|
+            0x40|
+            BOOST_RAMP_WOOD_EFFECT
+        );
+can_player_not_use_item_label:
     default:
         if ((player->effects & phi_v0) != 0) {
             return TRUE;

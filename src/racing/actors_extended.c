@@ -932,7 +932,7 @@ void func_802B30EC(void) {
 
     for (player = &gPlayers[0], loopController = &gControllers[0], target = &gControllers[4]; loopController != target; player++, loopController++) {
         controller = loopController;
-        if (func_800910E4(player) == 0) {
+        if (can_player_not_use_item(player) == FALSE) {
             if((player->type & PLAYER_INVISIBLE_OR_BOMB) != 0){
                 if ((player - gPlayerTwo) == 0) {
                     controller = gControllerSix;

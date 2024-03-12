@@ -212,7 +212,7 @@ void setup_race(void) {
     func_802A74BC();
     func_802A4D18();
     func_80091FA4();
-    func_8029E158();
+    load_common_texture();
 
     if (gModeSelection != BATTLE) {
         D_8015F8D0[1] = (f32) (D_80164490->posY - 15);;

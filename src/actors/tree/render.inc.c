@@ -1,5 +1,8 @@
 #include <actors.h>
 #include <PR/gbi.h>
+#include <main.h>
+#include <common_textures.h>
+#include "courses/all_course_data.h"
 
 void render_actor_tree_mario_raceway(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;

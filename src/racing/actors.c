@@ -461,7 +461,7 @@ void update_actor_static_plant(struct Actor *arg0) {
 
 #include "actors/piranha_plant/render.inc.c"
 
-void render_actor_cows(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
+void render_cows(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     u16 temp_s1;
     f32 temp_f0;
     struct ActorSpawnData *var_t1;
@@ -583,7 +583,7 @@ void func_80298D10(void) {
     }
 }
 
-void render_actor_palm_trees(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
+void render_palm_trees(Camera *camera, Mat4 arg1, UNUSED struct Actor *actor) {
     s32 segment = SEGMENT_NUMBER2(d_course_dks_jungle_parkway_tree_spawn);
     s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
     struct UnkActorSpawnData *var_s1 = (struct UnkActorSpawnData *)VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
@@ -1072,7 +1072,7 @@ void place_course_actors(void) {
         place_all_item_boxes(d_course_frappe_snowland_item_box_spawns);
         break;
     case COURSE_KOOPA_BEACH:
-        func_802A14BC(328.0f * gCourseDirection, 70.0f, 2541.0f);
+        init_actor_hot_air_balloon_item_box(328.0f * gCourseDirection, 70.0f, 2541.0f);
         place_all_item_boxes(d_course_koopa_troopa_beach_item_box_spawns);
         place_palm_trees(d_course_koopa_troopa_beach_tree_spawn);
         break;
@@ -1154,7 +1154,7 @@ void place_course_actors(void) {
     gNumPermanentActors = gNumActors;
 }
 
-void func_8029E158(void) {
+void load_common_texture(void) {
     set_segment_base_addr(3, (void *) gNextFreeMemoryAddress);
     D_802BA050 = dma_textures(gTextureGreenShell0, 0x00000257U, 0x00000400U);
     dma_textures(gTextureGreenShell1, 0x00000242U, 0x00000400U);
@@ -1290,10 +1290,11 @@ void destroy_actor(struct Actor *actor) {
     gNumActors--;
 }
 
-s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
+s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
     s32 actorIndex;
     struct ShellActor *compare;
 
+    // try remove a red shell or green shell or banana or fake item box if the actor are expired
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
         compare = (struct ShellActor *) &gActorList[actorIndex];
         if (!(compare->flags & ACTOR_IS_NOT_EXPIRED)) {
@@ -1350,6 +1351,7 @@ s16 func_8029E890(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType) {
         }
     }
 
+    // will remove the oldest destructable actor in the list
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
         compare = (struct ShellActor *) &gActorList[actorIndex];
         switch(compare->type) {
@@ -1412,7 +1414,7 @@ s16 add_actor_to_empty_slot(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType)
     s32 index;
 
     if (gNumActors >= ACTOR_LIST_SIZE) {
-        return func_8029E890(pos, rot, velocity, actorType);
+        return try_remove_destructable_item(pos, rot, velocity, actorType);
     }
     for(index = 0; index < ACTOR_LIST_SIZE; index++){
         if (gActorList[index].flags == 0) {
@@ -1630,7 +1632,7 @@ bool collision_yoshi_egg(Player *player, struct YoshiValleyEgg *egg) {
     return TRUE;
 }
 
-bool func_8029F69C(Player *player, struct Actor *actor) {
+bool collide_tree(Player *player, struct Actor *actor) {
     f32 x_dist;
     f32 y_dist;
     f32 z_dist;
@@ -1641,7 +1643,7 @@ bool func_8029F69C(Player *player, struct Actor *actor) {
     UNUSED f32 pad[2];
     f32 temp_f12;
     f32 temp_f0_4;
-    Vec3f sp20;
+    Vec3f actorPos;
     f32 temp_f2;
 
     var_f16 = actor->unk_08;
@@ -1691,26 +1693,26 @@ bool func_8029F69C(Player *player, struct Actor *actor) {
     if (!(player->effects & STAR_EFFECT)) {
         player->effects |= 0x8000;
     }
-    sp20[0] = actor->pos[0];
-    sp20[1] = actor->pos[1];
-    sp20[2] = actor->pos[2];
+    actorPos[0] = actor->pos[0];
+    actorPos[1] = actor->pos[1];
+    actorPos[2] = actor->pos[2];
     if (((gCurrentCourseId == COURSE_MARIO_RACEWAY) || (gCurrentCourseId == COURSE_YOSHI_VALLEY) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY) || (gCurrentCourseId == COURSE_LUIGI_RACEWAY)) && (player->unk_094 > 1.0f)) {
-        spawn_leaf(sp20, 0);
+        spawn_leaf(actorPos, 0);
     }
     if (xz_dist < 0.1f) {
         sqrtf((sp48 * sp48) + (sp44 * sp44));
         if(xz_dist){}
         player->velocity[0] = 0;
         player->velocity[2] = 0;
-        player->pos[0] = sp20[0] - (x_dist * var_f16 * 1.2f);
-        player->pos[2] = sp20[2] - (z_dist * var_f16 * 1.2f);
+        player->pos[0] = actorPos[0] - (x_dist * var_f16 * 1.2f);
+        player->pos[2] = actorPos[2] - (z_dist * var_f16 * 1.2f);
     } else {
         temp_f0_4 = sqrtf((sp48 * sp48) + (sp44 * sp44));
         x_dist /= xz_dist;
         z_dist /= xz_dist;
         if (temp_f0_4 < 0.25f) {
-            player->pos[0] = sp20[0] - (x_dist * var_f16 * 1.2f);
-            player->pos[2] = sp20[2] - (z_dist * var_f16 * 1.2f);
+            player->pos[0] = actorPos[0] - (x_dist * var_f16 * 1.2f);
+            player->pos[2] = actorPos[2] - (z_dist * var_f16 * 1.2f);
             player->velocity[0] = 0;
             player->velocity[2] = 0;
             return TRUE;
@@ -1726,40 +1728,40 @@ bool func_8029F69C(Player *player, struct Actor *actor) {
     return TRUE;
 }
 
-bool func_8029FB80(Player *arg0, struct Actor *arg1) {
+bool is_collision_between_item_player(Player *arg0, struct Actor *arg1) {
     f32 temp_f0;
-    f32 temp_f12_2;
-    f32 temp_f14;
-    f32 temp_f16;
-    f32 temp_f2;
+    f32 dist;
+    f32 yDist;
+    f32 zDist;
+    f32 xDist;
 
     temp_f0 = arg0->boundingBoxSize + arg1->boundingBoxSize;
-    temp_f2 = arg1->pos[0] - arg0->pos[0];
-    if (temp_f0 < temp_f2) {
+    xDist = arg1->pos[0] - arg0->pos[0];
+    if (temp_f0 < xDist) {
         return FALSE;
     }
-    if (temp_f2 < -temp_f0) {
+    if (xDist < -temp_f0) {
         return FALSE;
     }
-    temp_f14 = arg1->pos[1] - arg0->pos[1];
-    if (temp_f0 < temp_f14) {
+    yDist = arg1->pos[1] - arg0->pos[1];
+    if (temp_f0 < yDist) {
         return FALSE;
     }
-    if (temp_f14 < -temp_f0) {
+    if (yDist < -temp_f0) {
         return FALSE;
     }
-    temp_f16 = arg1->pos[2] - arg0->pos[2];
-    if (temp_f0 < temp_f16) {
+    zDist = arg1->pos[2] - arg0->pos[2];
+    if (temp_f0 < zDist) {
         return FALSE;
     }
-    if (temp_f16 < -temp_f0) {
+    if (zDist < -temp_f0) {
         return FALSE;
     }
-    temp_f12_2 = (temp_f2 * temp_f2) + (temp_f14 * temp_f14) + (temp_f16 * temp_f16);
-    if (temp_f12_2 < 0.1f) {
+    dist = (xDist * xDist) + (yDist * yDist) + (zDist * zDist);
+    if (dist < 0.1f) {
         return FALSE;
     }
-    if ((temp_f0 * temp_f0) < temp_f12_2) {
+    if ((temp_f0 * temp_f0) < dist) {
         return FALSE;
     }
     return TRUE;
@@ -2038,7 +2040,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             if (player->effects & (BOO_EFFECT | 0x8C0)) { break; }
             if (player->soundEffects & 1) { break; }
             temp_v1 = actor->rot[0];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (is_collision_between_item_player(player, actor) != TRUE)) { break; }
             player->soundEffects |= 1;
             owner = &gPlayers[temp_v1];
             if (owner->type & 0x4000) {
@@ -2060,7 +2062,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             if (player->effects & 0x80000400) { break; }
             if (player->soundEffects & 4) { break; }
             temp_v1 = actor->rot[2];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (is_collision_between_item_player(player, actor) != TRUE)) { break; }
             player->soundEffects |= 4;
             func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             owner = &gPlayers[temp_v1];
@@ -2072,7 +2074,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
         case ACTOR_BLUE_SPINY_SHELL:
             if (player->soundEffects & 2) { break; }
             temp_v1 = actor->rot[2];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (is_collision_between_item_player(player, actor) != TRUE)) { break; }
             if (!(player->effects & BOO_EFFECT)) {
                 player->soundEffects |= 2;
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
@@ -2090,7 +2092,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             if (player->effects & 0x01000000) { break; }
             if (player->soundEffects & 2) { break; }
             temp_v1 = actor->rot[2];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (is_collision_between_item_player(player, actor) != TRUE)) { break; }
             if (!(player->effects & BOO_EFFECT)) {
                 player->soundEffects |= 2;
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
@@ -2111,25 +2113,25 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
                 collide_mario_sign(player, actor);
             }
             break;
-        case 2:
-        case 3:
-        case 4:
-        case 19:
-        case 25:
+        case ACTOR_TREE_MARIO_RACEWAY:
+        case ACTOR_TREE_YOSHI_VALLEY:
+        case ACTOR_TREE_ROYAL_RACEWAY:
+        case ACTOR_TREE_MOO_MOO_FARM:
+        case ACTOR_PALM_TREE:
         case 26:
-        case 28:
-        case 29:
-        case 30:
-        case 31:
-        case 32:
-        case 33:
+        case ACTOR_TREE_BOWSERS_CASTLE:
+        case ACTOR_TREE_FRAPPE_SNOWLAND:
+        case ACTOR_CACTUS1_KALAMARI_DESERT:
+        case ACTOR_CACTUS2_KALAMARI_DESERT:
+        case ACTOR_CACTUS3_KALAMARI_DESERT:
+        case ACTOR_BUSH_BOWSERS_CASTLE:
             if (!(player->effects & BOO_EFFECT)) {
-                func_8029F69C(player, actor);
+                collide_tree(player, actor);
             }
             break;
         case ACTOR_FALLING_ROCK:
             if (!(player->effects & BOO_EFFECT) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
-                if (func_8029FB80(player, actor) == 1) {
+                if (is_collision_between_item_player(player, actor) == TRUE) {
                     func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
                     if ((gModeSelection == TIME_TRIALS) && !(player->type & PLAYER_CPU)) {
                         D_80162DF8 = 1;
@@ -2146,7 +2148,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             temp_v1 = actor->velocity[0];
             if (player->effects & BOO_EFFECT) { break; }
             temp_v1 = actor->velocity[0];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (func_8029FB80(player, actor) != 1)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (is_collision_between_item_player(player, actor) != TRUE)) { break; }
                 player->soundEffects |= REVERSE_SOUND_EFFECT;
                 owner = &gPlayers[temp_v1];
                 if (owner->type & 0x4000) {
@@ -2170,7 +2172,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
                 actor->unk_04 = 0;
             break;
         case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
-            if (func_8029FB80(player, actor) == 1) {
+            if (is_collision_between_item_player(player, actor) == TRUE) {
                 actor->state = 3;
                 actor->flags = -0x8000;
                 actor->unk_04 = 0;
@@ -2183,7 +2185,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             }
             break;
         case ACTOR_ITEM_BOX:
-            if (func_8029FB80(player, actor) == (s32) 1) {
+            if (is_collision_between_item_player(player, actor) == TRUE) {
                 actor->state = 3;
                 actor->flags = -0x8000;
                 actor->unk_04 = 0;
@@ -2292,92 +2294,9 @@ void func_802A1064(struct FakeItemBox *fake_item_box) {
     }
 }
 
-void update_actor_fake_item_box(struct FakeItemBox *fake_item_box) {
-    u32 temp_v1 = fake_item_box->playerId;
-    Player *temp_v0_4 = &gPlayers[temp_v1];
-    struct Controller *temp_v1_3;
+#include "actors/fake_item_box/update.inc.c"
 
-    UNUSED s32 pad[7];
-    f32 temp_f2_2;
-    f32 temp_f14;
-    f32 temp_f16;
-    f32 temp_f18;
-    UNUSED s32 pad2[3];
-
-    switch(fake_item_box->state) {
-        case 0:
-            fake_item_box->boundingBoxSize = fake_item_box->sizeScaling * 5.5f;
-            fake_item_box->rot[0] -= 0xB6;
-            fake_item_box->rot[1] += 0x16C;
-            fake_item_box->rot[2] -= 0xB6;
-
-            temp_f14 = temp_v0_4->pos[0] - fake_item_box->pos[0];
-            temp_f16 = temp_v0_4->pos[1] - fake_item_box->pos[1];
-            temp_f18 = temp_v0_4->pos[2] - fake_item_box->pos[2];
-
-            temp_f2_2 = sqrtf((temp_f14 * temp_f14) + (temp_f16 * temp_f16) + (temp_f18 * temp_f18)) / 10.0f;
-            temp_f14 /= temp_f2_2;
-            temp_f16 /= temp_f2_2;
-            temp_f18 /= temp_f2_2;
-            fake_item_box->pos[0] = temp_v0_4->pos[0] - temp_f14;
-            fake_item_box->pos[1] = (temp_v0_4->pos[1] - temp_f16) - 1.0f;
-            fake_item_box->pos[2] = temp_v0_4->pos[2] - temp_f18;
-            func_802ADDC8(&fake_item_box->unk30, fake_item_box->boundingBoxSize, fake_item_box->pos[0], fake_item_box->pos[1], fake_item_box->pos[2]);
-            func_802B4E30((struct Actor *)fake_item_box);
-            temp_v1_3 = &gControllers[temp_v1];
-            if ((temp_v0_4->type & 0x4000) != 0) {
-
-                if ((temp_v1_3->buttonDepressed & Z_TRIG) != 0) {
-                    temp_v1_3->buttonDepressed &= 0xDFFF;
-                    func_802A1064(fake_item_box);
-                    temp_v0_4->soundEffects &= 0xFFFBFFFF;
-                    func_800C9060((u8)(temp_v0_4 - gPlayerOne), SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));
-                }
-            }
-            break;
-        case 1:
-            if (fake_item_box->sizeScaling < 1.0f) {
-                fake_item_box->sizeScaling += 0.05f;
-            } else if (fake_item_box->sizeScaling >= 1.0f) {
-                fake_item_box->sizeScaling = 1.0f;
-            }
-
-            fake_item_box->boundingBoxSize = fake_item_box->sizeScaling * 5.5f;
-            if (fake_item_box->targetY <= fake_item_box->pos[1]) {
-                fake_item_box->pos[1] = fake_item_box->targetY;
-            } else {
-                fake_item_box->pos[1] += 0.2f;
-            }
-            if ((fake_item_box->flags & 0x1000) != 0) {
-                if ((fake_item_box->someTimer <= 0) || (fake_item_box->someTimer >= 0x12D)) {
-                    fake_item_box->flags &= 0xEFFF;
-                    fake_item_box->someTimer = 0;
-                } else {
-                    fake_item_box->someTimer--;
-                }
-            }
-            fake_item_box->rot[0] -= 0xB6;
-            fake_item_box->rot[1] += 0x16C;
-            fake_item_box->rot[2] -= 0xB6;
-            break;
-
-        case 2:
-            if ((fake_item_box->someTimer >= 0x14) || (fake_item_box->someTimer < 0)) {
-                destroy_actor((struct Actor *) fake_item_box);
-            } else {
-                fake_item_box->someTimer++;
-                fake_item_box->rot[0] += 0x444;
-                fake_item_box->rot[1] -= 0x2D8;
-                fake_item_box->rot[2] += 0x16C;
-            }
-            break;
-        default:
-            destroy_actor((struct Actor *) fake_item_box);
-        break;
-    }
-}
-
-void func_802A14BC(f32 x, f32 y, f32 z) {
+void init_actor_hot_air_balloon_item_box(f32 x, f32 y, f32 z) {
     Vec3f pos;
     Vec3f velocity;
     Vec3s rot;
@@ -2394,348 +2313,11 @@ void func_802A14BC(f32 x, f32 y, f32 z) {
     gActorHotAirBalloonItemBox = &gActorList[id];
 }
 
-void update_actor_item_box_hot_air_balloon(struct ItemBox *itemBox) {
-    switch(itemBox->state) {
-        case 5:
-            itemBox->rot[0] += 0xB6;
-            itemBox->rot[1] -= 0x16C;
-            itemBox->rot[2] += 0xB6;
-            break;
-        case 3:
-            if (itemBox->someTimer == 0x14) {
-                itemBox->state = 5;
-                itemBox->flags = -0x4000;
-            } else {
-                itemBox->someTimer++;
-                itemBox->rot[0] += 0x444;
-                itemBox->rot[1] -= 0x2D8;
-                itemBox->rot[2] += 0x16C;
-            }
-            break;
-    }
-}
+#include "actors/item_box/update.inc.c"
 
-void update_actor_item_box(struct ItemBox *itemBox) {
-    switch (itemBox->state) {
-        case 0:
-            itemBox->state = 1;
-            break;
-        case 1:
-            if ((itemBox->pos[1] - itemBox->origY) < 8.66f) {
-                itemBox->pos[1] += 0.45f;
-            } else {
-                itemBox->pos[1] = itemBox->origY + 8.66f;
-                itemBox->state = 2;
-                itemBox->flags = 0xC000;
-            }
-            break;
-        case 2:
-            itemBox->rot[0] += 0xB6;
-            itemBox->rot[1] -= 0x16C;
-            itemBox->rot[2] += 0xB6;
-            break;
-        case 3:
-            if (itemBox->someTimer == 20) {
-                itemBox->state = 0;
-                itemBox->pos[1] = itemBox->resetDistance - 20.0f;
-                itemBox->flags = 0xC000;
-            } else {
-                itemBox->someTimer++;
-                itemBox->rot[0] += 0x444;
-                itemBox->rot[1] -= 0x2D8;
-                itemBox->rot[2] += 0x16C;
-            }
-            break;
-    }
-}
+#include "actors/fake_item_box/render.inc.c"
 
-void func_802A171C(Camera *camera, struct FakeItemBox *fakeItemBox) {
-    Vec3s someRot;
-    UNUSED s32 pad[3];
-    Vec3f someVec;
-    Mat4 someMatrix2;
-    Mat4 someMatrix3;
-    UNUSED s32 pad2[12];
-    f32 temp_f0_2;
-    f32 temp_f0_3;
-    f32 temp_f12;
-    f32 temp_f2;
-    f32 thing;
-    f32 temp_f2_2;
-    f32 someMultiplier;
-
-    if (is_within_render_distance(camera->pos, fakeItemBox->pos, camera->rot[1], 2500.0f, gCameraZoom[camera - camera1], 1000000.0f) < 0) {
-        actor_not_render_on_a_camera(camera, (struct Actor *) fakeItemBox);
-        return;
-    }
-    if (((f32) gMapMaxY + 800.0f) < fakeItemBox->pos[1]) {
-        actor_not_render_on_a_camera(camera, (struct Actor *) fakeItemBox);
-        return;
-    }
-    if (fakeItemBox->pos[1] < ((f32) gMapMinY - 800.0f)) {
-        actor_not_render_on_a_camera(camera, (struct Actor *) fakeItemBox);
-        return;
-    }
-
-    actor_render_on_a_camera(camera, (struct Actor *) fakeItemBox);
-    someRot[0] = 0;
-    someRot[1] = fakeItemBox->rot[1];
-    someRot[2] = 0;
-    mtxf_pos_rotation_xyz(someMatrix2, fakeItemBox->pos, someRot);
-    mtxf_scale(someMatrix2, fakeItemBox->sizeScaling);
-    if (fakeItemBox->state != 2) {
-
-        if (!render_set_position(someMatrix2, 0)) { return; }
-
-        gSPDisplayList(gDisplayListHead++, common_model_fake_itembox);
-        mtxf_pos_rotation_xyz(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
-        mtxf_scale(someMatrix2, fakeItemBox->sizeScaling);
-
-        if (!render_set_position(someMatrix2, 0)) { return; }
-
-        gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-        gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-        if ((fakeItemBox->rot[1] < 0xAA1) && (fakeItemBox->rot[1] > 0)) {
-            gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-        } else if ((fakeItemBox->rot[1] >= 0x6AA5) && (fakeItemBox->rot[1] < 0x754E)) {
-            gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-        } else if ((fakeItemBox->rot[1] >= 0x38E1) && (fakeItemBox->rot[1] < 0x438A)) {
-            gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-        } else if ((fakeItemBox->rot[1] >= 0xC711) && (fakeItemBox->rot[1] < 0xD1BA)) {
-            gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-        } else {
-            gDPSetBlendMask(gDisplayListHead++, 0xFF);
-            gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
-        }
-        gSPDisplayList(gDisplayListHead++, D_0D003090);
-    } else {
-        gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-        gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-        gDPSetBlendMask(gDisplayListHead++, 0xFF);
-        thing = fakeItemBox->someTimer;
-        mtxf_pos_rotation_xyz(someMatrix2, fakeItemBox->pos, fakeItemBox->rot);
-        if (thing < 10.0f) {
-            someMultiplier = 1.0f;
-        } else {
-            someMultiplier = 1.0f - ((thing - 10.0f) * 0.1f);
-        }
-        mtxf_scale(someMatrix2, someMultiplier);
-        if (fakeItemBox->someTimer & 1) {
-            gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-        } else {
-            gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
-        }
-        temp_f2 = 2.0f * thing;
-        someVec[0] = 0.0f;
-        someVec[1] = temp_f2;
-        someVec[2] = thing;
-        add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
-
-        if (!render_set_position(someMatrix3, 0)) { return; }
-
-        gSPDisplayList(gDisplayListHead++, D_0D003158);
-        temp_f2_2 = 0.8f * thing;
-        temp_f12 = 0.5f * thing;
-        someVec[0] = temp_f2_2;
-        someVec[1] = 2.3f * thing;
-        someVec[2] = temp_f12;
-        add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
-
-        if (!render_set_position(someMatrix3, 0)) { return; }
-
-        gSPDisplayList(gDisplayListHead++, D_0D0031B8);
-        temp_f0_2 = -0.5f * thing;
-        someVec[0] = temp_f2_2;
-        someVec[1] = 1.2f * thing;
-        someVec[2] = temp_f0_2;
-        add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
-
-        if (!render_set_position(someMatrix3, 0)) { return; }
-
-        gSPDisplayList(gDisplayListHead++, D_0D003128);
-        if (!(fakeItemBox->someTimer & 1)) {
-            gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-        } else {
-            gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
-        }
-        someVec[0] = 0.0f;
-        someVec[1] = 1.8f * thing;
-        someVec[2] = -1.0f * thing;
-        add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
-
-        if (!render_set_position(someMatrix3, 0)) { return; }
-
-        gSPDisplayList(gDisplayListHead++, D_0D0031E8);
-        temp_f0_3 = -0.8f * thing;
-        someVec[0] = temp_f0_3;
-        someVec[1] = 0.6f * thing;
-        someVec[2] = temp_f0_2;
-        add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
-
-        if (!render_set_position(someMatrix3, 0)) { return; }
-
-        gSPDisplayList(gDisplayListHead++, D_0D003188);
-        someVec[0] = temp_f0_3;
-        someVec[1] = temp_f2;
-        someVec[2] = temp_f12;
-        add_translate_mat4_vec3f(someMatrix2, someMatrix3, someVec);
-
-        if (!render_set_position(someMatrix3, 0)) { return; }
-
-        gSPDisplayList(gDisplayListHead++, D_0D0030F8);
-        gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-    }
-}
-
-// render item box need more info to document this properly
-void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
-    UNUSED s32 pad[2];
-    Vec3f someVec1;
-    Vec3f someVec2;
-    Vec3s someRot;
-    f32 thing;
-    UNUSED s32 pad2;
-    Mat4 someMatrix1;
-    Mat4 someMatrix2;
-    UNUSED s32 pad3[4];
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f0_3;
-    f32 temp_f12;
-    f32 temp_f2;
-    f32 temp_f2_2;
-    f32 someMultiplier;
-
-    temp_f0 = is_within_render_distance(camera->pos, item_box->pos, camera->rot[1], 0.0f, gCameraZoom[camera - camera1], 4000000.0f);
-    if (!(temp_f0 < 0.0f) && !(600000.0f < temp_f0)) {
-        if ((item_box->state == 2) && (temp_f0 < 100000.0f)) {
-            someRot[0] = 0;
-            someRot[1] = item_box->rot[1];
-            someRot[2] = 0;
-            someVec2[0] = item_box->pos[0];
-            someVec2[1] = item_box->resetDistance + 2.0f;
-            someVec2[2] = item_box->pos[2];
-            mtxf_pos_rotation_xyz(someMatrix1, someVec2, someRot);
-
-            if (!render_set_position(someMatrix1, 0)) { return; }
-
-            gSPDisplayList(gDisplayListHead++, D_0D002EE8);
-            someRot[1] = item_box->rot[1] * 2;
-            someVec2[1] = item_box->pos[1];
-            mtxf_pos_rotation_xyz(someMatrix1, someVec2, someRot);
-
-            if (!render_set_position(someMatrix1, 0)) { return; }
-
-            gSPDisplayList(gDisplayListHead++, itemBoxQuestionMarkModel);
-        }
-        if (item_box->state == 5) {
-            mtxf_pos_rotation_xyz(someMatrix1, item_box->pos, item_box->rot);
-
-            if (!render_set_position(someMatrix1, 0)) { return; }
-
-            gSPDisplayList(gDisplayListHead++, itemBoxQuestionMarkModel);
-        }
-        if (item_box->state != 3) {
-            mtxf_pos_rotation_xyz(someMatrix1, item_box->pos, item_box->rot);
-
-            if (!render_set_position(someMatrix1, 0)) { return; }
-
-            gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-            gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-            if ((item_box->rot[1] < 0xAA1) && (item_box->rot[1] > 0)) {
-                gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            } else if ((item_box->rot[1] >= 0x6AA5) && (item_box->rot[1] < 0x754E)) {
-                gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            } else if ((item_box->rot[1] >= 0x38E1) && (item_box->rot[1] < 0x438A)) {
-                gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            } else if ((item_box->rot[1] >= 0xC711) && (item_box->rot[1] < 0xD1BA)) {
-                gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            } else {
-                gDPSetBlendMask(gDisplayListHead++, 0xFF);
-                gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
-            }
-            gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
-            gSPDisplayList(gDisplayListHead++, D_0D003090);
-        } else {
-            gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-            gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            gDPSetBlendMask(gDisplayListHead++, 0xFF);
-            thing = item_box->someTimer;
-            mtxf_pos_rotation_xyz(someMatrix1, item_box->pos, item_box->rot);
-            if (thing < 10.0f) {
-                someMultiplier = 1.0f;
-            } else {
-                someMultiplier = 1.0f - ((thing - 10.0f) * 0.1f);
-            }
-            mtxf_scale(someMatrix1, someMultiplier);
-            if (item_box->someTimer & 1) {
-                gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            } else {
-                gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
-            }
-            temp_f2 = 2.0f * thing;
-            someVec1[0] = 0.0f;
-            someVec1[1] = temp_f2;
-            someVec1[2] = thing;
-            add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
-
-            if (!render_set_position(someMatrix2, 0)) { return; }
-
-            gSPDisplayList(gDisplayListHead++, D_0D003158);
-            temp_f2_2 = 0.8f * thing;
-            temp_f12 = 0.5f * thing;
-            someVec1[0] = temp_f2_2;
-            someVec1[1] = 2.3f * thing;
-            someVec1[2] = temp_f12;
-            add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
-
-            if (!render_set_position(someMatrix2, 0)) { return; }
-
-            gSPDisplayList(gDisplayListHead++, D_0D0031B8);
-            temp_f0_2 = -0.5f * thing;
-            someVec1[0] = temp_f2_2;
-            someVec1[1] = 1.2f * thing;
-            someVec1[2] = temp_f0_2;
-            add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
-
-            if (!render_set_position(someMatrix2, 0)) { return; }
-
-            gSPDisplayList(gDisplayListHead++, D_0D003128);
-            if (!(item_box->someTimer & 1)) {
-                gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-            } else {
-                gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_XLU_INTER, G_RM_NOOP2);
-            }
-            someVec1[0] = 0.0f;
-            someVec1[1] = 1.8f * thing;
-            someVec1[2] = -1.0f * thing;
-            add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
-
-            if (!render_set_position(someMatrix2, 0)) { return; }
-
-            gSPDisplayList(gDisplayListHead++, D_0D0031E8);
-            temp_f0_3 = -0.8f * thing;
-            someVec1[0] = temp_f0_3;
-            someVec1[1] = 0.6f * thing;
-            someVec1[2] = temp_f0_2;
-            add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
-
-            if (!render_set_position(someMatrix2, 0)) { return; }
-
-            gSPDisplayList(gDisplayListHead++, D_0D003188);
-            someVec1[0] = temp_f0_3;
-            someVec1[1] = temp_f2;
-            someVec1[2] = temp_f12;
-            add_translate_mat4_vec3f(someMatrix1, someMatrix2, someVec1);
-
-            if (!render_set_position(someMatrix2, 0)) { return; }
-
-            gSPDisplayList(gDisplayListHead++, D_0D0030F8);
-            gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-        }
-        gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-    }
-}
+#include "actors/item_box/render.inc.c"
 
 #include "actors/wario_sign/render.inc.c"
 
@@ -2745,54 +2327,7 @@ void func_802A1EA0(Camera *camera, struct ItemBox *item_box) {
 
 #include "actors/railroad_crossing/render.inc.c"
 
-void render_actor_palm_tree(Camera *arg0, UNUSED Mat4 arg1, struct PalmTree *arg2) {
-    Vec3s spA8 = {0, 0, 0};
-    Mat4 sp68;
-    f32 temp_f0;
-    s16 temp_v0 = arg2->flags;
-
-    if ((temp_v0 & 0x800)) {
-        return;
-    }
-
-    temp_f0 = is_within_render_distance(arg0->pos, arg2->pos, arg0->rot[1], 0.0f, gCameraZoom[arg0 - camera1], 4000000.0f);
-
-    if (!(temp_f0 < 0.0f)) {
-        if (((temp_v0 & 0x400) == 0) && (temp_f0 < 250000.0f)) {
-            func_8029794C(arg2->pos, arg2->rot, 2.0f);
-        }
-        mtxf_pos_rotation_xyz(sp68, arg2->pos, spA8);
-        if (render_set_position(sp68, 0) != 0) {
-
-            gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
-            gSPSetGeometryMode(gDisplayListHead++, G_LIGHTING);
-
-            switch(arg2->variant) {
-                case 0:
-                    gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_trunk1);
-                    gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                    gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_top1);
-                    gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                    break;
-
-                case 1:
-                    gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_trunk2);
-                    gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                    gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_top2);
-                    gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                    break;
-
-                case 2:
-                    gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_trunk3);
-                    gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                    gSPDisplayList(gDisplayListHead++, &d_course_koopa_troopa_beach_dl_tree_top3);
-                    gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
-                    break;
-
-            }
-        }
-    }
-}
+#include "actors/palm_tree/render.inc.c"
 
 void render_item_boxs(struct UnkStruct_800DC5EC *arg0) {
     Camera *camera = arg0->camera;
@@ -2809,13 +2344,13 @@ void render_item_boxs(struct UnkStruct_800DC5EC *arg0) {
 
         switch(actor->type) {
             case ACTOR_FAKE_ITEM_BOX:
-                func_802A171C(camera, (struct FakeItemBox *) actor);
+                render_actor_fake_item_box(camera, (struct FakeItemBox *) actor);
                 break;
             case ACTOR_ITEM_BOX:
-                func_802A1EA0(camera, (struct ItemBox *) actor);
+                render_actor_item_box(camera, (struct ItemBox *) actor);
                 break;
             case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
-                func_802A1EA0(camera, (struct ItemBox *) actor);
+                render_actor_item_box(camera, (struct ItemBox *) actor);
                 break;
         }
     }
@@ -2967,10 +2502,10 @@ void render_course_actors(struct UnkStruct_800DC5EC *arg0) {
     }
     switch (gCurrentCourseId) {
         case COURSE_MOO_MOO_FARM:
-            render_actor_cows(camera, D_801502C0, actor);
+            render_cows(camera, D_801502C0, actor);
             break;
         case COURSE_DK_JUNGLE:
-            render_actor_palm_trees(camera, D_801502C0, actor);
+            render_palm_trees(camera, D_801502C0, actor);
             break;
     }
 }
