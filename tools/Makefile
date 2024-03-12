@@ -38,7 +38,7 @@ torch:
 # Remove generated files
 clean:
 	$(RM) $(PROGRAMS)
-	$(RM) -rf torch/cmake-build-release
+	$(RM) -rf torch/build-cmake
 
 
 
