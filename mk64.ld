@@ -511,7 +511,7 @@ SECTIONS
 
    BEGIN_SEG(startupLogo, 0x06000000)
    {
-      BUILD_DIR/src/data/startup_logo.inc.mio0.o(.data);
+      BUILD_DIR/assets/code/startup_logo/startup_logo.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(startupLogo)

@@ -1253,15 +1253,15 @@ Vtx gold_trophy_model[] = {
 
 };
 
-u8 reflection_map_brass[2048] = {
+u16 reflection_map_brass[2048] = {
     #include "assets/ending_ceremony/gTextureReflectionMapBrass.inc.c"
 };
 
-u8 reflection_map_silver[2048] = {
+u16 reflection_map_silver[2048] = {
     #include "assets/ending_ceremony/gTextureReflectionMapSilver.inc.c"
 };
 
-u8 reflection_map_gold[2048] = {
+u16 reflection_map_gold[2048] = {
     #include "assets/ending_ceremony/gTextureReflectionMapGold.inc.c"
 };
 
@@ -1728,7 +1728,7 @@ Lights1 light1 = gdSPDefLights1 (
     255, 255, 255, 0, 0, 120
 );
 
-u8 texture_podium1[] = {
+u16 texture_podium1[] = {
     #include "assets/ending_ceremony/gTexturePodium1.inc.c"
 };
 
@@ -1831,7 +1831,7 @@ Lights1 light2 = gdSPDefLights1 (
     255, 255, 255, 0, 0, 120
 );
 
-u8 texture_podium2[] = {
+u16 texture_podium2[] = {
     #include "assets/ending_ceremony/gTexturePodium2.inc.c"
 };
 
@@ -1880,7 +1880,7 @@ Lights1 light3 = gdSPDefLights1 (
     255, 255, 255, 0, 0, 120
 );
 
-u8 texture_podium3[] = {
+u16 texture_podium3[] = {
     #include "assets/ending_ceremony/gTexturePodium3.inc.c"
 };
 

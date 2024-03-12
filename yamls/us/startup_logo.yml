@@ -37,11 +37,6 @@ dl8:
   symbol: startup_logo_dl8
   type: gfx
   offset: 0x33D8
-startup_logo2:
-  symbol: startup_logo2
-  type: vtx
-  count: 1093
-  offset: 0x3538
 dl9:
   symbol: startup_logo_dl9
   type: gfx
@@ -57,41 +52,37 @@ dl11:
 dl12:
   symbol: startup_logo_dl12
   type: gfx
-  offset: 0x7C50
+  offset: 0x7E50
 dl13:
   symbol: startup_logo_dl13
   type: gfx
-  offset: 0x7E50
+  offset: 0x7E90
 dl14:
   symbol: startup_logo_dl14
   type: gfx
-  offset: 0x7E90
+  offset: 0x7ED0
 dl15:
   symbol: startup_logo_dl15
   type: gfx
-  offset: 0x7ED0
+  offset: 0x7F88
 dl16:
   symbol: startup_logo_dl16
   type: gfx
-  offset: 0x7F88
+  offset: 0x80F0
 dl17:
   symbol: startup_logo_dl17
   type: gfx
-  offset: 0x80F0
+  offset: 0x8250
 dl18:
   symbol: startup_logo_dl18
   type: gfx
-  offset: 0x8250
+  offset: 0x83C8
 dl19:
   symbol: startup_logo_dl19
   type: gfx
-  offset: 0x83C8
+  offset: 0x8548
 dl20:
   symbol: startup_logo_dl20
-  type: gfx
-  offset: 0x8548
-dl21:
-  symbol: startup_logo_dl21
   type: gfx
   offset: 0x87A0
 reflection_map_gold:

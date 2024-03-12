@@ -2744,7 +2744,7 @@ Gfx startup_logo_dl20[] = {
 
 };
 
-u8 reflection_map_gold[2048] = {
+u16 reflection_map_gold[2048] = {
     #include "assets/startup_logo/gTextureReflectionMapGold.inc.c"
 };
 

@@ -647,19 +647,19 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.elf
 # Compile Startup Logo                                                         #
 #==============================================================================#
 
-LDFLAGS += -R $(BUILD_DIR)/src/data/startup_logo.inc.elf
+LDFLAGS += -R $(BUILD_DIR)/assets/code/startup_logo/startup_logo.elf
 
-%/startup_logo.inc.elf: %/startup_logo.inc.o
+%/startup_logo.elf: %/startup_logo.o
 	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -o $@ $< --no-check-sections
 
-%/startup_logo.inc.bin: %/startup_logo.inc.elf
+%/startup_logo.bin: %/startup_logo.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-%/startup_logo.inc.mio0: %/startup_logo.inc.bin
+%/startup_logo.mio0: %/startup_logo.bin
 	@$(PRINT) "$(GREEN)Compressing Startup Logo Model:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(MIO0TOOL) -c $< $@
 
-%/startup_logo.inc.mio0.s: %/startup_logo.inc.mio0
+%/startup_logo.mio0.s: %/startup_logo.mio0
 	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel startupLogo_end\n" > $@
 
 #==============================================================================#
@@ -693,7 +693,7 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.mio0.o $(BUILD_DIR)/src/data/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/assets/code/startup_logo/startup_logo.mio0.o $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.mio0.o $(BUILD_DIR)/src/data/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 

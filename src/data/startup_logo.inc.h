@@ -23,7 +23,7 @@ extern Gfx startup_logo_dl17[];
 extern Gfx startup_logo_dl18[];
 extern Gfx startup_logo_dl19[];
 extern Gfx startup_logo_dl20[];
-extern u8 reflection_map_gold[2048];
+extern u16 reflection_map_gold[2048];
 extern Gfx startup_texture_dl1[];
 extern Lights1 lights;
 extern Gfx startup_texture_dl2[];
