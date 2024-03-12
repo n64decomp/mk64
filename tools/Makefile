@@ -2,6 +2,7 @@
 
 # Compilation flags
 CC := gcc
+MAKE = make
 CFLAGS := -I . -Wall -Wextra -Wno-unused-parameter -pedantic -std=c99 -O2 -s
 
 # Tools to compile
@@ -32,8 +33,8 @@ extract_data_for_mio_SOURCES := extract_data_for_mio.c
 all: $(PROGRAMS) torch
 
 torch:
-	$(PRINT) "Building torch..."
-	make -C torch type=release -j
+	@echo "Building mio0..."
+	$(MAKE) -C torch type=release -j$(N_THREADS)
 
 # Remove generated files
 clean:
