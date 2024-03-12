@@ -42,6 +42,7 @@ some_vtx2:
 reflection_map_brass:
   symbol: reflection_map_brass
   type: texture
+  ctype: u16
   offset: 0x4670
   size: 2048
   width: 32
@@ -50,6 +51,7 @@ reflection_map_brass:
 reflection_map_silver:
   symbol: reflection_map_silver
   type: texture
+  ctype: u16
   offset: 0x4E70
   size: 2048
   width: 32
@@ -58,6 +60,7 @@ reflection_map_silver:
 reflection_map_gold:
   symbol: reflection_map_gold
   type: texture
+  ctype: u16
   offset: 0x5670
   size: 2048
   width: 32
@@ -130,6 +133,7 @@ light1:
 texture_podium1:
   symbol: gTexturePodium1
   type: texture
+  ctype: u16
   offset: 0x6BD0
   size: 2048
   width: 32
@@ -158,6 +162,7 @@ light2:
 texture_podium2:
   symbol: gTexturePodium2
   type: texture
+  ctype: u16
   offset: 0x7760
   size: 2048
   width: 32
@@ -186,6 +191,7 @@ light3:
 texture_podium3:
   symbol: gTexturePodium3
   type: texture
+  ctype: u16
   offset: 0x8070
   size: 2048
   width: 32
