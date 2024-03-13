@@ -1,0 +1,245 @@
+:config:
+  segments:
+    - [0x0D, 0x132B50]
+  header: 
+    code:
+    - '#include <commmon_data.h>'
+    - '#include <macros.h>'
+    - '#include <defines.h>'
+    header:
+    - '#include <types.h>'
+    - '#include <PR/gbi.h>'
+common_tlut_finish_line_banner:
+  symbol: common_tlut_finish_line_banner
+  type: texture
+  ctype: u16
+  offset: 0x0
+  size: 512
+  width: 16
+  height: 16
+  format: RGBA16
+common_texture_particle_fire:
+  symbol: common_texture_particle_fire
+  type: texture
+  ctype: u16
+  offset: 0x200
+  size: 512
+  width: 16
+  height: 16
+  format: RGBA16
+D_0D001200:
+  symbol: D_0D001200
+  type: vtx
+  offset: 0x1200
+  count: 1
+D_0D001750:
+  symbol: D_0D001750
+  type: gfx
+  offset: 0x1750
+D_0D001780:
+  symbol: D_0D001780
+  type: gfx
+  offset: 0x1780
+D_0D001798:
+  symbol: D_0D001798
+  type: gfx
+  offset: 0x1798
+D_0D0017B0:
+  symbol: D_0D0017B0
+  type: gfx
+  offset: 0x17B0
+D_0D0017C8:
+  symbol: D_0D0017C8
+  type: gfx
+  offset: 0x17C8
+D_0D0017E0:
+  symbol: D_0D0017E0
+  type: gfx
+  offset: 0x17E0
+D_0D0017F8:
+  symbol: D_0D0017F8
+  type: gfx
+  offset: 0x17F8
+D_0D001810:
+  symbol: D_0D001810
+  type: gfx
+  offset: 0x1810
+D_0D001828:
+  symbol: D_0D001828
+  type: gfx
+  offset: 0x1828
+D_0D001840:
+  symbol: D_0D001840
+  type: gfx
+  offset: 0x1840
+common_model_finish_post:
+  symbol: common_model_finish_post
+  type: gfx
+  offset: 0x1AB8
+D_0D001B68:
+  symbol: D_0D001B68
+  type: gfx
+  offset: 0x1B68
+D_0D001B90:
+  symbol: D_0D001B90
+  type: gfx
+  offset: 0x1B90
+D_0D001BD8:
+  symbol: D_0D001BD8
+  type: gfx
+  offset: 0x1BD8
+D_0D001C20:
+  symbol: D_0D001C20
+  type: gfx
+  offset: 0x1C20
+D_0D001C88:
+  symbol: D_0D001C88
+  type: gfx
+  offset: 0x1C88
+common_vtx_itembox_question_mark:
+  symbol: common_vtx_itembox_question_mark
+  type: vtx
+  offset: 0x1D28
+  count: 4
+D_0D001D68:
+  symbol: D_0D001D68
+  type: vtx
+  offset: 0x1D68
+  count: 3
+common_texture_item_box_question_mark:
+  symbol: common_texture_item_box_question_mark
+  type: texture
+  ctype: u16
+  offset: 0x1EE8
+  size: 4096
+  width: 32
+  height: 64
+  format: RGBA16
+D_0D002EE8:
+  symbol: D_0D002EE8
+  type: gfx
+  offset: 0x2EE8
+common_fake_item_box_question_mark_vertices:
+  symbol: common_fake_item_box_question_mark_vertices
+  type: vtx
+  offset: 0x2F40
+  count: 4
+common_model_fake_itembox:
+  symbol: common_model_fake_itembox
+  type: gfx
+  offset: 0x2F80
+itemBoxQuestionMarkModel:
+  symbol: itemBoxQuestionMarkModel
+  type: gfx
+  offset: 0x3008
+D_0D003090:
+  symbol: D_0D003090
+  type: gfx
+  offset: 0x3090
+D_0D0030F8:
+  symbol: D_0D0030F8
+  type: gfx
+  offset: 0x30F8
+D_0D003128:
+  symbol: D_0D003128
+  type: gfx
+  offset: 0x3128
+D_0D003158:
+  symbol: D_0D003158
+  type: gfx
+  offset: 0x3158
+D_0D003188:
+  symbol: D_0D003188
+  type: gfx
+  offset: 0x3188
+D_0D0031B8:
+  symbol: D_0D0031B8
+  type: gfx
+  offset: 0x31B8
+D_0D0031E8:
+  symbol: D_0D0031E8
+  type: gfx
+  offset: 0x31E8
+D_0D003218:
+  symbol: D_0D003218
+  type: gfx
+  offset: 0x3218
+D_0D003248:
+  symbol: D_0D003248
+  type: gfx
+  offset: 0x3248
+D_0D003278:
+  symbol: D_0D003278
+  type: gfx
+  offset: 0x3278
+D_0D003288:
+  symbol: D_0D003288
+  type: gfx
+  offset: 0x3288
+common_vtx_banana:
+  symbol: common_vtx_banana
+  type: vtx
+  count: 5
+  offset: 0x3298
+common_vtx_flat_banana:
+  symbol: common_vtx_flat_banana
+  type: vtx
+  count: 6
+  offset: 0x32E8
+common_texture_banana:
+  symbol: common_texture_banana
+  type: texture
+  ctype: u16
+  size: 2048
+  width: 32
+  height: 32
+  offset: 0x3348
+  format: RGBA16
+common_texture_flat_banana:
+  symbol: common_texture_flat_banana
+  type: texture
+  ctype: u16
+  size: 4096
+  width: 64
+  height: 32
+  offset: 0x3B48
+  format: RGBA16
+common_model_banana:
+  symbol: common_model_banana
+  type: gfx
+  offset: 0x4B48
+common_model_flat_banana:
+  symbol: common_model_flat_banana
+  type: gfx
+  offset: 0x4BD8
+common_tlut_trees_import:
+  symbol: common_tlut_trees_import
+  type: texture
+  ctype: u16
+  size: 587
+  width: 8
+  height: 29
+  offset: 0x4C68
+  format: RGBA16
+common_tlut_green_shell:
+  symbol: common_tlut_green_shell
+  type: texture
+  ctype: u16
+  size: 681
+  width: 16
+  height: 16
+  offset: 0x4E38
+  format: RGBA16
+common_tlut_blue_shell:
+  symbol: common_tlut_blue_shell
+  type: texture
+  ctype: u16
+  size: 710
+  width: 16
+  height: 16
+  offset: 0x5038
+  format: RGBA16
+D_0D0052B8:
+  symbol: D_0D0052B8
+  type: gfx
+  offset: 0x52B8
