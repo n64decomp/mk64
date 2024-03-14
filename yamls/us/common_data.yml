@@ -243,3 +243,424 @@ D_0D0052B8:
   symbol: D_0D0052B8
   type: gfx
   offset: 0x52B8
+D_0D005308:
+  symbol: D_0D005308
+  type: gfx
+  offset: 0x52B8
+D_0D005338:
+  symbol: D_0D005338
+  type: gfx
+  offset: 0x5338
+D_0D005368:
+  symbol: D_0D005368
+  type: gfx
+  offset: 0x5368
+D_toads_turnpike_0D005398:
+  symbol: D_toads_turnpike_0D005398
+  type: gfx
+  offset: 0x5398
+D_toads_turnpike_0D0053B0:
+  symbol: D_toads_turnpike_0D0053B0
+  type: gfx
+  offset: 0x53B0
+D_toads_turnpike_0D0053C8:
+  symbol: D_toads_turnpike_0D0053C8
+  type: gfx
+  offset: 0x53C8
+D_toads_turnpike_0D0053F0:
+  symbol: D_toads_turnpike_0D0053F0
+  type: gfx
+  offset: 0x53F0
+D_toads_turnpike_0D005418:
+  symbol: D_toads_turnpike_0D005418
+  type: gfx
+  offset: 0x5418
+D_0D005430:
+  symbol: D_0D005430
+  type: vtx
+  offset: 0x5430
+  count: 4
+  
+# common_vtx_player_minimap_icon
+
+D_0D0054B0:
+  symbol: D_0D0054B0
+  type: vtx
+  offset: 0x0x54B0
+  count: 44
+
+# vtx inbetween
+
+D_0D0057F0:
+  symbol: D_0D0057F0
+  type: vtx
+  offset: 0x57F0
+  count: 15
+
+D_0D005920:
+  symbol: D_0D005920
+  type: vtx
+  offset: 0x5920
+  count: 24
+
+# vtx between
+D_0D005BA0:
+  symbol: D_0D005BA0
+  type: vtx
+  offset: 0x5BA0
+  count: 3
+D_0D005BD0:
+  symbol: D_0D005BD0
+  type: vtx
+  offset: 0x5BD0
+  count: 3
+D_0D005C00:
+  symbol: D_0D005C00
+  type: vtx
+  offset: 0x5C00
+  count: 3
+D_0D005C30:
+  symbol: D_0D005C30
+  type: vtx
+  offset: 0x5C30
+  count: 37
+D_0D005E80:
+  symbol: D_0D005E80
+  type: vtx
+  offset: 0x5E80
+  count: 3
+D_0D005EB0:
+  symbol: D_0D005EB0
+  type: vtx
+  offset: 0x5EB0
+  count: 5
+D_0D005F00:
+  symbol: D_0D005F00
+  type: vtx
+  offset: 0x5F00
+  count: 3
+D_0D005F30:
+  symbol: D_0D005F30
+  type: vtx
+  offset: 0x5F30
+  count: 5
+D_0D005F80:
+  symbol: D_0D005F80
+  type: vtx
+  offset: 0x5F80
+  count: 3
+D_0D005FB0:
+  symbol: D_0D005FB0
+  type: vtx
+  offset: 0x5FB0
+  count: 1
+D_0D005FC0:
+  symbol: D_0D005FC0
+  type: vtx
+  offset: 0x5FC0
+  count: 3
+D_0D005FF0:
+  symbol: D_0D005FF0
+  type: vtx
+  offset: 0x5FF0
+  count: 1
+D_0D006000:
+  symbol: D_0D006000
+  type: vtx
+  offset: 0x6000
+  count: 3
+D_0D006030:
+  symbol: D_0D006030
+  type: vtx
+  offset: 0x6030
+  count: 5
+D_0D006080:
+  symbol: D_0D006080
+  type: vtx
+  offset: 0x6080
+  count: 3
+D_0D0060B0:
+  symbol: D_0D0060B0
+  type: vtx
+  offset: 0x60B0
+  count: 5
+D_0D006100:
+  symbol: D_0D006100
+  type: vtx
+  offset: 0x6100
+  count: 3
+D_0D006130:
+  symbol: D_0D006130
+  type: vtx
+  offset: 0x6130
+  count: 5
+D_0D006180:
+  symbol: D_0D006180
+  type: vtx
+  offset: 0x6180
+  count: 3
+D_0D0061B0:
+  symbol: D_0D0061B0
+  type: vtx
+  offset: 0x61B0
+  count: 13
+D_0D006280:
+  symbol: D_0D006280
+  type: vtx
+  offset: 0x6280
+  count: 3
+D_0D0062B0:
+  symbol: D_0D0062B0
+  type: vtx
+  offset: 0x62B0
+  count: 29
+D_0D006480:
+  symbol: D_0D006480
+  type: vtx
+  offset: 0x6480
+  count: 3
+D_0D0064B0:
+  symbol: D_0D0064B0
+  type: vtx
+  offset: 0x64B0
+  count: 37
+D_0D006700:
+  symbol: D_0D006700
+  type: vtx
+  offset: 0x6700
+  count: 3
+D_0D006730:
+  symbol: D_0D006730
+  type: vtx
+  offset: 0x6730
+  count: 25
+D_0D0068C0:
+  symbol: D_0D0068C0
+  type: vtx
+  offset: 0x68C0
+  count: 3
+D_0D0068F0:
+  symbol: D_0D0068F0
+  type: vtx
+  offset: 0x68F0
+  count: 4
+D_0D006930:
+  symbol: D_0D006930
+  type: gfx
+  offset: 0x6930
+common_rectangle_display:
+  symbol: common_rectangle_display
+  type: gfx
+  offset: 0x6940
+D_0D006950:
+  symbol: D_0D006950
+  type: gfx
+  offset: 0x6950
+D_0D006968:
+  symbol: D_0D006968
+  type: gfx
+  offset: 0x6968
+D_0D006980:
+  symbol: D_0D006980
+  type: gfx
+  offset: 0x6980
+D_0D006998:
+  symbol: D_0D006998
+  type: gfx
+  offset: 0x6998
+D_0D0069B0:
+  symbol: D_0D0069B0
+  type: gfx
+  offset: 0x69B0
+D_0D0069C8:
+  symbol: D_0D0069C8
+  type: gfx
+  offset: 0x69C8
+D_0D0069E0:
+  symbol: D_0D0069E0
+  type: gfx
+  offset: 0x69E0
+D_0D0069F8:
+  symbol: D_0D0069F8
+  type: gfx
+  offset: 0x69F8
+D_0D006A10:
+  symbol: D_0D006A10
+  type: gfx
+  offset: 0x6A10
+D_0D006A28:
+  symbol: D_0D006A28
+  type: gfx
+  offset: 0x6A28
+D_0D006A40:
+  symbol: D_0D006A40
+  type: gfx
+  offset: 0x6A40
+common_shadow_i4:
+  symbol: common_shadow_i4
+  offset: 0x6A58
+  size: 0x100
+  width: 32
+  height: 32
+  format: i4
+D_0D006AD8:
+  symbol: D_0D006AD8
+  offset: 0x6AD8
+  size: 0x100
+  width: 32
+  height: 32
+  format: i4
+common_tlut_debug_font:
+  symbol: common_tlut_debug_font
+  offset: 0x6AD8
+  size: 0x100
+  width: 32
+  height: 32
+  format: tlut
+common_texture_debug_font:
+  symbol: common_texture_debug_font
+  offset: 0x6AD8
+  size: 0x100
+  width: 32
+  height: 32
+  format: tlut
+D_0D0076F8:
+  symbol: D_0D0076F8
+  type: gfx
+  offset: 0x76F8
+D_0D007780:
+  symbol: D_0D007780
+  type: gfx
+  offset: 0x7780
+D_0D0077A0:
+  symbol: D_0D0077A0
+  type: gfx
+  offset: 0x77A0
+D_0D0077D0:
+  symbol: D_0D0077D0
+  type: gfx
+  offset: 0x77D0
+D_0D0077F8:
+  symbol: D_0D0077F8
+  type: gfx
+  offset: 0x77F8
+D_0D007828:
+  symbol: D_0D007828
+  type: gfx
+  offset: 0x7828
+D_0D007850:
+  symbol: D_0D007850
+  type: gfx
+  offset: 0x7850
+D_0D007878:
+  symbol: D_0D007878
+  type: gfx
+  offset: 0x7878
+D_0D0078A0:
+  symbol: D_0D0078A0
+  type: gfx
+  offset: 0x78A8
+D_0D0078D0:
+  symbol: D_0D0078D0
+  type: gfx
+  offset: 0x78D0
+D_0D0078F8:
+  symbol: D_0D0078F8
+  type: gfx
+  offset: 0x78F8
+D_0D007928:
+  symbol: D_0D007928
+  type: gfx
+  offset: 0x7928
+D_0D007948:
+  symbol: D_0D007948
+  type: gfx
+  offset: 0x7948
+D_0D007968:
+  symbol: D_0D007968
+  type: gfx
+  offset: 0x7968
+D_0D007988:
+  symbol: D_0D007988
+  type: gfx
+  offset: 0x7988
+D_0D0079A8:
+  symbol: D_0D0079A8
+  type: gfx
+  offset: 0x79A8
+D_0D0079C8:
+  symbol: D_0D0079C8
+  type: gfx
+  offset: 0x79C8
+D_0D0079E8:
+  symbol: D_0D0079E8
+  type: gfx
+  offset: 0x79E8
+D_0D007A08:
+  symbol: D_0D007A08
+  type: gfx
+  offset: 0x7A08
+D_0D007A40:
+  symbol: D_0D007A40
+  type: gfx
+  offset: 0x7A40
+D_0D007A60:
+  symbol: D_0D007A60
+  type: gfx
+  offset: 0x7A60
+D_0D007A80:
+  symbol: D_0D007A80
+  type: gfx
+  offset: 0x7A80
+D_0D007AA0:
+  symbol: D_0D007AA0
+  type: gfx
+  offset: 0x7AA0
+D_0D007AC0:
+  symbol: D_0D007AC0
+  type: gfx
+  offset: 0x7AC0
+D_0D007AE0:
+  symbol: D_0D007AE0
+  type: gfx
+  offset: 0x7AE0
+D_0D007B00:
+  symbol: D_0D007B00
+  type: gfx
+  offset: 0x7B00
+D_0D007B20:
+  symbol: D_0D007B20
+  type: gfx
+  offset: 0x7B20
+D_0D007B98:
+  symbol: D_0D007B98
+  type: gfx
+  offset: 0x7B98
+D_0D007C10:
+  symbol: D_0D007C10
+  type: gfx
+  offset: 0x7C10
+D_0D007C88:
+  symbol: D_0D007C88
+  type: gfx
+  offset: 0x7C88
+D_0D007CB8:
+  symbol: D_0D007CB8
+  type: gfx
+  offset: 0x7CB8
+D_0D007CD8:
+  symbol: D_0D007CD8
+  type: gfx
+  offset: 0x7CD8
+D_0D007CF8:
+  symbol: D_0D007CF8
+  type: gfx
+  offset: 0x7CF8
+D_0D007D18:
+  symbol: D_0D007D18
+  type: gfx
+  offset: 0x7D18
+D_0D007D38:
+  symbol: D_0D007D38
+  type: gfx
+  offset: 0x7D38
