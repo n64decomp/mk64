@@ -780,3 +780,61 @@ D_0D008138:
   symbol: D_0D008138
   type: gfx
   offset: 0x8138
+
+# Item Curves
+
+# Some vtx
+
+common_square_plain_render:
+  symbol: common_square_plain_render
+  type: gfx
+  offset: 0x8C78
+D_0D008C90:
+  symbol: D_0D008C90
+  type: gfx
+  offset: 0x8C90
+common_setting_render_character:
+  symbol: common_setting_render_character
+  type: gfx
+  offset: 0x8CD8
+D_0D008D10:
+  symbol: D_0D008D10
+  type: gfx
+  offset: 0x8D10
+D_0D008D58:
+  symbol: D_0D008D58
+  type: gfx
+  offset: 0x8D58
+D_0D008DA0:
+  symbol: D_0D008DA0
+  type: gfx
+  offset: 0x8DA0
+D_0D008DB8:
+  symbol: D_0D008DB8
+  type: gfx
+  offset: 0x8DB8
+D_0D008DF8:
+  symbol: D_0D008DF8
+  type: gfx
+  offset: 0x8DF8
+D_0D008E20:
+  symbol: D_0D008E20
+  type: gfx
+  offset: 0x8E20
+D_0D008E48:
+  symbol: D_0D008E48
+  type: gfx
+  offset: 0x8E48
+D_0D008E70:
+  symbol: D_0D008E70
+  type: gfx
+  offset: 0x8E70
+D_0D008E98:
+  symbol: D_0D008E98
+  type: mtx
+  offset: 0x8E98
+D_0D008ED8: # These 4 vtx may be an mtx like the one before here. It's difficult to say though as there are no references in the code-base.
+  symbol: D_0D008ED8
+  type: vtx
+  offset: 0x8ED8
+  count: 4
