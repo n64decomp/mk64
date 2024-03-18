@@ -3,7 +3,7 @@
 #include <PR/ultratypes.h>
 #include <PR/gbi.h>
 #include "data_segment2.h"
-#include "src/data/startup_logo.inc.h"
+#include <startup_logo.h>"
 
 Gfx D_02007650[] = {
     gsDPPipeSync(),

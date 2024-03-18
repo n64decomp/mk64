@@ -833,8 +833,11 @@ D_0D008E98:
   symbol: D_0D008E98
   type: mtx
   offset: 0x8E98
+  count: 1
 D_0D008ED8: # These 4 vtx may be an mtx like the one before here. It's difficult to say though as there are no references in the code-base.
   symbol: D_0D008ED8
   type: vtx
   offset: 0x8ED8
   count: 4
+
+# UnkCommonTextureStruct0
