@@ -22,9 +22,8 @@ typedef struct {
 } struct_D_802BFB80_4; // size = 0x1000
 
 /*
- * This is so fucking dumb I hate that this works
  * In render_player, spawn_players, and staff_ghosts D_802BFB80 is the arraySize8 entry
- * But in code_80091750 its the arraySize4 entry, for some unholy reason
+ * But in code_80091750 its the arraySize4 entry
  * The only way to unify those 2 things is to use a union
 */
 typedef union {
