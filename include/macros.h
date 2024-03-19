@@ -63,7 +63,7 @@
 #define toFrac(f)  (FTOFIX(f) & 0xFFFF)
 
 // Setup a fixed-point matrix using floats or doubles. Recommend using doubles for more precision.
-#define setupFixedPointMatrix(name, x1, x2, x3, x4,  x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16) \
+#define fixedPointMatrix(name, x1, x2, x3, x4,  x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16) \
 Mtx name = {                                                                                                \
     {{((toFixedInt(x1)) << 16) | (toFixedInt(x2)),  ((toFixedInt(x3))  << 16) | (toFixedInt(x4)),  (toFixedInt(x5)  << 16) | (toFixedInt(x6)),  (toFixedInt(x7) << 16)  | (toFixedInt(x8))},  \
      {((toFixedInt(x9)) << 16) | (toFixedInt(x10)), ((toFixedInt(x11)) << 16) | (toFixedInt(x12)), (toFixedInt(x13) << 16) | (toFixedInt(x14)), (toFixedInt(x15) << 16) | (toFixedInt(x16))}, \

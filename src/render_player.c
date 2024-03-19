@@ -725,24 +725,24 @@ UNUSED void func_80021FF8(Mtx *arg0, Mat4 arg1) {
     arg0->m[3][3] = arg1[3][3] * someMultiplier;
 }
 
-void convert_to_fixed_point_matrix(Mtx *fixedPointMatrix, Mat4 arg1) {
+void convert_to_fixed_point_matrix(Mtx *mtx, Mat4 arg1) {
     f32 someMultiplier = 65536.0f;
-    fixedPointMatrix->m[0][0] = ((s32) (arg1[0][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[0][1] = ((s32) (arg1[0][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[0][2] = ((s32) (arg1[1][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[0][3] = ((s32) (arg1[1][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[1][0] = ((s32) (arg1[2][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[1][1] = ((s32) (arg1[2][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[1][2] = ((s32) (arg1[3][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[1][3] = ((s32) (arg1[3][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[2][0] = ((s32) (arg1[0][0] * someMultiplier) << 0x10)      | ((s32) (arg1[0][1] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[2][1] = ((s32) (arg1[0][2] * someMultiplier) << 0x10)      | ((s32) (arg1[0][3] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[2][2] = ((s32) (arg1[1][0] * someMultiplier) << 0x10)      | ((s32) (arg1[1][1] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[2][3] = ((s32) (arg1[1][2] * someMultiplier) << 0x10)      | ((s32) (arg1[1][3] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[3][0] = ((s32) (arg1[2][0] * someMultiplier) << 0x10)      | ((s32) (arg1[2][1] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[3][1] = ((s32) (arg1[2][2] * someMultiplier) << 0x10)      | ((s32) (arg1[2][3] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[3][2] = ((s32) (arg1[3][0] * someMultiplier) << 0x10)      | ((s32) (arg1[3][1] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[3][3] = ((s32) (arg1[3][2] * someMultiplier) << 0x10)      | ((s32) (arg1[3][3] * someMultiplier) & 0xFFFF);
+    mtx->m[0][0] = ((s32) (arg1[0][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][1] * someMultiplier) >> 0x10) & 0xFFFF);
+    mtx->m[0][1] = ((s32) (arg1[0][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][3] * someMultiplier) >> 0x10) & 0xFFFF);
+    mtx->m[0][2] = ((s32) (arg1[1][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][1] * someMultiplier) >> 0x10) & 0xFFFF);
+    mtx->m[0][3] = ((s32) (arg1[1][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][3] * someMultiplier) >> 0x10) & 0xFFFF);
+    mtx->m[1][0] = ((s32) (arg1[2][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][1] * someMultiplier) >> 0x10) & 0xFFFF);
+    mtx->m[1][1] = ((s32) (arg1[2][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][3] * someMultiplier) >> 0x10) & 0xFFFF);
+    mtx->m[1][2] = ((s32) (arg1[3][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][1] * someMultiplier) >> 0x10) & 0xFFFF);
+    mtx->m[1][3] = ((s32) (arg1[3][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][3] * someMultiplier) >> 0x10) & 0xFFFF);
+    mtx->m[2][0] = ((s32) (arg1[0][0] * someMultiplier) << 0x10)      | ((s32) (arg1[0][1] * someMultiplier) & 0xFFFF);
+    mtx->m[2][1] = ((s32) (arg1[0][2] * someMultiplier) << 0x10)      | ((s32) (arg1[0][3] * someMultiplier) & 0xFFFF);
+    mtx->m[2][2] = ((s32) (arg1[1][0] * someMultiplier) << 0x10)      | ((s32) (arg1[1][1] * someMultiplier) & 0xFFFF);
+    mtx->m[2][3] = ((s32) (arg1[1][2] * someMultiplier) << 0x10)      | ((s32) (arg1[1][3] * someMultiplier) & 0xFFFF);
+    mtx->m[3][0] = ((s32) (arg1[2][0] * someMultiplier) << 0x10)      | ((s32) (arg1[2][1] * someMultiplier) & 0xFFFF);
+    mtx->m[3][1] = ((s32) (arg1[2][2] * someMultiplier) << 0x10)      | ((s32) (arg1[2][3] * someMultiplier) & 0xFFFF);
+    mtx->m[3][2] = ((s32) (arg1[3][0] * someMultiplier) << 0x10)      | ((s32) (arg1[3][1] * someMultiplier) & 0xFFFF);
+    mtx->m[3][3] = ((s32) (arg1[3][2] * someMultiplier) << 0x10)      | ((s32) (arg1[3][3] * someMultiplier) & 0xFFFF);
 }
 
 bool adjust_angle(s16 *angle, s16 targetAngle, s16 step) {
