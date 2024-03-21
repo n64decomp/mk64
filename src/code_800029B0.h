@@ -58,14 +58,14 @@ extern s32 D_8015F5A0;
 extern s32 D_8015F5A4;
 
 extern Vtx *vtxBuffer[];
-extern s16 gMapMaxX;
-extern s16 gMapMinX;
+extern s16 gCourseMaxX;
+extern s16 gCourseMinX;
 
-extern s16 gMapMaxY;
-extern s16 gMapMinY;
+extern s16 gCourseMaxY;
+extern s16 gCourseMinY;
 
-extern s16 gMapMaxZ;
-extern s16 gMapMinZ;
+extern s16 gCourseMaxZ;
+extern s16 gCourseMinZ;
 extern s16 D_8015F6F4;
 extern s16 D_8015F6F6;
 extern u16 D_8015F6F8;

@@ -1383,11 +1383,11 @@ void func_80295BF8(s32 playerIndex) {
 
 void func_80295C6C(void) {
     gNextFreeMemoryAddress += ALIGN16(D_8015F588 * sizeof(mk64_surface_map_ram));
-    gMapMaxX += 20;
-    gMapMaxZ += 20;
-    gMapMinX += -20;
-    gMapMinZ += -20;
-    gMapMinY += -20;
+    gCourseMaxX += 20;
+    gCourseMaxZ += 20;
+    gCourseMinX += -20;
+    gCourseMinZ += -20;
+    gCourseMinY += -20;
     func_802AF314();
     gNextFreeMemoryAddress += ALIGN16(D_8015F58A * 2);
 }
@@ -1405,13 +1405,13 @@ void func_80295D6C(void) {
 void func_80295D88(void) {
     gNumActors = 0;
 
-    gMapMinX = 0;
-    gMapMinY = 0;
-    gMapMinZ = 0;
+    gCourseMinX = 0;
+    gCourseMinY = 0;
+    gCourseMinZ = 0;
 
-    gMapMaxX = 0;
-    gMapMaxY = 0;
-    gMapMaxZ = 0;
+    gCourseMaxX = 0;
+    gCourseMaxY = 0;
+    gCourseMaxZ = 0;
     
     D_8015F59C = 0;
     D_8015F5A0 = 0;
@@ -1434,7 +1434,7 @@ void func_80295D88(void) {
             }
             parse_course_displaylists((uintptr_t) d_course_mario_raceway_addr);
             func_80295C6C();
-            D_8015F8E4 = gMapMinY - 10.0f;
+            D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_CHOCO_MOUNTAIN:
             D_800DC5BC = 1;
@@ -1488,7 +1488,7 @@ void func_80295D88(void) {
             func_802B5D64(&d_course_yoshi_valley_lights4, -0x38F0, 0x1C70, 1);
             parse_course_displaylists((uintptr_t) d_course_yoshi_valley_addr);
             func_80295C6C();
-            D_8015F8E4 = gMapMinY - 10.0f;
+            D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_FRAPPE_SNOWLAND:
             parse_course_displaylists((uintptr_t) d_course_frappe_snowland_addr);
@@ -1515,12 +1515,12 @@ void func_80295D88(void) {
         case COURSE_LUIGI_RACEWAY:
             parse_course_displaylists((uintptr_t) d_course_luigi_raceway_addr);
             func_80295C6C();
-            D_8015F8E4 = gMapMinY - 10.0f;
+            D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_MOO_MOO_FARM:
             parse_course_displaylists((uintptr_t) d_course_moo_moo_farm_addr);
             func_80295C6C();
-            D_8015F8E4 = gMapMinY - 10.0f;
+            D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_TOADS_TURNPIKE:
             D_801625EC = 43;
@@ -1530,12 +1530,12 @@ void func_80295D88(void) {
             D_802B87B4 = 1000;
             parse_course_displaylists((uintptr_t) d_course_toads_turnpike_addr);
             func_80295C6C();
-            D_8015F8E4 = gMapMinY - 10.0f;
+            D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_KALAMARI_DESERT:
             parse_course_displaylists((uintptr_t) d_course_kalimari_desert_addr);
             func_80295C6C();
-            D_8015F8E4 = gMapMinY - 10.0f;
+            D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_SHERBET_LAND:
             parse_course_displaylists((uintptr_t) d_course_sherbet_land_addr);
@@ -1565,7 +1565,7 @@ void func_80295D88(void) {
         case COURSE_WARIO_STADIUM:
             parse_course_displaylists((uintptr_t) d_course_wario_stadium_addr);
             func_80295C6C();
-            D_8015F8E4 = gMapMinY - 10.0f;
+            D_8015F8E4 = gCourseMinY - 10.0f;
             // d_course_wario_stadium_packed_dl_C50
             find_vtx_and_set_colours((uintptr_t)0x07000C50, 100, 255, 255, 255);
             // d_course_wario_stadium_packed_dl_BD8
@@ -1587,7 +1587,7 @@ void func_80295D88(void) {
             // d_course_block_fort_packed_dl_15C0
             set_vertex_data_with_default_section_id((uintptr_t)0x070015C0, 1);
             func_80295C6C();
-            D_8015F8E4 = gMapMinY - 10.0f;
+            D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_SKYSCRAPER:
             // d_course_skyscraper_packed_dl_1110
@@ -1602,7 +1602,7 @@ void func_80295D88(void) {
             // d_course_double_deck_packed_dl_738
             set_vertex_data_with_default_section_id((uintptr_t)0x07000738, 1);
             func_80295C6C();
-            D_8015F8E4 = gMapMinY - 10.0f;
+            D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_DK_JUNGLE:
             parse_course_displaylists((uintptr_t) d_course_dks_jungle_parkway_addr);

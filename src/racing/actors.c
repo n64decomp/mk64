@@ -661,7 +661,7 @@ dummylabel:
     }
 }
 
-#include "actors/tree/render.inc.c"
+#include "actors/trees/render.inc.c"
 
 #include "actors/kiwano_fruit/render.inc.c"
 
@@ -730,7 +730,7 @@ UNUSED s16 D_802B8810[] = {
 
 #include "actors/green_shell/render.inc.c"
 
-#include "actors/other_shell/render.inc.c"
+#include "actors/blue_and_red_shells/render.inc.c"
 
 #include "actors/banana/render.inc.c"
 

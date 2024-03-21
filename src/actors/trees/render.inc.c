@@ -96,7 +96,7 @@ void render_actor_tree_moo_moo_farm(Camera *camera, Mat4 arg1, struct Actor *arg
     }
 }
 
-// have all the propriety of the tree
+// have all the properties of the tree
 void func_80299864(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;

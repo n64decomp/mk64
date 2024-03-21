@@ -91,7 +91,7 @@ void update_actor_banana(struct BananaActor *banana) {
             banana->velocity[1] -= 0.15f;
         }
         banana->pos[1] += banana->velocity[1];
-        if ((banana->pos[2] < (f32) gMapMinZ) || ((f32) gMapMaxZ < banana->pos[2]) || (banana->pos[0] < (f32) gMapMinX) || ((f32) gMapMaxX < banana->pos[0]) || (banana->pos[1] < (f32) gMapMinY)) {
+        if ((banana->pos[2] < (f32) gCourseMinZ) || ((f32) gCourseMaxZ < banana->pos[2]) || (banana->pos[0] < (f32) gCourseMinX) || ((f32) gCourseMaxX < banana->pos[0]) || (banana->pos[1] < (f32) gCourseMinY)) {
             destroy_destructable_actor((struct Actor *) banana);
         } else {
             func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);

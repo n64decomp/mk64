@@ -84,14 +84,14 @@ s32 D_8015F5A4;
 s32 code_800029B0_bss_pad[48];
 Vtx *vtxBuffer[32];
 
-s16 gMapMaxX;
-s16 gMapMinX;
+s16 gCourseMaxX;
+s16 gCourseMinX;
 
-s16 gMapMaxY; // s16 or u16?
-s16 gMapMinY;
+s16 gCourseMaxY; // s16 or u16?
+s16 gCourseMinY;
 
-s16 gMapMaxZ;
-s16 gMapMinZ;
+s16 gCourseMaxZ;
+s16 gCourseMinZ;
 
 s16 D_8015F6F4;
 s16 D_8015F6F6;

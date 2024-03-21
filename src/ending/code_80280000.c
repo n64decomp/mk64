@@ -142,13 +142,13 @@ void load_credits(void) {
     D_8015F730 = gNextFreeMemoryAddress;
     set_segment_base_addr(0xB, (void *) decompress_segments((u8 *) CEREMONY_DATA_ROM_START, (u8 *) CEREMONY_DATA_ROM_END));
     
-    gMapMinX = -0x15A1;
-    gMapMinY = -0x15A1;
-    gMapMinZ = -0x15A1;
+    gCourseMinX = -0x15A1;
+    gCourseMinY = -0x15A1;
+    gCourseMinZ = -0x15A1;
 
-    gMapMaxX = 0x15A1;
-    gMapMaxY = 0x15A1;
-    gMapMaxZ = 0x15A1;
+    gCourseMaxX = 0x15A1;
+    gCourseMaxY = 0x15A1;
+    gCourseMaxZ = 0x15A1;
     D_8015F59C = 0;
     D_8015F5A0 = 0;
     D_8015F58C = 0;

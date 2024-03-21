@@ -957,7 +957,7 @@ void check_player_use_item(void) {
 
 #include "actors/green_shell/update.inc.c"
 
-#include "actors/other_shell/update.inc.c"
+#include "actors/blue_and_red_shells/update.inc.c"
 
 void func_802B4E30(struct Actor *arg0) {
     if ((arg0->unk30.unk3C[2] < 0.0f) && (arg0->unk30.unk34 == 1)) {

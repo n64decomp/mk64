@@ -26,7 +26,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
     pad0 = shell->pos[0];
     pad6 = shell->pos[1];
     pad1 = shell->pos[2];
-    if ((pad1 < gMapMinZ) || (gMapMaxZ < pad1) || (pad0 < gMapMinX) || (gMapMaxX < pad0) || (pad6 < gMapMinY)) {
+    if ((pad1 < gCourseMinZ) || (gCourseMaxZ < pad1) || (pad0 < gCourseMinX) || (gCourseMaxX < pad0) || (pad6 < gCourseMinY)) {
         destroy_destructable_actor((struct Actor *) shell);
     }
     shell->rotVelocity += 0x71C;

@@ -1644,7 +1644,7 @@ void func_800099EC(s32 playerId, Player *unused) {
 // Lots of register allocation differences, but messing around seems to suggest they stem from 2 specific areas
 // MISMATCH1: something about the loading of `playerId` is off
 // MISMATCH2: something about the handling of the math is off. Not sure exactly what though
-// MISMATCH3: there's a small instruction ordering issue concerning `gMapMaxX`. No idea what to do about it
+// MISMATCH3: there's a small instruction ordering issue concerning `gCourseMaxX`. No idea what to do about it
 // FAKEMATCH1 is the best improvement I've seen yet, MISMATCH2/3 become the only issues.
 
 void func_80009B60(s32 playerId) {
@@ -1702,17 +1702,17 @@ void func_80009B60(s32 playerId) {
             return;
         }
         D_801633E0[playerId] = 0;
-        if (player->pos[0] < gMapMinX) {
+        if (player->pos[0] < gCourseMinX) {
             D_801633E0[playerId] = 1;
         }
-        if (gMapMaxX < player->pos[0]) {
+        if (gCourseMaxX < player->pos[0]) {
             D_801633E0[playerId] = 2;
         }
-        if (player->pos[2] < gMapMinZ) {
+        if (player->pos[2] < gCourseMinZ) {
             D_801633E0[playerId] = 3;
         }
         // MISMATCH3
-        if (gMapMaxZ < player->pos[2]) {
+        if (gCourseMaxZ < player->pos[2]) {
             D_801633E0[playerId] = 4;
         }
         if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8)) {
