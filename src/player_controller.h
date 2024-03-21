@@ -36,7 +36,7 @@ void func_8002A5F4(Vec3f, f32, Vec3f, f32, f32);
 void func_8002A704(Player*, s8);
 void func_8002A79C(Player*, s8);
 void func_8002A8A4(Player*, s8);
-void func_8002AA50(Player*);
+void kart_hop(Player*);
 void func_8002AAC0(Player*);
 void func_8002AB70(Player*);
 void func_8002AE20(void);

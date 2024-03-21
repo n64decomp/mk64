@@ -247,7 +247,7 @@ glabel func_80009B60
 /* 00AA98 80009E98 24010014 */  li    $at, 20
 /* 00AA9C 80009E9C 11610003 */  beq   $t3, $at, .L80009EAC
 /* 00AAA0 80009EA0 00000000 */   nop
-/* 00AAA4 80009EA4 0C00478E */  jal   func_80011E38
+/* 00AAA4 80009EA4 0C00478E */  jal   cpu_behaviour
 /* 00AAA8 80009EA8 8FA400D0 */   lw    $a0, 0xd0($sp)
 .L80009EAC:
 /* 00AAAC 80009EAC 3C0E8016 */  lui   $t6, %hi(D_80163378) # $t6, 0x8016
@@ -1267,10 +1267,10 @@ glabel func_80009B60
 .L8000AD5C:
 /* 00B95C 8000AD5C 8FAA0034 */  lw    $t2, 0x34($sp)
 .L8000AD60:
-/* 00B960 8000AD60 3C0D8016 */  lui   $t5, %hi(D_801632E8) # 0x8016
+/* 00B960 8000AD60 3C0D8016 */  lui   $t5, %hi(gCPUBehaviourState) # 0x8016
 /* 00B964 8000AD64 24010002 */  li    $at, 2
 /* 00B968 8000AD68 01AA6821 */  addu  $t5, $t5, $t2
-/* 00B96C 8000AD6C 95AD32E8 */  lhu   $t5, %lo(D_801632E8)($t5) # 0x32e8($t5)
+/* 00B96C 8000AD6C 95AD32E8 */  lhu   $t5, %lo(gCPUBehaviourState)($t5) # 0x32e8($t5)
 /* 00B970 8000AD70 15A10013 */  bne   $t5, $at, .L8000ADC0
 /* 00B974 8000AD74 3C01800F */   lui   $at, %hi(D_800ECFB8) # $at, 0x800f
 /* 00B978 8000AD78 C424CFB8 */  lwc1  $f4, %lo(D_800ECFB8)($at)

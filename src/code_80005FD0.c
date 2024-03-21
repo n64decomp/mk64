@@ -36,7 +36,7 @@ Collision D_80162E70;
 s16 D_80162EB0; // Possibly a float.
 s16 D_80162EB2; // possibly [3]
 
-UnkCommonTextureStruct0 *D_80162EB8[20];
+CPUBehaviour *gCoursesCPUBehaviour[NUM_COURSES-1];
 
 // more padding?
 s32 D_80162F08[2];
@@ -91,17 +91,17 @@ u16 D_80163240[12];
 u16 D_80163258[12];
 u16 D_80163270[12];
 s32 D_80163288[10];
-UnkCommonTextureStruct0 *D_801632B0;
-u16 D_801632B8[12];
-u16 D_801632D0[12];
-u16 D_801632E8[12];
+CPUBehaviour *gActualCPUBehaviour;
+u16 gCurrentCPUBehaviourId[12];
+u16 gPreviousCPUBehaviourId[12];
+u16 gCPUBehaviourState[12];
 s16 D_80163300[12];
 u16 D_80163318[12];
 u16 D_80163330[10];
 u16 D_80163344[2];
 u16 D_80163348[2];
 u16 D_8016334C[2];
-u16 D_80163350[12];
+u16 gSpeedCPUBehaviour[12];
 s32 D_80163368[4];
 s32 D_80163378;
 s32 D_8016337C;
@@ -1115,22 +1115,22 @@ void func_80008424(s32 playerId, f32 arg1, Player *player) {
                 }
             } else {
                 var_a1 = 1;
-                switch (D_80163350[playerId]) {                    /* switch 1; irregular */
-                case 1:                                 /* switch 1 */
+                switch (gSpeedCPUBehaviour[playerId]) {                    /* switch 1; irregular */
+                case SPEED_CPU_BEHAVIOUR_FAST:                                 /* switch 1 */
                     player->effects &= ~0x00200000;
                     player_speed(player);
                     break;
-                case 3:                                 /* switch 1 */
+                case SPEED_CPU_BEHAVIOUR_MAX:                                 /* switch 1 */
                     player->effects |= 0x200000;
                     player_speed(player);
                     break;
-                case 2:                                 /* switch 1 */
+                case SPEED_CPU_BEHAVIOUR_SLOW:                                 /* switch 1 */
                     if (((var_f2 / 18.0f) * 216.0f) > 20.0f) {
                         arg1 = 1.6666666f;
                     }
                     var_a1 = 0;
                     break;
-                case 0:                                 /* switch 1 */
+                case SPEED_CPU_BEHAVIOUR_NORMAL:                                 /* switch 1 */
                 default:                                /* switch 1 */
                     var_a1 = 0;
                     break;
@@ -1525,7 +1525,7 @@ void func_8000929C(s32 playerId, Player *player) {
                 }
                 D_80163240[playerId] = 1;
                 func_80008F38(playerId);
-                func_80011AE4(playerId);
+                reset_cpu_behaviour(playerId);
                 D_801642D8[playerId].unk_06 = 0;
                 if ((D_8016348C == 0) && !(player->type & 0x800)) {
                     gTimePlayerLastTouchedFinishLine[playerId] = func_80009258(playerId, someTemp0, tempPos2);
@@ -1745,7 +1745,7 @@ void func_80009B60(s32 playerId) {
             }
             if (player->type & 0x1000) {
                 if ((D_801630E2 == 1) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
-                    func_80011E38(playerId);
+                    cpu_behaviour(playerId);
                 }
                 if ((playerId & 1) != (D_80163378 & 1)) {
                     cpu_use_item_strategy(playerId);
@@ -1978,7 +1978,7 @@ void func_80009B60(s32 playerId) {
                     }
                     break;
                 }
-                if ((D_801632E8[playerId] == 2) && ((D_80163068[playerId] > 0.9f) || (D_80163068[playerId] < -0.9f))) {
+                if ((gCPUBehaviourState[playerId] == CPU_BEHAVIOUR_STATE_RUNNING) && ((D_80163068[playerId] > 0.9f) || (D_80163068[playerId] < -0.9f))) {
                     D_801630E8[playerId] = 0;
                     player->effects &= ~0x10;
                 }
@@ -3561,8 +3561,8 @@ void func_8000F628(void) {
         var_s5->unk4 = var_s5->unkC;
         var_s5->unk0 = 0.0f;
         var_s5->unk8 = 0.015f;
-        func_80011AB8(i);
-        D_80163350[i] = 0;
+        reset_cpu_behaviour_none(i);
+        gSpeedCPUBehaviour[i] = 0;
         D_801644F8[i] = 0;
         D_80163398[i] = 0;
         D_801633B0[i] = 0;
@@ -4173,118 +4173,118 @@ s32 func_8001168C(PathNoY *pathDest, TrackWaypoint *pathSrc, s32 numWaypoints) {
 void func_80011A5C(void) {
     s32 i;
     for (i = 0; i < NUM_COURSES-1; i++) {
-        D_80162EB8[i] = segmented_to_virtual_dupe_2(D_800DC720[i]);
+        gCoursesCPUBehaviour[i] = segmented_to_virtual_dupe_2(D_800DC720[i]);
     }
 }
 
-void func_80011AB8(s32 index) {
-    D_801632B8[index] = 0;
-    D_801632D0[index] = 0;
-    D_801632E8[index] = 0;
+void reset_cpu_behaviour_none(s32 playerIndex) {
+    gCurrentCPUBehaviourId[playerIndex] = 0;
+    gPreviousCPUBehaviourId[playerIndex] = 0;
+    gCPUBehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_NONE;
 }
 
-void func_80011AE4(s32 index) {
-    D_801632B8[index] = 0;
-    D_801632D0[index] = 0;
-    D_801632E8[index] = 1;
+void reset_cpu_behaviour(s32 playerIndex) {
+    gCurrentCPUBehaviourId[playerIndex] = 0;
+    gPreviousCPUBehaviourId[playerIndex] = 0;
+    gCPUBehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
 }
 
-void func_80011B14(s32 playerId, Player *player) {
+void cpu_behaviour_start(s32 playerId, Player *player) {
     u16 playerWaypoint;
-    s16 temp_t1;
-    s16 temp_t2;
-    s32 temp_t3;
+    s16 waypointStart;
+    s16 waypointEnd;
+    s32 behaviourType;
     s32 test;
 
-    D_801632B0 = &D_80162EB8[gCurrentCourseId][D_801632B8[playerId]];
+    gActualCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][gCurrentCPUBehaviourId[playerId]];
 
     playerWaypoint = gNearestWaypointByPlayerId[playerId];
 
-    temp_t1 = D_801632B0->waypointId1;
-    temp_t2 = D_801632B0->waypointId2;
-    temp_t3 = D_801632B0->unk4;
+    waypointStart = gActualCPUBehaviour->waypointStart;
+    waypointEnd = gActualCPUBehaviour->waypointEnd;
+    behaviourType = gActualCPUBehaviour->type;
 
-    if ((temp_t1 == -1) && (temp_t2 == -1)) {
-        D_801632B0 = &D_80162EB8[gCurrentCourseId][0];
-        func_80011AB8(playerId);
+    if ((waypointStart == -1) && (waypointEnd == -1)) {
+        gActualCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][0];
+        reset_cpu_behaviour_none(playerId);
         return;
     }
-    if ((u32)playerWaypoint == temp_t1) {
-        D_801632E8[playerId] = 2;
-        D_801632D0[playerId] = D_801632B8[playerId];
-        D_801632B8[playerId] += 1;
-        switch (temp_t3) {
-        case 1:
+    if ((u32)playerWaypoint == waypointStart) {
+        gCPUBehaviourState[playerId] = CPU_BEHAVIOUR_STATE_RUNNING;
+        gPreviousCPUBehaviourId[playerId] = gCurrentCPUBehaviourId[playerId];
+        gCurrentCPUBehaviourId[playerId]++;
+        switch (behaviourType) {
+        case BEHAVIOUR_1:
             func_80011EC0(playerId, player, player->unk_07C >> 0x10, playerWaypoint);
             break;
-        case 2:
-            func_8002AA50(player);
+        case BEHAVIOUR_HOP:
+            kart_hop(player);
             player->effects &= ~0x10;
             D_801630E8[playerId] = 0;
             break;
-        case 3:
+        case BEHAVIOUR_3:
             D_801634F8[playerId].unk4 = 0.0f;
             break;
-        case 4:
+        case BEHAVIOUR_4:
             D_801634F8[playerId].unk4 = -0.6f;
             break;
-        case 5:
+        case BEHAVIOUR_5:
             D_801634F8[playerId].unk4 = 0.6f;
             break;
-        case 6:
-            D_80163350[playerId] = 0;
+        case BEHAVIOUR_NORMAL_SPEED:
+            gSpeedCPUBehaviour[playerId] = SPEED_CPU_BEHAVIOUR_NORMAL;
             break;
-        case 7:
-            D_80163350[playerId] = 1;
+        case BEHAVIOUR_FAST_SPEED:
+            gSpeedCPUBehaviour[playerId] = SPEED_CPU_BEHAVIOUR_FAST;
             break;
-        case 8:
-            D_80163350[playerId] = 2;
+        case BEHAVIOUR_SLOW_SPEED:
+            gSpeedCPUBehaviour[playerId] = SPEED_CPU_BEHAVIOUR_SLOW;
             break;
-        case 11:
-            D_80163350[playerId] = 3;
+        case BEHAVIOUR_MAX_SPEED:
+            gSpeedCPUBehaviour[playerId] = SPEED_CPU_BEHAVIOUR_MAX;
             break;
-        case 9:
+        case BEHAVIOUR_9:
             D_801633F8[playerId] = 1;
             D_801631E0[playerId] = 0;
             gPlayers[playerId].effects &= ~0x1000;
             break;
-        case 10:
+        case BEHAVIOUR_10:
             D_801633F8[playerId] = 0;
             break;
         }
     }
 }
 
-void func_80011D48(s32 playerIndex, Player *player) {
+void cpu_behaviour_end(s32 playerIndex, Player *player) {
     u16 nearestWaypoint;
-    u32 thing;
-    s32 temp_a2;
+    u32 waypointEnd;
+    s32 behaviourType;
 
-    D_801632B0 = &D_80162EB8[gCurrentCourseId][D_801632D0[playerIndex]];
+    gActualCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][gPreviousCPUBehaviourId[playerIndex]];
     nearestWaypoint = gNearestWaypointByPlayerId[playerIndex];
-    temp_a2 = D_801632B0->unk4;
-    thing = D_801632B0->waypointId2;
-    if (nearestWaypoint >= thing) {
-        switch (temp_a2) {
-        case 1:
+    behaviourType = gActualCPUBehaviour->type;
+    waypointEnd = gActualCPUBehaviour->waypointEnd;
+    if (nearestWaypoint >= waypointEnd) {
+        switch (behaviourType) {
+        case BEHAVIOUR_1:
             player->effects &= ~0x10;
             D_801630E8[playerIndex] = 0;
-            D_801632E8[playerIndex] = 1;
+            gCPUBehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
             break;
-        case 3:
-        case 4:
-        case 5:
+        case BEHAVIOUR_3:
+        case BEHAVIOUR_4:
+        case BEHAVIOUR_5:
             D_801634F8[playerIndex].unk4 = D_801634F8[playerIndex].unkC;
-            D_801632E8[playerIndex] = 1;
+            gCPUBehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
             break;
-        case 2:
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-        case 10:
-        case 11:
-            D_801632E8[playerIndex] = 1;
+        case BEHAVIOUR_HOP:
+        case BEHAVIOUR_NORMAL_SPEED:
+        case BEHAVIOUR_FAST_SPEED:
+        case BEHAVIOUR_SLOW_SPEED:
+        case BEHAVIOUR_9:
+        case BEHAVIOUR_10:
+        case BEHAVIOUR_MAX_SPEED:
+            gCPUBehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
             break;
         default:
             break;
@@ -4292,17 +4292,17 @@ void func_80011D48(s32 playerIndex, Player *player) {
     }
 }
 
-void func_80011E38(s32 playerIndex) {
+void cpu_behaviour(s32 playerIndex) {
     Player *player = gPlayerOne + playerIndex;
 
-    switch(D_801632E8[playerIndex]) {
-        case 0:
+    switch(gCPUBehaviourState[playerIndex]) {
+        case CPU_BEHAVIOUR_STATE_NONE:
             break;
-        case 1:
-            func_80011B14(playerIndex, player);
+        case CPU_BEHAVIOUR_STATE_START:
+            cpu_behaviour_start(playerIndex, player);
             break;
-        case 2:
-            func_80011D48(playerIndex, player);
+        case CPU_BEHAVIOUR_STATE_RUNNING:
+            cpu_behaviour_end(playerIndex, player);
             break;
     }
 }
@@ -4314,7 +4314,7 @@ void func_80011EC0(s32 arg0, Player *player, s32 arg2, u16 arg3) {
         case 2:
             if ((arg2 >= -9) && (D_80162FF8[arg0] == 0)) {
                 if ((D_80163068[arg0] > -0.8) && (D_80163068[arg0] < 0.5)) {
-                    func_8002AA50(player);
+                    kart_hop(player);
                     player->effects |= 0x10;
                     D_801630E8[arg0] = 1;
                     break;
@@ -4326,7 +4326,7 @@ void func_80011EC0(s32 arg0, Player *player, s32 arg2, u16 arg3) {
         case 3:
             if ((arg2 < 0xA) && (D_80162FF8[arg0] == 0)) {
                 if ((D_80163068[arg0] > -0.5) && (D_80163068[arg0] < 0.8)) {
-                    func_8002AA50(player);
+                    kart_hop(player);
                     player->effects |= 0x10;
                     D_801630E8[arg0] = -1;
                     break;

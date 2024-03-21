@@ -1308,7 +1308,7 @@ void func_8002A8A4(Player *player, s8 arg1) {
     }
 }
 
-void func_8002AA50(Player *player) {
+void kart_hop(Player *player) {
     player->kartHopJerk = gKartHopJerkTable[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = gKartHopInitialVelocityTable[player->characterId];
@@ -1504,7 +1504,7 @@ void func_8002B218(Player *player) {
     for (someIndex = 0; someIndex < 10; someIndex++) {
         if (player->unk_006 == sp38[someIndex]) {
             player->effects |= 0x10;
-            func_8002AA50(player);
+            kart_hop(player);
             player->unk_204 = 0;
             break;
         }
@@ -4643,7 +4643,7 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
                 ((player->effects & 2) != 2) && 
                 ((player->effects & 0x10) != 0x10) && 
                 (controller->buttonPressed & R_TRIG)) {
-                    func_8002AA50(player);
+                    kart_hop(player);
                     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
                         func_800C9060(arg2, 0x19008000);
                     }

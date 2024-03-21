@@ -2,7 +2,7 @@
 #include "courses/all_course_data.h"
 #include "ending/ceremony_data.inc.h"
 
-UnkCommonTextureStruct0 *D_800DC720[NUM_COURSES+1] = {
+CPUBehaviour *D_800DC720[NUM_COURSES+1] = {
 	D_0D008F28, /* COURSE_MARIO_RACEWAY     */
     D_0D008F80, /* COURSE_CHOCO_MOUNTAIN    */
     D_0D008FB8, /* COURSE_BOWSER_CASTLE     */
