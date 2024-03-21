@@ -1740,11 +1740,11 @@ void func_80009B60(s32 playerId) {
                 player->unk_044 &= ~0x0001;
             }
             func_8000929C(playerId, player);
-            if ((gCurrentCourseId != 0x0014) && ((D_80163240[playerId] == 1) || (playerId == 0))) {
+            if ((gCurrentCourseId != COURSE_AWARD_CEREMONY) && ((D_80163240[playerId] == 1) || (playerId == 0))) {
                 set_places();
             }
             if (player->type & 0x1000) {
-                if ((D_801630E2 == 1) && (gCurrentCourseId != 0x0014)) {
+                if ((D_801630E2 == 1) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
                     func_80011E38(playerId);
                 }
                 if ((playerId & 1) != (D_80163378 & 1)) {
@@ -4172,7 +4172,7 @@ s32 func_8001168C(PathNoY *pathDest, TrackWaypoint *pathSrc, s32 numWaypoints) {
 
 void func_80011A5C(void) {
     s32 i;
-    for (i = 0; i < 20; i++) {
+    for (i = 0; i < NUM_COURSES-1; i++) {
         D_80162EB8[i] = segmented_to_virtual_dupe_2(D_800DC720[i]);
     }
 }
@@ -4190,32 +4190,32 @@ void func_80011AE4(s32 index) {
 }
 
 void func_80011B14(s32 playerId, Player *player) {
-    u16 sp2E;
+    u16 playerWaypoint;
     s16 temp_t1;
     s16 temp_t2;
     s32 temp_t3;
     s32 test;
 
-    D_801632B0 = D_80162EB8[gCurrentCourseId] + D_801632B8[playerId];
+    D_801632B0 = &D_80162EB8[gCurrentCourseId][D_801632B8[playerId]];
 
-    sp2E = gNearestWaypointByPlayerId[playerId];
+    playerWaypoint = gNearestWaypointByPlayerId[playerId];
 
     temp_t1 = D_801632B0->waypointId1;
     temp_t2 = D_801632B0->waypointId2;
     temp_t3 = D_801632B0->unk4;
 
     if ((temp_t1 == -1) && (temp_t2 == -1)) {
-        D_801632B0 = D_80162EB8[gCurrentCourseId];
+        D_801632B0 = &D_80162EB8[gCurrentCourseId][0];
         func_80011AB8(playerId);
         return;
     }
-    if ((u32)sp2E == temp_t1) {
+    if ((u32)playerWaypoint == temp_t1) {
         D_801632E8[playerId] = 2;
         D_801632D0[playerId] = D_801632B8[playerId];
         D_801632B8[playerId] += 1;
         switch (temp_t3) {
         case 1:
-            func_80011EC0(playerId, player, player->unk_07C >> 0x10, sp2E);
+            func_80011EC0(playerId, player, player->unk_07C >> 0x10, playerWaypoint);
             break;
         case 2:
             func_8002AA50(player);

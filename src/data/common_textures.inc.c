@@ -2257,11 +2257,13 @@ Vtx D_0D008ED8[] = {
     {{{    -1,       3,      -1}, 3, {65535, 3}, {0x00, 0x01, 0x00, 0x00}}},
 };
 
+/* COURSE_BATTLE            */
 UnkCommonTextureStruct0 D_0D008F18[] = {
     {  1,  3, 2, },
     { -1, -1, 0, },
 };
 
+/* COURSE_MARIO_RACEWAY     */
 UnkCommonTextureStruct0 D_0D008F28[] = {
     {   1,   2, 6, },
     {  11,  30, 1, },
@@ -2276,6 +2278,7 @@ UnkCommonTextureStruct0 D_0D008F28[] = {
     {  -1,  -1, 0, },
 };
 
+/* COURSE_CHOCO_MOUNTAIN    */
 UnkCommonTextureStruct0 D_0D008F80[] = {
     {   1,   2, 6, },
     {  10,  25, 1, },
@@ -2286,6 +2289,7 @@ UnkCommonTextureStruct0 D_0D008F80[] = {
     {  -1,  -1, 0, },
 };
 
+/* COURSE_BOWSER_CASTLE     */
 UnkCommonTextureStruct0 D_0D008FB8[] = {
     {   1,   2,  6, },
     {  60,  80,  1, },
@@ -2309,6 +2313,7 @@ UnkCommonTextureStruct0 D_0D008FB8[] = {
     {  -1,  -1,  0, },
 };
 
+/* COURSE_BANSHEE_BOARDWALK */
 UnkCommonTextureStruct0 D_0D009058[] = {
     {   1,   2, 6, },
     {  15,  30, 1, },
@@ -2324,6 +2329,7 @@ UnkCommonTextureStruct0 D_0D009058[] = {
     {  -1,  -1, 0, },
 };
 
+/* COURSE_YOSHI_VALLEY      */
 UnkCommonTextureStruct0 D_0D0090B8[] = {
     {   1,   2, 6, },
     {  70,  94, 1, },
@@ -2335,6 +2341,7 @@ UnkCommonTextureStruct0 D_0D0090B8[] = {
     {  -1,  -1, 0, },
 };
 
+/* COURSE_FRAPPE_SNOWLAND   */
 UnkCommonTextureStruct0 D_0D0090F8[] = {
     {   1,   2,  6, },
     {  15,  30,  1, },
@@ -2350,6 +2357,7 @@ UnkCommonTextureStruct0 D_0D0090F8[] = {
     {  -1,  -1,  0, },
 };
 
+/* COURSE_KOOPA_BEACH       */
 UnkCommonTextureStruct0 D_0D009158[] = {
     {   1,   2, 6, },
     {  75, 100, 1, },
@@ -2359,6 +2367,7 @@ UnkCommonTextureStruct0 D_0D009158[] = {
     {  -1,  -1, 0, },
 };
 
+/* COURSE_ROYAL_RACEWAY     */
 UnkCommonTextureStruct0 D_0D009188[] = {
     {   1,   2,  6, },
     {  65,  80,  1, },
@@ -2374,6 +2383,7 @@ UnkCommonTextureStruct0 D_0D009188[] = {
     {  -1,  -1,  0, },
 };
 
+/* COURSE_LUIGI_RACEWAY     */
 UnkCommonTextureStruct0 D_0D0091E8[] = {
     {   1,   2, 6, },
     { 128, 275, 1, },
@@ -2382,6 +2392,7 @@ UnkCommonTextureStruct0 D_0D0091E8[] = {
     {  -1,  -1, 0, },
 };
 
+/* COURSE_MOO_MOO_FARM      */
 UnkCommonTextureStruct0 D_0D009210[] = {
     {   1,   2, 6, },
     {  75, 100, 1, },
@@ -2390,6 +2401,7 @@ UnkCommonTextureStruct0 D_0D009210[] = {
     {  -1,  -1, 0, },
 };
 
+/* COURSE_TOADS_TURNPIKE    */
 UnkCommonTextureStruct0 D_0D009238[] = {
     {   1,   2, 6, },
     { 106, 188, 1, },
@@ -2398,6 +2410,7 @@ UnkCommonTextureStruct0 D_0D009238[] = {
     {  -1,  -1, 0, },
 };
 
+/* COURSE_KALAMARI_DESERT   */
 UnkCommonTextureStruct0 D_0D009260[] = {
     {   1,   2, 6, },
     { 245, 262, 1, },
@@ -2405,6 +2418,7 @@ UnkCommonTextureStruct0 D_0D009260[] = {
     {  -1,  -1, 0, },
 };
 
+/* COURSE_SHERBET_LAND      */
 UnkCommonTextureStruct0 D_0D009280[] = {
     {   1,   2, 6, },
     {   7,  38, 1, },
@@ -2417,6 +2431,7 @@ UnkCommonTextureStruct0 D_0D009280[] = {
     {  -1,  -1, 0, },
 };
 
+/* COURSE_RAINBOW_ROAD      */
 UnkCommonTextureStruct0 D_0D0092C8[] = {
     {    1,    2,  6, },
     {    4,    5,  9, },
@@ -2429,6 +2444,7 @@ UnkCommonTextureStruct0 D_0D0092C8[] = {
     {   -1,   -1,  0, },
 };
 
+/* COURSE_WARIO_STADIUM     */
 UnkCommonTextureStruct0 D_0D009310[] = {
     {    1,    2,  6, },
     {   80,  120,  1, },
@@ -2454,6 +2470,7 @@ UnkCommonTextureStruct0 D_0D009310[] = {
     {   -1,   -1,  0, },
 };
 
+/* COURSE_DK_JUNGLE         */
 UnkCommonTextureStruct0 D_0D0093C0[] = {
     {   1,    2,  6, },
     {  20,   40,  1, },
