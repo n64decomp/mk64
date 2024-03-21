@@ -144,7 +144,7 @@ f32  func_80010FA0(f32, f32, f32, s32, s32);
 s32  func_80011014(TrackWaypoint *, TrackWaypoint *, s32, s32);
 s32  process_path_data(TrackWaypoint*, TrackWaypoint*);
 s32  func_8001168C(PathNoY*, TrackWaypoint*, s32);
-void func_80011A5C(void);
+void copy_coursesc_cpu_behaviour(void);
 void reset_cpu_behaviour_none(s32);
 void reset_cpu_behaviour(s32);
 void cpu_behaviour_start(s32, Player*);

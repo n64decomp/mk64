@@ -2,28 +2,28 @@
 #include "courses/all_course_data.h"
 #include "ending/ceremony_data.inc.h"
 
-CPUBehaviour *D_800DC720[NUM_COURSES+1] = {
-	D_0D008F28, /* COURSE_MARIO_RACEWAY     */
-    D_0D008F80, /* COURSE_CHOCO_MOUNTAIN    */
-    D_0D008FB8, /* COURSE_BOWSER_CASTLE     */
-    D_0D009058, /* COURSE_BANSHEE_BOARDWALK */
-	D_0D0090B8, /* COURSE_YOSHI_VALLEY      */
-    D_0D0090F8, /* COURSE_FRAPPE_SNOWLAND   */
-    D_0D009158, /* COURSE_KOOPA_BEACH       */
-    D_0D009188, /* COURSE_ROYAL_RACEWAY     */
-	D_0D0091E8, /* COURSE_LUIGI_RACEWAY     */
-    D_0D009210, /* COURSE_MOO_MOO_FARM      */
-    D_0D009238, /* COURSE_TOADS_TURNPIKE    */
-    D_0D009260, /* COURSE_KALAMARI_DESERT   */
-	D_0D009280, /* COURSE_SHERBET_LAND      */
-    D_0D0092C8, /* COURSE_RAINBOW_ROAD      */
-    D_0D009310, /* COURSE_WARIO_STADIUM     */
-    D_0D008F18, /* COURSE_BLOCK_FORT        */
-	D_0D008F18, /* COURSE_SKYSCRAPER        */
-    D_0D008F18, /* COURSE_DOUBLE_DECK       */
-    D_0D0093C0, /* COURSE_DK_JUNGLE         */
-    D_0D008F18, /* COURSE_BIG_DONUT         */
-	D_0D008F18, /* COURSE_AWARD_CEREMONY    */
+CPUBehaviour *gRomCoursesCPUBehaviour[NUM_COURSES+1] = {
+	common_cpu_behaviour_mario_raceway,
+    common_cpu_behaviour_choco_mountain,
+    common_cpu_behaviour_bowser_castle, 
+    common_cpu_behaviour_banshee_boardwalk,
+	common_cpu_behaviour_yoshi_valley,
+    common_cpu_behaviour_frappe_snowland,
+    common_cpu_behaviour_koopa_beach,
+    common_cpu_behaviour_royal_raceway,
+	common_cpu_behaviour_luigi_raceway,
+    common_cpu_behaviour_moo_moo_farm,
+    common_cpu_behaviour_toad_turnpike,
+    common_cpu_behaviour_kalamari_desert,
+	common_cpu_behaviour_sherbet_land,
+    common_cpu_behaviour_rainbow_road,
+    common_cpu_behaviour_wario_stadium,
+    common_cpu_behaviour_battle_course, /* COURSE_BLOCK_FORT        */
+	common_cpu_behaviour_battle_course, /* COURSE_SKYSCRAPER        */
+    common_cpu_behaviour_battle_course, /* COURSE_DOUBLE_DECK       */
+    common_cpu_behaviour_dk_jungle,
+    common_cpu_behaviour_battle_course, /* COURSE_BIG_DONUT         */
+	common_cpu_behaviour_battle_course, /* COURSE_AWARD_CEREMONY    */
     NULL,       /* NUM_COURSES              */
 };
 

@@ -3662,7 +3662,7 @@ void func_8000F628(void) {
             }
         }
     }
-    func_80011A5C();
+    copy_coursesc_cpu_behaviour();
 }
 
 // @arg index from 0 to 3.
@@ -4170,10 +4170,10 @@ s32 func_8001168C(PathNoY *pathDest, TrackWaypoint *pathSrc, s32 numWaypoints) {
     return count;
 }
 
-void func_80011A5C(void) {
+void copy_coursesc_cpu_behaviour(void) {
     s32 i;
     for (i = 0; i < NUM_COURSES-1; i++) {
-        gCoursesCPUBehaviour[i] = segmented_to_virtual_dupe_2(D_800DC720[i]);
+        gCoursesCPUBehaviour[i] = segmented_to_virtual_dupe_2(gRomCoursesCPUBehaviour[i]);
     }
 }
 

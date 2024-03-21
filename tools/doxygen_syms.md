@@ -166,7 +166,7 @@ Variable Name | Memory Address
 [func_80011014](@ref func_80011014) | 0x80011014
 [process_path_data](@ref process_path_data) | 0x800115F4
 [func_8001168C](@ref func_8001168C) | 0x8001168C
-[func_80011A5C](@ref func_80011A5C) | 0x80011A5C
+[copy_coursesc_cpu_behaviour](@ref copy_coursesc_cpu_behaviour) | 0x80011A5C
 [reset_cpu_behaviour_none](@ref reset_cpu_behaviour_none) | 0x80011AB8
 [reset_cpu_behaviour](@ref reset_cpu_behaviour) | 0x80011AE4
 [cpu_behaviour_start](@ref cpu_behaviour_start) | 0x80011B14
@@ -2680,7 +2680,7 @@ Variable Name | Memory Address
 [sCrashScreenButtonSequence](@ref sCrashScreenButtonSequence) | 0x800DC6FC
 [D_800DC710](@ref D_800DC710) | 0x800DC710
 [D_800DC714](@ref D_800DC714) | 0x800DC714
-[D_800DC720](@ref D_800DC720) | 0x800DC720
+[gRomCoursesCPUBehaviour](@ref gRomCoursesCPUBehaviour) | 0x800DC720
 [nullPath](@ref nullPath) | 0x800DC778
 [gCoursePathTable](@ref gCoursePathTable) | 0x800DC780
 [D_800DC8D0](@ref D_800DC8D0) | 0x800DC8D0
