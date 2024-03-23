@@ -500,6 +500,7 @@ common_shadow_i4:
   symbol: common_shadow_i4
   offset: 0x6A58
   size: 0x100
+  type: texture
   width: 32
   height: 32
   format: i4
@@ -507,6 +508,7 @@ D_0D006AD8:
   symbol: D_0D006AD8
   offset: 0x6AD8
   size: 0x100
+  type: texture
   width: 32
   height: 32
   format: i4
@@ -514,11 +516,13 @@ common_tlut_debug_font:
   symbol: common_tlut_debug_font
   offset: 0x6AD8
   size: 0x100
+  type: texture
   width: 32
   height: 32
   format: tlut
 common_texture_debug_font:
   symbol: common_texture_debug_font
+  type: texture
   offset: 0x6AD8
   size: 0x100
   width: 32
