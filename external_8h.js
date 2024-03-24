@@ -9,6 +9,7 @@ var external_8h =
     [ "struct_D_801930D0_entry", "structstruct__D__801930D0__entry.html", "structstruct__D__801930D0__entry" ],
     [ "ChannelVolumeScaleFade", "structChannelVolumeScaleFade.html", "structChannelVolumeScaleFade" ],
     [ "UnkStruct8018EF18", "structUnkStruct8018EF18.html", "structUnkStruct8018EF18" ],
+    [ "struct_D_80192CA8_entry", "structstruct__D__80192CA8__entry.html", "structstruct__D__80192CA8__entry" ],
     [ "ADSR_ACTION_DECAY", "external_8h.html#a22aa905324ebd351c4902a6b073aae91", null ],
     [ "ADSR_ACTION_HANG", "external_8h.html#ab96273a1a24a139484d54ecf0275039e", null ],
     [ "ADSR_ACTION_RELEASE", "external_8h.html#a5fb66c127ca880b720cb7bab29046c16", null ],
