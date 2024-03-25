@@ -2174,7 +2174,7 @@ typedef union {
 /***
  ***  1 Quadrangle
  ***/
-#define gSP1Quadrangle(v0, v1, v2, v3, flag)                  \
+#define gSP1Quadrangle(pkt, v0, v1, v2, v3, flag)                  \
 {{                                                            \
         Gfx *_g = (Gfx *)(pkt);                               \
                                                               \

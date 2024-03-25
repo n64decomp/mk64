@@ -135,11 +135,11 @@ void vec3s_copy(Vec3s dest, Vec3s src) {
     dest[2] = src[2];
 }
 
-UNUSED void *vec3f_set_return(Vec3f dest, f32 x, f32 y, f32 z) {
-    dest[0] = x;
-    dest[1] = y;
-    dest[2] = z;
-    return &dest;
+UNUSED void vec3f_set_return(Vec3f *dest, f32 x, f32 y, f32 z) {
+    *dest[0] = x;
+    *dest[1] = y;
+    *dest[2] = z;
+
 }
 
 // Copy mat1 to mat2

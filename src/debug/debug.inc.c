@@ -28,21 +28,21 @@ variableWatchAttributes gMainVariableWatchList[] = {
 	{
 		"Player Type: ",
 		&gPlayers[0].type,
-		sizeof(gPlayerOne->type), 
+		sizeof(gPlayers[0].boundingBoxCorners[0].cornerPos[0]), 
 		DISPLAY_HEXIDECIMAL_NUMBER,
 		0, 0
 	},
 	{
 		"X ",
 		&gPlayers[0].pos[0],
-		sizeof(gPlayerOne->pos[0]), 
+		sizeof(gPlayers[0].pos[0]), 
 		DISPLAY_FLOAT_NUMBER,
 		0, 0
 	},
 	{
 		"Y ",
 		&gPlayers[0].pos[1],
-		sizeof(gPlayerOne->pos[1]), 
+		sizeof(gPlayers[0].pos[1]), 
 		DISPLAY_FLOAT_NUMBER,
 		0, 0
 	},
@@ -50,6 +50,27 @@ variableWatchAttributes gMainVariableWatchList[] = {
 		"Z ",
 		&gPlayers[0].pos[2],
 		sizeof(gPlayerOne->pos[2]), 
+		DISPLAY_FLOAT_NUMBER,
+		0, 0
+	},
+	{
+		"X ",
+		&gPlayers[0].pos[0],
+		sizeof(gPlayers[0].boundingBoxCorners[0].cornerPos[0]), 
+		DISPLAY_FLOAT_NUMBER,
+		0, 0
+	},
+	{
+		"Y ",
+		&gPlayers[0].pos[1],
+		sizeof(gPlayers[0].boundingBoxCorners[0].cornerPos[1]), 
+		DISPLAY_FLOAT_NUMBER,
+		0, 0
+	},
+	{
+		"Z ",
+		&gPlayers[0].pos[2],
+		sizeof(gPlayers[0].boundingBoxCorners[0].cornerPos[2]), 
 		DISPLAY_FLOAT_NUMBER,
 		0, 0
 	},

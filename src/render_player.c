@@ -20,6 +20,8 @@
 #include "common_textures.h"
 #include "skybox_and_splitscreen.h"
 #include "spawn_players.h"
+#include <PR/gbi.h>
+#include <PR/os.h>
 
 s8 gRenderingFramebufferByPlayer[] = {
     0x00, 0x02, 0x00, 0x01, 0x00, 0x01, 0x00, 0x02
@@ -604,6 +606,44 @@ void render_players_on_screen_four(void) {
         func_8006E744(gPlayerFour, 3, 3);
     }
     gPlayersToRenderCount = 0;
+}
+
+void vec3f_to_vtx(Vec3f src, Vtx *dest) {
+    dest->v.ob[0] = src[0];
+    dest->v.ob[1] = src[1];
+    dest->v.ob[2] = src[2];
+    dest->v.flag = 0;
+    dest->v.tc[0] = 0;
+    dest->v.tc[1] = 0;
+    dest->v.cn[0] = 0xFF;
+    dest->v.cn[1] = 0xFF;
+    dest->v.cn[2] = 0xFF;
+    dest->v.cn[3] = 0xFF;
+}
+
+void drawBoundingBox(Player *player) {
+
+    Vec3f test[4];
+    Vtx v[4];
+
+    vec3f_set_return(&test[0], player->boundingBoxCorners[0].cornerPos[0]/10, player->boundingBoxCorners[0].cornerPos[1]/10, player->boundingBoxCorners[0].cornerPos[2]/10);
+    vec3f_set_return(&test[1], player->boundingBoxCorners[1].cornerPos[0]/10, player->boundingBoxCorners[1].cornerPos[1]/10, player->boundingBoxCorners[1].cornerPos[2]/10);
+    vec3f_set_return(&test[2], player->boundingBoxCorners[2].cornerPos[0]/10, player->boundingBoxCorners[2].cornerPos[1]/10, player->boundingBoxCorners[2].cornerPos[2]/10);
+    vec3f_set_return(&test[3], player->boundingBoxCorners[3].cornerPos[0]/10, player->boundingBoxCorners[3].cornerPos[1]/10, player->boundingBoxCorners[3].cornerPos[2]/10);
+
+    vec3f_to_vtx(test[0], &v[0]);
+    vec3f_to_vtx(test[1], &v[1]);
+    vec3f_to_vtx(test[2], &v[2]);
+    vec3f_to_vtx(test[3], &v[3]);
+
+    // Render both sides of tri
+    //gSPClearGeometryMode(gDisplayListHead++, G_CULL_BOTH | G_CULL_FRONT | G_CULL_BACK);
+
+    gSPVertex(gDisplayListHead++, VIRTUAL_TO_PHYSICAL2(v), 4, 0);
+    //gSP1Quadrangle(gDisplayListHead++, 0, 1, 3, 2, 0);
+    gSP1Triangle(gDisplayListHead++, 0, 1, 2, 0);
+    gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
+
 }
 
 void func_80021B0C(void) {
@@ -1638,6 +1678,9 @@ void player_render(Player *player, s8 playerId, s8 arg2) {
     s32 var_v1;
     OSMesg *sp34;
 
+        if ((gPlayerOne->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
+        drawBoundingBox(gPlayerOne);
+    }
     func_80026B4C(player, playerId, arg2, D_801651D0[arg2][playerId]);
     if (!(player->unk_002 & (4 << (arg2 * 4)))) {
         var_v1 = 0;
