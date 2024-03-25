@@ -235,7 +235,7 @@ glabel func_8000929C
 /* 00A1E4 800095E4 AFA70030 */  sw    $a3, 0x30($sp)
 /* 00A1E8 800095E8 0C0023CE */  jal   func_80008F38
 /* 00A1EC 800095EC AFA40050 */   sw    $a0, 0x50($sp)
-/* 00A1F0 800095F0 0C0046B9 */  jal   func_80011AE4
+/* 00A1F0 800095F0 0C0046B9 */  jal   reset_cpu_behaviour
 /* 00A1F4 800095F4 8FA40050 */   lw    $a0, 0x50($sp)
 /* 00A1F8 800095F8 8FA40050 */  lw    $a0, 0x50($sp)
 /* 00A1FC 800095FC 3C0F8016 */  lui   $t7, %hi(D_8016348C) # $t7, 0x8016

@@ -2,13 +2,29 @@
 #include "courses/all_course_data.h"
 #include "ending/ceremony_data.inc.h"
 
-UnkCommonTextureStruct0 *D_800DC720[] = {
-	D_0D008F28, D_0D008F80, D_0D008FB8, D_0D009058,
-	D_0D0090B8, D_0D0090F8, D_0D009158, D_0D009188,
-	D_0D0091E8, D_0D009210, D_0D009238, D_0D009260,
-	D_0D009280, D_0D0092C8, D_0D009310, D_0D008F18,
-	D_0D008F18, D_0D008F18, D_0D0093C0, D_0D008F18,
-	D_0D008F18, NULL,
+CPUBehaviour *gRomCoursesCPUBehaviour[NUM_COURSES+1] = {
+	common_cpu_behaviour_mario_raceway,
+    common_cpu_behaviour_choco_mountain,
+    common_cpu_behaviour_bowser_castle, 
+    common_cpu_behaviour_banshee_boardwalk,
+	common_cpu_behaviour_yoshi_valley,
+    common_cpu_behaviour_frappe_snowland,
+    common_cpu_behaviour_koopa_beach,
+    common_cpu_behaviour_royal_raceway,
+	common_cpu_behaviour_luigi_raceway,
+    common_cpu_behaviour_moo_moo_farm,
+    common_cpu_behaviour_toad_turnpike,
+    common_cpu_behaviour_kalamari_desert,
+	common_cpu_behaviour_sherbet_land,
+    common_cpu_behaviour_rainbow_road,
+    common_cpu_behaviour_wario_stadium,
+    common_cpu_behaviour_battle_courses, /* COURSE_BLOCK_FORT        */
+	common_cpu_behaviour_battle_courses, /* COURSE_SKYSCRAPER        */
+    common_cpu_behaviour_battle_courses, /* COURSE_DOUBLE_DECK       */
+    common_cpu_behaviour_dk_jungle,
+    common_cpu_behaviour_battle_courses, /* COURSE_BIG_DONUT         */
+	common_cpu_behaviour_battle_courses, /* COURSE_AWARD_CEREMONY    */
+    NULL,       /* NUM_COURSES              */
 };
 
 TrackWaypoint nullPath = { 0x8000, 0x0000, 0x0000, 0x0000 };

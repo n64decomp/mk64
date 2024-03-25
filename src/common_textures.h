@@ -5,10 +5,25 @@
 #include <PR/gbi.h>
 
 typedef struct {
-    /* 0x0 */ s16 waypointId1;
-    /* 0x2 */ s16 waypointId2;
-    /* 0x4 */ s32 unk4;
-} UnkCommonTextureStruct0; // size = 0x8
+    /* 0x0 */ s16 waypointStart;
+    /* 0x2 */ s16 waypointEnd;
+    /* 0x4 */ s32 type;
+} CPUBehaviour; // size = 0x8
+
+enum {
+    BEHAVIOUR_NONE = 0,
+    BEHAVIOUR_1,
+    BEHAVIOUR_HOP,
+    BEHAVIOUR_3,
+    BEHAVIOUR_4,
+    BEHAVIOUR_5,
+    BEHAVIOUR_NORMAL_SPEED,
+    BEHAVIOUR_FAST_SPEED,
+    BEHAVIOUR_SLOW_SPEED,
+    BEHAVIOUR_9,
+    BEHAVIOUR_10,
+    BEHAVIOUR_MAX_SPEED
+};
 
 /** @cond */
 
@@ -232,23 +247,23 @@ extern Gfx D_0D008E48[];
 extern Gfx D_0D008E70[];
 extern Mtx D_0D008E98;
 extern Vtx D_0D008ED8[];
-extern UnkCommonTextureStruct0 D_0D008F18[];
-extern UnkCommonTextureStruct0 D_0D008F28[];
-extern UnkCommonTextureStruct0 D_0D008F80[];
-extern UnkCommonTextureStruct0 D_0D008FB8[];
-extern UnkCommonTextureStruct0 D_0D009058[];
-extern UnkCommonTextureStruct0 D_0D0090B8[];
-extern UnkCommonTextureStruct0 D_0D0090F8[];
-extern UnkCommonTextureStruct0 D_0D009158[];
-extern UnkCommonTextureStruct0 D_0D009188[];
-extern UnkCommonTextureStruct0 D_0D0091E8[];
-extern UnkCommonTextureStruct0 D_0D009210[];
-extern UnkCommonTextureStruct0 D_0D009238[];
-extern UnkCommonTextureStruct0 D_0D009260[];
-extern UnkCommonTextureStruct0 D_0D009280[];
-extern UnkCommonTextureStruct0 D_0D0092C8[];
-extern UnkCommonTextureStruct0 D_0D009310[];
-extern UnkCommonTextureStruct0 D_0D0093C0[];
+extern CPUBehaviour common_cpu_behaviour_battle_courses[];
+extern CPUBehaviour common_cpu_behaviour_mario_raceway[];
+extern CPUBehaviour common_cpu_behaviour_choco_mountain[];
+extern CPUBehaviour common_cpu_behaviour_bowser_castle[];
+extern CPUBehaviour common_cpu_behaviour_banshee_boardwalk[];
+extern CPUBehaviour common_cpu_behaviour_yoshi_valley[];
+extern CPUBehaviour common_cpu_behaviour_frappe_snowland[];
+extern CPUBehaviour common_cpu_behaviour_koopa_beach[];
+extern CPUBehaviour common_cpu_behaviour_royal_raceway[];
+extern CPUBehaviour common_cpu_behaviour_luigi_raceway[];
+extern CPUBehaviour common_cpu_behaviour_moo_moo_farm[];
+extern CPUBehaviour common_cpu_behaviour_toad_turnpike[];
+extern CPUBehaviour common_cpu_behaviour_kalamari_desert[];
+extern CPUBehaviour common_cpu_behaviour_sherbet_land[];
+extern CPUBehaviour common_cpu_behaviour_rainbow_road[];
+extern CPUBehaviour common_cpu_behaviour_wario_stadium[];
+extern CPUBehaviour common_cpu_behaviour_dk_jungle[];
 extern f32 D_0D009418[][4];
 extern f32 D_0D009568[][4];
 extern f32 D_0D0096B8[][4];
