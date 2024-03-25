@@ -52,7 +52,7 @@ var searchData=
   ['pimgrmesgbuff_49',['piMgrMesgBuff',['../osCreatePiManager_8c.html#a69505106d9c6dea10efb5236335a70d0',1,'osCreatePiManager.c']]],
   ['pimgrstack_50',['piMgrStack',['../osCreatePiManager_8c.html#a146c5d68066f6d74755cd7a47caf276a',1,'osCreatePiManager.c']]],
   ['pimgrthread_51',['piMgrThread',['../osCreatePiManager_8c.html#a7742bb2a37089847e40398bd92ae3533',1,'osCreatePiManager.c']]],
-  ['pixel_5findex_5farray_52',['pixel_index_array',['../structstruct__D__802BFB80.html#aa3e9140e75cc2f654fa7fae6988de8f3',1,'struct_D_802BFB80']]],
+  ['pixel_5findex_5farray_52',['pixel_index_array',['../structstruct__D__802BFB80__8.html#a44fcc092ef129c832b1b29eece8fa985',1,'struct_D_802BFB80_8::pixel_index_array'],['../structstruct__D__802BFB80__4.html#a1d7dabc9a32435456f09a063c4bed20d',1,'struct_D_802BFB80_4::pixel_index_array']]],
   ['player_53',['player',['../structUnkStruct__800DC5EC.html#a5f04fbc7a1f855f72c7fcdda34cb5880',1,'UnkStruct_800DC5EC']]],
   ['playerdirection_54',['playerDirection',['../structUnkStruct__800DC5EC.html#a930be88d9ae5b1e9254f4a2a232d7c43',1,'UnkStruct_800DC5EC']]],
   ['playerhud_55',['playerHUD',['../code__80057C60_8c.html#a1fea78f3307400cc59cddd782ef69ea9',1,'code_80057C60.c']]],

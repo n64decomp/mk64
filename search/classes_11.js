@@ -50,9 +50,10 @@ var searchData=
   ['struct_5fd_5f801930d0_5fentry_47',['struct_D_801930D0_entry',['../structstruct__D__801930D0__entry.html',1,'']]],
   ['struct_5fd_5f801930d0_5finner_48',['struct_D_801930D0_inner',['../structstruct__D__801930D0__inner.html',1,'']]],
   ['struct_5fd_5f802874d8_49',['struct_D_802874D8',['../structstruct__D__802874D8.html',1,'']]],
-  ['struct_5fd_5f802bfb80_50',['struct_D_802BFB80',['../structstruct__D__802BFB80.html',1,'']]],
-  ['struct_5fd_5f802dfb80_51',['struct_D_802DFB80',['../structstruct__D__802DFB80.html',1,'']]],
-  ['struct_5fd_5f802f1f80_52',['struct_D_802F1F80',['../structstruct__D__802F1F80.html',1,'']]],
-  ['stuff_53',['Stuff',['../structStuff.html',1,'']]],
-  ['synthesisreverb_54',['SynthesisReverb',['../structSynthesisReverb.html',1,'']]]
+  ['struct_5fd_5f802bfb80_5f4_50',['struct_D_802BFB80_4',['../structstruct__D__802BFB80__4.html',1,'']]],
+  ['struct_5fd_5f802bfb80_5f8_51',['struct_D_802BFB80_8',['../structstruct__D__802BFB80__8.html',1,'']]],
+  ['struct_5fd_5f802dfb80_52',['struct_D_802DFB80',['../structstruct__D__802DFB80.html',1,'']]],
+  ['struct_5fd_5f802f1f80_53',['struct_D_802F1F80',['../structstruct__D__802F1F80.html',1,'']]],
+  ['stuff_54',['Stuff',['../structStuff.html',1,'']]],
+  ['synthesisreverb_55',['SynthesisReverb',['../structSynthesisReverb.html',1,'']]]
 ];

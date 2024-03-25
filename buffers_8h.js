@@ -1,10 +1,12 @@
 var buffers_8h =
 [
-    [ "struct_D_802BFB80", "structstruct__D__802BFB80.html", "structstruct__D__802BFB80" ],
+    [ "struct_D_802BFB80_8", "structstruct__D__802BFB80__8.html", "structstruct__D__802BFB80__8" ],
+    [ "struct_D_802BFB80_4", "structstruct__D__802BFB80__4.html", "structstruct__D__802BFB80__4" ],
+    [ "union_D_802BFB80", "unionunion__D__802BFB80.html", "unionunion__D__802BFB80" ],
     [ "struct_D_802DFB80", "structstruct__D__802DFB80.html", "structstruct__D__802DFB80" ],
     [ "RGBA5551", "structRGBA5551.html", "structRGBA5551" ],
     [ "struct_D_802F1F80", "structstruct__D__802F1F80.html", "structstruct__D__802F1F80" ],
-    [ "D_802BFB80", "buffers_8h.html#a47575d0db8be21ce60afc2e8a9593776", null ],
+    [ "D_802BFB80", "buffers_8h.html#a83603f7f398501c45327585f38ad68f9", null ],
     [ "D_802DFB80", "buffers_8h.html#acd8dafea3b9b8e034dd5f541578a9030", null ],
     [ "D_802F1F80", "buffers_8h.html#a88e023128d8de3bf9ed27ae703247441", null ],
     [ "gFramebuffer0", "buffers_8h.html#a9ad5316597b4d79b0e355b1194848d3d", null ],
