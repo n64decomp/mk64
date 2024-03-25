@@ -545,7 +545,7 @@ void evaluate_collision_player_palm_trees(Player *player) {
         pos[0] = data->pos[0] * gCourseDirection;
         pos[1] = data->pos[1];
         pos[2] = data->pos[2];
-        if (is_colliding_and_apply(player, pos, 5.0f, 40.0f, 0.8f) == TRUE) {
+        if (is_colliding_and_resolve(player, pos, 5.0f, 40.0f, 0.8f) == TRUE) {
             if ((player->effects & STAR_EFFECT) != 0) {
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
                 func_800C90F4((u8) (player - gPlayerOne), (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
@@ -1452,12 +1452,12 @@ UNUSED void prototype_actor_spawn_data(Player *player, uintptr_t arg1) {
         sp64[1] = var_s0->thing[1];
         sp64[2] = var_s0->thing[2];
         if(arg1 & arg1){}
-        is_colliding_and_apply(player, sp64, 5.0f, 40.0f, 0.8f);
+        is_colliding_and_resolve(player, sp64, 5.0f, 40.0f, 0.8f);
         var_s0++;
     }
 }
 
-bool is_colliding_and_apply(Player *player, Vec3f pos, f32 minDist, f32 dist, f32 arg4) {
+bool is_colliding_and_resolve(Player *player, Vec3f pos, f32 minDist, f32 dist, f32 arg4) {
     f32 yDist;
     f32 sqrtDist;
     f32 zDist;
@@ -1540,7 +1540,7 @@ bool is_colliding_and_apply(Player *player, Vec3f pos, f32 minDist, f32 dist, f3
 }
 
 bool collision_mario_sign(Player *player, struct Actor *marioRacewaySign) {
-    if (is_colliding_and_apply(player, marioRacewaySign->pos, 7.0f, 200.0f, 0.8f) == 1) {
+    if (is_colliding_and_resolve(player, marioRacewaySign->pos, 7.0f, 200.0f, 0.8f) == 1) {
         if ((player->type & PLAYER_HUMAN) != 0) {
             if ((player->effects & STAR_EFFECT) != 0) {
                 marioRacewaySign->flags |= 0x400;
@@ -1556,7 +1556,7 @@ bool collision_mario_sign(Player *player, struct Actor *marioRacewaySign) {
 }
 
 bool collision_piranha_plant(Player *player, struct PiranhaPlant *plant) {
-    if (is_colliding_and_apply(player, plant->pos, plant->boundingBoxSize, plant->boundingBoxSize, 2.5f) == 1) {
+    if (is_colliding_and_resolve(player, plant->pos, plant->boundingBoxSize, plant->boundingBoxSize, 2.5f) == 1) {
         if ((player->type & PLAYER_HUMAN) != 0) {
             if ((player->effects & STAR_EFFECT) != 0) {
                 plant->flags |= 0x400;

@@ -4919,7 +4919,7 @@ Variable Name | Memory Address
 [add_actor_to_empty_slot](@ref add_actor_to_empty_slot) | 0x8029EC88
 [spawn_actor_at_pos](@ref spawn_actor_at_pos) | 0x8029ED38
 [prototype_actor_spawn_data](@ref prototype_actor_spawn_data) | 0x8029ED98
-[is_colliding_and_apply](@ref is_colliding_and_apply) | 0x8029EEB8
+[is_colliding_and_resolve](@ref is_colliding_and_resolve) | 0x8029EEB8
 [collision_mario_sign](@ref collision_mario_sign) | 0x8029F1F8
 [collision_piranha_plant](@ref collision_piranha_plant) | 0x8029F2FC
 [collision_yoshi_egg](@ref collision_yoshi_egg) | 0x8029F408

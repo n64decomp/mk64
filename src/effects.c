@@ -2024,7 +2024,7 @@ bool can_player_not_use_item(Player *player) {
     case ITEM_STAR:
         phi_v0 = BOO_EFFECT| EFFECT_BLACKLIST_USE_ITEM;
     case ITEM_BOO:
-        phi_v0 = phi_v0 | BOO_EFFECT | EFFECT_BLACKLIST_USE_ITEM;
+        phi_v0 = phi_v0 | (BOO_EFFECT | EFFECT_BLACKLIST_USE_ITEM);
 can_player_not_use_item_label:
     default:
         if ((player->effects & phi_v0) != 0) {

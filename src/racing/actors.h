@@ -80,7 +80,7 @@ void destroy_actor(struct Actor*);
 s16  try_remove_destructable_item(Vec3f, Vec3s, Vec3f, s16);
 s16  add_actor_to_empty_slot(Vec3f, Vec3s, Vec3f, s16);
 s16  spawn_actor_at_pos(Vec3f, s16);
-s32  is_colliding_and_apply(Player*, Vec3f, f32, f32, f32);
+s32  is_colliding_and_resolve(Player*, Vec3f, f32, f32, f32);
 s32  collision_mario_sign(Player*, struct Actor*);
 s32  collision_piranha_plant(Player*, struct PiranhaPlant*);
 s32  collision_yoshi_egg(Player*, struct YoshiValleyEgg*);
