@@ -843,6 +843,181 @@ D_0D008ED8: # These 4 vtx may be an mtx like the one before here. It's difficult
   type: mtx
   offset: 0x8ED8
   count: 1
+D_0D008F18:
+  symbol: D_0D008F18
+  type: mk64:driving_behaviour
+  offset: 0x8F18
+D_0D008F28:
+  symbol: D_0D008F28
+  type: mk64:driving_behaviour
+  offset: 0x8F28
+D_0D008F80:
+  symbol: D_0D008F80
+  type: mk64:driving_behaviour
+  offset: 0x8F80
+D_0D008FB8:
+  symbol: D_0D008FB8
+  type: mk64:driving_behaviour
+  offset: 0x8FB8
+D_0D009058:
+  symbol: D_0D009058
+  type: mk64:driving_behaviour
+  offset: 0x9058
+D_0D0090B8:
+  symbol: D_0D0090B8
+  type: mk64:driving_behaviour
+  offset: 0x90B8
+D_0D0090F8:
+  symbol: D_0D0090F8
+  type: mk64:driving_behaviour
+  offset: 0x90F8
+D_0D009158:
+  symbol: D_0D009158
+  type: mk64:driving_behaviour
+  offset: 0x9158
+D_0D009158:
+  symbol: D_0D009188
+  type: mk64:driving_behaviour
+  offset: 0x9188
+D_0D0091E8:
+  symbol: D_0D0091E8
+  type: mk64:driving_behaviour
+  offset: 0x91E8
+D_0D009210:
+  symbol: D_0D009210
+  type: mk64:driving_behaviour
+  offset: 0x9210
+D_0D009238:
+  symbol: D_0D009238
+  type: mk64:driving_behaviour
+  offset: 0x9238
+D_0D009260:
+  symbol: D_0D009260
+  type: mk64:driving_behaviour
+  offset: 0x9260
+D_0D009280:
+  symbol: D_0D009280
+  type: mk64:driving_behaviour
+  offset: 0x9280
+D_0D0092C8:
+  symbol: D_0D0092C8
+  type: mk64:driving_behaviour
+  offset: 0x92C8
+D_0D009310:
+  symbol: D_0D009310
+  type: mk64:driving_behaviour
+  offset: 0x9310
+D_0D0093C0:
+  symbol: D_0D0093C0
+  type: mk64:driving_behaviour
+  offset: 0x93C0
+D_0D009418:
+  symbol: D_0D009418
+  type: inc
+  ctype: Vec4f
+  file_path: "test.inc.c"
+common_texture_speedometer:
+  symbol: common_texture_speedometer
+  type: texture
+  ctype: u8
+  offset: 0x988C
+  size: 0x1000
+  width: 64
+  height: 96
+  format: i4
+common_texture_speedometer_needle:
+  symbol: common_texture_speedometer_needle
+  type: texture
+  offset: 0xA88C
+  size: 0x1000
+  width: 64
+  height: 32
+  format: i4
+common_texture_hud_lap:
+  symbol: common_texture_hud_lap
+  type: texture
+  offset: 0xB88C
+  ctype: u16
+  width: 32
+  height: 8
+  format: RGBA16
+common_texture_hud_123:
+  symbol: common_texture_hud_123
+  type: texture
+  offset: 0xC88C
+  size: 0x1000
+  ctype: u16
+  width: 32
+  height: 8
+  format: RGBA16
+common_texture_hud_lap_time:
+  symbol: common_texture_hud_lap_time
+  type: texture
+  offset: 0xD88C
+  size: 0x1000
+  ctype: u16
+  width: 32
+  height: 16
+  format: RGBA16
+common_texture_hud_lap_1_on_3:
+  symbol: common_texture_hud_lap_1_on_3
+  type: texture
+  offset: 0xE88C
+  size: 0x1000
+  ctype: u16
+  width: 32
+  height: 16
+  format: RGBA16
+common_texture_hud_lap_2_on_3:
+  symbol: common_texture_hud_lap_2_on_3
+  type: texture
+  offset: 0xF88C
+  ctype: u16
+  size: 0x1000
+  width: 32
+  height: 16
+  format: RGBA16
+common_texture_hud_lap_3_on_3:
+  symbol: common_texture_hud_lap_3_on_3
+  type: texture
+  offset: 0x1088C
+  size: 0x1000
+  ctype: u16
+  width: 32
+  height: 16
+  format: RGBA16
+common_texture_hud_total_time:
+  symbol: common_texture_hud_total_time
+  type: texture
+  offset: 0x1188C
+  size: 0x1000
+  ctype: u16
+  width: 32
+  height: 16
+  format: RGBA16
+common_texture_hud_time:
+  symbol: common_texture_hud_time
+  type: texture
+  offset: 0x1288C
+  size: 0x1000
+  ctype: u16
+  width: 32
+  height: 16
+  format: RGBA16
+common_texture_hud_normal_digit:
+  symbol: common_texture_hud_normal_digit
+  type: texture
+  offset: 0x1388C
+  size: 0x1000
+  ctype: u16
+  width: 104
+  height: 16
+  format: RGBA16
+
+
+
+
+
 
 
 # UnkCommonTextureStruct0

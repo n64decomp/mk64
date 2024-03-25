@@ -218,21 +218,21 @@ podium3_dl4:
   offset: 0x8AA0
 ending_sequence:
   symbol: ending_sequence
-  type: MK64:TrackWaypoints
+  type: mk64:track_waypoints
   offset: 0x8AA8
   count: 24
 ending_sequence2:
   symbol: ending_sequence2
-  type: MK64:TrackWaypoints
+  type: mk64:track_waypoints
   offset: 0x8B68
   count: 23
 ending_sequence3:
   symbol: ending_sequence3
-  type: MK64:TrackWaypoints
+  type: mk64:track_waypoints
   offset: 0x8C20
   count: 24
 ending_sequence4:
   symbol: ending_sequence4
-  type: MK64:TrackWaypoints
+  type: mk64:track_waypoints
   offset: 0x8CE0
   count: 21
