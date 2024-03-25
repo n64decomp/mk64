@@ -421,7 +421,7 @@ index 7c90951..135e98c 100644
                          gCourseTimer += 0.01666666; // 1 / 60
 @@ -585,7 +586,6 @@ void race_logic_loop(void) {
                      func_802909F0();
-                     evaluate_player_actors_collision();
+                     evaluate_collision_for_players_and_actors();
                      func_800382DC();
 -                    func_8001EE98(gPlayerOneCopy, camera1, 0);
                      func_80028F70();

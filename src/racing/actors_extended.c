@@ -95,7 +95,7 @@ void func_802B04E8(UNUSED struct BananaActor *arg0, s16 bananaIndex) {
 }
 
 // Handle a banana being ran over while it is still part of a banana bunch
-void destroy_a_banana_in_bunch_banana(struct BananaActor *banana) {
+void destroy_banana_in_banana_bunch(struct BananaActor *banana) {
     struct BananaBunchParent *temp_v0_2;
 
     func_802B0464(banana->youngerIndex);

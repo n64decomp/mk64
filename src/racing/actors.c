@@ -50,7 +50,7 @@ void cleanup_red_and_green_shells(struct ShellActor *shell) {
         compare = (struct ShellActor *)&gActorList[actorIndex];
         if ((shell != compare) && !(compare->flags & ACTOR_IS_NOT_EXPIRED) && (compare->type == ACTOR_GREEN_SHELL)) {
             if (compare->state == MOVING_SHELL) {
-                remove_actor_in_unexpired_actor_list(actorIndex);
+                delete_actor_in_unexpired_actor_list(actorIndex);
             }
             gNumSpawnedShells--;
             destroy_actor((struct Actor *)compare);
@@ -69,7 +69,7 @@ void cleanup_red_and_green_shells(struct ShellActor *shell) {
             	case GREEN_SHELL_HIT_A_RACER:
             	case BLUE_SHELL_LOCK_ON:
             	case BLUE_SHELL_TARGET_ELIMINATED:
-                	remove_actor_in_unexpired_actor_list(actorIndex);
+                	delete_actor_in_unexpired_actor_list(actorIndex);
             	case DESTROYED_SHELL:
                 	gNumSpawnedShells -= 1;
                 	destroy_actor((struct Actor *)compare);
@@ -86,7 +86,7 @@ void cleanup_red_and_green_shells(struct ShellActor *shell) {
         if ((shell != compare) && (compare->type == ACTOR_GREEN_SHELL)) {
             switch(compare->state) {
             	case MOVING_SHELL:
-                	remove_actor_in_unexpired_actor_list(actorIndex);
+                	delete_actor_in_unexpired_actor_list(actorIndex);
             	case DESTROYED_SHELL:
                 	gNumSpawnedShells -= 1;
                 	destroy_actor((struct Actor *)compare);
@@ -106,7 +106,7 @@ void cleanup_red_and_green_shells(struct ShellActor *shell) {
             	case GREEN_SHELL_HIT_A_RACER:
             	case BLUE_SHELL_LOCK_ON:
             	case BLUE_SHELL_TARGET_ELIMINATED:
-                	remove_actor_in_unexpired_actor_list(actorIndex);
+                	delete_actor_in_unexpired_actor_list(actorIndex);
             	case DESTROYED_SHELL:
                 	gNumSpawnedShells -= 1;
                 	destroy_actor((struct Actor *)compare);
@@ -281,7 +281,7 @@ void actor_init(struct Actor *actor, Vec3f startingPos, Vec3s startingRot, Vec3f
     }
 }
 
-void actor_not_render_on_a_camera(Camera *arg0, struct Actor *arg1) {
+void actor_not_rendered(Camera *arg0, struct Actor *arg1) {
     switch(arg0 - camera1) {
         case PLAYER_ONE:
             arg1->flags &= ~(1<<PLAYER_ONE);
@@ -298,7 +298,7 @@ void actor_not_render_on_a_camera(Camera *arg0, struct Actor *arg1) {
     }
 }
 
-void actor_render_on_a_camera(Camera *arg0, struct Actor *arg1) {
+void actor_rendered(Camera *arg0, struct Actor *arg1) {
    	switch(arg0 - camera1) {
         case PLAYER_ONE:
             arg1->flags |= 1<<PLAYER_ONE;
@@ -406,7 +406,7 @@ void init_red_shell_texture(void) {
         blue_color = color_pixel & 0x3E;
         alpha_color = color_pixel & 0x1;
 
-        *red_shell_texture = (red_color >> 5) | (green_color << 5) | blue_color | alpha_color; // Invert green and red
+        *red_shell_texture = (red_color >> 5) | (green_color << 5) | blue_color | alpha_color; // Invert green to red
         green_shell_texture++;
         red_shell_texture++;
     }
@@ -545,7 +545,7 @@ void evaluate_collision_player_palm_trees(Player *player) {
         pos[0] = data->pos[0] * gCourseDirection;
         pos[1] = data->pos[1];
         pos[2] = data->pos[2];
-        if (is_collide_and_apply(player, pos, 5.0f, 40.0f, 0.8f) == TRUE) {
+        if (is_colliding_and_apply(player, pos, 5.0f, 40.0f, 0.8f) == TRUE) {
             if ((player->effects & STAR_EFFECT) != 0) {
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
                 func_800C90F4((u8) (player - gPlayerOne), (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
@@ -683,11 +683,11 @@ void render_actor_shell(Camera *camera, Mat4 matrix, struct ShellActor *shell) {
     f32 temp_f0 = is_within_render_distance(camera->pos, shell->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 490000.0f);
     s32 maxObjectsReached;
     if (temp_f0 < 0.0f) {
-        actor_not_render_on_a_camera(camera, (struct Actor *)shell);
+        actor_not_rendered(camera, (struct Actor *)shell);
         return;
     }
 
-    actor_render_on_a_camera(camera, (struct Actor *) shell);
+    actor_rendered(camera, (struct Actor *) shell);
     if (temp_f0 < 40000.0f) {
         func_802979F8((struct Actor *) shell, 3.4f);
     }
@@ -742,7 +742,7 @@ UNUSED s16 D_802B8810[] = {
 
 UNUSED void func_8029ABD4(f32 *pos, s16 state) {
     gNumActors = 0;
-    gActorList[allocate_actor_with_new_position(pos, 0x0014)].state = state;
+    gActorList[spawn_actor_at_pos(pos, 0x0014)].state = state;
 }
 
 void func_8029AC18(Camera *camera, Mat4 arg1, struct Actor *arg2) {
@@ -1255,7 +1255,7 @@ void load_common_texture(void) {
     init_course_vehicles();
 }
 
-void play_sound_before_destroy(struct Actor *actor) {
+void play_sound_before_despawn(struct Actor *actor) {
     s16 flags = actor->flags;
 
     if ((flags & 0x200) != 0) {
@@ -1284,7 +1284,7 @@ void play_sound_before_destroy(struct Actor *actor) {
  * @param Actor to destroy
  */
 void destroy_actor(struct Actor *actor) {
-    play_sound_before_destroy(actor);
+    play_sound_before_despawn(actor);
     actor->flags = 0;
     actor->type = 0;
     gNumActors--;
@@ -1294,7 +1294,7 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
     s32 actorIndex;
     struct ShellActor *compare;
 
-    // try remove a red shell or green shell or banana or fake item box if the actor are expired
+    // try removing a red shell, green shell, banana, or a fake item box if the actor is expired
     for (actorIndex = gNumPermanentActors; actorIndex < ACTOR_LIST_SIZE; actorIndex++) {
         compare = (struct ShellActor *) &gActorList[actorIndex];
         if (!(compare->flags & ACTOR_IS_NOT_EXPIRED)) {
@@ -1307,9 +1307,9 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
                 		case GREEN_SHELL_HIT_A_RACER:
                 		case BLUE_SHELL_LOCK_ON:
                 		case BLUE_SHELL_TARGET_ELIMINATED:
-                    		remove_actor_in_unexpired_actor_list(actorIndex);
+                    		delete_actor_in_unexpired_actor_list(actorIndex);
                 		case DESTROYED_SHELL:
-                    		play_sound_before_destroy((struct Actor *) compare);
+                    		play_sound_before_despawn((struct Actor *) compare);
                     		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                     		return actorIndex;
                 		default:
@@ -1319,9 +1319,9 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
             	case ACTOR_GREEN_SHELL:
                 	switch(compare->state) {
                 		case MOVING_SHELL:
-                    		remove_actor_in_unexpired_actor_list(actorIndex);
+                    		delete_actor_in_unexpired_actor_list(actorIndex);
                 		case DESTROYED_SHELL:
-                    		play_sound_before_destroy((struct Actor *) compare);
+                    		play_sound_before_despawn((struct Actor *) compare);
                     		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                     		return actorIndex;
                 	}
@@ -1331,7 +1331,7 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
                 		case DROPPED_BANANA:
                 		case BANANA_ON_GROUND:
                 		case DESTROYED_BANANA:
-                    		play_sound_before_destroy((struct Actor *) compare);
+                    		play_sound_before_despawn((struct Actor *) compare);
                     		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                     		return actorIndex;
                 	}
@@ -1340,7 +1340,7 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
                 	switch(compare->state) {
                 		case FAKE_ITEM_BOX_ON_GROUND:
                 		case DESTROYED_FAKE_ITEM_BOX:
-                    		play_sound_before_destroy((struct Actor *) compare);
+                    		play_sound_before_despawn((struct Actor *) compare);
                     		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                     		return actorIndex;
                 	}
@@ -1363,9 +1363,9 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
             		case GREEN_SHELL_HIT_A_RACER:
             		case BLUE_SHELL_LOCK_ON:
             		case BLUE_SHELL_TARGET_ELIMINATED:
-                		remove_actor_in_unexpired_actor_list(actorIndex);
+                		delete_actor_in_unexpired_actor_list(actorIndex);
             		case DESTROYED_SHELL:
-                		play_sound_before_destroy((struct Actor *) compare);
+                		play_sound_before_despawn((struct Actor *) compare);
                 		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                 		return actorIndex;
             		default:
@@ -1375,9 +1375,9 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
         	case ACTOR_GREEN_SHELL:
             	switch(compare->state) {
             		case MOVING_SHELL:
-                		remove_actor_in_unexpired_actor_list(actorIndex);
+                		delete_actor_in_unexpired_actor_list(actorIndex);
             		case DESTROYED_SHELL:
-                		play_sound_before_destroy((struct Actor *) compare);
+                		play_sound_before_despawn((struct Actor *) compare);
                 		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                 		return actorIndex;
             	}
@@ -1387,7 +1387,7 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
             		case DROPPED_BANANA:
             		case BANANA_ON_GROUND:
             		case DESTROYED_BANANA:
-                		play_sound_before_destroy((struct Actor *) compare);
+                		play_sound_before_despawn((struct Actor *) compare);
                 		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                 		return actorIndex;
             	}
@@ -1396,7 +1396,7 @@ s16 try_remove_destructable_item(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actor
             	switch(compare->state) {
             		case FAKE_ITEM_BOX_ON_GROUND:
             		case DESTROYED_FAKE_ITEM_BOX:
-                		play_sound_before_destroy((struct Actor *) compare);
+                		play_sound_before_despawn((struct Actor *) compare);
                 		actor_init((struct Actor *) compare, pos, rot, velocity, actorType);
                 		return actorIndex;
             	}
@@ -1426,7 +1426,7 @@ s16 add_actor_to_empty_slot(Vec3f pos, Vec3s rot, Vec3f velocity, s16 actorType)
     return -1;
 }
 
-s16 allocate_actor_with_new_position(Vec3f pos, s16 actorType) {
+UNUSED s16 spawn_actor_at_pos(Vec3f pos, s16 actorType) {
     Vec3f vel;
     Vec3s rot;
 
@@ -1440,7 +1440,7 @@ struct test {
     Vec3s thing;
 };
 
-UNUSED void proto_loading_actor_spawn_data(Player *player, uintptr_t arg1) {
+UNUSED void prototype_actor_spawn_data(Player *player, uintptr_t arg1) {
     Vec3f sp64;
     struct test *var_s0;
     s32 segment = SEGMENT_NUMBER2(arg1);
@@ -1452,12 +1452,12 @@ UNUSED void proto_loading_actor_spawn_data(Player *player, uintptr_t arg1) {
         sp64[1] = var_s0->thing[1];
         sp64[2] = var_s0->thing[2];
         if(arg1 & arg1){}
-        is_collide_and_apply(player, sp64, 5.0f, 40.0f, 0.8f);
+        is_colliding_and_apply(player, sp64, 5.0f, 40.0f, 0.8f);
         var_s0++;
     }
 }
 
-bool is_collide_and_apply(Player *player, Vec3f pos, f32 minDist, f32 dist, f32 arg4) {
+bool is_colliding_and_apply(Player *player, Vec3f pos, f32 minDist, f32 dist, f32 arg4) {
     f32 yDist;
     f32 sqrtDist;
     f32 zDist;
@@ -1539,8 +1539,8 @@ bool is_collide_and_apply(Player *player, Vec3f pos, f32 minDist, f32 dist, f32 
     return TRUE;
 }
 
-bool collide_mario_sign(Player *player, struct Actor *marioRacewaySign) {
-    if (is_collide_and_apply(player, marioRacewaySign->pos, 7.0f, 200.0f, 0.8f) == 1) {
+bool collision_mario_sign(Player *player, struct Actor *marioRacewaySign) {
+    if (is_colliding_and_apply(player, marioRacewaySign->pos, 7.0f, 200.0f, 0.8f) == 1) {
         if ((player->type & PLAYER_HUMAN) != 0) {
             if ((player->effects & STAR_EFFECT) != 0) {
                 marioRacewaySign->flags |= 0x400;
@@ -1555,8 +1555,8 @@ bool collide_mario_sign(Player *player, struct Actor *marioRacewaySign) {
     return FALSE;
 }
 
-bool collide_piranha_plant(Player *player, struct PiranhaPlant *plant) {
-    if (is_collide_and_apply(player, plant->pos, plant->boundingBoxSize, plant->boundingBoxSize, 2.5f) == 1) {
+bool collision_piranha_plant(Player *player, struct PiranhaPlant *plant) {
+    if (is_colliding_and_apply(player, plant->pos, plant->boundingBoxSize, plant->boundingBoxSize, 2.5f) == 1) {
         if ((player->type & PLAYER_HUMAN) != 0) {
             if ((player->effects & STAR_EFFECT) != 0) {
                 plant->flags |= 0x400;
@@ -1632,7 +1632,7 @@ bool collision_yoshi_egg(Player *player, struct YoshiValleyEgg *egg) {
     return TRUE;
 }
 
-bool collide_tree(Player *player, struct Actor *actor) {
+bool collision_tree(Player *player, struct Actor *actor) {
     f32 x_dist;
     f32 y_dist;
     f32 z_dist;
@@ -1728,7 +1728,7 @@ bool collide_tree(Player *player, struct Actor *actor) {
     return TRUE;
 }
 
-bool is_collision_between_item_player(Player *arg0, struct Actor *arg1) {
+bool query_collision_player_vs_actor_item(Player *arg0, struct Actor *arg1) {
     f32 temp_f0;
     f32 dist;
     f32 yDist;
@@ -1767,7 +1767,7 @@ bool is_collision_between_item_player(Player *arg0, struct Actor *arg1) {
     return TRUE;
 }
 
-bool is_two_actor_collide(struct Actor *arg0, struct Actor *arg1) {
+bool query_collision_actor_vs_actor(struct Actor *arg0, struct Actor *arg1) {
     f32 temp_f0;
     f32 dist;
     f32 dist_y;
@@ -1818,7 +1818,7 @@ void destroy_destructable_actor(struct Actor *actor) {
         	switch (banana->state) {
         		case FIRST_BANANA_BUNCH_BANANA:
         		case BANANA_BUNCH_BANANA:
-            		destroy_a_banana_in_bunch_banana(banana);
+            		destroy_banana_in_banana_bunch(banana);
             		break;
         		case HELD_BANANA:
             		player = &gPlayers[banana->playerId];
@@ -1841,7 +1841,7 @@ void destroy_destructable_actor(struct Actor *actor) {
         	if (shell->state != GREEN_SHELL_HIT_A_RACER) {
             	switch (shell->state) {
             		case MOVING_SHELL:
-                		remove_actor_in_unexpired_actor_list(actor - gActorList);
+                		delete_actor_in_unexpired_actor_list(actor - gActorList);
                 		/* fallthrough */
             		case HELD_SHELL:
             		case RELEASED_SHELL:
@@ -1870,7 +1870,7 @@ void destroy_destructable_actor(struct Actor *actor) {
             		case BLUE_SHELL_LOCK_ON:
             		case BLUE_SHELL_TARGET_ELIMINATED:
                 		func_800C9EF4(shell->pos, SOUND_ARG_LOAD(0x51, 0x01, 0x80, 0x08));
-                		remove_actor_in_unexpired_actor_list(actor - gActorList);
+                		delete_actor_in_unexpired_actor_list(actor - gActorList);
                 		/* fallthrough */
             		case HELD_SHELL:
             		case RELEASED_SHELL:
@@ -1895,7 +1895,7 @@ void destroy_destructable_actor(struct Actor *actor) {
             		case GREEN_SHELL_HIT_A_RACER:
             		case BLUE_SHELL_LOCK_ON:
             		case BLUE_SHELL_TARGET_ELIMINATED:
-                		remove_actor_in_unexpired_actor_list(actor - gActorList);
+                		delete_actor_in_unexpired_actor_list(actor - gActorList);
                 		/* fallthrough */
             		case HELD_SHELL:
             		case RELEASED_SHELL:
@@ -1926,7 +1926,7 @@ void destroy_destructable_actor(struct Actor *actor) {
     }
 }
 
-void make_sound_between_two_destroyables_collide(struct Actor *arg0, struct Actor *arg1) {
+void play_sound_on_destructible_actor_collision(struct Actor *arg0, struct Actor *arg1) {
     switch(arg0->type) {
         case ACTOR_GREEN_SHELL:
             if ((arg0->state == HELD_SHELL) || (arg0->state == TRIPLE_GREEN_SHELL)) {
@@ -1993,8 +1993,8 @@ void make_sound_between_two_destroyables_collide(struct Actor *arg0, struct Acto
     func_800C98B8(arg0->pos, arg0->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
 }
 
-void evaluate_actor_collision_between_two_destroyables(struct Actor *actor1, struct Actor *actor2) {
-    if (is_two_actor_collide(actor1, actor2) == TRUE) {
+void evaluate_actor_collision_between_two_destructible_actors(struct Actor *actor1, struct Actor *actor2) {
+    if (query_collision_actor_vs_actor(actor1, actor2) == TRUE) {
         if ((actor1->type == ACTOR_BLUE_SPINY_SHELL) && (actor2->type == ACTOR_BLUE_SPINY_SHELL)) {
             destroy_destructable_actor(actor1);
             destroy_destructable_actor(actor2);
@@ -2016,7 +2016,7 @@ void evaluate_actor_collision_between_two_destroyables(struct Actor *actor1, str
         } else {
             destroy_destructable_actor(actor2); // automatically destroy if it's something different of a blueshell
         }
-        make_sound_between_two_destroyables_collide(actor1, actor2);
+        play_sound_on_destructible_actor_collision(actor1, actor2);
     }
 }
 
@@ -2040,7 +2040,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             if (player->effects & (BOO_EFFECT | 0x8C0)) { break; }
             if (player->soundEffects & 1) { break; }
             temp_v1 = actor->rot[0];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (is_collision_between_item_player(player, actor) != TRUE)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != TRUE)) { break; }
             player->soundEffects |= 1;
             owner = &gPlayers[temp_v1];
             if (owner->type & 0x4000) {
@@ -2062,7 +2062,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             if (player->effects & 0x80000400) { break; }
             if (player->soundEffects & 4) { break; }
             temp_v1 = actor->rot[2];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (is_collision_between_item_player(player, actor) != TRUE)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != TRUE)) { break; }
             player->soundEffects |= 4;
             func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             owner = &gPlayers[temp_v1];
@@ -2074,7 +2074,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
         case ACTOR_BLUE_SPINY_SHELL:
             if (player->soundEffects & 2) { break; }
             temp_v1 = actor->rot[2];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (is_collision_between_item_player(player, actor) != TRUE)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != TRUE)) { break; }
             if (!(player->effects & BOO_EFFECT)) {
                 player->soundEffects |= 2;
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
@@ -2092,7 +2092,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             if (player->effects & 0x01000000) { break; }
             if (player->soundEffects & 2) { break; }
             temp_v1 = actor->rot[2];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (is_collision_between_item_player(player, actor) != TRUE)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != TRUE)) { break; }
             if (!(player->effects & BOO_EFFECT)) {
                 player->soundEffects |= 2;
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
@@ -2105,12 +2105,12 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             break;
         case ACTOR_PIRANHA_PLANT:
             if (!(player->effects & BOO_EFFECT)) {
-                collide_piranha_plant(player, (struct PiranhaPlant *) actor);
+                collision_piranha_plant(player, (struct PiranhaPlant *) actor);
             }
             break;
         case ACTOR_MARIO_SIGN:
             if (!(player->effects & BOO_EFFECT)) {
-                collide_mario_sign(player, actor);
+                collision_mario_sign(player, actor);
             }
             break;
         case ACTOR_TREE_MARIO_RACEWAY:
@@ -2126,12 +2126,12 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
         case ACTOR_CACTUS3_KALAMARI_DESERT:
         case ACTOR_BUSH_BOWSERS_CASTLE:
             if (!(player->effects & BOO_EFFECT)) {
-                collide_tree(player, actor);
+                collision_tree(player, actor);
             }
             break;
         case ACTOR_FALLING_ROCK:
             if (!(player->effects & BOO_EFFECT) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
-                if (is_collision_between_item_player(player, actor) == TRUE) {
+                if (query_collision_player_vs_actor_item(player, actor) == TRUE) {
                     func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
                     if ((gModeSelection == TIME_TRIALS) && !(player->type & PLAYER_CPU)) {
                         D_80162DF8 = 1;
@@ -2148,7 +2148,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             temp_v1 = actor->velocity[0];
             if (player->effects & BOO_EFFECT) { break; }
             temp_v1 = actor->velocity[0];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (is_collision_between_item_player(player, actor) != TRUE)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != TRUE)) { break; }
                 player->soundEffects |= REVERSE_SOUND_EFFECT;
                 owner = &gPlayers[temp_v1];
                 if (owner->type & 0x4000) {
@@ -2172,7 +2172,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
                 actor->unk_04 = 0;
             break;
         case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
-            if (is_collision_between_item_player(player, actor) == TRUE) {
+            if (query_collision_player_vs_actor_item(player, actor) == TRUE) {
                 actor->state = 3;
                 actor->flags = -0x8000;
                 actor->unk_04 = 0;
@@ -2185,7 +2185,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             }
             break;
         case ACTOR_ITEM_BOX:
-            if (is_collision_between_item_player(player, actor) == TRUE) {
+            if (query_collision_player_vs_actor_item(player, actor) == TRUE) {
                 actor->state = 3;
                 actor->flags = -0x8000;
                 actor->unk_04 = 0;
@@ -2202,7 +2202,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
     }
 }
 
-void evaluate_player_actors_collision(void) {
+void evaluate_collision_for_players_and_actors(void) {
     struct Actor *temp_a1;
     s32 i, j;
     Player *phi_s1;
@@ -2227,7 +2227,7 @@ void evaluate_player_actors_collision(void) {
 }
 
 // It's look like to check collision between item and other different item
-void evaluate_destroyables_destroyables_actor_collision(void) {
+void evaluate_collision_for_destructible_actors(void) {
     struct Actor *actor1;
     struct Actor *actor2;
     s32 i, j;
@@ -2258,23 +2258,23 @@ void evaluate_destroyables_destroyables_actor_collision(void) {
                     switch(actor2->type) {
                         case ACTOR_BANANA:
                             if (actor1->type == ACTOR_BANANA) { continue; }
-                            evaluate_actor_collision_between_two_destroyables(actor1, actor2);
+                            evaluate_actor_collision_between_two_destructible_actors(actor1, actor2);
                             break;
                         case ACTOR_GREEN_SHELL:
                             if (actor1->type == ACTOR_GREEN_SHELL) {
                                 if (actor1->rot[2] == actor2->rot[2]) { continue; }
                             }
-                            evaluate_actor_collision_between_two_destroyables(actor1, actor2);
+                            evaluate_actor_collision_between_two_destructible_actors(actor1, actor2);
                             break;
                         case ACTOR_RED_SHELL:
                             if (actor1->type == ACTOR_RED_SHELL) {
                                 if (actor1->rot[2] == actor2->rot[2]) { continue; }
                             }
-                            evaluate_actor_collision_between_two_destroyables(actor1, actor2);
+                            evaluate_actor_collision_between_two_destructible_actors(actor1, actor2);
                             break;
                         case ACTOR_BLUE_SPINY_SHELL:
                         case ACTOR_FAKE_ITEM_BOX:
-                            evaluate_actor_collision_between_two_destroyables(actor1, actor2);
+                            evaluate_actor_collision_between_two_destructible_actors(actor1, actor2);
                             break;
                     }
                 }
@@ -2329,7 +2329,7 @@ void init_actor_hot_air_balloon_item_box(f32 x, f32 y, f32 z) {
 
 #include "actors/palm_tree/render.inc.c"
 
-void render_item_boxs(struct UnkStruct_800DC5EC *arg0) {
+void render_item_boxes(struct UnkStruct_800DC5EC *arg0) {
     Camera *camera = arg0->camera;
     struct Actor *actor;
     s32 i;
@@ -2601,6 +2601,6 @@ void update_course_actors(void) {
                 break;
         }
     }
-    evaluate_destroyables_destroyables_actor_collision();
+    evaluate_collision_for_destructible_actors();
     check_player_use_item();
 }

@@ -121,7 +121,7 @@ s32  add_actor_in_unexpired_actor_list(s32, s16);
 s32  add_red_shell_in_unexpired_actor_list(s32);
 s32  add_green_shell_in_unexpired_actor_list(s32);
 s32  add_blue_shell_in_unexpired_actor_list(s32);
-void remove_actor_in_unexpired_actor_list(s32);
+void delete_actor_in_unexpired_actor_list(s32);
 void func_8000EEDC(void);
 void generate_player_smoke(void);
 

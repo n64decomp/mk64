@@ -595,7 +595,7 @@ void race_logic_loop(void) {
                         gCourseTimer += COURSE_TIMER_ITER;
                     }
                     func_802909F0();
-                    evaluate_player_actors_collision();
+                    evaluate_collision_for_players_and_actors();
                     func_800382DC();
                     func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80028F70();
@@ -660,7 +660,7 @@ void race_logic_loop(void) {
                             gCourseTimer += COURSE_TIMER_ITER;
                         }
                         func_802909F0();
-                        evaluate_player_actors_collision();
+                        evaluate_collision_for_players_and_actors();
                         func_800382DC();
                         func_8001EE98(gPlayerOneCopy, camera1, 0);
                         func_80029060();
@@ -706,7 +706,7 @@ void race_logic_loop(void) {
                             gCourseTimer += COURSE_TIMER_ITER;
                         }
                         func_802909F0();
-                        evaluate_player_actors_collision();
+                        evaluate_collision_for_players_and_actors();
                         func_800382DC();
                         func_8001EE98(gPlayerOneCopy, camera1, 0);
                         func_80029060();
@@ -774,7 +774,7 @@ void race_logic_loop(void) {
                         gCourseTimer += COURSE_TIMER_ITER;
                     }
                     func_802909F0();
-                    evaluate_player_actors_collision();
+                    evaluate_collision_for_players_and_actors();
                     func_800382DC();
                     func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80029158();

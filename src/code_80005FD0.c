@@ -3313,7 +3313,7 @@ s32 add_blue_shell_in_unexpired_actor_list(s32 arg0) {
     return add_actor_in_unexpired_actor_list(arg0, 2);
 }
 
-void remove_actor_in_unexpired_actor_list(s32 actorIndex) {
+void delete_actor_in_unexpired_actor_list(s32 actorIndex) {
     struct unexpiredActors *phi;
     s32 i;
 
