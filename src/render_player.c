@@ -896,8 +896,8 @@ void func_80022A98(Player* player, s8 arg1) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         func_80026A48(player, arg1);
         func_800235AC(player, arg1);
-        if (((player->effects & 0x04000000) == 0x04000000) || ((player->effects & 0x08000000) == 0x08000000)) {
-            if ((player->effects & 0x04000000) == 0x04000000) {
+        if (((player->effects & HIT_EFFECT) == HIT_EFFECT) || ((player->effects & 0x08000000) == 0x08000000)) {
+            if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
                 func_80022B50(player, arg1);
             }
             if ((player->effects & 0x08000000) == 0x08000000) {
@@ -1207,7 +1207,7 @@ void func_800235AC(Player *player, s8 arg1) {
 }
 
 void func_80023BF0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
-    if (((player->effects & 0x4000000) == 0x4000000) || ((player->effects & 0x8000000) == 0x8000000)) {
+    if (((player->effects & HIT_EFFECT) == HIT_EFFECT) || ((player->effects & 0x8000000) == 0x8000000)) {
         func_80022CA8(player, arg1, arg2, arg3);
     } else {
         func_80022E84(player, arg1, arg2, arg3);
@@ -1374,7 +1374,7 @@ void kart_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
         }
         sp14C[1] = player->unk_048[arg2];
         sp14C[2] = player->unk_050[arg2];
-        if (((s32)player->effects & 0x04000000) == 0x04000000) {
+        if (((s32)player->effects & HIT_EFFECT) == HIT_EFFECT) {
             func_80062B18(&sp148, &sp144, &sp140, 0.0f, 8.0f, 0.0f, -player->unk_048[arg2], player->unk_050[arg2]);
             sp154[1] = (player->pos[1] - player->boundingBoxSize) + player->unk_108;
             sp154[0] = player->pos[0] + sp148;

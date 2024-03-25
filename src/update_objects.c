@@ -7465,7 +7465,7 @@ void init_hot_air_balloon(s32 objectIndex) {
     func_800886F4(objectIndex);
     func_80086EF0(objectIndex);
     gObjectList[objectIndex].velocity[1] = -2.0f;
-    func_802A14BC(0.0f, 0.0f, 0.0f);
+    init_actor_hot_air_balloon_item_box(0.0f, 0.0f, 0.0f);
     func_80072488(objectIndex);
 }
 

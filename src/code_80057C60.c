@@ -1460,7 +1460,7 @@ void func_8005A14C(s32 playerId) {
         } else {
             f32_step_towards(&gObjectList[objectIndex].sizeScaling, 0.6f, 0.02f);
         }
-        if (player->effects & 0x04000000) {
+        if (player->effects & HIT_EFFECT) {
             u16_step_up_towards(&gObjectList[objectIndex].direction_angle[0], 0x0C00U, 0x0100U);
         } else {
             u16_step_down_towards(&gObjectList[objectIndex].direction_angle[0], 0, 0x00000100);
