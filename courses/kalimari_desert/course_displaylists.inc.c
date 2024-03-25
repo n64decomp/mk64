@@ -3,8 +3,8 @@
 #include <PR/gbi.h>
 #include <course.h>
 
-#include <courses/kalimari_desert/course_displaylists.inc.h>
-#include <courses/kalimari_desert/course_textures.linkonly.h>
+#include "course_displaylists.inc.h"
+#include "course_textures.linkonly.h"
 
 Gfx d_course_kalimari_desert_packed_dl_0[] =
 {

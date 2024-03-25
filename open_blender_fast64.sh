@@ -1,0 +1,1 @@
+blender --python tools/blender_extension/fast64_run.py

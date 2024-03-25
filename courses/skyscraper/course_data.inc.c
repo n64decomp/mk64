@@ -3,7 +3,7 @@
 #include <PR/gbi.h>
 #include <actor_types.h>
 
-#include <courses/skyscraper/course_displaylists.inc.h>
+#include "course_displaylists.inc.h"
 
 Gfx d_course_skyscraper_dl[] = {
     gsDPSetCombineMode(G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA),

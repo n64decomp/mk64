@@ -1,0 +1,1 @@
+"c:\Program Files\Blender Foundation\Blender 4.0\blender.exe" --python tools/blender_extension/fast64_run.py

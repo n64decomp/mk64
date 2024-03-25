@@ -3,8 +3,8 @@
 #include <PR/gbi.h>
 #include <course.h>
 
-#include <courses/bowsers_castle/course_displaylists.inc.h>
-#include <courses/bowsers_castle/course_textures.linkonly.h>
+#include "course_displaylists.inc.h"
+#include "course_textures.linkonly.h"
 
 Gfx d_course_bowsers_castle_packed_dl_0[] =
 {

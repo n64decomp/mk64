@@ -6,7 +6,7 @@
 #include <waypoints.h>
 #include <course.h>
 
-#include <courses/frappe_snowland/course_displaylists.inc.h>
+#include "course_displaylists.inc.h"
 
 Gfx d_course_frappe_snowland_dl_0[] =
 {

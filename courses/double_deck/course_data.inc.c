@@ -3,7 +3,7 @@
 #include <PR/gbi.h>
 #include <actor_types.h>
 
-#include <courses/double_deck/course_displaylists.inc.h>
+#include "course_displaylists.inc.h"
 
 Gfx d_course_double_deck_dl[] = {
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
