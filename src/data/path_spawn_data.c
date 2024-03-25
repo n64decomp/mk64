@@ -18,12 +18,12 @@ CPUBehaviour *gRomCoursesCPUBehaviour[NUM_COURSES+1] = {
 	common_cpu_behaviour_sherbet_land,
     common_cpu_behaviour_rainbow_road,
     common_cpu_behaviour_wario_stadium,
-    common_cpu_behaviour_battle_course, /* COURSE_BLOCK_FORT        */
-	common_cpu_behaviour_battle_course, /* COURSE_SKYSCRAPER        */
-    common_cpu_behaviour_battle_course, /* COURSE_DOUBLE_DECK       */
+    common_cpu_behaviour_battle_courses, /* COURSE_BLOCK_FORT        */
+	common_cpu_behaviour_battle_courses, /* COURSE_SKYSCRAPER        */
+    common_cpu_behaviour_battle_courses, /* COURSE_DOUBLE_DECK       */
     common_cpu_behaviour_dk_jungle,
-    common_cpu_behaviour_battle_course, /* COURSE_BIG_DONUT         */
-	common_cpu_behaviour_battle_course, /* COURSE_AWARD_CEREMONY    */
+    common_cpu_behaviour_battle_courses, /* COURSE_BIG_DONUT         */
+	common_cpu_behaviour_battle_courses, /* COURSE_AWARD_CEREMONY    */
     NULL,       /* NUM_COURSES              */
 };
 

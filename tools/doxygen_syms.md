@@ -166,7 +166,7 @@ Variable Name | Memory Address
 [func_80011014](@ref func_80011014) | 0x80011014
 [process_path_data](@ref process_path_data) | 0x800115F4
 [func_8001168C](@ref func_8001168C) | 0x8001168C
-[copy_coursesc_cpu_behaviour](@ref copy_coursesc_cpu_behaviour) | 0x80011A5C
+[copy_courses_cpu_behaviour](@ref copy_courses_cpu_behaviour) | 0x80011A5C
 [reset_cpu_behaviour_none](@ref reset_cpu_behaviour_none) | 0x80011AB8
 [reset_cpu_behaviour](@ref reset_cpu_behaviour) | 0x80011AE4
 [cpu_behaviour_start](@ref cpu_behaviour_start) | 0x80011B14

@@ -247,7 +247,7 @@ extern Gfx D_0D008E48[];
 extern Gfx D_0D008E70[];
 extern Mtx D_0D008E98;
 extern Vtx D_0D008ED8[];
-extern CPUBehaviour common_cpu_behaviour_battle_course[];
+extern CPUBehaviour common_cpu_behaviour_battle_courses[];
 extern CPUBehaviour common_cpu_behaviour_mario_raceway[];
 extern CPUBehaviour common_cpu_behaviour_choco_mountain[];
 extern CPUBehaviour common_cpu_behaviour_bowser_castle[];

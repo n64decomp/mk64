@@ -2257,7 +2257,7 @@ Vtx D_0D008ED8[] = {
     {{{    -1,       3,      -1}, 3, {65535, 3}, {0x00, 0x01, 0x00, 0x00}}},
 };
 
-CPUBehaviour common_cpu_behaviour_battle_course[] = {
+CPUBehaviour common_cpu_behaviour_battle_courses[] = {
     {  1,  3, BEHAVIOUR_HOP, },
     { -1, -1, BEHAVIOUR_NONE, },
 };
