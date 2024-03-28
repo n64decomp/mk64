@@ -32,5 +32,5 @@ course:
   # Unused except in podium ceremony
   path_table_unknown: [d_course_toads_turnpike_unknown_waypoints, nullPath,   nullPath,   nullPath]
 
-  sky_colors: [255, 255, 255, 255, 255, 255]
-  sky_colors2: [255, 255, 255, 255, 255, 255]
+  sky_colors: [0, 2, 94, 209, 65, 23]
+  sky_colors2: [209, 65, 23, 0, 0, 0]

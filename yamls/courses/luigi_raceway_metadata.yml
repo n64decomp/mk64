@@ -32,5 +32,5 @@ course:
   # Unused except in podium ceremony
   path_table_unknown: [d_course_luigi_raceway_unknown_waypoints, nullPath,   nullPath,   nullPath]
 
-  sky_colors: [238, 144, 255, 255, 224, 240]
-  sky_colors2: [255, 224, 240, 0, 0, 0]
+  sky_colors: [128, 4280, 6136, 216, 7144, 32248]
+  sky_colors2: [216, 7144, 32248, 0, 0, 0]

@@ -32,5 +32,5 @@ course:
   # Unused except in podium ceremony
   path_table_unknown: [d_course_moo_moo_farm_unknown_waypoints, nullPath,   nullPath,   nullPath]
 
-  sky_colors: [255, 255, 255, 255, 255, 255]
-  sky_colors2: [255, 255, 255, 255, 255, 255]
+  sky_colors: [0, 18, 255, 197, 211, 255]
+  sky_colors2: [255, 184, 99, 0, 0, 0]

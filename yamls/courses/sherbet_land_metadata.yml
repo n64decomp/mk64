@@ -32,5 +32,5 @@ course:
   # Unused except in podium ceremony
   path_table_unknown: [d_course_sherbet_land_unknown_waypoints, nullPath,   nullPath,   nullPath]
 
-  sky_colors: [255, 255, 255, 255, 255, 255]
-  sky_colors2: [255, 255, 255, 255, 255, 255]
+  sky_colors: [128, 4280, 6136, 216, 7144, 32248]
+  sky_colors2: [216, 7144, 32248, 128, 4280, 6136]
