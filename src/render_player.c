@@ -712,24 +712,24 @@ void mtxf_scale2(Mat4 arg0, f32 scale) {
  * This means each Mtx entry holds two s16 values. 
  * The first sixteen entries contain only the integer parts and the second sixteen entries hold only the decimal (fractional) parts.
  */
-UNUSED void func_80021FF8(Mtx *arg0, Mat4 arg1) {
+UNUSED void func_80021FF8(Mtx *dest, Mat4 src) {
     f32 toFixed = 65536.0f;
-    arg0->m[0][0] = arg1[0][0] * toFixed;
-    arg0->m[0][1] = arg1[0][1] * toFixed;
-    arg0->m[0][2] = arg1[0][2] * toFixed;
-    arg0->m[0][3] = arg1[0][3] * toFixed;
-    arg0->m[1][0] = arg1[1][0] * toFixed;
-    arg0->m[1][1] = arg1[1][1] * toFixed;
-    arg0->m[1][2] = arg1[1][2] * toFixed;
-    arg0->m[1][3] = arg1[1][3] * toFixed;
-    arg0->m[2][0] = arg1[2][0] * toFixed;
-    arg0->m[2][1] = arg1[2][1] * toFixed;
-    arg0->m[2][2] = arg1[2][2] * toFixed;
-    arg0->m[2][3] = arg1[2][3] * toFixed;
-    arg0->m[3][0] = arg1[3][0] * toFixed;
-    arg0->m[3][1] = arg1[3][1] * toFixed;
-    arg0->m[3][2] = arg1[3][2] * toFixed;
-    arg0->m[3][3] = arg1[3][3] * toFixed;
+    dest->m[0][0] = src[0][0] * toFixed;
+    dest->m[0][1] = src[0][1] * toFixed;
+    dest->m[0][2] = src[0][2] * toFixed;
+    dest->m[0][3] = src[0][3] * toFixed;
+    dest->m[1][0] = src[1][0] * toFixed;
+    dest->m[1][1] = src[1][1] * toFixed;
+    dest->m[1][2] = src[1][2] * toFixed;
+    dest->m[1][3] = src[1][3] * toFixed;
+    dest->m[2][0] = src[2][0] * toFixed;
+    dest->m[2][1] = src[2][1] * toFixed;
+    dest->m[2][2] = src[2][2] * toFixed;
+    dest->m[2][3] = src[2][3] * toFixed;
+    dest->m[3][0] = src[3][0] * toFixed;
+    dest->m[3][1] = src[3][1] * toFixed;
+    dest->m[3][2] = src[3][2] * toFixed;
+    dests->m[3][3] = src[3][3] * toFixed;
 }
 
 /**
