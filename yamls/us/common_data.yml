@@ -914,6 +914,7 @@ D_0D0093C0:
 D_0D009418:
   symbol: D_0D009418
   type: inc
+  offset: 0x9418
   ctype: Vec4f
   offset: 0x9418
   file_path: "assets/course_data/D_0D009418.inc.c"
