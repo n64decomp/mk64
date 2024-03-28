@@ -14,7 +14,7 @@ common_tlut_finish_line_banner:
   type: texture
   ctype: u16
   offset: 0x0
-  size: 512
+  size: 0x200
   width: 16
   height: 16
   format: RGBA16
@@ -23,7 +23,7 @@ common_texture_particle_fire:
   type: texture
   ctype: u16
   offset: 0x200
-  size: 512
+  size: 0x1000
   width: 16
   height: 16
   format: RGBA16
@@ -216,7 +216,7 @@ common_tlut_trees_import:
   symbol: common_tlut_trees_import
   type: texture
   ctype: u16
-  size: 587
+  size: 0x1D0
   width: 8
   height: 29
   offset: 0x4C68
@@ -225,7 +225,7 @@ common_tlut_green_shell:
   symbol: common_tlut_green_shell
   type: texture
   ctype: u16
-  size: 681
+  size: 0x200
   width: 16
   height: 16
   offset: 0x4E38
@@ -234,7 +234,7 @@ common_tlut_blue_shell:
   symbol: common_tlut_blue_shell
   type: texture
   ctype: u16
-  size: 710
+  size: 0x200
   width: 16
   height: 16
   offset: 0x5038
