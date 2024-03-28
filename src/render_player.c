@@ -705,44 +705,60 @@ void mtxf_scale2(Mat4 arg0, f32 scale) {
     arg0[2][2] *= scale;
 }
 
+/**
+ * This function writes a floating-point value to each Mtx entry. This is not correct
+ * since the first half of Mtx only holds s16 whole numbers and the second half holds the s16 decimal place.
+ * This is not how Mtx struct works.
+ * See convert_to_fixed_point_matrix() for correct calculations. Note that each Mtx entry is the size of s32.
+ * This means each Mtx entry holds two s16 values. Sixteen integer parts followed by sixteen decimal (fractional) parts.
+ */
 UNUSED void func_80021FF8(Mtx *arg0, Mat4 arg1) {
-    f32 someMultiplier = 65536.0f;
-    arg0->m[0][0] = arg1[0][0] * someMultiplier;
-    arg0->m[0][1] = arg1[0][1] * someMultiplier;
-    arg0->m[0][2] = arg1[0][2] * someMultiplier;
-    arg0->m[0][3] = arg1[0][3] * someMultiplier;
-    arg0->m[1][0] = arg1[1][0] * someMultiplier;
-    arg0->m[1][1] = arg1[1][1] * someMultiplier;
-    arg0->m[1][2] = arg1[1][2] * someMultiplier;
-    arg0->m[1][3] = arg1[1][3] * someMultiplier;
-    arg0->m[2][0] = arg1[2][0] * someMultiplier;
-    arg0->m[2][1] = arg1[2][1] * someMultiplier;
-    arg0->m[2][2] = arg1[2][2] * someMultiplier;
-    arg0->m[2][3] = arg1[2][3] * someMultiplier;
-    arg0->m[3][0] = arg1[3][0] * someMultiplier;
-    arg0->m[3][1] = arg1[3][1] * someMultiplier;
-    arg0->m[3][2] = arg1[3][2] * someMultiplier;
-    arg0->m[3][3] = arg1[3][3] * someMultiplier;
+    f32 toFixed = 65536.0f;
+    arg0->m[0][0] = arg1[0][0] * toFixed;
+    arg0->m[0][1] = arg1[0][1] * toFixed;
+    arg0->m[0][2] = arg1[0][2] * toFixed;
+    arg0->m[0][3] = arg1[0][3] * toFixed;
+    arg0->m[1][0] = arg1[1][0] * toFixed;
+    arg0->m[1][1] = arg1[1][1] * toFixed;
+    arg0->m[1][2] = arg1[1][2] * toFixed;
+    arg0->m[1][3] = arg1[1][3] * toFixed;
+    arg0->m[2][0] = arg1[2][0] * toFixed;
+    arg0->m[2][1] = arg1[2][1] * toFixed;
+    arg0->m[2][2] = arg1[2][2] * toFixed;
+    arg0->m[2][3] = arg1[2][3] * toFixed;
+    arg0->m[3][0] = arg1[3][0] * toFixed;
+    arg0->m[3][1] = arg1[3][1] * toFixed;
+    arg0->m[3][2] = arg1[3][2] * toFixed;
+    arg0->m[3][3] = arg1[3][3] * toFixed;
 }
 
+/**
+ * Takes an f32 floating-point matrix and converts it to an s15.16 internal matrix.
+ * Each Mtx entry is a size of s32 that holds two values.
+ * The first 16 entries hold only the integer values and the second 16 entries hold only the decimal (fractional) parts.
+ *
+ * @param Mtx A new internal fixed-point matrix.
+ * @param Mat4 An array of f32
+ * Mat4 to Mtx explanation: https://blarg.ca/2020/10/11/fixed-point-math.
+ */
 void convert_to_fixed_point_matrix(Mtx *mtx, Mat4 arg1) {
-    f32 someMultiplier = 65536.0f;
-    mtx->m[0][0] = ((s32) (arg1[0][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    mtx->m[0][1] = ((s32) (arg1[0][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    mtx->m[0][2] = ((s32) (arg1[1][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    mtx->m[0][3] = ((s32) (arg1[1][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    mtx->m[1][0] = ((s32) (arg1[2][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    mtx->m[1][1] = ((s32) (arg1[2][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    mtx->m[1][2] = ((s32) (arg1[3][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    mtx->m[1][3] = ((s32) (arg1[3][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    mtx->m[2][0] = ((s32) (arg1[0][0] * someMultiplier) << 0x10)      | ((s32) (arg1[0][1] * someMultiplier) & 0xFFFF);
-    mtx->m[2][1] = ((s32) (arg1[0][2] * someMultiplier) << 0x10)      | ((s32) (arg1[0][3] * someMultiplier) & 0xFFFF);
-    mtx->m[2][2] = ((s32) (arg1[1][0] * someMultiplier) << 0x10)      | ((s32) (arg1[1][1] * someMultiplier) & 0xFFFF);
-    mtx->m[2][3] = ((s32) (arg1[1][2] * someMultiplier) << 0x10)      | ((s32) (arg1[1][3] * someMultiplier) & 0xFFFF);
-    mtx->m[3][0] = ((s32) (arg1[2][0] * someMultiplier) << 0x10)      | ((s32) (arg1[2][1] * someMultiplier) & 0xFFFF);
-    mtx->m[3][1] = ((s32) (arg1[2][2] * someMultiplier) << 0x10)      | ((s32) (arg1[2][3] * someMultiplier) & 0xFFFF);
-    mtx->m[3][2] = ((s32) (arg1[3][0] * someMultiplier) << 0x10)      | ((s32) (arg1[3][1] * someMultiplier) & 0xFFFF);
-    mtx->m[3][3] = ((s32) (arg1[3][2] * someMultiplier) << 0x10)      | ((s32) (arg1[3][3] * someMultiplier) & 0xFFFF);
+    f32 toFixed = 65536.0f; // 2 ^ 16
+    mtx->m[0][0] = ((s32) (arg1[0][0] * toFixed) & 0xFFFF0000) | (((s32) (arg1[0][1] * toFixed) >> 0x10) & 0xFFFF);
+    mtx->m[0][1] = ((s32) (arg1[0][2] * toFixed) & 0xFFFF0000) | (((s32) (arg1[0][3] * toFixed) >> 0x10) & 0xFFFF);
+    mtx->m[0][2] = ((s32) (arg1[1][0] * toFixed) & 0xFFFF0000) | (((s32) (arg1[1][1] * toFixed) >> 0x10) & 0xFFFF);
+    mtx->m[0][3] = ((s32) (arg1[1][2] * toFixed) & 0xFFFF0000) | (((s32) (arg1[1][3] * toFixed) >> 0x10) & 0xFFFF);
+    mtx->m[1][0] = ((s32) (arg1[2][0] * toFixed) & 0xFFFF0000) | (((s32) (arg1[2][1] * toFixed) >> 0x10) & 0xFFFF);
+    mtx->m[1][1] = ((s32) (arg1[2][2] * toFixed) & 0xFFFF0000) | (((s32) (arg1[2][3] * toFixed) >> 0x10) & 0xFFFF);
+    mtx->m[1][2] = ((s32) (arg1[3][0] * toFixed) & 0xFFFF0000) | (((s32) (arg1[3][1] * toFixed) >> 0x10) & 0xFFFF);
+    mtx->m[1][3] = ((s32) (arg1[3][2] * toFixed) & 0xFFFF0000) | (((s32) (arg1[3][3] * toFixed) >> 0x10) & 0xFFFF);
+    mtx->m[2][0] = ((s32) (arg1[0][0] * toFixed) << 0x10)      | ((s32) (arg1[0][1] * toFixed) & 0xFFFF);
+    mtx->m[2][1] = ((s32) (arg1[0][2] * toFixed) << 0x10)      | ((s32) (arg1[0][3] * toFixed) & 0xFFFF);
+    mtx->m[2][2] = ((s32) (arg1[1][0] * toFixed) << 0x10)      | ((s32) (arg1[1][1] * toFixed) & 0xFFFF);
+    mtx->m[2][3] = ((s32) (arg1[1][2] * toFixed) << 0x10)      | ((s32) (arg1[1][3] * toFixed) & 0xFFFF);
+    mtx->m[3][0] = ((s32) (arg1[2][0] * toFixed) << 0x10)      | ((s32) (arg1[2][1] * toFixed) & 0xFFFF);
+    mtx->m[3][1] = ((s32) (arg1[2][2] * toFixed) << 0x10)      | ((s32) (arg1[2][3] * toFixed) & 0xFFFF);
+    mtx->m[3][2] = ((s32) (arg1[3][0] * toFixed) << 0x10)      | ((s32) (arg1[3][1] * toFixed) & 0xFFFF);
+    mtx->m[3][3] = ((s32) (arg1[3][2] * toFixed) << 0x10)      | ((s32) (arg1[3][3] * toFixed) & 0xFFFF);
 }
 
 bool adjust_angle(s16 *angle, s16 targetAngle, s16 step) {
