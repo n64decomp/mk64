@@ -8,7 +8,7 @@ course:
   cup_index: 0
   waypoint_width: 50.0f
   waypoint_width2: 0.7f
-  D_800DCBB4: D_800DCB34
+  D_800DCBB4: D_800DCAF4
   cpu_steering_sensitivity: 48
   bomb_kart_spawns: # 7 bomb kart spawn locations
     - [0x0032, 0x0001, 0.8333333, 0.0, 0.0, 0.0, 0.0]
@@ -18,7 +18,7 @@ course:
     - [0x0203, 0x0003, 0.8333333, 0.0, 0.0, 0.0, 0.0]
     - [0x0000, 0x0000, 0.8333333, 0.0, 0.0, 0.0, 0.0]
     - [0x0000, 0x0000, 0.8333333, 0.0, 0.0, 0.0, 0.0]
-  path_sizes: [0x03E8, 0x0001, 0x0001, 0x0001, 0x0001, 0x0000, 0x0000, 0x0000]
+  path_sizes: [0x02DA, 0x0001, 0x0001, 0x0001, 0x0001, 0x0000, 0x0000, 0x0000]
 
   # unk common_textures data
   D_0D009418: [4.1666665f, 5.5833334f, 6.1666665f, 6.75f]

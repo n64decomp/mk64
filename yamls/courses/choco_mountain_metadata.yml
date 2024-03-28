@@ -11,7 +11,6 @@ course:
   D_800DCBB4: D_800DCAF4
   cpu_steering_sensitivity: 53
   bomb_kart_spawns: # 7 bomb kart spawn locations
-    - [0x0028, 0x0003, 0.8333333, 0.0, 0.0, 0.0, 0.0]
     - [0x008c, 0x0003, 0.8333333, 0.0, 0.0, 0.0, 0.0]
     - [0x00a5, 0x0001, 0.8333333, 0.0, 0.0, 0.0, 0.0]
     - [0x014a, 0x0003, 0.8333333, 0.0, 0.0, 0.0, 0.0]

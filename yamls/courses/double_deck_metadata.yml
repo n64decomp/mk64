@@ -1,13 +1,13 @@
 course:
   type: MK64:METADATA
   offset: 0x0
-  id: 15
-  name: block fort
-  debug_name: block
+  id: 17
+  name: double deck
+  debug_name: deck
   cup: BATTLE
-  cup_index: 1
+  cup_index: 2
   waypoint_width: -1.0f
-  waypoint_width2: 0.1f
+  waypoint_width2: 0.5f
   D_800DCBB4: D_800DCAF4
   cpu_steering_sensitivity: 53
   bomb_kart_spawns: # 7 bomb kart spawn locations
