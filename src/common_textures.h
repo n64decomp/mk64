@@ -231,7 +231,7 @@ extern Gfx D_0D008E20[];
 extern Gfx D_0D008E48[];
 extern Gfx D_0D008E70[];
 extern Mtx D_0D008E98;
-extern Vtx D_0D008ED8[];
+extern Mtx D_0D008ED8;
 extern UnkCommonTextureStruct0 D_0D008F18[];
 extern UnkCommonTextureStruct0 D_0D008F28[];
 extern UnkCommonTextureStruct0 D_0D008F80[];
