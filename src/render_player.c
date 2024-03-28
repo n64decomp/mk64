@@ -732,9 +732,10 @@ UNUSED void func_80021FF8(Mtx *arg0, Mat4 arg1) {
 }
 
 /**
- * Takes an f32 floating-point matrix and converts it to an s15.16 internal matrix.
+ * Takes a floating-point matrix and converts it to an s15.16 internal matrix.
  * Each Mtx entry is a size of s32 that holds two values.
  * The first 16 entries hold only the integer values and the second 16 entries hold only the decimal (fractional) parts.
+ * In simpler words, the integer and decimal gets split up and stored in their own section.
  * Mtx is setup this way due to hardware restrictions of the n64 or as an optimization.
  *
  * @param Mtx A new internal fixed-point matrix.
