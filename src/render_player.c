@@ -706,9 +706,8 @@ void mtxf_scale2(Mat4 arg0, f32 scale) {
 }
 
 /**
- * This function writes a floating-point value to each Mtx entry. This is not correct
- * since the first half of Mtx only holds s16 whole numbers and the second half holds the s16 decimal place.
- * This is not how Mtx struct works.
+ * This function writes a floating-point value to each Mtx entry. This is not how the Mtx struct works.
+ * The first half of Mtx only holds s16 whole numbers and the second half holds the s16 decimal place.
  * See convert_to_fixed_point_matrix() for correct calculations. Note that each Mtx entry is the size of s32.
  * This means each Mtx entry holds two s16 values. Sixteen integer parts followed by sixteen decimal (fractional) parts.
  */
@@ -736,6 +735,7 @@ UNUSED void func_80021FF8(Mtx *arg0, Mat4 arg1) {
  * Takes an f32 floating-point matrix and converts it to an s15.16 internal matrix.
  * Each Mtx entry is a size of s32 that holds two values.
  * The first 16 entries hold only the integer values and the second 16 entries hold only the decimal (fractional) parts.
+ * Mtx is setup this way due to hardware restrictions of the n64 or as an optimization.
  *
  * @param Mtx A new internal fixed-point matrix.
  * @param Mat4 An array of f32
