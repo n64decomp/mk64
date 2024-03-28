@@ -743,24 +743,29 @@ UNUSED void func_80021FF8(Mtx *arg0, Mat4 arg1) {
  * @param Mat4 An array of f32
  * Mat4 to Mtx explanation: https://blarg.ca/2020/10/11/fixed-point-math.
  */
-void convert_to_fixed_point_matrix(Mtx *mtx, Mat4 arg1) {
+void convert_to_fixed_point_matrix(Mtx *dest, Mat4 src) {
+    #ifdef AVOID_UB
+    // Use os function guMtxF2L instead. This helps little-endian systems.
+    guMtxF2L(src, dest);
+    #else
     f32 toFixed = 65536.0f; // 2 ^ 16
-    mtx->m[0][0] = ((s32) (arg1[0][0] * toFixed) & 0xFFFF0000) | (((s32) (arg1[0][1] * toFixed) >> 0x10) & 0xFFFF);
-    mtx->m[0][1] = ((s32) (arg1[0][2] * toFixed) & 0xFFFF0000) | (((s32) (arg1[0][3] * toFixed) >> 0x10) & 0xFFFF);
-    mtx->m[0][2] = ((s32) (arg1[1][0] * toFixed) & 0xFFFF0000) | (((s32) (arg1[1][1] * toFixed) >> 0x10) & 0xFFFF);
-    mtx->m[0][3] = ((s32) (arg1[1][2] * toFixed) & 0xFFFF0000) | (((s32) (arg1[1][3] * toFixed) >> 0x10) & 0xFFFF);
-    mtx->m[1][0] = ((s32) (arg1[2][0] * toFixed) & 0xFFFF0000) | (((s32) (arg1[2][1] * toFixed) >> 0x10) & 0xFFFF);
-    mtx->m[1][1] = ((s32) (arg1[2][2] * toFixed) & 0xFFFF0000) | (((s32) (arg1[2][3] * toFixed) >> 0x10) & 0xFFFF);
-    mtx->m[1][2] = ((s32) (arg1[3][0] * toFixed) & 0xFFFF0000) | (((s32) (arg1[3][1] * toFixed) >> 0x10) & 0xFFFF);
-    mtx->m[1][3] = ((s32) (arg1[3][2] * toFixed) & 0xFFFF0000) | (((s32) (arg1[3][3] * toFixed) >> 0x10) & 0xFFFF);
-    mtx->m[2][0] = ((s32) (arg1[0][0] * toFixed) << 0x10)      | ((s32) (arg1[0][1] * toFixed) & 0xFFFF);
-    mtx->m[2][1] = ((s32) (arg1[0][2] * toFixed) << 0x10)      | ((s32) (arg1[0][3] * toFixed) & 0xFFFF);
-    mtx->m[2][2] = ((s32) (arg1[1][0] * toFixed) << 0x10)      | ((s32) (arg1[1][1] * toFixed) & 0xFFFF);
-    mtx->m[2][3] = ((s32) (arg1[1][2] * toFixed) << 0x10)      | ((s32) (arg1[1][3] * toFixed) & 0xFFFF);
-    mtx->m[3][0] = ((s32) (arg1[2][0] * toFixed) << 0x10)      | ((s32) (arg1[2][1] * toFixed) & 0xFFFF);
-    mtx->m[3][1] = ((s32) (arg1[2][2] * toFixed) << 0x10)      | ((s32) (arg1[2][3] * toFixed) & 0xFFFF);
-    mtx->m[3][2] = ((s32) (arg1[3][0] * toFixed) << 0x10)      | ((s32) (arg1[3][1] * toFixed) & 0xFFFF);
-    mtx->m[3][3] = ((s32) (arg1[3][2] * toFixed) << 0x10)      | ((s32) (arg1[3][3] * toFixed) & 0xFFFF);
+    dest->m[0][0] = ((s32) (src[0][0] * toFixed) & 0xFFFF0000) | (((s32) (src[0][1] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[0][1] = ((s32) (src[0][2] * toFixed) & 0xFFFF0000) | (((s32) (src[0][3] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[0][2] = ((s32) (src[1][0] * toFixed) & 0xFFFF0000) | (((s32) (src[1][1] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[0][3] = ((s32) (src[1][2] * toFixed) & 0xFFFF0000) | (((s32) (src[1][3] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[1][0] = ((s32) (src[2][0] * toFixed) & 0xFFFF0000) | (((s32) (src[2][1] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[1][1] = ((s32) (src[2][2] * toFixed) & 0xFFFF0000) | (((s32) (src[2][3] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[1][2] = ((s32) (src[3][0] * toFixed) & 0xFFFF0000) | (((s32) (src[3][1] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[1][3] = ((s32) (src[3][2] * toFixed) & 0xFFFF0000) | (((s32) (src[3][3] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[2][0] = ((s32) (src[0][0] * toFixed) << 0x10)      | ((s32) (src[0][1] * toFixed) & 0xFFFF);
+    dest->m[2][1] = ((s32) (src[0][2] * toFixed) << 0x10)      | ((s32) (src[0][3] * toFixed) & 0xFFFF);
+    dest->m[2][2] = ((s32) (src[1][0] * toFixed) << 0x10)      | ((s32) (src[1][1] * toFixed) & 0xFFFF);
+    dest->m[2][3] = ((s32) (src[1][2] * toFixed) << 0x10)      | ((s32) (src[1][3] * toFixed) & 0xFFFF);
+    dest->m[3][0] = ((s32) (src[2][0] * toFixed) << 0x10)      | ((s32) (src[2][1] * toFixed) & 0xFFFF);
+    dest->m[3][1] = ((s32) (src[2][2] * toFixed) << 0x10)      | ((s32) (src[2][3] * toFixed) & 0xFFFF);
+    dest->m[3][2] = ((s32) (src[3][0] * toFixed) << 0x10)      | ((s32) (src[3][1] * toFixed) & 0xFFFF);
+    dest->m[3][3] = ((s32) (src[3][2] * toFixed) << 0x10)      | ((s32) (src[3][3] * toFixed) & 0xFFFF);
+    #endif
 }
 
 bool adjust_angle(s16 *angle, s16 targetAngle, s16 step) {
