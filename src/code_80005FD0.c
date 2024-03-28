@@ -2948,24 +2948,24 @@ void set_bomb_kart_spawn_positions(void) {
     s32 var_s3;
     TrackWaypoint *temp_v0;
     BombKart *var_s0;
-    BombKartSpawn *temp_s1;
+    BombKartSpawn *bombKartSpawn;
 
     for (var_s3 = 0; var_s3 < NUM_BOMB_KARTS_VERSUS; var_s3++) {
-        temp_s1 = &D_800DCC08[gCurrentCourseId][var_s3];
+        bombKartSpawn = &gBombKartSpawns[gCurrentCourseId][var_s3];
         switch (gCurrentCourseId) {
         case COURSE_YOSHI_VALLEY:
-            startingXPos = temp_s1->startingXPos;
-            startingZPos = temp_s1->startingZPos;
+            startingXPos = bombKartSpawn->startingXPos;
+            startingZPos = bombKartSpawn->startingZPos;
             startingYPos = func_802AE1C0(startingXPos, 2000.0f, startingZPos);
             break;
         case COURSE_AWARD_CEREMONY:
-            temp_v0 = &D_80164550[3][temp_s1->waypointIndex];
+            temp_v0 = &D_80164550[3][bombKartSpawn->waypointIndex];
             startingXPos = temp_v0->posX;
             startingYPos = temp_v0->posY;
             startingZPos = temp_v0->posZ;
             break;
         default:
-            temp_v0 = &D_80164550[0][temp_s1->waypointIndex];
+            temp_v0 = &D_80164550[0][bombKartSpawn->waypointIndex];
             startingXPos = temp_v0->posX;
             startingYPos = temp_v0->posY;
             startingZPos = temp_v0->posZ;
@@ -2986,11 +2986,11 @@ void set_bomb_kart_spawn_positions(void) {
         gBombKarts[var_s3].wheel4Pos[0] = startingXPos;
         gBombKarts[var_s3].wheel4Pos[1] = startingYPos;
         gBombKarts[var_s3].wheel4Pos[2] = startingZPos;
-        gBombKarts[var_s3].waypointIndex = temp_s1->waypointIndex;
-        gBombKarts[var_s3].unk_3C = temp_s1->unk_04;
+        gBombKarts[var_s3].waypointIndex = bombKartSpawn->waypointIndex;
+        gBombKarts[var_s3].unk_3C = bombKartSpawn->unk_04;
         gBombKarts[var_s3].bounceTimer = 0;
         gBombKarts[var_s3].circleTimer = 0;
-        gBombKarts[var_s3].state = temp_s1->startingState;
+        gBombKarts[var_s3].state = bombKartSpawn->startingState;
         gBombKarts[var_s3].unk_4A = 0;
         gBombKarts[var_s3].unk_4C = 1;
         gBombKarts[var_s3].yPos = startingYPos;
@@ -5382,7 +5382,7 @@ void func_80014DE4(s32 arg0) {
 
     D_801646CC = 0;
     D_80164678[arg0] = D_80164670[arg0];
-    if ((gModeSelection != 1) && ((gCupCourseSelection == 0) || (gDemoMode == (u16) 1))) {
+    if ((gModeSelection != 1) && ((gCupCourseSelection == MUSHROOM_CUP) || (gDemoMode == (u16) 1))) {
         D_80164678[arg0] = 0;
     } else if ((D_80164678[arg0] != 0) && (D_80164678[arg0] != (s16) 1) && (D_80164678[arg0] != 2) && (D_80164678[arg0] != 3)) {
         D_80164678[arg0] = 0;

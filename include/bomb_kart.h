@@ -58,6 +58,6 @@ extern BombKart gBombKarts[NUM_BOMB_KARTS_MAX];
 extern Collision D_80164038[NUM_BOMB_KARTS_MAX];
 
 // data/data_0DD0A0_1.s
-extern BombKartSpawn D_800DCC08[NUM_COURSES][NUM_BOMB_KARTS_MAX];
+extern BombKartSpawn gBombKartSpawns[NUM_COURSES][NUM_BOMB_KARTS_MAX];
 
 #endif

@@ -465,7 +465,7 @@ void func_80039DA4(void) {
         4, 5, 6, 7,
     };
 
-    if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
+    if (((gCupCourseSelection == MUSHROOM_CUP) && (D_8016556E == 0)) ||
         (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         for (i = 0; i < NUM_PLAYERS; i++) {
@@ -484,7 +484,7 @@ UNUSED s16 D_800E43A8 = 0;
 
 void spawn_players_gp_one_player(f32 *arg0, f32 *arg1, f32 arg2) {
     func_80039DA4();
-    if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) ||
+    if (((gCupCourseSelection == MUSHROOM_CUP) && (D_8016556E == 0)) ||
         (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
@@ -575,7 +575,7 @@ void spawn_players_versus_one_player(f32 *arg0, f32 *arg1, f32 arg2) {
 
 void spawn_players_gp_two_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if ((gCupCourseSelection == CUP_COURSE_ONE) || (gDemoMode == 1) || (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
+    if ((gCupCourseSelection == MUSHROOM_CUP) || (gDemoMode == 1) || (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
         s16 i;
 
