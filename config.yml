@@ -8,7 +8,7 @@
       binary: mkcube.otr
       headers: include
       code: assets/code
-  tables: [yamls/courses]
+  metadata: [yamls/courses]
   segments:
     - 0x000000
     - 0x000000

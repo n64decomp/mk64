@@ -246,7 +246,7 @@ D_0D0052B8:
 D_0D005308:
   symbol: D_0D005308
   type: gfx
-  offset: 0x52B8
+  offset: 0x5308
 D_0D005338:
   symbol: D_0D005338
   type: gfx
@@ -499,7 +499,7 @@ D_0D006A40:
 common_shadow_i4:
   symbol: common_shadow_i4
   offset: 0x6A58
-  size: 0x100
+  size: 0x80
   type: texture
   width: 32
   height: 32
@@ -507,25 +507,25 @@ common_shadow_i4:
 D_0D006AD8:
   symbol: D_0D006AD8
   offset: 0x6AD8
-  size: 0x100
+  size: 0x400
   type: texture
   width: 32
   height: 32
   format: i4
 common_tlut_debug_font:
   symbol: common_tlut_debug_font
-  offset: 0x6AD8
-  size: 0x100
+  offset: 0x6ED8
+  size: 0x20
   type: texture
-  width: 32
+  colors: 32
   height: 32
   format: tlut
 common_texture_debug_font:
   symbol: common_texture_debug_font
   type: texture
-  offset: 0x6AD8
-  size: 0x100
-  width: 32
+  offset: 0x6EF8
+  size: 0x800
+  colors: 32
   height: 32
   format: tlut
 D_0D0076F8:
@@ -915,7 +915,26 @@ D_0D009418:
   symbol: D_0D009418
   type: inc
   ctype: Vec4f
-  file_path: "test.inc.c"
+  offset: 0x9418
+  file_path: "assets/course_data/D_0D009418.inc.c"
+D_0D009568:
+  symbol: D_0D009568
+  type: inc
+  offset: 0x9568
+  ctype: Vec4f
+  file_path: "assets/course_data/D_0D009568.inc.c"
+D_0D0096B8:
+  symbol: D_0D0096B8
+  type: inc
+  offset: 0x96B8
+  ctype: Vec4f
+  file_path: "assets/course_data/D_0D0096B8.inc.c"
+D_0D009808:
+  symbol: D_0D009808
+  type: inc
+  offset: 0x9808
+  ctype: Vec4f
+  file_path: "assets/course_data/D_0D009808.inc.c"
 common_texture_speedometer:
   symbol: common_texture_speedometer
   type: texture
@@ -924,20 +943,22 @@ common_texture_speedometer:
   size: 0x1000
   width: 64
   height: 96
-  format: i4
+  format: I4
 common_texture_speedometer_needle:
   symbol: common_texture_speedometer_needle
   type: texture
   offset: 0xA88C
+  ctype: u8
   size: 0x1000
   width: 64
   height: 32
-  format: i4
+  format: I4
 common_texture_hud_lap:
   symbol: common_texture_hud_lap
   type: texture
   offset: 0xB88C
   ctype: u16
+  size: 0x1000
   width: 32
   height: 8
   format: RGBA16
