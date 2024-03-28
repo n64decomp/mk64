@@ -486,11 +486,11 @@ char *gDebugCourseNames[] = {
 };
 
 const s8 gPerCupIndexByCourseId[] = {
-    3, 2, 3, 2,
-    1, 1, 2, 2,
-    0, 1, 0, 3,
-    1, 3, 0, 1,
-    3, 2, 0, 0,
+    SPECIAL_CUP, STAR_CUP, SPECIAL_CUP, STAR_CUP,
+    FLOWER_CUP, FLOWER_CUP, STAR_CUP, STAR_CUP,
+    MUSHROOM_CUP, FLOWER_CUP, MUSHROOM_CUP, SPECIAL_CUP,
+    FLOWER_CUP, SPECIAL_CUP, MUSHROOM_CUP, FLOWER_CUP,
+    SPECIAL_CUP, STAR_CUP, MUSHROOM_CUP, MUSHROOM_CUP,
 };
 
 const s8 D_800EFD64[] = { 0, 1, 4, 3, 5, 6, 2, 7 };
@@ -10155,7 +10155,7 @@ void func_800A8A98(struct_8018D9E0_entry *arg0) {
     gDPPipeSync(gDisplayListHead++);
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
-    for (someIndex = 0; someIndex < 4; someIndex++) {
+    for (someIndex = 0; someIndex < NUM_COURSES_PER_CUP; someIndex++) {
         if ((someIndex == gCupCourseSelection) && (D_8018EDEC >= 2) && (gModeSelection != GRAND_PRIX)) {
             if ((D_8018EDEC == 2) || (D_8018EDEC == 4)) {
                 gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, D_800E7208[someIndex][0].column + temp_s2, D_800E7208[someIndex][0].row + temp_s3, D_800E7208[someIndex][1].column + temp_s2, D_800E7208[someIndex][1].row + temp_s3);
@@ -11446,7 +11446,7 @@ void func_800AB314(struct_8018D9E0_entry *arg0) {
         if (D_8018EDEC != 1U) {
             arg0->cursor = 0;
             arg0->unk20 = 0;
-            for (var_a1 = 0; var_a1 < 4; var_a1++) {
+            for (var_a1 = 0; var_a1 < NUM_COURSES_PER_CUP; var_a1++) {
                 if (gCupCourseSelection == var_a1) {
                     sp24[var_a1]->visible = 1;
                     if (arg0->unk1C != var_a1) {
@@ -11955,7 +11955,7 @@ void func_800AC458(struct_8018D9E0_entry *arg0) {
         if (arg0->unk1C <= 0) {
             arg0->cursor = 0x0000000A;
             arg0->unk1C = 0;
-            if (gCupCourseSelection == 3) {
+            if (gCupCourseSelection == SPECIAL_CUP) {
                 for (var_a1 = 0; var_a1 < 8; var_a1++) {
                     if (D_80164478[gCharacterIdByGPOverallRank[var_a1]] < gPlayerCount) {
                         func_800B536C(var_a1);

@@ -25,7 +25,7 @@ extern f32 D_800DCAA0[];
 extern s16 D_800DCAF4[];
 extern s16 D_800DCB34[];
 extern s16 *D_800DCBB4[];
-extern BombKartSpawn D_800DCC08[][NUM_BOMB_KARTS_MAX];
+extern BombKartSpawn gBombKartSpawns[][NUM_BOMB_KARTS_MAX];
 extern struct _struct_D_800DD9D0_0x10 D_800DD9D0[];
 extern s32 D_800DDB20;
 extern s32 D_800DDB24;
