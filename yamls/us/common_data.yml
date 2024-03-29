@@ -1,7 +1,11 @@
 :config:
   segments:
     - [0x0D, 0x132B50]
-  header: 
+  tables:
+    common_texture_hud_place:
+      range: [0xD258, 0x14258]
+      mode: APPEND
+  header:
     code:
     - '#include <commmon_data.h>'
     - '#include <macros.h>'
@@ -940,34 +944,34 @@ common_texture_speedometer:
   symbol: common_texture_speedometer
   type: texture
   ctype: u8
-  offset: 0x988C
-  size: 0x1000
+  offset: 0x9958
+  size: 0xC00
   width: 64
   height: 96
   format: I4
 common_texture_speedometer_needle:
   symbol: common_texture_speedometer_needle
   type: texture
-  offset: 0xA88C
+  offset: 0xA558
   ctype: u8
-  size: 0x1000
+  size: 0x400
   width: 64
   height: 32
   format: I4
 common_texture_hud_lap:
   symbol: common_texture_hud_lap
   type: texture
-  offset: 0xB88C
+  offset: 0xA958
   ctype: u16
-  size: 0x1000
+  size: 0x200
   width: 32
   height: 8
   format: RGBA16
 common_texture_hud_123:
   symbol: common_texture_hud_123
   type: texture
-  offset: 0xC88C
-  size: 0x1000
+  offset: 0xAB58
+  size: 0x200
   ctype: u16
   width: 32
   height: 8
@@ -975,8 +979,8 @@ common_texture_hud_123:
 common_texture_hud_lap_time:
   symbol: common_texture_hud_lap_time
   type: texture
-  offset: 0xD88C
-  size: 0x1000
+  offset: 0xAD58
+  size: 0x400
   ctype: u16
   width: 32
   height: 16
@@ -984,8 +988,8 @@ common_texture_hud_lap_time:
 common_texture_hud_lap_1_on_3:
   symbol: common_texture_hud_lap_1_on_3
   type: texture
-  offset: 0xE88C
-  size: 0x1000
+  offset: 0xB158
+  size: 0x400
   ctype: u16
   width: 32
   height: 16
@@ -993,17 +997,17 @@ common_texture_hud_lap_1_on_3:
 common_texture_hud_lap_2_on_3:
   symbol: common_texture_hud_lap_2_on_3
   type: texture
-  offset: 0xF88C
+  offset: 0xB558
   ctype: u16
-  size: 0x1000
+  size: 0x400
   width: 32
   height: 16
   format: RGBA16
 common_texture_hud_lap_3_on_3:
   symbol: common_texture_hud_lap_3_on_3
   type: texture
-  offset: 0x1088C
-  size: 0x1000
+  offset: 0xB958
+  size: 0x400
   ctype: u16
   width: 32
   height: 16
@@ -1011,8 +1015,8 @@ common_texture_hud_lap_3_on_3:
 common_texture_hud_total_time:
   symbol: common_texture_hud_total_time
   type: texture
-  offset: 0x1188C
-  size: 0x1000
+  offset: 0xBD58
+  size: 0x400
   ctype: u16
   width: 32
   height: 16
@@ -1020,8 +1024,8 @@ common_texture_hud_total_time:
 common_texture_hud_time:
   symbol: common_texture_hud_time
   type: texture
-  offset: 0x1288C
-  size: 0x1000
+  offset: 0xC158
+  size: 0x400
   ctype: u16
   width: 32
   height: 16
@@ -1029,17 +1033,84 @@ common_texture_hud_time:
 common_texture_hud_normal_digit:
   symbol: common_texture_hud_normal_digit
   type: texture
-  offset: 0x1388C
-  size: 0x1000
+  offset: 0xC558
+  size: 0xD00
   ctype: u16
   width: 104
   height: 16
   format: RGBA16
-
-
-
-
-
+common_texture_hud_1st:
+  symbol: common_texture_hud_1st
+  type: texture
+  offset: 0xD258
+  size: 0x1000
+  ctype: u8
+  width: 128
+  height: 64
+  format: I4
+common_texture_hud_2nd:
+  symbol: common_texture_hud_2nd
+  type: texture
+  offset: 0xE258
+  size: 0x1000
+  ctype: u8
+  width: 128
+  height: 64
+  format: I4
+common_texture_hud_3rd:
+  symbol: common_texture_hud_3rd
+  type: texture
+  offset: 0xF258
+  size: 0x1000
+  ctype: u8
+  width: 128
+  height: 64
+  format: I4
+common_texture_hud_4th:
+  symbol: common_texture_hud_4th
+  type: texture
+  offset: 0x10258
+  size: 0x1000
+  ctype: u8
+  width: 128
+  height: 64
+  format: I4
+common_texture_hud_5th:
+  symbol: common_texture_hud_5th
+  type: texture
+  offset: 0x11258
+  size: 0x1000
+  ctype: u8
+  width: 128
+  height: 64
+  format: I4
+common_texture_hud_6th:
+  symbol: common_texture_hud_6th
+  type: texture
+  offset: 0x12258
+  size: 0x1000
+  ctype: u8
+  width: 128
+  height: 64
+  format: I4
+common_texture_hud_7th:
+  symbol: common_texture_hud_7th
+  type: texture
+  offset: 0x13258
+  size: 0x1000
+  ctype: u8
+  width: 128
+  height: 64
+  format: I4
+common_texture_hud_8th:
+  symbol: common_texture_hud_8th
+  type: texture
+  offset: 0x14258
+  size: 0x1000
+  ctype: u8
+  width: 128
+  height: 64
+  format: I4
 
 
 # UnkCommonTextureStruct0
