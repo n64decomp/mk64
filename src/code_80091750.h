@@ -171,6 +171,8 @@ void func_80099EC4(void);
 void func_80099A70(void);
 void func_80099A94(MkTexture *, s32);
 void func_80099AEC(void);
+void func_8009A238(MkTexture*, s32);
+void func_8009A2F0(struct_8018E0E8_entry*);
 void func_8009A344(void);
 s32  func_8009A374(MkAnimation*);
 s32  func_8009A478(MkAnimation*, s32);
@@ -598,5 +600,13 @@ extern Unk_D_800E70A0 D_800E8600[];
 extern s32 gControllerPak1NumPagesFree;
 extern s32 gControllerPak1FileNote;
 extern s32 gControllerPak2FileNote;
+
+extern f32 D_8018ED98;
+extern f32 D_8018ED9C;
+extern f32 D_8018EDA0;
+
+extern f32 D_8018EDA4;
+extern f32 D_8018EDA8;
+extern f32 D_8018EDAC;
 
 #endif

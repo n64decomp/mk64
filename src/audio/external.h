@@ -126,13 +126,13 @@ struct Unk_800EA06C {
 
 typedef struct {
 	/* 0x00 */ f32 unk_00;
-	/* 0x04 */ u16 unk_04;
+	/* 0x04 */ f32 unk_04;
     /* 0x06 */ // u16 compilerPadding;
 	/* 0x08 */ f32 unk_08;
 	/* 0x0C */ u16 unk_0C;
     /* 0x0E */ // u16 compilerPadding;
 	/* 0x10 */ f32 unk_10;
-	/* 0x14 */ u16 unk_14;
+	/* 0x14 */ f32 unk_14;
     /* 0x16 */ // u16 compilerPadding;
 	/* 0x18 */ f32 unk_18;
 	/* 0x1C */ u16 unk_1C;
@@ -187,6 +187,11 @@ typedef struct {
     u8  unk8;
     u8  unk9;
 } UnkStruct8018EF18; // size = 0xC
+
+typedef struct {
+	u8 thing0;
+	u8 thing1;
+} struct_D_80192CA8_entry;
 
 /** @cond */
 
@@ -342,7 +347,7 @@ extern u8 D_80192AB8[SOUND_BANK_COUNT][8][8];
 extern u8 D_80192C38;
 extern u8 sSoundBankDisabled[SOUND_BANK_COUNT];
 extern struct ChannelVolumeScaleFade D_80192C48[SOUND_BANK_COUNT];
-extern u8 D_80192CA8[3][10];
+extern struct_D_80192CA8_entry D_80192CA8[3][5];
 extern u8  D_80192CC6[3];
 extern u32 D_80192CD0[256];
 extern struct_D_801930D0_entry D_801930D0[3];
