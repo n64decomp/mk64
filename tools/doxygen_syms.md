@@ -3968,7 +3968,7 @@ Variable Name | Memory Address
 [D_80163258](@ref D_80163258) | 0x80163258
 [D_80163270](@ref D_80163270) | 0x80163270
 [D_80163288](@ref D_80163288) | 0x80163288
-[gActualCPUBehaviour](@ref gActualCPUBehaviour) | 0x801632B0
+[sCurrentCPUBehaviour](@ref sCurrentCPUBehaviour) | 0x801632B0
 [gCurrentCPUBehaviourId](@ref gCurrentCPUBehaviourId) | 0x801632B8
 [gPreviousCPUBehaviourId](@ref gPreviousCPUBehaviourId) | 0x801632D0
 [gCPUBehaviourState](@ref gCPUBehaviourState) | 0x801632E8

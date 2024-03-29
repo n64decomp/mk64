@@ -91,7 +91,7 @@ u16 D_80163240[12];
 u16 D_80163258[12];
 u16 D_80163270[12];
 s32 D_80163288[10];
-CPUBehaviour *gActualCPUBehaviour;
+CPUBehaviour *sCurrentCPUBehaviour;
 u16 gCurrentCPUBehaviourId[12];
 u16 gPreviousCPUBehaviourId[12];
 u16 gCPUBehaviourState[12];
@@ -4196,16 +4196,16 @@ void cpu_behaviour_start(s32 playerId, Player *player) {
     s32 behaviourType;
     s32 test;
 
-    gActualCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][gCurrentCPUBehaviourId[playerId]];
+    sCurrentCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][gCurrentCPUBehaviourId[playerId]];
 
     playerWaypoint = gNearestWaypointByPlayerId[playerId];
 
-    waypointStart = gActualCPUBehaviour->waypointStart;
-    waypointEnd = gActualCPUBehaviour->waypointEnd;
-    behaviourType = gActualCPUBehaviour->type;
+    waypointStart = sCurrentCPUBehaviour->waypointStart;
+    waypointEnd = sCurrentCPUBehaviour->waypointEnd;
+    behaviourType = sCurrentCPUBehaviour->type;
 
     if ((waypointStart == -1) && (waypointEnd == -1)) {
-        gActualCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][0];
+        sCurrentCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][0];
         reset_cpu_behaviour_none(playerId);
         return;
     }
@@ -4260,10 +4260,10 @@ void cpu_behaviour_end(s32 playerIndex, Player *player) {
     u32 waypointEnd;
     s32 behaviourType;
 
-    gActualCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][gPreviousCPUBehaviourId[playerIndex]];
+    sCurrentCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][gPreviousCPUBehaviourId[playerIndex]];
     nearestWaypoint = gNearestWaypointByPlayerId[playerIndex];
-    behaviourType = gActualCPUBehaviour->type;
-    waypointEnd = gActualCPUBehaviour->waypointEnd;
+    behaviourType = sCurrentCPUBehaviour->type;
+    waypointEnd = sCurrentCPUBehaviour->waypointEnd;
     if (nearestWaypoint >= waypointEnd) {
         switch (behaviourType) {
         case BEHAVIOUR_1:

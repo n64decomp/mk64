@@ -298,7 +298,7 @@ extern u16 D_80163258[];
 extern u16 D_80163270[];
 extern s32 D_80163288[];
 // Exact pointer type unknown
-extern CPUBehaviour *gActualCPUBehaviour;
+extern CPUBehaviour *sCurrentCPUBehaviour;
 extern u16 gCurrentCPUBehaviourId[];
 extern u16 gPreviousCPUBehaviourId[];
 extern u16 gCPUBehaviourState[];
