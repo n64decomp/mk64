@@ -30,7 +30,7 @@ course:
   path_table: [nullPath, nullPath,   nullPath,   nullPath]
 
   # Unused except in podium ceremony
-  path_table_unknown: [nullPath, nullPath,   nullPath,   nullPath]
+  path_table_unknown: [ending_sequence, nullPath,   nullPath,   nullPath]
 
   sky_colors: [238, 144, 255, 255, 224, 240]
   sky_colors2: [255, 224, 240, 0, 0, 0]
