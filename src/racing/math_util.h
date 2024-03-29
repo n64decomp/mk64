@@ -60,7 +60,7 @@ u16  random_u16(void);
 u16  random_int(u16);
 s16  func_802B7F34(f32, f32, f32, f32);
 void func_802B7F7C(Vec3f, Vec3f, Vec3s);
-f32  sins(u16);
+f32  sins(const u16);
 f32  coss(u16);
 s32  is_visible_between_angle(u16, u16, u16);
 f32  is_within_render_distance(Vec3f, Vec3f, u16, f32, f32, f32);

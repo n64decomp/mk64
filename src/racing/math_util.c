@@ -1072,12 +1072,59 @@ void func_802B7F7C(Vec3f arg0, Vec3f arg1, Vec3s dest) {
     dest[2] = func_802B7F34(x1, y1, x2, y2);
 }
 
-f32 sins(u16 arg0) {
-    return gSineTable[arg0 >> 4];
+/**
+ * Special thanks to Kaze for sharing!
+ * 0x0000-0x2000 : sin(x) : cos(x)
+ * 0x2000-0x4000 : cos(0x4000 -x) : sin(0x4000 - x)
+ * 0x4000-0x6000 : cos(x-0x4000) : -sin(x - 0x4000)
+ * 0x6000-0x8000 : sin(0x8000-x) : cos(0x8000 -x)
+ * 0x8000-end    : -sin(x-0x8000) : -cos(x-0x8000)
+ * table is 1/8th sinetable and 1/8th cosinetable
+ */
+f32 sins(const u16 x) {
+    const s32 usedX = x & 0x7fff;
+    const s32 index = usedX >> 13; // 0,1,2,3 all we care about
+    register float F0;
+    switch (index) {
+        case 0: // 0 - 0x2000
+            F0 = gSineCosineTable[((usedX) >> 4) * 2];
+            break;
+        case 1: // 0x2000 - 0x4000
+            F0 = gSineCosineTable[((0x4000 - usedX) >> 4) * 2 + 1];
+            break;
+        case 2: // 0x4000 - 0x6000
+            F0 = gSineCosineTable[((usedX - 0x4000) >> 4) * 2 + 1];
+            break;
+        case 3: // 0x6000 - 0x8000
+            F0 = gSineCosineTable[((0x8000 - usedX) >> 4) * 2];
+            break;
+        default:
+            break;
+    }
+    return x != usedX ? -F0 : F0;
 }
 
-f32 coss(u16 arg0) {
-    return gCosineTable[arg0 >> 4];
+f32 coss(u16 x) {
+    const s32 usedX = x & 0x7fff;
+    const s32 index = usedX >> 13; // 0,1,2,3 all we care about
+    register float F0;
+    switch (index) {
+        case 0: // 0 - 0x2000
+            F0 = gSineCosineTable[((usedX) >> 4) * 2 + 1];
+            break;
+        case 1: // 0x2000 - 0x4000
+            F0 = gSineCosineTable[((0x4000 - usedX) >> 4) * 2];
+            break;
+        case 2: // 0x4000 - 0x6000
+            F0 = -gSineCosineTable[((usedX - 0x4000) >> 4) * 2];
+            break;
+        case 3: // 0x6000 - 0x8000
+            F0 = -gSineCosineTable[((0x8000 - usedX) >> 4) * 2 + 1];
+            break;
+        default:
+            break;
+    }
+    return x != usedX ? -F0 : F0;
 }
 
 s32 is_visible_between_angle(u16 arg0, u16 arg1, u16 arg2) {
