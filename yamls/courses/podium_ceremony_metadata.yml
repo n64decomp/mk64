@@ -2,10 +2,10 @@ course:
   type: MK64:METADATA
   offset: 0x0
   id: 20
-  name: # unknown
-  debug_name: # unk
+  name: # unknown (does not exist)
+  debug_name: # unk (does not exist)
   cup: # BATTLE
-  cup_index:
+  cup_index: 0
   waypoint_width: 40.0f    # entry
   waypoint_width2: 0.5f    # entry
   D_800DCBB4: D_800DCAF4 
