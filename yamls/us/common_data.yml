@@ -29,6 +29,9 @@
     common_texture_particle_smoke:
       range: [0x2BC58, 0x2CC58]
       mode: APPEND
+    common_texture_minimap_kart_character:
+      range: [0x2CCD8, 0x2D0D8]
+      mode: APPEND
   header:
     code:
     - '#include <commmon_data.h>'
@@ -1977,4 +1980,130 @@ D_0D02AA58:
   offset: 0x2AA58
   width: 16
   height: 16
+  format: rgba16
+common_texture_particle_spark_1.i8.png:
+  symbol: common_texture_particle_spark_1.i8.png
+  offset: 0x2AC58
+  width: 32
+  height: 32
+  type: texture
+  format: i8
+common_texture_particle_spark_2.i8.png:
+  symbol: common_texture_particle_spark_2.i8.png
+  offset: 0x2B058
+  width: 32
+  height: 32
+  type: texture
+  format: i8
+common_texture_particle_spark_3.i8.png:
+  symbol: common_texture_particle_spark_3.i8.png
+  offset: 0x2B458
+  width: 32
+  height: 32
+  type: texture
+  format: i8
+common_texture_particle_spark_4.i8.png:
+  symbol: common_texture_particle_spark_4.i8.png
+  offset: 0x2B858
+  width: 32
+  height: 32
+  type: texture
+  format: i8
+common_texture_particle_smoke_1.i8.png:
+  symbol: common_texture_particle_smoke_1.i8.png
+  offset: 0x2BC58
+  width: 32
+  height: 32
+  type: texture
+  format: i8
+common_texture_particle_smoke_2.i8.png:
+  symbol: common_texture_particle_smoke_2.i8.png
+  offset: 0x2C058
+  width: 32
+  height: 32
+  type: texture
+  format: i8
+common_texture_particle_smoke_3.i8.png:
+  symbol: common_texture_particle_smoke_3.i8.png
+  offset: 0x2C458
+  width: 32
+  height: 32
+  type: texture
+  format: i8
+common_texture_particle_smoke_4.i8.png:
+  symbol: common_texture_particle_smoke_4.i8.png
+  offset: 0x2C858
+  width: 32
+  height: 32
+  type: texture
+  format: i8
+common_texture_minimap_finish_line:
+  symbol: common_texture_minimap_finish_line
+  offset: 0x2CC58
+  width: 8
+  height: 8
+  type: texture
+  format: rgba16
+common_texture_minimap_kart_mario:
+  symbol: common_texture_minimap_kart_mario
+  offset: 0x2CCD8
+  width: 8
+  height: 8
+  type: texture
+  format: rgba16
+common_texture_minimap_kart_luigi:
+  symbol: common_texture_minimap_kart_luigi
+  offset: 0x2CD58
+  width: 8
+  height: 8
+  type: texture
+  format: rgba16
+common_texture_minimap_kart_yoshi:
+  symbol: common_texture_minimap_kart_yoshi
+  offset: 0x2CDD8
+  width: 8
+  height: 8
+  type: texture
+  format: rgba16
+common_texture_minimap_kart_toad:
+  symbol: common_texture_minimap_kart_toad
+  offset: 0x2CE58
+  width: 8
+  height: 8
+  type: texture
+  format: rgba16
+common_texture_minimap_kart_donkey_kong:
+  symbol: common_texture_minimap_kart_donkey_kong
+  offset: 0x2CED8
+  width: 8
+  height: 8
+  type: texture
+  format: rgba16
+common_texture_minimap_kart_wario:
+  symbol: common_texture_minimap_kart_wario
+  offset: 0x2CF58
+  width: 8
+  height: 8
+  type: texture
+  format: rgba16
+common_texture_minimap_kart_peach:
+  symbol: common_texture_minimap_kart_peach
+  offset: 0x2CFD8
+  width: 8
+  height: 8
+  type: texture
+  format: rgba16
+common_texture_minimap_kart_bowser:
+  symbol: common_texture_minimap_kart_bowser
+  offset: 0x2D058
+  width: 8
+  height: 8
+  type: texture
+  format: rgba16
+common_texture_minimap_progress_dot:
+  symbol: common_texture_minimap_progress_dot
+  offset: 0x2D0D8
+  width: 8
+  height: 8
+  type: texture
   format: rgba16
