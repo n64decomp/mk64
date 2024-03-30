@@ -16,31 +16,31 @@
       range: [0xD258, 0x14258]
       mode: APPEND
     D_0D015258:
-      range: [0x15258, 0x18C58]
+      range: [0x15258, 0x16A58]
       mode: APPEND
     common_texture_player_emblem:
-      range: [0x17458, 0x19458]
+      range: [0x17458, 0x18C58]
       mode: APPEND
     common_texture_hud_type_C_rank_font:
-      range: [0x19658, 0x19E58]
+      range: [0x19658, 0x19D58]
       mode: APPEND
     common_texture_hud_type_C_rank_tiny_font:
-      range: [0x1A058, 0x1A2D8]
+      range: [0x1A058, 0x1A298]
       mode: APPEND
     common_tlut_lakitu_countdown:
-      range: [0x24ED8, 0x254D8]
+      range: [0x24ED8, 0x252D8]
       mode: APPEND
     common_texture_bomb:
-      range: [0x29858, 0x2A858]
+      range: [0x29858, 0x2A458]
       mode: APPEND
     common_texture_particle_spark:
-      range: [0x2AC58, 0x2BC58]
+      range: [0x2AC58, 0x2B858]
       mode: APPEND
     common_texture_particle_smoke:
-      range: [0x2BC58, 0x2CC58]
+      range: [0x2BC58, 0x2C858]
       mode: APPEND
     common_texture_minimap_kart_character:
-      range: [0x2CCD8, 0x2D0D8]
+      range: [0x2CCD8, 0x2D058]
       mode: APPEND
   header:
     code:
