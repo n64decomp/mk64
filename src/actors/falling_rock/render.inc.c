@@ -2,6 +2,13 @@
 #include <main.h>
 #include "courses/choco_mountain/course_data.inc.h"
 
+/**
+ * @brief Renders the falling rock actor.
+ * Actor used in Choco Mountain.
+ * 
+ * @param camera 
+ * @param rock 
+ */
 void render_actor_falling_rock(Camera *camera, struct FallingRock *rock) {
     Vec3s sp98;
     Vec3f sp8C;

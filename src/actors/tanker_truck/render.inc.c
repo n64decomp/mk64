@@ -2,6 +2,14 @@
 #include <main.h>
 #include <defines.h>
 
+/**
+ * @brief Renders the tanker truck actor.
+ * Actor used in Toad's Turnpike.
+ * His update are made in vehicle.
+ * 
+ * @param camera 
+ * @param arg1 
+ */
 void render_actor_tanker_truck(Camera *camera, struct Actor* arg1) {
     UNUSED s32 pad[6];
     Mat4 spC8;

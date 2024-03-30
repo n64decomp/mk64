@@ -1,6 +1,15 @@
 #include <actors.h>
 #include <PR/gbi.h>
+#include <main.h>
+#include "courses/wario_stadium/course_data.inc.h"
 
+/**
+ * @brief Renders the Wario sign actor.
+ * Used in Wario Stadium.
+ * 
+ * @param arg0 
+ * @param arg1 
+ */
 void render_actor_wario_sign(Camera *arg0, struct Actor *arg1) {
     Mat4 sp38;
     f32 unk = is_within_render_distance(arg0->pos, arg1->pos, arg0->rot[1], 0, gCameraZoom[arg0 - camera1], 16000000.0f);

@@ -2,7 +2,12 @@
 #include <main.h>
 #include <macros.h>
 
-// render item box need more info to document this properly
+/**
+ * @brief Renders the item box actor.
+ * 
+ * @param camera 
+ * @param item_box 
+ */
 void render_actor_item_box(Camera *camera, struct ItemBox *item_box) {
     UNUSED s32 pad[2];
     Vec3f someVec1;

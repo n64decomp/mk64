@@ -3,6 +3,12 @@
 #include <defines.h>
 #include <waypoints.h>
 
+/**
+ * @brief Updates the kiwano fruit actor.
+ * Actor used in DK's Jungle Parkway.
+ * 
+ * @param fruit 
+ */
 void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
     Player *player;
     f32 temp_f2;

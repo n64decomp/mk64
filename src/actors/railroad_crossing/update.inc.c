@@ -1,8 +1,12 @@
 #include <actors.h>
 
 /**
- * If train close activate bell sound according to timing
- **/
+ * @brief Updates the railroad crossing actor.
+ * Actor used in Kalimari Desert.
+ * Make the sound of the bell when the train is close.
+ * 
+ * @param crossing 
+ */
 void update_actor_railroad_crossing(struct RailroadCrossing *crossing) {
     // If train close?
     if (isCrossingTriggeredByIndex[crossing->crossingId] != 0) {

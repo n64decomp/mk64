@@ -2,7 +2,17 @@
 #include <actors.h>
 #include <defines.h>
 #include <main.h>
+#include "courses/yoshi_valley/course_data.inc.h"
 
+/**
+ * @brief Renders the Yoshi egg actor.
+ * Actor used in Yoshi Valley.
+ * 
+ * @param arg0 
+ * @param arg1 
+ * @param egg 
+ * @param arg3 
+ */
 void render_actor_yoshi_egg(Camera *arg0, Mat4 arg1, struct YoshiValleyEgg *egg, u16 arg3) {
     Mat4 sp60;
     Vec3s sp5C;

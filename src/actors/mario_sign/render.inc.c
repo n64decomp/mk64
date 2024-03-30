@@ -2,6 +2,14 @@
 #include <main.h>
 #include "courses/mario_raceway/course_data.inc.h"
 
+/**
+ * @brief Renders the Mario sign actor.
+ * Actor used in Mario Raceway.
+ * 
+ * @param arg0 
+ * @param arg1 
+ * @param arg2 
+ */
 void render_actor_mario_sign(Camera *arg0, UNUSED Mat4 arg1, struct Actor *arg2) {
     Mat4 sp40;
     f32 unk;

@@ -932,7 +932,7 @@ void check_player_use_item(void) {
 
     for (player = &gPlayers[0], loopController = &gControllers[0], target = &gControllers[4]; loopController != target; player++, loopController++) {
         controller = loopController;
-        if (can_player_not_use_item(player) == FALSE) {
+        if (prevent_item_use(player) == FALSE) {
             if((player->type & PLAYER_INVISIBLE_OR_BOMB) != 0){
                 if ((player - gPlayerTwo) == 0) {
                     controller = gControllerSix;

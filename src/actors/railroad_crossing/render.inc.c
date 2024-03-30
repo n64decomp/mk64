@@ -3,6 +3,13 @@
 #include <main.h>
 #include "courses/kalimari_desert/course_data.inc.h"
 
+/**
+ * @brief Renders the railroad crossing actor.
+ * Actor used in Kalimari Desert.
+ * 
+ * @param arg0 
+ * @param rr_crossing 
+ */
 void render_actor_railroad_crossing(Camera *arg0, struct RailroadCrossing *rr_crossing) {
     UNUSED Vec3s sp80 = {0, 0, 0};
     Mat4 sp40;

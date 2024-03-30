@@ -3,6 +3,11 @@
 #include <defines.h>
 #include <main.h>
 
+/**
+ * @brief update the banana actor
+ * 
+ * @param banana 
+ */
 void update_actor_banana(struct BananaActor *banana) {
     UNUSED f32 pad;
     Player *player;

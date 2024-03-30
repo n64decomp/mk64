@@ -4,6 +4,11 @@
 #include <code_800029B0.h>
 #include <defines.h>
 
+/**
+ * @brief Updates the green shell actor.
+ * 
+ * @param shell 
+ */
 void update_actor_green_shell(struct ShellActor *shell) {
     Player *player;
     UNUSED f32 pad9;

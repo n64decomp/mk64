@@ -1,5 +1,10 @@
 #include <actors.h>
 
+/**
+ * @brief Updates the Yoshi egg actor.
+ * 
+ * @param egg 
+ */
 void update_actor_yoshi_egg(struct YoshiValleyEgg *egg) {
     egg->pathRot += 0x5B;
     egg->pos[0] = egg->pathCenter[0] + (sins(egg->pathRot) * egg->pathRadius);

@@ -188,6 +188,11 @@ void func_802B4104(struct ShellActor *shell) {
     }
 }
 
+/**
+ * @brief Update the red and blue shell actors
+ * 
+ * @param shell 
+ */
 void update_actor_red_blue_shell(struct ShellActor *shell) {
     UNUSED f32 pad9;
     Player *player;

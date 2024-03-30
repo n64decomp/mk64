@@ -1,5 +1,10 @@
 #include <actors.h>
 
+/**
+ * @brief Updates the Mario sign actor.
+ * 
+ * @param arg0 
+ */
 void update_actor_mario_sign(struct Actor *arg0) {
     if ((arg0->flags & 0x800) == 0) {
         if ((arg0->flags & 0x400) != 0) {

@@ -2,6 +2,14 @@
 #include <main.h>
 #include "courses/koopa_troopa_beach/course_data.inc.h"
 
+/**
+ * @brief Renders the palm tree actor.
+ * Actor used in Koopa Troopa Beach.
+ * 
+ * @param arg0 
+ * @param arg1 
+ * @param arg2 
+ */
 void render_actor_palm_tree(Camera *arg0, UNUSED Mat4 arg1, struct PalmTree *arg2) {
     Vec3s spA8 = {0, 0, 0};
     Mat4 sp68;

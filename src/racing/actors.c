@@ -545,7 +545,7 @@ void evaluate_collision_player_palm_trees(Player *player) {
         pos[0] = data->pos[0] * gCourseDirection;
         pos[1] = data->pos[1];
         pos[2] = data->pos[2];
-        if (is_colliding_and_resolve(player, pos, 5.0f, 40.0f, 0.8f) == TRUE) {
+        if (query_and_resolve_collision_player_actor(player, pos, 5.0f, 40.0f, 0.8f) == COLLISION) {
             if ((player->effects & STAR_EFFECT) != 0) {
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
                 func_800C90F4((u8) (player - gPlayerOne), (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
@@ -742,7 +742,7 @@ UNUSED s16 D_802B8810[] = {
 
 UNUSED void func_8029ABD4(f32 *pos, s16 state) {
     gNumActors = 0;
-    gActorList[spawn_actor_at_pos(pos, 0x0014)].state = state;
+    gActorList[spawn_actor_at_pos(pos, ACTOR_UNKNOWN_0x14)].state = state;
 }
 
 void func_8029AC18(Camera *camera, Mat4 arg1, struct Actor *arg2) {
@@ -802,7 +802,7 @@ UNUSED void func_8029AE14() {
 
 #include "actors/falling_rock/render.inc.c"
 
-void place_piranha_plants(struct ActorSpawnData *spawnData) {
+void spawn_piranha_plants(struct ActorSpawnData *spawnData) {
     s32 segment = SEGMENT_NUMBER2(spawnData);
     s32 offset = SEGMENT_OFFSET(spawnData);
     struct ActorSpawnData *temp_s0 = (struct ActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
@@ -834,7 +834,7 @@ void place_piranha_plants(struct ActorSpawnData *spawnData) {
     }
 }
 
-void place_palm_trees(struct ActorSpawnData *spawnData) {
+void spawn_palm_trees(struct ActorSpawnData *spawnData) {
     s32 segment = SEGMENT_NUMBER2(spawnData);
     s32 offset = SEGMENT_OFFSET(spawnData);
     struct ActorSpawnData *temp_s0 = (struct ActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
@@ -945,7 +945,7 @@ void spawn_foliage(struct ActorSpawnData *arg0) {
     }
 }
 
-void place_all_item_boxes(struct ActorSpawnData *spawnData) {
+void spawn_all_item_boxes(struct ActorSpawnData *spawnData) {
     s32 segment = SEGMENT_NUMBER2(spawnData);
     s32 offset = SEGMENT_OFFSET(spawnData);
     s16 temp_s1;
@@ -1027,7 +1027,7 @@ void destroy_all_actors(void) {
     }
 }
 
-void place_course_actors(void) {
+void spawn_course_actors(void) {
     UNUSED s32 pad;
     Vec3f position;
     Vec3f velocity = { 0.0f, 0.0f, 0.0f };
@@ -1039,8 +1039,8 @@ void place_course_actors(void) {
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
         spawn_foliage(d_course_mario_raceway_tree_spawns);
-        place_piranha_plants(d_course_mario_raceway_piranha_plant_spawns);
-        place_all_item_boxes(d_course_mario_raceway_item_box_spawns);
+        spawn_piranha_plants(d_course_mario_raceway_piranha_plant_spawns);
+        spawn_all_item_boxes(d_course_mario_raceway_item_box_spawns);
         vec3f_set(position, 150.0f, 40.0f, -1300.0f);
         position[0] *= gCourseDirection;
         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_MARIO_SIGN);
@@ -1050,53 +1050,53 @@ void place_course_actors(void) {
         actor->flags |= 0x4000;
         break;
     case COURSE_CHOCO_MOUNTAIN:
-        place_all_item_boxes(d_course_choco_mountain_item_box_spawns);
-        place_falling_rocks(d_course_choco_mountain_falling_rock_spawns);
+        spawn_all_item_boxes(d_course_choco_mountain_item_box_spawns);
+        spawn_falling_rocks(d_course_choco_mountain_falling_rock_spawns);
         break;
     case COURSE_BOWSER_CASTLE:
         spawn_foliage(d_course_bowsers_castle_tree_spawn);
-        place_all_item_boxes(d_course_bowsers_castle_item_box_spawns);
+        spawn_all_item_boxes(d_course_bowsers_castle_item_box_spawns);
         break;
     case COURSE_BANSHEE_BOARDWALK:
-        place_all_item_boxes(d_course_banshee_boardwalk_item_box_spawns);
+        spawn_all_item_boxes(d_course_banshee_boardwalk_item_box_spawns);
         break;
     case COURSE_YOSHI_VALLEY:
         spawn_foliage(d_course_yoshi_valley_tree_spawn);
-        place_all_item_boxes(d_course_yoshi_valley_item_box_spawns);
+        spawn_all_item_boxes(d_course_yoshi_valley_item_box_spawns);
         vec3f_set(position, -2300.0f, 0.0f, 634.0f);
         position[0] *= gCourseDirection;
         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
         break;
     case COURSE_FRAPPE_SNOWLAND:
         spawn_foliage(d_course_frappe_snowland_tree_spawns);
-        place_all_item_boxes(d_course_frappe_snowland_item_box_spawns);
+        spawn_all_item_boxes(d_course_frappe_snowland_item_box_spawns);
         break;
     case COURSE_KOOPA_BEACH:
         init_actor_hot_air_balloon_item_box(328.0f * gCourseDirection, 70.0f, 2541.0f);
-        place_all_item_boxes(d_course_koopa_troopa_beach_item_box_spawns);
-        place_palm_trees(d_course_koopa_troopa_beach_tree_spawn);
+        spawn_all_item_boxes(d_course_koopa_troopa_beach_item_box_spawns);
+        spawn_palm_trees(d_course_koopa_troopa_beach_tree_spawn);
         break;
     case COURSE_ROYAL_RACEWAY:
         spawn_foliage(d_course_royal_raceway_tree_spawn);
-        place_all_item_boxes(d_course_royal_raceway_item_box_spawns);
-        place_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
+        spawn_all_item_boxes(d_course_royal_raceway_item_box_spawns);
+        spawn_piranha_plants(d_course_royal_raceway_piranha_plant_spawn);
         break;
     case COURSE_LUIGI_RACEWAY:
         spawn_foliage(d_course_luigi_raceway_tree_spawn);
-        place_all_item_boxes(d_course_luigi_raceway_item_box_spawns);
+        spawn_all_item_boxes(d_course_luigi_raceway_item_box_spawns);
         break;
     case COURSE_MOO_MOO_FARM:
         if (gPlayerCountSelection1 != 4) {
             spawn_foliage(d_course_moo_moo_farm_tree_spawn);
         }
-        place_all_item_boxes(d_course_moo_moo_farm_item_box_spawns);
+        spawn_all_item_boxes(d_course_moo_moo_farm_item_box_spawns);
         break;
     case COURSE_TOADS_TURNPIKE:
-        place_all_item_boxes(d_course_toads_turnpike_item_box_spawns);
+        spawn_all_item_boxes(d_course_toads_turnpike_item_box_spawns);
         break;
     case COURSE_KALAMARI_DESERT:
         spawn_foliage(d_course_kalimari_desert_cactus_spawn);
-        place_all_item_boxes(d_course_kalimari_desert_item_box_spawns);
+        spawn_all_item_boxes(d_course_kalimari_desert_item_box_spawns);
         vec3f_set(position, -1680.0f, 2.0f, 35.0f);
         position[0] *= gCourseDirection;
         rrxing = (struct RailroadCrossing *)&gActorList[add_actor_to_empty_slot(position, rotation, velocity, ACTOR_RAILROAD_CROSSING)];
@@ -1116,13 +1116,13 @@ void place_course_actors(void) {
         rrxing->crossingId = 0;
         break;
     case COURSE_SHERBET_LAND:
-        place_all_item_boxes(d_course_sherbet_land_item_box_spawns);
+        spawn_all_item_boxes(d_course_sherbet_land_item_box_spawns);
         break;
     case COURSE_RAINBOW_ROAD:
-        place_all_item_boxes(d_course_rainbow_road_item_box_spawns);
+        spawn_all_item_boxes(d_course_rainbow_road_item_box_spawns);
         break;
     case COURSE_WARIO_STADIUM:
-        place_all_item_boxes(d_course_wario_stadium_item_box_spawns);
+        spawn_all_item_boxes(d_course_wario_stadium_item_box_spawns);
         vec3f_set(position, -131.0f, 83.0f, 286.0f);
         position[0] *= gCourseDirection;
         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
@@ -1134,27 +1134,32 @@ void place_course_actors(void) {
         add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
         break;
     case COURSE_BLOCK_FORT:
-        place_all_item_boxes(d_course_block_fort_item_box_spawns);
+        spawn_all_item_boxes(d_course_block_fort_item_box_spawns);
         break;
     case COURSE_SKYSCRAPER:
-        place_all_item_boxes(d_course_skyscraper_item_box_spawns);
+        spawn_all_item_boxes(d_course_skyscraper_item_box_spawns);
         break;
     case COURSE_DOUBLE_DECK:
-        place_all_item_boxes(d_course_double_deck_item_box_spawns);
+        spawn_all_item_boxes(d_course_double_deck_item_box_spawns);
         break;
     case COURSE_DK_JUNGLE:
-        place_all_item_boxes(d_course_dks_jungle_parkway_item_box_spawns);
+        spawn_all_item_boxes(d_course_dks_jungle_parkway_item_box_spawns);
         init_kiwano_fruit();
         func_80298D10();
         break;
     case COURSE_BIG_DONUT:
-        place_all_item_boxes(d_course_big_donut_item_box_spawns);
+        spawn_all_item_boxes(d_course_big_donut_item_box_spawns);
         break;
     }
     gNumPermanentActors = gNumActors;
 }
 
-void load_common_texture(void) {
+/**
+ * @brief Loads actor textures, course specific actor textures.
+ * Calls to init_course_vehicles and place_course_actors
+ * 
+ */
+void init_actors_and_load_textures(void) {
     set_segment_base_addr(3, (void *) gNextFreeMemoryAddress);
     D_802BA050 = dma_textures(gTextureGreenShell0, 0x00000257U, 0x00000400U);
     dma_textures(gTextureGreenShell1, 0x00000242U, 0x00000400U);
@@ -1251,7 +1256,7 @@ void load_common_texture(void) {
     }
     init_red_shell_texture();
     destroy_all_actors();
-    place_course_actors();
+    spawn_course_actors();
     init_course_vehicles();
 }
 
@@ -1452,12 +1457,12 @@ UNUSED void prototype_actor_spawn_data(Player *player, uintptr_t arg1) {
         sp64[1] = var_s0->thing[1];
         sp64[2] = var_s0->thing[2];
         if(arg1 & arg1){}
-        is_colliding_and_resolve(player, sp64, 5.0f, 40.0f, 0.8f);
+        query_and_resolve_collision_player_actor(player, sp64, 5.0f, 40.0f, 0.8f);
         var_s0++;
     }
 }
 
-bool is_colliding_and_resolve(Player *player, Vec3f pos, f32 minDist, f32 dist, f32 arg4) {
+bool query_and_resolve_collision_player_actor(Player *player, Vec3f pos, f32 minDist, f32 dist, f32 arg4) {
     f32 yDist;
     f32 sqrtDist;
     f32 zDist;
@@ -1474,38 +1479,38 @@ bool is_colliding_and_resolve(Player *player, Vec3f pos, f32 minDist, f32 dist, 
     dist = player->boundingBoxSize + dist;
     xDist = pos[0] - player->pos[0];
     if (minDist < xDist) {
-        return FALSE;
+        return NO_COLLISION;
     }
     if (xDist < -minDist) {
-        return FALSE;
+        return NO_COLLISION;
     }
     yDist = pos[1] - player->pos[1];
     if (dist < yDist) {
-        return FALSE;
+        return NO_COLLISION;
     }
     if (yDist < -dist) {
-        return FALSE;
+        return NO_COLLISION;
     }
     zDist = pos[2] - player->pos[2];
     if (minDist < zDist) {
-        return FALSE;
+        return NO_COLLISION;
     }
     if (zDist < -minDist) {
-        return FALSE;
+        return NO_COLLISION;
     }
     dist = (xDist * xDist) + (yDist * yDist) + (zDist * zDist);
     if (dist < 0.1f) {
-        return FALSE;
+        return NO_COLLISION;
     }
     if ((minDist * minDist) < dist) {
-        return FALSE;
+        return NO_COLLISION;
     }
     sqrtDist = sqrtf(dist);
     sp28 = sqrtDist - minDist;
     xVelocity = player->velocity[0];
     zVelocity = player->velocity[2];
     if (player->effects & STAR_EFFECT) {
-        return TRUE;
+        return COLLISION;
     }
     if (sqrtDist < 0.1f) {
         temp_f0_4 = sqrtf((xVelocity * xVelocity) + (zVelocity * zVelocity));
@@ -1527,7 +1532,7 @@ bool is_colliding_and_resolve(Player *player, Vec3f pos, f32 minDist, f32 dist, 
             player->pos[2] = pos[2] - (zDist * minDist * temp_f0_6);
             player->velocity[0] = 0.0f;
             player->velocity[2] = 0.0f;
-            return TRUE;
+            return COLLISION;
         }
         temp_f2_2 = ((xDist * xVelocity) + (zDist * zVelocity)) / temp_f0_5;
         temp_f2_2 = temp_f0_5 * temp_f2_2 * arg4 * 1.3f;
@@ -1536,11 +1541,11 @@ bool is_colliding_and_resolve(Player *player, Vec3f pos, f32 minDist, f32 dist, 
         player->pos[0] += xDist * sp28 * 0.5f;
         player->pos[2] += zDist * sp28 * 0.5f;
     }
-    return TRUE;
+    return COLLISION;
 }
 
 bool collision_mario_sign(Player *player, struct Actor *marioRacewaySign) {
-    if (is_colliding_and_resolve(player, marioRacewaySign->pos, 7.0f, 200.0f, 0.8f) == 1) {
+    if (query_and_resolve_collision_player_actor(player, marioRacewaySign->pos, 7.0f, 200.0f, 0.8f) == COLLISION) {
         if ((player->type & PLAYER_HUMAN) != 0) {
             if ((player->effects & STAR_EFFECT) != 0) {
                 marioRacewaySign->flags |= 0x400;
@@ -1556,7 +1561,7 @@ bool collision_mario_sign(Player *player, struct Actor *marioRacewaySign) {
 }
 
 bool collision_piranha_plant(Player *player, struct PiranhaPlant *plant) {
-    if (is_colliding_and_resolve(player, plant->pos, plant->boundingBoxSize, plant->boundingBoxSize, 2.5f) == 1) {
+    if (query_and_resolve_collision_player_actor(player, plant->pos, plant->boundingBoxSize, plant->boundingBoxSize, 2.5f) == COLLISION) {
         if ((player->type & PLAYER_HUMAN) != 0) {
             if ((player->effects & STAR_EFFECT) != 0) {
                 plant->flags |= 0x400;
@@ -1738,33 +1743,33 @@ bool query_collision_player_vs_actor_item(Player *arg0, struct Actor *arg1) {
     temp_f0 = arg0->boundingBoxSize + arg1->boundingBoxSize;
     xDist = arg1->pos[0] - arg0->pos[0];
     if (temp_f0 < xDist) {
-        return FALSE;
+        return NO_COLLISION;
     }
     if (xDist < -temp_f0) {
-        return FALSE;
+        return NO_COLLISION;
     }
     yDist = arg1->pos[1] - arg0->pos[1];
     if (temp_f0 < yDist) {
-        return FALSE;
+        return NO_COLLISION;
     }
     if (yDist < -temp_f0) {
-        return FALSE;
+        return NO_COLLISION;
     }
     zDist = arg1->pos[2] - arg0->pos[2];
     if (temp_f0 < zDist) {
-        return FALSE;
+        return NO_COLLISION;
     }
     if (zDist < -temp_f0) {
-        return FALSE;
+        return NO_COLLISION;
     }
     dist = (xDist * xDist) + (yDist * yDist) + (zDist * zDist);
     if (dist < 0.1f) {
-        return FALSE;
+        return NO_COLLISION;
     }
     if ((temp_f0 * temp_f0) < dist) {
-        return FALSE;
+        return NO_COLLISION;
     }
-    return TRUE;
+    return COLLISION;
 }
 
 bool query_collision_actor_vs_actor(struct Actor *arg0, struct Actor *arg1) {
@@ -1777,33 +1782,33 @@ bool query_collision_actor_vs_actor(struct Actor *arg0, struct Actor *arg1) {
     temp_f0 = arg0->boundingBoxSize + arg1->boundingBoxSize;
     dist_x = arg0->pos[0] - arg1->pos[0];
     if (temp_f0 < dist_x) {
-        return FALSE;
+        return NO_COLLISION;
     }
     if (dist_x < -temp_f0) {
-        return FALSE;
+        return NO_COLLISION;
     }
     dist_y = arg0->pos[1] - arg1->pos[1];
     if (temp_f0 < dist_y) {
-        return FALSE;
+        return NO_COLLISION;
     }
     if (dist_y < -temp_f0) {
-        return FALSE;
+        return NO_COLLISION;
     }
     dist_z = arg0->pos[2] - arg1->pos[2];
     if (temp_f0 < dist_z) {
-        return FALSE;
+        return NO_COLLISION;
     }
     if (dist_z < -temp_f0) {
-        return FALSE;
+        return NO_COLLISION;
     }
     dist = (dist_x * dist_x) + (dist_y * dist_y) + (dist_z * dist_z);
     if (dist < 0.1f) {
-        return FALSE;
+        return NO_COLLISION;
     }
     if ((temp_f0 * temp_f0) < dist) {
-        return FALSE;
+        return NO_COLLISION;
     }
-    return TRUE;
+    return COLLISION;
 }
 
 void destroy_destructable_actor(struct Actor *actor) {
@@ -1994,7 +1999,7 @@ void play_sound_on_destructible_actor_collision(struct Actor *arg0, struct Actor
 }
 
 void evaluate_actor_collision_between_two_destructible_actors(struct Actor *actor1, struct Actor *actor2) {
-    if (query_collision_actor_vs_actor(actor1, actor2) == TRUE) {
+    if (query_collision_actor_vs_actor(actor1, actor2) == COLLISION) {
         if ((actor1->type == ACTOR_BLUE_SPINY_SHELL) && (actor2->type == ACTOR_BLUE_SPINY_SHELL)) {
             destroy_destructable_actor(actor1);
             destroy_destructable_actor(actor2);
@@ -2040,7 +2045,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             if (player->effects & (BOO_EFFECT | 0x8C0)) { break; }
             if (player->soundEffects & 1) { break; }
             temp_v1 = actor->rot[0];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != TRUE)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != COLLISION)) { break; }
             player->soundEffects |= 1;
             owner = &gPlayers[temp_v1];
             if (owner->type & 0x4000) {
@@ -2062,7 +2067,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             if (player->effects & 0x80000400) { break; }
             if (player->soundEffects & 4) { break; }
             temp_v1 = actor->rot[2];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != TRUE)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != COLLISION)) { break; }
             player->soundEffects |= 4;
             func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             owner = &gPlayers[temp_v1];
@@ -2074,7 +2079,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
         case ACTOR_BLUE_SPINY_SHELL:
             if (player->soundEffects & 2) { break; }
             temp_v1 = actor->rot[2];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != TRUE)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != COLLISION)) { break; }
             if (!(player->effects & BOO_EFFECT)) {
                 player->soundEffects |= 2;
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
@@ -2092,7 +2097,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             if (player->effects & 0x01000000) { break; }
             if (player->soundEffects & 2) { break; }
             temp_v1 = actor->rot[2];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != TRUE)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != COLLISION)) { break; }
             if (!(player->effects & BOO_EFFECT)) {
                 player->soundEffects |= 2;
                 func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
@@ -2131,7 +2136,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             break;
         case ACTOR_FALLING_ROCK:
             if (!(player->effects & BOO_EFFECT) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
-                if (query_collision_player_vs_actor_item(player, actor) == TRUE) {
+                if (query_collision_player_vs_actor_item(player, actor) == COLLISION) {
                     func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
                     if ((gModeSelection == TIME_TRIALS) && !(player->type & PLAYER_CPU)) {
                         D_80162DF8 = 1;
@@ -2148,7 +2153,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             temp_v1 = actor->velocity[0];
             if (player->effects & BOO_EFFECT) { break; }
             temp_v1 = actor->velocity[0];
-            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != TRUE)) { break; }
+            if (((temp_lo == temp_v1) && (actor->flags & 0x1000)) || (query_collision_player_vs_actor_item(player, actor) != COLLISION)) { break; }
                 player->soundEffects |= REVERSE_SOUND_EFFECT;
                 owner = &gPlayers[temp_v1];
                 if (owner->type & 0x4000) {
@@ -2172,7 +2177,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
                 actor->unk_04 = 0;
             break;
         case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
-            if (query_collision_player_vs_actor_item(player, actor) == TRUE) {
+            if (query_collision_player_vs_actor_item(player, actor) == COLLISION) {
                 actor->state = 3;
                 actor->flags = -0x8000;
                 actor->unk_04 = 0;
@@ -2185,7 +2190,7 @@ void evaluate_collision_between_player_actor(Player *player, struct Actor *actor
             }
             break;
         case ACTOR_ITEM_BOX:
-            if (query_collision_player_vs_actor_item(player, actor) == TRUE) {
+            if (query_collision_player_vs_actor_item(player, actor) == COLLISION) {
                 actor->state = 3;
                 actor->flags = -0x8000;
                 actor->unk_04 = 0;
@@ -2411,7 +2416,7 @@ void render_course_actors(struct UnkStruct_800DC5EC *arg0) {
                 case ACTOR_TREE_MOO_MOO_FARM:
                     render_actor_tree_moo_moo_farm(camera, D_801502C0, actor);
                     break;
-                case 0x1A:
+                case ACTOR_UNKNOWN_0x1A:
                     func_80299864(camera, D_801502C0, actor);
                     break;
                 case ACTOR_TREE_BOWSERS_CASTLE:
@@ -2436,7 +2441,7 @@ void render_course_actors(struct UnkStruct_800DC5EC *arg0) {
                     render_actor_falling_rock(camera, (struct FallingRock *) actor);
                     break;
                 case ACTOR_KIWANO_FRUIT:
-                    render_actor_kiwano_fruit_dks_jungle_parkway(camera, D_801502C0, actor);
+                    render_actor_kiwano_fruit(camera, D_801502C0, actor);
                     break;
                 case ACTOR_BANANA:
                     render_actor_banana(camera, D_801502C0, (struct BananaActor *) actor);
@@ -2465,7 +2470,7 @@ void render_course_actors(struct UnkStruct_800DC5EC *arg0) {
                 case ACTOR_COW:
                     render_actor_cow(camera, D_801502C0, actor);
                     break;
-                case 0x14:
+                case ACTOR_UNKNOWN_0x14:
                     func_8029AC18(camera, D_801502C0, actor);
                     break;
                 case ACTOR_MARIO_SIGN:
@@ -2586,8 +2591,8 @@ void update_course_actors(void) {
             case ACTOR_TREE_ROYAL_RACEWAY:
             case ACTOR_TREE_MOO_MOO_FARM:
             case ACTOR_PALM_TREE:
-            case 0x1A: // A plant?
-            case 0X1B:
+            case ACTOR_UNKNOWN_0x1A: // A plant?
+            case ACTOR_UNKNOWN_0x1B:
             case ACTOR_TREE_BOWSERS_CASTLE:
             case ACTOR_TREE_FRAPPE_SNOWLAND:
             case ACTOR_CACTUS1_KALAMARI_DESERT:

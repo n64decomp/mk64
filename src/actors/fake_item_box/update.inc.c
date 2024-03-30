@@ -1,6 +1,11 @@
 #include <actors.h>
 #include <main.h>
 
+/**
+ * @brief Updates the fake item box actor.
+ * 
+ * @param fake_item_box 
+ */
 void update_actor_fake_item_box(struct FakeItemBox *fake_item_box) {
     u32 temp_v1 = fake_item_box->playerId;
     Player *temp_v0_4 = &gPlayers[temp_v1];

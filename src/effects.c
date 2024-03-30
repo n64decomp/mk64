@@ -2005,7 +2005,7 @@ void func_80090970(Player *player, s8 playerId, s8 arg2) {
             0x40| \
             BOOST_RAMP_WOOD_EFFECT
 
-bool can_player_not_use_item(Player *player) {
+bool prevent_item_use(Player *player) {
     s32 phi_v0 = 0;
     if ((((((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) || ((player->type & PLAYER_UNKNOWN_0x40) != 0)) || ((player->type & PLAYER_CINEMATIC_MODE) != 0)) || ((player->type & PLAYER_EXISTS) == 0)) {
         return TRUE;
@@ -2020,12 +2020,12 @@ bool can_player_not_use_item(Player *player) {
             return TRUE;
         }
         phi_v0 = EFFECT_BLACKLIST_USE_ITEM;
-        goto can_player_not_use_item_label;
+        goto prevent_item_use_label;
     case ITEM_STAR:
         phi_v0 = BOO_EFFECT| EFFECT_BLACKLIST_USE_ITEM;
     case ITEM_BOO:
         phi_v0 = phi_v0 | (BOO_EFFECT | EFFECT_BLACKLIST_USE_ITEM);
-can_player_not_use_item_label:
+prevent_item_use_label:
     default:
         if ((player->effects & phi_v0) != 0) {
             return TRUE;

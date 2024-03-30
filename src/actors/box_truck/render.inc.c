@@ -4,6 +4,14 @@
 #include <defines.h>
 #include "courses/toads_turnpike/course_data.inc.h"
 
+/**
+ * @brief Renders the box truck actor.
+ * Actor used in Toad's Turnpike.
+ * His update are made in vehicle.
+ * 
+ * @param arg0 
+ * @param arg1 
+ */
 void render_actor_box_truck(Camera *arg0, struct Actor *arg1) {
     UNUSED s32 pad[6];
     Mat4 spD8;
