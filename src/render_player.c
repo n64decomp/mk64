@@ -729,7 +729,7 @@ UNUSED void func_80021FF8(Mtx *dest, Mat4 src) {
     dest->m[3][0] = src[3][0] * toFixed;
     dest->m[3][1] = src[3][1] * toFixed;
     dest->m[3][2] = src[3][2] * toFixed;
-    dests->m[3][3] = src[3][3] * toFixed;
+    dest->m[3][3] = src[3][3] * toFixed;
 }
 
 /**
