@@ -258,7 +258,7 @@ void func_8001C42C(void);
 extern Collision D_80162E70;
 extern s16 D_80162EB0; // Possibly a float.
 extern s16 D_80162EB2; // possibly [3]
-extern UnkCommonTextureStruct0 *D_80162EB8[];
+extern CPUBehaviour *D_80162EB8[];
 extern s16 D_80162F10[];
 extern s16 D_80162F50[];
 extern Vec3f D_80162FA0;
@@ -298,7 +298,7 @@ extern u16 D_80163258[];
 extern u16 D_80163270[];
 extern s32 D_80163288[];
 // Exact pointer type unknown
-extern UnkCommonTextureStruct0 *D_801632B0;
+extern CPUBehaviour *D_801632B0;
 extern u16 D_801632B8[];
 extern u16 D_801632D0[];
 extern u16 D_801632E8[];

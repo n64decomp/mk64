@@ -15,7 +15,7 @@ struct _struct_D_800DD9D0_0x10 {
     /* 0x0A */ char padA[6];
 };  // size 0x10
 
-extern UnkCommonTextureStruct0 *D_800DC720[];
+extern CPUBehaviour *D_800DC720[];
 extern TrackWaypoint nullPath;
 extern TrackWaypoint *gCoursePathTable[][4];
 extern TrackWaypoint *D_800DC8D0[][4];

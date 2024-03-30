@@ -4,12 +4,6 @@
 #include <types.h>
 #include <PR/gbi.h>
 
-typedef struct {
-    /* 0x0 */ s16 waypointId1;
-    /* 0x2 */ s16 waypointId2;
-    /* 0x4 */ s32 unk4;
-} UnkCommonTextureStruct0; // size = 0x8
-
 /** @cond */
 
 extern u8  common_tlut_finish_line_banner[];
@@ -232,23 +226,23 @@ extern Gfx D_0D008E48[];
 extern Gfx D_0D008E70[];
 extern Mtx D_0D008E98;
 extern Mtx D_0D008ED8;
-extern UnkCommonTextureStruct0 D_0D008F18[];
-extern UnkCommonTextureStruct0 D_0D008F28[];
-extern UnkCommonTextureStruct0 D_0D008F80[];
-extern UnkCommonTextureStruct0 D_0D008FB8[];
-extern UnkCommonTextureStruct0 D_0D009058[];
-extern UnkCommonTextureStruct0 D_0D0090B8[];
-extern UnkCommonTextureStruct0 D_0D0090F8[];
-extern UnkCommonTextureStruct0 D_0D009158[];
-extern UnkCommonTextureStruct0 D_0D009188[];
-extern UnkCommonTextureStruct0 D_0D0091E8[];
-extern UnkCommonTextureStruct0 D_0D009210[];
-extern UnkCommonTextureStruct0 D_0D009238[];
-extern UnkCommonTextureStruct0 D_0D009260[];
-extern UnkCommonTextureStruct0 D_0D009280[];
-extern UnkCommonTextureStruct0 D_0D0092C8[];
-extern UnkCommonTextureStruct0 D_0D009310[];
-extern UnkCommonTextureStruct0 D_0D0093C0[];
+extern CPUBehaviour D_0D008F18[];
+extern CPUBehaviour D_0D008F28[];
+extern CPUBehaviour D_0D008F80[];
+extern CPUBehaviour D_0D008FB8[];
+extern CPUBehaviour D_0D009058[];
+extern CPUBehaviour D_0D0090B8[];
+extern CPUBehaviour D_0D0090F8[];
+extern CPUBehaviour D_0D009158[];
+extern CPUBehaviour D_0D009188[];
+extern CPUBehaviour D_0D0091E8[];
+extern CPUBehaviour D_0D009210[];
+extern CPUBehaviour D_0D009238[];
+extern CPUBehaviour D_0D009260[];
+extern CPUBehaviour D_0D009280[];
+extern CPUBehaviour D_0D0092C8[];
+extern CPUBehaviour D_0D009310[];
+extern CPUBehaviour D_0D0093C0[];
 extern f32 D_0D009418[][4];
 extern f32 D_0D009568[][4];
 extern f32 D_0D0096B8[][4];

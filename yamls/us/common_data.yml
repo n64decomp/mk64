@@ -1737,6 +1737,134 @@ common_texture_portrait_question_mark:
   width: 32
   height: 32
   format: CI8
+common_tlut_item_window_none:
+  symbol: common_tlut_item_window_none
+  type: texture
+  offset: 0x1DED8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_banana:
+  symbol: common_tlut_item_window_banana
+  type: texture
+  offset: 0x1E0D8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_banana_bunch:
+  symbol: common_tlut_item_window_banana_bunch
+  type: texture
+  offset: 0x1E2D8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_mushroom:
+  symbol: common_tlut_item_window_mushroom
+  type: texture
+  offset: 0x1E4D8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_double_mushroom:
+  symbol: common_tlut_item_window_double_mushroom
+  type: texture
+  offset: 0x1E6D8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_triple_mushroom:
+  symbol: common_tlut_item_window_triple_mushroom
+  type: texture
+  offset: 0x1E8D8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_super_mushroom:
+  symbol: common_tlut_item_window_super_mushroom
+  type: texture
+  offset: 0x1EAD8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_blue_shell:
+  symbol: common_tlut_item_window_blue_shell
+  type: texture
+  offset: 0x1ECD8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_boo:
+  symbol: common_tlut_item_window_boo
+  type: texture
+  offset: 0x1EED8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_green_shell:
+  symbol: common_tlut_item_window_green_shell
+  type: texture
+  offset: 0x1F0D8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_triple_green_shell:
+  symbol: common_tlut_item_window_triple_green_shell
+  type: texture
+  offset: 0x1F2D8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_red_shell:
+  symbol: common_tlut_item_window_red_shell
+  type: texture
+  offset: 0x1F4D8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_triple_red_shell:
+  symbol: common_tlut_item_window_triple_red_shell
+  type: texture
+  offset: 0x1F6D8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_star:
+  symbol: common_tlut_item_window_star
+  type: texture
+  offset: 0x1F8D8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_thunder_bolt:
+  symbol: common_tlut_item_window_thunder_bolt
+  type: texture
+  offset: 0x1FAD8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
+common_tlut_item_window_fake_item_box:
+  symbol: common_tlut_item_window_fake_item_box
+  type: texture
+  offset: 0x1FCD8
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
 common_texture_item_window_none:
   symbol: common_texture_item_window_none
   type: texture
@@ -1865,206 +1993,78 @@ common_texture_item_window_fake_item_box:
   height: 32
   format: ci8
   tlut: common_tlut_item_window_fake_item_box
-common_tlut_item_window_none:
-  symbol: common_tlut_item_window_none
-  type: texture
-  offset: 0x1DED8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_banana:
-  symbol: common_tlut_item_window_banana
-  type: texture
-  offset: 0x1E0D8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_banana_bunch:
-  symbol: common_tlut_item_window_banana_bunch
-  type: texture
-  offset: 0x1E2D8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_mushroom:
-  symbol: common_tlut_item_window_mushroom
-  type: texture
-  offset: 0x1E4D8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_double_mushroom:
-  symbol: common_tlut_item_window_double_mushroom
-  type: texture
-  offset: 0x1E6D8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_triple_mushroom:
-  symbol: common_tlut_item_window_triple_mushroom
-  type: texture
-  offset: 0x1E8D8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_super_mushroom:
-  symbol: common_tlut_item_window_super_mushroom
-  type: texture
-  offset: 0x1EAD8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_blue_shell:
-  symbol: common_tlut_item_window_blue_shell
-  type: texture
-  offset: 0x1ECD8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_boo:
-  symbol: common_tlut_item_window_boo
-  type: texture
-  offset: 0x1EED8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_green_shell:
-  symbol: common_tlut_item_window_green_shell
-  type: texture
-  offset: 0x1F0D8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_triple_green_shell:
-  symbol: common_tlut_item_window_triple_green_shell
-  type: texture
-  offset: 0x1F2D8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_red_shell:
-  symbol: common_tlut_item_window_red_shell
-  type: texture
-  offset: 0x1F4D8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_triple_red_shell:
-  symbol: common_tlut_item_window_triple_red_shell
-  type: texture
-  offset: 0x1F6D8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_star:
-  symbol: common_tlut_item_window_star
-  type: texture
-  offset: 0x1F8D8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_thunder_bolt:
-  symbol: common_tlut_item_window_thunder_bolt
-  type: texture
-  offset: 0x1FAD8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
-common_tlut_item_window_fake_item_box:
-  symbol: common_tlut_item_window_fake_item_box
-  type: texture
-  offset: 0x1FCD8
-  ctype: u16
-  colors: 16
-  height: 16
-  format: tlut
 common_tlut_lakitu_no_lights:
   symbol: common_tlut_lakitu_no_lights
   type: texture
   offset: 0x24ED8
   ctype: u16
-  colors: 16
+  width: 16
   height: 16
-  format: tlut
+  format: rgba16
 common_tlut_lakitu_red_lights:
   symbol: common_tlut_lakitu_red_lights
   type: texture
   offset: 0x250D8
   ctype: u16
-  colors: 16
+  width: 16
   height: 16
-  format: tlut
+  format: rgba16
 common_tlut_lakitu_blue_lights:
   symbol: common_tlut_lakitu_blue_lights
   type: texture
   offset: 0x252D8
   ctype: u16
-  colors: 16
+  width: 16
   height: 16
-  format: tlut
+  format: rgba16
 common_tlut_lakitu_checkered_flag:
   symbol: common_tlut_lakitu_checkered_flag
   type: texture
   offset: 0x254D8
   ctype: u16
-  colors: 16
+  width: 16
   height: 16
-  format: tlut
+  format: rgba16
 common_tlut_lakitu_second_lap:
   symbol: common_tlut_lakitu_second_lap
   type: texture
   offset: 0x256D8
   ctype: u16
-  colors: 16
+  width: 16
   height: 16
-  format: tlut
+  format: rgba16
 common_tlut_lakitu_final_lap:
   symbol: common_tlut_lakitu_final_lap
   type: texture
   offset: 0x258D8
   ctype: u16
-  colors: 16
+  width: 16
   height: 16
-  format: tlut
+  format: rgba16
 common_tlut_lakitu_reverse:
   symbol: common_tlut_lakitu_reverse
   type: texture
   offset: 0x25AD8
   ctype: u16
-  colors: 16
+  width: 16
   height: 16
-  format: tlut
+  format: rgba16
 common_tlut_lakitu_fishing:
   symbol: common_tlut_lakitu_fishing
   type: texture
   offset: 0x25CD8
   ctype: u16
-  colors: 16
+  width: 16
   height: 16
-  format: tlut
+  format: rgba16
 common_tlut_traffic_light:
   symbol: common_tlut_traffic_light
   type: texture
   offset: 0x25ED8
   ctype: u16
-  colors: 16
+  width: 16
   height: 16
-  format: tlut
+  format: rgba16
 common_texture_traffic_light_01:
   symbol: common_texture_traffic_light_01
   type: texture

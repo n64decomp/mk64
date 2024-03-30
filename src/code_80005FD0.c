@@ -36,7 +36,7 @@ Collision D_80162E70;
 s16 D_80162EB0; // Possibly a float.
 s16 D_80162EB2; // possibly [3]
 
-UnkCommonTextureStruct0 *D_80162EB8[20];
+CPUBehaviour *D_80162EB8[20];
 
 // more padding?
 s32 D_80162F08[2];
@@ -91,7 +91,7 @@ u16 D_80163240[12];
 u16 D_80163258[12];
 u16 D_80163270[12];
 s32 D_80163288[10];
-UnkCommonTextureStruct0 *D_801632B0;
+CPUBehaviour *D_801632B0;
 u16 D_801632B8[12];
 u16 D_801632D0[12];
 u16 D_801632E8[12];
