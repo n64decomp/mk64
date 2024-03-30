@@ -942,12 +942,12 @@ void init_course_object(void) {
                 D_8018D1B8[i] = 0;
                 find_unused_obj_index(&indexObjectList1[i]);
             }
-            for (i = 0; i < NUM_MAX_MOLES; i++) {
+            for (i = 0; i < NUM_TOTAL_MOLES; i++) {
                 find_unused_obj_index(&gObjectParticle1[i]);
                 objectId = gObjectParticle1[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].pos[0] = gMoleSpawns[i][0] * xOrientation;
-                gObjectList[objectId].pos[2] = gMoleSpawns[i][2];
+                gObjectList[objectId].pos[0] = gMoleSpawns.asVectorList[i][0] * xOrientation;
+                gObjectList[objectId].pos[2] = gMoleSpawns.asVectorList[i][2];
                 func_800887C0(objectId);
                 gObjectList[objectId].sizeScaling = 0.7f;
             }
