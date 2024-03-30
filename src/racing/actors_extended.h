@@ -4,6 +4,8 @@
 #include "common_structs.h"
 #include "actor_types.h"
 
+/** @cond */
+
 void copy_collision(Collision*, Collision*);
 void triple_shell_actor_collide_with_player(struct ShellActor*, s32);
 void func_802B039C(struct BananaActor*);
@@ -43,5 +45,7 @@ extern void func_800CAB4C(u8);
 extern f32 D_802B9F68;
 
 extern s16 gPlayerBalloonCount[];
+
+/** @endcond */
 
 #endif // ACTORS_EXTENDED_H

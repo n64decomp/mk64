@@ -6,6 +6,8 @@
 
 #define END_OF_SPAWN_DATA -0x8000
 
+/** @cond */
+
 void cleanup_red_and_green_shells(struct ShellActor*);
 void actor_init(struct Actor*, Vec3f, Vec3s, Vec3f, s16);
 void actor_not_rendered(Camera*, struct Actor*);
@@ -174,5 +176,7 @@ extern Gfx common_model_flat_banana[];
 extern s8 D_800DC628[];
 extern s8 D_800DC630[];
 extern s8 D_802B8864[];
+
+/** @endcond */
 
 #endif // ACTORS_H
