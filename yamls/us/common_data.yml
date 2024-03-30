@@ -632,7 +632,7 @@ D_0D007878:
 D_0D0078A0:
   symbol: D_0D0078A0
   type: gfx
-  offset: 0x78A8
+  offset: 0x78A0
 D_0D0078D0:
   symbol: D_0D0078D0
   type: gfx
@@ -1598,7 +1598,7 @@ common_tlut_portrait_toad:
   type: texture
   offset: 0x1AAD8
   size: 0x200
-  ctype: u8
+  ctype: u16
   colors: 16
   height: 16
   format: tlut
@@ -1607,7 +1607,7 @@ common_tlut_portrait_yoshi:
   type: texture
   offset: 0x1ACD8
   size: 0x200
-  ctype: u8
+  ctype: u16
   colors: 16
   height: 16
   format: tlut
