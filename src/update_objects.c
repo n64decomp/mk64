@@ -6374,9 +6374,9 @@ void func_80081FF4(s32 objectIndex, s32 arg1) {
     /*
     Ideally `gMoleSpawns` wouldn't be a union at all and its just be a list of Vec3s
     Even more ideally each mole group would have its own array for its spawns
-    gObjectList[objectIndex].origin_pos[0] = gMoleSpawns.asVectorList[offset + var_v1][0] * xOrientation;
-    gObjectList[objectIndex].origin_pos[1] = gMoleSpawns.asVectorList[offset + var_v1][1] - 9.0;
-    gObjectList[objectIndex].origin_pos[2] = gMoleSpawns.asVectorList[offset + var_v1][2];
+    gObjectList[objectIndex].origin_pos[0] = gMoleSpawns.asVec3sList[offset + var_v1][0] * xOrientation;
+    gObjectList[objectIndex].origin_pos[1] = gMoleSpawns.asVec3sList[offset + var_v1][1] - 9.0;
+    gObjectList[objectIndex].origin_pos[2] = gMoleSpawns.asVec3sList[offset + var_v1][2];
     */
     gObjectList[objectIndex].origin_pos[0] = gMoleSpawns.asFlatList[offset + (var_v1 * 3) + 0] * xOrientation;
     gObjectList[objectIndex].origin_pos[1] = gMoleSpawns.asFlatList[offset + (var_v1 * 3) + 1] - 9.0;

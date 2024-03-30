@@ -946,8 +946,8 @@ void init_course_object(void) {
                 find_unused_obj_index(&gObjectParticle1[i]);
                 objectId = gObjectParticle1[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].pos[0] = gMoleSpawns.asVectorList[i][0] * xOrientation;
-                gObjectList[objectId].pos[2] = gMoleSpawns.asVectorList[i][2];
+                gObjectList[objectId].pos[0] = gMoleSpawns.asVec3sList[i][0] * xOrientation;
+                gObjectList[objectId].pos[2] = gMoleSpawns.asVec3sList[i][2];
                 func_800887C0(objectId);
                 gObjectList[objectId].sizeScaling = 0.7f;
             }

@@ -318,7 +318,7 @@ extern s32 indexObjectList4[];
 #define NUM_SNOWFLAKES 0x32
 
 typedef union {
-    Vec3s asVectorList[NUM_TOTAL_MOLES];
+    Vec3s asVec3sList[NUM_TOTAL_MOLES];
     s16 asFlatList[NUM_TOTAL_MOLES*3];
 } MoleSpawnUnion;
 extern MoleSpawnUnion gMoleSpawns;
