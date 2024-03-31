@@ -5172,34 +5172,36 @@ s32 func_8009A374(MkAnimation *anim) {
     return i;
 }
 
-s32 func_8009A478(MkAnimation *arg0, s32 arg1) {
-    s32 var_a1;
-    MkAnimation *temp_v0;
+s32 func_8009A478(MkAnimation* anim, s32 arg1) {
+    s32 i;
+    struct_8018DEE0_entry* entry;
 
-    temp_v0 = segmented_to_virtual_dupe_2(arg0);
-    var_a1 = 0;
-    while (D_8018DEE0[var_a1].visible != 0) {
-        var_a1++;
-        if (var_a1 >= 0x10) {
-            while(TRUE);
+    anim = segmented_to_virtual_dupe_2(anim);
+    i = 0;
+    while (D_8018DEE0[i].visible) {
+        i++;
+        if (i >= 0x10) {
+            // No more space.
+            while(1);
         }
     }
-    D_8018DEE0[var_a1].textureSequence = temp_v0;
-    D_8018DEE0[var_a1].sequenceIndex = -1;
-    D_8018DEE0[var_a1].frameCountDown = 0;
-    D_8018DEE0[var_a1].visible = 0x80000000;
-    D_8018DEE0[var_a1].D_8018E118_index = gNumD_8018E118Entries;
-    if (temp_v0->mk64Texture != NULL) {
-        func_80099958(temp_v0->mk64Texture, arg1, 0);
+
+    entry = &D_8018DEE0[i];
+    entry->textureSequence = anim;
+    entry->sequenceIndex = -1;
+    entry->frameCountDown = 0;
+    entry->visible = 0x80000000;
+    entry->D_8018E118_index = gNumD_8018E118Entries;
+    if (anim[0].mk64Texture) {
+        func_80099958(anim[0].mk64Texture, arg1, 0);
     }
-    if ((temp_v0 + 1)->mk64Texture != NULL) {
-        func_80099958((temp_v0 + 1)->mk64Texture, arg1, 1);
+    if (anim[1].mk64Texture) {
+        func_80099958(anim[1].mk64Texture, arg1, 1);
     } else {
-        func_80099958(temp_v0->mk64Texture, arg1, 1);
+        func_80099958(anim[0].mk64Texture, arg1, 1);
     }
-    // ?????????????????????
-    D_8018DEE0[var_a1].unk14 = (temp_v0->mk64Texture != ((void *) 0)) * 0;
-    return var_a1;
+    entry->unk14 = 0;
+    return i;
 }
 
 void func_8009A594(s32 arg0, s32 arg1, MkAnimation *arg2) {
