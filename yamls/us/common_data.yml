@@ -1998,25 +1998,25 @@ common_tlut_lakitu_no_lights:
   type: texture
   offset: 0x24ED8
   ctype: u16
-  width: 16
+  colors: 256
   height: 16
-  format: rgba16
+  format: tlut
 common_tlut_lakitu_red_lights:
   symbol: common_tlut_lakitu_red_lights
   type: texture
   offset: 0x250D8
   ctype: u16
-  width: 16
+  colors: 256
   height: 16
-  format: rgba16
+  format: tlut
 common_tlut_lakitu_blue_lights:
   symbol: common_tlut_lakitu_blue_lights
   type: texture
   offset: 0x252D8
   ctype: u16
-  width: 16
+  colors: 256
   height: 16
-  format: rgba16
+  format: tlut
 common_tlut_lakitu_checkered_flag:
   symbol: common_tlut_lakitu_checkered_flag
   type: texture
@@ -2141,6 +2141,7 @@ common_texture_particle_leaf:
   offset: 0x28DD8
   width: 32
   height: 16
+  ctype: u16
   format: rgba16
 common_texture_unused_particle_leaf:
   symbol: common_texture_unused_particle_leaf
@@ -2148,6 +2149,7 @@ common_texture_unused_particle_leaf:
   offset: 0x291D8
   width: 16
   height: 16
+  ctype: u16
   format: rgba16
 D_0D0293D8: # Cloud, smoke, or fog?
   symbol: D_0D0293D8
@@ -2196,13 +2198,14 @@ common_tlut_bomb:
   type: texture
   offset: 0x2A858
   ctype: u16
-  colors: 16
+  colors: 256
   height: 16
   format: tlut
 D_0D02AA58:
   symbol: D_0D02AA58
   type: texture
   offset: 0x2AA58
+  ctype: u16
   width: 16
   height: 16
   format: rgba16
@@ -2211,6 +2214,7 @@ common_texture_particle_spark_1.i8.png:
   offset: 0x2AC58
   width: 32
   height: 32
+  ctype: u8
   type: texture
   format: i8
 common_texture_particle_spark_2.i8.png:
@@ -2267,11 +2271,13 @@ common_texture_minimap_finish_line:
   offset: 0x2CC58
   width: 8
   height: 8
+  ctype: u16
   type: texture
   format: rgba16
 common_texture_minimap_kart_mario:
   symbol: common_texture_minimap_kart_mario
   offset: 0x2CCD8
+  ctype: u16
   width: 8
   height: 8
   type: texture
@@ -2279,6 +2285,7 @@ common_texture_minimap_kart_mario:
 common_texture_minimap_kart_luigi:
   symbol: common_texture_minimap_kart_luigi
   offset: 0x2CD58
+  ctype: u16
   width: 8
   height: 8
   type: texture
@@ -2286,6 +2293,7 @@ common_texture_minimap_kart_luigi:
 common_texture_minimap_kart_yoshi:
   symbol: common_texture_minimap_kart_yoshi
   offset: 0x2CDD8
+  ctype: u16
   width: 8
   height: 8
   type: texture
@@ -2293,6 +2301,7 @@ common_texture_minimap_kart_yoshi:
 common_texture_minimap_kart_toad:
   symbol: common_texture_minimap_kart_toad
   offset: 0x2CE58
+  ctype: u16
   width: 8
   height: 8
   type: texture
@@ -2300,6 +2309,7 @@ common_texture_minimap_kart_toad:
 common_texture_minimap_kart_donkey_kong:
   symbol: common_texture_minimap_kart_donkey_kong
   offset: 0x2CED8
+  ctype: u16
   width: 8
   height: 8
   type: texture
@@ -2307,6 +2317,7 @@ common_texture_minimap_kart_donkey_kong:
 common_texture_minimap_kart_wario:
   symbol: common_texture_minimap_kart_wario
   offset: 0x2CF58
+  ctype: u16
   width: 8
   height: 8
   type: texture
@@ -2314,6 +2325,7 @@ common_texture_minimap_kart_wario:
 common_texture_minimap_kart_peach:
   symbol: common_texture_minimap_kart_peach
   offset: 0x2CFD8
+  ctype: u16
   width: 8
   height: 8
   type: texture
@@ -2321,6 +2333,7 @@ common_texture_minimap_kart_peach:
 common_texture_minimap_kart_bowser:
   symbol: common_texture_minimap_kart_bowser
   offset: 0x2D058
+  ctype: u16
   width: 8
   height: 8
   type: texture
@@ -2328,6 +2341,7 @@ common_texture_minimap_kart_bowser:
 common_texture_minimap_progress_dot:
   symbol: common_texture_minimap_progress_dot
   offset: 0x2D0D8
+  ctype: u16
   width: 8
   height: 8
   type: texture

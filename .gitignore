@@ -57,6 +57,7 @@ xml/*
 context_gen_header.h
 contexts/*
 tools/m2ctx.py
+tools/torch/*
 # regardless of the above, the context file itself shouldnt be there
 ctx.c
 # diff.py -o requires a copy of the build folder

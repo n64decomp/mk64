@@ -1,0 +1,138 @@
+:config:
+  vram:
+    addr: 0x800E8700
+    offset: 0xE9300
+  header: 
+    code:
+      - '#include <startup_logo.h>'
+      - '#include <ultra64.h>'
+      - '#include "data_800E8700.h"'
+    header:
+      - '#include <ultra64.h>'
+  tables:
+    D_800E8900:
+      range: [0x800E8900, 0x800E89C0]
+      mode: APPEND
+D_800E8700:
+  symbol: D_800E8700
+  type: vtx
+  offset: 0x800E8700
+  count: 4
+D_800E8740:
+  symbol: D_800E8740
+  type: vtx
+  offset: 0x800E8740
+  count: 4
+D_800E8780:
+  symbol: D_800E8780
+  type: vtx
+  offset: 0x800E8780
+  count: 4
+D_800E87C0:
+  symbol: D_800E87C0
+  type: vtx
+  offset: 0x800E87C0
+  count: 4
+D_800E8800:
+  symbol: D_800E8800
+  type: vtx
+  offset: 0x800E8800
+  count: 4
+D_800E8840:
+  symbol: D_800E8840
+  type: vtx
+  offset: 0x800E8840
+  count: 4
+D_800E8880:
+  symbol: D_800E8880
+  type: vtx
+  offset: 0x800E8880
+  count: 4
+D_800E88C0:
+  symbol: D_800E88C0
+  type: vtx
+  offset: 0x800E88C0
+  count: 4
+D_800E8900:
+  symbol: D_800E8900
+  type: vtx
+  offset: 0x800E8900
+  count: 4
+D_800E8940:
+  symbol: D_800E8940
+  type: vtx
+  offset: 0x800E8940
+  count: 4
+D_800E8980:
+  symbol: D_800E8980
+  type: vtx
+  offset: 0x800E8980
+  count: 4
+D_800E89C0:
+  symbol: D_800E89C0
+  type: vtx
+  offset: 0x800E89C0
+  count: 4
+D_800E8A00:
+  symbol: D_800E8A00
+  type: vtx
+  offset: 0x800E8A00
+  count: 4
+D_800E8A40:
+  symbol: D_800E8A40
+  type: vtx
+  offset: 0x800E8A40
+  count: 4
+D_800E8A80:
+  symbol: D_800E8A80
+  type: vtx
+  offset: 0x800E8A80
+  count: 4
+D_800E8AC0:
+  symbol: D_800E8AC0
+  type: vtx
+  offset: 0x800E8AC0
+  count: 4
+D_800E8B00:
+  symbol: D_800E8B00
+  type: vtx
+  offset: 0x800E8B00
+  count: 4
+D_800E8B40:
+  symbol: D_800E8B40
+  type: vtx
+  offset: 0x800E8B40
+  count: 4
+D_800E8B80:
+  symbol: D_800E8B80
+  type: vtx
+  offset: 0x800E8B80
+  count: 4
+D_800E8BC0:
+  symbol: D_800E8BC0
+  type: vtx
+  offset: 0x800E8BC0
+  count: 4
+D_800E8C00:
+  symbol: D_800E8C00
+  type: vtx
+  offset: 0x800E8C00
+  count: 4
+D_800E8C40:
+  symbol: D_800E8C40
+  type: vtx
+  offset: 0x800E8C40
+  count: 8
+D_800E8CC0:
+  symbol: D_800E8CC0
+  type: vtx
+  offset: 0x800E8CC0
+  count: 8
+D_800E8D40:
+  symbol: D_800E8D40
+  type: gfx
+  offset: 0x800E8D40
+D_800E8DD0:
+  symbol: D_800E8DD0
+  type: gfx
+  offset: 0x800E8DD0

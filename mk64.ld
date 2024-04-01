@@ -226,7 +226,7 @@ SECTIONS
       BUILD_DIR/src/code_800AF9B0.o(.data);
       BUILD_DIR/src/menus.o(.data);
       BUILD_DIR/src/save.o(.data);
-      BUILD_DIR/src/data/data_800E8700.o(.data);
+      BUILD_DIR/assets/code/data_800E8700/data_800E8700.o(.data);
       BUILD_DIR/src/audio/synthesis.o(.data);
       BUILD_DIR/src/audio/heap.o(.data);
       BUILD_DIR/src/audio/load.o(.data);
