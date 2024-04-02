@@ -100,6 +100,7 @@ var annotated_dup =
     [ "mk64_surface_map_ram", "structmk64__surface__map__ram.html", "structmk64__surface__map__ram" ],
     [ "MkAnimation", "structMkAnimation.html", "structMkAnimation" ],
     [ "MkTexture", "structMkTexture.html", "structMkTexture" ],
+    [ "MoleSpawnUnion", "unionMoleSpawnUnion.html", "unionMoleSpawnUnion" ],
     [ "Note", "structNote.html", "structNote" ],
     [ "NoteAttributes", "structNoteAttributes.html", "structNoteAttributes" ],
     [ "NotePlaybackState", "structNotePlaybackState.html", "structNotePlaybackState" ],

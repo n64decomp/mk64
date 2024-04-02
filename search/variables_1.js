@@ -45,9 +45,11 @@ var searchData=
   ['as_5fu32_42',['as_u32',['../structEuAudioCmd.html#a9adf9f827ee4c4ba0c92dfc2d6b80d92',1,'EuAudioCmd']]],
   ['as_5fu8_43',['as_u8',['../structSequenceChannel.html#a7eb976bfe10fde23908926fd3a2124a8',1,'SequenceChannel::as_u8'],['../structEuAudioCmd.html#a7ba659e77d517bec320acfefdbb45b70',1,'EuAudioCmd::as_u8']]],
   ['asbyte_44',['asByte',['../unionReverbBits.html#a097f0981e060c03cdd0f5b45c0e5c01a',1,'ReverbBits']]],
-  ['at_45',['at',['../struct____OSThreadContext.html#a779ac1cef0beede1e04b6213761d6b71',1,'__OSThreadContext']]],
-  ['attacktime_46',['attackTime',['../structALEnvelope.html#afac50a04aa3c1e4efb72dcebdff70e62',1,'ALEnvelope']]],
-  ['attackvolume_47',['attackVolume',['../structALEnvelope.html#a94b91b2d7dac07b14e4c588128398101',1,'ALEnvelope']]],
-  ['attributes_48',['attributes',['../structNotePlaybackState.html#afdd48f62f9137b20e5e86221d4994f85',1,'NotePlaybackState::attributes'],['../structNote.html#afaf02ce3668f6dd71c1d185781b3b8f2',1,'Note::attributes']]],
-  ['audiobanksound_49',['audioBankSound',['../structNoteSubEu.html#a0ac4bf2c813a28afcaf8a427edac84f0',1,'NoteSubEu']]]
+  ['asflatlist_45',['asFlatList',['../unionMoleSpawnUnion.html#a09d4dfe1e7162719ab7625c8368d1eab',1,'MoleSpawnUnion']]],
+  ['asvec3slist_46',['asVec3sList',['../unionMoleSpawnUnion.html#a3baa9626b7dcbeae08da881caa12f15c',1,'MoleSpawnUnion']]],
+  ['at_47',['at',['../struct____OSThreadContext.html#a779ac1cef0beede1e04b6213761d6b71',1,'__OSThreadContext']]],
+  ['attacktime_48',['attackTime',['../structALEnvelope.html#afac50a04aa3c1e4efb72dcebdff70e62',1,'ALEnvelope']]],
+  ['attackvolume_49',['attackVolume',['../structALEnvelope.html#a94b91b2d7dac07b14e4c588128398101',1,'ALEnvelope']]],
+  ['attributes_50',['attributes',['../structNotePlaybackState.html#afdd48f62f9137b20e5e86221d4994f85',1,'NotePlaybackState::attributes'],['../structNote.html#afaf02ce3668f6dd71c1d185781b3b8f2',1,'Note::attributes']]],
+  ['audiobanksound_51',['audioBankSound',['../structNoteSubEu.html#a0ac4bf2c813a28afcaf8a427edac84f0',1,'NoteSubEu']]]
 ];
