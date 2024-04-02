@@ -162,7 +162,7 @@ var searchData=
   ['item_5ftriple_5fmushroom_159',['ITEM_TRIPLE_MUSHROOM',['../defines_8h.html#a73525c02acb5a3c282d73186bb3196f5a257dae5d08a213625f58b4f4d63eab78',1,'defines.h']]],
   ['item_5ftriple_5fred_5fshell_160',['ITEM_TRIPLE_RED_SHELL',['../defines_8h.html#a73525c02acb5a3c282d73186bb3196f5afe24bd982cfba98711b595ad9090c818',1,'defines.h']]],
   ['itembox_161',['ItemBox',['../structItemBox.html',1,'']]],
-  ['itemboxquestionmarkmodel_162',['itemBoxQuestionMarkModel',['../common__textures_8inc_8c.html#a45ca5bd71f521c16b12d0ac9bccfdc4e',1,'itemBoxQuestionMarkModel:&#160;common_textures.inc.c'],['../actors_8h.html#a45ca5bd71f521c16b12d0ac9bccfdc4e',1,'itemBoxQuestionMarkModel:&#160;common_textures.inc.c']]],
+  ['itemboxquestionmarkmodel_162',['itemBoxQuestionMarkModel',['../common__textures_8c.html#a45ca5bd71f521c16b12d0ac9bccfdc4e',1,'itemBoxQuestionMarkModel:&#160;common_textures.c'],['../actors_8h.html#a45ca5bd71f521c16b12d0ac9bccfdc4e',1,'itemBoxQuestionMarkModel:&#160;common_textures.c']]],
   ['itemboxx_163',['itemBoxX',['../structhud__player.html#af2a0d833871a70fd4442d2db87a5be01',1,'hud_player']]],
   ['itemboxy_164',['itemBoxY',['../structhud__player.html#aac5469899e53712fb9ab5f6e4c377d20',1,'hud_player']]],
   ['itemdisplay_165',['itemDisplay',['../structObjects.html#a2abaf2f9fa2d97a411b7d3cfc3f27657',1,'Objects::itemDisplay'],['../structItemWindowObjects.html#a9bf86d15b50c0f1da94354b35b51b541',1,'ItemWindowObjects::itemDisplay']]],

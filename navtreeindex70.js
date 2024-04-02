@@ -1,7 +1,7 @@
 var NAVTREEINDEX70 =
 {
-"luigi__raceway_2course__data_8inc_8h.html#affd7f8ad9d959a8eed79f97a36af2faf":[8,0,0,10,1,30],
-"luigi__raceway_2course__data_8inc_8h_source.html":[8,0,0,10,1],
+"luigi__raceway_2course__data_8h.html#affd7f8ad9d959a8eed79f97a36af2faf":[8,0,0,10,1,30],
+"luigi__raceway_2course__data_8h_source.html":[8,0,0,10,1],
 "luigi__raceway_2course__displaylists_8inc_8c.html":[8,0,0,10,2],
 "luigi__raceway_2course__displaylists_8inc_8c.html#a001be223737b1a86d90f82ec1f91e279":[8,0,0,10,2,262],
 "luigi__raceway_2course__displaylists_8inc_8c.html#a030948e32947cae27975ae2061c24efa":[8,0,0,10,2,24],

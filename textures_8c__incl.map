@@ -1,0 +1,10 @@
+<map id="src/data/textures.c" name="src/data/textures.c">
+<area shape="rect" id="Node000001" title="Texture data. start in ram 0x801978D0 look like link to code_80091750." alt="" coords="5,5,148,31"/>
+<area shape="rect" id="Node000002" href="$textures_8h.html" title=" " alt="" coords="33,79,121,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,31,79,65,74,65,74,31"/>
+<area shape="rect" id="Node000003" href="$ultratypes_8h.html" title=" " alt="" coords="16,152,137,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="79,104,79,138,74,138,74,104"/>
+<area shape="rect" id="Node000004" href="$stddef_8h.html" title=" " alt="" coords="39,225,114,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="72,178,71,212,65,212,67,178"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="81,225,83,191,88,191,86,225"/>
+</map>

@@ -25,7 +25,7 @@ var dir_9d35e33a62367a6e44d3f53c24813abf =
     [ "all_course_offsets.h", "all__course__offsets_8h.html", "all__course__offsets_8h" ],
     [ "all_course_packed.h", "all__course__packed_8h.html", null ],
     [ "course_macro.h", "course__macro_8h.html", "course__macro_8h" ],
+    [ "courseTable.c", "courseTable_8c.html", "courseTable_8c" ],
     [ "courseTable.h", "courseTable_8h.html", "courseTable_8h" ],
-    [ "courseTable.inc.c", "courseTable_8inc_8c.html", "courseTable_8inc_8c" ],
-    [ "staff_ghosts.inc.c", "staff__ghosts_8inc_8c.html", "staff__ghosts_8inc_8c" ]
+    [ "staff_ghost_data.c", "staff__ghost__data_8c.html", "staff__ghost__data_8c" ]
 ];

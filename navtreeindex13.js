@@ -246,8 +246,8 @@ var NAVTREEINDEX13 =
 "choco__mountain_2course__displaylists_8inc_8h.html#afc0548603bd3584db57bcbbc30e33958":[8,0,0,4,3,3],
 "choco__mountain_2course__displaylists_8inc_8h.html#afeaaa4287c816cedb9429e140002e118":[8,0,0,4,3,68],
 "choco__mountain_2course__displaylists_8inc_8h_source.html":[8,0,0,4,3],
-"choco__mountain_2course__offsets_8inc_8c.html":[8,0,0,4,4],
-"choco__mountain_2course__offsets_8inc_8c.html#a091bb2e158a6d4c4ec86e060f96a104f":[8,0,0,4,4,12],
-"choco__mountain_2course__offsets_8inc_8c.html#a0bc1cb02f63d67f5a875210158c523f4":[8,0,0,4,4,7],
-"choco__mountain_2course__offsets_8inc_8c.html#a13bd8380e0fcbdb119e9fca231645c92":[8,0,0,4,4,11]
+"choco__mountain_2course__offsets_8c.html":[8,0,0,4,4],
+"choco__mountain_2course__offsets_8c.html#a091bb2e158a6d4c4ec86e060f96a104f":[8,0,0,4,4,12],
+"choco__mountain_2course__offsets_8c.html#a0bc1cb02f63d67f5a875210158c523f4":[8,0,0,4,4,7],
+"choco__mountain_2course__offsets_8c.html#a13bd8380e0fcbdb119e9fca231645c92":[8,0,0,4,4,11]
 };

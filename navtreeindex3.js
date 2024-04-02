@@ -248,6 +248,6 @@ var NAVTREEINDEX3 =
 "audio__session__presets_8c.html#af2a4ac9c6304aa6d7b31ae49b15cf883":[8,0,3,1,0,8],
 "audio__session__presets_8c.html#af48fe151cc1f3fcd52da8f4c45170ca0":[8,0,3,1,0,6],
 "audio__session__presets_8c.html#af9ff8498b568890a69cde25ec1d93900":[8,0,3,1,0,0],
-"banshee__boardwalk_2course__data_8inc_8c.html":[8,0,0,0,0],
-"banshee__boardwalk_2course__data_8inc_8c.html#a059450165cd9a1e11f5b48e92476e8a0":[8,0,0,0,0,83]
+"banshee__boardwalk_2course__data_8c.html":[8,0,0,0,0],
+"banshee__boardwalk_2course__data_8c.html#a059450165cd9a1e11f5b48e92476e8a0":[8,0,0,0,0,83]
 };
