@@ -4,8 +4,8 @@
 #include <actor_types.h>
 #include <course.h>
 
-#include <courses/sherbet_land/course_displaylists.inc.h>
-#include <courses/sherbet_land/course_textures.linkonly.h>
+#include "course_displaylists.inc.h"
+#include "course_textures.linkonly.h"
 
 Gfx d_course_sherbet_land_packed_dl_0[] =
 {

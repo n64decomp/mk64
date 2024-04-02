@@ -72,7 +72,7 @@ enum ActorType {
     ACTOR_BLUE_SPINY_SHELL,
     ACTOR_HOT_AIR_BALLOON_ITEM_BOX,
     ACTOR_CAR,
-    ACTOR_KIWANO_FRUIT,
+    ACTOR_KIWANO_FRUIT
 };
 
 #define ACTOR_LIST_SIZE 100
@@ -91,7 +91,7 @@ enum ShellState {
     TRIPLE_RED_SHELL,             // Loses triple shell state when shot.
     DESTROYED_SHELL,              // Collision with the shell.
     BLUE_SHELL_LOCK_ON,           // A blue shell has found a target and is hastily approaching it.
-    BLUE_SHELL_TARGET_ELIMINATED, // Mission completed, well done boss.
+    BLUE_SHELL_TARGET_ELIMINATED // Mission completed, well done boss.
 };
 
 // Actor banana->state
@@ -101,7 +101,7 @@ enum BananaState {
     FIRST_BANANA_BUNCH_BANANA, // The first banana of the banana bunch
     BANANA_BUNCH_BANANA,       // Every banana of the banana bunch except the first one.
     BANANA_ON_GROUND,          // A banana sitting on the ground.
-    DESTROYED_BANANA,          // Collision with the banana.
+    DESTROYED_BANANA          // Collision with the banana.
 };
 
 // Actor fakeItemBox->state
