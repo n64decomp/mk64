@@ -1918,6 +1918,7 @@ Variable Name | Memory Address
 [func_80097A14](@ref func_80097A14) | 0x80097A14
 [func_80097AE4](@ref func_80097AE4) | 0x80097AE4
 [func_80097E58](@ref func_80097E58) | 0x80097E58
+[func_80098558](@ref func_80098558) | 0x80098558
 [func_800987D0](@ref func_800987D0) | 0x800987D0
 [draw_box_fill](@ref draw_box_fill) | 0x80098C18
 [draw_box](@ref draw_box) | 0x80098DF8
@@ -3310,7 +3311,7 @@ Variable Name | Memory Address
 [D_800E8274](@ref D_800E8274) | 0x800E8274
 [D_800E8294](@ref D_800E8294) | 0x800E8294
 [D_800E82B4](@ref D_800E82B4) | 0x800E82B4
-[D_800E82C8](@ref D_800E82C8) | 0x800E82C8
+[D_800E82C4](@ref D_800E82C4) | 0x800E82C4
 [D_800E82F4](@ref D_800E82F4) | 0x800E82F4
 [D_800E8320](@ref D_800E8320) | 0x800E8320
 [D_800E8340](@ref D_800E8340) | 0x800E8340
