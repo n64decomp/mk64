@@ -4,6 +4,7 @@
 #include "ultra64.h"
 
 typedef f32 Vec3f[3];
+typedef f32 Vec4f[4];
 
 typedef s16 Vec3s[3];
 typedef u16 Vec3su[3];
