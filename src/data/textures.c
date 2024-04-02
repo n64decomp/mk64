@@ -1,5 +1,5 @@
 /**
- * @file textures.inc.c
+ * @file textures.c
  * @brief Texture data.
  * start in ram 0x801978D0
  * look like link to code_80091750
