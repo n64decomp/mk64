@@ -4,7 +4,7 @@ REFLECTION_MAP := $(STARTUP_LOGO)/gTextureReflectionMapGold.png
 
 STARTUP_LOGO_EXPORT_SENTINEL := $(STARTUP_LOGO)/.export
 
-$(BUILD_DIR)/src/data/startup_logo.inc.o: $(REFLECTION_MAP:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/startup_logo.o: $(REFLECTION_MAP:%.png=%.inc.c)
 
 $(REFLECTION_MAP:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16

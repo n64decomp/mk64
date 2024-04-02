@@ -1,6 +1,6 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
-#include "courses/moo_moo_farm/course_data.inc.h"
+#include "courses/moo_moo_farm/course_data.h"
 
 extern u8 gTextureWoodDoor0[];
 extern u8 gTextureGrass2[];

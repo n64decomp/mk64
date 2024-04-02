@@ -3012,7 +3012,7 @@ u8 common_tlut_lakitu_countdown[][512] = {
 
 /**
  * @todo Generate tlut based on the actual texture.
- * The textures these tluts are for are not in common_textures.inc.c
+ * The textures these tluts are for are not in common_textures.c
  * This applies to common_tlut_lakitu_checkered_flag, common_tlut_lakitu_second_lap,
  * common_tlut_lakitu_final_lap, common_tlut_lakitu_reverse, common_tlut_lakitu_fishing
  * Appears to be animation textures.

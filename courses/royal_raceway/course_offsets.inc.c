@@ -1,6 +1,6 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
-#include "courses/royal_raceway/course_data.inc.h"
+#include "courses/royal_raceway/course_data.h"
 
 extern u8 gTexture64619C[];
 extern u8 gTexture645134[];

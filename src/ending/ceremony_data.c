@@ -1,4 +1,4 @@
-#include "src/ending/ceremony_data.inc.h"
+#include "src/ending/ceremony_data.h"
 
 Vtx silver_trophy_model[] = {
 

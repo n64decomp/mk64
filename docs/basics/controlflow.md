@@ -67,7 +67,7 @@ Racing segment loads after selecting a grand prix. Note that it is always reload
 |---|---|
 |[menus](@ref menus.c)| Menu related code |
 |[save](@ref save.c)| Save related |
-|[startup_logo](@ref data/startup_logo.inc.c)|Startup logo|
+|[startup_logo](@ref data/startup_logo.c)|Startup logo|
 
 ## Players
 Player related code resides in
@@ -100,13 +100,13 @@ Course related code resides in
 |---|---|
 |[memory](@ref memory.c)| Loads and extracts course data|
 |[render_courses](@ref render_courses.c)|Renders course content|
-|[common_textures](@ref common_textures.inc.c)|Content accessible to every course such as items and portraits|
+|[common_textures](@ref common_textures.c)|Content accessible to every course such as items and portraits|
 
 ### Course Folder
 [course folder link][@ref courses]
 |file|desc|
 |---|---|
-|courses/course_name/course_data.inc.c|Course data|
+|courses/course_name/course_data.c|Course data|
 |courses/course_name/course_vertices.inc.c|Course vertices (this + _displaylists.inc.c makes the course geography)|
 |courses/course_name/course_displaylists.inc.c|Course displaylists (these get compressed during compile)|
 |courses/course_name/course_offsets.inc.c|Textures used in the course|
@@ -134,5 +134,5 @@ Math related code resides in
 |---|---|
 |[ceremony_and_credits](@ref ceremony_and_credits.c)|Camera rails for podium ceremony and credits|
 |[podium_ceremony_actors](@ref podium_ceremony_actors.c)|Fireworks and balloons for podium ceremony|
-|[ceremony_data](@ref ceremony_data.inc.c)|Trophies and podium models. Paths.|
+|[ceremony_data](@ref ceremony_data.c)|Trophies and podium models. Paths.|
 |[credits](@ref credits.c)|Credits text and UI positions|  

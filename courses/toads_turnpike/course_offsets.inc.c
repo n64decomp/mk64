@@ -2,7 +2,7 @@
 #include <PR/mbi.h>
 #include "common_textures.h"
 #include "course_offsets.h"
-#include "courses/toads_turnpike/course_data.inc.h"
+#include "courses/toads_turnpike/course_data.h"
 
 extern u8 gTexture645134[];
 extern u8 gTexture64FE68[];
