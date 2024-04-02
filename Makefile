@@ -235,7 +235,9 @@ include $(MAKEFILE_SPLIT)
 EUC_JP_FILES := src/ending/credits.c src/code_80005FD0.c src/code_80091750.c
 C_FILES := $(filter-out $(EUC_JP_FILES),$(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c)))
 S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s))
-COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(wildcard $(dir)/*.inc.c))
+# Include source files in courses/course_name/files.c but exclude .inc.c files.
+COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(filter-out %.inc.c,$(wildcard $(dir)/*.c)))
+
 
 # Object files
 O_FILES := \
@@ -536,14 +538,6 @@ COURSE_GEOGRAPHY_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/cou
 
 
 #==============================================================================#
-# Link Course Offset Files                                                     #
-#==============================================================================#
-
-COURSE_OFFSET_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_offsets.o)
-
-
-
-#==============================================================================#
 # Course Data Generation                                                       #
 #==============================================================================#
 
@@ -694,7 +688,7 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(COURSE_OFFSET_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.mio0.o $(BUILD_DIR)/src/data/common_textures.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.mio0.o $(BUILD_DIR)/src/data/common_textures.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 
