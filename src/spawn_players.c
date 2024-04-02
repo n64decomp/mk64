@@ -1078,12 +1078,12 @@ void func_8003CD98(Player *player, Camera *camera, s8 playerId, s8 arg3) {
             load_kart_palette(player, playerId, arg3, 0);
             load_kart_palette(player, playerId, arg3, 1);
             load_kart_texture(player, playerId, arg3, arg3, 0);
-            mio0decode((u8 *) &D_802DFB80[0][arg3][playerId], (u8 *) &D_802BFB80[0][arg3][playerId]);
+            mio0decode((u8 *) &D_802DFB80[0][arg3][playerId], (u8 *) &D_802BFB80.arraySize8[0][arg3][playerId]);
         } else {
             load_kart_palette(player, playerId, arg3, 0);
             load_kart_palette(player, playerId, arg3, 1);
             load_kart_texture(player, (s8) (playerId + 4), arg3, (s8) (arg3 - 2), 0);
-            mio0decode((u8 *) &D_802DFB80[0][arg3 - 2][playerId + 4], (u8 *) &D_802BFB80[0][arg3 - 2][playerId + 4]);
+            mio0decode((u8 *) &D_802DFB80[0][arg3 - 2][playerId + 4], (u8 *) &D_802BFB80.arraySize8[0][arg3 - 2][playerId + 4]);
         }
 
         D_801650D0[arg3][playerId] = player->animFrameSelector[arg3];

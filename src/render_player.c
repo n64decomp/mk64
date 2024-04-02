@@ -265,12 +265,12 @@ void func_80020524(void) {
             func_80027560(D_80164AD0[i], D_80164AB0[i], D_80164AC0[i], D_80164AC0[i], D_801651D0[D_80164AC0[i]][D_80164AB0[i]]);
 
             mio0decode(D_802DFB80[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]].unk_00,
-                       D_802BFB80[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]].pixel_index_array);
+                       D_802BFB80.arraySize8[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]].pixel_index_array);
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
 
     mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
-               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
+               D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
 }
 
 void func_8002088C(void) {
@@ -291,11 +291,11 @@ void func_8002088C(void) {
     for (var_s0 = 1; var_s0 < gPlayersToRenderCount; var_s0++) {
         func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0], D_80164AC0[var_s0], D_80164AC0[var_s0], D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
         mio0decode(D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].unk_00,
-                   D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].pixel_index_array);
+                   D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
     mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
-               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
+               D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
 }
 
 void func_80020BF4(void) {
@@ -310,11 +310,11 @@ void func_80020BF4(void) {
     for (var_s0 = 1; var_s0 < gPlayersToRenderCount; var_s0++) {
         func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0] + 4, D_80164AC0[var_s0], D_80164AC0[var_s0] - 2, D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
         mio0decode(D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00,
-                   D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
+                   D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
     mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
-               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
+               D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
 }
 
 void func_80020F1C(void) {
@@ -329,11 +329,11 @@ void func_80020F1C(void) {
     for (var_s0 = 1; var_s0 < gPlayersToRenderCount; var_s0++) {
         func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0] + 4, D_80164AC0[var_s0], D_80164AC0[var_s0] - 2, D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
         mio0decode(D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00,
-                   D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
+                   D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
     mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
-               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
+               D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
 }
 
 void try_render_player(Player *player, s8 playerId, s8 arg2) {
@@ -1415,11 +1415,11 @@ void kart_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
 #endif
     if ((arg2 == 0) || (arg2 == 1)) {
-        D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0x7C0];
+        D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
+        D_80164B0C = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0x7C0];
     } else {
-        D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0x7C0];
+        D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0];
+        D_80164B0C = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0x7C0];
     }
     mtxf_translate_rotate(sp1A4, sp154, sp14C);
     mtxf_scale2(sp1A4, gCharacterSize[player->characterId] * player->size);
@@ -1533,11 +1533,11 @@ void ghost_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
 #endif
     if ((arg2 == 0) || (arg2 == 1)) {
-        D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0x7C0];
+        D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
+        D_80164B0C = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0x7C0];
     } else {
-        D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0x7C0];
+        D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0];
+        D_80164B0C = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0x7C0];
     }
 
     mtxf_translate_rotate(sp12C, spDC, spD4);
