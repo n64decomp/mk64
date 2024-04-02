@@ -488,7 +488,7 @@ $(BUILD_DIR)/src/data/common_textures.o: src/data/common_textures.c $(TEXTURE_FI
 #==============================================================================#
 
 
-%/course_textures.linkonly.c %/course_textures.linkonly.h: %/course_offsets.inc.c
+%/course_textures.linkonly.c %/course_textures.linkonly.h: %/course_offsets.c
 	$(V)$(LINKONLY_GENERATOR) $(lastword $(subst /, ,$*))
 
 # Its unclear why this is necessary. Everything I undesrtand about `make` says that just
@@ -532,6 +532,15 @@ COURSE_GEOGRAPHY_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/cou
 # Course vertices and displaylists are included together due to no alignment between the two files.
 %/course_geography.mio0.s: %/course_vertices.inc.mio0 %/course_displaylists_packed.inc.bin
 	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_vertex\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
+
+
+
+#==============================================================================#
+# Link Course Offset Files                                                     #
+#==============================================================================#
+
+COURSE_OFFSET_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_offsets.o)
+
 
 
 #==============================================================================#
@@ -685,7 +694,7 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.mio0.o $(BUILD_DIR)/src/data/common_textures.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(COURSE_OFFSET_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.mio0.o $(BUILD_DIR)/src/data/common_textures.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 

@@ -1,6 +1,6 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
-#include "courses/luigi_raceway/course_data.h"
+#include "course_data.h"
 
 extern u8 gTextureSignShellShot0[];
 extern u8 gTextureSignShellShot1[];

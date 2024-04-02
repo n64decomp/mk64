@@ -551,7 +551,7 @@ SECTIONS
    #define COURSE_OFFSETS_SEG(dir, name) \
       BEGIN_SEG(name, 0x09000000) \
       { \
-         BUILD_DIR/courses/dir/course_offsets.inc.o(.data); \
+         BUILD_DIR/courses/dir/course_offsets.o(.data); \
          . = ALIGN(0x10); \
       } \
       END_SEG(name)

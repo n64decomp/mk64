@@ -109,7 +109,7 @@ Course related code resides in
 |courses/course_name/course_data.c|Course data|
 |courses/course_name/course_vertices.inc.c|Course vertices (this + _displaylists.inc.c makes the course geography)|
 |courses/course_name/course_displaylists.inc.c|Course displaylists (these get compressed during compile)|
-|courses/course_name/course_offsets.inc.c|Textures used in the course|
+|courses/course_name/course_offsets.c|Textures used in the course|
 
 ## UI & Other 2D Screen data
 |file|desc|
