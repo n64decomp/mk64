@@ -31,8 +31,8 @@ $(PORTRAITS_DIR)/common_texture_portrait_question_mark.png
 
 PORTRAIT_EXPORT_SENTINEL := $(PORTRAITS_DIR)/.export
 
-$(BUILD_DIR)/src/data/common_textures.inc.o: $(PORTRAIT_PNG:%.png=%.inc.c) $(PORTRAIT_PALETTES:%.png=%.inc.c)
-$(BUILD_DIR)/src/data/common_textures.inc.o: $(SPECIAL_PORTRAIT_PNG:%.png=%.inc.c) $(SPECIAL_PORTRAIT_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.o: $(PORTRAIT_PNG:%.png=%.inc.c) $(PORTRAIT_PALETTES:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.o: $(SPECIAL_PORTRAIT_PNG:%.png=%.inc.c) $(SPECIAL_PORTRAIT_PALETTE:%.png=%.inc.c)
 
 $(PORTRAIT_PNG:%.png=%.inc.c): $(PORTRAITS_DIR)/common_texture_portrait_%.inc.c : $(PORTRAITS_DIR)/common_texture_portrait_%.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(PORTRAITS_DIR)/common_tlut_portrait_$*.png

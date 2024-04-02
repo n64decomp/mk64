@@ -213,7 +213,7 @@ SECTIONS
       BUILD_DIR/src/camera.o(.data);
       BUILD_DIR/src/render_player.o(.data);
       BUILD_DIR/src/kart_dma.o(.data);
-      BUILD_DIR/src/data/kart_attributes.inc.o(.data);
+      BUILD_DIR/src/data/kart_attributes.o(.data);
       BUILD_DIR/src/player_controller.o(.data);
       BUILD_DIR/src/spawn_players.o(.data);
       BUILD_DIR/src/update_objects.o(.data);
@@ -368,7 +368,7 @@ SECTIONS
       BUILD_DIR/src/racing/actors.o(.data*);
       BUILD_DIR/src/racing/skybox_and_splitscreen.o(.data);
       BUILD_DIR/src/racing/memory.o(.data*);
-      BUILD_DIR/courses/courseTable.inc.o(.data);
+      BUILD_DIR/courses/courseTable.o(.data);
       BUILD_DIR/src/racing/actors_extended.o(.data);
       BUILD_DIR/src/racing/math_util.o(.data*);
       BUILD_DIR/src/racing/race_logic.o(.rodata*);
@@ -415,7 +415,7 @@ SECTIONS
       BUILD_DIR/src/ending/ceremony_and_credits.o(.text);
       BUILD_DIR/src/ending/podium_ceremony_actors.o(.data);
       BUILD_DIR/src/ending/code_80281780.o(.data);
-      BUILD_DIR/src/ending/dl_unk_80284EE0.inc.o(.data);
+      BUILD_DIR/src/ending/dl_unk_80284EE0.o(.data);
       BUILD_DIR/src/ending/credits.jp.o(.data);
       BUILD_DIR/src/ending/ceremony_and_credits.o(.data);
       BUILD_DIR/src/ending/podium_ceremony_actors.o(.rodata);
@@ -437,8 +437,8 @@ SECTIONS
    /* texture tables and DLs, set as segment 0x02 */
    BEGIN_SEG(data_segment2, 0x02000000)
    {
-      BUILD_DIR/src/data/textures.inc.o(.data);
-      BUILD_DIR/src/data/data_segment2.inc.o(.data);
+      BUILD_DIR/src/data/textures.o(.data);
+      BUILD_DIR/src/data/data_segment2.o(.data);
    }
    END_SEG(data_segment2)
 
@@ -446,7 +446,7 @@ SECTIONS
    /* common textures, decompressed and set as segment 0x0D */
    BEGIN_SEG(common_textures, 0x0D000000)
    {
-      BUILD_DIR/src/data/common_textures.inc.mio0.o(.data);
+      BUILD_DIR/src/data/common_textures.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(common_textures)
@@ -463,7 +463,7 @@ SECTIONS
       BUILD_DIR/data/karts/toad_kart.o(.data);
       BUILD_DIR/data/karts/donkeykong_kart.o(.data);
       BUILD_DIR/data/karts/bowser_kart.o(.data);
-      BUILD_DIR/courses/staff_ghosts.inc.o(.data);
+      BUILD_DIR/courses/staff_ghost_data.o(.data);
    }
    END_SEG(kart_textures)
 
@@ -522,7 +522,7 @@ SECTIONS
    #define COURSE_DATA_SEG(dir, name) \
       BEGIN_SEG(name##_mio0, 0x06000000) \
       { \
-         BUILD_DIR/courses/dir/course_data.inc.mio0.o(.data); \
+         BUILD_DIR/courses/dir/course_data.mio0.o(.data); \
          . = ALIGN(0x10); \
       } \
       END_SEG(name##_mio0)
@@ -551,7 +551,7 @@ SECTIONS
    #define COURSE_OFFSETS_SEG(dir, name) \
       BEGIN_SEG(name, 0x09000000) \
       { \
-         BUILD_DIR/courses/dir/course_offsets.inc.o(.data); \
+         BUILD_DIR/courses/dir/course_offsets.o(.data); \
          . = ALIGN(0x10); \
       } \
       END_SEG(name)
@@ -582,7 +582,7 @@ SECTIONS
    #define COURSE_VERT_SEG(dir, name) \
       BEGIN_SEG(name, 0x0F000000) \
       { \
-         BUILD_DIR/courses/dir/course_geography.inc.mio0.o(.data); \
+         BUILD_DIR/courses/dir/course_geography.mio0.o(.data); \
          . = ALIGN(0x10); \
       } \
       END_SEG(name)

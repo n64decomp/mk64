@@ -311,13 +311,17 @@ extern s32 indexObjectList3[];
 extern s32 indexObjectList4[];
 
 #define gObjectParticle1_SIZE 128
-#define NUM_MAX_MOLES  0x1F
 #define NUM_GROUP1_MOLES  8
 #define NUM_GROUP2_MOLES 11
 #define NUM_GROUP3_MOLES 12
+#define NUM_TOTAL_MOLES  (NUM_GROUP1_MOLES + NUM_GROUP2_MOLES + NUM_GROUP3_MOLES)
 #define NUM_SNOWFLAKES 0x32
 
-extern Vec3s gMoleSpawns[];
+typedef union {
+    Vec3s asVec3sList[NUM_TOTAL_MOLES];
+    s16 asFlatList[NUM_TOTAL_MOLES*3];
+} MoleSpawnUnion;
+extern MoleSpawnUnion gMoleSpawns;
 
 /**
  * Exact use unknown, something related to the mole groups
