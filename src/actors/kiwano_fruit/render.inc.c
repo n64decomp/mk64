@@ -1,7 +1,7 @@
 #include <actors.h>
 #include <PR/gbi.h>
 #include <main.h>
-#include "courses/dks_jungle_parkway/course_data.inc.h"
+#include "courses/dks_jungle_parkway/course_data.h"
 
 /**
  * @brief Renders the kiwano fruit actor.

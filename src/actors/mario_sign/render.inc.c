@@ -1,6 +1,6 @@
 #include <actors.h>
 #include <main.h>
-#include "courses/mario_raceway/course_data.inc.h"
+#include "courses/mario_raceway/course_data.h"
 
 /**
  * @brief Renders the Mario sign actor.

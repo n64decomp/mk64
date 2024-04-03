@@ -1,7 +1,7 @@
 #include <actors.h>
 #include <code_800029B0.h>
 #include <main.h>
-#include "courses/choco_mountain/course_data.inc.h"
+#include "courses/choco_mountain/course_data.h"
 
 void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
     s32 segment = SEGMENT_NUMBER2(spawnData);

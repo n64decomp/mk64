@@ -2,7 +2,7 @@
 #include <actors.h>
 #include <main.h>
 #include <PR/gbi.h>
-#include "courses/moo_moo_farm/course_data.inc.h"
+#include "courses/moo_moo_farm/course_data.h"
 
 /**
  * @brief Renders the cow actor.

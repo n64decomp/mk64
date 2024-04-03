@@ -1,8 +1,8 @@
 #include <actors.h>
 #include <main.h>
 #include <PR/gbi.h>
-#include "courses/mario_raceway/course_data.inc.h"
-#include "courses/royal_raceway/course_data.inc.h"
+#include "courses/mario_raceway/course_data.h"
+#include "courses/royal_raceway/course_data.h"
 
 /**
  * @brief Renders the piranha plant actor.

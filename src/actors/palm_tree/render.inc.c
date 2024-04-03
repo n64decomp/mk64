@@ -1,6 +1,6 @@
 #include <actors.h>
 #include <main.h>
-#include "courses/koopa_troopa_beach/course_data.inc.h"
+#include "courses/koopa_troopa_beach/course_data.h"
 
 /**
  * @brief Renders the palm tree actor.

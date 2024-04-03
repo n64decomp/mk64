@@ -2,7 +2,7 @@
 #include <PR/gbi.h>
 #include <main.h>
 #include <defines.h>
-#include "courses/toads_turnpike/course_data.inc.h"
+#include "courses/toads_turnpike/course_data.h"
 
 /**
  * @brief Renders the box truck actor.

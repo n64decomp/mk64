@@ -1,7 +1,7 @@
 #include <actors.h>
 #include <PR/gbi.h>
 #include <main.h>
-#include "courses/wario_stadium/course_data.inc.h"
+#include "courses/wario_stadium/course_data.h"
 
 /**
  * @brief Renders the Wario sign actor.
