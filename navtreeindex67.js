@@ -1,5 +1,6 @@
 var NAVTREEINDEX67 =
 {
+"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a9653580171144897beaabfc9c4451702":[8,0,0,9,3,44],
 "koopa__troopa__beach_2course__displaylists_8inc_8h.html#a968f4a4e180e0789981fbca23dace902":[8,0,0,9,3,252],
 "koopa__troopa__beach_2course__displaylists_8inc_8h.html#a979077c324f708a4130c99848694517d":[8,0,0,9,3,157],
 "koopa__troopa__beach_2course__displaylists_8inc_8h.html#a986065d0c4b0f476803c3db85a9364d6":[8,0,0,9,3,149],
@@ -248,6 +249,5 @@ var NAVTREEINDEX67 =
 "llmuldiv_8c.html#a24d32bbc71a5dbfa1985f077ca846d7a":[8,0,3,5,0,2,6],
 "llmuldiv_8c.html#a2b9dda40dd87d88a44dcab4a766aaa1e":[8,0,3,5,0,2,1],
 "llmuldiv_8c.html#a39cd49958929586148b4ab62333c0eef":[8,0,3,5,0,2,5],
-"llmuldiv_8c.html#a4eec191b147ba5a42deabe4e7b8a2538":[8,0,3,5,0,2,3],
-"llmuldiv_8c.html#a5e56ce9a639dc32c6335cc9519a9fb10":[8,0,3,5,0,2,0]
+"llmuldiv_8c.html#a4eec191b147ba5a42deabe4e7b8a2538":[8,0,3,5,0,2,3]
 };

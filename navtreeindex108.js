@@ -1,5 +1,6 @@
 var NAVTREEINDEX108 =
 {
+"structCollision.html#abbac7b426b00b3cfcd6037628163cc74":[7,0,60,9],
 "structCollision.html#ac99d52b4414ffb7b2c2a16ad4564075c":[7,0,60,4],
 "structCollision.html#ad3599679696383e04124e76cd5bc7215":[7,0,60,10],
 "structCollision.html#ae75d61b5d234a28a8c08dfb14e326013":[7,0,60,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX108 =
 "structItemWindowObjects.html#aea65c4a1ad27329976c1ef1dcf122266":[7,0,89,1],
 "structItemWindowObjects.html#af18c30595a54d7246a3a81c372623820":[7,0,89,35],
 "structItemWindowObjects.html#af289ab4b7f0ca39b39b983e7c3063e6a":[7,0,89,4],
-"structItemWindowObjects.html#afb0b5a41b478529fcfec0bbd1a04c740":[7,0,89,40],
-"structItemWindowObjects.html#afe04d28bb652c42e59fcca5374e6eac7":[7,0,89,20]
+"structItemWindowObjects.html#afb0b5a41b478529fcfec0bbd1a04c740":[7,0,89,40]
 };

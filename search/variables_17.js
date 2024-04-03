@@ -11,7 +11,7 @@ var searchData=
   ['wario_5fstadium_5ftextures_8',['wario_stadium_textures',['../all__course__offsets_8h.html#afb2d218c3ac46e16ee4d7938502db297',1,'wario_stadium_textures:&#160;course_offsets.c'],['../courseTable_8h.html#a31c7877a7347c7a71f52aa41b1f16803',1,'wario_stadium_textures:&#160;course_offsets.c'],['../wario__stadium_2course__offsets_8c.html#a377ad398269c408a9628e432c39dbe05',1,'wario_stadium_textures:&#160;course_offsets.c']]],
   ['wassoftreset_9',['wasSoftReset',['../main_8c.html#a2fa45adadd9db50419593273a86d5875',1,'wasSoftReset:&#160;main.c'],['../main_8h.html#a2fa45adadd9db50419593273a86d5875',1,'wasSoftReset:&#160;main.c']]],
   ['waveid_10',['waveId',['../structNotePlaybackState.html#a42402672c3ba2a53b238c7adb4897d59',1,'NotePlaybackState::waveId'],['../structNote.html#a735fb38930defbb072e29145b7cddebb',1,'Note::waveId']]],
-  ['waveinfo_11',['waveInfo',['../structALWaveTable__s.html#aef2c7c83689509bcdb65f9a508135712',1,'ALWaveTable_s']]],
+  ['waveinfo_11',['waveInfo',['../structALWaveTable__s.html#a85b362aa52c9213e918b655fc4604187',1,'ALWaveTable_s']]],
   ['wavetable_12',['wavetable',['../structALSound__s.html#a8bb355521feffe02dfa992b5fd23ae87',1,'ALSound_s']]],
   ['waypointid1_13',['waypointId1',['../structUnkCommonTextureStruct0.html#a9dd8c5f4ee2e99daac76258eeb3c24c2',1,'UnkCommonTextureStruct0']]],
   ['waypointid2_14',['waypointId2',['../structUnkCommonTextureStruct0.html#abccfbf8f82b0c041395975c5c3a0968a',1,'UnkCommonTextureStruct0']]],
@@ -24,6 +24,6 @@ var searchData=
   ['wheelrot_21',['wheelRot',['../structTrainCar.html#a3e4c6d1091b4cf5a1683496409bda622',1,'TrainCar::wheelRot'],['../structPaddleWheelBoat.html#a500f0d5169fa8601aaba11cf13514b28',1,'PaddleWheelBoat::wheelRot']]],
   ['width_22',['width',['../structprintf__struct.html#ad8c9b5c908f18b8933081ae4b8f19b3a',1,'printf_struct::width'],['../structMkTexture.html#a6064846bc000f2003938cd14d4e62ff6',1,'MkTexture::width'],['../structOSViCommonRegs.html#a36050d774fce0c7479165a54e61296aa',1,'OSViCommonRegs::width']]],
   ['windowsize_23',['windowSize',['../structReverbSettingsEU.html#a5cb7d8eaeef42b0369bd170bca7ed72f',1,'ReverbSettingsEU::windowSize'],['../structSynthesisReverb.html#ac33541fe1dc1f814a10cbc97b86b8d4d',1,'SynthesisReverb::windowSize']]],
-  ['word_24',['word',['../unionGameModePack.html#a070413d3976e79c9be223f8ab02369b7',1,'GameModePack::word'],['../uniondu.html#a5bf196e6bdc792f2bb6f2f348105e448',1,'du::word'],['../uniondu.html#a9e9d23cf0353aa7609b667deb1530e03',1,'du::word']]],
+  ['word_24',['word',['../unionGameModePack.html#a070413d3976e79c9be223f8ab02369b7',1,'GameModePack::word'],['../uniondu.html#a4c2427041f48af1e599dbf3833415d98',1,'du::word'],['../uniondu.html#a9e9d23cf0353aa7609b667deb1530e03',1,'du::word']]],
   ['wut_25',['wut',['../sherbet__land_2course__data_8c.html#a9eeed027c0accdad88ef82b59706956f',1,'wut:&#160;course_data.c'],['../sherbet__land_2course__data_8h.html#a9eeed027c0accdad88ef82b59706956f',1,'wut:&#160;course_data.c']]]
 ];

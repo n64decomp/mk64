@@ -1,5 +1,6 @@
 var NAVTREEINDEX111 =
 {
+"structRGBA5551.html":[7,0,145],
 "structRGBA5551.html#a4d36549539a3cbcc14986a8f08f082b8":[7,0,145,3],
 "structRGBA5551.html#a886e94fc0c29271f17deda549e7a156a":[7,0,145,2],
 "structRGBA5551.html#a8e4b93a16be5353df9973a8672ef6d28":[7,0,145,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX111 =
 "structSoundCharacteristics.html#af61da05719188f6ab5b0bb0fe7765375":[7,0,157,6],
 "structSoundCharacteristics.html#afe6d8a04574b04b7152b25c5afe166bc":[7,0,157,14],
 "structSoundMultiPool.html":[7,0,158],
-"structSoundMultiPool.html#a9a72b154bd09a211baecb8f2976157b4":[7,0,158,0],
-"structSoundMultiPool.html#ae26f6edcb58e56220c5b5a92d42902cd":[7,0,158,2]
+"structSoundMultiPool.html#a9a72b154bd09a211baecb8f2976157b4":[7,0,158,0]
 };

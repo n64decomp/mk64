@@ -1,5 +1,6 @@
 var NAVTREEINDEX112 =
 {
+"structSoundMultiPool.html#ae26f6edcb58e56220c5b5a92d42902cd":[7,0,158,2],
 "structSoundMultiPool.html#aeaad151fd1e59a21a034efa00385bcf0":[7,0,158,1],
 "structSplineControlPoint.html":[7,0,159],
 "structSplineControlPoint.html#a152d68920abe7000d46964cdb924aef4":[7,0,159,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX112 =
 "structUnkStruct__800DC5EC.html#aba31b90b86b04f58ea036c5a22db679c":[7,0,234,5],
 "structUnkStruct__800DC5EC.html#ac4f806bba8523651c94e816b7bd09352":[7,0,234,14],
 "structUnkStruct__800DC5EC.html#ad2e76a09cf78e3e0f7fe1de7245317c7":[7,0,234,13],
-"structUnkStruct__800DDB40.html":[7,0,235],
-"structUnkStruct__800DDB40.html#a01b94a3a717caf8ef87065fcdb660baa":[7,0,235,2]
+"structUnkStruct__800DDB40.html":[7,0,235]
 };

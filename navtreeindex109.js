@@ -1,5 +1,6 @@
 var NAVTREEINDEX109 =
 {
+"structItemWindowObjects.html#afe04d28bb652c42e59fcca5374e6eac7":[7,0,89,20],
 "structKartBoundingBoxCorner.html":[7,0,90],
 "structKartBoundingBoxCorner.html#a0137b27743253c3ae5813a2e1161a962":[7,0,90,4],
 "structKartBoundingBoxCorner.html#a3b0e4b44d639a1c03c01f756724004b2":[7,0,90,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX109 =
 "structObjects.html#a1ebc3c81577de5bb3d0bb7f02b5e16bd":[7,0,108,56],
 "structObjects.html#a20038c926859cf500e2919fdf94434e1":[7,0,108,60],
 "structObjects.html#a243e089115cc7ea233d2ae99fe4ea494":[7,0,108,23],
-"structObjects.html#a248376f4c3214d48f9e7f6c551e84616":[7,0,108,10],
-"structObjects.html#a27127b9ec30abaee1f8df72d745e447d":[7,0,108,26]
+"structObjects.html#a248376f4c3214d48f9e7f6c551e84616":[7,0,108,10]
 };

@@ -1,5 +1,6 @@
 var NAVTREEINDEX83 =
 {
+"osEepromRead_8c.html#adbcc2a395a2df240e63b78113c641b24":[8,0,3,5,73,4],
 "osEepromRead_8c.html#afe8553b91d51b2a96d97792d1359a516":[8,0,3,5,73,7],
 "osEepromWrite_8c.html":[8,0,3,5,74],
 "osEepromWrite_8c.html#a3a36a580107ee4af86d80818a26304db":[8,0,3,5,74,8],
@@ -248,6 +249,5 @@ var NAVTREEINDEX83 =
 "os_8h.html#a68beb3c73876e19a3712983479dd4640":[8,0,2,1,7,8],
 "os_8h.html#a6b0880275c34713de9598c3b10f92b4d":[8,0,2,1,7,210],
 "os_8h.html#a6c7a2f17d2c0e28c9c5bacfb08a117fa":[8,0,2,1,7,192],
-"os_8h.html#a6cd0b1a8612cf458c7b8ef314c9d2c62":[8,0,2,1,7,178],
-"os_8h.html#a6d2a54fe58054c53255ed2cc9e12eb1b":[8,0,2,1,7,220]
+"os_8h.html#a6cd0b1a8612cf458c7b8ef314c9d2c62":[8,0,2,1,7,178]
 };

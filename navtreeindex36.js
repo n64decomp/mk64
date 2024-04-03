@@ -1,5 +1,6 @@
 var NAVTREEINDEX36 =
 {
+"double__deck_2course__displaylists_8inc_8h.html#a5d76007c57e159383dd35b82a9d592b1":[8,0,0,6,3,9],
 "double__deck_2course__displaylists_8inc_8h.html#a62a82a9cd61c9d0f715a64ee161af759":[8,0,0,6,3,4],
 "double__deck_2course__displaylists_8inc_8h.html#a7fe536cd13d24ece17c45ba707ba5c4e":[8,0,0,6,3,1],
 "double__deck_2course__displaylists_8inc_8h.html#abe145e196572167de87aabdeab18fb2f":[8,0,0,6,3,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX36 =
 "effects_8h.html#ae69abe396a66f4c3f25ed0d0bd76e55e":[8,0,3,37,92],
 "effects_8h.html#ae747a4a9002b1b2c9cdc0da9db963b56":[8,0,3,37,45],
 "effects_8h.html#ae9672e9021cb9a0d1ffb927b5541f4be":[8,0,3,37,6],
-"effects_8h.html#aebc64310b0446fa7c753877c6a18da9b":[8,0,3,37,113],
-"effects_8h.html#aece9aa908fea7a93062a9b58b7f113ad":[8,0,3,37,76]
+"effects_8h.html#aebc64310b0446fa7c753877c6a18da9b":[8,0,3,37,113]
 };

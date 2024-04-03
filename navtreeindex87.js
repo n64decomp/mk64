@@ -1,5 +1,6 @@
 var NAVTREEINDEX87 =
 {
+"player__controller_8c.html#af82f9efd06564abdf56adbe555065aad":[8,0,3,47,22],
 "player__controller_8c.html#af9d8e2fa807dab2737045c3c2517a46e":[8,0,3,47,12],
 "player__controller_8c.html#af9df0e47d214b6351593045dc994f9f9":[8,0,3,47,115],
 "player__controller_8c.html#afa25198abd9181b19344fa368b06ffaa":[8,0,3,47,67],
@@ -248,6 +249,5 @@ var NAVTREEINDEX87 =
 "podium__ceremony__actors_8h.html#acb2d4568e6169c2704b87e357281351d":[8,0,3,4,15,23],
 "podium__ceremony__actors_8h.html#ada674a65695d9415cb4e50e687318e45":[8,0,3,4,15,13],
 "podium__ceremony__actors_8h.html#adef79cd63739d10c4236f8d811f606f3":[8,0,3,4,15,28],
-"podium__ceremony__actors_8h.html#ae26375ec0f4f77b7ff9296000eebec17":[8,0,3,4,15,33],
-"podium__ceremony__actors_8h.html#aeca264b613da45643915be89209b72da":[8,0,3,4,15,27]
+"podium__ceremony__actors_8h.html#ae26375ec0f4f77b7ff9296000eebec17":[8,0,3,4,15,33]
 };
