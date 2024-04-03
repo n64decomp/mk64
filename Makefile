@@ -257,7 +257,12 @@ GLOBAL_ASM_OS_O_FILES = $(foreach file,$(GLOBAL_ASM_OS_FILES),$(BUILD_DIR)/$(fil
 GLOBAL_ASM_AUDIO_O_FILES = $(foreach file,$(GLOBAL_ASM_AUDIO_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 
-
+ifneq ($(BLENDER),)
+else ifneq ($(call find-command,blender),)
+  BLENDER := blender
+else ifeq ($(DETECTED_OS), windows)
+  BLENDER := "C:\Program Files\Blender Foundation\Blender 3.6\blender.exe"
+endif
 
 #==============================================================================#
 # Compiler Options                                                             #
@@ -401,6 +406,12 @@ doc:
 
 clean:
 	$(RM) -r $(BUILD_DIR)
+
+model_extract:
+	$(PYTHON) tools/blender/extract_models.py $(BLENDER)
+
+fast64_blender:
+	$(BLENDER) --python tools/blender_extension/fast64_run.py
 
 distclean: distclean_assets
 	$(RM) -r $(BUILD_DIR_BASE)

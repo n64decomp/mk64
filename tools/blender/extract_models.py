@@ -5,6 +5,7 @@ import os
 import argparse
 
 parser = argparse.ArgumentParser(description="Extract 3D models from .blend files")
+parser.add_argument("blender", type=str, help="Path to blender executable")
 parser.add_argument("-t", "--threads", type=int, default=1, help="Number of threads to use")
 args = parser.parse_args()
 
@@ -13,10 +14,7 @@ if not os.path.exists("models"):
 
 models:list[dict[str, str|list[str]]] = json.load(open("tools/blender/3d_models.json"))
 
-if os.name == "nt":
-    blender = "c:/Program Files/Blender Foundation/Blender 4.0/blender.exe"
-else:
-    blender = "blender"
+blender = args.blender
 
 args_blender = [
     "--background",
