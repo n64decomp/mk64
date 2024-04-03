@@ -3294,7 +3294,7 @@ TrackWaypoint d_course_wario_stadium_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-TrackWaypoint d_course_wario_staduim_track_waypoints[] = {
+TrackWaypoint d_course_wario_stadium_track_waypoints[] = {
     {13, 0, -9, 1},
     {11, 0, -28, 1},
     {11, 0, -48, 1},

@@ -393,115 +393,34 @@ char *gCupNames[] = {
     "special cup",
 };
 
-char *D_800E7524[] = {
-    "mario raceway",
-    "choco mountain",
-    "bowser's castle",
-    "banshee boardwalk",
-    "yoshi valley",
-    "frappe snowland",
-    "koopa troopa beach",
-    "royal raceway",
-    "luigi raceway",
-    "moo moo farm",
-    "toad's turnpike",
-    "kalimari desert",
-    "sherbet land",
-    "rainbow road",
-    "wario stadium",
-    "block fort",
-    "skyscraper",
-    "double deck",
-    "d.k.'s jungle parkway",
-    "big donut",
+// Displays at beginning of course
+char *gCourseNames[] = {
+    #include "assets/course_metadata/gCourseNames.inc.c"
 };
 
-char *D_800E7574[] = {
-    "mario raceway",
-    "choco mountain",
-    "bowser's castle",
-    "banshee boardwalk",
-    "yoshi valley",
-    "frappe snowland",
-    "koopa troopa beach",
-    "royal raceway",
-    "luigi raceway",
-    "moo moo farm",
-    "toad's turnpike",
-    "kalimari desert",
-    "sherbet land",
-    "rainbow road",
-    "wario stadium",
-    "block fort",
-    "skyscraper",
-    "double deck",
-    "d.k.'s jungle parkway",
-    "big donut",
+char *gCourseNamesDup[] = {
+    #include "assets/course_metadata/gCourseNames.inc.c"
 };
 
-char *D_800E75C4[] = {
-    "mario raceway",
-    "choco mountain",
-    "bowser's castle",
-    "banshee boardwalk",
-    "yoshi valley",
-    "frappe snowland",
-    "koopa troopa beach",
-    "royal raceway",
-    "luigi raceway",
-    "moo moo farm",
-    "toad's turnpike",
-    "kalimari desert",
-    "sherbet land",
-    "rainbow road",
-    "wario stadium",
-    "block fort",
-    "skyscraper",
-    "double deck",
-    "d.k.'s jungle parkway",
-    "big donut",
+char *gCourseNamesDup2[] = {
+    #include "assets/course_metadata/gCourseNames.inc.c"
 };
 
+// Used in debug menu at splash screen
 char *gDebugCourseNames[] = {
-    "m circuit",
-    "mountain",
-    "castle",
-    "ghost",
-    "maze",
-    "snow",
-    "beach",
-    "p circuit",
-    "l circuit",
-    "farm",
-    "highway",
-    "desert",
-    "sherbet",
-    "rainbow",
-    "stadium",
-    "block",
-    "skyscraper",
-    "deck",
-    "jungle",
-    "doughnut",
+    #include "assets/course_metadata/gCourseDebugNames.inc.c"
 };
 
 const s8 gPerCupIndexByCourseId[] = {
-    3, 2, 3, 2,
-    1, 1, 2, 2,
-    0, 1, 0, 3,
-    1, 3, 0, 1,
-    3, 2, 0, 0,
+    #include "assets/course_metadata/gPerCupIndexByCourseId.inc.c"
 };
 
+// @todo Increase this array for more than eight players
 const s8 D_800EFD64[] = { 0, 1, 4, 3, 5, 6, 2, 7 };
 
 // Maps course IDs (as defined in the COURSES enum) to the cup they belong to
 s8 gCupSelectionByCourseId[] = {
-      FLOWER_CUP,   FLOWER_CUP,     STAR_CUP,  SPECIAL_CUP,
-     SPECIAL_CUP,   FLOWER_CUP, MUSHROOM_CUP,     STAR_CUP,
-    MUSHROOM_CUP, MUSHROOM_CUP,   FLOWER_CUP, MUSHROOM_CUP,
-        STAR_CUP,  SPECIAL_CUP,     STAR_CUP,   BATTLE_CUP,
-      BATTLE_CUP,   BATTLE_CUP,  SPECIAL_CUP,   BATTLE_CUP,
+    #include "assets/course_metadata/gCupSelectionByCourseId.inc.c"
 };
 
 char *D_800E7678[] = {
@@ -636,27 +555,8 @@ char D_800E77B4[] = "a BUTTON*SEE DATA  B BUTTON*EXIT";
 // This is plain data, it should not end up in rodata
 char D_800E77D8[] = "distance";
 
-char *D_800E77E4[] = {
-    "567m",
-    "687m",
-    "777m",
-    "747m",
-    "772m",
-    "734m",
-    "691m",
-    "1025m",
-    "717m",
-    "527m",
-    "1036m",
-    "753m",
-    "756m",
-    "2000m",
-    "1591m",
-    "",
-    "",
-    "",
-    "893m",
-    "",
+char *sCourseLengths[] = {
+    #include "assets/course_metadata/sCourseLengths.inc.c"
 };
 
 char *D_800E7834[] = {
@@ -6619,10 +6519,10 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
             }
             break;
         case 0x5:                                   /* switch 6 */
-            var_t0 = (s32) ((f32) (get_string_width(D_800E7574[0]) + 5) * 0.9f) / 2;
+            var_t0 = (s32) ((f32) (get_string_width(gCourseNamesDup[0]) + 5) * 0.9f) / 2;
             gDisplayListHead = draw_box(gDisplayListHead, 0xA0 - var_t0, 0x0000007B, var_t0 + 0xA0, 0x000000A4, 0, 0, 0, 0x00000096);
             set_text_color(1);
-            draw_text(0x0000009B, 0x0000008C, D_800E7574[0], 0, 0.9f, 0.9f);
+            draw_text(0x0000009B, 0x0000008C, gCourseNamesDup[0], 0, 0.9f, 0.9f);
             temp_v1 = func_800B4EB4(0, 7) & 0xFFFFF;
             if (temp_v1 < 0x1EAA) {
                 set_text_color((s32) gGlobalTimer % 2);
@@ -6889,7 +6789,7 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
             break;
         case 0x97:                                  /* switch 6 */
             set_text_color(5);
-            func_80093324(arg0->column, arg0->row, D_800E7524[gCurrentCourseId], arg0->unk1C, arg0->unk24, 1.0f);
+            func_80093324(arg0->column, arg0->row, gCourseNames[gCurrentCourseId], arg0->unk1C, arg0->unk24, 1.0f);
             break;
         case 0x98:                                  /* switch 6 */
             func_800A2D1C(arg0);
@@ -7371,10 +7271,10 @@ void func_800A1A20(struct_8018D9E0_entry *arg0) {
     courseId = gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4];
     arg0->column = 0x14;
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(0x69, arg0->row + 0x19, D_800E7574[courseId], 0, 0.75f, 0.75f);
+    draw_text(0x69, arg0->row + 0x19, gCourseNamesDup[courseId], 0, 0.75f, 0.75f);
     set_text_color(TEXT_RED);
     func_80093324(0x2D, arg0->row + 0x28, (char *)&D_800E77D8, 0, 0.75f, 0.75f);
-    func_800936B8(0xA5, arg0->row + 0x28, D_800E77E4[courseId], 1, 0.75f, 0.75f);
+    func_800936B8(0xA5, arg0->row + 0x28, sCourseLengths[courseId], 1, 0.75f, 0.75f);
     set_text_color(TEXT_YELLOW);
     func_80093324(0xA0, arg0->row + 0x86, D_800E7728[0], 0, 0.75f, 0.75f);
     // Print the 3 Lap Time Trial records
@@ -7624,7 +7524,7 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
                 if (var_v1->ghostDataSaved == 0) {
                     func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E7A44, 0, 0.5f, 0.5f);
                 } else {
-                    func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E75C4[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0, 0.5f, 0.5f);
+                    func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0, 0.5f, 0.5f);
                 }
             }
         }
@@ -7660,7 +7560,7 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
                 if (var_v1->ghostDataSaved == 0) {
                     func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E7A44, 0, 0.5f, 0.5f);
                 } else {
-                    func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E75C4[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0, 0.5f, 0.5f);
+                    func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0, 0.5f, 0.5f);
                 }
             }
         }
@@ -7708,7 +7608,7 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
                 if (var_v1->ghostDataSaved == 0) {
                     func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E7A44, 0, 0.5f, 0.5f);
                 } else {
-                    func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E75C4[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0, 0.5f, 0.5f);
+                    func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0, 0.5f, 0.5f);
                 }
             }
         }
@@ -7987,7 +7887,7 @@ void func_800A3C84(struct_8018D9E0_entry *arg0) {
     s32 rowOffset;
 
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(arg0->column + 0x43, arg0->row + 0x19, D_800E7574[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 0.6f, 0.6f);
+    draw_text(arg0->column + 0x43, arg0->row + 0x19, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 0.6f, 0.6f);
     set_text_color(TEXT_YELLOW);
     draw_text(arg0->column + 0x46, arg0->row + 0x28, D_800E7730, 0, 0.75f, 0.75f);
     for(recordType = 0, rowOffset = 0; recordType < TIME_TRIAL_3LAP_RECORD_5; recordType += 1, rowOffset += 0xF) {
@@ -8022,7 +7922,7 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
     if (var_v0 == 0x0000001F) return;
 
     set_text_color(4);
-    draw_text(arg0->column + 0x55, 0x19 - arg0->row, D_800E7574[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 0.6f, 0.6f);
+    draw_text(arg0->column + 0x55, 0x19 - arg0->row, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 0.6f, 0.6f);
     set_text_color(3);
     draw_text(arg0->column + 0x55, 0x28 - arg0->row, D_800E7730, 0, 0.75f, 0.75f);
     for (var_s1 = 0; var_s1 < 4; var_s1++) {
@@ -8086,7 +7986,7 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
             if (D_8018EE10[var_s1].ghostDataSaved == 0) {
                 func_80093324(0xBB - arg0->column, 0xAA + (0x1E * var_s1), D_800E7A44, 0, 0.45f, 0.45f);
             } else {
-                func_80093324(0xBB - arg0->column, 0xAA + (0x1E * var_s1), D_800E75C4[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4][D_8018EE10[var_s1].courseIndex % 4]], 0, 0.45f, 0.45f);
+                func_80093324(0xBB - arg0->column, 0xAA + (0x1E * var_s1), gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4][D_8018EE10[var_s1].courseIndex % 4]], 0, 0.45f, 0.45f);
             }
         }
         break;
@@ -8309,7 +8209,7 @@ void render_pause_menu_time_trials(struct_8018D9E0_entry *arg0) {
 
     gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x0000008C);
     set_text_color(TEXT_YELLOW);
-    draw_text(0x000000A0, 0x00000050, D_800E7574[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f, 1.0f);
+    draw_text(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f, 1.0f);
     set_text_color(TEXT_RED);
     draw_text(0x0000009D, 0x00000060, D_800E7728[0], 0, 0.8f, 0.8f);
     temp_a0 = func_800B4E24(TIME_TRIAL_3LAP_RECORD_1);
@@ -8393,7 +8293,7 @@ void render_pause_grand_prix(struct_8018D9E0_entry *arg0) {
     set_text_color(TEXT_YELLOW);
     draw_text(160 + temp_s0, temp_s3->row - 50, D_800E76CC[gCCSelection],  0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
-    draw_text(160, temp_s3->row - 30, D_800E7574[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f, 1.0f);
+    draw_text(160, temp_s3->row - 30, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f, 1.0f);
     for (var_s0 = 0; var_s0 < 2; var_s0++) {
         text_rainbow_effect(arg0->cursor - 31, var_s0, TEXT_YELLOW);
         func_80093324(temp_s3->column, temp_s3->row + (var_s0 * 13), gTextPauseButton[var_s0 * 4], 0, 0.75f, 0.75f);
@@ -8502,7 +8402,7 @@ void func_800A5738(struct_8018D9E0_entry *arg0) {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, var_s1);
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, var_s2);
         set_text_color(3);
-        func_80093754(0x000000A0, 0x00000050, D_800E7574[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f, 1.0f);
+        func_80093754(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f, 1.0f);
         switch (arg0->cursor) {                        /* switch 1 */
         case 1:                                     /* switch 1 */
         case 11:                                    /* switch 1 */
@@ -8564,7 +8464,7 @@ void func_800A5738(struct_8018D9E0_entry *arg0) {
                 if (D_8018EE10[var_s1].ghostDataSaved == 0) {
                     func_80093324(0x69 - arg0->column, (0x96 + (0x14 * var_s1)), D_800E7A44, 0, 0.75f, 0.75f);
                 } else {
-                    func_80093324(0x69 - arg0->column, (0x96 + (0x14 * var_s1)), D_800E75C4[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4][D_8018EE10[var_s1].courseIndex % 4]], 0, 0.75f, 0.75f);
+                    func_80093324(0x69 - arg0->column, (0x96 + (0x14 * var_s1)), gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4][D_8018EE10[var_s1].courseIndex % 4]], 0, 0.75f, 0.75f);
                 }
             }
             break;
@@ -8633,7 +8533,7 @@ void func_800A6034(struct_8018D9E0_entry *arg0) {
         text = gCupNames[D_800DC540];
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
         func_80093754(arg0->column + 0x41, arg0->row + 0xA0, text, 0, 0.85f, 1.0f);
-        text = D_800E7524[gCurrentCourseId];
+        text = gCourseNames[gCurrentCourseId];
         set_text_color((s32) gCurrentCourseId % 4);
         func_80093754(arg0->column + 0x41, arg0->row + 0xC3, text, 0, 0.65f, 0.85f);
     }
@@ -11266,7 +11166,7 @@ void func_800ABF68(struct_8018D9E0_entry *arg0) {
     case 0:
         arg0->column = 0x140;
         arg0->cursor = 1;
-        arg0->unk20 = 0xA0 - (get_string_width(D_800E7524[gCurrentCourseId]) / 2);
+        arg0->unk20 = 0xA0 - (get_string_width(gCourseNames[gCurrentCourseId]) / 2);
         /* fallthrough */
     case 1:
         func_800A9208(arg0, arg0->unk20);

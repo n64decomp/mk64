@@ -6,8 +6,10 @@ course:
   debug_name: l circuit
   cup: MUSHROOM_CUP
   cup_index: 0
-  waypoint_width: 50.0f
-  waypoint_width2: 0.7f
+  course_length: 717m
+  kart_ai_behaviour_ptr: D_0D0091E8
+  kart_ai_maximum_separation: 50.0f
+  kart_ai_minimum_separation: 0.7f
   D_800DCBB4: D_800DCAF4
   cpu_steering_sensitivity: 48
   bomb_kart_spawns: # 7 bomb kart spawn locations
@@ -27,10 +29,10 @@ course:
   D_0D009808: [3.75f, 5.1666665f, 5.75f, 6.3333334f]
 
   # Course waypoints
-  path_table: [d_course_luigi_raceway_track_waypoints, nullPath,   nullPath,   nullPath]
+  path_table: [d_course_luigi_raceway_track_waypoints, "&nullPath",   "&nullPath", "&nullPath"]
 
   # Unused except in podium ceremony
-  path_table_unknown: [d_course_luigi_raceway_unknown_waypoints, nullPath,   nullPath,   nullPath]
+  path_table_unknown: [d_course_luigi_raceway_unknown_waypoints, "&nullPath",   "&nullPath", "&nullPath"]
 
   sky_colors: [128, 4280, 6136, 216, 7144, 32248]
   sky_colors2: [216, 7144, 32248, 0, 0, 0]

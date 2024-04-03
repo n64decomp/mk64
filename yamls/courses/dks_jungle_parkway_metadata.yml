@@ -6,10 +6,12 @@ course:
   debug_name: jungle
   cup: SPECIAL_CUP
   cup_index: 0
-  waypoint_width: 40.0f
-  waypoint_width2: 0.1f
+  course_length: 893m
+  kart_ai_behaviour_ptr: D_0D0093C0
+  kart_ai_maximum_separation: 40.0f
+  kart_ai_minimum_separation: 0.1f
   D_800DCBB4: D_800DCAF4
-  cpu_steering_sensitivity: 40
+  cpu_steering_sensitivity: 53
   bomb_kart_spawns: # 7 bomb kart spawn locations
     - [0x0032, 0x0003, 0.8333333, 0.0, 0.0, 0.0, 0.0]
     - [0x0064, 0x0001, 0.8333333, 0.0, 0.0, 0.0, 0.0]
@@ -27,10 +29,10 @@ course:
   D_0D009808: [3.75f, 5.1666665f, 5.75f, 6.3333334f]
 
   # Course waypoints
-  path_table: [d_course_dk_jungle_parkway_track_waypoints, nullPath,   nullPath,   nullPath]
+  path_table: [d_course_dks_jungle_parkway_track_waypoints, "&nullPath",   "&nullPath", "&nullPath"]
 
   # Unused except in podium ceremony
-  path_table_unknown: [d_course_dk_jungle_parkway_unknown_waypoints, nullPath,   nullPath,   nullPath]
+  path_table_unknown: [d_course_dks_jungle_parkway_unknown_waypoints, "&nullPath",   "&nullPath", "&nullPath"]
 
   sky_colors: [255, 174, 0, 255, 229, 124]
   sky_colors2: [22, 145, 22, 0, 0, 0]

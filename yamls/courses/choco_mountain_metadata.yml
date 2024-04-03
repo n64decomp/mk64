@@ -6,8 +6,10 @@ course:
   debug_name: mountain
   cup: FLOWER_CUP
   cup_index: 2
-  waypoint_width: 35.0f
-  waypoint_width2: 0.3f
+  course_length: 687m
+  kart_ai_behaviour_ptr: D_0D008F80
+  kart_ai_maximum_separation: 35.0f
+  kart_ai_minimum_separation: 0.3f
   D_800DCBB4: D_800DCAF4
   cpu_steering_sensitivity: 53
   bomb_kart_spawns: # 7 bomb kart spawn locations
@@ -27,10 +29,10 @@ course:
   D_0D009808: [3.75f, 5.1666665f, 5.75f, 6.3333334f]
 
   # Course waypoints
-  path_table: [d_course_choco_mountain_track_waypoints, nullPath,   nullPath,   nullPath]
+  path_table: [d_course_choco_mountain_track_waypoints, "&nullPath",   "&nullPath", "&nullPath"]
 
   # Unused except in podium ceremony
-  path_table_unknown: [d_course_choco_mountain_unknown_waypoints, nullPath,   nullPath,   nullPath]
+  path_table_unknown: [d_course_choco_mountain_unknown_waypoints, "&nullPath",   "&nullPath", "&nullPath"]
 
   sky_colors: [255, 255, 255, 255, 255, 255]
   sky_colors2: [255, 255, 255, 255, 255, 255]

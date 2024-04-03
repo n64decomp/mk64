@@ -209,7 +209,7 @@ SECTIONS
       BUILD_DIR/src/profiler.o(.data);
       BUILD_DIR/src/crash_screen.o(.data);
       BUILD_DIR/src/staff_ghosts.o(.data);
-      BUILD_DIR/src/data/path_spawn_data.o(.data);
+      BUILD_DIR/src/data/path_spawn_metadata.o(.data);
       BUILD_DIR/src/camera.o(.data);
       BUILD_DIR/src/render_player.o(.data);
       BUILD_DIR/src/kart_dma.o(.data);

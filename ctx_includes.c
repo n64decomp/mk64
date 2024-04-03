@@ -79,7 +79,7 @@
 #include <assets/data_800E45C0.h>
 #include <assets/data_800E8700.h>
 #include "src/data/some_data.h"
-#include "src/data/path_spawn_data.h"
+#include "src/data/path_spawn_metadata.h"
 #include "src/data/trig_tables.h"
 #include "src/data_segment2.h"
 #include "src/effects.h"

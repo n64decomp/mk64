@@ -4,12 +4,14 @@ course:
   id: 20
   name: # unknown (does not exist)
   debug_name: # unk (does not exist)
-  cup: # BATTLE
-  cup_index: 0
-  waypoint_width: 40.0f    # entry
-  waypoint_width2: 0.5f    # entry
+  cup: null
+  cup_index: -1
+  course_length: null
+  kart_ai_behaviour_ptr: D_0D008F18
+  kart_ai_maximum_separation: 40.0f    # entry
+  kart_ai_minimum_separation: 0.5f    # entry
   D_800DCBB4: D_800DCAF4 
-  cpu_steering_sensitivity: 0 # entry
+  cpu_steering_sensitivity: 53 # entry
   bomb_kart_spawns: # 7 bomb kart spawn locations
     - [0x0003, 0x0005, 1.25, 0.0, 0.0, 0.0, 0.0]
     - [0x0028, 0x0000, 1.0, 0.0, 0.0, 0.0, 0.0]
@@ -27,10 +29,10 @@ course:
   D_0D009808: [0.0f, 0.0f, 0.0f, 0.0f]
 
   # Course waypoints
-  path_table: [nullPath, nullPath,   nullPath,   nullPath]
+  path_table: ["&nullPath", "&nullPath",   "&nullPath", "&nullPath"]
 
   # Unused except in podium ceremony
-  path_table_unknown: [ending_sequence, nullPath,   nullPath,   nullPath]
+  path_table_unknown: [podium_ceremony_path, podium_ceremony_path_2,   podium_ceremony_path_3, podium_ceremony_path_4]
 
   sky_colors: [238, 144, 255, 255, 224, 240]
   sky_colors2: [255, 224, 240, 0, 0, 0]
