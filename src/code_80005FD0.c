@@ -36,7 +36,7 @@ Collision D_80162E70;
 s16 D_80162EB0; // Possibly a float.
 s16 D_80162EB2; // possibly [3]
 
-CPUBehaviour *gCoursesCPUBehaviour[NUM_COURSES-1];
+KartAIBehaviour *gCoursesKartAIBehaviour[NUM_COURSES-1];
 
 // more padding?
 s32 D_80162F08[2];
@@ -91,17 +91,17 @@ u16 D_80163240[12];
 u16 D_80163258[12];
 u16 D_80163270[12];
 s32 D_80163288[10];
-CPUBehaviour *sCurrentCPUBehaviour;
-u16 gCurrentCPUBehaviourId[12];
-u16 gPreviousCPUBehaviourId[12];
-u16 gCPUBehaviourState[12];
+KartAIBehaviour *sCurrentKartAIBehaviour;
+u16 gCurrentKartAIBehaviourId[12];
+u16 gPreviousKartAIBehaviourId[12];
+u16 gKartAIBehaviourState[12];
 s16 D_80163300[12];
 u16 D_80163318[12];
 u16 D_80163330[10];
 u16 D_80163344[2];
 u16 D_80163348[2];
 u16 D_8016334C[2];
-u16 gSpeedCPUBehaviour[12];
+u16 gSpeedKartAIBehaviour[12];
 s32 D_80163368[4];
 s32 D_80163378;
 s32 D_8016337C;
@@ -1115,22 +1115,22 @@ void func_80008424(s32 playerId, f32 arg1, Player *player) {
                 }
             } else {
                 var_a1 = 1;
-                switch (gSpeedCPUBehaviour[playerId]) {                    /* switch 1; irregular */
-                case SPEED_CPU_BEHAVIOUR_FAST:                                 /* switch 1 */
+                switch (gSpeedKartAIBehaviour[playerId]) {                    /* switch 1; irregular */
+                case SPEED_KART_AI_BEHAVIOUR_FAST:                                 /* switch 1 */
                     player->effects &= ~0x00200000;
                     player_speed(player);
                     break;
-                case SPEED_CPU_BEHAVIOUR_MAX:                                 /* switch 1 */
+                case SPEED_KART_AI_BEHAVIOUR_MAX:                                 /* switch 1 */
                     player->effects |= 0x200000;
                     player_speed(player);
                     break;
-                case SPEED_CPU_BEHAVIOUR_SLOW:                                 /* switch 1 */
+                case SPEED_KART_AI_BEHAVIOUR_SLOW:                                 /* switch 1 */
                     if (((var_f2 / 18.0f) * 216.0f) > 20.0f) {
                         arg1 = 1.6666666f;
                     }
                     var_a1 = 0;
                     break;
-                case SPEED_CPU_BEHAVIOUR_NORMAL:                                 /* switch 1 */
+                case SPEED_KART_AI_BEHAVIOUR_NORMAL:                                 /* switch 1 */
                 default:                                /* switch 1 */
                     var_a1 = 0;
                     break;
@@ -1525,7 +1525,7 @@ void func_8000929C(s32 playerId, Player *player) {
                 }
                 D_80163240[playerId] = 1;
                 func_80008F38(playerId);
-                reset_cpu_behaviour(playerId);
+                reset_kart_ai_behaviour(playerId);
                 D_801642D8[playerId].unk_06 = 0;
                 if ((D_8016348C == 0) && !(player->type & 0x800)) {
                     gTimePlayerLastTouchedFinishLine[playerId] = func_80009258(playerId, someTemp0, tempPos2);
@@ -1687,7 +1687,7 @@ void func_80009B60(s32 playerId) {
     f32 athing = 1.5f;
 
     player = &gPlayers[playerId];
-    if ((s32) D_800DCA4C[gCurrentCourseId] >= 0) {
+    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
         D_80163100[playerId] += 1;
         if (playerId == 0) {
             D_80163378++;
@@ -1745,10 +1745,10 @@ void func_80009B60(s32 playerId) {
             }
             if (player->type & 0x1000) {
                 if ((D_801630E2 == 1) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
-                    cpu_behaviour(playerId);
+                    kart_ai_behaviour(playerId);
                 }
                 if ((playerId & 1) != (D_80163378 & 1)) {
-                    cpu_use_item_strategy(playerId);
+                    kart_ai_use_item_strategy(playerId);
                 }
                 func_800099EC(playerId, player);
                 D_80162FD0 = 0;
@@ -1978,7 +1978,7 @@ void func_80009B60(s32 playerId) {
                     }
                     break;
                 }
-                if ((gCPUBehaviourState[playerId] == CPU_BEHAVIOUR_STATE_RUNNING) && ((D_80163068[playerId] > 0.9f) || (D_80163068[playerId] < -0.9f))) {
+                if ((gKartAIBehaviourState[playerId] == KART_AI_BEHAVIOUR_STATE_RUNNING) && ((D_80163068[playerId] > 0.9f) || (D_80163068[playerId] < -0.9f))) {
                     D_801630E8[playerId] = 0;
                     player->effects &= ~0x10;
                 }
@@ -2198,7 +2198,7 @@ f32 func_8000B874(f32 posX, f32 posZ, u16 waypointIndex, s32 pathIndex) {
 void func_8000B95C(s32 playerId, u16 waypointIndex, s32 pathIndex) {
     UNUSED Vec3f pad;
     D_80163068[playerId] = 0.0f;
-    if ((s32) D_800DCA4C[gCurrentCourseId] >= 0) {
+    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
         if ((gPlayers[playerId].type & 0x8000) != 0) {
             D_80163068[playerId] = func_8000B874(gPlayers[playerId].pos[0], gPlayers[playerId].pos[2], waypointIndex, pathIndex);
         }
@@ -3557,12 +3557,12 @@ void func_8000F628(void) {
         D_80163068[i] = 0.0f;
         D_80163090[i] = 0.0f;
         var_s5 = &D_801634F8[i];
-        var_s5->unkC = D_800DCAA0[gCurrentCourseId] * (f32) (((i + 1) % 3) - 1);
+        var_s5->unkC = gKartAICourseMinimumWaypointSeparation[gCurrentCourseId] * (f32) (((i + 1) % 3) - 1);
         var_s5->unk4 = var_s5->unkC;
         var_s5->unk0 = 0.0f;
         var_s5->unk8 = 0.015f;
-        reset_cpu_behaviour_none(i);
-        gSpeedCPUBehaviour[i] = 0;
+        reset_kart_ai_behaviour_none(i);
+        gSpeedKartAIBehaviour[i] = 0;
         D_801644F8[i] = 0;
         D_80163398[i] = 0;
         D_801633B0[i] = 0;
@@ -3662,7 +3662,7 @@ void func_8000F628(void) {
             }
         }
     }
-    copy_courses_cpu_behaviour();
+    copy_courses_kart_ai_behaviour();
 }
 
 // @arg index from 0 to 3.
@@ -3682,7 +3682,7 @@ void func_800100F0(s32 pathIndex) {
     s32 i;
 
     // cast required
-    if ((s32)D_800DCA4C[gCurrentCourseId] >= 0) {
+    if ((s32)gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
         pathDest = D_80164550[pathIndex];
             bInvalidPath = 1;
         if (gCurrentCourseId != COURSE_AWARD_CEREMONY) {
@@ -3733,8 +3733,8 @@ void func_80010218(s32 pathIndex) {
     TrackWaypoint *var_s1;
     TrackWaypoint *var_s2;
 
-    if (((s32) D_800DCA4C[gCurrentCourseId]) >= 0) {
-        waypointWidth = D_800DCA4C[gCurrentCourseId];
+    if (((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId]) >= 0) {
+        waypointWidth = gKartAICourseMaximumWaypointSeparation[gCurrentCourseId];
         waypoint = &D_80164550[pathIndex][0];
         var_s1   = &D_80164560[pathIndex][0];
         var_s2   = &D_80164570[pathIndex][0];
@@ -3783,7 +3783,7 @@ f32 func_80010480(s32 pathIndex, u16 waypointIndex) {
     f32 root2;
     f32 root1;
 
-    if ((s32) D_800DCA4C[gCurrentCourseId] < 0) {
+    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] < 0) {
         return 0.0f;
     }
     waypointCount = gWaypointCountByPathIndex[pathIndex];
@@ -3825,7 +3825,7 @@ void func_800107C4(s32 pathIndex) {
     s32 var_a3;
     s16 *wut;
 
-    if ((s32) D_800DCA4C[gCurrentCourseId] >= 0) {
+    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
         var_a3 = gWaypointCountByPathIndex[pathIndex];
         var_t4 = &D_80164580[pathIndex][0];
         for(var_s0 = 0; var_s0 < var_a3; var_s0++, var_t4++) {
@@ -3893,7 +3893,7 @@ void func_80010DBC(s32 pathIndex) {
     s32 waypointIndex;
     u16 *angle;
 
-    if ((s32) D_800DCA4C[gCurrentCourseId] >= 0) {
+    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
         for (angle = &D_80164590[pathIndex][0], waypointIndex = 0; waypointIndex < gWaypointCountByPathIndex[pathIndex]; waypointIndex++, angle++) {
             *angle = func_80010CB0(pathIndex, waypointIndex);
         }
@@ -4170,49 +4170,49 @@ s32 func_8001168C(PathNoY *pathDest, TrackWaypoint *pathSrc, s32 numWaypoints) {
     return count;
 }
 
-void copy_courses_cpu_behaviour(void) {
+void copy_courses_kart_ai_behaviour(void) {
     s32 i;
     for (i = 0; i < NUM_COURSES-1; i++) {
-        gCoursesCPUBehaviour[i] = segmented_to_virtual_dupe_2(gRomCoursesCPUBehaviour[i]);
+        gCoursesKartAIBehaviour[i] = segmented_to_virtual_dupe_2(gKartAIBehaviourLUT[i]);
     }
 }
 
-void reset_cpu_behaviour_none(s32 playerIndex) {
-    gCurrentCPUBehaviourId[playerIndex] = 0;
-    gPreviousCPUBehaviourId[playerIndex] = 0;
-    gCPUBehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_NONE;
+void reset_kart_ai_behaviour_none(s32 playerIndex) {
+    gCurrentKartAIBehaviourId[playerIndex] = 0;
+    gPreviousKartAIBehaviourId[playerIndex] = 0;
+    gKartAIBehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_NONE;
 }
 
-void reset_cpu_behaviour(s32 playerIndex) {
-    gCurrentCPUBehaviourId[playerIndex] = 0;
-    gPreviousCPUBehaviourId[playerIndex] = 0;
-    gCPUBehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
+void reset_kart_ai_behaviour(s32 playerIndex) {
+    gCurrentKartAIBehaviourId[playerIndex] = 0;
+    gPreviousKartAIBehaviourId[playerIndex] = 0;
+    gKartAIBehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
 }
 
-void cpu_behaviour_start(s32 playerId, Player *player) {
+void kart_ai_behaviour_start(s32 playerId, Player *player) {
     u16 playerWaypoint;
     s16 waypointStart;
     s16 waypointEnd;
     s32 behaviourType;
     s32 test;
 
-    sCurrentCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][gCurrentCPUBehaviourId[playerId]];
+    sCurrentKartAIBehaviour = &gCoursesKartAIBehaviour[gCurrentCourseId][gCurrentKartAIBehaviourId[playerId]];
 
     playerWaypoint = gNearestWaypointByPlayerId[playerId];
 
-    waypointStart = sCurrentCPUBehaviour->waypointStart;
-    waypointEnd = sCurrentCPUBehaviour->waypointEnd;
-    behaviourType = sCurrentCPUBehaviour->type;
+    waypointStart = sCurrentKartAIBehaviour->waypointStart;
+    waypointEnd = sCurrentKartAIBehaviour->waypointEnd;
+    behaviourType = sCurrentKartAIBehaviour->type;
 
     if ((waypointStart == -1) && (waypointEnd == -1)) {
-        sCurrentCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][0];
-        reset_cpu_behaviour_none(playerId);
+        sCurrentKartAIBehaviour = &gCoursesKartAIBehaviour[gCurrentCourseId][0];
+        reset_kart_ai_behaviour_none(playerId);
         return;
     }
     if ((u32)playerWaypoint == waypointStart) {
-        gCPUBehaviourState[playerId] = CPU_BEHAVIOUR_STATE_RUNNING;
-        gPreviousCPUBehaviourId[playerId] = gCurrentCPUBehaviourId[playerId];
-        gCurrentCPUBehaviourId[playerId]++;
+        gKartAIBehaviourState[playerId] = KART_AI_BEHAVIOUR_STATE_RUNNING;
+        gPreviousKartAIBehaviourId[playerId] = gCurrentKartAIBehaviourId[playerId];
+        gCurrentKartAIBehaviourId[playerId]++;
         switch (behaviourType) {
         case BEHAVIOUR_1:
             func_80011EC0(playerId, player, player->unk_07C >> 0x10, playerWaypoint);
@@ -4232,16 +4232,16 @@ void cpu_behaviour_start(s32 playerId, Player *player) {
             D_801634F8[playerId].unk4 = 0.6f;
             break;
         case BEHAVIOUR_NORMAL_SPEED:
-            gSpeedCPUBehaviour[playerId] = SPEED_CPU_BEHAVIOUR_NORMAL;
+            gSpeedKartAIBehaviour[playerId] = SPEED_KART_AI_BEHAVIOUR_NORMAL;
             break;
         case BEHAVIOUR_FAST_SPEED:
-            gSpeedCPUBehaviour[playerId] = SPEED_CPU_BEHAVIOUR_FAST;
+            gSpeedKartAIBehaviour[playerId] = SPEED_KART_AI_BEHAVIOUR_FAST;
             break;
         case BEHAVIOUR_SLOW_SPEED:
-            gSpeedCPUBehaviour[playerId] = SPEED_CPU_BEHAVIOUR_SLOW;
+            gSpeedKartAIBehaviour[playerId] = SPEED_KART_AI_BEHAVIOUR_SLOW;
             break;
         case BEHAVIOUR_MAX_SPEED:
-            gSpeedCPUBehaviour[playerId] = SPEED_CPU_BEHAVIOUR_MAX;
+            gSpeedKartAIBehaviour[playerId] = SPEED_KART_AI_BEHAVIOUR_MAX;
             break;
         case BEHAVIOUR_9:
             D_801633F8[playerId] = 1;
@@ -4255,27 +4255,27 @@ void cpu_behaviour_start(s32 playerId, Player *player) {
     }
 }
 
-void cpu_behaviour_end(s32 playerIndex, Player *player) {
+void kart_ai_behaviour_end(s32 playerIndex, Player *player) {
     u16 nearestWaypoint;
     u32 waypointEnd;
     s32 behaviourType;
 
-    sCurrentCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][gPreviousCPUBehaviourId[playerIndex]];
+    sCurrentKartAIBehaviour = &gCoursesKartAIBehaviour[gCurrentCourseId][gPreviousKartAIBehaviourId[playerIndex]];
     nearestWaypoint = gNearestWaypointByPlayerId[playerIndex];
-    behaviourType = sCurrentCPUBehaviour->type;
-    waypointEnd = sCurrentCPUBehaviour->waypointEnd;
+    behaviourType = sCurrentKartAIBehaviour->type;
+    waypointEnd = sCurrentKartAIBehaviour->waypointEnd;
     if (nearestWaypoint >= waypointEnd) {
         switch (behaviourType) {
         case BEHAVIOUR_1:
             player->effects &= ~0x10;
             D_801630E8[playerIndex] = 0;
-            gCPUBehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
+            gKartAIBehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
             break;
         case BEHAVIOUR_3:
         case BEHAVIOUR_4:
         case BEHAVIOUR_5:
             D_801634F8[playerIndex].unk4 = D_801634F8[playerIndex].unkC;
-            gCPUBehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
+            gKartAIBehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
             break;
         case BEHAVIOUR_HOP:
         case BEHAVIOUR_NORMAL_SPEED:
@@ -4284,7 +4284,7 @@ void cpu_behaviour_end(s32 playerIndex, Player *player) {
         case BEHAVIOUR_9:
         case BEHAVIOUR_10:
         case BEHAVIOUR_MAX_SPEED:
-            gCPUBehaviourState[playerIndex] = CPU_BEHAVIOUR_STATE_START;
+            gKartAIBehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
             break;
         default:
             break;
@@ -4292,17 +4292,17 @@ void cpu_behaviour_end(s32 playerIndex, Player *player) {
     }
 }
 
-void cpu_behaviour(s32 playerIndex) {
+void kart_ai_behaviour(s32 playerIndex) {
     Player *player = gPlayerOne + playerIndex;
 
-    switch(gCPUBehaviourState[playerIndex]) {
-        case CPU_BEHAVIOUR_STATE_NONE:
+    switch(gKartAIBehaviourState[playerIndex]) {
+        case KART_AI_BEHAVIOUR_STATE_NONE:
             break;
-        case CPU_BEHAVIOUR_STATE_START:
-            cpu_behaviour_start(playerIndex, player);
+        case KART_AI_BEHAVIOUR_STATE_START:
+            kart_ai_behaviour_start(playerIndex, player);
             break;
-        case CPU_BEHAVIOUR_STATE_RUNNING:
-            cpu_behaviour_end(playerIndex, player);
+        case KART_AI_BEHAVIOUR_STATE_RUNNING:
+            kart_ai_behaviour_end(playerIndex, player);
             break;
     }
 }
@@ -5078,7 +5078,7 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
     f32 spBC;
 
     if (((D_801631E0[playerId] != 1) || ((
-        ((player->type & PLAYER_HUMAN) != 0)) && !(player->type & PLAYER_CPU))) && !(player->effects & 0x01000000)) {
+        ((player->type & PLAYER_HUMAN) != 0)) && !(player->type & PLAYER_KART_AI))) && !(player->effects & 0x01000000)) {
         
         spC4 = player->pos[0];
         spC0 = player->pos[1];
@@ -5099,7 +5099,7 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
                         }
                     }
                 }
-                if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_CPU)) {
+                if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_KART_AI)) {
                     if (((temp_f12) > -300.0) && ((temp_f12) < 300.0) && (
                          (temp_f22 > -20.0)) && (temp_f22 < 20.0) && (((temp_f14) > -300.0)) && ((temp_f14) < 300.0)) {
                         if ((D_801631C8 > 0) && (vehicle->someFlags == 0)) {
@@ -7003,7 +7003,7 @@ void func_8001AB00(void) {
     }
 }
 
-void cpu_decisions_branch_item(s32 arg0, s16 *arg1, s32 arg2) {
+void kart_ai_decisions_branch_item(s32 arg0, s16 *arg1, s32 arg2) {
     s32 value = -1;
     switch (arg2) {
         case ITEM_FAKE_ITEM_BOX:
@@ -7048,11 +7048,11 @@ void func_8001ABEC(struct struct_801642D8 *arg0) {
 }
 
 #ifdef NON_MATCHING
-// By the looks of this function is probably something like `cpu_player_use_item`
+// By the looks of this function is probably something like `kart_ai_use_item_strategy`
 // The use of several different actor types might make getting a match hard(er),
 // might have to get creative/ugly with just a single generic `Actor` variable.
 // https://decomp.me/scratch/FOlbG
-void cpu_use_item_strategy(s32 playerId) {
+void kart_ai_use_item_strategy(s32 playerId) {
     s32 var_v0;
     Player *player;
     TrackWaypoint *waypoint;
@@ -7070,7 +7070,7 @@ void cpu_use_item_strategy(s32 playerId) {
         case 0:
             temp_s0->actorIndex = -1;
             if ((((playerId * 0x14) + 0x64) < D_80164450[playerId]) && (temp_s0->unk_04 >= 0x259) && (temp_s0->unk_06 < 3) && (gLapCountByPlayerId[playerId] < 3)) {
-                cpu_decisions_branch_item(playerId, &temp_s0->unk_00, gen_random_item_cpu((s16)gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]));
+                kart_ai_decisions_branch_item(playerId, &temp_s0->unk_00, kart_ai_gen_random_item((s16)gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerId[playerId]));
             } else {
                 func_8001ABE0(playerId, temp_s0);
             }
@@ -7501,7 +7501,7 @@ void cpu_use_item_strategy(s32 playerId) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/cpu_use_item_strategy.s")
+GLOBAL_ASM("asm/non_matchings/code_80005FD0/kart_ai_use_item_strategy.s")
 #endif
 
 void func_8001BE78(void) {

@@ -1881,7 +1881,7 @@ u8 common_grand_prix_human_item_curve[8][100] = {
     },
 };
 
-u8 common_grand_prix_cpu_item_curve[8][100] = {
+u8 common_grand_prix_kart_ai_item_curve[8][100] = {
     {
         ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,
         ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,        ITEM_BANANA,
@@ -2257,12 +2257,12 @@ Vtx D_0D008ED8[] = {
     {{{    -1,       3,      -1}, 3, {65535, 3}, {0x00, 0x01, 0x00, 0x00}}},
 };
 
-CPUBehaviour common_cpu_behaviour_battle_courses[] = {
+KartAIBehaviour common_kart_ai_behaviour_battle_courses[] = {
     {  1,  3, BEHAVIOUR_HOP, },
     { -1, -1, BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_mario_raceway[] = {
+KartAIBehaviour common_kart_ai_behaviour_mario_raceway[] = {
     {   1,   2, BEHAVIOUR_NORMAL_SPEED, },
     {  11,  30, BEHAVIOUR_1, },
     {  55,  74, BEHAVIOUR_1, },
@@ -2276,7 +2276,7 @@ CPUBehaviour common_cpu_behaviour_mario_raceway[] = {
     {  -1,  -1, BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_choco_mountain[] = {
+KartAIBehaviour common_kart_ai_behaviour_choco_mountain[] = {
     {   1,   2, BEHAVIOUR_NORMAL_SPEED, },
     {  10,  25, BEHAVIOUR_1, },
     { 190, 210, BEHAVIOUR_1, },
@@ -2286,7 +2286,7 @@ CPUBehaviour common_cpu_behaviour_choco_mountain[] = {
     {  -1,  -1, BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_bowser_castle[] = {
+KartAIBehaviour common_kart_ai_behaviour_bowser_castle[] = {
     {   1,   2,  BEHAVIOUR_NORMAL_SPEED, },
     {  60,  80,  BEHAVIOUR_1, },
     { 125, 140,  BEHAVIOUR_1, },
@@ -2309,7 +2309,7 @@ CPUBehaviour common_cpu_behaviour_bowser_castle[] = {
     {  -1,  -1,  BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_banshee_boardwalk[] = {
+KartAIBehaviour common_kart_ai_behaviour_banshee_boardwalk[] = {
     {   1,   2, BEHAVIOUR_NORMAL_SPEED, },
     {  15,  30, BEHAVIOUR_1, },
     {  55,  65, BEHAVIOUR_1, },
@@ -2324,7 +2324,7 @@ CPUBehaviour common_cpu_behaviour_banshee_boardwalk[] = {
     {  -1,  -1, BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_yoshi_valley[] = {
+KartAIBehaviour common_kart_ai_behaviour_yoshi_valley[] = {
     {   1,   2, BEHAVIOUR_NORMAL_SPEED, },
     {  70,  94, BEHAVIOUR_1, },
     { 120, 133, BEHAVIOUR_1, },
@@ -2335,7 +2335,7 @@ CPUBehaviour common_cpu_behaviour_yoshi_valley[] = {
     {  -1,  -1, BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_frappe_snowland[] = {
+KartAIBehaviour common_kart_ai_behaviour_frappe_snowland[] = {
     {   1,   2,  BEHAVIOUR_NORMAL_SPEED, },
     {  15,  30,  BEHAVIOUR_1, },
     {  41,  63,  BEHAVIOUR_1, },
@@ -2350,7 +2350,7 @@ CPUBehaviour common_cpu_behaviour_frappe_snowland[] = {
     {  -1,  -1,  BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_koopa_beach[] = {
+KartAIBehaviour common_kart_ai_behaviour_koopa_beach[] = {
     {   1,   2, BEHAVIOUR_NORMAL_SPEED, },
     {  75, 100, BEHAVIOUR_1, },
     { 135, 150, BEHAVIOUR_1, },
@@ -2359,7 +2359,7 @@ CPUBehaviour common_cpu_behaviour_koopa_beach[] = {
     {  -1,  -1, BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_royal_raceway[] = {
+KartAIBehaviour common_kart_ai_behaviour_royal_raceway[] = {
     {   1,   2,  BEHAVIOUR_NORMAL_SPEED, },
     {  65,  80,  BEHAVIOUR_1, },
     { 165, 166,  BEHAVIOUR_9, },
@@ -2374,7 +2374,7 @@ CPUBehaviour common_cpu_behaviour_royal_raceway[] = {
     {  -1,  -1,  BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_luigi_raceway[] = {
+KartAIBehaviour common_kart_ai_behaviour_luigi_raceway[] = {
     {   1,   2, BEHAVIOUR_NORMAL_SPEED, },
     { 128, 275, BEHAVIOUR_1, },
     { 320, 345, BEHAVIOUR_1, },
@@ -2382,7 +2382,7 @@ CPUBehaviour common_cpu_behaviour_luigi_raceway[] = {
     {  -1,  -1, BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_moo_moo_farm[] = {
+KartAIBehaviour common_kart_ai_behaviour_moo_moo_farm[] = {
     {   1,   2, BEHAVIOUR_NORMAL_SPEED, },
     {  75, 100, BEHAVIOUR_1, },
     { 175, 210, BEHAVIOUR_1, },
@@ -2390,7 +2390,7 @@ CPUBehaviour common_cpu_behaviour_moo_moo_farm[] = {
     {  -1,  -1, BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_toad_turnpike[] = {
+KartAIBehaviour common_kart_ai_behaviour_toad_turnpike[] = {
     {   1,   2, BEHAVIOUR_NORMAL_SPEED, },
     { 106, 188, BEHAVIOUR_1, },
     { 220, 386, BEHAVIOUR_1, },
@@ -2398,14 +2398,14 @@ CPUBehaviour common_cpu_behaviour_toad_turnpike[] = {
     {  -1,  -1, BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_kalamari_desert[] = {
+KartAIBehaviour common_kart_ai_behaviour_kalamari_desert[] = {
     {   1,   2, BEHAVIOUR_NORMAL_SPEED, },
     { 245, 262, BEHAVIOUR_1, },
     { 585, 606, BEHAVIOUR_1, },
     {  -1,  -1, BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_sherbet_land[] = {
+KartAIBehaviour common_kart_ai_behaviour_sherbet_land[] = {
     {   1,   2, BEHAVIOUR_NORMAL_SPEED, },
     {   7,  38, BEHAVIOUR_1, },
     {  36,  54, BEHAVIOUR_1, },
@@ -2417,7 +2417,7 @@ CPUBehaviour common_cpu_behaviour_sherbet_land[] = {
     {  -1,  -1, BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_rainbow_road[] = {
+KartAIBehaviour common_kart_ai_behaviour_rainbow_road[] = {
     {    1,    2,  BEHAVIOUR_NORMAL_SPEED, },
     {    4,    5,  BEHAVIOUR_9, },
     {  129,  130,  BEHAVIOUR_10, },
@@ -2429,7 +2429,7 @@ CPUBehaviour common_cpu_behaviour_rainbow_road[] = {
     {   -1,   -1,  BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_wario_stadium[] = {
+KartAIBehaviour common_kart_ai_behaviour_wario_stadium[] = {
     {    1,    2,  BEHAVIOUR_NORMAL_SPEED, },
     {   80,  120,  BEHAVIOUR_1, },
     {  200,  250,  BEHAVIOUR_1, },
@@ -2454,7 +2454,7 @@ CPUBehaviour common_cpu_behaviour_wario_stadium[] = {
     {   -1,   -1,  BEHAVIOUR_NONE, },
 };
 
-CPUBehaviour common_cpu_behaviour_dk_jungle[] = {
+KartAIBehaviour common_kart_ai_behaviour_dk_jungle[] = {
     {   1,    2,  BEHAVIOUR_NORMAL_SPEED, },
     {  20,   40,  BEHAVIOUR_1, },
     { 190,  191,  BEHAVIOUR_9, },

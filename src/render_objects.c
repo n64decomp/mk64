@@ -2375,13 +2375,13 @@ void func_8004F3E4(s32 arg0) {
     case GRAND_PRIX:
         for (idx = D_8018D158 - 1; idx >= 0; idx--) {
             playerId = gGPCurrentRacePlayerIdByRank[idx];
-            if ((gPlayerOne + playerId)->type & PLAYER_CPU) {
+            if ((gPlayerOne + playerId)->type & PLAYER_KART_AI) {
                 func_8004F168(arg0, playerId, 8);
             }
         }
         for (idx = D_8018D158 - 1; idx >= 0; idx--) {
             playerId = gGPCurrentRacePlayerIdByRank[idx];
-            if (((gPlayerOne + playerId)->type & PLAYER_CPU) != PLAYER_CPU) {
+            if (((gPlayerOne + playerId)->type & PLAYER_KART_AI) != PLAYER_KART_AI) {
                 func_8004F168(arg0, playerId, (gPlayerOne + playerId)->characterId);
             }
         }

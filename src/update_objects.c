@@ -190,7 +190,7 @@ void func_80072120(s32 *arg0, s32 arg1) {
 void func_80072180(void) {
     if (gModeSelection == TIME_TRIALS) {
         if (((gPlayerOne->type & PLAYER_EXISTS) != 0) &&
-        ((gPlayerOne->type & (PLAYER_INVISIBLE_OR_BOMB | PLAYER_CPU)) == 0)) {
+        ((gPlayerOne->type & (PLAYER_INVISIBLE_OR_BOMB | PLAYER_KART_AI)) == 0)) {
             D_80162DF8 = 1;
         }
     }
@@ -3638,7 +3638,7 @@ u8 gen_random_item(s16 rank, s16 isCpu)
             curve = segmented_to_virtual((void *) common_grand_prix_human_item_curve);
         }
         else {
-            curve = segmented_to_virtual((void *) common_grand_prix_cpu_item_curve);
+            curve = segmented_to_virtual((void *) common_grand_prix_kart_ai_item_curve);
         }
         randomItem =  *((rank * 100) + curve + sRandomItemIndex);
     }
@@ -3649,7 +3649,7 @@ u8 gen_random_item_human(UNUSED s16 arg0, s16 rank) {
     return gen_random_item(rank, FALSE);
 }
 
-u8 gen_random_item_cpu(UNUSED s32 arg0, s16 rank) {
+u8 kart_ai_gen_random_item(UNUSED s32 arg0, s16 rank) {
     return gen_random_item(rank, TRUE);
 }
 
@@ -5487,7 +5487,7 @@ void func_8007F8D8(void) {
     }
     if (var_s4 != 0) {
         for (var_s0 = 0; var_s0 < 4; var_s0++, player++){
-            if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_CPU)) {
+            if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_KART_AI)) {
                 if (func_8007F75C(var_s0) != 0) break;
             }
         }

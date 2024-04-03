@@ -342,7 +342,7 @@ void func_8008C8C4(Player* player, s8 playerId) {
     if ((gIsPlayerTripleAButtonCombo[playerId] == TRUE) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
         player->currentSpeed = (f32) (player->currentSpeed + 100.0f);
     }
-    if ((gModeSelection == VERSUS) && ((player->type & PLAYER_CPU) == PLAYER_CPU) && (!gDemoMode) && ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[playerId] != 0)) {
+    if ((gModeSelection == VERSUS) && ((player->type & PLAYER_KART_AI) == PLAYER_KART_AI) && (!gDemoMode) && ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[playerId] != 0)) {
         player->soundEffects = (s32) (player->soundEffects | REVERSE_SOUND_EFFECT);
     }
 }
@@ -1035,7 +1035,7 @@ void apply_reverse_sound_effect(Player *player, s8 arg1)
     player->unk_0E0 = 0;
 
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
-        if (((gModeSelection == VERSUS) && ((player->type & PLAYER_CPU) != 0)) && (!gDemoMode)) {
+        if (((gModeSelection == VERSUS) && ((player->type & PLAYER_KART_AI) != 0)) && (!gDemoMode)) {
             func_800CA24C(arg1);
         }
 
@@ -1043,7 +1043,7 @@ void apply_reverse_sound_effect(Player *player, s8 arg1)
         }
 
         func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008005);
-        if (((gModeSelection == VERSUS) && ((player->type & PLAYER_CPU) != 0)) && (!gDemoMode)) {
+        if (((gModeSelection == VERSUS) && ((player->type & PLAYER_KART_AI) != 0)) && (!gDemoMode)) {
             func_800CA24C(arg1);
         }
         func_800C9060(arg1, SOUND_ACTION_EXPLOSION);
@@ -1884,7 +1884,7 @@ void func_80090970(Player *player, s8 playerId, s8 arg2) {
         }
         break;
     case 1:
-        if (((player->type & PLAYER_HUMAN) == 0x4000) && ((player->type & PLAYER_CPU) == 0)) {
+        if (((player->type & PLAYER_HUMAN) == 0x4000) && ((player->type & PLAYER_KART_AI) == 0)) {
             func_8009E088(playerId, 0xA);
         }
         if ((player->unk_0CA & 1) == 1) {
@@ -1916,7 +1916,7 @@ void func_80090970(Player *player, s8 playerId, s8 arg2) {
         break;
     case 3:
         D_80165330[playerId] = 0;
-        if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_CPU) == 0)) {
+        if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_KART_AI) == 0)) {
             func_8009E020(playerId, 0x14);
         }
         func_80090178(player, playerId, sp44, sp38);
