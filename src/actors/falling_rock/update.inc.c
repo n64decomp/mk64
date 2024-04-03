@@ -1,3 +1,8 @@
+#include <actors.h>
+#include <code_800029B0.h>
+#include <main.h>
+#include "courses/choco_mountain/course_data.h"
+
 void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
     s32 segment = SEGMENT_NUMBER2(spawnData);
     s32 offset = SEGMENT_OFFSET(spawnData);
@@ -12,7 +17,13 @@ void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
     vec3s_set(rock->rot, 0, 0, 0);
 }
 
-void place_falling_rocks(struct ActorSpawnData *spawnData) {
+/**
+ * @brief Spawns falling rocks.
+ * Used in Choco Mountain.
+ * 
+ * @param spawnData 
+ */
+void spawn_falling_rocks(struct ActorSpawnData *spawnData) {
     s32 addr = SEGMENT_NUMBER2(spawnData);
     s32 offset = SEGMENT_OFFSET(spawnData);
     // Casting this to prevent warning does not work.
@@ -29,7 +40,7 @@ void place_falling_rocks(struct ActorSpawnData *spawnData) {
         startingPos[2] = temp_s0->pos[2];
         vec3f_set(startingVelocity, 0, 0, 0);
         vec3s_set(startingRot, 0, 0, 0);
-        temp = addActorToEmptySlot(startingPos, startingRot, startingVelocity, ACTOR_FALLING_ROCK);
+        temp = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_FALLING_ROCK);
         temp_v1 = (struct FallingRock *) &gActorList[temp];
 
         temp_v1->unk_06 = temp_s0->someId;
@@ -38,6 +49,12 @@ void place_falling_rocks(struct ActorSpawnData *spawnData) {
     }
 }
 
+/**
+ * @brief Updates the falling rock actor.
+ * Actor used in Choco Mountain.
+ * 
+ * @param rock 
+ */
 void update_actor_falling_rocks(struct FallingRock *rock) {
     Vec3f unkVec;
     f32 pad0;
