@@ -235,7 +235,9 @@ include $(MAKEFILE_SPLIT)
 EUC_JP_FILES := src/ending/credits.c src/code_80005FD0.c src/code_80091750.c
 C_FILES := $(filter-out $(EUC_JP_FILES),$(foreach dir,$(SRC_DIRS),$(wildcard $(dir)/*.c)))
 S_FILES := $(foreach dir,$(ASM_DIRS),$(wildcard $(dir)/*.s))
-COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(wildcard $(dir)/*.inc.c))
+# Include source files in courses/course_name/files.c but exclude .inc.c files.
+COURSE_FILES := $(foreach dir,$(COURSE_DIRS),$(filter-out %.inc.c,$(wildcard $(dir)/*.c)))
+
 
 # Object files
 O_FILES := \
@@ -475,7 +477,7 @@ $(TEXTURE_FILES_TLUT):
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(TEXTURE_FILES_TLUT))), ,$(TEXTURE_FILES_TLUT)))) -p $(BUILD_DIR)/$@.tlut.inc.c
 
 # common textures
-$(BUILD_DIR)/src/data/common_textures.inc.o: src/data/common_textures.inc.c $(TEXTURE_FILES) $(TEXTURE_FILES_TLUT)
+$(BUILD_DIR)/src/data/common_textures.o: src/data/common_textures.c $(TEXTURE_FILES) $(TEXTURE_FILES_TLUT)
 	@$(PRINT) "$(GREEN)Compiling Common Textures:  $(BLUE)$@ $(NO_COL)\n"
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
@@ -488,7 +490,7 @@ $(BUILD_DIR)/src/data/common_textures.inc.o: src/data/common_textures.inc.c $(TE
 #==============================================================================#
 
 
-%/course_textures.linkonly.c %/course_textures.linkonly.h: %/course_offsets.inc.c
+%/course_textures.linkonly.c %/course_textures.linkonly.h: %/course_offsets.c
 	$(V)$(LINKONLY_GENERATOR) $(lastword $(subst /, ,$*))
 
 # Its unclear why this is necessary. Everything I undesrtand about `make` says that just
@@ -517,7 +519,7 @@ $(COURSE_DISPLAYLIST_OFILES): $(BUILD_DIR)/%/course_displaylists.inc.o: %/course
 # Course Geography Generation                                                  #
 #==============================================================================#
 
-COURSE_GEOGRAPHY_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_geography.inc.mio0.o)
+COURSE_GEOGRAPHY_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_geography.mio0.o)
 
 %/course_vertices.inc.elf: %/course_vertices.inc.o
 	$(V)$(LD) -t -e 0 -Ttext=0F000000 -Map $@.map -o $@ $< --no-check-sections
@@ -530,30 +532,31 @@ COURSE_GEOGRAPHY_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/cou
 	$(V)$(MIO0TOOL) -c $< $@
 
 # Course vertices and displaylists are included together due to no alignment between the two files.
-%/course_geography.inc.mio0.s: %/course_vertices.inc.mio0 %/course_displaylists_packed.inc.bin
+%/course_geography.mio0.s: %/course_vertices.inc.mio0 %/course_displaylists_packed.inc.bin
 	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_vertex\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
+
 
 
 #==============================================================================#
 # Course Data Generation                                                       #
 #==============================================================================#
 
-COURSE_DATA_ELFS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.inc.elf)
+COURSE_DATA_ELFS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.elf)
 LDFLAGS += $(foreach elf,$(COURSE_DATA_ELFS),-R $(elf))
 
-COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.inc.mio0.o)
+COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.mio0.o)
 
-%/course_data.inc.elf: %/course_data.inc.o %/course_displaylists.inc.elf
+%/course_data.elf: %/course_data.o %/course_displaylists.inc.elf
 	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -R $*/course_displaylists.inc.elf -o $@ $< --no-check-sections
 
-%/course_data.inc.bin: %/course_data.inc.elf
+%/course_data.bin: %/course_data.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-%/course_data.inc.mio0: %/course_data.inc.bin
+%/course_data.mio0: %/course_data.bin
 	@$(PRINT) "$(GREEN)Compressing Course Data:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(MIO0TOOL) -c $< $@
 
-%/course_data.inc.mio0.s: %/course_data.inc.mio0
+%/course_data.mio0.s: %/course_data.mio0
 	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
 
 
@@ -619,19 +622,19 @@ endif
 # Compile Trophy and Podium Models                                             #
 #==============================================================================#
 
-LDFLAGS += -R $(BUILD_DIR)/src/ending/ceremony_data.inc.elf
+LDFLAGS += -R $(BUILD_DIR)/src/ending/ceremony_data.elf
 
-%/ceremony_data.inc.elf: %/ceremony_data.inc.o
+%/ceremony_data.elf: %/ceremony_data.o
 	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $@.map -o $@ $< --no-check-sections
 
-%/ceremony_data.inc.bin: %/ceremony_data.inc.elf
+%/ceremony_data.bin: %/ceremony_data.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-%/ceremony_data.inc.mio0: %/ceremony_data.inc.bin
+%/ceremony_data.mio0: %/ceremony_data.bin
 	@$(PRINT) "$(GREEN)Compressing Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(MIO0TOOL) -c $< $@
 
-%/ceremony_data.inc.mio0.s: %/ceremony_data.inc.mio0
+%/ceremony_data.mio0.s: %/ceremony_data.mio0
 	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel ceremonyData_end\n" > $@
 
 
@@ -639,38 +642,38 @@ LDFLAGS += -R $(BUILD_DIR)/src/ending/ceremony_data.inc.elf
 # Compile Startup Logo                                                         #
 #==============================================================================#
 
-LDFLAGS += -R $(BUILD_DIR)/src/data/startup_logo.inc.elf
+LDFLAGS += -R $(BUILD_DIR)/src/data/startup_logo.elf
 
-%/startup_logo.inc.elf: %/startup_logo.inc.o
+%/startup_logo.elf: %/startup_logo.o
 	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -o $@ $< --no-check-sections
 
-%/startup_logo.inc.bin: %/startup_logo.inc.elf
+%/startup_logo.bin: %/startup_logo.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-%/startup_logo.inc.mio0: %/startup_logo.inc.bin
+%/startup_logo.mio0: %/startup_logo.bin
 	@$(PRINT) "$(GREEN)Compressing Startup Logo Model:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(MIO0TOOL) -c $< $@
 
-%/startup_logo.inc.mio0.s: %/startup_logo.inc.mio0
+%/startup_logo.mio0.s: %/startup_logo.mio0
 	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel startupLogo_end\n" > $@
 
 #==============================================================================#
 # Compile Common Textures                                                      #
 #==============================================================================#
 
-LDFLAGS += -R $(BUILD_DIR)/src/data/common_textures.inc.elf
+LDFLAGS += -R $(BUILD_DIR)/src/data/common_textures.elf
 
-%/common_textures.inc.elf: %/common_textures.inc.o
+%/common_textures.elf: %/common_textures.o
 	$(V)$(LD) -t -e 0 -Ttext=0D000000 -Map $@.map -o $@ $< --no-check-sections
 
-%/common_textures.inc.bin: %/common_textures.inc.elf
+%/common_textures.bin: %/common_textures.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
-%/common_textures.inc.mio0: %/common_textures.inc.bin
+%/common_textures.mio0: %/common_textures.bin
 	@$(PRINT) "$(GREEN)Compressing Common Textures:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(MIO0TOOL) -c $< $@
 
-%/common_textures.inc.mio0.s: %/common_textures.inc.mio0
+%/common_textures.mio0.s: %/common_textures.mio0
 	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
 
 
@@ -685,7 +688,7 @@ $(BUILD_DIR)/$(LD_SCRIPT): $(LD_SCRIPT)
 	$(V)$(CPP) $(CPPFLAGS) -DBUILD_DIR=$(BUILD_DIR) -MMD -MP -MT $@ -MF $@.d -o $@ $<
 
 # Link MK64 ELF file
-$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.inc.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.inc.mio0.o $(BUILD_DIR)/src/data/common_textures.inc.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
+$(ELF): $(O_FILES) $(COURSE_DATA_TARGETS) $(BUILD_DIR)/$(LD_SCRIPT) $(BUILD_DIR)/src/data/startup_logo.mio0.o $(BUILD_DIR)/src/ending/ceremony_data.mio0.o $(BUILD_DIR)/src/data/common_textures.mio0.o $(COURSE_GEOGRAPHY_TARGETS) undefined_syms.txt
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) $(LDFLAGS) -o $@
 

@@ -29,7 +29,7 @@ $(TREES_PNG:%.png=%.mio0): %.mio0 : %.bin
 $(TREES_PNG:%.png=%.bin): %.bin : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(TREES_PALETTE)
 
-$(BUILD_DIR)/src/data/common_textures.inc.o: $(TREES_PALETTE_IMPORT:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.o: $(TREES_PALETTE_IMPORT:%.png=%.inc.c)
 
 $(TREES_PALETTE:%.png=%.inc.c) $(TREES_PALETTE_IMPORT:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16

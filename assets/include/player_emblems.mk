@@ -10,7 +10,7 @@ $(PLAYER_EMBLEM_DIR)/common_texture_player_emblem_4p.png
 
 PLAYER_EMBLEM_EXPORT_SENTINEL := $(PLAYER_EMBLEM_DIR)/.export
 
-$(BUILD_DIR)/src/data/common_textures.inc.o: $(PLAYER_EMBLEM_PNGS:%.png=%.inc.c) $(PLAYER_EMBLEM_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.o: $(PLAYER_EMBLEM_PNGS:%.png=%.inc.c) $(PLAYER_EMBLEM_PALETTE:%.png=%.inc.c)
 
 $(PLAYER_EMBLEM_PNGS:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(PLAYER_EMBLEM_PALETTE)
