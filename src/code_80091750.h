@@ -9,6 +9,18 @@ extern u32 _course_mario_raceway_dl_mio0SegmentRomStart[];
 
 /* File specific types */
 
+/*
+Known `types` for `struct_8018D9E0_entry`
+0x53: "Mushroom Cup" box on the cup selection screen
+0x54: "Flower Cup" box on the cup selection screen
+0x55: "Star Cup" box on the cup selection screen
+0x56: "Special Cup" box on the cup selection screen
+0x5E: A box of static over the course images as the cup selection screen loads in.
+      It is near unnoticeable though as in practice it doesn't last long enough to be seen.
+      Try locking the word at `8018DC80` to see something like 0x20 just before confirming character selection to make it last longer
+      See `func_80096CD8` for the actual drawing of the static
+*/
+
 typedef struct {
     /* 0x00 */ s32 type; // id maybe?
     /* 0x04 */ s32 cursor; // sound mode, maybe some other stuff
@@ -151,8 +163,9 @@ Gfx *func_80096CD8(Gfx*, s32, s32, u32, u32);
 Gfx *func_80097274(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, s32, s32, u32, u32, u32);
 Gfx *func_80097A14(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, u32, u32);
 Gfx *func_80097AE4(Gfx*,  s8, s32, s32, u8*, s32);
-Gfx *func_80097E58(Gfx*,  s8, s32, u32, u32, s32, s32, s32, s32, s32, s32, u32);
-Gfx *func_800987D0(Gfx*, u32, u32, u32, u32, s32, s32, s32, s32, s32);
+Gfx *func_80097E58(Gfx*,  s8, s32, s32, s32, s32, s32, s32, u8*, u32, s32, u32);
+Gfx *func_80098558(Gfx*, u32, u32, u32, u32, u32, u32, s32, s32);
+Gfx *func_800987D0(Gfx*, u32, u32, u32, u32, s32, s32, s32, u32, s32);
 Gfx *draw_box_fill(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *draw_box(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *func_80098FC8(Gfx*, s32, s32, s32, s32);
@@ -171,6 +184,8 @@ void func_80099EC4(void);
 void func_80099A70(void);
 void func_80099A94(MkTexture *, s32);
 void func_80099AEC(void);
+void func_8009A238(MkTexture*, s32);
+void func_8009A2F0(struct_8018E0E8_entry*);
 void func_8009A344(void);
 s32  func_8009A374(MkAnimation*);
 s32  func_8009A478(MkAnimation*, s32);
@@ -429,7 +444,7 @@ extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
 extern s32 gCycleFlashMenu;
 extern s8 D_8018E7AC[];
 extern s8 D_8018E7B0;
-extern s32 D_8018E7B8[];
+extern u32 D_8018E7B8[];
 extern u32 D_8018E7C8;
 extern u32 D_8018E7D0[];
 extern s32 D_8018E7E0;
@@ -568,7 +583,7 @@ extern MkTexture *D_800E8254[];
 extern MkTexture *D_800E8274[];
 extern MkTexture *D_800E8294[];
 extern MkTexture *D_800E82B4[];
-extern MkTexture *D_800E82C8[];
+extern MkTexture *D_800E82C4[];
 extern MkTexture *D_800E82F4[];
 extern MkAnimation *D_800E8320[];
 extern MkAnimation *D_800E8340[];
@@ -598,5 +613,13 @@ extern Unk_D_800E70A0 D_800E8600[];
 extern s32 gControllerPak1NumPagesFree;
 extern s32 gControllerPak1FileNote;
 extern s32 gControllerPak2FileNote;
+
+extern f32 D_8018ED98;
+extern f32 D_8018ED9C;
+extern f32 D_8018EDA0;
+
+extern f32 D_8018EDA4;
+extern f32 D_8018EDA8;
+extern f32 D_8018EDAC;
 
 #endif

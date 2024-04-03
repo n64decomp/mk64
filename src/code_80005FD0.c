@@ -930,10 +930,6 @@ s32 func_80007BF8(u16 arg0, u16 arg1, u16 arg2, u16 arg3, u16 arg4) {
 #ifdef NON_MATCHING // Likely func equiv
 // https://decomp.me/scratch/Te4u1
 
-extern u16 D_80163344[];
-extern s16 D_80163478;
-extern s16 D_801634C0[];
-
 void func_80007D04(s32 playerId, Player *player) {
     s16 temp_t1;
     s16 temp_t2;
