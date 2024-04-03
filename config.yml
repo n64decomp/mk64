@@ -6,23 +6,23 @@
     sort: OFFSET
     output:
       binary: mkcube.otr
-      headers: include
+      headers: include/assets
       code: assets/code
   metadata: [yamls/courses]
   segments:
     - 0x000000
     - 0x000000
-    - 0x12aae0
+    - 0x12AAE0
     - 0x000000
     - 0x000000
     - 0x000000
     - 0x825800
     - 0x000000
     - 0x000000
-    - 0x88cd70
-    - 0x729a30
+    - 0x88CD70
+    - 0x729A30
     - 0x821D10
-    - 0x7fa3c0
-    - 0x132b50
+    - 0x7FA3C0
+    - 0x132B50
     - 0x000000
     - 0x145470

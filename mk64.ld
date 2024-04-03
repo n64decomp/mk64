@@ -217,7 +217,7 @@ SECTIONS
       BUILD_DIR/src/player_controller.o(.data);
       BUILD_DIR/src/spawn_players.o(.data);
       BUILD_DIR/src/update_objects.o(.data);
-      BUILD_DIR/src/data/data_800E45C0.o(.data);
+      BUILD_DIR/assets/code/data_800E45C0/data_800E45C0.o(.data);
       BUILD_DIR/src/code_80057C60.o(.data);
       BUILD_DIR/src/data/some_data.o(.data);
       BUILD_DIR/src/effects.o(.data);
@@ -438,7 +438,7 @@ SECTIONS
    BEGIN_SEG(data_segment2, 0x02000000)
    {
       BUILD_DIR/src/data/textures.o(.data);
-      BUILD_DIR/src/data/data_segment2.o(.data);
+      BUILD_DIR/assets/code/data_segment2/data_segment2.o(.data);
    }
    END_SEG(data_segment2)
 

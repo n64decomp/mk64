@@ -6,6 +6,8 @@
 typedef f32 Vec3f[3];
 typedef f32 Vec4f[4];
 
+typedef s32 Vec3iu[3];
+
 typedef s16 Vec3s[3];
 typedef u16 Vec3su[3];
 typedef s16 Vec4s[4];

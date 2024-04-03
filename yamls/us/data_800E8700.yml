@@ -4,9 +4,8 @@
     offset: 0xE9300
   header: 
     code:
-      - '#include <startup_logo.h>'
       - '#include <ultra64.h>'
-      - '#include "data_800E8700.h"'
+      - '#include <assets/data_800E8700.h>'
     header:
       - '#include <ultra64.h>'
   tables:

@@ -28,7 +28,7 @@
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
 #include "courses/all_course_data.h"
-#include <ceremony_data.h>
+#include <assets/ceremony_data.h>
 #include "src/ending/ceremony_and_credits.h"
 #include "menus.h"
 #include "data/other_textures.h"

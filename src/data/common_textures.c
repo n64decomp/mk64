@@ -2255,12 +2255,12 @@ Mtx D_0D008ED8 = {
                        0.999985, 0.000046, 0.000016, 0.0),
 };
 
-UnkCommonTextureStruct0 D_0D008F18[] = {
+CPUBehaviour D_0D008F18[] = {
     {  1,  3, 2, },
     { -1, -1, 0, },
 };
 
-UnkCommonTextureStruct0 D_0D008F28[] = {
+CPUBehaviour D_0D008F28[] = {
     {   1,   2, 6, },
     {  11,  30, 1, },
     {  55,  74, 1, },
@@ -2274,7 +2274,7 @@ UnkCommonTextureStruct0 D_0D008F28[] = {
     {  -1,  -1, 0, },
 };
 
-UnkCommonTextureStruct0 D_0D008F80[] = {
+CPUBehaviour D_0D008F80[] = {
     {   1,   2, 6, },
     {  10,  25, 1, },
     { 190, 210, 1, },
@@ -2284,7 +2284,7 @@ UnkCommonTextureStruct0 D_0D008F80[] = {
     {  -1,  -1, 0, },
 };
 
-UnkCommonTextureStruct0 D_0D008FB8[] = {
+CPUBehaviour D_0D008FB8[] = {
     {   1,   2,  6, },
     {  60,  80,  1, },
     { 125, 140,  1, },
@@ -2307,7 +2307,7 @@ UnkCommonTextureStruct0 D_0D008FB8[] = {
     {  -1,  -1,  0, },
 };
 
-UnkCommonTextureStruct0 D_0D009058[] = {
+CPUBehaviour D_0D009058[] = {
     {   1,   2, 6, },
     {  15,  30, 1, },
     {  55,  65, 1, },
@@ -2322,7 +2322,7 @@ UnkCommonTextureStruct0 D_0D009058[] = {
     {  -1,  -1, 0, },
 };
 
-UnkCommonTextureStruct0 D_0D0090B8[] = {
+CPUBehaviour D_0D0090B8[] = {
     {   1,   2, 6, },
     {  70,  94, 1, },
     { 120, 133, 1, },
@@ -2333,7 +2333,7 @@ UnkCommonTextureStruct0 D_0D0090B8[] = {
     {  -1,  -1, 0, },
 };
 
-UnkCommonTextureStruct0 D_0D0090F8[] = {
+CPUBehaviour D_0D0090F8[] = {
     {   1,   2,  6, },
     {  15,  30,  1, },
     {  41,  63,  1, },
@@ -2348,7 +2348,7 @@ UnkCommonTextureStruct0 D_0D0090F8[] = {
     {  -1,  -1,  0, },
 };
 
-UnkCommonTextureStruct0 D_0D009158[] = {
+CPUBehaviour D_0D009158[] = {
     {   1,   2, 6, },
     {  75, 100, 1, },
     { 135, 150, 1, },
@@ -2357,7 +2357,7 @@ UnkCommonTextureStruct0 D_0D009158[] = {
     {  -1,  -1, 0, },
 };
 
-UnkCommonTextureStruct0 D_0D009188[] = {
+CPUBehaviour D_0D009188[] = {
     {   1,   2,  6, },
     {  65,  80,  1, },
     { 165, 166,  9, },
@@ -2372,7 +2372,7 @@ UnkCommonTextureStruct0 D_0D009188[] = {
     {  -1,  -1,  0, },
 };
 
-UnkCommonTextureStruct0 D_0D0091E8[] = {
+CPUBehaviour D_0D0091E8[] = {
     {   1,   2, 6, },
     { 128, 275, 1, },
     { 320, 345, 1, },
@@ -2380,7 +2380,7 @@ UnkCommonTextureStruct0 D_0D0091E8[] = {
     {  -1,  -1, 0, },
 };
 
-UnkCommonTextureStruct0 D_0D009210[] = {
+CPUBehaviour D_0D009210[] = {
     {   1,   2, 6, },
     {  75, 100, 1, },
     { 175, 210, 1, },
@@ -2388,7 +2388,7 @@ UnkCommonTextureStruct0 D_0D009210[] = {
     {  -1,  -1, 0, },
 };
 
-UnkCommonTextureStruct0 D_0D009238[] = {
+CPUBehaviour D_0D009238[] = {
     {   1,   2, 6, },
     { 106, 188, 1, },
     { 220, 386, 1, },
@@ -2396,14 +2396,14 @@ UnkCommonTextureStruct0 D_0D009238[] = {
     {  -1,  -1, 0, },
 };
 
-UnkCommonTextureStruct0 D_0D009260[] = {
+CPUBehaviour D_0D009260[] = {
     {   1,   2, 6, },
     { 245, 262, 1, },
     { 585, 606, 1, },
     {  -1,  -1, 0, },
 };
 
-UnkCommonTextureStruct0 D_0D009280[] = {
+CPUBehaviour D_0D009280[] = {
     {   1,   2, 6, },
     {   7,  38, 1, },
     {  36,  54, 1, },
@@ -2415,7 +2415,7 @@ UnkCommonTextureStruct0 D_0D009280[] = {
     {  -1,  -1, 0, },
 };
 
-UnkCommonTextureStruct0 D_0D0092C8[] = {
+CPUBehaviour D_0D0092C8[] = {
     {    1,    2,  6, },
     {    4,    5,  9, },
     {  129,  130, 10, },
@@ -2427,7 +2427,7 @@ UnkCommonTextureStruct0 D_0D0092C8[] = {
     {   -1,   -1,  0, },
 };
 
-UnkCommonTextureStruct0 D_0D009310[] = {
+CPUBehaviour D_0D009310[] = {
     {    1,    2,  6, },
     {   80,  120,  1, },
     {  200,  250,  1, },
@@ -2452,7 +2452,7 @@ UnkCommonTextureStruct0 D_0D009310[] = {
     {   -1,   -1,  0, },
 };
 
-UnkCommonTextureStruct0 D_0D0093C0[] = {
+CPUBehaviour D_0D0093C0[] = {
     {   1,    2,  6, },
     {  20,   40,  1, },
     { 190,  191,  9, },

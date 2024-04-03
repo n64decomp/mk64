@@ -23,7 +23,7 @@
 #include "update_objects.h"
 #include "code_80086E70.h"
 #include "effects.h"
-#include "src/data/data_800E8700.h"
+#include <assets/data_800E8700.h>
 #include "skybox_and_splitscreen.h"
 #include "common_textures.h"
 #include "audio/external.h"

@@ -2,11 +2,12 @@
   vram:
     addr: 0x800E45C0
     offset: 0xE51C0
-  header: 
+  header:
     code:
-      - '#include "data_800E45C0.h"'
+      - '#include <assets/data_800E45C0.h>'
     header:
       - '#include <ultra64.h>'
+      - '#include <common_structs.h>'
   tables:
     D_800E45C0:
       range: [0x800E45C0, 0x800E4608]
@@ -63,3 +64,16 @@ D_800E46E0:
   symbol: D_800E46E0
   type: lights
   offset: 0x800E46E0
+D_800E46F8:
+  symbol: D_800E46F8
+  type: array
+  offset: 0x800E46F8
+  count: 3
+  array_type: Vec3iu
+D_800E471C:
+  symbol: D_800E471C
+  type: array
+  offset: 0x800E471C
+  count: 7
+  array_type: s8
+

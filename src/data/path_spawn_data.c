@@ -1,6 +1,6 @@
 #include "data/path_spawn_data.h"
 #include "courses/all_course_data.h"
-#include <ceremony_data.h>
+#include <assets/ceremony_data.h>
 
 CPUBehaviour *D_800DC720[] = {
 	D_0D008F28, D_0D008F80, D_0D008FB8, D_0D009058,

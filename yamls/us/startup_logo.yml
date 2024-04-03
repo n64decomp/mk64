@@ -3,7 +3,7 @@
     - [0x06, 0x825800]
   header: 
     code:
-      - '#include <startup_logo.h>'
+      - '#include <assets/startup_logo.h>'
     header:
       - '#include "types.h"'
 
