@@ -799,7 +799,7 @@ void render_player_one_1p_screen(void) {
     render_players_on_screen_one();
     func_8029122C(D_800DC5EC, PLAYER_ONE);
     func_80021B0C();
-    func_802A2F34(D_800DC5EC);
+    render_item_boxes(D_800DC5EC);
     render_player_snow_effect(RENDER_SCREEN_MODE_1P_PLAYER_ONE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -859,7 +859,7 @@ void render_player_one_2p_screen_vertical(void) {
     render_players_on_screen_one();
     func_8029122C(D_800DC5EC, PLAYER_ONE);
     func_80021B0C();
-    func_802A2F34(D_800DC5EC);
+    render_item_boxes(D_800DC5EC);
     render_player_snow_effect(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -917,7 +917,7 @@ void render_player_two_2p_screen_vertical(void) {
     render_players_on_screen_two();
     func_8029122C(D_800DC5F0, PLAYER_TWO);
     func_80021C78();
-    func_802A2F34(D_800DC5F0);
+    render_item_boxes(D_800DC5F0);
     func_80058BF4();
     render_player_snow_effect(RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO);
     if (D_800DC5B8 != 0) {
@@ -975,7 +975,7 @@ void render_player_one_2p_screen_horizontal(void) {
     render_players_on_screen_one();
     func_8029122C(D_800DC5EC, PLAYER_ONE);
     func_80021B0C();
-    func_802A2F34(D_800DC5EC);
+    render_item_boxes(D_800DC5EC);
     render_player_snow_effect(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -1032,7 +1032,7 @@ void render_player_two_2p_screen_horizontal(void) {
     render_players_on_screen_two();
     func_8029122C(D_800DC5F0, PLAYER_TWO);
     func_80021C78();
-    func_802A2F34(D_800DC5F0);
+    render_item_boxes(D_800DC5F0);
     render_player_snow_effect(RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -1086,7 +1086,7 @@ void render_player_one_3p_4p_screen(void) {
     render_players_on_screen_one();
     func_8029122C(D_800DC5EC, PLAYER_ONE);
     func_80021B0C();
-    func_802A2F34(D_800DC5EC);
+    render_item_boxes(D_800DC5EC);
     render_player_snow_effect(RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -1140,7 +1140,7 @@ void render_player_two_3p_4p_screen(void) {
     render_players_on_screen_two();
     func_8029122C(D_800DC5F0, PLAYER_TWO);
     func_80021C78();
-    func_802A2F34(D_800DC5F0);
+    render_item_boxes(D_800DC5F0);
     render_player_snow_effect(RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -1195,7 +1195,7 @@ void render_player_three_3p_4p_screen(void) {
     render_players_on_screen_three();
     func_8029122C(D_800DC5F4, PLAYER_THREE);
     func_80021D40();
-    func_802A2F34(D_800DC5F4);
+    render_item_boxes(D_800DC5F4);
     render_player_snow_effect(RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
@@ -1258,7 +1258,7 @@ void render_player_four_3p_4p_screen(void) {
     render_players_on_screen_four();
     func_8029122C(D_800DC5F8, PLAYER_FOUR);
     func_80021DA8();
-    func_802A2F34(D_800DC5F8);
+    render_item_boxes(D_800DC5F8);
     render_player_snow_effect(RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR);
     func_80058BF4();
     if (D_800DC5B8 != 0) {
