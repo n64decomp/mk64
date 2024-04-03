@@ -48,7 +48,7 @@
 <script type="application/ecmascript">
 var viewWidth = 1620;
 var viewHeight = 323;
-var sectionId = 'dynsection-48';
+var sectionId = 'dynsection-56';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -138,9 +138,10 @@ var sectionId = 'dynsection-48';
 <!-- Node4 -->
 <g id="Node000004" class="node">
 <title>Node4</title>
-<g id="a_Node000004"><a xlink:href="actors_8c.html#ad4c7671a474d355b39c737fdf54caffc" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="920.5,-262 829.5,-262 829.5,-243 920.5,-243 920.5,-262"/>
-<text text-anchor="middle" x="875" y="-250" font-family="Helvetica,sans-Serif" font-size="10.00">func_8029E158</text>
+<g id="a_Node000004"><a xlink:href="actors_8c.html#a142a32371ea62d0303702286b839bdfd" target="_top" xlink:title="Loads actor textures, course specific actor textures. Calls to init_course_vehicles and place_course_...">
+<polygon fill="white" stroke="#666666" points="933.5,-287.5 816.5,-287.5 816.5,-257.5 933.5,-257.5 933.5,-287.5"/>
+<text text-anchor="start" x="824.5" y="-275.5" font-family="Helvetica,sans-Serif" font-size="10.00">init_actors_and_load</text>
+<text text-anchor="middle" x="875" y="-264.5" font-family="Helvetica,sans-Serif" font-size="10.00">_textures</text>
 </a>
 </g>
 </g>
@@ -148,8 +149,8 @@ var sectionId = 'dynsection-48';
 <g id="edge3_Node000003_Node000004" class="edge">
 <title>Node3&#45;&gt;Node4</title>
 <g id="a_edge3_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1227.66,-296.98C1141.35,-286.06 994.09,-267.44 920.54,-258.13"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1227.26,-300.46 1237.62,-298.24 1228.14,-293.51 1227.26,-300.46"/>
+<path fill="none" stroke="#63b8ff" d="M1227.47,-300.18C1146.02,-293.77 1010.48,-283.09 933.7,-277.04"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1227.37,-303.68 1237.62,-300.98 1227.92,-296.71 1227.37,-303.68"/>
 </a>
 </g>
 </g>
@@ -166,8 +167,8 @@ var sectionId = 'dynsection-48';
 <g id="edge4_Node000004_Node000005" class="edge">
 <title>Node4&#45;&gt;Node5</title>
 <g id="a_edge4_Node000004_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M834.58,-239.82C803.54,-229.84 760.95,-216.14 732.73,-207.06"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="833.62,-243.19 844.21,-242.92 835.77,-236.53 833.62,-243.19"/>
+<path fill="none" stroke="#63b8ff" d="M830.24,-253.31C796.6,-238.55 751.55,-218.8 725.07,-207.18"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="828.83,-256.51 839.4,-257.32 831.64,-250.1 828.83,-256.51"/>
 </a>
 </g>
 </g>

@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['terminology_2emd_0',['terminology.md',['../terminology_8md.html',1,'']]],
-  ['textures_2ec_1',['textures.c',['../textures_8c.html',1,'']]],
-  ['textures_2eh_2',['textures.h',['../textures_8h.html',1,'']]],
-  ['train_2einc_2ec_3',['train.inc.c',['../train_8inc_8c.html',1,'']]],
-  ['trig_5ftables_2ec_4',['trig_tables.c',['../trig__tables_8c.html',1,'']]],
-  ['trig_5ftables_2eh_5',['trig_tables.h',['../trig__tables_8h.html',1,'']]],
-  ['tutorials_2emd_6',['tutorials.md',['../tutorials_8md.html',1,'']]],
-  ['types_2eh_7',['types.h',['../types_8h.html',1,'']]]
+  ['ucode_2eh_0',['ucode.h',['../ucode_8h.html',1,'']]],
+  ['ultra64_2eh_1',['ultra64.h',['../ultra64_8h.html',1,'']]],
+  ['ultratypes_2eh_2',['ultratypes.h',['../ultratypes_8h.html',1,'']]],
+  ['update_2einc_2ec_3',['update.inc.c',['../banana_2update_8inc_8c.html',1,'(Global Namespace)'],['../blue__and__red__shells_2update_8inc_8c.html',1,'(Global Namespace)'],['../fake__item__box_2update_8inc_8c.html',1,'(Global Namespace)'],['../falling__rock_2update_8inc_8c.html',1,'(Global Namespace)'],['../green__shell_2update_8inc_8c.html',1,'(Global Namespace)'],['../item__box_2update_8inc_8c.html',1,'(Global Namespace)'],['../kiwano__fruit_2update_8inc_8c.html',1,'(Global Namespace)'],['../mario__sign_2update_8inc_8c.html',1,'(Global Namespace)'],['../paddle__boat_2update_8inc_8c.html',1,'(Global Namespace)'],['../piranha__plant_2update_8inc_8c.html',1,'(Global Namespace)'],['../railroad__crossing_2update_8inc_8c.html',1,'(Global Namespace)'],['../train_2update_8inc_8c.html',1,'(Global Namespace)'],['../wario__sign_2update_8inc_8c.html',1,'(Global Namespace)'],['../yoshi__egg_2update_8inc_8c.html',1,'(Global Namespace)']]],
+  ['update_5fobjects_2ec_4',['update_objects.c',['../update__objects_8c.html',1,'']]],
+  ['update_5fobjects_2eh_5',['update_objects.h',['../update__objects_8h.html',1,'']]]
 ];

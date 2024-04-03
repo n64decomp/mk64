@@ -1,0 +1,21 @@
+<map id="evaluate_collision_players_palm_trees" name="evaluate_collision_players_palm_trees">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,102,163,142"/>
+<area shape="rect" id="Node000002" href="$actors_8c.html#a55dd52d90732891552d43874931866cb" title=" " alt="" coords="211,73,361,113"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,108,196,103,197,108,163,113"/>
+<area shape="rect" id="Node000009" href="$collision_8c.html#a9395b9fc31397e9e9d754b4887a12544" title=" " alt="" coords="219,137,353,163"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="163,130,205,136,205,141,163,136"/>
+<area shape="rect" id="Node000003" href="$external_8c.html#a2be9efc97a92e19d02aaee90d676acc1" title=" " alt="" coords="451,5,574,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="330,70,408,39,437,31,439,36,410,45,332,75"/>
+<area shape="rect" id="Node000005" href="$external_8c.html#a337fc3ab94ebb3293a85908229303ac8" title=" " alt="" coords="451,55,574,80"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="362,82,437,73,438,78,362,87"/>
+<area shape="rect" id="Node000006" href="$external_8c.html#acb60983213d09ee795e80ca3c8b5975e" title=" " alt="" coords="451,104,574,129"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="362,98,438,106,437,111,362,103"/>
+<area shape="rect" id="Node000007" href="$actors_8c.html#ad25a217bee1529c47a2532a0e424f434" title=" " alt="" coords="409,154,616,194"/>
+<area shape="poly" id="edge8_Node000002_Node000007" title=" " alt="" coords="335,110,410,139,433,147,431,152,408,145,334,115"/>
+<area shape="rect" id="Node000004" href="$external_8c.html#a4227847f3da303aee53cf69d2760a595" title=" " alt="" coords="664,55,760,80"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="570,28,617,39,651,48,650,54,615,45,569,33"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="574,65,650,65,650,70,574,70"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="565,101,615,89,650,80,651,85,617,94,566,107"/>
+<area shape="rect" id="Node000008" href="$math_8h.html#a37bde043e94a6f074c78f10518fb5d99" title=" " alt="" coords="686,161,738,187"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="616,171,672,171,672,177,616,177"/>
+</map>

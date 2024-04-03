@@ -48,7 +48,7 @@
 <script type="application/ecmascript">
 var viewWidth = 1185;
 var viewHeight = 86;
-var sectionId = 'dynsection-2';
+var sectionId = 'dynsection-4';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-2';
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="actors__extended_8c.html#a4fd275676bf11ca2e15556db08264a90" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="green__shell_2update_8inc_8c.html#a4fd275676bf11ca2e15556db08264a90" target="_top" xlink:title="Updates the green shell actor.">
 <polygon fill="white" stroke="#666666" points="1047.5,-78 934.5,-78 934.5,-48 1047.5,-48 1047.5,-78"/>
 <text text-anchor="start" x="942.5" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00">update_actor_green</text>
 <text text-anchor="middle" x="991" y="-55" font-family="Helvetica,sans-Serif" font-size="10.00">_shell</text>
@@ -85,7 +85,7 @@ var sectionId = 'dynsection-2';
 <!-- Node10 -->
 <g id="Node000010" class="node">
 <title>Node10</title>
-<g id="a_Node000010"><a xlink:href="actors__extended_8c.html#a6e281ad692a9ccd329fa6840ad38afbc" target="_top" xlink:title=" ">
+<g id="a_Node000010"><a xlink:href="blue__and__red__shells_2update_8inc_8c.html#a6e281ad692a9ccd329fa6840ad38afbc" target="_top" xlink:title="Update the red and blue shell actors.">
 <polygon fill="white" stroke="#666666" points="1055,-30 927,-30 927,0 1055,0 1055,-30"/>
 <text text-anchor="start" x="935" y="-18" font-family="Helvetica,sans-Serif" font-size="10.00">update_actor_red_blue</text>
 <text text-anchor="middle" x="991" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">_shell</text>

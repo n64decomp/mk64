@@ -3,7 +3,7 @@ var dir_b624d86e5671d82a613a73eb9566e66f =
     [ "actors.c", "actors_8c.html", "actors_8c" ],
     [ "actors.h", "actors_8h.html", "actors_8h" ],
     [ "actors_extended.c", "actors__extended_8c.html", "actors__extended_8c" ],
-    [ "actors_extended.h", "actors__extended_8h.html", "actors__extended_8h" ],
+    [ "actors_extended.h", "actors__extended_8h.html", null ],
     [ "collision.c", "collision_8c.html", "collision_8c" ],
     [ "collision.h", "collision_8h.html", "collision_8h" ],
     [ "math_util.c", "math__util_8c.html", "math__util_8c" ],

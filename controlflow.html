@@ -112,7 +112,7 @@ $(function(){initNavTree('controlflow.html',''); initResizable(); });
 <li class="level2"><a href="#players">Players</a></li>
 <li class="level2"><a href="#actors-1">Actors</a></li>
 <li class="level2"><a href="#objects-1">Objects</a></li>
-<li class="level2"><a href="#courses">Courses</a><ul><li class="level3"><a href="#course-folder">Course Folder</a></li>
+<li class="level2"><a href="#courses-1">Courses</a><ul><li class="level3"><a href="#course-folder">Course Folder</a></li>
 </ul>
 </li>
 <li class="level2"><a href="#ui--other-2d-screen-data">UI &amp; Other 2D Screen data</a></li>
@@ -130,7 +130,7 @@ Paradigm</h1>
 Threading</h1>
 <p>After boot, the game begins by setting up its four threads; <a class="el" href="main_8c.html#a1e35d2b842121e6aea373f09381616e5">idle</a>, <a class="el" href="main_8c.html#a023b8f272e4efbd33f371e91ffff6b30">video</a>, <a class="el" href="main_8c.html#adc4ddc4dba28c4eebe8a7c28e5559b11">audio</a>, and the <a class="el" href="main_8c.html#a633ed517e458daeb768f5361895dcac9">game loop</a>.</p>
 <p>The <a class="el" href="main_8c.html#a1e35d2b842121e6aea373f09381616e5">idle thread</a> allows the cpu to sleep. Without it, if at any time execution of all threads were paused, the cpu would never be able to continue. The idle thread is active if all the other threads are paused.</p>
-<p>As such, the <a class="el" href="main_8c.html#a1e35d2b842121e6aea373f09381616e5">idle thread</a> runs the following loop: <code><a class="el" href="code__800029B0_8c.html#a1958f2cc6c2e05f18736c6ca0f93b3de">while(TRUE)</a>;</code> (it runs in a perpetual loop of nothing; sleep). In mips assembly it looks like this: </p><div class="fragment"><div class="line">.L800005B8:</div>
+<p>As such, the <a class="el" href="main_8c.html#a1e35d2b842121e6aea373f09381616e5">idle thread</a> runs the following loop: <code><a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">while(TRUE)</a>;</code> (it runs in a perpetual loop of nothing; sleep). In mips assembly it looks like this: </p><div class="fragment"><div class="line">.L800005B8:</div>
 <div class="line">b     .L800005B8</div>
 <div class="line">nop   </div>
 </div><!-- fragment --><p> b stands for branch which acts akin to a goto. In this case, branch to the label <code>.L800005B8</code>. This creates an infinite loop. Whenever the cpu branches it always runs the next instruction as well which is called a delay slot. This means the cpu will continuously branch then run <code>nop</code> or <code>no operation</code> with no method of escaping the loop (except for when another thread has a higher priority which means the cpu switches to that thread and stops running the idle thread).</p>
@@ -189,7 +189,7 @@ Segments</h1>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Segment   </th><th class="markdownTableHeadNone">desc    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">Main   </td><td class="markdownTableBodyNone"><a class="el" href="menus_8c.html">Menus</a>, <a class="el" href="code__800029B0_8c.html#a1958f2cc6c2e05f18736c6ca0f93b3de">audio</a>, <a class="el" href="code__800029B0_8c.html#a1958f2cc6c2e05f18736c6ca0f93b3de">libultra</a>, rsp (include in libultra)    </td></tr>
+<td class="markdownTableBodyNone">Main   </td><td class="markdownTableBodyNone"><a class="el" href="menus_8c.html">Menus</a>, <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">audio</a>, <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">libultra</a>, rsp (include in libultra)    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">Racing   </td><td class="markdownTableBodyNone"><a class="el" href="memory_8c.html">Memory management</a>, <a class="el" href="render__courses_8c.html">courses</a>, <a href="player_controller.c">players</a>, <a class="el" href="actors_8c.html">actors</a>, <a class="el" href="skybox__and__splitscreen_8c.html">skybox</a>, <a class="el" href="collision_8c.html">collision</a>, <a class="el" href="math__util_8c.html">math</a>    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -245,7 +245,7 @@ Objects</h2>
 <td class="markdownTableBodyNone"><a class="el" href="code__80086E70_8c.html">code_80086E70</a>   </td><td class="markdownTableBodyNone"><a class="el" href="structObjects.html">Objects</a>   </td></tr>
 </table>
 <p>Documentation of the specifics still in-progress. See <a href="actorsmenu.html">actors</a> for more information.</p>
-<h2><a class="anchor" id="courses"></a>
+<h2><a class="anchor" id="courses-1"></a>
 Courses</h2>
 <p>Course related code resides in </p><table class="markdownTable">
 <tr class="markdownTableHead">
@@ -259,7 +259,7 @@ Courses</h2>
 </table>
 <h3><a class="anchor" id="course-folder"></a>
 Course Folder</h3>
-<p>[course folder link][<a class="el" href="#courses">Courses</a>] </p><table class="markdownTable">
+<p>[course folder link][<a class="el" href="courses.html#courses">Courses</a>] </p><table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">file   </th><th class="markdownTableHeadNone">desc    </th></tr>
 <tr class="markdownTableRowOdd">

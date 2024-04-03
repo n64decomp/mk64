@@ -1,5 +1,7 @@
 var collision_8c =
 [
+    [ "MAX3", "collision_8c.html#a25cec12cb73a08cf253084e285058350", null ],
+    [ "MIN3", "collision_8c.html#a1e07ff5a06746e194715b46aa899c8e5", null ],
     [ "find_and_set_tile_size", "collision_8c.html#ad4acc660e55a551946cb912b19b1dc18", null ],
     [ "find_and_set_vertex_data", "collision_8c.html#a9e4df514d146d674c57382712064a4a3", null ],
     [ "find_vtx_and_set_colours", "collision_8c.html#a018be865ee771f721ef5b2d504831285", null ],

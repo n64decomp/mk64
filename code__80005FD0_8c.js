@@ -1,6 +1,11 @@
 var code__80005FD0_8c =
 [
+    [ "add_actor_in_unexpired_actor_list", "code__80005FD0_8c.html#aa8b362cc15beb71aeda9bef462c4826a", null ],
+    [ "add_blue_shell_in_unexpired_actor_list", "code__80005FD0_8c.html#a8d5e85372f25e4b12d62edcc131bf7ae", null ],
+    [ "add_green_shell_in_unexpired_actor_list", "code__80005FD0_8c.html#a3da5a7898fa91355d9cb394860db7904", null ],
+    [ "add_red_shell_in_unexpired_actor_list", "code__80005FD0_8c.html#a049aa28f9db56c36a8ea389644629029", null ],
     [ "cpu_decisions_branch_item", "code__80005FD0_8c.html#a4d8b2e480ae893503546c6b66dadca37", null ],
+    [ "delete_actor_in_unexpired_actor_list", "code__80005FD0_8c.html#ad301b978cdd3c4cc190b10be050d51d8", null ],
     [ "func_80005FD0", "code__80005FD0_8c.html#ac0d96d9d8c5772c7fe5edbb8da736086", null ],
     [ "func_80006018", "code__80005FD0_8c.html#af639a4e2e4579c87c7cb1660bc901724", null ],
     [ "func_80006114", "code__80005FD0_8c.html#a4e2ffaf7380570c3c94e7083566d4e91", null ],
@@ -42,11 +47,6 @@ var code__80005FD0_8c =
     [ "func_8000D940", "code__80005FD0_8c.html#a5a0e67ccde01cf1fb86f9fbd14161e4e", null ],
     [ "func_8000DBAC", "code__80005FD0_8c.html#a999bc47d5faecbe08adb45a4114cd52f", null ],
     [ "func_8000DF8C", "code__80005FD0_8c.html#ad7cfd2edb9055380080a6c1c577d042f", null ],
-    [ "func_8000ED14", "code__80005FD0_8c.html#a70fb7081e4846c53116f2029ede9a9e3", null ],
-    [ "func_8000ED80", "code__80005FD0_8c.html#a0ad3446f111aea480171c72a596d3f0d", null ],
-    [ "func_8000EDC8", "code__80005FD0_8c.html#a6698b1bb29100fa000dde180fdaf6b60", null ],
-    [ "func_8000EE10", "code__80005FD0_8c.html#a2e9bd3bfe6460c5f84ce6820d25853af", null ],
-    [ "func_8000EE58", "code__80005FD0_8c.html#a6883471b988e3d7da2086c14cd7b6c79", null ],
     [ "func_8000EEDC", "code__80005FD0_8c.html#a0355a63eb89c8a358744c372aa1ad12a", null ],
     [ "func_8000F0E0", "code__80005FD0_8c.html#a235e42391f675d011b865e8568b78f4e", null ],
     [ "func_8000F124", "code__80005FD0_8c.html#a7fc44af1268e58cc195aeab08726c3cd", null ],

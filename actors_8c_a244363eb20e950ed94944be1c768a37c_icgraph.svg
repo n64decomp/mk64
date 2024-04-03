@@ -48,7 +48,7 @@
 <script type="application/ecmascript">
 var viewWidth = 1370;
 var viewHeight = 460;
-var sectionId = 'dynsection-130';
+var sectionId = 'dynsection-69';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -66,7 +66,7 @@ var sectionId = 'dynsection-130';
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="actors_8c.html#a516dec1dd3d7c2d39294a1ab4edcff4a" target="_top" xlink:title=" ">
+<g id="a_Node000002"><a xlink:href="blue__and__red__shells_2render_8inc_8c.html#a516dec1dd3d7c2d39294a1ab4edcff4a" target="_top" xlink:title="Render the blue shell actor.">
 <polygon fill="white" stroke="#666666" points="1219,-283.5 1086,-283.5 1086,-264.5 1219,-264.5 1219,-283.5"/>
 <text text-anchor="middle" x="1152.5" y="-271.5" font-family="Helvetica,sans-Serif" font-size="10.00">render_actor_blue_shell</text>
 </a>
@@ -84,7 +84,7 @@ var sectionId = 'dynsection-130';
 <!-- Node21 -->
 <g id="Node000021" class="node">
 <title>Node21</title>
-<g id="a_Node000021"><a xlink:href="actors_8c.html#a39d6e7cdcb6d797ff42e8b68549ce944" target="_top" xlink:title=" ">
+<g id="a_Node000021"><a xlink:href="green__shell_2render_8inc_8c.html#a39d6e7cdcb6d797ff42e8b68549ce944" target="_top" xlink:title="Renders the green shell actor.">
 <polygon fill="white" stroke="#666666" points="1208,-246 1097,-246 1097,-216 1208,-216 1208,-246"/>
 <text text-anchor="start" x="1105" y="-234" font-family="Helvetica,sans-Serif" font-size="10.00">render_actor_green</text>
 <text text-anchor="middle" x="1152.5" y="-223" font-family="Helvetica,sans-Serif" font-size="10.00">_shell</text>
@@ -103,7 +103,7 @@ var sectionId = 'dynsection-130';
 <!-- Node22 -->
 <g id="Node000022" class="node">
 <title>Node22</title>
-<g id="a_Node000022"><a xlink:href="actors_8c.html#aad2583aa98831d6ef751cf57d0ec166a" target="_top" xlink:title=" ">
+<g id="a_Node000022"><a xlink:href="blue__and__red__shells_2render_8inc_8c.html#aad2583aa98831d6ef751cf57d0ec166a" target="_top" xlink:title="Render the red shell actor.">
 <polygon fill="white" stroke="#666666" points="1216.5,-197.5 1088.5,-197.5 1088.5,-178.5 1216.5,-178.5 1216.5,-197.5"/>
 <text text-anchor="middle" x="1152.5" y="-185.5" font-family="Helvetica,sans-Serif" font-size="10.00">render_actor_red_shell</text>
 </a>

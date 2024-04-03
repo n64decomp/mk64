@@ -1,5 +1,7 @@
 var collision_8h =
 [
+    [ "COLLISION", "collision_8h.html#aafd826a123a41fd03a9c88842387a821", null ],
+    [ "NO_COLLISION", "collision_8h.html#a9e9ecb3914c88ca208ef90b7ea1b8849", null ],
     [ "find_and_set_tile_size", "collision_8h.html#a867fe7311f17624aabad79f8cd1cf6d3", null ],
     [ "find_and_set_vertex_data", "collision_8h.html#aeba7b218b10bea612c42b583790eb15f", null ],
     [ "find_vtx_and_set_colours", "collision_8h.html#a4078ce86c6d3b52bd72a1a1286147f72", null ],

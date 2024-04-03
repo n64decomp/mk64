@@ -1,20 +1,5 @@
 var searchData=
 [
-  ['macros_2eh_0',['macros.h',['../macros_8h.html',1,'']]],
-  ['macros_2einc_1',['macros.inc',['../macros_8inc.html',1,'']]],
-  ['main_2ec_2',['main.c',['../main_8c.html',1,'']]],
-  ['main_2eh_3',['main.h',['../main_8h.html',1,'']]],
-  ['mainpage_2emd_4',['mainpage.md',['../mainpage_8md.html',1,'']]],
-  ['math_2eh_5',['math.h',['../math_8h.html',1,'']]],
-  ['math_5futil_2ec_6',['math_util.c',['../math__util_8c.html',1,'']]],
-  ['math_5futil_2eh_7',['math_util.h',['../math__util_8h.html',1,'']]],
-  ['math_5futil_5f2_2ec_8',['math_util_2.c',['../math__util__2_8c.html',1,'']]],
-  ['math_5futil_5f2_2eh_9',['math_util_2.h',['../math__util__2_8h.html',1,'']]],
-  ['mbi_2eh_10',['mbi.h',['../mbi_8h.html',1,'']]],
-  ['memory_2ec_11',['memory.c',['../memory_8c.html',1,'']]],
-  ['memory_2eh_12',['memory.h',['../memory_8h.html',1,'']]],
-  ['memory_5fpool_2ec_13',['memory_pool.c',['../memory__pool_8c.html',1,'']]],
-  ['menus_2ec_14',['menus.c',['../menus_8c.html',1,'']]],
-  ['menus_2eh_15',['menus.h',['../menus_8h.html',1,'']]],
-  ['mk64_2eh_16',['mk64.h',['../mk64_8h.html',1,'']]]
+  ['nan_2ec_0',['NaN.c',['../NaN_8c.html',1,'']]],
+  ['new_5ffunc_2eh_1',['new_func.h',['../new__func_8h.html',1,'']]]
 ];

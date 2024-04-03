@@ -174,7 +174,7 @@ var sectionId = 'dynsection-107';
 <!-- Node29 -->
 <g id="Node000029" class="node">
 <title>Node29</title>
-<g id="a_Node000029"><a xlink:href="actors__extended_8c.html#a6e281ad692a9ccd329fa6840ad38afbc" target="_top" xlink:title=" ">
+<g id="a_Node000029"><a xlink:href="blue__and__red__shells_2update_8inc_8c.html#a6e281ad692a9ccd329fa6840ad38afbc" target="_top" xlink:title="Update the red and blue shell actors.">
 <polygon fill="white" stroke="#666666" points="1764,-356.5 1636,-356.5 1636,-326.5 1764,-326.5 1764,-356.5"/>
 <text text-anchor="start" x="1644" y="-344.5" font-family="Helvetica,sans-Serif" font-size="10.00">update_actor_red_blue</text>
 <text text-anchor="middle" x="1700" y="-333.5" font-family="Helvetica,sans-Serif" font-size="10.00">_shell</text>
@@ -193,7 +193,7 @@ var sectionId = 'dynsection-107';
 <!-- Node31 -->
 <g id="Node000031" class="node">
 <title>Node31</title>
-<g id="a_Node000031"><a xlink:href="train_8inc_8c.html#a7a57fd958ad862c81447e812d25614bc" target="_top" xlink:title=" ">
+<g id="a_Node000031"><a xlink:href="train_2update_8inc_8c.html#a7a57fd958ad862c81447e812d25614bc" target="_top" xlink:title="Updates the train engine actor. Used in Kalimari Desert. Update wheels and make sound,...">
 <polygon fill="white" stroke="#666666" points="1754,-303.5 1646,-303.5 1646,-273.5 1754,-273.5 1754,-303.5"/>
 <text text-anchor="start" x="1654" y="-291.5" font-family="Helvetica,sans-Serif" font-size="10.00">update_actor_train</text>
 <text text-anchor="middle" x="1700" y="-280.5" font-family="Helvetica,sans-Serif" font-size="10.00">_engine</text>

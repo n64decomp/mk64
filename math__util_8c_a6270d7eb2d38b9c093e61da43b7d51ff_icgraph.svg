@@ -84,7 +84,7 @@ var sectionId = 'dynsection-30';
 <!-- Node11 -->
 <g id="Node000011" class="node">
 <title>Node11</title>
-<g id="a_Node000011"><a xlink:href="actors__extended_8c.html#a1b699acb507ca2e080f46ea632573993" target="_top" xlink:title=" ">
+<g id="a_Node000011"><a xlink:href="banana_2update_8inc_8c.html#a1b699acb507ca2e080f46ea632573993" target="_top" xlink:title="Update the banana actor.">
 <polygon fill="white" stroke="#666666" points="1049,-153.5 927,-153.5 927,-134.5 1049,-134.5 1049,-153.5"/>
 <text text-anchor="middle" x="988" y="-141.5" font-family="Helvetica,sans-Serif" font-size="10.00">update_actor_banana</text>
 </a>
@@ -102,7 +102,7 @@ var sectionId = 'dynsection-30';
 <!-- Node12 -->
 <g id="Node000012" class="node">
 <title>Node12</title>
-<g id="a_Node000012"><a xlink:href="actors__extended_8c.html#a4fd275676bf11ca2e15556db08264a90" target="_top" xlink:title=" ">
+<g id="a_Node000012"><a xlink:href="green__shell_2update_8inc_8c.html#a4fd275676bf11ca2e15556db08264a90" target="_top" xlink:title="Updates the green shell actor.">
 <polygon fill="white" stroke="#666666" points="1044.5,-116 931.5,-116 931.5,-86 1044.5,-86 1044.5,-116"/>
 <text text-anchor="start" x="939.5" y="-104" font-family="Helvetica,sans-Serif" font-size="10.00">update_actor_green</text>
 <text text-anchor="middle" x="988" y="-93" font-family="Helvetica,sans-Serif" font-size="10.00">_shell</text>
@@ -121,7 +121,7 @@ var sectionId = 'dynsection-30';
 <!-- Node13 -->
 <g id="Node000013" class="node">
 <title>Node13</title>
-<g id="a_Node000013"><a xlink:href="actors__extended_8c.html#a6e281ad692a9ccd329fa6840ad38afbc" target="_top" xlink:title=" ">
+<g id="a_Node000013"><a xlink:href="blue__and__red__shells_2update_8inc_8c.html#a6e281ad692a9ccd329fa6840ad38afbc" target="_top" xlink:title="Update the red and blue shell actors.">
 <polygon fill="white" stroke="#666666" points="1213,-78 1085,-78 1085,-48 1213,-48 1213,-78"/>
 <text text-anchor="start" x="1093" y="-66" font-family="Helvetica,sans-Serif" font-size="10.00">update_actor_red_blue</text>
 <text text-anchor="middle" x="1149" y="-55" font-family="Helvetica,sans-Serif" font-size="10.00">_shell</text>
