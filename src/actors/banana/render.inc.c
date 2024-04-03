@@ -3,7 +3,7 @@
 #include <PR/gbi.h>
 
 /**
- * @brief render the banana actor
+ * @brief Render the banana actor
  * 
  * @param camera 
  * @param arg1 

@@ -4,7 +4,7 @@
 #include <main.h>
 
 /**
- * @brief update the banana actor
+ * @brief Update the banana actor
  * 
  * @param banana 
  */

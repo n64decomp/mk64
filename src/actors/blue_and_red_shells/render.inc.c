@@ -2,7 +2,7 @@
 #include <PR/gbi.h>
 
 /**
- * @brief render the red shell actor
+ * @brief Render the red shell actor
  * 
  * @param camera 
  * @param matrix 
@@ -14,7 +14,7 @@ void render_actor_red_shell(Camera *camera, Mat4 matrix, struct ShellActor *shel
 }
 
 /**
- * @brief render the blue shell actor
+ * @brief Render the blue shell actor
  * 
  * @param camera 
  * @param matrix 
