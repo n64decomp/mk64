@@ -150,12 +150,12 @@ typedef struct {
     /* 0x011 */ u8  unk_011;
     /* 0x012 */ u8  unk_012;
     /* 0x013 */ u8  unk_013;
-    /* 0x014 */ s32 unk_014;
+    /* 0x014 */ u32 unk_014;
     /* 0x018 */ u16 unk_018;
     /* 0x01A */ u16 unk_01A;
-    /* 0x01C */ s32 unk_01C;
-    /* 0x020 */ s32 unk_020;
-    /* 0x024 */ s32 unk_024;
+    /* 0x01C */ f32 unk_01C;
+    /* 0x020 */ f32 unk_020;
+    /* 0x024 */ f32 unk_024;
     /* 0x028 */ u16 unk_028;
     /* 0x02A */ u16 unk_02A;
     /* 0x02C */ u32 unk_02C[5]; // Array size guessed

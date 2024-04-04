@@ -925,7 +925,7 @@ s32 func_800B65F4(s32 arg0, s32 arg1) {
     }
     writeStatus = osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNote, 0U, (arg0 * 0x3C00) + 0x100, 0x00003C00, (u8 *) D_800DC714);
     if (writeStatus == 0) {
-        temp_s3 = &D_8018D9C0->arr[arg0];
+        temp_s3 = &((struct_8018EE10_entry*)D_8018D9C0)[arg0];
         for (i = 0; i < 0x3C; i++) {
             if (temp_s3->unk_07[i] != func_800B60E8(i)) {
                 temp_s3->ghostDataSaved = 0;
@@ -986,7 +986,7 @@ u8 func_800B68F4(s32 arg0) {
     s32 i;
     checksum = 0;
     for (i = 0; i < 0x43; i++) {
-        u8 *addr = (u8 *) (&D_8018D9C0[arg0]);
+        u8 *addr = &((u8*)D_8018D9C0)[arg0];
         checksum += addr[i] * multiplier + i;
     }
     return checksum;
