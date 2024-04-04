@@ -716,10 +716,10 @@ void func_8008D9C0(Player* player) {
     }
 }
 
-void func_8008DABC(Player *player, s8 arg1) {
+void apply_hit_sound_effect(Player *player, s8 arg1) {
     clean_effect(player, arg1);
 
-    if ((player->effects & 0x4000000) == 0) {
+    if ((player->effects & HIT_EFFECT) == 0) {
         player->unk_DB4.unk2 = 0;
         player->unk_238 = 0;
         player->unk_DB4.unk10 = 4.5f;
@@ -737,18 +737,18 @@ void func_8008DABC(Player *player, s8 arg1) {
             player->unk_046 |= 0x80;
         }
 
-        if (((player->type & PLAYER_HUMAN) != 0) && ((player->effects & 0x04000000) == 0)) {
-            func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008005);
+        if (((player->type & PLAYER_HUMAN) != 0) && ((player->effects & HIT_EFFECT) == 0)) {
+            func_800C90F4(arg1, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x05));
         }
 
-        player->effects |= 0x04000000;
+        player->effects |= HIT_EFFECT;
         if (((player->type) & 0x1000) != 0) {
             func_800098FC(arg1, player);
         }
     }
 }
 
-void func_8008DC08(Player* player, s8 arg1) {
+void apply_hit_effect(Player* player, s8 arg1) {
     player->unk_0C2 = 0;
     player->unk_0A8 = 0;
     player->unk_07C = 0;
@@ -837,7 +837,7 @@ void func_8008DC08(Player* player, s8 arg1) {
         break;
     case 3:
         player->unk_DB4.unk10 = 3.0f;
-        player->effects &= ~0x04000000;
+        player->effects &= ~HIT_EFFECT;
         player->unk_DB4.unk2 = 0;
         player->effects |= 0x08000000;
         player->size = 1.0f;
@@ -889,7 +889,7 @@ void apply_hit_rotating_sound_effect(Player* player, s8 arg1) {
 
 void apply_lightning_effect(Player *player, s8 arg1) {
     s16 test;
-    if (((player->effects & 0x8000) == 0x8000) && ((player->effects & 0x04000000) != 0x04000000)) {
+    if (((player->effects & 0x8000) == 0x8000) && ((player->effects & HIT_EFFECT) != HIT_EFFECT)) {
         player->effects &= ~0x20000;
         player->unk_0A8 = 0;
         player->unk_07C = 0;
@@ -900,7 +900,7 @@ void apply_lightning_effect(Player *player, s8 arg1) {
         D_80165190[1][arg1] = 1;
         D_80165190[2][arg1] = 1;
         D_80165190[3][arg1] = 1;
-        func_8008DABC(player, arg1);
+        apply_hit_sound_effect(player, arg1);
     } else if ((player->effects & 0x20000) == 0x20000) {
         player->rotation[1] -= 0x5B0;
         D_8018D920[arg1]   -= 0x5B0;
@@ -1987,10 +1987,28 @@ void func_80090970(Player *player, s8 playerId, s8 arg2) {
     }
 }
 
-s32 func_800910E4(Player *player) {
+#define EFFECT_BLACKLIST_USE_ITEM LIGHTNING_EFFECT| \
+            0x10000000| \
+            0x8000000| \
+            HIT_EFFECT| \
+            HIT_BY_ITEM_EFFECT| \
+            0x1000000| \
+            0x800000| \
+            BOOST_RAMP_ASPHALT_EFFECT|\
+            0x20000| \
+            0x10000| \
+            0x4000| \
+            0x800| \
+            0x400| \
+            STAR_EFFECT| \
+            0x80| \
+            0x40| \
+            BOOST_RAMP_WOOD_EFFECT
+
+bool prevent_item_use(Player *player) {
     s32 phi_v0 = 0;
     if ((((((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) || ((player->type & PLAYER_UNKNOWN_0x40) != 0)) || ((player->type & PLAYER_CINEMATIC_MODE) != 0)) || ((player->type & PLAYER_EXISTS) == 0)) {
-        return 1;
+        return TRUE;
     }
 
     switch (player->currentItemCopy) {
@@ -1999,20 +2017,20 @@ s32 func_800910E4(Player *player) {
     case ITEM_TRIPLE_MUSHROOM:
     case ITEM_SUPER_MUSHROOM:
         if ((player->effects & 8) != 0) {
-            return 1;
+            return TRUE;
         }
-        phi_v0 = 0x5F934EC4;
-        goto func_800910E4_label;
+        phi_v0 = EFFECT_BLACKLIST_USE_ITEM;
+        goto prevent_item_use_label;
     case ITEM_STAR:
-        phi_v0 = 0xDF934EC4;
+        phi_v0 = BOO_EFFECT| EFFECT_BLACKLIST_USE_ITEM;
     case ITEM_BOO:
-        phi_v0 = phi_v0 | 0xDF934EC4;
-func_800910E4_label:
+        phi_v0 = phi_v0 | (BOO_EFFECT | EFFECT_BLACKLIST_USE_ITEM);
+prevent_item_use_label:
     default:
         if ((player->effects & phi_v0) != 0) {
-            return 1;
+            return TRUE;
         }
-        return 0;
+        return FALSE;
     }
 }
 
