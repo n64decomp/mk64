@@ -182,7 +182,7 @@ extern struct SPTask *gGfxSPTask;
 extern s32 D_801502A0;
 extern s32 D_801502A4;
 extern u16 *gPhysicalFramebuffers[];
-extern u32 D_801502B4;
+extern uintptr_t gPhysicalZBuffer;
 extern Mat4 D_801502C0;
 
 extern s32 padding[];
@@ -230,10 +230,5 @@ extern f32 gVBlankTimer;
 extern f32 gCourseTimer;
 
 // end of definition of main.c variables
-
-extern u64 gGfxSPTaskOutputBuffer[];
-extern u32 gGfxSPTaskOutputBufferSize;
-
-extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?
 
 #endif

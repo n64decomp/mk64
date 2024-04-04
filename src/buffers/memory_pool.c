@@ -5,7 +5,7 @@
 #define MEMORY_POOL_SIZE 0xAB630
 
 /**
- * Memory pool setup to prevent other code segments flowing into the memory pool
- * and for easier portability.
+ * Memory pool variable prevents code segments flowing into the memory pool
+ * for easier portability.
 */
 u8 memoryPool[MEMORY_POOL_SIZE];
