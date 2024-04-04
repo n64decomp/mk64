@@ -13,14 +13,14 @@ typedef struct
     /* 0x04 */ Vec3f pos;
     /* 0x10 */ Vec3f origin_pos;
     /* 0x1C */ Vec3f unk_01C;
-    /* 0x28 */ Vec3f unk_028;
+    /* 0x28 */ Vec3f offset;
     /* 0x34 */ f32 unk_034;
-    /* 0x38 */ Vec3f velocity;
+    /* 0x38 */ Vec3f velocity; // acceleration
     /* 0x44 */ f32 unk_044;
     /* 0x48 */ s32 unk_048;
     /* 0x4C */ s32 unk_04C;
     /* 0x50 */ s32 unk_050;
-    /* 0x54 */ s32 unk_054;
+    /* 0x54 */ s32 status;
     /* 0x58 */ s32 unk_058;
     /* 0x5C */ s32 unk_05C;
     /* 0x60 */ u8 *activeTLUT;
@@ -42,7 +42,7 @@ typedef struct
     /* 0x9A */ u16 unk_09A;
     /* 0x9C */ s16 unk_09C;
     /* 0x9E */ s16 unk_09E;
-    /* 0xA0 */ s16 unk_0A0;
+    /* 0xA0 */ s16 primAlpha;
     /* 0xA2 */ s16 unk_0A2;
     /* 0xA4 */ s16 type;
     /* 0xA6 */ s16 state;
@@ -89,14 +89,14 @@ typedef struct
     /* 0x04 */ Vec3f pos;
     /* 0x10 */ Vec3f origin_pos;
     /* 0x1C */ Vec3f unk_01C;
-    /* 0x28 */ Vec3f unk_028;
+    /* 0x28 */ Vec3f offset;
     /* 0x34 */ f32 unk_034;
     /* 0x38 */ Vec3f velocity;
     /* 0x44 */ f32 unk_044;
     /* 0x48 */ s32 unk_048;
     /* 0x4C */ s32 unk_04C;
     /* 0x50 */ s32 unk_050;
-    /* 0x54 */ s32 unk_054;
+    /* 0x54 */ s32 status;
     /* 0x58 */ s32 unk_058;
     /* 0x5C */ s32 unk_05C;
     /* 0x60 */ u8 *activeTLUT;
@@ -118,7 +118,7 @@ typedef struct
     /* 0x9A */ u16 unk_09A;
     /* 0x9C */ s16 unk_09C;
     /* 0x9E */ s16 unk_09E;
-    /* 0xA0 */ s16 unk_0A0;
+    /* 0xA0 */ s16 primAlpha;
     /* 0xA2 */ s16 unk_0A2;
     /* 0xA4 */ s16 currentItem;
     /* 0xA6 */ s16 itemDisplayState; // Usually a state tracker
@@ -158,6 +158,11 @@ typedef struct
 } ItemWindowObjects; // size = 0xE0
 
 // This are other lists of indices in gObjectList.
+
+/**
+ * @brief Status flags for objects
+ */
+#define VISIBLE 0x00040000
 
 /**
  * Use unknown. An object is reserved and its index is saved to
@@ -284,13 +289,6 @@ extern Vec3s gHedgehogPatrolPoints[];
  */
 extern s32 indexObjectList2[];
 
-// This struct is used by a lot of different objects
-// Stars, clouds, exahust smoke (I think?)
-typedef struct {
-    Vec3su pos;
-    u16 id;
-} StarSpawn;
-
 #define NUM_BOOS 0xA
 #define NUM_FIRE_BREATHS 4
 
@@ -313,13 +311,17 @@ extern s32 indexObjectList3[];
 extern s32 indexObjectList4[];
 
 #define gObjectParticle1_SIZE 128
-#define NUM_MAX_MOLES  0x1F
 #define NUM_GROUP1_MOLES  8
 #define NUM_GROUP2_MOLES 11
 #define NUM_GROUP3_MOLES 12
+#define NUM_TOTAL_MOLES  (NUM_GROUP1_MOLES + NUM_GROUP2_MOLES + NUM_GROUP3_MOLES)
 #define NUM_SNOWFLAKES 0x32
 
-extern Vec3s gMoleSpawns[];
+typedef union {
+    Vec3s asVec3sList[NUM_TOTAL_MOLES];
+    s16 asFlatList[NUM_TOTAL_MOLES*3];
+} MoleSpawnUnion;
+extern MoleSpawnUnion gMoleSpawns;
 
 /**
  * Exact use unknown, something related to the mole groups
@@ -401,6 +403,22 @@ extern s32 gLeafParticle[];
 
 //! Next free spot in gLeafParticle? Wraps back around to 0 if it gets bigger than gLeafParticle_SIZE
 extern s32 gNextFreeLeafParticle;
+
+// Struct used for clouds and stars
+// See `func_80070328` and `func_80070250` for cloud initialization
+// See `func_800704A0` and `func_800703E0` for star initialization
+typedef struct {
+    // rotY and posY seem relative to the camera.
+    // See `func_800788F8` to see how rotY is used to decide whether and where to display clouds/stars
+    // See `func_80078A44` and `func_800789AC` to see how stars and clouds (respectively) are looped over
+    /* 0x00 */ u16 rotY;
+    /* 0x02 */ u16 posY;
+    // Can be bigger than 100!
+    /* 0x04 */ u16 scalePercent;
+    // There are a couple different cloud shapes, this decides which one is used
+    // For stars, this is always 0 since they don't have multiple textures
+    /* 0x06 */ u16 subType;
+} StarData, CloudData; // size = 0x8
 
 #define D_8018CC80_SIZE 0x64
 

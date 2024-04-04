@@ -324,10 +324,10 @@ glabel func_8006FA94
 /* 070B5C 8006FF5C 3C198019 */  lui   $t9, %hi(D_8018D214) # $t9, 0x8019
 /* 070B60 8006FF60 AC38D214 */  sw    $t8, %lo(D_8018D214)($at)
 /* 070B64 8006FF64 8F39D214 */  lw    $t9, %lo(D_8018D214)($t9)
-/* 070B68 8006FF68 3C018016 */  lui   $at, %hi(D_801657B0) # $at, 0x8016
-/* 070B6C 8006FF6C 3C0E8016 */  lui   $t6, %hi(D_801657B0) # $t6, 0x8016
-/* 070B70 8006FF70 A03957B0 */  sb    $t9, %lo(D_801657B0)($at)
-/* 070B74 8006FF74 81CE57B0 */  lb    $t6, %lo(D_801657B0)($t6)
+/* 070B68 8006FF68 3C018016 */  lui   $at, %hi(gHUDDisable) # $at, 0x8016
+/* 070B6C 8006FF6C 3C0E8016 */  lui   $t6, %hi(gHUDDisable) # $t6, 0x8016
+/* 070B70 8006FF70 A03957B0 */  sb    $t9, %lo(gHUDDisable)($at)
+/* 070B74 8006FF74 81CE57B0 */  lb    $t6, %lo(gHUDDisable)($t6)
 /* 070B78 8006FF78 3C018016 */  lui   $at, %hi(D_801657AE) # $at, 0x8016
 /* 070B7C 8006FF7C 3C0F8019 */  lui   $t7, %hi(D_8018D2F8) # $t7, 0x8019
 /* 070B80 8006FF80 A02E57AE */  sb    $t6, %lo(D_801657AE)($at)

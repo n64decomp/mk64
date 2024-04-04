@@ -16,7 +16,7 @@
 #include "buffers.h"
 #include "waypoints.h"
 #include "player_controller.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
 #include "common_textures.h"
 #include "skybox_and_splitscreen.h"
 #include "spawn_players.h"
@@ -265,12 +265,12 @@ void func_80020524(void) {
             func_80027560(D_80164AD0[i], D_80164AB0[i], D_80164AC0[i], D_80164AC0[i], D_801651D0[D_80164AC0[i]][D_80164AB0[i]]);
 
             mio0decode(D_802DFB80[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]].unk_00,
-                       D_802BFB80[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]].pixel_index_array);
+                       D_802BFB80.arraySize8[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]].pixel_index_array);
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
 
     mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
-               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
+               D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
 }
 
 void func_8002088C(void) {
@@ -291,11 +291,11 @@ void func_8002088C(void) {
     for (var_s0 = 1; var_s0 < gPlayersToRenderCount; var_s0++) {
         func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0], D_80164AC0[var_s0], D_80164AC0[var_s0], D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
         mio0decode(D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].unk_00,
-                   D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].pixel_index_array);
+                   D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
     mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
-               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
+               D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
 }
 
 void func_80020BF4(void) {
@@ -310,11 +310,11 @@ void func_80020BF4(void) {
     for (var_s0 = 1; var_s0 < gPlayersToRenderCount; var_s0++) {
         func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0] + 4, D_80164AC0[var_s0], D_80164AC0[var_s0] - 2, D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
         mio0decode(D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00,
-                   D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
+                   D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
     mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
-               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
+               D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
 }
 
 void func_80020F1C(void) {
@@ -329,11 +329,11 @@ void func_80020F1C(void) {
     for (var_s0 = 1; var_s0 < gPlayersToRenderCount; var_s0++) {
         func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0] + 4, D_80164AC0[var_s0], D_80164AC0[var_s0] - 2, D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
         mio0decode(D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00,
-                   D_802BFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
+                   D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
     mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
-               D_802BFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
+               D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
 }
 
 void try_render_player(Player *player, s8 playerId, s8 arg2) {
@@ -896,8 +896,8 @@ void func_80022A98(Player* player, s8 arg1) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         func_80026A48(player, arg1);
         func_800235AC(player, arg1);
-        if (((player->effects & 0x04000000) == 0x04000000) || ((player->effects & 0x08000000) == 0x08000000)) {
-            if ((player->effects & 0x04000000) == 0x04000000) {
+        if (((player->effects & HIT_EFFECT) == HIT_EFFECT) || ((player->effects & 0x08000000) == 0x08000000)) {
+            if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
                 func_80022B50(player, arg1);
             }
             if ((player->effects & 0x08000000) == 0x08000000) {
@@ -1207,7 +1207,7 @@ void func_800235AC(Player *player, s8 arg1) {
 }
 
 void func_80023BF0(Player *player, s8 arg1, s8 arg2, s8 arg3) {
-    if (((player->effects & 0x4000000) == 0x4000000) || ((player->effects & 0x8000000) == 0x8000000)) {
+    if (((player->effects & HIT_EFFECT) == HIT_EFFECT) || ((player->effects & 0x8000000) == 0x8000000)) {
         func_80022CA8(player, arg1, arg2, arg3);
     } else {
         func_80022E84(player, arg1, arg2, arg3);
@@ -1374,7 +1374,7 @@ void kart_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
         }
         sp14C[1] = player->unk_048[arg2];
         sp14C[2] = player->unk_050[arg2];
-        if (((s32)player->effects & 0x04000000) == 0x04000000) {
+        if (((s32)player->effects & HIT_EFFECT) == HIT_EFFECT) {
             func_80062B18(&sp148, &sp144, &sp140, 0.0f, 8.0f, 0.0f, -player->unk_048[arg2], player->unk_050[arg2]);
             sp154[1] = (player->pos[1] - player->boundingBoxSize) + player->unk_108;
             sp154[0] = player->pos[0] + sp148;
@@ -1392,11 +1392,11 @@ void kart_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
 #endif
     if ((arg2 == 0) || (arg2 == 1)) {
-        D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0x7C0];
+        D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
+        D_80164B0C = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0x7C0];
     } else {
-        D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0x7C0];
+        D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0];
+        D_80164B0C = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0x7C0];
     }
     mtxf_translate_rotate(sp1A4, sp154, sp14C);
     mtxf_scale2(sp1A4, gCharacterSize[player->characterId] * player->size);
@@ -1510,11 +1510,11 @@ void ghost_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
     gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
 #endif
     if ((arg2 == 0) || (arg2 == 1)) {
-        D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0x7C0];
+        D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
+        D_80164B0C = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0x7C0];
     } else {
-        D_80164B08 = &D_802BFB80[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0x7C0];
+        D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0];
+        D_80164B0C = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0x7C0];
     }
 
     mtxf_translate_rotate(sp12C, spDC, spD4);

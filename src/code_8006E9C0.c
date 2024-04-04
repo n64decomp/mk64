@@ -8,7 +8,7 @@
 #include "code_80057C60.h"
 #include "code_8006E9C0.h"
 #include "code_80086E70.h"
-#include "code_80071F00.h"
+#include "update_objects.h"
 #include "objects.h"
 #include "bomb_kart.h"
 #include "save.h"
@@ -20,10 +20,11 @@
 #include "main.h"
 #include "menus.h"
 #include "data/other_textures.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
 #include "code_80091750.h"
+#include "src/data/some_data.h"
 
-void init_object_list(void) {
+void init_hud(void) {
 
     reset_object_variable();
     func_8006FA94();
@@ -543,8 +544,8 @@ void func_8006FA94(void) {
     D_801657B2 = 0;
     D_801657D8 = D_801657B2;
     D_8018D214 = D_801657D8;
-    D_801657B0 = D_8018D214;
-    D_801657AE = D_801657B0;
+    gHUDDisable = D_8018D214;
+    D_801657AE = gHUDDisable;
     D_8018D20C = 0;
     D_8018D2F8 = 0;
     D_8018D2F0 = D_8018D2F8;
@@ -600,34 +601,34 @@ void init_object_list_index(void) {
     }
 
     for(loopIndex = 0; loopIndex < NUM_BOMB_KARTS_VERSUS; loopIndex++) {
-        find_unused_obj_index(&D_80183DD8[loopIndex]);
+        find_unused_obj_index(&gIndexObjectBombKart[loopIndex]);
     }
 }
 
-void func_80070250(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
+void init_cloud_object(s32 objectIndex, s32 arg1, CloudData *arg2) {
     ItemWindowObjects *temp_v0;
 
     init_object(objectIndex, arg1);
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->unk_0D5 = arg2->id;
+    temp_v0->unk_0D5 = arg2->subType;
     temp_v0->currentItem = ITEM_NONE;
-    temp_v0->direction_angle[1] = arg2->pos[0];
-    temp_v0->unk_09E = arg2->pos[1];
-    temp_v0->sizeScaling = (f32) arg2->pos[2] / 100.0;
-    temp_v0->activeTexture = &D_8018D220[arg2->id];
+    temp_v0->direction_angle[1] = arg2->rotY;
+    temp_v0->unk_09E = arg2->posY;
+    temp_v0->sizeScaling = (f32) arg2->scalePercent / 100.0;
+    temp_v0->activeTexture = &D_8018D220[arg2->subType];
     func_80073404(objectIndex, 0x40U, 0x20U, &D_0D005FB0);
-    temp_v0->unk_0A0 = 0x00FF;
+    temp_v0->primAlpha = 0x00FF;
 }
 
-void func_80070328(StarSpawn *arg0) {
+void init_clouds(CloudData *cloudList) {
     s32 var_s0 = 0;
-    StarSpawn *test = arg0;
+    CloudData *test = &cloudList[0];
     do {
         if(1) {}
-        func_80070250(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
+        init_cloud_object(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
         var_s0++;
         test++;
-    } while (test->pos[0] != 0xFFFF);
+    } while (test->rotY != 0xFFFF);
     D_8018D1F8 += var_s0;
     D_8018D1F0 = var_s0;
     D_8018D230 = 0;
@@ -642,34 +643,34 @@ void func_80070328(StarSpawn *arg0) {
  * The stars in Wario's Stadium, Toad's Turnpike, and Rainbow Road are not part of the skybox.
  * They are instead objects that seemingly hover in the air around the player
  * They have no true x/y/z position, instead they seem to be kept in a position relative to the
- * player they hang around. There is however an x/y position for where they should be on screen
+ * player they hang around. There is however an y rotation and y position for where they should be on screen
  * when they are visbile (unk_09E[0] and [1]).
  * sizeScaling is some sort of size scaling on the start texture.
  * unk_0A2 is an alpha value, used to make the star twinkle.
 **/
-void func_800703E0(s32 objectIndex, s32 arg1, StarSpawn *arg2) {
+void init_star_object(s32 objectIndex, s32 arg1, StarData *arg2) {
     ItemWindowObjects *temp_v0;
 
     init_object(objectIndex, arg1);
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->unk_0D5 = arg2->id; // No idea, all 0's for stars
+    temp_v0->unk_0D5 = arg2->subType;
     temp_v0->currentItem = ITEM_BANANA;
-    temp_v0->direction_angle[1] = arg2->pos[0]; // No idea
-    temp_v0->unk_09E = arg2->pos[1]; // screen Y position
-    temp_v0->sizeScaling = (f32)arg2->pos[2] / 100.0; // some type of scaling on the texture
+    temp_v0->direction_angle[1] = arg2->rotY;
+    temp_v0->unk_09E = arg2->posY; // screen Y position
+    temp_v0->sizeScaling = (f32) arg2->scalePercent / 100.0; // some type of scaling on the texture
     temp_v0->activeTexture = D_0D0293D8;
     func_80073404(objectIndex, 0x10U, 0x10U, common_vtx_rectangle);
 }
 
-void func_800704A0(StarSpawn *arg0) {
+void init_stars(StarData *starList) {
     s32 var_s0 = 0;
-    StarSpawn *test = arg0;
+    StarData *test = &starList[0];
     do {
         if(1) {}
-        func_800703E0(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
+        init_star_object(find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]), 1, test);
         var_s0++;
         test++;
-    } while (test->pos[0] != 0xFFFF);
+    } while (test->rotY != 0xFFFF);
     D_8018D1F8 += var_s0;
     D_8018D1F0 = var_s0;
     D_8018D230 = 1;
@@ -681,10 +682,11 @@ void func_8007055C(void) {
 
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
-        func_80070328(&D_800E6C10);
+        // Uses Kalimari Desert's clouds for initialization?
+        init_clouds(gKalimariDesertClouds);
         break;
     case COURSE_YOSHI_VALLEY:
-        func_80070328(&D_800E6AA8);
+        init_clouds(gYoshiValleyMooMooFarmClouds);
         break;
     case COURSE_FRAPPE_SNOWLAND:
         if (gPlayerCount == 1) {
@@ -699,31 +701,31 @@ void func_8007055C(void) {
         D_8018D1F0 = var_s0;
         break;
     case COURSE_KOOPA_BEACH:
-        func_80070328(D_800E6B00);
+        init_clouds(gKoopaTroopaBeachClouds);
         break;
     case COURSE_ROYAL_RACEWAY:
-        func_80070328(D_800E6B38);
+        init_clouds(gRoyalRacewayClouds);
         break;
     case COURSE_LUIGI_RACEWAY:
-        func_80070328(D_800E6A38);
+        init_clouds(gLuigiRacewayClouds);
         break;
     case COURSE_MOO_MOO_FARM:
-        func_80070328(D_800E6AA8);
+        init_clouds(gYoshiValleyMooMooFarmClouds);
         break;
     case COURSE_TOADS_TURNPIKE:
-        func_800704A0(D_800E6C80);
+        init_stars(gToadsTurnpikeRainbowRoadStars);
         break;
     case COURSE_KALAMARI_DESERT:
-        func_80070328(D_800E6C10);
+        init_clouds(gKalimariDesertClouds);
         break;
     case COURSE_SHERBET_LAND:
-        func_80070328(D_800E6BA8);
+        init_clouds(gSherbetLandClouds);
         break;
     case COURSE_RAINBOW_ROAD:
-        func_800704A0(D_800E6C80);
+        init_stars(gToadsTurnpikeRainbowRoadStars);
         break;
     case COURSE_WARIO_STADIUM:
-        func_800704A0(D_800E6DE0);
+        init_stars(gWarioStadiumStars);
         break;
     }
     func_8008C23C();
@@ -780,7 +782,7 @@ void init_course_object(void) {
             gObjectList[objectId].origin_pos[0] = gThowmpSpawnList[i].startX * xOrientation;
             gObjectList[objectId].origin_pos[2] = gThowmpSpawnList[i].startZ;
             gObjectList[objectId].unk_0D5 = gThowmpSpawnList[i].unk_4;
-            gObjectList[objectId].unk_0A0 = gThowmpSpawnList[i].unk_6;
+            gObjectList[objectId].primAlpha = gThowmpSpawnList[i].unk_6;
         }
         // Handle the big statue's fire breath
         objectId = indexObjectList2[0];
@@ -805,7 +807,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_BANSHEE_BOARDWALK:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             objectId = indexObjectList1[0];
             init_texture_object(objectId, d_course_banshee_boardwalk_bat_tlut, *d_course_banshee_boardwalk_bat, 0x20U, (u16) 0x00000040);
             gObjectList[objectId].orientation[0] = 0;
@@ -816,10 +818,10 @@ void init_course_object(void) {
         }
         break;
     case COURSE_YOSHI_VALLEY:
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < NUM_YV_FLAG_POLES; i++) {
             init_object(indexObjectList1[i], 0);
         }
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             for (i = 0; i < NUM_HEDGEHOGS; i++) {
                 objectId = indexObjectList2[i];
                 init_object(objectId, 0);
@@ -836,7 +838,7 @@ void init_course_object(void) {
         for (i = 0; i < NUM_SNOWFLAKES; i++) {
             find_unused_obj_index(&gObjectParticle1[i]);
         }
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             for (i = 0; i < NUM_SNOWMEN; i++) {
                 objectId = indexObjectList2[i];
                 init_object(objectId, 0);
@@ -853,7 +855,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_KOOPA_BEACH:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             for (i = 0; i < NUM_CRABS; i++) {
                 objectId = indexObjectList1[i];
                 init_object(objectId, 0);
@@ -875,7 +877,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_ROYAL_RACEWAY:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
@@ -886,7 +888,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_LUIGI_RACEWAY:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             if (gModeSelection == GRAND_PRIX) {
                 func_80070714();
             }
@@ -899,7 +901,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_MOO_MOO_FARM:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             if ((gPlayerCount == 1) || ((gPlayerCount == 2) && (gModeSelection == VERSUS))) {
                 switch (gCCSelection) {             /* switch 2; irregular */
                 case CC_50:                             /* switch 2 */
@@ -940,12 +942,12 @@ void init_course_object(void) {
                 D_8018D1B8[i] = 0;
                 find_unused_obj_index(&indexObjectList1[i]);
             }
-            for (i = 0; i < NUM_MAX_MOLES; i++) {
+            for (i = 0; i < NUM_TOTAL_MOLES; i++) {
                 find_unused_obj_index(&gObjectParticle1[i]);
                 objectId = gObjectParticle1[i];
                 init_object(objectId, 0);
-                gObjectList[objectId].pos[0] = gMoleSpawns[i][0] * xOrientation;
-                gObjectList[objectId].pos[2] = gMoleSpawns[i][2];
+                gObjectList[objectId].pos[0] = gMoleSpawns.asVec3sList[i][0] * xOrientation;
+                gObjectList[objectId].pos[2] = gMoleSpawns.asVec3sList[i][2];
                 func_800887C0(objectId);
                 gObjectList[objectId].sizeScaling = 0.7f;
             }
@@ -955,7 +957,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_KALAMARI_DESERT:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             find_unused_obj_index(&D_8018CF10);
             init_object(D_8018CF10, 0);
             for (i = 0; i < 50; i++) {
@@ -975,7 +977,7 @@ void init_course_object(void) {
         }
         break;
     case COURSE_RAINBOW_ROAD:
-        if (gGamestate != 9) {
+        if (gGamestate != CREDITS_SEQUENCE) {
             for (i = 0; i < NUM_NEON_SIGNS; i++) {
                 init_object(indexObjectList1[i], 0);
             }
@@ -986,7 +988,7 @@ void init_course_object(void) {
         break;
     case COURSE_DK_JUNGLE:
         for (i = 0; i < NUM_TORCHES; i++) {
-            func_800770F0(i);
+            init_smoke_particles(i);
             // wtf?
             if (D_8018CF10){}
         }

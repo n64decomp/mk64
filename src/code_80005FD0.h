@@ -83,7 +83,7 @@ void func_80009000(s32);
 void func_800090F0(s32, Player*);
 f32  func_80009258(s32, f32, f32);
 void func_8000929C(s32, Player*);
-void func_800097E0(void);
+void update_vehicles(void);
 void func_800098FC(s32, Player*);
 void func_800099EC(s32, Player*);
 void func_80009B60(s32);
@@ -117,13 +117,13 @@ s16  func_8000DBAC(Vec3f, s16*, f32);
 void set_bomb_kart_spawn_positions(void);
 void func_8000DF8C(s32);
 
-s32  func_8000ED14(s32, s16);
-s32  func_8000ED80(s32);
-s32  func_8000EDC8(s32);
-s32  func_8000EE10(s32);
-void func_8000EE58(s32);
+s32  add_actor_in_unexpired_actor_list(s32, s16);
+s32  add_red_shell_in_unexpired_actor_list(s32);
+s32  add_green_shell_in_unexpired_actor_list(s32);
+s32  add_blue_shell_in_unexpired_actor_list(s32);
+void delete_actor_in_unexpired_actor_list(s32);
 void func_8000EEDC(void);
-void func_8000EF20(void);
+void generate_player_smoke(void);
 
 void func_8000F0E0(void);
 void func_8000F124(void);
@@ -159,13 +159,13 @@ void init_course_vehicles(void);
 void func_80012780(TrainCarStuff*, s16*, u16);
 void func_800127E0(void);
 void func_80012A48(TrainCarStuff*, s16);
-void func_80012AC0(void);
+void update_vehicle_trains(void);
 void func_80012DC0(s32, Player*);
 
 void func_80013054(void);
 void func_800131DC(s32);
 void func_800132F4(void);
-void func_800133C4(void);
+void update_vehicle_paddle_boats(void);
 void func_80013854(Player*);
 void func_800139E4(f32, f32, s32, s32, VehicleStuff*, TrackWaypoint*);
 f32  func_80013C74(s16, s16);
@@ -201,14 +201,19 @@ void func_80015390(Camera*, Player*, s32);
 void func_80015544(s32, f32, s32, s32);
 void func_8001577C(Camera*, UNUSED Player*, s32, s32);
 void func_80015A9C(s32, f32, s32, s16);
+void func_80015C94(Camera*, s32, s32, s32);
 
 void func_800162CC(s32, f32, s32, s16);
+void func_80016494(Camera*, s32, s32, s32);
 void func_80016C3C(s32, f32, s32);
 
 void func_80017720(s32, f32, s32, s16);
+void func_800178F4(Camera*, s32, s32, s32);
 void func_80017F10(s32, f32, s32, s16);
 
+void func_800180F0(Camera*, s32, s32, s32);
 void func_80018718(s32, f32, s32, s16);
+void func_800188F4(Camera*, s32, s32, s32);
 
 void func_80019118(s32, f32, s32, s16);
 void func_8001933C(Camera*, UNUSED Player*, s32, s32);

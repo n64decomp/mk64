@@ -3,6 +3,9 @@
 
 #include "common_structs.h"
 
+#define COLLISION 0x1
+#define NO_COLLISION 0x0
+
 void  nullify_displaylist(uintptr_t);
 void  func_802AAAAC(Collision*);
 f32   func_802AAB4C(Player*);

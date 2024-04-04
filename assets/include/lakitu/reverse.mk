@@ -27,7 +27,7 @@ $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(REVERSE_FRAMES:%.png=%.bin)
 $(REVERSE_FRAMES:%.png=%.bin): %.bin : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(REVERSE_PALETTE)
 
-$(BUILD_DIR)/src/data/common_textures.inc.o: $(REVERSE_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.o: $(REVERSE_PALETTE:%.png=%.inc.c)
 
 $(REVERSE_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16

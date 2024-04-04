@@ -90,18 +90,18 @@ glabel func_80009B60
 .L80009C58:
 /* 00A858 80009C58 00D81021 */  addu  $v0, $a2, $t8
 /* 00A85C 80009C5C A4400000 */  sh    $zero, ($v0)
-/* 00A860 80009C60 3C198016 */  lui   $t9, %hi(D_8015F6EA) # $t9, 0x8016
-/* 00A864 80009C64 8739F6EA */  lh    $t9, %lo(D_8015F6EA)($t9)
+/* 00A860 80009C60 3C198016 */  lui   $t9, %hi(gCourseMinX) # $t9, 0x8016
+/* 00A864 80009C64 8739F6EA */  lh    $t9, %lo(gCourseMinX)($t9)
 /* 00A868 80009C68 C4600014 */  lwc1  $f0, 0x14($v1)
 /* 00A86C 80009C6C 240A0001 */  li    $t2, 1
 /* 00A870 80009C70 44994000 */  mtc1  $t9, $f8
-/* 00A874 80009C74 3C0B8016 */  lui   $t3, %hi(D_8015F6E8) # $t3, 0x8016
+/* 00A874 80009C74 3C0B8016 */  lui   $t3, %hi(gCourseMaxX) # $t3, 0x8016
 /* 00A878 80009C78 240C0002 */  li    $t4, 2
 /* 00A87C 80009C7C 468042A0 */  cvt.s.w $f10, $f8
-/* 00A880 80009C80 3C0D8016 */  lui   $t5, %hi(D_8015F6F2) # $t5, 0x8016
+/* 00A880 80009C80 3C0D8016 */  lui   $t5, %hi(gCourseMinZ) # $t5, 0x8016
 /* 00A884 80009C84 240E0003 */  li    $t6, 3
 /* 00A888 80009C88 24180004 */  li    $t8, 4
-/* 00A88C 80009C8C 3C0F8016 */  lui   $t7, %hi(D_8015F6F0) # $t7, 0x8016
+/* 00A88C 80009C8C 3C0F8016 */  lui   $t7, %hi(gCourseMaxZ) # $t7, 0x8016
 /* 00A890 80009C90 460A003C */  c.lt.s $f0, $f10
 /* 00A894 80009C94 00000000 */  nop
 /* 00A898 80009C98 45000003 */  bc1f  .L80009CA8
@@ -109,7 +109,7 @@ glabel func_80009B60
 /* 00A8A0 80009CA0 A44A0000 */  sh    $t2, ($v0)
 /* 00A8A4 80009CA4 C4600014 */  lwc1  $f0, 0x14($v1)
 .L80009CA8:
-/* 00A8A8 80009CA8 856BF6E8 */  lh    $t3, %lo(D_8015F6E8)($t3)
+/* 00A8A8 80009CA8 856BF6E8 */  lh    $t3, %lo(gCourseMaxX)($t3)
 /* 00A8AC 80009CAC 448B8000 */  mtc1  $t3, $f16
 /* 00A8B0 80009CB0 00000000 */  nop
 /* 00A8B4 80009CB4 468084A0 */  cvt.s.w $f18, $f16
@@ -119,7 +119,7 @@ glabel func_80009B60
 /* 00A8C4 80009CC4 00000000 */   nop
 /* 00A8C8 80009CC8 A44C0000 */  sh    $t4, ($v0)
 .L80009CCC:
-/* 00A8CC 80009CCC 85ADF6F2 */  lh    $t5, %lo(D_8015F6F2)($t5)
+/* 00A8CC 80009CCC 85ADF6F2 */  lh    $t5, %lo(gCourseMinZ)($t5)
 /* 00A8D0 80009CD0 C460001C */  lwc1  $f0, 0x1c($v1)
 /* 00A8D4 80009CD4 448D2000 */  mtc1  $t5, $f4
 /* 00A8D8 80009CD8 00000000 */  nop
@@ -131,7 +131,7 @@ glabel func_80009B60
 /* 00A8F0 80009CF0 A44E0000 */  sh    $t6, ($v0)
 /* 00A8F4 80009CF4 C460001C */  lwc1  $f0, 0x1c($v1)
 .L80009CF8:
-/* 00A8F8 80009CF8 85EFF6F0 */  lh    $t7, %lo(D_8015F6F0)($t7)
+/* 00A8F8 80009CF8 85EFF6F0 */  lh    $t7, %lo(gCourseMaxZ)($t7)
 /* 00A8FC 80009CFC 448F4000 */  mtc1  $t7, $f8
 /* 00A900 80009D00 00000000 */  nop
 /* 00A904 80009D04 468042A0 */  cvt.s.w $f10, $f8
@@ -652,7 +652,7 @@ glabel func_80009B60
 .L8000A488:
 /* 00B088 8000A488 00E02825 */  move  $a1, $a3
 /* 00B08C 8000A48C AFA8003C */  sw    $t0, 0x3c($sp)
-/* 00B090 8000A490 0C0AD489 */  jal   get_angle_between_points
+/* 00B090 8000A490 0C0AD489 */  jal   get_angle_between_two_vectors
 /* 00B094 8000A494 24C40014 */   addiu $a0, $a2, 0x14
 /* 00B098 8000A498 8FA60040 */  lw    $a2, 0x40($sp)
 /* 00B09C 8000A49C 8FA8003C */  lw    $t0, 0x3c($sp)
@@ -718,7 +718,7 @@ glabel func_80009B60
 /* 00B16C 8000A56C 1040008A */  beqz  $v0, .L8000A798
 /* 00B170 8000A570 8FAE0040 */   lw    $t6, 0x40($sp)
 /* 00B174 8000A574 25C40020 */  addiu $a0, $t6, 0x20
-/* 00B178 8000A578 0C0AD489 */  jal   get_angle_between_points
+/* 00B178 8000A578 0C0AD489 */  jal   get_angle_between_two_vectors
 /* 00B17C 8000A57C 25C50014 */   addiu $a1, $t6, 0x14
 /* 00B180 8000A580 8FAC0034 */  lw    $t4, 0x34($sp)
 /* 00B184 8000A584 3C188016 */  lui   $t8, %hi(D_80163300) # $t8, 0x8016
@@ -1172,7 +1172,7 @@ glabel func_80009B60
 /* 00B7F8 8000ABF8 C4A80008 */  lwc1  $f8, 8($a1)
 /* 00B7FC 8000ABFC AFA80020 */  sw    $t0, 0x20($sp)
 /* 00B800 8000AC00 8FA4001C */  lw    $a0, 0x1c($sp)
-/* 00B804 8000AC04 0C0AD489 */  jal   get_angle_between_points
+/* 00B804 8000AC04 0C0AD489 */  jal   get_angle_between_two_vectors
 /* 00B808 8000AC08 E4680000 */   swc1  $f8, ($v1)
 /* 00B80C 8000AC0C 3C013FC0 */  li    $at, 0x3FC00000 # 1.500000
 /* 00B810 8000AC10 44810000 */  mtc1  $at, $f0

@@ -63,8 +63,8 @@ void func_80280038(void) {
     render_set_position(matrix, 0);
     render_course(D_800DC5EC);
     render_course_actors(D_800DC5EC);
-    func_80058090(0);
-    func_80058538(0);
+    render_object(PLAYER_ONE+SCREEN_MODE_1P);
+    render_player_snow_effect(PLAYER_ONE+SCREEN_MODE_1P);
     transition_sliding_borders();
     func_80281C40();
     init_rdp();
@@ -141,12 +141,14 @@ void load_credits(void) {
     load_course(gCurrentCourseId);
     D_8015F730 = gNextFreeMemoryAddress;
     set_segment_base_addr(0xB, (void *) decompress_segments((u8 *) CEREMONY_DATA_ROM_START, (u8 *) CEREMONY_DATA_ROM_END));
-    D_8015F6EA = -0x15A1;
-    D_8015F6EE = -0x15A1;
-    D_8015F6F2 = -0x15A1;
-    D_8015F6E8 = 0x15A1;
-    D_8015F6EC = 0x15A1;
-    D_8015F6F0 = 0x15A1;
+    
+    gCourseMinX = -0x15A1;
+    gCourseMinY = -0x15A1;
+    gCourseMinZ = -0x15A1;
+
+    gCourseMaxX = 0x15A1;
+    gCourseMaxY = 0x15A1;
+    gCourseMaxZ = 0x15A1;
     D_8015F59C = 0;
     D_8015F5A0 = 0;
     D_8015F58C = 0;
@@ -165,7 +167,7 @@ void load_credits(void) {
     camera->up[2] = 0.0f;
     init_cinematic_camera();
     func_80003040();
-    init_object_list();
+    init_hud();
     func_80093E60();
     func_80092688();
     if (D_800DC5EC) {}

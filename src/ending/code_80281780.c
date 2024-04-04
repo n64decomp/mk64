@@ -117,13 +117,13 @@ void load_ceremony_cutscene(void) {
     set_segment_base_addr(6, (void *) decompress_segments((u8 *) &_course_banshee_boardwalk_dl_mio0SegmentRomStart, (u8 *) &_course_yoshi_valley_dl_mio0SegmentRomStart));
     D_8015F8E4 = -2000.0f;
 
-    D_8015F6EA = -0x15A1;
-    D_8015F6EE = -0x15A1;
-    D_8015F6F2 = -0x15A1;
+    gCourseMinX = -0x15A1;
+    gCourseMinY = -0x15A1;
+    gCourseMinZ = -0x15A1;
 
-    D_8015F6E8 = 0x15A1;
-    D_8015F6EC = 0x15A1;
-    D_8015F6F0 = 0x15A1;
+    gCourseMaxX = 0x15A1;
+    gCourseMaxY = 0x15A1;
+    gCourseMaxZ = 0x15A1;
 
     D_8015F59C = 0;
     D_8015F5A0 = 0;
@@ -157,7 +157,7 @@ void load_ceremony_cutscene(void) {
     debug_switch_character_ceremony_cutscene();
     func_802818BC();
     func_8003D080();
-    init_object_list();
+    init_hud();
     func_8001C05C();
     balloons_and_fireworks_init();
     func_802816B8();

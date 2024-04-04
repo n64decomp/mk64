@@ -864,7 +864,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
             player->unk_0CC[arg2] = func_802B7C40(temp_f0 / temp_f2) * 2;
         }
     }
-    if ((player->effects & 0x04000000) == 0x04000000) {
+    if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
         player->unk_0CC[arg2] = (s16) ((s32) player->unk_D9C);
     }
     if ((player->effects & 8) != 8) {
@@ -879,7 +879,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
         }
         player->unk_0D4[arg2] = (s16) ((s32) (((f64) func_802B7C40(var_f0 / temp_f2)) * 0.5));
     }
-    if ((player->effects & 0x04000000) == 0x04000000) {
+    if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
         player->unk_0D4[arg2] = (s16) ((s32) player->unk_D9C);
     }
     func_80029200(player, arg2);
@@ -1538,8 +1538,8 @@ void apply_sound_effect(Player *player, s8 playerId, UNUSED s8 arg2) {
     if ((player->soundEffects & 0x20000) == 0x20000) {
         func_8008D7B0(player, playerId);
     }
-    if ((player->soundEffects & 0x100) == 0x100) {
-        func_8008DABC(player, playerId);
+    if ((player->soundEffects & HIT_SOUND_EFFECT) == HIT_SOUND_EFFECT) {
+        apply_hit_sound_effect(player, playerId);
     }
     if ((player->soundEffects & HIT_ROTATING_SOUND_EFFECT) == HIT_ROTATING_SOUND_EFFECT) {
         apply_hit_rotating_sound_effect(player, playerId);
@@ -1595,7 +1595,7 @@ void func_8002B5C0(Player *player, UNUSED s8 playerId, UNUSED s8 arg2) {
     if ((player->effects & 0x800000) == 0x800000) {
         player->soundEffects &= 0xFE1D0478;
     }
-    if ((player->effects & 0x04000000) == 0x04000000) {
+    if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
         player->soundEffects &= 0xFE1D0578;
     }
     if ((player->effects & 0x01000000) == 0x01000000) {
@@ -1696,7 +1696,7 @@ void func_8002B9CC(Player *player, s8 arg1, UNUSED s32 arg2) {
                 func_8008C73C(player, arg1);
             }
         }
-        temp = (-(s16)get_angle_between_points(player->pos, &player->copy_rotation_x));
+        temp = (-(s16)get_angle_between_two_vectors(player->pos, &player->copy_rotation_x));
         temp2 = (player->rotation[1] - player->unk_0C0);
         temp = temp - temp2;
         player->unk_234 = temp / 182;
@@ -1739,7 +1739,7 @@ void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, UNUSED s8 arg3, UNUSED 
     
     mtxf_translate_vec3f_mat3(sp4C, sp64);
 
-    var_v0 = -(s16)get_angle_between_points(sp58, sp4C);
+    var_v0 = -(s16)get_angle_between_two_vectors(sp58, sp4C);
     t0 = player->rotation[1];
     var_v0 = 0x10000 + (t0 - var_v0);
     var_v0 /= 182;
@@ -2094,8 +2094,8 @@ void apply_effect(Player *player, s8 arg1, s8 arg2) {
     if ((player->effects & BOOST_RAMP_WOOD_EFFECT) == BOOST_RAMP_WOOD_EFFECT) {
         apply_boost_ramp_wood_effect(player);
     }
-    if ((s32)(player->effects & 0x04000000) == 0x04000000) {
-        func_8008DC08(player, arg1);
+    if ((s32)(player->effects & HIT_EFFECT) == HIT_EFFECT) {
+        apply_hit_effect(player, arg1);
     }
     if ((player->effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) {
         apply_lightning_effect(player, arg1);
@@ -2160,7 +2160,7 @@ void func_8002D028(Player *player, s8 arg1) {
     sp4C[1] = 0;
     sp4C[2] = D_80165230[D_80165270[arg1]];
 
-    temp = -(s16)get_angle_between_points(player->pos, sp4C);
+    temp = -(s16)get_angle_between_two_vectors(player->pos, sp4C);
     temp2 = player->rotation[1];
     temp = (temp - temp2);
 
@@ -2312,7 +2312,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
         sp98[2] += (((((f64) ((sp184[2] + spAC) + sp160[2])) - (sp98[2] * (0.12 * ((f64) player->kartFriction)))) / 6000.0) / 30.0);
     }
     sp98[1] += (((((f64) ((sp184[1] + spB0) + sp160[1])) - (sp98[1] * (0.12 * ((f64) player->kartFriction)))) / 6000.0) / ((f64) player->unk_DAC));
-    if (((((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) || ((player->effects & 0x04000000) == 0x04000000)) || (player->unk_0CA & 1)) {
+    if (((((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) || ((player->effects & HIT_EFFECT) == HIT_EFFECT)) || (player->unk_0CA & 1)) {
         sp98[0] = 0.0f;
         sp98[1] = 0.0f;
         sp98[2] = 0.0f;
@@ -2334,7 +2334,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
 
     if (((((player->unk_0CA & 2) != 2)
         && ((player->unk_0CA & 8) != 8))
-        && ((player->effects & 0x04000000) != 0x04000000))
+        && ((player->effects & HIT_EFFECT) != HIT_EFFECT))
         && (!(player->unk_0CA & 1))) {
         func_8002AAC0(player);
         spF8 += player->kartHopVelocity;
@@ -4292,7 +4292,7 @@ void func_8003680C(Player *player, s16 arg1) {
           (player->effects & 0x20000) ||
           (player->effects & 0x01000000) ||
           (player->effects & HIT_BY_ITEM_EFFECT) ||
-          (player->effects & 0x04000000))) {
+          (player->effects & HIT_EFFECT))) {
         if (!(((player->unk_094 / 18.0f) * 216.0f) >= 110.0f)) {
             player->effects &= ~0x20000000;
             player->unk_228 = 0;
@@ -4638,7 +4638,7 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
         ((player->effects & 0x01000000) != 0x01000000) && 
         ((player->effects & HIT_BY_ITEM_EFFECT) != HIT_BY_ITEM_EFFECT) && ((player->effects & 0x10000) != 0x10000) && 
         ((player->effects & 0x20000) != 0x20000)) {
-            if (((player->effects & 0x04000000) != 0x04000000) && 
+            if (((player->effects & HIT_EFFECT) != HIT_EFFECT) && 
                 ((player->effects & 8) != 8) && 
                 ((player->effects & 2) != 2) && 
                 ((player->effects & 0x10) != 0x10) && 
