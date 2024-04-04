@@ -419,9 +419,6 @@ clean:
 
 model_extract: $(MODELS_PROC)
 
-# model_extract:
-# 	$(PYTHON) tools/blender/extract_models.py $(BLENDER) "tools/blender/3d_models.json"
-
 fast64_blender:
 	$(BLENDER) --python tools/blender/fast64_run.py
 
