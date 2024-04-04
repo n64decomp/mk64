@@ -14,7 +14,7 @@ OSThread_ListHead __osThreadTail_fix = {NULL, -1, (OSThread *) &__osThreadTail_f
 void __osDequeueThread(OSThread **queue, OSThread *thread) {
     register OSThread **a2;
     register OSThread *a3;
-    a2 = queue;  
+    a2 = queue;
     a3 = *a2;
     while (a3 != NULL) {
         if (a3 == thread) {
