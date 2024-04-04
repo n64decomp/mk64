@@ -712,7 +712,7 @@ void mtxf_scale2(Mat4 arg0, f32 scale) {
  * This means each Mtx entry holds two s16 values. 
  * The first sixteen entries contain only the integer parts and the second sixteen entries hold only the decimal (fractional) parts.
  */
-UNUSED void func_80021FF8(Mtx *dest, Mat4 src) {
+UNUSED void failed_fixed_point_matrix_conversion(Mtx *dest, Mat4 src) {
     f32 toFixed = 65536.0f;
     dest->m[0][0] = src[0][0] * toFixed;
     dest->m[0][1] = src[0][1] * toFixed;
