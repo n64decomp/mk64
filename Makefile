@@ -264,7 +264,15 @@ else ifneq ($(call find-command,blender),)
   BLENDER := blender
 else ifeq ($(DETECTED_OS), windows)
   BLENDER := "C:\Program Files\Blender Foundation\Blender 3.6\blender.exe"
+else
+  $(error Unable to find blender)
 endif
+
+MODELS_JSON := $(wildcard models/*/models.json)
+MODELS_PROC := $(MODELS_JSON:%.json=%)
+
+models/%: models/%.json
+	$(PYTHON) tools/blender/extract_models.py $(BLENDER) $<
 
 #==============================================================================#
 # Compiler Options                                                             #
@@ -273,13 +281,13 @@ endif
 # detect prefix for MIPS toolchain
 ifneq ($(CROSS),)
 else ifneq      ($(call find-command,mips-linux-gnu-ld),)
-	CROSS := mips-linux-gnu-
+  CROSS := mips-linux-gnu-
 else ifneq ($(call find-command,mips64-linux-gnu-ld),)
-	CROSS := mips64-linux-gnu-
+  CROSS := mips64-linux-gnu-
 else ifneq ($(call find-command,mips64-elf-ld),)
-	CROSS := mips64-elf-
+  CROSS := mips64-elf-
 else
-	$(error Unable to detect a suitable MIPS toolchain installed)
+  $(error Unable to detect a suitable MIPS toolchain installed)
 endif
 
 AS      := $(CROSS)as
@@ -409,11 +417,13 @@ doc:
 clean:
 	$(RM) -r $(BUILD_DIR)
 
-model_extract:
-	$(PYTHON) tools/blender/extract_models.py $(BLENDER)
+model_extract: $(MODELS_PROC)
+
+# model_extract:
+# 	$(PYTHON) tools/blender/extract_models.py $(BLENDER) "tools/blender/3d_models.json"
 
 fast64_blender:
-	$(BLENDER) --python tools/blender_extension/fast64_run.py
+	$(BLENDER) --python tools/blender/fast64_run.py
 
 distclean: distclean_assets
 	$(RM) -r $(BUILD_DIR_BASE)

@@ -94,4 +94,5 @@ mingw64/
 !tools/ido-recomp/*/*
 
 # models
-models
+models/*/*
+!models/*/*.json
