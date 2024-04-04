@@ -401,7 +401,7 @@ assets:
 	@echo "Extracting torch assets..."
 	@$(TORCH) code $(BASEROM) -v
 	@$(TORCH) header $(BASEROM)
-#	@$(TORCH) modding export $(BASEROM)
+	@$(TORCH) modding export $(BASEROM)
 
 doc:
 	$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
@@ -633,19 +633,15 @@ endif
 LDFLAGS += -R $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.elf
 
 %/ceremony_data.elf: %/ceremony_data.o
-%/ceremony_data.elf: %/ceremony_data.o
 	$(V)$(LD) -t -e 0 -Ttext=0B000000 -Map $@.map -o $@ $< --no-check-sections
 
-%/ceremony_data.bin: %/ceremony_data.elf
 %/ceremony_data.bin: %/ceremony_data.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
 %/ceremony_data.mio0: %/ceremony_data.bin
-%/ceremony_data.mio0: %/ceremony_data.bin
 	@$(PRINT) "$(GREEN)Compressing Trophy Model:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(MIO0TOOL) -c $< $@
 
-%/ceremony_data.mio0.s: %/ceremony_data.mio0
 %/ceremony_data.mio0.s: %/ceremony_data.mio0
 	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel ceremonyData_end\n" > $@
 
@@ -657,19 +653,15 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.elf
 LDFLAGS += -R $(BUILD_DIR)/assets/code/startup_logo/startup_logo.elf
 
 %/startup_logo.elf: %/startup_logo.o
-%/startup_logo.elf: %/startup_logo.o
 	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -o $@ $< --no-check-sections
 
-%/startup_logo.bin: %/startup_logo.elf
 %/startup_logo.bin: %/startup_logo.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
 %/startup_logo.mio0: %/startup_logo.bin
-%/startup_logo.mio0: %/startup_logo.bin
 	@$(PRINT) "$(GREEN)Compressing Startup Logo Model:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(MIO0TOOL) -c $< $@
 
-%/startup_logo.mio0.s: %/startup_logo.mio0
 %/startup_logo.mio0.s: %/startup_logo.mio0
 	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel startupLogo_end\n" > $@
 
