@@ -75,5 +75,4 @@ D_800E471C:
   type: array
   offset: 0x800E471C
   count: 7
-  array_type: s8
-
+  array_type: u8
