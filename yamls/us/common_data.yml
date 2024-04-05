@@ -1350,6 +1350,7 @@ common_texture_player_emblem_1p:
   width: 64
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_player_emblem
 common_texture_player_emblem_2p:
   symbol: common_texture_player_emblem_2p
   type: texture
@@ -1359,6 +1360,7 @@ common_texture_player_emblem_2p:
   width: 64
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_player_emblem
 common_texture_player_emblem_3p:
   symbol: common_texture_player_emblem_3p
   type: texture
@@ -1368,6 +1370,7 @@ common_texture_player_emblem_3p:
   width: 64
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_player_emblem
 common_texture_player_emblem_4p:
   symbol: common_texture_player_emblem_4p
   type: texture
@@ -1377,6 +1380,7 @@ common_texture_player_emblem_4p:
   width: 64
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_player_emblem
 common_tlut_hud_type_C_rank_font: # Font tlut for 12345678
   symbol: common_tlut_hud_type_C_rank_font
   type: texture
@@ -1395,6 +1399,7 @@ common_texture_hud_type_C_rank_font_1:
   width: 16
   height: 16
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_font
 common_texture_hud_type_C_rank_font_2:
   symbol: common_texture_hud_type_C_rank_font_2
   type: texture
@@ -1404,6 +1409,7 @@ common_texture_hud_type_C_rank_font_2:
   width: 16
   height: 16
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_font
 common_texture_hud_type_C_rank_font_3:
   symbol: common_texture_hud_type_C_rank_font_3
   type: texture
@@ -1413,6 +1419,7 @@ common_texture_hud_type_C_rank_font_3:
   width: 16
   height: 16
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_font
 common_texture_hud_type_C_rank_font_4:
   symbol: common_texture_hud_type_C_rank_font_4
   type: texture
@@ -1422,6 +1429,7 @@ common_texture_hud_type_C_rank_font_4:
   width: 16
   height: 16
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_font
 common_texture_hud_type_C_rank_font_5:
   symbol: common_texture_hud_type_C_rank_font_5
   type: texture
@@ -1431,6 +1439,7 @@ common_texture_hud_type_C_rank_font_5:
   width: 16
   height: 16
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_font
 common_texture_hud_type_C_rank_font_6:
   symbol: common_texture_hud_type_C_rank_font_6
   type: texture
@@ -1440,6 +1449,7 @@ common_texture_hud_type_C_rank_font_6:
   width: 16
   height: 16
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_font
 common_texture_hud_type_C_rank_font_7:
   symbol: common_texture_hud_type_C_rank_font_7
   type: texture
@@ -1449,6 +1459,7 @@ common_texture_hud_type_C_rank_font_7:
   width: 16
   height: 16
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_font
 common_texture_hud_type_C_rank_font_8:
   symbol: common_texture_hud_type_C_rank_font_8
   type: texture
@@ -1458,6 +1469,7 @@ common_texture_hud_type_C_rank_font_8:
   width: 16
   height: 16
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_font
 common_tlut_hud_type_C_rank_tiny_font: # Font tlut for 0123456789
   symbol: common_tlut_hud_type_C_rank_tiny_font
   type: texture
@@ -1476,6 +1488,7 @@ common_texture_hud_type_C_rank_tiny_font_0:
   width: 8
   height: 8
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_tiny_font
 common_texture_hud_type_C_rank_tiny_font_1:
   symbol: common_texture_hud_type_C_rank_tiny_font_1
   type: texture
@@ -1485,6 +1498,7 @@ common_texture_hud_type_C_rank_tiny_font_1:
   width: 8
   height: 8
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_tiny_font
 common_texture_hud_type_C_rank_tiny_font_2:
   symbol: common_texture_hud_type_C_rank_tiny_font_2
   type: texture
@@ -1494,6 +1508,7 @@ common_texture_hud_type_C_rank_tiny_font_2:
   width: 8
   height: 8
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_tiny_font
 common_texture_hud_type_C_rank_tiny_font_3:
   symbol: common_texture_hud_type_C_rank_tiny_font_3
   type: texture
@@ -1503,6 +1518,7 @@ common_texture_hud_type_C_rank_tiny_font_3:
   width: 8
   height: 8
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_tiny_font
 common_texture_hud_type_C_rank_tiny_font_4:
   symbol: common_texture_hud_type_C_rank_tiny_font_4
   type: texture
@@ -1512,6 +1528,7 @@ common_texture_hud_type_C_rank_tiny_font_4:
   width: 8
   height: 8
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_tiny_font
 common_texture_hud_type_C_rank_tiny_font_5:
   symbol: common_texture_hud_type_C_rank_tiny_font_5
   type: texture
@@ -1521,6 +1538,7 @@ common_texture_hud_type_C_rank_tiny_font_5:
   width: 8
   height: 8
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_tiny_font
 common_texture_hud_type_C_rank_tiny_font_6:
   symbol: common_texture_hud_type_C_rank_tiny_font_6
   type: texture
@@ -1530,6 +1548,7 @@ common_texture_hud_type_C_rank_tiny_font_6:
   width: 8
   height: 8
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_tiny_font
 common_texture_hud_type_C_rank_tiny_font_7:
   symbol: common_texture_hud_type_C_rank_tiny_font_7
   type: texture
@@ -1539,6 +1558,7 @@ common_texture_hud_type_C_rank_tiny_font_7:
   width: 8
   height: 8
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_tiny_font
 common_texture_hud_type_C_rank_tiny_font_8:
   symbol: common_texture_hud_type_C_rank_tiny_font_8
   type: texture
@@ -1548,6 +1568,7 @@ common_texture_hud_type_C_rank_tiny_font_8:
   width: 8
   height: 8
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_tiny_font
 common_texture_hud_type_C_rank_tiny_font_9:
   symbol: common_texture_hud_type_C_rank_tiny_font_9
   type: texture
@@ -1557,6 +1578,7 @@ common_texture_hud_type_C_rank_tiny_font_9:
   width: 8
   height: 8
   format: CI8
+  tlut_symbol: common_tlut_hud_type_C_rank_tiny_font
 common_texture_character_portrait_border:
   symbol: common_texture_character_portrait_border
   type: texture
@@ -1656,6 +1678,7 @@ common_texture_portrait_mario:
   width: 32
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_portrait_mario
 common_texture_portrait_luigi:
   symbol: common_texture_portrait_luigi # 132B50_16A58
   type: texture
@@ -1665,6 +1688,7 @@ common_texture_portrait_luigi:
   width: 32
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_portrait_luiti
 common_texture_portrait_peach:
   symbol: common_texture_portrait_peach # 132B50_16A58
   type: texture
@@ -1674,6 +1698,7 @@ common_texture_portrait_peach:
   width: 32
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_portrait_peach
 common_texture_portrait_toad:
   symbol: common_texture_portrait_toad # 132B50_16A58
   type: texture
@@ -1683,6 +1708,7 @@ common_texture_portrait_toad:
   width: 32
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_portrait_toad
 common_texture_portrait_yoshi:
   symbol: common_texture_portrait_yoshi # 132B50_16A58
   type: texture
@@ -1692,6 +1718,7 @@ common_texture_portrait_yoshi:
   width: 32
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_portrait_yoshi
 common_texture_portrait_donkey_kong:
   symbol: common_texture_portrait_donkey_kong # 132B50_16A58
   type: texture
@@ -1701,6 +1728,7 @@ common_texture_portrait_donkey_kong:
   width: 32
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_portrait_donkey_kong
 common_texture_portrait_wario:
   symbol: common_texture_portrait_wario # 132B50_16A58
   type: texture
@@ -1710,6 +1738,7 @@ common_texture_portrait_wario:
   width: 32
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_portrait_wario
 common_texture_portrait_bowser:
   symbol: common_texture_portrait_bowser # 132B50_16A58
   type: texture
@@ -1719,6 +1748,7 @@ common_texture_portrait_bowser:
   width: 32
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_portrait_bowser
 common_texture_portrait_bomb_kart:
   symbol: common_texture_portrait_bomb_kart # 132B50_16A58
   type: texture
@@ -1728,6 +1758,7 @@ common_texture_portrait_bomb_kart:
   width: 32
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_portrait_bomb_kart
 common_texture_portrait_question_mark:
   symbol: common_texture_portrait_question_mark # 132B50_16A58
   type: texture
@@ -1737,6 +1768,7 @@ common_texture_portrait_question_mark:
   width: 32
   height: 32
   format: CI8
+  tlut_symbol: common_tlut_portrait_question_mark
 common_tlut_item_window_none:
   symbol: common_tlut_item_window_none
   type: texture
@@ -1872,7 +1904,7 @@ common_texture_item_window_none:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_none
+  tlut_symbol: common_tlut_item_window_none
 common_texture_item_window_banana:
   symbol: common_texture_item_window_banana
   type: texture
@@ -1880,7 +1912,7 @@ common_texture_item_window_banana:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_banana
+  tlut_symbol: common_tlut_item_window_banana
 common_texture_item_window_banana_bunch:
   symbol: common_texture_item_window_banana_bunch
   type: texture
@@ -1888,7 +1920,7 @@ common_texture_item_window_banana_bunch:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_banana_bunch
+  tlut_symbol: common_tlut_item_window_banana_bunch
 common_texture_item_window_mushroom:
   symbol: common_texture_item_window_mushroom
   type: texture
@@ -1896,7 +1928,7 @@ common_texture_item_window_mushroom:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_mushroom
+  tlut_symbol: common_tlut_item_window_mushroom
 common_texture_item_window_double_mushroom:
   symbol: common_texture_item_window_double_mushroom
   type: texture
@@ -1904,7 +1936,7 @@ common_texture_item_window_double_mushroom:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_double_mushroom
+  tlut_symbol: common_tlut_item_window_double_mushroom
 common_texture_item_window_triple_mushroom:
   symbol: common_texture_item_window_triple_mushroom
   type: texture
@@ -1912,7 +1944,7 @@ common_texture_item_window_triple_mushroom:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_triple_mushroom
+  tlut_symbol: common_tlut_item_window_triple_mushroom
 common_texture_item_window_super_mushroom:
   symbol: common_texture_item_window_super_mushroom
   type: texture
@@ -1920,7 +1952,7 @@ common_texture_item_window_super_mushroom:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_super_mushroom
+  tlut_symbol: common_tlut_item_window_super_mushroom
 common_texture_item_window_blue_shell:
   symbol: common_texture_item_window_blue_shell
   type: texture
@@ -1928,7 +1960,7 @@ common_texture_item_window_blue_shell:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_blue_shell
+  tlut_symbol: common_tlut_item_window_blue_shell
 common_texture_item_window_boo:
   symbol: common_texture_item_window_boo
   type: texture
@@ -1936,7 +1968,7 @@ common_texture_item_window_boo:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_boo
+  tlut_symbol: common_tlut_item_window_boo
 common_texture_item_window_green_shell:
   symbol: common_texture_item_window_green_shell
   type: texture
@@ -1944,7 +1976,7 @@ common_texture_item_window_green_shell:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_green_shell
+  tlut_symbol: common_tlut_item_window_green_shell
 common_texture_item_window_triple_green_shell:
   symbol: common_texture_item_window_triple_green_shell
   type: texture
@@ -1952,7 +1984,7 @@ common_texture_item_window_triple_green_shell:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_triple_green_shell
+  tlut_symbol: common_tlut_item_window_triple_green_shell
 common_texture_item_window_red_shell:
   symbol: common_texture_item_window_red_shell
   type: texture
@@ -1960,7 +1992,7 @@ common_texture_item_window_red_shell:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_red_shell
+  tlut_symbol: common_tlut_item_window_red_shell
 common_texture_item_window_triple_red_shell:
   symbol: common_texture_item_window_triple_red_shell
   type: texture
@@ -1968,7 +2000,7 @@ common_texture_item_window_triple_red_shell:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_triple_red_shell
+  tlut_symbol: common_tlut_item_window_triple_red_shell
 common_texture_item_window_star:
   symbol: common_texture_item_window_star
   type: texture
@@ -1976,7 +2008,7 @@ common_texture_item_window_star:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_star
+  tlut_symbol: common_tlut_item_window_star
 common_texture_item_window_thunder_bolt:
   symbol: common_texture_item_window_thunder_bolt
   type: texture
@@ -1984,7 +2016,7 @@ common_texture_item_window_thunder_bolt:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_thunder_bolt
+  tlut_symbol: common_tlut_item_window_thunder_bolt
 common_texture_item_window_fake_item_box:
   symbol: common_texture_item_window_fake_item_box
   type: texture
@@ -1992,7 +2024,7 @@ common_texture_item_window_fake_item_box:
   width: 40
   height: 32
   format: ci8
-  tlut: common_tlut_item_window_fake_item_box
+  tlut_symbol: common_tlut_item_window_fake_item_box
 common_tlut_lakitu_no_lights:
   symbol: common_tlut_lakitu_no_lights
   type: texture
@@ -2072,6 +2104,7 @@ common_texture_traffic_light_01:
   width: 24
   height: 48
   format: ci8
+  tlut_symbol: common_tlut_traffic_light
 common_texture_traffic_light_02:
   symbol: common_texture_traffic_light_02
   type: texture
@@ -2079,6 +2112,7 @@ common_texture_traffic_light_02:
   width: 24
   height: 48
   format: ci8
+  tlut_symbol: common_tlut_traffic_light
 common_texture_traffic_light_03:
   symbol: common_texture_traffic_light_03
   type: texture
@@ -2086,6 +2120,7 @@ common_texture_traffic_light_03:
   width: 24
   height: 48
   format: ci8
+  tlut_symbol: common_tlut_traffic_light
 common_texture_traffic_light_04:
   symbol: common_texture_traffic_light_04
   type: texture
@@ -2093,6 +2128,7 @@ common_texture_traffic_light_04:
   width: 24
   height: 48
   format: ci8
+  tlut_symbol: common_tlut_traffic_light
 common_texture_traffic_light_05:
   symbol: common_texture_traffic_light_05
   type: texture
@@ -2100,6 +2136,7 @@ common_texture_traffic_light_05:
   width: 24
   height: 48
   format: ci8
+  tlut_symbol: common_tlut_traffic_light
 common_texture_traffic_light_06:
   symbol: common_texture_traffic_light_06
   type: texture
@@ -2107,6 +2144,7 @@ common_texture_traffic_light_06:
   width: 24
   height: 48
   format: ci8
+  tlut_symbol: common_tlut_traffic_light
 common_texture_traffic_light_07:
   symbol: common_texture_traffic_light_07
   type: texture
@@ -2114,6 +2152,7 @@ common_texture_traffic_light_07:
   width: 24
   height: 48
   format: ci8
+  tlut_symbol: common_tlut_traffic_light
 common_texture_traffic_light_08:
   symbol: common_texture_traffic_light_08
   type: texture
@@ -2121,6 +2160,7 @@ common_texture_traffic_light_08:
   width: 24
   height: 48
   format: ci8
+  tlut_symbol: common_tlut_traffic_light
 common_texture_traffic_light_09:
   symbol: common_texture_traffic_light_09
   type: texture
@@ -2128,6 +2168,7 @@ common_texture_traffic_light_09:
   width: 24
   height: 48
   format: ci8
+  tlut_symbol: common_tlut_traffic_light
 common_texture_traffic_light_10:
   symbol: common_texture_traffic_light_10
   type: texture
@@ -2135,6 +2176,7 @@ common_texture_traffic_light_10:
   width: 24
   height: 48
   format: ci8
+  tlut_symbol: common_tlut_traffic_light
 common_texture_particle_leaf:
   symbol: common_texture_particle_leaf
   type: texture
@@ -2172,6 +2214,7 @@ common_texture_bomb_1: # Smoke?
   width: 32
   height: 32
   format: ci8
+  tlut_symbol: common_tlut_bomb
 common_texture_bomb_2: # Smoke?
   symbol: common_texture_bomb_2
   type: texture
@@ -2179,6 +2222,7 @@ common_texture_bomb_2: # Smoke?
   width: 32
   height: 32
   format: ci8
+  tlut_symbol: common_tlut_bomb
 common_texture_bomb_3: # Smoke?
   symbol: common_texture_bomb_3
   type: texture
@@ -2186,6 +2230,7 @@ common_texture_bomb_3: # Smoke?
   width: 32
   height: 32
   format: ci8
+  tlut_symbol: common_tlut_bomb
 common_texture_bomb_4: # Smoke?
   symbol: common_texture_bomb_4
   type: texture
@@ -2193,6 +2238,7 @@ common_texture_bomb_4: # Smoke?
   width: 32
   height: 32
   format: ci8
+  tlut_symbol: common_tlut_bomb
 common_tlut_bomb:
   symbol: common_tlut_bomb
   type: texture
