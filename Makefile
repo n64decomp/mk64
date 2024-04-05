@@ -264,8 +264,6 @@ else ifneq ($(call find-command,blender),)
   BLENDER := blender
 else ifeq ($(DETECTED_OS), windows)
   BLENDER := "C:\Program Files\Blender Foundation\Blender 3.6\blender.exe"
-else
-  $(error Unable to find blender)
 endif
 
 MODELS_JSON := $(wildcard models/*/models.json)
