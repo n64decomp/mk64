@@ -15,7 +15,7 @@ struct _struct_gCoursePathSizes_0x10 {
     /* 0x0A */ char padA[6];
 };  // size 0x10
 
-extern CPUBehaviour *gKartAIBehaviourLUT[];
+extern KartAIBehaviour *gKartAIBehaviourLUT[];
 extern TrackWaypoint nullPath;
 extern TrackWaypoint *gCoursePathTable[][4];
 extern TrackWaypoint *gCoursePathTable2[][4];

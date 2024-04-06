@@ -3,7 +3,7 @@
 #include <assets/ceremony_data.h>
 
 // @warning Array contains an extra zero element at the end.
-CPUBehaviour *gKartAIBehaviourLUT[] = {
+KartAIBehaviour *gKartAIBehaviourLUT[] = {
     #include "assets/course_metadata/gKartAIBehaviourLUT.inc.c"
 
 };

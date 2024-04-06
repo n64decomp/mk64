@@ -309,6 +309,21 @@ typedef enum ITEMS {
     /* 0x0F */ ITEM_SUPER_MUSHROOM
 };
 
+typedef enum KART_AI_BEHAVIOURS {
+    BEHAVIOUR_NONE = 0,
+    BEHAVIOUR_1,
+    BEHAVIOUR_HOP,
+    BEHAVIOUR_3,
+    BEHAVIOUR_4,
+    BEHAVIOUR_5,
+    BEHAVIOUR_NORMAL_SPEED,
+    BEHAVIOUR_FAST_SPEED,
+    BEHAVIOUR_SLOW_SPEED,
+    BEHAVIOUR_9,
+    BEHAVIOUR_10,
+    BEHAVIOUR_MAX_SPEED
+};
+
 /**
  * @brief Balloon status
  */
