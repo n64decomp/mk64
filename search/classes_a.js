@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['kartboundingboxcorner_0',['KartBoundingBoxCorner',['../structKartBoundingBoxCorner.html',1,'']]],
-  ['kiwanofruit_1',['KiwanoFruit',['../structKiwanoFruit.html',1,'']]]
+  ['kartaibehaviour_0',['KartAIBehaviour',['../structKartAIBehaviour.html',1,'']]],
+  ['kartboundingboxcorner_1',['KartBoundingBoxCorner',['../structKartBoundingBoxCorner.html',1,'']]],
+  ['kiwanofruit_2',['KiwanoFruit',['../structKiwanoFruit.html',1,'']]]
 ];

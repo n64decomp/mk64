@@ -9,7 +9,7 @@ var searchData=
   ['va_5fstart_6',['va_start',['../stdarg_8h.html#ac4689fee617f24306933fd79ce206fcc',1,'stdarg.h']]],
   ['validate_5fsave_5fdata_7',['validate_save_data',['../save_8c.html#a8dc090a6f3860eb91143ff48d44df6b5',1,'validate_save_data(void):&#160;save.c'],['../save_8h.html#a8dc090a6f3860eb91143ff48d44df6b5',1,'validate_save_data(void):&#160;save.c']]],
   ['validate_5fsave_5fdata_5fchecksum_5fbackup_8',['validate_save_data_checksum_backup',['../save_8c.html#ab9bff5073d8eb0971f86030dde8bcd26',1,'validate_save_data_checksum_backup(void):&#160;save.c'],['../save_8h.html#ab9bff5073d8eb0971f86030dde8bcd26',1,'validate_save_data_checksum_backup(void):&#160;save.c']]],
-  ['value_9',['value',['../structAudioListItem.html#ab838a8bb1d7648057b666190a9ee6108',1,'AudioListItem::value'],['../structprintf__struct.html#a1328bea22362ce65e0958cb8858e0648',1,'printf_struct::value']]],
+  ['value_9',['value',['../structAudioListItem.html#ab838a8bb1d7648057b666190a9ee6108',1,'AudioListItem::value'],['../structprintf__struct.html#a26271241be6e5e863e4c9cb409af8807',1,'printf_struct::value']]],
   ['variant_10',['variant',['../structPalmTree.html#a8b06b5727e27aac50742e6e946840476',1,'PalmTree']]],
   ['vblankhandler_11',['VblankHandler',['../structVblankHandler.html',1,'']]],
   ['vblanktimes_12',['vblankTimes',['../structProfilerFrameData.html#a1095d8b90b744ccc106dcaafa4ef98ad',1,'ProfilerFrameData']]],

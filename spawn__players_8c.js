@@ -18,7 +18,7 @@ var spawn__players_8c =
     [ "spawn_players_gp_two_player", "spawn__players_8c.html#a7898749fef0f0990a0380e0ee86c7990", null ],
     [ "spawn_players_versus_one_player", "spawn__players_8c.html#ad1ed89d461ff185013222be6db0b7fee", null ],
     [ "spawn_players_versus_two_player", "spawn__players_8c.html#a7936732ad039ea27759ba4b9784460f6", null ],
-    [ "chooseCPUPlayers", "spawn__players_8c.html#afcd7ca66ef7f294837c339bcf698bd11", null ],
+    [ "chooseKartAIPlayers", "spawn__players_8c.html#af02e100ad3a0777f64b31dab4000cb05", null ],
     [ "D_800E43A0", "spawn__players_8c.html#a59cbfff01d2df086f4cc9ddd94a92b86", null ],
     [ "D_800E43A4", "spawn__players_8c.html#aba5103574f2df90f216982304b427403", null ],
     [ "D_800E43A8", "spawn__players_8c.html#aae8a9d8780e4a6f785b9ba134f82bb81", null ],
