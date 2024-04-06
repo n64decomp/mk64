@@ -5,7 +5,7 @@
     code:
     - '#include <macros.h>'
     - '#include <defines.h>'
-    - '#include <common_data.h>'
+    - '#include <assets/common_data.h>'
     header:
     - '#include <PR/gbi.h>'
     - '#include <types.h>'
@@ -2094,7 +2094,7 @@ common_tlut_traffic_light:
   type: texture
   offset: 0x25ED8
   ctype: u16
-  colors: 16
+  colors: 256
   format: tlut
 common_texture_traffic_light_01:
   symbol: common_texture_traffic_light_01
