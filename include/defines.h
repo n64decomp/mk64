@@ -290,7 +290,7 @@
 /**
  * @brief Item IDs
  */
-typedef enum {
+typedef enum ITEMS {
     /* 0x00 */ ITEM_NONE = 0,
     /* 0x01 */ ITEM_BANANA,
     /* 0x02 */ ITEM_BANANA_BUNCH,
@@ -307,7 +307,7 @@ typedef enum {
     /* 0x0D */ ITEM_DOUBLE_MUSHROOM,
     /* 0x0E */ ITEM_TRIPLE_MUSHROOM,
     /* 0x0F */ ITEM_SUPER_MUSHROOM
-} ITEMS;
+};
 
 /**
  * @brief Balloon status

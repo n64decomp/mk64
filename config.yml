@@ -4,6 +4,8 @@
   config:
     gbi: F3DEX_MK64
     sort: OFFSET
+    enums: 
+      - include/defines.h
     output:
       binary: mkcube.otr
       headers: include/assets
