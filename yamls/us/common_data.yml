@@ -1688,7 +1688,7 @@ common_texture_portrait_luigi:
   width: 32
   height: 32
   format: CI8
-  tlut_symbol: common_tlut_portrait_luiti
+  tlut_symbol: common_tlut_portrait_luigi
 common_texture_portrait_peach:
   symbol: common_texture_portrait_peach # 132B50_16A58
   type: texture
@@ -1758,7 +1758,7 @@ common_texture_portrait_bomb_kart:
   width: 32
   height: 32
   format: CI8
-  tlut_symbol: common_tlut_portrait_bomb_kart
+  tlut_symbol: common_tlut_portrait_bomb_kart_and_question_mark
 common_texture_portrait_question_mark:
   symbol: common_texture_portrait_question_mark # 132B50_16A58
   type: texture
@@ -1768,7 +1768,7 @@ common_texture_portrait_question_mark:
   width: 32
   height: 32
   format: CI8
-  tlut_symbol: common_tlut_portrait_question_mark
+  tlut_symbol: common_tlut_portrait_bomb_kart_and_question_mark
 common_tlut_item_window_none:
   symbol: common_tlut_item_window_none
   type: texture
@@ -2094,9 +2094,8 @@ common_tlut_traffic_light:
   type: texture
   offset: 0x25ED8
   ctype: u16
-  width: 16
-  height: 16
-  format: rgba16
+  colors: 16
+  format: tlut
 common_texture_traffic_light_01:
   symbol: common_texture_traffic_light_01
   type: texture

@@ -2715,7 +2715,7 @@ void func_80095574(void) {
         } else {
             debug_print_str2(0x000000AA, 0x00000064, "off");
         }
-        if ((gCurrentCourseId >= 0x14) || (gCurrentCourseId < 0)) {
+        if ((gCurrentCourseId >= (NUM_COURSES - 1)) || (gCurrentCourseId < 0)) {
             gCurrentCourseId = 0;
         }
         print_str_num(0x00000050, 0x0000006E, "map_number", gCurrentCourseId);
