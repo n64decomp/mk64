@@ -22,12 +22,12 @@
 
 //! @todo Verify with proper documentation
 // functions called by mtxShadow multiply by 8
-// 8 CPU Players * 4 real players in coop
+// 8 Kart AI Players * 4 real players in coop
 #define MTX_SHADOW_POOL_SIZE 8 * 4
 
 //! @todo Verify with proper documentation
 // functions called by mtxKart multiply by 8
-// 8 CPU Players * 4 real players in coop
+// 8 Kart AI Players * 4 real players in coop
 #define MTX_KART_POOL_SIZE 8 * 4
 
 #define MTX_EFFECT_POOL_SIZE 660

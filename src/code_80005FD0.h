@@ -144,12 +144,12 @@ f32  func_80010FA0(f32, f32, f32, s32, s32);
 s32  func_80011014(TrackWaypoint *, TrackWaypoint *, s32, s32);
 s32  process_path_data(TrackWaypoint*, TrackWaypoint*);
 s32  func_8001168C(PathNoY*, TrackWaypoint*, s32);
-void func_80011A5C(void);
-void func_80011AB8(s32);
-void func_80011AE4(s32);
-void func_80011B14(s32, Player*);
-void func_80011D48(s32, Player*);
-void func_80011E38(s32);
+void copy_courses_kart_ai_behaviour(void);
+void reset_kart_ai_behaviour_none(s32);
+void reset_kart_ai_behaviour(s32);
+void kart_ai_behaviour_start(s32, Player*);
+void kart_ai_behaviour_end(s32, Player*);
+void kart_ai_behaviour(s32);
 void func_80011EC0(s32, Player*, s32, u16);
 
 void func_800120C8(void);
@@ -241,10 +241,10 @@ void func_8001A518(s32, s32, s32);
 void func_8001A588(u16*, Camera*, Player*, s8, s32);
 void func_8001AAAC(s16, s16, s16);
 void func_8001AB00(void);
-void cpu_decisions_branch_item(s32, s16*, s32);
+void kart_ai_decisions_branch_item(s32, s16*, s32);
 void func_8001ABE0(s32, D_801642D8_entry*);
 void func_8001ABEC(struct struct_801642D8*);
-void cpu_use_item_strategy(s32);
+void kart_ai_use_item_strategy(s32);
 
 void func_8001BE78(void);
 
@@ -258,7 +258,7 @@ void func_8001C42C(void);
 extern Collision D_80162E70;
 extern s16 D_80162EB0; // Possibly a float.
 extern s16 D_80162EB2; // possibly [3]
-extern CPUBehaviour *D_80162EB8[];
+extern KartAIBehaviour *gCoursesKartAIBehaviour[];
 extern s16 D_80162F10[];
 extern s16 D_80162F50[];
 extern Vec3f D_80162FA0;
@@ -298,17 +298,32 @@ extern u16 D_80163258[];
 extern u16 D_80163270[];
 extern s32 D_80163288[];
 // Exact pointer type unknown
-extern CPUBehaviour *D_801632B0;
-extern u16 D_801632B8[];
-extern u16 D_801632D0[];
-extern u16 D_801632E8[];
+extern KartAIBehaviour *sCurrentKartAIBehaviour;
+extern u16 gCurrentKartAIBehaviourId[];
+extern u16 gPreviousKartAIBehaviourId[];
+extern u16 gKartAIBehaviourState[];
+
+enum {
+    KART_AI_BEHAVIOUR_STATE_NONE,
+    KART_AI_BEHAVIOUR_STATE_START,
+    KART_AI_BEHAVIOUR_STATE_RUNNING,
+};
+
 extern s16 D_80163300[];
 extern u16 D_80163318[];
 extern u16 D_80163330[];
 extern u16 D_80163344[];
 extern u16 D_80163348[];
 extern u16 D_8016334C[];
-extern u16 D_80163350[];
+extern u16 gSpeedKartAIBehaviour[];
+
+enum {
+    SPEED_KART_AI_BEHAVIOUR_NORMAL,
+    SPEED_KART_AI_BEHAVIOUR_FAST,
+    SPEED_KART_AI_BEHAVIOUR_SLOW,
+    SPEED_KART_AI_BEHAVIOUR_MAX
+};
+
 extern s32 D_80163368[];
 extern s32 D_80163378;
 extern s32 D_8016337C;
