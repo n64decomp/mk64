@@ -9,6 +9,5 @@
 
 // 0x3F00
 extern u64 gGfxSPTaskOutputBuffer[GFX_OUTPUT_BUFFER_SIZE];
-extern u32 gGfxSPTaskOutputBufferSize;
 
 #endif // GFX_OUTPUT_BUFFER_H

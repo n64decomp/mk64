@@ -9,7 +9,7 @@
 #include "audio/synthesis.h"
 #include "audio/seqplayer.h"
 #include "audio/port_eu.h"
-#include "data/gfx_output_buffer.h"
+#include "buffers/gfx_output_buffer.h"
 
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 
