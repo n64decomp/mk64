@@ -2206,6 +2206,14 @@ D_0D029458: # Smoke?
   width: 32
   height: 32
   format: i8
+common_tlut_bomb: # This is placed below in rom. Hack to make torch extract the tlut first.
+  symbol: common_tlut_bomb
+  type: texture
+  offset: 0x2A858
+  ctype: u16
+  colors: 256
+  height: 16
+  format: tlut
 common_texture_bomb_1: # Smoke?
   symbol: common_texture_bomb_1
   type: texture
@@ -2238,14 +2246,6 @@ common_texture_bomb_4: # Smoke?
   height: 32
   format: ci8
   tlut_symbol: common_tlut_bomb
-common_tlut_bomb:
-  symbol: common_tlut_bomb
-  type: texture
-  offset: 0x2A858
-  ctype: u16
-  colors: 256
-  height: 16
-  format: tlut
 D_0D02AA58:
   symbol: D_0D02AA58
   type: texture
