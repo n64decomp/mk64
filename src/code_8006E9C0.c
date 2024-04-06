@@ -12,7 +12,7 @@
 #include "objects.h"
 #include "bomb_kart.h"
 #include "save.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include <sounds.h>
 #include <decode.h>
 #include "audio/external.h"

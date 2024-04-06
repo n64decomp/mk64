@@ -20,7 +20,7 @@
 #include "audio/external.h"
 #include "render_objects.h"
 #include "staff_ghosts.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "textures.h"
 #include "math_util.h"
 #include "save_data.h"

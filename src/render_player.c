@@ -17,7 +17,7 @@
 #include "waypoints.h"
 #include "player_controller.h"
 #include "render_objects.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "skybox_and_splitscreen.h"
 #include "spawn_players.h"
 

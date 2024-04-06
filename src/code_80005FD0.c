@@ -20,7 +20,7 @@
 #include "code_80057C60.h"
 #include "bomb_kart.h"
 #include "courses/all_course_data.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "common_structs.h"
 #include "main.h"
 #include "menus.h"

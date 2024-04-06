@@ -3,7 +3,7 @@
 
 #include "waypoints.h"
 #include "common_structs.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "include/bomb_kart.h"
 
 struct _struct_gCoursePathSizes_0x10 {

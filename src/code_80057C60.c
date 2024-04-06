@@ -25,7 +25,7 @@
 #include "effects.h"
 #include <assets/data_800E8700.h>
 #include "skybox_and_splitscreen.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "audio/external.h"
 #include "objects.h"
 #include "bomb_kart.h"

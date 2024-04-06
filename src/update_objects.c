@@ -17,7 +17,7 @@
 #include "code_80057C60.h"
 #include "code_8006E9C0.h"
 #include "code_80086E70.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "audio/external.h"
 #include "sounds.h"
 #include <actors.h>

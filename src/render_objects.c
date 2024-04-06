@@ -16,7 +16,7 @@
 #include "objects.h"
 #include "waypoints.h"
 #include "bomb_kart.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "render_player.h"
 #include "code_80004740.h"
 #include "code_80005FD0.h"
