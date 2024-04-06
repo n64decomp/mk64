@@ -26,11 +26,11 @@ glabel D_800ECFC8
 glabel func_80009B60
 /* 00A760 80009B60 3C0E800E */  lui   $t6, %hi(gCurrentCourseId)
 /* 00A764 80009B64 85CEC5A0 */  lh    $t6, %lo(gCurrentCourseId)($t6)
-/* 00A768 80009B68 3C01800E */  lui   $at, %hi(D_800DCA4C)
+/* 00A768 80009B68 3C01800E */  lui   $at, %hi(gKartAICourseMaximumWaypointSeparation)
 /* 00A76C 80009B6C 3C0A8016 */  lui   $t2, %hi(D_80163100) # $t2, 0x8016
 /* 00A770 80009B70 000E7880 */  sll   $t7, $t6, 2
 /* 00A774 80009B74 002F0821 */  addu  $at, $at, $t7
-/* 00A778 80009B78 C424CA4C */  lwc1  $f4, %lo(D_800DCA4C)($at)
+/* 00A778 80009B78 C424CA4C */  lwc1  $f4, %lo(gKartAICourseMaximumWaypointSeparation)($at)
 /* 00A77C 80009B7C 27BDFF30 */  addiu $sp, $sp, -0xd0
 /* 00A780 80009B80 254A3100 */  addiu $t2, %lo(D_80163100) # addiu $t2, $t2, 0x3100
 /* 00A784 80009B84 4600218D */  trunc.w.s $f6, $f4
@@ -247,7 +247,7 @@ glabel func_80009B60
 /* 00AA98 80009E98 24010014 */  li    $at, 20
 /* 00AA9C 80009E9C 11610003 */  beq   $t3, $at, .L80009EAC
 /* 00AAA0 80009EA0 00000000 */   nop
-/* 00AAA4 80009EA4 0C00478E */  jal   func_80011E38
+/* 00AAA4 80009EA4 0C00478E */  jal   kart_ai_behaviour
 /* 00AAA8 80009EA8 8FA400D0 */   lw    $a0, 0xd0($sp)
 .L80009EAC:
 /* 00AAAC 80009EAC 3C0E8016 */  lui   $t6, %hi(D_80163378) # $t6, 0x8016
@@ -257,7 +257,7 @@ glabel func_80009B60
 /* 00AABC 80009EBC 318D0001 */  andi  $t5, $t4, 1
 /* 00AAC0 80009EC0 11ED0003 */  beq   $t7, $t5, .L80009ED0
 /* 00AAC4 80009EC4 AFAD0030 */   sw    $t5, 0x30($sp)
-/* 00AAC8 80009EC8 0C006B04 */  jal   cpu_use_item_strategy
+/* 00AAC8 80009EC8 0C006B04 */  jal   kart_ai_use_item_strategy
 /* 00AACC 80009ECC 01802025 */   move  $a0, $t4
 .L80009ED0:
 /* 00AAD0 80009ED0 8FA400D0 */  lw    $a0, 0xd0($sp)
@@ -1267,10 +1267,10 @@ glabel func_80009B60
 .L8000AD5C:
 /* 00B95C 8000AD5C 8FAA0034 */  lw    $t2, 0x34($sp)
 .L8000AD60:
-/* 00B960 8000AD60 3C0D8016 */  lui   $t5, %hi(D_801632E8) # 0x8016
+/* 00B960 8000AD60 3C0D8016 */  lui   $t5, %hi(gKartAIBehaviourState) # 0x8016
 /* 00B964 8000AD64 24010002 */  li    $at, 2
 /* 00B968 8000AD68 01AA6821 */  addu  $t5, $t5, $t2
-/* 00B96C 8000AD6C 95AD32E8 */  lhu   $t5, %lo(D_801632E8)($t5) # 0x32e8($t5)
+/* 00B96C 8000AD6C 95AD32E8 */  lhu   $t5, %lo(gKartAIBehaviourState)($t5) # 0x32e8($t5)
 /* 00B970 8000AD70 15A10013 */  bne   $t5, $at, .L8000ADC0
 /* 00B974 8000AD74 3C01800F */   lui   $at, %hi(D_800ECFB8) # $at, 0x800f
 /* 00B978 8000AD78 C424CFB8 */  lwc1  $f4, %lo(D_800ECFB8)($at)

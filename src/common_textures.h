@@ -5,10 +5,25 @@
 #include <PR/gbi.h>
 
 typedef struct {
-    /* 0x0 */ s16 waypointId1;
-    /* 0x2 */ s16 waypointId2;
-    /* 0x4 */ s32 unk4;
-} UnkCommonTextureStruct0; // size = 0x8
+    /* 0x0 */ s16 waypointStart;
+    /* 0x2 */ s16 waypointEnd;
+    /* 0x4 */ s32 type;
+} KartAIBehaviour; // size = 0x8
+
+enum {
+    BEHAVIOUR_NONE = 0,
+    BEHAVIOUR_1,
+    BEHAVIOUR_HOP,
+    BEHAVIOUR_3,
+    BEHAVIOUR_4,
+    BEHAVIOUR_5,
+    BEHAVIOUR_NORMAL_SPEED,
+    BEHAVIOUR_FAST_SPEED,
+    BEHAVIOUR_SLOW_SPEED,
+    BEHAVIOUR_9,
+    BEHAVIOUR_10,
+    BEHAVIOUR_MAX_SPEED
+};
 
 /** @cond */
 
@@ -210,7 +225,7 @@ extern Gfx D_0D008108[];
 extern Gfx D_0D008120[];
 extern Gfx D_0D008138[];
 extern u8 common_grand_prix_human_item_curve[][100];
-extern u8 common_grand_prix_cpu_item_curve[][100];
+extern u8 common_grand_prix_kart_ai_item_curve[][100];
 extern u8 common_versus_2_player_item_curve[][100];
 extern u8 common_versus_3_player_item_curve[][100];
 extern u8 common_versus_4_player_item_curve[][100];
@@ -232,23 +247,23 @@ extern Gfx D_0D008E48[];
 extern Gfx D_0D008E70[];
 extern Mtx D_0D008E98;
 extern Vtx D_0D008ED8[];
-extern UnkCommonTextureStruct0 D_0D008F18[];
-extern UnkCommonTextureStruct0 D_0D008F28[];
-extern UnkCommonTextureStruct0 D_0D008F80[];
-extern UnkCommonTextureStruct0 D_0D008FB8[];
-extern UnkCommonTextureStruct0 D_0D009058[];
-extern UnkCommonTextureStruct0 D_0D0090B8[];
-extern UnkCommonTextureStruct0 D_0D0090F8[];
-extern UnkCommonTextureStruct0 D_0D009158[];
-extern UnkCommonTextureStruct0 D_0D009188[];
-extern UnkCommonTextureStruct0 D_0D0091E8[];
-extern UnkCommonTextureStruct0 D_0D009210[];
-extern UnkCommonTextureStruct0 D_0D009238[];
-extern UnkCommonTextureStruct0 D_0D009260[];
-extern UnkCommonTextureStruct0 D_0D009280[];
-extern UnkCommonTextureStruct0 D_0D0092C8[];
-extern UnkCommonTextureStruct0 D_0D009310[];
-extern UnkCommonTextureStruct0 D_0D0093C0[];
+extern KartAIBehaviour common_kart_ai_behaviour_battle_courses[];
+extern KartAIBehaviour common_kart_ai_behaviour_mario_raceway[];
+extern KartAIBehaviour common_kart_ai_behaviour_choco_mountain[];
+extern KartAIBehaviour common_kart_ai_behaviour_bowser_castle[];
+extern KartAIBehaviour common_kart_ai_behaviour_banshee_boardwalk[];
+extern KartAIBehaviour common_kart_ai_behaviour_yoshi_valley[];
+extern KartAIBehaviour common_kart_ai_behaviour_frappe_snowland[];
+extern KartAIBehaviour common_kart_ai_behaviour_koopa_beach[];
+extern KartAIBehaviour common_kart_ai_behaviour_royal_raceway[];
+extern KartAIBehaviour common_kart_ai_behaviour_luigi_raceway[];
+extern KartAIBehaviour common_kart_ai_behaviour_moo_moo_farm[];
+extern KartAIBehaviour common_kart_ai_behaviour_toad_turnpike[];
+extern KartAIBehaviour common_kart_ai_behaviour_kalamari_desert[];
+extern KartAIBehaviour common_kart_ai_behaviour_sherbet_land[];
+extern KartAIBehaviour common_kart_ai_behaviour_rainbow_road[];
+extern KartAIBehaviour common_kart_ai_behaviour_wario_stadium[];
+extern KartAIBehaviour common_kart_ai_behaviour_dk_jungle[];
 extern f32 D_0D009418[][4];
 extern f32 D_0D009568[][4];
 extern f32 D_0D0096B8[][4];
