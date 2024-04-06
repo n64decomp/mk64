@@ -26,7 +26,7 @@ var searchData=
   ['rdram_5fdevice_5fid_5freg_23',['RDRAM_DEVICE_ID_REG',['../rcp_8h.html#ab28a0e021754f53b054a84accbb5298d',1,'rcp.h']]],
   ['rdram_5fdevice_5fmanuf_5freg_24',['RDRAM_DEVICE_MANUF_REG',['../rcp_8h.html#a9a35831e8b6a6765f2dc5f5d2c243832',1,'rcp.h']]],
   ['rdram_5fdevice_5ftype_5freg_25',['RDRAM_DEVICE_TYPE_REG',['../rcp_8h.html#ad9bd99839e3936ecb13165f757c15619',1,'rcp.h']]],
-  ['rdram_5fend_26',['RDRAM_END',['../linker__segments_8h.html#a2b5717c2dbe8788999e087a81e519028',1,'RDRAM_END:&#160;linker_segments.h'],['../rcp_8h.html#a2b5717c2dbe8788999e087a81e519028',1,'RDRAM_END:&#160;rcp.h']]],
+  ['rdram_5fend_26',['RDRAM_END',['../rcp_8h.html#a2b5717c2dbe8788999e087a81e519028',1,'rcp.h']]],
   ['rdram_5fglobal_5fconfig_27',['RDRAM_GLOBAL_CONFIG',['../rcp_8h.html#a4cd3a5c567662ce1ad14870c89cbba5e',1,'rcp.h']]],
   ['rdram_5flength_28',['RDRAM_LENGTH',['../rcp_8h.html#a75bf5359d509184aeb681106843b1ed8',1,'rcp.h']]],
   ['rdram_5fmin_5finterval_5freg_29',['RDRAM_MIN_INTERVAL_REG',['../rcp_8h.html#aa906fbadf1ddeb4c2ae1e15ede7cbc8e',1,'rcp.h']]],

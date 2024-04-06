@@ -1,12 +1,5 @@
 var NAVTREEINDEX101 =
 {
-"sherbet__land_2course__data_8c.html#a204c318ba17f3597b8278a5a120e841f":[8,0,0,15,0,96],
-"sherbet__land_2course__data_8c.html#a2268cac59607a41c5940a53e3df15408":[8,0,0,15,0,72],
-"sherbet__land_2course__data_8c.html#a227170072bd2bcaefd48dca1388a2c4f":[8,0,0,15,0,50],
-"sherbet__land_2course__data_8c.html#a24444e42a1d49314015b63d557a4c13a":[8,0,0,15,0,149],
-"sherbet__land_2course__data_8c.html#a25cf1ba5f72576ee57b3c1519c30cabb":[8,0,0,15,0,145],
-"sherbet__land_2course__data_8c.html#a2708a4b5fa835bc56c1566b15e4e9214":[8,0,0,15,0,106],
-"sherbet__land_2course__data_8c.html#a271cf60979cbd5d1ecdaf74b1a3a034e":[8,0,0,15,0,58],
 "sherbet__land_2course__data_8c.html#a28b6f760d3778cfb880c2c4531a6fc52":[8,0,0,15,0,196],
 "sherbet__land_2course__data_8c.html#a2a3661488fbc118c170fdb6a85eb42b8":[8,0,0,15,0,36],
 "sherbet__land_2course__data_8c.html#a2b4a10a49caecd2e002d844cde05789b":[8,0,0,15,0,21],
@@ -249,5 +242,12 @@ var NAVTREEINDEX101 =
 "sherbet__land_2course__data_8h.html#a55a9666b7fb37ff52840240f732a7df6":[8,0,0,15,1,123],
 "sherbet__land_2course__data_8h.html#a5601fa55a5449843a75a04ceab38dcf3":[8,0,0,15,1,9],
 "sherbet__land_2course__data_8h.html#a56417ca035d941620ed45d967fa99aa7":[8,0,0,15,1,97],
-"sherbet__land_2course__data_8h.html#a570934297f9b1926178426797affd457":[8,0,0,15,1,91]
+"sherbet__land_2course__data_8h.html#a570934297f9b1926178426797affd457":[8,0,0,15,1,91],
+"sherbet__land_2course__data_8h.html#a577bbfc26327e1895b8a8b0672a948fa":[8,0,0,15,1,51],
+"sherbet__land_2course__data_8h.html#a57d9f806d8f7e2b0b35974bd79409988":[8,0,0,15,1,189],
+"sherbet__land_2course__data_8h.html#a5851e7669c7fdadaec39fc8ed2914a26":[8,0,0,15,1,155],
+"sherbet__land_2course__data_8h.html#a58d5d92aa42f2f48e2ed94e0790bba4e":[8,0,0,15,1,158],
+"sherbet__land_2course__data_8h.html#a5a540fcd8cbc85fa697ba51416281ca5":[8,0,0,15,1,101],
+"sherbet__land_2course__data_8h.html#a5ac679494562811479b02d64ee864fe3":[8,0,0,15,1,40],
+"sherbet__land_2course__data_8h.html#a5b1daad08818851ba08b2bb513aee9fb":[8,0,0,15,1,141]
 };

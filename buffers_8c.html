@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Mario Kart 64: src/data/buffers.c File Reference</title>
+<title>Mario Kart 64: src/buffers/buffers.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -106,6 +106,7 @@ $(function(){initNavTree('buffers_8c.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="ultra64_8h_source.html">ultra64.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="config_8h_source.html">config.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="buffers_8h_source.html">buffers.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -116,20 +117,14 @@ Include dependency graph for buffers.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a8eafbc86e2d3ad047f20f29099649228" id="r_a8eafbc86e2d3ad047f20f29099649228"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8eafbc86e2d3ad047f20f29099649228">gRandomSeed16</a></td></tr>
-<tr class="separator:a8eafbc86e2d3ad047f20f29099649228"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9140e069d65bc5b5da75424d09e9e57" id="r_ad9140e069d65bc5b5da75424d09e9e57"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9140e069d65bc5b5da75424d09e9e57">randomSeedPadding</a> [216]</td></tr>
-<tr class="separator:ad9140e069d65bc5b5da75424d09e9e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d41a87f21c332742464afc1f22eff4c" id="r_a8d41a87f21c332742464afc1f22eff4c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d41a87f21c332742464afc1f22eff4c">frameBufferPadding</a> [0x5810]</td></tr>
-<tr class="separator:a8d41a87f21c332742464afc1f22eff4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83603f7f398501c45327585f38ad68f9" id="r_a83603f7f398501c45327585f38ad68f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="unionunion__D__802BFB80.html">union_D_802BFB80</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a83603f7f398501c45327585f38ad68f9">D_802BFB80</a></td></tr>
-<tr class="separator:a83603f7f398501c45327585f38ad68f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f3d1c3b2a4d6dc33ac29c9742e6d6dd" id="r_a6f3d1c3b2a4d6dc33ac29c9742e6d6dd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstruct__D__802DFB80.html">struct_D_802DFB80</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f3d1c3b2a4d6dc33ac29c9742e6d6dd">D_802DFB80</a> [2][2][8]</td></tr>
-<tr class="separator:a6f3d1c3b2a4d6dc33ac29c9742e6d6dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a258add9f2b7b1dd01bb0d49265726e2a" id="r_a258add9f2b7b1dd01bb0d49265726e2a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a258add9f2b7b1dd01bb0d49265726e2a">D_802F1F80</a> [2][4][0x100 *8]</td></tr>
-<tr class="separator:a258add9f2b7b1dd01bb0d49265726e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad69c72ff050917ed80fee1f0a4b6e373" id="r_ad69c72ff050917ed80fee1f0a4b6e373"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad69c72ff050917ed80fee1f0a4b6e373">gZBuffer</a> [<a class="el" href="config_8h.html#a2cd109632a6dcccaa80b43561b1ab700">SCREEN_WIDTH</a> *<a class="el" href="config_8h.html#a6974d08a74da681b3957b2fead2608b8">SCREEN_HEIGHT</a>]</td></tr>
-<tr class="separator:ad69c72ff050917ed80fee1f0a4b6e373"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1af7949ea673e18ec915e39b20902e5" id="r_ac1af7949ea673e18ec915e39b20902e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="unionunion__D__802BFB80.html">union_D_802BFB80</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1af7949ea673e18ec915e39b20902e5">D_802BFB80</a></td></tr>
+<tr class="separator:ac1af7949ea673e18ec915e39b20902e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afba8c566a91f7849b01e3de0dcb776ab" id="r_afba8c566a91f7849b01e3de0dcb776ab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="structstruct__D__802DFB80.html">struct_D_802DFB80</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afba8c566a91f7849b01e3de0dcb776ab">D_802DFB80</a> [2][2][8]</td></tr>
+<tr class="separator:afba8c566a91f7849b01e3de0dcb776ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65a30c85652f6cdd86d31d5de7de3c95" id="r_a65a30c85652f6cdd86d31d5de7de3c95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65a30c85652f6cdd86d31d5de7de3c95">D_802F1F80</a> [2][4][0x100 *8]</td></tr>
+<tr class="separator:a65a30c85652f6cdd86d31d5de7de3c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63346feaff86835bf7e5b03bfcd0086d" id="r_a63346feaff86835bf7e5b03bfcd0086d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63346feaff86835bf7e5b03bfcd0086d">gZBuffer</a> [<a class="el" href="config_8h.html#a2cd109632a6dcccaa80b43561b1ab700">SCREEN_WIDTH</a> *<a class="el" href="config_8h.html#a6974d08a74da681b3957b2fead2608b8">SCREEN_HEIGHT</a>]</td></tr>
+<tr class="separator:a63346feaff86835bf7e5b03bfcd0086d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ad5316597b4d79b0e355b1194848d3d" id="r_a9ad5316597b4d79b0e355b1194848d3d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ad5316597b4d79b0e355b1194848d3d">gFramebuffer0</a> [<a class="el" href="config_8h.html#a2cd109632a6dcccaa80b43561b1ab700">SCREEN_WIDTH</a> *<a class="el" href="config_8h.html#a6974d08a74da681b3957b2fead2608b8">SCREEN_HEIGHT</a>]</td></tr>
 <tr class="separator:a9ad5316597b4d79b0e355b1194848d3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5249b7a9cf7e5c7d6a23b907760b9b81" id="r_a5249b7a9cf7e5c7d6a23b907760b9b81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5249b7a9cf7e5c7d6a23b907760b9b81">gFramebuffer1</a> [<a class="el" href="config_8h.html#a2cd109632a6dcccaa80b43561b1ab700">SCREEN_WIDTH</a> *<a class="el" href="config_8h.html#a6974d08a74da681b3957b2fead2608b8">SCREEN_HEIGHT</a>]</td></tr>
@@ -138,60 +133,46 @@ Variables</h2></td></tr>
 <tr class="separator:a95aecdc8fb209e4ec86f831451880008"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a83603f7f398501c45327585f38ad68f9" name="a83603f7f398501c45327585f38ad68f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83603f7f398501c45327585f38ad68f9">&#9670;&#160;</a></span>D_802BFB80</h2>
+<a id="ac1af7949ea673e18ec915e39b20902e5" name="ac1af7949ea673e18ec915e39b20902e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1af7949ea673e18ec915e39b20902e5">&#9670;&#160;</a></span>D_802BFB80</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="unionunion__D__802BFB80.html">union_D_802BFB80</a> D_802BFB80</td>
+          <td class="memname"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="unionunion__D__802BFB80.html">union_D_802BFB80</a> D_802BFB80</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a6f3d1c3b2a4d6dc33ac29c9742e6d6dd" name="a6f3d1c3b2a4d6dc33ac29c9742e6d6dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f3d1c3b2a4d6dc33ac29c9742e6d6dd">&#9670;&#160;</a></span>D_802DFB80</h2>
+<a id="afba8c566a91f7849b01e3de0dcb776ab" name="afba8c566a91f7849b01e3de0dcb776ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afba8c566a91f7849b01e3de0dcb776ab">&#9670;&#160;</a></span>D_802DFB80</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structstruct__D__802DFB80.html">struct_D_802DFB80</a> D_802DFB80[2][2][8]</td>
+          <td class="memname"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="structstruct__D__802DFB80.html">struct_D_802DFB80</a> D_802DFB80[2][2][8]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a258add9f2b7b1dd01bb0d49265726e2a" name="a258add9f2b7b1dd01bb0d49265726e2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a258add9f2b7b1dd01bb0d49265726e2a">&#9670;&#160;</a></span>D_802F1F80</h2>
+<a id="a65a30c85652f6cdd86d31d5de7de3c95" name="a65a30c85652f6cdd86d31d5de7de3c95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65a30c85652f6cdd86d31d5de7de3c95">&#9670;&#160;</a></span>D_802F1F80</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> D_802F1F80[2][4][0x100 *8]</td>
+          <td class="memname"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> D_802F1F80[2][4][0x100 *8]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>It would be nice to define D_802F1F80 as "struct_D_802F1F80 D_802F1F80[2][4][8]". But due to register allocation issues in load_kart_palette / func_80026B4C we have to define it in a different manner to match those functions. If AVOID_UB is defined, the struct is properly defined with their correct pointers. </p>
-
-</div>
-</div>
-<a id="a8d41a87f21c332742464afc1f22eff4c" name="a8d41a87f21c332742464afc1f22eff4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d41a87f21c332742464afc1f22eff4c">&#9670;&#160;</a></span>frameBufferPadding</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> frameBufferPadding[0x5810]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -237,42 +218,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a8eafbc86e2d3ad047f20f29099649228" name="a8eafbc86e2d3ad047f20f29099649228"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8eafbc86e2d3ad047f20f29099649228">&#9670;&#160;</a></span>gRandomSeed16</h2>
+<a id="a63346feaff86835bf7e5b03bfcd0086d" name="a63346feaff86835bf7e5b03bfcd0086d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63346feaff86835bf7e5b03bfcd0086d">&#9670;&#160;</a></span>gZBuffer</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> gRandomSeed16</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad69c72ff050917ed80fee1f0a4b6e373" name="ad69c72ff050917ed80fee1f0a4b6e373"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad69c72ff050917ed80fee1f0a4b6e373">&#9670;&#160;</a></span>gZBuffer</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> gZBuffer[<a class="el" href="config_8h.html#a2cd109632a6dcccaa80b43561b1ab700">SCREEN_WIDTH</a> *<a class="el" href="config_8h.html#a6974d08a74da681b3957b2fead2608b8">SCREEN_HEIGHT</a>]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad9140e069d65bc5b5da75424d09e9e57" name="ad9140e069d65bc5b5da75424d09e9e57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9140e069d65bc5b5da75424d09e9e57">&#9670;&#160;</a></span>randomSeedPadding</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> randomSeedPadding[216]</td>
+          <td class="memname"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> gZBuffer[<a class="el" href="config_8h.html#a2cd109632a6dcccaa80b43561b1ab700">SCREEN_WIDTH</a> *<a class="el" href="config_8h.html#a6974d08a74da681b3957b2fead2608b8">SCREEN_HEIGHT</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -284,7 +237,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c1be8d27e7f84178e95f152701110b19.html">data</a></li><li class="navelem"><a class="el" href="buffers_8c.html">buffers.c</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_8e7dd6ed00e108875c0f51700bea7501.html">buffers</a></li><li class="navelem"><a class="el" href="buffers_8c.html">buffers.c</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>

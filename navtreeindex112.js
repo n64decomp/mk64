@@ -1,12 +1,5 @@
 var NAVTREEINDEX112 =
 {
-"structTrainStuff.html#aa81aa49f9bff937d02fe7b1dae3fa48c":[7,0,210,2],
-"structTrainStuff.html#ad55c878cf7b149b9c47b0f1faf753145":[7,0,210,5],
-"structTrainStuff.html#ad97601b45041082812dcaab5af6fc7ce":[7,0,210,4],
-"structTrainStuff.html#af09aad0b146135b41f76a9a0bc497e4b":[7,0,210,6],
-"structTripleShellParent.html":[7,0,211],
-"structTripleShellParent.html#a13b6efc8edb8f17285a9f22419e4244a":[7,0,211,8],
-"structTripleShellParent.html#a155bcf238c032e374d9de55e12e3c117":[7,0,211,1],
 "structTripleShellParent.html#a25ce5ab0e6ba023314d79736809ae8e4":[7,0,211,6],
 "structTripleShellParent.html#a2699d0b153e58fa4d493bf3bdade2807":[7,0,211,5],
 "structTripleShellParent.html#a31471d3847195ba9618a684764b96043":[7,0,211,3],
@@ -249,5 +242,12 @@ var NAVTREEINDEX112 =
 "structVibratoState.html#ac7b0ebaf890134933a4888c2be0fbfc9":[7,0,259,2],
 "structVibratoState.html#ad999ff2598868fa4ebe80cf441e4fe11":[7,0,259,6],
 "structVibratoState.html#afe16472a2e442cf2e9a5fe8450c07a67":[7,0,259,3],
-"structVolumeChange.html":[7,0,260]
+"structVolumeChange.html":[7,0,260],
+"structVolumeChange.html#a021b049e75d04ef9d7fffcfd237b38d2":[7,0,260,2],
+"structVolumeChange.html#a5a54284947f770817436ddd65c195c19":[7,0,260,0],
+"structVolumeChange.html#abbc6c7d5ee5a6e4acf7314ff0b112a09":[7,0,260,1],
+"structVolumeChange.html#ace77b1c1e7a1f002fcbdd5d10c9c9159":[7,0,260,3],
+"structYVFlagPoleSpawn.html":[7,0,262],
+"structYVFlagPoleSpawn.html#a5b8d47e9bc2fabb268253a700c249527":[7,0,262,0],
+"structYVFlagPoleSpawn.html#aadd9629a5899fd9ee91eeb5f637e1a92":[7,0,262,1]
 };

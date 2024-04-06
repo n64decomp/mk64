@@ -86,12 +86,8 @@ var searchData=
   ['leo_5ftest_5freg_83',['LEO_TEST_REG',['../piint_8h.html#aeafec13e1f8dc859a270fb06956c1605',1,'piint.h']]],
   ['leo_5ftrack_5fmode_84',['LEO_TRACK_MODE',['../os_8h.html#a5c1772986025d1cc08818e57c914efcd',1,'os.h']]],
   ['lightning_5feffect_85',['LIGHTNING_EFFECT',['../defines_8h.html#a8dbdabe3aa4cd649ab8c2c052ff0846d',1,'defines.h']]],
-  ['linker_5fending_86',['LINKER_ENDING',['../linker__segments_8h.html#aa5cdaa9057cd367a99ac3fcd81dff75d',1,'linker_segments.h']]],
-  ['linker_5fmain_87',['LINKER_MAIN',['../linker__segments_8h.html#a0a85ba71579a5b6128b8fe3791c28ba3',1,'linker_segments.h']]],
-  ['linker_5fracing_88',['LINKER_RACING',['../linker__segments_8h.html#a59074ab0bccd319816cb73863e3314a8',1,'linker_segments.h']]],
-  ['linker_5ftrig_5ftables_89',['LINKER_TRIG_TABLES',['../linker__segments_8h.html#aac74798ffdb89f0f9cd607f6a1f7bf71',1,'linker_segments.h']]],
-  ['locomotive_5fonly_90',['LOCOMOTIVE_ONLY',['../vehicles_8h.html#a7bb7f90607adbbc2d74f3b248f820e09',1,'vehicles.h']]],
-  ['logo_5fintro_5fmenu_91',['LOGO_INTRO_MENU',['../defines_8h.html#a26c323982c7634f09f2d93900f27856d',1,'defines.h']]],
-  ['luigi_92',['LUIGI',['../defines_8h.html#a1ba3226d974a364d7682f44614e311d9',1,'defines.h']]],
-  ['luigi_5fsize_93',['LUIGI_SIZE',['../defines_8h.html#a57d2983415fa3cf8ab2a9bee6f087c7a',1,'defines.h']]]
+  ['locomotive_5fonly_86',['LOCOMOTIVE_ONLY',['../vehicles_8h.html#a7bb7f90607adbbc2d74f3b248f820e09',1,'vehicles.h']]],
+  ['logo_5fintro_5fmenu_87',['LOGO_INTRO_MENU',['../defines_8h.html#a26c323982c7634f09f2d93900f27856d',1,'defines.h']]],
+  ['luigi_88',['LUIGI',['../defines_8h.html#a1ba3226d974a364d7682f44614e311d9',1,'defines.h']]],
+  ['luigi_5fsize_89',['LUIGI_SIZE',['../defines_8h.html#a57d2983415fa3cf8ab2a9bee6f087c7a',1,'defines.h']]]
 ];

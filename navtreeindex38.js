@@ -1,7 +1,5 @@
 var NAVTREEINDEX38 =
 {
-"frappe__snowland_2course__data_8h.html#ad6bae8faf5de3e0b95d5d7c44f00d928":[8,0,0,7,1,35],
-"frappe__snowland_2course__data_8h.html#ad70f3db58446c6b1dc14c711a63ad35f":[8,0,0,7,1,38],
 "frappe__snowland_2course__data_8h.html#ad8b0d3bba53e1060ed9afcb394245c97":[8,0,0,7,1,5],
 "frappe__snowland_2course__data_8h.html#ad9a56d493b6f247bba5e2ea3317ed560":[8,0,0,7,1,25],
 "frappe__snowland_2course__data_8h.html#adb039faa4846bd9acd9bb1f41e416fb0":[8,0,0,7,1,27],
@@ -249,5 +247,7 @@ var NAVTREEINDEX38 =
 "frappe__snowland_2course__displaylists_8inc_8h.html#a949bfaf7710d1f758b2247ce31f561e6":[8,0,0,7,3,15],
 "frappe__snowland_2course__displaylists_8inc_8h.html#a96f2bb62a2fddc26b436ecf2da97163d":[8,0,0,7,3,45],
 "frappe__snowland_2course__displaylists_8inc_8h.html#a9b2270572887f1f37e4208e32f791d84":[8,0,0,7,3,105],
-"frappe__snowland_2course__displaylists_8inc_8h.html#a9cd7fb1b0f98f4d728ed2eb2b5fbc778":[8,0,0,7,3,24]
+"frappe__snowland_2course__displaylists_8inc_8h.html#a9cd7fb1b0f98f4d728ed2eb2b5fbc778":[8,0,0,7,3,24],
+"frappe__snowland_2course__displaylists_8inc_8h.html#a9db1528e75acf8e4a72ee6f4b635c284":[8,0,0,7,3,61],
+"frappe__snowland_2course__displaylists_8inc_8h.html#aa22153f33596e22e0fb8ec57a04502a4":[8,0,0,7,3,99]
 };

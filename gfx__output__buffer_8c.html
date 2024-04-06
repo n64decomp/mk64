@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Mario Kart 64: src/data/gfx_output_buffer.c File Reference</title>
+<title>Mario Kart 64: src/buffers/gfx_output_buffer.c File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -106,6 +106,7 @@ $(function(){initNavTree('gfx__output__buffer_8c.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="ultra64_8h_source.html">ultra64.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="gfx__output__buffer_8h_source.html">gfx_output_buffer.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for gfx_output_buffer.c:</div>
@@ -115,20 +116,20 @@ Include dependency graph for gfx_output_buffer.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aa6e89ad26a571573a3618e8bd57f2fcd" id="r_aa6e89ad26a571573a3618e8bd57f2fcd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6e89ad26a571573a3618e8bd57f2fcd">gGfxSPTaskOutputBuffer</a> [<a class="el" href="gfx__output__buffer_8h.html#acd645401a3e14e342cad25f6471ef97a">GFX_OUTPUT_BUFFER_SIZE</a>]</td></tr>
-<tr class="separator:aa6e89ad26a571573a3618e8bd57f2fcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0d217c24247928253c3da04e1837d0b" id="r_af0d217c24247928253c3da04e1837d0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0d217c24247928253c3da04e1837d0b">gGfxSPTaskOutputBuffer</a> [<a class="el" href="gfx__output__buffer_8h.html#acd645401a3e14e342cad25f6471ef97a">GFX_OUTPUT_BUFFER_SIZE</a>]</td></tr>
+<tr class="separator:af0d217c24247928253c3da04e1837d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d3d09175f95d66b361a83b7a94446f7" id="r_a1d3d09175f95d66b361a83b7a94446f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1d3d09175f95d66b361a83b7a94446f7">gGfxSPTaskOutputBufferSize</a></td></tr>
 <tr class="separator:a1d3d09175f95d66b361a83b7a94446f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="aa6e89ad26a571573a3618e8bd57f2fcd" name="aa6e89ad26a571573a3618e8bd57f2fcd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa6e89ad26a571573a3618e8bd57f2fcd">&#9670;&#160;</a></span>gGfxSPTaskOutputBuffer</h2>
+<a id="af0d217c24247928253c3da04e1837d0b" name="af0d217c24247928253c3da04e1837d0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0d217c24247928253c3da04e1837d0b">&#9670;&#160;</a></span>gGfxSPTaskOutputBuffer</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a> gGfxSPTaskOutputBuffer[<a class="el" href="gfx__output__buffer_8h.html#acd645401a3e14e342cad25f6471ef97a">GFX_OUTPUT_BUFFER_SIZE</a>]</td>
+          <td class="memname"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a> gGfxSPTaskOutputBuffer[<a class="el" href="gfx__output__buffer_8h.html#acd645401a3e14e342cad25f6471ef97a">GFX_OUTPUT_BUFFER_SIZE</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -154,7 +155,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c1be8d27e7f84178e95f152701110b19.html">data</a></li><li class="navelem"><a class="el" href="gfx__output__buffer_8c.html">gfx_output_buffer.c</a></li>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_8e7dd6ed00e108875c0f51700bea7501.html">buffers</a></li><li class="navelem"><a class="el" href="gfx__output__buffer_8c.html">gfx_output_buffer.c</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.10.0 </li>
   </ul>
 </div>

@@ -5,7 +5,7 @@ var searchData=
   ['rainbow_5froad_5ftextures_2',['rainbow_road_textures',['../all__course__offsets_8h.html#a02650c6c0703c8c687cfeef0b285b49b',1,'rainbow_road_textures:&#160;course_offsets.c'],['../courseTable_8h.html#a4658a3f9697fafd3ddea825c7a9138c3',1,'rainbow_road_textures:&#160;course_offsets.c'],['../rainbow__road_2course__offsets_8c.html#add5b26eacc5ed63f4f4c830e864ec515',1,'rainbow_road_textures:&#160;course_offsets.c']]],
   ['ramarray_3',['ramarray',['../structOSPifRam.html#a5053c829fab8ca1d155b56ed14eb98b3',1,'OSPifRam']]],
   ['random_4',['random',['../struct____OSPackId.html#a10afc2772970572388034c4024efd103',1,'__OSPackId']]],
-  ['randomseedpadding_5',['randomSeedPadding',['../buffers_8h.html#ad9140e069d65bc5b5da75424d09e9e57',1,'randomSeedPadding:&#160;buffers.c'],['../buffers_8c.html#ad9140e069d65bc5b5da75424d09e9e57',1,'randomSeedPadding:&#160;buffers.c']]],
+  ['randomseedpadding_5',['randomSeedPadding',['../buffers_8h.html#ad9140e069d65bc5b5da75424d09e9e57',1,'randomSeedPadding:&#160;random.c'],['../random_8c.html#ad9140e069d65bc5b5da75424d09e9e57',1,'randomSeedPadding:&#160;random.c'],['../random_8h.html#a3823f2db1b283d00b502020aec94314c',1,'randomSeedPadding:&#160;random.c']]],
   ['rankscaling_6',['rankScaling',['../structhud__player.html#acbbcb18b11223e46c8acf1627a93a250',1,'hud_player']]],
   ['rankx_7',['rankX',['../structhud__player.html#a486d40687a40a2b8d6f4f4f7a35862b5',1,'hud_player']]],
   ['ranky_8',['rankY',['../structhud__player.html#a5a65d708042223bf005c82849272d2b6',1,'hud_player']]],

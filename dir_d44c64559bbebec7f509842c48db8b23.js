@@ -12,7 +12,6 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "decode.h", "decode_8h.html", "decode_8h" ],
     [ "defines.h", "defines_8h.html", "defines_8h" ],
     [ "kart_attributes.h", "kart__attributes_8h.html", "kart__attributes_8h" ],
-    [ "linker_segments.h", "linker__segments_8h.html", "linker__segments_8h" ],
     [ "macros.h", "macros_8h.html", "macros_8h" ],
     [ "macros.inc", "macros_8inc.html", null ],
     [ "mk64.h", "mk64_8h.html", "mk64_8h" ],

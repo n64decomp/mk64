@@ -52,6 +52,5 @@ var math__util_8h =
     [ "vec3s_copy", "math__util_8h.html#a0f4fa7eeda2b619a6711895e79fa2ae4", null ],
     [ "vec3s_set", "math__util_8h.html#a523340db1831d8da840b1f2278194a6d", null ],
     [ "D_802B91C0", "math__util_8h.html#a51e5931330fce8c5cd15ff0c32cf7d24", null ],
-    [ "D_802B91C8", "math__util_8h.html#af51511ea7d50b2e329594cb21636fe35", null ],
-    [ "gRandomSeed16", "math__util_8h.html#a8eafbc86e2d3ad047f20f29099649228", null ]
+    [ "D_802B91C8", "math__util_8h.html#af51511ea7d50b2e329594cb21636fe35", null ]
 ];
