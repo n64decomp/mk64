@@ -38,7 +38,7 @@ $(ITEM_WINDOW_DIR)/common_texture_item_window_fake_item_box.png
 
 ITEM_WINDOW_EXPORT_SENTINEL := $(ITEM_WINDOW_DIR)/.export
 
-$(BUILD_DIR)/src/data/common_textures.inc.o: $(ITEM_WINDOW_PNG:%.png=%.inc.c) $(ITEM_WINDOW_PALETTES:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.o: $(ITEM_WINDOW_PNG:%.png=%.inc.c) $(ITEM_WINDOW_PALETTES:%.png=%.inc.c)
 
 $(ITEM_WINDOW_DIR)/common_texture_%.inc.c: $(ITEM_WINDOW_DIR)/common_texture_%.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(ITEM_WINDOW_DIR)/common_tlut_$*.png

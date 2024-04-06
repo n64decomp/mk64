@@ -325,6 +325,7 @@ typedef enum {
  * @brief sound effect of player's
  * for soundEffect
  */
+#define HIT_SOUND_EFFECT          0x100 // hitting an object
 #define BOOST_SOUND_EFFECT        0x200 // being boosted by trigger a mushroom
 #define BOO_SOUND_EFFECT          0x800 // being a boo
 #define STAR_SOUND_EFFECT         0x2000 // being a star
@@ -344,6 +345,7 @@ typedef enum {
 #define BOOST_EFFECT                   0x2000 // being boosted by trigger a mushroom
 #define BOOST_RAMP_ASPHALT_EFFECT      0x100000 // being boosted by a boost pad
 #define HIT_BY_ITEM_EFFECT             0x2000000 // being hit by an item
+#define HIT_EFFECT                     0x4000000 // hitting an object
 #define LIGHTNING_EFFECT               0x40000000 // being hit by lightning
 #define BOO_EFFECT                     0x80000000 // being a boo
 

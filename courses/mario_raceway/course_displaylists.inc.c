@@ -3,8 +3,8 @@
 #include <PR/gbi.h>
 #include <course.h>
 
-#include <courses/mario_raceway/course_displaylists.inc.h>
-#include <courses/mario_raceway/course_textures.linkonly.h>
+#include "course_displaylists.inc.h"
+#include "course_textures.linkonly.h"
 
 Gfx d_course_mario_raceway_packed_dl_0[] =
 {

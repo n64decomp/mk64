@@ -12,7 +12,7 @@ $(ENDING_CEREMONY)/gTexturePodium3.png
 
 ENDING_CEREMONY_EXPORT_SENTINEL := $(ENDING_CEREMONY)/.export
 
-$(BUILD_DIR)/src/ending/ceremony_data.inc.o: $(TROHPY_PNG:%.png=%.inc.c) $(PODIUM_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/src/ending/ceremony_data.o: $(TROHPY_PNG:%.png=%.inc.c) $(PODIUM_PNG:%.png=%.inc.c)
 
 $(TROHPY_PNG:%.png=%.inc.c) $(PODIUM_PNG:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16

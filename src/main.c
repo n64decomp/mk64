@@ -35,7 +35,7 @@
 #include "staff_ghosts.h"
 #include <debug.h>
 #include "crash_screen.h"
-#include "data/gfx_output_buffer.h"
+#include "buffers/gfx_output_buffer.h"
 
 // Declarations (not in this file)
 void func_80091B78(void);
@@ -53,9 +53,9 @@ struct VblankHandler *gVblankHandler2 = NULL;
 
 struct SPTask *gActiveSPTask = NULL;
 struct SPTask *sCurrentAudioSPTask = NULL;
-struct SPTask* sCurrentDisplaySPTask = NULL;
-struct SPTask* sNextAudioSPTask = NULL;
-struct SPTask* sNextDisplaySPTask = NULL;
+struct SPTask *sCurrentDisplaySPTask = NULL;
+struct SPTask *sNextAudioSPTask = NULL;
+struct SPTask *sNextDisplaySPTask = NULL;
 
 
 struct Controller gControllers[NUM_PLAYERS];
@@ -137,7 +137,7 @@ struct SPTask *gGfxSPTask;
 s32 D_801502A0;
 s32 D_801502A4;
 u16 *gPhysicalFramebuffers[3];
-u32 D_801502B4;
+uintptr_t gPhysicalZBuffer;
 UNUSED u32 D_801502B8;
 UNUSED u32 D_801502BC;
 Mat4 D_801502C0;
@@ -368,7 +368,7 @@ void read_controllers(void) {
 }
 
 void func_80000BEC(void) {
-    D_801502B4 = VIRTUAL_TO_PHYSICAL(&gZBuffer);
+    gPhysicalZBuffer = VIRTUAL_TO_PHYSICAL(&gZBuffer);
 }
 
 void dispatch_audio_sptask(struct SPTask *spTask) {
@@ -538,7 +538,7 @@ void setup_game_memory(void) {
     textureSegStart = (ptrdiff_t) SEG_RACING - commonCourseDataSize;
 #else
     textureSegStart = SEG_RACING - commonCourseDataSize;
-#endif  
+#endif
     osPiStartDma(&gDmaIoMesg, 0, 0, COMMON_TEXTURES_ROM_START, (void *) textureSegStart, commonCourseDataSize, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
@@ -595,7 +595,7 @@ void race_logic_loop(void) {
                         gCourseTimer += COURSE_TIMER_ITER;
                     }
                     func_802909F0();
-                    evaluate_player_collision();
+                    evaluate_collision_for_players_and_actors();
                     func_800382DC();
                     func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80028F70();
@@ -660,7 +660,7 @@ void race_logic_loop(void) {
                             gCourseTimer += COURSE_TIMER_ITER;
                         }
                         func_802909F0();
-                        evaluate_player_collision();
+                        evaluate_collision_for_players_and_actors();
                         func_800382DC();
                         func_8001EE98(gPlayerOneCopy, camera1, 0);
                         func_80029060();
@@ -706,7 +706,7 @@ void race_logic_loop(void) {
                             gCourseTimer += COURSE_TIMER_ITER;
                         }
                         func_802909F0();
-                        evaluate_player_collision();
+                        evaluate_collision_for_players_and_actors();
                         func_800382DC();
                         func_8001EE98(gPlayerOneCopy, camera1, 0);
                         func_80029060();
@@ -774,7 +774,7 @@ void race_logic_loop(void) {
                         gCourseTimer += COURSE_TIMER_ITER;
                     }
                     func_802909F0();
-                    evaluate_player_collision();
+                    evaluate_collision_for_players_and_actors();
                     func_800382DC();
                     func_8001EE98(gPlayerOneCopy, camera1, 0);
                     func_80029158();

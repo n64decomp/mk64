@@ -930,10 +930,6 @@ s32 func_80007BF8(u16 arg0, u16 arg1, u16 arg2, u16 arg3, u16 arg4) {
 #ifdef NON_MATCHING // Likely func equiv
 // https://decomp.me/scratch/Te4u1
 
-extern u16 D_80163344[];
-extern s16 D_80163478;
-extern s16 D_801634C0[];
-
 void func_80007D04(s32 playerId, Player *player) {
     s16 temp_t1;
     s16 temp_t2;
@@ -1606,7 +1602,7 @@ void func_800098FC(s32 arg0, Player *player) {
         }
     }
     if (D_801633B0[arg0] >= 0xB) {
-        if ((player->soundEffects & 0x400000) || (player->soundEffects & 0x01000000) || (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & 0x04000000)) {
+        if ((player->soundEffects & 0x400000) || (player->soundEffects & 0x01000000) || (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & HIT_EFFECT)) {
 	        func_800C92CC(arg0, 0x2900800BU);
 	        D_801633B0[arg0] = 0;
 	    }
@@ -1644,7 +1640,7 @@ void func_800099EC(s32 playerId, Player *unused) {
 // Lots of register allocation differences, but messing around seems to suggest they stem from 2 specific areas
 // MISMATCH1: something about the loading of `playerId` is off
 // MISMATCH2: something about the handling of the math is off. Not sure exactly what though
-// MISMATCH3: there's a small instruction ordering issue concerning `D_8015F6F0`. No idea what to do about it
+// MISMATCH3: there's a small instruction ordering issue concerning `gCourseMaxX`. No idea what to do about it
 // FAKEMATCH1 is the best improvement I've seen yet, MISMATCH2/3 become the only issues.
 
 void func_80009B60(s32 playerId) {
@@ -1702,17 +1698,17 @@ void func_80009B60(s32 playerId) {
             return;
         }
         D_801633E0[playerId] = 0;
-        if (player->pos[0] < D_8015F6EA) {
+        if (player->pos[0] < gCourseMinX) {
             D_801633E0[playerId] = 1;
         }
-        if (D_8015F6E8 < player->pos[0]) {
+        if (gCourseMaxX < player->pos[0]) {
             D_801633E0[playerId] = 2;
         }
-        if (player->pos[2] < D_8015F6F2) {
+        if (player->pos[2] < gCourseMinZ) {
             D_801633E0[playerId] = 3;
         }
         // MISMATCH3
-        if (D_8015F6F0 < player->pos[2]) {
+        if (gCourseMaxZ < player->pos[2]) {
             D_801633E0[playerId] = 4;
         }
         if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8)) {
@@ -3268,11 +3264,11 @@ void func_8000DF8C(s32 bombKartId) {
     }
 }
 
-s32 func_8000ED14(s32 actorIndex, s16 arg1) {
+s32 add_actor_in_unexpired_actor_list(s32 actorIndex, s16 arg1) {
     s32 i;
     s32 a2 = 0;
 
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < NUM_PLAYERS; i++) {
 
         if (gUnexpiredActorsList[i].unkC == 0) {
             gUnexpiredActorsList[i].unkC = 1;
@@ -3289,31 +3285,31 @@ s32 func_8000ED14(s32 actorIndex, s16 arg1) {
     return 0;
 }
 
-s32 func_8000ED80(s32 actorIndex) {
+s32 add_red_shell_in_unexpired_actor_list(s32 actorIndex) {
     struct Actor *actor = &gActorList[actorIndex];
-    if (actor->type != 8) {
+    if (actor->type != ACTOR_RED_SHELL) {
         return -1;
     }
-    return func_8000ED14(actorIndex, 0);
+    return add_actor_in_unexpired_actor_list(actorIndex, 0);
 }
 
-s32 func_8000EDC8(s32 actorIndex) {
+s32 add_green_shell_in_unexpired_actor_list(s32 actorIndex) {
     struct Actor *actor = &gActorList[actorIndex];
-    if (actor->type != 7) {
+    if (actor->type != ACTOR_GREEN_SHELL) {
         return -1;
     }
-    return func_8000ED14(actorIndex, 1);
+    return add_actor_in_unexpired_actor_list(actorIndex, 1);
 }
 
-s32 func_8000EE10(s32 arg0) {
+s32 add_blue_shell_in_unexpired_actor_list(s32 arg0) {
     struct Actor *actor = &gActorList[arg0];
-    if (actor->type != 42) {
+    if (actor->type != ACTOR_BLUE_SPINY_SHELL) {
         return -1;
     }
-    return func_8000ED14(arg0, 2);
+    return add_actor_in_unexpired_actor_list(arg0, 2);
 }
 
-void func_8000EE58(s32 actorIndex) {
+void delete_actor_in_unexpired_actor_list(s32 actorIndex) {
     struct unexpiredActors *phi;
     s32 i;
 
@@ -4423,7 +4419,7 @@ void init_course_vehicles(void) {
             tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
             tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
             vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-            tempLocomotive->actorIndex = addActorToEmptySlot(tempLocomotive->position, trainCarRot, tempLocomotive->velocity, ACTOR_TRAIN_ENGINE);
+            tempLocomotive->actorIndex = add_actor_to_empty_slot(tempLocomotive->position, trainCarRot, tempLocomotive->velocity, ACTOR_TRAIN_ENGINE);
 
             tempTender = &gTrainList[loopIndex].tender;
             if (tempTender->isActive == 1) {
@@ -4433,7 +4429,7 @@ void init_course_vehicles(void) {
                 tempTender->velocity[0] = tempTender->position[0] - origXPos;
                 tempTender->velocity[2] = tempTender->position[2] - origZPos;
                 vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-                tempTender->actorIndex = addActorToEmptySlot(tempTender->position, trainCarRot, tempTender->velocity, ACTOR_TRAIN_TENDER);
+                tempTender->actorIndex = add_actor_to_empty_slot(tempTender->position, trainCarRot, tempTender->velocity, ACTOR_TRAIN_TENDER);
             }
 
             for(loopIndex2 = 0; loopIndex2 < NUM_PASSENGER_CAR_ENTRIES; loopIndex2++) {
@@ -4445,7 +4441,7 @@ void init_course_vehicles(void) {
                     tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
                     tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
                     vec3s_set(trainCarRot, 0, trainCarYRot, 0);
-                    tempPassengerCar->actorIndex = addActorToEmptySlot(tempPassengerCar->position, trainCarRot, tempPassengerCar->velocity, ACTOR_TRAIN_PASSENGER_CAR);
+                    tempPassengerCar->actorIndex = add_actor_to_empty_slot(tempPassengerCar->position, trainCarRot, tempPassengerCar->velocity, ACTOR_TRAIN_PASSENGER_CAR);
                 }
             }
         }
@@ -4460,7 +4456,7 @@ void init_course_vehicles(void) {
                 tempPaddleWheelBoat->velocity[0] = tempPaddleWheelBoat->position[0] - origXPos;
                 tempPaddleWheelBoat->velocity[2] = tempPaddleWheelBoat->position[2] - origZPos;
                 vec3s_set(paddleWheelBoatRot, 0, tempPaddleWheelBoat->rotY, 0);
-                tempPaddleWheelBoat->actorIndex = addActorToEmptySlot(tempPaddleWheelBoat->position, paddleWheelBoatRot, tempPaddleWheelBoat->velocity, ACTOR_PADDLE_BOAT);
+                tempPaddleWheelBoat->actorIndex = add_actor_to_empty_slot(tempPaddleWheelBoat->position, paddleWheelBoatRot, tempPaddleWheelBoat->velocity, ACTOR_PADDLE_BOAT);
             }
         }
         break;
@@ -4468,22 +4464,22 @@ void init_course_vehicles(void) {
         for(loopIndex = 0; loopIndex < NUM_RACE_BOX_TRUCKS; loopIndex++) {
             tempBoxTruck = &gBoxTruckList[loopIndex];
             func_80012220(tempBoxTruck);
-            tempBoxTruck->actorIndex = addActorToEmptySlot(tempBoxTruck->position, tempBoxTruck->rotation, tempBoxTruck->velocity, ACTOR_BOX_TRUCK);
+            tempBoxTruck->actorIndex = add_actor_to_empty_slot(tempBoxTruck->position, tempBoxTruck->rotation, tempBoxTruck->velocity, ACTOR_BOX_TRUCK);
         }
         for(loopIndex = 0; loopIndex < NUM_RACE_SCHOOL_BUSES; loopIndex++) {
             tempSchoolBus = &gSchoolBusList[loopIndex];
             func_80012220(tempSchoolBus);
-            tempSchoolBus->actorIndex = addActorToEmptySlot(tempSchoolBus->position, tempSchoolBus->rotation, tempSchoolBus->velocity, ACTOR_SCHOOL_BUS);
+            tempSchoolBus->actorIndex = add_actor_to_empty_slot(tempSchoolBus->position, tempSchoolBus->rotation, tempSchoolBus->velocity, ACTOR_SCHOOL_BUS);
         }
         for(loopIndex = 0; loopIndex < NUM_RACE_TANKER_TRUCKS; loopIndex++) {
             tempTankerTruck = &gTankerTruckList[loopIndex];
             func_80012220(tempTankerTruck);
-            tempTankerTruck->actorIndex = addActorToEmptySlot(tempTankerTruck->position, tempTankerTruck->rotation, tempTankerTruck->velocity, ACTOR_TANKER_TRUCK);
+            tempTankerTruck->actorIndex = add_actor_to_empty_slot(tempTankerTruck->position, tempTankerTruck->rotation, tempTankerTruck->velocity, ACTOR_TANKER_TRUCK);
         }
         for(loopIndex = 0; loopIndex < NUM_RACE_CARS; loopIndex++) {
             tempCar = &gCarList[loopIndex];
             func_80012220(tempCar);
-            tempCar->actorIndex = addActorToEmptySlot(tempCar->position, tempCar->rotation, tempCar->velocity, ACTOR_CAR);
+            tempCar->actorIndex = add_actor_to_empty_slot(tempCar->position, tempCar->rotation, tempCar->velocity, ACTOR_CAR);
         }
         break;
     }

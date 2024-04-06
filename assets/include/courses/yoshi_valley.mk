@@ -10,8 +10,8 @@ YOSHI_VALLEY_HEDGEHOG_PNG	 := $(YOSHI_VALLEY_DIR)/gTextureYoshiValleyHedgehog.pn
 
 YOSHI_VALLEY_EXPORT_SENTINEL := $(YOSHI_VALLEY_DIR)/.export
 
-$(BUILD_DIR)/courses/yoshi_valley/course_data.inc.o: $(YOSHI_VALLEY_HEDGEHOG_PALETTE:%.png=%.inc.c) $(YOSHI_VALLEY_HEDGEHOG_PNG:%.png=%.inc.c)
-$(BUILD_DIR)/courses/yoshi_valley/course_data.inc.o: $(YOSHI_VALLEY_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/yoshi_valley/course_data.o: $(YOSHI_VALLEY_HEDGEHOG_PALETTE:%.png=%.inc.c) $(YOSHI_VALLEY_HEDGEHOG_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/yoshi_valley/course_data.o: $(YOSHI_VALLEY_PNG:%.png=%.inc.c)
 
 $(YOSHI_VALLEY_HEDGEHOG_PNG:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(YOSHI_VALLEY_HEDGEHOG_PALETTE)

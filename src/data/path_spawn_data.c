@@ -1,6 +1,6 @@
 #include "data/path_spawn_data.h"
 #include "courses/all_course_data.h"
-#include "ending/ceremony_data.inc.h"
+#include "ending/ceremony_data.h"
 
 KartAIBehaviour *gKartAIBehaviourLUT[NUM_COURSES+1] = {
 	common_kart_ai_behaviour_mario_raceway,
