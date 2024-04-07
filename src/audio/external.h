@@ -52,7 +52,7 @@ struct Sound {
     /* 0x09 */ // u8  compilerPadding0[3];
 	/* 0x0C */ f32 *unk0C;
 	/* 0x10 */ f32 *unk10;
-	/* 0x14 */ u8  *unk14;
+	/* 0x14 */ s8  *unk14;
 }; // size = 0x18
 
 struct Unk_800E9F7C {
@@ -229,7 +229,7 @@ void func_800C3F70(void);
 void func_800C400C(void);
 void func_800C4084(u16);
 void func_800C40F0(u8);
-void play_sound(u32, Vec3f*, u8, f32*, f32*, u8*);
+void play_sound(u32, Vec3f*, u8, f32*, f32*, s8*);
 void func_800C41CC(u8, struct SoundCharacteristics*);
 void func_800C4398(void);
 void delete_sound_from_bank(u8, u8);
