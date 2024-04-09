@@ -18,9 +18,9 @@
 #include "math_util_2.h"
 #include "code_80005FD0.h"
 #include "render_player.h"
-#include "hud_renderer.h"
+#include "render_objects.h"
 #include "code_8006E9C0.h"
-#include "code_80071F00.h"
+#include "update_objects.h"
 #include "code_80086E70.h"
 #include "effects.h"
 #include "src/data/data_800E8700.h"
@@ -33,7 +33,7 @@
 #include "data/other_textures.h"
 #include "spawn_players.h"
 #include "sounds.h"
-#include "code_80071F00.h"
+#include "data/some_data.h"
 
 
 //! @warning this macro is undef'd at the end of this file
@@ -134,7 +134,7 @@ UNUSED s16 D_801657A8[3];
 s8 D_801657AE;
 UNUSED s8 D_801657AF;
 //! HUD related
-s8 D_801657B0;
+s8 gHUDDisable;
 UNUSED s8 D_801657B1;
 s8 D_801657B2;
 UNUSED s8 D_801657B3;
@@ -237,7 +237,7 @@ f32 D_80183DA8[4];
 s32 gIndexLakituList[4];
 f32 D_80183DC8[4];
 //! Indexes for the objects associated with the Bomb Karts
-s32 D_80183DD8[NUM_BOMB_KARTS_MAX];
+s32 gIndexObjectBombKart[NUM_BOMB_KARTS_MAX];
 UNUSED s32 D_80183DF8[16];
 //! Next free spot in gObjectParticle1? Wraps back around to 0 if it gets bigger than gObjectParticle1_SIZE
 s32 gNextFreeObjectParticle1;
@@ -489,11 +489,11 @@ void func_80057FC4(u32 arg0) {
     UNUSED Gfx *temp_v1;
 
 
-    if ((D_801657B0 != 0)) {
+    if ((gHUDDisable != 0)) {
         return;
     }
     gSPDisplayList(gDisplayListHead++, &D_0D0076F8);
-    func_80041EF4();
+    set_matrix_hud_screen();
 
     if ((D_801657C8 != 0)){
         return;
@@ -519,10 +519,10 @@ void func_80057FC4(u32 arg0) {
 
 }
 
-void func_80058090(u32 arg0) {
+void render_object(u32 arg0) {
     UNUSED Gfx *temp_v1;
 
-    if (D_801657B0 != 0) {
+    if (gHUDDisable != 0) {
         return;
     }
 
@@ -534,104 +534,104 @@ void func_80058090(u32 arg0) {
 
 
     switch (arg0) {
-        case 0:
-            func_800581C8();
+        case RENDER_SCREEN_MODE_1P_PLAYER_ONE:
+            render_object_p1();
             break;
-        case 1:
-            func_800581C8();
+        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE:
+            render_object_p1();
             break;
-        case 2:
-            func_800582CC();
+        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
+            render_object_p2();
             break;
-        case 3:
-            func_800581C8();
+        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
+            render_object_p1();
             break;
-        case 4:
-            func_800582CC();
+        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
+            render_object_p2();
             break;
         case 5:
-            func_800581C8();
+            render_object_p1();
             break;
         case 6:
-            func_800582CC();
+            render_object_p2();
             break;
         case 7:
-            func_80058394();
+            render_object_p3();
             break;
-        case 8:
-            func_800581C8();
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE:
+            render_object_p1();
             break;
-        case 9:
-            func_800582CC();
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO:
+            render_object_p2();
             break;
-        case 10:
-            func_80058394();
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE:
+            render_object_p3();
             break;
-        case 11:
-            func_8005845C();
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR:
+            render_object_p4();
             break;
     }
 }
 
-void func_800581C8(void) {
+void render_object_p1(void) {
 
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
-    func_8001C3C4(0);
+    func_8001C3C4(PLAYER_ONE);
     if (gGamestate == ENDING) {
-        func_80055F48(0);
-        func_80056160(0);
-        func_8005217C(0);
-        func_80054BE8(0);
+        func_80055F48(PLAYER_ONE);
+        func_80056160(PLAYER_ONE);
+        func_8005217C(PLAYER_ONE);
+        func_80054BE8(PLAYER_ONE);
         return;
     }
     if (!gDemoMode) {
-        func_800532A4(0);
+        render_lakitu(PLAYER_ONE);
     }
-    func_800588F4(0);
+    render_object_for_player(PLAYER_ONE);
 }
 
-void func_800582CC(void) {
+void render_object_p2(void) {
 
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(1);
+    func_8001C3C4(PLAYER_TWO);
     if (!gDemoMode) {
-        func_800532A4(1);
+        render_lakitu(PLAYER_TWO);
     }
-    func_800588F4(1);
+    render_object_for_player(PLAYER_TWO);
 }
 
-void func_80058394(void) {
+void render_object_p3(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(2);
+    func_8001C3C4(PLAYER_THREE);
     if (!gDemoMode) {
-        func_800532A4(2);
+        render_lakitu(PLAYER_THREE);
     }
-    func_800588F4(2);
+    render_object_for_player(PLAYER_THREE);
 }
 
-void func_8005845C(void) {
+void render_object_p4(void) {
 
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(3);
+    func_8001C3C4(PLAYER_FOUR);
     if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
-        func_800532A4(3);
+        render_lakitu(PLAYER_FOUR);
     }
-    func_800588F4(3);
+    render_object_for_player(PLAYER_FOUR);
 }
 
-void func_80058538(u32 arg0) {
+void render_player_snow_effect(u32 arg0) {
     UNUSED Gfx *temp_v1;
 
-    if (D_801657B0 != 0) {
+    if (gHUDDisable != 0) {
         return;
     }
 
@@ -641,67 +641,67 @@ void func_80058538(u32 arg0) {
         return;
     }
     switch (arg0) {
-        case 0:
-            func_80058640();
+        case RENDER_SCREEN_MODE_1P_PLAYER_ONE:
+            render_player_snow_effect_one();
             break;
-        case 1:
-            func_80058640();
+        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE:
+            render_player_snow_effect_one();
             break;
-        case 2:
-            func_800586FC();
+        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
+            render_player_snow_effect_two();
             break;
-        case 3:
-            func_80058640();
+        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
+            render_player_snow_effect_one();
             break;
-        case 4:
-            func_800586FC();
+        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
+            render_player_snow_effect_two();
             break;
-        case 8:
-            func_80058640();
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE:
+            render_player_snow_effect_one();
             break;
-        case 9:
-            func_800586FC();
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO:
+            render_player_snow_effect_two();
             break;
-        case 10:
-            func_800587A4();
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE:
+            render_player_snow_effect_three();
             break;
-        case 11:
-            func_8005884C();
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR:
+            render_player_snow_effect_four();
             break;
     }
 }
 
-void func_80058640(void) {
+void render_player_snow_effect_one(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     if (gGamestate != ENDING) {
-        func_80058B58(0);
+        render_snowing_effect(PLAYER_ONE);
     }
 }
 
-void func_800586FC(void) {
+void render_player_snow_effect_two(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[1]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_80058B58(1);
+    render_snowing_effect(PLAYER_TWO);
 }
 
-void func_800587A4(void) {
+void render_player_snow_effect_three(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[2]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_80058B58(2);
+    render_snowing_effect(PLAYER_THREE);
 }
 
-void func_8005884C(void) {
+void render_player_snow_effect_four(void) {
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[3]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_80058B58(3);
+    render_snowing_effect(PLAYER_FOUR);
 }
 
-void func_800588F4(s32 cameraId) {
+void render_object_for_player(s32 cameraId) {
 
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
@@ -709,68 +709,68 @@ void func_800588F4(s32 cameraId) {
         case COURSE_CHOCO_MOUNTAIN:
             break;
         case COURSE_BOWSER_CASTLE:
-            func_80053870(cameraId);
-            func_80054664(cameraId);
+            render_object_thwomps(cameraId);
+            render_object_bowser_flame(cameraId);
             break;
         case COURSE_BANSHEE_BOARDWALK:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_800527D8(cameraId);
-                func_80052590(cameraId);
+                render_object_trash_bin(cameraId);
+                render_object_bat(cameraId);
                 func_8005217C(cameraId);
-                func_800524B4(cameraId);
+                render_object_boos(cameraId);
             }
             break;
         case COURSE_YOSHI_VALLEY:
             func_80055228(cameraId);
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_8005568C(cameraId);
+                render_object_hedgehogs(cameraId);
             }
             break;
         case COURSE_FRAPPE_SNOWLAND:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_8005327C(cameraId);
+                render_object_snowmans(cameraId);
             }
             break;
         case COURSE_KOOPA_BEACH:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80055528(cameraId);
+                render_object_crabs(cameraId);
             }
             if (gGamestate != CREDITS_SEQUENCE) {
 
                 if ((gPlayerCount == 1) || (gPlayerCount == 2)) {
-                    func_80055380(cameraId);
+                    render_object_seagulls(cameraId);
                 }
             } else {
-                func_80055380(cameraId);
+                render_object_seagulls(cameraId);
             }
             break;
         case COURSE_ROYAL_RACEWAY:
             break;
         case COURSE_LUIGI_RACEWAY:
             if (D_80165898 != 0) {
-                func_80055E68(cameraId);
+                render_object_hot_air_balloon(cameraId);
             }
             break;
         case COURSE_MOO_MOO_FARM:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_800550A4(cameraId);
+                render_object_moles(cameraId);
             }
             break;
         case COURSE_TOADS_TURNPIKE:
             break;
         case COURSE_KALAMARI_DESERT:
-            func_800541BC(cameraId);
+            render_object_train_smoke_particles(cameraId);
             break;
         case COURSE_SHERBET_LAND:
             if (gGamestate != CREDITS_SEQUENCE) {
                 func_80052E30(cameraId);
             }
-            func_8005592C(cameraId);
+            render_object_train_penguins(cameraId);
             break;
         case COURSE_RAINBOW_ROAD:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80056188(cameraId);
-                func_80055C38(cameraId);
+                render_object_neon(cameraId);
+                render_object_chain_chomps(cameraId);
             }
             break;
         case COURSE_WARIO_STADIUM:
@@ -783,35 +783,35 @@ void func_800588F4(s32 cameraId) {
             break;
         case COURSE_DK_JUNGLE:
             if (gGamestate != CREDITS_SEQUENCE) {
-                func_80054414(cameraId);
+                render_object_paddle_boat_smoke_particles(cameraId);
             }
             break;
     }
 
-    func_80054938(cameraId);
-    func_80051638(cameraId);
+    render_object_smoke_particles(cameraId);
+    render_object_leaf_particle(cameraId);
 
     if (D_80165730 != 0) {
         func_80053E6C(cameraId);
     }
     if (gModeSelection == BATTLE) {
-        func_80056AC0(cameraId);
+        render_object_bomb_kart(cameraId);
     }
 }
 
-void func_80058B58(s32 arg0) {
+void render_snowing_effect(s32 arg0) {
     switch(gCurrentCourseId) {
         case COURSE_FRAPPE_SNOWLAND:
             if (gGamestate != 9) {
                 if ((D_8015F894 == 0) && (gPlayerCountSelection1 == 1)) {
-                    func_800517C8();
+                    render_object_snowflakes_particles();
                 }
             } else {
-                func_800517C8();
+                render_object_snowflakes_particles();
             }
             break;
         case COURSE_SHERBET_LAND:
-            func_80052C60(arg0);
+            render_ice_block(arg0);
             break;
     }
 }
@@ -827,59 +827,59 @@ void func_80058C20(u32 arg0) {
 
     if (D_8018D22C == 0) {
         switch (arg0) {
-            case 0:
+            case RENDER_SCREEN_MODE_1P_PLAYER_ONE:
                 func_80058F48();
                 break;
-            case 1:
+            case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE:
                 if (!gDemoMode) {
                     func_80059358();
                     break;
                 }
 
                 break;
-            case 2:
+            case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
                 if (!gDemoMode) {
                     func_800593F0();
                     break;
                 }
 
                 break;
-            case 3:
+            case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
                 if (!gDemoMode) {
                     func_800594F0();
                     break;
                 }
 
                 break;
-            case 4:
+            case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
                 if (!gDemoMode) {
                     func_80059528();
                     break;
                 }
 
                 break;
-            case 8:
+            case RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE:
                 if (!gDemoMode) {
                     func_800596A8();
                     break;
                 }
 
                 break;
-            case 9:
+            case RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO:
                 if (!gDemoMode) {
                     func_80059710();
                     break;
                 }
 
                 break;
-            case 10:
+            case RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE:
                 if (!gDemoMode) {
                     func_80059750();
                     break;
                 }
 
                 break;
-            case 11:
+            case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR:
                 if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
                     func_800597B8();
                 }
@@ -888,67 +888,67 @@ void func_80058C20(u32 arg0) {
     }
 }
 
-void func_80058DB4(u32 arg0) {
+void render_hud(u32 arg0) {
 
     D_8018D21C = arg0;
     gSPDisplayList(gDisplayListHead++, &D_0D0076F8);
     if (D_8018D22C == 0) {
         switch (arg0) {
-        case 0:
+        case RENDER_SCREEN_MODE_1P_PLAYER_ONE:
             func_80058F78();
             break;
-        case 1:
+        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE:
             if (!gDemoMode) {
-                func_80059360();
+                render_hud_2p_horizontal_player_two_horizontal_player_one();
                 break;
             }
 
             break;
-        case 2:
+        case RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO:
             if (!gDemoMode) {
-                func_800593F8();
+                render_hud_2p_horizontal_player_two();
                 break;
             }
 
             break;
-        case 3:
+        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE:
             if (!gDemoMode) {
-                func_800594F8();
+                render_hud_2p_vertical_player_one();
                 break;
             }
 
             break;
-        case 4:
+        case RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO:
             if (!gDemoMode) {
-                func_80059530();
+                render_hud_2p_vertical_player_two();
                 break;
             }
 
             break;
-        case 8:
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE:
             if (!gDemoMode) {
-                func_800596D8();
+                render_hud_1p_multi();
                 break;
             }
 
             break;
-        case 9:
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO:
             if (!gDemoMode) {
-                func_80059718();
+                render_hud_2p_multi();
                 break;
             }
 
             break;
-        case 10:
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE:
             if (!gDemoMode) {
-                func_80059780();
+                render_hud_3p_multi();
                 break;
             }
 
             break;
-        case 11:
+        case RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR:
             if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
-                func_800597E8();
+                render_hud_4p_multi();
             }
             break;
         }
@@ -956,19 +956,19 @@ void func_80058DB4(u32 arg0) {
 }
 
 void func_80058F48(void) {
-    if (D_801657B0 == 0) {
-        func_80041EF4();
+    if (gHUDDisable == 0) {
+        set_matrix_hud_screen();
     }
 }
 
 void func_80058F78(void) {
-    if (D_801657B0 == 0) {
-        func_80041EF4();
+    if (gHUDDisable == 0) {
+        set_matrix_hud_screen();
         if ((!gDemoMode) && (gIsHUDVisible != 0) && (D_801657D8 == 0)) {
-            func_8004E638(0);
+            draw_item_window(PLAYER_ONE);
             if (D_801657E4 != 2) {
-                func_8004FA78(0);
-                func_8004E78C(0);
+                render_hud_timer(PLAYER_ONE);
+                draw_simplified_lap_count(PLAYER_ONE);
                 func_8004EB38(0);
                 if (D_801657E6 != FALSE) {
                     func_8004ED40(0);
@@ -1037,7 +1037,7 @@ void func_800590D4(void) {
 
 void func_800591B4(void) {
 
-    if ((D_801657B0 == 0) && (D_800DC5B8 != 0)) {
+    if ((gHUDDisable == 0) && (D_800DC5B8 != 0)) {
         func_80057C60();
         gSPDisplayList(gDisplayListHead++, &D_0D0076F8);
 
@@ -1078,13 +1078,13 @@ void func_80059358(void) {
 
 }
 
-void func_80059360(void) {
-    if (D_801657B0 == 0) {
-        func_8004FA78(0);
+void render_hud_2p_horizontal_player_two_horizontal_player_one(void) {
+    if (gHUDDisable == 0) {
+        render_hud_timer(PLAYER_ONE);
         if (playerHUD[PLAYER_ONE].lapCount != 3) {
-            func_8004CB60(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, (u8*) common_texture_hud_lap);
-            func_8004FC78(playerHUD[PLAYER_ONE].lapX + 0xC, playerHUD[PLAYER_ONE].lapY - 4, playerHUD[PLAYER_ONE].alsoLapCount);
-            func_8004E638(0);
+            draw_hud_2d_texture_32x8(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, common_texture_hud_lap); // draw the lap word
+            draw_lap_count(playerHUD[PLAYER_ONE].lapX + 0xC, playerHUD[PLAYER_ONE].lapY - 4, playerHUD[PLAYER_ONE].alsoLapCount);
+            draw_item_window(PLAYER_ONE);
         }
     }
 }
@@ -1093,32 +1093,32 @@ void func_800593F0(void) {
 
 }
 
-void func_800593F8(void) {
-    if (D_801657B0 == 0) {
-        func_8004FA78(1);
+void render_hud_2p_horizontal_player_two(void) {
+    if (gHUDDisable == 0) {
+        render_hud_timer(PLAYER_TWO);
         if (playerHUD[PLAYER_TWO].lapCount != 3) {
-            func_8004CB60(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, (u8*) common_texture_hud_lap);
-            func_8004FC78(playerHUD[PLAYER_TWO].lapX + 0xC, playerHUD[PLAYER_TWO].lapY - 4, playerHUD[PLAYER_TWO].alsoLapCount);
-            func_8004E638(1);
+            draw_hud_2d_texture_32x8(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, common_texture_hud_lap);
+            draw_lap_count(playerHUD[PLAYER_TWO].lapX + 0xC, playerHUD[PLAYER_TWO].lapY - 4, playerHUD[PLAYER_TWO].alsoLapCount);
+            draw_item_window(PLAYER_TWO);
         }
     }
 }
 
-void func_80059488(s32 arg0) {
-    if ((gModeSelection != BATTLE) && (D_80165800[arg0] == 0) && (gIsHUDVisible != 0)) {
-        func_8004FA78(arg0);
-        func_8004E78C(arg0);
+void draw_simplified_hud(s32 playerId) {
+    if ((gModeSelection != BATTLE) && (D_80165800[playerId] == 0) && (gIsHUDVisible != 0)) {
+        render_hud_timer(playerId);
+        draw_simplified_lap_count(playerId);
     }
-    func_8004E638(arg0);
+    draw_item_window(playerId);
 }
 
 void func_800594F0(void) {
 
 }
 
-void func_800594F8(void) {
-    if (D_801657B0 == 0) {
-        func_80059488(0);
+void render_hud_2p_vertical_player_one(void) {
+    if (gHUDDisable == 0) {
+        draw_simplified_hud(PLAYER_ONE);
     }
 }
 
@@ -1126,17 +1126,17 @@ void func_80059528(void) {
 
 }
 
-void func_80059530(void) {
-    if (D_801657B0 == 0) {
-        func_80059488(1);
+void render_hud_2p_vertical_player_two(void) {
+    if (gHUDDisable == 0) {
+        draw_simplified_hud(PLAYER_TWO);
     }
 }
 
-void func_80059560(s32 playerId) {
+void render_hud_lap_3p_4p(s32 playerId) {
     if (gModeSelection != BATTLE) {
         if (D_801657F8 && gIsHUDVisible) {
-            func_8004CB60(playerHUD[playerId].lapX, playerHUD[playerId].lapY, (u8*) common_texture_hud_lap);
-            func_8004FC78(playerHUD[playerId].lapX - 12, playerHUD[playerId].lapY + 4, playerHUD[playerId].alsoLapCount);
+            draw_hud_2d_texture_32x8(playerHUD[playerId].lapX, playerHUD[playerId].lapY, (u8*) common_texture_hud_lap);
+            draw_lap_count(playerHUD[playerId].lapX - 12, playerHUD[playerId].lapY + 4, playerHUD[playerId].alsoLapCount);
         }
         if (D_801657E4 == 2) {
             if (playerHUD[playerId].unk_74 && D_80165608) {
@@ -1148,15 +1148,15 @@ void func_80059560(s32 playerId) {
 }
 
 void func_800596A8(void) {
-    if (D_801657B0 == 0) {
-        func_80041EF4();
+    if (gHUDDisable == 0) {
+        set_matrix_hud_screen();
     }
 }
 
-void func_800596D8(void) {
-    if (D_801657B0 == 0) {
-        func_80041EF4();
-        func_80059560(0);
+void render_hud_1p_multi(void) {
+    if (gHUDDisable == 0) {
+        set_matrix_hud_screen();
+        render_hud_lap_3p_4p(PLAYER_ONE);
     }
 }
 
@@ -1164,36 +1164,36 @@ void func_80059710(void) {
 
 }
 
-void func_80059718(void) {
-    if (D_801657B0 == 0) {
-        func_80041EF4();
-        func_80059560(1);
+void render_hud_2p_multi(void) {
+    if (gHUDDisable == 0) {
+        set_matrix_hud_screen();
+        render_hud_lap_3p_4p(PLAYER_TWO);
     }
 }
 
 void func_80059750(void) {
-    if (D_801657B0 == 0) {
-        func_80041EF4();
+    if (gHUDDisable == 0) {
+        set_matrix_hud_screen();
     }
 }
 
-void func_80059780(void) {
-    if (D_801657B0 == 0) {
-        func_80041EF4();
-        func_80059560(2);
+void render_hud_3p_multi(void) {
+    if (gHUDDisable == 0) {
+        set_matrix_hud_screen();
+        render_hud_lap_3p_4p(PLAYER_THREE);
     }
 }
 
 void func_800597B8(void) {
-    if (D_801657B0 == 0) {
-        func_80041EF4();
+    if (gHUDDisable == 0) {
+        set_matrix_hud_screen();
     }
 }
 
-void func_800597E8(void) {
-    if (D_801657B0 == 0) {
-        func_80041EF4();
-        func_80059560(3);
+void render_hud_4p_multi(void) {
+    if (gHUDDisable == 0) {
+        set_matrix_hud_screen();
+        render_hud_lap_3p_4p(PLAYER_FOUR);
     }
 }
 
@@ -1249,7 +1249,7 @@ void func_8005995C(void) {
 void func_80059A88(s32 playerId) {
     func_80059820(playerId);
     if (!gDemoMode) {
-        update_obj_lakitu(playerId);
+        update_object_lakitu(playerId);
         func_8007BB9C(playerId);
     }
 }
@@ -1336,7 +1336,7 @@ void func_80059D00(void) {
                 func_80059820(PLAYER_TWO);
                 func_80078C70(2);
             }
-            update_obj();
+            update_object();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
             randomize_seed_from_controller(PLAYER_ONE);
@@ -1355,7 +1355,7 @@ void func_80059D00(void) {
             }
             func_80078C70(2);
             func_8005D1F4(1);
-            update_obj();
+            update_object();
             break;
         case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             randomize_seed_from_controller(PLAYER_ONE);
@@ -1374,7 +1374,7 @@ void func_80059D00(void) {
             }
             func_80078C70(4);
             func_8005D1F4(1);
-            update_obj();
+            update_object();
             break;
         case SCREEN_MODE_3P_4P_SPLITSCREEN:
             randomize_seed_from_controller(PLAYER_ONE);
@@ -1407,7 +1407,7 @@ void func_80059D00(void) {
                 }
                 func_8005D1F4(3);
             }
-            update_obj();
+            update_object();
             break;
         }
         func_800744CC();
@@ -1424,12 +1424,12 @@ void func_8005A070(void) {
         if (gGamestate == ENDING) {
             func_80086604();
             func_80086D80();
-            func_8007C2F8(1);
+            update_cheep_cheep(1);
             func_80077640();
         } else if (gGamestate == CREDITS_SEQUENCE) {
             func_80059820(PLAYER_ONE);
             func_80078C70(0);
-            update_obj();
+            update_object();
         } else {
             func_80059D00();
         }
@@ -1460,7 +1460,7 @@ void func_8005A14C(s32 playerId) {
         } else {
             f32_step_towards(&gObjectList[objectIndex].sizeScaling, 0.6f, 0.02f);
         }
-        if (player->effects & 0x04000000) {
+        if (player->effects & HIT_EFFECT) {
             u16_step_up_towards(&gObjectList[objectIndex].direction_angle[0], 0x0C00U, 0x0100U);
         } else {
             u16_step_down_towards(&gObjectList[objectIndex].direction_angle[0], 0, 0x00000100);
@@ -1468,22 +1468,22 @@ void func_8005A14C(s32 playerId) {
         if (player->effects & 0x03000000) {
             func_80087D24(objectIndex, 6.0f, 1.5f, 0.0f);
         } else {
-            f32_step_towards(&gObjectList[objectIndex].unk_028[1], 0.0f, 1.0f);
+            f32_step_towards(&gObjectList[objectIndex].offset[1], 0.0f, 1.0f);
         }
         if ((player->type & PLAYER_INVISIBLE_OR_BOMB) || (player->effects & BOO_EFFECT)) {
-            gObjectList[objectIndex].unk_0A0 = 0x0050;
+            gObjectList[objectIndex].primAlpha = 0x0050;
         } else {
-            gObjectList[objectIndex].unk_0A0 = 0x00FF;
+            gObjectList[objectIndex].primAlpha = 0x00FF;
         }
         if (lapCount >= 3) {
             gObjectList[objectIndex].direction_angle[2] = 0;
             gObjectList[objectIndex].direction_angle[1] = 0;
             gObjectList[objectIndex].direction_angle[0] = 0;
-            gObjectList[objectIndex].unk_028[2] = 0.0f;
-            gObjectList[objectIndex].unk_028[1] = 0.0f;
-            gObjectList[objectIndex].unk_028[0] = 0.0f;
+            gObjectList[objectIndex].offset[2] = 0.0f;
+            gObjectList[objectIndex].offset[1] = 0.0f;
+            gObjectList[objectIndex].offset[0] = 0.0f;
             gObjectList[objectIndex].sizeScaling = 0.6f;
-            gObjectList[objectIndex].unk_0A0 = 0x00FF;
+            gObjectList[objectIndex].primAlpha = 0x00FF;
         }
     }
 }
@@ -1578,81 +1578,81 @@ void func_8005A71C(void) {
     }
 }
 
-void update_obj(void) {
+void update_object(void) {
     switch (gCurrentCourseId) {
-    case COURSE_MARIO_RACEWAY:
-    case COURSE_CHOCO_MOUNTAIN:
-        break;
-    case COURSE_BOWSER_CASTLE:
-        func_80081208();
-        update_particle_bowser_castle();
-        break;
-    case COURSE_BANSHEE_BOARDWALK:
-        if (gGamestate != CREDITS_SEQUENCE) {
-            func_8007E1AC();
-            func_8007E4C4();
-            if (gModeSelection != TIME_TRIALS) {
-                func_8007DB44();
+        case COURSE_MARIO_RACEWAY:
+        case COURSE_CHOCO_MOUNTAIN:
+            break;
+        case COURSE_BOWSER_CASTLE:
+            func_80081208();
+            update_flame_particle();
+            break;
+        case COURSE_BANSHEE_BOARDWALK:
+            if (gGamestate != CREDITS_SEQUENCE) {
+                update_trash_bin();
+                func_8007E4C4();
+                if (gModeSelection != TIME_TRIALS) {
+                    update_bat();
+                }
+                wrapper_update_boos();
+                update_cheep_cheep(0);
             }
-            func_8007C340();
-            func_8007C2F8(0);
-        }
-        break;
-    case COURSE_YOSHI_VALLEY:
-        func_80083080();
-        if (gGamestate != CREDITS_SEQUENCE) {
-            func_800834B8();
-        }
-        break;
-    case COURSE_FRAPPE_SNOWLAND:
-        if (gGamestate != CREDITS_SEQUENCE) {
-            func_80083D60();
-        }
-        func_80078838();
-        break;
-    case COURSE_KOOPA_BEACH:
-        if (gGamestate != CREDITS_SEQUENCE) {
-            func_80082E5C();
-        }
-        if ((gPlayerCount == 1) || (gPlayerCount == 2) || (gGamestate == CREDITS_SEQUENCE)) {
-            func_80082870();
-        }
-        break;
-    case COURSE_LUIGI_RACEWAY:
-        if (D_80165898 != 0) {
-            func_800857C0();
-        }
-        break;
-    case COURSE_MOO_MOO_FARM:
-        if (gGamestate != CREDITS_SEQUENCE) {
-            func_800821FC();
-        }
-        break;
-    case COURSE_KALAMARI_DESERT:
-        func_80075838();
-        break;
-    case COURSE_SHERBET_LAND:
-        if (gGamestate != CREDITS_SEQUENCE) {
-            func_800842C8();
-        }
-        func_80085214();
-        break;
-    case COURSE_RAINBOW_ROAD:
-        if (gGamestate != CREDITS_SEQUENCE) {
-            update_neon();
-            func_80085AA8();
-        }
-        break;
-    case COURSE_DK_JUNGLE:
-        func_80075CA8();
-        break;
+            break;
+        case COURSE_YOSHI_VALLEY:
+            func_80083080();
+            if (gGamestate != CREDITS_SEQUENCE) {
+                update_hedgehogs();
+            }
+            break;
+        case COURSE_FRAPPE_SNOWLAND:
+            if (gGamestate != CREDITS_SEQUENCE) {
+                update_snowmen();
+            }
+            update_snowflakes();
+            break;
+        case COURSE_KOOPA_BEACH:
+            if (gGamestate != CREDITS_SEQUENCE) {
+                update_crabs();
+            }
+            if ((gPlayerCount == 1) || (gPlayerCount == 2) || (gGamestate == CREDITS_SEQUENCE)) {
+                update_seagulls();
+            }
+            break;
+        case COURSE_LUIGI_RACEWAY:
+            if (D_80165898 != 0) {
+                update_hot_air_balloon();
+            }
+            break;
+        case COURSE_MOO_MOO_FARM:
+            if (gGamestate != CREDITS_SEQUENCE) {
+                update_moles();
+            }
+            break;
+        case COURSE_KALAMARI_DESERT:
+            update_train_smoke();
+            break;
+        case COURSE_SHERBET_LAND:
+            if (gGamestate != CREDITS_SEQUENCE) {
+                func_800842C8();
+            }
+            update_penguins();
+            break;
+        case COURSE_RAINBOW_ROAD:
+            if (gGamestate != CREDITS_SEQUENCE) {
+                update_neon();
+                update_chain_chomps();
+            }
+            break;
+        case COURSE_DK_JUNGLE:
+            update_ferries_smoke_particle();
+            break;
     }
     if (D_80165730 != 0) {
         func_80074EE8();
     }
     func_80076F2C();
     if ((s16) gCurrentCourseId != COURSE_FRAPPE_SNOWLAND) {
-        func_80077C9C();
+        update_leaf();
     }
 }
 

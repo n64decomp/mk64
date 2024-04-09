@@ -23,310 +23,310 @@
 
 extern s32 D_8018D168;
 
-s16 gCPUforMario[] = {
+s16 gKartAIforMario[] = {
     LUIGI, YOSHI, TOAD, DK, WARIO, PEACH, BOWSER, 0
 };
 
-s16 gCPUforLuigi[] = {
+s16 gKartAIforLuigi[] = {
     MARIO, YOSHI, TOAD, DK, WARIO, PEACH, BOWSER, 0
 };
 
-s16 gCPUforYoshi[] = {
+s16 gKartAIforYoshi[] = {
     MARIO, LUIGI, TOAD, DK, WARIO, PEACH, BOWSER, 0
 };
 
-s16 gCPUforToad[] = {
+s16 gKartAIforToad[] = {
     MARIO, LUIGI, YOSHI, DK, WARIO, PEACH, BOWSER, 0
 };
 
-s16 gCPUforDk[] = {
+s16 gKartAIforDk[] = {
     MARIO, LUIGI, YOSHI, TOAD, WARIO, PEACH, BOWSER, 0
 };
 
-s16 gCPUforWario[] = {
+s16 gKartAIforWario[] = {
     MARIO, LUIGI, YOSHI, TOAD, DK, PEACH, BOWSER, 0
 };
 
-s16 gCPUforPeach[] = {
+s16 gKartAIforPeach[] = {
     MARIO, LUIGI, YOSHI, TOAD, DK, WARIO, BOWSER, 0
 };
 
-s16 gCPUforBowser[] = {
+s16 gKartAIforBowser[] = {
     MARIO, LUIGI, YOSHI, TOAD, DK, WARIO, PEACH, 0
 };
 
-s16 *gCPUforPlayer[] = {
-    gCPUforMario, gCPUforLuigi, gCPUforYoshi, gCPUforToad,
-    gCPUforDk, gCPUforWario, gCPUforPeach, gCPUforBowser
+s16 *gKartAIforPlayer[] = {
+    gKartAIforMario, gKartAIforLuigi, gKartAIforYoshi, gKartAIforToad,
+    gKartAIforDk, gKartAIforWario, gKartAIforPeach, gKartAIforBowser
 };
 
-s16 gCPUforMarioAndLuigi[] = {
+s16 gKartAIforMarioAndLuigi[] = {
     YOSHI, TOAD, DK, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforMarioAndYoshi[] = {
+s16 gKartAIforMarioAndYoshi[] = {
     LUIGI, TOAD, DK, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforMarioAndToad[] = {
+s16 gKartAIforMarioAndToad[] = {
     LUIGI, YOSHI, DK, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforMarioAndDk[] = {
+s16 gKartAIforMarioAndDk[] = {
     LUIGI, YOSHI, TOAD, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforMarioAndWario[] = {
+s16 gKartAIforMarioAndWario[] = {
     LUIGI, YOSHI, TOAD, DK, PEACH, BOWSER
 };
 
-s16 gCPUforMarioAndPeach[] = {
+s16 gKartAIforMarioAndPeach[] = {
     LUIGI, YOSHI, TOAD, DK, WARIO, BOWSER
 };
 
-s16 gCPUforMarioAndBowser[] = {
+s16 gKartAIforMarioAndBowser[] = {
     LUIGI, YOSHI, TOAD, DK, WARIO, PEACH
 };
 
-s16 gCPUforLuigiAndMario[] = {
+s16 gKartAIforLuigiAndMario[] = {
     YOSHI, TOAD, DK, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforLuigiAndYoshi[] = {
+s16 gKartAIforLuigiAndYoshi[] = {
     MARIO, TOAD, DK, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforLuigiAndToad[] = {
+s16 gKartAIforLuigiAndToad[] = {
     MARIO, YOSHI, DK, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforLuigiAndDk[] = {
+s16 gKartAIforLuigiAndDk[] = {
     MARIO, YOSHI, TOAD, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforLuigiAndWario[] = {
+s16 gKartAIforLuigiAndWario[] = {
     MARIO, YOSHI, TOAD, DK, PEACH, BOWSER
 };
 
-s16 gCPUforLuigiAndPeach[] = {
+s16 gKartAIforLuigiAndPeach[] = {
     MARIO, YOSHI, TOAD, DK, WARIO, BOWSER
 };
 
-s16 gCPUforLuigiAndBowser[] = {
+s16 gKartAIforLuigiAndBowser[] = {
     MARIO, YOSHI, TOAD, DK, WARIO, PEACH
 };
 
-s16 gCPUforYoshiAndMario[] = {
+s16 gKartAIforYoshiAndMario[] = {
     LUIGI, TOAD, DK, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforYoshiAndLuigi[] = {
+s16 gKartAIforYoshiAndLuigi[] = {
     MARIO, TOAD, DK, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforYoshiAndToad[] = {
+s16 gKartAIforYoshiAndToad[] = {
     MARIO, LUIGI, DK, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforYoshiAndDk[] = {
+s16 gKartAIforYoshiAndDk[] = {
     MARIO, LUIGI, TOAD, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforYoshiAndWario[] = {
+s16 gKartAIforYoshiAndWario[] = {
     MARIO, LUIGI, TOAD, DK, PEACH, BOWSER
 };
 
-s16 gCPUforYoshiAndPeach[] = {
+s16 gKartAIforYoshiAndPeach[] = {
     MARIO, LUIGI, TOAD, DK, WARIO, BOWSER
 };
 
-s16 gCPUforYoshiAndBowser[] = {
+s16 gKartAIforYoshiAndBowser[] = {
     MARIO, LUIGI, TOAD, DK, WARIO, PEACH
 };
 
-s16 gCPUforToadAndMario[] = {
+s16 gKartAIforToadAndMario[] = {
     LUIGI, YOSHI, DK, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforToadAndLuigi[] = {
+s16 gKartAIforToadAndLuigi[] = {
     MARIO, YOSHI, DK, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforToadAndYoshi[] = {
+s16 gKartAIforToadAndYoshi[] = {
     MARIO, LUIGI, DK, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforToadAndDk[] = {
+s16 gKartAIforToadAndDk[] = {
     MARIO, LUIGI, YOSHI, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforToadAndWario[] = {
+s16 gKartAIforToadAndWario[] = {
     MARIO, LUIGI, YOSHI, DK, PEACH, BOWSER
 };
 
-s16 gCPUforToadAndPeach[] = {
+s16 gKartAIforToadAndPeach[] = {
     MARIO, LUIGI, YOSHI, DK, WARIO, BOWSER
 };
 
-s16 gCPUforToadAndBowser[] = {
+s16 gKartAIforToadAndBowser[] = {
     MARIO, LUIGI, YOSHI, DK, WARIO, PEACH
 };
 
-s16 gCPUforDkAndMario[] = {
+s16 gKartAIforDkAndMario[] = {
     LUIGI, YOSHI, TOAD, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforDkAndLuigi[] = {
+s16 gKartAIforDkAndLuigi[] = {
     MARIO, YOSHI, TOAD, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforDkAndToad[] = {
+s16 gKartAIforDkAndToad[] = {
     MARIO, LUIGI, TOAD, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforDkAndYoshi[] = {
+s16 gKartAIforDkAndYoshi[] = {
     MARIO, LUIGI, YOSHI, WARIO, PEACH, BOWSER
 };
 
-s16 gCPUforDkAndWario[] = {
+s16 gKartAIforDkAndWario[] = {
     MARIO, LUIGI, YOSHI, TOAD, PEACH, BOWSER
 };
 
-s16 gCPUforDkAndPeach[] = {
+s16 gKartAIforDkAndPeach[] = {
     MARIO, LUIGI, YOSHI, TOAD, WARIO, BOWSER
 };
 
-s16 gCPUforDkAndBowser[] = {
+s16 gKartAIforDkAndBowser[] = {
     MARIO, LUIGI, YOSHI, TOAD, WARIO, PEACH
 };
 
-s16 gCPUforWarioAndMario[] = {
+s16 gKartAIforWarioAndMario[] = {
     LUIGI, YOSHI, TOAD, DK, PEACH, BOWSER
 };
 
-s16 gCPUforWarioAndLuigi[] = {
+s16 gKartAIforWarioAndLuigi[] = {
     MARIO, YOSHI, TOAD, DK, PEACH, BOWSER
 };
 
-s16 gCPUforWarioAndYoshi[] = {
+s16 gKartAIforWarioAndYoshi[] = {
     MARIO, LUIGI, TOAD, DK, PEACH, BOWSER
 };
 
-s16 gCPUforWarioAndDk[] = {
+s16 gKartAIforWarioAndDk[] = {
     MARIO, LUIGI, YOSHI, TOAD, PEACH, BOWSER
 };
 
-s16 gCPUforWarioAndToad[] = {
+s16 gKartAIforWarioAndToad[] = {
     MARIO, LUIGI, YOSHI, DK, PEACH, BOWSER
 };
 
-s16 gCPUforWarioAndPeach[] = {
+s16 gKartAIforWarioAndPeach[] = {
     MARIO, LUIGI, YOSHI, TOAD, DK, BOWSER
 };
 
-s16 gCPUforWarioAndBowser[] = {
+s16 gKartAIforWarioAndBowser[] = {
     MARIO, LUIGI, YOSHI, TOAD, DK, PEACH
 };
 
-s16 gCPUforPeachAndMario[] = {
+s16 gKartAIforPeachAndMario[] = {
     LUIGI, YOSHI, TOAD, DK, WARIO, BOWSER
 };
 
-s16 gCPUforPeachAndLuigi[] = {
+s16 gKartAIforPeachAndLuigi[] = {
     MARIO, YOSHI, TOAD, DK, WARIO, BOWSER
 };
 
-s16 gCPUforPeachAndYoshi[] = {
+s16 gKartAIforPeachAndYoshi[] = {
     MARIO, LUIGI, TOAD, DK, WARIO, BOWSER
 };
 
-s16 gCPUforPeachAndDk[] = {
+s16 gKartAIforPeachAndDk[] = {
     MARIO, LUIGI, YOSHI, TOAD, WARIO, BOWSER
 };
 
-s16 gCPUforPeachAndWario[] = {
+s16 gKartAIforPeachAndWario[] = {
     MARIO, LUIGI, YOSHI, TOAD, DK, BOWSER
 };
 
-s16 gCPUforPeachAndToad[] = {
+s16 gKartAIforPeachAndToad[] = {
     MARIO, LUIGI, YOSHI, DK, WARIO, BOWSER
 };
 
-s16 gCPUforPeachAndBowser[] = {
+s16 gKartAIforPeachAndBowser[] = {
     MARIO, LUIGI, YOSHI, TOAD, DK, WARIO
 };
 
-s16 gCPUforBowserAndMario[] = {
+s16 gKartAIforBowserAndMario[] = {
     LUIGI, YOSHI, TOAD, DK, WARIO, PEACH
 };
 
-s16 gCPUforBowserAndLuigi[] = {
+s16 gKartAIforBowserAndLuigi[] = {
     MARIO, YOSHI, TOAD, DK, WARIO, PEACH
 };
 
-s16 gCPUforBowserAndYoshi[] = {
+s16 gKartAIforBowserAndYoshi[] = {
     MARIO, LUIGI, TOAD, DK, WARIO, PEACH
 };
 
-s16 gCPUforBowserAndDk[] = {
+s16 gKartAIforBowserAndDk[] = {
     MARIO, LUIGI, YOSHI, TOAD, WARIO, PEACH
 };
 
-s16 gCPUforBowserAndWario[] = {
+s16 gKartAIforBowserAndWario[] = {
     MARIO, LUIGI, YOSHI, TOAD, DK, PEACH
 };
 
-s16 gCPUforBowserAndToad[] = {
+s16 gKartAIforBowserAndToad[] = {
     MARIO, LUIGI, YOSHI, DK, WARIO, PEACH
 };
 
-s16 gCPUforBowserAndPeach[] = {
+s16 gKartAIforBowserAndPeach[] = {
     MARIO, LUIGI, YOSHI, TOAD, DK, WARIO
 };
 
-s16 *gListCPUforMario[] = {
-    gCPUforMarioAndLuigi, gCPUforMarioAndLuigi, gCPUforMarioAndYoshi, gCPUforMarioAndToad,
-    gCPUforMarioAndDk, gCPUforMarioAndWario, gCPUforMarioAndPeach, gCPUforMarioAndBowser
+s16 *gListKartAIforMario[] = {
+    gKartAIforMarioAndLuigi, gKartAIforMarioAndLuigi, gKartAIforMarioAndYoshi, gKartAIforMarioAndToad,
+    gKartAIforMarioAndDk, gKartAIforMarioAndWario, gKartAIforMarioAndPeach, gKartAIforMarioAndBowser
 };
 
-s16 *gListCPUforLuigi[] = {
-    gCPUforLuigiAndMario, gCPUforLuigiAndMario, gCPUforLuigiAndYoshi, gCPUforLuigiAndToad,
-    gCPUforLuigiAndDk, gCPUforLuigiAndWario, gCPUforLuigiAndPeach, gCPUforLuigiAndBowser
+s16 *gListKartAIforLuigi[] = {
+    gKartAIforLuigiAndMario, gKartAIforLuigiAndMario, gKartAIforLuigiAndYoshi, gKartAIforLuigiAndToad,
+    gKartAIforLuigiAndDk, gKartAIforLuigiAndWario, gKartAIforLuigiAndPeach, gKartAIforLuigiAndBowser
 };
 
-s16 *gListCPUforYoshi[] = {
-    gCPUforYoshiAndMario, gCPUforYoshiAndLuigi, gCPUforYoshiAndLuigi, gCPUforYoshiAndToad,
-    gCPUforYoshiAndDk, gCPUforYoshiAndWario, gCPUforYoshiAndPeach, gCPUforYoshiAndBowser
+s16 *gListKartAIforYoshi[] = {
+    gKartAIforYoshiAndMario, gKartAIforYoshiAndLuigi, gKartAIforYoshiAndLuigi, gKartAIforYoshiAndToad,
+    gKartAIforYoshiAndDk, gKartAIforYoshiAndWario, gKartAIforYoshiAndPeach, gKartAIforYoshiAndBowser
 };
 
-s16 *gListCPUforToad[] = {
-    gCPUforToadAndMario, gCPUforToadAndLuigi, gCPUforToadAndYoshi, gCPUforToadAndYoshi,
-    gCPUforToadAndDk, gCPUforToadAndWario, gCPUforToadAndPeach, gCPUforToadAndBowser
+s16 *gListKartAIforToad[] = {
+    gKartAIforToadAndMario, gKartAIforToadAndLuigi, gKartAIforToadAndYoshi, gKartAIforToadAndYoshi,
+    gKartAIforToadAndDk, gKartAIforToadAndWario, gKartAIforToadAndPeach, gKartAIforToadAndBowser
 };
 
-s16 *gListCPUforDk[] = {
-    gCPUforDkAndMario, gCPUforDkAndLuigi, gCPUforDkAndToad, gCPUforDkAndYoshi,
-    gCPUforDkAndYoshi, gCPUforDkAndWario, gCPUforDkAndPeach, gCPUforDkAndBowser
+s16 *gListKartAIforDk[] = {
+    gKartAIforDkAndMario, gKartAIforDkAndLuigi, gKartAIforDkAndToad, gKartAIforDkAndYoshi,
+    gKartAIforDkAndYoshi, gKartAIforDkAndWario, gKartAIforDkAndPeach, gKartAIforDkAndBowser
 };
 
-s16 *gListCPUforWario[] = {
-    gCPUforWarioAndMario, gCPUforWarioAndLuigi, gCPUforWarioAndYoshi, gCPUforWarioAndToad,
-    gCPUforWarioAndDk, gCPUforWarioAndDk, gCPUforWarioAndPeach, gCPUforWarioAndBowser
+s16 *gListKartAIforWario[] = {
+    gKartAIforWarioAndMario, gKartAIforWarioAndLuigi, gKartAIforWarioAndYoshi, gKartAIforWarioAndToad,
+    gKartAIforWarioAndDk, gKartAIforWarioAndDk, gKartAIforWarioAndPeach, gKartAIforWarioAndBowser
 };
 
-s16 *gListCPUforPeach[] = {
-    gCPUforPeachAndMario, gCPUforPeachAndLuigi, gCPUforPeachAndYoshi, gCPUforPeachAndToad,
-    gCPUforPeachAndDk, gCPUforPeachAndWario, gCPUforPeachAndDk, gCPUforPeachAndBowser
+s16 *gListKartAIforPeach[] = {
+    gKartAIforPeachAndMario, gKartAIforPeachAndLuigi, gKartAIforPeachAndYoshi, gKartAIforPeachAndToad,
+    gKartAIforPeachAndDk, gKartAIforPeachAndWario, gKartAIforPeachAndDk, gKartAIforPeachAndBowser
 };
 
-s16 *gListCPUforBowser[] = {
-    gCPUforBowserAndMario, gCPUforBowserAndLuigi, gCPUforBowserAndYoshi, gCPUforBowserAndToad,
-    gCPUforBowserAndDk, gCPUforBowserAndWario, gCPUforBowserAndPeach, gCPUforBowserAndPeach
+s16 *gListKartAIforBowser[] = {
+    gKartAIforBowserAndMario, gKartAIforBowserAndLuigi, gKartAIforBowserAndYoshi, gKartAIforBowserAndToad,
+    gKartAIforBowserAndDk, gKartAIforBowserAndWario, gKartAIforBowserAndPeach, gKartAIforBowserAndPeach
 };
 
-s16 **gCPUforTwoPlayer[] = {
-    gListCPUforMario, gListCPUforLuigi, gListCPUforYoshi, gListCPUforToad,
-    gListCPUforDk, gListCPUforWario, gListCPUforPeach, gListCPUforBowser
+s16 **gKartAIforTwoPlayer[] = {
+    gListKartAIforMario, gListKartAIforLuigi, gListKartAIforYoshi, gListKartAIforToad,
+    gListKartAIforDk, gListKartAIforWario, gListKartAIforPeach, gListKartAIforBowser
 };
 
 // func_80027D00
@@ -665,7 +665,7 @@ void func_80028864(Player *player, Camera *camera, s8 arg2, s8 arg3) {
                     func_8002D268(player, camera, arg3, arg2);
                 }
         } else {
-            control_cpu_movement(player, camera, arg3, arg2);
+            control_kart_ai_movement(player, camera, arg3, arg2);
         }
     } else if ((player->type & PLAYER_STAGING) == PLAYER_STAGING) {
         func_8002D028(player, arg2);
@@ -864,7 +864,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
             player->unk_0CC[arg2] = func_802B7C40(temp_f0 / temp_f2) * 2;
         }
     }
-    if ((player->effects & 0x04000000) == 0x04000000) {
+    if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
         player->unk_0CC[arg2] = (s16) ((s32) player->unk_D9C);
     }
     if ((player->effects & 8) != 8) {
@@ -879,7 +879,7 @@ void func_8002934C(Player *player, Camera *camera, s8 arg2, s8 playerId) {
         }
         player->unk_0D4[arg2] = (s16) ((s32) (((f64) func_802B7C40(var_f0 / temp_f2)) * 0.5));
     }
-    if ((player->effects & 0x04000000) == 0x04000000) {
+    if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
         player->unk_0D4[arg2] = (s16) ((s32) player->unk_D9C);
     }
     func_80029200(player, arg2);
@@ -1308,7 +1308,7 @@ void func_8002A8A4(Player *player, s8 arg1) {
     }
 }
 
-void func_8002AA50(Player *player) {
+void kart_hop(Player *player) {
     player->kartHopJerk = gKartHopJerkTable[player->characterId];
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = gKartHopInitialVelocityTable[player->characterId];
@@ -1504,7 +1504,7 @@ void func_8002B218(Player *player) {
     for (someIndex = 0; someIndex < 10; someIndex++) {
         if (player->unk_006 == sp38[someIndex]) {
             player->effects |= 0x10;
-            func_8002AA50(player);
+            kart_hop(player);
             player->unk_204 = 0;
             break;
         }
@@ -1538,8 +1538,8 @@ void apply_sound_effect(Player *player, s8 playerId, UNUSED s8 arg2) {
     if ((player->soundEffects & 0x20000) == 0x20000) {
         func_8008D7B0(player, playerId);
     }
-    if ((player->soundEffects & 0x100) == 0x100) {
-        func_8008DABC(player, playerId);
+    if ((player->soundEffects & HIT_SOUND_EFFECT) == HIT_SOUND_EFFECT) {
+        apply_hit_sound_effect(player, playerId);
     }
     if ((player->soundEffects & HIT_ROTATING_SOUND_EFFECT) == HIT_ROTATING_SOUND_EFFECT) {
         apply_hit_rotating_sound_effect(player, playerId);
@@ -1595,7 +1595,7 @@ void func_8002B5C0(Player *player, UNUSED s8 playerId, UNUSED s8 arg2) {
     if ((player->effects & 0x800000) == 0x800000) {
         player->soundEffects &= 0xFE1D0478;
     }
-    if ((player->effects & 0x04000000) == 0x04000000) {
+    if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
         player->soundEffects &= 0xFE1D0578;
     }
     if ((player->effects & 0x01000000) == 0x01000000) {
@@ -1696,7 +1696,7 @@ void func_8002B9CC(Player *player, s8 arg1, UNUSED s32 arg2) {
                 func_8008C73C(player, arg1);
             }
         }
-        temp = (-(s16)get_angle_between_points(player->pos, &player->copy_rotation_x));
+        temp = (-(s16)get_angle_between_two_vectors(player->pos, &player->copy_rotation_x));
         temp2 = (player->rotation[1] - player->unk_0C0);
         temp = temp - temp2;
         player->unk_234 = temp / 182;
@@ -1739,7 +1739,7 @@ void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, UNUSED s8 arg3, UNUSED 
     
     mtxf_translate_vec3f_mat3(sp4C, sp64);
 
-    var_v0 = -(s16)get_angle_between_points(sp58, sp4C);
+    var_v0 = -(s16)get_angle_between_two_vectors(sp58, sp4C);
     t0 = player->rotation[1];
     var_v0 = 0x10000 + (t0 - var_v0);
     var_v0 /= 182;
@@ -1957,13 +1957,13 @@ void func_8002C4F8(Player *player, s8 arg1) {
     } else if ((player->effects & 8) != 8) {
         player->unk_0CA &= ~0x0100;
     }
-    if ((player->type & PLAYER_CPU) && ((func_802ABDF4(player->unk_110.unk3A) != 0) || (player->unk_0CA & 1))) {
+    if ((player->type & PLAYER_KART_AI) && ((func_802ABDF4(player->unk_110.unk3A) != 0) || (player->unk_0CA & 1))) {
         if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8) && !(player->effects & 0x1000)) {
             func_80090778(player);
             func_80090868(player);
         }
     }
-    if ((player->type & PLAYER_CPU) && (player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & 8)) {
+    if ((player->type & PLAYER_KART_AI) && (player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & 8)) {
         func_80090778(player);
         func_80090868(player);
     }
@@ -2094,8 +2094,8 @@ void apply_effect(Player *player, s8 arg1, s8 arg2) {
     if ((player->effects & BOOST_RAMP_WOOD_EFFECT) == BOOST_RAMP_WOOD_EFFECT) {
         apply_boost_ramp_wood_effect(player);
     }
-    if ((s32)(player->effects & 0x04000000) == 0x04000000) {
-        func_8008DC08(player, arg1);
+    if ((s32)(player->effects & HIT_EFFECT) == HIT_EFFECT) {
+        apply_hit_effect(player, arg1);
     }
     if ((player->effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) {
         apply_lightning_effect(player, arg1);
@@ -2160,7 +2160,7 @@ void func_8002D028(Player *player, s8 arg1) {
     sp4C[1] = 0;
     sp4C[2] = D_80165230[D_80165270[arg1]];
 
-    temp = -(s16)get_angle_between_points(player->pos, sp4C);
+    temp = -(s16)get_angle_between_two_vectors(player->pos, sp4C);
     temp2 = player->rotation[1];
     temp = (temp - temp2);
 
@@ -2312,7 +2312,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
         sp98[2] += (((((f64) ((sp184[2] + spAC) + sp160[2])) - (sp98[2] * (0.12 * ((f64) player->kartFriction)))) / 6000.0) / 30.0);
     }
     sp98[1] += (((((f64) ((sp184[1] + spB0) + sp160[1])) - (sp98[1] * (0.12 * ((f64) player->kartFriction)))) / 6000.0) / ((f64) player->unk_DAC));
-    if (((((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) || ((player->effects & 0x04000000) == 0x04000000)) || (player->unk_0CA & 1)) {
+    if (((((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) || ((player->effects & HIT_EFFECT) == HIT_EFFECT)) || (player->unk_0CA & 1)) {
         sp98[0] = 0.0f;
         sp98[1] = 0.0f;
         sp98[2] = 0.0f;
@@ -2334,7 +2334,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
 
     if (((((player->unk_0CA & 2) != 2)
         && ((player->unk_0CA & 8) != 8))
-        && ((player->effects & 0x04000000) != 0x04000000))
+        && ((player->effects & HIT_EFFECT) != HIT_EFFECT))
         && (!(player->unk_0CA & 1))) {
         func_8002AAC0(player);
         spF8 += player->kartHopVelocity;
@@ -2460,7 +2460,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId)
         player->pos[2] = spF4;
     }
     player->pos[1] = spF8;
-    if ((player->type & PLAYER_HUMAN) && (!(player->type & PLAYER_CPU))) {
+    if ((player->type & PLAYER_HUMAN) && (!(player->type & PLAYER_KART_AI))) {
         func_8002BB9C(player, &spFC, &spF4, arg2, playerId, sp98);
     }
     player->unk_064[0] = sp178[0];
@@ -2752,7 +2752,7 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId) 
     func_8002C4F8(player, playerId);
 }
 
-void control_cpu_movement(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId) {
+void control_kart_ai_movement(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId) {
     Vec3f spF4 = {0.0f, 0.0f, 1.0f};
     UNUSED Vec3f spE8 = {0.0f, 0.0f, 0.0f};
     Vec3f spDC = {0.0f, 0.0f, 0.0f};
@@ -4292,7 +4292,7 @@ void func_8003680C(Player *player, s16 arg1) {
           (player->effects & 0x20000) ||
           (player->effects & 0x01000000) ||
           (player->effects & HIT_BY_ITEM_EFFECT) ||
-          (player->effects & 0x04000000))) {
+          (player->effects & HIT_EFFECT))) {
         if (!(((player->unk_094 / 18.0f) * 216.0f) >= 110.0f)) {
             player->effects &= ~0x20000000;
             player->unk_228 = 0;
@@ -4604,7 +4604,7 @@ void func_80037BB4(Player *player, Vec3f arg1) {
             if (((player->effects & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
                 player->rotation[1] += player->unk_078;
             }
-            if (!(player->type & PLAYER_CPU)) {
+            if (!(player->type & PLAYER_KART_AI)) {
                 if (gModeSelection == BATTLE) {
                     func_800378E8(player, sp20, arg1);
                 } else {
@@ -4617,7 +4617,7 @@ void func_80037BB4(Player *player, Vec3f arg1) {
             if (((player->effects & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
                 player->rotation[1] += player->unk_078;
             }
-            if (!(player->type & PLAYER_CPU)) {
+            if (!(player->type & PLAYER_KART_AI)) {
                 if (gModeSelection == BATTLE) {
                     func_80037A4C(player, sp20, arg1);
                 } else {
@@ -4638,12 +4638,12 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
         ((player->effects & 0x01000000) != 0x01000000) && 
         ((player->effects & HIT_BY_ITEM_EFFECT) != HIT_BY_ITEM_EFFECT) && ((player->effects & 0x10000) != 0x10000) && 
         ((player->effects & 0x20000) != 0x20000)) {
-            if (((player->effects & 0x04000000) != 0x04000000) && 
+            if (((player->effects & HIT_EFFECT) != HIT_EFFECT) && 
                 ((player->effects & 8) != 8) && 
                 ((player->effects & 2) != 2) && 
                 ((player->effects & 0x10) != 0x10) && 
                 (controller->buttonPressed & R_TRIG)) {
-                    func_8002AA50(player);
+                    kart_hop(player);
                     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
                         func_800C9060(arg2, 0x19008000);
                     }
@@ -4736,7 +4736,7 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
 void func_800381AC(Player *player, struct Controller *controller, s8 arg2) {
     if (((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) && 
         ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && 
-        ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
+        ((player->type & PLAYER_KART_AI) != PLAYER_KART_AI)) {
             if ((player->type & PLAYER_START_SEQUENCE) != PLAYER_START_SEQUENCE) {
                 if (((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) {
                     if (controller->button & A_BUTTON) {

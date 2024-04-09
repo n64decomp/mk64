@@ -94,13 +94,13 @@
 #define PLAYER_STAGING              (1 <<  9) // 0x0200
 #define PLAYER_UNKNOWN              (1 << 10) // 0x0400 // unused ?
 #define PLAYER_CINEMATIC_MODE       (1 << 11) // 0x0800 // Also used to track eliminations in Battle mode.
-#define PLAYER_CPU                  (1 << 12) // 0x1000
+#define PLAYER_KART_AI                  (1 << 12) // 0x1000
 #define PLAYER_START_SEQUENCE       (1 << 13) // 0x2000
 #define PLAYER_HUMAN                (1 << 14) // 0x4000
 #define PLAYER_EXISTS               (1 << 15) // 0x8000
 
 // Compiles to -0x1000 in diff.py
-#define PLAYER_HUMAN_AND_CPU PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_CPU | PLAYER_START_SEQUENCE
+#define PLAYER_HUMAN_AND_KART_AI PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_KART_AI | PLAYER_START_SEQUENCE
 
 #define ZERO_PLAYERS_SELECTED 0
 #define ONE_PLAYERS_SELECTED 1
@@ -331,6 +331,7 @@ typedef enum {
  * @brief sound effect of player's
  * for soundEffect
  */
+#define HIT_SOUND_EFFECT          0x100 // hitting an object
 #define BOOST_SOUND_EFFECT        0x200 // being boosted by trigger a mushroom
 #define BOO_SOUND_EFFECT          0x800 // being a boo
 #define STAR_SOUND_EFFECT         0x2000 // being a star
@@ -350,6 +351,7 @@ typedef enum {
 #define BOOST_EFFECT                   0x2000 // being boosted by trigger a mushroom
 #define BOOST_RAMP_ASPHALT_EFFECT      0x100000 // being boosted by a boost pad
 #define HIT_BY_ITEM_EFFECT             0x2000000 // being hit by an item
+#define HIT_EFFECT                     0x4000000 // hitting an object
 #define LIGHTNING_EFFECT               0x40000000 // being hit by lightning
 #define BOO_EFFECT                     0x80000000 // being a boo
 

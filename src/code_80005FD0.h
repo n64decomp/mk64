@@ -83,7 +83,7 @@ void func_80009000(s32);
 void func_800090F0(s32, Player*);
 f32  func_80009258(s32, f32, f32);
 void func_8000929C(s32, Player*);
-void func_800097E0(void);
+void update_vehicles(void);
 void func_800098FC(s32, Player*);
 void func_800099EC(s32, Player*);
 void func_80009B60(s32);
@@ -117,13 +117,13 @@ s16  func_8000DBAC(Vec3f, s16*, f32);
 void set_bomb_kart_spawn_positions(void);
 void func_8000DF8C(s32);
 
-s32  func_8000ED14(s32, s16);
-s32  func_8000ED80(s32);
-s32  func_8000EDC8(s32);
-s32  func_8000EE10(s32);
-void func_8000EE58(s32);
+s32  add_actor_in_unexpired_actor_list(s32, s16);
+s32  add_red_shell_in_unexpired_actor_list(s32);
+s32  add_green_shell_in_unexpired_actor_list(s32);
+s32  add_blue_shell_in_unexpired_actor_list(s32);
+void delete_actor_in_unexpired_actor_list(s32);
 void func_8000EEDC(void);
-void func_8000EF20(void);
+void generate_player_smoke(void);
 
 void func_8000F0E0(void);
 void func_8000F124(void);
@@ -144,12 +144,12 @@ f32  func_80010FA0(f32, f32, f32, s32, s32);
 s32  func_80011014(TrackWaypoint *, TrackWaypoint *, s32, s32);
 s32  process_path_data(TrackWaypoint*, TrackWaypoint*);
 s32  func_8001168C(PathNoY*, TrackWaypoint*, s32);
-void func_80011A5C(void);
-void func_80011AB8(s32);
-void func_80011AE4(s32);
-void func_80011B14(s32, Player*);
-void func_80011D48(s32, Player*);
-void func_80011E38(s32);
+void copy_courses_kart_ai_behaviour(void);
+void reset_kart_ai_behaviour_none(s32);
+void reset_kart_ai_behaviour(s32);
+void kart_ai_behaviour_start(s32, Player*);
+void kart_ai_behaviour_end(s32, Player*);
+void kart_ai_behaviour(s32);
 void func_80011EC0(s32, Player*, s32, u16);
 
 void func_800120C8(void);
@@ -159,13 +159,13 @@ void init_course_vehicles(void);
 void func_80012780(TrainCarStuff*, s16*, u16);
 void func_800127E0(void);
 void func_80012A48(TrainCarStuff*, s16);
-void func_80012AC0(void);
+void update_vehicle_trains(void);
 void func_80012DC0(s32, Player*);
 
 void func_80013054(void);
 void func_800131DC(s32);
 void func_800132F4(void);
-void func_800133C4(void);
+void update_vehicle_paddle_boats(void);
 void func_80013854(Player*);
 void func_800139E4(f32, f32, s32, s32, VehicleStuff*, TrackWaypoint*);
 f32  func_80013C74(s16, s16);
@@ -201,14 +201,19 @@ void func_80015390(Camera*, Player*, s32);
 void func_80015544(s32, f32, s32, s32);
 void func_8001577C(Camera*, UNUSED Player*, s32, s32);
 void func_80015A9C(s32, f32, s32, s16);
+void func_80015C94(Camera*, s32, s32, s32);
 
 void func_800162CC(s32, f32, s32, s16);
+void func_80016494(Camera*, s32, s32, s32);
 void func_80016C3C(s32, f32, s32);
 
 void func_80017720(s32, f32, s32, s16);
+void func_800178F4(Camera*, s32, s32, s32);
 void func_80017F10(s32, f32, s32, s16);
 
+void func_800180F0(Camera*, s32, s32, s32);
 void func_80018718(s32, f32, s32, s16);
+void func_800188F4(Camera*, s32, s32, s32);
 
 void func_80019118(s32, f32, s32, s16);
 void func_8001933C(Camera*, UNUSED Player*, s32, s32);
@@ -236,10 +241,10 @@ void func_8001A518(s32, s32, s32);
 void func_8001A588(u16*, Camera*, Player*, s8, s32);
 void func_8001AAAC(s16, s16, s16);
 void func_8001AB00(void);
-void cpu_decisions_branch_item(s32, s16*, s32);
+void kart_ai_decisions_branch_item(s32, s16*, s32);
 void func_8001ABE0(s32, D_801642D8_entry*);
 void func_8001ABEC(struct struct_801642D8*);
-void cpu_use_item_strategy(s32);
+void kart_ai_use_item_strategy(s32);
 
 void func_8001BE78(void);
 
@@ -250,30 +255,10 @@ void func_8001C42C(void);
 
 /* This is where I'd put my static data, if I had any */
 
-extern UnkCommonTextureStruct0 *D_800DC720[];
-// Suspected to be the "width" of each waypoint. See data_0DD0A0_1.s
-extern f32 D_800DCA4C[];
-extern s16 D_800DCA20[];
-
-struct _struct_D_800DD9D0_0x10 {
-    /* 0x00 */ u16 unk0;
-    /* 0x02 */ u16 unk2;
-    /* 0x04 */ u16 unk4;
-    /* 0x06 */ u16 unk6;
-    /* 0x08 */ u16 unk8;
-    /* 0x0A */ char padA[6];
-};  // size 0x10
-
-extern uintptr_t gCoursePathTable[20][4];
-extern uintptr_t D_800DC8D0[20][4];
-// An array of 21 items. The final element is for podium ceremony.
-extern struct _struct_D_800DD9D0_0x10 D_800DD9D0[];
-
-
 extern Collision D_80162E70;
 extern s16 D_80162EB0; // Possibly a float.
 extern s16 D_80162EB2; // possibly [3]
-extern UnkCommonTextureStruct0 *D_80162EB8[];
+extern KartAIBehaviour *gCoursesKartAIBehaviour[];
 extern s16 D_80162F10[];
 extern s16 D_80162F50[];
 extern Vec3f D_80162FA0;
@@ -313,17 +298,32 @@ extern u16 D_80163258[];
 extern u16 D_80163270[];
 extern s32 D_80163288[];
 // Exact pointer type unknown
-extern UnkCommonTextureStruct0 *D_801632B0;
-extern u16 D_801632B8[];
-extern u16 D_801632D0[];
-extern u16 D_801632E8[];
+extern KartAIBehaviour *sCurrentKartAIBehaviour;
+extern u16 gCurrentKartAIBehaviourId[];
+extern u16 gPreviousKartAIBehaviourId[];
+extern u16 gKartAIBehaviourState[];
+
+enum {
+    KART_AI_BEHAVIOUR_STATE_NONE,
+    KART_AI_BEHAVIOUR_STATE_START,
+    KART_AI_BEHAVIOUR_STATE_RUNNING,
+};
+
 extern s16 D_80163300[];
 extern u16 D_80163318[];
 extern u16 D_80163330[];
 extern u16 D_80163344[];
 extern u16 D_80163348[];
 extern u16 D_8016334C[];
-extern u16 D_80163350[];
+extern u16 gSpeedKartAIBehaviour[];
+
+enum {
+    SPEED_KART_AI_BEHAVIOUR_NORMAL,
+    SPEED_KART_AI_BEHAVIOUR_FAST,
+    SPEED_KART_AI_BEHAVIOUR_SLOW,
+    SPEED_KART_AI_BEHAVIOUR_MAX
+};
+
 extern s32 D_80163368[];
 extern s32 D_80163378;
 extern s32 D_8016337C;
@@ -405,8 +405,6 @@ extern u32 D_801646C8;
 extern u16 D_801646CC;
 extern UnkStruct_46D0 D_801646D0[];
 
-extern f32 D_800DCAA0[];
-
 
 // See bss_80005FD0.s
 extern f32 gCourseCompletionPercentByRank[NUM_PLAYERS];
@@ -416,7 +414,5 @@ extern u16 D_801637BE;
 extern u16 D_80163E2A;
 
 extern Gfx D_0D0076F8[];
-
-extern s32 D_800DDB20;
 
 #endif

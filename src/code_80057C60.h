@@ -7,6 +7,16 @@
 
 // code_80057C60
 
+#define RENDER_SCREEN_MODE_1P_PLAYER_ONE            PLAYER_ONE+SCREEN_MODE_1P
+#define RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_ONE PLAYER_ONE+SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL
+#define RENDER_SCREEN_MODE_2P_HORIZONTAL_PLAYER_TWO PLAYER_TWO+SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL
+#define RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_ONE   PLAYER_ONE+SCREEN_MODE_2P_SPLITSCREEN_VERTICAL+1
+#define RENDER_SCREEN_MODE_2P_VERTICAL_PLAYER_TWO   PLAYER_TWO+SCREEN_MODE_2P_SPLITSCREEN_VERTICAL+1
+#define RENDER_SCREEN_MODE_3P_4P_PLAYER_ONE         PLAYER_ONE+SCREEN_MODE_3P_4P_SPLITSCREEN+5
+#define RENDER_SCREEN_MODE_3P_4P_PLAYER_TWO         PLAYER_TWO+SCREEN_MODE_3P_4P_SPLITSCREEN+5
+#define RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE       PLAYER_THREE+SCREEN_MODE_3P_4P_SPLITSCREEN+5
+#define RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR        PLAYER_FOUR+SCREEN_MODE_3P_4P_SPLITSCREEN+5
+
 typedef struct {
     char unk_00[0x4];
     Vec3f unk_04;
@@ -23,21 +33,21 @@ void func_80057CE4(void);
 void func_80057DD0(void);
 void func_80057FC4(u32);
 
-void func_80058090(u32);
-void func_800581C8(void);
-void func_800582CC(void);
-void func_80058394(void);
-void func_8005845C(void);
-void func_80058538(u32);
-void func_80058640(void);
-void func_800586FC(void);
-void func_800587A4(void);
-void func_8005884C(void);
-void func_800588F4(s32);
-void func_80058B58(s32);
+void render_object(u32);
+void render_object_p1(void);
+void render_object_p2(void);
+void render_object_p3(void);
+void render_object_p4(void);
+void render_player_snow_effect(u32);
+void render_player_snow_effect_one(void);
+void render_player_snow_effect_two(void);
+void render_player_snow_effect_three(void);
+void render_player_snow_effect_four(void);
+void render_object_for_player(s32);
+void render_snowing_effect(s32);
 void func_80058BF4(void);
 void func_80058C20(u32);
-void func_80058DB4(u32);
+void render_hud(u32);
 void func_80058F48(void);
 void func_80058F78(void);
 void func_80059AC8(void);
@@ -47,23 +57,23 @@ void func_8005902C(void);
 void func_800590D4(void);
 void func_800591B4(void);
 void func_80059358(void);
-void func_80059360(void);
+void render_hud_2p_horizontal_player_two_horizontal_player_one(void);
 void func_800593F0(void);
-void func_800593F8(void);
-void func_80059488(s32);
+void render_hud_2p_horizontal_player_two(void);
+void draw_simplified_hud(s32);
 void func_800594F0(void);
-void func_800594F8(void);
+void render_hud_2p_vertical_player_one(void);
 void func_80059528(void);
-void func_80059530(void);
-void func_80059560(s32);
+void render_hud_2p_vertical_player_two(void);
+void render_hud_lap_3p_4p(s32);
 void func_800596A8(void);
-void func_800596D8(void);
+void render_hud_1p_multi(void);
 void func_80059710(void);
-void func_80059718(void);
+void render_hud_2p_multi(void);
 void func_80059750(void);
-void func_80059780(void);
+void render_hud_3p_multi(void);
 void func_800597B8(void);
-void func_800597E8(void);
+void render_hud_4p_multi(void);
 void func_80059820(s32);
 void randomize_seed_from_controller(s32);
 void func_8005994C(void);
@@ -77,7 +87,7 @@ void func_8005A14C(s32);
 void func_8005A380(void);
 void func_8005A3C0(void);
 void func_8005A71C(void);
-void update_obj(void);
+void update_object(void);
 void func_8005A99C(void);
 void func_8005AA34(void);
 void func_8005AA4C(void);
@@ -246,32 +256,11 @@ void func_8006E940(Player*, s8, s8);
 void func_80075CA8(void);
 void func_80085214();
 
-// data/data_code_80071F00_2.s
-
-extern Vtx gBalloonVertexPlane1[];
-extern Vtx gBalloonVertexPlane2[];
-
 extern s16 D_800E4730[];
 extern u8 **D_800E4770[];
 extern u8 **D_800E47A0[];
 extern s32 D_800E47DC[];
 extern s32 D_800E480C[];
-
-extern u8 D_800E52D0[];
-extern u8 D_800E55D0[14][3];
-extern u16 D_800E55A0[];
-extern u16 D_800E55B0[16];
-
-extern u16 D_800E67B8[][4];
-
-extern u16 D_800E6834[][4];
-
-extern u16 D_800E694C[];
-extern u16 D_800E69B0[][4];
-extern u16 D_800E69F4[][4];
-
-extern u8 D_800E6F30[][3];
-extern u8 D_800E6F48[][3];
 
 extern f32 D_801652A0[];
 
@@ -332,7 +321,7 @@ extern s8 D_8016579C;
 extern u16 D_8016579E;
 extern u16 D_801657A2;
 extern s8 D_801657AE;
-extern s8 D_801657B0;
+extern s8 gHUDDisable;
 extern s8 D_801657B2;
 extern s8 D_801657B4;
 extern s8 D_801657B8[];
@@ -401,7 +390,7 @@ extern f32 D_80183DA8[];
 // extern s32 gIndexLakituList[]; -> objects.h
 
 extern f32 D_80183DC8[];
-// extern s32 D_80183DD8[]; -> bomb_kart.h
+// extern s32 gIndexObjectBombKart[]; -> bomb_kart.h
 // extern s32 gNextFreeObjectParticle1; -> objects.h
 
 extern Vec3f D_80183E40;

@@ -51,7 +51,7 @@ SECTIONS
       BUILD_DIR/src/crash_screen.o(.text*);
       BUILD_DIR/src/code_80004740.o(.text*);
       BUILD_DIR/src/staff_ghosts.o(.text*);
-      BUILD_DIR/asm/unused_overflow_check.o(.text*);
+      BUILD_DIR/asm/unused_overflow_check.o(.text);
       BUILD_DIR/src/code_80005FD0.jp.o(.text*);
       BUILD_DIR/src/camera.o(.text*);
       BUILD_DIR/src/render_player.o(.text*);
@@ -59,15 +59,15 @@ SECTIONS
       BUILD_DIR/src/player_controller.o(.text*);
       BUILD_DIR/src/spawn_players.o(.text*);
       BUILD_DIR/src/code_8003DC40.o(.text*);
-      BUILD_DIR/asm/unused_mio0_decode.o(.text*);
-      BUILD_DIR/asm/mio0_decode.o(.text*);
-      BUILD_DIR/asm/tkmk00_decode.o(.text*);
+      BUILD_DIR/asm/unused_mio0_decode.o(.text);
+      BUILD_DIR/asm/mio0_decode.o(.text);
+      BUILD_DIR/asm/tkmk00_decode.o(.text);
       BUILD_DIR/src/gbiMacro.o(.text*);
       BUILD_DIR/src/math_util_2.o(.text*);
-      BUILD_DIR/src/hud_renderer.o(.text*);
+      BUILD_DIR/src/render_objects.o(.text*);
       BUILD_DIR/src/code_80057C60.o(.text*);
       BUILD_DIR/src/code_8006E9C0.o(.text*);
-      BUILD_DIR/src/code_80071F00.o(.text*);
+      BUILD_DIR/src/update_objects.o(.text*);
       BUILD_DIR/src/code_80086E70.o(.text*);
       BUILD_DIR/src/effects.o(.text*);
       BUILD_DIR/src/code_80091440.o(.text*);
@@ -219,17 +219,17 @@ SECTIONS
       BUILD_DIR/src/profiler.o(.data*);
       BUILD_DIR/src/crash_screen.o(.data*);
       BUILD_DIR/src/staff_ghosts.o(.data*);
-      BUILD_DIR/data/data_0DD0A0_1.o(.data*);
+      BUILD_DIR/src/data/path_spawn_data.o(.data*);
       BUILD_DIR/src/camera.o(.data*);
       BUILD_DIR/src/render_player.o(.data*);
       BUILD_DIR/src/kart_dma.o(.data*);
-      BUILD_DIR/src/data/kart_attributes.inc.o(.data*);
+      BUILD_DIR/src/data/kart_attributes.o(.data*);
       BUILD_DIR/src/player_controller.o(.data*);
       BUILD_DIR/src/spawn_players.o(.data*);
-      BUILD_DIR/src/code_80071F00.o(.data*);
+      BUILD_DIR/src/update_objects.o(.data*);
       BUILD_DIR/src/data/data_800E45C0.o(.data*);
       BUILD_DIR/src/code_80057C60.o(.data*);
-      BUILD_DIR/data/data_code_80071F00_2.o(.data*);
+      BUILD_DIR/src/data/some_data.o(.data*);
       BUILD_DIR/src/effects.o(.data*);
       BUILD_DIR/src/code_80091440.o(.data*);
       BUILD_DIR/src/code_80091750.jp.o(.data*);
@@ -267,7 +267,6 @@ SECTIONS
       BUILD_DIR/src/os/osViData.o(.data*);
       BUILD_DIR/src/os/_Litob.o(.data*);
       BUILD_DIR/src/main.o(.rodata*);
-      BUILD_DIR/src/code_80004740.o(.rodata*);
       BUILD_DIR/src/code_800029B0.o(.rodata*);
       BUILD_DIR/src/code_80005FD0.jp.o(.rodata*);
       BUILD_DIR/src/camera.o(.rodata*);
@@ -275,17 +274,14 @@ SECTIONS
       BUILD_DIR/src/player_controller.o(.rodata*);
       BUILD_DIR/src/spawn_players.o(.rodata*);
       BUILD_DIR/src/code_8003DC40.o(.rodata*);
-      BUILD_DIR/src/gbiMacro.o(.rodata*);
-      BUILD_DIR/src/math_util_2.o(.rodata*);
-      BUILD_DIR/src/hud_renderer.o(.rodata*);
+      BUILD_DIR/src/render_objects.o(.rodata*);
       BUILD_DIR/src/code_80057C60.o(.rodata*);
       BUILD_DIR/src/code_8006E9C0.o(.rodata*);
-      BUILD_DIR/src/code_80071F00.o(.rodata*);
+      BUILD_DIR/src/update_objects.o(.rodata*);
       BUILD_DIR/src/code_80086E70.o(.rodata*);
       BUILD_DIR/src/effects.o(.rodata*);
-      BUILD_DIR/src/code_80091440.o(.rodata*);
       BUILD_DIR/src/code_80091750.jp.o(.rodata*);
-      BUILD_DIR/src/code_800AF9B0.o(.rodata*);
+      BUILD_DIR/src/code_800AF9B0.o(.rodatav);
       BUILD_DIR/src/menus.o(.rodata*);
       BUILD_DIR/src/save.o(.rodata*);
       BUILD_DIR/src/audio/heap.o(.rodata*);
@@ -370,7 +366,7 @@ SECTIONS
    /* Checks that segments are not overlapping into the memory pool but is not strictly necessary */
    BEGIN_NOLOAD(memoryPool)
    {
-      BUILD_DIR/src/data/memory_pool.o(.bss);
+      BUILD_DIR/src/buffers/memory_pool.o(.bss*);
       . = ALIGN(0x10);
    }
    END_NOLOAD(memoryPool)
@@ -391,7 +387,7 @@ SECTIONS
       BUILD_DIR/src/racing/actors.o(.data*);
       BUILD_DIR/src/racing/skybox_and_splitscreen.o(.data*);
       BUILD_DIR/src/racing/memory.o(.data*);
-      BUILD_DIR/courses/courseTable.inc.o(.data*);
+      BUILD_DIR/courses/courseTable.o(.data*);
       BUILD_DIR/src/racing/actors_extended.o(.data*);
       BUILD_DIR/src/racing/math_util.o(.data*);
       BUILD_DIR/src/racing/race_logic.o(.rodata*);
@@ -410,15 +406,16 @@ SECTIONS
       BUILD_DIR/src/racing/race_logic.o(.bss*);
       BUILD_DIR/src/racing/actors.o(.bss*);
       BUILD_DIR/src/racing/memory.o(.bss*);
+      BUILD_DIR/src/buffers/random.o(.bss*);
       . = ALIGN(0x10);
    }
    END_NOLOAD(racing)
 
    BEGIN_NOLOAD(buffers)
    {
-      BUILD_DIR/src/data/trig_tables_bss.o(.bss*);
-      BUILD_DIR/src/data/buffers.o(.bss*);
-      BUILD_DIR/src/data/gfx_output_buffer.o(.bss*);
+      BUILD_DIR/src/buffers/trig_tables_bss.o(.bss*);
+      BUILD_DIR/src/buffers/buffers.o(.bss*);
+      BUILD_DIR/src/buffers/gfx_output_buffer.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/src/audio/heap.o(.bss*);
       BUILD_DIR/src/audio/load.o(.bss*);
@@ -438,14 +435,11 @@ SECTIONS
       BUILD_DIR/src/ending/ceremony_and_credits.o(.text*);
       BUILD_DIR/src/ending/podium_ceremony_actors.o(.data*);
       BUILD_DIR/src/ending/code_80281780.o(.data*);
-      BUILD_DIR/src/ending/dl_unk_80284EE0.inc.o(.data*);
+      BUILD_DIR/src/ending/dl_unk_80284EE0.o(.data*);
       BUILD_DIR/src/ending/credits.jp.o(.data*);
       BUILD_DIR/src/ending/ceremony_and_credits.o(.data*);
-      BUILD_DIR/src/ending/code_80280000.o(.rodata*);
       BUILD_DIR/src/ending/podium_ceremony_actors.o(.rodata*);
       BUILD_DIR/src/ending/camera_junk.o(.rodata*);
-      BUILD_DIR/src/ending/code_80281780.o(.rodata*);
-      BUILD_DIR/src/ending/code_80281C40.o(.rodata*);
       BUILD_DIR/src/ending/credits.jp.o(.rodata*);
       BUILD_DIR/src/ending/ceremony_and_credits.o(.rodata*);
    }
@@ -464,8 +458,8 @@ SECTIONS
    /* texture tables and DLs, set as segment 0x02 */
    BEGIN_SEG(data_segment2, 0x02000000)
    {
-      BUILD_DIR/src/data/textures.inc.o(.data);
-      BUILD_DIR/src/data/data_segment2.inc.o(.data);
+      BUILD_DIR/src/data/textures.o(.data);
+      BUILD_DIR/src/data/data_segment2.o(.data);
    }
    END_SEG(data_segment2)
 
@@ -473,7 +467,7 @@ SECTIONS
    /* common textures, decompressed and set as segment 0x0D */
    BEGIN_SEG(common_textures, 0x0D000000)
    {
-      BUILD_DIR/src/data/common_textures.inc.mio0.o(.data);
+      BUILD_DIR/src/data/common_textures.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(common_textures)
@@ -490,7 +484,7 @@ SECTIONS
       BUILD_DIR/data/karts/toad_kart.o(.data);
       BUILD_DIR/data/karts/donkeykong_kart.o(.data);
       BUILD_DIR/data/karts/bowser_kart.o(.data);
-      BUILD_DIR/courses/staff_ghosts.inc.o(.data);
+      BUILD_DIR/courses/staff_ghost_data.o(.data);
    }
    END_SEG(kart_textures)
 
@@ -505,7 +499,7 @@ SECTIONS
    /* 0x802BA370 724220-729A30 [0x5810] */
    BEGIN_SEG(trigTables, _buffersSegmentNoloadStart)
    {
-        BUILD_DIR/src/data/trig_tables.o(.data);
+        BUILD_DIR/src/buffers/trig_tables.o(.data);
         . = ALIGN(0x10);
    }
    END_SEG(trigTables)
@@ -531,14 +525,14 @@ SECTIONS
             0x828400 -> 0x8028DE30 (0xD0) */
    BEGIN_SEG(ceremonyData, 0x0B000000)
    {
-      BUILD_DIR/src/ending/ceremony_data.inc.mio0.o(.data);
+      BUILD_DIR/src/ending/ceremony_data.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(ceremonyData)
 
    BEGIN_SEG(startupLogo, 0x06000000)
    {
-      BUILD_DIR/src/data/startup_logo.inc.mio0.o(.data);
+      BUILD_DIR/src/data/startup_logo.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(startupLogo)
@@ -549,7 +543,7 @@ SECTIONS
    #define COURSE_DATA_SEG(dir, name) \
       BEGIN_SEG(name##_mio0, 0x06000000) \
       { \
-         BUILD_DIR/courses/dir/course_data.inc.mio0.o(.data); \
+         BUILD_DIR/courses/dir/course_data.mio0.o(.data); \
          . = ALIGN(0x10); \
       } \
       END_SEG(name##_mio0)
@@ -578,7 +572,7 @@ SECTIONS
    #define COURSE_OFFSETS_SEG(dir, name) \
       BEGIN_SEG(name, 0x09000000) \
       { \
-         BUILD_DIR/courses/dir/course_offsets.inc.o(.data); \
+         BUILD_DIR/courses/dir/course_offsets.o(.data); \
          . = ALIGN(0x10); \
       } \
       END_SEG(name)
@@ -609,7 +603,7 @@ SECTIONS
    #define COURSE_VERT_SEG(dir, name) \
       BEGIN_SEG(name, 0x0F000000) \
       { \
-         BUILD_DIR/courses/dir/course_geography.inc.mio0.o(.data); \
+         BUILD_DIR/courses/dir/course_geography.mio0.o(.data); \
          . = ALIGN(0x10); \
       } \
       END_SEG(name)
@@ -671,7 +665,9 @@ SECTIONS
 
    ASSERT((_mainSegmentNoloadEnd <= _memoryPoolSegmentNoloadStart), "Error: Main segment extended into the memory pool.")
    ASSERT((_memoryPoolSegmentNoloadEnd <= _endingSegmentStart), "Error: Memory pool extended into the ending segment.")
+   ASSERT((_endingSegmentNoloadEnd <= _racingSegmentStart), "Error: Ending segment extended into the racing segment")
    ASSERT((_endingSegmentNoloadEnd <= _racingSegmentStart), "Error: Ending segment extended into the racing segment.")
    ASSERT((_racingSegmentNoloadEnd <= _buffersSegmentNoloadStart), "Error: Racing segment extended into the buffers segment.")
+   ASSERT((_buffersSegmentNoloadEnd <= RDRAM_END), "Error: Buffers segment extended past 8MB of memory")
    ASSERT((_buffersSegmentNoloadEnd <= RDRAM_END), "Error: Buffers segment extended into trig tables segment.")
 }

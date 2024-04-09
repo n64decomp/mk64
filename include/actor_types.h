@@ -9,70 +9,79 @@
 //#pragma GCC diagnostic ignored "-Wmicrosoft-extension"
 //#pragma GCC diagnostic ignored "-Wmissing-member-name-in-structure-/-union"
 
-/*
-gActorList should be understood to be populated by generic Actor structs.
-However, for human readability, many functions interacting with actor list elements expect one of the many
-specialized types found in this file.
-
-Note that specialized types must be the same size as a plain Actor. Don't be mislead into thinking that
-because its a separate type that it can modified separately from plain Actor. If you modify/add an actor type
-and its size is different from plain Actor's, you WILL run into buggy (potentially crash inducing) behaviour.
-
-Specialized structs are customizable so long as the following member specifications are met:
-
-In general:
-    0x00 -> s16 type
-    0x02 -> s16 flags
-    0x30 -> Collision unk30
-
-If player can collide with the actor:
-    0x0C -> f32 boundingBoxSize
-
-If the actor makes sound (necessary for doppler/volume stuff):
-    0x18 -> Vec3f pos
-    0x24 -> Vec3f velocity
-
-Other members are more flexible, and even the non-general specifications can be ignored IF AND ONLY IF you know
-exactly what you're doing.
-*/
-
-#define ACTOR_TREE_MARIO_RACEWAY       0x02
-#define ACTOR_TREE_YOSHI_VALLEY        0x03
-#define ACTOR_TREE_ROYAL_RACEWAY       0x04
-#define ACTOR_FALLING_ROCK             0x05
-#define ACTOR_BANANA                   0x06
-#define ACTOR_GREEN_SHELL              0x07
-#define ACTOR_RED_SHELL                0x08
-#define ACTOR_YOSHI_VALLEY_EGG         0x09
-#define ACTOR_PIRANHA_PLANT            0x0A
-#define ACTOR_ITEM_BOX                 0x0C
-#define ACTOR_FAKE_ITEM_BOX            0x0D
-#define ACTOR_BANANA_BUNCH             0x0E
-#define ACTOR_TRAIN_ENGINE             0x0F
-#define ACTOR_TRAIN_TENDER             0x10
-#define ACTOR_TRAIN_PASSENGER_CAR      0x11
-#define ACTOR_COW                      0x12
-#define ACTOR_TREE_MOO_MOO_FARM        0x13
-#define ACTOR_TRIPLE_GREEN_SHELL       0x15
-#define ACTOR_TRIPLE_RED_SHELL         0x16
-#define ACTOR_MARIO_RACEWAY_SIGN       0x17
-#define ACTOR_PALM_TREE                0x19
-#define ACTOR_TREE_BOWSERS_CASTLE      0x1C
-#define ACTOR_TREE_FRAPPE_SNOWLAND     0x1D
-#define ACTOR_CACTUS1_KALAMARI_DESERT  0x1E
-#define ACTOR_CACTUS2_KALAMARI_DESERT  0x1F
-#define ACTOR_CACTUS3_KALAMARI_DESERT  0x20
-#define ACTOR_BUSH_BOWSERS_CASTLE      0x21
-#define ACTOR_WARIO_STADIUM_SIGN       0x23
-#define ACTOR_BOX_TRUCK                0x25
-#define ACTOR_PADDLE_WHEEL_BOAT        0x26
-#define ACTOR_RAILROAD_CROSSING        0x27
-#define ACTOR_SCHOOL_BUS               0x28
-#define ACTOR_TANKER_TRUCK             0x29
-#define ACTOR_BLUE_SPINY_SHELL         0x2A
-#define ACTOR_HOT_AIR_BALLOON_ITEM_BOX 0x2B
-#define ACTOR_CAR                      0x2C
-#define ACTOR_KIWANO_FRUIT             0x2D
+/**
+ * gActorList should be understood to be populated by generic Actor structs.
+ * However, for human readability, many functions interacting with actor list elements expect one of the many
+ * specialized types found in this file.
+ * 
+ * Note that specialized types must be the same size as a plain Actor. Don't be mislead into thinking that
+ * because its a separate type that it can modified separately from plain Actor. If you modify/add an actor type
+ * and its size is different from plain Actor's, you WILL run into buggy (potentially crash inducing) behaviour.
+ * 
+ * Specialized structs are customizable so long as the following member specifications are met:
+ * 
+ * In general:
+ *     0x00 -> s16 type
+ *     0x02 -> s16 flags
+ *     0x30 -> Collision unk30
+ * 
+ * If player can collide with the actor:
+ *     0x0C -> f32 boundingBoxSize
+ * 
+ * If the actor makes sound (necessary for doppler/volume stuff):
+ *     0x18 -> Vec3f pos
+ *     0x24 -> Vec3f velocity
+ * 
+ * Other members are more flexible, and even the non-general specifications can be ignored IF AND ONLY IF you know
+ * exactly what you're doing.
+ */
+enum ActorType {
+    ACTOR_UNKNOWN_0x01 = 0x01,
+    ACTOR_TREE_MARIO_RACEWAY,
+    ACTOR_TREE_YOSHI_VALLEY,
+    ACTOR_TREE_ROYAL_RACEWAY,
+    ACTOR_FALLING_ROCK,
+    ACTOR_BANANA,
+    ACTOR_GREEN_SHELL,
+    ACTOR_RED_SHELL,
+    ACTOR_YOSHI_EGG,
+    ACTOR_PIRANHA_PLANT,
+    ACTOR_UNKNOWN_0x0B,
+    ACTOR_ITEM_BOX,
+    ACTOR_FAKE_ITEM_BOX,
+    ACTOR_BANANA_BUNCH,
+    ACTOR_TRAIN_ENGINE,
+    ACTOR_TRAIN_TENDER,
+    ACTOR_TRAIN_PASSENGER_CAR,
+    ACTOR_COW,
+    ACTOR_TREE_MOO_MOO_FARM,
+    ACTOR_UNKNOWN_0x14,
+    ACTOR_TRIPLE_GREEN_SHELL,
+    ACTOR_TRIPLE_RED_SHELL,
+    ACTOR_MARIO_SIGN,
+    ACTOR_UNKNOWN_0x18,
+    ACTOR_PALM_TREE,
+    ACTOR_UNKNOWN_0x1A,
+    ACTOR_UNKNOWN_0x1B,
+    ACTOR_TREE_BOWSERS_CASTLE,
+    ACTOR_TREE_FRAPPE_SNOWLAND,
+    ACTOR_CACTUS1_KALAMARI_DESERT,
+    ACTOR_CACTUS2_KALAMARI_DESERT,
+    ACTOR_CACTUS3_KALAMARI_DESERT,
+    ACTOR_BUSH_BOWSERS_CASTLE,
+    ACTOR_UNKNOWN_0x21,
+    ACTOR_WARIO_SIGN,
+    ACTOR_UNKNOWN_0x23,
+    ACTOR_BOX_TRUCK,
+    ACTOR_PADDLE_BOAT,
+    ACTOR_RAILROAD_CROSSING,
+    ACTOR_SCHOOL_BUS,
+    ACTOR_TANKER_TRUCK,
+    ACTOR_BLUE_SPINY_SHELL,
+    ACTOR_HOT_AIR_BALLOON_ITEM_BOX,
+    ACTOR_CAR,
+    ACTOR_KIWANO_FRUIT
+};
 
 #define ACTOR_LIST_SIZE 100
 
@@ -80,23 +89,29 @@ exactly what you're doing.
 #define ACTOR_IS_NOT_EXPIRED 0xF // The actor possesses some kind of collision and can be removed
 
 // Actor shell->state (green, red and blue)
-#define HELD_SHELL 0 // Single shell that has not been dropped. (probably holding Z).
-#define RELEASED_SHELL 1 // This is the short window where single shells aren't being held or launched.
-#define MOVING_SHELL 2 // Moving towards its target after being shot.
-#define RED_SHELL_LOCK_ON 3 // Red shell is targeting.
-#define TRIPLE_GREEN_SHELL 4 // Loses triple shell state when shot.
-#define GREEN_SHELL_HIT_A_RACER 5 // A racer has been hit by a green shell.
-#define TRIPLE_RED_SHELL 6 // Loses triple shell state when shot.
-#define DESTROYED_SHELL 7 // Collision with the shell.
-#define BLUE_SHELL_LOCK_ON 8 // A blue shell has found a target and is hastily approaching it.
-#define BLUE_SHELL_TARGET_ELIMINATED 9 // Mission completed, well done boss.
+enum ShellState {
+    HELD_SHELL,                   // Single shell that has not been dropped. (probably holding Z).
+    RELEASED_SHELL,               // This is the short window where single shells aren't being held or launched.
+    MOVING_SHELL,                 // Moving towards its target after being shot.
+    RED_SHELL_LOCK_ON,            // Red shell is targeting.
+    TRIPLE_GREEN_SHELL,           // Loses triple shell state when shot.
+    GREEN_SHELL_HIT_A_RACER,      // A racer has been hit by a green shell.
+    TRIPLE_RED_SHELL,             // Loses triple shell state when shot.
+    DESTROYED_SHELL,              // Collision with the shell.
+    BLUE_SHELL_LOCK_ON,           // A blue shell has found a target and is hastily approaching it.
+    BLUE_SHELL_TARGET_ELIMINATED  // Mission completed, well done boss.
+};
+
 // Actor banana->state
-#define HELD_BANANA 0 // Single banana that has not been dropped.
-#define DROPPED_BANANA 1 // A banana in the state of being dropped on the ground (it only last for a few frames).
-#define FIRST_BANANA_BUNCH_BANANA 2 // The first banana of the banana bunch
-#define BANANA_BUNCH_BANANA 3 // Every banana of the banana bunch except the first one.
-#define BANANA_ON_GROUND 4 // A banana sitting on the ground.
-#define DESTROYED_BANANA 5 // Collision with the banana.
+enum BananaState {
+    HELD_BANANA,               // Single banana that has not been dropped.
+    DROPPED_BANANA,            // A banana in the state of being dropped on the ground (it only last for a few frames).
+    FIRST_BANANA_BUNCH_BANANA, // The first banana of the banana bunch
+    BANANA_BUNCH_BANANA,       // Every banana of the banana bunch except the first one.
+    BANANA_ON_GROUND,          // A banana sitting on the ground.
+    DESTROYED_BANANA           // Collision with the banana.
+};
+
 // Actor fakeItemBox->state
 #define HELD_FAKE_ITEM_BOX 0 // Item box is being held be Z.
 #define FAKE_ITEM_BOX_ON_GROUND 1 // Item box is on the ground.
@@ -176,7 +191,7 @@ struct ActorSpawnData {
     };
 };
 
-// Required for func_80298AC0 due to diff size.
+// Required for evaluate_collision_player_palm_trees due to diff size.
 // members unverified. data located at d_course_dks_jungle_parkway_tree_spawn
 /**
  * There are nearly 100 trees in DK Jungle Parkway. If they were put into the actor list proper
@@ -254,17 +269,17 @@ struct PiranhaPlant {
     /* 0x30 */ Collision unk30;
 }; // size = 0x70
 
-// Copied from PiranhaPlant, may not be accurate.
 struct PalmTree {
     /* 0x00 */ s16 type;
     /* 0x02 */ s16 flags;
-    /* 0x04 */ Vec4s visibilityStates; // A per-camera visibilty state tracker
+    /* 0x04 */ s16 variant; // four different types of palm trees
+    /* 0x06 */ s16 state;
+    /* 0x08 */ f32 unk_08;
     /* 0x0C */ f32 boundingBoxSize;
-    /* 0x10 */ Vec3s unk10;
-    /* 0x16 */ s16 unk16;
+    /* 0x10 */ Vec3s rot;
+    /* 0x16 */ s16 unk_16;
     /* 0x18 */ Vec3f pos;
-    /* 0x24 */ Vec4s timers; // A per-camera timer. Might be more appropriate to call this state
-    /* 0x2C */ f32 unk_02C;
+    /* 0x24 */ Vec3f velocity;
     /* 0x30 */ Collision unk30;
 }; // size = 0x70
 

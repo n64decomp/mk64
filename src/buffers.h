@@ -15,7 +15,21 @@
  */
 typedef struct {
     u8 pixel_index_array[0x1000];
-} struct_D_802BFB80; // size = 0x1000
+} struct_D_802BFB80_8; // size = 0x1000
+
+typedef struct {
+    u8 pixel_index_array[0x2000];
+} struct_D_802BFB80_4; // size = 0x1000
+
+/*
+ * In render_player, spawn_players, and staff_ghosts D_802BFB80 is the arraySize8 entry
+ * But in code_80091750 its the arraySize4 entry
+ * The only way to unify those 2 things is to use a union
+*/
+typedef union {
+    struct_D_802BFB80_4 arraySize4[2][2][4];
+    struct_D_802BFB80_8 arraySize8[2][2][8];
+} union_D_802BFB80;
 
 /*
  * Texture prior to be being decoded via mio0decode
@@ -53,8 +67,9 @@ typedef struct {
     /* 0x180 */ RGBA5551 wheel_palette[0x40];
 } struct_D_802F1F80; // size = 0x200
 
-extern u8 trigTablesPadding[];
-extern struct_D_802BFB80 D_802BFB80[][2][8];
+extern u16 gRandomSeed16;
+extern u8 randomSeedPadding[216];
+extern union_D_802BFB80 D_802BFB80;
 extern struct_D_802DFB80 D_802DFB80[][2][8];
 
 /**
