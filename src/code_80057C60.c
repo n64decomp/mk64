@@ -3493,7 +3493,7 @@ void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005F90C.s")
 #endif
 
-void func_80060504(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
+void func_80060504(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     UNUSED s32 thing1;
     s16 thing2;
     UNUSED s32 thing3;

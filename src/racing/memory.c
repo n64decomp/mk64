@@ -1334,7 +1334,7 @@ u8 *load_course(s32 courseId) {
     CourseVtx *vertexStart; // mio0 compressed
     u8 *packedStart;
     u32 vertexCount;
-    uintptr_t finalDisplaylistOffset;
+    u8* finalDisplaylistOffset;
     u32 unknown1;
     s32 prevLoadedAddress_saved;
     u8 *offsetRomStart;
@@ -1370,7 +1370,7 @@ u8 *load_course(s32 courseId) {
 
     set_segment_base_addr(0xF, (void *) vtxCompressed);
     decompress_vtx(vertexStart, vertexCount);
-    displaylist_unpack((uintptr_t *) packedStart, finalDisplaylistOffset, unknown1);
+    displaylist_unpack((uintptr_t *) packedStart, (uintptr_t) finalDisplaylistOffset, unknown1);
     decompress_textures(textures);
     gNextFreeMemoryAddress = prevLoadedAddress_saved;
     return vtxCompressed;

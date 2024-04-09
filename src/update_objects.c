@@ -33,6 +33,7 @@
 #include "menus.h"
 #include "data/other_textures.h"
 #include "data/some_data.h"
+#include "memory.h"
 
 //! @todo unused?
 f32 D_800E43B0[] = { 
@@ -753,7 +754,7 @@ UNUSED void func_800734D4() {
 
 void update_neon_texture(s32 objectIndex) {
     // I have no idea why this typecast works
-    gObjectList[objectIndex].activeTLUT = (u32*)gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].itemDisplay * 128);
+    gObjectList[objectIndex].activeTLUT = (u8*)((u32*)gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].itemDisplay * 128));
     gObjectList[objectIndex].activeTexture = gObjectList[objectIndex].textureList;
 }
 
@@ -1233,7 +1234,7 @@ void func_8007466C(s32 objectIndex, s32 arg1) {
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
         // I have no idea why this typecase works
-        gObjectList[objectIndex].activeTLUT = (u32*)gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].unk_0D3 << 7) ;
+        gObjectList[objectIndex].activeTLUT = (u8*) ((u32*)gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].unk_0D3 << 7)) ;
         gObjectList[objectIndex].status ^= 2;
         phi_a1 = 0;
         if ((gObjectList[objectIndex].status & 2) != 0) {
@@ -1584,7 +1585,7 @@ void func_80075714(s32 objectIndex) {
 }
 
 void update_train_smoke(void) {
-    s32 pad[2];
+    UNUSED s32 pad[2];
     s32 count;
     s32 i;
     s32 temp_a0;
@@ -1705,7 +1706,7 @@ void func_80075B84(s32 objectIndex) {
 }
 
 void update_ferries_smoke_particle(void) {
-    s32 pad[2];
+    UNUSED s32 pad[2];
     s32 count;
     s32 i;
     s32 temp_a0;
@@ -1882,8 +1883,8 @@ void func_8007634C(s32 objectIndex) {
     Objects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->activeTexture = common_texture_particle_smoke;
-    temp_v0->textureList = common_texture_particle_smoke;
+    temp_v0->activeTexture = common_texture_particle_smoke[0];
+    temp_v0->textureList = common_texture_particle_smoke[0];
     temp_v0->primAlpha = 0x00FF;
     set_obj_orientation(objectIndex, 0U, 0U, 0U);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -2018,7 +2019,7 @@ s32 func_80076828(Vec3s arg0, s32 arg1) {
 }
 
 void func_80076884(s32 arg0) {
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     s32 i;
     s32 temp_v0;
     s16 *var_s2;
@@ -2052,8 +2053,8 @@ void func_80076958(s32 objectIndex) {
     Objects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->activeTexture = common_texture_particle_smoke;
-    temp_v0->textureList = common_texture_particle_smoke;
+    temp_v0->activeTexture = common_texture_particle_smoke[0];
+    temp_v0->textureList = common_texture_particle_smoke[0];
     temp_v0->primAlpha = 0x00FF;
     set_obj_orientation(objectIndex, 0U, 0U, 0U);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -2145,8 +2146,8 @@ void init_object_smoke_paticle(s32 objectIndex, Vec3f arg1, s16 arg2) {
     init_object(objectIndex, (s32) arg2);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_0D5 = 0x0A;
-    temp_v0->activeTexture = common_texture_particle_smoke;
-    temp_v0->textureList = common_texture_particle_smoke;
+    temp_v0->activeTexture = common_texture_particle_smoke[0];
+    temp_v0->textureList = common_texture_particle_smoke[0];
     temp_v0->sizeScaling = 0.3f;
     set_obj_origin_pos(objectIndex, arg1[0], arg1[1], arg1[2]);
     temp_v0->type = 0x00FF;
@@ -2221,8 +2222,8 @@ void init_object_smoke_particle(s32 objectIndex, s32 flameIndex) {
     init_object(objectIndex, 3);
 
     gObjectList[objectIndex].unk_0D5 = 0xB;
-    gObjectList[objectIndex].activeTexture = common_texture_particle_smoke;
-    gObjectList[objectIndex].textureList = common_texture_particle_smoke;
+    gObjectList[objectIndex].activeTexture = common_texture_particle_smoke[0];
+    gObjectList[objectIndex].textureList = common_texture_particle_smoke[0];
     gObjectList[objectIndex].sizeScaling = 0.8f;
 
     gObjectList[objectIndex].origin_pos[0] = (f32)*(gTorchSpawns + (flameIndex * 3) + 0) * xOrientation;
@@ -2381,8 +2382,8 @@ void init_object_leaf_particle(s32 objectIndex, Vec3f arg1, s32 num) {
 
     init_object(objectIndex, 0);
     gObjectList[objectIndex].unk_0D5 = 7;
-    gObjectList[objectIndex].activeTLUT = (u32 *) common_texture_particle_leaf;
-    gObjectList[objectIndex].tlutList = (u32 *) common_texture_particle_leaf;
+    gObjectList[objectIndex].activeTLUT = common_texture_particle_leaf;
+    gObjectList[objectIndex].tlutList = common_texture_particle_leaf;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].unk_044 = arg1[1];
     switch (gCurrentCourseId) {
@@ -3585,7 +3586,7 @@ void consume_item(s32 playerId) {
 
     player = &gPlayerOne[playerId];
     objectIndex = gItemWindowObjectByPlayerId[playerId];
-    itemWindow = &gObjectList[objectIndex];
+    itemWindow = (ItemWindowObjects *) &gObjectList[objectIndex];
     if (itemWindow->currentItem == ITEM_SUPER_MUSHROOM) {
         if (func_80072354(objectIndex, 2) != 0) {
             func_800722A4(objectIndex, 2);
@@ -3670,7 +3671,7 @@ s16 func_8007AFB0(s32 objectIndex, s32 arg1) {
 }
 
 s32 func_8007B040(s32 objectIndex, s32 playerId) {
-    s16 stackPadding;
+    UNUSED s16 stackPadding;
     s32 temp_v1;
     s32 var_a3;
     s32 var_t3;
@@ -6487,7 +6488,7 @@ void func_8008275C(s32 objectIndex) {
     case 2:
         func_8008B78C(objectIndex);
         vec3f_copy(gObjectList[objectIndex].unk_01C, gObjectList[objectIndex].pos);
-        func_8000D940(gObjectList[objectIndex].origin_pos, &gObjectList[objectIndex].unk_0C6, gObjectList[objectIndex].unk_034, 0.0f, 0);
+        func_8000D940(gObjectList[objectIndex].origin_pos, (s16 *) &gObjectList[objectIndex].unk_0C6, gObjectList[objectIndex].unk_034, 0.0f, 0);
         gObjectList[objectIndex].offset[0] *= 2.0;
         gObjectList[objectIndex].offset[1] *= 2.5;
         gObjectList[objectIndex].offset[2] *= 2.0;

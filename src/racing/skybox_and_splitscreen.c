@@ -831,7 +831,7 @@ void render_player_one_2p_screen_vertical(void) {
     UNUSED s32 pad[2];
     u16 perspNorm;
     Mat4 matrix;
-    f32 sp9C;
+    UNUSED f32 sp9C;
 
     func_802A50EC();
 #ifdef VERSION_EU
@@ -888,7 +888,7 @@ void render_player_two_2p_screen_vertical(void) {
     UNUSED s32 pad[2];
     u16 perspNorm;
     Mat4 matrix;
-    f32 sp9C;
+    UNUSED f32 sp9C;
 
     func_802A5004();
     init_rdp();

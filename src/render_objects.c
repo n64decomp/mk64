@@ -1888,7 +1888,7 @@ void func_8004D4E8(s32 arg0, s32 arg1, u8 *texture, s32 arg3, s32 arg4, s32 arg5
     }
 }
 
-void func_8004D654(s32 arg0, s32 arg1, u8 *texture, f32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 width, s32 arg9, s32 argA, s32 height) {
+void func_8004D654(s32 arg0, s32 arg1, u8 *texture, f32 arg3, s32 arg4, s32 arg5, s32 arg6, UNUSED s32 arg7, s32 width, s32 arg9, UNUSED s32 argA, s32 height) {
     s32 i;
     s32 var_s3;
     u8 *textureCopy;
@@ -2353,7 +2353,7 @@ void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
             if (gGPCurrentRaceRankByPlayerId[playerId] == 0) {
                 func_8004C450(temp_a0, temp_a1, 8, 8, (u8 *) common_texture_minimap_progress_dot);
             } else {
-                func_8004C364(temp_a0, temp_a1, 8, 8, (u8 *) common_texture_minimap_progress_dot);
+                draw_hud_2d_texture(temp_a0, temp_a1, 8, 8, (u8 *) common_texture_minimap_progress_dot);
             }
         }
     }
