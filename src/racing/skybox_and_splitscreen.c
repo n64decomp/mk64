@@ -177,8 +177,8 @@ void func_802A39E0(struct UnkStruct_800DC5EC *arg0) {
 
     gDPPipeSync(gDisplayListHead++);
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
-    gDPSetDepthImage(gDisplayListHead++, D_801502B4);
-    gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, D_801502B4);
+    gDPSetDepthImage(gDisplayListHead++, gPhysicalZBuffer);
+    gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, gPhysicalZBuffer);
     gDPSetFillColor(gDisplayListHead++, 0xFFFCFFFC);
     gDPPipeSync(gDisplayListHead++);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
@@ -197,8 +197,8 @@ void func_802A39E0(struct UnkStruct_800DC5EC *arg0) {
 void init_z_buffer(void) {
     gDPPipeSync(gDisplayListHead++);
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
-    gDPSetDepthImage(gDisplayListHead++, D_801502B4);
-    gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, D_801502B4);
+    gDPSetDepthImage(gDisplayListHead++, gPhysicalZBuffer);
+    gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, gPhysicalZBuffer);
     gDPSetFillColor(gDisplayListHead++, 0xFFFCFFFC);
     gDPPipeSync(gDisplayListHead++);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);

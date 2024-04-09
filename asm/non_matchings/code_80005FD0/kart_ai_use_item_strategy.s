@@ -21,7 +21,7 @@ glabel jpt_800ED4A0
 
 .section .text
 
-glabel cpu_use_item_strategy
+glabel kart_ai_use_item_strategy
 /* 01B810 8001AC10 000478C0 */  sll   $t7, $a0, 3
 /* 01B814 8001AC14 01E47823 */  subu  $t7, $t7, $a0
 /* 01B818 8001AC18 000F7900 */  sll   $t7, $t7, 4
@@ -96,11 +96,11 @@ glabel L8001ACAC
 /* 01B928 8001AD28 00032400 */  sll   $a0, $v1, 0x10
 /* 01B92C 8001AD2C 00046403 */  sra   $t4, $a0, 0x10
 /* 01B930 8001AD30 01802025 */  move  $a0, $t4
-/* 01B934 8001AD34 0C01EBDE */  jal   gen_random_item_cpu
+/* 01B934 8001AD34 0C01EBDE */  jal   kart_ai_gen_random_item
 /* 01B938 8001AD38 85A50002 */   lh    $a1, 2($t5)
 /* 01B93C 8001AD3C 8FA40030 */  lw    $a0, 0x30($sp)
 /* 01B940 8001AD40 02002825 */  move  $a1, $s0
-/* 01B944 8001AD44 0C006ADD */  jal   cpu_decisions_branch_item
+/* 01B944 8001AD44 0C006ADD */  jal   kart_ai_decisions_branch_item
 /* 01B948 8001AD48 00403025 */   move  $a2, $v0
 /* 01B94C 8001AD4C 10000003 */  b     .L8001AD5C
 /* 01B950 8001AD50 00000000 */   nop

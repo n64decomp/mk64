@@ -15,13 +15,13 @@ struct _struct_D_800DD9D0_0x10 {
     /* 0x0A */ char padA[6];
 };  // size 0x10
 
-extern UnkCommonTextureStruct0 *D_800DC720[];
+extern KartAIBehaviour *gKartAIBehaviourLUT[NUM_COURSES+1];
 extern TrackWaypoint nullPath;
 extern TrackWaypoint *gCoursePathTable[][4];
 extern TrackWaypoint *D_800DC8D0[][4];
 extern s16 D_800DCA20[];
-extern f32 D_800DCA4C[];
-extern f32 D_800DCAA0[];
+extern f32 gKartAICourseMaximumWaypointSeparation[];
+extern f32 gKartAICourseMinimumWaypointSeparation[];
 extern s16 D_800DCAF4[];
 extern s16 D_800DCB34[];
 extern s16 *D_800DCBB4[];

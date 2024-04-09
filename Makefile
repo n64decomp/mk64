@@ -212,7 +212,7 @@ DATA_DIR       := data
 INCLUDE_DIRS   := include
 
 # Directories containing source files
-SRC_DIRS       := src src/data src/racing src/ending src/audio src/debug src/os src/os/math courses
+SRC_DIRS       := src src/data src/buffers src/racing src/ending src/audio src/debug src/os src/os/math courses
 ASM_DIRS       := asm asm/os asm/unused $(DATA_DIR) $(DATA_DIR)/sound_data $(DATA_DIR)/karts
 
 

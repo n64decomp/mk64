@@ -2,13 +2,29 @@
 #include "courses/all_course_data.h"
 #include "ending/ceremony_data.h"
 
-UnkCommonTextureStruct0 *D_800DC720[] = {
-	D_0D008F28, D_0D008F80, D_0D008FB8, D_0D009058,
-	D_0D0090B8, D_0D0090F8, D_0D009158, D_0D009188,
-	D_0D0091E8, D_0D009210, D_0D009238, D_0D009260,
-	D_0D009280, D_0D0092C8, D_0D009310, D_0D008F18,
-	D_0D008F18, D_0D008F18, D_0D0093C0, D_0D008F18,
-	D_0D008F18, NULL,
+KartAIBehaviour *gKartAIBehaviourLUT[NUM_COURSES+1] = {
+	common_kart_ai_behaviour_mario_raceway,
+    common_kart_ai_behaviour_choco_mountain,
+    common_kart_ai_behaviour_bowser_castle, 
+    common_kart_ai_behaviour_banshee_boardwalk,
+	common_kart_ai_behaviour_yoshi_valley,
+    common_kart_ai_behaviour_frappe_snowland,
+    common_kart_ai_behaviour_koopa_beach,
+    common_kart_ai_behaviour_royal_raceway,
+	common_kart_ai_behaviour_luigi_raceway,
+    common_kart_ai_behaviour_moo_moo_farm,
+    common_kart_ai_behaviour_toad_turnpike,
+    common_kart_ai_behaviour_kalamari_desert,
+	common_kart_ai_behaviour_sherbet_land,
+    common_kart_ai_behaviour_rainbow_road,
+    common_kart_ai_behaviour_wario_stadium,
+    common_kart_ai_behaviour_battle_courses, /* COURSE_BLOCK_FORT        */
+	common_kart_ai_behaviour_battle_courses, /* COURSE_SKYSCRAPER        */
+    common_kart_ai_behaviour_battle_courses, /* COURSE_DOUBLE_DECK       */
+    common_kart_ai_behaviour_dk_jungle,
+    common_kart_ai_behaviour_battle_courses, /* COURSE_BIG_DONUT         */
+	common_kart_ai_behaviour_battle_courses, /* COURSE_AWARD_CEREMONY    */
+    NULL,       /* NUM_COURSES              */
 };
 
 TrackWaypoint nullPath = { 0x8000, 0x0000, 0x0000, 0x0000 };
@@ -67,7 +83,7 @@ s16 D_800DCA20[] = {
 	0x0035, 0x0035, 0x0035, 0x0028, 0x0035, 0x0000,
 };
 
-f32 D_800DCA4C[] = {
+f32 gKartAICourseMaximumWaypointSeparation[] = {
     50.0, 35.0, 35.0, 40.0,
     35.0, 50.0, 50.0, 50.0,
     50.0, 50.0, 50.0, 50.0,
@@ -76,7 +92,7 @@ f32 D_800DCA4C[] = {
     40.0,
 };
 
-f32 D_800DCAA0[] = {
+f32 gKartAICourseMinimumWaypointSeparation[] = {
     0.3, 0.3, 0.2, 0.4,
     0.0, 0.3, 0.5, 0.4,
     0.7, 0.5, 0.5, 0.3,
