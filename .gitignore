@@ -98,3 +98,4 @@ docs/html/*
 mingw64/
 .ash_history
 !tools/ido-recomp/*/*
+torch.hash.yml
