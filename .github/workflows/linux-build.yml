@@ -23,4 +23,5 @@ jobs:
       - name: Build
         run: |
           cp -r complementary_file/* .
-          make
+          make assets -j
+          make -j
