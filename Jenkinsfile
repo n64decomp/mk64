@@ -30,6 +30,7 @@ pipeline {
     }
     stage('Build U Source') {
       steps {
+        sh 'make assets -j4'
         sh 'make -j4 VERSION=us'
       }
     }
