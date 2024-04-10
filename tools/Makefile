@@ -29,17 +29,25 @@ n64cksum_CFLAGS := -DN64CKSUM_STANDALONE
 
 extract_data_for_mio_SOURCES := extract_data_for_mio.c
 
-# Build tools and recomp
-all: $(PROGRAMS) torch
+ifeq ($(OS),Windows_NT)
+    DETECTED_OS=windows
+    # Set Windows temporary directory to its environment variable
+    export TMPDIR=$(TEMP)
+else
+    UNAME_S := $(shell uname -s)
+    ifeq ($(UNAME_S),Linux)
+        DETECTED_OS=linux
+    else ifeq ($(UNAME_S),Darwin)
+        DETECTED_OS=macos
+    endif
+endif
 
-torch:
-	@echo "Building mio0..."
-	$(MAKE) -C torch type=release -j$(N_THREADS)
+# Build tools and recomp
+all: $(PROGRAMS)
 
 # Remove generated files
 clean:
 	$(RM) $(PROGRAMS)
-	$(RM) -rf torch/cmake-build-release
 
 
 
@@ -55,4 +63,4 @@ endef
 
 $(foreach p,$(PROGRAMS),$(eval $(call COMPILE,$(p))))
 
-.PHONY: all clean default torch
+.PHONY: all clean default
