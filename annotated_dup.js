@@ -17,7 +17,7 @@ var annotated_dup =
     [ "__OSThreadprofile_s", "struct____OSThreadprofile__s.html", "struct____OSThreadprofile__s" ],
     [ "__osThreadTail", "struct____osThreadTail.html", "struct____osThreadTail" ],
     [ "__OSTranxInfo", "struct____OSTranxInfo.html", "struct____OSTranxInfo" ],
-    [ "_struct_D_800DD9D0_0x10", "struct__struct__D__800DD9D0__0x10.html", "struct__struct__D__800DD9D0__0x10" ],
+    [ "_struct_gCoursePathSizes_0x10", "struct__struct__gCoursePathSizes__0x10.html", "struct__struct__gCoursePathSizes__0x10" ],
     [ "Actor", "structActor.html", "structActor" ],
     [ "ActorInitParams", "structActorInitParams.html", "structActorInitParams" ],
     [ "ActorSpawnData", "structActorSpawnData.html", "structActorSpawnData" ],

@@ -191,5 +191,19 @@ var defines_8h =
       [ "ITEM_DOUBLE_MUSHROOM", "defines_8h.html#a73525c02acb5a3c282d73186bb3196f5af144c9fbb8b75aec611f40fc3689b0a2", null ],
       [ "ITEM_TRIPLE_MUSHROOM", "defines_8h.html#a73525c02acb5a3c282d73186bb3196f5a257dae5d08a213625f58b4f4d63eab78", null ],
       [ "ITEM_SUPER_MUSHROOM", "defines_8h.html#a73525c02acb5a3c282d73186bb3196f5ac8ccdaea90c749ac4f7edc813016b8ee", null ]
+    ] ],
+    [ "KART_AI_BEHAVIOURS", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81", [
+      [ "BEHAVIOUR_NONE", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81ad3f35bc87ad5e00cf257e937add9ef7f", null ],
+      [ "BEHAVIOUR_1", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81aeb5f7b5b58ae8f68fa759763ae08f931", null ],
+      [ "BEHAVIOUR_HOP", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81a7076771cdbc3bc9c52fe70c1a9ff6a7a", null ],
+      [ "BEHAVIOUR_3", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81a93ea75122423485960f40ee4ca919a3f", null ],
+      [ "BEHAVIOUR_4", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81a41b1969b603e9feba53c5443e7f86b65", null ],
+      [ "BEHAVIOUR_5", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81a79eb138df3e386b1eaa6779f02059f60", null ],
+      [ "BEHAVIOUR_NORMAL_SPEED", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81a112a7b0ef26213b5fc5716d1fff53aa1", null ],
+      [ "BEHAVIOUR_FAST_SPEED", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81a0025d8495a0cd1057b3732e3ab0feadc", null ],
+      [ "BEHAVIOUR_SLOW_SPEED", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81a3cc155f60d230d03926fb31444025398", null ],
+      [ "BEHAVIOUR_9", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81a731ead61eccb358ff204c9a9730202ef", null ],
+      [ "BEHAVIOUR_10", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81aeea56db11e4b7755a26abe628fcf4f2e", null ],
+      [ "BEHAVIOUR_MAX_SPEED", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81a3cc89471059d0316076cadb1bd30b67f", null ]
     ] ]
 ];

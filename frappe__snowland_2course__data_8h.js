@@ -78,9 +78,9 @@ var frappe__snowland_2course__data_8h =
     [ "d_course_frappe_snowland_snowman_body", "frappe__snowland_2course__data_8h.html#a40711ac3af3fcf73085aeaf36d0ff08c", null ],
     [ "d_course_frappe_snowland_snowman_head", "frappe__snowland_2course__data_8h.html#af09ec38b8b1d76101b17a1a3f89429d4", null ],
     [ "d_course_frappe_snowland_snowman_tlut", "frappe__snowland_2course__data_8h.html#aad1314d8adcace5f54636ac2e10f468b", null ],
+    [ "d_course_frappe_snowland_track_waypoints", "frappe__snowland_2course__data_8h.html#a6dba788d3500c5b3630a8514f4eff32b", null ],
     [ "d_course_frappe_snowland_tree_spawns", "frappe__snowland_2course__data_8h.html#a948cfe11cf0ba7293b9c217d1a1ed2f5", null ],
     [ "d_course_frappe_snowland_tree_tlut", "frappe__snowland_2course__data_8h.html#a1dfb144d4112aa154f9a46f1f713892c", null ],
-    [ "d_course_frappe_track_waypoints", "frappe__snowland_2course__data_8h.html#a45a67db3b5ec1669f74fb71e00910059", null ],
-    [ "d_course_frappe_unknown_waypoints", "frappe__snowland_2course__data_8h.html#a172d2700c0e767d88d020491da4cf820", null ],
+    [ "d_course_frappe_snowland_unknown_waypoints", "frappe__snowland_2course__data_8h.html#a9555a9cd71c69634f338f34549378c96", null ],
     [ "d_frappe_snowland_tree", "frappe__snowland_2course__data_8h.html#a6aad8249da4943474760066d6d82ce9b", null ]
 ];

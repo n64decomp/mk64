@@ -3,8 +3,6 @@ var dir_00af227302e88d94a0c5bc4ff969c991 =
     [ "camera_junk.c", "camera__junk_8c.html", "camera__junk_8c" ],
     [ "ceremony_and_credits.c", "ceremony__and__credits_8c.html", "ceremony__and__credits_8c" ],
     [ "ceremony_and_credits.h", "ceremony__and__credits_8h.html", "ceremony__and__credits_8h" ],
-    [ "ceremony_data.c", "ceremony__data_8c.html", "ceremony__data_8c" ],
-    [ "ceremony_data.h", "ceremony__data_8h.html", "ceremony__data_8h" ],
     [ "code_80280000.c", "code__80280000_8c.html", "code__80280000_8c" ],
     [ "code_80280000.h", "code__80280000_8h.html", "code__80280000_8h" ],
     [ "code_80281780.c", "code__80281780_8c.html", "code__80281780_8c" ],

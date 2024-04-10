@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['path_5fspawn_5fdata_2ec_0',['path_spawn_data.c',['../path__spawn__data_8c.html',1,'']]],
-  ['path_5fspawn_5fdata_2eh_1',['path_spawn_data.h',['../path__spawn__data_8h.html',1,'']]],
+  ['path_5fspawn_5fmetadata_2ec_0',['path_spawn_metadata.c',['../path__spawn__metadata_8c.html',1,'']]],
+  ['path_5fspawn_5fmetadata_2eh_1',['path_spawn_metadata.h',['../path__spawn__metadata_8h.html',1,'']]],
   ['paths_2emd_2',['paths.md',['../paths_8md.html',1,'']]],
   ['piint_2eh_3',['piint.h',['../piint_8h.html',1,'']]],
   ['playback_2ec_4',['playback.c',['../playback_8c.html',1,'']]],

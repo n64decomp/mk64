@@ -17,5 +17,5 @@ var searchData=
   ['_5f_5fosthreadprofile_5fs_14',['__OSThreadprofile_s',['../struct____OSThreadprofile__s.html',1,'']]],
   ['_5f_5fosthreadtail_15',['__osThreadTail',['../struct____osThreadTail.html',1,'']]],
   ['_5f_5fostranxinfo_16',['__OSTranxInfo',['../struct____OSTranxInfo.html',1,'']]],
-  ['_5fstruct_5fd_5f800dd9d0_5f0x10_17',['_struct_D_800DD9D0_0x10',['../struct__struct__D__800DD9D0__0x10.html',1,'']]]
+  ['_5fstruct_5fgcoursepathsizes_5f0x10_17',['_struct_gCoursePathSizes_0x10',['../struct__struct__gCoursePathSizes__0x10.html',1,'']]]
 ];

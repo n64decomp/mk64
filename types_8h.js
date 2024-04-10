@@ -1,5 +1,6 @@
 var types_8h =
 [
+    [ "KartAIBehaviour", "structKartAIBehaviour.html", "structKartAIBehaviour" ],
     [ "SPTask", "structSPTask.html", "structSPTask" ],
     [ "VblankHandler", "structVblankHandler.html", "structVblankHandler" ],
     [ "D_80150158", "structD__80150158.html", "structD__80150158" ],

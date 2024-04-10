@@ -126,7 +126,7 @@ $(function(){initNavTree('render__player_8c.html',''); initResizable(); });
 <code>#include &quot;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="player__controller_8h_source.html">player_controller.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="render__objects_8h_source.html">render_objects.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="common__textures_8h_source.html">common_textures.h</a>&quot;</code><br />
+<code>#include &lt;assets/common_data.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="skybox__and__splitscreen_8h_source.html">skybox_and_splitscreen.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="spawn__players_8h_source.html">spawn_players.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -184,10 +184,10 @@ Functions</h2></td></tr>
 <tr class="separator:a7a2fa9002855150b2e53c5edcee834c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0b657a736763c8b33412ed9d3111a61" id="r_af0b657a736763c8b33412ed9d3111a61"><td class="memItemLeft" align="right" valign="top"><a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0b657a736763c8b33412ed9d3111a61">mtxf_scale2</a> (<a class="el" href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">arg0</a>, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">scale</a>)</td></tr>
 <tr class="separator:af0b657a736763c8b33412ed9d3111a61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9ca9ce5c8b3c16f4013681d321965d4" id="r_ad9ca9ce5c8b3c16f4013681d321965d4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9ca9ce5c8b3c16f4013681d321965d4">func_80021FF8</a> (Mtx *<a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">arg0</a>, <a class="el" href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">arg1</a>)</td></tr>
-<tr class="separator:ad9ca9ce5c8b3c16f4013681d321965d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0bbe78d8dc64400663d3702812f9ad8" id="r_af0bbe78d8dc64400663d3702812f9ad8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0bbe78d8dc64400663d3702812f9ad8">convert_to_fixed_point_matrix</a> (Mtx *<a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">fixedPointMatrix</a>, <a class="el" href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">arg1</a>)</td></tr>
-<tr class="separator:af0bbe78d8dc64400663d3702812f9ad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a196985b7759b42df6514dd0ec7fc64a7" id="r_a196985b7759b42df6514dd0ec7fc64a7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a196985b7759b42df6514dd0ec7fc64a7">failed_fixed_point_matrix_conversion</a> (Mtx *<a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">dest</a>, <a class="el" href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">src</a>)</td></tr>
+<tr class="separator:a196985b7759b42df6514dd0ec7fc64a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7bf9484e155990f138e03ae5339fc84" id="r_ab7bf9484e155990f138e03ae5339fc84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7bf9484e155990f138e03ae5339fc84">convert_to_fixed_point_matrix</a> (Mtx *<a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">dest</a>, <a class="el" href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">src</a>)</td></tr>
+<tr class="separator:ab7bf9484e155990f138e03ae5339fc84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af630bf89117f79abdb4e5edc8c67d00f" id="r_af630bf89117f79abdb4e5edc8c67d00f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#ae8d0c7c2a91a9ac50b499ae49a827f8f">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af630bf89117f79abdb4e5edc8c67d00f">adjust_angle</a> (<a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> *<a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">angle</a>, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">targetAngle</a>, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">step</a>)</td></tr>
 <tr class="separator:af630bf89117f79abdb4e5edc8c67d00f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf37c5a80c77d5ad4b14f3e076289768" id="r_aaf37c5a80c77d5ad4b14f3e076289768"><td class="memItemLeft" align="right" valign="top"><a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf37c5a80c77d5ad4b14f3e076289768">move_s32_towards</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> *<a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">startingValue</a>, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">targetValue</a>, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">somePercent</a>)</td></tr>
@@ -530,8 +530,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="af0bbe78d8dc64400663d3702812f9ad8" name="af0bbe78d8dc64400663d3702812f9ad8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0bbe78d8dc64400663d3702812f9ad8">&#9670;&#160;</a></span>convert_to_fixed_point_matrix()</h2>
+<a id="ab7bf9484e155990f138e03ae5339fc84" name="ab7bf9484e155990f138e03ae5339fc84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7bf9484e155990f138e03ae5339fc84">&#9670;&#160;</a></span>convert_to_fixed_point_matrix()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -539,20 +539,55 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname"><a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">void</a> convert_to_fixed_point_matrix </td>
           <td>(</td>
-          <td class="paramtype">Mtx *</td>          <td class="paramname"><span class="paramname"><em>fixedPointMatrix</em>, </span></td>
+          <td class="paramtype">Mtx *</td>          <td class="paramname"><span class="paramname"><em>dest</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a></td>          <td class="paramname"><span class="paramname"><em>src</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Takes a floating-point matrix and converts it to an s15.16 internal matrix. Each Mtx entry is a size of s32 that holds two values. The first 16 entries hold only the integer values and the second 16 entries hold only the decimal (fractional) parts. In simpler words, the integer and decimal gets split up and stored in their own section. Mtx is setup this way due to hardware restrictions of the n64 or as an optimization.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">Mtx</td><td>A new internal fixed-point matrix. </td></tr>
+    <tr><td class="paramname">Mat4</td><td>An array of f32 Mat4 to Mtx explanation: <a href="https://blarg.ca/2020/10/11/fixed-point-math">https://blarg.ca/2020/10/11/fixed-point-math</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="render__player_8c_ab7bf9484e155990f138e03ae5339fc84_cgraph.svg" width="315" height="51"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_af0bbe78d8dc64400663d3702812f9ad8_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_ab7bf9484e155990f138e03ae5339fc84_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
+
+</div>
+</div>
+<a id="a196985b7759b42df6514dd0ec7fc64a7" name="a196985b7759b42df6514dd0ec7fc64a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a196985b7759b42df6514dd0ec7fc64a7">&#9670;&#160;</a></span>failed_fixed_point_matrix_conversion()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">void</a> failed_fixed_point_matrix_conversion </td>
+          <td>(</td>
+          <td class="paramtype">Mtx *</td>          <td class="paramname"><span class="paramname"><em>dest</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a></td>          <td class="paramname"><span class="paramname"><em>src</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This function writes a fixed-point value to each Mtx entry. This is not how the Mtx struct works. The first half of Mtx only holds s16 whole numbers and the second half holds the s16 decimal (fractional) parts. See <a class="el" href="#ab7bf9484e155990f138e03ae5339fc84">convert_to_fixed_point_matrix()</a> for correct calculations. <a class="el" href="structNote.html">Note</a> that each Mtx entry is the size of s32. This means each Mtx entry holds two s16 values. The first sixteen entries contain only the integer parts and the second sixteen entries hold only the decimal (fractional) parts. </p>
 
 </div>
 </div>
@@ -890,27 +925,6 @@ Here is the caller graph for this function:</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="common__structs_8h.html#a5290523279339ea495248ab3a36cb46e">Vec3f</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad9ca9ce5c8b3c16f4013681d321965d4" name="ad9ca9ce5c8b3c16f4013681d321965d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9ca9ce5c8b3c16f4013681d321965d4">&#9670;&#160;</a></span>func_80021FF8()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">void</a> func_80021FF8 </td>
-          <td>(</td>
-          <td class="paramtype">Mtx *</td>          <td class="paramname"><span class="paramname"><em>arg0</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1292,7 +1306,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="render__player_8c_a3893e79b6c4fd173753cb57c6bf92014_cgraph.svg" width="450" height="280"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="render__player_8c_a3893e79b6c4fd173753cb57c6bf92014_cgraph.svg" width="486" height="282"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -1443,7 +1457,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="render__player_8c_aa5ec392a5a06ee62b2cec28e359e8d6d_cgraph.svg" width="434" height="302"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="render__player_8c_aa5ec392a5a06ee62b2cec28e359e8d6d_cgraph.svg" width="470" height="302"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -1557,7 +1571,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="render__player_8c_a2ae528e3b691881f1bc4df77658f3b0d_cgraph.svg" width="423" height="302"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="render__player_8c_a2ae528e3b691881f1bc4df77658f3b0d_cgraph.svg" width="459" height="302"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -1790,7 +1804,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="render__player_8c_a4035cfe669a28e6111b3c42874788d3c_cgraph.svg" width="484" height="224"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="render__player_8c_a4035cfe669a28e6111b3c42874788d3c_cgraph.svg" width="520" height="224"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
@@ -1929,7 +1943,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="render__player_8c_afae2325d39290e681f161f6b895ea2c7_cgraph.svg" width="496" height="278"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="render__player_8c_afae2325d39290e681f161f6b895ea2c7_cgraph.svg" width="532" height="279"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>

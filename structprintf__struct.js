@@ -16,6 +16,6 @@ var structprintf__struct =
     [ "u16", "structprintf__struct.html#a7bce4a99e42b25d2e68a9056fe8218a3", null ],
     [ "u32", "structprintf__struct.html#a08bc3d30bee256739a79e8954b52a291", null ],
     [ "u64", "structprintf__struct.html#ac64bdf8955286ae83a1e8fe7a8ca01ac", null ],
-    [ "value", "structprintf__struct.html#a26271241be6e5e863e4c9cb409af8807", null ],
+    [ "value", "structprintf__struct.html#aa774266dc6d7d9332bce2e697db0c936", null ],
     [ "width", "structprintf__struct.html#ad8c9b5c908f18b8933081ae4b8f19b3a", null ]
 ];

@@ -14,5 +14,6 @@ var searchData=
   ['is_5fksegdm_11',['IS_KSEGDM',['../R4300_8h.html#a274e7c06ec9f2be2cdea1f1543df461f',1,'R4300.h']]],
   ['is_5fkuseg_12',['IS_KUSEG',['../R4300_8h.html#a38e0c2a71d6888ac2c9e0067c8897ec9',1,'R4300.h']]],
   ['is_5fseq_5fload_5fcomplete_13',['IS_SEQ_LOAD_COMPLETE',['../heap_8h.html#a89d304028cfde81e97b04942a690cd6c',1,'heap.h']]],
-  ['is_5fsequence_5fchannel_5fvalid_14',['IS_SEQUENCE_CHANNEL_VALID',['../load_8h.html#af646ba99f84076d7eea3b754fdbccc5b',1,'load.h']]]
+  ['is_5fsequence_5fchannel_5fvalid_14',['IS_SEQUENCE_CHANNEL_VALID',['../load_8h.html#af646ba99f84076d7eea3b754fdbccc5b',1,'load.h']]],
+  ['itofix_15',['ITOFIX',['../macros_8h.html#a38dd3cc47348bf50cffa34352cc93156',1,'macros.h']]]
 ];

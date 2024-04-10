@@ -32,7 +32,7 @@ var searchData=
   ['initparams_29',['initParams',['../structCeremonyActor.html#a277ad2eda07a8de516f07337576809dd',1,'CeremonyActor::initParams'],['../structFirework.html#a1cbb7f2b612146c27cb394c724994c1a',1,'Firework::initParams']]],
   ['inode_30',['inode',['../struct____OSInodeCache.html#a3733820db9596ac6724b29785d78d7f4',1,'__OSInodeCache']]],
   ['inode_5fpage_31',['inode_page',['../struct____OSInode.html#ab913e55c3af6099c919ece81349eb21f',1,'__OSInode']]],
-  ['inode_5ft_32',['inode_t',['../union____OSInodeUnit.html#a281e47e65a6a5cbd66ab6697398e700f',1,'__OSInodeUnit']]],
+  ['inode_5ft_32',['inode_t',['../union____OSInodeUnit.html#a37d1ea1ca6343bea9b704017f5c4fd54',1,'__OSInodeUnit']]],
   ['instarray_33',['instArray',['../structALBank__s.html#a51e528879a570e855363b7a47d00acaf',1,'ALBank_s']]],
   ['instcount_34',['instCount',['../structALBank__s.html#a09c8b064e5f89189e117b0927941b2a0',1,'ALBank_s']]],
   ['instorwave_35',['instOrWave',['../structSequenceChannel.html#a466eb1ccc073069c700d46f829b16b54',1,'SequenceChannel::instOrWave'],['../structSequenceChannelLayer.html#a86bc9dd7a08b9cbae7a936c25bd86caa',1,'SequenceChannelLayer::instOrWave']]],
@@ -49,11 +49,10 @@ var searchData=
   ['iscrossingtriggeredbyindex_46',['isCrossingTriggeredByIndex',['../code__80005FD0_8c.html#a83af9aa3b6352cd4a408bb0525bf442f',1,'isCrossingTriggeredByIndex:&#160;code_80005FD0.c'],['../code__80005FD0_8h.html#ab6a6895317f9631377ee497021ad478a',1,'isCrossingTriggeredByIndex:&#160;code_80005FD0.c']]],
   ['isflycam_47',['isFlycam',['../render__courses_8c.html#aa9da1128ba108a869ae75449671e29f7',1,'render_courses.c']]],
   ['issyntheticwave_48',['isSyntheticWave',['../structNoteSubEu.html#a891e0905ad10eafcf3e3e4e2207fc840',1,'NoteSubEu']]],
-  ['itemboxquestionmarkmodel_49',['itemBoxQuestionMarkModel',['../common__textures_8c.html#a45ca5bd71f521c16b12d0ac9bccfdc4e',1,'common_textures.c']]],
-  ['itemboxx_50',['itemBoxX',['../structhud__player.html#af2a0d833871a70fd4442d2db87a5be01',1,'hud_player']]],
-  ['itemboxy_51',['itemBoxY',['../structhud__player.html#aac5469899e53712fb9ab5f6e4c377d20',1,'hud_player']]],
-  ['itemdisplay_52',['itemDisplay',['../structObjects.html#a2abaf2f9fa2d97a411b7d3cfc3f27657',1,'Objects::itemDisplay'],['../structItemWindowObjects.html#a9bf86d15b50c0f1da94354b35b51b541',1,'ItemWindowObjects::itemDisplay']]],
-  ['itemdisplaystate_53',['itemDisplayState',['../structItemWindowObjects.html#a0f94d734479ccdaa3e0c805eee15ade5',1,'ItemWindowObjects']]],
-  ['itemoverride_54',['itemOverride',['../structhud__player.html#aba79e1f46efa9fc3ee5976c1e05b5033',1,'hud_player']]],
-  ['items_55',['items',['../structSynthesisReverb.html#a0b9105040972d04171ddea3a369d14fb',1,'SynthesisReverb']]]
+  ['itemboxx_49',['itemBoxX',['../structhud__player.html#af2a0d833871a70fd4442d2db87a5be01',1,'hud_player']]],
+  ['itemboxy_50',['itemBoxY',['../structhud__player.html#aac5469899e53712fb9ab5f6e4c377d20',1,'hud_player']]],
+  ['itemdisplay_51',['itemDisplay',['../structObjects.html#a2abaf2f9fa2d97a411b7d3cfc3f27657',1,'Objects::itemDisplay'],['../structItemWindowObjects.html#a9bf86d15b50c0f1da94354b35b51b541',1,'ItemWindowObjects::itemDisplay']]],
+  ['itemdisplaystate_52',['itemDisplayState',['../structItemWindowObjects.html#a0f94d734479ccdaa3e0c805eee15ade5',1,'ItemWindowObjects']]],
+  ['itemoverride_53',['itemOverride',['../structhud__player.html#aba79e1f46efa9fc3ee5976c1e05b5033',1,'hud_player']]],
+  ['items_54',['items',['../structSynthesisReverb.html#a0b9105040972d04171ddea3a369d14fb',1,'SynthesisReverb']]]
 ];

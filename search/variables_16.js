@@ -2,7 +2,7 @@ var searchData=
 [
   ['v0_0',['v0',['../struct____OSThreadContext.html#ae15b802ae8eb0917a7745406577e358f',1,'__OSThreadContext']]],
   ['v1_1',['v1',['../struct____OSThreadContext.html#a602fee582a1f7cd96f4b68784847552d',1,'__OSThreadContext']]],
-  ['value_2',['value',['../structAudioListItem.html#ab838a8bb1d7648057b666190a9ee6108',1,'AudioListItem::value'],['../structprintf__struct.html#a26271241be6e5e863e4c9cb409af8807',1,'printf_struct::value']]],
+  ['value_2',['value',['../structAudioListItem.html#ab838a8bb1d7648057b666190a9ee6108',1,'AudioListItem::value'],['../structprintf__struct.html#aa774266dc6d7d9332bce2e697db0c936',1,'printf_struct::value']]],
   ['variant_3',['variant',['../structPalmTree.html#a8b06b5727e27aac50742e6e946840476',1,'PalmTree']]],
   ['vblanktimes_4',['vblankTimes',['../structProfilerFrameData.html#a1095d8b90b744ccc106dcaafa4ef98ad',1,'ProfilerFrameData']]],
   ['vburst_5',['vBurst',['../structOSViFieldRegs.html#a03e72a4c383fe134bca88037972b4669',1,'OSViFieldRegs']]],

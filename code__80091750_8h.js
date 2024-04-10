@@ -356,9 +356,6 @@ var code__80091750_8h =
     [ "D_800E74A8", "code__80091750_8h.html#a2de048c4d786d92eba25a95f190fa128", null ],
     [ "D_800E74D0", "code__80091750_8h.html#adeffa726e05a2e717c14c0e27ff8ff8f", null ],
     [ "D_800E74E8", "code__80091750_8h.html#a3fafce9d9ab9bfb4b7369aacdf3182db", null ],
-    [ "D_800E7524", "code__80091750_8h.html#aed32090fa69a109a5856252a7ad331f6", null ],
-    [ "D_800E7574", "code__80091750_8h.html#a5e6d2a810f388aeb11e14d3ca1b2757f", null ],
-    [ "D_800E75C4", "code__80091750_8h.html#a2f55af900c7205684a4a9b9f78ba210a", null ],
     [ "D_800E7678", "code__80091750_8h.html#a9ecd73bec437a3041b47fd017f4b0b88", null ],
     [ "D_800E76A8", "code__80091750_8h.html#a4b57270243f9992944062936980fab3b", null ],
     [ "D_800E76CC", "code__80091750_8h.html#a06810e8b4b7f60b61c8efd1b06e0aee3", null ],
@@ -374,7 +371,6 @@ var code__80091750_8h =
     [ "D_800E77A8", "code__80091750_8h.html#ae622aec1c3012250963d9dd6d7dad33e", null ],
     [ "D_800E77B4", "code__80091750_8h.html#a7d9fef64a470d6e668a3de4549956e9a", null ],
     [ "D_800E77D8", "code__80091750_8h.html#ad329122e39fb3c9ee9bf4fc129622e0e", null ],
-    [ "D_800E77E4", "code__80091750_8h.html#afeffc42e678343b991a93f79e431628e", null ],
     [ "D_800E7834", "code__80091750_8h.html#a074829079e4d570cf949e95c52dcf2e8", null ],
     [ "D_800E7840", "code__80091750_8h.html#ac214c016e999d4ce33e0b9d27cbb7307", null ],
     [ "D_800E7848", "code__80091750_8h.html#ad84928918f9caae0dfb3b3bacbf759c8", null ],
@@ -503,6 +499,9 @@ var code__80091750_8h =
     [ "gControllerPak1FileNote", "code__80091750_8h.html#aa47e3c2c3ab68419ca175bc313f4a627", null ],
     [ "gControllerPak1NumPagesFree", "code__80091750_8h.html#a12c03b641fd45c272fdcf01c3988304b", null ],
     [ "gControllerPak2FileNote", "code__80091750_8h.html#a5585e4292b7d43e9b9dfefe83cc75dc4", null ],
+    [ "gCourseNames", "code__80091750_8h.html#a3097aac674e080c6482f6405a8c70a5b", null ],
+    [ "gCourseNamesDup", "code__80091750_8h.html#a421a808b522f8cfd6d4c510a673ccd1e", null ],
+    [ "gCourseNamesDup2", "code__80091750_8h.html#ac81f136514839743e17460c6761afc9c", null ],
     [ "gCupNames", "code__80091750_8h.html#a073ba661bd0287e1793a08725e0ddb73", null ],
     [ "gCupSelectionByCourseId", "code__80091750_8h.html#afc9a25111b1dc035db0bf70ffff56592", null ],
     [ "gCycleFlashMenu", "code__80091750_8h.html#a7b555340bd4ad3fc1e7ac4bf81d2a228", null ],
@@ -520,5 +519,6 @@ var code__80091750_8h =
     [ "gPerCupIndexByCourseId", "code__80091750_8h.html#adeb4a71f76d12f6eb8fe0deab3b20c75", null ],
     [ "gSoundModeNames", "code__80091750_8h.html#aa191ed9cddebe50ddf2f7d7b36d24ce1", null ],
     [ "gTextColor", "code__80091750_8h.html#a61b1a0c8ec40ebfa8acc96de6a3d7036", null ],
-    [ "gTextPauseButton", "code__80091750_8h.html#a7c879c17a0a31d05a74483493cd53ea5", null ]
+    [ "gTextPauseButton", "code__80091750_8h.html#a7c879c17a0a31d05a74483493cd53ea5", null ],
+    [ "sCourseLengths", "code__80091750_8h.html#a8018f234e3de3f14d487cb48c7db6676", null ]
 ];

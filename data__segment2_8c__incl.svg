@@ -46,7 +46,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 1797;
+var viewWidth = 1791;
 var viewHeight = 522;
 var sectionId = 'dynsection-0';
 </script>
@@ -156,9 +156,9 @@ var sectionId = 'dynsection-0';
 <!-- Node34 -->
 <g id="Node000034" class="node">
 <title>Node34</title>
-<g id="a_Node000034"><a xlink:href="startup__logo_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1789,-459 1661,-459 1661,-440 1789,-440 1789,-459"/>
-<text text-anchor="middle" x="1725" y="-447" font-family="Helvetica,sans-Serif" font-size="10.00">src/data/startup_logo.h</text>
+<g id="a_Node000034"><a xlink:title=" ">
+<polygon fill="#e0e0e0" stroke="#999999" points="1782.5,-459 1661.5,-459 1661.5,-440 1782.5,-440 1782.5,-459"/>
+<text text-anchor="middle" x="1722" y="-447" font-family="Helvetica,sans-Serif" font-size="10.00">assets/startup_logo.h</text>
 </a>
 </g>
 </g>
@@ -166,8 +166,8 @@ var sectionId = 'dynsection-0';
 <g id="edge62_Node000001_Node000034" class="edge">
 <title>Node1&#45;&gt;Node34</title>
 <g id="a_edge62_Node000001_Node000034"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1599.94,-494.98C1624.56,-486.23 1663.12,-472.51 1690.92,-462.62"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1692.38,-465.82 1700.62,-459.17 1690.03,-459.22 1692.38,-465.82"/>
+<path fill="none" stroke="#63b8ff" d="M1599.46,-494.98C1623.58,-486.23 1661.37,-472.51 1688.6,-462.62"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1689.91,-465.87 1698.12,-459.17 1687.52,-459.29 1689.91,-465.87"/>
 </a>
 </g>
 </g>

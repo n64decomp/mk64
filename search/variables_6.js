@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['f_0',['f',['../unionfu.html#a96f8b185386633ff7d9ef306d3a9cc20',1,'fu::f'],['../union____OSfp.html#a93c3eab598908937bad02c43f10056c4',1,'__OSfp::f']]],
+  ['f_0',['f',['../unionfu.html#a96f8b185386633ff7d9ef306d3a9cc20',1,'fu::f'],['../union____OSfp.html#aad7ba28b3e6aa7495eb9f9e73f5bd064',1,'__OSfp::f']]],
   ['f64_1',['f64',['../structprintf__struct.html#a3dcc486f96e13521dde5712ba1585a37',1,'printf_struct']]],
   ['f_5feven_2',['f_even',['../union____OSfp.html#aa1b92e78cc62bfa671d55b4f08a42f52',1,'__OSfp']]],
   ['f_5fodd_3',['f_odd',['../union____OSfp.html#a75305f2336958086f4304df0b367ded9',1,'__OSfp']]],

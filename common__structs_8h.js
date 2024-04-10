@@ -21,8 +21,10 @@ var common__structs_8h =
     [ "Mat3", "common__structs_8h.html#af30b552f88edd02ed3a72b3dd2467544", null ],
     [ "Mat4", "common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005", null ],
     [ "Vec3f", "common__structs_8h.html#a5290523279339ea495248ab3a36cb46e", null ],
+    [ "Vec3iu", "common__structs_8h.html#acae9cd4e955edf4d0d8a7f03b042c7db", null ],
     [ "Vec3s", "common__structs_8h.html#a95eb48a2f3630571bea260858dd23e92", null ],
     [ "Vec3su", "common__structs_8h.html#a8cbf328ed34b2520a6f97cee9677c063", null ],
+    [ "Vec4f", "common__structs_8h.html#aa9446b0f4d1af8a6823e90015d37b030", null ],
     [ "Vec4s", "common__structs_8h.html#a4bb48028df2f1919a4ee3cc3cc1ee8ea", null ],
     [ "COURSES", "common__structs_8h.html#acf250ad4ca05ca435a61203c41d4ca88", [
       [ "COURSE_MARIO_RACEWAY", "common__structs_8h.html#acf250ad4ca05ca435a61203c41d4ca88a1013d9dfd3dc6f49c3dc2b35ce6df371", null ],

@@ -356,7 +356,7 @@ var searchData=
   ['_5fspaces_353',['_spaces',['../__Printf_8c.html#a4d0d03ac98a65cf288e4c2ce265e7094',1,'_Printf.c']]],
   ['_5fstartuplogosegmentromend_354',['_startupLogoSegmentRomEnd',['../segments_8h.html#a38d4f923742f7bc3032611ace82b8afe',1,'segments.h']]],
   ['_5fstartuplogosegmentromstart_355',['_startupLogoSegmentRomStart',['../segments_8h.html#a1c95b2354ca5fbdfcf205d2bbd6c5084',1,'segments.h']]],
-  ['_5fstruct_5fd_5f800dd9d0_5f0x10_356',['_struct_D_800DD9D0_0x10',['../struct__struct__D__800DD9D0__0x10.html',1,'']]],
+  ['_5fstruct_5fgcoursepathsizes_5f0x10_356',['_struct_gCoursePathSizes_0x10',['../struct__struct__gCoursePathSizes__0x10.html',1,'']]],
   ['_5ftextures_5f0asegmentromstart_357',['_textures_0aSegmentRomStart',['../code__80091750_8h.html#a712673e1d2ef98b39ae19e4a77029b92',1,'code_80091750.h']]],
   ['_5ftextures_5f0bsegmentromstart_358',['_textures_0bSegmentRomStart',['../code__80091750_8h.html#a8ed0f29662f321434fe35c68a50d6a5b',1,'code_80091750.h']]],
   ['_5ftoads_5fturnpike_5fvertexsegmentromend_359',['_toads_turnpike_vertexSegmentRomEnd',['../courseTable_8h.html#a091e2369d2a8ff2b740d988c46e45c1e',1,'courseTable.h']]],

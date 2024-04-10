@@ -129,19 +129,24 @@ $(function(){initNavTree('code__80091750_8c.html',''); initResizable(); });
 <code>#include &quot;<a class="el" href="external_8h_source.html">audio/external.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="render__objects_8h_source.html">render_objects.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="staff__ghosts_8h_source.html">staff_ghosts.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="common__textures_8h_source.html">common_textures.h</a>&quot;</code><br />
+<code>#include &lt;assets/common_data.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="textures_8h_source.html">textures.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="math__util_8h_source.html">math_util.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="save__data_8h_source.html">save_data.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="podium__ceremony__actors_8h_source.html">podium_ceremony_actors.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="skybox__and__splitscreen_8h_source.html">skybox_and_splitscreen.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="startup__logo_8h_source.html">src/data/startup_logo.h</a>&quot;</code><br />
+<code>#include &lt;assets/startup_logo.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="buffers_8h_source.html">buffers.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="race__logic_8h_source.html">racing/race_logic.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__80281C40_8h_source.html">ending/code_80281C40.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="spawn__players_8h_source.html">spawn_players.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="render__player_8h_source.html">render_player.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
+<code>#include &quot;assets/course_metadata/gCourseNames.inc.c&quot;</code><br />
+<code>#include &quot;assets/course_metadata/gCourseDebugNames.inc.c&quot;</code><br />
+<code>#include &quot;assets/course_metadata/gPerCupIndexByCourseId.inc.c&quot;</code><br />
+<code>#include &quot;assets/course_metadata/gCupSelectionByCourseId.inc.c&quot;</code><br />
+<code>#include &quot;assets/course_metadata/sCourseLengths.inc.c&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for code_80091750.c:</div>
 <div class="dyncontent">
@@ -898,12 +903,12 @@ Variables</h2></td></tr>
 <tr class="separator:a8616210d85b0010d7fdf1274f0d6454f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a073ba661bd0287e1793a08725e0ddb73" id="r_a073ba661bd0287e1793a08725e0ddb73"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a073ba661bd0287e1793a08725e0ddb73">gCupNames</a> []</td></tr>
 <tr class="separator:a073ba661bd0287e1793a08725e0ddb73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed32090fa69a109a5856252a7ad331f6" id="r_aed32090fa69a109a5856252a7ad331f6"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed32090fa69a109a5856252a7ad331f6">D_800E7524</a> []</td></tr>
-<tr class="separator:aed32090fa69a109a5856252a7ad331f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e6d2a810f388aeb11e14d3ca1b2757f" id="r_a5e6d2a810f388aeb11e14d3ca1b2757f"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e6d2a810f388aeb11e14d3ca1b2757f">D_800E7574</a> []</td></tr>
-<tr class="separator:a5e6d2a810f388aeb11e14d3ca1b2757f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f55af900c7205684a4a9b9f78ba210a" id="r_a2f55af900c7205684a4a9b9f78ba210a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f55af900c7205684a4a9b9f78ba210a">D_800E75C4</a> []</td></tr>
-<tr class="separator:a2f55af900c7205684a4a9b9f78ba210a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3097aac674e080c6482f6405a8c70a5b" id="r_a3097aac674e080c6482f6405a8c70a5b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3097aac674e080c6482f6405a8c70a5b">gCourseNames</a> []</td></tr>
+<tr class="separator:a3097aac674e080c6482f6405a8c70a5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a421a808b522f8cfd6d4c510a673ccd1e" id="r_a421a808b522f8cfd6d4c510a673ccd1e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a421a808b522f8cfd6d4c510a673ccd1e">gCourseNamesDup</a> []</td></tr>
+<tr class="separator:a421a808b522f8cfd6d4c510a673ccd1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac81f136514839743e17460c6761afc9c" id="r_ac81f136514839743e17460c6761afc9c"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac81f136514839743e17460c6761afc9c">gCourseNamesDup2</a> []</td></tr>
+<tr class="separator:ac81f136514839743e17460c6761afc9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2554d677ca8f96fac36f5b64944ba181" id="r_a2554d677ca8f96fac36f5b64944ba181"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2554d677ca8f96fac36f5b64944ba181">gDebugCourseNames</a> []</td></tr>
 <tr class="separator:a2554d677ca8f96fac36f5b64944ba181"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adeb4a71f76d12f6eb8fe0deab3b20c75" id="r_adeb4a71f76d12f6eb8fe0deab3b20c75"><td class="memItemLeft" align="right" valign="top"><a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">const</a> <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adeb4a71f76d12f6eb8fe0deab3b20c75">gPerCupIndexByCourseId</a> []</td></tr>
@@ -952,8 +957,8 @@ Variables</h2></td></tr>
 <tr class="separator:a7d9fef64a470d6e668a3de4549956e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad329122e39fb3c9ee9bf4fc129622e0e" id="r_ad329122e39fb3c9ee9bf4fc129622e0e"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad329122e39fb3c9ee9bf4fc129622e0e">D_800E77D8</a> [] = &quot;distance&quot;</td></tr>
 <tr class="separator:ad329122e39fb3c9ee9bf4fc129622e0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afeffc42e678343b991a93f79e431628e" id="r_afeffc42e678343b991a93f79e431628e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afeffc42e678343b991a93f79e431628e">D_800E77E4</a> []</td></tr>
-<tr class="separator:afeffc42e678343b991a93f79e431628e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8018f234e3de3f14d487cb48c7db6676" id="r_a8018f234e3de3f14d487cb48c7db6676"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8018f234e3de3f14d487cb48c7db6676">sCourseLengths</a> []</td></tr>
+<tr class="separator:a8018f234e3de3f14d487cb48c7db6676"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a074829079e4d570cf949e95c52dcf2e8" id="r_a074829079e4d570cf949e95c52dcf2e8"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a074829079e4d570cf949e95c52dcf2e8">D_800E7834</a> []</td></tr>
 <tr class="separator:a074829079e4d570cf949e95c52dcf2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac214c016e999d4ce33e0b9d27cbb7307" id="r_ac214c016e999d4ce33e0b9d27cbb7307"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac214c016e999d4ce33e0b9d27cbb7307">D_800E7840</a> []</td></tr>
@@ -1874,7 +1879,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000013">Todo</a></b></dt><dd>These sizes need to be <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">sizeof()</a> for shiftability if possible </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000016">Todo</a></b></dt><dd>These sizes need to be <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">sizeof()</a> for shiftability if possible </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -9943,114 +9948,6 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aed32090fa69a109a5856252a7ad331f6" name="aed32090fa69a109a5856252a7ad331f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed32090fa69a109a5856252a7ad331f6">&#9670;&#160;</a></span>D_800E7524</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char* D_800E7524[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    <span class="stringliteral">&quot;mario raceway&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;choco mountain&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;bowser&#39;s castle&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;banshee boardwalk&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;yoshi valley&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;frappe snowland&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;koopa troopa beach&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;royal raceway&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;luigi raceway&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;moo moo farm&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;toad&#39;s turnpike&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;kalimari desert&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;sherbet land&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;rainbow road&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;wario stadium&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;block fort&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;skyscraper&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;double deck&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;d.k.&#39;s jungle parkway&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;big donut&quot;</span>,</div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a5e6d2a810f388aeb11e14d3ca1b2757f" name="a5e6d2a810f388aeb11e14d3ca1b2757f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e6d2a810f388aeb11e14d3ca1b2757f">&#9670;&#160;</a></span>D_800E7574</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char* D_800E7574[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    <span class="stringliteral">&quot;mario raceway&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;choco mountain&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;bowser&#39;s castle&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;banshee boardwalk&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;yoshi valley&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;frappe snowland&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;koopa troopa beach&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;royal raceway&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;luigi raceway&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;moo moo farm&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;toad&#39;s turnpike&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;kalimari desert&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;sherbet land&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;rainbow road&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;wario stadium&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;block fort&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;skyscraper&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;double deck&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;d.k.&#39;s jungle parkway&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;big donut&quot;</span>,</div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a2f55af900c7205684a4a9b9f78ba210a" name="a2f55af900c7205684a4a9b9f78ba210a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f55af900c7205684a4a9b9f78ba210a">&#9670;&#160;</a></span>D_800E75C4</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char* D_800E75C4[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    <span class="stringliteral">&quot;mario raceway&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;choco mountain&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;bowser&#39;s castle&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;banshee boardwalk&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;yoshi valley&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;frappe snowland&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;koopa troopa beach&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;royal raceway&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;luigi raceway&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;moo moo farm&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;toad&#39;s turnpike&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;kalimari desert&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;sherbet land&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;rainbow road&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;wario stadium&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;block fort&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;skyscraper&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;double deck&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;d.k.&#39;s jungle parkway&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;big donut&quot;</span>,</div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a9ecd73bec437a3041b47fd017f4b0b88" name="a9ecd73bec437a3041b47fd017f4b0b88"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9ecd73bec437a3041b47fd017f4b0b88">&#9670;&#160;</a></span>D_800E7678</h2>
 
@@ -10325,42 +10222,6 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="afeffc42e678343b991a93f79e431628e" name="afeffc42e678343b991a93f79e431628e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afeffc42e678343b991a93f79e431628e">&#9670;&#160;</a></span>D_800E77E4</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char* D_800E77E4[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    <span class="stringliteral">&quot;567m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;687m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;777m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;747m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;772m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;734m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;691m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;1025m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;717m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;527m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;1036m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;753m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;756m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;2000m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;1591m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;893m&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line">}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a id="a074829079e4d570cf949e95c52dcf2e8" name="a074829079e4d570cf949e95c52dcf2e8"></a>
@@ -12301,7 +12162,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo</a></b></dt><dd>Move gGfxPool out of <a class="el" href="main_8h.html">main.h</a> </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000014">Todo</a></b></dt><dd>Move gGfxPool out of <a class="el" href="main_8h.html">main.h</a> </dd></dl>
 
 </div>
 </div>
@@ -13037,6 +12898,57 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a3097aac674e080c6482f6405a8c70a5b" name="a3097aac674e080c6482f6405a8c70a5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3097aac674e080c6482f6405a8c70a5b">&#9670;&#160;</a></span>gCourseNames</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* gCourseNames[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line"> </div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a421a808b522f8cfd6d4c510a673ccd1e" name="a421a808b522f8cfd6d4c510a673ccd1e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a421a808b522f8cfd6d4c510a673ccd1e">&#9670;&#160;</a></span>gCourseNamesDup</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* gCourseNamesDup[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line"> </div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac81f136514839743e17460c6761afc9c" name="ac81f136514839743e17460c6761afc9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac81f136514839743e17460c6761afc9c">&#9670;&#160;</a></span>gCourseNamesDup2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* gCourseNamesDup2[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line"> </div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a073ba661bd0287e1793a08725e0ddb73" name="a073ba661bd0287e1793a08725e0ddb73"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a073ba661bd0287e1793a08725e0ddb73">&#9670;&#160;</a></span>gCupNames</h2>
 
@@ -13075,17 +12987,8 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">      <a class="code hl_define" href="defines_8h.html#a117189f1f7c0350b6da903e7f2c3c396">FLOWER_CUP</a>,   <a class="code hl_define" href="defines_8h.html#a117189f1f7c0350b6da903e7f2c3c396">FLOWER_CUP</a>,     <a class="code hl_define" href="defines_8h.html#a60f52c9c490235258c198b78f08b206f">STAR_CUP</a>,  <a class="code hl_define" href="defines_8h.html#ada6d6383411e93a040980738bb86b71f">SPECIAL_CUP</a>,</div>
-<div class="line">     <a class="code hl_define" href="defines_8h.html#ada6d6383411e93a040980738bb86b71f">SPECIAL_CUP</a>,   <a class="code hl_define" href="defines_8h.html#a117189f1f7c0350b6da903e7f2c3c396">FLOWER_CUP</a>, <a class="code hl_define" href="defines_8h.html#a93fcac077b3c397222e8a77235d8a49f">MUSHROOM_CUP</a>,     <a class="code hl_define" href="defines_8h.html#a60f52c9c490235258c198b78f08b206f">STAR_CUP</a>,</div>
-<div class="line">    <a class="code hl_define" href="defines_8h.html#a93fcac077b3c397222e8a77235d8a49f">MUSHROOM_CUP</a>, <a class="code hl_define" href="defines_8h.html#a93fcac077b3c397222e8a77235d8a49f">MUSHROOM_CUP</a>,   <a class="code hl_define" href="defines_8h.html#a117189f1f7c0350b6da903e7f2c3c396">FLOWER_CUP</a>, <a class="code hl_define" href="defines_8h.html#a93fcac077b3c397222e8a77235d8a49f">MUSHROOM_CUP</a>,</div>
-<div class="line">        <a class="code hl_define" href="defines_8h.html#a60f52c9c490235258c198b78f08b206f">STAR_CUP</a>,  <a class="code hl_define" href="defines_8h.html#ada6d6383411e93a040980738bb86b71f">SPECIAL_CUP</a>,     <a class="code hl_define" href="defines_8h.html#a60f52c9c490235258c198b78f08b206f">STAR_CUP</a>,   <a class="code hl_define" href="defines_8h.html#a5d2d991e787a2b20f383bbb0520b4762">BATTLE_CUP</a>,</div>
-<div class="line">      <a class="code hl_define" href="defines_8h.html#a5d2d991e787a2b20f383bbb0520b4762">BATTLE_CUP</a>,   <a class="code hl_define" href="defines_8h.html#a5d2d991e787a2b20f383bbb0520b4762">BATTLE_CUP</a>,  <a class="code hl_define" href="defines_8h.html#ada6d6383411e93a040980738bb86b71f">SPECIAL_CUP</a>,   <a class="code hl_define" href="defines_8h.html#a5d2d991e787a2b20f383bbb0520b4762">BATTLE_CUP</a>,</div>
+<div class="line"> </div>
 <div class="line">}</div>
-<div class="ttc" id="adefines_8h_html_a117189f1f7c0350b6da903e7f2c3c396"><div class="ttname"><a href="defines_8h.html#a117189f1f7c0350b6da903e7f2c3c396">FLOWER_CUP</a></div><div class="ttdeci">#define FLOWER_CUP</div><div class="ttdef"><b>Definition</b> defines.h:154</div></div>
-<div class="ttc" id="adefines_8h_html_a5d2d991e787a2b20f383bbb0520b4762"><div class="ttname"><a href="defines_8h.html#a5d2d991e787a2b20f383bbb0520b4762">BATTLE_CUP</a></div><div class="ttdeci">#define BATTLE_CUP</div><div class="ttdef"><b>Definition</b> defines.h:157</div></div>
-<div class="ttc" id="adefines_8h_html_a60f52c9c490235258c198b78f08b206f"><div class="ttname"><a href="defines_8h.html#a60f52c9c490235258c198b78f08b206f">STAR_CUP</a></div><div class="ttdeci">#define STAR_CUP</div><div class="ttdef"><b>Definition</b> defines.h:155</div></div>
-<div class="ttc" id="adefines_8h_html_a93fcac077b3c397222e8a77235d8a49f"><div class="ttname"><a href="defines_8h.html#a93fcac077b3c397222e8a77235d8a49f">MUSHROOM_CUP</a></div><div class="ttdeci">#define MUSHROOM_CUP</div><div class="ttdoc">Options for gCupSelection There is a &quot;cup&quot; for battle mode, probably so that the battle courses could...</div><div class="ttdef"><b>Definition</b> defines.h:153</div></div>
-<div class="ttc" id="adefines_8h_html_ada6d6383411e93a040980738bb86b71f"><div class="ttname"><a href="defines_8h.html#ada6d6383411e93a040980738bb86b71f">SPECIAL_CUP</a></div><div class="ttdeci">#define SPECIAL_CUP</div><div class="ttdef"><b>Definition</b> defines.h:156</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -13153,26 +13056,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    <span class="stringliteral">&quot;m circuit&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;mountain&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;castle&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;ghost&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;maze&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;snow&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;beach&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;p circuit&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;l circuit&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;farm&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;highway&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;desert&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;sherbet&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;rainbow&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;stadium&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;block&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;skyscraper&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;deck&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;jungle&quot;</span>,</div>
-<div class="line">    <span class="stringliteral">&quot;doughnut&quot;</span>,</div>
+<div class="line"> </div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -13429,11 +13313,7 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    3, 2, 3, 2,</div>
-<div class="line">    1, 1, 2, 2,</div>
-<div class="line">    0, 1, 0, 3,</div>
-<div class="line">    1, 3, 0, 1,</div>
-<div class="line">    3, 2, 0, 0,</div>
+<div class="line"> </div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -13549,6 +13429,23 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a id="a8018f234e3de3f14d487cb48c7db6676" name="a8018f234e3de3f14d487cb48c7db6676"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8018f234e3de3f14d487cb48c7db6676">&#9670;&#160;</a></span>sCourseLengths</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* sCourseLengths[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line"> </div>
+<div class="line">}</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

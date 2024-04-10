@@ -185,7 +185,6 @@ var sherbet__land_2course__data_8c =
     [ "d_course_sherbet_land_penguin_right_foot_model", "sherbet__land_2course__data_8c.html#adde7a0967d3dc8552e4a0d0ebed44e75", null ],
     [ "d_course_sherbet_land_penguin_unknown_model", "sherbet__land_2course__data_8c.html#a00e0dafd4d55d4e6232631c87721cef2", null ],
     [ "d_course_sherbet_land_track_waypoints", "sherbet__land_2course__data_8c.html#add3f8b323bf84106ab78c1f07714189d", null ],
-    [ "d_course_sherbet_land_uknown_waypoints", "sherbet__land_2course__data_8c.html#a61fc204af95268513c4e9a6ee022f0e2", null ],
     [ "d_course_sherbet_land_unk_data1", "sherbet__land_2course__data_8c.html#a85dbcd6dd36d303868ec6a03877c0bfe", null ],
     [ "d_course_sherbet_land_unk_data10", "sherbet__land_2course__data_8c.html#a0019e21246859b478af068f21076bb9f", null ],
     [ "d_course_sherbet_land_unk_data11", "sherbet__land_2course__data_8c.html#aaf0c158b01f2ab36195cccff7a53c3bb", null ],
@@ -198,6 +197,7 @@ var sherbet__land_2course__data_8c =
     [ "d_course_sherbet_land_unk_data7", "sherbet__land_2course__data_8c.html#af497a792f42f1e011c2760186a5af6e9", null ],
     [ "d_course_sherbet_land_unk_data8", "sherbet__land_2course__data_8c.html#a28b6f760d3778cfb880c2c4531a6fc52", null ],
     [ "d_course_sherbet_land_unk_data9", "sherbet__land_2course__data_8c.html#a383e6d9d9fb61907811472b801fbfb3d", null ],
+    [ "d_course_sherbet_land_unknown_waypoints", "sherbet__land_2course__data_8c.html#a824e44719c3645ad684d7a60bb6678c9", null ],
     [ "d_course_sherbet_land_var", "sherbet__land_2course__data_8c.html#a2ca31b00bcbec4d2971ff3bf6acf9d8f", null ],
     [ "d_course_sherbet_land_var2", "sherbet__land_2course__data_8c.html#af1cf48eee5d3afb621bb3cf760101876", null ],
     [ "wut", "sherbet__land_2course__data_8c.html#a9eeed027c0accdad88ef82b59706956f", null ]

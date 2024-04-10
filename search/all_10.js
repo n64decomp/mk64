@@ -61,7 +61,7 @@ var searchData=
   ['null_58',['NULL',['../mbi_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4',1,'NULL:&#160;mbi.h'],['../ultratypes_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4',1,'NULL:&#160;ultratypes.h']]],
   ['null_5fobject_5fid_59',['NULL_OBJECT_ID',['../objects_8h.html#aaef5bbff2b02b834bbec4150c33adcc4',1,'objects.h']]],
   ['nullify_5fdisplaylist_60',['nullify_displaylist',['../collision_8c.html#a6275a3a99f8faf62b7c64d9aeca44c48',1,'nullify_displaylist(uintptr_t addr):&#160;collision.c'],['../collision_8h.html#ad04f3719af9173bf585ec2e0902baebe',1,'nullify_displaylist(uintptr_t):&#160;collision.c']]],
-  ['nullpath_61',['nullPath',['../path__spawn__data_8c.html#ab7676f6772d590fea2b2fd6df03b6a8c',1,'nullPath:&#160;path_spawn_data.c'],['../path__spawn__data_8h.html#ab7676f6772d590fea2b2fd6df03b6a8c',1,'nullPath:&#160;path_spawn_data.c']]],
+  ['nullpath_61',['nullPath',['../path__spawn__metadata_8c.html#ab7676f6772d590fea2b2fd6df03b6a8c',1,'nullPath:&#160;path_spawn_metadata.c'],['../path__spawn__metadata_8h.html#ab7676f6772d590fea2b2fd6df03b6a8c',1,'nullPath:&#160;path_spawn_metadata.c']]],
   ['num_5f1p_5fpassenger_5fcars_62',['NUM_1P_PASSENGER_CARS',['../vehicles_8h.html#a180fece3a8e26cdf6c649546cfabbb62',1,'vehicles.h']]],
   ['num_5f2p_5fpassenger_5fcars_63',['NUM_2P_PASSENGER_CARS',['../vehicles_8h.html#add2a8da8f18ab6c292bac6907059fe55',1,'vehicles.h']]],
   ['num_5factive_5fpaddle_5fboats_64',['NUM_ACTIVE_PADDLE_BOATS',['../vehicles_8h.html#ad57e0cebff8fcbc3488535930f5d01f1',1,'vehicles.h']]],
