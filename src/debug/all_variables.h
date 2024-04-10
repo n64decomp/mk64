@@ -30,7 +30,7 @@
 #include <code_80281780.h>
 #include <code_80281C40.h>
 #include <collision.h>
-#include <assets/common_data.h>
+#include <common_textures.h>
 #include <credits.h>
 #include <data_segment2.h>
 #include <buffers.h>

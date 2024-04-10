@@ -9,7 +9,7 @@
 #include <common_structs.h>
 #include "memory.h"
 #include "camera.h"
-#include <assets/common_data.h>
+#include "common_textures.h"
 #include "render_player.h"
 #include "code_80057C60.h"
 #include "code_80091750.h"
@@ -318,37 +318,52 @@ s32 D_802B8A90[] = {
     0xba001402, 0x00000000, 0xb8000000, 0x00000000,
 };
 
-struct Skybox sSkyColors[] = {
-    #include "assets/course_metadata/sSkyColors.inc.c"
-
+struct Skybox sSkyColors[21] = {
+    {128, 4280, 6136, 216, 7144, 32248},
+    {255, 255, 255, 255, 255, 255},
+    {48, 1544, 49528, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0},
+    {113, 70, 255, 255, 184, 99},
+    {28, 11, 90, 0, 99, 164},
+    {48, 1688, 54136, 216, 7144, 32248},
+    {238, 144, 255, 255, 224, 240},
+    {128, 4280, 6136, 216, 7144, 32248},
+    {0, 18, 255, 197, 211, 255},
+    {0, 2, 94, 209, 65, 23},
+    {195, 231, 255, 255, 0xc0, 0},
+    {128, 4280, 6136, 216, 7144, 32248},
+    {0, 0, 0, 0, 0, 0},
+    {20, 30, 56, 40, 60, 110},
+    {128, 4280, 6136, 216, 7144, 32248},
+    {0, 0, 0, 0, 0, 0},
+    {113, 70, 255, 255, 184, 99},
+    {255, 174, 0, 255, 229, 124},
+    {0, 0, 0, 0, 0, 0},
+    {238, 144, 255, 255, 224, 240},
 };
 
-// struct Skybox sSkyColors[] = {
-//     {128, 4280, 6136, 216, 7144, 32248},
-//     {255, 255, 255, 255, 255, 255},
-//     {48, 1544, 49528, 0, 0, 0},
-//     {0, 0, 0, 0, 0, 0},
-//     {113, 70, 255, 255, 184, 99},
-//     {28, 11, 90, 0, 99, 164},
-//     {48, 1688, 54136, 216, 7144, 32248},
-//     {238, 144, 255, 255, 224, 240},
-//     {128, 4280, 6136, 216, 7144, 32248},
-//     {0, 18, 255, 197, 211, 255},
-//     {0, 2, 94, 209, 65, 23},
-//     {195, 231, 255, 255, 0xc0, 0},
-//     {128, 4280, 6136, 216, 7144, 32248},
-//     {0, 0, 0, 0, 0, 0},
-//     {20, 30, 56, 40, 60, 110},
-//     {128, 4280, 6136, 216, 7144, 32248},
-//     {0, 0, 0, 0, 0, 0},
-//     {113, 70, 255, 255, 184, 99},
-//     {255, 174, 0, 255, 229, 124},
-//     {0, 0, 0, 0, 0, 0},
-//     {238, 144, 255, 255, 224, 240},
-// };
-
-struct Skybox sSkyColors2[] = {
-    #include "assets/course_metadata/sSkyColors2.inc.c"
+struct Skybox D_802B8BCC[21] = {
+    {0, 0, 0, 0, 0, 0},
+    {255, 255, 255, 255, 255, 255},
+    {0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0},
+    {95, 40, 15, 0, 0, 0},
+    {0, 99, 164, 0, 0, 0},
+    {48, 1688, 54136, 0, 0, 0},
+    {255, 224, 240, 0, 0, 0},
+    {216, 7144, 32248, 0, 0, 0},
+    {255, 184, 99, 0, 0, 0},
+    {209, 65, 23, 0, 0, 0},
+    {255, 192, 0, 0, 0, 0},
+    {216, 7144, 32248, 128, 4280, 6136},
+    {0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0},
+    {216, 7144, 32248, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0},
+    {255, 224, 240, 0, 0, 0},
+    {22, 145, 22, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0},
+    {255, 224, 240, 0, 0, 0},
 };
 
 void func_802A450C(Vtx *skybox) {
@@ -400,18 +415,18 @@ void func_802A450C(Vtx *skybox) {
     skybox[3].v.cn[0] = sSkyColors[gCurrentCourseId].unk0;
     skybox[3].v.cn[1] = sSkyColors[gCurrentCourseId].unk2;
     skybox[3].v.cn[2] = sSkyColors[gCurrentCourseId].unk4;
-    skybox[4].v.cn[0] = sSkyColors2[gCurrentCourseId].unk0;
-    skybox[4].v.cn[1] = sSkyColors2[gCurrentCourseId].unk2;
-    skybox[4].v.cn[2] = sSkyColors2[gCurrentCourseId].unk4;
-    skybox[5].v.cn[0] = sSkyColors2[gCurrentCourseId].unk6;
-    skybox[5].v.cn[1] = sSkyColors2[gCurrentCourseId].unk8;
-    skybox[5].v.cn[2] = sSkyColors2[gCurrentCourseId].unkA;
-    skybox[6].v.cn[0] = sSkyColors2[gCurrentCourseId].unk6;
-    skybox[6].v.cn[1] = sSkyColors2[gCurrentCourseId].unk8;
-    skybox[6].v.cn[2] = sSkyColors2[gCurrentCourseId].unkA;
-    skybox[7].v.cn[0] = sSkyColors2[gCurrentCourseId].unk0;
-    skybox[7].v.cn[1] = sSkyColors2[gCurrentCourseId].unk2;
-    skybox[7].v.cn[2] = sSkyColors2[gCurrentCourseId].unk4;
+    skybox[4].v.cn[0] = D_802B8BCC[gCurrentCourseId].unk0;
+    skybox[4].v.cn[1] = D_802B8BCC[gCurrentCourseId].unk2;
+    skybox[4].v.cn[2] = D_802B8BCC[gCurrentCourseId].unk4;
+    skybox[5].v.cn[0] = D_802B8BCC[gCurrentCourseId].unk6;
+    skybox[5].v.cn[1] = D_802B8BCC[gCurrentCourseId].unk8;
+    skybox[5].v.cn[2] = D_802B8BCC[gCurrentCourseId].unkA;
+    skybox[6].v.cn[0] = D_802B8BCC[gCurrentCourseId].unk6;
+    skybox[6].v.cn[1] = D_802B8BCC[gCurrentCourseId].unk8;
+    skybox[6].v.cn[2] = D_802B8BCC[gCurrentCourseId].unkA;
+    skybox[7].v.cn[0] = D_802B8BCC[gCurrentCourseId].unk0;
+    skybox[7].v.cn[1] = D_802B8BCC[gCurrentCourseId].unk2;
+    skybox[7].v.cn[2] = D_802B8BCC[gCurrentCourseId].unk4;
 }
 
 void func_802A487C(Vtx *arg0, UNUSED struct UnkStruct_800DC5EC *arg1, UNUSED s32 arg2, UNUSED s32 arg3, UNUSED f32 *arg4) {
@@ -816,11 +831,7 @@ void render_player_one_2p_screen_vertical(void) {
     UNUSED s32 pad[2];
     u16 perspNorm;
     Mat4 matrix;
-    #ifdef VERSION_EU
     f32 sp9C;
-    #else
-    UNUSED f32 sp9C;
-    #endif
 
     func_802A50EC();
 #ifdef VERSION_EU
@@ -877,11 +888,7 @@ void render_player_two_2p_screen_vertical(void) {
     UNUSED s32 pad[2];
     u16 perspNorm;
     Mat4 matrix;
-    #ifdef VERSION_EU
     f32 sp9C;
-    #else
-    UNUSED f32 sp9C;
-    #endif
 
     func_802A5004();
     init_rdp();

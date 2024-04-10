@@ -3017,7 +3017,7 @@ Gfx d_course_sherbet_land_dl_4B20[] =
 };
 
 // unk 0x4BF8
-TrackWaypoint d_course_sherbet_land_unknown_waypoints[] = {
+TrackWaypoint d_course_sherbet_land_uknown_waypoints[] = {
     {-10, 0, 10, 0},
     {-10, 0, -8, 0},
     {-18, 0, -213, 0},

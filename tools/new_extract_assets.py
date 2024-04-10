@@ -212,7 +212,7 @@ def export_image(baserom, asset, asset_list):
 
     if asset["type"] in ("ci4", "ci8"):
         # This is hightly specific to MK64:
-        # Some TLUT images have a "stitched palette". This means that their palette is actually
+        # Some TLUT images have a "stitched palette". This means that they're palette is actually
         # two smaller palettes stitched together.
         if "stitched_palette" in asset.get("meta", set()):
             palette_file = export_stitched_palette(baserom, asset, asset_list)

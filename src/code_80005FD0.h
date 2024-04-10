@@ -4,7 +4,7 @@
 #include "vehicles.h"
 #include "camera.h"
 #include "waypoints.h"
-#include <assets/common_data.h>
+#include "common_textures.h"
 
 struct struct_801642D8 {
     /* 0x0 */ u16 unk0;

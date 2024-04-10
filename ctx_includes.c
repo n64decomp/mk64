@@ -75,11 +75,11 @@
 #include "src/code_80091440.h"
 #include "src/code_80091750.h"
 #include "src/code_800AF9B0.h"
-#include <assets/common_data.h>
-#include <assets/data_800E45C0.h>
-#include <assets/data_800E8700.h>
+#include "src/common_textures.h"
+#include "src/data/data_800E45C0.h"
+#include "src/data/data_800E8700.h"
 #include "src/data/some_data.h"
-#include "src/data/path_spawn_metadata.h"
+#include "src/data/path_spawn_data.h"
 #include "src/buffers/trig_tables.h"
 #include "src/data_segment2.h"
 #include "src/effects.h"

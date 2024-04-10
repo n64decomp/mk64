@@ -1047,7 +1047,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
         {
             if (btnAndStick & R_JPAD) {
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
-                if (gCurrentCourseId < (NUM_COURSES - 2)) {
+                if (gCurrentCourseId < 0x13) {
                     gCurrentCourseId += 1;
                 } else {
                     gCurrentCourseId = 0;
@@ -1058,7 +1058,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 if (gCurrentCourseId > 0) {
                     gCurrentCourseId -= 1;
                 } else {
-                    gCurrentCourseId = (NUM_COURSES - 2);
+                    gCurrentCourseId = 0x13;
                 }
             }
             if (btnAndStick & U_JPAD) {

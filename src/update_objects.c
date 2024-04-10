@@ -17,7 +17,7 @@
 #include "code_80057C60.h"
 #include "code_8006E9C0.h"
 #include "code_80086E70.h"
-#include <assets/common_data.h>
+#include "common_textures.h"
 #include "audio/external.h"
 #include "sounds.h"
 #include <actors.h>
@@ -28,7 +28,7 @@
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
 #include "courses/all_course_data.h"
-#include <assets/ceremony_data.h>
+#include "src/ending/ceremony_data.h"
 #include "src/ending/ceremony_and_credits.h"
 #include "menus.h"
 #include "data/other_textures.h"

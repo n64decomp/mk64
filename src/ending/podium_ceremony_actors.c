@@ -7,7 +7,7 @@
 #include <common_structs.h>
 #include "main.h"
 #include "memory.h"
-#include <assets/common_data.h>
+#include "common_textures.h"
 #include "render_player.h"
 #include "render_objects.h"
 #include "podium_ceremony_actors.h"

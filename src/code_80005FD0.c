@@ -20,7 +20,7 @@
 #include "code_80057C60.h"
 #include "bomb_kart.h"
 #include "courses/all_course_data.h"
-#include <assets/common_data.h>
+#include "common_textures.h"
 #include "common_structs.h"
 #include "main.h"
 #include "menus.h"
@@ -29,7 +29,7 @@
 #include "ending/podium_ceremony_actors.h"
 #include "spawn_players.h"
 #include "sounds.h"
-#include "data/path_spawn_metadata.h"
+#include "data/path_spawn_data.h"
 
 s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;
@@ -1683,7 +1683,7 @@ void func_80009B60(s32 playerId) {
     f32 athing = 1.5f;
 
     player = &gPlayers[playerId];
-    if ((s32) gKartAICourseMaximumSeparation[gCurrentCourseId] >= 0) {
+    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
         D_80163100[playerId] += 1;
         if (playerId == 0) {
             D_80163378++;
@@ -1955,7 +1955,7 @@ void func_80009B60(s32 playerId) {
                 if (var_a2 < (s16) temp_f6) {
                     var_a2 = temp_f6;
                 }
-                var_v1 = gKartAISteeringSensitivity[gCurrentCourseId];
+                var_v1 = D_800DCA20[gCurrentCourseId];
                 switch (D_801631D8[playerId]) {               /* switch 4; irregular */
                 case 2:                             /* switch 4 */
                     if (D_80163068[playerId] > (0.5f * 1.0f)) {
@@ -2194,7 +2194,7 @@ f32 func_8000B874(f32 posX, f32 posZ, u16 waypointIndex, s32 pathIndex) {
 void func_8000B95C(s32 playerId, u16 waypointIndex, s32 pathIndex) {
     UNUSED Vec3f pad;
     D_80163068[playerId] = 0.0f;
-    if ((s32) gKartAICourseMaximumSeparation[gCurrentCourseId] >= 0) {
+    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
         if ((gPlayers[playerId].type & 0x8000) != 0) {
             D_80163068[playerId] = func_8000B874(gPlayers[playerId].pos[0], gPlayers[playerId].pos[2], waypointIndex, pathIndex);
         }
@@ -2947,7 +2947,7 @@ void set_bomb_kart_spawn_positions(void) {
     BombKartSpawn *temp_s1;
 
     for (var_s3 = 0; var_s3 < NUM_BOMB_KARTS_VERSUS; var_s3++) {
-        temp_s1 = &gBombKartSpawns[gCurrentCourseId][var_s3];
+        temp_s1 = &D_800DCC08[gCurrentCourseId][var_s3];
         switch (gCurrentCourseId) {
         case COURSE_YOSHI_VALLEY:
             startingXPos = temp_s1->startingXPos;
@@ -3432,7 +3432,7 @@ void func_8000F2BC(TrackWaypoint *arg0, size_t size) {
 // Appears to allocate memory for each course.
 void func_8000F2DC(void) {
 
-    struct _struct_gCoursePathSizes_0x10 *ptr = &gCoursePathSizes[gCurrentCourseId];
+    struct _struct_D_800DD9D0_0x10 *ptr = &D_800DD9D0[gCurrentCourseId];
     s32 temp;
     s32 i;
 
@@ -3553,7 +3553,7 @@ void func_8000F628(void) {
         D_80163068[i] = 0.0f;
         D_80163090[i] = 0.0f;
         var_s5 = &D_801634F8[i];
-        var_s5->unkC = gKartAICourseMinimumSeparation[gCurrentCourseId] * (f32) (((i + 1) % 3) - 1);
+        var_s5->unkC = gKartAICourseMinimumWaypointSeparation[gCurrentCourseId] * (f32) (((i + 1) % 3) - 1);
         var_s5->unk4 = var_s5->unkC;
         var_s5->unk0 = 0.0f;
         var_s5->unk8 = 0.015f;
@@ -3678,11 +3678,11 @@ void func_800100F0(s32 pathIndex) {
     s32 i;
 
     // cast required
-    if ((s32)gKartAICourseMaximumSeparation[gCurrentCourseId] >= 0) {
+    if ((s32)gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
         pathDest = D_80164550[pathIndex];
             bInvalidPath = 1;
         if (gCurrentCourseId != COURSE_AWARD_CEREMONY) {
-            var_v0 = process_path_data(pathDest, segmented_to_virtual_dupe_2(gCoursePathTable2[gCurrentCourseId][pathIndex]));
+            var_v0 = process_path_data(pathDest, segmented_to_virtual_dupe_2(D_800DC8D0[gCurrentCourseId][pathIndex]));
             gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
         } else {
             // Course path included in course_data which has already been loaded into memory.
@@ -3729,8 +3729,8 @@ void func_80010218(s32 pathIndex) {
     TrackWaypoint *var_s1;
     TrackWaypoint *var_s2;
 
-    if (((s32) gKartAICourseMaximumSeparation[gCurrentCourseId]) >= 0) {
-        waypointWidth = gKartAICourseMaximumSeparation[gCurrentCourseId];
+    if (((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId]) >= 0) {
+        waypointWidth = gKartAICourseMaximumWaypointSeparation[gCurrentCourseId];
         waypoint = &D_80164550[pathIndex][0];
         var_s1   = &D_80164560[pathIndex][0];
         var_s2   = &D_80164570[pathIndex][0];
@@ -3779,7 +3779,7 @@ f32 func_80010480(s32 pathIndex, u16 waypointIndex) {
     f32 root2;
     f32 root1;
 
-    if ((s32) gKartAICourseMaximumSeparation[gCurrentCourseId] < 0) {
+    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] < 0) {
         return 0.0f;
     }
     waypointCount = gWaypointCountByPathIndex[pathIndex];
@@ -3821,7 +3821,7 @@ void func_800107C4(s32 pathIndex) {
     s32 var_a3;
     s16 *wut;
 
-    if ((s32) gKartAICourseMaximumSeparation[gCurrentCourseId] >= 0) {
+    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
         var_a3 = gWaypointCountByPathIndex[pathIndex];
         var_t4 = &D_80164580[pathIndex][0];
         for(var_s0 = 0; var_s0 < var_a3; var_s0++, var_t4++) {
@@ -3889,7 +3889,7 @@ void func_80010DBC(s32 pathIndex) {
     s32 waypointIndex;
     u16 *angle;
 
-    if ((s32) gKartAICourseMaximumSeparation[gCurrentCourseId] >= 0) {
+    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
         for (angle = &D_80164590[pathIndex][0], waypointIndex = 0; waypointIndex < gWaypointCountByPathIndex[pathIndex]; waypointIndex++, angle++) {
             *angle = func_80010CB0(pathIndex, waypointIndex);
         }
@@ -4168,7 +4168,7 @@ s32 func_8001168C(PathNoY *pathDest, TrackWaypoint *pathSrc, s32 numWaypoints) {
 
 void copy_courses_kart_ai_behaviour(void) {
     s32 i;
-    for (i = 0; i < NUM_COURSES - 1; i++) {
+    for (i = 0; i < NUM_COURSES-1; i++) {
         gCoursesKartAIBehaviour[i] = segmented_to_virtual_dupe_2(gKartAIBehaviourLUT[i]);
     }
 }

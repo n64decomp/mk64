@@ -1,6 +1,6 @@
 #include <PR/ultratypes.h>
 #include <PR/mbi.h>
-#include <assets/common_data.h>
+#include "common_textures.h"
 #include "course_offsets.h"
 #include "course_data.h"
 

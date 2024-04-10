@@ -17,7 +17,7 @@
 #include "waypoints.h"
 #include "player_controller.h"
 #include "render_objects.h"
-#include <assets/common_data.h>
+#include "common_textures.h"
 #include "skybox_and_splitscreen.h"
 #include "spawn_players.h"
 
@@ -705,67 +705,44 @@ void mtxf_scale2(Mat4 arg0, f32 scale) {
     arg0[2][2] *= scale;
 }
 
-/**
- * This function writes a fixed-point value to each Mtx entry. This is not how the Mtx struct works.
- * The first half of Mtx only holds s16 whole numbers and the second half holds the s16 decimal (fractional) parts.
- * See convert_to_fixed_point_matrix() for correct calculations. Note that each Mtx entry is the size of s32.
- * This means each Mtx entry holds two s16 values. 
- * The first sixteen entries contain only the integer parts and the second sixteen entries hold only the decimal (fractional) parts.
- */
-UNUSED void failed_fixed_point_matrix_conversion(Mtx *dest, Mat4 src) {
-    f32 toFixed = 65536.0f;
-    dest->m[0][0] = src[0][0] * toFixed;
-    dest->m[0][1] = src[0][1] * toFixed;
-    dest->m[0][2] = src[0][2] * toFixed;
-    dest->m[0][3] = src[0][3] * toFixed;
-    dest->m[1][0] = src[1][0] * toFixed;
-    dest->m[1][1] = src[1][1] * toFixed;
-    dest->m[1][2] = src[1][2] * toFixed;
-    dest->m[1][3] = src[1][3] * toFixed;
-    dest->m[2][0] = src[2][0] * toFixed;
-    dest->m[2][1] = src[2][1] * toFixed;
-    dest->m[2][2] = src[2][2] * toFixed;
-    dest->m[2][3] = src[2][3] * toFixed;
-    dest->m[3][0] = src[3][0] * toFixed;
-    dest->m[3][1] = src[3][1] * toFixed;
-    dest->m[3][2] = src[3][2] * toFixed;
-    dest->m[3][3] = src[3][3] * toFixed;
+UNUSED void func_80021FF8(Mtx *arg0, Mat4 arg1) {
+    f32 someMultiplier = 65536.0f;
+    arg0->m[0][0] = arg1[0][0] * someMultiplier;
+    arg0->m[0][1] = arg1[0][1] * someMultiplier;
+    arg0->m[0][2] = arg1[0][2] * someMultiplier;
+    arg0->m[0][3] = arg1[0][3] * someMultiplier;
+    arg0->m[1][0] = arg1[1][0] * someMultiplier;
+    arg0->m[1][1] = arg1[1][1] * someMultiplier;
+    arg0->m[1][2] = arg1[1][2] * someMultiplier;
+    arg0->m[1][3] = arg1[1][3] * someMultiplier;
+    arg0->m[2][0] = arg1[2][0] * someMultiplier;
+    arg0->m[2][1] = arg1[2][1] * someMultiplier;
+    arg0->m[2][2] = arg1[2][2] * someMultiplier;
+    arg0->m[2][3] = arg1[2][3] * someMultiplier;
+    arg0->m[3][0] = arg1[3][0] * someMultiplier;
+    arg0->m[3][1] = arg1[3][1] * someMultiplier;
+    arg0->m[3][2] = arg1[3][2] * someMultiplier;
+    arg0->m[3][3] = arg1[3][3] * someMultiplier;
 }
 
-/**
- * Takes a floating-point matrix and converts it to an s15.16 internal matrix.
- * Each Mtx entry is a size of s32 that holds two values.
- * The first 16 entries hold only the integer values and the second 16 entries hold only the decimal (fractional) parts.
- * In simpler words, the integer and decimal gets split up and stored in their own section.
- * Mtx is setup this way due to hardware restrictions of the n64 or as an optimization.
- *
- * @param Mtx A new internal fixed-point matrix.
- * @param Mat4 An array of f32
- * Mat4 to Mtx explanation: https://blarg.ca/2020/10/11/fixed-point-math.
- */
-void convert_to_fixed_point_matrix(Mtx *dest, Mat4 src) {
-    #ifdef AVOID_UB
-    // Use os function guMtxF2L instead. This helps little-endian systems.
-    guMtxF2L(src, dest);
-    #else
-    f32 toFixed = 65536.0f; // 2 ^ 16
-    dest->m[0][0] = ((s32) (src[0][0] * toFixed) & 0xFFFF0000) | (((s32) (src[0][1] * toFixed) >> 0x10) & 0xFFFF);
-    dest->m[0][1] = ((s32) (src[0][2] * toFixed) & 0xFFFF0000) | (((s32) (src[0][3] * toFixed) >> 0x10) & 0xFFFF);
-    dest->m[0][2] = ((s32) (src[1][0] * toFixed) & 0xFFFF0000) | (((s32) (src[1][1] * toFixed) >> 0x10) & 0xFFFF);
-    dest->m[0][3] = ((s32) (src[1][2] * toFixed) & 0xFFFF0000) | (((s32) (src[1][3] * toFixed) >> 0x10) & 0xFFFF);
-    dest->m[1][0] = ((s32) (src[2][0] * toFixed) & 0xFFFF0000) | (((s32) (src[2][1] * toFixed) >> 0x10) & 0xFFFF);
-    dest->m[1][1] = ((s32) (src[2][2] * toFixed) & 0xFFFF0000) | (((s32) (src[2][3] * toFixed) >> 0x10) & 0xFFFF);
-    dest->m[1][2] = ((s32) (src[3][0] * toFixed) & 0xFFFF0000) | (((s32) (src[3][1] * toFixed) >> 0x10) & 0xFFFF);
-    dest->m[1][3] = ((s32) (src[3][2] * toFixed) & 0xFFFF0000) | (((s32) (src[3][3] * toFixed) >> 0x10) & 0xFFFF);
-    dest->m[2][0] = ((s32) (src[0][0] * toFixed) << 0x10)      | ((s32) (src[0][1] * toFixed) & 0xFFFF);
-    dest->m[2][1] = ((s32) (src[0][2] * toFixed) << 0x10)      | ((s32) (src[0][3] * toFixed) & 0xFFFF);
-    dest->m[2][2] = ((s32) (src[1][0] * toFixed) << 0x10)      | ((s32) (src[1][1] * toFixed) & 0xFFFF);
-    dest->m[2][3] = ((s32) (src[1][2] * toFixed) << 0x10)      | ((s32) (src[1][3] * toFixed) & 0xFFFF);
-    dest->m[3][0] = ((s32) (src[2][0] * toFixed) << 0x10)      | ((s32) (src[2][1] * toFixed) & 0xFFFF);
-    dest->m[3][1] = ((s32) (src[2][2] * toFixed) << 0x10)      | ((s32) (src[2][3] * toFixed) & 0xFFFF);
-    dest->m[3][2] = ((s32) (src[3][0] * toFixed) << 0x10)      | ((s32) (src[3][1] * toFixed) & 0xFFFF);
-    dest->m[3][3] = ((s32) (src[3][2] * toFixed) << 0x10)      | ((s32) (src[3][3] * toFixed) & 0xFFFF);
-    #endif
+void convert_to_fixed_point_matrix(Mtx *fixedPointMatrix, Mat4 arg1) {
+    f32 someMultiplier = 65536.0f;
+    fixedPointMatrix->m[0][0] = ((s32) (arg1[0][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][1] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[0][1] = ((s32) (arg1[0][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][3] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[0][2] = ((s32) (arg1[1][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][1] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[0][3] = ((s32) (arg1[1][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][3] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[1][0] = ((s32) (arg1[2][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][1] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[1][1] = ((s32) (arg1[2][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][3] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[1][2] = ((s32) (arg1[3][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][1] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[1][3] = ((s32) (arg1[3][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][3] * someMultiplier) >> 0x10) & 0xFFFF);
+    fixedPointMatrix->m[2][0] = ((s32) (arg1[0][0] * someMultiplier) << 0x10)      | ((s32) (arg1[0][1] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[2][1] = ((s32) (arg1[0][2] * someMultiplier) << 0x10)      | ((s32) (arg1[0][3] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[2][2] = ((s32) (arg1[1][0] * someMultiplier) << 0x10)      | ((s32) (arg1[1][1] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[2][3] = ((s32) (arg1[1][2] * someMultiplier) << 0x10)      | ((s32) (arg1[1][3] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[3][0] = ((s32) (arg1[2][0] * someMultiplier) << 0x10)      | ((s32) (arg1[2][1] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[3][1] = ((s32) (arg1[2][2] * someMultiplier) << 0x10)      | ((s32) (arg1[2][3] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[3][2] = ((s32) (arg1[3][0] * someMultiplier) << 0x10)      | ((s32) (arg1[3][1] * someMultiplier) & 0xFFFF);
+    fixedPointMatrix->m[3][3] = ((s32) (arg1[3][2] * someMultiplier) << 0x10)      | ((s32) (arg1[3][3] * someMultiplier) & 0xFFFF);
 }
 
 bool adjust_angle(s16 *angle, s16 targetAngle, s16 step) {

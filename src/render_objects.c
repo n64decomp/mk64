@@ -16,7 +16,7 @@
 #include "objects.h"
 #include "waypoints.h"
 #include "bomb_kart.h"
-#include <assets/common_data.h>
+#include "common_textures.h"
 #include "render_player.h"
 #include "code_80004740.h"
 #include "code_80005FD0.h"
@@ -30,7 +30,7 @@
 #include "menus.h"
 #include "code_80086E70.h"
 #include "code_800029B0.h"
-#include <assets/data_800E45C0.h>
+#include "src/data/data_800E45C0.h"
 #include "courses/all_course_data.h"
 #include <vehicles.h>
 #include "data/some_data.h"

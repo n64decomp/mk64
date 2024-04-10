@@ -52,23 +52,6 @@
 #define ALIGNED16
 #endif
 
-// Fixed point macros
-#define FTOFIX(f)      ((s32)((f) * 65536.0))
-#define ITOFIX(i)      ((s32)((i) << 16))
-#define FIXTOF(x)      ((double)((x) / 65536.0))
-#define FIXTOI(x)      ((s32)((x) >> 16))
-
-// Split fixed-point values into its integer or fractional parts.
-#define toFixedInt(f)  (FTOFIX(f) >> 16)
-#define toFrac(f)      (FTOFIX(f) & 0xFFFF)
-
-// Setup a fixed-point matrix using floats or doubles. Recommend using doubles for more precision.
-#define toFixedPointMatrix(x1, x2, x3, x4,  x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16)                                                                                   \
-    {{((toFixedInt(x1)) << 16) | toFixedInt(x2),  ((toFixedInt(x3))  << 16) | toFixedInt(x4),  (toFixedInt(x5)  << 16) | toFixedInt(x6),  (toFixedInt(x7) << 16)  | toFixedInt(x8)}, \
-    {((toFixedInt(x9)) << 16) | toFixedInt(x10), ((toFixedInt(x11)) << 16) | toFixedInt(x12), (toFixedInt(x13) << 16) | toFixedInt(x14), (toFixedInt(x15) << 16) | toFixedInt(x16)}, \
-    {((toFrac(x1))     << 16) | toFrac(x2),      ((toFrac(x3))      << 16) | toFrac(x4),      (toFrac(x5)      << 16) | toFrac(x6),      (toFrac(x7) << 16)      | toFrac(x8)},      \
-    {((toFrac(x9))     << 16) | toFrac(x10),     ((toFrac(x11))     << 16) | toFrac(x12),     (toFrac(x13)     << 16) | toFrac(x14),     (toFrac(x15) << 16)     | toFrac(x16)}}
-
 // convert a virtual address to physical.
 #define VIRTUAL_TO_PHYSICAL(addr)   ((uintptr_t)(addr) & 0x1FFFFFFF)
 

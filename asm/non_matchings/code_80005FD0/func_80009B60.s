@@ -26,11 +26,11 @@ glabel D_800ECFC8
 glabel func_80009B60
 /* 00A760 80009B60 3C0E800E */  lui   $t6, %hi(gCurrentCourseId)
 /* 00A764 80009B64 85CEC5A0 */  lh    $t6, %lo(gCurrentCourseId)($t6)
-/* 00A768 80009B68 3C01800E */  lui   $at, %hi(gKartAICourseMaximumSeparation)
+/* 00A768 80009B68 3C01800E */  lui   $at, %hi(gKartAICourseMaximumWaypointSeparation)
 /* 00A76C 80009B6C 3C0A8016 */  lui   $t2, %hi(D_80163100) # $t2, 0x8016
 /* 00A770 80009B70 000E7880 */  sll   $t7, $t6, 2
 /* 00A774 80009B74 002F0821 */  addu  $at, $at, $t7
-/* 00A778 80009B78 C424CA4C */  lwc1  $f4, %lo(gKartAICourseMaximumSeparation)($at)
+/* 00A778 80009B78 C424CA4C */  lwc1  $f4, %lo(gKartAICourseMaximumWaypointSeparation)($at)
 /* 00A77C 80009B7C 27BDFF30 */  addiu $sp, $sp, -0xd0
 /* 00A780 80009B80 254A3100 */  addiu $t2, %lo(D_80163100) # addiu $t2, $t2, 0x3100
 /* 00A784 80009B84 4600218D */  trunc.w.s $f6, $f4
@@ -1195,7 +1195,7 @@ glabel func_80009B60
 /* 00B854 8000AC54 4600218D */  trunc.w.s $f6, $f4
 /* 00B858 8000AC58 44055000 */  mfc1  $a1, $f10
 /* 00B85C 8000AC5C 3C0B800E */  lui   $t3, %hi(gCurrentCourseId)
-/* 00B860 8000AC60 3C03800E */  lui   $v1, %hi(gKartAISteeringSensitivity)
+/* 00B860 8000AC60 3C03800E */  lui   $v1, %hi(D_800DCA20)
 /* 00B864 8000AC64 00057C00 */  sll   $t7, $a1, 0x10
 /* 00B868 8000AC68 44023000 */  mfc1  $v0, $f6
 /* 00B86C 8000AC6C 000F6403 */  sra   $t4, $t7, 0x10
@@ -1223,7 +1223,7 @@ glabel func_80009B60
 /* 00B8BC 8000ACBC 000B6040 */  sll   $t4, $t3, 1
 /* 00B8C0 8000ACC0 006C1821 */  addu  $v1, $v1, $t4
 /* 00B8C4 8000ACC4 10410006 */  beq   $v0, $at, .L8000ACE0
-/* 00B8C8 8000ACC8 8463CA20 */   lh    $v1, %lo(gKartAISteeringSensitivity)($v1)
+/* 00B8C8 8000ACC8 8463CA20 */   lh    $v1, %lo(D_800DCA20)($v1)
 /* 00B8CC 8000ACCC 24010003 */  li    $at, 3
 /* 00B8D0 8000ACD0 50410014 */  beql  $v0, $at, .L8000AD24
 /* 00B8D4 8000ACD4 3C013F00 */   lui   $at, 0x3f00

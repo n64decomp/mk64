@@ -184,6 +184,7 @@
 "bin/gTextureMenu100cc.rgba16.tkmk00": {"meta":{"size":"0x200"}, "offsets": {"us":["0x8080C0", "0x0"]}},
 "bin/gTextureMenu150cc.rgba16.tkmk00": {"meta":{"size":"0x200"}, "offsets": {"us":["0x8082C0", "0x0"]}},
 "bin/gTextureMenuExtra.rgba16.tkmk00": {"meta":{"size":"0x200"}, "offsets": {"us":["0x8084C0", "0x0"]}},
+
 "bin/gTextureMenuWithoutItem.rgba16.tkmk00": {"meta":{"size":"0x300"}, "offsets": {"us":["0x8086C0", "0x0"]}},
 "bin/gTextureMenuWithItem.rgba16.tkmk00": {"meta":{"size":"0x300"}, "offsets": {"us":["0x8089C0", "0x0"]}},
 "bin/gTextureMenuBegin.rgba16.tkmk00": {"meta":{"size":"0x200"}, "offsets": {"us":["0x808CC0", "0x0"]}},
