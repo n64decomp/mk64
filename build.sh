@@ -6,8 +6,8 @@ elif [ $1 == "single-thread" ]; then
     arg=-j1
 fi
 
-make -C tools $arg
+make -C tools $arg || exit 1
 if [ ! $arg == "clean" ]; then
-    make assets
+    make assets || exit 1
 fi
-make $arg
+make $arg || exit 1
