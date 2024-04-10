@@ -17,7 +17,7 @@ var searchData=
   ['object_5forigin_5fpos_5frandomize_5faround_5fz_14',['object_origin_pos_randomize_around_z',['../code__80086E70_8c.html#ac6428c27f0022ef2f12b28a39c386945',1,'object_origin_pos_randomize_around_z(s32 objectIndex, s16 z, u16 arg2):&#160;code_80086E70.c'],['../code__80086E70_8h.html#af49d1527179dc119222464883ebe5174',1,'object_origin_pos_randomize_around_z(s32, s16, u16):&#160;code_80086E70.c']]],
   ['objectindex_15',['objectIndex',['../structstruct__D__8018CE10.html#a127e1b12aed47ab382b129edabb71d52',1,'struct_D_8018CE10']]],
   ['objectlistsize_16',['objectListSize',['../code__80057C60_8c.html#a619a9cb4ca05d69a44a5928af9e499ad',1,'code_80057C60.c']]],
-  ['objects_17',['Objects',['../structObjects.html',1,'Objects'],['../objects.html',1,'Objects'],['../objects.html#objects-1',1,'Objects'],['../controlflow.html#objects',1,'Objects']]],
+  ['objects_17',['Objects',['../structObjects.html',1,'Objects'],['../objects.html',1,'Objects'],['../objects.html#objects',1,'Objects'],['../controlflow.html#objects-1',1,'Objects']]],
   ['objects_2eh_18',['objects.h',['../objects_8h.html',1,'']]],
   ['objects_2emd_19',['objects.md',['../objects_8md.html',1,'']]],
   ['objx_20',['objX',['../structuObjSprite__t.html#aa56aa472d1ac710dd829e6f1cd9f7ad0',1,'uObjSprite_t']]],
