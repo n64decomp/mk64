@@ -356,7 +356,7 @@ BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
 ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
 LINKONLY_GENERATOR    := $(PYTHON) $(TOOLS_DIR)/linkonly_generator.py
-TORCH                 := tools/torch/torch
+TORCH                 := tools/torch/cmake-build-release/torch
 EMULATOR               = mupen64plus
 EMU_FLAGS              = --noosd
 LOADER                 = loader64
@@ -399,7 +399,7 @@ endif
 
 assets:
 	@echo "Extracting torch assets..."
-	@$(TORCH) code $(BASEROM) -v
+	@$(TORCH) code $(BASEROM)
 	@$(TORCH) header $(BASEROM)
 	@$(TORCH) modding export $(BASEROM)
 
