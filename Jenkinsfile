@@ -16,6 +16,7 @@ pipeline {
   stages {
     stage('Build Tools') {
       steps {
+        sh 'git submodule update --init --recursive'
         sh 'make -j4 -C tools/'
       }
     }
