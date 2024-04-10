@@ -25,8 +25,7 @@ jobs:
       - name: Build
         run: |
           cp -r complementary_file/* .
-          make assets -j
-          make -j
+          ./build.sh
       - name: Install Doxygen
         run: |
           sudo apt-get install graphviz doxygen -y

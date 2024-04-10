@@ -35,12 +35,8 @@ Game code progress consists of `main`, `ending` and `racing`.
 ```
 git submodule update --init --recursive
 ```
-Extract assets
 ```
-make assets -j
-```
-```
-make -j
+./build.sh
 ```
 
 ## Building
