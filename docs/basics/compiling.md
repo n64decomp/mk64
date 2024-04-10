@@ -10,9 +10,11 @@ The build system has the following package requirements:
 
 To add submodules run `git submodule update --init --recursive` after cloning.
 
+Run `make assets` to extract assets.
+
 # Linux
 ```bash
-sudo apt install build-essential pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev
+sudo apt install cmake build-essential pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev
 ```
 
 ### Arch

@@ -2,6 +2,7 @@
 
 # Compilation flags
 CC := gcc
+MAKE = make
 CFLAGS := -I . -Wall -Wextra -Wno-unused-parameter -pedantic -std=c99 -O2 -s
 
 # Tools to compile
@@ -28,6 +29,19 @@ n64cksum_CFLAGS := -DN64CKSUM_STANDALONE
 
 extract_data_for_mio_SOURCES := extract_data_for_mio.c
 
+ifeq ($(OS),Windows_NT)
+    DETECTED_OS=windows
+    # Set Windows temporary directory to its environment variable
+    export TMPDIR=$(TEMP)
+else
+    UNAME_S := $(shell uname -s)
+    ifeq ($(UNAME_S),Linux)
+        DETECTED_OS=linux
+    else ifeq ($(UNAME_S),Darwin)
+        DETECTED_OS=macos
+    endif
+endif
+
 # Build tools and recomp
 all: $(PROGRAMS)
 
@@ -48,3 +62,5 @@ $(1): $($1_SOURCES)
 endef
 
 $(foreach p,$(PROGRAMS),$(eval $(call COMPILE,$(p))))
+
+.PHONY: all clean default

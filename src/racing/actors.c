@@ -21,7 +21,7 @@
 #include "effects.h"
 #include "collision.h"
 #include "audio/external.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "courses/all_course_data.h"
 #include "main.h"
 #include "data/other_textures.h"
