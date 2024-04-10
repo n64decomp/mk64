@@ -16,6 +16,7 @@
 // Here to appease the pragma gods
 double fabs(double x);
 
+void func_802B5794(Mat4, Vec3f, Vec3f);
 s32 func_802B4F60(s32, Vec3f, s32, f32, f32);
 s32  render_set_position(Mat4, s32);
 f32  func_802B51E8(Vec3f, Vec3f);

@@ -216,7 +216,7 @@ SECTIONS
       BUILD_DIR/src/profiler.o(.data);
       BUILD_DIR/src/crash_screen.o(.data);
       BUILD_DIR/src/staff_ghosts.o(.data);
-      BUILD_DIR/src/data/path_spawn_data.o(.data);
+      BUILD_DIR/src/data/path_spawn_metadata.o(.data);
       BUILD_DIR/src/camera.o(.data);
       BUILD_DIR/src/render_player.o(.data);
       BUILD_DIR/src/kart_dma.o(.data);
@@ -224,7 +224,7 @@ SECTIONS
       BUILD_DIR/src/player_controller.o(.data);
       BUILD_DIR/src/spawn_players.o(.data);
       BUILD_DIR/src/update_objects.o(.data);
-      BUILD_DIR/src/data/data_800E45C0.o(.data);
+      BUILD_DIR/assets/code/data_800E45C0/data_800E45C0.o(.data);
       BUILD_DIR/src/code_80057C60.o(.data);
       BUILD_DIR/src/data/some_data.o(.data);
       BUILD_DIR/src/effects.o(.data);
@@ -233,7 +233,7 @@ SECTIONS
       BUILD_DIR/src/code_800AF9B0.o(.data);
       BUILD_DIR/src/menus.o(.data);
       BUILD_DIR/src/save.o(.data);
-      BUILD_DIR/src/data/data_800E8700.o(.data);
+      BUILD_DIR/assets/code/data_800E8700/data_800E8700.o(.data);
       BUILD_DIR/src/audio/synthesis.o(.data);
       BUILD_DIR/src/audio/heap.o(.data);
       BUILD_DIR/src/audio/load.o(.data);
@@ -449,7 +449,7 @@ SECTIONS
    BEGIN_SEG(data_segment2, 0x02000000)
    {
       BUILD_DIR/src/data/textures.o(.data);
-      BUILD_DIR/src/data/data_segment2.o(.data);
+      BUILD_DIR/assets/code/data_segment2/data_segment2.o(.data);
    }
    END_SEG(data_segment2)
 
@@ -457,7 +457,7 @@ SECTIONS
    /* common textures, decompressed and set as segment 0x0D */
    BEGIN_SEG(common_textures, 0x0D000000)
    {
-      BUILD_DIR/src/data/common_textures.mio0.o(.data);
+      BUILD_DIR/assets/code/common_data/common_data.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(common_textures)
@@ -515,14 +515,14 @@ SECTIONS
             0x828400 -> 0x8028DE30 (0xD0) */
    BEGIN_SEG(ceremonyData, 0x0B000000)
    {
-      BUILD_DIR/src/ending/ceremony_data.mio0.o(.data);
+      BUILD_DIR/assets/code/ceremony_data/ceremony_data.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(ceremonyData)
 
    BEGIN_SEG(startupLogo, 0x06000000)
    {
-      BUILD_DIR/src/data/startup_logo.mio0.o(.data);
+      BUILD_DIR/assets/code/startup_logo/startup_logo.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(startupLogo)
