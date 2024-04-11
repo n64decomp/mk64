@@ -1,5 +1,5 @@
 # Mario Kart 64
-status: [![Doxygen GitHub Pages Deploy Action](https://github.com/coco875/mk64/actions/workflows/doxygen-and-linux-test.yml/badge.svg)](https://github.com/coco875/mk64/actions/workflows/doxygen-and-linux-test.yml)
+status: [![Doxygen GitHub Pages Deploy Action](https://github.com/coco875/mk64/actions/workflows/doxygen-and-linux-test.yml/badge.svg)](https://github.com/coco875/mk64/actions/workflows/doxygen-and-linux-test.yml)   
 This work-in-progress decompilation of Mario Kart 64 pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality.
 
 This repository does not contain assets. Compiling requires asset extraction from a prior copy of the game.
