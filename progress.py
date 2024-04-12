@@ -9,7 +9,7 @@ from pybadges import badge
 
 # Script arguments.
 parser = argparse.ArgumentParser(description="Computes current progress throughout the whole project.")
-parser.add_argument("format", nargs="?", default="text", choices=["text", "verbose", "totalBadge", "gameBadge", "mainBadge", "endingBadge", "racingBadge", "audioBadge", "osBadge", "bytesToDecompile", "globalAsmFuncs", "m2cFuncs", "nonmatchingFuncs"])
+parser.add_argument("format", nargs="?", default="text", choices=["text", "verbose", "totalBadge", "gameBadge", "mainBadge", "endingBadge", "racingBadge", "audioBadge", "osBadge", "bytesToDecompile", "globalAsmFuncs", "m2cFuncs", "nonmatchingFuncs", "badge"])
 parser.add_argument("-d", "--debug", dest='debug', action='store_true',
                     help="Adds additional debug information, outputs files parsed and score for each file")
 parser.add_argument("-n", "--nonmatching", dest='nonmatching', action='store_true',
