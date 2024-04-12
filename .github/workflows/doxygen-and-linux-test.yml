@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.1.1
         with:
           submodules: "true"
       - name: Get Complementary file
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.1
         with:
           path: complementary_file
           repository: UnspaghettifyKart/action-build-private-file
