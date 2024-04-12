@@ -24,7 +24,6 @@ Game code progress consists of `main`, `ending` and `racing`.
 
 ![Build Status](https://n64decomp.github.io/mk64/asm_funcs.svg)
 ![Build Status](https://n64decomp.github.io/mk64/m2c_funcs.svg)
-
 ![Build Status](https://n64decomp.github.io/mk64/nonmatching_funcs.svg)
 
 - ![Build Status](https://n64decomp.github.io/mk64/seg_main_progress.svg)
