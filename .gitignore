@@ -94,7 +94,7 @@ expected/*
 # Doxygen
 docs/html/*
 docs/doxygen_syms.md
-docs/*.svg
+docs/images/*.svg
 
 # windows build
 mingw64/

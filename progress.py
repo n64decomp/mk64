@@ -529,40 +529,40 @@ elif args.format == 'badge':
     adjective = "decompiled" if args.nonmatching else "matched"
 
     badge_size_left = badge(left_text="Size left", right_text=str(remaining_size), right_color="blue")
-    with open("docs/size_left.svg", "w") as f:
+    with open("docs/images/size_left.svg", "w") as f:
         f.write(badge_size_left)
     badge_total_size = badge(left_text="Total size", right_text=str(total_code_size), right_color="blue")
-    with open("docs/total_size.svg", "w") as f:
+    with open("docs/images/total_size.svg", "w") as f:
         f.write(badge_total_size)
     badge_total_pct = badge(left_text="Total progress", right_text=str(round(totalPct, 2))+"%", right_color="green")
-    with open("docs/total_progress.svg", "w") as f:
+    with open("docs/images/total_progress.svg", "w") as f:
         f.write(badge_total_pct)
     badge_game_pct = badge(left_text="Game progress", right_text=str(round(gamePct, 2))+"%", right_color="green")
-    with open("docs/game_progress.svg", "w") as f:
+    with open("docs/images/game_progress.svg", "w") as f:
         f.write(badge_game_pct)
     badge_asm_funcs = badge(left_text="ASM functions", right_text=str(TotalGlobalAsmFunctions), right_color="blue")
-    with open("docs/asm_funcs.svg", "w") as f:
+    with open("docs/images/asm_funcs.svg", "w") as f:
         f.write(badge_asm_funcs)
     badge_nonmatching_funcs = badge(left_text="NON_MATCHING functions", right_text=str(TotalNonMatchingFunctions), right_color="blue")
-    with open("docs/nonmatching_funcs.svg", "w") as f:
+    with open("docs/images/nonmatching_funcs.svg", "w") as f:
         f.write(badge_nonmatching_funcs)
     badge_m2c_funcs = badge(left_text="MIPS_TO_C functions", right_text=str(TotalMipsToCFunctions), right_color="blue")
-    with open("docs/m2c_funcs.svg", "w") as f:
+    with open("docs/images/m2c_funcs.svg", "w") as f:
         f.write(badge_m2c_funcs)
     badge_seg_main = badge(left_text="Main progress", right_text=str(round(segMainPct, 2))+"%", right_color="green")
-    with open("docs/seg_main_progress.svg", "w") as f:
+    with open("docs/images/seg_main_progress.svg", "w") as f:
         f.write(badge_seg_main)
     badge_seg_ending = badge(left_text="Ending progress", right_text=str(round(segEndingPct, 2))+"%", right_color="green")
-    with open("docs/seg_ending_progress.svg", "w") as f:
+    with open("docs/images/seg_ending_progress.svg", "w") as f:
         f.write(badge_seg_ending)
     badge_seg_racing = badge(left_text="Racing progress", right_text=str(round(segRacingPct, 2))+"%", right_color="green")
-    with open("docs/seg_racing_progress.svg", "w") as f:
+    with open("docs/images/seg_racing_progress.svg", "w") as f:
         f.write(badge_seg_racing)
     badge_audio = badge(left_text="Audio progress", right_text=str(round(audioPct, 2))+"%", right_color="green")
-    with open("docs/audio_progress.svg", "w") as f:
+    with open("docs/images/audio_progress.svg", "w") as f:
         f.write(badge_audio)
     badge_libultra = badge(left_text="Libultra progress", right_text=str(round(libultraPct, 2))+"%", right_color="green")
-    with open("docs/libultra_progress.svg", "w") as f:
+    with open("docs/images/libultra_progress.svg", "w") as f:
         f.write(badge_libultra)
 
 else:
