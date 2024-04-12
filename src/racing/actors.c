@@ -376,7 +376,7 @@ void func_80297760(struct Actor *arg0, Vec3f arg1) {
     arg1[0] = arg0->pos[0];
     arg1[1] = arg0->pos[1];
     arg1[2] = arg0->pos[2];
-    arg1[1] = func_802ABE30(arg1[0], arg1[1], arg1[2], arg0->unk30.unk3A);
+    arg1[1] = func_802ABE30(arg1[0], arg1[1], arg1[2], arg0->unk30.surfaceMapIndex);
 }
 
 void func_802977B0(Player *arg0) {
@@ -565,7 +565,7 @@ void evaluate_collision_players_palm_trees(void) {
 
     for (index = 0; index < 4; index++){
         // wtf is up with the << 0x18 >> 0x18? is it some weird type conversion? just use & 0xFF have the same effect to keep 8 first bit
-        if (((gPlayers[index].type & 0xC000) != 0) && (((get_surface_type(gPlayers[index].unk_110.unk3A) << 24) >> 24) == GRASS)) {
+        if (((gPlayers[index].type & 0xC000) != 0) && (((get_surface_type(gPlayers[index].unk_110.surfaceMapIndex) << 24) >> 24) == GRASS)) {
             evaluate_collision_player_palm_trees(&gPlayers[index]);
         }
     }
@@ -937,7 +937,7 @@ void spawn_foliage(struct ActorSpawnData *arg0) {
         } else {
             func_802ADDC8(&temp_s0->unk30, 5.0f, temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2]);
             if (temp_s0->unk30.unk3C[2] < 0.0f) {
-                temp_s0->pos[1] = func_802ABE30(temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2], temp_s0->unk30.unk3A);
+                temp_s0->pos[1] = func_802ABE30(temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2], temp_s0->unk30.surfaceMapIndex);
             }
             func_802976EC(&temp_s0->unk30, temp_s0->rot);
         }

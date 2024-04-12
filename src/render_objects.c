@@ -1194,7 +1194,7 @@ UNUSED void func_8004A5E4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *a
 void func_8004A630(Collision *arg0, Vec3f arg1, f32 arg2) {
     if (func_80041924(arg0, arg1) != 0) {
         D_80183E50[0] = arg1[0];
-        D_80183E50[1] = func_802ABE30(arg1[0], 0.0f, arg1[2], arg0->unk3A) + 0.8;
+        D_80183E50[1] = func_802ABE30(arg1[0], 0.0f, arg1[2], arg0->surfaceMapIndex) + 0.8;
         D_80183E50[2] = arg1[2];
         rsp_set_matrix_transl_rot_scale(D_80183E50, arg0->orientationVector, arg2);
         gSPDisplayList(gDisplayListHead++, D_0D007B98);

@@ -116,8 +116,8 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     arg1->playerDirection = var_a3;
 
     if (D_80152300[camera - camera1] == 1) {
-        sp1E = func_802ABD40(camera->unk_54.unk3A);
-        temp_v0_3 = func_802ABD40(player->unk_110.unk3A);
+        sp1E = get_track_segment(camera->unk_54.surfaceMapIndex);
+        temp_v0_3 = get_track_segment(player->unk_110.surfaceMapIndex);
         temp_v1 = sp1E - temp_v0_3;
         if ((temp_v1 < 2) && (temp_v1 >= -1)) {
             if (sp1E == 255) {
@@ -170,7 +170,7 @@ void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
             }
         }
     } else {
-        temp_v1 = func_802ABD40(camera->unk_54.unk3A);
+        temp_v1 = get_track_segment(camera->unk_54.surfaceMapIndex);
         if (camera->unk_54.unk3C[2] > 30.0f) {
             temp_v1 = arg1->pathCounter;
         } else if (temp_v1 == 255) { 
@@ -1382,7 +1382,7 @@ void func_80295BF8(s32 playerIndex) {
 }
 
 void func_80295C6C(void) {
-    gNextFreeMemoryAddress += ALIGN16(D_8015F588 * sizeof(mk64_surface_map_ram));
+    gNextFreeMemoryAddress += ALIGN16(gNumSurfaceMap * sizeof(mk64_surface_map_ram));
     gCourseMaxX += 20;
     gCourseMaxZ += 20;
     gCourseMinX += -20;
@@ -1417,7 +1417,7 @@ void func_80295D88(void) {
     D_8015F5A0 = 0;
     func_80295D6C();
     D_8015F58C = 0;
-    D_8015F588 = 0;
+    gNumSurfaceMap = 0;
     gSurfaceMap = (mk64_surface_map_ram *) gNextFreeMemoryAddress;
     D_800DC5BC = 0;
     D_800DC5C8 = 0;

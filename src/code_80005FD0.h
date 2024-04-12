@@ -59,7 +59,7 @@ typedef struct {
 } PathNoY;
 
 /* Function Prototypes */
-s16  func_80005FD0(Vec3f, Vec3f);
+s16  get_angle_path(Vec3f, Vec3f);
 
 s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
 void func_80006114(Vec3f, Vec3f, s16);
@@ -97,9 +97,9 @@ void func_8000BA14(u16, f32, f32, s16);
 void func_8000BBD8(u16, f32, s16);
 s16  func_8000BD94(f32, f32, f32, s32);
 
-s16  func_8000C0BC(f32, f32, f32, u16, s32*);
+s16  find_closet_waypoint_track_segment(f32, f32, f32, u16, s32*);
 s16  func_8000C884(f32, f32, f32, s16, s32, u16);
-s16  func_8000C9DC(f32, f32, f32, s16, s32);
+s16  find_closet_waypoint_with_previous_waypoint(f32, f32, f32, s16, s32);
 void func_8000CBA4(f32, f32, f32, s16*, s32);
 void func_8000CBF8(f32, f32, f32, s16*, s32);
 s16  func_8000CC88(f32, f32, f32, Player*, s32, s32*);
@@ -154,9 +154,9 @@ void func_80011EC0(s32, Player*, s32, u16);
 
 void func_800120C8(void);
 void func_80012190(void);
-void func_80012220(VehicleStuff*);
+void init_vehicle_on_road(VehicleStuff*);
 void init_course_vehicles(void);
-void func_80012780(TrainCarStuff*, s16*, u16);
+void set_vehicle_pos_waypoint(TrainCarStuff*, s16*, u16);
 void func_800127E0(void);
 void func_80012A48(TrainCarStuff*, s16);
 void update_vehicle_trains(void);
@@ -357,7 +357,7 @@ extern s16 D_801634EC;
 extern s32 D_801634F0;
 extern s32 D_801634F4;
 extern Test D_801634F8[];
-extern PathNoY *D_80163598;
+extern PathNoY *gVehiclesWaypoint;
 extern s32 D_8016359C;
 extern u16 isCrossingTriggeredByIndex[];
 extern u16 D_801637BC[];

@@ -48,7 +48,7 @@ extern s16 gPlaceItemBoxes;
 
 extern mk64_surface_map_ram *gSurfaceMap;
 extern u16 *D_8015F584;
-extern u16 D_8015F588;
+extern u16 gNumSurfaceMap;
 extern u16 D_8015F58A;
 extern u32 D_8015F58C;
 

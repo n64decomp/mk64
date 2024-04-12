@@ -152,7 +152,7 @@ void load_credits(void) {
     D_8015F59C = 0;
     D_8015F5A0 = 0;
     D_8015F58C = 0;
-    D_8015F588 = 0;
+    gNumSurfaceMap = 0;
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
     gSurfaceMap = (mk64_surface_map_ram *) gNextFreeMemoryAddress;

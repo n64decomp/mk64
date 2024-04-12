@@ -24,7 +24,7 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
     }
     switch (fruit->state) {                               /* irregular */
     case 0:
-        if ((get_surface_type(player->unk_110.unk3A) & 0xFF) != GRASS) {
+        if ((get_surface_type(player->unk_110.surfaceMapIndex) & 0xFF) != GRASS) {
             return;
         }
         fruit->state = 1;

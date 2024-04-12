@@ -92,7 +92,7 @@ Variable Name | Memory Address
 [func_80005B18](@ref func_80005B18) | 0x80005B18
 [func_80005E6C](@ref func_80005E6C) | 0x80005E6C
 [staff_ghosts_loop](@ref staff_ghosts_loop) | 0x80005F44
-[func_80005FD0](@ref func_80005FD0) | 0x80005FD0
+[get_angle_path](@ref get_angle_path) | 0x80005FD0
 [func_80006018](@ref func_80006018) | 0x80006018
 [func_80006114](@ref func_80006114) | 0x80006114
 [func_800061DC](@ref func_800061DC) | 0x800061DC
@@ -124,9 +124,9 @@ Variable Name | Memory Address
 [func_8000BA14](@ref func_8000BA14) | 0x8000BA14
 [func_8000BBD8](@ref func_8000BBD8) | 0x8000BBD8
 [func_8000BD94](@ref func_8000BD94) | 0x8000BD94
-[func_8000C0BC](@ref func_8000C0BC) | 0x8000C0BC
+[find_closet_waypoint_track_segment](@ref find_closet_waypoint_track_segment) | 0x8000C0BC
 [func_8000C884](@ref func_8000C884) | 0x8000C884
-[func_8000C9DC](@ref func_8000C9DC) | 0x8000C9DC
+[find_closet_waypoint_with_previous_waypoint](@ref find_closet_waypoint_with_previous_waypoint) | 0x8000C9DC
 [func_8000CBA4](@ref func_8000CBA4) | 0x8000CBA4
 [func_8000CBF8](@ref func_8000CBF8) | 0x8000CBF8
 [func_8000CC88](@ref func_8000CC88) | 0x8000CC88
@@ -175,9 +175,9 @@ Variable Name | Memory Address
 [func_80011EC0](@ref func_80011EC0) | 0x80011EC0
 [func_800120C8](@ref func_800120C8) | 0x800120C8
 [func_80012190](@ref func_80012190) | 0x80012190
-[func_80012220](@ref func_80012220) | 0x80012220
+[init_vehicle_on_road](@ref init_vehicle_on_road) | 0x80012220
 [init_course_vehicles](@ref init_course_vehicles) | 0x800122D8
-[func_80012780](@ref func_80012780) | 0x80012780
+[set_vehicle_pos_waypoint](@ref set_vehicle_pos_waypoint) | 0x80012780
 [func_800127E0](@ref func_800127E0) | 0x800127E0
 [func_80012A48](@ref func_80012A48) | 0x80012A48
 [update_vehicle_trains](@ref update_vehicle_trains) | 0x80012AC0
@@ -3800,7 +3800,7 @@ Variable Name | Memory Address
 [D_8015F480](@ref D_8015F480) | 0x8015F480
 [gSurfaceMap](@ref gSurfaceMap) | 0x8015F580
 [D_8015F584](@ref D_8015F584) | 0x8015F584
-[D_8015F588](@ref D_8015F588) | 0x8015F588
+[gNumSurfaceMap](@ref gNumSurfaceMap) | 0x8015F588
 [D_8015F58A](@ref D_8015F58A) | 0x8015F58A
 [D_8015F58C](@ref D_8015F58C) | 0x8015F58C
 [D_8015F590](@ref D_8015F590) | 0x8015F590
@@ -4002,7 +4002,7 @@ Variable Name | Memory Address
 [D_801634F0](@ref D_801634F0) | 0x801634F0
 [D_801634F4](@ref D_801634F4) | 0x801634F4
 [D_801634F8](@ref D_801634F8) | 0x801634F8
-[D_80163598](@ref D_80163598) | 0x80163598
+[gVehiclesWaypoint](@ref gVehiclesWaypoint) | 0x80163598
 [D_8016359C](@ref D_8016359C) | 0x8016359C
 [gTrainList](@ref gTrainList) | 0x801635A0
 [isCrossingTriggeredByIndex](@ref isCrossingTriggeredByIndex) | 0x801637B8
@@ -5051,7 +5051,7 @@ Variable Name | Memory Address
 [func_802AB6C4](@ref func_802AB6C4) | 0x802AB6C4
 [func_802ABB04](@ref func_802ABB04) | 0x802ABB04
 [get_surface_type](@ref get_surface_type) | 0x802ABD10
-[func_802ABD40](@ref func_802ABD40) | 0x802ABD40
+[get_track_segment](@ref get_track_segment) | 0x802ABD40
 [func_802ABD7C](@ref func_802ABD7C) | 0x802ABD7C
 [func_802ABDB8](@ref func_802ABDB8) | 0x802ABDB8
 [func_802ABDF4](@ref func_802ABDF4) | 0x802ABDF4
@@ -5082,7 +5082,7 @@ Variable Name | Memory Address
 [set_vertex_colours](@ref set_vertex_colours) | 0x802AF83C
 [find_vtx_and_set_colours](@ref find_vtx_and_set_colours) | 0x802AF8BC
 [subtract_scaled_vector](@ref subtract_scaled_vector) | 0x802AF9F0
-[process_collision](@ref process_collision) | 0x802AFA34
+[process_collision_between_player_terrain](@ref process_collision_between_player_terrain) | 0x802AFA34
 [copy_collision](@ref copy_collision) | 0x802B0210
 [triple_shell_actor_collide_with_player](@ref triple_shell_actor_collide_with_player) | 0x802B02B4
 [func_802B039C](@ref func_802B039C) | 0x802B039C

@@ -3101,7 +3101,7 @@ void func_80079860(s32 playerId) {
     player = &gPlayerOne[playerId];
     if ((func_80072354(objectIndex, 1) != 0) &&
         (
-            ((func_802ABDF4(player->unk_110.unk3A) != 0) && (player->unk_110.unk3C[2] <= 3.0f)) ||
+            ((func_802ABDF4(player->unk_110.surfaceMapIndex) != 0) && (player->unk_110.unk3C[2] <= 3.0f)) ||
             (player->unk_0CA & 1) ||
             ((player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & 8))
         )

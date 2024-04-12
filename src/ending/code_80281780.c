@@ -128,7 +128,7 @@ void load_ceremony_cutscene(void) {
     D_8015F59C = 0;
     D_8015F5A0 = 0;
     D_8015F58C = 0;
-    D_8015F588 = (u16)0;
+    gNumSurfaceMap = (u16)0;
     D_800DC5BC = (u16)0;
     D_800DC5C8 = (u16)0;
     gSurfaceMap = (mk64_surface_map_ram *) gNextFreeMemoryAddress;
