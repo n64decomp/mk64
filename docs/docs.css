@@ -2,17 +2,14 @@
     display: inline-block;
     margin-right: 1em;
     margin-bottom: 1em;
-    width: 320px;
-}
-
-.pagelink {
-    display: block;
-    box-shadow: 0 0 0 0;
-    transition: 0.3s ease;
 }
 
 html.dark-mode .pagelink {
+    display: block;
     background-color: rgb(40, 44, 52);
+    width: 320px;
+    box-shadow: 0 0 0 0;
+    transition: 0.3s ease;
 }
 
 html.dark-mode .pagelink:hover {
@@ -36,31 +33,23 @@ html.dark-mode .pagelink:hover {
     transition: 0.3s ease;
 }
 
-.content {
+html.dark-mode .content {
+    color: white;
     font-size: 1em;
     padding: 0;
     margin: 0;
 }
 
-html.dark-mode .content {
-    color: white;
-}
-
-.pageheading {
-    padding: .5em .5em;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
 html.dark-mode .pageheading {
     padding: .5em .5em;
     font-size: 18px;
+    color: white;
     font-weight: bold;
     text-decoration: none;
 }
 
-.pagedescription {
+html.dark-mode .pagedescription {
+    color: #fff;
     border-color: transparent;
     opacity: 0.75;
     height: 84px;
@@ -74,16 +63,6 @@ html.dark-mode .pageheading {
     font-size: 1em;
     font-weight: normal;
     text-decoration: none;
-}
-
-html.dark-mode .pagedescription {
-    color: #fff;
-}
-
-html.dark-mode .image {
-    background-color: rgb(40, 44, 52);
-    text-align: left;
-    display: inline-block;
 }
 
 .pagea {
