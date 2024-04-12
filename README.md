@@ -1,5 +1,4 @@
-# Mario Kart 64
-[![Doxygen GitHub Pages Deploy Action](https://github.com/coco875/mk64/actions/workflows/doxygen-and-linux-test.yml/badge.svg)](https://github.com/coco875/mk64/actions/workflows/doxygen-and-linux-test.yml)   
+# Mario Kart 64   
 This work-in-progress decompilation of Mario Kart 64 pursues historical and educational elements within the game found via taking it apart and putting it back together. Inspiration to do so not only emanates from the game's hardware and technology but also its immensely positive effects on the cultures and families of nearly every nationality.
 
 This repository does not contain assets. Compiling requires asset extraction from a prior copy of the game.
@@ -18,18 +17,19 @@ Total progress consists of all code segments together.
 
 Game code progress consists of `main`, `ending` and `racing`.
 
-[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=totalProgress)](https://ci.valandil.ca/job/mk64/job/master/)
-[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=gameProgress)](https://ci.valandil.ca/job/mk64/job/master/)
+![Build Status](https://coco875.github.io/mk64/total_progress.svg)
+![Build Status](https://coco875.github.io/mk64/game_progress.svg)
 
-[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=bytesLeft)](https://ci.valandil.ca/job/mk64/job/master/)
-[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=m2c)](https://ci.valandil.ca/job/mk64/job/master/)
-[![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=nonmatching)](https://ci.valandil.ca/job/mk64/job/master/)  
+![Build Status](https://coco875.github.io/mk64/asm_funcs.svg)
+![Build Status](https://coco875.github.io/mk64/m2c_funcs.svg)
 
-- [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=mainProgress)](https://ci.valandil.ca/job/mk64/job/master/)
-- [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=endingProgress)](https://ci.valandil.ca/job/mk64/job/master/)
-- [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=racingProgress)](https://ci.valandil.ca/job/mk64/job/master/)
-- [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=audioProgress)](https://ci.valandil.ca/job/mk64/job/master/)
-- [![Build Status](https://ci.valandil.ca/buildStatus/icon?job=mk64%2Fmaster&config=osProgress)](https://ci.valandil.ca/job/mk64/job/master/)
+![Build Status](https://coco875.github.io/mk64/nonmatching_funcs.svg)
+
+- ![Build Status](https://coco875.github.io/mk64/seg_main_progress.svg)
+- ![Build Status](https://coco875.github.io/mk64/seg_ending_progress.svg)
+- ![Build Status](https://coco875.github.io/mk64/seg_racing_progress.svg)
+- ![Build Status](https://coco875.github.io/mk64/audio_progress.svg)
+- ![Build Status](https://coco875.github.io/mk64/libultra_progress.svg)
 
 ## Quick Start
 
