@@ -93,7 +93,6 @@ expected/*
 
 # Doxygen
 docs/html/*
-!docs/html/*.png
 docs/doxygen_syms.md
 
 # windows build
