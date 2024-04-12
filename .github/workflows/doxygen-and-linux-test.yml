@@ -38,6 +38,11 @@ jobs:
         run: |
           ./doxygen-*/bin/doxygen Doxyfile
       
+      - name: make badge
+        run: |
+          pip install pybadges
+          python3 progress.py badge
+      
       - name: Create .nojekyll (ensures pages with underscores work on gh pages)
         run: touch docs/html/.nojekyll
       
