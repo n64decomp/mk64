@@ -176,7 +176,21 @@ ifeq ($(DUMMY),FAIL)
 endif
 
 ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
+   # Make tools if out of date
+  DUMMY != make -C $(TOOLS_DIR)
+  ifeq ($(DUMMY),FAIL)
+    $(error Failed to build tools)
+  endif
   $(info Building ROM...)
+
+  # Make sure assets exist
+  NOEXTRACT ?= 0
+  ifeq ($(NOEXTRACT),0)
+    DUMMY != $(PYTHON) extract_assets.py $(VERSION) >&2 || echo FAIL
+    ifeq ($(DUMMY),FAIL)
+      $(error Failed to extract assets)
+    endif
+  endif
 endif
 
 
@@ -383,8 +397,6 @@ ifeq ($(COMPARE),1)
 endif
 
 assets:
-	@echo "Extracting assets with python..."
-	$(PYTHON) extract_assets.py $(VERSION) >&2
 	@echo "Extracting torch assets..."
 	@$(TORCH) code $(BASEROM)
 	@$(TORCH) header $(BASEROM)

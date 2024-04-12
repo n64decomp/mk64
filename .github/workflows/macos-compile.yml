@@ -1,4 +1,4 @@
-name: Linux Compile test
+name: Macos Compile test
 
 on:
     push:
@@ -8,20 +8,20 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    if: 0
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: "true"
       - name: Get Complementary file
         uses: actions/checkout@v4
         with:
           path: complementary_file
           repository: UnspaghettifyKart/action-build-private-file
-          ssh-key: ${{ secrets.LINUX_SSH_PRIVATE_KEY }}
+          ssh-key: ${{ secrets.MACOS_SSH_PRIVATE_KEY }}
       - name: Install dependencies
         run: |
-          sudo apt install build-essential cmake pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev
+          brew update
+          brew install python3 capstone coreutils make pkg-config tehzz/n64-dev/mips64-elf-binutils cmake
       - name: Build
         run: |
           cp -r complementary_file/* .

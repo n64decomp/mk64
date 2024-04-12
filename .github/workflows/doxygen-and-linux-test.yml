@@ -18,17 +18,19 @@ jobs:
         with:
           path: complementary_file
           repository: UnspaghettifyKart/action-build-private-file
-          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-key: ${{ secrets.LINUX_DEPLOY_SSH_PRIVATE_KEY }}
       - name: Install dependencies
         run: |
           sudo apt install build-essential cmake pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev
       - name: Build
         run: |
           cp -r complementary_file/* .
-          ./build.sh
+          echo ${{ secrets.AES_KEY }} | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in baserom.us.z64.aes -out baserom.us.z64
+          make assets
+          make -j
       - name: Install Doxygen
         run: |
-          sudo apt-get install graphviz doxygen -y
+          sudo apt-get install graphviz doxygen
           wget https://www.doxygen.nl/files/doxygen-1.10.0.linux.bin.tar.gz
           tar -xzf doxygen-*.linux.bin.tar.gz
       
