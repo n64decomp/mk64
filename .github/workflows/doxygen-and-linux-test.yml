@@ -34,14 +34,14 @@ jobs:
           wget https://www.doxygen.nl/files/doxygen-1.10.0.linux.bin.tar.gz
           tar -xzf doxygen-*.linux.bin.tar.gz
       
-      - name: Generate Doxygen documentation
-        run: |
-          ./doxygen-*/bin/doxygen Doxyfile
-      
       - name: make badge
         run: |
           pip install pybadges
           python3 progress.py badge
+      
+      - name: Generate Doxygen documentation
+        run: |
+          ./doxygen-*/bin/doxygen Doxyfile
       
       - name: Create .nojekyll (ensures pages with underscores work on gh pages)
         run: touch docs/html/.nojekyll
