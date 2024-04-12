@@ -21,7 +21,7 @@ jobs:
           ssh-key: ${{ secrets.WINDOWS_SSH_PRIVATE_KEY }}
       - name: Install dependencies
         run: |
-          Invoke-WebRequest https://github.com/coco875/mk64-tools/releases/download/v0.0.6/mips-tools-chain-windows.zip -OutFile mips-tools-chain-windows.zip
+          Invoke-WebRequest https://github.com/coco875/mk64-tools/releases/download/v0.0.7/mips-tools-chain-windows.zip -OutFile mips-tools-chain-windows.zip
           Expand-Archive mips-tools-chain-windows.zip -DestinationPath mips-tools-chain-windows
           Copy-Item -Path mips-tools-chain-windows/mingw64 -Destination tools -Recurse
       - name: Build
