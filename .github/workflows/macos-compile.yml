@@ -12,6 +12,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: "true"
       - name: Get Complementary file
         uses: actions/checkout@v4
         with:
