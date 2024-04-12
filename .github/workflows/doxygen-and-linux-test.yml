@@ -25,7 +25,7 @@ jobs:
       - name: Build
         run: |
           cp -r complementary_file/* .
-          echo ${{ secrets.AES_KEY }} | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in baserom.us.z64.aes -out baserom.us.z64
+          echo "${{ secrets.AES_KEY }}" | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in baserom.us.z64.aes -out baserom.us.z64
           make assets
           make -j
       - name: Install Doxygen

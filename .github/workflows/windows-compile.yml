@@ -25,5 +25,5 @@ jobs:
       - name: Build
         run: |
           Copy-Item -Path complementary_file/* -Destination . -Recurse
-          echo ${{ secrets.AES_KEY }} | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in baserom.us.z64.aes -out baserom.us.z64
+          echo "${{ secrets.AES_KEY }}" | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in baserom.us.z64.aes -out baserom.us.z64
           python tools/windows_build.py
