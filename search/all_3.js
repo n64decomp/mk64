@@ -118,7 +118,7 @@ var searchData=
   ['add_5funused_5fobj_5findex_115',['add_unused_obj_index',['../update__objects_8c.html#a6e56a43ec98e81db05f2410893efa437',1,'update_objects.c']]],
   ['addr_116',['addr',['../structTrackSections.html#a095fe08228ac18a98e54f01c5ecc5a71',1,'TrackSections::addr'],['../structcourse__texture.html#abc74fecde327398a1d92be67cc525a53',1,'course_texture::addr']]],
   ['address_117',['address',['../struct____OSContRamReadFormat.html#adac20edde85fef49f024ca4167c8720b',1,'__OSContRamReadFormat::address'],['../struct____OSContEepromFormat.html#a526294f348ee31c4f9ab2fbfae16175c',1,'__OSContEepromFormat::address'],['../structOSPiInfo.html#abb30c97b709ef0fd174b7f5fce8a5615',1,'OSPiInfo::address']]],
-  ['addresses_118',['Addresses',['../concepts.html#addresses',1,'Addresses'],['../md_tools_2doxygen__syms.html',1,'Memory Addresses'],['../md_tools_2doxygen__syms.html#memory-addresses-1',1,'Memory Addresses']]],
+  ['addresses_118',['Addresses',['../concepts.html#addresses',1,'Addresses'],['../md_docs_2doxygen__syms.html',1,'Memory Addresses'],['../md_docs_2doxygen__syms.html#memory-addresses-1',1,'Memory Addresses']]],
   ['adjust_5fangle_119',['adjust_angle',['../render__player_8c.html#af630bf89117f79abdb4e5edc8c67d00f',1,'adjust_angle(s16 *angle, s16 targetAngle, s16 step):&#160;render_player.c'],['../render__player_8h.html#a770dbd89a07206c4d07e922468d12c41',1,'adjust_angle(s16 *, s16, s16):&#160;render_player.c']]],
   ['adpcmbook_120',['AdpcmBook',['../structAdpcmBook.html',1,'']]],
   ['adpcmdecstate_121',['adpcmdecState',['../structNoteSynthesisBuffers.html#a9d4d07634479fb01af35a8ca7ff09228',1,'NoteSynthesisBuffers']]],

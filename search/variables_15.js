@@ -284,12 +284,14 @@ var searchData=
   ['unused1_281',['unused1',['../structMkTexture.html#aa02ac00b6dc2d6d22e083d739a096cdf',1,'MkTexture']]],
   ['unused2_282',['unused2',['../structSharedDma.html#ad9f39ac9a532424bc08ce908e169a356',1,'SharedDma::unused2'],['../structMkTexture.html#acf6e0296b8a9711bff4cba40d90ac9d0',1,'MkTexture::unused2']]],
   ['unused_5fgmsgqueue_283',['unused_gMsgQueue',['../main_8c.html#a1948cb689914463956d3423726f626d6',1,'unused_gMsgQueue:&#160;main.c'],['../main_8h.html#a1948cb689914463956d3423726f626d6',1,'unused_gMsgQueue:&#160;main.h']]],
-  ['unusedeu0b8_284',['unusedEu0b8',['../structSequenceChannelLayer.html#abcda71d902b8d9e6a7ee038b2bd1cf2a',1,'SequenceChannelLayer']]],
-  ['up_285',['up',['../structCamera.html#ace6326d21c5f4e8aad4314a99839bafd',1,'Camera']]],
-  ['updatesperframe_286',['updatesPerFrame',['../structAudioBufferParametersEU.html#a1697638b0af762c9d700b187e120c890',1,'AudioBufferParametersEU']]],
-  ['updatesperframeinv_287',['updatesPerFrameInv',['../structAudioBufferParametersEU.html#a70aacf89643dec4da96e97cba1f9082f',1,'AudioBufferParametersEU']]],
-  ['used_288',['used',['../structUnkEntry.html#a5694063a75aaf50db1cb7d687e46bdc6',1,'UnkEntry']]],
-  ['usedspace_289',['usedSpace',['../structAllocOnlyPool.html#a35f92b08706806346c9579f39bd2b820',1,'AllocOnlyPool']]],
-  ['usereverb_290',['useReverb',['../structSynthesisReverb.html#a5b14756d9ad6c5588fdb97041605f43e',1,'SynthesisReverb']]],
-  ['usesheadsetpaneffects_291',['usesHeadsetPanEffects',['../structReverbBitsData.html#aa908f813a0564ca417bb72f3574c4bfd',1,'ReverbBitsData::usesHeadsetPanEffects'],['../structNoteSubEu.html#a348ed95a1f9f39ce69ce1ae82c696e8f',1,'NoteSubEu::usesHeadsetPanEffects']]]
+  ['unused_5ftrophy_5fbase2_284',['unused_trophy_base2',['../ceremony__data_8h.html#aa190279085dc1fd7171bd060082a9ce9',1,'ceremony_data.h']]],
+  ['unused_5ftrophy_5fbase_5fwith_5fhandle_285',['unused_trophy_base_with_handle',['../ceremony__data_8h.html#a73af1dbc77fe81749e5b1a007d39507a',1,'ceremony_data.h']]],
+  ['unusedeu0b8_286',['unusedEu0b8',['../structSequenceChannelLayer.html#abcda71d902b8d9e6a7ee038b2bd1cf2a',1,'SequenceChannelLayer']]],
+  ['up_287',['up',['../structCamera.html#ace6326d21c5f4e8aad4314a99839bafd',1,'Camera']]],
+  ['updatesperframe_288',['updatesPerFrame',['../structAudioBufferParametersEU.html#a1697638b0af762c9d700b187e120c890',1,'AudioBufferParametersEU']]],
+  ['updatesperframeinv_289',['updatesPerFrameInv',['../structAudioBufferParametersEU.html#a70aacf89643dec4da96e97cba1f9082f',1,'AudioBufferParametersEU']]],
+  ['used_290',['used',['../structUnkEntry.html#a5694063a75aaf50db1cb7d687e46bdc6',1,'UnkEntry']]],
+  ['usedspace_291',['usedSpace',['../structAllocOnlyPool.html#a35f92b08706806346c9579f39bd2b820',1,'AllocOnlyPool']]],
+  ['usereverb_292',['useReverb',['../structSynthesisReverb.html#a5b14756d9ad6c5588fdb97041605f43e',1,'SynthesisReverb']]],
+  ['usesheadsetpaneffects_293',['usesHeadsetPanEffects',['../structReverbBitsData.html#aa908f813a0564ca417bb72f3574c4bfd',1,'ReverbBitsData::usesHeadsetPanEffects'],['../structNoteSubEu.html#a348ed95a1f9f39ce69ce1ae82c696e8f',1,'NoteSubEu::usesHeadsetPanEffects']]]
 ];

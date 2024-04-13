@@ -5,5 +5,7 @@ var dir_bd282373516b07341e164b3414026660 =
     [ "course_displaylists.inc.c", "sherbet__land_2course__displaylists_8inc_8c.html", "sherbet__land_2course__displaylists_8inc_8c" ],
     [ "course_displaylists.inc.h", "sherbet__land_2course__displaylists_8inc_8h.html", "sherbet__land_2course__displaylists_8inc_8h" ],
     [ "course_offsets.c", "sherbet__land_2course__offsets_8c.html", "sherbet__land_2course__offsets_8c" ],
+    [ "course_textures.linkonly.c", "sherbet__land_2course__textures_8linkonly_8c.html", "sherbet__land_2course__textures_8linkonly_8c" ],
+    [ "course_textures.linkonly.h", "sherbet__land_2course__textures_8linkonly_8h.html", "sherbet__land_2course__textures_8linkonly_8h" ],
     [ "course_vertices.inc.c", "sherbet__land_2course__vertices_8inc_8c.html", "sherbet__land_2course__vertices_8inc_8c" ]
 ];

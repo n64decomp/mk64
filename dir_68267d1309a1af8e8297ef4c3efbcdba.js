@@ -35,7 +35,7 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "code_800AF9B0.h", "code__800AF9B0_8h.html", "code__800AF9B0_8h" ],
     [ "crash_screen.c", "crash__screen_8c.html", "crash__screen_8c" ],
     [ "crash_screen.h", "crash__screen_8h.html", "crash__screen_8h" ],
-    [ "data_segment2.h", "data__segment2_8h.html", "data__segment2_8h" ],
+    [ "data_segment2.h", "src_2data__segment2_8h.html", "src_2data__segment2_8h" ],
     [ "effects.c", "effects_8c.html", "effects_8c" ],
     [ "effects.h", "effects_8h.html", "effects_8h" ],
     [ "gbiMacro.c", "gbiMacro_8c.html", "gbiMacro_8c" ],
