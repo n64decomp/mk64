@@ -93,8 +93,12 @@ expected/*
 
 # Doxygen
 docs/html/*
+docs/doxygen_syms.md
 
 # windows build
 mingw64/
 .ash_history
 !tools/ido-recomp/*/*
+
+# torch
+torch.hash.yml

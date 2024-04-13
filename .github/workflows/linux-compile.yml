@@ -1,0 +1,30 @@
+name: Linux Compile test
+
+on:
+    push:
+      branches: [ "*" ]
+    pull_request:
+      branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          submodules: "true"
+      - name: Get Complementary file
+        uses: actions/checkout@v4.1.1
+        with:
+          path: complementary_file
+          repository: UnspaghettifyKart/action-build-private-file
+          ssh-key: ${{ secrets.LINUX_SSH_PRIVATE_KEY }}
+      - name: Install dependencies
+        run: |
+          sudo apt install build-essential cmake pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev
+      - name: Build
+        run: |
+          cp -r complementary_file/* .
+          echo "${{ secrets.AES_KEY }}" | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in baserom.us.z64.aes -out baserom.us.z64
+          make assets
+          make -j

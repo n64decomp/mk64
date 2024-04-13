@@ -176,8 +176,7 @@ ifeq ($(DUMMY),FAIL)
 endif
 
 ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
-
- # Make tools if out of date
+   # Make tools if out of date
   DUMMY != make -C $(TOOLS_DIR)
   ifeq ($(DUMMY),FAIL)
     $(error Failed to build tools)
@@ -356,7 +355,7 @@ BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
 ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
 LINKONLY_GENERATOR    := $(PYTHON) $(TOOLS_DIR)/linkonly_generator.py
-TORCH                 := tools/torch/cmake-build-release/torch
+TORCH                 := $(TOOLS_DIR)/torch/cmake-build-release/torch
 EMULATOR               = mupen64plus
 EMU_FLAGS              = --noosd
 LOADER                 = loader64
