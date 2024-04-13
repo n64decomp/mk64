@@ -11,7 +11,7 @@ It supports and builds the following versions:
 | mk64.eu-1.0.z64   | EUR 1.0 | a729039453210b84f17019dda3f248d5888f7690 |
 | mk64.eu-final.z64 | EUR 1.1 | f6b5f519dd57ea59e9f013cc64816e9d273b2329 |
 
-status: [![Linux Compile test](https://github.com/n64decomp/mk64/actions/workflows/linux-compile.yml/badge.svg)](https://github.com/n64decomp/mk64/actions/workflows/linux-compile.yml)
+[![Linux Compile](https://github.com/n64decomp/mk64/actions/workflows/linux-compile.yml/badge.svg)](https://github.com/n64decomp/mk64/actions/workflows/linux-compile.yml)
 
 ## Progress
 
@@ -40,7 +40,6 @@ git submodule update --init --recursive
 Extract assets
 ```
 make assets -j
-```
 make -j
 ```
 
