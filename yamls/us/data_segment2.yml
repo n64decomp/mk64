@@ -156,7 +156,7 @@ D_02007B18:
   symbol: D_02007B18
   type: Gfx
   offset: 0x7B18
-D_02007B38:
+D_02007B38: # unused
   symbol: D_02007B38
   type: vtx
   offset: 0x7B38
@@ -165,137 +165,137 @@ D_02007BB8:
   symbol: D_02007BB8
   type: vtx
   offset: 0x7BB8
-  count: 2
-D_02007BD8:
-  symbol: D_02007BD8
-  type: vtx
-  offset: 0x7BD8
-  count: 2
-D_02007BF8:
-  symbol: D_02007BF8
-  type: vtx
-  offset: 0x7BF8
-  count: 2
-D_02007C18:
-  symbol: D_02007C18
-  type: vtx
-  offset: 0x7C18
-  count: 2
-D_02007C38:
-  symbol: D_02007C38
-  type: vtx
-  offset: 0x7C38
-  count: 2
-D_02007C58:
-  symbol: D_02007C58
-  type: vtx
-  offset: 0x7C58
-  count: 2
-D_02007C78:
-  symbol: D_02007C78
-  type: vtx
-  offset: 0x7C78
-  count: 2
-D_02007C98:
-  symbol: D_02007C98
-  type: vtx
-  offset: 0x7C98
-  count: 2
-D_02007CB8:
-  symbol: D_02007CB8
-  type: vtx
-  offset: 0x7CB8
-  count: 2
-D_02007CD8:
-  symbol: D_02007CD8
-  type: vtx
-  offset: 0x7CD8
-  count: 2
-D_02007CF8:
-  symbol: D_02007CF8
-  type: vtx
-  offset: 0x7CF8
-  count: 2
-D_02007D18:
-  symbol: D_02007D18
-  type: vtx
-  offset: 0x7D18
-  count: 2
-D_02007D38:
-  symbol: D_02007D38
-  type: vtx
-  offset: 0x7D38
-  count: 2
-D_02007D58:
-  symbol: D_02007D58
-  type: vtx
-  offset: 0x7D58
-  count: 2
-D_02007D78:
-  symbol: D_02007D78
-  type: vtx
-  offset: 0x7D78
-  count: 2
-D_02007D98:
-  symbol: D_02007D98
-  type: vtx
-  offset: 0x7D98
-  count: 2
-D_02007DB8:
-  symbol: D_02007DB8
-  type: vtx
-  offset: 0x7DB8
-  count: 2
-D_02007DD8:
-  symbol: D_02007DD8
-  type: vtx
-  offset: 0x7DD8
-  count: 2
-D_02007DF8:
-  symbol: D_02007DF8
-  type: vtx
-  offset: 0x7DF8
-  count: 2
-D_02007E18:
-  symbol: D_02007E18
-  type: vtx
-  offset: 0x7E18
-  count: 2
-D_02007E38:
-  symbol: D_02007E38
-  type: vtx
-  offset: 0x7E38
-  count: 2
-D_02007E58:
-  symbol: D_02007E58
-  type: vtx
-  offset: 0x7E58
-  count: 2
-D_02007E78:
-  symbol: D_02007E78
-  type: vtx
-  offset: 0x7E78
-  count: 2
-D_02007E98:
-  symbol: D_02007E98
-  type: vtx
-  offset: 0x7E98
-  count: 2
-D_02007EB8:
-  symbol: D_02007EB8
-  type: vtx
-  offset: 0x7EB8
-  count: 2
-D_02007ED8:
-  symbol: D_02007ED8
-  type: vtx
-  offset: 0x7ED8
-  count: 2
-D_02007EF8:
-  symbol: D_02007EF8
-  type: vtx
-  offset: 0x7EF8
-  count: 2
+  count: 54
+#  D_02007BD8:
+#    symbol: D_02007BD8
+#    type: vtx
+#    offset: 0x7BD8
+#    count: 2
+# D_02007BF8:
+#   symbol: D_02007BF8
+#   type: vtx
+#   offset: 0x7BF8
+#   count: 2
+# D_02007C18:
+#   symbol: D_02007C18
+#   type: vtx
+#   offset: 0x7C18
+#   count: 2
+# D_02007C38:
+#   symbol: D_02007C38
+#   type: vtx
+#   offset: 0x7C38
+#   count: 2
+# D_02007C58:
+#   symbol: D_02007C58
+#   type: vtx
+#   offset: 0x7C58
+#   count: 2
+# D_02007C78:
+#   symbol: D_02007C78
+#   type: vtx
+#   offset: 0x7C78
+#   count: 2
+# D_02007C98:
+#   symbol: D_02007C98
+#   type: vtx
+#   offset: 0x7C98
+#   count: 2
+# D_02007CB8:
+#   symbol: D_02007CB8
+#   type: vtx
+#   offset: 0x7CB8
+#   count: 2
+# D_02007CD8:
+#   symbol: D_02007CD8
+#   type: vtx
+#   offset: 0x7CD8
+#   count: 2
+# D_02007CF8:
+#   symbol: D_02007CF8
+#   type: vtx
+#   offset: 0x7CF8
+#   count: 2
+# D_02007D18:
+#   symbol: D_02007D18
+#   type: vtx
+#   offset: 0x7D18
+#   count: 2
+# D_02007D38:
+#   symbol: D_02007D38
+#   type: vtx
+#   offset: 0x7D38
+#   count: 2
+# D_02007D58:
+#   symbol: D_02007D58
+#   type: vtx
+#   offset: 0x7D58
+#   count: 2
+# D_02007D78:
+#   symbol: D_02007D78
+#   type: vtx
+#   offset: 0x7D78
+#   count: 2
+# D_02007D98:
+#   symbol: D_02007D98
+#   type: vtx
+#   offset: 0x7D98
+#   count: 2
+# D_02007DB8:
+#   symbol: D_02007DB8
+#   type: vtx
+#   offset: 0x7DB8
+#   count: 2
+# D_02007DD8:
+#   symbol: D_02007DD8
+#   type: vtx
+#   offset: 0x7DD8
+#   count: 2
+# D_02007DF8:
+#   symbol: D_02007DF8
+#   type: vtx
+#   offset: 0x7DF8
+#   count: 2
+# D_02007E18:
+#   symbol: D_02007E18
+#   type: vtx
+#   offset: 0x7E18
+#   count: 2
+# D_02007E38:
+#   symbol: D_02007E38
+#   type: vtx
+#   offset: 0x7E38
+#   count: 2
+# D_02007E58:
+#   symbol: D_02007E58
+#   type: vtx
+#   offset: 0x7E58
+#   count: 2
+# D_02007E78:
+#   symbol: D_02007E78
+#   type: vtx
+#   offset: 0x7E78
+#   count: 2
+# D_02007E98:
+#   symbol: D_02007E98
+#   type: vtx
+#   offset: 0x7E98
+#   count: 2
+# D_02007EB8:
+#   symbol: D_02007EB8
+#   type: vtx
+#   offset: 0x7EB8
+#   count: 2
+# D_02007ED8:
+#   symbol: D_02007ED8
+#   type: vtx
+#   offset: 0x7ED8
+#   count: 2
+# D_02007EF8:
+#   symbol: D_02007EF8
+#   type: vtx
+#   offset: 0x7EF8
+#   count: 2
 D_02007F18:
   symbol: D_02007F18
   type: gfx

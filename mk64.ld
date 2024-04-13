@@ -267,6 +267,7 @@ SECTIONS
       BUILD_DIR/src/os/osViData.o(.data*);
       BUILD_DIR/src/os/_Litob.o(.data*);
       BUILD_DIR/src/main.o(.rodata*);
+      BUILD_DIR/src/code_80004740.o(.rodata*);
       BUILD_DIR/src/code_800029B0.o(.rodata*);
       BUILD_DIR/src/code_80005FD0.jp.o(.rodata*);
       BUILD_DIR/src/camera.o(.rodata*);
@@ -274,6 +275,8 @@ SECTIONS
       BUILD_DIR/src/player_controller.o(.rodata*);
       BUILD_DIR/src/spawn_players.o(.rodata*);
       BUILD_DIR/src/code_8003DC40.o(.rodata*);
+      BUILD_DIR/src/gbiMacro.o(.rodata*);
+      BUILD_DIR/src/math_util_2.o(.rodata*);
       BUILD_DIR/src/render_objects.o(.rodata*);
       BUILD_DIR/src/code_80057C60.o(.rodata*);
       BUILD_DIR/src/code_8006E9C0.o(.rodata*);
@@ -281,7 +284,7 @@ SECTIONS
       BUILD_DIR/src/code_80086E70.o(.rodata*);
       BUILD_DIR/src/effects.o(.rodata*);
       BUILD_DIR/src/code_80091750.jp.o(.rodata*);
-      BUILD_DIR/src/code_800AF9B0.o(.rodatav);
+      BUILD_DIR/src/code_800AF9B0.o(.rodata*);
       BUILD_DIR/src/menus.o(.rodata*);
       BUILD_DIR/src/save.o(.rodata*);
       BUILD_DIR/src/audio/heap.o(.rodata*);
@@ -438,8 +441,11 @@ SECTIONS
       BUILD_DIR/src/ending/dl_unk_80284EE0.o(.data*);
       BUILD_DIR/src/ending/credits.jp.o(.data*);
       BUILD_DIR/src/ending/ceremony_and_credits.o(.data*);
+      BUILD_DIR/src/ending/code_80280000.o(.rodata*);
       BUILD_DIR/src/ending/podium_ceremony_actors.o(.rodata*);
       BUILD_DIR/src/ending/camera_junk.o(.rodata*);
+      BUILD_DIR/src/ending/code_80281780.o(.rodata*);
+      BUILD_DIR/src/ending/code_80281C40.o(.rodata*);
       BUILD_DIR/src/ending/credits.jp.o(.rodata*);
       BUILD_DIR/src/ending/ceremony_and_credits.o(.rodata*);
    }
