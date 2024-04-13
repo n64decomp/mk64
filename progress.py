@@ -540,7 +540,7 @@ elif args.format == 'badge':
     badge_game_pct = badge(left_text="Game progress", right_text=str(round(gamePct, 2))+"%", right_color="green")
     with open("docs/html/game_progress.svg", "w") as f:
         f.write(badge_game_pct)
-    badge_asm_funcs = badge(left_text="ASM functions", right_text=str(TotalGlobalAsmFunctions), right_color="blue")
+    badge_asm_funcs = badge(left_text="WIP functions", right_text=str(TotalGlobalAsmFunctions), right_color="blue")
     with open("docs/html/asm_funcs.svg", "w") as f:
         f.write(badge_asm_funcs)
     badge_nonmatching_funcs = badge(left_text="NON_MATCHING functions", right_text=str(TotalNonMatchingFunctions), right_color="blue")
