@@ -5,6 +5,6 @@
 /displaylist_packer
 /tkmk00
 /extract_data_for_mio
-
+/torch/cmake-build-release/*
 __pycache__
 *.pyc

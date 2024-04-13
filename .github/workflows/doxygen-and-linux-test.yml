@@ -1,0 +1,54 @@
+name: Doxygen GitHub Pages Deploy Action
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.1
+        with:
+          submodules: "true"
+      - name: Get Complementary file
+        uses: actions/checkout@v4.1.1
+        with:
+          path: complementary_file
+          repository: UnspaghettifyKart/action-build-private-file
+          ssh-key: ${{ secrets.LINUX_DEPLOY_SSH_PRIVATE_KEY }}
+      - name: Install dependencies
+        run: |
+          sudo apt install build-essential cmake pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev
+      - name: Build
+        run: |
+          cp -r complementary_file/* .
+          echo "${{ secrets.AES_KEY }}" | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in baserom.us.z64.aes -out baserom.us.z64
+          make assets
+          make -j
+      - name: Install Doxygen
+        run: |
+          sudo apt-get install graphviz doxygen
+          wget https://www.doxygen.nl/files/doxygen-1.10.0.linux.bin.tar.gz
+          tar -xzf doxygen-*.linux.bin.tar.gz
+      
+      - name: make badge
+        run: |
+          pip install pybadges
+          python3 progress.py badge
+      
+      - name: Generate Doxygen documentation
+        run: |
+          ./doxygen-*/bin/doxygen Doxyfile
+      
+      - name: Create .nojekyll (ensures pages with underscores work on gh pages)
+        run: touch docs/html/.nojekyll
+      
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: docs/html
