@@ -6767,7 +6767,7 @@ Gfx d_course_koopa_troopa_beach_dl_AD40[] =
 };
 
 // 0xADE0 path
-TrackWaypoint d_course_koopa_troopa_beach_unknown_waypoints0[] = {
+TrackWaypoint d_course_koopa_troopa_beach_unknown_waypoints[] = {
     {-34, 0, 103, 0},
     {-34, 0, 60, 0},
     {-38, 0, -184, 0},
@@ -6894,7 +6894,7 @@ TrackWaypoint d_course_koopa_troopa_beach_unknown_waypoints1[] = {
     {-32768, 0, 0, 0},
 };
 
-TrackWaypoint d_course_koopa_troopa_beach_track_waypoints0[] = {
+TrackWaypoint d_course_koopa_troopa_beach_track_waypoints[] = {
     {-34, 1, 81, 1},
     {-34, 1, 61, 1},
     {-34, 1, 41, 1},
@@ -7506,7 +7506,7 @@ TrackWaypoint d_course_koopa_troopa_beach_track_waypoints0[] = {
     {-32768, -32768, -32768, 0},
 };
 
-TrackWaypoint d_course_koopa_troopa_beach_track_waypoints1[] = {
+TrackWaypoint d_course_koopa_troopa_beach_track_waypoints_2[] = {
     {-29, 1, 88, 1},
     {-29, 1, 68, 1},
     {-29, 1, 48, 1},

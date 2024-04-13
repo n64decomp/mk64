@@ -16,7 +16,7 @@
 #include "objects.h"
 #include "waypoints.h"
 #include "bomb_kart.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "render_player.h"
 #include "code_80004740.h"
 #include "code_80005FD0.h"
@@ -30,7 +30,7 @@
 #include "menus.h"
 #include "code_80086E70.h"
 #include "code_800029B0.h"
-#include "src/data/data_800E45C0.h"
+#include <assets/data_800E45C0.h>
 #include "courses/all_course_data.h"
 #include <vehicles.h>
 #include "data/some_data.h"
@@ -2373,13 +2373,13 @@ void func_8004F3E4(s32 arg0) {
     case GRAND_PRIX:
         for (idx = D_8018D158 - 1; idx >= 0; idx--) {
             playerId = gGPCurrentRacePlayerIdByRank[idx];
-            if ((gPlayerOne + playerId)->type & PLAYER_CPU) {
+            if ((gPlayerOne + playerId)->type & PLAYER_KART_AI) {
                 func_8004F168(arg0, playerId, 8);
             }
         }
         for (idx = D_8018D158 - 1; idx >= 0; idx--) {
             playerId = gGPCurrentRacePlayerIdByRank[idx];
-            if (((gPlayerOne + playerId)->type & PLAYER_CPU) != PLAYER_CPU) {
+            if (((gPlayerOne + playerId)->type & PLAYER_KART_AI) != PLAYER_KART_AI) {
                 func_8004F168(arg0, playerId, (gPlayerOne + playerId)->characterId);
             }
         }

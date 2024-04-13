@@ -13,3 +13,6 @@
 [submodule "tools/blender/fast64"]
 	path = tools/blender/fast64
 	url = https://github.com/coco875/fast64.git
+[submodule "tools/torch"]
+	path = tools/torch
+	url = https://github.com/HarbourMasters/torch

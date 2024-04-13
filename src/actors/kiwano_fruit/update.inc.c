@@ -18,7 +18,7 @@ void update_actor_kiwano_fruit(struct KiwanoFruit *fruit) {
     s32 nearestWaypoint;
 
     player = &gPlayers[fruit->targetPlayer];
-    if (((player->type & PLAYER_CPU) != 0) || (player->unk_110.unk34 == 0)) {
+    if (((player->type & PLAYER_KART_AI) != 0) || (player->unk_110.unk34 == 0)) {
         fruit->state = 0;
         return;
     }

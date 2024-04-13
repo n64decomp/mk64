@@ -22,12 +22,12 @@
 
 //! @todo Verify with proper documentation
 // functions called by mtxShadow multiply by 8
-// 8 CPU Players * 4 real players in coop
+// 8 Kart AI Players * 4 real players in coop
 #define MTX_SHADOW_POOL_SIZE 8 * 4
 
 //! @todo Verify with proper documentation
 // functions called by mtxKart multiply by 8
-// 8 CPU Players * 4 real players in coop
+// 8 Kart AI Players * 4 real players in coop
 #define MTX_KART_POOL_SIZE 8 * 4
 
 #define MTX_EFFECT_POOL_SIZE 660
@@ -182,7 +182,7 @@ extern struct SPTask *gGfxSPTask;
 extern s32 D_801502A0;
 extern s32 D_801502A4;
 extern u16 *gPhysicalFramebuffers[];
-extern u32 D_801502B4;
+extern uintptr_t gPhysicalZBuffer;
 extern Mat4 D_801502C0;
 
 extern s32 padding[];
@@ -230,10 +230,5 @@ extern f32 gVBlankTimer;
 extern f32 gCourseTimer;
 
 // end of definition of main.c variables
-
-extern u64 gGfxSPTaskOutputBuffer[];
-extern u32 gGfxSPTaskOutputBufferSize;
-
-extern u32 *D_801978D0; // Segment? Keeps track of segmented addresses?
 
 #endif

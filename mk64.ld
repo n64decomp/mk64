@@ -3,7 +3,14 @@
 
 OUTPUT_ARCH (mips)
 
-#include "include/linker_segments.h"
+#define LINKER_MAIN        0x80000400
+
+#define LINKER_ENDING      0x80280000
+
+#define LINKER_RACING      0x8028DF00
+
+// End of Jumper pak memory
+#define RDRAM_END         0x807FFFFF
 
 #define BEGIN_SEG(name, addr) \
     _##name##SegmentStart = ADDR(.name); \
@@ -81,7 +88,7 @@ SECTIONS
          BUILD_DIR/src/debug/crash_screen_enhancement.o(.text);
          BUILD_DIR/src/debug/debug.o(.text);
          BUILD_DIR/src/os/sprintf.o(.text);
-      BUILD_DIR/src/os/is_debug.o(.text);
+         BUILD_DIR/src/os/is_debug.o(.text);
       #endif
       BUILD_DIR/src/os/osCreateThread.o(.text);
       #ifdef VERSION_EU
@@ -209,7 +216,7 @@ SECTIONS
       BUILD_DIR/src/profiler.o(.data);
       BUILD_DIR/src/crash_screen.o(.data);
       BUILD_DIR/src/staff_ghosts.o(.data);
-      BUILD_DIR/src/data/path_spawn_data.o(.data);
+      BUILD_DIR/src/data/path_spawn_metadata.o(.data);
       BUILD_DIR/src/camera.o(.data);
       BUILD_DIR/src/render_player.o(.data);
       BUILD_DIR/src/kart_dma.o(.data);
@@ -217,7 +224,7 @@ SECTIONS
       BUILD_DIR/src/player_controller.o(.data);
       BUILD_DIR/src/spawn_players.o(.data);
       BUILD_DIR/src/update_objects.o(.data);
-      BUILD_DIR/src/data/data_800E45C0.o(.data);
+      BUILD_DIR/assets/code/data_800E45C0/data_800E45C0.o(.data);
       BUILD_DIR/src/code_80057C60.o(.data);
       BUILD_DIR/src/data/some_data.o(.data);
       BUILD_DIR/src/effects.o(.data);
@@ -226,7 +233,7 @@ SECTIONS
       BUILD_DIR/src/code_800AF9B0.o(.data);
       BUILD_DIR/src/menus.o(.data);
       BUILD_DIR/src/save.o(.data);
-      BUILD_DIR/src/data/data_800E8700.o(.data);
+      BUILD_DIR/assets/code/data_800E8700/data_800E8700.o(.data);
       BUILD_DIR/src/audio/synthesis.o(.data);
       BUILD_DIR/src/audio/heap.o(.data);
       BUILD_DIR/src/audio/load.o(.data);
@@ -342,13 +349,15 @@ SECTIONS
       BUILD_DIR/src/os/osEepromWrite.o(.bss);
       BUILD_DIR/asm/os/__osException.o(.bss);
       BUILD_DIR/src/os/osLeoDiskInit.o(.bss);
+      . = ALIGN(0x10);
    }
    END_NOLOAD(main)
 
    /* Checks that segments are not overlapping into the memory pool but is not strictly necessary */
    BEGIN_NOLOAD(memoryPool)
    {
-      BUILD_DIR/src/data/memory_pool.o(.bss);
+      BUILD_DIR/src/buffers/memory_pool.o(.bss);
+      . = ALIGN(0x10);
    }
    END_NOLOAD(memoryPool)
    
@@ -387,19 +396,21 @@ SECTIONS
       BUILD_DIR/src/racing/race_logic.o(.bss*);
       BUILD_DIR/src/racing/actors.o(.bss*);
       BUILD_DIR/src/racing/memory.o(.bss*);
+      BUILD_DIR/src/buffers/random.o(.bss*);
       . = ALIGN(0x10);
    }
    END_NOLOAD(racing)
 
    BEGIN_NOLOAD(buffers)
    {
-      BUILD_DIR/src/data/buffers.o(.bss*);
-      BUILD_DIR/src/data/gfx_output_buffer.o(.bss*);
+      BUILD_DIR/src/buffers/trig_tables_bss.o(.bss*);
+      BUILD_DIR/src/buffers/buffers.o(.bss*);
+      BUILD_DIR/src/buffers/gfx_output_buffer.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/src/audio/heap.o(.bss*);
-      BUILD_DIR/src/audio/load.o(.bss);
-      BUILD_DIR/src/audio/data.o(.bss);
-      . = ALIGN(0x8);
+      BUILD_DIR/src/audio/load.o(.bss*);
+      BUILD_DIR/src/audio/data.o(.bss*);
+      . = ALIGN(0x10);
    }
    END_NOLOAD(buffers)
 
@@ -438,7 +449,7 @@ SECTIONS
    BEGIN_SEG(data_segment2, 0x02000000)
    {
       BUILD_DIR/src/data/textures.o(.data);
-      BUILD_DIR/src/data/data_segment2.o(.data);
+      BUILD_DIR/assets/code/data_segment2/data_segment2.o(.data);
    }
    END_SEG(data_segment2)
 
@@ -446,7 +457,7 @@ SECTIONS
    /* common textures, decompressed and set as segment 0x0D */
    BEGIN_SEG(common_textures, 0x0D000000)
    {
-      BUILD_DIR/src/data/common_textures.mio0.o(.data);
+      BUILD_DIR/assets/code/common_data/common_data.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(common_textures)
@@ -476,9 +487,9 @@ SECTIONS
    END_SEG(other_textures)
 
    /* 0x802BA370 724220-729A30 [0x5810] */
-   BEGIN_SEG(trigTables, LINKER_TRIG_TABLES)
+   BEGIN_SEG(trigTables, _buffersSegmentNoloadStart)
    {
-        BUILD_DIR/src/data/trig_tables.o(.data);
+        BUILD_DIR/src/buffers/trig_tables.o(.data);
         . = ALIGN(0x10);
    }
    END_SEG(trigTables)
@@ -504,14 +515,14 @@ SECTIONS
             0x828400 -> 0x8028DE30 (0xD0) */
    BEGIN_SEG(ceremonyData, 0x0B000000)
    {
-      BUILD_DIR/src/ending/ceremony_data.mio0.o(.data);
+      BUILD_DIR/assets/code/ceremony_data/ceremony_data.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(ceremonyData)
 
    BEGIN_SEG(startupLogo, 0x06000000)
    {
-      BUILD_DIR/src/data/startup_logo.mio0.o(.data);
+      BUILD_DIR/assets/code/startup_logo/startup_logo.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(startupLogo)
@@ -645,6 +656,8 @@ SECTIONS
    ASSERT((_mainSegmentNoloadEnd <= _memoryPoolSegmentNoloadStart), "Error: Main segment extended into the memory pool.")
    ASSERT((_memoryPoolSegmentNoloadEnd <= _endingSegmentStart), "Error: Memory pool extended into the ending segment.")
    ASSERT((_endingSegmentNoloadEnd <= _racingSegmentStart), "Error: Ending segment extended into the racing segment")
+   ASSERT((_endingSegmentNoloadEnd <= _racingSegmentStart), "Error: Ending segment extended into the racing segment.")
    ASSERT((_racingSegmentNoloadEnd <= _buffersSegmentNoloadStart), "Error: Racing segment extended into the buffers segment.")
    ASSERT((_buffersSegmentNoloadEnd <= RDRAM_END), "Error: Buffers segment extended past 8MB of memory")
+   ASSERT((_buffersSegmentNoloadEnd <= RDRAM_END), "Error: Buffers segment extended into trig tables segment.")
 }

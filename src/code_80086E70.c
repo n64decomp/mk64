@@ -1041,7 +1041,7 @@ void func_80089474(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 soundB
     if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
         func_80072180();
     }
-    if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
+    if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->type & PLAYER_KART_AI) != PLAYER_KART_AI)) {
         func_800C9060(playerId, soundBits);
     }
 }
@@ -1051,7 +1051,7 @@ void func_80089538(s32 objectIndex, s32 playerId, f32 arg2, f32 arg3, u32 soundB
     Player *player;
 
     player = &gPlayerOne[playerId];
-    if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
+    if ((func_8008933C(player, objectIndex, arg2, arg3) >= 4.0) && ((player->type & PLAYER_KART_AI) != PLAYER_KART_AI)) {
         func_800C9060((u8) playerId, soundBits);
     }
 }
@@ -1109,7 +1109,7 @@ void func_80089820(s32 objectIndex, f32 arg1, f32 arg2, u32 arg3) {
                         if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                             func_80072180();
                         }
-                        if ((func_8008933C(player, objectIndex, arg1, arg2 * 1.1) >= 4.0) && ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
+                        if ((func_8008933C(player, objectIndex, arg1, arg2 * 1.1) >= 4.0) && ((player->type & PLAYER_KART_AI) != PLAYER_KART_AI)) {
                             func_800C9060(var_s1, arg3);
                         }
                     }

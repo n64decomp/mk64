@@ -16,6 +16,7 @@
 // Here to appease the pragma gods
 double fabs(double x);
 
+void func_802B5794(Mat4, Vec3f, Vec3f);
 s32 func_802B4F60(s32, Vec3f, s32, f32, f32);
 s32  render_set_position(Mat4, s32);
 f32  func_802B51E8(Vec3f, Vec3f);
@@ -68,9 +69,5 @@ f32  is_within_render_distance(Vec3f, Vec3f, u16, f32, f32, f32);
 
 extern s32 D_802B91C0[];
 extern Vec3f D_802B91C8;
-
-// end of math_util.c variables
-
-extern u16 gRandomSeed16;
 
 #endif // MATH_UTIL_H
