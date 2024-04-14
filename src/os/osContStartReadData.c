@@ -11,7 +11,7 @@ u32 _osContPifCtrl;
 ALIGNED8 OSContPackedStruct _osContCmdBuf[8];
 #endif
 
-extern u8 _osLastSentSiCmd;
+extern u8 __osContLastCmd;
 extern u8 _osContNumControllers;
 
 void __osPackReadData(void);
@@ -19,7 +19,7 @@ s32 osContStartReadData(OSMesgQueue *mesg) {
     s32 ret = 0;
     s32 i;
     __osSiGetAccess();
-    if (_osLastSentSiCmd != 1) {
+    if (__osContLastCmd != 1) {
         __osPackReadData();
         ret = __osSiRawStartDma(OS_WRITE, _osContCmdBuf);
         osRecvMesg(mesg, NULL, OS_MESG_BLOCK);
@@ -30,7 +30,7 @@ s32 osContStartReadData(OSMesgQueue *mesg) {
 
     _osContPifCtrl = 0;
     ret = __osSiRawStartDma(OS_READ, _osContCmdBuf);
-    _osLastSentSiCmd = 1;
+    __osContLastCmd = 1;
     __osSiRelAccess();
     return ret;
 }

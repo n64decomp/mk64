@@ -6,9 +6,9 @@ extern u8 _osContNumControllers;
 extern OSTimer D_80196548;
 extern OSMesgQueue _osContMesgQueue;
 extern OSMesg _osContMesgBuff[4];
-// exactly the same as osEepromLongRead except for osEepromWrite call
 
-s32 osEepromLongWrite(OSMesgQueue *mq, u8 address, u8 *buffer, int nbytes) {
+// exactly the same as osEepromLongRead except for osEepromWrite call
+s32 osEepromLongWrite(OSMesgQueue *mq, u8 address, u8 *buffer, s32 nbytes) {
     s32 result = 0;
     if (address > 0x40) {
         return -1;
@@ -20,9 +20,9 @@ s32 osEepromLongWrite(OSMesgQueue *mq, u8 address, u8 *buffer, int nbytes) {
             return result;
         }
 
-        nbytes -= 8;
-        address += 1;
-        buffer += 8;
+        nbytes -= EEPROM_BLOCK_SIZE;
+        address++;
+        buffer += EEPROM_BLOCK_SIZE;
         osSetTimer(&D_80196548, 12000 * osClockRate / 1000000, 0, &_osContMesgQueue, _osContMesgBuff);
         osRecvMesg(&_osContMesgQueue, NULL, OS_MESG_BLOCK);
     }
