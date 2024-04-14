@@ -283,6 +283,7 @@ SECTIONS
       BUILD_DIR/src/update_objects.o(.rodata*);
       BUILD_DIR/src/code_80086E70.o(.rodata*);
       BUILD_DIR/src/effects.o(.rodata*);
+      BUILD_DIR/src/code_80091440.o(.rodata*);
       BUILD_DIR/src/code_80091750.jp.o(.rodata*);
       BUILD_DIR/src/code_800AF9B0.o(.rodata*);
       BUILD_DIR/src/menus.o(.rodata*);

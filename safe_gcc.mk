@@ -1,11 +1,10 @@
 # This file is auto-generated. DO NOT MODIFY!
 
 SAFE_C_FILES :=    \
-    build/us/src/main.o    \
     build/us/src/camera.o    \
     build/us/src/spawn_players.o    \
-    build/us/src/code_8008C1D0.o    \
     build/us/src/code_8003DC40.o    \
+    build/us/src/code_80091440.o    \
     build/us/src/effects.o    \
     build/us/src/code_80057C60_var.o    \
     build/us/src/code_800029B0.o    \
@@ -18,27 +17,33 @@ SAFE_C_FILES :=    \
     build/us/src/gbiMacro.o    \
     build/us/src/kart_dma.o    \
     build/us/src/math_util_2.o    \
-    build/us/src/data/gfx_output_buffer.o    \
-    build/us/src/data/data_segment2.inc.o    \
-    build/us/src/data/trig_tables.o    \
-    build/us/src/data/buffers.o    \
-    build/us/src/data/data_800E8700.o    \
-    build/us/src/data/data_800E45C0.o    \
-    build/us/src/data/kart_attributes.inc.o    \
+    build/us/src/main.o    \
+    build/us/src/data/kart_attributes.o    \
+    build/us/src/data/path_spawn_metadata.o    \
+    build/us/src/data/textures.o    \
     build/us/src/data/trig_tables_bss.o    \
-    build/us/src/data/startup_logo.inc.o    \
-    build/us/src/data/textures.inc.o    \
+    build/us/src/data/data_segment2.o    \
+    build/us/src/audio/seqplayer.o    \
+    build/us/src/audio/heap.o    \
+    build/us/src/audio/effects.o    \
+    build/us/src/audio/playback.o    \
+    build/us/src/audio/audio_session_presets.o    \
+    build/us/src/audio/port_eu.o    \
+    build/us/src/buffers/gfx_output_buffer.o    \
+    build/us/src/buffers/trig_tables.o    \
+    build/us/src/buffers/buffers.o    \
+    build/us/src/buffers/random.o    \
+    build/us/src/buffers/trig_tables_bss.o    \
+    build/us/src/buffers/memory_pool.o    \
     build/us/src/ending/credits.o    \
     build/us/src/ending/code_80280000.o    \
     build/us/src/ending/ceremony_and_credits.o    \
+    build/us/src/ending/dl_unk_80284EE0.o    \
     build/us/src/ending/code_80281780.o    \
     build/us/src/ending/podium_ceremony_actors.o    \
-    build/us/src/ending/dl_unk_80284EE0.inc.o    \
-    build/us/src/ending/ceremony_data.inc.o    \
     build/us/src/ending/code_80281C40.o    \
     build/us/src/ending/camera_junk.o    \
     build/us/src/debug/debug.o    \
-    build/us/src/debug/debug.inc.o    \
     build/us/src/debug/crash_screen_enhancement.o    \
     build/us/src/racing/collision.o    \
     build/us/src/racing/skybox_and_splitscreen.o    \
@@ -160,3 +165,4 @@ SAFE_C_FILES :=    \
     build/us/src/os/math/cosf.o    \
     build/us/src/os/math/llmuldiv.o    \
     build/us/src/os/math/sinf.o    \
+    build/us/assets/code/common_data/common_data.o
