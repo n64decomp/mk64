@@ -1,7 +1,5 @@
 var NAVTREEINDEX116 =
 {
-"structUnk__800E9F7C.html#a77e10a0f94eee2ccbdc8d6c0ce4b9f21":[7,0,216,4],
-"structUnk__800E9F7C.html#a82d24ddf3bf8b5a49d6affe4484769cb":[7,0,216,2],
 "structUnk__800E9F7C.html#a87c83f2ccddc2e170a2ac29a27a67502":[7,0,216,9],
 "structUnk__800E9F7C.html#aaf16346504718babc5e50ab18d945e68":[7,0,216,12],
 "structUnk__800E9F7C.html#ae8fed38a7f135f9e08adf0c2ae48518b":[7,0,216,7],
@@ -249,5 +247,7 @@ var NAVTREEINDEX116 =
 "structanimation__type__3.html#acdfd501a55156ac053adac9d7f492d58":[7,0,44,0],
 "structcourse__texture.html":[7,0,62],
 "structcourse__texture.html#a46504f7bfa82687cab6d337fc73ee6c5":[7,0,62,2],
-"structcourse__texture.html#a99c1333d6cf1f6c7397eee1132f01d22":[7,0,62,3]
+"structcourse__texture.html#a99c1333d6cf1f6c7397eee1132f01d22":[7,0,62,3],
+"structcourse__texture.html#a9ac186720b9213a255a125d95aa902f1":[7,0,62,1],
+"structcourse__texture.html#abc74fecde327398a1d92be67cc525a53":[7,0,62,0]
 };

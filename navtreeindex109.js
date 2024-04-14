@@ -1,7 +1,5 @@
 var NAVTREEINDEX109 =
 {
-"startup__logo_8h.html#a243b80084d0e2d5d2eff6eee4630e351":[8,0,2,0,6,86],
-"startup__logo_8h.html#a26d28357d32231b35c7cb249c6581688":[8,0,2,0,6,6],
 "startup__logo_8h.html#a286356b8384dd8c061eaf7b4e4839bfa":[8,0,2,0,6,45],
 "startup__logo_8h.html#a2bc7f8e290059df7dd7777f005a81996":[8,0,2,0,6,35],
 "startup__logo_8h.html#a2c16f85166a5b7ed4136a6bf0a0a0438":[8,0,2,0,6,5],
@@ -249,5 +247,7 @@ var NAVTREEINDEX109 =
 "structAllocOnlyPool.html#ad7c514cf095a5604a5cd5231cfb6c290":[7,0,35,0],
 "structAudioBank.html":[7,0,45],
 "structAudioBank.html#a18135a07ed4e0a146a36c2f3fdefd57c":[7,0,45,1],
-"structAudioBank.html#a24a599791d5abf0ba92582f55d2e9149":[7,0,45,0]
+"structAudioBank.html#a24a599791d5abf0ba92582f55d2e9149":[7,0,45,0],
+"structAudioBankSample.html":[7,0,46],
+"structAudioBankSample.html#a024100001b19351bd6ce4e92dc9fa070":[7,0,46,4]
 };

@@ -1,7 +1,5 @@
 var NAVTREEINDEX114 =
 {
-"structSeqOrBankEntry.html#a277046429254499bb6ff951c81714d93":[7,0,148,3],
-"structSeqOrBankEntry.html#a416bfb04131bc8f88f9ef60c3ab53d79":[7,0,148,0],
 "structSeqOrBankEntry.html#a970e3bb4e58a3a033742eaaed511b551":[7,0,148,2],
 "structSeqOrBankEntry.html#aca73d6b5641e6ef48b0cb165a83c1e22":[7,0,148,1],
 "structSequenceChannel.html":[7,0,149],
@@ -249,5 +247,7 @@ var NAVTREEINDEX114 =
 "structSynthesisReverb.html#a13b37fc2117b3721934456caf9b0fcc0":[7,0,202,7],
 "structSynthesisReverb.html#a1b25d21952ec1fc371d3a00dd6802e5a":[7,0,202,11],
 "structSynthesisReverb.html#a1b2d1ba08d5b8167132952dba7512fba":[7,0,202,18],
-"structSynthesisReverb.html#a21a142dba6c0a8f3735e1ab5bb5cce7a":[7,0,202,9]
+"structSynthesisReverb.html#a21a142dba6c0a8f3735e1ab5bb5cce7a":[7,0,202,9],
+"structSynthesisReverb.html#a2352e4dda5d3276c505131850353caa8":[7,0,202,5],
+"structSynthesisReverb.html#a54c2267cc8a0a5d27b436b5fa9139b9f":[7,0,202,16]
 };

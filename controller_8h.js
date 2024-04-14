@@ -66,12 +66,12 @@ var controller_8h =
     [ "__osPfsSelectBank", "controller_8h.html#a48ae814c96ad6ad40ffceb2ee8cac6b4", null ],
     [ "__osRepairPackId", "controller_8h.html#aef46f2f348aa04f58019de1b9036fcec", null ],
     [ "__osSumcalc", "controller_8h.html#a76143c1f81ddeb59c526d145fb024528", null ],
+    [ "__osContLastCmd", "controller_8h.html#adf9e03963d9e26809b0ce77d37dc444c", null ],
     [ "__osContPifRam", "controller_8h.html#a6a29baafac3d81292d61350fd90d47ab", null ],
     [ "__osEepPifRam", "controller_8h.html#a9297ef9905c6ea39653f28233432d792", null ],
     [ "__osEepromTimer", "controller_8h.html#a6f9aa96297587acff77c92d10dd1811e", null ],
     [ "__osEepromTimerMsg", "controller_8h.html#adbabaa02073ce2de61fdd31924f34018", null ],
     [ "__osEepromTimerQ", "controller_8h.html#a1144084c570d273b89cca3edc7b98c70", null ],
     [ "__osPfsPifRam", "controller_8h.html#a0fcf2770e70d045d1ef22018dfb38554", null ],
-    [ "_osContNumControllers", "controller_8h.html#ab58627f83d7b5069c7d442eb1c05f014", null ],
-    [ "_osLastSentSiCmd", "controller_8h.html#afe8553b91d51b2a96d97792d1359a516", null ]
+    [ "_osContNumControllers", "controller_8h.html#ab58627f83d7b5069c7d442eb1c05f014", null ]
 ];

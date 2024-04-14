@@ -1,7 +1,5 @@
 var NAVTREEINDEX118 =
 {
-"structstruct__D__801930D0__entry.html#a2d55892d56cf64ac1ee77c150dc9134b":[7,0,194,7],
-"structstruct__D__801930D0__entry.html#a300736a789a273317d8e72b3e21777d2":[7,0,194,5],
 "structstruct__D__801930D0__entry.html#a5cdb80b611b9c204d9041ef45d819059":[7,0,194,4],
 "structstruct__D__801930D0__entry.html#a6750e8d9afe960a825a38052f99ae0cf":[7,0,194,16],
 "structstruct__D__801930D0__entry.html#a6dd67bacadab845849e35775cd3d679f":[7,0,194,17],
@@ -155,12 +153,9 @@ var NAVTREEINDEX118 =
 "structunexpiredActors.html#ac078e39059e87df951857931426d370a":[7,0,213,1],
 "structunkStruct.html":[7,0,227],
 "structunkStruct.html#a396a48d87f773dfd1879879953ea4944":[7,0,227,0],
-"structunkStruct.html#a42c72afe2bb11fb995032210f3fd870a":[7,0,227,2],
-"structunkStruct.html#a42c72afe2bb11fb995032210f3fd870a":[7,0,227,1],
-"structunkStruct.html#a73560f27f24832f5216166ac22e5f607":[7,0,227,6],
-"structunkStruct.html#a74daa572feb494ae94f9bce49bb8a2cd":[7,0,227,3],
-"structunkStruct.html#a9405c1027e1922776b95b7a71d6ad6bf":[7,0,227,4],
-"structunkStruct.html#a96d9be87fe3a8212f4b95e955ab94d36":[7,0,227,5],
+"structunkStruct.html#a73560f27f24832f5216166ac22e5f607":[7,0,227,3],
+"structunkStruct.html#a74daa572feb494ae94f9bce49bb8a2cd":[7,0,227,2],
+"structunkStruct.html#a982612a71e9116faf47994e48dbd24a0":[7,0,227,1],
 "structunkStruct2.html":[7,0,228],
 "structunkStruct2.html#a5c24a83af05e6948f556936182b50f6e":[7,0,228,0],
 "structunkStruct2.html#a5c8ecb83da0494c9a1a6d1775b350334":[7,0,228,2],
@@ -249,5 +244,10 @@ var NAVTREEINDEX118 =
 "textures_8c.html#a011d523cc8bdb4cb88c57418abb0a5a1":[8,0,3,3,6,235],
 "textures_8c.html#a012b2a20c67568bfd8e62b112265c1f8":[8,0,3,3,6,0],
 "textures_8c.html#a0161524401239860338f2fca436fed52":[8,0,3,3,6,458],
-"textures_8c.html#a0170d8ff1e50cc16b96b2a427bca545e":[8,0,3,3,6,309]
+"textures_8c.html#a0170d8ff1e50cc16b96b2a427bca545e":[8,0,3,3,6,309],
+"textures_8c.html#a018fc009e36b77202fa188146b5b6b95":[8,0,3,3,6,614],
+"textures_8c.html#a01e04a48a4634ded0205820da8eb44fd":[8,0,3,3,6,140],
+"textures_8c.html#a0261483425bd021bbb60ac05c5018cb4":[8,0,3,3,6,267],
+"textures_8c.html#a029896d10f2095dcf2bf072a7af606c1":[8,0,3,3,6,193],
+"textures_8c.html#a02af2f918fa61777986bbf7e6c34f03f":[8,0,3,3,6,487]
 };
