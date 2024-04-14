@@ -9,7 +9,7 @@ u32 _osContInitialized = 0;
 extern u64 osClockRate;
 
 // these probably belong in EEPROMlongread or something
-u8 _osLastSentSiCmd;
+u8 __osContLastCmd;
 u8 _osContNumControllers;
 OSTimer D_80196548;
 OSMesgQueue _osContMesgQueue;
@@ -39,7 +39,7 @@ s32 osContInit(OSMesgQueue *mq, u8 *bitpattern, OSContStatus *status) {
     ret = __osSiRawStartDma(OS_READ, _osContCmdBuf);
     osRecvMesg(mq, &mesg, OS_MESG_BLOCK);
     __osContGetInitData(bitpattern, status);
-    _osLastSentSiCmd = 0;
+    __osContLastCmd = 0;
     __osSiCreateAccessQueue();
     osCreateMesgQueue(&_osContMesgQueue, _osContMesgBuff, 1);
     return ret;
@@ -54,8 +54,8 @@ void __osContGetInitData(u8 *bitpattern, OSContStatus *status) {
     cmdBufPtr = &(_osContCmdBuf[0].request);
     for (i = 0; i < _osContNumControllers; i++, cmdBufPtr++, status++) {
         response = *(OSContPackedRequest *) cmdBufPtr;
-        status->errno = (response.rxLen & 0xc0) >> 4;
-        if (status->errno == 0) {
+        status->errnum = (response.rxLen & 0xc0) >> 4;
+        if (status->errnum == 0) {
             status->type = response.data2 << 8 | response.data1;
             status->status = response.data3;
 

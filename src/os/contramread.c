@@ -15,7 +15,7 @@ s32 __osContRamRead(OSMesgQueue *mq, int channel, u16 address, u8 *buffer) {
     ptr = (u8 *)&__osPfsPifRam;
     retry = 2;
     __osSiGetAccess();
-    _osLastSentSiCmd = CONT_CMD_READ_MEMPACK;
+    __osContLastCmd = CONT_CMD_READ_MEMPACK;
     __osPackRamReadData(channel, address);
     ret = __osSiRawStartDma(OS_WRITE, &__osPfsPifRam);
     osRecvMesg(mq, NULL, OS_MESG_BLOCK);
