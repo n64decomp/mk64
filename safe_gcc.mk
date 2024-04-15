@@ -165,4 +165,3 @@ SAFE_C_FILES :=    \
     build/us/src/os/math/cosf.o    \
     build/us/src/os/math/llmuldiv.o    \
     build/us/src/os/math/sinf.o    \
-    build/us/assets/code/common_data/common_data.o
