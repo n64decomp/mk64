@@ -378,10 +378,10 @@ extern f32 D_800E43B0[];
 extern Vtx D_800E43F0[];
 extern Vtx D_800E4470[];
 extern Vtx D_800E44B0[];
-extern u8 *gItemWindowTLUTs[];
+extern u16 *gItemWindowTLUTs[];
 extern u8 *gItemWindowTextures[];
-extern u8 *gHudLapTextures[];
-extern u8 *gPortraitTLUTs[];
+extern u16 *gHudLapTextures[];
+extern u16 *gPortraitTLUTs[];
 extern u8 *gPortraitTextures[];
 
 extern s32 D_80162DF8;

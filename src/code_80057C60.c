@@ -1082,7 +1082,7 @@ void render_hud_2p_horizontal_player_two_horizontal_player_one(void) {
     if (gHUDDisable == 0) {
         render_hud_timer(PLAYER_ONE);
         if (playerHUD[PLAYER_ONE].lapCount != 3) {
-            draw_hud_2d_texture_32x8(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, common_texture_hud_lap); // draw the lap word
+            draw_hud_2d_texture_32x8(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, (u8*) common_texture_hud_lap); // draw the lap word
             draw_lap_count(playerHUD[PLAYER_ONE].lapX + 0xC, playerHUD[PLAYER_ONE].lapY - 4, playerHUD[PLAYER_ONE].alsoLapCount);
             draw_item_window(PLAYER_ONE);
         }
@@ -1097,7 +1097,7 @@ void render_hud_2p_horizontal_player_two(void) {
     if (gHUDDisable == 0) {
         render_hud_timer(PLAYER_TWO);
         if (playerHUD[PLAYER_TWO].lapCount != 3) {
-            draw_hud_2d_texture_32x8(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, common_texture_hud_lap);
+            draw_hud_2d_texture_32x8(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, (u8*) common_texture_hud_lap);
             draw_lap_count(playerHUD[PLAYER_TWO].lapX + 0xC, playerHUD[PLAYER_TWO].lapY - 4, playerHUD[PLAYER_TWO].alsoLapCount);
             draw_item_window(PLAYER_TWO);
         }

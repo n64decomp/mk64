@@ -296,7 +296,7 @@
 /**
  * @brief Item IDs
  */
-typedef enum ITEMS {
+enum ITEMS {
     /* 0x00 */ ITEM_NONE = 0,
     /* 0x01 */ ITEM_BANANA,
     /* 0x02 */ ITEM_BANANA_BUNCH,
@@ -315,7 +315,7 @@ typedef enum ITEMS {
     /* 0x0F */ ITEM_SUPER_MUSHROOM
 };
 
-typedef enum KART_AI_BEHAVIOURS {
+enum KART_AI_BEHAVIOURS {
     BEHAVIOUR_NONE = 0,
     BEHAVIOUR_1,
     BEHAVIOUR_HOP,

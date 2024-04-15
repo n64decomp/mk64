@@ -68,7 +68,7 @@ Vtx D_800E44B0[] = {
     {{{  -24,   20,    0}, 0, { 3008, 2496}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
 };
 
-u8 *gItemWindowTLUTs[] = {
+u16 *gItemWindowTLUTs[] = {
     common_tlut_item_window_none, common_tlut_item_window_banana, common_tlut_item_window_banana_bunch, common_tlut_item_window_green_shell,
     common_tlut_item_window_triple_green_shell, common_tlut_item_window_red_shell, common_tlut_item_window_triple_red_shell, common_tlut_item_window_blue_shell,
     common_tlut_item_window_thunder_bolt, common_tlut_item_window_fake_item_box, common_tlut_item_window_star, common_tlut_item_window_boo,
@@ -82,11 +82,11 @@ u8 *gItemWindowTextures[] = {
     common_texture_item_window_mushroom, common_texture_item_window_double_mushroom, common_texture_item_window_triple_mushroom, common_texture_item_window_super_mushroom
 };
 
-u8 *gHudLapTextures[] = {
+u16 *gHudLapTextures[] = {
     common_texture_hud_lap_1_on_3, common_texture_hud_lap_2_on_3, common_texture_hud_lap_3_on_3
 };
 
-u8 *gPortraitTLUTs[] = {
+u16 *gPortraitTLUTs[] = {
     common_tlut_portrait_mario, common_tlut_portrait_luigi, common_tlut_portrait_yoshi, common_tlut_portrait_toad,
     common_tlut_portrait_donkey_kong, common_tlut_portrait_wario, common_tlut_portrait_peach, common_tlut_portrait_bowser
 };
@@ -2382,8 +2382,8 @@ void init_object_leaf_particle(s32 objectIndex, Vec3f arg1, s32 num) {
 
     init_object(objectIndex, 0);
     gObjectList[objectIndex].unk_0D5 = 7;
-    gObjectList[objectIndex].activeTLUT = common_texture_particle_leaf;
-    gObjectList[objectIndex].tlutList = common_texture_particle_leaf;
+    gObjectList[objectIndex].activeTLUT = (u8*) common_texture_particle_leaf;
+    gObjectList[objectIndex].tlutList = (u8*) common_texture_particle_leaf;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].unk_044 = arg1[1];
     switch (gCurrentCourseId) {
@@ -3046,7 +3046,7 @@ void init_obj_lakitu_red_flag(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, common_tlut_lakitu_checkered_flag, gTextureLakituCheckeredFlag01, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, (u8*) common_tlut_lakitu_checkered_flag, gTextureLakituCheckeredFlag01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
     temp_v0->vertex = common_vtx_also_lakitu;
@@ -3123,7 +3123,7 @@ void func_8007993C(s32 objectIndex, Player *player) {
 
 void init_obj_lakitu_red_flag_fishing(s32 objectIndex, s32 arg1) {
     func_800791F0(objectIndex, arg1);
-    init_texture_object(objectIndex, common_tlut_lakitu_fishing, gTextureLakituFishing1, 0x38U, (u16) 0x00000048);
+    init_texture_object(objectIndex, (u8*) common_tlut_lakitu_fishing, gTextureLakituFishing1, 0x38U, (u16) 0x00000048);
     gObjectList[objectIndex].vertex = D_0D005F30;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     func_80086E70(objectIndex);
@@ -3296,7 +3296,7 @@ void func_8007A060(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, common_tlut_lakitu_second_lap, gTextureLakituSecondLap01, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, (u8*) common_tlut_lakitu_second_lap, gTextureLakituSecondLap01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
     temp_v0->vertex = common_vtx_also_lakitu;
@@ -3344,7 +3344,7 @@ void func_8007A228(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, common_tlut_lakitu_final_lap, gTextureLakituFinalLap01, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, (u8*) common_tlut_lakitu_final_lap, gTextureLakituFinalLap01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
     temp_v0->vertex = common_vtx_also_lakitu;
@@ -3391,7 +3391,7 @@ void update_object_lakitu_final_lap(s32 objectIndex, s32 playerIndex) {
 void func_8007A3F0(s32 objectIndex, s32 arg1) {
     f32 var = 5000.0f;
     func_800791F0(objectIndex, arg1);
-    init_texture_object(objectIndex, common_tlut_lakitu_reverse, gTextureLakituReverse01, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, (u8*) common_tlut_lakitu_reverse, gTextureLakituReverse01, 0x48U, (u16) 0x00000038);
     gObjectList[objectIndex].activeTexture = D_8018C028;
     gObjectList[objectIndex].vertex = common_vtx_also_lakitu;
     gObjectList[objectIndex].pos[2] = var;
@@ -3943,7 +3943,7 @@ void func_8007B34C(s32 playerId) {
             }
         }
     }
-    temp_t0->activeTLUT = gItemWindowTLUTs[temp_t0->itemDisplay];
+    temp_t0->activeTLUT = (u8*) gItemWindowTLUTs[temp_t0->itemDisplay];
     temp_t0->activeTexture = gItemWindowTextures[temp_t0->itemDisplay];
     sp38->currentItemCopy = temp_t0->type;
 }
