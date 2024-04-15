@@ -2,6 +2,8 @@
 
 include util.mk
 
+include safe_gcc.mk
+
 # Default target
 default: all
 
@@ -26,8 +28,12 @@ COMPILER ?= ido
 $(eval $(call validate-option,COMPILER,ido gcc))
 
 # Add debug tools with 'make DEBUG=1' and modify the macros in include/debug.h
-# Run make clean first. Add '#define CRASH_SCREEN_ENHANCEMENT' to the top of main.c
+# Adds crash screen enhancement and activates debug mode
+# Run make clean first
 DEBUG ?= 0
+
+# Compile with GCC
+GCC ?= 0
 
 # VERSION - selects the version of the game to build
 #   us - builds the 1997 North American version
@@ -76,6 +82,7 @@ ifeq      ($(COMPILER),ido)
   MIPSISET := -mips2
 else ifeq ($(COMPILER),gcc)
   NON_MATCHING := 1
+  VERSION_ASFLAGS := --defsym AVOID_UB=1
   MIPSISET     := -mips3
 endif
 
@@ -93,10 +100,14 @@ endif
 
 ifeq ($(NON_MATCHING),1)
   DEFINES += NON_MATCHING=1 AVOID_UB=1
+  VERSION_ASFLAGS := --defsym AVOID_UB=1
   COMPARE := 0
 endif
 
-
+# GCC define is to link gcc's std lib.
+ifeq ($(GCC), 1)
+    DEFINES += AVOID_UB=1 GCC=1
+endif
 
 # COMPARE - whether to verify the SHA-1 hash of the ROM after building
 #   1 - verifies the SHA-1 hash of the selected version of the game
@@ -328,7 +339,7 @@ else
   CFLAGS += $(HIDE_WARNINGS) -non_shared -Wab,-r4300_mul -Xcpluscomm -Xfullwarn -signed -32
 endif
 
-ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) $(foreach d,$(DEFINES),--defsym $(d))
+ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) $(VERSION_ASFLAGS) $(foreach d,$(DEFINES),--defsym $(d))
 
 # Fills end of rom
 OBJCOPYFLAGS = --pad-to=0xC00000 --gap-fill=0xFF
@@ -383,6 +394,20 @@ endif
 define print
   @$(PRINT) "$(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
 endef
+
+# Override commmands for GCC Safe Files
+ifeq ($(GCC),1)
+  $(BUILD_DIR)/src/main.o:                          OPT_FLAGS := -g
+  $(BUILD_DIR)/src/racing/skybox_and_splitscreen.o: OPT_FLAGS := -g
+  $(BUILD_DIR)/src/racing/render_courses.o:         OPT_FLAGS := -g
+  $(SAFE_C_FILES): OPT_FLAGS := -O3
+  $(SAFE_C_FILES): CC        := $(CROSS)gcc
+  $(SAFE_C_FILES): MIPSISET  := -mips3
+  $(SAFE_C_FILES): CFLAGS    := -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS) -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float \
+   -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions          \
+   -ffreestanding -fwrapv -Wall -Wextra -ffast-math -fno-unsafe-math-optimizations
+  $(SAFE_C_FILES): CC_CHECK := gcc -m32
+endif
 
 
 

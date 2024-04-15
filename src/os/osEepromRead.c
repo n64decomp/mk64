@@ -1,29 +1,10 @@
 #include "libultra_internal.h"
-#include "controller.h"
 #include "macros.h"
+#include "controller.h"
 
-extern u8 __osContLastCmd;
+extern u8 _osLastSentSiCmd;
 
 extern OSPifRam __osEepPifRam;
-
-typedef struct {
-    u8 unk00;
-    u8 unk01;
-    u8 unk02;
-    u8 unk03;
-    u8 unk04;
-    u8 unk05;
-    u8 unk06;
-    u8 unk07;
-} unkStruct3;
-
-typedef struct {
-    u8 unk00;
-    u8 unk01;
-    u8 unk02;
-    u8 unk03;
-    unkStruct3 unk04;
-} unkStruct2;
 
 s32 __osEepStatus(OSMesgQueue *, OSContStatus *);
 void __osPackEepReadData(u8);

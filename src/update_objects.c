@@ -2955,7 +2955,7 @@ void init_obj_lakitu_red_flag_countdown(s32 objectIndex, s32 arg1) {
         D_8018D168 = 0;
     }
     init_texture_object(objectIndex, (u8 *) common_tlut_lakitu_countdown, gTextureLakituNoLights1, 0x38U, (u16) 0x00000048);
-    gObjectList[objectIndex].vertex = D_0D005EB0;
+    gObjectList[objectIndex].vertex = common_vtx_lakitu;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     set_object_flag_status_false(objectIndex, 0x00000010);
     func_80072488(objectIndex);
@@ -3048,7 +3048,7 @@ void init_obj_lakitu_red_flag(s32 objectIndex, s32 playerIndex) {
     init_texture_object(objectIndex, common_tlut_lakitu_checkered_flag, gTextureLakituCheckeredFlag01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
-    temp_v0->vertex = D_0D006730;
+    temp_v0->vertex = common_vtx_also_lakitu;
     temp_v0->pos[2] = 5000.0f;
     temp_v0->pos[1] = 5000.0f;
     temp_v0->pos[0] = 5000.0f;
@@ -3298,7 +3298,7 @@ void func_8007A060(s32 objectIndex, s32 playerIndex) {
     init_texture_object(objectIndex, common_tlut_lakitu_second_lap, gTextureLakituSecondLap01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
-    temp_v0->vertex = D_0D006730;
+    temp_v0->vertex = common_vtx_also_lakitu;
     temp_v0->pos[2] = 5000.0f;
     temp_v0->pos[1] = 5000.0f;
     temp_v0->pos[0] = 5000.0f;
@@ -3346,7 +3346,7 @@ void func_8007A228(s32 objectIndex, s32 playerIndex) {
     init_texture_object(objectIndex, common_tlut_lakitu_final_lap, gTextureLakituFinalLap01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
-    temp_v0->vertex = D_0D006730;
+    temp_v0->vertex = common_vtx_also_lakitu;
     temp_v0->pos[2] = 5000.0f;
     temp_v0->pos[1] = 5000.0f;
     temp_v0->pos[0] = 5000.0f;
@@ -3392,7 +3392,7 @@ void func_8007A3F0(s32 objectIndex, s32 arg1) {
     func_800791F0(objectIndex, arg1);
     init_texture_object(objectIndex, common_tlut_lakitu_reverse, gTextureLakituReverse01, 0x48U, (u16) 0x00000038);
     gObjectList[objectIndex].activeTexture = D_8018C028;
-    gObjectList[objectIndex].vertex = D_0D006730;
+    gObjectList[objectIndex].vertex = common_vtx_also_lakitu;
     gObjectList[objectIndex].pos[2] = var;
     gObjectList[objectIndex].pos[1] = var;
     gObjectList[objectIndex].pos[0] = var;
@@ -6698,7 +6698,7 @@ void func_8008311C(s32 objectIndex, s32 arg1) {
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->activeTLUT = d_course_yoshi_valley_hedgehog_tlut;
     temp_s0->activeTexture = d_course_yoshi_valley_hedgehog;
-    temp_s0->vertex = D_0D0060B0;
+    temp_s0->vertex = common_vtx_hedgehog;
     temp_s0->sizeScaling = 0.2f;
     temp_s0->itemDisplay = 0;
     func_80072488(objectIndex);
@@ -6754,7 +6754,7 @@ void func_800833D0(s32 objectIndex, s32 arg1) {
         break;
     }
     if (gObjectList[objectIndex].itemDisplay == 0) {
-        gObjectList[objectIndex].vertex = D_0D0060B0;
+        gObjectList[objectIndex].vertex = common_vtx_hedgehog;
     } else {
         gObjectList[objectIndex].vertex = D_0D006130;
     }
@@ -6897,7 +6897,7 @@ void func_80083A94(s32 objectIndex) {
 
 void func_80083B0C(s32 objectIndex) {
     init_texture_object(objectIndex, d_course_frappe_snowland_snowman_tlut, d_course_frappe_snowland_snowman_body, 0x40U, (u16) 0x00000040);
-    gObjectList[objectIndex].vertex = D_0D0060B0;
+    gObjectList[objectIndex].vertex = common_vtx_hedgehog;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].itemDisplay = 0;
     func_80072488(objectIndex);

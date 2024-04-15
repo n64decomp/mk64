@@ -616,7 +616,7 @@ void init_cloud_object(s32 objectIndex, s32 arg1, CloudData *arg2) {
     temp_v0->unk_09E = arg2->posY;
     temp_v0->sizeScaling = (f32) arg2->scalePercent / 100.0;
     temp_v0->activeTexture = &D_8018D220[arg2->subType];
-    func_80073404(objectIndex, 0x40U, 0x20U, &D_0D005FB0);
+    func_80073404(objectIndex, 0x40U, 0x20U, &D_0D005FB0[0]);
     temp_v0->primAlpha = 0x00FF;
 }
 

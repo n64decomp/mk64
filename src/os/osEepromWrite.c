@@ -7,25 +7,6 @@ OSPifRam __osEepPifRam;
 
 extern u8 __osContLastCmd;
 
-typedef struct {
-    u8 unk00;
-    u8 unk01;
-    u8 unk02;
-    u8 unk03;
-    u8 unk04;
-    u8 unk05;
-    u8 unk06;
-    u8 unk07;
-} unkStruct3;
-
-typedef struct {
-    u8 unk00;
-    u8 unk01;
-    u8 unk02;
-    u8 unk03;
-    unkStruct3 unk04;
-} unkStruct2;
-
 s32 __osEepStatus(OSMesgQueue *, OSContStatus *);
 void __osPackEepWriteData(u8, u8 *);
 
