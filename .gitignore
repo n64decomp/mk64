@@ -100,5 +100,9 @@ mingw64/
 .ash_history
 !tools/ido-recomp/*/*
 
+# models
+models/*/*
+!models/*/*.json
+
 # torch
 torch.hash.yml

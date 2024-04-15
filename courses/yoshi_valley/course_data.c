@@ -451,6 +451,10 @@ Gfx d_course_yoshi_valley_dl_BC0[] =
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_5DF8),
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_5C18),
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_59F0),
+};
+
+Gfx d_course_yoshi_valley_dl_CC0[] = 
+{
     gsSPDisplayList(d_course_yoshi_valley_dl_0),
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_388),
     gsSPDisplayList(d_course_yoshi_valley_packed_dl_490),
@@ -11439,7 +11443,7 @@ Gfx *d_course_yoshi_valley_dl_list[] = {
     d_course_yoshi_valley_dl_40, d_course_yoshi_valley_dl_3F0,
     d_course_yoshi_valley_dl_290, d_course_yoshi_valley_dl_4E8,
     d_course_yoshi_valley_dl_7A0, d_course_yoshi_valley_dl_BC0,
-    d_course_yoshi_valley_dl_9C8, 0x06000CC0, // <- No idea what this is supposed to be a pointer to
+    d_course_yoshi_valley_dl_9C8, d_course_yoshi_valley_dl_CC0,
     d_course_yoshi_valley_dl_FA0, d_course_yoshi_valley_dl_13F8,
     d_course_yoshi_valley_dl_1178, d_course_yoshi_valley_dl_14D0,
     d_course_yoshi_valley_dl_17A8, d_course_yoshi_valley_dl_1C38,
