@@ -189,17 +189,17 @@ extern u16 D_80152300[];
 extern u16 D_80152308;
 
 extern OSThread gIdleThread;
-extern u8 gIdleThreadStack[0x2000];
+extern u8 gIdleThreadStack[];
 extern OSThread gVideoThread;
-extern u8 gVideoThreadStack[0x2000];
+extern u8 gVideoThreadStack[];
 extern OSThread gGameLoopThread;
-extern u8 gGameLoopThreadStack[0x2000];
+extern u8 gGameLoopThreadStack[];
 extern OSThread gAudioThread;
-extern u8 gAudioThreadStack[0x2000];
+extern u8 gAudioThreadStack[];
 
 extern u8 gGfxSPTaskYieldBuffer[];
 extern u32 gGfxSPTaskStack[];
-extern OSMesg gPIMesgBuf[32];
+extern OSMesg gPIMesgBuf[];
 extern OSMesgQueue gPIMesgQueue;
 void race_logic_loop(void);
 extern s32 gGamestate;

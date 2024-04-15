@@ -42,9 +42,6 @@ struct AllocOnlyPool {
 
 extern f32 vtxStretchY;
 
-extern u16 gRandomSeed16;
-extern u8 randomSeedPadding[];
-
 void *get_next_available_memory_addr(u32);
 uintptr_t set_segment_base_addr(s32, void*);
 void *get_segment_base_addr(s32);
