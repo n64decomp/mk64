@@ -16,7 +16,7 @@
 #include "objects.h"
 #include "waypoints.h"
 #include "bomb_kart.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "render_player.h"
 #include "code_80004740.h"
 #include "code_80005FD0.h"
@@ -30,7 +30,7 @@
 #include "menus.h"
 #include "code_80086E70.h"
 #include "code_800029B0.h"
-#include "src/data/data_800E45C0.h"
+#include <assets/data_800E45C0.h>
 #include "courses/all_course_data.h"
 #include <vehicles.h>
 #include "data/some_data.h"
@@ -563,19 +563,19 @@ UNUSED void func_80046C78(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture) {
 }
 
 UNUSED void func_80046CDC(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture) {
-    func_800464D0(arg0, arg1, arg2, arg3, texture, &D_0D005FB0, 64, 32, 64, 32);
+    func_800464D0(arg0, arg1, arg2, arg3, texture, D_0D005FB0, 64, 32, 64, 32);
 }
 
 UNUSED void func_80046D40(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture) {
-    func_80046808(arg0, arg1, arg2, texture, &D_0D005FB0, 64, 32, 64, 32);
+    func_80046808(arg0, arg1, arg2, texture, D_0D005FB0, 64, 32, 64, 32);
 }
 
 UNUSED void func_80046D90(s32 arg0, s32 arg1, u16 arg2, f32 arg3, u8 *texture) {
-    func_800464D0(arg0, arg1, arg2, arg3, texture, D_0D0060B0, 64, 64, 64, 32);
+    func_800464D0(arg0, arg1, arg2, arg3, texture, common_vtx_hedgehog, 64, 64, 64, 32);
 }
 
 UNUSED void func_80046DF4(s32 arg0, s32 arg1, u16 arg2, f32 arg3, s32 arg4, u8 *texture) {
-    func_800465B8(arg0, arg1, arg2, arg3, arg4, texture, D_0D0060B0, 64, 64, 64, 32);
+    func_800465B8(arg0, arg1, arg2, arg3, arg4, texture, common_vtx_hedgehog, 64, 64, 64, 32);
 }
 
 void load_texture_and_tlut(u8 *tlut, u8 *texture, s32 width, s32 height) {
@@ -3528,7 +3528,7 @@ void func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 vertexIndex) {
         D_80183E80[2] = (s16) (temp_v0->unk_084[6] + 0x8000);
         rsp_set_matrix_transformation(temp_v0->pos, (u16 *) D_80183E80, temp_v0->sizeScaling);
         set_color_render((s32) temp_v0->unk_084[0], (s32) temp_v0->unk_084[1], (s32) temp_v0->unk_084[2], (s32) temp_v0->unk_084[3], (s32) temp_v0->unk_084[4], (s32) temp_v0->unk_084[5], (s32) temp_v0->primAlpha);
-        gSPVertex(gDisplayListHead++, &D_0D0060B0[vertexIndex], 4, 0);
+        gSPVertex(gDisplayListHead++, &common_vtx_hedgehog[vertexIndex], 4, 0);
         gSPDisplayList(gDisplayListHead++, common_rectangle_display);
     }
 }
@@ -3906,7 +3906,7 @@ void draw_crabs(s32 objectIndex, s32 cameraId) {
         camera = &camera1[cameraId];
         func_8004A6EC(objectIndex, 0.5f);
         gObjectList[objectIndex].orientation[1] = func_800418AC(gObjectList[objectIndex].pos[0], gObjectList[objectIndex].pos[2], camera->pos);
-        draw_2d_texture_at(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+        draw_2d_texture_at(gObjectList[objectIndex].pos, gObjectList[objectIndex].orientation, gObjectList[objectIndex].sizeScaling, (u8 *) gObjectList[objectIndex].activeTLUT, gObjectList[objectIndex].activeTexture, common_vtx_hedgehog, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
     }
 }
 
@@ -4161,7 +4161,7 @@ void render_object_neon(s32 cameraId) {
             object = &gObjectList[objectIndex];
             if ((object->state >= 2) && (is_obj_index_flag_status_inactive(objectIndex, 0x00080000) != 0) && (is_object_visible_on_camera(objectIndex, camera, 0x2AABU) != 0)) {
                 object->orientation[1] = angle_between_object_camera(objectIndex, camera);
-                draw_2d_texture_at(object->pos, object->orientation, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, D_0D0060B0, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
+                draw_2d_texture_at(object->pos, object->orientation, object->sizeScaling, (u8 *) object->activeTLUT, object->activeTexture, common_vtx_hedgehog, 0x00000040, 0x00000040, 0x00000040, 0x00000020);
             }
         }
     }

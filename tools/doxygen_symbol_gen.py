@@ -55,7 +55,7 @@ if __name__ == "__main__":
     doxygen_formatted_content = process_map_file(map_file_path)
 
     # Specify the output file path
-    output_file_path = "tools/doxygen_syms.md"
+    output_file_path = "docs/doxygen_syms.md"
 
     # Write the result to the output file
     with open(output_file_path, 'w') as output_file:

@@ -341,8 +341,8 @@ glabel L8009F8B8
 /* 0A04FC 8009F8FC 100003F1 */  b     .L800A08C4
 /* 0A0500 8009F900 AE020000 */   sw    $v0, ($s0)
 glabel L8009F904
-/* 0A0504 8009F904 3C11800E */  lui   $s1, %hi(D_800E7574) # $s1, 0x800e
-/* 0A0508 8009F908 26317574 */  addiu $s1, %lo(D_800E7574) # addiu $s1, $s1, 0x7574
+/* 0A0504 8009F904 3C11800E */  lui   $s1, %hi(gCourseNamesDup) # $s1, 0x800e
+/* 0A0508 8009F908 26317574 */  addiu $s1, %lo(gCourseNamesDup) # addiu $s1, $s1, 0x7574
 /* 0A050C 8009F90C 0C024C0D */  jal   get_string_width
 /* 0A0510 8009F910 8E240000 */   lw    $a0, ($s1)
 /* 0A0514 8009F914 244A0005 */  addiu $t2, $v0, 5
@@ -1228,13 +1228,13 @@ glabel L800A05C4
 /* 0A11D4 800A05D4 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 0A11D8 800A05D8 44819000 */  mtc1  $at, $f18
 /* 0A11DC 800A05DC C6300024 */  lwc1  $f16, 0x24($s1)
-/* 0A11E0 800A05E0 3C06800E */  lui   $a2, %hi(D_800E7524)
+/* 0A11E0 800A05E0 3C06800E */  lui   $a2, %hi(gCourseNames)
 /* 0A11E4 800A05E4 00194880 */  sll   $t1, $t9, 2
 /* 0A11E8 800A05E8 00C93021 */  addu  $a2, $a2, $t1
 /* 0A11EC 800A05EC 8E24000C */  lw    $a0, 0xc($s1)
 /* 0A11F0 800A05F0 8E250010 */  lw    $a1, 0x10($s1)
 /* 0A11F4 800A05F4 8E27001C */  lw    $a3, 0x1c($s1)
-/* 0A11F8 800A05F8 8CC67524 */  lw    $a2, %lo(D_800E7524)($a2)
+/* 0A11F8 800A05F8 8CC67524 */  lw    $a2, %lo(gCourseNames)($a2)
 /* 0A11FC 800A05FC E7B20014 */  swc1  $f18, 0x14($sp)
 /* 0A1200 800A0600 0C024CC9 */  jal   func_80093324
 /* 0A1204 800A0604 E7B00010 */   swc1  $f16, 0x10($sp)

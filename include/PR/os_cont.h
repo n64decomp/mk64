@@ -53,7 +53,7 @@ extern "C" {
 typedef struct {
 	u16     type;                   /* Controller Type */
 	u8      status;                 /* Controller status */
-	u8	errno;
+	u8	errnum;
 }OSContStatus;
 
 typedef struct {

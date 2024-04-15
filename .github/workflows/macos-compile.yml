@@ -1,0 +1,32 @@
+name: Macos Compile test
+
+on:
+    push:
+      branches: [ "*" ]
+    pull_request:
+      branches: [ "master" ]
+
+jobs:
+  build:
+    if: 0
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          submodules: "true"
+      - name: Get Complementary file
+        uses: actions/checkout@v4.1.1
+        with:
+          path: complementary_file
+          repository: UnspaghettifyKart/action-build-private-file
+          ssh-key: ${{ secrets.MACOS_SSH_PRIVATE_KEY }}
+      - name: Install dependencies
+        run: |
+          brew update
+          brew install python3 capstone coreutils make pkg-config tehzz/n64-dev/mips64-elf-binutils cmake
+      - name: Build
+        run: |
+          cp -r complementary_file/* .
+          echo "${{ secrets.AES_KEY }}" | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in baserom.us.z64.aes -out baserom.us.z64
+          make assets
+          make -j

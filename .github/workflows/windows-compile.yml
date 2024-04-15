@@ -1,0 +1,31 @@
+name: Windows Compile test
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          submodules: "true"
+      - name: Get Complementary file
+        uses: actions/checkout@v4.1.1
+        with:
+          path: complementary_file
+          repository: UnspaghettifyKart/action-build-private-file
+          ssh-key: ${{ secrets.WINDOWS_SSH_PRIVATE_KEY }}
+      - name: Install dependencies
+        run: |
+          Invoke-WebRequest https://github.com/coco875/mk64-tools/releases/download/v0.0.6/mips-tools-chain-windows.zip -OutFile mips-tools-chain-windows.zip
+          Expand-Archive mips-tools-chain-windows.zip -DestinationPath mips-tools-chain-windows
+          Copy-Item -Path mips-tools-chain-windows/mingw64 -Destination tools -Recurse
+      - name: Build
+        run: |
+          Copy-Item -Path complementary_file/* -Destination . -Recurse
+          echo "${{ secrets.AES_KEY }}" | openssl enc -d -aes-256-cbc -pass stdin -pbkdf2 -in baserom.us.z64.aes -out baserom.us.z64
+          python tools/windows_build.py

@@ -26,6 +26,7 @@ struct UnkStruct_802B8CD4 D_802B8CD4[] = {
     0
 };
 s32 D_802B8CE4 = 0; // pad
+s32 memoryPadding[2];
 
 /**
  * @brief Returns the address of the next available memory location and updates the memory pointer

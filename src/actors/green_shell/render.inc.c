@@ -1,7 +1,7 @@
 #include <actors.h>
 #include <PR/gbi.h>
 #include <main.h>
-#include "common_textures.h"
+#include <assets/common_data.h>
 
 /**
  * @brief Renders the green shell actor.

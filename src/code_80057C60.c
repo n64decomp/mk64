@@ -23,9 +23,9 @@
 #include "update_objects.h"
 #include "code_80086E70.h"
 #include "effects.h"
-#include "src/data/data_800E8700.h"
+#include <assets/data_800E8700.h>
 #include "skybox_and_splitscreen.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "audio/external.h"
 #include "objects.h"
 #include "bomb_kart.h"
@@ -5722,7 +5722,7 @@ void func_8006A7C0(Player *player, f32 arg1, f32 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-void func_8006AFD0(Player *player, s8 arg1, s16 arg2, s8 arg3) {
+void render_battle_balloon(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Mat4 sp140;
     Vec3f sp134;
     Vec3s sp12C;
@@ -5848,16 +5848,19 @@ void func_8006B9CC(Player* player, s8 arg1) {
 
 void func_8006BA94(Player* player, s8 playerIndex, s8 arg2) {
     if (gPlayerBalloonStatus[playerIndex][0] != BALLOON_STATUS_GONE) {
-        func_8006AFD0(player, playerIndex, 0, arg2);
+        render_battle_balloon(player, playerIndex, 0, arg2);
     }
     if (gPlayerBalloonStatus[playerIndex][1] != BALLOON_STATUS_GONE) {
-        func_8006AFD0(player, playerIndex, 1, arg2);
+        render_battle_balloon(player, playerIndex, 1, arg2);
     }
     if (gPlayerBalloonStatus[playerIndex][2] != BALLOON_STATUS_GONE) {
-        func_8006AFD0(player, playerIndex, 2, arg2);
+        render_battle_balloon(player, playerIndex, 2, arg2);
     }
 }
 
+/**
+ * Used in podium ceremony.
+*/
 void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     Mat4 sp108;
     Vec3f spFC;

@@ -116,7 +116,7 @@ extern Gfx d_course_wario_stadium_dl_5460[];
 extern Gfx d_course_wario_stadium_dl_54E8[];
 extern Gfx d_course_wario_stadium_dl_5588[];
 extern TrackWaypoint d_course_wario_stadium_unknown_waypoints[];
-extern TrackWaypoint d_course_wario_staduim_track_waypoints[];
+extern TrackWaypoint d_course_wario_stadium_track_waypoints[];
 extern Vtx d_course_wario_stadium_sign_head_model1[];
 extern Vtx d_course_wario_stadium_sign_head_model2[];
 extern Vtx d_course_wario_stadium_sign_head_model3[];
