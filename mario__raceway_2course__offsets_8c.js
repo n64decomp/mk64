@@ -30,6 +30,6 @@ var mario__raceway_2course__offsets_8c =
     [ "gTextureSignShellShot0", "mario__raceway_2course__offsets_8c.html#a7d74c4fbbe37319b5b3d58accf0e11de", null ],
     [ "gTextureSignShellShot1", "mario__raceway_2course__offsets_8c.html#a6a35f5915120c6a557901bcaef614161", null ],
     [ "gTextureSignYoshi", "mario__raceway_2course__offsets_8c.html#a84d270d0a4f110a4b25a7948b5cd49d4", null ],
-    [ "mario_raceway_dls", "mario__raceway_2course__offsets_8c.html#af9994b7e4b6435022a2108673cee1d8e", null ],
+    [ "mario_raceway_dls", "mario__raceway_2course__offsets_8c.html#a489ca65057242a02cd6f6f7be73bdc72", null ],
     [ "mario_raceway_textures", "mario__raceway_2course__offsets_8c.html#a572db56bfd4d9db6643aefae1aeec3a7", null ]
 ];

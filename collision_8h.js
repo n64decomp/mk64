@@ -32,5 +32,6 @@ var collision_8h =
     [ "set_vertex_data_with_default_section_id", "collision_8h.html#a555dd047e8f7135e990a9f34a872bd32", null ],
     [ "set_vertex_data_with_defaults", "collision_8h.html#a5ecb0744013e1d445100cd5906c45170", null ],
     [ "set_vtx_buffer", "collision_8h.html#a64d962d7e19f12e029fb038a5478611b", null ],
+    [ "shell_collision", "collision_8h.html#a99aab337d05429f6a81d3ebb18052db7", null ],
     [ "subtract_scaled_vector", "collision_8h.html#ac3b07878a7e77808f5bc76d681652603", null ]
 ];

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['kalimari_5fdesert_5fdls_0',['kalimari_desert_dls',['../all__course__offsets_8h.html#a99b2f0dbd97ce5a22cdbdb9a8c261c4f',1,'kalimari_desert_dls:&#160;course_offsets.c'],['../kalimari__desert_2course__offsets_8c.html#a14352503a7575197d441ef6aefd1bda1',1,'kalimari_desert_dls:&#160;course_offsets.c']]],
+  ['kalimari_5fdesert_5fdls_0',['kalimari_desert_dls',['../all__course__offsets_8h.html#a99b2f0dbd97ce5a22cdbdb9a8c261c4f',1,'kalimari_desert_dls:&#160;course_offsets.c'],['../kalimari__desert_2course__offsets_8c.html#ade422610a6bb68f156ec72a7291bb7ce',1,'kalimari_desert_dls:&#160;course_offsets.c']]],
   ['kalimari_5fdesert_5ftextures_1',['kalimari_desert_textures',['../all__course__offsets_8h.html#a02b5b2683fcdd6dc30bef6ef74347f54',1,'kalimari_desert_textures:&#160;course_offsets.c'],['../courseTable_8h.html#a577e03e429389a96c30117f7d780aff2',1,'kalimari_desert_textures:&#160;course_offsets.c'],['../kalimari__desert_2course__offsets_8c.html#a53c50d68019e888780a8b938078c6980',1,'kalimari_desert_textures:&#160;course_offsets.c']]],
   ['kart_5fpalette_2',['kart_palette',['../structstruct__D__802F1F80.html#ae1d81e0b7c714d963e79980614c64069',1,'struct_D_802F1F80']]],
   ['kartfriction_3',['kartFriction',['../structPlayer.html#a0cbdc77f98b1cad4b2e02834c10c4fec',1,'Player']]],

@@ -417,6 +417,5 @@ var render__objects_8h =
     [ "D_8018D4BC", "render__objects_8h.html#a5a10eabe7ee944c4ad4bd6cc34d2a4dc", null ],
     [ "D_8018D4C0", "render__objects_8h.html#aeb3738c027de7196ec230b0c47468baf", null ],
     [ "d_course_bowsers_castle_thwomp_tlut", "render__objects_8h.html#adc9789813be81d9c2143b07c8626b27e", null ],
-    [ "gPortraitTextures", "render__objects_8h.html#a601231686d436717b1f26ad0303fe7e3", null ],
-    [ "gPortraitTLUTs", "render__objects_8h.html#ac92acbe0f14e4a89e43337ce5095a4f4", null ]
+    [ "gPortraitTextures", "render__objects_8h.html#a601231686d436717b1f26ad0303fe7e3", null ]
 ];

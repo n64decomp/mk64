@@ -28,6 +28,6 @@ var moo__moo__farm_2course__offsets_8c =
     [ "gTextureSignNintendo1", "moo__moo__farm_2course__offsets_8c.html#ad8647d600b2359d8e5d322863494f693", null ],
     [ "gTextureWheelSteamEngineReal", "moo__moo__farm_2course__offsets_8c.html#a1b47c000ae81af58bcfb4fc75e373dbf", null ],
     [ "gTextureWoodDoor0", "moo__moo__farm_2course__offsets_8c.html#a9514d746cbb6bc01dcf03474ca224e1f", null ],
-    [ "moo_moo_farm_dls", "moo__moo__farm_2course__offsets_8c.html#a7e4ad8e4358cc9f3bce81a6f42f03117", null ],
+    [ "moo_moo_farm_dls", "moo__moo__farm_2course__offsets_8c.html#a1cacf522dda6056a6e1519459a2d2f65", null ],
     [ "moo_moo_farm_textures", "moo__moo__farm_2course__offsets_8c.html#a61fe4f4d37b4807419e22bba036e8497", null ]
 ];

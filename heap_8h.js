@@ -42,7 +42,6 @@ var heap_8h =
     [ "unk_pool1_lookup", "heap_8h.html#a35a6015b1d06d4b4d42dca68a833ace8", null ],
     [ "D_800EA5D0", "heap_8h.html#a039d0486d8c3605e1d7efd54b02acc34", null ],
     [ "D_803B7178", "heap_8h.html#a6858476cc275be0f91b01d70d3673921", null ],
-    [ "D_803B71B0", "heap_8h.html#ad50f1dcf21ec1c9b6ed57c0a38125997", null ],
     [ "gAudioInitPool", "heap_8h.html#ab86b8a71a61ac918a475620825f576bc", null ],
     [ "gAudioResetFadeOutFramesLeft", "heap_8h.html#a098712bd1e3c628dde541a544b6b209c", null ],
     [ "gAudioResetPresetIdToLoad", "heap_8h.html#a3c93ddcd5b3eeb08ffa822258b6e1e67", null ],

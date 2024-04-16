@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['b_0',['b',['../unionuObjBg.html#a4c7b764ed0f65c46029a1af38ca912e7',1,'uObjBg']]],
-  ['b_1',['B',['../structuObjMtx__t.html#a87aae46e87f2cb767e062ee1c5dc3841',1,'uObjMtx_t']]],
+  ['b_0',['B',['../structuObjMtx__t.html#a87aae46e87f2cb767e062ee1c5dc3841',1,'uObjMtx_t']]],
+  ['b_1',['b',['../unionuObjBg.html#a4c7b764ed0f65c46029a1af38ca912e7',1,'uObjBg']]],
   ['backup_2',['backup',['../structSaveData.html#a2ff481cd3bd1a2837891600786ff1b48',1,'SaveData']]],
   ['badvaddr_3',['badvaddr',['../struct____OSThreadContext.html#a198bd5d346a218eb2a4bbc8e10b0d002',1,'__OSThreadContext']]],
   ['bananaid_4',['bananaId',['../structBananaActor.html#ab30bfa430265f8e869e8b3ebf8bb9d03',1,'BananaActor']]],
@@ -50,7 +50,7 @@ var searchData=
   ['bouncetimer_47',['bounceTimer',['../structBombKart.html#a88edf2368de96c55b84ad782ae269ffc',1,'BombKart']]],
   ['boundingboxcorners_48',['boundingBoxCorners',['../structPlayer.html#a3a3b8f366ba60a445f0bbc271f159ce2',1,'Player']]],
   ['boundingboxsize_49',['boundingBoxSize',['../structActor.html#afa5dea9480abaa994c912de779986ef9',1,'Actor::boundingBoxSize'],['../structFallingRock.html#a9d637a307a47bb3f4ac97acf65669fc6',1,'FallingRock::boundingBoxSize'],['../structYoshiValleyEgg.html#ae635c1dc57de8906f0fa04d720564ff9',1,'YoshiValleyEgg::boundingBoxSize'],['../structKiwanoFruit.html#a188f60f643194dc691ea02d9a4ca5e36',1,'KiwanoFruit::boundingBoxSize'],['../structPiranhaPlant.html#af22abddb59fcb36737df3688f7e0bf99',1,'PiranhaPlant::boundingBoxSize'],['../structPalmTree.html#ace572a25b85eac080632ea918c504a5e',1,'PalmTree::boundingBoxSize'],['../structShellActor.html#a610da60b5b38774fba6b6bb3076fd007',1,'ShellActor::boundingBoxSize'],['../structItemBox.html#a6b37d97242511db5433fe8cface653a4',1,'ItemBox::boundingBoxSize'],['../structFakeItemBox.html#a616ed6fc7508f5dd63992646880f1fd1',1,'FakeItemBox::boundingBoxSize'],['../structBananaActor.html#a2c7136a31124c699629cd3d88562869b',1,'BananaActor::boundingBoxSize'],['../structPlayer.html#a681f0fac4abe58cf5919dd4c6ac503d0',1,'Player::boundingBoxSize'],['../structObjects.html#a35625dfc9e8353163406776f6cd77ce6',1,'Objects::boundingBoxSize']]],
-  ['bowsers_5fcastle_5fdls_50',['bowsers_castle_dls',['../all__course__offsets_8h.html#a702c3b572e92b4a08b080cdb3a4677a8',1,'bowsers_castle_dls:&#160;course_offsets.c'],['../bowsers__castle_2course__offsets_8c.html#afdd8ceebd0effbf3ff74968bfc0e38d3',1,'bowsers_castle_dls:&#160;course_offsets.c']]],
+  ['bowsers_5fcastle_5fdls_50',['bowsers_castle_dls',['../all__course__offsets_8h.html#a702c3b572e92b4a08b080cdb3a4677a8',1,'bowsers_castle_dls:&#160;course_offsets.c'],['../bowsers__castle_2course__offsets_8c.html#af4a77bd8086ca15489f6f9b02110ca58',1,'bowsers_castle_dls:&#160;course_offsets.c']]],
   ['bowsers_5fcastle_5ftextures_51',['bowsers_castle_textures',['../all__course__offsets_8h.html#ac7fe4ff0a4937087f458c3dd587780cc',1,'bowsers_castle_textures:&#160;course_offsets.c'],['../bowsers__castle_2course__offsets_8c.html#a7b1256ddd170d065444e91016823e9d5',1,'bowsers_castle_textures:&#160;course_offsets.c'],['../courseTable_8h.html#a9551bf19893d0aa704bb4a9c5bd964e6',1,'bowsers_castle_textures:&#160;course_offsets.c']]],
   ['buff_52',['buff',['../structprintf__struct.html#ac36c05d65fbddf415770d5064ba9821b',1,'printf_struct']]],
   ['buffer_53',['buffer',['../structSharedDma.html#ac02e2b1219c0565d728e5306b53593bc',1,'SharedDma::buffer'],['../structOSViContext.html#a8e515138db3faad66d714b83f7744134',1,'OSViContext::buffer']]],

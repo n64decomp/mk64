@@ -109,6 +109,7 @@ $(function(){initNavTree('libultra__internal_8h.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="ultra64_8h_source.html">ultra64.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="os__thread_8h_source.html">PR/os_thread.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="macros_8h_source.html">macros.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for libultra_internal.h:</div>
@@ -123,6 +124,8 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____OSEventState.html">__OSEventState</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct____osThreadTail.html">__osThreadTail</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structOSThread__ListHead.html">OSThread_ListHead</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structOSMgrArgs.html">OSMgrArgs</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -215,16 +218,16 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a9c635fa9aba62511dbbac0a605830ab8" id="r_a9c635fa9aba62511dbbac0a605830ab8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a3ccc99155f50978286e5e9e789927a28">OSThreadTail</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c635fa9aba62511dbbac0a605830ab8">__osThreadTail</a></td></tr>
-<tr class="separator:a9c635fa9aba62511dbbac0a605830ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a413e6044cd094bc0a3b1e8115019cf85" id="r_a413e6044cd094bc0a3b1e8115019cf85"><td class="memItemLeft" align="right" valign="top"><a class="el" href="os__thread_8h.html#a88320e928808ff7d5374d52f2cd6ef84">OSThread</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a413e6044cd094bc0a3b1e8115019cf85">__osThreadTail</a></td></tr>
+<tr class="separator:a413e6044cd094bc0a3b1e8115019cf85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31b577966e52be770c717b8bf5283124" id="r_a31b577966e52be770c717b8bf5283124"><td class="memItemLeft" align="right" valign="top"><a class="el" href="os__thread_8h.html#a88320e928808ff7d5374d52f2cd6ef84">OSThread</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a31b577966e52be770c717b8bf5283124">__osActiveQueue</a></td></tr>
 <tr class="separator:a31b577966e52be770c717b8bf5283124"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95bd5a78cf0d49f922eb22c02533774e" id="r_a95bd5a78cf0d49f922eb22c02533774e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="os__thread_8h.html#a88320e928808ff7d5374d52f2cd6ef84">OSThread</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95bd5a78cf0d49f922eb22c02533774e">__osRunQueue</a></td></tr>
 <tr class="separator:a95bd5a78cf0d49f922eb22c02533774e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c57f3342a3bc2e836d06b78c85d70f0" id="r_a4c57f3342a3bc2e836d06b78c85d70f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="os__thread_8h.html#a88320e928808ff7d5374d52f2cd6ef84">OSThread</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c57f3342a3bc2e836d06b78c85d70f0">__osRunningThread</a></td></tr>
 <tr class="separator:a4c57f3342a3bc2e836d06b78c85d70f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab9a664a6dcd638e58f1604d6d31deb31" id="r_ab9a664a6dcd638e58f1604d6d31deb31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab9a664a6dcd638e58f1604d6d31deb31">D_80365E00</a> [15]</td></tr>
-<tr class="separator:ab9a664a6dcd638e58f1604d6d31deb31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a1221c713332bc46cb682e84c137e8c" id="r_a7a1221c713332bc46cb682e84c137e8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a1221c713332bc46cb682e84c137e8c">D_80365E00</a> [15]</td></tr>
+<tr class="separator:a7a1221c713332bc46cb682e84c137e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af794df3bc939545afdd2a2a148b1659d" id="r_af794df3bc939545afdd2a2a148b1659d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af794df3bc939545afdd2a2a148b1659d">D_80365E3C</a></td></tr>
 <tr class="separator:af794df3bc939545afdd2a2a148b1659d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -1238,8 +1241,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a9c635fa9aba62511dbbac0a605830ab8" name="a9c635fa9aba62511dbbac0a605830ab8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c635fa9aba62511dbbac0a605830ab8">&#9670;&#160;</a></span>__osThreadTail</h2>
+<a id="a413e6044cd094bc0a3b1e8115019cf85" name="a413e6044cd094bc0a3b1e8115019cf85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a413e6044cd094bc0a3b1e8115019cf85">&#9670;&#160;</a></span>__osThreadTail</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1248,7 +1251,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#a3ccc99155f50978286e5e9e789927a28">OSThreadTail</a> __osThreadTail</td>
+          <td class="memname"><a class="el" href="os__thread_8h.html#a88320e928808ff7d5374d52f2cd6ef84">OSThread</a>* __osThreadTail</td>
         </tr>
       </table>
   </td>
@@ -1260,8 +1263,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ab9a664a6dcd638e58f1604d6d31deb31" name="ab9a664a6dcd638e58f1604d6d31deb31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab9a664a6dcd638e58f1604d6d31deb31">&#9670;&#160;</a></span>D_80365E00</h2>
+<a id="a7a1221c713332bc46cb682e84c137e8c" name="a7a1221c713332bc46cb682e84c137e8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a1221c713332bc46cb682e84c137e8c">&#9670;&#160;</a></span>D_80365E00</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1270,7 +1273,7 @@ Here is the caller graph for this function:</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> D_80365E00[15]</td>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> D_80365E00[15]</td>
         </tr>
       </table>
   </td>

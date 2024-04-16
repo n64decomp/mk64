@@ -308,7 +308,6 @@ var searchData=
   ['startup_5flogo_5from_5fstart_305',['STARTUP_LOGO_ROM_START',['../segments_8h.html#aafa03ea9c3a929c8050106c259a06089',1,'segments.h']]],
   ['static_306',['STATIC',['../__Printf_8c.html#a10b2d890d871e1489bb02b7e70d9bdfb',1,'_Printf.c']]],
   ['static_5fassert_307',['STATIC_ASSERT',['../macros_8h.html#a8ce491b27b644889db1ca99d8c99c24e',1,'macros.h']]],
-  ['strange_5fmain_5fheader_5fh_308',['STRANGE_MAIN_HEADER_H',['../main_8c.html#abf70aa8e2b34f1c64623922b5484ce9e',1,'main.c']]],
-  ['stubbed_5fprintf_309',['stubbed_printf',['../internal_8h.html#a6ba6dded2f5902fce6f84e3e05dc5951',1,'internal.h']]],
-  ['svindexmask_310',['SVINDEXMASK',['../R4300_8h.html#ae4cdb6453be935a22a7c016f39fdac83',1,'R4300.h']]]
+  ['stubbed_5fprintf_308',['stubbed_printf',['../internal_8h.html#a6ba6dded2f5902fce6f84e3e05dc5951',1,'internal.h']]],
+  ['svindexmask_309',['SVINDEXMASK',['../R4300_8h.html#ae4cdb6453be935a22a7c016f39fdac83',1,'R4300.h']]]
 ];

@@ -64,6 +64,7 @@ var memory_8c =
     [ "D_802B8CD4", "memory_8c.html#a20247197aa5ae9f963a5c2b6d923a37e", null ],
     [ "D_802B8CE4", "memory_8c.html#af0191ff11f34cb788fc0f78fcc869ea0", null ],
     [ "gMainPoolState", "memory_8c.html#aa124e5309ca66077ae36d26dae0b9036", null ],
+    [ "memoryPadding", "memory_8c.html#aa394d88a9879d85735bba30f7e198445", null ],
     [ "sGfxSeekPosition", "memory_8c.html#a2c62cbc3dde8015cb2cda46e7f5efeb6", null ],
     [ "sPackedSeekPosition", "memory_8c.html#a4a100da07df567da24c0deb145de8094", null ],
     [ "sPoolFreeSpace", "memory_8c.html#a7d14b9ef4822d506cc4e4fa7c15a2767", null ],

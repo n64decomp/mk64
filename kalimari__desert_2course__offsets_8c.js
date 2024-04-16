@@ -25,6 +25,6 @@ var kalimari__desert_2course__offsets_8c =
     [ "gTextureSignShellShot0", "kalimari__desert_2course__offsets_8c.html#a7d74c4fbbe37319b5b3d58accf0e11de", null ],
     [ "gTextureSignShellShot1", "kalimari__desert_2course__offsets_8c.html#a6a35f5915120c6a557901bcaef614161", null ],
     [ "gTextureSignYoshi", "kalimari__desert_2course__offsets_8c.html#a84d270d0a4f110a4b25a7948b5cd49d4", null ],
-    [ "kalimari_desert_dls", "kalimari__desert_2course__offsets_8c.html#a14352503a7575197d441ef6aefd1bda1", null ],
+    [ "kalimari_desert_dls", "kalimari__desert_2course__offsets_8c.html#ade422610a6bb68f156ec72a7291bb7ce", null ],
     [ "kalimari_desert_textures", "kalimari__desert_2course__offsets_8c.html#a53c50d68019e888780a8b938078c6980", null ]
 ];

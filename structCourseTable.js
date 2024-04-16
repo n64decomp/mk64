@@ -2,7 +2,7 @@ var structCourseTable =
 [
     [ "dlRomEnd", "structCourseTable.html#a183500b9277fec956b18c017fd1e7b40", null ],
     [ "dlRomStart", "structCourseTable.html#ad879d31ac49f90c48ed960e6f6336348", null ],
-    [ "finalDisplaylistOffset", "structCourseTable.html#a5262f9e65471d1bbd8ed086bffe11533", null ],
+    [ "finalDisplaylistOffset", "structCourseTable.html#a89b3206c5106bbff167c7d2a51ee1cac", null ],
     [ "offsetRomEnd", "structCourseTable.html#ab3a7aa2b05671688a96e9b657bd6623a", null ],
     [ "offsetRomStart", "structCourseTable.html#ac8cd9a4c39f0f06665b451ff3c523dff", null ],
     [ "packedStart", "structCourseTable.html#a6fc9a543955a768600f7fad522a7e720", null ],

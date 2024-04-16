@@ -8,5 +8,5 @@ var dir_8e7dd6ed00e108875c0f51700bea7501 =
     [ "random.h", "random_8h.html", "random_8h" ],
     [ "trig_tables.c", "trig__tables_8c.html", "trig__tables_8c" ],
     [ "trig_tables.h", "trig__tables_8h.html", "trig__tables_8h" ],
-    [ "trig_tables_bss.c", "trig__tables__bss_8c.html", "trig__tables__bss_8c" ]
+    [ "trig_tables_bss.c", "buffers_2trig__tables__bss_8c.html", "buffers_2trig__tables__bss_8c" ]
 ];

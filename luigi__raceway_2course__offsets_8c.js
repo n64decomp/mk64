@@ -40,6 +40,6 @@ var luigi__raceway_2course__offsets_8c =
     [ "gTextureSignShellShot0", "luigi__raceway_2course__offsets_8c.html#a7d74c4fbbe37319b5b3d58accf0e11de", null ],
     [ "gTextureSignShellShot1", "luigi__raceway_2course__offsets_8c.html#a6a35f5915120c6a557901bcaef614161", null ],
     [ "gTextureSignYoshi", "luigi__raceway_2course__offsets_8c.html#a84d270d0a4f110a4b25a7948b5cd49d4", null ],
-    [ "luigi_raceway_dls", "luigi__raceway_2course__offsets_8c.html#a4c2f606e63c9d8d04322ec19c5f2b35a", null ],
+    [ "luigi_raceway_dls", "luigi__raceway_2course__offsets_8c.html#a1aac074ec14b48bc8a5e600341d06092", null ],
     [ "luigi_raceway_textures", "luigi__raceway_2course__offsets_8c.html#a68bdefbd63217953a5f543aeda2fbfcc", null ]
 ];

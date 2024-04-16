@@ -107,6 +107,7 @@ $(function(){initNavTree('osEepromLongWrite_8c.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="libultra__internal_8h_source.html">libultra_internal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="controller_8h_source.html">controller.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for osEepromLongWrite.c:</div>
 <div class="dyncontent">
@@ -120,12 +121,8 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a115ccbb72ad3e50a0af6e1889d835e45" id="r_a115ccbb72ad3e50a0af6e1889d835e45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a115ccbb72ad3e50a0af6e1889d835e45">osClockRate</a></td></tr>
-<tr class="separator:a115ccbb72ad3e50a0af6e1889d835e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6765ae238051e57f0d3ac6567a8e0db9" id="r_a6765ae238051e57f0d3ac6567a8e0db9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6765ae238051e57f0d3ac6567a8e0db9">D_80365D20</a></td></tr>
 <tr class="separator:a6765ae238051e57f0d3ac6567a8e0db9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab58627f83d7b5069c7d442eb1c05f014" id="r_ab58627f83d7b5069c7d442eb1c05f014"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab58627f83d7b5069c7d442eb1c05f014">_osContNumControllers</a></td></tr>
-<tr class="separator:ab58627f83d7b5069c7d442eb1c05f014"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15b2683c35d6e8cd622bbae66211ba9e" id="r_a15b2683c35d6e8cd622bbae66211ba9e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="os__time_8h.html#abb1f9385045ded16fc9136aa1ac481a1">OSTimer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15b2683c35d6e8cd622bbae66211ba9e">D_80196548</a></td></tr>
 <tr class="separator:a15b2683c35d6e8cd622bbae66211ba9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d2c6b666a1a317e841b46a6eee01123" id="r_a9d2c6b666a1a317e841b46a6eee01123"><td class="memItemLeft" align="right" valign="top">OSMesgQueue&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9d2c6b666a1a317e841b46a6eee01123">_osContMesgQueue</a></td></tr>
@@ -220,28 +217,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ab58627f83d7b5069c7d442eb1c05f014" name="ab58627f83d7b5069c7d442eb1c05f014"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab58627f83d7b5069c7d442eb1c05f014">&#9670;&#160;</a></span>_osContNumControllers</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> _osContNumControllers</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a15b2683c35d6e8cd622bbae66211ba9e" name="a15b2683c35d6e8cd622bbae66211ba9e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15b2683c35d6e8cd622bbae66211ba9e">&#9670;&#160;</a></span>D_80196548</h2>
 
@@ -275,28 +250,6 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> D_80365D20</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a115ccbb72ad3e50a0af6e1889d835e45" name="a115ccbb72ad3e50a0af6e1889d835e45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a115ccbb72ad3e50a0af6e1889d835e45">&#9670;&#160;</a></span>osClockRate</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="llconv_8c.html#ac0b0e5ad15a599850f4ca02c451110ba">u64</a> osClockRate</td>
         </tr>
       </table>
   </td>

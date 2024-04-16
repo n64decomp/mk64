@@ -6,5 +6,6 @@ var dir_c1be8d27e7f84178e95f152701110b19 =
     [ "path_spawn_metadata.h", "path__spawn__metadata_8h.html", "path__spawn__metadata_8h" ],
     [ "some_data.c", "some__data_8c.html", "some__data_8c" ],
     [ "some_data.h", "some__data_8h.html", "some__data_8h" ],
-    [ "textures.c", "textures_8c.html", "textures_8c" ]
+    [ "textures.c", "textures_8c.html", "textures_8c" ],
+    [ "trig_tables_bss.c", "data_2trig__tables__bss_8c.html", "data_2trig__tables__bss_8c" ]
 ];

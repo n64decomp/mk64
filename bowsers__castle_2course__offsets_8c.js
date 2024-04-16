@@ -1,6 +1,6 @@
 var bowsers__castle_2course__offsets_8c =
 [
-    [ "bowsers_castle_dls", "bowsers__castle_2course__offsets_8c.html#afdd8ceebd0effbf3ff74968bfc0e38d3", null ],
+    [ "bowsers_castle_dls", "bowsers__castle_2course__offsets_8c.html#af4a77bd8086ca15489f6f9b02110ca58", null ],
     [ "bowsers_castle_textures", "bowsers__castle_2course__offsets_8c.html#a7b1256ddd170d065444e91016823e9d5", null ],
     [ "gTexture64313C", "bowsers__castle_2course__offsets_8c.html#ac1e21841bf55ce2b260a6ff9dc2b5574", null ],
     [ "gTexture651F40", "bowsers__castle_2course__offsets_8c.html#a81c2fa0bca921da453244ae4a6e1d55a", null ],

@@ -217,7 +217,7 @@ var searchData=
   ['loop_214',['loop',['../structAudioBankSample.html#ad188e9d6ef8fb385d84bc3c635927469',1,'AudioBankSample::loop'],['../structALADPCMWaveInfo.html#ad4b5483c93397b568cd28c6055ef50ef',1,'ALADPCMWaveInfo::loop'],['../structALRAWWaveInfo.html#a2fb2b21087e87d197d3cf6017f80e119',1,'ALRAWWaveInfo::loop']]],
   ['lownotessound_215',['lowNotesSound',['../structInstrument.html#a262f6b3996de2e9a9313ef11b4f59325',1,'Instrument']]],
   ['luigi_216',['LUIGI',['../defines_8h.html#a1ba3226d974a364d7682f44614e311d9',1,'defines.h']]],
-  ['luigi_5fraceway_5fdls_217',['luigi_raceway_dls',['../all__course__offsets_8h.html#aaa712b636fed8c945d1a40cb424cf3c1',1,'luigi_raceway_dls:&#160;course_offsets.c'],['../luigi__raceway_2course__offsets_8c.html#a4c2f606e63c9d8d04322ec19c5f2b35a',1,'luigi_raceway_dls:&#160;course_offsets.c']]],
+  ['luigi_5fraceway_5fdls_217',['luigi_raceway_dls',['../all__course__offsets_8h.html#aaa712b636fed8c945d1a40cb424cf3c1',1,'luigi_raceway_dls:&#160;course_offsets.c'],['../luigi__raceway_2course__offsets_8c.html#a1aac074ec14b48bc8a5e600341d06092',1,'luigi_raceway_dls:&#160;course_offsets.c']]],
   ['luigi_5fraceway_5ftextures_218',['luigi_raceway_textures',['../all__course__offsets_8h.html#a3d2a83a8626fae1a580d09212be62459',1,'luigi_raceway_textures:&#160;course_offsets.c'],['../courseTable_8h.html#a946b458719fd45242c2cafa86b7976db',1,'luigi_raceway_textures:&#160;course_offsets.c'],['../luigi__raceway_2course__offsets_8c.html#a68bdefbd63217953a5f543aeda2fbfcc',1,'luigi_raceway_textures:&#160;course_offsets.c']]],
   ['luigi_5fsize_219',['LUIGI_SIZE',['../defines_8h.html#a57d2983415fa3cf8ab2a9bee6f087c7a',1,'defines.h']]]
 ];

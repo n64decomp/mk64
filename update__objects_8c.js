@@ -380,9 +380,9 @@ var update__objects_8c =
     [ "D_800E43F0", "update__objects_8c.html#a3882cf453a42948f4ba52e848e7cbb86", null ],
     [ "D_800E4470", "update__objects_8c.html#a21a5a51609024a58c4fd47880f70e978", null ],
     [ "D_800E44B0", "update__objects_8c.html#ab71d4818420244f3b738f502367018d6", null ],
-    [ "gHudLapTextures", "update__objects_8c.html#a8185c93cf75fb809a5a06f340b2e0df0", null ],
+    [ "gHudLapTextures", "update__objects_8c.html#a7472eb289d568ef282eeedaaf05654a1", null ],
     [ "gItemWindowTextures", "update__objects_8c.html#af2ee51d08a070f0ec6d56e5077466493", null ],
-    [ "gItemWindowTLUTs", "update__objects_8c.html#ac65c3696186c5894d52e8f2da29c521a", null ],
+    [ "gItemWindowTLUTs", "update__objects_8c.html#a4822cce260938dab5599f44d394e0802", null ],
     [ "gPortraitTextures", "update__objects_8c.html#a601231686d436717b1f26ad0303fe7e3", null ],
-    [ "gPortraitTLUTs", "update__objects_8c.html#ac92acbe0f14e4a89e43337ce5095a4f4", null ]
+    [ "gPortraitTLUTs", "update__objects_8c.html#af8ea7f4f544e6fa5e403f9af931ad5da", null ]
 ];

@@ -72,7 +72,7 @@ var searchData=
   ['setup_5fgame_5fmemory_69',['setup_game_memory',['../main_8c.html#a8cd2befe9b7f9490d32bf787a7e8d44f',1,'setup_game_memory(void):&#160;main.c'],['../main_8h.html#a8cd2befe9b7f9490d32bf787a7e8d44f',1,'setup_game_memory(void):&#160;main.c']]],
   ['setup_5fmesg_5fqueues_70',['setup_mesg_queues',['../main_8c.html#adf1f78d12be46a2a332bcc429e2280d0',1,'setup_mesg_queues(void):&#160;main.c'],['../main_8h.html#adf1f78d12be46a2a332bcc429e2280d0',1,'setup_mesg_queues(void):&#160;main.c']]],
   ['setup_5frace_71',['setup_race',['../code__800029B0_8c.html#aca6165112fc92e65ad6477e785a7098c',1,'setup_race(void):&#160;code_800029B0.c'],['../code__800029B0_8h.html#aca6165112fc92e65ad6477e785a7098c',1,'setup_race(void):&#160;code_800029B0.c']]],
-  ['shell_5fcollision_72',['shell_collision',['../collision_8c.html#a24c9df6b00fc739e341b6f28b06396e4',1,'collision.c']]],
+  ['shell_5fcollision_72',['shell_collision',['../collision_8c.html#a24c9df6b00fc739e341b6f28b06396e4',1,'shell_collision(Collision *collision, Vec3f velocity):&#160;collision.c'],['../collision_8h.html#a99aab337d05429f6a81d3ebb18052db7',1,'shell_collision(Collision *, Vec3f):&#160;collision.c']]],
   ['sin_73',['sin',['../math_8h.html#ad910bc71940a50c2a35d308c236013b6',1,'math.h']]],
   ['sinf_74',['sinf',['../sinf_8c.html#a8a7dc2a88e109f4e15b661247665709a',1,'sinf(float x):&#160;sinf.c'],['../math_8h.html#a312367f3e117fc37059783c301766042',1,'sinf(float):&#160;sinf.c']]],
   ['sins_75',['sins',['../math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545',1,'sins(u16 arg0):&#160;math_util.c'],['../math__util_8h.html#aedd2ba31fb085c44b1f185bb71b2a465',1,'sins(u16):&#160;math_util.c']]],

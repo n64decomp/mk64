@@ -20,7 +20,7 @@ var searchData=
   ['watchlo_5fvalidmask_17',['WATCHLO_VALIDMASK',['../R4300_8h.html#a55fdad7366f8ba76401505cac62053ce',1,'R4300.h']]],
   ['watchlo_5fwtrap_18',['WATCHLO_WTRAP',['../R4300_8h.html#a0a8e20512cbeb46cf186698b59425afd',1,'R4300.h']]],
   ['waveid_19',['waveId',['../structNotePlaybackState.html#a42402672c3ba2a53b238c7adb4897d59',1,'NotePlaybackState::waveId'],['../structNote.html#a735fb38930defbb072e29145b7cddebb',1,'Note::waveId']]],
-  ['waveinfo_20',['waveInfo',['../structALWaveTable__s.html#a85b362aa52c9213e918b655fc4604187',1,'ALWaveTable_s']]],
+  ['waveinfo_20',['waveInfo',['../structALWaveTable__s.html#a9c57eb36c46ed8f511614226ee96e4f4',1,'ALWaveTable_s']]],
   ['wavetable_21',['wavetable',['../structALSound__s.html#a8bb355521feffe02dfa992b5fd23ae87',1,'ALSound_s']]],
   ['waypointend_22',['waypointEnd',['../structKartAIBehaviour.html#a49ef05db0dffad276cacd95c1add1cff',1,'KartAIBehaviour']]],
   ['waypointindex_23',['waypointIndex',['../structBombKartSpawn.html#a2433b7d49cd9dbe30178490a1c5996a0',1,'BombKartSpawn::waypointIndex'],['../structBombKart.html#a525c7c5d643f877e4ad83c936813af2b',1,'BombKart::waypointIndex'],['../structTrainCarStuff.html#ad30b566d920820973b38f352776fba66',1,'TrainCarStuff::waypointIndex'],['../structPaddleBoatStuff.html#afbb8a16053d3ce4f36a7e71b8606c0f6',1,'PaddleBoatStuff::waypointIndex'],['../structVehicleStuff.html#abf63879b2d12bc756cc5d0e7f2509040',1,'VehicleStuff::waypointIndex']]],
