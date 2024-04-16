@@ -81,7 +81,7 @@ f32 func_802AAB4C(Player *player) {
             }
             return D_8015F8E4;
         case COURSE_DK_JUNGLE:
-            temp_v1 = func_802ABD40(player->unk_110.unk3A) & 0xFF;
+            temp_v1 = get_course_section(player->unk_110.unk3A) & 0xFF;
             if (temp_v1 == 0xFF) {
                 if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == CAVE) {
                     return -475.0f;
@@ -497,7 +497,7 @@ s8 get_surface_type(u16 index) {
     return tile->surfaceType;
 }
 
-s16 func_802ABD40(u16 index) {
+s16 get_course_section(u16 index) {
     mk64_surface_map_ram *tile = &gSurfaceMap[index];
     return tile->flags & 0xFF;
 }

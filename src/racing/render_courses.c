@@ -71,117 +71,117 @@ void parse_course_displaylists(uintptr_t addr) {
 
 extern u32 isFlycam;
 
-void load_surface_map(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
+void render_course_section(uintptr_t sectionAddr, struct UnkStruct_800DC5EC *arg1) {
     Player *player = arg1->player;
     Camera *camera = arg1->camera;
-    u32 segment = SEGMENT_NUMBER2(addr);
-    u32 offset = SEGMENT_OFFSET(addr);
+    u32 segment = SEGMENT_NUMBER2(sectionAddr);
+    u32 offset = SEGMENT_OFFSET(sectionAddr);
     //! @todo Should be Gfx*
-    s32 *gfx = (s32 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
-    s16 var_a3;
-    s16 temp_v1;
+    s32 *sectionGfx = (s32 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    s16 direction;
+    s16 section;
     s16 sp1E;
     s16 temp_v0_3;
     u16 rot;
     if (gIsMirrorMode) {
         rot = (u16) camera->rot[1];
         if (rot < 0x2000) {
-            var_a3 = 2;
+            direction = SOUTH;
         } else if (rot < 0x6000) {
-            var_a3 = 3;
+            direction = WEST;
         } else if (rot < 0xA000) {
-            var_a3 = 0;
+            direction = NORTH;
         } else if (rot < 0xE000) {
-            var_a3 = 1;
+            direction = EAST;
         } else {
-            var_a3 = 2;
+            direction = SOUTH;
         }
     } else {
         rot = (u16) camera->rot[1];
         if (rot < 0x2000) {
-            var_a3 = 2;
+            direction = SOUTH;
         } else if (rot < 0x6000) {
-            var_a3 = 1;
+            direction = EAST;
         }
         else if (rot < 0xA000) {
-            var_a3 = 0;
+            direction = NORTH;
         }
         else if (rot < 0xE000) {
-            var_a3 = 3;
+            direction = WEST;
         }
         else {
-            var_a3 = 2;
+            direction = SOUTH;
         }
     }
-    arg1->playerDirection = var_a3;
+    arg1->playerDirection = direction;
 
     if (D_80152300[camera - camera1] == 1) {
-        sp1E = func_802ABD40(camera->unk_54.unk3A);
-        temp_v0_3 = func_802ABD40(player->unk_110.unk3A);
-        temp_v1 = sp1E - temp_v0_3;
-        if ((temp_v1 < 2) && (temp_v1 >= -1)) {
+        sp1E = get_course_section(camera->unk_54.unk3A);
+        temp_v0_3 = get_course_section(player->unk_110.unk3A);
+        section = sp1E - temp_v0_3;
+        if ((section < 2) && (section >= -1)) {
             if (sp1E == 255) {
                 if (temp_v0_3 == 255) {
-                    temp_v1 = arg1->pathCounter;
+                    section = arg1->pathCounter;
                 } else if (player->unk_110.unk3C[2] > 30.0f) {
-                    temp_v1 = arg1->pathCounter;
+                    section = arg1->pathCounter;
                 } else { 
-                    temp_v1 = temp_v0_3;
+                    section = temp_v0_3;
                 }
             } else if (camera->unk_54.unk3C[2] > 30.0f) {
-                temp_v1 = arg1->pathCounter;
+                section = arg1->pathCounter;
             } else { 
-                temp_v1 = sp1E;
+                section = sp1E;
             }
         } else {
 
             switch(gCurrentCourseId) {
                 case COURSE_BOWSER_CASTLE:
                         if ((temp_v0_3 >= 0x11) && (temp_v0_3 < 0x18)) {
-                            temp_v1 = temp_v0_3;
+                            section = temp_v0_3;
                         } else if ((temp_v0_3 == 255) && (sp1E != 255)) {
-                            temp_v1 = sp1E;
+                            section = sp1E;
                         } else if ((temp_v0_3 != 255) && (sp1E == 255)) {
-                            temp_v1 = temp_v0_3;
+                            section = temp_v0_3;
                         } else {
-                            temp_v1 = arg1->pathCounter;
+                            section = arg1->pathCounter;
                         }
                     break;
                 case COURSE_CHOCO_MOUNTAIN:
                     if ((temp_v0_3 >= 0xE) && (temp_v0_3 < 0x16)) {
-                        temp_v1 = temp_v0_3;
+                        section = temp_v0_3;
                     } else if ((temp_v0_3 == 255) && (sp1E != 255)) {
-                        temp_v1 = sp1E;
+                        section = sp1E;
                     } else if ((temp_v0_3 != 255) && (sp1E == 255)) {
-                        temp_v1 = temp_v0_3;
+                        section = temp_v0_3;
                     } else {
-                        temp_v1 = arg1->pathCounter;
+                        section = arg1->pathCounter;
                     }
                     break;
                 default:
                     if (temp_v0_3 == 255) {
-                        temp_v1 = arg1->pathCounter;
+                        section = arg1->pathCounter;
                     } else if (player->unk_110.unk3C[2] > 30.0f) {
-                        temp_v1 = arg1->pathCounter;
+                        section = arg1->pathCounter;
                     } else { 
-                        temp_v1 = temp_v0_3;
+                        section = temp_v0_3;
                     }
                     break;
             }
         }
     } else {
-        temp_v1 = func_802ABD40(camera->unk_54.unk3A);
+        section = get_course_section(camera->unk_54.unk3A);
         if (camera->unk_54.unk3C[2] > 30.0f) {
-            temp_v1 = arg1->pathCounter;
-        } else if (temp_v1 == 255) { 
-            temp_v1 = arg1->pathCounter;
+            section = arg1->pathCounter;
+        } else if (section == 255) { 
+            section = arg1->pathCounter;
         }
     }
 
-    arg1->pathCounter = temp_v1;
-    temp_v1 = ((temp_v1 - 1) * 4) + var_a3;
+    arg1->pathCounter = section;
+    section = ((section - 1) * 4) + direction;
     
-    gSPDisplayList(gDisplayListHead++, gfx[temp_v1]);
+    gSPDisplayList(gDisplayListHead++, sectionGfx[section]);
 }
 
 void func_80291198(void) {
@@ -287,7 +287,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 playerId) {
             gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            load_surface_map((uintptr_t)d_course_koopa_troopa_beach_dl_list2, arg0);
+            render_course_section((uintptr_t)d_course_koopa_troopa_beach_section_dl2, arg0);
             gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
@@ -305,7 +305,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 playerId) {
 
             mtxf_identity(matrix);
             render_set_position(matrix, 0);
-            load_surface_map((uintptr_t) sherbet_land_dls_2, arg0);
+            render_course_section((uintptr_t) d_course_sherbet_land_section_dl2, arg0);
 
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
             if ((func_80290C20(arg0->camera) == 1) && (func_802AAB4C(player) < player->pos[1])) {
@@ -322,7 +322,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 playerId) {
             mtxf_identity(matrix);
             render_set_position(matrix, 0);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            load_surface_map((uintptr_t) &d_course_rainbow_road_dl_list, arg0);
+            render_course_section((uintptr_t) &d_course_rainbow_road_dl_list, arg0);
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
             gDPPipeSync(gDisplayListHead++);
@@ -510,7 +510,7 @@ void func_8029122C(struct UnkStruct_800DC5EC *arg0, s32 playerId) {
 void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     UNUSED s32 pad;
     u16 sp22 = arg0->pathCounter;
-    u16 temp_t0 = arg0->playerDirection;
+    u16 playerDirection = arg0->playerDirection;
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
@@ -533,20 +533,20 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
         case 1:
         case 2:
         case 17:
-            if ((temp_t0 == 2) || (temp_t0 == 1)) {
+            if ((playerDirection == 2) || (playerDirection == 1)) {
                 func_802911C4();
             }
             break;
         case 3:
-            if (temp_t0 != 0) {
+            if (playerDirection != 0) {
                 func_802911C4();
             }
             break;
         case 4:
-            if (temp_t0 == 0) {
+            if (playerDirection == 0) {
                 func_80291198();
             } else {
-                if (temp_t0 == 1) {
+                if (playerDirection == 1) {
                     func_80291198();
                 }
                 func_802911C4();
@@ -554,7 +554,7 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
             break;
         case 5:
         case 6:
-            if ((temp_t0 == 2) || (temp_t0 == 3)) {
+            if ((playerDirection == 2) || (playerDirection == 3)) {
                 func_802911C4();
             } else {
                 func_80291198();
@@ -562,37 +562,37 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
             break;
         case 7:
             func_80291198();
-            if ((temp_t0 == 2) || (temp_t0 == 3)) {
+            if ((playerDirection == 2) || (playerDirection == 3)) {
                 func_802911C4();
             }
             break;
         case 8:
         case 9:
-            if (temp_t0 != 1) {
+            if (playerDirection != 1) {
                 func_802911C4();
             }
             /* fallthrough */
         case 10:
-            if (temp_t0 != 2) {
+            if (playerDirection != 2) {
                 func_80291198();
             }
             break;
         case 11:
-            if (temp_t0 == 0) {
+            if (playerDirection == 0) {
                 func_802911C4();
                 func_80291198();
-            } else if (temp_t0 == 3) {
+            } else if (playerDirection == 3) {
                 func_802911C4();
             }
             break;
         case 12:
-            if ((temp_t0 == 0) || (temp_t0 == 3)) {
+            if ((playerDirection == 0) || (playerDirection == 3)) {
                 func_802911C4();
             }
             break;
         case 13:
         case 14:
-            if (temp_t0 != 1) {
+            if (playerDirection != 1) {
             case 15:
             case 16:
                 func_802911C4();
@@ -608,7 +608,7 @@ void render_mario_raceway(struct UnkStruct_800DC5EC *arg0) {
     // d_course_mario_raceway_packed_dl_14A0
     gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070014A0));
 
-    load_surface_map((uintptr_t) mario_raceway_dls, arg0);
+    render_course_section((uintptr_t) mario_raceway_dls, arg0);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
@@ -655,7 +655,7 @@ void render_choco_mountain(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07005868));
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
-    load_surface_map((uintptr_t) choco_mountain_dls, arg0);
+    render_course_section((uintptr_t) choco_mountain_dls, arg0);
 
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2);
@@ -693,7 +693,7 @@ void render_bowsers_castle(struct UnkStruct_800DC5EC *arg0) {
     if (D_802B87BC > 255) {
         D_802B87BC = 0;
     }
-    load_surface_map((uintptr_t) bowsers_castle_dls, arg0);
+    render_course_section((uintptr_t) bowsers_castle_dls, arg0);
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
@@ -732,7 +732,7 @@ void render_banshee_boardwalk(struct UnkStruct_800DC5EC *arg0) {
     // d_course_banshee_boardwalk_packed_dl_69B0
     gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070069B0));
 
-    load_surface_map((uintptr_t) banshee_boardwalk_dls, arg0);
+    render_course_section((uintptr_t) banshee_boardwalk_dls, arg0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
@@ -766,7 +766,7 @@ void render_yoshi_valley(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    load_surface_map((uintptr_t) d_course_yoshi_valley_dl_list, arg0);
+    render_course_section((uintptr_t) d_course_yoshi_valley_dl_list, arg0);
     gDPPipeSync(gDisplayListHead++);
 }
 
@@ -785,7 +785,7 @@ void render_frappe_snowland(struct UnkStruct_800DC5EC *arg0) {
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    load_surface_map((uintptr_t) d_course_frappe_snowland_dl_list, arg0);
+    render_course_section((uintptr_t) d_course_frappe_snowland_dl_list, arg0);
 }
 
 void render_koopa_troopa_beach(struct UnkStruct_800DC5EC *arg0) {
@@ -805,7 +805,7 @@ void render_koopa_troopa_beach(struct UnkStruct_800DC5EC *arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     // d_course_koopa_troopa_beach_packed_dl_9688
     gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07009688));
-    load_surface_map((uintptr_t) d_course_koopa_troopa_beach_dl_list1, arg0);
+    render_course_section((uintptr_t) d_course_koopa_troopa_beach_section_dl1, arg0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
@@ -833,7 +833,7 @@ void render_royal_raceway(struct UnkStruct_800DC5EC *arg0) {
     // d_course_royal_raceway_packed_dl_A648
     gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x0700A648));
 
-    load_surface_map((uintptr_t) royal_raceway_dls, arg0);
+    render_course_section((uintptr_t) royal_raceway_dls, arg0);
 
     // d_course_royal_raceway_packed_dl_11A8
     gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x070011A8));
@@ -865,7 +865,7 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-    load_surface_map((uintptr_t) luigi_raceway_dls, arg0);
+    render_course_section((uintptr_t) luigi_raceway_dls, arg0);
     
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
@@ -922,7 +922,7 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC *arg0) {
 void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
     UNUSED s32 pad[13];
     s16 temp_s0 = arg0->pathCounter;
-    s16 temp_s1 = arg0->playerDirection;
+    s16 playerDirection = arg0->playerDirection;
 
     func_802B5D64((uintptr_t) D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -936,21 +936,21 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07005640));
     gSPFogPosition(gDisplayListHead++, D_802B87B0, D_802B87B4);
 
-    load_surface_map((uintptr_t) moo_moo_farm_dls, arg0);
+    render_course_section((uintptr_t) moo_moo_farm_dls, arg0);
 
     if ((temp_s0 < 14) && (temp_s0 > 10)) {
-        if ((temp_s1 == 2) || (temp_s1 == 3) || (temp_s1 == 1))
+        if ((playerDirection == 2) || (playerDirection == 3) || (playerDirection == 1))
             // 
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
         
     } else if (temp_s0 < 16) {
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
     } else if (temp_s0 < 19) {
-        if (temp_s1 != 2) 
+        if (playerDirection != 2) 
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
         
     } else if (temp_s0 < 20) {
-        if (temp_s1 == 0) 
+        if (playerDirection == 0) 
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
         
     }
@@ -958,28 +958,28 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
     if ((temp_s0 >= 16) && (temp_s0 < 24)) {
-        if ((temp_s1 == 2) || (temp_s1 == 3)) 
+        if ((playerDirection == 2) || (playerDirection == 3)) 
             // d_course_moo_moo_farm_packed_dl_5410
             gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07005410));
         
     } else if (temp_s0 < 9) {
-        if (temp_s1 == 2) 
+        if (playerDirection == 2) 
             // d_course_moo_moo_farm_packed_dl_5410
             gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07005410));
         
     }
     if (temp_s0 < 4) {
-        if (temp_s1 != 0)
+        if (playerDirection != 0)
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
         
     } else if (temp_s0 < 8) {
-        if (temp_s1 == 2)
+        if (playerDirection == 2)
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
         
     } else if (temp_s0 >= 22) {
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
     } else if (temp_s0 >= 18) {
-        if ((temp_s1 == 0) || (temp_s1 == 3))
+        if ((playerDirection == 0) || (playerDirection == 3))
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
         
     }
@@ -1003,7 +1003,7 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_PASS2);
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2);
 
-    load_surface_map((uintptr_t) d_course_toads_turnpike_dl_list, arg0);
+    render_course_section((uintptr_t) d_course_toads_turnpike_dl_list, arg0);
 
     gDPSetRenderMode(gDisplayListHead++, G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_PASS2);
@@ -1034,7 +1034,7 @@ void render_kalimari_desert(struct UnkStruct_800DC5EC *arg0) {
 
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    load_surface_map((uintptr_t) kalimari_desert_dls, arg0);
+    render_course_section((uintptr_t) kalimari_desert_dls, arg0);
     // d_course_kalimari_desert_packed_dl_1ED8
     gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07001ED8));
     // d_course_kalimari_desert_packed_dl_1B18
@@ -1058,7 +1058,7 @@ void render_sherbet_land(struct UnkStruct_800DC5EC *arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    load_surface_map((uintptr_t) sherbet_land_dls, arg0);
+    render_course_section((uintptr_t) d_course_sherbet_land_section_dl1, arg0);
 }
 
 void render_rainbow_road(UNUSED struct UnkStruct_800DC5EC *arg0) {
@@ -1088,7 +1088,7 @@ void render_wario_stadium(struct UnkStruct_800DC5EC *arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATERGBA, G_CC_MODULATERGBA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-    load_surface_map((uintptr_t) wario_stadium_dls, arg0);
+    render_course_section((uintptr_t) wario_stadium_dls, arg0);
 
     // d_course_wario_stadium_packed_dl_A228
     gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x0700A228));
@@ -1201,7 +1201,7 @@ void render_dks_jungle_parkway(struct UnkStruct_800DC5EC *arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
-    load_surface_map((uintptr_t) d_course_dks_jungle_parkway_unknown_dl_list, arg0);
+    render_course_section((uintptr_t) d_course_dks_jungle_parkway_unknown_dl_list, arg0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 }

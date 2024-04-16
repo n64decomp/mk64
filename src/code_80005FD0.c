@@ -1349,7 +1349,7 @@ s32 func_80008E58(s32 payerId, s32 pathIndex) {
     f32 posY;
     f32 posZ;
     Player *player;
-    s32 trackSegment;
+    s32 courseSection;
     UNUSED s32 stackPadding;
 
     player = &gPlayers[payerId];
@@ -1357,9 +1357,9 @@ s32 func_80008E58(s32 payerId, s32 pathIndex) {
     posY = player->pos[1];
     posZ = player->pos[2];
     stackPadding = pathIndex;
-    trackSegment = func_802ABD40(player->unk_110.unk3A);
-    D_80163318[payerId] = trackSegment;
-    D_80162FCE = func_8000C0BC(posX, posY, posZ, trackSegment, &pathIndex);
+    courseSection = get_course_section(player->unk_110.unk3A);
+    D_80163318[payerId] = courseSection;
+    D_80162FCE = func_8000C0BC(posX, posY, posZ, courseSection, &pathIndex);
     gNearestWaypointByPlayerId[payerId] = D_80162FCE;
     if(pathIndex) {};
     gPathIndexByPlayerId[payerId] = pathIndex;
@@ -2311,7 +2311,7 @@ s16 func_8000BD94(f32 posX, f32 posY, f32 posZ, s32 pathIndex) {
     return nearestWaypointIndex;
 }
 
-s16 func_8000C0BC(f32 posX, f32 posY, f32 posZ, u16 trackSegment, s32 *pathIndex) {
+s16 func_8000C0BC(f32 posX, f32 posY, f32 posZ, u16 courseSection, s32 *pathIndex) {
     TrackWaypoint *pathWaypoints;
     TrackWaypoint *considerWaypoint;
     f32 x_dist;
@@ -2337,7 +2337,7 @@ s16 func_8000C0BC(f32 posX, f32 posY, f32 posZ, u16 trackSegment, s32 *pathIndex
     pathWaypointCount = gWaypointCountByPathIndex[temp_t0];
     considerWaypoint = &pathWaypoints[0];
     for (considerWaypointIndex = 0; considerWaypointIndex < pathWaypointCount; considerWaypointIndex++, considerWaypoint++) {
-        if ((considerWaypoint->trackSegment == trackSegment) || (gCurrentCourseId == COURSE_AWARD_CEREMONY)) {
+        if ((considerWaypoint->courseSection == courseSection) || (gCurrentCourseId == COURSE_AWARD_CEREMONY)) {
             var_t1 = 1;
             x_dist = (f32) considerWaypoint->posX - posX;
             y_dist = (f32) considerWaypoint->posY - posY;
@@ -2357,7 +2357,7 @@ s16 func_8000C0BC(f32 posX, f32 posY, f32 posZ, u16 trackSegment, s32 *pathIndex
                 considerWaypoint = &pathWaypoints[0];
                 pathWaypointCount = gWaypointCountByPathIndex[considerPathIndex];
                 for (considerWaypointIndex = 0; considerWaypointIndex < pathWaypointCount; considerWaypointIndex++, considerWaypoint++) {
-                    if (considerWaypoint->trackSegment == trackSegment) {
+                    if (considerWaypoint->courseSection == courseSection) {
                         x_dist = (f32) considerWaypoint->posX - posX;
                         y_dist = (f32) considerWaypoint->posY - posY;
                         z_dist = (f32) considerWaypoint->posZ - posZ;
@@ -2403,11 +2403,11 @@ s16 func_8000C0BC(f32 posX, f32 posY, f32 posZ, u16 trackSegment, s32 *pathIndex
 
 /**
  * Tries to find the waypoint nearest to (posX, posY, posZ)
- * Only consider waypoints in the same segment as trackSegment
+ * Only consider waypoints in the same segment as courseSection
  * Only considers waypoints within 500 units of (posX, posY, posZ)
  * Looks 3 waypoints behind and 6 waypoints ahead of waypointIndex
  **/
-s16 func_8000C884(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex, u16 trackSegment) {
+s16 func_8000C884(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex, u16 courseSection) {
     s16 nearestWaypointIndex;
     s16 searchIndex;
     s16 considerIndex;
@@ -2429,7 +2429,7 @@ s16 func_8000C884(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex
         // This is done to ensure we access D_80164550 at a valid index
         considerIndex = (searchIndex + pathWaypointCount) % pathWaypointCount;
         considerWaypoint = &pathWaypoints[considerIndex];
-        if (considerWaypoint->trackSegment == trackSegment) {
+        if (considerWaypoint->courseSection == courseSection) {
             x_dist = considerWaypoint->posX - posX;
             y_dist = considerWaypoint->posY - posY;
             z_dist = considerWaypoint->posZ - posZ;
@@ -2521,15 +2521,15 @@ void func_8000CBF8(UNUSED f32 posX, UNUSED f32 posY, f32 posZ, s16 *waypointInde
 }
 
 s16 func_8000CC88(f32 posX, f32 posY, f32 posZ, Player *player, s32 playerId, s32 *pathIndex) {
-    u16 trackSegment;
+    u16 courseSection;
     s16 ret;
 
-    trackSegment = func_802ABD40(player->unk_110.unk3A);
-    if ((trackSegment <= 0) || (trackSegment >= 0x33)) {
-        trackSegment = D_80163318[playerId];
+    courseSection = get_course_section(player->unk_110.unk3A);
+    if ((courseSection <= 0) || (courseSection >= 0x33)) {
+        courseSection = D_80163318[playerId];
     }
-    D_80163318[playerId] = trackSegment;
-    ret = func_8000C0BC(posX, posY, posZ, trackSegment, pathIndex);
+    D_80163318[playerId] = courseSection;
+    ret = func_8000C0BC(posX, posY, posZ, courseSection, pathIndex);
     gPathIndexByPlayerId[playerId] = *pathIndex;
     return ret;
 }
@@ -2542,7 +2542,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
     TrackWaypoint *temp_v1;
 
     if ((player->type & 0x4000) && !(player->type & 0x1000)) {
-        sp5E = func_8000C884(posX, posY, posZ, waypointIndex, pathIndex, (u16) func_802ABD40(player->unk_110.unk3A));
+        sp5E = func_8000C884(posX, posY, posZ, waypointIndex, pathIndex, (u16) get_course_section(player->unk_110.unk3A));
         if (sp5E == -1) {
             sp5E = func_8000CC88(posX, posY, posZ, player, playerId, &pathIndex);
         }
@@ -2558,7 +2558,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
             }
             if (playerId == ((s32) D_80163488 % 8)) {
                 func_802ADDC8(&player->unk_110, 10.0f, posX, posY, posZ);
-                D_80163318[playerId] = func_802ABD40(player->unk_110.unk3A);
+                D_80163318[playerId] = get_course_section(player->unk_110.unk3A);
                 sp5E = func_8000C884(posX, posY, posZ, waypointIndex, pathIndex, D_80163318[playerId]);
                 if (sp5E == -1) {
                     sp5E = func_8000C9DC(posX, posY, posZ, waypointIndex, pathIndex);
@@ -2582,7 +2582,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
                     player->pos[1] = posY;
                     player->pos[2] = posZ;
                     func_802ADDC8(&player->unk_110, 10.0f, posX, posY, posZ);
-                    D_80163318[playerId] = func_802ABD40(player->unk_110.unk3A);
+                    D_80163318[playerId] = get_course_section(player->unk_110.unk3A);
                 }
             }
         } else {
@@ -2635,7 +2635,7 @@ s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32 *pathIndex) {
     Collision sp24;
 
     func_802ADDC8(&sp24, 10.0f, posX, posY, posZ);
-    return func_8000C0BC(posX, posY, posZ, func_802ABD40(sp24.unk3A), pathIndex);
+    return func_8000C0BC(posX, posY, posZ, get_course_section(sp24.unk3A), pathIndex);
 }
 
 s16 func_8000D2B4(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex) {
@@ -4013,7 +4013,7 @@ s32 func_80011014(TrackWaypoint *pathDest, TrackWaypoint *path, s32 numPathPoint
 
 
                 pathDest->posZ = (s16) temp_f22;
-                pathDest->trackSegment = func_802ABD40(D_80162E70.unk3A);
+                pathDest->courseSection = get_course_section(D_80162E70.unk3A);
 
                 if (var_f20_2 < -500.0) {
                     var_f20_2 = var_f28;
@@ -4075,7 +4075,7 @@ s32 process_path_data(TrackWaypoint *dest, TrackWaypoint *src) {
         temp_a0 = src->posX;
         temp_a2 = src->posY;
         temp_a3 = src->posZ;
-        temp_t0 = src->trackSegment;
+        temp_t0 = src->courseSection;
         src++;
         if (((temp_a0 & 0xFFFF) == 0x8000) && ((temp_a2 & 0xFFFF) == 0x8000) && ((temp_a3 & 0xFFFF) == 0x8000)) { break; }
         if (gIsMirrorMode != 0) {
@@ -4086,7 +4086,7 @@ s32 process_path_data(TrackWaypoint *dest, TrackWaypoint *src) {
         var_v1++;
         dest->posY = temp_a2;
         dest->posZ = temp_a3;
-        dest->trackSegment = temp_t0;
+        dest->courseSection = temp_t0;
         dest++;
     }
     return var_v1;

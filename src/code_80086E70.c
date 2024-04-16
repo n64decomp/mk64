@@ -1415,11 +1415,11 @@ UNUSED void func_8008A850(s32 arg0) {
 }
 
 UNUSED s32 func_8008A870(Player *player) {
-    return func_802ABD40(player->unk_110.unk3A);
+    return get_course_section(player->unk_110.unk3A);
 }
 
 s32 func_8008A890(Camera *camera) {
-    return func_802ABD40(camera->unk_54.unk3A);
+    return get_course_section(camera->unk_54.unk3A);
 }
 
 s32 func_8008A8B0(s16 arg0, s16 arg1) {

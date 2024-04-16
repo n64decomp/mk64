@@ -38,10 +38,15 @@ for model in models:
         args_blender.append(file)
         args_blender.append(obj)
         args_blender.append(out_file)
-        subprocess.run([blender]+args_blender)
+        result = subprocess.run([blender]+args_blender)
+        if result.returncode != 0:
+            failed.append(out_file)
         args_blender.pop()
         args_blender.pop()
         args_blender.pop()
 
-print("Failed to export:")
-print("\n".join(failed))
+if len(failed) == 0:
+    print("All models exported successfully")
+else:
+    print("Failed to export:")
+    print("\n".join(failed))

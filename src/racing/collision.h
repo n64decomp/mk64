@@ -13,7 +13,7 @@ s32   func_802AAE4C(Collision*, f32, f32, f32, f32, u16);
 s32   func_802AB288(Collision*, f32, f32, f32, f32, u16);
 s32   func_802AB6C4(Collision*, f32, f32, f32, f32, u16);
 s8    get_surface_type(u16);
-s16   func_802ABD40(u16);
+s16   get_course_section(u16);
 s16   func_802ABD7C(u16);
 s16   func_802ABDB8(u16);
 s16   func_802ABDF4(u16);

@@ -367,7 +367,7 @@ extern Gfx d_course_koopa_troopa_beach_dl_18D68[];
 extern struct ActorSpawnData d_course_koopa_troopa_beach_item_box_spawns[];
 extern struct ActorSpawnData d_course_koopa_troopa_beach_tree_spawn[];
 extern TrackSections d_course_koopa_troopa_beach_addr[];
-extern Gfx *d_course_koopa_troopa_beach_dl_list1[];
-extern Gfx *d_course_koopa_troopa_beach_dl_list2[];
+extern Gfx *d_course_koopa_troopa_beach_section_dl1[];
+extern Gfx *d_course_koopa_troopa_beach_section_dl2[];
 
 #endif

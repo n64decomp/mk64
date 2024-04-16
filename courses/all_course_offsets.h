@@ -11,8 +11,8 @@ extern Gfx *luigi_raceway_dls[];
 extern Gfx *mario_raceway_dls[];
 extern Gfx *moo_moo_farm_dls[];
 extern Gfx *royal_raceway_dls[];
-extern Gfx *sherbet_land_dls[];
-extern Gfx *sherbet_land_dls_2[];
+extern Gfx *d_course_sherbet_land_section_dl1[];
+extern Gfx *d_course_sherbet_land_section_dl2[];
 extern Gfx *wario_stadium_dls[];
 
 extern Gfx toads_turnpike_dl_0[];
