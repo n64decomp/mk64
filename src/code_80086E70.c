@@ -1684,7 +1684,7 @@ void func_8008B284(s32 objectIndex) {
 
 void func_8008B3E4(s32 objectIndex) {
     Objects *temp_v0;
-    SplineData *spline;
+    UNUSED SplineData *spline;
 
     if (is_obj_index_flag_status_inactive(objectIndex, 8) != 0) {
         temp_v0 = &gObjectList[objectIndex];

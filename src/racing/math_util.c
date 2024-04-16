@@ -25,10 +25,10 @@ UNUSED s32 func_802B4F60(UNUSED s32 arg0, Vec3f arg1, UNUSED s32 arg2, UNUSED f3
   sp28 = sp1C[0];
   sp2C = sp1C[1];
   // wut?
-  if (sp2C && sp2C);
+  if (sp2C && sp2C) {};
   sp2C = ((sp30[0][3] * sp28) + (sp30[1][3] * sp2C) + (sp30[2][3] * sp1C[2])) + sp30[3][3];
   // double wut?
-  if (sp28 && sp28);
+  if (sp28 && sp28) {};
   mtxf_translate_vec3f_mat4(sp1C, sp30);
   if (0.0f >= sp2C)
   {
