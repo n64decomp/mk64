@@ -67,7 +67,7 @@ const course_texture mario_raceway_textures[] = {
     {0x00000000,                     0x0000, 0x0000, 0x0},
 };
 
-const u8 *mario_raceway_dls[] = {
+const Gfx *mario_raceway_dls[] = {
     d_course_mario_raceway_dl_0,
     d_course_mario_raceway_dl_1D0,
     d_course_mario_raceway_dl_E8,

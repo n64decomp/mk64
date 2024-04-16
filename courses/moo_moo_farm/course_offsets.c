@@ -63,7 +63,7 @@ const course_texture moo_moo_farm_textures[] = {
     {0x00000000,                   0x0000, 0x0000, 0x0},
 };
 
-const u8 *moo_moo_farm_dls[] = {
+const Gfx *moo_moo_farm_dls[] = {
     d_course_moo_moo_farm_dl_88,
     d_course_moo_moo_farm_dl_598,
     d_course_moo_moo_farm_dl_338,

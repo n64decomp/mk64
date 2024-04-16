@@ -121,7 +121,7 @@ void func_80282048(void);
 void func_80282050(Vec3f, Vec3f, s16);
 void func_802820F8(Vec3f, Vec3f, s16);
 s32  f32_lerp(f32*, f32, f32);
-s32  func_80282200(s16*, s16, s16);
+s32  func_80282200(Vec3s, s16, s16);
 s32  set_transition_colour_fade_alpha_ending(f32*, f32, f32);
 s32  func_80282364(s16*, s16, s16);
 void reset_spline(void);
