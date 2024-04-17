@@ -56,6 +56,7 @@ void crash_screen_draw_glyph(u16 *framebuffer, s32 x, s32 y, s32 glyph) {
     }
 }
 
+void crash_screen_draw_square(u16 *framebuffer);
 // Functionally Equivallent.
 #ifdef NON_MATCHING
 

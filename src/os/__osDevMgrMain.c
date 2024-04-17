@@ -5,6 +5,8 @@
 
 #include "new_func.h"
 
+void osYieldThread(void);
+
 void __osDevMgrMain(void *args) {
     OSIoMesg *mb;
     OSMesg em;

@@ -5942,6 +5942,7 @@ void func_80016C3C(UNUSED s32 playerId, UNUSED f32 arg1, s32 cameraId) {
     camera->pos[2] = D_80164638[cameraId];
 }
 
+void func_80017054(Camera *camera, UNUSED Player *player, UNUSED s32 index, s32 cameraId);
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/Ck7hV
 // Really crazy diff, permuter only able to find fakematches for improvements (and they're big improvements)
