@@ -1,5 +1,6 @@
 var NAVTREEINDEX109 =
 {
+"stddef_8h.html":[8,0,2,1,2],
 "stddef_8h.html#a19a04836d558f3c018b597e8dea1e0e0":[8,0,2,1,2,0],
 "stddef_8h_source.html":[8,0,2,1,2],
 "stdio_8h.html":[8,0,2,1,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX109 =
 "structBananaBunchParent.html#ad308ed0758aef4141ec5e6de8b8101f8":[7,0,53,11],
 "structBananaBunchParent.html#ae1c190eae7f8f237b5a37aa109a3e7b5":[7,0,53,6],
 "structBananaBunchParent.html#afb695515f0750a61ead8bda3c38cd033":[7,0,53,5],
-"structBombKart.html":[7,0,54],
-"structBombKart.html#a14d30e3c4ae3ed2c94852f2b46c326a9":[7,0,54,11]
+"structBombKart.html":[7,0,54]
 };

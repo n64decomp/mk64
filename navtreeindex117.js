@@ -1,5 +1,6 @@
 var NAVTREEINDEX117 =
 {
+"structmk64__surface__map__ram.html#a5adf50b60ed4fa3f197fe2f5ba236ecb":[7,0,98,0],
 "structmk64__surface__map__ram.html#a71a2e69d65474df946345341c95c554a":[7,0,98,7],
 "structmk64__surface__map__ram.html#a768bd5dc60ca866827b39f24c633c816":[7,0,98,11],
 "structmk64__surface__map__ram.html#abf92032f84f75c5ac574ff3c778831a9":[7,0,98,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX117 =
 "structuObjSprite__t.html#a9c72c65b8b8b0ee05dc466bf15699706":[7,0,238,6],
 "structuObjSprite__t.html#aa56aa472d1ac710dd829e6f1cd9f7ad0":[7,0,238,8],
 "structuObjSprite__t.html#ada2aaa4b0249dfdb6b2844851ca1ad69":[7,0,238,5],
-"structuObjSprite__t.html#adcc53d02f99ed6629a2627c31340434b":[7,0,238,12],
-"structuObjSprite__t.html#ae240a2544af062bc4828c1fce79b04c5":[7,0,238,9]
+"structuObjSprite__t.html#adcc53d02f99ed6629a2627c31340434b":[7,0,238,12]
 };

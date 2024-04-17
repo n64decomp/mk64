@@ -1,5 +1,6 @@
 var NAVTREEINDEX107 =
 {
+"some__data_8c.html#a7145a808ac2fefd28494cfb3504983e9":[8,0,3,3,4,29],
 "some__data_8c.html#a72ad74949ee19c95b48e667a81df5aad":[8,0,3,3,4,52],
 "some__data_8c.html#a7799ff2640ebf9d8821bdcafb9717f62":[8,0,3,3,4,15],
 "some__data_8c.html#a786764b3c763cfbc69d10f381fb03d65":[8,0,3,3,4,19],
@@ -248,6 +249,5 @@ var NAVTREEINDEX107 =
 "sprintf_8c.html":[8,0,3,6,119],
 "sprintf_8c.html#a353b2f73aed82bd1eb8cc2b34ec936d9":[8,0,3,6,119,1],
 "sprintf_8c.html#a6151eb738d6a0c5af66836e8a50fad9e":[8,0,3,6,119,0],
-"sptask_8h.html":[8,0,2,2,25],
-"sptask_8h.html#a0296c458ceb9fb23da6fb6d231eacc6d":[8,0,2,2,25,25]
+"sptask_8h.html":[8,0,2,2,25]
 };

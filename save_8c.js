@@ -45,6 +45,7 @@ var save_8c =
     [ "func_800B6708", "save_8c.html#a4c4164e58841d1c3cd46e705edc12719", null ],
     [ "func_800B6798", "save_8c.html#a2eca2028ec93e4f4db6ff080124598f5", null ],
     [ "func_800B6828", "save_8c.html#abc3773a5126c2485e9e03f3709fb97fb", null ],
+    [ "func_800B69BC", "save_8c.html#a67757652326f93cfb055459d199669ab", null ],
     [ "func_800B6A68", "save_8c.html#ac39d2624b69fa93e380f8f0261506712", null ],
     [ "func_8800B6AF8", "save_8c.html#a00b3674452d4a05a7b749d806be17b08", null ],
     [ "load_save_data", "save_8c.html#a7363b8763617751dc18ca9d522b206e8", null ],
