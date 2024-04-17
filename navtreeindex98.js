@@ -1,5 +1,12 @@
 var NAVTREEINDEX98 =
 {
+"royal__raceway_2course__data_8c.html#a44bfcc5fd8a7c99968679ea570b298c1":[8,0,0,14,0,89],
+"royal__raceway_2course__data_8c.html#a4522e8349f11831193b3728325c49f6e":[8,0,0,14,0,138],
+"royal__raceway_2course__data_8c.html#a493effc8c003c246f746477a5f36a5d5":[8,0,0,14,0,23],
+"royal__raceway_2course__data_8c.html#a499c834afe8f91c518f4a48dd1060575":[8,0,0,14,0,37],
+"royal__raceway_2course__data_8c.html#a4d780db4fd28728094dbc2e51da5cd1f":[8,0,0,14,0,90],
+"royal__raceway_2course__data_8c.html#a4ea009ff3b6ea3231a70f759acc551d0":[8,0,0,14,0,10],
+"royal__raceway_2course__data_8c.html#a4eafd58ade90a46fef6d198891144532":[8,0,0,14,0,119],
 "royal__raceway_2course__data_8c.html#a4f37d5d5513d0ab7d00b24c1039aff22":[8,0,0,14,0,56],
 "royal__raceway_2course__data_8c.html#a4faefb2e0349596d97a3700e66c6222d":[8,0,0,14,0,24],
 "royal__raceway_2course__data_8c.html#a505cf20291738b852352e36ce6453fb1":[8,0,0,14,0,105],
@@ -242,12 +249,5 @@ var NAVTREEINDEX98 =
 "royal__raceway_2course__data_8h.html#ae67ba073cb6b077f53eda1817afc620e":[8,0,0,14,1,83],
 "royal__raceway_2course__data_8h.html#ae7d4c1e70e578f5f8c48436a4cc25187":[8,0,0,14,1,92],
 "royal__raceway_2course__data_8h.html#ae7da35c6704da8b393d3e6f275dbbd73":[8,0,0,14,1,31],
-"royal__raceway_2course__data_8h.html#ae9580e40d17fbbea98554c7544849e16":[8,0,0,14,1,142],
-"royal__raceway_2course__data_8h.html#ae9f4a70e75b693a06bcb2e043915b4fd":[8,0,0,14,1,128],
-"royal__raceway_2course__data_8h.html#af669497d7bcf6ff7121d450aa7f5bf27":[8,0,0,14,1,9],
-"royal__raceway_2course__data_8h.html#af7400231f20c29f4d4e634a15bb6c957":[8,0,0,14,1,2],
-"royal__raceway_2course__data_8h_source.html":[8,0,0,14,1],
-"royal__raceway_2course__displaylists_8inc_8c.html":[8,0,0,14,2],
-"royal__raceway_2course__displaylists_8inc_8c.html#a001ac3606e75767158de36d4ce9fc19e":[8,0,0,14,2,202],
-"royal__raceway_2course__displaylists_8inc_8c.html#a01613e020a164214b128eeac9af5f34c":[8,0,0,14,2,156]
+"royal__raceway_2course__data_8h.html#ae9580e40d17fbbea98554c7544849e16":[8,0,0,14,1,142]
 };

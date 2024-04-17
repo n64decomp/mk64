@@ -1,5 +1,6 @@
 var NAVTREEINDEX13 =
 {
+"choco__mountain_2course__displaylists_8inc_8c.html#ac06a08c6af0ad33a4cffe42e1c6cfc2f":[8,0,0,4,2,39],
 "choco__mountain_2course__displaylists_8inc_8c.html#ac2147190a44159eebdb05754b0dcc5e3":[8,0,0,4,2,77],
 "choco__mountain_2course__displaylists_8inc_8c.html#ac3a410aeaec62e9a1c582ca7846e96ce":[8,0,0,4,2,103],
 "choco__mountain_2course__displaylists_8inc_8c.html#ac446c9b8efd9ad37bccb25384e572cb1":[8,0,0,4,2,8],
@@ -248,6 +249,5 @@ var NAVTREEINDEX13 =
 "code__800029B0_8c.html#a2e7d63dbfdabad69a70a95734822fe41":[8,0,3,12,85],
 "code__800029B0_8c.html#a3171c0aaeac3ef35ab672564e9f0be90":[8,0,3,12,8],
 "code__800029B0_8c.html#a32a2013878ce647a9a6ef6749924110c":[8,0,3,12,36],
-"code__800029B0_8c.html#a36b78bd4d782660db58c8eac21caf0d4":[8,0,3,12,59],
-"code__800029B0_8c.html#a37d0e0553a4cd552f52174f4b33b798d":[8,0,3,12,69]
+"code__800029B0_8c.html#a36b78bd4d782660db58c8eac21caf0d4":[8,0,3,12,59]
 };

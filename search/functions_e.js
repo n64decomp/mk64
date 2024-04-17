@@ -72,7 +72,7 @@ var searchData=
   ['ossptaskyielded_69',['osSpTaskYielded',['../osSpTaskYielded_8c.html#ab8f1191f687a4eb639b60c394e364ec2',1,'osSpTaskYielded.c']]],
   ['osstartthread_70',['osStartThread',['../osStartThread_8c.html#a3b144e814933e16a2fbf2642ad098ed3',1,'osStartThread(OSThread *thread):&#160;osStartThread.c'],['../os__thread_8h.html#a3b144e814933e16a2fbf2642ad098ed3',1,'osStartThread(OSThread *thread):&#160;osStartThread.c']]],
   ['osstopthread_71',['osStopThread',['../os__thread_8h.html#a00dae468bed74a09b4227feecc1f8639',1,'os_thread.h']]],
-  ['ossyncprintf_72',['osSyncPrintf',['../is__debug_8c.html#a0a0b1c5c397ef1486b9b08b2e872ff5f',1,'osSyncPrintf(const char *fmt,...):&#160;is_debug.c'],['../osSyncPrintf_8c.html#aa999ec7d8c40636c3a6c3a489656a4a9',1,'osSyncPrintf(char *arg0, const char *arg1, size_t size):&#160;osSyncPrintf.c']]],
+  ['ossyncprintf_72',['osSyncPrintf',['../is__debug_8c.html#a0a0b1c5c397ef1486b9b08b2e872ff5f',1,'osSyncPrintf(const char *fmt,...):&#160;is_debug.c'],['../osSyncPrintf_8c.html#af2956cd92becd74f149439d84cd55096',1,'osSyncPrintf(UNUSED char *arg0, UNUSED const char *arg1, UNUSED size_t size):&#160;osSyncPrintf.c']]],
   ['ossyncprintfunused_73',['osSyncPrintfUnused',['../is__debug_8c.html#a07582d28e6728e94c69884a4ad3038f8',1,'is_debug.c']]],
   ['osviblack_74',['osViBlack',['../osViBlack_8c.html#a6446513d8cd19001210d458f11b12df4',1,'osViBlack(u8 active):&#160;osViBlack.c'],['../os__vi_8h.html#a6446513d8cd19001210d458f11b12df4',1,'osViBlack(u8 active):&#160;osViBlack.c']]],
   ['osvirtualtophysical_75',['osVirtualToPhysical',['../osVirtualToPhysical_8c.html#a87fb0b956b8effcecdf9585577895570',1,'osVirtualToPhysical(void *addr):&#160;osVirtualToPhysical.c'],['../os__misc_8h.html#a102dee8f6e840a2e9750c657bd7f5907',1,'osVirtualToPhysical(void *):&#160;osVirtualToPhysical.c']]],
@@ -80,5 +80,5 @@ var searchData=
   ['osvisetmode_77',['osViSetMode',['../osViSetMode_8c.html#a6bbc9ccb13540fca052eed991070e810',1,'osViSetMode(OSViMode *mode):&#160;osViSetMode.c'],['../os__vi_8h.html#a6bbc9ccb13540fca052eed991070e810',1,'osViSetMode(OSViMode *mode):&#160;osViSetMode.c']]],
   ['osvisetspecialfeatures_78',['osViSetSpecialFeatures',['../osViSetSpecialFeatures_8c.html#a1892347871f440cd85f4f11f33d3e481',1,'osViSetSpecialFeatures(u32 func):&#160;osViSetSpecialFeatures.c'],['../os__vi_8h.html#a1892347871f440cd85f4f11f33d3e481',1,'osViSetSpecialFeatures(u32 func):&#160;osViSetSpecialFeatures.c']]],
   ['osviswapbuffer_79',['osViSwapBuffer',['../osViSwapBuffer_8c.html#ad9fbc8feed5d6cf557a051834e168950',1,'osViSwapBuffer(void *vaddr):&#160;osViSwapBuffer.c'],['../os__vi_8h.html#ad9fbc8feed5d6cf557a051834e168950',1,'osViSwapBuffer(void *vaddr):&#160;osViSwapBuffer.c']]],
-  ['osyieldthread_80',['osYieldThread',['../osYieldThread_8c.html#a173231dae7f6dcc9bf41edee99001250',1,'osYieldThread.c']]]
+  ['osyieldthread_80',['osYieldThread',['../____osDevMgrMain_8c.html#a173231dae7f6dcc9bf41edee99001250',1,'osYieldThread(void):&#160;osYieldThread.c'],['../osYieldThread_8c.html#a173231dae7f6dcc9bf41edee99001250',1,'osYieldThread(void):&#160;osYieldThread.c']]]
 ];

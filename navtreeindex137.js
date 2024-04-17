@@ -1,5 +1,12 @@
 var NAVTREEINDEX137 =
 {
+"yoshi__valley_2course__data_8c.html#a2ae9147447b6f758c28df4f111284b80":[8,0,0,19,0,37],
+"yoshi__valley_2course__data_8c.html#a2ec8f8bf34e6d52b478d8b2ac4cd088d":[8,0,0,19,0,134],
+"yoshi__valley_2course__data_8c.html#a2f9bbf12987c2ef66ac45227919317e9":[8,0,0,19,0,168],
+"yoshi__valley_2course__data_8c.html#a30c5924130d5a601578e67b218c01a6e":[8,0,0,19,0,55],
+"yoshi__valley_2course__data_8c.html#a344f4117d721cd06506862523534f092":[8,0,0,19,0,147],
+"yoshi__valley_2course__data_8c.html#a347a4562e97e80a74e802d313ac42596":[8,0,0,19,0,94],
+"yoshi__valley_2course__data_8c.html#a37f081ef7d85369454fc313e5d4163f2":[8,0,0,19,0,0],
 "yoshi__valley_2course__data_8c.html#a3828da71ba8d2406e52d52ca145733dd":[8,0,0,19,0,127],
 "yoshi__valley_2course__data_8c.html#a39f17b42663c3db0daf73e987b1b8e3f":[8,0,0,19,0,59],
 "yoshi__valley_2course__data_8c.html#a3a586e50be8cd90513a597aaf1ca8424":[8,0,0,19,0,8],
@@ -242,12 +249,5 @@ var NAVTREEINDEX137 =
 "yoshi__valley_2course__data_8h.html#a856a99006c2e6d9e40c6e26ef3708e09":[8,0,0,19,1,125],
 "yoshi__valley_2course__data_8h.html#a870bcfedeeb8129e28b1c6c76c121492":[8,0,0,19,1,23],
 "yoshi__valley_2course__data_8h.html#a884333c884b1988cff623d801a1d4c9c":[8,0,0,19,1,13],
-"yoshi__valley_2course__data_8h.html#a88c71dddc0ba8048ff546783a0303297":[8,0,0,19,1,118],
-"yoshi__valley_2course__data_8h.html#a892395e255c01cfe3fa9925b317ca194":[8,0,0,19,1,119],
-"yoshi__valley_2course__data_8h.html#a8cbea284792da151872f7818be3cd5ef":[8,0,0,19,1,105],
-"yoshi__valley_2course__data_8h.html#a937e39c88a66116b45182e23ee4d3ae8":[8,0,0,19,1,27],
-"yoshi__valley_2course__data_8h.html#a9387db43120b88cae3a4d50a78b0832e":[8,0,0,19,1,81],
-"yoshi__valley_2course__data_8h.html#a9747d16a2dd370d7dc18e3f9d5132665":[8,0,0,19,1,17],
-"yoshi__valley_2course__data_8h.html#a97f89d347d4f124a2fb1e756187a142c":[8,0,0,19,1,97],
-"yoshi__valley_2course__data_8h.html#a9c78da88903e0cb31ec03187bc67956b":[8,0,0,19,1,158]
+"yoshi__valley_2course__data_8h.html#a88c71dddc0ba8048ff546783a0303297":[8,0,0,19,1,118]
 };

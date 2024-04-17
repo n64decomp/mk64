@@ -1,5 +1,6 @@
 var NAVTREEINDEX9 =
 {
+"bowsers__castle_2course__displaylists_8inc_8h.html#a94c900b03965fb9eb115428c0cd8dc63":[8,0,0,3,3,52],
 "bowsers__castle_2course__displaylists_8inc_8h.html#a952fc1f10b5ad492a74fa71bab4c2ce1":[8,0,0,3,3,94],
 "bowsers__castle_2course__displaylists_8inc_8h.html#a9739efbdeaa001b89510cb6a115a749b":[8,0,0,3,3,48],
 "bowsers__castle_2course__displaylists_8inc_8h.html#a97c6575decffe3717f472e7d64395306":[8,0,0,3,3,98],
@@ -248,6 +249,5 @@ var NAVTREEINDEX9 =
 "camera_8h.html#a0a8990aae1bf212a7be158cb26efc2f4":[8,0,3,10,11],
 "camera_8h.html#a0d4f7c7abf5f3ce08a23c4ca571bc3eb":[8,0,3,10,3],
 "camera_8h.html#a1357495d27ece172e40972af3a5f40f3":[8,0,3,10,8],
-"camera_8h.html#a25230c5365692f85c8116f544fdce1cd":[8,0,3,10,4],
-"camera_8h.html#a25709b6bb578fdc921569c30a6b42960":[8,0,3,10,16]
+"camera_8h.html#a25230c5365692f85c8116f544fdce1cd":[8,0,3,10,4]
 };

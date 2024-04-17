@@ -5,6 +5,7 @@ var crash__screen_8c =
     [ "DRAW_CODE", "crash__screen_8c.html#a6e86d9bd5fab8cd3013afe8a9d74d1dd", null ],
     [ "crash_screen_draw_glyph", "crash__screen_8c.html#a54d41e42f5dd58eafcd03aefecbee26d", null ],
     [ "crash_screen_draw_info", "crash__screen_8c.html#affae45bedac61b2d5c4e3f57283ba099", null ],
+    [ "crash_screen_draw_square", "crash__screen_8c.html#a271e93a6c95f12117f19c86234fb1d05", null ],
     [ "crash_screen_set_framebuffer", "crash__screen_8c.html#a904039e86b5ade46346d24fb1e274134", null ],
     [ "create_debug_thread", "crash__screen_8c.html#a77471bbea209b9d664b6569191c60787", null ],
     [ "get_faulted_thread", "crash__screen_8c.html#a120b1d5cd1311a72bb588594cbd55016", null ],

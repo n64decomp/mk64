@@ -1,5 +1,12 @@
 var NAVTREEINDEX84 =
 {
+"objects_8h.html#ae05e4e1d6a1f76ee31470176a75468ef":[8,0,2,16,12],
+"objects_8h.html#ae288ce9729bc52ae7a4d0eadc23120c5":[8,0,2,16,29],
+"objects_8h.html#ae32282a2a40ab6568ca8a1f4f9fadbca":[8,0,2,16,65],
+"objects_8h.html#aea01a58b54d599d5a4ad1402f1290e1e":[8,0,2,16,45],
+"objects_8h.html#aeee7035ffe75ebf0d6dbdb70cba2b095":[8,0,2,16,47],
+"objects_8h.html#af40885efd72dc665a278c6f29e19ecf3":[8,0,2,16,91],
+"objects_8h.html#af4428cea5563122b80f6782f72da9373":[8,0,2,16,24],
 "objects_8h.html#af460d49518eff3733eaa1df293cfbc8b":[8,0,2,16,63],
 "objects_8h.html#af465b5fe5efaceb231469033fdcb632e":[8,0,2,16,59],
 "objects_8h.html#af46986167a8d9f76483e3a27c6fc9aa3":[8,0,2,16,32],
@@ -220,7 +227,7 @@ var NAVTREEINDEX84 =
 "osStartThread_8c.html#a3b144e814933e16a2fbf2642ad098ed3":[8,0,3,6,105,0],
 "osSyncPrintf_8c.html":[8,0,3,6,106],
 "osSyncPrintf_8c.html#a8b417b868747c80d58f83d8a1e78ecf3":[8,0,3,6,106,1],
-"osSyncPrintf_8c.html#aa999ec7d8c40636c3a6c3a489656a4a9":[8,0,3,6,106,0],
+"osSyncPrintf_8c.html#af2956cd92becd74f149439d84cd55096":[8,0,3,6,106,0],
 "osTimer_8c.html":[8,0,3,6,107],
 "osTimer_8c.html#a07051f81675397fec273eb91eb481503":[8,0,3,6,107,3],
 "osTimer_8c.html#a0cd2e88f682b693d95449659e347af9a":[8,0,3,6,107,0],
@@ -242,12 +249,5 @@ var NAVTREEINDEX84 =
 "osViSetEvent_8c.html":[8,0,3,6,111],
 "osViSetEvent_8c.html#a36511d1bdf47d5cdc155727f8f1ee88e":[8,0,3,6,111,1],
 "osViSetEvent_8c.html#a77e9140da93b81b60780d3862001999b":[8,0,3,6,111,0],
-"osViSetMode_8c.html":[8,0,3,6,112],
-"osViSetMode_8c.html#a36511d1bdf47d5cdc155727f8f1ee88e":[8,0,3,6,112,1],
-"osViSetMode_8c.html#a6bbc9ccb13540fca052eed991070e810":[8,0,3,6,112,0],
-"osViSetSpecialFeatures_8c.html":[8,0,3,6,113],
-"osViSetSpecialFeatures_8c.html#a1892347871f440cd85f4f11f33d3e481":[8,0,3,6,113,0],
-"osViSetSpecialFeatures_8c.html#a36511d1bdf47d5cdc155727f8f1ee88e":[8,0,3,6,113,1],
-"osViSwapBuffer_8c.html":[8,0,3,6,114],
-"osViSwapBuffer_8c.html#a36511d1bdf47d5cdc155727f8f1ee88e":[8,0,3,6,114,1]
+"osViSetMode_8c.html":[8,0,3,6,112]
 };

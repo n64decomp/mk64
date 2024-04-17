@@ -1,5 +1,12 @@
 var NAVTREEINDEX77 =
 {
+"mario__raceway_2course__displaylists_8inc_8c.html#afeb62185a59b4b10d7674a11b37ad4f0":[8,0,0,11,2,150],
+"mario__raceway_2course__displaylists_8inc_8c.html#afedf4419d473e1a2697fc4d03a1b7e70":[8,0,0,11,2,157],
+"mario__raceway_2course__displaylists_8inc_8h.html":[8,0,0,11,3],
+"mario__raceway_2course__displaylists_8inc_8h.html#a001597f6c3d35061a1ca2a2d850b2e06":[8,0,0,11,3,168],
+"mario__raceway_2course__displaylists_8inc_8h.html#a035d0329c9b0769753973e07e7ec8b42":[8,0,0,11,3,46],
+"mario__raceway_2course__displaylists_8inc_8h.html#a046d0f1696ccdad421fc6adc6f06b6e4":[8,0,0,11,3,42],
+"mario__raceway_2course__displaylists_8inc_8h.html#a062b199caf59f92cc244332768a5a5bb":[8,0,0,11,3,32],
 "mario__raceway_2course__displaylists_8inc_8h.html#a07de909ea04a6d4a9468cf2bea9b29e4":[8,0,0,11,3,99],
 "mario__raceway_2course__displaylists_8inc_8h.html#a087012e7b449f41528f0d9cce0435f2f":[8,0,0,11,3,118],
 "mario__raceway_2course__displaylists_8inc_8h.html#a09eccb5235db32d2067c060eaa70cf9c":[8,0,0,11,3,34],
@@ -242,12 +249,5 @@ var NAVTREEINDEX77 =
 "mario__raceway_2course__textures_8linkonly_8h.html#a124d0adfbbd1990ce35210b00dfe913f":[8,0,0,11,6,29],
 "mario__raceway_2course__textures_8linkonly_8h.html#a1840e4860b3fc93e6f41ee6251b5fe8a":[8,0,0,11,6,1],
 "mario__raceway_2course__textures_8linkonly_8h.html#a4e7d47ffcd9587ebbd6ceb7451888bca":[8,0,0,11,6,18],
-"mario__raceway_2course__textures_8linkonly_8h.html#a58f687b33c348f93be0fd4d3eb02d777":[8,0,0,11,6,20],
-"mario__raceway_2course__textures_8linkonly_8h.html#a5f6ccb8497167a14a7a6006d651ad332":[8,0,0,11,6,10],
-"mario__raceway_2course__textures_8linkonly_8h.html#a6272e244f6f72676c3bfb30ec6425f70":[8,0,0,11,6,21],
-"mario__raceway_2course__textures_8linkonly_8h.html#a89bd5152f9562aea4cbad27fcaef400a":[8,0,0,11,6,13],
-"mario__raceway_2course__textures_8linkonly_8h.html#a8e707e08b86e328fee59146abfec7254":[8,0,0,11,6,14],
-"mario__raceway_2course__textures_8linkonly_8h.html#a9615e8b0357a4022e83b8f6ff957d0cc":[8,0,0,11,6,16],
-"mario__raceway_2course__textures_8linkonly_8h.html#a9bdca8c2827bd5b77af00d175daa0936":[8,0,0,11,6,12],
-"mario__raceway_2course__textures_8linkonly_8h.html#a9c855208986557a9013f7f1ce74c2472":[8,0,0,11,6,28]
+"mario__raceway_2course__textures_8linkonly_8h.html#a58f687b33c348f93be0fd4d3eb02d777":[8,0,0,11,6,20]
 };

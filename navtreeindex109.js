@@ -1,5 +1,12 @@
 var NAVTREEINDEX109 =
 {
+"stddef_8h.html#a19a04836d558f3c018b597e8dea1e0e0":[8,0,2,1,2,0],
+"stddef_8h_source.html":[8,0,2,1,2],
+"stdio_8h.html":[8,0,2,1,3],
+"stdio_8h.html#a97fd95bd955bbf9cf76afa678565e746":[8,0,2,1,3,0],
+"stdio_8h_source.html":[8,0,2,1,3],
+"stdlib_8h.html":[8,0,2,1,4],
+"stdlib_8h.html#a0302920caf64a5fbe1ce0862799d7784":[8,0,2,1,4,4],
 "stdlib_8h.html#a10ef0aefc570d851e0e15e98758cde3e":[8,0,2,1,4,2],
 "stdlib_8h.html#a51d8facb71b482170b8bf45b9961df48":[8,0,2,1,4,3],
 "stdlib_8h.html#a5b23c3639f11980dca762c5f1d74f339":[8,0,2,1,4,5],
@@ -242,12 +249,5 @@ var NAVTREEINDEX109 =
 "structBananaBunchParent.html#ae1c190eae7f8f237b5a37aa109a3e7b5":[7,0,53,6],
 "structBananaBunchParent.html#afb695515f0750a61ead8bda3c38cd033":[7,0,53,5],
 "structBombKart.html":[7,0,54],
-"structBombKart.html#a14d30e3c4ae3ed2c94852f2b46c326a9":[7,0,54,11],
-"structBombKart.html#a1bde5eef376c38628b3785a370e65c1e":[7,0,54,2],
-"structBombKart.html#a1cab59b9c101bcceff7bc98bcd31bb1d":[7,0,54,9],
-"structBombKart.html#a1da7ddadf32086a684c96bc8fa43c88d":[7,0,54,10],
-"structBombKart.html#a40c0c7cf5b53b34a36d9c068534eb3fb":[7,0,54,12],
-"structBombKart.html#a525c7c5d643f877e4ad83c936813af2b":[7,0,54,8],
-"structBombKart.html#a62594c2aa941cf3be6e5a6d41e165dc5":[7,0,54,3],
-"structBombKart.html#a7df771fc63a3e9c0fb3142e5c3984696":[7,0,54,7]
+"structBombKart.html#a14d30e3c4ae3ed2c94852f2b46c326a9":[7,0,54,11]
 };

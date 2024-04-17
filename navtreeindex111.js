@@ -1,5 +1,12 @@
 var NAVTREEINDEX111 =
 {
+"structGfxPool.html#ad5847246ca49bf89413868fd6c21c46f":[7,0,83,9],
+"structGfxPool.html#ae9b65fcb21baa5953f70af3011434de6":[7,0,83,1],
+"structHegdehogSpawn.html":[7,0,84],
+"structHegdehogSpawn.html#a58433c04af615dda3729d29a555bdb5a":[7,0,84,1],
+"structHegdehogSpawn.html#a7722b6074c53f514bcacd6a7ea798175":[7,0,84,0],
+"structISVDbg.html":[7,0,87],
+"structISVDbg.html#a11325b5715d2bf4c90af9014be896a62":[7,0,87,1],
 "structISVDbg.html#a3271fd64600c0d487bfb12008c917da7":[7,0,87,2],
 "structISVDbg.html#a5b6697d4e74814929bd329732c4b5af4":[7,0,87,4],
 "structISVDbg.html#ac8effc4e52a02d855eabf1e948297315":[7,0,87,3],
@@ -242,12 +249,5 @@ var NAVTREEINDEX111 =
 "structOSContPackedRequest.html#ad48b80c0fce98e725a631c492be621af":[7,0,112,2],
 "structOSContPackedRequest.html#aeb36eed48d272f27ab728ed4c01ee658":[7,0,112,0],
 "structOSContPackedRequest.html#af9fbb558a6622fe1cdb63cfd64cae221":[7,0,112,7],
-"structOSEventMessageStruct__0__s.html":[7,0,114],
-"structOSEventMessageStruct__0__s.html#a5e38fae09a84df1598d28ab574708add":[7,0,114,1],
-"structOSEventMessageStruct__0__s.html#af1a57f744f32174015a18c0be67cacb1":[7,0,114,0],
-"structOSIoMesg.html":[7,0,115],
-"structOSIoMesg.html#a075b3767e072fcc9fe1058b64eb5b87e":[7,0,115,0],
-"structOSIoMesg.html#a3513926dcc38ed394eabf006c9e3a222":[7,0,115,2],
-"structOSIoMesg.html#a66a22832e13e54b5484f27452070ed85":[7,0,115,3],
-"structOSIoMesg.html#ad0797b3af59ea96f7675d0be10c26252":[7,0,115,1]
+"structOSEventMessageStruct__0__s.html":[7,0,114]
 };

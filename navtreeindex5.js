@@ -1,5 +1,6 @@
 var NAVTREEINDEX5 =
 {
+"banshee__boardwalk_2course__displaylists_8inc_8c.html#afe38dcae8926b1b7afbac185e500d781":[8,0,0,0,2,108],
 "banshee__boardwalk_2course__displaylists_8inc_8c.html#afe80bfeb571a5c61fe4ee340e9c2df8a":[8,0,0,0,2,132],
 "banshee__boardwalk_2course__displaylists_8inc_8c.html#affd8269220b2809c631290bf1c67cad8":[8,0,0,0,2,71],
 "banshee__boardwalk_2course__displaylists_8inc_8h.html":[8,0,0,0,3],
@@ -248,6 +249,5 @@ var NAVTREEINDEX5 =
 "banshee__boardwalk_2course__textures_8linkonly_8h.html":[8,0,0,0,6],
 "banshee__boardwalk_2course__textures_8linkonly_8h.html#a1df9a0e780975de8d65c3fabd5c0c878":[8,0,0,0,6,12],
 "banshee__boardwalk_2course__textures_8linkonly_8h.html#a32e79eff933ab11beb8be04c626c5d8a":[8,0,0,0,6,17],
-"banshee__boardwalk_2course__textures_8linkonly_8h.html#a493c9acb99411abcef72aa657407f29c":[8,0,0,0,6,19],
-"banshee__boardwalk_2course__textures_8linkonly_8h.html#a4c96e2fbf804ca3b708710cd4d55f922":[8,0,0,0,6,0]
+"banshee__boardwalk_2course__textures_8linkonly_8h.html#a493c9acb99411abcef72aa657407f29c":[8,0,0,0,6,19]
 };

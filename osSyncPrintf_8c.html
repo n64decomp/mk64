@@ -107,6 +107,7 @@ $(function(){initNavTree('osSyncPrintf_8c.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="libultra__internal_8h_source.html">libultra_internal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="stdarg_8h_source.html">libc/stdarg.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="printf_8h_source.html">printf.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for osSyncPrintf.c:</div>
 <div class="dyncontent">
@@ -115,14 +116,14 @@ Include dependency graph for osSyncPrintf.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa999ec7d8c40636c3a6c3a489656a4a9" id="r_aa999ec7d8c40636c3a6c3a489656a4a9"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa999ec7d8c40636c3a6c3a489656a4a9">osSyncPrintf</a> (char *<a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">arg0</a>, <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">const</a> char *<a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">arg1</a>, size_t size)</td></tr>
-<tr class="separator:aa999ec7d8c40636c3a6c3a489656a4a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2956cd92becd74f149439d84cd55096" id="r_af2956cd92becd74f149439d84cd55096"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2956cd92becd74f149439d84cd55096">osSyncPrintf</a> (<a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> char *<a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">arg0</a>, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">const</a> char *<a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">arg1</a>, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> size_t size)</td></tr>
+<tr class="separator:af2956cd92becd74f149439d84cd55096"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b417b868747c80d58f83d8a1e78ecf3" id="r_a8b417b868747c80d58f83d8a1e78ecf3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">void</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b417b868747c80d58f83d8a1e78ecf3">rmonPrintf</a> (<a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">const</a> char *<a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">fmt</a>,...)</td></tr>
 <tr class="separator:a8b417b868747c80d58f83d8a1e78ecf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="aa999ec7d8c40636c3a6c3a489656a4a9" name="aa999ec7d8c40636c3a6c3a489656a4a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa999ec7d8c40636c3a6c3a489656a4a9">&#9670;&#160;</a></span>osSyncPrintf()</h2>
+<a id="af2956cd92becd74f149439d84cd55096" name="af2956cd92becd74f149439d84cd55096"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2956cd92becd74f149439d84cd55096">&#9670;&#160;</a></span>osSyncPrintf()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -130,24 +131,24 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">char * osSyncPrintf </td>
           <td>(</td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>arg0</em>, </span></td>
+          <td class="paramtype"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> char *</td>          <td class="paramname"><span class="paramname"><em>arg0</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">const</a> char *</td>          <td class="paramname"><span class="paramname"><em>arg1</em>, </span></td>
+          <td class="paramtype"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">const</a> char *</td>          <td class="paramname"><span class="paramname"><em>arg1</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="osSyncPrintf_8c_aa999ec7d8c40636c3a6c3a489656a4a9_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="osSyncPrintf_8c_af2956cd92becd74f149439d84cd55096_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -173,7 +174,7 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="osSyncPrintf_8c_a8b417b868747c80d58f83d8a1e78ecf3_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="osSyncPrintf_8c_a8b417b868747c80d58f83d8a1e78ecf3_cgraph.svg" width="100%" height="571"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>

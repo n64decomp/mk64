@@ -1,5 +1,12 @@
 var NAVTREEINDEX110 =
 {
+"structBombKart.html#a1bde5eef376c38628b3785a370e65c1e":[7,0,54,2],
+"structBombKart.html#a1cab59b9c101bcceff7bc98bcd31bb1d":[7,0,54,9],
+"structBombKart.html#a1da7ddadf32086a684c96bc8fa43c88d":[7,0,54,10],
+"structBombKart.html#a40c0c7cf5b53b34a36d9c068534eb3fb":[7,0,54,12],
+"structBombKart.html#a525c7c5d643f877e4ad83c936813af2b":[7,0,54,8],
+"structBombKart.html#a62594c2aa941cf3be6e5a6d41e165dc5":[7,0,54,3],
+"structBombKart.html#a7df771fc63a3e9c0fb3142e5c3984696":[7,0,54,7],
 "structBombKart.html#a7ed32035aef35fc8f66c77074577b56c":[7,0,54,4],
 "structBombKart.html#a88edf2368de96c55b84ad782ae269ffc":[7,0,54,1],
 "structBombKart.html#a8cc2966d931e376e71aa0942dfb85af3":[7,0,54,13],
@@ -108,13 +115,13 @@ var NAVTREEINDEX110 =
 "structController.html#ac44615b87b1ed88181861c5050783a03":[7,0,61,7],
 "structController.html#af68b8dc9459d69a7dfdf57dabf8dbae5":[7,0,61,1],
 "structCourseTable.html":[7,0,63],
+"structCourseTable.html#a04df0854ad59539db0fb557d6d078a89":[7,0,63,2],
 "structCourseTable.html#a183500b9277fec956b18c017fd1e7b40":[7,0,63,0],
 "structCourseTable.html#a28a03004624fc1b834eb2e96ed60e986":[7,0,63,7],
 "structCourseTable.html#a3cf1bf38e79a6dec2cd2708a095e624f":[7,0,63,12],
 "structCourseTable.html#a662d764edc256fea0e6bce1ee5997d34":[7,0,63,8],
 "structCourseTable.html#a6fc9a543955a768600f7fad522a7e720":[7,0,63,5],
 "structCourseTable.html#a81aa94f89154c0a29d84b5b10306f816":[7,0,63,11],
-"structCourseTable.html#a89b3206c5106bbff167c7d2a51ee1cac":[7,0,63,2],
 "structCourseTable.html#a8e87e0567e202aed3856d9e653665cf6":[7,0,63,9],
 "structCourseTable.html#ab3a7aa2b05671688a96e9b657bd6623a":[7,0,63,3],
 "structCourseTable.html#ac8cd9a4c39f0f06665b451ff3c523dff":[7,0,63,4],
@@ -242,12 +249,5 @@ var NAVTREEINDEX110 =
 "structGfxPool.html#a7b4ba3aad2315e3d209f42511c456cb6":[7,0,83,0],
 "structGfxPool.html#ab22fac4de0b34cb404e4f8ec5a21e4bf":[7,0,83,7],
 "structGfxPool.html#ab6bc5412ee4f45f34352dad5a25272b1":[7,0,83,10],
-"structGfxPool.html#acd57249fe31bc64d0f95e82440bc9b1a":[7,0,83,11],
-"structGfxPool.html#ad5847246ca49bf89413868fd6c21c46f":[7,0,83,9],
-"structGfxPool.html#ae9b65fcb21baa5953f70af3011434de6":[7,0,83,1],
-"structHegdehogSpawn.html":[7,0,84],
-"structHegdehogSpawn.html#a58433c04af615dda3729d29a555bdb5a":[7,0,84,1],
-"structHegdehogSpawn.html#a7722b6074c53f514bcacd6a7ea798175":[7,0,84,0],
-"structISVDbg.html":[7,0,87],
-"structISVDbg.html#a11325b5715d2bf4c90af9014be896a62":[7,0,87,1]
+"structGfxPool.html#acd57249fe31bc64d0f95e82440bc9b1a":[7,0,83,11]
 };
