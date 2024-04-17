@@ -38,8 +38,14 @@
  * D-pad DOWN  = MARIO
  *  
  */
-#define DEBUG_MODE 0
-#define DEBUG_MENU 1
+#if defined(GCC) || defined(DEBUG)
+  #define DEBUG_MODE 1
+  #define DEBUG_MENU 2
+#else
+  #define DEBUG_MODE 0
+  #define DEBUG_MENU 1
+#endif
+
 #define HOLD_ALL_DPAD_AND_C_BUTTONS (U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
 
 /**
@@ -290,7 +296,7 @@
 /**
  * @brief Item IDs
  */
-typedef enum {
+enum ITEMS {
     /* 0x00 */ ITEM_NONE = 0,
     /* 0x01 */ ITEM_BANANA,
     /* 0x02 */ ITEM_BANANA_BUNCH,
@@ -307,7 +313,22 @@ typedef enum {
     /* 0x0D */ ITEM_DOUBLE_MUSHROOM,
     /* 0x0E */ ITEM_TRIPLE_MUSHROOM,
     /* 0x0F */ ITEM_SUPER_MUSHROOM
-} ITEMS;
+};
+
+enum KART_AI_BEHAVIOURS {
+    BEHAVIOUR_NONE = 0,
+    BEHAVIOUR_1,
+    BEHAVIOUR_HOP,
+    BEHAVIOUR_3,
+    BEHAVIOUR_4,
+    BEHAVIOUR_5,
+    BEHAVIOUR_NORMAL_SPEED,
+    BEHAVIOUR_FAST_SPEED,
+    BEHAVIOUR_SLOW_SPEED,
+    BEHAVIOUR_9,
+    BEHAVIOUR_10,
+    BEHAVIOUR_MAX_SPEED
+};
 
 /**
  * @brief Balloon status

@@ -57,7 +57,7 @@ const course_texture kalimari_desert_textures[] = {
     {0x00000000,                    0x0000, 0x0000, 0x0},
 };
 
-const u8 *kalimari_desert_dls[] = {
+const Gfx *kalimari_desert_dls[] = {
     d_course_kalimari_desert_dl_0,
     d_course_kalimari_desert_dl_258,
     d_course_kalimari_desert_dl_100,

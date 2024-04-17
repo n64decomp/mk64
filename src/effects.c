@@ -16,6 +16,7 @@
 #include "effects.h"
 #include "audio/external.h"
 #include "spawn_players.h"
+#include "code_80091750.h"
 
 s32 D_8018D900[8];
 s16 D_8018D920[8];
@@ -1839,13 +1840,13 @@ void func_80090868(Player* player) {
 }
 
 void func_80090970(Player *player, s8 playerId, s8 arg2) {
-    s32 stackPadding0;
-    s32 stackPadding1;
+    UNUSED s32 stackPadding0;
+    UNUSED s32 stackPadding1;
     Vec3f sp44;
     Vec3f sp38;
     TrackWaypoint *waypoint;
-    s32 stackPadding2;
-    s32 stackPadding3;
+    UNUSED s32 stackPadding2;
+    UNUSED s32 stackPadding3;
 
     player->unk_0C2 = 0x000C;
     player->unk_078 = 0;
@@ -2077,7 +2078,7 @@ void func_800911B4(Player* player, s8 arg1) {
 
 void func_80091298(Player *player, s8 arg1) {
     s16 var_v1;
-    s32 stackPadding1;
+    UNUSED s32 stackPadding1;
     Vec3f spC = { 27.167f, 25.167f, 23.167f };
 
     player->unk_044 |= 0x2000;

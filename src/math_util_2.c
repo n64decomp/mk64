@@ -469,7 +469,7 @@ void func_800419F8(void) {
     pos[0] = 0.0f;
     pos[1] = 0.0f;
     pos[2] = 120.0f;
-    vec3f_rotate_x_y(vec, pos, D_80165834);
+    vec3f_rotate_x_y(vec, pos, (s16*) D_80165834);
     D_80165840[0] = vec[0];
     D_80165840[1] = vec[1];
     D_80165840[2] = vec[2];

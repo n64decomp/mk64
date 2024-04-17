@@ -20,7 +20,7 @@
 #include "code_80057C60.h"
 #include "bomb_kart.h"
 #include "courses/all_course_data.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "common_structs.h"
 #include "main.h"
 #include "menus.h"
@@ -29,7 +29,7 @@
 #include "ending/podium_ceremony_actors.h"
 #include "spawn_players.h"
 #include "sounds.h"
-#include "data/path_spawn_data.h"
+#include "data/path_spawn_metadata.h"
 
 s32 unk_code_80005FD0_pad[24];
 Collision D_80162E70;
@@ -841,7 +841,7 @@ void func_800074D4(void) {
     Player *var_a0_2;
     f32 temp_a0;
     s32 sp68[8];
-    s32 temp_s0;
+    UNUSED s32 temp_s0;
     s32 temp_t1;
     s32 var_a3;
     s32 var_a3_2;
@@ -1058,7 +1058,7 @@ void func_80007FA4(s32 arg0, Player *player, f32 arg2) {
 void func_80008424(s32 playerId, f32 arg1, Player *player) {
     f32 var_f2;
     f32 var_f0;
-    s32 thing;
+    UNUSED s32 thing;
     s32 var_a1;
 
     var_f2 = player->unk_094;
@@ -1459,9 +1459,9 @@ void func_8000929C(s32 playerId, Player *player) {
     s32 var_v0;
     s32 var_v1;
     f32 someTemp0;
-    s16 stackPadding0;
+    UNUSED s16 stackPadding0;
     s16 var_t0;
-    s32 stackPadding1;
+    UNUSED s32 stackPadding1;
 
     tempPos0 = player->pos[0];
     tempPos1 = player->pos[1];
@@ -1609,7 +1609,7 @@ void func_800098FC(s32 arg0, Player *player) {
     }
 }
 
-void func_800099EC(s32 playerId, Player *unused) {
+void func_800099EC(s32 playerId, UNUSED Player *unused) {
     s32 var_s0;
 
     if (D_801633C8[playerId] >= 0x65) {
@@ -1644,33 +1644,33 @@ void func_800099EC(s32 playerId, Player *unused) {
 // FAKEMATCH1 is the best improvement I've seen yet, MISMATCH2/3 become the only issues.
 
 void func_80009B60(s32 playerId) {
-    s32 stackPadding00;
-    s32 stackPadding01;
-    s32 stackPadding02;
-    s32 stackPadding03;
-    s32 stackPadding04;
-    s32 stackPadding05;
-    s32 stackPadding06;
-    s32 stackPadding07;
-    s32 stackPadding08;
-    s32 stackPadding09;
-    s32 stackPadding0A;
-    s32 stackPadding0B;
-    s32 stackPadding0C;
-    s32 stackPadding0D;
+    UNUSED s32 stackPadding00;
+    UNUSED s32 stackPadding01;
+    UNUSED s32 stackPadding02;
+    UNUSED s32 stackPadding03;
+    UNUSED s32 stackPadding04;
+    UNUSED s32 stackPadding05;
+    UNUSED s32 stackPadding06;
+    UNUSED s32 stackPadding07;
+    UNUSED s32 stackPadding08;
+    UNUSED s32 stackPadding09;
+    UNUSED s32 stackPadding0A;
+    UNUSED s32 stackPadding0B;
+    UNUSED s32 stackPadding0C;
+    UNUSED s32 stackPadding0D;
     s16 var_a0_2;
     s16 var_a1;
-    s32 stackPadding0E;
-    s32 stackPadding0F;
-    s32 stackPadding10;
-    s32 stackPadding11;
-    s32 stackPadding12;
-    s32 stackPadding13;
-    s32 stackPadding14;
-    s32 stackPadding15;
-    s32 stackPadding16;
-    s32 stackPadding17;
-    s32 stackPadding18;
+    UNUSED s32 stackPadding0E;
+    UNUSED s32 stackPadding0F;
+    UNUSED s32 stackPadding10;
+    UNUSED s32 stackPadding11;
+    UNUSED s32 stackPadding12;
+    UNUSED s32 stackPadding13;
+    UNUSED s32 stackPadding14;
+    UNUSED s32 stackPadding15;
+    UNUSED s32 stackPadding16;
+    UNUSED s32 stackPadding17;
+    UNUSED s32 stackPadding18;
     u16 stackPadding19;
     u16 stackPadding1A;
     f32 temp_f0;
@@ -1683,7 +1683,7 @@ void func_80009B60(s32 playerId) {
     f32 athing = 1.5f;
 
     player = &gPlayers[playerId];
-    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
+    if ((s32) gKartAICourseMaximumSeparation[gCurrentCourseId] >= 0) {
         D_80163100[playerId] += 1;
         if (playerId == 0) {
             D_80163378++;
@@ -1955,7 +1955,7 @@ void func_80009B60(s32 playerId) {
                 if (var_a2 < (s16) temp_f6) {
                     var_a2 = temp_f6;
                 }
-                var_v1 = D_800DCA20[gCurrentCourseId];
+                var_v1 = gKartAISteeringSensitivity[gCurrentCourseId];
                 switch (D_801631D8[playerId]) {               /* switch 4; irregular */
                 case 2:                             /* switch 4 */
                     if (D_80163068[playerId] > (0.5f * 1.0f)) {
@@ -2029,14 +2029,14 @@ GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80009B60.s")
 #ifdef NON_MATCHING
 // Lots of work left to do, might be funtionally accurate?
 void func_8000B140(s32 playerId) {
-    f32 stackPadding0;
-    f32 stackPadding1;
-    f32 stackPadding2;
-    f32 stackPadding3;
-    f32 stackPadding4;
-    f32 stackPadding5;
-    f32 stackPadding6;
-    f32 stackPadding7;
+    UNUSED f32 stackPadding0;
+    UNUSED f32 stackPadding1;
+    UNUSED f32 stackPadding2;
+    UNUSED f32 stackPadding3;
+    UNUSED f32 stackPadding4;
+    UNUSED f32 stackPadding5;
+    UNUSED f32 stackPadding6;
+    UNUSED f32 stackPadding7;
     f32 temp_f0_2;
     f32 temp_f12;
     f32 temp_f14;
@@ -2046,9 +2046,9 @@ void func_8000B140(s32 playerId) {
     f32 var_f18;
     f32 var_f20;
     s16 spB0[8];
-    f32 stackPadding8;
+    UNUSED f32 stackPadding8;
     s16 sp9C[8];
-    f32 stackPadding9;
+    UNUSED f32 stackPadding9;
     f32 sp74[8];
     s32 temp_a1_2;
     s16 temp_v1_2;
@@ -2194,7 +2194,7 @@ f32 func_8000B874(f32 posX, f32 posZ, u16 waypointIndex, s32 pathIndex) {
 void func_8000B95C(s32 playerId, u16 waypointIndex, s32 pathIndex) {
     UNUSED Vec3f pad;
     D_80163068[playerId] = 0.0f;
-    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
+    if ((s32) gKartAICourseMaximumSeparation[gCurrentCourseId] >= 0) {
         if ((gPlayers[playerId].type & 0x8000) != 0) {
             D_80163068[playerId] = func_8000B874(gPlayers[playerId].pos[0], gPlayers[playerId].pos[2], waypointIndex, pathIndex);
         }
@@ -2211,9 +2211,9 @@ void func_8000BA14(u16 waypointIndex, f32 arg1, f32 arg2, s16 pathIndex) {
     f32 xdiff;
     f32 zdiff;
     f32 distance;
-    f32 temp_f12;
-    f32 temp_f2_2;
-    TrackWaypoint *path;
+    UNUSED f32 temp_f12;
+    UNUSED f32 temp_f2_2;
+    UNUSED TrackWaypoint *path;
     TrackWaypoint *waypointTwo;
     TrackWaypoint *waypointOne;
 
@@ -2497,7 +2497,7 @@ s16 func_8000C9DC(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex
     return nearestWaypointIndex;
 }
 
-void func_8000CBA4(UNUSED f32 posX, f32 posY, UNUSED f32 posZ, s16 *waypointIndex, s32 arg4) {
+void func_8000CBA4(UNUSED f32 posX, f32 posY, UNUSED f32 posZ, s16 *waypointIndex, UNUSED s32 arg4) {
     s16 var_v0;
 
     var_v0 = *waypointIndex;
@@ -2536,9 +2536,9 @@ s16 func_8000CC88(f32 posX, f32 posY, f32 posZ, Player *player, s32 playerId, s3
 
 s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *player, s32 playerId, s32 pathIndex) {
     s16 sp5E;
-    s16 stackPadding0;
-    s32 stackPadding1;
-    s32 stackPadding2;
+    UNUSED s16 stackPadding0;
+    UNUSED s32 stackPadding1;
+    UNUSED s32 stackPadding2;
     TrackWaypoint *temp_v1;
 
     if ((player->type & 0x4000) && !(player->type & 0x1000)) {
@@ -2597,7 +2597,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
     return sp5E;
 }
 
-s16 func_8000D100(f32 xPos, f32 yPos, f32 zPos, s16 arg3) {
+s16 func_8000D100(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 arg3) {
     f32 xdiff;
     f32 zdiff;
     f32 minimumDistance;
@@ -2683,12 +2683,12 @@ f32 func_8000D3B8(s32 playerId) {
 }
 
 void func_8000D438(s32 arg0, u16 arg1) {
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     f32 sp48;
     f32 sp44;
-    s32 stackPadding1;
-    s32 stackPadding2;
-    s32 stackPadding3;
+    UNUSED s32 stackPadding1;
+    UNUSED s32 stackPadding2;
+    UNUSED s32 stackPadding3;
     f32 stackPadding4;
     f32 stackPadding5;
     f32 sp2C;
@@ -2751,7 +2751,7 @@ s16 func_8000D6D0(Vec3f arg0, s16 *waypointIndex, f32 arg2, f32 arg3, s16 pathIn
     f32 temp1;
     f32 temp2;
     f32 midX;
-    s16 stackPadding1;
+    UNUSED s16 stackPadding1;
     s16 waypoint1;
     s16 waypoint2;
     f32 pad3;
@@ -2813,14 +2813,14 @@ s16 func_8000D6D0(Vec3f arg0, s16 *waypointIndex, f32 arg2, f32 arg3, s16 pathIn
     return func_80005FD0(sp50, arg0);
 }
 
-s16 func_8000D940(f32 *arg0, s16 *waypointIndex, f32 arg2, f32 arg3, s16 pathIndex) {
-    f32 pad;
+s16 func_8000D940(Vec3f arg0, s16 *waypointIndex, f32 arg2, f32 arg3, s16 pathIndex) {
+    UNUSED f32 pad;
     f32 thing1;
     f32 thing2;
-    s16 stackPadding1;
+    UNUSED s16 stackPadding1;
     s16 waypoint1;
     s16 waypoint2;
-    s16 stackPadding2;
+    UNUSED s16 stackPadding2;
     f32 pad2;
     f32 midX;
     f32 pad3;
@@ -2883,15 +2883,15 @@ s16 func_8000DBAC(Vec3f pos, s16 *waypointIndex, f32 speed) {
     f32 origXPos;
     f32 origYPos;
     f32 origZPos;
-    s32 stackPadding0;
-    s32 stackPadding1;
-    s32 stackPadding2;
-    s32 stackPadding3;
-    s32 stackPadding4;
-    s32 stackPadding5;
-    s32 stackPadding6;
-    s32 stackPadding7;
-    s32 stackPadding8;
+    UNUSED s32 stackPadding0;
+    UNUSED s32 stackPadding1;
+    UNUSED s32 stackPadding2;
+    UNUSED s32 stackPadding3;
+    UNUSED s32 stackPadding4;
+    UNUSED s32 stackPadding5;
+    UNUSED s32 stackPadding6;
+    UNUSED s32 stackPadding7;
+    UNUSED s32 stackPadding8;
     f32 midX;
     f32 midZ;
     f32 x_dist;
@@ -2937,17 +2937,17 @@ s16 func_8000DBAC(Vec3f pos, s16 *waypointIndex, f32 speed) {
 }
 
 void set_bomb_kart_spawn_positions(void) {
-    Collision *var_s2;
+    UNUSED Collision *var_s2;
     f32 startingXPos;
     f32 startingZPos;
     f32 startingYPos;
     s32 var_s3;
     TrackWaypoint *temp_v0;
-    BombKart *var_s0;
+    UNUSED BombKart *var_s0;
     BombKartSpawn *temp_s1;
 
     for (var_s3 = 0; var_s3 < NUM_BOMB_KARTS_VERSUS; var_s3++) {
-        temp_s1 = &D_800DCC08[gCurrentCourseId][var_s3];
+        temp_s1 = &gBombKartSpawns[gCurrentCourseId][var_s3];
         switch (gCurrentCourseId) {
         case COURSE_YOSHI_VALLEY:
             startingXPos = temp_s1->startingXPos;
@@ -2995,25 +2995,25 @@ void set_bomb_kart_spawn_positions(void) {
 }
 
 void func_8000DF8C(s32 bombKartId) {
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     f32 sp118;
     f32 var_f18;
     TrackWaypoint *temp_v0_2;
     f32 temp_f0_3;
     f32 sp108;
-    s32 stackPadding1;
-    s32 stackPadding2;
-    s32 stackPadding3;
+    UNUSED s32 stackPadding1;
+    UNUSED s32 stackPadding2;
+    UNUSED s32 stackPadding3;
     f32 temp_f14;
-    s32 stackPadding4;
+    UNUSED s32 stackPadding4;
     f32 temp_f16;
-    s32 stackPadding5;
-    s32 stackPadding6;
-    s32 stackPadding7;
-    s32 stackPadding8;
-    s32 stackPadding9;
-    s32 stackPaddingA;
-    s32 stackPaddingB;
+    UNUSED s32 stackPadding5;
+    UNUSED s32 stackPadding6;
+    UNUSED s32 stackPadding7;
+    UNUSED s32 stackPadding8;
+    UNUSED s32 stackPadding9;
+    UNUSED s32 stackPaddingA;
+    UNUSED s32 stackPaddingB;
     f32 temp_f0;
     f32 temp_f0_4;
     u16 spCA;
@@ -3024,25 +3024,25 @@ void func_8000DF8C(s32 bombKartId) {
     f32 temp_f12_4;
     f32 temp_f14_2;
     f32 spAC;
-    s32 stackPaddingC;
+    UNUSED s32 stackPaddingC;
     f32 temp_f16_2;
     f32 spA0;
     f32 temp_f2;
     f32 temp_f2_4;
     f32 sp94;
-    s32 stackPaddingD;
+    UNUSED s32 stackPaddingD;
     f32 var_f20;
     f32 sp88;
     f32 var_f22;
     f32 var_f24;
     u16 sp7E;
     u16 sp7C;
-    u16 sp4C;
+    UNUSED u16 sp4C;
     u16 temp_t6;
     u16 temp_t7;
     u16 var_s1;
     s32 var_a0;
-    s32 stackPaddingE;
+    UNUSED s32 stackPaddingE;
     TrackWaypoint *temp_v0_4;
     BombKart *bombKart;
     BombKart *bombKart2;
@@ -3432,7 +3432,7 @@ void func_8000F2BC(TrackWaypoint *arg0, size_t size) {
 // Appears to allocate memory for each course.
 void func_8000F2DC(void) {
 
-    struct _struct_D_800DD9D0_0x10 *ptr = &D_800DD9D0[gCurrentCourseId];
+    struct _struct_gCoursePathSizes_0x10 *ptr = &gCoursePathSizes[gCurrentCourseId];
     s32 temp;
     s32 i;
 
@@ -3505,11 +3505,11 @@ void func_8000F2DC(void) {
 
 void func_8000F628(void) {
 
-    Camera *camera;
+    UNUSED Camera *camera;
     s32 temp_v0_3;
     s32 i;
     Test *var_s5;
-    s32 temp_v1;
+    UNUSED s32 temp_v1;
     UNUSED s32 pad;
 
     for (i = 0; i < NUM_PLAYERS; i++) {
@@ -3532,7 +3532,7 @@ void func_8000F628(void) {
         gCourseCompletionPercentByPlayerId[i] = 0.0f;
         gTimePlayerLastTouchedFinishLine[i] = 0.0f;
         if (gModeSelection == GRAND_PRIX) {
-            if(1); if(1); // Maybe some debug code?
+            if(1) {}; if(1) {}; // Maybe some debug code?
             gGPCurrentRaceRankByPlayerId[i] = (s32) D_80165270[i];
             D_801643E0[i] = (s32) D_80165270[i];
         } else {
@@ -3553,7 +3553,7 @@ void func_8000F628(void) {
         D_80163068[i] = 0.0f;
         D_80163090[i] = 0.0f;
         var_s5 = &D_801634F8[i];
-        var_s5->unkC = gKartAICourseMinimumWaypointSeparation[gCurrentCourseId] * (f32) (((i + 1) % 3) - 1);
+        var_s5->unkC = gKartAICourseMinimumSeparation[gCurrentCourseId] * (f32) (((i + 1) % 3) - 1);
         var_s5->unk4 = var_s5->unkC;
         var_s5->unk0 = 0.0f;
         var_s5->unk8 = 0.015f;
@@ -3616,7 +3616,7 @@ void func_8000F628(void) {
     }
 
     for (i = 0; i < NUM_PLAYERS; i++) {
-        if (1);
+        if (1) {};
         gPathIndexByPlayerId[i] = 0;
         gNearestWaypointByPlayerId[i] = gWaypointCountByPathIndex[gPathIndexByPlayerId[i]] - gGPCurrentRaceRankByPlayerId[i] - 4;
     }
@@ -3678,11 +3678,11 @@ void func_800100F0(s32 pathIndex) {
     s32 i;
 
     // cast required
-    if ((s32)gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
+    if ((s32)gKartAICourseMaximumSeparation[gCurrentCourseId] >= 0) {
         pathDest = D_80164550[pathIndex];
             bInvalidPath = 1;
         if (gCurrentCourseId != COURSE_AWARD_CEREMONY) {
-            var_v0 = process_path_data(pathDest, segmented_to_virtual_dupe_2(D_800DC8D0[gCurrentCourseId][pathIndex]));
+            var_v0 = process_path_data(pathDest, segmented_to_virtual_dupe_2(gCoursePathTable2[gCurrentCourseId][pathIndex]));
             gWaypointCountByPathIndex[pathIndex] = (u16) var_v0;
         } else {
             // Course path included in course_data which has already been loaded into memory.
@@ -3729,8 +3729,8 @@ void func_80010218(s32 pathIndex) {
     TrackWaypoint *var_s1;
     TrackWaypoint *var_s2;
 
-    if (((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId]) >= 0) {
-        waypointWidth = gKartAICourseMaximumWaypointSeparation[gCurrentCourseId];
+    if (((s32) gKartAICourseMaximumSeparation[gCurrentCourseId]) >= 0) {
+        waypointWidth = gKartAICourseMaximumSeparation[gCurrentCourseId];
         waypoint = &D_80164550[pathIndex][0];
         var_s1   = &D_80164560[pathIndex][0];
         var_s2   = &D_80164570[pathIndex][0];
@@ -3779,7 +3779,7 @@ f32 func_80010480(s32 pathIndex, u16 waypointIndex) {
     f32 root2;
     f32 root1;
 
-    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] < 0) {
+    if ((s32) gKartAICourseMaximumSeparation[gCurrentCourseId] < 0) {
         return 0.0f;
     }
     waypointCount = gWaypointCountByPathIndex[pathIndex];
@@ -3821,7 +3821,7 @@ void func_800107C4(s32 pathIndex) {
     s32 var_a3;
     s16 *wut;
 
-    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
+    if ((s32) gKartAICourseMaximumSeparation[gCurrentCourseId] >= 0) {
         var_a3 = gWaypointCountByPathIndex[pathIndex];
         var_t4 = &D_80164580[pathIndex][0];
         for(var_s0 = 0; var_s0 < var_a3; var_s0++, var_t4++) {
@@ -3889,8 +3889,8 @@ void func_80010DBC(s32 pathIndex) {
     s32 waypointIndex;
     u16 *angle;
 
-    if ((s32) gKartAICourseMaximumWaypointSeparation[gCurrentCourseId] >= 0) {
-        for (angle = &D_80164590[pathIndex][0], waypointIndex = 0; waypointIndex < gWaypointCountByPathIndex[pathIndex]; waypointIndex++, angle++) {
+    if ((s32) gKartAICourseMaximumSeparation[gCurrentCourseId] >= 0) {
+        for (angle = (u16*) &D_80164590[pathIndex][0], waypointIndex = 0; waypointIndex < gWaypointCountByPathIndex[pathIndex]; waypointIndex++, angle++) {
             *angle = func_80010CB0(pathIndex, waypointIndex);
         }
     }
@@ -3941,7 +3941,7 @@ f32 func_80010FA0(f32 arg0, f32 arg1, f32 arg2, UNUSED s32 arg3, UNUSED s32 arg4
 /**
  * @return's the number of items processed.
 */
-s32 func_80011014(TrackWaypoint *pathDest, TrackWaypoint *path, s32 numPathPoints, s32 pathIndex) {
+s32 func_80011014(TrackWaypoint *pathDest, TrackWaypoint *path, s32 numPathPoints, UNUSED s32 pathIndex) {
     f32 temp_f24_2;
     f32 temp_f2_3;
     f32 var_f20_2;
@@ -3967,7 +3967,7 @@ s32 func_80011014(TrackWaypoint *pathDest, TrackWaypoint *path, s32 numPathPoint
     TrackWaypoint *point2;
     TrackWaypoint *point3;
     f32 temp;
-    TrackWaypoint *dest;
+    UNUSED TrackWaypoint *dest;
     var_f30 = 0.0f;
     var_s0 = 0;
     temp_f20 = (f32) path[0].posX;
@@ -4095,7 +4095,7 @@ s32 process_path_data(TrackWaypoint *dest, TrackWaypoint *src) {
 s32 func_8001168C(PathNoY *pathDest, TrackWaypoint *pathSrc, s32 numWaypoints) {
     f32 temp_f14_3;
     f32 temp_f16_2;
-    s32 pad;
+    UNUSED s32 pad;
 
     f32 x1;
     f32 z1;
@@ -4105,7 +4105,7 @@ s32 func_8001168C(PathNoY *pathDest, TrackWaypoint *pathSrc, s32 numWaypoints) {
     f32 z3;
 
 
-    s32 pad2;
+    UNUSED s32 pad2;
     f32 temp_f24;
     
     f32 spA8;
@@ -4168,7 +4168,7 @@ s32 func_8001168C(PathNoY *pathDest, TrackWaypoint *pathSrc, s32 numWaypoints) {
 
 void copy_courses_kart_ai_behaviour(void) {
     s32 i;
-    for (i = 0; i < NUM_COURSES-1; i++) {
+    for (i = 0; i < NUM_COURSES - 1; i++) {
         gCoursesKartAIBehaviour[i] = segmented_to_virtual_dupe_2(gKartAIBehaviourLUT[i]);
     }
 }
@@ -4190,7 +4190,7 @@ void kart_ai_behaviour_start(s32 playerId, Player *player) {
     s16 waypointStart;
     s16 waypointEnd;
     s32 behaviourType;
-    s32 test;
+    UNUSED s32 test;
 
     sCurrentKartAIBehaviour = &gCoursesKartAIBehaviour[gCurrentCourseId][gCurrentKartAIBehaviourId[playerId]];
 
@@ -4205,7 +4205,7 @@ void kart_ai_behaviour_start(s32 playerId, Player *player) {
         reset_kart_ai_behaviour_none(playerId);
         return;
     }
-    if ((u32)playerWaypoint == waypointStart) {
+    if ((u32)playerWaypoint == (u32)waypointStart) {
         gKartAIBehaviourState[playerId] = KART_AI_BEHAVIOUR_STATE_RUNNING;
         gPreviousKartAIBehaviourId[playerId] = gCurrentKartAIBehaviourId[playerId];
         gCurrentKartAIBehaviourId[playerId]++;
@@ -4303,7 +4303,7 @@ void kart_ai_behaviour(s32 playerIndex) {
     }
 }
 
-void func_80011EC0(s32 arg0, Player *player, s32 arg2, u16 arg3) {
+void func_80011EC0(s32 arg0, Player *player, s32 arg2, UNUSED u16 arg3) {
     if ((((player->unk_094 / 18.0f) * 216.0f) >= 45.0f) && (D_801630E8[arg0] == 0)) {
         switch (D_801631D8[D_80162FCE]) {
         case 0:
@@ -4377,12 +4377,12 @@ void func_80012220(VehicleStuff *vehicle) {
     origXPos = vehicle->position[0];
     origZPos = vehicle->position[2];
     if (D_8016347A == 0) {
-        func_8000D6D0(vehicle->position, &vehicle->waypointIndex, vehicle->someMultiplier, vehicle->someMultiplierTheSequel, 0, 3);
+        func_8000D6D0(vehicle->position, (s16*)&vehicle->waypointIndex, vehicle->someMultiplier, vehicle->someMultiplierTheSequel, 0, 3);
         vehicle->rotation[0] = 0;
         vehicle->rotation[1] = -0x8000;
         vehicle->rotation[2] = 0;
     } else {
-        func_8000D940(vehicle->position, &vehicle->waypointIndex, vehicle->someMultiplier, vehicle->someMultiplierTheSequel, 0);
+        func_8000D940(vehicle->position, (s16*)&vehicle->waypointIndex, vehicle->someMultiplier, vehicle->someMultiplierTheSequel, 0);
         vehicle->rotation[0] = 0;
         vehicle->rotation[1] = 0;
         vehicle->rotation[2] = 0;
@@ -4415,7 +4415,7 @@ void init_course_vehicles(void) {
             tempLocomotive = &gTrainList[loopIndex].locomotive;
             origXPos = tempLocomotive->position[0];
             origZPos = tempLocomotive->position[2];
-            trainCarYRot = func_8000DBAC(tempLocomotive->position, &tempLocomotive->waypointIndex, gTrainList[loopIndex].someMultiplier);
+            trainCarYRot = func_8000DBAC(tempLocomotive->position, (s16*)&tempLocomotive->waypointIndex, gTrainList[loopIndex].someMultiplier);
             tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
             tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
             vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -4425,7 +4425,7 @@ void init_course_vehicles(void) {
             if (tempTender->isActive == 1) {
                 origXPos = tempTender->position[0];
                 origZPos = tempTender->position[2];
-                trainCarYRot = func_8000DBAC(tempTender->position, &tempTender->waypointIndex, gTrainList[loopIndex].someMultiplier);
+                trainCarYRot = func_8000DBAC(tempTender->position, (s16*)&tempTender->waypointIndex, gTrainList[loopIndex].someMultiplier);
                 tempTender->velocity[0] = tempTender->position[0] - origXPos;
                 tempTender->velocity[2] = tempTender->position[2] - origZPos;
                 vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -4437,7 +4437,7 @@ void init_course_vehicles(void) {
                 if (tempPassengerCar->isActive == 1) {
                     origXPos = tempPassengerCar->position[0];
                     origZPos = tempPassengerCar->position[2];
-                    trainCarYRot = func_8000DBAC(tempPassengerCar->position, &tempPassengerCar->waypointIndex, gTrainList[loopIndex].someMultiplier);
+                    trainCarYRot = func_8000DBAC(tempPassengerCar->position, (s16*)&tempPassengerCar->waypointIndex, gTrainList[loopIndex].someMultiplier);
                     tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
                     tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
                     vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -4452,7 +4452,7 @@ void init_course_vehicles(void) {
             if(tempPaddleWheelBoat->isActive == 1) {
                 origXPos = tempPaddleWheelBoat->position[0];
                 origZPos = tempPaddleWheelBoat->position[2];
-                tempPaddleWheelBoat->rotY = func_8000DBAC(tempPaddleWheelBoat->position, &tempPaddleWheelBoat->waypointIndex, tempPaddleWheelBoat->someMultiplier);
+                tempPaddleWheelBoat->rotY = func_8000DBAC(tempPaddleWheelBoat->position, (s16*)&tempPaddleWheelBoat->waypointIndex, tempPaddleWheelBoat->someMultiplier);
                 tempPaddleWheelBoat->velocity[0] = tempPaddleWheelBoat->position[0] - origXPos;
                 tempPaddleWheelBoat->velocity[2] = tempPaddleWheelBoat->position[2] - origZPos;
                 vec3s_set(paddleWheelBoatRot, 0, tempPaddleWheelBoat->rotY, 0);
@@ -4485,10 +4485,10 @@ void init_course_vehicles(void) {
     }
 }
 
-void func_80012780(TrainCarStuff *trainCar, s16 *arg1, u16 arg2) {
-    trainCar->position[0] = (f32) arg1[0];
+void func_80012780(TrainCarStuff *trainCar, PathNoY *arg1, u16 arg2) {
+    trainCar->position[0] = (f32) arg1->x;
     trainCar->position[1] = (f32) D_80162EB0;
-    trainCar->position[2] = (f32) arg1[1];
+    trainCar->position[2] = (f32) arg1->z;
     trainCar->actorIndex = -1;
     trainCar->waypointIndex = arg2;
     trainCar->isActive = 0;
@@ -4601,7 +4601,7 @@ void update_vehicle_trains(void) {
         temp_f20 = gTrainList[i].locomotive.position[0];
         temp_f22 = gTrainList[i].locomotive.position[2];
 
-        temp_v0 = func_8000DBAC(gTrainList[i].locomotive.position, &gTrainList[i].locomotive.waypointIndex, gTrainList[i].someMultiplier);
+        temp_v0 = func_8000DBAC(gTrainList[i].locomotive.position, (s16*)&gTrainList[i].locomotive.waypointIndex, gTrainList[i].someMultiplier);
 
         gTrainList[i].locomotive.velocity[0] = gTrainList[i].locomotive.position[0] - temp_f20;
         gTrainList[i].locomotive.velocity[2] = gTrainList[i].locomotive.position[2] - temp_f22;
@@ -4630,7 +4630,7 @@ void update_vehicle_trains(void) {
         if (car->isActive == 1) {
             temp_f20 = car->position[0];
             temp_f22 = car->position[2];
-            temp_v0 = func_8000DBAC(car->position, &car->waypointIndex, gTrainList[i].someMultiplier);
+            temp_v0 = func_8000DBAC(car->position, (s16*)&car->waypointIndex, gTrainList[i].someMultiplier);
             car->velocity[0] = car->position[0] - temp_f20;
             car->velocity[2] = car->position[2] - temp_f22;
             func_80012A48(car, temp_v0);
@@ -4642,7 +4642,7 @@ void update_vehicle_trains(void) {
                 temp_f20 = car->position[0];
                 temp_f22 = car->position[2];
 
-                temp_v0 = func_8000DBAC(car->position, &car->waypointIndex, gTrainList[i].someMultiplier);
+                temp_v0 = func_8000DBAC(car->position, (s16*)&car->waypointIndex, gTrainList[i].someMultiplier);
                 car->velocity[0] = car->position[0] - temp_f20;
                 car->velocity[2] = car->position[2] - temp_f22;
                 func_80012A48(car, temp_v0);
@@ -4805,7 +4805,7 @@ void update_vehicle_paddle_boats(void) {
     Vec3f sp88;
     UNUSED s32 pad;
     Vec3f sp78;
-    s32 pad2;
+    UNUSED s32 pad2;
     D_801630FC += 1;
     for (i = 0; i < NUM_ACTIVE_PADDLE_BOATS; i++) {
         paddleBoat = &gPaddleBoats[i];
@@ -4813,7 +4813,7 @@ void update_vehicle_paddle_boats(void) {
             temp_f26 = paddleBoat->position[0];
             temp_f28 = paddleBoat->position[1];
             temp_f30 = paddleBoat->position[2];
-            func_8000DBAC(paddleBoat->position, &paddleBoat->waypointIndex, paddleBoat->someMultiplier);
+            func_8000DBAC(paddleBoat->position, (s16*)&paddleBoat->waypointIndex, paddleBoat->someMultiplier);
             paddleBoat->someFlags = func_800061DC(paddleBoat->position, 2000.0f, paddleBoat->someFlags);
             if ((((s16) D_801630FC % 10) == 0) && (paddleBoat->someFlags != 0)) {
                 sp78[0] = (f32) ((f64) paddleBoat->position[0] - 30.0);
@@ -4957,9 +4957,9 @@ void func_800139E4(f32 arg0, f32 arg1, s32 arg2, s32 arg3, VehicleStuff *vehicle
             veh->rotation[0] = 0;
             veh->rotation[2] = 0;
             if (D_8016347A == 0) {
-                veh->rotation[1] = func_8000D6D0(veh->position, &veh->waypointIndex, veh->someMultiplier, veh->someMultiplierTheSequel, 0, 3);
+                veh->rotation[1] = func_8000D6D0(veh->position, (s16*)&veh->waypointIndex, veh->someMultiplier, veh->someMultiplierTheSequel, 0, 3);
             } else {
-                veh->rotation[1] = func_8000D940(veh->position, &veh->waypointIndex, veh->someMultiplier, veh->someMultiplierTheSequel, 0);
+                veh->rotation[1] = func_8000D940(veh->position, (s16*)&veh->waypointIndex, veh->someMultiplier, veh->someMultiplierTheSequel, 0);
             }
         }
     D_801631C8 = 10;
@@ -5031,9 +5031,9 @@ void func_80013D20(VehicleStuff *vehicle) {
         }
     }
     if (D_8016347A == 0) {
-        var_a1 = func_8000D6D0(vehicle->position, &vehicle->waypointIndex, vehicle->someMultiplier, vehicle->someMultiplierTheSequel, 0, 3);
+        var_a1 = func_8000D6D0(vehicle->position, (s16*)&vehicle->waypointIndex, vehicle->someMultiplier, vehicle->someMultiplierTheSequel, 0, 3);
     } else {
-        var_a1 = func_8000D940(vehicle->position, &vehicle->waypointIndex, vehicle->someMultiplier, vehicle->someMultiplierTheSequel, 0);
+        var_a1 = func_8000D940(vehicle->position, (s16*)&vehicle->waypointIndex, vehicle->someMultiplier, vehicle->someMultiplierTheSequel, 0);
     }
     adjust_angle(&vehicle->rotation[1], var_a1, 100);
     temp_f0_3 = vehicle->position[0] - sp5C;
@@ -5237,12 +5237,12 @@ f32 func_800145A8(s16 arg0, f32 arg1, s16 arg2) {
 }
 
 void func_800146B8(s32 playerId, s32 arg1, VehicleStuff *vehicle) {
-    s32 var_v1;
+    UNUSED s32 var_v1;
     s32 var_v0;
     s32 var_s2;
     s32 waypointCount;
     u16 temp_a1;
-    VehicleStuff *tempVehicle;
+    UNUSED VehicleStuff *tempVehicle;
 
     waypointCount = gWaypointCountByPathIndex[0];
     if (!(gPlayers[playerId].unk_094 < 1.6666666666666667)) {
@@ -5265,7 +5265,7 @@ void func_800147E0(void) {
     if (gModeSelection == TIME_TRIALS) {
         numTrucks = NUM_TIME_TRIAL_BOX_TRUCKS;
     }
-    func_800139E4(a, b, numTrucks, 0, &gBoxTruckList, &D_80164550[0][0]);
+    func_800139E4(a, b, numTrucks, 0, gBoxTruckList, &D_80164550[0][0]);
 }
 
 void func_8001487C(void) {
@@ -5292,7 +5292,7 @@ void func_80014934(void) {
     if (gModeSelection == TIME_TRIALS) {
         numBusses = NUM_TIME_TRIAL_SCHOOL_BUSES;
     }
-    func_800139E4(a, b, numBusses, 0x4B, &gSchoolBusList, &D_80164550[0][0]);
+    func_800139E4(a, b, numBusses, 0x4B, gSchoolBusList, &D_80164550[0][0]);
 }
 
 void func_800149D0(void) {
@@ -5319,7 +5319,7 @@ void func_80014A88(void) {
     if (gModeSelection == TIME_TRIALS) {
         numTrucks = NUM_TIME_TRIAL_TANKER_TRUCKS;
     }
-    func_800139E4(a, b, numTrucks, 50, &gTankerTruckList, &D_80164550[0][0]);
+    func_800139E4(a, b, numTrucks, 50, gTankerTruckList, &D_80164550[0][0]);
 }
 
 void func_80014B24(void) {
@@ -5346,7 +5346,7 @@ void func_80014BDC(void) {
     if (gModeSelection == TIME_TRIALS) {
         numCars = NUM_TIME_TRIAL_CARS;
     }
-    func_800139E4(a, b, numCars, 25, &gCarList, &D_80164550[0][0]);
+    func_800139E4(a, b, numCars, 25, gCarList, &D_80164550[0][0]);
 }
 
 void func_80014C78(void) {
@@ -5603,7 +5603,7 @@ void func_80015544(s32 playerId, f32 arg1, s32 cameraId, s32 pathIndex) {
     camera->pos[2] = D_80164638[cameraId];
 }
 
-void func_8001577C(Camera *camera, UNUSED Player *playerArg, s32 arg2, s32 cameraId) {
+void func_8001577C(Camera *camera, UNUSED Player *playerArg, UNUSED s32 arg2, s32 cameraId) {
     s16 cameraWaypoint;
     s16 playerWaypoint;
     UNUSED s32 pad;
@@ -5612,7 +5612,7 @@ void func_8001577C(Camera *camera, UNUSED Player *playerArg, s32 arg2, s32 camer
     f32 zdiff;
     UNUSED s32 pad2;
     s32 playerId;
-    s32 pad3[9];
+    UNUSED s32 pad3[9];
     Player *player;
     s32 waypointDiff;
     s32 pathIndex;
@@ -5679,10 +5679,10 @@ void func_80015A9C(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
     camera->pos[2] = D_80164638[cameraId];
 }
 
-void func_80015C94(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
+void func_80015C94(Camera *camera, UNUSED Player *unusedPlayer, UNUSED s32 arg2, s32 cameraId) {
     s16 playerWaypoint;
     s16 cameraWaypoint;
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     f32 xdiff2;
     f32 ydiff2;
     f32 zdiff2;
@@ -5695,11 +5695,11 @@ void func_80015C94(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     f32 ydiff;
     f32 zdiff;
     f32 distance;
-    s32 stackPadding1;
+    UNUSED s32 stackPadding1;
     s16 waypoint1;
     s16 waypoint2;
-    f32 var_f18;
-    f32 var_f20;
+    UNUSED f32 var_f18;
+    UNUSED f32 var_f20;
     f32 temp_f2_2;
     s32 pathIndex;
 
@@ -5784,10 +5784,10 @@ void func_800162CC(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
     camera->pos[2] = D_80164638[cameraId];
 }
 
-void func_80016494(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
+void func_80016494(Camera *camera, UNUSED Player *unusedPlayer, UNUSED s32 arg2, s32 cameraId) {
     s16 cameraWaypoint;
     s16 playerWaypoint;
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     f32 xdiff2;
     f32 ydiff2;
     f32 zdiff2;
@@ -5800,12 +5800,12 @@ void func_80016494(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     f32 ydiff;
     f32 zdiff;
     f32 distance;
-    f32 sp98;
+    UNUSED f32 sp98;
     s16 waypoint1;
     s16 waypoint2;
-    f32 sp94;
-    f32 sp90;
-    s32 stackPadding1;
+    UNUSED f32 sp94;
+    UNUSED f32 sp90;
+    UNUSED s32 stackPadding1;
     s32 pathIndex;
     f32 temp_f2_5;
 
@@ -5889,11 +5889,11 @@ void func_80016494(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     camera->rot[2] = 0;
 }
 
-void func_80016C3C(s32 playerId, f32 arg1, s32 cameraId) {
-    s32 stackPadding0;
-    s32 stackPadding1;
+void func_80016C3C(UNUSED s32 playerId, UNUSED f32 arg1, s32 cameraId) {
+    UNUSED s32 stackPadding0;
+    UNUSED s32 stackPadding1;
     f32 temp_f2;
-    s32 stackPadding2;
+    UNUSED s32 stackPadding2;
     f32 temp_f12;
     TrackWaypoint **path;
     f32 sp54;
@@ -5942,18 +5942,19 @@ void func_80016C3C(s32 playerId, f32 arg1, s32 cameraId) {
     camera->pos[2] = D_80164638[cameraId];
 }
 
+void func_80017054(Camera *camera, UNUSED Player *player, UNUSED s32 index, s32 cameraId);
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/Ck7hV
 // Really crazy diff, permuter only able to find fakematches for improvements (and they're big improvements)
 // There's something really, really wrong with the empty `if` statement
-void func_80017054(Camera *camera, Player *player, s32 index, s32 cameraId) {
-    s32 stackPadding0;
-    s32 stackPadding1;
+void func_80017054(Camera *camera, UNUSED Player *player, UNUSED s32 index, s32 cameraId) {
+    UNUSED s32 stackPadding0;
+    UNUSED s32 stackPadding1;
     f32 spAC;
     f32 spA8;
     f32 spA4;
-    s32 stackPadding2;
-    s32 stackPadding3;
+    UNUSED s32 stackPadding2;
+    UNUSED s32 stackPadding3;
     f32 sp98;
     f32 sp94;
     f32 sp90;
@@ -5963,15 +5964,15 @@ void func_80017054(Camera *camera, Player *player, s32 index, s32 cameraId) {
     f32 stackPadding4;
     f32 stackPadding5;
     f32 stackPadding6;
-    s32 stackPadding7;
-    s32 stackPadding8;
+    UNUSED s32 stackPadding7;
+    UNUSED s32 stackPadding8;
     s16 sp6E;
     s16 sp6C;
-    s32 stackPadding9;
-    s32 stackPaddingA;
-    s32 stackPaddingB;
+    UNUSED s32 stackPadding9;
+    UNUSED s32 stackPaddingA;
+    UNUSED s32 stackPaddingB;
     s32 pathIndex;
-    s32 stackPaddingC;
+    UNUSED s32 stackPaddingC;
     s32 sp58;
     s16 sp56;
     s32 playerId;
@@ -6049,7 +6050,7 @@ void func_80017054(Camera *camera, Player *player, s32 index, s32 cameraId) {
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80017054.s")
 #endif
 
-void func_80017720(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
+void func_80017720(s32 playerId, UNUSED f32 arg1, s32 cameraId, s16 pathIndex) {
     Camera* camera = cameras + cameraId;
     UNUSED s32 pad;
 
@@ -6071,10 +6072,10 @@ void func_80017720(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
     camera->pos[2] = D_80164638[cameraId];
 }
 
-void func_800178F4(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
+void func_800178F4(Camera *camera, UNUSED Player *unusedPlayer, UNUSED s32 arg2, s32 cameraId) {
     s16 cameraWaypoint;
     s16 playerWaypoint;
-    f32 stackPadding0;
+    UNUSED f32 stackPadding0;
     f32 xdiff2;
     f32 ydiff2;
     f32 zdiff2;
@@ -6086,12 +6087,12 @@ void func_800178F4(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     f32 xdiff;
     f32 ydiff;
     f32 zdiff;
-    f32 var_f2;
-    f32 var_f18;
+    UNUSED f32 var_f2;
+    UNUSED f32 var_f18;
     s16 waypoint1;
     s16 waypoint2;
-    f32 stackPadding1;
-    f32 var_f14;
+    UNUSED f32 stackPadding1;
+    UNUSED f32 var_f14;
     s32 playerId;
     s32 pathIndex;
     s32 waypointCount;
@@ -6163,7 +6164,7 @@ void func_800178F4(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     camera->rot[2] = 0;
 }
 
-void func_80017F10(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
+void func_80017F10(s32 playerId, UNUSED f32 arg1, s32 cameraId, s16 pathIndex) {
     Camera* camera = cameras + cameraId;
     s32 test = gWaypointCountByPathIndex[pathIndex];
 
@@ -6185,14 +6186,14 @@ void func_80017F10(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
     camera->pos[2] = D_80164638[cameraId];
 }
 
-void func_800180F0(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
+void func_800180F0(Camera *camera, UNUSED Player *unusedPlayer, UNUSED s32 arg2, s32 cameraId) {
     s16 cameraWaypoint;
     s16 playerWaypoint;
-    s32 stackPadding3;
+    UNUSED s32 stackPadding3;
     f32 sp94;
     f32 sp90;
     f32 sp8C;
-    s32 stackPadding4;
+    UNUSED s32 stackPadding4;
     f32 distance;
     f32 midX;
     f32 midY;
@@ -6204,9 +6205,9 @@ void func_800180F0(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     s32 playerId;
     s16 waypoint1;
     s16 waypoint2;
-    f32 var_f2;
-    f32 var_f18;
-    f32 var_f14;
+    UNUSED f32 var_f2;
+    UNUSED f32 var_f18;
+    UNUSED f32 var_f14;
     s32 pathIndex;
     s32 waypointCount;
 
@@ -6277,7 +6278,7 @@ void func_800180F0(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     camera->rot[2] = 0;
 }
 
-void func_80018718(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
+void func_80018718(s32 playerId, UNUSED f32 arg1, s32 cameraId, s16 pathIndex) {
     Camera* camera = cameras + cameraId;
     s32 test = gWaypointCountByPathIndex[pathIndex];
 
@@ -6298,10 +6299,10 @@ void func_80018718(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
     camera->pos[2] = D_80164638[cameraId];
 }
 
-void func_800188F4(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
+void func_800188F4(Camera *camera, UNUSED Player *unusePlayer, UNUSED s32 arg2, s32 cameraId) {
     s16 cameraWaypoint;
     s16 playerWaypoint;
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     f32 spAC;
     f32 spA8;
     f32 spA4;
@@ -6313,11 +6314,11 @@ void func_800188F4(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     f32 xdiff;
     f32 ydiff;
     f32 zdiff;
-    f32 sp64;
-    f32 sp60;
+    UNUSED f32 sp64;
+    UNUSED f32 sp60;
     s16 waypoint1;
     s16 waypoint2;
-    f32 sp5C;
+    UNUSED f32 sp5C;
     f32 temp_f2_4;
     s32 playerId;
     s32 pathIndex;
@@ -6410,7 +6411,7 @@ void func_800188F4(Camera *camera, s32 arg1, s32 arg2, s32 cameraId) {
     camera->rot[2] = 0;
 }
 
-void func_80019118(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
+void func_80019118(s32 playerId, f32 arg1, s32 cameraId, UNUSED s16 pathIndex) {
     Camera* camera = cameras + cameraId;
     s32 test = gWaypointCountByPathIndex[0];
     f32 temp_f12;
@@ -6439,7 +6440,7 @@ void func_80019118(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
     camera->pos[2] = D_80164638[cameraId];
 }
 
-void func_8001933C(Camera *camera, UNUSED Player *playerArg, s32 arg2, s32 cameraId) {
+void func_8001933C(Camera *camera, UNUSED Player *playerArg, UNUSED s32 arg2, s32 cameraId) {
     s16 cameraWaypoint;
     s16 playerWaypoint;
     UNUSED s32 pad;
@@ -6491,7 +6492,7 @@ void func_8001968C(void) {
     D_80164678[0] = 3;
 }
 
-void func_8001969C(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
+void func_8001969C(UNUSED s32 playerId, UNUSED f32 arg1, s32 cameraId, UNUSED s16 pathIndex) {
     TrackWaypoint *waypoint;
 
     gNearestWaypointByCameraId[cameraId] = gWaypointCountByPathIndex[0] - 18;
@@ -6506,7 +6507,7 @@ void func_8001969C(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
     D_80164678[cameraId] = 0;
 }
 
-void func_80019760(Camera *camera, UNUSED Player *player, s32 arg2, s32 cameraId) {
+void func_80019760(Camera *camera, UNUSED Player *player, UNUSED s32 arg2, s32 cameraId) {
     UNUSED s32 pad[2];
     f32 xdiff;
     f32 ydiff;
@@ -6767,7 +6768,7 @@ void func_8001A124(s32 arg0, s32 arg1) {
     }
 }
 
-void func_8001A220(s32 arg0, s32 cameraId) {
+void func_8001A220(UNUSED s32 arg0, s32 cameraId) {
     switch (random_int(6)) {
         case 0:
             D_80164680[cameraId] = 4;
@@ -6853,7 +6854,7 @@ void func_8001A518(s32 arg0, s32 arg1, s32 arg2) {
     }
 }
 
-void func_8001A588(u16 *localD_80152300, Camera *camera, Player *player, s8 index, s32 cameraIndex) {
+void func_8001A588(UNUSED u16 *localD_80152300, Camera *camera, Player *player, s8 index, s32 cameraIndex) {
     s32 var_v1;
     UnkStruct_46D0 *temp_v0_4;
     s32 sp44;
@@ -6999,7 +7000,7 @@ void func_8001AB00(void) {
     }
 }
 
-void kart_ai_decisions_branch_item(s32 arg0, s16 *arg1, s32 arg2) {
+void kart_ai_decisions_branch_item(UNUSED s32 arg0, s16 *arg1, s32 arg2) {
     s32 value = -1;
     switch (arg2) {
         case ITEM_FAKE_ITEM_BOX:
