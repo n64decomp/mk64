@@ -4156,34 +4156,20 @@ void wrapper_update_boos(void) {
     update_boos();
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/9JBIl
-// No idea what the source of the diff is
-void func_8007C360(s32 objectIndex, Camera *camera) {
-    s32 temp_t0;
-    s32 var_t1;
-    Objects *temp_a2;
+// Updates the display status on an object based on its relative direction to the camera
+void func_8007C360(s32 objectIndex, Camera* camera) {
+    u16 rot = camera->rot[1];
+    u16 temp = ((u16)(gObjectList[objectIndex].direction_angle[1] - rot + 0x8000) * 0x24) / 0x10000;
 
-    temp_a2 = &gObjectList[objectIndex];
-    temp_t0 = (u16)camera->rot[1];
-    temp_t0 = (((temp_a2->direction_angle[1] - temp_t0) + 0x8000) & 0xFFFF) * 0x24;
-    var_t1 = temp_t0 >> 0x10;
-    if (temp_t0 < 0) {
-        var_t1 = temp_t0 + 0xFFFF;
-        var_t1 >>= 0x10;
-    }
-    var_t1 &= 0xFFFF;
-    if (var_t1 < 0x13) {
+    if (temp < 0x13) {
         set_object_flag_status_false(objectIndex, 0x80);
-        temp_a2->itemDisplay = var_t1;
+        gObjectList[objectIndex].itemDisplay = temp;
     } else {
         set_object_flag_status_true(objectIndex, 0x80);
-        temp_a2->itemDisplay = 0x24 - var_t1;
+        gObjectList[objectIndex].itemDisplay = 0x24 - temp;
     }
+
 }
-#else
-GLOBAL_ASM("asm/non_matchings/update_objects/func_8007C360.s")
-#endif
 
 void func_8007C420(s32 objectIndex, Player *player, Camera *camera) {
     f32 x;
