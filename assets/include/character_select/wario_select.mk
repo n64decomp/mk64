@@ -24,16 +24,17 @@ WARIO_SELECT_EXPORT_SENTINEL := $(WARIO_SELECT_DIR)/.export
 $(BUILD_DIR)/data/course_player_selection.o: $(WARIO_SELECT_PNG:%.png=%.mio0)
 
 $(WARIO_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(WARIO_SELECT_PNG:%.png=%.bin) : %.bin : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(WARIO_SELECT_PNG): $(WARIO_SELECT_EXPORT_SENTINEL) ;
 
 $(WARIO_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/wario_select.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_wario_select
 distclean_wario_select:

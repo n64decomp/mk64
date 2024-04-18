@@ -65,31 +65,40 @@ $(BUILD_DIR)/courses/rainbow_road/course_data.o: $(RAINBOW_ROAD_CHARACTER_PALETT
 $(BUILD_DIR)/courses/rainbow_road/course_data.o: $(RAINBOW_ROAD_PNG:%.png=%.inc.c)
 
 $(RAINBOW_ROAD_MUSHROOM_PNG:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(RAINBOW_ROAD_DIR)/gTLUTRainbowRoadNeonMushroom4.png
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(RAINBOW_ROAD_DIR)/gTLUTRainbowRoadNeonMushroom4.png
 
 $(RAINBOW_ROAD_MARIO_PNG:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(RAINBOW_ROAD_DIR)/gTLUTRainbowRoadNeonMario5.png
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(RAINBOW_ROAD_DIR)/gTLUTRainbowRoadNeonMario5.png
 
 $(RAINBOW_ROAD_BOO_PNG:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(RAINBOW_ROAD_DIR)/gTLUTRainbowRoadNeonBoo5.png
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(RAINBOW_ROAD_DIR)/gTLUTRainbowRoadNeonBoo5.png
 
 $(RAINBOW_ROAD_CHARACTER_PNG:%.png=%.inc.c) : $(RAINBOW_ROAD_DIR)/gTextureRainbowRoadNeon%.inc.c : $(RAINBOW_ROAD_DIR)/gTextureRainbowRoadNeon%.png
-	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(RAINBOW_ROAD_DIR)/gTLUTRainbowRoadNeon$*.png
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(RAINBOW_ROAD_DIR)/gTLUTRainbowRoadNeon$*.png
 
 $(RAINBOW_ROAD_MUSHROOM_PALETTES:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(RAINBOW_ROAD_MARIO_PALETTES:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(RAINBOW_ROAD_BOO_PALETTES:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(RAINBOW_ROAD_CHARACTER_PALETTES:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(RAINBOW_ROAD_PNG:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(RAINBOW_ROAD_MUSHROOM_PALETTES) $(RAINBOW_ROAD_MUSHROOM_PNG): $(RAINBOW_ROAD_EXPORT_SENTINEL) ;
 $(RAINBOW_ROAD_MARIO_PALETTES) $(RAINBOW_ROAD_MARIO_PNG): $(RAINBOW_ROAD_EXPORT_SENTINEL) ;
@@ -98,8 +107,8 @@ $(RAINBOW_ROAD_CHARACTER_PALETTES) $(RAINBOW_ROAD_CHARACTER_PNG): $(RAINBOW_ROAD
 $(RAINBOW_ROAD_PNG): $(RAINBOW_ROAD_EXPORT_SENTINEL) ;
 
 $(RAINBOW_ROAD_EXPORT_SENTINEL): $(ASSET_DIR)/courses/rainbow_road.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_rainbow_road
 distclean_rainbow_road:

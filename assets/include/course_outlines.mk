@@ -27,16 +27,17 @@ COURSE_OUTLINE_EXPORT_SENTINEL := $(COURSE_OUTLINE_DIR)/.export
 $(BUILD_DIR)/data/other_textures.o: $(COURSE_OUTLINE_PNG:%.png=%.mio0)
 
 $(COURSE_OUTLINE_PNG:%.png=%.mio0): %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(COURSE_OUTLINE_PNG:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s raw -f i4
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f i4
 
 $(COURSE_OUTLINE_PNG): $(COURSE_OUTLINE_EXPORT_SENTINEL) ;
 
 $(COURSE_OUTLINE_EXPORT_SENTINEL): $(ASSET_DIR)/course_outlines.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_course_outlines
 distclean_course_outlines:

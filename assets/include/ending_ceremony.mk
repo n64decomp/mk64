@@ -15,13 +15,14 @@ ENDING_CEREMONY_EXPORT_SENTINEL := $(ENDING_CEREMONY)/.export
 $(BUILD_DIR)/src/ending/ceremony_data.o: $(TROHPY_PNG:%.png=%.inc.c) $(PODIUM_PNG:%.png=%.inc.c)
 
 $(TROHPY_PNG:%.png=%.inc.c) $(PODIUM_PNG:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(TROHPY_PNG) $(PODIUM_PNG): $(ENDING_CEREMONY_EXPORT_SENTINEL) ;
 
 $(ENDING_CEREMONY_EXPORT_SENTINEL): $(ASSET_DIR)/ending_ceremony.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_ending_ceremony
 distclean_ending_ceremony:

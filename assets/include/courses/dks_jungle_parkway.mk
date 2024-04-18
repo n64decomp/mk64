@@ -27,23 +27,25 @@ DKS_JUNGLE_PARKWAY_EXPORT_SENTINEL := $(DKS_JUNGLE_PARKWAY_DIR)/.export
 $(BUILD_DIR)/data/other_textures.o: $(DKS_JUNGLE_PARKWAY_KIWANO_FRAMES:%.png=%.mio0)
 
 $(DKS_JUNGLE_PARKWAY_KIWANO_FRAMES:%.png=%.mio0): %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(DKS_JUNGLE_PARKWAY_KIWANO_FRAMES:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(DKS_JUNGLE_PARKWAY_KIWANO_PALETTE)
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(DKS_JUNGLE_PARKWAY_KIWANO_PALETTE)
 
 $(BUILD_DIR)/courses/dks_jungle_parkway/course_data.o: $(DKS_JUNGLE_PARKWAY_KIWANO_PALETTE:%.png=%.inc.c)
 $(BUILD_DIR)/courses/dks_jungle_parkway/course_data.o: $(DKS_JUNGLE_PARKWAY_PNG:%.png=%.inc.c)
 
 $(DKS_JUNGLE_PARKWAY_PNG:%.png=%.inc.c) $(DKS_JUNGLE_PARKWAY_KIWANO_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(DKS_JUNGLE_PARKWAY_KIWANO_PALETTE) $(DKS_JUNGLE_PARKWAY_KIWANO_FRAMES): $(DKS_JUNGLE_PARKWAY_EXPORT_SENTINEL) ;
 $(DKS_JUNGLE_PARKWAY_PNG): $(DKS_JUNGLE_PARKWAY_EXPORT_SENTINEL) ;
 
 $(DKS_JUNGLE_PARKWAY_EXPORT_SENTINEL): $(ASSET_DIR)/courses/dks_jungle_parkway.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_dks_junk_parkway
 distclean_dks_junk_parkway:

@@ -17,21 +17,23 @@ GREENSHELL_EXPORT_SENTINEL := $(GREENSHELL_DIR)/.export
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(GREENSHELL_FRAMES:%.png=%.mio0)
 
 $(GREENSHELL_FRAMES:%.png=%.mio0): %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(GREENSHELL_FRAMES:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(GREENSHELL_PALETTE)
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(GREENSHELL_PALETTE)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(GREENSHELL_PALETTE:%.png=%.inc.c)
 
 $(GREENSHELL_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(GREENSHELL_FRAMES) $(GREENSHELL_PALETTE): $(GREENSHELL_EXPORT_SENTINEL) ;
 
 $(GREENSHELL_EXPORT_SENTINEL): $(ASSET_DIR)/greenshell.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_greenshell
 distclean_greenshell:

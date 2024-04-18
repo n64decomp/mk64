@@ -1487,19 +1487,21 @@ LUIGI_EXPORT_SENTINEL := $(LUIGI_KART_DIR)/.export
 $(BUILD_DIR)/$(DATA_DIR)/karts/luigi_kart.o: $(LUIGI_KART_FRAME_PNG:%.png=%.mio0) $(LUIGI_KART_PALETTE_PNG:%.png=%.bin)
 
 $(LUIGI_KART_FRAME_PNG:%.png=%.mio0): %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(LUIGI_KART_FRAME_PNG:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(<D)/stitched_palettes/$(<F:%.png=%_stitched_palette.png) -M $(<D)/wheel_masks/$(<F:%.png=%_wheel_mask.raw)
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(<D)/stitched_palettes/$(<F:%.png=%_stitched_palette.png) -M $(<D)/wheel_masks/$(<F:%.png=%_wheel_mask.raw)
 
 $(LUIGI_KART_PALETTE_PNG:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(LUIGI_KART_FRAME_PNG) $(LUIGI_KART_PALETTE_PNG): $(LUIGI_EXPORT_SENTINEL) ;
 
 $(LUIGI_EXPORT_SENTINEL): $(ASSET_DIR)/karts/luigi_kart.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_luigi_kart
 distclean_luigi_kart:

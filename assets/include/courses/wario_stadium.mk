@@ -11,13 +11,14 @@ WARIO_STADIUM_EXPORT_SENTINEL := $(WARIO_STADIUM_DIR)/.export
 $(BUILD_DIR)/courses/wario_stadium/course_data.o: $(WARIO_STADIUM_SIGN:%.png=%.inc.c)
 
 $(WARIO_STADIUM_SIGN:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(WARIO_STADIUM_SIGN): $(WARIO_STADIUM_EXPORT_SENTINEL) ;
 
 $(WARIO_STADIUM_EXPORT_SENTINEL): $(ASSET_DIR)/courses/wario_stadium.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_wario_stadium
 distclean_wario_stadium:

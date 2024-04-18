@@ -22,21 +22,23 @@ PIRANHA_PLANT_EXPORT_SENTINEL := $(MARIO_RACEWAY_DIR)/.export
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(PIRANHA_PLANT_FRAMES:%.png=%.mio0)
 
 $(PIRANHA_PLANT_FRAMES:%.png=%.mio0): %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(PIRANHA_PLANT_FRAMES:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(MARIO_RACEWAY_PIRANHA_PLANT_PALETTE)
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(MARIO_RACEWAY_PIRANHA_PLANT_PALETTE)
 
 $(BUILD_DIR)/courses/mario_raceway/course_data.o: $(MARIO_RACEWAY_PIRANHA_PLANT_PALETTE:%.png=%.inc.c) $(MARIO_RACEWAY_SIGN:%.png=%.inc.c)
 
 $(MARIO_RACEWAY_PIRANHA_PLANT_PALETTE:%.png=%.inc.c) $(MARIO_RACEWAY_SIGN:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(PIRANHA_PLANT_FRAMES) $(MARIO_RACEWAY_PIRANHA_PLANT_PALETTE) $(MARIO_RACEWAY_SIGN): $(PIRANHA_PLANT_EXPORT_SENTINEL) ;
 
 $(PIRANHA_PLANT_EXPORT_SENTINEL): $(ASSET_DIR)/courses/mario_raceway.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_mario_raceway
 distclean_mario_raceway:

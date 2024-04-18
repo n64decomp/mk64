@@ -24,21 +24,23 @@ TREES_EXPORT_SENTINEL := $(TREES_DIR)/.export
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(TREES_PNG:%.png=%.mio0)
 
 $(TREES_PNG:%.png=%.mio0): %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(TREES_PNG:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(TREES_PALETTE)
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(TREES_PALETTE)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(TREES_PALETTE_IMPORT:%.png=%.inc.c)
 
 $(TREES_PALETTE:%.png=%.inc.c) $(TREES_PALETTE_IMPORT:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(TREES_PNG) $(TREES_PALETTE) $(TREES_PALETTE_IMPORT): $(TREES_EXPORT_SENTINEL) ;
 
 $(TREES_EXPORT_SENTINEL): $(ASSET_DIR)/trees.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_trees
 distclean_trees:

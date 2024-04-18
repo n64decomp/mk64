@@ -22,28 +22,32 @@ $(BUILD_DIR)/courses/frappe_snowland/course_data.o: $(FRAPPE_SNOWLAND_SNOWMAN_PA
 $(BUILD_DIR)/courses/frappe_snowland/course_data.o: $(FRAPPE_SNOWLAND_TREE_PALETTE:%.png=%.inc.c)
 
 $(FRAPPE_SNOWLAND_SNOWMAN_PNG:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(FRAPPE_SNOWLAND_SNOWMAN_PALETTE)
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(FRAPPE_SNOWLAND_SNOWMAN_PALETTE)
 
 $(FRAPPE_SNOWLAND_SNOW_PNG:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(FRAPPE_SNOWLAND_SNOW_PALETTE)
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(FRAPPE_SNOWLAND_SNOW_PALETTE)
 
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(FRAPPE_SNOWLAND_TREE_PNG:%.png=%.mio0)
 
 $(FRAPPE_SNOWLAND_TREE_PNG:%.png=%.mio0): %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(FRAPPE_SNOWLAND_TREE_PNG:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(FRAPPE_SNOWLAND_TREE_PALETTE)
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(FRAPPE_SNOWLAND_TREE_PALETTE)
 
 $(FRAPPE_SNOWLAND_SNOWMAN_PALETTE:%.png=%.inc.c) $(FRAPPE_SNOWLAND_SNOW_PALETTE:%.png=%.inc.c) $(FRAPPE_SNOWLAND_TREE_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(FRAPPE_SNOWLAND_SNOWMAN_PNG) $(FRAPPE_SNOWLAND_SNOW_PNG) $(FRAPPE_SNOWLAND_TREE_PNG): $(FRAPPE_SNOWLAND_EXPORT_SENTINEL) ;
 $(FRAPPE_SNOWLAND_SNOWMAN_PALETTE) $(FRAPPE_SNOWLAND_SNOW_PALETTE) $(FRAPPE_SNOWLAND_TREE_PALETTE): $(FRAPPE_SNOWLAND_EXPORT_SENTINEL) ;
 
 $(FRAPPE_SNOWLAND_EXPORT_SENTINEL): $(ASSET_DIR)/courses/frappe_snowland.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_frappe_snowland
 distclean_frappe_snowland:

@@ -24,16 +24,17 @@ TOAD_SELECT_EXPORT_SENTINEL := $(TOAD_SELECT_DIR)/.export
 $(BUILD_DIR)/data/course_player_selection.o: $(TOAD_SELECT_PNG:%.png=%.mio0)
 
 $(TOAD_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(TOAD_SELECT_PNG:%.png=%.bin) : %.bin : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(TOAD_SELECT_PNG): $(TOAD_SELECT_EXPORT_SENTINEL) ;
 
 $(TOAD_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/toad_select.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_toad_select
 distclean_toad_select:

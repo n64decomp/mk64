@@ -24,16 +24,17 @@ MARIO_SELECT_EXPORT_SENTINEL := $(MARIO_SELECT_DIR)/.export
 $(BUILD_DIR)/data/course_player_selection.o: $(MARIO_SELECT_PNG:%.png=%.mio0)
 
 $(MARIO_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(MARIO_SELECT_PNG:%.png=%.bin) : %.bin : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(MARIO_SELECT_PNG): $(MARIO_SELECT_EXPORT_SENTINEL) ;
 
 $(MARIO_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/mario_select.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_mario_select
 distclean_mario_select:

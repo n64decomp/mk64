@@ -423,12 +423,12 @@ endif
 
 assets:
 	@echo "Extracting torch assets..."
-	@$(TORCH) code $(BASEROM)
-	@$(TORCH) header $(BASEROM)
-	@$(TORCH) modding export $(BASEROM)
+	$(V)$(TORCH) code $(BASEROM)
+	$(V)$(TORCH) header $(BASEROM)
+	$(V)$(TORCH) modding export $(BASEROM)
 
 doc:
-	$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
+	$(V)$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
 	doxygen
 	@$(PRINT) "$(GREEN)Documentation generated in docs/html$(NO_COL)\n"
 	@$(PRINT) "$(GREEN)Results can be viewed by opening docs/html/index.html in a web browser$(NO_COL)\n"
@@ -438,7 +438,7 @@ clean:
 
 distclean: distclean_assets
 	$(RM) -r $(BUILD_DIR_BASE)
-	./extract_assets.py --clean
+	$(PYTHON) extract_assets.py --clean
 	make -C $(TOOLS_DIR) clean
 
 distclean_assets: ;
@@ -458,10 +458,11 @@ DUMMY != mkdir -p $(ALL_DIRS)
 
 # RGBA32, RGBA16, IA16, IA8, IA4, IA1, I8, I4
 $(BUILD_DIR)/%: %.png
-	$(N64GRAPHICS) -i $@ -g $< -f $(lastword $(subst ., ,$@))
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -f $(lastword $(subst ., ,$@))
 
 $(BUILD_DIR)/textures/%.mio0: $(BUILD_DIR)/textures/%
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name "*.mk")
 
@@ -483,14 +484,14 @@ $(BUILD_DIR)/%.mio0.o: $(BUILD_DIR)/%.mio0.s
 
 $(BUILD_DIR)/%.mio0.s: $(BUILD_DIR)/%.mio0
 	$(call print,Generating mio0 asm:,$<,$@)
-	$(PRINT) ".section .data\n\n.balign 4\n\n.incbin \"$<\"\n" > $@
+	$(V)$(PRINT) ".section .data\n\n.balign 4\n\n.incbin \"$<\"\n" > $@
 
 $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
 	@$(PRINT) "$(GREEN)Compiling Crash Screen:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/crash_screen/crash_screen_font.ia1.inc.c -g textures/crash_screen/crash_screen_font.ia1.png -f ia1 -s u8
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
+	$(V)$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
 
 #==============================================================================#
 # Common Textures Segment Generation                                           #
@@ -502,10 +503,12 @@ TEXTURE_FILES_TLUT := $(foreach dir,$(TEXTURE_DIRS)/tlut,$(subst .png, , $(wildc
 
 
 $(TEXTURE_FILES):
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8
 
 # TLUT
 $(TEXTURE_FILES_TLUT):
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(TEXTURE_FILES_TLUT))), ,$(TEXTURE_FILES_TLUT)))) -p $(BUILD_DIR)/$@.tlut.inc.c
 
 # common textures
@@ -513,7 +516,7 @@ $(BUILD_DIR)/assets/code/common_data/common_data.o: assets/code/common_data/comm
 	@$(PRINT) "$(GREEN)Compiling Common Textures:  $(BLUE)$@ $(NO_COL)\n"
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
+	$(V)$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
 
 
 
@@ -565,7 +568,7 @@ COURSE_GEOGRAPHY_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/cou
 
 # Course vertices and displaylists are included together due to no alignment between the two files.
 %/course_geography.mio0.s: %/course_vertices.inc.mio0 %/course_displaylists_packed.inc.bin
-	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_vertex\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
+	$(V)$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_vertex\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
 
 
 
@@ -589,7 +592,7 @@ COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_d
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/course_data.mio0.s: %/course_data.mio0
-	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
+	$(V)$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
 
 
 #==============================================================================#
@@ -597,13 +600,13 @@ COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_d
 #==============================================================================#
 $(BUILD_DIR)/%.jp.c: %.c
 	$(call print,Encoding:,$<,$@)
-	iconv -t EUC-JP -f UTF-8 $< > $@
+	$(V)iconv -t EUC-JP -f UTF-8 $< > $@
 
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
+	$(V)$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
 
 $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 	$(call print,Compiling:,$<,$@)
@@ -611,7 +614,7 @@ $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.o: %.s $(MIO0_FILES) $(RAW_TEXTURE_FILES)
-	$(AS) $(ASFLAGS) -o $@ $<
+	$(V)$(AS) $(ASFLAGS) -o $@ $<
 
 $(EUC_JP_FILES:%.c=$(BUILD_DIR)/%.jp.o): CC := $(PYTHON) $(TOOLS_DIR)/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
@@ -667,7 +670,7 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/ceremony_data.mio0.s: %/ceremony_data.mio0
-	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel ceremonyData_end\n" > $@
+	$(V)$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel ceremonyData_end\n" > $@
 
 
 #==============================================================================#
@@ -687,7 +690,7 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/startup_logo/startup_logo.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/startup_logo.mio0.s: %/startup_logo.mio0
-	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel startupLogo_end\n" > $@
+	$(V)$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel startupLogo_end\n" > $@
 
 #==============================================================================#
 # Compile Common Textures                                                      #
@@ -706,7 +709,7 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/common_data/common_data.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/common_data.mio0.s: %/common_data.mio0
-	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
+	$(V)$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
 
 
 
@@ -729,13 +732,13 @@ $(ROM): $(ELF)
 	$(call print,Building ROM:,$<,$@)
 	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $(@:.z64=.bin) -O binary
 	$(V)$(N64CKSUM) $(@:.z64=.bin) $@
-	$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
+	$(V)$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
 
 $(BUILD_DIR)/$(TARGET).hex: $(TARGET).z64
-	xxd $< > $@
+	$(V)xxd $< > $@
 
 $(BUILD_DIR)/$(TARGET).objdump: $(ELF)
-	$(OBJDUMP) -D $< > $@
+	$(V)$(OBJDUMP) -D $< > $@
 
 
 .PHONY: all clean distclean distclean_assets default diff test load assets

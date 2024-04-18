@@ -24,16 +24,17 @@ YOSHI_SELECT_EXPORT_SENTINEL := $(YOSHI_SELECT_DIR)/.export
 $(BUILD_DIR)/data/course_player_selection.o: $(YOSHI_SELECT_PNG:%.png=%.mio0)
 
 $(YOSHI_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(YOSHI_SELECT_PNG:%.png=%.bin) : %.bin : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
+	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(YOSHI_SELECT_PNG): $(YOSHI_SELECT_EXPORT_SENTINEL) ;
 
 $(YOSHI_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/yoshi_select.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_yoshi_select
 distclean_yoshi_select:
