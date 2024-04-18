@@ -9,6 +9,18 @@ extern u32 _course_mario_raceway_dl_mio0SegmentRomStart[];
 
 /* File specific types */
 
+/*
+Known `types` for `struct_8018D9E0_entry`
+0x53: "Mushroom Cup" box on the cup selection screen
+0x54: "Flower Cup" box on the cup selection screen
+0x55: "Star Cup" box on the cup selection screen
+0x56: "Special Cup" box on the cup selection screen
+0x5E: A box of static over the course images as the cup selection screen loads in.
+      It is near unnoticeable though as in practice it doesn't last long enough to be seen.
+      Try locking the word at `8018DC80` to see something like 0x20 just before confirming character selection to make it last longer
+      See `func_80096CD8` for the actual drawing of the static
+*/
+
 typedef struct {
     /* 0x00 */ s32 type; // id maybe?
     /* 0x04 */ s32 cursor; // sound mode, maybe some other stuff
@@ -104,7 +116,7 @@ void func_8009265C(void);
 void func_80092688(void);
 void func_80092C80(void);
 s32  char_to_glyph_index(char*);
-s32  func_80092DF8(s8*);
+s32  func_80092DF8(char*);
 s32  func_80092E1C(char*);
 s32  func_80092EE4(char*);
 s32  get_string_width(char*);
@@ -145,14 +157,15 @@ Gfx *draw_flash_select_case_fast(Gfx*, s32, s32, s32, s32);
 Gfx *func_800959F8(Gfx*, Vtx*);
 void func_80095AE0(Mtx*, f32, f32, f32, f32);
 Gfx *func_80095BD0(Gfx*, u8*, f32, f32, u32, u32, f32, f32);
-Gfx *func_80095E10(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, s32, s32, u32, u32);
-Gfx *func_800963F0(Gfx*,  s8, s32, s32, f32, f32, s32, s32, s32, s32, s32, s32, s32, u32, u32);
+Gfx *func_80095E10(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, s32, u8 *, u32, u32);
+Gfx *func_800963F0(Gfx*,  s8, s32, s32, f32, f32, s32, s32, s32, s32, s32, s32, u8 *, u32, u32);
 Gfx *func_80096CD8(Gfx*, s32, s32, u32, u32);
-Gfx *func_80097274(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, s32, s32, u32, u32, u32);
-Gfx *func_80097A14(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, u32, u32);
+Gfx *func_80097274(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, s32, u8 *, u32, u32, u32);
+Gfx *func_80097A14(Gfx*,  s8, s32, s32, s32, s32, s32, s32, u8*, u32, u32);
 Gfx *func_80097AE4(Gfx*,  s8, s32, s32, u8*, s32);
-Gfx *func_80097E58(Gfx*,  s8, s32, u32, u32, s32, s32, s32, s32, s32, s32, u32);
-Gfx *func_800987D0(Gfx*, u32, u32, u32, u32, s32, s32, s32, s32, s32);
+Gfx *func_80097E58(Gfx*,  s8, s32, s32, s32, s32, s32, s32, u8*, u32, s32, u32);
+Gfx *func_80098558(Gfx*, u32, u32, u32, u32, u32, u32, s32, s32);
+Gfx *func_800987D0(Gfx*, u32, u32, u32, u32, s32, s32, u8*, u32, s32);
 Gfx *draw_box_fill(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *draw_box(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
 Gfx *func_80098FC8(Gfx*, s32, s32, s32, s32);
@@ -431,7 +444,7 @@ extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
 extern s32 gCycleFlashMenu;
 extern s8 D_8018E7AC[];
 extern s8 D_8018E7B0;
-extern s32 D_8018E7B8[];
+extern u32 D_8018E7B8[];
 extern u32 D_8018E7C8;
 extern u32 D_8018E7D0[];
 extern s32 D_8018E7E0;
@@ -479,9 +492,9 @@ extern RGBA16 D_800E74D0[];
 extern RGBA16 D_800E74E8[];
 extern const s16 gGlyphDisplayWidth[];
 extern char *gCupNames[];
-extern char *D_800E7524[];
-extern char *D_800E7574[];
-extern char *D_800E75C4[];
+extern char *gCourseNames[];
+extern char *gCourseNamesDup[];
+extern char *gCourseNamesDup2[];
 extern char *gDebugCourseNames[];
 // Maps course IDs (as defined in the COURSES enum) to an index in a given cup's track order
 extern const s8 gPerCupIndexByCourseId[]; // D_800EFD50
@@ -507,7 +520,7 @@ extern char *D_800E77A0[];
 extern char *D_800E77A8[];
 extern char D_800E77B4[];
 extern char D_800E77D8[];
-extern char *D_800E77E4[];
+extern char *sCourseLengths[];
 extern char *D_800E7834[];
 extern char *D_800E7840[];
 extern char *D_800E7848[];
@@ -570,7 +583,7 @@ extern MkTexture *D_800E8254[];
 extern MkTexture *D_800E8274[];
 extern MkTexture *D_800E8294[];
 extern MkTexture *D_800E82B4[];
-extern MkTexture *D_800E82C8[];
+extern MkTexture *D_800E82C4[];
 extern MkTexture *D_800E82F4[];
 extern MkAnimation *D_800E8320[];
 extern MkAnimation *D_800E8340[];

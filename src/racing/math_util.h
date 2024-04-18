@@ -16,11 +16,13 @@
 // Here to appease the pragma gods
 double fabs(double x);
 
+void func_802B5794(Mat4, Vec3f, Vec3f);
 s32 func_802B4F60(s32, Vec3f, s32, f32, f32);
 s32  render_set_position(Mat4, s32);
 f32  func_802B51E8(Vec3f, Vec3f);
 s32  get_angle_between_two_vectors(Vec3f, Vec3f);
 u32  func_802B5258(Vec3f, Vec3s);
+void func_802B5794(Mat4, Vec3f, Vec3f);
 void vec3f_set(Vec3f, f32, f32, f32);
 void vec3s_set(Vec3s, s16, s16, s16);
 void *vec3f_copy_return(Vec3f, Vec3f);
@@ -33,6 +35,7 @@ void add_translate_mat4_vec3f(Mat4, Mat4, Vec3f);
 void add_translate_mat4_vec3f_lite(Mat4, Mat4, Vec3f);
 void mtxf_translate(Mat4, Vec3f);
 void func_802B5564(Mat4, u16*, f32, f32, f32, f32, f32);
+void func_802B5794(Mat4, Vec3f, Vec3f);
 void mtxf_rotate_x(Mat4, s16);
 void mtxf_rotate_y(Mat4, s16);
 void mtxf_s16_rotate_z(Mat4, s16);
@@ -68,9 +71,5 @@ f32  is_within_render_distance(Vec3f, Vec3f, u16, f32, f32, f32);
 
 extern s32 D_802B91C0[];
 extern Vec3f D_802B91C8;
-
-// end of math_util.c variables
-
-extern u16 gRandomSeed16;
 
 #endif // MATH_UTIL_H

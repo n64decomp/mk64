@@ -7,7 +7,15 @@
 #include "courses/all_course_data.h"
 #include <PR/gbi.h>
 
-// This likely attaches the paddle wheel to the boat
+/**
+ * @brief Renders the paddle boat actor.
+ * Actor used in DK's Jungle Parkway.
+ * 
+ * @param arg0 
+ * @param boat 
+ * @param arg2 
+ * @param pathCounter 
+ */
 void render_actor_paddle_boat(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED Mat4 arg2, u16 pathCounter) {
     UNUSED s32 pad[3];
     Vec3f sp120;
@@ -28,6 +36,7 @@ void render_actor_paddle_boat(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED
         mtxf_pos_rotation_xyz(spE0, boat->pos, boat->boatRot);
         if (render_set_position(spE0, 1) != 0) {
 
+            // Render the boat
             gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_E730);
             gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_E058);
 
@@ -36,6 +45,7 @@ void render_actor_paddle_boat(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED
             mtxf_translate(spA0, sp120);
             mtxf_multiplication(sp60, spE0, spA0);
             if (render_set_position(sp60, 3) != 0) {
+                // Render the paddle wheel
                 gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
                 gSPDisplayList(gDisplayListHead++, &d_course_dks_jungle_parkway_dl_FC28);
                 gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);

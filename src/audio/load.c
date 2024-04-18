@@ -9,7 +9,7 @@
 #include "audio/synthesis.h"
 #include "audio/seqplayer.h"
 #include "audio/port_eu.h"
-#include "data/gfx_output_buffer.h"
+#include "buffers/gfx_output_buffer.h"
 
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 
@@ -109,7 +109,7 @@ char loadAudioString38[] = "---------------------------------------\n";
 void audio_dma_copy_immediate(u8 *devAddr, void *vAddr, size_t nbytes) {
     // eu_stubbed_printf_3("Romcopy %x -> %x ,size %x\n", devAddr, vAddr, nbytes);
     osInvalDCache(vAddr, nbytes);
-    osPiStartDma(&D_803B6740, OS_MESG_PRI_HIGH, OS_READ, devAddr, vAddr, nbytes, &D_803B6720);
+    osPiStartDma(&D_803B6740, OS_MESG_PRI_HIGH, OS_READ, (uintptr_t)devAddr, vAddr, nbytes, &D_803B6720);
     osRecvMesg(&D_803B6720, NULL, OS_MESG_BLOCK);
     // eu_stubbed_printf_0("Romcopyend\n");
 }
@@ -384,9 +384,9 @@ void patch_sound(struct AudioBankSound *sound, u8 *memBase, u8 *offsetBase) {
 #define PATCH(x, base) (patched = (void *)((uintptr_t) (x) + (uintptr_t) base))
 
     if (sound->sample != NULL) {
-        sample = sound->sample = (struct AdpcmLoop *) PATCH(sound->sample, memBase);
+        sample = sound->sample = (struct AudioBankSample *) PATCH(sound->sample, memBase);
         if (sample->loaded == 0) {
-            sample->sampleAddr = (struct u8 *) PATCH(sample->sampleAddr, offsetBase);
+            sample->sampleAddr = (u8 *) PATCH(sample->sampleAddr, offsetBase);
             sample->loop = (struct AdpcmLoop *) PATCH(sample->loop, memBase);
             sample->book = (struct AdpcmBook *) PATCH(sample->book, memBase);
             sample->loaded = 1;

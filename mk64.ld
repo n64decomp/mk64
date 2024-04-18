@@ -3,7 +3,14 @@
 
 OUTPUT_ARCH (mips)
 
-#include "include/linker_segments.h"
+#define LINKER_MAIN        0x80000400
+
+#define LINKER_ENDING      0x80280000
+
+#define LINKER_RACING      0x8028DF00
+
+// End of Jumper pak memory
+#define RDRAM_END         0x807FFFFF
 
 #define BEGIN_SEG(name, addr) \
     _##name##SegmentStart = ADDR(.name); \
@@ -39,262 +46,276 @@ SECTIONS
    {
       BUILD_DIR/asm/entry.o(.text);
       BUILD_DIR/src/main.o(.text*);
-      BUILD_DIR/src/code_800029B0.o(.text);
-      BUILD_DIR/src/profiler.o(.text);
-      BUILD_DIR/src/crash_screen.o(.text);
-      BUILD_DIR/src/code_80004740.o(.text);
-      BUILD_DIR/src/staff_ghosts.o(.text);
+      BUILD_DIR/src/code_800029B0.o(.text*);
+      BUILD_DIR/src/profiler.o(.text*);
+      BUILD_DIR/src/crash_screen.o(.text*);
+      BUILD_DIR/src/code_80004740.o(.text*);
+      BUILD_DIR/src/staff_ghosts.o(.text*);
       BUILD_DIR/asm/unused_overflow_check.o(.text);
-      BUILD_DIR/src/code_80005FD0.jp.o(.text);
-      BUILD_DIR/src/camera.o(.text);
-      BUILD_DIR/src/render_player.o(.text);
-      BUILD_DIR/src/kart_dma.o(.text);
-      BUILD_DIR/src/player_controller.o(.text);
-      BUILD_DIR/src/spawn_players.o(.text);
-      BUILD_DIR/src/code_8003DC40.o(.text);
+      BUILD_DIR/src/code_80005FD0.jp.o(.text*);
+      BUILD_DIR/src/camera.o(.text*);
+      BUILD_DIR/src/render_player.o(.text*);
+      BUILD_DIR/src/kart_dma.o(.text*);
+      BUILD_DIR/src/player_controller.o(.text*);
+      BUILD_DIR/src/spawn_players.o(.text*);
+      BUILD_DIR/src/code_8003DC40.o(.text*);
       BUILD_DIR/asm/unused_mio0_decode.o(.text);
       BUILD_DIR/asm/mio0_decode.o(.text);
       BUILD_DIR/asm/tkmk00_decode.o(.text);
-      BUILD_DIR/src/gbiMacro.o(.text);
-      BUILD_DIR/src/math_util_2.o(.text);
-      BUILD_DIR/src/render_objects.o(.text);
-      BUILD_DIR/src/code_80057C60.o(.text);
-      BUILD_DIR/src/code_8006E9C0.o(.text);
-      BUILD_DIR/src/update_objects.o(.text);
-      BUILD_DIR/src/code_80086E70.o(.text);
-      BUILD_DIR/src/effects.o(.text);
-      BUILD_DIR/src/code_80091440.o(.text);
-      BUILD_DIR/src/code_80091750.jp.o(.text);
-      BUILD_DIR/src/code_800AF9B0.o(.text);
-      BUILD_DIR/src/menus.o(.text);
-      BUILD_DIR/src/save.o(.text);
-      BUILD_DIR/src/audio/synthesis.o(.text);
-      BUILD_DIR/src/audio/heap.o(.text);
-      BUILD_DIR/src/audio/load.o(.text);
-      BUILD_DIR/src/audio/playback.o(.text);
-      BUILD_DIR/src/audio/effects.o(.text);
-      BUILD_DIR/src/audio/seqplayer.o(.text);
-      BUILD_DIR/src/audio/external.o(.text);
-      BUILD_DIR/src/audio/port_eu.o(.text);
+      BUILD_DIR/src/gbiMacro.o(.text*);
+      BUILD_DIR/src/math_util_2.o(.text*);
+      BUILD_DIR/src/render_objects.o(.text*);
+      BUILD_DIR/src/code_80057C60.o(.text*);
+      BUILD_DIR/src/code_8006E9C0.o(.text*);
+      BUILD_DIR/src/update_objects.o(.text*);
+      BUILD_DIR/src/code_80086E70.o(.text*);
+      BUILD_DIR/src/effects.o(.text*);
+      BUILD_DIR/src/code_80091440.o(.text*);
+      BUILD_DIR/src/code_80091750.jp.o(.text*);
+      BUILD_DIR/src/code_800AF9B0.o(.text*);
+      BUILD_DIR/src/menus.o(.text*);
+      BUILD_DIR/src/save.o(.text*);
+      BUILD_DIR/src/audio/synthesis.o(.text*);
+      BUILD_DIR/src/audio/heap.o(.text*);
+      BUILD_DIR/src/audio/load.o(.text*);
+      BUILD_DIR/src/audio/playback.o(.text*);
+      BUILD_DIR/src/audio/effects.o(.text*);
+      BUILD_DIR/src/audio/seqplayer.o(.text*);
+      BUILD_DIR/src/audio/external.o(.text*);
+      BUILD_DIR/src/audio/port_eu.o(.text*);
       #if DEBUG
-         BUILD_DIR/src/os/osCartRomInit.o(.text);
-         BUILD_DIR/src/debug/crash_screen_enhancement.o(.text);
-         BUILD_DIR/src/debug/debug.o(.text);
-         BUILD_DIR/src/os/sprintf.o(.text);
-      BUILD_DIR/src/os/is_debug.o(.text);
+         BUILD_DIR/src/os/osCartRomInit.o(.text*);
+         BUILD_DIR/src/debug/crash_screen_enhancement.o(.text*);
+         BUILD_DIR/src/debug/debug.o(.text*);
+         BUILD_DIR/src/os/sprintf.o(.text*);
+         BUILD_DIR/src/os/is_debug.o(.text*);
       #endif
       BUILD_DIR/src/os/osCreateThread.o(.text);
       #ifdef VERSION_EU
          . += 0x40;
       #endif
-      BUILD_DIR/src/os/osInitialize.o(.text);
-      BUILD_DIR/src/os/osStartThread.o(.text);
-      BUILD_DIR/src/os/osCreateViManager.o(.text);
+      BUILD_DIR/src/os/osInitialize.o(.text*);
+      BUILD_DIR/src/os/osStartThread.o(.text*);
+      BUILD_DIR/src/os/osCreateViManager.o(.text*);
       BUILD_DIR/asm/os/parameters.o(.text);
-      BUILD_DIR/src/os/osViSetMode.o(.text);
-      BUILD_DIR/src/os/osViBlack.o(.text);
-      BUILD_DIR/src/os/osViSetSpecialFeatures.o(.text);
-      BUILD_DIR/src/os/osCreatePiManager.o(.text);
-      BUILD_DIR/src/os/osSetThreadPri.o(.text);
-      BUILD_DIR/src/os/osCreateMesgQueue.o(.text);
-      BUILD_DIR/src/os/osViSetEvent.o(.text);
-      BUILD_DIR/src/os/osSetEventMesg.o(.text);
-      BUILD_DIR/src/os/osSpTaskLoadGo.o(.text);
-      BUILD_DIR/src/os/osContInit.o(.text);
-      BUILD_DIR/src/os/osContStartReadData.o(.text);
-      BUILD_DIR/src/os/osRecvMesg.o(.text);
+      BUILD_DIR/src/os/osViSetMode.o(.text*);
+      BUILD_DIR/src/os/osViBlack.o(.text*);
+      BUILD_DIR/src/os/osViSetSpecialFeatures.o(.text*);
+      BUILD_DIR/src/os/osCreatePiManager.o(.text*);
+      BUILD_DIR/src/os/osSetThreadPri.o(.text*);
+      BUILD_DIR/src/os/osCreateMesgQueue.o(.text*);
+      BUILD_DIR/src/os/osViSetEvent.o(.text*);
+      BUILD_DIR/src/os/osSetEventMesg.o(.text*);
+      BUILD_DIR/src/os/osSpTaskLoadGo.o(.text*);
+      BUILD_DIR/src/os/osContInit.o(.text*);
+      BUILD_DIR/src/os/osContStartReadData.o(.text*);
+      BUILD_DIR/src/os/osRecvMesg.o(.text*);
       BUILD_DIR/asm/os/osWritebackDCacheAll.o(.text);
-      BUILD_DIR/src/os/osSendMesg.o(.text);
-      BUILD_DIR/src/os/osViSwapBuffer.o(.text);
+      BUILD_DIR/src/os/osSendMesg.o(.text*);
+      BUILD_DIR/src/os/osViSwapBuffer.o(.text*);
       BUILD_DIR/asm/os/bzero.o(.text);
       BUILD_DIR/asm/os/osInvalICache.o(.text);
       BUILD_DIR/asm/os/osInvalDCache.o(.text);
-      BUILD_DIR/src/os/osPiStartDma.o(.text);
-      BUILD_DIR/src/os/osSpTaskYield.o(.text);
-      BUILD_DIR/src/os/osSpTaskYielded.o(.text);
-      BUILD_DIR/src/os/osGetTime.o(.text);
-      BUILD_DIR/src/os/math/llmuldiv.o(.text);
-      BUILD_DIR/src/os/__osGetCurrFaultedThread.o(.text);
+      BUILD_DIR/src/os/osPiStartDma.o(.text*);
+      BUILD_DIR/src/os/osSpTaskYield.o(.text*);
+      BUILD_DIR/src/os/osSpTaskYielded.o(.text*);
+      BUILD_DIR/src/os/osGetTime.o(.text*);
+      BUILD_DIR/src/os/math/llmuldiv.o(.text*);
+      #if GCC
+         BUILD_DIR/asm/os/llmuldiv_gcc.o(.text);
+      #endif
+      BUILD_DIR/src/os/__osGetCurrFaultedThread.o(.text*);
       BUILD_DIR/asm/os/sqrtf.o(.text);
-      BUILD_DIR/src/os/guOrthoF.o(.text);
-      BUILD_DIR/src/os/osSetTime.o(.text);
-      BUILD_DIR/src/os/osEepromProbe.o(.text);
-      BUILD_DIR/src/os/osPfsIsPlug.o(.text);
-      BUILD_DIR/src/os/osPfsInit.o(.text);
-      BUILD_DIR/src/os/osPfsNumFiles.o(.text);
-      BUILD_DIR/src/os/osPfsFileState.o(.text);
-      BUILD_DIR/src/os/osPfsFreeBlocks.o(.text);
-      BUILD_DIR/src/os/guRotateF.o(.text);
-      BUILD_DIR/src/os/guScaleF.o(.text);
-      BUILD_DIR/src/os/guPerspectiveF.o(.text);
-      BUILD_DIR/src/os/guLookAtF.o(.text);
-      BUILD_DIR/src/os/guTranslateF.o(.text);
-      BUILD_DIR/src/os/osSyncPrintf.o(.text);
-      BUILD_DIR/src/os/guMtxCatL.o(.text);
-      BUILD_DIR/src/os/osPfsSearchFile.o(.text);
-      BUILD_DIR/src/os/osPfsDeleteFile.o(.text);
-      BUILD_DIR/src/os/osEepromLongWrite.o(.text);
-      BUILD_DIR/src/os/osEepromLongRead.o(.text);
-      BUILD_DIR/src/os/osPfsReadWriteFile.o(.text);
-      BUILD_DIR/src/os/osPfsAllocateFile.o(.text);
-      BUILD_DIR/src/os/osAiSetFrequency.o(.text);
-      BUILD_DIR/src/os/osAiGetLength.o(.text);
-      BUILD_DIR/src/os/osAiSetNextBuffer.o(.text);
+      BUILD_DIR/src/os/guOrthoF.o(.text*);
+      BUILD_DIR/src/os/osSetTime.o(.text*);
+      BUILD_DIR/src/os/osEepromProbe.o(.text*);
+      BUILD_DIR/src/os/osPfsIsPlug.o(.text*);
+      BUILD_DIR/src/os/osPfsInit.o(.text*);
+      BUILD_DIR/src/os/osPfsNumFiles.o(.text*);
+      BUILD_DIR/src/os/osPfsFileState.o(.text*);
+      BUILD_DIR/src/os/osPfsFreeBlocks.o(.text*);
+      BUILD_DIR/src/os/guRotateF.o(.text*);
+      BUILD_DIR/src/os/guScaleF.o(.text*);
+      BUILD_DIR/src/os/guPerspectiveF.o(.text*);
+      BUILD_DIR/src/os/guLookAtF.o(.text*);
+      BUILD_DIR/src/os/guTranslateF.o(.text*);
+      BUILD_DIR/src/os/osSyncPrintf.o(.text*);
+      BUILD_DIR/src/os/guMtxCatL.o(.text*);
+      BUILD_DIR/src/os/osPfsSearchFile.o(.text*);
+      BUILD_DIR/src/os/osPfsDeleteFile.o(.text*);
+      BUILD_DIR/src/os/osEepromLongWrite.o(.text*);
+      BUILD_DIR/src/os/osEepromLongRead.o(.text*);
+      BUILD_DIR/src/os/osPfsReadWriteFile.o(.text*);
+      BUILD_DIR/src/os/osPfsAllocateFile.o(.text*);
+      BUILD_DIR/src/os/osAiSetFrequency.o(.text*);
+      BUILD_DIR/src/os/osAiGetLength.o(.text*);
+      BUILD_DIR/src/os/osAiSetNextBuffer.o(.text*);
       BUILD_DIR/asm/os/osGetCount.o(.text);
       BUILD_DIR/asm/os/__osException.o(.text);
       BUILD_DIR/asm/os/__osDisableInt.o(.text);
       BUILD_DIR/asm/os/__osRestoreInt.o(.text);
-      BUILD_DIR/src/os/__osDequeueThread.o(.text);
+      BUILD_DIR/src/os/__osDequeueThread.o(.text*);
       BUILD_DIR/asm/os/__osSetSR.o(.text);
       BUILD_DIR/asm/os/__osGetSR.o(.text);
       BUILD_DIR/asm/os/__osSetFpcCsr.o(.text);
-      BUILD_DIR/src/os/__osSiRawReadIo.o(.text);
-      BUILD_DIR/src/os/__osSiRawWriteIo.o(.text);
+      BUILD_DIR/src/os/__osSiRawReadIo.o(.text*);
+      BUILD_DIR/src/os/__osSiRawWriteIo.o(.text*);
       BUILD_DIR/asm/os/osWritebackDCache.o(.text);
       BUILD_DIR/asm/os/osMapTLBRdb.o(.text);
-      BUILD_DIR/src/os/osPiRawReadIo.o(.text);
-      BUILD_DIR/src/os/__osSetHWIntrRoutine.o(.text);
-      BUILD_DIR/src/os/__osLeoInterrupt.o(.text);
-      BUILD_DIR/src/os/osTimer.o(.text);
-      BUILD_DIR/src/os/osGetThreadPri.o(.text);
-      BUILD_DIR/src/os/__osViInit.o(.text);
-      BUILD_DIR/src/os/__osViGetCurrentContext.o(.text);
-      BUILD_DIR/src/os/__osViSwapContext.o(.text);
-      BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.text);
-      BUILD_DIR/src/os/osPiRawStartDma.o(.text);
-      BUILD_DIR/src/os/osEPiRawStartDma.o(.text);
-      BUILD_DIR/src/os/__osDevMgrMain.o(.text);
+      BUILD_DIR/src/os/osPiRawReadIo.o(.text*);
+      BUILD_DIR/src/os/__osSetHWIntrRoutine.o(.text*);
+      BUILD_DIR/src/os/__osLeoInterrupt.o(.text*);
+      BUILD_DIR/src/os/osTimer.o(.text*);
+      BUILD_DIR/src/os/osGetThreadPri.o(.text*);
+      BUILD_DIR/src/os/__osViInit.o(.text*);
+      BUILD_DIR/src/os/__osViGetCurrentContext.o(.text*);
+      BUILD_DIR/src/os/__osViSwapContext.o(.text*);
+      BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.text*);
+      BUILD_DIR/src/os/osPiRawStartDma.o(.text*);
+      BUILD_DIR/src/os/osEPiRawStartDma.o(.text*);
+      BUILD_DIR/src/os/__osDevMgrMain.o(.text*);
       BUILD_DIR/asm/os/bcopy.o(.text);
-      BUILD_DIR/src/os/osVirtualToPhysical.o(.text);
-      BUILD_DIR/src/os/__osSpSetStatus.o(.text);
-      BUILD_DIR/src/os/__osSpSetPc.o(.text);
-      BUILD_DIR/src/os/__osSpRawStartDma.o(.text);
-      BUILD_DIR/src/os/__osSpDeviceBusy.o(.text);
-      BUILD_DIR/src/os/osSetTimer.o(.text);
-      BUILD_DIR/src/os/__osSiRawStartDma.o(.text);
-      BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.text);
-      BUILD_DIR/src/os/osJamMesg.o(.text);
-      BUILD_DIR/src/os/osPiGetCmdQueue.o(.text);
-      BUILD_DIR/src/os/__osSpGetStatus.o(.text);
-      BUILD_DIR/src/os/guMtxF2L.o(.text);
-      BUILD_DIR/src/os/osEepromWrite.o(.text);
-      BUILD_DIR/src/os/contpfs.o(.text);
-      BUILD_DIR/src/os/osPfsChecker.o(.text);
-      BUILD_DIR/src/os/contramread.o(.text);
-      BUILD_DIR/src/os/guNormalize.o(.text);
-      BUILD_DIR/src/os/math/sinf.o(.text);
-      BUILD_DIR/src/os/math/cosf.o(.text);
-      BUILD_DIR/src/os/_Printf.o(.text);
-      BUILD_DIR/src/os/guMtxCatF.o(.text);
-      BUILD_DIR/src/os/contramwrite.o(.text);
-      BUILD_DIR/src/os/osEepromRead.o(.text);
-      BUILD_DIR/src/os/__osAiDeviceBusy.o(.text);
+      BUILD_DIR/src/os/osVirtualToPhysical.o(.text*);
+      BUILD_DIR/src/os/__osSpSetStatus.o(.text*);
+      BUILD_DIR/src/os/__osSpSetPc.o(.text*);
+      BUILD_DIR/src/os/__osSpRawStartDma.o(.text*);
+      BUILD_DIR/src/os/__osSpDeviceBusy.o(.text*);
+      BUILD_DIR/src/os/osSetTimer.o(.text*);
+      BUILD_DIR/src/os/__osSiRawStartDma.o(.text*);
+      BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.text*);
+      BUILD_DIR/src/os/osJamMesg.o(.text*);
+      BUILD_DIR/src/os/osPiGetCmdQueue.o(.text*);
+      BUILD_DIR/src/os/__osSpGetStatus.o(.text*);
+      BUILD_DIR/src/os/guMtxF2L.o(.text*);
+      BUILD_DIR/src/os/osEepromWrite.o(.text*);
+      BUILD_DIR/src/os/contpfs.o(.text*);
+      BUILD_DIR/src/os/osPfsChecker.o(.text*);
+      BUILD_DIR/src/os/contramread.o(.text*);
+      BUILD_DIR/src/os/guNormalize.o(.text*);
+      BUILD_DIR/src/os/math/sinf.o(.text*);
+      BUILD_DIR/src/os/math/cosf.o(.text*);
+      BUILD_DIR/src/os/_Printf.o(.text*);
+      BUILD_DIR/src/os/guMtxCatF.o(.text*);
+      BUILD_DIR/src/os/contramwrite.o(.text*);
+      BUILD_DIR/src/os/osEepromRead.o(.text*);
+      BUILD_DIR/src/os/__osAiDeviceBusy.o(.text*);
       BUILD_DIR/asm/os/osSetIntMask.o(.text);
-      BUILD_DIR/src/os/osDestroyThread.o(.text);
-      BUILD_DIR/src/os/__osSiDeviceBusy.o(.text);
-      BUILD_DIR/src/os/osLeoDiskInit.o(.text);
+      BUILD_DIR/src/os/osDestroyThread.o(.text*);
+      BUILD_DIR/src/os/__osSiDeviceBusy.o(.text*);
+      BUILD_DIR/src/os/osLeoDiskInit.o(.text*);
       BUILD_DIR/asm/os/__osSetCompare.o(.text);
-      BUILD_DIR/src/os/__osResetGlobalIntMask.o(.text);
-      BUILD_DIR/src/os/__osEPiRawWriteIo.o(.text);
-      BUILD_DIR/src/os/osYieldThread.o(.text);
+      BUILD_DIR/src/os/__osResetGlobalIntMask.o(.text*);
+      BUILD_DIR/src/os/__osEPiRawWriteIo.o(.text*);
+      BUILD_DIR/src/os/osYieldThread.o(.text*);
       BUILD_DIR/asm/os/__osProbeTLB.o(.text);
-      BUILD_DIR/src/os/crc.o(.text);
-      BUILD_DIR/src/os/string.o(.text);
-      BUILD_DIR/src/os/_Litob.o(.text);
-      BUILD_DIR/src/os/_Ldtob.o(.text);
-      BUILD_DIR/src/os/ldiv.o(.text);
+      BUILD_DIR/src/os/crc.o(.text*);
+      BUILD_DIR/src/os/string.o(.text*);
+      BUILD_DIR/src/os/_Litob.o(.text*);
+      BUILD_DIR/src/os/_Ldtob.o(.text*);
+      BUILD_DIR/src/os/ldiv.o(.text*);
       BUILD_DIR/data/rsp.o(.text);
       BUILD_DIR/src/main.o(.data*);
-      BUILD_DIR/src/code_800029B0.o(.data);
-      BUILD_DIR/src/profiler.o(.data);
-      BUILD_DIR/src/crash_screen.o(.data);
-      BUILD_DIR/src/staff_ghosts.o(.data);
-      BUILD_DIR/src/data/path_spawn_data.o(.data);
-      BUILD_DIR/src/camera.o(.data);
-      BUILD_DIR/src/render_player.o(.data);
-      BUILD_DIR/src/kart_dma.o(.data);
-      BUILD_DIR/src/data/kart_attributes.inc.o(.data);
-      BUILD_DIR/src/player_controller.o(.data);
-      BUILD_DIR/src/spawn_players.o(.data);
-      BUILD_DIR/src/update_objects.o(.data);
-      BUILD_DIR/src/data/data_800E45C0.o(.data);
-      BUILD_DIR/src/code_80057C60.o(.data);
-      BUILD_DIR/src/data/some_data.o(.data);
-      BUILD_DIR/src/effects.o(.data);
-      BUILD_DIR/src/code_80091440.o(.data);
-      BUILD_DIR/src/code_80091750.jp.o(.data);
-      BUILD_DIR/src/code_800AF9B0.o(.data);
-      BUILD_DIR/src/menus.o(.data);
-      BUILD_DIR/src/save.o(.data);
-      BUILD_DIR/src/data/data_800E8700.o(.data);
-      BUILD_DIR/src/audio/synthesis.o(.data);
-      BUILD_DIR/src/audio/heap.o(.data);
-      BUILD_DIR/src/audio/load.o(.data);
-      BUILD_DIR/src/audio/playback.o(.data);
-      BUILD_DIR/src/audio/effects.o(.data);
+      BUILD_DIR/src/code_800029B0.o(.data*);
+      BUILD_DIR/src/profiler.o(.data*);
+      BUILD_DIR/src/crash_screen.o(.data*);
+      BUILD_DIR/src/staff_ghosts.o(.data*);
+      BUILD_DIR/src/data/path_spawn_metadata.o(.data*);
+      BUILD_DIR/src/camera.o(.data*);
+      BUILD_DIR/src/render_player.o(.data*);
+      BUILD_DIR/src/kart_dma.o(.data*);
+      BUILD_DIR/src/data/kart_attributes.o(.data*);
+      BUILD_DIR/src/player_controller.o(.data*);
+      BUILD_DIR/src/spawn_players.o(.data*);
+      BUILD_DIR/src/update_objects.o(.data*);
+      BUILD_DIR/assets/code/data_800E45C0/data_800E45C0.o(.data*);
+      BUILD_DIR/src/code_80057C60.o(.data*);
+      BUILD_DIR/src/data/some_data.o(.data*);
+      BUILD_DIR/src/effects.o(.data*);
+      BUILD_DIR/src/code_80091440.o(.data*);
+      BUILD_DIR/src/code_80091750.jp.o(.data*);
+      BUILD_DIR/src/code_800AF9B0.o(.data*);
+      BUILD_DIR/src/menus.o(.data*);
+      BUILD_DIR/src/save.o(.data*);
+      BUILD_DIR/assets/code/data_800E8700/data_800E8700.o(.data*);
+      BUILD_DIR/src/audio/synthesis.o(.data*);
+      BUILD_DIR/src/audio/heap.o(.data*);
+      BUILD_DIR/src/audio/load.o(.data*);
+      BUILD_DIR/src/audio/playback.o(.data*);
+      BUILD_DIR/src/audio/effects.o(.data*);
       #if DEBUG
-         BUILD_DIR/src/debug/crash_screen_enhancement.o(.data);
-         BUILD_DIR/src/debug/debug.o(.data);
-         BUILD_DIR/src/os/sprintf.o(.data);
+         BUILD_DIR/src/debug/crash_screen_enhancement.o(.data*);
+         BUILD_DIR/src/debug/debug.o(.data*);
+         BUILD_DIR/src/os/sprintf.o(.data*);
       #endif
-      BUILD_DIR/src/audio/seqplayer.o(.data);
-      BUILD_DIR/src/audio/external.o(.data);
-      BUILD_DIR/src/audio/port_eu.o(.data);
-      BUILD_DIR/src/audio/audio_session_presets.o(.data);
+      BUILD_DIR/src/audio/seqplayer.o(.data*);
+      BUILD_DIR/src/audio/external.o(.data*);
+      BUILD_DIR/src/audio/port_eu.o(.data*);
+      BUILD_DIR/src/audio/audio_session_presets.o(.data*);
       BUILD_DIR/src/os/osInitialize.o(.data*);
-      BUILD_DIR/src/os/osCreateViManager.o(.data);
-      BUILD_DIR/src/os/osViTable.o(.data);
-      BUILD_DIR/src/os/osCreatePiManager.o(.data);
-      BUILD_DIR/src/os/osContInit.o(.data);
-      BUILD_DIR/src/os/osAiSetNextBuffer.o(.data);
-      BUILD_DIR/src/os/__osSetHWIntrRoutine.o(.data);
-      BUILD_DIR/src/os/__osDequeueThread.o(.data);
-      BUILD_DIR/src/os/osTimer.o(.data);
-      BUILD_DIR/src/os/__osViInit.o(.data);
-      BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.data);
-      BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.data);
-      BUILD_DIR/src/os/_Printf.o(.data);
-      BUILD_DIR/src/os/osViData.o(.data);
-      BUILD_DIR/src/os/_Litob.o(.data);
+      BUILD_DIR/src/os/osCreateViManager.o(.data*);
+      BUILD_DIR/src/os/osViTable.o(.data*);
+      BUILD_DIR/src/os/osCreatePiManager.o(.data*);
+      BUILD_DIR/src/os/osContInit.o(.data*);
+      BUILD_DIR/src/os/osAiSetNextBuffer.o(.data*);
+      BUILD_DIR/src/os/__osSetHWIntrRoutine.o(.data*);
+      BUILD_DIR/src/os/__osDequeueThread.o(.data*);
+      BUILD_DIR/src/os/osTimer.o(.data*);
+      BUILD_DIR/src/os/__osViInit.o(.data*);
+      BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.data*);
+      BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.data*);
+      BUILD_DIR/src/os/_Printf.o(.data*);
+      BUILD_DIR/src/os/osViData.o(.data*);
+      BUILD_DIR/src/os/_Litob.o(.data*);
       BUILD_DIR/src/main.o(.rodata*);
-      BUILD_DIR/src/code_800029B0.o(.rodata);
-      BUILD_DIR/src/code_80005FD0.jp.o(.rodata);
-      BUILD_DIR/src/camera.o(.rodata);
-      BUILD_DIR/src/render_player.o(.rodata);
-      BUILD_DIR/src/player_controller.o(.rodata);
-      BUILD_DIR/src/spawn_players.o(.rodata);
-      BUILD_DIR/src/code_8003DC40.o(.rodata);
-      BUILD_DIR/src/render_objects.o(.rodata);
-      BUILD_DIR/src/code_80057C60.o(.rodata);
-      BUILD_DIR/src/code_8006E9C0.o(.rodata);
-      BUILD_DIR/src/update_objects.o(.rodata);
-      BUILD_DIR/src/code_80086E70.o(.rodata);
-      BUILD_DIR/src/effects.o(.rodata);
-      BUILD_DIR/src/code_80091750.jp.o(.rodata);
-      BUILD_DIR/src/code_800AF9B0.o(.rodata);
-      BUILD_DIR/src/menus.o(.rodata);
-      BUILD_DIR/src/save.o(.rodata);
-      BUILD_DIR/src/audio/heap.o(.rodata);
-      BUILD_DIR/src/audio/load.o(.rodata);
-      BUILD_DIR/src/audio/playback.o(.rodata);
-      BUILD_DIR/src/audio/effects.o(.rodata);
-      BUILD_DIR/src/audio/seqplayer.o(.rodata);
-      BUILD_DIR/src/audio/external.o(.rodata);
-      BUILD_DIR/src/audio/port_eu.o(.rodata);
+      BUILD_DIR/src/code_80004740.o(.rodata*);
+      BUILD_DIR/src/code_800029B0.o(.rodata*);
+      BUILD_DIR/src/code_80005FD0.jp.o(.rodata*);
+      BUILD_DIR/src/camera.o(.rodata*);
+      BUILD_DIR/src/render_player.o(.rodata*);
+      BUILD_DIR/src/player_controller.o(.rodata*);
+      BUILD_DIR/src/spawn_players.o(.rodata*);
+      BUILD_DIR/src/code_8003DC40.o(.rodata*);
+      BUILD_DIR/src/gbiMacro.o(.rodata*);
+      BUILD_DIR/src/math_util_2.o(.rodata*);
+      BUILD_DIR/src/render_objects.o(.rodata*);
+      BUILD_DIR/src/code_80057C60.o(.rodata*);
+      BUILD_DIR/src/code_8006E9C0.o(.rodata*);
+      BUILD_DIR/src/update_objects.o(.rodata*);
+      BUILD_DIR/src/code_80086E70.o(.rodata*);
+      BUILD_DIR/src/effects.o(.rodata*);
+      BUILD_DIR/src/code_80091440.o(.rodata*);
+      BUILD_DIR/src/code_80091750.jp.o(.rodata*);
+      BUILD_DIR/src/code_800AF9B0.o(.rodata*);
+      BUILD_DIR/src/menus.o(.rodata*);
+      BUILD_DIR/src/save.o(.rodata*);
+      BUILD_DIR/src/audio/heap.o(.rodata*);
+      BUILD_DIR/src/audio/load.o(.rodata*);
+      BUILD_DIR/src/audio/playback.o(.rodata*);
+      BUILD_DIR/src/audio/effects.o(.rodata*);
+      BUILD_DIR/src/audio/seqplayer.o(.rodata*);
+      BUILD_DIR/src/audio/external.o(.rodata*);
+      BUILD_DIR/src/audio/port_eu.o(.rodata*);
       #if DEBUG
-         BUILD_DIR/src/debug/crash_screen_enhancement.o(.rodata);
-         BUILD_DIR/src/debug/debug.o(.rodata);
-         BUILD_DIR/src/os/sprintf.o(.rodata);
+         BUILD_DIR/src/debug/crash_screen_enhancement.o(.rodata*);
+         BUILD_DIR/src/debug/debug.o(.rodata*);
+         BUILD_DIR/src/os/sprintf.o(.rodata*);
       #endif
-      BUILD_DIR/src/os/guRotateF.o(.rodata);
-      BUILD_DIR/src/os/guPerspectiveF.o(.rodata);
-      BUILD_DIR/asm/os/__osException.o(.rodata);
-      BUILD_DIR/src/os/__osDevMgrMain.o(.rodata);
-      BUILD_DIR/src/os/math/sinf.o(.rodata);
-      BUILD_DIR/src/os/math/cosf.o(.rodata);
-      BUILD_DIR/src/os/_Printf.o(.rodata);
+      BUILD_DIR/src/os/guOrthoF.o(.rodata*);
+      BUILD_DIR/src/os/guRotateF.o(.rodata*);
+      BUILD_DIR/src/os/guScaleF.o(.rodata*);
+      BUILD_DIR/src/os/guPerspectiveF.o(.rodata*);
+      BUILD_DIR/src/os/guLookAtF.o(.rodata*);
+      BUILD_DIR/src/os/osAiSetFrequency.o(.rodata*);
+      BUILD_DIR/asm/os/__osException.o(.rodata*);
+      BUILD_DIR/src/os/__osViSwapContext.o(.rodata*);
+      BUILD_DIR/src/os/__osDevMgrMain.o(.rodata*);
+      BUILD_DIR/src/os/guMtxF2L.o(.rodata*);
+      BUILD_DIR/src/os/guNormalize.o(.rodata*);
+      BUILD_DIR/src/os/math/sinf.o(.rodata*);
+      BUILD_DIR/src/os/math/cosf.o(.rodata*);
+      BUILD_DIR/src/os/_Printf.o(.rodata*);
       BUILD_DIR/asm/os/osSetIntMask.o(.rodata);
-      BUILD_DIR/src/os/_Ldtob.o(.rodata);
+      BUILD_DIR/src/os/_Ldtob.o(.rodata*);
       BUILD_DIR/data/rsp.o(.data);
       BUILD_DIR/src/audio/data.o(.data);
    }
@@ -302,53 +323,55 @@ SECTIONS
 
    BEGIN_NOLOAD(main) {
       BUILD_DIR/src/main.o(.bss*);
-      BUILD_DIR/src/code_800029B0.o(.bss);
-      BUILD_DIR/src/profiler.o(.bss);
-      BUILD_DIR/src/crash_screen.o(.bss);
-      BUILD_DIR/src/code_80004740.o(.bss);
-      BUILD_DIR/src/staff_ghosts.o(.bss);
-      BUILD_DIR/src/code_80005FD0.jp.o(.bss);
-      BUILD_DIR/src/camera.o(.bss);
-      BUILD_DIR/src/render_player.o(.bss);
-      BUILD_DIR/src/spawn_players.o(.bss);
-      BUILD_DIR/src/code_80057C60.o(.bss);
-      BUILD_DIR/src/code_80057C60_var.o(.bss);
-      BUILD_DIR/src/effects.o(.bss);
-      BUILD_DIR/src/code_80091750.jp.o(.bss);
-      BUILD_DIR/src/code_800AF9B0.o(.bss);
-      BUILD_DIR/src/menus.o(.bss);
+      BUILD_DIR/src/code_800029B0.o(.bss*);
+      BUILD_DIR/src/profiler.o(.bss*);
+      BUILD_DIR/src/crash_screen.o(.bss*);
+      BUILD_DIR/src/code_80004740.o(.bss*);
+      BUILD_DIR/src/staff_ghosts.o(.bss*);
+      BUILD_DIR/src/code_80005FD0.jp.o(.bss*);
+      BUILD_DIR/src/camera.o(.bss*);
+      BUILD_DIR/src/render_player.o(.bss*);
+      BUILD_DIR/src/spawn_players.o(.bss*);
+      BUILD_DIR/src/code_80057C60.o(.bss*);
+      BUILD_DIR/src/code_80057C60_var.o(.bss*);
+      BUILD_DIR/src/effects.o(.bss*);
+      BUILD_DIR/src/code_80091750.jp.o(.bss*);
+      BUILD_DIR/src/code_800AF9B0.o(.bss*);
+      BUILD_DIR/src/menus.o(.bss*);
       #if DEBUG
-         BUILD_DIR/src/os/osCartRomInit.o(.bss);
-         BUILD_DIR/src/debug/crash_screen_enhancement.o(.bss);
-         BUILD_DIR/src/debug/debug.o(.bss);
-         BUILD_DIR/src/os/is_debug.o(.bss);
-         BUILD_DIR/src/os/sprintf.o(.bss);
+         BUILD_DIR/src/os/osCartRomInit.o(.bss*);
+         BUILD_DIR/src/debug/crash_screen_enhancement.o(.bss*);
+         BUILD_DIR/src/debug/debug.o(.bss*);
+         BUILD_DIR/src/os/is_debug.o(.bss*);
+         BUILD_DIR/src/os/sprintf.o(.bss*);
       #endif
-      BUILD_DIR/src/audio/external.o(.bss);
-      BUILD_DIR/src/audio/port_eu.o(.bss);
-      BUILD_DIR/src/os/osInitialize.o(.bss);
-      BUILD_DIR/src/os/osCreateViManager.o(.bss);
-      BUILD_DIR/src/os/osCreatePiManager.o(.bss);
-      BUILD_DIR/src/os/osSetEventMesg.o(.bss);
-      BUILD_DIR/src/os/osSpTaskLoadGo.o(.bss);
-      BUILD_DIR/src/os/osContStartReadData.o(.bss);
-      BUILD_DIR/src/os/osContInit.o(.bss);
-      BUILD_DIR/src/os/osPfsIsPlug.o(.bss);
-      BUILD_DIR/src/os/guRotateF.o(.bss);
-      BUILD_DIR/src/os/leointerrupt.o(.bss);
-      BUILD_DIR/src/os/osTimer.o(.bss);
-      BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.bss);
-      BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.bss);
-      BUILD_DIR/src/os/osEepromWrite.o(.bss);
+      BUILD_DIR/src/audio/external.o(.bss*);
+      BUILD_DIR/src/audio/port_eu.o(.bss*);
+      BUILD_DIR/src/os/osInitialize.o(.bss*);
+      BUILD_DIR/src/os/osCreateViManager.o(.bss*);
+      BUILD_DIR/src/os/osCreatePiManager.o(.bss*);
+      BUILD_DIR/src/os/osSetEventMesg.o(.bss*);
+      BUILD_DIR/src/os/osSpTaskLoadGo.o(.bss*);
+      BUILD_DIR/src/os/osContStartReadData.o(.bss*);
+      BUILD_DIR/src/os/osContInit.o(.bss*);
+      BUILD_DIR/src/os/osPfsIsPlug.o(.bss*);
+      BUILD_DIR/src/os/guRotateF.o(.bss*);
+      BUILD_DIR/src/os/leointerrupt.o(.bss*);
+      BUILD_DIR/src/os/osTimer.o(.bss*);
+      BUILD_DIR/src/os/__osPiCreateAccessQueue.o(.bss*);
+      BUILD_DIR/src/os/__osSiCreateAccessQueue.o(.bss*);
+      BUILD_DIR/src/os/osEepromWrite.o(.bss*);
       BUILD_DIR/asm/os/__osException.o(.bss);
-      BUILD_DIR/src/os/osLeoDiskInit.o(.bss);
+      BUILD_DIR/src/os/osLeoDiskInit.o(.bss*);
+      . = ALIGN(0x10);
    }
    END_NOLOAD(main)
 
    /* Checks that segments are not overlapping into the memory pool but is not strictly necessary */
    BEGIN_NOLOAD(memoryPool)
    {
-      BUILD_DIR/src/data/memory_pool.o(.bss);
+      BUILD_DIR/src/buffers/memory_pool.o(.bss*);
+      . = ALIGN(0x10);
    }
    END_NOLOAD(memoryPool)
    
@@ -358,26 +381,26 @@ SECTIONS
       BUILD_DIR/src/racing/race_logic.o(.text*);
       BUILD_DIR/src/racing/render_courses.o(.text*);
       BUILD_DIR/src/racing/actors.o(.text*);
-      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.text);
+      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.text*);
       BUILD_DIR/src/racing/memory.o(.text*);
       BUILD_DIR/src/racing/collision.o(.text*);
-      BUILD_DIR/src/racing/actors_extended.o(.text);
+      BUILD_DIR/src/racing/actors_extended.o(.text*);
       BUILD_DIR/src/racing/math_util.o(.text*);
       BUILD_DIR/src/racing/race_logic.o(.data*);
       BUILD_DIR/src/racing/render_courses.o(.data*);
       BUILD_DIR/src/racing/actors.o(.data*);
-      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.data);
+      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.data*);
       BUILD_DIR/src/racing/memory.o(.data*);
-      BUILD_DIR/courses/courseTable.inc.o(.data);
-      BUILD_DIR/src/racing/actors_extended.o(.data);
+      BUILD_DIR/courses/courseTable.o(.data*);
+      BUILD_DIR/src/racing/actors_extended.o(.data*);
       BUILD_DIR/src/racing/math_util.o(.data*);
       BUILD_DIR/src/racing/race_logic.o(.rodata*);
       BUILD_DIR/src/racing/render_courses.o(.rodata*);
       BUILD_DIR/src/racing/actors.o(.rodata*);
-      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.rodata);
+      BUILD_DIR/src/racing/skybox_and_splitscreen.o(.rodata*);
       BUILD_DIR/src/racing/memory.o(.rodata*);
       BUILD_DIR/src/racing/collision.o(.rodata*);
-      BUILD_DIR/src/racing/actors_extended.o(.rodata);
+      BUILD_DIR/src/racing/actors_extended.o(.rodata*);
       BUILD_DIR/src/racing/math_util.o(.rodata*);
    }
    END_SEG(racing)
@@ -387,49 +410,54 @@ SECTIONS
       BUILD_DIR/src/racing/race_logic.o(.bss*);
       BUILD_DIR/src/racing/actors.o(.bss*);
       BUILD_DIR/src/racing/memory.o(.bss*);
+      BUILD_DIR/src/buffers/random.o(.bss*);
       . = ALIGN(0x10);
    }
    END_NOLOAD(racing)
 
    BEGIN_NOLOAD(buffers)
    {
-      BUILD_DIR/src/data/buffers.o(.bss*);
-      BUILD_DIR/src/data/gfx_output_buffer.o(.bss*);
+      BUILD_DIR/src/buffers/trig_tables_bss.o(.bss*);
+      BUILD_DIR/src/buffers/buffers.o(.bss*);
+      BUILD_DIR/src/buffers/gfx_output_buffer.o(.bss*);
       BUILD_DIR/src/audio/synthesis.o(.bss*);
       BUILD_DIR/src/audio/heap.o(.bss*);
-      BUILD_DIR/src/audio/load.o(.bss);
-      BUILD_DIR/src/audio/data.o(.bss);
-      . = ALIGN(0x8);
+      BUILD_DIR/src/audio/load.o(.bss*);
+      BUILD_DIR/src/audio/data.o(.bss*);
+      . = ALIGN(0x10);
    }
    END_NOLOAD(buffers)
-
 
    /* 0x80280000 123640-12AAE0 [74A0] */
    BEGIN_SEG(ending, LINKER_ENDING)
    {
-      BUILD_DIR/src/ending/code_80280000.o(.text);
-      BUILD_DIR/src/ending/podium_ceremony_actors.o(.text);
-      BUILD_DIR/src/ending/camera_junk.o(.text);
-      BUILD_DIR/src/ending/code_80281780.o(.text);
-      BUILD_DIR/src/ending/code_80281C40.o(.text);
-      BUILD_DIR/src/ending/ceremony_and_credits.o(.text);
-      BUILD_DIR/src/ending/podium_ceremony_actors.o(.data);
-      BUILD_DIR/src/ending/code_80281780.o(.data);
-      BUILD_DIR/src/ending/dl_unk_80284EE0.inc.o(.data);
-      BUILD_DIR/src/ending/credits.jp.o(.data);
-      BUILD_DIR/src/ending/ceremony_and_credits.o(.data);
-      BUILD_DIR/src/ending/podium_ceremony_actors.o(.rodata);
-      BUILD_DIR/src/ending/camera_junk.o(.rodata);
-      BUILD_DIR/src/ending/credits.jp.o(.rodata);
-      BUILD_DIR/src/ending/ceremony_and_credits.o(.rodata);
+      BUILD_DIR/src/ending/code_80280000.o(.text*);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.text*);
+      BUILD_DIR/src/ending/camera_junk.o(.text*);
+      BUILD_DIR/src/ending/code_80281780.o(.text*);
+      BUILD_DIR/src/ending/code_80281C40.o(.text*);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.text*);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.data*);
+      BUILD_DIR/src/ending/code_80281780.o(.data*);
+      BUILD_DIR/src/ending/dl_unk_80284EE0.o(.data*);
+      BUILD_DIR/src/ending/credits.jp.o(.data*);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.data*);
+      BUILD_DIR/src/ending/code_80280000.o(.rodata*);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.rodata*);
+      BUILD_DIR/src/ending/camera_junk.o(.rodata*);
+      BUILD_DIR/src/ending/code_80281780.o(.rodata*);
+      BUILD_DIR/src/ending/code_80281C40.o(.rodata*);
+      BUILD_DIR/src/ending/credits.jp.o(.rodata*);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.rodata*);
    }
    END_SEG(ending)
 
    BEGIN_NOLOAD(ending) {
-      BUILD_DIR/src/ending/code_80280000.o(.bss);
-      BUILD_DIR/src/ending/podium_ceremony_actors.o(.bss);
-      BUILD_DIR/src/ending/code_80281C40.o(.bss);
-      BUILD_DIR/src/ending/ceremony_and_credits.o(.bss);
+      BUILD_DIR/src/ending/code_80280000.o(.bss*);
+      BUILD_DIR/src/ending/podium_ceremony_actors.o(.bss*);
+      BUILD_DIR/src/ending/code_80281C40.o(.bss*);
+      BUILD_DIR/src/ending/ceremony_and_credits.o(.bss*);
+      . = ALIGN(0x10);
    }
    END_NOLOAD(ending)
 
@@ -437,8 +465,8 @@ SECTIONS
    /* texture tables and DLs, set as segment 0x02 */
    BEGIN_SEG(data_segment2, 0x02000000)
    {
-      BUILD_DIR/src/data/textures.inc.o(.data);
-      BUILD_DIR/src/data/data_segment2.inc.o(.data);
+      BUILD_DIR/src/data/textures.o(.data);
+      BUILD_DIR/src/data/data_segment2.o(.data);
    }
    END_SEG(data_segment2)
 
@@ -446,7 +474,7 @@ SECTIONS
    /* common textures, decompressed and set as segment 0x0D */
    BEGIN_SEG(common_textures, 0x0D000000)
    {
-      BUILD_DIR/src/data/common_textures.inc.mio0.o(.data);
+      BUILD_DIR/assets/code/common_data/common_data.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(common_textures)
@@ -463,7 +491,7 @@ SECTIONS
       BUILD_DIR/data/karts/toad_kart.o(.data);
       BUILD_DIR/data/karts/donkeykong_kart.o(.data);
       BUILD_DIR/data/karts/bowser_kart.o(.data);
-      BUILD_DIR/courses/staff_ghosts.inc.o(.data);
+      BUILD_DIR/courses/staff_ghost_data.o(.data);
    }
    END_SEG(kart_textures)
 
@@ -476,9 +504,9 @@ SECTIONS
    END_SEG(other_textures)
 
    /* 0x802BA370 724220-729A30 [0x5810] */
-   BEGIN_SEG(trigTables, LINKER_TRIG_TABLES)
+   BEGIN_SEG(trigTables, _buffersSegmentNoloadStart)
    {
-        BUILD_DIR/src/data/trig_tables.o(.data);
+        BUILD_DIR/src/buffers/trig_tables.o(.data);
         . = ALIGN(0x10);
    }
    END_SEG(trigTables)
@@ -504,14 +532,14 @@ SECTIONS
             0x828400 -> 0x8028DE30 (0xD0) */
    BEGIN_SEG(ceremonyData, 0x0B000000)
    {
-      BUILD_DIR/src/ending/ceremony_data.inc.mio0.o(.data);
+      BUILD_DIR/assets/code/ceremony_data/ceremony_data.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(ceremonyData)
 
    BEGIN_SEG(startupLogo, 0x06000000)
    {
-      BUILD_DIR/src/data/startup_logo.inc.mio0.o(.data);
+      BUILD_DIR/assets/code/startup_logo/startup_logo.mio0.o(.data);
       . = ALIGN(0x10);
    }
    END_SEG(startupLogo)
@@ -522,7 +550,7 @@ SECTIONS
    #define COURSE_DATA_SEG(dir, name) \
       BEGIN_SEG(name##_mio0, 0x06000000) \
       { \
-         BUILD_DIR/courses/dir/course_data.inc.mio0.o(.data); \
+         BUILD_DIR/courses/dir/course_data.mio0.o(.data); \
          . = ALIGN(0x10); \
       } \
       END_SEG(name##_mio0)
@@ -551,7 +579,7 @@ SECTIONS
    #define COURSE_OFFSETS_SEG(dir, name) \
       BEGIN_SEG(name, 0x09000000) \
       { \
-         BUILD_DIR/courses/dir/course_offsets.inc.o(.data); \
+         BUILD_DIR/courses/dir/course_offsets.o(.data); \
          . = ALIGN(0x10); \
       } \
       END_SEG(name)
@@ -582,7 +610,7 @@ SECTIONS
    #define COURSE_VERT_SEG(dir, name) \
       BEGIN_SEG(name, 0x0F000000) \
       { \
-         BUILD_DIR/courses/dir/course_geography.inc.mio0.o(.data); \
+         BUILD_DIR/courses/dir/course_geography.mio0.o(.data); \
          . = ALIGN(0x10); \
       } \
       END_SEG(name)
@@ -645,6 +673,8 @@ SECTIONS
    ASSERT((_mainSegmentNoloadEnd <= _memoryPoolSegmentNoloadStart), "Error: Main segment extended into the memory pool.")
    ASSERT((_memoryPoolSegmentNoloadEnd <= _endingSegmentStart), "Error: Memory pool extended into the ending segment.")
    ASSERT((_endingSegmentNoloadEnd <= _racingSegmentStart), "Error: Ending segment extended into the racing segment")
+   ASSERT((_endingSegmentNoloadEnd <= _racingSegmentStart), "Error: Ending segment extended into the racing segment.")
    ASSERT((_racingSegmentNoloadEnd <= _buffersSegmentNoloadStart), "Error: Racing segment extended into the buffers segment.")
    ASSERT((_buffersSegmentNoloadEnd <= RDRAM_END), "Error: Buffers segment extended past 8MB of memory")
+   ASSERT((_buffersSegmentNoloadEnd <= RDRAM_END), "Error: Buffers segment extended into trig tables segment.")
 }

@@ -77,7 +77,7 @@ f32 func_802AAB4C(Player *player) {
             return 0.8f;
         case COURSE_SHERBET_LAND:
             if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == SNOW) {
-                return (f32) (D_8015F6EE - 0xA);
+                return (f32) (gCourseMinY - 0xA);
             }
             return D_8015F8E4;
         case COURSE_DK_JUNGLE:
@@ -635,18 +635,18 @@ void func_802AC114(Vec3f pos1, f32 boundingBoxSize, Vec3f pos2, UNUSED f32 unk) 
 
 s32 func_802AC22C(KartBoundingBoxCorner *arg0) {
     Collision spD0;
-    s32 stackPadding0;
-    s32 stackPadding1;
-    s32 stackPadding2;
-    s32 stackPadding3;
-    s32 stackPadding4;
-    s32 stackPadding5;
-    s32 stackPadding6;
-    s32 stackPadding7;
-    s32 stackPadding8;
-    s32 stackPadding9;
-    s32 stackPaddingA;
-    s32 stackPaddingB;
+    UNUSED s32 stackPadding0;
+    UNUSED s32 stackPadding1;
+    UNUSED s32 stackPadding2;
+    UNUSED s32 stackPadding3;
+    UNUSED s32 stackPadding4;
+    UNUSED s32 stackPadding5;
+    UNUSED s32 stackPadding6;
+    UNUSED s32 stackPadding7;
+    UNUSED s32 stackPadding8;
+    UNUSED s32 stackPadding9;
+    UNUSED s32 stackPaddingA;
+    UNUSED s32 stackPaddingB;
     s32 temp1;
     s32 temp2;
     f32 temp_f22;
@@ -691,10 +691,10 @@ s32 func_802AC22C(KartBoundingBoxCorner *arg0) {
     default:
         break;
     }
-    temp1 = D_8015F6E8 - D_8015F6EA;
-    temp2 = D_8015F6F0 - D_8015F6F2;
-    temp_f4 = (temp_f22 - D_8015F6EA) / (temp1 / 32);
-    temp_f6 = (temp_f26 - D_8015F6F2) / (temp2 / 32);
+    temp1 = gCourseMaxX - gCourseMinX;
+    temp2 = gCourseMaxZ - gCourseMinZ;
+    temp_f4 = (temp_f22 - gCourseMinX) / (temp1 / 32);
+    temp_f6 = (temp_f26 - gCourseMinZ) / (temp2 / 32);
     if (temp_f4 < 0) {
         return 0;
     }
@@ -1279,14 +1279,14 @@ u16 func_802AD950(Collision *collision, f32 boundingBoxSize, f32 x1, f32 y1, f32
     }
 
 
-    temp_v0_4 = (s32) D_8015F6E8 - D_8015F6EA;
-    temp_v1 = (s32) D_8015F6F0 - D_8015F6F2;
+    temp_v0_4 = (s32) gCourseMaxX - gCourseMinX;
+    temp_v1 = (s32) gCourseMaxZ - gCourseMinZ;
 
     temp1 = temp_v0_4 / 32;
     temp2 = temp_v1 / 32;
 
-    temp_f10 = (x1 - D_8015F6EA) / temp1;
-    temp_f16 = (z1 - D_8015F6F2) / temp2;
+    temp_f10 = (x1 - gCourseMinX) / temp1;
+    temp_f16 = (z1 - gCourseMinZ) / temp2;
 
     if (temp_f10 < 0) {
         return 0;
@@ -1387,14 +1387,14 @@ u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY,
         return var_s4;
     }
     
-    temp_f4 = (s32) D_8015F6E8 - D_8015F6EA;
-    temp_f6 = (s32) D_8015F6F0 - D_8015F6F2;
+    temp_f4 = (s32) gCourseMaxX - gCourseMinX;
+    temp_f6 = (s32) gCourseMaxZ - gCourseMinZ;
 
     temp1 = temp_f4 / 32;
     temp2 = temp_f6 / 32;
 
-    temp_f10 = (posX - D_8015F6EA) / temp1;
-    temp_f16 = (posZ - D_8015F6F2) / temp2;
+    temp_f10 = (posX - gCourseMinX) / temp1;
+    temp_f16 = (posZ - gCourseMinZ) / temp2;
 
     
     if (temp_f10 < 0) {
@@ -1471,13 +1471,13 @@ f32 func_802AE1C0(f32 posX, f32 posY, f32 posZ) {
     s32 c;
     s32 d;
 
-    a = (D_8015F6E8 - D_8015F6EA);
-    b = (D_8015F6F0 - D_8015F6F2);
+    a = (gCourseMaxX - gCourseMinX);
+    b = (gCourseMaxZ - gCourseMinZ);
     c = a / 32;
     d = b / 32;
 
-    temp_f4 = (s16) ((posX - D_8015F6EA) / c);
-    temp_f6 = (s16) ((posZ - D_8015F6F2) / d);
+    temp_f4 = (s16) ((posX - gCourseMinX) / c);
+    temp_f6 = (s16) ((posZ - gCourseMinZ) / d);
     temp_f66 = temp_f4 + (temp_f6 * 32);
     iter = D_8014F110[temp_f66].unk2;
 
@@ -1514,6 +1514,28 @@ f32 func_802AE1C0(f32 posX, f32 posY, f32 posZ) {
     return phi_f20;
 }
 
+#define MAX3(a,b,c, out) if (a >= b) {\
+        if (a >= c) {\
+            out = a;\
+        } else\
+            out = c;\
+\
+    } else if (b >= c) {\
+        out = b;\
+    } else\
+        out = c; \
+
+#define MIN3(a,b,c, out) if (a <= b) {\
+        if (a <= c) {\
+            out = a;\
+        } else\
+            out = c;\
+\
+    } else if (b <= c) {\
+        out = b;\
+    } else\
+        out = c;\
+
 void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 sectionId) {
     mk64_surface_map_ram *tile = &gSurfaceMap[D_8015F588];
     s16 x2;
@@ -1545,12 +1567,12 @@ void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 sectionI
     f32 normalZ;
     f32 distance;
 
-    s16 sp4A;
-    s16 sp48;
-    s16 sp46;
-    s16 sp44;
-    s16 sp42;
-    s16 sp40;
+    s16 maxX;
+    s16 maxZ;
+    s16 minY;
+    s16 minX;
+    s16 maxY;
+    s16 minZ;
 
     tile->vtxPoly1 = vtx1;
     tile->vtxPoly2 = vtx2;
@@ -1585,73 +1607,17 @@ void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 sectionI
         y3 = tile->vtxPoly2->v.ob[1];
         z3 = tile->vtxPoly2->v.ob[2];
     }
-    if (x1 >= x2) {
-        if (x1 >= x3) {
-            sp4A = x1;
-        } else
-            sp4A = x3;
+    MAX3(x1, x2, x3, maxX)
 
-    } else if (x2 >= x3) {
-        sp4A = x2;
-    } else
-        sp4A = x3;
+    MAX3(z1, z2, z3, maxZ)
 
-    if (z1 >= z2) {
+    MAX3(y1, y2, y3, maxY)
 
-        if (z1 >= z3) {
-            sp48 = z1;
-        } else
-            sp48 = z3;
+    MIN3(x1, x2, x3, minX)
 
-    } else if (z2 >= z3) {
-        sp48 = z2;
-    } else
-        sp48 = z3;
+    MIN3(y1, y2, y3, minY)
 
-    if (y1 >= y2) {
-
-        if (y1 >= y3) {
-            sp42 = y1;
-        } else
-            sp42 = y3;
-
-    } else if (y2 >= y3) {
-        sp42 = y2;
-    } else
-        sp42 = y3;
-
-    if (x1 <= x2) {
-        if (x1 <= x3) {
-            sp44 = x1;
-        } else
-            sp44 = x3;
-
-    } else if (x2 <= x3) {
-        sp44 = x2;
-    } else
-        sp44 = x3;
-
-    if (y1 <= y2) {
-        if (y1 <= y3) {
-            sp46 = y1;
-        } else
-            sp46 = y3;
-
-    } else if (y2 <= y3) {
-        sp46 = y2;
-    } else
-        sp46 = y3;
-
-    if (z1 <= z2) {
-        if (z1 <= z3) {
-            sp40 = z1;
-        } else
-            sp40 = z3;
-
-    } else if (z2 <= z3) {
-        sp40 = z2;
-    } else
-        sp40 = z3;
+    MIN3(z1, z2, z3, minZ)
 
     crossProductX = (((y2 - y1) * (z3 - z2)) - ((z2 - z1) * (y3 - y2)));
     crossProductY = (((z2 - z1) * (x3 - x2)) - ((x2 - x1) * (z3 - z2)));
@@ -1689,30 +1655,30 @@ void func_802AE434(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16 sectionI
         }
     }
 
-    tile->vtx21 = sp4A;
-    tile->vtx23 = sp48;
-    tile->vtx31 = sp44;
-    tile->vtx33 = sp40;
-    tile->vtx32 = sp46;
-    tile->vtx22 = sp42;
+    tile->vtx21 = maxX;
+    tile->vtx23 = maxZ;
+    tile->vtx31 = minX;
+    tile->vtx33 = minZ;
+    tile->vtx32 = minY;
+    tile->vtx22 = maxY;
 
-    if (sp44 < D_8015F6EA) {
-        D_8015F6EA = sp44;
+    if (minX < gCourseMinX) {
+        gCourseMinX = minX;
     }
-    if (sp46 < D_8015F6EE) {
-        D_8015F6EE = sp46;
+    if (minY < gCourseMinY) {
+        gCourseMinY = minY;
     }
-    if (sp40 < D_8015F6F2) {
-        D_8015F6F2 = sp40;
+    if (minZ < gCourseMinZ) {
+        gCourseMinZ = minZ;
     }
-    if (sp4A > D_8015F6E8) {
-        D_8015F6E8 = sp4A;
+    if (maxX > gCourseMaxX) {
+        gCourseMaxX = maxX;
     }
-    if (sp42 > D_8015F6EC) {
-        D_8015F6EC = sp42;
+    if (maxY > gCourseMaxY) {
+        gCourseMaxY = maxY;
     }
-    if (sp48 > D_8015F6F0) {
-        D_8015F6F0 = sp48;
+    if (maxZ > gCourseMaxZ) {
+        gCourseMaxZ = maxZ;
     }
     
     tile->height = normalX;
@@ -1953,8 +1919,8 @@ void func_802AF314(void) {
     s32 temp1;
     s32 temp2;
     s32 index;
-    temp1 = (s32) D_8015F6E8 - D_8015F6EA;
-    temp2 = (s32) D_8015F6F0 - D_8015F6F2;
+    temp1 = (s32) gCourseMaxX - gCourseMinX;
+    temp2 = (s32) gCourseMaxZ - gCourseMinZ;
 
     temp_s6 = temp1 / 32;
     temp_fp = temp2 / 32;
@@ -1976,8 +1942,8 @@ void func_802AF314(void) {
         for (k = 0; k < 32; k++) {
             index = k + j * 32;
 
-            temp_s1 = (D_8015F6EA + (temp_s6 * k)) - 20;
-            temp_s2 = (D_8015F6F2 + (temp_fp * j)) - 20;
+            temp_s1 = (gCourseMinX + (temp_s6 * k)) - 20;
+            temp_s2 = (gCourseMinZ + (temp_fp * j)) - 20;
 
             temp_a1 = temp_s1 + temp_s6 + 40;
             temp_a3 = temp_s2 + temp_fp + 40;
@@ -2218,14 +2184,14 @@ u16 process_collision(Player *player, KartBoundingBoxCorner *corner, f32 cornerP
 
     // If the surface flags are not set then try setting them.
         
-    temp_v0_2 = (s32) D_8015F6E8 - D_8015F6EA;
-    temp_v1 = (s32) D_8015F6F0 - D_8015F6F2;
+    temp_v0_2 = (s32) gCourseMaxX - gCourseMinX;
+    temp_v1 = (s32) gCourseMaxZ - gCourseMinZ;
 
     temp1 = temp_v0_2 / 32;
     temp2 = temp_v1 / 32;
 
-    temp_f10 = (cornerPos1 - D_8015F6EA) / temp1;
-    temp_f16 = (cornerPos3 - D_8015F6F2) / temp2;
+    temp_f10 = (cornerPos1 - gCourseMinX) / temp1;
+    temp_f16 = (cornerPos3 - gCourseMinZ) / temp2;
 
 
     if (temp_f10 < 0) { return 0; }

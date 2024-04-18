@@ -2,6 +2,7 @@
 
 import re
 import sys
+import io
 
 abbreviations = {
     "banshee_boardwalk":  "BB",
@@ -312,14 +313,14 @@ texture_map = {
 # Usage: linkonly_generator.py <course_name_here>
 course_name = sys.argv[1]
 
-# This depends on the texture lists in each courses/<course_name_here>/course_offsets.inc.c
+# This depends on the texture lists in each courses/<course_name_here>/course_offsets.c
 # look like: `{gTexture6447C4, 0x0106, 0x0800, 0x0},`
 texture_regex = re.compile(r"{(\S+),\s+\S+,\s+(\S+),\s+\S+}")
 
 h_string = ""
 c_string = ""
 
-with open(f"courses/{course_name}/course_offsets.inc.c", "r") as offsets:
+with open(f"courses/{course_name}/course_offsets.c", "r") as offsets:
 
     h_string += "#ifndef COURSE_TEXTURES_H"
     h_string += "\n#define COURSE_TEXTURES_H"
@@ -331,7 +332,7 @@ with open(f"courses/{course_name}/course_offsets.inc.c", "r") as offsets:
 
     # Something wrong has occurred
     if not textures:
-        print(f"Failed to find any texture entries in courses/{course_name}/course_offsets.inc.c")
+        print(f"Failed to find any texture entries in courses/{course_name}/course_offsets.c")
         exit(1)
 
     current_offset = 0
@@ -365,6 +366,6 @@ with open(f"courses/{course_name}/course_offsets.inc.c", "r") as offsets:
 
 # Write to files only after we've generated their entire contents. That way if an
 # error occurs during the generation we don't write an incomplete file
-with open(f"courses/{course_name}/course_textures.linkonly.c", "w") as linkonlyc, open(f"courses/{course_name}/course_textures.linkonly.h", "w") as linkonlyh:
+with io.open(f"courses/{course_name}/course_textures.linkonly.c", "w", newline="\n") as linkonlyc, io.open(f"courses/{course_name}/course_textures.linkonly.h", "w", newline="\n") as linkonlyh:
     linkonlyh.write(h_string)
     linkonlyc.write(c_string)

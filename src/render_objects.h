@@ -447,8 +447,6 @@ extern s16 D_8018D2E8;
 extern u8* D_8018D4BC;
 extern u8* D_8018D4C0;
 
-// Probably aren't really part of this file, but don't have a better place to put them
-extern u8 *gPortraitTLUTs[];
 extern u8 *gPortraitTextures[];
 
 extern Lights1 D_800E4638;

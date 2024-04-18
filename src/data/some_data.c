@@ -351,10 +351,10 @@ f32 D_800E594C[][2] = {
     { -0.0,  0.0 },
 };
 
-u16 D_800E597C[] = { 0x0000, 0x0000, 0x4000, 0x8000, 0x8000, 0xc000 };
+s16 D_800E597C[] = { 0x0000, 0x0000, 0x4000, 0x8000, 0x8000, 0xc000 };
 
 // Seems to be related to the Boos in Banshee Boardwalk
-SplineData23 D_800E5988 = {
+SplineData D_800E5988 = {
     0x0016,
     {
         {{ 0x0005, 0x0011, 0x0032 }, 0x0028 },
@@ -384,7 +384,7 @@ SplineData23 D_800E5988 = {
 };
 
 // Seems to be related to the Boos in Banshee Boardwalk
-SplineData24 D_800E5A44 = {
+SplineData D_800E5A44 = {
     0x0017,
     {
         {{ 0x0000, 0x0011, 0xffce }, 0x0028 },
@@ -415,7 +415,7 @@ SplineData24 D_800E5A44 = {
 };
 
 // Seems to be related to the Boos in Banshee Boardwalk
-SplineData25 D_800E5B08 = {
+SplineData D_800E5B08 = {
     0x0018,
     {
         {{ 0xfff1, 0x000a, 0x0000 }, 0x0014 },
@@ -447,7 +447,7 @@ SplineData25 D_800E5B08 = {
 };
 
 // Seems to be related to the Boos in Banshee Boardwalk
-SplineData23 D_800E5BD4 = {
+SplineData D_800E5BD4 = {
     0x0016,
     {
         {{ 0x0005, 0x0011, 0x0032 }, 0x001e },
@@ -477,7 +477,7 @@ SplineData23 D_800E5BD4 = {
 };
 
 // Seems to be related to the Boos in Banshee Boardwalk
-SplineData24 D_800E5C90 = {
+SplineData D_800E5C90 = {
     0x0017,
     {
         {{ 0x0000, 0x0011, 0xffce }, 0x0019 },
@@ -508,7 +508,7 @@ SplineData24 D_800E5C90 = {
 };
 
 // Only referenced in func_8007D070, which itself is unused
-SplineDataUnused4 D_800E5D54 = {
+SplineData D_800E5D54 = {
     0x0004,
     {
         {{ 0x0000, 0x0010, 0x0000 }, 0x0032 },
@@ -519,7 +519,7 @@ SplineDataUnused4 D_800E5D54 = {
 };
 
 // Unused?
-SplineDataUnused4 D_800E5D78 = {
+SplineData D_800E5D78 = {
     0x0004,
     {
         {{ 0x0000, 0x0000, 0x0000 }, 0x000a },
@@ -531,7 +531,11 @@ SplineDataUnused4 D_800E5D78 = {
 
 // Note the use of the plain SplineData type here. Since these are pointers, we don't care
 // about their internal array size
-SplineData *D_800E5D9C[] = { &D_800E5988, &D_800E5A44, &D_800E5B08, &D_800E5BD4, &D_800E5C90 };
+SplineData *D_800E5D9C[] = {
+    &D_800E5988, &D_800E5A44,
+    &D_800E5B08, &D_800E5BD4,
+    &D_800E5C90
+};
 
 // Unused
 SplineData *D_800E5DB0 = &D_800E5988;
@@ -633,7 +637,7 @@ s16 D_800E5FD0[] = {
 };
 
 // Something related to seagulls in Koopa Troopa Beach, not sure of its exact nature
-SplineData23 D_800E6034 = {
+SplineData D_800E6034 = {
     0x0016,
     {
         {{ 0x0032, 0x00aa, 0x01f4 }, 0x0028 },
@@ -663,7 +667,7 @@ SplineData23 D_800E6034 = {
 };
 
 // Something related to seagulls in Koopa Troopa Beach, not sure of its exact nature
-SplineData24 D_800E60F0 = {
+SplineData D_800E60F0 = {
     0x0017,
     {
         {{ 0x0000, 0x00aa, 0xfe0c }, 0x0028 },
@@ -694,7 +698,7 @@ SplineData24 D_800E60F0 = {
 };
 
 // Something related to seagulls in Koopa Troopa Beach, not sure of its exact nature
-SplineData25 D_800E61B4 = {
+SplineData D_800E61B4 = {
     0x0018,
     {
         {{ 0xff6a, 0x0064, 0x0000 }, 0x0014 },
@@ -726,7 +730,7 @@ SplineData25 D_800E61B4 = {
 };
 
 // Something related to seagulls in Koopa Troopa Beach, not sure of its exact nature
-SplineData23 D_800E6280 = {
+SplineData D_800E6280 = {
     0x0016,
     {
         {{ 0xffce, 0x00aa, 0xfe0c }, 0x0028 },
@@ -757,7 +761,10 @@ SplineData23 D_800E6280 = {
 
 // Note the use of the plain SplineData type here. Since these are pointers, we don't care
 // about their internal array size
-SplineData *D_800E633C[] = { &D_800E6034, &D_800E60F0, &D_800E61B4, &D_800E6280 };
+SplineData *D_800E633C[] = {
+    &D_800E6034, &D_800E60F0,
+    &D_800E61B4, &D_800E6280
+};
 
 // Might be Cheep Cheep related?
 Vec3s D_800E634C[] = {
@@ -766,42 +773,44 @@ Vec3s D_800E634C[] = {
     { 0xf380, 0x0013, 0xfe14 },
 };
 
-Vec3s gMoleSpawns[] = {
-    { 0x0303, 0x0014, 0xf81a },
-    { 0x0327, 0x000f, 0xf7f1 },
-    { 0x034f, 0x0012, 0xf808 },
-    { 0x0391, 0x000e, 0xf7fa },
-    { 0x03ab, 0x0015, 0xf833 },
-    { 0x03ad, 0x0011, 0xf818 },
-    { 0x03e2, 0x0011, 0xf836 },
-    { 0x035f, 0x0016, 0xf826 },
-    { 0x05dc, 0x0002, 0x0474 },
-    { 0x05e6, 0x000f, 0x041a },
-    { 0x0649, 0x0015, 0x03a7 },
-    { 0x0509, 0x0003, 0x04f5 },
-    { 0x05bc, 0x0016, 0x0416 },
-    { 0x0564, 0x000c, 0x0482 },
-    { 0x0511, 0x0013, 0x0492 },
-    { 0x0635, 0x000b, 0x03ec },
-    { 0x0586, 0x0003, 0x04a1 },
-    { 0x057d, 0x0004, 0x04e6 },
-    { 0x05b7, 0x0008, 0x045e },
-    { 0x02bd, 0x0002, 0x04ff },
-    { 0x032b, 0x0008, 0x04fe },
-    { 0x0317, 0x0010, 0x04cd },
-    { 0x036c, 0x000f, 0x04f2 },
-    { 0x03d8, 0x0017, 0x04e0 },
-    { 0x037b, 0x0014, 0x04da },
-    { 0x0398, 0x000f, 0x0518 },
-    { 0x0337, 0x0006, 0x052f },
-    { 0x02cd, 0x0008, 0x04d7 },
-    { 0x02b7, 0x0013, 0x0498 },
-    { 0x0274, 0x0008, 0x04a7 },
-    { 0x02d4, 0x0004, 0x053b },
+MoleSpawnUnion gMoleSpawns = {
+    {
+        { 0x0303, 0x0014, 0xf81a },
+        { 0x0327, 0x000f, 0xf7f1 },
+        { 0x034f, 0x0012, 0xf808 },
+        { 0x0391, 0x000e, 0xf7fa },
+        { 0x03ab, 0x0015, 0xf833 },
+        { 0x03ad, 0x0011, 0xf818 },
+        { 0x03e2, 0x0011, 0xf836 },
+        { 0x035f, 0x0016, 0xf826 },
+        { 0x05dc, 0x0002, 0x0474 },
+        { 0x05e6, 0x000f, 0x041a },
+        { 0x0649, 0x0015, 0x03a7 },
+        { 0x0509, 0x0003, 0x04f5 },
+        { 0x05bc, 0x0016, 0x0416 },
+        { 0x0564, 0x000c, 0x0482 },
+        { 0x0511, 0x0013, 0x0492 },
+        { 0x0635, 0x000b, 0x03ec },
+        { 0x0586, 0x0003, 0x04a1 },
+        { 0x057d, 0x0004, 0x04e6 },
+        { 0x05b7, 0x0008, 0x045e },
+        { 0x02bd, 0x0002, 0x04ff },
+        { 0x032b, 0x0008, 0x04fe },
+        { 0x0317, 0x0010, 0x04cd },
+        { 0x036c, 0x000f, 0x04f2 },
+        { 0x03d8, 0x0017, 0x04e0 },
+        { 0x037b, 0x0014, 0x04da },
+        { 0x0398, 0x000f, 0x0518 },
+        { 0x0337, 0x0006, 0x052f },
+        { 0x02cd, 0x0008, 0x04d7 },
+        { 0x02b7, 0x0013, 0x0498 },
+        { 0x0274, 0x0008, 0x04a7 },
+        { 0x02d4, 0x0004, 0x053b },
+    }
 };
 
 // Referenced by D_800E6724, which is unused
-SplineData23 D_800E641C = {
+SplineData D_800E641C = {
     0x0016,
     {
         {{ 0x0014, 0x0000, 0x00c8 }, 0x0050 },
@@ -831,7 +840,7 @@ SplineData23 D_800E641C = {
 };
 
 // Referenced by D_800E6724, which is unused
-SplineData24 D_800E64D8 = {
+SplineData D_800E64D8 = {
     0x0017,
     {
         {{ 0x0000, 0x0000, 0xffce }, 0x0050 },
@@ -862,7 +871,7 @@ SplineData24 D_800E64D8 = {
 };
 
 // Something related to the penguins in Sherbet Land, not sure of its exact nature
-SplineData25 D_800E659C = {
+SplineData D_800E659C = {
     0x0018,
     {
         {{ 0xffec, 0x0000, 0x0000 }, 0x0050 },
@@ -894,7 +903,7 @@ SplineData25 D_800E659C = {
 };
 
 // Something related to the penguins in Sherbet Land, not sure of its exact nature
-SplineData23 D_800E6668 = {
+SplineData D_800E6668 = {
     0x0016,
     {
         {{ 0x0005, 0x0000, 0x0032 }, 0x0050 },
@@ -953,7 +962,7 @@ s16 gTorchSpawns[] = {
     0xffca, 0xfff8, 0x0270,
 };
 
-SplineData15 D_800E67B8 = {
+SplineData D_800E67B8 = {
     0x000d,
     {
         {{ 0x0096, 0x00cc, 0xfe0c }, 0x0014 },
@@ -975,7 +984,7 @@ SplineData15 D_800E67B8 = {
 };
 
 // Appears to be related to Lakitu waving the checkered flag
-SplineData21 D_800E6834 = {
+SplineData D_800E6834 = {
     0x0014,
     {
         {{ 0x0014, 0x0012, 0x001e }, 0x0028 },
@@ -1003,7 +1012,7 @@ SplineData21 D_800E6834 = {
 };
 
 // Unused struct?
-SplineDataUnused13 D_800E68E0 = {
+SplineData D_800E68E0 = {
     0x000c,
     {
         {{ 0x001e, 0x0018, 0x0078 }, 0x000a },
@@ -1023,7 +1032,7 @@ SplineDataUnused13 D_800E68E0 = {
 };
 
 // Appears to be related to Lakitu Second Lap animation
-SplineData12 D_800E694C = {
+SplineData D_800E694C = {
     0x000b,
     {
         {{ 0x0032, 0x0014, 0x0050 }, 0x000a },
@@ -1042,7 +1051,7 @@ SplineData12 D_800E694C = {
 };
 
 // Appears to be related to Lakitu Reverse animation
-SplineData8 D_800E69B0 = {
+SplineData D_800E69B0 = {
     0x0007,
     {
         {{ 0x001e, 0x000e, 0x0032 }, 0x0028 },
@@ -1057,7 +1066,7 @@ SplineData8 D_800E69B0 = {
 };
 
 // Might be related to Lakitu doing the countdown?
-SplineData8 D_800E69F4 = {
+SplineData D_800E69F4 = {
     0x0007,
     {
         {{ 0x0000, 0x0012, 0xfffb }, 0x0014 },

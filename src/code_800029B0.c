@@ -26,7 +26,6 @@
 
 extern s32 D_802BA038;
 extern s16 D_802BA048;
-
 s16 gCurrentCourseId = 0;
 s16 gCurrentlyLoadedCourseId = 0xFF;
 u16 D_800DC5A8 = 0;
@@ -52,7 +51,7 @@ u16 D_800DC5E4 = 0;
 //! @todo gPlayerWinningIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8
 s32 gPlayerWinningIndex = 0;
 
-struct UnkStruct_800DC5EC D_8015F480[4];
+ALIGNED16 struct UnkStruct_800DC5EC D_8015F480[4];
 struct UnkStruct_800DC5EC *D_800DC5EC = &D_8015F480[0];
 struct UnkStruct_800DC5EC *D_800DC5F0 = &D_8015F480[1];
 struct UnkStruct_800DC5EC *D_800DC5F4 = &D_8015F480[2];
@@ -66,7 +65,7 @@ Lights1 D_800DC610[] = {
     gdSPDefLights1(175, 175, 175, 255, 255, 255, 0, 0, 120),
     gdSPDefLights1(115, 115, 115, 255, 255, 255, 0, 0, 120),
 };
-static s32 pad_800029B0 = 0x80000000;
+UNUSED s32 pad_800029B0 = 0x80000000;
 s16 gCreditsCourseId = COURSE_LUIGI_RACEWAY;
 s16 gPlaceItemBoxes = 1;
 
@@ -83,13 +82,15 @@ s32 D_8015F5A0;
 s32 D_8015F5A4;
 s32 code_800029B0_bss_pad[48];
 Vtx *vtxBuffer[32];
-s16 D_8015F6E8;
-s16 D_8015F6EA;
-s16 D_8015F6EC; // s16 or u16?
-s16 D_8015F6EE;
 
-s16 D_8015F6F0;
-s16 D_8015F6F2;
+s16 gCourseMaxX;
+s16 gCourseMinX;
+
+s16 gCourseMaxY; // s16 or u16?
+s16 gCourseMinY;
+
+s16 gCourseMaxZ;
+s16 gCourseMinZ;
 
 s16 D_8015F6F4;
 s16 D_8015F6F6;
@@ -210,7 +211,7 @@ void setup_race(void) {
     func_802A74BC();
     func_802A4D18();
     func_80091FA4();
-    func_8029E158();
+    init_actors_and_load_textures();
 
     if (gModeSelection != BATTLE) {
         D_8015F8D0[1] = (f32) (D_80164490->posY - 15);;
@@ -320,7 +321,7 @@ void func_80003040(void) {
         case COURSE_YOSHI_VALLEY:
             vec3f_set(position, -2300.0f, 0.0f, 634.0f);
             position[0] *= gCourseDirection;
-            addActorToEmptySlot(position, rotation, velocity, ACTOR_YOSHI_VALLEY_EGG);
+            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_YOSHI_EGG);
             break;
         case COURSE_MOO_MOO_FARM:
             dma_textures(gTextureTrees4Left,  0x3E8, 0x800);
@@ -353,11 +354,11 @@ void func_80003040(void) {
             break;
         case COURSE_WARIO_STADIUM:
             vec3f_set(position, -131.0f, 83.0f, 286.0f);
-            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
             vec3f_set(position, -2353.0f, 72.0f, -1608.0f);
-            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
             vec3f_set(position, -2622.0f, 79.0f, 739.0f);
-            addActorToEmptySlot(position, rotation, velocity, ACTOR_WARIO_SIGN);
+            add_actor_to_empty_slot(position, rotation, velocity, ACTOR_WARIO_SIGN);
             // d_course_wario_stadium_packed_dl_C50
             find_vtx_and_set_colours(0x07000C50, 0x64, 0xFF, 0xFF, 0xFF);
             // d_course_wario_stadium_packed_dl_BD8

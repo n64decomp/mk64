@@ -3,6 +3,9 @@
 
 #include "common_structs.h"
 
+#define COLLISION 0x1
+#define NO_COLLISION 0x0
+
 void  nullify_displaylist(uintptr_t);
 void  func_802AAAAC(Collision*);
 f32   func_802AAB4C(Player*);
@@ -16,6 +19,7 @@ s16   func_802ABDB8(u16);
 s16   func_802ABDF4(u16);
 f32   func_802ABE30(f32, f32, f32, u16);
 f32   func_802ABEAC(Collision*, Vec3f);
+void shell_collision(Collision *, Vec3f);
 void  process_shell_collision(Vec3f, f32, Vec3f, f32);
 u16   process_collision(Player*, KartBoundingBoxCorner*, f32, f32, f32);
 void  func_802AC114(Vec3f, f32, Vec3f, f32);

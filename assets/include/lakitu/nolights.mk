@@ -19,7 +19,7 @@ $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(NOLIGHTS_FRAMES:%.png=%.bin)
 $(NOLIGHTS_FRAMES:%.png=%.bin): %.bin : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(NOLIGHTS_PALETTE)
 
-$(BUILD_DIR)/src/data/common_textures.inc.o: $(NOLIGHTS_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.o: $(NOLIGHTS_PALETTE:%.png=%.inc.c)
 
 $(NOLIGHTS_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16

@@ -2169,7 +2169,7 @@ typedef union {
 
 // Early revision of quadrangle command uses G_QUAD instead of G_TRI2.
 // It does not have a flag argument, this was added for compatibility.
-// MK64: Appears to only be used in startup_logo.inc.c
+// MK64: Appears to only be used in startup_logo.c
 #ifdef F3D_OLD
 /***
  ***  1 Quadrangle

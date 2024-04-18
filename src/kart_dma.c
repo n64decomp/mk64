@@ -1834,7 +1834,7 @@ void load_kart_palette(Player *player, s8 playerId, s8 arg2, s8 arg3) {
 #ifdef AVOID_UB
     struct_D_802F1F80 *temp_s0 = &D_802F1F80[arg3][arg2][playerId];
 #else
-    struct_D_802F1F80 *temp_s0 = &D_802F1F80[arg3][arg2][playerId * 0x100];
+    struct_D_802F1F80 *temp_s0 = (struct_D_802F1F80 *) &D_802F1F80[arg3][arg2][playerId * 0x100];
 #endif
     switch(gActiveScreenMode) {
         case SCREEN_MODE_1P:

@@ -23,9 +23,9 @@
 #include "update_objects.h"
 #include "code_80086E70.h"
 #include "effects.h"
-#include "src/data/data_800E8700.h"
+#include <assets/data_800E8700.h>
 #include "skybox_and_splitscreen.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "audio/external.h"
 #include "objects.h"
 #include "bomb_kart.h"
@@ -1082,7 +1082,7 @@ void render_hud_2p_horizontal_player_two_horizontal_player_one(void) {
     if (gHUDDisable == 0) {
         render_hud_timer(PLAYER_ONE);
         if (playerHUD[PLAYER_ONE].lapCount != 3) {
-            draw_hud_2d_texture_32x8(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, common_texture_hud_lap); // draw the lap word
+            draw_hud_2d_texture_32x8(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, (u8*) common_texture_hud_lap); // draw the lap word
             draw_lap_count(playerHUD[PLAYER_ONE].lapX + 0xC, playerHUD[PLAYER_ONE].lapY - 4, playerHUD[PLAYER_ONE].alsoLapCount);
             draw_item_window(PLAYER_ONE);
         }
@@ -1097,7 +1097,7 @@ void render_hud_2p_horizontal_player_two(void) {
     if (gHUDDisable == 0) {
         render_hud_timer(PLAYER_TWO);
         if (playerHUD[PLAYER_TWO].lapCount != 3) {
-            draw_hud_2d_texture_32x8(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, common_texture_hud_lap);
+            draw_hud_2d_texture_32x8(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, (u8*) common_texture_hud_lap);
             draw_lap_count(playerHUD[PLAYER_TWO].lapX + 0xC, playerHUD[PLAYER_TWO].lapY - 4, playerHUD[PLAYER_TWO].alsoLapCount);
             draw_item_window(PLAYER_TWO);
         }
@@ -1460,7 +1460,7 @@ void func_8005A14C(s32 playerId) {
         } else {
             f32_step_towards(&gObjectList[objectIndex].sizeScaling, 0.6f, 0.02f);
         }
-        if (player->effects & 0x04000000) {
+        if (player->effects & HIT_EFFECT) {
             u16_step_up_towards(&gObjectList[objectIndex].direction_angle[0], 0x0C00U, 0x0100U);
         } else {
             u16_step_down_towards(&gObjectList[objectIndex].direction_angle[0], 0, 0x00000100);
@@ -3493,7 +3493,7 @@ void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005F90C.s")
 #endif
 
-void func_80060504(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
+void func_80060504(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     UNUSED s32 thing1;
     s16 thing2;
     UNUSED s32 thing3;
@@ -5722,7 +5722,7 @@ void func_8006A7C0(Player *player, f32 arg1, f32 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-void func_8006AFD0(Player *player, s8 arg1, s16 arg2, s8 arg3) {
+void render_battle_balloon(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Mat4 sp140;
     Vec3f sp134;
     Vec3s sp12C;
@@ -5848,16 +5848,19 @@ void func_8006B9CC(Player* player, s8 arg1) {
 
 void func_8006BA94(Player* player, s8 playerIndex, s8 arg2) {
     if (gPlayerBalloonStatus[playerIndex][0] != BALLOON_STATUS_GONE) {
-        func_8006AFD0(player, playerIndex, 0, arg2);
+        render_battle_balloon(player, playerIndex, 0, arg2);
     }
     if (gPlayerBalloonStatus[playerIndex][1] != BALLOON_STATUS_GONE) {
-        func_8006AFD0(player, playerIndex, 1, arg2);
+        render_battle_balloon(player, playerIndex, 1, arg2);
     }
     if (gPlayerBalloonStatus[playerIndex][2] != BALLOON_STATUS_GONE) {
-        func_8006AFD0(player, playerIndex, 2, arg2);
+        render_battle_balloon(player, playerIndex, 2, arg2);
     }
 }
 
+/**
+ * Used in podium ceremony.
+*/
 void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     Mat4 sp108;
     Vec3f spFC;

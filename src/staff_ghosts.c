@@ -238,7 +238,7 @@ void func_8000546C(void) {
     s16 phi_v0 = 0;
 
     if (D_80162DB0 >= 0x1000) {
-        gPlayerOne->type = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_CPU;
+        gPlayerOne->type = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_KART_AI;
         return;
     }
 
@@ -469,7 +469,7 @@ void func_8000599C(void) {
 // sets player to AI? (unconfirmed)
 void func_80005AE8(Player *ply) {
     if (((ply->type & PLAYER_INVISIBLE_OR_BOMB) != 0) && (ply != gPlayerOne)) {
-        ply->type = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_CPU;
+        ply->type = PLAYER_CINEMATIC_MODE | PLAYER_START_SEQUENCE | PLAYER_KART_AI;
     }
 }
 

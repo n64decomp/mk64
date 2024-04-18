@@ -30,7 +30,7 @@
 #include <code_80281780.h>
 #include <code_80281C40.h>
 #include <collision.h>
-#include <common_textures.h>
+#include <assets/common_data.h>
 #include <credits.h>
 #include <data_segment2.h>
 #include <buffers.h>
@@ -63,7 +63,7 @@
 #include <objects.h>
 #include <segments.h>
 #include <sounds.h>
-#include "data/trig_tables.h"
+#include "buffers/trig_tables.h"
 #include <types.h>
 #include <ultra64.h>
 #include <vehicles.h>
