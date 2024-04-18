@@ -4156,6 +4156,7 @@ void wrapper_update_boos(void) {
     update_boos();
 }
 
+// Updates the display status on an object based on its relative direction to the camera
 void func_8007C360(s32 objectIndex, Camera* camera) {
     u16 rot = camera->rot[1];
     u16 temp = ((u16)(gObjectList[objectIndex].direction_angle[1] - rot + 0x8000) * 0x24) / 0x10000;
