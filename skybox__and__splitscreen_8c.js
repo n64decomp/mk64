@@ -51,7 +51,7 @@ var skybox__and__splitscreen_8c =
     [ "D_802B8910", "skybox__and__splitscreen_8c.html#aad2cc417d607992cfe201e81e1cf0921", null ],
     [ "D_802B8990", "skybox__and__splitscreen_8c.html#a82f24f7e2e98540d8ea10579ee3b6315", null ],
     [ "D_802B8A10", "skybox__and__splitscreen_8c.html#a48751c54a38756b9474b566084b5e56a", null ],
-    [ "D_802B8A90", "skybox__and__splitscreen_8c.html#a24ee540b69e252035f5aec2a8432ffe3", null ],
+    [ "D_802B8A90", "skybox__and__splitscreen_8c.html#a9119e27ac748939929d0b105173cdb43", null ],
     [ "sSkyColors", "skybox__and__splitscreen_8c.html#a5a62561f3fe644aa6a2db4ef3a8f4254", null ],
     [ "sSkyColors2", "skybox__and__splitscreen_8c.html#a24d921b7aaa7cdc7a3f32e4e45b01405", null ]
 ];
