@@ -5,6 +5,7 @@
 #include <PR/os.h>
 #include "hardware.h"
 
+
 // Note: This file was very quickly strewn together from oot.
 // Not great but it works.
 
@@ -23,6 +24,8 @@ typedef struct {
 #define ASCII_TO_U32(a, b, c, d) ((u32)((a << 24) | (b << 16) | (c << 8) | (d << 0)))
 
 void* is_proutSyncPrintf(void* arg, const char* str, u32 count);
+s32 __osEPiRawWriteIo(OSPiHandle *a0, u32 a1, u32 a2);
+void __osPiRelAccess(void);
 
 s32 __osEPiRawReadIo(OSPiHandle *arg0, u32 devAddr, u32 *data) {
     register s32 stat;
@@ -65,7 +68,7 @@ void osSyncPrintfUnused(const char* fmt, ...) {
     va_list args;
     va_start(args, fmt);
 
-    _Printf(is_proutSyncPrintf, NULL, fmt, args);
+    _Printf((char *(*)(char *, const char *, size_t))is_proutSyncPrintf, NULL, fmt, args);
 
     va_end(args);
 }
@@ -74,7 +77,7 @@ void osSyncPrintf(const char* fmt, ...) {
     va_list args;
     va_start(args, fmt);
 
-    _Printf(is_proutSyncPrintf, NULL, fmt, args);
+    _Printf((char *(*)(char *, const char *, size_t))is_proutSyncPrintf, NULL, fmt, args);
 
     va_end(args);
 }
@@ -83,7 +86,7 @@ void print(const char* fmt, ...) {
     va_list args;
     va_start(args, fmt);
 
-    _Printf(is_proutSyncPrintf, NULL, fmt, args);
+    _Printf((char *(*)(char *, const char *, size_t))is_proutSyncPrintf, NULL, fmt, args);
 
     va_end(args);
 }
@@ -93,12 +96,12 @@ void rmonPrintf(const char* fmt, ...) {
     va_list args;
     va_start(args, fmt);
 
-    _Printf(is_proutSyncPrintf, NULL, fmt, args);
+    _Printf((char *(*)(char *, const char *, size_t))is_proutSyncPrintf, NULL, fmt, args);
 
     va_end(args);
 }
 
-void* is_proutSyncPrintf(void* arg, const char* str, u32 count) {
+void* is_proutSyncPrintf(UNUSED void* arg, const char* str, u32 count) {
     u32 data;
     s32 pos;
     s32 start;

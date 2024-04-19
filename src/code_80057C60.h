@@ -221,7 +221,7 @@ void func_8006A01C(Player*, s8, s16, s8);
 void func_8006A280(Player*, s8, s16, s8);
 void func_8006A50C(Player*, f32, f32, s8, s8, s16);
 void func_8006A7C0(Player*, f32, f32, s8, s8);
-void func_8006AFD0(Player*, s8, s16, s8);
+void render_battle_balloon(Player*, s8, s16, s8);
 
 void func_8006B7E4(Player*, s8);
 void func_8006B87C(Player*, s8);

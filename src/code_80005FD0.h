@@ -4,7 +4,7 @@
 #include "vehicles.h"
 #include "camera.h"
 #include "waypoints.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 
 struct struct_801642D8 {
     /* 0x0 */ u16 unk0;
@@ -117,11 +117,11 @@ s16  func_8000DBAC(Vec3f, s16*, f32);
 void set_bomb_kart_spawn_positions(void);
 void func_8000DF8C(s32);
 
-s32  func_8000ED14(s32, s16);
-s32  func_8000ED80(s32);
-s32  func_8000EDC8(s32);
-s32  func_8000EE10(s32);
-void func_8000EE58(s32);
+s32  add_actor_in_unexpired_actor_list(s32, s16);
+s32  add_red_shell_in_unexpired_actor_list(s32);
+s32  add_green_shell_in_unexpired_actor_list(s32);
+s32  add_blue_shell_in_unexpired_actor_list(s32);
+void delete_actor_in_unexpired_actor_list(s32);
 void func_8000EEDC(void);
 void generate_player_smoke(void);
 
@@ -144,19 +144,19 @@ f32  func_80010FA0(f32, f32, f32, s32, s32);
 s32  func_80011014(TrackWaypoint *, TrackWaypoint *, s32, s32);
 s32  process_path_data(TrackWaypoint*, TrackWaypoint*);
 s32  func_8001168C(PathNoY*, TrackWaypoint*, s32);
-void func_80011A5C(void);
-void func_80011AB8(s32);
-void func_80011AE4(s32);
-void func_80011B14(s32, Player*);
-void func_80011D48(s32, Player*);
-void func_80011E38(s32);
+void copy_courses_kart_ai_behaviour(void);
+void reset_kart_ai_behaviour_none(s32);
+void reset_kart_ai_behaviour(s32);
+void kart_ai_behaviour_start(s32, Player*);
+void kart_ai_behaviour_end(s32, Player*);
+void kart_ai_behaviour(s32);
 void func_80011EC0(s32, Player*, s32, u16);
 
 void func_800120C8(void);
 void func_80012190(void);
 void func_80012220(VehicleStuff*);
 void init_course_vehicles(void);
-void func_80012780(TrainCarStuff*, s16*, u16);
+void func_80012780(TrainCarStuff*, PathNoY *, u16);
 void func_800127E0(void);
 void func_80012A48(TrainCarStuff*, s16);
 void update_vehicle_trains(void);
@@ -201,19 +201,19 @@ void func_80015390(Camera*, Player*, s32);
 void func_80015544(s32, f32, s32, s32);
 void func_8001577C(Camera*, UNUSED Player*, s32, s32);
 void func_80015A9C(s32, f32, s32, s16);
-void func_80015C94(Camera*, s32, s32, s32);
+void func_80015C94(Camera*, Player *, s32, s32);
 
 void func_800162CC(s32, f32, s32, s16);
-void func_80016494(Camera*, s32, s32, s32);
+void func_80016494(Camera*, Player *, s32, s32);
 void func_80016C3C(s32, f32, s32);
 
 void func_80017720(s32, f32, s32, s16);
-void func_800178F4(Camera*, s32, s32, s32);
+void func_800178F4(Camera*, Player *, s32, s32);
 void func_80017F10(s32, f32, s32, s16);
 
-void func_800180F0(Camera*, s32, s32, s32);
+void func_800180F0(Camera*, Player *, s32, s32);
 void func_80018718(s32, f32, s32, s16);
-void func_800188F4(Camera*, s32, s32, s32);
+void func_800188F4(Camera*, Player *, s32, s32);
 
 void func_80019118(s32, f32, s32, s16);
 void func_8001933C(Camera*, UNUSED Player*, s32, s32);
@@ -241,10 +241,10 @@ void func_8001A518(s32, s32, s32);
 void func_8001A588(u16*, Camera*, Player*, s8, s32);
 void func_8001AAAC(s16, s16, s16);
 void func_8001AB00(void);
-void cpu_decisions_branch_item(s32, s16*, s32);
+void kart_ai_decisions_branch_item(s32, s16*, s32);
 void func_8001ABE0(s32, D_801642D8_entry*);
 void func_8001ABEC(struct struct_801642D8*);
-void cpu_use_item_strategy(s32);
+void kart_ai_use_item_strategy(s32);
 
 void func_8001BE78(void);
 
@@ -258,7 +258,7 @@ void func_8001C42C(void);
 extern Collision D_80162E70;
 extern s16 D_80162EB0; // Possibly a float.
 extern s16 D_80162EB2; // possibly [3]
-extern UnkCommonTextureStruct0 *D_80162EB8[];
+extern KartAIBehaviour *gCoursesKartAIBehaviour[];
 extern s16 D_80162F10[];
 extern s16 D_80162F50[];
 extern Vec3f D_80162FA0;
@@ -298,17 +298,32 @@ extern u16 D_80163258[];
 extern u16 D_80163270[];
 extern s32 D_80163288[];
 // Exact pointer type unknown
-extern UnkCommonTextureStruct0 *D_801632B0;
-extern u16 D_801632B8[];
-extern u16 D_801632D0[];
-extern u16 D_801632E8[];
+extern KartAIBehaviour *sCurrentKartAIBehaviour;
+extern u16 gCurrentKartAIBehaviourId[];
+extern u16 gPreviousKartAIBehaviourId[];
+extern u16 gKartAIBehaviourState[];
+
+enum {
+    KART_AI_BEHAVIOUR_STATE_NONE,
+    KART_AI_BEHAVIOUR_STATE_START,
+    KART_AI_BEHAVIOUR_STATE_RUNNING
+};
+
 extern s16 D_80163300[];
 extern u16 D_80163318[];
 extern u16 D_80163330[];
 extern u16 D_80163344[];
 extern u16 D_80163348[];
 extern u16 D_8016334C[];
-extern u16 D_80163350[];
+extern u16 gSpeedKartAIBehaviour[];
+
+enum {
+    SPEED_KART_AI_BEHAVIOUR_NORMAL,
+    SPEED_KART_AI_BEHAVIOUR_FAST,
+    SPEED_KART_AI_BEHAVIOUR_SLOW,
+    SPEED_KART_AI_BEHAVIOUR_MAX
+};
+
 extern s32 D_80163368[];
 extern s32 D_80163378;
 extern s32 D_8016337C;

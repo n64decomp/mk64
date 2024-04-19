@@ -17,7 +17,7 @@
 #include "code_80057C60.h"
 #include "code_8006E9C0.h"
 #include "code_80086E70.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "audio/external.h"
 #include "sounds.h"
 #include <actors.h>
@@ -28,11 +28,12 @@
 #include "code_80091750.h"
 #include "podium_ceremony_actors.h"
 #include "courses/all_course_data.h"
-#include "src/ending/ceremony_data.inc.h"
+#include <assets/ceremony_data.h>
 #include "src/ending/ceremony_and_credits.h"
 #include "menus.h"
 #include "data/other_textures.h"
 #include "data/some_data.h"
+#include "memory.h"
 
 //! @todo unused?
 f32 D_800E43B0[] = { 
@@ -67,7 +68,7 @@ Vtx D_800E44B0[] = {
     {{{  -24,   20,    0}, 0, { 3008, 2496}, { 0xFF, 0xFF, 0xFF, 0xFF}}},
 };
 
-u8 *gItemWindowTLUTs[] = {
+u16 *gItemWindowTLUTs[] = {
     common_tlut_item_window_none, common_tlut_item_window_banana, common_tlut_item_window_banana_bunch, common_tlut_item_window_green_shell,
     common_tlut_item_window_triple_green_shell, common_tlut_item_window_red_shell, common_tlut_item_window_triple_red_shell, common_tlut_item_window_blue_shell,
     common_tlut_item_window_thunder_bolt, common_tlut_item_window_fake_item_box, common_tlut_item_window_star, common_tlut_item_window_boo,
@@ -81,11 +82,11 @@ u8 *gItemWindowTextures[] = {
     common_texture_item_window_mushroom, common_texture_item_window_double_mushroom, common_texture_item_window_triple_mushroom, common_texture_item_window_super_mushroom
 };
 
-u8 *gHudLapTextures[] = {
+u16 *gHudLapTextures[] = {
     common_texture_hud_lap_1_on_3, common_texture_hud_lap_2_on_3, common_texture_hud_lap_3_on_3
 };
 
-u8 *gPortraitTLUTs[] = {
+u16 *gPortraitTLUTs[] = {
     common_tlut_portrait_mario, common_tlut_portrait_luigi, common_tlut_portrait_yoshi, common_tlut_portrait_toad,
     common_tlut_portrait_donkey_kong, common_tlut_portrait_wario, common_tlut_portrait_peach, common_tlut_portrait_bowser
 };
@@ -190,7 +191,7 @@ void func_80072120(s32 *arg0, s32 arg1) {
 void func_80072180(void) {
     if (gModeSelection == TIME_TRIALS) {
         if (((gPlayerOne->type & PLAYER_EXISTS) != 0) &&
-        ((gPlayerOne->type & (PLAYER_INVISIBLE_OR_BOMB | PLAYER_CPU)) == 0)) {
+        ((gPlayerOne->type & (PLAYER_INVISIBLE_OR_BOMB | PLAYER_KART_AI)) == 0)) {
             D_80162DF8 = 1;
         }
     }
@@ -753,7 +754,7 @@ UNUSED void func_800734D4() {
 
 void update_neon_texture(s32 objectIndex) {
     // I have no idea why this typecast works
-    gObjectList[objectIndex].activeTLUT = (u32*)gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].itemDisplay * 128);
+    gObjectList[objectIndex].activeTLUT = (u8*)((u32*)gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].itemDisplay * 128));
     gObjectList[objectIndex].activeTexture = gObjectList[objectIndex].textureList;
 }
 
@@ -1233,7 +1234,7 @@ void func_8007466C(s32 objectIndex, s32 arg1) {
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
         // I have no idea why this typecase works
-        gObjectList[objectIndex].activeTLUT = (u32*)gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].unk_0D3 << 7) ;
+        gObjectList[objectIndex].activeTLUT = (u8*) ((u32*)gObjectList[objectIndex].tlutList + (gObjectList[objectIndex].unk_0D3 << 7)) ;
         gObjectList[objectIndex].status ^= 2;
         phi_a1 = 0;
         if ((gObjectList[objectIndex].status & 2) != 0) {
@@ -1584,7 +1585,7 @@ void func_80075714(s32 objectIndex) {
 }
 
 void update_train_smoke(void) {
-    s32 pad[2];
+    UNUSED s32 pad[2];
     s32 count;
     s32 i;
     s32 temp_a0;
@@ -1705,7 +1706,7 @@ void func_80075B84(s32 objectIndex) {
 }
 
 void update_ferries_smoke_particle(void) {
-    s32 pad[2];
+    UNUSED s32 pad[2];
     s32 count;
     s32 i;
     s32 temp_a0;
@@ -1882,8 +1883,8 @@ void func_8007634C(s32 objectIndex) {
     Objects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->activeTexture = common_texture_particle_smoke;
-    temp_v0->textureList = common_texture_particle_smoke;
+    temp_v0->activeTexture = common_texture_particle_smoke[0];
+    temp_v0->textureList = common_texture_particle_smoke[0];
     temp_v0->primAlpha = 0x00FF;
     set_obj_orientation(objectIndex, 0U, 0U, 0U);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -2018,7 +2019,7 @@ s32 func_80076828(Vec3s arg0, s32 arg1) {
 }
 
 void func_80076884(s32 arg0) {
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     s32 i;
     s32 temp_v0;
     s16 *var_s2;
@@ -2052,8 +2053,8 @@ void func_80076958(s32 objectIndex) {
     Objects *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
-    temp_v0->activeTexture = common_texture_particle_smoke;
-    temp_v0->textureList = common_texture_particle_smoke;
+    temp_v0->activeTexture = common_texture_particle_smoke[0];
+    temp_v0->textureList = common_texture_particle_smoke[0];
     temp_v0->primAlpha = 0x00FF;
     set_obj_orientation(objectIndex, 0U, 0U, 0U);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
@@ -2145,8 +2146,8 @@ void init_object_smoke_paticle(s32 objectIndex, Vec3f arg1, s16 arg2) {
     init_object(objectIndex, (s32) arg2);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_0D5 = 0x0A;
-    temp_v0->activeTexture = common_texture_particle_smoke;
-    temp_v0->textureList = common_texture_particle_smoke;
+    temp_v0->activeTexture = common_texture_particle_smoke[0];
+    temp_v0->textureList = common_texture_particle_smoke[0];
     temp_v0->sizeScaling = 0.3f;
     set_obj_origin_pos(objectIndex, arg1[0], arg1[1], arg1[2]);
     temp_v0->type = 0x00FF;
@@ -2221,8 +2222,8 @@ void init_object_smoke_particle(s32 objectIndex, s32 flameIndex) {
     init_object(objectIndex, 3);
 
     gObjectList[objectIndex].unk_0D5 = 0xB;
-    gObjectList[objectIndex].activeTexture = common_texture_particle_smoke;
-    gObjectList[objectIndex].textureList = common_texture_particle_smoke;
+    gObjectList[objectIndex].activeTexture = common_texture_particle_smoke[0];
+    gObjectList[objectIndex].textureList = common_texture_particle_smoke[0];
     gObjectList[objectIndex].sizeScaling = 0.8f;
 
     gObjectList[objectIndex].origin_pos[0] = (f32)*(gTorchSpawns + (flameIndex * 3) + 0) * xOrientation;
@@ -2381,8 +2382,8 @@ void init_object_leaf_particle(s32 objectIndex, Vec3f arg1, s32 num) {
 
     init_object(objectIndex, 0);
     gObjectList[objectIndex].unk_0D5 = 7;
-    gObjectList[objectIndex].activeTLUT = (u32 *) common_texture_particle_leaf;
-    gObjectList[objectIndex].tlutList = (u32 *) common_texture_particle_leaf;
+    gObjectList[objectIndex].activeTLUT = (u8*) common_texture_particle_leaf;
+    gObjectList[objectIndex].tlutList = (u8*) common_texture_particle_leaf;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].unk_044 = arg1[1];
     switch (gCurrentCourseId) {
@@ -2955,7 +2956,7 @@ void init_obj_lakitu_red_flag_countdown(s32 objectIndex, s32 arg1) {
         D_8018D168 = 0;
     }
     init_texture_object(objectIndex, (u8 *) common_tlut_lakitu_countdown, gTextureLakituNoLights1, 0x38U, (u16) 0x00000048);
-    gObjectList[objectIndex].vertex = D_0D005EB0;
+    gObjectList[objectIndex].vertex = common_vtx_lakitu;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     set_object_flag_status_false(objectIndex, 0x00000010);
     func_80072488(objectIndex);
@@ -3045,10 +3046,10 @@ void init_obj_lakitu_red_flag(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, common_tlut_lakitu_checkered_flag, gTextureLakituCheckeredFlag01, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, (u8*) common_tlut_lakitu_checkered_flag, gTextureLakituCheckeredFlag01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
-    temp_v0->vertex = D_0D006730;
+    temp_v0->vertex = common_vtx_also_lakitu;
     temp_v0->pos[2] = 5000.0f;
     temp_v0->pos[1] = 5000.0f;
     temp_v0->pos[0] = 5000.0f;
@@ -3122,7 +3123,7 @@ void func_8007993C(s32 objectIndex, Player *player) {
 
 void init_obj_lakitu_red_flag_fishing(s32 objectIndex, s32 arg1) {
     func_800791F0(objectIndex, arg1);
-    init_texture_object(objectIndex, common_tlut_lakitu_fishing, gTextureLakituFishing1, 0x38U, (u16) 0x00000048);
+    init_texture_object(objectIndex, (u8*) common_tlut_lakitu_fishing, gTextureLakituFishing1, 0x38U, (u16) 0x00000048);
     gObjectList[objectIndex].vertex = D_0D005F30;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     func_80086E70(objectIndex);
@@ -3295,10 +3296,10 @@ void func_8007A060(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, common_tlut_lakitu_second_lap, gTextureLakituSecondLap01, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, (u8*) common_tlut_lakitu_second_lap, gTextureLakituSecondLap01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
-    temp_v0->vertex = D_0D006730;
+    temp_v0->vertex = common_vtx_also_lakitu;
     temp_v0->pos[2] = 5000.0f;
     temp_v0->pos[1] = 5000.0f;
     temp_v0->pos[0] = 5000.0f;
@@ -3343,10 +3344,10 @@ void func_8007A228(s32 objectIndex, s32 playerIndex) {
     Objects *temp_v0;
 
     func_800791F0(objectIndex, playerIndex);
-    init_texture_object(objectIndex, common_tlut_lakitu_final_lap, gTextureLakituFinalLap01, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, (u8*) common_tlut_lakitu_final_lap, gTextureLakituFinalLap01, 0x48U, (u16) 0x00000038);
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->activeTexture = D_8018C028;
-    temp_v0->vertex = D_0D006730;
+    temp_v0->vertex = common_vtx_also_lakitu;
     temp_v0->pos[2] = 5000.0f;
     temp_v0->pos[1] = 5000.0f;
     temp_v0->pos[0] = 5000.0f;
@@ -3390,9 +3391,9 @@ void update_object_lakitu_final_lap(s32 objectIndex, s32 playerIndex) {
 void func_8007A3F0(s32 objectIndex, s32 arg1) {
     f32 var = 5000.0f;
     func_800791F0(objectIndex, arg1);
-    init_texture_object(objectIndex, common_tlut_lakitu_reverse, gTextureLakituReverse01, 0x48U, (u16) 0x00000038);
+    init_texture_object(objectIndex, (u8*) common_tlut_lakitu_reverse, gTextureLakituReverse01, 0x48U, (u16) 0x00000038);
     gObjectList[objectIndex].activeTexture = D_8018C028;
-    gObjectList[objectIndex].vertex = D_0D006730;
+    gObjectList[objectIndex].vertex = common_vtx_also_lakitu;
     gObjectList[objectIndex].pos[2] = var;
     gObjectList[objectIndex].pos[1] = var;
     gObjectList[objectIndex].pos[0] = var;
@@ -3585,7 +3586,7 @@ void consume_item(s32 playerId) {
 
     player = &gPlayerOne[playerId];
     objectIndex = gItemWindowObjectByPlayerId[playerId];
-    itemWindow = &gObjectList[objectIndex];
+    itemWindow = (ItemWindowObjects *) &gObjectList[objectIndex];
     if (itemWindow->currentItem == ITEM_SUPER_MUSHROOM) {
         if (func_80072354(objectIndex, 2) != 0) {
             func_800722A4(objectIndex, 2);
@@ -3638,7 +3639,7 @@ u8 gen_random_item(s16 rank, s16 isCpu)
             curve = segmented_to_virtual((void *) common_grand_prix_human_item_curve);
         }
         else {
-            curve = segmented_to_virtual((void *) common_grand_prix_cpu_item_curve);
+            curve = segmented_to_virtual((void *) common_grand_prix_kart_ai_item_curve);
         }
         randomItem =  *((rank * 100) + curve + sRandomItemIndex);
     }
@@ -3649,7 +3650,7 @@ u8 gen_random_item_human(UNUSED s16 arg0, s16 rank) {
     return gen_random_item(rank, FALSE);
 }
 
-u8 gen_random_item_cpu(UNUSED s32 arg0, s16 rank) {
+u8 kart_ai_gen_random_item(UNUSED s32 arg0, s16 rank) {
     return gen_random_item(rank, TRUE);
 }
 
@@ -3669,12 +3670,8 @@ s16 func_8007AFB0(s32 objectIndex, s32 arg1) {
     return randomItem;
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/yWKlx
-// More stupid register allocation nonsense
-
 s32 func_8007B040(s32 objectIndex, s32 playerId) {
-    s16 stackPadding;
+    UNUSED s16 stackPadding;
     s32 temp_v1;
     s32 var_a3;
     s32 var_t3;
@@ -3696,8 +3693,7 @@ s32 func_8007B040(s32 objectIndex, s32 playerId) {
             func_800C9060(playerId, 0x1900A058U);
         }
         var_t3 = 1;
-        gObjectList[objectIndex].unk_0A2 = var_v1;
-        gObjectList[objectIndex].itemDisplay = var_v1;
+        gObjectList[objectIndex].itemDisplay = gObjectList[objectIndex].unk_0A2 = var_v1;
     } else {
         for (var_v1_2 = 0; var_v1_2 < gPlayerCountSelection1; var_v1_2++) {
             temp_a0 = gItemWindowObjectByPlayerId[var_v1_2];
@@ -3711,11 +3707,11 @@ s32 func_8007B040(s32 objectIndex, s32 playerId) {
         }
         if (var_a3 != 0) {
             var_v1 = random_int(var_a3);
-            temp_v1 = sp50[var_v1];
-            gObjectList[objectIndex].unk_0D1 = temp_v1;
             temp_a1 = sp40[var_v1];
             gObjectList[objectIndex].unk_0A2 = temp_a1;
             gObjectList[objectIndex].itemDisplay = temp_a1;
+            temp_v1 = sp50[var_v1];
+            gObjectList[objectIndex].unk_0D1 = temp_v1;
             temp_a0 = gItemWindowObjectByPlayerId[temp_v1];
             sp38 = &gPlayerOne[temp_v1];
             func_800722A4(temp_a0, 1);
@@ -3730,9 +3726,6 @@ s32 func_8007B040(s32 objectIndex, s32 playerId) {
     }
     return var_t3;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/update_objects/func_8007B040.s")
-#endif
 
 void func_8007B254(s32 objectIndex, s32 arg1) {
     s8 test; // why?
@@ -3950,7 +3943,7 @@ void func_8007B34C(s32 playerId) {
             }
         }
     }
-    temp_t0->activeTLUT = gItemWindowTLUTs[temp_t0->itemDisplay];
+    temp_t0->activeTLUT = (u8*) gItemWindowTLUTs[temp_t0->itemDisplay];
     temp_t0->activeTexture = gItemWindowTextures[temp_t0->itemDisplay];
     sp38->currentItemCopy = temp_t0->type;
 }
@@ -4163,38 +4156,20 @@ void wrapper_update_boos(void) {
     update_boos();
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit d9d3d6575355663122de59f6b2882d8f174e2355 on Dec-27-2022
-void func_8007C360(s32 objectIndex, Camera *camera) {
-    Objects *sp20;
-    s32 sp1C;
-    s32 temp_t0;
-    s32 temp_t2;
-    s32 var_t1;
-    Objects *temp_a2;
+// Updates the display status on an object based on its relative direction to the camera
+void func_8007C360(s32 objectIndex, Camera* camera) {
+    u16 rot = camera->rot[1];
+    u16 temp = ((u16)(gObjectList[objectIndex].direction_angle[1] - rot + 0x8000) * 0x24) / 0x10000;
 
-    temp_a2 = &gObjectList[objectIndex];
-    temp_t0 = (((temp_a2->unk_0BE[1] - (u16) camera->rot[1]) + 0x8000) & 0xFFFF) * 0x24;
-    var_t1 = temp_t0 >> 0x10;
-    if (temp_t0 < 0) {
-        var_t1 = (s32) (temp_t0 + 0xFFFF) >> 0x10;
+    if (temp < 0x13) {
+        set_object_flag_status_false(objectIndex, 0x80);
+        gObjectList[objectIndex].itemDisplay = temp;
+    } else {
+        set_object_flag_status_true(objectIndex, 0x80);
+        gObjectList[objectIndex].itemDisplay = 0x24 - temp;
     }
-    temp_t2 = var_t1 & 0xFFFF;
-    if (temp_t2 < 0x13) {
-        sp20 = temp_a2;
-        sp1C = temp_t2;
-        set_object_flag_status_false(objectIndex, 0x00000080);
-        temp_a2->itemDisplay = (s8) sp1C;
-        return;
-    }
-    sp20 = temp_a2;
-    sp1C = temp_t2;
-    set_object_flag_status_true(objectIndex, 0x00000080);
-    temp_a2->itemDisplay = 0x24 - temp_t2;
+
 }
-#else
-GLOBAL_ASM("asm/non_matchings/update_objects/func_8007C360.s")
-#endif
 
 void func_8007C420(s32 objectIndex, Player *player, Camera *camera) {
     f32 x;
@@ -4210,34 +4185,28 @@ UNUSED void func_8007C49C(void) {
 
 }
 
-#ifdef MIPS_TO_C
-//generated by m2c commit 9841ff34ca242f5f14b2eab2b54a7a65ac47d80f
+#ifdef NON_MATCHING
+// https://decomp.me/scratch/IH8Vx
+// No idea what the source of the diff is
 void func_8007C4A4(s32 objectIndex) {
-    Objects *sp20;
-    s32 sp1C;
-    s32 temp_t0;
     s32 temp_t8;
-    s32 var_t9;
-    Objects *temp_v1;
+    s32 var_t1;
 
-    temp_v1 = &gObjectList[objectIndex];
-    temp_t8 = temp_v1->unk_0BE[1] * 0x24;
-    var_t9 = temp_t8 >> 0x10;
+    temp_t8 = gObjectList[objectIndex].direction_angle[1] * 0x24;
+    var_t1 = temp_t8 >> 0x10;
     if (temp_t8 < 0) {
-        var_t9 = (s32) (temp_t8 + 0xFFFF) >> 0x10;
+        var_t1 = temp_t8 + 0xFFFF;
+        var_t1 >>= 0x10;
     }
-    temp_t0 = var_t9 & 0xFFFF;
-    if (temp_t0 < 0x13) {
-        sp20 = temp_v1;
-        sp1C = temp_t0;
-        set_object_flag_status_false(objectIndex, 0x00000080);
-        temp_v1->itemDisplay = (s8) sp1C;
-        return;
+    var_t1 &= 0xFFFF;
+    if (var_t1 < 0x13) {
+        set_object_flag_status_false(objectIndex, 0x80);
+        gObjectList[objectIndex].itemDisplay = var_t1;
     }
-    sp20 = temp_v1;
-    sp1C = temp_t0;
-    set_object_flag_status_true(objectIndex, 0x00000080);
-    temp_v1->itemDisplay = 0x24 - temp_t0;
+    else {
+        set_object_flag_status_true(objectIndex, 0x80);
+        gObjectList[objectIndex].itemDisplay = 0x24 - var_t1;
+    }
 }
 #else
 GLOBAL_ASM("asm/non_matchings/update_objects/func_8007C4A4.s")
@@ -5487,7 +5456,7 @@ void func_8007F8D8(void) {
     }
     if (var_s4 != 0) {
         for (var_s0 = 0; var_s0 < 4; var_s0++, player++){
-            if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_CPU)) {
+            if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_KART_AI)) {
                 if (func_8007F75C(var_s0) != 0) break;
             }
         }
@@ -5966,9 +5935,8 @@ void func_80080DE4(s32 arg0) {
 }
 
 #ifdef NON_MATCHING
-extern f32 D_800E594C[][2];
-extern u16 D_800E597C[6];
-
+// https://decomp.me/scratch/YMJDJ
+// No idea what the problem is
 void func_80080E8C(s32 objectIndex1, s32 objectIndex2, s32 arg2) {
     u16 anAngle;
     f32 thing0;
@@ -6347,17 +6315,6 @@ void func_80081D34(s32 objectIndex) {
     }
 }
 
-#ifdef NON_MATCHING
-/**
- * Nonmatching due to regalloc stuff
- * The use of the `offset` variable is really really weird
- * The intent of the function appears to be choose a random mole from a given
- * group of moles (decided by arg1)
- * `offset` then would then be offsetting the indexing into gMoleSpawns
- * so that we choose the appropriate spawn location for that mole
- * But as its written, `offset` is triple what it ought to be.
- * So there' something kind of fucky happening
- **/
 void func_80081FF4(s32 objectIndex, s32 arg1) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
@@ -6401,13 +6358,17 @@ void func_80081FF4(s32 objectIndex, s32 arg1) {
             break;
         }
     }
-    gObjectList[objectIndex].origin_pos[0] = gMoleSpawns[var_v1][offset + 0] * xOrientation;
-    gObjectList[objectIndex].origin_pos[1] = gMoleSpawns[var_v1][offset + 1] - 9.0;
-    gObjectList[objectIndex].origin_pos[2] = gMoleSpawns[var_v1][offset + 2];
+    /*
+    Ideally `gMoleSpawns` wouldn't be a union at all and its just be a list of Vec3s
+    Even more ideally each mole group would have its own array for its spawns
+    gObjectList[objectIndex].origin_pos[0] = gMoleSpawns.asVec3sList[offset + var_v1][0] * xOrientation;
+    gObjectList[objectIndex].origin_pos[1] = gMoleSpawns.asVec3sList[offset + var_v1][1] - 9.0;
+    gObjectList[objectIndex].origin_pos[2] = gMoleSpawns.asVec3sList[offset + var_v1][2];
+    */
+    gObjectList[objectIndex].origin_pos[0] = gMoleSpawns.asFlatList[offset + (var_v1 * 3) + 0] * xOrientation;
+    gObjectList[objectIndex].origin_pos[1] = gMoleSpawns.asFlatList[offset + (var_v1 * 3) + 1] - 9.0;
+    gObjectList[objectIndex].origin_pos[2] = gMoleSpawns.asFlatList[offset + (var_v1 * 3) + 2];
 }
-#else
-GLOBAL_ASM("asm/non_matchings/update_objects/func_80081FF4.s")
-#endif
 
 void func_800821AC(s32 objectIndex, s32 arg1) {
     if (gObjectList[objectIndex].state != 0) {
@@ -6513,7 +6474,7 @@ void func_8008275C(s32 objectIndex) {
     case 2:
         func_8008B78C(objectIndex);
         vec3f_copy(gObjectList[objectIndex].unk_01C, gObjectList[objectIndex].pos);
-        func_8000D940(gObjectList[objectIndex].origin_pos, &gObjectList[objectIndex].unk_0C6, gObjectList[objectIndex].unk_034, 0.0f, 0);
+        func_8000D940(gObjectList[objectIndex].origin_pos, (s16 *) &gObjectList[objectIndex].unk_0C6, gObjectList[objectIndex].unk_034, 0.0f, 0);
         gObjectList[objectIndex].offset[0] *= 2.0;
         gObjectList[objectIndex].offset[1] *= 2.5;
         gObjectList[objectIndex].offset[2] *= 2.0;
@@ -6671,16 +6632,19 @@ void update_crabs(void) {
 }
 
 #ifdef NON_MATCHING
-// https://decomp.me/scratch/RquH0
-// Gollygee I sure love register allocation :^)
+// https://decomp.me/scratch/PYAg4
+// Stack issue caused by the `test` variable, but removing it causes much, much larger differences
 void func_80082F1C(s32 objectIndex, s32 arg1) {
+    YVFlagPoleSpawn *test;
     gObjectList[objectIndex].model = (Gfx *) d_course_yoshi_valley_unk5;
     gObjectList[objectIndex].vertex = (Vtx *) d_course_yoshi_valley_unk4;
     gObjectList[objectIndex].sizeScaling = 0.027f;
+    if (test->rot && test->rot) {}
+    test = &D_800E5DF4[arg1];
     func_80072488(objectIndex);
-    set_obj_origin_pos(objectIndex, D_800E5DF4[arg1].pos[0] * xOrientation, D_800E5DF4[arg1].pos[1], D_800E5DF4[arg1].pos[2]);
+    set_obj_origin_pos(objectIndex, test->pos[0] * xOrientation, test->pos[1], test->pos[2]);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
-    set_obj_direction_angle(objectIndex, 0U, D_800E5DF4[arg1].rot, 0U);
+    set_obj_direction_angle(objectIndex, 0U, test->rot, 0U);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/update_objects/func_80082F1C.s")
@@ -6721,7 +6685,7 @@ void func_8008311C(s32 objectIndex, s32 arg1) {
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->activeTLUT = d_course_yoshi_valley_hedgehog_tlut;
     temp_s0->activeTexture = d_course_yoshi_valley_hedgehog;
-    temp_s0->vertex = D_0D0060B0;
+    temp_s0->vertex = common_vtx_hedgehog;
     temp_s0->sizeScaling = 0.2f;
     temp_s0->itemDisplay = 0;
     func_80072488(objectIndex);
@@ -6777,7 +6741,7 @@ void func_800833D0(s32 objectIndex, s32 arg1) {
         break;
     }
     if (gObjectList[objectIndex].itemDisplay == 0) {
-        gObjectList[objectIndex].vertex = D_0D0060B0;
+        gObjectList[objectIndex].vertex = common_vtx_hedgehog;
     } else {
         gObjectList[objectIndex].vertex = D_0D006130;
     }
@@ -6920,7 +6884,7 @@ void func_80083A94(s32 objectIndex) {
 
 void func_80083B0C(s32 objectIndex) {
     init_texture_object(objectIndex, d_course_frappe_snowland_snowman_tlut, d_course_frappe_snowland_snowman_body, 0x40U, (u16) 0x00000040);
-    gObjectList[objectIndex].vertex = D_0D0060B0;
+    gObjectList[objectIndex].vertex = common_vtx_hedgehog;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].itemDisplay = 0;
     func_80072488(objectIndex);
@@ -7465,7 +7429,7 @@ void init_hot_air_balloon(s32 objectIndex) {
     func_800886F4(objectIndex);
     func_80086EF0(objectIndex);
     gObjectList[objectIndex].velocity[1] = -2.0f;
-    func_802A14BC(0.0f, 0.0f, 0.0f);
+    init_actor_hot_air_balloon_item_box(0.0f, 0.0f, 0.0f);
     func_80072488(objectIndex);
 }
 

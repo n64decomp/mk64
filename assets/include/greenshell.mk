@@ -22,7 +22,7 @@ $(GREENSHELL_FRAMES:%.png=%.mio0): %.mio0 : %.bin
 $(GREENSHELL_FRAMES:%.png=%.bin): %.bin : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(GREENSHELL_PALETTE)
 
-$(BUILD_DIR)/src/data/common_textures.inc.o: $(GREENSHELL_PALETTE:%.png=%.inc.c)
+$(BUILD_DIR)/src/data/common_textures.o: $(GREENSHELL_PALETTE:%.png=%.inc.c)
 
 $(GREENSHELL_PALETTE:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16

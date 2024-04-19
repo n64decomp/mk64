@@ -952,7 +952,7 @@ void func_800C3448(u32 arg0) {
 }
 
 void func_800C3478(void) {
-    for(D_800EA1E8; D_800EA1E4 != D_800EA1E8;) {
+    for (D_800EA1E8; D_800EA1E4 != D_800EA1E8;) {
         func_800C2A2C(D_80192CD0[D_800EA1E8++]);
     }
 }
@@ -1896,7 +1896,7 @@ GLOBAL_ASM("asm/non_matchings/audio/external/func_800C4FE4.s")
 
 // Seems somewhat similar to certain parts of `select_current_sounds` from SM64
 void func_800C5278(u8 bankId) {
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     u8 soundId;
     struct SoundCharacteristics sp60;
 
@@ -1962,7 +1962,7 @@ void func_800C550C(Vec3f *arg0) {
 }
 
 void func_800C5578(Vec3f *arg0, u32 soundBits) {
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     u8 bankId;
     u8 next;
     u8 curr;
@@ -1993,7 +1993,7 @@ void func_800C5578(Vec3f *arg0, u32 soundBits) {
 }
 
 void func_800C56F0(u32 soundBits) {
-    s32 stackPadding0;
+    UNUSED s32 stackPadding0;
     u8 bankId;
     u8 next;
     u8 curr;
@@ -2336,7 +2336,7 @@ void func_800C6758(u8 playerId) {
 void func_800C683C(u8 cameraId) {
     if ((D_800EA108 == 0) && (D_800EA0EC[cameraId] == 0)) {
         if (D_800E9E74[cameraId] != D_800E9E84[cameraId]) {
-            func_800C5578(D_800E9F7C[cameraId].pos, D_800E9E94[cameraId]);
+            func_800C5578(&D_800E9F7C[cameraId].pos, D_800E9E94[cameraId]);
             switch (D_800E9E74[cameraId]) {
                 case 3:
                     play_sound(SOUND_ACTION_TYRE_SQUEAL, &D_800E9F7C[cameraId].pos, cameraId, &D_800E9F14[cameraId], &D_800E9EF4[cameraId], (u8 *) &D_800E9F7C[cameraId].unk_14);
@@ -2453,7 +2453,7 @@ void func_800C683C(u8 cameraId) {
                     D_800E9E94[cameraId] = SOUND_ARG_LOAD(0x01, 0x00, 0xF0, 0x2B);
                     break;
                 default:
-                    func_800C5578(D_800E9F7C[cameraId].pos, D_800E9E94[cameraId]);
+                    func_800C5578(&D_800E9F7C[cameraId].pos, D_800E9E94[cameraId]);
                     break;
             }
         }
@@ -2672,7 +2672,7 @@ void func_800C76C0(u8 playerId) {
             func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
             func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFF, 0x2C));
             func_800C9018(playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x4C));
-            func_800C5578(D_800E9F7C[playerId].pos, D_800E9E94[playerId]);
+            func_800C5578(&D_800E9F7C[playerId].pos, D_800E9E94[playerId]);
             D_800E9E74[playerId] = 0;
             switch (gModeSelection) {               /* irregular */
                 case GRAND_PRIX:
@@ -3161,7 +3161,7 @@ void func_800C8F80(u8 arg0, u32 soundBits) {
 }
 
 void func_800C9018(u8 arg0, u32 soundBits) {
-    func_800C5578(D_800E9F7C[arg0].pos, soundBits);
+    func_800C5578(&D_800E9F7C[arg0].pos, soundBits);
 }
 
 void func_800C9060(u8 playerId, u32 soundBits) {
@@ -3312,11 +3312,11 @@ void func_800C94A4(u8 playerId) {
 }
 
 void func_800C97C4(u8 arg0) {
-    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x00));
-    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x14));
-    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x2E));
-    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x36));
-    func_800C5578(D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x3E));
+    func_800C5578(&D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x00));
+    func_800C5578(&D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x14));
+    func_800C5578(&D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x2E));
+    func_800C5578(&D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x36));
+    func_800C5578(&D_800E9F7C[arg0].pos, gPlayers[arg0].characterId + SOUND_ARG_LOAD(0x01, 0x04, 0xFF, 0x3E));
 }
 
 void func_800C98B8(Vec3f position, Vec3f velocity, u32 soundBits) {
@@ -3342,7 +3342,7 @@ void func_800C99E0(Vec3f arg0, s32 soundBits) {
         for(temp_t9 = 0; temp_t9 < D_800EA1C0 + 1; temp_t9++) {
             temp_v0 = func_800C21E8(arg0, soundBits);
             if (temp_v0 != NULL) {
-                func_800C5578(*temp_v0, soundBits);
+                func_800C5578(temp_v0, soundBits);
             }
         }
     }
@@ -3431,7 +3431,7 @@ void func_800C9EF4(Vec3f arg0, u32 soundBits) {
     for (i = 0; i < D_800EA1C0 + 1; i++) {
         temp = func_800C21E8(arg0, soundBits);
         if (temp != NULL) {
-            func_800C5578(*temp, soundBits);
+            func_800C5578(temp, soundBits);
         }
     }
 }
@@ -3659,7 +3659,7 @@ void func_800CA984(u8 arg0) {
 
 void func_800CAACC(u8 playerId) {
     if ((u8) D_800EA108 == 0) {
-        func_800C5578(*func_800C21E8(gPlayers[playerId].pos, SOUND_ITEM_STAR), SOUND_ITEM_STAR);
+        func_800C5578(func_800C21E8(gPlayers[playerId].pos, SOUND_ITEM_STAR), SOUND_ITEM_STAR);
     }
 }
 

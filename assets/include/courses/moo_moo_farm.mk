@@ -39,9 +39,9 @@ MOO_MOO_FARM_DIRT_PNG := $(MOO_MOO_FARM_DIR)/gTextureMooMooFarmDirt.png
 
 MOO_MOO_FARM_EXPORT_SENTINEL := $(MOO_MOO_FARM_DIR)/.export
 
-$(BUILD_DIR)/courses/moo_moo_farm/course_data.inc.o: $(MOLE_PALETTE:%.png=%.inc.c) $(MOLE_FRAMES:%.png=%.inc.c)
-$(BUILD_DIR)/courses/moo_moo_farm/course_data.inc.o: $(COW_PALETTE_IMPORT:%.png=%.inc.c)
-$(BUILD_DIR)/courses/moo_moo_farm/course_data.inc.o: $(MOO_MOO_FARM_DIRT_PNG:%.png=%.inc.c)
+$(BUILD_DIR)/courses/moo_moo_farm/course_data.o: $(MOLE_PALETTE:%.png=%.inc.c) $(MOLE_FRAMES:%.png=%.inc.c)
+$(BUILD_DIR)/courses/moo_moo_farm/course_data.o: $(COW_PALETTE_IMPORT:%.png=%.inc.c)
+$(BUILD_DIR)/courses/moo_moo_farm/course_data.o: $(MOO_MOO_FARM_DIRT_PNG:%.png=%.inc.c)
 
 $(MOLE_FRAMES:%.png=%.inc.c): %.inc.c : %.png
 	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(MOLE_PALETTE)

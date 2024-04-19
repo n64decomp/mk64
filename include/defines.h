@@ -38,8 +38,14 @@
  * D-pad DOWN  = MARIO
  *  
  */
-#define DEBUG_MODE 0
-#define DEBUG_MENU 1
+#if defined(GCC) || defined(DEBUG)
+  #define DEBUG_MODE 1
+  #define DEBUG_MENU 2
+#else
+  #define DEBUG_MODE 0
+  #define DEBUG_MENU 1
+#endif
+
 #define HOLD_ALL_DPAD_AND_C_BUTTONS (U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
 
 /**
@@ -88,13 +94,13 @@
 #define PLAYER_STAGING              (1 <<  9) // 0x0200
 #define PLAYER_UNKNOWN              (1 << 10) // 0x0400 // unused ?
 #define PLAYER_CINEMATIC_MODE       (1 << 11) // 0x0800 // Also used to track eliminations in Battle mode.
-#define PLAYER_CPU                  (1 << 12) // 0x1000
+#define PLAYER_KART_AI                  (1 << 12) // 0x1000
 #define PLAYER_START_SEQUENCE       (1 << 13) // 0x2000
 #define PLAYER_HUMAN                (1 << 14) // 0x4000
 #define PLAYER_EXISTS               (1 << 15) // 0x8000
 
 // Compiles to -0x1000 in diff.py
-#define PLAYER_HUMAN_AND_CPU PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_CPU | PLAYER_START_SEQUENCE
+#define PLAYER_HUMAN_AND_KART_AI PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_KART_AI | PLAYER_START_SEQUENCE
 
 #define ZERO_PLAYERS_SELECTED 0
 #define ONE_PLAYERS_SELECTED 1
@@ -290,7 +296,7 @@
 /**
  * @brief Item IDs
  */
-typedef enum {
+enum ITEMS {
     /* 0x00 */ ITEM_NONE = 0,
     /* 0x01 */ ITEM_BANANA,
     /* 0x02 */ ITEM_BANANA_BUNCH,
@@ -307,7 +313,22 @@ typedef enum {
     /* 0x0D */ ITEM_DOUBLE_MUSHROOM,
     /* 0x0E */ ITEM_TRIPLE_MUSHROOM,
     /* 0x0F */ ITEM_SUPER_MUSHROOM
-} ITEMS;
+};
+
+enum KART_AI_BEHAVIOURS {
+    BEHAVIOUR_NONE = 0,
+    BEHAVIOUR_1,
+    BEHAVIOUR_HOP,
+    BEHAVIOUR_3,
+    BEHAVIOUR_4,
+    BEHAVIOUR_5,
+    BEHAVIOUR_NORMAL_SPEED,
+    BEHAVIOUR_FAST_SPEED,
+    BEHAVIOUR_SLOW_SPEED,
+    BEHAVIOUR_9,
+    BEHAVIOUR_10,
+    BEHAVIOUR_MAX_SPEED
+};
 
 /**
  * @brief Balloon status
@@ -325,6 +346,7 @@ typedef enum {
  * @brief sound effect of player's
  * for soundEffect
  */
+#define HIT_SOUND_EFFECT          0x100 // hitting an object
 #define BOOST_SOUND_EFFECT        0x200 // being boosted by trigger a mushroom
 #define BOO_SOUND_EFFECT          0x800 // being a boo
 #define STAR_SOUND_EFFECT         0x2000 // being a star
@@ -344,6 +366,7 @@ typedef enum {
 #define BOOST_EFFECT                   0x2000 // being boosted by trigger a mushroom
 #define BOOST_RAMP_ASPHALT_EFFECT      0x100000 // being boosted by a boost pad
 #define HIT_BY_ITEM_EFFECT             0x2000000 // being hit by an item
+#define HIT_EFFECT                     0x4000000 // hitting an object
 #define LIGHTNING_EFFECT               0x40000000 // being hit by lightning
 #define BOO_EFFECT                     0x80000000 // being a boo
 

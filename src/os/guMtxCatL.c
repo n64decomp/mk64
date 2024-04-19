@@ -34,6 +34,7 @@
 #include <PR/gu.h>
 
 void guMtxXFMF(Mtx *, float, float, float, float *, float *, float *);
+void guMtxCatF(float mf[4][4], float nf[4][4], float res[4][4]);
 
 void guMtxCatL(Mtx *m, Mtx *n, Mtx *res) {
 	float	mf[4][4], nf[4][4], resf[4][4];
@@ -51,5 +52,5 @@ void guMtxXFML(Mtx *m, float x, float y, float z, float *ox, float *oy, float *o
 
 	guMtxL2F(mf, m);
 
-	guMtxXFMF(mf, x, y, z, ox, oy, oz);
+	guMtxXFMF((Mtx *)mf, x, y, z, ox, oy, oz);
 }
