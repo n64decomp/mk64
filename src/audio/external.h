@@ -52,7 +52,7 @@ struct Sound {
     /* 0x09 */ // u8  compilerPadding0[3];
 	/* 0x0C */ f32 *unk0C;
 	/* 0x10 */ f32 *unk10;
-	/* 0x14 */ u8  *unk14;
+	/* 0x14 */ s8  *unk14;
 }; // size = 0x18
 
 struct Unk_800E9F7C {
@@ -150,12 +150,12 @@ typedef struct {
     /* 0x011 */ u8  unk_011;
     /* 0x012 */ u8  unk_012;
     /* 0x013 */ u8  unk_013;
-    /* 0x014 */ s32 unk_014;
+    /* 0x014 */ u32 unk_014;
     /* 0x018 */ u16 unk_018;
     /* 0x01A */ u16 unk_01A;
-    /* 0x01C */ s32 unk_01C;
-    /* 0x020 */ s32 unk_020;
-    /* 0x024 */ s32 unk_024;
+    /* 0x01C */ f32 unk_01C;
+    /* 0x020 */ f32 unk_020;
+    /* 0x024 */ f32 unk_024;
     /* 0x028 */ u16 unk_028;
     /* 0x02A */ u16 unk_02A;
     /* 0x02C */ u32 unk_02C[5]; // Array size guessed
@@ -229,7 +229,7 @@ void func_800C3F70(void);
 void func_800C400C(void);
 void func_800C4084(u16);
 void func_800C40F0(u8);
-void play_sound(u32, Vec3f*, u8, f32*, f32*, u8*);
+void play_sound(u32, Vec3f*, u8, f32*, f32*, s8*);
 void func_800C41CC(u8, struct SoundCharacteristics*);
 void func_800C4398(void);
 void delete_sound_from_bank(u8, u8);

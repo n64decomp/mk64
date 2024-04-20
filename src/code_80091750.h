@@ -400,11 +400,6 @@ void func_800AF740(struct_8018D9E0_entry*);
 void rmonPrintf(const char *, ...);
 void tkmk00decode(u8*, u8*, u8*, s32);
 
-typedef struct struct_8018EE10_entry_cont {
-    struct_8018EE10_entry arr[1];
-
-} struct_8018EE10_entry_cont;
-
 /* File specific defines */
 
 #define D_8018D9E0_SIZE 0x20
@@ -426,7 +421,7 @@ extern u16 *D_8018D9B0;
 extern u8 *D_8018D9B4;
 extern u8 *D_8018D9B8;
 extern u8 *D_8018D9BC;
-extern struct_8018EE10_entry_cont *D_8018D9C0;
+extern void *D_8018D9C0;
 extern s8 gGPPointsByCharacterId[8];
 extern s8 gCharacterIdByGPOverallRank[];
 extern s8 D_8018D9D8;
