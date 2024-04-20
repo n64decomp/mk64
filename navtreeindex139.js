@@ -1,7 +1,5 @@
 var NAVTREEINDEX139 =
 {
-"yoshi__valley_2course__displaylists_8inc_8c.html#aad75874f0f901cf4a5890fb03688418c":[8,0,0,19,2,0],
-"yoshi__valley_2course__displaylists_8inc_8c.html#aae5c73385c2003262180b3ef5a6e23b0":[8,0,0,19,2,131],
 "yoshi__valley_2course__displaylists_8inc_8c.html#aaebaf9070a4340810923f0acf6b5c8e5":[8,0,0,19,2,183],
 "yoshi__valley_2course__displaylists_8inc_8c.html#aaf29d6c4358629767688cae0c5d3ffa4":[8,0,0,19,2,34],
 "yoshi__valley_2course__displaylists_8inc_8c.html#ab219e48a5917b46c72501cb06d1606fb":[8,0,0,19,2,27],
@@ -249,5 +247,7 @@ var NAVTREEINDEX139 =
 "yoshi__valley_2course__displaylists_8inc_8h.html#ab2ae79631aebcbf9d91258382f9d0c00":[8,0,0,19,3,85],
 "yoshi__valley_2course__displaylists_8inc_8h.html#ab2bd37fa7e0161281f16326ca3c193b4":[8,0,0,19,3,237],
 "yoshi__valley_2course__displaylists_8inc_8h.html#ab8f7b2ead0111d0632413f4ecbbe10c5":[8,0,0,19,3,36],
-"yoshi__valley_2course__displaylists_8inc_8h.html#abb9b173142295c3707b6ad72a2271e13":[8,0,0,19,3,45]
+"yoshi__valley_2course__displaylists_8inc_8h.html#abb9b173142295c3707b6ad72a2271e13":[8,0,0,19,3,45],
+"yoshi__valley_2course__displaylists_8inc_8h.html#abbe8d066b8de93ed9a032160c9f730ba":[8,0,0,19,3,40],
+"yoshi__valley_2course__displaylists_8inc_8h.html#abbf2a9fb57233daf274feba1c6cce6e5":[8,0,0,19,3,69]
 };

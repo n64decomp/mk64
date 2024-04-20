@@ -1,7 +1,5 @@
 var NAVTREEINDEX130 =
 {
-"toads__turnpike_2course__displaylists_8inc_8c.html#a5f609f1615379d2ae713f7fb21b4f5f6":[8,0,0,17,2,116],
-"toads__turnpike_2course__displaylists_8inc_8c.html#a667105265cd62b7ef7077734de9c86e6":[8,0,0,17,2,105],
 "toads__turnpike_2course__displaylists_8inc_8c.html#a66f95a737b3c803b94566c8bde653d6b":[8,0,0,17,2,53],
 "toads__turnpike_2course__displaylists_8inc_8c.html#a6b0967b2083010129567e7e03d264d84":[8,0,0,17,2,114],
 "toads__turnpike_2course__displaylists_8inc_8c.html#a6bcf5b2a6f1cc35c9fed0fb24846eb40":[8,0,0,17,2,55],
@@ -249,5 +247,7 @@ var NAVTREEINDEX130 =
 "toads__turnpike_2course__textures_8linkonly_8h.html#a005ad0960518d21efeed2aeb637cb545":[8,0,0,17,6,9],
 "toads__turnpike_2course__textures_8linkonly_8h.html#a339e3eb98f113adaa8781403c364b257":[8,0,0,17,6,12],
 "toads__turnpike_2course__textures_8linkonly_8h.html#a3f8d9e8916858119240016d34b35af68":[8,0,0,17,6,14],
-"toads__turnpike_2course__textures_8linkonly_8h.html#a44b76b898a149ff5e340b27367727fbb":[8,0,0,17,6,8]
+"toads__turnpike_2course__textures_8linkonly_8h.html#a44b76b898a149ff5e340b27367727fbb":[8,0,0,17,6,8],
+"toads__turnpike_2course__textures_8linkonly_8h.html#a4f4f98f79ebf59f47ab1f45d9c65a12e":[8,0,0,17,6,10],
+"toads__turnpike_2course__textures_8linkonly_8h.html#a5cc59c0e8d009ec4e3b1193150a51f60":[8,0,0,17,6,5]
 };

@@ -5,5 +5,5 @@ var structSound =
     [ "soundBits", "structSound.html#a76da5ca3575e9d2752a7fc7dad75723d", null ],
     [ "unk0C", "structSound.html#a19b4ab45a574128c12423c7ae6fa693e", null ],
     [ "unk10", "structSound.html#a70931607825e2e45674276b664a25621", null ],
-    [ "unk14", "structSound.html#a7b891a235400e040b80f9b82b5542458", null ]
+    [ "unk14", "structSound.html#ae9563d52dd89f0da38cbecc620c0b31d", null ]
 ];

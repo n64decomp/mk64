@@ -164,7 +164,7 @@ var searchData=
   ['piranhaplant_161',['PiranhaPlant',['../structPiranhaPlant.html',1,'']]],
   ['pixel_5findex_5farray_162',['pixel_index_array',['../structstruct__D__802BFB80__8.html#a44fcc092ef129c832b1b29eece8fa985',1,'struct_D_802BFB80_8::pixel_index_array'],['../structstruct__D__802BFB80__4.html#a1d7dabc9a32435456f09a063c4bed20d',1,'struct_D_802BFB80_4::pixel_index_array']]],
   ['play_5fcutscene_163',['play_cutscene',['../ceremony__and__credits_8c.html#a2852fa12f61b0e487abbeeebdd0419b6',1,'play_cutscene(struct CinematicCamera *camera):&#160;ceremony_and_credits.c'],['../ceremony__and__credits_8h.html#a3aec6aac2db4813def828253dff1ffb0',1,'play_cutscene(struct CinematicCamera *):&#160;ceremony_and_credits.c']]],
-  ['play_5fsound_164',['play_sound',['../external_8c.html#a4227847f3da303aee53cf69d2760a595',1,'external.c']]],
+  ['play_5fsound_164',['play_sound',['../external_8c.html#a475cff796211891556f52877cd8e9b9e',1,'external.c']]],
   ['play_5fsound2_165',['play_sound2',['../external_8c.html#afadd9eacb33a057bc8c1caaab7ab5a84',1,'external.c']]],
   ['play_5fsound_5fballoon_5fpop_166',['play_sound_balloon_pop',['../ceremony__and__credits_8c.html#adae3f4abd4e0289e0d9ab9c961c4abb5',1,'play_sound_balloon_pop(UNUSED struct CinematicCamera *camera):&#160;ceremony_and_credits.c'],['../ceremony__and__credits_8h.html#a57c8953888a5d8c66b9c62641f9da689',1,'play_sound_balloon_pop(struct CinematicCamera *):&#160;ceremony_and_credits.h']]],
   ['play_5fsound_5fbefore_5fdespawn_167',['play_sound_before_despawn',['../actors_8c.html#a12dc3ccac4c7d8569eadac0af4fd6f9f',1,'actors.c']]],

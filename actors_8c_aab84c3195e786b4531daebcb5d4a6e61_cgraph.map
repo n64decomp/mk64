@@ -1,7 +1,9 @@
 <map id="play_sound_on_destructible_actor_collision" name="play_sound_on_destructible_actor_collision">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,208,45"/>
-<area shape="rect" id="Node000002" href="$external_8c.html#acb60983213d09ee795e80ca3c8b5975e" title=" " alt="" coords="256,13,379,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,23,242,23,242,28,208,28"/>
-<area shape="rect" id="Node000003" href="$external_8c.html#a4227847f3da303aee53cf69d2760a595" title=" " alt="" coords="427,13,523,38"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="379,23,413,23,413,28,379,28"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,23,208,63"/>
+<area shape="rect" id="Node000002" href="$external_8c.html#acb60983213d09ee795e80ca3c8b5975e" title=" " alt="" coords="256,31,379,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,41,242,41,242,46,208,46"/>
+<area shape="rect" id="Node000003" href="$external_8c.html#a747de0be4005b4b29150d5c068564b7d" title=" " alt="" coords="427,5,549,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="378,32,413,26,413,32,379,37"/>
+<area shape="rect" id="Node000004" href="$external_8c.html#a475cff796211891556f52877cd8e9b9e" title=" " alt="" coords="440,55,536,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="379,49,427,56,426,61,378,55"/>
 </map>

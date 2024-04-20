@@ -1,7 +1,9 @@
 <map id="update_actor_railroad_crossing" name="update_actor_railroad_crossing">
-<area shape="rect" id="Node000001" title="Updates the railroad crossing actor. Actor used in Kalimari Desert. Make the sound of the bell when t..." alt="" coords="5,5,169,45"/>
-<area shape="rect" id="Node000002" href="$external_8c.html#acb60983213d09ee795e80ca3c8b5975e" title=" " alt="" coords="217,13,340,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,23,203,23,203,28,170,28"/>
-<area shape="rect" id="Node000003" href="$external_8c.html#a4227847f3da303aee53cf69d2760a595" title=" " alt="" coords="388,13,484,38"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="340,23,374,23,374,28,340,28"/>
+<area shape="rect" id="Node000001" title="Updates the railroad crossing actor. Actor used in Kalimari Desert. Make the sound of the bell when t..." alt="" coords="5,23,169,63"/>
+<area shape="rect" id="Node000002" href="$external_8c.html#acb60983213d09ee795e80ca3c8b5975e" title=" " alt="" coords="217,31,340,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="170,41,203,41,203,46,170,46"/>
+<area shape="rect" id="Node000003" href="$external_8c.html#a747de0be4005b4b29150d5c068564b7d" title=" " alt="" coords="388,5,511,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="340,32,374,26,375,32,341,37"/>
+<area shape="rect" id="Node000004" href="$external_8c.html#a475cff796211891556f52877cd8e9b9e" title=" " alt="" coords="401,55,497,80"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="341,49,388,56,387,61,340,55"/>
 </map>
