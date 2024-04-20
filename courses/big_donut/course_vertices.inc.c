@@ -1,5 +1,5 @@
 #include "types.h"
-#include "courses/course_macro.h"
+#include <mk64.h>
 
 CourseVtx d_course_big_donut_vertex[] = {
     {{  609,     270,     794}, {  1024,  1024}, {MACRO_COLOR_FLAG(0x48, 0x48, 0xfc, 0), 0x00}},

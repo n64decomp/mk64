@@ -1,5 +1,5 @@
 #include "types.h"
-#include "courses/course_macro.h"
+#include <mk64.h>
 
 CourseVtx d_course_banshee_boardwalk_vertex[] = {
     {{-1384,      12,    -187}, {  2303,  -256}, {MACRO_COLOR_FLAG(0x7c, 0x7c, 0x7c, 0), 0x00}},

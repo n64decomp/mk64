@@ -1,5 +1,5 @@
 #include "types.h"
-#include "courses/course_macro.h"
+#include <mk64.h>
 
 CourseVtx d_course_kalimari_desert_vertex[] = {
     {{  -702,      48,   -1930}, {  2048,     0}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 4), 0x00}},

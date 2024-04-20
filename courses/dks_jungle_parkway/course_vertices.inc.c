@@ -1,5 +1,5 @@
 #include "types.h"
-#include "courses/course_macro.h"
+#include <mk64.h>
 
 CourseVtx d_course_dks_jungle_parkway_vertex[] = {
     {{-1842,     199,    -812}, {  1024,     0}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 0), 0x00}},

@@ -1,5 +1,5 @@
 #include "types.h"
-#include "courses/course_macro.h"
+#include <mk64.h>
 
 CourseVtx d_course_block_fort_vertex[] = {
     {{   85,       0,     476}, {     0,     0}, {MACRO_COLOR_FLAG(0xb8, 0xb0, 0xcc, 0), 0x00}},

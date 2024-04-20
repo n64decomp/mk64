@@ -1,5 +1,5 @@
 #include "types.h"
-#include "courses/course_macro.h"
+#include <mk64.h>
 
 CourseVtx d_course_frappe_snowland_vertex[] = {
     {{-1518,      50,    1102}, {  4095,     0}, {MACRO_COLOR_FLAG(0xb4, 0xc8, 0xfc, 0), 0x00}},
