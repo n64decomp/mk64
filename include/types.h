@@ -5,6 +5,12 @@
 #include <common_structs.h>
 #include "camera.h"
 
+typedef struct {
+    /* 0x0 */ s16 waypointStart;
+    /* 0x2 */ s16 waypointEnd;
+    /* 0x4 */ s32 type;
+} KartAIBehaviour; // size = 0x8
+
 enum SpTaskState {
     SPTASK_STATE_NOT_STARTED,
     SPTASK_STATE_RUNNING,

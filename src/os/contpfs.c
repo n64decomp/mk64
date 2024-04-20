@@ -212,7 +212,9 @@ s32 __osCheckId(OSPfs *pfs)
         if (ret != 2)
             return ret;
         else
+        {
             ERRCK(__osContRamRead(pfs->queue, pfs->channel, 1, (u8*)temp));
+        }
     }
 
     for (k = 0; k < ARRLEN(temp); k++)

@@ -96,7 +96,7 @@ UNUSED void func_80282050(Vec3f dest, Vec3f src, s16 angle) {
     dest[2] = (sp2C[2] * coss(angle)) - (sp2C[0] * sins(angle));
 }
 
-UNUSED void func_802820F8(f32 *dest, f32 *src, s16 angle) {
+UNUSED void func_802820F8(Vec3f dest, Vec3f src, s16 angle) {
     Vec3f sp2C;
 
     vec3f_copy_return_dupe(sp2C, src);

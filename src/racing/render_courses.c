@@ -1424,13 +1424,13 @@ void func_80295D88(void) {
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             // d_course_mario_raceway_packed_dl_1140
-            set_vertex_data_with_defaults((uintptr_t)0x07001140);
+            set_vertex_data_with_defaults((Gfx *)0x07001140);
             if (gScreenModeSelection == SCREEN_MODE_1P) {
                 // d_course_mario_raceway_packed_dl_8E8
-                set_vertex_data_with_defaults((uintptr_t)0x070008E8);
+                set_vertex_data_with_defaults((Gfx *)0x070008E8);
             } else {
                 // d_course_mario_raceway_packed_dl_2D68
-                set_vertex_data_with_defaults((uintptr_t)0x07002D68);
+                set_vertex_data_with_defaults((Gfx *)0x07002D68);
             }
             parse_course_displaylists((uintptr_t) d_course_mario_raceway_addr);
             func_80295C6C();
@@ -1485,7 +1485,7 @@ void func_80295D88(void) {
             D_8015F8E4 = -80.0f;
             break;
         case COURSE_YOSHI_VALLEY:
-            func_802B5D64(&d_course_yoshi_valley_lights4, -0x38F0, 0x1C70, 1);
+            func_802B5D64((uintptr_t) &d_course_yoshi_valley_lights4, -0x38F0, 0x1C70, 1);
             parse_course_displaylists((uintptr_t) d_course_yoshi_valley_addr);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
@@ -1585,22 +1585,22 @@ void func_80295D88(void) {
             break;
         case COURSE_BLOCK_FORT:
             // d_course_block_fort_packed_dl_15C0
-            set_vertex_data_with_default_section_id((uintptr_t)0x070015C0, 1);
+            set_vertex_data_with_default_section_id((Gfx *)0x070015C0, 1);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
         case COURSE_SKYSCRAPER:
             // d_course_skyscraper_packed_dl_1110
-            set_vertex_data_with_default_section_id((uintptr_t)0x07001110, 1);
+            set_vertex_data_with_default_section_id((Gfx *)0x07001110, 1);
             // d_course_skyscraper_packed_dl_258
-            set_vertex_data_with_default_section_id((uintptr_t)0x07000258, 1);
+            set_vertex_data_with_default_section_id((Gfx *)0x07000258, 1);
             func_80295C6C();
 
             D_8015F8E4 = -480.0f;
             break;
         case COURSE_DOUBLE_DECK:
             // d_course_double_deck_packed_dl_738
-            set_vertex_data_with_default_section_id((uintptr_t)0x07000738, 1);
+            set_vertex_data_with_default_section_id((Gfx *)0x07000738, 1);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
             break;
@@ -1613,15 +1613,15 @@ void func_80295D88(void) {
             break;
         case COURSE_BIG_DONUT:
             // d_course_big_donut_packed_dl_1018
-            set_vertex_data_with_default_section_id((uintptr_t)0x07001018, 6);
+            set_vertex_data_with_default_section_id((Gfx *)0x07001018, 6);
             // d_course_big_donut_packed_dl_450
-            set_vertex_data_with_default_section_id((uintptr_t)0x07000450, 6);
+            set_vertex_data_with_default_section_id((Gfx *)0x07000450, 6);
             // d_course_big_donut_packed_dl_AC0
-            set_vertex_data_with_default_section_id((uintptr_t)0x07000AC0, 6);
+            set_vertex_data_with_default_section_id((Gfx *)0x07000AC0, 6);
             // d_course_big_donut_packed_dl_B58
-            set_vertex_data_with_default_section_id((uintptr_t)0x07000B58, 6);
+            set_vertex_data_with_default_section_id((Gfx *)0x07000B58, 6);
             // d_course_big_donut_packed_dl_230
-            set_vertex_data_with_default_section_id((uintptr_t)0x07000230, 6);
+            set_vertex_data_with_default_section_id((Gfx *)0x07000230, 6);
             func_80295C6C();
             D_8015F8E4 = 100.0f;
             break;

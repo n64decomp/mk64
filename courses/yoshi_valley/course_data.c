@@ -7407,7 +7407,7 @@ Gfx d_course_yoshi_valley_dl_D540[] =
 
 
 // 0xD780
-TrackWaypoint d_course_yoshi_valley_unknown_waypoints0[] = {
+TrackWaypoint d_course_yoshi_valley_unknown_waypoints[] = {
     {-3, 0, -4, 0},
     {-3, 0, -20, 0},
     {-3, 0, -261, 0},
@@ -7483,7 +7483,7 @@ TrackWaypoint d_course_yoshi_valley_unknown_waypoints0[] = {
     {-32768, 0, 0, 0},
 };
 
-TrackWaypoint d_course_yoshi_valley_unknown_waypoints1[] = {
+TrackWaypoint d_course_yoshi_valley_unknown_waypoints_2[] = {
     {-6, 0, -5, 1},
     {-6, 0, -21, 1},
     {-5, 0, -434, 1},
@@ -7560,7 +7560,7 @@ TrackWaypoint d_course_yoshi_valley_unknown_waypoints1[] = {
     {-32768, 0, 0, 0},
 };
 
-TrackWaypoint d_course_yoshi_valley_unknown_waypoints2[] = {
+TrackWaypoint d_course_yoshi_valley_unknown_waypoints_3[] = {
     {-3, 0, -3, 4},
     {-3, 0, -19, 4},
     {0, 0, -268, 4},
@@ -7645,7 +7645,7 @@ TrackWaypoint d_course_yoshi_valley_unknown_waypoints2[] = {
     {-32768, 0, 0, 0},
 };
 
-TrackWaypoint d_course_yoshi_valley_unknown_waypoints3[] = {
+TrackWaypoint d_course_yoshi_valley_unknown_waypoints_4[] = {
     {-2, 0, -1, 7},
     {0, 0, -18, 7},
     {-2, 0, -268, 7},
@@ -7733,7 +7733,7 @@ TrackWaypoint d_course_yoshi_valley_unknown_waypoints3[] = {
     {-32768, 0, 0, 0},
 };
 
-TrackWaypoint d_course_yoshi_valley_track_waypoints0[] = {
+TrackWaypoint d_course_yoshi_valley_track_waypoints[] = {
     {-3, 180, -12, 1},
     {-3, 180, -32, 2},
     {-3, 180, -52, 2},
@@ -8414,7 +8414,7 @@ TrackWaypoint d_course_yoshi_valley_track_waypoints0[] = {
     {-32768, -32768, -32768, 0},
 };
 
-TrackWaypoint d_course_yoshi_valley_track_waypoints1[] = {
+TrackWaypoint d_course_yoshi_valley_track_waypoints_2[] = {
     {-6, 180, -13, 1},
     {-5, 180, -33, 2},
     {-5, 180, -53, 2},
@@ -9084,7 +9084,7 @@ TrackWaypoint d_course_yoshi_valley_track_waypoints1[] = {
     {-32768, -32768, -32768, 0},
 };
 
-TrackWaypoint d_course_yoshi_valley_track_waypoints2[] = {
+TrackWaypoint d_course_yoshi_valley_track_waypoints_3[] = {
     {-3, 180, -11, 1},
     {-2, 180, -31, 2},
     {-2, 180, -51, 2},
@@ -9766,7 +9766,7 @@ TrackWaypoint d_course_yoshi_valley_track_waypoints2[] = {
     {-32768, -32768, -32768, 0},
 };
 
-TrackWaypoint d_course_yoshi_valley_track_waypoints3[] = {
+TrackWaypoint d_course_yoshi_valley_track_waypoints_4[] = {
     {-1, 180, -9, 1},
     {0, 180, -29, 2},
     {0, 180, -49, 2},
@@ -10886,7 +10886,7 @@ u32 d_course_yoshi_valley_unk5[] = {
     0x00000000,
     0x00000007,
     0x00000000,
-    d_course_yoshi_valley_dl_142C0,
+    (u32) d_course_yoshi_valley_dl_142C0,
     0x00000000,
     0x00000000,
     0x00000000,
@@ -10908,7 +10908,7 @@ u32 d_course_yoshi_valley_unk5[] = {
     0x00000000,
     0x00000007,
     0x00000000,
-    d_course_yoshi_valley_dl_143C8,
+    (u32) d_course_yoshi_valley_dl_143C8,
     0x00000000,
     0x00000000,
     0x00000000,
@@ -10919,7 +10919,7 @@ u32 d_course_yoshi_valley_unk5[] = {
     0x00000000,
     0x00000007,
     0x00000000,
-    d_course_yoshi_valley_dl_144A8,
+    (u32) d_course_yoshi_valley_dl_144A8,
     0x000001cc,
     0x00000000,
     0x00000000,
@@ -10930,7 +10930,7 @@ u32 d_course_yoshi_valley_unk5[] = {
     0x00000000,
     0x00000007,
     0x00000000,
-    d_course_yoshi_valley_dl_14500,
+    (u32) d_course_yoshi_valley_dl_14500,
     0x000001cc,
     0x00000000,
     0x00000000,
@@ -10941,7 +10941,7 @@ u32 d_course_yoshi_valley_unk5[] = {
     0x00000000,
     0x00000007,
     0x00000000,
-    d_course_yoshi_valley_dl_14558,
+    (u32) d_course_yoshi_valley_dl_14558,
     0x00000158,
     0x00000000,
     0x00000000,
@@ -10952,7 +10952,7 @@ u32 d_course_yoshi_valley_unk5[] = {
     0x00000000,
     0x00000007,
     0x00000000,
-    d_course_yoshi_valley_dl_145D0,
+    (u32) d_course_yoshi_valley_dl_145D0,
     0x00000120,
     0x00000000,
     0x00000000,
@@ -11439,7 +11439,7 @@ Gfx *d_course_yoshi_valley_dl_list[] = {
     d_course_yoshi_valley_dl_40, d_course_yoshi_valley_dl_3F0,
     d_course_yoshi_valley_dl_290, d_course_yoshi_valley_dl_4E8,
     d_course_yoshi_valley_dl_7A0, d_course_yoshi_valley_dl_BC0,
-    d_course_yoshi_valley_dl_9C8, 0x06000CC0, // <- No idea what this is supposed to be a pointer to
+    d_course_yoshi_valley_dl_9C8, (Gfx *)0x06000CC0, // <- No idea what this is supposed to be a pointer to
     d_course_yoshi_valley_dl_FA0, d_course_yoshi_valley_dl_13F8,
     d_course_yoshi_valley_dl_1178, d_course_yoshi_valley_dl_14D0,
     d_course_yoshi_valley_dl_17A8, d_course_yoshi_valley_dl_1C38,

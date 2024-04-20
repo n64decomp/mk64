@@ -17,7 +17,7 @@
 #include "waypoints.h"
 #include "player_controller.h"
 #include "render_objects.h"
-#include "common_textures.h"
+#include <assets/common_data.h>
 #include "skybox_and_splitscreen.h"
 #include "spawn_players.h"
 
@@ -170,10 +170,10 @@ u16 func_8001FD78(Player *player, f32 posX, UNUSED f32 arg2, f32 posZ) {
 }
 
 void init_render_player(Player *player, Camera *camera, s8 playerId, s8 playerRenderId) {
-    s32 pad[4];
+    UNUSED s32 pad[4];
     s32 sp4C;
     s32 sp48;
-    s32 pad2;
+    UNUSED s32 pad2;
     s32 temp_v0;
     s32 temp_v0_2;
 
@@ -264,12 +264,12 @@ void func_80020524(void) {
 
             func_80027560(D_80164AD0[i], D_80164AB0[i], D_80164AC0[i], D_80164AC0[i], D_801651D0[D_80164AC0[i]][D_80164AB0[i]]);
 
-            mio0decode(D_802DFB80[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]].unk_00,
+            mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]].unk_00,
                        D_802BFB80.arraySize8[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]].pixel_index_array);
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
 
-    mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
+    mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
                D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
 }
 
@@ -290,11 +290,11 @@ void func_8002088C(void) {
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     for (var_s0 = 1; var_s0 < gPlayersToRenderCount; var_s0++) {
         func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0], D_80164AC0[var_s0], D_80164AC0[var_s0], D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
-        mio0decode(D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].unk_00,
+        mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].unk_00,
                    D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
+    mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
                D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
 }
 
@@ -309,11 +309,11 @@ void func_80020BF4(void) {
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     for (var_s0 = 1; var_s0 < gPlayersToRenderCount; var_s0++) {
         func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0] + 4, D_80164AC0[var_s0], D_80164AC0[var_s0] - 2, D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
-        mio0decode(D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00,
+        mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00,
                    D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
+    mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
                D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
 }
 
@@ -328,11 +328,11 @@ void func_80020F1C(void) {
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     for (var_s0 = 1; var_s0 < gPlayersToRenderCount; var_s0++) {
         func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0] + 4, D_80164AC0[var_s0], D_80164AC0[var_s0] - 2, D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
-        mio0decode(D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00,
+        mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00,
                    D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode(D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
+    mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
                D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
 }
 
@@ -508,13 +508,13 @@ u8 **gKartWarioWheels1[] = {
 };
 
 u16 **D_800DDE34[] = {
-    gKartMarioWheels0, gKartLuigiWheels0, gKartYoshiWheels0, gKartToadWheels0,
-    gKartDKWheels0,    gKartWarioWheels0, gKartPeachWheels0, gKartBowserWheels0
+    (u16 **)gKartMarioWheels0, (u16 **)gKartLuigiWheels0, (u16 **)gKartYoshiWheels0, (u16 **)gKartToadWheels0,
+    (u16 **)gKartDKWheels0,    (u16 **)gKartWarioWheels0, (u16 **)gKartPeachWheels0, (u16 **)gKartBowserWheels0
 };
 
 u16 **D_800DDE54[] = {
-    gKartMarioWheels1, gKartLuigiWheels1, gKartYoshiWheels1, gKartToadWheels1,
-    gKartDKWheels1,    gKartWarioWheels1, gKartPeachWheels1, gKartBowserWheels1
+    (u16 **)gKartMarioWheels1, (u16 **)gKartLuigiWheels1, (u16 **)gKartYoshiWheels1, (u16 **)gKartToadWheels1,
+    (u16 **)gKartDKWheels1,    (u16 **)gKartWarioWheels1, (u16 **)gKartPeachWheels1, (u16 **)gKartBowserWheels1
 };
 
 s32 D_800DDE74[] = {
@@ -705,44 +705,67 @@ void mtxf_scale2(Mat4 arg0, f32 scale) {
     arg0[2][2] *= scale;
 }
 
-UNUSED void func_80021FF8(Mtx *arg0, Mat4 arg1) {
-    f32 someMultiplier = 65536.0f;
-    arg0->m[0][0] = arg1[0][0] * someMultiplier;
-    arg0->m[0][1] = arg1[0][1] * someMultiplier;
-    arg0->m[0][2] = arg1[0][2] * someMultiplier;
-    arg0->m[0][3] = arg1[0][3] * someMultiplier;
-    arg0->m[1][0] = arg1[1][0] * someMultiplier;
-    arg0->m[1][1] = arg1[1][1] * someMultiplier;
-    arg0->m[1][2] = arg1[1][2] * someMultiplier;
-    arg0->m[1][3] = arg1[1][3] * someMultiplier;
-    arg0->m[2][0] = arg1[2][0] * someMultiplier;
-    arg0->m[2][1] = arg1[2][1] * someMultiplier;
-    arg0->m[2][2] = arg1[2][2] * someMultiplier;
-    arg0->m[2][3] = arg1[2][3] * someMultiplier;
-    arg0->m[3][0] = arg1[3][0] * someMultiplier;
-    arg0->m[3][1] = arg1[3][1] * someMultiplier;
-    arg0->m[3][2] = arg1[3][2] * someMultiplier;
-    arg0->m[3][3] = arg1[3][3] * someMultiplier;
+/**
+ * This function writes a fixed-point value to each Mtx entry. This is not how the Mtx struct works.
+ * The first half of Mtx only holds s16 whole numbers and the second half holds the s16 decimal (fractional) parts.
+ * See convert_to_fixed_point_matrix() for correct calculations. Note that each Mtx entry is the size of s32.
+ * This means each Mtx entry holds two s16 values. 
+ * The first sixteen entries contain only the integer parts and the second sixteen entries hold only the decimal (fractional) parts.
+ */
+UNUSED void failed_fixed_point_matrix_conversion(Mtx *dest, Mat4 src) {
+    f32 toFixed = 65536.0f;
+    dest->m[0][0] = src[0][0] * toFixed;
+    dest->m[0][1] = src[0][1] * toFixed;
+    dest->m[0][2] = src[0][2] * toFixed;
+    dest->m[0][3] = src[0][3] * toFixed;
+    dest->m[1][0] = src[1][0] * toFixed;
+    dest->m[1][1] = src[1][1] * toFixed;
+    dest->m[1][2] = src[1][2] * toFixed;
+    dest->m[1][3] = src[1][3] * toFixed;
+    dest->m[2][0] = src[2][0] * toFixed;
+    dest->m[2][1] = src[2][1] * toFixed;
+    dest->m[2][2] = src[2][2] * toFixed;
+    dest->m[2][3] = src[2][3] * toFixed;
+    dest->m[3][0] = src[3][0] * toFixed;
+    dest->m[3][1] = src[3][1] * toFixed;
+    dest->m[3][2] = src[3][2] * toFixed;
+    dest->m[3][3] = src[3][3] * toFixed;
 }
 
-void convert_to_fixed_point_matrix(Mtx *fixedPointMatrix, Mat4 arg1) {
-    f32 someMultiplier = 65536.0f;
-    fixedPointMatrix->m[0][0] = ((s32) (arg1[0][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[0][1] = ((s32) (arg1[0][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[0][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[0][2] = ((s32) (arg1[1][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[0][3] = ((s32) (arg1[1][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[1][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[1][0] = ((s32) (arg1[2][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[1][1] = ((s32) (arg1[2][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[2][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[1][2] = ((s32) (arg1[3][0] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][1] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[1][3] = ((s32) (arg1[3][2] * someMultiplier) & 0xFFFF0000) | (((s32) (arg1[3][3] * someMultiplier) >> 0x10) & 0xFFFF);
-    fixedPointMatrix->m[2][0] = ((s32) (arg1[0][0] * someMultiplier) << 0x10)      | ((s32) (arg1[0][1] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[2][1] = ((s32) (arg1[0][2] * someMultiplier) << 0x10)      | ((s32) (arg1[0][3] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[2][2] = ((s32) (arg1[1][0] * someMultiplier) << 0x10)      | ((s32) (arg1[1][1] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[2][3] = ((s32) (arg1[1][2] * someMultiplier) << 0x10)      | ((s32) (arg1[1][3] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[3][0] = ((s32) (arg1[2][0] * someMultiplier) << 0x10)      | ((s32) (arg1[2][1] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[3][1] = ((s32) (arg1[2][2] * someMultiplier) << 0x10)      | ((s32) (arg1[2][3] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[3][2] = ((s32) (arg1[3][0] * someMultiplier) << 0x10)      | ((s32) (arg1[3][1] * someMultiplier) & 0xFFFF);
-    fixedPointMatrix->m[3][3] = ((s32) (arg1[3][2] * someMultiplier) << 0x10)      | ((s32) (arg1[3][3] * someMultiplier) & 0xFFFF);
+/**
+ * Takes a floating-point matrix and converts it to an s15.16 internal matrix.
+ * Each Mtx entry is a size of s32 that holds two values.
+ * The first 16 entries hold only the integer values and the second 16 entries hold only the decimal (fractional) parts.
+ * In simpler words, the integer and decimal gets split up and stored in their own section.
+ * Mtx is setup this way due to hardware restrictions of the n64 or as an optimization.
+ *
+ * @param Mtx A new internal fixed-point matrix.
+ * @param Mat4 An array of f32
+ * Mat4 to Mtx explanation: https://blarg.ca/2020/10/11/fixed-point-math.
+ */
+void convert_to_fixed_point_matrix(Mtx *dest, Mat4 src) {
+    #ifdef AVOID_UB
+    // Use os function guMtxF2L instead. This helps little-endian systems.
+    guMtxF2L(src, dest);
+    #else
+    f32 toFixed = 65536.0f; // 2 ^ 16
+    dest->m[0][0] = ((s32) (src[0][0] * toFixed) & 0xFFFF0000) | (((s32) (src[0][1] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[0][1] = ((s32) (src[0][2] * toFixed) & 0xFFFF0000) | (((s32) (src[0][3] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[0][2] = ((s32) (src[1][0] * toFixed) & 0xFFFF0000) | (((s32) (src[1][1] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[0][3] = ((s32) (src[1][2] * toFixed) & 0xFFFF0000) | (((s32) (src[1][3] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[1][0] = ((s32) (src[2][0] * toFixed) & 0xFFFF0000) | (((s32) (src[2][1] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[1][1] = ((s32) (src[2][2] * toFixed) & 0xFFFF0000) | (((s32) (src[2][3] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[1][2] = ((s32) (src[3][0] * toFixed) & 0xFFFF0000) | (((s32) (src[3][1] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[1][3] = ((s32) (src[3][2] * toFixed) & 0xFFFF0000) | (((s32) (src[3][3] * toFixed) >> 0x10) & 0xFFFF);
+    dest->m[2][0] = ((s32) (src[0][0] * toFixed) << 0x10)      | ((s32) (src[0][1] * toFixed) & 0xFFFF);
+    dest->m[2][1] = ((s32) (src[0][2] * toFixed) << 0x10)      | ((s32) (src[0][3] * toFixed) & 0xFFFF);
+    dest->m[2][2] = ((s32) (src[1][0] * toFixed) << 0x10)      | ((s32) (src[1][1] * toFixed) & 0xFFFF);
+    dest->m[2][3] = ((s32) (src[1][2] * toFixed) << 0x10)      | ((s32) (src[1][3] * toFixed) & 0xFFFF);
+    dest->m[3][0] = ((s32) (src[2][0] * toFixed) << 0x10)      | ((s32) (src[2][1] * toFixed) & 0xFFFF);
+    dest->m[3][1] = ((s32) (src[2][2] * toFixed) << 0x10)      | ((s32) (src[2][3] * toFixed) & 0xFFFF);
+    dest->m[3][2] = ((s32) (src[3][0] * toFixed) << 0x10)      | ((s32) (src[3][1] * toFixed) & 0xFFFF);
+    dest->m[3][3] = ((s32) (src[3][2] * toFixed) << 0x10)      | ((s32) (src[3][3] * toFixed) & 0xFFFF);
+    #endif
 }
 
 bool adjust_angle(s16 *angle, s16 targetAngle, s16 step) {
@@ -1345,9 +1368,9 @@ void render_player_shadow_credits(Player *player, s8 playerId, s8 arg2) {
 }
 
 void kart_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
-    s32 pad;
+    UNUSED s32 pad;
     Mat4 sp1A4;
-    s32 pad2[17];
+    UNUSED s32 pad2[17];
     Vec3f sp154;
     Vec3s sp14C;
     f32 sp148;
@@ -1389,7 +1412,7 @@ void kart_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
 #ifdef AVOID_UB
     gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId];
 #else
-    gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
+    gPlayerPalette = (struct_D_802F1F80 *) &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
 #endif
     if ((arg2 == 0) || (arg2 == 1)) {
         D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
@@ -1478,15 +1501,15 @@ void kart_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
 }
 
 void ghost_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
-    s32 pad;
+    UNUSED s32 pad;
     Mat4 sp12C;
-    s32 pad2[17];
+    UNUSED s32 pad2[17];
     Vec3f spDC;
     Vec3s spD4;
     f32 spD0;
     f32 spCC;
     f32 spC8;
-    s32 pad3;
+    UNUSED s32 pad3;
     s16 spC2;
     s16 thing;
 
@@ -1507,7 +1530,7 @@ void ghost_render(Player *player, s8 playerId, s8 arg2, s8 arg3) {
 #ifdef AVOID_UB
     gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId];
 #else
-    gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
+    gPlayerPalette = (struct_D_802F1F80 *) &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
 #endif
     if ((arg2 == 0) || (arg2 == 1)) {
         D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
@@ -1633,7 +1656,7 @@ void player_ice_reflection_render(Player *player, s8 playerId, s8 arg2, s8 arg3)
 }
 
 void player_render(Player *player, s8 playerId, s8 arg2) {
-    s32 pad[2];
+    UNUSED s32 pad[2];
     s32 temp_t1;
     s32 var_v1;
     OSMesg *sp34;
@@ -1660,7 +1683,7 @@ void player_render(Player *player, s8 playerId, s8 arg2) {
     } else {
         ghost_render(player, playerId, arg2, var_v1);
     }
-    osRecvMesg(&gDmaMesgQueue, &sp34, OS_MESG_BLOCK);
+    osRecvMesg(&gDmaMesgQueue, (OSMesg *) &sp34, OS_MESG_BLOCK);
     if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) && ((player->unk_0CA & 1) != 1) && (player->unk_110.unk3C[2] <= 30.0f)) {
         player_ice_reflection_render(player, playerId, arg2, var_v1);
     }
@@ -1710,15 +1733,15 @@ void func_80026B4C(Player *player, s8 playerId, s8 arg2, s8 arg3) {
          && ((player->effects & 0x800000) != 0x800000) && ((player->unk_044 & 0x800) == 0)) {
 
             if (temp_t0 <= 20) {
-                func_80027C74(player, D_800DDE34[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
+                func_80027C74(player, (s32) (D_800DDE34[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
             } else {
-                func_80027C74(player, D_800DDE54[player->characterId][temp_t1] + (temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600, D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
+                func_80027C74(player, (s32) (D_800DDE54[player->characterId][temp_t1] + (temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
             }
         } else {
             if (temp_t0 == 0) {
-                func_80027C74(player, D_800DDE34[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
+                func_80027C74(player, (s32) (D_800DDE34[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
             } else {
-                func_80027C74(player, D_800DDE54[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
+                func_80027C74(player, (s32) (D_800DDE54[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
             }
         }
     } else {
@@ -1727,15 +1750,15 @@ void func_80026B4C(Player *player, s8 playerId, s8 arg2, s8 arg3) {
          && ((player->effects & 0x20000) != 0x20000) && ((player->unk_044 & 0x800) == 0)) {
 
             if (temp_t0 <= 20) {
-                func_80027C74(player, D_800DDE34[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
+                func_80027C74(player, (s32) (D_800DDE34[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
             } else {
-                func_80027C74(player, D_800DDE54[player->characterId][temp_t1] + (temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600, D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
+                func_80027C74(player, (s32) (D_800DDE54[player->characterId][temp_t1] + (temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
             }
         } else {
             if (temp_t0 == 0) {
-                func_80027C74(player, D_800DDE34[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
+                func_80027C74(player, (s32) (D_800DDE34[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
             } else {
-                func_80027C74(player, D_800DDE54[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
+                func_80027C74(player, (s32) (D_800DDE54[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, arg2, playerId), 0x80);
             }
         }
     }

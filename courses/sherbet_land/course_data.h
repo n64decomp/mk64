@@ -152,7 +152,7 @@ extern Gfx d_course_sherbet_land_dl_4930[];
 extern Gfx d_course_sherbet_land_dl_4A20[];
 extern Gfx d_course_sherbet_land_dl_4A98[];
 extern Gfx d_course_sherbet_land_dl_4B20[];
-extern TrackWaypoint d_course_sherbet_land_uknown_waypoints[];
+extern TrackWaypoint d_course_sherbet_land_unknown_waypoints[];
 extern TrackWaypoint d_course_sherbet_land_track_waypoints[];
 extern Vtx d_course_sherbet_land_model1[];
 extern Vtx d_course_sherbet_land_model2[];

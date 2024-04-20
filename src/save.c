@@ -995,30 +995,20 @@ u8 func_800B68F4(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/save/func_800B68F4.s")
 #endif
 
-#ifdef NON_MATCHING
-// Stack nonsense. As it stands now there's too much on the stack, but everything else is fine
-// But if you try to reduce the stack you get bigger issues. No idea what's going on
 s32 func_800B69BC(s32 arg0) {
     s32 i;
-    s32 offset;
-    struct_8018EE10_entry *plz;
+    struct_8018EE10_entry *plz = &D_8018EE10[arg0];
 
-    offset = sizeof(struct_8018EE10_entry);
-    offset *= arg0;
-
-    plz = &D_8018EE10[arg0];
     plz->ghostDataSaved = FALSE;
     plz->courseIndex = 0;
     plz->characterId = 0;
-    for (i = 0; i < 60; i++) {
+    for (i = 0; i < sizeof(plz->unk_07); i++) {
         plz->unk_07[i] = i;
     }
     plz->checksum = func_800B6828(arg0);
-    return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_WRITE, offset, sizeof(struct_8018EE10_entry), (u8 *)plz);
+    
+    return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_WRITE, (s32) sizeof(struct_8018EE10_entry) * arg0, sizeof(struct_8018EE10_entry), (u8 *)plz);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/save/func_800B69BC.s")
-#endif
 
 s32 func_800B6A68(void) {
     UNUSED s32 pad;
