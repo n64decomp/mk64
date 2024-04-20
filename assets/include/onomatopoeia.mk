@@ -18,19 +18,21 @@ $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(ONOMATOPOEIA_PNG:%.png=%.mio0)
 $(BUILD_DIR)/src/data/some_data.o: $(ONOMATOPOEIA_PALETTE:%.png=%.inc.c)
 
 $(ONOMATOPOEIA_PNG:%.png=%.mio0): %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(ONOMATOPOEIA_PNG:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(ONOMATOPOEIA_PALETTE)
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(ONOMATOPOEIA_PALETTE)
 
 $(ONOMATOPOEIA_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(ONOMATOPOEIA_PNG) $(ONOMATOPOEIA_PALETTE): $(ONOMATOPOEIA_EXPORT_SENTINEL) ;
 
 $(ONOMATOPOEIA_EXPORT_SENTINEL): $(ASSET_DIR)/onomatopoeia.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_onomatopoeia
 distclean_onomatopoeia:

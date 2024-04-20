@@ -467,7 +467,9 @@ $(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/texture_67490C.rgba16.inc.c
 $(BUILD_DIR)/courses/big_donut/course_textures.linkonly.o: $(BIG_DONUT_TEXTURES)
 
 $(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/%.rgba16.inc.c: $(OTHER_TEXTURES_DIR)/%.rgba16.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(BUILD_DIR)/$(OTHER_TEXTURES_DIR)/%.ia16.inc.c: $(OTHER_TEXTURES_DIR)/%.ia16.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f ia16
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f ia16

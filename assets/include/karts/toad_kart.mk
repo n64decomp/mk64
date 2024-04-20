@@ -1487,19 +1487,21 @@ TOAD_EXPORT_SENTINEL := $(TOAD_KART_DIR)/.export
 $(BUILD_DIR)/$(DATA_DIR)/karts/toad_kart.o: $(TOAD_KART_FRAME_PNG:%.png=%.mio0) $(TOAD_KART_PALETTE_PNG:%.png=%.bin)
 
 $(TOAD_KART_FRAME_PNG:%.png=%.mio0): %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(TOAD_KART_FRAME_PNG:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(<D)/stitched_palettes/$(<F:%.png=%_stitched_palette.png) -M $(<D)/wheel_masks/$(<F:%.png=%_wheel_mask.raw)
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(<D)/stitched_palettes/$(<F:%.png=%_stitched_palette.png) -M $(<D)/wheel_masks/$(<F:%.png=%_wheel_mask.raw)
 
 $(TOAD_KART_PALETTE_PNG:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(TOAD_KART_FRAME_PNG) $(TOAD_KART_PALETTE_PNG): $(TOAD_EXPORT_SENTINEL) ;
 
 $(TOAD_EXPORT_SENTINEL): $(ASSET_DIR)/karts/toad_kart.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_toad_kart
 distclean_toad_kart:
