@@ -1418,7 +1418,7 @@ void func_80091B78(void) {
     D_8018D9B0 = get_next_available_memory_addr(0x000900B0);
     D_8018D9B4 = (u8 *) get_next_available_memory_addr(0x0000CE00);
     D_8018D9B8 = (u8 *) get_next_available_memory_addr(0x00012C00);
-    D_8018D9C0 = (struct_8018EE10_entry_cont *) get_next_available_memory_addr(0x00001000);
+    D_8018D9C0 = (struct_8018EE10_entry *) get_next_available_memory_addr(0x00001000);
     func_800AF9B0();
     D_8018EE0C = 0;
 
