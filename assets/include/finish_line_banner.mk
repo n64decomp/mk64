@@ -20,13 +20,13 @@ $(FINISH_LINE_BANNER_PNG:%.png=%.mio0): %.mio0 : %.bin
 	$(V)$(MIO0TOOL) -c $< $@
 
 $(FINISH_LINE_BANNER_PNG:%.png=%.bin): %.bin : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(FINISH_LINE_BANNER_PALETTE)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(FINISH_LINE_BANNER_PALETTE:%.png=%.inc.c)
 
 $(FINISH_LINE_BANNER_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(FINISH_LINE_BANNER_PNG) $(FINISH_LINE_BANNER_PALETTE): $(FINISH_LINE_BANNER_EXPORT_SENTINEL) ;

@@ -41,13 +41,13 @@ CHECKEREDFLAG_EXPORT_SENTINEL := $(CHECKEREDFLAG_DIR)/.export
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(CHECKEREDFLAG_FRAMES:%.png=%.bin)
 
 $(CHECKEREDFLAG_FRAMES:%.png=%.bin): %.bin : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(CHECKEREDFLAG_PALETTE)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(CHECKEREDFLAG_PALETTE:%.png=%.inc.c)
 
 $(CHECKEREDFLAG_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(CHECKEREDFLAG_FRAMES) $(CHECKEREDFLAG_PALETTE): $(CHECKEREDFLAG_EXPORT_SENTINEL) ;

@@ -25,13 +25,13 @@ $(PIRANHA_PLANT_FRAMES:%.png=%.mio0): %.mio0 : %.bin
 	$(V)$(MIO0TOOL) -c $< $@
 
 $(PIRANHA_PLANT_FRAMES:%.png=%.bin): %.bin : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(MARIO_RACEWAY_PIRANHA_PLANT_PALETTE)
 
 $(BUILD_DIR)/courses/mario_raceway/course_data.o: $(MARIO_RACEWAY_PIRANHA_PLANT_PALETTE:%.png=%.inc.c) $(MARIO_RACEWAY_SIGN:%.png=%.inc.c)
 
 $(MARIO_RACEWAY_PIRANHA_PLANT_PALETTE:%.png=%.inc.c) $(MARIO_RACEWAY_SIGN:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(PIRANHA_PLANT_FRAMES) $(MARIO_RACEWAY_PIRANHA_PLANT_PALETTE) $(MARIO_RACEWAY_SIGN): $(PIRANHA_PLANT_EXPORT_SENTINEL) ;

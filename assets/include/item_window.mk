@@ -41,11 +41,11 @@ ITEM_WINDOW_EXPORT_SENTINEL := $(ITEM_WINDOW_DIR)/.export
 $(BUILD_DIR)/src/data/common_textures.o: $(ITEM_WINDOW_PNG:%.png=%.inc.c) $(ITEM_WINDOW_PALETTES:%.png=%.inc.c)
 
 $(ITEM_WINDOW_DIR)/common_texture_%.inc.c: $(ITEM_WINDOW_DIR)/common_texture_%.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(ITEM_WINDOW_DIR)/common_tlut_$*.png
 
 $(ITEM_WINDOW_PALETTES:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(ITEM_WINDOW_PNG) $(ITEM_WINDOW_PALETTES): $(ITEM_WINDOW_EXPORT_SENTINEL) ;

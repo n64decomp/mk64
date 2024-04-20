@@ -35,23 +35,23 @@ $(BUILD_DIR)/src/data/common_textures.o: $(HUD_TYPE_C_TINY_FONT_PNG:%.png=%.inc.
 $(BUILD_DIR)/src/data/common_textures.o: $(HUD_TYPE_C_PORTRAIT_BORDER_PNG:%.png=%.inc.c)
 
 $(HUD_TYPE_C_FONT_PNG:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(HUD_TYPE_C_FONT_PALETTE)
 
 $(HUD_TYPE_C_FONT_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(HUD_TYPE_C_TINY_FONT_PNG:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(HUD_TYPE_C_TINY_FONT_PALETTE)
 
 $(HUD_TYPE_C_TINY_FONT_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(HUD_TYPE_C_PORTRAIT_BORDER_PNG:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f ia4
 
 $(HUD_TYPE_C_FONT_PNG) $(HUD_TYPE_C_FONT_PALETTE): $(HUD_TYPE_C_EXPORT_SENTINEL) ;

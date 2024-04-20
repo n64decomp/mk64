@@ -11,7 +11,7 @@ WARIO_STADIUM_EXPORT_SENTINEL := $(WARIO_STADIUM_DIR)/.export
 $(BUILD_DIR)/courses/wario_stadium/course_data.o: $(WARIO_STADIUM_SIGN:%.png=%.inc.c)
 
 $(WARIO_STADIUM_SIGN:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(WARIO_STADIUM_SIGN): $(WARIO_STADIUM_EXPORT_SENTINEL) ;

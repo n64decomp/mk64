@@ -13,11 +13,11 @@ BOMB_EXPORT_SENTINEL := $(BOMB_DIR)/.export
 $(BUILD_DIR)/src/data/common_textures.o: $(BOMB_FRAMES:%.png=%.inc.c) $(BOMB_PALETTE:%.png=%.inc.c)
 
 $(BOMB_FRAMES:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(BOMB_PALETTE)
 
 $(BOMB_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(BOMB_FRAMES) $(BOMB_PALETTE): $(BOMB_EXPORT_SENTINEL) ;

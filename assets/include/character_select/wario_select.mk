@@ -27,7 +27,7 @@ $(WARIO_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
 	$(V)$(MIO0TOOL) -c $< $@
 
 $(WARIO_SELECT_PNG:%.png=%.bin) : %.bin : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(WARIO_SELECT_PNG): $(WARIO_SELECT_EXPORT_SENTINEL) ;

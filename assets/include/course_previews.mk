@@ -30,7 +30,7 @@ $(COURSE_PREVIEW_PNG:%.png=%.mio0): %.mio0 : %.bin
 	$(V)$(MIO0TOOL) -c $< $@
 
 $(COURSE_PREVIEW_PNG:%.png=%.bin): %.bin : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(COURSE_PREVIEW_PNG): $(COURSE_PREVIEW_EXPORT_SENTINEL) ;

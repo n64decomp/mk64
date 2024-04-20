@@ -24,11 +24,11 @@ $(BUILD_DIR)/courses/koopa_troopa_beach/course_data.o: $(KOOPA_TROOPA_BEACH_CRAB
 $(BUILD_DIR)/courses/koopa_troopa_beach/course_data.o: $(KOOPA_TROOPA_BEACH_PNG:%.png=%.inc.c)
 
 $(KOOPA_TROOPA_BEACH_CRAB_FRAMES:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(KOOPA_TROOPA_BEACH_CRAB_PALETTE)
 
 $(KOOPA_TROOPA_BEACH_CRAB_PALETTE:%.png=%.inc.c) $(KOOPA_TROOPA_BEACH_PNG:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(KOOPA_TROOPA_BEACH_CRAB_PALETTE) $(KOOPA_TROOPA_BEACH_CRAB_FRAMES) $(KOOPA_TROOPA_BEACH_PNG): $(KOOPA_TROOPA_BEACH_EXPORT_SENTINEL) ;

@@ -7,7 +7,7 @@ STARTUP_LOGO_EXPORT_SENTINEL := $(STARTUP_LOGO)/.export
 $(BUILD_DIR)/src/data/startup_logo.o: $(REFLECTION_MAP:%.png=%.inc.c)
 
 $(REFLECTION_MAP:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(REFLECTION_MAP): $(STARTUP_LOGO_EXPORT_SENTINEL) ;

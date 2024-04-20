@@ -25,13 +25,13 @@ SECONDLAP_EXPORT_SENTINEL := $(SECONDLAP_DIR)/.export
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(SECONDLAP_FRAMES:%.png=%.bin)
 
 $(SECONDLAP_FRAMES:%.png=%.bin): %.bin : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(SECONDLAP_PALETTE)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(SECONDLAP_PALETTE:%.png=%.inc.c)
 
 $(SECONDLAP_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(SECONDLAP_FRAMES) $(SECONDLAP_PALETTE): $(SECONDLAP_EXPORT_SENTINEL) ;

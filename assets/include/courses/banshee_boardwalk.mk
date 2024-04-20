@@ -63,7 +63,7 @@ $(BANSHEE_BOARDWALK_DIR)/boo_frames.bin: $(BANSHEE_BOARDWALK_BOO_FRAMES:%.png=%.
 	$(V)$(CAT) $^ > $@
 
 $(BANSHEE_BOARDWALK_BOO_FRAMES:%.png=%.bin): %.bin : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(BANSHEE_BOARDWALK_BOO_PALETTE)
 
 $(BUILD_DIR)/courses/banshee_boardwalk/course_data.o: $(BANSHEE_BOARDWALK_BOO_PALETTE:%.png=%.inc.c)
@@ -71,11 +71,11 @@ $(BUILD_DIR)/courses/banshee_boardwalk/course_data.o: $(BANSHEE_BOARDWALK_BAT_PA
 $(BUILD_DIR)/courses/banshee_boardwalk/course_data.o: $(BANSHEE_BOARDWALK_PNG:%.png=%.inc.c)
 
 $(BANSHEE_BOARDWALK_BAT_FRAMES:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(BANSHEE_BOARDWALK_BAT_PALETTE)
 
 $(BANSHEE_BOARDWALK_PNG:%.png=%.inc.c) $(BANSHEE_BOARDWALK_BOO_PALETTE:%.png=%.inc.c) $(BANSHEE_BOARDWALK_BAT_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(BANSHEE_BOARDWALK_BOO_PALETTE) $(BANSHEE_BOARDWALK_BOO_FRAMES): $(BANSHEE_BOARDWALK_EXPORT_SENTINEL) ;

@@ -25,13 +25,13 @@ REVERSE_EXPORT_SENTINEL := $(REVERSE_DIR)/.export
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(REVERSE_FRAMES:%.png=%.bin)
 
 $(REVERSE_FRAMES:%.png=%.bin): %.bin : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(REVERSE_PALETTE)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(REVERSE_PALETTE:%.png=%.inc.c)
 
 $(REVERSE_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(REVERSE_FRAMES) $(REVERSE_PALETTE): $(REVERSE_EXPORT_SENTINEL) ;

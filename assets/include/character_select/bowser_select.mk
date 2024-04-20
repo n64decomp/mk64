@@ -27,7 +27,7 @@ $(BOWSER_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
 	$(V)$(MIO0TOOL) -c $< $@
 
 $(BOWSER_SELECT_PNG:%.png=%.bin) : %.bin : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(BOWSER_SELECT_PNG): $(BOWSER_SELECT_EXPORT_SENTINEL) ;

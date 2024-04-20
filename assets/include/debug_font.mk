@@ -9,11 +9,11 @@ DEBUG_FONT_EXPORT_SENTINEL := $(DEBUG_FONT_DIR)/.export
 $(BUILD_DIR)/src/data/common_textures.o: $(DEBUG_FONT_PNG:%.png=%.inc.c) $(DEBUG_FONT_PALETTE:%.png=%.inc.c)
 
 $(DEBUG_FONT_PNG:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci4 -c rgba16 -p $(DEBUG_FONT_PALETTE)
 
 $(DEBUG_FONT_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(DEBUG_FONT_PNG) $(DEBUG_FONT_PALETTE): $(DEBUG_FONT_EXPORT_SENTINEL) ;

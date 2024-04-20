@@ -14,11 +14,11 @@ $(BUILD_DIR)/courses/yoshi_valley/course_data.o: $(YOSHI_VALLEY_HEDGEHOG_PALETTE
 $(BUILD_DIR)/courses/yoshi_valley/course_data.o: $(YOSHI_VALLEY_PNG:%.png=%.inc.c)
 
 $(YOSHI_VALLEY_HEDGEHOG_PNG:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(YOSHI_VALLEY_HEDGEHOG_PALETTE)
 
 $(YOSHI_VALLEY_PNG:%.png=%.inc.c) $(YOSHI_VALLEY_HEDGEHOG_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(YOSHI_VALLEY_HEDGEHOG_PALETTE) $(YOSHI_VALLEY_HEDGEHOG_PNG): $(YOSHI_VALLEY_EXPORT_SENTINEL) ;

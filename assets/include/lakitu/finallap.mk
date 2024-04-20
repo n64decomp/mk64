@@ -25,13 +25,13 @@ FINALLAP_EXPORT_SENTINEL := $(FINALLAP_DIR)/.export
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(FINALLAP_FRAMES:%.png=%.bin)
 
 $(FINALLAP_FRAMES:%.png=%.bin): %.bin : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(FINALLAP_PALETTE)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(FINALLAP_PALETTE:%.png=%.inc.c)
 
 $(FINALLAP_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(FINALLAP_FRAMES) $(FINALLAP_PALETTE): $(FINALLAP_EXPORT_SENTINEL) ;

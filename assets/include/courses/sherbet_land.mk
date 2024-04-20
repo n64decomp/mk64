@@ -11,11 +11,11 @@ SHERBET_LAND_EXPORT_SENTINEL := $(SHERBET_LAND_DIR)/.export
 $(BUILD_DIR)/courses/sherbet_land/course_data.o: $(SHERBET_LAND_ICE:%.png=%.inc.c) $(PENGUIN_PNG:%.png=%.inc.c)
 
 $(SHERBET_LAND_ICE:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f ia16
 
 $(PENGUIN_PNG:%.png=%.inc.c): %.inc.c : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(SHERBET_LAND_PNG) $(PENGUIN_PNG) $(SHERBET_LAND_ICE): $(SHERBET_LAND_EXPORT_SENTINEL) ;

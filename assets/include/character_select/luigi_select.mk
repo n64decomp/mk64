@@ -27,7 +27,7 @@ $(LUIGI_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
 	$(V)$(MIO0TOOL) -c $< $@
 
 $(LUIGI_SELECT_PNG:%.png=%.bin) : %.bin : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(LUIGI_SELECT_PNG): $(LUIGI_SELECT_EXPORT_SENTINEL) ;

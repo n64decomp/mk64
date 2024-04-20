@@ -1490,11 +1490,11 @@ $(BOWSER_KART_FRAME_PNG:%.png=%.mio0): %.mio0 : %.bin
 	$(V)$(MIO0TOOL) -c $< $@
 
 $(BOWSER_KART_FRAME_PNG:%.png=%.bin): %.bin : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(<D)/stitched_palettes/$(<F:%.png=%_stitched_palette.png) -M $(<D)/wheel_masks/$(<F:%.png=%_wheel_mask.raw)
 
 $(BOWSER_KART_PALETTE_PNG:%.png=%.bin): %.bin : %.png
-	@$(PRINT) "$(GREEN)N64GRAPHICS extract:  $(BLUE) $< -> $@$(NO_COL)\n"
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(BOWSER_KART_FRAME_PNG) $(BOWSER_KART_PALETTE_PNG): $(BOWSER_EXPORT_SENTINEL) ;
