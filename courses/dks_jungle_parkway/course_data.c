@@ -5403,7 +5403,7 @@ Gfx d_course_dks_jungle_parkway_dl_E048[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_dks_jungle_parkway_dl_E058[] =
+Gfx d_course_dks_jungle_parkway_railings_dl[] =
 {
     gsSPDisplayList(d_course_dks_jungle_parkway_dl_E048),
     gsSPEndDisplayList(),
@@ -5664,7 +5664,7 @@ Gfx d_course_dks_jungle_parkway_dl_E700[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_dks_jungle_parkway_dl_E730[] =
+Gfx d_course_dks_jungle_parkway_boat_dl[] =
 {
     gsSPDisplayList(d_course_dks_jungle_parkway_dl_E700),
     gsSPEndDisplayList(),
@@ -5802,7 +5802,7 @@ Gfx d_course_dks_jungle_parkway_dl_FC18[] =
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_dks_jungle_parkway_dl_FC28[] =
+Gfx d_course_dks_jungle_parkway_paddle_wheel_dl[] =
 {
     gsSPDisplayList(d_course_dks_jungle_parkway_dl_FC18),
     gsSPEndDisplayList(),
