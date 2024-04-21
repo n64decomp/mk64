@@ -155,7 +155,6 @@ Gfx *draw_flash_select_case(Gfx*, s32, s32, s32, s32, s32);
 Gfx *draw_flash_select_case_slow(Gfx*, s32, s32, s32, s32);
 Gfx *draw_flash_select_case_fast(Gfx*, s32, s32, s32, s32);
 Gfx *func_800959F8(Gfx*, Vtx*);
-void func_80095AE0(Mtx*, f32, f32, f32, f32);
 Gfx *func_80095BD0(Gfx*, u8*, f32, f32, u32, u32, f32, f32);
 Gfx *func_80095E10(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, s32, u8 *, u32, u32);
 Gfx *func_800963F0(Gfx*,  s8, s32, s32, f32, f32, s32, s32, s32, s32, s32, s32, u8 *, u32, u32);
