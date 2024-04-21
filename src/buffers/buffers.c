@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
-#include "config.h"
+#include <mk64.h>
 #include "buffers.h"
 
 ALIGNED8 union_D_802BFB80 D_802BFB80;

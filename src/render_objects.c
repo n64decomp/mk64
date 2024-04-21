@@ -4,12 +4,12 @@
 **/
 
 #include <ultra64.h>
+#include <mk64.h>
 #include <PR/gbi.h>
 #include <macros.h>
 #include <defines.h>
 #include <common_structs.h>
 #include <actor_types.h>
-#include <config.h>
 #include "camera.h"
 #include "memory.h"
 #include "math_util.h"

@@ -1,9 +1,98 @@
 #ifndef MK64_H
 #define MK64_H
 
-// Global header for Mario Kart 64
+/**
+ * @file mk64.h
+ * Global header for mk64
+ */
 
-#include "config.h"
+/*=======================
+    Configuration
+=======================*/
+
+#define SCREEN_WIDTH 320
+#define SCREEN_HEIGHT 240
+
+#define STACKSIZE 0x2000
+
+// Border Height Define for NTSC Versions
+#define BORDER_HEIGHT 1
+
+typedef enum {
+    /* 0x00 */ COURSE_MARIO_RACEWAY = 0,
+    /* 0x01 */ COURSE_CHOCO_MOUNTAIN,
+    /* 0x02 */ COURSE_BOWSER_CASTLE,
+    /* 0x03 */ COURSE_BANSHEE_BOARDWALK,
+    /* 0x04 */ COURSE_YOSHI_VALLEY,
+    /* 0x05 */ COURSE_FRAPPE_SNOWLAND,
+    /* 0x06 */ COURSE_KOOPA_BEACH,
+    /* 0x07 */ COURSE_ROYAL_RACEWAY,
+    /* 0x08 */ COURSE_LUIGI_RACEWAY,
+    /* 0x09 */ COURSE_MOO_MOO_FARM,
+    /* 0x0A */ COURSE_TOADS_TURNPIKE,
+    /* 0x0B */ COURSE_KALAMARI_DESERT,
+    /* 0x0C */ COURSE_SHERBET_LAND,
+    /* 0x0D */ COURSE_RAINBOW_ROAD,
+    /* 0x0E */ COURSE_WARIO_STADIUM,
+    /* 0x0F */ COURSE_BLOCK_FORT,
+    /* 0x10 */ COURSE_SKYSCRAPER,
+    /* 0x11 */ COURSE_DOUBLE_DECK,
+    /* 0x12 */ COURSE_DK_JUNGLE,
+    /* 0x13 */ COURSE_BIG_DONUT,
+    /* 0x14 */ COURSE_AWARD_CEREMONY,
+    /* 0x15 */ NUM_COURSES
+} COURSES;
+
+#define COURSE_NULL 0xFF
+
+typedef enum {
+    /* 0x00 */ TIME_TRIAL_DATA_LUIGI_RACEWAY,
+    /* 0x01 */ TIME_TRIAL_DATA_MOO_MOO_FARM,
+    /* 0x02 */ TIME_TRIAL_DATA_KOOPA_BEACH,
+    /* 0x03 */ TIME_TRIAL_DATA_KALAMARI_DESERT,
+    /* 0x04 */ TIME_TRIAL_DATA_TOADS_TURNPIKE,
+    /* 0x05 */ TIME_TRIAL_DATA_FRAPPE_SNOWLAND,
+    /* 0x06 */ TIME_TRIAL_DATA_CHOCO_MOUNTAIN,
+    /* 0x07 */ TIME_TRIAL_DATA_MARIO_RACEWAY,
+    /* 0x08 */ TIME_TRIAL_DATA_WARIO_STADIUM,
+    /* 0x09 */ TIME_TRIAL_DATA_SHERBET_LAND,
+    /* 0x0A */ TIME_TRIAL_DATA_ROYAL_RACEWAY,
+    /* 0x0B */ TIME_TRIAL_DATA_BOWSER_CASTLE,
+    /* 0x0C */ TIME_TRIAL_DATA_DK_JUNGLE,
+    /* 0x0D */ TIME_TRIAL_DATA_YOSHI_VALLEY,
+    /* 0x0E */ TIME_TRIAL_DATA_BANSHEE_BOARDWALK,
+    /* 0x0F */ TIME_TRIAL_DATA_RAINBOW_ROAD,
+    /* 0x10 */ NUM_TIME_TRIAL_DATA
+} TIME_TRIAL_DATA_INDEX;
+
+/**
+ * @brief The different types of surface in the game.
+*/
+enum SURFACE_TYPE {
+    /* -0x1 */ SURFACE_DEFAULT = -1,
+    /* 0x00 */ AIRBORNE,
+    /* 0x01 */ ASPHALT, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
+    /* 0x02 */ DIRT, // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK Jungle on course, Yoshi Valley
+    /* 0x03 */ SAND, // Koopa Troopa Beach light color, Royal Raceway
+    /* 0x04 */ STONE, // Royal Raceway castle entrance, Bowser's Castle
+    /* 0x05 */ SNOW, // Frappe Snowland on course, Sherber Land tunnel
+    /* 0x06 */ BRIDGE, // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
+    /* 0x07 */ SAND_OFFROAD, // Mario Raceway
+    /* 0x08 */ GRASS, // Luigi's Raceway, Mario Raceway, Royal Raceway, Bowser's Castle, DK Jungle, Yoshi Valley
+    /* 0x09 */ ICE, // Sherbert Land
+    /* 0x0A */ WET_SAND, // Koop Troopa Beach dark color
+    /* 0x0B */ SNOW_OFFROAD, // Frappe Snowland off course
+    /* 0x0C */ CLIFF, // Koopa Troopa Beach, Choco Mountain
+    /* 0x0D */ DIRT_OFFROAD, // Kalimari Desert off course
+    /* 0x0E */ TRAIN_TRACK, // Kalimari Desert
+    /* 0x0F */ CAVE, // DK Jungle cave
+    /* 0x10 */ ROPE_BRIDGE, // Bowser's Castle bridge 2, DK Jungle bridge
+    /* 0x11 */ WOOD_BRIDGE, // Frappe Snowland bridge, Bowser's Castle bridge 1,3, Yoshi Valley bridge 2
+    /* 0xFC */ BOOST_RAMP_WOOD = 0xFC, // DK Jungle
+    /* 0xFD */ OUT_OF_BOUNDS, // DK Jungle river island
+    /* 0xFE */ BOOST_RAMP_ASPHALT, // Royal Raceway
+    /* 0xFF */ RAMP // Koopa Troopa beach
+};
 
 #define GFX_GET_OPCODE(var) ((s32)((var) & 0xFF000000))
 

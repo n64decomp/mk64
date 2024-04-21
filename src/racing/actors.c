@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/os.h>
+#include <mk64.h>
 #include <sounds.h>
 #include <common_structs.h>
 #include <actor_types.h>

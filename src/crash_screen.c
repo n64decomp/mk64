@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
-#include <config.h>
+#include <mk64.h>
 #include <stdarg.h>
 #include <string.h>
 

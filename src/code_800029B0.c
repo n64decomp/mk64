@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
+#include <mk64.h>
 
 #include "code_800029B0.h"
 #include "memory.h"

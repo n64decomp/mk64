@@ -1,9 +1,9 @@
 #include <ultra64.h>
 #include <macros.h>
+#include <mk64.h>
 #include <defines.h>
 #include <segments.h>
 #include <PR/ultratypes.h>
-#include <config.h>
 #include <sounds.h>
 #include "code_800029B0.h"
 #include "code_80091750.h"
@@ -7415,7 +7415,7 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
     s32 var_s1;
     char spA8[3];
     s32 var_s2;
-    s32 temp_v0;
+    UNUSED s32 temp_v0;
     UNUSED s32 stackPadding9;
     char sp98[3];
     struct_8018EE10_entry *var_v1;
@@ -7427,7 +7427,7 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
     case 0x17:                                      /* switch 1 */
     case 0x18:                                      /* switch 1 */
         for (stackPadding0 = 0; stackPadding0 < 4; stackPadding0++) {
-            func_80092224(D_8018EDEC - 0x15, stackPadding0, 3);
+            set_text_color_rainbow_if_selected(D_8018EDEC - 0x15, stackPadding0, 3);
             func_80093324(0x00000032, 0x55 + (0x23 * stackPadding0), D_800E7868[stackPadding0], 0, 0.9f, 1.0f);
             if (stackPadding0 == (D_8018EDEC - 0x15)) {
                 spE0.column = 0x0032;
@@ -7444,7 +7444,7 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
             func_80093324(0x00000028, 0x55 + (0x14 * stackPadding0), D_800E7878[stackPadding0], 0, 1.0f, 1.0f);
         }
         for (stackPadding0 = 0; stackPadding0 < 2; stackPadding0++) {
-            func_80092224(D_8018EDEC - 0x1E, stackPadding0, 1);
+            set_text_color_rainbow_if_selected(D_8018EDEC - 0x1E, stackPadding0, 1);
             func_80093324(0x00000084, 0x96 + (0x19 * stackPadding0), D_800E7840[stackPadding0], 0, 1.0f, 1.0f);
             if (stackPadding0 == (D_8018EDEC - 0x1E)) {
                 spE0.column = 0x0084;

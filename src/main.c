@@ -6,7 +6,8 @@
 #include <PR/ucode.h>
 #include <macros.h>
 #include <decode.h>
-#include <config.h>
+#include <mk64.h>
+
 #include "profiler.h"
 #include "main.h"
 #include "racing/memory.h"
