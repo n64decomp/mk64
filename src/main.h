@@ -1,7 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include "types.h"
 
 // Message IDs
 #define MESG_SP_COMPLETE 100

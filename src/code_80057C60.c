@@ -6,13 +6,14 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/gbi.h>
+#include <mk64.h>
 
+#include "camera.h"
 #include "code_80057C60.h"
 #include "main.h"
 #include "actors.h"
 #include "code_800029B0.h"
 #include "racing/memory.h"
-#include <config.h>
 #include <defines.h>
 #include "math_util.h"
 #include "math_util_2.h"

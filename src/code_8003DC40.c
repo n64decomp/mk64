@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
+#include <mk64.h>
 #include "math_util.h"
 #include "common_structs.h"
 #include "player_controller.h"

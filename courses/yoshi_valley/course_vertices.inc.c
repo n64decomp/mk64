@@ -1,5 +1,5 @@
-#include "types.h"
-#include "courses/course_macro.h"
+#include <mk64.h>
+#include <common_structs.h>
 
 CourseVtx d_course_yoshi_valley_vertex[] = {
     {{-1627,    -100,    -730}, { -1858,  2252}, {MACRO_COLOR_FLAG(0x88, 0x88, 0x88, 0), 0x00}},

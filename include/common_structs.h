@@ -21,82 +21,6 @@ typedef struct
 	f32 x, y, z;
 } Vec3fs;
 
-#define COURSE_NULL 0xFF
-
-typedef enum {
-    /* 0x00 */ COURSE_MARIO_RACEWAY = 0,
-    /* 0x01 */ COURSE_CHOCO_MOUNTAIN,
-    /* 0x02 */ COURSE_BOWSER_CASTLE,
-    /* 0x03 */ COURSE_BANSHEE_BOARDWALK,
-    /* 0x04 */ COURSE_YOSHI_VALLEY,
-    /* 0x05 */ COURSE_FRAPPE_SNOWLAND,
-    /* 0x06 */ COURSE_KOOPA_BEACH,
-    /* 0x07 */ COURSE_ROYAL_RACEWAY,
-    /* 0x08 */ COURSE_LUIGI_RACEWAY,
-    /* 0x09 */ COURSE_MOO_MOO_FARM,
-    /* 0x0A */ COURSE_TOADS_TURNPIKE,
-    /* 0x0B */ COURSE_KALAMARI_DESERT,
-    /* 0x0C */ COURSE_SHERBET_LAND,
-    /* 0x0D */ COURSE_RAINBOW_ROAD,
-    /* 0x0E */ COURSE_WARIO_STADIUM,
-    /* 0x0F */ COURSE_BLOCK_FORT,
-    /* 0x10 */ COURSE_SKYSCRAPER,
-    /* 0x11 */ COURSE_DOUBLE_DECK,
-    /* 0x12 */ COURSE_DK_JUNGLE,
-    /* 0x13 */ COURSE_BIG_DONUT,
-    /* 0x14 */ COURSE_AWARD_CEREMONY,
-    /* 0x15 */ NUM_COURSES
-} COURSES;
-
-typedef enum {
-    /* 0x00 */ TIME_TRIAL_DATA_LUIGI_RACEWAY,
-    /* 0x01 */ TIME_TRIAL_DATA_MOO_MOO_FARM,
-    /* 0x02 */ TIME_TRIAL_DATA_KOOPA_BEACH,
-    /* 0x03 */ TIME_TRIAL_DATA_KALAMARI_DESERT,
-    /* 0x04 */ TIME_TRIAL_DATA_TOADS_TURNPIKE,
-    /* 0x05 */ TIME_TRIAL_DATA_FRAPPE_SNOWLAND,
-    /* 0x06 */ TIME_TRIAL_DATA_CHOCO_MOUNTAIN,
-    /* 0x07 */ TIME_TRIAL_DATA_MARIO_RACEWAY,
-    /* 0x08 */ TIME_TRIAL_DATA_WARIO_STADIUM,
-    /* 0x09 */ TIME_TRIAL_DATA_SHERBET_LAND,
-    /* 0x0A */ TIME_TRIAL_DATA_ROYAL_RACEWAY,
-    /* 0x0B */ TIME_TRIAL_DATA_BOWSER_CASTLE,
-    /* 0x0C */ TIME_TRIAL_DATA_DK_JUNGLE,
-    /* 0x0D */ TIME_TRIAL_DATA_YOSHI_VALLEY,
-    /* 0x0E */ TIME_TRIAL_DATA_BANSHEE_BOARDWALK,
-    /* 0x0F */ TIME_TRIAL_DATA_RAINBOW_ROAD,
-    /* 0x10 */ NUM_TIME_TRIAL_DATA
-} TIME_TRIAL_DATA_INDEX;
-
-/**
- * @brief The different types of surface in the game.
-*/
-enum SURFACE_TYPE {
-    /* -0x1 */ SURFACE_DEFAULT = -1,
-    /* 0x00 */ AIRBORNE,
-    /* 0x01 */ ASPHALT, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
-    /* 0x02 */ DIRT, // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK Jungle on course, Yoshi Valley
-    /* 0x03 */ SAND, // Koopa Troopa Beach light color, Royal Raceway
-    /* 0x04 */ STONE, // Royal Raceway castle entrance, Bowser's Castle
-    /* 0x05 */ SNOW, // Frappe Snowland on course, Sherber Land tunnel
-    /* 0x06 */ BRIDGE, // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
-    /* 0x07 */ SAND_OFFROAD, // Mario Raceway
-    /* 0x08 */ GRASS, // Luigi's Raceway, Mario Raceway, Royal Raceway, Bowser's Castle, DK Jungle, Yoshi Valley
-    /* 0x09 */ ICE, // Sherbert Land
-    /* 0x0A */ WET_SAND, // Koop Troopa Beach dark color
-    /* 0x0B */ SNOW_OFFROAD, // Frappe Snowland off course
-    /* 0x0C */ CLIFF, // Koopa Troopa Beach, Choco Mountain
-    /* 0x0D */ DIRT_OFFROAD, // Kalimari Desert off course
-    /* 0x0E */ TRAIN_TRACK, // Kalimari Desert
-    /* 0x0F */ CAVE, // DK Jungle cave
-    /* 0x10 */ ROPE_BRIDGE, // Bowser's Castle bridge 2, DK Jungle bridge
-    /* 0x11 */ WOOD_BRIDGE, // Frappe Snowland bridge, Bowser's Castle bridge 1,3, Yoshi Valley bridge 2
-    /* 0xFC */ BOOST_RAMP_WOOD = 0xFC, // DK Jungle
-    /* 0xFD */ OUT_OF_BOUNDS, // DK Jungle river island
-    /* 0xFE */ BOOST_RAMP_ASPHALT, // Royal Raceway
-    /* 0xFF */ RAMP // Koopa Troopa beach
-};
-
 // This was added as a silly idea:
 // In the data to use "A, B, Z, R" instead of hex numbers.
 typedef enum {
@@ -105,6 +29,103 @@ typedef enum {
     Z = 0x20,
     R = 0x10
 } GhostController;
+
+
+/***  types.h  ***/
+
+typedef struct {
+    /* 0x0 */ s16 waypointStart;
+    /* 0x2 */ s16 waypointEnd;
+    /* 0x4 */ s32 type;
+} KartAIBehaviour; // size = 0x8
+
+enum SpTaskState {
+    SPTASK_STATE_NOT_STARTED,
+    SPTASK_STATE_RUNNING,
+    SPTASK_STATE_INTERRUPTED,
+    SPTASK_STATE_FINISHED,
+    SPTASK_STATE_FINISHED_DP
+};
+
+struct SPTask
+{
+    /*0x00*/ OSTask task;
+    /*0x40*/ OSMesgQueue *msgqueue;
+    /*0x44*/ OSMesg msg;
+    /*0x48*/ enum SpTaskState state;
+}; // size = 0x4C, align = 0x8
+
+struct VblankHandler
+{
+    OSMesgQueue *queue;
+    OSMesg msg;
+};
+
+struct D_80150158 {
+    s16 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+};
+
+struct Controller {
+    s16 rawStickX;
+    s16 rawStickY;
+    u16 button;          // HeldButton
+    u16 buttonPressed;   // OnTriggered
+    u16 buttonDepressed; // OffTriggered
+    u16 stickDirection;
+    u16 stickPressed;    // OffTriggered
+    u16 stickDepressed;  // OnTriggered
+};
+
+// Camera path struct? Or something like that. For GP race won scene?
+struct UnkStruct_80287500 {
+    Vec3f unk0; // xyz coordinates?
+    f32 unkC;
+    f32 unk10;
+    f32 unk14; // rotation?
+    s32 unk18;
+    s32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    s32 unk38;
+};
+
+struct UnkStruct_800DDB40 {
+    u32 unk0;
+    u32 unk4;
+    u32 unk8;
+    u32 unkC;
+    u32 unk10;
+    u32 unk14;
+    u32 unk18;
+    u32 unk1C;
+    u32 unk20;
+    u16 unk24;
+    u16 unk26;
+};
+
+struct UnkStruct_802B53C8 {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+};
+// end math util structs
+
+struct UnkStruct_800DDB68 {
+    s32 *D_800ED600; s32 *D_800ED608; s32 *D_800ED610; s32 *D_800ED618;
+    s32 *D_800ED620; s32 *D_800ED628; s32 *D_800ED630; s32 *D_800ED638;
+};
+/*** Types.h end ***/
+
+
+
 
 typedef struct {
     u8 button;

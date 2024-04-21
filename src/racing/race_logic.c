@@ -1,8 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
-#include <types.h>
+#include <mk64.h>
 #include <common_structs.h>
-#include <config.h>
 #include <defines.h>
 #include <sounds.h>
 #include "camera.h"

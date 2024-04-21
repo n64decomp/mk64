@@ -51,7 +51,6 @@
 
 #include <actor_types.h>
 #include <common_structs.h>
-#include <config.h>
 #include <course.h>
 #include <course_offsets.h>
 #include <debug.h>
@@ -64,7 +63,6 @@
 #include <segments.h>
 #include <sounds.h>
 #include "buffers/trig_tables.h"
-#include <types.h>
 #include <ultra64.h>
 #include <vehicles.h>
 #include <waypoints.h>

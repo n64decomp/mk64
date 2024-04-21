@@ -1,8 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/gbi.h>
-#include <types.h>
-#include <config.h>
+#include <mk64.h>
 
 #include "skybox_and_splitscreen.h"
 #include "code_800029B0.h"

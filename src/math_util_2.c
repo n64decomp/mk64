@@ -11,6 +11,7 @@
 #include "render_player.h"
 #include "code_80057C60.h"
 #include "defines.h"
+#include "camera.h"
 
 #pragma intrinsic (sqrtf)
 

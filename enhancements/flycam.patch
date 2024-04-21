@@ -82,8 +82,7 @@ index 0000000..5569838
 +#include <ultra64.h>
 +#include <PR/os.h>
 +#include <macros.h>
-+#include <types.h>
-+#include <defines.h>
+++#include <defines.h>
 +#include <camera.h>
 +#include "main.h"
 +#include <libc/math.h>

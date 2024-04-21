@@ -2,7 +2,6 @@
 #define CODE_800AF9B0_H
 
 #include "common_structs.h"
-#include <types.h>
 
 /* Function Prototypes */
 void func_800AF9B0(void);

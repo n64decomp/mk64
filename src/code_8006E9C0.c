@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <memory.h>
 #include <defines.h>
+#include <mk64.h>
 
 #include "code_800029B0.h"
 #include "code_80005FD0.h"

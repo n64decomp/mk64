@@ -1,11 +1,10 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <defines.h>
-#include <config.h>
 #include <segments.h>
+#include <mk64.h>
 
 #include "code_80281780.h"
-#include "types.h"
 #include "memory.h"
 #include "camera.h"
 #include "camera_junk.h"

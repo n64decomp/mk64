@@ -1,9 +1,9 @@
 #ifndef CODE_8001F980_H
 #define CODE_8001F980_H
 
-#include "types.h"
-#include "common_structs.h"
+#include <common_structs.h>
 #include "buffers.h"
+#include "camera.h"
 
 #define SOME_TEXTURE_POINTER_MATH 0x800
 

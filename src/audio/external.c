@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
+#include <mk64.h>
 #include <defines.h>
 #include "camera.h"
 #include "math_util_2.h"

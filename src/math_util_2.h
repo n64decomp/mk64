@@ -1,8 +1,8 @@
 #ifndef MATH_UTIL_2_H
 #define MATH_UTIL_2_H
 
-#include "types.h"
 #include "common_structs.h"
+#include "camera.h"
 
 /* Function Prototypes */
 
