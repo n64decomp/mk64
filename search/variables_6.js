@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['f_0',['f',['../unionfu.html#a96f8b185386633ff7d9ef306d3a9cc20',1,'fu::f'],['../union____OSfp.html#aad7ba28b3e6aa7495eb9f9e73f5bd064',1,'__OSfp::f']]],
+  ['f_0',['f',['../structMtx__u.html#ad68774dbb28cac7430099fbf85046c87',1,'Mtx_u::f'],['../unionfu.html#a96f8b185386633ff7d9ef306d3a9cc20',1,'fu::f'],['../union____OSfp.html#aad7ba28b3e6aa7495eb9f9e73f5bd064',1,'__OSfp::f']]],
   ['f64_1',['f64',['../structprintf__struct.html#a3dcc486f96e13521dde5712ba1585a37',1,'printf_struct']]],
   ['f_5feven_2',['f_even',['../union____OSfp.html#aa1b92e78cc62bfa671d55b4f08a42f52',1,'__OSfp']]],
   ['f_5fodd_3',['f_odd',['../union____OSfp.html#a75305f2336958086f4304df0b367ded9',1,'__OSfp']]],
@@ -27,7 +27,7 @@ var searchData=
   ['flags_5farr_24',['flags_arr',['../__Printf_8c.html#a4ee3dcc71cd84a3ea6d024651b4cafad',1,'_Printf.c']]],
   ['flags_5fstr_25',['flags_str',['../__Printf_8c.html#aa730182efed14513bcdb1de045dfc434',1,'_Printf.c']]],
   ['fldregs_26',['fldRegs',['../structOSViMode.html#ab6feaae6755f702c1d2106301c166307',1,'OSViMode']]],
-  ['force_5fstructure_5falignment_27',['force_structure_alignment',['../unionuObjBg.html#a3226432e20f0536cf83e1a026ae68010',1,'uObjBg::force_structure_alignment'],['../unionuObjSprite.html#a1e164c98674456d1d12d8b8de8e2c2ab',1,'uObjSprite::force_structure_alignment'],['../unionuObjMtx.html#aecec7dc5afe312f0636b882d2cafa8a7',1,'uObjMtx::force_structure_alignment'],['../unionuObjSubMtx.html#a64f3bb5d510fe7be3eb41784bca33e1c',1,'uObjSubMtx::force_structure_alignment'],['../unionuObjTxtr.html#a07990ed8470e4e8ff279100be92c28fc',1,'uObjTxtr::force_structure_alignment']]],
+  ['force_5fstructure_5falignment_27',['force_structure_alignment',['../unionMtx2.html#addf34ff580685e645fb24671780fa102',1,'Mtx2::force_structure_alignment'],['../unionuObjBg.html#a3226432e20f0536cf83e1a026ae68010',1,'uObjBg::force_structure_alignment'],['../unionuObjSprite.html#a1e164c98674456d1d12d8b8de8e2c2ab',1,'uObjSprite::force_structure_alignment'],['../unionuObjMtx.html#aecec7dc5afe312f0636b882d2cafa8a7',1,'uObjMtx::force_structure_alignment'],['../unionuObjSubMtx.html#a64f3bb5d510fe7be3eb41784bca33e1c',1,'uObjSubMtx::force_structure_alignment'],['../unionuObjTxtr.html#a07990ed8470e4e8ff279100be92c28fc',1,'uObjTxtr::force_structure_alignment']]],
   ['fp_28',['fp',['../structOSThread__s.html#aee58b953abf10a3d2ed85464dbf49c37',1,'OSThread_s']]],
   ['fp0_29',['fp0',['../struct____OSThreadContext.html#a047be8722c675ccb309a9e3c1769d826',1,'__OSThreadContext']]],
   ['fp10_30',['fp10',['../struct____OSThreadContext.html#a01b732da156629ef599b85463ca2aa7c',1,'__OSThreadContext']]],

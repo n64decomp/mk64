@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['i_0',['i',['../unionfu.html#afdf3c26f812d7404ef51358e7622ca36',1,'fu::i'],['../unionfu.html#a6aed0becf5f2fa3047085638c8516b26',1,'fu::i']]],
+  ['i_0',['i',['../structMtx__u.html#a198e12ffb4a24abf8343050baed78d7b',1,'Mtx_u::i'],['../unionfu.html#afdf3c26f812d7404ef51358e7622ca36',1,'fu::i'],['../unionfu.html#a6aed0becf5f2fa3047085638c8516b26',1,'fu::i']]],
   ['icache_5flinemask_1',['ICACHE_LINEMASK',['../R4300_8h.html#a606dd52e4a35f185c83bb7d84072942f',1,'R4300.h']]],
   ['icache_5flinesize_2',['ICACHE_LINESIZE',['../R4300_8h.html#a9f7bc7faac7832c27e338cd6f8c86de5',1,'R4300.h']]],
   ['icache_5fsize_3',['ICACHE_SIZE',['../R4300_8h.html#a22410cb075a78b53930c854e7964492b',1,'R4300.h']]],

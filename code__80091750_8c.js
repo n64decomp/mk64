@@ -1,5 +1,8 @@
 var code__80091750_8c =
 [
+    [ "Mtx_u", "structMtx__u.html", "structMtx__u" ],
+    [ "Mtx2", "unionMtx2.html", "unionMtx2" ],
+    [ "TheWhyUnion", "unionTheWhyUnion.html", "unionTheWhyUnion" ],
     [ "FUNC_800ADF48DEF", "code__80091750_8c.html#a11e6483e492601ac964925d87320ab15", null ],
     [ "char_to_glyph_index", "code__80091750_8c.html#ace62f40ce813c34904327e39643a0dbf", null ],
     [ "convert_number_to_ascii", "code__80091750_8c.html#a87ff828f0134d42058cf8be2e012a8a3", null ],
@@ -63,6 +66,7 @@ var code__80091750_8c =
     [ "func_80094C60", "code__80091750_8c.html#afbc00b3a80fed334c4f3d05f4502393e", null ],
     [ "func_80095574", "code__80091750_8c.html#a01003958fcc81831bd82f619ae874ac1", null ],
     [ "func_800959F8", "code__80091750_8c.html#ae0fd5923ba70cf6939cd3fa8d09c1191", null ],
+    [ "func_80095AE0", "code__80091750_8c.html#abc50baad10f275ad1d77cdec8c8eb549", null ],
     [ "func_80095BD0", "code__80091750_8c.html#a37eb021a953285ba504198ac6ca73a9a", null ],
     [ "func_80097A14", "code__80091750_8c.html#a6aa04c603cd7b877a5009a97a0b41ed3", null ],
     [ "func_80098558", "code__80091750_8c.html#ab5c3c6089972f58c5616ea260b8b6831", null ],

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['s_0',['s',['../unionReverbBits.html#a395ca89e82139bcaf63c939ac327cc93',1,'ReverbBits::s'],['../structEuAudioCmd.html#a19a94c8e21fba5358de8bc6a024976d8',1,'EuAudioCmd::s'],['../unionuObjBg.html#a67f2ac6d29c26a7c29fc7c5a60289de0',1,'uObjBg::s'],['../unionuObjSprite.html#ae66ad3c7ce997a9563fbe04a7580513f',1,'uObjSprite::s']]],
+  ['s_0',['s',['../unionReverbBits.html#a395ca89e82139bcaf63c939ac327cc93',1,'ReverbBits::s'],['../structEuAudioCmd.html#a19a94c8e21fba5358de8bc6a024976d8',1,'EuAudioCmd::s'],['../unionTheWhyUnion.html#a821e2649ca56f5fb4a9e095fed95496f',1,'TheWhyUnion::s'],['../unionuObjBg.html#a67f2ac6d29c26a7c29fc7c5a60289de0',1,'uObjBg::s'],['../unionuObjSprite.html#ae66ad3c7ce997a9563fbe04a7580513f',1,'uObjSprite::s']]],
   ['s0_1',['s0',['../struct____OSThreadContext.html#a3952bd4cb9dc3738c3cc3e9ba22fcac9',1,'__OSThreadContext']]],
   ['s1_2',['s1',['../struct____OSThreadContext.html#aa54a6330a239f04e197a7e030afb87b9',1,'__OSThreadContext']]],
   ['s2_3',['s2',['../struct____OSThreadContext.html#a8d22b76ab27135b585718d24872f091c',1,'__OSThreadContext']]],
