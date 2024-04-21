@@ -5343,7 +5343,7 @@ void func_80014DE4(s32 arg0) {
 
     D_801646CC = 0;
     D_80164678[arg0] = D_80164670[arg0];
-    if ((gModeSelection != 1) && ((gCourseIndexInCup == FIRST_COURSE_IN_CUP) || (gDemoMode == (u16) 1))) {
+    if ((gModeSelection != 1) && ((gCupSelectedCourseIndex == FIRST_COURSE_IN_CUP) || (gDemoMode == (u16) 1))) {
         D_80164678[arg0] = 0;
     } else if ((D_80164678[arg0] != 0) && (D_80164678[arg0] != (s16) 1) && (D_80164678[arg0] != 2) && (D_80164678[arg0] != 3)) {
         D_80164678[arg0] = 0;
