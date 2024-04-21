@@ -4189,13 +4189,13 @@ UNUSED void func_8007C49C(void) {
 void func_8007C4A4(s32 objectIndex) {
     u16 var_t9;
 
-    var_t9 = gObjectList[objectIndex].unk_0BE[1] * 0x24 / 0x10000;
+    var_t9 = gObjectList[objectIndex].direction_angle[1] * 0x24 / 0x10000;
 
     if (var_t9 < 0x13) {
-        set_object_flag_unk_054_false(objectIndex, 0x80);
+        set_object_flag_status_false(objectIndex, 0x80);
         gObjectList[objectIndex].itemDisplay = var_t9;
     } else {
-        set_object_flag_unk_054_true(objectIndex, 0x80);
+        set_object_flag_status_true(objectIndex, 0x80);
         gObjectList[objectIndex].itemDisplay = 0x24 - var_t9;
     }
 }
