@@ -1718,7 +1718,7 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
                 } else {
                     D_8018EDEC = 3;
                     play_sound2(SOUND_MENU_SELECT);
-                    gCurrentCourseId = gCupCourseOrder[gCupSelection][MUSHROOM_CUP];
+                    gCurrentCourseId = gCupCourseOrder[gCupSelection][FIRST_COURSE_IN_CUP];
                     gMenuTimingCounter = 0;
                 }
                 func_800B44AC();
