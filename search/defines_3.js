@@ -212,7 +212,7 @@ var searchData=
   ['controller_5fpak_5fmenu_5fselect_5frecord_209',['CONTROLLER_PAK_MENU_SELECT_RECORD',['../defines_8h.html#a1ce1ddcc8ddba96aa8e97a315572e0db',1,'defines.h']]],
   ['controller_5fpak_5fmenu_5ftable_5fgame_5fdata_210',['CONTROLLER_PAK_MENU_TABLE_GAME_DATA',['../defines_8h.html#a8c72fd345d7612beb1d6f771c4d34b6b',1,'defines.h']]],
   ['course_5fdata_5fmenu_211',['COURSE_DATA_MENU',['../defines_8h.html#a3c38b8f03a3f96d8054b8768b651c947',1,'defines.h']]],
-  ['course_5fnull_212',['COURSE_NULL',['../common__structs_8h.html#a1af10c9624fc6956bfa4bf7e77ae4b99',1,'common_structs.h']]],
+  ['course_5fnull_212',['COURSE_NULL',['../mk64_8h.html#a1af10c9624fc6956bfa4bf7e77ae4b99',1,'mk64.h']]],
   ['course_5fselect_5fmenu_213',['COURSE_SELECT_MENU',['../defines_8h.html#ae9e9974737d16f8449f0fe7e68c8e7a4',1,'defines.h']]],
   ['course_5fselect_5fmenu_5ffrom_5fquit_214',['COURSE_SELECT_MENU_FROM_QUIT',['../defines_8h.html#a337651c847b706a5fa2c8c02ae323db7',1,'defines.h']]],
   ['course_5ftimer_5fiter_215',['COURSE_TIMER_ITER',['../defines_8h.html#ab651d36bd66fc3e614b826872df411ea',1,'defines.h']]],

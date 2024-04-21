@@ -4,7 +4,7 @@ var searchData=
   ['icache_5flinemask_1',['ICACHE_LINEMASK',['../R4300_8h.html#a606dd52e4a35f185c83bb7d84072942f',1,'R4300.h']]],
   ['icache_5flinesize_2',['ICACHE_LINESIZE',['../R4300_8h.html#a9f7bc7faac7832c27e338cd6f8c86de5',1,'R4300.h']]],
   ['icache_5fsize_3',['ICACHE_SIZE',['../R4300_8h.html#a22410cb075a78b53930c854e7964492b',1,'R4300.h']]],
-  ['ice_4',['ICE',['../common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a6d7134828b81adf5407a447d1aa6f672',1,'common_structs.h']]],
+  ['ice_4',['ICE',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a6d7134828b81adf5407a447d1aa6f672',1,'mk64.h']]],
   ['id_5',['id',['../structSeqOrBankEntry.html#a416bfb04131bc8f88f9ef60c3ab53d79',1,'SeqOrBankEntry::id'],['../structOSThread__s.html#ae5717f6d5c4bae34ac008184105ba4eb',1,'OSThread_s::id']]],
   ['ignoredrumpan_6',['ignoreDrumPan',['../structSequenceChannelLayer.html#abb251797e45ed3d6c1222a2ebc19ae38',1,'SequenceChannelLayer']]],
   ['im_5frd_7',['IM_RD',['../gbi_8h.html#a9219db357071764d5a3a2e8fa2026de0',1,'gbi.h']]],

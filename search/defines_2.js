@@ -36,7 +36,7 @@ var searchData=
   ['boot_5faddress_5femu_33',['BOOT_ADDRESS_EMU',['../os_8h.html#a0169befe40c5db4146188d2ddbe65bc6',1,'os.h']]],
   ['boot_5faddress_5findy_34',['BOOT_ADDRESS_INDY',['../os_8h.html#a3cba2e502a5fb5cfa46cea91b62ecbf9',1,'os.h']]],
   ['boot_5faddress_5fultra_35',['BOOT_ADDRESS_ULTRA',['../os_8h.html#a79528dff3e2720a81c796314bd50b22a',1,'os.h']]],
-  ['border_5fheight_36',['BORDER_HEIGHT',['../config_8h.html#a8d1345c22c668be330e8ff3ee4fb2463',1,'config.h']]],
+  ['border_5fheight_36',['BORDER_HEIGHT',['../mk64_8h.html#a8d1345c22c668be330e8ff3ee4fb2463',1,'mk64.h']]],
   ['bowser_37',['BOWSER',['../defines_8h.html#a25bbf0d263c780d3379040bf765369e2',1,'defines.h']]],
   ['bowser_5fsize_38',['BOWSER_SIZE',['../defines_8h.html#a73fadc5bf872808026c6a1a4fef9672a',1,'defines.h']]],
   ['bowtie_5fval_39',['BOWTIE_VAL',['../gbi_8h.html#a9375c2fc1e5370d91c65aeb5a3576439',1,'gbi.h']]],

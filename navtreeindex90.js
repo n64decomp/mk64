@@ -1,5 +1,7 @@
 var NAVTREEINDEX90 =
 {
+"profiler_8h_source.html":[8,0,3,50],
+"race__logic_8c.html":[8,0,3,7,10],
 "race__logic_8c.html#a18aa11908bd75450e1cc7a07038adce5":[8,0,3,7,10,17],
 "race__logic_8c.html#a1b2815c62b11e33e3c74d7fd65af5edc":[8,0,3,7,10,31],
 "race__logic_8c.html#a1ea1efbd97d34c4f81c9184a4a029a26":[8,0,3,7,10,11],
@@ -247,7 +249,5 @@ var NAVTREEINDEX90 =
 "rainbow__road_2course__data_8h.html#a9ad580d5bc81aeb42d09bc6c2e6f9a9b":[8,0,0,13,1,60],
 "rainbow__road_2course__data_8h.html#a9ae89ad6361280f6d4fa4175f2894490":[8,0,0,13,1,14],
 "rainbow__road_2course__data_8h.html#a9e081d427c046d08356fbca9cf0dd335":[8,0,0,13,1,33],
-"rainbow__road_2course__data_8h.html#aa013942442220169aa283184a2c59052":[8,0,0,13,1,80],
-"rainbow__road_2course__data_8h.html#aa05016144a02c23c63252c8a95192232":[8,0,0,13,1,83],
-"rainbow__road_2course__data_8h.html#aa441957b172e94ad5b61c5f89fea03aa":[8,0,0,13,1,77]
+"rainbow__road_2course__data_8h.html#aa013942442220169aa283184a2c59052":[8,0,0,13,1,80]
 };

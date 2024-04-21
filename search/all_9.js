@@ -4078,7 +4078,7 @@ var searchData=
   ['grand_5fprix_4075',['GRAND_PRIX',['../defines_8h.html#a8243137b0c8b7200c20479738cdbe365',1,'defines.h']]],
   ['grandomseed16_4076',['gRandomSeed16',['../buffers_8h.html#a8eafbc86e2d3ad047f20f29099649228',1,'gRandomSeed16:&#160;random.c'],['../random_8c.html#a8eafbc86e2d3ad047f20f29099649228',1,'gRandomSeed16:&#160;random.c'],['../random_8h.html#a8eafbc86e2d3ad047f20f29099649228',1,'gRandomSeed16:&#160;random.c']]],
   ['grandprixpoints_4077',['grandPrixPoints',['../structStuff.html#a65a6fa726f8d6a9070d7631d313a8af3',1,'Stuff']]],
-  ['grass_4078',['GRASS',['../common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98adbed8401e35adba25dab2e1729ee55fa',1,'common_structs.h']]],
+  ['grass_4078',['GRASS',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98adbed8401e35adba25dab2e1729ee55fa',1,'mk64.h']]],
   ['gravity_4079',['gravity',['../structmk64__surface__map__ram.html#adc903d4b9f03dcab5222965174899f3c',1,'mk64_surface_map_ram']]],
   ['grdpcmd_4080',['GRDPCMD',['../gbi_8h.html#a9d0ebf5ff5bdea078d6af41f3023a9d8',1,'gbi.h']]],
   ['green_4081',['green',['../structRGBA5551.html#a886e94fc0c29271f17deda549e7a156a',1,'RGBA5551::green'],['../structRGBA16.html#acca621d7e06e84ecdbc2349d5ac200b0',1,'RGBA16::green']]],

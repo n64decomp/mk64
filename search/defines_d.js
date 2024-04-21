@@ -8,7 +8,7 @@ var searchData=
   ['m_5ftask_5fflag0_5',['M_TASK_FLAG0',['../sptask_8h.html#a3b54c742028b6c1e8246bf9349bad70c',1,'sptask.h']]],
   ['m_5ftask_5fflag1_6',['M_TASK_FLAG1',['../sptask_8h.html#a3c24abc5612e42fbcd54d72d599d94ad',1,'sptask.h']]],
   ['m_5fvidtask_7',['M_VIDTASK',['../mbi_8h.html#a5cedaa5c01d609fc27e765ee4f6f234b',1,'mbi.h']]],
-  ['macro_5fcolor_5fflag_8',['MACRO_COLOR_FLAG',['../course__macro_8h.html#ab34a07fcda62ff7494db5d447db8f436',1,'course_macro.h']]],
+  ['macro_5fcolor_5fflag_8',['MACRO_COLOR_FLAG',['../mk64_8h.html#ab34a07fcda62ff7494db5d447db8f436',1,'mk64.h']]],
   ['main_5fmenu_9',['MAIN_MENU',['../defines_8h.html#a44dd1b46a3f55007e78fc1ac506153b9',1,'defines.h']]],
   ['main_5fmenu_5ffrom_5fquit_10',['MAIN_MENU_FROM_QUIT',['../defines_8h.html#a859b65c6d1cd117e97ccc81a526466b8',1,'defines.h']]],
   ['make_5frgb_11',['MAKE_RGB',['../code__80057C60_8c.html#aab11ebac1d00e38a34c81ac79f0e149b',1,'code_80057C60.c']]],

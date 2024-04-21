@@ -1,5 +1,7 @@
 var NAVTREEINDEX85 =
 {
+"osViSetEvent_8c.html#a77e9140da93b81b60780d3862001999b":[8,0,3,6,111,0],
+"osViSetMode_8c.html":[8,0,3,6,112],
 "osViSetMode_8c.html#a36511d1bdf47d5cdc155727f8f1ee88e":[8,0,3,6,112,1],
 "osViSetMode_8c.html#a6bbc9ccb13540fca052eed991070e810":[8,0,3,6,112,0],
 "osViSetSpecialFeatures_8c.html":[8,0,3,6,113],
@@ -247,7 +249,5 @@ var NAVTREEINDEX85 =
 "os_8h.html#afee4275f0085bb7d6716309d7b2e865b":[8,0,2,2,7,29],
 "os_8h_source.html":[8,0,2,2,7],
 "os__ai_8h.html":[8,0,2,2,8],
-"os__ai_8h_source.html":[8,0,2,2,8],
-"os__cache_8h.html":[8,0,2,2,9],
-"os__cache_8h_source.html":[8,0,2,2,9]
+"os__ai_8h_source.html":[8,0,2,2,8]
 };

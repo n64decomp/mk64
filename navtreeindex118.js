@@ -1,5 +1,6 @@
 var NAVTREEINDEX118 =
 {
+"structuObjSprite__t.html#af55c88765dcf104f65419dcf3ae01f09":[7,0,237,10],
 "structuObjSubMtx__t.html":[7,0,239],
 "structuObjSubMtx__t.html#a65b11eb96d1941ccd09b65e4188d3207":[7,0,239,0],
 "structuObjSubMtx__t.html#ac54bb6d508c91f2eb34e0104eaf4fe2d":[7,0,239,1],
@@ -248,6 +249,5 @@ var NAVTREEINDEX118 =
 "textures_8c.html#a2fba0cf35b2c1e746a8fa80544f776f4":[8,0,3,3,6,283],
 "textures_8c.html#a311e29fbfdff0236f1276100dc4bbe50":[8,0,3,3,6,115],
 "textures_8c.html#a31200b1ff59dd0dc38b22b9df1eff3cc":[8,0,3,3,6,651],
-"textures_8c.html#a31d693f063255b47f93382b15dfc7de7":[8,0,3,3,6,171],
-"textures_8c.html#a3261970196160e41c1af4e816281c4fd":[8,0,3,3,6,378]
+"textures_8c.html#a31d693f063255b47f93382b15dfc7de7":[8,0,3,3,6,171]
 };

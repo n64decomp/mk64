@@ -1,5 +1,6 @@
 var NAVTREEINDEX110 =
 {
+"structBombKart.html":[7,0,54],
 "structBombKart.html#a14d30e3c4ae3ed2c94852f2b46c326a9":[7,0,54,11],
 "structBombKart.html#a1bde5eef376c38628b3785a370e65c1e":[7,0,54,2],
 "structBombKart.html#a1cab59b9c101bcceff7bc98bcd31bb1d":[7,0,54,9],
@@ -248,6 +249,5 @@ var NAVTREEINDEX110 =
 "structGfxPool.html#a705e6036f85bdb4c3f708e0e938610db":[7,0,83,8],
 "structGfxPool.html#a70f20c70d9af0bf2e7001d904987cb0e":[7,0,83,12],
 "structGfxPool.html#a7b4ba3aad2315e3d209f42511c456cb6":[7,0,83,0],
-"structGfxPool.html#ab22fac4de0b34cb404e4f8ec5a21e4bf":[7,0,83,7],
-"structGfxPool.html#ab6bc5412ee4f45f34352dad5a25272b1":[7,0,83,10]
+"structGfxPool.html#ab22fac4de0b34cb404e4f8ec5a21e4bf":[7,0,83,7]
 };

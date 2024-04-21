@@ -48,7 +48,7 @@
 <script type="application/ecmascript">
 var viewWidth = 3630;
 var viewHeight = 203;
-var sectionId = 'dynsection-1';
+var sectionId = 'dynsection-0';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">

@@ -47,8 +47,8 @@ var searchData=
   ['actor_5fwario_5fsign_44',['ACTOR_WARIO_SIGN',['../actor__types_8h.html#a06ad3f803827afd107e7682c8c22d990a1dc03bd4112ad4bdf10252b9074c794e',1,'actor_types.h']]],
   ['actor_5fyoshi_5fegg_45',['ACTOR_YOSHI_EGG',['../actor__types_8h.html#a06ad3f803827afd107e7682c8c22d990a9a5b90d71f1d6c4a72fafd72661e0660',1,'actor_types.h']]],
   ['after_5fdisplay_5flists_46',['AFTER_DISPLAY_LISTS',['../profiler_8h.html#a464075ec8b898dea3a20b3166dd123bfa3cb3edb479d6c28d023c9c0c5d15e02b',1,'profiler.h']]],
-  ['airborne_47',['AIRBORNE',['../common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aae231593748597efa2fddd103805f4f0',1,'common_structs.h']]],
+  ['airborne_47',['AIRBORNE',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aae231593748597efa2fddd103805f4f0',1,'mk64.h']]],
   ['al_5fadpcm_5fwave_48',['AL_ADPCM_WAVE',['../libaudio__internal_8h.html#abc5c98fcc1211af2b80116dd6e0a035da7f18be1646f533e496b1228ee0df8435',1,'libaudio_internal.h']]],
   ['al_5fraw16_5fwave_49',['AL_RAW16_WAVE',['../libaudio__internal_8h.html#abc5c98fcc1211af2b80116dd6e0a035da9f7c04ebfd0910e043023fd2c5a09d9d',1,'libaudio_internal.h']]],
-  ['asphalt_50',['ASPHALT',['../common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb',1,'common_structs.h']]]
+  ['asphalt_50',['ASPHALT',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb',1,'mk64.h']]]
 ];

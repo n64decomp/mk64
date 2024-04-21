@@ -19,7 +19,7 @@ var searchData=
   ['behaviour_5fslow_5fspeed_16',['BEHAVIOUR_SLOW_SPEED',['../defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81a3cc155f60d230d03926fb31444025398',1,'defines.h']]],
   ['blue_5fshell_5flock_5fon_17',['BLUE_SHELL_LOCK_ON',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495bacbbf8ec958ded92542c807a249ab5663',1,'actor_types.h']]],
   ['blue_5fshell_5ftarget_5feliminated_18',['BLUE_SHELL_TARGET_ELIMINATED',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495ba5bedeedba66ded3f9a8f54f73bc2e6fa',1,'actor_types.h']]],
-  ['boost_5framp_5fasphalt_19',['BOOST_RAMP_ASPHALT',['../common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aa11589879ff008cf99b438493894e142',1,'common_structs.h']]],
-  ['boost_5framp_5fwood_20',['BOOST_RAMP_WOOD',['../common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a9b293f81c6f8c72814562333d5341cda',1,'common_structs.h']]],
-  ['bridge_21',['BRIDGE',['../common__structs_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a68d3880946f8e8f3fb64b7f635aaba1e',1,'common_structs.h']]]
+  ['boost_5framp_5fasphalt_19',['BOOST_RAMP_ASPHALT',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aa11589879ff008cf99b438493894e142',1,'mk64.h']]],
+  ['boost_5framp_5fwood_20',['BOOST_RAMP_WOOD',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a9b293f81c6f8c72814562333d5341cda',1,'mk64.h']]],
+  ['bridge_21',['BRIDGE',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a68d3880946f8e8f3fb64b7f635aaba1e',1,'mk64.h']]]
 ];

@@ -109,7 +109,7 @@ $(function(){initNavTree('staff__ghosts_8c.html',''); initResizable(); });
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="ultra64_8h_source.html">ultra64.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="types_8h_source.html">types.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="common__structs_8h_source.html">common_structs.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="defines_8h_source.html">defines.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="decode_8h_source.html">decode.h</a>&gt;</code><br />
@@ -121,6 +121,7 @@ $(function(){initNavTree('staff__ghosts_8c.html',''); initResizable(); });
 <code>#include &quot;<a class="el" href="code__8006E9C0_8h_source.html">code_8006E9C0.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__80091750_8h_source.html">code_80091750.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="code__80057C60_8h_source.html">code_80057C60.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="kart__dma_8h_source.html">kart_dma.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for staff_ghosts.c:</div>
 <div class="dyncontent">
@@ -251,8 +252,6 @@ Variables</h2></td></tr>
 <tr class="separator:a6cb6cd9d8408015df1d5a5e1f78f77e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a679f0f383eed9f5e52a4506c9220788e" id="r_a679f0f383eed9f5e52a4506c9220788e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a679f0f383eed9f5e52a4506c9220788e">D_800DC714</a> = (<a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> *) &amp;D_802BFB80.arraySize8[1][1][3]</td></tr>
 <tr class="separator:a679f0f383eed9f5e52a4506c9220788e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa31bfb73f37b232f095701d48a4dc494" id="r_aa31bfb73f37b232f095701d48a4dc494"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa31bfb73f37b232f095701d48a4dc494">_kart_texturesSegmentRomStart</a></td></tr>
-<tr class="separator:aa31bfb73f37b232f095701d48a4dc494"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a678223a647ce27aa2f4934dc1c777374" id="r_a678223a647ce27aa2f4934dc1c777374"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a678223a647ce27aa2f4934dc1c777374">gLapCountByPlayerId</a> []</td></tr>
 <tr class="separator:a678223a647ce27aa2f4934dc1c777374"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e58850f1fd8ab0b9cb2543d71c70316" id="r_a4e58850f1fd8ab0b9cb2543d71c70316"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structStaffGhost.html">StaffGhost</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e58850f1fd8ab0b9cb2543d71c70316">d_mario_raceway_staff_ghost</a></td></tr>
@@ -788,28 +787,6 @@ Here is the caller graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="aa31bfb73f37b232f095701d48a4dc494" name="aa31bfb73f37b232f095701d48a4dc494"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa31bfb73f37b232f095701d48a4dc494">&#9670;&#160;</a></span>_kart_texturesSegmentRomStart</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> _kart_texturesSegmentRomStart</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a6cb6cd9d8408015df1d5a5e1f78f77e2" name="a6cb6cd9d8408015df1d5a5e1f78f77e2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6cb6cd9d8408015df1d5a5e1f78f77e2">&#9670;&#160;</a></span>D_800DC710</h2>
 

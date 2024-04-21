@@ -141,7 +141,7 @@ var searchData=
   ['_5ffrappe_5fsnowland_5fvertexsegmentromstart_138',['_frappe_snowland_vertexSegmentRomStart',['../courseTable_8h.html#aca3af4468e44ea51a03c87ba3545b254',1,'courseTable.h']]],
   ['_5fkalimari_5fdesert_5fvertexsegmentromend_139',['_kalimari_desert_vertexSegmentRomEnd',['../courseTable_8h.html#a4a8b0a97f5d32f8b08ea295ab87fd276',1,'courseTable.h']]],
   ['_5fkalimari_5fdesert_5fvertexsegmentromstart_140',['_kalimari_desert_vertexSegmentRomStart',['../courseTable_8h.html#ac73f5046d83d29bfec5d34832023b01c',1,'courseTable.h']]],
-  ['_5fkart_5ftexturessegmentromstart_141',['_kart_texturesSegmentRomStart',['../kart__dma_8h.html#a640fe763f92f9276e6b2f4b2c27dffff',1,'_kart_texturesSegmentRomStart:&#160;kart_dma.h'],['../staff__ghosts_8c.html#aa31bfb73f37b232f095701d48a4dc494',1,'_kart_texturesSegmentRomStart:&#160;staff_ghosts.c']]],
+  ['_5fkart_5ftexturessegmentromstart_141',['_kart_texturesSegmentRomStart',['../kart__dma_8h.html#a640fe763f92f9276e6b2f4b2c27dffff',1,'kart_dma.h']]],
   ['_5fkoopa_5ftroopa_5fbeach_5fvertexsegmentromend_142',['_koopa_troopa_beach_vertexSegmentRomEnd',['../courseTable_8h.html#a87afd9e2465c09d4672987efa5fa7c32',1,'courseTable.h']]],
   ['_5fkoopa_5ftroopa_5fbeach_5fvertexsegmentromstart_143',['_koopa_troopa_beach_vertexSegmentRomStart',['../courseTable_8h.html#a2c2808ab7192a6f63d8a9282e157e29f',1,'courseTable.h']]],
   ['_5fluigi_5fraceway_5fvertexsegmentromend_144',['_luigi_raceway_vertexSegmentRomEnd',['../courseTable_8h.html#a1b821f1c3302fbe325a2d016cf70beee',1,'courseTable.h']]],

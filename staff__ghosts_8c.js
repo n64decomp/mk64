@@ -21,7 +21,6 @@ var staff__ghosts_8c =
     [ "mio0encode", "staff__ghosts_8c.html#aee8d226c442bc6a60158a37eeef8656a", null ],
     [ "set_staff_ghost", "staff__ghosts_8c.html#a80fa9da37c18f25041a3ec02cec5cd25", null ],
     [ "staff_ghosts_loop", "staff__ghosts_8c.html#a6c93bd66a22613771face974257523c8", null ],
-    [ "_kart_texturesSegmentRomStart", "staff__ghosts_8c.html#aa31bfb73f37b232f095701d48a4dc494", null ],
     [ "D_800DC710", "staff__ghosts_8c.html#a6cb6cd9d8408015df1d5a5e1f78f77e2", null ],
     [ "D_800DC714", "staff__ghosts_8c.html#a679f0f383eed9f5e52a4506c9220788e", null ],
     [ "D_80162D80", "staff__ghosts_8c.html#afda27d96ad3f22d39e6c9179f1b44c6a", null ],

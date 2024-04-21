@@ -108,40 +108,45 @@ $(function(){initNavTree('crash__screen__enhancement_8h_source.html',''); initRe
   <div class="headertitle"><div class="title">crash_screen_enhancement.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="crash__screen__enhancement_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &lt;<a class="code" href="ultra64_8h.html">ultra64.h</a>&gt;</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;<a class="code" href="macros_8h.html">macros.h</a>&gt;</span></div>
+<a href="crash__screen__enhancement_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef CRASH_SCREEN_ENHANCEMENT_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define CRASH_SCREEN_ENHANCEMENT_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keywordtype">void</span> <a class="code hl_function" href="crash__screen__enhancement_8h.html#ac9d1ab766e51eed3b97fcc56ccb64df9">crash_screen_draw</a>(<a class="code hl_struct" href="structOSThread__s.html">OSThread</a>* <a class="code hl_variable" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">thread</a>);</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">// Add this to the top of main.c or crash_screen.c</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">//#define CRASH_SCREEN_ENHANCEMENT</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;<a class="code" href="ultra64_8h.html">ultra64.h</a>&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;<a class="code" href="macros_8h.html">macros.h</a>&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keywordtype">void</span> <a class="code hl_function" href="crash__screen__enhancement_8h.html#ac9d1ab766e51eed3b97fcc56ccb64df9">crash_screen_draw</a>(<a class="code hl_struct" href="structOSThread__s.html">OSThread</a>* <a class="code hl_variable" href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">thread</a>);</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// void display_and_vsync(void) {</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">//     profiler_log_thread5_time(BEFORE_DISPLAY_LISTS);</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">//     osRecvMesg(&amp;gGfxVblankQueue, &amp;gMainReceivedMesg, OS_MESG_BLOCK);</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">//     exec_display_list(&amp;gGfxPool-&gt;spTask);</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">//     profiler_log_thread5_time(AFTER_DISPLAY_LISTS);</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">//     osRecvMesg(&amp;gGameVblankQueue, &amp;gMainReceivedMesg, OS_MESG_BLOCK);</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">//     osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">//     profiler_log_thread5_time(THREAD5_END);</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// Add this to the top of main.c or crash_screen.c</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">//#define CRASH_SCREEN_ENHANCEMENT</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// void display_and_vsync(void) {</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">//     profiler_log_thread5_time(BEFORE_DISPLAY_LISTS);</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">//     osRecvMesg(&amp;gGfxVblankQueue, &amp;gMainReceivedMesg, OS_MESG_BLOCK);</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">//     exec_display_list(&amp;gGfxPool-&gt;spTask);</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">//     profiler_log_thread5_time(AFTER_DISPLAY_LISTS);</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">//     osRecvMesg(&amp;gGameVblankQueue, &amp;gMainReceivedMesg, OS_MESG_BLOCK);</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">//     crash_screen_set_framebuffer((uintptr_t *) gPhysicalFramebuffers[sRenderedFramebuffer]);</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">//     crash_screen_draw((u16 *) gPhysicalFramebuffers[sRenderedFramebuffer], &amp;gGameLoopThread);</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">//     Add this line ^</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">//     osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[sRenderedFramebuffer]));</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">//     profiler_log_thread5_time(THREAD5_END);</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">//     osRecvMesg(&amp;gGameVblankQueue, &amp;gMainReceivedMesg, OS_MESG_BLOCK);</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">//     crash_screen_set_framebuffer((uintptr_t *) gPhysicalFramebuffers[sRenderedFramebuffer]);</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">//     if (++sRenderedFramebuffer == 3) {</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">//         sRenderedFramebuffer = 0;</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">//     }</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">//     if (++sRenderingFramebuffer == 3) {</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">//         sRenderingFramebuffer = 0;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">//     crash_screen_draw((u16 *) gPhysicalFramebuffers[sRenderedFramebuffer], &amp;gGameLoopThread);</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">//     Add this line ^</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">//     if (++sRenderedFramebuffer == 3) {</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">//         sRenderedFramebuffer = 0;</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">//     }</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">//     gGlobalTimer++;</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">//     if (++sRenderingFramebuffer == 3) {</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">//         sRenderingFramebuffer = 0;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">//     }</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">//     gGlobalTimer++;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">// }</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#endif </span><span class="comment">// CRASH_SCREEN_ENHANCEMENT_H</span></div>
 <div class="ttc" id="acode__800029B0_8c_html_a1b0406ea3ec906cf85496afbfe00e23e"><div class="ttname"><a href="code__800029B0_8c.html#a1b0406ea3ec906cf85496afbfe00e23e">gCourseMaxZ</a></div><div class="ttdeci">s16 gCourseMaxZ</div><div class="ttdef"><b>Definition</b> code_800029B0.c:92</div></div>
-<div class="ttc" id="acrash__screen__enhancement_8h_html_ac9d1ab766e51eed3b97fcc56ccb64df9"><div class="ttname"><a href="crash__screen__enhancement_8h.html#ac9d1ab766e51eed3b97fcc56ccb64df9">crash_screen_draw</a></div><div class="ttdeci">void crash_screen_draw(OSThread *thread)</div><div class="ttdef"><b>Definition</b> crash_screen_enhancement.c:164</div></div>
+<div class="ttc" id="acrash__screen__enhancement_8h_html_ac9d1ab766e51eed3b97fcc56ccb64df9"><div class="ttname"><a href="crash__screen__enhancement_8h.html#ac9d1ab766e51eed3b97fcc56ccb64df9">crash_screen_draw</a></div><div class="ttdeci">void crash_screen_draw(OSThread *thread)</div><div class="ttdef"><b>Definition</b> crash_screen_enhancement.c:163</div></div>
 <div class="ttc" id="amacros_8h_html"><div class="ttname"><a href="macros_8h.html">macros.h</a></div></div>
 <div class="ttc" id="astructOSThread__s_html"><div class="ttname"><a href="structOSThread__s.html">OSThread_s</a></div><div class="ttdef"><b>Definition</b> os_thread.h:51</div></div>
 <div class="ttc" id="aultra64_8h_html"><div class="ttname"><a href="ultra64_8h.html">ultra64.h</a></div></div>

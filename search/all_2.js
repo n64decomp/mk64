@@ -306,7 +306,7 @@ var searchData=
   ['_5filong_303',['_ILONG',['../__Ldtob_8c.html#a06c55345332e055c97392e5bd12c057a',1,'_Ldtob.c']]],
   ['_5fkalimari_5fdesert_5fvertexsegmentromend_304',['_kalimari_desert_vertexSegmentRomEnd',['../courseTable_8h.html#a4a8b0a97f5d32f8b08ea295ab87fd276',1,'courseTable.h']]],
   ['_5fkalimari_5fdesert_5fvertexsegmentromstart_305',['_kalimari_desert_vertexSegmentRomStart',['../courseTable_8h.html#ac73f5046d83d29bfec5d34832023b01c',1,'courseTable.h']]],
-  ['_5fkart_5ftexturessegmentromstart_306',['_kart_texturesSegmentRomStart',['../kart__dma_8h.html#a640fe763f92f9276e6b2f4b2c27dffff',1,'_kart_texturesSegmentRomStart:&#160;kart_dma.h'],['../staff__ghosts_8c.html#aa31bfb73f37b232f095701d48a4dc494',1,'_kart_texturesSegmentRomStart:&#160;staff_ghosts.c']]],
+  ['_5fkart_5ftexturessegmentromstart_306',['_kart_texturesSegmentRomStart',['../kart__dma_8h.html#a640fe763f92f9276e6b2f4b2c27dffff',1,'kart_dma.h']]],
   ['_5fkoopa_5ftroopa_5fbeach_5fvertexsegmentromend_307',['_koopa_troopa_beach_vertexSegmentRomEnd',['../courseTable_8h.html#a87afd9e2465c09d4672987efa5fa7c32',1,'courseTable.h']]],
   ['_5fkoopa_5ftroopa_5fbeach_5fvertexsegmentromstart_308',['_koopa_troopa_beach_vertexSegmentRomStart',['../courseTable_8h.html#a2c2808ab7192a6f63d8a9282e157e29f',1,'courseTable.h']]],
   ['_5flanguage_5fc_309',['_LANGUAGE_C',['../ultra64_8h.html#a9d2ea0da747389658634ff24221b5ef7',1,'ultra64.h']]],

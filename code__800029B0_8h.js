@@ -1,5 +1,6 @@
 var code__800029B0_8h =
 [
+    [ "UnkStruct_800DC5EC", "structUnkStruct__800DC5EC.html", "structUnkStruct__800DC5EC" ],
     [ "clear_nmi_buffer", "code__800029B0_8h.html#a0d59a21a5843b6b518a1b93920dc561e", null ],
     [ "func_800029B0", "code__800029B0_8h.html#a7f2e9212dffa5894377677511e9aea7a", null ],
     [ "func_80002DAC", "code__800029B0_8h.html#aa64b1458166c92a3575d8edd5948a628", null ],
