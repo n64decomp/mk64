@@ -1,6 +1,8 @@
 #ifndef RENDER_COURSES_H
 #define RENDER_COURSES_H
 
+#include "code_800029B0.h"
+
 void func_8029122C(struct UnkStruct_800DC5EC*, s32);
 s32  func_80290C20(Camera*);
 void parse_course_displaylists(uintptr_t);
