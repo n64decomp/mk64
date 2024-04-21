@@ -2838,9 +2838,18 @@ void func_80095AE0(Mtx2 *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     TheWhyUnion sp8;
     s32 i;
 
+
+#ifdef AVOID_UB
+    for (int row = 0; row < 4; row++) {
+        for (int col = 0; col < 4; col++) {
+            arg0->m[row][col] = 0;
+        }
+    }
+#else
     for(i = 0; i < 16; i++) {\
         arg0->m[0][i] = 0;
     }
+#endif
 
     sp14.w = arg3 * 65536.0f;
     sp10.w = arg4 * 65536.0f;
