@@ -2840,8 +2840,10 @@ void func_80095AE0(Mtx2 *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 
 #ifdef AVOID_UB
-    for (int row = 0; row < 4; row++) {
-        for (int col = 0; col < 4; col++) {
+    size_t row = 0;
+    size_t col = 0;
+    for (row = 0; row < 4; row++) {
+        for (col = 0; col < 4; col++) {
             arg0->m[row][col] = 0;
         }
     }
