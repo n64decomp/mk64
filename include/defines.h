@@ -168,6 +168,17 @@ enum {
 #define NUM_COURSES_PER_CUP 4
 
 /**
+ * @brief Options for gCourseIndexInCup
+ */
+enum {
+    FIRST_COURSE_IN_CUP,
+    SECOND_COURSE_IN_CUP,
+    THIRD_COURSE_IN_CUP,
+    FOURTH_COURSE_IN_CUP
+};
+
+
+/**
  * @brief Character IDs
  * Note that these are not the same as the values
  * found in gCharacterGridSelections as those are
