@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <common_structs.h>
-#include <types.h>
+#include <mk64.h>
 
 #include "code_80086E70.h"
 #include "camera.h"

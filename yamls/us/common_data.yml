@@ -8,7 +8,8 @@
     - '#include <assets/common_data.h>'
     header:
     - '#include <PR/gbi.h>'
-    - '#include <types.h>'
+    - '#include <ultra64.h>'
+    - '#include <common_structs.h>'
   tables:
     common_grand_prix_human_item_curve:
       range: [0x8150, 0x840C]

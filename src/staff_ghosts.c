@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
-#include <types.h>
+#include <mk64.h>
 #include <common_structs.h>
 #include <defines.h>
 #include <decode.h>
@@ -12,6 +12,7 @@
 #include "code_8006E9C0.h"
 #include "code_80091750.h"
 #include "code_80057C60.h"
+#include "kart_dma.h"
 
 extern s32 mio0encode(s32 input, s32, s32);
 extern s32 func_80040174(void *, s32, s32);
@@ -61,8 +62,6 @@ s32 D_80162E00;
 u32 *D_800DC710 = (u32 *) &D_802BFB80.arraySize8[0][2][3];
 u32 *D_800DC714 = (u32 *) &D_802BFB80.arraySize8[1][1][3];
 
-extern u8 _kart_texturesSegmentRomStart;
-
 extern s32 gLapCountByPlayerId[];
 
 extern StaffGhost *d_mario_raceway_staff_ghost;
@@ -72,7 +71,7 @@ extern StaffGhost *d_luigi_raceway_staff_ghost;
 void func_80004EF0(void) {
     D_80162DA4 = (u32 *) &D_802BFB80.arraySize8[0][2][3];
     osInvalDCache(&D_80162DA4[0], 0x4000);
-    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) ((D_80162DC4 & 0xFFFFFF) + &_kart_texturesSegmentRomStart), D_80162DA4, 0x4000, &gDmaMesgQueue);
+    osPiStartDma(&gDmaIoMesg, 0, 0, (uintptr_t) &_kart_texturesSegmentRomStart[SEGMENT_OFFSET(D_80162DC4)], D_80162DA4, 0x4000, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     D_80162D9C =  (*D_80162DA4 & 0xFF0000);
     D_80162DA0 = 0;

@@ -155,7 +155,6 @@ Gfx *draw_flash_select_case(Gfx*, s32, s32, s32, s32, s32);
 Gfx *draw_flash_select_case_slow(Gfx*, s32, s32, s32, s32);
 Gfx *draw_flash_select_case_fast(Gfx*, s32, s32, s32, s32);
 Gfx *func_800959F8(Gfx*, Vtx*);
-void func_80095AE0(Mtx*, f32, f32, f32, f32);
 Gfx *func_80095BD0(Gfx*, u8*, f32, f32, u32, u32, f32, f32);
 Gfx *func_80095E10(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, s32, u8 *, u32, u32);
 Gfx *func_800963F0(Gfx*,  s8, s32, s32, f32, f32, s32, s32, s32, s32, s32, s32, u8 *, u32, u32);
@@ -400,11 +399,6 @@ void func_800AF740(struct_8018D9E0_entry*);
 void rmonPrintf(const char *, ...);
 void tkmk00decode(u8*, u8*, u8*, s32);
 
-typedef struct struct_8018EE10_entry_cont {
-    struct_8018EE10_entry arr[1];
-
-} struct_8018EE10_entry_cont;
-
 /* File specific defines */
 
 #define D_8018D9E0_SIZE 0x20
@@ -426,7 +420,7 @@ extern u16 *D_8018D9B0;
 extern u8 *D_8018D9B4;
 extern u8 *D_8018D9B8;
 extern u8 *D_8018D9BC;
-extern struct_8018EE10_entry_cont *D_8018D9C0;
+extern void *D_8018D9C0;
 extern s8 gGPPointsByCharacterId[8];
 extern s8 gCharacterIdByGPOverallRank[];
 extern s8 D_8018D9D8;

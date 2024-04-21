@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <defines.h>
 #include <decode.h>
+#include <mk64.h>
 
 #include "update_objects.h"
 #include "main.h"
@@ -4185,32 +4186,19 @@ UNUSED void func_8007C49C(void) {
 
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/IH8Vx
-// No idea what the source of the diff is
 void func_8007C4A4(s32 objectIndex) {
-    s32 temp_t8;
-    s32 var_t1;
+    u16 var_t9;
 
-    temp_t8 = gObjectList[objectIndex].direction_angle[1] * 0x24;
-    var_t1 = temp_t8 >> 0x10;
-    if (temp_t8 < 0) {
-        var_t1 = temp_t8 + 0xFFFF;
-        var_t1 >>= 0x10;
-    }
-    var_t1 &= 0xFFFF;
-    if (var_t1 < 0x13) {
+    var_t9 = gObjectList[objectIndex].direction_angle[1] * 0x24 / 0x10000;
+
+    if (var_t9 < 0x13) {
         set_object_flag_status_false(objectIndex, 0x80);
-        gObjectList[objectIndex].itemDisplay = var_t1;
-    }
-    else {
+        gObjectList[objectIndex].itemDisplay = var_t9;
+    } else {
         set_object_flag_status_true(objectIndex, 0x80);
-        gObjectList[objectIndex].itemDisplay = 0x24 - var_t1;
+        gObjectList[objectIndex].itemDisplay = 0x24 - var_t9;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/update_objects/func_8007C4A4.s")
-#endif
 
 void func_8007C550(s32 objectIndex) {
     gObjectList[objectIndex].direction_angle[1] = func_800417B4(gObjectList[objectIndex].direction_angle[1], atan2s(gObjectList[objectIndex].velocity[0], gObjectList[objectIndex].velocity[2]));

@@ -41,13 +41,14 @@ TOADS_TURNPIKE_EXPORT_SENTINEL := $(TOADS_TURNPIKE_DIR)/.export
 $(BUILD_DIR)/courses/toads_turnpike/course_data.o: $(TOADS_TURNPIKE_PNG:%.png=%.inc.c)
 
 $(TOADS_TURNPIKE_PNG:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(TOADS_TURNPIKE_PNG): $(TOADS_TURNPIKE_EXPORT_SENTINEL) ;
 
 $(TOADS_TURNPIKE_EXPORT_SENTINEL): $(ASSET_DIR)/courses/toads_turnpike.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_toads_turnpike
 distclean_toads_turnpike:

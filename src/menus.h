@@ -3,7 +3,6 @@
 
 #include "PR/os.h"
 #include "common_structs.h"
-#include <types.h>
 #include <defines.h>
 
 // D_8018EDEC is position on options screen?

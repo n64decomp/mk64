@@ -27,16 +27,17 @@ COURSE_PREVIEW_EXPORT_SENTINEL := $(COURSE_PREVIEW_DIR)/.export
 $(BUILD_DIR)/src/data/textures.o: $(COURSE_PREVIEW_PNG:%.png=%.mio0)
 
 $(COURSE_PREVIEW_PNG:%.png=%.mio0): %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(COURSE_PREVIEW_PNG:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(COURSE_PREVIEW_PNG): $(COURSE_PREVIEW_EXPORT_SENTINEL) ;
 
 $(COURSE_PREVIEW_EXPORT_SENTINEL): $(ASSET_DIR)/course_previews.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_course_previews
 distclean_course_previews:

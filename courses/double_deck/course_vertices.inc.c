@@ -1,5 +1,5 @@
-#include "types.h"
-#include "courses/course_macro.h"
+#include <mk64.h>
+#include <common_structs.h>
 
 CourseVtx d_course_double_deck_vertex[] = {
     {{  577,      60,     100}, {  -317,  1024}, {MACRO_COLOR_FLAG(0x7c, 0x7c, 0x7c, 0), 0x00}},

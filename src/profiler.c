@@ -1,8 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
-#include "types.h"
 #include "profiler.h"
-#include "config.h"
+#include <mk64.h>
 #include "main.h"
 
 struct ProfilerFrameData gProfilerFrameData[2];

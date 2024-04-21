@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include <macros.h>
-#include "types.h"
 #include "courseTable.h"
 #include "all_course_model.h"
 #include "all_course_packed.h"

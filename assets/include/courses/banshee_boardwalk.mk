@@ -49,7 +49,7 @@ BANSHEE_BOARDWALK_EXPORT_SENTINEL := $(BANSHEE_BOARDWALK_DIR)/.export
 $(BUILD_DIR)/data/other_textures.o: $(BANSHEE_BOARDWALK_DIR)/boo_frames.mio0
 
 $(BANSHEE_BOARDWALK_DIR)/boo_frames.mio0: $(BANSHEE_BOARDWALK_DIR)/boo_frames.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 # Making a .c or .s file that includes the Boo frame data as .inc.c or .bin files, respectively,
 # would also work.
@@ -60,28 +60,31 @@ $(BANSHEE_BOARDWALK_DIR)/boo_frames.mio0: $(BANSHEE_BOARDWALK_DIR)/boo_frames.bi
 CAT ?= cat
 
 $(BANSHEE_BOARDWALK_DIR)/boo_frames.bin: $(BANSHEE_BOARDWALK_BOO_FRAMES:%.png=%.bin)
-	$(CAT) $^ > $@
+	$(V)$(CAT) $^ > $@
 
 $(BANSHEE_BOARDWALK_BOO_FRAMES:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(BANSHEE_BOARDWALK_BOO_PALETTE)
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(BANSHEE_BOARDWALK_BOO_PALETTE)
 
 $(BUILD_DIR)/courses/banshee_boardwalk/course_data.o: $(BANSHEE_BOARDWALK_BOO_PALETTE:%.png=%.inc.c)
 $(BUILD_DIR)/courses/banshee_boardwalk/course_data.o: $(BANSHEE_BOARDWALK_BAT_PALETTE:%.png=%.inc.c) $(BANSHEE_BOARDWALK_BAT_FRAMES:%.png=%.inc.c)
 $(BUILD_DIR)/courses/banshee_boardwalk/course_data.o: $(BANSHEE_BOARDWALK_PNG:%.png=%.inc.c)
 
 $(BANSHEE_BOARDWALK_BAT_FRAMES:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(BANSHEE_BOARDWALK_BAT_PALETTE)
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(BANSHEE_BOARDWALK_BAT_PALETTE)
 
 $(BANSHEE_BOARDWALK_PNG:%.png=%.inc.c) $(BANSHEE_BOARDWALK_BOO_PALETTE:%.png=%.inc.c) $(BANSHEE_BOARDWALK_BAT_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(BANSHEE_BOARDWALK_BOO_PALETTE) $(BANSHEE_BOARDWALK_BOO_FRAMES): $(BANSHEE_BOARDWALK_EXPORT_SENTINEL) ;
 $(BANSHEE_BOARDWALK_BAT_PALETTE) $(BANSHEE_BOARDWALK_BAT_FRAMES): $(BANSHEE_BOARDWALK_EXPORT_SENTINEL) ;
 $(BANSHEE_BOARDWALK_PNG): $(BANSHEE_BOARDWALK_EXPORT_SENTINEL) ;
 
 $(BANSHEE_BOARDWALK_EXPORT_SENTINEL): $(ASSET_DIR)/courses/banshee_boardwalk.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_banshee_boardwalk
 distclean_banshee_boardwalk:

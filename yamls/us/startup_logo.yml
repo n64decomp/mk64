@@ -5,7 +5,8 @@
     code:
       - '#include <assets/startup_logo.h>'
     header:
-      - '#include "types.h"'
+      - '#include <ultra64.h>'
+      - '#include <common_structs.h>'
 
 dl1:
   symbol: startup_logo_dl

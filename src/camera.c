@@ -3,6 +3,7 @@
 #include <common_structs.h>
 #include <defines.h>
 #include <libc/math.h>
+#include <mk64.h>
 
 #include "camera.h"
 #include "code_800029B0.h"
