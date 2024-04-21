@@ -1,5 +1,5 @@
-#include "types.h"
 #include <mk64.h>
+#include <common_structs.h>
 
 CourseVtx d_course_koopa_troopa_beach_vertex[] = {
     {{ -370,      11,   -1114}, { -2686,     0}, {MACRO_COLOR_FLAG(0x98, 0x98, 0x98, 4), 0x00}},

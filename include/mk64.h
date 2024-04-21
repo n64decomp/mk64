@@ -3,7 +3,6 @@
 
 // Global header for Mario Kart 64
 
-#include <types.h>
 #include "config.h"
 
 #define GFX_GET_OPCODE(var) ((s32)((var) & 0xFF000000))

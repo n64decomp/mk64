@@ -3,7 +3,6 @@
 
 #include <macros.h>
 #include <ultra64.h>
-#include <types.h>
 #include <actor_types.h>
 #include "camera.h"
 

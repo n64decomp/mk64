@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include <macros.h>
-#include "types.h"
 #include "profiler.h"
 #include "config.h"
 #include "main.h"

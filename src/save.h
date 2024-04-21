@@ -3,7 +3,6 @@
 
 #include "PR/os.h"
 #include "common_structs.h"
-#include <types.h>
 
 /* define symbols */
 

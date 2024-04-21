@@ -1,5 +1,5 @@
-#include "types.h"
 #include <mk64.h>
+#include <common_structs.h>
 
 CourseVtx d_course_toads_turnpike_vertex[] = {
     {{-2064,      50,   -3157}, {  2048,   479}, {MACRO_COLOR_FLAG(0x7c, 0x7c, 0xc0, 0), 0x00}},

@@ -1,5 +1,4 @@
 #include <macros.h>
-#include <types.h>
 #include <PR/ultratypes.h>
 #include <PR/gbi.h>
 #include "data_segment2.h"

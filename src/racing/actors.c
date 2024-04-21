@@ -6,7 +6,6 @@
 #include <actor_types.h>
 #include <defines.h>
 #include <PR/gbi.h>
-#include <types.h>
 
 #include "code_800029B0.h"
 #include "main.h"

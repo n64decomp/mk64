@@ -1,5 +1,5 @@
-#include "types.h"
 #include <mk64.h>
+#include <common_structs.h>
 
 CourseVtx d_course_bowsers_castle_vertex[] = {
 

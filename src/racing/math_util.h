@@ -3,7 +3,6 @@
 
 #include <PR/ultratypes.h>
 
-#include "types.h"
 
 //#define sins(x) gSineTable[(u16) (x) >> 4]
 //#define coss(x) gCosineTable[(u16) (x) >> 4]

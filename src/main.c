@@ -6,7 +6,6 @@
 #include <PR/ucode.h>
 #include <macros.h>
 #include <decode.h>
-#include <types.h>
 #include <config.h>
 #include "profiler.h"
 #include "main.h"

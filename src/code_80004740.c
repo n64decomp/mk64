@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include <macros.h>
-#include <types.h>
 #include <mk64.h>
 #include "math_util.h"
 #include "code_80004740.h"

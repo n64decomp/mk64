@@ -1,9 +1,9 @@
 #ifndef ACTORS_H
 #define ACTORS_H
 
-#include "types.h"
 #include "actor_types.h"
 #include "code_800029B0.h"
+#include "camera.h"
 
 #define END_OF_SPAWN_DATA -0x8000
 

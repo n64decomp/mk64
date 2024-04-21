@@ -7,6 +7,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 
+#include "camera.h"
 #include "code_80057C60.h"
 #include "main.h"
 #include "actors.h"

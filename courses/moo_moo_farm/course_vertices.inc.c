@@ -1,5 +1,5 @@
-#include "types.h"
 #include <mk64.h>
+#include <common_structs.h>
 
 CourseVtx d_course_moo_moo_farm_vertex[] = {
     {{  114,      44,   -2058}, {   819,  -204}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 0), 0x00}},

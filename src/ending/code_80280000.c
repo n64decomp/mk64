@@ -7,7 +7,6 @@
 #include <main.h>
 #include <segments.h>
 #include <code_800029B0.h>
-#include <types.h>
 #include "camera.h"
 #include "memory.h"
 #include "math_util.h"

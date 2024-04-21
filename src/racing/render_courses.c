@@ -2,7 +2,6 @@
 #include <macros.h>
 #include <common_structs.h>
 #include <defines.h>
-#include <types.h>
 #include <course.h>
 
 #include "render_courses.h"

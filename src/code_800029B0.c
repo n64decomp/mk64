@@ -2,7 +2,6 @@
 #include <macros.h>
 
 #include "code_800029B0.h"
-#include "types.h"
 #include "memory.h"
 #include "waypoints.h"
 #include "actors.h"

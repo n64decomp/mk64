@@ -2,7 +2,6 @@
 #include <macros.h>
 #include <PR/gu.h>
 #include <mk64.h>
-#include <types.h>
 #include <debug.h>
 #include <common_structs.h>
 #include "main.h"

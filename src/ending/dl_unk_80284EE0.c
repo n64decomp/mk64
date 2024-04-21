@@ -1,6 +1,5 @@
-#include <types.h>
+#include <ultra64.h>
 #include <PR/gbi.h>
-
 #include "courses/royal_raceway/course_displaylists.inc.h"
 
 // Init RDP - RSP (Ceremony)

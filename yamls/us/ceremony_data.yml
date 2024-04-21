@@ -5,7 +5,8 @@
     code:
     - '#include <assets/ceremony_data.h>'
     header:
-    - '#include <types.h>'
+    - '#include <ultra64.h>'
+    - '#include <common_structs.h>'
     - '#include <waypoints.h>'
 
 silver_trophy_dl:
