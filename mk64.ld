@@ -424,7 +424,7 @@ SECTIONS
       BUILD_DIR/src/audio/heap.o(.bss*);
       BUILD_DIR/src/audio/load.o(.bss*);
       BUILD_DIR/src/audio/data.o(.bss*);
-      . = ALIGN(0x10);
+      . = ALIGN(0x8);
    }
    END_NOLOAD(buffers)
 
