@@ -1,5 +1,7 @@
 var NAVTREEINDEX115 =
 {
+"structUnkEntry.html#ac01ecfade45b7ab4ee4fac993b16125a":[7,0,216,4],
+"structUnkEntry.html#ac3308717c0e2d4a94458babeac1eecc9":[7,0,216,2],
 "structUnkEntry.html#ad46156047649e90199e681da2eebbba8":[7,0,216,5],
 "structUnkEntry.html#aef0e777becde602f5c36c02e7146019f":[7,0,216,1],
 "structUnkPlayerInner.html":[7,0,217],
@@ -247,7 +249,5 @@ var NAVTREEINDEX115 =
 "struct____OSContRamReadFormat.html#a71c84de36ae26fefc760e344f32a92d3":[7,0,2,6],
 "struct____OSContRamReadFormat.html#a75c88f8a5de1a5fc696b01053addee2a":[7,0,2,4],
 "struct____OSContRamReadFormat.html#a7875c481949e4a0bac7ec6fff86fb234":[7,0,2,5],
-"struct____OSContRamReadFormat.html#a9cd56423241cdaae65a465620b6f280a":[7,0,2,1],
-"struct____OSContRamReadFormat.html#ab3b9ed956c4f0ff82dd0670cee22b977":[7,0,2,2],
-"struct____OSContRamReadFormat.html#ac7055b12a1eea87e08f289451465976c":[7,0,2,3]
+"struct____OSContRamReadFormat.html#a9cd56423241cdaae65a465620b6f280a":[7,0,2,1]
 };

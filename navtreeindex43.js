@@ -1,5 +1,7 @@
 var NAVTREEINDEX43 =
 {
+"guNormalize_8c.html":[8,0,3,6,43],
+"guNormalize_8c.html#a7ad49cccf7be1e598544b9f0b35b5e28":[8,0,3,6,43,0],
 "guOrthoF_8c.html":[8,0,3,6,44],
 "guOrthoF_8c.html#ad7ee72136daaabbf7bfa2c6a5d791db1":[8,0,3,6,44,0],
 "guOrthoF_8c.html#ae2f1eeb1f335f37cca279436f5f15f41":[8,0,3,6,44,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX43 =
 "heap_8h.html#a6781e9f03ffa3d2f77cae46d5e3466b9":[8,0,3,1,8,18],
 "heap_8h.html#a6858476cc275be0f91b01d70d3673921":[8,0,3,1,8,41],
 "heap_8h.html#a740ec786aa8556908cc813426a2434e4":[8,0,3,1,8,64],
-"heap_8h.html#a7f97b356e28001109faae64194b2b8ec":[8,0,3,1,8,57],
-"heap_8h.html#a839d469bedfe4690e7db209e00e8efde":[8,0,3,1,8,25],
-"heap_8h.html#a86bfaeecfefb328d6428a4e8dcb54c58":[8,0,3,1,8,47]
+"heap_8h.html#a7f97b356e28001109faae64194b2b8ec":[8,0,3,1,8,57]
 };

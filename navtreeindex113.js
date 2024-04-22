@@ -1,5 +1,7 @@
 var NAVTREEINDEX113 =
 {
+"structPlayer.html#a20fb4b0c83d8de7a76ecd5e6d5ea846e":[7,0,136,56],
+"structPlayer.html#a22da56390c62208e8c75566f83a08e0f":[7,0,136,53],
 "structPlayer.html#a2824e584f3f61ad516a0ac49af4f06ee":[7,0,136,27],
 "structPlayer.html#a28df2c989598022073df6fc2425cbefe":[7,0,136,21],
 "structPlayer.html#a2e3d06e0d8d6c8e62ee75f5d161cb50d":[7,0,136,30],
@@ -247,7 +249,5 @@ var NAVTREEINDEX113 =
 "structSequenceChannelLayer.html#a81d0e8dd7b7bfb1b3182d560241e8b37":[7,0,153,6],
 "structSequenceChannelLayer.html#a847c174ff1b4e29c3e717188bb5b76f4":[7,0,153,2],
 "structSequenceChannelLayer.html#a858650267fc8950ed805560217e97378":[7,0,153,0],
-"structSequenceChannelLayer.html#a86bc9dd7a08b9cbae7a936c25bd86caa":[7,0,153,9],
-"structSequenceChannelLayer.html#a8b4073bbd9cb18dc42b3f88b47725fc3":[7,0,153,19],
-"structSequenceChannelLayer.html#a8f40bd52a5fe66d11e747129e8ef63fd":[7,0,153,28]
+"structSequenceChannelLayer.html#a86bc9dd7a08b9cbae7a936c25bd86caa":[7,0,153,9]
 };
