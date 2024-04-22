@@ -4,7 +4,7 @@ var actorsmenu =
       [ "Actors", "actors.html#actors-1", null ]
     ] ],
     [ "Objects", "objects.html", [
-      [ "Objects", "objects.html#objects", null ]
+      [ "Objects", "objects.html#objects-1", null ]
     ] ],
     [ "Vehicles", "vehicles.html", [
       [ "Trains", "vehicles.html#trains", null ],

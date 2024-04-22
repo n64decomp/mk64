@@ -248,6 +248,6 @@ var NAVTREEINDEX39 =
 "functions_t.html":[7,2,0,18],
 "functions_u.html":[7,2,0,19],
 "functions_v.html":[7,2,0,20],
-"functions_vars.html":[7,2,1],
-"functions_vars.html":[7,2,1,0]
+"functions_vars.html":[7,2,1,0],
+"functions_vars.html":[7,2,1]
 };
