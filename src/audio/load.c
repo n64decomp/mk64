@@ -758,7 +758,7 @@ void load_sequence_internal(u32 player, u32 seqId, s32 loadAsync) {
     seqPlayer->scriptState.pc = sequenceData;
 }
 
-#if 1
+#ifdef NON_MATCHING
 //https://decomp.me/scratch/5FBUM
 // There is some wild bullshit going on in this function
 // It is an unholy cross between SM64's EU and Shindou
