@@ -226,8 +226,8 @@ var NAVTREEINDEX39 =
 "frappe__snowland_2course__textures_8linkonly_8h_source.html":[8,0,0,7,6],
 "frappe__snowland_2course__vertices_8inc_8c.html":[8,0,0,7,7],
 "frappe__snowland_2course__vertices_8inc_8c.html#a1ec683eb9d6c6022a1131cd35cf8d7e8":[8,0,0,7,7,0],
-"functions.html":[7,2,0],
 "functions.html":[7,2,0,0],
+"functions.html":[7,2,0],
 "functions_b.html":[7,2,0,1],
 "functions_c.html":[7,2,0,2],
 "functions_d.html":[7,2,0,3],
@@ -248,6 +248,6 @@ var NAVTREEINDEX39 =
 "functions_t.html":[7,2,0,18],
 "functions_u.html":[7,2,0,19],
 "functions_v.html":[7,2,0,20],
-"functions_vars.html":[7,2,1,0],
-"functions_vars.html":[7,2,1]
+"functions_vars.html":[7,2,1],
+"functions_vars.html":[7,2,1,0]
 };
