@@ -788,11 +788,13 @@ void audio_init(void) {
         ((u64 *) D_803B71B0)[i] = 0;
     }
 
+#ifdef TARGET_N64
     // It seems boot.s doesn't clear the .bss area for audio, so do it here.
     ptr64 = (u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
     for (i = ((uintptr_t) &D_803B71A0 - (uintptr_t) ((u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer))) ) / 8; i >= 0; i--) {
         *ptr64++ = 0;
     }
+#endif
 
     switch (osTvType) {                             /* irregular */
     case 0:
@@ -831,7 +833,7 @@ void audio_init(void) {
     for (i = 0; i < NUMAIBUFFERS; i++) {
         gAiBuffers[i] = soundAlloc(&gAudioInitPool, AIBUFFER_LEN);
 
-        for (j = 0; j < (AIBUFFER_LEN / sizeof(s16)); j++) {
+        for (j = 0; j < (s32) (AIBUFFER_LEN / sizeof(s16)); j++) {
             gAiBuffers[i][j] = 0;
         }
     }
