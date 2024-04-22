@@ -769,16 +769,17 @@ extern u8 _audio_tablesSegmentRomStart;
 extern u8 _instrument_setsSegmentRomStart;
 extern u8 _sequencesSegmentRomStart;
 
-void audio_init() {
-    UNUSED s8 pad[16];
-    s32 i, j, k;
-    UNUSED s32 lim1; // lim1 unused in EU
+void audio_init(void) {
+    s32 i;
+    s32 pad[2];
+    s32 j;
+    s32 pad2[6];
     u32 sp60[2];
-    s32 UNUSED lim2, lim3;
-    UNUSED s32 size;
-    UNUSED u64 *ptr64;
-    UNUSED void *data;
-    UNUSED s32 one = 1;
+    s32 pad1[2];
+    s32 aaa;
+    s32 size;
+    u64 *ptr64;
+    s32 one = 1;
     u8 *test;
 
     gAudioLoadLock = 0;
@@ -787,14 +788,11 @@ void audio_init() {
         ((u64 *) D_803B71B0)[i] = 0;
     }
 
-#ifdef TARGET_N64
     // It seems boot.s doesn't clear the .bss area for audio, so do it here.
-    lim3 = ((uintptr_t) &D_803B71A0 - (uintptr_t) ((u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer))) ) / 8;
-    ptr64 = (u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));;
-    for (k = lim3; k >= 0; k--) {
+    ptr64 = (u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
+    for (i = ((uintptr_t) &D_803B71A0 - (uintptr_t) ((u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer))) ) / 8; i >= 0; i--) {
         *ptr64++ = 0;
     }
-#endif
 
     switch (osTvType) {                             /* irregular */
     case 0:
@@ -812,28 +810,28 @@ void audio_init() {
         break;
     }
     port_eu_init();
-    for (i = 0; i < NUMAIBUFFERS; i++) {
+    for (i = 0; i < 3; i++) {
         gAiBufferLengths[i] = 0xa0;
     }
 
     gAudioTaskIndex = gAudioFrameCount = 0;
     gCurrAiBufferIndex = 0;
     gAudioLibSoundMode = 0;
-    gAudioTask = NULL;
+    gAudioTask = ((void*) 0);
     gAudioTasks[0].task.t.data_size = 0;
     gAudioTasks[1].task.t.data_size = 0;
     osCreateMesgQueue(&D_803B6720, &D_803B6738, 1);
     osCreateMesgQueue(&gCurrAudioFrameDmaQueue, gCurrAudioFrameDmaMesgBufs,
-                      ARRAY_COUNT(gCurrAudioFrameDmaMesgBufs));
+                      0x40);
     gCurrAudioFrameDmaCount = 0;
     gSampleDmaNumListItems = 0;
 
     sound_init_main_pools(gAudioInitPoolSize);
 
-    for (i = 0; i < NUMAIBUFFERS; i++) {
-        gAiBuffers[i] = soundAlloc(&gAudioInitPool, AIBUFFER_LEN);
+    for (i = 0; i < 3; i++) {
+        gAiBuffers[i] = soundAlloc(&gAudioInitPool, (0xa0 * 16));
 
-        for (j = 0; j < (s32) (AIBUFFER_LEN / sizeof(s16)); j++) {
+        for (j = 0; j < ((0xa0 * 16) / sizeof(s16)); j++) {
             gAiBuffers[i][j] = 0;
         }
     }
@@ -853,15 +851,15 @@ void audio_init() {
     gAlCtlHeader = (ALSeqFile *) sp60;
     test = &_audio_banksSegmentRomStart;
     audio_dma_copy_immediate(test, gAlCtlHeader, 0x00000010U);
-    size = ALIGN16(gAlCtlHeader->seqCount * sizeof(ALSeqData) + 4);
+    aaa = gAlCtlHeader->seqCount;
+    size = ALIGN16(aaa * sizeof(ALSeqData) + 4);
     gAlCtlHeader = soundAlloc(&gAudioInitPool, size);
     audio_dma_copy_immediate(test, gAlCtlHeader, size);
     func_800BB43C(gAlCtlHeader, test);
-    gCtlEntries = soundAlloc(&gAudioInitPool, size * 0xC);
-    for (i = 0; i < size; i++) {
+    gCtlEntries = soundAlloc(&gAudioInitPool, aaa * 0xC);
+    for (i = 0; i < aaa; i++) {
         audio_dma_copy_immediate(gAlCtlHeader->seqArray[i].offset, sp60, 0x00000010U);
-        if(size) {}
-        if(1) {}
+
         gCtlEntries[i].numInstruments = sp60[0];
         gCtlEntries[i].numDrums = sp60[1];
     }
@@ -874,7 +872,7 @@ void audio_init() {
     audio_dma_copy_immediate(test, gAlTbl, size);
     func_800BB43C(gAlTbl, test);
     gAlBankSets = soundAlloc(&gAudioInitPool, 0x00000100U);
-    audio_dma_copy_immediate(&_instrument_setsSegmentRomStart, gAlBankSets, 0x00000100U);
+    audio_dma_copy_immediate((u32) &_instrument_setsSegmentRomStart, gAlBankSets, 0x00000100U);
     sound_alloc_pool_init(&gUnkPool1.pool, soundAlloc(&gAudioInitPool, (u32) D_800EA5D8), (u32) D_800EA5D8);
     init_sequence_players();
     gAudioLoadLock = 0x76557364;
