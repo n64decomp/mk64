@@ -3099,7 +3099,7 @@ Gfx *func_80096CD8(Gfx *displayListHead, s32 arg1, s32 arg2, u32 width, u32 arg4
 
     spCC = 0x400 / var_ra;
 
-    while ((spCC / 2) < arg4) {
+    while ((spCC / 2) > arg4) {
         spCC /= 2;
     }
 
