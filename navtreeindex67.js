@@ -1,5 +1,8 @@
 var NAVTREEINDEX67 =
 {
+"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a603ba489fc27df271a7923444fc99c54":[8,0,0,9,3,176],
+"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a60d361dbf075d3d7cdaeb52dc0ad7f08":[8,0,0,9,3,139],
+"koopa__troopa__beach_2course__displaylists_8inc_8h.html#a61447083df4074c3f84769d4426d41a8":[8,0,0,9,3,108],
 "koopa__troopa__beach_2course__displaylists_8inc_8h.html#a61455e33c53c88d44d87dec856877de2":[8,0,0,9,3,165],
 "koopa__troopa__beach_2course__displaylists_8inc_8h.html#a61c1f07029a4e4a873572a1007062807":[8,0,0,9,3,150],
 "koopa__troopa__beach_2course__displaylists_8inc_8h.html#a61f26cd082fc6e5ac846a3d9c842fa4e":[8,0,0,9,3,59],
@@ -246,8 +249,5 @@ var NAVTREEINDEX67 =
 "ldiv_8c.html#a5b23c3639f11980dca762c5f1d74f339":[8,0,3,6,51,1],
 "leointerrupt_8c.html":[8,0,3,6,52],
 "leointerrupt_8c.html#a86e83259bcbfefee251b096d34ae24d1":[8,0,3,6,52,0],
-"libaudio_8h.html":[8,0,2,2,4],
-"libaudio_8h.html#ab275be6c7d58d2836dbd28d7c119e1d6":[8,0,2,2,4,2],
-"libaudio_8h_source.html":[8,0,2,2,4],
-"libaudio__internal_8h.html":[8,0,3,6,53]
+"libaudio_8h.html":[8,0,2,2,4]
 };

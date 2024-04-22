@@ -1,5 +1,8 @@
 var NAVTREEINDEX117 =
 {
+"structmk64__surface__map__ram.html#a03300ea994c7272e7d41899a42ad593f":[7,0,98,6],
+"structmk64__surface__map__ram.html#a0bd843bbec1cfc563196fac0919404fe":[7,0,98,5],
+"structmk64__surface__map__ram.html#a189c361dbf9b21b4037f9062882caa91":[7,0,98,8],
 "structmk64__surface__map__ram.html#a2b8e02f662c073ad2c7bbc0108d2a065":[7,0,98,14],
 "structmk64__surface__map__ram.html#a31f5ed8d1da4fdeba5a39378fd49483a":[7,0,98,13],
 "structmk64__surface__map__ram.html#a32ea7ebfd9efdd8fe93dc429f1c362c7":[7,0,98,9],
@@ -246,8 +249,5 @@ var NAVTREEINDEX117 =
 "structuObjSprite__t.html#a2f38daff4badfc568be5cf60166e5781":[7,0,240,11],
 "structuObjSprite__t.html#a50e8379d2765a50a3f34e8dcda5ff383":[7,0,240,0],
 "structuObjSprite__t.html#a635fae9cf9b9eec02b9295def0333ed9":[7,0,240,13],
-"structuObjSprite__t.html#a921a2255d69023cc3ffbe494f6856e3f":[7,0,240,3],
-"structuObjSprite__t.html#a93290a8bf3661b9b25598bec722ef08a":[7,0,240,1],
-"structuObjSprite__t.html#a9c72c65b8b8b0ee05dc466bf15699706":[7,0,240,6],
-"structuObjSprite__t.html#aa56aa472d1ac710dd829e6f1cd9f7ad0":[7,0,240,8]
+"structuObjSprite__t.html#a921a2255d69023cc3ffbe494f6856e3f":[7,0,240,3]
 };

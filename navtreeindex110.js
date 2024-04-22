@@ -1,5 +1,8 @@
 var NAVTREEINDEX110 =
 {
+"structBananaBunchParent.html#ad308ed0758aef4141ec5e6de8b8101f8":[7,0,53,11],
+"structBananaBunchParent.html#ae1c190eae7f8f237b5a37aa109a3e7b5":[7,0,53,6],
+"structBananaBunchParent.html#afb695515f0750a61ead8bda3c38cd033":[7,0,53,5],
 "structBombKart.html":[7,0,54],
 "structBombKart.html#a14d30e3c4ae3ed2c94852f2b46c326a9":[7,0,54,11],
 "structBombKart.html#a1bde5eef376c38628b3785a370e65c1e":[7,0,54,2],
@@ -246,8 +249,5 @@ var NAVTREEINDEX110 =
 "structGfxPool.html#a394e0a1d01dd843336dedfdd7b357a89":[7,0,83,4],
 "structGfxPool.html#a42d7257d731853b49605659bfcb607bf":[7,0,83,6],
 "structGfxPool.html#a6412eaab6e773364bbe4a114f7ce5381":[7,0,83,2],
-"structGfxPool.html#a705e6036f85bdb4c3f708e0e938610db":[7,0,83,8],
-"structGfxPool.html#a70f20c70d9af0bf2e7001d904987cb0e":[7,0,83,12],
-"structGfxPool.html#a7b4ba3aad2315e3d209f42511c456cb6":[7,0,83,0],
-"structGfxPool.html#ab22fac4de0b34cb404e4f8ec5a21e4bf":[7,0,83,7]
+"structGfxPool.html#a705e6036f85bdb4c3f708e0e938610db":[7,0,83,8]
 };

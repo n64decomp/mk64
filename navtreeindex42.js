@@ -1,5 +1,8 @@
 var NAVTREEINDEX42 =
 {
+"gbi_8h.html#afcbb04f02cb9424b52db79196ec4c738":[8,0,2,2,1,48],
+"gbi_8h.html#afdbffa9b3e098d497e548da07b322314":[8,0,2,2,1,471],
+"gbi_8h.html#afeb607ce11c25905319f61b8c31f3792":[8,0,2,2,1,311],
 "gbi_8h_source.html":[8,0,2,2,1],
 "gfx__output__buffer_8c.html":[8,0,3,2,1],
 "gfx__output__buffer_8c.html#a1d3d09175f95d66b361a83b7a94446f7":[8,0,3,2,1,1],
@@ -86,8 +89,8 @@ var NAVTREEINDEX42 =
 "globals_type.html":[8,1,3],
 "globals_u.html":[8,1,0,21],
 "globals_v.html":[8,1,0,22],
-"globals_vars.html":[8,1,2],
 "globals_vars.html":[8,1,2,0],
+"globals_vars.html":[8,1,2],
 "globals_vars_b.html":[8,1,2,1],
 "globals_vars_c.html":[8,1,2,2],
 "globals_vars_d.html":[8,1,2,3],
@@ -246,8 +249,5 @@ var NAVTREEINDEX42 =
 "guMtxF2L_8c.html#a8d98eadd95eea7f4a8ca8aac8ebdf10c":[8,0,3,6,42,1],
 "guMtxF2L_8c.html#a96a205b9cf6b90562d3f2ad86e10a0c8":[8,0,3,6,42,3],
 "guNormalize_8c.html":[8,0,3,6,43],
-"guNormalize_8c.html#a7ad49cccf7be1e598544b9f0b35b5e28":[8,0,3,6,43,0],
-"guOrthoF_8c.html":[8,0,3,6,44],
-"guOrthoF_8c.html#ad7ee72136daaabbf7bfa2c6a5d791db1":[8,0,3,6,44,0],
-"guOrthoF_8c.html#ae2f1eeb1f335f37cca279436f5f15f41":[8,0,3,6,44,1]
+"guNormalize_8c.html#a7ad49cccf7be1e598544b9f0b35b5e28":[8,0,3,6,43,0]
 };
