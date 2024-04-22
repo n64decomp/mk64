@@ -758,7 +758,7 @@ void load_sequence_internal(u32 player, u32 seqId, s32 loadAsync) {
     seqPlayer->scriptState.pc = sequenceData;
 }
 
-#ifdef NON_MATCHING
+#if 1
 //https://decomp.me/scratch/5FBUM
 // There is some wild bullshit going on in this function
 // It is an unholy cross between SM64's EU and Shindou
@@ -810,28 +810,28 @@ void audio_init(void) {
         break;
     }
     port_eu_init();
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < NUMAIBUFFERS; i++) {
         gAiBufferLengths[i] = 0xa0;
     }
 
     gAudioTaskIndex = gAudioFrameCount = 0;
     gCurrAiBufferIndex = 0;
     gAudioLibSoundMode = 0;
-    gAudioTask = ((void*) 0);
+    gAudioTask = NULL;
     gAudioTasks[0].task.t.data_size = 0;
     gAudioTasks[1].task.t.data_size = 0;
     osCreateMesgQueue(&D_803B6720, &D_803B6738, 1);
     osCreateMesgQueue(&gCurrAudioFrameDmaQueue, gCurrAudioFrameDmaMesgBufs,
-                      0x40);
+                      ARRAY_COUNT(gCurrAudioFrameDmaMesgBufs));
     gCurrAudioFrameDmaCount = 0;
     gSampleDmaNumListItems = 0;
 
     sound_init_main_pools(gAudioInitPoolSize);
 
-    for (i = 0; i < 3; i++) {
-        gAiBuffers[i] = soundAlloc(&gAudioInitPool, (0xa0 * 16));
+    for (i = 0; i < NUMAIBUFFERS; i++) {
+        gAiBuffers[i] = soundAlloc(&gAudioInitPool, AIBUFFER_LEN);
 
-        for (j = 0; j < ((0xa0 * 16) / sizeof(s16)); j++) {
+        for (j = 0; j < (AIBUFFER_LEN / sizeof(s16)); j++) {
             gAiBuffers[i][j] = 0;
         }
     }
