@@ -771,15 +771,15 @@ extern u8 _sequencesSegmentRomStart;
 
 void audio_init(void) {
     s32 i;
-    s32 pad[2];
+    UNUSED s32 pad[2];
     s32 j;
-    s32 pad2[6];
+    UNUSED s32 pad2[6];
     u32 sp60[2];
-    s32 pad1[2];
+    UNUSED s32 pad1[2];
     s32 aaa;
     s32 size;
-    u64 *ptr64;
-    s32 one = 1;
+    UNUSED u64 *ptr64;
+    UNUSED s32 one = 1;
     u8 *test;
 
     gAudioLoadLock = 0;
