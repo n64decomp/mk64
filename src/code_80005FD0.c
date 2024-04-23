@@ -5912,14 +5912,14 @@ void func_80017054(Camera *camera, UNUSED Player *player, UNUSED s32 index, s32 
 // https://decomp.me/scratch/Ck7hV
 // Really crazy diff, permuter only able to find fakematches for improvements (and they're big improvements)
 // There's something really, really wrong with the empty `if` statement
-void func_80017054(Camera *camera, UNUSED Player *player, UNUSED s32 index, s32 cameraId) {
-    UNUSED s32 stackPadding0;
-    UNUSED s32 stackPadding1;
+void func_80017054(Camera *camera, Player *player, s32 index, s32 cameraId) {
+    s32 stackPadding0;
+    s32 stackPadding1;
     f32 spAC;
     f32 spA8;
     f32 spA4;
-    UNUSED s32 stackPadding2;
-    UNUSED s32 stackPadding3;
+    s32 stackPadding2;
+    s32 stackPadding3;
     f32 sp98;
     f32 sp94;
     f32 sp90;
@@ -5929,19 +5929,18 @@ void func_80017054(Camera *camera, UNUSED Player *player, UNUSED s32 index, s32 
     f32 stackPadding4;
     f32 stackPadding5;
     f32 stackPadding6;
-    UNUSED s32 stackPadding7;
-    UNUSED s32 stackPadding8;
+    s32 stackPadding7;
+    s32 stackPadding8;
     s16 sp6E;
     s16 sp6C;
-    UNUSED s32 stackPadding9;
-    UNUSED s32 stackPaddingA;
-    UNUSED s32 stackPaddingB;
+    s32 stackPadding9;
+    s32 stackPaddingA;
+    s32 stackPaddingB;
     s32 pathIndex;
-    UNUSED s32 stackPaddingC;
+    s32 stackPaddingC;
     s32 sp58;
     s16 sp56;
     s32 playerId;
-    f32 temp_f0;
 
     playerId = camera->playerId;
     pathIndex = D_80163DD8[cameraId];
@@ -5979,24 +5978,23 @@ void func_80017054(Camera *camera, UNUSED Player *player, UNUSED s32 index, s32 
     stackPadding4 = sp98 - D_801645F8[cameraId];
     stackPadding5 = sp90 - D_80164618[cameraId];
     stackPadding6 = sp94 - D_80164638[cameraId];
-    temp_f0 = sqrtf(((sp98 * sp98) + (sp94 * sp94)) + (sp90 * sp90));
-    if (temp_f0 != 0.0) {
-        sp98 = D_801645F8[cameraId] + ((D_80164648[cameraId] * stackPadding4) / temp_f0);
-        sp94 = D_80164618[cameraId] + ((D_80164648[cameraId] * stackPadding5) / temp_f0);
-        sp90 = D_80164638[cameraId] + ((D_80164648[cameraId] * stackPadding6) / temp_f0);
+    spAC = sqrtf(((sp98 * sp98) + (sp94 * sp94)) + (sp90 * sp90));
+    if (spAC != 0.0) {
+        sp98 = D_801645F8[cameraId] + ((D_80164648[cameraId] * stackPadding4) / spAC);
+        sp94 = D_80164618[cameraId] + ((D_80164648[cameraId] * stackPadding5) / spAC);
+        sp90 = D_80164638[cameraId] + ((D_80164648[cameraId] * stackPadding6) / spAC);
     } else {
         sp98 = D_801645F8[cameraId];
         sp94 = D_80164618[cameraId];
         sp90 = D_80164638[cameraId];
     }
-    // This empty if statement is a huge source of problems. I have no idea what's going on
     if ((!(sp98 < (-10000.0))) && (sp98 > 10000.0)) {
         if (sp98 && sp98) {}
     }
     camera->pos[0] = sp98;
-    if (1) {} if (1) {} if (1) {} if (1) {}
     camera->pos[1] = sp94 + 10.0;
     camera->pos[2] = sp90;
+    if (1) { } if (1) { } if (1) { } if (1) { } if (1) { }
     D_801645F8[cameraId] = sp98;
     D_80164638[cameraId] = sp90;
     D_80164618[cameraId] = sp94;
