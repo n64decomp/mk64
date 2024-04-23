@@ -1,7 +1,7 @@
 var NAVTREEINDEX40 =
 {
-"functions_vars.html":[7,2,1,0],
 "functions_vars.html":[7,2,1],
+"functions_vars.html":[7,2,1,0],
 "functions_vars_b.html":[7,2,1,1],
 "functions_vars_c.html":[7,2,1,2],
 "functions_vars_d.html":[7,2,1,3],
