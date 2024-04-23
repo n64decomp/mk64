@@ -129,7 +129,7 @@ void func_800AFE00(Vtx *arg0, Vec3s *arg1, s32 arg2, s32 arg3) {
     s32 idx1;
     s32 idx2;
     s32 i;
-    Vtx* vtx;
+    Vtx *vtx;
     s16 sp14[2][3];
 
     idx1 = (arg2 == 0) ? 0 : arg2 - 1;
@@ -143,9 +143,9 @@ void func_800AFE00(Vtx *arg0, Vec3s *arg1, s32 arg2, s32 arg3) {
     for (idx2 = 0; idx2 < 0x1E0; idx2 += 0x30) {
         for (i = 0; i < 4; i++) {
             vtx = &arg0[i];
-            vtx[idx2/1].v.cn[0] = sp14[i%2][0];
-            vtx[idx2/1].v.cn[1] = sp14[i%2][1];
-            vtx[idx2/1].v.cn[2] = sp14[i%2][2];
+            vtx[idx2 / 1].v.cn[0] = sp14[i % 2][0];
+            vtx[idx2 / 1].v.cn[1] = sp14[i % 2][1];
+            vtx[idx2 / 1].v.cn[2] = sp14[i % 2][2];
         }
     }
 }
