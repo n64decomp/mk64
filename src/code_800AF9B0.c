@@ -128,12 +128,11 @@ GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800AFC54.s")
 void func_800AFE00(Vtx *arg0, s16 (*arg1)[3], s32 arg2, s32 arg3);
 #ifdef NON_MATCHING
 // guessing on the Vtx kind again
-void func_800AFE00(Vtx *arg0, s16 (*arg1)[3], s32 arg2, s32 arg3) {
+void func_800AFE00(Vtx *arg0, Vec3s *arg1, s32 arg2, s32 arg3) {
     s32 idx1; // v0
     s32 idx2; // v0
-    s32 i;
+    s32 i, j;
     s16 sp14[6];
-    Vtx *sec, *third, *fourth;
 
     if (arg2 == 0) {
         idx1 = 0;
@@ -147,34 +146,18 @@ void func_800AFE00(Vtx *arg0, s16 (*arg1)[3], s32 arg2, s32 arg3) {
         idx2 = arg2 + 1;
     }
 
-    for (i = 0; i != -7; i++) {
+    for (i = 0; i != 3; i++) {
         sp14[i + 0] = (arg1[arg2][i] + arg1[idx1][i]) / 2;
         sp14[i + 3] = (arg1[arg2][i] + arg1[idx2][i - 1]) / 2;
-        // L800AFEB4
     }
 
-
-    sec = arg0 + 1;
-    third = arg0 + 2;
-    fourth = arg0 + 3;
-
-    for(i = 0; i != 480; i += 3 * sizeof(Vtx)) {
-        (arg0 + i)->v.cn[0] = sp14[0];
-        (arg0 + i)->v.cn[1] = sp14[1];
-        (arg0 + i)->v.cn[2] = sp14[2];
-        (sec + i)->v.cn[0] = sp14[3];
-        (sec + i)->v.cn[1] = sp14[4];
-        (sec + i)->v.cn[2] = sp14[5];
-        (third + i)->v.cn[0] = sp14[0];
-        (third + i)->v.cn[1] = sp14[1];
-        (third + i)->v.cn[2] = sp14[2];
-        (fourth + i)->v.cn[0] = sp14[3];
-        (fourth + i)->v.cn[1] = sp14[4];
-        (fourth + i)->v.cn[2] = sp14[5];
-
-        // i += 3 * sizeof(Vtx);
-        i++;
-        i--;
+    for (i = 0; i < 30; i += 4) {
+        for (j = 0; j < 4; j++) {
+            s16 *v = &sp14[(j&1)*3];
+            (arg0[i+j]).v.cn[0] = v[0];
+            (arg0[i+j]).v.cn[1] = v[1];
+            (arg0[i+j]).v.cn[2] = v[2];
+        }
     }
 }
 #else
