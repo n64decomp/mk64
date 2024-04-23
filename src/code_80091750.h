@@ -162,7 +162,7 @@ Gfx *func_80096CD8(Gfx*, s32, s32, u32, u32);
 Gfx *func_80097274(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, u16 *argA, u32 argB, u32 argC, s32 argD);
 Gfx *func_80097A14(Gfx*,  s8, s32, s32, s32, s32, s32, s32, u8*, u32, u32);
 Gfx *func_80097AE4(Gfx*,  s8, s32, s32, u8*, s32);
-Gfx *func_80097E58(Gfx*,  s8, s32, s32, s32, s32, s32, s32, u8*, u32, s32, u32);
+Gfx *func_80097E58(Gfx *displayListHead, s8 fmt, u32 arg2, u32 arg3, u32 arg4, u32 arg5, s32 arg6, s32 arg7, u8 *someTexture, u32 arg9, u32 argA, s32 width);
 Gfx *func_80098558(Gfx*, u32, u32, u32, u32, u32, u32, s32, s32);
 Gfx *func_800987D0(Gfx*, u32, u32, u32, u32, s32, s32, u8*, u32, s32);
 Gfx *draw_box_fill(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
