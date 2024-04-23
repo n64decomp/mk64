@@ -4907,8 +4907,7 @@ void func_80065AB0(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 envRed;
     s16 envGreen;
     s16 envBlue;
-    s32 envColors[] = { MAKE_RGB(0xFF, 0xFF, 0xFF), MAKE_RGB(0xFF, 0xFF, 0x00), MAKE_RGB(0xFF, 0x96, 0x00) };
-
+    s32 sp8C[] = {0x00ffffff, 0x00ffff00, 0x00ff9600};
     if (player->unk_258[10 + arg2].unk_01C == 1) {
         if (player->unk_204 >= 0x32) {
             var_s0 = 1;
@@ -4919,9 +4918,9 @@ void func_80065AB0(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         primGreen = player->unk_258[10 + arg2].unk_03A;
         primBlue  = player->unk_258[10 + arg2].unk_03C;
         primAlpha = player->unk_258[10 + arg2].unk_03E;
-        envRed    = (envColors[player->unk_258[10 + arg2].unk_040] >> 0x10) & 0xFF;
-        envGreen  = (envColors[player->unk_258[10 + arg2].unk_040] >> 0x08) & 0xFF;
-        envBlue   = (envColors[player->unk_258[10 + arg2].unk_040] >> 0x00) & 0xFF;
+        envRed   = (sp8C[player->unk_258[10 + arg2].unk_040] >> 0x10) & 0xFF;
+        envGreen = (sp8C[player->unk_258[10 + arg2].unk_040] >> 0x08) & 0xFF;
+        envBlue  = (sp8C[player->unk_258[10 + arg2].unk_040] >> 0x00) & 0xFF;
         spB4[0] = player->unk_258[10 + arg2].unk_000[0];
         spB4[1] = player->unk_258[10 + arg2].unk_000[1];
         spB4[2] = player->unk_258[10 + arg2].unk_000[2];
@@ -4931,13 +4930,15 @@ void func_80065AB0(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         func_800652D4(spB4, spAC, player->unk_258[10 + arg2].unk_00C * player->size);
         if (var_s0 == 0) {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-            gDPLoadTextureBlock(gDisplayListHead++, D_800E4770[var_s0], G_IM_FMT_I, G_IM_SIZ_8b, 16, 16, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+            gDPLoadTextureBlock(gDisplayListHead++, D_800E4770[var_s0][0], G_IM_FMT_I, G_IM_SIZ_8b, 16, 16, 0,
+                G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
             gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
             gSPDisplayList(gDisplayListHead++, D_0D008DF8);
         } else {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-            gDPLoadTextureBlock(gDisplayListHead++, D_800E4770[var_s0], G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+            gDPLoadTextureBlock(gDisplayListHead++, D_800E4770[var_s0][0], G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0,
+                G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
             gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
             gSPDisplayList(gDisplayListHead++, D_0D008E48);
