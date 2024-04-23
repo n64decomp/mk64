@@ -3292,80 +3292,72 @@ Gfx *func_80097A14(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
     return displayListHead;
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/EAuX4
-// I'm fairly certain I've got the GBI macros correct, don't know what the source of the diff is
-// While there may be register allocation issues, I suspect the instruction ordering issues are the actual problems
-Gfx *func_80097AE4(Gfx *displayListHead, s8 fmt, s32 arg2, s32 arg3, u8 *arg4, s32 arg5) {
-    s32 var_a2;
-    UNUSED s32 stackPadding0;
+Gfx *func_80097AE4(Gfx *displayListHead, s8 fmt, s32 arg2, s32 arg3, u8 *arg4, s32 width) {
+    s32 i;
+    s32 temp;
     s32 arg2Copy;
     s32 dsdx;
 
-    if (arg5 >= 0x20) return displayListHead;
+    if (width >= 32) { return displayListHead; }
 
     arg2Copy = arg2;
-    dsdx = 0x8000 / (0x20 - arg5);
-    for (var_a2 = 0; var_a2 < 0x40; var_a2 += 0x20) {
-        gDPLoadTextureTile(displayListHead++, arg4, fmt, G_IM_SIZ_16b, 64, 0, 0, var_a2, 32, var_a2 + 0x20, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
-        gSPTextureRectangle(displayListHead++, (arg2 + arg5) << 2, arg3 << 2, (arg2 + 0x20) << 2, (arg3 + 0x20) << 2, 0, 0, 0, dsdx, 1024);
-        arg2 += 0x20;
-        gDPLoadTextureTile(displayListHead++, arg4, fmt, G_IM_SIZ_16b, 64, 0, 32, var_a2, 64, var_a2 + 0x20, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
-        gSPTextureRectangle(displayListHead++, arg2 << 2, arg3 << 2, ((arg2 - arg5) + 0x20) << 2, (arg3 + 0x20) << 2, 0, 0, 0, dsdx, 1024);
+
+    for (i = 0; i < 64; i += 32) {
+        temp = 0;
+        dsdx = 0x8000 / (32 - width);
+        gDPLoadTextureTile(displayListHead++, arg4, fmt, G_IM_SIZ_16b, 64, 64, temp, i, temp + 32, i + 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
+        gSPTextureRectangle(displayListHead++, (arg2 + width) << 2, arg3 << 2, (arg2 + 32) << 2, (arg3 + 32) << 2, 0, 0, 0, dsdx, 1024);
+        
+        arg2 += 32;
+        
+        gDPLoadTextureTile(displayListHead++, arg4, fmt, G_IM_SIZ_16b, 64, 64, temp + 32, i, temp + 64, i + 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
+        gSPTextureRectangle(displayListHead++, arg2 << 2, arg3 << 2, ((arg2 - width) + 32) << 2, (arg3 + 32) << 2, 0, 0, 0, dsdx, 1024);
+        
         arg2 = arg2Copy;
-        arg3 += 0x20;
+        arg3 += 32;
     }
     return displayListHead;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80097AE4.s")
-#endif
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/U4QaQ
-// I'm fairly certain I have the GBI macros correct, so the massive diff is probably
-// the result of somemath ordering issues.
-Gfx *func_80097E58(Gfx *displayListHead, s8 fmt, UNUSED s32 arg2, s32 arg3, UNUSED s32 arg4, s32 arg5, s32 arg6, s32 arg7, u8 *someTexture, u32 width, UNUSED s32 argA, u32 argB) {
+Gfx *func_80097E58(Gfx *displayListHead, s8 fmt, u32 arg2, u32 arg3, u32 arg4, u32 arg5, s32 arg6, s32 arg7, u8 *someTexture, u32 arg9, u32 argA, s32 width) {
     u32 ult;
-    s32 spDC;
-    s32 sp80;
-    s32 temp_v1;
-    s32 var_s1;
-    s32 var_s2;
-    s32 var_s5;
-    u32 lrs;
+    u32 temp;
     s32 arg6Copy;
+    s32 temp_v1;
+    s32 var_s2;
+    s32 lrs;
+    s32 spDC;
+    s32 temp2 = 32;
 
-    if ((s32)width >= 0x20) return displayListHead;
-
-    lrs = width >> 1;
-    spDC = sp80 = width - lrs;
+    if (width >= 32) { return displayListHead; }
+    
     arg6Copy = arg6;
-    for (ult = arg3; ult < (u32) arg5; ult += 0x20) {
-        if ((u32) arg5 < (ult + 0x20)) {  // Less than 0x20 left to reach target
-            var_s2 = arg5 - ult;    // Leftover amount to reach target
-            if (var_s2 == 0) break; // Actually at target
+
+    lrs = arg9 / 2;
+    spDC = arg9 - lrs;
+    for (ult = arg3; ult < arg5; ult += 32) {
+        temp = 0;
+        if ((ult + temp2) > arg5) {
+            var_s2 = arg5 - ult;
+            if (!var_s2) {
+                break;
+            }
         } else {
-            var_s2 = 0x20;          // Go the full 0x20 on this step
+            var_s2 = temp2;
         }
-        temp_v1 = 0x20 - argB;
-        var_s1 = (lrs * argB) / 32;
-        var_s5 = (spDC * temp_v1) / 32;
+        temp_v1 = ((32 * lrs) << 10) / (lrs * (32 - width));
 
-        gDPLoadTextureTile(displayListHead++, someTexture, fmt, G_IM_SIZ_16b, width, 0, 0, ult, lrs, ult + var_s2, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
-        gSPTextureRectangle(displayListHead++, (arg6 + var_s1) << 2, arg7 << 2, (arg6 + lrs) << 2, (arg7 + var_s2) << 2, 0, 0, ult << 5, (s32)((lrs << 5) << 0xA) / (s32)(lrs * temp_v1), 1024);
-
+        gDPLoadTextureTile(displayListHead++, someTexture, fmt, G_IM_SIZ_16b, arg9, argA, temp, ult, temp + lrs, ult + var_s2, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
+        gSPTextureRectangle(displayListHead++, (arg6 + lrs * width / 32) << 2, arg7 << 2, (arg6 + lrs) << 2, (arg7 + var_s2) << 2, 0, 0, (ult << 5) & 0xFFFF, temp_v1, 1024);
         arg6 += lrs;
-        gDPLoadTextureTile(displayListHead++, someTexture, fmt, G_IM_SIZ_16b, width, 0, lrs, ult, width, ult + var_s2, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
-        gSPTextureRectangle(displayListHead++, arg6 << 2, arg7 << 2, (arg6 + var_s5) << 2, (arg7 + var_s2) << 2, 0, lrs << 5, ult << 5, ((sp80 << 5) << 0xA) / (sp80 * temp_v1), 1024);
+        temp_v1 = ((32 * spDC) << 10) / (spDC * (32 - width));
+        gDPLoadTextureTile(displayListHead++, someTexture, fmt, G_IM_SIZ_16b, arg9, argA, temp + lrs, ult, temp + arg9, ult + var_s2, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
+        gSPTextureRectangle(displayListHead++, arg6 << 2, arg7 << 2, (arg6 + spDC * (32 - width) / 32) << 2, (arg7 + var_s2) << 2, 0, (lrs << 5) & 0xFFFF, (ult << 5) & 0xFFFF, temp_v1, 1024);
         arg6 = arg6Copy;
-        arg7 += 0x20;
+        arg7 += temp2;
     }
     return displayListHead;
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80097E58.s")
-#endif
 
 Gfx *func_80098558(Gfx *displayListHead, u32 arg1, u32 arg2, u32 arg3, u32 arg4, u32 arg5, u32 arg6, UNUSED s32 arg7, s32 arg8) {
     u32 var_a3;
