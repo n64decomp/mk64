@@ -1411,7 +1411,7 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 // L800B3110
                 if (sp24) {
-                    D_800E86B0[gPlayerCount - 1][gPlayerCount] += 1;
+                    D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]]++;
                     func_800B44AC();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
