@@ -1,5 +1,7 @@
 var NAVTREEINDEX114 =
 {
+"structSequenceChannelLayer.html#a858650267fc8950ed805560217e97378":[7,0,153,0],
+"structSequenceChannelLayer.html#a86bc9dd7a08b9cbae7a936c25bd86caa":[7,0,153,9],
 "structSequenceChannelLayer.html#a8b4073bbd9cb18dc42b3f88b47725fc3":[7,0,153,19],
 "structSequenceChannelLayer.html#a8f40bd52a5fe66d11e747129e8ef63fd":[7,0,153,28],
 "structSequenceChannelLayer.html#a9ebb5f2009113ab0698671fe70aa4ad3":[7,0,153,5],
@@ -247,7 +249,5 @@ var NAVTREEINDEX114 =
 "structUnkCameraInner.html#a8f8878f5577708521381011d042215b8":[7,0,215,3],
 "structUnkCameraInner.html#ab28dd2dbeb5038fde39f2d2ae9bb8cc0":[7,0,215,0],
 "structUnkEntry.html":[7,0,216],
-"structUnkEntry.html#a29742029579c6d1dcbc96c7d6187908b":[7,0,216,3],
-"structUnkEntry.html#a5694063a75aaf50db1cb7d687e46bdc6":[7,0,216,6],
-"structUnkEntry.html#a8c88a228a0df928ae279985724731345":[7,0,216,0]
+"structUnkEntry.html#a29742029579c6d1dcbc96c7d6187908b":[7,0,216,3]
 };

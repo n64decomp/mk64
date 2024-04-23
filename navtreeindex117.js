@@ -1,5 +1,7 @@
 var NAVTREEINDEX117 =
 {
+"structlldiv__t.html":[7,0,94],
+"structlldiv__t.html#a32d4596a917aa9b496c8a49178a0e3c6":[7,0,94,1],
 "structlldiv__t.html#ae4d4bccdf22f41e052073f5790c5ec37":[7,0,94,0],
 "structmk64__surface__map__ram.html":[7,0,98],
 "structmk64__surface__map__ram.html#a03300ea994c7272e7d41899a42ad593f":[7,0,98,6],
@@ -247,7 +249,5 @@ var NAVTREEINDEX117 =
 "structuObjSprite__t.html":[7,0,240],
 "structuObjSprite__t.html#a01d8528fe0de45476152008b46f1c8c4":[7,0,240,4],
 "structuObjSprite__t.html#a04d99fa6c07508a0da67317e7a59db15":[7,0,240,7],
-"structuObjSprite__t.html#a2d3473b6cf408b3d15de8bdc2c105b13":[7,0,240,2],
-"structuObjSprite__t.html#a2f38daff4badfc568be5cf60166e5781":[7,0,240,11],
-"structuObjSprite__t.html#a50e8379d2765a50a3f34e8dcda5ff383":[7,0,240,0]
+"structuObjSprite__t.html#a2d3473b6cf408b3d15de8bdc2c105b13":[7,0,240,2]
 };
