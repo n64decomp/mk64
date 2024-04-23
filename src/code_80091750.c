@@ -1303,7 +1303,7 @@ f64 func_8009186C(f64 arg0) {
     return ((f64) sp38 * 0.6931471805599453) + (2 * var_f2);
 }
 
-#if NON_MATCHING
+#ifdef NON_MATCHING
 // https://decomp.me/scratch/dXpT5
 // Some math reordering issues on the continued fraction line
 f64 func_8009195C(f64 arg0) {
@@ -3070,7 +3070,7 @@ Gfx *func_800963F0(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, f32 arg4, 
 }
 
 extern u8 D_0B002A00[];
-#if NON_MATCHING
+#ifdef NON_MATCHING
 // https://decomp.me/scratch/xV83r
 // Possibly a missed variable rename or just weird diffs.
 
@@ -3172,7 +3172,7 @@ Gfx *func_80096CD8(Gfx *displayListHead, s32 arg1, s32 arg2, u32 width, u32 arg4
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80096CD8.s")
 #endif
 
-#if NON_MATCHING
+#ifdef NON_MATCHING
 Gfx *func_80097274(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, u16 *argA, u32 argB, u32 argC, s32 argD) {
     u32 var_a1_2 = arg4;
     u32 var_s3 = arg5;
