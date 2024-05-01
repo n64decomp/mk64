@@ -698,6 +698,25 @@ u64 *synthesis_process_note(s32 noteIndex, struct NoteSubEu *noteSubEu, struct N
     }
     return cmd;
 }
+#else
+GLOBAL_ASM("asm/non_matchings/audio/synthesis/synthesis_process_note.s")
+#endif
+
+Acmd *load_wave_samples(Acmd *acmd, struct NoteSubEu *noteSubEu, struct NoteSynthesisState *synthesisState, s32 nSamplesToLoad) {
+    s32 a3;
+    s32 repeats;
+    aLoadBuffer(acmd++, VIRTUAL_TO_PHYSICAL2(noteSubEu->sound.samples), 0x1A0, 128);
+
+    synthesisState->samplePosInt &= 0x3f;
+    a3 = 64 - synthesisState->samplePosInt;
+    if (a3 < nSamplesToLoad) {
+        repeats = (nSamplesToLoad - a3 + 63) / 64;
+        if (repeats != 0) {
+            aDMEMMove2(acmd++, repeats, 0x1A0, 0x1A0 + 128, 128);
+        }
+    }
+    return acmd;
+}
 
 Acmd *final_resample(Acmd *acmd, struct NoteSynthesisState *synthesisState, s32 count, u16 pitch, u16 dmemIn, u32 flags) {
     aSetBuffer(acmd++, /*flags*/ 0, dmemIn, /*dmemout*/ 0, count);
