@@ -28,7 +28,7 @@ var synthesis_8h =
     [ "synthesis_execute", "synthesis_8h.html#a1ced286cad738cbc3b205b3d763002d6", null ],
     [ "synthesis_load_note_subs_eu", "synthesis_8h.html#ab469a6d9522ccd7bdcef898769a46a7a", null ],
     [ "synthesis_load_reverb_ring_buffer", "synthesis_8h.html#a98b5785b65674a669175487b708d1fac", null ],
-    [ "synthesis_process_note", "synthesis_8h.html#a415dae6c7fca2d4899ad184cc2ec0fc9", null ],
+    [ "synthesis_process_note", "synthesis_8h.html#a4d0ec5e7a8c01fff5649d490397cbc64", null ],
     [ "synthesis_resample_and_mix_reverb", "synthesis_8h.html#a6d3021a3852efebf658d4c1a1f741a5c", null ],
     [ "synthesis_save_reverb_ring_buffer", "synthesis_8h.html#a4335280b9164016034f7e52d4f2ccef9", null ],
     [ "synthesis_save_reverb_samples", "synthesis_8h.html#aebc1a42723ab6d4ef65df99740d35318", null ],
