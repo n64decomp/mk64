@@ -834,7 +834,7 @@ void func_800074D4(void) {
     f32 temp_a0;
     s32 temp;
     s32 sp68[8];
-    s32 temp_s0;
+    UNUSED s32 pad;
     s32 temp_t1;
     s32 i;
     s32 j;
@@ -846,7 +846,7 @@ void func_800074D4(void) {
 
     
     for (j = 0, i = 0; i < this_loops_upper_bound_is_brough_to_you_by_the_number; i++) {
-        if (gPlayers[i].unk_000 & 0x800) {
+        if (gPlayers[i].type & 0x800) {
             sp68[j] = i;
             gCourseCompletionPercentByRank[j] = -gTimePlayerLastTouchedFinishLine[i];
             j++;
@@ -855,7 +855,7 @@ void func_800074D4(void) {
 
     temp_t1 = j;
     for (i = 0; i < this_loops_upper_bound_is_brough_to_you_by_the_number; i++) {
-        if (!(gPlayers[i].unk_000 & 0x800)) {
+        if (!(gPlayers[i].type & 0x800)) {
             sp68[j] = i;
             gCourseCompletionPercentByRank[j] = gCourseCompletionPercentByPlayerId[i];
             j++;
@@ -5899,32 +5899,32 @@ void func_80017054(Camera *camera, UNUSED Player *player, UNUSED s32 index, s32 
 // https://decomp.me/scratch/Ck7hV
 // Really crazy diff, permuter only able to find fakematches for improvements (and they're big improvements)
 // There's something really, really wrong with the empty `if` statement
-void func_80017054(Camera *camera, Player *player, s32 index, s32 cameraId) {
-    s32 stackPadding0;
-    s32 stackPadding1;
+void func_80017054(Camera *camera, UNUSED Player *player, UNUSED s32 index, s32 cameraId) {
+    UNUSED s32 stackPadding0;
+    UNUSED s32 stackPadding1;
     f32 spAC;
     f32 spA8;
     f32 spA4;
-    s32 stackPadding2;
-    s32 stackPadding3;
+    UNUSED s32 stackPadding2;
+    UNUSED s32 stackPadding3;
     f32 sp98;
     f32 sp94;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
     f32 sp84;
-    f32 stackPadding4;
-    f32 stackPadding5;
-    f32 stackPadding6;
-    s32 stackPadding7;
-    s32 stackPadding8;
+    UNUSED f32 stackPadding4;
+    UNUSED f32 stackPadding5;
+    UNUSED f32 stackPadding6;
+    UNUSED s32 stackPadding7;
+    UNUSED s32 stackPadding8;
     s16 sp6E;
     s16 sp6C;
-    s32 stackPadding9;
-    s32 stackPaddingA;
-    s32 stackPaddingB;
+    UNUSED s32 stackPadding9;
+    UNUSED s32 stackPaddingA;
+    UNUSED s32 stackPaddingB;
     s32 pathIndex;
-    s32 stackPaddingC;
+    UNUSED s32 stackPaddingC;
     s32 sp58;
     s16 sp56;
     s32 playerId;

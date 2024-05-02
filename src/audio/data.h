@@ -34,7 +34,7 @@ extern u32 fill2;
 extern struct NoteSubEu gZeroNoteSub;
 extern struct NoteSubEu gDefaultNoteSub;
 extern u16 gHeadsetPanQuantization[0x10];
-extern s32 gUnknownData_800F6290[32];
+extern s16 gUnknownData_800F6290[];
 extern f32 gHeadsetPanVolume[128];
 extern f32 gStereoPanVolume[128];
 extern f32 gDefaultPanVolume[128];
