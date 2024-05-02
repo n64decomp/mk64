@@ -1518,7 +1518,7 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
 
     btnAndStick = (controller->buttonPressed) | (controller->stickPressed);
     if (!gEnableDebugMode && btnAndStick & CONT_START) {
-        btnAndStick |= CONT_A;
+        btnAndStick |= A_BUTTON;
     }
 
     if (!func_800B4520()) {
@@ -1527,14 +1527,14 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
         {
             saved_selection = gCharacterGridSelections[arg1];
             if (saved_selection == 0) {
-                if (btnAndStick & CONT_B) {
+                if (btnAndStick & B_BUTTON) {
                     func_8009E208();
                     play_sound2(0x49008002);
                 }
                 return;
             }
             // L800B3630
-            if (btnAndStick & CONT_B) {
+            if (btnAndStick & B_BUTTON) {
                 if (D_8018EDE8[arg1]) {
                     D_8018EDE8[arg1] = FALSE;
                     play_sound2(0x49008002);
@@ -1544,7 +1544,7 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
                 }
             }
             // L800B3684
-            if ((btnAndStick & CONT_A) && (D_8018EDE8[arg1] == 0)) {
+            if ((btnAndStick & A_BUTTON) && (D_8018EDE8[arg1] == 0)) {
                 D_8018EDE8[arg1] = TRUE;
                 i = D_800F2BAC[gCharacterGridSelections[arg1] - 1];
                 func_800C90F4(arg1, 0x2900800e + (i << 4));
@@ -1667,13 +1667,13 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
                 }
             }
             // L800B3AA4
-            if (btnAndStick & CONT_B) {
+            if (btnAndStick & B_BUTTON) {
                 D_8018EDEE = 1;
                 D_8018EDE8[arg1] = FALSE;
                 play_sound2(0x49008002);
                 break;
             }
-            if (btnAndStick & CONT_A) {
+            if (btnAndStick & A_BUTTON) {
                 func_8009E1C0();
                 play_sound2(0x49008016);
                 func_8000F124();
