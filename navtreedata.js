@@ -32,8 +32,8 @@ var NAVTREE =
       [ "Memory Addresses", "md_docs_2doxygen__syms.html#memory-addresses-1", null ]
     ] ],
     [ "Tutorials", "tutorials.html", "tutorials" ],
-    [ "Todo List", "todo.html", null ],
     [ "Bug List", "bug.html", null ],
+    [ "Todo List", "todo.html", null ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
