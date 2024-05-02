@@ -1,5 +1,7 @@
 var NAVTREEINDEX105 =
 {
+"sherbet__land_2course__data_8h.html#afbabf7eaeae9338ef680f59c82ee9276":[8,0,0,15,1,122],
+"sherbet__land_2course__data_8h.html#afbbdd4739d933439458bcb9ad8e9d99c":[8,0,0,15,1,71],
 "sherbet__land_2course__data_8h_source.html":[8,0,0,15,1],
 "sherbet__land_2course__displaylists_8inc_8c.html":[8,0,0,15,2],
 "sherbet__land_2course__displaylists_8inc_8c.html#a02c9e502876b451f70573558c61bc016":[8,0,0,15,2,82],
@@ -247,7 +249,5 @@ var NAVTREEINDEX105 =
 "sherbet__land_2course__vertices_8inc_8c.html":[8,0,0,15,7],
 "sherbet__land_2course__vertices_8inc_8c.html#ac4ad31e38bcaf95f168bc3f441775dce":[8,0,0,15,7,0],
 "sinf_8c.html":[8,0,3,6,0,3],
-"sinf_8c.html#a11049f633144c41cb34967ee986bc68e":[8,0,3,6,0,3,3],
-"sinf_8c.html#a6099a5ab3736c2b7f52a629df54c56f8":[8,0,3,6,0,3,5],
-"sinf_8c.html#a8a7dc2a88e109f4e15b661247665709a":[8,0,3,6,0,3,2]
+"sinf_8c.html#a11049f633144c41cb34967ee986bc68e":[8,0,3,6,0,3,3]
 };

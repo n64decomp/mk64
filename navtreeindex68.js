@@ -1,5 +1,7 @@
 var NAVTREEINDEX68 =
 {
+"ldiv_8c.html":[8,0,3,6,51],
+"ldiv_8c.html#a0302920caf64a5fbe1ce0862799d7784":[8,0,3,6,51,0],
 "ldiv_8c.html#a5b23c3639f11980dca762c5f1d74f339":[8,0,3,6,51,1],
 "leointerrupt_8c.html":[8,0,3,6,52],
 "leointerrupt_8c.html#a86e83259bcbfefee251b096d34ae24d1":[8,0,3,6,52,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX68 =
 "load_8h.html#a9c1bfb29806b05fc3a700184dcac6880":[8,0,3,1,11,23],
 "load_8h.html#a9e17ba794b1d3b781e3e6eca95731fbd":[8,0,3,1,11,41],
 "load_8h.html#ab3527402c5b0ba729e379fb33e802291":[8,0,3,1,11,14],
-"load_8h.html#ab944c1cb0080ee472b4134755f626171":[8,0,3,1,11,13],
-"load_8h.html#ac7b147981b0edcfb9f2942f07a275d37":[8,0,3,1,11,29],
-"load_8h.html#ac8046604c2c5d5a05d737843b1f042ff":[8,0,3,1,11,1]
+"load_8h.html#ab944c1cb0080ee472b4134755f626171":[8,0,3,1,11,13]
 };

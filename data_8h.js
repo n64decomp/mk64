@@ -39,7 +39,7 @@ var data_8h =
     [ "gRefreshRate", "data_8h.html#aa894d10bf91fcbb2809974d57965309e", null ],
     [ "gStereoPanVolume", "data_8h.html#a84d2b058cd060f0699432ee6ae33ce20", null ],
     [ "gTatumsPerBeat", "data_8h.html#af48fe151cc1f3fcd52da8f4c45170ca0", null ],
-    [ "gUnknownData_800F6290", "data_8h.html#abab56f372f4ac5dd8af337a822f92b23", null ],
+    [ "gUnknownData_800F6290", "data_8h.html#a3b002fdb076037efbce7b214c719710b", null ],
     [ "gUnknownWave7", "data_8h.html#a432e73da7ead6521be606993deb70457", null ],
     [ "gUnusedCount800EA5C8", "data_8h.html#a68f567dacbc7c303b772bd9188364fcf", null ],
     [ "gWaveSamples", "data_8h.html#a30f3b81cd5b7be9cf95fc8453c6b76f5", null ],

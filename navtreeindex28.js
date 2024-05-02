@@ -1,5 +1,7 @@
 var NAVTREEINDEX28 =
 {
+"common__data_8h.html#a99eb6edded7e0d895f54ee4b36c0c714":[8,0,2,0,2,143],
+"common__data_8h.html#a9a48ebb9aa0791a9d719def5e532bf3a":[8,0,2,0,2,296],
 "common__data_8h.html#a9a5384d398ca7f9df681a397dd9f7e4e":[8,0,2,0,2,327],
 "common__data_8h.html#a9ac075a571d4234af33feb2b98310e74":[8,0,2,0,2,55],
 "common__data_8h.html#a9ba5d95020e158f9c09e109c74f374c6":[8,0,2,0,2,60],
@@ -193,7 +195,7 @@ var NAVTREEINDEX28 =
 "contramwrite_8c.html#a5a8e6638b28caf3b5faba67df76d099c":[8,0,3,6,34,1],
 "contramwrite_8c.html#ac0f1bb81601cedc5fc5868fc7e500b88":[8,0,3,6,34,0],
 "controlflow.html":[1,2],
-"controlflow.html#actors-1":[1,2,4,2],
+"controlflow.html#actors":[1,2,4,2],
 "controlflow.html#code-breakdown":[1,2,4],
 "controlflow.html#course-folder":[1,2,4,4,0],
 "controlflow.html#courses-1":[1,2,4,4],
@@ -247,7 +249,5 @@ var NAVTREEINDEX28 =
 "controller_8h.html#a8a064651b8f5eeeb040d01f9a892d266":[8,0,3,6,35,30],
 "controller_8h.html#a8bbcf22ecc22c4334a757e19a0815195":[8,0,3,6,35,47],
 "controller_8h.html#a8e53a603dc8223f6f83d874f7fbc85af":[8,0,3,6,35,53],
-"controller_8h.html#a9058bfef76860424d50c262127aabb87":[8,0,3,6,35,60],
-"controller_8h.html#a9297ef9905c6ea39653f28233432d792":[8,0,3,6,35,68],
-"controller_8h.html#a95c7592eda1cfdd8680670324ba2f8ba":[8,0,3,6,35,38]
+"controller_8h.html#a9058bfef76860424d50c262127aabb87":[8,0,3,6,35,60]
 };

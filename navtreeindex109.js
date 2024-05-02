@@ -1,5 +1,7 @@
 var NAVTREEINDEX109 =
 {
+"startup__logo_8h.html#af0e199e382af4fe0b780a7b5fe4ff777":[8,0,2,0,5,63],
+"startup__logo_8h.html#af2cdc7483dda40c4fb6e27203491ff35":[8,0,2,0,5,43],
 "startup__logo_8h.html#afe435ab497b13bdfbb85abb955c2cd9f":[8,0,2,0,5,76],
 "startup__logo_8h_source.html":[8,0,2,0,5],
 "stdarg_8h.html":[8,0,2,1,1],
@@ -247,7 +249,5 @@ var NAVTREEINDEX109 =
 "structBananaBunchParent.html":[7,0,53],
 "structBananaBunchParent.html#a1797405069f8c96889c9aeb59f5adbde":[7,0,53,3],
 "structBananaBunchParent.html#a2bfe2004c8d1a9f6d97c9fa1d614fe03":[7,0,53,1],
-"structBananaBunchParent.html#a4ea1e279d4c3e9c579dd740973c746fc":[7,0,53,4],
-"structBananaBunchParent.html#a51be60b0ee4aaf0418157b25163904c2":[7,0,53,7],
-"structBananaBunchParent.html#a523049b0bb754bb1474e316a939734e1":[7,0,53,8]
+"structBananaBunchParent.html#a4ea1e279d4c3e9c579dd740973c746fc":[7,0,53,4]
 };
