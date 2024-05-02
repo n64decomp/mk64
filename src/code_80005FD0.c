@@ -830,86 +830,73 @@ void func_800070F4(void) {
     }
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/AqmzN
-// Decently close overall but there's a huge amount of register mismatches
-// Permuter has not had much luck finding solutions.
-// Replacing `temp_s0` for `var_v0` is a pretty good start, but the permuter
-// is unable to find any improvements after that :(
-
 void func_800074D4(void) {
-    Player *var_a0_2;
     f32 temp_a0;
+    s32 temp;
     s32 sp68[8];
-    UNUSED s32 temp_s0;
+    UNUSED s32 pad;
     s32 temp_t1;
-    s32 var_a3;
-    s32 var_a3_2;
-    s32 var_v0;
-    s32 this_loops_upper_bound_is_brough_to_you_by_the_number_eight = NUM_PLAYERS;
-
-    for (var_a3 = 0; var_a3 < this_loops_upper_bound_is_brough_to_you_by_the_number_eight; ) {
-        gCourseCompletionPercentByRank[var_a3++] = 0.0f;
+    s32 i;
+    s32 j;
+    s32 this_loops_upper_bound_is_brough_to_you_by_the_number = 8;
+    
+    for (i = 0; i < this_loops_upper_bound_is_brough_to_you_by_the_number;) {
+        gCourseCompletionPercentByRank[i++] = 0.0f;
     }
 
-    var_v0 = 0;
-    for (var_a3 = 0; var_a3 < this_loops_upper_bound_is_brough_to_you_by_the_number_eight; var_a3++) {
-        var_a0_2 = &gPlayers[var_a3];
-        if (var_a0_2->type & 0x800) {
-            sp68[var_v0] = var_a3;
-            gCourseCompletionPercentByRank[var_v0] = -gTimePlayerLastTouchedFinishLine[var_a3];
-            var_v0++;
+    
+    for (j = 0, i = 0; i < this_loops_upper_bound_is_brough_to_you_by_the_number; i++) {
+        if (gPlayers[i].type & 0x800) {
+            sp68[j] = i;
+            gCourseCompletionPercentByRank[j] = -gTimePlayerLastTouchedFinishLine[i];
+            j++;
         }
     }
 
-    temp_t1 = var_v0;
-    for (var_a3 = 0; var_a3 < this_loops_upper_bound_is_brough_to_you_by_the_number_eight; var_a3++) {
-        var_a0_2 = &gPlayers[var_a3];
-        if (!(var_a0_2->type & 0x800)) {
-            sp68[var_v0] = var_a3;
-            gCourseCompletionPercentByRank[var_v0] = gCourseCompletionPercentByPlayerId[var_a3];
-            var_v0++;
+    temp_t1 = j;
+    for (i = 0; i < this_loops_upper_bound_is_brough_to_you_by_the_number; i++) {
+        if (!(gPlayers[i].type & 0x800)) {
+            sp68[j] = i;
+            gCourseCompletionPercentByRank[j] = gCourseCompletionPercentByPlayerId[i];
+            j++;
         }
     }
-
-    for (var_a3 = 0; var_a3 < temp_t1 - 1; var_a3++) {
-        for (var_a3_2 = var_a3 + 1; var_a3_2 < temp_t1; var_a3_2++) {
-            if (gCourseCompletionPercentByRank[var_a3] < gCourseCompletionPercentByRank[var_a3_2]) {
-                var_v0 = sp68[var_a3];
-                sp68[var_a3] = sp68[var_a3_2];
-                sp68[var_a3_2] = var_v0;
-                temp_a0 = gCourseCompletionPercentByRank[var_a3];
-                gCourseCompletionPercentByRank[var_a3] = gCourseCompletionPercentByRank[var_a3_2];
-                gCourseCompletionPercentByRank[var_a3_2] = temp_a0;
+    
+    for (i = 0; i < (temp_t1 - 1); i++) {
+        for (j = i + 1; j < temp_t1; j++) {
+            if (gCourseCompletionPercentByRank[i] < gCourseCompletionPercentByRank[j]) {
+                temp = sp68[i];
+                sp68[i] = sp68[j];
+                sp68[j] = temp;
+                temp_a0 = gCourseCompletionPercentByRank[i];
+                gCourseCompletionPercentByRank[i] = gCourseCompletionPercentByRank[j];
+                gCourseCompletionPercentByRank[j] = temp_a0;
+            }
+        }
+    }
+    
+    for (i = temp_t1; i < (this_loops_upper_bound_is_brough_to_you_by_the_number - 1); i++) {
+        for (j = i + 1; j < this_loops_upper_bound_is_brough_to_you_by_the_number; j++) {
+            if (gCourseCompletionPercentByRank[i] < gCourseCompletionPercentByRank[j]) {
+                temp = sp68[i];
+                sp68[i] = sp68[j];
+                sp68[j] = temp;
+                temp_a0 = gCourseCompletionPercentByRank[i];
+                gCourseCompletionPercentByRank[i] = gCourseCompletionPercentByRank[j];
+                gCourseCompletionPercentByRank[j] = temp_a0;
             }
         }
     }
 
-    for (var_a3 = temp_t1; var_a3 < this_loops_upper_bound_is_brough_to_you_by_the_number_eight - 1; var_a3++) {
-        for (var_a3_2 = var_a3 + 1; var_a3_2 < this_loops_upper_bound_is_brough_to_you_by_the_number_eight; var_a3_2++) {
-            if (gCourseCompletionPercentByRank[var_a3] < gCourseCompletionPercentByRank[var_a3_2]) {
-                var_v0 = sp68[var_a3];
-                sp68[var_a3] = sp68[var_a3_2];
-                sp68[var_a3_2] = var_v0;
-                temp_a0 = gCourseCompletionPercentByRank[var_a3];
-                gCourseCompletionPercentByRank[var_a3] = gCourseCompletionPercentByRank[var_a3_2];
-                gCourseCompletionPercentByRank[var_a3_2] = temp_a0;
-            }
-        }
+    for (i = 0; i < 8; i++) {
+        D_801643E0[i] = gGPCurrentRaceRankByPlayerId[i];
     }
 
-    for (var_a3 = 0; var_a3 < NUM_PLAYERS; var_a3++) {
-        D_801643E0[var_a3] = gGPCurrentRaceRankByPlayerId[var_a3];
-    }
-
-    for (var_a3 = 0; var_a3 < this_loops_upper_bound_is_brough_to_you_by_the_number_eight; var_a3++) {
-        gGPCurrentRaceRankByPlayerId[sp68[var_a3]] = var_a3;
-        gGPCurrentRacePlayerIdByRank[var_a3] = sp68[var_a3];
+    for (i = 0; i < this_loops_upper_bound_is_brough_to_you_by_the_number; i++) {
+        gGPCurrentRaceRankByPlayerId[sp68[i]] = i;
+        gGPCurrentRacePlayerIdByRank[i] = sp68[i];
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800074D4.s")
-#endif
 
 s32 func_80007BF8(u16 arg0, u16 arg1, u16 arg2, u16 arg3, u16 arg4) {
     s32 var_v1;
@@ -927,13 +914,11 @@ s32 func_80007BF8(u16 arg0, u16 arg1, u16 arg2, u16 arg3, u16 arg4) {
     return var_v1;
 }
 
-#ifdef NON_MATCHING // Likely func equiv
-// https://decomp.me/scratch/Te4u1
-
-void func_80007D04(s32 playerId, Player *player) {
+void func_80007D04(s32 playerId, Player* player) {
     s16 temp_t1;
     s16 temp_t2;
     s32 var_v0;
+    
     temp_t1 = D_80164450[D_80163478];
     temp_t2 = D_80164450[playerId];
 
@@ -954,33 +939,40 @@ void func_80007D04(s32 playerId, Player *player) {
         return;
     }
 
-    // Something wrong here. Maybe needs
-   // var_v0 = 0;
+    switch (gCCSelection) { // WTF, FAKE ?
+        case 3:
+            break;
+    }
+
     switch (gCCSelection) {
-        case CC_50:
+        case 0:
             var_v0 = 0;
             if (playerId == D_80163344[0]) {
                 var_v0 = 0x14;
             }
             break;
+        
         case 1:
             var_v0 = 8;
             if (playerId == D_80163344[0]) {
                 var_v0 = 0x18;
             }
             break;
+        
         case 2:
             var_v0 = 0x12;
             if (playerId == D_80163344[0]) {
                 var_v0 = 0x24;
             }
             break;
+        
         case 3:
             var_v0 = 8;
             if (playerId == D_80163344[0]) {
                 var_v0 = 0x18;
             }
             break;
+        
         default:
             var_v0 = 0;
             break;
@@ -990,7 +982,6 @@ void func_80007D04(s32 playerId, Player *player) {
         player->effects |= 0x200000;
         player_speed(player);
         D_801634C0[playerId] = 1;
-
     } else if (temp_t2 < (temp_t1 + var_v0 + 0x32)) {
         player->effects &= ~0x200000;
         player_speed(player);
@@ -1005,10 +996,6 @@ void func_80007D04(s32 playerId, Player *player) {
         D_801634C0[playerId] = -1;
     }
 }
-
-#else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80007D04.s")
-#endif
 
 void func_80007FA4(s32 arg0, Player *player, f32 arg2) {
     f32 temp_f0;
@@ -5912,32 +5899,32 @@ void func_80017054(Camera *camera, UNUSED Player *player, UNUSED s32 index, s32 
 // https://decomp.me/scratch/Ck7hV
 // Really crazy diff, permuter only able to find fakematches for improvements (and they're big improvements)
 // There's something really, really wrong with the empty `if` statement
-void func_80017054(Camera *camera, Player *player, s32 index, s32 cameraId) {
-    s32 stackPadding0;
-    s32 stackPadding1;
+void func_80017054(Camera *camera, UNUSED Player *player, UNUSED s32 index, s32 cameraId) {
+    UNUSED s32 stackPadding0;
+    UNUSED s32 stackPadding1;
     f32 spAC;
     f32 spA8;
     f32 spA4;
-    s32 stackPadding2;
-    s32 stackPadding3;
+    UNUSED s32 stackPadding2;
+    UNUSED s32 stackPadding3;
     f32 sp98;
     f32 sp94;
     f32 sp90;
     f32 sp8C;
     f32 sp88;
     f32 sp84;
-    f32 stackPadding4;
-    f32 stackPadding5;
-    f32 stackPadding6;
-    s32 stackPadding7;
-    s32 stackPadding8;
+    UNUSED f32 stackPadding4;
+    UNUSED f32 stackPadding5;
+    UNUSED f32 stackPadding6;
+    UNUSED s32 stackPadding7;
+    UNUSED s32 stackPadding8;
     s16 sp6E;
     s16 sp6C;
-    s32 stackPadding9;
-    s32 stackPaddingA;
-    s32 stackPaddingB;
+    UNUSED s32 stackPadding9;
+    UNUSED s32 stackPaddingA;
+    UNUSED s32 stackPaddingB;
     s32 pathIndex;
-    s32 stackPaddingC;
+    UNUSED s32 stackPaddingC;
     s32 sp58;
     s16 sp56;
     s32 playerId;
