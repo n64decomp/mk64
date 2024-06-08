@@ -1,11 +1,13 @@
-#define STRANGE_MAIN_HEADER_H
+#ifndef GCC
+#define D_800DC510_AS_U16
+#endif
 #include <ultra64.h>
 #include <PR/os.h>
 #include <PR/ucode.h>
 #include <macros.h>
 #include <decode.h>
-#include <types.h>
-#include <config.h>
+#include <mk64.h>
+
 #include "profiler.h"
 #include "main.h"
 #include "racing/memory.h"
@@ -83,11 +85,11 @@ Player *gPlayerTwoCopy = &gPlayers[1];
 UNUSED Player *gPlayerThreeCopy = &gPlayers[2];
 UNUSED Player *gPlayerFourCopy = &gPlayers[3];
 
-s32 D_800FD850[3];
+UNUSED s32 D_800FD850[3];
 struct GfxPool gGfxPools[2];
 struct GfxPool *gGfxPool;
 
-s32 gfxPool_padding; // is this necessary?
+UNUSED s32 gfxPool_padding; // is this necessary?
 struct VblankHandler gGameVblankHandler;
 struct VblankHandler sSoundVblankHandler;
 OSMesgQueue gDmaMesgQueue, gGameVblankQueue, gGfxVblankQueue, unused_gMsgQueue, gIntrMesgQueue, gSPTaskMesgQueue;
@@ -103,15 +105,14 @@ OSMesgQueue gSIEventMesgQueue;
 OSMesg gSIEventMesgBuf[3];
 
 OSContStatus gControllerStatuses[4];
-
 OSContPad gControllerPads[4];
 u8 gControllerBits;
-
 struct UnkStruct_8015F584 D_8014F110[1024];
 u16 gNumActors;
 u16 gMatrixObjectCount;
 s32 gTickSpeed;
 f32 D_80150118;
+
 u16 wasSoftReset;
 u16 D_8015011E;
 
@@ -120,9 +121,6 @@ s32 gGotoMode;
 UNUSED s32 D_80150128;
 UNUSED s32 D_8015012C;
 f32 gCameraZoom[4]; // look like to be the fov of each character
-//f32 D_80150134;
-//f32 D_80150138;
-//f32 D_8015013C;
 UNUSED s32 D_80150140;
 UNUSED s32 D_80150144;
 f32 gScreenAspect;
@@ -133,6 +131,7 @@ UNUSED f32 D_80150154;
 struct D_80150158 gD_80150158[16];
 uintptr_t gSegmentTable[16];
 Gfx *gDisplayListHead;
+
 struct SPTask *gGfxSPTask;
 s32 D_801502A0;
 s32 D_801502A4;
@@ -161,8 +160,8 @@ ALIGNED8 u8 gAudioThreadStack[STACKSIZE];
 UNUSED OSThread D_8015CD30;
 UNUSED ALIGNED8 u8 D_8015CD30_Stack[STACKSIZE / 2];
 
-u8 gGfxSPTaskYieldBuffer[4352];
-u32 gGfxSPTaskStack[256];
+ALIGNED8 u8 gGfxSPTaskYieldBuffer[4352];
+ALIGNED8 u32 gGfxSPTaskStack[256];
 OSMesg gPIMesgBuf[32];
 OSMesgQueue gPIMesgQueue;
 

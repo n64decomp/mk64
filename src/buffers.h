@@ -2,7 +2,7 @@
 #define BUFFERS_H
 
 #include <PR/ultratypes.h>
-#include "config.h"
+#include <mk64.h>
 #include "common_structs.h"
 
 /*

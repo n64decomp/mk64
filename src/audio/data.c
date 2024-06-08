@@ -1,4 +1,5 @@
 #include <PR/ultratypes.h>
+#include <macros.h>
 
 #include "data.h"
 #include "effects.h"
@@ -353,9 +354,9 @@ u16 gHeadsetPanQuantization[0x10] = {
     0x40, 0x40, 0x30, 0x30, 0x20, 0x20, 0x10, 0, 0, 0,
 };
 
-s32 gUnknownData_800F6290[32] = { //maybe envelope of some kind?
-    0, 0,   0, 0, 0, 0,   0, 0, 0, 0,   0, 0, 0, 0,   0, 0,
-    0, 500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0,
+s16 gUnknownData_800F6290[64] = { // maybe envelope of some kind?
+    0, 0, 0,   0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0, 0, 0, 0,   0, 0, 0, 0, 0,
+    0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 500, 0, 0, 0, 0, 0, 0, 0, 500, 0, 0, 0, 0,
 };
 
 // Linearly interpolated between
@@ -440,4 +441,4 @@ u16 D_803B7192; // unconfirmed
 u32 gAudioRandom;
 s32 gAudioErrorFlags;
 u32 D_803B71A0[4]; // unconfirmed
-u8 D_803B71B0[4]; // unconfirmed
+ALIGNED8 u8 D_803B71B0[4]; // unconfirmed

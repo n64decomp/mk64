@@ -1,4 +1,5 @@
 #include <defines.h>
+#include <mk64.h>
 
 #include "spawn_players.h"
 #include "code_800029B0.h"
@@ -22,6 +23,7 @@
 #include "render_player.h"
 #include "code_80091750.h"
 #include "effects.h"
+#include "decode.h"
 
 f32 D_80165210[8];
 f32 D_80165230[8];
@@ -913,7 +915,7 @@ void func_8003C0F0(void) {
                 case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
                 case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                     temp = 5;
-                    if (1);
+                    if (1) {};
                     D_80165210[0] = 0;
                     D_80165210[1] = 0;
                     D_80165230[1] = -200.0f;
@@ -945,7 +947,7 @@ void func_8003C0F0(void) {
                 case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
                 case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                     temp = 0x1E0;
-                    if (1);
+                    if (1) {};
                     D_80165210[0] = 0.0f;
                     D_80165210[1] = 0.0f;
                     D_80165230[1] = -400.0f;
@@ -977,7 +979,7 @@ void func_8003C0F0(void) {
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                 temp = 0x37;
-                if (1);
+                if (1) {};
                 D_80165210[0] = 0.0f;
                 D_80165210[1] = 0.0f;
                 D_80165230[1] = -160.0f;
@@ -1009,7 +1011,7 @@ void func_8003C0F0(void) {
                 case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
                 case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
                     temp = 0xC8;
-                    if (1);
+                    if (1) {};
                     D_80165210[0] = 0.0f;
                     D_80165210[1] = 0.0f;
                     D_80165230[1] = -575.0f;

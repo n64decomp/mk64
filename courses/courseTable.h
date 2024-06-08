@@ -3,7 +3,6 @@
 
 #include <ultra64.h>
 #include <macros.h>
-#include "types.h"
 
 // dlRomStart, vertexRomStart, & vertexStart, are u8* because mio0 compressed.
 struct CourseTable {
@@ -16,7 +15,7 @@ struct CourseTable {
     CourseVtx *vertexStart;    // 0x18 segmented address of vertex data
     u32 vertexCount;    // 0x1C number of vertices in vertex data
     u8 *packedStart;    // 0x20 packed display list start address
-    uintptr_t finalDisplaylistOffset;        // 0x24
+    u8 *finalDisplaylistOffset;        // 0x24
     u32 *textures;       // 0x20 segmented address of textures table
     u16 unknown1;       // 0x2C
     u16 padding;        // 0x2E

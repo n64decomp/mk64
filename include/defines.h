@@ -38,8 +38,14 @@
  * D-pad DOWN  = MARIO
  *  
  */
-#define DEBUG_MODE 0
-#define DEBUG_MENU 1
+#if defined(GCC) || defined(DEBUG)
+  #define DEBUG_MODE 1
+  #define DEBUG_MENU 2
+#else
+  #define DEBUG_MODE 0
+  #define DEBUG_MENU 1
+#endif
+
 #define HOLD_ALL_DPAD_AND_C_BUTTONS (U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
 
 /**
@@ -290,7 +296,7 @@
 /**
  * @brief Item IDs
  */
-typedef enum ITEMS {
+enum ITEMS {
     /* 0x00 */ ITEM_NONE = 0,
     /* 0x01 */ ITEM_BANANA,
     /* 0x02 */ ITEM_BANANA_BUNCH,
@@ -309,7 +315,7 @@ typedef enum ITEMS {
     /* 0x0F */ ITEM_SUPER_MUSHROOM
 };
 
-typedef enum KART_AI_BEHAVIOURS {
+enum KART_AI_BEHAVIOURS {
     BEHAVIOUR_NONE = 0,
     BEHAVIOUR_1,
     BEHAVIOUR_HOP,

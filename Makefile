@@ -2,6 +2,8 @@
 
 include util.mk
 
+include safe_gcc.mk
+
 # Default target
 default: all
 
@@ -26,8 +28,12 @@ COMPILER ?= ido
 $(eval $(call validate-option,COMPILER,ido gcc))
 
 # Add debug tools with 'make DEBUG=1' and modify the macros in include/debug.h
-# Run make clean first. Add '#define CRASH_SCREEN_ENHANCEMENT' to the top of main.c
+# Adds crash screen enhancement and activates debug mode
+# Run make clean first
 DEBUG ?= 0
+
+# Compile with GCC
+GCC ?= 0
 
 # VERSION - selects the version of the game to build
 #   us - builds the 1997 North American version
@@ -76,6 +82,7 @@ ifeq      ($(COMPILER),ido)
   MIPSISET := -mips2
 else ifeq ($(COMPILER),gcc)
   NON_MATCHING := 1
+  VERSION_ASFLAGS := --defsym AVOID_UB=1
   MIPSISET     := -mips3
 endif
 
@@ -93,10 +100,14 @@ endif
 
 ifeq ($(NON_MATCHING),1)
   DEFINES += NON_MATCHING=1 AVOID_UB=1
+  VERSION_ASFLAGS := --defsym AVOID_UB=1
   COMPARE := 0
 endif
 
-
+# GCC define is to link gcc's std lib.
+ifeq ($(GCC), 1)
+    DEFINES += AVOID_UB=1 GCC=1
+endif
 
 # COMPARE - whether to verify the SHA-1 hash of the ROM after building
 #   1 - verifies the SHA-1 hash of the selected version of the game
@@ -176,8 +187,7 @@ ifeq ($(DUMMY),FAIL)
 endif
 
 ifeq ($(filter clean distclean print-%,$(MAKECMDGOALS)),)
-
- # Make tools if out of date
+   # Make tools if out of date
   DUMMY != make -C $(TOOLS_DIR)
   ifeq ($(DUMMY),FAIL)
     $(error Failed to build tools)
@@ -326,10 +336,10 @@ CFLAGS = -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS)
 ifeq ($(COMPILER),gcc)
   CFLAGS += -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions -ffreestanding -fwrapv -Wall -Wextra
 else
-  CFLAGS += $(HIDE_WARNINGS) -non_shared -Wab,-r4300_mul -Xcpluscomm -Xfullwarn -signed -32
+  CFLAGS += $(HIDE_WARNINGS) -non_shared -Wab,-r4300_mul -Xcpluscomm -fullwarn -signed -32
 endif
 
-ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) $(foreach d,$(DEFINES),--defsym $(d))
+ASFLAGS = -march=vr4300 -mabi=32 -I include -I $(BUILD_DIR) $(VERSION_ASFLAGS) $(foreach d,$(DEFINES),--defsym $(d))
 
 # Fills end of rom
 OBJCOPYFLAGS = --pad-to=0xC00000 --gap-fill=0xFF
@@ -356,7 +366,7 @@ BIN2C                 := $(PYTHON) $(TOOLS_DIR)/bin2c.py
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
 ASSET_EXTRACT         := $(PYTHON) $(TOOLS_DIR)/new_extract_assets.py
 LINKONLY_GENERATOR    := $(PYTHON) $(TOOLS_DIR)/linkonly_generator.py
-TORCH                 := tools/torch/cmake-build-release/torch
+TORCH                 := $(TOOLS_DIR)/torch/cmake-build-release/torch
 EMULATOR               = mupen64plus
 EMU_FLAGS              = --noosd
 LOADER                 = loader64
@@ -385,6 +395,20 @@ define print
   @$(PRINT) "$(GREEN)$(1) $(YELLOW)$(2)$(GREEN) -> $(BLUE)$(3)$(NO_COL)\n"
 endef
 
+# Override commmands for GCC Safe Files
+ifeq ($(GCC),1)
+  $(BUILD_DIR)/src/main.o:                          OPT_FLAGS := -g
+  $(BUILD_DIR)/src/racing/skybox_and_splitscreen.o: OPT_FLAGS := -g
+  $(BUILD_DIR)/src/racing/render_courses.o:         OPT_FLAGS := -g
+  $(SAFE_C_FILES): OPT_FLAGS := -O3
+  $(SAFE_C_FILES): CC        := $(CROSS)gcc
+  $(SAFE_C_FILES): MIPSISET  := -mips3
+  $(SAFE_C_FILES): CFLAGS    := -G 0 $(OPT_FLAGS) $(TARGET_CFLAGS) $(MIPSISET) $(DEF_INC_CFLAGS) -mno-shared -march=vr4300 -mfix4300 -mabi=32 -mhard-float \
+   -mdivide-breaks -fno-stack-protector -fno-common -fno-zero-initialized-in-bss -fno-PIC -mno-abicalls -fno-strict-aliasing -fno-inline-functions          \
+   -ffreestanding -fwrapv -Wall -Wextra -ffast-math -fno-unsafe-math-optimizations
+  $(SAFE_C_FILES): CC_CHECK := gcc -m32
+endif
+
 
 
 #==============================================================================#
@@ -399,12 +423,12 @@ endif
 
 assets:
 	@echo "Extracting torch assets..."
-	@$(TORCH) code $(BASEROM)
-	@$(TORCH) header $(BASEROM)
-	@$(TORCH) modding export $(BASEROM)
+	$(V)$(TORCH) code $(BASEROM)
+	$(V)$(TORCH) header $(BASEROM)
+	$(V)$(TORCH) modding export $(BASEROM)
 
 doc:
-	$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
+	$(V)$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
 	doxygen
 	@$(PRINT) "$(GREEN)Documentation generated in docs/html$(NO_COL)\n"
 	@$(PRINT) "$(GREEN)Results can be viewed by opening docs/html/index.html in a web browser$(NO_COL)\n"
@@ -414,7 +438,7 @@ clean:
 
 distclean: distclean_assets
 	$(RM) -r $(BUILD_DIR_BASE)
-	./extract_assets.py --clean
+	$(PYTHON) extract_assets.py --clean
 	make -C $(TOOLS_DIR) clean
 
 distclean_assets: ;
@@ -434,10 +458,11 @@ DUMMY != mkdir -p $(ALL_DIRS)
 
 # RGBA32, RGBA16, IA16, IA8, IA4, IA1, I8, I4
 $(BUILD_DIR)/%: %.png
-	$(N64GRAPHICS) -i $@ -g $< -f $(lastword $(subst ., ,$@))
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -f $(lastword $(subst ., ,$@))
 
 $(BUILD_DIR)/textures/%.mio0: $(BUILD_DIR)/textures/%
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 ASSET_INCLUDES := $(shell find $(ASSET_DIR)/include -type f -name "*.mk")
 
@@ -459,14 +484,14 @@ $(BUILD_DIR)/%.mio0.o: $(BUILD_DIR)/%.mio0.s
 
 $(BUILD_DIR)/%.mio0.s: $(BUILD_DIR)/%.mio0
 	$(call print,Generating mio0 asm:,$<,$@)
-	$(PRINT) ".section .data\n\n.balign 4\n\n.incbin \"$<\"\n" > $@
+	$(V)$(PRINT) ".section .data\n\n.balign 4\n\n.incbin \"$<\"\n" > $@
 
 $(BUILD_DIR)/src/crash_screen.o: src/crash_screen.c
 	@$(PRINT) "$(GREEN)Compiling Crash Screen:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/textures/crash_screen/crash_screen_font.ia1.inc.c -g textures/crash_screen/crash_screen_font.ia1.png -f ia1 -s u8
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
+	$(V)$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
 
 #==============================================================================#
 # Common Textures Segment Generation                                           #
@@ -478,10 +503,12 @@ TEXTURE_FILES_TLUT := $(foreach dir,$(TEXTURE_DIRS)/tlut,$(subst .png, , $(wildc
 
 
 $(TEXTURE_FILES):
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8
 
 # TLUT
 $(TEXTURE_FILES_TLUT):
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
 	$(V)$(N64GRAPHICS) -i $(BUILD_DIR)/$@.inc.c -g $@.png -f $(lastword $(subst ., ,$@)) -s u8 -c $(lastword $(subst ., ,$(subst .$(lastword $(subst ., ,$(TEXTURE_FILES_TLUT))), ,$(TEXTURE_FILES_TLUT)))) -p $(BUILD_DIR)/$@.tlut.inc.c
 
 # common textures
@@ -489,7 +516,7 @@ $(BUILD_DIR)/assets/code/common_data/common_data.o: assets/code/common_data/comm
 	@$(PRINT) "$(GREEN)Compiling Common Textures:  $(BLUE)$@ $(NO_COL)\n"
 	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
+	$(V)$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
 
 
 
@@ -541,7 +568,7 @@ COURSE_GEOGRAPHY_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/cou
 
 # Course vertices and displaylists are included together due to no alignment between the two files.
 %/course_geography.mio0.s: %/course_vertices.inc.mio0 %/course_displaylists_packed.inc.bin
-	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_vertex\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
+	$(V)$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_vertex\n\n.incbin \"$(@D)/course_vertices.inc.mio0\"\n\n.balign 4\n\nglabel d_course_$(lastword $(subst /, ,$*))_packed\n\n.incbin \"$(@D)/course_displaylists_packed.inc.bin\"\n\n.balign 0x10\n" > $@
 
 
 
@@ -565,7 +592,7 @@ COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_d
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/course_data.mio0.s: %/course_data.mio0
-	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
+	$(V)$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
 
 
 #==============================================================================#
@@ -573,21 +600,21 @@ COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_d
 #==============================================================================#
 $(BUILD_DIR)/%.jp.c: %.c
 	$(call print,Encoding:,$<,$@)
-	iconv -t EUC-JP -f UTF-8 $< > $@
+	$(V)iconv -t EUC-JP -f UTF-8 $< > $@
 
 $(BUILD_DIR)/%.o: %.c
 	$(call print,Compiling:,$<,$@)
 	$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
-	$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
+	$(V)$(PYTHON) $(TOOLS_DIR)/set_o32abi_bit.py $@
 
 $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.c
 	$(call print,Compiling:,$<,$@)
-	@$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
+	$(V)$(CC_CHECK) $(CC_CHECK_CFLAGS) -MMD -MP -MT $@ -MF $(BUILD_DIR)/$*.d $<
 	$(V)$(CC) -c $(CFLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.o: %.s $(MIO0_FILES) $(RAW_TEXTURE_FILES)
-	$(AS) $(ASFLAGS) -o $@ $<
+	$(V)$(AS) $(ASFLAGS) -o $@ $<
 
 $(EUC_JP_FILES:%.c=$(BUILD_DIR)/%.jp.o): CC := $(PYTHON) $(TOOLS_DIR)/asm_processor/build.py $(CC) -- $(AS) $(ASFLAGS) --
 
@@ -643,7 +670,7 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/ceremony_data/ceremony_data.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/ceremony_data.mio0.s: %/ceremony_data.mio0
-	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel ceremonyData_end\n" > $@
+	$(V)$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel ceremony_data\n\n.incbin \"$<\"\n\n.balign 16\nglabel ceremonyData_end\n" > $@
 
 
 #==============================================================================#
@@ -663,7 +690,7 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/startup_logo/startup_logo.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/startup_logo.mio0.s: %/startup_logo.mio0
-	$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel startupLogo_end\n" > $@
+	$(V)$(PRINT) ".include \"macros.inc\"\n\n.data\n\n.balign 4\n\nglabel startup_logo\n\n.incbin \"$<\"\n\n.balign 16\n\nglabel startupLogo_end\n" > $@
 
 #==============================================================================#
 # Compile Common Textures                                                      #
@@ -682,7 +709,7 @@ LDFLAGS += -R $(BUILD_DIR)/assets/code/common_data/common_data.elf
 	$(V)$(MIO0TOOL) -c $< $@
 
 %/common_data.mio0.s: %/common_data.mio0
-	$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
+	$(V)$(PRINT) ".include \"macros.inc\"\n\n.section .data\n\n.balign 4\n\n.incbin \"$<\"\n\n" > $@
 
 
 
@@ -705,13 +732,13 @@ $(ROM): $(ELF)
 	$(call print,Building ROM:,$<,$@)
 	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $(@:.z64=.bin) -O binary
 	$(V)$(N64CKSUM) $(@:.z64=.bin) $@
-	$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
+	$(V)$(PYTHON) $(TOOLS_DIR)/doxygen_symbol_gen.py
 
 $(BUILD_DIR)/$(TARGET).hex: $(TARGET).z64
-	xxd $< > $@
+	$(V)xxd $< > $@
 
 $(BUILD_DIR)/$(TARGET).objdump: $(ELF)
-	$(OBJDUMP) -D $< > $@
+	$(V)$(OBJDUMP) -D $< > $@
 
 
 .PHONY: all clean distclean distclean_assets default diff test load assets

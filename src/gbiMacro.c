@@ -1,9 +1,8 @@
 #include <ultra64.h>
 #include <macros.h>
-#include "types.h"
 #include "PR/gu.h"
 #include "main.h"
-#include "config.h"
+#include <mk64.h>
 
 extern s16 D_800E43A8;
 extern Mtx D_0D008E98;

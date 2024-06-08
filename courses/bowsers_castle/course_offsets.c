@@ -63,7 +63,7 @@ const course_texture bowsers_castle_textures[] = {
     {0x00000000,             0x0000, 0x0000, 0x0},
 };
 
-const u8 *bowsers_castle_dls[] = {
+const Gfx *bowsers_castle_dls[] = {
     d_course_bowsers_castle_dl_0,
     d_course_bowsers_castle_dl_230,
     d_course_bowsers_castle_dl_110,

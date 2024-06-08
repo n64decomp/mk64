@@ -3,18 +3,17 @@
 #include <defines.h>
 #include <debug.h>
 #include <PR/gu.h>
+#include <mk64.h>
 
 #include <main.h>
 #include <segments.h>
 #include <code_800029B0.h>
-#include <types.h>
 #include "camera.h"
 #include "memory.h"
 #include "math_util.h"
 #include "code_80280000.h"
 #include "code_80281780.h"
 #include "skybox_and_splitscreen.h"
-#include <config.h>
 #include "code_80091750.h"
 #include "code_8006E9C0.h"
 #include "code_800029B0.h"

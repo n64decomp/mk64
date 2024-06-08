@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
-#include <types.h>
-#include <config.h>
+#include <mk64.h>
 #include <stdarg.h>
 #include <string.h>
 
@@ -56,6 +55,7 @@ void crash_screen_draw_glyph(u16 *framebuffer, s32 x, s32 y, s32 glyph) {
     }
 }
 
+void crash_screen_draw_square(u16 *framebuffer);
 // Functionally Equivallent.
 #ifdef NON_MATCHING
 
@@ -211,8 +211,7 @@ void thread9_crash_screen(UNUSED void *arg0)
             // Run only on the first iteration.
             if (sCounter == 0) {
                 crash_screen_draw_square(pFramebuffer);
-//#define SKIP_DRAW_SQUARE
-#ifndef SKIP_DRAW_SQUARE
+#ifndef DEBUG
                 while(TRUE)
                 {
                     read_controllers();
@@ -231,7 +230,7 @@ void thread9_crash_screen(UNUSED void *arg0)
                     }
                 }
 #endif
-#ifdef CRASH_SCREEN_ENHANCEMENT
+#if DEBUG
                 crash_screen_draw(thread);
 #else
                 crash_screen_draw_info(pFramebuffer, thread);

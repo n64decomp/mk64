@@ -109,7 +109,7 @@ char loadAudioString38[] = "---------------------------------------\n";
 void audio_dma_copy_immediate(u8 *devAddr, void *vAddr, size_t nbytes) {
     // eu_stubbed_printf_3("Romcopy %x -> %x ,size %x\n", devAddr, vAddr, nbytes);
     osInvalDCache(vAddr, nbytes);
-    osPiStartDma(&D_803B6740, OS_MESG_PRI_HIGH, OS_READ, devAddr, vAddr, nbytes, &D_803B6720);
+    osPiStartDma(&D_803B6740, OS_MESG_PRI_HIGH, OS_READ, (uintptr_t)devAddr, vAddr, nbytes, &D_803B6720);
     osRecvMesg(&D_803B6720, NULL, OS_MESG_BLOCK);
     // eu_stubbed_printf_0("Romcopyend\n");
 }
@@ -384,9 +384,9 @@ void patch_sound(struct AudioBankSound *sound, u8 *memBase, u8 *offsetBase) {
 #define PATCH(x, base) (patched = (void *)((uintptr_t) (x) + (uintptr_t) base))
 
     if (sound->sample != NULL) {
-        sample = sound->sample = (struct AdpcmLoop *) PATCH(sound->sample, memBase);
+        sample = sound->sample = (struct AudioBankSample *) PATCH(sound->sample, memBase);
         if (sample->loaded == 0) {
-            sample->sampleAddr = (struct u8 *) PATCH(sample->sampleAddr, offsetBase);
+            sample->sampleAddr = (u8 *) PATCH(sample->sampleAddr, offsetBase);
             sample->loop = (struct AdpcmLoop *) PATCH(sample->loop, memBase);
             sample->book = (struct AdpcmBook *) PATCH(sample->book, memBase);
             sample->loaded = 1;
@@ -769,15 +769,16 @@ extern u8 _audio_tablesSegmentRomStart;
 extern u8 _instrument_setsSegmentRomStart;
 extern u8 _sequencesSegmentRomStart;
 
-void audio_init() {
-    UNUSED s8 pad[16];
-    s32 i, j, k;
-    UNUSED s32 lim1; // lim1 unused in EU
+void audio_init(void) {
+    s32 i;
+    UNUSED s32 pad[2];
+    s32 j;
+    UNUSED s32 pad2[6];
     u32 sp60[2];
-    s32 UNUSED lim2, lim3;
-    UNUSED s32 size;
+    UNUSED s32 pad1[2];
+    s32 aaa;
+    s32 size;
     UNUSED u64 *ptr64;
-    UNUSED void *data;
     UNUSED s32 one = 1;
     u8 *test;
 
@@ -789,9 +790,8 @@ void audio_init() {
 
 #ifdef TARGET_N64
     // It seems boot.s doesn't clear the .bss area for audio, so do it here.
-    lim3 = ((uintptr_t) &D_803B71A0 - (uintptr_t) ((u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer))) ) / 8;
-    ptr64 = (u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));;
-    for (k = lim3; k >= 0; k--) {
+    ptr64 = (u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
+    for (i = ((uintptr_t) &D_803B71A0 - (uintptr_t) ((u64 *)((u8 *) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer))) ) / 8; i >= 0; i--) {
         *ptr64++ = 0;
     }
 #endif
@@ -853,15 +853,15 @@ void audio_init() {
     gAlCtlHeader = (ALSeqFile *) sp60;
     test = &_audio_banksSegmentRomStart;
     audio_dma_copy_immediate(test, gAlCtlHeader, 0x00000010U);
-    size = ALIGN16(gAlCtlHeader->seqCount * sizeof(ALSeqData) + 4);
+    aaa = gAlCtlHeader->seqCount;
+    size = ALIGN16(aaa * sizeof(ALSeqData) + 4);
     gAlCtlHeader = soundAlloc(&gAudioInitPool, size);
     audio_dma_copy_immediate(test, gAlCtlHeader, size);
     func_800BB43C(gAlCtlHeader, test);
-    gCtlEntries = soundAlloc(&gAudioInitPool, size * 0xC);
-    for (i = 0; i < size; i++) {
+    gCtlEntries = soundAlloc(&gAudioInitPool, aaa * 0xC);
+    for (i = 0; i < aaa; i++) {
         audio_dma_copy_immediate(gAlCtlHeader->seqArray[i].offset, sp60, 0x00000010U);
-        if(size) {}
-        if(1) {}
+
         gCtlEntries[i].numInstruments = sp60[0];
         gCtlEntries[i].numDrums = sp60[1];
     }
@@ -874,7 +874,7 @@ void audio_init() {
     audio_dma_copy_immediate(test, gAlTbl, size);
     func_800BB43C(gAlTbl, test);
     gAlBankSets = soundAlloc(&gAudioInitPool, 0x00000100U);
-    audio_dma_copy_immediate(&_instrument_setsSegmentRomStart, gAlBankSets, 0x00000100U);
+    audio_dma_copy_immediate((u32) &_instrument_setsSegmentRomStart, gAlBankSets, 0x00000100U);
     sound_alloc_pool_init(&gUnkPool1.pool, soundAlloc(&gAudioInitPool, (u32) D_800EA5D8), (u32) D_800EA5D8);
     init_sequence_players();
     gAudioLoadLock = 0x76557364;

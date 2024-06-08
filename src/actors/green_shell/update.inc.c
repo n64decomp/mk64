@@ -1,8 +1,8 @@
 #include <actors.h>
 #include <main.h>
-#include <types.h>
 #include <code_800029B0.h>
 #include <defines.h>
+#include "collision.h"
 
 /**
  * @brief Updates the green shell actor.

@@ -1487,19 +1487,21 @@ DONKEYKONG_EXPORT_SENTINEL := $(DONKEYKONG_KART_DIR)/.export
 $(BUILD_DIR)/$(DATA_DIR)/karts/donkeykong_kart.o: $(DONKEYKONG_KART_FRAME_PNG:%.png=%.mio0) $(DONKEYKONG_KART_PALETTE_PNG:%.png=%.bin)
 
 $(DONKEYKONG_KART_FRAME_PNG:%.png=%.mio0): %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(DONKEYKONG_KART_FRAME_PNG:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(<D)/stitched_palettes/$(<F:%.png=%_stitched_palette.png) -M $(<D)/wheel_masks/$(<F:%.png=%_wheel_mask.raw)
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(<D)/stitched_palettes/$(<F:%.png=%_stitched_palette.png) -M $(<D)/wheel_masks/$(<F:%.png=%_wheel_mask.raw)
 
 $(DONKEYKONG_KART_PALETTE_PNG:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(DONKEYKONG_KART_FRAME_PNG) $(DONKEYKONG_KART_PALETTE_PNG): $(DONKEYKONG_EXPORT_SENTINEL) ;
 
 $(DONKEYKONG_EXPORT_SENTINEL): $(ASSET_DIR)/karts/donkeykong_kart.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_donkeykong_kart
 distclean_donkeykong_kart:

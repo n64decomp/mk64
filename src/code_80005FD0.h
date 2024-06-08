@@ -201,19 +201,19 @@ void func_80015390(Camera*, Player*, s32);
 void func_80015544(s32, f32, s32, s32);
 void func_8001577C(Camera*, UNUSED Player*, s32, s32);
 void func_80015A9C(s32, f32, s32, s16);
-void func_80015C94(Camera*, s32, s32, s32);
+void func_80015C94(Camera*, Player *, s32, s32);
 
 void func_800162CC(s32, f32, s32, s16);
-void func_80016494(Camera*, s32, s32, s32);
+void func_80016494(Camera*, Player *, s32, s32);
 void func_80016C3C(s32, f32, s32);
 
 void func_80017720(s32, f32, s32, s16);
-void func_800178F4(Camera*, s32, s32, s32);
+void func_800178F4(Camera*, Player *, s32, s32);
 void func_80017F10(s32, f32, s32, s16);
 
-void func_800180F0(Camera*, s32, s32, s32);
+void func_800180F0(Camera*, Player *, s32, s32);
 void func_80018718(s32, f32, s32, s16);
-void func_800188F4(Camera*, s32, s32, s32);
+void func_800188F4(Camera*, Player *, s32, s32);
 
 void func_80019118(s32, f32, s32, s16);
 void func_8001933C(Camera*, UNUSED Player*, s32, s32);
@@ -306,7 +306,7 @@ extern u16 gKartAIBehaviourState[];
 enum {
     KART_AI_BEHAVIOUR_STATE_NONE,
     KART_AI_BEHAVIOUR_STATE_START,
-    KART_AI_BEHAVIOUR_STATE_RUNNING,
+    KART_AI_BEHAVIOUR_STATE_RUNNING
 };
 
 extern s16 D_80163300[];

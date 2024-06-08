@@ -2,6 +2,7 @@
 
 import re
 import sys
+import io
 
 abbreviations = {
     "banshee_boardwalk":  "BB",
@@ -365,6 +366,6 @@ with open(f"courses/{course_name}/course_offsets.c", "r") as offsets:
 
 # Write to files only after we've generated their entire contents. That way if an
 # error occurs during the generation we don't write an incomplete file
-with open(f"courses/{course_name}/course_textures.linkonly.c", "w") as linkonlyc, open(f"courses/{course_name}/course_textures.linkonly.h", "w") as linkonlyh:
+with io.open(f"courses/{course_name}/course_textures.linkonly.c", "w", newline="\n") as linkonlyc, io.open(f"courses/{course_name}/course_textures.linkonly.h", "w", newline="\n") as linkonlyh:
     linkonlyh.write(h_string)
     linkonlyc.write(c_string)

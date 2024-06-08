@@ -1,5 +1,5 @@
-#include "types.h"
-#include "courses/course_macro.h"
+#include <mk64.h>
+#include <common_structs.h>
 
 CourseVtx d_course_royal_raceway_vertex[] = {
     {{ -409,     105,   -1495}, { 12288,  1024}, {MACRO_COLOR_FLAG(0xc0, 0xc0, 0xc0, 0), 0x00}},

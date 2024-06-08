@@ -1,162 +1,140 @@
 #include "libultra_internal.h"
 #include "osContInternal.h"
+#include "controller.h"
+#include "macros.h"
 
-ALIGNED8 u32 __osEepPifRam[15];
-u32 D_8019769C;
+OSPifRam __osEepPifRam;
 
-extern u8 _osLastSentSiCmd;
+extern u8 __osContLastCmd;
 
-typedef struct {
-    u16 unk00;
-    u8 unk02;
-    u8 unk03;
-} unkStruct;
-typedef struct {
-    u8 unk00;
-    u8 unk01;
-    u8 unk02;
-    u8 unk03;
-    u8 unk04;
-    u8 unk05;
-    u8 unk06;
-    u8 unk07;
-} unkStruct3;
-
-typedef struct {
-    u8 unk00;
-    u8 unk01;
-    u8 unk02;
-    u8 unk03;
-    unkStruct3 unk04;
-} unkStruct2;
-
-s32 __osEepStatus(OSMesgQueue *, unkStruct *);
-s32 __osPackEepWriteData(u8, u8 *);
+s32 __osEepStatus(OSMesgQueue *, OSContStatus *);
+void __osPackEepWriteData(u8, u8 *);
 
 s32 osEepromWrite(OSMesgQueue *mq, u8 address, u8 *buffer) {
-    s32 sp34;
-    s32 sp30;
-    u8 *sp2c;
-    unkStruct2 sp20;
-    unkStruct sp1c;
-    sp34 = 0;
-    sp2c = (u8 *) &__osEepPifRam;
+    s32 ret = 0;
+    s32 i;
+    u8 *ptr = (u8 *) &__osEepPifRam.ramarray;
+    __OSContEepromFormat eepromformat;
+    OSContStatus sdata;
 
-    if (address > 0x40) {
+    if (address > EEPROM_MAXBLOCKS) {
         return -1;
     }
 
     __osSiGetAccess();
-    sp34 = __osEepStatus(mq, &sp1c);
+    ret = __osEepStatus(mq, &sdata);
 
-    if (sp34 != 0 || sp1c.unk00 != 0x8000) {
-        return 8;
+    if (ret != 0 || sdata.type != CONT_EEPROM) {
+        return CONT_NO_RESPONSE_ERROR;
     }
 
-    while (sp1c.unk02 & 0x80) {
-        __osEepStatus(mq, &sp1c);
+    while (sdata.status & CONT_EEPROM_BUSY) {
+        __osEepStatus(mq, &sdata);
     }
 
     __osPackEepWriteData(address, buffer);
 
-    sp34 = __osSiRawStartDma(OS_WRITE, &__osEepPifRam);
+    ret = __osSiRawStartDma(OS_WRITE, &__osEepPifRam);
     osRecvMesg(mq, NULL, OS_MESG_BLOCK);
 
-    for (sp30 = 0; sp30 < 0x10; sp30++) {
-        (__osEepPifRam)[sp30] = 255;
+    for (i = 0; i < ARRAY_COUNT(__osEepPifRam.ramarray) + 1; i++) {
+        __osEepPifRam.ramarray[i] = CONT_CMD_NOP;
     }
 
-    D_8019769C = 0;
-    sp34 = __osSiRawStartDma(OS_READ, __osEepPifRam);
-    _osLastSentSiCmd = 5;
+    __osEepPifRam.pifstatus = 0;
+    ret = __osSiRawStartDma(OS_READ, &__osEepPifRam);
+    __osContLastCmd = CONT_CMD_WRITE_EEPROM;
     osRecvMesg(mq, NULL, OS_MESG_BLOCK);
 
-    for (sp30 = 0; sp30 < 4; sp30++) {
-        sp2c++;
+    for (i = 0; i < 4; i++) {
+        ptr++;
     }
 
-    sp20 = *(unkStruct2 *) sp2c;
-    sp34 = (sp20.unk01 & 0xc0) >> 4;
+    eepromformat = *(__OSContEepromFormat *) ptr;
+    ret = CHNL_ERR(eepromformat);
     __osSiRelAccess();
-    return sp34;
+    return ret;
 }
 
-s32 __osPackEepWriteData(u8 address, u8 *buffer) {
-    u8 *sp14;
-    unkStruct2 sp8;
-    s32 sp4;
-    sp14 = (u8 *) &__osEepPifRam;
-    for (sp4 = 0; sp4 < 0x10; sp4++) {
-        __osEepPifRam[sp4] = 255;
+void __osPackEepWriteData(u8 address, u8 *buffer) {
+    u8 *ptr = (u8 *) &__osEepPifRam.ramarray;
+    __OSContEepromFormat eepromformat;
+    s32 i;
+
+    for (i = 0; i < ARRAY_COUNT(__osEepPifRam.ramarray) + 1; i++) {
+        __osEepPifRam.ramarray[i] = CONT_CMD_NOP;
     }
-    D_8019769C = 1;
-    sp8.unk00 = 10;
-    sp8.unk01 = 1;
-    sp8.unk02 = 5;
-    sp8.unk03 = address;
-    for (sp4 = 0; sp4 < 8; sp4++) {
-        ((u8 *) &sp8.unk04)[sp4] = *buffer++;
+    __osEepPifRam.pifstatus = CONT_CMD_EXE;
+
+    eepromformat.txsize = CONT_CMD_WRITE_EEPROM_TX;
+    eepromformat.rxsize = CONT_CMD_WRITE_EEPROM_RX;
+    eepromformat.cmd = CONT_CMD_WRITE_EEPROM;
+    eepromformat.address = address;
+
+    for (i = 0; i < ARRAY_COUNT(eepromformat.data); i++) {
+        eepromformat.data[i] = *buffer++;
     }
-    for (sp4 = 0; sp4 < 4; sp4++) {
-        *sp14++ = 0;
+
+    for (i = 0; i < 4; i++) {
+        *ptr++ = 0;
     }
-    *(unkStruct2 *) sp14 = sp8;
-    sp14 += 0xc;
-    *sp14 = 254;
+    *(__OSContEepromFormat *) ptr = eepromformat;
+    ptr += sizeof(__OSContEepromFormat);
+    *ptr = CONT_CMD_END;
 }
 
-s32 __osEepStatus(OSMesgQueue *a0, unkStruct *a1) {
-    u32 sp2c = 0;
-    s32 sp28;
-    u8 *sp24 = (u8 *) __osEepPifRam;
-    unkStruct3 sp1c;
+s32 __osEepStatus(OSMesgQueue *mq, OSContStatus *data) {
+    u32 ret = 0;
+    s32 i;
+    u8 *ptr = (u8 *) __osEepPifRam.ramarray;
+    __OSContRequesFormat requestformat;
 
-    for (sp28 = 0; sp28 < 0x10; sp28++) {
-        __osEepPifRam[sp28] = 0;
+    for (i = 0; i < ARRAY_COUNT(__osEepPifRam.ramarray) + 1; i++) {
+        __osEepPifRam.ramarray[i] = 0;
+    }
+    __osEepPifRam.pifstatus = CONT_CMD_EXE;
+
+    ptr = (u8 *) __osEepPifRam.ramarray;
+    for (i = 0; i < 4; i++) {
+        *ptr++ = 0;
     }
 
-    D_8019769C = 1;
-    sp24 = (u8 *) __osEepPifRam;
-    for (sp28 = 0; sp28 < 4; sp28++) {
-        *sp24++ = 0;
+    requestformat.dummy = CONT_CMD_NOP;
+    requestformat.txsize = CONT_CMD_REQUEST_STATUS_TX;
+    requestformat.rxsize = CONT_CMD_REQUEST_STATUS_RX;
+    requestformat.cmd = CONT_CMD_REQUEST_STATUS;
+    requestformat.typeh = CONT_CMD_NOP;
+    requestformat.typel = CONT_CMD_NOP;
+    requestformat.status = CONT_CMD_NOP;
+    requestformat.dummy1 = CONT_CMD_NOP;
+    *(__OSContRequesFormat *) ptr = requestformat;
+
+    ptr += sizeof(__OSContRequesFormat);
+    *ptr = CONT_CMD_END;
+
+    ret = __osSiRawStartDma(OS_WRITE, &__osEepPifRam);
+    osRecvMesg(mq, NULL, OS_MESG_BLOCK);
+
+    __osContLastCmd = CONT_CMD_WRITE_EEPROM;
+
+    ret = __osSiRawStartDma(OS_READ, &__osEepPifRam);
+    osRecvMesg(mq, NULL, OS_MESG_BLOCK);
+
+    if (ret != 0) {
+        return ret;
     }
 
-    sp1c.unk00 = 255;
-    sp1c.unk01 = 1;
-    sp1c.unk02 = 3;
-    sp1c.unk03 = 0;
-    sp1c.unk04 = 255;
-    sp1c.unk05 = 255;
-    sp1c.unk06 = 255;
-    sp1c.unk07 = 255;
-    *(unkStruct3 *) sp24 = sp1c;
-
-    sp24 += 8;
-    sp24[0] = 254;
-
-    sp2c = __osSiRawStartDma(OS_WRITE, __osEepPifRam);
-    osRecvMesg(a0, NULL, OS_MESG_BLOCK);
-
-    _osLastSentSiCmd = 5;
-
-    sp2c = __osSiRawStartDma(OS_READ, __osEepPifRam);
-    osRecvMesg(a0, NULL, OS_MESG_BLOCK);
-
-    if (sp2c != 0) {
-        return sp2c;
+    ptr = (u8 *) __osEepPifRam.ramarray;
+    for (i = 0; i < 4; i++) {
+        *ptr++ = 0;
     }
 
-    sp24 = (u8 *) __osEepPifRam;
-    for (sp28 = 0; sp28 < 4; sp28++) {
-        *sp24++ = 0;
-    }
-
-    sp1c = *(unkStruct3 *) sp24;
-    a1->unk03 = (sp1c.unk02 & 0xc0) >> 4;
-    a1->unk00 = (sp1c.unk05 << 8) | sp1c.unk04;
-    a1->unk02 = sp1c.unk06;
-    if (a1->unk03 != 0) {
-        return a1->unk03;
+    requestformat = *(__OSContRequesFormat *) ptr;
+    data->errnum = CHNL_ERR(requestformat);
+    data->type = (requestformat.typel << 8) | requestformat.typeh;
+    data->status = requestformat.status;
+    if (data->errnum != 0) {
+        return data->errnum;
     }
     return 0;
 }

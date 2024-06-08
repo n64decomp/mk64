@@ -1,5 +1,5 @@
-#include "types.h"
-#include "courses/course_macro.h"
+#include <mk64.h>
+#include <common_structs.h>
 
 CourseVtx d_course_wario_stadium_vertex[] = {
     {{-3350,     362,    -650}, {  3107,  1023}, {MACRO_COLOR_FLAG(0xcc, 0xcc, 0xcc, 4), 0x00}},

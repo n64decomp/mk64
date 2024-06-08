@@ -7,6 +7,7 @@
 #include <PR/rcp.h>
 #include "buffers/trig_tables.h"
 #include "math.h"
+#include "memory.h"
 
 #pragma intrinsic (sqrtf,fabs)
 
@@ -24,10 +25,10 @@ UNUSED s32 func_802B4F60(UNUSED s32 arg0, Vec3f arg1, UNUSED s32 arg2, UNUSED f3
   sp28 = sp1C[0];
   sp2C = sp1C[1];
   // wut?
-  if (sp2C && sp2C);
+  if (sp2C && sp2C) {};
   sp2C = ((sp30[0][3] * sp28) + (sp30[1][3] * sp2C) + (sp30[2][3] * sp1C[2])) + sp30[3][3];
   // double wut?
-  if (sp28 && sp28);
+  if (sp28 && sp28) {};
   mtxf_translate_vec3f_mat4(sp1C, sp30);
   if (0.0f >= sp2C)
   {
@@ -420,8 +421,10 @@ void func_802B5D30(s16 arg0, s16 arg1, s32 arg2) {
     func_802B5D64(0x9000000, arg0, arg1, arg2);
 }
 
-void func_802B5D64(uintptr_t arg0, s16 arg1, s16 arg2, s32 arg3) {
-    UNUSED s32 pad[3];
+void func_802B5D64(uintptr_t addr, s16 arg1, s16 arg2, s32 arg3) {
+    u32 segment = SEGMENT_NUMBER2(addr);
+    u32 offset = SEGMENT_OFFSET(addr);
+    UNUSED s32 pad;
     f32 sp48;
     f32 sp44;
     f32 sp40;
@@ -431,7 +434,7 @@ void func_802B5D64(uintptr_t arg0, s16 arg1, s16 arg2, s32 arg3) {
     s8 sp2C[3];
     Lights1 *var_s0;
 
-    var_s0 = (Lights1 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[arg0 >> 0x18] + (arg0 & 0xFFFFFF));
+    var_s0 = (Lights1 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     sp48 = sins(arg2);
     sp44 = coss(arg2);
     sp40 = sins(arg1);
@@ -1150,15 +1153,17 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
 
 // No idea if arg1 is actually a Mat4 or not, but since this function is unused
 // its impossible to know with certainty either way, very close of func_802B5D64
-UNUSED void func_802B8414(uintptr_t arg0, Mat4 arg1, s16 arg2, s16 arg3, s32 arg4) {
-    UNUSED s32 pad[3];
+UNUSED void func_802B8414(uintptr_t addr, Mat4 arg1, s16 arg2, s16 arg3, s32 arg4) {
+    u32 segment = SEGMENT_NUMBER2(addr);
+    u32 offset = SEGMENT_OFFSET(addr);
+    UNUSED s32 pad;
     Vec3f sp40;
     s8 sp3C[3];
     s32 var_v0;
     UNUSED s32 pad2[3];
     Lights1 *var_s0;
 
-    var_s0 = (Lights1 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[arg0 >> 0x18] + (arg0 & 0xFFFFFF));
+    var_s0 = (Lights1 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
     sins(arg3);
     coss(arg3);
     sins(arg2);

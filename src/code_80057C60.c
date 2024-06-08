@@ -6,13 +6,14 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/gbi.h>
+#include <mk64.h>
 
+#include "camera.h"
 #include "code_80057C60.h"
 #include "main.h"
 #include "actors.h"
 #include "code_800029B0.h"
 #include "racing/memory.h"
-#include <config.h>
 #include <defines.h>
 #include "math_util.h"
 #include "math_util_2.h"
@@ -1082,7 +1083,7 @@ void render_hud_2p_horizontal_player_two_horizontal_player_one(void) {
     if (gHUDDisable == 0) {
         render_hud_timer(PLAYER_ONE);
         if (playerHUD[PLAYER_ONE].lapCount != 3) {
-            draw_hud_2d_texture_32x8(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, common_texture_hud_lap); // draw the lap word
+            draw_hud_2d_texture_32x8(playerHUD[PLAYER_ONE].lapX, playerHUD[PLAYER_ONE].lapY, (u8*) common_texture_hud_lap); // draw the lap word
             draw_lap_count(playerHUD[PLAYER_ONE].lapX + 0xC, playerHUD[PLAYER_ONE].lapY - 4, playerHUD[PLAYER_ONE].alsoLapCount);
             draw_item_window(PLAYER_ONE);
         }
@@ -1097,7 +1098,7 @@ void render_hud_2p_horizontal_player_two(void) {
     if (gHUDDisable == 0) {
         render_hud_timer(PLAYER_TWO);
         if (playerHUD[PLAYER_TWO].lapCount != 3) {
-            draw_hud_2d_texture_32x8(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, common_texture_hud_lap);
+            draw_hud_2d_texture_32x8(playerHUD[PLAYER_TWO].lapX, playerHUD[PLAYER_TWO].lapY, (u8*) common_texture_hud_lap);
             draw_lap_count(playerHUD[PLAYER_TWO].lapX + 0xC, playerHUD[PLAYER_TWO].lapY - 4, playerHUD[PLAYER_TWO].alsoLapCount);
             draw_item_window(PLAYER_TWO);
         }
@@ -3493,7 +3494,7 @@ void func_8005F90C(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
 GLOBAL_ASM("asm/non_matchings/code_80057C60/func_8005F90C.s")
 #endif
 
-void func_80060504(Player *player, s16 arg1, s32 arg2, s8 arg3, s8 arg4) {
+void func_80060504(Player *player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
     UNUSED s32 thing1;
     s16 thing2;
     UNUSED s32 thing3;
@@ -4906,8 +4907,7 @@ void func_80065AB0(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     s16 envRed;
     s16 envGreen;
     s16 envBlue;
-    s32 envColors[] = { MAKE_RGB(0xFF, 0xFF, 0xFF), MAKE_RGB(0xFF, 0xFF, 0x00), MAKE_RGB(0xFF, 0x96, 0x00) };
-
+    s32 sp8C[] = {0x00ffffff, 0x00ffff00, 0x00ff9600};
     if (player->unk_258[10 + arg2].unk_01C == 1) {
         if (player->unk_204 >= 0x32) {
             var_s0 = 1;
@@ -4918,9 +4918,9 @@ void func_80065AB0(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         primGreen = player->unk_258[10 + arg2].unk_03A;
         primBlue  = player->unk_258[10 + arg2].unk_03C;
         primAlpha = player->unk_258[10 + arg2].unk_03E;
-        envRed    = (envColors[player->unk_258[10 + arg2].unk_040] >> 0x10) & 0xFF;
-        envGreen  = (envColors[player->unk_258[10 + arg2].unk_040] >> 0x08) & 0xFF;
-        envBlue   = (envColors[player->unk_258[10 + arg2].unk_040] >> 0x00) & 0xFF;
+        envRed   = (sp8C[player->unk_258[10 + arg2].unk_040] >> 0x10) & 0xFF;
+        envGreen = (sp8C[player->unk_258[10 + arg2].unk_040] >> 0x08) & 0xFF;
+        envBlue  = (sp8C[player->unk_258[10 + arg2].unk_040] >> 0x00) & 0xFF;
         spB4[0] = player->unk_258[10 + arg2].unk_000[0];
         spB4[1] = player->unk_258[10 + arg2].unk_000[1];
         spB4[2] = player->unk_258[10 + arg2].unk_000[2];
@@ -4930,13 +4930,15 @@ void func_80065AB0(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
         func_800652D4(spB4, spAC, player->unk_258[10 + arg2].unk_00C * player->size);
         if (var_s0 == 0) {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-            gDPLoadTextureBlock(gDisplayListHead++, D_800E4770[var_s0], G_IM_FMT_I, G_IM_SIZ_8b, 16, 16, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+            gDPLoadTextureBlock(gDisplayListHead++, D_800E4770[var_s0][0], G_IM_FMT_I, G_IM_SIZ_8b, 16, 16, 0,
+                G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
             gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
             gSPDisplayList(gDisplayListHead++, D_0D008DF8);
         } else {
             gSPDisplayList(gDisplayListHead++, D_0D008DB8);
-            gDPLoadTextureBlock(gDisplayListHead++, D_800E4770[var_s0], G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+            gDPLoadTextureBlock(gDisplayListHead++, D_800E4770[var_s0][0], G_IM_FMT_I, G_IM_SIZ_8b, 32, 32, 0,
+                G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
             func_8004B72C(primRed, primGreen, primBlue, envRed, envGreen, envBlue, primAlpha);
             gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
             gSPDisplayList(gDisplayListHead++, D_0D008E48);
@@ -5722,7 +5724,7 @@ void func_8006A7C0(Player *player, f32 arg1, f32 arg2, s8 arg3, s8 arg4) {
     }
 }
 
-void func_8006AFD0(Player *player, s8 arg1, s16 arg2, s8 arg3) {
+void render_battle_balloon(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     Mat4 sp140;
     Vec3f sp134;
     Vec3s sp12C;
@@ -5848,16 +5850,19 @@ void func_8006B9CC(Player* player, s8 arg1) {
 
 void func_8006BA94(Player* player, s8 playerIndex, s8 arg2) {
     if (gPlayerBalloonStatus[playerIndex][0] != BALLOON_STATUS_GONE) {
-        func_8006AFD0(player, playerIndex, 0, arg2);
+        render_battle_balloon(player, playerIndex, 0, arg2);
     }
     if (gPlayerBalloonStatus[playerIndex][1] != BALLOON_STATUS_GONE) {
-        func_8006AFD0(player, playerIndex, 1, arg2);
+        render_battle_balloon(player, playerIndex, 1, arg2);
     }
     if (gPlayerBalloonStatus[playerIndex][2] != BALLOON_STATUS_GONE) {
-        func_8006AFD0(player, playerIndex, 2, arg2);
+        render_battle_balloon(player, playerIndex, 2, arg2);
     }
 }
 
+/**
+ * Used in podium ceremony.
+*/
 void render_balloon(Vec3f arg0, f32 arg1, s16 arg2, s16 arg3) {
     Mat4 sp108;
     Vec3f spFC;

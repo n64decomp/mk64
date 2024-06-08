@@ -169,7 +169,7 @@ u8 __osContAddressCrc(u16 addr);
 u8 __osContDataCrc(u8 *data);
 s32 __osPfsGetStatus(OSMesgQueue *queue, int channel);
 
-extern u8 _osLastSentSiCmd;
+extern u8 __osContLastCmd;
 extern OSTimer __osEepromTimer;
 extern OSMesg __osEepromTimerMsg;
 extern OSMesgQueue __osEepromTimerQ;

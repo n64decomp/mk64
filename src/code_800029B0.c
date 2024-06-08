@@ -1,8 +1,8 @@
 #include <ultra64.h>
 #include <macros.h>
+#include <mk64.h>
 
 #include "code_800029B0.h"
-#include "types.h"
 #include "memory.h"
 #include "waypoints.h"
 #include "actors.h"
@@ -26,7 +26,6 @@
 
 extern s32 D_802BA038;
 extern s16 D_802BA048;
-
 s16 gCurrentCourseId = 0;
 s16 gCurrentlyLoadedCourseId = 0xFF;
 u16 D_800DC5A8 = 0;
@@ -52,7 +51,7 @@ u16 D_800DC5E4 = 0;
 //! @todo gPlayerWinningIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8
 s32 gPlayerWinningIndex = 0;
 
-struct UnkStruct_800DC5EC D_8015F480[4];
+ALIGNED16 struct UnkStruct_800DC5EC D_8015F480[4];
 struct UnkStruct_800DC5EC *D_800DC5EC = &D_8015F480[0];
 struct UnkStruct_800DC5EC *D_800DC5F0 = &D_8015F480[1];
 struct UnkStruct_800DC5EC *D_800DC5F4 = &D_8015F480[2];
@@ -66,7 +65,7 @@ Lights1 D_800DC610[] = {
     gdSPDefLights1(175, 175, 175, 255, 255, 255, 0, 0, 120),
     gdSPDefLights1(115, 115, 115, 255, 255, 255, 0, 0, 120),
 };
-static s32 pad_800029B0 = 0x80000000;
+UNUSED s32 pad_800029B0 = 0x80000000;
 s16 gCreditsCourseId = COURSE_LUIGI_RACEWAY;
 s16 gPlaceItemBoxes = 1;
 
