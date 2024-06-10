@@ -873,7 +873,7 @@ s32 is_colliding_with_drivable_surface(Collision *collision, f32 boundingBoxSize
 /**
  * Wall collision
 */
-s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 surfaceIndex, f32 x2, f32 y2, f32 z2) {
+s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 surfaceIndex, f32 x5, f32 y5, f32 z5) {
     mk64_surface_map_ram *tile = &gSurfaceMap[surfaceIndex];
     UNUSED s32 pad[6];
     f32 x4;
@@ -959,7 +959,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
 
     temp_f0_4 = ((tile->height * x1) + (tile->gravity * y1) + (tile->rotation * z1)) + tile->height2;
     if (tile->flags & 0x200) {
-        temp_f4_2 = ((tile->height * x2) + (tile->gravity * y2) + (tile->rotation * z2)) + tile->height2;
+        temp_f4_2 = ((tile->height * x5) + (tile->gravity * y5) + (tile->rotation * z5)) + tile->height2;
         //sp48 = temp_f4_2;
         if ((temp_f0_4 > 0.0f) && (temp_f4_2 > 0.0f)) {
             if (temp_f0_4 < boundingBoxSize) {
@@ -1037,7 +1037,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
         return NO_COLLISION;
     }
 
-    temp_f4_2 = (tile->height * x2) + (tile->gravity * y2) + (tile->rotation * z2) + tile->height2;
+    temp_f4_2 = (tile->height * x5) + (tile->gravity * y5) + (tile->rotation * z5) + tile->height2;
     if (temp_f4_2 < 0.0f) {
         return NO_COLLISION;
     }
