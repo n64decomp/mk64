@@ -1529,7 +1529,7 @@ void render_ghost(Player *player, s8 playerId, s8 screenId, s8 arg3) {
     spDC[0] = player->pos[0] + spD0;
     spDC[2] = player->pos[2] + spC8;
 #ifdef AVOID_UB
-    gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId];
+    gPlayerPalette = &D_802F1F80[D_801651D0[screenId][playerId]][screenId][playerId];
 #else
     gPlayerPalette = (struct_D_802F1F80 *) &D_802F1F80[D_801651D0[screenId][playerId]][screenId][playerId * 0x100];
 #endif
