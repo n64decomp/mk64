@@ -1917,7 +1917,8 @@ void func_802AF314(void) {
     s16 minZ;
     s32 scaledZ;
     s32 scaledX;
-    UNUSED s32 pad2[2];
+    s32 courseLengthX;
+    s32 courseLengthZ;
     s32 index;
     courseLengthX = (s32) gCourseMaxX - gCourseMinX;
     courseLengthZ = (s32) gCourseMaxZ - gCourseMinZ;
