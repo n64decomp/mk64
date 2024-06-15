@@ -44,7 +44,7 @@ void func_800431B0(Vec3f pos, Vec3su orientation, f32 scale, Vtx *vtx) {
 
 void func_80043220(Vec3f pos, Vec3su orientation, f32 scale, Gfx *gfx) {
     rsp_set_matrix_transformation(pos, orientation, scale);
-    gSPDisplayList(gDisplayListHead++, &D_0D0077A0);
+    gSPDisplayList(gDisplayListHead++, D_0D0077A0);
     gSPDisplayList(gDisplayListHead++, gfx);
 }
 

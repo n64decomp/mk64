@@ -785,7 +785,7 @@ void audio_init(void) {
     gAudioLoadLock = 0;
 
     for (i = 0; i < gAudioHeapSize / 8; i++) {
-        ((u64 *) D_803B71B0)[i] = 0;
+        ((u64 *) gAudioHeap)[i] = 0;
     }
 
 #ifdef TARGET_N64
