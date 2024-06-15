@@ -301,10 +301,10 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceFlags   = 0;
     player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceFlags  = 0;
 
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].surfaceMapIndex  = 0;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].surfaceMapIndex = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceMapIndex   = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceMapIndex  = 0;
+    player->boundingBoxCorners[FRONT_LEFT_TYRE].collisionMeshIndex  = 0;
+    player->boundingBoxCorners[FRONT_RIGHT_TYRE].collisionMeshIndex = 0;
+    player->boundingBoxCorners[BACK_LEFT_TYRE].collisionMeshIndex   = 0;
+    player->boundingBoxCorners[BACK_RIGHT_TYRE].collisionMeshIndex  = 0;
 
     player->boundingBoxCorners[FRONT_RIGHT_TYRE].unk_14 = 0;
     player->boundingBoxCorners[FRONT_LEFT_TYRE].unk_14  = 0;
