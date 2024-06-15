@@ -1911,20 +1911,19 @@ void func_802AF314(void) {
     CollisionTriangle *triangle;
     s32 i, j, k;
     UNUSED s32 pad[5];
-    s16 temp_a1;
-    s16 temp_a3;
-    s16 temp_s1;
-    s16 temp_s2;
-    s32 temp_fp;
-    s32 temp_s6;
-    s32 temp1;
-    s32 temp2;
+    s16 maxX;
+    s16 maxZ;
+    s16 minX;
+    s16 minZ;
+    s32 scaledZ;
+    s32 scaledX;
+    UNUSED s32 pad2[2];
     s32 index;
-    temp1 = (s32) gCourseMaxX - gCourseMinX;
-    temp2 = (s32) gCourseMaxZ - gCourseMinZ;
+    courseLengthX = (s32) gCourseMaxX - gCourseMinX;
+    courseLengthZ = (s32) gCourseMaxZ - gCourseMinZ;
 
-    temp_s6 = temp1 / 32;
-    temp_fp = temp2 / 32;
+    scaledX = courseLengthX / 32;
+    scaledZ = courseLengthZ / 32;
 
     for (i = 0; i < 1024; i++) {
         D_8014F110[i].unk2 = 0;
@@ -1943,20 +1942,20 @@ void func_802AF314(void) {
         for (k = 0; k < 32; k++) {
             index = k + j * 32;
 
-            temp_s1 = (gCourseMinX + (temp_s6 * k)) - 20;
-            temp_s2 = (gCourseMinZ + (temp_fp * j)) - 20;
+            minX = (gCourseMinX + (scaledX * k)) - 20;
+            minZ = (gCourseMinZ + (scaledZ * j)) - 20;
 
-            temp_a1 = temp_s1 + temp_s6 + 40;
-            temp_a3 = temp_s2 + temp_fp + 40;
+            maxX = minX + scaledX + 40;
+            maxZ = minZ + scaledZ + 40;
 
             for (i = 0; i < gCollisionMeshCount; i++) {
                 triangle = gCollisionMesh + i;
-                if (triangle->maxZ < temp_s2) { continue; }
-                if (triangle->minZ > temp_a3) { continue; }
-                if (triangle->maxX < temp_s1) { continue; }
-                if (triangle->minX > temp_a1) { continue; }
+                if (triangle->maxZ < minZ) { continue; }
+                if (triangle->minZ > maxZ) { continue; }
+                if (triangle->maxX < minX) { continue; }
+                if (triangle->minX > maxX) { continue; }
 
-                if (is_triangle_intersecting_bounding_box(temp_s1, temp_a1, temp_s2, temp_a3, (u16) i) == 1) {
+                if (is_triangle_intersecting_bounding_box(minX, maxX, minZ, maxZ, (u16) i) == 1) {
                     if (D_8014F110[index].unk2 == 0) {
                         D_8014F110[index].unk0 = D_8015F58A;
                     }
@@ -2124,8 +2123,8 @@ u16 process_collision(Player *player, KartBoundingBoxCorner *corner, f32 cornerP
     f32 boundingBoxSize;
     f32 temp_f0;
     
-    s32 temp_v0_2;
-    s32 temp_v1;
+    s32 courseLengthX;
+    s32 courseLengthZ;
 
     s16 temp_f10;
     s16 temp_f16;
@@ -2185,11 +2184,11 @@ u16 process_collision(Player *player, KartBoundingBoxCorner *corner, f32 cornerP
 
     // If the surface flags are not set then try setting them.
         
-    temp_v0_2 = (s32) gCourseMaxX - gCourseMinX;
-    temp_v1 = (s32) gCourseMaxZ - gCourseMinZ;
+    courseLengthX = (s32) gCourseMaxX - gCourseMinX;
+    courseLengthZ = (s32) gCourseMaxZ - gCourseMinZ;
 
-    temp1 = temp_v0_2 / 32;
-    temp2 = temp_v1 / 32;
+    temp1 = courseLengthX / 32;
+    temp2 = courseLengthZ / 32;
 
     temp_f10 = (cornerPos1 - gCourseMinX) / temp1;
     temp_f16 = (cornerPos3 - gCourseMinZ) / temp2;
