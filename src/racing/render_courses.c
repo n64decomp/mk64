@@ -1388,8 +1388,8 @@ void func_80295C6C(void) {
     gCourseMinX += -20;
     gCourseMinZ += -20;
     gCourseMinY += -20;
-    func_802AF314();
-    gNextFreeMemoryAddress += ALIGN16(D_8015F58A * 2);
+    generate_collision_grid();
+    gNextFreeMemoryAddress += ALIGN16(gNumCollisionTriangles * 2);
 }
 
 UNUSED void func_80295D50(s16 arg0, s16 arg1) {
