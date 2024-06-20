@@ -147,7 +147,7 @@ void func_8003E9EC(Player *player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32 *arg4
         func_8003DC40(player);
     } else {
         if ((((player->unk_094 / 18.0f) * 216.0f) > 20.0f) || ((player->effects & 0x10000) == 0x10000)) {
-            if ((player->boundingBoxCorners[2].surfaceType == ASPHALT) || (player->boundingBoxCorners[3].surfaceType == ASPHALT) || (player->boundingBoxCorners[1].surfaceType == ASPHALT) || (player->boundingBoxCorners[0].surfaceType == ASPHALT)) {
+            if ((player->tyres[BACK_LEFT].surfaceType == ASPHALT) || (player->tyres[BACK_RIGHT].surfaceType == ASPHALT) || (player->tyres[FRONT_RIGHT].surfaceType == ASPHALT) || (player->tyres[FRONT_LEFT].surfaceType == ASPHALT)) {
                 arg3[0] = ((player->unk_206 / 182) * 5);
             } else {
                 arg3[0] = ((player->unk_206 / 182) * 0x28);

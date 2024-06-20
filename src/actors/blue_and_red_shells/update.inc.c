@@ -196,7 +196,7 @@ void func_802B4104(struct ShellActor *shell) {
 void update_actor_red_blue_shell(struct ShellActor *shell) {
     UNUSED f32 pad9;
     Player *player;
-    f32 temp_f0;
+    f32 height;
     UNUSED f32 temp_f14;
     f32 temp_f2;
     s16 temp_v0;
@@ -243,11 +243,11 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
         shell->pos[0] = player->pos[0] + somePosVel[0];
         pad7          = player->pos[1] - somePosVel[1];
         shell->pos[2] = player->pos[2] + somePosVel[2];
-        temp_f0 = func_802ABE30(shell->pos[0], pad7, shell->pos[2], player->unk_110.unk3A);
-        temp_f2 = pad7 - temp_f0;
+        height = calculate_surface_height(shell->pos[0], pad7, shell->pos[2], player->unk_110.unk3A);
+        temp_f2 = pad7 - height;
 
         if ((temp_f2 < 5.0f) && (temp_f2 > -5.0f)) {
-            shell->pos[1] = shell->boundingBoxSize + temp_f0;
+            shell->pos[1] = shell->boundingBoxSize + height;
         } else {
             shell->pos[1] = pad7;
         }
@@ -303,13 +303,13 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
         }
         if (shell->state == MOVING_SHELL) {
             shell->someTimer = 0x001E;
-            temp_f0 = 8.0f;
+            height = 8.0f;
             if (player->unk_094 > 8.0f) {
-                temp_f0 = player->unk_094 * 1.2f;
+                height = player->unk_094 * 1.2f;
             }
             somePosVel[0] = 0.0f;
             somePosVel[1] = 0.0f;
-            somePosVel[2] = temp_f0;
+            somePosVel[2] = height;
             func_802B64C4(somePosVel, (s16) (player->rotation[1] + player->unk_0C0));
             shell->velocity[0] = somePosVel[0];
             shell->velocity[1] = somePosVel[1];
@@ -405,11 +405,11 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
     case GREEN_SHELL_HIT_A_RACER:
         func_802B3B44(shell);
         player = &gPlayers[shell->targetPlayer];
-        temp_f0 = player->pos[0];
-        temp_f0 -= shell->pos[0];
+        height = player->pos[0];
+        height -= shell->pos[0];
         temp_f2 = player->pos[2];
         temp_f2 -= shell->pos[2];
-        if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 40000.0f) {
+        if (((height * height) + (temp_f2 * temp_f2)) < 40000.0f) {
             shell->state = RED_SHELL_LOCK_ON;
         }
         break;
@@ -450,11 +450,11 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
         func_802B3B44(shell);
         shell->targetPlayer = gPlayerPositionLUT[0];
         player = &gPlayers[gPlayerPositionLUT[0]];
-        temp_f0 = player->pos[0];
-        temp_f0 -= shell->pos[0];
+        height = player->pos[0];
+        height -= shell->pos[0];
         temp_f2 = player->pos[2];
         temp_f2 -= shell->pos[2];
-        if (((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 40000.0f) {
+        if (((height * height) + (temp_f2 * temp_f2)) < 40000.0f) {
             shell->state = BLUE_SHELL_TARGET_ELIMINATED;
         }
         break;

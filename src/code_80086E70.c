@@ -425,7 +425,7 @@ void func_80088150(s32 arg0) {
 
 void func_80088178(s32 objectIndex, s32 arg1) {
     s16 temp_a1;
-    Objects *temp_v1;
+    Object *temp_v1;
 
     temp_v1 = &gObjectList[objectIndex];
     temp_a1 = atan2s(D_80165760[1] - D_80165760[0], D_80165780[1] - D_80165780[0]);
@@ -439,7 +439,7 @@ void func_80088178(s32 objectIndex, s32 arg1) {
 
 // if the code is too ugly for you, then go fix it without tampering with the register allocations
 void func_80088228(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *temp_v0;
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->unk_084[9] = 0;
     temp_v0->controlPoints = temp_v0->spline->controlPoints;
@@ -473,7 +473,7 @@ s32 func_800882B0(s32 objectIndex, s32 arg1) {
 }
 
 void func_80088364(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *temp_v0;
 
     func_800880E4(objectIndex);
     func_80088178(objectIndex, 1);
@@ -516,7 +516,7 @@ s32 func_8008847C(s32 objectIndex) {
             sp2C = 1;
             set_object_flag_status_true(objectIndex, 0x00800000);
         }
-        gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
+        gObjectList[objectIndex].surfaceHeight = calculate_surface_height(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
     }
     return sp2C;
 }
@@ -532,7 +532,7 @@ s32 func_80088538(s32 objectIndex) {
             sp2C = 1;
             set_object_flag_status_true(objectIndex, 0x00800000);
         }
-        gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
+        gObjectList[objectIndex].surfaceHeight = calculate_surface_height(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
         gObjectList[objectIndex].unk_0B8[0] = atan2s(D_8018C3B0.orientationVector[2], D_8018C3B0.orientationVector[1]) + 0x4000;
         gObjectList[objectIndex].unk_0B8[2] = atan2s(D_8018C3B0.orientationVector[0], D_8018C3B0.orientationVector[1]);
     }
@@ -550,7 +550,7 @@ s32 func_8008861C(s32 objectIndex) {
             sp2C = 1;
             set_object_flag_status_true(objectIndex, 0x00800000);
         }
-        gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
+        gObjectList[objectIndex].surfaceHeight = calculate_surface_height(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
         gObjectList[objectIndex].unk_01C[0] = D_8018C3B0.orientationVector[0];
         gObjectList[objectIndex].unk_01C[1] = D_8018C3B0.orientationVector[1];
         gObjectList[objectIndex].unk_01C[2] = D_8018C3B0.orientationVector[2];
@@ -562,7 +562,7 @@ void func_800886F4(s32 objectIndex) {
     func_802ADDC8(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
     if (D_8018C3B0.unk34 == 1) {
         set_object_flag_status_true(objectIndex, 0x00800000);
-        gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
+        gObjectList[objectIndex].surfaceHeight = calculate_surface_height(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
         gObjectList[objectIndex].unk_0B8[0] = atan2s(D_8018C3B0.orientationVector[2], D_8018C3B0.orientationVector[1]) + 0x4000;
         gObjectList[objectIndex].unk_0B8[2] = atan2s(D_8018C3B0.orientationVector[0], D_8018C3B0.orientationVector[1]);
         return;
@@ -574,7 +574,7 @@ void func_800887C0(s32 objectIndex) {
     func_802ADDC8(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
     if (D_8018C3B0.unk34 == 1) {
         set_object_flag_status_true(objectIndex, 0x00800000);
-        gObjectList[objectIndex].unk_044 = func_802ABE30(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
+        gObjectList[objectIndex].surfaceHeight = calculate_surface_height(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
         gObjectList[objectIndex].velocity[0] = D_8018C3B0.orientationVector[0];
         gObjectList[objectIndex].velocity[1] = D_8018C3B0.orientationVector[1];
         gObjectList[objectIndex].velocity[2] = D_8018C3B0.orientationVector[2];
@@ -1005,7 +1005,7 @@ f32 func_8008933C(Player *player, s32 objectIndex, f32 arg2, f32 arg3) {
     f32 var_f2;
     f32 something;
     s32 playerId;
-    Objects *temp_v0;
+    Object *temp_v0;
     struct_D_8018CE10 *temp_v1;
 
     playerId = player - gPlayerOne;
@@ -1447,7 +1447,7 @@ void func_8008A920(s32 objectIndex) {
 
 void func_8008A9B8(s32 objectIndex) {
     UNUSED s32 temp_t9;
-    Objects *temp_v0;
+    Object *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->controlPoints++;
@@ -1457,7 +1457,7 @@ void func_8008A9B8(s32 objectIndex) {
 }
 
 void func_8008AA3C(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *temp_v0;
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->controlPoints = temp_v0->spline->controlPoints;
     temp_v0->unk_084[9] = 0;
@@ -1478,7 +1478,7 @@ void func_8008AA3C(s32 objectIndex) {
 
 void func_8008AB10(s32 objectIndex) {
     UNUSED s16 temp_t3;
-    Objects *temp_v0;
+    Object *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->offset[0] += temp_v0->velocity[0];
@@ -1577,7 +1577,7 @@ UNUSED void func_8008AE94(void) {
 
 // D_80183DC8 is where the spline's derivative polynomial calculations are stored
 void func_8008AE9C(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->velocity[0] = (D_80183DC8[0] * D_80165760[0]) + (D_80183DC8[1] * D_80165760[1]) + (D_80183DC8[2] * D_80165760[2]) + (D_80183DC8[3] * D_80165760[3]);
@@ -1608,7 +1608,7 @@ UNUSED void func_8008B030(void) {
 
 // D_80183DA8 is where the spline's polynomial calculations are stored
 void func_8008B038(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
     temp_v0->offset[0] = (D_80183DA8[0] * D_80165760[0]) + (D_80183DA8[1] * D_80165760[1]) + (D_80183DA8[2] * D_80165760[2]) + (D_80183DA8[3] * D_80165760[3]);
@@ -1683,7 +1683,7 @@ void func_8008B284(s32 objectIndex) {
 }
 
 void func_8008B3E4(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *temp_v0;
     UNUSED SplineData *spline;
 
     if (is_obj_index_flag_status_inactive(objectIndex, 8) != 0) {
@@ -1741,7 +1741,7 @@ void func_8008B478(s32 objectIndex, s32 arg1) {
 
 void func_8008B620(s32 objectIndex) {
     UNUSED s16 temp_t0;
-    Objects *temp_v0;
+    Object *temp_v0;
 
     func_8008B478(objectIndex, 0);
     temp_v0 = &gObjectList[objectIndex];
@@ -1757,7 +1757,7 @@ void func_8008B620(s32 objectIndex) {
 }
 
 void func_8008B6A4(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *temp_v0;
 
     func_8008B478(objectIndex, 1);
     temp_v0 = &gObjectList[objectIndex];
@@ -1834,7 +1834,7 @@ void set_obj_velocity(s32 objectIndex, f32 arg1, f32 arg2, f32 arg3) {
 }
 
 void func_8008B928(s32 objectIndex, s16 arg1, s16 arg2, s16 arg3, SplineData *spline) {
-    Objects *temp_s0;
+    Object *temp_s0;
 
     temp_s0 = &gObjectList[objectIndex];
     temp_s0->origin_pos[0] = (f32) arg1;
@@ -1924,7 +1924,7 @@ void object_calculate_new_pos_offset(s32 objectIndex) {
 }
 
 void func_8008BF64(s32 objectIndex) {
-    Objects *temp_v0;
+    Object *temp_v0;
 
     temp_v0 = &gObjectList[objectIndex];
     D_80183E40[0] = temp_v0->pos[0];
@@ -1941,7 +1941,7 @@ void func_8008BFC0(s32 objectIndex) {
 }
 
 void func_8008BFFC(s32 objectIndex) {
-    Objects *temp_v1;
+    Object *temp_v1;
 
     temp_v1 = &gObjectList[objectIndex];
     switch (temp_v1->unk_0DE) {

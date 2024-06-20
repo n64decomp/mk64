@@ -291,25 +291,25 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     D_801654C0[playerIndex] = 0;
     D_80165340 = 0;
 
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].surfaceType  = 0;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].surfaceType = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceType   = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceType  = 0;
+    player->tyres[FRONT_LEFT].surfaceType  = 0;
+    player->tyres[FRONT_RIGHT].surfaceType = 0;
+    player->tyres[BACK_LEFT].surfaceType   = 0;
+    player->tyres[BACK_RIGHT].surfaceType  = 0;
 
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].surfaceFlags  = 0;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].surfaceFlags = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceFlags   = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceFlags  = 0;
+    player->tyres[FRONT_LEFT].surfaceFlags  = 0;
+    player->tyres[FRONT_RIGHT].surfaceFlags = 0;
+    player->tyres[BACK_LEFT].surfaceFlags   = 0;
+    player->tyres[BACK_RIGHT].surfaceFlags  = 0;
 
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].collisionMeshIndex  = 0;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].collisionMeshIndex = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].collisionMeshIndex   = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].collisionMeshIndex  = 0;
+    player->tyres[FRONT_LEFT].collisionMeshIndex  = 0;
+    player->tyres[FRONT_RIGHT].collisionMeshIndex = 0;
+    player->tyres[BACK_LEFT].collisionMeshIndex   = 0;
+    player->tyres[BACK_RIGHT].collisionMeshIndex  = 0;
 
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].unk_14 = 0;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].unk_14  = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].unk_14   = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].unk_14  = 0;
+    player->tyres[FRONT_RIGHT].unk_14 = 0;
+    player->tyres[FRONT_LEFT].unk_14  = 0;
+    player->tyres[BACK_LEFT].unk_14   = 0;
+    player->tyres[BACK_RIGHT].unk_14  = 0;
 
     player->unk_110.unk30 = 0;
     player->unk_110.unk32 = 0;
@@ -318,26 +318,26 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_110.unk38 = 0;
     player->unk_110.unk3A = 0;
 
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[0] = 0.0f;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[1] = 0.0f;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[2] = 0.0f;
+    player->tyres[FRONT_LEFT].pos[0] = 0.0f;
+    player->tyres[FRONT_LEFT].pos[1] = 0.0f;
+    player->tyres[FRONT_LEFT].pos[2] = 0.0f;
 
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerPos[0] = 0.0f;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerPos[1] = 0.0f;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerPos[2] = 0.0f;
+    player->tyres[FRONT_RIGHT].pos[0] = 0.0f;
+    player->tyres[FRONT_RIGHT].pos[1] = 0.0f;
+    player->tyres[FRONT_RIGHT].pos[2] = 0.0f;
 
-    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerPos[0] = 0.0f;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerPos[1] = 0.0f;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerPos[2] = 0.0f;
+    player->tyres[BACK_LEFT].pos[0] = 0.0f;
+    player->tyres[BACK_LEFT].pos[1] = 0.0f;
+    player->tyres[BACK_LEFT].pos[2] = 0.0f;
 
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerPos[0] = 0.0f;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerPos[1] = 0.0f;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerPos[2] = 0.0f;
+    player->tyres[BACK_RIGHT].pos[0] = 0.0f;
+    player->tyres[BACK_RIGHT].pos[1] = 0.0f;
+    player->tyres[BACK_RIGHT].pos[2] = 0.0f;
 
-    player->boundingBoxCorners[ FRONT_LEFT_TYRE].cornerGroundY = 0.0f;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerGroundY = 0.0f;
-    player->boundingBoxCorners[  BACK_LEFT_TYRE].cornerGroundY = 0.0f;
-    player->boundingBoxCorners[ BACK_RIGHT_TYRE].cornerGroundY = 0.0f;
+    player->tyres[FRONT_LEFT].baseHeight = 0.0f;
+    player->tyres[FRONT_RIGHT].baseHeight = 0.0f;
+    player->tyres[BACK_LEFT].baseHeight = 0.0f;
+    player->tyres[BACK_RIGHT].baseHeight = 0.0f;
 
     player->unk_110.unk3C[0] = 0.0f;
     player->unk_110.unk3C[1] = 0.0f;

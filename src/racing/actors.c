@@ -376,21 +376,21 @@ void func_80297760(struct Actor *arg0, Vec3f arg1) {
     arg1[0] = arg0->pos[0];
     arg1[1] = arg0->pos[1];
     arg1[2] = arg0->pos[2];
-    arg1[1] = func_802ABE30(arg1[0], arg1[1], arg1[2], arg0->unk30.unk3A);
+    arg1[1] = calculate_surface_height(arg1[0], arg1[1], arg1[2], arg0->unk30.unk3A);
 }
 
 void func_802977B0(Player *arg0) {
-    arg0->boundingBoxCorners[1].unk_14 |= 2;
-    arg0->boundingBoxCorners[0].unk_14 |= 2;
-    arg0->boundingBoxCorners[3].unk_14 |= 2;
-    arg0->boundingBoxCorners[2].unk_14 |= 2;
+    arg0->tyres[FRONT_RIGHT].unk_14 |= 2;
+    arg0->tyres[FRONT_LEFT].unk_14 |= 2;
+    arg0->tyres[BACK_RIGHT].unk_14 |= 2;
+    arg0->tyres[BACK_LEFT].unk_14 |= 2;
 }
 
 void func_802977E4(Player *arg0) {
-    arg0->boundingBoxCorners[1].unk_14 &= ~2 & 0xFFFF;
-    arg0->boundingBoxCorners[0].unk_14 &= ~2 & 0xFFFF;
-    arg0->boundingBoxCorners[3].unk_14 &= ~2 & 0xFFFF;
-    arg0->boundingBoxCorners[2].unk_14 &= ~2 & 0xFFFF;
+    arg0->tyres[FRONT_RIGHT].unk_14 &= ~2 & 0xFFFF;
+    arg0->tyres[FRONT_LEFT].unk_14 &= ~2 & 0xFFFF;
+    arg0->tyres[BACK_RIGHT].unk_14 &= ~2 & 0xFFFF;
+    arg0->tyres[BACK_LEFT].unk_14 &= ~2 & 0xFFFF;
 }
 
 // Invert green and red on green shell texture
@@ -937,7 +937,7 @@ void spawn_foliage(struct ActorSpawnData *arg0) {
         } else {
             func_802ADDC8(&temp_s0->unk30, 5.0f, temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2]);
             if (temp_s0->unk30.unk3C[2] < 0.0f) {
-                temp_s0->pos[1] = func_802ABE30(temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2], temp_s0->unk30.unk3A);
+                temp_s0->pos[1] = calculate_surface_height(temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2], temp_s0->unk30.unk3A);
             }
             func_802976EC(&temp_s0->unk30, temp_s0->rot);
         }

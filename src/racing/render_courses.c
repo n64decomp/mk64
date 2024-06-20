@@ -1370,15 +1370,15 @@ void render_course(struct UnkStruct_800DC5EC *arg0) {
 void func_80295BF8(s32 playerIndex) {
     Player* player = &gPlayers[playerIndex];
     func_802AAAAC(&player->unk_110);
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].surfaceFlags = 0;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].surfaceFlags  = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceFlags  = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceFlags   = 0;
+    player->tyres[FRONT_RIGHT].surfaceFlags = 0;
+    player->tyres[FRONT_LEFT].surfaceFlags  = 0;
+    player->tyres[BACK_RIGHT].surfaceFlags  = 0;
+    player->tyres[BACK_LEFT].surfaceFlags   = 0;
 
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].collisionMeshIndex = 0x1388;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].collisionMeshIndex  = 0x1388;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].collisionMeshIndex  = 0x1388;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].collisionMeshIndex   = 0x1388;
+    player->tyres[FRONT_RIGHT].collisionMeshIndex = 0x1388;
+    player->tyres[FRONT_LEFT].collisionMeshIndex  = 0x1388;
+    player->tyres[BACK_RIGHT].collisionMeshIndex  = 0x1388;
+    player->tyres[BACK_LEFT].collisionMeshIndex   = 0x1388;
 }
 
 void func_80295C6C(void) {

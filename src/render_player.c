@@ -1215,9 +1215,9 @@ void func_800235AC(Player *player, s8 arg1) {
         }
     }
     if (is_player_under_light_luigi_raceway(player, arg1) != TRUE) {
-        if (((player->boundingBoxCorners[3].unk_14 & 1) == 1)
-        || ((player->boundingBoxCorners[3].unk_14 & 2) == 2)
-        || ((player->boundingBoxCorners[0].unk_14 & 3) == 3)) {
+        if (((player->tyres[BACK_RIGHT].unk_14 & 1) == 1)
+        || ((player->tyres[BACK_RIGHT].unk_14 & 2) == 2)
+        || ((player->tyres[FRONT_LEFT].unk_14 & 3) == 3)) {
             change_player_color_effect_rgb(player, arg1, COLOR_BLACK, 0.3f);
             change_player_color_effect_cmy(player, arg1, 0x6F6F6F, 0.3f);
             return;

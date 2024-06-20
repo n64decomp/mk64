@@ -214,44 +214,30 @@ typedef struct {
     /* 0x10 */ Vtx *vtx1; //pointer to the 3 vertices of this poly
                Vtx *vtx2;
                Vtx *vtx3;
-        //unsure why this exists along with a copy of two of the vertices.
-        //both are involved in hit detection.
-    /* 0x1C */ f32 height;
-        //normally 0; read at 0x802AB1A4. this value is added to the height Lakitu
-        //drops you at. changing it seems to make the surface intangible.
-    /* 0x20 */ f32 gravity;
-        //normally 1. The height Lakitu drops you off at is divided by this value
-        //(before adding the value at 0x1C), although if set to zero, he just tries
-        //to drop you at about the height of the finish line banner. Changing it
-        //has various unusual effects, making the polygon intangible or
-        //significantly reducing the gravity above it, probably depending on its Y
-        //position.
-    /* 0x24 */ f32 rotation; //normally about -0.001. no idea what this actually is.
-    /* 0x28 */ f32 height2; //changes Y position of all vertices (but not graphics or
-        //Lakitu drop position). Normally set to (track_height * -1) + about 6.
+
+    /* 0x1C */ f32 normalX;
+        // Used to calculate the height that Lakitu drops players at.
+    /* 0x20 */ f32 normalY;
+    /* 0x24 */ f32 normalZ;
+    /* 0x28 */ f32 distance;
 } CollisionTriangle; // size = 0x2C
 
 typedef struct {
-    /* 0x00 */ Vec3f cornerPos;
-    // Type of surface the corner is above
-    /* 0x0C */ u8  surfaceType;
-    // Close to being a copy of the top byte of the CollisionTriangle "flags" member
+    /* 0x00 */ Vec3f pos;
+    /* 0x0C */ u8  surfaceType; // Surface type that the tyre is touching.
     /* 0x0D */ u8  surfaceFlags;
-    // Don't know if "tile" is right the right term
-    // gCollisionMesh is a pointer to an array of "tile" structs. This is an index to that array
-    /* 0x0E */ u16 collisionMeshIndex;
-    // cornerPos places the corner "in the air" as it were, this member indicates the Y position of the corner's "on the ground" sibling
-    // On flat ground this value should be cornerY - gKartBoundingBoxTable[characterId]
-    /* 0x10 */ f32 cornerGroundY;
+    /* 0x0E */ u16 collisionMeshIndex; // Index into gCollisionMesh
+    // Height of tyre attached to ground. When flying it floats with the kart.
+    /* 0x10 */ f32 baseHeight;
     // Something lighting related. 1 when in a shaded region, 2 when in a tree's shadow
     // 3 when getting crushed by a whomp, but curiously only the front left tyre will ever have this value
     /* 0x14 */ s32 unk_14;
-} KartBoundingBoxCorner; // size = 0x18
+} KartTyre; // size = 0x18
 
-#define FRONT_LEFT_TYRE  0
-#define FRONT_RIGHT_TYRE 1
-#define BACK_LEFT_TYRE   2
-#define BACK_RIGHT_TYRE  3
+#define FRONT_LEFT  0
+#define FRONT_RIGHT 1
+#define BACK_LEFT   2
+#define BACK_RIGHT  3
 
 struct UnkPlayerInner {
     /* 0xDB4 */ s16 unk0;
@@ -348,7 +334,7 @@ typedef struct {
     /* 0x0110 */ Collision unk_110;
     /* 0x0150 */ Mat3 unk_150;
     /* 0x0174 */ Mat3 orientationMatrix;
-    /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
+    /* 0x0198 */ KartTyre tyres[4];
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;
     /* 0x0200 */ u32 unk_200; // May be s32. but less casting required if u32
