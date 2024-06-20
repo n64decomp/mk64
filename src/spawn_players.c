@@ -113,14 +113,14 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     ret = func_802AE1C0(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
     player->pos[2] = startingColumn;
     player->pos[1] = ret;
-    player->copy_rotation_x = startingRow;
-    player->copy_rotation_y = ret;
+    player->copy_x = startingRow;
+    player->copy_y = ret;
 
     D_80164510[playerIndex] = ret;
 
 
     player->rotation[0] = 0;
-    player->copy_rotation_z = startingColumn;
+    player->copy_z = startingColumn;
     player->unk_05C = 1.0f;
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
