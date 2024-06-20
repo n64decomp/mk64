@@ -112,6 +112,7 @@ f32 func_802AAB4C(Player *player) {
     }
 }
 
+// ZX
 s32 func_802AAE4C(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
     CollisionTriangle *triangle = &gCollisionMesh[index];
     UNUSED f32 pad;
@@ -124,10 +125,10 @@ s32 func_802AAE4C(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
     f32 x1;
     f32 z1;
     f32 temp_f0_5;
-    f32 temp_f10;
-    f32 temp_f0_3;
-    f32 temp_f2_2;
-    s32 bool = 1;
+    f32 crossProductZX_1;
+    f32 crossProductZX_2;
+    f32 crossProductZX_3;
+    s32 bool = TRUE;
 
     if (triangle->normalY < -0.9f)
         return 0;
@@ -151,35 +152,35 @@ s32 func_802AAE4C(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
     x3 = triangle->vtx3->v.ob[0];
     z3 = triangle->vtx3->v.ob[2];
 
-    temp_f10 = (z1 - posZ) * (x2 - posX) - (x1 - posX) * (z2 - posZ);
+    crossProductZX_1 = (z1 - posZ) * (x2 - posX) - (x1 - posX) * (z2 - posZ);
 
-    if (!temp_f10) {
+    if (!crossProductZX_1) {
 
-        temp_f0_3 = (z2 - posZ) * (x3 - posX) - (x2 - posX) * (z3 - posZ);
+        crossProductZX_2 = (z2 - posZ) * (x3 - posX) - (x2 - posX) * (z3 - posZ);
 
-        temp_f2_2 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
+        crossProductZX_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
 
-        if ((temp_f0_3 * temp_f2_2) < 0.0f) {
-            bool = 0;
+        if ((crossProductZX_2 * crossProductZX_3) < 0.0f) {
+            bool = FALSE;
         }
     } else {
 
-        temp_f0_3 = (z2 - posZ) * (x3 - posX) - (x2 - posX) * (z3 - posZ);
+        crossProductZX_2 = (z2 - posZ) * (x3 - posX) - (x2 - posX) * (z3 - posZ);
 
-        if (!temp_f0_3) {
-            temp_f2_2 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
+        if (!crossProductZX_2) {
+            crossProductZX_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
 
-            if ((temp_f10 * temp_f2_2) < 0.0f) {
-                bool = 0;
+            if ((crossProductZX_1 * crossProductZX_3) < 0.0f) {
+                bool = FALSE;
             }
         } else {
-            if ((temp_f10 * temp_f0_3) < 0.0f) {
-                bool = 0;
+            if ((crossProductZX_1 * crossProductZX_2) < 0.0f) {
+                bool = FALSE;
             } else {
-                temp_f2_2 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
-                if (temp_f2_2 != 0) {
-                    if ((temp_f0_3 * temp_f2_2) < 0.0f) {
-                        bool = 0;
+                crossProductZX_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
+                if (crossProductZX_3 != 0) {
+                    if ((crossProductZX_2 * crossProductZX_3) < 0.0f) {
+                        bool = FALSE;
                     }
                 }
             }
@@ -215,7 +216,7 @@ s32 func_802AAE4C(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
     return 0;
 }
 
-
+// YX
 s32 func_802AB288(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
     CollisionTriangle *triangle = &gCollisionMesh[index];
     UNUSED f32 pad[6];
@@ -228,11 +229,11 @@ s32 func_802AB288(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
     f32 y2;
     f32 x1;
     f32 y1;
-    f32 temp_f0_4;
-    f32 temp_f2_2;
-    f32 temp_f0_2;
-    f32 temp_f2_3;
-    s32 bool = 1;
+    f32 distanceToSurface;
+    f32 crossProductYX_1;
+    f32 crossProductYX_2;
+    f32 crossProductYX_3;
+    s32 bool = TRUE;
 
     if (triangle->minX > posX) {
         return 0;
@@ -263,32 +264,32 @@ s32 func_802AB288(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
     x3 = triangle->vtx3->v.ob[0];
     y3 = triangle->vtx3->v.ob[1];
 
-    temp_f2_2 = (y1 - posY) * (x2 - posX) - (x1 - posX) * (y2 - posY);
+    crossProductYX_1 = (y1 - posY) * (x2 - posX) - (x1 - posX) * (y2 - posY);
 
-    if (!temp_f2_2) {
+    if (!crossProductYX_1) {
 
-        temp_f0_2 = (y2 - posY) * (x3 - posX) - (x2 - posX) * (y3 - posY);
+        crossProductYX_2 = (y2 - posY) * (x3 - posX) - (x2 - posX) * (y3 - posY);
 
-        temp_f2_3 = (y3 - posY) * (x1 - posX) - (x3 - posX) * (y1 - posY);
+        crossProductYX_3 = (y3 - posY) * (x1 - posX) - (x3 - posX) * (y1 - posY);
 
-        if ((temp_f0_2 * temp_f2_3) < 0.0f) {
-            bool = 0;
+        if ((crossProductYX_2 * crossProductYX_3) < 0.0f) {
+            bool = FALSE;
         }
     } else {
-        temp_f0_2 = (y2 - posY) * (x3 - posX) - (x2 - posX) * (y3 - posY);
-        if (!temp_f0_2) {
-            temp_f2_3 = (y3 - posY) * (x1 - posX) - (x3 - posX) * (y1 - posY);
-            if (temp_f2_2 * temp_f2_3 < 0.0f) {
-                bool = 0;
+        crossProductYX_2 = (y2 - posY) * (x3 - posX) - (x2 - posX) * (y3 - posY);
+        if (!crossProductYX_2) {
+            crossProductYX_3 = (y3 - posY) * (x1 - posX) - (x3 - posX) * (y1 - posY);
+            if (crossProductYX_1 * crossProductYX_3 < 0.0f) {
+                bool = FALSE;
             }
         } else {
-            if ((temp_f2_2 * temp_f0_2) < 0.0f) {
-                bool = 0;
+            if ((crossProductYX_1 * crossProductYX_2) < 0.0f) {
+                bool = FALSE;
             } else {
-                temp_f2_3 = ((y3 - posY) * (x1 - posX)) - ((x3 - posX) * (y1 - posY));
-                if (temp_f2_3 != 0) {
-                    if ((temp_f0_2 * temp_f2_3) < 0.0f) {
-                        bool = 0;
+                crossProductYX_3 = ((y3 - posY) * (x1 - posX)) - ((x3 - posX) * (y1 - posY));
+                if (crossProductYX_3 != 0) {
+                    if ((crossProductYX_2 * crossProductYX_3) < 0.0f) {
+                        bool = FALSE;
                     }
                 }
             }
@@ -297,12 +298,12 @@ s32 func_802AB288(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
     if (!bool) {
         return 0;
     }
-    temp_f0_4 = ((triangle->normalX * posX) + (triangle->normalY * posY) + (triangle->normalZ * posZ) + triangle->distance) - boundingBoxSize;
-    if (temp_f0_4 > 0.0f) {
-        if (temp_f0_4 < collision->unk3C[0]) {
+    distanceToSurface = ((triangle->normalX * posX) + (triangle->normalY * posY) + (triangle->normalZ * posZ) + triangle->distance) - boundingBoxSize;
+    if (distanceToSurface > 0.0f) {
+        if (distanceToSurface < collision->unk3C[0]) {
             collision->unk30 = 1;
             collision->unk36 = index;
-            collision->unk3C[0] = temp_f0_4;
+            collision->unk3C[0] = distanceToSurface;
             collision->unk48[0] = triangle->normalX;
             collision->unk48[1] = triangle->normalY;
             collision->unk48[2] = triangle->normalZ;
@@ -310,10 +311,10 @@ s32 func_802AB288(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
         return 0;
     }
 
-    if (temp_f0_4 > -16.0f) {
+    if (distanceToSurface > -16.0f) {
         collision->unk30 = 1;
         collision->unk36 = index;
-        collision->unk3C[0] = temp_f0_4;
+        collision->unk3C[0] = distanceToSurface;
         collision->unk48[0] = triangle->normalX;
         collision->unk48[1] = triangle->normalY;
         collision->unk48[2] = triangle->normalZ;
@@ -322,22 +323,22 @@ s32 func_802AB288(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
     return 0;
 }
 
-
+// ZY
 s32 func_802AB6C4(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
     CollisionTriangle *triangle = &gCollisionMesh[index];
-    s32 bool = 1;
+    s32 bool = TRUE;
     UNUSED f32 pad[7];
-    f32 sp20;
-    f32 temp_f8;
+    f32 y3;
+    f32 z3;
     UNUSED f32 pad2[5];
-    f32 sp6C;
-    f32 sp70;
-    f32 temp_f4;
-    f32 sp24;
-    f32 temp_f0_4;
-    f32 temp_f2_2;
-    f32 temp_f0_2;
-    f32 temp_f2_3;
+    f32 y2;
+    f32 z2;
+    f32 y1;
+    f32 z1;
+    f32 distanceToSurface;
+    f32 crossProductYZ_1;
+    f32 crossProductYZ_2;
+    f32 crossProductYZ_3;
     if (triangle->minZ > posZ) {
         return 0;
     }
@@ -357,45 +358,45 @@ s32 func_802AB6C4(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
         return 0;
     }
 
-    sp24 = triangle->vtx1->v.ob[2];
-    temp_f4 = triangle->vtx1->v.ob[1];
+    z1 = triangle->vtx1->v.ob[2];
+    y1 = triangle->vtx1->v.ob[1];
 
-    sp70 = triangle->vtx2->v.ob[2];
-    sp6C = triangle->vtx2->v.ob[1];
+    z2 = triangle->vtx2->v.ob[2];
+    y2 = triangle->vtx2->v.ob[1];
 
-    temp_f8 = triangle->vtx3->v.ob[2];
-    sp20 = triangle->vtx3->v.ob[1];
+    z3 = triangle->vtx3->v.ob[2];
+    y3 = triangle->vtx3->v.ob[1];
 
-    temp_f2_2 = (temp_f4 - posY) * (sp70 - posZ) - (sp24 - posZ) * (sp6C - posY);
+    crossProductYZ_1 = (y1 - posY) * (z2 - posZ) - (z1 - posZ) * (y2 - posY);
 
-    if (!temp_f2_2) {
+    if (!crossProductYZ_1) {
 
-        temp_f0_2 = ((sp6C - posY) * (temp_f8 - posZ)) - ((sp70 - posZ) * (sp20 - posY));
+        crossProductYZ_2 = ((y2 - posY) * (z3 - posZ)) - ((z2 - posZ) * (y3 - posY));
 
-        temp_f2_3 = ((sp20 - posY) * (sp24 - posZ)) - ((temp_f8 - posZ) * (temp_f4 - posY));
+        crossProductYZ_3 = ((y3 - posY) * (z1 - posZ)) - ((z3 - posZ) * (y1 - posY));
 
-        if ((temp_f0_2 * temp_f2_3) < 0.0f) {
-            bool = 0;
+        if ((crossProductYZ_2 * crossProductYZ_3) < 0.0f) {
+            bool = FALSE;
         }
     } else {
 
-        temp_f0_2 = ((sp6C - posY) * (temp_f8 - posZ)) - ((sp70 - posZ) * (sp20 - posY));
+        crossProductYZ_2 = ((y2 - posY) * (z3 - posZ)) - ((z2 - posZ) * (y3 - posY));
 
-        if (temp_f0_2 == 0) {
-            temp_f2_3 = ((sp20 - posY) * (sp24 - posZ)) - ((temp_f8 - posZ) * (temp_f4 - posY));
+        if (crossProductYZ_2 == 0) {
+            crossProductYZ_3 = ((y3 - posY) * (z1 - posZ)) - ((z3 - posZ) * (y1 - posY));
 
-            if ((temp_f2_2 * temp_f2_3) < 0.0f) {
-                bool = 0;
+            if ((crossProductYZ_1 * crossProductYZ_3) < 0.0f) {
+                bool = FALSE;
             }
         } else {
 
-            if ((temp_f2_2 * temp_f0_2) < 0.0f) {
-                bool = 0;
+            if ((crossProductYZ_1 * crossProductYZ_2) < 0.0f) {
+                bool = FALSE;
             } else {
-                temp_f2_3 = ((sp20 - posY) * (sp24 - posZ)) - ((temp_f8 - posZ) * (temp_f4 - posY));
-                if (temp_f2_3 != 0) {
-                    if ((temp_f0_2 * temp_f2_3) < 0.0f) {
-                        bool = 0;
+                crossProductYZ_3 = ((y3 - posY) * (z1 - posZ)) - ((z3 - posZ) * (y1 - posY));
+                if (crossProductYZ_3 != 0) {
+                    if ((crossProductYZ_2 * crossProductYZ_3) < 0.0f) {
+                        bool = FALSE;
                     }
                 }
             }
@@ -405,25 +406,25 @@ s32 func_802AB6C4(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
         return 0;
     }
 
-    temp_f0_4 = ((((triangle->normalX * posX) + (triangle->normalY * posY)) + (triangle->normalZ * posZ))
+    distanceToSurface = ((((triangle->normalX * posX) + (triangle->normalY * posY)) + (triangle->normalZ * posZ))
                  + triangle->distance)
                 - boundingBoxSize;
 
-    if (temp_f0_4 > 0.0f) {
-        if (temp_f0_4 < collision->unk3C[1]) {
+    if (distanceToSurface > 0.0f) {
+        if (distanceToSurface < collision->unk3C[1]) {
             collision->unk32 = 1;
             collision->unk38 = index;
-            collision->unk3C[1] = temp_f0_4;
+            collision->unk3C[1] = distanceToSurface;
             collision->unk54[0] = triangle->normalX;
             collision->unk54[1] = triangle->normalY;
             collision->unk54[2] = triangle->normalZ;
         }
         return 0;
     }
-    if (temp_f0_4 > (-16.0f)) {
+    if (distanceToSurface > (-16.0f)) {
         collision->unk32 = 1;
         collision->unk38 = index;
-        collision->unk3C[1] = temp_f0_4;
+        collision->unk3C[1] = distanceToSurface;
         collision->unk54[0] = triangle->normalX;
         collision->unk54[1] = triangle->normalY;
         collision->unk54[2] = triangle->normalZ;
@@ -432,6 +433,7 @@ s32 func_802AB6C4(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
     return 0;
 }
 
+// ZX
 s32 func_802ABB04(f32 posX, f32 posZ, u16 index) {
     CollisionTriangle *triangle = &gCollisionMesh[index];
     UNUSED f32 pad;
@@ -444,10 +446,10 @@ s32 func_802ABB04(f32 posX, f32 posZ, u16 index) {
     f32 x1;
     f32 z1;
     UNUSED f32 pad4[4];
-    f32 temp_f2_2;
-    f32 temp_f2_3;
-    f32 temp_f0_2;
-    s32 bool = 1;
+    f32 crossProductZX_1;
+    f32 crossProductZX_3;
+    f32 crossProductZX_2;
+    s32 bool = TRUE;
 
     x1 = triangle->vtx1->v.ob[0];
     z1 = triangle->vtx1->v.ob[2];
@@ -458,32 +460,32 @@ s32 func_802ABB04(f32 posX, f32 posZ, u16 index) {
     x3 = triangle->vtx3->v.ob[0];
     z3 = triangle->vtx3->v.ob[2];
 
-    temp_f2_2 = (z1 - posZ) * (x2 - posX) - (x1 - posX) * (z2 - posZ);
+    crossProductZX_1 = (z1 - posZ) * (x2 - posX) - (x1 - posX) * (z2 - posZ);
 
-    if (!temp_f2_2) {
+    if (!crossProductZX_1) {
 
-        temp_f0_2 = (z2 - posZ) * (x3 - posX) - (x2 - posX) * (z3 - posZ);
+        crossProductZX_2 = (z2 - posZ) * (x3 - posX) - (x2 - posX) * (z3 - posZ);
 
-        temp_f2_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
+        crossProductZX_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
 
-        if ((temp_f0_2 * temp_f2_3) < 0.0f) {
-            bool = 0;
+        if ((crossProductZX_2 * crossProductZX_3) < 0.0f) {
+            bool = FALSE;
         }
     } else {
-        temp_f0_2 = (z2 - posZ) * (x3 - posX) - (x2 - posX) * (z3 - posZ);
-        if (!temp_f0_2) {
-            temp_f2_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
-            if (temp_f2_2 * temp_f2_3 < 0.0f) {
-                bool = 0;
+        crossProductZX_2 = (z2 - posZ) * (x3 - posX) - (x2 - posX) * (z3 - posZ);
+        if (!crossProductZX_2) {
+            crossProductZX_3 = (z3 - posZ) * (x1 - posX) - (x3 - posX) * (z1 - posZ);
+            if (crossProductZX_1 * crossProductZX_3 < 0.0f) {
+                bool = FALSE;
             }
         } else {
-            if ((temp_f2_2 * temp_f0_2) < 0.0f) {
-                bool = 0;
+            if ((crossProductZX_1 * crossProductZX_2) < 0.0f) {
+                bool = FALSE;
             } else {
-                temp_f2_3 = ((z3 - posZ) * (x1 - posX)) - ((x3 - posX) * (z1 - posZ));
-                if (temp_f2_3 != 0) {
-                    if ((temp_f0_2 * temp_f2_3) < 0.0f) {
-                        bool = 0;
+                crossProductZX_3 = ((z3 - posZ) * (x1 - posX)) - ((x3 - posX) * (z1 - posZ));
+                if (crossProductZX_3 != 0) {
+                    if ((crossProductZX_2 * crossProductZX_3) < 0.0f) {
+                        bool = FALSE;
                     }
                 }
             }
@@ -873,12 +875,12 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
     f32 y2;
     UNUSED s32 pad2[3];
     f32 temp_f0_4;
-    f32 temp_f4_2;
+    f32 distanceToSurface;
     UNUSED s32 pad3[2]; 
     f32 area;
     f32 area2;
     f32 area3;
-    s32 bool = 1;
+    s32 bool = TRUE;
     if (triangle->minX > x1) {
         return 0;
     }
@@ -915,7 +917,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
 
 
         if (area2 * area3 < 0.0f) {
-            bool = 0;
+            bool = FALSE;
         }
     } else {
 
@@ -926,31 +928,30 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
 
 
             if ((area * area3) < 0.0f) {
-                bool = 0;
+                bool = FALSE;
             }
         } else {
             if ((area * area2) < 0.0f) {
-                bool = 0;
+                bool = FALSE;
             } else {
                 area3 = (y4 - y1) * (x2 - x1) - (x4 - x1) * (y2 - y1);
 
                 if (area3 != 0) {
                     if ((area2 * area3) < 0.0f) {
-                        bool = 0;
+                        bool = FALSE;
                     }
                 }
             }
         }
     }
-    if (bool == 0) {
+    if (!bool) {
         return 0;
     }
 
     temp_f0_4 = ((triangle->normalX * x1) + (triangle->normalY * y1) + (triangle->normalZ * z1)) + triangle->distance;
     if (triangle->flags & 0x200) {
-        temp_f4_2 = ((triangle->normalX * arg6) + (triangle->normalY * arg7) + (triangle->normalZ * arg8)) + triangle->distance;
-        //sp48 = temp_f4_2;
-        if ((temp_f0_4 > 0.0f) && (temp_f4_2 > 0.0f)) {
+        distanceToSurface = ((triangle->normalX * arg6) + (triangle->normalY * arg7) + (triangle->normalZ * arg8)) + triangle->distance;
+        if ((temp_f0_4 > 0.0f) && (distanceToSurface > 0.0f)) {
             if (temp_f0_4 < boundingBoxSize) {
                 arg->unk30 = 1;
                 arg->unk36 = arg5;
@@ -963,7 +964,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
             return 0;
         }
 
-        if ((temp_f0_4 < 0.0f) && (temp_f4_2 < 0.0f)) {
+        if ((temp_f0_4 < 0.0f) && (distanceToSurface < 0.0f)) {
             temp_f0_4 *= -1.0f;
             if (temp_f0_4 < boundingBoxSize) {
                 arg->unk30 = 1;
@@ -976,7 +977,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
             }
             return 0;
         }
-        if ((temp_f0_4 > 0.0f) && (temp_f4_2 < 0.0f)) {
+        if ((temp_f0_4 > 0.0f) && (distanceToSurface < 0.0f)) {
             arg->unk30 = 1;
             arg->unk36 = arg5;
             arg->unk3C[0] = -(temp_f0_4 + boundingBoxSize);
@@ -985,7 +986,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
             arg->unk48[2] = -triangle->normalZ;
             return 1;
         }
-        if ((temp_f0_4 < 0.0f) && (temp_f4_2 > 0.0f)) {
+        if ((temp_f0_4 < 0.0f) && (distanceToSurface > 0.0f)) {
             arg->unk30 = 1;
             arg->unk36 = arg5;
             arg->unk3C[0] = temp_f0_4 + boundingBoxSize;
@@ -995,10 +996,10 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
             return 1;
         }
         if (temp_f0_4 == 0.0f) {
-            if (temp_f4_2 >= 0.0f) {
+            if (distanceToSurface >= 0.0f) {
                 arg->unk30 = 1;
                 arg->unk36 = arg5;
-                arg->unk3C[0] = temp_f4_2 + boundingBoxSize;
+                arg->unk3C[0] = distanceToSurface + boundingBoxSize;
                 arg->unk48[0] = triangle->normalX;
                 arg->unk48[1] = triangle->normalY;
                 arg->unk48[2] = triangle->normalZ;
@@ -1006,7 +1007,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
             }
             arg->unk30 = 1;
             arg->unk36 = arg5;
-            arg->unk3C[0] = -(temp_f4_2 + boundingBoxSize);
+            arg->unk3C[0] = -(distanceToSurface + boundingBoxSize);
             arg->unk48[0] = triangle->normalX;
             arg->unk48[1] = triangle->normalY;
             arg->unk48[2] = triangle->normalZ;
@@ -1026,8 +1027,8 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
         return 0;
     }
 
-    temp_f4_2 = (triangle->normalX * arg6) + (triangle->normalY * arg7) + (triangle->normalZ * arg8) + triangle->distance;
-    if (temp_f4_2 < 0.0f) {
+    distanceToSurface = (triangle->normalX * arg6) + (triangle->normalY * arg7) + (triangle->normalZ * arg8) + triangle->distance;
+    if (distanceToSurface < 0.0f) {
         return 0;
     }
     arg->unk30 = 1;
