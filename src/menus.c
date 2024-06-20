@@ -53,7 +53,7 @@ s32 gMenuDelayTimer;
 s8 D_8018EE08;
 s8 gCupSelection;
 s8 D_8018EE0A;
-s8 gCupCourseSelection;
+s8 gCupSelectedCourseIndex;
 s8 D_8018EE0C;
 struct_8018EE10_entry D_8018EE10[2];
 
@@ -845,7 +845,7 @@ void logo_intro_menu_act(struct Controller *arg0, UNUSED u16 arg1) {
     gGamestateNext = 4; // Enter race state
     gCCSelection = CC_100;
     gCupSelection = 1;
-    gCupCourseSelection = 0;
+    gCupSelectedCourseIndex = 0;
     gCurrentCourseId = 0;
     gScreenModeSelection = SCREEN_MODE_1P;
     gCharacterSelections[0] = 0;
@@ -1720,7 +1720,7 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
             }
 
             D_800DC540 = gCupSelection;
-            gCurrentCourseId = gCupCourseOrder[gCupSelection][gCupCourseSelection];
+            gCurrentCourseId = gCupCourseOrder[gCupSelection][gCupSelectedCourseIndex];
             if ((buttonAndStickPress & B_BUTTON) != 0) {
                 func_8009E208();
                 play_sound2(SOUND_MENU_GO_BACK);
@@ -1732,7 +1732,7 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
                 } else {
                     D_8018EDEC = 3;
                     play_sound2(SOUND_MENU_SELECT);
-                    gCurrentCourseId = gCupCourseOrder[gCupSelection][CUP_COURSE_ONE];
+                    gCurrentCourseId = gCupCourseOrder[gCupSelection][FIRST_COURSE_IN_CUP];
                     gMenuTimingCounter = 0;
                 }
                 func_800B44AC();
@@ -1740,18 +1740,18 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
             break;
         case 2:
         case 4:
-            if (((buttonAndStickPress & D_JPAD) != 0) && (gCupCourseSelection < CUP_COURSE_FOUR)) {
-                    ++gCupCourseSelection;
+            if (((buttonAndStickPress & D_JPAD) != 0) && (gCupSelectedCourseIndex < FOURTH_COURSE_IN_CUP)) {
+                    ++gCupSelectedCourseIndex;
                     func_800B44AC();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
             }
-            if (((buttonAndStickPress & U_JPAD) != 0) && (gCupCourseSelection > CUP_COURSE_ONE)) {
-                --gCupCourseSelection;
+            if (((buttonAndStickPress & U_JPAD) != 0) && (gCupSelectedCourseIndex > FIRST_COURSE_IN_CUP)) {
+                --gCupSelectedCourseIndex;
                 func_800B44AC();
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
             }
 
-            gCurrentCourseId = gCupCourseOrder[gCupSelection][gCupCourseSelection];
+            gCurrentCourseId = gCupCourseOrder[gCupSelection][gCupSelectedCourseIndex];
             if ((buttonAndStickPress & B_BUTTON) != 0) {
                 if (D_8018EDEC == 2) {
                     D_8018EDEC = 1;
@@ -1837,7 +1837,7 @@ void func_800B3F74(s32 menuSelection) {
         gIsMirrorMode = 0;
         gEnableDebugMode = DEBUG_MODE;
         gCupSelection = MUSHROOM_CUP;
-        gCupCourseSelection = 0;
+        gCupSelectedCourseIndex = 0;
         gTimeTrialDataCourseIndex = 0;
         if (gPlayerCount <= 0) {
             gPlayerCount = 1;
@@ -1974,7 +1974,7 @@ void func_800B3F74(s32 menuSelection) {
         play_sound2(SOUND_MENU_SELECT_MAP);
         D_8018EE0A = 0;
         if (gModeSelection == GRAND_PRIX) {
-            gCupCourseSelection = 0;
+            gCupSelectedCourseIndex = 0;
         }
 
         for (i = 0; i < ARRAY_COUNT(gGPPointsByCharacterId); i++) {
