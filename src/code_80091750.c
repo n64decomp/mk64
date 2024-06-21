@@ -63,10 +63,8 @@ Gfx *D_8018E75C;
 s32 gNumD_8018E768Entries;
 struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
 s32 gCycleFlashMenu;
-s8 D_8018E7AC[4];
-s8  D_8018E7B0;
-u32 D_8018E7B8[4];
-u32 D_8018E7C8;
+s8 D_8018E7AC[5];
+u32 D_8018E7B8[5];
 u32 D_8018E7D0[4];
 s32 D_8018E7E0;
 struct UnkStruct_8018E7E8 D_8018E7E8[D_8018E7E8_SIZE];
@@ -2656,7 +2654,7 @@ void func_80094C60(void) {
 void func_80095574(void) {
     s32 var_v0;
 
-    if ((D_8018EE0C < 3) || (D_8018E7B0 != 0)) {
+    if ((D_8018EE0C < 3) || (D_8018E7AC[4] != 0)) {
         func_800A8230();
     }
     if (gDebugMenuSelection >= 2) {
@@ -4438,7 +4436,7 @@ Gfx *func_8009BA74(Gfx *arg0, MkTexture *arg1, s32 column, s32 row) {
         }
         temp_v0_3 = (u8*)func_8009B8C4(temp_v0->textureData);
         if (temp_v0_3 != 0) {
-            if (D_8018E7B0 != 4) {
+            if (D_8018E7AC[4] != 4) {
                 arg0 = func_80095E10(arg0, var_s4, 0x00000400, 0x00000400, 0, 0, temp_v0->width, temp_v0->height, temp_v0->dX + column, temp_v0->dY + row, temp_v0_3, temp_v0->width, temp_v0->height);
             } else {
                 arg0 = func_800987D0(arg0, 0U, 0U, temp_v0->width, temp_v0->height, temp_v0->dX + column, temp_v0->dY + row, temp_v0_3, temp_v0->width, temp_v0->height);
@@ -5211,11 +5209,11 @@ void func_8009DAA8(void) {
     u32 var_t0;
 
     D_8018E7D0[4]++;
-    if (D_8018E7D0[4] >= (D_8018E7C8 + 1)) {
+    if (D_8018E7D0[4] >= (D_8018E7B8[4] + 1)) {
         func_8009CE64(4);
     }
     gDPPipeSync(gDisplayListHead++);
-    var_t0 = (D_8018E7D0[4] * 255) / D_8018E7C8;
+    var_t0 = (D_8018E7D0[4] * 255) / D_8018E7B8[4];
     if ((s32) var_t0 >= 0x100) {
         var_t0 = 0x000000FF;
     }
@@ -5232,8 +5230,8 @@ void func_8009DB8C(void) {
     D_8018E7D0[4]++;
     // why?
     var_v1 = D_8018E7D0[4];
-    if ((u32) var_v1 >= D_8018E7C8) {
-        if ((u32) var_v1 == D_8018E7C8) {
+    if ((u32) var_v1 >= D_8018E7B8[4]) {
+        if ((u32) var_v1 == D_8018E7B8[4]) {
             for (var_s0 = 0; var_s0 < 0x4B0; var_s0++) {
                 D_8018D9B8[var_s0] = 1;
             }
@@ -5243,8 +5241,8 @@ void func_8009DB8C(void) {
     } else {
         var_s0 = 0;
         var_s3 = 0;
-        while (var_s3 < (0x4B0U / D_8018E7C8)) {
-            if ((D_8018D9B8[var_s0] == 0) && (random_int((0x4B0U - D_8018E7D0[4]) / D_8018E7C8) == 0)) {
+        while (var_s3 < (0x4B0U / D_8018E7B8[4])) {
+            if ((D_8018D9B8[var_s0] == 0) && (random_int((0x4B0U - D_8018E7D0[4]) / D_8018E7B8[4]) == 0)) {
                 var_s3 += 1;
                 D_8018D9B8[var_s0] = 1;
             }
@@ -5266,7 +5264,7 @@ void func_8009DB8C(void) {
         }
     }
     gDPPipeSync(gDisplayListHead++);
-    var_v1 = (D_8018E7D0[4] * 255) / D_8018E7C8;
+    var_v1 = (D_8018E7D0[4] * 255) / D_8018E7B8[4];
     if (var_v1 >= 0x100) {
         var_v1 = 0x000000FF;
     }
