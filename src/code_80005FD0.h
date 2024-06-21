@@ -56,7 +56,7 @@ typedef struct {
 typedef struct {
     s16 x;
     s16 z;
-} PathNoY;
+} Path2D;
 
 /* Function Prototypes */
 s16  get_angle_path(Vec3f, Vec3f);
@@ -105,7 +105,7 @@ void func_8000CBF8(f32, f32, f32, s16*, s32);
 s16  func_8000CC88(f32, f32, f32, Player*, s32, s32*);
 s16  func_8000CD24(f32, f32, f32, s16, Player*, s32, s32);
 
-s16  func_8000D100(f32, f32, f32, s16);
+s16  find_closest_vehicles_waypoint(f32, f32, f32, s16);
 s16  func_8000D24C(f32, f32, f32, s32*);
 s16  func_8000D2B4(f32, f32, f32, s16, s32);
 s16  func_8000D33C(f32, f32, f32, s16, s32);
@@ -113,7 +113,7 @@ f32  func_8000D3B8(s32);
 void func_8000D438(s32, u16);
 s16  func_8000D6D0(Vec3f, s16*, f32, f32, s16, s16);
 s16  func_8000D940(Vec3f, s16*, f32, f32, s16);
-s16  func_8000DBAC(Vec3f, s16*, f32);
+s16  update_vehicle_following_waypoint(Vec3f, s16*, f32);
 void set_bomb_kart_spawn_positions(void);
 void func_8000DF8C(s32);
 
@@ -143,7 +143,7 @@ f32  func_80010FA0(f32, f32, f32, s32, s32);
 
 s32  func_80011014(TrackWaypoint *, TrackWaypoint *, s32, s32);
 s32  process_path_data(TrackWaypoint*, TrackWaypoint*);
-s32  func_8001168C(PathNoY*, TrackWaypoint*, s32);
+s32  generate_2d_path(Path2D*, TrackWaypoint*, s32);
 void copy_courses_kart_ai_behaviour(void);
 void reset_kart_ai_behaviour_none(s32);
 void reset_kart_ai_behaviour(s32);
@@ -158,7 +158,7 @@ void init_vehicle_on_road(VehicleStuff*);
 void init_course_vehicles(void);
 void set_vehicle_pos_waypoint(TrainCarStuff*, s16*, u16);
 void func_800127E0(void);
-void func_80012A48(TrainCarStuff*, s16);
+void sync_train_car_vehicle_actor(TrainCarStuff*, s16);
 void update_vehicle_trains(void);
 void func_80012DC0(s32, Player*);
 
@@ -357,8 +357,8 @@ extern s16 D_801634EC;
 extern s32 D_801634F0;
 extern s32 D_801634F4;
 extern Test D_801634F8[];
-extern PathNoY *gVehiclesWaypoint;
-extern s32 D_8016359C;
+extern Path2D *gVehiclesWaypoint;
+extern s32 gVehiclesWaypointLenght;
 extern u16 isCrossingTriggeredByIndex[];
 extern u16 D_801637BC[];
 extern s32 D_80163DD8[];

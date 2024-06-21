@@ -134,8 +134,8 @@ s16 D_801634EC;
 s32 D_801634F0;
 s32 D_801634F4;
 Test D_801634F8[10];
-PathNoY *gVehiclesWaypoint;
-s32 D_8016359C;
+Path2D *gVehiclesWaypoint;
+s32 gVehiclesWaypointLenght;
 TrainStuff gTrainList[NUM_TRAINS];
 u16 isCrossingTriggeredByIndex[2];
 u16 D_801637BC[2];
@@ -598,7 +598,7 @@ void func_80006114(Vec3f arg0, Vec3f arg1, s16 arg2) {
     arg0[2] = arg1[2] + temp2;
 }
 
-s32 func_800061DC(Vec3f arg0, f32 arg1, s32 arg2) {
+s32 func_800061DC(Vec3f pos, f32 arg1, s32 flags) {
     Camera *var_a0_2;
     Player *var_a0;
     f32 temp_f0;
@@ -609,8 +609,8 @@ s32 func_800061DC(Vec3f arg0, f32 arg1, s32 arg2) {
     s32 var_v1;
     s8 var_v0;
 
-    temp_f0 = arg0[0];
-    temp_f2 = arg0[2];
+    temp_f0 = pos[0];
+    temp_f2 = pos[2];
     switch (gActiveScreenMode) {
     case SCREEN_MODE_1P:
         var_v0 = 1;
@@ -626,7 +626,7 @@ s32 func_800061DC(Vec3f arg0, f32 arg1, s32 arg2) {
         var_v0 = 1;
         break;
     }
-    var_v1 = arg2;
+    var_v1 = flags;
     if (!gDemoMode) {
         var_a0 = gPlayerOne;
         for(var_a1 = 0; var_a1 < gPlayerCount; var_a1++, var_a0++) {
@@ -2549,7 +2549,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
     return newWaypoint;
 }
 
-s16 func_8000D100(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 arg3) {
+s16 find_closest_vehicles_waypoint(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 waypointIndex) {
     f32 xdiff;
     f32 zdiff;
     f32 minimumDistance;
@@ -2557,16 +2557,16 @@ s16 func_8000D100(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 arg3) {
     s16 realIndex;
     s16 minimumIndex;
     s16 considerIndex;
-    PathNoY *considerWaypoint;
+    Path2D *considerWaypoint;
 
     minimumDistance = 250000.0f;
     minimumIndex = -1;
-    for (realIndex = arg3 - 2; realIndex < arg3 + 7; realIndex++) {
+    for (realIndex = waypointIndex - 2; realIndex < waypointIndex + 7; realIndex++) {
         considerIndex = realIndex;
         if (realIndex < 0) {
-            considerIndex = realIndex + D_8016359C;
+            considerIndex = realIndex + gVehiclesWaypointLenght;
         }
-        considerIndex %= D_8016359C;
+        considerIndex %= gVehiclesWaypointLenght;
         considerWaypoint = &gVehiclesWaypoint[considerIndex];
         xdiff = considerWaypoint->x - xPos;
         zdiff = considerWaypoint->z - zPos;
@@ -2577,7 +2577,7 @@ s16 func_8000D100(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 arg3) {
         }
     }
     if (minimumIndex == -1) {
-        minimumIndex = arg3;
+        minimumIndex = waypointIndex;
     }
     return minimumIndex;
 }
@@ -2831,7 +2831,7 @@ s16 func_8000D940(Vec3f pos, s16 *waypointIndex, f32 speed, f32 arg3, s16 pathIn
     return get_angle_path(sp54, pos);
 }
 
-s16 func_8000DBAC(Vec3f pos, s16 *waypointIndex, f32 speed) {
+s16 update_vehicle_following_waypoint(Vec3f pos, s16 *waypointIndex, f32 speed) {
     f32 origXPos;
     f32 origYPos;
     f32 origZPos;
@@ -2844,18 +2844,18 @@ s16 func_8000DBAC(Vec3f pos, s16 *waypointIndex, f32 speed) {
     UNUSED s32 stackPadding6;
     UNUSED s32 stackPadding7;
     UNUSED s32 stackPadding8;
-    f32 midX;
-    f32 midZ;
+    f32 farWaypointAverageX;
+    f32 farWaypointAverageZ;
     f32 x_dist;
     f32 y_dist;
     f32 distance;
-    f32 var_f12;
-    f32 var_f14;
-    s16 temp_v0;
-    s16 anIndex;
-    s16 anIndex2;
-    PathNoY *temp_a0;
-    PathNoY *temp_a2;
+    f32 newX;
+    f32 newZ;
+    s16 newWaypointIndex;
+    s16 farWaypoint1;
+    s16 farWaypoint2;
+    Path2D *temp_a0;
+    Path2D *temp_a2;
     Vec3f sp38;
 
     origXPos = pos[0];
@@ -2864,27 +2864,27 @@ s16 func_8000DBAC(Vec3f pos, s16 *waypointIndex, f32 speed) {
     sp38[0] = pos[0];
     sp38[1] = pos[1];
     sp38[2] = pos[2];
-    temp_v0 = func_8000D100(origXPos, origYPos, origZPos, *waypointIndex);
-    *waypointIndex = temp_v0;
-    anIndex = (temp_v0 + 3) % D_8016359C;
-    anIndex2 = (temp_v0 + 4) % D_8016359C;
-    temp_a0 = &gVehiclesWaypoint[anIndex];
-    temp_a2 = &gVehiclesWaypoint[anIndex2];
-    midX = (temp_a0->x + temp_a2->x) * 0.5f;
-    midZ = (temp_a0->z + temp_a2->z) * 0.5f;
-    x_dist = midX - origXPos;
-    y_dist = midZ - origZPos;
+    newWaypointIndex = find_closest_vehicles_waypoint(origXPos, origYPos, origZPos, *waypointIndex);
+    *waypointIndex = newWaypointIndex;
+    farWaypoint1 = (newWaypointIndex + 3) % gVehiclesWaypointLenght;
+    farWaypoint2 = (newWaypointIndex + 4) % gVehiclesWaypointLenght;
+    temp_a0 = &gVehiclesWaypoint[farWaypoint1];
+    temp_a2 = &gVehiclesWaypoint[farWaypoint2];
+    farWaypointAverageX = (temp_a0->x + temp_a2->x) * 0.5f;
+    farWaypointAverageZ = (temp_a0->z + temp_a2->z) * 0.5f;
+    x_dist = farWaypointAverageX - origXPos;
+    y_dist = farWaypointAverageZ - origZPos;
     distance = sqrtf((x_dist * x_dist) + (y_dist * y_dist));
     if (distance > 0.01f) {
-        var_f12 = ((x_dist * speed) / distance) + origXPos;
-        var_f14 = ((y_dist * speed) / distance) + origZPos;
+        newX = ((x_dist * speed) / distance) + origXPos;
+        newZ = ((y_dist * speed) / distance) + origZPos;
     } else {
-        var_f12 = origXPos;
-        var_f14 = origZPos;
+        newX = origXPos;
+        newZ = origZPos;
     }
-    pos[0] = var_f12;
+    pos[0] = newX;
     pos[1] = origYPos;
-    pos[2] = var_f14;
+    pos[2] = newZ;
     return get_angle_path(sp38, pos);
 }
 
@@ -4044,7 +4044,7 @@ s32 process_path_data(TrackWaypoint *dest, TrackWaypoint *src) {
     return var_v1;
 }
 
-s32 func_8001168C(PathNoY *pathDest, TrackWaypoint *pathSrc, s32 numWaypoints) {
+s32 generate_2d_path(Path2D *pathDest, TrackWaypoint *pathSrc, s32 numWaypoints) {
     f32 temp_f14_3;
     f32 temp_f16_2;
     UNUSED s32 pad;
@@ -4072,12 +4072,12 @@ s32 func_8001168C(PathNoY *pathDest, TrackWaypoint *pathSrc, s32 numWaypoints) {
     TrackWaypoint *point3;
     s32 i;
     f32 temp_f6 = 0.0f;
-    s32 count;
+    s32 nbElement;
     f32 sp7C;
 
     spA8 = pathSrc[0].posX;
     spA0 = pathSrc[0].posZ;
-    count = 0;
+    nbElement = 0;
 
     for (i = 0; i < numWaypoints; i++) {
         point1 = &pathSrc[((i % numWaypoints))];
@@ -4109,13 +4109,13 @@ s32 func_8001168C(PathNoY *pathDest, TrackWaypoint *pathSrc, s32 numWaypoints) {
                     pathDest->x = (s16) spA8;
                 }
                 pathDest->z = spA0;
-                count += 1;
+                nbElement += 1;
                 pathDest++;
                 temp_f6 = 0.0f;
             }
         }
     }
-    return count;
+    return nbElement;
 }
 
 void copy_courses_kart_ai_behaviour(void) {
@@ -4288,21 +4288,23 @@ void func_80011EC0(s32 arg0, Player *player, s32 arg2, UNUSED u16 arg3) {
     }
 }
 
+#define LENGHT_TRACK_WAYPOINTS(waypoint) for (i = 0; ; i++) { \
+        if ((u16)waypoint[i].posX == 0x8000) { \
+            break; \
+        } \
+    }
+
 void func_800120C8(void) {
     s32 i;
-    PathNoY *temp;
+    Path2D *temp;
     TrackWaypoint *waypoint = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(
         gSegmentTable[SEGMENT_NUMBER2(d_course_kalimari_desert_track_unknown_waypoints)]
                     + SEGMENT_OFFSET(d_course_kalimari_desert_track_unknown_waypoints));
 
-    for (i = 0; ; i++) {
-        if ((u16)waypoint[i].posX == 0x8000) {
-            break;
-        }
-    }
+    LENGHT_TRACK_WAYPOINTS(waypoint)
 
     temp = gVehiclesWaypoint;
-    D_8016359C = func_8001168C(temp, waypoint, i - 1);
+    gVehiclesWaypointLenght = generate_2d_path(temp, waypoint, i - 1);
     D_80162EB0 = func_802AE1C0(temp[0].x, 2000.0f, temp[0].z);
 }
 
@@ -4312,12 +4314,9 @@ void func_80012190(void) {
 
     tree = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(d_course_dks_jungle_parkway_unknown_waypoints2)] + (SEGMENT_OFFSET(d_course_dks_jungle_parkway_unknown_waypoints2)));
 
-    for (i = 0; ; i++) {
-        if ((u16)tree[i].posX == 0x8000) {
-            break;
-        }
-    }
-    D_8016359C = func_8001168C(gVehiclesWaypoint, tree, i - 1);
+    LENGHT_TRACK_WAYPOINTS(tree)
+
+    gVehiclesWaypointLenght = generate_2d_path(gVehiclesWaypoint, tree, i - 1);
     D_80162EB2 = -40;
 }
 
@@ -4367,7 +4366,7 @@ void init_course_vehicles(void) {
             tempLocomotive = &gTrainList[loopIndex].locomotive;
             origXPos = tempLocomotive->position[0];
             origZPos = tempLocomotive->position[2];
-            trainCarYRot = func_8000DBAC(tempLocomotive->position, (s16*)&tempLocomotive->waypointIndex, gTrainList[loopIndex].speed);
+            trainCarYRot = update_vehicle_following_waypoint(tempLocomotive->position, (s16*)&tempLocomotive->waypointIndex, gTrainList[loopIndex].speed);
             tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
             tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
             vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -4377,7 +4376,7 @@ void init_course_vehicles(void) {
             if (tempTender->isActive == 1) {
                 origXPos = tempTender->position[0];
                 origZPos = tempTender->position[2];
-                trainCarYRot = func_8000DBAC(tempTender->position, (s16*)&tempTender->waypointIndex, gTrainList[loopIndex].speed);
+                trainCarYRot = update_vehicle_following_waypoint(tempTender->position, (s16*)&tempTender->waypointIndex, gTrainList[loopIndex].speed);
                 tempTender->velocity[0] = tempTender->position[0] - origXPos;
                 tempTender->velocity[2] = tempTender->position[2] - origZPos;
                 vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -4389,7 +4388,7 @@ void init_course_vehicles(void) {
                 if (tempPassengerCar->isActive == 1) {
                     origXPos = tempPassengerCar->position[0];
                     origZPos = tempPassengerCar->position[2];
-                    trainCarYRot = func_8000DBAC(tempPassengerCar->position, (s16*)&tempPassengerCar->waypointIndex, gTrainList[loopIndex].speed);
+                    trainCarYRot = update_vehicle_following_waypoint(tempPassengerCar->position, (s16*)&tempPassengerCar->waypointIndex, gTrainList[loopIndex].speed);
                     tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
                     tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
                     vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -4404,7 +4403,7 @@ void init_course_vehicles(void) {
             if(tempPaddleWheelBoat->isActive == 1) {
                 origXPos = tempPaddleWheelBoat->position[0];
                 origZPos = tempPaddleWheelBoat->position[2];
-                tempPaddleWheelBoat->rotY = func_8000DBAC(tempPaddleWheelBoat->position, (s16*)&tempPaddleWheelBoat->waypointIndex, tempPaddleWheelBoat->speed);
+                tempPaddleWheelBoat->rotY = update_vehicle_following_waypoint(tempPaddleWheelBoat->position, (s16*)&tempPaddleWheelBoat->waypointIndex, tempPaddleWheelBoat->speed);
                 tempPaddleWheelBoat->velocity[0] = tempPaddleWheelBoat->position[0] - origXPos;
                 tempPaddleWheelBoat->velocity[2] = tempPaddleWheelBoat->position[2] - origZPos;
                 vec3s_set(paddleWheelBoatRot, 0, tempPaddleWheelBoat->rotY, 0);
@@ -4456,14 +4455,14 @@ void set_vehicle_pos_waypoint(TrainCarStuff *trainCar, s16 *posXZ, u16 waypoint)
 void func_800127E0(void) {
     u16 waypointOffset;
     TrainCarStuff *ptr1;
-    PathNoY *pos;
+    Path2D *pos;
     s32 i;
     s32 j;
 
     for (i = 0; i < NUM_TRAINS; i++) {
         // outputs 160 or 392 depending on the train.
         // Wraps the value around to always output a valid waypoint.
-        waypointOffset = (((i * D_8016359C) / NUM_TRAINS) + 160) % D_8016359C;
+        waypointOffset = (((i * gVehiclesWaypointLenght) / NUM_TRAINS) + 160) % gVehiclesWaypointLenght;
 
         // 120.0f is about the maximum usable value
         gTrainList[i].speed = 5.0f;
@@ -4518,7 +4517,7 @@ void func_800127E0(void) {
     D_80162FCC = 0;
 }
 
-void func_80012A48(TrainCarStuff *trainCar, s16 arg1) {
+void sync_train_car_vehicle_actor(TrainCarStuff *trainCar, s16 orientationY) {
     struct TrainCar *trainCarActor;
 
     trainCarActor = (struct TrainCar *) &gActorList[trainCar->actorIndex];
@@ -4526,9 +4525,9 @@ void func_80012A48(TrainCarStuff *trainCar, s16 arg1) {
     trainCarActor->pos[1] = trainCar->position[1];
     trainCarActor->pos[2] = trainCar->position[2];
     if (gIsMirrorMode != 0) {
-        trainCarActor->rot[1] = -arg1;
+        trainCarActor->rot[1] = -orientationY;
     } else {
-        trainCarActor->rot[1] = arg1;
+        trainCarActor->rot[1] = orientationY;
     }
     trainCarActor->velocity[0] = trainCar->velocity[0];
     trainCarActor->velocity[2] = trainCar->velocity[2];
@@ -4538,8 +4537,8 @@ void update_vehicle_trains(void) {
     UNUSED s32 pad[3];
     f32 temp_f20;
     TrainCarStuff *car;
-    u16 temp_s0;
-    s16 temp_v0;
+    u16 oldWaypointIndex;
+    s16 orientationYUpdate;
     f32 temp_f22;
     s32 i;
     s32 j;
@@ -4548,23 +4547,23 @@ void update_vehicle_trains(void) {
     D_80162FCC += 1;
 
     for (i = 0; i < NUM_TRAINS; i++) {
-        temp_s0 = (u16) gTrainList[i].locomotive.waypointIndex;
+        oldWaypointIndex = (u16) gTrainList[i].locomotive.waypointIndex;
 
         temp_f20 = gTrainList[i].locomotive.position[0];
         temp_f22 = gTrainList[i].locomotive.position[2];
 
-        temp_v0 = func_8000DBAC(gTrainList[i].locomotive.position, (s16*)&gTrainList[i].locomotive.waypointIndex, gTrainList[i].speed);
+        orientationYUpdate = update_vehicle_following_waypoint(gTrainList[i].locomotive.position, (s16*)&gTrainList[i].locomotive.waypointIndex, gTrainList[i].speed);
 
         gTrainList[i].locomotive.velocity[0] = gTrainList[i].locomotive.position[0] - temp_f20;
         gTrainList[i].locomotive.velocity[2] = gTrainList[i].locomotive.position[2] - temp_f22;
 
-        func_80012A48(&gTrainList[i].locomotive, temp_v0);
+        sync_train_car_vehicle_actor(&gTrainList[i].locomotive, orientationYUpdate);
 
-        if ((temp_s0 != gTrainList[i].locomotive.waypointIndex)
+        if ((oldWaypointIndex != gTrainList[i].locomotive.waypointIndex)
             && ((gTrainList[i].locomotive.waypointIndex == 0x00BE)
-            || (gTrainList[i].locomotive.waypointIndex == 0x0140))) {
+            || (gTrainList[i].locomotive.waypointIndex == 0x0140))) { // play crossing bell sound
             func_800C98B8(gTrainList[i].locomotive.position, gTrainList[i].locomotive.velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x0E));
-        } else if (random_int(100) == 0) {
+        } else if (random_int(100) == 0) { // play train whistle sound
             func_800C98B8(gTrainList[i].locomotive.position, gTrainList[i].locomotive.velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x0D));
         }
 
@@ -4573,7 +4572,7 @@ void update_vehicle_trains(void) {
             sp90[0] = gTrainList[i].locomotive.position[0];
             sp90[1] = (f32) ((f64) gTrainList[i].locomotive.position[1] + 65.0);
             sp90[2] = (f32) ((f64) gTrainList[i].locomotive.position[2] + 25.0);
-            func_80006114(sp90, gTrainList[i].locomotive.position, temp_v0);
+            func_80006114(sp90, gTrainList[i].locomotive.position, orientationYUpdate);
             func_800755FC(i, sp90, 1.1f);
         }
 
@@ -4582,10 +4581,10 @@ void update_vehicle_trains(void) {
         if (car->isActive == 1) {
             temp_f20 = car->position[0];
             temp_f22 = car->position[2];
-            temp_v0 = func_8000DBAC(car->position, (s16*)&car->waypointIndex, gTrainList[i].speed);
+            orientationYUpdate = update_vehicle_following_waypoint(car->position, (s16*)&car->waypointIndex, gTrainList[i].speed);
             car->velocity[0] = car->position[0] - temp_f20;
             car->velocity[2] = car->position[2] - temp_f22;
-            func_80012A48(car, temp_v0);
+            sync_train_car_vehicle_actor(car, orientationYUpdate);
         }
 
         for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) {
@@ -4594,10 +4593,10 @@ void update_vehicle_trains(void) {
                 temp_f20 = car->position[0];
                 temp_f22 = car->position[2];
 
-                temp_v0 = func_8000DBAC(car->position, (s16*)&car->waypointIndex, gTrainList[i].speed);
+                orientationYUpdate = update_vehicle_following_waypoint(car->position, (s16*)&car->waypointIndex, gTrainList[i].speed);
                 car->velocity[0] = car->position[0] - temp_f20;
                 car->velocity[2] = car->position[2] - temp_f22;
-                func_80012A48(car, temp_v0);
+                sync_train_car_vehicle_actor(car, orientationYUpdate);
             }
         }
     }
@@ -4666,7 +4665,7 @@ void func_80013054(void) {
     isCrossingTriggeredByIndex[1] = 0;
 
     for (i = 0; i < NUM_TRAINS; i++) {
-        temp_f16 = gTrainList[i].locomotive.waypointIndex / ((f32) D_8016359C);
+        temp_f16 = gTrainList[i].locomotive.waypointIndex / ((f32) gVehiclesWaypointLenght);
         temp_f18 = 0.72017354f;
         temp_f12 = 0.42299348f;
 
@@ -4716,7 +4715,7 @@ void func_800131DC(s32 playerId) {
 void func_800132F4(void) {
     PaddleBoatStuff *paddleBoat;
     s32 i;
-    PathNoY *temp_a2;
+    Path2D *temp_a2;
     u16 temp;
     for (i = 0; i < NUM_ACTIVE_PADDLE_BOATS; i++) {
         temp = i * 0xB4;
@@ -4744,7 +4743,7 @@ void func_800132F4(void) {
 
 void update_vehicle_paddle_boats(void) {
     PaddleBoatStuff *paddleBoat;
-    PathNoY *waypoint;
+    Path2D *waypoint;
     s32 i;
     struct Actor *paddleBoatActor;
     f32 temp_f26;
@@ -4765,7 +4764,7 @@ void update_vehicle_paddle_boats(void) {
             temp_f26 = paddleBoat->position[0];
             temp_f28 = paddleBoat->position[1];
             temp_f30 = paddleBoat->position[2];
-            func_8000DBAC(paddleBoat->position, (s16*)&paddleBoat->waypointIndex, paddleBoat->speed);
+            update_vehicle_following_waypoint(paddleBoat->position, (s16*)&paddleBoat->waypointIndex, paddleBoat->speed);
             paddleBoat->someFlags = func_800061DC(paddleBoat->position, 2000.0f, paddleBoat->someFlags);
             if ((((s16) D_801630FC % 10) == 0) && (paddleBoat->someFlags != 0)) {
                 sp78[0] = (f32) ((f64) paddleBoat->position[0] - 30.0);
@@ -4789,7 +4788,7 @@ void update_vehicle_paddle_boats(void) {
             sp94[0] = temp_f26;
             sp94[1] = temp_f28;
             sp94[2] = temp_f30;
-            waypoint = &gVehiclesWaypoint[(paddleBoat->waypointIndex + 5) % D_8016359C];
+            waypoint = &gVehiclesWaypoint[(paddleBoat->waypointIndex + 5) % gVehiclesWaypointLenght];
             sp88[0] = (f32) waypoint->x;
             sp88[1] = (f32) D_80162EB0;
             sp88[2] = (f32) waypoint->z;
