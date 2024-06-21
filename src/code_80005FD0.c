@@ -134,8 +134,8 @@ s16 D_801634EC;
 s32 D_801634F0;
 s32 D_801634F4;
 Test D_801634F8[10];
-Path2D *gVehiclesWaypoint;
-s32 gVehiclesWaypointLenght;
+Path2D *gVehicle2DWaypoint;
+s32 gVehicle2DWaypointLength;
 TrainStuff gTrainList[NUM_TRAINS];
 u16 isCrossingTriggeredByIndex[2];
 u16 D_801637BC[2];
@@ -1309,7 +1309,7 @@ s32 func_80008E58(s32 payerId, s32 pathIndex) {
     posY = player->pos[1];
     posZ = player->pos[2];
     stackPadding = pathIndex;
-    trackSegment = get_track_segment(player->unk_110.surfaceMapIndex);
+    trackSegment = get_track_segment(player->unk_110.collisionMeshIndex);
     D_80163318[payerId] = trackSegment;
     D_80162FCE = find_closet_waypoint_track_segment(posX, posY, posZ, trackSegment, &pathIndex);
     gNearestWaypointByPlayerId[payerId] = D_80162FCE;
@@ -2400,7 +2400,7 @@ s16 func_8000C884(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex
  * Only considers waypoints within 400 units of (posX, posY, posZ)
  * Looks 3 waypoints behind and 6 waypoints ahead of waypointIndex
  **/
-s16 find_closet_waypoint_with_previous_waypoint(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex) {
+s16 find_closest_waypoint_with_previous_waypoint(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex) {
     s16 nearestWaypointIndex;
     s16 searchIndex;
     s16 considerIndex;
@@ -2476,7 +2476,7 @@ s16 func_8000CC88(f32 posX, f32 posY, f32 posZ, Player *player, s32 playerId, s3
     u16 trackSegment;
     s16 ret;
 
-    trackSegment = get_track_segment(player->unk_110.surfaceMapIndex);
+    trackSegment = get_track_segment(player->unk_110.collisionMeshIndex);
     if ((trackSegment <= 0) || (trackSegment >= 0x33)) {
         trackSegment = D_80163318[playerId];
     }
@@ -2494,7 +2494,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
     TrackWaypoint *temp_v1;
 
     if ((player->type & 0x4000) && !(player->type & 0x1000)) {
-        newWaypoint = func_8000C884(posX, posY, posZ, waypointIndex, pathIndex, (u16) get_track_segment(player->unk_110.surfaceMapIndex));
+        newWaypoint = func_8000C884(posX, posY, posZ, waypointIndex, pathIndex, (u16) get_track_segment(player->unk_110.collisionMeshIndex));
         if (newWaypoint == -1) {
             newWaypoint = func_8000CC88(posX, posY, posZ, player, playerId, &pathIndex);
         }
@@ -2510,10 +2510,10 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
             }
             if (playerId == ((s32) D_80163488 % 8)) {
                 func_802ADDC8(&player->unk_110, 10.0f, posX, posY, posZ);
-                D_80163318[playerId] = get_track_segment(player->unk_110.surfaceMapIndex);
+                D_80163318[playerId] = get_track_segment(player->unk_110.collisionMeshIndex);
                 newWaypoint = func_8000C884(posX, posY, posZ, waypointIndex, pathIndex, D_80163318[playerId]);
                 if (newWaypoint == -1) {
-                    newWaypoint = find_closet_waypoint_with_previous_waypoint(posX, posY, posZ, waypointIndex, pathIndex);
+                    newWaypoint = find_closest_waypoint_with_previous_waypoint(posX, posY, posZ, waypointIndex, pathIndex);
                 }
                 if (newWaypoint == -1) {
                     newWaypoint = find_closet_waypoint_track_segment(posX, posY, posZ, D_80163318[playerId], &pathIndex);
@@ -2523,7 +2523,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
                     player->pos[2] = (f32) temp_v1->posZ;
                 }
             } else {
-                newWaypoint = find_closet_waypoint_with_previous_waypoint(posX, posY, posZ, waypointIndex, pathIndex);
+                newWaypoint = find_closest_waypoint_with_previous_waypoint(posX, posY, posZ, waypointIndex, pathIndex);
                 if (newWaypoint == -1) {
                     newWaypoint = func_8000BD94(posX, posY, posZ, pathIndex);
                     temp_v1 = &D_80164550[pathIndex][newWaypoint];
@@ -2534,11 +2534,11 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
                     player->pos[1] = posY;
                     player->pos[2] = posZ;
                     func_802ADDC8(&player->unk_110, 10.0f, posX, posY, posZ);
-                    D_80163318[playerId] = get_track_segment(player->unk_110.surfaceMapIndex);
+                    D_80163318[playerId] = get_track_segment(player->unk_110.collisionMeshIndex);
                 }
             }
         } else {
-            newWaypoint = find_closet_waypoint_with_previous_waypoint(posX, posY, posZ, waypointIndex, pathIndex);
+            newWaypoint = find_closest_waypoint_with_previous_waypoint(posX, posY, posZ, waypointIndex, pathIndex);
             if (newWaypoint == -1) {
                 newWaypoint = func_8000CC88(posX, posY, posZ, player, playerId, &pathIndex);
             }
@@ -2564,10 +2564,10 @@ s16 find_closest_vehicles_waypoint(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 wayp
     for (realIndex = waypointIndex - 2; realIndex < waypointIndex + 7; realIndex++) {
         considerIndex = realIndex;
         if (realIndex < 0) {
-            considerIndex = realIndex + gVehiclesWaypointLenght;
+            considerIndex = realIndex + gVehicle2DWaypointLength;
         }
-        considerIndex %= gVehiclesWaypointLenght;
-        considerWaypoint = &gVehiclesWaypoint[considerIndex];
+        considerIndex %= gVehicle2DWaypointLength;
+        considerWaypoint = &gVehicle2DWaypoint[considerIndex];
         xdiff = considerWaypoint->x - xPos;
         zdiff = considerWaypoint->z - zPos;
         considerSquaredDistance = (xdiff * xdiff) + (zdiff * zdiff);
@@ -2587,13 +2587,13 @@ s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32 *pathIndex) {
     Collision sp24;
 
     func_802ADDC8(&sp24, 10.0f, posX, posY, posZ);
-    return find_closet_waypoint_track_segment(posX, posY, posZ, get_track_segment(sp24.surfaceMapIndex), pathIndex);
+    return find_closet_waypoint_track_segment(posX, posY, posZ, get_track_segment(sp24.collisionMeshIndex), pathIndex);
 }
 
 s16 func_8000D2B4(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex) {
     s16 waypoint;
 
-    waypoint = find_closet_waypoint_with_previous_waypoint(posX, posY, posZ, waypointIndex, pathIndex);
+    waypoint = find_closest_waypoint_with_previous_waypoint(posX, posY, posZ, waypointIndex, pathIndex);
     if (waypoint == -1) {
         waypoint = func_8000D24C(posX, posY, posZ, &pathIndex);
     }
@@ -2604,7 +2604,7 @@ s16 func_8000D2B4(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex
 s16 func_8000D33C(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex) {
     s16 waypoint;
 
-    waypoint = find_closet_waypoint_with_previous_waypoint(posX, posY, posZ, waypointIndex, pathIndex);
+    waypoint = find_closest_waypoint_with_previous_waypoint(posX, posY, posZ, waypointIndex, pathIndex);
     if (waypoint == -1) {
         waypoint = func_8000D24C(posX, posY, posZ, &pathIndex);
     }
@@ -2866,10 +2866,10 @@ s16 update_vehicle_following_waypoint(Vec3f pos, s16 *waypointIndex, f32 speed) 
     sp38[2] = pos[2];
     newWaypointIndex = find_closest_vehicles_waypoint(origXPos, origYPos, origZPos, *waypointIndex);
     *waypointIndex = newWaypointIndex;
-    farWaypoint1 = (newWaypointIndex + 3) % gVehiclesWaypointLenght;
-    farWaypoint2 = (newWaypointIndex + 4) % gVehiclesWaypointLenght;
-    temp_a0 = &gVehiclesWaypoint[farWaypoint1];
-    temp_a2 = &gVehiclesWaypoint[farWaypoint2];
+    farWaypoint1 = (newWaypointIndex + 3) % gVehicle2DWaypointLength;
+    farWaypoint2 = (newWaypointIndex + 4) % gVehicle2DWaypointLength;
+    temp_a0 = &gVehicle2DWaypoint[farWaypoint1];
+    temp_a2 = &gVehicle2DWaypoint[farWaypoint2];
     farWaypointAverageX = (temp_a0->x + temp_a2->x) * 0.5f;
     farWaypointAverageZ = (temp_a0->z + temp_a2->z) * 0.5f;
     x_dist = farWaypointAverageX - origXPos;
@@ -3141,7 +3141,7 @@ void func_8000DF8C(s32 bombKartId) {
                         var_f24 += temp_f16 / 5.0f;
                     }
                     temp_a0_4 = &D_80164038[bombKartId];
-                    var_f20 = func_802ABE30(var_f22, 2000.0f, var_f24, temp_a0_4->surfaceMapIndex) + 3.5f;
+                    var_f20 = func_802ABE30(var_f22, 2000.0f, var_f24, temp_a0_4->collisionMeshIndex) + 3.5f;
                     if (var_f20 < (-1000.0)) {
                         var_f20 = bombKart->bombPos[1];
                     }
@@ -3394,7 +3394,7 @@ void func_8000F2DC(void) {
     D_80163368[3] = (s32) ptr->unk6;
     
     temp = ptr->unk8;
-    gVehiclesWaypoint = get_next_available_memory_addr(temp * 4);
+    gVehicle2DWaypoint = get_next_available_memory_addr(temp * 4);
 
     // Podium ceremony appears to allocate 1 * 8 bytes of data. Which would be aligned to 0x10.
     for (i = 0; i < 4; i++) {
@@ -3965,7 +3965,7 @@ s32 func_80011014(TrackWaypoint *pathDest, TrackWaypoint *path, s32 numPathPoint
 
 
                 pathDest->posZ = (s16) temp_f22;
-                pathDest->trackSegment = get_track_segment(D_80162E70.surfaceMapIndex);
+                pathDest->trackSegment = get_track_segment(D_80162E70.collisionMeshIndex);
 
                 if (var_f20_2 < -500.0) {
                     var_f20_2 = var_f28;
@@ -4303,8 +4303,8 @@ void func_800120C8(void) {
 
     LENGHT_TRACK_WAYPOINTS(waypoint)
 
-    temp = gVehiclesWaypoint;
-    gVehiclesWaypointLenght = generate_2d_path(temp, waypoint, i - 1);
+    temp = gVehicle2DWaypoint;
+    gVehicle2DWaypointLength = generate_2d_path(temp, waypoint, i - 1);
     D_80162EB0 = func_802AE1C0(temp[0].x, 2000.0f, temp[0].z);
 }
 
@@ -4316,7 +4316,7 @@ void func_80012190(void) {
 
     LENGHT_TRACK_WAYPOINTS(tree)
 
-    gVehiclesWaypointLenght = generate_2d_path(gVehiclesWaypoint, tree, i - 1);
+    gVehicle2DWaypointLength = generate_2d_path(gVehicle2DWaypoint, tree, i - 1);
     D_80162EB2 = -40;
 }
 
@@ -4462,25 +4462,25 @@ void func_800127E0(void) {
     for (i = 0; i < NUM_TRAINS; i++) {
         // outputs 160 or 392 depending on the train.
         // Wraps the value around to always output a valid waypoint.
-        waypointOffset = (((i * gVehiclesWaypointLenght) / NUM_TRAINS) + 160) % gVehiclesWaypointLenght;
+        waypointOffset = (((i * gVehicle2DWaypointLength) / NUM_TRAINS) + 160) % gVehicle2DWaypointLength;
 
         // 120.0f is about the maximum usable value
         gTrainList[i].speed = 5.0f;
         for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) {
             waypointOffset += 4;
             ptr1 = &gTrainList[i].passengerCars[j];
-            pos = &gVehiclesWaypoint[waypointOffset];
+            pos = &gVehicle2DWaypoint[waypointOffset];
             set_vehicle_pos_waypoint(ptr1, pos, waypointOffset);
         }
         // Smaller offset for the tender
         waypointOffset += 3;
         ptr1 = &gTrainList[i].tender;
-        pos = &gVehiclesWaypoint[waypointOffset];
+        pos = &gVehicle2DWaypoint[waypointOffset];
         set_vehicle_pos_waypoint(ptr1, pos, waypointOffset);
         
         waypointOffset += 4;
         ptr1 = &gTrainList[i].locomotive;
-        pos = &gVehiclesWaypoint[waypointOffset];
+        pos = &gVehicle2DWaypoint[waypointOffset];
         set_vehicle_pos_waypoint(ptr1, pos, waypointOffset);
         
         // Only use locomotive unless overwritten below.
@@ -4665,7 +4665,7 @@ void func_80013054(void) {
     isCrossingTriggeredByIndex[1] = 0;
 
     for (i = 0; i < NUM_TRAINS; i++) {
-        temp_f16 = gTrainList[i].locomotive.waypointIndex / ((f32) gVehiclesWaypointLenght);
+        temp_f16 = gTrainList[i].locomotive.waypointIndex / ((f32) gVehicle2DWaypointLength);
         temp_f18 = 0.72017354f;
         temp_f12 = 0.42299348f;
 
@@ -4720,7 +4720,7 @@ void func_800132F4(void) {
     for (i = 0; i < NUM_ACTIVE_PADDLE_BOATS; i++) {
         temp = i * 0xB4;
         paddleBoat = &gPaddleBoats[i];
-        temp_a2 = &gVehiclesWaypoint[temp];
+        temp_a2 = &gVehicle2DWaypoint[temp];
         paddleBoat->position[0] = temp_a2->x;
         paddleBoat->position[1] = D_80162EB2;
         paddleBoat->position[2] = temp_a2->z;
@@ -4788,7 +4788,7 @@ void update_vehicle_paddle_boats(void) {
             sp94[0] = temp_f26;
             sp94[1] = temp_f28;
             sp94[2] = temp_f30;
-            waypoint = &gVehiclesWaypoint[(paddleBoat->waypointIndex + 5) % gVehiclesWaypointLenght];
+            waypoint = &gVehicle2DWaypoint[(paddleBoat->waypointIndex + 5) % gVehicle2DWaypointLength];
             sp88[0] = (f32) waypoint->x;
             sp88[1] = (f32) D_80162EB0;
             sp88[2] = (f32) waypoint->z;

@@ -1103,7 +1103,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     if (((player->effects & 8) == 8) && ((player->unk_0CA & 2) == 2)) {
         player->slopeAccel = (s16) ((s32) player->unk_D9C);
     }
-    player->surfaceType = get_surface_type(player->unk_110.surfaceMapIndex) & 0xFF;
+    player->surfaceType = get_surface_type(player->unk_110.collisionMeshIndex) & 0xFF;
     if (player->surfaceType == BOOST_RAMP_ASPHALT) {
         if (((player->effects & BOOST_RAMP_ASPHALT_EFFECT) != BOOST_RAMP_ASPHALT_EFFECT) && ((player->effects & 8) != 8)) {
             player->soundEffects |= BOOST_RAMP_ASPHALT_SOUND_EFFECT;
@@ -1136,21 +1136,21 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
     player->boundingBoxCorners[0].cornerPos[2] = (coss(temp_v1 + 0x2000) * var_f20) + arg3;
     temp_f12 = (sins(temp_v1 + 0x2000) * var_f20) + arg1;
     player->boundingBoxCorners[0].cornerPos[0] = temp_f12;
-    player->boundingBoxCorners[0].cornerGroundY = func_802ABE30(temp_f12, arg2, player->boundingBoxCorners[0].cornerPos[2], player->unk_110.surfaceMapIndex);
+    player->boundingBoxCorners[0].cornerGroundY = func_802ABE30(temp_f12, arg2, player->boundingBoxCorners[0].cornerPos[2], player->unk_110.collisionMeshIndex);
 
     player->boundingBoxCorners[1].cornerPos[2] = (coss(temp_v1 - 0x2000) * var_f20) + arg3;
     temp_f12 = (sins(temp_v1 - 0x2000) * var_f20) + arg1;
     player->boundingBoxCorners[1].cornerPos[0] = temp_f12;
-    player->boundingBoxCorners[1].cornerGroundY = func_802ABE30(temp_f12, arg2, player->boundingBoxCorners[1].cornerPos[2], player->unk_110.surfaceMapIndex);
+    player->boundingBoxCorners[1].cornerGroundY = func_802ABE30(temp_f12, arg2, player->boundingBoxCorners[1].cornerPos[2], player->unk_110.collisionMeshIndex);
 
     player->boundingBoxCorners[2].cornerPos[2] = (coss(temp_v1 + 0x6000) * var_f20) + arg3;
     temp_f12 = (sins(temp_v1 + 0x6000) * var_f20) + arg1;
     player->boundingBoxCorners[2].cornerPos[0] = temp_f12;
-    player->boundingBoxCorners[2].cornerGroundY = func_802ABE30(temp_f12, arg2, player->boundingBoxCorners[2].cornerPos[2], player->unk_110.surfaceMapIndex);
+    player->boundingBoxCorners[2].cornerGroundY = func_802ABE30(temp_f12, arg2, player->boundingBoxCorners[2].cornerPos[2], player->unk_110.collisionMeshIndex);
 
     player->boundingBoxCorners[3].cornerPos[2] = (coss(temp_v1 - 0x6000) * var_f20) + arg3;
     player->boundingBoxCorners[3].cornerPos[0] = (sins(temp_v1 - 0x6000) * var_f20) + arg1;
-    player->boundingBoxCorners[3].cornerGroundY = func_802ABE30(player->boundingBoxCorners[2].cornerPos[0], arg2, player->boundingBoxCorners[2].cornerPos[2], player->unk_110.surfaceMapIndex);
+    player->boundingBoxCorners[3].cornerGroundY = func_802ABE30(player->boundingBoxCorners[2].cornerPos[0], arg2, player->boundingBoxCorners[2].cornerPos[2], player->unk_110.collisionMeshIndex);
 
     if ((player->effects & 8) != 8) {
         player->unk_230 = (player->boundingBoxCorners[2].cornerGroundY + player->boundingBoxCorners[0].cornerGroundY) / 2;
@@ -1158,7 +1158,7 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
         player->unk_1FC = (player->boundingBoxCorners[1].cornerGroundY + player->boundingBoxCorners[0].cornerGroundY) / 2;
         player->unk_1F8 = (player->boundingBoxCorners[3].cornerGroundY + player->boundingBoxCorners[2].cornerGroundY) / 2;
     }
-    player->surfaceType = (u8)get_surface_type(player->unk_110.surfaceMapIndex);
+    player->surfaceType = (u8)get_surface_type(player->unk_110.collisionMeshIndex);
     player->boundingBoxCorners[3].surfaceType = player->surfaceType;
     player->boundingBoxCorners[2].surfaceType = player->surfaceType;
     player->boundingBoxCorners[1].surfaceType = player->surfaceType;
@@ -1179,7 +1179,7 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
         }
         move_s16_towards(&player->slopeAccel, var_a1, 0.5f);
     }
-    if (func_802ABD7C(player->unk_110.surfaceMapIndex) != 0) {
+    if (func_802ABD7C(player->unk_110.collisionMeshIndex) != 0) {
         player->boundingBoxCorners[3].unk_14 |= 1;
     } else {
         player->boundingBoxCorners[3].unk_14 &= ~1;
@@ -1868,7 +1868,7 @@ void func_8002C17C(Player *player, s8 playerId) {
             gCopyNearestWaypointByPlayerId[playerId] = gNearestWaypointByPlayerId[playerId];
             gCopyPathIndexByPlayerId[playerId] = gPathIndexByPlayerId[playerId];
         } else if (!(player->effects & 8)) {
-            if (func_802ABDF4(player->unk_110.surfaceMapIndex) == 0) {
+            if (func_802ABDF4(player->unk_110.collisionMeshIndex) == 0) {
                 D_80165330[playerId] = 0;
             }
         }
@@ -1957,7 +1957,7 @@ void func_8002C4F8(Player *player, s8 arg1) {
     } else if ((player->effects & 8) != 8) {
         player->unk_0CA &= ~0x0100;
     }
-    if ((player->type & PLAYER_KART_AI) && ((func_802ABDF4(player->unk_110.surfaceMapIndex) != 0) || (player->unk_0CA & 1))) {
+    if ((player->type & PLAYER_KART_AI) && ((func_802ABDF4(player->unk_110.collisionMeshIndex) != 0) || (player->unk_0CA & 1))) {
         if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8) && !(player->effects & 0x1000)) {
             func_80090778(player);
             func_80090868(player);
@@ -2430,14 +2430,14 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 screenId, s8 player
             }
         }
     }
-    if (((!(player->effects & 8)) && (func_802ABDB8(player->unk_110.surfaceMapIndex) != 0)) && ((player->effects & 0x10000) != 0x10000)) {
+    if (((!(player->effects & 8)) && (func_802ABDB8(player->unk_110.collisionMeshIndex) != 0)) && ((player->effects & 0x10000) != 0x10000)) {
         if ((!(player->unk_0CA & 2)) || (!(player->unk_0CA & 8))) {
             func_8008F494(player, playerId);
         }
-    } else if (((!(player->effects & 8)) && (func_802ABDB8(player->unk_110.surfaceMapIndex) == 0)) && (player->effects & 0x10000)) {
+    } else if (((!(player->effects & 8)) && (func_802ABDB8(player->unk_110.collisionMeshIndex) == 0)) && (player->effects & 0x10000)) {
         func_8008F5A4(player, playerId);
     }
-    player->unk_074 = func_802ABE30(nextX, nextY, nextZ, player->unk_110.surfaceMapIndex);
+    player->unk_074 = func_802ABE30(nextX, nextY, nextZ, player->unk_110.collisionMeshIndex);
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && (((gActiveScreenMode == SCREEN_MODE_1P) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL)) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
         func_80029B4C(player, nextX, nextY, nextZ);
     } else {
@@ -2704,14 +2704,14 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 screenId, s8 player
             }
         }
     }
-    if (((func_802ABDB8(player->unk_110.surfaceMapIndex) != 0) && ((player->effects & 0x10000) != 0x10000)) && (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
+    if (((func_802ABDB8(player->unk_110.collisionMeshIndex) != 0) && ((player->effects & 0x10000) != 0x10000)) && (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
         if ((!(player->unk_0CA & 2)) || (!(player->unk_0CA & 8))) {
             func_8008F494(player, playerId);
         }
-    } else if (((!(player->effects & 8)) && (func_802ABDB8(player->unk_110.surfaceMapIndex) == 0)) && (player->effects & 0x10000)) {
+    } else if (((!(player->effects & 8)) && (func_802ABDB8(player->unk_110.collisionMeshIndex) == 0)) && (player->effects & 0x10000)) {
         func_8008F5A4(player, playerId);
     }
-    player->unk_074 = func_802ABE30(spD0, spCC, spC8, player->unk_110.surfaceMapIndex);
+    player->unk_074 = func_802ABE30(spD0, spCC, spC8, player->unk_110.collisionMeshIndex);
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && (((gActiveScreenMode == SCREEN_MODE_1P) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL)) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
         func_80029B4C(player, spD0, spCC, spC8);
     } else {
@@ -2892,7 +2892,7 @@ void func_8002F730(Player *player, UNUSED Camera *camera, UNUSED s8 screenId, s8
         if(1) {};
         func_8003F46C(player, sp5C, sp68, spE8, &sp78, &spCC, &spC8, &spC4);
     }
-    player->unk_074 = func_802ABE30(spCC, spC8, spC4, player->unk_110.surfaceMapIndex);
+    player->unk_074 = func_802ABE30(spCC, spC8, spC4, player->unk_110.collisionMeshIndex);
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((gActiveScreenMode == SCREEN_MODE_1P) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
         func_80029B4C(player, spCC, spC8, spC4);
     } else {
@@ -5047,7 +5047,7 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId) 
             player->unk_046 &= 0xFFDF;
         }
     }
-    player->unk_074 = func_802ABE30(spEC, spE8, spE4, player->unk_110.surfaceMapIndex);
+    player->unk_074 = func_802ABE30(spEC, spE8, spE4, player->unk_110.collisionMeshIndex);
     func_80029B4C(player, spEC, spE8, spE4);
     func_8002AE38(player, playerId, posX, posZ, spEC, spE4);
     sqrt = (sp88[0] * sp88[0]) + (sp88[2] * sp88[2]);

@@ -142,7 +142,7 @@ typedef struct {
     /* 0x06 */ u16 unk36;
     /* 0x08 */ u16 unk38;
     // This may be an index to the tilemap?
-    /* 0x0A */ u16 surfaceMapIndex;
+    /* 0x0A */ u16 collisionMeshIndex;
     /* 0x0C */ Vec3f unk3C;
     /* 0x18 */ Vec3f unk48;
     /* 0x24 */ Vec3f unk54;

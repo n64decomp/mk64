@@ -316,7 +316,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_110.unk34 = 0;
     player->unk_110.unk36 = 0;
     player->unk_110.unk38 = 0;
-    player->unk_110.surfaceMapIndex = 0;
+    player->unk_110.collisionMeshIndex = 0;
 
     player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[0] = 0.0f;
     player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[1] = 0.0f;

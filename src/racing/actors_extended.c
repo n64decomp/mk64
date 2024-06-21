@@ -22,7 +22,7 @@ void copy_collision(Collision *arg0, Collision *arg1) {
     arg1->unk34 = arg0->unk34;
     arg1->unk36 = arg0->unk36;
     arg1->unk38 = arg0->unk38;
-    arg1->surfaceMapIndex = arg0->surfaceMapIndex;
+    arg1->collisionMeshIndex = arg0->collisionMeshIndex;
     arg1->unk3C[0] = arg0->unk3C[0];
     arg1->unk3C[1] = arg0->unk3C[1];
     arg1->unk3C[2] = arg0->unk3C[2];

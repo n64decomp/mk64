@@ -27,7 +27,7 @@ void nullify_displaylist(uintptr_t addr) {
 void func_802AAAAC(Collision *collision) {
     collision->unk36 = 5000;
     collision->unk38 = 5000;
-    collision->surfaceMapIndex = 5000;
+    collision->collisionMeshIndex = 5000;
     collision->unk30 = 0;
     collision->unk32 = 0;
     collision->unk34 = 0;
@@ -76,14 +76,14 @@ f32 func_802AAB4C(Player *player) {
             }
             return 0.8f;
         case COURSE_SHERBET_LAND:
-            if ((get_surface_type(player->unk_110.surfaceMapIndex) & 0xFF) == SNOW) {
+            if ((get_surface_type(player->unk_110.collisionMeshIndex) & 0xFF) == SNOW) {
                 return (f32) (gCourseMinY - 0xA);
             }
             return D_8015F8E4;
         case COURSE_DK_JUNGLE:
-            temp_v1 = get_track_segment(player->unk_110.surfaceMapIndex) & 0xFF;
+            temp_v1 = get_track_segment(player->unk_110.collisionMeshIndex) & 0xFF;
             if (temp_v1 == 0xFF) {
-                if ((get_surface_type(player->unk_110.surfaceMapIndex) & 0xFF) == CAVE) {
+                if ((get_surface_type(player->unk_110.collisionMeshIndex) & 0xFF) == CAVE) {
                     return -475.0f;
                 }
                 if (playerX > -478.0f) {
@@ -194,7 +194,7 @@ s32 func_802AAE4C(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
     if (temp_f0_5 > 0.0f) {
         if (collision->unk3C[2] > temp_f0_5) {
             collision->unk34 = 1;
-            collision->surfaceMapIndex = index;
+            collision->collisionMeshIndex = index;
             collision->unk3C[2] = temp_f0_5;
             collision->orientationVector[0] = triangle->height;
             collision->orientationVector[1] = triangle->gravity;
@@ -205,7 +205,7 @@ s32 func_802AAE4C(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
 
     if (temp_f0_5 > -16.0f) {
         collision->unk34 = 1;
-        collision->surfaceMapIndex = index;
+        collision->collisionMeshIndex = index;
         collision->unk3C[2] = temp_f0_5;
         collision->orientationVector[0] = triangle->height;
         collision->orientationVector[1] = triangle->gravity;
@@ -527,7 +527,7 @@ f32 func_802ABE30(f32 x, f32 y, f32 z, u16 index) {
 
 f32 func_802ABEAC(Collision *collision, Vec3f pos) {
     if (collision->unk34 == 1) {
-        return func_802ABE30(pos[0], pos[1], pos[2], collision->surfaceMapIndex);
+        return func_802ABE30(pos[0], pos[1], pos[2], collision->collisionMeshIndex);
     }
     if (collision->unk30 == 1) {
         return func_802ABE30(pos[0], pos[1], pos[2], collision->unk36);
@@ -846,7 +846,7 @@ s32 is_colliding_with_drivable_surface(Collision *collision, f32 boundingBoxSize
     if (temp_f0_4 > boundingBoxSize) {
         if (collision->unk3C[2] > temp_f0_4) {
             collision->unk34 = 1;
-            collision->surfaceMapIndex = index;
+            collision->collisionMeshIndex = index;
             collision->unk3C[2] = temp_f0_4 - boundingBoxSize;
             collision->orientationVector[0] = triangle->height;
             collision->orientationVector[1] = triangle->gravity;
@@ -862,7 +862,7 @@ s32 is_colliding_with_drivable_surface(Collision *collision, f32 boundingBoxSize
     }
     
     collision->unk34 = 1;
-    collision->surfaceMapIndex = index;
+    collision->collisionMeshIndex = index;
     collision->unk3C[2] = temp_f0_4 - boundingBoxSize;
     collision->orientationVector[0] = triangle->height;
     collision->orientationVector[1] = triangle->gravity;
@@ -1257,8 +1257,8 @@ u16 func_802AD950(Collision *collision, f32 boundingBoxSize, f32 newX, f32 newY,
     collision->unk3C[1] = 1000.0f;
     collision->unk3C[2] = 1000.0f;
 
-    if ((s32) collision->surfaceMapIndex < (s32) gCollisionMeshCount) {
-        if (is_colliding_with_drivable_surface(collision, boundingBoxSize, newX, newY, newZ, collision->surfaceMapIndex, oldX, oldY, oldZ) == COLLISION) {
+    if ((s32) collision->collisionMeshIndex < (s32) gCollisionMeshCount) {
+        if (is_colliding_with_drivable_surface(collision, boundingBoxSize, newX, newY, newZ, collision->collisionMeshIndex, oldX, oldY, oldZ) == COLLISION) {
             flags |= 0x4000;
         }
     }
@@ -1320,7 +1320,7 @@ u16 func_802AD950(Collision *collision, f32 boundingBoxSize, f32 newX, f32 newY,
 
         if ((gCollisionMesh[surfaceIndex].flags & 0x4000)) {
             if ((flags & 0x4000) == 0) {
-                if (surfaceIndex != collision->surfaceMapIndex) {
+                if (surfaceIndex != collision->collisionMeshIndex) {
                     if (is_colliding_with_drivable_surface(collision, boundingBoxSize, newX, newY, newZ, surfaceIndex, oldX, oldY, oldZ) == 1) {
                         flags |= 0x4000;
                     }
@@ -1369,8 +1369,8 @@ u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY,
     collision->unk3C[1] = 1000.0f;
     collision->unk3C[2] = 1000.0f;
     var_s4 = 0;
-    if (collision->surfaceMapIndex < gCollisionMeshCount) {
-        if (func_802AAE4C(collision, boundingBoxSize, posX, posY, posZ, collision->surfaceMapIndex) == 1) {
+    if (collision->collisionMeshIndex < gCollisionMeshCount) {
+        if (func_802AAE4C(collision, boundingBoxSize, posX, posY, posZ, collision->collisionMeshIndex) == 1) {
             var_s4 |= 0x4000;
         }
     }
@@ -1425,7 +1425,7 @@ u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY,
         temp_v0_4 = D_8015F584[var_s2];
         if (gCollisionMesh[temp_v0_4].flags & 0x4000) {
             if (!(var_s4 & 0x4000)) {
-                if (temp_v0_4 != collision->surfaceMapIndex) {
+                if (temp_v0_4 != collision->collisionMeshIndex) {
                     if (func_802AAE4C(collision, boundingBoxSize, posX, posY, posZ, temp_v0_4) == 1) {
                         var_s4 |= 0x4000;
                     }
@@ -2142,7 +2142,7 @@ u16 process_collision_between_player_terrain(Player *player, KartBoundingBoxCorn
     boundingBoxSize = player->boundingBoxSize;
     collision->unk36 = 5000;
     collision->unk38 = 5000;
-    collision->surfaceMapIndex = 5000;
+    collision->collisionMeshIndex = 5000;
     collision->unk30 = 0;
     collision->unk32 = 0;
     collision->unk34 = 0;

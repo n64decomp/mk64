@@ -46,7 +46,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
             shell->pos[0] = player->pos[0] + somePosVel[0];
             pad2 = player->pos[1] - somePosVel[1];
             shell->pos[2] = player->pos[2] + somePosVel[2];
-            pad0 = func_802ABE30(shell->pos[0], pad2, shell->pos[2], player->unk_110.surfaceMapIndex);
+            pad0 = func_802ABE30(shell->pos[0], pad2, shell->pos[2], player->unk_110.collisionMeshIndex);
             pad1 = pad2 - pad0;
             if ((pad1 < 5.0f) && (pad1 > -5.0f)) {
                 shell->pos[1] = shell->boundingBoxSize + pad0;
