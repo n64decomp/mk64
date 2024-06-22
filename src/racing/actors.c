@@ -936,7 +936,7 @@ void spawn_foliage(struct ActorSpawnData *arg0) {
             func_802976D8(temp_s0->rot);
         } else {
             func_802ADDC8(&temp_s0->unk30, 5.0f, temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2]);
-            if (temp_s0->unk30.unk3C[2] < 0.0f) {
+            if (temp_s0->unk30.surfaceDistance[2] < 0.0f) {
                 temp_s0->pos[1] = calculate_surface_height(temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2], temp_s0->unk30.unk3A);
             }
             func_802976EC(&temp_s0->unk30, temp_s0->rot);

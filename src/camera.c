@@ -642,22 +642,22 @@ void func_8001E0C4(Camera *camera, Player *player, s8 arg2) {
     func_8001CA78(player, camera, sp60, &sp74, &sp70, &sp6C, camera->unk_2C, arg2);
     camera->someBitFlags &= ~0x0004;
     temp_t7 = func_802ADDC8(&camera->unk_54, test, sp74, sp70, sp6C);
-    if (camera->unk_54.unk3C[2] < 0.0f) {
-        sp74 += -camera->unk_54.orientationVector[0] * camera->unk_54.unk3C[2] * 1;
-        sp70 += -camera->unk_54.orientationVector[1] * camera->unk_54.unk3C[2] * 0.5;
-        sp6C += -camera->unk_54.orientationVector[2] * camera->unk_54.unk3C[2] * 1;
+    if (camera->unk_54.surfaceDistance[2] < 0.0f) {
+        sp74 += -camera->unk_54.orientationVector[0] * camera->unk_54.surfaceDistance[2] * 1;
+        sp70 += -camera->unk_54.orientationVector[1] * camera->unk_54.surfaceDistance[2] * 0.5;
+        sp6C += -camera->unk_54.orientationVector[2] * camera->unk_54.surfaceDistance[2] * 1;
     }
-    if (camera->unk_54.unk3C[0] < 0.0f) {
+    if (camera->unk_54.surfaceDistance[0] < 0.0f) {
         camera->someBitFlags = camera->someBitFlags | 4 | 2;
-        sp74 += -camera->unk_54.unk48[0] * camera->unk_54.unk3C[0] * 1.5;
-        sp70 += -camera->unk_54.unk48[1] * camera->unk_54.unk3C[0] * 1;
-        sp6C += -camera->unk_54.unk48[2] * camera->unk_54.unk3C[0] * 1.5;
+        sp74 += -camera->unk_54.unk48[0] * camera->unk_54.surfaceDistance[0] * 1.5;
+        sp70 += -camera->unk_54.unk48[1] * camera->unk_54.surfaceDistance[0] * 1;
+        sp6C += -camera->unk_54.unk48[2] * camera->unk_54.surfaceDistance[0] * 1.5;
     }
-    if (camera->unk_54.unk3C[1] < 0.0f) {
+    if (camera->unk_54.surfaceDistance[1] < 0.0f) {
         camera->someBitFlags = camera->someBitFlags | 4 | 2;
-        sp74 += -camera->unk_54.unk54[0] * camera->unk_54.unk3C[1] * 1.5;
-        sp70 += -camera->unk_54.unk54[1] * camera->unk_54.unk3C[1] * 1;
-        sp6C += -camera->unk_54.unk54[2] * camera->unk_54.unk3C[1] * 1.5;
+        sp74 += -camera->unk_54.unk54[0] * camera->unk_54.surfaceDistance[1] * 1.5;
+        sp70 += -camera->unk_54.unk54[1] * camera->unk_54.surfaceDistance[1] * 1;
+        sp6C += -camera->unk_54.unk54[2] * camera->unk_54.surfaceDistance[1] * 1.5;
     }
     if ((temp_t7 == 0) && ((camera->someBitFlags & 2) != 2)) {
         camera->unk_AC = camera->unk_2C;
@@ -740,7 +740,7 @@ void func_8001E45C(Camera *camera, Player *player, s8 arg2) {
     if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||
     ((player->effects & 0x4000) == 0x4000) || ((player->effects & 0x80000) == 0x80000) ||
     ((player->effects & 0x800000) == 0x800000) || (((player->effects & 0x20) == 0x20) && (player->unk_078 != 0)) ||
-    (player->unk_110.unk3C[0] <= 0.0f) || (player->unk_110.unk3C[1] <= 0.0f) || ((player->effects & 0x20000) == 0x20000)) {
+    (player->unk_110.surfaceDistance[0] <= 0.0f) || (player->unk_110.surfaceDistance[1] <= 0.0f) || ((player->effects & 0x20000) == 0x20000)) {
         func_8001CCEC(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     } else {
         adjust_angle(&camera->unk_2C, (s16) (player->rotation[1] + camera->unk_B0), var_a3);
@@ -862,7 +862,7 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
     if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||
     ((player->effects & 0x4000) == 0x4000) || ((player->effects & 0x80000) == 0x80000) ||
     ((player->effects & 0x800000) == 0x800000) || (((player->effects & 0x20) == 0x20) && (player->unk_078 != 0)) ||
-    (player->unk_110.unk3C[0] <= 0.0f) || (player->unk_110.unk3C[1] <= 0.0f) || ((player->effects & 0x20000) == 0x20000)) {
+    (player->unk_110.surfaceDistance[0] <= 0.0f) || (player->unk_110.surfaceDistance[1] <= 0.0f) || ((player->effects & 0x20000) == 0x20000)) {
         func_8001D944(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     } else {
         adjust_angle(&camera->unk_2C, (s16) (player->rotation[1] + camera->unk_B0), var_a3);

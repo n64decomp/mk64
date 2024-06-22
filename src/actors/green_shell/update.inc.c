@@ -147,7 +147,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
             shell->pos[2] += shell->velocity[2];
             func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], somePos2[0], somePos2[1], somePos2[2]);
             func_802B4E30((struct Actor *) shell);
-            if ((shell->unk30.unk3C[0] < 0.0f) || (shell->unk30.unk3C[1] < 0.0f)) {
+            if ((shell->unk30.surfaceDistance[0] < 0.0f) || (shell->unk30.surfaceDistance[1] < 0.0f)) {
                 shell_collision(&shell->unk30, shell->velocity);
                 func_800C98B8(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));
                 shell->flags |= 0x80;

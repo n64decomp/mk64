@@ -5106,14 +5106,14 @@ void func_80066BAC(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     UNUSED s32 stackPadding;
 
     if ((player->unk_258[arg2].unk_01C == 1) && (player->unk_258[arg2].unk_038 != 0x00FF)) {
-        if (player->unk_110.unk3C[2] >= 300.0f) {
+        if (player->unk_110.surfaceDistance[2] >= 300.0f) {
             spDC[1] = player->pos[1] + 5.0f;
         } else {
             spDC[1] = player->pos[1] - 3.0f;
         }
         spDC[2] = player->pos[2] + (coss(player->unk_048[arg3]) * -10.0f);
         spDC[0] = player->pos[0] + (sins(player->unk_048[arg3]) * -10.0f);
-        if (player->unk_110.unk3C[2] >= 300.0f) {
+        if (player->unk_110.surfaceDistance[2] >= 300.0f) {
             spD4[0] = cameras[arg3].rot[0] - 0x4000;
         } else {
             spD4[0] = 0;

@@ -4881,39 +4881,39 @@ void func_800139E4(f32 arg0, f32 arg1, s32 arg2, s32 arg3, VehicleStuff *vehicle
     u16 waypointOffset;
     s32 numWaypoints = gWaypointCountByPathIndex[0];
     for (i = 0; i < arg2; i++) {
-            waypointOffset = (((i * numWaypoints) / arg2) + arg3) % numWaypoints;
-            veh = &vehicle[i];
-            temp_v0 = &waypointList[waypointOffset];
-            veh->position[0] = (f32) temp_v0->posX;
-            veh->position[1] = (f32) temp_v0->posY;
-            veh->position[2] = (f32) temp_v0->posZ;
-            veh->actorIndex = -1;
-            veh->waypointIndex = waypointOffset;
-            veh->unused = 0;
-            veh->velocity[0] = 0.0f;
-            veh->velocity[1] = 0.0f;
-            veh->velocity[2] = 0.0f;
-            veh->someFlags = 0;
-            veh->someFlagsTheSequel = 0;
-            if (gModeSelection == TIME_TRIALS) {
-                veh->someType = (i % 3);
-            } else {
-                veh->someType = random_int(3);
-            }
-            veh->someMultiplierTheSequel = (f32) ((f64) (f32) (veh->someType - 1) * 0.6);
-            if (((gCCSelection > CC_50) || (gModeSelection == TIME_TRIALS)) && (veh->someType == 2)) {
-                veh->someMultiplier = arg0;
-            } else {
-                veh->someMultiplier = arg1;
-            }
-            veh->rotation[0] = 0;
-            veh->rotation[2] = 0;
-            if (D_8016347A == 0) {
-                veh->rotation[1] = func_8000D6D0(veh->position, (s16*)&veh->waypointIndex, veh->someMultiplier, veh->someMultiplierTheSequel, 0, 3);
-            } else {
-                veh->rotation[1] = func_8000D940(veh->position, (s16*)&veh->waypointIndex, veh->someMultiplier, veh->someMultiplierTheSequel, 0);
-            }
+        waypointOffset = (((i * numWaypoints) / arg2) + arg3) % numWaypoints;
+        veh = &vehicle[i];
+        temp_v0 = &waypointList[waypointOffset];
+        veh->position[0] = (f32) temp_v0->posX;
+        veh->position[1] = (f32) temp_v0->posY;
+        veh->position[2] = (f32) temp_v0->posZ;
+        veh->actorIndex = -1;
+        veh->waypointIndex = waypointOffset;
+        veh->unused = 0;
+        veh->velocity[0] = 0.0f;
+        veh->velocity[1] = 0.0f;
+        veh->velocity[2] = 0.0f;
+        veh->someFlags = 0;
+        veh->someFlagsTheSequel = 0;
+        if (gModeSelection == TIME_TRIALS) {
+            veh->someType = (i % 3);
+        } else {
+            veh->someType = random_int(3);
         }
+        veh->someMultiplierTheSequel = (f32) ((f64) (f32) (veh->someType - 1) * 0.6);
+        if (((gCCSelection > CC_50) || (gModeSelection == TIME_TRIALS)) && (veh->someType == 2)) {
+            veh->someMultiplier = arg0;
+        } else {
+            veh->someMultiplier = arg1;
+        }
+        veh->rotation[0] = 0;
+        veh->rotation[2] = 0;
+        if (D_8016347A == 0) {
+            veh->rotation[1] = func_8000D6D0(veh->position, (s16*)&veh->waypointIndex, veh->someMultiplier, veh->someMultiplierTheSequel, 0, 3);
+        } else {
+            veh->rotation[1] = func_8000D940(veh->position, (s16*)&veh->waypointIndex, veh->someMultiplier, veh->someMultiplierTheSequel, 0);
+        }
+    }
     D_801631C8 = 10;
 }
 

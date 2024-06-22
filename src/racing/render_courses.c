@@ -34,10 +34,10 @@ s32 func_80290C20(Camera *camera) {
     if (camera->unk_54.unk34 == 0) {
         return 1;
     }
-    if ((camera->unk_54.unk30 == 1) && (camera->unk_54.unk3C[0] < 3.0f)) {
+    if ((camera->unk_54.unk30 == 1) && (camera->unk_54.surfaceDistance[0] < 3.0f)) {
         return 1;
     }
-    if ((camera->unk_54.unk32 == 1) && (camera->unk_54.unk3C[1] < 3.0f)) {
+    if ((camera->unk_54.unk32 == 1) && (camera->unk_54.surfaceDistance[1] < 3.0f)) {
         return 1;
     }
     return 0;
@@ -123,12 +123,12 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
             if (sp1E == 255) {
                 if (temp_v0_3 == 255) {
                     index = arg1->pathCounter;
-                } else if (player->unk_110.unk3C[2] > 30.0f) {
+                } else if (player->unk_110.surfaceDistance[2] > 30.0f) {
                     index = arg1->pathCounter;
                 } else { 
                     index = temp_v0_3;
                 }
-            } else if (camera->unk_54.unk3C[2] > 30.0f) {
+            } else if (camera->unk_54.surfaceDistance[2] > 30.0f) {
                 index = arg1->pathCounter;
             } else { 
                 index = sp1E;
@@ -161,7 +161,7 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
                 default:
                     if (temp_v0_3 == 255) {
                         index = arg1->pathCounter;
-                    } else if (player->unk_110.unk3C[2] > 30.0f) {
+                    } else if (player->unk_110.surfaceDistance[2] > 30.0f) {
                         index = arg1->pathCounter;
                     } else { 
                         index = temp_v0_3;
@@ -171,7 +171,7 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
         }
     } else {
         index = func_802ABD40(camera->unk_54.unk3A);
-        if (camera->unk_54.unk3C[2] > 30.0f) {
+        if (camera->unk_54.surfaceDistance[2] > 30.0f) {
             index = arg1->pathCounter;
         } else if (index == 255) { 
             index = arg1->pathCounter;

@@ -339,9 +339,9 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->tyres[BACK_LEFT].baseHeight = 0.0f;
     player->tyres[BACK_RIGHT].baseHeight = 0.0f;
 
-    player->unk_110.unk3C[0] = 0.0f;
-    player->unk_110.unk3C[1] = 0.0f;
-    player->unk_110.unk3C[2] = 0.0f;
+    player->unk_110.surfaceDistance[0] = 0.0f;
+    player->unk_110.surfaceDistance[1] = 0.0f;
+    player->unk_110.surfaceDistance[2] = 0.0f;
     player->unk_110.unk48[0] = 0.0f;
     player->unk_110.unk48[1] = 0.0f;
     player->unk_110.unk48[2] = 0.0f;

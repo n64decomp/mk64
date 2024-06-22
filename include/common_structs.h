@@ -143,7 +143,7 @@ typedef struct {
     /* 0x08 */ u16 unk38;
     // This may be an index to the tilemap?
     /* 0x0A */ u16 unk3A;
-    /* 0x0C */ Vec3f unk3C;
+    /* 0x0C */ Vec3f surfaceDistance; // Appears to be distance from actor to surface for zx, yx, and zy planes.
     /* 0x18 */ Vec3f unk48;
     /* 0x24 */ Vec3f unk54;
     /* 0x30 */ Vec3f orientationVector;

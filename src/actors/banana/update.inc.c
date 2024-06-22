@@ -101,13 +101,13 @@ void update_actor_banana(struct BananaActor *banana) {
         } else {
             func_802ADDC8(&banana->unk30, banana->boundingBoxSize + 1.0f, banana->pos[0], banana->pos[1], banana->pos[2]);
             banana->unk30.unk34 = 1;
-            if ((banana->unk30.unk34 != 0) && (banana->unk30.unk3C[2] < 0.0f)) {
+            if ((banana->unk30.unk34 != 0) && (banana->unk30.surfaceDistance[2] < 0.0f)) {
                 someOtherVelocity[0] = -banana->unk30.orientationVector[0];
                 someOtherVelocity[1] = -banana->unk30.orientationVector[1];
                 someOtherVelocity[2] = -banana->unk30.orientationVector[2];
-                banana->pos[0] += someOtherVelocity[0] * banana->unk30.unk3C[2];
-                banana->pos[1] += someOtherVelocity[1] * banana->unk30.unk3C[2];
-                banana->pos[2] += someOtherVelocity[2] * banana->unk30.unk3C[2];
+                banana->pos[0] += someOtherVelocity[0] * banana->unk30.surfaceDistance[2];
+                banana->pos[1] += someOtherVelocity[1] * banana->unk30.surfaceDistance[2];
+                banana->pos[2] += someOtherVelocity[2] * banana->unk30.surfaceDistance[2];
                 banana->flags &= ~0x1000;
                 banana->state = 4;
             }
