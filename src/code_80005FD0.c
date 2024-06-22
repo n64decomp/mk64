@@ -577,7 +577,7 @@ s32 func_80006018(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f3
     return 0;
 }
 
-void func_80006114(Vec3f arg0, Vec3f arg1, s16 arg2) {
+void move_to_point_direction(Vec3f newPos, Vec3f oldPos, s16 orientationY) {
     f32 x_dist;
     f32 z_dist;
     f32 temp1;
@@ -586,16 +586,16 @@ void func_80006114(Vec3f arg0, Vec3f arg1, s16 arg2) {
     f32 cosine;
 
     if (gIsMirrorMode != 0) {
-        arg2 = -arg2;
+        orientationY = -orientationY;
     }
-    x_dist = arg0[0] - arg1[0];
-    z_dist = arg0[2] - arg1[2];
-    sine = sins(arg2);
-    cosine = coss(arg2);
+    x_dist = newPos[0] - oldPos[0];
+    z_dist = newPos[2] - oldPos[2];
+    sine = sins(orientationY);
+    cosine = coss(orientationY);
     temp1 = ((x_dist * cosine) + (z_dist * sine));
     temp2 = ((z_dist * cosine) - (x_dist * sine));
-    arg0[0] = arg1[0] + temp1;
-    arg0[2] = arg1[2] + temp2;
+    newPos[0] = oldPos[0] + temp1;
+    newPos[2] = oldPos[2] + temp2;
 }
 
 s32 func_800061DC(Vec3f pos, f32 arg1, s32 flags) {
@@ -4572,7 +4572,7 @@ void update_vehicle_trains(void) {
             sp90[0] = gTrainList[i].locomotive.position[0];
             sp90[1] = (f32) ((f64) gTrainList[i].locomotive.position[1] + 65.0);
             sp90[2] = (f32) ((f64) gTrainList[i].locomotive.position[2] + 25.0);
-            func_80006114(sp90, gTrainList[i].locomotive.position, orientationYUpdate);
+            move_to_point_direction(sp90, gTrainList[i].locomotive.position, orientationYUpdate);
             func_800755FC(i, sp90, 1.1f);
         }
 
@@ -4770,12 +4770,12 @@ void update_vehicle_paddle_boats(void) {
                 sp78[0] = (f32) ((f64) paddleBoat->position[0] - 30.0);
                 sp78[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
                 sp78[2] = (f32) ((f64) paddleBoat->position[2] + 45.0);
-                func_80006114(sp78, paddleBoat->position, paddleBoat->rotY);
+                move_to_point_direction(sp78, paddleBoat->position, paddleBoat->rotY);
                 func_80075A6C(i, sp78, 1.1f);
                 sp78[0] = (f32) ((f64) paddleBoat->position[0] + 30.0);
                 sp78[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
                 sp78[2] = (f32) ((f64) paddleBoat->position[2] + 45.0);
-                func_80006114(sp78, paddleBoat->position, paddleBoat->rotY);
+                move_to_point_direction(sp78, paddleBoat->position, paddleBoat->rotY);
                 func_80075A6C(i, sp78, 1.1f);
             }
             if (random_int(100) == 0) {
@@ -4873,14 +4873,14 @@ void func_80013854(Player *player) {
     }
 }
 
-void determine_toad_turnpike_vehicle_speed(f32 speedA, f32 speedB, s32 arg2, s32 arg3, VehicleStuff *vehicleList, TrackWaypoint *waypointList) {
+void determine_toad_turnpike_vehicle_speed(f32 speedA, f32 speedB, s32 numVehicles, s32 arg3, VehicleStuff *vehicleList, TrackWaypoint *waypointList) {
     VehicleStuff *veh;
     TrackWaypoint *temp_v0;
     s32 i;
     u16 waypointOffset;
     s32 numWaypoints = gWaypointCountByPathIndex[0];
-    for (i = 0; i < arg2; i++) {
-            waypointOffset = (((i * numWaypoints) / arg2) + arg3) % numWaypoints;
+    for (i = 0; i < numVehicles; i++) {
+            waypointOffset = (((i * numWaypoints) / numVehicles) + arg3) % numWaypoints;
             veh = &vehicleList[i];
             temp_v0 = &waypointList[waypointOffset];
             veh->position[0] = (f32) temp_v0->posX;
@@ -4949,7 +4949,7 @@ f32 func_80013C74(s16 someType, s16 waypointIndex) {
     return var_f2;
 }
 
-void update_vehicle_on_waypoint(VehicleStuff *vehicle) {
+void update_vehicle_follow_waypoint(VehicleStuff *vehicle) {
     f32 temp_f0_2;
     f32 temp_f0_3;
     f32 sp5C;
@@ -5222,7 +5222,7 @@ void func_800147E0(void) {
 void update_vehicle_box_trucks(void) {
     s32 loopIndex;
     for (loopIndex = 0; loopIndex < NUM_RACE_BOX_TRUCKS; loopIndex++) {
-        update_vehicle_on_waypoint(&gBoxTruckList[loopIndex]);
+        update_vehicle_follow_waypoint(&gBoxTruckList[loopIndex]);
     }
 }
 
@@ -5249,7 +5249,7 @@ void func_80014934(void) {
 void update_vehicle_school_bus(void) {
     s32 loopIndex;
     for (loopIndex = 0; loopIndex < NUM_RACE_SCHOOL_BUSES; loopIndex++) {
-        update_vehicle_on_waypoint(&gSchoolBusList[loopIndex]);
+        update_vehicle_follow_waypoint(&gSchoolBusList[loopIndex]);
     }
 }
 
@@ -5276,7 +5276,7 @@ void func_80014A88(void) {
 void update_vehicle_tanker_trucks(void) {
     s32 loopIndex;
     for (loopIndex = 0; loopIndex < NUM_RACE_TANKER_TRUCKS; loopIndex++) {
-        update_vehicle_on_waypoint(&gTankerTruckList[loopIndex]);
+        update_vehicle_follow_waypoint(&gTankerTruckList[loopIndex]);
     }
 }
 
@@ -5303,7 +5303,7 @@ void func_80014BDC(void) {
 void update_vehicle_cars(void) {
     s32 loopIndex;
     for (loopIndex = 0; loopIndex < NUM_RACE_CARS; loopIndex++) {
-        update_vehicle_on_waypoint(&gCarList[loopIndex]);
+        update_vehicle_follow_waypoint(&gCarList[loopIndex]);
     }
 }
 

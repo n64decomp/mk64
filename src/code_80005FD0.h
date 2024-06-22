@@ -62,7 +62,7 @@ typedef struct {
 s16  get_angle_path(Vec3f, Vec3f);
 
 s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
-void func_80006114(Vec3f, Vec3f, s16);
+void move_to_point_direction(Vec3f, Vec3f, s16);
 s32  func_800061DC(Vec3f, f32, s32);
 void func_800065D0(s32, Player*);
 void set_places(void);
@@ -169,7 +169,7 @@ void update_vehicle_paddle_boats(void);
 void func_80013854(Player*);
 void determine_toad_turnpike_vehicle_speed(f32, f32, s32, s32, VehicleStuff*, TrackWaypoint*);
 f32  func_80013C74(s16, s16);
-void update_vehicle_on_waypoint(VehicleStuff*);
+void update_vehicle_follow_waypoint(VehicleStuff*);
 void func_80013F7C(s32, Player*, VehicleStuff*, f32, f32, s32, u32);
 
 f32  func_800145A8(s16, f32, s16);
