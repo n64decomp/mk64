@@ -63,7 +63,7 @@ s16  func_80005FD0(Vec3f, Vec3f);
 
 s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
 void func_80006114(Vec3f, Vec3f, s16);
-s32  func_800061DC(Vec3f, f32, s32);
+s32  set_vehicle_render_distance_flags(Vec3f, f32, s32);
 void func_800065D0(s32, Player*);
 void set_places(void);
 

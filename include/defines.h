@@ -384,3 +384,14 @@ enum KART_AI_BEHAVIOURS {
 #define COLOR_BLACK  GPACK_RGB888(0, 0, 0)
 
 #endif // DEFINES_H
+
+
+/**
+ * 
+ * Collision mesh flags
+ * 
+*/
+
+#define GRID_SIZE 32
+
+#define HORIZONTAL_SURFACE 0x2000

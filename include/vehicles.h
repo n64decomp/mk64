@@ -24,6 +24,9 @@
 #define NUM_TIME_TRIAL_TANKER_TRUCKS (NUM_RACE_TANKER_TRUCKS + 1)
 #define NUM_TIME_TRIAL_CARS          (NUM_RACE_CARS + 1)
 
+
+#define RENDER_VEHICLE 1
+
 typedef struct {
 	/* 0x00 */ s16 isActive; // Only used for Tender and Passenger Cars, unused for Locomotives
 	/* 0x02 */ s16 compilerPadding;

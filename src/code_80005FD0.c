@@ -598,61 +598,69 @@ void func_80006114(Vec3f arg0, Vec3f arg1, s16 arg2) {
     arg0[2] = arg1[2] + temp2;
 }
 
-s32 func_800061DC(Vec3f arg0, f32 arg1, s32 arg2) {
-    Camera *var_a0_2;
-    Player *var_a0;
-    f32 temp_f0;
-    f32 temp_f2;
-    f32 temp_f12;
-    f32 temp_f14;
-    s32 var_a1;
-    s32 var_v1;
-    s8 var_v0;
+s32 set_vehicle_render_distance_flags(Vec3f vehiclePos, f32 renderDistance, s32 flags) {
+    Camera *camera;
+    Player *player;
+    f32 x;
+    f32 z;
+    f32 playerX;
+    f32 playerZ;
+    s32 i;
+    s32 flag;
+    s8 numScreens;
 
-    temp_f0 = arg0[0];
-    temp_f2 = arg0[2];
+    x = vehiclePos[0];
+    z = vehiclePos[2];
     switch (gActiveScreenMode) {
     case SCREEN_MODE_1P:
-        var_v0 = 1;
+        numScreens = 1;
         break;
     case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
     case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-        var_v0 = 2;
+        numScreens = 2;
         break;
     case SCREEN_MODE_3P_4P_SPLITSCREEN:
-        var_v0 = gPlayerCount;
+        numScreens = gPlayerCount;
         break;
     default:
-        var_v0 = 1;
+        numScreens = 1;
         break;
     }
-    var_v1 = arg2;
+    flag = flags;
     if (!gDemoMode) {
-        var_a0 = gPlayerOne;
-        for(var_a1 = 0; var_a1 < gPlayerCount; var_a1++, var_a0++) {
-            if (((var_a0->type & 0x4000) != 0) && ((var_a0->type & 0x1000) == 0)) {
-                temp_f12 = var_a0->pos[0];
-                temp_f14 = var_a0->pos[2];
-                if (((temp_f12 - arg1) < temp_f0) && (temp_f0 < (temp_f12 + arg1)) && ((temp_f14 - arg1) < temp_f2) && (temp_f2 < (temp_f14 + arg1))) {
-                    var_v1 |=  (1 << var_a1);
+        player = gPlayerOne;
+        // Checks distance from each player.
+        for(i = 0; i < gPlayerCount; i++, player++) {
+            if (((player->type & PLAYER_HUMAN) != 0) && ((player->type & PLAYER_KART_AI) == 0)) {
+                playerX = player->pos[0];
+                playerZ = player->pos[2];
+
+                // Is player within render distance
+                if (((playerX - renderDistance) < x) &&
+                    ((playerX + renderDistance) > x) &&
+                    ((playerZ - renderDistance) < z) &&
+                    ((playerZ + renderDistance) > z)) {
+                    // Sets the render flag to on for each player.
+                    flag |=  (RENDER_VEHICLE << i);
                 } else {
-                    var_v1 &= ~(1 << var_a1);
+                    // Sets the render flag to off for each player.
+                    flag &= ~(RENDER_VEHICLE << i);
                 }
             }
         }
-    } else {
-        var_a0_2 = camera1;
-        for(var_a1 = 0; var_a1 < var_v0; var_a1++, var_a0_2++) {
-            temp_f12 = var_a0_2->pos[0];
-            temp_f14 = var_a0_2->pos[2];
-            if (((temp_f12 - arg1) < temp_f0) && (temp_f0 < (temp_f12 + arg1)) && ((temp_f14 - arg1) < temp_f2) && (temp_f2 < (temp_f14 + arg1))) {
-                var_v1 |=  (1 << var_a1);
+    } else { // Demo cinematic uses the camera to check render distance
+        camera = camera1;
+        for(i = 0; i < numScreens; i++, camera++) {
+            playerX = camera->pos[0];
+            playerZ = camera->pos[2];
+            if (((playerX - renderDistance) < x) && (x < (playerX + renderDistance)) && ((playerZ - renderDistance) < z) && (z < (playerZ + renderDistance))) {
+                flag |=  (RENDER_VEHICLE << i);
             } else {
-                var_v1 &= ~(1 << var_a1);
+                flag &= ~(RENDER_VEHICLE << i);
             }
         }
     }
-    return var_v1;
+    return flag;
 }
 
 void func_800065D0(s32 playerId, Player *player) {
@@ -4568,7 +4576,7 @@ void update_vehicle_trains(void) {
             func_800C98B8(gTrainList[i].locomotive.position, gTrainList[i].locomotive.velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x0D));
         }
 
-        gTrainList[i].someFlags = func_800061DC(gTrainList[i].locomotive.position, 2000.0f, gTrainList[i].someFlags);
+        gTrainList[i].someFlags = set_vehicle_render_distance_flags(gTrainList[i].locomotive.position, 2000.0f, gTrainList[i].someFlags);
         if ((((s16) D_80162FCC % 5) == 0) && (gTrainList[i].someFlags != 0)) {
             sp90[0] = gTrainList[i].locomotive.position[0];
             sp90[1] = (f32) ((f64) gTrainList[i].locomotive.position[1] + 65.0);
@@ -4695,7 +4703,7 @@ void func_800131DC(s32 playerId) {
     D_801634D8[playerId] = 0;
     if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
         if ((!(D_801631E0[playerId] != 0))
-           || (func_800061DC(gPlayers[playerId].pos, 1000.0f, 0))) {
+           || (set_vehicle_render_distance_flags(gPlayers[playerId].pos, 1000.0f, 0))) {
 
             if ((isCrossingTriggeredByIndex[1] == 1) 
                 && ((D_801637BC[1]) > 240)) {
@@ -4766,7 +4774,7 @@ void update_vehicle_paddle_boats(void) {
             temp_f28 = paddleBoat->position[1];
             temp_f30 = paddleBoat->position[2];
             func_8000DBAC(paddleBoat->position, (s16*)&paddleBoat->waypointIndex, paddleBoat->someMultiplier);
-            paddleBoat->someFlags = func_800061DC(paddleBoat->position, 2000.0f, paddleBoat->someFlags);
+            paddleBoat->someFlags = set_vehicle_render_distance_flags(paddleBoat->position, 2000.0f, paddleBoat->someFlags);
             if ((((s16) D_801630FC % 10) == 0) && (paddleBoat->someFlags != 0)) {
                 sp78[0] = (f32) ((f64) paddleBoat->position[0] - 30.0);
                 sp78[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
@@ -5052,12 +5060,12 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
                          (temp_f22 > -20.0)) && (temp_f22 < 20.0) && (((temp_f14) > -300.0)) && ((temp_f14) < 300.0)) {
                         if ((D_801631C8 > 0) && (vehicle->someFlags == 0)) {
                             D_801631C8 -= 1;
-                            vehicle->someFlags |= (1 << playerId);
+                            vehicle->someFlags |= (RENDER_VEHICLE << playerId);
                             func_800C9D80(vehicle->position, vehicle->velocity, soundBits);
                         }
                     } else {
                         if (vehicle->someFlags != 0) {
-                            vehicle->someFlags &= ~(1 << playerId);
+                            vehicle->someFlags &= ~(RENDER_VEHICLE << playerId);
                             if (vehicle->someFlags == 0) {
                                 D_801631C8 += 1;
                                 func_800C9EF4(vehicle->position, soundBits);
@@ -5068,12 +5076,12 @@ void func_80013F7C(s32 playerId, Player *player, VehicleStuff *vehicle, f32 arg3
                     if (((temp_f12) > -200.0) && ((temp_f12) < 200.0) && ((temp_f22 > -20.0)) && (temp_f22 < 20.0) && (
                         ((temp_f14) > -200.0)) && ((temp_f14) < 200.0)) {
                         if (!(vehicle->someFlagsTheSequel & ((1 << playerId)))) {
-                            
+
                             s32 var_s1 = 0;
                             u16 path = gWaypointCountByPathIndex[0]; 
                             s32 t1;
                             s32 t2;
-                            
+
                             switch (D_8016347A) {
                             case 0:
                                 t1 = func_80007BF8(vehicle->waypointIndex, gNearestWaypointByPlayerId[playerId], 10, 0, path);
