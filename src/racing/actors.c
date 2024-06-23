@@ -1156,7 +1156,7 @@ void spawn_course_actors(void) {
 
 /**
  * @brief Loads actor textures, course specific actor textures.
- * Calls to init_course_vehicles and place_course_actors
+ * Calls to spawn_course_vehicles and place_course_actors
  * 
  */
 void init_actors_and_load_textures(void) {
@@ -1257,7 +1257,7 @@ void init_actors_and_load_textures(void) {
     init_red_shell_texture();
     destroy_all_actors();
     spawn_course_actors();
-    init_course_vehicles();
+    spawn_course_vehicles();
 }
 
 void play_sound_before_despawn(struct Actor *actor) {

@@ -873,9 +873,9 @@ void func_8002934C(Player *player, Camera *camera, s8 screenId, s8 playerId) {
     }
     else {
         if (((player->animFrameSelector[screenId]) >= 0) && ((player->animFrameSelector[screenId]) < 0x101)) {
-            var_f0 = player->copy_y - player->pos[1];
+            var_f0 = player->oldPos[1] - player->pos[1];
         } else {
-            var_f0 = player->pos[1] - player->copy_y;
+            var_f0 = player->pos[1] - player->oldPos[1];
         }
         player->unk_0D4[screenId] = (s16) ((s32) (((f64) func_802B7C40(var_f0 / temp_f2)) * 0.5));
     }
@@ -1090,7 +1090,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
         move_s16_towards(&player->slopeAccel, func_802B7C40(temp_f0_2 / temp_f2_3), 0.5f);
     }
     else {
-        temp_f0_2 = player->copy_y - arg2;
+        temp_f0_2 = player->oldPos[1] - arg2;
         temp_v0 = func_802B7C40(temp_f0_2 / temp_f2_3);
         if (temp_f0_2 >= 0.0f) {
             temp_v0 /= 4;
@@ -1170,7 +1170,7 @@ void func_8002A194(Player *player, f32 arg1, f32 arg2, f32 arg3) {
         temp_f0 = (player->unk_1F8 - player->unk_1FC);
         move_s16_towards(&player->slopeAccel, func_802B7C40(temp_f0 / var_f20), 0.5f);
     } else {
-        temp_f0 = player->copy_y - arg2;
+        temp_f0 = player->oldPos[1] - arg2;
         temp_v0 = func_802B7C40(temp_f0 / var_f20);
         if (temp_f0 >= 0.0f) {
             var_a1 = temp_v0 * 2;
@@ -1696,7 +1696,7 @@ void func_8002B9CC(Player *player, s8 arg1, UNUSED s32 arg2) {
                 func_8008C73C(player, arg1);
             }
         }
-        temp = (-(s16)get_angle_between_two_vectors(player->pos, &player->copy_x));
+        temp = (-(s16)get_angle_between_two_vectors(player->pos, &player->oldPos[0]));
         temp2 = (player->rotation[1] - player->unk_0C0);
         temp = temp - temp2;
         player->unk_234 = temp / 182;
@@ -1733,9 +1733,9 @@ void func_8002BB9C(Player *player, f32 *arg1, f32 *arg2, UNUSED s8 arg3, UNUSED 
     
     mtxf_translate_vec3f_mat3(sp58, sp64);
     
-    sp4C[0] = player->copy_x;
+    sp4C[0] = player->oldPos[0];
     sp4C[1] = 0;
-    sp4C[2] = player->copy_z;
+    sp4C[2] = player->oldPos[2];
     
     mtxf_translate_vec3f_mat3(sp4C, sp64);
 
@@ -2273,7 +2273,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 screenId, s8 player
         spB0 = -1 * player->kartGravity;
         spAC = 0 * (player->unk_064[2] + sp16C[2]);
     }
-    temp_f2_2 = ((player->copy_z - player->pos[2]) * coss(player->rotation[1] + player->unk_0C0)) + (-(player->copy_x - player->pos[0]) * sins(player->rotation[1] + player->unk_0C0));
+    temp_f2_2 = ((player->oldPos[2] - player->pos[2]) * coss(player->rotation[1] + player->unk_0C0)) + (-(player->oldPos[0] - player->pos[0]) * sins(player->rotation[1] + player->unk_0C0));
     if (temp_f2_2 > 0.1) {
         player->unk_044 |= 8;
     } else {
@@ -2325,9 +2325,9 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 screenId, s8 player
     posY = player->pos[1];
     posZ = player->pos[2];
         
-    player->copy_x = player->pos[0];
-    player->copy_z = player->pos[2];
-    player->copy_y = player->pos[1];
+    player->oldPos[0] = player->pos[0];
+    player->oldPos[2] = player->pos[2];
+    player->oldPos[1] = player->pos[1];
     nextX = posX + player->velocity[0] + D_8018CE10[playerId].unk_04[0];
     nextY = posY + player->velocity[1];
     nextZ = posZ + player->velocity[2] + D_8018CE10[playerId].unk_04[2];
@@ -2340,7 +2340,7 @@ void func_8002D268(Player *player, UNUSED Camera *camera, s8 screenId, s8 player
         nextY += player->kartHopVelocity;
         nextY -= 0.02;
     }
-    func_802AD950(&player->unk_110, player->boundingBoxSize, nextX, nextY, nextZ, player->copy_x, player->copy_y, player->copy_z);
+    func_802AD950(&player->unk_110, player->boundingBoxSize, nextX, nextY, nextZ, player->oldPos[0], player->oldPos[1], player->oldPos[2]);
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
     player->unk_05C = 1.0f;
@@ -2504,7 +2504,7 @@ void func_8002E4C4(Player *player) {
     player->kartHopVelocity = 0.0f;
     player->pos[1] = func_802AE1C0(player->pos[0], D_80164510[player_index] + 10.0f, player->pos[2]) + player->boundingBoxSize;
     if (((player->pos[1] - D_80164510[player_index]) > 1200.0f) || ((player->pos[1] - D_80164510[player_index]) < -1200.0f)) {
-        player->pos[1] = player->copy_y;
+        player->pos[1] = player->oldPos[1];
     }
     player->velocity[1] = 0.0f;
 }
@@ -2596,16 +2596,16 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 screenId, s8 player
     posY = player->pos[1];
     posZ = player->pos[2];
         
-    player->copy_x = player->pos[0];
-    player->copy_y = player->pos[1];
-    player->copy_z = player->pos[2];
+    player->oldPos[0] = player->pos[0];
+    player->oldPos[1] = player->pos[1];
+    player->oldPos[2] = player->pos[2];
         
     spD0 = posX + player->velocity[0] + D_8018CE10[playerId].unk_04[0];
     spCC = posY + player->velocity[1];
     spC8 = posZ + player->velocity[2] + D_8018CE10[playerId].unk_04[2];
     func_8002AAC0(player);
     spCC += player->kartHopVelocity;
-    func_802AD950(&player->unk_110, player->boundingBoxSize, spD0, spCC, spC8, player->copy_x, player->copy_y, player->copy_z);
+    func_802AD950(&player->unk_110, player->boundingBoxSize, spD0, spCC, spC8, player->oldPos[0], player->oldPos[1], player->oldPos[2]);
     player->effects |= 8;
     player->unk_0C2 += 1;
     player->unk_058 = 0.0f;
@@ -2789,9 +2789,9 @@ void control_kart_ai_movement(Player *player, UNUSED Camera *camera, s8 arg2, s8
     sp68[2] = player->velocity[2];
     sp68[0] += (((spF4[0] + sp84) + spD0[0]) - (sp68[0] * (0.12 * player->kartFriction))) / 6000.0;
     sp68[2] += (((spF4[2] + sp7C) + spD0[2]) - (sp68[2] * (0.12 * player->kartFriction))) / 6000.0;
-    player->copy_x = player->pos[0];
-    player->copy_y = test;
-    player->copy_z = player->pos[2];
+    player->oldPos[0] = player->pos[0];
+    player->oldPos[1] = test;
+    player->oldPos[2] = player->pos[2];
     spCC = player->pos[0] + player->velocity[0];
     spC4 = player->pos[2] + player->velocity[2];
     player->unk_0C0 = 0;
@@ -2870,9 +2870,9 @@ void func_8002F730(Player *player, UNUSED Camera *camera, UNUSED s8 screenId, s8
     spB8 = player->pos[2];
 
 
-    player->copy_x = player->pos[0];
-    player->copy_y = player->pos[1];
-    player->copy_z = player->pos[2];
+    player->oldPos[0] = player->pos[0];
+    player->oldPos[1] = player->pos[1];
+    player->oldPos[2] = player->pos[2];
 
     spCC = player->velocity[0] + spC0;
     spC8 = player->velocity[1] + sp44;
@@ -2881,7 +2881,7 @@ void func_8002F730(Player *player, UNUSED Camera *camera, UNUSED s8 screenId, s8
     func_8002AAC0(player);
 
     spC8 += player->kartHopVelocity;
-    func_802AD950(&player->unk_110, player->boundingBoxSize, spCC, spC8, spC4, player->copy_x, player->copy_y, player->copy_z);
+    func_802AD950(&player->unk_110, player->boundingBoxSize, spCC, spC8, spC4, player->oldPos[0], player->oldPos[1], player->oldPos[2]);
     player->unk_058 = 0.0f;
     player->unk_05C = 1.0f;
     player->unk_060 = 0.0f;
@@ -5002,9 +5002,9 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId) 
     posY = player->pos[1];
     posZ = player->pos[2];
 
-    player->copy_x = player->pos[0];
-    player->copy_y = player->pos[1];
-    player->copy_z = player->pos[2];
+    player->oldPos[0] = player->pos[0];
+    player->oldPos[1] = player->pos[1];
+    player->oldPos[2] = player->pos[2];
 
     spEC = posX + player->velocity[0];
     spE8 = posY + player->velocity[1];
@@ -5012,7 +5012,7 @@ void func_80038C6C(Player *player, UNUSED Camera *camera, s8 arg2, s8 playerId) 
     func_8002AAC0(player);
     spE8 += player->kartHopVelocity;
     spE8 -= 0.02;
-    func_802AD950(&player->unk_110, player->boundingBoxSize, spEC, spE8, spE4, player->copy_x, player->copy_y, player->copy_z);
+    func_802AD950(&player->unk_110, player->boundingBoxSize, spEC, spE8, spE4, player->oldPos[0], player->oldPos[1], player->oldPos[2]);
     player->unk_058 = 0;
     player->unk_060 = 0;
     player->unk_05C = 1.0f;
