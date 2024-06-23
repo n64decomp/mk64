@@ -4577,6 +4577,7 @@ void update_vehicle_trains(void) {
         }
 
         gTrainList[i].someFlags = set_vehicle_render_distance_flags(gTrainList[i].locomotive.position, 2000.0f, gTrainList[i].someFlags);
+        // Renders locomotive smoke on all screens if any player is within range.
         if ((((s16) D_80162FCC % 5) == 0) && (gTrainList[i].someFlags != 0)) {
             sp90[0] = gTrainList[i].locomotive.position[0];
             sp90[1] = (f32) ((f64) gTrainList[i].locomotive.position[1] + 65.0);
