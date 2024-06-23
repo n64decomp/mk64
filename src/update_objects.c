@@ -1517,31 +1517,31 @@ void func_8007542C(s32 arg0) {
     }
 }
 
-void func_80075574(s32 objectIndex, Vec3f arg1, f32 arg2) {
+void init_train_smoke(s32 objectIndex, Vec3f pos, f32 arg2) {
     Objects *temp_v1;
     UNUSED s32 pad[2];
 
     init_object(objectIndex, 0);
     temp_v1 = &gObjectList[objectIndex];
-    temp_v1->origin_pos[0] = arg1[0];
-    temp_v1->origin_pos[1] = arg1[1];
-    temp_v1->origin_pos[2] = arg1[2];
+    temp_v1->origin_pos[0] = pos[0];
+    temp_v1->origin_pos[1] = pos[1];
+    temp_v1->origin_pos[2] = pos[2];
     temp_v1->velocity[1] = arg2;
     temp_v1->type = random_int(0x0064U) + 0x1E;
 }
 
-s32 func_800755FC(s32 arg0, Vec3f arg1, f32 arg2) {
+s32 spawn_train_smoke(s32 trainIndex, Vec3f pos, f32 arg2) {
     s32 objectIndex;
 
-    if (arg0 == 0) {
+    if (trainIndex == 0) {
         objectIndex = add_unused_obj_index(gObjectParticle2, &gNextFreeObjectParticle2, gObjectParticle2_SIZE);
         if (objectIndex != NULL_OBJECT_ID) {
-            func_80075574(objectIndex, arg1, arg2);
+            init_train_smoke(objectIndex, pos, arg2);
         }
     } else {
         objectIndex = add_unused_obj_index(gObjectParticle3, &gNextFreeObjectParticle3, gObjectParticle3_SIZE);
         if (objectIndex != NULL_OBJECT_ID) {
-            func_80075574(objectIndex, arg1, arg2);
+            init_train_smoke(objectIndex, pos, arg2);
         }
     }
     return objectIndex;
@@ -1637,7 +1637,7 @@ void update_train_smoke(void) {
     }
 }
 
-void func_800759EC(s32 objectIndex, Vec3f arg1, f32 arg2) {
+void init_ferry_smoke(s32 objectIndex, Vec3f arg1, f32 velocity) {
     Objects *temp_v0;
 
     init_object(objectIndex, 0);
@@ -1645,23 +1645,23 @@ void func_800759EC(s32 objectIndex, Vec3f arg1, f32 arg2) {
     temp_v0->origin_pos[0] = arg1[0];
     temp_v0->origin_pos[1] = arg1[1];
     temp_v0->origin_pos[2] = arg1[2];
-    temp_v0->velocity[1] = arg2;
+    temp_v0->velocity[1] = velocity;
     temp_v0->type = 0x00FF;
     temp_v0->unk_0A2 = 0x0096;
 }
 
-s32 func_80075A6C(s32 arg0, Vec3f arg1, f32 arg2) {
+s32 spawn_ferry_smoke(s32 ferryIndex, Vec3f pos, f32 velocity) {
     s32 objectIndex;
 
-    if (arg0 == 0) {
+    if (ferryIndex == 0) {
         objectIndex = add_unused_obj_index(gObjectParticle2, &gNextFreeObjectParticle2, gObjectParticle2_SIZE);
         if (objectIndex != NULL_OBJECT_ID) {
-            func_800759EC(objectIndex, arg1, arg2);
+            init_ferry_smoke(objectIndex, pos, velocity);
         }
     } else {
         objectIndex = add_unused_obj_index(gObjectParticle3, &gNextFreeObjectParticle3, gObjectParticle3_SIZE);
         if (objectIndex != NULL_OBJECT_ID) {
-            func_800759EC(objectIndex, arg1, arg2);
+            init_ferry_smoke(objectIndex, pos, velocity);
         }
     }
     

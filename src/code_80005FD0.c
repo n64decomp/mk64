@@ -4542,7 +4542,7 @@ void update_vehicle_trains(void) {
     f32 temp_f22;
     s32 i;
     s32 j;
-    Vec3f sp90;
+    Vec3f smokePos;
 
     D_80162FCC += 1;
 
@@ -4569,11 +4569,11 @@ void update_vehicle_trains(void) {
 
         gTrainList[i].someFlags = func_800061DC(gTrainList[i].locomotive.position, 2000.0f, gTrainList[i].someFlags);
         if ((((s16) D_80162FCC % 5) == 0) && (gTrainList[i].someFlags != 0)) {
-            sp90[0] = gTrainList[i].locomotive.position[0];
-            sp90[1] = (f32) ((f64) gTrainList[i].locomotive.position[1] + 65.0);
-            sp90[2] = (f32) ((f64) gTrainList[i].locomotive.position[2] + 25.0);
-            move_to_point_direction(sp90, gTrainList[i].locomotive.position, orientationYUpdate);
-            func_800755FC(i, sp90, 1.1f);
+            smokePos[0] = gTrainList[i].locomotive.position[0];
+            smokePos[1] = (f32) ((f64) gTrainList[i].locomotive.position[1] + 65.0);
+            smokePos[2] = (f32) ((f64) gTrainList[i].locomotive.position[2] + 25.0);
+            move_to_point_direction(smokePos, gTrainList[i].locomotive.position, orientationYUpdate);
+            spawn_train_smoke(i, smokePos, 1.1f);
         }
 
         car = &gTrainList[i].tender;
@@ -4771,12 +4771,12 @@ void update_vehicle_paddle_boats(void) {
                 sp78[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
                 sp78[2] = (f32) ((f64) paddleBoat->position[2] + 45.0);
                 move_to_point_direction(sp78, paddleBoat->position, paddleBoat->rotY);
-                func_80075A6C(i, sp78, 1.1f);
+                spawn_ferry_smoke(i, sp78, 1.1f);
                 sp78[0] = (f32) ((f64) paddleBoat->position[0] + 30.0);
                 sp78[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
                 sp78[2] = (f32) ((f64) paddleBoat->position[2] + 45.0);
                 move_to_point_direction(sp78, paddleBoat->position, paddleBoat->rotY);
-                func_80075A6C(i, sp78, 1.1f);
+                spawn_ferry_smoke(i, sp78, 1.1f);
             }
             if (random_int(100) == 0) {
                 if (random_int(2) == 0) {
