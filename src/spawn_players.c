@@ -110,7 +110,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     }
 
     player->pos[0] = startingRow;
-    ret = func_802AE1C0(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
+    ret = spawn_actor_on_surface(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
     player->pos[2] = startingColumn;
     player->pos[1] = ret;
     player->copy_rotation_x = startingRow;

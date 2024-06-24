@@ -572,7 +572,7 @@ s32 init_triple_shell(TripleShellParent *parent, Player *player, s16 shellType, 
     startingPos[0] = player->pos[0];
     startingPos[1] = player->pos[1];
     startingPos[2] = player->pos[2];
-    func_802AD950(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
+    actor_terrain_collision(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
     func_802B4E30((struct Actor *)shell);
     shell->flags = 0x9000;
     switch (shellType) {
@@ -622,7 +622,7 @@ s32 use_green_shell_item(Player *player) {
     startingPos[0] = player->pos[0];
     startingPos[1] = player->pos[1];
     startingPos[2] = player->pos[2];
-    func_802AD950(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
+    actor_terrain_collision(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
     func_802B4E30((struct Actor *)shell);
     shell->state = HELD_SHELL;
     shell->rotVelocity = 0;
@@ -661,7 +661,7 @@ s32 use_red_shell_item(Player *player) {
     startingPos[0] = player->pos[0];
     startingPos[1] = player->pos[1];
     startingPos[2] = player->pos[2];
-    func_802AD950(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
+    actor_terrain_collision(&shell->unk30, shell->boundingBoxSize + 1.0f, shell->pos[0], shell->pos[1], shell->pos[2], startingPos[0], startingPos[1], startingPos[2]);
     func_802B4E30((struct Actor *)shell);
     shell->state = HELD_SHELL;
     shell->rotVelocity = 0;
@@ -708,7 +708,7 @@ void func_802B2914(struct BananaBunchParent *banana_bunch, Player *player, s16 b
         startingPos[0] = player->pos[0];
         startingPos[1] = player->pos[1];
         startingPos[2] = player->pos[2];
-        func_802AD950(&newBanana->unk30, newBanana->boundingBoxSize + 1.0f, newBanana->pos[0], newBanana->pos[1], newBanana->pos[2], startingPos[0], startingPos[1], startingPos[2]);
+        actor_terrain_collision(&newBanana->unk30, newBanana->boundingBoxSize + 1.0f, newBanana->pos[0], newBanana->pos[1], newBanana->pos[2], startingPos[0], startingPos[1], startingPos[2]);
         func_802B4E30((struct Actor*)newBanana);
         newBanana->flags = 0x9000;
         newBanana->playerId = player - gPlayerOne;

@@ -85,7 +85,7 @@ void func_802B3B44(struct ShellActor *shell) {
             shell->pos[0] += temp_f12_3;
             shell->pos[1] += temp_f14_2;
             shell->pos[2] += temp_f16_2;
-            func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], origPos[0], origPos[1], origPos[2]);
+            actor_terrain_collision(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], origPos[0], origPos[1], origPos[2]);
             func_802B4E30((struct Actor *) shell);
         }
     } else {
@@ -142,7 +142,7 @@ void func_802B3E7C(struct ShellActor *shell, Player *player) {
     if (player->effects & BOO_EFFECT) {
         destroy_destructable_actor((struct Actor *) shell);
     } else {
-        func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], newPosition[0], newPosition[1], newPosition[2]);
+        actor_terrain_collision(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], newPosition[0], newPosition[1], newPosition[2]);
         func_802B4E30((struct Actor *) shell);
         func_802B4104(shell);
     }
@@ -385,7 +385,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
         shell->pos[0] += shell->velocity[0];
         shell->pos[1] += shell->velocity[1];
         shell->pos[2] += shell->velocity[2];
-        func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], origPos[0], origPos[1], origPos[2]);
+        actor_terrain_collision(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], origPos[0], origPos[1], origPos[2]);
         func_802B4E30((struct Actor *) shell);
         func_802B4104(shell);
         break;
@@ -430,7 +430,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
             shell->pos[0] = player->pos[0] + somePosVel[0];
             shell->pos[1] = player->pos[1] + somePosVel[1];
             shell->pos[2] = player->pos[2] + somePosVel[2];
-            func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], origPos[0], origPos[1], origPos[2]);
+            actor_terrain_collision(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], origPos[0], origPos[1], origPos[2]);
             func_802B4E30((struct Actor *) shell);
         }
         break;

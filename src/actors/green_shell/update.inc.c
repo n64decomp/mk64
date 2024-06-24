@@ -145,7 +145,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
             shell->pos[0] += shell->velocity[0];
             shell->pos[1] += shell->velocity[1];
             shell->pos[2] += shell->velocity[2];
-            func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], somePos2[0], somePos2[1], somePos2[2]);
+            actor_terrain_collision(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], somePos2[0], somePos2[1], somePos2[2]);
             func_802B4E30((struct Actor *) shell);
             if ((shell->unk30.surfaceDistance[0] < 0.0f) || (shell->unk30.surfaceDistance[1] < 0.0f)) {
                 shell_collision(&shell->unk30, shell->velocity);
@@ -170,7 +170,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
                 shell->pos[0] = player->pos[0] + somePosVel[0];
                 shell->pos[1] = player->pos[1] + somePosVel[1];
                 shell->pos[2] = player->pos[2] + somePosVel[2];
-                func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], somePos2[0], somePos2[1], somePos2[2]);
+                actor_terrain_collision(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], somePos2[0], somePos2[1], somePos2[2]);
                 func_802B4E30((struct Actor *) shell);
             }
             break;

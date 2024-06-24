@@ -511,7 +511,7 @@ s32 func_8008847C(s32 objectIndex) {
     sp2C = 0;
     set_object_flag_status_false(objectIndex, 0x00800000);
     if (is_obj_flag_status_active(objectIndex, 0x00000400) != 0) {
-        func_802ADDC8(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
+        check_bounding_collision(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
         if (D_8018C3B0.unk34 == 1) {
             sp2C = 1;
             set_object_flag_status_true(objectIndex, 0x00800000);
@@ -527,7 +527,7 @@ s32 func_80088538(s32 objectIndex) {
     sp2C = 0;
     set_object_flag_status_false(objectIndex, 0x00800000);
     if (is_obj_flag_status_active(objectIndex, 0x00000400) != 0) {
-        func_802ADDC8(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
+        check_bounding_collision(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
         if (D_8018C3B0.unk34 == 1) {
             sp2C = 1;
             set_object_flag_status_true(objectIndex, 0x00800000);
@@ -545,7 +545,7 @@ s32 func_8008861C(s32 objectIndex) {
     sp2C = 0;
     set_object_flag_status_false(objectIndex, 0x00800000);
     if (is_obj_flag_status_active(objectIndex, 0x00000400) != 0) {
-        func_802ADDC8(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
+        check_bounding_collision(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
         if (D_8018C3B0.unk34 == 1) {
             sp2C = 1;
             set_object_flag_status_true(objectIndex, 0x00800000);
@@ -559,7 +559,7 @@ s32 func_8008861C(s32 objectIndex) {
 }
 
 void func_800886F4(s32 objectIndex) {
-    func_802ADDC8(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
+    check_bounding_collision(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
     if (D_8018C3B0.unk34 == 1) {
         set_object_flag_status_true(objectIndex, 0x00800000);
         gObjectList[objectIndex].surfaceHeight = calculate_surface_height(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
@@ -571,7 +571,7 @@ void func_800886F4(s32 objectIndex) {
 }
 
 void func_800887C0(s32 objectIndex) {
-    func_802ADDC8(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
+    check_bounding_collision(&D_8018C3B0, 10.0f, gObjectList[objectIndex].pos[0], 20.0f, gObjectList[objectIndex].pos[2]);
     if (D_8018C3B0.unk34 == 1) {
         set_object_flag_status_true(objectIndex, 0x00800000);
         gObjectList[objectIndex].surfaceHeight = calculate_surface_height(gObjectList[objectIndex].pos[0], 0.0f, gObjectList[objectIndex].pos[2], D_8018C3B0.unk3A);
@@ -1419,7 +1419,7 @@ UNUSED s32 func_8008A870(Player *player) {
 }
 
 s32 func_8008A890(Camera *camera) {
-    return func_802ABD40(camera->unk_54.unk3A);
+    return func_802ABD40(camera->collision.unk3A);
 }
 
 s32 func_8008A8B0(s16 arg0, s16 arg1) {

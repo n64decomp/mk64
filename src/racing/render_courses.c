@@ -31,13 +31,13 @@ s16 D_802B87D4 = 0;
 s16 currentScreenSection = 0;
 
 s32 func_80290C20(Camera *camera) {
-    if (camera->unk_54.unk34 == 0) {
+    if (camera->collision.unk34 == 0) {
         return 1;
     }
-    if ((camera->unk_54.unk30 == 1) && (camera->unk_54.surfaceDistance[0] < 3.0f)) {
+    if ((camera->collision.unk30 == 1) && (camera->collision.surfaceDistance[0] < 3.0f)) {
         return 1;
     }
-    if ((camera->unk_54.unk32 == 1) && (camera->unk_54.surfaceDistance[1] < 3.0f)) {
+    if ((camera->collision.unk32 == 1) && (camera->collision.surfaceDistance[1] < 3.0f)) {
         return 1;
     }
     return 0;
@@ -116,7 +116,7 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     arg1->playerDirection = var_a3;
 
     if (D_80152300[camera - camera1] == 1) {
-        sp1E = func_802ABD40(camera->unk_54.unk3A);
+        sp1E = func_802ABD40(camera->collision.unk3A);
         temp_v0_3 = func_802ABD40(player->unk_110.unk3A);
         index = sp1E - temp_v0_3;
         if ((index < 2) && (index >= -1)) {
@@ -128,7 +128,7 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
                 } else { 
                     index = temp_v0_3;
                 }
-            } else if (camera->unk_54.surfaceDistance[2] > 30.0f) {
+            } else if (camera->collision.surfaceDistance[2] > 30.0f) {
                 index = arg1->pathCounter;
             } else { 
                 index = sp1E;
@@ -170,8 +170,8 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
             }
         }
     } else {
-        index = func_802ABD40(camera->unk_54.unk3A);
-        if (camera->unk_54.surfaceDistance[2] > 30.0f) {
+        index = func_802ABD40(camera->collision.unk3A);
+        if (camera->collision.surfaceDistance[2] > 30.0f) {
             index = arg1->pathCounter;
         } else if (index == 255) { 
             index = arg1->pathCounter;

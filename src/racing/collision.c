@@ -113,8 +113,7 @@ f32 func_802AAB4C(Player *player) {
     }
 }
 
-// ZX
-s32 func_802AAE4C(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
+s32 check_collision_zx(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
     CollisionTriangle *triangle = &gCollisionMesh[index];
     UNUSED f32 pad;
     f32 x3;
@@ -217,8 +216,7 @@ s32 func_802AAE4C(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
     return 0;
 }
 
-// YX
-s32 func_802AB288(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
+s32 check_collision_yx(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
     CollisionTriangle *triangle = &gCollisionMesh[index];
     UNUSED f32 pad[6];
     f32 x3;
@@ -324,8 +322,7 @@ s32 func_802AB288(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
     return 0;
 }
 
-// ZY
-s32 func_802AB6C4(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
+s32 check_collision_zy(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ, u16 index) {
     CollisionTriangle *triangle = &gCollisionMesh[index];
     s32 bool = TRUE;
     UNUSED f32 pad[7];
@@ -434,8 +431,7 @@ s32 func_802AB6C4(Collision *collision, f32 boundingBoxSize, f32 posX, f32 posY,
     return 0;
 }
 
-// ZX
-s32 func_802ABB04(f32 posX, f32 posZ, u16 index) {
+s32 check_horizontally_colliding_with_triangle(f32 posX, f32 posZ, u16 index) {
     CollisionTriangle *triangle = &gCollisionMesh[index];
     UNUSED f32 pad;
     f32 x3;
@@ -600,7 +596,7 @@ void shell_collision(Collision *collision, Vec3f velocity) {
 /**
  * Adjusts the position of pos2 based on pos1 but in the orthogonal direction to pos2.
  */
-void func_802AC114(Vec3f pos1, f32 boundingBoxSize, Vec3f pos2, UNUSED f32 unk) {
+void adjust_pos_orthogonally(Vec3f pos1, f32 boundingBoxSize, Vec3f pos2, UNUSED f32 unk) {
     f32 x1;
     f32 y1;
     f32 z1;
@@ -636,7 +632,7 @@ void func_802AC114(Vec3f pos1, f32 boundingBoxSize, Vec3f pos2, UNUSED f32 unk) 
     }
 }
 
-s32 func_802AC22C(KartTyre *tyre) {
+UNUSED s32 detect_tyre_collision(KartTyre *tyre) {
     Collision collision;
     UNUSED s32 pad[12];
     s32 courseLengthX;
@@ -663,19 +659,19 @@ s32 func_802AC22C(KartTyre *tyre) {
     tyreZ = tyre->pos[2];
     switch (tyre->surfaceFlags) {                              /* irregular */
     case 0x80:
-        if (func_802AB6C4(&collision, 5.0f, tyreX, tyreY, tyreZ, (u16) (s32) tyre->collisionMeshIndex) == 1) {
+        if (check_collision_zy(&collision, 5.0f, tyreX, tyreY, tyreZ, (u16) (s32) tyre->collisionMeshIndex) == 1) {
             tyre->baseHeight = calculate_surface_height(tyreX, tyreY, tyreZ, tyre->collisionMeshIndex);
             return 1;
         }
         break;
     case 0x40:
-        if (func_802AAE4C(&collision, 5.0f, tyreX, tyreY, tyreZ, (u16) (s32) tyre->collisionMeshIndex) == 1) {
+        if (check_collision_zx(&collision, 5.0f, tyreX, tyreY, tyreZ, (u16) (s32) tyre->collisionMeshIndex) == 1) {
             tyre->baseHeight = calculate_surface_height(tyreX, tyreY, tyreZ, tyre->collisionMeshIndex);
             return 1;
         }
         break;
     case 0x20:
-        if (func_802AB288(&collision, 5.0f, tyreX, tyreY, tyreZ, (u16) (s32) tyre->collisionMeshIndex) == 1) {
+        if (check_collision_yx(&collision, 5.0f, tyreX, tyreY, tyreZ, (u16) (s32) tyre->collisionMeshIndex) == 1) {
             tyre->baseHeight = calculate_surface_height(tyreX, tyreY, tyreZ, tyre->collisionMeshIndex);
             return 1;
         }
@@ -710,7 +706,7 @@ s32 func_802AC22C(KartTyre *tyre) {
         meshIndex = gCollisionIndices[sectionIndex];
         if (gCollisionMesh[meshIndex].flags & 0x4000) {
             if (meshIndex != tyre->collisionMeshIndex) {
-                if (func_802AAE4C(&collision, 5.0f, tyreX, tyreY, tyreZ, meshIndex) == 1) {
+                if (check_collision_zx(&collision, 5.0f, tyreX, tyreY, tyreZ, meshIndex) == 1) {
                     tyre->baseHeight = calculate_surface_height(tyreX, tyreY, tyreZ, meshIndex);
                     tyre->surfaceType = gCollisionMesh[meshIndex].surfaceType;
                     tyre->surfaceFlags = 0x40;
@@ -725,7 +721,7 @@ s32 func_802AC22C(KartTyre *tyre) {
             }
         } else if (gCollisionMesh[meshIndex].flags & 0x8000) {
             if ((gCollisionMesh[meshIndex].normalX != 1.0f) && (meshIndex != tyre->collisionMeshIndex)) {
-                if (func_802AB6C4(&collision, 5.0f, tyreX, tyreY, tyreZ, meshIndex) == 1) {
+                if (check_collision_zy(&collision, 5.0f, tyreX, tyreY, tyreZ, meshIndex) == 1) {
                     tyre->baseHeight = calculate_surface_height(tyreX, tyreY, tyreZ, meshIndex);
                     tyre->surfaceType = gCollisionMesh[meshIndex].surfaceType;
                     tyre->surfaceFlags = 0x80;
@@ -734,7 +730,7 @@ s32 func_802AC22C(KartTyre *tyre) {
                 }
             }
         } else if ((gCollisionMesh[meshIndex].normalZ != 1.0f) && (meshIndex != tyre->collisionMeshIndex)) {
-            if (func_802AB288(&collision, 5.0f, tyreX, tyreY, tyreZ, meshIndex) == 1) {
+            if (check_collision_yx(&collision, 5.0f, tyreX, tyreY, tyreZ, meshIndex) == 1) {
                 tyre->baseHeight = calculate_surface_height(tyreX, tyreY, tyreZ, meshIndex);
                 tyre->surfaceType = gCollisionMesh[meshIndex].surfaceType;
                 tyre->surfaceFlags = 0x20;
@@ -1222,7 +1218,7 @@ s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
     return 1;
 }
 
-u16 func_802AD950(Collision *collision, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2) {
+u16 actor_terrain_collision(Collision *collision, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2) {
     s32 courseLengthX;
     s32 courseLengthZ;
     s16 sectionIndexX;
@@ -1335,7 +1331,7 @@ u16 func_802AD950(Collision *collision, f32 boundingBoxSize, f32 x1, f32 y1, f32
     return flags;
 }
 
-u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ) {
+u16 check_bounding_collision(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY, f32 posZ) {
     u16 numTriangles;
     s32 courseLengthX;
     s32 courseLengthZ;
@@ -1358,17 +1354,17 @@ u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY,
     collision->surfaceDistance[2] = 1000.0f;
     flags = 0;
     if (collision->unk3A < gCollisionMeshCount) {
-        if (func_802AAE4C(collision, boundingBoxSize, posX, posY, posZ, collision->unk3A) == 1) {
+        if (check_collision_zx(collision, boundingBoxSize, posX, posY, posZ, collision->unk3A) == 1) {
             flags |= 0x4000;
         }
     }
     if (collision->unk36 < gCollisionMeshCount) {
-        if (func_802AB288(collision, boundingBoxSize, posX, posY, posZ, collision->unk36) == 1) {
+        if (check_collision_yx(collision, boundingBoxSize, posX, posY, posZ, collision->unk36) == 1) {
             flags |= 0x2000;
         }
     }
     if (collision->unk38 < gCollisionMeshCount) {
-        if (func_802AB6C4(collision, boundingBoxSize, posX, posY, posZ, collision->unk38 ) == 1) {
+        if (check_collision_zy(collision, boundingBoxSize, posX, posY, posZ, collision->unk38 ) == 1) {
             flags |= 0x8000;
         }
     }
@@ -1414,7 +1410,7 @@ u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY,
         if (gCollisionMesh[meshIndex].flags & 0x4000) {
             if (!(flags & 0x4000)) {
                 if (meshIndex != collision->unk3A) {
-                    if (func_802AAE4C(collision, boundingBoxSize, posX, posY, posZ, meshIndex) == 1) {
+                    if (check_collision_zx(collision, boundingBoxSize, posX, posY, posZ, meshIndex) == 1) {
                         flags |= 0x4000;
                     }
                 }
@@ -1422,7 +1418,7 @@ u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY,
         } else if (gCollisionMesh[meshIndex].flags & 0x8000) {
             if (!(flags & 0x8000)) {
                 if (meshIndex != collision->unk38) {
-                    if (func_802AB6C4(collision, boundingBoxSize, posX, posY, posZ, meshIndex) == 1) {
+                    if (check_collision_zy(collision, boundingBoxSize, posX, posY, posZ, meshIndex) == 1) {
                         flags |= 0x8000;
                     }
                 }
@@ -1430,7 +1426,7 @@ u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY,
         } else {
             if (!(flags & 0x2000)) {
                 if (meshIndex != collision->unk36) {
-                    if (func_802AB288(collision, boundingBoxSize, posX, posY, posZ, meshIndex) == 1) {
+                    if (check_collision_yx(collision, boundingBoxSize, posX, posY, posZ, meshIndex) == 1) {
                         flags |= 0x2000;
                     }
                 }
@@ -1443,7 +1439,11 @@ u16 func_802ADDC8(Collision* collision, f32 boundingBoxSize, f32 posX, f32 posY,
 
 extern u8 D_8014F1110;
 
-f32 func_802AE1C0(f32 posX, f32 posY, f32 posZ) {
+/**
+ * If unable to spawn actor on the surface set to -3000.0f or
+ * if outside the collision grid, spawn in the air (3000.0f).
+*/
+f32 spawn_actor_on_surface(f32 posX, f32 posY, f32 posZ) {
     f32 height;
     s16 sectionIndexX;
     s16 sectionIndexZ;
@@ -1492,7 +1492,7 @@ f32 func_802AE1C0(f32 posX, f32 posY, f32 posZ) {
 
         index = gCollisionIndices[sectionIndex];
 
-        if ((gCollisionMesh[index].flags & 0x4000) && (func_802ABB04(posX, posZ, index) == 1)) {
+        if ((gCollisionMesh[index].flags & 0x4000) && (check_horizontally_colliding_with_triangle(posX, posZ, index) == 1)) {
             height = calculate_surface_height(posX, posY, posZ, index);
             if ((height <= posY) && (phi_f20 < height)) {
                 phi_f20 = height;

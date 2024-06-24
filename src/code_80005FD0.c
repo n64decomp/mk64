@@ -2517,7 +2517,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
                 return waypointIndex;
             }
             if (playerId == ((s32) D_80163488 % 8)) {
-                func_802ADDC8(&player->unk_110, 10.0f, posX, posY, posZ);
+                check_bounding_collision(&player->unk_110, 10.0f, posX, posY, posZ);
                 D_80163318[playerId] = func_802ABD40(player->unk_110.unk3A);
                 sp5E = func_8000C884(posX, posY, posZ, waypointIndex, pathIndex, D_80163318[playerId]);
                 if (sp5E == -1) {
@@ -2541,7 +2541,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
                     player->pos[0] = posX;
                     player->pos[1] = posY;
                     player->pos[2] = posZ;
-                    func_802ADDC8(&player->unk_110, 10.0f, posX, posY, posZ);
+                    check_bounding_collision(&player->unk_110, 10.0f, posX, posY, posZ);
                     D_80163318[playerId] = func_802ABD40(player->unk_110.unk3A);
                 }
             }
@@ -2594,7 +2594,7 @@ s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32 *pathIndex) {
     UNUSED s32 pad;
     Collision sp24;
 
-    func_802ADDC8(&sp24, 10.0f, posX, posY, posZ);
+    check_bounding_collision(&sp24, 10.0f, posX, posY, posZ);
     return func_8000C0BC(posX, posY, posZ, func_802ABD40(sp24.unk3A), pathIndex);
 }
 
@@ -2912,7 +2912,7 @@ void set_bomb_kart_spawn_positions(void) {
         case COURSE_YOSHI_VALLEY:
             startingXPos = temp_s1->startingXPos;
             startingZPos = temp_s1->startingZPos;
-            startingYPos = func_802AE1C0(startingXPos, 2000.0f, startingZPos);
+            startingYPos = spawn_actor_on_surface(startingXPos, 2000.0f, startingZPos);
             break;
         case COURSE_AWARD_CEREMONY:
             temp_v0 = &D_80164550[3][temp_s1->waypointIndex];
@@ -2950,7 +2950,7 @@ void set_bomb_kart_spawn_positions(void) {
         gBombKarts[var_s3].unk_4A = 0;
         gBombKarts[var_s3].unk_4C = 1;
         gBombKarts[var_s3].yPos = startingYPos;
-        func_802ADDC8(&D_80164038[var_s3], 2.0f, startingXPos, startingYPos, startingZPos);
+        check_bounding_collision(&D_80164038[var_s3], 2.0f, startingXPos, startingYPos, startingZPos);
     }
 }
 
@@ -3153,7 +3153,7 @@ void func_8000DF8C(s32 bombKartId) {
                     if (var_f20 < (-1000.0)) {
                         var_f20 = bombKart->bombPos[1];
                     }
-                    func_802ADDC8(temp_a0_4, 10.0f, var_f22, var_f20, var_f24);
+                    check_bounding_collision(temp_a0_4, 10.0f, var_f22, var_f20, var_f24);
                 }
                 break;
             case 4:
@@ -3894,14 +3894,14 @@ void func_80010E6C(s32 pathIndex) {
 }
 
 f32 func_80010F40(f32 arg0, f32 arg1, f32 arg2, UNUSED s32 arg3, UNUSED s32 arg4) {
-    arg1 = func_802AE1C0(arg0, 2000.0f, arg2);
-    func_802ADDC8(&D_80162E70, 1.0f, arg0, arg1, arg2);
+    arg1 = spawn_actor_on_surface(arg0, 2000.0f, arg2);
+    check_bounding_collision(&D_80162E70, 1.0f, arg0, arg1, arg2);
     return arg1;
 }
 
 f32 func_80010FA0(f32 arg0, f32 arg1, f32 arg2, UNUSED s32 arg3, UNUSED s32 arg4) {
-    arg1 = func_802AE1C0(arg0, (f32) ((f64) arg1 + 30.0), arg2);
-    func_802ADDC8(&D_80162E70, 10.0f, arg0, arg1, arg2);
+    arg1 = spawn_actor_on_surface(arg0, (f32) ((f64) arg1 + 30.0), arg2);
+    check_bounding_collision(&D_80162E70, 10.0f, arg0, arg1, arg2);
     return arg1;
 }
 
@@ -4318,7 +4318,7 @@ void func_800120C8(void) {
 
     temp = D_80163598;
     D_8016359C = func_8001168C(temp, waypoint, i - 1);
-    D_80162EB0 = func_802AE1C0(temp[0].x, 2000.0f, temp[0].z);
+    D_80162EB0 = spawn_actor_on_surface(temp[0].x, 2000.0f, temp[0].z);
 }
 
 void func_80012190(void) {
@@ -5338,7 +5338,7 @@ void func_80014D30(s32 cameraId, s32 pathIndex) {
 
     cameraWaypoint = gNearestWaypointByCameraId[cameraId];
     temp_v0 = &D_80164550[pathIndex][cameraWaypoint];
-    func_802ADDC8(&cameras[cameraId].unk_54, 10.0f, (f32) temp_v0->posX, (f32) temp_v0->posY + 30.0f, (f32) temp_v0->posZ);
+    check_bounding_collision(&cameras[cameraId].collision, 10.0f, (f32) temp_v0->posX, (f32) temp_v0->posY + 30.0f, (f32) temp_v0->posZ);
 }
 
 void func_80014DE4(s32 arg0) {
@@ -5525,7 +5525,7 @@ void func_80015390(Camera *camera, UNUSED Player *player, UNUSED s32 arg2) {
         adjust_angle(&camera->unk_2C, temp_s1->rotation[1], var_a2);
     }
     func_8001D794(temp_s1, camera, sp64, &sp84, &sp80, &sp7C, camera->unk_2C);
-    func_802ADDC8(&camera->unk_54, 10.0f, sp84, sp80, sp7C);
+    check_bounding_collision(&camera->collision, 10.0f, sp84, sp80, sp7C);
     camera->lookAt[0] = sp64[0];
     camera->lookAt[1] = sp64[1];
     camera->lookAt[2] = sp64[2];
@@ -5559,7 +5559,7 @@ void func_80015544(s32 playerId, f32 arg1, s32 cameraId, s32 pathIndex) {
 
     temp_f2 = (f32) D_80164550[pathIndex][gNearestWaypointByCameraId[cameraId]].posY;
 
-    temp_f12 = func_802AE1C0(D_80162FA0[0], (f32) (temp_f2 + 30.0), D_80162FA0[2]);
+    temp_f12 = spawn_actor_on_surface(D_80162FA0[0], (f32) (temp_f2 + 30.0), D_80162FA0[2]);
     if ((temp_f12 < (temp_f2 - 20.0)) || (temp_f12 >= 3000.0)) {
         D_80164618[cameraId] = (f32) (temp_f2 + 10.0);
     } else {
@@ -5710,7 +5710,7 @@ void func_80015C94(Camera *camera, UNUSED Player *unusedPlayer, UNUSED s32 arg2,
     }
     camera->pos[0] = midX;
     camera->pos[2] = midZ;
-    temp_f2_2 = func_802AE1C0(midX, (midY + 30.0), midZ);
+    temp_f2_2 = spawn_actor_on_surface(midX, (midY + 30.0), midZ);
     if ((temp_f2_2 < (midY - 20.0)) || (temp_f2_2 >= 3000.0)) {
         camera->pos[1] = midY + 10.0;
     } else {
@@ -5836,7 +5836,7 @@ void func_80016494(Camera *camera, UNUSED Player *unusedPlayer, UNUSED s32 arg2,
     }
     camera->pos[0] = midX;
     camera->pos[2] = midZ;
-    temp_f2_5 = func_802AE1C0(midX, midY + 30.0, midZ);
+    temp_f2_5 = spawn_actor_on_surface(midX, midY + 30.0, midZ);
     if ((temp_f2_5 < (midY - 20.0)) || (temp_f2_5 >= 3000.0)) {
         camera->pos[1] = midY + 10.0;
     } else {
@@ -6356,7 +6356,7 @@ void func_800188F4(Camera *camera, UNUSED Player *unusePlayer, UNUSED s32 arg2, 
     }
     camera->pos[0] = midX;
     camera->pos[2] = midZ;
-    temp_f2_4 = func_802AE1C0(midX, midY + 30.0, midZ);
+    temp_f2_4 = spawn_actor_on_surface(midX, midY + 30.0, midZ);
     if ((temp_f2_4 < (midY - 20.0)) || (temp_f2_4 >= 3000.0)) {
         camera->pos[1] = midY + 10.0;
     } else {
@@ -6393,7 +6393,7 @@ void func_80019118(s32 playerId, f32 arg1, s32 cameraId, UNUSED s16 pathIndex) {
     D_80164638[cameraId] = D_80162FA0[2];
     temp_f2 = (f32) D_80164550[0][gNearestWaypointByCameraId[cameraId]].posY;
 
-    temp_f12 = func_802AE1C0(D_80162FA0[0], (f32) (temp_f2 + 30.0), D_80162FA0[2]);
+    temp_f12 = spawn_actor_on_surface(D_80162FA0[0], (f32) (temp_f2 + 30.0), D_80162FA0[2]);
 
     if ((temp_f12 < (temp_f2 - 20.0)) || (temp_f12 >= 3000.0)) {
         D_80164618[cameraId] = (f32) (temp_f2 + 10.0);
@@ -7096,7 +7096,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
                 banana->velocity[1] = 0.0f;
                 banana->velocity[2] = 0.0f;
                 if (D_801631E0[playerId] == ((u16) 1)) {
-                  banana->pos[1] = func_802AE1C0(player->pos[0], (f32) (((f64) player->pos[1]) + 30.0), player->pos[2]) + (banana->boundingBoxSize + 1.0f);
+                  banana->pos[1] = spawn_actor_on_surface(player->pos[0], (f32) (((f64) player->pos[1]) + 30.0), player->pos[2]) + (banana->boundingBoxSize + 1.0f);
                 }
             }
             player->soundEffects &= ~0x00040000;
@@ -7152,7 +7152,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
                 banana->velocity[0] = 0.0f;
                 banana->velocity[1] = 0.0f;
                 banana->velocity[2] = 0.0f;
-                banana->pos[1] = func_802AE1C0(banana->pos[0], (f32) (((f64) banana->pos[1]) + 30.0), banana->pos[2]) + (banana->boundingBoxSize + 1.0f);
+                banana->pos[1] = spawn_actor_on_surface(banana->pos[0], (f32) (((f64) banana->pos[1]) + 30.0), banana->pos[2]) + (banana->boundingBoxSize + 1.0f);
             }
             player->soundEffects &= ~0x00040000;
             temp_s0->unk_00 = 0;
@@ -7360,7 +7360,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
             } else {
                 func_802A1064(fakeItemBox);
                 if (D_801631E0[playerId] == 1) {
-                  fakeItemBox->pos[1] = func_802AE1C0(fakeItemBox->pos[0], fakeItemBox->pos[1] + 30.0, fakeItemBox->pos[2]) + fakeItemBox->boundingBoxSize;
+                  fakeItemBox->pos[1] = spawn_actor_on_surface(fakeItemBox->pos[0], fakeItemBox->pos[1] + 30.0, fakeItemBox->pos[2]) + fakeItemBox->boundingBoxSize;
                 }
             }
             temp_s0->unk_00 = 0;
@@ -7496,7 +7496,7 @@ void func_8001BE78(void) {
         }
         temp_s0 = &D_80164550[i][gNearestWaypointByPlayerId[i]];
         temp_s1->pos[0] = (f32) temp_s0->posX;
-        temp_s1->pos[1] = func_802AE1C0((f32) temp_s0->posX, 2000.0f, (f32) temp_s0->posZ) + temp_s1->boundingBoxSize;
+        temp_s1->pos[1] = spawn_actor_on_surface((f32) temp_s0->posX, 2000.0f, (f32) temp_s0->posZ) + temp_s1->boundingBoxSize;
         temp_s1->pos[2] = (f32) temp_s0->posZ;
         temp_s1->rotation[1] = (s16) *D_80164590[i];
         func_8003680C(temp_s1, 0);
