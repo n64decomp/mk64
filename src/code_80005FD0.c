@@ -50,7 +50,7 @@ s32 D_80162F90[4];
 Vec3f D_80162FA0;
 Vec3f D_80162FB0;
 Vec3f D_80162FC0;
-s16 D_80162FCC;
+s16 gTrainSmokeTimer;
 s16 D_80162FCE;
 s16 D_80162FD0;
 f32 gCourseCompletionPercentByRank[NUM_PLAYERS];
@@ -70,7 +70,7 @@ s32 D_801630B8[10];
 u16 D_801630E0;
 s16 D_801630E2;
 s16 D_801630E8[10];
-s16 D_801630FC;
+s16 gFerrySmokeTimer;
 s32 D_80163100[10];
 s32 D_80163128[10];
 s32 D_80163150[10];
@@ -1667,16 +1667,16 @@ void func_80009B60(s32 playerId) {
             D_80163448 = gPathIndexByPlayerId[playerId];
             func_80008DC0(D_80163448);
             switch (gCurrentCourseId) {             /* irregular */
-            case 11:
+            case COURSE_KALAMARI_DESERT:
                 func_80012DC0(playerId, player);
                 if (playerId == 0) {
                     func_80013054();
                 }
                 break;
-            case 18:
+            case COURSE_DK_JUNGLE:
                 func_80013854(player);
                 break;
-            case 10:
+            case COURSE_TOADS_TURNPIKE:
                 func_800148C4(playerId, player);
                 func_80014A18(playerId, player);
                 func_80014B6C(playerId, player);
@@ -3437,18 +3437,18 @@ void func_8000F2DC(void) {
     D_80164430 = *gWaypointCountByPathIndex;
     switch (gCurrentCourseId) {
         case COURSE_KALAMARI_DESERT:
-            func_800120C8();
-            func_800127E0();
+            load_vehicles_waypoint_train();
+            init_vehicles_trains();
             break;
         case COURSE_DK_JUNGLE:
-            func_80012190();
-            func_800132F4();
+            load_vehicles_waypoint_ferry();
+            init_vehicles_ferry();
             break;
         case COURSE_TOADS_TURNPIKE:
-            func_800147E0();
-            func_80014934();
-            func_80014A88();
-            func_80014BDC();
+            init_vehicles_box_trucks();
+            init_vehicles_school_buses();
+            init_vehicles_trucks();
+            init_vehicles_cars();
             break;
     }
     set_bomb_kart_spawn_positions();
@@ -4294,12 +4294,12 @@ void func_80011EC0(s32 arg0, Player *player, s32 arg2, UNUSED u16 arg3) {
         } \
     }
 
-void func_800120C8(void) {
+void load_vehicles_waypoint_train(void) {
     s32 i;
     Path2D *temp;
     TrackWaypoint *waypoint = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(
-        gSegmentTable[SEGMENT_NUMBER2(d_course_kalimari_desert_track_unknown_waypoints)]
-                    + SEGMENT_OFFSET(d_course_kalimari_desert_track_unknown_waypoints));
+        gSegmentTable[SEGMENT_NUMBER2(d_course_kalimari_desert_waypoint_vehicles_train)]
+                    + SEGMENT_OFFSET(d_course_kalimari_desert_waypoint_vehicles_train));
 
     LENGHT_TRACK_WAYPOINTS(waypoint)
 
@@ -4308,19 +4308,19 @@ void func_800120C8(void) {
     D_80162EB0 = func_802AE1C0(temp[0].x, 2000.0f, temp[0].z);
 }
 
-void func_80012190(void) {
-    TrackWaypoint *tree;
+void load_vehicles_waypoint_ferry(void) {
+    TrackWaypoint *waypoint;
     s32 i;
 
-    tree = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(d_course_dks_jungle_parkway_unknown_waypoints2)] + (SEGMENT_OFFSET(d_course_dks_jungle_parkway_unknown_waypoints2)));
+    waypoint = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(d_course_dks_jungle_parkway_waypoint_vehicles_ferry)] + (SEGMENT_OFFSET(d_course_dks_jungle_parkway_waypoint_vehicles_ferry)));
 
-    LENGHT_TRACK_WAYPOINTS(tree)
+    LENGHT_TRACK_WAYPOINTS(waypoint)
 
-    gVehicle2DWaypointLength = generate_2d_path(gVehicle2DWaypoint, tree, i - 1);
+    gVehicle2DWaypointLength = generate_2d_path(gVehicle2DWaypoint, waypoint, i - 1);
     D_80162EB2 = -40;
 }
 
-void init_vehicle_on_road(VehicleStuff *vehicle) {
+void spawn_vehicle_on_road(VehicleStuff *vehicle) {
     f32 origXPos;
     UNUSED f32 pad;
     f32 origZPos;
@@ -4414,32 +4414,32 @@ void spawn_course_vehicles(void) {
     case COURSE_TOADS_TURNPIKE:
         for(loopIndex = 0; loopIndex < NUM_RACE_BOX_TRUCKS; loopIndex++) {
             tempBoxTruck = &gBoxTruckList[loopIndex];
-            init_vehicle_on_road(tempBoxTruck);
+            spawn_vehicle_on_road(tempBoxTruck);
             tempBoxTruck->actorIndex = add_actor_to_empty_slot(tempBoxTruck->position, tempBoxTruck->rotation, tempBoxTruck->velocity, ACTOR_BOX_TRUCK);
         }
         for(loopIndex = 0; loopIndex < NUM_RACE_SCHOOL_BUSES; loopIndex++) {
             tempSchoolBus = &gSchoolBusList[loopIndex];
-            init_vehicle_on_road(tempSchoolBus);
+            spawn_vehicle_on_road(tempSchoolBus);
             tempSchoolBus->actorIndex = add_actor_to_empty_slot(tempSchoolBus->position, tempSchoolBus->rotation, tempSchoolBus->velocity, ACTOR_SCHOOL_BUS);
         }
         for(loopIndex = 0; loopIndex < NUM_RACE_TANKER_TRUCKS; loopIndex++) {
             tempTankerTruck = &gTankerTruckList[loopIndex];
-            init_vehicle_on_road(tempTankerTruck);
+            spawn_vehicle_on_road(tempTankerTruck);
             tempTankerTruck->actorIndex = add_actor_to_empty_slot(tempTankerTruck->position, tempTankerTruck->rotation, tempTankerTruck->velocity, ACTOR_TANKER_TRUCK);
         }
         for(loopIndex = 0; loopIndex < NUM_RACE_CARS; loopIndex++) {
             tempCar = &gCarList[loopIndex];
-            init_vehicle_on_road(tempCar);
+            spawn_vehicle_on_road(tempCar);
             tempCar->actorIndex = add_actor_to_empty_slot(tempCar->position, tempCar->rotation, tempCar->velocity, ACTOR_CAR);
         }
         break;
     }
 }
 
-void set_vehicle_pos_waypoint(TrainCarStuff *trainCar, s16 *posXZ, u16 waypoint) {
-    trainCar->position[0] = (f32) posXZ[0];
+void set_vehicle_pos_waypoint(TrainCarStuff *trainCar, Path2D *posXZ, u16 waypoint) {
+    trainCar->position[0] = (f32) posXZ->x;
     trainCar->position[1] = (f32) D_80162EB0;
-    trainCar->position[2] = (f32) posXZ[1];
+    trainCar->position[2] = (f32) posXZ->z;
     trainCar->actorIndex = -1;
     trainCar->waypointIndex = waypoint;
     trainCar->isActive = 0;
@@ -4452,7 +4452,7 @@ void set_vehicle_pos_waypoint(TrainCarStuff *trainCar, s16 *posXZ, u16 waypoint)
  * Set waypoint spawn locations for each rolling stock
  * The railroad has 465 waypoints
  */
-void func_800127E0(void) {
+void init_vehicles_trains(void) {
     u16 waypointOffset;
     TrainCarStuff *ptr1;
     Path2D *pos;
@@ -4514,7 +4514,7 @@ void func_800127E0(void) {
     
     }
     
-    D_80162FCC = 0;
+    gTrainSmokeTimer = 0;
 }
 
 void sync_train_car_vehicle_actor(TrainCarStuff *trainCar, s16 orientationY) {
@@ -4544,7 +4544,7 @@ void update_vehicle_trains(void) {
     s32 j;
     Vec3f smokePos;
 
-    D_80162FCC += 1;
+    gTrainSmokeTimer += 1;
 
     for (i = 0; i < NUM_TRAINS; i++) {
         oldWaypointIndex = (u16) gTrainList[i].locomotive.waypointIndex;
@@ -4568,7 +4568,7 @@ void update_vehicle_trains(void) {
         }
 
         gTrainList[i].someFlags = func_800061DC(gTrainList[i].locomotive.position, 2000.0f, gTrainList[i].someFlags);
-        if ((((s16) D_80162FCC % 5) == 0) && (gTrainList[i].someFlags != 0)) {
+        if ((((s16) gTrainSmokeTimer % 5) == 0) && (gTrainList[i].someFlags != 0)) {
             smokePos[0] = gTrainList[i].locomotive.position[0];
             smokePos[1] = (f32) ((f64) gTrainList[i].locomotive.position[1] + 65.0);
             smokePos[2] = (f32) ((f64) gTrainList[i].locomotive.position[2] + 25.0);
@@ -4712,7 +4712,7 @@ void func_800131DC(s32 playerId) {
     }
 }
 
-void func_800132F4(void) {
+void init_vehicles_ferry(void) {
     PaddleBoatStuff *paddleBoat;
     s32 i;
     Path2D *temp_a2;
@@ -4738,7 +4738,7 @@ void func_800132F4(void) {
         paddleBoat->speed = 1.6666666f;
         paddleBoat->rotY = 0;
     }
-    D_801630FC = 0;
+    gFerrySmokeTimer = 0;
 }
 
 void update_vehicle_paddle_boats(void) {
@@ -4755,9 +4755,9 @@ void update_vehicle_paddle_boats(void) {
     Vec3f sp94;
     Vec3f sp88;
     UNUSED s32 pad;
-    Vec3f sp78;
+    Vec3f smokePos;
     UNUSED s32 pad2;
-    D_801630FC += 1;
+    gFerrySmokeTimer += 1;
     for (i = 0; i < NUM_ACTIVE_PADDLE_BOATS; i++) {
         paddleBoat = &gPaddleBoats[i];
         if (paddleBoat->isActive == 1) {
@@ -4766,17 +4766,17 @@ void update_vehicle_paddle_boats(void) {
             temp_f30 = paddleBoat->position[2];
             update_vehicle_following_waypoint(paddleBoat->position, (s16*)&paddleBoat->waypointIndex, paddleBoat->speed);
             paddleBoat->someFlags = func_800061DC(paddleBoat->position, 2000.0f, paddleBoat->someFlags);
-            if ((((s16) D_801630FC % 10) == 0) && (paddleBoat->someFlags != 0)) {
-                sp78[0] = (f32) ((f64) paddleBoat->position[0] - 30.0);
-                sp78[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
-                sp78[2] = (f32) ((f64) paddleBoat->position[2] + 45.0);
-                move_to_point_direction(sp78, paddleBoat->position, paddleBoat->rotY);
-                spawn_ferry_smoke(i, sp78, 1.1f);
-                sp78[0] = (f32) ((f64) paddleBoat->position[0] + 30.0);
-                sp78[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
-                sp78[2] = (f32) ((f64) paddleBoat->position[2] + 45.0);
-                move_to_point_direction(sp78, paddleBoat->position, paddleBoat->rotY);
-                spawn_ferry_smoke(i, sp78, 1.1f);
+            if ((((s16) gFerrySmokeTimer % 10) == 0) && (paddleBoat->someFlags != 0)) {
+                smokePos[0] = (f32) ((f64) paddleBoat->position[0] - 30.0);
+                smokePos[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
+                smokePos[2] = (f32) ((f64) paddleBoat->position[2] + 45.0);
+                move_to_point_direction(smokePos, paddleBoat->position, paddleBoat->rotY);
+                spawn_ferry_smoke(i, smokePos, 1.1f);
+                smokePos[0] = (f32) ((f64) paddleBoat->position[0] + 30.0);
+                smokePos[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
+                smokePos[2] = (f32) ((f64) paddleBoat->position[2] + 45.0);
+                move_to_point_direction(smokePos, paddleBoat->position, paddleBoat->rotY);
+                spawn_ferry_smoke(i, smokePos, 1.1f);
             }
             if (random_int(100) == 0) {
                 if (random_int(2) == 0) {
@@ -5209,7 +5209,7 @@ void func_800146B8(s32 playerId, s32 arg1, VehicleStuff *vehicle) {
     }
 }
 
-void func_800147E0(void) {
+void init_vehicles_box_trucks(void) {
     f32 a = ((gCCSelection * 90.0) / 216.0f) + 4.583333333333333;
     f32 b = ((gCCSelection * 90.0) / 216.0f) + 2.9166666666666665;
     s32 numTrucks = NUM_RACE_BOX_TRUCKS;
@@ -5234,7 +5234,7 @@ void func_8001490C(s32 playerId) {
     func_800146B8(playerId, NUM_RACE_BOX_TRUCKS, gBoxTruckList);
 }
 
-void func_80014934(void) {
+void init_vehicles_school_buses(void) {
     s32 numBusses;
     f32 a = ((gCCSelection * 90.0) / 216.0f) + 4.583333333333333;
     f32 b = ((gCCSelection * 90.0) / 216.0f) + 2.9166666666666665;
@@ -5261,7 +5261,7 @@ void func_80014A60(s32 playerId) {
     func_800146B8(playerId, NUM_RACE_SCHOOL_BUSES, gSchoolBusList);
 }
 
-void func_80014A88(void) {
+void init_vehicles_trucks(void) {
     s32 numTrucks;
     f32 a = ((gCCSelection * 90.0) / 216.0f) + 4.583333333333333;
     f32 b = ((gCCSelection * 90.0) / 216.0f) + 2.9166666666666665;
@@ -5288,7 +5288,7 @@ void func_80014BB4(s32 playerId) {
     func_800146B8(playerId, NUM_RACE_TANKER_TRUCKS, gTankerTruckList);
 }
 
-void func_80014BDC(void) {
+void init_vehicles_cars(void) {
     s32 numCars;
     f32 a = ((gCCSelection * 90.0) / 216.0f) + 4.583333333333333;
     f32 b = ((gCCSelection * 90.0) / 216.0f) + 2.9166666666666665;
