@@ -97,7 +97,7 @@ void func_8000BA14(u16, f32, f32, s16);
 void func_8000BBD8(u16, f32, s16);
 s16  func_8000BD94(f32, f32, f32, s32);
 
-s16  find_closet_waypoint_track_segment(f32, f32, f32, u16, s32*);
+s16  find_closest_waypoint_track_segment(f32, f32, f32, u16, s32*);
 s16  func_8000C884(f32, f32, f32, s16, s32, u16);
 s16  find_closest_waypoint_with_previous_waypoint(f32, f32, f32, s16, s32);
 void func_8000CBA4(f32, f32, f32, s16*, s32);
@@ -156,7 +156,7 @@ void load_vehicles_waypoint_train(void);
 void load_vehicles_waypoint_ferry(void);
 void spawn_vehicle_on_road(VehicleStuff*);
 void spawn_course_vehicles(void);
-void set_vehicle_pos_waypoint(TrainCarStuff*, s16*, u16);
+void set_vehicle_pos_waypoint(TrainCarStuff*, Path2D*, u16);
 void init_vehicles_trains(void);
 void sync_train_car_vehicle_actor(TrainCarStuff*, s16);
 void update_vehicle_trains(void);

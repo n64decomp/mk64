@@ -1311,7 +1311,7 @@ s32 func_80008E58(s32 payerId, s32 pathIndex) {
     stackPadding = pathIndex;
     trackSegment = get_track_segment(player->unk_110.collisionMeshIndex);
     D_80163318[payerId] = trackSegment;
-    D_80162FCE = find_closet_waypoint_track_segment(posX, posY, posZ, trackSegment, &pathIndex);
+    D_80162FCE = find_closest_waypoint_track_segment(posX, posY, posZ, trackSegment, &pathIndex);
     gNearestWaypointByPlayerId[payerId] = D_80162FCE;
     if(pathIndex) {};
     gPathIndexByPlayerId[payerId] = pathIndex;
@@ -2263,7 +2263,7 @@ s16 func_8000BD94(f32 posX, f32 posY, f32 posZ, s32 pathIndex) {
     return nearestWaypointIndex;
 }
 
-s16 find_closet_waypoint_track_segment(f32 posX, f32 posY, f32 posZ, u16 trackSegment, s32 *pathIndex) {
+s16 find_closest_waypoint_track_segment(f32 posX, f32 posY, f32 posZ, u16 trackSegment, s32 *pathIndex) {
     TrackWaypoint *pathWaypoints;
     TrackWaypoint *considerWaypoint;
     f32 x_dist;
@@ -2481,7 +2481,7 @@ s16 func_8000CC88(f32 posX, f32 posY, f32 posZ, Player *player, s32 playerId, s3
         trackSegment = D_80163318[playerId];
     }
     D_80163318[playerId] = trackSegment;
-    ret = find_closet_waypoint_track_segment(posX, posY, posZ, trackSegment, pathIndex);
+    ret = find_closest_waypoint_track_segment(posX, posY, posZ, trackSegment, pathIndex);
     gPathIndexByPlayerId[playerId] = *pathIndex;
     return ret;
 }
@@ -2516,7 +2516,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
                     newWaypoint = find_closest_waypoint_with_previous_waypoint(posX, posY, posZ, waypointIndex, pathIndex);
                 }
                 if (newWaypoint == -1) {
-                    newWaypoint = find_closet_waypoint_track_segment(posX, posY, posZ, D_80163318[playerId], &pathIndex);
+                    newWaypoint = find_closest_waypoint_track_segment(posX, posY, posZ, D_80163318[playerId], &pathIndex);
                     temp_v1 = &D_80164550[pathIndex][newWaypoint];
                     player->pos[0] = (f32) temp_v1->posX;
                     player->pos[1] = (f32) temp_v1->posY;
@@ -2587,7 +2587,7 @@ s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32 *pathIndex) {
     Collision sp24;
 
     func_802ADDC8(&sp24, 10.0f, posX, posY, posZ);
-    return find_closet_waypoint_track_segment(posX, posY, posZ, get_track_segment(sp24.collisionMeshIndex), pathIndex);
+    return find_closest_waypoint_track_segment(posX, posY, posZ, get_track_segment(sp24.collisionMeshIndex), pathIndex);
 }
 
 s16 func_8000D2B4(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex) {
@@ -2711,9 +2711,9 @@ s16 func_8000D6D0(Vec3f position, s16 *waypointIndex, f32 speed, f32 arg3, s16 p
     f32 pad4;
     f32 midZ;
     f32 distance;
-    f32 temp_f20;
-    f32 temp_f22;
-    f32 temp_f24;
+    f32 oldPosX;
+    f32 oldPosY;
+    f32 oldPosZ;
     f32 var_f2;
     f32 var_f12;
     f32 var_f14;
@@ -2722,17 +2722,17 @@ s16 func_8000D6D0(Vec3f position, s16 *waypointIndex, f32 speed, f32 arg3, s16 p
     f32 xdiff;
     f32 ydiff;
     f32 zdiff;
-    Vec3f sp50;
+    Vec3f oldPos;
     TrackWaypoint *path;
 
     path = D_80164550[pathIndex];
-    sp50[0] = position[0];
-    sp50[1] = position[1];
-    sp50[2] = position[2];
-    temp_f20 = position[0];
-    temp_f22 = position[1];
-    temp_f24 = position[2];
-    temp_v0 = func_8000D2B4(temp_f20, temp_f22, temp_f24, *waypointIndex, (s32) pathIndex);
+    oldPos[0] = position[0];
+    oldPos[1] = position[1];
+    oldPos[2] = position[2];
+    oldPosX = position[0];
+    oldPosY = position[1];
+    oldPosZ = position[2];
+    temp_v0 = func_8000D2B4(oldPosX, oldPosY, oldPosZ, *waypointIndex, (s32) pathIndex);
     *waypointIndex = temp_v0;
     temp_v1 = temp_v0 + arg5;
     waypoint1 = temp_v1 % gWaypointCountByPathIndex[pathIndex];
@@ -2746,23 +2746,23 @@ s16 func_8000D6D0(Vec3f position, s16 *waypointIndex, f32 speed, f32 arg3, s16 p
     midY = (path[waypoint1].posY + path[waypoint2].posY) * 0.5f;
     midX = (pad3 + temp1) * 0.5f;
     midZ = (pad4 + temp2) * 0.5f;
-    xdiff = midX - temp_f20;
-    ydiff = midY - temp_f22;
-    zdiff = midZ - temp_f24;
+    xdiff = midX - oldPosX;
+    ydiff = midY - oldPosY;
+    zdiff = midZ - oldPosZ;
     distance = sqrtf((xdiff * xdiff) + (ydiff * ydiff) + (zdiff * zdiff));
     if (distance > 0.01f) {
-        var_f2  = ((xdiff * speed) / distance) + temp_f20;
-        var_f12 = ((ydiff * speed) / distance) + temp_f22;
-        var_f14 = ((zdiff * speed) / distance) + temp_f24;
+        var_f2  = ((xdiff * speed) / distance) + oldPosX;
+        var_f12 = ((ydiff * speed) / distance) + oldPosY;
+        var_f14 = ((zdiff * speed) / distance) + oldPosZ;
     } else {
-        var_f2  = temp_f20;
-        var_f12 = temp_f22;
-        var_f14 = temp_f24;
+        var_f2  = oldPosX;
+        var_f12 = oldPosY;
+        var_f14 = oldPosZ;
     }
     position[0] = var_f2;
     position[1] = var_f12;
     position[2] = var_f14;
-    return get_angle_path(sp50, position);
+    return get_angle_path(oldPos, position);
 }
 
 s16 func_8000D940(Vec3f pos, s16 *waypointIndex, f32 speed, f32 arg3, s16 pathIndex) {
@@ -4288,7 +4288,7 @@ void func_80011EC0(s32 arg0, Player *player, s32 arg2, UNUSED u16 arg3) {
     }
 }
 
-#define LENGHT_TRACK_WAYPOINTS(waypoint) for (i = 0; ; i++) { \
+#define GET_PATH_LENGTH(waypoint) for (i = 0; ; i++) { \
         if ((u16)waypoint[i].posX == 0x8000) { \
             break; \
         } \
@@ -4301,7 +4301,7 @@ void load_vehicles_waypoint_train(void) {
         gSegmentTable[SEGMENT_NUMBER2(d_course_kalimari_desert_waypoint_vehicles_train)]
                     + SEGMENT_OFFSET(d_course_kalimari_desert_waypoint_vehicles_train));
 
-    LENGHT_TRACK_WAYPOINTS(waypoint)
+    GET_PATH_LENGTH(waypoint)
 
     temp = gVehicle2DWaypoint;
     gVehicle2DWaypointLength = generate_2d_path(temp, waypoint, i - 1);
@@ -4314,7 +4314,7 @@ void load_vehicles_waypoint_ferry(void) {
 
     waypoint = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(d_course_dks_jungle_parkway_waypoint_vehicles_ferry)] + (SEGMENT_OFFSET(d_course_dks_jungle_parkway_waypoint_vehicles_ferry)));
 
-    LENGHT_TRACK_WAYPOINTS(waypoint)
+    GET_PATH_LENGTH(waypoint)
 
     gVehicle2DWaypointLength = generate_2d_path(gVehicle2DWaypoint, waypoint, i - 1);
     D_80162EB2 = -40;
