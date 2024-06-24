@@ -311,16 +311,16 @@ Collision D_8018C3B0;
 /**
  * List of object list indices used for:
  * - Bats in Banshee's Boardwalk (but only 1 player mode?)
- * - Train 0 smoke in Kalimari Desert
- * - Ferry 0 smoke in DK Jungle
+ * - Train index 0 smoke in Kalimari Desert
+ * - Ferry index 0 smoke in DK Jungle
  */
 s32 gObjectParticle2[gObjectParticle2_SIZE];
 // Maybe some unused Collision?
 UNUSED Collision D_8018C5F0;
 /**
  * List of object list indices used for:
- * - Train 1 smoke in Kalimari Desert
- * - Ferry 1 smoke in DK Jungle
+ * - Train index 1 smoke in Kalimari Desert
+ * - Ferry index 1 smoke in DK Jungle
  */
 s32 gObjectParticle3[gObjectParticle3_SIZE];
 Collision D_8018C830;
