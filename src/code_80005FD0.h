@@ -158,7 +158,7 @@ void spawn_vehicle_on_road(VehicleStuff*);
 void spawn_course_vehicles(void);
 void set_vehicle_pos_waypoint(TrainCarStuff*, Path2D*, u16);
 void init_vehicles_trains(void);
-void sync_train_car_vehicle_actor(TrainCarStuff*, s16);
+void sync_train_car_vehicle_to_actor(TrainCarStuff*, s16);
 void update_vehicle_trains(void);
 void func_80012DC0(s32, Player*);
 

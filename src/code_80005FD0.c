@@ -4517,7 +4517,7 @@ void init_vehicles_trains(void) {
     gTrainSmokeTimer = 0;
 }
 
-void sync_train_car_vehicle_actor(TrainCarStuff *trainCar, s16 orientationY) {
+void sync_train_car_vehicle_to_actor(TrainCarStuff *trainCar, s16 orientationY) {
     struct TrainCar *trainCarActor;
 
     trainCarActor = (struct TrainCar *) &gActorList[trainCar->actorIndex];
@@ -4557,7 +4557,7 @@ void update_vehicle_trains(void) {
         gTrainList[i].locomotive.velocity[0] = gTrainList[i].locomotive.position[0] - temp_f20;
         gTrainList[i].locomotive.velocity[2] = gTrainList[i].locomotive.position[2] - temp_f22;
 
-        sync_train_car_vehicle_actor(&gTrainList[i].locomotive, orientationYUpdate);
+        sync_train_car_vehicle_to_actor(&gTrainList[i].locomotive, orientationYUpdate);
 
         if ((oldWaypointIndex != gTrainList[i].locomotive.waypointIndex)
             && ((gTrainList[i].locomotive.waypointIndex == 0x00BE)
@@ -4584,7 +4584,7 @@ void update_vehicle_trains(void) {
             orientationYUpdate = update_vehicle_following_waypoint(car->position, (s16*)&car->waypointIndex, gTrainList[i].speed);
             car->velocity[0] = car->position[0] - temp_f20;
             car->velocity[2] = car->position[2] - temp_f22;
-            sync_train_car_vehicle_actor(car, orientationYUpdate);
+            sync_train_car_vehicle_to_actor(car, orientationYUpdate);
         }
 
         for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) {
@@ -4596,7 +4596,7 @@ void update_vehicle_trains(void) {
                 orientationYUpdate = update_vehicle_following_waypoint(car->position, (s16*)&car->waypointIndex, gTrainList[i].speed);
                 car->velocity[0] = car->position[0] - temp_f20;
                 car->velocity[2] = car->position[2] - temp_f22;
-                sync_train_car_vehicle_actor(car, orientationYUpdate);
+                sync_train_car_vehicle_to_actor(car, orientationYUpdate);
             }
         }
     }
