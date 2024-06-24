@@ -258,7 +258,7 @@ void func_8008C528(Player *player, s8 arg1) {
 
 void func_8008C62C(Player *player, s8 arg1) {
 
-    func_80031F48(player, 5.0f);
+    decelerate_ai_player(player, 5.0f);
     player->unk_0A8 += (s16)0xA0;
     player->unk_042 += (s16)0x71C;
     if (player->unk_0A8 >= 0x2000) {
@@ -356,15 +356,15 @@ void func_8008C9EC(Player *player, s8 arg1) {
     player->unk_206 = 0;
     player->slopeAccel = 0;
     if ((player->unk_046 & 0x40) == 0x40) {
-        func_80031F48(player, 100.0f);
+        decelerate_ai_player(player, 100.0f);
     } else {
         if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-            func_80031F48(player, 1.0f);
+            decelerate_ai_player(player, 1.0f);
         } else {
-            func_80031F48(player, 4.0f);
+            decelerate_ai_player(player, 4.0f);
         }
         if (!(player->type & PLAYER_HUMAN)) {
-            func_80031F48(player, 30.0f);
+            decelerate_ai_player(player, 30.0f);
         }
     }
     if ((player->effects & 0x80) == 0x80) {
@@ -920,7 +920,7 @@ void apply_lightning_effect(Player *player, s8 arg1) {
                 D_80165190[3][arg1] = 1;
             }
         }
-        func_80031F48(player, 1.0f);
+        decelerate_ai_player(player, 1.0f);
     } else {
         player->unk_0B0 += 1;
         player->unk_08C = (f32) ((f64) player->unk_08C * 0.6);

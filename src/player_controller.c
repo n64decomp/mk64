@@ -2043,7 +2043,7 @@ void func_8002C954(Player *player, s8 playerId, Vec3f arg2) {
         player->unk_256 = 0;
     }
     if ((player->slopeAccel >= 0) && (((player->unk_094 / 18.0f) * 216.0f) > 5.0f)) {
-        func_80031F48(player, 18.0f);
+        decelerate_ai_player(player, 18.0f);
     }
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
         xdist = D_80165070[playerId][0] - arg2[0];
@@ -2109,7 +2109,7 @@ void apply_effect(Player *player, s8 arg1, s8 arg2) {
         apply_boo_effect(player, arg1);
     }
     if (((player->effects & 0x20000000) == 0x20000000) && (player->unk_228 >= 0x64)) {
-        func_80031F48(player, 4.0f);
+        decelerate_ai_player(player, 4.0f);
     }
     if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40)) {
         func_8008C9EC(player, arg1);
@@ -2131,7 +2131,7 @@ void apply_effect(Player *player, s8 arg1, s8 arg2) {
     }
     if ((player->effects & 0x800000) == 0x800000) {
         func_8008D8B4(player, arg1);
-        func_80031F48(player, 10.0f);
+        decelerate_ai_player(player, 10.0f);
     }
     if (D_800DC510 != 5) {
         if (player->soundEffects & 0x04000000) {
@@ -2681,13 +2681,13 @@ void func_8002E594(Player *player, UNUSED Camera *camera, s8 screenId, s8 player
     if (sp74 < 0.0f) {
         func_8003F734(player, sp48, sp54, &sp74, &spD0, &spCC, &spC8);
         func_8002C954(player, playerId, sp54);
-        func_80031F48(player, 6.0f);
+        decelerate_ai_player(player, 6.0f);
     }
     sp74 = player->unk_110.surfaceDistance[1];
     if (sp74 < 0.0f) {
         func_8003FBAC(player, sp48, sp54, &sp74, &spD0, &spCC, &spC8);
         func_8002C954(player, playerId, sp54);
-        func_80031F48(player, 6.0f);
+        decelerate_ai_player(player, 6.0f);
     }
     sp74 = player->unk_110.surfaceDistance[0];
     if (sp74 >= 0.0f) {
@@ -3404,11 +3404,11 @@ void player_speed(Player *player) {
     }
 }
 
-void func_80031F48(Player *player, f32 arg1) {
+void decelerate_ai_player(Player *player, f32 speed) {
     s32 player_index;
     player_index = get_player_index_for_player(player);
 
-    player->currentSpeed -= arg1;
+    player->currentSpeed -= speed;
     if (player->currentSpeed <= 0.0f) {
         player->currentSpeed = 0.0f;
     }
@@ -3583,7 +3583,7 @@ void func_800323E4(Player *player) {
     player->effects |= 1;
     // This check will never be true, why is it here?
     if ((player->effects & 0x20) == 0x20) {
-        func_80031F48(player, 1.0f);
+        decelerate_ai_player(player, 1.0f);
         player->unk_20C = var_f2;
     } else {
         if ((s32) player->tyres[BACK_RIGHT].surfaceType < 0xF) {
@@ -3603,18 +3603,18 @@ void func_800323E4(Player *player) {
         }
         if (gIsPlayerTripleBButtonCombo[var_v1] == TRUE) {
             if (player->unk_20C >= 2.0f) {
-                func_80031F48(player, (1.0f - var_f2) * 5.0f);
+                decelerate_ai_player(player, (1.0f - var_f2) * 5.0f);
             } else {
-                func_80031F48(player, (1.0f - var_f2) * 3.0f);
+                decelerate_ai_player(player, (1.0f - var_f2) * 3.0f);
             }
         } else {
             if (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f) {
-                func_80031F48(player, (1.0f - var_f2) * 4.0f);
+                decelerate_ai_player(player, (1.0f - var_f2) * 4.0f);
             }
             if (player->unk_20C >= 2.0f) {
-                func_80031F48(player, (1.0f - var_f2) * 2.5);
+                decelerate_ai_player(player, (1.0f - var_f2) * 2.5);
             } else {
-                func_80031F48(player, (1.0f - var_f2) * 1.2);
+                decelerate_ai_player(player, (1.0f - var_f2) * 1.2);
             }
         }
     }
@@ -4677,11 +4677,11 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
                 } else {
                     if (gModeSelection == BATTLE)
                     {
-                      func_80031F48(player, 2.0f);
+                      decelerate_ai_player(player, 2.0f);
                     }
                     else
                     {
-                      func_80031F48(player, 1.0f);
+                      decelerate_ai_player(player, 1.0f);
                     }
                     detect_triple_a_combo_a_released(player);
                 }
@@ -4714,7 +4714,7 @@ void func_80037CFC(Player *player, struct Controller *controller, s8 arg2) {
             if (controller->button & A_BUTTON) {
                 player_speed(player);
             } else {
-                func_80031F48(player, 5.0f);
+                decelerate_ai_player(player, 5.0f);
             }
         }
         if (((((player->effects & 0x80) == 0x80) || 
