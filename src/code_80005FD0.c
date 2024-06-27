@@ -577,7 +577,7 @@ s32 func_80006018(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f3
     return 0;
 }
 
-void move_to_point_direction(Vec3f newPos, Vec3f oldPos, s16 orientationY) {
+void adjust_position_by_angle(Vec3f newPos, Vec3f oldPos, s16 orientationY) {
     f32 x_dist;
     f32 z_dist;
     f32 temp1;
@@ -4577,7 +4577,7 @@ void update_vehicle_trains(void) {
             smokePos[0] = gTrainList[i].locomotive.position[0];
             smokePos[1] = (f32) ((f64) gTrainList[i].locomotive.position[1] + 65.0);
             smokePos[2] = (f32) ((f64) gTrainList[i].locomotive.position[2] + 25.0);
-            move_to_point_direction(smokePos, gTrainList[i].locomotive.position, orientationYUpdate);
+            adjust_position_by_angle(smokePos, gTrainList[i].locomotive.position, orientationYUpdate);
             spawn_train_smoke(i, smokePos, 1.1f);
         }
 
@@ -4775,12 +4775,12 @@ void update_vehicle_paddle_boats(void) {
                 smokePos[0] = (f32) ((f64) paddleBoat->position[0] - 30.0);
                 smokePos[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
                 smokePos[2] = (f32) ((f64) paddleBoat->position[2] + 45.0);
-                move_to_point_direction(smokePos, paddleBoat->position, paddleBoat->rotY);
+                adjust_position_by_angle(smokePos, paddleBoat->position, paddleBoat->rotY);
                 spawn_ferry_smoke(i, smokePos, 1.1f);
                 smokePos[0] = (f32) ((f64) paddleBoat->position[0] + 30.0);
                 smokePos[1] = (f32) ((f64) paddleBoat->position[1] + 180.0);
                 smokePos[2] = (f32) ((f64) paddleBoat->position[2] + 45.0);
-                move_to_point_direction(smokePos, paddleBoat->position, paddleBoat->rotY);
+                adjust_position_by_angle(smokePos, paddleBoat->position, paddleBoat->rotY);
                 spawn_ferry_smoke(i, smokePos, 1.1f);
             }
             if (random_int(100) == 0) {

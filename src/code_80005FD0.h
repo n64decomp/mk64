@@ -62,7 +62,7 @@ typedef struct {
 s16  get_angle_between_waypoints(Vec3f, Vec3f);
 
 s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
-void move_to_point_direction(Vec3f, Vec3f, s16);
+void adjust_position_by_angle(Vec3f, Vec3f, s16);
 s32  func_800061DC(Vec3f, f32, s32);
 void func_800065D0(s32, Player*);
 void set_places(void);
