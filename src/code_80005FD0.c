@@ -1317,7 +1317,7 @@ s32 func_80008E58(s32 payerId, s32 pathIndex) {
     posY = player->pos[1];
     posZ = player->pos[2];
     stackPadding = pathIndex;
-    trackSegment = func_802ABD40(player->unk_110.unk3A);
+    trackSegment = get_section_id(player->collision.meshIndexZX);
     D_80163318[payerId] = trackSegment;
     sSomeNearestWaypoint = func_8000C0BC(posX, posY, posZ, trackSegment, &pathIndex);
     gNearestWaypointByPlayerId[payerId] = sSomeNearestWaypoint;
@@ -2484,7 +2484,7 @@ s16 func_8000CC88(f32 posX, f32 posY, f32 posZ, Player *player, s32 playerId, s3
     u16 trackSegment;
     s16 ret;
 
-    trackSegment = func_802ABD40(player->unk_110.unk3A);
+    trackSegment = get_section_id(player->collision.meshIndexZX);
     if ((trackSegment <= 0) || (trackSegment >= 0x33)) {
         trackSegment = D_80163318[playerId];
     }
@@ -2502,7 +2502,7 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
     TrackWaypoint *temp_v1;
 
     if ((player->type & 0x4000) && !(player->type & 0x1000)) {
-        sp5E = func_8000C884(posX, posY, posZ, waypointIndex, pathIndex, (u16) func_802ABD40(player->unk_110.unk3A));
+        sp5E = func_8000C884(posX, posY, posZ, waypointIndex, pathIndex, (u16) get_section_id(player->collision.meshIndexZX));
         if (sp5E == -1) {
             sp5E = func_8000CC88(posX, posY, posZ, player, playerId, &pathIndex);
         }
@@ -2517,8 +2517,8 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
                 return waypointIndex;
             }
             if (playerId == ((s32) D_80163488 % 8)) {
-                check_bounding_collision(&player->unk_110, 10.0f, posX, posY, posZ);
-                D_80163318[playerId] = func_802ABD40(player->unk_110.unk3A);
+                check_bounding_collision(&player->collision, 10.0f, posX, posY, posZ);
+                D_80163318[playerId] = get_section_id(player->collision.meshIndexZX);
                 sp5E = func_8000C884(posX, posY, posZ, waypointIndex, pathIndex, D_80163318[playerId]);
                 if (sp5E == -1) {
                     sp5E = func_8000C9DC(posX, posY, posZ, waypointIndex, pathIndex);
@@ -2541,8 +2541,8 @@ s16 func_8000CD24(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player *playe
                     player->pos[0] = posX;
                     player->pos[1] = posY;
                     player->pos[2] = posZ;
-                    check_bounding_collision(&player->unk_110, 10.0f, posX, posY, posZ);
-                    D_80163318[playerId] = func_802ABD40(player->unk_110.unk3A);
+                    check_bounding_collision(&player->collision, 10.0f, posX, posY, posZ);
+                    D_80163318[playerId] = get_section_id(player->collision.meshIndexZX);
                 }
             }
         } else {
@@ -2595,7 +2595,7 @@ s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32 *pathIndex) {
     Collision sp24;
 
     check_bounding_collision(&sp24, 10.0f, posX, posY, posZ);
-    return func_8000C0BC(posX, posY, posZ, func_802ABD40(sp24.unk3A), pathIndex);
+    return func_8000C0BC(posX, posY, posZ, get_section_id(sp24.meshIndexZX), pathIndex);
 }
 
 s16 func_8000D2B4(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex) {
@@ -3149,7 +3149,7 @@ void func_8000DF8C(s32 bombKartId) {
                         var_f24 += temp_f16 / 5.0f;
                     }
                     temp_a0_4 = &D_80164038[bombKartId];
-                    var_f20 = calculate_surface_height(var_f22, 2000.0f, var_f24, temp_a0_4->unk3A) + 3.5f;
+                    var_f20 = calculate_surface_height(var_f22, 2000.0f, var_f24, temp_a0_4->meshIndexZX) + 3.5f;
                     if (var_f20 < (-1000.0)) {
                         var_f20 = bombKart->bombPos[1];
                     }
@@ -3980,7 +3980,7 @@ s32 func_80011014(TrackWaypoint *pathDest, TrackWaypoint *path, s32 numPathPoint
 
 
                 pathDest->posZ = (s16) temp_f22;
-                pathDest->trackSegment = func_802ABD40(D_80162E70.unk3A);
+                pathDest->trackSegment = get_section_id(D_80162E70.meshIndexZX);
 
                 if (var_f20_2 < -500.0) {
                     var_f20_2 = var_f28;

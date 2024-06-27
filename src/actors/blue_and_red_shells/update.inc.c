@@ -235,7 +235,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
     switch (shell->state) {
     case HELD_SHELL:
         player = &gPlayers[shell->playerId];
-        copy_collision(&player->unk_110, &shell->unk30);
+        copy_collision(&player->collision, &shell->unk30);
         somePosVel[0] = 0.0f;
         somePosVel[1] = player->boundingBoxSize;
         somePosVel[2] = -(player->boundingBoxSize + shell->boundingBoxSize + 2.0f);
@@ -243,7 +243,7 @@ void update_actor_red_blue_shell(struct ShellActor *shell) {
         shell->pos[0] = player->pos[0] + somePosVel[0];
         pad7          = player->pos[1] - somePosVel[1];
         shell->pos[2] = player->pos[2] + somePosVel[2];
-        height = calculate_surface_height(shell->pos[0], pad7, shell->pos[2], player->unk_110.unk3A);
+        height = calculate_surface_height(shell->pos[0], pad7, shell->pos[2], player->collision.meshIndexZX);
         temp_f2 = pad7 - height;
 
         if ((temp_f2 < 5.0f) && (temp_f2 > -5.0f)) {

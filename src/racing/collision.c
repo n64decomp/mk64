@@ -26,9 +26,9 @@ void nullify_displaylist(uintptr_t addr) {
 }
 
 void func_802AAAAC(Collision *collision) {
-    collision->unk36 = 5000;
-    collision->unk38 = 5000;
-    collision->unk3A = 5000;
+    collision->meshIndexYX = 5000;
+    collision->meshIndexZY = 5000;
+    collision->meshIndexZX = 5000;
     collision->unk30 = 0;
     collision->unk32 = 0;
     collision->unk34 = 0;
@@ -77,14 +77,14 @@ f32 func_802AAB4C(Player *player) {
             }
             return 0.8f;
         case COURSE_SHERBET_LAND:
-            if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == SNOW) {
+            if ((get_surface_type(player->collision.meshIndexZX) & 0xFF) == SNOW) {
                 return (f32) (gCourseMinY - 0xA);
             }
             return D_8015F8E4;
         case COURSE_DK_JUNGLE:
-            temp_v1 = func_802ABD40(player->unk_110.unk3A) & 0xFF;
+            temp_v1 = get_section_id(player->collision.meshIndexZX) & 0xFF;
             if (temp_v1 == 0xFF) {
-                if ((get_surface_type(player->unk_110.unk3A) & 0xFF) == CAVE) {
+                if ((get_surface_type(player->collision.meshIndexZX) & 0xFF) == CAVE) {
                     return -475.0f;
                 }
                 if (playerX > -478.0f) {
@@ -195,7 +195,7 @@ s32 check_collision_zx(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
     if (distanceToSurface > 0.0f) {
         if (collision->surfaceDistance[2] > distanceToSurface) {
             collision->unk34 = 1;
-            collision->unk3A = index;
+            collision->meshIndexZX = index;
             collision->surfaceDistance[2] = distanceToSurface;
             collision->orientationVector[0] = triangle->normalX;
             collision->orientationVector[1] = triangle->normalY;
@@ -206,7 +206,7 @@ s32 check_collision_zx(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
 
     if (distanceToSurface > -16.0f) {
         collision->unk34 = 1;
-        collision->unk3A = index;
+        collision->meshIndexZX = index;
         collision->surfaceDistance[2] = distanceToSurface;
         collision->orientationVector[0] = triangle->normalX;
         collision->orientationVector[1] = triangle->normalY;
@@ -301,7 +301,7 @@ s32 check_collision_yx(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
     if (distanceToSurface > 0.0f) {
         if (distanceToSurface < collision->surfaceDistance[0]) {
             collision->unk30 = 1;
-            collision->unk36 = index;
+            collision->meshIndexYX = index;
             collision->surfaceDistance[0] = distanceToSurface;
             collision->unk48[0] = triangle->normalX;
             collision->unk48[1] = triangle->normalY;
@@ -312,7 +312,7 @@ s32 check_collision_yx(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
 
     if (distanceToSurface > -16.0f) {
         collision->unk30 = 1;
-        collision->unk36 = index;
+        collision->meshIndexYX = index;
         collision->surfaceDistance[0] = distanceToSurface;
         collision->unk48[0] = triangle->normalX;
         collision->unk48[1] = triangle->normalY;
@@ -411,7 +411,7 @@ s32 check_collision_zy(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
     if (distanceToSurface > 0.0f) {
         if (distanceToSurface < collision->surfaceDistance[1]) {
             collision->unk32 = 1;
-            collision->unk38 = index;
+            collision->meshIndexZY = index;
             collision->surfaceDistance[1] = distanceToSurface;
             collision->unk54[0] = triangle->normalX;
             collision->unk54[1] = triangle->normalY;
@@ -421,7 +421,7 @@ s32 check_collision_zy(Collision *collision, f32 boundingBoxSize, f32 posX, f32 
     }
     if (distanceToSurface > (-16.0f)) {
         collision->unk32 = 1;
-        collision->unk38 = index;
+        collision->meshIndexZY = index;
         collision->surfaceDistance[1] = distanceToSurface;
         collision->unk54[0] = triangle->normalX;
         collision->unk54[1] = triangle->normalY;
@@ -496,7 +496,7 @@ s8 get_surface_type(u16 index) {
     return triangle->surfaceType;
 }
 
-s16 func_802ABD40(u16 index) {
+s16 get_section_id(u16 index) {
     CollisionTriangle *triangle = &gCollisionMesh[index];
     return triangle->flags & 0xFF;
 }
@@ -526,13 +526,13 @@ f32 calculate_surface_height(f32 x, f32 y, f32 z, u16 index) {
 
 f32 func_802ABEAC(Collision *collision, Vec3f pos) {
     if (collision->unk34 == 1) {
-        return calculate_surface_height(pos[0], pos[1], pos[2], collision->unk3A);
+        return calculate_surface_height(pos[0], pos[1], pos[2], collision->meshIndexZX);
     }
     if (collision->unk30 == 1) {
-        return calculate_surface_height(pos[0], pos[1], pos[2], collision->unk36);
+        return calculate_surface_height(pos[0], pos[1], pos[2], collision->meshIndexYX);
     }
     if (collision->unk32 == 1) {
-        return calculate_surface_height(pos[0], pos[1], pos[2], collision->unk38);
+        return calculate_surface_height(pos[0], pos[1], pos[2], collision->meshIndexZY);
     }
     return pos[1];
 }
@@ -704,7 +704,7 @@ UNUSED s32 detect_tyre_collision(KartTyre *tyre) {
     sectionIndex = gCollisionGrid[gridIndex].triangle;
     for (i = 0; i < numTriangles; i++) {
         meshIndex = gCollisionIndices[sectionIndex];
-        if (gCollisionMesh[meshIndex].flags & 0x4000) {
+        if (gCollisionMesh[meshIndex].flags & FACING_Y_AXIS) {
             if (meshIndex != tyre->collisionMeshIndex) {
                 if (check_collision_zx(&collision, 5.0f, tyreX, tyreY, tyreZ, meshIndex) == 1) {
                     tyre->baseHeight = calculate_surface_height(tyreX, tyreY, tyreZ, meshIndex);
@@ -719,7 +719,7 @@ UNUSED s32 detect_tyre_collision(KartTyre *tyre) {
                     return 1;
                 }
             }
-        } else if (gCollisionMesh[meshIndex].flags & 0x8000) {
+        } else if (gCollisionMesh[meshIndex].flags & FACING_X_AXIS) {
             if ((gCollisionMesh[meshIndex].normalX != 1.0f) && (meshIndex != tyre->collisionMeshIndex)) {
                 if (check_collision_zy(&collision, 5.0f, tyreX, tyreY, tyreZ, meshIndex) == 1) {
                     tyre->baseHeight = calculate_surface_height(tyreX, tyreY, tyreZ, meshIndex);
@@ -760,7 +760,7 @@ s32 is_colliding_with_drivable_surface(Collision *collision, f32 boundingBoxSize
     f32 x2;
     UNUSED f32 y2;
     f32 z2;
-    f32 temp_f0_4;
+    f32 surfaceDistance;
     f32 temp;
     UNUSED s32 pad2[2];
     f32 area;
@@ -830,13 +830,13 @@ s32 is_colliding_with_drivable_surface(Collision *collision, f32 boundingBoxSize
         return 0;
     }
 
-    temp_f0_4 = (triangle->normalX * x1) + (triangle->normalY * y1) + (triangle->normalZ * z1) + triangle->distance;
+    surfaceDistance = (triangle->normalX * x1) + (triangle->normalY * y1) + (triangle->normalZ * z1) + triangle->distance;
 
-    if (temp_f0_4 > boundingBoxSize) {
-        if (collision->surfaceDistance[2] > temp_f0_4) {
+    if (surfaceDistance > boundingBoxSize) {
+        if (collision->surfaceDistance[2] > surfaceDistance) {
             collision->unk34 = 1;
-            collision->unk3A = index;
-            collision->surfaceDistance[2] = temp_f0_4 - boundingBoxSize;
+            collision->meshIndexZX = index;
+            collision->surfaceDistance[2] = surfaceDistance - boundingBoxSize;
             collision->orientationVector[0] = triangle->normalX;
             collision->orientationVector[1] = triangle->normalY;
             collision->orientationVector[2] = triangle->normalZ;
@@ -850,8 +850,8 @@ s32 is_colliding_with_drivable_surface(Collision *collision, f32 boundingBoxSize
         return 0;
     }
         collision->unk34 = 1;
-        collision->unk3A = index;
-        collision->surfaceDistance[2] = temp_f0_4 - boundingBoxSize;
+        collision->meshIndexZX = index;
+        collision->surfaceDistance[2] = surfaceDistance - boundingBoxSize;
         collision->orientationVector[0] = triangle->normalX;
         collision->orientationVector[1] = triangle->normalY;
         collision->orientationVector[2] = triangle->normalZ;
@@ -951,7 +951,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
         if ((distanceToSurface > 0.0f) && (distanceToSurface2 > 0.0f)) {
             if (distanceToSurface < boundingBoxSize) {
                 arg->unk30 = 1;
-                arg->unk36 = arg5;
+                arg->meshIndexYX = arg5;
                 arg->surfaceDistance[0] = distanceToSurface - boundingBoxSize;
                 arg->unk48[0] = triangle->normalX;
                 arg->unk48[1] = triangle->normalY;
@@ -965,7 +965,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
             distanceToSurface *= -1.0f;
             if (distanceToSurface < boundingBoxSize) {
                 arg->unk30 = 1;
-                arg->unk36 = arg5;
+                arg->meshIndexYX = arg5;
                 arg->surfaceDistance[0] = distanceToSurface - boundingBoxSize;
                 arg->unk48[0] = -triangle->normalX;
                 arg->unk48[1] = -triangle->normalY;
@@ -976,7 +976,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
         }
         if ((distanceToSurface > 0.0f) && (distanceToSurface2 < 0.0f)) {
             arg->unk30 = 1;
-            arg->unk36 = arg5;
+            arg->meshIndexYX = arg5;
             arg->surfaceDistance[0] = -(distanceToSurface + boundingBoxSize);
             arg->unk48[0] = -triangle->normalX;
             arg->unk48[1] = -triangle->normalY;
@@ -985,7 +985,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
         }
         if ((distanceToSurface < 0.0f) && (distanceToSurface2 > 0.0f)) {
             arg->unk30 = 1;
-            arg->unk36 = arg5;
+            arg->meshIndexYX = arg5;
             arg->surfaceDistance[0] = distanceToSurface + boundingBoxSize;
             arg->unk48[0] = triangle->normalX;
             arg->unk48[1] = triangle->normalY;
@@ -995,7 +995,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
         if (distanceToSurface == 0.0f) {
             if (distanceToSurface2 >= 0.0f) {
                 arg->unk30 = 1;
-                arg->unk36 = arg5;
+                arg->meshIndexYX = arg5;
                 arg->surfaceDistance[0] = distanceToSurface2 + boundingBoxSize;
                 arg->unk48[0] = triangle->normalX;
                 arg->unk48[1] = triangle->normalY;
@@ -1003,7 +1003,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
                 return 1;
             }
             arg->unk30 = 1;
-            arg->unk36 = arg5;
+            arg->meshIndexYX = arg5;
             arg->surfaceDistance[0] = -(distanceToSurface2 + boundingBoxSize);
             arg->unk48[0] = triangle->normalX;
             arg->unk48[1] = triangle->normalY;
@@ -1015,7 +1015,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
     if (distanceToSurface > boundingBoxSize) {
         if (distanceToSurface < arg->surfaceDistance[0]) {
             arg->unk30 = 1;
-            arg->unk36 = arg5;
+            arg->meshIndexYX = arg5;
             arg->surfaceDistance[0] = distanceToSurface - boundingBoxSize;
             arg->unk48[0] = triangle->normalX;
             arg->unk48[1] = triangle->normalY;
@@ -1029,7 +1029,7 @@ s32 is_colliding_with_wall2(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
         return 0;
     }
     arg->unk30 = 1;
-    arg->unk36 = arg5;
+    arg->meshIndexYX = arg5;
     arg->surfaceDistance[0] = distanceToSurface - boundingBoxSize;
     arg->unk48[0] = triangle->normalX;
     arg->unk48[1] = triangle->normalY;
@@ -1132,7 +1132,7 @@ s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
         if ((distanceToSurface > 0.0f) && (distanceToSurface2 > 0.0f)) {
             if (distanceToSurface < boundingBoxSize) {
                 arg->unk32 = 1;
-                arg->unk38 = arg5;
+                arg->meshIndexZY = arg5;
                 arg->surfaceDistance[1] = distanceToSurface - boundingBoxSize;
                 arg->unk54[0] = triangle->normalX;
                 arg->unk54[1] = triangle->normalY;
@@ -1146,7 +1146,7 @@ s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
             distanceToSurface *= -1.0f;
             if (distanceToSurface < boundingBoxSize) {
                 arg->unk32 = 1;
-                arg->unk38 = arg5;
+                arg->meshIndexZY = arg5;
                 arg->surfaceDistance[1] = distanceToSurface - boundingBoxSize;
                 arg->unk54[0] = -triangle->normalX;
                 arg->unk54[1] = -triangle->normalY;
@@ -1157,7 +1157,7 @@ s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
         }
         if ((distanceToSurface > 0.0f) && (distanceToSurface2 < 0.0f)) {
             arg->unk32 = 1;
-            arg->unk38 = arg5;
+            arg->meshIndexZY = arg5;
             arg->surfaceDistance[1] = -(distanceToSurface + boundingBoxSize);
             arg->unk54[0] = -triangle->normalX;
             arg->unk54[1] = -triangle->normalY;
@@ -1166,7 +1166,7 @@ s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
         }
         if ((distanceToSurface < 0.0f) && (distanceToSurface2 > 0.0f)) {
             arg->unk32 = 1;
-            arg->unk38 = arg5;
+            arg->meshIndexZY = arg5;
             arg->surfaceDistance[1] = distanceToSurface + boundingBoxSize;
             arg->unk54[0] = triangle->normalX;
             arg->unk54[1] = triangle->normalY;
@@ -1176,7 +1176,7 @@ s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
         if (distanceToSurface == 0.0f) {
             if (distanceToSurface2 >= 0.0f) {
                 arg->unk32 = 1;
-                arg->unk38 = arg5;
+                arg->meshIndexZY = arg5;
                 arg->surfaceDistance[1] = distanceToSurface2 + boundingBoxSize;
                 arg->unk54[0] = triangle->normalX;
                 arg->unk54[1] = triangle->normalY;
@@ -1184,7 +1184,7 @@ s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
                 return 1;
             }
             arg->unk32 = 1;
-            arg->unk38 = arg5;
+            arg->meshIndexZY = arg5;
             arg->surfaceDistance[1] = -(distanceToSurface2 + boundingBoxSize);
             arg->unk54[0] = triangle->normalX;
             arg->unk54[1] = triangle->normalY;
@@ -1196,7 +1196,7 @@ s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
     if (distanceToSurface > boundingBoxSize) {
         if (arg->surfaceDistance[1] > distanceToSurface) {
             arg->unk32 = 1;
-            arg->unk38 = arg5;
+            arg->meshIndexZY = arg5;
             arg->surfaceDistance[1] = distanceToSurface - boundingBoxSize;
             arg->unk54[0] = triangle->normalX;
             arg->unk54[1] = triangle->normalY;
@@ -1210,7 +1210,7 @@ s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
         return 0;
     }
     arg->unk32 = 1;
-    arg->unk38 = arg5;
+    arg->meshIndexZY = arg5;
     arg->surfaceDistance[1] = distanceToSurface - boundingBoxSize;
     arg->unk54[0] = triangle->normalX;
     arg->unk54[1] = triangle->normalY;
@@ -1242,25 +1242,26 @@ u16 actor_terrain_collision(Collision *collision, f32 boundingBoxSize, f32 x1, f
     collision->surfaceDistance[1] = 1000.0f;
     collision->surfaceDistance[2] = 1000.0f;
 
-    if ((s32) collision->unk3A < (s32) gCollisionMeshCount) {
-        if (is_colliding_with_drivable_surface(collision, boundingBoxSize, x1, y1, z1, collision->unk3A, x2, y2, z2) == 1) {
-            flags |= 0x4000;
+    // Check if an intersection test has already been performed.
+    if ((s32) collision->meshIndexZX < (s32) gCollisionMeshCount) {
+        if (is_colliding_with_drivable_surface(collision, boundingBoxSize, x1, y1, z1, collision->meshIndexZX, x2, y2, z2) == 1) {
+            flags |= FACING_Y_AXIS;
         }
     }
 
-    if ((s32) collision->unk36 < (s32) gCollisionMeshCount) {
-        if (is_colliding_with_wall2(collision, boundingBoxSize, x1, y1, z1, collision->unk36, x2, y2, z2) == 1) {
-            flags |= 0x2000;
+    if ((s32) collision->meshIndexYX < (s32) gCollisionMeshCount) {
+        if (is_colliding_with_wall2(collision, boundingBoxSize, x1, y1, z1, collision->meshIndexYX, x2, y2, z2) == 1) {
+            flags |= FACING_Z_AXIS;
         }
     }
 
-    if ((s32) collision->unk38 < (s32) gCollisionMeshCount) {
-        if (is_colliding_with_wall1(collision, boundingBoxSize, x1, y1, z1, collision->unk38, x2, y2, z2) == 1) {
-            flags |= 0x8000;
+    if ((s32) collision->meshIndexZY < (s32) gCollisionMeshCount) {
+        if (is_colliding_with_wall1(collision, boundingBoxSize, x1, y1, z1, collision->meshIndexZY, x2, y2, z2) == 1) {
+            flags |= FACING_X_AXIS;
         }
     }
 
-    if (flags == (0x4000 | 0x2000 | 0x8000)) {
+    if (flags == (FACING_Y_AXIS | FACING_Z_AXIS | FACING_X_AXIS)) {
         return flags;
     }
 
@@ -1296,32 +1297,32 @@ u16 actor_terrain_collision(Collision *collision, f32 boundingBoxSize, f32 x1, f
     sectionIndex = gCollisionGrid[gridIndex].triangle;
 
     for (i = 0; i < numTriangles; i++) {
-        if (flags == (0x4000 | 0x2000 | 0x8000)) {
+        if (flags == (FACING_Y_AXIS | FACING_Z_AXIS | FACING_X_AXIS)) {
             return flags;
         }
 
         collisionIndex = gCollisionIndices[sectionIndex];
 
-        if ((gCollisionMesh[collisionIndex].flags & 0x4000)) {
-            if ((flags & 0x4000) == 0) {
-                if (collisionIndex != collision->unk3A) {
+        if ((gCollisionMesh[collisionIndex].flags & FACING_Y_AXIS)) {
+            if ((flags & FACING_Y_AXIS) == 0) {
+                if (collisionIndex != collision->meshIndexZX) {
                     if (is_colliding_with_drivable_surface(collision, boundingBoxSize, x1, y1, z1, collisionIndex, x2, y2, z2) == 1) {
-                        flags |= 0x4000;
+                        flags |= FACING_Y_AXIS;
                     }
                 }
             }
-        } else if ((gCollisionMesh[collisionIndex].flags & 0x8000) != 0) {
-            if ((flags & 0x8000) == 0) {
-                if (collisionIndex != collision->unk38) {
+        } else if ((gCollisionMesh[collisionIndex].flags & FACING_X_AXIS) != 0) {
+            if ((flags & FACING_X_AXIS) == 0) {
+                if (collisionIndex != collision->meshIndexZY) {
                     if (is_colliding_with_wall1(collision, boundingBoxSize, x1, y1, z1, collisionIndex, x2, y2, z2) == 1) {
-                        flags |= 0x8000;
+                        flags |= FACING_X_AXIS;
                     }
                 }
             }
-        } else if ((flags & 0x2000) == 0) {
-            if (collisionIndex != collision->unk36) {
+        } else if ((flags & FACING_Z_AXIS) == 0) {
+            if (collisionIndex != collision->meshIndexYX) {
                 if (is_colliding_with_wall2(collision, boundingBoxSize, x1, y1, z1, collisionIndex, x2, y2, z2) == 1) {
-                    flags |= 0x2000;
+                    flags |= FACING_Z_AXIS;
                 }
             }
         }
@@ -1353,22 +1354,22 @@ u16 check_bounding_collision(Collision* collision, f32 boundingBoxSize, f32 posX
     collision->surfaceDistance[1] = 1000.0f;
     collision->surfaceDistance[2] = 1000.0f;
     flags = 0;
-    if (collision->unk3A < gCollisionMeshCount) {
-        if (check_collision_zx(collision, boundingBoxSize, posX, posY, posZ, collision->unk3A) == 1) {
-            flags |= 0x4000;
+    if (collision->meshIndexZX < gCollisionMeshCount) {
+        if (check_collision_zx(collision, boundingBoxSize, posX, posY, posZ, collision->meshIndexZX) == 1) {
+            flags |= FACING_Y_AXIS;
         }
     }
-    if (collision->unk36 < gCollisionMeshCount) {
-        if (check_collision_yx(collision, boundingBoxSize, posX, posY, posZ, collision->unk36) == 1) {
-            flags |= 0x2000;
+    if (collision->meshIndexYX < gCollisionMeshCount) {
+        if (check_collision_yx(collision, boundingBoxSize, posX, posY, posZ, collision->meshIndexYX) == 1) {
+            flags |= FACING_Z_AXIS;
         }
     }
-    if (collision->unk38 < gCollisionMeshCount) {
-        if (check_collision_zy(collision, boundingBoxSize, posX, posY, posZ, collision->unk38 ) == 1) {
-            flags |= 0x8000;
+    if (collision->meshIndexZY < gCollisionMeshCount) {
+        if (check_collision_zy(collision, boundingBoxSize, posX, posY, posZ, collision->meshIndexZY ) == 1) {
+            flags |= FACING_X_AXIS;
         }
     }
-    if (flags == (0x4000 | 0x2000 | 0x8000)) {
+    if (flags == (FACING_Y_AXIS | FACING_Z_AXIS | FACING_X_AXIS)) {
         return flags;
     }
     
@@ -1403,31 +1404,31 @@ u16 check_bounding_collision(Collision* collision, f32 boundingBoxSize, f32 posX
     sectionIndex = gCollisionGrid[gridIndex].triangle;
 
     for (i = 0; i < numTriangles; i++) {
-        if (flags == (0x8000 | 0x4000 | 0x2000)) {
+        if (flags == (FACING_X_AXIS | FACING_Y_AXIS | FACING_Z_AXIS)) {
             return flags;
         }
         meshIndex = gCollisionIndices[sectionIndex];
-        if (gCollisionMesh[meshIndex].flags & 0x4000) {
-            if (!(flags & 0x4000)) {
-                if (meshIndex != collision->unk3A) {
+        if (gCollisionMesh[meshIndex].flags & FACING_Y_AXIS) {
+            if (!(flags & FACING_Y_AXIS)) {
+                if (meshIndex != collision->meshIndexZX) {
                     if (check_collision_zx(collision, boundingBoxSize, posX, posY, posZ, meshIndex) == 1) {
-                        flags |= 0x4000;
+                        flags |= FACING_Y_AXIS;
                     }
                 }
             }
-        } else if (gCollisionMesh[meshIndex].flags & 0x8000) {
-            if (!(flags & 0x8000)) {
-                if (meshIndex != collision->unk38) {
+        } else if (gCollisionMesh[meshIndex].flags & FACING_X_AXIS) {
+            if (!(flags & FACING_X_AXIS)) {
+                if (meshIndex != collision->meshIndexZY) {
                     if (check_collision_zy(collision, boundingBoxSize, posX, posY, posZ, meshIndex) == 1) {
-                        flags |= 0x8000;
+                        flags |= FACING_X_AXIS;
                     }
                 }
             }
         } else {
-            if (!(flags & 0x2000)) {
-                if (meshIndex != collision->unk36) {
+            if (!(flags & FACING_Z_AXIS)) {
+                if (meshIndex != collision->meshIndexYX) {
                     if (check_collision_yx(collision, boundingBoxSize, posX, posY, posZ, meshIndex) == 1) {
-                        flags |= 0x2000;
+                        flags |= FACING_Z_AXIS;
                     }
                 }
             }
@@ -1492,7 +1493,7 @@ f32 spawn_actor_on_surface(f32 posX, f32 posY, f32 posZ) {
 
         index = gCollisionIndices[sectionIndex];
 
-        if ((gCollisionMesh[index].flags & 0x4000) && (check_horizontally_colliding_with_triangle(posX, posZ, index) == 1)) {
+        if ((gCollisionMesh[index].flags & FACING_Y_AXIS) && (check_horizontally_colliding_with_triangle(posX, posZ, index) == 1)) {
             height = calculate_surface_height(posX, posY, posZ, index);
             if ((height <= posY) && (phi_f20 < height)) {
                 phi_f20 = height;
@@ -1678,6 +1679,7 @@ void add_collision_triangle(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16
 
     triangle->surfaceType = (u16) surfaceType;
 
+    // Square the crossProduct to produce a magnitude
     crossProductX = crossProductX * crossProductX;
     crossProductY = crossProductY * crossProductY;
     crossProductZ = crossProductZ * crossProductZ;
@@ -1703,15 +1705,17 @@ void add_collision_triangle(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16
 
     triangle->flags = flags;
 
+    // Find the axis with the highest magnitude.
+
     // Y is the significant axis
     if ((crossProductX <= crossProductY) && (crossProductY >= crossProductZ)) {
-        triangle->flags |= 0x4000;
+        triangle->flags |= FACING_Y_AXIS;
     // X is the significant axis
     } else if ((crossProductX > crossProductY) && (crossProductX >= crossProductZ)) {
-        triangle->flags |= 0x8000;
+        triangle->flags |= FACING_X_AXIS;
     // Z is the significant axis
     } else {
-        triangle->flags |= 0x2000;
+        triangle->flags |= FACING_Z_AXIS;
     }
     gCollisionMeshCount++;
 }
@@ -2132,9 +2136,9 @@ u16 process_collision(Player *player, KartTyre *tyre, f32 tyre2X, f32 tyre2Y, f3
     collision->surfaceDistance[1] = 1000.0f;
     collision->surfaceDistance[2] = 1000.0f;
     boundingBoxSize = player->boundingBoxSize;
-    collision->unk36 = 5000;
-    collision->unk38 = 5000;
-    collision->unk3A = 5000;
+    collision->meshIndexYX = 5000;
+    collision->meshIndexZY = 5000;
+    collision->meshIndexZX = 5000;
     collision->unk30 = 0;
     collision->unk32 = 0;
     collision->unk34 = 0;
@@ -2203,7 +2207,7 @@ u16 process_collision(Player *player, KartTyre *tyre, f32 tyre2X, f32 tyre2Y, f3
 
     for (i = 0; i < numTriangles; i++) {
         meshIndex = gCollisionIndices[sectionIndex];
-        if (gCollisionMesh[meshIndex].flags & 0x4000) {
+        if (gCollisionMesh[meshIndex].flags & FACING_Y_AXIS) {
             if (meshIndex != tyre->collisionMeshIndex) {
                 if (is_colliding_with_drivable_surface(collision, boundingBoxSize, tyreX, tyreY, tyreZ, meshIndex, tyre2X, tyre2Y, tyre2Z) == 1) {
                     height = calculate_surface_height(tyreX, tyreY, tyreZ, meshIndex);
@@ -2223,7 +2227,7 @@ u16 process_collision(Player *player, KartTyre *tyre, f32 tyre2X, f32 tyre2Y, f3
                     }
                 }
             }
-        } else if (gCollisionMesh[meshIndex].flags & 0x8000) {
+        } else if (gCollisionMesh[meshIndex].flags & FACING_X_AXIS) {
             if (gCollisionMesh[meshIndex].normalY != 0.0f) {
                 if (meshIndex != tyre->collisionMeshIndex) {
                     if (is_colliding_with_wall1(collision, boundingBoxSize, tyreX, tyreY, tyreZ, meshIndex, tyre2X, tyre2Y, tyre2Z) == 1) {

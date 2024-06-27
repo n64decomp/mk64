@@ -756,7 +756,7 @@ void apply_hit_effect(Player* player, s8 arg1) {
     player->unk_0C0 = 0;
     player->unk_08C = 0.0f;
     player->currentSpeed = 0.0f;
-    if ((player->unk_110.surfaceDistance[2] >= 600.0f) || ((player->effects & 0x1000) != 0)) { D_8018D990[arg1] = 3; } // placed block on same line to match
+    if ((player->collision.surfaceDistance[2] >= 600.0f) || ((player->effects & 0x1000) != 0)) { D_8018D990[arg1] = 3; } // placed block on same line to match
 
     switch (D_8018D990[arg1]) { 
     case 0:
@@ -822,7 +822,7 @@ void apply_hit_effect(Player* player, s8 arg1) {
             player->unk_238 = 0;
         }
 
-        if (player->unk_110.surfaceDistance[2] >= 600.0f) {
+        if (player->collision.surfaceDistance[2] >= 600.0f) {
             D_8018D990[arg1] = 3;
         }
 

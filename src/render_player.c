@@ -1078,7 +1078,7 @@ void render_light_environment_on_player(Player *player, s8 arg1) {
             if (((gNearestWaypointByPlayerId[arg1] >= 0x15) && (gNearestWaypointByPlayerId[arg1] < 0x2A))
             || ((gNearestWaypointByPlayerId[arg1] >= 0x14D) && (gNearestWaypointByPlayerId[arg1] < 0x15C))
             || ((gNearestWaypointByPlayerId[arg1] >= 0x1D1) && (gNearestWaypointByPlayerId[arg1] < 0x1E4))
-            || (player->unk_110.surfaceDistance[2] >= 500.0f)) { // over lava
+            || (player->collision.surfaceDistance[2] >= 500.0f)) { // over lava
                 change_player_color_effect_rgb(player, arg1, COLOR_LAVA, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0x004040, 0.3f);
                 D_80164B80[arg1] = 0;
@@ -1270,12 +1270,12 @@ void render_player_shadow(Player *player, s8 playerId, s8 screenId) {
         || ((player->effects & 0x10000) == 0x10000)
         || ((player->effects & 8) == 8)) {
 
-        var_f2 = (f32) (1.0 - ((f64) player->unk_110.surfaceDistance[2] * 0.02));
+        var_f2 = (f32) (1.0 - ((f64) player->collision.surfaceDistance[2] * 0.02));
         if (var_f2 < 0.0f) {var_f2 = 0.0f;}
         if (var_f2 > 1.0f) {var_f2 = 1.0f;}
-        spB4[0] = player->unk_110.orientationVector[0];
-        spB4[2] = player->unk_110.orientationVector[2];
-        spB4[1] = player->unk_110.orientationVector[1];
+        spB4[0] = player->collision.orientationVector[0];
+        spB4[2] = player->collision.orientationVector[2];
+        spB4[1] = player->collision.orientationVector[1];
 
         spCC[0] = player->pos[0] + ((spB0 * sins(spC0)) + (spAC * coss(spC0)));
         spCC[1] = player->unk_074 + 1.0f;
@@ -1670,7 +1670,7 @@ void render_player(Player *player, s8 playerId, s8 screenId) {
     }
     func_80023BF0(player, playerId, screenId, var_v1);
     temp_t1 = 8 << (screenId * 4);
-    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->unk_110.surfaceDistance[2] <= 50.0f) && (player->surfaceType != ICE)) {
+    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->collision.surfaceDistance[2] <= 50.0f) && (player->surfaceType != ICE)) {
         if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (playerId == screenId) {
                 render_player_shadow(player, playerId, screenId);
@@ -1685,7 +1685,7 @@ void render_player(Player *player, s8 playerId, s8 screenId) {
         render_ghost(player, playerId, screenId, var_v1);
     }
     osRecvMesg(&gDmaMesgQueue, (OSMesg *) &sp34, OS_MESG_BLOCK);
-    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) && ((player->unk_0CA & 1) != 1) && (player->unk_110.surfaceDistance[2] <= 30.0f)) {
+    if ((temp_t1 == (player->unk_002 & temp_t1)) && (player->surfaceType == ICE) && ((player->unk_0CA & 1) != 1) && (player->collision.surfaceDistance[2] <= 30.0f)) {
         render_player_ice_reflection(player, playerId, screenId, var_v1);
     }
     if (player->boostPower >= 2.0f) {

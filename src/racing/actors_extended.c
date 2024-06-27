@@ -20,9 +20,9 @@ void copy_collision(Collision *src, Collision *dest) {
     dest->unk30 = src->unk30;
     dest->unk32 = src->unk32;
     dest->unk34 = src->unk34;
-    dest->unk36 = src->unk36;
-    dest->unk38 = src->unk38;
-    dest->unk3A = src->unk3A;
+    dest->meshIndexYX = src->meshIndexYX;
+    dest->meshIndexZY = src->meshIndexZY;
+    dest->meshIndexZX = src->meshIndexZX;
     dest->surfaceDistance[0] = src->surfaceDistance[0];
     dest->surfaceDistance[1] = src->surfaceDistance[1];
     dest->surfaceDistance[2] = src->surfaceDistance[2];

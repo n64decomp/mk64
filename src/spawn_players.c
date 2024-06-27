@@ -311,12 +311,12 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->tyres[BACK_LEFT].unk_14   = 0;
     player->tyres[BACK_RIGHT].unk_14  = 0;
 
-    player->unk_110.unk30 = 0;
-    player->unk_110.unk32 = 0;
-    player->unk_110.unk34 = 0;
-    player->unk_110.unk36 = 0;
-    player->unk_110.unk38 = 0;
-    player->unk_110.unk3A = 0;
+    player->collision.unk30 = 0;
+    player->collision.unk32 = 0;
+    player->collision.unk34 = 0;
+    player->collision.meshIndexYX = 0;
+    player->collision.meshIndexZY = 0;
+    player->collision.meshIndexZX = 0;
 
     player->tyres[FRONT_LEFT].pos[0] = 0.0f;
     player->tyres[FRONT_LEFT].pos[1] = 0.0f;
@@ -339,18 +339,18 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     player->tyres[BACK_LEFT].baseHeight = 0.0f;
     player->tyres[BACK_RIGHT].baseHeight = 0.0f;
 
-    player->unk_110.surfaceDistance[0] = 0.0f;
-    player->unk_110.surfaceDistance[1] = 0.0f;
-    player->unk_110.surfaceDistance[2] = 0.0f;
-    player->unk_110.unk48[0] = 0.0f;
-    player->unk_110.unk48[1] = 0.0f;
-    player->unk_110.unk48[2] = 0.0f;
-    player->unk_110.unk54[0] = 0.0f;
-    player->unk_110.unk54[1] = 0.0f;
-    player->unk_110.unk54[2] = 0.0f;
-    player->unk_110.orientationVector[0] = 0.0f;
-    player->unk_110.orientationVector[1] = 0.0f;
-    player->unk_110.orientationVector[2] = 0.0f;
+    player->collision.surfaceDistance[0] = 0.0f;
+    player->collision.surfaceDistance[1] = 0.0f;
+    player->collision.surfaceDistance[2] = 0.0f;
+    player->collision.unk48[0] = 0.0f;
+    player->collision.unk48[1] = 0.0f;
+    player->collision.unk48[2] = 0.0f;
+    player->collision.unk54[0] = 0.0f;
+    player->collision.unk54[1] = 0.0f;
+    player->collision.unk54[2] = 0.0f;
+    player->collision.orientationVector[0] = 0.0f;
+    player->collision.orientationVector[1] = 0.0f;
+    player->collision.orientationVector[2] = 0.0f;
 
     D_80165300[playerIndex] = 0;
     D_8018CE10[playerIndex].unk_04[0] = 0.0f;

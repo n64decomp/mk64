@@ -1195,7 +1195,7 @@ UNUSED void func_8004A5E4(Vec3f arg0, Vec3su arg1, f32 arg2, u8 *texture, Vtx *a
 void func_8004A630(Collision *arg0, Vec3f arg1, f32 arg2) {
     if (func_80041924(arg0, arg1) != 0) {
         D_80183E50[0] = arg1[0];
-        D_80183E50[1] = calculate_surface_height(arg1[0], 0.0f, arg1[2], arg0->unk3A) + 0.8;
+        D_80183E50[1] = calculate_surface_height(arg1[0], 0.0f, arg1[2], arg0->meshIndexZX) + 0.8;
         D_80183E50[2] = arg1[2];
         rsp_set_matrix_transl_rot_scale(D_80183E50, arg0->orientationVector, arg2);
         gSPDisplayList(gDisplayListHead++, D_0D007B98);
@@ -4242,7 +4242,7 @@ void func_800568A0(s32 objectIndex, s32 playerId) {
     D_80183E50[0] = gObjectList[objectIndex].pos[0];
     D_80183E50[1] = gObjectList[objectIndex].surfaceHeight + 0.8;
     D_80183E50[2] = gObjectList[objectIndex].pos[2];
-    set_transform_matrix(sp30, player->unk_110.orientationVector, D_80183E50, 0U, 0.5f);
+    set_transform_matrix(sp30, player->collision.orientationVector, D_80183E50, 0U, 0.5f);
     convert_to_fixed_point_matrix(&gGfxPool->mtxHud[gMatrixHudCount], sp30);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxHud[gMatrixHudCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPDisplayList(gDisplayListHead++, D_0D007B98);

@@ -116,14 +116,14 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     arg1->playerDirection = var_a3;
 
     if (D_80152300[camera - camera1] == 1) {
-        sp1E = func_802ABD40(camera->collision.unk3A);
-        temp_v0_3 = func_802ABD40(player->unk_110.unk3A);
+        sp1E = get_section_id(camera->collision.meshIndexZX);
+        temp_v0_3 = get_section_id(player->collision.meshIndexZX);
         index = sp1E - temp_v0_3;
         if ((index < 2) && (index >= -1)) {
             if (sp1E == 255) {
                 if (temp_v0_3 == 255) {
                     index = arg1->pathCounter;
-                } else if (player->unk_110.surfaceDistance[2] > 30.0f) {
+                } else if (player->collision.surfaceDistance[2] > 30.0f) {
                     index = arg1->pathCounter;
                 } else { 
                     index = temp_v0_3;
@@ -161,7 +161,7 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
                 default:
                     if (temp_v0_3 == 255) {
                         index = arg1->pathCounter;
-                    } else if (player->unk_110.surfaceDistance[2] > 30.0f) {
+                    } else if (player->collision.surfaceDistance[2] > 30.0f) {
                         index = arg1->pathCounter;
                     } else { 
                         index = temp_v0_3;
@@ -170,7 +170,7 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
             }
         }
     } else {
-        index = func_802ABD40(camera->collision.unk3A);
+        index = get_section_id(camera->collision.meshIndexZX);
         if (camera->collision.surfaceDistance[2] > 30.0f) {
             index = arg1->pathCounter;
         } else if (index == 255) { 
@@ -1369,7 +1369,7 @@ void render_course(struct UnkStruct_800DC5EC *arg0) {
 
 void func_80295BF8(s32 playerIndex) {
     Player* player = &gPlayers[playerIndex];
-    func_802AAAAC(&player->unk_110);
+    func_802AAAAC(&player->collision);
     player->tyres[FRONT_RIGHT].surfaceFlags = 0;
     player->tyres[FRONT_LEFT].surfaceFlags  = 0;
     player->tyres[BACK_RIGHT].surfaceFlags  = 0;

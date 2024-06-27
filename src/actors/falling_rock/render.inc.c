@@ -27,7 +27,7 @@ void render_actor_falling_rock(Camera *camera, struct FallingRock *rock) {
         if (rock->unk30.unk34 == 1) {
             sp8C[0] = rock->pos[0];
             sp8C[2] = rock->pos[2];
-            height = calculate_surface_height(sp8C[0], rock->pos[1], sp8C[2], rock->unk30.unk3A);
+            height = calculate_surface_height(sp8C[0], rock->pos[1], sp8C[2], rock->unk30.meshIndexZX);
             sp98[0] = 0;
             sp98[1] = 0;
             sp98[2] = 0;

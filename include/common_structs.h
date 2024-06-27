@@ -139,10 +139,10 @@ typedef struct {
     /* 0x00 */ u16 unk30;
     /* 0x02 */ u16 unk32;
     /* 0x04 */ u16 unk34;
-    /* 0x06 */ u16 unk36;
-    /* 0x08 */ u16 unk38;
+    /* 0x06 */ u16 meshIndexYX;
+    /* 0x08 */ u16 meshIndexZY;
     // This may be an index to the tilemap?
-    /* 0x0A */ u16 unk3A;
+    /* 0x0A */ u16 meshIndexZX;
     /* 0x0C */ Vec3f surfaceDistance; // Appears to be distance from actor to surface for zx, yx, and zy planes.
     /* 0x18 */ Vec3f unk48;
     /* 0x24 */ Vec3f unk54;
@@ -185,7 +185,6 @@ typedef struct {
     s16 ob[3];    /* x, y, z */
     s16 tc[2];    /* texture coord */
     s8  ca[4];    /* color & alpha */
-
 } CourseVtx;
 
 /*
@@ -214,9 +213,8 @@ typedef struct {
     /* 0x10 */ Vtx *vtx1; //pointer to the 3 vertices of this poly
                Vtx *vtx2;
                Vtx *vtx3;
-
+        // Face normal. Should really be Vec3f normal
     /* 0x1C */ f32 normalX;
-        // Used to calculate the height that Lakitu drops players at.
     /* 0x20 */ f32 normalY;
     /* 0x24 */ f32 normalZ;
     /* 0x28 */ f32 distance;
@@ -331,7 +329,7 @@ typedef struct {
     /* 0x0108 */ f32 unk_108;
     /* 0x010C */ s16 unk_10C;
     /* 0x010E */ char unk_10E[0x2];
-    /* 0x0110 */ Collision unk_110;
+    /* 0x0110 */ Collision collision;
     /* 0x0150 */ Mat3 unk_150;
     /* 0x0174 */ Mat3 orientationMatrix;
     /* 0x0198 */ KartTyre tyres[4];

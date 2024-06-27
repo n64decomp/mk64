@@ -740,7 +740,7 @@ void func_8001E45C(Camera *camera, Player *player, s8 arg2) {
     if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||
     ((player->effects & 0x4000) == 0x4000) || ((player->effects & 0x80000) == 0x80000) ||
     ((player->effects & 0x800000) == 0x800000) || (((player->effects & 0x20) == 0x20) && (player->unk_078 != 0)) ||
-    (player->unk_110.surfaceDistance[0] <= 0.0f) || (player->unk_110.surfaceDistance[1] <= 0.0f) || ((player->effects & 0x20000) == 0x20000)) {
+    (player->collision.surfaceDistance[0] <= 0.0f) || (player->collision.surfaceDistance[1] <= 0.0f) || ((player->effects & 0x20000) == 0x20000)) {
         func_8001CCEC(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     } else {
         adjust_angle(&camera->unk_2C, (s16) (player->rotation[1] + camera->unk_B0), var_a3);
@@ -862,7 +862,7 @@ void func_8001EA0C(Camera *camera, Player *player, s8 arg2) {
     if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||
     ((player->effects & 0x4000) == 0x4000) || ((player->effects & 0x80000) == 0x80000) ||
     ((player->effects & 0x800000) == 0x800000) || (((player->effects & 0x20) == 0x20) && (player->unk_078 != 0)) ||
-    (player->unk_110.surfaceDistance[0] <= 0.0f) || (player->unk_110.surfaceDistance[1] <= 0.0f) || ((player->effects & 0x20000) == 0x20000)) {
+    (player->collision.surfaceDistance[0] <= 0.0f) || (player->collision.surfaceDistance[1] <= 0.0f) || ((player->effects & 0x20000) == 0x20000)) {
         func_8001D944(player, camera, sp64, &sp84, &sp80, &sp7C, &sp58, (s32) camera->unk_2C, (s32) arg2);
     } else {
         adjust_angle(&camera->unk_2C, (s16) (player->rotation[1] + camera->unk_B0), var_a3);

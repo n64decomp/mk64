@@ -3103,7 +3103,7 @@ void func_80079860(s32 playerId) {
     player = &gPlayerOne[playerId];
     if ((func_80072354(objectIndex, 1) != 0) &&
         (
-            ((func_802ABDF4(player->unk_110.unk3A) != 0) && (player->unk_110.surfaceDistance[2] <= 3.0f)) ||
+            ((func_802ABDF4(player->collision.meshIndexZX) != 0) && (player->collision.surfaceDistance[2] <= 3.0f)) ||
             (player->unk_0CA & 1) ||
             ((player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & 8))
         )
@@ -3215,10 +3215,8 @@ void update_object_lakitu_fishing(s32 objectIndex, s32 playerId) {
 }
 
 void update_object_lakitu_fishing2(s32 objectIndex, s32 playerId) {
+    Player *player = &gPlayerOne[playerId];
 
-    Player *temp_s1;
-
-    temp_s1 = &gPlayerOne[playerId];
     switch (gObjectList[objectIndex].state) {                              /* switch 1; irregular */
         case 0:                                         /* switch 1 */
             break;
@@ -3228,7 +3226,7 @@ void update_object_lakitu_fishing2(s32 objectIndex, s32 playerId) {
         case 2:                                         /* switch 1 */
             set_object_flag_status_true(objectIndex, 0x00000010);
             func_800736E0(objectIndex);
-            temp_s1->unk_0CA |= 0x80;
+            player->unk_0CA |= 0x80;
             func_80072488(objectIndex);
             break;
         case 3:                                         /* switch 1 */
@@ -3243,15 +3241,15 @@ void update_object_lakitu_fishing2(s32 objectIndex, s32 playerId) {
             }
             break;
         case 2:
-            func_80090868(temp_s1);
+            func_80090868(player);
             func_800722A4(objectIndex, 4);
             func_80073654(objectIndex);
             break;
         case 3:
-            if ((temp_s1->surfaceType == ICE) && !(temp_s1->unk_0CA & 1) && ((f64) temp_s1->unk_110.surfaceDistance[2] <= 30.0)) {
+            if ((player->surfaceType == ICE) && !(player->unk_0CA & 1) && ((f64) player->collision.surfaceDistance[2] <= 30.0)) {
                 func_800722A4(objectIndex, 8);
             }
-            if (!(temp_s1->unk_0CA & 2)) {
+            if (!(player->unk_0CA & 2)) {
                 func_80086EAC(objectIndex, 0, 3);
                 func_80073654(objectIndex);
             }
@@ -3260,7 +3258,7 @@ void update_object_lakitu_fishing2(s32 objectIndex, s32 playerId) {
             func_8007375C(objectIndex, 0x0000001E);
             break;
         case 5:
-            temp_s1->unk_0CA &= 0xFF7F;
+            player->unk_0CA &= 0xFF7F;
             func_800722A4(objectIndex, 0x00000010);
             func_800722A4(objectIndex, 0x00000020);
             func_800722CC(objectIndex, 4);
@@ -3271,8 +3269,8 @@ void update_object_lakitu_fishing2(s32 objectIndex, s32 playerId) {
         case 6:
             if (func_8007375C(objectIndex, 0x000000A0) != 0) {
                 func_800722CC(objectIndex, 0x00000010);
-                temp_s1->unk_0CA &= 0xFFEF;
-                temp_s1->unk_0CA |= 0x20;
+                player->unk_0CA &= 0xFFEF;
+                player->unk_0CA |= 0x20;
             }
             break;
         case 7:
@@ -3281,16 +3279,16 @@ void update_object_lakitu_fishing2(s32 objectIndex, s32 playerId) {
         case 8:
             func_80073720(objectIndex);
             func_80072428(objectIndex);
-            temp_s1->unk_0CA &= 0xFFDF;
+            player->unk_0CA &= 0xFFDF;
             func_800722CC(objectIndex, 1);
             func_800C9018((u8) playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFA, 0x28));
             break;
     }
 
     if (gObjectList[objectIndex].state >= 2) {
-        func_8007993C(objectIndex, temp_s1);
+        func_8007993C(objectIndex, player);
     }
-    func_80079A5C(objectIndex, temp_s1);
+    func_80079A5C(objectIndex, player);
 }
 
 void func_8007A060(s32 objectIndex, s32 playerIndex) {
