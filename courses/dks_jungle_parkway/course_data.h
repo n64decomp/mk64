@@ -113,6 +113,7 @@ extern Gfx d_course_dks_jungle_parkway_dl_7008[];
 extern Gfx d_course_dks_jungle_parkway_dl_7080[];
 extern Gfx d_course_dks_jungle_parkway_dl_7108[];
 extern TrackWaypoint d_course_dks_jungle_parkway_unknown_waypoints[];
+extern TrackWaypoint d_course_dks_jungle_parkway_ferry_waypoints[];
 extern TrackWaypoint d_course_dks_jungle_parkway_track_waypoints[];
 extern Vtx d_course_dks_jungle_parkway_paddle_boat_model1[];
 extern Vtx d_course_dks_jungle_parkway_paddle_boat_model2[];
