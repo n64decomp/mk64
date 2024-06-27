@@ -4298,8 +4298,8 @@ void load_vehicles_waypoint_train(void) {
     s32 i;
     Path2D *temp;
     TrackWaypoint *waypoint = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(
-        gSegmentTable[SEGMENT_NUMBER2(d_course_kalimari_desert_waypoint_vehicles_train)]
-                    + SEGMENT_OFFSET(d_course_kalimari_desert_waypoint_vehicles_train));
+        gSegmentTable[SEGMENT_NUMBER2(d_course_kalimari_desert_train_waypoints)]
+                    + SEGMENT_OFFSET(d_course_kalimari_desert_train_waypoints));
 
     GET_PATH_LENGTH(waypoint)
 
@@ -4312,7 +4312,7 @@ void load_vehicles_waypoint_ferry(void) {
     TrackWaypoint *waypoint;
     s32 i;
 
-    waypoint = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(d_course_dks_jungle_parkway_waypoint_vehicles_ferry)] + (SEGMENT_OFFSET(d_course_dks_jungle_parkway_waypoint_vehicles_ferry)));
+    waypoint = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(d_course_dks_jungle_parkway_ferry_waypoints)] + (SEGMENT_OFFSET(d_course_dks_jungle_parkway_ferry_waypoints)));
 
     GET_PATH_LENGTH(waypoint)
 

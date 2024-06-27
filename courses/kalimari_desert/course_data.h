@@ -88,7 +88,7 @@ extern Gfx d_course_kalimari_desert_dl_66F0[];
 extern Gfx d_course_kalimari_desert_dl_6838[];
 extern Gfx d_course_kalimari_desert_dl_6940[];
 extern TrackWaypoint d_course_kalimari_desert_unknown_waypoints[];
-extern TrackWaypoint d_course_kalimari_desert_waypoint_vehicles_train[];
+extern TrackWaypoint d_course_kalimari_desert_train_waypoints[];
 extern TrackWaypoint d_course_kalimari_desert_track_waypoints[];
 extern u8 d_course_kalimari_desert_tree_tlut[];
 extern Vtx d_course_kalimari_desert_cactus_model1[];
