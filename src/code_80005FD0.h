@@ -63,7 +63,7 @@ s16  get_angle_between_waypoints(Vec3f, Vec3f);
 
 s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
 void adjust_position_by_angle(Vec3f, Vec3f, s16);
-s32  func_800061DC(Vec3f, f32, s32);
+s32  set_vehicle_render_distance_flags(Vec3f, f32, s32);
 void func_800065D0(s32, Player*);
 void set_places(void);
 
@@ -163,7 +163,7 @@ void update_vehicle_trains(void);
 void func_80012DC0(s32, Player*);
 
 void func_80013054(void);
-void func_800131DC(s32);
+void check_ai_crossing_distance(s32);
 void init_vehicles_ferry(void);
 void update_vehicle_paddle_boats(void);
 void func_80013854(Player*);
@@ -352,7 +352,7 @@ extern s16 D_8016348C;
 extern s16 D_80163490[];
 extern s16 D_801634A8[];
 extern s16 D_801634C0[];
-extern s16 D_801634D8[];
+extern s16 bStopAICrossing[];
 extern s16 D_801634EC;
 extern s32 D_801634F0;
 extern s32 D_801634F4;
@@ -360,7 +360,7 @@ extern Test D_801634F8[];
 extern Path2D *gVehicle2DWaypoint;
 extern s32 gVehicle2DWaypointLength;
 extern u16 isCrossingTriggeredByIndex[];
-extern u16 D_801637BC[];
+extern u16 sCrossingActiveTimer[];
 extern s32 D_80163DD8[];
 extern struct unexpiredActors gUnexpiredActorsList[];
 extern D_801642D8_entry D_801642D8[];
