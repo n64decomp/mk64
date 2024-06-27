@@ -31,13 +31,13 @@ s16 D_802B87D4 = 0;
 s16 currentScreenSection = 0;
 
 s32 func_80290C20(Camera *camera) {
-    if (camera->unk_54.unk34 == 0) {
+    if (camera->collision.unk34 == 0) {
         return 1;
     }
-    if ((camera->unk_54.unk30 == 1) && (camera->unk_54.unk3C[0] < 3.0f)) {
+    if ((camera->collision.unk30 == 1) && (camera->collision.surfaceDistance[0] < 3.0f)) {
         return 1;
     }
-    if ((camera->unk_54.unk32 == 1) && (camera->unk_54.unk3C[1] < 3.0f)) {
+    if ((camera->collision.unk32 == 1) && (camera->collision.surfaceDistance[1] < 3.0f)) {
         return 1;
     }
     return 0;
@@ -116,19 +116,19 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     arg1->playerDirection = var_a3;
 
     if (D_80152300[camera - camera1] == 1) {
-        sp1E = func_802ABD40(camera->unk_54.unk3A);
-        temp_v0_3 = func_802ABD40(player->unk_110.unk3A);
+        sp1E = get_section_id(camera->collision.meshIndexZX);
+        temp_v0_3 = get_section_id(player->collision.meshIndexZX);
         index = sp1E - temp_v0_3;
         if ((index < 2) && (index >= -1)) {
             if (sp1E == 255) {
                 if (temp_v0_3 == 255) {
                     index = arg1->pathCounter;
-                } else if (player->unk_110.unk3C[2] > 30.0f) {
+                } else if (player->collision.surfaceDistance[2] > 30.0f) {
                     index = arg1->pathCounter;
                 } else { 
                     index = temp_v0_3;
                 }
-            } else if (camera->unk_54.unk3C[2] > 30.0f) {
+            } else if (camera->collision.surfaceDistance[2] > 30.0f) {
                 index = arg1->pathCounter;
             } else { 
                 index = sp1E;
@@ -161,7 +161,7 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
                 default:
                     if (temp_v0_3 == 255) {
                         index = arg1->pathCounter;
-                    } else if (player->unk_110.unk3C[2] > 30.0f) {
+                    } else if (player->collision.surfaceDistance[2] > 30.0f) {
                         index = arg1->pathCounter;
                     } else { 
                         index = temp_v0_3;
@@ -170,8 +170,8 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
             }
         }
     } else {
-        index = func_802ABD40(camera->unk_54.unk3A);
-        if (camera->unk_54.unk3C[2] > 30.0f) {
+        index = get_section_id(camera->collision.meshIndexZX);
+        if (camera->collision.surfaceDistance[2] > 30.0f) {
             index = arg1->pathCounter;
         } else if (index == 255) { 
             index = arg1->pathCounter;
@@ -1369,16 +1369,16 @@ void render_course(struct UnkStruct_800DC5EC *arg0) {
 
 void func_80295BF8(s32 playerIndex) {
     Player* player = &gPlayers[playerIndex];
-    func_802AAAAC(&player->unk_110);
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].surfaceFlags = 0;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].surfaceFlags  = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceFlags  = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceFlags   = 0;
+    func_802AAAAC(&player->collision);
+    player->tyres[FRONT_RIGHT].surfaceFlags = 0;
+    player->tyres[FRONT_LEFT].surfaceFlags  = 0;
+    player->tyres[BACK_RIGHT].surfaceFlags  = 0;
+    player->tyres[BACK_LEFT].surfaceFlags   = 0;
 
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].collisionMeshIndex = 0x1388;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].collisionMeshIndex  = 0x1388;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].collisionMeshIndex  = 0x1388;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].collisionMeshIndex   = 0x1388;
+    player->tyres[FRONT_RIGHT].collisionMeshIndex = 0x1388;
+    player->tyres[FRONT_LEFT].collisionMeshIndex  = 0x1388;
+    player->tyres[BACK_RIGHT].collisionMeshIndex  = 0x1388;
+    player->tyres[BACK_LEFT].collisionMeshIndex   = 0x1388;
 }
 
 void func_80295C6C(void) {
@@ -1388,8 +1388,8 @@ void func_80295C6C(void) {
     gCourseMinX += -20;
     gCourseMinZ += -20;
     gCourseMinY += -20;
-    func_802AF314();
-    gNextFreeMemoryAddress += ALIGN16(D_8015F58A * 2);
+    generate_collision_grid();
+    gNextFreeMemoryAddress += ALIGN16(gNumCollisionTriangles * 2);
 }
 
 UNUSED void func_80295D50(s16 arg0, s16 arg1) {
