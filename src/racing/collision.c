@@ -1206,12 +1206,12 @@ s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
         return NO_COLLISION;
     }
 
-    distanceToSurface2 = (triangle->normalX * arg6) + (triangle->normalY * arg7) + (triangle->normalZ * arg8) + triangle->distance;
+    distanceToSurface2 = (triangle->normalX * posX) + (triangle->normalY * posY) + (triangle->normalZ * posZ) + triangle->distance;
     if (distanceToSurface2 < 0.0f) {
         return NO_COLLISION;
     }
     arg->unk32 = 1;
-    arg->meshIndexZY = arg5;
+    arg->meshIndexZY = surfaceIndex;
     arg->surfaceDistance[1] = distanceToSurface - boundingBoxSize;
     arg->unk54[0] = triangle->normalX;
     arg->unk54[1] = triangle->normalY;
@@ -1219,7 +1219,7 @@ s32 is_colliding_with_wall1(Collision *arg, f32 boundingBoxSize, f32 x1, f32 y1,
     return COLLISION;
 }
 
-u16 actor_terrain_collision(Collision *collision, f32 boundingBoxSize, f32 x1, f32 newX, f32 newY, f32 newZ, f32 oldX, f32 oldY, f32 oldZ) {
+u16 actor_terrain_collision(Collision *collision, f32 boundingBoxSize, f32 newX, f32 newY, f32 newZ, f32 oldX, f32 oldY, f32 oldZ) {
     s32 courseLengthX;
     s32 courseLengthZ;
     s16 sectionIndexX;

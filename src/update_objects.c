@@ -1517,7 +1517,7 @@ void func_8007542C(s32 arg0) {
     }
 }
 
-void func_80075574(s32 objectIndex, Vec3f pos, f32 velocity) {
+void init_train_smoke(s32 objectIndex, Vec3f pos, f32 velocity) {
     Object *object;
     UNUSED s32 pad[2];
 
@@ -1637,7 +1637,7 @@ void update_train_smoke(void) {
     }
 }
 
-void func_800759EC(s32 objectIndex, Vec3f pos, f32 velocity) {
+void init_ferry_smoke(s32 objectIndex, Vec3f pos, f32 velocity) {
     Object *object;
 
     init_object(objectIndex, 0);
