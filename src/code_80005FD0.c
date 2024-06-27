@@ -3437,11 +3437,11 @@ void func_8000F2DC(void) {
     D_80164430 = *gWaypointCountByPathIndex;
     switch (gCurrentCourseId) {
         case COURSE_KALAMARI_DESERT:
-            load_vehicles_waypoint_train();
+            generate_train_waypoints();
             init_vehicles_trains();
             break;
         case COURSE_DK_JUNGLE:
-            load_vehicles_waypoint_ferry();
+            generate_ferry_waypoints();
             init_vehicles_ferry();
             break;
         case COURSE_TOADS_TURNPIKE:
@@ -4294,7 +4294,7 @@ void func_80011EC0(s32 arg0, Player *player, s32 arg2, UNUSED u16 arg3) {
         } \
     }
 
-void load_vehicles_waypoint_train(void) {
+void generate_train_waypoints(void) {
     s32 i;
     Path2D *temp;
     TrackWaypoint *waypoint = (TrackWaypoint *) VIRTUAL_TO_PHYSICAL2(
@@ -4308,7 +4308,7 @@ void load_vehicles_waypoint_train(void) {
     D_80162EB0 = func_802AE1C0(temp[0].x, 2000.0f, temp[0].z);
 }
 
-void load_vehicles_waypoint_ferry(void) {
+void generate_ferry_waypoints(void) {
     TrackWaypoint *waypoint;
     s32 i;
 

@@ -152,8 +152,8 @@ void kart_ai_behaviour_end(s32, Player*);
 void kart_ai_behaviour(s32);
 void func_80011EC0(s32, Player*, s32, u16);
 
-void load_vehicles_waypoint_train(void);
-void load_vehicles_waypoint_ferry(void);
+void generate_train_waypoints(void);
+void generate_ferry_waypoints(void);
 void spawn_vehicle_on_road(VehicleStuff*);
 void spawn_course_vehicles(void);
 void set_vehicle_pos_waypoint(TrainCarStuff*, Path2D*, u16);
