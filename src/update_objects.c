@@ -1517,7 +1517,7 @@ void func_8007542C(s32 arg0) {
     }
 }
 
-void init_train_smoke(s32 objectIndex, Vec3f pos, f32 arg2) {
+void init_train_smoke(s32 objectIndex, Vec3f pos, f32 velocity) {
     Objects *temp_v1;
     UNUSED s32 pad[2];
 
@@ -1526,22 +1526,22 @@ void init_train_smoke(s32 objectIndex, Vec3f pos, f32 arg2) {
     temp_v1->origin_pos[0] = pos[0];
     temp_v1->origin_pos[1] = pos[1];
     temp_v1->origin_pos[2] = pos[2];
-    temp_v1->velocity[1] = arg2;
+    temp_v1->velocity[1] = velocity;
     temp_v1->type = random_int(0x0064U) + 0x1E;
 }
 
-s32 spawn_train_smoke(s32 trainIndex, Vec3f pos, f32 arg2) {
+s32 spawn_train_smoke(s32 trainIndex, Vec3f pos, f32 velocity) {
     s32 objectIndex;
 
     if (trainIndex == 0) {
         objectIndex = add_unused_obj_index(gObjectParticle2, &gNextFreeObjectParticle2, gObjectParticle2_SIZE);
         if (objectIndex != NULL_OBJECT_ID) {
-            init_train_smoke(objectIndex, pos, arg2);
+            init_train_smoke(objectIndex, pos, velocity);
         }
     } else {
         objectIndex = add_unused_obj_index(gObjectParticle3, &gNextFreeObjectParticle3, gObjectParticle3_SIZE);
         if (objectIndex != NULL_OBJECT_ID) {
-            init_train_smoke(objectIndex, pos, arg2);
+            init_train_smoke(objectIndex, pos, velocity);
         }
     }
     return objectIndex;

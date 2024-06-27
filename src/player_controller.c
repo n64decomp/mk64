@@ -1028,7 +1028,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     player->boundingBoxCorners[0].cornerPos[0] = player->pos[0] + sp8C[0];
     player->boundingBoxCorners[0].cornerPos[1] = player->pos[1] + sp8C[1];
     player->boundingBoxCorners[0].cornerPos[2] = player->pos[2] + sp8C[2];
-    process_collision_between_player_terrain(player, &player->boundingBoxCorners[0], sp80[0], sp80[1], sp80[2]);
+    player_terrain_collision(player, &player->boundingBoxCorners[0], sp80[0], sp80[1], sp80[2]);
     
     sp8C[0] = (-var_f12) + 3.6;
     sp8C[1] = -player->boundingBoxSize;
@@ -1040,7 +1040,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     player->boundingBoxCorners[1].cornerPos[0] = player->pos[0] + sp8C[0];
     player->boundingBoxCorners[1].cornerPos[1] = player->pos[1] + sp8C[1];
     player->boundingBoxCorners[1].cornerPos[2] = player->pos[2] + sp8C[2];
-    process_collision_between_player_terrain(player, &player->boundingBoxCorners[1], sp80[0], sp80[1], sp80[2]);
+    player_terrain_collision(player, &player->boundingBoxCorners[1], sp80[0], sp80[1], sp80[2]);
     
     sp8C[0] = var_f12 - 2.6;
     sp8C[1] = -player->boundingBoxSize;
@@ -1052,7 +1052,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     player->boundingBoxCorners[2].cornerPos[0] = player->pos[0] + sp8C[0];
     player->boundingBoxCorners[2].cornerPos[1] = player->pos[1] + sp8C[1];
     player->boundingBoxCorners[2].cornerPos[2] = player->pos[2] + sp8C[2];
-    process_collision_between_player_terrain(player, &player->boundingBoxCorners[2], sp80[0], sp80[1], sp80[2]);
+    player_terrain_collision(player, &player->boundingBoxCorners[2], sp80[0], sp80[1], sp80[2]);
     
     sp8C[0] = (-var_f12) + 2.6;
     sp8C[1] = -player->boundingBoxSize;
@@ -1064,7 +1064,7 @@ void func_80029B4C(Player *player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     player->boundingBoxCorners[3].cornerPos[0] = player->pos[0] + sp8C[0];
     player->boundingBoxCorners[3].cornerPos[1] = player->pos[1] + sp8C[1];
     player->boundingBoxCorners[3].cornerPos[2] = player->pos[2] + sp8C[2];
-    process_collision_between_player_terrain(player, &player->boundingBoxCorners[3], sp80[0], sp80[1], sp80[2]);
+    player_terrain_collision(player, &player->boundingBoxCorners[3], sp80[0], sp80[1], sp80[2]);
     
     if (!(player->effects & 8)) {
         a = (player->boundingBoxCorners[2].cornerGroundY + player->boundingBoxCorners[0].cornerGroundY) / 2;

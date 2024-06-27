@@ -2111,7 +2111,7 @@ void subtract_scaled_vector(Vec3f pos1, f32 boundingBoxSize, Vec3f pos2) {
     pos2[2] -= pos1[2] * boundingBoxSize;
 }
 
-u16 process_collision_between_player_terrain(Player *player, KartBoundingBoxCorner *corner, f32 cornerPosX, f32 cornerPosY, f32 cornerPosZ) {
+u16 player_terrain_collision(Player *player, KartBoundingBoxCorner *corner, f32 cornerPosX, f32 cornerPosY, f32 cornerPosZ) {
     Collision wtf;
     Collision *collision = &wtf;
     UNUSED s32 pad;

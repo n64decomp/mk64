@@ -547,7 +547,7 @@ char *D_800ECF3C = "４位の人終了\n";
 char *D_800ECF4C = "OGA 表彰 move 終了\n";
 char *D_800ECF60 = "OGAWA DEBUG DRAW\n";
 
-s16 get_angle_path(Vec3f arg0, Vec3f arg1) {
+s16 get_angle_between_waypoints(Vec3f arg0, Vec3f arg1) {
     s16 temp_ret;
     s16 phi_v1;
 
@@ -2762,7 +2762,7 @@ s16 func_8000D6D0(Vec3f position, s16 *waypointIndex, f32 speed, f32 arg3, s16 p
     position[0] = var_f2;
     position[1] = var_f12;
     position[2] = var_f14;
-    return get_angle_path(oldPos, position);
+    return get_angle_between_waypoints(oldPos, position);
 }
 
 s16 func_8000D940(Vec3f pos, s16 *waypointIndex, f32 speed, f32 arg3, s16 pathIndex) {
@@ -2828,7 +2828,7 @@ s16 func_8000D940(Vec3f pos, s16 *waypointIndex, f32 speed, f32 arg3, s16 pathIn
     pos[0] = var_f2;
     pos[1] = var_f12;
     pos[2] = var_f14;
-    return get_angle_path(sp54, pos);
+    return get_angle_between_waypoints(sp54, pos);
 }
 
 s16 update_vehicle_following_waypoint(Vec3f pos, s16 *waypointIndex, f32 speed) {
@@ -2885,7 +2885,7 @@ s16 update_vehicle_following_waypoint(Vec3f pos, s16 *waypointIndex, f32 speed) 
     pos[0] = newX;
     pos[1] = origYPos;
     pos[2] = newZ;
-    return get_angle_path(sp38, pos);
+    return get_angle_between_waypoints(sp38, pos);
 }
 
 void set_bomb_kart_spawn_positions(void) {
@@ -4516,8 +4516,13 @@ void init_vehicles_trains(void) {
     
     gTrainSmokeTimer = 0;
 }
-
-void sync_train_car_vehicle_to_actor(TrainCarStuff *trainCar, s16 orientationY) {
+/**
+ * @brief sync the train components vehicle with the actor
+ * 
+ * @param trainCar 
+ * @param orientationY 
+ */
+void sync_train_components(TrainCarStuff *trainCar, s16 orientationY) {
     struct TrainCar *trainCarActor;
 
     trainCarActor = (struct TrainCar *) &gActorList[trainCar->actorIndex];
@@ -4557,7 +4562,7 @@ void update_vehicle_trains(void) {
         gTrainList[i].locomotive.velocity[0] = gTrainList[i].locomotive.position[0] - temp_f20;
         gTrainList[i].locomotive.velocity[2] = gTrainList[i].locomotive.position[2] - temp_f22;
 
-        sync_train_car_vehicle_to_actor(&gTrainList[i].locomotive, orientationYUpdate);
+        sync_train_components(&gTrainList[i].locomotive, orientationYUpdate);
 
         if ((oldWaypointIndex != gTrainList[i].locomotive.waypointIndex)
             && ((gTrainList[i].locomotive.waypointIndex == 0x00BE)
@@ -4584,7 +4589,7 @@ void update_vehicle_trains(void) {
             orientationYUpdate = update_vehicle_following_waypoint(car->position, (s16*)&car->waypointIndex, gTrainList[i].speed);
             car->velocity[0] = car->position[0] - temp_f20;
             car->velocity[2] = car->position[2] - temp_f22;
-            sync_train_car_vehicle_to_actor(car, orientationYUpdate);
+            sync_train_components(car, orientationYUpdate);
         }
 
         for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) {
@@ -4596,7 +4601,7 @@ void update_vehicle_trains(void) {
                 orientationYUpdate = update_vehicle_following_waypoint(car->position, (s16*)&car->waypointIndex, gTrainList[i].speed);
                 car->velocity[0] = car->position[0] - temp_f20;
                 car->velocity[2] = car->position[2] - temp_f22;
-                sync_train_car_vehicle_to_actor(car, orientationYUpdate);
+                sync_train_components(car, orientationYUpdate);
             }
         }
     }
@@ -4792,7 +4797,7 @@ void update_vehicle_paddle_boats(void) {
             sp88[0] = (f32) waypoint->x;
             sp88[1] = (f32) D_80162EB0;
             sp88[2] = (f32) waypoint->z;
-            temp_a1 = get_angle_path(sp94, sp88);
+            temp_a1 = get_angle_between_waypoints(sp94, sp88);
             temp = temp_a1 - paddleBoat->rotY;
             var_v1 = temp;
             if (var_v1 < 0) {
