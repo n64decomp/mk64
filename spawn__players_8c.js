@@ -7,7 +7,7 @@ var spawn__players_8c =
     [ "func_8003BE30", "spawn__players_8c.html#ad7cb329529acad24029cf01ec2213126", null ],
     [ "func_8003C0F0", "spawn__players_8c.html#afb1c307e34d73d9c004936d2752c44ce", null ],
     [ "func_8003CD78", "spawn__players_8c.html#a400676f9bd53662b5636a7f191f947aa", null ],
-    [ "func_8003CD98", "spawn__players_8c.html#a786871d4fec99acdd5a14b48c1c38a7c", null ],
+    [ "func_8003CD98", "spawn__players_8c.html#a1d1dc4164aa554583609ad0d9bbbf276", null ],
     [ "func_8003D080", "spawn__players_8c.html#ac1a9412b931cfa517a2382c2fc605399", null ],
     [ "func_8003DB5C", "spawn__players_8c.html#af4ffc0854efc3e4c009e6d40b651f773", null ],
     [ "spawn_player", "spawn__players_8c.html#a43c7f2d844178603dc415f549283e97c", null ],

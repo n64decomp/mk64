@@ -1,7 +1,7 @@
 var main_8h =
 [
     [ "GfxPool", "structGfxPool.html", "structGfxPool" ],
-    [ "UnkStruct_8015F584", "structUnkStruct__8015F584.html", "structUnkStruct__8015F584" ],
+    [ "CollisionGrid", "structCollisionGrid.html", "structCollisionGrid" ],
     [ "GFX_POOL_SIZE", "main_8h.html#a91c89f68c0343791a11e110b0854d3a3", null ],
     [ "MESG_DP_COMPLETE", "main_8h.html#a84bae8f51a35a9900a2650c2a416444a", null ],
     [ "MESG_NMI_REQUEST", "main_8h.html#a07dfa3f5a6c56a4d3b03bd165e4e4273", null ],
@@ -62,7 +62,6 @@ var main_8h =
     [ "D_800DC544", "main_8h.html#a1983a4a91b8df6dd121ac3b7e4bcb4d5", null ],
     [ "D_800DC568", "main_8h.html#ab194fbc1179e51037d62fcee5936ced9", null ],
     [ "D_800DC56C", "main_8h.html#ad0df5637c2371ed73c8687c181da0a6b", null ],
-    [ "D_8014F110", "main_8h.html#a226ac0a9c7ff52f98cbc4ffdab755ea3", null ],
     [ "D_80150118", "main_8h.html#a2e326eb0b21a55d10f57219f34d50840", null ],
     [ "D_8015011E", "main_8h.html#a84dc67907299c2a78782332be92906be", null ],
     [ "D_80150120", "main_8h.html#a1feaa4d9500eb5fc10f4c6f750ce8058", null ],
@@ -79,6 +78,7 @@ var main_8h =
     [ "gAudioThreadStack", "main_8h.html#a5005a83f9006657fc6010c87f9f6ba58", null ],
     [ "gCameraZoom", "main_8h.html#af4b49dc4317a75d86befeb48553b6345", null ],
     [ "gCCSelection", "main_8h.html#ad099cd16f814954ae5c4d3e5c02b7cbb", null ],
+    [ "gCollisionGrid", "main_8h.html#ac28ca52e35ba2b8986194642f87a6a56", null ],
     [ "gControllerBits", "main_8h.html#af9b11e21ba2e375a19aa78c6426141be", null ],
     [ "gControllerEight", "main_8h.html#adf8aabe8502e07bc43a16f6b641257b2", null ],
     [ "gControllerFive", "main_8h.html#a9e7593aa87c416de7929e66aa995e4e3", null ],

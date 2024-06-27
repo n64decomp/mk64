@@ -1,7 +1,6 @@
 var waypoints_8h =
 [
     [ "TrackWaypoint", "structTrackWaypoint.html", "structTrackWaypoint" ],
-    [ "D_80162FCE", "waypoints_8h.html#ac5a7c61928338b982596ed1c143087f2", null ],
     [ "D_80163068", "waypoints_8h.html#adf7a16e3a6b62214e051a1642f9f2a0f", null ],
     [ "D_801631D0", "waypoints_8h.html#a76902b248cceab4188595952d1e90fc6", null ],
     [ "D_801631D4", "waypoints_8h.html#a1db4e17c2dc006e5d26c295a309946bd", null ],
@@ -27,5 +26,6 @@ var waypoints_8h =
     [ "gNearestWaypointByCameraId", "waypoints_8h.html#a4f850a92c3980af7e8204f21a35247bb", null ],
     [ "gNearestWaypointByPlayerId", "waypoints_8h.html#a3cfe22d5bc856fce5a405b08e3210381", null ],
     [ "gPathIndexByPlayerId", "waypoints_8h.html#a85904da90b18c414860f964712f7bb85", null ],
-    [ "gWaypointCountByPathIndex", "waypoints_8h.html#ad130fd7680ad07a3336c4ed16061d665", null ]
+    [ "gWaypointCountByPathIndex", "waypoints_8h.html#ad130fd7680ad07a3336c4ed16061d665", null ],
+    [ "sSomeNearestWaypoint", "waypoints_8h.html#a251b0eb0ec12fdc8f942fc31ce0d0fae", null ]
 ];

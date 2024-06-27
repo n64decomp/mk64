@@ -442,7 +442,7 @@ var code__80057C60_8c =
     [ "gNextFreeObjectParticle3", "code__80057C60_8c.html#a84db57ec1de7ffad314f77be2b7f14ff", null ],
     [ "gNextFreeObjectParticle4", "code__80057C60_8c.html#a56fac65e20c52f1411d4372b527652c2", null ],
     [ "gNumActiveThwomps", "code__80057C60_8c.html#a4be1636daca7810733c7054182c11cad", null ],
-    [ "gObjectList", "code__80057C60_8c.html#a881de3082bf48970abc48f092afd60c6", null ],
+    [ "gObjectList", "code__80057C60_8c.html#abe0fe02214b0a75893d23c760d2f6695", null ],
     [ "gObjectParticle1", "code__80057C60_8c.html#ab725f7c61b4b125921ad2b04519e0e67", null ],
     [ "gObjectParticle2", "code__80057C60_8c.html#a6646a189c262e913c53aef9d01c614e3", null ],
     [ "gObjectParticle3", "code__80057C60_8c.html#a40fc10298900fd3fd3cf9378d0b32d60", null ],

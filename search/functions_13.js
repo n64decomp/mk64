@@ -13,5 +13,5 @@ var searchData=
   ['transition_5fsliding_5fborders_10',['transition_sliding_borders',['../ceremony__and__credits_8c.html#a95f780b3400179205a22494827db1fc9',1,'transition_sliding_borders(void):&#160;ceremony_and_credits.c'],['../ceremony__and__credits_8h.html#a95f780b3400179205a22494827db1fc9',1,'transition_sliding_borders(void):&#160;ceremony_and_credits.c']]],
   ['triple_5fshell_5factor_5fcollide_5fwith_5fplayer_11',['triple_shell_actor_collide_with_player',['../actors__extended_8c.html#a1edd6e4f2545082e3782c4ce50933c7c',1,'actors_extended.c']]],
   ['try_5fremove_5fdestructable_5fitem_12',['try_remove_destructable_item',['../actors_8c.html#adf454481afb7fd833f5ce3f01dea4bea',1,'actors.c']]],
-  ['try_5frender_5fplayer_13',['try_render_player',['../render__player_8c.html#ab931f9c88f630600e6c5e97d8593b904',1,'try_render_player(Player *player, s8 playerId, s8 arg2):&#160;render_player.c'],['../render__player_8h.html#aa36c41509f13f1d4f3764d4d93a3bdfe',1,'try_render_player(Player *, s8, s8):&#160;render_player.c']]]
+  ['try_5frendering_5fplayer_13',['try_rendering_player',['../render__player_8c.html#a229ab780a8a5b76c08608148c5542534',1,'try_rendering_player(Player *player, s8 playerId, s8 arg2):&#160;render_player.c'],['../render__player_8h.html#a8fa6e7d5be4cbfc4f7f1189bcdc924ea',1,'try_rendering_player(Player *, s8, s8):&#160;render_player.c']]]
 ];

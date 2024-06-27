@@ -1,5 +1,6 @@
 var structCamera =
 [
+    [ "collision", "structCamera.html#ae87778b1cb8804985aad9c5eb7c4b36f", null ],
     [ "lookAt", "structCamera.html#ae16ab2b8e885264666d7e7e20bb872a1", null ],
     [ "playerId", "structCamera.html#a2970cfcff0b562c8033422defcc15a50", null ],
     [ "pos", "structCamera.html#aaa7eaab22236f016fd933666bd90c741", null ],
@@ -12,7 +13,6 @@ var structCamera =
     [ "unk_48", "structCamera.html#af0659dfe9ec249eb88a1752aed444cfd", null ],
     [ "unk_4C", "structCamera.html#a0c63280c0fed873e0de91e6838875960", null ],
     [ "unk_50", "structCamera.html#a77d5fb9976392a938f9b37145a56b5f3", null ],
-    [ "unk_54", "structCamera.html#a85144d23d2ab9abadcf19ebb9572cc11", null ],
     [ "unk_94", "structCamera.html#a0a744b9293131f7719e3beb956add5bc", null ],
     [ "unk_A0", "structCamera.html#a88ed7d5dfdbf522ce88132d5aaf2279a", null ],
     [ "unk_A4", "structCamera.html#aa746a36785af3a009ad44385e7613e89", null ],

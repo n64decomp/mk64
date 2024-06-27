@@ -1,7 +1,7 @@
 var actors__extended_8c =
 [
     [ "check_player_use_item", "actors__extended_8c.html#afd7ab650c7f22bef507645c85cc0ca37", null ],
-    [ "copy_collision", "actors__extended_8c.html#ae1af475a3dbbdfa4ef5e3e79567c6fc1", null ],
+    [ "copy_collision", "actors__extended_8c.html#a407d30d307b990cf22e979f7180477e5", null ],
     [ "destroy_banana_in_banana_bunch", "actors__extended_8c.html#ae4a15c57c04e2152938b23b9d2e2d328", null ],
     [ "func_802B039C", "actors__extended_8c.html#a093f702b462b6657ba7ab789941ef800", null ],
     [ "func_802B0464", "actors__extended_8c.html#ab349562338ca47f2b524137864704d0e", null ],

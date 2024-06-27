@@ -301,7 +301,7 @@ var sectionId = 'dynsection-228';
 <!-- Node77 -->
 <g id="Node000077" class="node">
 <title>Node77</title>
-<g id="a_Node000077"><a xlink:href="render__player_8c.html#ab2b282f83e547582bb1b9ada9eff29b7" target="_top" xlink:title=" ">
+<g id="a_Node000077"><a xlink:href="render__player_8c.html#acfd68148e93290f17d95184f224f5935" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="775,-57 648,-57 648,-38 775,-38 775,-57"/>
 <text text-anchor="middle" x="711.5" y="-45" font-family="Helvetica,sans-Serif" font-size="10.00">render_player_shadow</text>
 </a>
@@ -1023,9 +1023,9 @@ var sectionId = 'dynsection-228';
 <!-- Node78 -->
 <g id="Node000078" class="node">
 <title>Node78</title>
-<g id="a_Node000078"><a xlink:href="render__player_8c.html#a36f5d3d9beeac3aa2fdb6a242bdddbef" target="_top" xlink:title=" ">
+<g id="a_Node000078"><a xlink:href="render__player_8c.html#a9afd62c74edf8ebd0a77158f6626ce10" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="584,-56 500,-56 500,-37 584,-37 584,-56"/>
-<text text-anchor="middle" x="542" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">player_render</text>
+<text text-anchor="middle" x="542" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">render_player</text>
 </a>
 </g>
 </g>
@@ -1041,7 +1041,7 @@ var sectionId = 'dynsection-228';
 <!-- Node79 -->
 <g id="Node000079" class="node">
 <title>Node79</title>
-<g id="a_Node000079"><a xlink:href="spawn__players_8c.html#a786871d4fec99acdd5a14b48c1c38a7c" target="_top" xlink:title=" ">
+<g id="a_Node000079"><a xlink:href="spawn__players_8c.html#a1d1dc4164aa554583609ad0d9bbbf276" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="413.5,-56 320.5,-56 320.5,-37 413.5,-37 413.5,-56"/>
 <text text-anchor="middle" x="367" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">func_8003CD98</text>
 </a>
@@ -1059,9 +1059,9 @@ var sectionId = 'dynsection-228';
 <!-- Node84 -->
 <g id="Node000084" class="node">
 <title>Node84</title>
-<g id="a_Node000084"><a xlink:href="render__player_8c.html#ab931f9c88f630600e6c5e97d8593b904" target="_top" xlink:title=" ">
-<polygon fill="#fff0f0" stroke="red" points="418.5,-19 315.5,-19 315.5,0 418.5,0 418.5,-19"/>
-<text text-anchor="middle" x="367" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">try_render_player</text>
+<g id="a_Node000084"><a xlink:href="render__player_8c.html#a229ab780a8a5b76c08608148c5542534" target="_top" xlink:title=" ">
+<polygon fill="#fff0f0" stroke="red" points="426,-19 308,-19 308,0 426,0 426,-19"/>
+<text text-anchor="middle" x="367" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">try_rendering_player</text>
 </a>
 </g>
 </g>

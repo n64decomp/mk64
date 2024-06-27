@@ -12,7 +12,6 @@ var render__courses_8h =
     [ "func_80295D88", "render__courses_8h.html#afa7a12f363eeadd8ea6926eaf62657ef", null ],
     [ "func_802966A0", "render__courses_8h.html#a428cc27389999396856d940f3c74b2bc", null ],
     [ "func_802969F8", "render__courses_8h.html#a797b6e3f31cceb40f23f76cc7cd28582", null ],
-    [ "load_surface_map", "render__courses_8h.html#ae41e4953dc98c20240ddfd2b26862ee9", null ],
     [ "parse_course_displaylists", "render__courses_8h.html#a19c27b9bb71bdcf51f17884be0c0bb95", null ],
     [ "render_banshee_boardwalk", "render__courses_8h.html#a053b66d54d1c6a3feabd19847ee7ad2f", null ],
     [ "render_big_donut", "render__courses_8h.html#a256a7d43b5ede37e1ca32f84d231cd9c", null ],
@@ -20,6 +19,7 @@ var render__courses_8h =
     [ "render_bowsers_castle", "render__courses_8h.html#a91d27bdc766d37970dc6fed6477c27f5", null ],
     [ "render_choco_mountain", "render__courses_8h.html#a08c7ed084bf4db93ace74abfc1beb492", null ],
     [ "render_course", "render__courses_8h.html#ad0dc01bf1b6cb1baadd3b2addd316a0e", null ],
+    [ "render_course_segments", "render__courses_8h.html#a3de0da2baa9027fe9120572a248699ed", null ],
     [ "render_dks_jungle_parkway", "render__courses_8h.html#ada9d16c0f267204817b59f934ae62566", null ],
     [ "render_double_deck", "render__courses_8h.html#a4af52ba0164392a65cc6705736985bc4", null ],
     [ "render_frappe_snowland", "render__courses_8h.html#a8f49552e0d631dbae7d47188d70184c2", null ],
@@ -35,10 +35,10 @@ var render__courses_8h =
     [ "render_wario_stadium", "render__courses_8h.html#a4d65b7f6d9b0a9c70fc4eb74b97fd2c9", null ],
     [ "render_yoshi_valley", "render__courses_8h.html#a6ed3e1f6ece9fefa9232027590cc4e53", null ],
     [ "D_800DC610", "render__courses_8h.html#a8005297cf5ecea6c6824222b894c8e8f", null ],
-    [ "D_8015F58A", "render__courses_8h.html#af6fad54cb9fda0130e401801645a6df1", null ],
     [ "D_8015F59C", "render__courses_8h.html#a5dc8568a195491aeddd6112247e000b2", null ],
     [ "D_802B87BC", "render__courses_8h.html#a5ef23ec890f25eb018a19f03e7e931a3", null ],
     [ "D_802B87C4", "render__courses_8h.html#a2af444c495e48a500530fea69e682168", null ],
     [ "D_802B87C8", "render__courses_8h.html#afbb4dd9882a0ef44bce101c478e79de4", null ],
-    [ "D_802B87CC", "render__courses_8h.html#a96f37bd6129294cc3ff7d1998f3b8686", null ]
+    [ "D_802B87CC", "render__courses_8h.html#a96f37bd6129294cc3ff7d1998f3b8686", null ],
+    [ "gNumCollisionTriangles", "render__courses_8h.html#a31959c0ae2036221d88612dd175a01f6", null ]
 ];

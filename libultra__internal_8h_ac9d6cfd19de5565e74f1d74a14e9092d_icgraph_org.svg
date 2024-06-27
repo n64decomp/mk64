@@ -578,7 +578,7 @@
 <!-- Node122 -->
 <g id="Node000122" class="node">
 <title>Node122</title>
-<g id="a_Node000122"><a xlink:href="kart__dma_8c.html#a45e203c7a60ac07d226bec0c12c70d89" target="_top" xlink:title=" ">
+<g id="a_Node000122"><a xlink:href="kart__dma_8c.html#a301918e63abcec0c589c4937a929bcfa" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="509,-863.75 408,-863.75 408,-844.75 509,-844.75 509,-863.75"/>
 <text text-anchor="middle" x="458.5" y="-851.75" font-family="Helvetica,sans-Serif" font-size="10.00">load_kart_palette</text>
 </a>
@@ -596,7 +596,7 @@
 <!-- Node126 -->
 <g id="Node000126" class="node">
 <title>Node126</title>
-<g id="a_Node000126"><a xlink:href="kart__dma_8c.html#a6c923a042d0b2ff00518dd2dc12fe580" target="_top" xlink:title="Place DMA mio0 compressed character textures in a buffer. Later, this data becomes decompressed.">
+<g id="a_Node000126"><a xlink:href="kart__dma_8c.html#aac244fa71146e9abe9ee94f82ef2e932" target="_top" xlink:title="Place DMA mio0 compressed character textures in a buffer. Later, this data becomes decompressed.">
 <polygon fill="#fff0f0" stroke="red" points="509.5,-826.75 407.5,-826.75 407.5,-807.75 509.5,-807.75 509.5,-826.75"/>
 <text text-anchor="middle" x="458.5" y="-814.75" font-family="Helvetica,sans-Serif" font-size="10.00">load_kart_texture</text>
 </a>

@@ -66,9 +66,9 @@ var sectionId = 'dynsection-2';
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="collision_8c.html#afa1243eb9b3a14bc92434a8a19c162be" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="293.5,-173 201.5,-173 201.5,-154 293.5,-154 293.5,-173"/>
-<text text-anchor="middle" x="247.5" y="-161" font-family="Helvetica,sans-Serif" font-size="10.00">func_802ABE30</text>
+<g id="a_Node000002"><a xlink:href="collision_8c.html#a6527a2135a10909cdf9a1fd731be5628" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="316.5,-173 178.5,-173 178.5,-154 316.5,-154 316.5,-173"/>
+<text text-anchor="middle" x="247.5" y="-161" font-family="Helvetica,sans-Serif" font-size="10.00">calculate_surface_height</text>
 </a>
 </g>
 </g>

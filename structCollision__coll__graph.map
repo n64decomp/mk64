@@ -1,7 +1,7 @@
 <map id="Collision" name="Collision">
-<area shape="rect" id="Node000001" title=" " alt="" coords="94,167,173,192"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="97,167,175,192"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,5,144,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,43,121,142,131,165,126,167,116,144,80,45"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="168,5,219,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="194,45,185,92,166,144,148,168,144,165,162,141,180,91,188,44"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,44,66,92,69,118,78,141,90,155,105,164,102,169,86,159,74,144,64,119,61,92,66,44"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="173,5,224,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,45,191,92,172,144,152,168,148,165,167,141,186,91,194,44"/>
 </map>

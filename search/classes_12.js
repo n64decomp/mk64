@@ -1,8 +1,8 @@
 var searchData=
 [
   ['temporarypool_0',['TemporaryPool',['../structTemporaryPool.html',1,'']]],
-  ['test_1',['Test',['../structTest.html',1,'']]],
-  ['test_2',['test',['../structtest.html',1,'']]],
+  ['test_1',['test',['../structtest.html',1,'']]],
+  ['test_2',['Test',['../structTest.html',1,'']]],
   ['thewhyunion_3',['TheWhyUnion',['../unionTheWhyUnion.html',1,'']]],
   ['thwompspawn_4',['ThwompSpawn',['../structThwompSpawn.html',1,'']]],
   ['tracksections_5',['TrackSections',['../structTrackSections.html',1,'']]],

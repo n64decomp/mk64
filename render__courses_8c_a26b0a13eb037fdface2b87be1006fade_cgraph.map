@@ -1,11 +1,11 @@
 <map id="render_wario_stadium" name="render_wario_stadium">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,55,172,80"/>
-<area shape="rect" id="Node000002" href="$skybox__and__splitscreen_8c.html#a97049ca439feed0c004c1d41f302189e" title=" " alt="" coords="222,5,359,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,52,224,31,225,37,142,57"/>
-<area shape="rect" id="Node000003" href="$render__courses_8c.html#a9a9119b96bf015cf8b5a168485f67e3f" title=" " alt="" coords="229,55,352,80"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="172,65,216,65,216,70,172,70"/>
-<area shape="rect" id="Node000004" href="$render__courses_8c.html#a5b7ecc4ef4612910f390c1f7a16dc7e4" title=" " alt="" coords="220,104,361,129"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="142,77,225,98,224,103,141,83"/>
-<area shape="rect" id="Node000005" href="$collision_8c.html#af3327ccb63774d1f6603c18d70097061" title=" " alt="" coords="409,104,535,129"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="362,114,396,114,396,119,362,119"/>
+<area shape="rect" id="Node000002" href="$skybox__and__splitscreen_8c.html#a97049ca439feed0c004c1d41f302189e" title=" " alt="" coords="244,5,381,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,52,240,31,242,36,148,57"/>
+<area shape="rect" id="Node000003" href="$render__courses_8c.html#a9a9119b96bf015cf8b5a168485f67e3f" title=" " alt="" coords="251,55,374,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="172,65,238,65,238,70,172,70"/>
+<area shape="rect" id="Node000004" href="$render__courses_8c.html#ac4970639317ed23a7ac110f490b6650f" title=" " alt="" coords="220,104,405,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="148,77,242,98,240,104,146,83"/>
+<area shape="rect" id="Node000005" href="$collision_8c.html#a87ed9fdc33730694b11fedee0e6b3a29" title=" " alt="" coords="453,104,569,129"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="406,114,439,114,439,119,406,119"/>
 </map>

@@ -74,7 +74,7 @@
 <!-- Node93 -->
 <g id="Node000093" class="node">
 <title>Node93</title>
-<g id="a_Node000093"><a xlink:href="spawn__players_8c.html#a786871d4fec99acdd5a14b48c1c38a7c" target="_top" xlink:title=" ">
+<g id="a_Node000093"><a xlink:href="spawn__players_8c.html#a1d1dc4164aa554583609ad0d9bbbf276" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="221,-169 128,-169 128,-150 221,-150 221,-169"/>
 <text text-anchor="middle" x="174.5" y="-157" font-family="Helvetica,sans-Serif" font-size="10.00">func_8003CD98</text>
 </a>
@@ -882,7 +882,7 @@
 <!-- Node94 -->
 <g id="Node000094" class="node">
 <title>Node94</title>
-<g id="a_Node000094"><a xlink:href="player__controller_8c.html#af82f9efd06564abdf56adbe555065aad" target="_top" xlink:title=" ">
+<g id="a_Node000094"><a xlink:href="player__controller_8c.html#ac4aa12221945caef9a599b60010f3baf" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="373,-243 281,-243 281,-224 373,-224 373,-243"/>
 <text text-anchor="middle" x="327" y="-231" font-family="Helvetica,sans-Serif" font-size="10.00">func_8002934C</text>
 </a>
@@ -900,7 +900,7 @@
 <!-- Node98 -->
 <g id="Node000098" class="node">
 <title>Node98</title>
-<g id="a_Node000098"><a xlink:href="player__controller_8c.html#aafe8b94ccd61104120a9bf0ee954a901" target="_top" xlink:title=" ">
+<g id="a_Node000098"><a xlink:href="player__controller_8c.html#a2d26c33b4b9015d7cf720e6d5530d376" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="373,-206 281,-206 281,-187 373,-187 373,-206"/>
 <text text-anchor="middle" x="327" y="-194" font-family="Helvetica,sans-Serif" font-size="10.00">func_8002D268</text>
 </a>
@@ -918,7 +918,7 @@
 <!-- Node265 -->
 <g id="Node000265" class="node">
 <title>Node265</title>
-<g id="a_Node000265"><a xlink:href="kart__dma_8c.html#a45e203c7a60ac07d226bec0c12c70d89" target="_top" xlink:title=" ">
+<g id="a_Node000265"><a xlink:href="kart__dma_8c.html#a301918e63abcec0c589c4937a929bcfa" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="377.5,-169 276.5,-169 276.5,-150 377.5,-150 377.5,-169"/>
 <text text-anchor="middle" x="327" y="-157" font-family="Helvetica,sans-Serif" font-size="10.00">load_kart_palette</text>
 </a>
@@ -936,7 +936,7 @@
 <!-- Node278 -->
 <g id="Node000278" class="node">
 <title>Node278</title>
-<g id="a_Node000278"><a xlink:href="kart__dma_8c.html#a6c923a042d0b2ff00518dd2dc12fe580" target="_top" xlink:title="Place DMA mio0 compressed character textures in a buffer. Later, this data becomes decompressed.">
+<g id="a_Node000278"><a xlink:href="kart__dma_8c.html#aac244fa71146e9abe9ee94f82ef2e932" target="_top" xlink:title="Place DMA mio0 compressed character textures in a buffer. Later, this data becomes decompressed.">
 <polygon fill="#fff0f0" stroke="red" points="378,-132 276,-132 276,-113 378,-113 378,-132"/>
 <text text-anchor="middle" x="327" y="-120" font-family="Helvetica,sans-Serif" font-size="10.00">load_kart_texture</text>
 </a>
@@ -972,9 +972,9 @@
 <!-- Node280 -->
 <g id="Node000280" class="node">
 <title>Node280</title>
-<g id="a_Node000280"><a xlink:href="render__player_8c.html#a36f5d3d9beeac3aa2fdb6a242bdddbef" target="_top" xlink:title=" ">
+<g id="a_Node000280"><a xlink:href="render__player_8c.html#a9afd62c74edf8ebd0a77158f6626ce10" target="_top" xlink:title=" ">
 <polygon fill="#fff0f0" stroke="red" points="369,-56 285,-56 285,-37 369,-37 369,-56"/>
-<text text-anchor="middle" x="327" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">player_render</text>
+<text text-anchor="middle" x="327" y="-44" font-family="Helvetica,sans-Serif" font-size="10.00">render_player</text>
 </a>
 </g>
 </g>

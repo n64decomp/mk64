@@ -1,6 +1,6 @@
 var objects_8h =
 [
-    [ "Objects", "structObjects.html", "structObjects" ],
+    [ "Object", "structObject.html", "structObject" ],
     [ "ItemWindowObjects", "structItemWindowObjects.html", "structItemWindowObjects" ],
     [ "YVFlagPoleSpawn", "structYVFlagPoleSpawn.html", "structYVFlagPoleSpawn" ],
     [ "CrabSpawn", "structCrabSpawn.html", "structCrabSpawn" ],
@@ -81,7 +81,7 @@ var objects_8h =
     [ "gNextFreeObjectParticle3", "objects_8h.html#a84db57ec1de7ffad314f77be2b7f14ff", null ],
     [ "gNextFreeObjectParticle4", "objects_8h.html#a56fac65e20c52f1411d4372b527652c2", null ],
     [ "gNumActiveThwomps", "objects_8h.html#a4be1636daca7810733c7054182c11cad", null ],
-    [ "gObjectList", "objects_8h.html#a7accd26715628c8933bf0b207bab83ca", null ],
+    [ "gObjectList", "objects_8h.html#a6447ad01d53119bb468591206270bf10", null ],
     [ "gObjectParticle1", "objects_8h.html#a5391b0629535699ae5be5418e3b191a8", null ],
     [ "gObjectParticle2", "objects_8h.html#a1d5ce1b7020f6b573c015bcddc1281d4", null ],
     [ "gObjectParticle3", "objects_8h.html#a8e661e16734b0eea48daed8924ba5a4d", null ],

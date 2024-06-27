@@ -105,7 +105,7 @@
 </a>
 </g>
 <text text-anchor="middle" x="272.5" y="-290.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> orientationVector</text>
-<text text-anchor="middle" x="272.5" y="-279.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk3C</text>
+<text text-anchor="middle" x="272.5" y="-279.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">surfaceDistance</text>
 <text text-anchor="middle" x="272.5" y="-268.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk48</text>
 <text text-anchor="middle" x="272.5" y="-257.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk54</text>
 <text text-anchor="middle" x="272.5" y="-246.5" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk6C</text>
@@ -156,12 +156,12 @@
 <polygon fill="#9a32cd" stroke="#9a32cd" points="321.87,-312.1 325.98,-321.87 328.86,-311.68 321.87,-312.1"/>
 </a>
 </g>
-<text text-anchor="middle" x="341.5" y="-296" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> unk30</text>
-<text text-anchor="middle" x="341.5" y="-285" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk32</text>
-<text text-anchor="middle" x="341.5" y="-274" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk34</text>
-<text text-anchor="middle" x="341.5" y="-263" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk36</text>
-<text text-anchor="middle" x="341.5" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk38</text>
-<text text-anchor="middle" x="341.5" y="-241" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk3A</text>
+<text text-anchor="middle" x="359.5" y="-296" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> meshIndexYX</text>
+<text text-anchor="middle" x="359.5" y="-285" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">meshIndexZX</text>
+<text text-anchor="middle" x="359.5" y="-274" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">meshIndexZY</text>
+<text text-anchor="middle" x="359.5" y="-263" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk30</text>
+<text text-anchor="middle" x="359.5" y="-252" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk32</text>
+<text text-anchor="middle" x="359.5" y="-241" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk34</text>
 </g>
 </g>
 </svg>

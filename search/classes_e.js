@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['objects_0',['Objects',['../structObjects.html',1,'']]],
+  ['object_0',['Object',['../structObject.html',1,'']]],
   ['onlybesttimetrialrecords_1',['OnlyBestTimeTrialRecords',['../structOnlyBestTimeTrialRecords.html',1,'']]],
   ['oscontpackedread_2',['OSContPackedRead',['../structOSContPackedRead.html',1,'']]],
   ['oscontpackedrequest_3',['OSContPackedRequest',['../structOSContPackedRequest.html',1,'']]],

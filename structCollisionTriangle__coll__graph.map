@@ -1,0 +1,11 @@
+<map id="CollisionTriangle" name="CollisionTriangle">
+<area shape="rect" id="Node000001" title=" " alt="" coords="221,167,350,192"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,144,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,42,114,93,134,119,158,140,188,157,221,167,219,172,186,162,154,145,130,122,109,95,82,45"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="168,5,291,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="240,43,273,142,283,165,278,167,268,144,234,45"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="315,5,370,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="343,45,334,92,316,144,299,168,294,165,311,141,329,90,337,44"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="395,5,445,31"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="420,45,407,94,395,121,378,145,359,159,338,169,335,164,356,155,374,141,391,118,402,93,415,44"/>
+</map>
