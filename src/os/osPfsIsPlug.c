@@ -17,7 +17,7 @@ s32 osPfsIsPlug(OSMesgQueue *queue, u8 *pattern) {
     bits = 0;
     crc_error_cnt = 3;
     __osSiGetAccess();
-    while (TRUE) {
+    while (true) {
         __osPfsRequestData(CONT_CMD_REQUEST_STATUS);
         ret = __osSiRawStartDma(OS_WRITE, &__osPfsPifRam);
         osRecvMesg(queue, &dummy, OS_MESG_BLOCK);

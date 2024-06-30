@@ -39,7 +39,7 @@ void osCreatePiManager(OSPri pri, OSMesgQueue *cmdQ, OSMesg *cmdBuf, s32 cmdMsgC
             osSetThreadPri(NULL, pri);
         }
         int_disabled = __osDisableInt();
-        __osPiDevMgr.initialized = TRUE;
+        __osPiDevMgr.initialized = true;
         __osPiDevMgr.mgrThread = &piMgrThread;
         __osPiDevMgr.cmdQueue = cmdQ;
         __osPiDevMgr.eventQueue = &__osPiMesgQueue;
