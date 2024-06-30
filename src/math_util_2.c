@@ -30,9 +30,9 @@ UNUSED void operator_xor(s32 *arg0, s32 arg1) {
 UNUSED bool func_80040E84(s32 *arg0, s32 arg1) {
     bool phi_v1;
 
-    phi_v1 = FALSE;
+    phi_v1 = false;
     if ((*arg0 & arg1) != 0) {
-        phi_v1 = TRUE;
+        phi_v1 = true;
     }
     return phi_v1;
 }
@@ -455,10 +455,10 @@ bool is_particle_on_screen(Vec3f arg0, Camera *arg1, u16 arg2) {
     u16 temp_t9;
     s32 ret;
 
-    ret = FALSE;
+    ret = false;
     temp_t9 = (get_angle_between_xy(arg1->pos[0], arg0[0], arg1->pos[2], arg0[2]) + (arg2 / 2)) - arg1->rot[1];
     if ((temp_t9 >= 0) && (arg2 >= temp_t9)) {
-        ret = TRUE;
+        ret = true;
     }
     return ret;
 }

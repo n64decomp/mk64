@@ -29,7 +29,7 @@ s32 osPfsAllocateFile(OSPfs *pfs, u16 company_code, u32 game_code, u8 *game_name
         return PFS_ERR_INVALID;
 
     file_size_in_pages = (file_size_in_bytes + 255) / (BLOCKSIZE * PFS_ONE_PAGE);
-    if ((pfs->status & PFS_INITIALIZED) == FALSE)
+    if ((pfs->status & PFS_INITIALIZED) == false)
         return PFS_ERR_INVALID;
 
     PFS_CHECK_ID;
@@ -99,7 +99,7 @@ s32 osPfsAllocateFile(OSPfs *pfs, u16 company_code, u32 game_code, u8 *game_name
             dir.game_name[j] = *game_name++;
         for (j = 0; j < ARRLEN(dir.ext_name); j++)
             dir.ext_name[j] = *ext_name++;
-        ERRCK(__osContRamWrite(pfs->queue, pfs->channel, *file_no + pfs->dir_table, (u8*)&dir, FALSE));
+        ERRCK(__osContRamWrite(pfs->queue, pfs->channel, *file_no + pfs->dir_table, (u8*)&dir, false));
         return ret;
     }
     return PFS_ERR_INVALID;
@@ -171,7 +171,7 @@ static s32 __osClearPage(OSPfs *pfs, int page_no, u8 *data, u8 bank)
     ERRCK(__osPfsSelectBank(pfs));
     for (i = 0; i < PFS_ONE_PAGE; i++)
     {
-        ret = __osContRamWrite(pfs->queue, pfs->channel, page_no * PFS_ONE_PAGE + i, data, FALSE);
+        ret = __osContRamWrite(pfs->queue, pfs->channel, page_no * PFS_ONE_PAGE + i, data, false);
         if (ret != 0)
             break;
     }

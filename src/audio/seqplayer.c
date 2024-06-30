@@ -52,14 +52,14 @@ char seqplayer_unused_string25[] = "Group:Undefined Command\n";
 void sequence_channel_init(struct SequenceChannel *seqChannel) {
     s32 i;
 
-    seqChannel->enabled = FALSE;
-    seqChannel->finished = FALSE;
-    seqChannel->stopScript = FALSE;
-    seqChannel->stopSomething2 = FALSE;
-    seqChannel->hasInstrument = FALSE;
-    seqChannel->stereoHeadsetEffects = FALSE;
+    seqChannel->enabled = false;
+    seqChannel->finished = false;
+    seqChannel->stopScript = false;
+    seqChannel->stopSomething2 = false;
+    seqChannel->hasInstrument = false;
+    seqChannel->stereoHeadsetEffects = false;
     seqChannel->transposition = 0;
-    seqChannel->largeNotes = FALSE;
+    seqChannel->largeNotes = false;
     seqChannel->bookOffset = 0;
     seqChannel->changes.as_u8 = 0xff;
     seqChannel->scriptState.depth = 0;
@@ -86,7 +86,7 @@ void sequence_channel_init(struct SequenceChannel *seqChannel) {
     for (i = 0; i < 8; i++) {
         seqChannel->soundScriptIO[i] = -1;
     }
-    seqChannel->unused = FALSE;
+    seqChannel->unused = false;
     init_note_lists(&seqChannel->notePool);
 }
 
@@ -109,11 +109,11 @@ s32 seq_channel_set_layer(struct SequenceChannel *seqChannel, s32 layerIndex) {
     layer->seqChannel = seqChannel;
     layer->adsr = seqChannel->adsr;
     layer->adsr.releaseRate = 0;
-    layer->enabled = TRUE;
-    layer->stopSomething = FALSE;
-    layer->continuousNotes = FALSE;
-    layer->finished = FALSE;
-    layer->ignoreDrumPan = FALSE;
+    layer->enabled = true;
+    layer->stopSomething = false;
+    layer->continuousNotes = false;
+    layer->finished = false;
+    layer->ignoreDrumPan = false;
     layer->portamento.mode = 0;
     layer->scriptState.depth = 0;
     layer->status = SOUND_LOAD_STATUS_NOT_LOADED;
@@ -134,8 +134,8 @@ s32 seq_channel_set_layer(struct SequenceChannel *seqChannel, s32 layerIndex) {
 void seq_channel_layer_disable(struct SequenceChannelLayer *layer) {
     if (layer != NULL) {
         seq_channel_layer_note_decay(layer);
-        layer->enabled = FALSE;
-        layer->finished = TRUE;
+        layer->enabled = false;
+        layer->finished = true;
     }
 }
 
@@ -156,8 +156,8 @@ void sequence_channel_disable(struct SequenceChannel *seqChannel) {
     }
 
     note_pool_clear(&seqChannel->notePool);
-    seqChannel->enabled = FALSE;
-    seqChannel->finished = TRUE;
+    seqChannel->enabled = false;
+    seqChannel->finished = true;
 }
 
 struct SequenceChannel *allocate_sequence_channel(void) {
@@ -177,12 +177,12 @@ void sequence_player_init_channels(struct SequencePlayer *seqPlayer, u16 channel
     for (i = 0; i < CHANNELS_MAX; i++) {
         if (channelBits & 1) {
             seqChannel = seqPlayer->channels[i];
-            if (IS_SEQUENCE_CHANNEL_VALID(seqChannel) == TRUE && seqChannel->seqPlayer == seqPlayer) {
+            if (IS_SEQUENCE_CHANNEL_VALID(seqChannel) == true && seqChannel->seqPlayer == seqPlayer) {
                 sequence_channel_disable(seqChannel);
                 seqChannel->seqPlayer = NULL;
             }
             seqChannel = allocate_sequence_channel();
-            if (IS_SEQUENCE_CHANNEL_VALID(seqChannel) == FALSE) {
+            if (IS_SEQUENCE_CHANNEL_VALID(seqChannel) == false) {
                 //eu_stubbed_printf_0("Audio:Track:Warning: No Free Notetrack\n");
                 gAudioErrorFlags = i + 0x10000;
                 seqPlayer->channels[i] = seqChannel;
@@ -207,7 +207,7 @@ void sequence_player_disable_channels(struct SequencePlayer *seqPlayer, u16 chan
     for (i = 0; i < CHANNELS_MAX; i++) {
         if (channelBits & 1) {
             seqChannel = seqPlayer->channels[i];
-            if (IS_SEQUENCE_CHANNEL_VALID(seqChannel) == TRUE) {
+            if (IS_SEQUENCE_CHANNEL_VALID(seqChannel) == true) {
                 if (seqChannel->seqPlayer == seqPlayer) {
                     sequence_channel_disable(seqChannel);
                     seqChannel->seqPlayer = NULL;
@@ -225,12 +225,12 @@ void sequence_player_disable_channels(struct SequencePlayer *seqPlayer, u16 chan
 void sequence_channel_enable(struct SequencePlayer *seqPlayer, u8 channelIndex, void *script) {
     struct SequenceChannel *seqChannel = seqPlayer->channels[channelIndex];
     s32 i;
-    if (IS_SEQUENCE_CHANNEL_VALID(seqChannel) == FALSE) {
+    if (IS_SEQUENCE_CHANNEL_VALID(seqChannel) == false) {
         //stubbed_printf("SEQID %d,BANKID %d\n", seqPlayer->seqId, seqPlayer->defaultBank[0]);
         //stubbed_printf("ERR:SUBTRACK %d NOT ALLOCATED\n", channelIndex);
     } else {
-        seqChannel->enabled = TRUE;
-        seqChannel->finished = FALSE;
+        seqChannel->enabled = true;
+        seqChannel->finished = false;
         seqChannel->scriptState.depth = 0;
         seqChannel->scriptState.pc = script;
         seqChannel->delay = 0;
@@ -245,8 +245,8 @@ void sequence_channel_enable(struct SequencePlayer *seqPlayer, u8 channelIndex, 
 void sequence_player_disable(struct SequencePlayer *seqPlayer) {
     sequence_player_disable_channels(seqPlayer, 0xffff);
     note_pool_clear(&seqPlayer->notePool);
-    seqPlayer->finished = TRUE;
-    seqPlayer->enabled = FALSE;
+    seqPlayer->finished = true;
+    seqPlayer->enabled = false;
 
     if (IS_SEQ_LOAD_COMPLETE(seqPlayer->seqId) && gSeqLoadStatus[seqPlayer->seqId] != 5) {
         gSeqLoadStatus[seqPlayer->seqId] = SOUND_LOAD_STATUS_DISCARDABLE;
@@ -347,8 +347,8 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
     f32 temp_f12;
     f32 temp_f2;
 
-    sameSound = TRUE;
-    if (layer->enabled == FALSE) {
+    sameSound = true;
+    if (layer->enabled == false) {
         return;
     }
 
@@ -356,7 +356,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
         layer->delay--;
         if (!layer->stopSomething && layer->delay <= layer->duration) {
             seq_channel_layer_note_decay(layer);
-            layer->stopSomething = TRUE;
+            layer->stopSomething = true;
         }
         return;
     }
@@ -379,7 +379,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
 
     seqChannel = layer->seqChannel;
     seqPlayer = seqChannel->seqPlayer;
-    layer->notePropertiesNeedInit = TRUE;
+    layer->notePropertiesNeedInit = true;
 
     for (;;) {
         state = &layer->scriptState;
@@ -455,9 +455,9 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
             case 0xc4: // layer_somethingon
             case 0xc5: // layer_somethingoff
                 if (cmd == 0xc4) {
-                    layer->continuousNotes = TRUE;
+                    layer->continuousNotes = true;
                 } else {
-                    layer->continuousNotes = FALSE;
+                    layer->continuousNotes = false;
                 }
                 seq_channel_layer_note_decay(layer);
                 break;
@@ -525,7 +525,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
                 break;
 
             case 0xcc:
-                layer->ignoreDrumPan = TRUE;
+                layer->ignoreDrumPan = true;
                 break;
 
             default:
@@ -545,11 +545,11 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
 
     if (cmd == 0xc0) { // layer_delay
         layer->delay = m64_read_compressed_u16(state);
-        layer->stopSomething = TRUE;
+        layer->stopSomething = true;
     } else {
-        layer->stopSomething = FALSE;
+        layer->stopSomething = false;
 
-        if (seqChannel->largeNotes == TRUE) {
+        if (seqChannel->largeNotes == true) {
             switch (cmd & 0xc0) {
                 case 0x00: // layer_note0 (play percentage, velocity, duration)
                     sp3A = m64_read_compressed_u16(state);
@@ -602,7 +602,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
         if ((seqPlayer->muted && (seqChannel->muteBehavior & MUTE_BEHAVIOR_STOP_NOTES) != 0)
             || seqChannel->stopSomething2
         ) {
-            layer->stopSomething = TRUE;
+            layer->stopSomething = true;
 
         } else {
             s32 temp = layer->instOrWave;
@@ -617,7 +617,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
 
                 drum = get_drum(seqChannel->bankId, cmd);
                 if (drum == NULL) {
-                    layer->stopSomething = TRUE;
+                    layer->stopSomething = true;
                     layer->delayUnused = layer->delay;
                     return;
                 } else {
@@ -634,7 +634,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
                 cmd += seqPlayer->transposition + seqChannel->transposition + layer->transposition;
 
                 if (cmd >= 0x80) {
-                    layer->stopSomething = TRUE;
+                    layer->stopSomething = true;
                 } else {
                     if (layer->instOrWave == 0xffu) {
                         instrument = seqChannel->instrument;
@@ -706,30 +706,30 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer *layer) {
         }
     }
 
-    if (layer->stopSomething == TRUE) {
+    if (layer->stopSomething == true) {
         if (layer->note != NULL || layer->continuousNotes) {
             seq_channel_layer_note_decay(layer);
         }
         return;
     }
 
-    cmd = FALSE;
+    cmd = false;
     if (!layer->continuousNotes) {
-        cmd = TRUE;
+        cmd = true;
     } else if (layer->note == NULL || layer->status == SOUND_LOAD_STATUS_NOT_LOADED) {
-        cmd = TRUE;
-    } else if (sameSound == FALSE) {
+        cmd = true;
+    } else if (sameSound == false) {
         seq_channel_layer_note_decay(layer);
-        cmd = TRUE;
+        cmd = true;
     }
     else if (layer != layer->note->parentLayer) {
-        cmd = TRUE;
+        cmd = true;
     }
     else if (layer->sound == NULL) {
         init_synthetic_wave(layer->note, layer);
     }
 
-    if (cmd != FALSE) {
+    if (cmd != false) {
         layer->note = alloc_note(layer);
     }
 
@@ -764,11 +764,11 @@ void set_instrument(struct SequenceChannel *seqChannel, u8 instId) {
     } else {
         if ((seqChannel->instOrWave = get_instrument(seqChannel, instId, &seqChannel->instrument, &seqChannel->adsr)) == 0)
         {
-            seqChannel->hasInstrument = FALSE;
+            seqChannel->hasInstrument = false;
             return;
         }
     }
-    seqChannel->hasInstrument = TRUE;
+    seqChannel->hasInstrument = true;
 }
 
 void sequence_channel_set_volume(struct SequenceChannel *seqChannel, u8 volume) {
@@ -1215,16 +1215,16 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
     struct M64ScriptState *state;
     s32 temp32;
 
-    if (seqPlayer->enabled == FALSE) {
+    if (seqPlayer->enabled == false) {
         return;
     }
 
-    if (seqPlayer->bankDmaInProgress == TRUE) {
+    if (seqPlayer->bankDmaInProgress == true) {
         if (osRecvMesg(&seqPlayer->bankDmaMesgQueue, NULL, 0) == -1) {
             return;
         }
         if (seqPlayer->bankDmaRemaining == 0) {
-            seqPlayer->bankDmaInProgress = FALSE;
+            seqPlayer->bankDmaInProgress = false;
             func_800BB584(seqPlayer->loadingBankId);
             if (gBankLoadStatus[seqPlayer->loadingBankId] != 5) {
                 gBankLoadStatus[seqPlayer->loadingBankId] = 2;
@@ -1237,11 +1237,11 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
         return;
     }
 
-    if (seqPlayer->seqDmaInProgress == TRUE) {
+    if (seqPlayer->seqDmaInProgress == true) {
         if (osRecvMesg(&seqPlayer->seqDmaMesgQueue, NULL, 0) == -1) {
             return;
         }
-        seqPlayer->seqDmaInProgress = FALSE;
+        seqPlayer->seqDmaInProgress = false;
         if (gSeqLoadStatus[seqPlayer->seqId] != 5) {
             gSeqLoadStatus[seqPlayer->seqId] = 2;
         }
@@ -1249,9 +1249,9 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
 
     // If discarded, bail out.
     temp32 = 2; // I beg your pardon?
-    if (IS_SEQ_LOAD_COMPLETE(seqPlayer->seqId) == FALSE
+    if (IS_SEQ_LOAD_COMPLETE(seqPlayer->seqId) == false
         || (
-        IS_BANK_LOAD_COMPLETE(seqPlayer->defaultBank[0]) == FALSE)) {
+        IS_BANK_LOAD_COMPLETE(seqPlayer->defaultBank[0]) == false)) {
         sequence_player_disable(seqPlayer);
         return;
     }
@@ -1457,7 +1457,7 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
                         break;
 
                     case 0xd4: // seq_mute
-                        seqPlayer->muted = TRUE;
+                        seqPlayer->muted = true;
                         break;
 
                     case 0xd3: // seq_setmutebhv
@@ -1534,7 +1534,7 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
     }
 
     for (i = 0; i < CHANNELS_MAX; i++) {
-        if (IS_SEQUENCE_CHANNEL_VALID(seqPlayer->channels[i]) == TRUE) {
+        if (IS_SEQUENCE_CHANNEL_VALID(seqPlayer->channels[i]) == true) {
             sequence_channel_process_script(seqPlayer->channels[i]);
         }
     }
@@ -1543,7 +1543,7 @@ void sequence_player_process_sequence(struct SequencePlayer *seqPlayer) {
 void process_sequences(UNUSED s32 iterationsRemaining) {
     s32 i;
     for (i = 0; i < SEQUENCE_PLAYERS; i++) {
-        if (gSequencePlayers[i].enabled == TRUE) {
+        if (gSequencePlayers[i].enabled == true) {
             sequence_player_process_sequence(&gSequencePlayers[i]);
             sequence_player_process_sound(&gSequencePlayers[i]);
         }
@@ -1577,7 +1577,7 @@ void init_sequence_players(void) {
 
     for (i = 0; i < ARRAY_COUNT(gSequenceChannels); i++) {
         gSequenceChannels[i].seqPlayer = NULL;
-        gSequenceChannels[i].enabled = FALSE;
+        gSequenceChannels[i].enabled = false;
         /**
          * @bug Size of wrong array. Zeroes out second half of gSequenceChannels[0],
          * all of gSequenceChannels[1..31], and part of gSequenceLayers[0].
@@ -1597,7 +1597,7 @@ void init_sequence_players(void) {
 
     for (i = 0; i < ARRAY_COUNT(gSequenceLayers); i++) {
         gSequenceLayers[i].seqChannel = NULL;
-        gSequenceLayers[i].enabled = FALSE;
+        gSequenceLayers[i].enabled = false;
     }
 
     for (i = 0; i < SEQUENCE_PLAYERS; i++) {
@@ -1607,10 +1607,10 @@ void init_sequence_players(void) {
 
         gSequencePlayers[i].seqVariationEu[0] = -1;
         gSequencePlayers[i].muteBehavior = MUTE_BEHAVIOR_STOP_SCRIPT | MUTE_BEHAVIOR_STOP_NOTES | MUTE_BEHAVIOR_SOFTEN;
-        gSequencePlayers[i].enabled = FALSE;
-        gSequencePlayers[i].muted = FALSE;
-        gSequencePlayers[i].bankDmaInProgress = FALSE;
-        gSequencePlayers[i].seqDmaInProgress = FALSE;
+        gSequencePlayers[i].enabled = false;
+        gSequencePlayers[i].muted = false;
+        gSequencePlayers[i].bankDmaInProgress = false;
+        gSequencePlayers[i].seqDmaInProgress = false;
         init_note_lists(&gSequencePlayers[i].notePool);
         init_sequence_player(i);
     }

@@ -106,7 +106,7 @@ u16 check_player_camera_collision(Player *player, Camera *camera, f32 arg2, f32 
     s16 var_v0;
     u16 ret;
 
-    ret = FALSE;
+    ret = false;
     switch (gActiveScreenMode) {                              /* irregular */
     case SCREEN_MODE_1P:
         var_v0 = 0x293C;
@@ -135,7 +135,7 @@ u16 check_player_camera_collision(Player *player, Camera *camera, f32 arg2, f32 
     sp5C = ((sp44 - player->pos[2]) * (sp58 - player->pos[0])) - ((sp4C - player->pos[2]) * (sp50 - player->pos[0]));
 
     if (((sp64 >= 0) && (sp60 >= 0) && (sp5C >= 0)) || (((sp64) <= 0) && (sp60 <= 0) && (sp5C <= 0))) {
-        ret = TRUE;
+        ret = true;
     }
     return ret;
 }
@@ -152,7 +152,7 @@ u16 func_8001FD78(Player *player, f32 posX, UNUSED f32 arg2, f32 posZ) {
     f32 thing1;
     u16 ret;
 
-    ret = FALSE;
+    ret = false;
 
     sp58 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) -  0x71C))) + player->pos[2];
     sp64 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) -  0x71C))) + player->pos[0];
@@ -165,7 +165,7 @@ u16 func_8001FD78(Player *player, f32 posX, UNUSED f32 arg2, f32 posZ) {
     thing0   = ((sp54 - posZ) * (sp5c - posX)) - ((sp50 - posZ) * (sp60 - posX));
     thing1   = ((sp50 - posZ) * (sp64 - posX)) - ((sp58 - posZ) * (sp5c - posX));
     if (((temp_f14 >= 0) && (thing0 >= 0) && (thing1 >= 0)) || ((temp_f14 <= 0) && (thing0 <= 0) && (thing1 <= 0))) {
-        ret = TRUE;
+        ret = true;
     }
     return ret;
 }
@@ -793,9 +793,9 @@ bool adjust_angle(s16 *angle, s16 targetAngle, s16 step) {
         }
     }
     if (targetAngle == *angle) {
-        return FALSE;
+        return false;
     }
-    return TRUE;
+    return true;
 }
 
 void move_s32_towards(s32 *startingValue, s32 targetValue, f32 somePercent) {
@@ -1063,12 +1063,12 @@ bool is_player_under_light_luigi_raceway(Player *player, s8 arg1) {
                 change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
                 D_80164B80[arg1] = 0;
-                return TRUE;
+                return true;
             }
-            return FALSE;
+            return false;
 
         default:
-            return FALSE;
+            return false;
     }
 }
 
@@ -1214,7 +1214,7 @@ void func_800235AC(Player *player, s8 arg1) {
             return;
         }
     }
-    if (is_player_under_light_luigi_raceway(player, arg1) != TRUE) {
+    if (is_player_under_light_luigi_raceway(player, arg1) != true) {
         if (((player->tyres[BACK_RIGHT].unk_14 & 1) == 1)
         || ((player->tyres[BACK_RIGHT].unk_14 & 2) == 2)
         || ((player->tyres[FRONT_LEFT].unk_14 & 3) == 3)) {
@@ -1705,7 +1705,7 @@ void func_80026A48(Player *player, s8 arg1) {
     }
 
     temp_f0 = ((player->unk_094 * (1.0f + player->unk_104)) / 18.0f) * 216.0f;
-    if ((temp_f0 <= 1.0f) || (gIsPlayerTripleBButtonCombo[arg1] == TRUE)) {
+    if ((temp_f0 <= 1.0f) || (gIsPlayerTripleBButtonCombo[arg1] == true)) {
         player->unk_240 = 0;
     } else {
         player->unk_240 += D_800DDE74[(s32)(temp_f0 / 12.0f)];

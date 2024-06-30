@@ -1199,19 +1199,19 @@ s32 func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
     D_80163128[playerId] = -1;
     D_80163150[playerId] = -1;
     if (gModeSelection == 1) {
-        return TRUE;
+        return true;
     }
     if (arg1 < 0) {
-        return TRUE;
+        return true;
     } else if (arg1 >= 4) {
         arg1 = 3;
     }
     if (D_80163330[playerId] == 1) {
-        return TRUE;
+        return true;
     }
     player = &gPlayers[playerId];
     if (player->type & 0x4000) {
-        return TRUE;
+        return true;
     }
     arg1_times_8 = arg1 * 8;
     temp_a3 = &D_800DCBB4[gCurrentCourseId][arg1_times_8];
@@ -1228,9 +1228,9 @@ s32 func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
                 D_80163150[playerId] = temp_a3[0];
             }
             if (D_80163150[playerId] < temp_a2 && player->unk_094 / 18.0f * 216.0f >= 20.0f) {
-                return FALSE;
+                return false;
             }
-            return TRUE;
+            return true;
         }
         progress = D_80164450[playerId] - D_80164450[D_80163478];
         rank = gGPCurrentRaceRankByPlayerId[2 + (D_80163478 * 4)];
@@ -1248,9 +1248,9 @@ s32 func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
         }
         D_80163150[playerId] = (gCCSelection + 1) * var_a0_2;
         if (D_80163150[playerId] < progress && player->unk_094 / 18.0f * 216.0f >= 20.0f) {
-            return FALSE;
+            return false;
         }
-        return TRUE;
+        return true;
     } else {
         var_a1_4 = D_80164450[(s16) *D_80163344] - D_80164450[playerId];
         if (var_a1_4 < 0) {
@@ -1274,7 +1274,7 @@ s32 func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
         }
         D_80164538[playerId] = var_t1;
         if (var_t1 < 0 || var_t1 >= 8) {
-            return FALSE;
+            return false;
         }
         if (arg1_times_8 < 24) {
             temp_a3 = &temp_a3[var_t1];
@@ -1285,9 +1285,9 @@ s32 func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
         }
         D_80163128[playerId] = var_a1_4;
         if (D_80163150[playerId] < var_a1_4) {
-            return TRUE;
+            return true;
         }
-        return FALSE;
+        return false;
     }
 }
 #else

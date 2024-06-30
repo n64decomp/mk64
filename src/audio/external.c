@@ -967,10 +967,10 @@ u8 func_800C357C(s32 arg0) {
     u8 i;
 
     i = D_800EA1E8;
-    var_v1 = TRUE;
+    var_v1 = true;
     for(i = D_800EA1E8; i < (s32) D_800EA1E4; i++) {
         if ((u32) arg0 == D_80192CD0[i]) {
-            var_v1 = FALSE;
+            var_v1 = false;
             i = D_800EA1E4;
         }
     }
@@ -1237,9 +1237,9 @@ void func_800C4084(u16 bankMask) {
 
     for (bank = 0; bank < SOUND_BANK_COUNT; bank++) {
         if (bankMask & 1) {
-            sSoundBankDisabled[bank] = TRUE;
+            sSoundBankDisabled[bank] = true;
         } else {
-            sSoundBankDisabled[bank] = FALSE;
+            sSoundBankDisabled[bank] = false;
         }
         bankMask = bankMask >> 1;
     }
@@ -1258,7 +1258,7 @@ void play_sound(u32 soundBits, Vec3f *position, u8 cameraId, f32 *arg3, f32 *arg
     struct Sound *temp_v0;
 
     bank = soundBits >> 0x1C;
-    if (sSoundBankDisabled[bank] == FALSE) {
+    if (sSoundBankDisabled[bank] == false) {
         temp_v0 = &sSoundRequests[sSoundRequestCount];
         temp_v0->soundBits = soundBits;
         temp_v0->position = position;
@@ -1276,37 +1276,37 @@ void func_800C41CC(u8 arg0, struct SoundCharacteristics *arg1) {
     struct Sound *sound;
 
     for (soundId = sNumProcessedSoundRequests; soundId != sSoundRequestCount; soundId++) {
-        found = FALSE;
+        found = false;
         sound = &sSoundRequests[soundId];
         switch (arg0) {
             case 0:
                 if ((sound->soundBits & 0xF0000000) == (arg1->soundBits & 0xF0000000)) {
-                    found = TRUE;
+                    found = true;
                 }
                 break;
             case 1:
                 if (((sound->soundBits & 0xF0000000) == (arg1->soundBits & 0xF0000000)) && (sound->position == arg1->unk00)) {
-                    found = TRUE;
+                    found = true;
                 }
                 break;
             case 2:
                 if (sound->position == arg1->unk00) {
-                    found = TRUE;
+                    found = true;
                 }
                 break;
             case 3:
                 if ((sound->position == arg1->unk00) && (sound->soundBits == arg1->soundBits)) {
-                    found = TRUE;
+                    found = true;
                 }
                 break;
             case 4:
                 if ((sound->cameraId == arg1->cameraId) && (sound->soundBits == arg1->soundBits)) {
-                    found = TRUE;
+                    found = true;
                 }
                 break;
             case 5:
                 if (sound->soundBits == arg1->soundBits) {
-                    found = TRUE;
+                    found = true;
                 }
                 break;
         }
@@ -1806,7 +1806,7 @@ void sound_init(void) {
         sSoundBankUsedListBack[var_v0] = 0;
         sSoundBankFreeListFront[var_v0] = 1;
         sNumSoundsInBank[var_v0] = 0;
-        sSoundBankDisabled[var_v0] = FALSE;
+        sSoundBankDisabled[var_v0] = false;
         D_80192C48[var_v0].current = 1.0f;
         D_80192C48[var_v0].remainingFrames = 0;
     }

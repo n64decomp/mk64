@@ -359,7 +359,7 @@ void func_80282C40(struct struct_80283430 *arg0, struct struct_80282C40 *arg1, s
   
     j++;
     goto dummy_label_888430;
-  while(TRUE) {
+  while(true) {
     do {
 
 dummy_label_888430: ;

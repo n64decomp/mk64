@@ -215,6 +215,6 @@ void crash_screen_draw(OSThread* thread) {
     crash_screen_print_float_reg(120, 210, 26, &tc->fp26.f.f_even);
     crash_screen_print_float_reg(210, 210, 28, &tc->fp28.f.f_even);
     crash_screen_print_float_reg(30, 220, 30, &tc->fp30.f.f_even);
-    osViBlack(FALSE);
+    osViBlack(false);
     osViSwapBuffer(pFramebuffer);
 }

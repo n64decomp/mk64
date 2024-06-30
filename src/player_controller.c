@@ -3228,15 +3228,15 @@ void detect_triple_a_combo_a_released(Player *player) {
     if (player == gPlayerEight) {
         playerIndex = 7;
     }
-    if (gIsPlayerTripleAButtonCombo[playerIndex] == FALSE) {
-        if (gPlayerIsThrottleActive[playerIndex] == TRUE) {
+    if (gIsPlayerTripleAButtonCombo[playerIndex] == false) {
+        if (gPlayerIsThrottleActive[playerIndex] == true) {
             if ((gFrameSinceLastACombo[playerIndex] < 2) || (gFrameSinceLastACombo[playerIndex] >= 9)) {
                 gCountASwitch[playerIndex] = 0;
             }
             gFrameSinceLastACombo[playerIndex] = 0;
             D_80165400[playerIndex] = 0;
         }
-        gPlayerIsThrottleActive[playerIndex] = FALSE;
+        gPlayerIsThrottleActive[playerIndex] = false;
         gFrameSinceLastACombo[playerIndex]++;
         if (gFrameSinceLastACombo[playerIndex] >= 9) {
             gFrameSinceLastACombo[playerIndex] = 9;
@@ -3248,7 +3248,7 @@ void detect_triple_a_combo_a_released(Player *player) {
             D_80165400[playerIndex] = 1;
         }
         if (gCountASwitch[playerIndex] == 5) {
-            gIsPlayerTripleAButtonCombo[playerIndex] = TRUE;
+            gIsPlayerTripleAButtonCombo[playerIndex] = true;
             gTimerBoostTripleACombo[playerIndex] = 120;
             gCountASwitch[playerIndex] = 0;
             gFrameSinceLastACombo[playerIndex] = 0;
@@ -3256,7 +3256,7 @@ void detect_triple_a_combo_a_released(Player *player) {
     } else {
         gTimerBoostTripleACombo[playerIndex]--;
         if (gTimerBoostTripleACombo[playerIndex] <= 0) {
-            gIsPlayerTripleAButtonCombo[playerIndex] = FALSE;
+            gIsPlayerTripleAButtonCombo[playerIndex] = false;
         }
     }
 }
@@ -3288,15 +3288,15 @@ void detect_triple_a_combo_a_pressed(Player *player) {
     if (player == gPlayerEight) {
         playerIndex = 7;
     }
-    if (gIsPlayerTripleAButtonCombo[playerIndex] == FALSE) {
-        if (gPlayerIsThrottleActive[playerIndex] == FALSE) {
+    if (gIsPlayerTripleAButtonCombo[playerIndex] == false) {
+        if (gPlayerIsThrottleActive[playerIndex] == false) {
             if ((gFrameSinceLastACombo[playerIndex] < 2) || (gFrameSinceLastACombo[playerIndex] >= 9)) {
                 gCountASwitch[playerIndex] = 0;
             }
             gFrameSinceLastACombo[playerIndex] = 0;
             D_80165400[playerIndex] = 0;
         }
-        gPlayerIsThrottleActive[playerIndex] = TRUE;
+        gPlayerIsThrottleActive[playerIndex] = true;
         gFrameSinceLastACombo[playerIndex]++;
         if (gFrameSinceLastACombo[playerIndex] >= 9) {
             gFrameSinceLastACombo[playerIndex] = 9;
@@ -3308,7 +3308,7 @@ void detect_triple_a_combo_a_pressed(Player *player) {
             D_80165400[playerIndex] = 1;
         }
         if (gCountASwitch[playerIndex] == 5) {
-            gIsPlayerTripleAButtonCombo[playerIndex] = TRUE;
+            gIsPlayerTripleAButtonCombo[playerIndex] = true;
             gTimerBoostTripleACombo[playerIndex] = 120;
             gCountASwitch[playerIndex] = 0;
             gFrameSinceLastACombo[playerIndex] = 0;
@@ -3316,7 +3316,7 @@ void detect_triple_a_combo_a_pressed(Player *player) {
     } else {
         gTimerBoostTripleACombo[playerIndex]--;
         if (gTimerBoostTripleACombo[playerIndex] <= 0) {
-            gIsPlayerTripleAButtonCombo[playerIndex] = FALSE;
+            gIsPlayerTripleAButtonCombo[playerIndex] = false;
         }
     }
 }
@@ -3325,7 +3325,7 @@ void player_speed(Player *player) {
     s32 player_index;
 
     player_index = get_player_index_for_player(player);
-    if (gIsPlayerTripleAButtonCombo[player_index] == FALSE) {
+    if (gIsPlayerTripleAButtonCombo[player_index] == false) {
         if ((0.0                     <= player->currentSpeed) && (player->currentSpeed < (player->topSpeed * 0.1))) {
             player->currentSpeed += gKartAccelerationTables[player->characterId][0] + (0.05 * (player->slopeAccel / 182));
         }
@@ -3456,15 +3456,15 @@ void detect_triple_b_combo_b_released(Player *player) {
         playerIndex = 7;
     }
 
-    if (gIsPlayerTripleBButtonCombo[playerIndex] == FALSE) {
-        if (gPlayerIsBrakeActive[playerIndex] == TRUE) {
+    if (gIsPlayerTripleBButtonCombo[playerIndex] == false) {
+        if (gPlayerIsBrakeActive[playerIndex] == true) {
             if ((gFrameSinceLastBCombo[playerIndex] < 2) || (gFrameSinceLastBCombo[playerIndex] >= 9)) {
                 gCountBChangement[playerIndex] = 0;
             }
             gFrameSinceLastBCombo[playerIndex] = 0;
             D_801654C0[playerIndex] = 0;
         }
-        gPlayerIsBrakeActive[playerIndex] = FALSE;
+        gPlayerIsBrakeActive[playerIndex] = false;
         gFrameSinceLastBCombo[playerIndex]++;
         if (gFrameSinceLastBCombo[playerIndex] >= 9) {
             gFrameSinceLastBCombo[playerIndex] = 9;
@@ -3476,7 +3476,7 @@ void detect_triple_b_combo_b_released(Player *player) {
             D_801654C0[playerIndex] = 1;
         }
         if (gCountBChangement[playerIndex] == 5) {
-            gIsPlayerTripleBButtonCombo[playerIndex] = TRUE;
+            gIsPlayerTripleBButtonCombo[playerIndex] = true;
             gTimerBoostTripleBCombo[playerIndex] = 120;
             gCountBChangement[playerIndex] = 0;
             gFrameSinceLastBCombo[playerIndex] = 0;
@@ -3484,7 +3484,7 @@ void detect_triple_b_combo_b_released(Player *player) {
     } else {
         gTimerBoostTripleBCombo[playerIndex]--;
         if (gTimerBoostTripleBCombo[playerIndex] <= 0) {
-            gIsPlayerTripleBButtonCombo[playerIndex] = FALSE;
+            gIsPlayerTripleBButtonCombo[playerIndex] = false;
         }
     }
 }
@@ -3517,15 +3517,15 @@ void detect_triple_b_combo_b_pressed(Player *player) {
         playerIndex = 7;
     }
 
-    if (gIsPlayerTripleBButtonCombo[playerIndex] == FALSE) {
-        if (gPlayerIsBrakeActive[playerIndex] == FALSE) {
+    if (gIsPlayerTripleBButtonCombo[playerIndex] == false) {
+        if (gPlayerIsBrakeActive[playerIndex] == false) {
             if ((gFrameSinceLastBCombo[playerIndex] < 2) || (gFrameSinceLastBCombo[playerIndex] >= 9)) {
                 gCountBChangement[playerIndex] = 0;
             }
             gFrameSinceLastBCombo[playerIndex] = 0;
             D_801654C0[playerIndex] = 0;
         }
-        gPlayerIsBrakeActive[playerIndex] = TRUE;
+        gPlayerIsBrakeActive[playerIndex] = true;
         gFrameSinceLastBCombo[playerIndex]++;
         if (gFrameSinceLastBCombo[playerIndex] >= 9) {
             gFrameSinceLastBCombo[playerIndex] = 9;
@@ -3537,7 +3537,7 @@ void detect_triple_b_combo_b_pressed(Player *player) {
             D_801654C0[playerIndex] = 1;
         }
         if (gCountBChangement[playerIndex] == 5) {
-            gIsPlayerTripleBButtonCombo[playerIndex] = TRUE;
+            gIsPlayerTripleBButtonCombo[playerIndex] = true;
             gTimerBoostTripleBCombo[playerIndex] = 120;
             gCountBChangement[playerIndex] = 0;
             gFrameSinceLastBCombo[playerIndex] = 0;
@@ -3545,7 +3545,7 @@ void detect_triple_b_combo_b_pressed(Player *player) {
     } else {
         gTimerBoostTripleBCombo[playerIndex]--;
         if (gTimerBoostTripleBCombo[playerIndex] <= 0) {
-            gIsPlayerTripleBButtonCombo[playerIndex] = FALSE;
+            gIsPlayerTripleBButtonCombo[playerIndex] = false;
         }
     }
 }
@@ -3601,7 +3601,7 @@ void func_800323E4(Player *player) {
                 player->unk_20C = 2.0f;
             }
         }
-        if (gIsPlayerTripleBButtonCombo[var_v1] == TRUE) {
+        if (gIsPlayerTripleBButtonCombo[var_v1] == true) {
             if (player->unk_20C >= 2.0f) {
                 decelerate_ai_player(player, (1.0f - var_f2) * 5.0f);
             } else {

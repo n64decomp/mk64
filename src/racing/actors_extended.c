@@ -315,19 +315,19 @@ void update_actor_banana_bunch(struct BananaBunchParent *banana_bunch) {
 bool is_shell_exist(s16 arg0) {
     struct ShellActor *actor;
     if (arg0 < 0) {
-        return FALSE;
+        return false;
     }
     actor = (struct ShellActor*) &gActorList[arg0];
     if (actor->type == ACTOR_GREEN_SHELL) {
         if (actor->state == TRIPLE_GREEN_SHELL) {
-            return TRUE;
+            return true;
         }
-        return FALSE;
+        return false;
     }
     if (actor->state == TRIPLE_RED_SHELL) {
-        return TRUE;
+        return true;
     }
-    return FALSE;
+    return false;
 }
 
 void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
@@ -932,7 +932,7 @@ void check_player_use_item(void) {
 
     for (player = &gPlayers[0], loopController = &gControllers[0], target = &gControllers[4]; loopController != target; player++, loopController++) {
         controller = loopController;
-        if (prevent_item_use(player) == FALSE) {
+        if (prevent_item_use(player) == false) {
             if((player->type & PLAYER_INVISIBLE_OR_BOMB) != 0){
                 if ((player - gPlayerTwo) == 0) {
                     controller = gControllerSix;

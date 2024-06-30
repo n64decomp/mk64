@@ -41,7 +41,7 @@ void osCreateViManager(OSPri pri) {
             osSetThreadPri(NULL, pri);
         }
         int_disabled = __osDisableInt();
-        viMgrMainArgs.initialized = TRUE;
+        viMgrMainArgs.initialized = true;
         viMgrMainArgs.mgrThread = &viMgrThread;
         viMgrMainArgs.cmdQueue = &__osViMesgQueue;
         viMgrMainArgs.eventQueue = &__osViMesgQueue;
@@ -67,7 +67,7 @@ void viMgrMain(void *vargs) {
     u32 sp28; // always 0
     u32 sp24; // time related
     mesg = NULL;
-    sp28 = FALSE;
+    sp28 = false;
     context = __osViGetCurrentContext();
 
     if ((retrace = context->retraceCount) == 0) {
@@ -76,7 +76,7 @@ void viMgrMain(void *vargs) {
 
     args = (OSMgrArgs *) vargs;
 
-    while (TRUE) {
+    while (true) {
         osRecvMesg(args->eventQueue, &mesg, OS_MESG_BLOCK);
         switch (*(u16 *) mesg) {
             case 13:

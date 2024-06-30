@@ -30,7 +30,7 @@ void sequence_channel_process_sound(struct SequenceChannel *seqChannel, s32 reca
                 layer->noteFreqScale = layer->freqScale * seqChannel->freqScale;
                 layer->noteVelocity = layer->velocitySquare * seqChannel->appliedVolume;
                 layer->notePan = (seqChannel->pan + layer->pan * (0x80 - seqChannel->panChannelWeight)) >> 7;
-                layer->notePropertiesNeedInit = FALSE;
+                layer->notePropertiesNeedInit = false;
             } else {
                 if (seqChannel->changes.as_bitfields.freqScale) {
                     layer->noteFreqScale = layer->freqScale * seqChannel->freqScale;
@@ -52,7 +52,7 @@ void sequence_player_process_sound(struct SequencePlayer *seqPlayer) {
 
     if (seqPlayer->fadeRemainingFrames != 0) {
         seqPlayer->fadeVolume += seqPlayer->fadeVelocity;
-        seqPlayer->recalculateVolume = TRUE;
+        seqPlayer->recalculateVolume = true;
 
         if (seqPlayer->fadeVolume > US_FLOAT2(1)) {
             seqPlayer->fadeVolume = US_FLOAT2(1);
@@ -75,13 +75,13 @@ void sequence_player_process_sound(struct SequencePlayer *seqPlayer) {
 
     // Process channels
     for (i = 0; i < CHANNELS_MAX; i++) {
-        if (IS_SEQUENCE_CHANNEL_VALID(seqPlayer->channels[i]) == TRUE
-            && seqPlayer->channels[i]->enabled == TRUE) {
+        if (IS_SEQUENCE_CHANNEL_VALID(seqPlayer->channels[i]) == true
+            && seqPlayer->channels[i]->enabled == true) {
             sequence_channel_process_sound(seqPlayer->channels[i], seqPlayer->recalculateVolume);
         }
     }
 
-    seqPlayer->recalculateVolume = FALSE;
+    seqPlayer->recalculateVolume = false;
 }
 
 f32 get_portamento_freq_scale(struct Portamento *p) {
@@ -176,7 +176,7 @@ void note_vibrato_init(struct Note *note) {
 
     vib = &note->vibratoState;
 
-    vib->active = TRUE;
+    vib->active = true;
     vib->time = 0;
 
     vib->curve = gWaveSamples[2];

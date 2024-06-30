@@ -5,8 +5,8 @@
 #define NULL    (void *)0
 #endif
 
-#define TRUE 1
-#define FALSE 0
+#define true 1
+#define false 0
 
 typedef signed char            s8;
 typedef unsigned char          u8;
@@ -17,7 +17,8 @@ typedef unsigned int           u32;
 typedef signed long long int   s64;
 typedef unsigned long long int u64;
 
-typedef signed int            bool;
+#define bool signed int
+
 typedef signed char          bool8;
 typedef unsigned char          ubool8;
 
