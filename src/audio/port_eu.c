@@ -109,11 +109,12 @@ struct SPTask *create_next_audio_frame_task(void) {
     gAudioCmd = gAudioCmdBuffers[gAudioTaskIndex];
     index = gCurrAiBufferIndex;
     currAiBuffer = gAiBuffers[index];
-    gAiBufferLengths[index] = ((gAudioBufferParameters.samplesPerFrameTarget - samplesRemainingInAI + EXTRA_BUFFERED_AI_SAMPLES_TARGET) & ~0xF) + SAMPLES_TO_OVERPRODUCE;
+    gAiBufferLengths[index] = ((gAudioBufferParameters.samplesPerFrameTarget - samplesRemainingInAI +
+         EXTRA_BUFFERED_AI_SAMPLES_TARGET) & ~0xF) + SAMPLES_TO_OVERPRODUCE;
     if (gAiBufferLengths[index] < gAudioBufferParameters.minAiBufferLength) {
         gAiBufferLengths[index] = gAudioBufferParameters.minAiBufferLength;
     }
-    if (gAudioBufferParameters.maxAiBufferLength < gAiBufferLengths[index]) {
+    if (gAiBufferLengths[index] > gAudioBufferParameters.maxAiBufferLength) {
         gAiBufferLengths[index] = gAudioBufferParameters.maxAiBufferLength;
     }
     if (osRecvMesg(D_800EA3AC, &sp54, 0) != -1) {
@@ -136,7 +137,7 @@ struct SPTask *create_next_audio_frame_task(void) {
     task->ucode_boot_size = (u8*) rspF3DBootEnd - (u8*) rspF3DBootStart;
     task->ucode = rspAspMainStart;
     task->ucode_data = rspAspMainDataStart;
-    task->ucode_size = 0x00001000;
+    task->ucode_size = 0x1000; // (This size is ignored (according to sm64))
     task->ucode_data_size = (rspAspMainDataEnd - rspAspMainDataStart) * sizeof(u64);
     task->dram_stack = NULL;
     task->dram_stack_size = 0;
