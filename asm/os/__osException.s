@@ -61,10 +61,6 @@ glabel D_801976A0
 
 .section .text, "ax"
 
-.ifdef AVOID_UB
-.set __osThreadTail, __osThreadTail_fix
-.endif
-
 glabel __osExceptionPreamble
 /* 0D1DB0 800D11B0 3C1A800D */  lui   $k0, %hi(__osException) # $k0, 0x800d
 /* 0D1DB4 800D11B4 275A11C0 */  addiu $k0, %lo(__osException) # addiu $k0, $k0, 0x11c0
