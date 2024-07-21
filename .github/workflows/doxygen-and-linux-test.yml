@@ -31,7 +31,7 @@ jobs:
       - name: Install Doxygen
         run: |
           sudo apt-get install graphviz doxygen
-          wget https://www.doxygen.nl/files/doxygen-1.10.0.linux.bin.tar.gz
+          wget https://www.doxygen.nl/files/doxygen-1.11.0.linux.bin.tar.gz
           tar -xzf doxygen-*.linux.bin.tar.gz
       
       - name: make badge
