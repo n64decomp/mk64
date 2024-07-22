@@ -4391,11 +4391,11 @@ Gfx *func_8009B9D0(Gfx *displayListHead, MkTexture *textures) {
     bool found;
     s32 index;
 
-    found = FALSE;
+    found = false;
     for (index = 0; index < D_8018E768_SIZE; index++) {
         if (D_8018E768[index].textures == segmented_to_virtual_dupe(textures)) {
             displayList = D_8018E768[index].displayList;
-            found = TRUE;
+            found = true;
             break;
         }
     }
@@ -7993,7 +7993,7 @@ void func_800A5738(struct_8018D9E0_entry *arg0) {
 void func_800A6034(struct_8018D9E0_entry *arg0) {
     char *text;
 
-    if (D_801657E8 != TRUE) {
+    if (D_801657E8 != true) {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, arg0->unk1C);
         text = gCupNames[D_800DC540];
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
@@ -10004,7 +10004,7 @@ struct_8018D9E0_entry *func_800AAE68(void) {
     }
 
     // Something VERY wrong has occurred
-    while(TRUE);
+    while(true);
 escape:
     return entry;
 }
@@ -10024,7 +10024,7 @@ struct_8018D9E0_entry *func_800AAEB4(s32 arg0) {
     }
 
     // Something VERY wrong has occurred
-    while(TRUE);
+    while(true);
 escape:
     return entry;
 }
@@ -10048,7 +10048,7 @@ struct_8018D9E0_entry *find_8018D9E0_entry_dupe(s32 arg0) {
     }
 
     // Something VERY wrong has occurred
-    while(TRUE);
+    while(true);
 escape:
     return entry;
 }
