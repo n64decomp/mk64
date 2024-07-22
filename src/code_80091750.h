@@ -23,7 +23,7 @@ Known `types` for `struct_8018D9E0_entry`
 
 typedef struct {
     /* 0x00 */ s32 type; // id maybe?
-    /* 0x04 */ s32 cursor; // sound mode, maybe some other stuff
+    /* 0x04 */ s32 state; // sound mode, maybe some other stuff
     /* 0x08 */ s32 unk8; // This is used but I can't tell what for
     /* 0x0C */ s32 column;
     /* 0x10 */ s32 row;

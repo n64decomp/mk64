@@ -259,20 +259,20 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 sp2C = true;
                 sp38->unk8 = -1;
             }
-            if (sp2C && gSoundMode != sp38->cursor) {
+            if (sp2C && gSoundMode != sp38->state) {
                 gSaveData.main.soundMode = gSoundMode;
                 write_save_data_grand_prix_points_and_sound_mode();
                 update_save_data_backup();
-                sp38->cursor = gSoundMode;
+                sp38->state = gSoundMode;
             }
             if (btnAndStick & B_BUTTON) {
                 func_8009E280();
                 play_sound2(SOUND_MENU_GO_BACK);
-                if (gSoundMode != sp38->cursor) {
+                if (gSoundMode != sp38->state) {
                     gSaveData.main.soundMode = gSoundMode;
                     write_save_data_grand_prix_points_and_sound_mode();
                     update_save_data_backup();
-                    sp38->cursor = gSoundMode;
+                    sp38->state = gSoundMode;
                 }
                 return;
             }
@@ -306,7 +306,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                         switch (sp2C) {
                         case PFS_INVALID_DATA:
                             D_8018EDEC = 0x46;
-                            sp38->cursor = 0;
+                            sp38->state = 0;
                             play_sound2(SOUND_MENU_SELECT);
                             break;
                         case PFS_NO_ERROR:
@@ -487,7 +487,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                     D_8018EDEC = 0x38;
                 } else {
                     D_8018EDEC = 0x3A;
-                    sp38->cursor = 0;
+                    sp38->state = 0;
                 }
                 play_sound2(SOUND_MENU_SELECT);
             }
@@ -541,7 +541,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 } else {
                     D_8018EDEC = 0x3A;
                     play_sound2(SOUND_MENU_SELECT);
-                    sp38->cursor = 0;
+                    sp38->state = 0;
                 }
             }
             // return?
@@ -550,9 +550,9 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
         case 0x3A:
         {
             if (arg1 == 0) {
-                sp38->cursor += 1;
+                sp38->state += 1;
             }
-            if (sp38->cursor >= 3) {
+            if (sp38->state >= 3) {
                 D_8018EDEC = 0x3B;
             }
             break;
@@ -585,9 +585,9 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
         case 0x46:
         {
             if (arg1 == 0) {
-                sp38->cursor += 1;
+                sp38->state += 1;
             }
-            if (sp38->cursor >= 3) {
+            if (sp38->state >= 3) {
                 D_8018EDEC = 0x47;
             }
             break;
