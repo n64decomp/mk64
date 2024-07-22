@@ -269,11 +269,11 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
 
     gFrameSinceLastACombo[idx] = 0;
     gCountASwitch[idx] = 0;
-    gIsPlayerTripleAButtonCombo[idx] = FALSE;
+    gIsPlayerTripleAButtonCombo[idx] = false;
     gTimerBoostTripleACombo[idx] = 0;
     gFrameSinceLastBCombo[idx] = 0;
     gCountBChangement[idx] = 0;
-    gIsPlayerTripleBButtonCombo[idx] = FALSE;
+    gIsPlayerTripleBButtonCombo[idx] = false;
     gTimerBoostTripleBCombo[playerIndex] = 0;
     D_8018D900[0] = 0;
 

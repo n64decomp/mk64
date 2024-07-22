@@ -22,7 +22,7 @@ void __osDevMgrMain(void *args) {
     mb = NULL;
     ret = 0;
     sp34 = (OSMgrArgs *) args;
-    while (TRUE) {
+    while (true) {
         osRecvMesg(sp34->cmdQueue, (OSMesg) &mb, OS_MESG_BLOCK);
         if (mb->piHandle != NULL && mb->piHandle->type == 2
             && (mb->piHandle->transferInfo.cmdType == 0
@@ -41,7 +41,7 @@ void __osDevMgrMain(void *args) {
             osRecvMesg(sp34->accessQueue, &dummy, OS_MESG_BLOCK);
             __osResetGlobalIntMask(0x00100401); // remove magic constant!
             __osEPiRawWriteIo(mb->piHandle, 0x05000510, (sp24->bmCtlShadow | 0x80000000));
-            while (TRUE) {
+            while (true) {
                 osRecvMesg(sp34->eventQueue, &em, OS_MESG_BLOCK);
                 sp30 = osSendMesg(mb->hdr.retQueue, mb, OS_MESG_NOBLOCK);
                 if (sp2c != 1 || mb->piHandle->transferInfo.errStatus != 0) {

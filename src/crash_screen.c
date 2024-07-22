@@ -203,7 +203,7 @@ void thread9_crash_screen(UNUSED void *arg0)
     osSetEventMesg(10, &D_80162D40, (OSMesg) 16);
     sButtonSequenceIndex = 0;
 
-    while (TRUE) {
+    while (true) {
         osRecvMesg(&D_80162D40, &mesg, 1);
         thread = get_faulted_thread();
         
@@ -212,7 +212,7 @@ void thread9_crash_screen(UNUSED void *arg0)
             if (sCounter == 0) {
                 crash_screen_draw_square(pFramebuffer);
 #ifndef DEBUG
-                while(TRUE)
+                while(true)
                 {
                     read_controllers();
 

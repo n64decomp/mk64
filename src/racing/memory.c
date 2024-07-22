@@ -977,7 +977,7 @@ void displaylist_unpack(uintptr_t *data, uintptr_t finalDisplaylistOffset, u32 a
     sGfxSeekPosition = 0;
     sPackedSeekPosition = 0;
 
-    while(TRUE) {
+    while(true) {
 
         // Seek to the next byte
         opcode = packed_dl[sPackedSeekPosition++];
@@ -1275,7 +1275,7 @@ void decompress_textures(u32 *arg0) {
 
     phi_v0 = 0;
     temp_s0 = phi_s0;
-    while (TRUE) {
+    while (true) {
         temp_a0 = phi_s0->unk0;
         if ((temp_a0) == 0) {
             break;
@@ -1287,7 +1287,7 @@ void decompress_textures(u32 *arg0) {
     gHeapEndPtr -= phi_v0;
     sp20 = gHeapEndPtr;
 
-    while (TRUE) {
+    while (true) {
         temp_a0 = phi_s0->unk0;
         if ((temp_a0) == 0) {
             break;
