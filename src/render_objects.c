@@ -3270,7 +3270,7 @@ void render_ice_block(s32 arg0) {
     for (playerId = 0; playerId < gPlayerCountSelection1; playerId++) {
         objectIndex = gIndexLakituList[playerId];
         if (objectIndex) {}
-        if (func_80072320(objectIndex, 4) != FALSE) {
+        if (func_80072320(objectIndex, 4) != false) {
             func_8005285C(playerId);
         }
         func_80072320(objectIndex, 0x00000010);

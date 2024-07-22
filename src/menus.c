@@ -240,7 +240,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
         case 0x17:
         case 0x18:
         {
-            sp2C = FALSE;
+            sp2C = false;
             if ((btnAndStick & D_JPAD) && (D_8018EDEC < 0x18)) {
                 D_8018EDEC += 1;
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -248,7 +248,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                     sp38->unk24 += 4.0;
                 }
                 sp38->unk8 = 1;
-                sp2C = TRUE;
+                sp2C = true;
             }
             if ((btnAndStick & U_JPAD) && (D_8018EDEC >= 0x16)) {
                 D_8018EDEC -= 1;
@@ -256,7 +256,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 if (sp38->unk24 < 4.2) {
                     sp38->unk24 += 4.0;
                 }
-                sp2C = TRUE;
+                sp2C = true;
                 sp38->unk8 = -1;
             }
             if (sp2C && gSoundMode != sp38->cursor) {
@@ -1008,7 +1008,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
     u16 i;
     s32 sp28;
 
-    sp28 = TRUE;
+    sp28 = true;
     btnAndStick = controller->buttonPressed | controller->stickPressed;
 
     if (func_800B4520() == 0) {
@@ -1018,7 +1018,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
         switch (gDebugMenuSelection) {
         case DEBUG_MENU_DISABLED:
         {
-            sp28 = FALSE;
+            sp28 = false;
             if ((gMenuDelayTimer >= 0x2E) && (btnAndStick & (A_BUTTON | START_BUTTON))) {
                 func_8009E1C0();
                 func_800CA330(0x19);
@@ -1035,7 +1035,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 if (gEnableDebugMode) {
                     gEnableDebugMode = DEBUG_MODE;
                 } else {
-                    gEnableDebugMode = TRUE;
+                    gEnableDebugMode = true;
                 }
             }
             if (btnAndStick & D_JPAD) {
@@ -1398,15 +1398,15 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
             }
             // L800B3068
             if (btnAndStick & D_JPAD) {
-                sp24 = FALSE;
+                sp24 = false;
                 if (func_800B555C()) {
                     if (sp28 < D_800F2B60[gPlayerCount + 4][D_800E86AC[gPlayerCount - 1] + 1]) {
-                        sp24 = TRUE;
+                        sp24 = true;
                     }
                 } else {
                     // L800B30D4
                     if (sp28 < D_800F2B60[gPlayerCount][D_800E86AC[gPlayerCount - 1] + 1]) {
-                        sp24 = TRUE;
+                        sp24 = true;
                     }
                 }
                 // L800B3110
@@ -1500,10 +1500,10 @@ bool is_character_spot_free(s32 gridId) {
     s32 i;
     for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
         if (gridId == gCharacterGridSelections[i]) {
-            return FALSE;
+            return false;
         }
     }
-    return TRUE;
+    return true;
 }
 
 #ifdef NON_MATCHING
@@ -1536,7 +1536,7 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
             // L800B3630
             if (btnAndStick & B_BUTTON) {
                 if (D_8018EDE8[arg1]) {
-                    D_8018EDE8[arg1] = FALSE;
+                    D_8018EDE8[arg1] = false;
                     play_sound2(0x49008002);
                 } else {
                     func_8009E208();
@@ -1545,15 +1545,15 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
             }
             // L800B3684
             if ((btnAndStick & A_BUTTON) && (D_8018EDE8[arg1] == 0)) {
-                D_8018EDE8[arg1] = TRUE;
+                D_8018EDE8[arg1] = true;
                 i = D_800F2BAC[gCharacterGridSelections[arg1] - 1];
                 func_800C90F4(arg1, 0x2900800e + (i << 4));
             }
             // L800B36F4
-            selected = FALSE;
+            selected = false;
             for (i = 0; i < 4; i++) { // for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
                 if ((gCharacterGridSelections[i] != 0) && (D_8018EDE8[i] == 0)) { //(gCharacterGridSelections[i] && D_8018EDE8[i]) {
-                    selected = TRUE;
+                    selected = true;
                     break;
                 }
             }
@@ -1669,7 +1669,7 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
             // L800B3AA4
             if (btnAndStick & B_BUTTON) {
                 D_8018EDEE = 1;
-                D_8018EDE8[arg1] = FALSE;
+                D_8018EDE8[arg1] = false;
                 play_sound2(0x49008002);
                 break;
             }
@@ -1920,7 +1920,7 @@ void func_800B3F74(s32 menuSelection) {
                     } else {
                         gCharacterGridSelections[i] = 0;
                     }
-                    D_8018EDE8[i] = FALSE;
+                    D_8018EDE8[i] = false;
                     gCharacterSelections[i] = i;
                 }
                 play_sound2(SOUND_MENU_SELECT_PLAYER);
@@ -1931,7 +1931,7 @@ void func_800B3F74(s32 menuSelection) {
                 gGamestateNext = 0;
                 func_800C8EAC(2);
                 for (i = 0; i < ARRAY_COUNT(D_8018EDE8); i++) {
-                    D_8018EDE8[i] = FALSE;
+                    D_8018EDE8[i] = false;
                 }
             }
             break;
@@ -1941,9 +1941,9 @@ void func_800B3F74(s32 menuSelection) {
             D_8018EDEE = 3;
             for (i = 0; i < ARRAY_COUNT(D_8018EDE8); i++) {
                 if (gPlayerCount > i) {
-                    D_8018EDE8[i] = TRUE;
+                    D_8018EDE8[i] = true;
                 } else {
-                    D_8018EDE8[i] = FALSE;
+                    D_8018EDE8[i] = false;
                 }
             }
             break;
@@ -2004,9 +2004,9 @@ void func_800B44BC(void) {
 bool func_800B4520(void) {
 
     if ((D_8018E7AC[4] == 2) || (D_8018E7AC[4] == 3) || (D_8018E7AC[4] == 4) || (D_8018E7AC[4] == 7)) {
-        return TRUE;
+        return true;
     }
-    return FALSE;
+    return false;
 }
 
 UNUSED void func_800B4560(s32 arg0, s32 arg1) {

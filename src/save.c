@@ -999,7 +999,7 @@ s32 func_800B69BC(s32 arg0) {
     s32 i;
     struct_8018EE10_entry *plz = &D_8018EE10[arg0];
 
-    plz->ghostDataSaved = FALSE;
+    plz->ghostDataSaved = false;
     plz->courseIndex = 0;
     plz->characterId = 0;
     for (i = 0; i < sizeof(plz->unk_07); i++) {

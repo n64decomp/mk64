@@ -164,7 +164,7 @@ void decrease_sample_dma_ttls() {
 }
 
 void *dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
-    s32 hasDma = FALSE;
+    s32 hasDma = false;
     struct SharedDma *dma;
     uintptr_t dmaDevAddr;
     u32 transfer;
@@ -199,7 +199,7 @@ void *dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
             // TTL 60 is pretty large.
             dmaIndex = sSampleDmaReuseQueue2[sSampleDmaReuseQueueTail2++];
             dma = &sSampleDmas[dmaIndex];
-            hasDma = TRUE;
+            hasDma = true;
         }
     } else {
         dma = &sSampleDmas[*dmaIndexRef];
@@ -231,7 +231,7 @@ void *dma_sample_data(uintptr_t devAddr, u32 size, s32 arg2, u8 *dmaIndexRef) {
         // be empty, since TTL 2 is so small.
         dmaIndex = sSampleDmaReuseQueue1[sSampleDmaReuseQueueTail1++];
         dma = &sSampleDmas[dmaIndex];
-        hasDma = TRUE;
+        hasDma = true;
     }
 
     transfer = dma->bufSize;
@@ -539,7 +539,7 @@ struct AudioBank *bank_load_async(s32 bankId, s32 arg1, struct SequencePlayer *s
     seqPlayer->bankDmaRemaining = alloc;
     if (1) { }
     osCreateMesgQueue(&seqPlayer->bankDmaMesgQueue, &seqPlayer->bankDmaMesg, 1);
-    seqPlayer->bankDmaInProgress = TRUE;
+    seqPlayer->bankDmaInProgress = true;
     audio_dma_partial_copy_async(&seqPlayer->bankDmaCurrDevAddr, &seqPlayer->bankDmaCurrMemAddr, &seqPlayer->bankDmaRemaining, &seqPlayer->bankDmaMesgQueue, &seqPlayer->bankDmaIoMesg);
     if (gBankLoadStatus[bankId] != 5) {
         gBankLoadStatus[bankId] = 1;
@@ -590,7 +590,7 @@ void *sequence_dma_async(s32 seqId, s32 arg1, struct SequencePlayer *seqPlayer) 
         audio_dma_copy_immediate(seqData, ptr, 0x00000040U);
         mesgQueue = &seqPlayer->seqDmaMesgQueue;
         osCreateMesgQueue(mesgQueue, &seqPlayer->seqDmaMesg, 1);
-        seqPlayer->seqDmaInProgress = TRUE;
+        seqPlayer->seqDmaInProgress = true;
         audio_dma_copy_async((uintptr_t) (seqData + 0x40), (u8*) ptr + 0x40, seqLength - 0x40, mesgQueue, &seqPlayer->seqDmaIoMesg);
         if (gSeqLoadStatus[seqId] != 5) {
             gSeqLoadStatus[seqId] = 1;
@@ -612,7 +612,7 @@ u8 get_missing_bank(u32 seqId, s32 *nonNullCount, s32 *nullCount) {
     for (i = gAlBankSets[offset++], ret = 0; i != 0; i--) {
         bankId = gAlBankSets[offset++];
 
-        if (IS_BANK_LOAD_COMPLETE(bankId) == TRUE) {
+        if (IS_BANK_LOAD_COMPLETE(bankId) == true) {
             temp = get_bank_or_seq(1, 2, bankId);
         } else {
             temp = NULL;
@@ -639,7 +639,7 @@ struct AudioBank *load_banks_immediate(s32 seqId, u8 *outDefaultBank) {
     for (i = gAlBankSets[offset++]; i != 0; i--) {
         bankId = gAlBankSets[offset++];
 
-        if (IS_BANK_LOAD_COMPLETE(bankId) == TRUE) {
+        if (IS_BANK_LOAD_COMPLETE(bankId) == true) {
             ret = get_bank_or_seq(1, 2, bankId);
         } else {
             ret = NULL;
@@ -672,7 +672,7 @@ void preload_sequence(u32 seqId, u8 preloadMask) {
 
     if (preloadMask & PRELOAD_SEQUENCE) {
         //! @bug should be IS_SEQ_LOAD_COMPLETE
-        if (IS_BANK_LOAD_COMPLETE(seqId) == TRUE) {
+        if (IS_BANK_LOAD_COMPLETE(seqId) == true) {
             sequenceData = get_bank_or_seq(0, 2, seqId);
         } else {
             sequenceData = NULL;
@@ -753,7 +753,7 @@ void load_sequence_internal(u32 player, u32 seqId, s32 loadAsync) {
     init_sequence_player(player);
     seqPlayer->scriptState.depth = 0;
     seqPlayer->delay = 0;
-    seqPlayer->enabled = TRUE;
+    seqPlayer->enabled = true;
     seqPlayer->seqData = sequenceData;
     seqPlayer->scriptState.pc = sequenceData;
 }

@@ -971,7 +971,7 @@ void func_80058F78(void) {
                 render_hud_timer(PLAYER_ONE);
                 draw_simplified_lap_count(PLAYER_ONE);
                 func_8004EB38(0);
-                if (D_801657E6 != FALSE) {
+                if (D_801657E6 != false) {
                     func_8004ED40(0);
                 }
             }
@@ -1044,10 +1044,10 @@ void func_800591B4(void) {
 
         if (gIsHUDVisible != 0) {
             if (D_801657D8 == 0) {
-                if (D_801657F0 != FALSE) {
+                if (D_801657F0 != false) {
                     func_800514BC();
                 }
-                if ((!gDemoMode) && (D_801657E8 != FALSE)) {
+                if ((!gDemoMode) && (D_801657E8 != false)) {
                     if (D_80165800[0] != 0) {
                         func_8004EE54(0);
                         if (gModeSelection != BATTLE) {
@@ -1224,7 +1224,7 @@ void randomize_seed_from_controller(s32 arg0) {
 }
 
 void func_8005994C(void) {
-    D_8018D214 = TRUE;
+    D_8018D214 = true;
 }
 
 void func_8005995C(void) {
@@ -1258,7 +1258,7 @@ void func_80059A88(s32 playerId) {
 void func_80059AC8(void) {
     s32 i;
 
-    if (gIsGamePaused == FALSE) {
+    if (gIsGamePaused == false) {
         func_8008C1D8(&D_80165678);
         gRaceFrameCounter++;
         for (i = 0; i < NUM_PLAYERS; i++) {
@@ -1320,7 +1320,7 @@ void func_80059D00(void) {
         switch (gScreenModeSelection) {  
         case SCREEN_MODE_1P:
             randomize_seed_from_controller(PLAYER_ONE);
-            if (D_8018D214 == FALSE) {
+            if (D_8018D214 == false) {
                 func_80059820(PLAYER_ONE);
                 func_8005B914();
                 if (!gDemoMode) {
@@ -1420,7 +1420,7 @@ void func_8005A070(void) {
     gMatrixHudCount = 0;
     D_801655C0 = 0;
     func_80041D34();
-    if (gIsGamePaused == FALSE) {
+    if (gIsGamePaused == false) {
         func_8005C728();
         if (gGamestate == ENDING) {
             func_80086604();
@@ -1497,7 +1497,7 @@ void func_8005A380(void) {
 }
 
 void func_8005A3C0(void) {
-    bool b = FALSE;
+    bool b = false;
     if ((gGamestate != ENDING) && (gGamestate != CREDITS_SEQUENCE) && !D_8018D204) {
         switch (gPlayerCountSelection1) {
         case 1:
@@ -1506,38 +1506,38 @@ void func_8005A3C0(void) {
                     D_801657E4 = 0;
                 }
                 if (D_801657E4 == 2) {
-                    D_801657E8 = FALSE;
-                    D_801657E6 = FALSE;
-                    D_801657F0 = TRUE;
+                    D_801657E8 = false;
+                    D_801657E6 = false;
+                    D_801657F0 = true;
                 } else if (D_801657E4 == 1) {
-                    D_801657E8 = FALSE;
-                    D_801657E6 = TRUE;
-                    D_801657F0 = FALSE;
+                    D_801657E8 = false;
+                    D_801657E6 = true;
+                    D_801657F0 = false;
                 } else {
-                    D_801657E8 = TRUE;
-                    D_801657E6 = FALSE;
-                    D_801657F0 = FALSE;
+                    D_801657E8 = true;
+                    D_801657E6 = false;
+                    D_801657F0 = false;
                 }
-                b = TRUE;
+                b = true;
             }
             break;
         case 2:
             if (gModeSelection != BATTLE) {
                 if (gControllerOne->buttonPressed & R_CBUTTONS) {
                     D_80165800[0] = (D_80165800[0] + 1) & 1;
-                    b = TRUE;
+                    b = true;
                 }
                 if (gControllerTwo->buttonPressed & R_CBUTTONS) {
                     D_80165800[1] = (D_80165800[1] + 1) & 1;
-                    b = TRUE;
+                    b = true;
                 }
                 if (D_80165800[0] && D_80165800[1]) {
-                    D_801657F0 = FALSE;
+                    D_801657F0 = false;
                 } else {
-                    D_801657F0 = TRUE;
+                    D_801657F0 = true;
                 }
                 if (gDemoMode) {
-                    D_801657F0 = FALSE;
+                    D_801657F0 = false;
                 }
             }
             break;
@@ -1549,7 +1549,7 @@ void func_8005A3C0(void) {
                     D_801657F0 = (D_801657F0 + 1) & 1;
                 }
                 D_801657E4 = (D_801657E4 + 1) & 1;
-                b = TRUE;
+                b = true;
             }
             break;
         case 4:
@@ -1563,7 +1563,7 @@ void func_8005A3C0(void) {
                 if (gModeSelection != BATTLE) {
                     D_801657F0 = (D_801657F0 + 1) & 1;
                 }
-                b = TRUE;
+                b = true;
             }
             break;
         }
@@ -1664,7 +1664,7 @@ void func_8005A99C(void) {
                 func_8005AA34();
             }
             if (gPlayerCountSelection1 == 3) {
-                D_801657E8 = TRUE;
+                D_801657E8 = true;
             }
             gIsHUDVisible = (s32) 1;
             D_8018D170 = (s32) 1;
