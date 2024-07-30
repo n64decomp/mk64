@@ -1496,7 +1496,7 @@ void func_80091EE4(void) {
     if ((D_8018EDFB != 0) && (tmp == 0)) {
         temp_s2 = (gCupSelection * 4) + gCupCourseSelection;
         func_800B6708();
-        
+
         for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
             if ((D_8018EE10[temp_s0].ghostDataSaved != 0) && (temp_s2 == D_8018EE10[temp_s0].courseIndex)) {
                 func_800B64EC(temp_s0);
@@ -1512,7 +1512,7 @@ void func_80091FA4(void) {
 
     //! @todo These sizes need to be sizeof() for shiftability if possible
     D_8018D9B4 = (u8 *) get_next_available_memory_addr(0x00002800);
-    D_8018D9B0 = get_next_available_memory_addr(0x000124F8);
+    D_8018D9B0 = (u16 *)get_next_available_memory_addr(0x000124F8);
     D_8018D9B8 = (u8 *) get_next_available_memory_addr(0x00001000);
     D_8018D9BC = get_next_available_memory_addr(4);
 
@@ -1610,7 +1610,7 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
     if ((arg0 < 4) || (arg0 >= 6)) { return; }
 
     idx = (((arg0 * 4) + ((gGlobalTimer % 2) * 2)) - 6);
-        
+
     *arg2 += 16;
     if (*arg2 >= 256) {
         *arg2 = 0;
@@ -2304,7 +2304,7 @@ void func_80093C98(s32 arg0) {
     guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007F18);
-    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
+    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     func_800A8250();
     if (arg0 == 0) {
         func_800A54EC();
@@ -2326,7 +2326,7 @@ void func_80093E60(void) {
     s32 i;
 
     D_8018D9B4 = get_next_available_memory_addr(0x00002800);
-    D_8018D9B0 = get_next_available_memory_addr(0x000124F8);
+    D_8018D9B0 = (u16 *) get_next_available_memory_addr(0x000124F8);
     D_8018D9B8 = get_next_available_memory_addr(0x00001000);
     D_8018D9BC = get_next_available_memory_addr(4U);
 
@@ -2366,7 +2366,7 @@ void func_80093F10(void) {
 
 void func_800940EC(s32 arg0) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
-    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
+    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007F18);
@@ -2461,7 +2461,7 @@ void func_80094A64(struct GfxPool *pool) {
     gMatrixHudCount = 0;
     gMatrixEffectCount = 0;
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_802B8880));
-    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
+    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, 240);
     guOrtho(&pool->mtxScreen, 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
     gSPMatrix(gDisplayListHead++, &pool->mtxScreen, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007650);
@@ -5606,7 +5606,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         func_800996BC(D_800E7D4C[func_800B555C()], 0);
         func_800996BC(D_02004B74, 0);
         func_8009B0A4(0, 0x00000019);
-        func_8009B538(0, 0x00012C00, D_800E74E8[type - 0x23].red, D_800E74E8[type - 0x23].green, D_800E74E8[type - 0x23].blue);
+        func_8009B538(0, SCREEN_WIDTH * SCREEN_HEIGHT, D_800E74E8[type - 0x23].red, D_800E74E8[type - 0x23].green, D_800E74E8[type - 0x23].blue);
         break;
     case 0xF:
         var_ra->unk1C = 0x00000020;
@@ -6433,7 +6433,7 @@ void func_800A08D8(u8 arg0, s32 column, s32 row) {
 s32 func_800A095C(char *someString, s32 len, s32 column, s32 row) {
     s32 tempColumn;
     s32 nonTerminatorCount;
-    
+
     nonTerminatorCount = 0;
     tempColumn = column;
     for (; len != 0; len--, tempColumn += 8) {
@@ -6450,7 +6450,7 @@ s32 func_800A095C(char *someString, s32 len, s32 column, s32 row) {
 // Same functionality, but doesn't match byte for byte :/
 void func_800A09E0(struct_8018D9E0_entry *arg0) {
     s32 table_row, x = 0x20, y;
-    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 319, 194);
+    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH - 1, 194);
     for(table_row = 0; table_row < 9; table_row++) {
         if ((D_800E86D0[0] != 0) || ((table_row != 0) && (table_row != 8))) {
             y = (table_row * 0xA) + arg0->row;
@@ -6512,7 +6512,7 @@ void func_800A0B80(struct_8018D9E0_entry *arg0) {
             } while (var_s0 != 0);
         }
     }
-    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 319, 239);
+    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
 }
 
 void func_800A0DFC(void) {
@@ -10034,7 +10034,7 @@ escape:
  * search for. If no entry with that "type" is found, this
  * function will enter a `while(1)` loop, hard-locking the
  * game.
- * 
+ *
  * In practice this never appears to happen, but that is
  * probably as much a matter of luck as it is good
  * reasoning on the original author(s) part.

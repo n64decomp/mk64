@@ -2,7 +2,7 @@
 #include <macros.h>
 #include "main.h"
 #include "buffers.h"
-#include "common_structs.h"
+#include <common_structs.h>
 #include "kart_dma.h"
 #include "defines.h"
 
@@ -1689,11 +1689,11 @@ u8 *gKartPalettes[] = {
  *
  * @param player
  * @param playerId Player ID.
- * @param arg2 Rom buffer index appears to always be 0-3. Sometimes subtracted by 2.
- * @param arg3 Second buffer index appears to always be 0-3.
- * @param arg4 First buffer index always zero.
+ * @param screenId Rom buffer index appears to always be 0-3. Sometimes subtracted by 2.
+ * @param screenId2 Second buffer index appears to always be 0-3.
+ * @param zero First buffer index always zero.
  **/
-void load_kart_texture(Player *player, s8 playerId, s8 screenId, s8 screenId2, s8 index) {
+void load_kart_texture(Player *player, s8 playerId, s8 screenId, s8 screenId2, s8 zero) {
     s32 temp = player->effects;
     if (((temp & 0x80) == 0x80) || ((temp & 0x40) == 0x40) || ((temp & 0x80000) == 0x80000) || ((temp & 0x800000) == 0x800000) || ((temp & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0)) {
         if (player->animFrameSelector[screenId] != 0) {

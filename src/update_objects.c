@@ -37,7 +37,7 @@
 #include "memory.h"
 
 //! @todo unused?
-f32 D_800E43B0[] = { 
+f32 D_800E43B0[] = {
     65536.0, 0.0,     1.0, 0.0,
     0.0,     65536.0, 0.0, 1.0,
     0.0,     0.0,     0.0, 0.0,
@@ -102,16 +102,15 @@ s32 find_unused_obj_index(s32* arg0) {
     s32 temp_v1;
 
     temp_v1 = objectListSize;
-    temp_v0 = 0; do
-    {
+    temp_v0 = 0;
+    do {
         ++temp_v1;
         ++temp_v0;
 
-        if (temp_v1 == 0x226) {
+        if (temp_v1 == OBJECT_LIST_SIZE) {
             temp_v1 = 0;
         }
-
-    } while ((gObjectList[temp_v1].unk_0CA != 0) && (temp_v0 != 0x226));
+    } while ((gObjectList[temp_v1].unk_0CA != 0) && (temp_v0 != OBJECT_LIST_SIZE));
 
     gObjectList[temp_v1].unk_0CA = 1;
 
@@ -363,7 +362,7 @@ s32 func_8007278C(s32 objectIndex, s32 arg1) {
         func_80072488(objectIndex);
         phi_v1 = 1;
     }
-    
+
     return phi_v1;
 }
 
@@ -382,7 +381,7 @@ UNUSED s32 func_8007281C(s32 objectIndex, s32 arg1) {
         func_80072488(objectIndex);
         phi_a2 = 1;
     }
-    
+
     return phi_a2;
 }
 
@@ -401,7 +400,7 @@ UNUSED s32 func_800728B0(s32 objectIndex, s32 arg1, s32 arg2) {
         func_80072488(objectIndex);
         phi_a3 = 1;
     }
-    
+
     return phi_a3;
 }
 
@@ -430,7 +429,7 @@ void set_type_object(s32 objectIndex, s32 arg1) {
 }
 
 void func_800729EC(s32 objectIndex) {
-    u32 temp_v1 = 1; 
+    u32 temp_v1 = 1;
     s32 i;
 
     start_race();
@@ -547,7 +546,7 @@ void func_80072D3C(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
         } else {
             gObjectList[objectIndex].itemDisplay = arg2;
         }
-        
+
         if (gObjectList[objectIndex].unk_0D4 < 0) {
             gObjectList[objectIndex].unk_0D4 = 1;
             if (gObjectList[objectIndex].unk_0CC > 0) {
@@ -775,7 +774,7 @@ UNUSED void func_80073570(s32 objectIndex) {
         D_8018D1EC = 0;
     }
     (*test)++;
-} 
+}
 
 void func_800735BC(s32 objectIndex, Gfx *arg1, f32 arg2) {
     gObjectList[objectIndex].status = 0;
@@ -1022,7 +1021,7 @@ bool func_80073E18(s32 objectIndex, u16* arg1, u16 arg2, s32 arg3) {
         *arg1 += arg2;
         gObjectList[objectIndex].unk_048 = temp_v1;
     }
-    
+
     return phi_t0;
 }
 
@@ -1094,7 +1093,7 @@ bool func_8007401C(s32 objectIndex, f32* arg1, f32 arg2, f32 arg3, f32 arg4, s32
             }
         }
     }
-    
+
     return phi_a3;
 }
 
@@ -1133,7 +1132,7 @@ s32 func_800741B4(s32 objectIndex, f32* arg1, f32 arg2, f32 arg3, f32 arg4, s32 
             }
         }
     }
-    
+
     return 0;
 }
 
@@ -1211,7 +1210,7 @@ void func_80074574(u8 *arg0, void *arg1, u16 arg2, u16 arg3) {
 }
 
 //! @todo arg1 should likely be a u8 *
-void func_800745C8(s32 objectIndex, s32 arg1) {
+void func_800745C8(s32 objectIndex, uintptr_t arg1) {
     s32 phi_a1;
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
@@ -1224,13 +1223,13 @@ void func_800745C8(s32 objectIndex, s32 arg1) {
         if ((gObjectList[objectIndex].status & 2) != 0) {
             phi_a1 = 1;
         }
-        
+
         gObjectList[objectIndex].activeTexture = (u8 *) (gObjectList[objectIndex].textureWidth * gObjectList[objectIndex].textureHeight * phi_a1) + arg1;
         func_800744A0(objectIndex);
     }
 }
 
-void func_8007466C(s32 objectIndex, s32 arg1) {
+void func_8007466C(s32 objectIndex, uintptr_t arg1) {
     s32 phi_a1;
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
@@ -1246,9 +1245,9 @@ void func_8007466C(s32 objectIndex, s32 arg1) {
     }
 }
 
-void func_80074704(s32 objectIndex, s32 arg1) {
+void func_80074704(s32 objectIndex, uintptr_t arg1) {
     s32 phi_a1;
-    
+
     if ((gObjectList[objectIndex].status & 1) != 0) {
         gObjectList[objectIndex].activeTLUT = gObjectList[objectIndex].tlutList;
         gObjectList[objectIndex].status ^= 2;
@@ -1284,17 +1283,17 @@ void func_800747F0(s32 objectIndex, u8 *arg1) {
 
 void func_80074894(s32 objectIndex, u8 *arg1) {
     func_800747F0(objectIndex, arg1);
-    func_800745C8(objectIndex, (s32)arg1);
+    func_800745C8(objectIndex, (uintptr_t)arg1);
 }
 
 void func_800748C4(s32 objectIndex, u8 *arg1) {
     func_800747F0(objectIndex, arg1);
-    func_8007466C(objectIndex, (s32)arg1);
+    func_8007466C(objectIndex, (uintptr_t)arg1);
 }
 
 void func_800748F4(s32 objectIndex, u8 *arg1) {
     func_800747F0(objectIndex, arg1);
-    func_80074704(objectIndex, (s32)arg1);
+    func_80074704(objectIndex, (uintptr_t)arg1);
 }
 
 void func_80074924(s32 objectIndex) {
@@ -1581,7 +1580,7 @@ void func_80075714(s32 objectIndex) {
     case 0:
         break;
     }
-    
+
     object_calculate_new_pos_offset(objectIndex);
 }
 
@@ -1664,7 +1663,7 @@ s32 func_80075A6C(s32 arg0, Vec3f arg1, f32 arg2) {
             func_800759EC(objectIndex, arg1, arg2);
         }
     }
-    
+
     return objectIndex;
 }
 
@@ -3642,6 +3641,7 @@ u8 gen_random_item(s16 rank, s16 isCpu)
         }
         randomItem =  *((rank * 100) + curve + sRandomItemIndex);
     }
+
     return randomItem;
 }
 
@@ -3658,7 +3658,7 @@ s16 func_8007AFB0(s32 objectIndex, s32 arg1) {
     s16 randomItem;
 
     randomItem = gen_random_item_human(gLapCountByPlayerId[arg1], gGPCurrentRaceRankByPlayerId[arg1]);
-    
+
     if (playerHUD[arg1].itemOverride != 0) {
         randomItem = (s16) playerHUD[arg1].itemOverride;
         playerHUD[arg1].itemOverride = 0;
@@ -6112,7 +6112,7 @@ void func_8008153C(s32 objectIndex) {
 }
 
 void func_80081790(s32 objectIndex) {
-    switch (gObjectList[objectIndex].state) {   
+    switch (gObjectList[objectIndex].state) {
     case 0:
         break;                           /* irregular */
     case 1:
