@@ -3,7 +3,7 @@
 
 #include <PR/ultratypes.h>
 #include <mk64.h>
-#include "common_structs.h"
+#include <common_structs.h>
 
 /*
  * This type could reasonably be called decodedTexture or similar
@@ -52,7 +52,7 @@ typedef struct {
  * Appears to be a combination of 2 different palettes:
  *   kart_palette contains the palette for all non-wheel elements of the kart (including the driver).
  *   wheel_palette contains the palette for the wheels.
- * 
+ *
  * kart palette sets a defined palette based on the character while
  * wheels palette sets a dynamic palette as you drive around with the kart.
  *
@@ -74,7 +74,7 @@ extern struct_D_802DFB80 D_802DFB80[][2][8];
 
 /**
  * It would be nice to define D_802F1F80 as "struct_D_802F1F80 D_802F1F80[2][4][8]".
- * But due to register allocation issues in load_kart_palette / func_80026B4C 
+ * But due to register allocation issues in load_kart_palette / func_80026B4C
  * we have to define it in a different manner to match those functions.
  * If AVOID_UB is defined, the struct is properly defined with their correct pointers.
  **/
