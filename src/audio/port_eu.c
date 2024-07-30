@@ -62,7 +62,7 @@ struct SPTask *create_next_audio_frame_task(void) {
     if ((gAudioFrameCount % gAudioBufferParameters.presetUnk4) != 0) {
         return NULL;
     }
-    osSendMesg(D_800EA3A8, (OSMesg) gAudioFrameCount, 0);
+    osSendMesg(D_800EA3A8, (OSMesg) gAudioFrameCount, OS_MESG_NOBLOCK);
 
     gAudioTaskIndex ^= 1;
     gCurrAiBufferIndex++;
