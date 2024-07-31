@@ -368,12 +368,12 @@ SECTIONS
    END_NOLOAD(main)
 
    /* Checks that segments are not overlapping into the memory pool but is not strictly necessary */
-   BEGIN_NOLOAD(gMemoryPool)
+   BEGIN_NOLOAD(memoryPool)
    {
       BUILD_DIR/src/buffers/memory_pool.o(.bss*);
       . = ALIGN(0x10);
    }
-   END_NOLOAD(gMemoryPool)
+   END_NOLOAD(memoryPool)
    
    /* 0x8028DF00 0F7510-123640 [2C130] */
    BEGIN_SEG(racing, LINKER_RACING)
