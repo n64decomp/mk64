@@ -170,9 +170,9 @@ var searchData=
   ['itemdisplay_167',['itemDisplay',['../structObject.html#a9be57a6abda70f5c29ca6061295a17f6',1,'Object::itemDisplay'],['../structItemWindowObjects.html#a9bf86d15b50c0f1da94354b35b51b541',1,'ItemWindowObjects::itemDisplay']]],
   ['itemdisplaystate_168',['itemDisplayState',['../structItemWindowObjects.html#a0f94d734479ccdaa3e0c805eee15ade5',1,'ItemWindowObjects']]],
   ['itemoverride_169',['itemOverride',['../structhud__player.html#aba79e1f46efa9fc3ee5976c1e05b5033',1,'hud_player']]],
-  ['items_170',['items',['../structSynthesisReverb.html#a0b9105040972d04171ddea3a369d14fb',1,'SynthesisReverb']]],
-  ['items_171',['ITEMS',['../defines_8h.html#a73525c02acb5a3c282d73186bb3196f5',1,'defines.h']]],
-  ['items_172',['Items',['../items.html',1,'actorsmenu']]],
+  ['items_170',['ITEMS',['../defines_8h.html#a73525c02acb5a3c282d73186bb3196f5',1,'defines.h']]],
+  ['items_171',['Items',['../items.html',1,'actorsmenu']]],
+  ['items_172',['items',['../structSynthesisReverb.html#a0b9105040972d04171ddea3a369d14fb',1,'SynthesisReverb']]],
   ['items_2emd_173',['items.md',['../items_8md.html',1,'']]],
   ['itemwindowobjects_174',['ItemWindowObjects',['../structItemWindowObjects.html',1,'']]],
   ['itofix_175',['ITOFIX',['../macros_8h.html#a38dd3cc47348bf50cffa34352cc93156',1,'macros.h']]]

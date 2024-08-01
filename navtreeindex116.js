@@ -1,9 +1,5 @@
 var NAVTREEINDEX116 =
 {
-"structYoshiValleyEgg.html#ae635c1dc57de8906f0fa04d720564ff9":[7,0,253,0],
-"structYoshiValleyEgg.html#af69126005d92263176a9ab66e2d4672d":[7,0,253,3],
-"structYoshiValleyEgg.html#afa5af4be9c951961bc44cff55f16574a":[7,0,253,5],
-"struct____OSBlockInfo.html":[7,0,0],
 "struct____OSBlockInfo.html#a23c8d5d75464bd380dbcb4dcd09ee2d9":[7,0,0,1],
 "struct____OSBlockInfo.html#a70ae85d5ece1fbc3665a07c270c852ed":[7,0,0,4],
 "struct____OSBlockInfo.html#aa4171705f3d3633a9b23f38094531c05":[7,0,0,3],
@@ -249,5 +245,9 @@ var NAVTREEINDEX116 =
 "structhud__player.html#aac5469899e53712fb9ab5f6e4c377d20":[7,0,87,4],
 "structhud__player.html#ab7dafcc65d68285b304ab0891db0f4c6":[7,0,87,47],
 "structhud__player.html#aba79e1f46efa9fc3ee5976c1e05b5033":[7,0,87,5],
-"structhud__player.html#ac4fcd01635f62b2e56fa1d6c592f2685":[7,0,87,44]
+"structhud__player.html#ac4fcd01635f62b2e56fa1d6c592f2685":[7,0,87,44],
+"structhud__player.html#acb9be128a8ffa6f199414f304deb8f7f":[7,0,87,24],
+"structhud__player.html#acbbcb18b11223e46c8acf1627a93a250":[7,0,87,27],
+"structhud__player.html#ad20a2396bdeea50bad530d0cf53a6a30":[7,0,87,51],
+"structhud__player.html#ad25d903ae2ba7196f91f40396965f44d":[7,0,87,62]
 };

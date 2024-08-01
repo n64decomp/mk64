@@ -1,9 +1,5 @@
 var NAVTREEINDEX111 =
 {
-"structFirework.html#a3f213dd28bf6b188edca4c1398700291":[7,0,82,4],
-"structFirework.html#a42b371aacd1464e0207fc89b7c1b07f8":[7,0,82,9],
-"structFirework.html#a49968012ca474326e0b35502bc94f407":[7,0,82,2],
-"structFirework.html#a5cc9fa827062bf796134fcf1a0334d99":[7,0,82,16],
 "structFirework.html#a6046f5d86fadba1314e1b7252fa8d7de":[7,0,82,1],
 "structFirework.html#a6a1b9cc37e2072117c75e70b4d24fb5d":[7,0,82,3],
 "structFirework.html#a6d11e92433fc3d78addae3d4614d315a":[7,0,82,12],
@@ -249,5 +245,9 @@ var NAVTREEINDEX111 =
 "structNoteSubEu.html#adc9a8cd184bc35e52022017cbd873eb3":[7,0,109,17],
 "structNoteSubEu.html#ae37271bcb252efc531b2cc103a1cd60d":[7,0,109,3],
 "structNoteSubEu.html#af7e8d3f08f13dd24fb832d058d832d00":[7,0,109,16],
-"structNoteSubEu.html#afea5dec32c9dd20d9b47a8f75f5a0316":[7,0,109,10]
+"structNoteSubEu.html#afea5dec32c9dd20d9b47a8f75f5a0316":[7,0,109,10],
+"structNoteSynthesisBuffers.html":[7,0,110],
+"structNoteSynthesisBuffers.html#a363bff9ec76f24c9464b14fddab2df79":[7,0,110,3],
+"structNoteSynthesisBuffers.html#a9618443ff8b6c8c7f97d604467a66cc2":[7,0,110,1],
+"structNoteSynthesisBuffers.html#a9752e4461c7281b7034e85d6361a96af":[7,0,110,2]
 };

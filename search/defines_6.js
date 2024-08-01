@@ -4,7 +4,7 @@ var searchData=
   ['facing_5fy_5faxis_1',['FACING_Y_AXIS',['../defines_8h.html#ab99b761699bab6f3ac0435fd1b88892f',1,'defines.h']]],
   ['facing_5fz_5faxis_2',['FACING_Z_AXIS',['../defines_8h.html#a3711c100883700bebfe59ceef3041078',1,'defines.h']]],
   ['fake_5fitem_5fbox_5fon_5fground_3',['FAKE_ITEM_BOX_ON_GROUND',['../actor__types_8h.html#affb5ffde510634c5c1e09a5b934d29c3',1,'actor_types.h']]],
-  ['false_4',['FALSE',['../ultratypes_8h.html#aa93f0eb578d23995850d61f7d61c55c1',1,'ultratypes.h']]],
+  ['false_4',['false',['../ultratypes_8h.html#a65e9886d74aaee76545e83dd09011727',1,'ultratypes.h']]],
   ['finite_5',['FINITE',['../__Ldtob_8c.html#ab0a1bd42784a08f303ec2dbff66f2a93',1,'_Ldtob.c']]],
   ['fixtof_6',['FIXTOF',['../macros_8h.html#a6ee57cbc899a869579ce6c9a9d91481e',1,'macros.h']]],
   ['fixtoi_7',['FIXTOI',['../macros_8h.html#ace18d13c8231a0f9fa2367c88bda5d62',1,'macros.h']]],

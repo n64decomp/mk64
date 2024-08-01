@@ -57,7 +57,7 @@ var searchData=
   ['trig_5ftables_54',['TRIG_TABLES',['../segments_8h.html#a761c05cde348942fdce0754b88fb1ca6',1,'segments.h']]],
   ['trig_5ftables_5from_5fstart_55',['TRIG_TABLES_ROM_START',['../segments_8h.html#a20d77c6ed229d04a4e116f6efee58b65',1,'segments.h']]],
   ['trig_5ftables_5fsize_56',['TRIG_TABLES_SIZE',['../segments_8h.html#a2e9dea20b55782f35a2f810a20bea0ab',1,'segments.h']]],
-  ['true_57',['TRUE',['../ultratypes_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d',1,'ultratypes.h']]],
+  ['true_57',['true',['../ultratypes_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7',1,'ultratypes.h']]],
   ['tv_5ftype_5fmpal_58',['TV_TYPE_MPAL',['../libultra_8h.html#a8ecebeabce268a200f5522d5717d29c8',1,'libultra.h']]],
   ['tv_5ftype_5fntsc_59',['TV_TYPE_NTSC',['../libultra_8h.html#aa12ab0b4f45c62d6acb605ce5f1cea43',1,'libultra.h']]],
   ['tv_5ftype_5fpal_60',['TV_TYPE_PAL',['../libultra_8h.html#af3b80d8e5ece36f04d37f84313008993',1,'libultra.h']]],

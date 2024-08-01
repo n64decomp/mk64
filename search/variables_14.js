@@ -84,7 +84,7 @@ var searchData=
   ['tremrate_81',['tremRate',['../structALInstrument.html#ac6fa98c1fca59a01701c2bc5bbe44daf',1,'ALInstrument']]],
   ['tremtype_82',['tremType',['../structALInstrument.html#a644e3b4f618910489856d0cd15062b24',1,'ALInstrument']]],
   ['triangle_83',['triangle',['../structCollisionGrid.html#a1b99cf0c98efa915c28c77ba86b69b6c',1,'CollisionGrid']]],
-  ['trigtablespadding_84',['trigTablesPadding',['../buffers_2trig__tables__bss_8c.html#a00cbbf5fc2549e66b6cb61219d22e7c8',1,'trigTablesPadding:&#160;trig_tables_bss.c'],['../data_2trig__tables__bss_8c.html#a00cbbf5fc2549e66b6cb61219d22e7c8',1,'trigTablesPadding:&#160;trig_tables_bss.c']]],
+  ['trigtablespadding_84',['trigTablesPadding',['../trig__tables__bss_8c.html#a00cbbf5fc2549e66b6cb61219d22e7c8',1,'trig_tables_bss.c']]],
   ['tsize_85',['tsize',['../structuObjTxtrBlock__t.html#a461f3df71c3f7fe59454c5640dbd18c2',1,'uObjTxtrBlock_t']]],
   ['ttl_86',['ttl',['../structSharedDma.html#aebf320bf040269395cd662295accd1cf',1,'SharedDma']]],
   ['tuning_87',['tuning',['../structAudioBankSound.html#a2d41c84ecf76ec2edcf520495380a693',1,'AudioBankSound']]],

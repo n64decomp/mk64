@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['b_0',['b',['../unionuObjBg.html#a4c7b764ed0f65c46029a1af38ca912e7',1,'uObjBg']]],
-  ['b_1',['B',['../structuObjMtx__t.html#a87aae46e87f2cb767e062ee1c5dc3841',1,'uObjMtx_t::B'],['../common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7ba3f2a77ecd272aa6d6b5902faa5e5fc68',1,'B:&#160;common_structs.h']]],
+  ['b_0',['B',['../structuObjMtx__t.html#a87aae46e87f2cb767e062ee1c5dc3841',1,'uObjMtx_t::B'],['../common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7ba3f2a77ecd272aa6d6b5902faa5e5fc68',1,'B:&#160;common_structs.h']]],
+  ['b_1',['b',['../unionuObjBg.html#a4c7b764ed0f65c46029a1af38ca912e7',1,'uObjBg']]],
   ['b_5fbutton_2',['B_BUTTON',['../os_8h.html#a2454c318caf152737fd63bebddd58ea2',1,'B_BUTTON:&#160;os.h'],['../os__cont_8h.html#a2454c318caf152737fd63bebddd58ea2',1,'B_BUTTON:&#160;os_cont.h']]],
   ['back_5fleft_3',['BACK_LEFT',['../common__structs_8h.html#a5d709a7992db8f755357a4d2e4ec6776',1,'common_structs.h']]],
   ['back_5fright_4',['BACK_RIGHT',['../common__structs_8h.html#ab4458ad4beab61d1fd144d5ac551e7da',1,'common_structs.h']]],
@@ -109,7 +109,7 @@ var searchData=
   ['boo_5fsound_5feffect_106',['BOO_SOUND_EFFECT',['../defines_8h.html#a3dac4f01a0671a836f2b17cc2ef2d0e7',1,'defines.h']]],
   ['book_107',['book',['../structAdpcmBook.html#a0eb3e41da17a5a3bca82a2a1c9e3ed18',1,'AdpcmBook::book'],['../structAudioBankSample.html#ad66d2ea44427eef3ea448179e1f4a0c0',1,'AudioBankSample::book'],['../structALADPCMBook.html#a3282990d6e143b6799db1e2183ae033b',1,'ALADPCMBook::book'],['../structALADPCMWaveInfo.html#aa35ad149cde994dfe5b5ca00cf6a63c4',1,'ALADPCMWaveInfo::book']]],
   ['bookoffset_108',['bookOffset',['../structSequenceChannel.html#ac28336aa1b2f34a4f95ab24d24ecc680',1,'SequenceChannel::bookOffset'],['../structNoteSubEu.html#a7c006e4ca4da48e9e1677e10cb604aa6',1,'NoteSubEu::bookOffset']]],
-  ['bool_109',['bool',['../ultratypes_8h.html#ae8d0c7c2a91a9ac50b499ae49a827f8f',1,'ultratypes.h']]],
+  ['bool_109',['bool',['../ultratypes_8h.html#abb452686968e48b67397da5f97445f5b',1,'ultratypes.h']]],
   ['bool8_110',['bool8',['../ultratypes_8h.html#a96f1ea79f972105a14c7a4928c604b17',1,'ultratypes.h']]],
   ['boost_20ramps_111',['Boost Ramps',['../boostramps.html',1,'Boost Ramps'],['../boostramps.html#boost-ramps',1,'Boost Ramps']]],
   ['boost_5feffect_112',['BOOST_EFFECT',['../defines_8h.html#a0a6d61b5ffca45b285a90df934373af4',1,'defines.h']]],

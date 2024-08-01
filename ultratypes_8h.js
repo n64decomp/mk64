@@ -1,9 +1,9 @@
 var ultratypes_8h =
 [
-    [ "FALSE", "ultratypes_8h.html#aa93f0eb578d23995850d61f7d61c55c1", null ],
+    [ "bool", "ultratypes_8h.html#abb452686968e48b67397da5f97445f5b", null ],
+    [ "false", "ultratypes_8h.html#a65e9886d74aaee76545e83dd09011727", null ],
     [ "NULL", "ultratypes_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4", null ],
-    [ "TRUE", "ultratypes_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d", null ],
-    [ "bool", "ultratypes_8h.html#ae8d0c7c2a91a9ac50b499ae49a827f8f", null ],
+    [ "true", "ultratypes_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7", null ],
     [ "bool8", "ultratypes_8h.html#a96f1ea79f972105a14c7a4928c604b17", null ],
     [ "f32", "ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd", null ],
     [ "f64", "ultratypes_8h.html#a94dab5770726ccbef8c7d026cfbdf8e5", null ],

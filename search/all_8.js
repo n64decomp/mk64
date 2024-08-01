@@ -26,7 +26,7 @@ var searchData=
   ['fake_5fitem_5fbox_5fon_5fground_23',['FAKE_ITEM_BOX_ON_GROUND',['../actor__types_8h.html#affb5ffde510634c5c1e09a5b934d29c3',1,'actor_types.h']]],
   ['fakeitembox_24',['FakeItemBox',['../structFakeItemBox.html',1,'']]],
   ['fallingrock_25',['FallingRock',['../structFallingRock.html',1,'']]],
-  ['false_26',['FALSE',['../ultratypes_8h.html#aa93f0eb578d23995850d61f7d61c55c1',1,'ultratypes.h']]],
+  ['false_26',['false',['../ultratypes_8h.html#a65e9886d74aaee76545e83dd09011727',1,'ultratypes.h']]],
   ['features_27',['features',['../structOSViContext.html#a59839076ae767722c62b8c482e06c79c',1,'OSViContext']]],
   ['ffff_28',['ffff',['../structstruct__801642D8.html#affa50855999b309c35a3b81d36de1111',1,'struct_801642D8']]],
   ['file_5fsize_29',['file_size',['../structcourse__texture.html#a46504f7bfa82687cab6d337fc73ee6c5',1,'course_texture']]],
