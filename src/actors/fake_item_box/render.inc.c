@@ -5,9 +5,9 @@
 
 /**
  * @brief Renders the fake item box actor.
- * 
- * @param camera 
- * @param fakeItemBox 
+ *
+ * @param camera
+ * @param fakeItemBox
  */
 void render_actor_fake_item_box(Camera *camera, struct FakeItemBox *fakeItemBox) {
     Vec3s someRot;
