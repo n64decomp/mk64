@@ -1,5 +1,5 @@
 #ifndef CODE_80281C40_H
-#define CODE_80281C40_h
+#define CODE_80281C40_H
 
 /* Function Prototypes */
 
