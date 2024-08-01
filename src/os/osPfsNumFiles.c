@@ -1,5 +1,5 @@
 #include "libultra_internal.h"
-#include "PR/os.h"
+#include <PR/os.h>
 #include "controller.h"
 
 s32 osPfsNumFiles(OSPfs *pfs, s32 *max_files, s32 *files_used)
