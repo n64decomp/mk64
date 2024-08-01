@@ -7,9 +7,9 @@
  * @brief Renders the train engine actor.
  * Actor used in Kalimari Desert.
  * His update position are made in vehicle.
- * 
- * @param camera 
- * @param actor 
+ *
+ * @param camera
+ * @param actor
  */
 void render_actor_train_engine(Camera *camera, struct TrainCar *actor) {
     UNUSED s32 pad[2];
