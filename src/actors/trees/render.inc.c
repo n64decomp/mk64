@@ -6,10 +6,10 @@
 
 /**
  * @brief Renders the tree actor in Mario rawceay.
- * 
- * @param camera 
- * @param arg1 
- * @param arg2 
+ *
+ * @param camera
+ * @param arg1
+ * @param arg2
  */
 void render_actor_tree_mario_raceway(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
