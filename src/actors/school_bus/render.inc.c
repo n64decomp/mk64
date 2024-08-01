@@ -7,9 +7,9 @@
  * @brief Renders the school bus actor.
  * Actor used in Toad's Turnpike.
  * His update are made in vehicle.
- * 
- * @param arg0 
- * @param arg1 
+ *
+ * @param arg0
+ * @param arg1
  */
 void render_actor_school_bus(Camera *arg0, struct Actor *arg1) {
     UNUSED s32 pad[6];

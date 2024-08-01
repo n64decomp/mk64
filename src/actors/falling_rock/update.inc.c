@@ -20,8 +20,8 @@ void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
 /**
  * @brief Spawns falling rocks.
  * Used in Choco Mountain.
- * 
- * @param spawnData 
+ *
+ * @param spawnData
  */
 void spawn_falling_rocks(struct ActorSpawnData *spawnData) {
     s32 addr = SEGMENT_NUMBER2(spawnData);
@@ -52,8 +52,8 @@ void spawn_falling_rocks(struct ActorSpawnData *spawnData) {
 /**
  * @brief Updates the falling rock actor.
  * Actor used in Choco Mountain.
- * 
- * @param rock 
+ *
+ * @param rock
  */
 void update_actor_falling_rocks(struct FallingRock *rock) {
     Vec3f unkVec;
