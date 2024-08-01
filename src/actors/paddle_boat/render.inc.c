@@ -10,11 +10,11 @@
 /**
  * @brief Renders the paddle boat actor.
  * Actor used in DK's Jungle Parkway.
- * 
- * @param arg0 
- * @param boat 
- * @param arg2 
- * @param pathCounter 
+ *
+ * @param arg0
+ * @param boat
+ * @param arg2
+ * @param pathCounter
  */
 void render_actor_paddle_boat(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED Mat4 arg2, u16 pathCounter) {
     UNUSED s32 pad[3];
@@ -25,7 +25,7 @@ void render_actor_paddle_boat(Camera *arg0, struct PaddleWheelBoat *boat, UNUSED
     f32 temp;
 
     if ((pathCounter > 20) && (pathCounter < 25)) { return; }
-    
+
     temp = is_within_render_distance(arg0->pos, boat->pos, arg0->rot[1], 90000.0f, gCameraZoom[arg0 - camera1], 9000000.0f);
 
     if (temp < 0.0f) { return; }
