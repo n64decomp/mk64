@@ -3545,7 +3545,7 @@ void func_80053E6C(s32 arg0) {
     func_8004B614(0, 0, 0, 0, 0, 0, 0);
     D_80183E80[0] = 0;
     D_80183E80[1] = 0x8000;
-    rsp_load_texture(gTextureBalloon1, 64, 32);
+    rsp_load_texture(D_8018D4BC, 64, 32);
     for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
         objectIndex = gObjectParticle3[var_s1];
         if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 2)) {
