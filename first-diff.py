@@ -268,7 +268,7 @@ for i in range(24, len(mybin), 4):
         map_search_diff.append(search_map(i))
 if diffs == 0:
     print("No differences!")
-    exit()
+    exit(0)
 definite_shift = diffs > shift_cap
 if not definite_shift:
     if (diffs > 1):
