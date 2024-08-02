@@ -504,7 +504,7 @@ f32 func_8028EE8C(s32 arg0) {
     f32 temp_v1 = gPlayers[arg0].copy_rotation_z;
     f32 temp_f14 = D_8015F8D0[2] - temp_v0;
     f32 temp_f16 = temp_v1 - D_8015F8D0[2];
-    return gCourseTimer - ((0.01666666f * temp_f14) / (temp_f14 + temp_f16));
+    return gCourseTimer - ((COURSE_TIMER_ITER_f * temp_f14) / (temp_f14 + temp_f16));
 }
 
 void func_8028EEF0(s32 i) {
@@ -836,7 +836,7 @@ void func_8028F970(void) {
             return;
         }
     }
-    
+
     if (gEnableDebugMode) {
         if (gModeSelection == BATTLE) {
             // do stuff?
@@ -1108,7 +1108,7 @@ void func_802903B0(void) {
 void func_802903D8(Player *playerOne, Player *playerTwo) {
     f32 sp70 = (playerOne->boundingBoxSize + playerTwo->boundingBoxSize) - 5.0f;
     f32 temp_f0;
-    f32 sp74; 
+    f32 sp74;
     Vec3f sp60;
     Vec3f sp54;
     f32 temp_f0_2;

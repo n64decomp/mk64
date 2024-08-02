@@ -1327,7 +1327,6 @@ u16 actor_terrain_collision(Collision *collision, f32 boundingBoxSize, f32 x1, f
             }
         }
         sectionIndex++;
-        
     }
     return flags;
 }
@@ -1570,7 +1569,7 @@ void add_collision_triangle(Vtx *vtx1, Vtx *vtx2, Vtx *vtx3, s8 surfaceType, u16
     if ((triangle->vtx1->v.flag == 4) && 
         (triangle->vtx2->v.flag == 4) && 
         (triangle->vtx3->v.flag == 4)) {
-        
+
         return;
     }
 
@@ -1776,7 +1775,7 @@ void set_vtx_from_quadrangle(u32 line, s8 surfaceType, u16 sectionId) {
     vtx2 = vtxBuffer[vert2];
     vtx3 = vtxBuffer[vert3];
     vtx4 = vtxBuffer[vert4];
-    
+
     // Triangle 1
     add_collision_triangle(vtx1, vtx2, vtx3, surfaceType, sectionId);
     // Triangle 2
@@ -1914,6 +1913,7 @@ void generate_collision_grid(void) {
     s32 courseLengthX;
     s32 courseLengthZ;
     s32 index;
+
     courseLengthX = (s32) gCourseMaxX - gCourseMinX;
     courseLengthZ = (s32) gCourseMaxZ - gCourseMinZ;
 
@@ -1958,7 +1958,7 @@ void generate_collision_grid(void) {
                         gCollisionGrid[index].triangle = gNumCollisionTriangles;
                     }
                     gCollisionGrid[index].numTriangles++;
-                    gCollisionIndices[gNumCollisionTriangles] = (s16) i;
+                     gCollisionIndices[gNumCollisionTriangles] = (u16) i;
                     gNumCollisionTriangles++;
                 }
             }
@@ -2181,7 +2181,7 @@ u16 process_collision(Player *player, KartTyre *tyre, f32 tyre2X, f32 tyre2Y, f3
     }
 
     // If the surface flags are not set then try setting them.
-        
+
     courseLengthX = (s32) gCourseMaxX - gCourseMinX;
     courseLengthZ = (s32) gCourseMaxZ - gCourseMinZ;
 

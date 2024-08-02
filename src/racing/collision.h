@@ -1,7 +1,7 @@
 #ifndef collision_H
 #define collision_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 #define COLLISION 0x1
 #define NO_COLLISION 0x0
@@ -35,7 +35,7 @@ void  generate_collision_mesh_with_defaults(Gfx*);
 void  generate_collision_mesh_with_default_section_id(Gfx*, s8);
 void  generate_collision_mesh(Gfx*, s8, u16);
 void  find_and_set_tile_size(uintptr_t, s32, s32);
-void  set_vertex_colours(u32, u32, s32, s8, u8, u8, u8);
+void  set_vertex_colours(uintptr_t, u32, s32, s8, u8, u8, u8);
 void  find_vtx_and_set_colours(uintptr_t, s8, u8, u8, u8);
 void  subtract_scaled_vector(Vec3f, f32, Vec3f);
 

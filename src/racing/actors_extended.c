@@ -606,12 +606,12 @@ s32 use_green_shell_item(Player *player) {
 
     // rotate to match player orientation
     mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
-    
+
     // move to player position
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
-    
+
     // spawn the shell
     actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_GREEN_SHELL);
     if (actorIndex < 0) {
@@ -848,8 +848,8 @@ s32 use_banana_item(Player *player) {
 
 /**
  * Strikes players with thunder
- * 
- * @param Activating player (not to be struck) 
+ *
+ * @param Activating player (not to be struck)
  */
 void use_thunder_item(Player *player) {
     s32 index;

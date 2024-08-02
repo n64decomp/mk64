@@ -1157,7 +1157,7 @@ void spawn_course_actors(void) {
 /**
  * @brief Loads actor textures, course specific actor textures.
  * Calls to init_course_vehicles and place_course_actors
- * 
+ *
  */
 void init_actors_and_load_textures(void) {
     set_segment_base_addr(3, (void *) gNextFreeMemoryAddress);
@@ -1818,18 +1818,18 @@ void destroy_destructable_actor(struct Actor *actor) {
     Player *player;
 
     switch (actor->type) {
-    	case ACTOR_BANANA:
-        	banana = (struct BananaActor *)actor;
-        	switch (banana->state) {
-        		case FIRST_BANANA_BUNCH_BANANA:
-        		case BANANA_BUNCH_BANANA:
-            		destroy_banana_in_banana_bunch(banana);
-            		break;
-        		case HELD_BANANA:
-            		player = &gPlayers[banana->playerId];
-            		player->soundEffects &= ~0x00040000;
-            		/* fallthrough */
-        		case BANANA_ON_GROUND:
+        case ACTOR_BANANA:
+            banana = (struct BananaActor *)actor;
+            switch (banana->state) {
+                case FIRST_BANANA_BUNCH_BANANA:
+                case BANANA_BUNCH_BANANA:
+                    destroy_banana_in_banana_bunch(banana);
+                    break;
+                case HELD_BANANA:
+                    player = &gPlayers[banana->playerId];
+                    player->soundEffects &= ~0x00040000;
+                    /* fallthrough */
+                case BANANA_ON_GROUND:
             		banana->flags = -0x8000;
             		banana->unk_04 = 0x003C;
             		banana->state = DESTROYED_BANANA;
