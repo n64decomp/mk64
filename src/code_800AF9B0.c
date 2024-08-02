@@ -91,7 +91,7 @@ void func_800AFC54(Vtx *arg0, s32 arg1, s32 arg2, s32 arg3, s16 arg4[3]) {
 
     a1 = &arg0[arg1];
     a2 = &arg0[arg2];
-    a3 = &arg0[arg3];   
+    a3 = &arg0[arg3];
 
     saved1 = a2->v.ob[0];
     saved2 = a2->v.ob[1];
@@ -154,7 +154,7 @@ void func_800AFF58(Vtx *arg0) {
     UNUSED u32 pad88[26];
     s32 i, j;
     s16 sp40[12][3];
-    
+
     for (i = 0, j = 0; i < ARRAY_COUNT(sp40); i++, j += 4) {
         func_800AFC54(&arg0[j], 1, 2, 0, sp40[i]);
     }

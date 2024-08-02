@@ -1,7 +1,7 @@
 #ifndef CODE_80086E70_H
 #define CODE_80086E70_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 #include "camera.h"
 #include "objects.h"
 
@@ -10,7 +10,7 @@ void func_80086EAC(s32, s32, s16);
 void func_80086EF0(s32);
 void func_80086F10(s32, s32, SplineData*);
 void func_80086F60(s32);
-s32  func_80086FA4(s32);
+bool  func_80086FA4(s32);
 void func_80086FD4(s32);
 void func_8008701C(s32, s32);
 s32  func_80087060(s32, s32);
@@ -40,11 +40,11 @@ void func_80087844(s32);
 f32  func_8008786C(f32, f32, f32, f32, f32);
 s32  func_8008789C(s32, s32);
 s32  func_80087954(s32, s32);
-s32  func_80087A0C(s32, s16, s16, s16, s16);
+bool  func_80087A0C(s32, s16, s16, s16, s16);
 s32  func_80087B84(s32, f32, f32);
 s32  func_80087C48(s32, f32, f32, s32);
 s32  func_80087D24(s32, f32, f32, f32);
-s32  func_80087E08(s32, f32, f32, f32, s16, s32);
+bool  func_80087E08(s32, f32, f32, f32, s16, s32);
 s32  func_80087F14(s32, f32, f32, f32, s16, s32);
 void func_80088038(s32, f32, u16);
 void func_800880DC(void);
@@ -68,14 +68,14 @@ bool  is_within_horizontal_distance_of_player(s32, Player*, f32);
 s32  are_between_distance_2d(s32, Player*, f32, f32);
 bool  is_within_distance_to_player(s32, Player*, f32);
 bool  is_within_horizontal_distance_to_camera(s32, Camera*, f32);
-s32  is_within_bounds_to_camera(s32, Camera*, f32, f32);
+UNUSED bool is_within_bounds_to_camera(s32, Camera*, f32, f32);
 bool  is_within_distance_to_camera(s32, Camera*, f32);
 bool  has_collided_horizontally_with_player(s32, Player*);
 bool  has_collided_with_player(s32, Player*);
 bool  has_collided_with_player_1d(s32, Player*, f32);
 bool  has_collided_with_player_and_within_height(s32, Player*, f32);
 f32  func_80088F54(s32, Player*);
-s32  func_80088F94(s32, Player*, f32);
+UNUSED bool  func_80088F94(s32, Player*, f32);
 void func_80088FF0(Player*);
 void func_8008900C(Player*);
 void func_80089020(s32, f32*);
@@ -93,7 +93,7 @@ s32  func_80089E18(s32);
 s32  func_80089F24(s32);
 s32  func_8008A060(s32, Camera*, u16);
 s32  func_8008A0B4(s32, Player*, Camera*, u16);
-s32  is_object_visible_on_camera(s32, Camera*, u16);
+bool  is_object_visible_on_camera(s32, Camera*, u16);
 void func_8008A1D0(s32, s32, s32, s32);
 void func_8008A2CC(s32, s32, u16);
 s32  func_8008A364(s32, s32, u16, s32);

@@ -585,10 +585,10 @@ void func_800887C0(s32 objectIndex) {
 
 /**
  * @brief Returns the distance between the object and the player.
- * 
- * @param objectIndex 
- * @param player 
- * @return UNUSED 
+ *
+ * @param objectIndex
+ * @param player
+ * @return UNUSED
  */
 UNUSED s32 get_horizontal_distance_to_player(s32 objectIndex, Player *player) {
     s32 x;
@@ -601,10 +601,10 @@ UNUSED s32 get_horizontal_distance_to_player(s32 objectIndex, Player *player) {
 
 /**
  * @brief Returns the distance between the object and the player.
- * 
- * @param objectIndex 
- * @param player 
- * @return UNUSED 
+ *
+ * @param objectIndex
+ * @param player
+ * @return UNUSED
  */
 UNUSED s32 get_distance_to_player(s32 objectIndex, Player *player) {
     s32 x;
@@ -619,10 +619,10 @@ UNUSED s32 get_distance_to_player(s32 objectIndex, Player *player) {
 
 /**
  * @brief Returns the distance between the object and the camera.
- * 
- * @param objectIndex 
- * @param camera 
- * @return UNUSED 
+ *
+ * @param objectIndex
+ * @param camera
+ * @return UNUSED
  */
 u32 get_horizontal_distance_to_camera(s32 objectIndex, Camera *camera) {
     s32 x;
@@ -635,10 +635,10 @@ u32 get_horizontal_distance_to_camera(s32 objectIndex, Camera *camera) {
 
 /**
  * @brief Returns the distance between the object and the camera.
- * 
- * @param objectIndex 
- * @param camera 
- * @return UNUSED 
+ *
+ * @param objectIndex
+ * @param camera
+ * @return UNUSED
  */
 UNUSED s32 get_distance_to_camera(s32 objectIndex, Camera *camera) {
     s32 x;
@@ -653,12 +653,12 @@ UNUSED s32 get_distance_to_camera(s32 objectIndex, Camera *camera) {
 
 /**
  * @brief Returns if the object is closer than the distance to the player.
- * 
- * @param objectIndex 
- * @param player 
+ *
+ * @param objectIndex
+ * @param player
  * @param distance
- * @return true 
- * @return false 
+ * @return true
+ * @return false
  */
 bool is_within_horizontal_distance_of_player(s32 objectIndex, Player *player, f32 distance) {
     f32 x;
@@ -676,13 +676,13 @@ bool is_within_horizontal_distance_of_player(s32 objectIndex, Player *player, f3
 
 /**
  * @brief Returns if the object is between the distance_min and distance_max to the player.
- * 
- * @param objectIndex 
- * @param player 
- * @param distance_min 
- * @param distance_max 
- * @return true 
- * @return false 
+ *
+ * @param objectIndex
+ * @param player
+ * @param distance_min
+ * @param distance_max
+ * @return true
+ * @return false
  */
 bool is_in_bounds_to_player(s32 objectIndex, Player *player, f32 distance_min, f32 distance_max) {
     f32 x;
@@ -702,12 +702,12 @@ bool is_in_bounds_to_player(s32 objectIndex, Player *player, f32 distance_min, f
 
 /**
  * @brief Returns if the object is closer than the distance to the player.
- * 
- * @param objectIndex 
- * @param player 
- * @param distance 
- * @return true 
- * @return false 
+ *
+ * @param objectIndex
+ * @param player
+ * @param distance
+ * @return true
+ * @return false
  */
 bool is_within_distance_to_player(s32 objectIndex, Player *player, f32 distance) {
     f32 x;
@@ -727,12 +727,12 @@ bool is_within_distance_to_player(s32 objectIndex, Player *player, f32 distance)
 
 /**
  * @brief Returns if the object is between the distance_min and distance_max to the camera.
- * 
- * @param objectIndex 
- * @param camera 
- * @param distance 
- * @return true 
- * @return false 
+ *
+ * @param objectIndex
+ * @param camera
+ * @param distance
+ * @return true
+ * @return false
  */
 bool is_within_horizontal_distance_to_camera(s32 objectIndex, Camera *camera, f32 distance) {
     f32 x;
@@ -750,12 +750,12 @@ bool is_within_horizontal_distance_to_camera(s32 objectIndex, Camera *camera, f3
 
 /**
  * @brief Returns if the object is between the distance_min and distance_max to the camera.
- * 
- * @param objectIndex 
- * @param camera 
- * @param distance_min 
- * @param distance_max 
- * @return UNUSED 
+ *
+ * @param objectIndex
+ * @param camera
+ * @param distance_min
+ * @param distance_max
+ * @return UNUSED
  */
 UNUSED bool is_within_bounds_to_camera(s32 objectIndex, Camera *camera, f32 distance_min, f32 distance_max) {
     f32 x;
@@ -775,11 +775,11 @@ UNUSED bool is_within_bounds_to_camera(s32 objectIndex, Camera *camera, f32 dist
 
 /**
  * @brief Returns if the object is closer than the distance to the camera.
- * 
- * @param objectIndex 
- * @param camera 
- * @param distance 
- * @return UNUSED 
+ *
+ * @param objectIndex
+ * @param camera
+ * @param distance
+ * @return UNUSED
  */
 UNUSED bool is_within_distance_to_camera(s32 objectIndex, Camera *camera, f32 distance) {
     f32 x;
@@ -799,11 +799,11 @@ UNUSED bool is_within_distance_to_camera(s32 objectIndex, Camera *camera, f32 di
 
 /**
  * @brief Returns if the object collided with the player.
- * 
- * @param objectIndex 
- * @param player 
- * @return true 
- * @return false 
+ *
+ * @param objectIndex
+ * @param player
+ * @return true
+ * @return false
  */
 bool has_collided_horizontally_with_player(s32 objectIndex, Player *player) {
     f32 x;
@@ -823,11 +823,11 @@ bool has_collided_horizontally_with_player(s32 objectIndex, Player *player) {
 
 /**
  * @brief Returns if the object collided with the player.
- * 
- * @param objectIndex 
- * @param player 
- * @return true 
- * @return false 
+ *
+ * @param objectIndex
+ * @param player
+ * @return true
+ * @return false
  */
 bool has_collided_with_player(s32 objectIndex, Player *player) {
     f32 x;
@@ -849,11 +849,11 @@ bool has_collided_with_player(s32 objectIndex, Player *player) {
 
 /**
  * @brief Returns if the object collided with the player.
- * 
- * @param objectIndex 
- * @param player 
- * @param distance 
- * @return UNUSED 
+ *
+ * @param objectIndex
+ * @param player
+ * @param distance
+ * @return UNUSED
  */
 UNUSED bool has_collided_with_player_1d(s32 objectIndex, Player *player, f32 distance) {
     f32 x;
@@ -869,12 +869,12 @@ UNUSED bool has_collided_with_player_1d(s32 objectIndex, Player *player, f32 dis
 
 /**
  * @brief Returns if the object collided with the player and is closer than the distance in the y axis.
- * 
- * @param objectIndex 
- * @param player 
- * @param distance_y 
- * @return true 
- * @return false 
+ *
+ * @param objectIndex
+ * @param player
+ * @param distance_y
+ * @return true
+ * @return false
  */
 bool has_collided_with_player_and_within_height(s32 objectIndex, Player *player, f32 distance_y) {
     f32 x;
@@ -1238,7 +1238,7 @@ s32 func_8008A060(s32 objectIndex, Camera *camera, u16 arg2) {
 
     var_v1 = 0;
     temp_t3 = (((u16)camera->rot[1] - gObjectList[objectIndex].direction_angle[1]) + (arg2 >> 1));
-    
+
     //! @warning Always true
     if ((temp_t3 >= 0) && (arg2 >= temp_t3)) {
         var_v1 = 1;

@@ -113,7 +113,7 @@ s32 D_80165754;
 ThwompSpawn *gThowmpSpawnList;
 
 Vec4s D_80165760;
-UNUSED s16 D_80165768; 
+UNUSED s16 D_80165768;
 s8 D_8016576A;
 Vec4s D_80165770;
 UNUSED s32 D_80165778;
@@ -1233,7 +1233,7 @@ void func_8005995C(void) {
     for (i = 0; i < 4; i++) {
         if ((D_80165890 != 0) && (player->type & PLAYER_INVISIBLE_OR_BOMB)) {
             player->currentItemCopy = ITEM_MUSHROOM;
-            
+
             playerHUD[i].unk_75 = 2;
         }
         if ((player->type & PLAYER_INVISIBLE_OR_BOMB) && (player->currentItemCopy == ITEM_NONE)) {
@@ -1311,13 +1311,13 @@ void func_80059C50(void) {
 }
 
 void func_80059D00(void) {
-    
+
     func_8005A99C();
     func_8005A3C0();
     func_8005A380();
 
     if (D_801657AE == 0) {
-        switch (gScreenModeSelection) {  
+        switch (gScreenModeSelection) {
         case SCREEN_MODE_1P:
             randomize_seed_from_controller(PLAYER_ONE);
             if (D_8018D214 == false) {
@@ -2862,7 +2862,7 @@ void func_8005D898(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UN
 
         if (player->unk_22A == 1) {
             func_8005D800(&player->unk_258[10 + arg1], 0xFFFF00, 0x70);
-  
+
         }
 
         if (player->unk_22A >= 2) {
@@ -4197,7 +4197,7 @@ void func_80062C74(Player *player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3) {
 
 void func_80062F98(Player* player, s16 arg1, s8 arg2, UNUSED s8 arg3) {
     f32 temp_f0;
-    
+
     temp_f0 = player->unk_258[10 + arg1].unk_018 / 10.0f;
     ++player->unk_258[10 + arg1].unk_01E;
     player->unk_258[10 + arg1].unk_000[1] += temp_f0;
@@ -4443,7 +4443,7 @@ void func_80063D58(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     } else {
         player->unk_258[10 + arg1].unk_000[1] += 0.4;
     }
-    
+
     if (player->unk_258[10 + arg1].unk_03E <= 0) {
         player->unk_258[10 + arg1].unk_03E = 0;
     }
@@ -4513,7 +4513,7 @@ void func_800643A8(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         player->unk_258[10 + arg1].unk_01E = 0;
         player->unk_258[10 + arg1].unk_012 = 0;
     }
-    
+
     player->unk_258[10 + arg1].unk_00C += 0.2;
     player->unk_258[10 + arg1].unk_03E -= 8;
     if (player->unk_258[10 + arg1].unk_03E <= 0) {
@@ -4598,11 +4598,11 @@ void func_800648E4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     player->unk_258[30 + arg1].unk_00C -=  0.06;
     player->unk_258[30 + arg1].unk_000[1] += 0.1;
     player->unk_258[30 + arg1].unk_03E -= 12;
-    
+
     if (player->unk_258[30 + arg1].unk_03E <= 0) {
         player->unk_258[30 + arg1].unk_03E = 0;
     }
-    
+
     if (player->unk_258[30 + arg1].unk_01E == 10) {
         player->unk_258[30 + arg1].unk_01C = 0;
         player->unk_258[30 + arg1].unk_01E = 0;
@@ -4624,7 +4624,7 @@ void func_80064988(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
 void func_800649F4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     f32 temp;
     temp = player->unk_258[30 + arg1].unk_018;
-   
+
     player->unk_258[30 + arg1].unk_000[2] = player->unk_21C + (((-temp) * player->unk_258[30 + arg1].unk_01E) * coss(player->unk_258[30 + arg1].unk_020));
     player->unk_258[30 + arg1].unk_000[0] = player->unk_218 + (((-temp) * player->unk_258[30 + arg1].unk_01E) * sins(player->unk_258[30 + arg1].unk_020));
     player->unk_258[30 + arg1].unk_000[1] = player->pos[1] + player->unk_258[30 + arg1].unk_014;
@@ -4636,7 +4636,7 @@ void func_800649F4(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         player->unk_258[30 + arg1].unk_01C = 0;
         player->unk_258[30 + arg1].unk_012 = 0;
     }
-    
+
     if (player->unk_258[30 + arg1].unk_01E >= 9) {
         player->unk_258[30 + arg1].unk_03E -= 0x10;
         if (player->unk_258[30 + arg1].unk_03E <= 0) {
@@ -4659,7 +4659,7 @@ void func_80064B30(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
         player->unk_258[30 + arg1].unk_01C = 0;
         player->unk_258[30 + arg1].unk_012 = 0;
     }
-    
+
     player->unk_258[30 + arg1].unk_038 += 1820;
     if (player->unk_258[30 + arg1].unk_01E >= 6) {
         player->unk_258[30 + arg1].unk_03E -= 16;
@@ -4676,7 +4676,7 @@ void func_80064C74(Player* player, s16 arg1, UNUSED s8 arg2, UNUSED s8 arg3) {
     } else {
         player->unk_258[30 + arg1].unk_020 -= 2184;
     }
-    
+
     player->unk_258[30 + arg1].unk_000[2] = player->pos[2] + (coss(player->unk_258[30 + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
     player->unk_258[30 + arg1].unk_000[0] = player->pos[0] + (sins(player->unk_258[30 + arg1].unk_020 - player->rotation[1] - player->unk_0C0) * 5.0f);
     player->unk_258[30 + arg1].unk_000[1] = player->pos[1] - 1.0f;
@@ -4700,14 +4700,14 @@ void func_80064DEC(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 
     player->unk_258[20 + arg3].unk_000[1] = player->pos[1];
     ++player->unk_258[20 + arg3].unk_01E;
-    
+
     if (player->unk_258[20 + arg3].unk_01E == 9) {
         player->unk_0B6 &= ~0x0040;
         player->unk_258[20 + arg3].unk_01C = 0;
         player->unk_258[20 + arg3].unk_01E = 0;
         player->unk_258[20 + arg3].unk_012 = 0;
     }
-    
+
     player->unk_258[20 + arg3].unk_00C += 0.8;
     if (player->unk_258[20 + arg3].unk_00C >= (f64) 2.5) {
         player->unk_258[20 + arg3].unk_00C = 2.5f;
@@ -4735,7 +4735,7 @@ void func_80064EA4(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
 void func_80064F88(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     ++player->unk_258[20 + arg3].unk_01E;
     player->unk_258[20 + arg3].unk_00C += 0.15;
-    
+
     if (1.2 <= player->unk_258[20 + arg3].unk_00C) {
         player->unk_258[20 + arg3].unk_00C = 1.2f;
     }
@@ -4755,7 +4755,7 @@ void func_80065030(Player* player, UNUSED s8 arg1, UNUSED s8 arg2, s8 arg3) {
     if (player->unk_258[20 + arg3].unk_00C >= (f64) 1.5) {
         player->unk_258[20 + arg3].unk_00C = 1.5f;
     }
-    
+
     if (player->unk_258[20 + arg3].unk_01E >= 12) {
         player->unk_0B6 &= ~0x0100;
         player->unk_258[20 + arg3].unk_01C = 0;
@@ -5106,6 +5106,7 @@ void func_80066BAC(Player *player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     UNUSED s32 stackPadding;
 
     if ((player->unk_258[arg2].unk_01C == 1) && (player->unk_258[arg2].unk_038 != 0x00FF)) {
+
         if (player->collision.surfaceDistance[2] >= 300.0f) {
             spDC[1] = player->pos[1] + 5.0f;
         } else {
@@ -5790,7 +5791,7 @@ void render_battle_balloon(Player *player, s8 arg1, s16 arg2, s8 arg3) {
     gDPSetTextureLUT(gDisplayListHead++, G_TT_RGBA16);
 
     func_8004B614(primRed, primGreen, primBlue, envRed, envGreen, envBlue, 0x000000D8);
-    
+
     gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D4BC, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, gBalloonVertexPlane1, 4, 0);
@@ -6056,39 +6057,39 @@ void func_8006C9B8(Player *player, s16 arg1, s8 arg2, s8 arg3) {
             case 1:
             func_800644E8(player, arg1, arg2, arg3);
             break;
-            
+
             case 2:
             func_800649F4(player, arg1, arg2, arg3);
             break;
-            
+
             case 3:
             func_80064C74(player, arg1, arg2, arg3);
             break;
-            
+
             case 4:
             func_800647C8(player, arg1, arg2, arg3);
             break;
-            
+
             case 5:
             func_80064B30(player, arg1, arg2, arg3);
             break;
-            
+
             case 6:
             func_800648E4(player, arg1, arg2, arg3);
             break;
-            
+
             case 7:
             func_80064988(player, arg1, arg2, arg3);
             break;
-            
+
             case 8:
             func_80064C74(player, arg1, arg2, arg3);
             break;
-            
+
             case 9:
             func_80064664(player, arg1, arg2, arg3);
             break;
-            
+
             default:
             break;
         }
@@ -6175,7 +6176,7 @@ void func_8006CEC0(Player *arg0, s16 arg1, s8 arg2, s8 arg3) {
         } else if (((arg0->effects & 0x40000000) == 0x40000000) && (arg0->unk_0B0 < 0x32))  {
             func_80061094(arg0, arg1, sp20, arg2, arg3);
             return;
-        } else if ((arg0->type & 0x4000) == 0x4000)  { 
+        } else if ((arg0->type & 0x4000) == 0x4000)  {
             if ((arg0->unk_0DE & 8) == 8)  {
                 func_80060F50(arg0, arg1, sp20, arg2, arg3);
                 return;
@@ -6450,7 +6451,7 @@ void func_8006DD3C(Player* arg0, s8 arg1, s8 arg2) {
 }
 
 void func_8006E058(void) {
-    switch (gActiveScreenMode) { 
+    switch (gActiveScreenMode) {
     case SCREEN_MODE_1P:
         switch (gModeSelection) {
         case GRAND_PRIX:
@@ -6470,7 +6471,7 @@ void func_8006E058(void) {
             if ((gPlayerTwo->type & 0x100) == 0x100) {
                 func_8006E420(gPlayerTwo, 1, 0);
             }
-           
+
             if ((gPlayerThree->type & 0x100) == 0x100) {
                 func_8006E420(gPlayerThree, 2, 0);
                 break;
@@ -6481,7 +6482,7 @@ void func_8006E058(void) {
         case BATTLE:
             func_8006E420(gPlayerOne, 0, 0);
             func_8006E420(gPlayerTwo, 1, 0);
-       
+
             if (gPlayerCountSelection1 >= 3) {
                 func_8006E420(gPlayerThree, 2, 0);
             }
@@ -6497,7 +6498,7 @@ void func_8006E058(void) {
         break;
     case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
     case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-        switch (gModeSelection) {     
+        switch (gModeSelection) {
         case GRAND_PRIX:
             func_8006E420(gPlayerOne, 0, 0);
             func_8006E420(gPlayerTwo, 1, 0);
@@ -6509,7 +6510,7 @@ void func_8006E058(void) {
             func_8006E420(gPlayerEight, 7, 0);
 
             break;
-        case VERSUS:           
+        case VERSUS:
         case BATTLE:
             func_8006E420(gPlayerOne, 0, 0);
             func_8006E420(gPlayerTwo, 1, 0);
@@ -6517,7 +6518,7 @@ void func_8006E058(void) {
             break;
         case TIME_TRIALS:
             func_8006E420(gPlayerOne, 0, 0);
-            
+
             if ((gPlayerTwo->type & 0x8000) == 0x8000) {
                 func_8006E420(gPlayerTwo, 1, 0);
                 break;
@@ -6549,7 +6550,7 @@ void func_8006E420(Player* player, s8 arg1, s8 arg2) {
         if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
             func_8006D194(player, arg1, arg2);
         }
-   
+
         for (temp_s0 = 0; temp_s0 < 10; ++temp_s0) {
             func_8006CEC0(player, temp_s0, arg1, arg2);
             if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) || (gGamestate == ENDING)) {

@@ -873,7 +873,7 @@ void game_state_handler(void) {
 		(gControllerOne->button & Z_TRIG) &&
 		(gControllerOne->button & A_BUTTON)) {
 			gGamestateNext = CREDITS_SEQUENCE;
-	} else if ((gControllerOne->button & L_TRIG) &&	
+	} else if ((gControllerOne->button & L_TRIG) &&
 		(gControllerOne->button & R_TRIG) &&
 		(gControllerOne->button & Z_TRIG) &&
 		(gControllerOne->button & B_BUTTON)) {
@@ -1148,7 +1148,7 @@ void update_gamestate(void) {
             gCurrentlyLoadedCourseId = COURSE_NULL;
             break;
         case RACING:
-            /** 
+            /**
              * @bug Reloading this segment makes random_u16() deterministic for player spawn order.
              * In laymens terms, random_u16() outputs the same value every time.
              */

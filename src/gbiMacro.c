@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
-#include "PR/gu.h"
+#include <PR/gu.h>
 #include "main.h"
 #include <mk64.h>
 

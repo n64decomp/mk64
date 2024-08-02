@@ -1,7 +1,7 @@
 #ifndef CODE_80057C60_H
 #define CODE_80057C60_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 #include "objects.h"
 #include "camera.h"
 
