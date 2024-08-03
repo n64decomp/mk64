@@ -6257,27 +6257,27 @@ void func_8006D194(Player *player, s8 arg1, s8 arg2) {
     }
 }
 
-void func_8006D474(Player *player, s8 playerId, s8 screenPlayerId) {
+void func_8006D474(Player *player, s8 playerId, s8 screenId) {
     s16 var_s2;
-    if ((player->unk_002 & (8 << (screenPlayerId * 4))) == (8 << (screenPlayerId * 4))) {
+    if ((player->unk_002 & (8 << (screenId * 4))) == (8 << (screenId * 4))) {
         for (var_s2 = 0; var_s2 < 10; var_s2++) {
             switch (player->unk_258[var_s2].unk_012) {
             case 1:
                 if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                    if (screenPlayerId == playerId) {
-                        func_8006538C(player, playerId, var_s2, screenPlayerId);
+                    if (screenId == playerId) {
+                        func_8006538C(player, playerId, var_s2, screenId);
                     }
                 } else {
-                    func_8006538C(player, playerId, var_s2, screenPlayerId);
+                    func_8006538C(player, playerId, var_s2, screenId);
                 }
                 break;
             case 6:
                 if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                    if (screenPlayerId == playerId) {
-                        func_80066BAC(player, playerId, var_s2, screenPlayerId);
+                    if (screenId == playerId) {
+                        func_80066BAC(player, playerId, var_s2, screenId);
                     }
-                } else if (screenPlayerId == playerId) {
-                    func_80066BAC(player, playerId, var_s2, screenPlayerId);
+                } else if (screenId == playerId) {
+                    func_80066BAC(player, playerId, var_s2, screenId);
                 }
                 break;
             }
@@ -6285,69 +6285,69 @@ void func_8006D474(Player *player, s8 playerId, s8 screenPlayerId) {
             case 1:
             case 9:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_800691B8(player, playerId, var_s2, screenPlayerId);
-                } else if (screenPlayerId == playerId) {
-                    func_800691B8(player, playerId, var_s2, screenPlayerId);
+                    func_800691B8(player, playerId, var_s2, screenId);
+                } else if (screenId == playerId) {
+                    func_800691B8(player, playerId, var_s2, screenId);
                 }
                 break;
             case 2:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_800696CC(player, playerId, var_s2, screenPlayerId, player->unk_258[var_s2 + 30].unk_00C);
-                } else if (screenPlayerId == playerId) {
-                    func_800696CC(player, playerId, var_s2, screenPlayerId, player->unk_258[var_s2 + 30].unk_00C);
+                    func_800696CC(player, playerId, var_s2, screenId, player->unk_258[var_s2 + 30].unk_00C);
+                } else if (screenId == playerId) {
+                    func_800696CC(player, playerId, var_s2, screenId, player->unk_258[var_s2 + 30].unk_00C);
                 }
                 break;
             case 3:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_80067280(player, playerId, var_s2, screenPlayerId);
-                } else if (screenPlayerId == playerId) {
-                    func_80067280(player, (s32) playerId, var_s2, screenPlayerId);
+                    func_80067280(player, playerId, var_s2, screenId);
+                } else if (screenId == playerId) {
+                    func_80067280(player, (s32) playerId, var_s2, screenId);
                 }
                 break;
             case 4:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_80069444(player, playerId, var_s2, screenPlayerId);
-                } else if (screenPlayerId == playerId) {
-                    func_80069444(player, playerId, var_s2, screenPlayerId);
+                    func_80069444(player, playerId, var_s2, screenId);
+                } else if (screenId == playerId) {
+                    func_80069444(player, playerId, var_s2, screenId);
                 }
                 break;
             case 5:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_80069938(player, playerId, var_s2, screenPlayerId);
-                } else if (screenPlayerId == playerId) {
-                    func_80069938(player, playerId, var_s2, screenPlayerId);
+                    func_80069938(player, playerId, var_s2, screenId);
+                } else if (screenId == playerId) {
+                    func_80069938(player, playerId, var_s2, screenId);
                 }
                 break;
             case 6:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_80069BA8(player, playerId, var_s2, screenPlayerId);
-                } else if (screenPlayerId == playerId) {
-                    func_80069BA8(player, playerId, var_s2, screenPlayerId);
+                    func_80069BA8(player, playerId, var_s2, screenId);
+                } else if (screenId == playerId) {
+                    func_80069BA8(player, playerId, var_s2, screenId);
                 }
                 break;
             case 7:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_80069DB8(player, playerId, var_s2, screenPlayerId);
-                } else if (screenPlayerId == playerId) {
-                    func_80069DB8(player, playerId, var_s2, screenPlayerId);
+                    func_80069DB8(player, playerId, var_s2, screenId);
+                } else if (screenId == playerId) {
+                    func_80069DB8(player, playerId, var_s2, screenId);
                 }
                 break;
             case 8:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_80067604(player, playerId, var_s2, screenPlayerId);
-                } else if (screenPlayerId == playerId) {
-                    func_80067604(player, playerId, var_s2, screenPlayerId);
+                    func_80067604(player, playerId, var_s2, screenId);
+                } else if (screenId == playerId) {
+                    func_80067604(player, playerId, var_s2, screenId);
                 }
                 break;
             }
             switch (player->unk_258[var_s2 + 10].unk_012) {
             case 1:
                 if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                    if (screenPlayerId == playerId) {
-                        func_80065AB0(player, playerId, var_s2, screenPlayerId);
+                    if (screenId == playerId) {
+                        func_80065AB0(player, playerId, var_s2, screenId);
                     }
                 } else {
-                    func_80065AB0(player, playerId, var_s2, screenPlayerId);
+                    func_80065AB0(player, playerId, var_s2, screenId);
                 }
                 break;
             case 2:
@@ -6355,36 +6355,36 @@ void func_8006D474(Player *player, s8 playerId, s8 screenPlayerId) {
             case 4:
             case 5:
                 if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                    if (screenPlayerId == playerId) {
-                        func_80065F0C(player, playerId, var_s2, screenPlayerId);
+                    if (screenId == playerId) {
+                        func_80065F0C(player, playerId, var_s2, screenId);
                     }
                 } else {
-                    func_80065F0C(player, playerId, var_s2, screenPlayerId);
+                    func_80065F0C(player, playerId, var_s2, screenId);
                 }
                 break;
             case 9:
                 if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                    if (screenPlayerId == playerId) {
-                        func_800664E0(player, (s32) playerId, var_s2, screenPlayerId);
+                    if (screenId == playerId) {
+                        func_800664E0(player, (s32) playerId, var_s2, screenId);
                     }
                 } else {
-                    func_800664E0(player, (s32) playerId, var_s2, screenPlayerId);
+                    func_800664E0(player, (s32) playerId, var_s2, screenId);
                 }
                 break;
             case 11:
                 if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                    if (screenPlayerId == playerId) {
-                        func_8006A01C(player, playerId, var_s2, screenPlayerId);
+                    if (screenId == playerId) {
+                        func_8006A01C(player, playerId, var_s2, screenId);
                     }
-                } else if (screenPlayerId == playerId) {
-                    func_8006A01C(player, playerId, var_s2, screenPlayerId);
+                } else if (screenId == playerId) {
+                    func_8006A01C(player, playerId, var_s2, screenId);
                 }
                 break;
             }
         }
     }
-    if ((gModeSelection == BATTLE) && (player->unk_002 & (2 << (screenPlayerId * 4)))) {
-        func_8006BA94(player, playerId, screenPlayerId);
+    if ((gModeSelection == BATTLE) && (player->unk_002 & (2 << (screenId * 4)))) {
+        func_8006BA94(player, playerId, screenId);
     }
 }
 
@@ -6564,16 +6564,16 @@ void func_8006E420(Player* player, s8 arg1, s8 arg2) {
     }
 }
 
-void render_kart_particle_on_screen_one(Player* player, s8 playerId, s8 screenPlayerId) {
+void render_kart_particle_on_screen_one(Player* player, s8 playerId, s8 screenId) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
-            if (playerId == screenPlayerId) {
-                func_8006D474(player, playerId, screenPlayerId);
+            if (playerId == screenId) {
+                func_8006D474(player, playerId, screenId);
             }
         } else {
-            func_8006D474(player, playerId, screenPlayerId);
+            func_8006D474(player, playerId, screenId);
         }
-        func_8006DC54(player, playerId, screenPlayerId);
+        func_8006DC54(player, playerId, screenId);
     }
 }
 
