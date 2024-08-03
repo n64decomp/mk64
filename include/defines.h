@@ -109,10 +109,17 @@
 #define FOUR_PLAYERS_SELECTED 4
 #define SELECTED_PLAYER_DEFINES_TOTAL 5
 
-#define PLAYER_ONE 0
-#define PLAYER_TWO 1
-#define PLAYER_THREE 2
-#define PLAYER_FOUR 3
+enum PlayerId {
+    PLAYER_NONE = -1,
+    PLAYER_ONE = 0,
+    PLAYER_TWO = 1,
+    PLAYER_THREE = 2,
+    PLAYER_FOUR = 3,
+    PLAYER_FIVE = 4,
+    PLAYER_SIX = 5,
+    PLAYER_SEVEN = 6,
+    PLAYER_EIGHT = 7
+};
 
 #define NUM_PLAYERS 8
 

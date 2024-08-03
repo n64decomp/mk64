@@ -6257,27 +6257,27 @@ void func_8006D194(Player *player, s8 arg1, s8 arg2) {
     }
 }
 
-void func_8006D474(Player *player, s8 arg1, s8 arg2) {
+void func_8006D474(Player *player, s8 playerId, s8 screenPlayerId) {
     s16 var_s2;
-    if ((player->unk_002 & (8 << (arg2 * 4))) == (8 << (arg2 * 4))) {
+    if ((player->unk_002 & (8 << (screenPlayerId * 4))) == (8 << (screenPlayerId * 4))) {
         for (var_s2 = 0; var_s2 < 10; var_s2++) {
             switch (player->unk_258[var_s2].unk_012) {
             case 1:
                 if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                    if (arg2 == arg1) {
-                        func_8006538C(player, arg1, var_s2, arg2);
+                    if (screenPlayerId == playerId) {
+                        func_8006538C(player, playerId, var_s2, screenPlayerId);
                     }
                 } else {
-                    func_8006538C(player, arg1, var_s2, arg2);
+                    func_8006538C(player, playerId, var_s2, screenPlayerId);
                 }
                 break;
             case 6:
                 if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                    if (arg2 == arg1) {
-                        func_80066BAC(player, arg1, var_s2, arg2);
+                    if (screenPlayerId == playerId) {
+                        func_80066BAC(player, playerId, var_s2, screenPlayerId);
                     }
-                } else if (arg2 == arg1) {
-                    func_80066BAC(player, arg1, var_s2, arg2);
+                } else if (screenPlayerId == playerId) {
+                    func_80066BAC(player, playerId, var_s2, screenPlayerId);
                 }
                 break;
             }
@@ -6285,69 +6285,69 @@ void func_8006D474(Player *player, s8 arg1, s8 arg2) {
             case 1:
             case 9:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_800691B8(player, arg1, var_s2, arg2);
-                } else if (arg2 == arg1) {
-                    func_800691B8(player, arg1, var_s2, arg2);
+                    func_800691B8(player, playerId, var_s2, screenPlayerId);
+                } else if (screenPlayerId == playerId) {
+                    func_800691B8(player, playerId, var_s2, screenPlayerId);
                 }
                 break;
             case 2:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_800696CC(player, arg1, var_s2, arg2, player->unk_258[var_s2 + 30].unk_00C);
-                } else if (arg2 == arg1) {
-                    func_800696CC(player, arg1, var_s2, arg2, player->unk_258[var_s2 + 30].unk_00C);
+                    func_800696CC(player, playerId, var_s2, screenPlayerId, player->unk_258[var_s2 + 30].unk_00C);
+                } else if (screenPlayerId == playerId) {
+                    func_800696CC(player, playerId, var_s2, screenPlayerId, player->unk_258[var_s2 + 30].unk_00C);
                 }
                 break;
             case 3:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_80067280(player, arg1, var_s2, arg2);
-                } else if (arg2 == arg1) {
-                    func_80067280(player, (s32) arg1, var_s2, arg2);
+                    func_80067280(player, playerId, var_s2, screenPlayerId);
+                } else if (screenPlayerId == playerId) {
+                    func_80067280(player, (s32) playerId, var_s2, screenPlayerId);
                 }
                 break;
             case 4:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_80069444(player, arg1, var_s2, arg2);
-                } else if (arg2 == arg1) {
-                    func_80069444(player, arg1, var_s2, arg2);
+                    func_80069444(player, playerId, var_s2, screenPlayerId);
+                } else if (screenPlayerId == playerId) {
+                    func_80069444(player, playerId, var_s2, screenPlayerId);
                 }
                 break;
             case 5:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_80069938(player, arg1, var_s2, arg2);
-                } else if (arg2 == arg1) {
-                    func_80069938(player, arg1, var_s2, arg2);
+                    func_80069938(player, playerId, var_s2, screenPlayerId);
+                } else if (screenPlayerId == playerId) {
+                    func_80069938(player, playerId, var_s2, screenPlayerId);
                 }
                 break;
             case 6:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_80069BA8(player, arg1, var_s2, arg2);
-                } else if (arg2 == arg1) {
-                    func_80069BA8(player, arg1, var_s2, arg2);
+                    func_80069BA8(player, playerId, var_s2, screenPlayerId);
+                } else if (screenPlayerId == playerId) {
+                    func_80069BA8(player, playerId, var_s2, screenPlayerId);
                 }
                 break;
             case 7:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_80069DB8(player, arg1, var_s2, arg2);
-                } else if (arg2 == arg1) {
-                    func_80069DB8(player, arg1, var_s2, arg2);
+                    func_80069DB8(player, playerId, var_s2, screenPlayerId);
+                } else if (screenPlayerId == playerId) {
+                    func_80069DB8(player, playerId, var_s2, screenPlayerId);
                 }
                 break;
             case 8:
                 if (gActiveScreenMode == SCREEN_MODE_1P) {
-                    func_80067604(player, arg1, var_s2, arg2);
-                } else if (arg2 == arg1) {
-                    func_80067604(player, arg1, var_s2, arg2);
+                    func_80067604(player, playerId, var_s2, screenPlayerId);
+                } else if (screenPlayerId == playerId) {
+                    func_80067604(player, playerId, var_s2, screenPlayerId);
                 }
                 break;
             }
             switch (player->unk_258[var_s2 + 10].unk_012) {
             case 1:
                 if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                    if (arg2 == arg1) {
-                        func_80065AB0(player, arg1, var_s2, arg2);
+                    if (screenPlayerId == playerId) {
+                        func_80065AB0(player, playerId, var_s2, screenPlayerId);
                     }
                 } else {
-                    func_80065AB0(player, arg1, var_s2, arg2);
+                    func_80065AB0(player, playerId, var_s2, screenPlayerId);
                 }
                 break;
             case 2:
@@ -6355,36 +6355,36 @@ void func_8006D474(Player *player, s8 arg1, s8 arg2) {
             case 4:
             case 5:
                 if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                    if (arg2 == arg1) {
-                        func_80065F0C(player, arg1, var_s2, arg2);
+                    if (screenPlayerId == playerId) {
+                        func_80065F0C(player, playerId, var_s2, screenPlayerId);
                     }
                 } else {
-                    func_80065F0C(player, arg1, var_s2, arg2);
+                    func_80065F0C(player, playerId, var_s2, screenPlayerId);
                 }
                 break;
             case 9:
                 if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                    if (arg2 == arg1) {
-                        func_800664E0(player, (s32) arg1, var_s2, arg2);
+                    if (screenPlayerId == playerId) {
+                        func_800664E0(player, (s32) playerId, var_s2, screenPlayerId);
                     }
                 } else {
-                    func_800664E0(player, (s32) arg1, var_s2, arg2);
+                    func_800664E0(player, (s32) playerId, var_s2, screenPlayerId);
                 }
                 break;
             case 11:
                 if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
-                    if (arg2 == arg1) {
-                        func_8006A01C(player, arg1, var_s2, arg2);
+                    if (screenPlayerId == playerId) {
+                        func_8006A01C(player, playerId, var_s2, screenPlayerId);
                     }
-                } else if (arg2 == arg1) {
-                    func_8006A01C(player, arg1, var_s2, arg2);
+                } else if (screenPlayerId == playerId) {
+                    func_8006A01C(player, playerId, var_s2, screenPlayerId);
                 }
                 break;
             }
         }
     }
-    if ((gModeSelection == BATTLE) && (player->unk_002 & (2 << (arg2 * 4)))) {
-        func_8006BA94(player, arg1, arg2);
+    if ((gModeSelection == BATTLE) && (player->unk_002 & (2 << (screenPlayerId * 4)))) {
+        func_8006BA94(player, playerId, screenPlayerId);
     }
 }
 
@@ -6564,7 +6564,20 @@ void func_8006E420(Player* player, s8 arg1, s8 arg2) {
     }
 }
 
-void func_8006E5AC(Player* player, s8 arg1, s8 arg2) {
+void render_kart_particle_on_screen_one(Player* player, s8 playerId, s8 screenPlayerId) {
+    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
+        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
+            if (playerId == screenPlayerId) {
+                func_8006D474(player, playerId, screenPlayerId);
+            }
+        } else {
+            func_8006D474(player, playerId, screenPlayerId);
+        }
+        func_8006DC54(player, playerId, screenPlayerId);
+    }
+}
+
+void render_kart_particle_on_screen_two(Player* player, s8 arg1, s8 arg2) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (arg1 == arg2) {
@@ -6577,7 +6590,7 @@ void func_8006E5AC(Player* player, s8 arg1, s8 arg2) {
     }
 }
 
-void func_8006E634(Player* player, s8 arg1, s8 arg2) {
+void render_kart_particle_on_screen_three(Player* player, s8 arg1, s8 arg2) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (arg1 == arg2) {
@@ -6590,20 +6603,7 @@ void func_8006E634(Player* player, s8 arg1, s8 arg2) {
     }
 }
 
-void func_8006E6BC(Player* player, s8 arg1, s8 arg2) {
-    if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
-        if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
-            if (arg1 == arg2) {
-                func_8006D474(player, arg1, arg2);
-            }
-        } else {
-            func_8006D474(player, arg1, arg2);
-        }
-        func_8006DC54(player, arg1, arg2);
-    }
-}
-
-void func_8006E744(Player* player, s8 arg1, s8 arg2) {
+void render_kart_particle_on_screen_four(Player* player, s8 arg1, s8 arg2) {
     if ((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
         if ((player->effects & BOO_EFFECT) == BOO_EFFECT) {
             if (arg1 == arg2) {
