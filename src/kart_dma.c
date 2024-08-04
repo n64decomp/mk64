@@ -1832,9 +1832,9 @@ void load_kart_texture_non_blocking(Player *player, s8 arg1, s8 arg2, s8 arg3, s
 
 void load_kart_palette(Player *player, s8 playerId, s8 screenId, s8 index) {
 #ifdef AVOID_UB
-    struct_D_802F1F80 *temp_s0 = &D_802F1F80[index][screenId][playerId];
+    struct_D_802F1F80 *temp_s0 = &gPlayerPalettesList[index][screenId][playerId];
 #else
-    struct_D_802F1F80 *temp_s0 = (struct_D_802F1F80 *) &D_802F1F80[index][screenId][playerId * 0x100];
+    struct_D_802F1F80 *temp_s0 = (struct_D_802F1F80 *) &gPlayerPalettesList[index][screenId][playerId * 0x100];
 #endif
     switch(gActiveScreenMode) {
         case SCREEN_MODE_1P:
@@ -1876,7 +1876,7 @@ void load_kart_palette(Player *player, s8 playerId, s8 screenId, s8 index) {
     }
 }
 
-void func_80027BDC(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {
+void load_player_data(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {
     osInvalDCache(vAddr, size);
 
     osPiStartDma(
@@ -1892,7 +1892,15 @@ void func_80027BDC(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 }
 
-void func_80027C74(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {
+/**
+ * @brief read data from ROM and write it to the given virtual address
+ * 
+ * @param player Player struct
+ * @param arg1 ROM offset
+ * @param vAddr Virtual address
+ * @param size Size of data to read
+ */
+void load_player_data_non_blocking(UNUSED Player *player, s32 arg1, void *vAddr, u16 size) {
     osInvalDCache(vAddr, size);
 
     osPiStartDma(

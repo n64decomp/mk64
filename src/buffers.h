@@ -73,15 +73,15 @@ extern union_D_802BFB80 D_802BFB80;
 extern struct_D_802DFB80 gEncodedKartTexture[][2][8];
 
 /**
- * It would be nice to define D_802F1F80 as "struct_D_802F1F80 D_802F1F80[2][4][8]".
- * But due to register allocation issues in load_kart_palette / func_80026B4C 
+ * It would be nice to define gPlayerPalettesList as "struct_D_802F1F80 gPlayerPalettesList[2][4][8]".
+ * But due to register allocation issues in load_kart_palette / update_wheel_palette 
  * we have to define it in a different manner to match those functions.
  * If AVOID_UB is defined, the struct is properly defined with their correct pointers.
  **/
 #ifdef AVOID_UB
-extern struct_D_802F1F80 D_802F1F80[2][4][8];
+extern struct_D_802F1F80 gPlayerPalettesList[2][4][8];
 #else
-extern u16 D_802F1F80[][4][0x100 * 8];
+extern u16 gPlayerPalettesList[][4][0x100 * 8];
 #endif
 extern u16 gZBuffer[SCREEN_WIDTH * SCREEN_HEIGHT];
 

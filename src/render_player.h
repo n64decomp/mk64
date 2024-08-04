@@ -60,7 +60,7 @@ void func_80025DE8(Player*, s8, s8, s8);
 void render_player_ice_reflection(Player*, s8, s8, s8);
 void render_player(Player*, s8, s8);
 void func_80026A48(Player*, s8);
-void func_80026B4C(Player*, s8, s8, s8);
+void update_wheel_palette(Player*, s8, s8, s8);
 void func_80030A34(Player*);
 void func_8002701C(void);
 void func_80027024(s32, s32, s32);
@@ -129,8 +129,8 @@ extern u8 **gKartWarioWheels0[];
 extern u8 **gKartWarioWheels1[];
 
 
-extern u16 **D_800DDE34[];
-extern u16 **D_800DDE54[];
+extern u16 **gKartWheels0[];
+extern u16 **gKartWheels1[];
 
 
 // These all come the kart data stuff, they should end up in their own inc.c eventually
