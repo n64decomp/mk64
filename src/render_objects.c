@@ -3978,7 +3978,7 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
                     sp34[2] = object->pos[2];
                     rsp_set_matrix_transformation_inverted_x_y_orientation(sp34, object->orientation, object->sizeScaling);
                     gSPDisplayList(gDisplayListHead++, D_0D0077D0);
-                    func_80004DFC((animation_type_1 *) object->model, (animation_type_2 **) object->vertex, (s16) object->unk_0D8, (s16) object->itemDisplay);
+                    func_80004DFC((animation_type_1 *) object->model, (animation_type_2 **) object->vertex, (s16) object->unk_0D8, (s16) object->textureListIndex);
                 }
             } else if (arg1 < 0x15F91U) {
                 func_8004A7AC(objectIndex, 1.5f);
@@ -3986,7 +3986,7 @@ void func_800557B4(s32 objectIndex, u32 arg1, u32 arg2) {
         }
         rsp_set_matrix_transformation(object->pos, object->orientation, object->sizeScaling);
         gSPDisplayList(gDisplayListHead++, D_0D0077D0);
-        func_80004DFC((animation_type_1 *) object->model, (animation_type_2 **) object->vertex, (s16) object->unk_0D8, (s16) object->itemDisplay);
+        func_80004DFC((animation_type_1 *) object->model, (animation_type_2 **) object->vertex, (s16) object->unk_0D8, (s16) object->textureListIndex);
     }
 }
 
@@ -4050,7 +4050,7 @@ void func_80055AB8(s32 objectIndex, s32 cameraId) {
         } else {
             rsp_set_matrix_transformation(gObjectList[objectIndex].pos, gObjectList[objectIndex].direction_angle, gObjectList[objectIndex].sizeScaling);
             gSPDisplayList(gDisplayListHead++, D_0D0077D0);
-            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].model, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, (s16) gObjectList[objectIndex].itemDisplay);
+            func_80004DFC((animation_type_1 *) gObjectList[objectIndex].model, (animation_type_2 **) gObjectList[objectIndex].vertex, 0, (s16) gObjectList[objectIndex].textureListIndex);
         }
     }
 }
