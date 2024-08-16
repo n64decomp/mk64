@@ -143,7 +143,7 @@ Include dependency graph for render_player.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a264d068eff1f62f3de9f73f95f00de73" id="r_a264d068eff1f62f3de9f73f95f00de73"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a264d068eff1f62f3de9f73f95f00de73">D_802F1F80_WHEEL</a>(a,  b,  c)&#160;&#160;&#160;&amp;<a class="el" href="buffers_8h.html#a88e023128d8de3bf9ed27ae703247441">D_802F1F80</a>[a][b][(c * 0x100) + 0xC0]</td></tr>
+<tr class="memitem:a264d068eff1f62f3de9f73f95f00de73" id="r_a264d068eff1f62f3de9f73f95f00de73"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a264d068eff1f62f3de9f73f95f00de73">D_802F1F80_WHEEL</a>(a,  b,  c)&#160;&#160;&#160;&amp;<a class="el" href="buffers_8h.html#a971064608968224d5893f0529599f48e">gPlayerPalettesList</a>[a][b][(c * 0x100) + 0xC0]</td></tr>
 <tr class="separator:a264d068eff1f62f3de9f73f95f00de73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -157,15 +157,16 @@ Functions</h2></td></tr>
 <tr class="memitem:ab0289fdfa8e004b560c3e120aefe55d7" id="r_ab0289fdfa8e004b560c3e120aefe55d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0289fdfa8e004b560c3e120aefe55d7">func_8001FD78</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posX, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> arg2, <a class="el" href="ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd">f32</a> posZ)</td></tr>
 <tr class="separator:ab0289fdfa8e004b560c3e120aefe55d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01499b43d51c6cf4d9f2da56acba5c02" id="r_a01499b43d51c6cf4d9f2da56acba5c02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a01499b43d51c6cf4d9f2da56acba5c02">init_render_player</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="structCamera.html">Camera</a> *camera, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> playerId, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> screenId)</td></tr>
+<tr class="memdesc:a01499b43d51c6cf4d9f2da56acba5c02"><td class="mdescLeft">&#160;</td><td class="mdescRight">one of his function is to put the frame to load in to a list to load it to be only applied for the next frame  <br /></td></tr>
 <tr class="separator:a01499b43d51c6cf4d9f2da56acba5c02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa48ec7ff2a347fb6035ad10ceebb7291" id="r_aa48ec7ff2a347fb6035ad10ceebb7291"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa48ec7ff2a347fb6035ad10ceebb7291">func_80020524</a> (void)</td></tr>
-<tr class="separator:aa48ec7ff2a347fb6035ad10ceebb7291"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea46313da3b14a71e126d88df766b2c2" id="r_aea46313da3b14a71e126d88df766b2c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea46313da3b14a71e126d88df766b2c2">func_8002088C</a> (void)</td></tr>
-<tr class="separator:aea46313da3b14a71e126d88df766b2c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0168d37a71ccb859723becdd647e64b2" id="r_a0168d37a71ccb859723becdd647e64b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0168d37a71ccb859723becdd647e64b2">func_80020BF4</a> (void)</td></tr>
-<tr class="separator:a0168d37a71ccb859723becdd647e64b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a051ce5131b81f21321b6a87e84a5dcff" id="r_a051ce5131b81f21321b6a87e84a5dcff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a051ce5131b81f21321b6a87e84a5dcff">func_80020F1C</a> (void)</td></tr>
-<tr class="separator:a051ce5131b81f21321b6a87e84a5dcff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72536e09c0a64fb44bb8ba12f1b10fdd" id="r_a72536e09c0a64fb44bb8ba12f1b10fdd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72536e09c0a64fb44bb8ba12f1b10fdd">load_kart_texture_and_render_kart_particle_on_screen_one</a> (void)</td></tr>
+<tr class="separator:a72536e09c0a64fb44bb8ba12f1b10fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3b316706b817560006c24f56d5d7c11" id="r_aa3b316706b817560006c24f56d5d7c11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa3b316706b817560006c24f56d5d7c11">load_kart_texture_and_render_kart_particle_on_screen_two</a> (void)</td></tr>
+<tr class="separator:aa3b316706b817560006c24f56d5d7c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af454408df2313a0e8ba7af22fec885c7" id="r_af454408df2313a0e8ba7af22fec885c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af454408df2313a0e8ba7af22fec885c7">load_kart_texture_and_render_kart_particle_on_screen_three</a> (void)</td></tr>
+<tr class="separator:af454408df2313a0e8ba7af22fec885c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4602ce59500eb085a7c494fe52ad9de4" id="r_a4602ce59500eb085a7c494fe52ad9de4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4602ce59500eb085a7c494fe52ad9de4">load_kart_texture_and_render_kart_particle_on_screen_four</a> (void)</td></tr>
+<tr class="separator:a4602ce59500eb085a7c494fe52ad9de4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a229ab780a8a5b76c08608148c5542534" id="r_a229ab780a8a5b76c08608148c5542534"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a229ab780a8a5b76c08608148c5542534">try_rendering_player</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> playerId, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> arg2)</td></tr>
 <tr class="separator:a229ab780a8a5b76c08608148c5542534"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6bc32c583b2a3886183f09447e213be8" id="r_a6bc32c583b2a3886183f09447e213be8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6bc32c583b2a3886183f09447e213be8">render_players_on_screen_one</a> (void)</td></tr>
@@ -250,8 +251,8 @@ Functions</h2></td></tr>
 <tr class="separator:a9afd62c74edf8ebd0a77158f6626ce10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88fc13b6a23390191ad9cce256378237" id="r_a88fc13b6a23390191ad9cce256378237"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a88fc13b6a23390191ad9cce256378237">func_80026A48</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> arg1)</td></tr>
 <tr class="separator:a88fc13b6a23390191ad9cce256378237"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d3752361b2123643f71d4d8fd514a35" id="r_a8d3752361b2123643f71d4d8fd514a35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d3752361b2123643f71d4d8fd514a35">func_80026B4C</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> playerId, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> screenId, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> arg3)</td></tr>
-<tr class="separator:a8d3752361b2123643f71d4d8fd514a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53a1f659eaad8e23847f927e359c3551" id="r_a53a1f659eaad8e23847f927e359c3551"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a53a1f659eaad8e23847f927e359c3551">update_wheel_palette</a> (<a class="el" href="structPlayer.html">Player</a> *player, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> playerId, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> screenId, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a> arg3)</td></tr>
+<tr class="separator:a53a1f659eaad8e23847f927e359c3551"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa8f63684baf56104ad7d16088908bcb" id="r_afa8f63684baf56104ad7d16088908bcb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa8f63684baf56104ad7d16088908bcb">func_8002701C</a> (void)</td></tr>
 <tr class="separator:afa8f63684baf56104ad7d16088908bcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c5cfe3232212ab4f7204ca866071315" id="r_a0c5cfe3232212ab4f7204ca866071315"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c5cfe3232212ab4f7204ca866071315">func_80027024</a> (<a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg0, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg1, <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> arg2)</td></tr>
@@ -265,22 +266,22 @@ Variables</h2></td></tr>
 <tr class="separator:a30646967f10de8d498a70546d2b5f849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a133c4d88d3b4c75572b417a0f01956f4" id="r_a133c4d88d3b4c75572b417a0f01956f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a133c4d88d3b4c75572b417a0f01956f4">D_800DDB5C</a> [3]</td></tr>
 <tr class="separator:a133c4d88d3b4c75572b417a0f01956f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade6811ec494a909542a4f5954af7bcfe" id="r_ade6811ec494a909542a4f5954af7bcfe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade6811ec494a909542a4f5954af7bcfe">D_80164AB0</a> [8]</td></tr>
-<tr class="separator:ade6811ec494a909542a4f5954af7bcfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae2af8aeaf2501c4a79109c0fe5f49c3" id="r_aae2af8aeaf2501c4a79109c0fe5f49c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae2af8aeaf2501c4a79109c0fe5f49c3">D_80164AC0</a> [8]</td></tr>
-<tr class="separator:aae2af8aeaf2501c4a79109c0fe5f49c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d208aef7a066942dd4d40d437ec0f0b" id="r_a2d208aef7a066942dd4d40d437ec0f0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPlayer.html">Player</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d208aef7a066942dd4d40d437ec0f0b">D_80164AD0</a> [8]</td></tr>
-<tr class="separator:a2d208aef7a066942dd4d40d437ec0f0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72889035cdd809028f90dc394d6f0135" id="r_a72889035cdd809028f90dc394d6f0135"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a72889035cdd809028f90dc394d6f0135">gPlayersToRenderPlayerId</a> [8]</td></tr>
+<tr class="separator:a72889035cdd809028f90dc394d6f0135"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81958d2c2d60f7eb427a17e0bbb53cf4" id="r_a81958d2c2d60f7eb427a17e0bbb53cf4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81958d2c2d60f7eb427a17e0bbb53cf4">gPlayersToRenderScreenId</a> [8]</td></tr>
+<tr class="separator:a81958d2c2d60f7eb427a17e0bbb53cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe2f409c6e51b62c788e34a10b237a06" id="r_abe2f409c6e51b62c788e34a10b237a06"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPlayer.html">Player</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe2f409c6e51b62c788e34a10b237a06">gPlayersToRenderPlayer</a> [8]</td></tr>
+<tr class="separator:abe2f409c6e51b62c788e34a10b237a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abeefcb4eb9df7b90bbf608d19a9294dc" id="r_abeefcb4eb9df7b90bbf608d19a9294dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abeefcb4eb9df7b90bbf608d19a9294dc">gMatrixEffectCount</a></td></tr>
 <tr class="separator:abeefcb4eb9df7b90bbf608d19a9294dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47bd67f7d8e427957eb1b999cff4750f" id="r_a47bd67f7d8e427957eb1b999cff4750f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47bd67f7d8e427957eb1b999cff4750f">D_80164AF4</a> [3]</td></tr>
 <tr class="separator:a47bd67f7d8e427957eb1b999cff4750f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66e61f69f6885f7670a9487f0dabb9d2" id="r_a66e61f69f6885f7670a9487f0dabb9d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structstruct__D__802F1F80.html">struct_D_802F1F80</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66e61f69f6885f7670a9487f0dabb9d2">gPlayerPalette</a></td></tr>
 <tr class="separator:a66e61f69f6885f7670a9487f0dabb9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40c7c09a8d055ff5bf142c010f230f91" id="r_a40c7c09a8d055ff5bf142c010f230f91"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40c7c09a8d055ff5bf142c010f230f91">D_80164B08</a></td></tr>
-<tr class="separator:a40c7c09a8d055ff5bf142c010f230f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6e77678b48146307f0a56ce17f7a4bc" id="r_ad6e77678b48146307f0a56ce17f7a4bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6e77678b48146307f0a56ce17f7a4bc">D_80164B0C</a></td></tr>
-<tr class="separator:ad6e77678b48146307f0a56ce17f7a4bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdc871a588268600848d34e53439b5a0" id="r_afdc871a588268600848d34e53439b5a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afdc871a588268600848d34e53439b5a0">sKartUpperTexture</a></td></tr>
+<tr class="separator:afdc871a588268600848d34e53439b5a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28b93d1b998104782e9bfadc9b06d110" id="r_a28b93d1b998104782e9bfadc9b06d110"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28b93d1b998104782e9bfadc9b06d110">sKartLowerTexture</a></td></tr>
+<tr class="separator:a28b93d1b998104782e9bfadc9b06d110"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf36e6ebb5fc42f97b9b2595fa6e0dab" id="r_acf36e6ebb5fc42f97b9b2595fa6e0dab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf36e6ebb5fc42f97b9b2595fa6e0dab">gPlayerRedEffect</a> [8]</td></tr>
 <tr class="separator:acf36e6ebb5fc42f97b9b2595fa6e0dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff7c358ff971dff72065d20ed7b6d8e1" id="r_aff7c358ff971dff72065d20ed7b6d8e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff7c358ff971dff72065d20ed7b6d8e1">gPlayerGreenEffect</a> [8]</td></tr>
@@ -301,10 +302,10 @@ Variables</h2></td></tr>
 <tr class="separator:ad8d5c0dd4725797de2d40f3ba58b2be2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cbc9aaaf90fc3c764fccfaa21606b5d" id="r_a5cbc9aaaf90fc3c764fccfaa21606b5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="common__structs_8h.html#a5290523279339ea495248ab3a36cb46e">Vec3f</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cbc9aaaf90fc3c764fccfaa21606b5d">D_80165070</a> [8]</td></tr>
 <tr class="separator:a5cbc9aaaf90fc3c764fccfaa21606b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc7783e5340ae06ddbeb4cecdc4812bc" id="r_adc7783e5340ae06ddbeb4cecdc4812bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adc7783e5340ae06ddbeb4cecdc4812bc">D_801650D0</a> [4][8]</td></tr>
-<tr class="separator:adc7783e5340ae06ddbeb4cecdc4812bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60278eddbb121a75e99dc6ecd5815654" id="r_a60278eddbb121a75e99dc6ecd5815654"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60278eddbb121a75e99dc6ecd5815654">D_80165110</a> [4][8]</td></tr>
-<tr class="separator:a60278eddbb121a75e99dc6ecd5815654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10924e4fcf199d2308c9d12a5853d742" id="r_a10924e4fcf199d2308c9d12a5853d742"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10924e4fcf199d2308c9d12a5853d742">gLastAnimFrameSelector</a> [4][8]</td></tr>
+<tr class="separator:a10924e4fcf199d2308c9d12a5853d742"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cae291a52866c8bd0790403ba4bf323" id="r_a9cae291a52866c8bd0790403ba4bf323"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cae291a52866c8bd0790403ba4bf323">gLastAnimGroupSelector</a> [4][8]</td></tr>
+<tr class="separator:a9cae291a52866c8bd0790403ba4bf323"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87f9baa216c4a841f52bebb0d06fb75f" id="r_a87f9baa216c4a841f52bebb0d06fb75f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87f9baa216c4a841f52bebb0d06fb75f">D_80165150</a> [4][8]</td></tr>
 <tr class="separator:a87f9baa216c4a841f52bebb0d06fb75f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cffa64461486e9d80c11a3d32b277a0" id="r_a2cffa64461486e9d80c11a3d32b277a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cffa64461486e9d80c11a3d32b277a0">D_80165190</a> [4][8]</td></tr>
@@ -349,10 +350,10 @@ Variables</h2></td></tr>
 <tr class="separator:a93e7a08d099b89f646ec568028355343"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63209452694c894810e36f7cbfc11e07" id="r_a63209452694c894810e36f7cbfc11e07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63209452694c894810e36f7cbfc11e07">gKartWarioWheels1</a> []</td></tr>
 <tr class="separator:a63209452694c894810e36f7cbfc11e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4aefdebc9ec5da3a509de8485fb38704" id="r_a4aefdebc9ec5da3a509de8485fb38704"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4aefdebc9ec5da3a509de8485fb38704">D_800DDE34</a> []</td></tr>
-<tr class="separator:a4aefdebc9ec5da3a509de8485fb38704"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c333effedfc8579f52c95416fa19f05" id="r_a2c333effedfc8579f52c95416fa19f05"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c333effedfc8579f52c95416fa19f05">D_800DDE54</a> []</td></tr>
-<tr class="separator:a2c333effedfc8579f52c95416fa19f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad45718531b9c41a2db4b77058a64370f" id="r_ad45718531b9c41a2db4b77058a64370f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad45718531b9c41a2db4b77058a64370f">gKartWheels0</a> []</td></tr>
+<tr class="separator:ad45718531b9c41a2db4b77058a64370f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d17417eb4c3c1f022bb61a2ce27ba51" id="r_a0d17417eb4c3c1f022bb61a2ce27ba51"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d17417eb4c3c1f022bb61a2ce27ba51">gKartWheels1</a> []</td></tr>
+<tr class="separator:a0d17417eb4c3c1f022bb61a2ce27ba51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a834cfef30aaa302a0078fd9187993cfa" id="r_a834cfef30aaa302a0078fd9187993cfa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a834cfef30aaa302a0078fd9187993cfa">D_800DDE74</a> []</td></tr>
 <tr class="separator:a834cfef30aaa302a0078fd9187993cfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab405f6aca50e67977421cac6cd0d2e95" id="r_ab405f6aca50e67977421cac6cd0d2e95"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab405f6aca50e67977421cac6cd0d2e95">maybeCompilerPadding</a> = 0</td></tr>
@@ -378,7 +379,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)&#160;&#160;&#160;&amp;<a class="el" href="buffers_8h.html#a88e023128d8de3bf9ed27ae703247441">D_802F1F80</a>[a][b][(c * 0x100) + 0xC0]</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)&#160;&#160;&#160;&amp;<a class="el" href="buffers_8h.html#a971064608968224d5893f0529599f48e">gPlayerPalettesList</a>[a][b][(c * 0x100) + 0xC0]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -696,114 +697,6 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_ab0289fdfa8e004b560c3e120aefe55d7_icgraph.svg" width="100%" height="475"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="aa48ec7ff2a347fb6035ad10ceebb7291" name="aa48ec7ff2a347fb6035ad10ceebb7291"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa48ec7ff2a347fb6035ad10ceebb7291">&#9670;&#160;</a></span>func_80020524()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void func_80020524 </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_aa48ec7ff2a347fb6035ad10ceebb7291_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_aa48ec7ff2a347fb6035ad10ceebb7291_icgraph.svg" width="100%" height="520"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="aea46313da3b14a71e126d88df766b2c2" name="aea46313da3b14a71e126d88df766b2c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea46313da3b14a71e126d88df766b2c2">&#9670;&#160;</a></span>func_8002088C()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void func_8002088C </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_aea46313da3b14a71e126d88df766b2c2_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_aea46313da3b14a71e126d88df766b2c2_icgraph.svg" width="100%" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="a0168d37a71ccb859723becdd647e64b2" name="a0168d37a71ccb859723becdd647e64b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0168d37a71ccb859723becdd647e64b2">&#9670;&#160;</a></span>func_80020BF4()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void func_80020BF4 </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_a0168d37a71ccb859723becdd647e64b2_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_a0168d37a71ccb859723becdd647e64b2_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
-<a id="a051ce5131b81f21321b6a87e84a5dcff" name="a051ce5131b81f21321b6a87e84a5dcff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a051ce5131b81f21321b6a87e84a5dcff">&#9670;&#160;</a></span>func_80020F1C()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void func_80020F1C </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_a051ce5131b81f21321b6a87e84a5dcff_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_a051ce5131b81f21321b6a87e84a5dcff_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -1348,47 +1241,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a8d3752361b2123643f71d4d8fd514a35" name="a8d3752361b2123643f71d4d8fd514a35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d3752361b2123643f71d4d8fd514a35">&#9670;&#160;</a></span>func_80026B4C()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void func_80026B4C </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structPlayer.html">Player</a> *</td>          <td class="paramname"><span class="paramname"><em>player</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a></td>          <td class="paramname"><span class="paramname"><em>playerId</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a></td>          <td class="paramname"><span class="paramname"><em>screenId</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a></td>          <td class="paramname"><span class="paramname"><em>arg3</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_a8d3752361b2123643f71d4d8fd514a35_cgraph.svg" width="100%" height="595"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_a8d3752361b2123643f71d4d8fd514a35_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
-</div>
-
-</div>
-</div>
 <a id="afa8f63684baf56104ad7d16088908bcb" name="afa8f63684baf56104ad7d16088908bcb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa8f63684baf56104ad7d16088908bcb">&#9670;&#160;</a></span>func_8002701C()</h2>
 
@@ -1460,6 +1312,8 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>one of his function is to put the frame to load in to a list to load it to be only applied for the next frame </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -1501,6 +1355,114 @@ Here is the call graph for this function:</div>
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_a134979f530082395406ddce35d8ff702_icgraph.svg" width="100%" height="364"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a4602ce59500eb085a7c494fe52ad9de4" name="a4602ce59500eb085a7c494fe52ad9de4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4602ce59500eb085a7c494fe52ad9de4">&#9670;&#160;</a></span>load_kart_texture_and_render_kart_particle_on_screen_four()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_kart_texture_and_render_kart_particle_on_screen_four </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_a4602ce59500eb085a7c494fe52ad9de4_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_a4602ce59500eb085a7c494fe52ad9de4_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a72536e09c0a64fb44bb8ba12f1b10fdd" name="a72536e09c0a64fb44bb8ba12f1b10fdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72536e09c0a64fb44bb8ba12f1b10fdd">&#9670;&#160;</a></span>load_kart_texture_and_render_kart_particle_on_screen_one()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_kart_texture_and_render_kart_particle_on_screen_one </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_a72536e09c0a64fb44bb8ba12f1b10fdd_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_a72536e09c0a64fb44bb8ba12f1b10fdd_icgraph.svg" width="100%" height="520"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="af454408df2313a0e8ba7af22fec885c7" name="af454408df2313a0e8ba7af22fec885c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af454408df2313a0e8ba7af22fec885c7">&#9670;&#160;</a></span>load_kart_texture_and_render_kart_particle_on_screen_three()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_kart_texture_and_render_kart_particle_on_screen_three </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_af454408df2313a0e8ba7af22fec885c7_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_af454408df2313a0e8ba7af22fec885c7_icgraph.svg" width="100%" height="300"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="aa3b316706b817560006c24f56d5d7c11" name="aa3b316706b817560006c24f56d5d7c11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3b316706b817560006c24f56d5d7c11">&#9670;&#160;</a></span>load_kart_texture_and_render_kart_particle_on_screen_two()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void load_kart_texture_and_render_kart_particle_on_screen_two </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_aa3b316706b817560006c24f56d5d7c11_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_aa3b316706b817560006c24f56d5d7c11_icgraph.svg" width="100%" height="434"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -2103,6 +2065,47 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="a53a1f659eaad8e23847f927e359c3551" name="a53a1f659eaad8e23847f927e359c3551"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53a1f659eaad8e23847f927e359c3551">&#9670;&#160;</a></span>update_wheel_palette()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void update_wheel_palette </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPlayer.html">Player</a> *</td>          <td class="paramname"><span class="paramname"><em>player</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a></td>          <td class="paramname"><span class="paramname"><em>playerId</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a></td>          <td class="paramname"><span class="paramname"><em>screenId</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a></td>          <td class="paramname"><span class="paramname"><em>arg3</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_a53a1f659eaad8e23847f927e359c3551_cgraph.svg" width="100%" height="595"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="render__player_8c_a53a1f659eaad8e23847f927e359c3551_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a133c4d88d3b4c75572b417a0f01956f4" name="a133c4d88d3b4c75572b417a0f01956f4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a133c4d88d3b4c75572b417a0f01956f4">&#9670;&#160;</a></span>D_800DDB5C</h2>
@@ -2118,9 +2121,9 @@ Here is the caller graph for this function:</div>
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    <a class="code hl_variable" href="buffers_8h.html#a9ad5316597b4d79b0e355b1194848d3d">gFramebuffer0</a>, <a class="code hl_variable" href="buffers_8h.html#a5249b7a9cf7e5c7d6a23b907760b9b81">gFramebuffer1</a>, <a class="code hl_variable" href="buffers_8h.html#a95aecdc8fb209e4ec86f831451880008">gFramebuffer2</a></div>
 <div class="line">}</div>
-<div class="ttc" id="abuffers_8h_html_a5249b7a9cf7e5c7d6a23b907760b9b81"><div class="ttname"><a href="buffers_8h.html#a5249b7a9cf7e5c7d6a23b907760b9b81">gFramebuffer1</a></div><div class="ttdeci">u16 gFramebuffer1[SCREEN_WIDTH *SCREEN_HEIGHT]</div><div class="ttdef"><b>Definition</b> buffers.c:22</div></div>
-<div class="ttc" id="abuffers_8h_html_a95aecdc8fb209e4ec86f831451880008"><div class="ttname"><a href="buffers_8h.html#a95aecdc8fb209e4ec86f831451880008">gFramebuffer2</a></div><div class="ttdeci">u16 gFramebuffer2[SCREEN_WIDTH *SCREEN_HEIGHT]</div><div class="ttdef"><b>Definition</b> buffers.c:23</div></div>
-<div class="ttc" id="abuffers_8h_html_a9ad5316597b4d79b0e355b1194848d3d"><div class="ttname"><a href="buffers_8h.html#a9ad5316597b4d79b0e355b1194848d3d">gFramebuffer0</a></div><div class="ttdeci">u16 gFramebuffer0[SCREEN_WIDTH *SCREEN_HEIGHT]</div><div class="ttdef"><b>Definition</b> buffers.c:21</div></div>
+<div class="ttc" id="abuffers_8h_html_a5249b7a9cf7e5c7d6a23b907760b9b81"><div class="ttname"><a href="buffers_8h.html#a5249b7a9cf7e5c7d6a23b907760b9b81">gFramebuffer1</a></div><div class="ttdeci">u16 gFramebuffer1[SCREEN_WIDTH *SCREEN_HEIGHT]</div><div class="ttdef"><b>Definition</b> buffers.c:23</div></div>
+<div class="ttc" id="abuffers_8h_html_a95aecdc8fb209e4ec86f831451880008"><div class="ttname"><a href="buffers_8h.html#a95aecdc8fb209e4ec86f831451880008">gFramebuffer2</a></div><div class="ttdeci">u16 gFramebuffer2[SCREEN_WIDTH *SCREEN_HEIGHT]</div><div class="ttdef"><b>Definition</b> buffers.c:24</div></div>
+<div class="ttc" id="abuffers_8h_html_a9ad5316597b4d79b0e355b1194848d3d"><div class="ttname"><a href="buffers_8h.html#a9ad5316597b4d79b0e355b1194848d3d">gFramebuffer0</a></div><div class="ttdeci">u16 gFramebuffer0[SCREEN_WIDTH *SCREEN_HEIGHT]</div><div class="ttdef"><b>Definition</b> buffers.c:22</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2150,59 +2153,6 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a4aefdebc9ec5da3a509de8485fb38704" name="a4aefdebc9ec5da3a509de8485fb38704"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4aefdebc9ec5da3a509de8485fb38704">&#9670;&#160;</a></span>D_800DDE34</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>** D_800DDE34[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a0fd0ac4eb7e8fea6c3a9ffb30b873b52">gKartMarioWheels0</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#ad4d3bba3635b8151e579310c33bf1cd7">gKartLuigiWheels0</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#af982a167d3ebe95d8dc3bb1cd1ed2701">gKartYoshiWheels0</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a1088f3f518e41c55cb4333abf80db56e">gKartToadWheels0</a>,</div>
-<div class="line">    (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a1f3ba2aad3c58de75cfabcf891546b4b">gKartDKWheels0</a>,    (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a93e7a08d099b89f646ec568028355343">gKartWarioWheels0</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a13f01107d90089b36fe8315a2aed273a">gKartPeachWheels0</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a97d8c0f5e3ae2c91ec7ea068e0e07b06">gKartBowserWheels0</a></div>
-<div class="line">}</div>
-<div class="ttc" id="arender__player_8c_html_a0fd0ac4eb7e8fea6c3a9ffb30b873b52"><div class="ttname"><a href="#a0fd0ac4eb7e8fea6c3a9ffb30b873b52">gKartMarioWheels0</a></div><div class="ttdeci">u8 ** gKartMarioWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:415</div></div>
-<div class="ttc" id="arender__player_8c_html_a1088f3f518e41c55cb4333abf80db56e"><div class="ttname"><a href="#a1088f3f518e41c55cb4333abf80db56e">gKartToadWheels0</a></div><div class="ttdeci">u8 ** gKartToadWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:451</div></div>
-<div class="ttc" id="arender__player_8c_html_a13f01107d90089b36fe8315a2aed273a"><div class="ttname"><a href="#a13f01107d90089b36fe8315a2aed273a">gKartPeachWheels0</a></div><div class="ttdeci">u8 ** gKartPeachWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:487</div></div>
-<div class="ttc" id="arender__player_8c_html_a1f3ba2aad3c58de75cfabcf891546b4b"><div class="ttname"><a href="#a1f3ba2aad3c58de75cfabcf891546b4b">gKartDKWheels0</a></div><div class="ttdeci">u8 ** gKartDKWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:475</div></div>
-<div class="ttc" id="arender__player_8c_html_a93e7a08d099b89f646ec568028355343"><div class="ttname"><a href="#a93e7a08d099b89f646ec568028355343">gKartWarioWheels0</a></div><div class="ttdeci">u8 ** gKartWarioWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:499</div></div>
-<div class="ttc" id="arender__player_8c_html_a97d8c0f5e3ae2c91ec7ea068e0e07b06"><div class="ttname"><a href="#a97d8c0f5e3ae2c91ec7ea068e0e07b06">gKartBowserWheels0</a></div><div class="ttdeci">u8 ** gKartBowserWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:439</div></div>
-<div class="ttc" id="arender__player_8c_html_ad4d3bba3635b8151e579310c33bf1cd7"><div class="ttname"><a href="#ad4d3bba3635b8151e579310c33bf1cd7">gKartLuigiWheels0</a></div><div class="ttdeci">u8 ** gKartLuigiWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:427</div></div>
-<div class="ttc" id="arender__player_8c_html_af982a167d3ebe95d8dc3bb1cd1ed2701"><div class="ttname"><a href="#af982a167d3ebe95d8dc3bb1cd1ed2701">gKartYoshiWheels0</a></div><div class="ttdeci">u8 ** gKartYoshiWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:463</div></div>
-<div class="ttc" id="aultratypes_8h_html_aa0b167025ed1eead1300bc4dbdfb230e"><div class="ttname"><a href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a></div><div class="ttdeci">unsigned short int u16</div><div class="ttdef"><b>Definition</b> ultratypes.h:14</div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a2c333effedfc8579f52c95416fa19f05" name="a2c333effedfc8579f52c95416fa19f05"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c333effedfc8579f52c95416fa19f05">&#9670;&#160;</a></span>D_800DDE54</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>** D_800DDE54[]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#ad2cd0c24f8044ad6cb7482dab8b05f2f">gKartMarioWheels1</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a76e3de3c17d0d436001d0f226c674dfe">gKartLuigiWheels1</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a8e4c2cbf77aab050166c251016a80591">gKartYoshiWheels1</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#ab17e3ac11fcc75ad2ed9bef2fa5fa9ac">gKartToadWheels1</a>,</div>
-<div class="line">    (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#adb847272c9b79f4babf7477d55a3d155">gKartDKWheels1</a>,    (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a63209452694c894810e36f7cbfc11e07">gKartWarioWheels1</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a155f3e567a19e42e46813a32e6529001">gKartPeachWheels1</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a049eefee0986cef5d21eb2530ffcfe07">gKartBowserWheels1</a></div>
-<div class="line">}</div>
-<div class="ttc" id="arender__player_8c_html_a049eefee0986cef5d21eb2530ffcfe07"><div class="ttname"><a href="#a049eefee0986cef5d21eb2530ffcfe07">gKartBowserWheels1</a></div><div class="ttdeci">u8 ** gKartBowserWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:445</div></div>
-<div class="ttc" id="arender__player_8c_html_a155f3e567a19e42e46813a32e6529001"><div class="ttname"><a href="#a155f3e567a19e42e46813a32e6529001">gKartPeachWheels1</a></div><div class="ttdeci">u8 ** gKartPeachWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:493</div></div>
-<div class="ttc" id="arender__player_8c_html_a63209452694c894810e36f7cbfc11e07"><div class="ttname"><a href="#a63209452694c894810e36f7cbfc11e07">gKartWarioWheels1</a></div><div class="ttdeci">u8 ** gKartWarioWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:505</div></div>
-<div class="ttc" id="arender__player_8c_html_a76e3de3c17d0d436001d0f226c674dfe"><div class="ttname"><a href="#a76e3de3c17d0d436001d0f226c674dfe">gKartLuigiWheels1</a></div><div class="ttdeci">u8 ** gKartLuigiWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:433</div></div>
-<div class="ttc" id="arender__player_8c_html_a8e4c2cbf77aab050166c251016a80591"><div class="ttname"><a href="#a8e4c2cbf77aab050166c251016a80591">gKartYoshiWheels1</a></div><div class="ttdeci">u8 ** gKartYoshiWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:469</div></div>
-<div class="ttc" id="arender__player_8c_html_ab17e3ac11fcc75ad2ed9bef2fa5fa9ac"><div class="ttname"><a href="#ab17e3ac11fcc75ad2ed9bef2fa5fa9ac">gKartToadWheels1</a></div><div class="ttdeci">u8 ** gKartToadWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:457</div></div>
-<div class="ttc" id="arender__player_8c_html_ad2cd0c24f8044ad6cb7482dab8b05f2f"><div class="ttname"><a href="#ad2cd0c24f8044ad6cb7482dab8b05f2f">gKartMarioWheels1</a></div><div class="ttdeci">u8 ** gKartMarioWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:421</div></div>
-<div class="ttc" id="arender__player_8c_html_adb847272c9b79f4babf7477d55a3d155"><div class="ttname"><a href="#adb847272c9b79f4babf7477d55a3d155">gKartDKWheels1</a></div><div class="ttdeci">u8 ** gKartDKWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:481</div></div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a834cfef30aaa302a0078fd9187993cfa" name="a834cfef30aaa302a0078fd9187993cfa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a834cfef30aaa302a0078fd9187993cfa">&#9670;&#160;</a></span>D_800DDE74</h2>
 
@@ -2222,48 +2172,6 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="ade6811ec494a909542a4f5954af7bcfe" name="ade6811ec494a909542a4f5954af7bcfe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade6811ec494a909542a4f5954af7bcfe">&#9670;&#160;</a></span>D_80164AB0</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> D_80164AB0[8]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aae2af8aeaf2501c4a79109c0fe5f49c3" name="aae2af8aeaf2501c4a79109c0fe5f49c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae2af8aeaf2501c4a79109c0fe5f49c3">&#9670;&#160;</a></span>D_80164AC0</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> D_80164AC0[8]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2d208aef7a066942dd4d40d437ec0f0b" name="a2d208aef7a066942dd4d40d437ec0f0b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d208aef7a066942dd4d40d437ec0f0b">&#9670;&#160;</a></span>D_80164AD0</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structPlayer.html">Player</a>* D_80164AD0[8]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a47bd67f7d8e427957eb1b999cff4750f" name="a47bd67f7d8e427957eb1b999cff4750f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a47bd67f7d8e427957eb1b999cff4750f">&#9670;&#160;</a></span>D_80164AF4</h2>
 
@@ -2272,34 +2180,6 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> D_80164AF4[3]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a40c7c09a8d055ff5bf142c010f230f91" name="a40c7c09a8d055ff5bf142c010f230f91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40c7c09a8d055ff5bf142c010f230f91">&#9670;&#160;</a></span>D_80164B08</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>* D_80164B08</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad6e77678b48146307f0a56ce17f7a4bc" name="ad6e77678b48146307f0a56ce17f7a4bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6e77678b48146307f0a56ce17f7a4bc">&#9670;&#160;</a></span>D_80164B0C</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>* D_80164B0C</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2342,34 +2222,6 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="common__structs_8h.html#a5290523279339ea495248ab3a36cb46e">Vec3f</a> D_80165070[8]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adc7783e5340ae06ddbeb4cecdc4812bc" name="adc7783e5340ae06ddbeb4cecdc4812bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc7783e5340ae06ddbeb4cecdc4812bc">&#9670;&#160;</a></span>D_801650D0</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> D_801650D0[4][8]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a60278eddbb121a75e99dc6ecd5815654" name="a60278eddbb121a75e99dc6ecd5815654"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60278eddbb121a75e99dc6ecd5815654">&#9670;&#160;</a></span>D_80165110</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> D_80165110[4][8]</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2433,14 +2285,14 @@ Here is the caller graph for this function:</div>
 <div class="line">    <a class="code hl_define" href="defines_8h.html#a987f9a80999a557bc744642a5ec7c87b">MARIO_SIZE</a>, <a class="code hl_define" href="defines_8h.html#a57d2983415fa3cf8ab2a9bee6f087c7a">LUIGI_SIZE</a>, <a class="code hl_define" href="defines_8h.html#a7c821aaafac23cd14652df9992dc2fb5">YOSHI_SIZE</a>, <a class="code hl_define" href="defines_8h.html#aefc3b587853ceba930d4b7989cb84a51">TOAD_SIZE</a>,</div>
 <div class="line">    <a class="code hl_define" href="defines_8h.html#a6831682cd4a2784c3b1c6e7ac5a31a8e">DK_SIZE</a>, <a class="code hl_define" href="defines_8h.html#a089e44fa57b7f9f6f7e6f2ad14dfce4b">WARIO_SIZE</a>, <a class="code hl_define" href="defines_8h.html#a8c30f77739a630c34e363e07ee0cfec0">PEACH_SIZE</a>, <a class="code hl_define" href="defines_8h.html#a73fadc5bf872808026c6a1a4fef9672a">BOWSER_SIZE</a></div>
 <div class="line">}</div>
-<div class="ttc" id="adefines_8h_html_a089e44fa57b7f9f6f7e6f2ad14dfce4b"><div class="ttname"><a href="defines_8h.html#a089e44fa57b7f9f6f7e6f2ad14dfce4b">WARIO_SIZE</a></div><div class="ttdeci">#define WARIO_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:126</div></div>
-<div class="ttc" id="adefines_8h_html_a57d2983415fa3cf8ab2a9bee6f087c7a"><div class="ttname"><a href="defines_8h.html#a57d2983415fa3cf8ab2a9bee6f087c7a">LUIGI_SIZE</a></div><div class="ttdeci">#define LUIGI_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:122</div></div>
-<div class="ttc" id="adefines_8h_html_a6831682cd4a2784c3b1c6e7ac5a31a8e"><div class="ttname"><a href="defines_8h.html#a6831682cd4a2784c3b1c6e7ac5a31a8e">DK_SIZE</a></div><div class="ttdeci">#define DK_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:125</div></div>
-<div class="ttc" id="adefines_8h_html_a73fadc5bf872808026c6a1a4fef9672a"><div class="ttname"><a href="defines_8h.html#a73fadc5bf872808026c6a1a4fef9672a">BOWSER_SIZE</a></div><div class="ttdeci">#define BOWSER_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:128</div></div>
-<div class="ttc" id="adefines_8h_html_a7c821aaafac23cd14652df9992dc2fb5"><div class="ttname"><a href="defines_8h.html#a7c821aaafac23cd14652df9992dc2fb5">YOSHI_SIZE</a></div><div class="ttdeci">#define YOSHI_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:123</div></div>
-<div class="ttc" id="adefines_8h_html_a8c30f77739a630c34e363e07ee0cfec0"><div class="ttname"><a href="defines_8h.html#a8c30f77739a630c34e363e07ee0cfec0">PEACH_SIZE</a></div><div class="ttdeci">#define PEACH_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:127</div></div>
-<div class="ttc" id="adefines_8h_html_a987f9a80999a557bc744642a5ec7c87b"><div class="ttname"><a href="defines_8h.html#a987f9a80999a557bc744642a5ec7c87b">MARIO_SIZE</a></div><div class="ttdeci">#define MARIO_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:121</div></div>
-<div class="ttc" id="adefines_8h_html_aefc3b587853ceba930d4b7989cb84a51"><div class="ttname"><a href="defines_8h.html#aefc3b587853ceba930d4b7989cb84a51">TOAD_SIZE</a></div><div class="ttdeci">#define TOAD_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:124</div></div>
+<div class="ttc" id="adefines_8h_html_a089e44fa57b7f9f6f7e6f2ad14dfce4b"><div class="ttname"><a href="defines_8h.html#a089e44fa57b7f9f6f7e6f2ad14dfce4b">WARIO_SIZE</a></div><div class="ttdeci">#define WARIO_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:133</div></div>
+<div class="ttc" id="adefines_8h_html_a57d2983415fa3cf8ab2a9bee6f087c7a"><div class="ttname"><a href="defines_8h.html#a57d2983415fa3cf8ab2a9bee6f087c7a">LUIGI_SIZE</a></div><div class="ttdeci">#define LUIGI_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:129</div></div>
+<div class="ttc" id="adefines_8h_html_a6831682cd4a2784c3b1c6e7ac5a31a8e"><div class="ttname"><a href="defines_8h.html#a6831682cd4a2784c3b1c6e7ac5a31a8e">DK_SIZE</a></div><div class="ttdeci">#define DK_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:132</div></div>
+<div class="ttc" id="adefines_8h_html_a73fadc5bf872808026c6a1a4fef9672a"><div class="ttname"><a href="defines_8h.html#a73fadc5bf872808026c6a1a4fef9672a">BOWSER_SIZE</a></div><div class="ttdeci">#define BOWSER_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:135</div></div>
+<div class="ttc" id="adefines_8h_html_a7c821aaafac23cd14652df9992dc2fb5"><div class="ttname"><a href="defines_8h.html#a7c821aaafac23cd14652df9992dc2fb5">YOSHI_SIZE</a></div><div class="ttdeci">#define YOSHI_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:130</div></div>
+<div class="ttc" id="adefines_8h_html_a8c30f77739a630c34e363e07ee0cfec0"><div class="ttname"><a href="defines_8h.html#a8c30f77739a630c34e363e07ee0cfec0">PEACH_SIZE</a></div><div class="ttdeci">#define PEACH_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:134</div></div>
+<div class="ttc" id="adefines_8h_html_a987f9a80999a557bc744642a5ec7c87b"><div class="ttname"><a href="defines_8h.html#a987f9a80999a557bc744642a5ec7c87b">MARIO_SIZE</a></div><div class="ttdeci">#define MARIO_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:128</div></div>
+<div class="ttc" id="adefines_8h_html_aefc3b587853ceba930d4b7989cb84a51"><div class="ttname"><a href="defines_8h.html#aefc3b587853ceba930d4b7989cb84a51">TOAD_SIZE</a></div><div class="ttdeci">#define TOAD_SIZE</div><div class="ttdef"><b>Definition</b> defines.h:131</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2808,6 +2660,59 @@ Here is the caller graph for this function:</div>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="ad45718531b9c41a2db4b77058a64370f" name="ad45718531b9c41a2db4b77058a64370f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad45718531b9c41a2db4b77058a64370f">&#9670;&#160;</a></span>gKartWheels0</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>** gKartWheels0[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a0fd0ac4eb7e8fea6c3a9ffb30b873b52">gKartMarioWheels0</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#ad4d3bba3635b8151e579310c33bf1cd7">gKartLuigiWheels0</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#af982a167d3ebe95d8dc3bb1cd1ed2701">gKartYoshiWheels0</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a1088f3f518e41c55cb4333abf80db56e">gKartToadWheels0</a>,</div>
+<div class="line">    (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a1f3ba2aad3c58de75cfabcf891546b4b">gKartDKWheels0</a>,    (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a93e7a08d099b89f646ec568028355343">gKartWarioWheels0</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a13f01107d90089b36fe8315a2aed273a">gKartPeachWheels0</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a97d8c0f5e3ae2c91ec7ea068e0e07b06">gKartBowserWheels0</a></div>
+<div class="line">}</div>
+<div class="ttc" id="arender__player_8c_html_a0fd0ac4eb7e8fea6c3a9ffb30b873b52"><div class="ttname"><a href="#a0fd0ac4eb7e8fea6c3a9ffb30b873b52">gKartMarioWheels0</a></div><div class="ttdeci">u8 ** gKartMarioWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:418</div></div>
+<div class="ttc" id="arender__player_8c_html_a1088f3f518e41c55cb4333abf80db56e"><div class="ttname"><a href="#a1088f3f518e41c55cb4333abf80db56e">gKartToadWheels0</a></div><div class="ttdeci">u8 ** gKartToadWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:454</div></div>
+<div class="ttc" id="arender__player_8c_html_a13f01107d90089b36fe8315a2aed273a"><div class="ttname"><a href="#a13f01107d90089b36fe8315a2aed273a">gKartPeachWheels0</a></div><div class="ttdeci">u8 ** gKartPeachWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:490</div></div>
+<div class="ttc" id="arender__player_8c_html_a1f3ba2aad3c58de75cfabcf891546b4b"><div class="ttname"><a href="#a1f3ba2aad3c58de75cfabcf891546b4b">gKartDKWheels0</a></div><div class="ttdeci">u8 ** gKartDKWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:478</div></div>
+<div class="ttc" id="arender__player_8c_html_a93e7a08d099b89f646ec568028355343"><div class="ttname"><a href="#a93e7a08d099b89f646ec568028355343">gKartWarioWheels0</a></div><div class="ttdeci">u8 ** gKartWarioWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:502</div></div>
+<div class="ttc" id="arender__player_8c_html_a97d8c0f5e3ae2c91ec7ea068e0e07b06"><div class="ttname"><a href="#a97d8c0f5e3ae2c91ec7ea068e0e07b06">gKartBowserWheels0</a></div><div class="ttdeci">u8 ** gKartBowserWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:442</div></div>
+<div class="ttc" id="arender__player_8c_html_ad4d3bba3635b8151e579310c33bf1cd7"><div class="ttname"><a href="#ad4d3bba3635b8151e579310c33bf1cd7">gKartLuigiWheels0</a></div><div class="ttdeci">u8 ** gKartLuigiWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:430</div></div>
+<div class="ttc" id="arender__player_8c_html_af982a167d3ebe95d8dc3bb1cd1ed2701"><div class="ttname"><a href="#af982a167d3ebe95d8dc3bb1cd1ed2701">gKartYoshiWheels0</a></div><div class="ttdeci">u8 ** gKartYoshiWheels0[]</div><div class="ttdef"><b>Definition</b> render_player.c:466</div></div>
+<div class="ttc" id="aultratypes_8h_html_aa0b167025ed1eead1300bc4dbdfb230e"><div class="ttname"><a href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a></div><div class="ttdeci">unsigned short int u16</div><div class="ttdef"><b>Definition</b> ultratypes.h:14</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0d17417eb4c3c1f022bb61a2ce27ba51" name="a0d17417eb4c3c1f022bb61a2ce27ba51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d17417eb4c3c1f022bb61a2ce27ba51">&#9670;&#160;</a></span>gKartWheels1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a>** gKartWheels1[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#ad2cd0c24f8044ad6cb7482dab8b05f2f">gKartMarioWheels1</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a76e3de3c17d0d436001d0f226c674dfe">gKartLuigiWheels1</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a8e4c2cbf77aab050166c251016a80591">gKartYoshiWheels1</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#ab17e3ac11fcc75ad2ed9bef2fa5fa9ac">gKartToadWheels1</a>,</div>
+<div class="line">    (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#adb847272c9b79f4babf7477d55a3d155">gKartDKWheels1</a>,    (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a63209452694c894810e36f7cbfc11e07">gKartWarioWheels1</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a155f3e567a19e42e46813a32e6529001">gKartPeachWheels1</a>, (<a class="code hl_typedef" href="ultratypes_8h.html#aa0b167025ed1eead1300bc4dbdfb230e">u16</a> **)<a class="code hl_variable" href="#a049eefee0986cef5d21eb2530ffcfe07">gKartBowserWheels1</a></div>
+<div class="line">}</div>
+<div class="ttc" id="arender__player_8c_html_a049eefee0986cef5d21eb2530ffcfe07"><div class="ttname"><a href="#a049eefee0986cef5d21eb2530ffcfe07">gKartBowserWheels1</a></div><div class="ttdeci">u8 ** gKartBowserWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:448</div></div>
+<div class="ttc" id="arender__player_8c_html_a155f3e567a19e42e46813a32e6529001"><div class="ttname"><a href="#a155f3e567a19e42e46813a32e6529001">gKartPeachWheels1</a></div><div class="ttdeci">u8 ** gKartPeachWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:496</div></div>
+<div class="ttc" id="arender__player_8c_html_a63209452694c894810e36f7cbfc11e07"><div class="ttname"><a href="#a63209452694c894810e36f7cbfc11e07">gKartWarioWheels1</a></div><div class="ttdeci">u8 ** gKartWarioWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:508</div></div>
+<div class="ttc" id="arender__player_8c_html_a76e3de3c17d0d436001d0f226c674dfe"><div class="ttname"><a href="#a76e3de3c17d0d436001d0f226c674dfe">gKartLuigiWheels1</a></div><div class="ttdeci">u8 ** gKartLuigiWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:436</div></div>
+<div class="ttc" id="arender__player_8c_html_a8e4c2cbf77aab050166c251016a80591"><div class="ttname"><a href="#a8e4c2cbf77aab050166c251016a80591">gKartYoshiWheels1</a></div><div class="ttdeci">u8 ** gKartYoshiWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:472</div></div>
+<div class="ttc" id="arender__player_8c_html_ab17e3ac11fcc75ad2ed9bef2fa5fa9ac"><div class="ttname"><a href="#ab17e3ac11fcc75ad2ed9bef2fa5fa9ac">gKartToadWheels1</a></div><div class="ttdeci">u8 ** gKartToadWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:460</div></div>
+<div class="ttc" id="arender__player_8c_html_ad2cd0c24f8044ad6cb7482dab8b05f2f"><div class="ttname"><a href="#ad2cd0c24f8044ad6cb7482dab8b05f2f">gKartMarioWheels1</a></div><div class="ttdeci">u8 ** gKartMarioWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:424</div></div>
+<div class="ttc" id="arender__player_8c_html_adb847272c9b79f4babf7477d55a3d155"><div class="ttname"><a href="#adb847272c9b79f4babf7477d55a3d155">gKartDKWheels1</a></div><div class="ttdeci">u8 ** gKartDKWheels1[]</div><div class="ttdef"><b>Definition</b> render_player.c:484</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="af982a167d3ebe95d8dc3bb1cd1ed2701" name="af982a167d3ebe95d8dc3bb1cd1ed2701"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af982a167d3ebe95d8dc3bb1cd1ed2701">&#9670;&#160;</a></span>gKartYoshiWheels0</h2>
 
@@ -2858,6 +2763,34 @@ Here is the caller graph for this function:</div>
 <div class="ttc" id="arender__player_8h_html_a854afe8ab5b4f9b4b205879f48e25e94"><div class="ttname"><a href="render__player_8h.html#a854afe8ab5b4f9b4b205879f48e25e94">gKartYoshi209Wheel0</a></div><div class="ttdeci">u8 * gKartYoshi209Wheel0[]</div></div>
 <div class="ttc" id="arender__player_8h_html_ab738031253aa83c81205156e99ed81b7"><div class="ttname"><a href="render__player_8h.html#ab738031253aa83c81205156e99ed81b7">gKartYoshi249Wheel0</a></div><div class="ttdeci">u8 * gKartYoshi249Wheel0[]</div></div>
 </div><!-- fragment -->
+</div>
+</div>
+<a id="a10924e4fcf199d2308c9d12a5853d742" name="a10924e4fcf199d2308c9d12a5853d742"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10924e4fcf199d2308c9d12a5853d742">&#9670;&#160;</a></span>gLastAnimFrameSelector</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> gLastAnimFrameSelector[4][8]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9cae291a52866c8bd0790403ba4bf323" name="a9cae291a52866c8bd0790403ba4bf323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cae291a52866c8bd0790403ba4bf323">&#9670;&#160;</a></span>gLastAnimGroupSelector</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> gLastAnimGroupSelector[4][8]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
 </div>
 </div>
 <a id="abeefcb4eb9df7b90bbf608d19a9294dc" name="abeefcb4eb9df7b90bbf608d19a9294dc"></a>
@@ -2972,6 +2905,48 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
+<a id="abe2f409c6e51b62c788e34a10b237a06" name="abe2f409c6e51b62c788e34a10b237a06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe2f409c6e51b62c788e34a10b237a06">&#9670;&#160;</a></span>gPlayersToRenderPlayer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPlayer.html">Player</a>* gPlayersToRenderPlayer[8]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a72889035cdd809028f90dc394d6f0135" name="a72889035cdd809028f90dc394d6f0135"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72889035cdd809028f90dc394d6f0135">&#9670;&#160;</a></span>gPlayersToRenderPlayerId</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> gPlayersToRenderPlayerId[8]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a81958d2c2d60f7eb427a17e0bbb53cf4" name="a81958d2c2d60f7eb427a17e0bbb53cf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81958d2c2d60f7eb427a17e0bbb53cf4">&#9670;&#160;</a></span>gPlayersToRenderScreenId</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> gPlayersToRenderScreenId[8]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a5602d986a3cc7ffb88c3c5f9788b58ae" name="a5602d986a3cc7ffb88c3c5f9788b58ae"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5602d986a3cc7ffb88c3c5f9788b58ae">&#9670;&#160;</a></span>gPlayerWhiteEffect</h2>
 
@@ -3039,6 +3014,34 @@ Here is the caller graph for this function:</div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> maybeCompilerPadding = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a28b93d1b998104782e9bfadc9b06d110" name="a28b93d1b998104782e9bfadc9b06d110"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28b93d1b998104782e9bfadc9b06d110">&#9670;&#160;</a></span>sKartLowerTexture</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>* sKartLowerTexture</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afdc871a588268600848d34e53439b5a0" name="afdc871a588268600848d34e53439b5a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdc871a588268600848d34e53439b5a0">&#9670;&#160;</a></span>sKartUpperTexture</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>* sKartUpperTexture</td>
         </tr>
       </table>
 </div><div class="memdoc">

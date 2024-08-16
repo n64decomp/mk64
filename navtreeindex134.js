@@ -1,5 +1,11 @@
 var NAVTREEINDEX134 =
 {
+"wario__stadium_2course__data_8h.html#a25cf27d6dcee6e8204d3009d74a4b297":[8,0,0,18,1,41],
+"wario__stadium_2course__data_8h.html#a25efda1180500f8b412d9f1e8ead4463":[8,0,0,18,1,121],
+"wario__stadium_2course__data_8h.html#a29b4182e9e0fa0b52c9aa745798d9d05":[8,0,0,18,1,100],
+"wario__stadium_2course__data_8h.html#a2a0a99aaf093b267d8ecd925da6fb67a":[8,0,0,18,1,76],
+"wario__stadium_2course__data_8h.html#a329ce97789e24dec781065629eee1203":[8,0,0,18,1,96],
+"wario__stadium_2course__data_8h.html#a33ec148bec978033f94ed4ff8f67180b":[8,0,0,18,1,29],
 "wario__stadium_2course__data_8h.html#a3542e550863252940e9cea2b571dd1af":[8,0,0,18,1,60],
 "wario__stadium_2course__data_8h.html#a3bf2bf7ff926d9c488ff732dd0e58765":[8,0,0,18,1,97],
 "wario__stadium_2course__data_8h.html#a3ce03744c1c5564bbaa081591bbea92c":[8,0,0,18,1,110],
@@ -243,11 +249,5 @@ var NAVTREEINDEX134 =
 "wario__stadium_2course__displaylists_8inc_8c.html#a8db4b0f1144e1b922cdeeee8e8ba80bc":[8,0,0,18,2,14],
 "wario__stadium_2course__displaylists_8inc_8c.html#a8e84669d5d26cad8c5fe17dc1c07e56a":[8,0,0,18,2,113],
 "wario__stadium_2course__displaylists_8inc_8c.html#a8f09fcb57c584bbba3880264e65e5aed":[8,0,0,18,2,163],
-"wario__stadium_2course__displaylists_8inc_8c.html#a8f80ab5cda2db2632a6cdecff87152b1":[8,0,0,18,2,232],
-"wario__stadium_2course__displaylists_8inc_8c.html#a905c64dbcc3867f51285f77f376f28cc":[8,0,0,18,2,190],
-"wario__stadium_2course__displaylists_8inc_8c.html#a90fbdbe7271a1e82d91f80d25fb69e7c":[8,0,0,18,2,155],
-"wario__stadium_2course__displaylists_8inc_8c.html#a9101e2125838042d4c3f857a135a5214":[8,0,0,18,2,202],
-"wario__stadium_2course__displaylists_8inc_8c.html#a94571afe2c9f166b2274a7eae6303986":[8,0,0,18,2,244],
-"wario__stadium_2course__displaylists_8inc_8c.html#a966542f83d5c9119fcab713e2d91b223":[8,0,0,18,2,42],
-"wario__stadium_2course__displaylists_8inc_8c.html#a96921d1a257188aa28ceb886f0fc0282":[8,0,0,18,2,99]
+"wario__stadium_2course__displaylists_8inc_8c.html#a8f80ab5cda2db2632a6cdecff87152b1":[8,0,0,18,2,232]
 };

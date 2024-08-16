@@ -1,10 +1,10 @@
 var kart__dma_8c =
 [
-    [ "func_80027560", "kart__dma_8c.html#a3a8a3fb83dbcfa193854a6e1d890abbf", null ],
-    [ "func_80027BDC", "kart__dma_8c.html#ae06a1b1a72f72337f689b5d580544cba", null ],
-    [ "func_80027C74", "kart__dma_8c.html#a46ca62e9031b9b2a6ebc4b9d83c3b43c", null ],
     [ "load_kart_palette", "kart__dma_8c.html#a301918e63abcec0c589c4937a929bcfa", null ],
     [ "load_kart_texture", "kart__dma_8c.html#aac244fa71146e9abe9ee94f82ef2e932", null ],
+    [ "load_kart_texture_non_blocking", "kart__dma_8c.html#ac20009b528ecc201f1f04264d1b32fd4", null ],
+    [ "load_player_data", "kart__dma_8c.html#a56041164eb897332d3b167b653d6c611", null ],
+    [ "load_player_data_non_blocking", "kart__dma_8c.html#aa3d96810e8f3fa88c28d97e130ed4549", null ],
     [ "D_800DDEB0", "kart__dma_8c.html#ab5d0bc34b2a35b5670d87e2ea665c337", null ],
     [ "gKartBowserGroup0", "kart__dma_8c.html#a4799a1a22a3ad508daf8a6cd97a2cd36", null ],
     [ "gKartBowserGroup1", "kart__dma_8c.html#a370e7356c5c193c6867315dc6630e739", null ],

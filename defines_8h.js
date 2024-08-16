@@ -117,20 +117,16 @@ var defines_8h =
     [ "PEACH_SIZE", "defines_8h.html#a8c30f77739a630c34e363e07ee0cfec0", null ],
     [ "PLAYER_CINEMATIC_MODE", "defines_8h.html#a1edbc1a57e8a0fca9767e8a388f9bf2e", null ],
     [ "PLAYER_EXISTS", "defines_8h.html#a697a31ba36158a0ed8ed4facfb70a6c0", null ],
-    [ "PLAYER_FOUR", "defines_8h.html#a63ca00fc44d4c9e0d9c5413e5e3d4392", null ],
     [ "PLAYER_HUMAN", "defines_8h.html#ab30d6efeb8601088397fff50c25c2424", null ],
     [ "PLAYER_HUMAN_AND_KART_AI", "defines_8h.html#a02b38518ca1a46da8de465d7d2f15fe0", null ],
     [ "PLAYER_INACTIVE", "defines_8h.html#ad85c6cabeecd08c022356618d3c2be38", null ],
     [ "PLAYER_INVISIBLE_OR_BOMB", "defines_8h.html#aebaf8f94f6590846be2a947c28c98b88", null ],
     [ "PLAYER_KART_AI", "defines_8h.html#a144310ceaa648b7534eedf72a2358621", null ],
     [ "PLAYER_NUM_SELECTION", "defines_8h.html#ad57e5ea6e4a00d8099b99a002dba755f", null ],
-    [ "PLAYER_ONE", "defines_8h.html#ae27f0ceb7a4d24764ae67f609428ae87", null ],
     [ "PLAYER_SELECT_MENU", "defines_8h.html#ac1b0037a95b0c517c5847df2a1005955", null ],
     [ "PLAYER_SELECT_MENU_FROM_QUIT", "defines_8h.html#add7fdb47f9f48c5770a5f8551afda475", null ],
     [ "PLAYER_STAGING", "defines_8h.html#a9093bd3192a23be12929e545993ce08b", null ],
     [ "PLAYER_START_SEQUENCE", "defines_8h.html#a1b6334b35b2a396b0af09e496444b504", null ],
-    [ "PLAYER_THREE", "defines_8h.html#a5d41f3077ba169fc36eff38dd649528a", null ],
-    [ "PLAYER_TWO", "defines_8h.html#ac5dbf6c39273053d9c04cc9203619505", null ],
     [ "PLAYER_UNKNOWN", "defines_8h.html#ad7e159ec55eae308e0e3b53c8ad3dd1b", null ],
     [ "PLAYER_UNKNOWN_0x40", "defines_8h.html#ab079fbe291edc3435da80019bed0d68e", null ],
     [ "RACING", "defines_8h.html#a9f56a37e87c00c293a2f8db0fc1d6c0c", null ],
@@ -210,5 +206,16 @@ var defines_8h =
       [ "BEHAVIOUR_9", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81a731ead61eccb358ff204c9a9730202ef", null ],
       [ "BEHAVIOUR_10", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81aeea56db11e4b7755a26abe628fcf4f2e", null ],
       [ "BEHAVIOUR_MAX_SPEED", "defines_8h.html#a3ccb7622c7e9f96b4c0a8b28cdcc0f81a3cc89471059d0316076cadb1bd30b67f", null ]
+    ] ],
+    [ "PlayerId", "defines_8h.html#a698be281bf8b3216136b9440f534ca11", [
+      [ "PLAYER_NONE", "defines_8h.html#a698be281bf8b3216136b9440f534ca11a78a76558246d12b89223be028248ad4d", null ],
+      [ "PLAYER_ONE", "defines_8h.html#a698be281bf8b3216136b9440f534ca11ad0d9b4e566d181f9e6233ccd339d1118", null ],
+      [ "PLAYER_TWO", "defines_8h.html#a698be281bf8b3216136b9440f534ca11aa494501c3a6f919c22d62a1114dafa1c", null ],
+      [ "PLAYER_THREE", "defines_8h.html#a698be281bf8b3216136b9440f534ca11ae5ebed8f202b292a95a6ae89e1adad49", null ],
+      [ "PLAYER_FOUR", "defines_8h.html#a698be281bf8b3216136b9440f534ca11a4836b69d029911617da8aed8985b5921", null ],
+      [ "PLAYER_FIVE", "defines_8h.html#a698be281bf8b3216136b9440f534ca11a29ef02733c8fd3b4de72279fda1a7e0e", null ],
+      [ "PLAYER_SIX", "defines_8h.html#a698be281bf8b3216136b9440f534ca11a295ad9e0dad9ad437ac26d97236da4c1", null ],
+      [ "PLAYER_SEVEN", "defines_8h.html#a698be281bf8b3216136b9440f534ca11a2ad713c648befed31568918ed3886bc1", null ],
+      [ "PLAYER_EIGHT", "defines_8h.html#a698be281bf8b3216136b9440f534ca11a567c700ea3cce8bc48320163851567c2", null ]
     ] ]
 ];

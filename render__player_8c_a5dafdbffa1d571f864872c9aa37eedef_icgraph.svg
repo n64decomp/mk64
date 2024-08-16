@@ -48,7 +48,7 @@
 <script type="application/ecmascript">
 var viewWidth = 1552;
 var viewHeight = 758;
-var sectionId = 'dynsection-56';
+var sectionId = 'dynsection-54';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -318,7 +318,7 @@ var sectionId = 'dynsection-56';
 <!-- Node18 -->
 <g id="Node000018" class="node">
 <title>Node18</title>
-<g id="a_Node000018"><a xlink:href="render__player_8c.html#a01499b43d51c6cf4d9f2da56acba5c02" target="_top" xlink:title=" ">
+<g id="a_Node000018"><a xlink:href="render__player_8c.html#a01499b43d51c6cf4d9f2da56acba5c02" target="_top" xlink:title="one of his function is to put the frame to load in to a list to load it to be only applied for the ne...">
 <polygon fill="white" stroke="#666666" points="957,-442 852,-442 852,-423 957,-423 957,-442"/>
 <text text-anchor="middle" x="904.5" y="-430" font-family="Helvetica,sans-Serif" font-size="10.00">init_render_player</text>
 </a>
