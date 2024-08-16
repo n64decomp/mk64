@@ -412,8 +412,8 @@ void func_8000599C(void) {
     u32 temp_t0;
     u32 temp_a0_2;
 
-    if (((D_80162DB8 >= 0x1000) || 
-        ((gPlayerOne->unk_0CA & 2) != 0)) || 
+    if (((D_80162DB8 >= 0x1000) ||
+        ((gPlayerOne->unk_0CA & 2) != 0)) ||
         ((gPlayerOne->unk_0CA & 8) != 0)) {
         D_80162DF8 = 1;
         return;
@@ -458,7 +458,7 @@ void func_8000599C(void) {
 
             temp_t0 += 0x10000;
             D_80162DBC[D_80162DB8] = temp_t0;
-            
+
         }
     } else {
         D_80162DB8++; D_80162DBC[D_80162DB8] = phi_a3;
