@@ -579,7 +579,7 @@ var sectionId = 'dynsection-56';
 <!-- Node20 -->
 <g id="Node000020" class="node">
 <title>Node20</title>
-<g id="a_Node000020"><a xlink:href="memory_8c.html#a7c5fefa42019430ddc37cb3b2e7608cc" target="_top" xlink:title="Allocates memory and adjusts gFreeMemorySize.">
+<g id="a_Node000020"><a xlink:href="memory_8c.html#a08672f1381d39b459aa779748bf40143" target="_top" xlink:title="Allocates memory and adjusts gFreeMemorySize.">
 <polygon fill="white" stroke="#666666" points="432,-191.03 330,-191.03 330,-172.03 432,-172.03 432,-191.03"/>
 <text text-anchor="middle" x="381" y="-179.03" font-family="Helvetica,sans-Serif" font-size="10.00">allocate_memory</text>
 </a>

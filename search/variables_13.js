@@ -164,7 +164,7 @@ var searchData=
   ['spersistentcommonpoolsplit_161',['sPersistentCommonPoolSplit',['../heap_8c.html#ac9c549790372cdde7d11ecbfcea12d43',1,'sPersistentCommonPoolSplit:&#160;heap.c'],['../heap_8h.html#ac9c549790372cdde7d11ecbfcea12d43',1,'sPersistentCommonPoolSplit:&#160;heap.c']]],
   ['spline_162',['spline',['../structObject.html#ad926409c9d53feb94e66c71d8ec92558',1,'Object']]],
   ['spodiumactorlist_163',['sPodiumActorList',['../podium__ceremony__actors_8c.html#a50327f9262d3b1ccf308da06e6e257ee',1,'sPodiumActorList:&#160;podium_ceremony_actors.c'],['../podium__ceremony__actors_8h.html#a50327f9262d3b1ccf308da06e6e257ee',1,'sPodiumActorList:&#160;podium_ceremony_actors.c']]],
-  ['spoolfreespace_164',['sPoolFreeSpace',['../memory_8c.html#a7d14b9ef4822d506cc4e4fa7c15a2767',1,'memory.c']]],
+  ['spoolfreespace_164',['sPoolFreeSpace',['../memory_8c.html#a71ce9258e8a04f5657f17394b9fa8ac9',1,'memory.c']]],
   ['spoollistheadl_165',['sPoolListHeadL',['../memory_8c.html#a5acf731ae5b068194cef9f13e31e03dc',1,'memory.c']]],
   ['spoollistheadr_166',['sPoolListHeadR',['../memory_8c.html#a7e6b81bec34f58da17f2de948ec44dc8',1,'memory.c']]],
   ['sprite_167',['sprite',['../structuObjTxSprite.html#ab7d7553f673fff44c5edd15473b4cd91',1,'uObjTxSprite']]],

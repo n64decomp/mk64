@@ -29,7 +29,7 @@ var collision_8h =
     [ "nullify_displaylist", "collision_8h.html#ad04f3719af9173bf585ec2e0902baebe", null ],
     [ "process_collision", "collision_8h.html#a01f4caef53d13ee192fdbae23290bfaa", null ],
     [ "process_shell_collision", "collision_8h.html#a7d6d7cbd35ab76257acea05550097eaa", null ],
-    [ "set_vertex_colours", "collision_8h.html#a547bc2dcba7057760e3cc69bc5626b68", null ],
+    [ "set_vertex_colours", "collision_8h.html#aaf0c207528a562d4fe836d6d0d904dd8", null ],
     [ "set_vtx_buffer", "collision_8h.html#a64d962d7e19f12e029fb038a5478611b", null ],
     [ "shell_collision", "collision_8h.html#a99aab337d05429f6a81d3ebb18052db7", null ],
     [ "spawn_actor_on_surface", "collision_8h.html#abea1129e3bf97441713011770b3fb20b", null ],

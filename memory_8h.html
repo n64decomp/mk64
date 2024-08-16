@@ -145,9 +145,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:abb118b94798838b451fc4f9895825189" id="r_abb118b94798838b451fc4f9895825189"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abb118b94798838b451fc4f9895825189">get_next_available_memory_addr</a> (<a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="memdesc:abb118b94798838b451fc4f9895825189"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the address of the next available memory location and updates the memory pointer to reference the next location of available memory based provided size to allocate.  <br /></td></tr>
-<tr class="separator:abb118b94798838b451fc4f9895825189"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a965d7e25d594cd29e02ed8b9a482c65d" id="r_a965d7e25d594cd29e02ed8b9a482c65d"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a965d7e25d594cd29e02ed8b9a482c65d">get_next_available_memory_addr</a> (uintptr_t)</td></tr>
+<tr class="memdesc:a965d7e25d594cd29e02ed8b9a482c65d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the address of the next available memory location and updates the memory pointer to reference the next location of available memory based provided size to allocate.  <br /></td></tr>
+<tr class="separator:a965d7e25d594cd29e02ed8b9a482c65d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ec709af22cadacdd15850adb1265d03" id="r_a3ec709af22cadacdd15850adb1265d03"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ec709af22cadacdd15850adb1265d03">set_segment_base_addr</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>, void *)</td></tr>
 <tr class="memdesc:a3ec709af22cadacdd15850adb1265d03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the physical memory addr for segmented memory in <code>gSegmentTable</code> using the segment number as an index.  <br /></td></tr>
 <tr class="separator:a3ec709af22cadacdd15850adb1265d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,42 +164,42 @@ Functions</h2></td></tr>
 <tr class="separator:a512c3e9004244d1a3ba91fecdaa85015"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61bd66cb78e91bc239a0f7a6c9ea8d59" id="r_a61bd66cb78e91bc239a0f7a6c9ea8d59"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61bd66cb78e91bc239a0f7a6c9ea8d59">decompress_segments</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *)</td></tr>
 <tr class="separator:a61bd66cb78e91bc239a0f7a6c9ea8d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8f0e0385ffa4a6cea626875ef785c86" id="r_ac8f0e0385ffa4a6cea626875ef785c86"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac8f0e0385ffa4a6cea626875ef785c86">allocate_memory</a> (<a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="memdesc:ac8f0e0385ffa4a6cea626875ef785c86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates memory and adjusts gFreeMemorySize.  <br /></td></tr>
-<tr class="separator:ac8f0e0385ffa4a6cea626875ef785c86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf31e85b295d4508d571d5aff8c02c5a" id="r_acf31e85b295d4508d571d5aff8c02c5a"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf31e85b295d4508d571d5aff8c02c5a">allocate_memory</a> (size_t)</td></tr>
+<tr class="memdesc:acf31e85b295d4508d571d5aff8c02c5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocates memory and adjusts gFreeMemorySize.  <br /></td></tr>
+<tr class="separator:acf31e85b295d4508d571d5aff8c02c5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62bd0e025f222c732a5fc4cfd737f37a" id="r_a62bd0e025f222c732a5fc4cfd737f37a"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62bd0e025f222c732a5fc4cfd737f37a">load_data</a> (uintptr_t, uintptr_t)</td></tr>
 <tr class="memdesc:a62bd0e025f222c732a5fc4cfd737f37a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate and DMA.  <br /></td></tr>
 <tr class="separator:a62bd0e025f222c732a5fc4cfd737f37a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad108574c2862d6903a3da3c59ef4b06e" id="r_ad108574c2862d6903a3da3c59ef4b06e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad108574c2862d6903a3da3c59ef4b06e">func_802A7D54</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)</td></tr>
 <tr class="separator:ad108574c2862d6903a3da3c59ef4b06e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0478a0dd711d633495462f7092a66a73" id="r_a0478a0dd711d633495462f7092a66a73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0478a0dd711d633495462f7092a66a73">main_pool_init</a> (<a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:a0478a0dd711d633495462f7092a66a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a704eac89b419362bf539034bc51f47fd" id="r_a704eac89b419362bf539034bc51f47fd"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a704eac89b419362bf539034bc51f47fd">main_pool_alloc</a> (<a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:a704eac89b419362bf539034bc51f47fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad197f3a102b0e9df18c35d011214fc09" id="r_ad197f3a102b0e9df18c35d011214fc09"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad197f3a102b0e9df18c35d011214fc09">main_pool_free</a> (void *)</td></tr>
-<tr class="separator:ad197f3a102b0e9df18c35d011214fc09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab78d094eaf63dad9a94ce85dbde75947" id="r_ab78d094eaf63dad9a94ce85dbde75947"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab78d094eaf63dad9a94ce85dbde75947">main_pool_realloc</a> (void *, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:ab78d094eaf63dad9a94ce85dbde75947"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a36376a3e11b1e12cdaa01594fe5acc" id="r_a6a36376a3e11b1e12cdaa01594fe5acc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6a36376a3e11b1e12cdaa01594fe5acc">main_pool_available</a> (void)</td></tr>
-<tr class="separator:a6a36376a3e11b1e12cdaa01594fe5acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c7433c12a6a37aa1b4745c2fb25b87a" id="r_a8c7433c12a6a37aa1b4745c2fb25b87a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c7433c12a6a37aa1b4745c2fb25b87a">main_pool_push_state</a> (void)</td></tr>
-<tr class="separator:a8c7433c12a6a37aa1b4745c2fb25b87a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a837332e49a77de13d576a74056fb46c7" id="r_a837332e49a77de13d576a74056fb46c7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a837332e49a77de13d576a74056fb46c7">main_pool_pop_state</a> (void)</td></tr>
-<tr class="separator:a837332e49a77de13d576a74056fb46c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f4d35518a5ec5fee6a2cbf3c1d0f794" id="r_a1f4d35518a5ec5fee6a2cbf3c1d0f794"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f4d35518a5ec5fee6a2cbf3c1d0f794">main_pool_init</a> (uintptr_t, uintptr_t)</td></tr>
+<tr class="separator:a1f4d35518a5ec5fee6a2cbf3c1d0f794"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62ba44aa35a5ffa90e10259c60e9a229" id="r_a62ba44aa35a5ffa90e10259c60e9a229"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62ba44aa35a5ffa90e10259c60e9a229">main_pool_alloc</a> (uintptr_t, uintptr_t)</td></tr>
+<tr class="separator:a62ba44aa35a5ffa90e10259c60e9a229"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae653f94864d5c6a1b4cd5f3d9ededc3" id="r_aae653f94864d5c6a1b4cd5f3d9ededc3"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae653f94864d5c6a1b4cd5f3d9ededc3">main_pool_free</a> (void *)</td></tr>
+<tr class="separator:aae653f94864d5c6a1b4cd5f3d9ededc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9e0c3b8dc07656f8777f7a3fdd5914b" id="r_aa9e0c3b8dc07656f8777f7a3fdd5914b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9e0c3b8dc07656f8777f7a3fdd5914b">main_pool_realloc</a> (void *, uintptr_t)</td></tr>
+<tr class="separator:aa9e0c3b8dc07656f8777f7a3fdd5914b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe57de3903e2ed3acb35c29651445c5b" id="r_afe57de3903e2ed3acb35c29651445c5b"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe57de3903e2ed3acb35c29651445c5b">main_pool_available</a> (void)</td></tr>
+<tr class="separator:afe57de3903e2ed3acb35c29651445c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65254a5e16776e338be9441acb49e794" id="r_a65254a5e16776e338be9441acb49e794"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65254a5e16776e338be9441acb49e794">main_pool_push_state</a> (void)</td></tr>
+<tr class="separator:a65254a5e16776e338be9441acb49e794"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a0d304f31905bacca06c397e308c047" id="r_a3a0d304f31905bacca06c397e308c047"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a0d304f31905bacca06c397e308c047">main_pool_pop_state</a> (void)</td></tr>
+<tr class="separator:a3a0d304f31905bacca06c397e308c047"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35b6e161358ef80b64f67bb351a2f4f2" id="r_a35b6e161358ef80b64f67bb351a2f4f2"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35b6e161358ef80b64f67bb351a2f4f2">func_802A80B0</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *)</td></tr>
 <tr class="separator:a35b6e161358ef80b64f67bb351a2f4f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ec2d202a143ce6dc0a0ea302f7e864c" id="r_a4ec2d202a143ce6dc0a0ea302f7e864c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ec2d202a143ce6dc0a0ea302f7e864c">func_802A81EC</a> (void)</td></tr>
 <tr class="separator:a4ec2d202a143ce6dc0a0ea302f7e864c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3790c1fabe1e7826c89ba9e2697386e7" id="r_a3790c1fabe1e7826c89ba9e2697386e7"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structAllocOnlyPool.html">AllocOnlyPool</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3790c1fabe1e7826c89ba9e2697386e7">alloc_only_pool_init</a> (<a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:a3790c1fabe1e7826c89ba9e2697386e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c6e8d834720c77ad4afeda1807c161f" id="r_a4c6e8d834720c77ad4afeda1807c161f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c6e8d834720c77ad4afeda1807c161f">func_802A82AC</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)</td></tr>
-<tr class="separator:a4c6e8d834720c77ad4afeda1807c161f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac161fc444e9aa193e6e3b1ee484e9a16" id="r_ac161fc444e9aa193e6e3b1ee484e9a16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac161fc444e9aa193e6e3b1ee484e9a16">func_802A8348</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)</td></tr>
-<tr class="separator:ac161fc444e9aa193e6e3b1ee484e9a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55d75ae72531bea2f9b06d7a4addb819" id="r_a55d75ae72531bea2f9b06d7a4addb819"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structAllocOnlyPool.html">AllocOnlyPool</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55d75ae72531bea2f9b06d7a4addb819">alloc_only_pool_init</a> (uintptr_t, uintptr_t)</td></tr>
+<tr class="separator:a55d75ae72531bea2f9b06d7a4addb819"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a871b62b55eca3e10de592b1b09ac1ea5" id="r_a871b62b55eca3e10de592b1b09ac1ea5"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a871b62b55eca3e10de592b1b09ac1ea5">func_802A82AC</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)</td></tr>
+<tr class="separator:a871b62b55eca3e10de592b1b09ac1ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7eede738f2a0af1893bb5e5c5e52dca" id="r_ab7eede738f2a0af1893bb5e5c5e52dca"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7eede738f2a0af1893bb5e5c5e52dca">func_802A8348</a> (<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)</td></tr>
+<tr class="separator:ab7eede738f2a0af1893bb5e5c5e52dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf3a6633e9ecc6ccebb184df9dbffa5d" id="r_abf3a6633e9ecc6ccebb184df9dbffa5d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf3a6633e9ecc6ccebb184df9dbffa5d">dma_textures</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
 <tr class="separator:abf3a6633e9ecc6ccebb184df9dbffa5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a248ba4fb16f04ad8aa478c0c427d981a" id="r_a248ba4fb16f04ad8aa478c0c427d981a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a248ba4fb16f04ad8aa478c0c427d981a">MIO0_0F</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:a248ba4fb16f04ad8aa478c0c427d981a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3291d400b4e265559e894e400cdea4ae" id="r_a3291d400b4e265559e894e400cdea4ae"><td class="memItemLeft" align="right" valign="top">uintptr_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3291d400b4e265559e894e400cdea4ae">MIO0_0F</a> (<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, uintptr_t, uintptr_t)</td></tr>
+<tr class="separator:a3291d400b4e265559e894e400cdea4ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a21fe83456f822726fd10e0b190923172" id="r_a21fe83456f822726fd10e0b190923172"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21fe83456f822726fd10e0b190923172">func_802A8844</a> (void)</td></tr>
 <tr class="separator:a21fe83456f822726fd10e0b190923172"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14811b20ea44141f31ba87f6498c6fc9" id="r_a14811b20ea44141f31ba87f6498c6fc9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14811b20ea44141f31ba87f6498c6fc9">unpack_lights</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>)</td></tr>
@@ -214,26 +214,26 @@ Functions</h2></td></tr>
 <tr class="separator:a7cf51ab9d41d341979d7815ecb9cac0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb8ec29be4c6c7b557c4c9ab12a91eb1" id="r_acb8ec29be4c6c7b557c4c9ab12a91eb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb8ec29be4c6c7b557c4c9ab12a91eb1">unpack_cull_displaylist</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>)</td></tr>
 <tr class="separator:acb8ec29be4c6c7b557c4c9ab12a91eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5123942170fa02b5a4f56e9b8a5d104" id="r_ac5123942170fa02b5a4f56e9b8a5d104"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5123942170fa02b5a4f56e9b8a5d104">unpack_combine_mode1</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:ac5123942170fa02b5a4f56e9b8a5d104"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9cd691b52d22763aac9134d894d94fb" id="r_aa9cd691b52d22763aac9134d894d94fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9cd691b52d22763aac9134d894d94fb">unpack_combine_mode2</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:aa9cd691b52d22763aac9134d894d94fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ecd7f6e634a4bab5099b97c028bcfb3" id="r_a9ecd7f6e634a4bab5099b97c028bcfb3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ecd7f6e634a4bab5099b97c028bcfb3">unpack_combine_mode_shade</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:a9ecd7f6e634a4bab5099b97c028bcfb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3d74803c80b4e660f8813f74ff87945" id="r_ad3d74803c80b4e660f8813f74ff87945"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3d74803c80b4e660f8813f74ff87945">unpack_combine_mode4</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:ad3d74803c80b4e660f8813f74ff87945"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c9a1972c3a40e787973a934f67e9e71" id="r_a5c9a1972c3a40e787973a934f67e9e71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c9a1972c3a40e787973a934f67e9e71">unpack_combine_mode5</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:a5c9a1972c3a40e787973a934f67e9e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a572fa92d704370565e325f9267879b" id="r_a7a572fa92d704370565e325f9267879b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7a572fa92d704370565e325f9267879b">unpack_render_mode_opaque</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:a7a572fa92d704370565e325f9267879b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a176316c171be41a86f6fbe62004840" id="r_a3a176316c171be41a86f6fbe62004840"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a176316c171be41a86f6fbe62004840">unpack_render_mode_tex_edge</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:a3a176316c171be41a86f6fbe62004840"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a827f8b1625bc7f2e032c7dee8c72b978" id="r_a827f8b1625bc7f2e032c7dee8c72b978"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a827f8b1625bc7f2e032c7dee8c72b978">unpack_render_mode_translucent</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:a827f8b1625bc7f2e032c7dee8c72b978"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a451f201ad336f48a3a8111c41b1cbcd1" id="r_a451f201ad336f48a3a8111c41b1cbcd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a451f201ad336f48a3a8111c41b1cbcd1">unpack_render_mode_opaque_decal</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:a451f201ad336f48a3a8111c41b1cbcd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f5d5758d4258133628f1af536e4dbbb" id="r_a8f5d5758d4258133628f1af536e4dbbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f5d5758d4258133628f1af536e4dbbb">unpack_render_mode_translucent_decal</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)</td></tr>
-<tr class="separator:a8f5d5758d4258133628f1af536e4dbbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f3590983b3df0ddcf069021f14c7771" id="r_a1f3590983b3df0ddcf069021f14c7771"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f3590983b3df0ddcf069021f14c7771">unpack_combine_mode1</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, uintptr_t)</td></tr>
+<tr class="separator:a1f3590983b3df0ddcf069021f14c7771"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9fc911fe1b11689cb2747e4f9ee827e4" id="r_a9fc911fe1b11689cb2747e4f9ee827e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fc911fe1b11689cb2747e4f9ee827e4">unpack_combine_mode2</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, uintptr_t)</td></tr>
+<tr class="separator:a9fc911fe1b11689cb2747e4f9ee827e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a984dc86c6ecc2bf1d208bd08df154564" id="r_a984dc86c6ecc2bf1d208bd08df154564"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a984dc86c6ecc2bf1d208bd08df154564">unpack_combine_mode_shade</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, uintptr_t)</td></tr>
+<tr class="separator:a984dc86c6ecc2bf1d208bd08df154564"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25c68ab04f17587642de4eacb7354467" id="r_a25c68ab04f17587642de4eacb7354467"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25c68ab04f17587642de4eacb7354467">unpack_combine_mode4</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, uintptr_t)</td></tr>
+<tr class="separator:a25c68ab04f17587642de4eacb7354467"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7639eaafb2d4aca1787db1f12cbdc530" id="r_a7639eaafb2d4aca1787db1f12cbdc530"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7639eaafb2d4aca1787db1f12cbdc530">unpack_combine_mode5</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, uintptr_t)</td></tr>
+<tr class="separator:a7639eaafb2d4aca1787db1f12cbdc530"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8baf5bf71679d0833f6380c89e37936" id="r_af8baf5bf71679d0833f6380c89e37936"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8baf5bf71679d0833f6380c89e37936">unpack_render_mode_opaque</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, uintptr_t)</td></tr>
+<tr class="separator:af8baf5bf71679d0833f6380c89e37936"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8177e758ab7cd50bf1dfdf56d62ca29" id="r_aa8177e758ab7cd50bf1dfdf56d62ca29"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa8177e758ab7cd50bf1dfdf56d62ca29">unpack_render_mode_tex_edge</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, uintptr_t)</td></tr>
+<tr class="separator:aa8177e758ab7cd50bf1dfdf56d62ca29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02b90920a307907aab16d7d44a9da700" id="r_a02b90920a307907aab16d7d44a9da700"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02b90920a307907aab16d7d44a9da700">unpack_render_mode_translucent</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, uintptr_t)</td></tr>
+<tr class="separator:a02b90920a307907aab16d7d44a9da700"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57159e529d24a3168e05681291f1b73c" id="r_a57159e529d24a3168e05681291f1b73c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a57159e529d24a3168e05681291f1b73c">unpack_render_mode_opaque_decal</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, uintptr_t)</td></tr>
+<tr class="separator:a57159e529d24a3168e05681291f1b73c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58a6cda30c79f9dd78694217c505cdf2" id="r_a58a6cda30c79f9dd78694217c505cdf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58a6cda30c79f9dd78694217c505cdf2">unpack_render_mode_translucent_decal</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, uintptr_t)</td></tr>
+<tr class="separator:a58a6cda30c79f9dd78694217c505cdf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a733a97b6df019cea130dd9f97e16be6c" id="r_a733a97b6df019cea130dd9f97e16be6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a733a97b6df019cea130dd9f97e16be6c">unpack_tile_sync</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>)</td></tr>
 <tr class="separator:a733a97b6df019cea130dd9f97e16be6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8c631d128b88ab023a707d0dd5fc040" id="r_ad8c631d128b88ab023a707d0dd5fc040"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad8c631d128b88ab023a707d0dd5fc040">unpack_tile_load_sync</a> (Gfx *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <a class="el" href="ultratypes_8h.html#a151f780fb455885061d3b77ec1c90c03">s8</a>)</td></tr>
@@ -300,8 +300,8 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a3790c1fabe1e7826c89ba9e2697386e7" name="a3790c1fabe1e7826c89ba9e2697386e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3790c1fabe1e7826c89ba9e2697386e7">&#9670;&#160;</a></span>alloc_only_pool_init()</h2>
+<a id="a55d75ae72531bea2f9b06d7a4addb819" name="a55d75ae72531bea2f9b06d7a4addb819"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55d75ae72531bea2f9b06d7a4addb819">&#9670;&#160;</a></span>alloc_only_pool_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -309,25 +309,25 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">struct <a class="el" href="structAllocOnlyPool.html">AllocOnlyPool</a> * alloc_only_pool_init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em>side</em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>side</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="memory_8h_a3790c1fabe1e7826c89ba9e2697386e7_cgraph.svg" width="338" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="memory_8h_a55d75ae72531bea2f9b06d7a4addb819_cgraph.svg" width="338" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="ac8f0e0385ffa4a6cea626875ef785c86" name="ac8f0e0385ffa4a6cea626875ef785c86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac8f0e0385ffa4a6cea626875ef785c86">&#9670;&#160;</a></span>allocate_memory()</h2>
+<a id="acf31e85b295d4508d571d5aff8c02c5a" name="acf31e85b295d4508d571d5aff8c02c5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf31e85b295d4508d571d5aff8c02c5a">&#9670;&#160;</a></span>allocate_memory()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -335,7 +335,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void * allocate_memory </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -345,7 +345,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="memory_8h_ac8f0e0385ffa4a6cea626875ef785c86_icgraph.svg" width="100%" height="430"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="memory_8h_acf31e85b295d4508d571d5aff8c02c5a_icgraph.svg" width="100%" height="430"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -486,14 +486,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a4c6e8d834720c77ad4afeda1807c161f" name="a4c6e8d834720c77ad4afeda1807c161f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c6e8d834720c77ad4afeda1807c161f">&#9670;&#160;</a></span>func_802A82AC()</h2>
+<a id="a871b62b55eca3e10de592b1b09ac1ea5" name="a871b62b55eca3e10de592b1b09ac1ea5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a871b62b55eca3e10de592b1b09ac1ea5">&#9670;&#160;</a></span>func_802A82AC()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> func_802A82AC </td>
+          <td class="memname">uintptr_t func_802A82AC </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span></td><td>)</td>
           <td></td>
@@ -503,14 +503,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="ac161fc444e9aa193e6e3b1ee484e9a16" name="ac161fc444e9aa193e6e3b1ee484e9a16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac161fc444e9aa193e6e3b1ee484e9a16">&#9670;&#160;</a></span>func_802A8348()</h2>
+<a id="ab7eede738f2a0af1893bb5e5c5e52dca" name="ab7eede738f2a0af1893bb5e5c5e52dca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7eede738f2a0af1893bb5e5c5e52dca">&#9670;&#160;</a></span>func_802A8348()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> func_802A8348 </td>
+          <td class="memname">uintptr_t func_802A8348 </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a></td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
         </tr>
@@ -529,7 +529,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="memory_8h_ac161fc444e9aa193e6e3b1ee484e9a16_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="memory_8h_ab7eede738f2a0af1893bb5e5c5e52dca_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -551,8 +551,8 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="abb118b94798838b451fc4f9895825189" name="abb118b94798838b451fc4f9895825189"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb118b94798838b451fc4f9895825189">&#9670;&#160;</a></span>get_next_available_memory_addr()</h2>
+<a id="a965d7e25d594cd29e02ed8b9a482c65d" name="a965d7e25d594cd29e02ed8b9a482c65d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a965d7e25d594cd29e02ed8b9a482c65d">&#9670;&#160;</a></span>get_next_available_memory_addr()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -560,7 +560,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="memname">void * get_next_available_memory_addr </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -577,7 +577,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="memory_8h_abb118b94798838b451fc4f9895825189_icgraph.svg" width="100%" height="588"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="memory_8h_a965d7e25d594cd29e02ed8b9a482c65d_icgraph.svg" width="100%" height="588"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -704,8 +704,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a704eac89b419362bf539034bc51f47fd" name="a704eac89b419362bf539034bc51f47fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a704eac89b419362bf539034bc51f47fd">&#9670;&#160;</a></span>main_pool_alloc()</h2>
+<a id="a62ba44aa35a5ffa90e10259c60e9a229" name="a62ba44aa35a5ffa90e10259c60e9a229"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62ba44aa35a5ffa90e10259c60e9a229">&#9670;&#160;</a></span>main_pool_alloc()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -713,12 +713,12 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void * main_pool_alloc </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em>side</em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>side</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -726,19 +726,19 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="memory_8h_a704eac89b419362bf539034bc51f47fd_icgraph.svg" width="100%" height="438"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="memory_8h_a62ba44aa35a5ffa90e10259c60e9a229_icgraph.svg" width="100%" height="438"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
 </div>
-<a id="a6a36376a3e11b1e12cdaa01594fe5acc" name="a6a36376a3e11b1e12cdaa01594fe5acc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a36376a3e11b1e12cdaa01594fe5acc">&#9670;&#160;</a></span>main_pool_available()</h2>
+<a id="afe57de3903e2ed3acb35c29651445c5b" name="afe57de3903e2ed3acb35c29651445c5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe57de3903e2ed3acb35c29651445c5b">&#9670;&#160;</a></span>main_pool_available()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> main_pool_available </td>
+          <td class="memname">uintptr_t main_pool_available </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -748,14 +748,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ad197f3a102b0e9df18c35d011214fc09" name="ad197f3a102b0e9df18c35d011214fc09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad197f3a102b0e9df18c35d011214fc09">&#9670;&#160;</a></span>main_pool_free()</h2>
+<a id="aae653f94864d5c6a1b4cd5f3d9ededc3" name="aae653f94864d5c6a1b4cd5f3d9ededc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae653f94864d5c6a1b4cd5f3d9ededc3">&#9670;&#160;</a></span>main_pool_free()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> main_pool_free </td>
+          <td class="memname">uintptr_t main_pool_free </td>
           <td>(</td>
           <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>addr</em></span></td><td>)</td>
           <td></td>
@@ -766,13 +766,13 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="memory_8h_ad197f3a102b0e9df18c35d011214fc09_icgraph.svg" width="323" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="memory_8h_aae653f94864d5c6a1b4cd5f3d9ededc3_icgraph.svg" width="323" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="a0478a0dd711d633495462f7092a66a73" name="a0478a0dd711d633495462f7092a66a73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0478a0dd711d633495462f7092a66a73">&#9670;&#160;</a></span>main_pool_init()</h2>
+<a id="a1f4d35518a5ec5fee6a2cbf3c1d0f794" name="a1f4d35518a5ec5fee6a2cbf3c1d0f794"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f4d35518a5ec5fee6a2cbf3c1d0f794">&#9670;&#160;</a></span>main_pool_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -780,26 +780,26 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="memname">void main_pool_init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em>end</em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>end</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a837332e49a77de13d576a74056fb46c7" name="a837332e49a77de13d576a74056fb46c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a837332e49a77de13d576a74056fb46c7">&#9670;&#160;</a></span>main_pool_pop_state()</h2>
+<a id="a3a0d304f31905bacca06c397e308c047" name="a3a0d304f31905bacca06c397e308c047"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a0d304f31905bacca06c397e308c047">&#9670;&#160;</a></span>main_pool_pop_state()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> main_pool_pop_state </td>
+          <td class="memname">uintptr_t main_pool_pop_state </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -810,14 +810,14 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a8c7433c12a6a37aa1b4745c2fb25b87a" name="a8c7433c12a6a37aa1b4745c2fb25b87a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c7433c12a6a37aa1b4745c2fb25b87a">&#9670;&#160;</a></span>main_pool_push_state()</h2>
+<a id="a65254a5e16776e338be9441acb49e794" name="a65254a5e16776e338be9441acb49e794"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65254a5e16776e338be9441acb49e794">&#9670;&#160;</a></span>main_pool_push_state()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> main_pool_push_state </td>
+          <td class="memname">uintptr_t main_pool_push_state </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -827,13 +827,13 @@ Here is the caller graph for this function:</div>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="memory_8h_a8c7433c12a6a37aa1b4745c2fb25b87a_cgraph.svg" width="355" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="memory_8h_a65254a5e16776e338be9441acb49e794_cgraph.svg" width="355" height="36"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="ab78d094eaf63dad9a94ce85dbde75947" name="ab78d094eaf63dad9a94ce85dbde75947"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab78d094eaf63dad9a94ce85dbde75947">&#9670;&#160;</a></span>main_pool_realloc()</h2>
+<a id="aa9e0c3b8dc07656f8777f7a3fdd5914b" name="aa9e0c3b8dc07656f8777f7a3fdd5914b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9e0c3b8dc07656f8777f7a3fdd5914b">&#9670;&#160;</a></span>main_pool_realloc()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -846,50 +846,50 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>size</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="memory_8h_ab78d094eaf63dad9a94ce85dbde75947_cgraph.svg" width="328" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="memory_8h_aa9e0c3b8dc07656f8777f7a3fdd5914b_cgraph.svg" width="328" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="a248ba4fb16f04ad8aa478c0c427d981a" name="a248ba4fb16f04ad8aa478c0c427d981a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a248ba4fb16f04ad8aa478c0c427d981a">&#9670;&#160;</a></span>MIO0_0F()</h2>
+<a id="a3291d400b4e265559e894e400cdea4ae" name="a3291d400b4e265559e894e400cdea4ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3291d400b4e265559e894e400cdea4ae">&#9670;&#160;</a></span>MIO0_0F()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> MIO0_0F </td>
+          <td class="memname">uintptr_t MIO0_0F </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *</td>          <td class="paramname"><span class="paramname"><em>arg0</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>, </td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>arg1</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em>arg2</em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em>arg2</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="memory_8h_a248ba4fb16f04ad8aa478c0c427d981a_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="memory_8h_a3291d400b4e265559e894e400cdea4ae_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="memory_8h_a248ba4fb16f04ad8aa478c0c427d981a_icgraph.svg" width="100%" height="401"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="memory_8h_a3291d400b4e265559e894e400cdea4ae_icgraph.svg" width="100%" height="401"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>
@@ -1003,8 +1003,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ac5123942170fa02b5a4f56e9b8a5d104" name="ac5123942170fa02b5a4f56e9b8a5d104"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5123942170fa02b5a4f56e9b8a5d104">&#9670;&#160;</a></span>unpack_combine_mode1()</h2>
+<a id="a1f3590983b3df0ddcf069021f14c7771" name="a1f3590983b3df0ddcf069021f14c7771"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f3590983b3df0ddcf069021f14c7771">&#9670;&#160;</a></span>unpack_combine_mode1()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1022,15 +1022,15 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="aa9cd691b52d22763aac9134d894d94fb" name="aa9cd691b52d22763aac9134d894d94fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9cd691b52d22763aac9134d894d94fb">&#9670;&#160;</a></span>unpack_combine_mode2()</h2>
+<a id="a9fc911fe1b11689cb2747e4f9ee827e4" name="a9fc911fe1b11689cb2747e4f9ee827e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fc911fe1b11689cb2747e4f9ee827e4">&#9670;&#160;</a></span>unpack_combine_mode2()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1048,15 +1048,15 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ad3d74803c80b4e660f8813f74ff87945" name="ad3d74803c80b4e660f8813f74ff87945"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3d74803c80b4e660f8813f74ff87945">&#9670;&#160;</a></span>unpack_combine_mode4()</h2>
+<a id="a25c68ab04f17587642de4eacb7354467" name="a25c68ab04f17587642de4eacb7354467"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25c68ab04f17587642de4eacb7354467">&#9670;&#160;</a></span>unpack_combine_mode4()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1074,15 +1074,15 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a5c9a1972c3a40e787973a934f67e9e71" name="a5c9a1972c3a40e787973a934f67e9e71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c9a1972c3a40e787973a934f67e9e71">&#9670;&#160;</a></span>unpack_combine_mode5()</h2>
+<a id="a7639eaafb2d4aca1787db1f12cbdc530" name="a7639eaafb2d4aca1787db1f12cbdc530"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7639eaafb2d4aca1787db1f12cbdc530">&#9670;&#160;</a></span>unpack_combine_mode5()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1100,15 +1100,15 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a9ecd7f6e634a4bab5099b97c028bcfb3" name="a9ecd7f6e634a4bab5099b97c028bcfb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ecd7f6e634a4bab5099b97c028bcfb3">&#9670;&#160;</a></span>unpack_combine_mode_shade()</h2>
+<a id="a984dc86c6ecc2bf1d208bd08df154564" name="a984dc86c6ecc2bf1d208bd08df154564"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a984dc86c6ecc2bf1d208bd08df154564">&#9670;&#160;</a></span>unpack_combine_mode_shade()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1126,7 +1126,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1237,8 +1237,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="a7a572fa92d704370565e325f9267879b" name="a7a572fa92d704370565e325f9267879b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a572fa92d704370565e325f9267879b">&#9670;&#160;</a></span>unpack_render_mode_opaque()</h2>
+<a id="af8baf5bf71679d0833f6380c89e37936" name="af8baf5bf71679d0833f6380c89e37936"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8baf5bf71679d0833f6380c89e37936">&#9670;&#160;</a></span>unpack_render_mode_opaque()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1256,15 +1256,15 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a451f201ad336f48a3a8111c41b1cbcd1" name="a451f201ad336f48a3a8111c41b1cbcd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a451f201ad336f48a3a8111c41b1cbcd1">&#9670;&#160;</a></span>unpack_render_mode_opaque_decal()</h2>
+<a id="a57159e529d24a3168e05681291f1b73c" name="a57159e529d24a3168e05681291f1b73c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57159e529d24a3168e05681291f1b73c">&#9670;&#160;</a></span>unpack_render_mode_opaque_decal()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1282,15 +1282,15 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a3a176316c171be41a86f6fbe62004840" name="a3a176316c171be41a86f6fbe62004840"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a176316c171be41a86f6fbe62004840">&#9670;&#160;</a></span>unpack_render_mode_tex_edge()</h2>
+<a id="aa8177e758ab7cd50bf1dfdf56d62ca29" name="aa8177e758ab7cd50bf1dfdf56d62ca29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8177e758ab7cd50bf1dfdf56d62ca29">&#9670;&#160;</a></span>unpack_render_mode_tex_edge()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1308,15 +1308,15 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a827f8b1625bc7f2e032c7dee8c72b978" name="a827f8b1625bc7f2e032c7dee8c72b978"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a827f8b1625bc7f2e032c7dee8c72b978">&#9670;&#160;</a></span>unpack_render_mode_translucent()</h2>
+<a id="a02b90920a307907aab16d7d44a9da700" name="a02b90920a307907aab16d7d44a9da700"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02b90920a307907aab16d7d44a9da700">&#9670;&#160;</a></span>unpack_render_mode_translucent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1334,15 +1334,15 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a8f5d5758d4258133628f1af536e4dbbb" name="a8f5d5758d4258133628f1af536e4dbbb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f5d5758d4258133628f1af536e4dbbb">&#9670;&#160;</a></span>unpack_render_mode_translucent_decal()</h2>
+<a id="a58a6cda30c79f9dd78694217c505cdf2" name="a58a6cda30c79f9dd78694217c505cdf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58a6cda30c79f9dd78694217c505cdf2">&#9670;&#160;</a></span>unpack_render_mode_translucent_decal()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1360,7 +1360,7 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+          <td class="paramtype">uintptr_t</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
