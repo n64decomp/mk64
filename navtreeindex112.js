@@ -1,6 +1,5 @@
 var NAVTREEINDEX112 =
 {
-"structNoteSynthesisBuffers.html#a9d4d07634479fb01af35a8ca7ff09228":[7,0,110,0],
 "structNoteSynthesisState.html":[7,0,111],
 "structNoteSynthesisState.html#a0f770687b9abc6693e6469c9205b7753":[7,0,111,7],
 "structNoteSynthesisState.html#a170d62b265b5dfbbe7100c42d8e1d4ed":[7,0,111,8],
@@ -249,5 +248,6 @@ var NAVTREEINDEX112 =
 "structPlayer.html":[7,0,137],
 "structPlayer.html#a02e4ec85128574f5c7eb042210ac8ea3":[7,0,137,48],
 "structPlayer.html#a076f84de4c1db8c01ff5f40f46da6044":[7,0,137,80],
-"structPlayer.html#a094bd4b99f6e5526014ac7a366b680d7":[7,0,137,111]
+"structPlayer.html#a094bd4b99f6e5526014ac7a366b680d7":[7,0,137,111],
+"structPlayer.html#a094cfc6c7a7b18722c02afb5bf70be52":[7,0,137,8]
 };

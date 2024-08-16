@@ -1,6 +1,5 @@
 var NAVTREEINDEX108 =
 {
-"spawn__players_8h_source.html":[8,0,3,58],
 "spline_8h.html":[8,0,2,19],
 "spline_8h_source.html":[8,0,2,19],
 "sprintf_8c.html":[8,0,3,6,119],
@@ -249,5 +248,6 @@ var NAVTREEINDEX108 =
 "startup__logo_8h.html#af0e199e382af4fe0b780a7b5fe4ff777":[8,0,2,0,5,63],
 "startup__logo_8h.html#af2cdc7483dda40c4fb6e27203491ff35":[8,0,2,0,5,43],
 "startup__logo_8h.html#afe435ab497b13bdfbb85abb955c2cd9f":[8,0,2,0,5,76],
-"startup__logo_8h_source.html":[8,0,2,0,5]
+"startup__logo_8h_source.html":[8,0,2,0,5],
+"stdarg_8h.html":[8,0,2,1,1]
 };

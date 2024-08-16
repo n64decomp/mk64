@@ -1,6 +1,5 @@
 var NAVTREEINDEX114 =
 {
-"structSequenceChannel.html#af596e19276966daf55729d4d524a78cb":[7,0,153,47],
 "structSequenceChannelLayer.html":[7,0,154],
 "structSequenceChannelLayer.html#a00e24f8febfa4f5c1a26ebf912bf78c0":[7,0,154,13],
 "structSequenceChannelLayer.html#a0f5eeb2ab57cf73380e19da1897965d6":[7,0,154,25],
@@ -249,5 +248,6 @@ var NAVTREEINDEX114 =
 "structTripleShellParent.html#a4fcf64256c3c06258809ee9a0871f6b6":[7,0,207,7],
 "structTripleShellParent.html#a6f46018f343929e837263418298da3a2":[7,0,207,2],
 "structTripleShellParent.html#a767e1128055034a8ffa0ee37b29042f7":[7,0,207,11],
-"structTripleShellParent.html#a9f53226334d467678c1b06c8dcc9a271":[7,0,207,0]
+"structTripleShellParent.html#a9f53226334d467678c1b06c8dcc9a271":[7,0,207,0],
+"structTripleShellParent.html#ab112cfcae0d742c9c6ffdf56f90cf932":[7,0,207,10]
 };
