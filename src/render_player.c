@@ -713,7 +713,7 @@ void mtxf_scale2(Mat4 arg0, f32 scale) {
  * This function writes a fixed-point value to each Mtx entry. This is not how the Mtx struct works.
  * The first half of Mtx only holds s16 whole numbers and the second half holds the s16 decimal (fractional) parts.
  * See convert_to_fixed_point_matrix() for correct calculations. Note that each Mtx entry is the size of s32.
- * This means each Mtx entry holds two s16 values. 
+ * This means each Mtx entry holds two s16 values.
  * The first sixteen entries contain only the integer parts and the second sixteen entries hold only the decimal (fractional) parts.
  */
 UNUSED void failed_fixed_point_matrix_conversion(Mtx *dest, Mat4 src) {
@@ -1299,7 +1299,7 @@ void render_player_shadow(Player *player, s8 playerId, s8 screenId) {
     convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[playerId + (screenId * 8)], sp118);
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[playerId + (screenId * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    
+
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D474, G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR
@@ -1307,14 +1307,14 @@ void render_player_shadow(Player *player, s8 playerId, s8 screenId) {
     func_8004B414(0, 0, 0, 0xFF);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
     gSPVertex(gDisplayListHead++, &D_800E51D0[0], 4, 0);
-    
+
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gDPLoadTextureBlock(gDisplayListHead++, (D_8018D474 + SOME_TEXTURE_POINTER_MATH), G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR
         | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     func_8004B414(0, 0, 0, 0xFF);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
     gSPVertex(gDisplayListHead++, &D_800E5210[0], 4, 0);
-    
+
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
@@ -1349,9 +1349,9 @@ void render_player_shadow_credits(Player *player, s8 playerId, s8 arg2) {
     mtxf_translate_rotate(sp118, spCC, spC4);
     mtxf_scale2(sp118, gCharacterSize[player->characterId] * player->size);
     convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[playerId + (arg2 * 8)], sp118);
-    
+
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    
+
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D474, G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0,
@@ -1359,14 +1359,14 @@ void render_player_shadow_credits(Player *player, s8 playerId, s8 arg2) {
     func_8004B414(0, 0, 0, 0x000000D0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
     gSPVertex(gDisplayListHead++, &D_800E51D0[0], 4, 0);
-    
+
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gDPLoadTextureBlock(gDisplayListHead++, (D_8018D474 + SOME_TEXTURE_POINTER_MATH), G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0,
         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     func_8004B414(0, 0, 0, 0x000000D0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
     gSPVertex(gDisplayListHead++, &D_800E5210[0], 4, 0);
-    
+
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }

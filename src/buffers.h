@@ -3,7 +3,7 @@
 
 #include <PR/ultratypes.h>
 #include <mk64.h>
-#include "common_structs.h"
+#include <common_structs.h>
 
 /*
  * This type could reasonably be called decodedTexture or similar
@@ -52,7 +52,7 @@ typedef struct {
  * Appears to be a combination of 2 different palettes:
  *   kart_palette contains the palette for all non-wheel elements of the kart (including the driver).
  *   wheel_palette contains the palette for the wheels.
- * 
+ *
  * kart palette sets a defined palette based on the character while
  * wheels palette sets a dynamic palette as you drive around with the kart.
  *

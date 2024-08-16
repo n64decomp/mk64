@@ -1523,7 +1523,7 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
 
     if (!func_800B4520()) {
         switch (D_8018EDEE) {
-        case 1: 
+        case 1:
         {
             saved_selection = gCharacterGridSelections[arg1];
             if (saved_selection == 0) {
@@ -1537,7 +1537,7 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
             if (btnAndStick & B_BUTTON) {
                 if (D_8018EDE8[arg1]) {
                     D_8018EDE8[arg1] = false;
-                    play_sound2(0x49008002);
+                    play_sound2(SOUND_MENU_GO_BACK);
                 } else {
                     func_8009E208();
                     play_sound2(0x49008002);
@@ -1564,7 +1564,7 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
                 func_800B44AC();
                 gMenuTimingCounter = 0;
             }
-            
+
             // L800B3768
             if (D_8018EDE8[arg1] == 0) {
                 if ((btnAndStick & CONT_RIGHT) && (btnAndStick & CONT_DOWN)) {
@@ -1670,7 +1670,7 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
             if (btnAndStick & B_BUTTON) {
                 D_8018EDEE = 1;
                 D_8018EDE8[arg1] = false;
-                play_sound2(0x49008002);
+                play_sound2(SOUND_MENU_GO_BACK);
                 break;
             }
             if (btnAndStick & A_BUTTON) {

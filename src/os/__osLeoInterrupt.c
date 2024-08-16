@@ -1,4 +1,4 @@
-#include "ultra64.h"
+#include <ultra64.h>
 #include "osint.h"
 #include "piint.h"
 #include "libultra_internal.h"

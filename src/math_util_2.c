@@ -502,7 +502,7 @@ void mtfx_translation_x_y(Mat4 arg0, s32 x, s32 y) {
      * 1 0 0 x
      * 0 1 0 y
      * 0 0 1 0
-     * 0 0 0 1    
+     * 0 0 0 1
      */
 }
 
@@ -944,10 +944,10 @@ void vec3f_rotate_x_y(Vec3f dest, Vec3f pos, Vec3s rot) {
 
 /**
  * @brief set the matrix to a transformation matrix
- * 
+ *
  * @param translate or position
- * @param orientation 
- * @param scale 
+ * @param orientation
+ * @param scale
  */
 void rsp_set_matrix_transformation(Vec3f translate, Vec3su orientation, f32 scale) {
     Mat4 matrix;
