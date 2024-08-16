@@ -116,6 +116,7 @@ $(function(){initNavTree('toads__turnpike_2course__data_8c.html',''); initResiza
 <code>#include &lt;<a class="el" href="actor__types_8h_source.html">actor_types.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="toads__turnpike_2course__displaylists_8inc_8h_source.html">course_displaylists.inc.h</a>&quot;</code><br />
 <code>#include &quot;assets/courses/toads_turnpike/gTextureToadsTurnpikeTruckWindshieldLeft.inc.c&quot;</code><br />
 <code>#include &quot;assets/courses/toads_turnpike/gTextureToadsTurnpikeTruckWindshieldRight.inc.c&quot;</code><br />
@@ -154,7 +155,7 @@ $(function(){initNavTree('toads__turnpike_2course__data_8c.html',''); initResiza
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for course_data.c:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="toads__turnpike_2course__data_8c__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="toads__turnpike_2course__data_8c__incl.svg" width="100%" height="580"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
@@ -947,30 +948,32 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a0d975a12f68ccd34722767052ee21363">d_course_toads_turnpike_packed_dl_32A0</a>, 1, 1, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#ad9ae2eb6272084fcc3b4e1a0e7b1abeb">d_course_toads_turnpike_packed_dl_33A8</a>, 1, 2, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a4f0f6b4f9df7afed0066404bafdc595d">d_course_toads_turnpike_packed_dl_3478</a>, 1, 3, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#aa031b49a421b9ca34e1b1233cef8e709">d_course_toads_turnpike_packed_dl_3548</a>, 1, 4, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a52fe5dbc178d77a594e46543461c9989">d_course_toads_turnpike_packed_dl_31E8</a>, 1, 5, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a9f2dc3dea41c44727a2d9158f4c6ade5">d_course_toads_turnpike_packed_dl_2E40</a>, 1, 6, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#afef0a99a1530c0c3fc0d71d05c67b545">d_course_toads_turnpike_packed_dl_2EE0</a>, 1, 7, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#aead4259b1c03c18926b24b3efc31836e">d_course_toads_turnpike_packed_dl_2FA0</a>, 1, 8, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#ae4ccd1784d6a15d06ff2d4ebf7794539">d_course_toads_turnpike_packed_dl_3060</a>, 1, 9, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a4828fc8038c93ce121ddd0a00166e010">d_course_toads_turnpike_packed_dl_3118</a>, 1, 10, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a0b9e5619c6e79b754d6c87510b37ea02">d_course_toads_turnpike_packed_dl_3638</a>, 1, 11, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#ab0ccfdd25efb94b54aeb972d4c3a0359">d_course_toads_turnpike_packed_dl_3AD0</a>, 1, 12, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a562f6ec3ed5880862b0373f0ec8dfc72">d_course_toads_turnpike_packed_dl_3B58</a>, 1, 13, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a3f7a1c349cfff732f5f201a0a5ab4d74">d_course_toads_turnpike_packed_dl_3C28</a>, 1, 14, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a81f624425e36d04154ef47aa66572bea">d_course_toads_turnpike_packed_dl_3D00</a>, 1, 15, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a3c81c7f44abf8ba970c2ab9a02110c6a">d_course_toads_turnpike_packed_dl_39A8</a>, 1, 16, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a493400250368b8626d964ec880d5254c">d_course_toads_turnpike_packed_dl_36C0</a>, 1, 17, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#ab2541f3111b32b9998672a975d2993f9">d_course_toads_turnpike_packed_dl_3780</a>, 1, 18, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a164a84c5e98d3e79be818ed393bd35eb">d_course_toads_turnpike_packed_dl_3850</a>, 1, 19, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#aac9b0d7a3581b32e67806c0060353b04">d_course_toads_turnpike_packed_dl_38E8</a>, 1, 20, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a5f609f1615379d2ae713f7fb21b4f5f6">d_course_toads_turnpike_packed_dl_FA8</a>,  255, 255, 0x0000 },</div>
-<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a7007a55c36333c3f76412d55fb18242e">d_course_toads_turnpike_packed_dl_51C8</a>, 255, 255, 0x0000 },</div>
-<div class="line">    { 0x00000000, 0, 0, 0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a0d975a12f68ccd34722767052ee21363">d_course_toads_turnpike_packed_dl_32A0</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 1,   0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#ad9ae2eb6272084fcc3b4e1a0e7b1abeb">d_course_toads_turnpike_packed_dl_33A8</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 2,   0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a4f0f6b4f9df7afed0066404bafdc595d">d_course_toads_turnpike_packed_dl_3478</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 3,   0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#aa031b49a421b9ca34e1b1233cef8e709">d_course_toads_turnpike_packed_dl_3548</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 4,   0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a52fe5dbc178d77a594e46543461c9989">d_course_toads_turnpike_packed_dl_31E8</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 5,   0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a9f2dc3dea41c44727a2d9158f4c6ade5">d_course_toads_turnpike_packed_dl_2E40</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 6,   0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#afef0a99a1530c0c3fc0d71d05c67b545">d_course_toads_turnpike_packed_dl_2EE0</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 7,   0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#aead4259b1c03c18926b24b3efc31836e">d_course_toads_turnpike_packed_dl_2FA0</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 8,   0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#ae4ccd1784d6a15d06ff2d4ebf7794539">d_course_toads_turnpike_packed_dl_3060</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 9,   0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a4828fc8038c93ce121ddd0a00166e010">d_course_toads_turnpike_packed_dl_3118</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 10,  0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a0b9e5619c6e79b754d6c87510b37ea02">d_course_toads_turnpike_packed_dl_3638</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 11,  0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#ab0ccfdd25efb94b54aeb972d4c3a0359">d_course_toads_turnpike_packed_dl_3AD0</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 12,  0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a562f6ec3ed5880862b0373f0ec8dfc72">d_course_toads_turnpike_packed_dl_3B58</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 13,  0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a3f7a1c349cfff732f5f201a0a5ab4d74">d_course_toads_turnpike_packed_dl_3C28</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 14,  0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a81f624425e36d04154ef47aa66572bea">d_course_toads_turnpike_packed_dl_3D00</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 15,  0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a3c81c7f44abf8ba970c2ab9a02110c6a">d_course_toads_turnpike_packed_dl_39A8</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 16,  0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a493400250368b8626d964ec880d5254c">d_course_toads_turnpike_packed_dl_36C0</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 17,  0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#ab2541f3111b32b9998672a975d2993f9">d_course_toads_turnpike_packed_dl_3780</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 18,  0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a164a84c5e98d3e79be818ed393bd35eb">d_course_toads_turnpike_packed_dl_3850</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 19,  0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#aac9b0d7a3581b32e67806c0060353b04">d_course_toads_turnpike_packed_dl_38E8</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a>, 20,  0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a5f609f1615379d2ae713f7fb21b4f5f6">d_course_toads_turnpike_packed_dl_FA8</a>,  <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a291e3bb43cd8449155161d1fa023348b">RAMP</a>,    255, 0x0000 },</div>
+<div class="line">    { <a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#a7007a55c36333c3f76412d55fb18242e">d_course_toads_turnpike_packed_dl_51C8</a>, <a class="code hl_enumvalue" href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a291e3bb43cd8449155161d1fa023348b">RAMP</a>,    255, 0x0000 },</div>
+<div class="line">    { 0x00000000,                             0,       0,   0x0000 },</div>
 <div class="line">}</div>
+<div class="ttc" id="amk64_8h_html_a5344f2bdca4f9506c40f044e08ea8c98a291e3bb43cd8449155161d1fa023348b"><div class="ttname"><a href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a291e3bb43cd8449155161d1fa023348b">RAMP</a></div><div class="ttdeci">@ RAMP</div><div class="ttdef"><b>Definition</b> mk64.h:94</div></div>
+<div class="ttc" id="amk64_8h_html_a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb"><div class="ttname"><a href="mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a7d9c1ec99eb702ae443b230bee117deb">ASPHALT</a></div><div class="ttdeci">@ ASPHALT</div><div class="ttdef"><b>Definition</b> mk64.h:74</div></div>
 <div class="ttc" id="atoads__turnpike_2course__displaylists_8inc_8c_html_a0b9e5619c6e79b754d6c87510b37ea02"><div class="ttname"><a href="toads__turnpike_2course__displaylists_8inc_8c.html#a0b9e5619c6e79b754d6c87510b37ea02">d_course_toads_turnpike_packed_dl_3638</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_packed_dl_3638[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:1976</div></div>
 <div class="ttc" id="atoads__turnpike_2course__displaylists_8inc_8c_html_a0d975a12f68ccd34722767052ee21363"><div class="ttname"><a href="toads__turnpike_2course__displaylists_8inc_8c.html#a0d975a12f68ccd34722767052ee21363">d_course_toads_turnpike_packed_dl_32A0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_packed_dl_32A0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:1845</div></div>
 <div class="ttc" id="atoads__turnpike_2course__displaylists_8inc_8c_html_a164a84c5e98d3e79be818ed393bd35eb"><div class="ttname"><a href="toads__turnpike_2course__displaylists_8inc_8c.html#a164a84c5e98d3e79be818ed393bd35eb">d_course_toads_turnpike_packed_dl_3850</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_packed_dl_3850[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:2055</div></div>
@@ -3069,8 +3072,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="toads__turnpike_2course__displaylists_8inc_8c.html#aae479534b533d57c24eee224266129a5">d_course_toads_turnpike_packed_dl_1078</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3c323fcda8091cfba55ed94fdd243280"><div class="ttname"><a href="#a3c323fcda8091cfba55ed94fdd243280">d_course_toads_turnpike_dl_0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_0[]</div><div class="ttdef"><b>Definition</b> course_data.c:11</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ad1302a458b965691b134f5d147e166c6"><div class="ttname"><a href="#ad1302a458b965691b134f5d147e166c6">d_course_toads_turnpike_dl_60</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_60[]</div><div class="ttdef"><b>Definition</b> course_data.c:27</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3c323fcda8091cfba55ed94fdd243280"><div class="ttname"><a href="#a3c323fcda8091cfba55ed94fdd243280">d_course_toads_turnpike_dl_0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_0[]</div><div class="ttdef"><b>Definition</b> course_data.c:12</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ad1302a458b965691b134f5d147e166c6"><div class="ttname"><a href="#ad1302a458b965691b134f5d147e166c6">d_course_toads_turnpike_dl_60</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_60[]</div><div class="ttdef"><b>Definition</b> course_data.c:28</div></div>
 <div class="ttc" id="atoads__turnpike_2course__displaylists_8inc_8c_html_a1111030f401d5dbb48fdb5ede0a8d4df"><div class="ttname"><a href="toads__turnpike_2course__displaylists_8inc_8c.html#a1111030f401d5dbb48fdb5ede0a8d4df">d_course_toads_turnpike_packed_dl_5270</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_packed_dl_5270[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:3007</div></div>
 <div class="ttc" id="atoads__turnpike_2course__displaylists_8inc_8c_html_a3024d743f97d85dc055c3638de279214"><div class="ttname"><a href="toads__turnpike_2course__displaylists_8inc_8c.html#a3024d743f97d85dc055c3638de279214">d_course_toads_turnpike_packed_dl_540</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_packed_dl_540[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:213</div></div>
 <div class="ttc" id="atoads__turnpike_2course__displaylists_8inc_8c_html_a5620272aeab652fbbb9ce703653c0339"><div class="ttname"><a href="toads__turnpike_2course__displaylists_8inc_8c.html#a5620272aeab652fbbb9ce703653c0339">d_course_toads_turnpike_packed_dl_218</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_packed_dl_218[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:96</div></div>
@@ -3604,8 +3607,8 @@ Variables</h2></td></tr>
 <div class="ttc" id="agbi_8h_html_a51bf723f01e21d63223ab47bb739ac53"><div class="ttname"><a href="gbi_8h.html#a51bf723f01e21d63223ab47bb739ac53">G_TT_NONE</a></div><div class="ttdeci">#define G_TT_NONE</div><div class="ttdef"><b>Definition</b> gbi.h:638</div></div>
 <div class="ttc" id="agbi_8h_html_ace7a0e559b5d01f76f0481a2c23ba2e1"><div class="ttname"><a href="gbi_8h.html#ace7a0e559b5d01f76f0481a2c23ba2e1">G_LIGHTING</a></div><div class="ttdeci">#define G_LIGHTING</div><div class="ttdef"><b>Definition</b> gbi.h:359</div></div>
 <div class="ttc" id="ambi_8h_html_a3502935c4007f9c00550286d895ca296"><div class="ttname"><a href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a></div><div class="ttdeci">#define G_ON</div><div class="ttdef"><b>Definition</b> mbi.h:54</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a62d257b7df672883444d70961972b2c4"><div class="ttname"><a href="#a62d257b7df672883444d70961972b2c4">d_course_toads_turnpike_truck_model_lod0</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_model_lod0[]</div><div class="ttdef"><b>Definition</b> course_data.c:3389</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a852a0ca7a5863d0c369b129bf6c5aa2b"><div class="ttname"><a href="#a852a0ca7a5863d0c369b129bf6c5aa2b">d_course_toads_turnpike_truck1_tyre</a></div><div class="ttdeci">u8 d_course_toads_turnpike_truck1_tyre[]</div><div class="ttdef"><b>Definition</b> course_data.c:3238</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a62d257b7df672883444d70961972b2c4"><div class="ttname"><a href="#a62d257b7df672883444d70961972b2c4">d_course_toads_turnpike_truck_model_lod0</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_model_lod0[]</div><div class="ttdef"><b>Definition</b> course_data.c:3390</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a852a0ca7a5863d0c369b129bf6c5aa2b"><div class="ttname"><a href="#a852a0ca7a5863d0c369b129bf6c5aa2b">d_course_toads_turnpike_truck1_tyre</a></div><div class="ttdeci">u8 d_course_toads_turnpike_truck1_tyre[]</div><div class="ttdef"><b>Definition</b> course_data.c:3239</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3639,7 +3642,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a650abc1afbac8545d7ebfbc7aaaabe54"><div class="ttname"><a href="#a650abc1afbac8545d7ebfbc7aaaabe54">d_course_toads_turnpike_truck_unknown_model1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3400</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a650abc1afbac8545d7ebfbc7aaaabe54"><div class="ttname"><a href="#a650abc1afbac8545d7ebfbc7aaaabe54">d_course_toads_turnpike_truck_unknown_model1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3401</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3677,7 +3680,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(10, 0, 3, 0, 10, 3, 11, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aac3cedba12291b4947f3cde7bba01f61"><div class="ttname"><a href="#aac3cedba12291b4947f3cde7bba01f61">d_course_toads_turnpike_truck_unknown_model2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:3411</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aac3cedba12291b4947f3cde7bba01f61"><div class="ttname"><a href="#aac3cedba12291b4947f3cde7bba01f61">d_course_toads_turnpike_truck_unknown_model2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:3412</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3715,7 +3718,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(10, 0, 3, 0, 10, 3, 11, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1bca8601b2d20e9dbaedb0f856318b11"><div class="ttname"><a href="#a1bca8601b2d20e9dbaedb0f856318b11">d_course_toads_turnpike_truck_unknown_model3</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model3[]</div><div class="ttdef"><b>Definition</b> course_data.c:3426</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1bca8601b2d20e9dbaedb0f856318b11"><div class="ttname"><a href="#a1bca8601b2d20e9dbaedb0f856318b11">d_course_toads_turnpike_truck_unknown_model3</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model3[]</div><div class="ttdef"><b>Definition</b> course_data.c:3427</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3738,10 +3741,10 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a27f44cebc541f13169484d4c31b02d40">d_course_toads_turnpike_dl_18DB8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2591ba915892578a29c685911e0fe65f"><div class="ttname"><a href="#a2591ba915892578a29c685911e0fe65f">d_course_toads_turnpike_dl_18EB8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_18EB8[]</div><div class="ttdef"><b>Definition</b> course_data.c:3664</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a27f44cebc541f13169484d4c31b02d40"><div class="ttname"><a href="#a27f44cebc541f13169484d4c31b02d40">d_course_toads_turnpike_dl_18DB8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_18DB8[]</div><div class="ttdef"><b>Definition</b> course_data.c:3624</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a61f9310f276174d4a397da252cc0eda9"><div class="ttname"><a href="#a61f9310f276174d4a397da252cc0eda9">d_course_toads_turnpike_dl_18E38</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_18E38[]</div><div class="ttdef"><b>Definition</b> course_data.c:3644</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a777732ab826c9772ee38eb7b139334ff"><div class="ttname"><a href="#a777732ab826c9772ee38eb7b139334ff">d_course_toads_turnpike_dl_18F58</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_18F58[]</div><div class="ttdef"><b>Definition</b> course_data.c:3688</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2591ba915892578a29c685911e0fe65f"><div class="ttname"><a href="#a2591ba915892578a29c685911e0fe65f">d_course_toads_turnpike_dl_18EB8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_18EB8[]</div><div class="ttdef"><b>Definition</b> course_data.c:3665</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a27f44cebc541f13169484d4c31b02d40"><div class="ttname"><a href="#a27f44cebc541f13169484d4c31b02d40">d_course_toads_turnpike_dl_18DB8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_18DB8[]</div><div class="ttdef"><b>Definition</b> course_data.c:3625</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a61f9310f276174d4a397da252cc0eda9"><div class="ttname"><a href="#a61f9310f276174d4a397da252cc0eda9">d_course_toads_turnpike_dl_18E38</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_18E38[]</div><div class="ttdef"><b>Definition</b> course_data.c:3645</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a777732ab826c9772ee38eb7b139334ff"><div class="ttname"><a href="#a777732ab826c9772ee38eb7b139334ff">d_course_toads_turnpike_dl_18F58</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_18F58[]</div><div class="ttdef"><b>Definition</b> course_data.c:3689</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3761,7 +3764,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a5ffa414afd66d074ee649eac1837bb1e">d_course_toads_turnpike_dl_18FF8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a5ffa414afd66d074ee649eac1837bb1e"><div class="ttname"><a href="#a5ffa414afd66d074ee649eac1837bb1e">d_course_toads_turnpike_dl_18FF8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_18FF8[]</div><div class="ttdef"><b>Definition</b> course_data.c:3712</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a5ffa414afd66d074ee649eac1837bb1e"><div class="ttname"><a href="#a5ffa414afd66d074ee649eac1837bb1e">d_course_toads_turnpike_dl_18FF8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_18FF8[]</div><div class="ttdef"><b>Definition</b> course_data.c:3713</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3802,8 +3805,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(24, 26, 27, 0, 24, 27, 25, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a12ce19fa52e1cdfbfb20a87ae7c344a6"><div class="ttname"><a href="#a12ce19fa52e1cdfbfb20a87ae7c344a6">d_course_toads_turnpike_truck_unknown_model4</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model4[]</div><div class="ttdef"><b>Definition</b> course_data.c:3441</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a24492675f79bf14419bfb6046b183bfc"><div class="ttname"><a href="#a24492675f79bf14419bfb6046b183bfc">d_course_toads_turnpike_unk_windshield1</a></div><div class="ttdeci">u8 d_course_toads_turnpike_unk_windshield1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3219</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a12ce19fa52e1cdfbfb20a87ae7c344a6"><div class="ttname"><a href="#a12ce19fa52e1cdfbfb20a87ae7c344a6">d_course_toads_turnpike_truck_unknown_model4</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model4[]</div><div class="ttdef"><b>Definition</b> course_data.c:3442</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a24492675f79bf14419bfb6046b183bfc"><div class="ttname"><a href="#a24492675f79bf14419bfb6046b183bfc">d_course_toads_turnpike_unk_windshield1</a></div><div class="ttdeci">u8 d_course_toads_turnpike_unk_windshield1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3220</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3837,8 +3840,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(6, 7, 8, 0, 6, 8, 9, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a7b4f4176ca0a7dca73e858c14092521f"><div class="ttname"><a href="#a7b4f4176ca0a7dca73e858c14092521f">d_course_toads_turnpike_truck_unknown_model5</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model5[]</div><div class="ttdef"><b>Definition</b> course_data.c:3472</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9b03a6bfca6b0bafc175cf15addfc87f"><div class="ttname"><a href="#a9b03a6bfca6b0bafc175cf15addfc87f">d_course_toads_turnpike_unk_windshield2</a></div><div class="ttdeci">u8 d_course_toads_turnpike_unk_windshield2[]</div><div class="ttdef"><b>Definition</b> course_data.c:3223</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a7b4f4176ca0a7dca73e858c14092521f"><div class="ttname"><a href="#a7b4f4176ca0a7dca73e858c14092521f">d_course_toads_turnpike_truck_unknown_model5</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model5[]</div><div class="ttdef"><b>Definition</b> course_data.c:3473</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9b03a6bfca6b0bafc175cf15addfc87f"><div class="ttname"><a href="#a9b03a6bfca6b0bafc175cf15addfc87f">d_course_toads_turnpike_unk_windshield2</a></div><div class="ttdeci">u8 d_course_toads_turnpike_unk_windshield2[]</div><div class="ttdef"><b>Definition</b> course_data.c:3224</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3908,8 +3911,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(7, 12, 13, 0, 6, 14, 11, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a6bbcde435d8b61fb5148a48c5b2a970d"><div class="ttname"><a href="#a6bbcde435d8b61fb5148a48c5b2a970d">d_course_toads_turnpike_truck_unknown_model12</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model12[]</div><div class="ttdef"><b>Definition</b> course_data.c:3590</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa1c77d6f710aa423d4a39b8864eacd93"><div class="ttname"><a href="#aa1c77d6f710aa423d4a39b8864eacd93">d_course_toads_turnpike_truck_unknown_model11</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model11[]</div><div class="ttdef"><b>Definition</b> course_data.c:3567</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a6bbcde435d8b61fb5148a48c5b2a970d"><div class="ttname"><a href="#a6bbcde435d8b61fb5148a48c5b2a970d">d_course_toads_turnpike_truck_unknown_model12</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model12[]</div><div class="ttdef"><b>Definition</b> course_data.c:3591</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa1c77d6f710aa423d4a39b8864eacd93"><div class="ttname"><a href="#aa1c77d6f710aa423d4a39b8864eacd93">d_course_toads_turnpike_truck_unknown_model11</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model11[]</div><div class="ttdef"><b>Definition</b> course_data.c:3568</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3945,7 +3948,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(10, 11, 5, 0, 10, 5, 4, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0ac08b37b416698601d5eab2dfe3e1f9"><div class="ttname"><a href="#a0ac08b37b416698601d5eab2dfe3e1f9">d_course_toads_turnpike_truck_unknown_model13</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model13[]</div><div class="ttdef"><b>Definition</b> course_data.c:3608</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0ac08b37b416698601d5eab2dfe3e1f9"><div class="ttname"><a href="#a0ac08b37b416698601d5eab2dfe3e1f9">d_course_toads_turnpike_truck_unknown_model13</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model13[]</div><div class="ttdef"><b>Definition</b> course_data.c:3609</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3970,12 +3973,12 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a28863d337bf73253da957f3ee987cff4">d_course_toads_turnpike_dl_19030</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a209f00aa2ebc295529c151a466e1c21f"><div class="ttname"><a href="#a209f00aa2ebc295529c151a466e1c21f">d_course_toads_turnpike_dl_19450</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19450[]</div><div class="ttdef"><b>Definition</b> course_data.c:3879</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a28863d337bf73253da957f3ee987cff4"><div class="ttname"><a href="#a28863d337bf73253da957f3ee987cff4">d_course_toads_turnpike_dl_19030</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19030[]</div><div class="ttdef"><b>Definition</b> course_data.c:3727</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2c5dad28779427f3bfff7260a62978c2"><div class="ttname"><a href="#a2c5dad28779427f3bfff7260a62978c2">d_course_toads_turnpike_dl_19168</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19168[]</div><div class="ttdef"><b>Definition</b> course_data.c:3774</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a59c7b2c0c5203e48a17d352c3a836e6b"><div class="ttname"><a href="#a59c7b2c0c5203e48a17d352c3a836e6b">d_course_toads_turnpike_dl_19390</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19390[]</div><div class="ttdef"><b>Definition</b> course_data.c:3851</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a82f54e01fa5850de2ec1102f267c8d7d"><div class="ttname"><a href="#a82f54e01fa5850de2ec1102f267c8d7d">d_course_toads_turnpike_dl_190E8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_190E8[]</div><div class="ttdef"><b>Definition</b> course_data.c:3754</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9d1fec9d4d18d860e80acef6d735e386"><div class="ttname"><a href="#a9d1fec9d4d18d860e80acef6d735e386">d_course_toads_turnpike_dl_192B0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_192B0[]</div><div class="ttdef"><b>Definition</b> course_data.c:3819</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a209f00aa2ebc295529c151a466e1c21f"><div class="ttname"><a href="#a209f00aa2ebc295529c151a466e1c21f">d_course_toads_turnpike_dl_19450</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19450[]</div><div class="ttdef"><b>Definition</b> course_data.c:3880</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a28863d337bf73253da957f3ee987cff4"><div class="ttname"><a href="#a28863d337bf73253da957f3ee987cff4">d_course_toads_turnpike_dl_19030</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19030[]</div><div class="ttdef"><b>Definition</b> course_data.c:3728</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2c5dad28779427f3bfff7260a62978c2"><div class="ttname"><a href="#a2c5dad28779427f3bfff7260a62978c2">d_course_toads_turnpike_dl_19168</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19168[]</div><div class="ttdef"><b>Definition</b> course_data.c:3775</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a59c7b2c0c5203e48a17d352c3a836e6b"><div class="ttname"><a href="#a59c7b2c0c5203e48a17d352c3a836e6b">d_course_toads_turnpike_dl_19390</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19390[]</div><div class="ttdef"><b>Definition</b> course_data.c:3852</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a82f54e01fa5850de2ec1102f267c8d7d"><div class="ttname"><a href="#a82f54e01fa5850de2ec1102f267c8d7d">d_course_toads_turnpike_dl_190E8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_190E8[]</div><div class="ttdef"><b>Definition</b> course_data.c:3755</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9d1fec9d4d18d860e80acef6d735e386"><div class="ttname"><a href="#a9d1fec9d4d18d860e80acef6d735e386">d_course_toads_turnpike_dl_192B0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_192B0[]</div><div class="ttdef"><b>Definition</b> course_data.c:3820</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3995,7 +3998,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ae5139403ad98b17f4d8b65e2471535cb">d_course_toads_turnpike_dl_194E0</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae5139403ad98b17f4d8b65e2471535cb"><div class="ttname"><a href="#ae5139403ad98b17f4d8b65e2471535cb">d_course_toads_turnpike_dl_194E0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_194E0[]</div><div class="ttdef"><b>Definition</b> course_data.c:3901</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae5139403ad98b17f4d8b65e2471535cb"><div class="ttname"><a href="#ae5139403ad98b17f4d8b65e2471535cb">d_course_toads_turnpike_dl_194E0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_194E0[]</div><div class="ttdef"><b>Definition</b> course_data.c:3902</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4064,7 +4067,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a056289ca54d9f947e8977e7393a0c016"><div class="ttname"><a href="#a056289ca54d9f947e8977e7393a0c016">d_course_toads_turnpike_truck_model_lod1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_model_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3919</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a056289ca54d9f947e8977e7393a0c016"><div class="ttname"><a href="#a056289ca54d9f947e8977e7393a0c016">d_course_toads_turnpike_truck_model_lod1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_model_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3920</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4096,7 +4099,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a989202cd58c235ac1216c76662cf9e25"><div class="ttname"><a href="#a989202cd58c235ac1216c76662cf9e25">d_course_toads_turnpike_truck_unknown_model14</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model14[]</div><div class="ttdef"><b>Definition</b> course_data.c:3938</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a989202cd58c235ac1216c76662cf9e25"><div class="ttname"><a href="#a989202cd58c235ac1216c76662cf9e25">d_course_toads_turnpike_truck_unknown_model14</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model14[]</div><div class="ttdef"><b>Definition</b> course_data.c:3939</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4117,8 +4120,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ae9a4d8e380b9634e6752fa00bd1ff56e">d_course_toads_turnpike_dl_19CF8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa0da6ab32a58b490565c3dccd5b4010f"><div class="ttname"><a href="#aa0da6ab32a58b490565c3dccd5b4010f">d_course_toads_turnpike_dl_19D68</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19D68[]</div><div class="ttdef"><b>Definition</b> course_data.c:4086</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae9a4d8e380b9634e6752fa00bd1ff56e"><div class="ttname"><a href="#ae9a4d8e380b9634e6752fa00bd1ff56e">d_course_toads_turnpike_dl_19CF8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19CF8[]</div><div class="ttdef"><b>Definition</b> course_data.c:4068</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa0da6ab32a58b490565c3dccd5b4010f"><div class="ttname"><a href="#aa0da6ab32a58b490565c3dccd5b4010f">d_course_toads_turnpike_dl_19D68</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19D68[]</div><div class="ttdef"><b>Definition</b> course_data.c:4087</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae9a4d8e380b9634e6752fa00bd1ff56e"><div class="ttname"><a href="#ae9a4d8e380b9634e6752fa00bd1ff56e">d_course_toads_turnpike_dl_19CF8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19CF8[]</div><div class="ttdef"><b>Definition</b> course_data.c:4069</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4138,7 +4141,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a712cd87aa8052ee5b36944e7c818084d">d_course_toads_turnpike_dl_19DD8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a712cd87aa8052ee5b36944e7c818084d"><div class="ttname"><a href="#a712cd87aa8052ee5b36944e7c818084d">d_course_toads_turnpike_dl_19DD8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19DD8[]</div><div class="ttdef"><b>Definition</b> course_data.c:4104</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a712cd87aa8052ee5b36944e7c818084d"><div class="ttname"><a href="#a712cd87aa8052ee5b36944e7c818084d">d_course_toads_turnpike_dl_19DD8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19DD8[]</div><div class="ttdef"><b>Definition</b> course_data.c:4105</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4163,7 +4166,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(16, 17, 18, 0, 16, 18, 19, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a576a7d4310d05284fc0b3f2ef8b4bc9c"><div class="ttname"><a href="#a576a7d4310d05284fc0b3f2ef8b4bc9c">d_course_toads_turnpike_truck_unknown_model15</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model15[]</div><div class="ttdef"><b>Definition</b> course_data.c:3957</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a576a7d4310d05284fc0b3f2ef8b4bc9c"><div class="ttname"><a href="#a576a7d4310d05284fc0b3f2ef8b4bc9c">d_course_toads_turnpike_truck_unknown_model15</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model15[]</div><div class="ttdef"><b>Definition</b> course_data.c:3958</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4194,7 +4197,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(8, 9, 10, 0, 8, 10, 11, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afa9459c4f080d44e4291000756d3b927"><div class="ttname"><a href="#afa9459c4f080d44e4291000756d3b927">d_course_toads_turnpike_truck_unknown_model16</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model16[]</div><div class="ttdef"><b>Definition</b> course_data.c:3980</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afa9459c4f080d44e4291000756d3b927"><div class="ttname"><a href="#afa9459c4f080d44e4291000756d3b927">d_course_toads_turnpike_truck_unknown_model16</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model16[]</div><div class="ttdef"><b>Definition</b> course_data.c:3981</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4225,7 +4228,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(8, 9, 10, 0, 8, 10, 11, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa51faaa255f13ecbf21e84facf2ecfa4"><div class="ttname"><a href="#aa51faaa255f13ecbf21e84facf2ecfa4">d_course_toads_turnpike_truck_unknown_model17</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model17[]</div><div class="ttdef"><b>Definition</b> course_data.c:3995</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa51faaa255f13ecbf21e84facf2ecfa4"><div class="ttname"><a href="#aa51faaa255f13ecbf21e84facf2ecfa4">d_course_toads_turnpike_truck_unknown_model17</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model17[]</div><div class="ttdef"><b>Definition</b> course_data.c:3996</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4262,10 +4265,10 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a3b6bb76b16a23b52966cd8a749cdc84d">d_course_toads_turnpike_dl_19E38</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3b6bb76b16a23b52966cd8a749cdc84d"><div class="ttname"><a href="#a3b6bb76b16a23b52966cd8a749cdc84d">d_course_toads_turnpike_dl_19E38</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19E38[]</div><div class="ttdef"><b>Definition</b> course_data.c:4128</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a4ab34d6bd5eac49f5c577d316f957560"><div class="ttname"><a href="#a4ab34d6bd5eac49f5c577d316f957560">d_course_toads_turnpike_dl_19F08</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19F08[]</div><div class="ttdef"><b>Definition</b> course_data.c:4162</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9966a6e4f2eaa48705fca6e9a3939234"><div class="ttname"><a href="#a9966a6e4f2eaa48705fca6e9a3939234">d_course_toads_turnpike_dl_19E00</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19E00[]</div><div class="ttdef"><b>Definition</b> course_data.c:4117</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab756343401950f831bfbc1ee90e79a41"><div class="ttname"><a href="#ab756343401950f831bfbc1ee90e79a41">d_course_toads_turnpike_dl_19EA0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19EA0[]</div><div class="ttdef"><b>Definition</b> course_data.c:4145</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3b6bb76b16a23b52966cd8a749cdc84d"><div class="ttname"><a href="#a3b6bb76b16a23b52966cd8a749cdc84d">d_course_toads_turnpike_dl_19E38</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19E38[]</div><div class="ttdef"><b>Definition</b> course_data.c:4129</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a4ab34d6bd5eac49f5c577d316f957560"><div class="ttname"><a href="#a4ab34d6bd5eac49f5c577d316f957560">d_course_toads_turnpike_dl_19F08</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19F08[]</div><div class="ttdef"><b>Definition</b> course_data.c:4163</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9966a6e4f2eaa48705fca6e9a3939234"><div class="ttname"><a href="#a9966a6e4f2eaa48705fca6e9a3939234">d_course_toads_turnpike_dl_19E00</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19E00[]</div><div class="ttdef"><b>Definition</b> course_data.c:4118</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab756343401950f831bfbc1ee90e79a41"><div class="ttname"><a href="#ab756343401950f831bfbc1ee90e79a41">d_course_toads_turnpike_dl_19EA0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_19EA0[]</div><div class="ttdef"><b>Definition</b> course_data.c:4146</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4285,7 +4288,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a0aa1a8fd985aec1e36e2f046fb165f63">d_course_toads_turnpike_dl_1A040</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0aa1a8fd985aec1e36e2f046fb165f63"><div class="ttname"><a href="#a0aa1a8fd985aec1e36e2f046fb165f63">d_course_toads_turnpike_dl_1A040</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A040[]</div><div class="ttdef"><b>Definition</b> course_data.c:4205</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0aa1a8fd985aec1e36e2f046fb165f63"><div class="ttname"><a href="#a0aa1a8fd985aec1e36e2f046fb165f63">d_course_toads_turnpike_dl_1A040</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A040[]</div><div class="ttdef"><b>Definition</b> course_data.c:4206</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4317,7 +4320,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a880475538b677b2621ede3e8e6c18ccf"><div class="ttname"><a href="#a880475538b677b2621ede3e8e6c18ccf">d_course_toads_turnpike_truck_model_lod2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_model_lod2[]</div><div class="ttdef"><b>Definition</b> course_data.c:4221</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a880475538b677b2621ede3e8e6c18ccf"><div class="ttname"><a href="#a880475538b677b2621ede3e8e6c18ccf">d_course_toads_turnpike_truck_model_lod2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_model_lod2[]</div><div class="ttdef"><b>Definition</b> course_data.c:4222</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4358,10 +4361,10 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(8, 9, 10, 0, 8, 10, 11, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a03187ef82ffe65bf06996c4ed932a377"><div class="ttname"><a href="#a03187ef82ffe65bf06996c4ed932a377">d_course_toads_turnpike_truck_unknown_model21</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model21[]</div><div class="ttdef"><b>Definition</b> course_data.c:4240</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a08a0b985d41add4812b27ee737b0c904"><div class="ttname"><a href="#a08a0b985d41add4812b27ee737b0c904">d_course_toads_turnpike_truck1_cab_side</a></div><div class="ttdeci">u8 d_course_toads_turnpike_truck1_cab_side[]</div><div class="ttdef"><b>Definition</b> course_data.c:3248</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aca3d90ca660de451ad8f5e831e5ebc54"><div class="ttname"><a href="#aca3d90ca660de451ad8f5e831e5ebc54">d_course_toads_turnpike_truck1_cab</a></div><div class="ttdeci">u8 d_course_toads_turnpike_truck1_cab[]</div><div class="ttdef"><b>Definition</b> course_data.c:3243</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aeb6ad54b2bdc55346f33367d3379fcaa"><div class="ttname"><a href="#aeb6ad54b2bdc55346f33367d3379fcaa">d_course_toads_turnpike_truck_unknown_model22</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model22[]</div><div class="ttdef"><b>Definition</b> course_data.c:4247</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a03187ef82ffe65bf06996c4ed932a377"><div class="ttname"><a href="#a03187ef82ffe65bf06996c4ed932a377">d_course_toads_turnpike_truck_unknown_model21</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model21[]</div><div class="ttdef"><b>Definition</b> course_data.c:4241</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a08a0b985d41add4812b27ee737b0c904"><div class="ttname"><a href="#a08a0b985d41add4812b27ee737b0c904">d_course_toads_turnpike_truck1_cab_side</a></div><div class="ttdeci">u8 d_course_toads_turnpike_truck1_cab_side[]</div><div class="ttdef"><b>Definition</b> course_data.c:3249</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aca3d90ca660de451ad8f5e831e5ebc54"><div class="ttname"><a href="#aca3d90ca660de451ad8f5e831e5ebc54">d_course_toads_turnpike_truck1_cab</a></div><div class="ttdeci">u8 d_course_toads_turnpike_truck1_cab[]</div><div class="ttdef"><b>Definition</b> course_data.c:3244</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aeb6ad54b2bdc55346f33367d3379fcaa"><div class="ttname"><a href="#aeb6ad54b2bdc55346f33367d3379fcaa">d_course_toads_turnpike_truck_unknown_model22</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model22[]</div><div class="ttdef"><b>Definition</b> course_data.c:4248</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4382,8 +4385,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a006641b69860d394e158eb7f82f3e0ed">d_course_toads_turnpike_dl_1A4B8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a006641b69860d394e158eb7f82f3e0ed"><div class="ttname"><a href="#a006641b69860d394e158eb7f82f3e0ed">d_course_toads_turnpike_dl_1A4B8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A4B8[]</div><div class="ttdef"><b>Definition</b> course_data.c:4304</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2ca8065a7efabbdf1f641a49f6004fc7"><div class="ttname"><a href="#a2ca8065a7efabbdf1f641a49f6004fc7">d_course_toads_turnpike_dl_1A528</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A528[]</div><div class="ttdef"><b>Definition</b> course_data.c:4322</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a006641b69860d394e158eb7f82f3e0ed"><div class="ttname"><a href="#a006641b69860d394e158eb7f82f3e0ed">d_course_toads_turnpike_dl_1A4B8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A4B8[]</div><div class="ttdef"><b>Definition</b> course_data.c:4305</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2ca8065a7efabbdf1f641a49f6004fc7"><div class="ttname"><a href="#a2ca8065a7efabbdf1f641a49f6004fc7">d_course_toads_turnpike_dl_1A528</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A528[]</div><div class="ttdef"><b>Definition</b> course_data.c:4323</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4403,7 +4406,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ae7cdaa1f62d5c4ca940a6b31afca0e25">d_course_toads_turnpike_dl_1A5E0</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae7cdaa1f62d5c4ca940a6b31afca0e25"><div class="ttname"><a href="#ae7cdaa1f62d5c4ca940a6b31afca0e25">d_course_toads_turnpike_dl_1A5E0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A5E0[]</div><div class="ttdef"><b>Definition</b> course_data.c:4349</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae7cdaa1f62d5c4ca940a6b31afca0e25"><div class="ttname"><a href="#ae7cdaa1f62d5c4ca940a6b31afca0e25">d_course_toads_turnpike_dl_1A5E0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A5E0[]</div><div class="ttdef"><b>Definition</b> course_data.c:4350</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4442,7 +4445,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(16, 17, 18, 0, 16, 18, 19, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aeade31595e5a0bee5f40299dcc332de7"><div class="ttname"><a href="#aeade31595e5a0bee5f40299dcc332de7">d_course_toads_turnpike_truck_unknown_model23</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model23[]</div><div class="ttdef"><b>Definition</b> course_data.c:4262</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aeade31595e5a0bee5f40299dcc332de7"><div class="ttname"><a href="#aeade31595e5a0bee5f40299dcc332de7">d_course_toads_turnpike_truck_unknown_model23</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model23[]</div><div class="ttdef"><b>Definition</b> course_data.c:4263</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4474,7 +4477,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a15e1aa43eac1aa181506222f2a173b4f"><div class="ttname"><a href="#a15e1aa43eac1aa181506222f2a173b4f">d_course_toads_turnpike_truck_unknown_model24</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model24[]</div><div class="ttdef"><b>Definition</b> course_data.c:4285</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a15e1aa43eac1aa181506222f2a173b4f"><div class="ttname"><a href="#a15e1aa43eac1aa181506222f2a173b4f">d_course_toads_turnpike_truck_unknown_model24</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_truck_unknown_model24[]</div><div class="ttdef"><b>Definition</b> course_data.c:4286</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4495,8 +4498,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a2196ce1f3cd4767a9a52a332529cb311">d_course_toads_turnpike_dl_1A640</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2196ce1f3cd4767a9a52a332529cb311"><div class="ttname"><a href="#a2196ce1f3cd4767a9a52a332529cb311">d_course_toads_turnpike_dl_1A640</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A640[]</div><div class="ttdef"><b>Definition</b> course_data.c:4373</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_af5e142cb689dd8caac4218e38081cf82"><div class="ttname"><a href="#af5e142cb689dd8caac4218e38081cf82">d_course_toads_turnpike_dl_1A608</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A608[]</div><div class="ttdef"><b>Definition</b> course_data.c:4362</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2196ce1f3cd4767a9a52a332529cb311"><div class="ttname"><a href="#a2196ce1f3cd4767a9a52a332529cb311">d_course_toads_turnpike_dl_1A640</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A640[]</div><div class="ttdef"><b>Definition</b> course_data.c:4374</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_af5e142cb689dd8caac4218e38081cf82"><div class="ttname"><a href="#af5e142cb689dd8caac4218e38081cf82">d_course_toads_turnpike_dl_1A608</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A608[]</div><div class="ttdef"><b>Definition</b> course_data.c:4363</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4516,7 +4519,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a426f3a840a5a856c8cfa3ab3007491e2">d_course_toads_turnpike_dl_1A6B0</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a426f3a840a5a856c8cfa3ab3007491e2"><div class="ttname"><a href="#a426f3a840a5a856c8cfa3ab3007491e2">d_course_toads_turnpike_dl_1A6B0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A6B0[]</div><div class="ttdef"><b>Definition</b> course_data.c:4391</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a426f3a840a5a856c8cfa3ab3007491e2"><div class="ttname"><a href="#a426f3a840a5a856c8cfa3ab3007491e2">d_course_toads_turnpike_dl_1A6B0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1A6B0[]</div><div class="ttdef"><b>Definition</b> course_data.c:4392</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4595,7 +4598,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3bbc2885d65a4968ed626601dc2cba42"><div class="ttname"><a href="#a3bbc2885d65a4968ed626601dc2cba42">d_course_toads_turnpike_bus_model_lod0</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_model_lod0[]</div><div class="ttdef"><b>Definition</b> course_data.c:4405</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3bbc2885d65a4968ed626601dc2cba42"><div class="ttname"><a href="#a3bbc2885d65a4968ed626601dc2cba42">d_course_toads_turnpike_bus_model_lod0</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_model_lod0[]</div><div class="ttdef"><b>Definition</b> course_data.c:4406</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4629,7 +4632,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab5cd0843cf8269b2140658d02797168f"><div class="ttname"><a href="#ab5cd0843cf8269b2140658d02797168f">d_course_toads_turnpike_bus_unknown_model1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:4424</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab5cd0843cf8269b2140658d02797168f"><div class="ttname"><a href="#ab5cd0843cf8269b2140658d02797168f">d_course_toads_turnpike_bus_unknown_model1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:4425</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4663,7 +4666,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afe492d8ddc411e5627d100e4c2e5d8ca"><div class="ttname"><a href="#afe492d8ddc411e5627d100e4c2e5d8ca">d_course_toads_turnpike_bus_unknown_model2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:4435</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afe492d8ddc411e5627d100e4c2e5d8ca"><div class="ttname"><a href="#afe492d8ddc411e5627d100e4c2e5d8ca">d_course_toads_turnpike_bus_unknown_model2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:4436</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4685,9 +4688,9 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a16affc0b7a449c5617fd76ff895becdc">d_course_toads_turnpike_dl_1B5C8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a16affc0b7a449c5617fd76ff895becdc"><div class="ttname"><a href="#a16affc0b7a449c5617fd76ff895becdc">d_course_toads_turnpike_dl_1B5C8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B5C8[]</div><div class="ttdef"><b>Definition</b> course_data.c:4692</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3798957c4a2ed6e60a3a98a2dd826b7c"><div class="ttname"><a href="#a3798957c4a2ed6e60a3a98a2dd826b7c">d_course_toads_turnpike_dl_1B6D8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B6D8[]</div><div class="ttdef"><b>Definition</b> course_data.c:4734</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_af98f6c8cb20156027e6e8461ef7dd487"><div class="ttname"><a href="#af98f6c8cb20156027e6e8461ef7dd487">d_course_toads_turnpike_dl_1B658</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B658[]</div><div class="ttdef"><b>Definition</b> course_data.c:4714</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a16affc0b7a449c5617fd76ff895becdc"><div class="ttname"><a href="#a16affc0b7a449c5617fd76ff895becdc">d_course_toads_turnpike_dl_1B5C8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B5C8[]</div><div class="ttdef"><b>Definition</b> course_data.c:4693</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3798957c4a2ed6e60a3a98a2dd826b7c"><div class="ttname"><a href="#a3798957c4a2ed6e60a3a98a2dd826b7c">d_course_toads_turnpike_dl_1B6D8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B6D8[]</div><div class="ttdef"><b>Definition</b> course_data.c:4735</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_af98f6c8cb20156027e6e8461ef7dd487"><div class="ttname"><a href="#af98f6c8cb20156027e6e8461ef7dd487">d_course_toads_turnpike_dl_1B658</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B658[]</div><div class="ttdef"><b>Definition</b> course_data.c:4715</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4707,7 +4710,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a524d574d3753c700ba481a3294b7fda0">d_course_toads_turnpike_dl_1B758</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a524d574d3753c700ba481a3294b7fda0"><div class="ttname"><a href="#a524d574d3753c700ba481a3294b7fda0">d_course_toads_turnpike_dl_1B758</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B758[]</div><div class="ttdef"><b>Definition</b> course_data.c:4754</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a524d574d3753c700ba481a3294b7fda0"><div class="ttname"><a href="#a524d574d3753c700ba481a3294b7fda0">d_course_toads_turnpike_dl_1B758</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B758[]</div><div class="ttdef"><b>Definition</b> course_data.c:4755</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4742,7 +4745,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(1, 6, 7, 0, 1, 7, 2, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a57091e66432f8e528013f68b6aabcb93"><div class="ttname"><a href="#a57091e66432f8e528013f68b6aabcb93">d_course_toads_turnpike_bus_unknown_model3</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model3[]</div><div class="ttdef"><b>Definition</b> course_data.c:4446</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a57091e66432f8e528013f68b6aabcb93"><div class="ttname"><a href="#a57091e66432f8e528013f68b6aabcb93">d_course_toads_turnpike_bus_unknown_model3</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model3[]</div><div class="ttdef"><b>Definition</b> course_data.c:4447</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4778,7 +4781,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(8, 0, 5, 0, 8, 5, 9, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0d5556e0704082ebc37bbbd42e085a52"><div class="ttname"><a href="#a0d5556e0704082ebc37bbbd42e085a52">d_course_toads_turnpike_bus_unknown_model4</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model4[]</div><div class="ttdef"><b>Definition</b> course_data.c:4457</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0d5556e0704082ebc37bbbd42e085a52"><div class="ttname"><a href="#a0d5556e0704082ebc37bbbd42e085a52">d_course_toads_turnpike_bus_unknown_model4</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model4[]</div><div class="ttdef"><b>Definition</b> course_data.c:4458</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4836,8 +4839,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(23, 22, 21, 0, 23, 21, 20, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a8f1925b8af133f5ffb21ae6662a294ce"><div class="ttname"><a href="#a8f1925b8af133f5ffb21ae6662a294ce">d_course_toads_turnpike_black</a></div><div class="ttdeci">u8 d_course_toads_turnpike_black[]</div><div class="ttdef"><b>Definition</b> course_data.c:3278</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afe34e9a5ca5c25b6a429cf161457180e"><div class="ttname"><a href="#afe34e9a5ca5c25b6a429cf161457180e">d_course_toads_turnpike_bus_unknown_model14</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model14[]</div><div class="ttdef"><b>Definition</b> course_data.c:4638</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a8f1925b8af133f5ffb21ae6662a294ce"><div class="ttname"><a href="#a8f1925b8af133f5ffb21ae6662a294ce">d_course_toads_turnpike_black</a></div><div class="ttdeci">u8 d_course_toads_turnpike_black[]</div><div class="ttdef"><b>Definition</b> course_data.c:3279</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afe34e9a5ca5c25b6a429cf161457180e"><div class="ttname"><a href="#afe34e9a5ca5c25b6a429cf161457180e">d_course_toads_turnpike_bus_unknown_model14</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model14[]</div><div class="ttdef"><b>Definition</b> course_data.c:4639</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4881,7 +4884,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(23, 22, 21, 0, 23, 21, 20, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_abdbf2197e742060eacff638942bf2a31"><div class="ttname"><a href="#abdbf2197e742060eacff638942bf2a31">d_course_toads_turnpike_bus_unknown_model15</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model15[]</div><div class="ttdef"><b>Definition</b> course_data.c:4665</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_abdbf2197e742060eacff638942bf2a31"><div class="ttname"><a href="#abdbf2197e742060eacff638942bf2a31">d_course_toads_turnpike_bus_unknown_model15</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model15[]</div><div class="ttdef"><b>Definition</b> course_data.c:4666</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4905,11 +4908,11 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ae5757fd3a43222ae6467ee27427fed4d">d_course_toads_turnpike_dl_1B788</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a6baab2e558c3f454887691c3bd980802"><div class="ttname"><a href="#a6baab2e558c3f454887691c3bd980802">d_course_toads_turnpike_dl_1BD48</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1BD48[]</div><div class="ttdef"><b>Definition</b> course_data.c:4968</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa91ff0813bd66b9e46fc8c078f05fd45"><div class="ttname"><a href="#aa91ff0813bd66b9e46fc8c078f05fd45">d_course_toads_turnpike_dl_1B8A0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B8A0[]</div><div class="ttdef"><b>Definition</b> course_data.c:4811</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab6662ffead5358bfb8c7cd9feed0cc76"><div class="ttname"><a href="#ab6662ffead5358bfb8c7cd9feed0cc76">d_course_toads_turnpike_dl_1BC78</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1BC78[]</div><div class="ttdef"><b>Definition</b> course_data.c:4938</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_acd44073278c141884c785126340eea19"><div class="ttname"><a href="#acd44073278c141884c785126340eea19">d_course_toads_turnpike_dl_1B810</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B810[]</div><div class="ttdef"><b>Definition</b> course_data.c:4789</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae5757fd3a43222ae6467ee27427fed4d"><div class="ttname"><a href="#ae5757fd3a43222ae6467ee27427fed4d">d_course_toads_turnpike_dl_1B788</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B788[]</div><div class="ttdef"><b>Definition</b> course_data.c:4768</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a6baab2e558c3f454887691c3bd980802"><div class="ttname"><a href="#a6baab2e558c3f454887691c3bd980802">d_course_toads_turnpike_dl_1BD48</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1BD48[]</div><div class="ttdef"><b>Definition</b> course_data.c:4969</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa91ff0813bd66b9e46fc8c078f05fd45"><div class="ttname"><a href="#aa91ff0813bd66b9e46fc8c078f05fd45">d_course_toads_turnpike_dl_1B8A0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B8A0[]</div><div class="ttdef"><b>Definition</b> course_data.c:4812</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab6662ffead5358bfb8c7cd9feed0cc76"><div class="ttname"><a href="#ab6662ffead5358bfb8c7cd9feed0cc76">d_course_toads_turnpike_dl_1BC78</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1BC78[]</div><div class="ttdef"><b>Definition</b> course_data.c:4939</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_acd44073278c141884c785126340eea19"><div class="ttname"><a href="#acd44073278c141884c785126340eea19">d_course_toads_turnpike_dl_1B810</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B810[]</div><div class="ttdef"><b>Definition</b> course_data.c:4790</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae5757fd3a43222ae6467ee27427fed4d"><div class="ttname"><a href="#ae5757fd3a43222ae6467ee27427fed4d">d_course_toads_turnpike_dl_1B788</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1B788[]</div><div class="ttdef"><b>Definition</b> course_data.c:4769</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4929,7 +4932,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a731cb7463795cd2f2d44f524c90ef9cb">d_course_toads_turnpike_dl_1BE18</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a731cb7463795cd2f2d44f524c90ef9cb"><div class="ttname"><a href="#a731cb7463795cd2f2d44f524c90ef9cb">d_course_toads_turnpike_dl_1BE18</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1BE18[]</div><div class="ttdef"><b>Definition</b> course_data.c:4998</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a731cb7463795cd2f2d44f524c90ef9cb"><div class="ttname"><a href="#a731cb7463795cd2f2d44f524c90ef9cb">d_course_toads_turnpike_dl_1BE18</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1BE18[]</div><div class="ttdef"><b>Definition</b> course_data.c:4999</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4973,7 +4976,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a8e3d8d8a9658dc9f29b7b19018e5a760"><div class="ttname"><a href="#a8e3d8d8a9658dc9f29b7b19018e5a760">d_course_toads_turnpike_bus_model_lod1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_model_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:5015</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a8e3d8d8a9658dc9f29b7b19018e5a760"><div class="ttname"><a href="#a8e3d8d8a9658dc9f29b7b19018e5a760">d_course_toads_turnpike_bus_model_lod1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_model_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:5016</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5003,7 +5006,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a605885011ff4ea0df66f935a93f90b65"><div class="ttname"><a href="#a605885011ff4ea0df66f935a93f90b65">d_course_toads_turnpike_bus_unknown_model16</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model16[]</div><div class="ttdef"><b>Definition</b> course_data.c:5026</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a605885011ff4ea0df66f935a93f90b65"><div class="ttname"><a href="#a605885011ff4ea0df66f935a93f90b65">d_course_toads_turnpike_bus_unknown_model16</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model16[]</div><div class="ttdef"><b>Definition</b> course_data.c:5027</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5024,8 +5027,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a3d43b18aec26041f942d2071e9bc9878">d_course_toads_turnpike_dl_1C628</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0c0171b0f0f8416516cc718589eada69"><div class="ttname"><a href="#a0c0171b0f0f8416516cc718589eada69">d_course_toads_turnpike_dl_1C688</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1C688[]</div><div class="ttdef"><b>Definition</b> course_data.c:5189</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3d43b18aec26041f942d2071e9bc9878"><div class="ttname"><a href="#a3d43b18aec26041f942d2071e9bc9878">d_course_toads_turnpike_dl_1C628</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1C628[]</div><div class="ttdef"><b>Definition</b> course_data.c:5173</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0c0171b0f0f8416516cc718589eada69"><div class="ttname"><a href="#a0c0171b0f0f8416516cc718589eada69">d_course_toads_turnpike_dl_1C688</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1C688[]</div><div class="ttdef"><b>Definition</b> course_data.c:5190</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3d43b18aec26041f942d2071e9bc9878"><div class="ttname"><a href="#a3d43b18aec26041f942d2071e9bc9878">d_course_toads_turnpike_dl_1C628</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1C628[]</div><div class="ttdef"><b>Definition</b> course_data.c:5174</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5045,7 +5048,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a19dbe36021fc8032d3c8cb1f836083b7">d_course_toads_turnpike_dl_1C6E8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a19dbe36021fc8032d3c8cb1f836083b7"><div class="ttname"><a href="#a19dbe36021fc8032d3c8cb1f836083b7">d_course_toads_turnpike_dl_1C6E8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1C6E8[]</div><div class="ttdef"><b>Definition</b> course_data.c:5205</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a19dbe36021fc8032d3c8cb1f836083b7"><div class="ttname"><a href="#a19dbe36021fc8032d3c8cb1f836083b7">d_course_toads_turnpike_dl_1C6E8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1C6E8[]</div><div class="ttdef"><b>Definition</b> course_data.c:5206</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5075,7 +5078,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a710eeae664d8a454464d84f8dcf6ba8f"><div class="ttname"><a href="#a710eeae664d8a454464d84f8dcf6ba8f">d_course_toads_turnpike_bus_unknown_model17</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model17[]</div><div class="ttdef"><b>Definition</b> course_data.c:5037</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a710eeae664d8a454464d84f8dcf6ba8f"><div class="ttname"><a href="#a710eeae664d8a454464d84f8dcf6ba8f">d_course_toads_turnpike_bus_unknown_model17</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model17[]</div><div class="ttdef"><b>Definition</b> course_data.c:5038</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5105,7 +5108,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae2692682c489ac2b5bf177e3a2024e6d"><div class="ttname"><a href="#ae2692682c489ac2b5bf177e3a2024e6d">d_course_toads_turnpike_bus_unknown_model18</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model18[]</div><div class="ttdef"><b>Definition</b> course_data.c:5048</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae2692682c489ac2b5bf177e3a2024e6d"><div class="ttname"><a href="#ae2692682c489ac2b5bf177e3a2024e6d">d_course_toads_turnpike_bus_unknown_model18</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model18[]</div><div class="ttdef"><b>Definition</b> course_data.c:5049</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5141,9 +5144,9 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a4dbc92e867b69bd47d8a3ebdd7f6e25c">d_course_toads_turnpike_dl_1C710</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a4dbc92e867b69bd47d8a3ebdd7f6e25c"><div class="ttname"><a href="#a4dbc92e867b69bd47d8a3ebdd7f6e25c">d_course_toads_turnpike_dl_1C710</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1C710[]</div><div class="ttdef"><b>Definition</b> course_data.c:5218</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac7799b6710d43da1f82e629d2fb44e84"><div class="ttname"><a href="#ac7799b6710d43da1f82e629d2fb44e84">d_course_toads_turnpike_dl_1C7D0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1C7D0[]</div><div class="ttdef"><b>Definition</b> course_data.c:5250</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afd24a3690ee1d1a803ac9825855ed55b"><div class="ttname"><a href="#afd24a3690ee1d1a803ac9825855ed55b">d_course_toads_turnpike_dl_1C770</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1C770[]</div><div class="ttdef"><b>Definition</b> course_data.c:5234</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a4dbc92e867b69bd47d8a3ebdd7f6e25c"><div class="ttname"><a href="#a4dbc92e867b69bd47d8a3ebdd7f6e25c">d_course_toads_turnpike_dl_1C710</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1C710[]</div><div class="ttdef"><b>Definition</b> course_data.c:5219</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac7799b6710d43da1f82e629d2fb44e84"><div class="ttname"><a href="#ac7799b6710d43da1f82e629d2fb44e84">d_course_toads_turnpike_dl_1C7D0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1C7D0[]</div><div class="ttdef"><b>Definition</b> course_data.c:5251</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afd24a3690ee1d1a803ac9825855ed55b"><div class="ttname"><a href="#afd24a3690ee1d1a803ac9825855ed55b">d_course_toads_turnpike_dl_1C770</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1C770[]</div><div class="ttdef"><b>Definition</b> course_data.c:5235</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5163,7 +5166,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ab14733363594a267f2e1f68b6ac07566">d_course_toads_turnpike_dl_1CA88</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab14733363594a267f2e1f68b6ac07566"><div class="ttname"><a href="#ab14733363594a267f2e1f68b6ac07566">d_course_toads_turnpike_dl_1CA88</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1CA88[]</div><div class="ttdef"><b>Definition</b> course_data.c:5341</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab14733363594a267f2e1f68b6ac07566"><div class="ttname"><a href="#ab14733363594a267f2e1f68b6ac07566">d_course_toads_turnpike_dl_1CA88</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1CA88[]</div><div class="ttdef"><b>Definition</b> course_data.c:5342</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5193,7 +5196,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_acbe897e43c74bfc201159de787dbf803"><div class="ttname"><a href="#acbe897e43c74bfc201159de787dbf803">d_course_toads_turnpike_bus_model_lod2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_model_lod2[]</div><div class="ttdef"><b>Definition</b> course_data.c:5356</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_acbe897e43c74bfc201159de787dbf803"><div class="ttname"><a href="#acbe897e43c74bfc201159de787dbf803">d_course_toads_turnpike_bus_model_lod2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_model_lod2[]</div><div class="ttdef"><b>Definition</b> course_data.c:5357</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5223,7 +5226,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a896b704ecd0184130e172f5d97a44396"><div class="ttname"><a href="#a896b704ecd0184130e172f5d97a44396">d_course_toads_turnpike_bus_unknown_model26</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model26[]</div><div class="ttdef"><b>Definition</b> course_data.c:5367</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a896b704ecd0184130e172f5d97a44396"><div class="ttname"><a href="#a896b704ecd0184130e172f5d97a44396">d_course_toads_turnpike_bus_unknown_model26</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_bus_unknown_model26[]</div><div class="ttdef"><b>Definition</b> course_data.c:5368</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5244,8 +5247,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a38dd8db6d455e00db412d68a3fa51ae0">d_course_toads_turnpike_dl_1CD98</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a38dd8db6d455e00db412d68a3fa51ae0"><div class="ttname"><a href="#a38dd8db6d455e00db412d68a3fa51ae0">d_course_toads_turnpike_dl_1CD98</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1CD98[]</div><div class="ttdef"><b>Definition</b> course_data.c:5423</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_acdb32f10d7c4249b095d526f37288de5"><div class="ttname"><a href="#acdb32f10d7c4249b095d526f37288de5">d_course_toads_turnpike_dl_1CDF8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1CDF8[]</div><div class="ttdef"><b>Definition</b> course_data.c:5439</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a38dd8db6d455e00db412d68a3fa51ae0"><div class="ttname"><a href="#a38dd8db6d455e00db412d68a3fa51ae0">d_course_toads_turnpike_dl_1CD98</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1CD98[]</div><div class="ttdef"><b>Definition</b> course_data.c:5424</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_acdb32f10d7c4249b095d526f37288de5"><div class="ttname"><a href="#acdb32f10d7c4249b095d526f37288de5">d_course_toads_turnpike_dl_1CDF8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1CDF8[]</div><div class="ttdef"><b>Definition</b> course_data.c:5440</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5265,7 +5268,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a9c6669b5b7bc973737a7092b3681eac8">d_course_toads_turnpike_dl_1CE58</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9c6669b5b7bc973737a7092b3681eac8"><div class="ttname"><a href="#a9c6669b5b7bc973737a7092b3681eac8">d_course_toads_turnpike_dl_1CE58</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1CE58[]</div><div class="ttdef"><b>Definition</b> course_data.c:5455</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9c6669b5b7bc973737a7092b3681eac8"><div class="ttname"><a href="#a9c6669b5b7bc973737a7092b3681eac8">d_course_toads_turnpike_dl_1CE58</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1CE58[]</div><div class="ttdef"><b>Definition</b> course_data.c:5456</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5299,7 +5302,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a300e674ccb9b5719bec8ce05a49346f7">d_course_toads_turnpike_dl_1CE80</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a300e674ccb9b5719bec8ce05a49346f7"><div class="ttname"><a href="#a300e674ccb9b5719bec8ce05a49346f7">d_course_toads_turnpike_dl_1CE80</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1CE80[]</div><div class="ttdef"><b>Definition</b> course_data.c:5468</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a300e674ccb9b5719bec8ce05a49346f7"><div class="ttname"><a href="#a300e674ccb9b5719bec8ce05a49346f7">d_course_toads_turnpike_dl_1CE80</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1CE80[]</div><div class="ttdef"><b>Definition</b> course_data.c:5469</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5319,7 +5322,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#af1fb0ddb10315fe1797eecafbe8f8c4a">d_course_toads_turnpike_dl_1D008</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_af1fb0ddb10315fe1797eecafbe8f8c4a"><div class="ttname"><a href="#af1fb0ddb10315fe1797eecafbe8f8c4a">d_course_toads_turnpike_dl_1D008</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1D008[]</div><div class="ttdef"><b>Definition</b> course_data.c:5521</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_af1fb0ddb10315fe1797eecafbe8f8c4a"><div class="ttname"><a href="#af1fb0ddb10315fe1797eecafbe8f8c4a">d_course_toads_turnpike_dl_1D008</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1D008[]</div><div class="ttdef"><b>Definition</b> course_data.c:5522</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5439,7 +5442,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa15f8a29d6aecc3b67fa6fa4ed0c55fc"><div class="ttname"><a href="#aa15f8a29d6aecc3b67fa6fa4ed0c55fc">d_course_toads_turnpike_tanker_truck_model_lod0</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_model_lod0[]</div><div class="ttdef"><b>Definition</b> course_data.c:5534</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa15f8a29d6aecc3b67fa6fa4ed0c55fc"><div class="ttname"><a href="#aa15f8a29d6aecc3b67fa6fa4ed0c55fc">d_course_toads_turnpike_tanker_truck_model_lod0</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_model_lod0[]</div><div class="ttdef"><b>Definition</b> course_data.c:5535</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5475,7 +5478,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0fbe8bc4941ec2ead0d261e20cdceb22"><div class="ttname"><a href="#a0fbe8bc4941ec2ead0d261e20cdceb22">d_course_toads_turnpike_tanker_truck_unknown_model1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:5553</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0fbe8bc4941ec2ead0d261e20cdceb22"><div class="ttname"><a href="#a0fbe8bc4941ec2ead0d261e20cdceb22">d_course_toads_turnpike_tanker_truck_unknown_model1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:5554</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5511,7 +5514,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_abd013903289c87ec5ab770e6d5421224"><div class="ttname"><a href="#abd013903289c87ec5ab770e6d5421224">d_course_toads_turnpike_tanker_truck_unknown_model2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:5572</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_abd013903289c87ec5ab770e6d5421224"><div class="ttname"><a href="#abd013903289c87ec5ab770e6d5421224">d_course_toads_turnpike_tanker_truck_unknown_model2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:5573</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5533,9 +5536,9 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a9c9eabf818ac1c83644c176d5421f3b9">d_course_toads_turnpike_dl_1E288</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a83f4bdfe5d11fb3da04ffd0b0fcf3f2b"><div class="ttname"><a href="#a83f4bdfe5d11fb3da04ffd0b0fcf3f2b">d_course_toads_turnpike_dl_1E3A8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E3A8[]</div><div class="ttdef"><b>Definition</b> course_data.c:5917</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9c9eabf818ac1c83644c176d5421f3b9"><div class="ttname"><a href="#a9c9eabf818ac1c83644c176d5421f3b9">d_course_toads_turnpike_dl_1E288</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E288[]</div><div class="ttdef"><b>Definition</b> course_data.c:5873</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_af72f0f84fad41f9ae8e7e8811023acf2"><div class="ttname"><a href="#af72f0f84fad41f9ae8e7e8811023acf2">d_course_toads_turnpike_dl_1E318</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E318[]</div><div class="ttdef"><b>Definition</b> course_data.c:5895</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a83f4bdfe5d11fb3da04ffd0b0fcf3f2b"><div class="ttname"><a href="#a83f4bdfe5d11fb3da04ffd0b0fcf3f2b">d_course_toads_turnpike_dl_1E3A8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E3A8[]</div><div class="ttdef"><b>Definition</b> course_data.c:5918</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9c9eabf818ac1c83644c176d5421f3b9"><div class="ttname"><a href="#a9c9eabf818ac1c83644c176d5421f3b9">d_course_toads_turnpike_dl_1E288</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E288[]</div><div class="ttdef"><b>Definition</b> course_data.c:5874</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_af72f0f84fad41f9ae8e7e8811023acf2"><div class="ttname"><a href="#af72f0f84fad41f9ae8e7e8811023acf2">d_course_toads_turnpike_dl_1E318</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E318[]</div><div class="ttdef"><b>Definition</b> course_data.c:5896</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5555,7 +5558,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a0bb126c0e372f8d42f2c11c66ffb8422">d_course_toads_turnpike_dl_1E438</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0bb126c0e372f8d42f2c11c66ffb8422"><div class="ttname"><a href="#a0bb126c0e372f8d42f2c11c66ffb8422">d_course_toads_turnpike_dl_1E438</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E438[]</div><div class="ttdef"><b>Definition</b> course_data.c:5939</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0bb126c0e372f8d42f2c11c66ffb8422"><div class="ttname"><a href="#a0bb126c0e372f8d42f2c11c66ffb8422">d_course_toads_turnpike_dl_1E438</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E438[]</div><div class="ttdef"><b>Definition</b> course_data.c:5940</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5593,8 +5596,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(10, 9, 18, 0, 12, 11, 19, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3ad5cd53461c378a44d2912fa9c04061"><div class="ttname"><a href="#a3ad5cd53461c378a44d2912fa9c04061">d_course_toads_turnpike_tanker_truck_bumper</a></div><div class="ttdeci">u8 d_course_toads_turnpike_tanker_truck_bumper[]</div><div class="ttdef"><b>Definition</b> course_data.c:3329</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae9edc085aa752bf9518e856ac70bd06b"><div class="ttname"><a href="#ae9edc085aa752bf9518e856ac70bd06b">d_course_toads_turnpike_tanker_truck_unknown_model3</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model3[]</div><div class="ttdef"><b>Definition</b> course_data.c:5591</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3ad5cd53461c378a44d2912fa9c04061"><div class="ttname"><a href="#a3ad5cd53461c378a44d2912fa9c04061">d_course_toads_turnpike_tanker_truck_bumper</a></div><div class="ttdeci">u8 d_course_toads_turnpike_tanker_truck_bumper[]</div><div class="ttdef"><b>Definition</b> course_data.c:3330</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae9edc085aa752bf9518e856ac70bd06b"><div class="ttname"><a href="#ae9edc085aa752bf9518e856ac70bd06b">d_course_toads_turnpike_tanker_truck_unknown_model3</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model3[]</div><div class="ttdef"><b>Definition</b> course_data.c:5592</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5685,7 +5688,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(8, 9, 10, 0, 8, 10, 11, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aaa342f809692cd262ce7c4963fef2d23"><div class="ttname"><a href="#aaa342f809692cd262ce7c4963fef2d23">d_course_toads_turnpike_tanker_truck_unknown_model11</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model11[]</div><div class="ttdef"><b>Definition</b> course_data.c:5777</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aaa342f809692cd262ce7c4963fef2d23"><div class="ttname"><a href="#aaa342f809692cd262ce7c4963fef2d23">d_course_toads_turnpike_tanker_truck_unknown_model11</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model11[]</div><div class="ttdef"><b>Definition</b> course_data.c:5778</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5729,7 +5732,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(21, 20, 23, 0, 21, 23, 22, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3049ff61cf0f5aa2c2df2cdc443d6427"><div class="ttname"><a href="#a3049ff61cf0f5aa2c2df2cdc443d6427">d_course_toads_turnpike_tanker_truck_unknown_model12</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model12[]</div><div class="ttdef"><b>Definition</b> course_data.c:5792</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3049ff61cf0f5aa2c2df2cdc443d6427"><div class="ttname"><a href="#a3049ff61cf0f5aa2c2df2cdc443d6427">d_course_toads_turnpike_tanker_truck_unknown_model12</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model12[]</div><div class="ttdef"><b>Definition</b> course_data.c:5793</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5773,7 +5776,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(23, 22, 21, 0, 23, 21, 20, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a85064f91e117ab1c05f75e1840fb03dc"><div class="ttname"><a href="#a85064f91e117ab1c05f75e1840fb03dc">d_course_toads_turnpike_tanker_truck_unknown_model13</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model13[]</div><div class="ttdef"><b>Definition</b> course_data.c:5819</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a85064f91e117ab1c05f75e1840fb03dc"><div class="ttname"><a href="#a85064f91e117ab1c05f75e1840fb03dc">d_course_toads_turnpike_tanker_truck_unknown_model13</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model13[]</div><div class="ttdef"><b>Definition</b> course_data.c:5820</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5817,7 +5820,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(21, 20, 23, 0, 21, 23, 22, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab3595777918b5c5cc1e6e57671d881db"><div class="ttname"><a href="#ab3595777918b5c5cc1e6e57671d881db">d_course_toads_turnpike_tanker_truck_unknown_model14</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model14[]</div><div class="ttdef"><b>Definition</b> course_data.c:5846</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab3595777918b5c5cc1e6e57671d881db"><div class="ttname"><a href="#ab3595777918b5c5cc1e6e57671d881db">d_course_toads_turnpike_tanker_truck_unknown_model14</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model14[]</div><div class="ttdef"><b>Definition</b> course_data.c:5847</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5842,12 +5845,12 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a50e6287e3f8584a01da773a2daeae61d">d_course_toads_turnpike_dl_1E468</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1b0f789d8462680b02a9cbb7a7e8be08"><div class="ttname"><a href="#a1b0f789d8462680b02a9cbb7a7e8be08">d_course_toads_turnpike_dl_1E8A0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E8A0[]</div><div class="ttdef"><b>Definition</b> course_data.c:6100</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2a499ea48b44b296a696859949d1fd95"><div class="ttname"><a href="#a2a499ea48b44b296a696859949d1fd95">d_course_toads_turnpike_dl_1E810</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E810[]</div><div class="ttdef"><b>Definition</b> course_data.c:6078</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a430389f1c9ee8339aba40f7f98f2252e"><div class="ttname"><a href="#a430389f1c9ee8339aba40f7f98f2252e">d_course_toads_turnpike_dl_1EA40</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1EA40[]</div><div class="ttdef"><b>Definition</b> course_data.c:6160</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a50e6287e3f8584a01da773a2daeae61d"><div class="ttname"><a href="#a50e6287e3f8584a01da773a2daeae61d">d_course_toads_turnpike_dl_1E468</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E468[]</div><div class="ttdef"><b>Definition</b> course_data.c:5953</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a5f97eeef00d519369f397b49fea7829e"><div class="ttname"><a href="#a5f97eeef00d519369f397b49fea7829e">d_course_toads_turnpike_dl_1E970</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E970[]</div><div class="ttdef"><b>Definition</b> course_data.c:6130</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a7e823ca95b9461c9a3fa4a7e8f1ffc7b"><div class="ttname"><a href="#a7e823ca95b9461c9a3fa4a7e8f1ffc7b">d_course_toads_turnpike_dl_1E508</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E508[]</div><div class="ttdef"><b>Definition</b> course_data.c:5977</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1b0f789d8462680b02a9cbb7a7e8be08"><div class="ttname"><a href="#a1b0f789d8462680b02a9cbb7a7e8be08">d_course_toads_turnpike_dl_1E8A0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E8A0[]</div><div class="ttdef"><b>Definition</b> course_data.c:6101</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2a499ea48b44b296a696859949d1fd95"><div class="ttname"><a href="#a2a499ea48b44b296a696859949d1fd95">d_course_toads_turnpike_dl_1E810</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E810[]</div><div class="ttdef"><b>Definition</b> course_data.c:6079</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a430389f1c9ee8339aba40f7f98f2252e"><div class="ttname"><a href="#a430389f1c9ee8339aba40f7f98f2252e">d_course_toads_turnpike_dl_1EA40</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1EA40[]</div><div class="ttdef"><b>Definition</b> course_data.c:6161</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a50e6287e3f8584a01da773a2daeae61d"><div class="ttname"><a href="#a50e6287e3f8584a01da773a2daeae61d">d_course_toads_turnpike_dl_1E468</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E468[]</div><div class="ttdef"><b>Definition</b> course_data.c:5954</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a5f97eeef00d519369f397b49fea7829e"><div class="ttname"><a href="#a5f97eeef00d519369f397b49fea7829e">d_course_toads_turnpike_dl_1E970</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E970[]</div><div class="ttdef"><b>Definition</b> course_data.c:6131</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a7e823ca95b9461c9a3fa4a7e8f1ffc7b"><div class="ttname"><a href="#a7e823ca95b9461c9a3fa4a7e8f1ffc7b">d_course_toads_turnpike_dl_1E508</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1E508[]</div><div class="ttdef"><b>Definition</b> course_data.c:5978</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5867,7 +5870,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a031f38a81bde518204d57bdc4f01f332">d_course_toads_turnpike_dl_1EB10</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a031f38a81bde518204d57bdc4f01f332"><div class="ttname"><a href="#a031f38a81bde518204d57bdc4f01f332">d_course_toads_turnpike_dl_1EB10</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1EB10[]</div><div class="ttdef"><b>Definition</b> course_data.c:6190</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a031f38a81bde518204d57bdc4f01f332"><div class="ttname"><a href="#a031f38a81bde518204d57bdc4f01f332">d_course_toads_turnpike_dl_1EB10</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1EB10[]</div><div class="ttdef"><b>Definition</b> course_data.c:6191</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5914,7 +5917,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae51e8813d04b71ba9d88e075a6b0fe36"><div class="ttname"><a href="#ae51e8813d04b71ba9d88e075a6b0fe36">d_course_toads_turnpike_tanker_truck_model_lod1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_model_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:6208</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae51e8813d04b71ba9d88e075a6b0fe36"><div class="ttname"><a href="#ae51e8813d04b71ba9d88e075a6b0fe36">d_course_toads_turnpike_tanker_truck_model_lod1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_model_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:6209</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5993,7 +5996,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9e0010d49a1fd9f1239b81ca87030f68"><div class="ttname"><a href="#a9e0010d49a1fd9f1239b81ca87030f68">d_course_toads_turnpike_tanker_truck_unknown_model15</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model15[]</div><div class="ttdef"><b>Definition</b> course_data.c:6219</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9e0010d49a1fd9f1239b81ca87030f68"><div class="ttname"><a href="#a9e0010d49a1fd9f1239b81ca87030f68">d_course_toads_turnpike_tanker_truck_unknown_model15</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model15[]</div><div class="ttdef"><b>Definition</b> course_data.c:6220</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6026,7 +6029,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa79bd6623d113c074bca18da969ea276"><div class="ttname"><a href="#aa79bd6623d113c074bca18da969ea276">d_course_toads_turnpike_tanker_truck_unknown_model16</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model16[]</div><div class="ttdef"><b>Definition</b> course_data.c:6226</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa79bd6623d113c074bca18da969ea276"><div class="ttname"><a href="#aa79bd6623d113c074bca18da969ea276">d_course_toads_turnpike_tanker_truck_unknown_model16</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model16[]</div><div class="ttdef"><b>Definition</b> course_data.c:6227</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6058,7 +6061,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aee5506c2ee2081752d9eee3b3467196c"><div class="ttname"><a href="#aee5506c2ee2081752d9eee3b3467196c">d_course_toads_turnpike_tanker_truck_unknown_model17</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model17[]</div><div class="ttdef"><b>Definition</b> course_data.c:6237</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aee5506c2ee2081752d9eee3b3467196c"><div class="ttname"><a href="#aee5506c2ee2081752d9eee3b3467196c">d_course_toads_turnpike_tanker_truck_unknown_model17</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model17[]</div><div class="ttdef"><b>Definition</b> course_data.c:6238</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6081,10 +6084,10 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a08fd7706c397bb277051b8c62962b935">d_course_toads_turnpike_dl_1F7D8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0162a82ae4ed0ace78ed70fa3bdaa6c6"><div class="ttname"><a href="#a0162a82ae4ed0ace78ed70fa3bdaa6c6">d_course_toads_turnpike_dl_1F850</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1F850[]</div><div class="ttdef"><b>Definition</b> course_data.c:6478</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a08fd7706c397bb277051b8c62962b935"><div class="ttname"><a href="#a08fd7706c397bb277051b8c62962b935">d_course_toads_turnpike_dl_1F7D8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1F7D8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6459</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a610f36fcf9f07324bce6bdeb3f640402"><div class="ttname"><a href="#a610f36fcf9f07324bce6bdeb3f640402">d_course_toads_turnpike_dl_1F938</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1F938[]</div><div class="ttdef"><b>Definition</b> course_data.c:6515</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ad09a5cb87516a2f7a42c57e21841b51f"><div class="ttname"><a href="#ad09a5cb87516a2f7a42c57e21841b51f">d_course_toads_turnpike_dl_1F8C0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1F8C0[]</div><div class="ttdef"><b>Definition</b> course_data.c:6496</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0162a82ae4ed0ace78ed70fa3bdaa6c6"><div class="ttname"><a href="#a0162a82ae4ed0ace78ed70fa3bdaa6c6">d_course_toads_turnpike_dl_1F850</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1F850[]</div><div class="ttdef"><b>Definition</b> course_data.c:6479</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a08fd7706c397bb277051b8c62962b935"><div class="ttname"><a href="#a08fd7706c397bb277051b8c62962b935">d_course_toads_turnpike_dl_1F7D8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1F7D8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6460</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a610f36fcf9f07324bce6bdeb3f640402"><div class="ttname"><a href="#a610f36fcf9f07324bce6bdeb3f640402">d_course_toads_turnpike_dl_1F938</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1F938[]</div><div class="ttdef"><b>Definition</b> course_data.c:6516</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ad09a5cb87516a2f7a42c57e21841b51f"><div class="ttname"><a href="#ad09a5cb87516a2f7a42c57e21841b51f">d_course_toads_turnpike_dl_1F8C0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1F8C0[]</div><div class="ttdef"><b>Definition</b> course_data.c:6497</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6104,7 +6107,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a59ca8eb3e421ec3ed7f992fa38cde28d">d_course_toads_turnpike_dl_1F9A8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a59ca8eb3e421ec3ed7f992fa38cde28d"><div class="ttname"><a href="#a59ca8eb3e421ec3ed7f992fa38cde28d">d_course_toads_turnpike_dl_1F9A8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1F9A8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6533</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a59ca8eb3e421ec3ed7f992fa38cde28d"><div class="ttname"><a href="#a59ca8eb3e421ec3ed7f992fa38cde28d">d_course_toads_turnpike_dl_1F9A8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1F9A8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6534</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6152,7 +6155,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0885832f6f33d2ad6cf4dc0526585f19"><div class="ttname"><a href="#a0885832f6f33d2ad6cf4dc0526585f19">d_course_toads_turnpike_tanker_truck_unknown_model25</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model25[]</div><div class="ttdef"><b>Definition</b> course_data.c:6401</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0885832f6f33d2ad6cf4dc0526585f19"><div class="ttname"><a href="#a0885832f6f33d2ad6cf4dc0526585f19">d_course_toads_turnpike_tanker_truck_unknown_model25</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model25[]</div><div class="ttdef"><b>Definition</b> course_data.c:6402</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6185,7 +6188,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab3a55a94963f60a567c60b50b2bbab93"><div class="ttname"><a href="#ab3a55a94963f60a567c60b50b2bbab93">d_course_toads_turnpike_tanker_truck_unknown_model26</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model26[]</div><div class="ttdef"><b>Definition</b> course_data.c:6412</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab3a55a94963f60a567c60b50b2bbab93"><div class="ttname"><a href="#ab3a55a94963f60a567c60b50b2bbab93">d_course_toads_turnpike_tanker_truck_unknown_model26</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model26[]</div><div class="ttdef"><b>Definition</b> course_data.c:6413</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6219,7 +6222,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa6d7a7f5776c5024b176a91e33a3df21"><div class="ttname"><a href="#aa6d7a7f5776c5024b176a91e33a3df21">d_course_toads_turnpike_tanker_truck_unknown_model27</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model27[]</div><div class="ttdef"><b>Definition</b> course_data.c:6419</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa6d7a7f5776c5024b176a91e33a3df21"><div class="ttname"><a href="#aa6d7a7f5776c5024b176a91e33a3df21">d_course_toads_turnpike_tanker_truck_unknown_model27</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model27[]</div><div class="ttdef"><b>Definition</b> course_data.c:6420</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6252,7 +6255,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0861d597636d466cb22e38999bf2629b"><div class="ttname"><a href="#a0861d597636d466cb22e38999bf2629b">d_course_toads_turnpike_tanker_truck_unknown_model28</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model28[]</div><div class="ttdef"><b>Definition</b> course_data.c:6430</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0861d597636d466cb22e38999bf2629b"><div class="ttname"><a href="#a0861d597636d466cb22e38999bf2629b">d_course_toads_turnpike_tanker_truck_unknown_model28</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model28[]</div><div class="ttdef"><b>Definition</b> course_data.c:6431</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6287,7 +6290,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(8, 9, 10, 0, 8, 10, 11, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a4bc1268403349a72334509d14b5e3bc3"><div class="ttname"><a href="#a4bc1268403349a72334509d14b5e3bc3">d_course_toads_turnpike_tanker_truck_unknown_model29</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model29[]</div><div class="ttdef"><b>Definition</b> course_data.c:6437</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a4bc1268403349a72334509d14b5e3bc3"><div class="ttname"><a href="#a4bc1268403349a72334509d14b5e3bc3">d_course_toads_turnpike_tanker_truck_unknown_model29</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model29[]</div><div class="ttdef"><b>Definition</b> course_data.c:6438</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6320,7 +6323,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a5e30d614feca1d743619149733fb2247"><div class="ttname"><a href="#a5e30d614feca1d743619149733fb2247">d_course_toads_turnpike_tanker_truck_unknown_model30</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model30[]</div><div class="ttdef"><b>Definition</b> course_data.c:6452</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a5e30d614feca1d743619149733fb2247"><div class="ttname"><a href="#a5e30d614feca1d743619149733fb2247">d_course_toads_turnpike_tanker_truck_unknown_model30</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model30[]</div><div class="ttdef"><b>Definition</b> course_data.c:6453</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6346,13 +6349,13 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a1c4826116cc01c8bab3cf3cfe9e518be">d_course_toads_turnpike_dl_1F9E0</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0419fa6f6817194d27b5073f2e764a98"><div class="ttname"><a href="#a0419fa6f6817194d27b5073f2e764a98">d_course_toads_turnpike_dl_1FD58</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FD58[]</div><div class="ttdef"><b>Definition</b> course_data.c:6667</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a12c95d9b6222f0b1cf21fc696e93bc77"><div class="ttname"><a href="#a12c95d9b6222f0b1cf21fc696e93bc77">d_course_toads_turnpike_dl_1FDD0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FDD0[]</div><div class="ttdef"><b>Definition</b> course_data.c:6686</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1c4826116cc01c8bab3cf3cfe9e518be"><div class="ttname"><a href="#a1c4826116cc01c8bab3cf3cfe9e518be">d_course_toads_turnpike_dl_1F9E0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1F9E0[]</div><div class="ttdef"><b>Definition</b> course_data.c:6548</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a8720bb30bed4d29238ac71073d9dcab5"><div class="ttname"><a href="#a8720bb30bed4d29238ac71073d9dcab5">d_course_toads_turnpike_dl_1FF50</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FF50[]</div><div class="ttdef"><b>Definition</b> course_data.c:6746</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac0795ff9f9d64d03cb2ffe23a0a89e8f"><div class="ttname"><a href="#ac0795ff9f9d64d03cb2ffe23a0a89e8f">d_course_toads_turnpike_dl_1FCD8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FCD8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6647</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac48a4d608bdf8eb6f533937caa465334"><div class="ttname"><a href="#ac48a4d608bdf8eb6f533937caa465334">d_course_toads_turnpike_dl_1FE50</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FE50[]</div><div class="ttdef"><b>Definition</b> course_data.c:6706</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afd6b328967e89f930530e04878be4f49"><div class="ttname"><a href="#afd6b328967e89f930530e04878be4f49">d_course_toads_turnpike_dl_1FEC8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FEC8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6725</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0419fa6f6817194d27b5073f2e764a98"><div class="ttname"><a href="#a0419fa6f6817194d27b5073f2e764a98">d_course_toads_turnpike_dl_1FD58</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FD58[]</div><div class="ttdef"><b>Definition</b> course_data.c:6668</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a12c95d9b6222f0b1cf21fc696e93bc77"><div class="ttname"><a href="#a12c95d9b6222f0b1cf21fc696e93bc77">d_course_toads_turnpike_dl_1FDD0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FDD0[]</div><div class="ttdef"><b>Definition</b> course_data.c:6687</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1c4826116cc01c8bab3cf3cfe9e518be"><div class="ttname"><a href="#a1c4826116cc01c8bab3cf3cfe9e518be">d_course_toads_turnpike_dl_1F9E0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1F9E0[]</div><div class="ttdef"><b>Definition</b> course_data.c:6549</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a8720bb30bed4d29238ac71073d9dcab5"><div class="ttname"><a href="#a8720bb30bed4d29238ac71073d9dcab5">d_course_toads_turnpike_dl_1FF50</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FF50[]</div><div class="ttdef"><b>Definition</b> course_data.c:6747</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac0795ff9f9d64d03cb2ffe23a0a89e8f"><div class="ttname"><a href="#ac0795ff9f9d64d03cb2ffe23a0a89e8f">d_course_toads_turnpike_dl_1FCD8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FCD8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6648</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac48a4d608bdf8eb6f533937caa465334"><div class="ttname"><a href="#ac48a4d608bdf8eb6f533937caa465334">d_course_toads_turnpike_dl_1FE50</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FE50[]</div><div class="ttdef"><b>Definition</b> course_data.c:6707</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afd6b328967e89f930530e04878be4f49"><div class="ttname"><a href="#afd6b328967e89f930530e04878be4f49">d_course_toads_turnpike_dl_1FEC8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FEC8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6726</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6372,7 +6375,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ab20d310a35b523dd0fb66ae35edac871">d_course_toads_turnpike_dl_1FFC8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab20d310a35b523dd0fb66ae35edac871"><div class="ttname"><a href="#ab20d310a35b523dd0fb66ae35edac871">d_course_toads_turnpike_dl_1FFC8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FFC8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6765</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab20d310a35b523dd0fb66ae35edac871"><div class="ttname"><a href="#ab20d310a35b523dd0fb66ae35edac871">d_course_toads_turnpike_dl_1FFC8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_1FFC8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6766</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6467,8 +6470,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(17, 18, 19, 0, 17, 19, 20, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1a00fa1bd192233ebb61bd936a0a9e86"><div class="ttname"><a href="#a1a00fa1bd192233ebb61bd936a0a9e86">d_course_toads_turnpike_tanker_truck_unknown_model32</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model32[]</div><div class="ttdef"><b>Definition</b> course_data.c:6816</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1c932cd2014a58596a2c3c656309b363"><div class="ttname"><a href="#a1c932cd2014a58596a2c3c656309b363">d_course_toads_turnpike_tanker_truck_side_front_lod1</a></div><div class="ttdeci">u8 d_course_toads_turnpike_tanker_truck_side_front_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3344</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1a00fa1bd192233ebb61bd936a0a9e86"><div class="ttname"><a href="#a1a00fa1bd192233ebb61bd936a0a9e86">d_course_toads_turnpike_tanker_truck_unknown_model32</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model32[]</div><div class="ttdef"><b>Definition</b> course_data.c:6817</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1c932cd2014a58596a2c3c656309b363"><div class="ttname"><a href="#a1c932cd2014a58596a2c3c656309b363">d_course_toads_turnpike_tanker_truck_side_front_lod1</a></div><div class="ttdeci">u8 d_course_toads_turnpike_tanker_truck_side_front_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3345</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6489,8 +6492,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a229ca8cc1727cad77bf3c884c3e2364e">d_course_toads_turnpike_dl_20348</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a229ca8cc1727cad77bf3c884c3e2364e"><div class="ttname"><a href="#a229ca8cc1727cad77bf3c884c3e2364e">d_course_toads_turnpike_dl_20348</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_20348[]</div><div class="ttdef"><b>Definition</b> course_data.c:6848</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a6f8038255677aaa9910b89dd60ca0a6b"><div class="ttname"><a href="#a6f8038255677aaa9910b89dd60ca0a6b">d_course_toads_turnpike_dl_20450</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_20450[]</div><div class="ttdef"><b>Definition</b> course_data.c:6885</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a229ca8cc1727cad77bf3c884c3e2364e"><div class="ttname"><a href="#a229ca8cc1727cad77bf3c884c3e2364e">d_course_toads_turnpike_dl_20348</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_20348[]</div><div class="ttdef"><b>Definition</b> course_data.c:6849</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a6f8038255677aaa9910b89dd60ca0a6b"><div class="ttname"><a href="#a6f8038255677aaa9910b89dd60ca0a6b">d_course_toads_turnpike_dl_20450</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_20450[]</div><div class="ttdef"><b>Definition</b> course_data.c:6886</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6510,7 +6513,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a95544c10d214b27db0f56a7ed33fc356">d_course_toads_turnpike_dl_204F8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a95544c10d214b27db0f56a7ed33fc356"><div class="ttname"><a href="#a95544c10d214b27db0f56a7ed33fc356">d_course_toads_turnpike_dl_204F8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_204F8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6910</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a95544c10d214b27db0f56a7ed33fc356"><div class="ttname"><a href="#a95544c10d214b27db0f56a7ed33fc356">d_course_toads_turnpike_dl_204F8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_204F8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6911</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6543,8 +6546,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a143e3bf73c0d41684e16ace96411d3f5"><div class="ttname"><a href="#a143e3bf73c0d41684e16ace96411d3f5">d_course_toads_turnpike_tanker_truck_front_lod1</a></div><div class="ttdeci">u8 d_course_toads_turnpike_tanker_truck_front_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3349</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a5b5fa3c52c3bf4567e1308df5154b0df"><div class="ttname"><a href="#a5b5fa3c52c3bf4567e1308df5154b0df">d_course_toads_turnpike_tanker_truck_unknown_model33</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model33[]</div><div class="ttdef"><b>Definition</b> course_data.c:6840</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a143e3bf73c0d41684e16ace96411d3f5"><div class="ttname"><a href="#a143e3bf73c0d41684e16ace96411d3f5">d_course_toads_turnpike_tanker_truck_front_lod1</a></div><div class="ttdeci">u8 d_course_toads_turnpike_tanker_truck_front_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3350</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a5b5fa3c52c3bf4567e1308df5154b0df"><div class="ttname"><a href="#a5b5fa3c52c3bf4567e1308df5154b0df">d_course_toads_turnpike_tanker_truck_unknown_model33</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_tanker_truck_unknown_model33[]</div><div class="ttdef"><b>Definition</b> course_data.c:6841</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6564,7 +6567,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#aa0f93a958975b9842a7be98bcd972e49">d_course_toads_turnpike_dl_20520</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa0f93a958975b9842a7be98bcd972e49"><div class="ttname"><a href="#aa0f93a958975b9842a7be98bcd972e49">d_course_toads_turnpike_dl_20520</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_20520[]</div><div class="ttdef"><b>Definition</b> course_data.c:6923</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa0f93a958975b9842a7be98bcd972e49"><div class="ttname"><a href="#aa0f93a958975b9842a7be98bcd972e49">d_course_toads_turnpike_dl_20520</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_20520[]</div><div class="ttdef"><b>Definition</b> course_data.c:6924</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6584,7 +6587,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#acf85f7df0b8c7db1ec72938161142fc4">d_course_toads_turnpike_dl_20598</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_acf85f7df0b8c7db1ec72938161142fc4"><div class="ttname"><a href="#acf85f7df0b8c7db1ec72938161142fc4">d_course_toads_turnpike_dl_20598</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_20598[]</div><div class="ttdef"><b>Definition</b> course_data.c:6942</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_acf85f7df0b8c7db1ec72938161142fc4"><div class="ttname"><a href="#acf85f7df0b8c7db1ec72938161142fc4">d_course_toads_turnpike_dl_20598</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_20598[]</div><div class="ttdef"><b>Definition</b> course_data.c:6943</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6666,7 +6669,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afb3bc23bf07815fd05735bafa0121128"><div class="ttname"><a href="#afb3bc23bf07815fd05735bafa0121128">d_course_toads_turnpike_car_model_lod0</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_model_lod0[]</div><div class="ttdef"><b>Definition</b> course_data.c:6955</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afb3bc23bf07815fd05735bafa0121128"><div class="ttname"><a href="#afb3bc23bf07815fd05735bafa0121128">d_course_toads_turnpike_car_model_lod0</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_model_lod0[]</div><div class="ttdef"><b>Definition</b> course_data.c:6956</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6702,7 +6705,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae65720339aa2d747bd3d4e5bcd37a707"><div class="ttname"><a href="#ae65720339aa2d747bd3d4e5bcd37a707">d_course_toads_turnpike_car_unknown_model1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:6974</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae65720339aa2d747bd3d4e5bcd37a707"><div class="ttname"><a href="#ae65720339aa2d747bd3d4e5bcd37a707">d_course_toads_turnpike_car_unknown_model1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:6975</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6723,8 +6726,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ad05bac54068cd91d9b609b3da7983a3c">d_course_toads_turnpike_dl_21648</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a7a2a151529c156e69136081e5c1de035"><div class="ttname"><a href="#a7a2a151529c156e69136081e5c1de035">d_course_toads_turnpike_dl_216D8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_216D8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7290</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ad05bac54068cd91d9b609b3da7983a3c"><div class="ttname"><a href="#ad05bac54068cd91d9b609b3da7983a3c">d_course_toads_turnpike_dl_21648</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21648[]</div><div class="ttdef"><b>Definition</b> course_data.c:7268</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a7a2a151529c156e69136081e5c1de035"><div class="ttname"><a href="#a7a2a151529c156e69136081e5c1de035">d_course_toads_turnpike_dl_216D8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_216D8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7291</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ad05bac54068cd91d9b609b3da7983a3c"><div class="ttname"><a href="#ad05bac54068cd91d9b609b3da7983a3c">d_course_toads_turnpike_dl_21648</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21648[]</div><div class="ttdef"><b>Definition</b> course_data.c:7269</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6744,7 +6747,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a53c8aa4b6b109322af2b1412a2b92c27">d_course_toads_turnpike_dl_21768</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a53c8aa4b6b109322af2b1412a2b92c27"><div class="ttname"><a href="#a53c8aa4b6b109322af2b1412a2b92c27">d_course_toads_turnpike_dl_21768</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21768[]</div><div class="ttdef"><b>Definition</b> course_data.c:7312</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a53c8aa4b6b109322af2b1412a2b92c27"><div class="ttname"><a href="#a53c8aa4b6b109322af2b1412a2b92c27">d_course_toads_turnpike_dl_21768</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21768[]</div><div class="ttdef"><b>Definition</b> course_data.c:7313</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6780,7 +6783,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(7, 8, 9, 0, 7, 9, 3, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a8ee34463a63ad1dfebf5598d47747c52"><div class="ttname"><a href="#a8ee34463a63ad1dfebf5598d47747c52">d_course_toads_turnpike_car_unknown_model2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:6993</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a8ee34463a63ad1dfebf5598d47747c52"><div class="ttname"><a href="#a8ee34463a63ad1dfebf5598d47747c52">d_course_toads_turnpike_car_unknown_model2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:6994</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6816,7 +6819,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(7, 8, 9, 0, 7, 9, 3, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a007fb17a3ff2d0a6502a007500e1d7fd"><div class="ttname"><a href="#a007fb17a3ff2d0a6502a007500e1d7fd">d_course_toads_turnpike_car_unknown_model3</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model3[]</div><div class="ttdef"><b>Definition</b> course_data.c:7006</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a007fb17a3ff2d0a6502a007500e1d7fd"><div class="ttname"><a href="#a007fb17a3ff2d0a6502a007500e1d7fd">d_course_toads_turnpike_car_unknown_model3</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model3[]</div><div class="ttdef"><b>Definition</b> course_data.c:7007</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6854,7 +6857,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(20, 21, 22, 0, 20, 22, 23, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa3168cb1e687caa9718be586be645e0c"><div class="ttname"><a href="#aa3168cb1e687caa9718be586be645e0c">d_course_toads_turnpike_car_unknown_model4</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model4[]</div><div class="ttdef"><b>Definition</b> course_data.c:7019</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_aa3168cb1e687caa9718be586be645e0c"><div class="ttname"><a href="#aa3168cb1e687caa9718be586be645e0c">d_course_toads_turnpike_car_unknown_model4</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model4[]</div><div class="ttdef"><b>Definition</b> course_data.c:7020</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6899,10 +6902,10 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a00c12f68094eab5b56e840fec86f7933"><div class="ttname"><a href="#a00c12f68094eab5b56e840fec86f7933">d_course_toads_turnpike_car_headlights</a></div><div class="ttdeci">u8 d_course_toads_turnpike_car_headlights[]</div><div class="ttdef"><b>Definition</b> course_data.c:3364</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a6db07572db3ebea7336efc5696046762"><div class="ttname"><a href="#a6db07572db3ebea7336efc5696046762">d_course_toads_turnpike_car_unknown_model6</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model6[]</div><div class="ttdef"><b>Definition</b> course_data.c:7057</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac4e8be49a00705b7a52a9454054ab21f"><div class="ttname"><a href="#ac4e8be49a00705b7a52a9454054ab21f">d_course_toads_turnpike_car_unknown_model5</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model5[]</div><div class="ttdef"><b>Definition</b> course_data.c:7046</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ad7c6d27defd6de898845bcb64ae91526"><div class="ttname"><a href="#ad7c6d27defd6de898845bcb64ae91526">d_course_toads_turnpike_car_taillights</a></div><div class="ttdeci">u8 d_course_toads_turnpike_car_taillights[]</div><div class="ttdef"><b>Definition</b> course_data.c:3369</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a00c12f68094eab5b56e840fec86f7933"><div class="ttname"><a href="#a00c12f68094eab5b56e840fec86f7933">d_course_toads_turnpike_car_headlights</a></div><div class="ttdeci">u8 d_course_toads_turnpike_car_headlights[]</div><div class="ttdef"><b>Definition</b> course_data.c:3365</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a6db07572db3ebea7336efc5696046762"><div class="ttname"><a href="#a6db07572db3ebea7336efc5696046762">d_course_toads_turnpike_car_unknown_model6</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model6[]</div><div class="ttdef"><b>Definition</b> course_data.c:7058</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac4e8be49a00705b7a52a9454054ab21f"><div class="ttname"><a href="#ac4e8be49a00705b7a52a9454054ab21f">d_course_toads_turnpike_car_unknown_model5</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model5[]</div><div class="ttdef"><b>Definition</b> course_data.c:7047</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ad7c6d27defd6de898845bcb64ae91526"><div class="ttname"><a href="#ad7c6d27defd6de898845bcb64ae91526">d_course_toads_turnpike_car_taillights</a></div><div class="ttdeci">u8 d_course_toads_turnpike_car_taillights[]</div><div class="ttdef"><b>Definition</b> course_data.c:3370</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6946,7 +6949,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
 <div class="ttc" id="ambi_8h_html_a3c1c2e9788a104f60f8e01457dfd2d43"><div class="ttname"><a href="mbi_8h.html#a3c1c2e9788a104f60f8e01457dfd2d43">G_OFF</a></div><div class="ttdeci">#define G_OFF</div><div class="ttdef"><b>Definition</b> mbi.h:55</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1528cdc1c766fc9646739e399a4453aa"><div class="ttname"><a href="#a1528cdc1c766fc9646739e399a4453aa">d_course_toads_turnpike_car_unknown_model12</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model12[]</div><div class="ttdef"><b>Definition</b> course_data.c:7208</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1528cdc1c766fc9646739e399a4453aa"><div class="ttname"><a href="#a1528cdc1c766fc9646739e399a4453aa">d_course_toads_turnpike_car_unknown_model12</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model12[]</div><div class="ttdef"><b>Definition</b> course_data.c:7209</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -6989,7 +6992,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(11, 10, 5, 0, 11, 5, 4, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afb4398f2172bce129f029735ed2fdb2c"><div class="ttname"><a href="#afb4398f2172bce129f029735ed2fdb2c">d_course_toads_turnpike_car_unknown_model13</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model13[]</div><div class="ttdef"><b>Definition</b> course_data.c:7223</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afb4398f2172bce129f029735ed2fdb2c"><div class="ttname"><a href="#afb4398f2172bce129f029735ed2fdb2c">d_course_toads_turnpike_car_unknown_model13</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model13[]</div><div class="ttdef"><b>Definition</b> course_data.c:7224</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7018,7 +7021,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(7, 6, 11, 0, 7, 11, 10, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae8a77a24a998bb965a35e9c0ee0d2050"><div class="ttname"><a href="#ae8a77a24a998bb965a35e9c0ee0d2050">d_course_toads_turnpike_car_unknown_model14</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model14[]</div><div class="ttdef"><b>Definition</b> course_data.c:7238</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ae8a77a24a998bb965a35e9c0ee0d2050"><div class="ttname"><a href="#ae8a77a24a998bb965a35e9c0ee0d2050">d_course_toads_turnpike_car_unknown_model14</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model14[]</div><div class="ttdef"><b>Definition</b> course_data.c:7239</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7047,7 +7050,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(11, 10, 5, 0, 11, 5, 4, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a569ef898d1197e31c071d3952d5c6367"><div class="ttname"><a href="#a569ef898d1197e31c071d3952d5c6367">d_course_toads_turnpike_car_unknown_model15</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model15[]</div><div class="ttdef"><b>Definition</b> course_data.c:7253</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a569ef898d1197e31c071d3952d5c6367"><div class="ttname"><a href="#a569ef898d1197e31c071d3952d5c6367">d_course_toads_turnpike_car_unknown_model15</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model15[]</div><div class="ttdef"><b>Definition</b> course_data.c:7254</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7075,15 +7078,15 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a9bb9e40f6daa4f6441c5534de936b6a6">d_course_toads_turnpike_dl_21790</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a7c8841e9cb0e2dccf03e143a5e100744"><div class="ttname"><a href="#a7c8841e9cb0e2dccf03e143a5e100744">d_course_toads_turnpike_dl_21A28</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21A28[]</div><div class="ttdef"><b>Definition</b> course_data.c:7424</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a81cc9dd656cde8a8739a0559e3a84784"><div class="ttname"><a href="#a81cc9dd656cde8a8739a0559e3a84784">d_course_toads_turnpike_dl_218B0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_218B0[]</div><div class="ttdef"><b>Definition</b> course_data.c:7369</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a82346efb4783f7fc8f3414ef044bfda7"><div class="ttname"><a href="#a82346efb4783f7fc8f3414ef044bfda7">d_course_toads_turnpike_dl_21C78</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21C78[]</div><div class="ttdef"><b>Definition</b> course_data.c:7502</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a83bd6281ab328948ba2c0d0c9a1a5e2e"><div class="ttname"><a href="#a83bd6281ab328948ba2c0d0c9a1a5e2e">d_course_toads_turnpike_dl_21D28</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21D28[]</div><div class="ttdef"><b>Definition</b> course_data.c:7532</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9bb9e40f6daa4f6441c5534de936b6a6"><div class="ttname"><a href="#a9bb9e40f6daa4f6441c5534de936b6a6">d_course_toads_turnpike_dl_21790</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21790[]</div><div class="ttdef"><b>Definition</b> course_data.c:7325</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9c2245229c27b92724038b06e0b668f7"><div class="ttname"><a href="#a9c2245229c27b92724038b06e0b668f7">d_course_toads_turnpike_dl_21820</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21820[]</div><div class="ttdef"><b>Definition</b> course_data.c:7347</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_abc47c2c444263f3cb624541426b4376b"><div class="ttname"><a href="#abc47c2c444263f3cb624541426b4376b">d_course_toads_turnpike_dl_21D80</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21D80[]</div><div class="ttdef"><b>Definition</b> course_data.c:7547</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac3cb2400587b56da40e7fc35b253b083"><div class="ttname"><a href="#ac3cb2400587b56da40e7fc35b253b083">d_course_toads_turnpike_dl_21950</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21950[]</div><div class="ttdef"><b>Definition</b> course_data.c:7393</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afcc623085d283fea731b12d40c29096e"><div class="ttname"><a href="#afcc623085d283fea731b12d40c29096e">d_course_toads_turnpike_dl_21CD0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21CD0[]</div><div class="ttdef"><b>Definition</b> course_data.c:7517</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a7c8841e9cb0e2dccf03e143a5e100744"><div class="ttname"><a href="#a7c8841e9cb0e2dccf03e143a5e100744">d_course_toads_turnpike_dl_21A28</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21A28[]</div><div class="ttdef"><b>Definition</b> course_data.c:7425</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a81cc9dd656cde8a8739a0559e3a84784"><div class="ttname"><a href="#a81cc9dd656cde8a8739a0559e3a84784">d_course_toads_turnpike_dl_218B0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_218B0[]</div><div class="ttdef"><b>Definition</b> course_data.c:7370</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a82346efb4783f7fc8f3414ef044bfda7"><div class="ttname"><a href="#a82346efb4783f7fc8f3414ef044bfda7">d_course_toads_turnpike_dl_21C78</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21C78[]</div><div class="ttdef"><b>Definition</b> course_data.c:7503</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a83bd6281ab328948ba2c0d0c9a1a5e2e"><div class="ttname"><a href="#a83bd6281ab328948ba2c0d0c9a1a5e2e">d_course_toads_turnpike_dl_21D28</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21D28[]</div><div class="ttdef"><b>Definition</b> course_data.c:7533</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9bb9e40f6daa4f6441c5534de936b6a6"><div class="ttname"><a href="#a9bb9e40f6daa4f6441c5534de936b6a6">d_course_toads_turnpike_dl_21790</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21790[]</div><div class="ttdef"><b>Definition</b> course_data.c:7326</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9c2245229c27b92724038b06e0b668f7"><div class="ttname"><a href="#a9c2245229c27b92724038b06e0b668f7">d_course_toads_turnpike_dl_21820</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21820[]</div><div class="ttdef"><b>Definition</b> course_data.c:7348</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_abc47c2c444263f3cb624541426b4376b"><div class="ttname"><a href="#abc47c2c444263f3cb624541426b4376b">d_course_toads_turnpike_dl_21D80</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21D80[]</div><div class="ttdef"><b>Definition</b> course_data.c:7548</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac3cb2400587b56da40e7fc35b253b083"><div class="ttname"><a href="#ac3cb2400587b56da40e7fc35b253b083">d_course_toads_turnpike_dl_21950</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21950[]</div><div class="ttdef"><b>Definition</b> course_data.c:7394</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afcc623085d283fea731b12d40c29096e"><div class="ttname"><a href="#afcc623085d283fea731b12d40c29096e">d_course_toads_turnpike_dl_21CD0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21CD0[]</div><div class="ttdef"><b>Definition</b> course_data.c:7518</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7103,7 +7106,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a4919dd277423413e62adf1ecdfd691a6">d_course_toads_turnpike_dl_21DD8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a4919dd277423413e62adf1ecdfd691a6"><div class="ttname"><a href="#a4919dd277423413e62adf1ecdfd691a6">d_course_toads_turnpike_dl_21DD8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21DD8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7562</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a4919dd277423413e62adf1ecdfd691a6"><div class="ttname"><a href="#a4919dd277423413e62adf1ecdfd691a6">d_course_toads_turnpike_dl_21DD8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_21DD8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7563</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7139,7 +7142,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a4b814d89ff96a566bdb14fa5b3bfb76b"><div class="ttname"><a href="#a4b814d89ff96a566bdb14fa5b3bfb76b">d_course_toads_turnpike_car_model_lod1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_model_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:7583</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a4b814d89ff96a566bdb14fa5b3bfb76b"><div class="ttname"><a href="#a4b814d89ff96a566bdb14fa5b3bfb76b">d_course_toads_turnpike_car_model_lod1</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_model_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:7584</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7219,7 +7222,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1adfe8eb741a8de75eed7f03f332540f"><div class="ttname"><a href="#a1adfe8eb741a8de75eed7f03f332540f">d_course_toads_turnpike_car_unknown_model16</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model16[]</div><div class="ttdef"><b>Definition</b> course_data.c:7602</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1adfe8eb741a8de75eed7f03f332540f"><div class="ttname"><a href="#a1adfe8eb741a8de75eed7f03f332540f">d_course_toads_turnpike_car_unknown_model16</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model16[]</div><div class="ttdef"><b>Definition</b> course_data.c:7603</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7240,8 +7243,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a275a695915a497cc529ba304eb7c8893">d_course_toads_turnpike_dl_22A68</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a275a695915a497cc529ba304eb7c8893"><div class="ttname"><a href="#a275a695915a497cc529ba304eb7c8893">d_course_toads_turnpike_dl_22A68</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22A68[]</div><div class="ttdef"><b>Definition</b> course_data.c:7814</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3ce384256a617cc916ca267cd5fc9257"><div class="ttname"><a href="#a3ce384256a617cc916ca267cd5fc9257">d_course_toads_turnpike_dl_22AF8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22AF8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7836</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a275a695915a497cc529ba304eb7c8893"><div class="ttname"><a href="#a275a695915a497cc529ba304eb7c8893">d_course_toads_turnpike_dl_22A68</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22A68[]</div><div class="ttdef"><b>Definition</b> course_data.c:7815</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a3ce384256a617cc916ca267cd5fc9257"><div class="ttname"><a href="#a3ce384256a617cc916ca267cd5fc9257">d_course_toads_turnpike_dl_22AF8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22AF8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7837</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7261,7 +7264,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ad240be57076b8ad21d99cf5dc6b1e10a">d_course_toads_turnpike_dl_22B88</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ad240be57076b8ad21d99cf5dc6b1e10a"><div class="ttname"><a href="#ad240be57076b8ad21d99cf5dc6b1e10a">d_course_toads_turnpike_dl_22B88</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22B88[]</div><div class="ttdef"><b>Definition</b> course_data.c:7858</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ad240be57076b8ad21d99cf5dc6b1e10a"><div class="ttname"><a href="#ad240be57076b8ad21d99cf5dc6b1e10a">d_course_toads_turnpike_dl_22B88</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22B88[]</div><div class="ttdef"><b>Definition</b> course_data.c:7859</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7299,7 +7302,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(11, 14, 15, 0, 11, 15, 8, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ad0851c1053cc1e1fadf6a4cac10ecf65"><div class="ttname"><a href="#ad0851c1053cc1e1fadf6a4cac10ecf65">d_course_toads_turnpike_car_unknown_model17</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model17[]</div><div class="ttdef"><b>Definition</b> course_data.c:7621</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ad0851c1053cc1e1fadf6a4cac10ecf65"><div class="ttname"><a href="#ad0851c1053cc1e1fadf6a4cac10ecf65">d_course_toads_turnpike_car_unknown_model17</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model17[]</div><div class="ttdef"><b>Definition</b> course_data.c:7622</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7324,7 +7327,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a6cf537630f1bfecabe7d38eca0b3acc8"><div class="ttname"><a href="#a6cf537630f1bfecabe7d38eca0b3acc8">d_course_toads_turnpike_car_unknown_model18</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model18[]</div><div class="ttdef"><b>Definition</b> course_data.c:7640</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a6cf537630f1bfecabe7d38eca0b3acc8"><div class="ttname"><a href="#a6cf537630f1bfecabe7d38eca0b3acc8">d_course_toads_turnpike_car_unknown_model18</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model18[]</div><div class="ttdef"><b>Definition</b> course_data.c:7641</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7349,7 +7352,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a5327d70ea88668648bc750c10d6ea98d"><div class="ttname"><a href="#a5327d70ea88668648bc750c10d6ea98d">d_course_toads_turnpike_car_unknown_model19</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model19[]</div><div class="ttdef"><b>Definition</b> course_data.c:7651</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a5327d70ea88668648bc750c10d6ea98d"><div class="ttname"><a href="#a5327d70ea88668648bc750c10d6ea98d">d_course_toads_turnpike_car_unknown_model19</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model19[]</div><div class="ttdef"><b>Definition</b> course_data.c:7652</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7387,7 +7390,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(20, 21, 22, 0, 20, 22, 23, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1b54b1312d62da540b7256376d068a24"><div class="ttname"><a href="#a1b54b1312d62da540b7256376d068a24">d_course_toads_turnpike_car_unknown_model20</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model20[]</div><div class="ttdef"><b>Definition</b> course_data.c:7662</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1b54b1312d62da540b7256376d068a24"><div class="ttname"><a href="#a1b54b1312d62da540b7256376d068a24">d_course_toads_turnpike_car_unknown_model20</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model20[]</div><div class="ttdef"><b>Definition</b> course_data.c:7663</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7432,8 +7435,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1da08233c59013c2b57c33c2de6a7999"><div class="ttname"><a href="#a1da08233c59013c2b57c33c2de6a7999">d_course_toads_turnpike_car_unknown_model22</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model22[]</div><div class="ttdef"><b>Definition</b> course_data.c:7700</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a31e94c1ac2d486b53d810154cbde3dc3"><div class="ttname"><a href="#a31e94c1ac2d486b53d810154cbde3dc3">d_course_toads_turnpike_car_unknown_model21</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model21[]</div><div class="ttdef"><b>Definition</b> course_data.c:7689</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a1da08233c59013c2b57c33c2de6a7999"><div class="ttname"><a href="#a1da08233c59013c2b57c33c2de6a7999">d_course_toads_turnpike_car_unknown_model22</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model22[]</div><div class="ttdef"><b>Definition</b> course_data.c:7701</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a31e94c1ac2d486b53d810154cbde3dc3"><div class="ttname"><a href="#a31e94c1ac2d486b53d810154cbde3dc3">d_course_toads_turnpike_car_unknown_model21</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model21[]</div><div class="ttdef"><b>Definition</b> course_data.c:7690</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7472,12 +7475,12 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a9656520c9ebce7a4b4ecdfe13115a446">d_course_toads_turnpike_dl_22BB0</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0bcaa3f019d9eb15219077fbe8adde85"><div class="ttname"><a href="#a0bcaa3f019d9eb15219077fbe8adde85">d_course_toads_turnpike_dl_22D60</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22D60[]</div><div class="ttdef"><b>Definition</b> course_data.c:7941</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a50ceaa9f8223cc95d8cfdf3aacb80fc4"><div class="ttname"><a href="#a50ceaa9f8223cc95d8cfdf3aacb80fc4">d_course_toads_turnpike_dl_22C50</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22C50[]</div><div class="ttdef"><b>Definition</b> course_data.c:7895</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a76537949902e47afd336ce9ff428ed19"><div class="ttname"><a href="#a76537949902e47afd336ce9ff428ed19">d_course_toads_turnpike_dl_22E38</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22E38[]</div><div class="ttdef"><b>Definition</b> course_data.c:7972</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9656520c9ebce7a4b4ecdfe13115a446"><div class="ttname"><a href="#a9656520c9ebce7a4b4ecdfe13115a446">d_course_toads_turnpike_dl_22BB0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22BB0[]</div><div class="ttdef"><b>Definition</b> course_data.c:7871</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9e378481e70c705bc5f3b7c02daebc94"><div class="ttname"><a href="#a9e378481e70c705bc5f3b7c02daebc94">d_course_toads_turnpike_dl_22CC0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22CC0[]</div><div class="ttdef"><b>Definition</b> course_data.c:7917</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_adadab67d3db4a65f18de410bad7fc737"><div class="ttname"><a href="#adadab67d3db4a65f18de410bad7fc737">d_course_toads_turnpike_dl_22C88</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22C88[]</div><div class="ttdef"><b>Definition</b> course_data.c:7906</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a0bcaa3f019d9eb15219077fbe8adde85"><div class="ttname"><a href="#a0bcaa3f019d9eb15219077fbe8adde85">d_course_toads_turnpike_dl_22D60</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22D60[]</div><div class="ttdef"><b>Definition</b> course_data.c:7942</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a50ceaa9f8223cc95d8cfdf3aacb80fc4"><div class="ttname"><a href="#a50ceaa9f8223cc95d8cfdf3aacb80fc4">d_course_toads_turnpike_dl_22C50</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22C50[]</div><div class="ttdef"><b>Definition</b> course_data.c:7896</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a76537949902e47afd336ce9ff428ed19"><div class="ttname"><a href="#a76537949902e47afd336ce9ff428ed19">d_course_toads_turnpike_dl_22E38</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22E38[]</div><div class="ttdef"><b>Definition</b> course_data.c:7973</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9656520c9ebce7a4b4ecdfe13115a446"><div class="ttname"><a href="#a9656520c9ebce7a4b4ecdfe13115a446">d_course_toads_turnpike_dl_22BB0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22BB0[]</div><div class="ttdef"><b>Definition</b> course_data.c:7872</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9e378481e70c705bc5f3b7c02daebc94"><div class="ttname"><a href="#a9e378481e70c705bc5f3b7c02daebc94">d_course_toads_turnpike_dl_22CC0</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22CC0[]</div><div class="ttdef"><b>Definition</b> course_data.c:7918</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_adadab67d3db4a65f18de410bad7fc737"><div class="ttname"><a href="#adadab67d3db4a65f18de410bad7fc737">d_course_toads_turnpike_dl_22C88</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_22C88[]</div><div class="ttdef"><b>Definition</b> course_data.c:7907</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7497,7 +7500,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a054f50b56687ab0839732cbd1fec457c">d_course_toads_turnpike_dl_23040</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a054f50b56687ab0839732cbd1fec457c"><div class="ttname"><a href="#a054f50b56687ab0839732cbd1fec457c">d_course_toads_turnpike_dl_23040</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_23040[]</div><div class="ttdef"><b>Definition</b> course_data.c:8041</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a054f50b56687ab0839732cbd1fec457c"><div class="ttname"><a href="#a054f50b56687ab0839732cbd1fec457c">d_course_toads_turnpike_dl_23040</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_23040[]</div><div class="ttdef"><b>Definition</b> course_data.c:8042</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7540,10 +7543,10 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2a578e968b64a242e0c926c81a8231d8"><div class="ttname"><a href="#a2a578e968b64a242e0c926c81a8231d8">d_course_toads_turnpike_car_unknown_model27</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model27[]</div><div class="ttdef"><b>Definition</b> course_data.c:8070</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a32cbad5a790925b5e744cd1c950f0230"><div class="ttname"><a href="#a32cbad5a790925b5e744cd1c950f0230">d_course_toads_turnpike_car_model_lod2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_model_lod2[]</div><div class="ttdef"><b>Definition</b> course_data.c:8059</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac55bb63c708844c01bb983fa14dd5824"><div class="ttname"><a href="#ac55bb63c708844c01bb983fa14dd5824">d_course_toads_turnpike_car_front_lod1</a></div><div class="ttdeci">u8 d_course_toads_turnpike_car_front_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3374</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afd9d4511357d28dc4addce55541c4611"><div class="ttname"><a href="#afd9d4511357d28dc4addce55541c4611">d_course_toads_turnpike_car_side_lod1</a></div><div class="ttdeci">u8 d_course_toads_turnpike_car_side_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3384</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2a578e968b64a242e0c926c81a8231d8"><div class="ttname"><a href="#a2a578e968b64a242e0c926c81a8231d8">d_course_toads_turnpike_car_unknown_model27</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model27[]</div><div class="ttdef"><b>Definition</b> course_data.c:8071</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a32cbad5a790925b5e744cd1c950f0230"><div class="ttname"><a href="#a32cbad5a790925b5e744cd1c950f0230">d_course_toads_turnpike_car_model_lod2</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_model_lod2[]</div><div class="ttdef"><b>Definition</b> course_data.c:8060</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac55bb63c708844c01bb983fa14dd5824"><div class="ttname"><a href="#ac55bb63c708844c01bb983fa14dd5824">d_course_toads_turnpike_car_front_lod1</a></div><div class="ttdeci">u8 d_course_toads_turnpike_car_front_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3375</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afd9d4511357d28dc4addce55541c4611"><div class="ttname"><a href="#afd9d4511357d28dc4addce55541c4611">d_course_toads_turnpike_car_side_lod1</a></div><div class="ttdeci">u8 d_course_toads_turnpike_car_side_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3385</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7590,7 +7593,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_adec43e74fe4927a401dd799bbc80b99d"><div class="ttname"><a href="#adec43e74fe4927a401dd799bbc80b99d">d_course_toads_turnpike_car_unknown_model28</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model28[]</div><div class="ttdef"><b>Definition</b> course_data.c:8081</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_adec43e74fe4927a401dd799bbc80b99d"><div class="ttname"><a href="#adec43e74fe4927a401dd799bbc80b99d">d_course_toads_turnpike_car_unknown_model28</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model28[]</div><div class="ttdef"><b>Definition</b> course_data.c:8082</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7626,9 +7629,9 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#af32af86ca4ac279d963d86226fa5a44f">d_course_toads_turnpike_dl_23538</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac0bb93acf08e191e81ba945f2f6451b5"><div class="ttname"><a href="#ac0bb93acf08e191e81ba945f2f6451b5">d_course_toads_turnpike_dl_23678</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_23678[]</div><div class="ttdef"><b>Definition</b> course_data.c:8203</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_adc554388c956c6a786d527b510b0da13"><div class="ttname"><a href="#adc554388c956c6a786d527b510b0da13">d_course_toads_turnpike_dl_23600</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_23600[]</div><div class="ttdef"><b>Definition</b> course_data.c:8184</div></div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_af32af86ca4ac279d963d86226fa5a44f"><div class="ttname"><a href="#af32af86ca4ac279d963d86226fa5a44f">d_course_toads_turnpike_dl_23538</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_23538[]</div><div class="ttdef"><b>Definition</b> course_data.c:8155</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ac0bb93acf08e191e81ba945f2f6451b5"><div class="ttname"><a href="#ac0bb93acf08e191e81ba945f2f6451b5">d_course_toads_turnpike_dl_23678</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_23678[]</div><div class="ttdef"><b>Definition</b> course_data.c:8204</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_adc554388c956c6a786d527b510b0da13"><div class="ttname"><a href="#adc554388c956c6a786d527b510b0da13">d_course_toads_turnpike_dl_23600</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_23600[]</div><div class="ttdef"><b>Definition</b> course_data.c:8185</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_af32af86ca4ac279d963d86226fa5a44f"><div class="ttname"><a href="#af32af86ca4ac279d963d86226fa5a44f">d_course_toads_turnpike_dl_23538</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_23538[]</div><div class="ttdef"><b>Definition</b> course_data.c:8156</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7648,7 +7651,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a9158d404f2e7f6e9cccf67e782766a06">d_course_toads_turnpike_dl_237D8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9158d404f2e7f6e9cccf67e782766a06"><div class="ttname"><a href="#a9158d404f2e7f6e9cccf67e782766a06">d_course_toads_turnpike_dl_237D8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_237D8[]</div><div class="ttdef"><b>Definition</b> course_data.c:8251</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9158d404f2e7f6e9cccf67e782766a06"><div class="ttname"><a href="#a9158d404f2e7f6e9cccf67e782766a06">d_course_toads_turnpike_dl_237D8</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_237D8[]</div><div class="ttdef"><b>Definition</b> course_data.c:8252</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7672,7 +7675,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 3, 1, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2b85b95cce60ef6832847cea992fe577"><div class="ttname"><a href="#a2b85b95cce60ef6832847cea992fe577">d_course_toads_turnpike_car_unknown_model32</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model32[]</div><div class="ttdef"><b>Definition</b> course_data.c:8148</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2b85b95cce60ef6832847cea992fe577"><div class="ttname"><a href="#a2b85b95cce60ef6832847cea992fe577">d_course_toads_turnpike_car_unknown_model32</a></div><div class="ttdeci">Vtx d_course_toads_turnpike_car_unknown_model32[]</div><div class="ttdef"><b>Definition</b> course_data.c:8149</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7692,7 +7695,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a2bdde3170fb81a23e7f1dca491635d09">d_course_toads_turnpike_dl_23808</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2bdde3170fb81a23e7f1dca491635d09"><div class="ttname"><a href="#a2bdde3170fb81a23e7f1dca491635d09">d_course_toads_turnpike_dl_23808</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_23808[]</div><div class="ttdef"><b>Definition</b> course_data.c:8265</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a2bdde3170fb81a23e7f1dca491635d09"><div class="ttname"><a href="#a2bdde3170fb81a23e7f1dca491635d09">d_course_toads_turnpike_dl_23808</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_23808[]</div><div class="ttdef"><b>Definition</b> course_data.c:8266</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7712,7 +7715,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a058481f98a1ed1724fb895f13180ec91">d_course_toads_turnpike_dl_23838</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a058481f98a1ed1724fb895f13180ec91"><div class="ttname"><a href="#a058481f98a1ed1724fb895f13180ec91">d_course_toads_turnpike_dl_23838</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_23838[]</div><div class="ttdef"><b>Definition</b> course_data.c:8275</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a058481f98a1ed1724fb895f13180ec91"><div class="ttname"><a href="#a058481f98a1ed1724fb895f13180ec91">d_course_toads_turnpike_dl_23838</a></div><div class="ttdeci">Gfx d_course_toads_turnpike_dl_23838[]</div><div class="ttdef"><b>Definition</b> course_data.c:8276</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7739,7 +7742,7 @@ Variables</h2></td></tr>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab2fd4e0de930f0f26b37bc247372d69d"><div class="ttname"><a href="#ab2fd4e0de930f0f26b37bc247372d69d">d_course_toads_turnpike_truck_box1</a></div><div class="ttdeci">u8 d_course_toads_turnpike_truck_box1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3228</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_ab2fd4e0de930f0f26b37bc247372d69d"><div class="ttname"><a href="#ab2fd4e0de930f0f26b37bc247372d69d">d_course_toads_turnpike_truck_box1</a></div><div class="ttdeci">u8 d_course_toads_turnpike_truck_box1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3229</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7766,7 +7769,7 @@ Variables</h2></td></tr>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afdb88d26e4864143a40c4c51811ea975"><div class="ttname"><a href="#afdb88d26e4864143a40c4c51811ea975">d_course_toads_turnpike_truck_box2</a></div><div class="ttdeci">u8 d_course_toads_turnpike_truck_box2[]</div><div class="ttdef"><b>Definition</b> course_data.c:3354</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_afdb88d26e4864143a40c4c51811ea975"><div class="ttname"><a href="#afdb88d26e4864143a40c4c51811ea975">d_course_toads_turnpike_truck_box2</a></div><div class="ttdeci">u8 d_course_toads_turnpike_truck_box2[]</div><div class="ttdef"><b>Definition</b> course_data.c:3355</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -7793,7 +7796,7 @@ Variables</h2></td></tr>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9e8a0a7a7537309a9d0bb91ce11c427a"><div class="ttname"><a href="#a9e8a0a7a7537309a9d0bb91ce11c427a">d_course_toads_turnpike_truck_box3</a></div><div class="ttdeci">u8 d_course_toads_turnpike_truck_box3[]</div><div class="ttdef"><b>Definition</b> course_data.c:3359</div></div>
+<div class="ttc" id="atoads__turnpike_2course__data_8c_html_a9e8a0a7a7537309a9d0bb91ce11c427a"><div class="ttname"><a href="#a9e8a0a7a7537309a9d0bb91ce11c427a">d_course_toads_turnpike_truck_box3</a></div><div class="ttdeci">u8 d_course_toads_turnpike_truck_box3[]</div><div class="ttdef"><b>Definition</b> course_data.c:3360</div></div>
 </div><!-- fragment -->
 </div>
 </div>

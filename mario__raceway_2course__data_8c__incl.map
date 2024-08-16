@@ -1,25 +1,27 @@
 <map id="courses/mario_raceway/course_data.c" name="courses/mario_raceway/course_data.c">
-<area shape="rect" id="Node000001" title=" " alt="" coords="2101,5,2277,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="2165,5,2341,45"/>
 <area shape="rect" id="Node000002" href="$ultra64_8h.html" title=" " alt="" coords="967,196,1047,221"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2101,43,1062,202,1061,196,2100,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2165,42,1062,202,1061,197,2164,37"/>
 <area shape="rect" id="Node000021" href="$gbi_8h.html" title=" " alt="" coords="2023,416,2098,441"/>
-<area shape="poly" id="edge55_Node000001_Node000021" title=" " alt="" coords="2278,42,2321,61,2340,75,2357,92,2376,119,2383,145,2383,207,2383,283,2381,305,2375,324,2353,356,2321,381,2281,400,2237,413,2192,422,2112,429,2111,424,2191,416,2236,408,2279,395,2318,377,2349,352,2370,322,2376,304,2378,283,2378,207,2378,146,2371,122,2353,95,2337,79,2318,66,2276,47"/>
+<area shape="poly" id="edge55_Node000001_Node000021" title=" " alt="" coords="2298,43,2330,64,2357,92,2374,121,2382,146,2383,207,2383,283,2381,305,2375,324,2353,356,2321,381,2281,400,2237,413,2192,422,2112,429,2111,424,2191,416,2236,408,2279,395,2318,377,2349,352,2370,322,2376,304,2378,283,2378,207,2376,147,2369,123,2353,95,2327,68,2295,48"/>
 <area shape="rect" id="Node000030" href="$macros_8h.html" title=" " alt="" coords="2098,196,2181,221"/>
-<area shape="poly" id="edge54_Node000001_Node000030" title=" " alt="" coords="2177,47,2164,69,2153,94,2143,140,2141,182,2136,182,2138,140,2147,93,2159,66,2172,44"/>
+<area shape="poly" id="edge54_Node000001_Node000030" title=" " alt="" coords="2208,48,2177,68,2152,95,2143,116,2139,139,2138,182,2133,182,2133,139,2138,114,2148,92,2173,63,2205,43"/>
 <area shape="rect" id="Node000031" href="$actor__types_8h.html" title=" " alt="" coords="1875,108,1985,133"/>
-<area shape="poly" id="edge56_Node000001_Node000031" title=" " alt="" coords="2135,48,1999,96,1973,105,1971,100,1997,91,2133,43"/>
+<area shape="poly" id="edge56_Node000001_Node000031" title=" " alt="" coords="2172,48,1999,96,1972,105,1970,100,1997,91,2171,43"/>
 <area shape="rect" id="Node000032" href="$course_8h.html" title=" " alt="" coords="2010,108,2087,133"/>
-<area shape="poly" id="edge60_Node000001_Node000032" title=" " alt="" coords="2162,48,2079,102,2076,98,2159,43"/>
+<area shape="poly" id="edge60_Node000001_Node000032" title=" " alt="" coords="2212,48,2087,105,2085,100,2210,43"/>
 <area shape="rect" id="Node000033" href="$waypoints_8h.html" title=" " alt="" coords="1811,196,1913,221"/>
-<area shape="poly" id="edge64_Node000001_Node000033" title=" " alt="" coords="2101,35,2032,43,1961,55,1902,72,1880,83,1865,95,1855,115,1851,138,1857,182,1851,183,1846,138,1850,113,1861,92,1877,78,1900,67,1960,50,2031,38,2100,30"/>
-<area shape="rect" id="Node000034" href="$mario__raceway_2course__displaylists_8inc_8h.html" title=" " alt="" coords="2162,108,2343,133"/>
-<area shape="poly" id="edge66_Node000001_Node000034" title=" " alt="" coords="2204,44,2239,95,2235,98,2199,47"/>
-<area shape="rect" id="Node000035" title=" " alt="" coords="2418,93,2693,148"/>
-<area shape="poly" id="edge69_Node000001_Node000035" title=" " alt="" coords="2263,43,2440,87,2438,93,2262,48"/>
-<area shape="rect" id="Node000036" title=" " alt="" coords="2717,93,2957,148"/>
-<area shape="poly" id="edge70_Node000001_Node000036" title=" " alt="" coords="2277,34,2469,57,2704,91,2703,96,2468,62,2277,39"/>
-<area shape="rect" id="Node000037" title=" " alt="" coords="2981,93,3221,148"/>
-<area shape="poly" id="edge71_Node000001_Node000037" title=" " alt="" coords="2277,28,2579,49,2771,67,2967,91,2967,96,2770,72,2578,54,2277,34"/>
+<area shape="poly" id="edge64_Node000001_Node000033" title=" " alt="" coords="2165,32,2080,38,1990,49,1913,68,1884,80,1865,95,1855,115,1851,138,1857,182,1851,183,1846,138,1850,113,1861,92,1882,76,1911,63,1989,44,2079,32,2164,26"/>
+<area shape="rect" id="Node000034" href="$mk64_8h.html" title=" " alt="" coords="2419,108,2489,133"/>
+<area shape="poly" id="edge66_Node000001_Node000034" title=" " alt="" coords="2296,43,2400,91,2419,100,2417,104,2398,96,2293,48"/>
+<area shape="rect" id="Node000035" href="$mario__raceway_2course__displaylists_8inc_8h.html" title=" " alt="" coords="2162,108,2343,133"/>
+<area shape="poly" id="edge67_Node000001_Node000035" title=" " alt="" coords="2255,45,2255,94,2250,94,2250,45"/>
+<area shape="rect" id="Node000036" title=" " alt="" coords="2514,93,2789,148"/>
+<area shape="poly" id="edge70_Node000001_Node000036" title=" " alt="" coords="2334,43,2527,88,2526,93,2333,48"/>
+<area shape="rect" id="Node000037" title=" " alt="" coords="2813,93,3053,148"/>
+<area shape="poly" id="edge71_Node000001_Node000037" title=" " alt="" coords="2341,33,2546,56,2800,91,2799,96,2546,61,2340,38"/>
+<area shape="rect" id="Node000038" title=" " alt="" coords="3077,93,3317,148"/>
+<area shape="poly" id="edge72_Node000001_Node000038" title=" " alt="" coords="2341,28,2656,48,2857,66,3064,91,3063,96,2857,72,2655,54,2341,33"/>
 <area shape="rect" id="Node000003" href="$math_8h.html" title=" " alt="" coords="1045,269,1113,295"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1021,220,1060,258,1056,262,1017,224"/>
 <area shape="rect" id="Node000004" href="$ultratypes_8h.html" title=" " alt="" coords="655,489,776,515"/>
@@ -105,6 +107,6 @@
 <area shape="poly" id="edge62_Node000032_Node000021" title=" " alt="" coords="2052,133,2062,402,2057,402,2046,134"/>
 <area shape="poly" id="edge63_Node000032_Node000030" title=" " alt="" coords="2063,132,2118,184,2115,188,2059,135"/>
 <area shape="poly" id="edge65_Node000033_Node000026" title=" " alt="" coords="1883,219,1908,240,1930,268,1937,299,1937,329,1932,329,1932,300,1925,270,1905,243,1880,223"/>
-<area shape="poly" id="edge67_Node000034_Node000021" title=" " alt="" coords="2248,135,2195,223,2078,406,2073,403,2190,220,2243,132"/>
-<area shape="poly" id="edge68_Node000034_Node000030" title=" " alt="" coords="2239,136,2167,190,2164,186,2236,131"/>
+<area shape="poly" id="edge68_Node000035_Node000021" title=" " alt="" coords="2248,135,2195,223,2078,406,2073,403,2190,220,2243,132"/>
+<area shape="poly" id="edge69_Node000035_Node000030" title=" " alt="" coords="2239,136,2167,190,2164,186,2236,131"/>
 </map>

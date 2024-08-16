@@ -46,7 +46,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 2572;
+var viewWidth = 2643;
 var viewHeight = 445;
 var sectionId = 'dynsection-0';
 </script>
@@ -58,9 +58,9 @@ var sectionId = 'dynsection-0';
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title=" ">
-<polygon fill="#999999" stroke="#666666" points="1749.98,-437 1620.98,-437 1620.98,-407 1749.98,-407 1749.98,-437"/>
-<text text-anchor="start" x="1628.98" y="-425" font-family="Helvetica,sans-Serif" font-size="10.00">courses/wario_stadium</text>
-<text text-anchor="middle" x="1685.48" y="-414" font-family="Helvetica,sans-Serif" font-size="10.00">/course_data.c</text>
+<polygon fill="#999999" stroke="#666666" points="1797.98,-437 1668.98,-437 1668.98,-407 1797.98,-407 1797.98,-437"/>
+<text text-anchor="start" x="1676.98" y="-425" font-family="Helvetica,sans-Serif" font-size="10.00">courses/wario_stadium</text>
+<text text-anchor="middle" x="1733.48" y="-414" font-family="Helvetica,sans-Serif" font-size="10.00">/course_data.c</text>
 </a>
 </g>
 </g>
@@ -77,8 +77,8 @@ var sectionId = 'dynsection-0';
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1620.91,-411.63C1441.07,-385.54 938.04,-312.56 791.82,-291.35"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="792.31,-287.89 781.92,-289.92 791.31,-294.82 792.31,-287.89"/>
+<path fill="none" stroke="#63b8ff" d="M1668.67,-412.06C1481.62,-386.25 944.54,-312.14 792.21,-291.12"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="792.3,-287.6 781.91,-289.7 791.34,-294.53 792.3,-287.6"/>
 </a>
 </g>
 </g>
@@ -95,7 +95,7 @@ var sectionId = 'dynsection-0';
 <g id="edge55_Node000001_Node000021" class="edge">
 <title>Node1&#45;&gt;Node21</title>
 <g id="a_edge55_Node000001_Node000021"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1718.35,-406.96C1733.97,-398.68 1751.57,-386.71 1762.48,-371 1784.68,-339.02 1781.48,-324.43 1781.48,-285.5 1781.48,-285.5 1781.48,-285.5 1781.48,-228.5 1781.48,-141.11 1647.51,-124.02 1579.75,-120.96"/>
+<path fill="none" stroke="#63b8ff" d="M1743.35,-406.72C1749.64,-397.03 1757.52,-383.71 1762.48,-371 1776.63,-334.74 1781.48,-324.43 1781.48,-285.5 1781.48,-285.5 1781.48,-285.5 1781.48,-228.5 1781.48,-141.11 1647.51,-124.02 1579.75,-120.96"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="1579.6,-117.45 1569.48,-120.58 1579.34,-124.45 1579.6,-117.45"/>
 </a>
 </g>
@@ -113,8 +113,8 @@ var sectionId = 'dynsection-0';
 <g id="edge54_Node000001_Node000030" class="edge">
 <title>Node1&#45;&gt;Node30</title>
 <g id="a_edge54_Node000001_Node000030"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1650.57,-406.9C1635.05,-398.77 1618.13,-386.96 1608.48,-371 1596.21,-350.72 1596.09,-322.65 1597.77,-304.29"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1601.26,-304.61 1598.95,-294.27 1594.3,-303.79 1601.26,-304.61"/>
+<path fill="none" stroke="#63b8ff" d="M1668.67,-409.54C1646.16,-402.26 1622.96,-390.38 1608.48,-371 1594.07,-351.72 1594.65,-322.76 1597.05,-304"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1600.52,-304.46 1598.61,-294.04 1593.6,-303.37 1600.52,-304.46"/>
 </a>
 </g>
 </g>
@@ -131,8 +131,8 @@ var sectionId = 'dynsection-0';
 <g id="edge56_Node000001_Node000031" class="edge">
 <title>Node1&#45;&gt;Node31</title>
 <g id="a_edge56_Node000001_Node000031"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1624.78,-406.91C1586.99,-397.69 1537.56,-384.83 1494.48,-371 1487.81,-368.86 1480.74,-366.33 1474.06,-363.81"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1475.23,-360.51 1464.64,-360.18 1472.71,-367.04 1475.23,-360.51"/>
+<path fill="none" stroke="#63b8ff" d="M1668.89,-410.36C1620.4,-401.68 1552.64,-388.09 1494.48,-371 1487.51,-368.95 1480.15,-366.39 1473.25,-363.79"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1474.16,-360.39 1463.58,-360.03 1471.63,-366.92 1474.16,-360.39"/>
 </a>
 </g>
 </g>
@@ -149,8 +149,8 @@ var sectionId = 'dynsection-0';
 <g id="edge60_Node000001_Node000032" class="edge">
 <title>Node1&#45;&gt;Node32</title>
 <g id="a_edge60_Node000001_Node000032"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1620.73,-419.23C1543.78,-415.62 1422.15,-404.6 1393.48,-371 1377.78,-352.6 1381.66,-322.99 1386.55,-303.89"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1389.92,-304.84 1389.34,-294.26 1383.2,-302.9 1389.92,-304.84"/>
+<path fill="none" stroke="#63b8ff" d="M1668.87,-421.06C1580.42,-419.61 1428.57,-411.15 1393.48,-371 1377.48,-352.69 1381.54,-322.82 1386.55,-303.67"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1389.91,-304.62 1389.38,-294.04 1383.2,-302.64 1389.91,-304.62"/>
 </a>
 </g>
 </g>
@@ -167,17 +167,17 @@ var sectionId = 'dynsection-0';
 <g id="edge62_Node000001_Node000033" class="edge">
 <title>Node1&#45;&gt;Node33</title>
 <g id="a_edge62_Node000001_Node000033"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1654.52,-406.94C1626.99,-394.43 1587.09,-376.31 1560.49,-364.22"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1561.89,-361.02 1551.34,-360.07 1559,-367.39 1561.89,-361.02"/>
+<path fill="none" stroke="#63b8ff" d="M1683.85,-406.95C1652.46,-397.66 1611.21,-384.7 1575.48,-371 1570.22,-368.98 1564.68,-366.64 1559.4,-364.3"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1560.82,-361.1 1550.27,-360.14 1557.92,-367.47 1560.82,-361.1"/>
 </a>
 </g>
 </g>
 <!-- Node34 -->
 <g id="Node000034" class="node">
 <title>Node34</title>
-<g id="a_Node000034"><a xlink:href="wario__stadium_2course__displaylists_8inc_8h.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1753.48,-360 1617.48,-360 1617.48,-341 1753.48,-341 1753.48,-360"/>
-<text text-anchor="middle" x="1685.48" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00">course_displaylists.inc.h</text>
+<g id="a_Node000034"><a xlink:href="mk64_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1862.98,-360 1809.98,-360 1809.98,-341 1862.98,-341 1862.98,-360"/>
+<text text-anchor="middle" x="1836.48" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00">mk64.h</text>
 </a>
 </g>
 </g>
@@ -185,28 +185,26 @@ var sectionId = 'dynsection-0';
 <g id="edge66_Node000001_Node000034" class="edge">
 <title>Node1&#45;&gt;Node34</title>
 <g id="a_edge66_Node000001_Node000034"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1685.48,-406.94C1685.48,-396.46 1685.48,-382.05 1685.48,-370.55"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1688.98,-370.27 1685.48,-360.27 1681.98,-370.27 1688.98,-370.27"/>
+<path fill="none" stroke="#63b8ff" d="M1754.32,-406.94C1772.04,-394.98 1797.38,-377.88 1815.22,-365.85"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1817.45,-368.56 1823.78,-360.07 1813.53,-362.76 1817.45,-368.56"/>
 </a>
 </g>
 </g>
 <!-- Node35 -->
 <g id="Node000035" class="node">
 <title>Node35</title>
-<g id="a_Node000035"><a xlink:title=" ">
-<polygon fill="#e0e0e0" stroke="#999999" points="1984.98,-371 1809.98,-371 1809.98,-330 1984.98,-330 1984.98,-371"/>
-<text text-anchor="start" x="1817.98" y="-359" font-family="Helvetica,sans-Serif" font-size="10.00">assets/courses/wario</text>
-<text text-anchor="start" x="1817.98" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00">_stadium/gTextureWarioStadium</text>
-<text text-anchor="middle" x="1897.48" y="-337" font-family="Helvetica,sans-Serif" font-size="10.00">SignTopLeft.inc.c</text>
+<g id="a_Node000035"><a xlink:href="wario__stadium_2course__displaylists_8inc_8h.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1753.48,-360 1617.48,-360 1617.48,-341 1753.48,-341 1753.48,-360"/>
+<text text-anchor="middle" x="1685.48" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00">course_displaylists.inc.h</text>
 </a>
 </g>
 </g>
 <!-- Node1&#45;&gt;Node35 -->
-<g id="edge69_Node000001_Node000035" class="edge">
+<g id="edge67_Node000001_Node000035" class="edge">
 <title>Node1&#45;&gt;Node35</title>
-<g id="a_edge69_Node000001_Node000035"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1728.38,-406.94C1757.01,-397.55 1795.3,-385 1828.2,-374.21"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1829.36,-377.51 1837.77,-371.07 1827.18,-370.86 1829.36,-377.51"/>
+<g id="a_edge67_Node000001_Node000035"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1723.77,-406.94C1716.16,-395.92 1705.54,-380.54 1697.41,-368.78"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1700.1,-366.51 1691.53,-360.27 1694.34,-370.48 1700.1,-366.51"/>
 </a>
 </g>
 </g>
@@ -214,10 +212,10 @@ var sectionId = 'dynsection-0';
 <g id="Node000036" class="node">
 <title>Node36</title>
 <g id="a_Node000036"><a xlink:title=" ">
-<polygon fill="#e0e0e0" stroke="#999999" points="2177.98,-371 2002.98,-371 2002.98,-330 2177.98,-330 2177.98,-371"/>
-<text text-anchor="start" x="2010.98" y="-359" font-family="Helvetica,sans-Serif" font-size="10.00">assets/courses/wario</text>
-<text text-anchor="start" x="2010.98" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00">_stadium/gTextureWarioStadium</text>
-<text text-anchor="middle" x="2090.48" y="-337" font-family="Helvetica,sans-Serif" font-size="10.00">SignBottomLeft.inc.c</text>
+<polygon fill="#e0e0e0" stroke="#999999" points="2055.98,-371 1880.98,-371 1880.98,-330 2055.98,-330 2055.98,-371"/>
+<text text-anchor="start" x="1888.98" y="-359" font-family="Helvetica,sans-Serif" font-size="10.00">assets/courses/wario</text>
+<text text-anchor="start" x="1888.98" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00">_stadium/gTextureWarioStadium</text>
+<text text-anchor="middle" x="1968.48" y="-337" font-family="Helvetica,sans-Serif" font-size="10.00">SignTopLeft.inc.c</text>
 </a>
 </g>
 </g>
@@ -225,8 +223,8 @@ var sectionId = 'dynsection-0';
 <g id="edge70_Node000001_Node000036" class="edge">
 <title>Node1&#45;&gt;Node36</title>
 <g id="a_edge70_Node000001_Node000036"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1750.12,-411.31C1810.46,-402.09 1903.27,-387.46 1992.82,-371.27"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1993.66,-374.68 2002.87,-369.45 1992.41,-367.79 1993.66,-374.68"/>
+<path fill="none" stroke="#63b8ff" d="M1781.04,-406.94C1813.05,-397.47 1855.94,-384.78 1892.62,-373.93"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1893.7,-377.27 1902.3,-371.07 1891.71,-370.55 1893.7,-377.27"/>
 </a>
 </g>
 </g>
@@ -234,10 +232,10 @@ var sectionId = 'dynsection-0';
 <g id="Node000037" class="node">
 <title>Node37</title>
 <g id="a_Node000037"><a xlink:title=" ">
-<polygon fill="#e0e0e0" stroke="#999999" points="2370.98,-371 2195.98,-371 2195.98,-330 2370.98,-330 2370.98,-371"/>
-<text text-anchor="start" x="2203.98" y="-359" font-family="Helvetica,sans-Serif" font-size="10.00">assets/courses/wario</text>
-<text text-anchor="start" x="2203.98" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00">_stadium/gTextureWarioStadium</text>
-<text text-anchor="middle" x="2283.48" y="-337" font-family="Helvetica,sans-Serif" font-size="10.00">SignTopRight.inc.c</text>
+<polygon fill="#e0e0e0" stroke="#999999" points="2248.98,-371 2073.98,-371 2073.98,-330 2248.98,-330 2248.98,-371"/>
+<text text-anchor="start" x="2081.98" y="-359" font-family="Helvetica,sans-Serif" font-size="10.00">assets/courses/wario</text>
+<text text-anchor="start" x="2081.98" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00">_stadium/gTextureWarioStadium</text>
+<text text-anchor="middle" x="2161.48" y="-337" font-family="Helvetica,sans-Serif" font-size="10.00">SignBottomLeft.inc.c</text>
 </a>
 </g>
 </g>
@@ -245,8 +243,8 @@ var sectionId = 'dynsection-0';
 <g id="edge71_Node000001_Node000037" class="edge">
 <title>Node1&#45;&gt;Node37</title>
 <g id="a_edge71_Node000001_Node000037"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1750.32,-416.65C1844.26,-409.88 2023.82,-395.18 2185.76,-371.19"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2186.54,-374.61 2195.91,-369.67 2185.5,-367.69 2186.54,-374.61"/>
+<path fill="none" stroke="#63b8ff" d="M1798.22,-412.24C1863.02,-403.26 1965.82,-388.39 2063.8,-371.26"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2064.64,-374.66 2073.88,-369.48 2063.43,-367.77 2064.64,-374.66"/>
 </a>
 </g>
 </g>
@@ -254,10 +252,10 @@ var sectionId = 'dynsection-0';
 <g id="Node000038" class="node">
 <title>Node38</title>
 <g id="a_Node000038"><a xlink:title=" ">
-<polygon fill="#e0e0e0" stroke="#999999" points="2563.98,-371 2388.98,-371 2388.98,-330 2563.98,-330 2563.98,-371"/>
-<text text-anchor="start" x="2396.98" y="-359" font-family="Helvetica,sans-Serif" font-size="10.00">assets/courses/wario</text>
-<text text-anchor="start" x="2396.98" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00">_stadium/gTextureWarioStadium</text>
-<text text-anchor="middle" x="2476.48" y="-337" font-family="Helvetica,sans-Serif" font-size="10.00">SignBottomRight.inc.c</text>
+<polygon fill="#e0e0e0" stroke="#999999" points="2441.98,-371 2266.98,-371 2266.98,-330 2441.98,-330 2441.98,-371"/>
+<text text-anchor="start" x="2274.98" y="-359" font-family="Helvetica,sans-Serif" font-size="10.00">assets/courses/wario</text>
+<text text-anchor="start" x="2274.98" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00">_stadium/gTextureWarioStadium</text>
+<text text-anchor="middle" x="2354.48" y="-337" font-family="Helvetica,sans-Serif" font-size="10.00">SignTopRight.inc.c</text>
 </a>
 </g>
 </g>
@@ -265,8 +263,28 @@ var sectionId = 'dynsection-0';
 <g id="edge72_Node000001_Node000038" class="edge">
 <title>Node1&#45;&gt;Node38</title>
 <g id="a_edge72_Node000001_Node000038"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1750.44,-419.11C1872.02,-414.97 2142.27,-402.91 2378.76,-371.15"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="2379.49,-374.58 2388.92,-369.77 2378.54,-367.64 2379.49,-374.58"/>
+<path fill="none" stroke="#63b8ff" d="M1798,-417.05C1895.41,-410.61 2086,-396.12 2256.98,-371.15"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2257.53,-374.61 2266.91,-369.68 2256.51,-367.68 2257.53,-374.61"/>
+</a>
+</g>
+</g>
+<!-- Node39 -->
+<g id="Node000039" class="node">
+<title>Node39</title>
+<g id="a_Node000039"><a xlink:title=" ">
+<polygon fill="#e0e0e0" stroke="#999999" points="2634.98,-371 2459.98,-371 2459.98,-330 2634.98,-330 2634.98,-371"/>
+<text text-anchor="start" x="2467.98" y="-359" font-family="Helvetica,sans-Serif" font-size="10.00">assets/courses/wario</text>
+<text text-anchor="start" x="2467.98" y="-348" font-family="Helvetica,sans-Serif" font-size="10.00">_stadium/gTextureWarioStadium</text>
+<text text-anchor="middle" x="2547.48" y="-337" font-family="Helvetica,sans-Serif" font-size="10.00">SignBottomRight.inc.c</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node39 -->
+<g id="edge73_Node000001_Node000039" class="edge">
+<title>Node1&#45;&gt;Node39</title>
+<g id="a_edge73_Node000001_Node000039"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M1798.13,-419.33C1922.56,-415.5 2204.06,-403.86 2449.73,-371.15"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="2450.48,-374.58 2459.93,-369.78 2449.55,-367.64 2450.48,-374.58"/>
 </a>
 </g>
 </g>
@@ -1035,19 +1053,19 @@ var sectionId = 'dynsection-0';
 </a>
 </g>
 </g>
-<!-- Node34&#45;&gt;Node21 -->
-<g id="edge67_Node000034_Node000021" class="edge">
-<title>Node34&#45;&gt;Node21</title>
-<g id="a_edge67_Node000034_Node000021"><a xlink:title=" ">
+<!-- Node35&#45;&gt;Node21 -->
+<g id="edge68_Node000035_Node000021" class="edge">
+<title>Node35&#45;&gt;Node21</title>
+<g id="a_edge68_Node000035_Node000021"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M1680.29,-340.74C1671.99,-326.77 1655.17,-298.61 1640.48,-275 1609.18,-224.7 1571.11,-165.94 1552.62,-137.56"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="1555.54,-135.62 1547.14,-129.16 1549.67,-139.45 1555.54,-135.62"/>
 </a>
 </g>
 </g>
-<!-- Node34&#45;&gt;Node30 -->
-<g id="edge68_Node000034_Node000030" class="edge">
-<title>Node34&#45;&gt;Node30</title>
-<g id="a_edge68_Node000034_Node000030"><a xlink:title=" ">
+<!-- Node35&#45;&gt;Node30 -->
+<g id="edge69_Node000035_Node000030" class="edge">
+<title>Node35&#45;&gt;Node30</title>
+<g id="a_edge69_Node000035_Node000030"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M1674.02,-340.87C1660.2,-330.47 1636.77,-312.82 1620.07,-300.25"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="1622.13,-297.42 1612.03,-294.2 1617.92,-303.01 1622.13,-297.42"/>
 </a>

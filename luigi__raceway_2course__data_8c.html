@@ -116,6 +116,7 @@ $(function(){initNavTree('luigi__raceway_2course__data_8c.html',''); initResizab
 <code>#include &lt;<a class="el" href="actor__types_8h_source.html">actor_types.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="luigi__raceway_2course__displaylists_8inc_8h_source.html">course_displaylists.inc.h</a>&quot;</code><br />
 <code>#include &quot;assets/courses/luigi_raceway/gTextureLuigiRacewaySignLeft.inc.c&quot;</code><br />
 <code>#include &quot;assets/courses/luigi_raceway/gTextureLuigiRacewaySignRight.inc.c&quot;</code><br />
@@ -2924,9 +2925,9 @@ Variables</h2></td></tr>
 <div class="ttc" id="agbi_8h_html_ac8b0546f9482f12ed55f4b3cb1243a8c"><div class="ttname"><a href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a></div><div class="ttdeci">#define G_IM_FMT_RGBA</div><div class="ttdef"><b>Definition</b> gbi.h:396</div></div>
 <div class="ttc" id="agbi_8h_html_ad5e7c4c4dae792b27dd18c69f0ed550a"><div class="ttname"><a href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a></div><div class="ttdeci">#define G_IM_SIZ_16b</div><div class="ttdef"><b>Definition</b> gbi.h:407</div></div>
 <div class="ttc" id="agbi_8h_html_aec47fa07892860d18c0617eae167ce9e"><div class="ttname"><a href="gbi_8h.html#aec47fa07892860d18c0617eae167ce9e">G_RM_AA_ZB_TEX_EDGE</a></div><div class="ttdeci">#define G_RM_AA_ZB_TEX_EDGE</div><div class="ttdef"><b>Definition</b> gbi.h:957</div></div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a765a9ed44aa895f1445954092696666d"><div class="ttname"><a href="#a765a9ed44aa895f1445954092696666d">d_course_luigi_raceway_balloon_rope</a></div><div class="ttdeci">u8 d_course_luigi_raceway_balloon_rope[]</div><div class="ttdef"><b>Definition</b> course_data.c:6695</div></div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_aa7c44b7a9e7a4abf7d9996ba9c79b3ab"><div class="ttname"><a href="#aa7c44b7a9e7a4abf7d9996ba9c79b3ab">d_course_luigi_raceway_basket_model_lod2</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_basket_model_lod2[]</div><div class="ttdef"><b>Definition</b> course_data.c:6472</div></div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_acd595a376ef20bfe79c67f1a754910c5"><div class="ttname"><a href="#acd595a376ef20bfe79c67f1a754910c5">d_course_luigi_raceway_light1</a></div><div class="ttdeci">Lights1 d_course_luigi_raceway_light1</div><div class="ttdef"><b>Definition</b> course_data.c:6635</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a765a9ed44aa895f1445954092696666d"><div class="ttname"><a href="#a765a9ed44aa895f1445954092696666d">d_course_luigi_raceway_balloon_rope</a></div><div class="ttdeci">u8 d_course_luigi_raceway_balloon_rope[]</div><div class="ttdef"><b>Definition</b> course_data.c:6696</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_aa7c44b7a9e7a4abf7d9996ba9c79b3ab"><div class="ttname"><a href="#aa7c44b7a9e7a4abf7d9996ba9c79b3ab">d_course_luigi_raceway_basket_model_lod2</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_basket_model_lod2[]</div><div class="ttdef"><b>Definition</b> course_data.c:6473</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_acd595a376ef20bfe79c67f1a754910c5"><div class="ttname"><a href="#acd595a376ef20bfe79c67f1a754910c5">d_course_luigi_raceway_light1</a></div><div class="ttdeci">Lights1 d_course_luigi_raceway_light1</div><div class="ttdef"><b>Definition</b> course_data.c:6636</div></div>
 <div class="ttc" id="ambi_8h_html_a3502935c4007f9c00550286d895ca296"><div class="ttname"><a href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a></div><div class="ttdeci">#define G_ON</div><div class="ttdef"><b>Definition</b> mbi.h:54</div></div>
 </div><!-- fragment -->
 </div>
@@ -2947,7 +2948,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a5929fa9238daf059a8e8a6489f23a274">d_course_luigi_raceway_dl_F588</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a5929fa9238daf059a8e8a6489f23a274"><div class="ttname"><a href="#a5929fa9238daf059a8e8a6489f23a274">d_course_luigi_raceway_dl_F588</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F588[]</div><div class="ttdef"><b>Definition</b> course_data.c:6700</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a5929fa9238daf059a8e8a6489f23a274"><div class="ttname"><a href="#a5929fa9238daf059a8e8a6489f23a274">d_course_luigi_raceway_dl_F588</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F588[]</div><div class="ttdef"><b>Definition</b> course_data.c:6701</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2967,7 +2968,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ac0f4d4c0b150e462ea1577ca778080e6">d_course_luigi_raceway_dl_F630</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_ac0f4d4c0b150e462ea1577ca778080e6"><div class="ttname"><a href="#ac0f4d4c0b150e462ea1577ca778080e6">d_course_luigi_raceway_dl_F630</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F630[]</div><div class="ttdef"><b>Definition</b> course_data.c:6723</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_ac0f4d4c0b150e462ea1577ca778080e6"><div class="ttname"><a href="#ac0f4d4c0b150e462ea1577ca778080e6">d_course_luigi_raceway_dl_F630</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F630[]</div><div class="ttdef"><b>Definition</b> course_data.c:6724</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2987,7 +2988,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a537ac6ac3eeae73924a458602f86ef89">d_course_luigi_raceway_dl_F640</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a537ac6ac3eeae73924a458602f86ef89"><div class="ttname"><a href="#a537ac6ac3eeae73924a458602f86ef89">d_course_luigi_raceway_dl_F640</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F640[]</div><div class="ttdef"><b>Definition</b> course_data.c:6729</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a537ac6ac3eeae73924a458602f86ef89"><div class="ttname"><a href="#a537ac6ac3eeae73924a458602f86ef89">d_course_luigi_raceway_dl_F640</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F640[]</div><div class="ttdef"><b>Definition</b> course_data.c:6730</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3029,8 +3030,8 @@ Variables</h2></td></tr>
 <div class="ttc" id="agbi_8h_html_a96be6076a8e6bb27804f871a035d1210"><div class="ttname"><a href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a></div><div class="ttdeci">#define G_RM_AA_ZB_OPA_SURF</div><div class="ttdef"><b>Definition</b> gbi.h:941</div></div>
 <div class="ttc" id="agbi_8h_html_aadb5eb2ba3b0a454682ae544c2d7ab66"><div class="ttname"><a href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a></div><div class="ttdeci">#define G_RM_AA_ZB_OPA_SURF2</div><div class="ttdef"><b>Definition</b> gbi.h:942</div></div>
 <div class="ttc" id="agbi_8h_html_ae4a9361eec8b90bd63962d8aed9d87b0"><div class="ttname"><a href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a></div><div class="ttdeci">#define G_CC_MODULATEIA</div><div class="ttdef"><b>Definition</b> gbi.h:492</div></div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a3fd8e8db0e4576125c386a2330168b78"><div class="ttname"><a href="#a3fd8e8db0e4576125c386a2330168b78">d_course_luigi_raceway_balloon_basket</a></div><div class="ttdeci">u8 d_course_luigi_raceway_balloon_basket[]</div><div class="ttdef"><b>Definition</b> course_data.c:6690</div></div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_ab3d2fb55f0f546c713e27c621cb1e03c"><div class="ttname"><a href="#ab3d2fb55f0f546c713e27c621cb1e03c">d_course_luigi_raceway_unknown_model1</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:6491</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a3fd8e8db0e4576125c386a2330168b78"><div class="ttname"><a href="#a3fd8e8db0e4576125c386a2330168b78">d_course_luigi_raceway_balloon_basket</a></div><div class="ttdeci">u8 d_course_luigi_raceway_balloon_basket[]</div><div class="ttdef"><b>Definition</b> course_data.c:6691</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_ab3d2fb55f0f546c713e27c621cb1e03c"><div class="ttname"><a href="#ab3d2fb55f0f546c713e27c621cb1e03c">d_course_luigi_raceway_unknown_model1</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:6492</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3050,7 +3051,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a77e36a544e64f260ea3aa8e8654df036">d_course_luigi_raceway_dl_F660</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a77e36a544e64f260ea3aa8e8654df036"><div class="ttname"><a href="#a77e36a544e64f260ea3aa8e8654df036">d_course_luigi_raceway_dl_F660</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F660[]</div><div class="ttdef"><b>Definition</b> course_data.c:6741</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a77e36a544e64f260ea3aa8e8654df036"><div class="ttname"><a href="#a77e36a544e64f260ea3aa8e8654df036">d_course_luigi_raceway_dl_F660</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F660[]</div><div class="ttdef"><b>Definition</b> course_data.c:6742</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3084,7 +3085,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a1ec959b10ffbf7995cdaeb70dcf03aed">d_course_luigi_raceway_dl_F728</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a1ec959b10ffbf7995cdaeb70dcf03aed"><div class="ttname"><a href="#a1ec959b10ffbf7995cdaeb70dcf03aed">d_course_luigi_raceway_dl_F728</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F728[]</div><div class="ttdef"><b>Definition</b> course_data.c:6772</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a1ec959b10ffbf7995cdaeb70dcf03aed"><div class="ttname"><a href="#a1ec959b10ffbf7995cdaeb70dcf03aed">d_course_luigi_raceway_dl_F728</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F728[]</div><div class="ttdef"><b>Definition</b> course_data.c:6773</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3105,8 +3106,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a94a4637ed9a34e3ec1481e360f12f4a5">d_course_luigi_raceway_dl_F718</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a94a4637ed9a34e3ec1481e360f12f4a5"><div class="ttname"><a href="#a94a4637ed9a34e3ec1481e360f12f4a5">d_course_luigi_raceway_dl_F718</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F718[]</div><div class="ttdef"><b>Definition</b> course_data.c:6766</div></div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_ab82bec1eb86b444d953ece5dea29c47c"><div class="ttname"><a href="#ab82bec1eb86b444d953ece5dea29c47c">d_course_luigi_raceway_dl_F938</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F938[]</div><div class="ttdef"><b>Definition</b> course_data.c:6840</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a94a4637ed9a34e3ec1481e360f12f4a5"><div class="ttname"><a href="#a94a4637ed9a34e3ec1481e360f12f4a5">d_course_luigi_raceway_dl_F718</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F718[]</div><div class="ttdef"><b>Definition</b> course_data.c:6767</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_ab82bec1eb86b444d953ece5dea29c47c"><div class="ttname"><a href="#ab82bec1eb86b444d953ece5dea29c47c">d_course_luigi_raceway_dl_F938</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F938[]</div><div class="ttdef"><b>Definition</b> course_data.c:6841</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3126,7 +3127,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a6e18e56aa070d35752244e674845e58e">d_course_luigi_raceway_dl_F948</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a6e18e56aa070d35752244e674845e58e"><div class="ttname"><a href="#a6e18e56aa070d35752244e674845e58e">d_course_luigi_raceway_dl_F948</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F948[]</div><div class="ttdef"><b>Definition</b> course_data.c:6846</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a6e18e56aa070d35752244e674845e58e"><div class="ttname"><a href="#a6e18e56aa070d35752244e674845e58e">d_course_luigi_raceway_dl_F948</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F948[]</div><div class="ttdef"><b>Definition</b> course_data.c:6847</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3160,7 +3161,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a585dae8f7c371b996cd74801338777e9"><div class="ttname"><a href="#a585dae8f7c371b996cd74801338777e9">d_course_luigi_raceway_basket_model_lod1</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_basket_model_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:6638</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a585dae8f7c371b996cd74801338777e9"><div class="ttname"><a href="#a585dae8f7c371b996cd74801338777e9">d_course_luigi_raceway_basket_model_lod1</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_basket_model_lod1[]</div><div class="ttdef"><b>Definition</b> course_data.c:6639</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3180,7 +3181,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ab7a1ce90ee0bd4753224d96108bb3282">d_course_luigi_raceway_dl_F970</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_ab7a1ce90ee0bd4753224d96108bb3282"><div class="ttname"><a href="#ab7a1ce90ee0bd4753224d96108bb3282">d_course_luigi_raceway_dl_F970</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F970[]</div><div class="ttdef"><b>Definition</b> course_data.c:6859</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_ab7a1ce90ee0bd4753224d96108bb3282"><div class="ttname"><a href="#ab7a1ce90ee0bd4753224d96108bb3282">d_course_luigi_raceway_dl_F970</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_F970[]</div><div class="ttdef"><b>Definition</b> course_data.c:6860</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3200,7 +3201,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#aa2a6c0a7a83c3d01320958fd5b90d603">d_course_luigi_raceway_dl_FA00</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_aa2a6c0a7a83c3d01320958fd5b90d603"><div class="ttname"><a href="#aa2a6c0a7a83c3d01320958fd5b90d603">d_course_luigi_raceway_dl_FA00</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FA00[]</div><div class="ttdef"><b>Definition</b> course_data.c:6879</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_aa2a6c0a7a83c3d01320958fd5b90d603"><div class="ttname"><a href="#aa2a6c0a7a83c3d01320958fd5b90d603">d_course_luigi_raceway_dl_FA00</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FA00[]</div><div class="ttdef"><b>Definition</b> course_data.c:6880</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3220,7 +3221,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#adc63dc5713c5a243b8f0e5f9f6133bf0">d_course_luigi_raceway_dl_FA10</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_adc63dc5713c5a243b8f0e5f9f6133bf0"><div class="ttname"><a href="#adc63dc5713c5a243b8f0e5f9f6133bf0">d_course_luigi_raceway_dl_FA10</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FA10[]</div><div class="ttdef"><b>Definition</b> course_data.c:6885</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_adc63dc5713c5a243b8f0e5f9f6133bf0"><div class="ttname"><a href="#adc63dc5713c5a243b8f0e5f9f6133bf0">d_course_luigi_raceway_dl_FA10</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FA10[]</div><div class="ttdef"><b>Definition</b> course_data.c:6886</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3264,10 +3265,10 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(0, 3, 4, 0, 0, 4, 5, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a03b24c20d8dfbb5ef5dd9d71f7e3cfd7"><div class="ttname"><a href="#a03b24c20d8dfbb5ef5dd9d71f7e3cfd7">d_course_luigi_raceway_unknown_model6</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_unknown_model6[]</div><div class="ttdef"><b>Definition</b> course_data.c:6645</div></div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a6e4c9be5aea47eaf0d61d1f36199be74"><div class="ttname"><a href="#a6e4c9be5aea47eaf0d61d1f36199be74">d_course_luigi_raceway_sign_left</a></div><div class="ttdeci">u8 d_course_luigi_raceway_sign_left[]</div><div class="ttdef"><b>Definition</b> course_data.c:6680</div></div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_aa04477d9622b3b8dc3690734859791c5"><div class="ttname"><a href="#aa04477d9622b3b8dc3690734859791c5">d_course_luigi_raceway_unknown_model7</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_unknown_model7[]</div><div class="ttdef"><b>Definition</b> course_data.c:6660</div></div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_ada534f92211d3b83edd6c1bca1fd4406"><div class="ttname"><a href="#ada534f92211d3b83edd6c1bca1fd4406">d_course_luigi_raceway_sign_right</a></div><div class="ttdeci">u8 d_course_luigi_raceway_sign_right[]</div><div class="ttdef"><b>Definition</b> course_data.c:6685</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a03b24c20d8dfbb5ef5dd9d71f7e3cfd7"><div class="ttname"><a href="#a03b24c20d8dfbb5ef5dd9d71f7e3cfd7">d_course_luigi_raceway_unknown_model6</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_unknown_model6[]</div><div class="ttdef"><b>Definition</b> course_data.c:6646</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a6e4c9be5aea47eaf0d61d1f36199be74"><div class="ttname"><a href="#a6e4c9be5aea47eaf0d61d1f36199be74">d_course_luigi_raceway_sign_left</a></div><div class="ttdeci">u8 d_course_luigi_raceway_sign_left[]</div><div class="ttdef"><b>Definition</b> course_data.c:6681</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_aa04477d9622b3b8dc3690734859791c5"><div class="ttname"><a href="#aa04477d9622b3b8dc3690734859791c5">d_course_luigi_raceway_unknown_model7</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_unknown_model7[]</div><div class="ttdef"><b>Definition</b> course_data.c:6661</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_ada534f92211d3b83edd6c1bca1fd4406"><div class="ttname"><a href="#ada534f92211d3b83edd6c1bca1fd4406">d_course_luigi_raceway_sign_right</a></div><div class="ttdeci">u8 d_course_luigi_raceway_sign_right[]</div><div class="ttdef"><b>Definition</b> course_data.c:6686</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3287,7 +3288,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a328eca71c1d429dd0b252e774f6528b0">d_course_luigi_raceway_dl_FA30</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a328eca71c1d429dd0b252e774f6528b0"><div class="ttname"><a href="#a328eca71c1d429dd0b252e774f6528b0">d_course_luigi_raceway_dl_FA30</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FA30[]</div><div class="ttdef"><b>Definition</b> course_data.c:6897</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a328eca71c1d429dd0b252e774f6528b0"><div class="ttname"><a href="#a328eca71c1d429dd0b252e774f6528b0">d_course_luigi_raceway_dl_FA30</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FA30[]</div><div class="ttdef"><b>Definition</b> course_data.c:6898</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3322,7 +3323,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP1Triangle(3, 5, 6, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a655366b59b1d019f98b1fb3080dfa978"><div class="ttname"><a href="#a655366b59b1d019f98b1fb3080dfa978">d_course_luigi_raceway_unknown_model8</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_unknown_model8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6669</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a655366b59b1d019f98b1fb3080dfa978"><div class="ttname"><a href="#a655366b59b1d019f98b1fb3080dfa978">d_course_luigi_raceway_unknown_model8</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_unknown_model8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6670</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3342,7 +3343,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a0b189f810d7cb11301ac5b239ef237bc">d_course_luigi_raceway_dl_FB20</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a0b189f810d7cb11301ac5b239ef237bc"><div class="ttname"><a href="#a0b189f810d7cb11301ac5b239ef237bc">d_course_luigi_raceway_dl_FB20</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FB20[]</div><div class="ttdef"><b>Definition</b> course_data.c:6933</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a0b189f810d7cb11301ac5b239ef237bc"><div class="ttname"><a href="#a0b189f810d7cb11301ac5b239ef237bc">d_course_luigi_raceway_dl_FB20</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FB20[]</div><div class="ttdef"><b>Definition</b> course_data.c:6934</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3363,8 +3364,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a3e45820c035eec5aeca5ab939d587358">d_course_luigi_raceway_dl_FB10</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a3e45820c035eec5aeca5ab939d587358"><div class="ttname"><a href="#a3e45820c035eec5aeca5ab939d587358">d_course_luigi_raceway_dl_FB10</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FB10[]</div><div class="ttdef"><b>Definition</b> course_data.c:6927</div></div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a8de81094456cedb478a07709b07f301b"><div class="ttname"><a href="#a8de81094456cedb478a07709b07f301b">d_course_luigi_raceway_dl_FBB8</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FBB8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6954</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a3e45820c035eec5aeca5ab939d587358"><div class="ttname"><a href="#a3e45820c035eec5aeca5ab939d587358">d_course_luigi_raceway_dl_FB10</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FB10[]</div><div class="ttdef"><b>Definition</b> course_data.c:6928</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a8de81094456cedb478a07709b07f301b"><div class="ttname"><a href="#a8de81094456cedb478a07709b07f301b">d_course_luigi_raceway_dl_FBB8</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FBB8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6955</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3384,7 +3385,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a1759182a809534f9c6a61f0a19c871c6">d_course_luigi_raceway_dl_FBC8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a1759182a809534f9c6a61f0a19c871c6"><div class="ttname"><a href="#a1759182a809534f9c6a61f0a19c871c6">d_course_luigi_raceway_dl_FBC8</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FBC8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6960</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a1759182a809534f9c6a61f0a19c871c6"><div class="ttname"><a href="#a1759182a809534f9c6a61f0a19c871c6">d_course_luigi_raceway_dl_FBC8</a></div><div class="ttdeci">Gfx d_course_luigi_raceway_dl_FBC8[]</div><div class="ttdef"><b>Definition</b> course_data.c:6961</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3420,7 +3421,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="agbi_8h_html_a3c25150f914e9e478597126d24c9d9fd"><div class="ttname"><a href="gbi_8h.html#a3c25150f914e9e478597126d24c9d9fd">G_TT_RGBA16</a></div><div class="ttdeci">#define G_TT_RGBA16</div><div class="ttdef"><b>Definition</b> gbi.h:639</div></div>
 <div class="ttc" id="agbi_8h_html_a51bf723f01e21d63223ab47bb739ac53"><div class="ttname"><a href="gbi_8h.html#a51bf723f01e21d63223ab47bb739ac53">G_TT_NONE</a></div><div class="ttdeci">#define G_TT_NONE</div><div class="ttdef"><b>Definition</b> gbi.h:638</div></div>
 <div class="ttc" id="agbi_8h_html_acc69043726595ba2648f986ec6469146"><div class="ttname"><a href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a></div><div class="ttdeci">#define G_IM_FMT_CI</div><div class="ttdef"><b>Definition</b> gbi.h:398</div></div>
-<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a8746f742417a8d71bd197f6676beb35b"><div class="ttname"><a href="#a8746f742417a8d71bd197f6676beb35b">d_course_luigi_raceway_tree_model</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_tree_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:6974</div></div>
+<div class="ttc" id="aluigi__raceway_2course__data_8c_html_a8746f742417a8d71bd197f6676beb35b"><div class="ttname"><a href="#a8746f742417a8d71bd197f6676beb35b">d_course_luigi_raceway_tree_model</a></div><div class="ttdeci">Vtx d_course_luigi_raceway_tree_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:6975</div></div>
 </div><!-- fragment -->
 </div>
 </div>

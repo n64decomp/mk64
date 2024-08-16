@@ -116,6 +116,7 @@ $(function(){initNavTree('banshee__boardwalk_2course__data_8c.html',''); initRes
 <code>#include &lt;<a class="el" href="actor__types_8h_source.html">actor_types.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="banshee__boardwalk_2course__displaylists_8inc_8h_source.html">course_displaylists.inc.h</a>&quot;</code><br />
 <code>#include &quot;assets/courses/banshee_boardwalk/gTLUTBoo.inc.c&quot;</code><br />
 <code>#include &quot;assets/courses/banshee_boardwalk/gTextureBansheeBoardwalkFishEyes.inc.c&quot;</code><br />
@@ -701,7 +702,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="banshee__boardwalk_2course__displaylists_8inc_8c.html#a3d8c5fa19cc71f37787c8a23b704a406">d_course_banshee_boardwalk_packed_dl_9B8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a70268444e79f3cd17fe29d86c196a240"><div class="ttname"><a href="#a70268444e79f3cd17fe29d86c196a240">d_course_banshee_boardwalk_dl_68</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_68[]</div><div class="ttdef"><b>Definition</b> course_data.c:39</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a70268444e79f3cd17fe29d86c196a240"><div class="ttname"><a href="#a70268444e79f3cd17fe29d86c196a240">d_course_banshee_boardwalk_dl_68</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_68[]</div><div class="ttdef"><b>Definition</b> course_data.c:40</div></div>
 <div class="ttc" id="abanshee__boardwalk_2course__displaylists_8inc_8c_html_a0bd960ef9773ac846cea6688078c2090"><div class="ttname"><a href="banshee__boardwalk_2course__displaylists_8inc_8c.html#a0bd960ef9773ac846cea6688078c2090">d_course_banshee_boardwalk_packed_dl_BC8</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_packed_dl_BC8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:479</div></div>
 <div class="ttc" id="abanshee__boardwalk_2course__displaylists_8inc_8c_html_a0deefe62fc48526bbb8ee788fa6041a9"><div class="ttname"><a href="banshee__boardwalk_2course__displaylists_8inc_8c.html#a0deefe62fc48526bbb8ee788fa6041a9">d_course_banshee_boardwalk_packed_dl_930</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_packed_dl_930[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:380</div></div>
 <div class="ttc" id="abanshee__boardwalk_2course__displaylists_8inc_8c_html_a2ab4c0e074b765e9633eb8f817cdced8"><div class="ttname"><a href="banshee__boardwalk_2course__displaylists_8inc_8c.html#a2ab4c0e074b765e9633eb8f817cdced8">d_course_banshee_boardwalk_packed_dl_2440</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_packed_dl_2440[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:1426</div></div>
@@ -888,8 +889,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="banshee__boardwalk_2course__displaylists_8inc_8c.html#aab4cd5948fd693784bed7864d71f68e7">d_course_banshee_boardwalk_packed_dl_1478</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a18dc5984bd413854bf0b4ad31b2d1c2a"><div class="ttname"><a href="#a18dc5984bd413854bf0b4ad31b2d1c2a">d_course_banshee_boardwalk_dl_38</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_38[]</div><div class="ttdef"><b>Definition</b> course_data.c:25</div></div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a3799dda94e3b34030115f4fa39953296"><div class="ttname"><a href="#a3799dda94e3b34030115f4fa39953296">d_course_banshee_boardwalk_dl_0</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_0[]</div><div class="ttdef"><b>Definition</b> course_data.c:10</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a18dc5984bd413854bf0b4ad31b2d1c2a"><div class="ttname"><a href="#a18dc5984bd413854bf0b4ad31b2d1c2a">d_course_banshee_boardwalk_dl_38</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_38[]</div><div class="ttdef"><b>Definition</b> course_data.c:26</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a3799dda94e3b34030115f4fa39953296"><div class="ttname"><a href="#a3799dda94e3b34030115f4fa39953296">d_course_banshee_boardwalk_dl_0</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_0[]</div><div class="ttdef"><b>Definition</b> course_data.c:11</div></div>
 <div class="ttc" id="abanshee__boardwalk_2course__displaylists_8inc_8c_html_a0b37e701d1018818062c1416299ffbe1"><div class="ttname"><a href="banshee__boardwalk_2course__displaylists_8inc_8c.html#a0b37e701d1018818062c1416299ffbe1">d_course_banshee_boardwalk_packed_dl_21D8</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_packed_dl_21D8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:1333</div></div>
 <div class="ttc" id="abanshee__boardwalk_2course__displaylists_8inc_8c_html_a1b691e643182c537e0163dd55bb958ec"><div class="ttname"><a href="banshee__boardwalk_2course__displaylists_8inc_8c.html#a1b691e643182c537e0163dd55bb958ec">d_course_banshee_boardwalk_packed_dl_52F8</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_packed_dl_52F8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:3177</div></div>
 <div class="ttc" id="abanshee__boardwalk_2course__displaylists_8inc_8c_html_a2e0e656e1c82e2d241da5345b0e92c46"><div class="ttname"><a href="banshee__boardwalk_2course__displaylists_8inc_8c.html#a2e0e656e1c82e2d241da5345b0e92c46">d_course_banshee_boardwalk_packed_dl_2A70</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_packed_dl_2A70[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:1652</div></div>
@@ -3455,8 +3456,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(15, 6, 14, 0, 15, 7, 6, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a10f162afed4daa563910cad18465fa6f"><div class="ttname"><a href="#a10f162afed4daa563910cad18465fa6f">d_course_banshee_boardwalk_fish_eyes</a></div><div class="ttdeci">u8 d_course_banshee_boardwalk_fish_eyes[]</div><div class="ttdef"><b>Definition</b> course_data.c:3687</div></div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a6fe746dc484de87b39208b0124fe61ed"><div class="ttname"><a href="#a6fe746dc484de87b39208b0124fe61ed">d_course_banshee_boardwalk_cheep_cheep6</a></div><div class="ttdeci">Vtx d_course_banshee_boardwalk_cheep_cheep6[]</div><div class="ttdef"><b>Definition</b> course_data.c:3576</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a10f162afed4daa563910cad18465fa6f"><div class="ttname"><a href="#a10f162afed4daa563910cad18465fa6f">d_course_banshee_boardwalk_fish_eyes</a></div><div class="ttdeci">u8 d_course_banshee_boardwalk_fish_eyes[]</div><div class="ttdef"><b>Definition</b> course_data.c:3688</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a6fe746dc484de87b39208b0124fe61ed"><div class="ttname"><a href="#a6fe746dc484de87b39208b0124fe61ed">d_course_banshee_boardwalk_cheep_cheep6</a></div><div class="ttdeci">Vtx d_course_banshee_boardwalk_cheep_cheep6[]</div><div class="ttdef"><b>Definition</b> course_data.c:3577</div></div>
 <div class="ttc" id="agbi_8h_html_ac8b0546f9482f12ed55f4b3cb1243a8c"><div class="ttname"><a href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a></div><div class="ttdeci">#define G_IM_FMT_RGBA</div><div class="ttdef"><b>Definition</b> gbi.h:396</div></div>
 <div class="ttc" id="agbi_8h_html_ad5e7c4c4dae792b27dd18c69f0ed550a"><div class="ttname"><a href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a></div><div class="ttdeci">#define G_IM_SIZ_16b</div><div class="ttdef"><b>Definition</b> gbi.h:407</div></div>
 <div class="ttc" id="agbi_8h_html_ae4a9361eec8b90bd63962d8aed9d87b0"><div class="ttname"><a href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a></div><div class="ttdeci">#define G_CC_MODULATEIA</div><div class="ttdef"><b>Definition</b> gbi.h:492</div></div>
@@ -3500,7 +3501,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 3, 2, 0, 4, 5, 3, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a878c4a7a6be6cca8a324b150ca24de27"><div class="ttname"><a href="#a878c4a7a6be6cca8a324b150ca24de27">d_course_banshee_boardwalk_cheep_cheep10</a></div><div class="ttdeci">Vtx d_course_banshee_boardwalk_cheep_cheep10[]</div><div class="ttdef"><b>Definition</b> course_data.c:3677</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a878c4a7a6be6cca8a324b150ca24de27"><div class="ttname"><a href="#a878c4a7a6be6cca8a324b150ca24de27">d_course_banshee_boardwalk_cheep_cheep10</a></div><div class="ttdeci">Vtx d_course_banshee_boardwalk_cheep_cheep10[]</div><div class="ttdef"><b>Definition</b> course_data.c:3678</div></div>
 <div class="ttc" id="agbi_8h_html_ade5d23d9b4af596c713aed8b9d7f7ff7"><div class="ttname"><a href="gbi_8h.html#ade5d23d9b4af596c713aed8b9d7f7ff7">G_CC_SHADE</a></div><div class="ttdeci">#define G_CC_SHADE</div><div class="ttdef"><b>Definition</b> gbi.h:482</div></div>
 <div class="ttc" id="ambi_8h_html_a3c1c2e9788a104f60f8e01457dfd2d43"><div class="ttname"><a href="mbi_8h.html#a3c1c2e9788a104f60f8e01457dfd2d43">G_OFF</a></div><div class="ttdeci">#define G_OFF</div><div class="ttdef"><b>Definition</b> mbi.h:55</div></div>
 </div><!-- fragment -->
@@ -3526,10 +3527,10 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a84181db4d61f38c9937c1eda0cf193b4">d_course_banshee_boardwalk_dl_7650</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a1358992ef81b801e2d81d4e025fbe107"><div class="ttname"><a href="#a1358992ef81b801e2d81d4e025fbe107">d_course_banshee_boardwalk_dl_7B38</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_7B38[]</div><div class="ttdef"><b>Definition</b> course_data.c:3860</div></div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a2bc00fb5d18350ed91395c53fc97b475"><div class="ttname"><a href="#a2bc00fb5d18350ed91395c53fc97b475">d_course_banshee_boardwalk_dl_7978</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_7978[]</div><div class="ttdef"><b>Definition</b> course_data.c:3800</div></div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a84181db4d61f38c9937c1eda0cf193b4"><div class="ttname"><a href="#a84181db4d61f38c9937c1eda0cf193b4">d_course_banshee_boardwalk_dl_7650</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_7650[]</div><div class="ttdef"><b>Definition</b> course_data.c:3691</div></div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_af07bf6cec38b188616df0dadf4ba6568"><div class="ttname"><a href="#af07bf6cec38b188616df0dadf4ba6568">d_course_banshee_boardwalk_dl_78C0</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_78C0[]</div><div class="ttdef"><b>Definition</b> course_data.c:3773</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a1358992ef81b801e2d81d4e025fbe107"><div class="ttname"><a href="#a1358992ef81b801e2d81d4e025fbe107">d_course_banshee_boardwalk_dl_7B38</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_7B38[]</div><div class="ttdef"><b>Definition</b> course_data.c:3861</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a2bc00fb5d18350ed91395c53fc97b475"><div class="ttname"><a href="#a2bc00fb5d18350ed91395c53fc97b475">d_course_banshee_boardwalk_dl_7978</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_7978[]</div><div class="ttdef"><b>Definition</b> course_data.c:3801</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a84181db4d61f38c9937c1eda0cf193b4"><div class="ttname"><a href="#a84181db4d61f38c9937c1eda0cf193b4">d_course_banshee_boardwalk_dl_7650</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_7650[]</div><div class="ttdef"><b>Definition</b> course_data.c:3692</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_af07bf6cec38b188616df0dadf4ba6568"><div class="ttname"><a href="#af07bf6cec38b188616df0dadf4ba6568">d_course_banshee_boardwalk_dl_78C0</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_78C0[]</div><div class="ttdef"><b>Definition</b> course_data.c:3774</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3767,9 +3768,9 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(16, 17, 18, 0, 16, 18, 19, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a9da0c307b716c03e159433d60bec4c1d"><div class="ttname"><a href="#a9da0c307b716c03e159433d60bec4c1d">d_course_banshee_boardwalk_texture</a></div><div class="ttdeci">u8 d_course_banshee_boardwalk_texture[]</div><div class="ttdef"><b>Definition</b> course_data.c:3960</div></div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_aa02eafd2d71a38d4c66dd5bc67ef14b0"><div class="ttname"><a href="#aa02eafd2d71a38d4c66dd5bc67ef14b0">d_course_bashee_boardwalk_uknown_light</a></div><div class="ttdeci">Lights1 d_course_bashee_boardwalk_uknown_light</div><div class="ttdef"><b>Definition</b> course_data.c:3957</div></div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_aad8b7f8ca74d29c12e642aeac310b707"><div class="ttname"><a href="#aad8b7f8ca74d29c12e642aeac310b707">d_course_bashee_boardwalk_unknown_model1</a></div><div class="ttdeci">Vtx d_course_bashee_boardwalk_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3910</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a9da0c307b716c03e159433d60bec4c1d"><div class="ttname"><a href="#a9da0c307b716c03e159433d60bec4c1d">d_course_banshee_boardwalk_texture</a></div><div class="ttdeci">u8 d_course_banshee_boardwalk_texture[]</div><div class="ttdef"><b>Definition</b> course_data.c:3961</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_aa02eafd2d71a38d4c66dd5bc67ef14b0"><div class="ttname"><a href="#aa02eafd2d71a38d4c66dd5bc67ef14b0">d_course_bashee_boardwalk_uknown_light</a></div><div class="ttdeci">Lights1 d_course_bashee_boardwalk_uknown_light</div><div class="ttdef"><b>Definition</b> course_data.c:3958</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_aad8b7f8ca74d29c12e642aeac310b707"><div class="ttname"><a href="#aad8b7f8ca74d29c12e642aeac310b707">d_course_bashee_boardwalk_unknown_model1</a></div><div class="ttdeci">Vtx d_course_bashee_boardwalk_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:3911</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3807,7 +3808,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(16, 17, 18, 0, 16, 18, 19, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_af2063f09ccd7a5b5a0f2aad8841eb588"><div class="ttname"><a href="#af2063f09ccd7a5b5a0f2aad8841eb588">d_course_bashee_boardwalk_unknown_model2</a></div><div class="ttdeci">Vtx d_course_bashee_boardwalk_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:3933</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_af2063f09ccd7a5b5a0f2aad8841eb588"><div class="ttname"><a href="#af2063f09ccd7a5b5a0f2aad8841eb588">d_course_bashee_boardwalk_unknown_model2</a></div><div class="ttdeci">Vtx d_course_bashee_boardwalk_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:3934</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3828,8 +3829,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a87f03abcb3e1cb0e489da2cc0eeb04b3">d_course_banshee_boardwalk_dl_A850</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a207561a5d29f76ff1f14dd7de460d49e"><div class="ttname"><a href="#a207561a5d29f76ff1f14dd7de460d49e">d_course_banshee_boardwalk_dl_A900</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_A900[]</div><div class="ttdef"><b>Definition</b> course_data.c:3988</div></div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a87f03abcb3e1cb0e489da2cc0eeb04b3"><div class="ttname"><a href="#a87f03abcb3e1cb0e489da2cc0eeb04b3">d_course_banshee_boardwalk_dl_A850</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_A850[]</div><div class="ttdef"><b>Definition</b> course_data.c:3964</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a207561a5d29f76ff1f14dd7de460d49e"><div class="ttname"><a href="#a207561a5d29f76ff1f14dd7de460d49e">d_course_banshee_boardwalk_dl_A900</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_A900[]</div><div class="ttdef"><b>Definition</b> course_data.c:3989</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a87f03abcb3e1cb0e489da2cc0eeb04b3"><div class="ttname"><a href="#a87f03abcb3e1cb0e489da2cc0eeb04b3">d_course_banshee_boardwalk_dl_A850</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_A850[]</div><div class="ttdef"><b>Definition</b> course_data.c:3965</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3849,7 +3850,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a6c9b92e9014fafb041251b10719c230f">d_course_banshee_boardwalk_dl_A9B0</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a6c9b92e9014fafb041251b10719c230f"><div class="ttname"><a href="#a6c9b92e9014fafb041251b10719c230f">d_course_banshee_boardwalk_dl_A9B0</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_A9B0[]</div><div class="ttdef"><b>Definition</b> course_data.c:4012</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a6c9b92e9014fafb041251b10719c230f"><div class="ttname"><a href="#a6c9b92e9014fafb041251b10719c230f">d_course_banshee_boardwalk_dl_A9B0</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_A9B0[]</div><div class="ttdef"><b>Definition</b> course_data.c:4013</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -3924,8 +3925,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(8, 3, 2, 0, 7, 8, 2, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a2fb0c3a52dba52b8d125fef127aaa3cd"><div class="ttname"><a href="#a2fb0c3a52dba52b8d125fef127aaa3cd">d_course_banshee_boardwalk_model_unk</a></div><div class="ttdeci">Vtx d_course_banshee_boardwalk_model_unk[]</div><div class="ttdef"><b>Definition</b> course_data.c:4032</div></div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a6809748a74a7666650cd161c51102a6b"><div class="ttname"><a href="#a6809748a74a7666650cd161c51102a6b">d_course_banshee_boardwalk_texture2</a></div><div class="ttdeci">u8 d_course_banshee_boardwalk_texture2[]</div><div class="ttdef"><b>Definition</b> course_data.c:4045</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a2fb0c3a52dba52b8d125fef127aaa3cd"><div class="ttname"><a href="#a2fb0c3a52dba52b8d125fef127aaa3cd">d_course_banshee_boardwalk_model_unk</a></div><div class="ttdeci">Vtx d_course_banshee_boardwalk_model_unk[]</div><div class="ttdef"><b>Definition</b> course_data.c:4033</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a6809748a74a7666650cd161c51102a6b"><div class="ttname"><a href="#a6809748a74a7666650cd161c51102a6b">d_course_banshee_boardwalk_texture2</a></div><div class="ttdeci">u8 d_course_banshee_boardwalk_texture2[]</div><div class="ttdef"><b>Definition</b> course_data.c:4046</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4117,7 +4118,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a6f6eb4d61292d7ba6066b211a8b063de">d_course_banshee_boardwalk_dl_7B78</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a6f6eb4d61292d7ba6066b211a8b063de"><div class="ttname"><a href="#a6f6eb4d61292d7ba6066b211a8b063de">d_course_banshee_boardwalk_dl_7B78</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_7B78[]</div><div class="ttdef"><b>Definition</b> course_data.c:3872</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_a6f6eb4d61292d7ba6066b211a8b063de"><div class="ttname"><a href="#a6f6eb4d61292d7ba6066b211a8b063de">d_course_banshee_boardwalk_dl_7B78</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_7B78[]</div><div class="ttdef"><b>Definition</b> course_data.c:3873</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -4285,7 +4286,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#aee964617b44203bac12a1a13fbc1a62b">d_course_banshee_boardwalk_dl_A9C8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_aee964617b44203bac12a1a13fbc1a62b"><div class="ttname"><a href="#aee964617b44203bac12a1a13fbc1a62b">d_course_banshee_boardwalk_dl_A9C8</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_A9C8[]</div><div class="ttdef"><b>Definition</b> course_data.c:4019</div></div>
+<div class="ttc" id="abanshee__boardwalk_2course__data_8c_html_aee964617b44203bac12a1a13fbc1a62b"><div class="ttname"><a href="#aee964617b44203bac12a1a13fbc1a62b">d_course_banshee_boardwalk_dl_A9C8</a></div><div class="ttdeci">Gfx d_course_banshee_boardwalk_dl_A9C8[]</div><div class="ttdef"><b>Definition</b> course_data.c:4020</div></div>
 </div><!-- fragment -->
 </div>
 </div>
