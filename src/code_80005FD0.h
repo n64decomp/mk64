@@ -413,6 +413,6 @@ extern s32 D_8016448C;
 extern u16 D_801637BE;
 extern u16 D_80163E2A;
 
-extern Gfx D_0D0076F8[];
+// extern Gfx D_0D0076F8[];
 
 #endif
