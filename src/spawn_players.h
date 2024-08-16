@@ -2,7 +2,7 @@
 #define SPAWN_PLAYERS_H
 
 #include "camera.h"
-#include "common_structs.h"
+#include <common_structs.h>
 
 /* Function Prototypes */
 /** @cond */
@@ -38,17 +38,17 @@ extern s16 gCopyNearestWaypointByPlayerId[];
 extern s16 D_80165330[];
 extern s16 D_80165340;
 extern Player *D_801653C0[];
-extern s32 gPlayerIsThrottleActive[];
+extern bool gPlayerIsThrottleActive[];
 extern s32 D_80165400[];
 extern s32 gFrameSinceLastACombo[];
 extern s32 gCountASwitch[];
 extern bool gIsPlayerTripleAButtonCombo[];
 extern s32 gTimerBoostTripleACombo[];
-extern s32 gPlayerIsBrakeActive[];
+extern bool gPlayerIsBrakeActive[];
 extern s32 D_801654C0[];
 extern s32 gFrameSinceLastBCombo[];
 extern s32 gCountBChangement[];
-extern s32 gIsPlayerTripleBButtonCombo[];
+extern bool gIsPlayerTripleBButtonCombo[];
 extern s32 gTimerBoostTripleBCombo[];
 extern s16 chooseKartAIPlayers[];
 extern s16 D_8016556E;
