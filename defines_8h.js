@@ -42,6 +42,7 @@ var defines_8h =
     [ "COURSE_SELECT_MENU", "defines_8h.html#ae9e9974737d16f8449f0fe7e68c8e7a4", null ],
     [ "COURSE_SELECT_MENU_FROM_QUIT", "defines_8h.html#a337651c847b706a5fa2c8c02ae323db7", null ],
     [ "COURSE_TIMER_ITER", "defines_8h.html#ab651d36bd66fc3e614b826872df411ea", null ],
+    [ "COURSE_TIMER_ITER_f", "defines_8h.html#a2f525ee1d4444807b6d6d63db4ec8579", null ],
     [ "CREDITS_SEQUENCE", "defines_8h.html#ab44391bcab18019b1dce1711ea9995c1", null ],
     [ "CUP_COURSE_FOUR", "defines_8h.html#a8dc28b85ae161ff0b0a7d1b5d3c1bbad", null ],
     [ "CUP_COURSE_ONE", "defines_8h.html#ae04c2bca74efccd98e97ca0a6d5d5a3d", null ],

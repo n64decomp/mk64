@@ -1,7 +1,7 @@
 var render__player_8h =
 [
     [ "SOME_TEXTURE_POINTER_MATH", "render__player_8h.html#a8109b3c68fbea07a9bd97c7c420849bb", null ],
-    [ "adjust_angle", "render__player_8h.html#a770dbd89a07206c4d07e922468d12c41", null ],
+    [ "adjust_angle", "render__player_8h.html#aa6c153930368339583db656362e2fc17", null ],
     [ "change_player_color_effect_cmy", "render__player_8h.html#ab7630bcda65a4866796236f9e279128f", null ],
     [ "change_player_color_effect_rgb", "render__player_8h.html#aa8de91f9b10029fbd2ef195df1b28630", null ],
     [ "check_player_camera_collision", "render__player_8h.html#a1ecd90a216e025282c0800ea5f356f47", null ],
@@ -37,7 +37,7 @@ var render__player_8h =
     [ "func_80027024", "render__player_8h.html#aaf9cc7bb60565f0057b6999701822063", null ],
     [ "func_80030A34", "render__player_8h.html#af9f721cc38ce7d92a55d15676a961b5e", null ],
     [ "init_render_player", "render__player_8h.html#a90433fe207ad8586c18f95a152c9e3a2", null ],
-    [ "is_player_under_light_luigi_raceway", "render__player_8h.html#a04e3b0d2912bd973aa584e2f2c457aea", null ],
+    [ "is_player_under_light_luigi_raceway", "render__player_8h.html#a95983c3da0f04a8e690fbe9e2490b012", null ],
     [ "move_f32_towards", "render__player_8h.html#a495ed6107a9ba1827a3f412cf408723c", null ],
     [ "move_s16_towards", "render__player_8h.html#afa001ddca9e6f0c3564fdebd9e753205", null ],
     [ "move_s32_towards", "render__player_8h.html#a48f70172d10a7cd9eed05f4041f35c6f", null ],

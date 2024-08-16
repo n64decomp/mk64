@@ -109,7 +109,7 @@ var effects_8h =
     [ "func_unnamed7", "effects_8h.html#aa4e5fcd6872dec26296dca41158926de", null ],
     [ "func_unnamed8", "effects_8h.html#a2394277f48ef51cbe4dd87b526f82406", null ],
     [ "func_unnamed9", "effects_8h.html#a7c83e2daa08d326bebecbd60d5220f08", null ],
-    [ "prevent_item_use", "effects_8h.html#a820f77dcab6ca14a3e5054480c3d943a", null ],
+    [ "prevent_item_use", "effects_8h.html#a67215dfe7a0b23f649a8281d38f6c6a7", null ],
     [ "remove_boost_effect", "effects_8h.html#a8f007d34f4bb7a477a1923b5d9ce4b52", null ],
     [ "remove_boost_ramp_asphalt_effect", "effects_8h.html#a5dd8c4aac19f671cb7b9c96f8eff3830", null ],
     [ "remove_boost_ramp_wood_effect", "effects_8h.html#a101b266fcfcc52a91c4e453265f2c8c3", null ],

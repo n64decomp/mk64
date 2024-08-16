@@ -1,7 +1,7 @@
 var NAVTREEINDEX32 =
 {
-"defines_8h.html#afd751d697b12826a7fe8e16460e517a3":[8,0,2,10,56],
-"defines_8h.html#afd95aa649c35f54671dc41e1f757b89c":[8,0,2,10,168],
+"defines_8h.html#afd751d697b12826a7fe8e16460e517a3":[8,0,2,10,57],
+"defines_8h.html#afd95aa649c35f54671dc41e1f757b89c":[8,0,2,10,169],
 "defines_8h_source.html":[8,0,2,10],
 "dir_00af227302e88d94a0c5bc4ff969c991.html":[8,0,3,5],
 "dir_00c6197c95351a64c91d79efe9fd5e9f.html":[8,0,0,6],

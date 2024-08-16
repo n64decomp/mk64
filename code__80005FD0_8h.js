@@ -178,7 +178,6 @@ var code__80005FD0_8h =
     [ "update_vehicle_trains", "code__80005FD0_8h.html#aa4a9c388d068cd83d2e2a4f6c30705e4", null ],
     [ "update_vehicles", "code__80005FD0_8h.html#aef8687777d0e50889371f98024d0bb12", null ],
     [ "bStopAICrossing", "code__80005FD0_8h.html#abc0014a419f7e6c01eeac51a6af11b97", null ],
-    [ "D_0D0076F8", "code__80005FD0_8h.html#ae81feab00ba6c7aefc2e10450af24c8b", null ],
     [ "D_80162E70", "code__80005FD0_8h.html#a0f1bec6a948cfc6fb38f786373418818", null ],
     [ "D_80162EB0", "code__80005FD0_8h.html#aea1b0842597217be22e4a206f8e04f14", null ],
     [ "D_80162EB2", "code__80005FD0_8h.html#a67b8b27a93b08bee86ed5f88a479e2e3", null ],
