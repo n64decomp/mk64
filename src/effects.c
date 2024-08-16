@@ -186,14 +186,14 @@ void clean_effect(Player *player, s8 arg1) {
     if ((player->effects & 0x400) == 0x400) {
         func_8008C6D0(player, arg1);
     }
-    
+
     if (((player->effects & 0x80) == 0x80) || (player->effects & 0x40) == 0x40) {
         func_8008C8C4(player, arg1);
     }
     if ((player->effects & 0x800) == 0x800) {
         func_8008D0E4(player, arg1);
     }
-    if ((player->unk_044 & 0x4000) != 0) { 
+    if ((player->unk_044 & 0x4000) != 0) {
         func_8008D3B0(player, arg1);
     }
     if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
@@ -410,7 +410,7 @@ void func_8008CDC0(Player* player, s8 arg1) {
     player->unk_0B8 = 3.0f;
     player->unk_0AC = 1;
     player->effects &= ~0x10;
-    
+
     if (((player->unk_07C >> 0x10) >= 0x14) || ((player->unk_07C >> 0x10) < -0x13) || (((player->unk_094 / 18.0f) * 216.0f) <= 30.0f) || ((player->effects & 8) != 0) || (((player->type & PLAYER_HUMAN) == 0) && ((player->effects & 0x1000) == 0))) {
         func_8008C73C(player, arg1);
     }
@@ -548,7 +548,7 @@ void apply_boost_sound_effect(Player* player, s8 arg1) {
     player->soundEffects &= ~BOOST_SOUND_EFFECT;
     player->unk_DB4.unk0 = 0;
     player->unk_DB4.unk8 = 8.0f;
-    
+
     if (D_8015F890 != 1) {
         if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
             func_800C9250(arg1);
@@ -575,7 +575,7 @@ void apply_boost_effect(Player* player) {
     } else {
         move_f32_towards(&player->boostPower, 0.0f, 0.1f);
     }
-    
+
     if (player->boostPower <= 1.0f) {
         player->effects &= ~BOOST_EFFECT;
     }
@@ -613,7 +613,7 @@ void func_8008D570(Player *player, s8 arg1) {
 
 void func_8008D698(Player* player, s8 arg1) {
     s16 temp;
- 
+
     if (player->unk_0B2 == 0) {
         player->rotation[1] = player->unk_0AE;
         temp = 0;
@@ -758,7 +758,7 @@ void apply_hit_effect(Player* player, s8 arg1) {
     player->currentSpeed = 0.0f;
     if ((player->collision.surfaceDistance[2] >= 600.0f) || ((player->effects & 0x1000) != 0)) { D_8018D990[arg1] = 3; } // placed block on same line to match
 
-    switch (D_8018D990[arg1]) { 
+    switch (D_8018D990[arg1]) {
     case 0:
         player->unk_DB4.unk10 = 4.5f;
         if (player->unk_238 < 0x3D) {
@@ -792,7 +792,7 @@ void apply_hit_effect(Player* player, s8 arg1) {
         player->unk_DB4.unk10 = 4.5f;
         player->pos[1] += 0.13;
         ++player->unk_238;
-        
+
         if ((player->unk_046 & 0x80) != 0) {
             if (player->unk_238 >= 0x32) {
                 D_8018D990[arg1] = 2;
@@ -868,9 +868,9 @@ void apply_hit_rotating_sound_effect(Player* player, s8 arg1) {
     player->unk_0AE = player->rotation[1];
     player->unk_0B2 = 2;
     player->unk_0C0 = 0;
-    player->unk_07C = 0;    
+    player->unk_07C = 0;
     player->unk_078 = 0;
-    
+
     D_80165190[0][arg1] = 1;
     D_80165190[1][arg1] = 1;
     D_80165190[2][arg1] = 1;
@@ -942,18 +942,18 @@ void apply_lightning_effect(Player *player, s8 arg1) {
 void remove_lightning_effect(Player* player, UNUSED s8 arg1) {
     move_f32_towards(&player->size, 1.0f, 0.1f);
     move_f32_towards(&player->boundingBoxSize, gKartBoundingBoxSizeTable[player->characterId], 0.1f);
-    
+
     player->effects &= ~LIGHTNING_EFFECT;
     player->size = 1.0f;
     player->boundingBoxSize = gKartBoundingBoxSizeTable[player->characterId];
     player->unk_DB4.unk10 = 3.0f;
     player->unk_DB4.unk2 = 0;
     player->effects |= 0x08000000;
-    
+
     if ((player->effects & 0x20000) == 0x20000) {
         player->rotation[1] = player->unk_0AE;
     }
-    
+
     player->effects &= ~0x20000;
 }
 
@@ -1142,14 +1142,14 @@ void apply_hit_by_item_sound_effect(Player* player, s8 arg1) {
     player->unk_236 = 4;
     player->unk_042 = 0;
     player->unk_0E0 = 0;
-    
+
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008005);
         func_800C9060(arg1, SOUND_ACTION_EXPLOSION);
     } else {
         func_800098FC(arg1, player);
     }
-    
+
     player->effects |= HIT_BY_ITEM_EFFECT;
     player->unk_0B6 |= 0x40;
     player->soundEffects &= ~0x01000002;
@@ -1247,7 +1247,7 @@ void apply_boost_ramp_wood_effect(Player* player) {
     } else {
         move_f32_towards(&player->boostPower, 300.0f, 0.1f);
     }
-    
+
     if (player->boostPower <= 1.0f) {
         player->effects &= ~BOOST_RAMP_WOOD_EFFECT;
         player->boostPower = 0.0f;
@@ -1268,10 +1268,10 @@ void func_8008F104(Player* player, s8 arg1) {
     player->unk_0B2 = 2;
     player->unk_0C0 = 0;
     player->unk_07C = 0;
-    player->effects |= 0x4000;   
+    player->effects |= 0x4000;
     player->unk_078 = 0;
     D_8018D920[arg1] = -0x8000;
-    
+
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008003);
     }
@@ -1358,13 +1358,13 @@ void func_8008F494(Player* player, s8 arg1) {
 
     clean_effect(player, arg1);
     func_8008F86C(player, arg1);
- 
+
     player->unk_0A8 = 0;
     player->effects |= 0x10000;
     player->effects &= ~0x10;
     player->unk_236 = 0x1E;
     player->unk_042 = 0;
-    
+
     if (((player->type & PLAYER_HUMAN) != 0) &&
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) &&
         ((player->unk_0CA & 2) == 0) &&
@@ -1380,7 +1380,7 @@ void func_8008F5A4(Player* player, s8 arg1) {
         func_8006B8B4(player, arg1);
         player->unk_044 &= ~0x8000;
     }
-    
+
     player->unk_206 = 0;
     player->slopeAccel = 0;
     player->effects &= ~0x10000;
@@ -1453,7 +1453,7 @@ void apply_boo_effect(Player* arg0, s8 arg1) {
     tmp = ((s32) gCourseTimer) - D_8018D950[arg1];
     if (tmp < 7) {
         arg0->unk_0C6 -= 2;
-  
+
         if (arg0->unk_0C6 < 0x61) {
             arg0->unk_0C6 = 0x60;
         }
@@ -1489,7 +1489,7 @@ void apply_boo_sound_effect(Player* player, s8 arg1) {
 
     if ((player->type & PLAYER_HUMAN) != 0) {
         player->unk_044 |= 0x200;
-      
+
         for (temp_v1 = 0; temp_v1 < 10; ++temp_v1) {
             player->unk_258[temp_v1].unk_01C = 0;
             player->unk_258[temp_v1].unk_01E = 0;
@@ -1549,7 +1549,7 @@ void func_8008FC64(Player* player, s8 arg1) {
         player->soundEffects &= 0xFBFFFFFF;
         player->soundEffects |= 0x08000000;
         player->type |= PLAYER_UNKNOWN_0x40;
-        
+
         func_8008FDA8(player, arg1);
         func_800569F4(arg1);
     }
@@ -1567,7 +1567,7 @@ void func_8008FCDC(Player* player, s8 arg1) {
 
 void func_8008FD4C(Player* player, UNUSED s8 arg1) {
     s16 temp_v0;
-    
+
     player->soundEffects |= 0x04000000;
     player->unk_044 |= 0x200;
 
@@ -1590,7 +1590,7 @@ void func_8008FDA8(Player* player, UNUSED s8 arg1) {
 
 void func_8008FDF4(Player* player, UNUSED s8 arg1) {
     clean_effect(player, arg1);
-    
+
     player->effects &= ~0x10;
     player->kartHopJerk =  D_800E37F0[player->characterId];
     player->kartHopAcceleration = 0.0f;
@@ -1649,9 +1649,9 @@ void func_8008FF08(Player *player, s8 playerId) {
     case COURSE_FRAPPE_SNOWLAND:
         waypoint = gNearestWaypointByPlayerId[playerId];
 #ifdef VERSION_EU
-        if (((waypoint >= 0xF0) && (waypoint < 0x11E)) || 
+        if (((waypoint >= 0xF0) && (waypoint < 0x11E)) ||
             ((gCopyNearestWaypointByPlayerId[playerId] >= 0xF0) && (gCopyNearestWaypointByPlayerId[playerId] < 0x11E)))
-#else  
+#else
         if ((waypoint >= 0xF0) && (waypoint < 0x105))
 #endif
         {
@@ -1791,7 +1791,7 @@ void func_80090778(Player* player) {
 
     clean_effect(player, playerIndex);
     func_8008F86C(player, playerIndex);
- 
+
     player->unk_DB4.unk0 = 0;
     player->unk_0C2 = 0;
     player->unk_DB4.unk8 = 0.0f;

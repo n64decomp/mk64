@@ -153,7 +153,7 @@ UNUSED void func_8004398C(s32 arg0, s32 arg1, u16 arg2, f32 arg3, Vtx *vtx, s32 
     gSPVertex(gDisplayListHead++, vtx, 4, 0);
     gSPDisplayList(gDisplayListHead++, common_rectangle_display);
 }
-    
+
 s32 func_80043A54(s32 arg0) {
     s32 temp_a1;
     s32 phi_v0;
@@ -225,7 +225,7 @@ void load_texture_block_i8_nomirror(u8 *texture, s32 width, s32 height) {
 void func_80044924(u8 *texture, s32 width, s32 height) {
     // This macro ought to be equivalent to the block of macros below but it doesn't match
     // See comment above the `gDPLoadBlock` macro
-    // gDPLoadTextureBlock_4b(gDisplayListHead++, texture, G_IM_FMT_I, width, height, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    //gDPLoadTextureBlock_4b(gDisplayListHead++, texture, G_IM_FMT_I, width, height, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
 
     gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, texture);
     gDPSetTile(gDisplayListHead++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, G_TX_RENDERTILE, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
@@ -252,7 +252,7 @@ void func_80044DA0(u8 *image, s32 width, s32 height) {
     // This macro ought to be equivalent to the block of macros below but it doesn't match
     // See comment above the `gDPLoadBlock` macro
     // gDPLoadTextureBlock_4b(gDisplayListHead++, image, G_IM_FMT_I, width, height, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    
+
     gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_I, G_IM_SIZ_16b, 1, image);
     gDPSetTile(gDisplayListHead++, G_IM_FMT_I, G_IM_SIZ_16b, 0, G_TX_RENDERTILE, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
     gDPLoadSync(gDisplayListHead++);
@@ -268,7 +268,7 @@ void func_80044F34(u8 *image, s32 width, s32 height) {
     // This macro ought to be equivalent to the block of macros below but it doesn't match
     // See comment above the `gDPLoadBlock` macro
     // gDPLoadTextureBlock_4b(gDisplayListHead++, image, G_IM_FMT_I, width, height, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    
+
     gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_I, G_IM_SIZ_16b, 1, image);
     gDPSetTile(gDisplayListHead++, G_IM_FMT_I, G_IM_SIZ_16b, 0, G_TX_RENDERTILE, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
     gDPLoadSync(gDisplayListHead++);
@@ -831,7 +831,7 @@ void func_800485C4(Vec3f arg0, Vec3su arg1, f32 arg2, s32 arg3, u8 *tlut, u8 *te
 
     set_transparency(arg3);
     draw_rectangle_texture_overlap(tlut, texture, arg6, arg7, arg8, arg9, argA);
-    
+
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
 }
 
@@ -1683,7 +1683,7 @@ void func_8004C6FC(s16 arg0, s16 arg1, u8 *texture, u32 width, u32 arg4) {
         athing += var_s4 * 0;
         var_s4 += heigth;
     }
-    
+
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 #else
@@ -2074,7 +2074,7 @@ void func_8004DF5C(s32 arg0, s32 arg1, u8 *texture, s32 width, s32 arg4, s32 hei
     s32 var_s0 = var_s0 = arg1 - (arg4 / 2);
     u8 *img = texture;
     s32 i;
-    
+
     for (i = 0; i < arg4 / height; i++) {
             rsp_load_texture(img, width, height);
             func_8004B97C(arg0 - (width / 2), var_s0, width, height, 1);
@@ -2277,7 +2277,7 @@ void func_8004EB38(s32 playerId) {
 }
 
 void func_8004ED40(s32 arg0) {
-    func_8004A2F4(playerHUD[arg0].speedometerX, playerHUD[arg0].speedometerY, 0U, 1.0f, D_8018D300, D_8018D308, D_8018D310, 0xFF, common_texture_speedometer, D_0D0064B0, 0x40, 0x60, 0x40, 0x30);
+    func_8004A2F4(playerHUD[arg0].speedometerX, playerHUD[arg0].speedometerY, 0U, 1.0f, D_8018D300, D_8018D308, D_8018D310, 0xFF, common_texture_speedometer, D_0D0064B0, 64, 96, 64, 48);
     func_8004A258(D_8018CFEC, D_8018CFF4, D_8016579E, 1.0f, common_texture_speedometer_needle, D_0D005FF0, 0x40, 0x20, 0x40, 0x20);
 }
 
@@ -2531,6 +2531,7 @@ void draw_lap_count(s16 lapX, s16 lapY, s8 lap) {
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_THRESHOLD);
     load_texture_block_rgba16_mirror((u8*) common_texture_hud_123, 32, 8);
     // Display current lap. Ex. 1/3
+    
     func_8004BA98(lapX     , lapY, 8, 8, lap * 8, 0, 0); // display the digit
     func_8004BA98(lapX + 8 , lapY, 8, 8,      24, 0, 0); // display the /
     func_8004BA98(lapX + 16, lapY, 8, 8,      16, 0, 0); // display the 3
@@ -3081,6 +3082,7 @@ void func_80052080(void) {
     func_80051C60(240 - D_800DC5F0->cameraHeight, D_8018D1F0);
 }
 
+
 void func_800520C0(s32 arg0) {
     if (gObjectList[arg0].unk_0D5 == 0) {
         D_800E45C0[0].l[0].l.dir[0] = D_800E45C0[1].l[0].l.dir[0] = D_800E45C0[2].l[0].l.dir[0] = D_800E45C0[3].l[0].l.dir[0] = 0;
@@ -3543,7 +3545,7 @@ void func_80053E6C(s32 arg0) {
     func_8004B614(0, 0, 0, 0, 0, 0, 0);
     D_80183E80[0] = 0;
     D_80183E80[1] = 0x8000;
-    rsp_load_texture(D_8018D4BC, 0x40, 0x20);
+    rsp_load_texture(D_8018D4BC, 64, 32);
     for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
         objectIndex = gObjectParticle3[var_s1];
         if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 2)) {
@@ -3633,7 +3635,7 @@ void render_object_paddle_boat_smoke_particles(s32 cameraId) {
     UNUSED s32 pad[2];
     Camera *camera;
     s32 i;
- 
+
     camera = &camera1[cameraId];
     gSPDisplayList(gDisplayListHead++, D_0D007AE0);
 
@@ -4420,18 +4422,18 @@ UNUSED void func_800573BC(void) {
 }
 
 UNUSED void func_800573C4(void) {
-    
+
 }
 
 UNUSED void func_800573CC(void) {
-    
+
 }
 UNUSED void func_800573D4(void) {
-    
+
 }
 
 UNUSED void func_800573DC(void) {
-    
+
 }
 
 
@@ -4473,7 +4475,7 @@ void debug_print_number(s32 *x, s32 *y, s32 number, u32 numDigits)
         debug_wrap_text(x, y);
         n = -number;
     }
-      
+
     *D_801657B8 = -1;
     ptr = D_801657B8;
     if (n != 0) {
@@ -4485,7 +4487,7 @@ void debug_print_number(s32 *x, s32 *y, s32 number, u32 numDigits)
     } else {
         *++ptr = 0;
     }
-    
+
     do {
         func_800573E4(*x, *y, *ptr--);
         debug_wrap_text(x, y);
@@ -4502,7 +4504,7 @@ void func_8005762C(s32 *x, s32 *y, s32 pathCount, u32 numDigits) {
     s8 *ptr;
     s32 count;
     s8 remainder;
-    
+
     debug_wrap_text(x, y);
     *D_801657B8 = -1;
     ptr = D_801657B8;
@@ -4518,7 +4520,7 @@ void func_8005762C(s32 *x, s32 *y, s32 pathCount, u32 numDigits) {
     } else {
         *++ptr = 0;
     }
-    
+
     do {
         func_800573E4(*x, *y, *ptr--);
         debug_wrap_text(x, y);
