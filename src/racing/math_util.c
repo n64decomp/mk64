@@ -127,7 +127,7 @@ void *vec3f_copy_return(Vec3f dest, Vec3f src) {
     dest[1] = src[1];
     dest[2] = src[2];
     //! @warning function returns address of local variable
-    return &dest; 
+    return &dest;
 }
 
 void vec3s_copy(Vec3s dest, Vec3s src) {
