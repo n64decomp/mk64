@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
-#include <types.h>
 #include <decode.h>
+#include <mk64.h>
 #include <defines.h>
 #include <sounds.h>
 #include "code_800029B0.h"
@@ -16,6 +16,7 @@
 #include "effects.h"
 #include "audio/external.h"
 #include "spawn_players.h"
+#include "code_80091750.h"
 
 s32 D_8018D900[8];
 s16 D_8018D920[8];
@@ -185,14 +186,14 @@ void clean_effect(Player *player, s8 arg1) {
     if ((player->effects & 0x400) == 0x400) {
         func_8008C6D0(player, arg1);
     }
-    
+
     if (((player->effects & 0x80) == 0x80) || (player->effects & 0x40) == 0x40) {
         func_8008C8C4(player, arg1);
     }
     if ((player->effects & 0x800) == 0x800) {
         func_8008D0E4(player, arg1);
     }
-    if ((player->unk_044 & 0x4000) != 0) { 
+    if ((player->unk_044 & 0x4000) != 0) {
         func_8008D3B0(player, arg1);
     }
     if ((player->effects & BOOST_EFFECT) == BOOST_EFFECT) {
@@ -257,7 +258,7 @@ void func_8008C528(Player *player, s8 arg1) {
 
 void func_8008C62C(Player *player, s8 arg1) {
 
-    func_80031F48(player, 5.0f);
+    decelerate_ai_player(player, 5.0f);
     player->unk_0A8 += (s16)0xA0;
     player->unk_042 += (s16)0x71C;
     if (player->unk_0A8 >= 0x2000) {
@@ -310,7 +311,7 @@ void func_8008C73C(Player *player, s8 arg1) {
         D_80165190[3][arg1] = 1;
         D_80165280[arg1] = player->currentSpeed;
         gTimerBoostTripleACombo[arg1] = 0;
-        gIsPlayerTripleAButtonCombo[arg1] = FALSE;
+        gIsPlayerTripleAButtonCombo[arg1] = false;
         gCountASwitch[arg1] = 0;
         gFrameSinceLastACombo[arg1] = 0;
         D_8018D920[arg1] = 0;
@@ -339,7 +340,7 @@ void func_8008C8C4(Player* player, s8 playerId) {
 
     player->unk_046 &= 0xFFBF;
 
-    if ((gIsPlayerTripleAButtonCombo[playerId] == TRUE) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+    if ((gIsPlayerTripleAButtonCombo[playerId] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
         player->currentSpeed = (f32) (player->currentSpeed + 100.0f);
     }
     if ((gModeSelection == VERSUS) && ((player->type & PLAYER_KART_AI) == PLAYER_KART_AI) && (!gDemoMode) && ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[playerId] != 0)) {
@@ -355,15 +356,15 @@ void func_8008C9EC(Player *player, s8 arg1) {
     player->unk_206 = 0;
     player->slopeAccel = 0;
     if ((player->unk_046 & 0x40) == 0x40) {
-        func_80031F48(player, 100.0f);
+        decelerate_ai_player(player, 100.0f);
     } else {
         if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-            func_80031F48(player, 1.0f);
+            decelerate_ai_player(player, 1.0f);
         } else {
-            func_80031F48(player, 4.0f);
+            decelerate_ai_player(player, 4.0f);
         }
         if (!(player->type & PLAYER_HUMAN)) {
-            func_80031F48(player, 30.0f);
+            decelerate_ai_player(player, 30.0f);
         }
     }
     if ((player->effects & 0x80) == 0x80) {
@@ -393,7 +394,7 @@ void func_8008C9EC(Player *player, s8 arg1) {
             }
         }
     }
-    if ((gIsPlayerTripleAButtonCombo[arg1] == TRUE) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+    if ((gIsPlayerTripleAButtonCombo[arg1] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
         gTimerBoostTripleACombo[arg1] = 0x00000078;
         if (player->currentSpeed <= 90.0f) {
             player->currentSpeed = 90.0f;
@@ -409,7 +410,7 @@ void func_8008CDC0(Player* player, s8 arg1) {
     player->unk_0B8 = 3.0f;
     player->unk_0AC = 1;
     player->effects &= ~0x10;
-    
+
     if (((player->unk_07C >> 0x10) >= 0x14) || ((player->unk_07C >> 0x10) < -0x13) || (((player->unk_094 / 18.0f) * 216.0f) <= 30.0f) || ((player->effects & 8) != 0) || (((player->type & PLAYER_HUMAN) == 0) && ((player->effects & 0x1000) == 0))) {
         func_8008C73C(player, arg1);
     }
@@ -547,7 +548,7 @@ void apply_boost_sound_effect(Player* player, s8 arg1) {
     player->soundEffects &= ~BOOST_SOUND_EFFECT;
     player->unk_DB4.unk0 = 0;
     player->unk_DB4.unk8 = 8.0f;
-    
+
     if (D_8015F890 != 1) {
         if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
             func_800C9250(arg1);
@@ -574,7 +575,7 @@ void apply_boost_effect(Player* player) {
     } else {
         move_f32_towards(&player->boostPower, 0.0f, 0.1f);
     }
-    
+
     if (player->boostPower <= 1.0f) {
         player->effects &= ~BOOST_EFFECT;
     }
@@ -612,7 +613,7 @@ void func_8008D570(Player *player, s8 arg1) {
 
 void func_8008D698(Player* player, s8 arg1) {
     s16 temp;
- 
+
     if (player->unk_0B2 == 0) {
         player->rotation[1] = player->unk_0AE;
         temp = 0;
@@ -755,9 +756,9 @@ void apply_hit_effect(Player* player, s8 arg1) {
     player->unk_0C0 = 0;
     player->unk_08C = 0.0f;
     player->currentSpeed = 0.0f;
-    if ((player->unk_110.unk3C[2] >= 600.0f) || ((player->effects & 0x1000) != 0)) { D_8018D990[arg1] = 3; } // placed block on same line to match
+    if ((player->collision.surfaceDistance[2] >= 600.0f) || ((player->effects & 0x1000) != 0)) { D_8018D990[arg1] = 3; } // placed block on same line to match
 
-    switch (D_8018D990[arg1]) { 
+    switch (D_8018D990[arg1]) {
     case 0:
         player->unk_DB4.unk10 = 4.5f;
         if (player->unk_238 < 0x3D) {
@@ -791,7 +792,7 @@ void apply_hit_effect(Player* player, s8 arg1) {
         player->unk_DB4.unk10 = 4.5f;
         player->pos[1] += 0.13;
         ++player->unk_238;
-        
+
         if ((player->unk_046 & 0x80) != 0) {
             if (player->unk_238 >= 0x32) {
                 D_8018D990[arg1] = 2;
@@ -821,7 +822,7 @@ void apply_hit_effect(Player* player, s8 arg1) {
             player->unk_238 = 0;
         }
 
-        if (player->unk_110.unk3C[2] >= 600.0f) {
+        if (player->collision.surfaceDistance[2] >= 600.0f) {
             D_8018D990[arg1] = 3;
         }
 
@@ -867,9 +868,9 @@ void apply_hit_rotating_sound_effect(Player* player, s8 arg1) {
     player->unk_0AE = player->rotation[1];
     player->unk_0B2 = 2;
     player->unk_0C0 = 0;
-    player->unk_07C = 0;    
+    player->unk_07C = 0;
     player->unk_078 = 0;
-    
+
     D_80165190[0][arg1] = 1;
     D_80165190[1][arg1] = 1;
     D_80165190[2][arg1] = 1;
@@ -919,7 +920,7 @@ void apply_lightning_effect(Player *player, s8 arg1) {
                 D_80165190[3][arg1] = 1;
             }
         }
-        func_80031F48(player, 1.0f);
+        decelerate_ai_player(player, 1.0f);
     } else {
         player->unk_0B0 += 1;
         player->unk_08C = (f32) ((f64) player->unk_08C * 0.6);
@@ -941,18 +942,18 @@ void apply_lightning_effect(Player *player, s8 arg1) {
 void remove_lightning_effect(Player* player, UNUSED s8 arg1) {
     move_f32_towards(&player->size, 1.0f, 0.1f);
     move_f32_towards(&player->boundingBoxSize, gKartBoundingBoxSizeTable[player->characterId], 0.1f);
-    
+
     player->effects &= ~LIGHTNING_EFFECT;
     player->size = 1.0f;
     player->boundingBoxSize = gKartBoundingBoxSizeTable[player->characterId];
     player->unk_DB4.unk10 = 3.0f;
     player->unk_DB4.unk2 = 0;
     player->effects |= 0x08000000;
-    
+
     if ((player->effects & 0x20000) == 0x20000) {
         player->rotation[1] = player->unk_0AE;
     }
-    
+
     player->effects &= ~0x20000;
 }
 
@@ -984,7 +985,7 @@ void func_8008E4A4(Player* player, s8 arg1) {
         player->unk_042 = 0;
         player->type &= ~0x80;
 
-        if ((gIsPlayerTripleAButtonCombo[arg1] == TRUE) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+        if ((gIsPlayerTripleAButtonCombo[arg1] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
             player->currentSpeed += 100.0f;
         }
         if (gModeSelection == BATTLE) {
@@ -1007,7 +1008,7 @@ void func_8008E4A4(Player* player, s8 arg1) {
                 if (gModeSelection == BATTLE) {
                     func_8006B8B4(player, arg1);
                 }
-                if ((gIsPlayerTripleAButtonCombo[arg1] == TRUE) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+                if ((gIsPlayerTripleAButtonCombo[arg1] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                     player->currentSpeed += 100.0f;
                 }
 
@@ -1054,7 +1055,7 @@ void apply_reverse_sound_effect(Player *player, s8 arg1)
     player->soundEffects &= ~(REVERSE_SOUND_EFFECT | 0x80000);
     player->unk_0B6 |= 0x40;
     gTimerBoostTripleACombo[arg1] = 0;
-    gIsPlayerTripleAButtonCombo[arg1] = FALSE;
+    gIsPlayerTripleAButtonCombo[arg1] = false;
     gCountASwitch[arg1] = 0;
     gFrameSinceLastACombo[arg1] = 0;
 }
@@ -1095,7 +1096,7 @@ void apply_hit_by_item_effect(Player *player, s8 arg1) {
         D_80165190[2][arg1] = 1;
         player->unk_042 = 0;
 
-        if ((gIsPlayerTripleAButtonCombo[arg1] == TRUE) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+        if ((gIsPlayerTripleAButtonCombo[arg1] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
             player->currentSpeed += 100.0f;
         }
 
@@ -1115,7 +1116,7 @@ void apply_hit_by_item_effect(Player *player, s8 arg1) {
                 D_80165190[2][arg1] = 1;
                 D_80165190[3][arg1] = 1;
                 player->unk_042 = 0;
-                if ((gIsPlayerTripleAButtonCombo[arg1] == TRUE) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+                if ((gIsPlayerTripleAButtonCombo[arg1] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
                     player->currentSpeed += 100.0f;
                 }
 
@@ -1141,20 +1142,20 @@ void apply_hit_by_item_sound_effect(Player* player, s8 arg1) {
     player->unk_236 = 4;
     player->unk_042 = 0;
     player->unk_0E0 = 0;
-    
+
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008005);
         func_800C9060(arg1, SOUND_ACTION_EXPLOSION);
     } else {
         func_800098FC(arg1, player);
     }
-    
+
     player->effects |= HIT_BY_ITEM_EFFECT;
     player->unk_0B6 |= 0x40;
     player->soundEffects &= ~0x01000002;
 
     gTimerBoostTripleACombo[arg1] = 0;
-    gIsPlayerTripleAButtonCombo[arg1] = FALSE;
+    gIsPlayerTripleAButtonCombo[arg1] = false;
     gCountASwitch[arg1] = 0;
     gFrameSinceLastACombo[arg1] = 0;
 }
@@ -1246,7 +1247,7 @@ void apply_boost_ramp_wood_effect(Player* player) {
     } else {
         move_f32_towards(&player->boostPower, 300.0f, 0.1f);
     }
-    
+
     if (player->boostPower <= 1.0f) {
         player->effects &= ~BOOST_RAMP_WOOD_EFFECT;
         player->boostPower = 0.0f;
@@ -1267,10 +1268,10 @@ void func_8008F104(Player* player, s8 arg1) {
     player->unk_0B2 = 2;
     player->unk_0C0 = 0;
     player->unk_07C = 0;
-    player->effects |= 0x4000;   
+    player->effects |= 0x4000;
     player->unk_078 = 0;
     D_8018D920[arg1] = -0x8000;
-    
+
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008003);
     }
@@ -1357,13 +1358,13 @@ void func_8008F494(Player* player, s8 arg1) {
 
     clean_effect(player, arg1);
     func_8008F86C(player, arg1);
- 
+
     player->unk_0A8 = 0;
     player->effects |= 0x10000;
     player->effects &= ~0x10;
     player->unk_236 = 0x1E;
     player->unk_042 = 0;
-    
+
     if (((player->type & PLAYER_HUMAN) != 0) &&
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) == 0) &&
         ((player->unk_0CA & 2) == 0) &&
@@ -1379,7 +1380,7 @@ void func_8008F5A4(Player* player, s8 arg1) {
         func_8006B8B4(player, arg1);
         player->unk_044 &= ~0x8000;
     }
-    
+
     player->unk_206 = 0;
     player->slopeAccel = 0;
     player->effects &= ~0x10000;
@@ -1452,7 +1453,7 @@ void apply_boo_effect(Player* arg0, s8 arg1) {
     tmp = ((s32) gCourseTimer) - D_8018D950[arg1];
     if (tmp < 7) {
         arg0->unk_0C6 -= 2;
-  
+
         if (arg0->unk_0C6 < 0x61) {
             arg0->unk_0C6 = 0x60;
         }
@@ -1488,7 +1489,7 @@ void apply_boo_sound_effect(Player* player, s8 arg1) {
 
     if ((player->type & PLAYER_HUMAN) != 0) {
         player->unk_044 |= 0x200;
-      
+
         for (temp_v1 = 0; temp_v1 < 10; ++temp_v1) {
             player->unk_258[temp_v1].unk_01C = 0;
             player->unk_258[temp_v1].unk_01E = 0;
@@ -1548,7 +1549,7 @@ void func_8008FC64(Player* player, s8 arg1) {
         player->soundEffects &= 0xFBFFFFFF;
         player->soundEffects |= 0x08000000;
         player->type |= PLAYER_UNKNOWN_0x40;
-        
+
         func_8008FDA8(player, arg1);
         func_800569F4(arg1);
     }
@@ -1566,7 +1567,7 @@ void func_8008FCDC(Player* player, s8 arg1) {
 
 void func_8008FD4C(Player* player, UNUSED s8 arg1) {
     s16 temp_v0;
-    
+
     player->soundEffects |= 0x04000000;
     player->unk_044 |= 0x200;
 
@@ -1589,7 +1590,7 @@ void func_8008FDA8(Player* player, UNUSED s8 arg1) {
 
 void func_8008FDF4(Player* player, UNUSED s8 arg1) {
     clean_effect(player, arg1);
-    
+
     player->effects &= ~0x10;
     player->kartHopJerk =  D_800E37F0[player->characterId];
     player->kartHopAcceleration = 0.0f;
@@ -1648,9 +1649,9 @@ void func_8008FF08(Player *player, s8 playerId) {
     case COURSE_FRAPPE_SNOWLAND:
         waypoint = gNearestWaypointByPlayerId[playerId];
 #ifdef VERSION_EU
-        if (((waypoint >= 0xF0) && (waypoint < 0x11E)) || 
+        if (((waypoint >= 0xF0) && (waypoint < 0x11E)) ||
             ((gCopyNearestWaypointByPlayerId[playerId] >= 0xF0) && (gCopyNearestWaypointByPlayerId[playerId] < 0x11E)))
-#else  
+#else
         if ((waypoint >= 0xF0) && (waypoint < 0x105))
 #endif
         {
@@ -1790,7 +1791,7 @@ void func_80090778(Player* player) {
 
     clean_effect(player, playerIndex);
     func_8008F86C(player, playerIndex);
- 
+
     player->unk_DB4.unk0 = 0;
     player->unk_0C2 = 0;
     player->unk_DB4.unk8 = 0.0f;
@@ -1839,13 +1840,13 @@ void func_80090868(Player* player) {
 }
 
 void func_80090970(Player *player, s8 playerId, s8 arg2) {
-    s32 stackPadding0;
-    s32 stackPadding1;
+    UNUSED s32 stackPadding0;
+    UNUSED s32 stackPadding1;
     Vec3f sp44;
     Vec3f sp38;
     TrackWaypoint *waypoint;
-    s32 stackPadding2;
-    s32 stackPadding3;
+    UNUSED s32 stackPadding2;
+    UNUSED s32 stackPadding3;
 
     player->unk_0C2 = 0x000C;
     player->unk_078 = 0;
@@ -2008,7 +2009,7 @@ void func_80090970(Player *player, s8 playerId, s8 arg2) {
 bool prevent_item_use(Player *player) {
     s32 phi_v0 = 0;
     if ((((((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) || ((player->type & PLAYER_UNKNOWN_0x40) != 0)) || ((player->type & PLAYER_CINEMATIC_MODE) != 0)) || ((player->type & PLAYER_EXISTS) == 0)) {
-        return TRUE;
+        return true;
     }
 
     switch (player->currentItemCopy) {
@@ -2017,7 +2018,7 @@ bool prevent_item_use(Player *player) {
     case ITEM_TRIPLE_MUSHROOM:
     case ITEM_SUPER_MUSHROOM:
         if ((player->effects & 8) != 0) {
-            return TRUE;
+            return true;
         }
         phi_v0 = EFFECT_BLACKLIST_USE_ITEM;
         goto prevent_item_use_label;
@@ -2028,9 +2029,9 @@ bool prevent_item_use(Player *player) {
 prevent_item_use_label:
     default:
         if ((player->effects & phi_v0) != 0) {
-            return TRUE;
+            return true;
         }
-        return FALSE;
+        return false;
     }
 }
 
@@ -2077,7 +2078,7 @@ void func_800911B4(Player* player, s8 arg1) {
 
 void func_80091298(Player *player, s8 arg1) {
     s16 var_v1;
-    s32 stackPadding1;
+    UNUSED s32 stackPadding1;
     Vec3f spC = { 27.167f, 25.167f, 23.167f };
 
     player->unk_044 |= 0x2000;

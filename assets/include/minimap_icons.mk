@@ -17,13 +17,14 @@ MINIMAP_ICONS_EXPORT_SENTINEL := $(MINIMAP_ICONS_DIR)/.export
 $(BUILD_DIR)/src/data/common_textures.o: $(MINIMAP_ICONS_PNG:%.png=%.inc.c)
 
 $(MINIMAP_ICONS_PNG:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(MINIMAP_ICONS_PNG): $(MINIMAP_ICONS_EXPORT_SENTINEL) ;
 
 $(MINIMAP_ICONS_EXPORT_SENTINEL): $(ASSET_DIR)/minimap_icons.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_minimap_icons
 distclean_minimap_icons:

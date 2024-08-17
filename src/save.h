@@ -1,9 +1,8 @@
 #ifndef SAVE_H
 #define SAVE_H
 
-#include "PR/os.h"
-#include "common_structs.h"
-#include <types.h>
+#include <PR/os.h>
+#include <common_structs.h>
 
 /* define symbols */
 

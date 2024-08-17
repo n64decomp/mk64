@@ -34,7 +34,7 @@ extern u32 fill2;
 extern struct NoteSubEu gZeroNoteSub;
 extern struct NoteSubEu gDefaultNoteSub;
 extern u16 gHeadsetPanQuantization[0x10];
-extern s32 gUnknownData_800F6290[32];
+extern s16 gUnknownData_800F6290[];
 extern f32 gHeadsetPanVolume[128];
 extern f32 gStereoPanVolume[128];
 extern f32 gDefaultPanVolume[128];
@@ -56,8 +56,8 @@ extern s16 gAiBufferLengths[NUMAIBUFFERS]; // osAiSetNextBuffer nbytes
 extern u16 D_803B7192; // unconfirmed
 extern u32 gAudioRandom;
 extern s32 gAudioErrorFlags;
-extern u32 D_803B71A0[4]; // unconfirmed
-extern u8 D_803B71B0[4]; // unconfirmed
+extern u32 D_803B71A0[]; // unconfirmed
+extern u8 gAudioHeap[]; // unconfirmed
 
 extern struct ReverbSettingsEU sReverbSettings[];
 extern struct AudioSessionSettingsEU gAudioSessionPresets[];

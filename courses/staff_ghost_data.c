@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include <macros.h>
-#include "types.h"
-#include "common_structs.h"
+#include <common_structs.h>
 
 /*
  * This file is required for data alignment

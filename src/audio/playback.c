@@ -28,26 +28,26 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, u8 pan, u8 reverbV
 
         sub->headsetPanLeft = gHeadsetPanQuantization[smallPanIndex];
         sub->headsetPanRight = gHeadsetPanQuantization[ARRAY_COUNT(gHeadsetPanQuantization) - 1 - smallPanIndex];
-        sub->stereoStrongRight = FALSE;
-        sub->stereoStrongLeft = FALSE;
-        sub->usesHeadsetPanEffects = TRUE;
+        sub->stereoStrongRight = false;
+        sub->stereoStrongLeft = false;
+        sub->usesHeadsetPanEffects = true;
 
         volLeft = gHeadsetPanVolume[pan];
         volRight = gHeadsetPanVolume[127 - pan];
     } else if (sub->stereoHeadsetEffects && gAudioLibSoundMode == SOUND_MODE_STEREO) {
-        strongRight = FALSE;
-        strongLeft = FALSE;
+        strongRight = false;
+        strongLeft = false;
         sub->headsetPanRight = 0;
         sub->headsetPanLeft = 0;
 
-        sub->usesHeadsetPanEffects = FALSE;
+        sub->usesHeadsetPanEffects = false;
 
         volLeft = gStereoPanVolume[pan];
         volRight = gStereoPanVolume[127 - pan];
         if (pan < 0x20) {
-            strongLeft = TRUE;
+            strongLeft = true;
         } else if (pan > 0x60) {
-            strongRight = TRUE;
+            strongRight = true;
         }
 
         sub->stereoStrongRight = strongRight;
@@ -76,14 +76,14 @@ void note_set_vel_pan_reverb(struct Note *note, f32 velocity, u8 pan, u8 reverbV
     //! @bug for the change to UQ0.7, the if statement should also have been changed accordingly
     if (sub->reverbVol != reverbVol) {
         sub->reverbVol = reverbVol;
-        sub->envMixerNeedsInit = TRUE;
+        sub->envMixerNeedsInit = true;
         return;
     }
 
     if (sub->needsInit) {
-        sub->envMixerNeedsInit = TRUE;
+        sub->envMixerNeedsInit = true;
     } else {
-        sub->envMixerNeedsInit = FALSE;
+        sub->envMixerNeedsInit = false;
     }
 }
 
@@ -130,7 +130,7 @@ struct AudioBankSound *instrument_get_audio_bank_sound(struct Instrument *instru
 struct Instrument *get_instrument_inner(s32 bankId, s32 instId) {
     struct Instrument *inst;
 
-    if (IS_BANK_LOAD_COMPLETE(bankId) == FALSE) {
+    if (IS_BANK_LOAD_COMPLETE(bankId) == false) {
         stubbed_printf("Audio: voiceman: No bank error %d\n", bankId);
         gAudioErrorFlags = bankId + 0x10000000;
         return NULL;
@@ -155,7 +155,7 @@ struct Instrument *get_instrument_inner(s32 bankId, s32 instId) {
 struct Drum *get_drum(s32 bankId, s32 drumId) {
     struct Drum *drum;
 
-    if (IS_BANK_LOAD_COMPLETE(bankId) == FALSE) {
+    if (IS_BANK_LOAD_COMPLETE(bankId) == false) {
         stubbed_printf("Audio: voiceman: No bank error %d\n", bankId);
         gAudioErrorFlags = bankId + 0x10000000;
         return NULL;
@@ -196,16 +196,16 @@ void note_init(struct Note *note) {
 }
 
 void note_disable(struct Note *note) {
-    if (note->noteSubEu.needsInit == TRUE) {
-        note->noteSubEu.needsInit = FALSE;
+    if (note->noteSubEu.needsInit == true) {
+        note->noteSubEu.needsInit = false;
     } else {
         note_set_vel_pan_reverb(note, 0, 0x40, 0);
     }
     note->priority = NOTE_PRIORITY_DISABLED;
     note->parentLayer = NO_LAYER;
     note->prevParentLayer = NO_LAYER;
-    note->noteSubEu.enabled = FALSE;
-    note->noteSubEu.finished = FALSE;
+    note->noteSubEu.enabled = false;
+    note->noteSubEu.finished = false;
 }
 
 void process_notes(void) {
@@ -625,7 +625,7 @@ void note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLaye
     note->prevParentLayer = NO_LAYER;
     note->parentLayer = seqLayer;
     note->priority = seqLayer->seqChannel->notePriority;
-    seqLayer->notePropertiesNeedInit = TRUE;
+    seqLayer->notePropertiesNeedInit = true;
     seqLayer->status = SOUND_LOAD_STATUS_DISCARDABLE; // "loaded"
     seqLayer->note = note;
     seqLayer->seqChannel->noteUnused = note;
@@ -639,9 +639,9 @@ void note_init_for_layer(struct Note *note, struct SequenceChannelLayer *seqLaye
     sub->sound.audioBankSound = seqLayer->sound;
 
     if (instId >= 0x80) {
-        sub->isSyntheticWave = TRUE;
+        sub->isSyntheticWave = true;
     } else {
-        sub->isSyntheticWave = FALSE;
+        sub->isSyntheticWave = false;
     }
 
     if (sub->isSyntheticWave) {
@@ -693,7 +693,7 @@ struct Note *alloc_note_from_active(struct NotePool *pool, struct SequenceChanne
         func_800BD8F4(aNote, seqLayer);
         audio_list_push_back(&pool->releasing, &aNote->listItem);
     }
-    
+
     return aNote;
 }
 
@@ -781,7 +781,7 @@ void note_init_all(void) {
         note->adsrVolScale = 0;
         note->adsr.state = ADSR_STATE_DISABLED;
         note->adsr.action = 0;
-        note->vibratoState.active = FALSE;
+        note->vibratoState.active = false;
         note->portamento.cur = 0.0f;
         note->portamento.speed = 0.0f;
         // This only works if NoteSynthesisBuffers are size 0xA0. See internal.h

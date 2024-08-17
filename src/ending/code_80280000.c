@@ -3,18 +3,17 @@
 #include <defines.h>
 #include <debug.h>
 #include <PR/gu.h>
+#include <mk64.h>
 
 #include <main.h>
 #include <segments.h>
 #include <code_800029B0.h>
-#include <types.h>
 #include "camera.h"
 #include "memory.h"
 #include "math_util.h"
 #include "code_80280000.h"
 #include "code_80281780.h"
 #include "skybox_and_splitscreen.h"
-#include <config.h>
 #include "code_80091750.h"
 #include "code_8006E9C0.h"
 #include "code_800029B0.h"
@@ -51,7 +50,7 @@ void func_80280038(void) {
     func_802A53A4();
     init_rdp();
     func_80057FC4(0);
-    
+
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
     guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -84,7 +83,7 @@ void func_80280268(s32 arg0) {
 
 void credits_loop(void) {
     Camera *camera = &cameras[0];
-	
+
     f32 temp_f12;
     f32 temp;
     f32 temp_f14;
@@ -141,7 +140,7 @@ void load_credits(void) {
     load_course(gCurrentCourseId);
     D_8015F730 = gNextFreeMemoryAddress;
     set_segment_base_addr(0xB, (void *) decompress_segments((u8 *) CEREMONY_DATA_ROM_START, (u8 *) CEREMONY_DATA_ROM_END));
-    
+
     gCourseMinX = -0x15A1;
     gCourseMinY = -0x15A1;
     gCourseMinZ = -0x15A1;
@@ -152,10 +151,10 @@ void load_credits(void) {
     D_8015F59C = 0;
     D_8015F5A0 = 0;
     D_8015F58C = 0;
-    D_8015F588 = 0;
+    gCollisionMeshCount = 0;
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
-    gSurfaceMap = (mk64_surface_map_ram *) gNextFreeMemoryAddress;
+    gCollisionMesh = (CollisionTriangle *) gNextFreeMemoryAddress;
     camera->pos[0] = 1400.0f;
     camera->pos[1] = 300.0f;
     camera->pos[2] = 1400.0f;

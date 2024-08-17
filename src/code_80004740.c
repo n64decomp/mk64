@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include <macros.h>
-#include <types.h>
 #include <mk64.h>
 #include "math_util.h"
 #include "code_80004740.h"
@@ -92,7 +91,7 @@ void func_80004A1C(animation_type_1 *arg0, s16 *arg1, animation_type_3_triplet a
         }
         sp8C[someIndex] = arg1[arg2[someIndex].some_offset + some_offset];
     }
-    
+
     mtxf_translate_rotate2(sp4C, sp94, sp8C);
     func_80004740(&gGfxPool->mtxHud[gMatrixHudCount], sp4C);
     D_80162D7A += 1;
@@ -173,6 +172,6 @@ s16 func_80004DFC(animation_type_1 *arg0, animation_type_2 **arg1, s16 arg2, s16
 s16 func_80004EAC(void *addr, s16 offset) {
     uintptr_t *item = segmented_to_virtual(addr);
     struct stru_80004EAC *temp = (struct stru_80004EAC *) segmented_to_virtual((void *) item[offset]);
-    
+
     return temp->unk8 - 1;
 }

@@ -1,5 +1,5 @@
-#include "types.h"
-#include "courses/course_macro.h"
+#include <mk64.h>
+#include <common_structs.h>
 
 CourseVtx d_course_skyscraper_vertex[] = {
     {{  -54,     485,     320}, { -4060,     0}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 0), 0x00}},

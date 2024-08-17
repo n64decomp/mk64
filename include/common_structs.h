@@ -1,7 +1,7 @@
 #ifndef _COMMON_STRUCTS_H_
 #define _COMMON_STRUCTS_H_
 
-#include "ultra64.h"
+#include <ultra64.h>
 
 typedef f32 Vec3f[3];
 typedef f32 Vec4f[4];
@@ -21,82 +21,6 @@ typedef struct
 	f32 x, y, z;
 } Vec3fs;
 
-#define COURSE_NULL 0xFF
-
-typedef enum {
-    /* 0x00 */ COURSE_MARIO_RACEWAY = 0,
-    /* 0x01 */ COURSE_CHOCO_MOUNTAIN,
-    /* 0x02 */ COURSE_BOWSER_CASTLE,
-    /* 0x03 */ COURSE_BANSHEE_BOARDWALK,
-    /* 0x04 */ COURSE_YOSHI_VALLEY,
-    /* 0x05 */ COURSE_FRAPPE_SNOWLAND,
-    /* 0x06 */ COURSE_KOOPA_BEACH,
-    /* 0x07 */ COURSE_ROYAL_RACEWAY,
-    /* 0x08 */ COURSE_LUIGI_RACEWAY,
-    /* 0x09 */ COURSE_MOO_MOO_FARM,
-    /* 0x0A */ COURSE_TOADS_TURNPIKE,
-    /* 0x0B */ COURSE_KALAMARI_DESERT,
-    /* 0x0C */ COURSE_SHERBET_LAND,
-    /* 0x0D */ COURSE_RAINBOW_ROAD,
-    /* 0x0E */ COURSE_WARIO_STADIUM,
-    /* 0x0F */ COURSE_BLOCK_FORT,
-    /* 0x10 */ COURSE_SKYSCRAPER,
-    /* 0x11 */ COURSE_DOUBLE_DECK,
-    /* 0x12 */ COURSE_DK_JUNGLE,
-    /* 0x13 */ COURSE_BIG_DONUT,
-    /* 0x14 */ COURSE_AWARD_CEREMONY,
-    /* 0x15 */ NUM_COURSES
-} COURSES;
-
-typedef enum {
-    /* 0x00 */ TIME_TRIAL_DATA_LUIGI_RACEWAY,
-    /* 0x01 */ TIME_TRIAL_DATA_MOO_MOO_FARM,
-    /* 0x02 */ TIME_TRIAL_DATA_KOOPA_BEACH,
-    /* 0x03 */ TIME_TRIAL_DATA_KALAMARI_DESERT,
-    /* 0x04 */ TIME_TRIAL_DATA_TOADS_TURNPIKE,
-    /* 0x05 */ TIME_TRIAL_DATA_FRAPPE_SNOWLAND,
-    /* 0x06 */ TIME_TRIAL_DATA_CHOCO_MOUNTAIN,
-    /* 0x07 */ TIME_TRIAL_DATA_MARIO_RACEWAY,
-    /* 0x08 */ TIME_TRIAL_DATA_WARIO_STADIUM,
-    /* 0x09 */ TIME_TRIAL_DATA_SHERBET_LAND,
-    /* 0x0A */ TIME_TRIAL_DATA_ROYAL_RACEWAY,
-    /* 0x0B */ TIME_TRIAL_DATA_BOWSER_CASTLE,
-    /* 0x0C */ TIME_TRIAL_DATA_DK_JUNGLE,
-    /* 0x0D */ TIME_TRIAL_DATA_YOSHI_VALLEY,
-    /* 0x0E */ TIME_TRIAL_DATA_BANSHEE_BOARDWALK,
-    /* 0x0F */ TIME_TRIAL_DATA_RAINBOW_ROAD,
-    /* 0x10 */ NUM_TIME_TRIAL_DATA
-} TIME_TRIAL_DATA_INDEX;
-
-/**
- * @brief The different types of surface in the game.
-*/
-enum SURFACE_TYPE {
-    /* -0x1 */ SURFACE_DEFAULT = -1,
-    /* 0x00 */ AIRBORNE,
-    /* 0x01 */ ASPHALT, // Luigi's Raceway, Toad's Turnpike, Koopa Troop beach shortcut tunnel, Mario Raceway, Royal Raceway, Rainbow Road, Block Fort, Double Deck, Skyscraper
-    /* 0x02 */ DIRT, // Luigi's Raceway, Moo Moo Farm, Kalimiari Desert on course, Choco Mountain, Wario Stadium, DK Jungle on course, Yoshi Valley
-    /* 0x03 */ SAND, // Koopa Troopa Beach light color, Royal Raceway
-    /* 0x04 */ STONE, // Royal Raceway castle entrance, Bowser's Castle
-    /* 0x05 */ SNOW, // Frappe Snowland on course, Sherber Land tunnel
-    /* 0x06 */ BRIDGE, // Royal Raceway castle bridges (even the wooden one), Banshee's Boardwalk, Big Donut
-    /* 0x07 */ SAND_OFFROAD, // Mario Raceway
-    /* 0x08 */ GRASS, // Luigi's Raceway, Mario Raceway, Royal Raceway, Bowser's Castle, DK Jungle, Yoshi Valley
-    /* 0x09 */ ICE, // Sherbert Land
-    /* 0x0A */ WET_SAND, // Koop Troopa Beach dark color
-    /* 0x0B */ SNOW_OFFROAD, // Frappe Snowland off course
-    /* 0x0C */ CLIFF, // Koopa Troopa Beach, Choco Mountain
-    /* 0x0D */ DIRT_OFFROAD, // Kalimari Desert off course
-    /* 0x0E */ TRAIN_TRACK, // Kalimari Desert
-    /* 0x0F */ CAVE, // DK Jungle cave
-    /* 0x10 */ ROPE_BRIDGE, // Bowser's Castle bridge 2, DK Jungle bridge
-    /* 0x11 */ WOOD_BRIDGE, // Frappe Snowland bridge, Bowser's Castle bridge 1,3, Yoshi Valley bridge 2
-    /* 0xFC */ BOOST_RAMP_WOOD = 0xFC, // DK Jungle
-    /* 0xFD */ OUT_OF_BOUNDS, // DK Jungle river island
-    /* 0xFE */ BOOST_RAMP_ASPHALT, // Royal Raceway
-    /* 0xFF */ RAMP // Koopa Troopa beach
-};
-
 // This was added as a silly idea:
 // In the data to use "A, B, Z, R" instead of hex numbers.
 typedef enum {
@@ -105,6 +29,103 @@ typedef enum {
     Z = 0x20,
     R = 0x10
 } GhostController;
+
+
+/***  types.h  ***/
+
+typedef struct {
+    /* 0x0 */ s16 waypointStart;
+    /* 0x2 */ s16 waypointEnd;
+    /* 0x4 */ s32 type;
+} KartAIBehaviour; // size = 0x8
+
+enum SpTaskState {
+    SPTASK_STATE_NOT_STARTED,
+    SPTASK_STATE_RUNNING,
+    SPTASK_STATE_INTERRUPTED,
+    SPTASK_STATE_FINISHED,
+    SPTASK_STATE_FINISHED_DP
+};
+
+struct SPTask
+{
+    /*0x00*/ OSTask task;
+    /*0x40*/ OSMesgQueue *msgqueue;
+    /*0x44*/ OSMesg msg;
+    /*0x48*/ enum SpTaskState state;
+}; // size = 0x4C, align = 0x8
+
+struct VblankHandler
+{
+    OSMesgQueue *queue;
+    OSMesg msg;
+};
+
+struct D_80150158 {
+    s16 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+};
+
+struct Controller {
+    s16 rawStickX;
+    s16 rawStickY;
+    u16 button;          // HeldButton
+    u16 buttonPressed;   // OnTriggered
+    u16 buttonDepressed; // OffTriggered
+    u16 stickDirection;
+    u16 stickPressed;    // OffTriggered
+    u16 stickDepressed;  // OnTriggered
+};
+
+// Camera path struct? Or something like that. For GP race won scene?
+struct UnkStruct_80287500 {
+    Vec3f unk0; // xyz coordinates?
+    f32 unkC;
+    f32 unk10;
+    f32 unk14; // rotation?
+    s32 unk18;
+    s32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    s32 unk38;
+};
+
+struct UnkStruct_800DDB40 {
+    u32 unk0;
+    u32 unk4;
+    u32 unk8;
+    u32 unkC;
+    u32 unk10;
+    u32 unk14;
+    u32 unk18;
+    u32 unk1C;
+    u32 unk20;
+    u16 unk24;
+    u16 unk26;
+};
+
+struct UnkStruct_802B53C8 {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+};
+// end math util structs
+
+struct UnkStruct_800DDB68 {
+    s32 *D_800ED600; s32 *D_800ED608; s32 *D_800ED610; s32 *D_800ED618;
+    s32 *D_800ED620; s32 *D_800ED628; s32 *D_800ED630; s32 *D_800ED638;
+};
+/*** Types.h end ***/
+
+
+
 
 typedef struct {
     u8 button;
@@ -118,11 +139,11 @@ typedef struct {
     /* 0x00 */ u16 unk30;
     /* 0x02 */ u16 unk32;
     /* 0x04 */ u16 unk34;
-    /* 0x06 */ u16 unk36;
-    /* 0x08 */ u16 unk38;
+    /* 0x06 */ u16 meshIndexYX;
+    /* 0x08 */ u16 meshIndexZY;
     // This may be an index to the tilemap?
-    /* 0x0A */ u16 unk3A;
-    /* 0x0C */ Vec3f unk3C;
+    /* 0x0A */ u16 meshIndexZX;
+    /* 0x0C */ Vec3f surfaceDistance; // Appears to be distance from actor to surface for zx, yx, and zy planes.
     /* 0x18 */ Vec3f unk48;
     /* 0x24 */ Vec3f unk54;
     /* 0x30 */ Vec3f orientationVector;
@@ -164,7 +185,6 @@ typedef struct {
     s16 ob[3];    /* x, y, z */
     s16 tc[2];    /* texture coord */
     s8  ca[4];    /* color & alpha */
-
 } CourseVtx;
 
 /*
@@ -182,53 +202,40 @@ typedef struct {
         //bit 4: 1 = out of bounds
         //bit 3: 1 = player tumbles upon contact (may fall right through)
     /* 0x02 */ u16 surfaceType;
-    /* 0x04 */ s16 vtx31;
-               s16 vtx32;
-               s16 vtx33; //X, Y, Z of poly's third vertex
-               s16 vtx21;
-               s16 vtx22;
-    /* 0x0A */ s16 vtx23; //X, Y, Z of poly's second vertex
-    /* 0x10 */ Vtx *vtxPoly1; //pointer to the 3 vertices of this poly
-               Vtx *vtxPoly2;
-               Vtx *vtxPoly3;
-        //unsure why this exists along with a copy of two of the vertices.
-        //both are involved in hit detection.
-    /* 0x1C */ f32 height;
-        //normally 0; read at 0x802AB1A4. this value is added to the height Lakitu
-        //drops you at. changing it seems to make the surface intangible.
-    /* 0x20 */ f32 gravity;
-        //normally 1. The height Lakitu drops you off at is divided by this value
-        //(before adding the value at 0x1C), although if set to zero, he just tries
-        //to drop you at about the height of the finish line banner. Changing it
-        //has various unusual effects, making the polygon intangible or
-        //significantly reducing the gravity above it, probably depending on its Y
-        //position.
-    /* 0x24 */ f32 rotation; //normally about -0.001. no idea what this actually is.
-    /* 0x28 */ f32 height2; //changes Y position of all vertices (but not graphics or
-        //Lakitu drop position). Normally set to (track_height * -1) + about 6.
-} mk64_surface_map_ram; // size = 0x2C
+
+        // For AABB bounding-box style collision. Box style collision is cheaper than checking each vtx.
+    /* 0x04 */ s16 minX; // Minimum x coordinate
+               s16 minY; // Minimum y coordinate
+               s16 minZ; // Minimum z coordinate
+               s16 maxX; // Maximum x coordinate
+               s16 maxY; // Maximum y coordinate
+    /* 0x0A */ s16 maxZ; // Maximum z coordinate
+    /* 0x10 */ Vtx *vtx1; //pointer to the 3 vertices of this poly
+               Vtx *vtx2;
+               Vtx *vtx3;
+        // Face normal. Should really be Vec3f normal
+    /* 0x1C */ f32 normalX;
+    /* 0x20 */ f32 normalY;
+    /* 0x24 */ f32 normalZ;
+    /* 0x28 */ f32 distance;
+} CollisionTriangle; // size = 0x2C
 
 typedef struct {
-    /* 0x00 */ Vec3f cornerPos;
-    // Type of surface the corner is above
-    /* 0x0C */ u8  surfaceType;
-    // Close to being a copy of the top byte of the surface_map "flag" member
+    /* 0x00 */ Vec3f pos;
+    /* 0x0C */ u8  surfaceType; // Surface type that the tyre is touching.
     /* 0x0D */ u8  surfaceFlags;
-    // Don't know if "tile" is right the right term
-    // gSurfaceMap is a pointer to an array of "tile" structs. This is an index to that array
-    /* 0x0E */ u16 surfaceMapIndex;
-    // cornerPos places the corner "in the air" as it were, this member indicates the Y position of the corner's "on the ground" sibling
-    // On flat ground this value should be cornerY - gKartBoundingBoxTable[characterId]
-    /* 0x10 */ f32 cornerGroundY;
+    /* 0x0E */ u16 collisionMeshIndex; // Index into gCollisionMesh
+    // Height of tyre attached to ground. When flying it floats with the kart.
+    /* 0x10 */ f32 baseHeight;
     // Something lighting related. 1 when in a shaded region, 2 when in a tree's shadow
     // 3 when getting crushed by a whomp, but curiously only the front left tyre will ever have this value
     /* 0x14 */ s32 unk_14;
-} KartBoundingBoxCorner; // size = 0x18
+} KartTyre; // size = 0x18
 
-#define FRONT_LEFT_TYRE  0
-#define FRONT_RIGHT_TYRE 1
-#define BACK_LEFT_TYRE   2
-#define BACK_RIGHT_TYRE  3
+#define FRONT_LEFT  0
+#define FRONT_RIGHT 1
+#define BACK_LEFT   2
+#define BACK_RIGHT  3
 
 struct UnkPlayerInner {
     /* 0xDB4 */ s16 unk0;
@@ -322,10 +329,10 @@ typedef struct {
     /* 0x0108 */ f32 unk_108;
     /* 0x010C */ s16 unk_10C;
     /* 0x010E */ char unk_10E[0x2];
-    /* 0x0110 */ Collision unk_110;
+    /* 0x0110 */ Collision collision;
     /* 0x0150 */ Mat3 unk_150;
     /* 0x0174 */ Mat3 orientationMatrix;
-    /* 0x0198 */ KartBoundingBoxCorner boundingBoxCorners[4];
+    /* 0x0198 */ KartTyre tyres[4];
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;
     /* 0x0200 */ u32 unk_200; // May be s32. but less casting required if u32

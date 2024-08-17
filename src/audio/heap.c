@@ -126,8 +126,8 @@ void discard_bank(s32 bankId) {
             if (note->priority >= NOTE_PRIORITY_MIN) {
                 // eu_stubbed_printf_3("Kill Voice %d (ID %d) %d\n", note->waveId, bankId, note->priority);
                 // eu_stubbed_printf_0("Warning: Running Sequence's data disappear!\n");
-                note->parentLayer->enabled = FALSE; // is 0x48, should be 0x44
-                note->parentLayer->finished = TRUE;
+                note->parentLayer->enabled = false; // is 0x48, should be 0x44
+                note->parentLayer->finished = true;
             }
             note_disable(note);
             audio_list_remove(&note->listItem);
@@ -194,8 +194,8 @@ void func_800B90E0(struct SoundAllocPool *pool) {
 
 // inspired by sound_init_main_pools in sm64
 void sound_init_main_pools(s32 arg0) {
-    sound_alloc_pool_init(&gAudioInitPool, &D_803B71B0, arg0);
-    sound_alloc_pool_init(&gAudioSessionPool, D_803B71B0 + arg0, gAudioHeapSize - arg0);
+    sound_alloc_pool_init(&gAudioInitPool, &gAudioHeap, arg0);
+    sound_alloc_pool_init(&gAudioSessionPool, gAudioHeap + arg0, gAudioHeapSize - arg0);
 }
 
 // inspired by session_pools_init in sm64
@@ -380,7 +380,7 @@ void *alloc_bank_or_seq(struct SoundMultiPool *arg0, s32 arg1, s32 size, s32 arg
         pool = &arg0->temporary.pool;
         if (tp->entries[tp->nextSide].id != (s8)-1) {
             table[tp->entries[tp->nextSide].id] = SOUND_LOAD_STATUS_NOT_LOADED;
-            if (isSound == TRUE) {
+            if (isSound == true) {
                 discard_bank(tp->entries[tp->nextSide].id);
             }
         }

@@ -144,7 +144,7 @@ void load_save_data(void) {
     for (i = 0; i < 16; i++) {
         func_800B4A9C(i);
     }
-    
+
     validate_save_data();
 
     gSoundMode = gSaveData.main.soundMode;
@@ -165,7 +165,7 @@ void func_800B4A9C(s32 course) {
             .unknownBytes[0] = 1;
     }
     sp24 = &gSaveData.allCourseTimeTrialRecords.cupRecords[course / 4].courseRecords[course % 4];
-    
+
     func_800B4FB0(course);
     if(sp24) {}
 
@@ -209,7 +209,7 @@ void validate_save_data(void) {
     Stuff *backup = &gSaveData.backup;
     if (main->checksum[1] != (compute_save_data_checksum_1()) || (main->checksum[2] != compute_save_data_checksum_2())) {
         reset_save_data_grand_prix_points_and_sound_mode();
-        
+
         if (validate_save_data_checksum_backup() == 0) {
             for (cup_index = 0; cup_index < 4; cup_index++) {
                 main->grandPrixPoints[cup_index] = backup->grandPrixPoints[cup_index];
@@ -385,7 +385,7 @@ void func_800B536C(s32 arg0) {
 
     if (arg0 >= 0) {
         points = &gSaveData.main.grandPrixPoints[gCCSelection];
-        
+
         tmp = func_800B54EC(gCupSelection, *points);
         tmp2 = 3 - arg0;
         if ((arg0 < 3) && (tmp < (3-arg0)))  {
@@ -411,7 +411,7 @@ void func_800B5404(s32 arg0, s32 arg1)
 
         if ((arg0 < 3) && (temp < (temp_a0 = 3 - arg0))) {
             *points = func_800B5508(temp2, *points, temp_a0);
-            
+
             write_save_data_grand_prix_points_and_sound_mode();
             update_save_data_backup();
         }
@@ -499,7 +499,7 @@ void func_800B559C(s32 arg0) {
 * odd. It calculates a checksum for 51 bytes in 17 byte chunks, but that doesn't line
 * up with anything in the save data cleanly. At that byte count it would get the 48 bytes
 * for the records plus 3 of the unknown bytes.
-* 
+*
 * But only unknown bytes 7 and 8 ever get set, so why the extra 3, and why in chunks of 17?
 **/
 s32 func_800B578C(s32 arg0) {
@@ -595,7 +595,7 @@ s32 check_for_controller_pak(s32 controller) {
     }
 
     osPfsIsPlug(&gSIEventMesgQueue, &controllerBitpattern);
-	
+
     if ((controllerBitpattern & (1 << controller)) != 0) {
         return PAK;
     }
@@ -618,8 +618,8 @@ s32 controller_pak_1_status(void) {
                 gControllerPak1State = BAD;
                 break;
         }
-    } 
-    
+    }
+
     if (!gControllerPak1State) {
         s32 errorCode;
         if (check_for_controller_pak(CONTROLLER_1) == NO_PAK) {
@@ -639,7 +639,7 @@ s32 controller_pak_1_status(void) {
                     return PFS_PAK_BAD_READ;
             }
         }
-   
+
         gControllerPak1State = OK;
         if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8 *) gGameName, (u8 *) gExtCode, &gControllerPak1FileNote) == PFS_NO_ERROR) {
             return PFS_NO_ERROR;
@@ -663,13 +663,13 @@ s32 controller_pak_1_status(void) {
 }
 
 // gives status info about controller pak insterted in controller 2
-s32 controller_pak_2_status(void) {   
+s32 controller_pak_2_status(void) {
     s32 stateBorrow = sControllerPak2State;
-    
+
     if (stateBorrow) {
         switch (osPfsFindFile(&gControllerPak2FileHandle, gCompanyCode, gGameCode, (u8 *) gGameName, (u8 *) gExtCode, &gControllerPak2FileNote)) {
         	case PFS_NO_ERROR:
-                return PFS_NO_ERROR;  
+                return PFS_NO_ERROR;
         	case PFS_ERR_INVALID:
                 return PFS_INVALID_DATA;
         	default:
@@ -683,7 +683,7 @@ s32 controller_pak_2_status(void) {
         if (check_for_controller_pak(CONTROLLER_2) == NO_PAK) {
             return PFS_NO_PAK_INSERTED;
         }
-            
+
         errorCode = osPfsInit(&gSIEventMesgQueue, &gControllerPak2FileHandle, CONTROLLER_2);
         if (errorCode) {
             switch (errorCode) {
@@ -699,7 +699,7 @@ s32 controller_pak_2_status(void) {
         }
 
         sControllerPak2State = OK;
-            
+
         switch (osPfsFindFile(&gControllerPak2FileHandle, gCompanyCode, gGameCode, (u8 *) gGameName, (u8 *) gExtCode, &gControllerPak2FileNote)) {
         case PFS_NO_ERROR:
             return PFS_NO_ERROR;
@@ -765,7 +765,7 @@ u8 func_800B60E8(s32 page) {
     s32 i;
     u32 checksum = 0;
     u8 *addr;
-    
+
     for (i = 0, addr = (u8*) &((u8*)D_800DC714)[page * 256]; i < 256; i++) {
         checksum += (*addr++ * (page + 1) + i);
     }
@@ -847,7 +847,7 @@ s32 func_800B63F0(s32 arg0) {
     func_800051C4();
     D_80162DD6 = 1;
     func_80005AE8(gPlayerThree);
-   
+
     phi_s3 = 0;
     if (((gCupSelection * 4) + gCupCourseSelection) != D_8018EE10[arg0].courseIndex) {
         phi_s3 = 2;
@@ -859,14 +859,14 @@ s32 func_800B63F0(s32 arg0) {
         } else {
             temp_s0 = 0;
             phi_s1 = (u8*) &D_8018EE10[arg0];
-            
+
             while (temp_s0 < 0x3C)
             {
                 if (phi_s1[7] != func_800B60E8(temp_s0)) {
                    phi_s3 = 1;
                    break;
                 }
-                
+
                 ++phi_s1;
                 ++temp_s0;
             }
@@ -925,7 +925,7 @@ s32 func_800B65F4(s32 arg0, s32 arg1) {
     }
     writeStatus = osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNote, 0U, (arg0 * 0x3C00) + 0x100, 0x00003C00, (u8 *) D_800DC714);
     if (writeStatus == 0) {
-        temp_s3 = &D_8018D9C0->arr[arg0];
+        temp_s3 = &((struct_8018EE10_entry*)D_8018D9C0)[arg0];
         for (i = 0; i < 0x3C; i++) {
             if (temp_s3->unk_07[i] != func_800B60E8(i)) {
                 temp_s3->ghostDataSaved = 0;
@@ -943,7 +943,7 @@ void func_800B6708(void) {
     s32 temp_s0;
 
     osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_READ, 0, 0x100 /*  2*sizeof(struct_8018EE10_entry) ? */, (u8*) &D_8018EE10);
- 
+
     for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
         if (D_8018EE10[temp_s0].checksum != func_800B6828(temp_s0)) {
             D_8018EE10[temp_s0].ghostDataSaved = 0;
@@ -954,7 +954,7 @@ void func_800B6708(void) {
 void func_800B6798(void) {
     s32 temp_s0;
     u8* tmp;
-    
+
     tmp = (u8*) D_8018D9C0;
 
     osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNote, PFS_READ, 0, 0x100 /*  2*sizeof(struct_8018EE10_entry) ? */, tmp);
@@ -986,7 +986,7 @@ u8 func_800B68F4(s32 arg0) {
     s32 i;
     checksum = 0;
     for (i = 0; i < 0x43; i++) {
-        u8 *addr = (u8 *) (&D_8018D9C0[arg0]);
+        u8 *addr = &((u8*)D_8018D9C0)[arg0];
         checksum += addr[i] * multiplier + i;
     }
     return checksum;
@@ -995,30 +995,20 @@ u8 func_800B68F4(s32 arg0) {
 GLOBAL_ASM("asm/non_matchings/save/func_800B68F4.s")
 #endif
 
-#ifdef NON_MATCHING
-// Stack nonsense. As it stands now there's too much on the stack, but everything else is fine
-// But if you try to reduce the stack you get bigger issues. No idea what's going on
 s32 func_800B69BC(s32 arg0) {
     s32 i;
-    s32 offset;
-    struct_8018EE10_entry *plz;
+    struct_8018EE10_entry *plz = &D_8018EE10[arg0];
 
-    offset = sizeof(struct_8018EE10_entry);
-    offset *= arg0;
-
-    plz = &D_8018EE10[arg0];
-    plz->ghostDataSaved = FALSE;
+    plz->ghostDataSaved = false;
     plz->courseIndex = 0;
     plz->characterId = 0;
-    for (i = 0; i < 60; i++) {
+    for (i = 0; i < sizeof(plz->unk_07); i++) {
         plz->unk_07[i] = i;
     }
     plz->checksum = func_800B6828(arg0);
-    return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_WRITE, offset, sizeof(struct_8018EE10_entry), (u8 *)plz);
+
+    return osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_WRITE, (s32) sizeof(struct_8018EE10_entry) * arg0, sizeof(struct_8018EE10_entry), (u8 *)plz);
 }
-#else
-GLOBAL_ASM("asm/non_matchings/save/func_800B69BC.s")
-#endif
 
 s32 func_800B6A68(void) {
     UNUSED s32 pad;

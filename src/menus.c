@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <defines.h>
 #include <common_structs.h>
+#include <mk64.h>
 
 #include "menus.h"
 #include "main.h"
@@ -232,14 +233,14 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
 
     if (!func_800B4520()) {
         sp38 = find_8018D9E0_entry_dupe(0xF0);
-        sp30 = D_8018D9C0;
+        sp30 = (struct_8018EE10_entry *) D_8018D9C0;
         switch (D_8018EDEC) {
         case 0x15:
         case 0x16:
         case 0x17:
         case 0x18:
         {
-            sp2C = FALSE;
+            sp2C = false;
             if ((btnAndStick & D_JPAD) && (D_8018EDEC < 0x18)) {
                 D_8018EDEC += 1;
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -247,7 +248,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                     sp38->unk24 += 4.0;
                 }
                 sp38->unk8 = 1;
-                sp2C = TRUE;
+                sp2C = true;
             }
             if ((btnAndStick & U_JPAD) && (D_8018EDEC >= 0x16)) {
                 D_8018EDEC -= 1;
@@ -255,7 +256,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 if (sp38->unk24 < 4.2) {
                     sp38->unk24 += 4.0;
                 }
-                sp2C = TRUE;
+                sp2C = true;
                 sp38->unk8 = -1;
             }
             if (sp2C && gSoundMode != sp38->cursor) {
@@ -1007,7 +1008,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
     u16 i;
     s32 sp28;
 
-    sp28 = TRUE;
+    sp28 = true;
     btnAndStick = controller->buttonPressed | controller->stickPressed;
 
     if (func_800B4520() == 0) {
@@ -1017,7 +1018,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
         switch (gDebugMenuSelection) {
         case DEBUG_MENU_DISABLED:
         {
-            sp28 = FALSE;
+            sp28 = false;
             if ((gMenuDelayTimer >= 0x2E) && (btnAndStick & (A_BUTTON | START_BUTTON))) {
                 func_8009E1C0();
                 func_800CA330(0x19);
@@ -1034,7 +1035,7 @@ void splash_menu_act(struct Controller *controller, u16 arg1) {
                 if (gEnableDebugMode) {
                     gEnableDebugMode = DEBUG_MODE;
                 } else {
-                    gEnableDebugMode = TRUE;
+                    gEnableDebugMode = true;
                 }
             }
             if (btnAndStick & D_JPAD) {
@@ -1397,20 +1398,20 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
             }
             // L800B3068
             if (btnAndStick & D_JPAD) {
-                sp24 = FALSE;
+                sp24 = false;
                 if (func_800B555C()) {
                     if (sp28 < D_800F2B60[gPlayerCount + 4][D_800E86AC[gPlayerCount - 1] + 1]) {
-                        sp24 = TRUE;
+                        sp24 = true;
                     }
                 } else {
                     // L800B30D4
                     if (sp28 < D_800F2B60[gPlayerCount][D_800E86AC[gPlayerCount - 1] + 1]) {
-                        sp24 = TRUE;
+                        sp24 = true;
                     }
                 }
                 // L800B3110
                 if (sp24) {
-                    D_800E86B0[gPlayerCount - 1][gPlayerCount] += 1;
+                    D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]]++;
                     func_800B44AC();
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
@@ -1499,22 +1500,24 @@ bool is_character_spot_free(s32 gridId) {
     s32 i;
     for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
         if (gridId == gCharacterGridSelections[i]) {
-            return FALSE;
+            return false;
         }
     }
-    return TRUE;
+    return true;
 }
 
 #ifdef NON_MATCHING
 // grid positions are from right to left, then top to bottom
 // nonmatching: the gCharacterGridSelections pointer is not promoted to $s0
 void player_select_menu_act(struct Controller *controller, u16 arg1) {
-    u16 btnAndStick; // sp36
+    s8 *bar;
     s8 selected;
     s8 i;
+    s8 saved_selection;
+    u16 btnAndStick;
 
     btnAndStick = (controller->buttonPressed) | (controller->stickPressed);
-    if (!gEnableDebugMode && btnAndStick & START_BUTTON) {
+    if (!gEnableDebugMode && btnAndStick & CONT_START) {
         btnAndStick |= A_BUTTON;
     }
 
@@ -1522,150 +1525,162 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
         switch (D_8018EDEE) {
         case 1:
         {
-            if (gCharacterGridSelections[arg1] == 0) {
+            saved_selection = gCharacterGridSelections[arg1];
+            if (saved_selection == 0) {
                 if (btnAndStick & B_BUTTON) {
                     func_8009E208();
-                    play_sound2(SOUND_MENU_GO_BACK);
+                    play_sound2(0x49008002);
                 }
                 return;
             }
             // L800B3630
             if (btnAndStick & B_BUTTON) {
                 if (D_8018EDE8[arg1]) {
-                    D_8018EDE8[arg1] = FALSE;
+                    D_8018EDE8[arg1] = false;
                     play_sound2(SOUND_MENU_GO_BACK);
                 } else {
                     func_8009E208();
-                    play_sound2(SOUND_MENU_GO_BACK);
+                    play_sound2(0x49008002);
                 }
             }
             // L800B3684
-            if ((btnAndStick & A_BUTTON) && !D_8018EDE8[arg1]) {
-                D_8018EDE8[arg1] = TRUE;
-                func_800C90F4(
-                    arg1,
-                    (((uintptr_t)D_800F2BAC[gCharacterGridSelections[arg1] - 1]) << 4) + 0x2900800EU
-                );
+            if ((btnAndStick & A_BUTTON) && (D_8018EDE8[arg1] == 0)) {
+                D_8018EDE8[arg1] = true;
+                i = D_800F2BAC[gCharacterGridSelections[arg1] - 1];
+                func_800C90F4(arg1, 0x2900800e + (i << 4));
             }
             // L800B36F4
-            selected = FALSE;
-            for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
-                if (gCharacterGridSelections[i] && D_8018EDE8[i]) {
-                    selected = TRUE;
+            selected = false;
+            for (i = 0; i < 4; i++) { // for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
+                if ((gCharacterGridSelections[i] != 0) && (D_8018EDE8[i] == 0)) { //(gCharacterGridSelections[i] && D_8018EDE8[i]) {
+                    selected = true;
                     break;
                 }
             }
             // L800B3738
+
             if (!selected) {
                 D_8018EDEE = 2;
                 func_800B44AC();
                 gMenuTimingCounter = 0;
             }
+
             // L800B3768
-            if (D_8018EDE8[arg1]) {
-                if ((btnAndStick & R_JPAD) && (btnAndStick & D_JPAD)) {
-                    if (gCharacterGridSelections[arg1] == 1 || gCharacterGridSelections[arg1] == 2 || gCharacterGridSelections[arg1] == 3) {
+            if (D_8018EDE8[arg1] == 0) {
+                if ((btnAndStick & CONT_RIGHT) && (btnAndStick & CONT_DOWN)) {
+                    if (saved_selection == 1 || saved_selection == 2 || saved_selection == 3) {
                         // L800B37B0
-                        if (is_character_spot_free(gCharacterGridSelections[arg1] + 5)) {
-                            gCharacterGridSelections[arg1] += 5;
-                            play_sound2(SOUND_MENU_CURSOR_MOVE);
+                        saved_selection += 5;
+                        if (is_character_spot_free(saved_selection)) {
+                            gCharacterGridSelections[arg1] = saved_selection;
+                            play_sound2(0x49008000);
                         }
                     }
                     return;
                 }
                 // L800B37E4
-                if ((btnAndStick & L_JPAD) && (btnAndStick & D_JPAD)) {
-                    if (gCharacterGridSelections[arg1] == 2 || gCharacterGridSelections[arg1] == 3 || gCharacterGridSelections[arg1] == 4) {
-                        if (is_character_spot_free(gCharacterGridSelections[arg1] + 3)) {
-                            gCharacterGridSelections[arg1] += 3;
-                            play_sound2(SOUND_MENU_CURSOR_MOVE);
+                if ((btnAndStick & CONT_LEFT) && (btnAndStick & CONT_DOWN)) {
+                    if (saved_selection == 2 || saved_selection == 3 || saved_selection == 4) {
+                        saved_selection += 3;
+                        if (is_character_spot_free(saved_selection)) {
+                            gCharacterGridSelections[arg1] = saved_selection;
+                            play_sound2(0x49008000);
                         }
                     }
                     return;
                 }
                 // L800B3844
-                if ((btnAndStick & R_JPAD) && (btnAndStick & U_JPAD)) {
-                    if (gCharacterGridSelections[arg1] == 5 || gCharacterGridSelections[arg1] == 6 || gCharacterGridSelections[arg1] == 7) {
-                        if (is_character_spot_free(gCharacterGridSelections[arg1] - 3)) {
-                            gCharacterGridSelections[arg1] -= 3;
-                            play_sound2(SOUND_MENU_CURSOR_MOVE);
+                if ((btnAndStick & CONT_RIGHT) && (btnAndStick & CONT_UP)) {
+                    if (saved_selection == 5 || saved_selection == 6 || saved_selection == 7) {
+                        saved_selection -= 3;
+                        if (is_character_spot_free(saved_selection)) {
+                            gCharacterGridSelections[arg1] = saved_selection;
+                            play_sound2(0x49008000);
                         }
                     }
                     return;
                 }
                 // L800B38A0
-                if ((btnAndStick & L_JPAD) && (btnAndStick & U_JPAD)) {
-                    if (gCharacterGridSelections[arg1] == 6 || gCharacterGridSelections[arg1] == 7 || gCharacterGridSelections[arg1] == 8) {
-                        if (is_character_spot_free(gCharacterGridSelections[arg1] - 5)) {
-                            gCharacterGridSelections[arg1] -= 5;
-                            play_sound2(SOUND_MENU_CURSOR_MOVE);
+                if ((btnAndStick & CONT_LEFT) && (btnAndStick & CONT_UP)) {
+                    if (saved_selection == 6 || saved_selection == 7 || saved_selection == 8) {
+                        saved_selection -= 5;
+                        if (is_character_spot_free(saved_selection)) {
+                            gCharacterGridSelections[arg1] = saved_selection;
+                            play_sound2(0x49008000);
                         }
                     }
                     return;
                 }
                 // L800B38FC
-                if (btnAndStick & R_JPAD) {
-                    if (gCharacterGridSelections[arg1] != 4 && gCharacterGridSelections[arg1] != 8) {
-                        do {
-                            // L800B391C
-                            if (is_character_spot_free(gCharacterGridSelections[arg1] + 1)) {
-                                gCharacterGridSelections[arg1] += 1;
-                                play_sound2(SOUND_MENU_CURSOR_MOVE);
-                                break;
-                            }
-                            gCharacterGridSelections[arg1] += 1;
-
-                        } while (gCharacterGridSelections[arg1] != 5 && gCharacterGridSelections[arg1] != 9 && gCharacterGridSelections[arg1] <= 10);
-                    }
+                if (btnAndStick & CONT_RIGHT) {
+                    if (saved_selection == 4 || saved_selection == 8) return;
+                    saved_selection += 1;
+                    do {
+                        // L800B391C
+                        if (is_character_spot_free(saved_selection)) {
+                            gCharacterGridSelections[arg1] = saved_selection;
+                            play_sound2(0x49008000); // play_sound2(0x49008000);
+                            break;
+                        }
+                        saved_selection += 1;
+                        if ((saved_selection == 5) || (saved_selection == 9)) return;
+                    } while (saved_selection < 10);
                     return;
                 }
                 // L800B3978
-                if (btnAndStick & L_JPAD) {
-                    if (gCharacterGridSelections[arg1] != 1 && gCharacterGridSelections[arg1] != 5) {
-                        do {
-                            if (is_character_spot_free(gCharacterGridSelections[arg1] - 1)) {
-                                gCharacterGridSelections[arg1] -= 1;
-                                play_sound2(SOUND_MENU_CURSOR_MOVE);
-                                break;
-                            }
-                            gCharacterGridSelections[arg1] -= 1;
-                        } while (gCharacterGridSelections[arg1] != 0 && gCharacterGridSelections[arg1] != 4 && gCharacterGridSelections[arg1] >= 0);
-                    }
+                if (btnAndStick & CONT_LEFT) {
+                    if (saved_selection == 1 || saved_selection == 5) return;
+                    saved_selection -= 1;
+                    do {
+                        if (is_character_spot_free(saved_selection)) {
+                            gCharacterGridSelections[arg1] = saved_selection;
+                            play_sound2(0x49008000);
+                            break;
+                        }
+                        saved_selection -= 1;
+                        if ((saved_selection == 0) || (saved_selection == 4)) return;
+                    } while (saved_selection >= 0);
                     return;
                 }
                 // L800B39F4
-                if ((btnAndStick & U_JPAD) && (gCharacterGridSelections[arg1] >= 5)) {
-                    gCharacterGridSelections[arg1] -= 4;
+                if ((btnAndStick & CONT_UP) && (saved_selection >= 5)) {
+                    saved_selection = saved_selection - 4;
                 }
-                if ((btnAndStick & D_JPAD) && (gCharacterGridSelections[arg1] < 5)) {
-                    gCharacterGridSelections[arg1] += 4;
+                if ((btnAndStick & CONT_DOWN) && (saved_selection < 5)) {
+                    saved_selection = saved_selection + 4;
                 }
                 // L800B3A30
-                if (is_character_spot_free(gCharacterGridSelections[arg1])) {
-                    play_sound2(SOUND_MENU_CURSOR_MOVE);
+                if (is_character_spot_free(saved_selection)) {
+                    gCharacterGridSelections[arg1] = saved_selection;
+                    play_sound2(0x49008000);
                 }
             }
             break;
         }
         case 2:
         case 3:
-        {
-            if (!arg1 && (++gMenuTimingCounter == 60 || gMenuSelection % 300 == 0)) {
-                // L800B3A94
-                play_sound2(SOUND_MENU_OK);
+            if (arg1 == 0) {
+                gMenuTimingCounter++;
+                if ((gMenuTimingCounter == 60) || ((gMenuTimingCounter % 300) == 0)) {
+                    // L800B3A94
+                    play_sound2(0x4900900F);
+                }
             }
             // L800B3AA4
             if (btnAndStick & B_BUTTON) {
                 D_8018EDEE = 1;
-                D_8018EDE8[arg1] = FALSE;
+                D_8018EDE8[arg1] = false;
                 play_sound2(SOUND_MENU_GO_BACK);
-            } else if (btnAndStick & A_BUTTON) {
+                break;
+            }
+            if (btnAndStick & A_BUTTON) {
                 func_8009E1C0();
-                play_sound2(SOUND_MENU_OK_CLICKED);
+                play_sound2(0x49008016);
                 func_8000F124();
             }
             break;
-        }
+        default:
+            break;
         }
         // L800B3B24
         if (gCharacterGridSelections[arg1] != 0) {
@@ -1905,7 +1920,7 @@ void func_800B3F74(s32 menuSelection) {
                     } else {
                         gCharacterGridSelections[i] = 0;
                     }
-                    D_8018EDE8[i] = FALSE;
+                    D_8018EDE8[i] = false;
                     gCharacterSelections[i] = i;
                 }
                 play_sound2(SOUND_MENU_SELECT_PLAYER);
@@ -1916,7 +1931,7 @@ void func_800B3F74(s32 menuSelection) {
                 gGamestateNext = 0;
                 func_800C8EAC(2);
                 for (i = 0; i < ARRAY_COUNT(D_8018EDE8); i++) {
-                    D_8018EDE8[i] = FALSE;
+                    D_8018EDE8[i] = false;
                 }
             }
             break;
@@ -1926,9 +1941,9 @@ void func_800B3F74(s32 menuSelection) {
             D_8018EDEE = 3;
             for (i = 0; i < ARRAY_COUNT(D_8018EDE8); i++) {
                 if (gPlayerCount > i) {
-                    D_8018EDE8[i] = TRUE;
+                    D_8018EDE8[i] = true;
                 } else {
-                    D_8018EDE8[i] = FALSE;
+                    D_8018EDE8[i] = false;
                 }
             }
             break;
@@ -1988,15 +2003,15 @@ void func_800B44BC(void) {
 // Likely checks that the user is actually in the menus and not racing.
 bool func_800B4520(void) {
 
-    if ((D_8018E7B0 == 2) || (D_8018E7B0 == 3) || (D_8018E7B0 == 4) || (D_8018E7B0 == 7)) {
-        return TRUE;
+    if ((D_8018E7AC[4] == 2) || (D_8018E7AC[4] == 3) || (D_8018E7AC[4] == 4) || (D_8018E7AC[4] == 7)) {
+        return true;
     }
-    return FALSE;
+    return false;
 }
 
 UNUSED void func_800B4560(s32 arg0, s32 arg1) {
     struct_8018EE10_entry *pak1 = D_8018EE10;
-    struct_8018EE10_entry *pak2 = D_8018D9C0;
+    struct_8018EE10_entry *pak2 = (struct_8018EE10_entry *) D_8018D9C0;
 
     rmonPrintf("ghost_kart=%d,", D_80162DE0);
     rmonPrintf("pak1_ghost_kart=%d,", (pak1 + arg0)->characterId);

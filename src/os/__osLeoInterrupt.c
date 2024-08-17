@@ -1,8 +1,8 @@
-#include "ultra64.h"
+#include <ultra64.h>
 #include "osint.h"
 #include "piint.h"
+#include "libultra_internal.h"
 
-extern OSThread *__osRunQueue;
 static void __osLeoResume(void);
 static void __osLeoAbnormalResume(void);
 extern u8 leoDiskStack[OS_PIM_STACKSIZE]; //technically should have a OS_LEO_STACKSIZE or something..

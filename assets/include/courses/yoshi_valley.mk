@@ -14,17 +14,19 @@ $(BUILD_DIR)/courses/yoshi_valley/course_data.o: $(YOSHI_VALLEY_HEDGEHOG_PALETTE
 $(BUILD_DIR)/courses/yoshi_valley/course_data.o: $(YOSHI_VALLEY_PNG:%.png=%.inc.c)
 
 $(YOSHI_VALLEY_HEDGEHOG_PNG:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(YOSHI_VALLEY_HEDGEHOG_PALETTE)
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s u8 -f ci8 -c rgba16 -p $(YOSHI_VALLEY_HEDGEHOG_PALETTE)
 
 $(YOSHI_VALLEY_PNG:%.png=%.inc.c) $(YOSHI_VALLEY_HEDGEHOG_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(YOSHI_VALLEY_HEDGEHOG_PALETTE) $(YOSHI_VALLEY_HEDGEHOG_PNG): $(YOSHI_VALLEY_EXPORT_SENTINEL) ;
 $(YOSHI_VALLEY_PNG): $(YOSHI_VALLEY_EXPORT_SENTINEL) ;
 
 $(YOSHI_VALLEY_EXPORT_SENTINEL): $(ASSET_DIR)/courses/yoshi_valley.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_yoshi_valley
 distclean_yoshi_valley:

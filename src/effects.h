@@ -1,7 +1,7 @@
 #ifndef EFFECTS_H
 #define EFFECTS_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 /* Function Prototypes */
 
@@ -111,7 +111,7 @@ void func_80090178(Player*, s8, Vec3f, Vec3f);
 void func_80090778(Player*);
 void func_80090868(Player*);
 void func_80090970(Player*, s8, s8);
-s32  prevent_item_use(Player*);
+bool  prevent_item_use(Player*);
 void func_800911B4(Player*, s8);
 void func_80091298(Player*, s8);
 

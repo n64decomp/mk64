@@ -7,10 +7,10 @@
 /**
  * @brief Renders the piranha plant actor.
  * Actor used in Mario Raceway and Royal Raceway.
- * 
- * @param arg0 
- * @param arg1 
- * @param arg2 
+ *
+ * @param arg0
+ * @param arg1
+ * @param arg2
  */
 void render_actor_piranha_plant(Camera *arg0, Mat4 arg1, struct PiranhaPlant *arg2) {
     UNUSED s32 pad;

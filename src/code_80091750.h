@@ -1,7 +1,7 @@
 #ifndef CODE_80091750_H
 #define CODE_80091750_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 #include "textures.h"
 #include "main.h"
 
@@ -116,7 +116,7 @@ void func_8009265C(void);
 void func_80092688(void);
 void func_80092C80(void);
 s32  char_to_glyph_index(char*);
-s32  func_80092DF8(s8*);
+s32  func_80092DF8(char*);
 s32  func_80092E1C(char*);
 s32  func_80092EE4(char*);
 s32  get_string_width(char*);
@@ -155,19 +155,18 @@ Gfx *draw_flash_select_case(Gfx*, s32, s32, s32, s32, s32);
 Gfx *draw_flash_select_case_slow(Gfx*, s32, s32, s32, s32);
 Gfx *draw_flash_select_case_fast(Gfx*, s32, s32, s32, s32);
 Gfx *func_800959F8(Gfx*, Vtx*);
-void func_80095AE0(Mtx*, f32, f32, f32, f32);
 Gfx *func_80095BD0(Gfx*, u8*, f32, f32, u32, u32, f32, f32);
-Gfx *func_80095E10(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, s32, s32, u32, u32);
-Gfx *func_800963F0(Gfx*,  s8, s32, s32, f32, f32, s32, s32, s32, s32, s32, s32, s32, u32, u32);
+Gfx *func_80095E10(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, s32, u8 *, u32, u32);
+Gfx *func_800963F0(Gfx*,  s8, s32, s32, f32, f32, s32, s32, s32, s32, s32, s32, u8 *, u32, u32);
 Gfx *func_80096CD8(Gfx*, s32, s32, u32, u32);
-Gfx *func_80097274(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, s32, s32, u32, u32, u32);
-Gfx *func_80097A14(Gfx*,  s8, s32, s32, s32, s32, s32, s32, s32, u32, u32);
+Gfx *func_80097274(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, u16 *argA, u32 argB, u32 argC, s32 argD);
+Gfx *func_80097A14(Gfx*,  s8, s32, s32, s32, s32, s32, s32, u8*, u32, u32);
 Gfx *func_80097AE4(Gfx*,  s8, s32, s32, u8*, s32);
-Gfx *func_80097E58(Gfx*,  s8, s32, s32, s32, s32, s32, s32, u8*, u32, s32, u32);
+Gfx *func_80097E58(Gfx *displayListHead, s8 fmt, u32 arg2, u32 arg3, u32 arg4, u32 arg5, s32 arg6, s32 arg7, u8 *someTexture, u32 arg9, u32 argA, s32 width);
 Gfx *func_80098558(Gfx*, u32, u32, u32, u32, u32, u32, s32, s32);
-Gfx *func_800987D0(Gfx*, u32, u32, u32, u32, s32, s32, s32, u32, s32);
+Gfx *func_800987D0(Gfx*, u32, u32, u32, u32, s32, s32, u8*, u32, s32);
 Gfx *draw_box_fill(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
-Gfx *draw_box(Gfx*, s32, s32, s32, s32, s32, s32, s32, s32);
+Gfx *draw_box(Gfx*, s32, s32, s32, s32, u32, u32, u32, u32);
 Gfx *func_80098FC8(Gfx*, s32, s32, s32, s32);
 void dma_copy_base_729a30(u64*, size_t, void*);
 void dma_copy_base_7fa3c0(u64*, size_t, void*);
@@ -400,11 +399,6 @@ void func_800AF740(struct_8018D9E0_entry*);
 void rmonPrintf(const char *, ...);
 void tkmk00decode(u8*, u8*, u8*, s32);
 
-typedef struct struct_8018EE10_entry_cont {
-    struct_8018EE10_entry arr[1];
-
-} struct_8018EE10_entry_cont;
-
 /* File specific defines */
 
 #define D_8018D9E0_SIZE 0x20
@@ -426,7 +420,7 @@ extern u16 *D_8018D9B0;
 extern u8 *D_8018D9B4;
 extern u8 *D_8018D9B8;
 extern u8 *D_8018D9BC;
-extern struct_8018EE10_entry_cont *D_8018D9C0;
+extern void *D_8018D9C0;
 extern s8 gGPPointsByCharacterId[8];
 extern s8 gCharacterIdByGPOverallRank[];
 extern s8 D_8018D9D8;
@@ -443,9 +437,7 @@ extern s32 gNumD_8018E768Entries;
 extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
 extern s32 gCycleFlashMenu;
 extern s8 D_8018E7AC[];
-extern s8 D_8018E7B0;
 extern u32 D_8018E7B8[];
-extern u32 D_8018E7C8;
 extern u32 D_8018E7D0[];
 extern s32 D_8018E7E0;
 extern struct UnkStruct_8018E7E8 D_8018E7E8[D_8018E7E8_SIZE];

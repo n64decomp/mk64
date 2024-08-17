@@ -1,5 +1,5 @@
-#include "types.h"
-#include "courses/course_macro.h"
+#include <mk64.h>
+#include <common_structs.h>
 
 CourseVtx d_course_rainbow_road_vertex[] = {
     {{-1418,     657,    -847}, {   -27,   -34}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0x00, 0), 0x00}},

@@ -41,18 +41,20 @@ CHECKEREDFLAG_EXPORT_SENTINEL := $(CHECKEREDFLAG_DIR)/.export
 $(BUILD_DIR)/$(DATA_DIR)/other_textures.o: $(CHECKEREDFLAG_FRAMES:%.png=%.bin)
 
 $(CHECKEREDFLAG_FRAMES:%.png=%.bin): %.bin : %.png
-	$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(CHECKEREDFLAG_PALETTE)
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -Z $@ -g $< -s raw -f ci8 -c rgba16 -p $(CHECKEREDFLAG_PALETTE)
 
 $(BUILD_DIR)/src/data/common_textures.o: $(CHECKEREDFLAG_PALETTE:%.png=%.inc.c)
 
 $(CHECKEREDFLAG_PALETTE:%.png=%.inc.c): %.inc.c : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s u8 -f rgba16
 
 $(CHECKEREDFLAG_FRAMES) $(CHECKEREDFLAG_PALETTE): $(CHECKEREDFLAG_EXPORT_SENTINEL) ;
 
 $(CHECKEREDFLAG_EXPORT_SENTINEL): assets/lakitu/checkeredflag.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_lakitu_checkeredflag
 distclean_lakitu_checkeredflag:

@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <memory.h>
 #include <defines.h>
+#include <mk64.h>
 
 #include "code_800029B0.h"
 #include "code_80005FD0.h"
@@ -23,6 +24,7 @@
 #include "render_objects.h"
 #include "code_80091750.h"
 #include "src/data/some_data.h"
+#include "effects.h"
 
 void init_hud(void) {
 
@@ -65,7 +67,7 @@ void reset_object_variable(void) {
 
 void func_8006EB10(void) {
     s32 i;
-    
+
     for (i = 0; i < gObjectParticle1_SIZE; i++) {
         gObjectParticle1[i] = NULL_OBJECT_ID;
     }
@@ -102,7 +104,7 @@ void func_8006EB10(void) {
 }
 
 void clear_object_list() {
-    bzero(gObjectList, OBJECT_LIST_SIZE * sizeof(Objects));
+    bzero(gObjectList, OBJECT_LIST_SIZE * sizeof(Object));
     objectListSize = -1;
 }
 
@@ -129,11 +131,11 @@ void func_8006EE44(void) {
 void init_item_window(s32 objectIndex) {
     ItemWindowObjects *temp_v0;
 
-    temp_v0 = &gObjectList[objectIndex];
+    temp_v0 = (ItemWindowObjects *)&gObjectList[objectIndex];
     temp_v0->currentItem = ITEM_NONE;
     temp_v0->itemDisplay = temp_v0->currentItem;
-    temp_v0->tlutList = (s32 *) common_tlut_item_window_none;
-    temp_v0->activeTLUT = (s32 *) common_tlut_item_window_none;
+    temp_v0->tlutList = (u8 *) common_tlut_item_window_none;
+    temp_v0->activeTLUT = (u8 *) common_tlut_item_window_none;
     temp_v0->textureList = common_texture_item_window_none;
     temp_v0->activeTexture = common_texture_item_window_none;
     temp_v0->unk_04C = -1;
@@ -143,7 +145,7 @@ void init_item_window(s32 objectIndex) {
 }
 
 void func_8006EEE8(s32 courseId) {
-    D_8018D240 = dma_textures(gCourseOutlineTextures[courseId], D_800E5520[courseId], D_800E5520[courseId]);
+    D_8018D240 = (s32)dma_textures(gCourseOutlineTextures[courseId], D_800E5520[courseId], D_800E5520[courseId]);
     // This is incredibly dumb. D_800E5548 ought to be something more like
     // `u16 D_800E5548[][2]` but that doesn't match for some insane reason
     D_8018D2B0 = D_800E5548[courseId * 2];
@@ -178,7 +180,7 @@ void func_8006F008(void) {
     }
     switch (gCurrentCourseId) {
     case COURSE_MARIO_RACEWAY:
-        D_8018D220 = dma_textures(gTextureExhaust5, 0x443, 0x1000);
+        D_8018D220 = (void *)dma_textures(gTextureExhaust5, 0x443, 0x1000);
         D_8018D2A0 = 0.022f;
         D_8018D2E0 = 6;
         D_8018D2E8 = 28;
@@ -201,14 +203,14 @@ void func_8006F008(void) {
         D_8018D2E8 = 48;
         break;
     case COURSE_BANSHEE_BOARDWALK:
-        D_80165880 = dma_textures(gTextureGhosts, 0x4CC2, 0xD980);
+        D_80165880 = (void *)dma_textures(gTextureGhosts, 0x4CC2, 0xD980);
         D_8018D2A0 = 0.016f;
         D_8018D2C0[0] = 0x0106;
         D_8018D2E0 = 55;
         D_8018D2E8 = 39;
         break;
     case COURSE_YOSHI_VALLEY:
-        D_8018D220 = dma_textures(gTextureExhaust0, 0x479, 0xC00);
+        D_8018D220 = (void *)dma_textures(gTextureExhaust0, 0x479, 0xC00);
         D_8018D2A0 = 0.018f;
         D_8018D2E0 = 61;
         D_8018D2E8 = 38;
@@ -223,14 +225,14 @@ void func_8006F008(void) {
         D_8018D310 = 255;
         break;
     case COURSE_KOOPA_BEACH:
-        D_8018D220 = dma_textures(gTextureExhaust3, 0x3C8U, 0x1000);
+        D_8018D220 = (void *)dma_textures(gTextureExhaust3, 0x3C8U, 0x1000);
         D_8018D2A0 = 0.014f;
         D_8018D2C0[0] = 268;
         D_8018D2E0 = 40;
         D_8018D2E8 = 21;
         break;
     case COURSE_ROYAL_RACEWAY:
-        D_8018D220 = dma_textures(gTextureExhaust4, 0x3F8, 0x1000);
+        D_8018D220 = (void *)dma_textures(gTextureExhaust4, 0x3F8, 0x1000);
         D_8018D2C0[0] = 262;
         D_8018D2A0 = 0.014f;
         D_8018D2E0 = 37;
@@ -240,7 +242,7 @@ void func_8006F008(void) {
         D_80165728 = -330;
         break;
     case COURSE_LUIGI_RACEWAY:
-        D_8018D220 = dma_textures(gTextureExhaust2, 0x4F4U, 0xC00);
+        D_8018D220 = (void *)dma_textures(gTextureExhaust2, 0x4F4U, 0xC00);
         D_8018D2A0 = 0.0155f;
         D_8018D2C0[0] = 271;
         D_8018D2E0 = 45;
@@ -250,7 +252,7 @@ void func_8006F008(void) {
         D_80165728 = -215;
         break;
     case COURSE_MOO_MOO_FARM:
-        D_8018D220 = dma_textures(gTextureExhaust0, 0x479, 0xC00);
+        D_8018D220 = (void *)dma_textures(gTextureExhaust0, 0x479, 0xC00);
         D_8018D2A0 = 0.0155f;
         D_8018D2C0[0] = 271;
         D_8018D2E0 = 18;
@@ -265,13 +267,13 @@ void func_8006F008(void) {
     case COURSE_KALAMARI_DESERT:
         D_8018D2C0[0] = 263;
         D_8018D2D8[0] = 165;
-        D_8018D220 = dma_textures(gTextureExhaust5, 0x443, 0x1000);
+        D_8018D220 = (void *)dma_textures(gTextureExhaust5, 0x443, 0x1000);
         D_8018D2A0 = 0.015f;
         D_8018D2E0 = 55;
         D_8018D2E8 = 27;
         break;
     case COURSE_SHERBET_LAND:
-        D_8018D220 = dma_textures(gTextureExhaust1, 0x485, 0xC00);
+        D_8018D220 = (void *)dma_textures(gTextureExhaust1, 0x485, 0xC00);
         D_8018D2A0 = 0.015f;
         D_8018D2C0[0] = 262;
         D_8018D2E0 = 52;
@@ -569,7 +571,7 @@ void func_8006FA94(void) {
     D_8018D17C = D_8018D18C;
     D_8018D174 = D_8018D18C;
     player = gPlayerOne;
-    for (var_a0 = 0; var_a0 < 8; var_a0++) {
+    for (var_a0 = 0; var_a0 < NUM_PLAYERS; var_a0++) {
         D_8018D0F0[var_a0] = D_8018D050[var_a0] = -32.0f;
         D_8018CE10[var_a0].unk_04[0] = D_8018CE10[var_a0].unk_04[1] = D_8018CE10[var_a0].unk_04[2] = 0.0f;
         D_8018CF50[var_a0] = var_a0;
@@ -609,14 +611,14 @@ void init_cloud_object(s32 objectIndex, s32 arg1, CloudData *arg2) {
     ItemWindowObjects *temp_v0;
 
     init_object(objectIndex, arg1);
-    temp_v0 = &gObjectList[objectIndex];
+    temp_v0 = (ItemWindowObjects *)&gObjectList[objectIndex];
     temp_v0->unk_0D5 = arg2->subType;
     temp_v0->currentItem = ITEM_NONE;
     temp_v0->direction_angle[1] = arg2->rotY;
     temp_v0->unk_09E = arg2->posY;
     temp_v0->sizeScaling = (f32) arg2->scalePercent / 100.0;
-    temp_v0->activeTexture = &D_8018D220[arg2->subType];
-    func_80073404(objectIndex, 0x40U, 0x20U, &D_0D005FB0);
+    temp_v0->activeTexture = (u8 *)&D_8018D220[arg2->subType];
+    func_80073404(objectIndex, 0x40U, 0x20U, D_0D005FB0);
     temp_v0->primAlpha = 0x00FF;
 }
 
@@ -636,10 +638,10 @@ void init_clouds(CloudData *cloudList) {
 
 /**
  * This function is part of the spawning for the "stars" in some stages
- * 
+ *
  * arg2 is a pointer to some type of spawn data for the stars, although it not super clear
  * what types each element is. It seems like its a bunch of u16's, so maybe a Vec4su?
- * 
+ *
  * The stars in Wario's Stadium, Toad's Turnpike, and Rainbow Road are not part of the skybox.
  * They are instead objects that seemingly hover in the air around the player
  * They have no true x/y/z position, instead they seem to be kept in a position relative to the
@@ -652,7 +654,7 @@ void init_star_object(s32 objectIndex, s32 arg1, StarData *arg2) {
     ItemWindowObjects *temp_v0;
 
     init_object(objectIndex, arg1);
-    temp_v0 = &gObjectList[objectIndex];
+    temp_v0 = (ItemWindowObjects *)&gObjectList[objectIndex];
     temp_v0->unk_0D5 = arg2->subType;
     temp_v0->currentItem = ITEM_BANANA;
     temp_v0->direction_angle[1] = arg2->rotY;
@@ -692,7 +694,7 @@ void func_8007055C(void) {
         if (gPlayerCount == 1) {
             var_s4 = 0x32;
         } else {
-            var_s4 = 0x19; 
+            var_s4 = 0x19;
         }
         for (var_s0 = 0; var_s0 < var_s4; var_s0++) {
             find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]);
@@ -826,7 +828,7 @@ void init_course_object(void) {
                 objectId = indexObjectList2[i];
                 init_object(objectId, 0);
                 gObjectList[objectId].pos[0] = gObjectList[objectId].origin_pos[0] = gHedgehogSpawns[i].pos[0] * xOrientation;
-                gObjectList[objectId].pos[1] = gObjectList[objectId].unk_044 = gHedgehogSpawns[i].pos[1] + 6.0;
+                gObjectList[objectId].pos[1] = gObjectList[objectId].surfaceHeight = gHedgehogSpawns[i].pos[1] + 6.0;
                 gObjectList[objectId].pos[2] = gObjectList[objectId].origin_pos[2] = gHedgehogSpawns[i].pos[2];
                 gObjectList[objectId].unk_0D5 = gHedgehogSpawns[i].unk_06;
                 gObjectList[objectId].unk_09C = gHedgehogPatrolPoints[i][0] * xOrientation;
@@ -1276,7 +1278,7 @@ void init_hud_three_four_player(void) {
     playerHUD[PLAYER_TWO].lapY = 0x60;
     playerHUD[PLAYER_TWO].unk_6C = 0xC8;
     playerHUD[PLAYER_TWO].unk_6E = 0xC8;
-    
+
     playerHUD[PLAYER_THREE].itemBoxX = -0x36;
     playerHUD[PLAYER_THREE].itemBoxY = 0x2D;
     playerHUD[PLAYER_THREE].slideItemBoxX = 0;
@@ -1291,7 +1293,7 @@ void init_hud_three_four_player(void) {
     playerHUD[PLAYER_THREE].lapY = 0xD4;
     playerHUD[PLAYER_THREE].unk_6C = 0xDE;
     playerHUD[PLAYER_THREE].unk_6E = 0xC0;
-    
+
     playerHUD[PLAYER_FOUR].itemBoxX = 0x175;
     playerHUD[PLAYER_FOUR].itemBoxY = 0x2D;
     playerHUD[PLAYER_FOUR].slideItemBoxX = 0;

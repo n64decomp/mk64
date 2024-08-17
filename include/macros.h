@@ -87,6 +87,6 @@
  * - sizeof(dl[0]) : walk back 1 Gfx macro
  * - 0x07000000 : get just the offset
  **/
-#define GET_PACKED_END(dl) (((u8*) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)
+#define GET_PACKED_END(dl) (((u8 *) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)
 
 #endif

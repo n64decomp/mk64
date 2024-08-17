@@ -3,8 +3,29 @@
 
 #include <macros.h>
 #include <ultra64.h>
-#include <types.h>
 #include <actor_types.h>
+#include "camera.h"
+
+struct UnkStruct_800DC5EC {
+    /* 0x00 */ struct Controller *controllers; // gControllers ptr 800F6910
+    /* 0x04 */ Camera *camera; // Player camera ptr
+    /* 0x08 */ Player *player; // Player ptr 800F6990
+    /* 0x0C */ s32 *unkC; // unk struct?
+    /* 0x10 */ Vp viewport;
+    /* 0x20 */ s32 pad[2];
+    /* 0x28 */ s16 cameraHeight;
+    /* 0x2A */ s16 unk;
+    /* 0x2C */ s16 screenWidth;
+    /* 0x2E */ s16 screenHeight;
+    /* 0x30 */ s16 screenStartX;
+    /* 0x32 */ s16 screenStartY;
+    /* 0x34 */ s16 unk3C;
+    /* 0x36 */ s16 playerDirection;
+    /* 0x38 */ s16 pathCounter;
+    /* 0x3A */ s16 unk42;
+    /* 0x3C */ s32 pad2;
+}; // size = 0x40
+
 
 /* Function Prototypes */
 
@@ -46,10 +67,10 @@ extern s32 gIsMirrorMode; // D_800DC604
 extern s16 gCreditsCourseId;
 extern s16 gPlaceItemBoxes;
 
-extern mk64_surface_map_ram *gSurfaceMap;
-extern u16 *D_8015F584;
-extern u16 D_8015F588;
-extern u16 D_8015F58A;
+extern CollisionTriangle *gCollisionMesh;
+extern u16 *gCollisionIndices;
+extern u16 gCollisionMeshCount;
+extern u16 gNumCollisionTriangles;
 extern u32 D_8015F58C;
 
 extern Vec3f D_8015F590;

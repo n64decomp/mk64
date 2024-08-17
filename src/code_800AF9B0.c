@@ -91,7 +91,7 @@ void func_800AFC54(Vtx *arg0, s32 arg1, s32 arg2, s32 arg3, s16 arg4[3]) {
 
     a1 = &arg0[arg1];
     a2 = &arg0[arg2];
-    a3 = &arg0[arg3];   
+    a3 = &arg0[arg3];
 
     saved1 = a2->v.ob[0];
     saved2 = a2->v.ob[1];
@@ -125,67 +125,36 @@ void func_800AFC54(Vtx *arg0, s32 arg1, s32 arg2, s32 arg3, s16 arg4[3]) {
 GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800AFC54.s")
 #endif
 
-void func_800AFE00(Vtx *arg0, s16 (*arg1)[3], s32 arg2, s32 arg3);
-#ifdef MIPS_TO_C
-// guessing on the Vtx kind again
-void func_800AFE00(Vtx *arg0, s16 (*arg1)[3], s32 arg2, s32 arg3) {
-    s32 idx1; // v0
-    s32 idx2; // v0
-    s16 sp14[6];
-    Vtx *sec, *third, *fourth;
+void func_800AFE00(Vtx *arg0, Vec3s *arg1, s32 arg2, s32 arg3) {
+    s32 idx1;
+    s32 idx2;
     s32 i;
+    Vtx *vtx;
+    s16 sp14[2][3];
 
-    if (arg2 == 0) {
-        idx1 = 0;
-    } else {
-        idx1 = arg2 - 1;
-    }
-
-    if (arg2 == arg3) {
-        idx2 = arg3;
-    } else {
-        idx2 = arg2 + 1;
-    }
+    idx1 = (arg2 == 0) ? 0 : arg2 - 1;
+    idx2 = (arg2 == arg3) ? arg3 : arg2 + 1;
 
     for (i = 0; i < 3; i++) {
-        sp14[i + 0] = (arg1[arg2][i] + arg1[idx1][i]) / 2;
-        sp14[i + 3] = (arg1[arg2][i] + arg1[idx2][i]) / 2;
-        // L800AFEB4
+        sp14[0][i] = (arg1[idx1][i] + arg1[arg2][i]) / 2;
+        sp14[1][i] = (arg1[idx2][i] + arg1[arg2][i]) / 2;
     }
 
-
-    i = 0;
-    sec = arg0 + 1;
-    third = arg0 + 2;
-    fourth = arg0 + 3;
-    
-    while (i != 480) {
-        (arg0 + i)->v.cn[0] = sp14[0];
-        (arg0 + i)->v.cn[1] = sp14[1];
-        (arg0 + i)->v.cn[2] = sp14[2];
-        (sec + i)->v.cn[0] = sp14[3];
-        (sec + i)->v.cn[1] = sp14[4];
-        (sec + i)->v.cn[2] = sp14[5];
-        (third + i)->v.cn[0] = sp14[0];
-        (third + i)->v.cn[1] = sp14[1];
-        (third + i)->v.cn[2] = sp14[2];
-        (fourth + i)->v.cn[0] = sp14[3];
-        (fourth + i)->v.cn[1] = sp14[4];
-        (fourth + i)->v.cn[2] = sp14[5];
-
-        i += 3 * sizeof(Vtx);
-        i++;i--;
+    for (idx2 = 0; idx2 < 0x1E0; idx2 += 0x30) {
+        for (i = 0; i < 4; i++) {
+            vtx = &arg0[i];
+            vtx[idx2 / 1].v.cn[0] = sp14[i % 2][0];
+            vtx[idx2 / 1].v.cn[1] = sp14[i % 2][1];
+            vtx[idx2 / 1].v.cn[2] = sp14[i % 2][2];
+        }
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_800AF9B0/func_800AFE00.s")
-#endif
 
 void func_800AFF58(Vtx *arg0) {
     UNUSED u32 pad88[26];
     s32 i, j;
     s16 sp40[12][3];
-    
+
     for (i = 0, j = 0; i < ARRAY_COUNT(sp40); i++, j += 4) {
         func_800AFC54(&arg0[j], 1, 2, 0, sp40[i]);
     }

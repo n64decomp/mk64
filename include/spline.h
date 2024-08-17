@@ -1,7 +1,7 @@
 #ifndef SPLINE_H
 #define SPLINE_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 /*
 These are some very good videos about splines/Bezier curves in general
@@ -33,7 +33,7 @@ typedef struct {
     // The control point arrays have more control points in them than this number indicates. Not sure why though.
     s16 numControlPoints;
     // This has to be an array for this to work, so just make it size 1
-    SplineControlPoint controlPoints[1];
+    SplineControlPoint controlPoints[];
 } SplineData;
 
 // All other SplineDataXX types are for use as data only. The size of the array in them matters a lot.
@@ -42,60 +42,33 @@ typedef struct {
 // Ghosts in BansheeBoardwalk x 2
 // Seagulls in KoopaTroopaBeach x 2
 // Penguins in Sherbet Land x 1
-typedef struct {
-    s16 numControlPoints;
-    SplineControlPoint controlPoints[23];
-} SplineData23;
+// length of 23
 
 // Ghosts in BansheeBoardwalk x 2
 // Seagulls in KoopaTroopaBeach x 1
-typedef struct {
-    s16 numControlPoints;
-    SplineControlPoint controlPoints[24];
-} SplineData24;
+// length of 24
 
 
 // Ghosts in BansheeBoardwalk x 1
 // Seagulls in KoopaTroopaBeach x 1
 // Penguins in Sherbet Land x 1
-typedef struct {
-    s16 numControlPoints;
-    SplineControlPoint controlPoints[25];
-} SplineData25;
+// length of 25
 
 // Data of this type is unreferenced or only referenced in an unused function
-typedef struct {
-    s16 numControlPoints;
-    SplineControlPoint controlPoints[4];
-} SplineDataUnused4;
+// lenght of 4
 
 // Lakitu Countdown
-typedef struct {
-    s16 numControlPoints;
-    SplineControlPoint controlPoints[15];
-} SplineData15;
+// length of 15
 
 // Lakitu Checkered Flag
-typedef struct {
-    s16 numControlPoints;
-    SplineControlPoint controlPoints[21];
-} SplineData21;
+// length of 21
 
-typedef struct {
-    s16 numControlPoints;
-    SplineControlPoint controlPoints[13];
-} SplineDataUnused13;
+// length of 13
 
 // Lakitu Second/Final Lap
-typedef struct {
-    s16 numControlPoints;
-    SplineControlPoint controlPoints[12];
-} SplineData12;
+// length of 12
 
 // Lakitu Reverse
-typedef struct {
-    s16 numControlPoints;
-    SplineControlPoint controlPoints[8];
-} SplineData8;
+// length of 8
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef WAYPOINTS_H
 #define WAYPOINTS_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 typedef struct {
     /* 0x00 */ s16 posX;
@@ -38,7 +38,7 @@ extern s16 *D_801645A0[];
  * a given player is on, the specific value may change
  **/
 // Shadows values from gNearestWaypointByPlayerId
-extern s16 D_80162FCE;
+extern s16 sSomeNearestWaypoint;
 // Shadows values from gPathIndexByPlayerId
 extern s32 D_80163448;
 // Shadows values from D_80164560

@@ -24,16 +24,17 @@ LUIGI_SELECT_EXPORT_SENTINEL := $(LUIGI_SELECT_DIR)/.export
 $(BUILD_DIR)/data/course_player_selection.o: $(LUIGI_SELECT_PNG:%.png=%.mio0)
 
 $(LUIGI_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(LUIGI_SELECT_PNG:%.png=%.bin) : %.bin : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(LUIGI_SELECT_PNG): $(LUIGI_SELECT_EXPORT_SENTINEL) ;
 
 $(LUIGI_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/luigi_select.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_luigi_select
 distclean_luigi_select:

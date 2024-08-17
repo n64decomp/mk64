@@ -1,7 +1,6 @@
 #ifndef PROFILER_H
 #define PROFILER_H
 
-#include "types.h"
 
 extern u64 osClockRate;
 

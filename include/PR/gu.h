@@ -3,6 +3,7 @@
 
 #include <PR/mbi.h>
 #include <PR/ultratypes.h>
+#include <common_structs.h>
 
 #define GU_PI 3.1415926
 /* Functions */

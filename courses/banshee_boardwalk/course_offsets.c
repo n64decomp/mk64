@@ -1,7 +1,8 @@
 #include <PR/ultratypes.h>
-#include "PR/gbi.h"
+#include <PR/gbi.h>
 #include "course_offsets.h"
 #include "courses/banshee_boardwalk/course_data.h"
+#include <PR/gbi.h>
 
 extern u8 gTexture6447C4[];
 extern u8 gTexture676FB0[];

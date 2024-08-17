@@ -1,8 +1,7 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/gbi.h>
-#include <types.h>
-#include <config.h>
+#include <mk64.h>
 
 #include "skybox_and_splitscreen.h"
 #include "code_800029B0.h"
@@ -310,12 +309,15 @@ struct Skybox {
     s16 unkA;
 };
 
-// unreferenced F3D. Perhaps goes in an unused func?
-s32 D_802B8A90[] = {
-    0xe7000000, 0x00000000, 0xb900031d, 0x0f0a4000,
-    0xba001402, 0x00300000, 0xf7000000, 0x00000000,
-    0xf64fc3bc, 0x00000000, 0xe7000000, 0x00000000,
-    0xba001402, 0x00000000, 0xb8000000, 0x00000000,
+UNUSED Gfx D_802B8A90[] = {
+    gsDPPipeSync(),
+    gsDPSetRenderMode(G_RM_OPA_SURF, G_RM_OPA_SURF2),
+    gsDPSetCycleType(G_CYC_FILL),
+    gsDPSetFillColor(0x00000000),
+    gsDPFillRectangle(0, 0, 319, 239),
+    gsDPPipeSync(),
+    gsDPSetCycleType(G_CYC_1CYCLE),
+    gsSPEndDisplayList(),
 };
 
 struct Skybox sSkyColors[] = {
@@ -469,7 +471,7 @@ void func_802A4A0C(Vtx *vtx, struct UnkStruct_800DC5EC *arg1, UNUSED s32 arg2, U
     vtx[2].v.ob[1] = temp_t5;
     vtx[4].v.ob[1] = temp_t5;
     vtx[7].v.ob[1] = temp_t5;
-    
+
     init_rdp();
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gSPClearGeometryMode(gDisplayListHead++, G_ZBUFFER | G_LIGHTING);

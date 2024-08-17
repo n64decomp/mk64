@@ -1,7 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include "types.h"
 
 // Message IDs
 #define MESG_SP_COMPLETE 100
@@ -57,10 +56,10 @@ struct GfxPool {
     /* 0x28B20 */ struct SPTask spTask;
 }; // size = 0x28B70
 
-struct UnkStruct_8015F584 {
-    u16 unk0;
-    u16 unk2;
-};
+typedef struct {
+    u16 triangle; // Index for gCollisionIndices which has indexes for gCollisionMesh
+    u16 numTriangles;
+} CollisionGrid;
 
 void create_thread(OSThread*, OSId, void (*entry)(void *), void*, void*, OSPri);
 void main_func(void);
@@ -136,30 +135,28 @@ extern Player *gPlayerEight;
 extern Player *gPlayerOneCopy;
 extern Player *gPlayerTwoCopy;
 
-extern s32 D_800FD850[];
 extern struct GfxPool gGfxPools[];
 extern struct GfxPool *gGfxPool;
 
-extern s32 gfxPool_padding;
 extern struct VblankHandler gGameVblankHandler;
 extern struct VblankHandler sSoundVblankHandler;
 extern OSMesgQueue gDmaMesgQueue, gGameVblankQueue, gGfxVblankQueue, unused_gMsgQueue, gIntrMesgQueue, gSPTaskMesgQueue;
 extern OSMesgQueue sSoundMesgQueue;
-extern OSMesg sSoundMesgBuf[];
-extern OSMesg gDmaMesgBuf[], gGameMesgBuf;
+extern OSMesg sSoundMesgBuf[1];
+extern OSMesg gDmaMesgBuf[1], gGameMesgBuf;
 extern OSMesg gGfxMesgBuf[];
-extern OSMesg gIntrMesgBuf[], gSPTaskMesgBuf[];
+extern OSMesg gIntrMesgBuf[16], gSPTaskMesgBuf[16];
 extern OSMesg gMainReceivedMesg;
 extern OSIoMesg gDmaIoMesg;
 extern OSMesgQueue gSIEventMesgQueue;
-extern OSMesg gSIEventMesgBuf[];
+extern OSMesg gSIEventMesgBuf[3];
 
 extern OSContStatus gControllerStatuses[];
 
 extern OSContPad gControllerPads[];
 extern u8 gControllerBits;
 
-extern struct UnkStruct_8015F584 D_8014F110[];
+extern CollisionGrid gCollisionGrid[];
 extern u16 gNumActors;
 extern u16 gMatrixObjectCount;
 extern s32 gTickSpeed;
@@ -203,11 +200,19 @@ extern u8 gGfxSPTaskYieldBuffer[];
 extern u32 gGfxSPTaskStack[];
 extern OSMesg gPIMesgBuf[];
 extern OSMesgQueue gPIMesgQueue;
-
+void race_logic_loop(void);
 extern s32 gGamestate;
-#ifndef STRANGE_MAIN_HEADER_H
-extern s32 D_800DC510;
+#ifndef D_800DC510_AS_U16
+  // Prevent overlapping writes in gcc
+  // Whether D_800DC510 was intended to be a separate variable in main.c from the rest of the game is unknown
+  #ifdef GCC
+  extern u16 D_800DC510;
+  #else
+  extern s32 D_800DC510;
+  #endif
 #endif
+
+extern u16 D_800DC514;
 extern u16 creditsRenderMode;
 extern u16 gDemoMode;
 extern u16 gEnableDebugMode;

@@ -63,7 +63,7 @@ s16  func_80005FD0(Vec3f, Vec3f);
 
 s32  func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
 void func_80006114(Vec3f, Vec3f, s16);
-s32  func_800061DC(Vec3f, f32, s32);
+s32  set_vehicle_render_distance_flags(Vec3f, f32, s32);
 void func_800065D0(s32, Player*);
 void set_places(void);
 
@@ -156,14 +156,14 @@ void func_800120C8(void);
 void func_80012190(void);
 void func_80012220(VehicleStuff*);
 void init_course_vehicles(void);
-void func_80012780(TrainCarStuff*, s16*, u16);
+void func_80012780(TrainCarStuff*, PathNoY *, u16);
 void func_800127E0(void);
 void func_80012A48(TrainCarStuff*, s16);
 void update_vehicle_trains(void);
 void func_80012DC0(s32, Player*);
 
 void func_80013054(void);
-void func_800131DC(s32);
+void check_ai_crossing_distance(s32);
 void func_800132F4(void);
 void update_vehicle_paddle_boats(void);
 void func_80013854(Player*);
@@ -201,19 +201,19 @@ void func_80015390(Camera*, Player*, s32);
 void func_80015544(s32, f32, s32, s32);
 void func_8001577C(Camera*, UNUSED Player*, s32, s32);
 void func_80015A9C(s32, f32, s32, s16);
-void func_80015C94(Camera*, s32, s32, s32);
+void func_80015C94(Camera*, Player *, s32, s32);
 
 void func_800162CC(s32, f32, s32, s16);
-void func_80016494(Camera*, s32, s32, s32);
+void func_80016494(Camera*, Player *, s32, s32);
 void func_80016C3C(s32, f32, s32);
 
 void func_80017720(s32, f32, s32, s16);
-void func_800178F4(Camera*, s32, s32, s32);
+void func_800178F4(Camera*, Player *, s32, s32);
 void func_80017F10(s32, f32, s32, s16);
 
-void func_800180F0(Camera*, s32, s32, s32);
+void func_800180F0(Camera*, Player *, s32, s32);
 void func_80018718(s32, f32, s32, s16);
-void func_800188F4(Camera*, s32, s32, s32);
+void func_800188F4(Camera*, Player *, s32, s32);
 
 void func_80019118(s32, f32, s32, s16);
 void func_8001933C(Camera*, UNUSED Player*, s32, s32);
@@ -306,7 +306,7 @@ extern u16 gKartAIBehaviourState[];
 enum {
     KART_AI_BEHAVIOUR_STATE_NONE,
     KART_AI_BEHAVIOUR_STATE_START,
-    KART_AI_BEHAVIOUR_STATE_RUNNING,
+    KART_AI_BEHAVIOUR_STATE_RUNNING
 };
 
 extern s16 D_80163300[];
@@ -352,7 +352,7 @@ extern s16 D_8016348C;
 extern s16 D_80163490[];
 extern s16 D_801634A8[];
 extern s16 D_801634C0[];
-extern s16 D_801634D8[];
+extern s16 bStopAICrossing[];
 extern s16 D_801634EC;
 extern s32 D_801634F0;
 extern s32 D_801634F4;
@@ -360,7 +360,7 @@ extern Test D_801634F8[];
 extern PathNoY *D_80163598;
 extern s32 D_8016359C;
 extern u16 isCrossingTriggeredByIndex[];
-extern u16 D_801637BC[];
+extern u16 sCrossingActiveTimer[];
 extern s32 D_80163DD8[];
 extern struct unexpiredActors gUnexpiredActorsList[];
 extern D_801642D8_entry D_801642D8[];
@@ -413,6 +413,6 @@ extern s32 D_8016448C;
 extern u16 D_801637BE;
 extern u16 D_80163E2A;
 
-extern Gfx D_0D0076F8[];
+// extern Gfx D_0D0076F8[];
 
 #endif

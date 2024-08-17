@@ -33,7 +33,7 @@ void osInitialize(void) {
     UNUSED u32 eu_sp34;
     UNUSED u32 eu_sp30;
     UNUSED u32 sp2c;
-    D_80194040 = TRUE;
+    D_80194040 = true;
     __osSetSR(__osGetSR() | 0x20000000);
     __osSetFpcCsr(0x01000800);
     while (__osSiRawReadIo(PIF_ADDR_START, &sp34)) {

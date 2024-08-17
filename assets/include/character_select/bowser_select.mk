@@ -24,16 +24,17 @@ BOWSER_SELECT_EXPORT_SENTINEL := $(BOWSER_SELECT_DIR)/.export
 $(BUILD_DIR)/data/course_player_selection.o: $(BOWSER_SELECT_PNG:%.png=%.mio0)
 
 $(BOWSER_SELECT_PNG:%.png=%.mio0) : %.mio0 : %.bin
-	$(MIO0TOOL) -c $< $@
+	$(V)$(MIO0TOOL) -c $< $@
 
 $(BOWSER_SELECT_PNG:%.png=%.bin) : %.bin : %.png
-	$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
+	@$(PRINT) "$(GREEN)Converting:  $(BLUE) $< -> $@$(NO_COL)\n"
+	$(V)$(N64GRAPHICS) -i $@ -g $< -s raw -f rgba16
 
 $(BOWSER_SELECT_PNG): $(BOWSER_SELECT_EXPORT_SENTINEL) ;
 
 $(BOWSER_SELECT_EXPORT_SENTINEL): $(ASSET_DIR)/character_select/bowser_select.json
-	$(ASSET_EXTRACT) $(BASEROM) $<
-	$(TOUCH) $@
+	$(V)$(ASSET_EXTRACT) $(BASEROM) $<
+	$(V)$(TOUCH) $@
 
 .PHONY: distclean_bowser_select
 distclean_bowser_select:

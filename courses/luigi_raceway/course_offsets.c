@@ -87,7 +87,7 @@ const course_texture luigi_raceway_textures[] = {
     {0x00000000,                     0x0000, 0x0000, 0x0},
 };
 
-const u8 *luigi_raceway_dls[] = {
+const Gfx *luigi_raceway_dls[] = {
     d_course_luigi_raceway_dl_0,
     d_course_luigi_raceway_dl_328,
     d_course_luigi_raceway_dl_1A8,

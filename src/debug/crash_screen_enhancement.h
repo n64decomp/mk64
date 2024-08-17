@@ -1,3 +1,6 @@
+#ifndef CRASH_SCREEN_ENHANCEMENT_H
+#define CRASH_SCREEN_ENHANCEMENT_H
+
 #include <ultra64.h>
 #include <macros.h>
 
@@ -35,3 +38,5 @@ void crash_screen_draw(OSThread* thread);
 //     }
 //     gGlobalTimer++;
 // }
+
+#endif // CRASH_SCREEN_ENHANCEMENT_H

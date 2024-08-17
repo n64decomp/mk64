@@ -3,7 +3,6 @@
 
 #include <ultra64.h>
 
-#include "types.h"
 
 #define SEQUENCE_PLAYERS 4
 #define SEQUENCE_CHANNELS 48

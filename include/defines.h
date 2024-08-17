@@ -38,8 +38,14 @@
  * D-pad DOWN  = MARIO
  *  
  */
-#define DEBUG_MODE 0
-#define DEBUG_MENU 1
+#if defined(GCC) || defined(DEBUG)
+  #define DEBUG_MODE 1
+  #define DEBUG_MENU 2
+#else
+  #define DEBUG_MODE 0
+  #define DEBUG_MENU 1
+#endif
+
 #define HOLD_ALL_DPAD_AND_C_BUTTONS (U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
 
 /**
@@ -70,8 +76,10 @@
 
 #ifdef VERSION_EU
 #define COURSE_TIMER_ITER 0.020041665999999999  // 1 / 50
+#define COURSE_TIMER_ITER_f 0.020041665999999999f  // 1 / 50
 #else
 #define COURSE_TIMER_ITER 0.01666666  // 1 / 60
+#define COURSE_TIMER_ITER_f 0.01666666f  // 1 / 60
 #endif
 
 #define V_BlANK_TIMER_ITER 0.01666666
@@ -103,10 +111,17 @@
 #define FOUR_PLAYERS_SELECTED 4
 #define SELECTED_PLAYER_DEFINES_TOTAL 5
 
-#define PLAYER_ONE 0
-#define PLAYER_TWO 1
-#define PLAYER_THREE 2
-#define PLAYER_FOUR 3
+enum PlayerId {
+    PLAYER_NONE = -1,
+    PLAYER_ONE = 0,
+    PLAYER_TWO = 1,
+    PLAYER_THREE = 2,
+    PLAYER_FOUR = 3,
+    PLAYER_FIVE = 4,
+    PLAYER_SIX = 5,
+    PLAYER_SEVEN = 6,
+    PLAYER_EIGHT = 7
+};
 
 #define NUM_PLAYERS 8
 
@@ -290,7 +305,7 @@
 /**
  * @brief Item IDs
  */
-typedef enum ITEMS {
+enum ITEMS {
     /* 0x00 */ ITEM_NONE = 0,
     /* 0x01 */ ITEM_BANANA,
     /* 0x02 */ ITEM_BANANA_BUNCH,
@@ -309,7 +324,7 @@ typedef enum ITEMS {
     /* 0x0F */ ITEM_SUPER_MUSHROOM
 };
 
-typedef enum KART_AI_BEHAVIOURS {
+enum KART_AI_BEHAVIOURS {
     BEHAVIOUR_NONE = 0,
     BEHAVIOUR_1,
     BEHAVIOUR_HOP,
@@ -385,3 +400,16 @@ enum DIRECTION {
 #define COLOR_BLACK  GPACK_RGB888(0, 0, 0)
 
 #endif // DEFINES_H
+
+
+/**
+ * 
+ * Collision mesh flags
+ * 
+*/
+
+#define GRID_SIZE 32
+
+#define FACING_Y_AXIS 0x4000
+#define FACING_X_AXIS 0x8000
+#define FACING_Z_AXIS 0x2000

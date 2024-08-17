@@ -36,7 +36,7 @@ extern "C" {
 #endif
 
 #include <PR/ultratypes.h>
-#include "PR/os_message.h"
+#include <PR/os_message.h>
 
 #if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)
 
@@ -730,8 +730,8 @@ extern s32 osPfsNumFiles(OSPfs *, s32 *, s32 *);
 extern s32 osEepromProbe(OSMesgQueue *);
 extern s32 osEepromRead(OSMesgQueue *, u8, u8 *);
 extern s32 osEepromWrite(OSMesgQueue *, u8, u8 *);
-extern s32 osEepromLongRead(OSMesgQueue *, u8, u8 *, int);
-extern s32 osEepromLongWrite(OSMesgQueue *, u8, u8 *, int);
+extern s32 osEepromLongRead(OSMesgQueue *, u8, u8 *, s32);
+extern s32 osEepromLongWrite(OSMesgQueue *, u8, u8 *, s32);
 
 /* MOTOR interface */
 

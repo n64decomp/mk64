@@ -1,9 +1,9 @@
 #ifndef CODE_8001F980_H
 #define CODE_8001F980_H
 
-#include "types.h"
-#include "common_structs.h"
+#include <common_structs.h>
 #include "buffers.h"
+#include "camera.h"
 
 #define SOME_TEXTURE_POINTER_MATH 0x800
 
@@ -14,11 +14,11 @@ void func_8001F9E4(Player*, Camera*, s8);
 u16  check_player_camera_collision(Player*, Camera*, f32, f32);
 u16  func_8001FD78(Player*, f32, f32, f32);
 void init_render_player(Player*, Camera*, s8, s8);
-void func_80020524(void);
-void func_8002088C(void);
-void func_80020BF4(void);
-void func_80020F1C(void);
-void try_render_player(Player*, s8, s8);
+void load_kart_texture_and_render_kart_particle_on_screen_one(void);
+void load_kart_texture_and_render_kart_particle_on_screen_two(void);
+void load_kart_texture_and_render_kart_particle_on_screen_three(void);
+void load_kart_texture_and_render_kart_particle_on_screen_four(void);
+void try_rendering_player(Player*, s8, s8);
 void render_players_on_screen_one(void);
 void render_players_on_screen_two(void);
 void render_players_on_screen_three(void);
@@ -32,7 +32,7 @@ void func_80021F50(Mat4, Vec3f);
 void mtxf_scale2(Mat4, f32);
 void failed_fixed_point_matrix_conversion(Mtx*, Mat4);
 void convert_to_fixed_point_matrix(Mtx*, Mat4);
-s32  adjust_angle(s16*, s16, s16);
+bool  adjust_angle(s16*, s16, s16);
 void move_s32_towards(s32*, s32, f32);
 void move_f32_towards(f32*, f32, f32);
 void move_s16_towards(s16*, s16, f32);
@@ -48,19 +48,19 @@ void func_80022DB4(Player*, s8);
 void func_80022E84(Player*, s8, s8, s8);
 void change_player_color_effect_rgb(Player*, s8, s32, f32);
 void change_player_color_effect_cmy(Player*, s8, s32, f32);
-s32  is_player_under_light_luigi_raceway(Player*, s8);
+bool  is_player_under_light_luigi_raceway(Player*, s8);
 void render_light_environment_on_player(Player*, s8);
 void func_800235AC(Player*, s8);
 void func_80023BF0(Player*, s8, s8, s8);
 void render_player_shadow(Player*, s8, s8);
 void render_player_shadow_credits(Player*, s8, s8);
-void kart_render(Player*, s8, s8, s8);
-void ghost_render(Player*, s8, s8, s8);
+void render_kart(Player*, s8, s8, s8);
+void render_ghost(Player*, s8, s8, s8);
 void func_80025DE8(Player*, s8, s8, s8);
-void player_ice_reflection_render(Player*, s8, s8, s8);
-void player_render(Player*, s8, s8);
+void render_player_ice_reflection(Player*, s8, s8, s8);
+void render_player(Player*, s8, s8);
 void func_80026A48(Player*, s8);
-void func_80026B4C(Player*, s8, s8, s8);
+void update_wheel_palette(Player*, s8, s8, s8);
 void func_80030A34(Player*);
 void func_8002701C(void);
 void func_80027024(s32, s32, s32);
@@ -68,14 +68,14 @@ void func_80027024(s32, s32, s32);
 /* This is where I'd put my static data, if I had any */
 
 extern struct_D_802F1F80 *gPlayerPalette;
-extern u8 *D_80164B08;
-extern u8 *D_80164B0C;
+extern u8 *sKartUpperTexture;
+extern u8 *sKartLowerTexture;
 
 extern s32 D_80164A28;
-extern s16 D_80164AB0[];
+extern s16 gPlayersToRenderPlayerId[];
 extern s16 D_80164ABE[];
-extern s16 D_80164AC0[];
-extern Player *D_80164AD0[];
+extern s16 gPlayersToRenderScreenId[];
+extern Player *gPlayersToRenderPlayer[];
 extern s16 gMatrixEffectCount;
 extern u16 gPlayerRedEffect[];
 extern u16 gPlayerGreenEffect[];
@@ -129,8 +129,8 @@ extern u8 **gKartWarioWheels0[];
 extern u8 **gKartWarioWheels1[];
 
 
-extern u16 **D_800DDE34[];
-extern u16 **D_800DDE54[];
+extern u16 **gKartWheels0[];
+extern u16 **gKartWheels1[];
 
 
 // These all come the kart data stuff, they should end up in their own inc.c eventually
@@ -281,8 +281,8 @@ extern u8 *gKartWario189Wheel0[];
 
 extern s16 D_80165020[40];
 extern Vec3f D_80165070[8];
-extern s16 D_801650D0[4][8];
-extern s16  D_80165110[4][8];
+extern s16 gLastAnimFrameSelector[4][8];
+extern s16  gLastAnimGroupSelector[4][8];
 extern s16  D_80165150[4][8];
 extern s16  D_80165190[4][8];
 extern s16  D_801651D0[4][8];

@@ -1,5 +1,5 @@
-#include "types.h"
-#include "courses/course_macro.h"
+#include <mk64.h>
+#include <common_structs.h>
 
 CourseVtx d_course_choco_mountain_vertex[] = {
     {{ 1364,       0,     796}, {  3158,  1024}, {MACRO_COLOR_FLAG(0xfc, 0xfc, 0xfc, 0), 0x00}},

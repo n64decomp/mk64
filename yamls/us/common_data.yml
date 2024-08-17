@@ -8,7 +8,8 @@
     - '#include <assets/common_data.h>'
     header:
     - '#include <PR/gbi.h>'
-    - '#include <types.h>'
+    - '#include <ultra64.h>'
+    - '#include <common_structs.h>'
   tables:
     common_grand_prix_human_item_curve:
       range: [0x8150, 0x840C]
@@ -73,6 +74,61 @@ D_0D001200:
   type: vtx
   offset: 0x1200
   count: 1
+D_0D001210:
+  symbol: D_0D001210
+  type: vtx
+  offset: 0x1210
+  count: 3
+D_0D001240:
+  symbol: D_0D001240
+  type: vtx
+  offset: 0x1240
+  count: 3
+D_0D001270:
+  symbol: D_0D001270
+  type: vtx
+  offset: 0x1270
+  count: 3
+D_0D0012A0:
+  symbol: D_0D0012A0
+  type: vtx
+  offset: 0x12A0
+  count: 3
+D_0D0012D0:
+  symbol: D_0D0012D0
+  type: vtx
+  offset: 0x12D0
+  count: 3
+D_0D001300:
+  symbol: D_0D001300
+  type: vtx
+  offset: 0x1300
+  count: 3
+D_0D001330:
+  symbol: D_0D001330
+  type: vtx
+  offset: 0x1330
+  count: 3
+D_0D001360:
+  symbol: D_0D001360
+  type: vtx
+  offset: 0x1360
+  count: 3
+common_vtx_finish_line_banner:
+  symbol: common_vtx_finish_line_banner
+  type: vtx
+  offset: 0x1390
+  count: 32
+common_vtx_finish_post:
+  symbol: common_vtx_finish_post
+  type: vtx
+  offset: 0x1590
+  count: 24
+D_0D001710:
+  symbol: D_0D001710
+  type: vtx
+  offset: 0x1710
+  count: 4
 D_0D001750:
   symbol: D_0D001750
   type: gfx
@@ -137,16 +193,12 @@ D_0D001C88:
   symbol: D_0D001C88
   type: gfx
   offset: 0x1C88
-common_vtx_itembox_question_mark:
-  symbol: common_vtx_itembox_question_mark
-  type: vtx
-  offset: 0x1D28
-  count: 4
-D_0D001D68:
-  symbol: D_0D001D68
-  type: vtx
-  offset: 0x1D68
-  count: 3
+
+common_vtx_itembox:
+  symbol: common_vtx_itembox
+  type: VTX
+  offset: 0x0D001CE8
+  count: 32
 common_texture_item_box_question_mark:
   symbol: common_texture_item_box_question_mark
   type: texture
@@ -173,10 +225,11 @@ itemBoxQuestionMarkModel:
   symbol: itemBoxQuestionMarkModel
   type: gfx
   offset: 0x3008
+  
 D_0D003090:
   symbol: D_0D003090
   type: gfx
-  offset: 0x3090
+  offset: 0x0D003090
 D_0D0030F8:
   symbol: D_0D0030F8
   type: gfx
@@ -396,116 +449,61 @@ D_0D005E80:
   type: vtx
   offset: 0x5E80
   count: 3
-D_0D005EB0:
-  symbol: D_0D005EB0
+common_vtx_lakitu:
+  symbol: common_vtx_lakitu
   type: vtx
   offset: 0x5EB0
-  count: 5
-D_0D005F00:
-  symbol: D_0D005F00
-  type: vtx
-  offset: 0x5F00
-  count: 3
+  count: 8
 D_0D005F30:
   symbol: D_0D005F30
   type: vtx
   offset: 0x5F30
-  count: 5
-D_0D005F80:
-  symbol: D_0D005F80
-  type: vtx
-  offset: 0x5F80
-  count: 3
+  count: 8
 D_0D005FB0:
   symbol: D_0D005FB0
   type: vtx
   offset: 0x5FB0
-  count: 1
-D_0D005FC0:
-  symbol: D_0D005FC0
-  type: vtx
-  offset: 0x5FC0
-  count: 3
+  count: 4
 D_0D005FF0:
   symbol: D_0D005FF0
   type: vtx
   offset: 0x5FF0
-  count: 1
-D_0D006000:
-  symbol: D_0D006000
-  type: vtx
-  offset: 0x6000
-  count: 3
+  count: 4
 D_0D006030:
   symbol: D_0D006030
   type: vtx
   offset: 0x6030
-  count: 5
-D_0D006080:
-  symbol: D_0D006080
-  type: vtx
-  offset: 0x6080
-  count: 3
-D_0D0060B0:
-  symbol: D_0D0060B0
+  count: 8
+common_vtx_hedgehog:
+  symbol: common_vtx_hedgehog
   type: vtx
   offset: 0x60B0
-  count: 5
-D_0D006100:
-  symbol: D_0D006100
-  type: vtx
-  offset: 0x6100
-  count: 3
+  count: 8
 D_0D006130:
   symbol: D_0D006130
   type: vtx
   offset: 0x6130
-  count: 5
-D_0D006180:
-  symbol: D_0D006180
-  type: vtx
-  offset: 0x6180
-  count: 3
+  count: 8
 D_0D0061B0:
   symbol: D_0D0061B0
   type: vtx
   offset: 0x61B0
-  count: 13
-D_0D006280:
-  symbol: D_0D006280
-  type: vtx
-  offset: 0x6280
-  count: 3
+  count: 16
 D_0D0062B0:
   symbol: D_0D0062B0
   type: vtx
   offset: 0x62B0
-  count: 29
-D_0D006480:
-  symbol: D_0D006480
-  type: vtx
-  offset: 0x6480
-  count: 3
+  count: 32
 D_0D0064B0:
   symbol: D_0D0064B0
   type: vtx
   offset: 0x64B0
-  count: 37
-D_0D006700:
-  symbol: D_0D006700
-  type: vtx
-  offset: 0x6700
-  count: 3
-D_0D006730:
-  symbol: D_0D006730
+  count: 40
+common_vtx_also_lakitu:
+  symbol: common_vtx_also_lakitu
   type: vtx
   offset: 0x6730
-  count: 25
-D_0D0068C0:
-  symbol: D_0D0068C0
-  type: vtx
-  offset: 0x68C0
-  count: 3
+  count: 28
 D_0D0068F0:
   symbol: D_0D0068F0
   type: vtx
@@ -2254,58 +2252,58 @@ D_0D02AA58:
   width: 16
   height: 16
   format: rgba16
-common_texture_particle_spark_1.i8.png:
-  symbol: common_texture_particle_spark_1.i8.png
+common_texture_particle_spark_1:
+  symbol: common_texture_particle_spark_1
   offset: 0x2AC58
   width: 32
   height: 32
   ctype: u8
   type: texture
   format: i8
-common_texture_particle_spark_2.i8.png:
-  symbol: common_texture_particle_spark_2.i8.png
+common_texture_particle_spark_2:
+  symbol: common_texture_particle_spark_2
   offset: 0x2B058
   width: 32
   height: 32
   type: texture
   format: i8
-common_texture_particle_spark_3.i8.png:
-  symbol: common_texture_particle_spark_3.i8.png
+common_texture_particle_spark_3:
+  symbol: common_texture_particle_spark_3
   offset: 0x2B458
   width: 32
   height: 32
   type: texture
   format: i8
-common_texture_particle_spark_4.i8.png:
-  symbol: common_texture_particle_spark_4.i8.png
+common_texture_particle_spark_4:
+  symbol: common_texture_particle_spark_4
   offset: 0x2B858
   width: 32
   height: 32
   type: texture
   format: i8
-common_texture_particle_smoke_1.i8.png:
-  symbol: common_texture_particle_smoke_1.i8.png
+common_texture_particle_smoke_1:
+  symbol: common_texture_particle_smoke_1
   offset: 0x2BC58
   width: 32
   height: 32
   type: texture
   format: i8
-common_texture_particle_smoke_2.i8.png:
-  symbol: common_texture_particle_smoke_2.i8.png
+common_texture_particle_smoke_2:
+  symbol: common_texture_particle_smoke_2
   offset: 0x2C058
   width: 32
   height: 32
   type: texture
   format: i8
-common_texture_particle_smoke_3.i8.png:
-  symbol: common_texture_particle_smoke_3.i8.png
+common_texture_particle_smoke_3:
+  symbol: common_texture_particle_smoke_3
   offset: 0x2C458
   width: 32
   height: 32
   type: texture
   format: i8
-common_texture_particle_smoke_4.i8.png:
-  symbol: common_texture_particle_smoke_4.i8.png
+common_texture_particle_smoke_4:
+  symbol: common_texture_particle_smoke_4
   offset: 0x2C858
   width: 32
   height: 32

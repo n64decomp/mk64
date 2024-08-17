@@ -3,7 +3,6 @@
 #include <PR/gbi.h>
 #include <actor_types.h>
 #include <course.h>
-#include <types.h>
 
 #include "course_displaylists.inc.h"
 #include "course_textures.linkonly.h"
