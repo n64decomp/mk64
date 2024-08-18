@@ -34,7 +34,7 @@
     },
     {
         "file": "courses/toads_turnpike/course_data.c",
-        "out_dir": "toads_turnpike/segments",
+        "out_dir": "toads_turnpike/sections",
         "models": [
             "d_course_toads_turnpike_dl_80", "d_course_toads_turnpike_dl_1F8",
             "d_course_toads_turnpike_dl_158", "d_course_toads_turnpike_dl_2D0",
@@ -77,5 +77,10 @@
             "d_course_toads_turnpike_dl_37F0", "d_course_toads_turnpike_dl_39C8",
             "d_course_toads_turnpike_dl_3910", "d_course_toads_turnpike_dl_3AD8"
         ]
+    },
+    {
+        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
+        "out_dir": "banshee_boardwalk/collision_sections",
+        "models": []
     }
 ]

@@ -74,11 +74,11 @@ extern u32 isFlycam;
 void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     Player *player = arg1->player;
     Camera *camera = arg1->camera;
-    u32 segment = SEGMENT_NUMBER2(sectionAddr);
-    u32 offset = SEGMENT_OFFSET(sectionAddr);
+    u32 segment = SEGMENT_NUMBER2(addr);
+    u32 offset = SEGMENT_OFFSET(addr);
     //! @todo Should be Gfx*
     s32 *gfx = (s32 *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
-    s16 var_a3;
+    s16 direction;
     s16 index;
     s16 sp1E;
     s16 temp_v0_3;
@@ -179,7 +179,7 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     }
 
     arg1->pathCounter = index;
-    index = ((index - 1) * 4) + var_a3;
+    index = ((index - 1) * 4) + direction;
     gSPDisplayList(gDisplayListHead++, gfx[index]);
 }
 

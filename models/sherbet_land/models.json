@@ -9,7 +9,7 @@
     },
     {
         "file": "courses/sherbet_land/course_data.c",
-        "out_dir": "sherbet_land/segments/list1",
+        "out_dir": "sherbet_land/sections/list1",
         "models": [
             "d_course_sherbet_land_dl_0",
             "d_course_sherbet_land_dl_158",
@@ -87,7 +87,7 @@
     },
     {
         "file": "courses/sherbet_land/course_data.c",
-        "out_dir": "sherbet_land/segments/list2",
+        "out_dir": "sherbet_land/sections/list2",
         "models": [
             "d_course_sherbet_land_dl_26D0",
             "d_course_sherbet_land_dl_28A0",
@@ -162,5 +162,10 @@
             "d_course_sherbet_land_dl_4A20",
             "d_course_sherbet_land_dl_4B20"
         ]
+    },
+    {
+        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
+        "out_dir": "banshee_boardwalk/collision_sections",
+        "models": []
     }
 ]

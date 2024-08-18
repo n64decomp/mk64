@@ -13,7 +13,7 @@
     },
     {
         "file": "courses/moo_moo_farm/course_data.c",
-        "out_dir": "moo_moo_farm/segments",
+        "out_dir": "moo_moo_farm/sections",
         "models": [
             "d_course_moo_moo_farm_dl_88",
             "d_course_moo_moo_farm_dl_598",
@@ -108,5 +108,10 @@
             "d_course_moo_moo_farm_dl_E4B0",
             "d_course_moo_moo_farm_dl_EA18"
         ]
+    },
+    {
+        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
+        "out_dir": "banshee_boardwalk/collision_sections",
+        "models": []
     }
 ]

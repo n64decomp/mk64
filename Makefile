@@ -597,6 +597,9 @@ LDFLAGS += $(foreach elf,$(COURSE_DATA_ELFS),-R $(elf))
 
 COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.mio0.o)
 
+COURSE_DISPLAYLIST_OFILES := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.o)
+$(COURSE_DISPLAYLIST_OFILES): $(BUILD_DIR)/%/course_data.o: %/course_textures.linkonly.h
+
 %/course_data.elf: %/course_data.o %/course_displaylists.inc.elf
 	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -R $*/course_displaylists.inc.elf -o $@ $< --no-check-sections
 

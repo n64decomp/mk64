@@ -10,7 +10,7 @@
     },
     {
         "file": "courses/royal_raceway/course_data.c",
-        "out_dir": "royal_raceway/segments",
+        "out_dir": "royal_raceway/sections",
         "models": [
             "d_course_royal_raceway_dl_0",
             "d_course_royal_raceway_dl_360",
@@ -145,5 +145,10 @@
             "d_course_royal_raceway_dl_B2E0",
             "d_course_royal_raceway_dl_B508"
         ]
+    },
+    {
+        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
+        "out_dir": "banshee_boardwalk/collision_sections",
+        "models": []
     }
 ]

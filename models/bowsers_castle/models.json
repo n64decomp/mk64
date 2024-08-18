@@ -9,7 +9,7 @@
     },
     {
         "file": "courses/bowsers_castle/course_data.c",
-        "out_dir": "bowsers_castle/segments",
+        "out_dir": "bowsers_castle/sections",
         "models": [
             "d_course_bowsers_castle_dl_0",
             "d_course_bowsers_castle_dl_230",
@@ -119,6 +119,48 @@
             "d_course_bowsers_castle_dl_4CE8",
             "d_course_bowsers_castle_dl_4C00",
             "d_course_bowsers_castle_dl_4EA8"
+        ]
+    },
+    {
+        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
+        "out_dir": "banshee_boardwalk/collision_sections",
+        "models": [
+            "d_course_bowsers_castle_packed_dl_5448",
+            "d_course_bowsers_castle_packed_dl_53E0",
+            "d_course_bowsers_castle_packed_dl_93A0",
+            "d_course_bowsers_castle_packed_dl_9290",
+            "d_course_bowsers_castle_packed_dl_30C8",
+            "d_course_bowsers_castle_packed_dl_1FA0",
+            "d_course_bowsers_castle_packed_dl_3578",
+            "d_course_bowsers_castle_packed_dl_3930",
+            "d_course_bowsers_castle_packed_dl_3C80",
+            "d_course_bowsers_castle_packed_dl_D38",
+            "d_course_bowsers_castle_packed_dl_41A8",
+            "d_course_bowsers_castle_packed_dl_B80",
+            "d_course_bowsers_castle_packed_dl_280",
+            "d_course_bowsers_castle_packed_dl_2A48",
+            "d_course_bowsers_castle_packed_dl_A20",
+            "d_course_bowsers_castle_packed_dl_470",
+            "d_course_bowsers_castle_packed_dl_3308",
+            "d_course_bowsers_castle_packed_dl_1EA8",
+            "d_course_bowsers_castle_packed_dl_9328",
+            "d_course_bowsers_castle_packed_dl_9438",
+            "d_course_bowsers_castle_packed_dl_5378",
+            "d_course_bowsers_castle_packed_dl_5300",
+            "d_course_bowsers_castle_packed_dl_5270",
+            "d_course_bowsers_castle_packed_dl_51E8",
+            "d_course_bowsers_castle_packed_dl_54E8",
+            "d_course_bowsers_castle_packed_dl_5778",
+            "d_course_bowsers_castle_packed_dl_56F0",
+            "d_course_bowsers_castle_packed_dl_5678",
+            "d_course_bowsers_castle_packed_dl_55E8",
+            "d_course_bowsers_castle_packed_dl_5560",
+            "d_course_bowsers_castle_packed_dl_8E40",
+            "d_course_bowsers_castle_packed_dl_2BB8",
+            "d_course_bowsers_castle_packed_dl_75E8",
+            "d_course_bowsers_castle_packed_dl_9278",
+            "d_course_bowsers_castle_packed_dl_3B0",
+            "d_course_bowsers_castle_packed_dl_83B0"
         ]
     }
 ]

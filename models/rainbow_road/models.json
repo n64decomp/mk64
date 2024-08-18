@@ -12,7 +12,7 @@
     },
     {
         "file": "courses/rainbow_road/course_data.c",
-        "out_dir": "rainbow_road/segments",
+        "out_dir": "rainbow_road/sections",
         "models": [
             "d_course_rainbow_road_dl_D8", "d_course_rainbow_road_dl_210",
             "d_course_rainbow_road_dl_178", "d_course_rainbow_road_dl_288",
@@ -39,5 +39,10 @@
             "d_course_rainbow_road_dl_17D0", "d_course_rainbow_road_dl_18D0",
             "d_course_rainbow_road_dl_1878", "d_course_rainbow_road_dl_1948"
         ]
+    },
+    {
+        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
+        "out_dir": "banshee_boardwalk/collision_sections",
+        "models": []
     }
 ]

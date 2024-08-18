@@ -10,7 +10,7 @@
     },
     {
         "file": "courses/mario_raceway/course_data.c",
-        "out_dir": "mario_raceway/segments",
+        "out_dir": "mario_raceway/sections",
         "models": [
             "d_course_mario_raceway_dl_0",
             "d_course_mario_raceway_dl_1D0",
@@ -81,5 +81,10 @@
             "d_course_mario_raceway_dl_4ED0",
             "d_course_mario_raceway_dl_5150"
         ]
+    },
+    {
+        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
+        "out_dir": "banshee_boardwalk/collision_sections",
+        "models": []
     }
 ]

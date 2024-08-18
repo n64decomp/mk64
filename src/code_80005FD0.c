@@ -2487,8 +2487,8 @@ s16 func_8000CC88(f32 posX, f32 posY, f32 posZ, Player *player, s32 playerId, s3
     if ((trackSegment <= 0) || (trackSegment >= 0x33)) {
         trackSegment = D_80163318[playerId];
     }
-    D_80163318[playerId] = courseSection;
-    ret = func_8000C0BC(posX, posY, posZ, courseSection, pathIndex);
+    D_80163318[playerId] = trackSegment;
+    ret = func_8000C0BC(posX, posY, posZ, trackSegment, pathIndex);
     gPathIndexByPlayerId[playerId] = *pathIndex;
     return ret;
 }
@@ -3979,7 +3979,7 @@ s32 func_80011014(TrackWaypoint *pathDest, TrackWaypoint *path, s32 numPathPoint
 
 
                 pathDest->posZ = (s16) temp_f22;
-                pathDest->trackSegment = get_section_id(D_80162E70.meshIndexZX);
+                pathDest->courseSection = get_section_id(D_80162E70.meshIndexZX);
 
                 if (var_f20_2 < -500.0) {
                     var_f20_2 = var_f28;

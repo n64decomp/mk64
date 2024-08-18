@@ -8,7 +8,7 @@
     },
     {
         "file": "courses/wario_stadium/course_data.c",
-        "out_dir": "wario_stadium/segments",
+        "out_dir": "wario_stadium/sections",
         "models":[
             "d_course_wario_stadium_dl_0",
             "d_course_wario_stadium_dl_158",
@@ -119,5 +119,10 @@
             "d_course_wario_stadium_dl_5460",
             "d_course_wario_stadium_dl_5588"
         ]
+    },
+    {
+        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
+        "out_dir": "banshee_boardwalk/collision_sections",
+        "models": []
     }
 ]
