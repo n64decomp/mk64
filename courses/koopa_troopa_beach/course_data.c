@@ -6,7 +6,7 @@
 #include <waypoints.h>
 #include <course.h>
 #include <mk64.h>
-#include <code_80004740.h>
+#include <animation.h>
 
 #include "course_displaylists.inc.h"
 
@@ -8310,7 +8310,7 @@ s16 d_course_koopa_troopa_beach_unk_data2[] = {
 };
 
 // 0x06014B50
-animation_type_3_triplet d_course_koopa_troopa_beach_unk_data3[] = {
+AnimationLimbVector d_course_koopa_troopa_beach_unk_data3[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0037, 0x0001 },
@@ -8369,7 +8369,7 @@ animation_type_3_triplet d_course_koopa_troopa_beach_unk_data3[] = {
 };
 
 // 0x06014BD4
-animation_type_2 d_course_koopa_troopa_beach_unk_data4 = {
+Animation d_course_koopa_troopa_beach_unk_data4 = {
     0x00010000,
     0x00000000,
     0x0037,
@@ -8541,146 +8541,67 @@ Gfx d_course_koopa_troopa_beach_dl_16990[] =
 
 //! 0x60169b
 u32 d_course_koopa_troopa_beach_unk4[] = {
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_ADD_POS(0x00000000, 0x00000000, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_koopa_troopa_beach_dl_16630,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_koopa_troopa_beach_dl_16630),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0xfffffffb,
-    0x00000005,
+    ANIMATION_ADD_POS(0x00000000, -0x00000005, 0x00000005),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_koopa_troopa_beach_dl_16850,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_koopa_troopa_beach_dl_16850),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_koopa_troopa_beach_dl_168F0,
-    0x00000024,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL_AT(d_course_koopa_troopa_beach_dl_168F0, 0x00000024, 0x00000000, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_koopa_troopa_beach_dl_16990,
-    0x00000019,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL_AT(d_course_koopa_troopa_beach_dl_16990, 0x00000019, 0x00000000, 0x00000000),
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0xfffffffb,
-    0xfffffffb,
+    ANIMATION_ADD_POS(0x00000000, -0x00000005, -0x00000005),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_koopa_troopa_beach_dl_16850,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_koopa_troopa_beach_dl_16850),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_koopa_troopa_beach_dl_168F0,
-    0x00000024,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL_AT(d_course_koopa_troopa_beach_dl_168F0, 0x00000024, 0x00000000, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_koopa_troopa_beach_dl_16990,
-    0x00000019,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL_AT(d_course_koopa_troopa_beach_dl_16990, 0x00000019, 0x00000000, 0x00000000),
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000003,
-    0x00000002,
+    ANIMATION_STOP,
 };
 
 // 0x06016B60
-animation_type_2 *d_course_koopa_troopa_beach_unk_data5[] = {
+Animation *d_course_koopa_troopa_beach_unk_data5[] = {
     &d_course_koopa_troopa_beach_unk_data4,
 };
 
