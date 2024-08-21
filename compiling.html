@@ -110,7 +110,9 @@ $(function(){initNavTree('compiling.html',''); initResizable(true); });
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
 <ul><li class="level1"><a href="#build-instructions">Build Instructions</a></li>
-<li class="level1"><a href="#linux">Linux</a><ul><ul><li class="level3"><a href="#arch">Arch</a></li>
+<li class="level1"><a href="#linux">Linux</a><ul><ul><li class="level3"><a href="#ubuntu">Ubuntu</a></li>
+<li class="level3"><a href="#fedora">Fedora</a></li>
+<li class="level3"><a href="#arch">Arch</a></li>
 </ul>
 </ul>
 </li>
@@ -133,8 +135,14 @@ libaudiofile
 <p>Run <code>make assets</code> to extract assets.</p>
 <h1><a class="anchor" id="linux"></a>
 Linux</h1>
+<h3><a class="anchor" id="ubuntu"></a>
+Ubuntu</h3>
 <div class="fragment"><div class="line">sudo apt install cmake build-essential pkg-config git binutils-mips-linux-gnu python3 zlib1g-dev libaudiofile-dev libcapstone-dev</div>
-</div><!-- fragment --><h3><a class="anchor" id="arch"></a>
+</div><!-- fragment --><h3><a class="anchor" id="fedora"></a>
+Fedora</h3>
+<div class="fragment"><div class="line">sudo dnf install make automake gcc gcc-c++ kernel-devel cmake pkg-config git python3 zlib-devel audiofile-devel capstone</div>
+</div><!-- fragment --><p> and install <a href="https://github.com/DragonMinded/libdragon/releases/tag/toolchain-continuous-prerelease">gcc toolchain of libdragon</a> and add <code>export PATH="/opt/libdragon/bin:$PATH"</code> to ~/.bashrc</p>
+<h3><a class="anchor" id="arch"></a>
 Arch</h3>
 <div class="fragment"><div class="line">sudo pacman -S base-devel capstone python</div>
 </div><!-- fragment --><p> Install the following AUR package:</p><ul>
