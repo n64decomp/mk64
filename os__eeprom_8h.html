@@ -106,7 +106,8 @@ $(function(){initNavTree('os__eeprom_8h.html',''); initResizable(true); });
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">os_eeprom.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -137,6 +138,19 @@ Macros</h2></td></tr>
 <tr class="separator:ae374c1ee16dd1ed8f839f41c1fdf55ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3158a02f7e8626b69c4bc59d33dad9ad" id="r_a3158a02f7e8626b69c4bc59d33dad9ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3158a02f7e8626b69c4bc59d33dad9ad">EEPROM_BLOCK_SIZE</a>&#160;&#160;&#160;8</td></tr>
 <tr class="separator:a3158a02f7e8626b69c4bc59d33dad9ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:abe94c2433f8bb54f96e41302c61b7413" id="r_abe94c2433f8bb54f96e41302c61b7413"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe94c2433f8bb54f96e41302c61b7413">osEepromProbe</a> (OSMesgQueue *)</td></tr>
+<tr class="separator:abe94c2433f8bb54f96e41302c61b7413"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad94a7a5704d079fff31773cf6aad911a" id="r_ad94a7a5704d079fff31773cf6aad911a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad94a7a5704d079fff31773cf6aad911a">osEepromRead</a> (OSMesgQueue *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *)</td></tr>
+<tr class="separator:ad94a7a5704d079fff31773cf6aad911a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fea3538f97c88e099c9b2c18b56f525" id="r_a5fea3538f97c88e099c9b2c18b56f525"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fea3538f97c88e099c9b2c18b56f525">osEepromWrite</a> (OSMesgQueue *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *)</td></tr>
+<tr class="separator:a5fea3538f97c88e099c9b2c18b56f525"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa152875aec079b1ebc62660cd681cadb" id="r_aa152875aec079b1ebc62660cd681cadb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa152875aec079b1ebc62660cd681cadb">osEepromLongRead</a> (OSMesgQueue *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, int)</td></tr>
+<tr class="separator:aa152875aec079b1ebc62660cd681cadb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af005cd47b7cebd83b83681ef7ce9e325" id="r_af005cd47b7cebd83b83681ef7ce9e325"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af005cd47b7cebd83b83681ef7ce9e325">osEepromLongWrite</a> (OSMesgQueue *, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>, <a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, int)</td></tr>
+<tr class="separator:af005cd47b7cebd83b83681ef7ce9e325"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ae374c1ee16dd1ed8f839f41c1fdf55ef" name="ae374c1ee16dd1ed8f839f41c1fdf55ef"></a>
@@ -206,6 +220,208 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="aa152875aec079b1ebc62660cd681cadb" name="aa152875aec079b1ebc62660cd681cadb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa152875aec079b1ebc62660cd681cadb">&#9670;&#160;</a></span>osEepromLongRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> osEepromLongRead </td>
+          <td>(</td>
+          <td class="paramtype">OSMesgQueue *</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a></td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af005cd47b7cebd83b83681ef7ce9e325" name="af005cd47b7cebd83b83681ef7ce9e325"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af005cd47b7cebd83b83681ef7ce9e325">&#9670;&#160;</a></span>osEepromLongWrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> osEepromLongWrite </td>
+          <td>(</td>
+          <td class="paramtype">OSMesgQueue *</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a></td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *</td>          <td class="paramname"><span class="paramname"><em></em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em></em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abe94c2433f8bb54f96e41302c61b7413" name="abe94c2433f8bb54f96e41302c61b7413"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe94c2433f8bb54f96e41302c61b7413">&#9670;&#160;</a></span>osEepromProbe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> osEepromProbe </td>
+          <td>(</td>
+          <td class="paramtype">OSMesgQueue *</td>          <td class="paramname"><span class="paramname"><em>mq</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="os__eeprom_8h_abe94c2433f8bb54f96e41302c61b7413_cgraph.svg" width="100%" height="586"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="os__eeprom_8h_abe94c2433f8bb54f96e41302c61b7413_icgraph.svg" width="100%" height="438"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="ad94a7a5704d079fff31773cf6aad911a" name="ad94a7a5704d079fff31773cf6aad911a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad94a7a5704d079fff31773cf6aad911a">&#9670;&#160;</a></span>osEepromRead()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> osEepromRead </td>
+          <td>(</td>
+          <td class="paramtype">OSMesgQueue *</td>          <td class="paramname"><span class="paramname"><em>mq</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a></td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="os__eeprom_8h_ad94a7a5704d079fff31773cf6aad911a_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="os__eeprom_8h_ad94a7a5704d079fff31773cf6aad911a_icgraph.svg" width="100%" height="438"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+
+</div>
+</div>
+<a id="a5fea3538f97c88e099c9b2c18b56f525" name="a5fea3538f97c88e099c9b2c18b56f525"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fea3538f97c88e099c9b2c18b56f525">&#9670;&#160;</a></span>osEepromWrite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> osEepromWrite </td>
+          <td>(</td>
+          <td class="paramtype">OSMesgQueue *</td>          <td class="paramname"><span class="paramname"><em>mq</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a></td>          <td class="paramname"><span class="paramname"><em>address</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="os__eeprom_8h_a5fea3538f97c88e099c9b2c18b56f525_cgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="os__eeprom_8h_a5fea3538f97c88e099c9b2c18b56f525_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+</div>
 
 </div>
 </div>

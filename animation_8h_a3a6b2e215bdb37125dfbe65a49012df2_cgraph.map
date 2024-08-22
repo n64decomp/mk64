@@ -1,0 +1,18 @@
+<map id="render_armature" name="render_armature">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,94,136,119"/>
+<area shape="rect" id="Node000002" href="$animation_8c.html#a735935d8f41d2fbdc617a41a92dfc371" title=" " alt="" coords="184,69,368,94"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,96,170,92,171,97,136,101"/>
+<area shape="rect" id="Node000008" href="$memory_8c.html#a78aef9786c00b1e9cfb9665ebdb2c694" title="converts an RSP segment + offset address to a normal memory address" alt="" coords="420,119,584,145"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="136,108,407,124,406,129,136,113"/>
+<area shape="rect" id="Node000003" href="$animation_8c.html#a5df48d40f4cbf20ab82b1e562ceff0ea" title=" " alt="" coords="417,5,587,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="327,66,407,46,408,51,329,71"/>
+<area shape="rect" id="Node000005" href="$animation_8c.html#acfd85958c3b1020053c0810bbe96380e" title=" " alt="" coords="416,70,588,95"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="368,79,402,79,402,85,368,85"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="334,92,432,114,431,119,333,97"/>
+<area shape="rect" id="Node000004" href="$guMtxF2L_8c.html#a40ab2d64c609839ff1e0ef0de2d0dcc4" title=" " alt="" coords="636,13,723,38"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="587,23,622,23,622,28,587,28"/>
+<area shape="rect" id="Node000006" href="$math__util_8c.html#ae69cbf5c8d4b3b0dba2d7b4d4673689f" title=" " alt="" coords="654,66,705,91"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="588,78,640,77,640,82,588,83"/>
+<area shape="rect" id="Node000007" href="$math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545" title=" " alt="" coords="655,115,703,141"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="553,93,643,116,642,121,552,98"/>
+</map>

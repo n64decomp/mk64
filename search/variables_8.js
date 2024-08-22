@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['has_5fvalue_5fbut_5fnever_5fused_0',['has_value_but_never_used',['../structanimation__type__2.html#a00e416073a15bf8dd28c40f39c67a9d8',1,'animation_type_2']]],
+  ['has_5fvalue_5fbut_5fnever_5fused_0',['has_value_but_never_used',['../structAnimation.html#ad561123739ac752758490eedc9d05775',1,'Animation']]],
   ['hasinstrument_1',['hasInstrument',['../structSequenceChannel.html#a21462ffb79a5c13b003709ec8eea0db9',1,'SequenceChannel']]],
   ['hastwoadpcmparts_2',['hasTwoAdpcmParts',['../structNoteSubEu.html#a58f467ef63476a62cbfb6cd03abd6d99',1,'NoteSubEu']]],
   ['hdr_3',['hdr',['../structOSIoMesg.html#a3513926dcc38ed394eabf006c9e3a222',1,'OSIoMesg']]],

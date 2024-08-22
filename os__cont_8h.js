@@ -1,5 +1,8 @@
 var os__cont_8h =
 [
+    [ "OSContStatus", "structOSContStatus.html", "structOSContStatus" ],
+    [ "OSContPad", "structOSContPad.html", "structOSContPad" ],
+    [ "OSContRamIo", "structOSContRamIo.html", "structOSContRamIo" ],
     [ "A_BUTTON", "os__cont_8h.html#a5ec59d5e4f6bfacfdf3aa6e7ed5c0373", null ],
     [ "B_BUTTON", "os__cont_8h.html#a2454c318caf152737fd63bebddd58ea2", null ],
     [ "CONT_A", "os__cont_8h.html#a3eb754a26060fabf3ee8fee392e080e0", null ],
@@ -51,5 +54,12 @@ var os__cont_8h =
     [ "START_BUTTON", "os__cont_8h.html#ab341b8680b89a9888189982451117fbf", null ],
     [ "U_CBUTTONS", "os__cont_8h.html#a4e49cf555d366ccdf312acddaf9b90ac", null ],
     [ "U_JPAD", "os__cont_8h.html#a8dc1c5424dfe2c222a8aff0bcde0b955", null ],
-    [ "Z_TRIG", "os__cont_8h.html#a3c1de5b3b5a9360fb2104131e6525bdd", null ]
+    [ "Z_TRIG", "os__cont_8h.html#a3c1de5b3b5a9360fb2104131e6525bdd", null ],
+    [ "osContGetQuery", "os__cont_8h.html#adfc887bd9b1a19c84dc60274e7ad1f9a", null ],
+    [ "osContGetReadData", "os__cont_8h.html#a3df5d15edb2830020974bb43abe03d45", null ],
+    [ "osContInit", "os__cont_8h.html#a743975d5cae36526861df1e5162b5ef3", null ],
+    [ "osContReset", "os__cont_8h.html#a17a596d16a93f8ad6de4fb91c23cf0fa", null ],
+    [ "osContSetCh", "os__cont_8h.html#aa6cd9eced2be45d59d2def420d7b8827", null ],
+    [ "osContStartQuery", "os__cont_8h.html#ae3b2d94e2cd68ffc0b666b101570085d", null ],
+    [ "osContStartReadData", "os__cont_8h.html#abfa99c6e1fdf53bba25464095ade967b", null ]
 ];

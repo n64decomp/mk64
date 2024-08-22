@@ -1,17 +1,17 @@
 <map id="courses/sherbet_land/course_data.h" name="courses/sherbet_land/course_data.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="1945,5,2105,45"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="1962,5,2122,45"/>
 <area shape="rect" id="Node000002" href="$ultra64_8h.html" title=" " alt="" coords="994,167,1074,192"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1945,42,1088,172,1088,167,1944,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1962,41,1088,173,1087,167,1961,36"/>
 <area shape="rect" id="Node000021" href="$gbi_8h.html" title=" " alt="" coords="1826,387,1901,412"/>
-<area shape="poly" id="edge54_Node000001_Node000021" title=" " alt="" coords="2105,28,2144,35,2185,47,2224,65,2259,91,2275,111,2282,131,2285,178,2285,254,2282,274,2276,290,2265,302,2252,311,2180,341,2111,367,2039,384,1971,394,1914,399,1914,394,1970,389,2038,379,2109,362,2178,336,2249,307,2262,298,2271,287,2277,273,2279,254,2279,178,2277,132,2270,114,2255,95,2222,70,2183,52,2143,40,2104,33"/>
-<area shape="rect" id="Node000030" href="$actor__types_8h.html" title=" " alt="" coords="1923,93,2033,119"/>
-<area shape="poly" id="edge55_Node000001_Node000030" title=" " alt="" coords="2016,47,1994,83,1990,80,2011,44"/>
+<area shape="poly" id="edge54_Node000001_Node000021" title=" " alt="" coords="2123,34,2185,54,2215,70,2241,91,2257,112,2265,131,2267,178,2267,254,2266,273,2260,288,2241,309,2214,325,2180,341,2112,369,2040,387,1971,396,1914,400,1914,395,1971,391,2039,381,2110,364,2178,336,2211,320,2238,305,2256,285,2260,271,2262,254,2262,178,2260,132,2252,114,2237,95,2212,74,2183,59,2122,39"/>
+<area shape="rect" id="Node000030" href="$actor__types_8h.html" title=" " alt="" coords="1940,93,2051,119"/>
+<area shape="poly" id="edge55_Node000001_Node000030" title=" " alt="" coords="2033,47,2012,83,2007,80,2028,44"/>
 <area shape="rect" id="Node000032" href="$waypoints_8h.html" title=" " alt="" coords="2074,167,2175,192"/>
-<area shape="poly" id="edge59_Node000001_Node000032" title=" " alt="" coords="2040,44,2112,154,2107,157,2035,47"/>
-<area shape="rect" id="Node000033" href="$course_8h.html" title=" " alt="" coords="1821,93,1898,119"/>
-<area shape="poly" id="edge61_Node000001_Node000033" title=" " alt="" coords="1986,48,1897,90,1895,85,1984,43"/>
-<area shape="rect" id="Node000034" href="$code__80004740_8h.html" title=" " alt="" coords="2109,93,2245,119"/>
-<area shape="poly" id="edge65_Node000001_Node000034" title=" " alt="" coords="2062,43,2143,84,2140,89,2060,48"/>
+<area shape="poly" id="edge59_Node000001_Node000032" title=" " alt="" coords="2055,45,2114,153,2110,156,2050,47"/>
+<area shape="rect" id="Node000033" href="$course_8h.html" title=" " alt="" coords="1838,93,1915,119"/>
+<area shape="poly" id="edge61_Node000001_Node000033" title=" " alt="" coords="2004,48,1914,90,1912,85,2001,43"/>
+<area shape="rect" id="Node000034" href="$animation_8h.html" title=" " alt="" coords="2127,93,2227,119"/>
+<area shape="poly" id="edge65_Node000001_Node000034" title=" " alt="" coords="2076,43,2146,84,2144,89,2073,48"/>
 <area shape="rect" id="Node000003" href="$math_8h.html" title=" " alt="" coords="1779,240,1847,265"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1074,179,1359,194,1559,211,1766,238,1765,243,1558,216,1359,199,1074,184"/>
 <area shape="rect" id="Node000004" href="$ultratypes_8h.html" title=" " alt="" coords="679,460,800,485"/>
@@ -90,13 +90,13 @@
 <area shape="poly" id="edge48_Node000026_Node000002" title=" " alt="" coords="2072,316,1989,278,1935,258,1880,243,1809,230,1715,220,1488,203,1088,185,1088,180,1488,198,1716,215,1810,225,1881,237,1937,253,1991,273,2074,311"/>
 <area shape="poly" id="edge50_Node000027_Node000004" title=" " alt="" coords="899,337,916,352,932,371,940,392,940,403,935,414,910,438,880,455,847,466,814,472,813,466,846,460,878,450,907,434,930,410,935,402,935,393,928,374,913,356,896,341"/>
 <area shape="poly" id="edge52_Node000028_Node000022" title=" " alt="" coords="1248,336,1348,379,1345,384,1246,341"/>
-<area shape="poly" id="edge56_Node000030_Node000002" title=" " alt="" coords="1923,120,1910,121,1670,145,1434,162,1088,179,1088,174,1434,156,1670,140,1910,116,1922,114"/>
-<area shape="poly" id="edge58_Node000030_Node000026" title=" " alt="" coords="1987,118,2014,165,2085,300,2081,302,2009,168,1982,120"/>
+<area shape="poly" id="edge56_Node000030_Node000002" title=" " alt="" coords="1940,120,1928,121,1682,145,1441,162,1088,179,1088,174,1441,157,1682,140,1927,116,1939,114"/>
+<area shape="poly" id="edge58_Node000030_Node000026" title=" " alt="" coords="2003,118,2087,299,2082,301,1998,120"/>
 <area shape="rect" id="Node000031" href="$macros_8h.html" title=" " alt="" coords="1917,167,1999,192"/>
-<area shape="poly" id="edge57_Node000030_Node000031" title=" " alt="" coords="1977,120,1967,154,1962,153,1972,118"/>
+<area shape="poly" id="edge57_Node000030_Node000031" title=" " alt="" coords="1992,120,1973,156,1968,153,1987,118"/>
 <area shape="poly" id="edge60_Node000032_Node000026" title=" " alt="" coords="2125,193,2103,300,2098,299,2120,192"/>
-<area shape="poly" id="edge62_Node000033_Node000002" title=" " alt="" coords="1821,113,1088,176,1087,171,1820,108"/>
-<area shape="poly" id="edge63_Node000033_Node000021" title=" " alt="" coords="1864,118,1874,171,1883,240,1881,313,1872,374,1866,373,1876,313,1878,240,1869,172,1859,119"/>
-<area shape="poly" id="edge64_Node000033_Node000031" title=" " alt="" coords="1877,117,1932,156,1929,161,1874,121"/>
+<area shape="poly" id="edge62_Node000033_Node000002" title=" " alt="" coords="1838,113,1088,176,1087,171,1837,108"/>
+<area shape="poly" id="edge63_Node000033_Node000021" title=" " alt="" coords="1880,119,1884,181,1883,266,1870,373,1865,373,1878,265,1879,181,1875,119"/>
+<area shape="poly" id="edge64_Node000033_Node000031" title=" " alt="" coords="1891,117,1936,156,1933,160,1888,121"/>
 <area shape="poly" id="edge66_Node000034_Node000026" title=" " alt="" coords="2184,118,2192,152,2193,172,2190,193,2176,226,2157,257,2119,305,2114,302,2153,254,2171,223,2185,191,2188,172,2187,153,2179,120"/>
 </map>

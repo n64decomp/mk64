@@ -157,7 +157,7 @@ var searchData=
   ['building_20us_154',['Building US',['../compiling.html#building-us',1,'']]],
   ['burst_155',['burst',['../structOSViCommonRegs.html#aaa8f692cff98bec6674a08d380d8ebd2',1,'OSViCommonRegs']]],
   ['busy_5fstate_156',['BUSY_STATE',['../hardware_8h.html#a4821f69a5605c2618cd4dc4d3f60979c',1,'hardware.h']]],
-  ['button_157',['button',['../struct____OSContReadFormat.html#ae9cbac3e50bcd7400988aa5e64f56aae',1,'__OSContReadFormat::button'],['../structOSContPackedRead.html#a53568bb114163e6082aa5c446dcbf43e',1,'OSContPackedRead::button'],['../structController.html#aa5d1a358227833467d015fe3b2b35967',1,'Controller::button'],['../structStaffGhost.html#aa6b1baf853d009a3439c9d3f5165f1a5',1,'StaffGhost::button']]],
+  ['button_157',['button',['../struct____OSContReadFormat.html#ae9cbac3e50bcd7400988aa5e64f56aae',1,'__OSContReadFormat::button'],['../structOSContPackedRead.html#a53568bb114163e6082aa5c446dcbf43e',1,'OSContPackedRead::button'],['../structController.html#aa5d1a358227833467d015fe3b2b35967',1,'Controller::button'],['../structStaffGhost.html#aa6b1baf853d009a3439c9d3f5165f1a5',1,'StaffGhost::button'],['../structOSContPad.html#a20af48972b3d9875221c9024099c6624',1,'OSContPad::button']]],
   ['buttondepressed_158',['buttonDepressed',['../structController.html#af68b8dc9459d69a7dfdf57dabf8dbae5',1,'Controller']]],
   ['buttonpressed_159',['buttonPressed',['../structController.html#a8c4688ece90c09c9c228512234b82fbb',1,'Controller']]],
   ['bzero_160',['bzero',['../bstring_8h.html#ab828ad07c8ebf898973f27778c543651',1,'bzero(void *, size_t):&#160;bstring.h'],['../os__libc_8h.html#ab828ad07c8ebf898973f27778c543651',1,'bzero(void *, size_t):&#160;os_libc.h']]]

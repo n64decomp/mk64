@@ -1,5 +1,17 @@
 var NAVTREEINDEX77 =
 {
+"mario__raceway_2course__displaylists_8inc_8h.html#a439cf32dbd75cb2e6eb8c59bed73bcab":[8,0,0,11,3,161],
+"mario__raceway_2course__displaylists_8inc_8h.html#a43c9ebf1ee5befce41fdffce2e1238f4":[8,0,0,11,3,74],
+"mario__raceway_2course__displaylists_8inc_8h.html#a453696fd4898882b5ee993044141e3a6":[8,0,0,11,3,128],
+"mario__raceway_2course__displaylists_8inc_8h.html#a45d7a6bed39ef6775f4c2321df426c0b":[8,0,0,11,3,139],
+"mario__raceway_2course__displaylists_8inc_8h.html#a4a7983faad0b1c089ca522c03755d96d":[8,0,0,11,3,121],
+"mario__raceway_2course__displaylists_8inc_8h.html#a4af931cd8799e395121f56056417d9b1":[8,0,0,11,3,17],
+"mario__raceway_2course__displaylists_8inc_8h.html#a4d0bb3d8e81ab68853797521e0cc56ac":[8,0,0,11,3,38],
+"mario__raceway_2course__displaylists_8inc_8h.html#a4deea089c3f8832172f7363946863a97":[8,0,0,11,3,133],
+"mario__raceway_2course__displaylists_8inc_8h.html#a4e5e3e44627a3048200422e0decc42dc":[8,0,0,11,3,159],
+"mario__raceway_2course__displaylists_8inc_8h.html#a4ff6f8229c931484ce2bad2b525400a4":[8,0,0,11,3,95],
+"mario__raceway_2course__displaylists_8inc_8h.html#a505a4159d0bcbbb2f0229d0133f7bd47":[8,0,0,11,3,48],
+"mario__raceway_2course__displaylists_8inc_8h.html#a515795dbb23fa4410ff81ffed0e89aac":[8,0,0,11,3,117],
 "mario__raceway_2course__displaylists_8inc_8h.html#a5221336c0e4b577141b8865975673acc":[8,0,0,11,3,80],
 "mario__raceway_2course__displaylists_8inc_8h.html#a5229f2568ab73cae29d5f038f9e6e20e":[8,0,0,11,3,134],
 "mario__raceway_2course__displaylists_8inc_8h.html#a539e6271c02041c5f7c484aa240fa044":[8,0,0,11,3,119],
@@ -237,17 +249,5 @@ var NAVTREEINDEX77 =
 "math__util_8c.html#a01776589df676cf373b5e0a65d6dfe27":[8,0,3,7,6,20],
 "math__util_8c.html#a0273b0ea0783a06996c28669a7438ed9":[8,0,3,7,6,2],
 "math__util_8c.html#a062850863585005ad1d0a75d9ff70693":[8,0,3,7,6,54],
-"math__util_8c.html#a0738ff09ce2446c58933dcd43f4cdb2b":[8,0,3,7,6,41],
-"math__util_8c.html#a07a66adf3458c156c7961b983983627a":[8,0,3,7,6,32],
-"math__util_8c.html#a0ca3a6d6b27b22a7a1d98253a3d5c899":[8,0,3,7,6,36],
-"math__util_8c.html#a0e270ee67600c8c9c2f140c647d008a1":[8,0,3,7,6,60],
-"math__util_8c.html#a151b63b8adf9af7e4054b3b84bd226dc":[8,0,3,7,6,53],
-"math__util_8c.html#a193420d088e83d9e4855c536fd4e2bf8":[8,0,3,7,6,12],
-"math__util_8c.html#a19ed3bd78fd2d3e2bd0a29f6caf48545":[8,0,3,7,6,56],
-"math__util_8c.html#a259326105d75cb13bc53e99a4519b53f":[8,0,3,7,6,27],
-"math__util_8c.html#a30e784bd0104c04406bb8259a1ff8bd3":[8,0,3,7,6,22],
-"math__util_8c.html#a32af0f217114736291c9ca6689138b81":[8,0,3,7,6,49],
-"math__util_8c.html#a3c716e2d1fa585c007d66e79245d6f73":[8,0,3,7,6,45],
-"math__util_8c.html#a3eb0db0895b2c11953df746ce49b782e":[8,0,3,7,6,38],
-"math__util_8c.html#a409d900812101d9361d3d414749c8b92":[8,0,3,7,6,46]
+"math__util_8c.html#a0738ff09ce2446c58933dcd43f4cdb2b":[8,0,3,7,6,41]
 };

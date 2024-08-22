@@ -5,5 +5,5 @@ var searchData=
   ['alpan_2',['ALPan',['../libaudio__internal_8h.html#a9500907b32805536754daaa5098c8492',1,'libaudio_internal.h']]],
   ['alsound_3',['ALSound',['../libaudio__internal_8h.html#ad22cfca9e762ade3716a66f309bdb920',1,'libaudio_internal.h']]],
   ['alwavetable_4',['ALWaveTable',['../libaudio__internal_8h.html#ac16ea6431170571ec31088911394605a',1,'libaudio_internal.h']]],
-  ['animation_5ftype_5f3_5ftriplet_5',['animation_type_3_triplet',['../code__80004740_8h.html#ac1074eeef6a78c8dd3331626179f426b',1,'code_80004740.h']]]
+  ['animationlimbvector_5',['AnimationLimbVector',['../animation_8h.html#a8dbc62035737896a0e59bf8097054859',1,'animation.h']]]
 ];

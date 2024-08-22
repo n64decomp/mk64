@@ -14,5 +14,6 @@ var searchData=
   ['sptask_5fstate_5fnot_5fstarted_11',['SPTASK_STATE_NOT_STARTED',['../common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03aa1d36cbdfdd74c1dffec49c527c434e2',1,'common_structs.h']]],
   ['sptask_5fstate_5frunning_12',['SPTASK_STATE_RUNNING',['../common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03a9afa6ccb46b744f4b86c4c8c3e882f0a',1,'common_structs.h']]],
   ['stone_13',['STONE',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a0fca859752b1db047acd56aca4021d2d',1,'mk64.h']]],
-  ['surface_5fdefault_14',['SURFACE_DEFAULT',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aa6970bca9abd16aa3e5dc8c83ed9ffac',1,'mk64.h']]]
+  ['stop_5fanimation_14',['STOP_ANIMATION',['../animation_8h.html#a52e412534f1af21caf39f50ea61280cea72860dbb1005e509a3473551caf5c8f1',1,'animation.h']]],
+  ['surface_5fdefault_15',['SURFACE_DEFAULT',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aa6970bca9abd16aa3e5dc8c83ed9ffac',1,'mk64.h']]]
 ];

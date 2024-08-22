@@ -86,10 +86,10 @@ var rainbow__road_2course__data_8h =
     [ "d_course_rainbow_road_unk_double", "rainbow__road_2course__data_8h.html#aa05016144a02c23c63252c8a95192232", null ],
     [ "d_course_rainbow_road_unk_double2", "rainbow__road_2course__data_8h.html#a24ca1072ef138cfd1c338ae603a2eee4", null ],
     [ "d_course_rainbow_road_unknown_waypoints", "rainbow__road_2course__data_8h.html#a3b814224378cedeb410f43d051b343ea", null ],
-    [ "d_rainbow_road_chomp_jaw_animation", "rainbow__road_2course__data_8h.html#a7061fd4bfcf7f6e4bdd8619d226d9f70", null ],
-    [ "d_rainbow_road_unk1", "rainbow__road_2course__data_8h.html#a0bd76bbe3226f9b37380fa4cdf9140f1", null ],
-    [ "d_rainbow_road_unk2", "rainbow__road_2course__data_8h.html#af903bfd9cf2b5da23eec10ac9a314905", null ],
-    [ "d_rainbow_road_unk3", "rainbow__road_2course__data_8h.html#a01d91bb3211fcc567bd71ceaadb4bc54", null ],
+    [ "d_rainbow_road_chomp_angle", "rainbow__road_2course__data_8h.html#a416dcf23ad9a9330aa25fadc75571452", null ],
+    [ "d_rainbow_road_chomp_animation_matrix", "rainbow__road_2course__data_8h.html#a6e293851c515278183362238d43ca19a", null ],
+    [ "d_rainbow_road_unk2", "rainbow__road_2course__data_8h.html#a53767faecf03d0490683062c56d149af", null ],
+    [ "d_rainbow_road_unk3", "rainbow__road_2course__data_8h.html#aa5682d93516e9c7478c140d6bc73e00e", null ],
     [ "d_rainbow_road_unk4", "rainbow__road_2course__data_8h.html#a1d1b1ef7b91cd1d736d78b9d67f00386", null ],
     [ "d_rainbow_road_unk5", "rainbow__road_2course__data_8h.html#a29b42a85dcea8e10f7f7941a9ec1feb6", null ]
 ];

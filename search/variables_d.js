@@ -27,7 +27,7 @@ var searchData=
   ['minz_24',['minZ',['../structCollisionTriangle.html#a7a24b29415e8ecf25171248862d87f94',1,'CollisionTriangle']]],
   ['mk64texture_25',['mk64Texture',['../structstruct__8018E0E8__entry.html#ac291ab588db6ec5bdf7dea53ec2218d8',1,'struct_8018E0E8_entry::mk64Texture'],['../structMkAnimation.html#a003aa14e3f160e8bb825d0b2d699df5f',1,'MkAnimation::mk64Texture']]],
   ['mode_26',['mode',['../structPortamento.html#a2054af42de80730e8c81b0a12bfa87cd',1,'Portamento']]],
-  ['model_27',['model',['../structObject.html#a6b14e6850347a9c3e4c05a3aa9b80480',1,'Object::model'],['../structItemWindowObjects.html#a41c741a21e8246c6ebde4fb7cf33c218',1,'ItemWindowObjects::model']]],
+  ['model_27',['model',['../structArmature.html#ab91d968c3d3991ccd6d77488c89dec1f',1,'Armature::model'],['../structObject.html#a6b14e6850347a9c3e4c05a3aa9b80480',1,'Object::model'],['../structItemWindowObjects.html#a41c741a21e8246c6ebde4fb7cf33c218',1,'ItemWindowObjects::model']]],
   ['modep_28',['modep',['../structOSViContext.html#a0ccd92e055c5abb8b50f12cf1710560b',1,'OSViContext']]],
   ['modes_29',['modes',['../unionGameModePack.html#a7480766028750720e0e81e64e658922c',1,'GameModePack']]],
   ['moo_5fmoo_5ffarm_5fdls_30',['moo_moo_farm_dls',['../all__course__offsets_8h.html#a761bd342c65fa46063defaac08a3e9b6',1,'moo_moo_farm_dls:&#160;course_offsets.c'],['../moo__moo__farm_2course__offsets_8c.html#a1cacf522dda6056a6e1519459a2d2f65',1,'moo_moo_farm_dls:&#160;course_offsets.c']]],
