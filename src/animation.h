@@ -163,9 +163,11 @@ sOriginalPosAnimation is a Vec3s that is used to set values in the some Vec3f th
 #define ANIMATION_DISABLE_AUTOMATIC_POP SIMPLE_ANIMATION_INSTRUCTION(DISABLE_AUTOMATIC_POP_MATRIX)
 #define ANIMATION_POP_MATRIX SIMPLE_ANIMATION_INSTRUCTION(POP_MATRIX)
 #define ANIMATION_STOP SIMPLE_ANIMATION_INSTRUCTION(STOP_ANIMATION)
-//! the pos it's very often relative to the previous render
+//! the pos is relative to the previous RENDER_MODEL_OR_ADD_POS if ANIMATION_DISABLE_AUTOMATIC_POP are use
 #define ANIMATION_RENDER_MODEL_AT(model, x, y, z) RENDER_MODEL_OR_ADD_POS, 0x00000007, 0x00000000, (u32) model, x, y, z
+//! use RENDER_MODEL_OR_ADD_POS
 #define ANIMATION_RENDER_MODEL(model) ANIMATION_RENDER_MODEL_AT(model, 0x00000000, 0x00000000, 0x00000000)
+//! use RENDER_MODEL_OR_ADD_POS
 #define ANIMATION_ADD_POS(x,y,z) ANIMATION_RENDER_MODEL_AT((u32)NULL, x, y, z)
 
 enum animation_type {
@@ -175,7 +177,9 @@ enum animation_type {
     STOP_ANIMATION
 };
 
-//! The armature need to be associate with an Animation list who are equalt the the number of RENDER_MODEL_OR_ADD_POS so ANIMATION_RENDER_MODEL and ANIMATION_ADD_POS
+/**
+ * @brief The armature is associated with an AnimationLimbVector which is equal to the number of RENDER_MODEL_OR_ADD_POS in the armature
+ */
 typedef struct {
     /* 0x00 */ s32 type;
     /* 0x04 */ s32 size;
