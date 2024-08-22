@@ -5,7 +5,7 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
-#include <code_80004740.h>
+#include <animation.h>
 #include <mk64.h>
 
 #include "course_displaylists.inc.h"
@@ -3415,7 +3415,7 @@ Gfx d_course_rainbow_road_dl_15F18[] =
 };
 
 // 0x06015FC8
-s16 d_rainbow_road_chomp_jaw_animation[] = {
+s16 d_rainbow_road_chomp_angle[] = {
     0x0000, 0x3fff,
     0x9602, 0x9483,
     0x90d2, 0x8c1b,
@@ -3471,7 +3471,7 @@ s16 d_rainbow_road_chomp_jaw_animation[] = {
 };
 
 // 0x06016098
-animation_type_3_triplet d_rainbow_road_unk1[] = {
+AnimationLimbVector d_rainbow_road_chomp_animation_matrix[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0001, 0x0000 },
@@ -3515,98 +3515,49 @@ animation_type_3_triplet d_rainbow_road_unk1[] = {
 };
 
 // 0x060160F8
-animation_type_2 d_rainbow_road_unk2 = {
+Animation d_rainbow_road_unk2 = {
     0x00010000,
     0x00000000,
     0x0014,
     0x0007,
-    d_rainbow_road_chomp_jaw_animation,
-    d_rainbow_road_unk1,
+    d_rainbow_road_chomp_angle,
+    d_rainbow_road_chomp_animation_matrix,
 };
 
 // 0x0601610C
-animation_type_2 *d_rainbow_road_unk3[] = {
+Animation *d_rainbow_road_unk3[] = {
     &d_rainbow_road_unk2,
 };
 
 // 0x06016110
 u32 d_rainbow_road_unk4[] = {
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x0000023a,
-    0x00000000,
+    ANIMATION_ADD_POS(0x00000000, 0x0000023a, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_rainbow_road_dl_15550,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_rainbow_road_dl_15550),
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_rainbow_road_dl_151A8,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_rainbow_road_dl_151A8),
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x0000023a,
-    0x00000000,
+    ANIMATION_ADD_POS(0x00000000, 0x0000023a, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_rainbow_road_dl_15C68,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_rainbow_road_dl_15C68),
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_rainbow_road_dl_158C0,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_rainbow_road_dl_158C0),
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_rainbow_road_dl_15F18,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_rainbow_road_dl_15F18),
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000003,
-    0x00000002,
+    ANIMATION_STOP,
 };
 
 // No idea what this stuff is

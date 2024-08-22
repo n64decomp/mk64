@@ -6,7 +6,7 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
-#include "code_80004740.h"
+#include "animation.h"
 
 extern Gfx d_course_sherbet_land_dl_0[];
 extern Gfx d_course_sherbet_land_dl_C0[];
@@ -196,15 +196,15 @@ extern Gfx d_course_sherbet_land_dl_8D00[];
 extern Gfx d_course_sherbet_land_dl_8E00[];
 extern u32 d_course_sherbet_land_unk_data1[];
 extern s16 d_course_sherbet_land_unk_data2[];
-extern animation_type_3_triplet d_course_sherbet_land_unk_data3[];
-extern animation_type_2 d_course_sherbet_land_unk_data4;
+extern AnimationLimbVector d_course_sherbet_land_unk_data3[];
+extern Animation d_course_sherbet_land_unk_data4;
 extern s16 d_course_sherbet_land_unk_data5[];
-extern animation_type_3_triplet d_course_sherbet_land_unk_data6[];
-extern animation_type_2 d_course_sherbet_land_unk_data7;
+extern AnimationLimbVector d_course_sherbet_land_unk_data6[];
+extern Animation d_course_sherbet_land_unk_data7;
 extern s16 d_course_sherbet_land_unk_data8[];
-extern animation_type_3_triplet d_course_sherbet_land_unk_data9[];
-extern animation_type_2 d_course_sherbet_land_unk_data10;
-extern animation_type_2 *d_course_sherbet_land_unk_data11[];
+extern AnimationLimbVector d_course_sherbet_land_unk_data9[];
+extern Animation d_course_sherbet_land_unk_data10;
+extern Animation *d_course_sherbet_land_unk_data11[];
 extern u32 d_course_sherbet_land_unk_data12[];
 extern Gfx d_course_sherbet_land_dl_9AE8[];
 extern struct ActorSpawnData d_course_sherbet_land_item_box_spawns[];

@@ -6,7 +6,7 @@
 #include <waypoints.h>
 #include <course.h>
 #include <mk64.h>
-#include <code_80004740.h>
+#include <animation.h>
 
 #include "course_displaylists.inc.h"
 
@@ -4290,138 +4290,57 @@ Gfx d_course_sherbet_land_dl_8E00[] =
 
 // 0x06008EB0
 u32 d_course_sherbet_land_unk_data1[] = {
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x06008D00,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_sherbet_land_dl_8D00),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0xFFFFFFCD,
-    0x00000054,
-    0xFFFFFFF3,
+    ANIMATION_ADD_POS(-0x00000033, 0x00000054, -0x0000000d),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x06008730,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_sherbet_land_dl_8730),
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x00000033,
-    0x00000054,
-    0xFFFFFFF3,
+    ANIMATION_ADD_POS(0x00000033, 0x00000054, -0x0000000d),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x06008808,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(&wut),
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0xFFFFFFDA,
-    0xFFFFFFCA,
-    0xFFFFFFF3,
+    ANIMATION_ADD_POS(-0x00000026, -0x00000036, -0x0000000d),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x06008930,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_sherbet_land_dl_8930),
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x00000026,
-    0xFFFFFFCA,
-    0xFFFFFFF3,
+    ANIMATION_ADD_POS(0x00000026, -0x00000036, -0x0000000d),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x06008A78,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_sherbet_land_dl_8A78),
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x0000006F,
-    0xFFFFFFED,
+    ANIMATION_ADD_POS(0x00000000, 0x0000006F, -0x00000013),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x06008E00,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_sherbet_land_dl_8E00),
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000003,
-    0x00000002,
+    ANIMATION_STOP,
 };
 
 // 0x0600905C
@@ -4618,7 +4537,7 @@ s16 d_course_sherbet_land_unk_data2[] = {
 };
 
 // 0x06009350
-animation_type_3_triplet d_course_sherbet_land_unk_data3[] = {
+AnimationLimbVector d_course_sherbet_land_unk_data3[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0001, 0x0001 },
@@ -4682,7 +4601,7 @@ animation_type_3_triplet d_course_sherbet_land_unk_data3[] = {
 };
 
 // 0x060093E0
-animation_type_2 d_course_sherbet_land_unk_data4 = {
+Animation d_course_sherbet_land_unk_data4 = {
     0x00010000,
     0x00050000,
     0x0013,
@@ -4843,7 +4762,7 @@ s16 d_course_sherbet_land_unk_data5[] = {
 };
 
 // 0x06009640
-animation_type_3_triplet d_course_sherbet_land_unk_data6[] = {
+AnimationLimbVector d_course_sherbet_land_unk_data6[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0019, 0x0001 },
@@ -4907,7 +4826,7 @@ animation_type_3_triplet d_course_sherbet_land_unk_data6[] = {
 };
 
 // 0x060096D0
-animation_type_2 d_course_sherbet_land_unk_data7 = {
+Animation d_course_sherbet_land_unk_data7 = {
     0x00000000,
     0x00000000,
     0x0019,
@@ -5129,7 +5048,7 @@ s16 d_course_sherbet_land_unk_data8[] = {
 };
 
 // 0x06009A24
-animation_type_3_triplet d_course_sherbet_land_unk_data9[] = {
+AnimationLimbVector d_course_sherbet_land_unk_data9[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0019, 0x0001 },
@@ -5193,7 +5112,7 @@ animation_type_3_triplet d_course_sherbet_land_unk_data9[] = {
 };
 
 // 0x06009AB4
-animation_type_2 d_course_sherbet_land_unk_data10 = {
+Animation d_course_sherbet_land_unk_data10 = {
     0x00000000,
     0x00000000,
     0x0019,
@@ -5203,7 +5122,7 @@ animation_type_2 d_course_sherbet_land_unk_data10 = {
 };
 
 // 0x06009AC8
-animation_type_2 *d_course_sherbet_land_unk_data11[] = {
+Animation *d_course_sherbet_land_unk_data11[] = {
     &d_course_sherbet_land_unk_data4,
     &d_course_sherbet_land_unk_data7,
     &d_course_sherbet_land_unk_data10,
