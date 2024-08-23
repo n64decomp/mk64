@@ -5,7 +5,8 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
-#include <code_80004740.h>
+#include <animation.h>
+#include <mk64.h>
 
 #include "course_displaylists.inc.h"
 
@@ -10804,7 +10805,7 @@ s16 d_course_yoshi_valley_unk1[] = {
 };
 
 // 0x06014714
-animation_type_3_triplet d_course_yoshi_valley_unk2[] = {
+AnimationLimbVector d_course_yoshi_valley_unk2[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0001, 0x0000 },
@@ -10853,7 +10854,7 @@ animation_type_3_triplet d_course_yoshi_valley_unk2[] = {
 };
 
 // 0x06014780
-animation_type_2 d_course_yoshi_valley_unk3 = {
+Animation d_course_yoshi_valley_unk3 = {
     0x00010000,
     0x00000000,
     0x001d,
@@ -10863,126 +10864,61 @@ animation_type_2 d_course_yoshi_valley_unk3 = {
 };
 
 // 0x06014794
-animation_type_2 *d_course_yoshi_valley_unk4[] = {
+Animation *d_course_yoshi_valley_unk4[] = {
     &d_course_yoshi_valley_unk3,
 };
 
 //! 0x06014798
 u32 d_course_yoshi_valley_unk5[] = {
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_ADD_POS(0x00000000, 0x00000000, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_yoshi_valley_dl_142C0,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_yoshi_valley_dl_142C0),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x000007f8,
-    0x00000000,
-    0x00000000,
+    ANIMATION_ADD_POS(0x000007f8, 0x00000000, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_yoshi_valley_dl_143C8,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_yoshi_valley_dl_143C8),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_yoshi_valley_dl_144A8,
-    0x000001cc,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL_AT(d_course_yoshi_valley_dl_144A8, 0x000001cc, 0x00000000, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_yoshi_valley_dl_14500,
-    0x000001cc,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL_AT(d_course_yoshi_valley_dl_14500, 0x000001cc, 0x00000000, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_yoshi_valley_dl_14558,
-    0x00000158,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL_AT(d_course_yoshi_valley_dl_14558, 0x00000158, 0x00000000, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_yoshi_valley_dl_145D0,
-    0x00000120,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL_AT(d_course_yoshi_valley_dl_145D0, 0x00000120, 0x00000000, 0x00000000),
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000003,
-    0x00000002,
+    ANIMATION_STOP,
 };
 
 // No idea what this stuff is
@@ -11379,60 +11315,60 @@ struct ActorSpawnData d_course_yoshi_valley_item_box_spawns[] = {
 
 // 0x18240
 TrackSections d_course_yoshi_valley_addr[] = {
-    {d_course_yoshi_valley_packed_dl_44C8, 2, 1, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4588, 2, 2, 0x0000},
-    {d_course_yoshi_valley_packed_dl_45F0, 2, 3, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4670, 2, 4, 0x0000},
-    {d_course_yoshi_valley_packed_dl_46E0, 2, 5, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4810, 2, 6, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4428, 2, 7, 0x0000},
-    {d_course_yoshi_valley_packed_dl_3E08, 2, 8, 0x0000},
-    {d_course_yoshi_valley_packed_dl_3F10, 2, 9, 0x0000},
-    {d_course_yoshi_valley_packed_dl_3FF0, 2, 10, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4108, 2, 11, 0x0000},
-    {d_course_yoshi_valley_packed_dl_41B0, 2, 12, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4258, 2, 13, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4358, 2, 14, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4918, 2, 15, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4FD0, 2, 16, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5058, 2, 17, 0x0000},
-    {d_course_yoshi_valley_packed_dl_1418, 17, 18, 0x0000},
-    {d_course_yoshi_valley_packed_dl_50E0, 2, 19, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5158, 2, 20, 0x0000},
-    {d_course_yoshi_valley_packed_dl_51D8, 2, 21, 0x0000},
-    {d_course_yoshi_valley_packed_dl_52D8, 2, 22, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4F48, 2, 23, 0x0000},
-    {d_course_yoshi_valley_packed_dl_49C0, 2, 24, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4A58, 2, 25, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4B20, 2, 26, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4C18, 2, 27, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4CB0, 2, 28, 0x0000},
-    {d_course_yoshi_valley_packed_dl_1580, 17, 29, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4D68, 2, 30, 0x0000},
-    {d_course_yoshi_valley_packed_dl_4E88, 2, 31, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5788, 8, 1, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5800, 8, 1, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5880, 8, 2, 0x0000},
-    {d_course_yoshi_valley_packed_dl_58F8, 8, 2, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5710, 8, 3, 0x0000},
-    {d_course_yoshi_valley_packed_dl_54B0, 8, 3, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5548, 8, 4, 0x0000},
-    {d_course_yoshi_valley_packed_dl_55C0, 8, 4, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5628, 8, 4, 0x0000},
-    {d_course_yoshi_valley_packed_dl_56A0, 8, 19, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5970, 8, 19, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5C80, 8, 20, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5D00, 8, 20, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5D90, 8, 19, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5DF8, 8, 20, 0x0000},
-    {d_course_yoshi_valley_packed_dl_5C18, 8, 1, 0x0000},
-    {d_course_yoshi_valley_packed_dl_59F0, 8, 3, 0x0000},
-    {d_course_yoshi_valley_packed_dl_75D0, 255, 255, 0x0000},
-    {d_course_yoshi_valley_packed_dl_3010, 255, 255, 0x0000},
-    {d_course_yoshi_valley_packed_dl_8050, 255, 255, 0x0000},
-    {d_course_yoshi_valley_packed_dl_13D8, 255, 255, 0x8000},
-    {d_course_yoshi_valley_packed_dl_D20, 255, 255, 0x8000},
-    { 0x00000000, 0, 0, 0x0000 },
+    {d_course_yoshi_valley_packed_dl_44C8, DIRT,        1,   0x0000},
+    {d_course_yoshi_valley_packed_dl_4588, DIRT,        2,   0x0000},
+    {d_course_yoshi_valley_packed_dl_45F0, DIRT,        3,   0x0000},
+    {d_course_yoshi_valley_packed_dl_4670, DIRT,        4,   0x0000},
+    {d_course_yoshi_valley_packed_dl_46E0, DIRT,        5,   0x0000},
+    {d_course_yoshi_valley_packed_dl_4810, DIRT,        6,   0x0000},
+    {d_course_yoshi_valley_packed_dl_4428, DIRT,        7,   0x0000},
+    {d_course_yoshi_valley_packed_dl_3E08, DIRT,        8,   0x0000},
+    {d_course_yoshi_valley_packed_dl_3F10, DIRT,        9,   0x0000},
+    {d_course_yoshi_valley_packed_dl_3FF0, DIRT,        10,  0x0000},
+    {d_course_yoshi_valley_packed_dl_4108, DIRT,        11,  0x0000},
+    {d_course_yoshi_valley_packed_dl_41B0, DIRT,        12,  0x0000},
+    {d_course_yoshi_valley_packed_dl_4258, DIRT,        13,  0x0000},
+    {d_course_yoshi_valley_packed_dl_4358, DIRT,        14,  0x0000},
+    {d_course_yoshi_valley_packed_dl_4918, DIRT,        15,  0x0000},
+    {d_course_yoshi_valley_packed_dl_4FD0, DIRT,        16,  0x0000},
+    {d_course_yoshi_valley_packed_dl_5058, DIRT,        17,  0x0000},
+    {d_course_yoshi_valley_packed_dl_1418, WOOD_BRIDGE, 18,  0x0000},
+    {d_course_yoshi_valley_packed_dl_50E0, DIRT,        19,  0x0000},
+    {d_course_yoshi_valley_packed_dl_5158, DIRT,        20,  0x0000},
+    {d_course_yoshi_valley_packed_dl_51D8, DIRT,        21,  0x0000},
+    {d_course_yoshi_valley_packed_dl_52D8, DIRT,        22,  0x0000},
+    {d_course_yoshi_valley_packed_dl_4F48, DIRT,        23,  0x0000},
+    {d_course_yoshi_valley_packed_dl_49C0, DIRT,        24,  0x0000},
+    {d_course_yoshi_valley_packed_dl_4A58, DIRT,        25,  0x0000},
+    {d_course_yoshi_valley_packed_dl_4B20, DIRT,        26,  0x0000},
+    {d_course_yoshi_valley_packed_dl_4C18, DIRT,        27,  0x0000},
+    {d_course_yoshi_valley_packed_dl_4CB0, DIRT,        28,  0x0000},
+    {d_course_yoshi_valley_packed_dl_1580, WOOD_BRIDGE, 29,  0x0000},
+    {d_course_yoshi_valley_packed_dl_4D68, DIRT,        30,  0x0000},
+    {d_course_yoshi_valley_packed_dl_4E88, DIRT,        31,  0x0000},
+    {d_course_yoshi_valley_packed_dl_5788, GRASS,       1,   0x0000},
+    {d_course_yoshi_valley_packed_dl_5800, GRASS,       1,   0x0000},
+    {d_course_yoshi_valley_packed_dl_5880, GRASS,       2,   0x0000},
+    {d_course_yoshi_valley_packed_dl_58F8, GRASS,       2,   0x0000},
+    {d_course_yoshi_valley_packed_dl_5710, GRASS,       3,   0x0000},
+    {d_course_yoshi_valley_packed_dl_54B0, GRASS,       3,   0x0000},
+    {d_course_yoshi_valley_packed_dl_5548, GRASS,       4,   0x0000},
+    {d_course_yoshi_valley_packed_dl_55C0, GRASS,       4,   0x0000},
+    {d_course_yoshi_valley_packed_dl_5628, GRASS,       4,   0x0000},
+    {d_course_yoshi_valley_packed_dl_56A0, GRASS,       19,  0x0000},
+    {d_course_yoshi_valley_packed_dl_5970, GRASS,       19,  0x0000},
+    {d_course_yoshi_valley_packed_dl_5C80, GRASS,       20,  0x0000},
+    {d_course_yoshi_valley_packed_dl_5D00, GRASS,       20,  0x0000},
+    {d_course_yoshi_valley_packed_dl_5D90, GRASS,       19,  0x0000},
+    {d_course_yoshi_valley_packed_dl_5DF8, GRASS,       20,  0x0000},
+    {d_course_yoshi_valley_packed_dl_5C18, GRASS,       1,   0x0000},
+    {d_course_yoshi_valley_packed_dl_59F0, GRASS,       3,   0x0000},
+    {d_course_yoshi_valley_packed_dl_75D0, RAMP,        255, 0x0000},
+    {d_course_yoshi_valley_packed_dl_3010, RAMP,        255, 0x0000},
+    {d_course_yoshi_valley_packed_dl_8050, RAMP,        255, 0x0000},
+    {d_course_yoshi_valley_packed_dl_13D8, RAMP,        255, 0x8000},
+    {d_course_yoshi_valley_packed_dl_D20,  RAMP,        255, 0x8000},
+    { 0x00000000,                          0,           0,   0x0000 },
 };
 
 Gfx *d_course_yoshi_valley_dl_list[] = {

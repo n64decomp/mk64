@@ -315,19 +315,19 @@ void update_actor_banana_bunch(struct BananaBunchParent *banana_bunch) {
 bool is_shell_exist(s16 arg0) {
     struct ShellActor *actor;
     if (arg0 < 0) {
-        return FALSE;
+        return false;
     }
     actor = (struct ShellActor*) &gActorList[arg0];
     if (actor->type == ACTOR_GREEN_SHELL) {
         if (actor->state == TRIPLE_GREEN_SHELL) {
-            return TRUE;
+            return true;
         }
-        return FALSE;
+        return false;
     }
     if (actor->state == TRIPLE_RED_SHELL) {
-        return TRUE;
+        return true;
     }
-    return FALSE;
+    return false;
 }
 
 void update_actor_triple_shell(TripleShellParent *parent, s16 shellType) {
@@ -606,12 +606,12 @@ s32 use_green_shell_item(Player *player) {
 
     // rotate to match player orientation
     mtxf_translate_vec3f_mat3(startingPos, player->orientationMatrix);
-    
+
     // move to player position
     startingPos[0] += player->pos[0];
     startingPos[1] += player->pos[1];
     startingPos[2] += player->pos[2];
-    
+
     // spawn the shell
     actorIndex = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_GREEN_SHELL);
     if (actorIndex < 0) {
@@ -848,8 +848,8 @@ s32 use_banana_item(Player *player) {
 
 /**
  * Strikes players with thunder
- * 
- * @param Activating player (not to be struck) 
+ *
+ * @param Activating player (not to be struck)
  */
 void use_thunder_item(Player *player) {
     s32 index;
@@ -932,7 +932,7 @@ void check_player_use_item(void) {
 
     for (player = &gPlayers[0], loopController = &gControllers[0], target = &gControllers[4]; loopController != target; player++, loopController++) {
         controller = loopController;
-        if (prevent_item_use(player) == FALSE) {
+        if (prevent_item_use(player) == false) {
             if((player->type & PLAYER_INVISIBLE_OR_BOMB) != 0){
                 if ((player - gPlayerTwo) == 0) {
                     controller = gControllerSix;

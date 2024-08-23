@@ -30,9 +30,9 @@ UNUSED void operator_xor(s32 *arg0, s32 arg1) {
 UNUSED bool func_80040E84(s32 *arg0, s32 arg1) {
     bool phi_v1;
 
-    phi_v1 = FALSE;
+    phi_v1 = false;
     if ((*arg0 & arg1) != 0) {
-        phi_v1 = TRUE;
+        phi_v1 = true;
     }
     return phi_v1;
 }
@@ -455,10 +455,10 @@ bool is_particle_on_screen(Vec3f arg0, Camera *arg1, u16 arg2) {
     u16 temp_t9;
     s32 ret;
 
-    ret = FALSE;
+    ret = false;
     temp_t9 = (get_angle_between_xy(arg1->pos[0], arg0[0], arg1->pos[2], arg0[2]) + (arg2 / 2)) - arg1->rot[1];
     if ((temp_t9 >= 0) && (arg2 >= temp_t9)) {
-        ret = TRUE;
+        ret = true;
     }
     return ret;
 }
@@ -502,7 +502,7 @@ void mtfx_translation_x_y(Mat4 arg0, s32 x, s32 y) {
      * 1 0 0 x
      * 0 1 0 y
      * 0 0 1 0
-     * 0 0 0 1    
+     * 0 0 0 1
      */
 }
 
@@ -944,10 +944,10 @@ void vec3f_rotate_x_y(Vec3f dest, Vec3f pos, Vec3s rot) {
 
 /**
  * @brief set the matrix to a transformation matrix
- * 
+ *
  * @param translate or position
- * @param orientation 
- * @param scale 
+ * @param orientation
+ * @param scale
  */
 void rsp_set_matrix_transformation(Vec3f translate, Vec3su orientation, f32 scale) {
     Mat4 matrix;

@@ -26,7 +26,7 @@ void __osTimerInterrupt(void) {
     if (__osTimerList->next == __osTimerList) {
         return;
     }
-    while (TRUE) {
+    while (true) {
         sp24 = __osTimerList->next;
         if (sp24 == __osTimerList) {
             __osSetCompare(0);
