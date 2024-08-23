@@ -204,7 +204,7 @@ extern Animation d_course_sherbet_land_unk_data7;
 extern s16 d_course_sherbet_land_unk_data8[];
 extern AnimationLimbVector d_course_sherbet_land_unk_data9[];
 extern Animation d_course_sherbet_land_unk_data10;
-extern Animation *d_course_sherbet_land_unk_data11[];
+extern Animation* d_course_sherbet_land_unk_data11[];
 extern u32 d_course_sherbet_land_unk_data12[];
 extern Gfx d_course_sherbet_land_dl_9AE8[];
 extern struct ActorSpawnData d_course_sherbet_land_item_box_spawns[];

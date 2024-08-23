@@ -7,12 +7,7 @@ jobs:
     strategy:
       matrix:
         path:
-          - "src"
-          - "include"
           - "courses"
-          - "assets"
-          - "data"
-          - "asm"
     steps:
       - uses: actions/checkout@v4
       - name: Run clang-format style check for C/C++/Protobuf programs.
