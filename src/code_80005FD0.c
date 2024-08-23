@@ -4894,7 +4894,7 @@ void func_80013854(Player *player) {
     }
 }
 
-void initialize_toad_turnpike_vehicle(f32 speedA, f32 speedB, s32 numVehicles, s32 arg3, VehicleStuff *vehicleList, TrackWaypoint *waypointList) {
+void initialize_toads_turnpike_vehicle(f32 speedA, f32 speedB, s32 numVehicles, s32 arg3, VehicleStuff *vehicleList, TrackWaypoint *waypointList) {
     VehicleStuff *veh;
     TrackWaypoint *temp_v0;
     s32 i;
@@ -5237,7 +5237,7 @@ void init_vehicles_box_trucks(void) {
     if (gModeSelection == TIME_TRIALS) {
         numTrucks = NUM_TIME_TRIAL_BOX_TRUCKS;
     }
-    initialize_toad_turnpike_vehicle(a, b, numTrucks, 0, gBoxTruckList, &D_80164550[0][0]);
+    initialize_toads_turnpike_vehicle(a, b, numTrucks, 0, gBoxTruckList, &D_80164550[0][0]);
 }
 
 void update_vehicle_box_trucks(void) {
@@ -5264,7 +5264,7 @@ void init_vehicles_school_buses(void) {
     if (gModeSelection == TIME_TRIALS) {
         numBusses = NUM_TIME_TRIAL_SCHOOL_BUSES;
     }
-    initialize_toad_turnpike_vehicle(a, b, numBusses, 75, gSchoolBusList, &D_80164550[0][0]);
+    initialize_toads_turnpike_vehicle(a, b, numBusses, 75, gSchoolBusList, &D_80164550[0][0]);
 }
 
 void update_vehicle_school_bus(void) {
@@ -5291,7 +5291,7 @@ void init_vehicles_trucks(void) {
     if (gModeSelection == TIME_TRIALS) {
         numTrucks = NUM_TIME_TRIAL_TANKER_TRUCKS;
     }
-    initialize_toad_turnpike_vehicle(a, b, numTrucks, 50, gTankerTruckList, &D_80164550[0][0]);
+    initialize_toads_turnpike_vehicle(a, b, numTrucks, 50, gTankerTruckList, &D_80164550[0][0]);
 }
 
 void update_vehicle_tanker_trucks(void) {
@@ -5318,7 +5318,7 @@ void init_vehicles_cars(void) {
     if (gModeSelection == TIME_TRIALS) {
         numCars = NUM_TIME_TRIAL_CARS;
     }
-    initialize_toad_turnpike_vehicle(a, b, numCars, 25, gCarList, &D_80164550[0][0]);
+    initialize_toads_turnpike_vehicle(a, b, numCars, 25, gCarList, &D_80164550[0][0]);
 }
 
 void update_vehicle_cars(void) {
