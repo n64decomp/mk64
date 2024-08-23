@@ -167,7 +167,7 @@ void check_ai_crossing_distance(s32);
 void init_vehicles_ferry(void);
 void update_vehicle_paddle_boats(void);
 void func_80013854(Player*);
-void initialize_toad_turnpike_vehicle(f32, f32, s32, s32, VehicleStuff*, TrackWaypoint*);
+void initialize_toads_turnpike_vehicle(f32, f32, s32, s32, VehicleStuff*, TrackWaypoint*);
 f32  func_80013C74(s16, s16);
 void update_vehicle_follow_waypoint(VehicleStuff*);
 void func_80013F7C(s32, Player*, VehicleStuff*, f32, f32, s32, u32);
