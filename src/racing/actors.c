@@ -257,7 +257,7 @@ void actor_init(struct Actor *actor, Vec3f startingPos, Vec3s startingRot, Vec3f
             actor->flags = actor->flags | 0x4000 | 0x1000;
             actor->unk_08 = 0.35f;
             actor->boundingBoxSize = 1.925f;
-            func_802ADDC8(&actor->unk30, 1.925f, actor->pos[0], actor->pos[1], actor->pos[2]);
+            check_bounding_collision(&actor->unk30, 1.925f, actor->pos[0], actor->pos[1], actor->pos[2]);
             break;
         case ACTOR_HOT_AIR_BALLOON_ITEM_BOX:
             actor->flags |= 0x4000;
@@ -376,21 +376,21 @@ void func_80297760(struct Actor *arg0, Vec3f arg1) {
     arg1[0] = arg0->pos[0];
     arg1[1] = arg0->pos[1];
     arg1[2] = arg0->pos[2];
-    arg1[1] = func_802ABE30(arg1[0], arg1[1], arg1[2], arg0->unk30.unk3A);
+    arg1[1] = calculate_surface_height(arg1[0], arg1[1], arg1[2], arg0->unk30.meshIndexZX);
 }
 
 void func_802977B0(Player *arg0) {
-    arg0->boundingBoxCorners[1].unk_14 |= 2;
-    arg0->boundingBoxCorners[0].unk_14 |= 2;
-    arg0->boundingBoxCorners[3].unk_14 |= 2;
-    arg0->boundingBoxCorners[2].unk_14 |= 2;
+    arg0->tyres[FRONT_RIGHT].unk_14 |= 2;
+    arg0->tyres[FRONT_LEFT].unk_14 |= 2;
+    arg0->tyres[BACK_RIGHT].unk_14 |= 2;
+    arg0->tyres[BACK_LEFT].unk_14 |= 2;
 }
 
 void func_802977E4(Player *arg0) {
-    arg0->boundingBoxCorners[1].unk_14 &= ~2 & 0xFFFF;
-    arg0->boundingBoxCorners[0].unk_14 &= ~2 & 0xFFFF;
-    arg0->boundingBoxCorners[3].unk_14 &= ~2 & 0xFFFF;
-    arg0->boundingBoxCorners[2].unk_14 &= ~2 & 0xFFFF;
+    arg0->tyres[FRONT_RIGHT].unk_14 &= ~2 & 0xFFFF;
+    arg0->tyres[FRONT_LEFT].unk_14 &= ~2 & 0xFFFF;
+    arg0->tyres[BACK_RIGHT].unk_14 &= ~2 & 0xFFFF;
+    arg0->tyres[BACK_LEFT].unk_14 &= ~2 & 0xFFFF;
 }
 
 // Invert green and red on green shell texture
@@ -564,8 +564,7 @@ void evaluate_collision_players_palm_trees(void) {
     s32 index;
 
     for (index = 0; index < 4; index++){
-        // wtf is up with the << 0x18 >> 0x18? is it some weird type conversion? just use & 0xFF have the same effect to keep 8 first bit
-        if (((gPlayers[index].type & 0xC000) != 0) && (((get_surface_type(gPlayers[index].unk_110.unk3A) << 24) >> 24) == GRASS)) {
+        if (((gPlayers[index].type & 0xC000) != 0) && ((s8)(u8)get_surface_type(gPlayers[index].collision.meshIndexZX) == GRASS)) {
             evaluate_collision_player_palm_trees(&gPlayers[index]);
         }
     }
@@ -855,7 +854,7 @@ void spawn_palm_trees(struct ActorSpawnData *spawnData) {
         temp_v1 = (struct PalmTree *) &gActorList[temp];
 
         temp_v1->variant = temp_s0->someId;
-        func_802ADDC8((Collision *) &temp_v1->unk30, 5.0f, temp_v1->pos[0], temp_v1->pos[1], temp_v1->pos[2]);
+        check_bounding_collision((Collision *) &temp_v1->unk30, 5.0f, temp_v1->pos[0], temp_v1->pos[1], temp_v1->pos[2]);
         func_802976EC((Collision *) &temp_v1->unk30, temp_v1->rot);
         temp_s0++;
     }
@@ -935,9 +934,9 @@ void spawn_foliage(struct ActorSpawnData *arg0) {
         if (gGamestate == CREDITS_SEQUENCE) {
             func_802976D8(temp_s0->rot);
         } else {
-            func_802ADDC8(&temp_s0->unk30, 5.0f, temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2]);
-            if (temp_s0->unk30.unk3C[2] < 0.0f) {
-                temp_s0->pos[1] = func_802ABE30(temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2], temp_s0->unk30.unk3A);
+            check_bounding_collision(&temp_s0->unk30, 5.0f, temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2]);
+            if (temp_s0->unk30.surfaceDistance[2] < 0.0f) {
+                temp_s0->pos[1] = calculate_surface_height(temp_s0->pos[0], temp_s0->pos[1], temp_s0->pos[2], temp_s0->unk30.meshIndexZX);
             }
             func_802976EC(&temp_s0->unk30, temp_s0->rot);
         }
@@ -967,7 +966,7 @@ void spawn_all_item_boxes(struct ActorSpawnData *spawnData) {
         startingRot[1] = random_u16();
         startingRot[2] = random_u16();
         temp_s1 = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_ITEM_BOX);
-        temp_f0 = func_802AE1C0(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
+        temp_f0 = spawn_actor_on_surface(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
 
         // Should be struct ItemBox but not enough space in the stack.
         // It's either the ItemBox or the SEGMENT/OFFSET variables.
@@ -1157,7 +1156,7 @@ void spawn_course_actors(void) {
 /**
  * @brief Loads actor textures, course specific actor textures.
  * Calls to init_course_vehicles and place_course_actors
- * 
+ *
  */
 void init_actors_and_load_textures(void) {
     set_segment_base_addr(3, (void *) gNextFreeMemoryAddress);
@@ -1555,9 +1554,9 @@ bool collision_mario_sign(Player *player, struct Actor *marioRacewaySign) {
                 func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x70, 0x1A));
             }
         }
-        return TRUE;
+        return true;
     }
-    return FALSE;
+    return false;
 }
 
 bool collision_piranha_plant(Player *player, struct PiranhaPlant *plant) {
@@ -1571,9 +1570,9 @@ bool collision_piranha_plant(Player *player, struct PiranhaPlant *plant) {
                 func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0xA0, 0x52));
             }
         }
-        return TRUE;
+        return true;
     }
-    return FALSE;
+    return false;
 }
 
 bool collision_yoshi_egg(Player *player, struct YoshiValleyEgg *egg) {
@@ -1588,34 +1587,34 @@ bool collision_yoshi_egg(Player *player, struct YoshiValleyEgg *egg) {
 
     x_dist = egg->pos[0] - player->pos[0];
     if ((x_dist < minDist) && (x_dist < -maxDist)) {
-        return FALSE;
+        return false;
     }
     if (x_dist > maxDist) {
-        return FALSE;
+        return false;
     }
 
     z_dist = egg->pos[2] - player->pos[2];
     if ((z_dist < minDist) && (z_dist < -maxDist)) {
-        return FALSE;
+        return false;
     }
     if (z_dist > maxDist) {
-        return FALSE;
+        return false;
     }
 
     xz_dist = sqrtf((x_dist * x_dist) + (z_dist * z_dist));
     if (xz_dist > maxDist) {
-        return FALSE;
+        return false;
     }
     func_802977B0(player);
 
     y_dist = player->pos[1] - egg->pos[1];
     if (y_dist < minDist) {
-        return FALSE;
+        return false;
     }
 
     totalBox = player->boundingBoxSize + egg->boundingBoxSize;
     if (totalBox < xz_dist) {
-        return FALSE;
+        return false;
     }
 
     if ((player->type & PLAYER_HUMAN) != 0) {
@@ -1634,7 +1633,7 @@ bool collision_yoshi_egg(Player *player, struct YoshiValleyEgg *egg) {
         apply_hit_sound_effect(player, player - gPlayerOne);
     }
 
-    return TRUE;
+    return true;
 }
 
 bool collision_tree(Player *player, struct Actor *actor) {
@@ -1654,33 +1653,33 @@ bool collision_tree(Player *player, struct Actor *actor) {
     var_f16 = actor->unk_08;
     x_dist = actor->pos[0] - player->pos[0];
     if ((x_dist < 0.0f) && (x_dist < -var_f16)) {
-        return FALSE;
+        return false;
     }
     if (var_f16 < x_dist) {
-        return FALSE;
+        return false;
     }
     z_dist = actor->pos[2] - player->pos[2];
     if ((z_dist < 0.0f) && (z_dist < -var_f16)) {
-        return FALSE;
+        return false;
     }
     if (var_f16 < z_dist) {
-        return FALSE;
+        return false;
     }
     y_dist = player->pos[1] - actor->pos[1];
     if (y_dist < 0.0f) {
-        return FALSE;
+        return false;
     }
     if ((f32) actor->state < y_dist) {
-        return FALSE;
+        return false;
     }
     xz_dist = sqrtf((x_dist * x_dist) + (z_dist * z_dist));
     if (var_f16 < xz_dist) {
-        return FALSE;
+        return false;
     }
     func_802977B0(player);
     var_f16 = player->boundingBoxSize + actor->boundingBoxSize;
     if (var_f16 < xz_dist) {
-        return FALSE;
+        return false;
     }
     sp48 = player->velocity[0];
     sp44 = player->velocity[2];
@@ -1689,7 +1688,7 @@ bool collision_tree(Player *player, struct Actor *actor) {
             actor->flags |= 0x400;
             func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x10));
             func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
-            return TRUE;
+            return true;
         }
         if (!(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
             func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x70, 0x18));
@@ -1720,7 +1719,7 @@ bool collision_tree(Player *player, struct Actor *actor) {
             player->pos[2] = actorPos[2] - (z_dist * var_f16 * 1.2f);
             player->velocity[0] = 0;
             player->velocity[2] = 0;
-            return TRUE;
+            return true;
         }
         temp_f12 = ((x_dist * sp48) + (z_dist * sp44)) / temp_f0_4;
         temp_f12 = temp_f0_4 * temp_f12 * 1.5f;
@@ -1730,7 +1729,7 @@ bool collision_tree(Player *player, struct Actor *actor) {
         player->pos[0] += x_dist * temp_f2 * 0.5f;
         player->pos[2] += z_dist * temp_f2 * 0.5f;
     }
-    return TRUE;
+    return true;
 }
 
 bool query_collision_player_vs_actor_item(Player *arg0, struct Actor *arg1) {
@@ -1818,18 +1817,18 @@ void destroy_destructable_actor(struct Actor *actor) {
     Player *player;
 
     switch (actor->type) {
-    	case ACTOR_BANANA:
-        	banana = (struct BananaActor *)actor;
-        	switch (banana->state) {
-        		case FIRST_BANANA_BUNCH_BANANA:
-        		case BANANA_BUNCH_BANANA:
-            		destroy_banana_in_banana_bunch(banana);
-            		break;
-        		case HELD_BANANA:
-            		player = &gPlayers[banana->playerId];
-            		player->soundEffects &= ~0x00040000;
-            		/* fallthrough */
-        		case BANANA_ON_GROUND:
+        case ACTOR_BANANA:
+            banana = (struct BananaActor *)actor;
+            switch (banana->state) {
+                case FIRST_BANANA_BUNCH_BANANA:
+                case BANANA_BUNCH_BANANA:
+                    destroy_banana_in_banana_bunch(banana);
+                    break;
+                case HELD_BANANA:
+                    player = &gPlayers[banana->playerId];
+                    player->soundEffects &= ~0x00040000;
+                    /* fallthrough */
+                case BANANA_ON_GROUND:
             		banana->flags = -0x8000;
             		banana->unk_04 = 0x003C;
             		banana->state = DESTROYED_BANANA;

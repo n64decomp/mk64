@@ -5,7 +5,8 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
-#include <code_80004740.h>
+#include <animation.h>
+#include <mk64.h>
 
 #include "course_displaylists.inc.h"
 
@@ -3414,7 +3415,7 @@ Gfx d_course_rainbow_road_dl_15F18[] =
 };
 
 // 0x06015FC8
-s16 d_rainbow_road_chomp_jaw_animation[] = {
+s16 d_rainbow_road_chomp_angle[] = {
     0x0000, 0x3fff,
     0x9602, 0x9483,
     0x90d2, 0x8c1b,
@@ -3470,7 +3471,7 @@ s16 d_rainbow_road_chomp_jaw_animation[] = {
 };
 
 // 0x06016098
-animation_type_3_triplet d_rainbow_road_unk1[] = {
+AnimationLimbVector d_rainbow_road_chomp_animation_matrix[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0001, 0x0000 },
@@ -3514,98 +3515,49 @@ animation_type_3_triplet d_rainbow_road_unk1[] = {
 };
 
 // 0x060160F8
-animation_type_2 d_rainbow_road_unk2 = {
+Animation d_rainbow_road_unk2 = {
     0x00010000,
     0x00000000,
     0x0014,
     0x0007,
-    d_rainbow_road_chomp_jaw_animation,
-    d_rainbow_road_unk1,
+    d_rainbow_road_chomp_angle,
+    d_rainbow_road_chomp_animation_matrix,
 };
 
 // 0x0601610C
-animation_type_2 *d_rainbow_road_unk3[] = {
+Animation *d_rainbow_road_unk3[] = {
     &d_rainbow_road_unk2,
 };
 
 // 0x06016110
 u32 d_rainbow_road_unk4[] = {
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x0000023a,
-    0x00000000,
+    ANIMATION_ADD_POS(0x00000000, 0x0000023a, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_rainbow_road_dl_15550,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_rainbow_road_dl_15550),
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_rainbow_road_dl_151A8,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_rainbow_road_dl_151A8),
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x0000023a,
-    0x00000000,
+    ANIMATION_ADD_POS(0x00000000, 0x0000023a, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_rainbow_road_dl_15C68,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_rainbow_road_dl_15C68),
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_rainbow_road_dl_158C0,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_rainbow_road_dl_158C0),
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_rainbow_road_dl_15F18,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_rainbow_road_dl_15F18),
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000003,
-    0x00000002,
+    ANIMATION_STOP,
 };
 
 // No idea what this stuff is
@@ -3696,21 +3648,21 @@ struct ActorSpawnData d_course_rainbow_road_item_box_spawns[] = {
 };
 
 TrackSections d_course_rainbow_road_addr[] = {
-    { d_course_rainbow_road_packed_dl_20C0, 1, 255, 0x0000 },
-    { d_course_rainbow_road_packed_dl_1850, 1, 1, 0x0000 },
-    { d_course_rainbow_road_packed_dl_1758, 1, 2, 0x0000 },
-    { d_course_rainbow_road_packed_dl_1698, 1, 3, 0x0000 },
-    { d_course_rainbow_road_packed_dl_15F8, 1, 4, 0x0000 },
-    { d_course_rainbow_road_packed_dl_1528, 1, 5, 0x0000 },
-    { d_course_rainbow_road_packed_dl_13A0, 1, 6, 0x0000 },
-    { d_course_rainbow_road_packed_dl_1978, 1, 7, 0x0000 },
-    { d_course_rainbow_road_packed_dl_1D30, 1, 8, 0x0000 },
-    { d_course_rainbow_road_packed_dl_1C70, 1, 9, 0x0000 },
-    { d_course_rainbow_road_packed_dl_1BC0, 1, 10, 0x0000 },
-    { d_course_rainbow_road_packed_dl_1B28, 1, 11, 0x0000 },
-    { d_course_rainbow_road_packed_dl_1A20, 1, 12, 0x0000 },
-    { d_course_rainbow_road_packed_dl_1318, 255, 255, 0x0000 },
-    { 0x00000000, 0, 0, 0x0000 },
+    { d_course_rainbow_road_packed_dl_20C0, ASPHALT, 255, 0x0000 },
+    { d_course_rainbow_road_packed_dl_1850, ASPHALT, 1,   0x0000 },
+    { d_course_rainbow_road_packed_dl_1758, ASPHALT, 2,   0x0000 },
+    { d_course_rainbow_road_packed_dl_1698, ASPHALT, 3,   0x0000 },
+    { d_course_rainbow_road_packed_dl_15F8, ASPHALT, 4,   0x0000 },
+    { d_course_rainbow_road_packed_dl_1528, ASPHALT, 5,   0x0000 },
+    { d_course_rainbow_road_packed_dl_13A0, ASPHALT, 6,   0x0000 },
+    { d_course_rainbow_road_packed_dl_1978, ASPHALT, 7,   0x0000 },
+    { d_course_rainbow_road_packed_dl_1D30, ASPHALT, 8,   0x0000 },
+    { d_course_rainbow_road_packed_dl_1C70, ASPHALT, 9,   0x0000 },
+    { d_course_rainbow_road_packed_dl_1BC0, ASPHALT, 10,  0x0000 },
+    { d_course_rainbow_road_packed_dl_1B28, ASPHALT, 11,  0x0000 },
+    { d_course_rainbow_road_packed_dl_1A20, ASPHALT, 12,  0x0000 },
+    { d_course_rainbow_road_packed_dl_1318, RAMP,    255, 0x0000 },
+    { 0x00000000,                           0,       0,   0x0000 },
 };
 
 Gfx *d_course_rainbow_road_dl_list[] = {

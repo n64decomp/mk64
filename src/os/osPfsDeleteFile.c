@@ -56,7 +56,7 @@ s32 osPfsDeleteFile(OSPfs *pfs, u16 company_code, u32 game_code, u8 *game_name,
         dir.ext_name[k] = 0;
     }
     dir.status = DIR_STATUS_EMPTY;
-    ret = __osContRamWrite(pfs->queue, pfs->channel, pfs->dir_table + file_no, (u8*)&dir, FALSE);
+    ret = __osContRamWrite(pfs->queue, pfs->channel, pfs->dir_table + file_no, (u8*)&dir, false);
 
     return ret;
 }

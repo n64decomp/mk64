@@ -1,8 +1,8 @@
 #ifndef UPDATE_OBJECTS_H
 #define UPDATE_OBJECTS_H
 
-#include "code_80004740.h"
-#include "common_structs.h"
+#include "animation.h"
+#include <common_structs.h>
 #include "camera.h"
 #include "objects.h"
 
@@ -19,13 +19,13 @@ void func_80072180(void);
 void set_object_flag_status_true(s32, s32);
 void set_object_flag_status_false(s32, s32);
 void func_80072214(s32, s32);
-s32  is_obj_flag_status_active(s32, s32);
+bool  is_obj_flag_status_active(s32, s32);
 s32  is_obj_index_flag_status_inactive(s32, s32);
 void func_800722A4(s32, s32);
 void func_800722CC(s32, s32);
 void func_800722F8(s32, s32);
-s32  func_80072320(s32, s32);
-s32  func_80072354(s32, s32);
+bool  func_80072320(s32, s32);
+bool  func_80072354(s32, s32);
 void set_object_unk_0CB(s32, s32);
 void init_object(s32, s32);
 void func_80072408(s32);
@@ -55,8 +55,8 @@ s32  func_80072B48(s32, s32);
 void func_80072C00(s32, s32, s32, s32);
 void func_80072D3C(s32, s32, s32, s32, s32);
 s32  func_80072E54(s32, s32, s32, s32, s32, s32);
-s32  func_80072F88(s32, s32, s32, s32, s32, s32);
-s32  func_800730BC(s32, s32, s32, s32, s32, s32);
+bool  func_80072F88(s32, s32, s32, s32, s32, s32);
+bool  func_800730BC(s32, s32, s32, s32, s32, s32);
 s32  func_8007326C(s32, s32, s32, s32, s32, s32);
 void func_80073404(s32, u8, u8, Vtx*);
 void init_texture_object(s32, u8*, u8*, u8, u16);
@@ -71,7 +71,7 @@ void func_80073654(s32);
 void func_8007369C(s32, s32);
 void func_800736E0(s32);
 void func_80073720(s32);
-s32  func_8007375C(s32, s32);
+bool  func_8007375C(s32, s32);
 void func_80073800(s32, s32);
 void func_8007381C(s32);
 void func_80073844(s32);
@@ -79,21 +79,21 @@ void func_80073884(s32);
 s32  func_800738A8(s32, s16*, s32, s32, s32, s32, s32);
 void func_80073998(s32, s16*, s32, s32, s32, s32, s32);
 void func_800739CC(s32, s16*, s32, s32, s32, s32, s32);
-s32  func_80073A10(s32, s16*, s32, s32, s32, s32, s32);
+bool  func_80073A10(s32, s16*, s32, s32, s32, s32, s32);
 s32  func_80073B00(s32, s16*, s32, s32, s32, s32, s32);
 s32  func_80073B34(s32, s16*, s32, s32, s32, s32, s32);
-s32  func_80073B78(s32, s32, s16*, s32, s32, s32, s32, s32);
+bool  func_80073B78(s32, s32, s16*, s32, s32, s32, s32, s32);
 bool func_80073CB0(s32, s16*, s32, s32, s32, s32, s32);
 bool func_80073D0C(s32, s16*, s32, s32, s32, s32, s32);
 void func_80073D68(s32, s16*, s16, s32);
 void func_80073DC0(s32, s16*, s16, s32);
-s32  func_80073E18(s32, u16*, u16, s32);
-s32  func_80073ED4(s32, u16*, u16, s32);
+bool  func_80073E18(s32, u16*, u16, s32);
+UNUSED bool  func_80073ED4(s32, u16*, u16, s32);
 void func_80073F90(s32, s32);
 void func_80073FAC(s32);
 void func_80073FD4(s32);
 void func_80074014(void);
-s32  func_8007401C(s32, f32*, f32, f32, f32, s32, s32);
+bool  func_8007401C(s32, f32*, f32, f32, f32, s32, s32);
 s32  func_80074118(s32, f32*, f32, f32, f32, s32, s32);
 s32  func_8007415C(s32, f32*, f32, f32, f32, s32, s32);
 s32  func_800741B4(s32, f32*, f32, f32, f32, s32, s32);
@@ -104,9 +104,9 @@ void func_80074478(s32);
 void func_800744A0(s32);
 void func_800744CC(void);
 void func_80074510(uintptr_t, void*, size_t);
-void func_800745C8(s32, s32);
-void func_8007466C(s32, s32);
-void func_80074704(s32, s32);
+void func_800745C8(s32, uintptr_t);
+void func_8007466C(s32, uintptr_t);
+void func_80074704(s32, uintptr_t);
 u8  *func_80074790(s32, u8*);
 void func_800747F0(s32, u8*);
 void func_80074894(s32, u8*);
@@ -200,7 +200,7 @@ void func_8007A88C(s32);
 void func_8007A910(s32);
 void update_object_lakitu(s32);
 void func_8007AA44(s32);
-void func_8007ABFC(s32, s32);
+void func_8007ABFC(s32, bool);
 void consume_item(s32);
 u8   gen_random_item(s16, s16);
 u8   gen_random_item_human(s16, s16);

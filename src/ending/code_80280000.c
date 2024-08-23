@@ -50,7 +50,7 @@ void func_80280038(void) {
     func_802A53A4();
     init_rdp();
     func_80057FC4(0);
-    
+
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
     guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -83,7 +83,7 @@ void func_80280268(s32 arg0) {
 
 void credits_loop(void) {
     Camera *camera = &cameras[0];
-	
+
     f32 temp_f12;
     f32 temp;
     f32 temp_f14;
@@ -140,7 +140,7 @@ void load_credits(void) {
     load_course(gCurrentCourseId);
     D_8015F730 = gNextFreeMemoryAddress;
     set_segment_base_addr(0xB, (void *) decompress_segments((u8 *) CEREMONY_DATA_ROM_START, (u8 *) CEREMONY_DATA_ROM_END));
-    
+
     gCourseMinX = -0x15A1;
     gCourseMinY = -0x15A1;
     gCourseMinZ = -0x15A1;

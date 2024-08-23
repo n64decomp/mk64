@@ -31,13 +31,13 @@ s16 D_802B87D4 = 0;
 s16 currentScreenSection = 0;
 
 s32 func_80290C20(Camera *camera) {
-    if (camera->unk_54.unk34 == 0) {
+    if (camera->collision.unk34 == 0) {
         return 1;
     }
-    if ((camera->unk_54.unk30 == 1) && (camera->unk_54.unk3C[0] < 3.0f)) {
+    if ((camera->collision.unk30 == 1) && (camera->collision.surfaceDistance[0] < 3.0f)) {
         return 1;
     }
-    if ((camera->unk_54.unk32 == 1) && (camera->unk_54.unk3C[1] < 3.0f)) {
+    if ((camera->collision.unk32 == 1) && (camera->collision.surfaceDistance[1] < 3.0f)) {
         return 1;
     }
     return 0;
@@ -116,21 +116,21 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     arg1->playerDirection = var_a3;
 
     if (D_80152300[camera - camera1] == 1) {
-        sp1E = func_802ABD40(camera->unk_54.unk3A);
-        temp_v0_3 = func_802ABD40(player->unk_110.unk3A);
+        sp1E = get_section_id(camera->collision.meshIndexZX);
+        temp_v0_3 = get_section_id(player->collision.meshIndexZX);
         index = sp1E - temp_v0_3;
         if ((index < 2) && (index >= -1)) {
             if (sp1E == 255) {
                 if (temp_v0_3 == 255) {
                     index = arg1->pathCounter;
-                } else if (player->unk_110.unk3C[2] > 30.0f) {
+                } else if (player->collision.surfaceDistance[2] > 30.0f) {
                     index = arg1->pathCounter;
-                } else { 
+                } else {
                     index = temp_v0_3;
                 }
-            } else if (camera->unk_54.unk3C[2] > 30.0f) {
+            } else if (camera->collision.surfaceDistance[2] > 30.0f) {
                 index = arg1->pathCounter;
-            } else { 
+            } else {
                 index = sp1E;
             }
         } else {
@@ -161,26 +161,25 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
                 default:
                     if (temp_v0_3 == 255) {
                         index = arg1->pathCounter;
-                    } else if (player->unk_110.unk3C[2] > 30.0f) {
+                    } else if (player->collision.surfaceDistance[2] > 30.0f) {
                         index = arg1->pathCounter;
-                    } else { 
+                    } else {
                         index = temp_v0_3;
                     }
                     break;
             }
         }
     } else {
-        index = func_802ABD40(camera->unk_54.unk3A);
-        if (camera->unk_54.unk3C[2] > 30.0f) {
+        index = get_section_id(camera->collision.meshIndexZX);
+        if (camera->collision.surfaceDistance[2] > 30.0f) {
             index = arg1->pathCounter;
-        } else if (index == 255) { 
+        } else if (index == 255) {
             index = arg1->pathCounter;
         }
     }
 
     arg1->pathCounter = index;
     index = ((index - 1) * 4) + var_a3;
-    
     gSPDisplayList(gDisplayListHead++, gfx[index]);
 }
 
@@ -940,48 +939,48 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC *arg0) {
 
     if ((temp_s0 < 14) && (temp_s0 > 10)) {
         if ((temp_s1 == 2) || (temp_s1 == 3) || (temp_s1 == 1))
-            // 
+            //
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
-        
+
     } else if (temp_s0 < 16) {
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
     } else if (temp_s0 < 19) {
-        if (temp_s1 != 2) 
+        if (temp_s1 != 2)
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
-        
+
     } else if (temp_s0 < 20) {
-        if (temp_s1 == 0) 
+        if (temp_s1 == 0)
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
-        
+
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
     if ((temp_s0 >= 16) && (temp_s0 < 24)) {
-        if ((temp_s1 == 2) || (temp_s1 == 3)) 
+        if ((temp_s1 == 2) || (temp_s1 == 3))
             // d_course_moo_moo_farm_packed_dl_5410
             gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07005410));
-        
+
     } else if (temp_s0 < 9) {
-        if (temp_s1 == 2) 
+        if (temp_s1 == 2)
             // d_course_moo_moo_farm_packed_dl_5410
             gSPDisplayList(gDisplayListHead++, ((uintptr_t)0x07005410));
-        
+
     }
     if (temp_s0 < 4) {
         if (temp_s1 != 0)
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
-        
+
     } else if (temp_s0 < 8) {
         if (temp_s1 == 2)
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
-        
+
     } else if (temp_s0 >= 22) {
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
     } else if (temp_s0 >= 18) {
         if ((temp_s1 == 0) || (temp_s1 == 3))
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
-        
+
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
@@ -1369,16 +1368,16 @@ void render_course(struct UnkStruct_800DC5EC *arg0) {
 
 void func_80295BF8(s32 playerIndex) {
     Player* player = &gPlayers[playerIndex];
-    func_802AAAAC(&player->unk_110);
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].surfaceFlags = 0;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].surfaceFlags  = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceFlags  = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceFlags   = 0;
+    func_802AAAAC(&player->collision);
+    player->tyres[FRONT_RIGHT].surfaceFlags = 0;
+    player->tyres[FRONT_LEFT].surfaceFlags  = 0;
+    player->tyres[BACK_RIGHT].surfaceFlags  = 0;
+    player->tyres[BACK_LEFT].surfaceFlags   = 0;
 
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].collisionMeshIndex = 0x1388;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].collisionMeshIndex  = 0x1388;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].collisionMeshIndex  = 0x1388;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].collisionMeshIndex   = 0x1388;
+    player->tyres[FRONT_RIGHT].collisionMeshIndex = 0x1388;
+    player->tyres[FRONT_LEFT].collisionMeshIndex  = 0x1388;
+    player->tyres[BACK_RIGHT].collisionMeshIndex  = 0x1388;
+    player->tyres[BACK_LEFT].collisionMeshIndex   = 0x1388;
 }
 
 void func_80295C6C(void) {
@@ -1388,8 +1387,8 @@ void func_80295C6C(void) {
     gCourseMinX += -20;
     gCourseMinZ += -20;
     gCourseMinY += -20;
-    func_802AF314();
-    gNextFreeMemoryAddress += ALIGN16(D_8015F58A * 2);
+    generate_collision_grid();
+    gNextFreeMemoryAddress += ALIGN16(gNumCollisionTriangles * sizeof(u16));
 }
 
 UNUSED void func_80295D50(s16 arg0, s16 arg1) {
@@ -1412,7 +1411,7 @@ void func_80295D88(void) {
     gCourseMaxX = 0;
     gCourseMaxY = 0;
     gCourseMaxZ = 0;
-    
+
     D_8015F59C = 0;
     D_8015F5A0 = 0;
     func_80295D6C();

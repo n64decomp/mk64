@@ -107,7 +107,8 @@ OSMesg gSIEventMesgBuf[3];
 OSContStatus gControllerStatuses[4];
 OSContPad gControllerPads[4];
 u8 gControllerBits;
-struct UnkStruct_8015F584 D_8014F110[1024];
+// Contains a 32x32 grid of indices into gCollisionIndices containing indices into gCollisionMesh
+CollisionGrid gCollisionGrid[1024];
 u16 gNumActors;
 u16 gMatrixObjectCount;
 s32 gTickSpeed;
@@ -230,7 +231,7 @@ void thread1_idle(void *arg) {
         osViSetMode(&osViModeTable[OS_VI_MPAL_LAN1]);
     }
 #endif
-    osViBlack(TRUE);
+    osViBlack(true);
     osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
     osCreatePiManager(OS_PRIORITY_PIMGR, &gPIMesgQueue, gPIMesgBuf, ARRAY_COUNT(gPIMesgBuf));
     wasSoftReset = (s16) osResetType;
@@ -241,7 +242,7 @@ void thread1_idle(void *arg) {
     osSetThreadPri(NULL, 0);
 
     // Halt
-    while (TRUE);
+    while (true);
 }
 
 void setup_mesg_queues(void) {
@@ -306,9 +307,9 @@ void init_controllers(void) {
     osSetEventMesg(OS_EVENT_SI, &gSIEventMesgQueue, (OSMesg) 0x33333333);
     osContInit(&gSIEventMesgQueue, &gControllerBits, gControllerStatuses);
     if ((gControllerBits & 1) == 0) {
-        sIsController1Unplugged = TRUE;
+        sIsController1Unplugged = true;
     } else {
-        sIsController1Unplugged = FALSE;
+        sIsController1Unplugged = false;
     }
 }
 
@@ -613,14 +614,14 @@ void race_logic_loop(void) {
             D_8015F788 = 0;
             render_player_one_1p_screen();
             if (!gEnableDebugMode) {
-                D_800DC514 = FALSE;
+                D_800DC514 = false;
             } else {
                 if (D_800DC514) {
 
                     if ((gControllerOne->buttonPressed & R_TRIG) &&
                         (gControllerOne->button & A_BUTTON) &&
                         (gControllerOne->button & B_BUTTON)) {
-                            D_800DC514 = FALSE;
+                            D_800DC514 = false;
                     }
 
                     rotY = camera1->rot[1];
@@ -641,7 +642,7 @@ void race_logic_loop(void) {
                     if ((gControllerOne->buttonPressed & L_TRIG) &&
                         (gControllerOne->button & A_BUTTON) &&
                         (gControllerOne->button & B_BUTTON)) {
-                            D_800DC514 = TRUE;
+                            D_800DC514 = true;
                     }
                 }
             }
@@ -872,7 +873,7 @@ void game_state_handler(void) {
 		(gControllerOne->button & Z_TRIG) &&
 		(gControllerOne->button & A_BUTTON)) {
 			gGamestateNext = CREDITS_SEQUENCE;
-	} else if ((gControllerOne->button & L_TRIG) &&	
+	} else if ((gControllerOne->button & L_TRIG) &&
 		(gControllerOne->button & R_TRIG) &&
 		(gControllerOne->button & Z_TRIG) &&
 		(gControllerOne->button & B_BUTTON)) {
@@ -1080,7 +1081,7 @@ void thread3_video(UNUSED void *arg0) {
     create_thread(&gGameLoopThread, 5, &thread5_game_loop, 0, gGameLoopThreadStack + ARRAY_COUNT(gGameLoopThreadStack), 10);
     osStartThread(&gGameLoopThread);
 
-    while (TRUE) {
+    while (true) {
         osRecvMesg(&gIntrMesgQueue, &msg, OS_MESG_BLOCK);
         switch ((u32) msg) {
             case MESG_VI_VBLANK:
@@ -1147,7 +1148,7 @@ void update_gamestate(void) {
             gCurrentlyLoadedCourseId = COURSE_NULL;
             break;
         case RACING:
-            /** 
+            /**
              * @bug Reloading this segment makes random_u16() deterministic for player spawn order.
              * In laymens terms, random_u16() outputs the same value every time.
              */
@@ -1189,7 +1190,7 @@ void thread5_game_loop(UNUSED void *arg) {
     read_controllers();
     func_800C5CB8();
 
-    while(TRUE) {
+    while(true) {
         func_800CB2C4();
 
         // Update the gamestate if it has changed (racing, menus, credits, etc.).
@@ -1215,7 +1216,7 @@ void thread4_audio(UNUSED void *arg) {
     osCreateMesgQueue(&sSoundMesgQueue, sSoundMesgBuf, ARRAY_COUNT(sSoundMesgBuf));
     set_vblank_handler(1, &sSoundVblankHandler, &sSoundMesgQueue, (OSMesg) 512);
 
-    while (TRUE) {
+    while (true) {
         OSMesg msg;
         struct SPTask *spTask;
 

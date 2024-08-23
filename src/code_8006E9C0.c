@@ -67,7 +67,7 @@ void reset_object_variable(void) {
 
 void func_8006EB10(void) {
     s32 i;
-    
+
     for (i = 0; i < gObjectParticle1_SIZE; i++) {
         gObjectParticle1[i] = NULL_OBJECT_ID;
     }
@@ -104,7 +104,7 @@ void func_8006EB10(void) {
 }
 
 void clear_object_list() {
-    bzero(gObjectList, OBJECT_LIST_SIZE * sizeof(Objects));
+    bzero(gObjectList, OBJECT_LIST_SIZE * sizeof(Object));
     objectListSize = -1;
 }
 
@@ -571,7 +571,7 @@ void func_8006FA94(void) {
     D_8018D17C = D_8018D18C;
     D_8018D174 = D_8018D18C;
     player = gPlayerOne;
-    for (var_a0 = 0; var_a0 < 8; var_a0++) {
+    for (var_a0 = 0; var_a0 < NUM_PLAYERS; var_a0++) {
         D_8018D0F0[var_a0] = D_8018D050[var_a0] = -32.0f;
         D_8018CE10[var_a0].unk_04[0] = D_8018CE10[var_a0].unk_04[1] = D_8018CE10[var_a0].unk_04[2] = 0.0f;
         D_8018CF50[var_a0] = var_a0;
@@ -638,10 +638,10 @@ void init_clouds(CloudData *cloudList) {
 
 /**
  * This function is part of the spawning for the "stars" in some stages
- * 
+ *
  * arg2 is a pointer to some type of spawn data for the stars, although it not super clear
  * what types each element is. It seems like its a bunch of u16's, so maybe a Vec4su?
- * 
+ *
  * The stars in Wario's Stadium, Toad's Turnpike, and Rainbow Road are not part of the skybox.
  * They are instead objects that seemingly hover in the air around the player
  * They have no true x/y/z position, instead they seem to be kept in a position relative to the
@@ -694,7 +694,7 @@ void func_8007055C(void) {
         if (gPlayerCount == 1) {
             var_s4 = 0x32;
         } else {
-            var_s4 = 0x19; 
+            var_s4 = 0x19;
         }
         for (var_s0 = 0; var_s0 < var_s4; var_s0++) {
             find_unused_obj_index(&D_8018CC80[D_8018D1F8 + var_s0]);
@@ -828,7 +828,7 @@ void init_course_object(void) {
                 objectId = indexObjectList2[i];
                 init_object(objectId, 0);
                 gObjectList[objectId].pos[0] = gObjectList[objectId].origin_pos[0] = gHedgehogSpawns[i].pos[0] * xOrientation;
-                gObjectList[objectId].pos[1] = gObjectList[objectId].unk_044 = gHedgehogSpawns[i].pos[1] + 6.0;
+                gObjectList[objectId].pos[1] = gObjectList[objectId].surfaceHeight = gHedgehogSpawns[i].pos[1] + 6.0;
                 gObjectList[objectId].pos[2] = gObjectList[objectId].origin_pos[2] = gHedgehogSpawns[i].pos[2];
                 gObjectList[objectId].unk_0D5 = gHedgehogSpawns[i].unk_06;
                 gObjectList[objectId].unk_09C = gHedgehogPatrolPoints[i][0] * xOrientation;
@@ -1278,7 +1278,7 @@ void init_hud_three_four_player(void) {
     playerHUD[PLAYER_TWO].lapY = 0x60;
     playerHUD[PLAYER_TWO].unk_6C = 0xC8;
     playerHUD[PLAYER_TWO].unk_6E = 0xC8;
-    
+
     playerHUD[PLAYER_THREE].itemBoxX = -0x36;
     playerHUD[PLAYER_THREE].itemBoxY = 0x2D;
     playerHUD[PLAYER_THREE].slideItemBoxX = 0;
@@ -1293,7 +1293,7 @@ void init_hud_three_four_player(void) {
     playerHUD[PLAYER_THREE].lapY = 0xD4;
     playerHUD[PLAYER_THREE].unk_6C = 0xDE;
     playerHUD[PLAYER_THREE].unk_6E = 0xC0;
-    
+
     playerHUD[PLAYER_FOUR].itemBoxX = 0x175;
     playerHUD[PLAYER_FOUR].itemBoxY = 0x2D;
     playerHUD[PLAYER_FOUR].slideItemBoxX = 0;

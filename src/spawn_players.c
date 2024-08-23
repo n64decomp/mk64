@@ -110,7 +110,7 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     }
 
     player->pos[0] = startingRow;
-    ret = func_802AE1C0(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
+    ret = spawn_actor_on_surface(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
     player->pos[2] = startingColumn;
     player->pos[1] = ret;
     player->copy_rotation_x = startingRow;
@@ -250,14 +250,14 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
 
     idx = playerIndex;
 
-    D_801650D0[0][idx] = 0;
-    D_801650D0[1][idx] = 0;
-    D_801650D0[2][idx] = 0;
-    D_801650D0[3][idx] = 0;
-    D_80165110[0][idx] = 0;
-    D_80165110[1][idx] = 0;
-    D_80165110[2][idx] = 0;
-    D_80165110[3][idx] = 0;
+    gLastAnimFrameSelector[0][idx] = 0;
+    gLastAnimFrameSelector[1][idx] = 0;
+    gLastAnimFrameSelector[2][idx] = 0;
+    gLastAnimFrameSelector[3][idx] = 0;
+    gLastAnimGroupSelector[0][idx] = 0;
+    gLastAnimGroupSelector[1][idx] = 0;
+    gLastAnimGroupSelector[2][idx] = 0;
+    gLastAnimGroupSelector[3][idx] = 0;
     D_80165190[0][idx] = 0;
     D_80165190[1][idx] = 0;
     D_80165190[2][idx] = 0;
@@ -269,11 +269,11 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
 
     gFrameSinceLastACombo[idx] = 0;
     gCountASwitch[idx] = 0;
-    gIsPlayerTripleAButtonCombo[idx] = FALSE;
+    gIsPlayerTripleAButtonCombo[idx] = false;
     gTimerBoostTripleACombo[idx] = 0;
     gFrameSinceLastBCombo[idx] = 0;
     gCountBChangement[idx] = 0;
-    gIsPlayerTripleBButtonCombo[idx] = FALSE;
+    gIsPlayerTripleBButtonCombo[idx] = false;
     gTimerBoostTripleBCombo[playerIndex] = 0;
     D_8018D900[0] = 0;
 
@@ -291,66 +291,66 @@ void spawn_player(Player *player, s8 playerIndex, f32 startingRow, f32 startingC
     D_801654C0[playerIndex] = 0;
     D_80165340 = 0;
 
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].surfaceType  = 0;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].surfaceType = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceType   = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceType  = 0;
+    player->tyres[FRONT_LEFT].surfaceType  = 0;
+    player->tyres[FRONT_RIGHT].surfaceType = 0;
+    player->tyres[BACK_LEFT].surfaceType   = 0;
+    player->tyres[BACK_RIGHT].surfaceType  = 0;
 
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].surfaceFlags  = 0;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].surfaceFlags = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].surfaceFlags   = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].surfaceFlags  = 0;
+    player->tyres[FRONT_LEFT].surfaceFlags  = 0;
+    player->tyres[FRONT_RIGHT].surfaceFlags = 0;
+    player->tyres[BACK_LEFT].surfaceFlags   = 0;
+    player->tyres[BACK_RIGHT].surfaceFlags  = 0;
 
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].collisionMeshIndex  = 0;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].collisionMeshIndex = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].collisionMeshIndex   = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].collisionMeshIndex  = 0;
+    player->tyres[FRONT_LEFT].collisionMeshIndex  = 0;
+    player->tyres[FRONT_RIGHT].collisionMeshIndex = 0;
+    player->tyres[BACK_LEFT].collisionMeshIndex   = 0;
+    player->tyres[BACK_RIGHT].collisionMeshIndex  = 0;
 
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].unk_14 = 0;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].unk_14  = 0;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].unk_14   = 0;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].unk_14  = 0;
+    player->tyres[FRONT_RIGHT].unk_14 = 0;
+    player->tyres[FRONT_LEFT].unk_14  = 0;
+    player->tyres[BACK_LEFT].unk_14   = 0;
+    player->tyres[BACK_RIGHT].unk_14  = 0;
 
-    player->unk_110.unk30 = 0;
-    player->unk_110.unk32 = 0;
-    player->unk_110.unk34 = 0;
-    player->unk_110.unk36 = 0;
-    player->unk_110.unk38 = 0;
-    player->unk_110.unk3A = 0;
+    player->collision.unk30 = 0;
+    player->collision.unk32 = 0;
+    player->collision.unk34 = 0;
+    player->collision.meshIndexYX = 0;
+    player->collision.meshIndexZY = 0;
+    player->collision.meshIndexZX = 0;
 
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[0] = 0.0f;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[1] = 0.0f;
-    player->boundingBoxCorners[FRONT_LEFT_TYRE].cornerPos[2] = 0.0f;
+    player->tyres[FRONT_LEFT].pos[0] = 0.0f;
+    player->tyres[FRONT_LEFT].pos[1] = 0.0f;
+    player->tyres[FRONT_LEFT].pos[2] = 0.0f;
 
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerPos[0] = 0.0f;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerPos[1] = 0.0f;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerPos[2] = 0.0f;
+    player->tyres[FRONT_RIGHT].pos[0] = 0.0f;
+    player->tyres[FRONT_RIGHT].pos[1] = 0.0f;
+    player->tyres[FRONT_RIGHT].pos[2] = 0.0f;
 
-    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerPos[0] = 0.0f;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerPos[1] = 0.0f;
-    player->boundingBoxCorners[BACK_LEFT_TYRE].cornerPos[2] = 0.0f;
+    player->tyres[BACK_LEFT].pos[0] = 0.0f;
+    player->tyres[BACK_LEFT].pos[1] = 0.0f;
+    player->tyres[BACK_LEFT].pos[2] = 0.0f;
 
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerPos[0] = 0.0f;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerPos[1] = 0.0f;
-    player->boundingBoxCorners[BACK_RIGHT_TYRE].cornerPos[2] = 0.0f;
+    player->tyres[BACK_RIGHT].pos[0] = 0.0f;
+    player->tyres[BACK_RIGHT].pos[1] = 0.0f;
+    player->tyres[BACK_RIGHT].pos[2] = 0.0f;
 
-    player->boundingBoxCorners[ FRONT_LEFT_TYRE].cornerGroundY = 0.0f;
-    player->boundingBoxCorners[FRONT_RIGHT_TYRE].cornerGroundY = 0.0f;
-    player->boundingBoxCorners[  BACK_LEFT_TYRE].cornerGroundY = 0.0f;
-    player->boundingBoxCorners[ BACK_RIGHT_TYRE].cornerGroundY = 0.0f;
+    player->tyres[FRONT_LEFT].baseHeight = 0.0f;
+    player->tyres[FRONT_RIGHT].baseHeight = 0.0f;
+    player->tyres[BACK_LEFT].baseHeight = 0.0f;
+    player->tyres[BACK_RIGHT].baseHeight = 0.0f;
 
-    player->unk_110.unk3C[0] = 0.0f;
-    player->unk_110.unk3C[1] = 0.0f;
-    player->unk_110.unk3C[2] = 0.0f;
-    player->unk_110.unk48[0] = 0.0f;
-    player->unk_110.unk48[1] = 0.0f;
-    player->unk_110.unk48[2] = 0.0f;
-    player->unk_110.unk54[0] = 0.0f;
-    player->unk_110.unk54[1] = 0.0f;
-    player->unk_110.unk54[2] = 0.0f;
-    player->unk_110.orientationVector[0] = 0.0f;
-    player->unk_110.orientationVector[1] = 0.0f;
-    player->unk_110.orientationVector[2] = 0.0f;
+    player->collision.surfaceDistance[0] = 0.0f;
+    player->collision.surfaceDistance[1] = 0.0f;
+    player->collision.surfaceDistance[2] = 0.0f;
+    player->collision.unk48[0] = 0.0f;
+    player->collision.unk48[1] = 0.0f;
+    player->collision.unk48[2] = 0.0f;
+    player->collision.unk54[0] = 0.0f;
+    player->collision.unk54[1] = 0.0f;
+    player->collision.unk54[2] = 0.0f;
+    player->collision.orientationVector[0] = 0.0f;
+    player->collision.orientationVector[1] = 0.0f;
+    player->collision.orientationVector[2] = 0.0f;
 
     D_80165300[playerIndex] = 0;
     D_8018CE10[playerIndex].unk_04[0] = 0.0f;
@@ -456,7 +456,7 @@ void func_80039AE4(void) {
 
 void func_80039DA4(void) {
     s32 i;
-    
+
     s32 sp2C[] = {
         7, 6, 5, 4,
         3, 2, 1, 0,
@@ -1080,16 +1080,16 @@ void func_8003CD98(Player *player, Camera *camera, s8 playerId, s8 screenId) {
             load_kart_palette(player, playerId, screenId, 0);
             load_kart_palette(player, playerId, screenId, 1);
             load_kart_texture(player, playerId, screenId, screenId, 0);
-            mio0decode((u8 *) &D_802DFB80[0][screenId][playerId], (u8 *) &D_802BFB80.arraySize8[0][screenId][playerId]);
+            mio0decode((u8 *) &gEncodedKartTexture[0][screenId][playerId], (u8 *) &D_802BFB80.arraySize8[0][screenId][playerId]);
         } else {
             load_kart_palette(player, playerId, screenId, 0);
             load_kart_palette(player, playerId, screenId, 1);
             load_kart_texture(player, (s8) (playerId + 4), screenId, (s8) (screenId - 2), 0);
-            mio0decode((u8 *) &D_802DFB80[0][screenId - 2][playerId + 4], (u8 *) &D_802BFB80.arraySize8[0][screenId - 2][playerId + 4]);
+            mio0decode((u8 *) &gEncodedKartTexture[0][screenId - 2][playerId + 4], (u8 *) &D_802BFB80.arraySize8[0][screenId - 2][playerId + 4]);
         }
 
-        D_801650D0[screenId][playerId] = player->animFrameSelector[screenId];
-        D_80165110[screenId][playerId] = player->animGroupSelector[screenId];
+        gLastAnimFrameSelector[screenId][playerId] = player->animFrameSelector[screenId];
+        gLastAnimGroupSelector[screenId][playerId] = player->animGroupSelector[screenId];
         D_80165150[screenId][playerId] = player->unk_0A8;
         D_801651D0[screenId][playerId] = 0;
         render_player(player, playerId, screenId);
