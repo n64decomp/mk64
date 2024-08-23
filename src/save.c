@@ -877,7 +877,7 @@ s32 func_800B64EC(s32 arg0) {
         // clang-format off
         // need to be inline
         phi_s1 = (u8*) &D_8018EE10[arg0]; temp_s0 = 0; while (1) {
-        // clang-format on
+            // clang-format on
 
             if (phi_s1[7] != func_800B60E8(temp_s0)) {
                 D_8018EE10[arg0].ghostDataSaved = 0;

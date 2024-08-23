@@ -1473,23 +1473,39 @@ UNUSED void func_8002B8A4(Player* player_one, Player* player_two) {
     Technically only the `player_one == gPlayerEight` NEEDS to be
     bracket-less that looks weird
     */
-    if (player_one == gPlayerOne)   var_v1 = 0;
-    if (player_one == gPlayerTwo)   var_v1 = 1;
-    if (player_one == gPlayerThree) var_v1 = 2;
-    if (player_one == gPlayerFour)  var_v1 = 3;
-    if (player_one == gPlayerFive)  var_v1 = 4;
-    if (player_one == gPlayerSix)   var_v1 = 5;
-    if (player_one == gPlayerSeven) var_v1 = 6;
-    if (player_one == gPlayerEight) var_v1 = 7;
+    if (player_one == gPlayerOne) {   var_v1 = 0;
+}
+    if (player_one == gPlayerTwo) {   var_v1 = 1;
+}
+    if (player_one == gPlayerThree) { var_v1 = 2;
+}
+    if (player_one == gPlayerFour) {  var_v1 = 3;
+}
+    if (player_one == gPlayerFive) {  var_v1 = 4;
+}
+    if (player_one == gPlayerSix) {   var_v1 = 5;
+}
+    if (player_one == gPlayerSeven) { var_v1 = 6;
+}
+    if (player_one == gPlayerEight) { var_v1 = 7;
+}
     D_801653C0[var_v1] = player_two;
-    if (player_two == gPlayerOne)   var_v1 = 0;
-    if (player_two == gPlayerTwo)   var_v1 = 1;
-    if (player_two == gPlayerThree) var_v1 = 2;
-    if (player_two == gPlayerFour)  var_v1 = 3;
-    if (player_two == gPlayerFive)  var_v1 = 4;
-    if (player_two == gPlayerSix)   var_v1 = 5;
-    if (player_two == gPlayerSeven) var_v1 = 6;
-    if (player_two == gPlayerEight) var_v1 = 7;
+    if (player_two == gPlayerOne) {   var_v1 = 0;
+}
+    if (player_two == gPlayerTwo) {   var_v1 = 1;
+}
+    if (player_two == gPlayerThree) { var_v1 = 2;
+}
+    if (player_two == gPlayerFour) {  var_v1 = 3;
+}
+    if (player_two == gPlayerFive) {  var_v1 = 4;
+}
+    if (player_two == gPlayerSix) {   var_v1 = 5;
+}
+    if (player_two == gPlayerSeven) { var_v1 = 6;
+}
+    if (player_two == gPlayerEight) { var_v1 = 7;
+}
     D_801653C0[var_v1] = player_one;
     // clang-format on
 }

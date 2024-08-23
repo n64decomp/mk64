@@ -2026,7 +2026,7 @@ void func_800911B4(Player* player, s8 arg1) {
 
     // clang-format off
     temp_v0 = 2; do {
-    // clang-format on
+        // clang-format on
         player->unk_258[31 + temp_v0].unk_01C = 0;
         player->unk_258[31 + temp_v0].unk_01E = 0;
         player->unk_258[31 + temp_v0].unk_012 = 0;
