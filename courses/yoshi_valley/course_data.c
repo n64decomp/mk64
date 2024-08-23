@@ -5,7 +5,7 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
-#include <code_80004740.h>
+#include <animation.h>
 #include <mk64.h>
 
 #include "course_displaylists.inc.h"
@@ -10805,7 +10805,7 @@ s16 d_course_yoshi_valley_unk1[] = {
 };
 
 // 0x06014714
-animation_type_3_triplet d_course_yoshi_valley_unk2[] = {
+AnimationLimbVector d_course_yoshi_valley_unk2[] = {
     {
         { 0x0001, 0x0000 },
         { 0x0001, 0x0000 },
@@ -10854,7 +10854,7 @@ animation_type_3_triplet d_course_yoshi_valley_unk2[] = {
 };
 
 // 0x06014780
-animation_type_2 d_course_yoshi_valley_unk3 = {
+Animation d_course_yoshi_valley_unk3 = {
     0x00010000,
     0x00000000,
     0x001d,
@@ -10864,126 +10864,61 @@ animation_type_2 d_course_yoshi_valley_unk3 = {
 };
 
 // 0x06014794
-animation_type_2 *d_course_yoshi_valley_unk4[] = {
+Animation *d_course_yoshi_valley_unk4[] = {
     &d_course_yoshi_valley_unk3,
 };
 
 //! 0x06014798
 u32 d_course_yoshi_valley_unk5[] = {
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_ADD_POS(0x00000000, 0x00000000, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_yoshi_valley_dl_142C0,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_yoshi_valley_dl_142C0),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    0x00000000,
-    0x000007f8,
-    0x00000000,
-    0x00000000,
+    ANIMATION_ADD_POS(0x000007f8, 0x00000000, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_yoshi_valley_dl_143C8,
-    0x00000000,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL(d_course_yoshi_valley_dl_143C8),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_yoshi_valley_dl_144A8,
-    0x000001cc,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL_AT(d_course_yoshi_valley_dl_144A8, 0x000001cc, 0x00000000, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_yoshi_valley_dl_14500,
-    0x000001cc,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL_AT(d_course_yoshi_valley_dl_14500, 0x000001cc, 0x00000000, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_yoshi_valley_dl_14558,
-    0x00000158,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL_AT(d_course_yoshi_valley_dl_14558, 0x00000158, 0x00000000, 0x00000000),
 
-    0x00000001,
-    0x00000002,
+    ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    0x00000000,
-    0x00000007,
-    0x00000000,
-    (u32) d_course_yoshi_valley_dl_145D0,
-    0x00000120,
-    0x00000000,
-    0x00000000,
+    ANIMATION_RENDER_MODEL_AT(d_course_yoshi_valley_dl_145D0, 0x00000120, 0x00000000, 0x00000000),
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000002,
-    0x00000002,
+    ANIMATION_POP_MATRIX,
 
-    0x00000003,
-    0x00000002,
+    ANIMATION_STOP,
 };
 
 // No idea what this stuff is

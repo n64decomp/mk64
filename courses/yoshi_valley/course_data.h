@@ -6,7 +6,7 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
-#include "code_80004740.h"
+#include "animation.h"
 
 extern Gfx d_course_yoshi_valley_dl_0[];
 extern Gfx d_course_yoshi_valley_dl_20[];
@@ -162,9 +162,9 @@ extern Gfx d_course_yoshi_valley_dl_14558[];
 extern Vtx d_course_yoshi_valley_flag_5_model[];
 extern Gfx d_course_yoshi_valley_dl_145D0[];
 extern s16 d_course_yoshi_valley_unk1[];
-extern animation_type_3_triplet d_course_yoshi_valley_unk2[];
-extern animation_type_2 d_course_yoshi_valley_unk3;
-extern animation_type_2 *d_course_yoshi_valley_unk4[];
+extern AnimationLimbVector d_course_yoshi_valley_unk2[];
+extern Animation d_course_yoshi_valley_unk3;
+extern Animation *d_course_yoshi_valley_unk4[];
 extern u32 d_course_yoshi_valley_unk5[];
 extern u32 d_course_yoshi_valley_unk6[];
 extern u8 d_course_yoshi_valley_hedgehog_tlut[];
