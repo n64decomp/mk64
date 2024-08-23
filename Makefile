@@ -315,6 +315,8 @@ endif
 C_DEFINES := $(foreach d,$(DEFINES),-D$(d))
 DEF_INC_CFLAGS := $(foreach i,$(INCLUDE_DIRS),-I$(i)) $(C_DEFINES)
 
+$(info $(DEF_INC_CFLAGS))
+
 # Prefer clang as C preprocessor if installed on the system
 ifneq (,$(call find-command,clang))
   CPP      := clang
@@ -432,6 +434,9 @@ doc:
 	doxygen
 	@$(PRINT) "$(GREEN)Documentation generated in docs/html$(NO_COL)\n"
 	@$(PRINT) "$(GREEN)Results can be viewed by opening docs/html/index.html in a web browser$(NO_COL)\n"
+
+format:
+	@$(PYTHON) $(TOOLS_DIR)/format.py -j $(N_THREADS)
 
 clean:
 	$(RM) -r $(BUILD_DIR)

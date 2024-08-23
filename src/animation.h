@@ -209,7 +209,7 @@ typedef struct {
 /* Function Prototypes */
 
 void convert_to_fixed_point_matrix_animation(Mtx* dest, Mat4 src);
-void mtxf_translate_rotate2(Mat4 dest, Vec3f b, Vec3s c);
+void mtxf_translate_rotate2(Mat4 dest, Vec3f pos, Vec3s angle);
 s16 get_animation_length(Animation**, s16);
 void render_limb_or_add_mtx(Armature*, s16*, AnimationLimbVector, s32);
 void render_armature(Armature*, Animation*, s16);

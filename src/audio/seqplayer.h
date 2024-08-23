@@ -15,9 +15,9 @@
 
 void sequence_channel_init(struct SequenceChannel *seqChannel);
 s32  seq_channel_set_layer(struct SequenceChannel *seqChannel, s32 layerIndex);
-void seq_channel_layer_disable(struct SequenceChannelLayer *seqPlayer);
+void seq_channel_layer_disable(struct SequenceChannelLayer *layer);
 void seq_channel_layer_free(struct SequenceChannel *seqChannel, s32 layerIndex);
-void sequence_channel_disable(struct SequenceChannel *seqPlayer);
+void sequence_channel_disable(struct SequenceChannel *seqChannel);
 struct SequenceChannel *allocate_sequence_channel(void);
 void sequence_player_init_channels(struct SequencePlayer *seqPlayer, u16 channelBits);
 void sequence_player_disable_channels(struct SequencePlayer *seqPlayer, u16 channelBits);
