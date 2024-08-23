@@ -1,7 +1,6 @@
 #ifndef _MACROS_H_
 #define _MACROS_H_
 
-
 #ifndef __sgi
 #define GLOBAL_ASM(...)
 #endif
@@ -9,12 +8,12 @@
 #if !defined(__sgi) && (!defined(NON_MATCHING) || !defined(AVOID_UB))
 // asm-process isn't supported outside of IDO, and undefined behavior causes
 // crashes.
-//#error Matching build is only possible on IDO; please build with NON_MATCHING=1.
+// #error Matching build is only possible on IDO; please build with NON_MATCHING=1.
 #endif
 
 #define ARRAY_COUNT(arr) (s32)(sizeof(arr) / sizeof(arr[0]))
 
-#define GLUE(a, b) a ## b
+#define GLUE(a, b) a##b
 #define GLUE2(a, b) GLUE(a, b)
 
 // Avoid compiler warnings for unused variables
@@ -53,30 +52,38 @@
 #endif
 
 // Fixed point macros
-#define FTOFIX(f)      ((s32)((f) * 65536.0))
-#define ITOFIX(i)      ((s32)((i) << 16))
-#define FIXTOF(x)      ((double)((x) / 65536.0))
-#define FIXTOI(x)      ((s32)((x) >> 16))
+#define FTOFIX(f) ((s32) ((f) * 65536.0))
+#define ITOFIX(i) ((s32) ((i) << 16))
+#define FIXTOF(x) ((double) ((x) / 65536.0))
+#define FIXTOI(x) ((s32) ((x) >> 16))
 
 // Split fixed-point values into its integer or fractional parts.
-#define toFixedInt(f)  (FTOFIX(f) >> 16)
-#define toFrac(f)      (FTOFIX(f) & 0xFFFF)
+#define toFixedInt(f) (FTOFIX(f) >> 16)
+#define toFrac(f) (FTOFIX(f) & 0xFFFF)
 
 // Setup a fixed-point matrix using floats or doubles. Recommend using doubles for more precision.
-#define toFixedPointMatrix(x1, x2, x3, x4,  x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16)                                                                                   \
-    {{((toFixedInt(x1)) << 16) | toFixedInt(x2),  ((toFixedInt(x3))  << 16) | toFixedInt(x4),  (toFixedInt(x5)  << 16) | toFixedInt(x6),  (toFixedInt(x7) << 16)  | toFixedInt(x8)}, \
-    {((toFixedInt(x9)) << 16) | toFixedInt(x10), ((toFixedInt(x11)) << 16) | toFixedInt(x12), (toFixedInt(x13) << 16) | toFixedInt(x14), (toFixedInt(x15) << 16) | toFixedInt(x16)}, \
-    {((toFrac(x1))     << 16) | toFrac(x2),      ((toFrac(x3))      << 16) | toFrac(x4),      (toFrac(x5)      << 16) | toFrac(x6),      (toFrac(x7) << 16)      | toFrac(x8)},      \
-    {((toFrac(x9))     << 16) | toFrac(x10),     ((toFrac(x11))     << 16) | toFrac(x12),     (toFrac(x13)     << 16) | toFrac(x14),     (toFrac(x15) << 16)     | toFrac(x16)}}
+#define toFixedPointMatrix(x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16)                    \
+    {                                                                                                                \
+        { ((toFixedInt(x1)) << 16) | toFixedInt(x2), ((toFixedInt(x3)) << 16) | toFixedInt(x4),                      \
+          (toFixedInt(x5) << 16) | toFixedInt(x6), (toFixedInt(x7) << 16) | toFixedInt(x8) },                        \
+            { ((toFixedInt(x9)) << 16) | toFixedInt(x10), ((toFixedInt(x11)) << 16) | toFixedInt(x12),               \
+              (toFixedInt(x13) << 16) | toFixedInt(x14), (toFixedInt(x15) << 16) | toFixedInt(x16) },                \
+            { ((toFrac(x1)) << 16) | toFrac(x2), ((toFrac(x3)) << 16) | toFrac(x4), (toFrac(x5) << 16) | toFrac(x6), \
+              (toFrac(x7) << 16) | toFrac(x8) },                                                                     \
+        {                                                                                                            \
+            ((toFrac(x9)) << 16) | toFrac(x10), ((toFrac(x11)) << 16) | toFrac(x12),                                 \
+                (toFrac(x13) << 16) | toFrac(x14), (toFrac(x15) << 16) | toFrac(x16)                                 \
+        }                                                                                                            \
+    }
 
 // convert a virtual address to physical.
-#define VIRTUAL_TO_PHYSICAL(addr)   ((uintptr_t)(addr) & 0x1FFFFFFF)
+#define VIRTUAL_TO_PHYSICAL(addr) ((uintptr_t) (addr) & 0x1FFFFFFF)
 
 // convert a physical address to virtual.
-#define PHYSICAL_TO_VIRTUAL(addr)   ((uintptr_t)(addr) | 0x80000000)
+#define PHYSICAL_TO_VIRTUAL(addr) ((uintptr_t) (addr) | 0x80000000)
 
 // another way of converting virtual to physical
-#define VIRTUAL_TO_PHYSICAL2(addr)  ((u8 *)(addr) - 0x80000000U)
+#define VIRTUAL_TO_PHYSICAL2(addr) ((u8*) (addr) - 0x80000000U)
 
 // aligns an address to the next 16 bytes
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
@@ -87,6 +94,6 @@
  * - sizeof(dl[0]) : walk back 1 Gfx macro
  * - 0x07000000 : get just the offset
  **/
-#define GET_PACKED_END(dl) (((u8 *) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)
+#define GET_PACKED_END(dl) (((u8*) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)
 
 #endif

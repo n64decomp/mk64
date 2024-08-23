@@ -181,12 +181,19 @@ def main():
             sys.exit(
                 f"Error: neither clang-apply-replacements-{CLANG_VER} nor clang-apply-replacements found (required to use -j)"
             )
-
+    default_list_folder = [
+        "include",
+        "data",
+        "courses",
+        "src"
+    ]
     if args.files:
         files = args.files
         extra_files = []
     else:
-        files = glob.glob("src*/**/*.c", recursive=True)
+        files = []
+        for folder in default_list_folder:
+            files += glob.glob(f"{folder}*/**/*.c", recursive=True) + glob.glob(f"{folder}*/**/*.h", recursive=True)
         files = [x for x in files if "assets" not in x]
         extra_files = glob.glob("assets/**/*.xml", recursive=True)
 

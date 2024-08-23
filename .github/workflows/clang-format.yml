@@ -10,4 +10,4 @@ jobs:
         uses: jidicula/clang-format-action@v4.13.0
         with:
           clang-format-version: "18"
-          check-path: "."
+          check-path: "{include,data,courses,src}"
