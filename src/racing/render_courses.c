@@ -116,8 +116,8 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
     arg1->playerDirection = var_a3;
 
     if (D_80152300[camera - camera1] == 1) {
-        sp1E = get_section_id(camera->collision.meshIndexZX);
-        temp_v0_3 = get_section_id(player->collision.meshIndexZX);
+        sp1E = get_track_section_id(camera->collision.meshIndexZX);
+        temp_v0_3 = get_track_section_id(player->collision.meshIndexZX);
         index = sp1E - temp_v0_3;
         if ((index < 2) && (index >= -1)) {
             if (sp1E == 255) {
@@ -170,7 +170,7 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC *arg1) {
             }
         }
     } else {
-        index = get_section_id(camera->collision.meshIndexZX);
+        index = get_track_section_id(camera->collision.meshIndexZX);
         if (camera->collision.surfaceDistance[2] > 30.0f) {
             index = arg1->pathCounter;
         } else if (index == 255) {

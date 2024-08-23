@@ -4181,7 +4181,7 @@ TrackWaypoint d_course_dks_jungle_parkway_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-TrackWaypoint d_course_dks_jungle_parkway_unknown_waypoints2[] = {
+TrackWaypoint d_course_dks_jungle_parkway_ferry_waypoints[] = {
     {1237, 0, -1373, 0},
     {1206, 0, -1365, 0},
     {877, 0, -1272, 0},

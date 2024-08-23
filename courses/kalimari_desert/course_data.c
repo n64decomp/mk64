@@ -3801,7 +3801,7 @@ TrackWaypoint d_course_kalimari_desert_unknown_waypoints[] = {
     {-32768, 0, 0, 0},
 };
 
-TrackWaypoint d_course_kalimari_desert_track_unknown_waypoints[] = {
+TrackWaypoint d_course_kalimari_desert_train_waypoints[] = {
     {-741, 0, 2114, 0},
     {-741, 0, 2130, 0},
     {-741, 0, 2364, 0},
