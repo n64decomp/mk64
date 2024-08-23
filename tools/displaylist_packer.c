@@ -9,9 +9,9 @@
 // Compile using gcc -o tools/displaylist_packer tools/displaylist_packer.c
 // Run using ./displaylist_packer input.bin output.bin
 
-void pack(FILE* input_file, FILE* output_file);
+void pack(FILE *input_file, FILE *output_file);
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
     // Check if we have the correct number of arguments
     if (argc != 3) {
         printf("Usage: ./dl_unpack input.bin output.bin\n");
@@ -19,14 +19,14 @@ int main(int argc, char* argv[]) {
     }
 
     // Open the input file
-    FILE* input_file = fopen(argv[1], "rb");
+    FILE *input_file = fopen(argv[1], "rb");
     if (input_file == NULL) {
         printf("Failed to open input file: %s\n", argv[1]);
         exit(1);
     }
 
     // Create the output file
-    FILE* output_file = fopen(argv[2], "wb");
+    FILE *output_file = fopen(argv[2], "wb");
     if (output_file == NULL) {
         printf("Failed to create output file: %s\n", argv[2]);
         exit(1);
@@ -55,7 +55,7 @@ uint32_t compressB1(uint8_t a, uint8_t b, uint8_t c) {
 #define ARG2WORD(val) ((val) >> 32)
 #define OPCODE(val) (uint8_t)((val) >> 56)
 
-void pack(FILE* input_file, FILE* output_file) {
+void pack(FILE *input_file, FILE *output_file) {
 
     // Initialize the string to an empty string
 
@@ -67,6 +67,7 @@ void pack(FILE* input_file, FILE* output_file) {
     uint32_t p6;
     uint16_t p7;
     uint64_t compare;
+    
 
     // Read every u32 in the input file and concatenate a string based on the value
     uint64_t cmd;
@@ -79,7 +80,7 @@ void pack(FILE* input_file, FILE* output_file) {
     while (fread(&cmd, sizeof(uint64_t), 1, input_file) == 1) {
         cmd = swap_endian(cmd);
         opCode = OPCODE(cmd);
-        // printf("%X \n", opCode);
+        //printf("%X \n", opCode);
         switch (opCode) {
             case 0xB9:
                 p7 = (uint16_t) cmd;
@@ -96,38 +97,34 @@ void pack(FILE* input_file, FILE* output_file) {
                 p3 = (uint8_t) (cmd) / 2;
 
                 *(uint16_t*) (data + count) = (uint16_t) (p1 | (p2 << 5) | (p3 << 10));
-                count++;
-                count++;
+                count++; count++;
                 break;
             case 0x06:
                 data[count++] = 0x2B;
-                *(uint16_t*) (data + count) = (uint16_t) (((uint32_t) cmd) / 8);
-                count++;
-                count++;
+                *(uint16_t*) (data + count) = (uint16_t)(((uint32_t)cmd) / 8);
+                count++; count++;
                 break;
             case 0xB1:
                 data[count++] = 0x58;
                 *(uint16_t*) (data + count) = compressB1(ARG1(cmd), ARG2(cmd), cmd >> 32);
-                count++;
-                count++;
+                count++; count++;
                 *(uint16_t*) (data + count) = compressB1(cmd >> 16, cmd >> 8, cmd);
-                count++;
-                count++;
+                count++; count++;
                 break;
             case 0x04:
                 // Skip the opcode and read bytes 2/3 from the u64 (Byte 1 is the opcode 0x04).
-                data[count++] = (uint8_t) (((((uint16_t) ARG1WORD(cmd)) + 1) / 0x410) + 0x32);
+                data[count++] = (uint8_t)(((((uint16_t)ARG1WORD(cmd)) + 1) / 0x410) + 0x32);
                 // Read the right side of the u64 (as a u32).
-                *(uint16_t*) (data + count) = (uint16_t) (((uint32_t) cmd - 0x04000000) / 16);
-                count++;
-                count++;
+                *(uint16_t*) (data + count) = (uint16_t)(((uint32_t)cmd - 0x04000000) / 16);
+                count++; count++;
                 break;
             case 0xFD:
-                p1 = (uint32_t) (cmd - 0x05000000) >> 11;
+                p1 = (uint32_t)(cmd - 0x05000000) >> 11;
                 p2 = 0x00;
                 p3 = 0x70;
 
-                p4 = (uint8_t) ARG1(cmd);
+                p4 = (uint8_t)ARG1(cmd);
+
 
                 fseek(input_file, 24, SEEK_CUR);
                 fread(&cmd, sizeof(uint64_t), 1, input_file);
@@ -135,6 +132,7 @@ void pack(FILE* input_file, FILE* output_file) {
 
                 if (p4 == 0x70) {
                     cmd |= 0x300000000;
+                    
                 }
 
                 if (cmd == 0xF3000000073FF100) {
@@ -169,10 +167,10 @@ void pack(FILE* input_file, FILE* output_file) {
                 // Read 0xF2
                 fread(&cmd, sizeof(uint64_t), 1, input_file);
                 cmd = swap_endian(cmd);
-                p6 = (uint32_t) cmd;
-
-                compare = ((uint64_t) p5 << 32) | p6;
-
+                p6 = (uint32_t)cmd;
+                
+                compare = ((uint64_t) p5 << 32 ) | p6;
+                
                 switch (compare) {
                     case 0xF51011000007C07C:
                         data[count++] = 0x2C;
@@ -202,9 +200,9 @@ void pack(FILE* input_file, FILE* output_file) {
                 data[count++] = p1;
                 break;
             case 0xBB:
-                if ((uint16_t) cmd == 0x0001) {
+                if ((uint16_t)cmd == 0x0001) {
                     data[count++] = 0x27;
-                } else if ((uint16_t) cmd == 0xFFFF) {
+                } else if ((uint16_t)cmd == 0xFFFF) {
                     data[count++] = 0x26;
                 } else {
                     printf("Error: %s\n", "Unknown BB");
@@ -220,7 +218,7 @@ void pack(FILE* input_file, FILE* output_file) {
                 data[count++] = 0xDD;
                 break;
             case 0xFC:
-                p7 = (uint16_t) cmd;
+                p7 = (uint16_t)cmd;
                 if (p7 == 0xF3F9) {
                     data[count++] = 0x16;
                 } else if (p7 == 0xFFFF) {
@@ -228,7 +226,7 @@ void pack(FILE* input_file, FILE* output_file) {
                 } else if (p7 == 0x793C) {
                     data[count++] = 0x17;
                 }
-                // data[count++] = 0x53;
+                //data[count++] = 0x53;
                 break;
             case 0xB7:
                 data[count++] = 0x56;
@@ -236,10 +234,10 @@ void pack(FILE* input_file, FILE* output_file) {
             case 0xB6:
                 data[count++] = 0x57;
                 break;
-            // case 0xFF:
-            //     data[count++] = 0xFF;
-            //     goto eos; // end of switch
-            //     break;
+            //case 0xFF:
+            //    data[count++] = 0xFF;
+            //    goto eos; // end of switch
+            //    break;
             default:
                 printf("Error: Unknown Opcode: 0x%X\n", opCode);
                 printf("Opcode written to file as 0xEE\n");
@@ -249,7 +247,7 @@ void pack(FILE* input_file, FILE* output_file) {
 
         offset += 4;
     }
-    // eos: ;
+    //eos: ;
     data[count++] = 0xFF;
     size_t num_elements_written = fwrite(data, sizeof(uint8_t), count, output_file);
     if (num_elements_written != count) {
