@@ -141,61 +141,68 @@ $(function(){initNavTree('macros_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="macros_8h.html#aa1728270d73c5d1598de1fd691762eb1">   31</a></span><span class="preprocessor">#define NORETURN</span></div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">// Static assertions</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">// Avoid undefined behaviour for non-returning functions</span></div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#ifdef __GNUC__</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#define STATIC_ASSERT(cond, msg) _Static_assert(cond, msg)</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#define NO_REORDER __attribute__((no_reorder))</span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="macros_8h.html#a8ce491b27b644889db1ca99d8c99c24e">   38</a></span><span class="preprocessor">#define STATIC_ASSERT(cond, msg) typedef char GLUE2(static_assertion_failed, __LINE__)[(cond) ? 1 : -1]</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="macros_8h.html#a981d727c769c9516175fef643b82477d">   38</a></span><span class="preprocessor">#define NO_REORDER</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// Align to 8-byte boundary for DMA requirements</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">// Static assertions</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#ifdef __GNUC__</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#define ALIGNED8 __attribute__((aligned(8)))</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">#define STATIC_ASSERT(cond, msg) _Static_assert(cond, msg)</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">   45</a></span><span class="preprocessor">#define ALIGNED8</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="macros_8h.html#a8ce491b27b644889db1ca99d8c99c24e">   45</a></span><span class="preprocessor">#define STATIC_ASSERT(cond, msg) typedef char GLUE2(static_assertion_failed, __LINE__)[(cond) ? 1 : -1]</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// Align to 16-byte boundary for audio lib requirements</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// Align to 8-byte boundary for DMA requirements</span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#ifdef __GNUC__</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#define ALIGNED16 __attribute__((aligned(16)))</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#define ALIGNED8 __attribute__((aligned(8)))</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#else</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="macros_8h.html#a3fcac48969e76bd4245894796b40b7b6">   52</a></span><span class="preprocessor">#define ALIGNED16</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">   52</a></span><span class="preprocessor">#define ALIGNED8</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">// Fixed point macros</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="macros_8h.html#a10664b2f9bc7d6aca323c2176607ed25">   56</a></span><span class="preprocessor">#define FTOFIX(f)      ((s32)((f) * 65536.0))</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="macros_8h.html#a38dd3cc47348bf50cffa34352cc93156">   57</a></span><span class="preprocessor">#define ITOFIX(i)      ((s32)((i) &lt;&lt; 16))</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="macros_8h.html#a6ee57cbc899a869579ce6c9a9d91481e">   58</a></span><span class="preprocessor">#define FIXTOF(x)      ((double)((x) / 65536.0))</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="macros_8h.html#ace18d13c8231a0f9fa2367c88bda5d62">   59</a></span><span class="preprocessor">#define FIXTOI(x)      ((s32)((x) &gt;&gt; 16))</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">// Split fixed-point values into its integer or fractional parts.</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="macros_8h.html#af55e3de19a43cfde88382154130a2edc">   62</a></span><span class="preprocessor">#define toFixedInt(f)  (FTOFIX(f) &gt;&gt; 16)</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="macros_8h.html#afb95d4bc9307ade70d0ac672aa24b82f">   63</a></span><span class="preprocessor">#define toFrac(f)      (FTOFIX(f) &amp; 0xFFFF)</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">// Setup a fixed-point matrix using floats or doubles. Recommend using doubles for more precision.</span></div>
-<div class="foldopen" id="foldopen00066" data-start="" data-end="">
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="macros_8h.html#a0a3920b8b184cd75133b9e51c4c8d99d">   66</a></span><span class="preprocessor">#define toFixedPointMatrix(x1, x2, x3, x4,  x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16)                                                                                   \</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">    {{((toFixedInt(x1)) &lt;&lt; 16) | toFixedInt(x2),  ((toFixedInt(x3))  &lt;&lt; 16) | toFixedInt(x4),  (toFixedInt(x5)  &lt;&lt; 16) | toFixedInt(x6),  (toFixedInt(x7) &lt;&lt; 16)  | toFixedInt(x8)}, \</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">    {((toFixedInt(x9)) &lt;&lt; 16) | toFixedInt(x10), ((toFixedInt(x11)) &lt;&lt; 16) | toFixedInt(x12), (toFixedInt(x13) &lt;&lt; 16) | toFixedInt(x14), (toFixedInt(x15) &lt;&lt; 16) | toFixedInt(x16)}, \</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">    {((toFrac(x1))     &lt;&lt; 16) | toFrac(x2),      ((toFrac(x3))      &lt;&lt; 16) | toFrac(x4),      (toFrac(x5)      &lt;&lt; 16) | toFrac(x6),      (toFrac(x7) &lt;&lt; 16)      | toFrac(x8)},      \</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">    {((toFrac(x9))     &lt;&lt; 16) | toFrac(x10),     ((toFrac(x11))     &lt;&lt; 16) | toFrac(x12),     (toFrac(x13)     &lt;&lt; 16) | toFrac(x14),     (toFrac(x15) &lt;&lt; 16)     | toFrac(x16)}}</span></div>
-</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">// Align to 16-byte boundary for audio lib requirements</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#ifdef __GNUC__</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#define ALIGNED16 __attribute__((aligned(16)))</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="macros_8h.html#a3fcac48969e76bd4245894796b40b7b6">   59</a></span><span class="preprocessor">#define ALIGNED16</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">// Fixed point macros</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="macros_8h.html#a10664b2f9bc7d6aca323c2176607ed25">   63</a></span><span class="preprocessor">#define FTOFIX(f)      ((s32)((f) * 65536.0))</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="macros_8h.html#a38dd3cc47348bf50cffa34352cc93156">   64</a></span><span class="preprocessor">#define ITOFIX(i)      ((s32)((i) &lt;&lt; 16))</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="macros_8h.html#a6ee57cbc899a869579ce6c9a9d91481e">   65</a></span><span class="preprocessor">#define FIXTOF(x)      ((double)((x) / 65536.0))</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="macros_8h.html#ace18d13c8231a0f9fa2367c88bda5d62">   66</a></span><span class="preprocessor">#define FIXTOI(x)      ((s32)((x) &gt;&gt; 16))</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">// Split fixed-point values into its integer or fractional parts.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="macros_8h.html#af55e3de19a43cfde88382154130a2edc">   69</a></span><span class="preprocessor">#define toFixedInt(f)  (FTOFIX(f) &gt;&gt; 16)</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="macros_8h.html#afb95d4bc9307ade70d0ac672aa24b82f">   70</a></span><span class="preprocessor">#define toFrac(f)      (FTOFIX(f) &amp; 0xFFFF)</span></div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">// convert a virtual address to physical.</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="macros_8h.html#af0a1d439c0dd0d6ceb64be64f1650bbc">   73</a></span><span class="preprocessor">#define VIRTUAL_TO_PHYSICAL(addr)   ((uintptr_t)(addr) &amp; 0x1FFFFFFF)</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">// convert a physical address to virtual.</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="macros_8h.html#ac1d0bb67b7c87d4c00796bc18d1f2e23">   76</a></span><span class="preprocessor">#define PHYSICAL_TO_VIRTUAL(addr)   ((uintptr_t)(addr) | 0x80000000)</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">// another way of converting virtual to physical</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="macros_8h.html#ac33bc9457f1c1be3f60fcf54fab88ee7">   79</a></span><span class="preprocessor">#define VIRTUAL_TO_PHYSICAL2(addr)  ((u8 *)(addr) - 0x80000000U)</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">// aligns an address to the next 16 bytes</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="macros_8h.html#a08b2c3c00c27891c0b0179c9d8a1c2b6">   82</a></span><span class="preprocessor">#define ALIGN16(val) (((val) + 0xF) &amp; ~0xF)</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="macros_8h.html#a635e1ead21634c60d387a6602b27ada8">   90</a></span><span class="preprocessor">#define GET_PACKED_END(dl) (((u8 *) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">// Setup a fixed-point matrix using floats or doubles. Recommend using doubles for more precision.</span></div>
+<div class="foldopen" id="foldopen00073" data-start="" data-end="">
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="macros_8h.html#a0a3920b8b184cd75133b9e51c4c8d99d">   73</a></span><span class="preprocessor">#define toFixedPointMatrix(x1, x2, x3, x4,  x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16)                                                                                   \</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">    {{((toFixedInt(x1)) &lt;&lt; 16) | toFixedInt(x2),  ((toFixedInt(x3))  &lt;&lt; 16) | toFixedInt(x4),  (toFixedInt(x5)  &lt;&lt; 16) | toFixedInt(x6),  (toFixedInt(x7) &lt;&lt; 16)  | toFixedInt(x8)}, \</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">    {((toFixedInt(x9)) &lt;&lt; 16) | toFixedInt(x10), ((toFixedInt(x11)) &lt;&lt; 16) | toFixedInt(x12), (toFixedInt(x13) &lt;&lt; 16) | toFixedInt(x14), (toFixedInt(x15) &lt;&lt; 16) | toFixedInt(x16)}, \</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">    {((toFrac(x1))     &lt;&lt; 16) | toFrac(x2),      ((toFrac(x3))      &lt;&lt; 16) | toFrac(x4),      (toFrac(x5)      &lt;&lt; 16) | toFrac(x6),      (toFrac(x7) &lt;&lt; 16)      | toFrac(x8)},      \</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">    {((toFrac(x9))     &lt;&lt; 16) | toFrac(x10),     ((toFrac(x11))     &lt;&lt; 16) | toFrac(x12),     (toFrac(x13)     &lt;&lt; 16) | toFrac(x14),     (toFrac(x15) &lt;&lt; 16)     | toFrac(x16)}}</span></div>
+</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">// convert a virtual address to physical.</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="macros_8h.html#af0a1d439c0dd0d6ceb64be64f1650bbc">   80</a></span><span class="preprocessor">#define VIRTUAL_TO_PHYSICAL(addr)   ((uintptr_t)(addr) &amp; 0x1FFFFFFF)</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment">// convert a physical address to virtual.</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="macros_8h.html#ac1d0bb67b7c87d4c00796bc18d1f2e23">   83</a></span><span class="preprocessor">#define PHYSICAL_TO_VIRTUAL(addr)   ((uintptr_t)(addr) | 0x80000000)</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">// another way of converting virtual to physical</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="macros_8h.html#ac33bc9457f1c1be3f60fcf54fab88ee7">   86</a></span><span class="preprocessor">#define VIRTUAL_TO_PHYSICAL2(addr)  ((u8 *)(addr) - 0x80000000U)</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">// aligns an address to the next 16 bytes</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="macros_8h.html#a08b2c3c00c27891c0b0179c9d8a1c2b6">   89</a></span><span class="preprocessor">#define ALIGN16(val) (((val) + 0xF) &amp; ~0xF)</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="macros_8h.html#a635e1ead21634c60d387a6602b27ada8">   97</a></span><span class="preprocessor">#define GET_PACKED_END(dl) (((u8 *) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

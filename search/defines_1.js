@@ -96,10 +96,12 @@ var searchData=
   ['asic_5fstatus_93',['ASIC_STATUS',['../hardware_8h.html#ac412383014e3cdbfffacb3781e10c4e6',1,'hardware.h']]],
   ['atoi_94',['ATOI',['../__Printf_8c.html#aebab167b5338849aa942f73732bfece2',1,'_Printf.c']]],
   ['audio_5fframe_5fdma_5fqueue_5fsize_95',['AUDIO_FRAME_DMA_QUEUE_SIZE',['../load_8h.html#ac8046604c2c5d5a05d737843b1f042ff',1,'load.h']]],
-  ['audio_5fleft_5ftyre_96',['AUDIO_LEFT_TYRE',['../external_8c.html#a58d23d666321d5851d59dd07027a5bdf',1,'external.c']]],
-  ['audio_5flock_5floading_97',['AUDIO_LOCK_LOADING',['../data_8h.html#ac13d8ecfe015ef9e5420887d5a629806',1,'data.h']]],
-  ['audio_5flock_5fnot_5floading_98',['AUDIO_LOCK_NOT_LOADING',['../data_8h.html#a62b4ef4f5c1146b50a4c63f11570ac94',1,'data.h']]],
-  ['audio_5flock_5funinitialized_99',['AUDIO_LOCK_UNINITIALIZED',['../data_8h.html#a768612bda2d4cf42332125a5ffee7350',1,'data.h']]],
-  ['audio_5fright_5ftyre_100',['AUDIO_RIGHT_TYRE',['../external_8c.html#a627582fcc9de130ccaf1dda2c1e34aa5',1,'external.c']]],
-  ['audio_5fsession_5fpresets_5fh_101',['AUDIO_SESSION_PRESETS_H',['../audio__session__presets_8c.html#af9ff8498b568890a69cde25ec1d93900',1,'audio_session_presets.c']]]
+  ['audio_5fheap_5finit_5fsize_96',['AUDIO_HEAP_INIT_SIZE',['../audio__heap_8h.html#a5a55a3cb27bc5f165daa0c1094cfc439',1,'AUDIO_HEAP_INIT_SIZE:&#160;audio_heap.h'],['../mk64_8h.html#a5a55a3cb27bc5f165daa0c1094cfc439',1,'AUDIO_HEAP_INIT_SIZE:&#160;mk64.h']]],
+  ['audio_5fheap_5fsize_97',['AUDIO_HEAP_SIZE',['../audio__heap_8h.html#a47ad0c17ca696e995e47dad8177b3def',1,'AUDIO_HEAP_SIZE:&#160;audio_heap.h'],['../mk64_8h.html#a47ad0c17ca696e995e47dad8177b3def',1,'AUDIO_HEAP_SIZE:&#160;mk64.h']]],
+  ['audio_5fleft_5ftyre_98',['AUDIO_LEFT_TYRE',['../external_8c.html#a58d23d666321d5851d59dd07027a5bdf',1,'external.c']]],
+  ['audio_5flock_5floading_99',['AUDIO_LOCK_LOADING',['../data_8h.html#ac13d8ecfe015ef9e5420887d5a629806',1,'data.h']]],
+  ['audio_5flock_5fnot_5floading_100',['AUDIO_LOCK_NOT_LOADING',['../data_8h.html#a62b4ef4f5c1146b50a4c63f11570ac94',1,'data.h']]],
+  ['audio_5flock_5funinitialized_101',['AUDIO_LOCK_UNINITIALIZED',['../data_8h.html#a768612bda2d4cf42332125a5ffee7350',1,'data.h']]],
+  ['audio_5fright_5ftyre_102',['AUDIO_RIGHT_TYRE',['../external_8c.html#a627582fcc9de130ccaf1dda2c1e34aa5',1,'external.c']]],
+  ['audio_5fsession_5fpresets_5fh_103',['AUDIO_SESSION_PRESETS_H',['../audio__session__presets_8c.html#af9ff8498b568890a69cde25ec1d93900',1,'audio_session_presets.c']]]
 ];

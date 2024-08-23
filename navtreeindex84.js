@@ -1,5 +1,15 @@
 var NAVTREEINDEX84 =
 {
+"objects_8h.html#a811b7dfa2a561724dbdd568f8f99dd1a":[8,0,2,15,14],
+"objects_8h.html#a840ef2e5e6ba8d81138c0dd18c11cf21":[8,0,2,15,89],
+"objects_8h.html#a84db57ec1de7ffad314f77be2b7f14ff":[8,0,2,15,78],
+"objects_8h.html#a852818136bb70a07418243802f1d6350":[8,0,2,15,21],
+"objects_8h.html#a896fcc9bfe490254df4d6b623ea1530f":[8,0,2,15,49],
+"objects_8h.html#a8e51edac51cf5b53412c91933520c855":[8,0,2,15,40],
+"objects_8h.html#a8e661e16734b0eea48daed8924ba5a4d":[8,0,2,15,84],
+"objects_8h.html#a8fc84057f528370516f290327a8921db":[8,0,2,15,20],
+"objects_8h.html#a91fc56f6025f5cd51e703053e6f084ca":[8,0,2,15,64],
+"objects_8h.html#a958826ee660f3bf98395f725d2be65a3":[8,0,2,15,67],
 "objects_8h.html#a98beb50068e856d053f757b951f9d659":[8,0,2,15,56],
 "objects_8h.html#a9bcc98a1a419b3df54f68de5758a842f":[8,0,2,15,44],
 "objects_8h.html#a9d108956ef1881b3be91ddec04adb46f":[8,0,2,15,52],
@@ -158,7 +168,6 @@ var NAVTREEINDEX84 =
 "osInitialize_8c.html":[8,0,3,6,78],
 "osInitialize_8c.html#a02cc7445bd5242c1135160547c08d2fa":[8,0,3,6,78,10],
 "osInitialize_8c.html#a0a4ec2aee4185607c2c8b0592483b053":[8,0,3,6,78,13],
-"osInitialize_8c.html#a0d1d87a2fb85fd687678feba4eced410":[8,0,3,6,78,9],
 "osInitialize_8c.html#a10fe243cdf8b039a1e9058723a82fc76":[8,0,3,6,78,5],
 "osInitialize_8c.html#a115ccbb72ad3e50a0af6e1889d835e45":[8,0,3,6,78,12],
 "osInitialize_8c.html#a5187f33fb7a3dfda9eb75dd10a308b9c":[8,0,3,6,78,11],
@@ -167,6 +176,7 @@ var NAVTREEINDEX84 =
 "osInitialize_8c.html#a83d490c4d3467e04fb5c91a7311a145b":[8,0,3,6,78,7],
 "osInitialize_8c.html#ab19ef11fe2223eec70fe5555f1743d91":[8,0,3,6,78,4],
 "osInitialize_8c.html#ac070686413d4896482718d2a30bb3ad0":[8,0,3,6,78,8],
+"osInitialize_8c.html#ac08f435ce95238bf55b63576f669f6b1":[8,0,3,6,78,9],
 "osInitialize_8c.html#ac3f701802ea091ac52d9d80840bb7cd0":[8,0,3,6,78,2],
 "osInitialize_8c.html#acfb0fdf45b4ccc5ad77f155cf184c910":[8,0,3,6,78,6],
 "osJamMesg_8c.html":[8,0,3,6,80],
@@ -239,15 +249,5 @@ var NAVTREEINDEX84 =
 "osSetTimer_8c.html#ae185ba75a7718dbf19268876ea9b1b0e":[8,0,3,6,101,1],
 "osSpTaskLoadGo_8c.html":[8,0,3,6,102],
 "osSpTaskLoadGo_8c.html#a1a7e41a12f9ade8d32f68d637cd4a608":[8,0,3,6,102,2],
-"osSpTaskLoadGo_8c.html#a1e788ac2946d18ff0a4288c818c0ad5b":[8,0,3,6,102,0],
-"osSpTaskLoadGo_8c.html#a90d876dbebe26e948987817f78d98776":[8,0,3,6,102,4],
-"osSpTaskLoadGo_8c.html#accd51a65f4790f07ecb0371923455ffd":[8,0,3,6,102,1],
-"osSpTaskLoadGo_8c.html#ad5b72d5132a9f85e6c02a18bd67f6c2c":[8,0,3,6,102,3],
-"osSpTaskYield_8c.html":[8,0,3,6,103],
-"osSpTaskYield_8c.html#ac8c09ee2c394376309833268ca43db9b":[8,0,3,6,103,0],
-"osSpTaskYielded_8c.html":[8,0,3,6,104],
-"osSpTaskYielded_8c.html#ab8f1191f687a4eb639b60c394e364ec2":[8,0,3,6,104,0],
-"osStartThread_8c.html":[8,0,3,6,105],
-"osStartThread_8c.html#a3b144e814933e16a2fbf2642ad098ed3":[8,0,3,6,105,0],
-"osSyncPrintf_8c.html":[8,0,3,6,106]
+"osSpTaskLoadGo_8c.html#a1e788ac2946d18ff0a4288c818c0ad5b":[8,0,3,6,102,0]
 };

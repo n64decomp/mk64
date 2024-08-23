@@ -1,11 +1,10 @@
 var libultra__internal_8h =
 [
     [ "__OSEventState", "struct____OSEventState.html", "struct____OSEventState" ],
-    [ "__osThreadTail", "struct____osThreadTail.html", "struct____osThreadTail" ],
+    [ "OSThreadTail", "structOSThreadTail.html", "structOSThreadTail" ],
     [ "OSThread_ListHead", "structOSThread__ListHead.html", "structOSThread__ListHead" ],
     [ "OSMgrArgs", "structOSMgrArgs.html", "structOSMgrArgs" ],
     [ "__OSEventState", "libultra__internal_8h.html#add2c870781ac2726008191dc5dd39976", null ],
-    [ "OSThreadTail", "libultra__internal_8h.html#a3ccc99155f50978286e5e9e789927a28", null ],
     [ "__osAiDeviceBusy", "libultra__internal_8h.html#aa9e8840bd3019cfee79abcb10f96ae55", null ],
     [ "__osAtomicDec", "libultra__internal_8h.html#a33943f7584501a6104d89d6c13ef4d27", null ],
     [ "__osDequeueThread", "libultra__internal_8h.html#a836d4fff66c3d0cf5eec17c4579df564", null ],

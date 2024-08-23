@@ -392,7 +392,7 @@ var render__objects_8h =
     [ "render_object_thwomps_model", "render__objects_8h.html#a0c87c4a023395944bb9b386f69b95e45", null ],
     [ "render_object_train_penguins", "render__objects_8h.html#aec71e8712bb5c555cb67f20cc09da452", null ],
     [ "render_object_train_smoke_particle", "render__objects_8h.html#aeb1eef7baac6f5dd08abbda80ca4482a", null ],
-    [ "render_object_train_smoke_particles", "render__objects_8h.html#a9b025a8b16146f9375b618ae3b24f35e", null ],
+    [ "render_object_trains_smoke_particles", "render__objects_8h.html#ac8d254994bb514b9dd2831d5d1869345", null ],
     [ "render_object_trash_bin", "render__objects_8h.html#a50db1c0286a0a165501559c623cb7608", null ],
     [ "rsp_load_texture", "render__objects_8h.html#ae93fb428bd6756747edd360e2ae6ebe0", null ],
     [ "rsp_load_texture_mask", "render__objects_8h.html#a9a5b5359584fc2693e8e4598ffd612ca", null ],

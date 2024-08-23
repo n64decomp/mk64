@@ -1,5 +1,11 @@
 var NAVTREEINDEX6 =
 {
+"banshee__boardwalk_2course__offsets_8c.html#a873865b698c1d70bf5f5651fb19f515a":[8,0,0,0,4,0],
+"banshee__boardwalk_2course__offsets_8c.html#a9214d056cab919771a302e04db0b47cf":[8,0,0,0,4,12],
+"banshee__boardwalk_2course__offsets_8c.html#aa7246daaccfe8c587d774823d33e791a":[8,0,0,0,4,22],
+"banshee__boardwalk_2course__offsets_8c.html#ac4637983617381d21594c0970888db2e":[8,0,0,0,4,9],
+"banshee__boardwalk_2course__offsets_8c.html#ac7ca4c3ac4d584873ae260853e373654":[8,0,0,0,4,6],
+"banshee__boardwalk_2course__offsets_8c.html#ac88316a971d756a62560abe66781b319":[8,0,0,0,4,10],
 "banshee__boardwalk_2course__offsets_8c.html#ad1a0d7b85102ed9e6f42752cbc138c60":[8,0,0,0,4,18],
 "banshee__boardwalk_2course__offsets_8c.html#adebac20c1e7d794fef1116c7b9400c7d":[8,0,0,0,4,14],
 "banshee__boardwalk_2course__offsets_8c.html#aec1ca38908fa7ecefcb5d54615b9f16f":[8,0,0,0,4,16],
@@ -243,11 +249,5 @@ var NAVTREEINDEX6 =
 "bomb__kart_8h.html#aa5f0e977131ff31701339219d424359f":[8,0,2,4,10],
 "bomb__kart_8h.html#ab3937cf89894c822c117bbdfc4301aa1":[8,0,2,4,13],
 "bomb__kart_8h.html#abcecd1bb778612f9abaec48133c6f248":[8,0,2,4,8],
-"bomb__kart_8h.html#ac3cbac5b1e139c4891df180254ec34b3":[8,0,2,4,12],
-"bomb__kart_8h.html#aea94c908d9d67e818ad45594a1c29a57":[8,0,2,4,2],
-"bomb__kart_8h_source.html":[8,0,2,4],
-"boostramps.html":[4,0],
-"boostramps.html#boost-ramps":[4,0,0],
-"bowsers__castle_2course__data_8c.html":[8,0,0,3,0],
-"bowsers__castle_2course__data_8c.html#a01d141976351ef7b7ea418f00fad1072":[8,0,0,3,0,15]
+"bomb__kart_8h.html#ac3cbac5b1e139c4891df180254ec34b3":[8,0,2,4,12]
 };

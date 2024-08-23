@@ -12,6 +12,7 @@ var macros_8h =
     [ "GLUE", "macros_8h.html#af3ddc5a73ff88a58733f0879ce37196d", null ],
     [ "GLUE2", "macros_8h.html#a8aacf963fc7253845c961ed3912d78a2", null ],
     [ "ITOFIX", "macros_8h.html#a38dd3cc47348bf50cffa34352cc93156", null ],
+    [ "NO_REORDER", "macros_8h.html#a981d727c769c9516175fef643b82477d", null ],
     [ "NORETURN", "macros_8h.html#aa1728270d73c5d1598de1fd691762eb1", null ],
     [ "PHYSICAL_TO_VIRTUAL", "macros_8h.html#ac1d0bb67b7c87d4c00796bc18d1f2e23", null ],
     [ "STATIC_ASSERT", "macros_8h.html#a8ce491b27b644889db1ca99d8c99c24e", null ],

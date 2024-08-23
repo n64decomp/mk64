@@ -1,5 +1,11 @@
 var NAVTREEINDEX8 =
 {
+"bowsers__castle_2course__data_8h.html#ae369217b825f55cb4c73e82dbd536bea":[8,0,0,3,1,98],
+"bowsers__castle_2course__data_8h.html#ae40f6b520d5240b06de9405fefaac108":[8,0,0,3,1,45],
+"bowsers__castle_2course__data_8h.html#ae7a1662a780087a93060113c3723ae40":[8,0,0,3,1,5],
+"bowsers__castle_2course__data_8h.html#ae9b17dc0004aec23bfbeeec78e2c8c1d":[8,0,0,3,1,87],
+"bowsers__castle_2course__data_8h.html#af017b0575167de6d556507cfd93c0476":[8,0,0,3,1,89],
+"bowsers__castle_2course__data_8h.html#af242b06467aea066d8f3517bfb2c62ee":[8,0,0,3,1,24],
 "bowsers__castle_2course__data_8h.html#af287ed9d1bcbe6688c46ff4c36355286":[8,0,0,3,1,84],
 "bowsers__castle_2course__data_8h.html#af7a85806468e33c0d7d239c2ee461604":[8,0,0,3,1,54],
 "bowsers__castle_2course__data_8h.html#afcdd12e7a0cc5a79bc67ed9b1c7e68af":[8,0,0,3,1,19],
@@ -243,11 +249,5 @@ var NAVTREEINDEX8 =
 "bowsers__castle_2course__displaylists_8inc_8h.html#a5c51d38e20782202e700fbea0baa99c5":[8,0,0,3,3,138],
 "bowsers__castle_2course__displaylists_8inc_8h.html#a5c58c5b42b82e9599d6e4dfd3cd63e2a":[8,0,0,3,3,10],
 "bowsers__castle_2course__displaylists_8inc_8h.html#a5d60501a7fccdec949153a2b1f4a2567":[8,0,0,3,3,33],
-"bowsers__castle_2course__displaylists_8inc_8h.html#a5d674aa165b58932819ae7d076609fd0":[8,0,0,3,3,158],
-"bowsers__castle_2course__displaylists_8inc_8h.html#a5e71e776ede1998622c6d3dee733f8a5":[8,0,0,3,3,29],
-"bowsers__castle_2course__displaylists_8inc_8h.html#a5e8df564cb0484f25114951f75264162":[8,0,0,3,3,76],
-"bowsers__castle_2course__displaylists_8inc_8h.html#a5eb7ac4561170cbf379d0ca90fdaded3":[8,0,0,3,3,99],
-"bowsers__castle_2course__displaylists_8inc_8h.html#a5ebeb006ed9a4c0fd6a145f0c20dfd0e":[8,0,0,3,3,155],
-"bowsers__castle_2course__displaylists_8inc_8h.html#a5f892d0f4589af4e5ca06535e0deac09":[8,0,0,3,3,56],
-"bowsers__castle_2course__displaylists_8inc_8h.html#a6051fb908b0574ef0e9c6a90b7ecb7b9":[8,0,0,3,3,118]
+"bowsers__castle_2course__displaylists_8inc_8h.html#a5d674aa165b58932819ae7d076609fd0":[8,0,0,3,3,158]
 };

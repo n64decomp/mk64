@@ -113,6 +113,7 @@ $(function(){initNavTree('audio__session__presets_8c.html',''); initResizable(tr
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="internal_8h_source.html">internal.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="data_8h_source.html">data.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="audio__heap_8h_source.html">../buffers/audio_heap.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for audio_session_presets.c:</div>
 <div class="dyncontent">
@@ -134,9 +135,9 @@ Variables</h2></td></tr>
 <tr class="separator:a68f567dacbc7c303b772bd9188364fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af48fe151cc1f3fcd52da8f4c45170ca0" id="r_af48fe151cc1f3fcd52da8f4c45170ca0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af48fe151cc1f3fcd52da8f4c45170ca0">gTatumsPerBeat</a> = <a class="el" href="internal_8h.html#a280b231c89c6cd0bf9e16e1e1b209076">TATUMS_PER_BEAT</a></td></tr>
 <tr class="separator:af48fe151cc1f3fcd52da8f4c45170ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09e74da016e13561d5fac4afa0156b13" id="r_a09e74da016e13561d5fac4afa0156b13"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09e74da016e13561d5fac4afa0156b13">gAudioHeapSize</a> = 0x00048c00</td></tr>
+<tr class="memitem:a09e74da016e13561d5fac4afa0156b13" id="r_a09e74da016e13561d5fac4afa0156b13"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09e74da016e13561d5fac4afa0156b13">gAudioHeapSize</a> = <a class="el" href="audio__heap_8h.html#a47ad0c17ca696e995e47dad8177b3def">AUDIO_HEAP_SIZE</a></td></tr>
 <tr class="separator:a09e74da016e13561d5fac4afa0156b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1934f399e6af2beca4213530cdf3ef02" id="r_a1934f399e6af2beca4213530cdf3ef02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1934f399e6af2beca4213530cdf3ef02">gAudioInitPoolSize</a> = 0x00002600</td></tr>
+<tr class="memitem:a1934f399e6af2beca4213530cdf3ef02" id="r_a1934f399e6af2beca4213530cdf3ef02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1934f399e6af2beca4213530cdf3ef02">gAudioInitPoolSize</a> = <a class="el" href="audio__heap_8h.html#a5a55a3cb27bc5f165daa0c1094cfc439">AUDIO_HEAP_INIT_SIZE</a></td></tr>
 <tr class="separator:a1934f399e6af2beca4213530cdf3ef02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae44c3b154f24466343442ea487984bae" id="r_ae44c3b154f24466343442ea487984bae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae44c3b154f24466343442ea487984bae">D_800EA5D8</a> = 0</td></tr>
 <tr class="separator:ae44c3b154f24466343442ea487984bae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,7 +181,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> gAudioHeapSize = 0x00048c00</td>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> gAudioHeapSize = <a class="el" href="audio__heap_8h.html#a47ad0c17ca696e995e47dad8177b3def">AUDIO_HEAP_SIZE</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -194,7 +195,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> gAudioInitPoolSize = 0x00002600</td>
+          <td class="memname"><a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> gAudioInitPoolSize = <a class="el" href="audio__heap_8h.html#a5a55a3cb27bc5f165daa0c1094cfc439">AUDIO_HEAP_INIT_SIZE</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -245,7 +246,7 @@ Variables</h2></td></tr>
 <div class="line">    { 0x000068b0, 0x01, 0x10, 0x01, 0x00, &amp;<a class="code hl_variable" href="#af2a4ac9c6304aa6d7b31ae49b15cf883">sReverbSettings</a>[1], 0x7fff, 0x0000, 0x00002a00, 0x00004600,</div>
 <div class="line">      0x00000000, 0x00004800, 0x00002000, 0x00000000 },</div>
 <div class="line">}</div>
-<div class="ttc" id="aaudio__session__presets_8c_html_af2a4ac9c6304aa6d7b31ae49b15cf883"><div class="ttname"><a href="#af2a4ac9c6304aa6d7b31ae49b15cf883">sReverbSettings</a></div><div class="ttdeci">struct ReverbSettingsEU sReverbSettings[]</div><div class="ttdef"><b>Definition</b> audio_session_presets.c:7</div></div>
+<div class="ttc" id="aaudio__session__presets_8c_html_af2a4ac9c6304aa6d7b31ae49b15cf883"><div class="ttname"><a href="#af2a4ac9c6304aa6d7b31ae49b15cf883">sReverbSettings</a></div><div class="ttdeci">struct ReverbSettingsEU sReverbSettings[]</div><div class="ttdef"><b>Definition</b> audio_session_presets.c:8</div></div>
 </div><!-- fragment -->
 </div>
 </div>

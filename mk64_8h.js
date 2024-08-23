@@ -1,7 +1,10 @@
 var mk64_8h =
 [
+    [ "AUDIO_HEAP_INIT_SIZE", "mk64_8h.html#a5a55a3cb27bc5f165daa0c1094cfc439", null ],
+    [ "AUDIO_HEAP_SIZE", "mk64_8h.html#a47ad0c17ca696e995e47dad8177b3def", null ],
     [ "BORDER_HEIGHT", "mk64_8h.html#a8d1345c22c668be330e8ff3ee4fb2463", null ],
     [ "COURSE_NULL", "mk64_8h.html#a1af10c9624fc6956bfa4bf7e77ae4b99", null ],
+    [ "DOUBLE_SIZE_ON_64_BIT", "mk64_8h.html#a51ce46b2d0444f5227456740ff11f1ec", null ],
     [ "GET_HIGH_S16_OF_32", "mk64_8h.html#a200ec60edd5f64e8455d6ad9406abedb", null ],
     [ "GET_HIGH_U16_OF_32", "mk64_8h.html#abe912a838096f4707043922fb102870a", null ],
     [ "GET_LOW_S16_OF_32", "mk64_8h.html#a9a7148f465d059060f7d5ede941220ed", null ],

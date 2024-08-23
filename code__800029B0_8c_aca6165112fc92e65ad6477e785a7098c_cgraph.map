@@ -18,7 +18,7 @@
 <area shape="poly" id="edge46_Node000001_Node000425" title=" " alt="" coords="59,1395,68,1429,86,1475,112,1524,129,1546,148,1565,157,1571,154,1576,145,1569,125,1549,108,1526,81,1477,63,1431,54,1397"/>
 <area shape="rect" id="Node000426" href="$skybox__and__splitscreen_8c.html#a3ccbc877132c17e7864318f295367fb7" title=" " alt="" coords="163,1629,287,1655"/>
 <area shape="poly" id="edge47_Node000001_Node000426" title=" " alt="" coords="57,1396,64,1437,80,1496,107,1560,126,1589,149,1615,156,1620,152,1625,145,1619,121,1592,102,1562,75,1498,59,1439,52,1396"/>
-<area shape="rect" id="Node000427" href="$actors_8c.html#a142a32371ea62d0303702286b839bdfd" title="Loads actor textures, course specific actor textures. Calls to init_course_vehicles and place_course_..." alt="" coords="147,907,303,947"/>
+<area shape="rect" id="Node000427" href="$actors_8c.html#a142a32371ea62d0303702286b839bdfd" title="Loads actor textures, course specific actor textures. Calls to spawn_course_vehicles and place_course..." alt="" coords="147,907,303,947"/>
 <area shape="poly" id="edge48_Node000001_Node000427" title=" " alt="" coords="51,1370,56,1309,70,1215,98,1106,119,1051,144,999,162,975,183,954,187,958,166,979,149,1002,124,1053,103,1107,76,1216,62,1310,57,1371"/>
 <area shape="rect" id="Node000457" href="$code__8006E9C0_8c.html#a47667a5a47fd4ca740865e963ce795c9" title=" " alt="" coords="187,1679,262,1704"/>
 <area shape="poly" id="edge51_Node000001_Node000457" title=" " alt="" coords="56,1396,61,1445,74,1517,86,1557,102,1596,122,1632,148,1664,176,1680,173,1685,145,1668,118,1635,97,1598,81,1558,69,1519,55,1446,51,1396"/>
@@ -59,8 +59,8 @@
 <area shape="poly" id="edge19_Node000357_Node000361" title=" " alt="" coords="285,444,389,455,389,460,285,449"/>
 <area shape="rect" id="Node000362" href="$code__80091750_8c.html#ae589fecc0d3c5ab633b900b91c33a2cd" title=" " alt="" coords="403,501,525,527"/>
 <area shape="poly" id="edge20_Node000357_Node000362" title=" " alt="" coords="256,451,351,486,391,497,389,502,350,491,254,456"/>
-<area shape="rect" id="Node000123" href="$memory_8c.html#a7e6e89972c484db957ddbd70ba07ed92" title="Returns the address of the next available memory location and updates the memory pointer to reference..." alt="" coords="391,551,537,591"/>
-<area shape="poly" id="edge22_Node000357_Node000123" title=" " alt="" coords="241,452,288,493,319,516,352,536,379,547,377,552,349,540,316,520,284,497,237,456"/>
+<area shape="rect" id="Node000104" href="$memory_8c.html#a7e6e89972c484db957ddbd70ba07ed92" title="Returns the address of the next available memory location and updates the memory pointer to reference..." alt="" coords="391,551,537,591"/>
+<area shape="poly" id="edge22_Node000357_Node000104" title=" " alt="" coords="241,452,288,493,319,516,352,536,379,547,377,552,349,540,316,520,284,497,237,456"/>
 <area shape="rect" id="Node000218" href="$external_8c.html#ac48b7cbfcaa7737f892877ead85e4ba7" title=" " alt="" coords="403,964,525,989"/>
 <area shape="poly" id="edge24_Node000363_Node000218" title=" " alt="" coords="286,1011,389,989,390,995,287,1016"/>
 <area shape="rect" id="Node000172" href="$external_8c.html#ad79a8b3dfe27cebca94c2d9e2cc54d2b" title=" " alt="" coords="403,1013,525,1039"/>

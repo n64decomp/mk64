@@ -1,7 +1,7 @@
 var searchData=
 [
   ['z_0',['Z',['../common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7baa70478ce277ffc322f8e1e3418e07355',1,'common_structs.h']]],
-  ['z_1',['z',['../structPathNoY.html#a3477bbc6f262cf99873551a3fc624cc7',1,'PathNoY::z'],['../structVec3fs.html#a9d9b4e688edf3109fa4e263c474f8fae',1,'Vec3fs::z']]],
+  ['z_1',['z',['../structPath2D.html#a2641c3698899e855fa7e88685586e9b2',1,'Path2D::z'],['../structVec3fs.html#a9d9b4e688edf3109fa4e263c474f8fae',1,'Vec3fs::z']]],
   ['z_5fcmp_2',['Z_CMP',['../gbi_8h.html#a81e8b0738e46043adaffc6992f696066',1,'gbi.h']]],
   ['z_5ftrig_3',['Z_TRIG',['../os_8h.html#a3c1de5b3b5a9360fb2104131e6525bdd',1,'Z_TRIG:&#160;os.h'],['../os__cont_8h.html#a3c1de5b3b5a9360fb2104131e6525bdd',1,'Z_TRIG:&#160;os_cont.h']]],
   ['z_5fupd_4',['Z_UPD',['../gbi_8h.html#a00533e8f40438b75e00e2343f7772434',1,'gbi.h']]],

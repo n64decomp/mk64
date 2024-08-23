@@ -1,5 +1,12 @@
 var NAVTREEINDEX44 =
 {
+"heap_8h.html#a0be60ed9e854024b51084c71d24d5f6e":[8,0,3,1,8,70],
+"heap_8h.html#a18ae0c9f2f35d50f907f1e9999891185":[8,0,3,1,8,50],
+"heap_8h.html#a1e5351eeb12e68752cdb254cc9f00dd0":[8,0,3,1,8,29],
+"heap_8h.html#a1e60f925c18306c62090305c9248e8b3":[8,0,3,1,8,20],
+"heap_8h.html#a1e84414986c84176008e53d3705e9d78":[8,0,3,1,8,30],
+"heap_8h.html#a23c9a17b7c9ee0811a93f2cc482d9669":[8,0,3,1,8,46],
+"heap_8h.html#a24ec6a2bab2ef31e118353700a0daadd":[8,0,3,1,8,32],
 "heap_8h.html#a268e83fe68540e500b0e14f16f035097":[8,0,3,1,8,31],
 "heap_8h.html#a332bc039f5baa39cadb24693beada2ca":[8,0,3,1,8,27],
 "heap_8h.html#a348169b3bf0d32edfa13520ccc42b2bc":[8,0,3,1,8,22],
@@ -112,7 +119,7 @@ var NAVTREEINDEX44 =
 "items.html":[0,3],
 "kalimari__desert_2course__data_8c.html":[8,0,0,8,0],
 "kalimari__desert_2course__data_8c.html#a010e2a6def6d90a3dcfdbf25cc74334a":[8,0,0,8,0,163],
-"kalimari__desert_2course__data_8c.html#a0126b1b654db069cb319b9d96c389d26":[8,0,0,8,0,228],
+"kalimari__desert_2course__data_8c.html#a0126b1b654db069cb319b9d96c389d26":[8,0,0,8,0,227],
 "kalimari__desert_2course__data_8c.html#a02d493cce73600e1b50c006c473dca6c":[8,0,0,8,0,145],
 "kalimari__desert_2course__data_8c.html#a02e809bc97834e4e6e769dfb97e4a491":[8,0,0,8,0,205],
 "kalimari__desert_2course__data_8c.html#a0467196a05a427ad552e54a17d617a48":[8,0,0,8,0,262],
@@ -242,12 +249,5 @@ var NAVTREEINDEX44 =
 "kalimari__desert_2course__data_8c.html#a7c8f237a4517e8d585cff07bcf2294f5":[8,0,0,8,0,142],
 "kalimari__desert_2course__data_8c.html#a7ca30b9c7d32ddd557a7396c8be5a1ef":[8,0,0,8,0,25],
 "kalimari__desert_2course__data_8c.html#a7dcae8ef622f98bce5dfde9205a03a7d":[8,0,0,8,0,234],
-"kalimari__desert_2course__data_8c.html#a7e6c5a468ac981fb301705f0a1ab6288":[8,0,0,8,0,232],
-"kalimari__desert_2course__data_8c.html#a7f09c82cc35d76eb7d633fde9f1d7c34":[8,0,0,8,0,180],
-"kalimari__desert_2course__data_8c.html#a828d439d2f592a2cf7d02e1e0ca5f90c":[8,0,0,8,0,47],
-"kalimari__desert_2course__data_8c.html#a82eb181f1d4d05050b71b8f37f69e9fb":[8,0,0,8,0,94],
-"kalimari__desert_2course__data_8c.html#a856a50b693aa17caa58d87c938bf2663":[8,0,0,8,0,38],
-"kalimari__desert_2course__data_8c.html#a8690adb07efdf91cda21bbf385a627fe":[8,0,0,8,0,156],
-"kalimari__desert_2course__data_8c.html#a87c6e2d61bb2067166f2efc9105b31ec":[8,0,0,8,0,46],
-"kalimari__desert_2course__data_8c.html#a882f78e9728d35515f857013bf63e3b1":[8,0,0,8,0,271]
+"kalimari__desert_2course__data_8c.html#a7e6c5a468ac981fb301705f0a1ab6288":[8,0,0,8,0,232]
 };

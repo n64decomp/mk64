@@ -1,7 +1,5 @@
 var NAVTREEINDEX91 =
 {
-"rainbow__road_2course__data_8h.html#a458884ce2863424ca089ec846939e396":[8,0,0,13,1,24],
-"rainbow__road_2course__data_8h.html#a471bda2e93727acbfa790a65694f1a20":[8,0,0,13,1,34],
 "rainbow__road_2course__data_8h.html#a486e52b7089e4ad8e44cf547a7fa83f5":[8,0,0,13,1,70],
 "rainbow__road_2course__data_8h.html#a49db8635e8bdcc1c3835ace6475c30a9":[8,0,0,13,1,82],
 "rainbow__road_2course__data_8h.html#a4dffcc3a58b276a4d11905b9795acfc8":[8,0,0,13,1,25],
@@ -161,13 +159,13 @@ var NAVTREEINDEX91 =
 "rainbow__road_2course__textures_8linkonly_8h_source.html":[8,0,0,13,6],
 "rainbow__road_2course__vertices_8inc_8c.html":[8,0,0,13,7],
 "rainbow__road_2course__vertices_8inc_8c.html#a0f8c42fd5fcafa886d4a8fce62947c85":[8,0,0,13,7,0],
-"random_8c.html":[8,0,3,2,4],
-"random_8c.html#a8eafbc86e2d3ad047f20f29099649228":[8,0,3,2,4,0],
-"random_8c.html#ad9140e069d65bc5b5da75424d09e9e57":[8,0,3,2,4,1],
-"random_8h.html":[8,0,3,2,5],
-"random_8h.html#a3823f2db1b283d00b502020aec94314c":[8,0,3,2,5,1],
-"random_8h.html#a8eafbc86e2d3ad047f20f29099649228":[8,0,3,2,5,0],
-"random_8h_source.html":[8,0,3,2,5],
+"random_8c.html":[8,0,3,2,6],
+"random_8c.html#a8eafbc86e2d3ad047f20f29099649228":[8,0,3,2,6,0],
+"random_8c.html#ad9140e069d65bc5b5da75424d09e9e57":[8,0,3,2,6,1],
+"random_8h.html":[8,0,3,2,7],
+"random_8h.html#a3823f2db1b283d00b502020aec94314c":[8,0,3,2,7,1],
+"random_8h.html#a8eafbc86e2d3ad047f20f29099649228":[8,0,3,2,7,0],
+"random_8h_source.html":[8,0,3,2,7],
 "rcp_8h.html":[8,0,2,2,24],
 "rcp_8h.html#a0017ef11ba676aa831a94d6f3bb0dc74":[8,0,2,2,24,82],
 "rcp_8h.html#a0115cc6683a30cd42c0a9b007e398604":[8,0,2,2,24,228],
@@ -249,5 +247,7 @@ var NAVTREEINDEX91 =
 "rcp_8h.html#a36f8f0b6740474ae0881d44e3a093330":[8,0,2,2,24,303],
 "rcp_8h.html#a37112e4dd2141c5dd3399d6285b00ad0":[8,0,2,2,24,115],
 "rcp_8h.html#a37d542452b93aa353a8ab53a60d1e9ad":[8,0,2,2,24,288],
-"rcp_8h.html#a38829d2c0a5975ed18fc88ba5ade396c":[8,0,2,2,24,206]
+"rcp_8h.html#a38829d2c0a5975ed18fc88ba5ade396c":[8,0,2,2,24,206],
+"rcp_8h.html#a388c57dd9b8c0f1be370a761f3ed0452":[8,0,2,2,24,286],
+"rcp_8h.html#a38ee0ea45ba06bb669cdbd889a7672cc":[8,0,2,2,24,311]
 };

@@ -1,7 +1,5 @@
 var NAVTREEINDEX107 =
 {
-"skyscraper_2course__textures_8linkonly_8h.html#aa57db2bf14e15c8cc9b271cba6216607":[8,0,0,16,6,8],
-"skyscraper_2course__textures_8linkonly_8h.html#aabee61b5b242e935f092cc5dae4e5582":[8,0,0,16,6,4],
 "skyscraper_2course__textures_8linkonly_8h.html#ae25844d6b958e3aa6296585335f991e5":[8,0,0,16,6,3],
 "skyscraper_2course__textures_8linkonly_8h.html#af0febc5755ff119480fb25c599162bec":[8,0,0,16,6,16],
 "skyscraper_2course__textures_8linkonly_8h.html#af38136de52ac4695332a459db83cbcdc":[8,0,0,16,6,10],
@@ -249,5 +247,7 @@ var NAVTREEINDEX107 =
 "spawn__players_8c.html#a7936732ad039ea27759ba4b9784460f6":[8,0,3,57,17],
 "spawn__players_8c.html#a82ae339563b96176bf4effcf6773decc":[8,0,3,57,11],
 "spawn__players_8c.html#a89350191378d3599b7afe30dd29b2854":[8,0,3,57,57],
-"spawn__players_8c.html#a8ac6864eb2969e03c309cebc18365f8b":[8,0,3,57,40]
+"spawn__players_8c.html#a8ac6864eb2969e03c309cebc18365f8b":[8,0,3,57,40],
+"spawn__players_8c.html#a8c333a98eb9761dafc0033a6ea9a78a9":[8,0,3,57,50],
+"spawn__players_8c.html#a95012800539a0be8068dc23de8472714":[8,0,3,57,37]
 };

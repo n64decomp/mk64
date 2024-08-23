@@ -1,6 +1,6 @@
 <map id="spawn_course_actors" name="spawn_course_actors">
 <area shape="rect" id="Node000001" title=" " alt="" coords="1193,13,1355,38"/>
-<area shape="rect" id="Node000002" href="$actors_8c.html#a142a32371ea62d0303702286b839bdfd" title="Loads actor textures, course specific actor textures. Calls to init_course_vehicles and place_course_..." alt="" coords="989,5,1145,45"/>
+<area shape="rect" id="Node000002" href="$actors_8c.html#a142a32371ea62d0303702286b839bdfd" title="Loads actor textures, course specific actor textures. Calls to spawn_course_vehicles and place_course..." alt="" coords="989,5,1145,45"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1180,28,1146,28,1146,23,1180,23"/>
 <area shape="rect" id="Node000003" href="$code__800029B0_8c.html#aca6165112fc92e65ad6477e785a7098c" title=" " alt="" coords="848,13,941,38"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="975,28,942,28,942,23,975,23"/>

@@ -1,5 +1,11 @@
 var NAVTREEINDEX70 =
 {
+"luigi__raceway_2course__data_8h.html#a48b2cb3d6c3b4a51b129094a0c3750f9":[8,0,0,10,1,112],
+"luigi__raceway_2course__data_8h.html#a4b371d79b3fa4a2915062caec469c30f":[8,0,0,10,1,103],
+"luigi__raceway_2course__data_8h.html#a4ce11554ba6e6297e183d79114fa188a":[8,0,0,10,1,9],
+"luigi__raceway_2course__data_8h.html#a4d311785df0ef574c547bc1dc6f59eb8":[8,0,0,10,1,94],
+"luigi__raceway_2course__data_8h.html#a4d383501644b452d3db9cb978bae1b77":[8,0,0,10,1,62],
+"luigi__raceway_2course__data_8h.html#a4e7a222208140abc1690bef7863ea207":[8,0,0,10,1,93],
 "luigi__raceway_2course__data_8h.html#a51565a67cbda6a535f71bb89da68af30":[8,0,0,10,1,15],
 "luigi__raceway_2course__data_8h.html#a537ac6ac3eeae73924a458602f86ef89":[8,0,0,10,1,127],
 "luigi__raceway_2course__data_8h.html#a5450df3beb887f5bbbe71a414f9f71ed":[8,0,0,10,1,70],
@@ -243,11 +249,5 @@ var NAVTREEINDEX70 =
 "luigi__raceway_2course__displaylists_8inc_8c.html#a690f79c2d8da1518ae623a0e36a8ba0a":[8,0,0,10,2,329],
 "luigi__raceway_2course__displaylists_8inc_8c.html#a6af210324b8adc6aeca7091b4facfbc4":[8,0,0,10,2,58],
 "luigi__raceway_2course__displaylists_8inc_8c.html#a6b5001585d811c363b95925a238ab144":[8,0,0,10,2,214],
-"luigi__raceway_2course__displaylists_8inc_8c.html#a6bb4f4ec772270c16331850ea8358d82":[8,0,0,10,2,132],
-"luigi__raceway_2course__displaylists_8inc_8c.html#a6dfc04da8fe206a2072c474c0e5147e2":[8,0,0,10,2,120],
-"luigi__raceway_2course__displaylists_8inc_8c.html#a6e4877f607fdeb706cc4a1b070625627":[8,0,0,10,2,157],
-"luigi__raceway_2course__displaylists_8inc_8c.html#a6f2a237b20a7777c85d880906f33137c":[8,0,0,10,2,54],
-"luigi__raceway_2course__displaylists_8inc_8c.html#a6f5d76a4e9f853608acd7f9d51413957":[8,0,0,10,2,260],
-"luigi__raceway_2course__displaylists_8inc_8c.html#a6f626fe6afe9cbd1bfb9dd50f2961360":[8,0,0,10,2,92],
-"luigi__raceway_2course__displaylists_8inc_8c.html#a6f9b3e22ae272648ac6e714a860ed24e":[8,0,0,10,2,321]
+"luigi__raceway_2course__displaylists_8inc_8c.html#a6bb4f4ec772270c16331850ea8358d82":[8,0,0,10,2,132]
 };

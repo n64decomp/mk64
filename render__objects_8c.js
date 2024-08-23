@@ -408,7 +408,7 @@ var render__objects_8c =
     [ "render_object_thwomps_model", "render__objects_8c.html#ad01ed330de0b0aab9403e732233080c9", null ],
     [ "render_object_train_penguins", "render__objects_8c.html#a8ac953ec08790abf5a94ad23c291594f", null ],
     [ "render_object_train_smoke_particle", "render__objects_8c.html#a1bb53e6e216b59033928fa1263067b94", null ],
-    [ "render_object_train_smoke_particles", "render__objects_8c.html#aadff3829d13217b6dbb7128e4b85ec6a", null ],
+    [ "render_object_trains_smoke_particles", "render__objects_8c.html#aca95ae1bf4eceb3f923836b1c36bf148", null ],
     [ "render_object_trash_bin", "render__objects_8c.html#a73b99a172deb48faf678c3ac57b5f8e1", null ],
     [ "rsp_load_texture", "render__objects_8c.html#a8a3e9d3da5a6ac97b84b553fdc5d7d59", null ],
     [ "rsp_load_texture_mask", "render__objects_8c.html#a96f71e7de2b291bd06dd92188b107b53", null ],

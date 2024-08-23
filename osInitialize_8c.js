@@ -9,7 +9,7 @@ var osInitialize_8c =
     [ "osInitialize", "osInitialize_8c.html#acfb0fdf45b4ccc5ad77f155cf184c910", null ],
     [ "__osExceptionPreamble", "osInitialize_8c.html#a83d490c4d3467e04fb5c91a7311a145b", null ],
     [ "__OSGlobalIntMask", "osInitialize_8c.html#ac070686413d4896482718d2a30bb3ad0", null ],
-    [ "D_800EA5E8", "osInitialize_8c.html#a0d1d87a2fb85fd687678feba4eced410", null ],
+    [ "__osShutdown", "osInitialize_8c.html#ac08f435ce95238bf55b63576f669f6b1", null ],
     [ "D_800EA5F0", "osInitialize_8c.html#a02cc7445bd5242c1135160547c08d2fa", null ],
     [ "D_80194040", "osInitialize_8c.html#a5187f33fb7a3dfda9eb75dd10a308b9c", null ],
     [ "osClockRate", "osInitialize_8c.html#a115ccbb72ad3e50a0af6e1889d835e45", null ],

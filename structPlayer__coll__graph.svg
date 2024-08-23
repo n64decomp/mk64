@@ -186,14 +186,14 @@ var sectionId = 'dynsection-0';
 </g>
 <text text-anchor="middle" x="596.07" y="-223" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> boostPower</text>
 <text text-anchor="middle" x="596.07" y="-212" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">boundingBoxSize</text>
-<text text-anchor="middle" x="596.07" y="-201" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">copy_rotation_x</text>
-<text text-anchor="middle" x="596.07" y="-190" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">copy_rotation_y</text>
-<text text-anchor="middle" x="596.07" y="-179" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">copy_rotation_z</text>
-<text text-anchor="middle" x="596.07" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">currentSpeed</text>
-<text text-anchor="middle" x="596.07" y="-157" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartFriction</text>
-<text text-anchor="middle" x="596.07" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartGravity</text>
-<text text-anchor="middle" x="596.07" y="-135" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartHopAcceleration</text>
-<text text-anchor="middle" x="596.07" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartHopJerk</text>
+<text text-anchor="middle" x="596.07" y="-201" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">currentSpeed</text>
+<text text-anchor="middle" x="596.07" y="-190" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartFriction</text>
+<text text-anchor="middle" x="596.07" y="-179" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartGravity</text>
+<text text-anchor="middle" x="596.07" y="-168" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartHopAcceleration</text>
+<text text-anchor="middle" x="596.07" y="-157" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartHopJerk</text>
+<text text-anchor="middle" x="596.07" y="-146" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">kartHopVelocity</text>
+<text text-anchor="middle" x="596.07" y="-135" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">oldPos</text>
+<text text-anchor="middle" x="596.07" y="-124" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">orientationMatrix</text>
 <text text-anchor="middle" x="596.07" y="-113" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">...</text>
 </g>
 <!-- Node6 -->

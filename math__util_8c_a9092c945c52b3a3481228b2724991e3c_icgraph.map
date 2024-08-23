@@ -1,42 +1,42 @@
 <map id="vec3s_set" name="vec3s_set">
-<area shape="rect" id="Node000001" title=" " alt="" coords="2673,203,2760,229"/>
-<area shape="rect" id="Node000002" href="$falling__rock_2update_8inc_8c.html#a9a8171deacccacba26f4fda3f2aec227" title=" " alt="" coords="2481,13,2603,38"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2705,191,2694,159,2677,122,2654,84,2624,53,2602,40,2605,36,2627,49,2658,81,2682,119,2699,157,2710,189"/>
-<area shape="rect" id="Node000011" href="$actors_8c.html#a5998eaf5bee060a664f203f5d0a8ae95" title=" " alt="" coords="2469,63,2615,103"/>
-<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="2695,194,2664,159,2624,123,2592,105,2595,100,2627,119,2667,155,2699,191"/>
-<area shape="rect" id="Node000021" href="$actors_8c.html#a047d32425b6ea73e667cb31548bdc8dd" title=" " alt="" coords="2249,178,2411,203"/>
-<area shape="poly" id="edge33_Node000001_Node000021" title=" " alt="" coords="2686,198,2657,181,2625,168,2557,158,2489,160,2426,169,2375,181,2374,175,2425,164,2489,155,2558,153,2626,163,2659,176,2689,193"/>
-<area shape="rect" id="Node000025" href="$code__80005FD0_8c.html#afd6fa1e9b8e8378fffcaa462fdc81ef6" title=" " alt="" coords="2253,277,2407,302"/>
-<area shape="poly" id="edge29_Node000001_Node000025" title=" " alt="" coords="2703,242,2672,282,2651,301,2626,316,2592,327,2556,333,2483,332,2417,320,2364,305,2366,300,2418,315,2484,327,2556,328,2591,322,2624,311,2648,297,2668,279,2699,239"/>
-<area shape="rect" id="Node000026" href="$actors_8c.html#a89e1bc069861528b3d9bac9571a83cd5" title=" " alt="" coords="2465,378,2619,403"/>
-<area shape="poly" id="edge31_Node000001_Node000026" title=" " alt="" coords="2708,243,2677,301,2654,333,2627,361,2592,380,2590,376,2624,357,2650,329,2673,298,2703,240"/>
-<area shape="rect" id="Node000028" href="$falling__rock_2update_8inc_8c.html#ad18c14dd8d45f1315a6ed69f8ba9cdd3" title="Spawns falling rocks. Used in Choco Mountain." alt="" coords="2465,178,2619,203"/>
-<area shape="poly" id="edge34_Node000001_Node000028" title=" " alt="" coords="2659,210,2619,205,2620,199,2660,205"/>
-<area shape="rect" id="Node000029" href="$actors_8c.html#a64785058c93cd477d4f1f3fd1eee38fe" title=" " alt="" coords="2470,227,2614,253"/>
-<area shape="poly" id="edge36_Node000001_Node000029" title=" " alt="" coords="2660,226,2614,233,2614,227,2659,221"/>
-<area shape="rect" id="Node000030" href="$actors_8c.html#af6d278bc785acfd772b70dd01b2a2dc0" title=" " alt="" coords="2459,277,2625,302"/>
-<area shape="poly" id="edge38_Node000001_Node000030" title=" " alt="" coords="2683,238,2626,266,2591,279,2589,274,2624,262,2681,233"/>
-<area shape="rect" id="Node000003" href="$falling__rock_2update_8inc_8c.html#a7476a0a7924f3878d39fb7b83f229779" title="Updates the falling rock actor. Actor used in Choco Mountain." alt="" coords="2253,5,2407,45"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2466,28,2407,28,2407,23,2466,23"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="2687,203,2773,229"/>
+<area shape="rect" id="Node000002" href="$falling__rock_2update_8inc_8c.html#a9a8171deacccacba26f4fda3f2aec227" title=" " alt="" coords="2494,13,2617,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2719,191,2707,159,2690,122,2667,84,2637,53,2615,40,2618,36,2640,49,2671,81,2695,119,2712,157,2724,189"/>
+<area shape="rect" id="Node000011" href="$actors_8c.html#a5998eaf5bee060a664f203f5d0a8ae95" title=" " alt="" coords="2483,63,2628,103"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="2709,194,2677,159,2637,123,2606,105,2608,100,2640,119,2681,155,2713,191"/>
+<area shape="rect" id="Node000021" href="$actors_8c.html#a047d32425b6ea73e667cb31548bdc8dd" title=" " alt="" coords="2256,178,2417,203"/>
+<area shape="poly" id="edge31_Node000001_Node000021" title=" " alt="" coords="2699,198,2670,181,2638,168,2569,158,2499,160,2435,169,2382,181,2381,175,2434,164,2499,154,2569,153,2639,163,2673,176,2702,193"/>
+<area shape="rect" id="Node000025" href="$actors_8c.html#a89e1bc069861528b3d9bac9571a83cd5" title=" " alt="" coords="2478,326,2633,351"/>
+<area shape="poly" id="edge29_Node000001_Node000025" title=" " alt="" coords="2714,242,2683,279,2640,316,2613,328,2611,323,2637,311,2679,276,2710,238"/>
+<area shape="rect" id="Node000027" href="$code__80005FD0_8c.html#a19ea29ac4fbfc9b1dd98aeac740c930c" title=" " alt="" coords="2249,375,2424,401"/>
+<area shape="poly" id="edge32_Node000001_Node000027" title=" " alt="" coords="2723,243,2712,273,2694,306,2671,339,2640,365,2588,388,2532,401,2476,405,2424,403,2424,398,2476,399,2531,396,2586,383,2637,360,2667,335,2690,303,2707,270,2718,241"/>
+<area shape="rect" id="Node000028" href="$falling__rock_2update_8inc_8c.html#ad18c14dd8d45f1315a6ed69f8ba9cdd3" title="Spawns falling rocks. Used in Choco Mountain." alt="" coords="2478,178,2633,203"/>
+<area shape="poly" id="edge34_Node000001_Node000028" title=" " alt="" coords="2673,210,2632,205,2633,199,2674,205"/>
+<area shape="rect" id="Node000029" href="$actors_8c.html#a64785058c93cd477d4f1f3fd1eee38fe" title=" " alt="" coords="2483,227,2627,253"/>
+<area shape="poly" id="edge36_Node000001_Node000029" title=" " alt="" coords="2673,226,2628,233,2627,227,2673,221"/>
+<area shape="rect" id="Node000030" href="$actors_8c.html#af6d278bc785acfd772b70dd01b2a2dc0" title=" " alt="" coords="2472,277,2639,302"/>
+<area shape="poly" id="edge38_Node000001_Node000030" title=" " alt="" coords="2697,238,2640,266,2604,279,2602,274,2638,262,2694,233"/>
+<area shape="rect" id="Node000003" href="$falling__rock_2update_8inc_8c.html#a7476a0a7924f3878d39fb7b83f229779" title="Updates the falling rock actor. Actor used in Choco Mountain." alt="" coords="2259,5,2414,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2480,28,2414,28,2414,23,2480,23"/>
 <area shape="rect" id="Node000004" href="$actors_8c.html#aa6387502059c64a81d32c944b39d78f9" title=" " alt="" coords="1448,13,1612,38"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="2239,28,1612,28,1612,23,2239,23"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="2246,28,1612,28,1612,23,2246,23"/>
 <area shape="rect" id="Node000005" href="$main_8c.html#afff87ffcbfee4f1f37d443110aa7b52a" title=" " alt="" coords="1085,15,1208,41"/>
 <area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="1435,29,1208,30,1208,25,1435,23"/>
-<area shape="rect" id="Node000006" href="$main_8c.html#ae04143ce8113cdafa007c642eb620bc8" title=" " alt="" coords="656,91,811,117"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1072,31,970,38,914,45,859,56,806,74,761,94,758,89,804,69,858,51,913,40,970,32,1071,26"/>
-<area shape="rect" id="Node000007" href="$main_8c.html#a633ed517e458daeb768f5361895dcac9" title=" " alt="" coords="457,141,608,166"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="668,123,586,143,585,138,667,117"/>
-<area shape="rect" id="Node000008" href="$main_8c.html#a023b8f272e4efbd33f371e91ffff6b30" title=" " alt="" coords="295,141,409,166"/>
-<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="443,156,410,156,410,151,443,151"/>
-<area shape="rect" id="Node000009" href="$main_8c.html#a1e35d2b842121e6aea373f09381616e5" title=" " alt="" coords="144,141,247,166"/>
-<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="281,156,247,156,247,151,281,151"/>
-<area shape="rect" id="Node000010" href="$main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" title=" " alt="" coords="5,141,96,166"/>
-<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="131,156,96,156,96,151,131,151"/>
-<area shape="rect" id="Node000012" href="$update__objects_8c.html#a55824b184e553d99cbe9014f5e950ddc" title=" " alt="" coords="2255,70,2405,95"/>
-<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="2456,85,2406,85,2406,80,2456,80"/>
-<area shape="poly" id="edge24_Node000011_Node000021" title=" " alt="" coords="2486,111,2460,124,2355,180,2352,176,2457,119,2483,106"/>
+<area shape="rect" id="Node000006" href="$main_8c.html#ae04143ce8113cdafa007c642eb620bc8" title=" " alt="" coords="656,93,811,118"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1072,31,970,38,914,45,859,56,805,74,760,95,757,90,803,69,858,51,913,40,970,32,1071,26"/>
+<area shape="rect" id="Node000007" href="$main_8c.html#a633ed517e458daeb768f5361895dcac9" title=" " alt="" coords="457,142,608,167"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="668,124,586,145,585,139,667,119"/>
+<area shape="rect" id="Node000008" href="$main_8c.html#a023b8f272e4efbd33f371e91ffff6b30" title=" " alt="" coords="295,142,409,167"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="443,157,410,157,410,152,443,152"/>
+<area shape="rect" id="Node000009" href="$main_8c.html#a1e35d2b842121e6aea373f09381616e5" title=" " alt="" coords="144,142,247,167"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="281,157,247,157,247,152,281,152"/>
+<area shape="rect" id="Node000010" href="$main_8c.html#a4f87d43525fe95f60ea92bc8a3b70e62" title=" " alt="" coords="5,142,96,167"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="131,157,96,157,96,152,131,152"/>
+<area shape="rect" id="Node000012" href="$update__objects_8c.html#a55824b184e553d99cbe9014f5e950ddc" title=" " alt="" coords="2261,70,2412,95"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="2469,85,2412,85,2412,80,2469,80"/>
+<area shape="poly" id="edge24_Node000011_Node000021" title=" " alt="" coords="2499,111,2473,124,2363,180,2361,176,2471,119,2497,106"/>
 <area shape="rect" id="Node000013" href="$update__objects_8c.html#a3ca574297b43f7a7b8c467d5030271f2" title=" " alt="" coords="2063,70,2184,95"/>
-<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="2241,85,2184,85,2184,80,2241,80"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="2247,85,2184,85,2184,80,2247,80"/>
 <area shape="rect" id="Node000014" href="$update__objects_8c.html#a922dd3cf5e4110721e0b199827413ade" title=" " alt="" coords="1823,70,1997,95"/>
 <area shape="poly" id="edge13_Node000013_Node000014" title=" " alt="" coords="2049,85,1998,85,1998,80,2049,80"/>
 <area shape="rect" id="Node000015" href="$code__80057C60_8c.html#a22c0f603a5c87f883a26284082d099f8" title=" " alt="" coords="1660,70,1775,95"/>
@@ -53,19 +53,19 @@
 <area shape="poly" id="edge20_Node000017_Node000020" title=" " alt="" coords="1257,95,1208,104,1038,124,1037,118,1208,99,1256,90"/>
 <area shape="rect" id="Node000019" href="$code__80280000_8c.html#aa28a69be4eda3b8667366c6c7b556024" title=" " alt="" coords="897,66,999,91"/>
 <area shape="poly" id="edge18_Node000018_Node000019" title=" " alt="" coords="1072,80,999,81,999,76,1072,75"/>
-<area shape="poly" id="edge19_Node000019_Node000006" title=" " alt="" coords="884,89,811,98,811,92,883,84"/>
-<area shape="poly" id="edge21_Node000020_Node000006" title=" " alt="" coords="845,119,811,115,811,110,845,114"/>
-<area shape="rect" id="Node000022" href="$actors_8c.html#a142a32371ea62d0303702286b839bdfd" title="Loads actor textures, course specific actor textures. Calls to init_course_vehicles and place_course_..." alt="" coords="2045,171,2201,211"/>
-<area shape="poly" id="edge25_Node000021_Node000022" title=" " alt="" coords="2236,193,2202,193,2202,188,2236,188"/>
-<area shape="rect" id="Node000023" href="$code__800029B0_8c.html#aca6165112fc92e65ad6477e785a7098c" title=" " alt="" coords="1863,171,1957,197"/>
-<area shape="poly" id="edge26_Node000022_Node000023" title=" " alt="" coords="2031,190,1957,188,1957,183,2031,185"/>
-<area shape="rect" id="Node000024" href="$main_8c.html#ad0625ed56ac663d3ec7ae8f1ba50c735" title=" " alt="" coords="1256,167,1400,193"/>
-<area shape="poly" id="edge27_Node000023_Node000024" title=" " alt="" coords="1849,186,1400,183,1400,178,1850,181"/>
-<area shape="poly" id="edge28_Node000024_Node000007" title=" " alt="" coords="1242,180,608,158,608,153,1242,174"/>
-<area shape="poly" id="edge30_Node000025_Node000022" title=" " alt="" coords="2289,273,2165,213,2168,208,2291,268"/>
-<area shape="rect" id="Node000027" href="$actors_8c.html#a0d9197f8df1df3e8834fbaf37e9e2115" title=" " alt="" coords="2267,378,2393,403"/>
-<area shape="poly" id="edge32_Node000026_Node000027" title=" " alt="" coords="2451,393,2393,393,2393,388,2451,388"/>
-<area shape="poly" id="edge35_Node000028_Node000021" title=" " alt="" coords="2451,193,2411,193,2411,188,2451,188"/>
-<area shape="poly" id="edge37_Node000029_Node000021" title=" " alt="" coords="2473,227,2385,206,2386,201,2474,222"/>
-<area shape="poly" id="edge39_Node000030_Node000021" title=" " alt="" coords="2479,275,2458,266,2397,235,2349,206,2352,201,2400,231,2460,262,2481,270"/>
+<area shape="poly" id="edge19_Node000019_Node000006" title=" " alt="" coords="884,89,811,98,811,93,883,84"/>
+<area shape="poly" id="edge21_Node000020_Node000006" title=" " alt="" coords="845,120,811,116,811,111,845,114"/>
+<area shape="rect" id="Node000022" href="$actors_8c.html#a142a32371ea62d0303702286b839bdfd" title="Loads actor textures, course specific actor textures. Calls to spawn_course_vehicles and place_course..." alt="" coords="2045,171,2201,211"/>
+<area shape="poly" id="edge25_Node000021_Node000022" title=" " alt="" coords="2242,193,2202,193,2202,188,2242,188"/>
+<area shape="rect" id="Node000023" href="$code__800029B0_8c.html#aca6165112fc92e65ad6477e785a7098c" title=" " alt="" coords="1863,178,1957,203"/>
+<area shape="poly" id="edge26_Node000022_Node000023" title=" " alt="" coords="2031,193,1957,193,1957,188,2031,188"/>
+<area shape="rect" id="Node000024" href="$main_8c.html#ad0625ed56ac663d3ec7ae8f1ba50c735" title=" " alt="" coords="1256,169,1400,194"/>
+<area shape="poly" id="edge27_Node000023_Node000024" title=" " alt="" coords="1849,192,1400,185,1400,180,1850,187"/>
+<area shape="poly" id="edge28_Node000024_Node000007" title=" " alt="" coords="1242,181,608,160,608,154,1242,176"/>
+<area shape="rect" id="Node000026" href="$actors_8c.html#a0d9197f8df1df3e8834fbaf37e9e2115" title=" " alt="" coords="2274,326,2399,351"/>
+<area shape="poly" id="edge30_Node000025_Node000026" title=" " alt="" coords="2464,341,2400,341,2400,336,2464,336"/>
+<area shape="poly" id="edge33_Node000027_Node000022" title=" " alt="" coords="2260,372,2248,365,2208,329,2174,287,2149,246,2131,212,2136,210,2153,243,2179,284,2212,325,2251,361,2263,368"/>
+<area shape="poly" id="edge35_Node000028_Node000021" title=" " alt="" coords="2464,193,2417,193,2417,188,2464,188"/>
+<area shape="poly" id="edge37_Node000029_Node000021" title=" " alt="" coords="2485,227,2393,206,2394,201,2486,222"/>
+<area shape="poly" id="edge39_Node000030_Node000021" title=" " alt="" coords="2493,275,2471,266,2408,235,2357,206,2360,201,2410,231,2473,262,2495,270"/>
 </map>

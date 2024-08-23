@@ -116,6 +116,12 @@ $(function(){initNavTree('mk64_8h.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a47ad0c17ca696e995e47dad8177b3def" id="r_a47ad0c17ca696e995e47dad8177b3def"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47ad0c17ca696e995e47dad8177b3def">AUDIO_HEAP_SIZE</a>&#160;&#160;&#160;0x48C00</td></tr>
+<tr class="separator:a47ad0c17ca696e995e47dad8177b3def"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a55a3cb27bc5f165daa0c1094cfc439" id="r_a5a55a3cb27bc5f165daa0c1094cfc439"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a55a3cb27bc5f165daa0c1094cfc439">AUDIO_HEAP_INIT_SIZE</a>&#160;&#160;&#160;0x2600</td></tr>
+<tr class="separator:a5a55a3cb27bc5f165daa0c1094cfc439"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51ce46b2d0444f5227456740ff11f1ec" id="r_a51ce46b2d0444f5227456740ff11f1ec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51ce46b2d0444f5227456740ff11f1ec">DOUBLE_SIZE_ON_64_BIT</a>(size)&#160;&#160;&#160;((size) * (sizeof(void *) / 4))</td></tr>
+<tr class="separator:a51ce46b2d0444f5227456740ff11f1ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cd109632a6dcccaa80b43561b1ab700" id="r_a2cd109632a6dcccaa80b43561b1ab700"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cd109632a6dcccaa80b43561b1ab700">SCREEN_WIDTH</a>&#160;&#160;&#160;320</td></tr>
 <tr class="separator:a2cd109632a6dcccaa80b43561b1ab700"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6974d08a74da681b3957b2fead2608b8" id="r_a6974d08a74da681b3957b2fead2608b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6974d08a74da681b3957b2fead2608b8">SCREEN_HEIGHT</a>&#160;&#160;&#160;240</td></tr>
@@ -238,6 +244,34 @@ Enumerations</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Global header for mk64 </p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a5a55a3cb27bc5f165daa0c1094cfc439" name="a5a55a3cb27bc5f165daa0c1094cfc439"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a55a3cb27bc5f165daa0c1094cfc439">&#9670;&#160;</a></span>AUDIO_HEAP_INIT_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AUDIO_HEAP_INIT_SIZE&#160;&#160;&#160;0x2600</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a47ad0c17ca696e995e47dad8177b3def" name="a47ad0c17ca696e995e47dad8177b3def"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47ad0c17ca696e995e47dad8177b3def">&#9670;&#160;</a></span>AUDIO_HEAP_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AUDIO_HEAP_SIZE&#160;&#160;&#160;0x48C00</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a8d1345c22c668be330e8ff3ee4fb2463" name="a8d1345c22c668be330e8ff3ee4fb2463"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8d1345c22c668be330e8ff3ee4fb2463">&#9670;&#160;</a></span>BORDER_HEIGHT</h2>
 
@@ -260,6 +294,23 @@ Enumerations</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define COURSE_NULL&#160;&#160;&#160;0xFF</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a51ce46b2d0444f5227456740ff11f1ec" name="a51ce46b2d0444f5227456740ff11f1ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51ce46b2d0444f5227456740ff11f1ec">&#9670;&#160;</a></span>DOUBLE_SIZE_ON_64_BIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DOUBLE_SIZE_ON_64_BIT</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>size</em></span></td><td>)</td>
+          <td>&#160;&#160;&#160;((size) * (sizeof(void *) / 4))</td>
         </tr>
       </table>
 </div><div class="memdoc">

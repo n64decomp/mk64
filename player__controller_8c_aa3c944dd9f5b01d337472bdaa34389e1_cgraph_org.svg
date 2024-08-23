@@ -870,9 +870,9 @@
 <!-- Node46 -->
 <g id="Node000046" class="node">
 <title>Node46</title>
-<g id="a_Node000046"><a xlink:href="collision_8c.html#a87ed9fdc33730694b11fedee0e6b3a29" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="369,-337 282,-337 282,-318 369,-318 369,-337"/>
-<text text-anchor="middle" x="325.5" y="-325" font-family="Helvetica,sans-Serif" font-size="10.00">get_section_id</text>
+<g id="a_Node000046"><a xlink:href="collision_8c.html#a9395b9fc31397e9e9d754b4887a12544" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="376,-337 275,-337 275,-318 376,-318 376,-337"/>
+<text text-anchor="middle" x="325.5" y="-325" font-family="Helvetica,sans-Serif" font-size="10.00">get_surface_type</text>
 </a>
 </g>
 </g>
@@ -888,9 +888,9 @@
 <!-- Node47 -->
 <g id="Node000047" class="node">
 <title>Node47</title>
-<g id="a_Node000047"><a xlink:href="collision_8c.html#a9395b9fc31397e9e9d754b4887a12544" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="376,-374 275,-374 275,-355 376,-355 376,-374"/>
-<text text-anchor="middle" x="325.5" y="-362" font-family="Helvetica,sans-Serif" font-size="10.00">get_surface_type</text>
+<g id="a_Node000047"><a xlink:href="collision_8c.html#a053809031f467d0a6747788211e0ec69" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="384,-374 267,-374 267,-355 384,-355 384,-374"/>
+<text text-anchor="middle" x="325.5" y="-362" font-family="Helvetica,sans-Serif" font-size="10.00">get_track_section_id</text>
 </a>
 </g>
 </g>
@@ -898,8 +898,8 @@
 <g id="edge51_Node000045_Node000047" class="edge">
 <title>Node45&#45;&gt;Node47</title>
 <g id="a_edge51_Node000045_Node000047"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M222.17,-364.5C235.6,-364.5 250.47,-364.5 264.61,-364.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="264.75,-368 274.75,-364.5 264.75,-361 264.75,-368"/>
+<path fill="none" stroke="#63b8ff" d="M222.17,-364.5C233.1,-364.5 244.99,-364.5 256.66,-364.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="256.83,-368 266.83,-364.5 256.83,-361 256.83,-368"/>
 </a>
 </g>
 </g>

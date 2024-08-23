@@ -641,7 +641,7 @@ var sectionId = 'dynsection-3';
 <!-- Node24 -->
 <g id="Node000024" class="node">
 <title>Node24</title>
-<g id="a_Node000024"><a xlink:href="actors_8c.html#a142a32371ea62d0303702286b839bdfd" target="_top" xlink:title="Loads actor textures, course specific actor textures. Calls to init_course_vehicles and place_course_...">
+<g id="a_Node000024"><a xlink:href="actors_8c.html#a142a32371ea62d0303702286b839bdfd" target="_top" xlink:title="Loads actor textures, course specific actor textures. Calls to spawn_course_vehicles and place_course...">
 <polygon fill="white" stroke="#666666" points="624,-466 507,-466 507,-436 624,-436 624,-466"/>
 <text text-anchor="start" x="515" y="-454" font-family="Helvetica,sans-Serif" font-size="10.00">init_actors_and_load</text>
 <text text-anchor="middle" x="565.5" y="-443" font-family="Helvetica,sans-Serif" font-size="10.00">_textures</text>

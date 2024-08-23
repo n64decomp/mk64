@@ -182,7 +182,7 @@
 <!-- Node427 -->
 <g id="Node000427" class="node">
 <title>Node427</title>
-<g id="a_Node000427"><a xlink:href="actors_8c.html#a142a32371ea62d0303702286b839bdfd" target="_top" xlink:title="Loads actor textures, course specific actor textures. Calls to init_course_vehicles and place_course_...">
+<g id="a_Node000427"><a xlink:href="actors_8c.html#a142a32371ea62d0303702286b839bdfd" target="_top" xlink:title="Loads actor textures, course specific actor textures. Calls to spawn_course_vehicles and place_course...">
 <polygon fill="#fff0f0" stroke="red" points="223,-731.5 106,-731.5 106,-701.5 223,-701.5 223,-731.5"/>
 <text text-anchor="start" x="114" y="-719.5" font-family="Helvetica,sans-Serif" font-size="10.00">init_actors_and_load</text>
 <text text-anchor="middle" x="164.5" y="-708.5" font-family="Helvetica,sans-Serif" font-size="10.00">_textures</text>
@@ -549,20 +549,20 @@
 </a>
 </g>
 </g>
-<!-- Node123 -->
-<g id="Node000123" class="node">
-<title>Node123</title>
-<g id="a_Node000123"><a xlink:href="memory_8c.html#a7e6e89972c484db957ddbd70ba07ed92" target="_top" xlink:title="Returns the address of the next available memory location and updates the memory pointer to reference...">
+<!-- Node104 -->
+<g id="Node000104" class="node">
+<title>Node104</title>
+<g id="a_Node000104"><a xlink:href="memory_8c.html#a7e6e89972c484db957ddbd70ba07ed92" target="_top" xlink:title="Returns the address of the next available memory location and updates the memory pointer to reference...">
 <polygon fill="white" stroke="#666666" points="399,-998.5 289,-998.5 289,-968.5 399,-968.5 399,-998.5"/>
 <text text-anchor="start" x="297" y="-986.5" font-family="Helvetica,sans-Serif" font-size="10.00">get_next_available</text>
 <text text-anchor="middle" x="344" y="-975.5" font-family="Helvetica,sans-Serif" font-size="10.00">_memory_addr</text>
 </a>
 </g>
 </g>
-<!-- Node357&#45;&gt;Node123 -->
-<g id="edge22_Node000357_Node000123" class="edge">
-<title>Node357&#45;&gt;Node123</title>
-<g id="a_edge22_Node000357_Node000123"><a xlink:title=" ">
+<!-- Node357&#45;&gt;Node104 -->
+<g id="edge22_Node000357_Node000104" class="edge">
+<title>Node357&#45;&gt;Node104</title>
+<g id="a_edge22_Node000357_Node000104"><a xlink:title=" ">
 <path fill="none" stroke="#63b8ff" d="M175.27,-1071.8C191.39,-1056.31 225.14,-1025.96 259,-1008.5 265.42,-1005.19 272.34,-1002.25 279.36,-999.66"/>
 <polygon fill="#63b8ff" stroke="#63b8ff" points="280.65,-1002.91 288.95,-996.33 278.36,-996.3 280.65,-1002.91"/>
 </a>

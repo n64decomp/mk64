@@ -1,5 +1,8 @@
 <map id="Stuff" name="Stuff">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,57,148"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="6,5,57,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="34,44,34,123,29,123,29,44"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="27,196,79,221"/>
+<area shape="rect" id="Node000002" href="$structSaveInfo.html" title=" " alt="" coords="105,108,183,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,145,68,197,64,194,120,141"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,56,31"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="28,44,23,86,25,133,36,167,49,195,44,197,31,169,20,134,17,86,23,44"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="56,38,133,106,129,110,52,42"/>
 </map>

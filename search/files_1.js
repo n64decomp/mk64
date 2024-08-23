@@ -17,5 +17,7 @@ var searchData=
   ['animation_2ec_14',['animation.c',['../animation_8c.html',1,'']]],
   ['animation_2eh_15',['animation.h',['../animation_8h.html',1,'']]],
   ['audio_2emd_16',['audio.md',['../audio_8md.html',1,'']]],
-  ['audio_5fsession_5fpresets_2ec_17',['audio_session_presets.c',['../audio__session__presets_8c.html',1,'']]]
+  ['audio_5fheap_2ec_17',['audio_heap.c',['../audio__heap_8c.html',1,'']]],
+  ['audio_5fheap_2eh_18',['audio_heap.h',['../audio__heap_8h.html',1,'']]],
+  ['audio_5fsession_5fpresets_2ec_19',['audio_session_presets.c',['../audio__session__presets_8c.html',1,'']]]
 ];

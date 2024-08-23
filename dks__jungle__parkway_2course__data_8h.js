@@ -140,6 +140,7 @@ var dks__jungle__parkway_2course__data_8h =
     [ "d_course_dks_jungle_parkway_dl_tree1", "dks__jungle__parkway_2course__data_8h.html#af182f36f1c494f9d7a14b5bfec4eef37", null ],
     [ "d_course_dks_jungle_parkway_dl_tree2", "dks__jungle__parkway_2course__data_8h.html#aec48c6d968271f1da369e69d68bf196e", null ],
     [ "d_course_dks_jungle_parkway_dl_tree3", "dks__jungle__parkway_2course__data_8h.html#abee2127daa9849e763db3291616794fd", null ],
+    [ "d_course_dks_jungle_parkway_ferry_waypoints", "dks__jungle__parkway_2course__data_8h.html#a5a130fa6063d848075a2cdf758b130b7", null ],
     [ "d_course_dks_jungle_parkway_item_box_spawns", "dks__jungle__parkway_2course__data_8h.html#a886d96c3c354028b65fab69f4f65fd56", null ],
     [ "d_course_dks_jungle_parkway_kiwano_model", "dks__jungle__parkway_2course__data_8h.html#ac5986d509accb336dd77daad06458bca", null ],
     [ "d_course_dks_jungle_parkway_kiwano_tlut", "dks__jungle__parkway_2course__data_8h.html#a56a04d919dec820c3e59f053d45abe04", null ],
