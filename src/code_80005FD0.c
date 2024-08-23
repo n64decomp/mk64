@@ -4560,8 +4560,10 @@ void func_800127E0(void) {
             for (i = 0; i < NUM_TRAINS; i++) {
                 gTrainList[i].tender.isActive = 1;
 
+                // clang-format off
                 // Same line required for matching...
                 for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) { gTrainList[i].passengerCars[j].isActive = 1; }
+                // clang-format on
 
                 gTrainList[i].numCars = NUM_TENDERS + NUM_PASSENGER_CAR_ENTRIES;
             }
@@ -5677,11 +5679,13 @@ void func_8001577C(Camera* camera, UNUSED Player* playerArg, UNUSED s32 arg2, s3
                 goto alable;
             }
         }
+        // clang-format off
         // I hate this, but a fakematch is a fakematch
         if (D_80163068[playerId] > 0.7) { waypointDiff = playerWaypoint - cameraWaypoint; if ((D_80164688[cameraId] > 0.5) && ((waypointDiff * waypointDiff) < 5)) {
                 func_8001A348(cameraId, -1.0f, 2);
             }
         }
+        // clang-format on
     }
 alable:
     camera->pos[0] = D_801645F8[cameraId];
@@ -6727,8 +6731,10 @@ void func_80019DE4(void) {
 void func_80019DF4(void) {
     s32 i;
     s32 playerId = gGPCurrentRacePlayerIdByRank[0];
+    // clang-format off
     // Has to be on a single line to match. Because IDO hates you :)
     for (i = 0; i < 4; i++) { D_80164670[i] = D_80164678[i]; }
+    // clang-format on
     camera1->playerId = playerId;
     D_80164678[0] = 1;
     D_801646CC = 2;

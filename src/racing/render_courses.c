@@ -1661,11 +1661,14 @@ void func_802966A0(void) {
 
     switch (gCurrentCourseId) {
         case COURSE_KOOPA_BEACH:
+            // clang-format off
             if (D_8015F8E8 < 0.0f) {
                 if (D_8015F8E4 < -20.0f) { D_8015F8E8 *= -1.0f; }
             } else {
                 if (D_8015F8E4 > 0.0f) { D_8015F8E8 *= -1.0f; }
             }
+            }
+            // clang-format on
             D_8015F8E4 += D_8015F8E8;
 
             D_802B87BC += 9;

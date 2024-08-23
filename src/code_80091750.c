@@ -2574,8 +2574,10 @@ void func_80095AE0(Mtx2* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
         }
     }
 #else
+    // clang-format off
     // should be inline
     for(i = 0; i < 16; i++) { arg0->m[0][i] = 0; }
+    // clang-format on
 #endif
 
     sp14.w = arg3 * 65536.0f;

@@ -874,8 +874,10 @@ s32 func_800B64EC(s32 arg0) {
     temp_v0 = osPfsReadWriteFile(&gControllerPak1FileHandle, gControllerPak1FileNote, PFS_READ, (arg0 * 0x3C00) + 0x100,
                                  0x3C00, (u8*) D_800DC714);
     if (temp_v0 == 0) {
+        // clang-format off
         // need to be inline
         phi_s1 = (u8*) &D_8018EE10[arg0]; temp_s0 = 0; while (1) {
+        // clang-format on
 
             if (phi_s1[7] != func_800B60E8(temp_s0)) {
                 D_8018EE10[arg0].ghostDataSaved = 0;

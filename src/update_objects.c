@@ -115,7 +115,9 @@ s32 find_unused_obj_index(s32* arg0) {
     s32 temp_v1;
 
     temp_v1 = objectListSize;
+    // clang-format off
     temp_v0 = 0; do { // this two SHOULD be on the same line
+    // clang-format on
         ++temp_v1;
         ++temp_v0;
 

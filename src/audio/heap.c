@@ -248,6 +248,7 @@ void* alloc_bank_or_seq(struct SoundMultiPool* arg0, s32 arg1, s32 size, s32 arg
 
     if (arg3 == 0) {
         tp = &arg0->temporary;
+        // clang-format off
         if (arg0 == &gSeqLoadedPool) {
             table = gSeqLoadStatus; isSound = 0;
         } else {
@@ -259,6 +260,7 @@ void* alloc_bank_or_seq(struct SoundMultiPool* arg0, s32 arg1, s32 size, s32 arg
                 table = gUnkLoadStatus; isSound = 2;
             }
         }
+        // clang-format on
         if (tp->entries[0].id == -1) {
             firstVal = 0;
         } else {

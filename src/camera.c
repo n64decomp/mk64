@@ -915,9 +915,10 @@ void func_8001EE98(Player* player, Camera* camera, s8 index) {
     }
     switch (gModeSelection) {
         case GRAND_PRIX:
-
+            // clang-format off
             if (((player->type & PLAYER_CINEMATIC_MODE) == PLAYER_CINEMATIC_MODE) || (gDemoMode == 1)) { D_80152300[cameraIndex] = 3;
             //             -->                 -->        Scroll right        -->      bit more     -->     ^ Required for matching
+            // clang-format on
             } else if (gIsGamePaused == 1) {
                 func_8001A0A4(&D_80152300[cameraIndex], camera, player, index, cameraIndex);
             } else {

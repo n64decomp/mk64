@@ -1467,7 +1467,7 @@ void func_8002B830(Player* player, s8 playerId, s8 screenId) {
 
 UNUSED void func_8002B8A4(Player* player_one, Player* player_two) {
     s32 var_v1;
-
+    // clang-format off
     /*
     if's are being done bracket-less on purpose,
     Technically only the `player_one == gPlayerEight` NEEDS to be
@@ -1491,6 +1491,7 @@ UNUSED void func_8002B8A4(Player* player_one, Player* player_two) {
     if (player_two == gPlayerSeven) var_v1 = 6;
     if (player_two == gPlayerEight) var_v1 = 7;
     D_801653C0[var_v1] = player_one;
+    // clang-format on
 }
 
 void func_8002B9CC(Player* player, s8 arg1, UNUSED s32 arg2) {
