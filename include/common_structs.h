@@ -1,7 +1,7 @@
 #ifndef _COMMON_STRUCTS_H_
 #define _COMMON_STRUCTS_H_
 
-#include "ultra64.h"
+#include <ultra64.h>
 
 typedef f32 Vec3f[3];
 typedef f32 Vec4f[4];

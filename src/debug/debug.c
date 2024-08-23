@@ -82,14 +82,14 @@ static u32 variable_to_u64(variableWatchAttributes *attribute) {
 	u32 variable;
 
 	switch (attribute->variableSize) {
-		case sizeof(u8): 
+		case sizeof(u8):
 			variable = *((u8*) attribute->variablePointer);
 			break;
-		case sizeof(u16):	
+		case sizeof(u16):
 			variable = *((u16*) attribute->variablePointer);
 			break;
 		case sizeof(u32):
-		case sizeof(u64):	
+		case sizeof(u64):
 			variable = *((u32*) attribute->variablePointer); // no floating point rounding
 			break;
 		default:
@@ -103,7 +103,7 @@ static void round_up_float(u32 *variable, u8 variableSize) {
 	switch (variableSize) {
 		case sizeof(u64):
 		case sizeof(u32):
-			*variable = (u32) (*(f32*) &*variable); 
+			*variable = (u32) (*(f32*) &*variable);
 			break;
 		default:
 			sDisplayListState = BAD;
@@ -131,7 +131,7 @@ static void u64_to_string(variableWatchAttributes *attribute, u32 variable, u8 b
 		switch (variableSize) {
 			case sizeof(u8):
 				signedVariable = (s8) variable;
-				if (signedVariable < 0) {	
+				if (signedVariable < 0) {
 					signedVariable = -signedVariable;
 					variable = (u8) signedVariable;
 					*bufferedString = '-';
@@ -150,7 +150,7 @@ static void u64_to_string(variableWatchAttributes *attribute, u32 variable, u8 b
 			case sizeof(u32):
 			case sizeof(u64):
 				signedVariable = (s32) variable;
-				if (signedVariable < 0) {	
+				if (signedVariable < 0) {
 					signedVariable = -signedVariable;
 					variable = (u32) signedVariable;
 					*bufferedString = '-';
@@ -164,11 +164,11 @@ static void u64_to_string(variableWatchAttributes *attribute, u32 variable, u8 b
 
 	// convert u64 into a string but it gets put in reverse
 	if (base != HEXIDECIMAL) {
-		do {	
+		do {
 			stringLength++;
 			*bufferedString = variable % base + '0';
 			bufferedString++;
-			variable /= base;	
+			variable /= base;
 		} while (variable != 0);
 	} else {
 		do {
@@ -186,8 +186,8 @@ static void u64_to_string(variableWatchAttributes *attribute, u32 variable, u8 b
 		} while (variable != 0);
 	}
 
-	bufferedString -= stringLength;	
-	upperIndex = stringLength - 1; 
+	bufferedString -= stringLength;
+	upperIndex = stringLength - 1;
 
 	// flip string 4321 --> 1234
 	for (lowerIndex = 0; lowerIndex < stringLength >> 1; lowerIndex++) {
@@ -228,7 +228,7 @@ static void u64_to_string(variableWatchAttributes *attribute, u32 variable, u8 b
 
 static u32 _strlen(const char *str) {
 	u32 len;
-	
+
 	len = 0;
 	for (; *str != '\0'; str++) {
 		len++;
@@ -245,7 +245,7 @@ static void _memcpy(char *destStr, const char *copyStr, u32 copySize) {
 		*destStr = *copyStr;
 		destStr++;
 		copyStr++;
-	}	
+	}
 }
 
 #endif

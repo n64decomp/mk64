@@ -34,14 +34,14 @@ UNUSED void *D_800DDB5C[3] = {
     gFramebuffer0, gFramebuffer1, gFramebuffer2
 };
 
-s16 D_80164AB0[8];
-s16 D_80164AC0[8];
-Player *D_80164AD0[8];
+s16 gPlayersToRenderPlayerId[8];
+s16 gPlayersToRenderScreenId[8];
+Player *gPlayersToRenderPlayer[8];
 s16 gMatrixEffectCount;
 s32 D_80164AF4[3];
 struct_D_802F1F80 *gPlayerPalette;
-u8 *D_80164B08;
-u8 *D_80164B0C;
+u8 *sKartUpperTexture;
+u8 *sKartLowerTexture;
 u16 gPlayerRedEffect[8];
 u16 gPlayerGreenEffect[8];
 u16 gPlayerBlueEffect[8];
@@ -53,8 +53,8 @@ UNUSED u16 gPlayerWhiteEffect[8];
 s32 D_80164B80[296];
 s16 D_80165020[40];
 Vec3f D_80165070[8];
-s16 D_801650D0[4][8];
-s16 D_80165110[4][8];
+s16 gLastAnimFrameSelector[4][8];
+s16 gLastAnimGroupSelector[4][8];
 s16 D_80165150[4][8];
 s16 D_80165190[4][8];
 s16 D_801651D0[4][8];
@@ -106,7 +106,7 @@ u16 check_player_camera_collision(Player *player, Camera *camera, f32 arg2, f32 
     s16 var_v0;
     u16 ret;
 
-    ret = FALSE;
+    ret = false;
     switch (gActiveScreenMode) {                              /* irregular */
     case SCREEN_MODE_1P:
         var_v0 = 0x293C;
@@ -135,7 +135,7 @@ u16 check_player_camera_collision(Player *player, Camera *camera, f32 arg2, f32 
     sp5C = ((sp44 - player->pos[2]) * (sp58 - player->pos[0])) - ((sp4C - player->pos[2]) * (sp50 - player->pos[0]));
 
     if (((sp64 >= 0) && (sp60 >= 0) && (sp5C >= 0)) || (((sp64) <= 0) && (sp60 <= 0) && (sp5C <= 0))) {
-        ret = TRUE;
+        ret = true;
     }
     return ret;
 }
@@ -152,7 +152,7 @@ u16 func_8001FD78(Player *player, f32 posX, UNUSED f32 arg2, f32 posZ) {
     f32 thing1;
     u16 ret;
 
-    ret = FALSE;
+    ret = false;
 
     sp58 = (70.0f * coss(((player->unk_0C0 - player->rotation[1]) -  0x71C))) + player->pos[2];
     sp64 = (70.0f * sins(((player->unk_0C0 - player->rotation[1]) -  0x71C))) + player->pos[0];
@@ -165,11 +165,14 @@ u16 func_8001FD78(Player *player, f32 posX, UNUSED f32 arg2, f32 posZ) {
     thing0   = ((sp54 - posZ) * (sp5c - posX)) - ((sp50 - posZ) * (sp60 - posX));
     thing1   = ((sp50 - posZ) * (sp64 - posX)) - ((sp58 - posZ) * (sp5c - posX));
     if (((temp_f14 >= 0) && (thing0 >= 0) && (thing1 >= 0)) || ((temp_f14 <= 0) && (thing0 <= 0) && (thing1 <= 0))) {
-        ret = TRUE;
+        ret = true;
     }
     return ret;
 }
 
+/**
+ * @brief one of his function is to put the frame to load in to a list to load it to be only applied for the next frame
+ */
 void init_render_player(Player *player, Camera *camera, s8 playerId, s8 screenId) {
     UNUSED s32 pad[4];
     s32 sp4C;
@@ -195,13 +198,13 @@ void init_render_player(Player *player, Camera *camera, s8 playerId, s8 screenId
         temp_v0_2 = 1 << (screenId << 2);
         if ((temp_v0 == (player->unk_002 & temp_v0)) && (temp_v0_2 == (player->unk_002 & temp_v0_2))) {
             if ((check_player_camera_collision(player, camera, D_80165570 + sp4C, D_80165572 + sp48) == 1) & 0xFFFF) {
-                D_80164AB0[gPlayersToRenderCount] = (s16) playerId;
-                D_80164AC0[gPlayersToRenderCount] = (s16) screenId;
-                D_80164AD0[gPlayersToRenderCount] = player;
+                gPlayersToRenderPlayerId[gPlayersToRenderCount] = (s16) playerId;
+                gPlayersToRenderScreenId[gPlayersToRenderCount] = (s16) screenId;
+                gPlayersToRenderPlayer[gPlayersToRenderCount] = player;
                 gPlayersToRenderCount += 1;
                 D_80165190[screenId][playerId] = 0;
-                D_801650D0[screenId][playerId] = player->animFrameSelector[screenId];
-                D_80165110[screenId][playerId] = player->animGroupSelector[screenId];
+                gLastAnimFrameSelector[screenId][playerId] = player->animFrameSelector[screenId];
+                gLastAnimGroupSelector[screenId][playerId] = player->animGroupSelector[screenId];
                 D_80165150[screenId][playerId] = player->unk_0A8;
                 D_801651D0[screenId][playerId] += 1;
                 if (D_801651D0[screenId][playerId] == 2) {
@@ -209,13 +212,13 @@ void init_render_player(Player *player, Camera *camera, s8 playerId, s8 screenId
                 }
             } else {
                 if ((check_player_camera_collision(player, camera, D_80165574 + sp4C, D_80165576) == 1) & 0xFFFF) {
-                    if ((sRenderingFramebuffer == gRenderingFramebufferByPlayer[playerId]) || ((D_801650D0[screenId][playerId] - player->animFrameSelector[screenId]) > 0x13) || ((D_801650D0[screenId][playerId] - player->animFrameSelector[screenId]) < -0x13) || (D_80165190[screenId][playerId] == (s16) 1U)) {
-                        D_80164AB0[gPlayersToRenderCount] = (s16) playerId;
-                        D_80164AC0[gPlayersToRenderCount] = (s16) screenId;
-                        D_80164AD0[gPlayersToRenderCount] = player;
+                    if ((sRenderingFramebuffer == gRenderingFramebufferByPlayer[playerId]) || ((gLastAnimFrameSelector[screenId][playerId] - player->animFrameSelector[screenId]) > 0x13) || ((gLastAnimFrameSelector[screenId][playerId] - player->animFrameSelector[screenId]) < -0x13) || (D_80165190[screenId][playerId] == (s16) 1U)) {
+                        gPlayersToRenderPlayerId[gPlayersToRenderCount] = (s16) playerId;
+                        gPlayersToRenderScreenId[gPlayersToRenderCount] = (s16) screenId;
+                        gPlayersToRenderPlayer[gPlayersToRenderCount] = player;
                         gPlayersToRenderCount += 1;
-                        D_801650D0[screenId][playerId] = player->animFrameSelector[screenId];
-                        D_80165110[screenId][playerId] = player->animGroupSelector[screenId];
+                        gLastAnimFrameSelector[screenId][playerId] = player->animFrameSelector[screenId];
+                        gLastAnimGroupSelector[screenId][playerId] = player->animGroupSelector[screenId];
                         D_80165150[screenId][playerId] = player->unk_0A8;
                         D_80165190[screenId][playerId] = 0;
                         D_801651D0[screenId][playerId] += 1;
@@ -225,13 +228,13 @@ void init_render_player(Player *player, Camera *camera, s8 playerId, s8 screenId
                     }
                 } else {
                     if ((
-                        (D_801650D0[screenId][playerId] - player->animFrameSelector[screenId]) > 0x13) || ((D_801650D0[screenId][playerId] - player->animFrameSelector[screenId]) < -0x13) || (D_80165190[screenId][playerId] == (s16) 1U)) {
-                        D_80164AB0[gPlayersToRenderCount] = (s16) playerId;
-                        D_80164AC0[gPlayersToRenderCount] = (s16) screenId;
-                        D_80164AD0[gPlayersToRenderCount] = player;
+                        (gLastAnimFrameSelector[screenId][playerId] - player->animFrameSelector[screenId]) > 0x13) || ((gLastAnimFrameSelector[screenId][playerId] - player->animFrameSelector[screenId]) < -0x13) || (D_80165190[screenId][playerId] == (s16) 1U)) {
+                        gPlayersToRenderPlayerId[gPlayersToRenderCount] = (s16) playerId;
+                        gPlayersToRenderScreenId[gPlayersToRenderCount] = (s16) screenId;
+                        gPlayersToRenderPlayer[gPlayersToRenderCount] = player;
                         gPlayersToRenderCount += 1;
-                        D_801650D0[screenId][playerId] = (s16) player->animFrameSelector[screenId];
-                        D_80165110[screenId][playerId] = player->animGroupSelector[screenId];
+                        gLastAnimFrameSelector[screenId][playerId] = (s16) player->animFrameSelector[screenId];
+                        gLastAnimGroupSelector[screenId][playerId] = player->animGroupSelector[screenId];
                         D_80165150[screenId][playerId] = player->unk_0A8;
                         D_80165190[screenId][playerId] = 0;
                         D_801651D0[screenId][playerId] += 1;
@@ -245,96 +248,96 @@ void init_render_player(Player *player, Camera *camera, s8 playerId, s8 screenId
     }
 }
 
-void func_80020524(void) {
+void load_kart_texture_and_render_kart_particle_on_screen_one(void) {
     s16 i;
 
-    func_80027560(D_80164AD0[0], D_80164AB0[0], D_80164AC0[0], D_80164AC0[0], D_801651D0[D_80164AC0[0]][D_80164AB0[0]]);
-    func_8006E5AC(gPlayerOneCopy, 0, 0);
-    func_8006E5AC(gPlayerTwo,     1, 0);
-    func_8006E5AC(gPlayerThree,   2, 0);
-    func_8006E5AC(gPlayerFour,    3, 0);
+    load_kart_texture_non_blocking(gPlayersToRenderPlayer[0], gPlayersToRenderPlayerId[0], gPlayersToRenderScreenId[0], gPlayersToRenderScreenId[0], D_801651D0[gPlayersToRenderScreenId[0]][gPlayersToRenderPlayerId[0]]);
+    render_kart_particle_on_screen_one(gPlayerOneCopy, PLAYER_ONE,   PLAYER_ONE);
+    render_kart_particle_on_screen_one(gPlayerTwo,     PLAYER_TWO,   PLAYER_ONE);
+    render_kart_particle_on_screen_one(gPlayerThree,   PLAYER_THREE, PLAYER_ONE);
+    render_kart_particle_on_screen_one(gPlayerFour,    PLAYER_FOUR,  PLAYER_ONE);
     if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
-        func_8006E5AC(gPlayerFive,  4, 0);
-        func_8006E5AC(gPlayerSix,   5, 0);
-        func_8006E5AC(gPlayerSeven, 6, 0);
-        func_8006E5AC(gPlayerEight, 7, 0);
+        render_kart_particle_on_screen_one(gPlayerFive,  PLAYER_FIVE,  PLAYER_ONE);
+        render_kart_particle_on_screen_one(gPlayerSix,   PLAYER_SIX,   PLAYER_ONE);
+        render_kart_particle_on_screen_one(gPlayerSeven, PLAYER_SEVEN, PLAYER_ONE);
+        render_kart_particle_on_screen_one(gPlayerEight, PLAYER_EIGHT, PLAYER_ONE);
     }
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 
     for (i = 1; i < gPlayersToRenderCount; i++) {
 
-            func_80027560(D_80164AD0[i], D_80164AB0[i], D_80164AC0[i], D_80164AC0[i], D_801651D0[D_80164AC0[i]][D_80164AB0[i]]);
+            load_kart_texture_non_blocking(gPlayersToRenderPlayer[i], gPlayersToRenderPlayerId[i], gPlayersToRenderScreenId[i], gPlayersToRenderScreenId[i], D_801651D0[gPlayersToRenderScreenId[i]][gPlayersToRenderPlayerId[i]]);
 
-            mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]].unk_00,
-                       D_802BFB80.arraySize8[D_801651D0[D_80164AC0[i - 1]][D_80164AB0[i - 1]]][D_80164AC0[i - 1]][D_80164AB0[i - 1]].pixel_index_array);
+            mio0decode((u8*) gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]]][gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]].unk_00,
+                       D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]]][gPlayersToRenderScreenId[i - 1]][gPlayersToRenderPlayerId[i - 1]].pixel_index_array);
             osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
 
-    mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
-               D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
+    mio0decode((u8*) gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]].unk_00,
+               D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]].pixel_index_array);
 }
 
-void func_8002088C(void) {
+void load_kart_texture_and_render_kart_particle_on_screen_two(void) {
     s16 var_s0;
 
-    func_80027560(D_80164AD0[0], D_80164AB0[0], D_80164AC0[0], D_80164AC0[0], D_801651D0[D_80164AC0[0]][D_80164AB0[0]]);
-    func_8006E634(gPlayerOneCopy, 0, 1);
-    func_8006E634(gPlayerTwo,     1, 1);
-    func_8006E634(gPlayerThree,   2, 1);
-    func_8006E634(gPlayerFour,    3, 1);
+    load_kart_texture_non_blocking(gPlayersToRenderPlayer[0], gPlayersToRenderPlayerId[0], gPlayersToRenderScreenId[0], gPlayersToRenderScreenId[0], D_801651D0[gPlayersToRenderScreenId[0]][gPlayersToRenderPlayerId[0]]);
+    render_kart_particle_on_screen_two(gPlayerOneCopy, PLAYER_ONE,   PLAYER_TWO);
+    render_kart_particle_on_screen_two(gPlayerTwo,     PLAYER_TWO,   PLAYER_TWO);
+    render_kart_particle_on_screen_two(gPlayerThree,   PLAYER_THREE, PLAYER_TWO);
+    render_kart_particle_on_screen_two(gPlayerFour,    PLAYER_FOUR,  PLAYER_TWO);
     if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
-        func_8006E634(gPlayerFive,  4, 1);
-        func_8006E634(gPlayerSix,   5, 1);
-        func_8006E634(gPlayerSeven, 6, 1);
-        func_8006E634(gPlayerEight, 7, 1);
+        render_kart_particle_on_screen_two(gPlayerFive,  PLAYER_FIVE,  PLAYER_TWO);
+        render_kart_particle_on_screen_two(gPlayerSix,   PLAYER_SIX,   PLAYER_TWO);
+        render_kart_particle_on_screen_two(gPlayerSeven, PLAYER_SEVEN, PLAYER_TWO);
+        render_kart_particle_on_screen_two(gPlayerEight, PLAYER_EIGHT, PLAYER_TWO);
     }
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     for (var_s0 = 1; var_s0 < gPlayersToRenderCount; var_s0++) {
-        func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0], D_80164AC0[var_s0], D_80164AC0[var_s0], D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
-        mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].unk_00,
-                   D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]].pixel_index_array);
+        load_kart_texture_non_blocking(gPlayersToRenderPlayer[var_s0], gPlayersToRenderPlayerId[var_s0], gPlayersToRenderScreenId[var_s0], gPlayersToRenderScreenId[var_s0], D_801651D0[gPlayersToRenderScreenId[var_s0]][gPlayersToRenderPlayerId[var_s0]]);
+        mio0decode((u8*) gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]].unk_00,
+                   D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].unk_00,
-               D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]].pixel_index_array);
+    mio0decode((u8*) gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]].unk_00,
+               D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]].pixel_index_array);
 }
 
-void func_80020BF4(void) {
+void load_kart_texture_and_render_kart_particle_on_screen_three(void) {
     s16 var_s0;
 
-    func_80027560(D_80164AD0[0], D_80164AB0[0] + 4, D_80164AC0[0], D_80164AC0[0] - 2, D_801651D0[D_80164AC0[0]][D_80164AB0[0]]);
-    func_8006E6BC(gPlayerOneCopy, 0, 2);
-    func_8006E6BC(gPlayerTwo,     1, 2);
-    func_8006E6BC(gPlayerThree,   2, 2);
-    func_8006E6BC(gPlayerFour,    3, 2);
+    load_kart_texture_non_blocking(gPlayersToRenderPlayer[0], gPlayersToRenderPlayerId[0] + 4, gPlayersToRenderScreenId[0], gPlayersToRenderScreenId[0] - 2, D_801651D0[gPlayersToRenderScreenId[0]][gPlayersToRenderPlayerId[0]]);
+    render_kart_particle_on_screen_three(gPlayerOneCopy, PLAYER_ONE,   PLAYER_THREE);
+    render_kart_particle_on_screen_three(gPlayerTwo,     PLAYER_TWO,   PLAYER_THREE);
+    render_kart_particle_on_screen_three(gPlayerThree,   PLAYER_THREE, PLAYER_THREE);
+    render_kart_particle_on_screen_three(gPlayerFour,    PLAYER_FOUR,  PLAYER_THREE);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     for (var_s0 = 1; var_s0 < gPlayersToRenderCount; var_s0++) {
-        func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0] + 4, D_80164AC0[var_s0], D_80164AC0[var_s0] - 2, D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
-        mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00,
-                   D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
+        load_kart_texture_non_blocking(gPlayersToRenderPlayer[var_s0], gPlayersToRenderPlayerId[var_s0] + 4, gPlayersToRenderScreenId[var_s0], gPlayersToRenderScreenId[var_s0] - 2, D_801651D0[gPlayersToRenderScreenId[var_s0]][gPlayersToRenderPlayerId[var_s0]]);
+        mio0decode((u8*) gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1] - 2][gPlayersToRenderPlayerId[var_s0 - 1] + 4].unk_00,
+                   D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1] - 2][gPlayersToRenderPlayerId[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
-               D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
+    mio0decode((u8*) gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1] - 2][gPlayersToRenderPlayerId[gPlayersToRenderCount-1] + 4].unk_00,
+               D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1] - 2][gPlayersToRenderPlayerId[gPlayersToRenderCount-1] + 4].pixel_index_array);
 }
 
-void func_80020F1C(void) {
+void load_kart_texture_and_render_kart_particle_on_screen_four(void) {
     s16 var_s0;
 
-    func_80027560(D_80164AD0[0], D_80164AB0[0] + 4, D_80164AC0[0], D_80164AC0[0] - 2, D_801651D0[D_80164AC0[0]][D_80164AB0[0]]);
-    func_8006E744(gPlayerOneCopy, 0, 3);
-    func_8006E744(gPlayerTwo,     1, 3);
-    func_8006E744(gPlayerThree,   2, 3);
-    func_8006E744(gPlayerFour,    3, 3);
+    load_kart_texture_non_blocking(gPlayersToRenderPlayer[0], gPlayersToRenderPlayerId[0] + 4, gPlayersToRenderScreenId[0], gPlayersToRenderScreenId[0] - 2, D_801651D0[gPlayersToRenderScreenId[0]][gPlayersToRenderPlayerId[0]]);
+    render_kart_particle_on_screen_four(gPlayerOneCopy, PLAYER_ONE,   PLAYER_FOUR);
+    render_kart_particle_on_screen_four(gPlayerTwo,     PLAYER_TWO,   PLAYER_FOUR);
+    render_kart_particle_on_screen_four(gPlayerThree,   PLAYER_THREE, PLAYER_FOUR);
+    render_kart_particle_on_screen_four(gPlayerFour,    PLAYER_FOUR,  PLAYER_FOUR);
     osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     for (var_s0 = 1; var_s0 < gPlayersToRenderCount; var_s0++) {
-        func_80027560(D_80164AD0[var_s0], D_80164AB0[var_s0] + 4, D_80164AC0[var_s0], D_80164AC0[var_s0] - 2, D_801651D0[D_80164AC0[var_s0]][D_80164AB0[var_s0]]);
-        mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].unk_00,
-                   D_802BFB80.arraySize8[D_801651D0[D_80164AC0[var_s0 - 1]][D_80164AB0[var_s0 - 1]]][D_80164AC0[var_s0 - 1] - 2][D_80164AB0[var_s0 - 1] + 4].pixel_index_array);
+        load_kart_texture_non_blocking(gPlayersToRenderPlayer[var_s0], gPlayersToRenderPlayerId[var_s0] + 4, gPlayersToRenderScreenId[var_s0], gPlayersToRenderScreenId[var_s0] - 2, D_801651D0[gPlayersToRenderScreenId[var_s0]][gPlayersToRenderPlayerId[var_s0]]);
+        mio0decode((u8*) gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1] - 2][gPlayersToRenderPlayerId[var_s0 - 1] + 4].unk_00,
+                   D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[var_s0 - 1]][gPlayersToRenderPlayerId[var_s0 - 1]]][gPlayersToRenderScreenId[var_s0 - 1] - 2][gPlayersToRenderPlayerId[var_s0 - 1] + 4].pixel_index_array);
         osRecvMesg(&gDmaMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     }
-    mio0decode((u8*) D_802DFB80[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].unk_00,
-               D_802BFB80.arraySize8[D_801651D0[D_80164AC0[gPlayersToRenderCount-1]][D_80164AB0[gPlayersToRenderCount-1]]][D_80164AC0[gPlayersToRenderCount-1] - 2][D_80164AB0[gPlayersToRenderCount-1] + 4].pixel_index_array);
+    mio0decode((u8*) gEncodedKartTexture[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1] - 2][gPlayersToRenderPlayerId[gPlayersToRenderCount-1] + 4].unk_00,
+               D_802BFB80.arraySize8[D_801651D0[gPlayersToRenderScreenId[gPlayersToRenderCount-1]][gPlayersToRenderPlayerId[gPlayersToRenderCount-1]]][gPlayersToRenderScreenId[gPlayersToRenderCount-1] - 2][gPlayersToRenderPlayerId[gPlayersToRenderCount-1] + 4].pixel_index_array);
 }
 
 void try_rendering_player(Player *player, s8 playerId, s8 arg2) {
@@ -359,38 +362,38 @@ void render_players_on_screen_one(void) {
     };
 
     gPlayersToRenderCount = 0;
-    init_render_player(gPlayerOneCopy, camera1, 0U, 0U);
-    init_render_player(gPlayerTwo, camera1, 1U, 0U);
-    init_render_player(gPlayerThree, camera1, 2U, 0U);
-    init_render_player(gPlayerFour, camera1, 3U, 0U);
+    init_render_player(gPlayerOneCopy, camera1, PLAYER_ONE,   PLAYER_ONE);
+    init_render_player(gPlayerTwo, camera1,     PLAYER_TWO,   PLAYER_ONE);
+    init_render_player(gPlayerThree, camera1,   PLAYER_THREE, PLAYER_ONE);
+    init_render_player(gPlayerFour, camera1,    PLAYER_FOUR,  PLAYER_ONE);
     if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
-        init_render_player(gPlayerFive, camera1, 4U, 0U);
-        init_render_player(gPlayerSix, camera1, 5U, 0U);
-        init_render_player(gPlayerSeven, camera1, 6U, 0U);
-        init_render_player(gPlayerEight, camera1, 7U, 0U);
+        init_render_player(gPlayerFive, camera1,  PLAYER_FIVE,  PLAYER_ONE);
+        init_render_player(gPlayerSix, camera1,   PLAYER_SIX,   PLAYER_ONE);
+        init_render_player(gPlayerSeven, camera1, PLAYER_SEVEN, PLAYER_ONE);
+        init_render_player(gPlayerEight, camera1, PLAYER_EIGHT, PLAYER_ONE);
     }
-    try_rendering_player(gPlayerOne, 0U, 0U);
-    try_rendering_player(gPlayerTwo, 1U, 0U);
-    try_rendering_player(gPlayerThree, 2U, 0U);
-    try_rendering_player(gPlayerFour, 3U, 0U);
+    try_rendering_player(gPlayerOne,   PLAYER_ONE,   PLAYER_ONE);
+    try_rendering_player(gPlayerTwo,   PLAYER_TWO,   PLAYER_ONE);
+    try_rendering_player(gPlayerThree, PLAYER_THREE, PLAYER_ONE);
+    try_rendering_player(gPlayerFour,  PLAYER_FOUR,  PLAYER_ONE);
     if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
-        try_rendering_player(gPlayerFive, 4U, 0U);
-        try_rendering_player(gPlayerSix, 5U, 0U);
-        try_rendering_player(gPlayerSeven, 6U, 0U);
-        try_rendering_player(gPlayerEight, 7U, 0U);
+        try_rendering_player(gPlayerFive,  PLAYER_FIVE,  PLAYER_ONE);
+        try_rendering_player(gPlayerSix,   PLAYER_SIX,   PLAYER_ONE);
+        try_rendering_player(gPlayerSeven, PLAYER_SEVEN, PLAYER_ONE);
+        try_rendering_player(gPlayerEight, PLAYER_EIGHT, PLAYER_ONE);
     }
     if (gPlayersToRenderCount != 0) {
-        func_80020524();
+        load_kart_texture_and_render_kart_particle_on_screen_one();
     } else {
-        func_8006E5AC(gPlayerOneCopy, 0, 0);
-        func_8006E5AC(gPlayerTwo, 1, 0);
-        func_8006E5AC(gPlayerThree, 2, 0);
-        func_8006E5AC(gPlayerFour, 3, 0);
+        render_kart_particle_on_screen_one(gPlayerOneCopy, PLAYER_ONE,   PLAYER_ONE);
+        render_kart_particle_on_screen_one(gPlayerTwo,     PLAYER_TWO,   PLAYER_ONE);
+        render_kart_particle_on_screen_one(gPlayerThree,   PLAYER_THREE, PLAYER_ONE);
+        render_kart_particle_on_screen_one(gPlayerFour,    PLAYER_FOUR,  PLAYER_ONE);
         if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
-            func_8006E5AC(gPlayerFive, 4, 0);
-            func_8006E5AC(gPlayerSix, 5, 0);
-            func_8006E5AC(gPlayerSeven, 6, 0);
-            func_8006E5AC(gPlayerEight, 7, 0);
+            render_kart_particle_on_screen_one(gPlayerFive,  PLAYER_FIVE,  PLAYER_ONE);
+            render_kart_particle_on_screen_one(gPlayerSix,   PLAYER_SIX,   PLAYER_ONE);
+            render_kart_particle_on_screen_one(gPlayerSeven, PLAYER_SEVEN, PLAYER_ONE);
+            render_kart_particle_on_screen_one(gPlayerEight, PLAYER_EIGHT, PLAYER_ONE);
         }
     }
     gPlayersToRenderCount = 0;
@@ -508,12 +511,12 @@ u8 **gKartWarioWheels1[] = {
     gKartWario189Wheel0
 };
 
-u16 **D_800DDE34[] = {
+u16 **gKartWheels0[] = {
     (u16 **)gKartMarioWheels0, (u16 **)gKartLuigiWheels0, (u16 **)gKartYoshiWheels0, (u16 **)gKartToadWheels0,
     (u16 **)gKartDKWheels0,    (u16 **)gKartWarioWheels0, (u16 **)gKartPeachWheels0, (u16 **)gKartBowserWheels0
 };
 
-u16 **D_800DDE54[] = {
+u16 **gKartWheels1[] = {
     (u16 **)gKartMarioWheels1, (u16 **)gKartLuigiWheels1, (u16 **)gKartYoshiWheels1, (u16 **)gKartToadWheels1,
     (u16 **)gKartDKWheels1,    (u16 **)gKartWarioWheels1, (u16 **)gKartPeachWheels1, (u16 **)gKartBowserWheels1
 };
@@ -528,38 +531,38 @@ s32 maybeCompilerPadding = 0;
 
 void render_players_on_screen_two(void) {
     gPlayersToRenderCount = 0;
-    init_render_player(gPlayerOneCopy, camera2, 0, 1);
-    init_render_player(gPlayerTwo, camera2, 1, 1);
-    init_render_player(gPlayerThree, camera2, 2, 1);
-    init_render_player(gPlayerFour, camera2, 3, 1);
+    init_render_player(gPlayerOneCopy, camera2, PLAYER_ONE,   PLAYER_TWO);
+    init_render_player(gPlayerTwo, camera2,     PLAYER_TWO,   PLAYER_TWO);
+    init_render_player(gPlayerThree, camera2,   PLAYER_THREE, PLAYER_TWO);
+    init_render_player(gPlayerFour, camera2,    PLAYER_FOUR,  PLAYER_TWO);
     if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
-        init_render_player(gPlayerFive, camera2, 4, 1);
-        init_render_player(gPlayerSix, camera2, 5, 1);
-        init_render_player(gPlayerSeven, camera2, 6, 1);
-        init_render_player(gPlayerEight, camera2, 7, 1);
+        init_render_player(gPlayerFive, camera2,  PLAYER_FIVE,  PLAYER_TWO);
+        init_render_player(gPlayerSix, camera2,   PLAYER_SIX,   PLAYER_TWO);
+        init_render_player(gPlayerSeven, camera2, PLAYER_SEVEN, PLAYER_TWO);
+        init_render_player(gPlayerEight, camera2, PLAYER_EIGHT, PLAYER_TWO);
     }
-    try_rendering_player(gPlayerOne, 0, 1);
-    try_rendering_player(gPlayerTwo, 1, 1);
-    try_rendering_player(gPlayerThree, 2, 1);
-    try_rendering_player(gPlayerFour, 3, 1);
+    try_rendering_player(gPlayerOne,   PLAYER_ONE,   PLAYER_TWO);
+    try_rendering_player(gPlayerTwo,   PLAYER_TWO,   PLAYER_TWO);
+    try_rendering_player(gPlayerThree, PLAYER_THREE, PLAYER_TWO);
+    try_rendering_player(gPlayerFour,  PLAYER_FOUR,  PLAYER_TWO);
     if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
-        try_rendering_player(gPlayerFive, 4, 1);
-        try_rendering_player(gPlayerSix, 5, 1);
-        try_rendering_player(gPlayerSeven, 6, 1);
-        try_rendering_player(gPlayerEight, 7, 1);
+        try_rendering_player(gPlayerFive,  PLAYER_FIVE,  PLAYER_TWO);
+        try_rendering_player(gPlayerSix,   PLAYER_SIX,   PLAYER_TWO);
+        try_rendering_player(gPlayerSeven, PLAYER_SEVEN, PLAYER_TWO);
+        try_rendering_player(gPlayerEight, PLAYER_EIGHT, PLAYER_TWO);
     }
     if (gPlayersToRenderCount != 0) {
-        func_8002088C();
+        load_kart_texture_and_render_kart_particle_on_screen_two();
     } else {
-        func_8006E634(gPlayerOneCopy, 0, 1);
-        func_8006E634(gPlayerTwo, 1, 1);
-        func_8006E634(gPlayerThree, 2, 1);
-        func_8006E634(gPlayerFour, 3, 1);
+        render_kart_particle_on_screen_two(gPlayerOneCopy, PLAYER_ONE,   PLAYER_TWO);
+        render_kart_particle_on_screen_two(gPlayerTwo,     PLAYER_TWO,   PLAYER_TWO);
+        render_kart_particle_on_screen_two(gPlayerThree,   PLAYER_THREE, PLAYER_TWO);
+        render_kart_particle_on_screen_two(gPlayerFour,    PLAYER_FOUR,  PLAYER_TWO);
         if (gActiveScreenMode != SCREEN_MODE_3P_4P_SPLITSCREEN) {
-            func_8006E634(gPlayerFive, 4, 1);
-            func_8006E634(gPlayerSix, 5, 1);
-            func_8006E634(gPlayerSeven, 6, 1);
-            func_8006E634(gPlayerEight, 7, 1);
+            render_kart_particle_on_screen_two(gPlayerFive,  PLAYER_FIVE,  PLAYER_TWO);
+            render_kart_particle_on_screen_two(gPlayerSix,   PLAYER_SIX,   PLAYER_TWO);
+            render_kart_particle_on_screen_two(gPlayerSeven, PLAYER_SEVEN, PLAYER_TWO);
+            render_kart_particle_on_screen_two(gPlayerEight, PLAYER_EIGHT, PLAYER_TWO);
         }
     }
     gPlayersToRenderCount = 0;
@@ -567,42 +570,42 @@ void render_players_on_screen_two(void) {
 
 void render_players_on_screen_three(void) {
     gPlayersToRenderCount = 0;
-    init_render_player(gPlayerOneCopy, camera3, 0, 2);
-    init_render_player(gPlayerTwo, camera3, 1, 2);
-    init_render_player(gPlayerThree, camera3, 2, 2);
-    init_render_player(gPlayerFour, camera3, 3, 2);
-    try_rendering_player(gPlayerOne, 0, 2);
-    try_rendering_player(gPlayerTwo, 1, 2);
-    try_rendering_player(gPlayerThree, 2, 2);
-    try_rendering_player(gPlayerFour, 3, 2);
+    init_render_player(gPlayerOneCopy, camera3, PLAYER_ONE,   PLAYER_THREE);
+    init_render_player(gPlayerTwo, camera3,     PLAYER_TWO,   PLAYER_THREE);
+    init_render_player(gPlayerThree, camera3,   PLAYER_THREE, PLAYER_THREE);
+    init_render_player(gPlayerFour, camera3,    PLAYER_FOUR,  PLAYER_THREE);
+    try_rendering_player(gPlayerOne,   PLAYER_ONE,   PLAYER_THREE);
+    try_rendering_player(gPlayerTwo,   PLAYER_TWO,   PLAYER_THREE);
+    try_rendering_player(gPlayerThree, PLAYER_THREE, PLAYER_THREE);
+    try_rendering_player(gPlayerFour,  PLAYER_FOUR,  PLAYER_THREE);
     if (gPlayersToRenderCount != 0) {
-        func_80020BF4();
+        load_kart_texture_and_render_kart_particle_on_screen_three();
     } else {
-        func_8006E6BC(gPlayerOneCopy, 0, 2);
-        func_8006E6BC(gPlayerTwo, 1, 2);
-        func_8006E6BC(gPlayerThree, 2, 2);
-        func_8006E6BC(gPlayerFour, 3, 2);
+        render_kart_particle_on_screen_three(gPlayerOneCopy, PLAYER_ONE,   PLAYER_THREE);
+        render_kart_particle_on_screen_three(gPlayerTwo,     PLAYER_TWO,   PLAYER_THREE);
+        render_kart_particle_on_screen_three(gPlayerThree,   PLAYER_THREE, PLAYER_THREE);
+        render_kart_particle_on_screen_three(gPlayerFour,    PLAYER_FOUR,  PLAYER_THREE);
     }
     gPlayersToRenderCount = 0;
 }
 
 void render_players_on_screen_four(void) {
     gPlayersToRenderCount = 0;
-    init_render_player(gPlayerOneCopy, camera4, 0, 3);
-    init_render_player(gPlayerTwo, camera4, 1, 3);
-    init_render_player(gPlayerThree, camera4, 2, 3);
-    init_render_player(gPlayerFour, camera4, 3, 3);
-    try_rendering_player(gPlayerOne, 0, 3);
-    try_rendering_player(gPlayerTwo, 1, 3);
-    try_rendering_player(gPlayerThree, 2, 3);
-    try_rendering_player(gPlayerFour, 3, 3);
+    init_render_player(gPlayerOneCopy, camera4, PLAYER_ONE,   PLAYER_FOUR);
+    init_render_player(gPlayerTwo, camera4,     PLAYER_TWO,   PLAYER_FOUR);
+    init_render_player(gPlayerThree, camera4,   PLAYER_THREE, PLAYER_FOUR);
+    init_render_player(gPlayerFour, camera4,    PLAYER_FOUR,  PLAYER_FOUR);
+    try_rendering_player(gPlayerOne,   PLAYER_ONE,   PLAYER_FOUR);
+    try_rendering_player(gPlayerTwo,   PLAYER_TWO,   PLAYER_FOUR);
+    try_rendering_player(gPlayerThree, PLAYER_THREE, PLAYER_FOUR);
+    try_rendering_player(gPlayerFour,  PLAYER_FOUR,  PLAYER_FOUR);
     if (gPlayersToRenderCount != 0) {
-        func_80020F1C();
+        load_kart_texture_and_render_kart_particle_on_screen_four();
     } else {
-        func_8006E744(gPlayerOneCopy, 0, 3);
-        func_8006E744(gPlayerTwo, 1, 3);
-        func_8006E744(gPlayerThree, 2, 3);
-        func_8006E744(gPlayerFour, 3, 3);
+        render_kart_particle_on_screen_four(gPlayerOneCopy, PLAYER_ONE,   PLAYER_FOUR);
+        render_kart_particle_on_screen_four(gPlayerTwo,     PLAYER_TWO,   PLAYER_FOUR);
+        render_kart_particle_on_screen_four(gPlayerThree,   PLAYER_THREE, PLAYER_FOUR);
+        render_kart_particle_on_screen_four(gPlayerFour,    PLAYER_FOUR,  PLAYER_FOUR);
     }
     gPlayersToRenderCount = 0;
 }
@@ -710,7 +713,7 @@ void mtxf_scale2(Mat4 arg0, f32 scale) {
  * This function writes a fixed-point value to each Mtx entry. This is not how the Mtx struct works.
  * The first half of Mtx only holds s16 whole numbers and the second half holds the s16 decimal (fractional) parts.
  * See convert_to_fixed_point_matrix() for correct calculations. Note that each Mtx entry is the size of s32.
- * This means each Mtx entry holds two s16 values. 
+ * This means each Mtx entry holds two s16 values.
  * The first sixteen entries contain only the integer parts and the second sixteen entries hold only the decimal (fractional) parts.
  */
 UNUSED void failed_fixed_point_matrix_conversion(Mtx *dest, Mat4 src) {
@@ -793,9 +796,9 @@ bool adjust_angle(s16 *angle, s16 targetAngle, s16 step) {
         }
     }
     if (targetAngle == *angle) {
-        return FALSE;
+        return false;
     }
-    return TRUE;
+    return true;
 }
 
 void move_s32_towards(s32 *startingValue, s32 targetValue, f32 somePercent) {
@@ -1063,12 +1066,12 @@ bool is_player_under_light_luigi_raceway(Player *player, s8 arg1) {
                 change_player_color_effect_rgb(player, arg1, COLOR_LIGHT, 0.3f);
                 change_player_color_effect_cmy(player, arg1, 0xE0, 0.3f);
                 D_80164B80[arg1] = 0;
-                return TRUE;
+                return true;
             }
-            return FALSE;
+            return false;
 
         default:
-            return FALSE;
+            return false;
     }
 }
 
@@ -1214,7 +1217,7 @@ void func_800235AC(Player *player, s8 arg1) {
             return;
         }
     }
-    if (is_player_under_light_luigi_raceway(player, arg1) != TRUE) {
+    if (is_player_under_light_luigi_raceway(player, arg1) != true) {
         if (((player->tyres[BACK_RIGHT].unk_14 & 1) == 1)
         || ((player->tyres[BACK_RIGHT].unk_14 & 2) == 2)
         || ((player->tyres[FRONT_LEFT].unk_14 & 3) == 3)) {
@@ -1296,7 +1299,7 @@ void render_player_shadow(Player *player, s8 playerId, s8 screenId) {
     convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[playerId + (screenId * 8)], sp118);
 
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[playerId + (screenId * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    
+
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D474, G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR
@@ -1304,14 +1307,14 @@ void render_player_shadow(Player *player, s8 playerId, s8 screenId) {
     func_8004B414(0, 0, 0, 0xFF);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
     gSPVertex(gDisplayListHead++, &D_800E51D0[0], 4, 0);
-    
+
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gDPLoadTextureBlock(gDisplayListHead++, (D_8018D474 + SOME_TEXTURE_POINTER_MATH), G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR
         | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     func_8004B414(0, 0, 0, 0xFF);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
     gSPVertex(gDisplayListHead++, &D_800E5210[0], 4, 0);
-    
+
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
@@ -1346,9 +1349,9 @@ void render_player_shadow_credits(Player *player, s8 playerId, s8 arg2) {
     mtxf_translate_rotate(sp118, spCC, spC4);
     mtxf_scale2(sp118, gCharacterSize[player->characterId] * player->size);
     convert_to_fixed_point_matrix(&gGfxPool->mtxShadow[playerId + (arg2 * 8)], sp118);
-    
+
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxShadow[playerId + (arg2 * 8)]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    
+
     gSPDisplayList(gDisplayListHead++, D_0D008D58);
     gDPSetTextureLUT(gDisplayListHead++, G_TT_NONE);
     gDPLoadTextureBlock(gDisplayListHead++, D_8018D474, G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0,
@@ -1356,14 +1359,14 @@ void render_player_shadow_credits(Player *player, s8 playerId, s8 arg2) {
     func_8004B414(0, 0, 0, 0x000000D0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
     gSPVertex(gDisplayListHead++, &D_800E51D0[0], 4, 0);
-    
+
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gDPLoadTextureBlock(gDisplayListHead++, (D_8018D474 + SOME_TEXTURE_POINTER_MATH), G_IM_FMT_I, G_IM_SIZ_8b, 64, 32, 0,
         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     func_8004B414(0, 0, 0, 0x000000D0);
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_CLD_SURF, G_RM_ZB_CLD_SURF2);
     gSPVertex(gDisplayListHead++, &D_800E5210[0], 4, 0);
-    
+
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
 }
@@ -1411,16 +1414,16 @@ void render_kart(Player *player, s8 playerId, s8 arg2, s8 arg3) {
         }
     }
 #ifdef AVOID_UB
-    gPlayerPalette = &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId];
+    gPlayerPalette = &gPlayerPalettesList[D_801651D0[arg2][playerId]][arg2][playerId];
 #else
-    gPlayerPalette = (struct_D_802F1F80 *) &D_802F1F80[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
+    gPlayerPalette = (struct_D_802F1F80 *) &gPlayerPalettesList[D_801651D0[arg2][playerId]][arg2][playerId * 0x100];
 #endif
     if ((arg2 == 0) || (arg2 == 1)) {
-        D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0x7C0];
+        sKartUpperTexture = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0];
+        sKartLowerTexture = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2][playerId].pixel_index_array[0x7C0];
     } else {
-        D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0x7C0];
+        sKartUpperTexture = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0];
+        sKartLowerTexture = &D_802BFB80.arraySize8[D_801651D0[arg2][playerId]][arg2 - 1][playerId - 4].pixel_index_array[0x7C0];
     }
     mtxf_translate_rotate(sp1A4, sp154, sp14C);
     mtxf_scale2(sp1A4, gCharacterSize[player->characterId] * player->size);
@@ -1490,11 +1493,11 @@ void render_kart(Player *player, s8 playerId, s8 arg2, s8 arg3) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
     }
 
-    gDPLoadTextureBlock(gDisplayListHead++, D_80164B08, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureBlock(gDisplayListHead++, sKartUpperTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
 
-    gDPLoadTextureBlock(gDisplayListHead++, D_80164B0C, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureBlock(gDisplayListHead++, sKartLowerTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3 + 4], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
@@ -1529,16 +1532,16 @@ void render_ghost(Player *player, s8 playerId, s8 screenId, s8 arg3) {
     spDC[0] = player->pos[0] + spD0;
     spDC[2] = player->pos[2] + spC8;
 #ifdef AVOID_UB
-    gPlayerPalette = &D_802F1F80[D_801651D0[screenId][playerId]][screenId][playerId];
+    gPlayerPalette = &gPlayerPalettesList[D_801651D0[screenId][playerId]][screenId][playerId];
 #else
-    gPlayerPalette = (struct_D_802F1F80 *) &D_802F1F80[D_801651D0[screenId][playerId]][screenId][playerId * 0x100];
+    gPlayerPalette = (struct_D_802F1F80 *) &gPlayerPalettesList[D_801651D0[screenId][playerId]][screenId][playerId * 0x100];
 #endif
     if ((screenId == 0) || (screenId == 1)) {
-        D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[screenId][playerId]][screenId][playerId].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80.arraySize8[D_801651D0[screenId][playerId]][screenId][playerId].pixel_index_array[0x7C0];
+        sKartUpperTexture = &D_802BFB80.arraySize8[D_801651D0[screenId][playerId]][screenId][playerId].pixel_index_array[0];
+        sKartLowerTexture = &D_802BFB80.arraySize8[D_801651D0[screenId][playerId]][screenId][playerId].pixel_index_array[0x7C0];
     } else {
-        D_80164B08 = &D_802BFB80.arraySize8[D_801651D0[screenId][playerId]][screenId - 1][playerId - 4].pixel_index_array[0];
-        D_80164B0C = &D_802BFB80.arraySize8[D_801651D0[screenId][playerId]][screenId - 1][playerId - 4].pixel_index_array[0x7C0];
+        sKartUpperTexture = &D_802BFB80.arraySize8[D_801651D0[screenId][playerId]][screenId - 1][playerId - 4].pixel_index_array[0];
+        sKartLowerTexture = &D_802BFB80.arraySize8[D_801651D0[screenId][playerId]][screenId - 1][playerId - 4].pixel_index_array[0x7C0];
     }
 
     mtxf_translate_rotate(sp12C, spDC, spD4);
@@ -1560,11 +1563,11 @@ void render_ghost(Player *player, s8 playerId, s8 screenId, s8 arg3) {
     );
     gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
 
-    gDPLoadTextureBlock(gDisplayListHead++, D_80164B08, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureBlock(gDisplayListHead++, sKartUpperTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
 
-    gDPLoadTextureBlock(gDisplayListHead++, D_80164B0C, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureBlock(gDisplayListHead++, sKartLowerTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3 + 4], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
@@ -1601,11 +1604,11 @@ void func_80025DE8(Player *player, s8 playerId, s8 screenId, s8 arg3) {
     );
     gDPSetRenderMode(gDisplayListHead++, AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_CMP | Z_UPD | IM_RD | CVG_DST_WRAP | ZMODE_XLU | CVG_X_ALPHA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA));
 
-    gDPLoadTextureBlock(gDisplayListHead++, D_80164B08, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureBlock(gDisplayListHead++, sKartUpperTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
 
-    gDPLoadTextureBlock(gDisplayListHead++, D_80164B0C, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureBlock(gDisplayListHead++, sKartLowerTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3 + 4], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
@@ -1646,10 +1649,10 @@ void render_player_ice_reflection(Player *player, s8 playerId, s8 screenId, s8 a
         (s16) player->unk_0C6 / 2
     );
     gDPSetRenderMode(gDisplayListHead++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
-    gDPLoadTextureBlock(gDisplayListHead++, D_80164B08, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureBlock(gDisplayListHead++, sKartUpperTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
-    gDPLoadTextureBlock(gDisplayListHead++, D_80164B0C, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureBlock(gDisplayListHead++, sKartLowerTexture, G_IM_FMT_CI, G_IM_SIZ_8b, 64, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     gSPVertex(gDisplayListHead++, &D_800DDBB4[playerId][arg3 + 4], 4, 0);
     gSPDisplayList(gDisplayListHead++, common_square_plain_render);
     gSPTexture(gDisplayListHead++, 1, 1, 0, G_TX_RENDERTILE, G_OFF);
@@ -1662,7 +1665,7 @@ void render_player(Player *player, s8 playerId, s8 screenId) {
     s32 var_v1;
     OSMesg *sp34;
 
-    func_80026B4C(player, playerId, screenId, D_801651D0[screenId][playerId]);
+    update_wheel_palette(player, playerId, screenId, D_801651D0[screenId][playerId]);
     if (!(player->unk_002 & (4 << (screenId * 4)))) {
         var_v1 = 0;
     } else {
@@ -1705,7 +1708,7 @@ void func_80026A48(Player *player, s8 arg1) {
     }
 
     temp_f0 = ((player->unk_094 * (1.0f + player->unk_104)) / 18.0f) * 216.0f;
-    if ((temp_f0 <= 1.0f) || (gIsPlayerTripleBButtonCombo[arg1] == TRUE)) {
+    if ((temp_f0 <= 1.0f) || (gIsPlayerTripleBButtonCombo[arg1] == true)) {
         player->unk_240 = 0;
     } else {
         player->unk_240 += D_800DDE74[(s32)(temp_f0 / 12.0f)];
@@ -1717,14 +1720,14 @@ void func_80026A48(Player *player, s8 arg1) {
 
 // Properly define struct pointers, see buffers.h comment for more information.
 #ifdef AVOID_UB
-#define D_802F1F80_WHEEL(a, b, c) &D_802F1F80[a][b][c].wheel_palette
+#define D_802F1F80_WHEEL(a, b, c) &gPlayerPalettesList[a][b][c].wheel_palette
 #else
-#define D_802F1F80_WHEEL(a, b, c) &D_802F1F80[a][b][(c * 0x100) + 0xC0]
+#define D_802F1F80_WHEEL(a, b, c) &gPlayerPalettesList[a][b][(c * 0x100) + 0xC0]
 #endif
 
-void func_80026B4C(Player *player, s8 playerId, s8 screenId, s8 arg3) {
-    s16 temp_t0 = D_801650D0[screenId][playerId];
-    s16 temp_t1 = D_80165110[screenId][playerId];
+void update_wheel_palette(Player *player, s8 playerId, s8 screenId, s8 arg3) {
+    s16 frameId = gLastAnimFrameSelector[screenId][playerId];
+    s16 groupId = gLastAnimGroupSelector[screenId][playerId];
     s16 temp_t2 = player->unk_240;
     s16 temp_num = 0x40; // setting this as a variable gets rid of regalloc
 
@@ -1733,16 +1736,16 @@ void func_80026B4C(Player *player, s8 playerId, s8 screenId, s8 arg3) {
          && ((player->effects & 0x20000) != 0x20000) && ((player->effects & 0x80000) != 0x80000)
          && ((player->effects & 0x800000) != 0x800000) && ((player->unk_044 & 0x800) == 0)) {
 
-            if (temp_t0 <= 20) {
-                func_80027C74(player, (s32) (D_800DDE34[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+            if (frameId <= 20) {
+                load_player_data_non_blocking(player, (s32) (gKartWheels0[player->characterId][groupId] + (frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                func_80027C74(player, (s32) (D_800DDE54[player->characterId][temp_t1] + (temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+                load_player_data_non_blocking(player, (s32) (gKartWheels1[player->characterId][groupId] + (frameId - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         } else {
-            if (temp_t0 == 0) {
-                func_80027C74(player, (s32) (D_800DDE34[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+            if (frameId == 0) {
+                load_player_data_non_blocking(player, (s32) (gKartWheels0[player->characterId][groupId] + (frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                func_80027C74(player, (s32) (D_800DDE54[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+                load_player_data_non_blocking(player, (s32) (gKartWheels1[player->characterId][groupId] + (frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         }
     } else {
@@ -1750,16 +1753,16 @@ void func_80026B4C(Player *player, s8 playerId, s8 screenId, s8 arg3) {
          && ((player->effects & 0x80000) != 0x80000) && ((player->effects & 0x800000) != 0x800000)
          && ((player->effects & 0x20000) != 0x20000) && ((player->unk_044 & 0x800) == 0)) {
 
-            if (temp_t0 <= 20) {
-                func_80027C74(player, (s32) (D_800DDE34[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+            if (frameId <= 20) {
+                load_player_data_non_blocking(player, (s32) (gKartWheels0[player->characterId][groupId] + (frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                func_80027C74(player, (s32) (D_800DDE54[player->characterId][temp_t1] + (temp_t0 - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+                load_player_data_non_blocking(player, (s32) (gKartWheels1[player->characterId][groupId] + (frameId - 21) * (temp_num * 4) + ((temp_t2 >> 8) * 0x40) + 0x600), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         } else {
-            if (temp_t0 == 0) {
-                func_80027C74(player, (s32) (D_800DDE34[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+            if (frameId == 0) {
+                load_player_data_non_blocking(player, (s32) (gKartWheels0[player->characterId][groupId] + (frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             } else {
-                func_80027C74(player, (s32) (D_800DDE54[player->characterId][temp_t1] + (temp_t0 * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
+                load_player_data_non_blocking(player, (s32) (gKartWheels1[player->characterId][groupId] + (frameId * temp_num * 4) + ((temp_t2 >> 8) * 0x40)), D_802F1F80_WHEEL(arg3, screenId, playerId), 0x80);
             }
         }
     }

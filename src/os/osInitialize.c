@@ -14,7 +14,7 @@ typedef struct {
 u32 D_80194040;
 
 u64 osClockRate = 62500000;
-u32 D_800EA5E8 = 0;
+u32 __osShutdown = 0;
 u32 __OSGlobalIntMask = OS_IM_ALL;
 u32 D_800EA5F0 = 0;
 
@@ -33,7 +33,7 @@ void osInitialize(void) {
     UNUSED u32 eu_sp34;
     UNUSED u32 eu_sp30;
     UNUSED u32 sp2c;
-    D_80194040 = TRUE;
+    D_80194040 = true;
     __osSetSR(__osGetSR() | 0x20000000);
     __osSetFpcCsr(0x01000800);
     while (__osSiRawReadIo(PIF_ADDR_START, &sp34)) {

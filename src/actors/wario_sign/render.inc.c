@@ -6,9 +6,9 @@
 /**
  * @brief Renders the Wario sign actor.
  * Used in Wario Stadium.
- * 
- * @param arg0 
- * @param arg1 
+ *
+ * @param arg0
+ * @param arg1
  */
 void render_actor_wario_sign(Camera *arg0, struct Actor *arg1) {
     Mat4 sp38;

@@ -62,7 +62,7 @@ struct SPTask *create_next_audio_frame_task(void) {
     if ((gAudioFrameCount % gAudioBufferParameters.presetUnk4) != 0) {
         return NULL;
     }
-    osSendMesg(D_800EA3A8, (OSMesg) gAudioFrameCount, 0);
+    osSendMesg(D_800EA3A8, (OSMesg) gAudioFrameCount, OS_MESG_NOBLOCK);
 
     gAudioTaskIndex ^= 1;
     gCurrAiBufferIndex++;
@@ -168,7 +168,7 @@ void eu_process_audio_cmd(struct EuAudioCmd *cmd) {
             break;
 
         case 0x83:
-            if (gSequencePlayers[cmd->u.s.bankId].enabled != FALSE) {
+            if (gSequencePlayers[cmd->u.s.bankId].enabled != false) {
                 if (cmd->u2.as_s32 == 0) {
                     sequence_player_disable(&gSequencePlayers[cmd->u.s.bankId]);
                 }
@@ -184,15 +184,15 @@ void eu_process_audio_cmd(struct EuAudioCmd *cmd) {
 
         case 0xf1:
             for (i = 0; i < 4; i++) {
-                gSequencePlayers[i].muted = TRUE;
-                gSequencePlayers[i].recalculateVolume = TRUE;
+                gSequencePlayers[i].muted = true;
+                gSequencePlayers[i].recalculateVolume = true;
             }
             break;
 
         case 0xf2:
             for (i = 0; i < 4; i++) {
-                gSequencePlayers[i].muted = FALSE;
-                gSequencePlayers[i].recalculateVolume = TRUE;
+                gSequencePlayers[i].muted = false;
+                gSequencePlayers[i].recalculateVolume = true;
             }
             break;
     case 0xF3:
@@ -297,7 +297,7 @@ void func_800CBCB0(u32 arg0) {
                 switch (cmd->u.s.op) {
                     case 0x41:
                         seqPlayer->fadeVolumeScale = cmd->u2.as_f32;
-                        seqPlayer->recalculateVolume = TRUE;
+                        seqPlayer->recalculateVolume = true;
                         break;
 
                     case 0x47:
@@ -313,25 +313,25 @@ void func_800CBCB0(u32 arg0) {
                         break;
                 }
             }
-            else if (seqPlayer->enabled != FALSE && cmd->u.s.arg2 < 0x10) {
+            else if (seqPlayer->enabled != false && cmd->u.s.arg2 < 0x10) {
                 chan = seqPlayer->channels[cmd->u.s.arg2];
                 if (IS_SEQUENCE_CHANNEL_VALID(chan)) {
                     switch (cmd->u.s.op) {
                         case 1:
                             chan->volumeScale = cmd->u2.as_f32;
-                            chan->changes.as_bitfields.volume = TRUE;
+                            chan->changes.as_bitfields.volume = true;
                             break;
                         case 2:
                             chan->volume = cmd->u2.as_f32;
-                            chan->changes.as_bitfields.volume = TRUE;
+                            chan->changes.as_bitfields.volume = true;
                             break;
                         case 3:
                             chan->newPan = cmd->u2.as_s8;
-                            chan->changes.as_bitfields.pan = TRUE;
+                            chan->changes.as_bitfields.pan = true;
                             break;
                         case 4:
                             chan->freqScale = cmd->u2.as_f32;
-                            chan->changes.as_bitfields.freqScale = TRUE;
+                            chan->changes.as_bitfields.freqScale = true;
                             break;
                         case 5:
                             chan->reverbVol = cmd->u2.as_s8;
