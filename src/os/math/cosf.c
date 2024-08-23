@@ -46,7 +46,7 @@ float cosf(float x) {
             xabs = x;
         } else {
             xabs = -x;
-}
+        }
         dx = xabs;
 
         dn = dx * rpi.d + .5;

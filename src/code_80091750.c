@@ -3802,7 +3802,7 @@ void func_8009A2F0(struct_8018E0E8_entry* arg0) {
     while (var_a0 != NULL) {
         if (var_a0 == NULL) {
             break;
-}
+        }
         func_800996BC(var_a0, 0);
         if (1) {}
         temp_v0++;
@@ -3829,7 +3829,7 @@ s32 func_8009A374(MkAnimation* anim) {
             // No more space.
             while (1) {
                 ;
-}
+            }
         }
     }
 
@@ -3865,7 +3865,7 @@ s32 func_8009A478(MkAnimation* anim, s32 arg1) {
             // No more space.
             while (1) {
                 ;
-}
+            }
         }
     }
 
@@ -6354,7 +6354,7 @@ void func_800A0B80(struct_8018D9E0_entry* arg0) {
     for (var_s5 = 0; var_s5 < 9; var_s5++) {
         if (D_800E86C4[var_s5] == 0) {
             continue;
-}
+        }
 
         temp_s1 = var_s5 * 0xA;
         var_s0 = D_800E86C4[var_s5];
@@ -7234,7 +7234,7 @@ void func_800A3ADC(struct_8018D9E0_entry* arg0, s32 arg1, s32 arg2, s32 characte
             wut = phi_v1 - 1;
             if (gGPPointsByCharacterId[arg5[phi_v1]] != gGPPointsByCharacterId[arg5[wut]]) {
                 break;
-}
+            }
         }
         convert_number_to_ascii(phi_v1 + 1, sp34);
     }
@@ -7290,10 +7290,10 @@ void func_800A3E60(struct_8018D9E0_entry* arg0) {
     var_v0 = arg0->cursor;
     if (var_v0 == 0) {
         return;
-}
+    }
     if (var_v0 == 0x0000001F) {
         return;
-}
+    }
 
     set_text_color(4);
     draw_text(arg0->column + 0x55, 0x19 - arg0->row,
@@ -7729,7 +7729,7 @@ void func_800A54EC(void) {
 
     if (gIsGamePaused == 0) {
         return;
-}
+    }
 
     why = gModeSelection;
     sp48 = find_8018D9E0_entry(0x000000C7);
@@ -8415,7 +8415,7 @@ void func_800A7A4C(s32 arg0) {
 
         if (var_v1 == 0) {
             continue;
-}
+        }
 
         switch (type) { /* switch 8; irregular */
             case 0xFA:  /* switch 8 */
@@ -9646,13 +9646,13 @@ void func_800AA2EC(struct_8018D9E0_entry* arg0) {
         case TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT:
             if (arg0->cursor != 0) {
                 break;
-}
+            }
             if (gPlayerCount != 1) {
                 break;
-}
+            }
             if (D_800E86AC[gPlayerCount - 1] != 1) {
                 break;
-}
+            }
 
             if (gControllerPak1State != 0) {
                 var_t1 = 0;
@@ -9990,7 +9990,7 @@ struct_8018D9E0_entry* func_800AAE68(void) {
     // Something VERY wrong has occurred
     while (true) {
         ;
-}
+    }
 escape:
     return entry;
 }
@@ -10012,7 +10012,7 @@ struct_8018D9E0_entry* func_800AAEB4(s32 arg0) {
     // Something VERY wrong has occurred
     while (true) {
         ;
-}
+    }
 escape:
     return entry;
 }
@@ -10038,7 +10038,7 @@ struct_8018D9E0_entry* find_8018D9E0_entry_dupe(s32 arg0) {
     // Something VERY wrong has occurred
     while (true) {
         ;
-}
+    }
 escape:
     return entry;
 }
@@ -10810,7 +10810,7 @@ void func_800ACA14(struct_8018D9E0_entry* arg0) {
         case 12:
             if (func_800B4520()) {
                 break;
-}
+            }
 
             if ((gControllerFive->buttonPressed | gControllerFive->stickPressed) & 0x800) {
                 if (arg0->cursor >= 0xC) {

@@ -507,22 +507,22 @@ void func_80028864(Player* player, Camera* camera, s8 playerId, s8 screenId) {
                 sp1E = check_player_camera_collision(player, camera1, (f32) D_8016557C, 0.0f);
                 if (sp1E == 1) {
                     break;
-}
+                }
                 sp1E = check_player_camera_collision(player, camera2, (f32) D_8016557C, 0.0f);
                 break;
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
                 sp1E = check_player_camera_collision(player, camera1, (f32) D_8016557C, 0.0f);
                 if (sp1E == 1) {
                     break;
-}
+                }
                 sp1E = check_player_camera_collision(player, camera2, (f32) D_8016557C, 0.0f);
                 if (sp1E == 1) {
                     break;
-}
+                }
                 sp1E = check_player_camera_collision(player, camera3, (f32) D_8016557C, 0.0f);
                 if (sp1E == 1) {
                     break;
-}
+                }
                 sp1E = check_player_camera_collision(player, camera4, (f32) D_8016557C, 0.0f);
                 break;
         }
@@ -2209,7 +2209,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
 
                 func_800C9060(playerId, 0x1900A60AU);
             } else if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
-                     ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
+                       ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
                 func_800CADD0((u8) playerId, ((f32) player->unk_0C2) / 35.0f);
             }
             if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
@@ -2894,15 +2894,15 @@ f32 func_80030150(Player* player, s8 arg1) {
 
             if ((s32) player->tyres[BACK_LEFT].surfaceType < 0xF) {
                 var_f0 += D_800E2E90[player->characterId][player->tyres[BACK_LEFT].surfaceType];
-}
+            }
 
             if ((s32) player->tyres[FRONT_RIGHT].surfaceType < 0xF) {
                 var_f0 += D_800E2EB0[player->characterId][player->tyres[FRONT_RIGHT].surfaceType];
-}
+            }
 
             if ((s32) player->tyres[FRONT_LEFT].surfaceType < 0xF) {
                 var_f0 += D_800E2E90[player->characterId][player->tyres[FRONT_LEFT].surfaceType];
-}
+            }
         }
         if (((player->effects & 8) != 8) && ((player->unk_0CA & 2) != 2)) {
             temp_lo = player->slopeAccel / 182;

@@ -242,7 +242,7 @@ void thread1_idle(void* arg) {
     // Halt
     while (true) {
         ;
-}
+    }
 }
 
 void setup_mesg_queues(void) {

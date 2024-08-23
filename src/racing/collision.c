@@ -132,22 +132,22 @@ s32 check_collision_zx(Collision* collision, f32 boundingBoxSize, f32 posX, f32 
 
     if (triangle->normalY < -0.9f) {
         return 0;
-}
+    }
     if (triangle->minX > posX) {
         return 0;
-}
+    }
     if (triangle->minZ > posZ) {
         return 0;
-}
+    }
     if (triangle->maxX < posX) {
         return 0;
-}
+    }
     if (triangle->maxZ < posZ) {
         return 0;
-}
+    }
     if ((triangle->minY - boundingBoxSize * 3.0f) > posY) {
         return 0;
-}
+    }
 
     x1 = triangle->vtx1->v.ob[0];
     z1 = triangle->vtx1->v.ob[2];

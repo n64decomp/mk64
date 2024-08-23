@@ -739,7 +739,7 @@ void set_places(void) {
     for (playerId = 0; playerId < var_t4 - 1; playerId++) {
         if ((gPlayers[gGPCurrentRacePlayerIdByRank[playerId]].type & 0x800)) {
             continue;
-}
+        }
 
         for (var_t1_3 = playerId + 1; var_t1_3 < var_t4; var_t1_3++) {
             if (gCourseCompletionPercentByRank[playerId] < gCourseCompletionPercentByRank[var_t1_3]) {
@@ -7673,7 +7673,7 @@ void func_8001C14C(void) {
     for (var_s1 = 0; var_s1 < 4; var_s1++) {
         if ((var_s1 == 3) && (D_8016347C == 0)) {
             break;
-}
+        }
 
         temp_s0 = &gPlayerOne[var_s1];
         func_80009B60(var_s1);

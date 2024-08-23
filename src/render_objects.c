@@ -2901,7 +2901,7 @@ void func_800508C0(void) {
     }
     if ((temp_v1 < 0) || (temp_v1 >= 3)) {
         return;
-}
+    }
     switch (temp_v1) {
         case 0:
             var_s0_2 = 0;
@@ -3348,7 +3348,7 @@ void render_object_bat(s32 cameraId) {
             objectIndex = gObjectParticle2[var_s2];
             if (objectIndex == -1) {
                 continue;
-}
+            }
 
             if ((gObjectList[objectIndex].state >= 2) && (gMatrixHudCount < 0x2EF)) {
                 D_80183E80[1] =
@@ -3363,7 +3363,7 @@ void render_object_bat(s32 cameraId) {
             objectIndex = gObjectParticle3[var_s2];
             if (objectIndex == -1) {
                 continue;
-}
+            }
 
             if ((gObjectList[objectIndex].state >= 2) && (gMatrixHudCount < 0x2EF)) {
                 D_80183E80[1] =

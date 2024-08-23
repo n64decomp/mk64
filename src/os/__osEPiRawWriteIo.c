@@ -5,7 +5,7 @@ s32 __osEPiRawWriteIo(OSPiHandle* a0, u32 a1, u32 a2) {
     register u32 a3 = HW_REG(PI_STATUS_REG, u32);
     while (a3 & PI_STATUS_ERROR) {
         a3 = HW_REG(PI_STATUS_REG, u32);
-}
+    }
     HW_REG(a0->baseAddress | a1, u32) = a2;
     return 0;
 }

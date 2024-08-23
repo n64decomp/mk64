@@ -18,11 +18,11 @@ s32 osPfsFreeBlocks(OSPfs* pfs, s32* bytes_not_used) {
             offset = 1;
         } else {
             offset = pfs->inode_start_page;
-}
+        }
         for (j = offset; j < ARRLEN(inode.inode_page); j++) {
             if (inode.inode_page[j].ipage == 3) {
                 pages++;
-}
+            }
         }
     }
     *bytes_not_used = pages * PFS_ONE_PAGE * BLOCKSIZE;

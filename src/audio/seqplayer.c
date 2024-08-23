@@ -603,7 +603,7 @@ void seq_channel_layer_process_script(struct SequenceChannelLayer* layer) {
             if (temp == 0xff) {
                 if (!seqChannel->hasInstrument) {
                     return;
-}
+                }
                 temp = seqChannel->instOrWave;
             }
             if (temp == 0) { // drum

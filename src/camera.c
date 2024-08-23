@@ -318,7 +318,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         D_80164A78[index] += 0.1;
         if (D_80164A78[index] >= 1) {
             D_80164A78[index] = 1;
-}
+        }
 
     } else {
         move_f32_towards(&D_80164A38[index], 0, 0.1f);
@@ -326,7 +326,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         D_80164A78[index] -= 0.1;
         if (D_800DDB30[gActiveScreenMode] >= D_80164A78[index]) {
             D_80164A78[index] = D_800DDB30[gActiveScreenMode];
-}
+        }
     }
     if ((player->unk_0CA & 0x100) == 0x100) {
         switch (gActiveScreenMode) {
@@ -552,7 +552,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         D_80164A78[index] += 0.1;
         if (D_80164A78[index] >= 1) {
             D_80164A78[index] = 1;
-}
+        }
 
     } else {
         move_f32_towards(&D_80164A38[index], 0, 0.1f);
@@ -560,7 +560,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
         D_80164A78[index] -= 0.1;
         if (D_800DDB30[gActiveScreenMode] >= D_80164A78[index]) {
             D_80164A78[index] = D_800DDB30[gActiveScreenMode];
-}
+        }
     }
     if ((player->unk_0CA & 0x100) == 0x100) {
 
@@ -1141,7 +1141,7 @@ void func_8001F87C(s32 cameraId) {
             for (playerIndex = 0; playerIndex < NUM_PLAYERS; playerIndex++) {
                 if ((gPlayerOne[playerIndex].type & 0x200) || (gPlayerOne[playerIndex].type & 0x80)) {
                     break;
-}
+                }
                 if (playerIndex == 7) {
                     D_80164A2C += 1;
                 }

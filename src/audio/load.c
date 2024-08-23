@@ -367,7 +367,7 @@ void func_800BB43C(ALSeqFile* f, u8* base) {
     for (i = 0; i < f->seqCount; i++) {
         if (f->seqArray[i].len != 0) {
             PATCH(f->seqArray[i].offset, wut, u8*);
-}
+        }
     }
 #undef PATCH
 }

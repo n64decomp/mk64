@@ -27,37 +27,37 @@ s32 osPfsAllocateFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name
 
     if (company_code == 0 || game_code == 0) {
         return PFS_ERR_INVALID;
-}
+    }
 
     file_size_in_pages = (file_size_in_bytes + 255) / (BLOCKSIZE * PFS_ONE_PAGE);
     if ((pfs->status & PFS_INITIALIZED) == false) {
         return PFS_ERR_INVALID;
-}
+    }
 
     PFS_CHECK_ID;
 
     ret = osPfsFindFile(pfs, company_code, game_code, game_name, ext_name, file_no);
     if (ret != 0 && ret != PFS_ERR_INVALID) {
         return ret;
-}
+    }
 
     if (*file_no != -1) {
         return PFS_ERR_EXIST;
-}
+    }
 
     ret = osPfsFreeBlocks(pfs, &bytes);
     if (file_size_in_bytes > bytes) {
         return PFS_DATA_FULL;
-}
+    }
 
     if (file_size_in_pages != 0) {
         ret = osPfsFindFile(pfs, 0, 0, NULL, NULL, file_no);
         if (ret != 0 && ret != PFS_ERR_INVALID) {
             return ret;
-}
+        }
         if (*file_no == -1) {
             return PFS_DIR_FULL;
-}
+        }
 
         for (bank = 0; bank < pfs->banks; bank++) {
             ERRCK(__osPfsRWInode(pfs, &inode, OS_READ, bank));
@@ -74,7 +74,7 @@ s32 osPfsAllocateFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name
 
                 for (j = 0; j < ARRLEN(inode.inode_page); j++) {
                     backup_inode.inode_page[j].ipage = inode.inode_page[j].ipage;
-}
+                }
                 old_last_page = last_page;
                 old_bank = bank;
                 firsttime++;
@@ -88,7 +88,7 @@ s32 osPfsAllocateFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name
         }
         if (file_size_in_pages > 0 || start_page == -1) {
             return PFS_ERR_INCONSISTENT;
-}
+        }
 
         backup_inode.inode_page[old_last_page].inode_t.bank = bank;
         backup_inode.inode_page[old_last_page].inode_t.page = start_page;
@@ -99,10 +99,10 @@ s32 osPfsAllocateFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name
         dir.data_sum = 0;
         for (j = 0; j < ARRLEN(dir.game_name); j++) {
             dir.game_name[j] = *game_name++;
-}
+        }
         for (j = 0; j < ARRLEN(dir.ext_name); j++) {
             dir.ext_name[j] = *ext_name++;
-}
+        }
         ERRCK(__osContRamWrite(pfs->queue, pfs->channel, *file_no + pfs->dir_table, (u8*) &dir, false));
         return ret;
     }
@@ -124,11 +124,11 @@ s32 __osPfsDeclearPage(OSPfs* pfs, __OSInode* inode, int file_size_in_pages, int
         offset = 1;
     } else {
         offset = pfs->inode_start_page;
-}
+    }
     for (j = offset; j < ARRLEN(inode->inode_page); j++) {
         if (inode->inode_page[j].ipage == 3) {
             break;
-}
+        }
     }
     if (j == ARRLEN(inode->inode_page)) {
         *first_page = -1;
@@ -136,7 +136,7 @@ s32 __osPfsDeclearPage(OSPfs* pfs, __OSInode* inode, int file_size_in_pages, int
     }
     for (i = 0; i < ARRLEN(tmp_data); i++) {
         tmp_data[i] = 0;
-}
+    }
     spage = j;
     *decleared = 1;
     old_page = j++;
@@ -173,7 +173,7 @@ static s32 __osClearPage(OSPfs* pfs, int page_no, u8* data, u8 bank) {
         ret = __osContRamWrite(pfs->queue, pfs->channel, page_no * PFS_ONE_PAGE + i, data, false);
         if (ret != 0) {
             break;
-}
+        }
     }
     pfs->activebank = 0;
     ret = __osPfsSelectBank(pfs);

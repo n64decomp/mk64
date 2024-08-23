@@ -64,11 +64,11 @@ s32 __osRepairPackId(OSPfs* pfs, __OSPackId* badid, __OSPackId* newid) {
         for (i = 0; i < ARRLEN(temp); i++) {
             if (comp[i] != temp[i]) {
                 break;
-}
+            }
         }
         if (i != ARRLEN(temp)) {
             break;
-}
+        }
         if (j > 0) {
             pfs->activebank = 0;
             ERRCK(__osPfsSelectBank(pfs));
@@ -76,7 +76,7 @@ s32 __osRepairPackId(OSPfs* pfs, __OSPackId* badid, __OSPackId* newid) {
             if (temp[0] != 128) {
                 //! @todo remove magic constant
                 break;
-}
+            }
         }
         j++;
     }
@@ -86,7 +86,7 @@ s32 __osRepairPackId(OSPfs* pfs, __OSPackId* badid, __OSPackId* newid) {
         mask = 1;
     } else {
         mask = 0;
-}
+    }
     newid->deviceid = (badid->deviceid & (u16) ~1) | mask;
     newid->banks = j;
     newid->version = badid->version;
@@ -102,7 +102,7 @@ s32 __osRepairPackId(OSPfs* pfs, __OSPackId* badid, __OSPackId* newid) {
     for (i = 0; i < ARRLEN(temp); i++) {
         if (temp[i] != ((u8*) newid)[i]) {
             return PFS_ERR_ID_FATAL;
-}
+        }
     }
     return 0;
 }
@@ -126,11 +126,11 @@ s32 __osCheckPackId(OSPfs* pfs, __OSPackId* temp) {
         __osIdCheckSum((u16*) temp, &sum, &isum);
         if (temp->checksum == sum && temp->inverted_checksum == isum) {
             break;
-}
+        }
     }
     if (i == ARRLEN(index)) {
         return PFS_ERR_ID_FATAL;
-}
+    }
 
     for (j = 0; j < ARRLEN(index); j++) {
         if (j != i) {
@@ -168,7 +168,7 @@ s32 __osGetId(OSPfs* pfs) {
         id = &newid;
         if ((id->deviceid & 1) == 0) {
             return PFS_ERR_DEVICE;
-}
+        }
     }
     for (k = 0; k < ARRLEN(pfs->id); k++) {
         pfs->id[k] = ((u8*) id)[k];
@@ -203,7 +203,7 @@ s32 __osCheckId(OSPfs* pfs) {
     for (k = 0; k < ARRLEN(temp); k++) {
         if (pfs->id[k] != temp[k]) {
             return PFS_ERR_NEW_PACK;
-}
+        }
     }
 
     return 0;
@@ -222,11 +222,11 @@ s32 __osPfsRWInode(OSPfs* pfs, __OSInode* inode, u8 flag, u8 bank) {
         offset = 1;
     } else {
         offset = pfs->inode_start_page;
-}
+    }
 
     if (flag == PFS_WRITE) {
         inode->inode_page[0].inode_t.page = __osSumcalc((u8*) &inode->inode_page[offset], (-offset) * 2 + 256);
-}
+    }
 
     for (j = 0; j < 8; j++) {
         //! @todo don't like this =/ //maybe &inode->inode_table[j*PFS_ONE_PAGE].ipage or something
@@ -239,7 +239,7 @@ s32 __osPfsRWInode(OSPfs* pfs, __OSInode* inode, u8 flag, u8 bank) {
         }
         if (ret != 0) {
             return ret;
-}
+        }
     }
     if (flag == PFS_READ) {
         sum = __osSumcalc((u8*) &inode->inode_page[offset], (-offset) * 2 + 256);
@@ -250,7 +250,7 @@ s32 __osPfsRWInode(OSPfs* pfs, __OSInode* inode, u8 flag, u8 bank) {
             }
             if (sum != inode->inode_page[0].inode_t.page) {
                 return PFS_ERR_INCONSISTENT;
-}
+            }
             for (j = 0; j < PFS_ONE_PAGE; j++) {
                 addr = ((u8*) inode->inode_page + j * 32);
                 ret =

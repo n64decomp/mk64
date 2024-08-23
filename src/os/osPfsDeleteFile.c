@@ -15,7 +15,7 @@ s32 osPfsDeleteFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name, 
     sum = 0;
     if (company_code == 0 || game_code == 0) {
         return PFS_ERR_INVALID;
-}
+    }
     PFS_CHECK_STATUS;
     PFS_CHECK_ID;
     SET_ACTIVEBANK_TO_ZERO;
@@ -23,7 +23,7 @@ s32 osPfsDeleteFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name, 
 
     if (file_no == -1) {
         return PFS_ERR_INVALID;
-}
+    }
     ERRCK(__osContRamRead(pfs->queue, pfs->channel, pfs->dir_table + file_no, (u8*) &dir));
 
     startpage = dir.start_page.inode_t.page;
@@ -35,14 +35,14 @@ s32 osPfsDeleteFile(OSPfs* pfs, u16 company_code, u32 game_code, u8* game_name, 
         ERRCK(__osPfsRWInode(pfs, &inode, OS_WRITE, bank));
         if (last_page.ipage == 1) {
             break;
-}
+        }
         bank = last_page.inode_t.bank;
         startpage = last_page.inode_t.page;
     }
 
     if (bank >= pfs->banks) {
         return PFS_ERR_INCONSISTENT;
-}
+    }
 
     dir.game_code = 0;
     dir.company_code = 0;
@@ -72,27 +72,27 @@ s32 __osPfsReleasePages(OSPfs* pfs, __OSInode* inode, u8 start_page, u16* sum, u
             offset = 1;
         } else {
             offset = pfs->inode_start_page;
-}
+        }
     } else {
         if (bank > 0) {
             offset = 1;
         } else {
             offset = pfs->inode_start_page;
-}
+        }
     }
     if (next_page.inode_t.page < offset && next_page.ipage != 1) {
         return PFS_ERR_INCONSISTENT;
-}
+    }
     *last_page = next_page;
     //! @todo magic number
     if (flag == 1) {
         inode->inode_page[start_page].ipage = 3;
-}
+    }
 
     ERRCK(__osBlockSum(pfs, start_page, sum, bank));
     if (next_page.ipage == 1) {
         return 0;
-}
+    }
     while (next_page.ipage >= pfs->inode_start_page) {
         old_page = next_page;
         next_page = inode->inode_page[next_page.inode_t.page];
@@ -101,11 +101,11 @@ s32 __osPfsReleasePages(OSPfs* pfs, __OSInode* inode, u8 start_page, u16* sum, u
         ERRCK(__osBlockSum(pfs, old_page.inode_t.page, sum, bank));
         if (next_page.inode_t.bank != bank) {
             break;
-}
+        }
     }
     if (next_page.ipage >= pfs->inode_start_page) {
         inode->inode_page[next_page.inode_t.page].ipage = 3;
-}
+    }
     *last_page = next_page;
     return 0;
 }

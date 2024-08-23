@@ -22,10 +22,10 @@ s32 osPfsChecker(OSPfs* pfs) {
     ret = __osCheckId(pfs);
     if (ret == PFS_ERR_NEW_PACK) {
         ret = __osGetId(pfs);
-}
+    }
     if (ret != 0) {
         return ret;
-}
+    }
     ERRCK(corrupted_init(pfs, &cache));
     for (j = 0; j < pfs->dir_size; j++) {
         ERRCK(__osContRamRead(pfs->queue, pfs->channel, pfs->dir_table + j, (u8*) &tmp_dir));
@@ -41,18 +41,18 @@ s32 osPfsChecker(OSPfs* pfs) {
                     ret = __osPfsRWInode(pfs, &tmp_inode, OS_READ, bank);
                     if (ret != 0 && ret != PFS_ERR_INCONSISTENT) {
                         return ret;
-}
+                    }
                 }
                 cc = corrupted(pfs, next_page, &cache) - cl;
                 if (cc != 0) {
                     break;
-}
+                }
                 cl = 1;
                 next_page = tmp_inode.inode_page[next_page.inode_t.page];
             }
             if (cc == 0 && next_page.ipage == 1) {
                 continue;
-}
+            }
 
             tmp_dir.company_code = 0;
             tmp_dir.game_code = 0;
@@ -65,7 +65,7 @@ s32 osPfsChecker(OSPfs* pfs) {
         } else {
             if (tmp_dir.company_code == 0 && tmp_dir.game_code == 0) {
                 continue;
-}
+            }
             tmp_dir.company_code = 0;
             tmp_dir.game_code = 0;
             tmp_dir.start_page.ipage = 0;
@@ -92,7 +92,7 @@ s32 osPfsChecker(OSPfs* pfs) {
         ret = __osPfsRWInode(pfs, &tmp_inode, 0, bank);
         if (ret != 0 && ret != PFS_ERR_INCONSISTENT) {
             return ret;
-}
+        }
         if (bank > 0) {
             offset = 1;
         } else {
@@ -117,7 +117,7 @@ s32 osPfsChecker(OSPfs* pfs) {
         pfs->status |= PFS_CORRUPTED;
     } else {
         pfs->status &= ~PFS_CORRUPTED;
-}
+    }
 
     return 0;
 }
@@ -133,19 +133,19 @@ s32 corrupted_init(OSPfs* pfs, __OSInodeCache* cache) {
 
     for (i = 0; i < ARRLEN(cache->map); i++) {
         cache->map[i] = 0;
-}
+    }
     cache->bank = -1;
     for (bank = 0; bank < pfs->banks; bank++) {
         if (bank > 0) {
             offset = 1;
         } else {
             offset = pfs->inode_start_page;
-}
+        }
 
         ret = __osPfsRWInode(pfs, &tmp_inode, OS_READ, bank);
         if (ret != 0 && ret != PFS_ERR_INCONSISTENT) {
             return ret;
-}
+        }
         for (i = offset; i < ARRLEN(tmp_inode.inode_page); i++) {
             tpage = tmp_inode.inode_page[i];
             if (tpage.ipage >= pfs->inode_start_page && tpage.inode_t.bank != bank) {
@@ -173,24 +173,24 @@ s32 corrupted(OSPfs* pfs, __OSInodeUnit fpage, __OSInodeCache* cache) {
             offset = 1;
         } else {
             offset = pfs->inode_start_page;
-}
+        }
         if (bank == fpage.inode_t.bank || cache->map[n] & (1 << (bank % 8))) {
             if (bank != cache->bank) {
                 ret = __osPfsRWInode(pfs, &cache->inode, 0, bank);
                 if (ret != 0 && ret != PFS_ERR_INCONSISTENT) {
                     return ret;
-}
+                }
                 cache->bank = bank;
             }
 
             for (j = offset; hit < 2 && (j < ARRLEN(cache->inode.inode_page)); j++) {
                 if (cache->inode.inode_page[j].ipage == fpage.ipage) {
                     hit++;
-}
+                }
             }
             if (1 < hit) {
                 return PFS_ERR_NEW_PACK;
-}
+            }
         }
     }
     return hit;

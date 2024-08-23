@@ -2711,14 +2711,15 @@ void func_8005D1F4(s32 arg0) {
         playerWaypoint = gNearestWaypointByPlayerId[arg0];
         playerHUD[arg0].unk_74 = 0;
         for (var_a2 = 0; var_a2 < NUM_BOMB_KARTS_VERSUS; var_a2++) {
-            if ((gBombKarts[var_a2].state == BOMB_STATE_EXPLODED) || (gBombKarts[var_a2].state == BOMB_STATE_INACTIVE)) {
+            if ((gBombKarts[var_a2].state == BOMB_STATE_EXPLODED) ||
+                (gBombKarts[var_a2].state == BOMB_STATE_INACTIVE)) {
                 continue;
-}
+            }
             bombWaypoint = gBombKarts[var_a2].waypointIndex;
             waypointDiff = bombWaypoint - playerWaypoint;
             if ((waypointDiff < -5) || (waypointDiff > 0x1E)) {
                 continue;
-}
+            }
             playerHUD[arg0].unk_74 = 1;
             break;
         }
@@ -3656,17 +3657,17 @@ void func_80060BCC(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
 
     if (gCurrentCourseId == COURSE_SKYSCRAPER) {
         return;
-}
+    }
     if (gCurrentCourseId == COURSE_RAINBOW_ROAD) {
         return;
-}
+    }
     sp54 = random_int(0x0168U) - 0xB4;
     sp4C = random_int(6U);
     sp44 = random_int(6U);
     sp48 = random_int(3U);
     if (player != gPlayerOne) {
         return;
-}
+    }
     if ((arg1 == 0) && ((player->unk_258[arg2 + 10].unk_01E > 0) || (player->unk_258[arg2 + 10].unk_01C == 0))) {
         func_8005D794(player, &player->unk_258[arg1 + 10], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
         func_8005D7D8(&player->unk_258[arg1 + 10], 0x0B, 0.4f);

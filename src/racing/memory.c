@@ -985,7 +985,7 @@ void displaylist_unpack(uintptr_t* data, uintptr_t finalDisplaylistOffset, u32 a
         // Break when the eof has been reached denoted by opcode 0xFF
         if (opcode == 0xFF) {
             break;
-}
+        }
 
         switch (opcode) {
             case 0x0:

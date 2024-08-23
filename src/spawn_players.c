@@ -616,10 +616,10 @@ void spawn_players_gp_two_player(f32* arg0, f32* arg1, f32 arg2) {
         rand = random_int(7);
         if (gCharacterSelections[0] == rand) {
             goto getRand;
-}
+        }
         if (gCharacterSelections[1] == rand) {
             goto getRand;
-}
+        }
 
         chooseKartAIPlayers[0] = rand;
 

@@ -56,7 +56,7 @@ s32 func_80281880(s32 arg0) {
     for (i = 0; i < NUM_PLAYERS; i++) {
         if (gCharacterIdByGPOverallRank[i] == gCharacterSelections[arg0]) {
             break;
-}
+        }
     }
     return i;
 }

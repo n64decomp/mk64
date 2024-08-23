@@ -17,7 +17,7 @@ s32 osEPiRawStartDma(OSPiHandle* pihandle, s32 dir, u32 cart_addr, void* dram_ad
     status = HW_REG(PI_STATUS_REG, u32);
     while (status & PI_STATUS_ERROR) {
         status = HW_REG(PI_STATUS_REG, u32);
-}
+    }
 
     HW_REG(PI_DRAM_ADDR_REG, void*) = (void*) osVirtualToPhysical(dram_addr);
     HW_REG(PI_CART_ADDR_REG, void*) = (void*) (((uintptr_t) pihandle->baseAddress | cart_addr) & 0x1fffffff);

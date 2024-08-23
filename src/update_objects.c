@@ -1502,7 +1502,7 @@ void func_80075304(Vec3f arg0, s32 arg1, s32 arg2, s32 arg3) {
         }
         if (objectIndex == NULL_OBJECT_ID) {
             break;
-}
+        }
         func_800750D8(objectIndex, var_s1, arg0, arg2, arg3);
     }
 }
@@ -1817,7 +1817,7 @@ void func_80075F98(Vec3f arg0, u16 arg1, f32 arg2) {
     for (someIndex = 0; someIndex < 10; someIndex++) {
         if (func_80075F28(arg0, arg1, arg2, someIndex) == -1) {
             break;
-}
+        }
     }
 }
 
@@ -1905,7 +1905,7 @@ void func_800762DC(Vec3f arg0, f32 arg1) {
     for (someIndex = 0; someIndex < 0x14; someIndex++) {
         if (func_80076278(arg0, arg1, someIndex) == -1) {
             break;
-}
+        }
     }
 }
 
@@ -2463,7 +2463,7 @@ void spawn_leaf(Vec3f arg0, UNUSED s32 arg1) {
     for (i = 0; i < gLeafParticle_SPAWN_SIZE; i++) {
         if (init_leaf_particle(arg0, i) == NULL_OBJECT_ID) {
             break;
-}
+        }
     }
 }
 
@@ -4540,7 +4540,7 @@ void func_8007D070(void) {
             var_v0++;
             if (var_v0 == 30) {
                 break;
-}
+            }
         }
         objectIndex = gObjectParticle1[var_v0 + 10];
         if (var_v0 != 30) {
@@ -4751,12 +4751,12 @@ void update_bat(void) {
             temp_s0 = gObjectParticle2[var_s2];
             if (temp_s0 == -1) {
                 continue;
-}
+            }
 
             object = &gObjectList[temp_s0];
             if (object->state == 0) {
                 continue;
-}
+            }
 
             func_8007D8D4(temp_s0, 1);
             func_8007DAF8(temp_s0, 1);
@@ -4776,12 +4776,12 @@ void update_bat(void) {
             temp_s0 = gObjectParticle3[var_s2];
             if (temp_s0 == -1) {
                 continue;
-}
+            }
 
             object = &gObjectList[temp_s0];
             if (object->state == 0) {
                 continue;
-}
+            }
 
             func_8007D8D4(temp_s0, 2);
             func_8007DAF8(temp_s0, 2);
@@ -5036,7 +5036,7 @@ s32 func_8007E59C(s32 objectIndex) {
         temp_v0 = func_8007E50C(objectIndex, player++, camera++);
         if (temp_v0 != 0) {
             break;
-}
+        }
     }
     return temp_v0;
 }
@@ -5532,7 +5532,7 @@ void func_8007F8D8(void) {
             if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_KART_AI)) {
                 if (func_8007F75C(var_s0) != 0) {
                     break;
-}
+                }
             }
         }
     }
@@ -6060,7 +6060,7 @@ void func_80080FEC(s32 arg0) {
         objectIndex = add_unused_obj_index(gObjectParticle2, &gNextFreeObjectParticle2, gObjectParticle2_SIZE);
         if (objectIndex == NULL_OBJECT_ID) {
             break;
-}
+        }
         func_80080E8C(objectIndex, arg0, i);
     }
 }
@@ -6169,7 +6169,7 @@ void func_80081210(void) {
         objectIndex = indexObjectList1[var_s4];
         if (func_80072320(objectIndex, 0x00000020) == 0) {
             continue;
-}
+        }
 
         func_800722CC(objectIndex, 0x00000020);
         func_80080FEC(objectIndex);
@@ -6178,14 +6178,14 @@ void func_80081210(void) {
         objectIndex = gObjectParticle2[var_s4];
         if (objectIndex == DELETED_OBJECT_ID) {
             continue;
-}
+        }
         if (gObjectList[objectIndex].state == 0) {
             continue;
-}
+        }
         func_800810F4(objectIndex);
         if (gObjectList[objectIndex].state != 0) {
             continue;
-}
+        }
         delete_object_wrapper(&gObjectParticle2[var_s4]);
     }
 }
@@ -6209,7 +6209,7 @@ void func_8008153C(s32 objectIndex) {
 
             if (gObjectList[loopObjectIndex].state != 0) {
                 continue;
-}
+            }
 
             init_object(loopObjectIndex, 0);
             gObjectList[loopObjectIndex].activeTLUT = d_course_moo_moo_farm_mole_dirt;
@@ -6605,7 +6605,7 @@ void update_seagulls(void) {
         object = &gObjectList[temp_s0];
         if (object->state == 0) {
             continue;
-}
+        }
 
         func_80082714(temp_s0, var_s3);
         func_8008275C(temp_s0);
@@ -6911,7 +6911,7 @@ void func_800836F0(Vec3f arg0) {
         objectIndex = add_unused_obj_index(&gObjectParticle2[0], &gNextFreeObjectParticle2, gObjectParticle2_SIZE);
         if (objectIndex == NULL_OBJECT_ID) {
             break;
-}
+        }
         func_80083538(objectIndex, arg0, i, D_8018D3BC);
     }
 }
@@ -7074,15 +7074,15 @@ void update_snowmen(void) {
 
         if (objectIndex == DELETED_OBJECT_ID) {
             continue;
-}
+        }
 
         if (gObjectList[objectIndex].state == 0) {
             continue;
-}
+        }
         func_8008379C(objectIndex);
         if (gObjectList[objectIndex].state != 0) {
             continue;
-}
+        }
         delete_object_wrapper(&gObjectParticle2[var_s0]);
         if (var_s0) {} // ??
     }
@@ -7154,7 +7154,7 @@ void func_8008421C(UNUSED s32 arg0, s32 playerId) {
         objectIndex = add_unused_obj_index(gObjectParticle2, &gNextFreeObjectParticle2, gObjectParticle2_SIZE);
         if (objectIndex == NULL_OBJECT_ID) {
             break;
-}
+        }
         func_80083FD0(objectIndex, var_s0, playerId);
     }
 }

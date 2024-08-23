@@ -12,7 +12,7 @@ static s32 __osPfsGetNextPage(OSPfs* pfs, u8* bank, __OSInode* inode, __OSInodeU
         page->inode_t.page >= ARRLEN(inode->inode_page)) {
         if (page->ipage == 1) {
             return PFS_ERR_INVALID;
-}
+        }
         return PFS_ERR_INCONSISTENT;
     }
     return 0;
@@ -29,13 +29,13 @@ s32 osPfsReadWriteFile(OSPfs* pfs, s32 file_no, u8 flag, int offset, int size_in
     u16 blockno;
     if (file_no >= pfs->dir_size || file_no < 0) {
         return PFS_ERR_INVALID;
-}
+    }
     if (size_in_bytes <= 0 || ((size_in_bytes & (BLOCKSIZE - 1)) != 0)) {
         return PFS_ERR_INVALID;
-}
+    }
     if (offset < 0 || ((offset & (BLOCKSIZE - 1)) != 0)) {
         return PFS_ERR_INVALID;
-}
+    }
 
     PFS_CHECK_STATUS;
     PFS_CHECK_ID;
@@ -47,12 +47,12 @@ s32 osPfsReadWriteFile(OSPfs* pfs, s32 file_no, u8 flag, int offset, int size_in
 
         if ((dir.start_page.ipage == 1)) {
             return PFS_ERR_INVALID;
-}
+        }
         return PFS_ERR_INCONSISTENT;
     }
     if (flag == PFS_READ && (dir.status & DIR_STATUS_OCCUPIED) == 0) {
         return PFS_ERR_BAD_DATA;
-}
+    }
     bank = -1;
     cur_block = offset / BLOCKSIZE;
     cur_page = dir.start_page;
@@ -76,10 +76,10 @@ s32 osPfsReadWriteFile(OSPfs* pfs, s32 file_no, u8 flag, int offset, int size_in
             ret = __osContRamRead(pfs->queue, pfs->channel, blockno, buffer);
         } else {
             ret = __osContRamWrite(pfs->queue, pfs->channel, blockno, buffer, false);
-}
+        }
         if (ret != 0) {
             return ret;
-}
+        }
         buffer += BLOCKSIZE;
         cur_block++;
         siz_block--;
