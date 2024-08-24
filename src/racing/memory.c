@@ -35,7 +35,7 @@ void* get_next_available_memory_addr(uintptr_t size) {
     uintptr_t freeSpace = (uintptr_t) gNextFreeMemoryAddress;
     size = ALIGN16(size);
     gNextFreeMemoryAddress += size;
-    return (void *) freeSpace;
+    return (void*) freeSpace;
 }
 
 /**

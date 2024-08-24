@@ -285,7 +285,7 @@ void func_800CBCB0(u32 arg0) {
     for (;;) {
         if (i == end) {
             break;
-}
+        }
         cmd = &sAudioCmd[i++ & 0xff];
 
         if ((cmd->u.s.op & 0xf0) == 0xf0) {
