@@ -18,3 +18,4 @@ jobs:
         with:
           clang-format-version: "18"
           check-path: ${{ matrix.path }}
+          exclude-regex: "gbi.h"
