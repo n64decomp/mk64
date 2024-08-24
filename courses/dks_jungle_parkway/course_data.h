@@ -188,7 +188,7 @@ extern u8 d_course_dks_jungle_parkway_kiwano_tlut[];
 extern Vtx d_course_dks_jungle_parkway_kiwano_model[];
 extern Gfx d_course_dks_jungle_parkway_dl_kiwano_fruit[];
 extern Gfx d_course_dks_jungle_parkway_dl_13C30[];
-extern Gfx *d_course_dks_jungle_parkway_unknown_dl_list[];
+extern Gfx* d_course_dks_jungle_parkway_unknown_dl_list[];
 extern struct ActorSpawnData d_course_dks_jungle_parkway_item_box_spawns[];
 extern struct UnkActorSpawnData d_course_dks_jungle_parkway_tree_spawn[];
 extern TrackSections d_course_dks_jungle_parkway_addr[];

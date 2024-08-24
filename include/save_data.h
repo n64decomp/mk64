@@ -35,7 +35,6 @@ typedef struct {
     u8 unknownBytes[8];
 } OnlyBestTimeTrialRecords; // size = 0x38
 
-
 typedef struct {
     // GP Points scored for each CC mode
     // 1st place is 3 points, 2nd is 2, etc.
@@ -58,13 +57,13 @@ typedef struct {
      * Instead of 4 entries, one per cup. Or even just one big entry for all 4 cups
      * Its also unknown why these are here when they're identical to the values found
      * in allCourseTimeTrialRecords
-    **/
+     **/
     /* 0x188 */ OnlyBestTimeTrialRecords onlyBestTimeTrialRecords[2];
     /**
      * If checksum[1] or checksum[2] does not match their expected value,
      * the grandPrixPoints and soundMode are reset. Then if the backup data's
      * checksums are valid, copy the backup data to the main data.
-    **/
+     **/
     /* 0x1F8 */ Stuff backup;
 } SaveData; // size = 0x200
 
