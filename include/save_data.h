@@ -35,7 +35,6 @@ typedef struct {
     u8 unknownBytes[8];
 } OnlyBestTimeTrialRecords; // size = 0x38
 
-
 typedef struct {
     // GP Points scored for each CC mode
     // 1st place is 3 points, 2nd is 2, etc.

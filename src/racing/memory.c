@@ -35,7 +35,7 @@ void* get_next_available_memory_addr(uintptr_t size) {
     uintptr_t freeSpace = (uintptr_t) gNextFreeMemoryAddress;
     size = ALIGN16(size);
     gNextFreeMemoryAddress += size;
-    return freeSpace;
+    return (void *) freeSpace;
 }
 
 /**
@@ -103,7 +103,7 @@ void* allocate_memory(size_t size) {
 
     size = ALIGN16(size);
     gFreeMemorySize -= size;
-    freeSpace = (u32*) gNextFreeMemoryAddress;
+    freeSpace = gNextFreeMemoryAddress;
     gNextFreeMemoryAddress += size;
 
     return (void*) freeSpace;
@@ -1371,7 +1371,7 @@ u8* load_course(s32 courseId) {
 
     set_segment_base_addr(0xF, (void*) vtxCompressed);
     decompress_vtx(vertexStart, vertexCount);
-    displaylist_unpack((uintptr_t*) packedStart, finalDisplaylistOffset, unknown1);
+    displaylist_unpack((uintptr_t*) packedStart, (uintptr_t) finalDisplaylistOffset, unknown1);
     decompress_textures(textures);
     gNextFreeMemoryAddress = prevLoadedAddress_saved;
     return vtxCompressed;

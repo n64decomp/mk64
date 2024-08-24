@@ -33,7 +33,7 @@ $(eval $(call validate-option,COMPILER,ido gcc))
 DEBUG ?= 0
 
 # Compile with GCC
-GCC ?= 1
+GCC ?= 0
 
 # VERSION - selects the version of the game to build
 #   us - builds the 1997 North American version
@@ -315,8 +315,6 @@ endif
 
 C_DEFINES := $(foreach d,$(DEFINES),-D$(d))
 DEF_INC_CFLAGS := $(foreach i,$(INCLUDE_DIRS),-I$(i)) $(C_DEFINES)
-
-$(info $(DEF_INC_CFLAGS))
 
 # Prefer clang as C preprocessor if installed on the system
 ifneq (,$(call find-command,clang))

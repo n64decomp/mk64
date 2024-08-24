@@ -1178,7 +1178,7 @@ void spawn_course_actors(void) {
 /**
  * @brief Loads actor textures, course specific actor textures.
  * Calls to spawn_course_vehicles and place_course_actors
- * 
+ *
  */
 void init_actors_and_load_textures(void) {
     set_segment_base_addr(3, (void*) gNextFreeMemoryAddress);
