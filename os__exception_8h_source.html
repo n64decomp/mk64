@@ -131,7 +131,7 @@ $(function(){initNavTree('os__exception_8h_source.html',''); initResizable(true)
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">/*---------------------------------------------------------------------*</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">        Copyright (C) 1998 Nintendo. (Originated by SGI)</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">        </span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"></span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">        $RCSfile: os_exception.h,v $</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">        $Revision: 1.1 $</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">        $Date: 1998/10/09 08:01:07 $</span></div>
@@ -167,66 +167,62 @@ $(function(){initNavTree('os__exception_8h_source.html',''); initResizable(true)
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">/* Flags for debugging purpose */</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a79b21aa4950ac4ee5b1b9e1d3cfd7186">   60</a></span><span class="preprocessor">#define OS_FLAG_CPU_BREAK   1   </span><span class="comment">/* Break exception has occurred */</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a437880091cb34e0e8116f57b84973761">   61</a></span><span class="preprocessor">#define OS_FLAG_FAULT       2   </span><span class="comment">/* CPU fault has occurred */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a79b21aa4950ac4ee5b1b9e1d3cfd7186">   60</a></span><span class="preprocessor">#define OS_FLAG_CPU_BREAK 1 </span><span class="comment">/* Break exception has occurred */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a437880091cb34e0e8116f57b84973761">   61</a></span><span class="preprocessor">#define OS_FLAG_FAULT 2     </span><span class="comment">/* CPU fault has occurred */</span><span class="preprocessor"></span></div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">/* Interrupt masks */</span></div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a44cb1dc1374bc595358db2e916e06e8d">   65</a></span><span class="preprocessor">#define OS_IM_NONE  0x00000001</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="os__exception_8h.html#abc51f6c5521e1b3a785c5c482f2cbc59">   66</a></span><span class="preprocessor">#define OS_IM_SW1   0x00000501</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="os__exception_8h.html#aafcb5061a3f3e43bb378b50f086789be">   67</a></span><span class="preprocessor">#define OS_IM_SW2   0x00000601</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a700a9ae316407370cab9cf075e42ca4a">   68</a></span><span class="preprocessor">#define OS_IM_CART  0x00000c01</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a2f80c9f985b172905bcedf5ec3971170">   69</a></span><span class="preprocessor">#define OS_IM_PRENMI    0x00001401</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a24a51c152dcba50acb50379a1300a945">   70</a></span><span class="preprocessor">#define OS_IM_RDBWRITE  0x00002401</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a4f323f448136db4a312e0b80ed20b823">   71</a></span><span class="preprocessor">#define OS_IM_RDBREAD   0x00004401</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a60ec17f4704fe1842a1b385665e9bd79">   72</a></span><span class="preprocessor">#define OS_IM_COUNTER   0x00008401</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a979c0fb471a0b458883e2d8234e1c71c">   73</a></span><span class="preprocessor">#define OS_IM_CPU   0x0000ff01</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="os__exception_8h.html#adc9468fbf10359c76d60e284dae08e6c">   74</a></span><span class="preprocessor">#define OS_IM_SP    0x00010401</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="os__exception_8h.html#af7e1829cb7146dbdbad73530b752b633">   75</a></span><span class="preprocessor">#define OS_IM_SI    0x00020401</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a7768c00ecca0bdcf61bdd9a123aeedc7">   76</a></span><span class="preprocessor">#define OS_IM_AI    0x00040401</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a7101bed86bca0337bb5a45b561289093">   77</a></span><span class="preprocessor">#define OS_IM_VI    0x00080401</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a139f2873d4b11e8b07325aaa0543d662">   78</a></span><span class="preprocessor">#define OS_IM_PI    0x00100401</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a294b2c4f188fb1ac8fbc170830092985">   79</a></span><span class="preprocessor">#define OS_IM_DP    0x00200401</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a12d389a095a86a471e0c483629af603e">   80</a></span><span class="preprocessor">#define OS_IM_ALL   0x003fff01</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a9cd49c676518ec65c5f3ab4716ca500e">   81</a></span><span class="preprocessor">#define RCP_IMASK   0x003f0000</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="os__exception_8h.html#acec0bfd95642f11fde3c020ef6655918">   82</a></span><span class="preprocessor">#define RCP_IMASKSHIFT  16</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a44cb1dc1374bc595358db2e916e06e8d">   65</a></span><span class="preprocessor">#define OS_IM_NONE 0x00000001</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="os__exception_8h.html#abc51f6c5521e1b3a785c5c482f2cbc59">   66</a></span><span class="preprocessor">#define OS_IM_SW1 0x00000501</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="os__exception_8h.html#aafcb5061a3f3e43bb378b50f086789be">   67</a></span><span class="preprocessor">#define OS_IM_SW2 0x00000601</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a700a9ae316407370cab9cf075e42ca4a">   68</a></span><span class="preprocessor">#define OS_IM_CART 0x00000c01</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a2f80c9f985b172905bcedf5ec3971170">   69</a></span><span class="preprocessor">#define OS_IM_PRENMI 0x00001401</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a24a51c152dcba50acb50379a1300a945">   70</a></span><span class="preprocessor">#define OS_IM_RDBWRITE 0x00002401</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a4f323f448136db4a312e0b80ed20b823">   71</a></span><span class="preprocessor">#define OS_IM_RDBREAD 0x00004401</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a60ec17f4704fe1842a1b385665e9bd79">   72</a></span><span class="preprocessor">#define OS_IM_COUNTER 0x00008401</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a979c0fb471a0b458883e2d8234e1c71c">   73</a></span><span class="preprocessor">#define OS_IM_CPU 0x0000ff01</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="os__exception_8h.html#adc9468fbf10359c76d60e284dae08e6c">   74</a></span><span class="preprocessor">#define OS_IM_SP 0x00010401</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="os__exception_8h.html#af7e1829cb7146dbdbad73530b752b633">   75</a></span><span class="preprocessor">#define OS_IM_SI 0x00020401</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a7768c00ecca0bdcf61bdd9a123aeedc7">   76</a></span><span class="preprocessor">#define OS_IM_AI 0x00040401</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a7101bed86bca0337bb5a45b561289093">   77</a></span><span class="preprocessor">#define OS_IM_VI 0x00080401</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a139f2873d4b11e8b07325aaa0543d662">   78</a></span><span class="preprocessor">#define OS_IM_PI 0x00100401</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a294b2c4f188fb1ac8fbc170830092985">   79</a></span><span class="preprocessor">#define OS_IM_DP 0x00200401</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a12d389a095a86a471e0c483629af603e">   80</a></span><span class="preprocessor">#define OS_IM_ALL 0x003fff01</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="os__exception_8h.html#a9cd49c676518ec65c5f3ab4716ca500e">   81</a></span><span class="preprocessor">#define RCP_IMASK 0x003f0000</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="os__exception_8h.html#acec0bfd95642f11fde3c020ef6655918">   82</a></span><span class="preprocessor">#define RCP_IMASKSHIFT 16</span></div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">/**************************************************************************</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"> * Macro definitions</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">/**************************************************************************</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">#if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">/**************************************************************************</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment"> * Macro definitions</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">/**************************************************************************</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment"> * Extern variables</span></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment"> * Extern variables</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">/**************************************************************************</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment"> * Function prototypes</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">/* Interrupt operations */</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">/**************************************************************************</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment"> * Function prototypes</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">/* Interrupt operations */</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="keyword">extern</span> OSIntMask osGetIntMask(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="keyword">extern</span> OSIntMask osSetIntMask(OSIntMask);</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keyword">extern</span> OSIntMask    osGetIntMask(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keyword">extern</span> OSIntMask    osSetIntMask(OSIntMask);</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#endif  </span><span class="comment">/* defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS) */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="preprocessor">#endif </span><span class="comment">/* defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS) */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="preprocessor">#ifdef _LANGUAGE_C_PLUS_PLUS</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">#ifdef _LANGUAGE_C_PLUS_PLUS</span></div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>}</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="preprocessor">#endif </span><span class="comment">/* !_OS_EXCEPTION_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">#endif </span><span class="comment">/* !_OS_EXCEPTION_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aultratypes_8h_html"><div class="ttname"><a href="ultratypes_8h.html">ultratypes.h</a></div></div>
 <div class="ttc" id="aultratypes_8h_html_a10e94b422ef0c20dcdec20d31a1f5049"><div class="ttname"><a href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></div><div class="ttdeci">unsigned int u32</div><div class="ttdef"><b>Definition</b> ultratypes.h:16</div></div>
 </div><!-- fragment --></div><!-- contents -->

@@ -141,7 +141,7 @@ Macros</h2></td></tr>
 <tr class="separator:afffbf9a87f813e52ed7cf238f21a0405"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e02c49376843af189a363f33ce8ad34" id="r_a6e02c49376843af189a363f33ce8ad34"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e02c49376843af189a363f33ce8ad34">PRELOAD_SEQUENCE</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:a6e02c49376843af189a363f33ce8ad34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af646ba99f84076d7eea3b754fdbccc5b" id="r_af646ba99f84076d7eea3b754fdbccc5b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af646ba99f84076d7eea3b754fdbccc5b">IS_SEQUENCE_CHANNEL_VALID</a>(ptr)&#160;&#160;&#160;((uintptr_t)(ptr) != (uintptr_t)&amp;<a class="el" href="load_8c.html#a7cbc35471920683287b4d98632a128ba">gSequenceChannelNone</a>)</td></tr>
+<tr class="memitem:af646ba99f84076d7eea3b754fdbccc5b" id="r_af646ba99f84076d7eea3b754fdbccc5b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af646ba99f84076d7eea3b754fdbccc5b">IS_SEQUENCE_CHANNEL_VALID</a>(ptr)&#160;&#160;&#160;((uintptr_t) (ptr) != (uintptr_t) &amp; <a class="el" href="load_8c.html#a7cbc35471920683287b4d98632a128ba">gSequenceChannelNone</a>)</td></tr>
 <tr class="separator:af646ba99f84076d7eea3b754fdbccc5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -291,7 +291,7 @@ Variables</h2></td></tr>
           <td class="memname">#define IS_SEQUENCE_CHANNEL_VALID</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>ptr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;((uintptr_t)(ptr) != (uintptr_t)&amp;<a class="el" href="load_8c.html#a7cbc35471920683287b4d98632a128ba">gSequenceChannelNone</a>)</td>
+          <td>&#160;&#160;&#160;((uintptr_t) (ptr) != (uintptr_t) &amp; <a class="el" href="load_8c.html#a7cbc35471920683287b4d98632a128ba">gSequenceChannelNone</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -838,7 +838,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000005">Bug</a></b></dt><dd>This should set the last bank (i.e. the first in the JSON) as default, not the missing one. This code path never gets taken, though &ndash; all sequence loading is synchronous. </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000004">Bug</a></b></dt><dd>This should set the last bank (i.e. the first in the JSON) as default, not the missing one. This code path never gets taken, though &ndash; all sequence loading is synchronous. </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -949,7 +949,7 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000004">Bug</a></b></dt><dd>should be IS_SEQ_LOAD_COMPLETE </dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000003">Bug</a></b></dt><dd>should be IS_SEQ_LOAD_COMPLETE </dd></dl>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

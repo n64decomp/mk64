@@ -19,7 +19,7 @@ var animation_8h =
     ] ],
     [ "convert_to_fixed_point_matrix_animation", "animation_8h.html#a5df48d40f4cbf20ab82b1e562ceff0ea", null ],
     [ "get_animation_length", "animation_8h.html#af7bf2049a0c78d95230c41e3b0692f4e", null ],
-    [ "mtxf_translate_rotate2", "animation_8h.html#aeb97315dd56d597266cd896be4613533", null ],
+    [ "mtxf_translate_rotate2", "animation_8h.html#acfd85958c3b1020053c0810bbe96380e", null ],
     [ "render_animated_model", "animation_8h.html#a49354bf72bd8b54b45784ed1d680f76a", null ],
     [ "render_armature", "animation_8h.html#a3a6b2e215bdb37125dfbe65a49012df2", null ],
     [ "render_limb_or_add_mtx", "animation_8h.html#a54050a3c3a0ddedeed0f70ce6a9bdd7a", null ]

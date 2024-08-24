@@ -131,7 +131,7 @@ $(function(){initNavTree('os__eeprom_8h_source.html',''); initResizable(true); }
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">/*---------------------------------------------------------------------*</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">        Copyright (C) 1998 Nintendo. (Originated by SGI)</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment">        </span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"></span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment">        $RCSfile: os_eeprom.h,v $</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">        $Revision: 1.1 $</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">        $Date: 1998/10/09 08:01:06 $</span></div>
@@ -147,74 +147,68 @@ $(function(){initNavTree('os__eeprom_8h_source.html',''); initResizable(true); }
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &lt;<a class="code" href="ultratypes_8h.html">PR/ultratypes.h</a>&gt;</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#include &quot;<a class="code" href="os__message_8h.html">os_message.h</a>&quot;</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">/**************************************************************************</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"> * Type definitions</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">/**************************************************************************</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"> * Type definitions</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif </span><span class="comment">/* defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS) */</span><span class="preprocessor"></span></div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">#endif </span><span class="comment">/* defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS) */</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">/**************************************************************************</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">/**************************************************************************</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"> * Global definitions</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> * Global definitions</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">/* EEPROM TYPE */</span></div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">/* EEPROM TYPE */</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="os__eeprom_8h.html#a4b7989948328391b363da29c43fc5b3d">   60</a></span><span class="preprocessor">#define EEPROM_TYPE_4K      0x01</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="os__eeprom_8h.html#acb715a5ffd16bd1fc98379f70a456ec4">   61</a></span><span class="preprocessor">#define EEPROM_TYPE_16K     0x02</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="os__eeprom_8h.html#a4b7989948328391b363da29c43fc5b3d">   58</a></span><span class="preprocessor">#define EEPROM_TYPE_4K 0x01</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="os__eeprom_8h.html#acb715a5ffd16bd1fc98379f70a456ec4">   59</a></span><span class="preprocessor">#define EEPROM_TYPE_16K 0x02</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">/* definition for EEPROM */</span></div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">/* definition for EEPROM */</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="os__eeprom_8h.html#a5441c83c7ed1de1088a4fd754e5303ec">   65</a></span><span class="preprocessor">#define EEPROM_MAXBLOCKS    64</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="os__eeprom_8h.html#ae374c1ee16dd1ed8f839f41c1fdf55ef">   66</a></span><span class="preprocessor">#define EEP16K_MAXBLOCKS    256</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="os__eeprom_8h.html#a3158a02f7e8626b69c4bc59d33dad9ad">   67</a></span><span class="preprocessor">#define EEPROM_BLOCK_SIZE   8</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="os__eeprom_8h.html#a5441c83c7ed1de1088a4fd754e5303ec">   63</a></span><span class="preprocessor">#define EEPROM_MAXBLOCKS 64</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="os__eeprom_8h.html#ae374c1ee16dd1ed8f839f41c1fdf55ef">   64</a></span><span class="preprocessor">#define EEP16K_MAXBLOCKS 256</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="os__eeprom_8h.html#a3158a02f7e8626b69c4bc59d33dad9ad">   65</a></span><span class="preprocessor">#define EEPROM_BLOCK_SIZE 8</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)</span></div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">/**************************************************************************</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment"> * Macro definitions</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">/**************************************************************************</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment"> * Extern variables</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">/**************************************************************************</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"> * Macro definitions</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">/**************************************************************************</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment"> * Extern variables</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">/**************************************************************************</span></div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">/**************************************************************************</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment"> * Function prototypes</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment"> *</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">/* EEPROM interface */</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="keyword">extern</span> <a class="code hl_typedef" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code hl_function" href="osEepromProbe_8c.html#a0fd5c533855a3970d450221de82beefc">osEepromProbe</a>(OSMesgQueue *);</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keyword">extern</span> <a class="code hl_typedef" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code hl_function" href="osEepromRead_8c.html#a48dab24d71fe90bfbf5c9f240c5dda68">osEepromRead</a>(OSMesgQueue *, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *);</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="keyword">extern</span> <a class="code hl_typedef" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code hl_function" href="osEepromWrite_8c.html#a821b8ce22af671850530fdbd8aa56e9d">osEepromWrite</a>(OSMesgQueue *, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *);</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keyword">extern</span> <a class="code hl_typedef" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code hl_function" href="osEepromLongRead_8c.html#abcb609bd10840081d17bce1000620d8e">osEepromLongRead</a>(OSMesgQueue *, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keyword">extern</span> <a class="code hl_typedef" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code hl_function" href="osEepromLongWrite_8c.html#a497b1f428c5cda00b94e9e4849d50390">osEepromLongWrite</a>(OSMesgQueue *, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *, <span class="keywordtype">int</span>);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment"> * Function prototypes</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment"> *</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment"> */</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">/* EEPROM interface */</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="keyword">extern</span> <a class="code hl_typedef" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code hl_function" href="osEepromProbe_8c.html#a0fd5c533855a3970d450221de82beefc">osEepromProbe</a>(OSMesgQueue*);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">extern</span> <a class="code hl_typedef" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code hl_function" href="osEepromRead_8c.html#a48dab24d71fe90bfbf5c9f240c5dda68">osEepromRead</a>(OSMesgQueue*, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>*);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="keyword">extern</span> <a class="code hl_typedef" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code hl_function" href="osEepromWrite_8c.html#a821b8ce22af671850530fdbd8aa56e9d">osEepromWrite</a>(OSMesgQueue*, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>*);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="keyword">extern</span> <a class="code hl_typedef" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code hl_function" href="osEepromLongRead_8c.html#abcb609bd10840081d17bce1000620d8e">osEepromLongRead</a>(OSMesgQueue*, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>*, <span class="keywordtype">int</span>);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keyword">extern</span> <a class="code hl_typedef" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a> <a class="code hl_function" href="osEepromLongWrite_8c.html#a497b1f428c5cda00b94e9e4849d50390">osEepromLongWrite</a>(OSMesgQueue*, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>, <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>*, <span class="keywordtype">int</span>);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#endif </span><span class="comment">/* defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS) */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#ifdef _LANGUAGE_C_PLUS_PLUS</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#endif  </span><span class="comment">/* defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS) */</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#ifdef _LANGUAGE_C_PLUS_PLUS</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">#endif </span><span class="comment">/* !_OS_EEPROM_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#endif </span><span class="comment">/* !_OS_EEPROM_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aosEepromLongRead_8c_html_abcb609bd10840081d17bce1000620d8e"><div class="ttname"><a href="osEepromLongRead_8c.html#abcb609bd10840081d17bce1000620d8e">osEepromLongRead</a></div><div class="ttdeci">s32 osEepromLongRead(OSMesgQueue *mq, u8 address, u8 *buffer, s32 nbytes)</div><div class="ttdef"><b>Definition</b> osEepromLongRead.c:10</div></div>
 <div class="ttc" id="aosEepromLongWrite_8c_html_a497b1f428c5cda00b94e9e4849d50390"><div class="ttname"><a href="osEepromLongWrite_8c.html#a497b1f428c5cda00b94e9e4849d50390">osEepromLongWrite</a></div><div class="ttdeci">s32 osEepromLongWrite(OSMesgQueue *mq, u8 address, u8 *buffer, s32 nbytes)</div><div class="ttdef"><b>Definition</b> osEepromLongWrite.c:10</div></div>
 <div class="ttc" id="aosEepromProbe_8c_html_a0fd5c533855a3970d450221de82beefc"><div class="ttname"><a href="osEepromProbe_8c.html#a0fd5c533855a3970d450221de82beefc">osEepromProbe</a></div><div class="ttdeci">s32 osEepromProbe(OSMesgQueue *mq)</div><div class="ttdef"><b>Definition</b> osEepromProbe.c:6</div></div>

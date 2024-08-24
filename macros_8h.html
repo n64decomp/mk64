@@ -119,7 +119,7 @@ Macros</h2></td></tr>
 <tr class="separator:a93a390d3f6c6f748f9ce929cf323168a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bf0a01781df461ad257e5391ac09ae7" id="r_a4bf0a01781df461ad257e5391ac09ae7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bf0a01781df461ad257e5391ac09ae7">ARRAY_COUNT</a>(arr)&#160;&#160;&#160;(<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)(sizeof(arr) / sizeof(arr[0]))</td></tr>
 <tr class="separator:a4bf0a01781df461ad257e5391ac09ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3ddc5a73ff88a58733f0879ce37196d" id="r_af3ddc5a73ff88a58733f0879ce37196d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3ddc5a73ff88a58733f0879ce37196d">GLUE</a>(a,  b)&#160;&#160;&#160;a ## b</td></tr>
+<tr class="memitem:af3ddc5a73ff88a58733f0879ce37196d" id="r_af3ddc5a73ff88a58733f0879ce37196d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3ddc5a73ff88a58733f0879ce37196d">GLUE</a>(a,  b)&#160;&#160;&#160;a##b</td></tr>
 <tr class="separator:af3ddc5a73ff88a58733f0879ce37196d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8aacf963fc7253845c961ed3912d78a2" id="r_a8aacf963fc7253845c961ed3912d78a2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8aacf963fc7253845c961ed3912d78a2">GLUE2</a>(a,  b)&#160;&#160;&#160;<a class="el" href="#af3ddc5a73ff88a58733f0879ce37196d">GLUE</a>(a, b)</td></tr>
 <tr class="separator:a8aacf963fc7253845c961ed3912d78a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,13 +135,13 @@ Macros</h2></td></tr>
 <tr class="separator:afcf59d0855225b13f2060708ce1d6a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fcac48969e76bd4245894796b40b7b6" id="r_a3fcac48969e76bd4245894796b40b7b6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3fcac48969e76bd4245894796b40b7b6">ALIGNED16</a></td></tr>
 <tr class="separator:a3fcac48969e76bd4245894796b40b7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10664b2f9bc7d6aca323c2176607ed25" id="r_a10664b2f9bc7d6aca323c2176607ed25"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10664b2f9bc7d6aca323c2176607ed25">FTOFIX</a>(f)&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)((f) * 65536.0))</td></tr>
+<tr class="memitem:a10664b2f9bc7d6aca323c2176607ed25" id="r_a10664b2f9bc7d6aca323c2176607ed25"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10664b2f9bc7d6aca323c2176607ed25">FTOFIX</a>(f)&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>) ((f) * 65536.0))</td></tr>
 <tr class="separator:a10664b2f9bc7d6aca323c2176607ed25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38dd3cc47348bf50cffa34352cc93156" id="r_a38dd3cc47348bf50cffa34352cc93156"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38dd3cc47348bf50cffa34352cc93156">ITOFIX</a>(i)&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)((i) &lt;&lt; 16))</td></tr>
+<tr class="memitem:a38dd3cc47348bf50cffa34352cc93156" id="r_a38dd3cc47348bf50cffa34352cc93156"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38dd3cc47348bf50cffa34352cc93156">ITOFIX</a>(i)&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>) ((i) &lt;&lt; 16))</td></tr>
 <tr class="separator:a38dd3cc47348bf50cffa34352cc93156"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ee57cbc899a869579ce6c9a9d91481e" id="r_a6ee57cbc899a869579ce6c9a9d91481e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ee57cbc899a869579ce6c9a9d91481e">FIXTOF</a>(x)&#160;&#160;&#160;((double)((x) / 65536.0))</td></tr>
+<tr class="memitem:a6ee57cbc899a869579ce6c9a9d91481e" id="r_a6ee57cbc899a869579ce6c9a9d91481e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ee57cbc899a869579ce6c9a9d91481e">FIXTOF</a>(x)&#160;&#160;&#160;((double) ((x) / 65536.0))</td></tr>
 <tr class="separator:a6ee57cbc899a869579ce6c9a9d91481e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace18d13c8231a0f9fa2367c88bda5d62" id="r_ace18d13c8231a0f9fa2367c88bda5d62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace18d13c8231a0f9fa2367c88bda5d62">FIXTOI</a>(x)&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)((x) &gt;&gt; 16))</td></tr>
+<tr class="memitem:ace18d13c8231a0f9fa2367c88bda5d62" id="r_ace18d13c8231a0f9fa2367c88bda5d62"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace18d13c8231a0f9fa2367c88bda5d62">FIXTOI</a>(x)&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>) ((x) &gt;&gt; 16))</td></tr>
 <tr class="separator:ace18d13c8231a0f9fa2367c88bda5d62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af55e3de19a43cfde88382154130a2edc" id="r_af55e3de19a43cfde88382154130a2edc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(f)&#160;&#160;&#160;(<a class="el" href="#a10664b2f9bc7d6aca323c2176607ed25">FTOFIX</a>(f) &gt;&gt; 16)</td></tr>
 <tr class="separator:af55e3de19a43cfde88382154130a2edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,15 +149,15 @@ Macros</h2></td></tr>
 <tr class="separator:afb95d4bc9307ade70d0ac672aa24b82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a3920b8b184cd75133b9e51c4c8d99d" id="r_a0a3920b8b184cd75133b9e51c4c8d99d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a3920b8b184cd75133b9e51c4c8d99d">toFixedPointMatrix</a>(x1,  x2,  x3,  x4,  x5,  x6,  x7,  x8,  x9,  x10,  x11,  x12,  x13,  x14,  x15,  x16)</td></tr>
 <tr class="separator:a0a3920b8b184cd75133b9e51c4c8d99d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0a1d439c0dd0d6ceb64be64f1650bbc" id="r_af0a1d439c0dd0d6ceb64be64f1650bbc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0a1d439c0dd0d6ceb64be64f1650bbc">VIRTUAL_TO_PHYSICAL</a>(addr)&#160;&#160;&#160;((uintptr_t)(addr) &amp; 0x1FFFFFFF)</td></tr>
+<tr class="memitem:af0a1d439c0dd0d6ceb64be64f1650bbc" id="r_af0a1d439c0dd0d6ceb64be64f1650bbc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0a1d439c0dd0d6ceb64be64f1650bbc">VIRTUAL_TO_PHYSICAL</a>(addr)&#160;&#160;&#160;((uintptr_t) (addr) &amp; 0x1FFFFFFF)</td></tr>
 <tr class="separator:af0a1d439c0dd0d6ceb64be64f1650bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1d0bb67b7c87d4c00796bc18d1f2e23" id="r_ac1d0bb67b7c87d4c00796bc18d1f2e23"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1d0bb67b7c87d4c00796bc18d1f2e23">PHYSICAL_TO_VIRTUAL</a>(addr)&#160;&#160;&#160;((uintptr_t)(addr) | 0x80000000)</td></tr>
+<tr class="memitem:ac1d0bb67b7c87d4c00796bc18d1f2e23" id="r_ac1d0bb67b7c87d4c00796bc18d1f2e23"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1d0bb67b7c87d4c00796bc18d1f2e23">PHYSICAL_TO_VIRTUAL</a>(addr)&#160;&#160;&#160;((uintptr_t) (addr) | 0x80000000)</td></tr>
 <tr class="separator:ac1d0bb67b7c87d4c00796bc18d1f2e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac33bc9457f1c1be3f60fcf54fab88ee7" id="r_ac33bc9457f1c1be3f60fcf54fab88ee7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac33bc9457f1c1be3f60fcf54fab88ee7">VIRTUAL_TO_PHYSICAL2</a>(addr)&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *)(addr) - 0x80000000U)</td></tr>
+<tr class="memitem:ac33bc9457f1c1be3f60fcf54fab88ee7" id="r_ac33bc9457f1c1be3f60fcf54fab88ee7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac33bc9457f1c1be3f60fcf54fab88ee7">VIRTUAL_TO_PHYSICAL2</a>(addr)&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>*) (addr) - 0x80000000U)</td></tr>
 <tr class="separator:ac33bc9457f1c1be3f60fcf54fab88ee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08b2c3c00c27891c0b0179c9d8a1c2b6" id="r_a08b2c3c00c27891c0b0179c9d8a1c2b6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08b2c3c00c27891c0b0179c9d8a1c2b6">ALIGN16</a>(val)&#160;&#160;&#160;(((val) + 0xF) &amp; ~0xF)</td></tr>
 <tr class="separator:a08b2c3c00c27891c0b0179c9d8a1c2b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a635e1ead21634c60d387a6602b27ada8" id="r_a635e1ead21634c60d387a6602b27ada8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a635e1ead21634c60d387a6602b27ada8">GET_PACKED_END</a>(dl)&#160;&#160;&#160;(((<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)</td></tr>
+<tr class="memitem:a635e1ead21634c60d387a6602b27ada8" id="r_a635e1ead21634c60d387a6602b27ada8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a635e1ead21634c60d387a6602b27ada8">GET_PACKED_END</a>(dl)&#160;&#160;&#160;(((<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>*) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)</td></tr>
 <tr class="separator:a635e1ead21634c60d387a6602b27ada8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -233,7 +233,7 @@ Macros</h2></td></tr>
           <td class="memname">#define FIXTOF</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;((double)((x) / 65536.0))</td>
+          <td>&#160;&#160;&#160;((double) ((x) / 65536.0))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -250,7 +250,7 @@ Macros</h2></td></tr>
           <td class="memname">#define FIXTOI</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)((x) &gt;&gt; 16))</td>
+          <td>&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>) ((x) &gt;&gt; 16))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -267,7 +267,7 @@ Macros</h2></td></tr>
           <td class="memname">#define FTOFIX</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>f</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)((f) * 65536.0))</td>
+          <td>&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>) ((f) * 65536.0))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -284,7 +284,7 @@ Macros</h2></td></tr>
           <td class="memname">#define GET_PACKED_END</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>dl</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;(((<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)</td>
+          <td>&#160;&#160;&#160;(((<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>*) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -327,7 +327,7 @@ Macros</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)&#160;&#160;&#160;a ## b</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>b</em></span>&#160;)&#160;&#160;&#160;a##b</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -365,7 +365,7 @@ Macros</h2></td></tr>
           <td class="memname">#define ITOFIX</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>i</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)((i) &lt;&lt; 16))</td>
+          <td>&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>) ((i) &lt;&lt; 16))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -410,7 +410,7 @@ Macros</h2></td></tr>
           <td class="memname">#define PHYSICAL_TO_VIRTUAL</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>addr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;((uintptr_t)(addr) | 0x80000000)</td>
+          <td>&#160;&#160;&#160;((uintptr_t) (addr) | 0x80000000)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -543,12 +543,20 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    {{((<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x1)) &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x2),  ((<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x3))  &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x4),  (<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x5)  &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x6),  (<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x7) &lt;&lt; 16)  | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x8)}, \</div>
-<div class="line">    {((<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x9)) &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x10), ((<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x11)) &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x12), (<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x13) &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x14), (<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x15) &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x16)}, \</div>
-<div class="line">    {((<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x1))     &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x2),      ((<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x3))      &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x4),      (<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x5)      &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x6),      (<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x7) &lt;&lt; 16)      | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x8)},      \</div>
-<div class="line">    {((<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x9))     &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x10),     ((<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x11))     &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x12),     (<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x13)     &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x14),     (<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x15) &lt;&lt; 16)     | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x16)}}</div>
-<div class="ttc" id="amacros_8h_html_af55e3de19a43cfde88382154130a2edc"><div class="ttname"><a href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a></div><div class="ttdeci">#define toFixedInt(f)</div><div class="ttdef"><b>Definition</b> macros.h:69</div></div>
-<div class="ttc" id="amacros_8h_html_afb95d4bc9307ade70d0ac672aa24b82f"><div class="ttname"><a href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a></div><div class="ttdeci">#define toFrac(f)</div><div class="ttdef"><b>Definition</b> macros.h:70</div></div>
+<b>Value:</b><div class="fragment"><div class="line">    {                                                                                                                \</div>
+<div class="line">        { ((<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x1)) &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x2), ((<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x3)) &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x4),                      \</div>
+<div class="line">          (<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x5) &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x6), (<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x7) &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x8) },                        \</div>
+<div class="line">            { ((<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x9)) &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x10), ((<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x11)) &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x12),               \</div>
+<div class="line">              (<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x13) &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x14), (<a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x15) &lt;&lt; 16) | <a class="code hl_define" href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a>(x16) },                \</div>
+<div class="line">            { ((<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x1)) &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x2), ((<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x3)) &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x4), (<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x5) &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x6), \</div>
+<div class="line">              (<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x7) &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x8) },                                                                     \</div>
+<div class="line">        {                                                                                                            \</div>
+<div class="line">            ((<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x9)) &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x10), ((<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x11)) &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x12),                                 \</div>
+<div class="line">                (<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x13) &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x14), (<a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x15) &lt;&lt; 16) | <a class="code hl_define" href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a>(x16)                                 \</div>
+<div class="line">        }                                                                                                            \</div>
+<div class="line">    }</div>
+<div class="ttc" id="amacros_8h_html_af55e3de19a43cfde88382154130a2edc"><div class="ttname"><a href="#af55e3de19a43cfde88382154130a2edc">toFixedInt</a></div><div class="ttdeci">#define toFixedInt(f)</div><div class="ttdef"><b>Definition</b> macros.h:68</div></div>
+<div class="ttc" id="amacros_8h_html_afb95d4bc9307ade70d0ac672aa24b82f"><div class="ttname"><a href="#afb95d4bc9307ade70d0ac672aa24b82f">toFrac</a></div><div class="ttdeci">#define toFrac(f)</div><div class="ttdef"><b>Definition</b> macros.h:69</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -593,7 +601,7 @@ Macros</h2></td></tr>
           <td class="memname">#define VIRTUAL_TO_PHYSICAL</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>addr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;((uintptr_t)(addr) &amp; 0x1FFFFFFF)</td>
+          <td>&#160;&#160;&#160;((uintptr_t) (addr) &amp; 0x1FFFFFFF)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -610,7 +618,7 @@ Macros</h2></td></tr>
           <td class="memname">#define VIRTUAL_TO_PHYSICAL2</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>addr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> *)(addr) - 0x80000000U)</td>
+          <td>&#160;&#160;&#160;((<a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>*) (addr) - 0x80000000U)</td>
         </tr>
       </table>
 </div><div class="memdoc">

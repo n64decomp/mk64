@@ -496,7 +496,7 @@ var code__80005FD0_8c =
     [ "gCarList", "code__80005FD0_8c.html#a98edd6c555769caa23ca17968301ac2b", null ],
     [ "gCourseCompletionPercentByPlayerId", "code__80005FD0_8c.html#ac7306c0a90875ea7942d2e8f4cfdaf57", null ],
     [ "gCourseCompletionPercentByRank", "code__80005FD0_8c.html#aa783cfef589f97380a189a6341d39593", null ],
-    [ "gCoursesKartAIBehaviour", "code__80005FD0_8c.html#aceb488bcef6304a99e2c8c6e497b1af9", null ],
+    [ "gCoursesKartAIBehaviour", "code__80005FD0_8c.html#a6b58c69142c0a58534c1b0751fa2fb3a", null ],
     [ "gCurrentKartAIBehaviourId", "code__80005FD0_8c.html#a54cab8f2f2a9395eec7e11f66931d38b", null ],
     [ "gFerrySmokeTimer", "code__80005FD0_8c.html#ad6c2413fa87f5c3d748af85ceff1fc98", null ],
     [ "gGPCurrentRacePlayerIdByRank", "code__80005FD0_8c.html#a7e8fac2e19a8c70eae68b7b1ebb7d089", null ],

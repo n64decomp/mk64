@@ -1,6 +1,5 @@
 var NAVTREEINDEX89 =
 {
-"player__controller_8h.html#a84ecbf5253c558893ce2f6b3fe344119":[8,0,3,48,44],
 "player__controller_8h.html#a85662ab742c0228a7b98a2bad849ab33":[8,0,3,48,111],
 "player__controller_8h.html#a87c5070316ac5f849b2480922f76b2df":[8,0,3,48,92],
 "player__controller_8h.html#a8985110d1f21fefd493d9457db941bc0":[8,0,3,48,9],
@@ -10,6 +9,7 @@ var NAVTREEINDEX89 =
 "player__controller_8h.html#a8e98cbfdf84ad6deaf09f8e7cee39958":[8,0,3,48,34],
 "player__controller_8h.html#a8f23c9648fb24323eacde208b29b3ad6":[8,0,3,48,82],
 "player__controller_8h.html#a8f5540c54a029cd048421852b955e715":[8,0,3,48,70],
+"player__controller_8h.html#a93beb6f60db4470425aa266cf0ea6abf":[8,0,3,48,52],
 "player__controller_8h.html#a93e93f9ff67166db5288ce35f4f3bd5e":[8,0,3,48,98],
 "player__controller_8h.html#a96dd8ea5e78695d817a2ec32e45e1c74":[8,0,3,48,76],
 "player__controller_8h.html#a9b641d78d85da29369ba33767d909be9":[8,0,3,48,68],

@@ -187,13 +187,13 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (extracond &amp;&amp; m &gt; 0)                                                                            \</div>
-<div class="line">        for (i = m; i &gt; 0; i -= c) {                                                                   \</div>
-<div class="line">            if ((<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>) i &gt; 32)                                                                          \</div>
-<div class="line">                c = 32;                                                                                \</div>
-<div class="line">            else                                                                                       \</div>
-<div class="line">                c = i;                                                                                 \</div>
-<div class="line">            _PROUT(dst, src, c);                                                                       \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (extracond &amp;&amp; m &gt; 0)           \</div>
+<div class="line">        for (i = m; i &gt; 0; i -= c) {  \</div>
+<div class="line">            if ((<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>) i &gt; 32)         \</div>
+<div class="line">                c = 32;               \</div>
+<div class="line">            else                      \</div>
+<div class="line">                c = i;                \</div>
+<div class="line">            _PROUT(dst, src, c);      \</div>
 <div class="line">        }</div>
 <div class="ttc" id="aultratypes_8h_html_a10e94b422ef0c20dcdec20d31a1f5049"><div class="ttname"><a href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></div><div class="ttdeci">unsigned int u32</div><div class="ttdef"><b>Definition</b> ultratypes.h:16</div></div>
 </div><!-- fragment -->
@@ -222,12 +222,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (_size &gt; 0) {                                                                                   \</div>
-<div class="line">        dst = prout(dst, fmt, _size);                                                                  \</div>
-<div class="line">        if (dst != 0)                                                                                  \</div>
-<div class="line">            sp78.size += _size;                                                                        \</div>
-<div class="line">        else                                                                                           \</div>
-<div class="line">            return sp78.size;                                                                          \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">if</span> (_size &gt; 0) {                  \</div>
+<div class="line">        dst = prout(dst, fmt, _size); \</div>
+<div class="line">        if (dst != 0)                 \</div>
+<div class="line">            sp78.size += _size;       \</div>
+<div class="line">        else                          \</div>
+<div class="line">            return sp78.size;         \</div>
 <div class="line">    }</div>
 </div><!-- fragment -->
 </div>
@@ -250,8 +250,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">for</span> (i = 0; *a &gt;= <span class="charliteral">&#39;0&#39;</span> &amp;&amp; *a &lt;= <span class="charliteral">&#39;9&#39;</span>; a++)                                                           \</div>
-<div class="line">        <span class="keywordflow">if</span> (i &lt; 999)                                                                                   \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <span class="keywordflow">for</span> (i = 0; *a &gt;= <span class="charliteral">&#39;0&#39;</span> &amp;&amp; *a &lt;= <span class="charliteral">&#39;9&#39;</span>; a++) \</div>
+<div class="line">        <span class="keywordflow">if</span> (i &lt; 999)                         \</div>
 <div class="line">            i = *a + i * 10 - <span class="charliteral">&#39;0&#39;</span>;</div>
 </div><!-- fragment -->
 </div>

@@ -154,14 +154,13 @@ Macros</h2></td></tr>
 <tr class="memitem:a258ece2889b03b766c644453b5ac8325" id="r_a258ece2889b03b766c644453b5ac8325"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a258ece2889b03b766c644453b5ac8325">ANIMATION_RENDER_MODEL</a>(model)&#160;&#160;&#160;<a class="el" href="#ad2930e1d05f3b039396c5149ac1cb65c">ANIMATION_RENDER_MODEL_AT</a>(model, 0x00000000, 0x00000000, 0x00000000)</td></tr>
 <tr class="memdesc:a258ece2889b03b766c644453b5ac8325"><td class="mdescLeft">&#160;</td><td class="mdescRight">use RENDER_MODEL_OR_ADD_POS  <br /></td></tr>
 <tr class="separator:a258ece2889b03b766c644453b5ac8325"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1fff3862bddb27a8872da09bcf0a225" id="r_ab1fff3862bddb27a8872da09bcf0a225"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1fff3862bddb27a8872da09bcf0a225">ANIMATION_ADD_POS</a>(x,  y,  z)&#160;&#160;&#160;<a class="el" href="#ad2930e1d05f3b039396c5149ac1cb65c">ANIMATION_RENDER_MODEL_AT</a>((<a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)<a class="el" href="mbi_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, x, y, z)</td></tr>
+<tr class="memitem:ab1fff3862bddb27a8872da09bcf0a225" id="r_ab1fff3862bddb27a8872da09bcf0a225"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1fff3862bddb27a8872da09bcf0a225">ANIMATION_ADD_POS</a>(x,  y,  z)&#160;&#160;&#160;<a class="el" href="#ad2930e1d05f3b039396c5149ac1cb65c">ANIMATION_RENDER_MODEL_AT</a>((<a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>) <a class="el" href="mbi_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, x, y, z)</td></tr>
 <tr class="memdesc:ab1fff3862bddb27a8872da09bcf0a225"><td class="mdescLeft">&#160;</td><td class="mdescRight">use RENDER_MODEL_OR_ADD_POS  <br /></td></tr>
 <tr class="separator:ab1fff3862bddb27a8872da09bcf0a225"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a8dbc62035737896a0e59bf8097054859" id="r_a8dbc62035737896a0e59bf8097054859"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structAnimationCycleSpec.html">AnimationCycleSpec</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dbc62035737896a0e59bf8097054859">AnimationLimbVector</a>[3]</td></tr>
-<tr class="memdesc:a8dbc62035737896a0e59bf8097054859"><td class="mdescLeft">&#160;</td><td class="mdescRight">the first are the original position and other are animation specification for each "limb" who correspond to each RENDER_MODEL_OR_ADD_POS so ANIMATION_RENDER_MODEL and ANIMATION_ADD_POS  <br /></td></tr>
 <tr class="separator:a8dbc62035737896a0e59bf8097054859"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -177,8 +176,8 @@ Enumerations</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a5df48d40f4cbf20ab82b1e562ceff0ea" id="r_a5df48d40f4cbf20ab82b1e562ceff0ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5df48d40f4cbf20ab82b1e562ceff0ea">convert_to_fixed_point_matrix_animation</a> (Mtx *dest, <a class="el" href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a> src)</td></tr>
 <tr class="separator:a5df48d40f4cbf20ab82b1e562ceff0ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb97315dd56d597266cd896be4613533" id="r_aeb97315dd56d597266cd896be4613533"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb97315dd56d597266cd896be4613533">mtxf_translate_rotate2</a> (<a class="el" href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a> dest, <a class="el" href="common__structs_8h.html#a5290523279339ea495248ab3a36cb46e">Vec3f</a> b, <a class="el" href="common__structs_8h.html#a95eb48a2f3630571bea260858dd23e92">Vec3s</a> c)</td></tr>
-<tr class="separator:aeb97315dd56d597266cd896be4613533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfd85958c3b1020053c0810bbe96380e" id="r_acfd85958c3b1020053c0810bbe96380e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acfd85958c3b1020053c0810bbe96380e">mtxf_translate_rotate2</a> (<a class="el" href="common__structs_8h.html#ab7160f77e736961cfa2aff581aeee005">Mat4</a> dest, <a class="el" href="common__structs_8h.html#a5290523279339ea495248ab3a36cb46e">Vec3f</a> pos, <a class="el" href="common__structs_8h.html#a95eb48a2f3630571bea260858dd23e92">Vec3s</a> angle)</td></tr>
+<tr class="separator:acfd85958c3b1020053c0810bbe96380e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7bf2049a0c78d95230c41e3b0692f4e" id="r_af7bf2049a0c78d95230c41e3b0692f4e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7bf2049a0c78d95230c41e3b0692f4e">get_animation_length</a> (<a class="el" href="structAnimation.html">Animation</a> **, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a>)</td></tr>
 <tr class="separator:af7bf2049a0c78d95230c41e3b0692f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54050a3c3a0ddedeed0f70ce6a9bdd7a" id="r_a54050a3c3a0ddedeed0f70ce6a9bdd7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54050a3c3a0ddedeed0f70ce6a9bdd7a">render_limb_or_add_mtx</a> (<a class="el" href="structArmature.html">Armature</a> *, <a class="el" href="ultratypes_8h.html#a4cb19f4a3324cfe0938ddfbfabaa825b">s16</a> *, <a class="el" href="#a8dbc62035737896a0e59bf8097054859">AnimationLimbVector</a>, <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>)</td></tr>
@@ -208,7 +207,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>z</em></span>&#160;)&#160;&#160;&#160;<a class="el" href="#ad2930e1d05f3b039396c5149ac1cb65c">ANIMATION_RENDER_MODEL_AT</a>((<a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)<a class="el" href="mbi_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, x, y, z)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>z</em></span>&#160;)&#160;&#160;&#160;<a class="el" href="#ad2930e1d05f3b039396c5149ac1cb65c">ANIMATION_RENDER_MODEL_AT</a>((<a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>) <a class="el" href="mbi_8h.html#a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</a>, x, y, z)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -340,7 +339,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
 <p>the first are the original position and other are animation specification for each "limb" who correspond to each RENDER_MODEL_OR_ADD_POS so ANIMATION_RENDER_MODEL and ANIMATION_ADD_POS </p>
 
 </div>
@@ -430,8 +428,8 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="aeb97315dd56d597266cd896be4613533" name="aeb97315dd56d597266cd896be4613533"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb97315dd56d597266cd896be4613533">&#9670;&#160;</a></span>mtxf_translate_rotate2()</h2>
+<a id="acfd85958c3b1020053c0810bbe96380e" name="acfd85958c3b1020053c0810bbe96380e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfd85958c3b1020053c0810bbe96380e">&#9670;&#160;</a></span>mtxf_translate_rotate2()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -444,24 +442,24 @@ Here is the caller graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="common__structs_8h.html#a5290523279339ea495248ab3a36cb46e">Vec3f</a></td>          <td class="paramname"><span class="paramname"><em>b</em></span>, </td>
+          <td class="paramtype"><a class="el" href="common__structs_8h.html#a5290523279339ea495248ab3a36cb46e">Vec3f</a></td>          <td class="paramname"><span class="paramname"><em>pos</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="common__structs_8h.html#a95eb48a2f3630571bea260858dd23e92">Vec3s</a></td>          <td class="paramname"><span class="paramname"><em>c</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="common__structs_8h.html#a95eb48a2f3630571bea260858dd23e92">Vec3s</a></td>          <td class="paramname"><span class="paramname"><em>angle</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="animation_8h_aeb97315dd56d597266cd896be4613533_cgraph.svg" width="282" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="animation_8h_acfd85958c3b1020053c0810bbe96380e_cgraph.svg" width="282" height="86"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="animation_8h_aeb97315dd56d597266cd896be4613533_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
+<div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="animation_8h_acfd85958c3b1020053c0810bbe96380e_icgraph.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
 
 </div>

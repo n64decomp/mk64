@@ -127,11 +127,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ac346d7520aea3d094c93c2a7670ec274" id="r_ac346d7520aea3d094c93c2a7670ec274"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac346d7520aea3d094c93c2a7670ec274">_SHIFTL</a>(v,  s,  w)&#160;&#160;&#160;    ((unsigned int) (((unsigned int)(v) &amp; ((0x01 &lt;&lt; (w)) - 1)) &lt;&lt; (s)))</td></tr>
+<tr class="memitem:ac346d7520aea3d094c93c2a7670ec274" id="r_ac346d7520aea3d094c93c2a7670ec274"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac346d7520aea3d094c93c2a7670ec274">_SHIFTL</a>(v,  s,  w)&#160;&#160;&#160;((unsigned int) (((unsigned int) (v) &amp; ((0x01 &lt;&lt; (w)) - 1)) &lt;&lt; (s)))</td></tr>
 <tr class="separator:ac346d7520aea3d094c93c2a7670ec274"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a388456eaf6a19ee30d318ef193e8d64d" id="r_a388456eaf6a19ee30d318ef193e8d64d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a388456eaf6a19ee30d318ef193e8d64d">_SHIFTR</a>(v,  s,  w)&#160;&#160;&#160;    ((unsigned int)(((unsigned int)(v) &gt;&gt; (s)) &amp; ((0x01 &lt;&lt; (w)) - 1)))</td></tr>
+<tr class="memitem:a388456eaf6a19ee30d318ef193e8d64d" id="r_a388456eaf6a19ee30d318ef193e8d64d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a388456eaf6a19ee30d318ef193e8d64d">_SHIFTR</a>(v,  s,  w)&#160;&#160;&#160;((unsigned int) (((unsigned int) (v) &gt;&gt; (s)) &amp; ((0x01 &lt;&lt; (w)) - 1)))</td></tr>
 <tr class="separator:a388456eaf6a19ee30d318ef193e8d64d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd777e5193b68d392c3eee6e339311fb" id="r_acd777e5193b68d392c3eee6e339311fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd777e5193b68d392c3eee6e339311fb">_SHIFT</a>&#160;&#160;&#160;<a class="el" href="#ac346d7520aea3d094c93c2a7670ec274">_SHIFTL</a>	/* old, for compatibility only */</td></tr>
+<tr class="memitem:acd777e5193b68d392c3eee6e339311fb" id="r_acd777e5193b68d392c3eee6e339311fb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd777e5193b68d392c3eee6e339311fb">_SHIFT</a>&#160;&#160;&#160;<a class="el" href="#ac346d7520aea3d094c93c2a7670ec274">_SHIFTL</a> /* old, for compatibility only */</td></tr>
 <tr class="separator:acd777e5193b68d392c3eee6e339311fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3502935c4007f9c00550286d895ca296" id="r_a3502935c4007f9c00550286d895ca296"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3502935c4007f9c00550286d895ca296">G_ON</a>&#160;&#160;&#160;(1)</td></tr>
 <tr class="separator:a3502935c4007f9c00550286d895ca296"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,11 +149,11 @@ Macros</h2></td></tr>
 <tr class="separator:af443c1fae07e1181ea599e3857200214"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addd7cbe43c46d853f4128514b916b393" id="r_addd7cbe43c46d853f4128514b916b393"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addd7cbe43c46d853f4128514b916b393">NUM_SEGMENTS</a>&#160;&#160;&#160;(16)</td></tr>
 <tr class="separator:addd7cbe43c46d853f4128514b916b393"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a587030e67963b4f9d46bacfc5e15d952" id="r_a587030e67963b4f9d46bacfc5e15d952"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a587030e67963b4f9d46bacfc5e15d952">SEGMENT_OFFSET</a>(a)&#160;&#160;&#160;((unsigned int)(a) &amp; 0x00ffffff)</td></tr>
+<tr class="memitem:a587030e67963b4f9d46bacfc5e15d952" id="r_a587030e67963b4f9d46bacfc5e15d952"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a587030e67963b4f9d46bacfc5e15d952">SEGMENT_OFFSET</a>(a)&#160;&#160;&#160;((unsigned int) (a) &amp; 0x00ffffff)</td></tr>
 <tr class="separator:a587030e67963b4f9d46bacfc5e15d952"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbc277aa75ae3af42c496970da79775c" id="r_afbc277aa75ae3af42c496970da79775c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbc277aa75ae3af42c496970da79775c">SEGMENT_NUMBER</a>(a)&#160;&#160;&#160;(((unsigned int)(a) &lt;&lt; 4) &gt;&gt; 28)</td></tr>
+<tr class="memitem:afbc277aa75ae3af42c496970da79775c" id="r_afbc277aa75ae3af42c496970da79775c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afbc277aa75ae3af42c496970da79775c">SEGMENT_NUMBER</a>(a)&#160;&#160;&#160;(((unsigned int) (a) &lt;&lt; 4) &gt;&gt; 28)</td></tr>
 <tr class="separator:afbc277aa75ae3af42c496970da79775c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74f94a35eed59ed47f03b53069772417" id="r_a74f94a35eed59ed47f03b53069772417"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74f94a35eed59ed47f03b53069772417">SEGMENT_NUMBER2</a>(a)&#160;&#160;&#160;((unsigned int)(a) &gt;&gt; 24)</td></tr>
+<tr class="memitem:a74f94a35eed59ed47f03b53069772417" id="r_a74f94a35eed59ed47f03b53069772417"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74f94a35eed59ed47f03b53069772417">SEGMENT_NUMBER2</a>(a)&#160;&#160;&#160;((unsigned int) (a) &gt;&gt; 24)</td></tr>
 <tr class="separator:a74f94a35eed59ed47f03b53069772417"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae43aa408047b50e5d436e50e509e5707" id="r_ae43aa408047b50e5d436e50e509e5707"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae43aa408047b50e5d436e50e509e5707">SEGMENT_ADDR</a>(num,  off)&#160;&#160;&#160;(((num) &lt;&lt; 24) + (off))</td></tr>
 <tr class="separator:ae43aa408047b50e5d436e50e509e5707"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,7 +168,7 @@ Macros</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define _SHIFT&#160;&#160;&#160;<a class="el" href="#ac346d7520aea3d094c93c2a7670ec274">_SHIFTL</a>	/* old, for compatibility only */</td>
+          <td class="memname">#define _SHIFT&#160;&#160;&#160;<a class="el" href="#ac346d7520aea3d094c93c2a7670ec274">_SHIFTL</a> /* old, for compatibility only */</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -194,7 +194,7 @@ Macros</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>w</em></span>&#160;)&#160;&#160;&#160;    ((unsigned int) (((unsigned int)(v) &amp; ((0x01 &lt;&lt; (w)) - 1)) &lt;&lt; (s)))</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>w</em></span>&#160;)&#160;&#160;&#160;((unsigned int) (((unsigned int) (v) &amp; ((0x01 &lt;&lt; (w)) - 1)) &lt;&lt; (s)))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -220,7 +220,7 @@ Macros</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>w</em></span>&#160;)&#160;&#160;&#160;    ((unsigned int)(((unsigned int)(v) &gt;&gt; (s)) &amp; ((0x01 &lt;&lt; (w)) - 1)))</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>w</em></span>&#160;)&#160;&#160;&#160;((unsigned int) (((unsigned int) (v) &gt;&gt; (s)) &amp; ((0x01 &lt;&lt; (w)) - 1)))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -384,7 +384,7 @@ Macros</h2></td></tr>
           <td class="memname">#define SEGMENT_NUMBER</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>a</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;(((unsigned int)(a) &lt;&lt; 4) &gt;&gt; 28)</td>
+          <td>&#160;&#160;&#160;(((unsigned int) (a) &lt;&lt; 4) &gt;&gt; 28)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -401,7 +401,7 @@ Macros</h2></td></tr>
           <td class="memname">#define SEGMENT_NUMBER2</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>a</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;((unsigned int)(a) &gt;&gt; 24)</td>
+          <td>&#160;&#160;&#160;((unsigned int) (a) &gt;&gt; 24)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -418,7 +418,7 @@ Macros</h2></td></tr>
           <td class="memname">#define SEGMENT_OFFSET</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>a</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;((unsigned int)(a) &amp; 0x00ffffff)</td>
+          <td>&#160;&#160;&#160;((unsigned int) (a) &amp; 0x00ffffff)</td>
         </tr>
       </table>
 </div><div class="memdoc">

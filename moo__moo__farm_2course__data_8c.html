@@ -406,14 +406,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {{{ 0, 0, 0 }, 0, { 1024, 1996 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 0, 40, 0 }, 0, { 1024, -51 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ -20, 40, 0 }, 0, { 0, -51 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ -20, 0, 0 }, 0, { 0, 1996 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 20, 0, 0 }, 0, { 1024, 1996 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 20, 40, 0 }, 0, { 1024, -51 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 0, 40, 0 }, 0, { 0, -51 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 0, 0, 0 }, 0, { 0, 1996 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
+<div class="line">    { { { 0, 0, 0 }, 0, { 1024, 1996 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 0, 40, 0 }, 0, { 1024, -51 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { -20, 40, 0 }, 0, { 0, -51 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { -20, 0, 0 }, 0, { 0, 1996 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 20, 0, 0 }, 0, { 1024, 1996 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 20, 40, 0 }, 0, { 1024, -51 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 0, 40, 0 }, 0, { 0, -51 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 0, 0, 0 }, 0, { 0, 1996 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -429,7 +429,22 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    { { -43, 57, 1059 }, { 0 } },   { { 1734, 178, 2040 }, { 0 } }, { { 1831, 31, 1332 }, { 0 } },</div>
+<div class="line">    { { 1565, 54, 700 }, { 0 } },   { { 334, 42, -2233 }, { 0 } },  { { 971, 25, 1704 }, { 0 } },</div>
+<div class="line">    { { -155, 30, 541 }, { 0 } },   { { -155, 30, -135 }, { 0 } },  { { -460, 100, 770 }, { 1 } },</div>
+<div class="line">    { { 901, 124, 2225 }, { 1 } },  { { 1221, 36, 1728 }, { 1 } },  { { 890, 63, 1071 }, { 1 } },</div>
+<div class="line">    { { -204, 46, 431 }, { 1 } },   { { 9, 92, -2291 }, { 1 } },    { { 1129, 50, -2311 }, { 1 } },</div>
+<div class="line">    { { 196, 62, -418 }, { 1 } },   { { -442, 118, 1812 }, { 2 } }, { { 2313, 98, 1106 }, { 2 } },</div>
+<div class="line">    { { 391, 28, 1581 }, { 2 } },   { { 1206, 31, 1130 }, { 2 } },  { { 549, 50, -2360 }, { 2 } },</div>
+<div class="line">    { { 1309, 32, -1621 }, { 2 } }, { { 148, 52, -637 }, { 2 } },   { { 1100, 84, -493 }, { 3 } },</div>
+<div class="line">    { { 1347, 37, 1718 }, { 3 } },  { { 790, 24, 1829 }, { 3 } },   { { -190, 39, 324 }, { 3 } },</div>
+<div class="line">    { { 438, 54, 821 }, { 3 } },    { { 1406, 78, -2069 }, { 3 } }, { { -183, 46, -490 }, { 3 } },</div>
+<div class="line">    { { 572, 73, 1994 }, { 4 } },   { { 1275, 73, -335 }, { 4 } },  { { 1224, 64, 887 }, { 4 } },</div>
+<div class="line">    { { 225, 37, 402 }, { 4 } },    { { 697, 39, 1104 }, { 4 } },   { { 1119, 142, -2733 }, { 4 } },</div>
+<div class="line">    { { -359, 65, -888 }, { 4 } },  { { -32768, 0, 0 }, { 0 } },</div>
+<div class="line">}</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a06f078866321a14cf79a9c652e2cb966" name="a06f078866321a14cf79a9c652e2cb966"></a>
@@ -460,8 +475,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsDPSetCycleType(<a class="code hl_define" href="gbi_8h.html#a77d384f8f483abdc84c15a3b40afaaff">G_CYC_2CYCLE</a>),</div>
 <div class="line">    gsSPSetGeometryMode(<a class="code hl_define" href="gbi_8h.html#a16fffa8f912a5d9c5788fc9f0d045c10">G_FOG</a> | <a class="code hl_define" href="gbi_8h.html#a4852da1637d1a485912732ce54324d8e">G_SHADING_SMOOTH</a>),</div>
 <div class="line">    gsSPClearGeometryMode(<a class="code hl_define" href="gbi_8h.html#ace7a0e559b5d01f76f0481a2c23ba2e1">G_LIGHTING</a>),</div>
@@ -469,14 +483,14 @@ Variables</h2></td></tr>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a7594dd07a22f32a4d4f29b3de50450e9">G_RM_FOG_SHADE_A</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="agbi_8h_html_a056ce73a21544d8f406e8ee062156b73"><div class="ttname"><a href="gbi_8h.html#a056ce73a21544d8f406e8ee062156b73">G_CC_PASS2</a></div><div class="ttdeci">#define G_CC_PASS2</div><div class="ttdef"><b>Definition</b> gbi.h:566</div></div>
-<div class="ttc" id="agbi_8h_html_a16fffa8f912a5d9c5788fc9f0d045c10"><div class="ttname"><a href="gbi_8h.html#a16fffa8f912a5d9c5788fc9f0d045c10">G_FOG</a></div><div class="ttdeci">#define G_FOG</div><div class="ttdef"><b>Definition</b> gbi.h:358</div></div>
-<div class="ttc" id="agbi_8h_html_a4852da1637d1a485912732ce54324d8e"><div class="ttname"><a href="gbi_8h.html#a4852da1637d1a485912732ce54324d8e">G_SHADING_SMOOTH</a></div><div class="ttdeci">#define G_SHADING_SMOOTH</div><div class="ttdef"><b>Definition</b> gbi.h:353</div></div>
-<div class="ttc" id="agbi_8h_html_a7594dd07a22f32a4d4f29b3de50450e9"><div class="ttname"><a href="gbi_8h.html#a7594dd07a22f32a4d4f29b3de50450e9">G_RM_FOG_SHADE_A</a></div><div class="ttdeci">#define G_RM_FOG_SHADE_A</div><div class="ttdef"><b>Definition</b> gbi.h:1041</div></div>
-<div class="ttc" id="agbi_8h_html_a77d384f8f483abdc84c15a3b40afaaff"><div class="ttname"><a href="gbi_8h.html#a77d384f8f483abdc84c15a3b40afaaff">G_CYC_2CYCLE</a></div><div class="ttdeci">#define G_CYC_2CYCLE</div><div class="ttdef"><b>Definition</b> gbi.h:620</div></div>
-<div class="ttc" id="agbi_8h_html_aadb5eb2ba3b0a454682ae544c2d7ab66"><div class="ttname"><a href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a></div><div class="ttdeci">#define G_RM_AA_ZB_OPA_SURF2</div><div class="ttdef"><b>Definition</b> gbi.h:942</div></div>
-<div class="ttc" id="agbi_8h_html_ace7a0e559b5d01f76f0481a2c23ba2e1"><div class="ttname"><a href="gbi_8h.html#ace7a0e559b5d01f76f0481a2c23ba2e1">G_LIGHTING</a></div><div class="ttdeci">#define G_LIGHTING</div><div class="ttdef"><b>Definition</b> gbi.h:359</div></div>
-<div class="ttc" id="agbi_8h_html_af4ca350056fb68e0331682164f7cddf6"><div class="ttname"><a href="gbi_8h.html#af4ca350056fb68e0331682164f7cddf6">G_CC_MODULATEI</a></div><div class="ttdeci">#define G_CC_MODULATEI</div><div class="ttdef"><b>Definition</b> gbi.h:484</div></div>
+<div class="ttc" id="agbi_8h_html_a056ce73a21544d8f406e8ee062156b73"><div class="ttname"><a href="gbi_8h.html#a056ce73a21544d8f406e8ee062156b73">G_CC_PASS2</a></div><div class="ttdeci">#define G_CC_PASS2</div><div class="ttdef"><b>Definition</b> gbi.h:562</div></div>
+<div class="ttc" id="agbi_8h_html_a16fffa8f912a5d9c5788fc9f0d045c10"><div class="ttname"><a href="gbi_8h.html#a16fffa8f912a5d9c5788fc9f0d045c10">G_FOG</a></div><div class="ttdeci">#define G_FOG</div><div class="ttdef"><b>Definition</b> gbi.h:354</div></div>
+<div class="ttc" id="agbi_8h_html_a4852da1637d1a485912732ce54324d8e"><div class="ttname"><a href="gbi_8h.html#a4852da1637d1a485912732ce54324d8e">G_SHADING_SMOOTH</a></div><div class="ttdeci">#define G_SHADING_SMOOTH</div><div class="ttdef"><b>Definition</b> gbi.h:349</div></div>
+<div class="ttc" id="agbi_8h_html_a7594dd07a22f32a4d4f29b3de50450e9"><div class="ttname"><a href="gbi_8h.html#a7594dd07a22f32a4d4f29b3de50450e9">G_RM_FOG_SHADE_A</a></div><div class="ttdeci">#define G_RM_FOG_SHADE_A</div><div class="ttdef"><b>Definition</b> gbi.h:977</div></div>
+<div class="ttc" id="agbi_8h_html_a77d384f8f483abdc84c15a3b40afaaff"><div class="ttname"><a href="gbi_8h.html#a77d384f8f483abdc84c15a3b40afaaff">G_CYC_2CYCLE</a></div><div class="ttdeci">#define G_CYC_2CYCLE</div><div class="ttdef"><b>Definition</b> gbi.h:616</div></div>
+<div class="ttc" id="agbi_8h_html_aadb5eb2ba3b0a454682ae544c2d7ab66"><div class="ttname"><a href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a></div><div class="ttdeci">#define G_RM_AA_ZB_OPA_SURF2</div><div class="ttdef"><b>Definition</b> gbi.h:879</div></div>
+<div class="ttc" id="agbi_8h_html_ace7a0e559b5d01f76f0481a2c23ba2e1"><div class="ttname"><a href="gbi_8h.html#ace7a0e559b5d01f76f0481a2c23ba2e1">G_LIGHTING</a></div><div class="ttdeci">#define G_LIGHTING</div><div class="ttdef"><b>Definition</b> gbi.h:355</div></div>
+<div class="ttc" id="agbi_8h_html_af4ca350056fb68e0331682164f7cddf6"><div class="ttname"><a href="gbi_8h.html#af4ca350056fb68e0331682164f7cddf6">G_CC_MODULATEI</a></div><div class="ttdeci">#define G_CC_MODULATEI</div><div class="ttdef"><b>Definition</b> gbi.h:480</div></div>
 </div><!-- fragment --><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000064">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
 
 </div>
@@ -506,27 +520,27 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPClearGeometryMode(<a class="code hl_define" href="gbi_8h.html#ace7a0e559b5d01f76f0481a2c23ba2e1">G_LIGHTING</a>),</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#af50a1f9714aa958904a9a5548db54b16">G_CC_DECALRGBA</a>, <a class="code hl_define" href="gbi_8h.html#af50a1f9714aa958904a9a5548db54b16">G_CC_DECALRGBA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#aec47fa07892860d18c0617eae167ce9e">G_RM_AA_ZB_TEX_EDGE</a>, <a class="code hl_define" href="gbi_8h.html#a3d301276b8a11ab1ec65ffbb1976ae27">G_RM_AA_ZB_TEX_EDGE2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 4, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 4, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x00FC),</div>
 <div class="line">    gsDPSetTextureLUT(<a class="code hl_define" href="gbi_8h.html#a3c25150f914e9e478597126d24c9d9fd">G_TT_RGBA16</a>),</div>
 <div class="line">    gsDPLoadTLUT_pal256(<a class="code hl_variable" href="#a06f078866321a14cf79a9c652e2cb966">d_course_moo_moo_farm_cow_tlut</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="agbi_8h_html_a16bafda960061581ce5b29249d021c8a"><div class="ttname"><a href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a></div><div class="ttdeci">#define G_IM_SIZ_8b</div><div class="ttdef"><b>Definition</b> gbi.h:406</div></div>
-<div class="ttc" id="agbi_8h_html_a3c25150f914e9e478597126d24c9d9fd"><div class="ttname"><a href="gbi_8h.html#a3c25150f914e9e478597126d24c9d9fd">G_TT_RGBA16</a></div><div class="ttdeci">#define G_TT_RGBA16</div><div class="ttdef"><b>Definition</b> gbi.h:639</div></div>
-<div class="ttc" id="agbi_8h_html_a3d301276b8a11ab1ec65ffbb1976ae27"><div class="ttname"><a href="gbi_8h.html#a3d301276b8a11ab1ec65ffbb1976ae27">G_RM_AA_ZB_TEX_EDGE2</a></div><div class="ttdeci">#define G_RM_AA_ZB_TEX_EDGE2</div><div class="ttdef"><b>Definition</b> gbi.h:958</div></div>
-<div class="ttc" id="agbi_8h_html_acc69043726595ba2648f986ec6469146"><div class="ttname"><a href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a></div><div class="ttdeci">#define G_IM_FMT_CI</div><div class="ttdef"><b>Definition</b> gbi.h:398</div></div>
-<div class="ttc" id="agbi_8h_html_aec47fa07892860d18c0617eae167ce9e"><div class="ttname"><a href="gbi_8h.html#aec47fa07892860d18c0617eae167ce9e">G_RM_AA_ZB_TEX_EDGE</a></div><div class="ttdeci">#define G_RM_AA_ZB_TEX_EDGE</div><div class="ttdef"><b>Definition</b> gbi.h:957</div></div>
-<div class="ttc" id="agbi_8h_html_af50a1f9714aa958904a9a5548db54b16"><div class="ttname"><a href="gbi_8h.html#af50a1f9714aa958904a9a5548db54b16">G_CC_DECALRGBA</a></div><div class="ttdeci">#define G_CC_DECALRGBA</div><div class="ttdef"><b>Definition</b> gbi.h:512</div></div>
-<div class="ttc" id="ambi_8h_html_a3502935c4007f9c00550286d895ca296"><div class="ttname"><a href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a></div><div class="ttdeci">#define G_ON</div><div class="ttdef"><b>Definition</b> mbi.h:54</div></div>
-<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_a06f078866321a14cf79a9c652e2cb966"><div class="ttname"><a href="#a06f078866321a14cf79a9c652e2cb966">d_course_moo_moo_farm_cow_tlut</a></div><div class="ttdeci">u8 d_course_moo_moo_farm_cow_tlut[]</div><div class="ttdef"><b>Definition</b> course_data.c:8527</div></div>
+<div class="ttc" id="agbi_8h_html_a16bafda960061581ce5b29249d021c8a"><div class="ttname"><a href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a></div><div class="ttdeci">#define G_IM_SIZ_8b</div><div class="ttdef"><b>Definition</b> gbi.h:402</div></div>
+<div class="ttc" id="agbi_8h_html_a3c25150f914e9e478597126d24c9d9fd"><div class="ttname"><a href="gbi_8h.html#a3c25150f914e9e478597126d24c9d9fd">G_TT_RGBA16</a></div><div class="ttdeci">#define G_TT_RGBA16</div><div class="ttdef"><b>Definition</b> gbi.h:635</div></div>
+<div class="ttc" id="agbi_8h_html_a3d301276b8a11ab1ec65ffbb1976ae27"><div class="ttname"><a href="gbi_8h.html#a3d301276b8a11ab1ec65ffbb1976ae27">G_RM_AA_ZB_TEX_EDGE2</a></div><div class="ttdeci">#define G_RM_AA_ZB_TEX_EDGE2</div><div class="ttdef"><b>Definition</b> gbi.h:895</div></div>
+<div class="ttc" id="agbi_8h_html_acc69043726595ba2648f986ec6469146"><div class="ttname"><a href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a></div><div class="ttdeci">#define G_IM_FMT_CI</div><div class="ttdef"><b>Definition</b> gbi.h:394</div></div>
+<div class="ttc" id="agbi_8h_html_aec47fa07892860d18c0617eae167ce9e"><div class="ttname"><a href="gbi_8h.html#aec47fa07892860d18c0617eae167ce9e">G_RM_AA_ZB_TEX_EDGE</a></div><div class="ttdeci">#define G_RM_AA_ZB_TEX_EDGE</div><div class="ttdef"><b>Definition</b> gbi.h:894</div></div>
+<div class="ttc" id="agbi_8h_html_af50a1f9714aa958904a9a5548db54b16"><div class="ttname"><a href="gbi_8h.html#af50a1f9714aa958904a9a5548db54b16">G_CC_DECALRGBA</a></div><div class="ttdeci">#define G_CC_DECALRGBA</div><div class="ttdef"><b>Definition</b> gbi.h:508</div></div>
+<div class="ttc" id="ambi_8h_html_a3502935c4007f9c00550286d895ca296"><div class="ttname"><a href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a></div><div class="ttdeci">#define G_ON</div><div class="ttdef"><b>Definition</b> mbi.h:51</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_a06f078866321a14cf79a9c652e2cb966"><div class="ttname"><a href="#a06f078866321a14cf79a9c652e2cb966">d_course_moo_moo_farm_cow_tlut</a></div><div class="ttdeci">u8 d_course_moo_moo_farm_cow_tlut[]</div><div class="ttdef"><b>Definition</b> course_data.c:8637</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -541,27 +555,28 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="moo__moo__farm_2course__displaylists_8inc_8c.html#a0e3ce155360558a8d911202c55f50286">d_course_moo_moo_farm_packed_dl_5290</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#a33416a3dc247e60e2dc3696fb33bee42">G_CC_MODULATEIDECALA</a>, <a class="code hl_define" href="gbi_8h.html#a33416a3dc247e60e2dc3696fb33bee42">G_CC_MODULATEIDECALA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#aec47fa07892860d18c0617eae167ce9e">G_RM_AA_ZB_TEX_EDGE</a>, <a class="code hl_define" href="gbi_8h.html#a3d301276b8a11ab1ec65ffbb1976ae27">G_RM_AA_ZB_TEX_EDGE2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 16, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 16, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, 0x0500C000),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 128),</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="moo__moo__farm_2course__displaylists_8inc_8c.html#a024f7de5fa31de57e8064bac1d48e5d9">d_course_moo_moo_farm_packed_dl_CA0</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="agbi_8h_html_a33416a3dc247e60e2dc3696fb33bee42"><div class="ttname"><a href="gbi_8h.html#a33416a3dc247e60e2dc3696fb33bee42">G_CC_MODULATEIDECALA</a></div><div class="ttdeci">#define G_CC_MODULATEIDECALA</div><div class="ttdef"><b>Definition</b> gbi.h:485</div></div>
-<div class="ttc" id="agbi_8h_html_ac8b0546f9482f12ed55f4b3cb1243a8c"><div class="ttname"><a href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a></div><div class="ttdeci">#define G_IM_FMT_RGBA</div><div class="ttdef"><b>Definition</b> gbi.h:396</div></div>
-<div class="ttc" id="agbi_8h_html_ad5e7c4c4dae792b27dd18c69f0ed550a"><div class="ttname"><a href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a></div><div class="ttdeci">#define G_IM_SIZ_16b</div><div class="ttdef"><b>Definition</b> gbi.h:407</div></div>
-<div class="ttc" id="amoo__moo__farm_2course__displaylists_8inc_8c_html_a024f7de5fa31de57e8064bac1d48e5d9"><div class="ttname"><a href="moo__moo__farm_2course__displaylists_8inc_8c.html#a024f7de5fa31de57e8064bac1d48e5d9">d_course_moo_moo_farm_packed_dl_CA0</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_packed_dl_CA0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:617</div></div>
-<div class="ttc" id="amoo__moo__farm_2course__displaylists_8inc_8c_html_a0e3ce155360558a8d911202c55f50286"><div class="ttname"><a href="moo__moo__farm_2course__displaylists_8inc_8c.html#a0e3ce155360558a8d911202c55f50286">d_course_moo_moo_farm_packed_dl_5290</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_packed_dl_5290[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:3439</div></div>
+<div class="ttc" id="agbi_8h_html_a33416a3dc247e60e2dc3696fb33bee42"><div class="ttname"><a href="gbi_8h.html#a33416a3dc247e60e2dc3696fb33bee42">G_CC_MODULATEIDECALA</a></div><div class="ttdeci">#define G_CC_MODULATEIDECALA</div><div class="ttdef"><b>Definition</b> gbi.h:481</div></div>
+<div class="ttc" id="agbi_8h_html_ac8b0546f9482f12ed55f4b3cb1243a8c"><div class="ttname"><a href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a></div><div class="ttdeci">#define G_IM_FMT_RGBA</div><div class="ttdef"><b>Definition</b> gbi.h:392</div></div>
+<div class="ttc" id="agbi_8h_html_ad5e7c4c4dae792b27dd18c69f0ed550a"><div class="ttname"><a href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a></div><div class="ttdeci">#define G_IM_SIZ_16b</div><div class="ttdef"><b>Definition</b> gbi.h:403</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__displaylists_8inc_8c_html_a024f7de5fa31de57e8064bac1d48e5d9"><div class="ttname"><a href="moo__moo__farm_2course__displaylists_8inc_8c.html#a024f7de5fa31de57e8064bac1d48e5d9">d_course_moo_moo_farm_packed_dl_CA0</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_packed_dl_CA0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:544</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__displaylists_8inc_8c_html_a0e3ce155360558a8d911202c55f50286"><div class="ttname"><a href="moo__moo__farm_2course__displaylists_8inc_8c.html#a0e3ce155360558a8d911202c55f50286">d_course_moo_moo_farm_packed_dl_5290</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_packed_dl_5290[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:3276</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -576,16 +591,15 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="moo__moo__farm_2course__displaylists_8inc_8c.html#ac53dfd7f25c96356b747679ea303779a">d_course_moo_moo_farm_packed_dl_5018</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#a33416a3dc247e60e2dc3696fb33bee42">G_CC_MODULATEIDECALA</a>, <a class="code hl_define" href="gbi_8h.html#a33416a3dc247e60e2dc3696fb33bee42">G_CC_MODULATEIDECALA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#aec47fa07892860d18c0617eae167ce9e">G_RM_AA_ZB_TEX_EDGE</a>, <a class="code hl_define" href="gbi_8h.html#a3d301276b8a11ab1ec65ffbb1976ae27">G_RM_AA_ZB_TEX_EDGE2</a>),</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="moo__moo__farm_2course__displaylists_8inc_8c.html#a6d12af46248c19cd4b2a05fbd00840e7">d_course_moo_moo_farm_packed_dl_C10</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="amoo__moo__farm_2course__displaylists_8inc_8c_html_a6d12af46248c19cd4b2a05fbd00840e7"><div class="ttname"><a href="moo__moo__farm_2course__displaylists_8inc_8c.html#a6d12af46248c19cd4b2a05fbd00840e7">d_course_moo_moo_farm_packed_dl_C10</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_packed_dl_C10[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:591</div></div>
-<div class="ttc" id="amoo__moo__farm_2course__displaylists_8inc_8c_html_ac53dfd7f25c96356b747679ea303779a"><div class="ttname"><a href="moo__moo__farm_2course__displaylists_8inc_8c.html#ac53dfd7f25c96356b747679ea303779a">d_course_moo_moo_farm_packed_dl_5018</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_packed_dl_5018[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:3340</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__displaylists_8inc_8c_html_a6d12af46248c19cd4b2a05fbd00840e7"><div class="ttname"><a href="moo__moo__farm_2course__displaylists_8inc_8c.html#a6d12af46248c19cd4b2a05fbd00840e7">d_course_moo_moo_farm_packed_dl_C10</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_packed_dl_C10[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:520</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__displaylists_8inc_8c_html_ac53dfd7f25c96356b747679ea303779a"><div class="ttname"><a href="moo__moo__farm_2course__displaylists_8inc_8c.html#ac53dfd7f25c96356b747679ea303779a">d_course_moo_moo_farm_packed_dl_5018</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_packed_dl_5018[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:3174</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -768,13 +782,12 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsDPSetCycleType(<a class="code hl_define" href="gbi_8h.html#af6af2b00008694aba0321e4879d2e34b">G_CYC_1CYCLE</a>),</div>
 <div class="line">    gsSPClearGeometryMode(<a class="code hl_define" href="gbi_8h.html#a16fffa8f912a5d9c5788fc9f0d045c10">G_FOG</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="agbi_8h_html_af6af2b00008694aba0321e4879d2e34b"><div class="ttname"><a href="gbi_8h.html#af6af2b00008694aba0321e4879d2e34b">G_CYC_1CYCLE</a></div><div class="ttdeci">#define G_CYC_1CYCLE</div><div class="ttdef"><b>Definition</b> gbi.h:619</div></div>
+<div class="ttc" id="agbi_8h_html_af6af2b00008694aba0321e4879d2e34b"><div class="ttname"><a href="gbi_8h.html#af6af2b00008694aba0321e4879d2e34b">G_CYC_1CYCLE</a></div><div class="ttdeci">#define G_CYC_1CYCLE</div><div class="ttdef"><b>Definition</b> gbi.h:615</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -929,8 +942,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPFogFactor(18285, -18139),</div>
 <div class="line">    gsDPSetFogColor(0x3C, 0x3C, 0x3C, 0xFF),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
@@ -1103,8 +1115,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPFogFactor(18285, -18139),</div>
 <div class="line">    gsDPSetFogColor(0x3C, 0x3C, 0x3C, 0xFF),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
@@ -1263,8 +1274,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsDPSetFogColor(0x28, 0x28, 0xC8, 0x78),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
@@ -1800,20 +1810,21 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a80d61a81d5e798fc6d23c9fa29b8adae">d_course_moo_moo_farm_dl_13B88</a>),</div>
-<div class="line">    gsDPLoadTextureBlock(0x0300A000, <a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),</div>
+<div class="line">    gsDPLoadTextureBlock(0x0300A000, <a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP,</div>
+<div class="line">                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),</div>
 <div class="line">    gsSPVertex(<a class="code hl_variable" href="#aa3e050d0f9fac3c13f722b2b14500b59">d_course_moo_moo_farm_cow_model</a>, 8, 0),</div>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
-<div class="line">    gsDPLoadTextureBlock(0x0300A800, <a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),</div>
+<div class="line">    gsDPLoadTextureBlock(0x0300A800, <a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP,</div>
+<div class="line">                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),</div>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsDPSetTextureLUT(<a class="code hl_define" href="gbi_8h.html#a51bf723f01e21d63223ab47bb739ac53">G_TT_NONE</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="agbi_8h_html_a51bf723f01e21d63223ab47bb739ac53"><div class="ttname"><a href="gbi_8h.html#a51bf723f01e21d63223ab47bb739ac53">G_TT_NONE</a></div><div class="ttdeci">#define G_TT_NONE</div><div class="ttdef"><b>Definition</b> gbi.h:638</div></div>
-<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_a80d61a81d5e798fc6d23c9fa29b8adae"><div class="ttname"><a href="#a80d61a81d5e798fc6d23c9fa29b8adae">d_course_moo_moo_farm_dl_13B88</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_dl_13B88[]</div><div class="ttdef"><b>Definition</b> course_data.c:8566</div></div>
-<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_aa3e050d0f9fac3c13f722b2b14500b59"><div class="ttname"><a href="#aa3e050d0f9fac3c13f722b2b14500b59">d_course_moo_moo_farm_cow_model</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_cow_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:8532</div></div>
+<div class="ttc" id="agbi_8h_html_a51bf723f01e21d63223ab47bb739ac53"><div class="ttname"><a href="gbi_8h.html#a51bf723f01e21d63223ab47bb739ac53">G_TT_NONE</a></div><div class="ttdeci">#define G_TT_NONE</div><div class="ttdef"><b>Definition</b> gbi.h:634</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_a80d61a81d5e798fc6d23c9fa29b8adae"><div class="ttname"><a href="#a80d61a81d5e798fc6d23c9fa29b8adae">d_course_moo_moo_farm_dl_13B88</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_dl_13B88[]</div><div class="ttdef"><b>Definition</b> course_data.c:8676</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_aa3e050d0f9fac3c13f722b2b14500b59"><div class="ttname"><a href="#aa3e050d0f9fac3c13f722b2b14500b59">d_course_moo_moo_farm_cow_model</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_cow_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:8642</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1828,26 +1839,27 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a80d61a81d5e798fc6d23c9fa29b8adae">d_course_moo_moo_farm_dl_13B88</a>),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 1, 0x0300B000),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 512),</div>
 <div class="line">    gsSPVertex(<a class="code hl_variable" href="#aef39362d3a6aa41391b736260edfc1dd">d_course_moo_moo_farm_unknown_model1</a>, 8, 0),</div>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 1, 0x0300B800),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 512),</div>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsDPSetTextureLUT(<a class="code hl_define" href="gbi_8h.html#a51bf723f01e21d63223ab47bb739ac53">G_TT_NONE</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_aef39362d3a6aa41391b736260edfc1dd"><div class="ttname"><a href="#aef39362d3a6aa41391b736260edfc1dd">d_course_moo_moo_farm_unknown_model1</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:8543</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_aef39362d3a6aa41391b736260edfc1dd"><div class="ttname"><a href="#aef39362d3a6aa41391b736260edfc1dd">d_course_moo_moo_farm_unknown_model1</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:8653</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1862,26 +1874,27 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a80d61a81d5e798fc6d23c9fa29b8adae">d_course_moo_moo_farm_dl_13B88</a>),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 1, 0x0300C000),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 512),</div>
 <div class="line">    gsSPVertex(<a class="code hl_variable" href="#a13040cc00f95d42e373036520e0224dc">d_course_moo_moo_farm_unknown_model2</a>, 8, 0),</div>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 1, 0x0300C800),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 512),</div>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsDPSetTextureLUT(<a class="code hl_define" href="gbi_8h.html#a51bf723f01e21d63223ab47bb739ac53">G_TT_NONE</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_a13040cc00f95d42e373036520e0224dc"><div class="ttname"><a href="#a13040cc00f95d42e373036520e0224dc">d_course_moo_moo_farm_unknown_model2</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:8554</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_a13040cc00f95d42e373036520e0224dc"><div class="ttname"><a href="#a13040cc00f95d42e373036520e0224dc">d_course_moo_moo_farm_unknown_model2</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:8664</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1896,19 +1909,20 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a80d61a81d5e798fc6d23c9fa29b8adae">d_course_moo_moo_farm_dl_13B88</a>),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 1, 0x0300D000),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 512),</div>
 <div class="line">    gsSPVertex(<a class="code hl_variable" href="#a13040cc00f95d42e373036520e0224dc">d_course_moo_moo_farm_unknown_model2</a>, 8, 0),</div>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 1, 0x0300D800),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 512),</div>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
@@ -1929,19 +1943,20 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a80d61a81d5e798fc6d23c9fa29b8adae">d_course_moo_moo_farm_dl_13B88</a>),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 1, 0x0300E000),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 512),</div>
 <div class="line">    gsSPVertex(<a class="code hl_variable" href="#aef39362d3a6aa41391b736260edfc1dd">d_course_moo_moo_farm_unknown_model1</a>, 8, 0),</div>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 1, 0x0300E800),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 512),</div>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
@@ -2130,26 +2145,28 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPClearGeometryMode(<a class="code hl_define" href="gbi_8h.html#ace7a0e559b5d01f76f0481a2c23ba2e1">G_LIGHTING</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#aec47fa07892860d18c0617eae167ce9e">G_RM_AA_ZB_TEX_EDGE</a>, <a class="code hl_define" href="gbi_8h.html#a3d301276b8a11ab1ec65ffbb1976ae27">G_RM_AA_ZB_TEX_EDGE2</a>),</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetTextureLUT(<a class="code hl_define" href="gbi_8h.html#a3c25150f914e9e478597126d24c9d9fd">G_TT_RGBA16</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 4, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 4, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x00FC),</div>
-<div class="line">    gsDPLoadTextureBlock(0x03009000, <a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),</div>
+<div class="line">    gsDPLoadTextureBlock(0x03009000, <a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP,</div>
+<div class="line">                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),</div>
 <div class="line">    gsSPVertex(<a class="code hl_variable" href="#ac2f06c994f6801d392966851f13d2cb7">d_course_moo_moo_farm_tree_model</a>, 8, 0),</div>
 <div class="line">    gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),</div>
-<div class="line">    gsDPLoadTextureBlock(0x03009800, <a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),</div>
+<div class="line">    gsDPLoadTextureBlock(0x03009800, <a class="code hl_define" href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a>, <a class="code hl_define" href="gbi_8h.html#a16bafda960061581ce5b29249d021c8a">G_IM_SIZ_8b</a>, 32, 64, 0, G_TX_NOMIRROR | G_TX_CLAMP,</div>
+<div class="line">                         G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD),</div>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsDPSetTextureLUT(<a class="code hl_define" href="gbi_8h.html#a51bf723f01e21d63223ab47bb739ac53">G_TT_NONE</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="agbi_8h_html_ae4a9361eec8b90bd63962d8aed9d87b0"><div class="ttname"><a href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a></div><div class="ttdeci">#define G_CC_MODULATEIA</div><div class="ttdef"><b>Definition</b> gbi.h:492</div></div>
-<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_ac2f06c994f6801d392966851f13d2cb7"><div class="ttname"><a href="#ac2f06c994f6801d392966851f13d2cb7">d_course_moo_moo_farm_tree_model</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_tree_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:8673</div></div>
+<div class="ttc" id="agbi_8h_html_ae4a9361eec8b90bd63962d8aed9d87b0"><div class="ttname"><a href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a></div><div class="ttdeci">#define G_CC_MODULATEIA</div><div class="ttdef"><b>Definition</b> gbi.h:488</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_ac2f06c994f6801d392966851f13d2cb7"><div class="ttname"><a href="#ac2f06c994f6801d392966851f13d2cb7">d_course_moo_moo_farm_tree_model</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_tree_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:8788</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2165,33 +2182,15 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {{ -78, 13, -1056 }, { 0 }},</div>
-<div class="line">    {{ -42, 13, -1051 }, { 0 }},</div>
-<div class="line">    {{ -20, 13, -1053 }, { 0 }},</div>
-<div class="line">    {{ 22, 13, -1056 }, { 0 }},</div>
-<div class="line">    {{ -62, 13, -1047 }, { 0 }},</div>
-<div class="line">    {{ 2, 13, -1054 }, { 0 }},</div>
-<div class="line">    {{ 1774, 8, -1376 }, { 1 }},</div>
-<div class="line">    {{ 1813, 2, -1408 }, { 1 }},</div>
-<div class="line">    {{ 1861, 0, -1424 }, { 1 }},</div>
-<div class="line">    {{ 1884, 0, -1435 }, { 1 }},</div>
-<div class="line">    {{ 1797, 4, -1390 }, { 1 }},</div>
-<div class="line">    {{ 1838, 0, -1418 }, { 1 }},</div>
-<div class="line">    {{ 1862, -9, 426 }, { 2 }},</div>
-<div class="line">    {{ 1910, -8, 444 }, { 2 }},</div>
-<div class="line">    {{ 1885, -4, 484 }, { 2 }},</div>
-<div class="line">    {{ 1761, 0, 474 }, { 2 }},</div>
-<div class="line">    {{ 1794, -7, 415 }, { 2 }},</div>
-<div class="line">    {{ 1827, -5, 464 }, { 2 }},</div>
-<div class="line">    {{ 1745, -2, 435 }, { 2 }},</div>
-<div class="line">    {{ 368, 9, 1119 }, { 3 }},</div>
-<div class="line">    {{ 428, 5, 1106 }, { 3 }},</div>
-<div class="line">    {{ 391, 4, 1178 }, { 3 }},</div>
-<div class="line">    {{ 438, 2, 1172 }, { 3 }},</div>
-<div class="line">    {{ 359, 6, 1176 }, { 3 }},</div>
-<div class="line">    {{ 439, 1, 1224 }, { 3 }},</div>
-<div class="line">    {{ 411, 5, 1128 }, { 3 }},</div>
-<div class="line">    {{ -32768, 0, 0 }, { 0 }},</div>
+<div class="line">    { { -78, 13, -1056 }, { 0 } }, { { -42, 13, -1051 }, { 0 } }, { { -20, 13, -1053 }, { 0 } },</div>
+<div class="line">    { { 22, 13, -1056 }, { 0 } },  { { -62, 13, -1047 }, { 0 } }, { { 2, 13, -1054 }, { 0 } },</div>
+<div class="line">    { { 1774, 8, -1376 }, { 1 } }, { { 1813, 2, -1408 }, { 1 } }, { { 1861, 0, -1424 }, { 1 } },</div>
+<div class="line">    { { 1884, 0, -1435 }, { 1 } }, { { 1797, 4, -1390 }, { 1 } }, { { 1838, 0, -1418 }, { 1 } },</div>
+<div class="line">    { { 1862, -9, 426 }, { 2 } },  { { 1910, -8, 444 }, { 2 } },  { { 1885, -4, 484 }, { 2 } },</div>
+<div class="line">    { { 1761, 0, 474 }, { 2 } },   { { 1794, -7, 415 }, { 2 } },  { { 1827, -5, 464 }, { 2 } },</div>
+<div class="line">    { { 1745, -2, 435 }, { 2 } },  { { 368, 9, 1119 }, { 3 } },   { { 428, 5, 1106 }, { 3 } },</div>
+<div class="line">    { { 391, 4, 1178 }, { 3 } },   { { 438, 2, 1172 }, { 3 } },   { { 359, 6, 1176 }, { 3 } },</div>
+<div class="line">    { { 439, 1, 1224 }, { 3 } },   { { 411, 5, 1128 }, { 3 } },   { { -32768, 0, 0 }, { 0 } },</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -2284,14 +2283,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {{{ 0, 95, 0 }, 0, { 1024, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ -50, 95, 0 }, 0, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ -50, -5, 0 }, 0, { 0, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 0, -5, 0 }, 0, { 1024, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 50, 95, 0 }, 0, { 1023, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 0, 95, 0 }, 0, { 0, 0 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 0, -5, 0 }, 0, { 0, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 50, -5, 0 }, 0, { 1023, 2048 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
+<div class="line">    { { { 0, 95, 0 }, 0, { 1024, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { -50, 95, 0 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { -50, -5, 0 }, 0, { 0, 2048 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 0, -5, 0 }, 0, { 1024, 2048 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 50, 95, 0 }, 0, { 1023, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 0, 95, 0 }, 0, { 0, 0 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 0, -5, 0 }, 0, { 0, 2048 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 50, -5, 0 }, 0, { 1023, 2048 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -2308,28 +2307,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {{ 398, 115, -2719 }, { 7 }},</div>
-<div class="line">    {{ -79, 73, 1438 }, { 7 }},</div>
-<div class="line">    {{ -410, 110, 1958 }, { 7 }},</div>
-<div class="line">    {{ -485, 129, 1617 }, { 7 }},</div>
-<div class="line">    {{ 847, 133, -2755 }, { 7 }},</div>
-<div class="line">    {{ 747, 96, -2572 }, { 7 }},</div>
-<div class="line">    {{ 1021, 53, -2408 }, { 7 }},</div>
-<div class="line">    {{ 2053, 108, 1659 }, { 7 }},</div>
-<div class="line">    {{ 1756, 26, 1462 }, { 7 }},</div>
-<div class="line">    {{ 1503, 50, 1690 }, { 7 }},</div>
-<div class="line">    {{ 2151, 58, 451 }, { 7 }},</div>
-<div class="line">    {{ 2109, 34, 1088 }, { 7 }},</div>
-<div class="line">    {{ -296, 52, 362 }, { 7 }},</div>
-<div class="line">    {{ -181, 33, 221 }, { 7 }},</div>
-<div class="line">    {{ 220, 36, 1516 }, { 7 }},</div>
-<div class="line">    {{ 96, 50, 1261 }, { 7 }},</div>
-<div class="line">    {{ -221, 54, -632 }, { 7 }},</div>
-<div class="line">    {{ -321, 63, -332 }, { 7 }},</div>
-<div class="line">    {{ 259, 80, -1126 }, { 7 }},</div>
-<div class="line">    {{ -219, 52, -1631 }, { 7 }},</div>
-<div class="line">    {{ 381, 85, -817 }, { 7 }},</div>
-<div class="line">    {{ -32768, 0, 0 }, { 0 }},</div>
+<div class="line">    { { 398, 115, -2719 }, { 7 } }, { { -79, 73, 1438 }, { 7 } },   { { -410, 110, 1958 }, { 7 } },</div>
+<div class="line">    { { -485, 129, 1617 }, { 7 } }, { { 847, 133, -2755 }, { 7 } }, { { 747, 96, -2572 }, { 7 } },</div>
+<div class="line">    { { 1021, 53, -2408 }, { 7 } }, { { 2053, 108, 1659 }, { 7 } }, { { 1756, 26, 1462 }, { 7 } },</div>
+<div class="line">    { { 1503, 50, 1690 }, { 7 } },  { { 2151, 58, 451 }, { 7 } },   { { 2109, 34, 1088 }, { 7 } },</div>
+<div class="line">    { { -296, 52, 362 }, { 7 } },   { { -181, 33, 221 }, { 7 } },   { { 220, 36, 1516 }, { 7 } },</div>
+<div class="line">    { { 96, 50, 1261 }, { 7 } },    { { -221, 54, -632 }, { 7 } },  { { -321, 63, -332 }, { 7 } },</div>
+<div class="line">    { { 259, 80, -1126 }, { 7 } },  { { -219, 52, -1631 }, { 7 } }, { { 381, 85, -817 }, { 7 } },</div>
+<div class="line">    { { -32768, 0, 0 }, { 0 } },</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -2346,14 +2331,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {{{ 0, 0, 0 }, 0, { 1024, 1894 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 0, 40, 0 }, 0, { 1024, -153 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ -20, 40, 0 }, 0, { 0, -153 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ -20, 0, 0 }, 0, { 0, 1894 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 20, 0, 0 }, 0, { 1024, 1894 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 20, 40, 0 }, 0, { 1024, -153 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 0, 40, 0 }, 0, { 0, -153 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 0, 0, 0 }, 0, { 0, 1894 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
+<div class="line">    { { { 0, 0, 0 }, 0, { 1024, 1894 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 0, 40, 0 }, 0, { 1024, -153 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { -20, 40, 0 }, 0, { 0, -153 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { -20, 0, 0 }, 0, { 0, 1894 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 20, 0, 0 }, 0, { 1024, 1894 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 20, 40, 0 }, 0, { 1024, -153 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 0, 40, 0 }, 0, { 0, -153 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 0, 0, 0 }, 0, { 0, 1894 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -2370,14 +2355,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">    {{{ 0, 0, 0 }, 0, { 1024, 1945 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 0, 40, 0 }, 0, { 1024, -102 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ -20, 40, 0 }, 0, { 0, -102 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ -20, 0, 0 }, 0, { 0, 1945 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 20, 0, 0 }, 0, { 1024, 1945 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 20, 40, 0 }, 0, { 1024, -102 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 0, 40, 0 }, 0, { 0, -102 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
-<div class="line">    {{{ 0, 0, 0 }, 0, { 0, 1945 }, {0xFF, 0xFF, 0xFF, 0xFF }}},</div>
+<div class="line">    { { { 0, 0, 0 }, 0, { 1024, 1945 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 0, 40, 0 }, 0, { 1024, -102 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { -20, 40, 0 }, 0, { 0, -102 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { -20, 0, 0 }, 0, { 0, 1945 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 20, 0, 0 }, 0, { 1024, 1945 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 20, 40, 0 }, 0, { 1024, -102 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 0, 40, 0 }, 0, { 0, -102 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
+<div class="line">    { { { 0, 0, 0 }, 0, { 0, 1945 }, { 0xFF, 0xFF, 0xFF, 0xFF } } },</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -2393,7 +2378,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    { 11, 0, 46, 0 },      { 9, 0, 21, 0 },       { 5, 0, -307, 0 },     { -19, 0, -698, 0 },   { -28, 0, -1122, 0 },</div>
+<div class="line">    { -11, 0, -1281, 0 },  { -17, 0, -1480, 0 },  { 35, 0, -1705, 0 },   { 221, 0, -1918, 0 },  { 413, 0, -2044, 0 },</div>
+<div class="line">    { 628, 0, -2130, 0 },  { 851, 0, -2141, 0 },  { 1056, 0, -2065, 0 }, { 1200, 0, -1919, 0 }, { 1336, 0, -1771, 0 },</div>
+<div class="line">    { 1520, 0, -1697, 0 }, { 1705, 0, -1614, 0 }, { 1816, 0, -1417, 0 }, { 1841, 0, -1225, 0 }, { 1755, 0, -1006, 0 },</div>
+<div class="line">    { 1632, 0, -837, 0 },  { 1557, 0, -743, 0 },  { 1540, 0, -573, 0 },  { 1573, 0, -471, 0 },  { 1832, 0, -7, 0 },</div>
+<div class="line">    { 1855, 0, 202, 0 },   { 1830, 0, 379, 0 },   { 1819, 0, 586, 0 },   { 1806, 0, 781, 0 },   { 1737, 0, 973, 0 },</div>
+<div class="line">    { 1591, 0, 1176, 0 },  { 1369, 0, 1322, 0 },  { 1164, 0, 1406, 0 },  { 859, 0, 1416, 0 },   { 651, 0, 1352, 0 },</div>
+<div class="line">    { 472, 0, 1245, 0 },   { 321, 0, 1095, 0 },   { 213, 0, 921, 0 },    { 134, 0, 754, 0 },    { 65, 0, 603, 0 },</div>
+<div class="line">    { 27, 0, 423, 0 },     { 6, 0, 185, 0 },      { 6, 0, 78, 0 },       { 1737, 0, -186, 0 },  { -32768, 0, 0, 0 },</div>
+<div class="line">}</div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

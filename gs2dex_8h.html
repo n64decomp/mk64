@@ -117,7 +117,7 @@ $(function(){initNavTree('gs2dex_8h.html',''); initResizable(true); });
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for gs2dex.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="gs2dex_8h__incl.svg" width="164" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="gs2dex_8h__incl.svg" width="220" height="183"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="gs2dex_8h_source.html">Go to the source code of this file.</a></p>
@@ -155,9 +155,9 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a91018bcedb61b28c6cdfad746ea59cbe" id="r_a91018bcedb61b28c6cdfad746ea59cbe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91018bcedb61b28c6cdfad746ea59cbe">GS_CALC_DXT</a>(line)&#160;&#160;&#160;(((1&lt;&lt; G_TX_DXT_FRAC)-1)/(line)+1)</td></tr>
+<tr class="memitem:a91018bcedb61b28c6cdfad746ea59cbe" id="r_a91018bcedb61b28c6cdfad746ea59cbe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91018bcedb61b28c6cdfad746ea59cbe">GS_CALC_DXT</a>(line)&#160;&#160;&#160;(((1 &lt;&lt; G_TX_DXT_FRAC) - 1) / (line) + 1)</td></tr>
 <tr class="separator:a91018bcedb61b28c6cdfad746ea59cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d6a7640db21f5c3224136901b38e09b" id="r_a3d6a7640db21f5c3224136901b38e09b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>(pix,  siz)&#160;&#160;&#160;((pix)&gt;&gt;(4-(siz)))</td></tr>
+<tr class="memitem:a3d6a7640db21f5c3224136901b38e09b" id="r_a3d6a7640db21f5c3224136901b38e09b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>(pix,  siz)&#160;&#160;&#160;((pix) &gt;&gt; (4 - (siz)))</td></tr>
 <tr class="separator:a3d6a7640db21f5c3224136901b38e09b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5358614315419a5a4454dea683c9b0f8" id="r_a5358614315419a5a4454dea683c9b0f8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5358614315419a5a4454dea683c9b0f8">GS_PIX2DXT</a>(pix,  siz)&#160;&#160;&#160;<a class="el" href="#a91018bcedb61b28c6cdfad746ea59cbe">GS_CALC_DXT</a>(<a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>((pix), (siz)))</td></tr>
 <tr class="separator:a5358614315419a5a4454dea683c9b0f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,9 +169,9 @@ Macros</h2></td></tr>
 <tr class="separator:a4bd9a3569a1a3db7e8a60e2f6d49c53a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecf68a1c409e2087ea1606fc28dedcd7" id="r_aecf68a1c409e2087ea1606fc28dedcd7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aecf68a1c409e2087ea1606fc28dedcd7">G_BG_FLAG_FLIPT</a>&#160;&#160;&#160;0x10</td></tr>
 <tr class="separator:aecf68a1c409e2087ea1606fc28dedcd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacbe35f5bf4be9f87a7d3d92bbe3b356" id="r_aacbe35f5bf4be9f87a7d3d92bbe3b356"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacbe35f5bf4be9f87a7d3d92bbe3b356">G_OBJ_FLAG_FLIPS</a>&#160;&#160;&#160;1&lt;&lt;0		/* inversion to S-direction */</td></tr>
+<tr class="memitem:aacbe35f5bf4be9f87a7d3d92bbe3b356" id="r_aacbe35f5bf4be9f87a7d3d92bbe3b356"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacbe35f5bf4be9f87a7d3d92bbe3b356">G_OBJ_FLAG_FLIPS</a>&#160;&#160;&#160;1 &lt;&lt; 0 /* inversion to S-direction */</td></tr>
 <tr class="separator:aacbe35f5bf4be9f87a7d3d92bbe3b356"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a598375fcb5011c398dc95285aa58264c" id="r_a598375fcb5011c398dc95285aa58264c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a598375fcb5011c398dc95285aa58264c">G_OBJ_FLAG_FLIPT</a>&#160;&#160;&#160;1&lt;&lt;4		/* nversion to T-direction */</td></tr>
+<tr class="memitem:a598375fcb5011c398dc95285aa58264c" id="r_a598375fcb5011c398dc95285aa58264c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a598375fcb5011c398dc95285aa58264c">G_OBJ_FLAG_FLIPT</a>&#160;&#160;&#160;1 &lt;&lt; 4 /* nversion to T-direction */</td></tr>
 <tr class="separator:a598375fcb5011c398dc95285aa58264c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa55521ce434423372ab4e80852092cd9" id="r_aa55521ce434423372ab4e80852092cd9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa55521ce434423372ab4e80852092cd9">G_OBJLT_TXTRBLOCK</a>&#160;&#160;&#160;0x00001033</td></tr>
 <tr class="separator:aa55521ce434423372ab4e80852092cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,17 +179,17 @@ Macros</h2></td></tr>
 <tr class="separator:a1ef927a98e7b5ef2035f4d9bc9226ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b26b2e4c8e64280ce015892a338998c" id="r_a7b26b2e4c8e64280ce015892a338998c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b26b2e4c8e64280ce015892a338998c">G_OBJLT_TLUT</a>&#160;&#160;&#160;0x00000030</td></tr>
 <tr class="separator:a7b26b2e4c8e64280ce015892a338998c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af73628a929d288ec2e959fd196539b2a" id="r_af73628a929d288ec2e959fd196539b2a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af73628a929d288ec2e959fd196539b2a">GS_TB_TSIZE</a>(pix,  siz)&#160;&#160;&#160;(<a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>((pix),(siz))-1)</td></tr>
+<tr class="memitem:af73628a929d288ec2e959fd196539b2a" id="r_af73628a929d288ec2e959fd196539b2a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af73628a929d288ec2e959fd196539b2a">GS_TB_TSIZE</a>(pix,  siz)&#160;&#160;&#160;(<a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>((pix), (siz)) - 1)</td></tr>
 <tr class="separator:af73628a929d288ec2e959fd196539b2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6aff4faa27c573cb2e1422984e887038" id="r_a6aff4faa27c573cb2e1422984e887038"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6aff4faa27c573cb2e1422984e887038">GS_TB_TLINE</a>(pix,  siz)&#160;&#160;&#160;(<a class="el" href="#a91018bcedb61b28c6cdfad746ea59cbe">GS_CALC_DXT</a>(<a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>((pix),(siz))))</td></tr>
+<tr class="memitem:a6aff4faa27c573cb2e1422984e887038" id="r_a6aff4faa27c573cb2e1422984e887038"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6aff4faa27c573cb2e1422984e887038">GS_TB_TLINE</a>(pix,  siz)&#160;&#160;&#160;(<a class="el" href="#a91018bcedb61b28c6cdfad746ea59cbe">GS_CALC_DXT</a>(<a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>((pix), (siz))))</td></tr>
 <tr class="separator:a6aff4faa27c573cb2e1422984e887038"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad381f36574c5001a8b23254e2bde0953" id="r_ad381f36574c5001a8b23254e2bde0953"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad381f36574c5001a8b23254e2bde0953">GS_TT_TWIDTH</a>(pix,  siz)&#160;&#160;&#160;((<a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>((pix), (siz))&lt;&lt;2)-1)</td></tr>
+<tr class="memitem:ad381f36574c5001a8b23254e2bde0953" id="r_ad381f36574c5001a8b23254e2bde0953"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad381f36574c5001a8b23254e2bde0953">GS_TT_TWIDTH</a>(pix,  siz)&#160;&#160;&#160;((<a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>((pix), (siz)) &lt;&lt; 2) - 1)</td></tr>
 <tr class="separator:ad381f36574c5001a8b23254e2bde0953"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a792071b8c26782af6db8a4769713d56b" id="r_a792071b8c26782af6db8a4769713d56b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a792071b8c26782af6db8a4769713d56b">GS_TT_THEIGHT</a>(pix,  siz)&#160;&#160;&#160;(((pix)&lt;&lt;2)-1)</td></tr>
+<tr class="memitem:a792071b8c26782af6db8a4769713d56b" id="r_a792071b8c26782af6db8a4769713d56b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a792071b8c26782af6db8a4769713d56b">GS_TT_THEIGHT</a>(pix,  siz)&#160;&#160;&#160;(((pix) &lt;&lt; 2) - 1)</td></tr>
 <tr class="separator:a792071b8c26782af6db8a4769713d56b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c12a66a0cd117a70245a35111147d71" id="r_a0c12a66a0cd117a70245a35111147d71"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c12a66a0cd117a70245a35111147d71">GS_PAL_HEAD</a>(head)&#160;&#160;&#160;((head)+256)</td></tr>
+<tr class="memitem:a0c12a66a0cd117a70245a35111147d71" id="r_a0c12a66a0cd117a70245a35111147d71"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0c12a66a0cd117a70245a35111147d71">GS_PAL_HEAD</a>(head)&#160;&#160;&#160;((head) + 256)</td></tr>
 <tr class="separator:a0c12a66a0cd117a70245a35111147d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a5372f9d05109a7dcdf0b2c186da253" id="r_a8a5372f9d05109a7dcdf0b2c186da253"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a5372f9d05109a7dcdf0b2c186da253">GS_PAL_NUM</a>(num)&#160;&#160;&#160;((num)-1)</td></tr>
+<tr class="memitem:a8a5372f9d05109a7dcdf0b2c186da253" id="r_a8a5372f9d05109a7dcdf0b2c186da253"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a5372f9d05109a7dcdf0b2c186da253">GS_PAL_NUM</a>(num)&#160;&#160;&#160;((num) - 1)</td></tr>
 <tr class="separator:a8a5372f9d05109a7dcdf0b2c186da253"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91489e1e147e1c403a1ce4a8f9a3378d" id="r_a91489e1e147e1c403a1ce4a8f9a3378d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91489e1e147e1c403a1ce4a8f9a3378d">G_BG_1CYC</a>&#160;&#160;&#160;0x01</td></tr>
 <tr class="separator:a91489e1e147e1c403a1ce4a8f9a3378d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -217,53 +217,53 @@ Macros</h2></td></tr>
 <tr class="separator:a41b9c97f26d667176d65007474910d44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46c73f114a8a710fa13fa64b577aeccd" id="r_a46c73f114a8a710fa13fa64b577aeccd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46c73f114a8a710fa13fa64b577aeccd">G_RDPHALF_0</a>&#160;&#160;&#160;0xe4</td></tr>
 <tr class="separator:a46c73f114a8a710fa13fa64b577aeccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afeaa07a8a695a19134687a85e2cb6c76" id="r_afeaa07a8a695a19134687a85e2cb6c76"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afeaa07a8a695a19134687a85e2cb6c76">gSPBgRectangle</a>(pkt,  m,  mptr)&#160;&#160;&#160;gDma0p((pkt),(m),(mptr),0)</td></tr>
+<tr class="memitem:afeaa07a8a695a19134687a85e2cb6c76" id="r_afeaa07a8a695a19134687a85e2cb6c76"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afeaa07a8a695a19134687a85e2cb6c76">gSPBgRectangle</a>(pkt,  m,  mptr)&#160;&#160;&#160;gDma0p((pkt), (m), (mptr), 0)</td></tr>
 <tr class="separator:afeaa07a8a695a19134687a85e2cb6c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada96c7620da97f72bfa4e36f1d2d53c0" id="r_ada96c7620da97f72bfa4e36f1d2d53c0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada96c7620da97f72bfa4e36f1d2d53c0">gsSPBgRectangle</a>(m,  mptr)&#160;&#160;&#160;gsDma0p(     (m),(mptr),0)</td></tr>
+<tr class="memitem:ada96c7620da97f72bfa4e36f1d2d53c0" id="r_ada96c7620da97f72bfa4e36f1d2d53c0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada96c7620da97f72bfa4e36f1d2d53c0">gsSPBgRectangle</a>(m,  mptr)&#160;&#160;&#160;gsDma0p((m), (mptr), 0)</td></tr>
 <tr class="separator:ada96c7620da97f72bfa4e36f1d2d53c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac29455ca5355362962f45e8a6a651594" id="r_ac29455ca5355362962f45e8a6a651594"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac29455ca5355362962f45e8a6a651594">gSPBgRectCopy</a>(pkt,  mptr)&#160;&#160;&#160;<a class="el" href="#afeaa07a8a695a19134687a85e2cb6c76">gSPBgRectangle</a>((pkt), <a class="el" href="#abdca43f3fe51465224ab61cdd9661fe8">G_BG_COPY</a>, (mptr))</td></tr>
 <tr class="separator:ac29455ca5355362962f45e8a6a651594"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49139490b9d99eabdb0c69d8c645c9d3" id="r_a49139490b9d99eabdb0c69d8c645c9d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49139490b9d99eabdb0c69d8c645c9d3">gsSPBgRectCopy</a>(mptr)&#160;&#160;&#160;<a class="el" href="#ada96c7620da97f72bfa4e36f1d2d53c0">gsSPBgRectangle</a>(      <a class="el" href="#abdca43f3fe51465224ab61cdd9661fe8">G_BG_COPY</a>, (mptr))</td></tr>
+<tr class="memitem:a49139490b9d99eabdb0c69d8c645c9d3" id="r_a49139490b9d99eabdb0c69d8c645c9d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49139490b9d99eabdb0c69d8c645c9d3">gsSPBgRectCopy</a>(mptr)&#160;&#160;&#160;<a class="el" href="#ada96c7620da97f72bfa4e36f1d2d53c0">gsSPBgRectangle</a>(<a class="el" href="#abdca43f3fe51465224ab61cdd9661fe8">G_BG_COPY</a>, (mptr))</td></tr>
 <tr class="separator:a49139490b9d99eabdb0c69d8c645c9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab26971d0d440d30daf181e9fe1d6fe02" id="r_ab26971d0d440d30daf181e9fe1d6fe02"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab26971d0d440d30daf181e9fe1d6fe02">gSPBgRect1Cyc</a>(pkt,  mptr)&#160;&#160;&#160;<a class="el" href="#afeaa07a8a695a19134687a85e2cb6c76">gSPBgRectangle</a>((pkt), <a class="el" href="#a91489e1e147e1c403a1ce4a8f9a3378d">G_BG_1CYC</a>, (mptr))</td></tr>
 <tr class="separator:ab26971d0d440d30daf181e9fe1d6fe02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf9f73b2b85974c1841aa5ef9bae409c" id="r_acf9f73b2b85974c1841aa5ef9bae409c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf9f73b2b85974c1841aa5ef9bae409c">gsSPBgRect1Cyc</a>(mptr)&#160;&#160;&#160;<a class="el" href="#ada96c7620da97f72bfa4e36f1d2d53c0">gsSPBgRectangle</a>(      <a class="el" href="#a91489e1e147e1c403a1ce4a8f9a3378d">G_BG_1CYC</a>, (mptr))</td></tr>
+<tr class="memitem:acf9f73b2b85974c1841aa5ef9bae409c" id="r_acf9f73b2b85974c1841aa5ef9bae409c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf9f73b2b85974c1841aa5ef9bae409c">gsSPBgRect1Cyc</a>(mptr)&#160;&#160;&#160;<a class="el" href="#ada96c7620da97f72bfa4e36f1d2d53c0">gsSPBgRectangle</a>(<a class="el" href="#a91489e1e147e1c403a1ce4a8f9a3378d">G_BG_1CYC</a>, (mptr))</td></tr>
 <tr class="separator:acf9f73b2b85974c1841aa5ef9bae409c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4af7f861f558006cbe25800e6b589934" id="r_a4af7f861f558006cbe25800e6b589934"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4af7f861f558006cbe25800e6b589934">gSPObjSprite</a>(pkt,  mptr)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#a136c02d7d6a648bbbce2bb34ed4c17a4">G_OBJ_SPRITE</a>,     (mptr),0)</td></tr>
+<tr class="memitem:a4af7f861f558006cbe25800e6b589934" id="r_a4af7f861f558006cbe25800e6b589934"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4af7f861f558006cbe25800e6b589934">gSPObjSprite</a>(pkt,  mptr)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#a136c02d7d6a648bbbce2bb34ed4c17a4">G_OBJ_SPRITE</a>, (mptr), 0)</td></tr>
 <tr class="separator:a4af7f861f558006cbe25800e6b589934"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a747654f06ea1a5f3fef617c006c456fc" id="r_a747654f06ea1a5f3fef617c006c456fc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a747654f06ea1a5f3fef617c006c456fc">gsSPObjSprite</a>(mptr)&#160;&#160;&#160;gsDma0p(     <a class="el" href="#a136c02d7d6a648bbbce2bb34ed4c17a4">G_OBJ_SPRITE</a>,     (mptr),0)</td></tr>
+<tr class="memitem:a747654f06ea1a5f3fef617c006c456fc" id="r_a747654f06ea1a5f3fef617c006c456fc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a747654f06ea1a5f3fef617c006c456fc">gsSPObjSprite</a>(mptr)&#160;&#160;&#160;gsDma0p(<a class="el" href="#a136c02d7d6a648bbbce2bb34ed4c17a4">G_OBJ_SPRITE</a>, (mptr), 0)</td></tr>
 <tr class="separator:a747654f06ea1a5f3fef617c006c456fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7d912ba978afd8d1650e917002447b2" id="r_ad7d912ba978afd8d1650e917002447b2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7d912ba978afd8d1650e917002447b2">gSPObjRectangle</a>(pkt,  mptr)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#a0b2388234edccf98889955010b60ea11">G_OBJ_RECTANGLE</a>,  (mptr),0)</td></tr>
+<tr class="memitem:ad7d912ba978afd8d1650e917002447b2" id="r_ad7d912ba978afd8d1650e917002447b2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7d912ba978afd8d1650e917002447b2">gSPObjRectangle</a>(pkt,  mptr)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#a0b2388234edccf98889955010b60ea11">G_OBJ_RECTANGLE</a>, (mptr), 0)</td></tr>
 <tr class="separator:ad7d912ba978afd8d1650e917002447b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a556bc707109ea037d3a7f7054a8af276" id="r_a556bc707109ea037d3a7f7054a8af276"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a556bc707109ea037d3a7f7054a8af276">gsSPObjRectangle</a>(mptr)&#160;&#160;&#160;gsDma0p(     <a class="el" href="#a0b2388234edccf98889955010b60ea11">G_OBJ_RECTANGLE</a>,  (mptr),0)</td></tr>
+<tr class="memitem:a556bc707109ea037d3a7f7054a8af276" id="r_a556bc707109ea037d3a7f7054a8af276"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a556bc707109ea037d3a7f7054a8af276">gsSPObjRectangle</a>(mptr)&#160;&#160;&#160;gsDma0p(<a class="el" href="#a0b2388234edccf98889955010b60ea11">G_OBJ_RECTANGLE</a>, (mptr), 0)</td></tr>
 <tr class="separator:a556bc707109ea037d3a7f7054a8af276"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b41d9d1504ffbe19de9b7e33ec94d0b" id="r_a8b41d9d1504ffbe19de9b7e33ec94d0b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b41d9d1504ffbe19de9b7e33ec94d0b">gSPObjRectangleR</a>(pkt,  mptr)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#ab6f2bf63f1cb6c97488b3ca7d62e4bf4">G_OBJ_RECTANGLE_R</a>,(mptr),0)</td></tr>
+<tr class="memitem:a8b41d9d1504ffbe19de9b7e33ec94d0b" id="r_a8b41d9d1504ffbe19de9b7e33ec94d0b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b41d9d1504ffbe19de9b7e33ec94d0b">gSPObjRectangleR</a>(pkt,  mptr)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#ab6f2bf63f1cb6c97488b3ca7d62e4bf4">G_OBJ_RECTANGLE_R</a>, (mptr), 0)</td></tr>
 <tr class="separator:a8b41d9d1504ffbe19de9b7e33ec94d0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77b975bf8f1558f0131ec64ee3599916" id="r_a77b975bf8f1558f0131ec64ee3599916"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77b975bf8f1558f0131ec64ee3599916">gsSPObjRectangleR</a>(mptr)&#160;&#160;&#160;gsDma0p(     <a class="el" href="#ab6f2bf63f1cb6c97488b3ca7d62e4bf4">G_OBJ_RECTANGLE_R</a>,(mptr),0)</td></tr>
+<tr class="memitem:a77b975bf8f1558f0131ec64ee3599916" id="r_a77b975bf8f1558f0131ec64ee3599916"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a77b975bf8f1558f0131ec64ee3599916">gsSPObjRectangleR</a>(mptr)&#160;&#160;&#160;gsDma0p(<a class="el" href="#ab6f2bf63f1cb6c97488b3ca7d62e4bf4">G_OBJ_RECTANGLE_R</a>, (mptr), 0)</td></tr>
 <tr class="separator:a77b975bf8f1558f0131ec64ee3599916"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7469b1c281253f85b5696e958602528a" id="r_a7469b1c281253f85b5696e958602528a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7469b1c281253f85b5696e958602528a">gSPObjMatrix</a>(pkt,  mptr)&#160;&#160;&#160;gDma1p((pkt),<a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>,(mptr),0,23)</td></tr>
+<tr class="memitem:a7469b1c281253f85b5696e958602528a" id="r_a7469b1c281253f85b5696e958602528a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7469b1c281253f85b5696e958602528a">gSPObjMatrix</a>(pkt,  mptr)&#160;&#160;&#160;gDma1p((pkt), <a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>, (mptr), 0, 23)</td></tr>
 <tr class="separator:a7469b1c281253f85b5696e958602528a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73ff0f4d51a032c378148f57094f22b9" id="r_a73ff0f4d51a032c378148f57094f22b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73ff0f4d51a032c378148f57094f22b9">gsSPObjMatrix</a>(mptr)&#160;&#160;&#160;gsDma1p(     <a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>,(mptr),0,23)</td></tr>
+<tr class="memitem:a73ff0f4d51a032c378148f57094f22b9" id="r_a73ff0f4d51a032c378148f57094f22b9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73ff0f4d51a032c378148f57094f22b9">gsSPObjMatrix</a>(mptr)&#160;&#160;&#160;gsDma1p(<a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>, (mptr), 0, 23)</td></tr>
 <tr class="separator:a73ff0f4d51a032c378148f57094f22b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdcb8d9aad6c20a416fca50128e9347b" id="r_acdcb8d9aad6c20a416fca50128e9347b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdcb8d9aad6c20a416fca50128e9347b">gSPObjSubMatrix</a>(pkt,  mptr)&#160;&#160;&#160;gDma1p((pkt),<a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>,(mptr),2, 7)</td></tr>
+<tr class="memitem:acdcb8d9aad6c20a416fca50128e9347b" id="r_acdcb8d9aad6c20a416fca50128e9347b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdcb8d9aad6c20a416fca50128e9347b">gSPObjSubMatrix</a>(pkt,  mptr)&#160;&#160;&#160;gDma1p((pkt), <a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>, (mptr), 2, 7)</td></tr>
 <tr class="separator:acdcb8d9aad6c20a416fca50128e9347b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73a2e7b0295fd49d6ad0933a4a02815b" id="r_a73a2e7b0295fd49d6ad0933a4a02815b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73a2e7b0295fd49d6ad0933a4a02815b">gsSPObjSubMatrix</a>(mptr)&#160;&#160;&#160;gsDma1p(     <a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>,(mptr),2, 7)</td></tr>
+<tr class="memitem:a73a2e7b0295fd49d6ad0933a4a02815b" id="r_a73a2e7b0295fd49d6ad0933a4a02815b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73a2e7b0295fd49d6ad0933a4a02815b">gsSPObjSubMatrix</a>(mptr)&#160;&#160;&#160;gsDma1p(<a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>, (mptr), 2, 7)</td></tr>
 <tr class="separator:a73a2e7b0295fd49d6ad0933a4a02815b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4013ab99d025898d6951f27f60930041" id="r_a4013ab99d025898d6951f27f60930041"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4013ab99d025898d6951f27f60930041">gSPObjLoadTxtr</a>(pkt,  tptr)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#a1f2ce8862e78476fc01ffdab5a8f5e71">G_OBJ_LOADTXTR</a>,   (tptr),23)</td></tr>
+<tr class="memitem:a4013ab99d025898d6951f27f60930041" id="r_a4013ab99d025898d6951f27f60930041"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4013ab99d025898d6951f27f60930041">gSPObjLoadTxtr</a>(pkt,  tptr)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#a1f2ce8862e78476fc01ffdab5a8f5e71">G_OBJ_LOADTXTR</a>, (tptr), 23)</td></tr>
 <tr class="separator:a4013ab99d025898d6951f27f60930041"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cec598f4424c06667cf8da631e71fe8" id="r_a4cec598f4424c06667cf8da631e71fe8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cec598f4424c06667cf8da631e71fe8">gsSPObjLoadTxtr</a>(tptr)&#160;&#160;&#160;gsDma0p(     <a class="el" href="#a1f2ce8862e78476fc01ffdab5a8f5e71">G_OBJ_LOADTXTR</a>,   (tptr),23)</td></tr>
+<tr class="memitem:a4cec598f4424c06667cf8da631e71fe8" id="r_a4cec598f4424c06667cf8da631e71fe8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4cec598f4424c06667cf8da631e71fe8">gsSPObjLoadTxtr</a>(tptr)&#160;&#160;&#160;gsDma0p(<a class="el" href="#a1f2ce8862e78476fc01ffdab5a8f5e71">G_OBJ_LOADTXTR</a>, (tptr), 23)</td></tr>
 <tr class="separator:a4cec598f4424c06667cf8da631e71fe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c57730961025e270daf840cf553384f" id="r_a8c57730961025e270daf840cf553384f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c57730961025e270daf840cf553384f">gSPObjLoadTxSprite</a>(pkt,  tptr)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#a56942a43523891eb965e4ca23f4a852d">G_OBJ_LDTX_SPRITE</a>,(tptr),47)</td></tr>
+<tr class="memitem:a8c57730961025e270daf840cf553384f" id="r_a8c57730961025e270daf840cf553384f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c57730961025e270daf840cf553384f">gSPObjLoadTxSprite</a>(pkt,  tptr)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#a56942a43523891eb965e4ca23f4a852d">G_OBJ_LDTX_SPRITE</a>, (tptr), 47)</td></tr>
 <tr class="separator:a8c57730961025e270daf840cf553384f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae4bd7eccb56ead6f500e449305fe170" id="r_aae4bd7eccb56ead6f500e449305fe170"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae4bd7eccb56ead6f500e449305fe170">gsSPObjLoadTxSprite</a>(tptr)&#160;&#160;&#160;gsDma0p(     <a class="el" href="#a56942a43523891eb965e4ca23f4a852d">G_OBJ_LDTX_SPRITE</a>,(tptr),47)</td></tr>
+<tr class="memitem:aae4bd7eccb56ead6f500e449305fe170" id="r_aae4bd7eccb56ead6f500e449305fe170"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae4bd7eccb56ead6f500e449305fe170">gsSPObjLoadTxSprite</a>(tptr)&#160;&#160;&#160;gsDma0p(<a class="el" href="#a56942a43523891eb965e4ca23f4a852d">G_OBJ_LDTX_SPRITE</a>, (tptr), 47)</td></tr>
 <tr class="separator:aae4bd7eccb56ead6f500e449305fe170"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1c51839a6f3175563fa3e9b20f2c924" id="r_ab1c51839a6f3175563fa3e9b20f2c924"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1c51839a6f3175563fa3e9b20f2c924">gSPObjLoadTxRect</a>(pkt,  tptr)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#ae450444179f8b666a894a01682e48f31">G_OBJ_LDTX_RECT</a>,  (tptr),47)</td></tr>
+<tr class="memitem:ab1c51839a6f3175563fa3e9b20f2c924" id="r_ab1c51839a6f3175563fa3e9b20f2c924"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1c51839a6f3175563fa3e9b20f2c924">gSPObjLoadTxRect</a>(pkt,  tptr)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#ae450444179f8b666a894a01682e48f31">G_OBJ_LDTX_RECT</a>, (tptr), 47)</td></tr>
 <tr class="separator:ab1c51839a6f3175563fa3e9b20f2c924"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab813f1637e19b686d5744bde97965e7" id="r_aab813f1637e19b686d5744bde97965e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab813f1637e19b686d5744bde97965e7">gsSPObjLoadTxRect</a>(tptr)&#160;&#160;&#160;gsDma0p(     <a class="el" href="#ae450444179f8b666a894a01682e48f31">G_OBJ_LDTX_RECT</a>,  (tptr),47)</td></tr>
+<tr class="memitem:aab813f1637e19b686d5744bde97965e7" id="r_aab813f1637e19b686d5744bde97965e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab813f1637e19b686d5744bde97965e7">gsSPObjLoadTxRect</a>(tptr)&#160;&#160;&#160;gsDma0p(<a class="el" href="#ae450444179f8b666a894a01682e48f31">G_OBJ_LDTX_RECT</a>, (tptr), 47)</td></tr>
 <tr class="separator:aab813f1637e19b686d5744bde97965e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a351c76d3b730530cf7e3dbfc942804aa" id="r_a351c76d3b730530cf7e3dbfc942804aa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a351c76d3b730530cf7e3dbfc942804aa">gSPObjLoadTxRectR</a>(pkt,  tptr)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#a41b9c97f26d667176d65007474910d44">G_OBJ_LDTX_RECT_R</a>,(tptr),47)</td></tr>
+<tr class="memitem:a351c76d3b730530cf7e3dbfc942804aa" id="r_a351c76d3b730530cf7e3dbfc942804aa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a351c76d3b730530cf7e3dbfc942804aa">gSPObjLoadTxRectR</a>(pkt,  tptr)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#a41b9c97f26d667176d65007474910d44">G_OBJ_LDTX_RECT_R</a>, (tptr), 47)</td></tr>
 <tr class="separator:a351c76d3b730530cf7e3dbfc942804aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae696a332cebd41312113215e865faa81" id="r_ae696a332cebd41312113215e865faa81"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae696a332cebd41312113215e865faa81">gsSPObjLoadTxRectR</a>(tptr)&#160;&#160;&#160;gsDma0p(     <a class="el" href="#a41b9c97f26d667176d65007474910d44">G_OBJ_LDTX_RECT_R</a>,(tptr),47)</td></tr>
+<tr class="memitem:ae696a332cebd41312113215e865faa81" id="r_ae696a332cebd41312113215e865faa81"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae696a332cebd41312113215e865faa81">gsSPObjLoadTxRectR</a>(tptr)&#160;&#160;&#160;gsDma0p(<a class="el" href="#a41b9c97f26d667176d65007474910d44">G_OBJ_LDTX_RECT_R</a>, (tptr), 47)</td></tr>
 <tr class="separator:ae696a332cebd41312113215e865faa81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1511b45a7084294e0639103fead2744" id="r_ad1511b45a7084294e0639103fead2744"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1511b45a7084294e0639103fead2744">gSPSelectDL</a>(pkt,  mptr,  sid,  flag,  mask)</td></tr>
 <tr class="separator:ad1511b45a7084294e0639103fead2744"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -273,17 +273,17 @@ Macros</h2></td></tr>
 <tr class="separator:a2a9e55d64c3790a90f64cfc8d7983cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a545061755096b751713b4c82a11f9c01" id="r_a545061755096b751713b4c82a11f9c01"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a545061755096b751713b4c82a11f9c01">gsSPSelectBranchDL</a>(mptr,  sid,  flag,  mask)</td></tr>
 <tr class="separator:a545061755096b751713b4c82a11f9c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a752cce03f3c165a04b56c3ece6ae5971" id="r_a752cce03f3c165a04b56c3ece6ae5971"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a752cce03f3c165a04b56c3ece6ae5971">G_MW_GENSTAT</a>&#160;&#160;&#160;0x08	/* <a class="el" href="structNote.html">Note</a> that it is the same value of G_MW_FOG */</td></tr>
+<tr class="memitem:a752cce03f3c165a04b56c3ece6ae5971" id="r_a752cce03f3c165a04b56c3ece6ae5971"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a752cce03f3c165a04b56c3ece6ae5971">G_MW_GENSTAT</a>&#160;&#160;&#160;0x08 /* <a class="el" href="structNote.html">Note</a> that it is the same value of G_MW_FOG */</td></tr>
 <tr class="separator:a752cce03f3c165a04b56c3ece6ae5971"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34500d7afb5a2805a8b330ae7fb12a6b" id="r_a34500d7afb5a2805a8b330ae7fb12a6b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34500d7afb5a2805a8b330ae7fb12a6b">gSPSetStatus</a>(pkt,  sid,  val)&#160;&#160;&#160;	gMoveWd((pkt), <a class="el" href="#a752cce03f3c165a04b56c3ece6ae5971">G_MW_GENSTAT</a>, (sid), (val))</td></tr>
+<tr class="memitem:a34500d7afb5a2805a8b330ae7fb12a6b" id="r_a34500d7afb5a2805a8b330ae7fb12a6b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34500d7afb5a2805a8b330ae7fb12a6b">gSPSetStatus</a>(pkt,  sid,  val)&#160;&#160;&#160;gMoveWd((pkt), <a class="el" href="#a752cce03f3c165a04b56c3ece6ae5971">G_MW_GENSTAT</a>, (sid), (val))</td></tr>
 <tr class="separator:a34500d7afb5a2805a8b330ae7fb12a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e88172c3df1dbf3e3b049a9bc04ddfd" id="r_a9e88172c3df1dbf3e3b049a9bc04ddfd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e88172c3df1dbf3e3b049a9bc04ddfd">gsSPSetStatus</a>(sid,  val)&#160;&#160;&#160;	gsMoveWd(      <a class="el" href="#a752cce03f3c165a04b56c3ece6ae5971">G_MW_GENSTAT</a>, (sid), (val))</td></tr>
+<tr class="memitem:a9e88172c3df1dbf3e3b049a9bc04ddfd" id="r_a9e88172c3df1dbf3e3b049a9bc04ddfd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9e88172c3df1dbf3e3b049a9bc04ddfd">gsSPSetStatus</a>(sid,  val)&#160;&#160;&#160;gsMoveWd(<a class="el" href="#a752cce03f3c165a04b56c3ece6ae5971">G_MW_GENSTAT</a>, (sid), (val))</td></tr>
 <tr class="separator:a9e88172c3df1dbf3e3b049a9bc04ddfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeee99dc89738153807d1796e14784272" id="r_aeee99dc89738153807d1796e14784272"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeee99dc89738153807d1796e14784272">G_OBJRM_NOTXCLAMP</a>&#160;&#160;&#160;0x01</td></tr>
 <tr class="separator:aeee99dc89738153807d1796e14784272"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9383e9004ba85201e6793805b98bead2" id="r_a9383e9004ba85201e6793805b98bead2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9383e9004ba85201e6793805b98bead2">G_OBJRM_XLU</a>&#160;&#160;&#160;0x02	/* Ignored */</td></tr>
+<tr class="memitem:a9383e9004ba85201e6793805b98bead2" id="r_a9383e9004ba85201e6793805b98bead2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9383e9004ba85201e6793805b98bead2">G_OBJRM_XLU</a>&#160;&#160;&#160;0x02       /* Ignored */</td></tr>
 <tr class="separator:a9383e9004ba85201e6793805b98bead2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fdc9f506d1e76067bb1553a820e9825" id="r_a5fdc9f506d1e76067bb1553a820e9825"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fdc9f506d1e76067bb1553a820e9825">G_OBJRM_ANTIALIAS</a>&#160;&#160;&#160;0x04	/* Ignored */</td></tr>
+<tr class="memitem:a5fdc9f506d1e76067bb1553a820e9825" id="r_a5fdc9f506d1e76067bb1553a820e9825"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fdc9f506d1e76067bb1553a820e9825">G_OBJRM_ANTIALIAS</a>&#160;&#160;&#160;0x04 /* Ignored */</td></tr>
 <tr class="separator:a5fdc9f506d1e76067bb1553a820e9825"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a57c1980aad0e8efc2b1e1124092804" id="r_a2a57c1980aad0e8efc2b1e1124092804"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a57c1980aad0e8efc2b1e1124092804">G_OBJRM_BILERP</a>&#160;&#160;&#160;0x08</td></tr>
 <tr class="separator:a2a57c1980aad0e8efc2b1e1124092804"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -293,9 +293,9 @@ Macros</h2></td></tr>
 <tr class="separator:ac080c1d16640846eeef5dbc22dcbaecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa91dc0b852c5e7e41c2085df1d59b4bb" id="r_aa91dc0b852c5e7e41c2085df1d59b4bb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa91dc0b852c5e7e41c2085df1d59b4bb">G_OBJRM_WIDEN</a>&#160;&#160;&#160;0x40</td></tr>
 <tr class="separator:aa91dc0b852c5e7e41c2085df1d59b4bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac034382846060ff7d94165a5271ac658" id="r_ac034382846060ff7d94165a5271ac658"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac034382846060ff7d94165a5271ac658">gSPObjRenderMode</a>(pkt,  mode)&#160;&#160;&#160;gImmp1((pkt),<a class="el" href="#a1a3554edd54a4fd2dc77e52aedcafb4f">G_OBJ_RENDERMODE</a>,(mode))</td></tr>
+<tr class="memitem:ac034382846060ff7d94165a5271ac658" id="r_ac034382846060ff7d94165a5271ac658"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac034382846060ff7d94165a5271ac658">gSPObjRenderMode</a>(pkt,  mode)&#160;&#160;&#160;gImmp1((pkt), <a class="el" href="#a1a3554edd54a4fd2dc77e52aedcafb4f">G_OBJ_RENDERMODE</a>, (mode))</td></tr>
 <tr class="separator:ac034382846060ff7d94165a5271ac658"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbb67e44664f31afbf8a83d4d784ed9a" id="r_adbb67e44664f31afbf8a83d4d784ed9a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbb67e44664f31afbf8a83d4d784ed9a">gsSPObjRenderMode</a>(mode)&#160;&#160;&#160;gsImmp1(     <a class="el" href="#a1a3554edd54a4fd2dc77e52aedcafb4f">G_OBJ_RENDERMODE</a>,(mode))</td></tr>
+<tr class="memitem:adbb67e44664f31afbf8a83d4d784ed9a" id="r_adbb67e44664f31afbf8a83d4d784ed9a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbb67e44664f31afbf8a83d4d784ed9a">gsSPObjRenderMode</a>(mode)&#160;&#160;&#160;gsImmp1(<a class="el" href="#a1a3554edd54a4fd2dc77e52aedcafb4f">G_OBJ_RENDERMODE</a>, (mode))</td></tr>
 <tr class="separator:adbb67e44664f31afbf8a83d4d784ed9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff157bbacf59504179617b73e10808d7" id="r_aff157bbacf59504179617b73e10808d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff157bbacf59504179617b73e10808d7">RM_RA_SPRITE</a>(clk)</td></tr>
 <tr class="separator:aff157bbacf59504179617b73e10808d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -456,7 +456,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define G_MW_GENSTAT&#160;&#160;&#160;0x08	/* <a class="el" href="structNote.html">Note</a> that it is the same value of G_MW_FOG */</td>
+          <td class="memname">#define G_MW_GENSTAT&#160;&#160;&#160;0x08 /* <a class="el" href="structNote.html">Note</a> that it is the same value of G_MW_FOG */</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -470,7 +470,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define G_OBJ_FLAG_FLIPS&#160;&#160;&#160;1&lt;&lt;0		/* inversion to S-direction */</td>
+          <td class="memname">#define G_OBJ_FLAG_FLIPS&#160;&#160;&#160;1 &lt;&lt; 0 /* inversion to S-direction */</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -484,7 +484,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define G_OBJ_FLAG_FLIPT&#160;&#160;&#160;1&lt;&lt;4		/* nversion to T-direction */</td>
+          <td class="memname">#define G_OBJ_FLAG_FLIPT&#160;&#160;&#160;1 &lt;&lt; 4 /* nversion to T-direction */</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -666,7 +666,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define G_OBJRM_ANTIALIAS&#160;&#160;&#160;0x04	/* Ignored */</td>
+          <td class="memname">#define G_OBJRM_ANTIALIAS&#160;&#160;&#160;0x04 /* Ignored */</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -750,7 +750,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define G_OBJRM_XLU&#160;&#160;&#160;0x02	/* Ignored */</td>
+          <td class="memname">#define G_OBJRM_XLU&#160;&#160;&#160;0x02       /* Ignored */</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -935,7 +935,7 @@ Variables</h2></td></tr>
           <td class="memname">#define GS_CALC_DXT</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>line</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;(((1&lt;&lt; G_TX_DXT_FRAC)-1)/(line)+1)</td>
+          <td>&#160;&#160;&#160;(((1 &lt;&lt; G_TX_DXT_FRAC) - 1) / (line) + 1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -952,7 +952,7 @@ Variables</h2></td></tr>
           <td class="memname">#define GS_PAL_HEAD</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>head</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;((head)+256)</td>
+          <td>&#160;&#160;&#160;((head) + 256)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -969,7 +969,7 @@ Variables</h2></td></tr>
           <td class="memname">#define GS_PAL_NUM</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>num</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;((num)-1)</td>
+          <td>&#160;&#160;&#160;((num) - 1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1011,7 +1011,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>siz</em></span>&#160;)&#160;&#160;&#160;((pix)&gt;&gt;(4-(siz)))</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>siz</em></span>&#160;)&#160;&#160;&#160;((pix) &gt;&gt; (4 - (siz)))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1032,7 +1032,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>siz</em></span>&#160;)&#160;&#160;&#160;(<a class="el" href="#a91018bcedb61b28c6cdfad746ea59cbe">GS_CALC_DXT</a>(<a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>((pix),(siz))))</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>siz</em></span>&#160;)&#160;&#160;&#160;(<a class="el" href="#a91018bcedb61b28c6cdfad746ea59cbe">GS_CALC_DXT</a>(<a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>((pix), (siz))))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1053,7 +1053,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>siz</em></span>&#160;)&#160;&#160;&#160;(<a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>((pix),(siz))-1)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>siz</em></span>&#160;)&#160;&#160;&#160;(<a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>((pix), (siz)) - 1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1074,7 +1074,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>siz</em></span>&#160;)&#160;&#160;&#160;(((pix)&lt;&lt;2)-1)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>siz</em></span>&#160;)&#160;&#160;&#160;(((pix) &lt;&lt; 2) - 1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1095,7 +1095,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>siz</em></span>&#160;)&#160;&#160;&#160;((<a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>((pix), (siz))&lt;&lt;2)-1)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>siz</em></span>&#160;)&#160;&#160;&#160;((<a class="el" href="#a3d6a7640db21f5c3224136901b38e09b">GS_PIX2TMEM</a>((pix), (siz)) &lt;&lt; 2) - 1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1142,7 +1142,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt),(m),(mptr),0)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt), (m), (mptr), 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1184,7 +1184,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>tptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#ae450444179f8b666a894a01682e48f31">G_OBJ_LDTX_RECT</a>,  (tptr),47)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>tptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#ae450444179f8b666a894a01682e48f31">G_OBJ_LDTX_RECT</a>, (tptr), 47)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1205,7 +1205,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>tptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#a41b9c97f26d667176d65007474910d44">G_OBJ_LDTX_RECT_R</a>,(tptr),47)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>tptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#a41b9c97f26d667176d65007474910d44">G_OBJ_LDTX_RECT_R</a>, (tptr), 47)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1226,7 +1226,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>tptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#a56942a43523891eb965e4ca23f4a852d">G_OBJ_LDTX_SPRITE</a>,(tptr),47)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>tptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#a56942a43523891eb965e4ca23f4a852d">G_OBJ_LDTX_SPRITE</a>, (tptr), 47)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1247,7 +1247,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>tptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#a1f2ce8862e78476fc01ffdab5a8f5e71">G_OBJ_LOADTXTR</a>,   (tptr),23)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>tptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#a1f2ce8862e78476fc01ffdab5a8f5e71">G_OBJ_LOADTXTR</a>, (tptr), 23)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1268,7 +1268,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gDma1p((pkt),<a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>,(mptr),0,23)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gDma1p((pkt), <a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>, (mptr), 0, 23)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1289,7 +1289,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#a0b2388234edccf98889955010b60ea11">G_OBJ_RECTANGLE</a>,  (mptr),0)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#a0b2388234edccf98889955010b60ea11">G_OBJ_RECTANGLE</a>, (mptr), 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1310,7 +1310,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#ab6f2bf63f1cb6c97488b3ca7d62e4bf4">G_OBJ_RECTANGLE_R</a>,(mptr),0)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#ab6f2bf63f1cb6c97488b3ca7d62e4bf4">G_OBJ_RECTANGLE_R</a>, (mptr), 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1331,7 +1331,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mode</em></span>&#160;)&#160;&#160;&#160;gImmp1((pkt),<a class="el" href="#a1a3554edd54a4fd2dc77e52aedcafb4f">G_OBJ_RENDERMODE</a>,(mode))</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mode</em></span>&#160;)&#160;&#160;&#160;gImmp1((pkt), <a class="el" href="#a1a3554edd54a4fd2dc77e52aedcafb4f">G_OBJ_RENDERMODE</a>, (mode))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1352,7 +1352,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt),<a class="el" href="#a136c02d7d6a648bbbce2bb34ed4c17a4">G_OBJ_SPRITE</a>,     (mptr),0)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gDma0p((pkt), <a class="el" href="#a136c02d7d6a648bbbce2bb34ed4c17a4">G_OBJ_SPRITE</a>, (mptr), 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1373,7 +1373,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gDma1p((pkt),<a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>,(mptr),2, 7)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gDma1p((pkt), <a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>, (mptr), 2, 7)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1413,9 +1413,11 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">{   gDma1p((pkt), <a class="code hl_define" href="#a46c73f114a8a710fa13fa64b577aeccd">G_RDPHALF_0</a>, (flag), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)(mptr) &amp; 0xffff, (sid)); \</div>
-<div class="line">    gDma1p((pkt), <a class="code hl_define" href="#a0cb2caecc1ca9fde89732071bd1c2b41">G_SELECT_DL</a>, (mask), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)(mptr) &gt;&gt; 16, <a class="code hl_define" href="gbi_8h.html#a3b437db0e92f87565411fb76a70f14bd">G_DL_NOPUSH</a>); }</div>
-<div class="ttc" id="agbi_8h_html_a3b437db0e92f87565411fb76a70f14bd"><div class="ttname"><a href="gbi_8h.html#a3b437db0e92f87565411fb76a70f14bd">G_DL_NOPUSH</a></div><div class="ttdeci">#define G_DL_NOPUSH</div><div class="ttdef"><b>Definition</b> gbi.h:1064</div></div>
+<b>Value:</b><div class="fragment"><div class="line">    {                                                                        \</div>
+<div class="line">        gDma1p((pkt), <a class="code hl_define" href="#a46c73f114a8a710fa13fa64b577aeccd">G_RDPHALF_0</a>, (flag), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>) (mptr) &amp; 0xffff, (sid));    \</div>
+<div class="line">        gDma1p((pkt), <a class="code hl_define" href="#a0cb2caecc1ca9fde89732071bd1c2b41">G_SELECT_DL</a>, (mask), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>) (mptr) &gt;&gt; 16, <a class="code hl_define" href="gbi_8h.html#a3b437db0e92f87565411fb76a70f14bd">G_DL_NOPUSH</a>); \</div>
+<div class="line">    }</div>
+<div class="ttc" id="agbi_8h_html_a3b437db0e92f87565411fb76a70f14bd"><div class="ttname"><a href="gbi_8h.html#a3b437db0e92f87565411fb76a70f14bd">G_DL_NOPUSH</a></div><div class="ttdeci">#define G_DL_NOPUSH</div><div class="ttdef"><b>Definition</b> gbi.h:1000</div></div>
 <div class="ttc" id="ags2dex_8h_html_a0cb2caecc1ca9fde89732071bd1c2b41"><div class="ttname"><a href="#a0cb2caecc1ca9fde89732071bd1c2b41">G_SELECT_DL</a></div><div class="ttdeci">#define G_SELECT_DL</div><div class="ttdef"><b>Definition</b> gs2dex.h:255</div></div>
 <div class="ttc" id="ags2dex_8h_html_a46c73f114a8a710fa13fa64b577aeccd"><div class="ttname"><a href="#a46c73f114a8a710fa13fa64b577aeccd">G_RDPHALF_0</a></div><div class="ttdeci">#define G_RDPHALF_0</div><div class="ttdef"><b>Definition</b> gs2dex.h:262</div></div>
 <div class="ttc" id="aultratypes_8h_html_a10e94b422ef0c20dcdec20d31a1f5049"><div class="ttname"><a href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a></div><div class="ttdeci">unsigned int u32</div><div class="ttdef"><b>Definition</b> ultratypes.h:16</div></div>
@@ -1455,9 +1457,11 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">{   gDma1p((pkt), <a class="code hl_define" href="#a46c73f114a8a710fa13fa64b577aeccd">G_RDPHALF_0</a>, (flag), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)(mptr) &amp; 0xffff, (sid)); \</div>
-<div class="line">    gDma1p((pkt), <a class="code hl_define" href="#a0cb2caecc1ca9fde89732071bd1c2b41">G_SELECT_DL</a>, (mask), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)(mptr) &gt;&gt; 16, <a class="code hl_define" href="gbi_8h.html#a0ba63ab403418921683815479d82463f">G_DL_PUSH</a>); }</div>
-<div class="ttc" id="agbi_8h_html_a0ba63ab403418921683815479d82463f"><div class="ttname"><a href="gbi_8h.html#a0ba63ab403418921683815479d82463f">G_DL_PUSH</a></div><div class="ttdeci">#define G_DL_PUSH</div><div class="ttdef"><b>Definition</b> gbi.h:1063</div></div>
+<b>Value:</b><div class="fragment"><div class="line">    {                                                                      \</div>
+<div class="line">        gDma1p((pkt), <a class="code hl_define" href="#a46c73f114a8a710fa13fa64b577aeccd">G_RDPHALF_0</a>, (flag), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>) (mptr) &amp; 0xffff, (sid));  \</div>
+<div class="line">        gDma1p((pkt), <a class="code hl_define" href="#a0cb2caecc1ca9fde89732071bd1c2b41">G_SELECT_DL</a>, (mask), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>) (mptr) &gt;&gt; 16, <a class="code hl_define" href="gbi_8h.html#a0ba63ab403418921683815479d82463f">G_DL_PUSH</a>); \</div>
+<div class="line">    }</div>
+<div class="ttc" id="agbi_8h_html_a0ba63ab403418921683815479d82463f"><div class="ttname"><a href="gbi_8h.html#a0ba63ab403418921683815479d82463f">G_DL_PUSH</a></div><div class="ttdeci">#define G_DL_PUSH</div><div class="ttdef"><b>Definition</b> gbi.h:999</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1480,7 +1484,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)&#160;&#160;&#160;	gMoveWd((pkt), <a class="el" href="#a752cce03f3c165a04b56c3ece6ae5971">G_MW_GENSTAT</a>, (sid), (val))</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)&#160;&#160;&#160;gMoveWd((pkt), <a class="el" href="#a752cce03f3c165a04b56c3ece6ae5971">G_MW_GENSTAT</a>, (sid), (val))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1497,7 +1501,7 @@ Variables</h2></td></tr>
           <td class="memname">#define gsSPBgRect1Cyc</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="#ada96c7620da97f72bfa4e36f1d2d53c0">gsSPBgRectangle</a>(      <a class="el" href="#a91489e1e147e1c403a1ce4a8f9a3378d">G_BG_1CYC</a>, (mptr))</td>
+          <td>&#160;&#160;&#160;<a class="el" href="#ada96c7620da97f72bfa4e36f1d2d53c0">gsSPBgRectangle</a>(<a class="el" href="#a91489e1e147e1c403a1ce4a8f9a3378d">G_BG_1CYC</a>, (mptr))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1518,7 +1522,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gsDma0p(     (m),(mptr),0)</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span>&#160;)&#160;&#160;&#160;gsDma0p((m), (mptr), 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1535,7 +1539,7 @@ Variables</h2></td></tr>
           <td class="memname">#define gsSPBgRectCopy</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="#ada96c7620da97f72bfa4e36f1d2d53c0">gsSPBgRectangle</a>(      <a class="el" href="#abdca43f3fe51465224ab61cdd9661fe8">G_BG_COPY</a>, (mptr))</td>
+          <td>&#160;&#160;&#160;<a class="el" href="#ada96c7620da97f72bfa4e36f1d2d53c0">gsSPBgRectangle</a>(<a class="el" href="#abdca43f3fe51465224ab61cdd9661fe8">G_BG_COPY</a>, (mptr))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1552,7 +1556,7 @@ Variables</h2></td></tr>
           <td class="memname">#define gsSPObjLoadTxRect</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>tptr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;gsDma0p(     <a class="el" href="#ae450444179f8b666a894a01682e48f31">G_OBJ_LDTX_RECT</a>,  (tptr),47)</td>
+          <td>&#160;&#160;&#160;gsDma0p(<a class="el" href="#ae450444179f8b666a894a01682e48f31">G_OBJ_LDTX_RECT</a>, (tptr), 47)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1569,7 +1573,7 @@ Variables</h2></td></tr>
           <td class="memname">#define gsSPObjLoadTxRectR</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>tptr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;gsDma0p(     <a class="el" href="#a41b9c97f26d667176d65007474910d44">G_OBJ_LDTX_RECT_R</a>,(tptr),47)</td>
+          <td>&#160;&#160;&#160;gsDma0p(<a class="el" href="#a41b9c97f26d667176d65007474910d44">G_OBJ_LDTX_RECT_R</a>, (tptr), 47)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1586,7 +1590,7 @@ Variables</h2></td></tr>
           <td class="memname">#define gsSPObjLoadTxSprite</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>tptr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;gsDma0p(     <a class="el" href="#a56942a43523891eb965e4ca23f4a852d">G_OBJ_LDTX_SPRITE</a>,(tptr),47)</td>
+          <td>&#160;&#160;&#160;gsDma0p(<a class="el" href="#a56942a43523891eb965e4ca23f4a852d">G_OBJ_LDTX_SPRITE</a>, (tptr), 47)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1603,7 +1607,7 @@ Variables</h2></td></tr>
           <td class="memname">#define gsSPObjLoadTxtr</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>tptr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;gsDma0p(     <a class="el" href="#a1f2ce8862e78476fc01ffdab5a8f5e71">G_OBJ_LOADTXTR</a>,   (tptr),23)</td>
+          <td>&#160;&#160;&#160;gsDma0p(<a class="el" href="#a1f2ce8862e78476fc01ffdab5a8f5e71">G_OBJ_LOADTXTR</a>, (tptr), 23)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1620,7 +1624,7 @@ Variables</h2></td></tr>
           <td class="memname">#define gsSPObjMatrix</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;gsDma1p(     <a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>,(mptr),0,23)</td>
+          <td>&#160;&#160;&#160;gsDma1p(<a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>, (mptr), 0, 23)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1637,7 +1641,7 @@ Variables</h2></td></tr>
           <td class="memname">#define gsSPObjRectangle</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;gsDma0p(     <a class="el" href="#a0b2388234edccf98889955010b60ea11">G_OBJ_RECTANGLE</a>,  (mptr),0)</td>
+          <td>&#160;&#160;&#160;gsDma0p(<a class="el" href="#a0b2388234edccf98889955010b60ea11">G_OBJ_RECTANGLE</a>, (mptr), 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1654,7 +1658,7 @@ Variables</h2></td></tr>
           <td class="memname">#define gsSPObjRectangleR</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;gsDma0p(     <a class="el" href="#ab6f2bf63f1cb6c97488b3ca7d62e4bf4">G_OBJ_RECTANGLE_R</a>,(mptr),0)</td>
+          <td>&#160;&#160;&#160;gsDma0p(<a class="el" href="#ab6f2bf63f1cb6c97488b3ca7d62e4bf4">G_OBJ_RECTANGLE_R</a>, (mptr), 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1671,7 +1675,7 @@ Variables</h2></td></tr>
           <td class="memname">#define gsSPObjRenderMode</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mode</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;gsImmp1(     <a class="el" href="#a1a3554edd54a4fd2dc77e52aedcafb4f">G_OBJ_RENDERMODE</a>,(mode))</td>
+          <td>&#160;&#160;&#160;gsImmp1(<a class="el" href="#a1a3554edd54a4fd2dc77e52aedcafb4f">G_OBJ_RENDERMODE</a>, (mode))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1688,7 +1692,7 @@ Variables</h2></td></tr>
           <td class="memname">#define gsSPObjSprite</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;gsDma0p(     <a class="el" href="#a136c02d7d6a648bbbce2bb34ed4c17a4">G_OBJ_SPRITE</a>,     (mptr),0)</td>
+          <td>&#160;&#160;&#160;gsDma0p(<a class="el" href="#a136c02d7d6a648bbbce2bb34ed4c17a4">G_OBJ_SPRITE</a>, (mptr), 0)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1705,7 +1709,7 @@ Variables</h2></td></tr>
           <td class="memname">#define gsSPObjSubMatrix</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>mptr</em></span></td><td>)</td>
-          <td>&#160;&#160;&#160;gsDma1p(     <a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>,(mptr),2, 7)</td>
+          <td>&#160;&#160;&#160;gsDma1p(<a class="el" href="#ab97e4c8f8237181e1efe20367984479e">G_OBJ_MOVEMEM</a>, (mptr), 2, 7)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1740,8 +1744,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">{   gsDma1p(<a class="code hl_define" href="#a46c73f114a8a710fa13fa64b577aeccd">G_RDPHALF_0</a>, (flag), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)(mptr) &amp; 0xffff, (sid)); \</div>
-<div class="line">    gsDma1p(<a class="code hl_define" href="#a0cb2caecc1ca9fde89732071bd1c2b41">G_SELECT_DL</a>, (mask), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)(mptr) &gt;&gt; 16, <a class="code hl_define" href="gbi_8h.html#a3b437db0e92f87565411fb76a70f14bd">G_DL_NOPUSH</a>); }</div>
+<b>Value:</b><div class="fragment"><div class="line">    {                                                                  \</div>
+<div class="line">        gsDma1p(<a class="code hl_define" href="#a46c73f114a8a710fa13fa64b577aeccd">G_RDPHALF_0</a>, (flag), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>) (mptr) &amp; 0xffff, (sid));    \</div>
+<div class="line">        gsDma1p(<a class="code hl_define" href="#a0cb2caecc1ca9fde89732071bd1c2b41">G_SELECT_DL</a>, (mask), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>) (mptr) &gt;&gt; 16, <a class="code hl_define" href="gbi_8h.html#a3b437db0e92f87565411fb76a70f14bd">G_DL_NOPUSH</a>); \</div>
+<div class="line">    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1773,8 +1779,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">{   gsDma1p(<a class="code hl_define" href="#a46c73f114a8a710fa13fa64b577aeccd">G_RDPHALF_0</a>, (flag), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)(mptr) &amp; 0xffff, (sid)); \</div>
-<div class="line">    gsDma1p(<a class="code hl_define" href="#a0cb2caecc1ca9fde89732071bd1c2b41">G_SELECT_DL</a>, (mask), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>)(mptr) &gt;&gt; 16, <a class="code hl_define" href="gbi_8h.html#a0ba63ab403418921683815479d82463f">G_DL_PUSH</a>); }</div>
+<b>Value:</b><div class="fragment"><div class="line">    {                                                                \</div>
+<div class="line">        gsDma1p(<a class="code hl_define" href="#a46c73f114a8a710fa13fa64b577aeccd">G_RDPHALF_0</a>, (flag), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>) (mptr) &amp; 0xffff, (sid));  \</div>
+<div class="line">        gsDma1p(<a class="code hl_define" href="#a0cb2caecc1ca9fde89732071bd1c2b41">G_SELECT_DL</a>, (mask), (<a class="code hl_typedef" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>) (mptr) &gt;&gt; 16, <a class="code hl_define" href="gbi_8h.html#a0ba63ab403418921683815479d82463f">G_DL_PUSH</a>); \</div>
+<div class="line">    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1792,7 +1800,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)&#160;&#160;&#160;	gsMoveWd(      <a class="el" href="#a752cce03f3c165a04b56c3ece6ae5971">G_MW_GENSTAT</a>, (sid), (val))</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>val</em></span>&#160;)&#160;&#160;&#160;gsMoveWd(<a class="el" href="#a752cce03f3c165a04b56c3ece6ae5971">G_MW_GENSTAT</a>, (sid), (val))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1813,19 +1821,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">        <a class="code hl_define" href="gbi_8h.html#ab57c1bf0dbe2215f407583c96dee344d">AA_EN</a> | <a class="code hl_define" href="gbi_8h.html#a769e8756ba583b0bd63bc9f22fda2cdb">CVG_DST_CLAMP</a> |                                \</div>
-<div class="line">        <a class="code hl_define" href="gbi_8h.html#a253bd61ff62eba4c0446af1c46110f88">CVG_X_ALPHA</a> | <a class="code hl_define" href="gbi_8h.html#aa5a549fc53ceef2a65ddd3105f31acf1">ALPHA_CVG_SEL</a> | <a class="code hl_define" href="gbi_8h.html#af13471985854dc9015656f7c5e87d73c">ZMODE_OPA</a> | <a class="code hl_define" href="gbi_8h.html#abf6f357754d73376d6c3683e77cc2711">TEX_EDGE</a> |   \</div>
+<b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_define" href="gbi_8h.html#ab57c1bf0dbe2215f407583c96dee344d">AA_EN</a> | <a class="code hl_define" href="gbi_8h.html#a769e8756ba583b0bd63bc9f22fda2cdb">CVG_DST_CLAMP</a> | <a class="code hl_define" href="gbi_8h.html#a253bd61ff62eba4c0446af1c46110f88">CVG_X_ALPHA</a> | <a class="code hl_define" href="gbi_8h.html#aa5a549fc53ceef2a65ddd3105f31acf1">ALPHA_CVG_SEL</a> | <a class="code hl_define" href="gbi_8h.html#af13471985854dc9015656f7c5e87d73c">ZMODE_OPA</a> | <a class="code hl_define" href="gbi_8h.html#abf6f357754d73376d6c3683e77cc2711">TEX_EDGE</a> | \</div>
 <div class="line">        GBL_c##clk(<a class="code hl_define" href="gbi_8h.html#ad4769bc7b72ce85a1f16223345d741d6">G_BL_CLR_IN</a>, <a class="code hl_define" href="gbi_8h.html#a397782e8eb53f4cb5203c1406a5addcd">G_BL_A_IN</a>, <a class="code hl_define" href="gbi_8h.html#a0caaa5a910e62dc8c9fdb21e81994b33">G_BL_CLR_MEM</a>, <a class="code hl_define" href="gbi_8h.html#a7e661648a47b167cb1174b5a590d748e">G_BL_1MA</a>)</div>
-<div class="ttc" id="agbi_8h_html_a0caaa5a910e62dc8c9fdb21e81994b33"><div class="ttname"><a href="gbi_8h.html#a0caaa5a910e62dc8c9fdb21e81994b33">G_BL_CLR_MEM</a></div><div class="ttdeci">#define G_BL_CLR_MEM</div><div class="ttdef"><b>Definition</b> gbi.h:704</div></div>
-<div class="ttc" id="agbi_8h_html_a253bd61ff62eba4c0446af1c46110f88"><div class="ttname"><a href="gbi_8h.html#a253bd61ff62eba4c0446af1c46110f88">CVG_X_ALPHA</a></div><div class="ttdeci">#define CVG_X_ALPHA</div><div class="ttdef"><b>Definition</b> gbi.h:698</div></div>
-<div class="ttc" id="agbi_8h_html_a397782e8eb53f4cb5203c1406a5addcd"><div class="ttname"><a href="gbi_8h.html#a397782e8eb53f4cb5203c1406a5addcd">G_BL_A_IN</a></div><div class="ttdeci">#define G_BL_A_IN</div><div class="ttdef"><b>Definition</b> gbi.h:709</div></div>
-<div class="ttc" id="agbi_8h_html_a769e8756ba583b0bd63bc9f22fda2cdb"><div class="ttname"><a href="gbi_8h.html#a769e8756ba583b0bd63bc9f22fda2cdb">CVG_DST_CLAMP</a></div><div class="ttdeci">#define CVG_DST_CLAMP</div><div class="ttdef"><b>Definition</b> gbi.h:690</div></div>
-<div class="ttc" id="agbi_8h_html_a7e661648a47b167cb1174b5a590d748e"><div class="ttname"><a href="gbi_8h.html#a7e661648a47b167cb1174b5a590d748e">G_BL_1MA</a></div><div class="ttdeci">#define G_BL_1MA</div><div class="ttdef"><b>Definition</b> gbi.h:707</div></div>
-<div class="ttc" id="agbi_8h_html_aa5a549fc53ceef2a65ddd3105f31acf1"><div class="ttname"><a href="gbi_8h.html#aa5a549fc53ceef2a65ddd3105f31acf1">ALPHA_CVG_SEL</a></div><div class="ttdeci">#define ALPHA_CVG_SEL</div><div class="ttdef"><b>Definition</b> gbi.h:699</div></div>
-<div class="ttc" id="agbi_8h_html_ab57c1bf0dbe2215f407583c96dee344d"><div class="ttname"><a href="gbi_8h.html#ab57c1bf0dbe2215f407583c96dee344d">AA_EN</a></div><div class="ttdeci">#define AA_EN</div><div class="ttdef"><b>Definition</b> gbi.h:685</div></div>
-<div class="ttc" id="agbi_8h_html_abf6f357754d73376d6c3683e77cc2711"><div class="ttname"><a href="gbi_8h.html#abf6f357754d73376d6c3683e77cc2711">TEX_EDGE</a></div><div class="ttdeci">#define TEX_EDGE</div><div class="ttdef"><b>Definition</b> gbi.h:701</div></div>
-<div class="ttc" id="agbi_8h_html_ad4769bc7b72ce85a1f16223345d741d6"><div class="ttname"><a href="gbi_8h.html#ad4769bc7b72ce85a1f16223345d741d6">G_BL_CLR_IN</a></div><div class="ttdeci">#define G_BL_CLR_IN</div><div class="ttdef"><b>Definition</b> gbi.h:703</div></div>
-<div class="ttc" id="agbi_8h_html_af13471985854dc9015656f7c5e87d73c"><div class="ttname"><a href="gbi_8h.html#af13471985854dc9015656f7c5e87d73c">ZMODE_OPA</a></div><div class="ttdeci">#define ZMODE_OPA</div><div class="ttdef"><b>Definition</b> gbi.h:694</div></div>
+<div class="ttc" id="agbi_8h_html_a0caaa5a910e62dc8c9fdb21e81994b33"><div class="ttname"><a href="gbi_8h.html#a0caaa5a910e62dc8c9fdb21e81994b33">G_BL_CLR_MEM</a></div><div class="ttdeci">#define G_BL_CLR_MEM</div><div class="ttdef"><b>Definition</b> gbi.h:700</div></div>
+<div class="ttc" id="agbi_8h_html_a253bd61ff62eba4c0446af1c46110f88"><div class="ttname"><a href="gbi_8h.html#a253bd61ff62eba4c0446af1c46110f88">CVG_X_ALPHA</a></div><div class="ttdeci">#define CVG_X_ALPHA</div><div class="ttdef"><b>Definition</b> gbi.h:694</div></div>
+<div class="ttc" id="agbi_8h_html_a397782e8eb53f4cb5203c1406a5addcd"><div class="ttname"><a href="gbi_8h.html#a397782e8eb53f4cb5203c1406a5addcd">G_BL_A_IN</a></div><div class="ttdeci">#define G_BL_A_IN</div><div class="ttdef"><b>Definition</b> gbi.h:705</div></div>
+<div class="ttc" id="agbi_8h_html_a769e8756ba583b0bd63bc9f22fda2cdb"><div class="ttname"><a href="gbi_8h.html#a769e8756ba583b0bd63bc9f22fda2cdb">CVG_DST_CLAMP</a></div><div class="ttdeci">#define CVG_DST_CLAMP</div><div class="ttdef"><b>Definition</b> gbi.h:686</div></div>
+<div class="ttc" id="agbi_8h_html_a7e661648a47b167cb1174b5a590d748e"><div class="ttname"><a href="gbi_8h.html#a7e661648a47b167cb1174b5a590d748e">G_BL_1MA</a></div><div class="ttdeci">#define G_BL_1MA</div><div class="ttdef"><b>Definition</b> gbi.h:703</div></div>
+<div class="ttc" id="agbi_8h_html_aa5a549fc53ceef2a65ddd3105f31acf1"><div class="ttname"><a href="gbi_8h.html#aa5a549fc53ceef2a65ddd3105f31acf1">ALPHA_CVG_SEL</a></div><div class="ttdeci">#define ALPHA_CVG_SEL</div><div class="ttdef"><b>Definition</b> gbi.h:695</div></div>
+<div class="ttc" id="agbi_8h_html_ab57c1bf0dbe2215f407583c96dee344d"><div class="ttname"><a href="gbi_8h.html#ab57c1bf0dbe2215f407583c96dee344d">AA_EN</a></div><div class="ttdeci">#define AA_EN</div><div class="ttdef"><b>Definition</b> gbi.h:681</div></div>
+<div class="ttc" id="agbi_8h_html_abf6f357754d73376d6c3683e77cc2711"><div class="ttname"><a href="gbi_8h.html#abf6f357754d73376d6c3683e77cc2711">TEX_EDGE</a></div><div class="ttdeci">#define TEX_EDGE</div><div class="ttdef"><b>Definition</b> gbi.h:697</div></div>
+<div class="ttc" id="agbi_8h_html_ad4769bc7b72ce85a1f16223345d741d6"><div class="ttname"><a href="gbi_8h.html#ad4769bc7b72ce85a1f16223345d741d6">G_BL_CLR_IN</a></div><div class="ttdeci">#define G_BL_CLR_IN</div><div class="ttdef"><b>Definition</b> gbi.h:699</div></div>
+<div class="ttc" id="agbi_8h_html_af13471985854dc9015656f7c5e87d73c"><div class="ttname"><a href="gbi_8h.html#af13471985854dc9015656f7c5e87d73c">ZMODE_OPA</a></div><div class="ttdeci">#define ZMODE_OPA</div><div class="ttdef"><b>Definition</b> gbi.h:690</div></div>
 </div><!-- fragment -->
 </div>
 </div>

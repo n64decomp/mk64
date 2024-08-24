@@ -354,18 +354,14 @@ Variables</h2></td></tr>
 <div class="line">    WAIT_ON_IOBUSY(stat)                                  \</div>
 <div class="line">                                                          \</div>
 <div class="line">    domain = pihandle-&gt;domain;                            \</div>
-<div class="line">    if (<a class="code hl_variable" href="#a9fa1009aa04cc2ee91859ce8812151ad">__osCurrentHandle</a>[domain] != pihandle)            \</div>
-<div class="line">    {                                                     \</div>
-<div class="line">        <a class="code hl_struct" href="structOSPiHandle__s.html">OSPiHandle</a> *cHandle = <a class="code hl_variable" href="#a9fa1009aa04cc2ee91859ce8812151ad">__osCurrentHandle</a>[domain];  \</div>
-<div class="line">        if (domain == <a class="code hl_define" href="osEPiRawStartDma_8c.html#a61b4993ebb70a3b701fccc3221c36d81">PI_DOMAIN1</a>)                         \</div>
-<div class="line">        {                                                 \</div>
+<div class="line">    if (<a class="code hl_variable" href="#a9fa1009aa04cc2ee91859ce8812151ad">__osCurrentHandle</a>[domain] != pihandle) {          \</div>
+<div class="line">        <a class="code hl_struct" href="structOSPiHandle__s.html">OSPiHandle</a>* cHandle = <a class="code hl_variable" href="#a9fa1009aa04cc2ee91859ce8812151ad">__osCurrentHandle</a>[domain];  \</div>
+<div class="line">        if (domain == <a class="code hl_define" href="osEPiRawStartDma_8c.html#a61b4993ebb70a3b701fccc3221c36d81">PI_DOMAIN1</a>) {                       \</div>
 <div class="line">            UPDATE_REG(<a class="code hl_define" href="hardware_8h.html#a542644a8d4207743fc96528c181c5601">PI_BSD_DOM1_LAT_REG</a>, latency);     \</div>
 <div class="line">            UPDATE_REG(<a class="code hl_define" href="hardware_8h.html#a583792bb4f77e267e0ef549445f46449">PI_BSD_DOM1_PGS_REG</a>, pageSize);    \</div>
 <div class="line">            UPDATE_REG(<a class="code hl_define" href="hardware_8h.html#afb9822249967b69783b775f1abc2d165">PI_BSD_DOM1_RLS_REG</a>, relDuration); \</div>
 <div class="line">            UPDATE_REG(<a class="code hl_define" href="hardware_8h.html#ab6aa222b5a81bd1a22cce49a02dbb763">PI_BSD_DOM1_PWD_REG</a>, pulse);       \</div>
-<div class="line">        }                                                 \</div>
-<div class="line">        <span class="keywordflow">else</span>                                              \</div>
-<div class="line">        {                                                 \</div>
+<div class="line">        } <span class="keywordflow">else</span> {                                          \</div>
 <div class="line">            UPDATE_REG(<a class="code hl_define" href="hardware_8h.html#a5fa6c9bf7ce7dae3c1445138aaf9d3c0">PI_BSD_DOM2_LAT_REG</a>, latency);     \</div>
 <div class="line">            UPDATE_REG(<a class="code hl_define" href="hardware_8h.html#a1fd8bab4a431b3faeee37e9a019c7034">PI_BSD_DOM2_PGS_REG</a>, pageSize);    \</div>
 <div class="line">            UPDATE_REG(<a class="code hl_define" href="hardware_8h.html#a99f2148aabc848539b94fe0c5ab79166">PI_BSD_DOM2_RLS_REG</a>, relDuration); \</div>
@@ -1523,8 +1519,8 @@ Variables</h2></td></tr>
 <div class="line">    while (stat &amp; (<a class="code hl_define" href="rcp_8h.html#acd66f53b97aed895b5d032c824bf384a">PI_STATUS_IO_BUSY</a> | <a class="code hl_define" href="rcp_8h.html#a60d5ee8aff563bfe2a9a39fe86b524aa">PI_STATUS_DMA_BUSY</a>)) \</div>
 <div class="line">        stat = IO_READ(<a class="code hl_define" href="hardware_8h.html#a99410e380b8e68ae6c1ee53ad70ab920">PI_STATUS_REG</a>);</div>
 <div class="ttc" id="ahardware_8h_html_a99410e380b8e68ae6c1ee53ad70ab920"><div class="ttname"><a href="hardware_8h.html#a99410e380b8e68ae6c1ee53ad70ab920">PI_STATUS_REG</a></div><div class="ttdeci">#define PI_STATUS_REG</div><div class="ttdef"><b>Definition</b> hardware.h:53</div></div>
-<div class="ttc" id="arcp_8h_html_a60d5ee8aff563bfe2a9a39fe86b524aa"><div class="ttname"><a href="rcp_8h.html#a60d5ee8aff563bfe2a9a39fe86b524aa">PI_STATUS_DMA_BUSY</a></div><div class="ttdeci">#define PI_STATUS_DMA_BUSY</div><div class="ttdef"><b>Definition</b> rcp.h:740</div></div>
-<div class="ttc" id="arcp_8h_html_acd66f53b97aed895b5d032c824bf384a"><div class="ttname"><a href="rcp_8h.html#acd66f53b97aed895b5d032c824bf384a">PI_STATUS_IO_BUSY</a></div><div class="ttdeci">#define PI_STATUS_IO_BUSY</div><div class="ttdef"><b>Definition</b> rcp.h:739</div></div>
+<div class="ttc" id="arcp_8h_html_a60d5ee8aff563bfe2a9a39fe86b524aa"><div class="ttname"><a href="rcp_8h.html#a60d5ee8aff563bfe2a9a39fe86b524aa">PI_STATUS_DMA_BUSY</a></div><div class="ttdeci">#define PI_STATUS_DMA_BUSY</div><div class="ttdef"><b>Definition</b> rcp.h:727</div></div>
+<div class="ttc" id="arcp_8h_html_acd66f53b97aed895b5d032c824bf384a"><div class="ttname"><a href="rcp_8h.html#acd66f53b97aed895b5d032c824bf384a">PI_STATUS_IO_BUSY</a></div><div class="ttdeci">#define PI_STATUS_IO_BUSY</div><div class="ttdef"><b>Definition</b> rcp.h:726</div></div>
 </div><!-- fragment -->
 </div>
 </div>

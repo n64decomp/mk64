@@ -143,77 +143,79 @@ $(function(){initNavTree('segments_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">extern</span> <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> <a class="code hl_variable" href="segments_8h.html#a1c95b2354ca5fbdfcf205d2bbd6c5084">_startupLogoSegmentRomStart</a>[];</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">extern</span> <a class="code hl_typedef" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a> <a class="code hl_variable" href="segments_8h.html#a38d4f923742f7bc3032611ace82b8afe">_startupLogoSegmentRomEnd</a>[];</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="segments_8h.html#a378904609c6c5b42e627a7cf34c28acf">   44</a></span><span class="preprocessor">#define SEG_START    0x80000000</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">// Defines duplicated even if the same for both for easier readability</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#ifdef AVOID_UB</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">    #define MEMORY_POOL_START         (uintptr_t) &amp;_memoryPoolSegmentNoloadStart[0]</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">    #define MEMORY_POOL_END           (uintptr_t) &amp;_memoryPoolSegmentNoloadEnd[0]</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">    #define SEG_ENDING                (uintptr_t) &amp;_endingSegmentStart[0]</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">    #define SEG_ENDING_ROM_START      (uintptr_t) &amp;_endingSegmentRomStart[0]</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="preprocessor">    #define SEG_ENDING_SIZE           (size_t)    ALIGN16( (ptrdiff_t) (&amp;_endingSegmentNoloadEnd[0] - &amp;_endingSegmentStart[0]) )</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">    #define SEG_ENDING_ROM_SIZE       (size_t)    ALIGN16( (ptrdiff_t) (&amp;_endingSegmentRomEnd[0] - &amp;_endingSegmentRomStart[0]) )</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">    #define SEG_RACING                (uintptr_t) &amp;_racingSegmentStart[0]</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">    #define SEG_RACING_ROM_START      (uintptr_t) &amp;_racingSegmentRomStart[0]</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">    #define SEG_RACING_SIZE           (size_t)    ALIGN16( (ptrdiff_t) (&amp;_racingSegmentNoloadEnd[0] - &amp;_racingSegmentStart[0]) )</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">    #define SEG_RACING_ROM_SIZE       (size_t)    ALIGN16( (ptrdiff_t) (&amp;_racingSegmentRomEnd[0] - &amp;_racingSegmentRomStart[0]) )</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">    #define TRIG_TABLES               (uintptr_t) &amp;_trigTablesSegmentStart[0]</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">    #define TRIG_TABLES_ROM_START     (uintptr_t) &amp;_trigTablesSegmentRomStart[0]</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">    #define TRIG_TABLES_SIZE          (size_t)    _trigTablesSegmentSize</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">    #define SEG_DATA_START            (uintptr_t) &amp;_data_segment2SegmentRomStart[0]</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">    #define SEG_DATA_END              (uintptr_t) &amp;_data_segment2SegmentRomEnd[0]</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">    #define COMMON_TEXTURES_ROM_START (uintptr_t) &amp;_common_texturesSegmentRomStart[0]</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">    #define COMMON_TEXTURES_SIZE      (ptrdiff_t) (&amp;_common_texturesSegmentRomEnd[0] - &amp;_common_texturesSegmentRomStart[0])</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="preprocessor">    #define CEREMONY_DATA_ROM_START   &amp;_ceremonyDataSegmentRomStart[0]</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">    #define CEREMONY_DATA_ROM_END     &amp;_ceremonyDataSegmentRomEnd[0]</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">    #define STARTUP_LOGO_ROM_START    &amp;_startupLogoSegmentRomStart[0]</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">    #define STARTUP_LOGO_ROM_END      &amp;_startupLogoSegmentRomEnd[0]</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="segments_8h.html#a378904609c6c5b42e627a7cf34c28acf">   43</a></span><span class="preprocessor">#define SEG_START 0x80000000</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// Defines duplicated even if the same for both for easier readability</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#ifdef AVOID_UB</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#define MEMORY_POOL_START (uintptr_t) &amp; _memoryPoolSegmentNoloadStart[0]</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#define MEMORY_POOL_END (uintptr_t) &amp; _memoryPoolSegmentNoloadEnd[0]</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#define SEG_ENDING (uintptr_t) &amp; _endingSegmentStart[0]</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#define SEG_ENDING_ROM_START (uintptr_t) &amp; _endingSegmentRomStart[0]</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">#define SEG_ENDING_SIZE (size_t) ALIGN16((ptrdiff_t) (&amp;_endingSegmentNoloadEnd[0] - &amp;_endingSegmentStart[0]))</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#define SEG_ENDING_ROM_SIZE (size_t) ALIGN16((ptrdiff_t) (&amp;_endingSegmentRomEnd[0] - &amp;_endingSegmentRomStart[0]))</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#define SEG_RACING (uintptr_t) &amp; _racingSegmentStart[0]</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#define SEG_RACING_ROM_START (uintptr_t) &amp; _racingSegmentRomStart[0]</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#define SEG_RACING_SIZE (size_t) ALIGN16((ptrdiff_t) (&amp;_racingSegmentNoloadEnd[0] - &amp;_racingSegmentStart[0]))</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#define SEG_RACING_ROM_SIZE (size_t) ALIGN16((ptrdiff_t) (&amp;_racingSegmentRomEnd[0] - &amp;_racingSegmentRomStart[0]))</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#define TRIG_TABLES (uintptr_t) &amp; _trigTablesSegmentStart[0]</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#define TRIG_TABLES_ROM_START (uintptr_t) &amp; _trigTablesSegmentRomStart[0]</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#define TRIG_TABLES_SIZE (size_t) _trigTablesSegmentSize</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#define SEG_DATA_START (uintptr_t) &amp; _data_segment2SegmentRomStart[0]</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#define SEG_DATA_END (uintptr_t) &amp; _data_segment2SegmentRomEnd[0]</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#define COMMON_TEXTURES_ROM_START (uintptr_t) &amp; _common_texturesSegmentRomStart[0]</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#define COMMON_TEXTURES_SIZE (ptrdiff_t)(&amp;_common_texturesSegmentRomEnd[0] - &amp;_common_texturesSegmentRomStart[0])</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#define CEREMONY_DATA_ROM_START &amp;_ceremonyDataSegmentRomStart[0]</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#define CEREMONY_DATA_ROM_END &amp;_ceremonyDataSegmentRomEnd[0]</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#define STARTUP_LOGO_ROM_START &amp;_startupLogoSegmentRomStart[0]</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">#define STARTUP_LOGO_ROM_END &amp;_startupLogoSegmentRomEnd[0]</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#else </span><span class="comment">// Required for ok</span></div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#else </span><span class="comment">// Required for ok</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="segments_8h.html#a914d38b452840fbdf4fd3a0bb601ff21">   85</a></span><span class="preprocessor">    #define MEMORY_POOL_START         (uintptr_t) &amp;_memoryPoolSegmentNoloadStart</span></div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="segments_8h.html#aef486f29a7da7891d45b3fd43401fc0b">   86</a></span><span class="preprocessor">    #define MEMORY_POOL_END           (uintptr_t) 0x80242F00</span></div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="segments_8h.html#ad3da5ce8bae6ed93cba43b1ac0808ec5">   88</a></span><span class="preprocessor">    #define SEG_ENDING                (uintptr_t) 0x80280000</span></div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="segments_8h.html#abb117a4e6ced0e6d4a7a627daa381915">   89</a></span><span class="preprocessor">    #define SEG_ENDING_ROM_START      (u8 *)      &amp;_endingSegmentRomStart[0]</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="segments_8h.html#aed207ab149264a186c4a492d6a3d67ca">   91</a></span><span class="preprocessor">    #define SEG_ENDING_SIZE           (size_t)    0xDF00</span></div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="segments_8h.html#a436b2f9ce1608bf74c0519455fe3b3c5">   92</a></span><span class="preprocessor">    #define SEG_ENDING_ROM_SIZE       (size_t)    ALIGN16( (ptrdiff_t) (&amp;_endingSegmentRomEnd[0] - &amp;_endingSegmentRomStart[0]) )</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="segments_8h.html#a329896c4a9fdd13172add7c9890947ed">   94</a></span><span class="preprocessor">    #define SEG_RACING                (uintptr_t) 0x8028DF00</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="segments_8h.html#a8f799bd3910a3bd042bb4faa6d776f20">   95</a></span><span class="preprocessor">    #define SEG_RACING_ROM_START      (u8 *)      &amp;_racingSegmentRomStart[0]</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="segments_8h.html#ad4646b8ed1e5c883b944832f3a141c99">   96</a></span><span class="preprocessor">    #define SEG_RACING_SIZE           (size_t)    0x2C470</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="segments_8h.html#a914d38b452840fbdf4fd3a0bb601ff21">   83</a></span><span class="preprocessor">#define MEMORY_POOL_START (uintptr_t) &amp; _memoryPoolSegmentNoloadStart</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="segments_8h.html#aef486f29a7da7891d45b3fd43401fc0b">   84</a></span><span class="preprocessor">#define MEMORY_POOL_END (uintptr_t) 0x80242F00</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="segments_8h.html#ad3da5ce8bae6ed93cba43b1ac0808ec5">   86</a></span><span class="preprocessor">#define SEG_ENDING (uintptr_t) 0x80280000</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="segments_8h.html#abb117a4e6ced0e6d4a7a627daa381915">   87</a></span><span class="preprocessor">#define SEG_ENDING_ROM_START (u8*) &amp;_endingSegmentRomStart[0]</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="segments_8h.html#aed207ab149264a186c4a492d6a3d67ca">   89</a></span><span class="preprocessor">#define SEG_ENDING_SIZE (size_t) 0xDF00</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="segments_8h.html#a436b2f9ce1608bf74c0519455fe3b3c5">   90</a></span><span class="preprocessor">#define SEG_ENDING_ROM_SIZE (size_t) ALIGN16((ptrdiff_t) (&amp;_endingSegmentRomEnd[0] - &amp;_endingSegmentRomStart[0]))</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="segments_8h.html#a329896c4a9fdd13172add7c9890947ed">   92</a></span><span class="preprocessor">#define SEG_RACING (uintptr_t) 0x8028DF00</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="segments_8h.html#a8f799bd3910a3bd042bb4faa6d776f20">   93</a></span><span class="preprocessor">#define SEG_RACING_ROM_START (u8*) &amp;_racingSegmentRomStart[0]</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="segments_8h.html#ad4646b8ed1e5c883b944832f3a141c99">   94</a></span><span class="preprocessor">#define SEG_RACING_SIZE (size_t) 0x2C470</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="segments_8h.html#a5048de3bcd4ff96d1513bb3c7c28bbf3">   96</a></span><span class="preprocessor">#define SEG_RACING_ROM_SIZE (size_t) ALIGN16((ptrdiff_t) (&amp;_racingSegmentRomEnd[0] - &amp;_racingSegmentRomStart[0]))</span></div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="segments_8h.html#a5048de3bcd4ff96d1513bb3c7c28bbf3">   98</a></span><span class="preprocessor">    #define SEG_RACING_ROM_SIZE       (size_t)    ALIGN16( (ptrdiff_t) (&amp;_racingSegmentRomEnd[0] - &amp;_racingSegmentRomStart[0]) )</span></div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="segments_8h.html#a761c05cde348942fdce0754b88fb1ca6">  100</a></span><span class="preprocessor">    #define TRIG_TABLES               (uintptr_t) 0x802BA370</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="segments_8h.html#a20d77c6ed229d04a4e116f6efee58b65">  101</a></span><span class="preprocessor">    #define TRIG_TABLES_ROM_START     (uintptr_t) &amp;_trigTablesSegmentRomStart[0]</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="segments_8h.html#a2e9dea20b55782f35a2f810a20bea0ab">  102</a></span><span class="preprocessor">    #define TRIG_TABLES_SIZE          (size_t)    0x5810</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="segments_8h.html#a5c4b46682e3b26db8919944b7766bc43">  104</a></span><span class="preprocessor">    #define SEG_DATA_START            (uintptr_t) &amp;_data_segment2SegmentRomStart[0]</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="segments_8h.html#a1ec99b3956bc9699291ce3ab90f3e8b3">  105</a></span><span class="preprocessor">    #define SEG_DATA_END              (uintptr_t) &amp;_data_segment2SegmentRomEnd[0]</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="segments_8h.html#a03d3ab673722457d40c636948e99b361">  107</a></span><span class="preprocessor">    #define COMMON_TEXTURES_ROM_START (uintptr_t) &amp;_common_texturesSegmentRomStart[0]</span></div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="segments_8h.html#a8f3b09eb89cbeb4d1694dbe836ea1df8">  108</a></span><span class="preprocessor">    #define COMMON_TEXTURES_SIZE      (ptrdiff_t) ((uintptr_t)&amp;_common_texturesSegmentRomEnd - (uintptr_t)&amp;_common_texturesSegmentRomStart)</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="segments_8h.html#a83985bbab670a44f410118ee86e60ee8">  110</a></span><span class="preprocessor">    #define CEREMONY_DATA_ROM_START   &amp;_ceremonyDataSegmentRomStart[0]</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="segments_8h.html#aae75a5f728076b2937858542b7e9dbd3">  111</a></span><span class="preprocessor">    #define CEREMONY_DATA_ROM_END     &amp;_ceremonyDataSegmentRomEnd[0]</span></div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="segments_8h.html#aafa03ea9c3a929c8050106c259a06089">  113</a></span><span class="preprocessor">    #define STARTUP_LOGO_ROM_START    &amp;_startupLogoSegmentRomStart[0]</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="segments_8h.html#af2bfeaf6e27a9e9cfa20e109c4b23f94">  114</a></span><span class="preprocessor">    #define STARTUP_LOGO_ROM_END      &amp;_startupLogoSegmentRomEnd[0]</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="preprocessor">#endif </span><span class="comment">/* AVOID_UB */</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="preprocessor">#endif </span><span class="comment">/* SEGMENTS_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="segments_8h.html#a761c05cde348942fdce0754b88fb1ca6">   98</a></span><span class="preprocessor">#define TRIG_TABLES (uintptr_t) 0x802BA370</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="segments_8h.html#a20d77c6ed229d04a4e116f6efee58b65">   99</a></span><span class="preprocessor">#define TRIG_TABLES_ROM_START (uintptr_t) &amp; _trigTablesSegmentRomStart[0]</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="segments_8h.html#a2e9dea20b55782f35a2f810a20bea0ab">  100</a></span><span class="preprocessor">#define TRIG_TABLES_SIZE (size_t) 0x5810</span></div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="segments_8h.html#a5c4b46682e3b26db8919944b7766bc43">  102</a></span><span class="preprocessor">#define SEG_DATA_START (uintptr_t) &amp; _data_segment2SegmentRomStart[0]</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="segments_8h.html#a1ec99b3956bc9699291ce3ab90f3e8b3">  103</a></span><span class="preprocessor">#define SEG_DATA_END (uintptr_t) &amp; _data_segment2SegmentRomEnd[0]</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="segments_8h.html#a03d3ab673722457d40c636948e99b361">  105</a></span><span class="preprocessor">#define COMMON_TEXTURES_ROM_START (uintptr_t) &amp; _common_texturesSegmentRomStart[0]</span></div>
+<div class="foldopen" id="foldopen00106" data-start="" data-end="">
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="segments_8h.html#a8f3b09eb89cbeb4d1694dbe836ea1df8">  106</a></span><span class="preprocessor">#define COMMON_TEXTURES_SIZE \</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">    (ptrdiff_t)((uintptr_t) &amp; _common_texturesSegmentRomEnd - (uintptr_t) &amp; _common_texturesSegmentRomStart)</span></div>
+</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="segments_8h.html#a83985bbab670a44f410118ee86e60ee8">  109</a></span><span class="preprocessor">#define CEREMONY_DATA_ROM_START &amp;_ceremonyDataSegmentRomStart[0]</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="segments_8h.html#aae75a5f728076b2937858542b7e9dbd3">  110</a></span><span class="preprocessor">#define CEREMONY_DATA_ROM_END &amp;_ceremonyDataSegmentRomEnd[0]</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno"><a class="line" href="segments_8h.html#aafa03ea9c3a929c8050106c259a06089">  112</a></span><span class="preprocessor">#define STARTUP_LOGO_ROM_START &amp;_startupLogoSegmentRomStart[0]</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="segments_8h.html#af2bfeaf6e27a9e9cfa20e109c4b23f94">  113</a></span><span class="preprocessor">#define STARTUP_LOGO_ROM_END &amp;_startupLogoSegmentRomEnd[0]</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="preprocessor">#endif </span><span class="comment">/* AVOID_UB */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="preprocessor">#endif </span><span class="comment">/* SEGMENTS_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="amacros_8h_html"><div class="ttname"><a href="macros_8h.html">macros.h</a></div></div>
 <div class="ttc" id="asegments_8h_html_a1c95b2354ca5fbdfcf205d2bbd6c5084"><div class="ttname"><a href="segments_8h.html#a1c95b2354ca5fbdfcf205d2bbd6c5084">_startupLogoSegmentRomStart</a></div><div class="ttdeci">u8 _startupLogoSegmentRomStart[]</div></div>
 <div class="ttc" id="asegments_8h_html_a2f00f01ea9f63c8a716281f20c7a8e77"><div class="ttname"><a href="segments_8h.html#a2f00f01ea9f63c8a716281f20c7a8e77">_endingSegmentRomEnd</a></div><div class="ttdeci">u8 _endingSegmentRomEnd[]</div></div>

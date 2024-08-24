@@ -52,7 +52,7 @@ var player__controller_8h =
     [ "func_8002D268", "player__controller_8h.html#aa62e3bb71c2d01a3ab74fea94d8d633f", null ],
     [ "func_8002E4C4", "player__controller_8h.html#a23af3130cfcd9af775d97ef725b91720", null ],
     [ "func_8002E594", "player__controller_8h.html#a7c264688f320e3a725ea354e350aec30", null ],
-    [ "func_8002F730", "player__controller_8h.html#a24d67e3f9e30f54446adc93646ebb73f", null ],
+    [ "func_8002F730", "player__controller_8h.html#a93beb6f60db4470425aa266cf0ea6abf", null ],
     [ "func_8002FCA8", "player__controller_8h.html#a6e06c131db7b06fca90eb9cb3c1a5493", null ],
     [ "func_8002FE84", "player__controller_8h.html#a5be64fa020a15492a4dab050c1ef5600", null ],
     [ "func_80030150", "player__controller_8h.html#a4f7e8cbddc50a8ca275134bdcd141594", null ],

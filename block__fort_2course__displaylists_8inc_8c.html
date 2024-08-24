@@ -194,8 +194,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ade5d23d9b4af596c713aed8b9d7f7ff7">G_CC_SHADE</a>, <a class="code hl_define" href="gbi_8h.html#ade5d23d9b4af596c713aed8b9d7f7ff7">G_CC_SHADE</a>),</div>
 <div class="line">    gsSPTexture(0x0001, 0x0001, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3c1c2e9788a104f60f8e01457dfd2d43">G_OFF</a>),</div>
 <div class="line">    gsSPVertex(0x04000000, 3, 0),</div>
@@ -204,11 +203,13 @@ Variables</h2></td></tr>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a03fd4201a4673c7eaad635e0ea1999e4">gBFTextureGrayCheckerboard</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x04000030, 20, 0),</div>
@@ -221,14 +222,14 @@ Variables</h2></td></tr>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
 <div class="ttc" id="ablock__fort_2course__textures_8linkonly_8c_html_a03fd4201a4673c7eaad635e0ea1999e4"><div class="ttname"><a href="block__fort_2course__textures_8linkonly_8c.html#a03fd4201a4673c7eaad635e0ea1999e4">gBFTextureGrayCheckerboard</a></div><div class="ttdeci">u8 gBFTextureGrayCheckerboard[]</div><div class="ttdef"><b>Definition</b> course_textures.linkonly.c:9</div></div>
-<div class="ttc" id="agbi_8h_html_a96be6076a8e6bb27804f871a035d1210"><div class="ttname"><a href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a></div><div class="ttdeci">#define G_RM_AA_ZB_OPA_SURF</div><div class="ttdef"><b>Definition</b> gbi.h:941</div></div>
-<div class="ttc" id="agbi_8h_html_aadb5eb2ba3b0a454682ae544c2d7ab66"><div class="ttname"><a href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a></div><div class="ttdeci">#define G_RM_AA_ZB_OPA_SURF2</div><div class="ttdef"><b>Definition</b> gbi.h:942</div></div>
-<div class="ttc" id="agbi_8h_html_ac8b0546f9482f12ed55f4b3cb1243a8c"><div class="ttname"><a href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a></div><div class="ttdeci">#define G_IM_FMT_RGBA</div><div class="ttdef"><b>Definition</b> gbi.h:396</div></div>
-<div class="ttc" id="agbi_8h_html_ad5e7c4c4dae792b27dd18c69f0ed550a"><div class="ttname"><a href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a></div><div class="ttdeci">#define G_IM_SIZ_16b</div><div class="ttdef"><b>Definition</b> gbi.h:407</div></div>
-<div class="ttc" id="agbi_8h_html_ade5d23d9b4af596c713aed8b9d7f7ff7"><div class="ttname"><a href="gbi_8h.html#ade5d23d9b4af596c713aed8b9d7f7ff7">G_CC_SHADE</a></div><div class="ttdeci">#define G_CC_SHADE</div><div class="ttdef"><b>Definition</b> gbi.h:482</div></div>
-<div class="ttc" id="agbi_8h_html_ae4a9361eec8b90bd63962d8aed9d87b0"><div class="ttname"><a href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a></div><div class="ttdeci">#define G_CC_MODULATEIA</div><div class="ttdef"><b>Definition</b> gbi.h:492</div></div>
-<div class="ttc" id="ambi_8h_html_a3502935c4007f9c00550286d895ca296"><div class="ttname"><a href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a></div><div class="ttdeci">#define G_ON</div><div class="ttdef"><b>Definition</b> mbi.h:54</div></div>
-<div class="ttc" id="ambi_8h_html_a3c1c2e9788a104f60f8e01457dfd2d43"><div class="ttname"><a href="mbi_8h.html#a3c1c2e9788a104f60f8e01457dfd2d43">G_OFF</a></div><div class="ttdeci">#define G_OFF</div><div class="ttdef"><b>Definition</b> mbi.h:55</div></div>
+<div class="ttc" id="agbi_8h_html_a96be6076a8e6bb27804f871a035d1210"><div class="ttname"><a href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a></div><div class="ttdeci">#define G_RM_AA_ZB_OPA_SURF</div><div class="ttdef"><b>Definition</b> gbi.h:878</div></div>
+<div class="ttc" id="agbi_8h_html_aadb5eb2ba3b0a454682ae544c2d7ab66"><div class="ttname"><a href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a></div><div class="ttdeci">#define G_RM_AA_ZB_OPA_SURF2</div><div class="ttdef"><b>Definition</b> gbi.h:879</div></div>
+<div class="ttc" id="agbi_8h_html_ac8b0546f9482f12ed55f4b3cb1243a8c"><div class="ttname"><a href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a></div><div class="ttdeci">#define G_IM_FMT_RGBA</div><div class="ttdef"><b>Definition</b> gbi.h:392</div></div>
+<div class="ttc" id="agbi_8h_html_ad5e7c4c4dae792b27dd18c69f0ed550a"><div class="ttname"><a href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a></div><div class="ttdeci">#define G_IM_SIZ_16b</div><div class="ttdef"><b>Definition</b> gbi.h:403</div></div>
+<div class="ttc" id="agbi_8h_html_ade5d23d9b4af596c713aed8b9d7f7ff7"><div class="ttname"><a href="gbi_8h.html#ade5d23d9b4af596c713aed8b9d7f7ff7">G_CC_SHADE</a></div><div class="ttdeci">#define G_CC_SHADE</div><div class="ttdef"><b>Definition</b> gbi.h:478</div></div>
+<div class="ttc" id="agbi_8h_html_ae4a9361eec8b90bd63962d8aed9d87b0"><div class="ttname"><a href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a></div><div class="ttdeci">#define G_CC_MODULATEIA</div><div class="ttdef"><b>Definition</b> gbi.h:488</div></div>
+<div class="ttc" id="ambi_8h_html_a3502935c4007f9c00550286d895ca296"><div class="ttname"><a href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a></div><div class="ttdeci">#define G_ON</div><div class="ttdef"><b>Definition</b> mbi.h:51</div></div>
+<div class="ttc" id="ambi_8h_html_a3c1c2e9788a104f60f8e01457dfd2d43"><div class="ttname"><a href="mbi_8h.html#a3c1c2e9788a104f60f8e01457dfd2d43">G_OFF</a></div><div class="ttdeci">#define G_OFF</div><div class="ttdef"><b>Definition</b> mbi.h:52</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -257,17 +258,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a03fd4201a4673c7eaad635e0ea1999e4">gBFTextureGrayCheckerboard</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x04000270, 16, 0),</div>
@@ -292,18 +294,17 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ac2dd96129f5683e66183ea5e09f35244">d_course_block_fort_packed_dl_11A8</a>),</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ac8475866e5fe732e9ddb3ed15fdb4af9">d_course_block_fort_packed_dl_F10</a>),</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#aaf7dc00c1b99e289faa116f9d25a8b34">d_course_block_fort_packed_dl_C80</a>),</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ad07522bf5779ed54189cd4c19f4f7ae0">d_course_block_fort_packed_dl_9F0</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_aaf7dc00c1b99e289faa116f9d25a8b34"><div class="ttname"><a href="#aaf7dc00c1b99e289faa116f9d25a8b34">d_course_block_fort_packed_dl_C80</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_C80[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:486</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ac2dd96129f5683e66183ea5e09f35244"><div class="ttname"><a href="#ac2dd96129f5683e66183ea5e09f35244">d_course_block_fort_packed_dl_11A8</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_11A8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:659</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ac8475866e5fe732e9ddb3ed15fdb4af9"><div class="ttname"><a href="#ac8475866e5fe732e9ddb3ed15fdb4af9">d_course_block_fort_packed_dl_F10</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_F10[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:572</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ad07522bf5779ed54189cd4c19f4f7ae0"><div class="ttname"><a href="#ad07522bf5779ed54189cd4c19f4f7ae0">d_course_block_fort_packed_dl_9F0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_9F0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:400</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_aaf7dc00c1b99e289faa116f9d25a8b34"><div class="ttname"><a href="#aaf7dc00c1b99e289faa116f9d25a8b34">d_course_block_fort_packed_dl_C80</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_C80[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:499</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ac2dd96129f5683e66183ea5e09f35244"><div class="ttname"><a href="#ac2dd96129f5683e66183ea5e09f35244">d_course_block_fort_packed_dl_11A8</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_11A8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:680</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ac8475866e5fe732e9ddb3ed15fdb4af9"><div class="ttname"><a href="#ac8475866e5fe732e9ddb3ed15fdb4af9">d_course_block_fort_packed_dl_F10</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_F10[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:589</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ad07522bf5779ed54189cd4c19f4f7ae0"><div class="ttname"><a href="#ad07522bf5779ed54189cd4c19f4f7ae0">d_course_block_fort_packed_dl_9F0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_9F0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:409</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -318,8 +319,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ade5d23d9b4af596c713aed8b9d7f7ff7">G_CC_SHADE</a>, <a class="code hl_define" href="gbi_8h.html#ade5d23d9b4af596c713aed8b9d7f7ff7">G_CC_SHADE</a>),</div>
 <div class="line">    gsSPTexture(0x0001, 0x0001, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3c1c2e9788a104f60f8e01457dfd2d43">G_OFF</a>),</div>
 <div class="line">    gsSPVertex(0x040041B0, 31, 0),</div>
@@ -358,12 +358,11 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a7385d5dc62deb1f4559430205e0f8946">d_course_block_fort_packed_dl_14C8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a7385d5dc62deb1f4559430205e0f8946"><div class="ttname"><a href="#a7385d5dc62deb1f4559430205e0f8946">d_course_block_fort_packed_dl_14C8</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_14C8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:767</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a7385d5dc62deb1f4559430205e0f8946"><div class="ttname"><a href="#a7385d5dc62deb1f4559430205e0f8946">d_course_block_fort_packed_dl_14C8</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_14C8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:791</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -378,20 +377,16 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
-<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ae6f172a3fd00c5e262dde5dbdf82c1b0">d_course_block_fort_packed_dl_1580</a>),</div>
-<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a05c057cc2352b9d3abdf2553a9dd7a31">d_course_block_fort_packed_dl_14A0</a>),</div>
-<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a5dc60d7f503af02c2ecafec4d1641ab3">d_course_block_fort_packed_dl_9C0</a>),</div>
-<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#aee065821a78f5717b05b13f976d23049">d_course_block_fort_packed_dl_688</a>),</div>
-<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a75532993583bd0c568d560d13d9a853e">d_course_block_fort_packed_dl_3F0</a>),</div>
-<div class="line">    gsSPEndDisplayList(),</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ae6f172a3fd00c5e262dde5dbdf82c1b0">d_course_block_fort_packed_dl_1580</a>), gsSPDisplayList(<a class="code hl_variable" href="#a05c057cc2352b9d3abdf2553a9dd7a31">d_course_block_fort_packed_dl_14A0</a>),</div>
+<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a5dc60d7f503af02c2ecafec4d1641ab3">d_course_block_fort_packed_dl_9C0</a>),  gsSPDisplayList(<a class="code hl_variable" href="#aee065821a78f5717b05b13f976d23049">d_course_block_fort_packed_dl_688</a>),</div>
+<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a75532993583bd0c568d560d13d9a853e">d_course_block_fort_packed_dl_3F0</a>),  gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a05c057cc2352b9d3abdf2553a9dd7a31"><div class="ttname"><a href="#a05c057cc2352b9d3abdf2553a9dd7a31">d_course_block_fort_packed_dl_14A0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_14A0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:758</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a5dc60d7f503af02c2ecafec4d1641ab3"><div class="ttname"><a href="#a5dc60d7f503af02c2ecafec4d1641ab3">d_course_block_fort_packed_dl_9C0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_9C0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:390</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a75532993583bd0c568d560d13d9a853e"><div class="ttname"><a href="#a75532993583bd0c568d560d13d9a853e">d_course_block_fort_packed_dl_3F0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_3F0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:160</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ae6f172a3fd00c5e262dde5dbdf82c1b0"><div class="ttname"><a href="#ae6f172a3fd00c5e262dde5dbdf82c1b0">d_course_block_fort_packed_dl_1580</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_1580[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:794</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_aee065821a78f5717b05b13f976d23049"><div class="ttname"><a href="#aee065821a78f5717b05b13f976d23049">d_course_block_fort_packed_dl_688</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_688[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:263</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a05c057cc2352b9d3abdf2553a9dd7a31"><div class="ttname"><a href="#a05c057cc2352b9d3abdf2553a9dd7a31">d_course_block_fort_packed_dl_14A0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_14A0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:783</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a5dc60d7f503af02c2ecafec4d1641ab3"><div class="ttname"><a href="#a5dc60d7f503af02c2ecafec4d1641ab3">d_course_block_fort_packed_dl_9C0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_9C0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:403</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a75532993583bd0c568d560d13d9a853e"><div class="ttname"><a href="#a75532993583bd0c568d560d13d9a853e">d_course_block_fort_packed_dl_3F0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_3F0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:166</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ae6f172a3fd00c5e262dde5dbdf82c1b0"><div class="ttname"><a href="#ae6f172a3fd00c5e262dde5dbdf82c1b0">d_course_block_fort_packed_dl_1580</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_1580[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:817</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_aee065821a78f5717b05b13f976d23049"><div class="ttname"><a href="#aee065821a78f5717b05b13f976d23049">d_course_block_fort_packed_dl_688</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_688[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:272</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -406,12 +401,11 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ab5568bdaaac74ff225fa906079361c5d">d_course_block_fort_packed_dl_1590</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ab5568bdaaac74ff225fa906079361c5d"><div class="ttname"><a href="#ab5568bdaaac74ff225fa906079361c5d">d_course_block_fort_packed_dl_1590</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_1590[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:800</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ab5568bdaaac74ff225fa906079361c5d"><div class="ttname"><a href="#ab5568bdaaac74ff225fa906079361c5d">d_course_block_fort_packed_dl_1590</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_1590[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:822</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -426,8 +420,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
 </div><!-- fragment -->
@@ -444,17 +437,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a03fd4201a4673c7eaad635e0ea1999e4">gBFTextureGrayCheckerboard</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x04000370, 16, 0),</div>
@@ -479,17 +473,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a03fd4201a4673c7eaad635e0ea1999e4">gBFTextureGrayCheckerboard</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x04000470, 32, 0),</div>
@@ -521,17 +516,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a03fd4201a4673c7eaad635e0ea1999e4">gBFTextureGrayCheckerboard</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x040006F0, 32, 0),</div>
@@ -562,8 +558,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a64c5dd824430c5fc4e834784c1e911af">d_course_block_fort_packed_dl_330</a>),</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a83fae9f9750ffdca5c3a47fc79265ed6">d_course_block_fort_packed_dl_268</a>),</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a19a13ff63b9cbe02281c11c8373c0335">d_course_block_fort_packed_dl_1D8</a>),</div>
@@ -573,11 +568,11 @@ Variables</h2></td></tr>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
 <div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a14f718fe77077c9985f42185c5538e7e"><div class="ttname"><a href="#a14f718fe77077c9985f42185c5538e7e">d_course_block_fort_packed_dl_0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:10</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a19a13ff63b9cbe02281c11c8373c0335"><div class="ttname"><a href="#a19a13ff63b9cbe02281c11c8373c0335">d_course_block_fort_packed_dl_1D8</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_1D8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:81</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a326734b7285c9b2cd25374e6604c6c76"><div class="ttname"><a href="#a326734b7285c9b2cd25374e6604c6c76">d_course_block_fort_packed_dl_B8</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_B8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:37</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a64c5dd824430c5fc4e834784c1e911af"><div class="ttname"><a href="#a64c5dd824430c5fc4e834784c1e911af">d_course_block_fort_packed_dl_330</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_330[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:132</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a82bf3ea6140f47132987ffb76bf670e5"><div class="ttname"><a href="#a82bf3ea6140f47132987ffb76bf670e5">d_course_block_fort_packed_dl_148</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_148[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:59</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a83fae9f9750ffdca5c3a47fc79265ed6"><div class="ttname"><a href="#a83fae9f9750ffdca5c3a47fc79265ed6">d_course_block_fort_packed_dl_268</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_268[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:103</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a19a13ff63b9cbe02281c11c8373c0335"><div class="ttname"><a href="#a19a13ff63b9cbe02281c11c8373c0335">d_course_block_fort_packed_dl_1D8</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_1D8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:84</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a326734b7285c9b2cd25374e6604c6c76"><div class="ttname"><a href="#a326734b7285c9b2cd25374e6604c6c76">d_course_block_fort_packed_dl_B8</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_B8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:38</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a64c5dd824430c5fc4e834784c1e911af"><div class="ttname"><a href="#a64c5dd824430c5fc4e834784c1e911af">d_course_block_fort_packed_dl_330</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_330[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:137</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a82bf3ea6140f47132987ffb76bf670e5"><div class="ttname"><a href="#a82bf3ea6140f47132987ffb76bf670e5">d_course_block_fort_packed_dl_148</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_148[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:61</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a83fae9f9750ffdca5c3a47fc79265ed6"><div class="ttname"><a href="#a83fae9f9750ffdca5c3a47fc79265ed6">d_course_block_fort_packed_dl_268</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_268[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:107</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -592,17 +587,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a121b552022096bf1ee118b86f55e2330">gBFTexture6747C4</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x04000930, 24, 0),</div>
@@ -629,17 +625,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a121b552022096bf1ee118b86f55e2330">gBFTexture6747C4</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x04000AB0, 24, 0),</div>
@@ -665,17 +662,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a121b552022096bf1ee118b86f55e2330">gBFTexture6747C4</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x04000C30, 20, 0),</div>
@@ -701,17 +699,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a121b552022096bf1ee118b86f55e2330">gBFTexture6747C4</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x04000D70, 18, 0),</div>
@@ -737,18 +736,17 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a38810aed0d5666876e6b78fd29024802">d_course_block_fort_packed_dl_5F0</a>),</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ad829ec3b663ad28cb59c579e10443909">d_course_block_fort_packed_dl_558</a>),</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#aa47c089f30555c4b050c74a4affaceda">d_course_block_fort_packed_dl_4C0</a>),</div>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a322b53098150fdf16ca133d8fd8a8a0d">d_course_block_fort_packed_dl_428</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a322b53098150fdf16ca133d8fd8a8a0d"><div class="ttname"><a href="#a322b53098150fdf16ca133d8fd8a8a0d">d_course_block_fort_packed_dl_428</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_428[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:171</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a38810aed0d5666876e6b78fd29024802"><div class="ttname"><a href="#a38810aed0d5666876e6b78fd29024802">d_course_block_fort_packed_dl_5F0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_5F0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:240</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_aa47c089f30555c4b050c74a4affaceda"><div class="ttname"><a href="#aa47c089f30555c4b050c74a4affaceda">d_course_block_fort_packed_dl_4C0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_4C0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:194</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ad829ec3b663ad28cb59c579e10443909"><div class="ttname"><a href="#ad829ec3b663ad28cb59c579e10443909">d_course_block_fort_packed_dl_558</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_558[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:217</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a322b53098150fdf16ca133d8fd8a8a0d"><div class="ttname"><a href="#a322b53098150fdf16ca133d8fd8a8a0d">d_course_block_fort_packed_dl_428</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_428[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:176</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a38810aed0d5666876e6b78fd29024802"><div class="ttname"><a href="#a38810aed0d5666876e6b78fd29024802">d_course_block_fort_packed_dl_5F0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_5F0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:248</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_aa47c089f30555c4b050c74a4affaceda"><div class="ttname"><a href="#aa47c089f30555c4b050c74a4affaceda">d_course_block_fort_packed_dl_4C0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_4C0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:200</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ad829ec3b663ad28cb59c579e10443909"><div class="ttname"><a href="#ad829ec3b663ad28cb59c579e10443909">d_course_block_fort_packed_dl_558</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_558[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:224</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -777,17 +775,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a5e49bebe67ad00105619e59952eaa7cf">gBFTexture6442D4</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x04001290, 16, 0),</div>
@@ -812,17 +811,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a5e49bebe67ad00105619e59952eaa7cf">gBFTexture6442D4</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x04001390, 16, 0),</div>
@@ -846,17 +846,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a5e49bebe67ad00105619e59952eaa7cf">gBFTexture6442D4</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x04001490, 16, 0),</div>
@@ -880,17 +881,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a5e49bebe67ad00105619e59952eaa7cf">gBFTexture6442D4</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x04001590, 16, 0),</div>
@@ -914,20 +916,16 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
-<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ae27e713d571b5ec361edf048a02aa7c1">d_course_block_fort_packed_dl_938</a>),</div>
-<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#abd5b6a979a5e30fd6ccd096fb4dd152c">d_course_block_fort_packed_dl_8B0</a>),</div>
-<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#af0d81a0ab45e2d6e4f1fbaea4175aa20">d_course_block_fort_packed_dl_828</a>),</div>
-<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a3b9c6d1f0d0dca26cf53ab294c6d59d4">d_course_block_fort_packed_dl_7A0</a>),</div>
-<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a2785dcfb543d16c50819e360842deb4d">d_course_block_fort_packed_dl_6B0</a>),</div>
-<div class="line">    gsSPEndDisplayList(),</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ae27e713d571b5ec361edf048a02aa7c1">d_course_block_fort_packed_dl_938</a>), gsSPDisplayList(<a class="code hl_variable" href="#abd5b6a979a5e30fd6ccd096fb4dd152c">d_course_block_fort_packed_dl_8B0</a>),</div>
+<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#af0d81a0ab45e2d6e4f1fbaea4175aa20">d_course_block_fort_packed_dl_828</a>), gsSPDisplayList(<a class="code hl_variable" href="#a3b9c6d1f0d0dca26cf53ab294c6d59d4">d_course_block_fort_packed_dl_7A0</a>),</div>
+<div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a2785dcfb543d16c50819e360842deb4d">d_course_block_fort_packed_dl_6B0</a>), gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a2785dcfb543d16c50819e360842deb4d"><div class="ttname"><a href="#a2785dcfb543d16c50819e360842deb4d">d_course_block_fort_packed_dl_6B0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_6B0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:272</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a3b9c6d1f0d0dca26cf53ab294c6d59d4"><div class="ttname"><a href="#a3b9c6d1f0d0dca26cf53ab294c6d59d4">d_course_block_fort_packed_dl_7A0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_7A0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:306</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_abd5b6a979a5e30fd6ccd096fb4dd152c"><div class="ttname"><a href="#abd5b6a979a5e30fd6ccd096fb4dd152c">d_course_block_fort_packed_dl_8B0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_8B0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:348</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ae27e713d571b5ec361edf048a02aa7c1"><div class="ttname"><a href="#ae27e713d571b5ec361edf048a02aa7c1">d_course_block_fort_packed_dl_938</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_938[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:369</div></div>
-<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_af0d81a0ab45e2d6e4f1fbaea4175aa20"><div class="ttname"><a href="#af0d81a0ab45e2d6e4f1fbaea4175aa20">d_course_block_fort_packed_dl_828</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_828[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:327</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a2785dcfb543d16c50819e360842deb4d"><div class="ttname"><a href="#a2785dcfb543d16c50819e360842deb4d">d_course_block_fort_packed_dl_6B0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_6B0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:280</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_a3b9c6d1f0d0dca26cf53ab294c6d59d4"><div class="ttname"><a href="#a3b9c6d1f0d0dca26cf53ab294c6d59d4">d_course_block_fort_packed_dl_7A0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_7A0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:315</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_abd5b6a979a5e30fd6ccd096fb4dd152c"><div class="ttname"><a href="#abd5b6a979a5e30fd6ccd096fb4dd152c">d_course_block_fort_packed_dl_8B0</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_8B0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:359</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_ae27e713d571b5ec361edf048a02aa7c1"><div class="ttname"><a href="#ae27e713d571b5ec361edf048a02aa7c1">d_course_block_fort_packed_dl_938</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_938[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:381</div></div>
+<div class="ttc" id="ablock__fort_2course__displaylists_8inc_8c_html_af0d81a0ab45e2d6e4f1fbaea4175aa20"><div class="ttname"><a href="#af0d81a0ab45e2d6e4f1fbaea4175aa20">d_course_block_fort_packed_dl_828</a></div><div class="ttdeci">Gfx d_course_block_fort_packed_dl_828[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:337</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -956,17 +954,18 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">{</div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, <a class="code hl_define" href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a>),</div>
 <div class="line">    gsDPSetCombineMode(<a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>, <a class="code hl_define" href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a>),</div>
 <div class="line">    gsDPSetRenderMode(<a class="code hl_define" href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a>, <a class="code hl_define" href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
+<div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
 <div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="block__fort_2course__textures_8linkonly_8c.html#a03fd4201a4673c7eaad635e0ea1999e4">gBFTextureGrayCheckerboard</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
-<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
+<div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
+<div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
 <div class="line">    gsDPLoadSync(),</div>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),</div>
 <div class="line">    gsSPVertex(0x04000170, 16, 0),</div>

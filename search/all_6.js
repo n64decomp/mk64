@@ -8884,7 +8884,7 @@ var searchData=
   ['d_5ftoads_5fturnpike_5f0d0053c8_8881',['D_toads_turnpike_0D0053C8',['../common__data_8h.html#a24558f5b8030f2419493938fe6b97c0e',1,'common_data.h']]],
   ['d_5ftoads_5fturnpike_5f0d0053f0_8882',['D_toads_turnpike_0D0053F0',['../common__data_8h.html#a609853be6e1d6a09db55209f0dd8fe89',1,'common_data.h']]],
   ['d_5ftoads_5fturnpike_5f0d005418_8883',['D_toads_turnpike_0D005418',['../common__data_8h.html#a7332eee0294b4c77f30dec70b6c5a1f3',1,'common_data.h']]],
-  ['data_8884',['data',['../struct____OSContRamReadFormat.html#ab3b9ed956c4f0ff82dd0670cee22b977',1,'__OSContRamReadFormat::data'],['../struct____OSContEepromFormat.html#a71e4dec4fc26615d388fece72c4f9feb',1,'__OSContEepromFormat::data'],['../structISVDbg.html#aca46fd7b19930e5b5ef41810731a40d2',1,'ISVDbg::data'],['../controlflow.html#ui--other-2d-screen-data',1,'UI &amp; Other 2D Screen data']]],
+  ['data_8884',['data',['../struct____OSContRamReadFormat.html#ab3b9ed956c4f0ff82dd0670cee22b977',1,'__OSContRamReadFormat::data'],['../struct____OSContEepromFormat.html#a71e4dec4fc26615d388fece72c4f9feb',1,'__OSContEepromFormat::data'],['../structISVDbg.html#ae86e42ac11dac50bf35ab3834c7eca4c',1,'ISVDbg::data'],['../controlflow.html#ui--other-2d-screen-data',1,'UI &amp; Other 2D Screen data']]],
   ['data_2ec_8885',['data.c',['../data_8c.html',1,'']]],
   ['data_2eh_8886',['data.h',['../data_8h.html',1,'']]],
   ['data1_8887',['data1',['../structOSContPackedRequest.html#a33ea6a58969a3a7bd5f6af16a6d4fa00',1,'OSContPackedRequest']]],
