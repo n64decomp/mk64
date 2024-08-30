@@ -122,27 +122,27 @@ s32 f32_lerp(f32 *dest, f32 src, f32 lerp) {
     return 1;
 }
 
-UNUSED bool ease_out_transition(s16* var, s16 goal, s16 speed_factor) {
+UNUSED bool ease_out_transition(s16* var, s16 dest, s16 speed_factor) {
     s16 temp_v0 = *var;
 
     if (speed_factor == 0) {
-        *var = goal;
+        *var = dest;
     } else {
-        temp_v0 -= goal;
+        temp_v0 -= dest;
         temp_v0 -= (temp_v0 / speed_factor);
-        temp_v0 += goal;
+        temp_v0 += dest;
         *var = temp_v0;
     }
     
-    if (goal == *var) {
+    if (dest == *var) {
         return FALSE;
     }
     return TRUE;
 }
 
 // Calculates fade in/out
-bool adjust_f32_value_transition(f32 *var, f32 goal, f32 speed_factor) {
-    f32 temp_f0 = goal - *var;
+bool adjust_f32_value_transition(f32 *var, f32 dest, f32 speed_factor) {
+    f32 temp_f0 = dest - *var;
    
     if (speed_factor < 0.0f) {
         speed_factor = -1.0f * speed_factor;
@@ -151,20 +151,20 @@ bool adjust_f32_value_transition(f32 *var, f32 goal, f32 speed_factor) {
     if (temp_f0 > 0.0f) {
         temp_f0 -= speed_factor;
         if (temp_f0 > 0.0f) {
-            *var = goal - temp_f0;
+            *var = dest - temp_f0;
         } else {
-            *var = goal;
+            *var = dest;
         }
     } else {
         temp_f0 += speed_factor;
         if (temp_f0 < 0.0f) {
-            *var = goal - temp_f0;
+            *var = dest - temp_f0;
         } else {
-            *var = goal;
+            *var = dest;
         }
     }
 
-    if (goal == *var) {
+    if (dest == *var) {
         return FALSE;
     }
     return TRUE;
@@ -209,7 +209,7 @@ void wrap_reset_spline(UNUSED CinematicCamera *arg0) {
     reset_spline();
 }
 
-void calculate_distance_angle_y_and_angle_Y_to_XZ(Vec3f vec1, Vec3f vec2, f32 *distance, s16 *angleYToXZ, s16 *angleY) {
+void calculate_distance_angle_y_and_angle_y_to_xz(Vec3f vec1, Vec3f vec2, f32 *distance, s16 *angleYToXZ, s16 *angleY) {
     f32 xdist;
     f32 ydist;
     f32 zdist;
@@ -222,13 +222,13 @@ void calculate_distance_angle_y_and_angle_Y_to_XZ(Vec3f vec1, Vec3f vec2, f32 *d
     *angleY = atan2s(xdist, zdist);
 }
 
-void apply_distance_angle_y_and_angle_Y_to_XZ(Vec3f vec1, Vec3f vec2, f32 coef, s16 angleYToXZ, s16 angleY) {
+void apply_distance_angle_y_and_angle_y_to_xz(Vec3f vec1, Vec3f vec2, f32 coef, s16 angleYToXZ, s16 angleY) {
     vec2[0] = vec1[0] + (coef * coss(angleYToXZ) * sins(angleY));
     vec2[1] = vec1[1] + (coef * sins(angleYToXZ));
     vec2[2] = vec1[2] + (coef * coss(angleYToXZ) * coss(angleY));
 }
 
-UNUSED void avorting_cinematic_function(Vec3f arg0, Vec3f arg1, Vec3f arg2, Vec3s arg3) {
+UNUSED void aborting_cinematic_function(Vec3f arg0, Vec3f arg1, Vec3f arg2, Vec3s arg3) {
     Vec3f sp3C;
     Vec3f sp30;
 
@@ -428,10 +428,10 @@ void func_80282F44(s32 arg0, CinematicCamera *arg1, Camera *camera) {
     vec3f_set_dupe(lookat, camera->lookAt[0], camera->lookAt[1], camera->lookAt[2]);
     if ((arg0 == 0) || (arg0 == 1)) {
         if ((arg1->unk48[0] != 0) || (arg1->unk48[1] != 0)) {
-            calculate_distance_angle_y_and_angle_Y_to_XZ(pos, lookat, &distance, &angleCam[0], &angleCam[1]);
+            calculate_distance_angle_y_and_angle_y_to_xz(pos, lookat, &distance, &angleCam[0], &angleCam[1]);
             angleCam[arg0] += (((f32) arg1->unk48[arg0]) * sins(arg1->unk4E[arg0]));
             if ((angleCam[0] < 0x3800) && (angleCam[0] >= -0x37FF)) {
-                apply_distance_angle_y_and_angle_Y_to_XZ(pos, lookat, distance, angleCam[0], angleCam[1]);
+                apply_distance_angle_y_and_angle_y_to_xz(pos, lookat, distance, angleCam[0], angleCam[1]);
             }
             func_80282F00(&arg1->unk4E[arg0], arg1->unk54[arg0]);
             if (adjust_s16_value_transition(&arg1->unk48[arg0], 0, arg1->unk5A[arg0]) == FALSE) {
@@ -597,7 +597,7 @@ s32 func_80283648(Camera *camera) {
         vec3f_copy_return_dupe(cinematicCamera->lookAt, camera->pos);
         vec3f_copy_return_dupe(cinematicCamera->pos, camera->lookAt);
         play_cutscene(cinematicCamera);
-        calculate_distance_angle_y_and_angle_Y_to_XZ(cinematicCamera->lookAt, cinematicCamera->pos, &distance, &angleYToXZ, &angleY);
+        calculate_distance_angle_y_and_angle_y_to_xz(cinematicCamera->lookAt, cinematicCamera->pos, &distance, &angleYToXZ, &angleY);
         if (angleYToXZ >= 0x3800) {
             angleYToXZ = 0x3800;
         }
@@ -605,7 +605,7 @@ s32 func_80283648(Camera *camera) {
             angleYToXZ = -0x3800;
         }
         if ((angleYToXZ == 0x3800) || (angleYToXZ == -0x3800)) {
-            apply_distance_angle_y_and_angle_Y_to_XZ(cinematicCamera->lookAt, cinematicCamera->pos, distance, angleYToXZ, angleY);
+            apply_distance_angle_y_and_angle_y_to_xz(cinematicCamera->lookAt, cinematicCamera->pos, distance, angleYToXZ, angleY);
         }
         if (cinematicCamera->unk18 > 65536.0f) {
             cinematicCamera->unk18 -= 65536.0f;
