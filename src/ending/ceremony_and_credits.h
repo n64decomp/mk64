@@ -1,7 +1,7 @@
 #ifndef CEREMONY_AND_CREDITS_H
 #define CEREMONY_AND_CREDITS_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 #include "camera.h"
 
 struct struct_80283431 {
@@ -87,8 +87,8 @@ struct struct_80285D80 {
 struct struct_80286A04 {
     u8 unk0;
     u8 unk1;
-    struct struct_80285D80 *unk4;
-    struct struct_80285D80 *unk8;
+    struct struct_80285D80* unk4;
+    struct struct_80285D80* unk8;
     u16 unkC;
 };
 
