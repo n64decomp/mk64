@@ -1,12 +1,12 @@
 #include "libultra_internal.h"
 #include "hardware.h"
 
-extern OSViContext *__osViNext;
-extern OSViContext *__osViCurr;
+extern OSViContext* __osViNext;
+extern OSViContext* __osViCurr;
 
 void __osViSwapContext() {
-    register OSViMode *s0;
-    register OSViContext *s1;
+    register OSViMode* s0;
+    register OSViContext* s1;
     u32 origin;
     u32 hStart;
     u32 sp34;
@@ -24,7 +24,7 @@ void __osViSwapContext() {
         s1->unk20 = s0->comRegs.xScale;
     }
     if (s1->unk00 & 4) {
-        sp34 = (u32)(s0->fldRegs[field].yScale & 0xfff);
+        sp34 = (u32) (s0->fldRegs[field].yScale & 0xfff);
         s1->unk2c = s1->unk24 * sp34;
         s1->unk2c |= s0->fldRegs[field].yScale & ~0xfff;
     } else {
