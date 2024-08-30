@@ -21,9 +21,7 @@
 #include "menus.h"
 #include "render_courses.h"
 
-u8 defaultCharacterIds[] = {
-    1, 2, 3, 4, 5, 6, 7, 0
-};
+u8 defaultCharacterIds[] = { 1, 2, 3, 4, 5, 6, 7, 0 };
 
 void debug_switch_character_ceremony_cutscene(void) {
     if (gEnableDebugMode) {
@@ -31,23 +29,17 @@ void debug_switch_character_ceremony_cutscene(void) {
             // Allows to switch character in debug mode?
             if (gControllerOne->button & U_CBUTTONS) {
                 gCharacterSelections[0] = LUIGI;
-            }
-            else if (gControllerOne->button & L_CBUTTONS) {
+            } else if (gControllerOne->button & L_CBUTTONS) {
                 gCharacterSelections[0] = YOSHI;
-            }
-            else if (gControllerOne->button & R_CBUTTONS) {
+            } else if (gControllerOne->button & R_CBUTTONS) {
                 gCharacterSelections[0] = TOAD;
-            }
-            else if (gControllerOne->button & D_CBUTTONS) {
+            } else if (gControllerOne->button & D_CBUTTONS) {
                 gCharacterSelections[0] = DK;
-            }
-            else if (gControllerOne->button & U_JPAD) {
+            } else if (gControllerOne->button & U_JPAD) {
                 gCharacterSelections[0] = WARIO;
-            }
-            else if (gControllerOne->button & L_JPAD) {
+            } else if (gControllerOne->button & L_JPAD) {
                 gCharacterSelections[0] = PEACH;
-            }
-            else if (gControllerOne->button & R_JPAD) {
+            } else if (gControllerOne->button & R_JPAD) {
                 gCharacterSelections[0] = BOWSER;
             } else {
                 gCharacterSelections[0] = MARIO;
@@ -62,7 +54,9 @@ void debug_switch_character_ceremony_cutscene(void) {
 s32 func_80281880(s32 arg0) {
     s32 i;
     for (i = 0; i < NUM_PLAYERS; i++) {
-        if (gCharacterIdByGPOverallRank[i] == gCharacterSelections[arg0]) break;
+        if (gCharacterIdByGPOverallRank[i] == gCharacterSelections[arg0]) {
+            break;
+        }
     }
     return i;
 }
@@ -91,10 +85,10 @@ void func_802818BC(void) {
 }
 
 void load_ceremony_cutscene(void) {
-    Camera *camera = &cameras[0];
+    Camera* camera = &cameras[0];
 
     gCurrentCourseId = COURSE_ROYAL_RACEWAY;
-    D_800DC5B4 = (u16)1;
+    D_800DC5B4 = (u16) 1;
     gIsMirrorMode = 0;
     gGotoMenu = 0xFFFF;
     D_80287554 = 0;
@@ -112,8 +106,9 @@ void load_ceremony_cutscene(void) {
     gModeSelection = GRAND_PRIX;
     load_course(gCurrentCourseId);
     D_8015F730 = (s32) gNextFreeMemoryAddress;
-    set_segment_base_addr(0xB, (void *) decompress_segments((u8 *) CEREMONY_DATA_ROM_START, (u8 *) CEREMONY_DATA_ROM_END));
-    set_segment_base_addr(6, (void *) decompress_segments((u8 *) &_course_banshee_boardwalk_dl_mio0SegmentRomStart, (u8 *) &_course_yoshi_valley_dl_mio0SegmentRomStart));
+    set_segment_base_addr(0xB, (void*) decompress_segments((u8*) CEREMONY_DATA_ROM_START, (u8*) CEREMONY_DATA_ROM_END));
+    set_segment_base_addr(6, (void*) decompress_segments((u8*) &_course_banshee_boardwalk_dl_mio0SegmentRomStart,
+                                                         (u8*) &_course_yoshi_valley_dl_mio0SegmentRomStart));
     D_8015F8E4 = -2000.0f;
 
     gCourseMinX = -0x15A1;
@@ -127,31 +122,31 @@ void load_ceremony_cutscene(void) {
     D_8015F59C = 0;
     D_8015F5A0 = 0;
     D_8015F58C = 0;
-    D_8015F588 = (u16)0;
-    D_800DC5BC = (u16)0;
-    D_800DC5C8 = (u16)0;
-    gSurfaceMap = (mk64_surface_map_ram *) gNextFreeMemoryAddress;
+    gCollisionMeshCount = (u16) 0;
+    D_800DC5BC = (u16) 0;
+    D_800DC5C8 = (u16) 0;
+    gCollisionMesh = (CollisionTriangle*) gNextFreeMemoryAddress;
     //! @bug these segmented addresses need to be symbols for mobility
     // d_course_royal_raceway_packed_dl_67E8
-    set_vertex_data_with_default_section_id((Gfx *)0x070067E8, -1);
+    generate_collision_mesh_with_default_section_id((Gfx*) 0x070067E8, -1);
     // d_course_royal_raceway_packed_dl_AEF8
-    set_vertex_data_with_default_section_id((Gfx *)0x0700AEF8, -1);
+    generate_collision_mesh_with_default_section_id((Gfx*) 0x0700AEF8, -1);
     // d_course_royal_raceway_packed_dl_A970
-    set_vertex_data_with_default_section_id((Gfx *)0x0700A970, 8);
+    generate_collision_mesh_with_default_section_id((Gfx*) 0x0700A970, 8);
     // d_course_royal_raceway_packed_dl_AC30
-    set_vertex_data_with_default_section_id((Gfx *)0x0700AC30, 8);
+    generate_collision_mesh_with_default_section_id((Gfx*) 0x0700AC30, 8);
     // d_course_royal_raceway_packed_dl_CE0
-    set_vertex_data_with_default_section_id((Gfx *)0x07000CE0, 0x10);
+    generate_collision_mesh_with_default_section_id((Gfx*) 0x07000CE0, 0x10);
     // d_course_royal_raceway_packed_dl_E88
-    set_vertex_data_with_default_section_id((Gfx *)0x07000E88, 0x10);
+    generate_collision_mesh_with_default_section_id((Gfx*) 0x07000E88, 0x10);
     // d_course_royal_raceway_packed_dl_A618
-    set_vertex_data_with_default_section_id((Gfx *)0x0700A618, -1);
+    generate_collision_mesh_with_default_section_id((Gfx*) 0x0700A618, -1);
     // d_course_royal_raceway_packed_dl_A618
-    set_vertex_data_with_default_section_id((Gfx *)0x0700A618, -1);
+    generate_collision_mesh_with_default_section_id((Gfx*) 0x0700A618, -1);
     // d_course_royal_raceway_packed_dl_23F8
-    set_vertex_data_with_default_section_id((Gfx *)0x070023F8, 1);
+    generate_collision_mesh_with_default_section_id((Gfx*) 0x070023F8, 1);
     // d_course_royal_raceway_packed_dl_2478
-    set_vertex_data_with_default_section_id((Gfx *)0x07002478, 1);
+    generate_collision_mesh_with_default_section_id((Gfx*) 0x07002478, 1);
     func_80295C6C();
     debug_switch_character_ceremony_cutscene();
     func_802818BC();

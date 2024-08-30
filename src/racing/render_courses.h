@@ -4,9 +4,9 @@
 #include "code_800029B0.h"
 
 void func_8029122C(struct UnkStruct_800DC5EC*, s32);
-s32  func_80290C20(Camera*);
+s32 func_80290C20(Camera*);
 void parse_course_displaylists(uintptr_t);
-void load_surface_map(uintptr_t, struct UnkStruct_800DC5EC*);
+void render_course_segments(uintptr_t, struct UnkStruct_800DC5EC*);
 void func_80291198(void);
 void func_802911C4(void);
 void render_mario_raceway(struct UnkStruct_800DC5EC*);
@@ -49,6 +49,6 @@ extern Lights1 D_800DC610[];
 
 extern Lights1 D_800DC610[]; // Light data?
 
-extern u16 D_8015F58A;
+extern u16 gNumCollisionTriangles;
 
 #endif

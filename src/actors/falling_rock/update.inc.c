@@ -3,11 +3,11 @@
 #include <main.h>
 #include "courses/choco_mountain/course_data.h"
 
-void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
+void func_8029CF0C(struct ActorSpawnData* spawnData, struct FallingRock* rock) {
     s32 segment = SEGMENT_NUMBER2(spawnData);
     s32 offset = SEGMENT_OFFSET(spawnData);
-    struct ActorSpawnData *temp_v0 = (struct ActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
-    Vec3s sp24 = {60, 120, 180};
+    struct ActorSpawnData* temp_v0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    Vec3s sp24 = { 60, 120, 180 };
     temp_v0 += rock->unk_06;
     rock->respawnTimer = sp24[rock->unk_06]; // * 2
     rock->pos[0] = (f32) temp_v0->pos[0] * gCourseDirection;
@@ -20,15 +20,15 @@ void func_8029CF0C(struct ActorSpawnData *spawnData, struct FallingRock *rock) {
 /**
  * @brief Spawns falling rocks.
  * Used in Choco Mountain.
- * 
- * @param spawnData 
+ *
+ * @param spawnData
  */
-void spawn_falling_rocks(struct ActorSpawnData *spawnData) {
+void spawn_falling_rocks(struct ActorSpawnData* spawnData) {
     s32 addr = SEGMENT_NUMBER2(spawnData);
     s32 offset = SEGMENT_OFFSET(spawnData);
     // Casting this to prevent warning does not work.
-    struct ActorSpawnData *temp_s0 = (struct ActorSpawnData *) VIRTUAL_TO_PHYSICAL2(gSegmentTable[addr] + offset);
-    struct FallingRock *temp_v1;
+    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[addr] + offset);
+    struct FallingRock* temp_v1;
     Vec3f startingPos;
     Vec3f startingVelocity;
     Vec3s startingRot;
@@ -41,10 +41,10 @@ void spawn_falling_rocks(struct ActorSpawnData *spawnData) {
         vec3f_set(startingVelocity, 0, 0, 0);
         vec3s_set(startingRot, 0, 0, 0);
         temp = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_FALLING_ROCK);
-        temp_v1 = (struct FallingRock *) &gActorList[temp];
+        temp_v1 = (struct FallingRock*) &gActorList[temp];
 
         temp_v1->unk_06 = temp_s0->someId;
-        func_802AAAAC((Collision *) &temp_v1->unk30);
+        func_802AAAAC((Collision*) &temp_v1->unk30);
         temp_s0++;
     }
 }
@@ -52,10 +52,10 @@ void spawn_falling_rocks(struct ActorSpawnData *spawnData) {
 /**
  * @brief Updates the falling rock actor.
  * Actor used in Choco Mountain.
- * 
- * @param rock 
+ *
+ * @param rock
  */
-void update_actor_falling_rocks(struct FallingRock *rock) {
+void update_actor_falling_rocks(struct FallingRock* rock) {
     Vec3f unkVec;
     f32 pad0;
     f32 pad1;
@@ -77,51 +77,49 @@ void update_actor_falling_rocks(struct FallingRock *rock) {
     rock->pos[1] += rock->velocity[1];
     rock->pos[2] += rock->velocity[2];
     pad1 = rock->velocity[1];
-    func_802ADDC8(&rock->unk30, 10.0f, rock->pos[0], rock->pos[1], rock->pos[2]);
-    pad0 = rock->unk30.unk3C[2];
+    check_bounding_collision(&rock->unk30, 10.0f, rock->pos[0], rock->pos[1], rock->pos[2]);
+    pad0 = rock->unk30.surfaceDistance[2];
     if (pad0 < 0.0f) {
         unkVec[0] = -rock->unk30.orientationVector[0];
         unkVec[1] = -rock->unk30.orientationVector[1];
         unkVec[2] = -rock->unk30.orientationVector[2];
-        rock->pos[0] += unkVec[0] * rock->unk30.unk3C[2];
-        rock->pos[1] += unkVec[1] * rock->unk30.unk3C[2];
-        rock->pos[2] += unkVec[2] * rock->unk30.unk3C[2];
-        func_802AC114(unkVec, pad0, rock->velocity, 2.0f);
+        rock->pos[0] += unkVec[0] * rock->unk30.surfaceDistance[2];
+        rock->pos[1] += unkVec[1] * rock->unk30.surfaceDistance[2];
+        rock->pos[2] += unkVec[2] * rock->unk30.surfaceDistance[2];
+        adjust_pos_orthogonally(unkVec, pad0, rock->velocity, 2.0f);
         rock->velocity[1] = -1.2f * pad1;
         func_800C98B8(rock->pos, rock->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x0F));
     }
-    pad0 = rock->unk30.unk3C[0];
+    pad0 = rock->unk30.surfaceDistance[0];
     if (pad0 < 0.0f) {
         unkVec[1] = -rock->unk30.unk48[1];
         if (unkVec[1] == 0.0f) {
             rock->velocity[1] *= -1.2f;
             return;
-        }
-        else {
+        } else {
             unkVec[0] = -rock->unk30.unk48[0];
             unkVec[2] = -rock->unk30.unk48[2];
-            rock->pos[0] += unkVec[0] * rock->unk30.unk3C[0];
-            rock->pos[1] += unkVec[1] * rock->unk30.unk3C[0];
-            rock->pos[2] += unkVec[2] * rock->unk30.unk3C[0];
-            func_802AC114(unkVec, pad0, rock->velocity, 2.0f);
+            rock->pos[0] += unkVec[0] * rock->unk30.surfaceDistance[0];
+            rock->pos[1] += unkVec[1] * rock->unk30.surfaceDistance[0];
+            rock->pos[2] += unkVec[2] * rock->unk30.surfaceDistance[0];
+            adjust_pos_orthogonally(unkVec, pad0, rock->velocity, 2.0f);
             rock->velocity[1] = -1.2f * pad1;
             func_800C98B8(rock->pos, rock->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x0F));
         }
     }
-    pad0 = rock->unk30.unk3C[1];
+    pad0 = rock->unk30.surfaceDistance[1];
     if (pad0 < 0.0f) {
         unkVec[1] = -rock->unk30.unk54[1];
         if (unkVec[1] == 0.0f) {
             rock->velocity[1] *= -1.2f;
-        }
-        else {
+        } else {
             unkVec[0] = -rock->unk30.unk54[0];
             unkVec[2] = -rock->unk30.unk54[2];
-            rock->pos[0] += unkVec[0] * rock->unk30.unk3C[1];
-            rock->pos[1] += unkVec[1] * rock->unk30.unk3C[1];
-            rock->pos[2] += unkVec[2] * rock->unk30.unk3C[1];
+            rock->pos[0] += unkVec[0] * rock->unk30.surfaceDistance[1];
+            rock->pos[1] += unkVec[1] * rock->unk30.surfaceDistance[1];
+            rock->pos[2] += unkVec[2] * rock->unk30.surfaceDistance[1];
             pad1 = rock->velocity[1];
-            func_802AC114(unkVec, pad0, rock->velocity, 2.0f);
+            adjust_pos_orthogonally(unkVec, pad0, rock->velocity, 2.0f);
             rock->velocity[1] = -1.2f * pad1;
             func_800C98B8(rock->pos, rock->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x0F));
         }

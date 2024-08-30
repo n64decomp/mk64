@@ -6,39 +6,40 @@
 
 /**
  * @brief Updates the green shell actor.
- * 
- * @param shell 
+ *
+ * @param shell
  */
-void update_actor_green_shell(struct ShellActor *shell) {
-    Player *player;
+void update_actor_green_shell(struct ShellActor* shell) {
+    Player* player;
     UNUSED f32 pad9;
     UNUSED f32 padA;
     Vec3f somePos2;
     Vec3f somePosVel;
     f32 var_f2;
-    struct Controller *controller;
-    TripleShellParent *parent;
-    UNUSED f32 pad0;
-    UNUSED f32 pad1;
+    struct Controller* controller;
+    TripleShellParent* parent;
+    f32 height;
+    f32 z;
     UNUSED f32 pad2;
     UNUSED f32 pad3;
     UNUSED f32 pad4;
     UNUSED f32 pad5;
-    UNUSED f32 pad6;
+    f32 y;
     UNUSED f32 pad7;
     UNUSED f32 pad8;
 
-    pad0 = shell->pos[0];
-    pad6 = shell->pos[1];
-    pad1 = shell->pos[2];
-    if ((pad1 < gCourseMinZ) || (gCourseMaxZ < pad1) || (pad0 < gCourseMinX) || (gCourseMaxX < pad0) || (pad6 < gCourseMinY)) {
-        destroy_destructable_actor((struct Actor *) shell);
+    height = shell->pos[0];
+    y = shell->pos[1];
+    z = shell->pos[2];
+    if ((z < gCourseMinZ) || (gCourseMaxZ < z) || (height < gCourseMinX) || (gCourseMaxX < height) ||
+        (y < gCourseMinY)) {
+        destroy_destructable_actor((struct Actor*) shell);
     }
     shell->rotVelocity += 0x71C;
     switch (shell->state) {
         case HELD_SHELL:
             player = &gPlayers[shell->playerId];
-            copy_collision(&player->unk_110, &shell->unk30);
+            copy_collision(&player->collision, &shell->unk30);
             somePosVel[0] = 0.0f;
             somePosVel[1] = player->boundingBoxSize;
             somePosVel[2] = -(player->boundingBoxSize + shell->boundingBoxSize + 2.0f);
@@ -46,10 +47,10 @@ void update_actor_green_shell(struct ShellActor *shell) {
             shell->pos[0] = player->pos[0] + somePosVel[0];
             pad2 = player->pos[1] - somePosVel[1];
             shell->pos[2] = player->pos[2] + somePosVel[2];
-            pad0 = func_802ABE30(shell->pos[0], pad2, shell->pos[2], player->unk_110.unk3A);
-            pad1 = pad2 - pad0;
-            if ((pad1 < 5.0f) && (pad1 > -5.0f)) {
-                shell->pos[1] = shell->boundingBoxSize + pad0;
+            height = calculate_surface_height(shell->pos[0], pad2, shell->pos[2], player->collision.meshIndexZX);
+            z = pad2 - height;
+            if ((z < 5.0f) && (z > -5.0f)) {
+                shell->pos[1] = shell->boundingBoxSize + height;
             } else {
                 shell->pos[1] = pad2;
             }
@@ -71,8 +72,9 @@ void update_actor_green_shell(struct ShellActor *shell) {
                         shell->velocity[2] = somePosVel[2];
                         shell->state = 2;
                         func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
-                        func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
-                        add_green_shell_in_unexpired_actor_list((struct Actor*)shell - gActorList);
+                        func_800C90F4(shell->playerId,
+                                      (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
+                        add_green_shell_in_unexpired_actor_list((struct Actor*) shell - gActorList);
                         return;
                     } else {
                         shell->state = 1;
@@ -93,8 +95,9 @@ void update_actor_green_shell(struct ShellActor *shell) {
                     shell->state = 2;
                     shell->someTimer = 0x001E;
                     func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
-                    func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
-                    add_green_shell_in_unexpired_actor_list((struct Actor*)shell - gActorList);
+                    func_800C90F4(shell->playerId,
+                                  (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
+                    add_green_shell_in_unexpired_actor_list((struct Actor*) shell - gActorList);
                 }
             } else {
                 shell->rotAngle += 0xE38;
@@ -102,8 +105,9 @@ void update_actor_green_shell(struct ShellActor *shell) {
                     shell->state = 2;
                     shell->someTimer = 0x001E;
                     func_800C9060(shell->playerId, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x04));
-                    func_800C90F4(shell->playerId, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
-                    add_green_shell_in_unexpired_actor_list((struct Actor*)shell - gActorList);
+                    func_800C90F4(shell->playerId,
+                                  (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x00));
+                    add_green_shell_in_unexpired_actor_list((struct Actor*) shell - gActorList);
                 }
             }
             if (shell->state == 2) {
@@ -145,9 +149,10 @@ void update_actor_green_shell(struct ShellActor *shell) {
             shell->pos[0] += shell->velocity[0];
             shell->pos[1] += shell->velocity[1];
             shell->pos[2] += shell->velocity[2];
-            func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], somePos2[0], somePos2[1], somePos2[2]);
-            func_802B4E30((struct Actor *) shell);
-            if ((shell->unk30.unk3C[0] < 0.0f) || (shell->unk30.unk3C[1] < 0.0f)) {
+            actor_terrain_collision(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], somePos2[0],
+                                    somePos2[1], somePos2[2]);
+            func_802B4E30((struct Actor*) shell);
+            if ((shell->unk30.surfaceDistance[0] < 0.0f) || (shell->unk30.surfaceDistance[1] < 0.0f)) {
                 shell_collision(&shell->unk30, shell->velocity);
                 func_800C98B8(shell->pos, shell->velocity, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x54));
                 shell->flags |= 0x80;
@@ -155,9 +160,9 @@ void update_actor_green_shell(struct ShellActor *shell) {
             break;
         case TRIPLE_GREEN_SHELL:
             player = &gPlayers[shell->playerId];
-            parent = (TripleShellParent *) &gActorList[shell->parentIndex];
+            parent = (TripleShellParent*) &gActorList[shell->parentIndex];
             if (parent->type != ACTOR_TRIPLE_GREEN_SHELL) {
-                destroy_destructable_actor((struct Actor *) shell);
+                destroy_destructable_actor((struct Actor*) shell);
             } else {
                 shell->rotAngle += parent->rotVelocity;
                 somePosVel[0] = sins(shell->rotAngle) * 8.0f;
@@ -170,8 +175,9 @@ void update_actor_green_shell(struct ShellActor *shell) {
                 shell->pos[0] = player->pos[0] + somePosVel[0];
                 shell->pos[1] = player->pos[1] + somePosVel[1];
                 shell->pos[2] = player->pos[2] + somePosVel[2];
-                func_802AD950(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], somePos2[0], somePos2[1], somePos2[2]);
-                func_802B4E30((struct Actor *) shell);
+                actor_terrain_collision(&shell->unk30, 4.0f, shell->pos[0], shell->pos[1], shell->pos[2], somePos2[0],
+                                        somePos2[1], somePos2[2]);
+                func_802B4E30((struct Actor*) shell);
             }
             break;
         case GREEN_SHELL_HIT_A_RACER:
@@ -184,7 +190,7 @@ void update_actor_green_shell(struct ShellActor *shell) {
             shell->someTimer -= 1;
             shell->pos[1] += shell->velocity[1];
             if (shell->someTimer == 0) {
-                destroy_actor((struct Actor *) shell);
+                destroy_actor((struct Actor*) shell);
             }
             break;
         default:
