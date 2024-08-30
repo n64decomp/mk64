@@ -411,13 +411,10 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
                 gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
 #ifdef AVOID_UB
                 gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3E40);
+                gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
 #else
                 // d_course_dks_jungle_parkway_packed_dl_3E40
                 gSPDisplayList(gDisplayListHead++, 0x07003E40);
-#endif
-#ifdef AVOID_UB
-                gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
-#else
                 // d_course_dks_jungle_parkway_packed_dl_3EB0
                 gSPDisplayList(gDisplayListHead++, 0x07003EB0);
 #endif
@@ -452,13 +449,10 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
                     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
 #ifdef AVOID_UB
                     gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3F30);
+                    gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_36A8);
 #else
                     // d_course_dks_jungle_parkway_packed_dl_3F30
                     gSPDisplayList(gDisplayListHead++, 0x07003F30);
-#endif
-#ifdef AVOID_UB
-                    gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_36A8);
-#else
                     // d_course_dks_jungle_parkway_packed_dl_36A8
                     gSPDisplayList(gDisplayListHead++, 0x070036A8);
 #endif
@@ -509,13 +503,10 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
                         case 0:
 #ifdef AVOID_UB
                             gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3E40);
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
 #else
                             // d_course_dks_jungle_parkway_packed_dl_3E40
                             gSPDisplayList(gDisplayListHead++, 0x07003E40);
-#endif
-#ifdef AVOID_UB
-                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
-#else
                             // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
 #endif
@@ -523,19 +514,13 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
                         case 1:
 #ifdef AVOID_UB
                             gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3DD0);
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3E40);
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
 #else
                             // d_course_dks_jungle_parkway_packed_dl_3DD0
                             gSPDisplayList(gDisplayListHead++, 0x07003DD0);
-#endif
-#ifdef AVOID_UB
-                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3E40);
-#else
                             // d_course_dks_jungle_parkway_packed_dl_3E40
                             gSPDisplayList(gDisplayListHead++, 0x07003E40);
-#endif
-#ifdef AVOID_UB
-                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
-#else
                             // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
 #endif
@@ -543,19 +528,13 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
                         case 2:
 #ifdef AVOID_UB
                             gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_);
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3F30);
 #else
                             // d_course_dks_jungle_parkway_packed_dl_
                             gSPDisplayList(gDisplayListHead++, 0x07003E40);
-#endif
-#ifdef AVOID_UB
-                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
-#else
                             // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
-#endif
-#ifdef AVOID_UB
-                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3F30);
-#else
                             // d_course_dks_jungle_parkway_packed_dl_3F30
                             gSPDisplayList(gDisplayListHead++, 0x07003F30);
 #endif
@@ -563,13 +542,10 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
                         case 3:
 #ifdef AVOID_UB
                             gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3F30);
 #else
                             // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
-#endif
-#ifdef AVOID_UB
-                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3F30);
-#else
                             // d_course_dks_jungle_parkway_packed_dl_3F30
                             gSPDisplayList(gDisplayListHead++, 0x07003F30);
 #endif
@@ -581,13 +557,10 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
                         case 0:
 #ifdef AVOID_UB
                             gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3E40);
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
 #else
                             // d_course_dks_jungle_parkway_packed_dl_3E40
                             gSPDisplayList(gDisplayListHead++, 0x07003E40);
-#endif
-#ifdef AVOID_UB
-                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
-#else
                             // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
 #endif
@@ -595,19 +568,13 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
                         case 1:
 #ifdef AVOID_UB
                             gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3DD0);
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3E40);
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
 #else
                             // d_course_dks_jungle_parkway_packed_dl_3DD0
                             gSPDisplayList(gDisplayListHead++, 0x07003DD0);
-#endif
-#ifdef AVOID_UB
-                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3E40);
-#else
                             // d_course_dks_jungle_parkway_packed_dl_3E40
                             gSPDisplayList(gDisplayListHead++, 0x07003E40);
-#endif
-#ifdef AVOID_UB
-                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
-#else
                             // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
 #endif
@@ -615,13 +582,10 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
                         case 2:
 #ifdef AVOID_UB
                             gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3E40);
+                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
 #else
                             // d_course_dks_jungle_parkway_packed_dl_3E40
                             gSPDisplayList(gDisplayListHead++, 0x07003E40);
-#endif
-#ifdef AVOID_UB
-                            gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
-#else
                             // d_course_dks_jungle_parkway_packed_dl_3EB0
                             gSPDisplayList(gDisplayListHead++, 0x07003EB0);
 #endif
@@ -632,19 +596,13 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
                     if ((playerDirection == 0) || (playerDirection == 1)) {
 #ifdef AVOID_UB
                         gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3E40);
+                        gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
+                        gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3F30);
 #else
                         // d_course_dks_jungle_parkway_packed_dl_3E40
                         gSPDisplayList(gDisplayListHead++, 0x07003E40);
-#endif
-#ifdef AVOID_UB
-                        gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3EB0);
-#else
                         // d_course_dks_jungle_parkway_packed_dl_3EB0
                         gSPDisplayList(gDisplayListHead++, 0x07003EB0);
-#endif
-#ifdef AVOID_UB
-                        gSPDisplayList(gDisplayListHead++, d_course_dks_jungle_parkway_packed_dl_3F30);
-#else
                         // d_course_dks_jungle_parkway_packed_dl_3F30
                         gSPDisplayList(gDisplayListHead++, 0x07003F30);
 #endif
@@ -783,19 +741,13 @@ void render_mario_raceway(struct UnkStruct_800DC5EC* arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_3508));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_3240));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_14A0));
 #else
     // d_course_mario_raceway_packed_dl_3508
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07003508));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_3240));
-#else
     // d_course_mario_raceway_packed_dl_3240
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07003240));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_14A0));
-#else
     // d_course_mario_raceway_packed_dl_14A0
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x070014A0));
 #endif
@@ -806,26 +758,20 @@ void render_mario_raceway(struct UnkStruct_800DC5EC* arg0) {
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_450));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_240));
 #else
     // d_course_mario_raceway_packed_dl_450
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000450));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_240));
-#else
     // d_course_mario_raceway_packed_dl_240
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000240));
 #endif
     gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_E0));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_160));
 #else
     // d_course_mario_raceway_packed_dl_E0
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x070000E0));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_mario_raceway_packed_dl_160));
-#else
     // d_course_mario_raceway_packed_dl_160
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000160));
 #endif
@@ -859,25 +805,16 @@ void render_choco_mountain(struct UnkStruct_800DC5EC* arg0) {
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_choco_mountain_packed_dl_5A70));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_choco_mountain_packed_dl_828));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_choco_mountain_packed_dl_8E0));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_choco_mountain_packed_dl_5868));
 #else
     // d_course_choco_mountain_packed_dl_5A70
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07005A70));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_choco_mountain_packed_dl_828));
-#else
     // d_course_choco_mountain_packed_dl_828
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000828));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_choco_mountain_packed_dl_8E0));
-#else
     // d_course_choco_mountain_packed_dl_8E0
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x070008E0));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_choco_mountain_packed_dl_5868));
-#else
     // d_course_choco_mountain_packed_dl_5868
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07005868));
 #endif
@@ -890,13 +827,10 @@ void render_choco_mountain(struct UnkStruct_800DC5EC* arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_PASS2);
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_choco_mountain_packed_dl_448));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_choco_mountain_packed_dl_5D8));
 #else
     // d_course_choco_mountain_packed_dl_448
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000448));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_choco_mountain_packed_dl_5D8));
-#else
     // d_course_choco_mountain_packed_dl_5D8
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x070005D8));
 #endif
@@ -978,19 +912,13 @@ void render_banshee_boardwalk(struct UnkStruct_800DC5EC* arg0) {
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_banshee_boardwalk_packed_dl_5CD0));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_banshee_boardwalk_packed_dl_4E60));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_banshee_boardwalk_packed_dl_69B0));
 #else
     // d_course_banshee_boardwalk_packed_dl_5CD0
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07005CD0));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_banshee_boardwalk_packed_dl_4E60));
-#else
     // d_course_banshee_boardwalk_packed_dl_4E60
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07004E60));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_banshee_boardwalk_packed_dl_69B0));
-#else
     // d_course_banshee_boardwalk_packed_dl_69B0
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x070069B0));
 #endif
@@ -1004,19 +932,13 @@ void render_banshee_boardwalk(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADE | G_SHADING_SMOOTH);
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_banshee_boardwalk_packed_dl_580));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_banshee_boardwalk_packed_dl_60));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_banshee_boardwalk_packed_dl_540));
 #else
     // d_course_banshee_boardwalk_packed_dl_580
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000580));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_banshee_boardwalk_packed_dl_60));
-#else
     // d_course_banshee_boardwalk_packed_dl_60
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000060));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_banshee_boardwalk_packed_dl_540));
-#else
     // d_course_banshee_boardwalk_packed_dl_540
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000540));
 #endif
@@ -1186,13 +1108,10 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC* arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_luigi_raceway_packed_dl_E0));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_luigi_raceway_packed_dl_68));
 #else
     // d_course_luigi_raceway_packed_dl_E0
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x070000E0));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_luigi_raceway_packed_dl_68));
-#else
     // d_course_luigi_raceway_packed_dl_68
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000068));
 #endif
@@ -1267,13 +1186,10 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_moo_moo_farm_packed_dl_4DF8));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_moo_moo_farm_packed_dl_5640));
 #else
     // d_course_moo_moo_farm_packed_dl_4DF8
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07004DF8));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_moo_moo_farm_packed_dl_5640));
-#else
     // d_course_moo_moo_farm_packed_dl_5640
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07005640));
 #endif
@@ -1361,19 +1277,13 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC* arg0) {
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_PASS2);
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_toads_turnpike_packed_dl_0));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_toads_turnpike_packed_dl_68));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_toads_turnpike_packed_dl_D8));
 #else
     // d_course_toads_turnpike_packed_dl_0
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000000));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_toads_turnpike_packed_dl_68));
-#else
     // d_course_toads_turnpike_packed_dl_68
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000068));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_toads_turnpike_packed_dl_D8));
-#else
     // d_course_toads_turnpike_packed_dl_D8
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x070000D8));
 #endif
@@ -1405,19 +1315,13 @@ void render_kalimari_desert(struct UnkStruct_800DC5EC* arg0) {
     render_course_segments((uintptr_t) kalimari_desert_dls, arg0);
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_kalimari_desert_packed_dl_1ED8));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_kalimari_desert_packed_dl_1B18));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_kalimari_desert_packed_dl_8330));
 #else
     // d_course_kalimari_desert_packed_dl_1ED8
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07001ED8));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_kalimari_desert_packed_dl_1B18));
-#else
     // d_course_kalimari_desert_packed_dl_1B18
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07001B18));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_kalimari_desert_packed_dl_8330));
-#else
     // d_course_kalimari_desert_packed_dl_8330
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07008330));
 #endif
@@ -1426,13 +1330,10 @@ void render_kalimari_desert(struct UnkStruct_800DC5EC* arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_kalimari_desert_packed_dl_998));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_kalimari_desert_packed_dl_270));
 #else
     // d_course_kalimari_desert_packed_dl_998
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000998));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_kalimari_desert_packed_dl_270));
-#else
     // d_course_kalimari_desert_packed_dl_270
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000270));
 #endif
@@ -1567,31 +1468,19 @@ void render_skyscraper(UNUSED struct UnkStruct_800DC5EC* arg0) {
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_skyscraper_packed_dl_FE8));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_skyscraper_packed_dl_C60));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_skyscraper_packed_dl_B70));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_skyscraper_packed_dl_6B8));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_skyscraper_packed_dl_570));
 #else
     // d_course_skyscraper_packed_dl_FE8
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000FE8));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_skyscraper_packed_dl_C60));
-#else
     // d_course_skyscraper_packed_dl_C60
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000C60));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_skyscraper_packed_dl_B70));
-#else
     // d_course_skyscraper_packed_dl_B70
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000B70));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_skyscraper_packed_dl_6B8));
-#else
     // d_course_skyscraper_packed_dl_6B8
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x070006B8));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_skyscraper_packed_dl_570));
-#else
     // d_course_skyscraper_packed_dl_570
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000570));
 #endif
@@ -1675,25 +1564,16 @@ void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
     }
 #ifdef AVOID_UB
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_big_donut_packed_dl_450));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_big_donut_packed_dl_AC0));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_big_donut_packed_dl_D20));
+    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_big_donut_packed_dl_230));
 #else
     // d_course_big_donut_packed_dl_450
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000450));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_big_donut_packed_dl_AC0));
-#else
     // d_course_big_donut_packed_dl_AC0
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000AC0));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_big_donut_packed_dl_D20));
-#else
     // d_course_big_donut_packed_dl_D20
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000D20));
-#endif
-#ifdef AVOID_UB
-    gSPDisplayList(gDisplayListHead++, ((uintptr_t) d_course_big_donut_packed_dl_230));
-#else
     // d_course_big_donut_packed_dl_230
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000230));
 #endif
@@ -1931,37 +1811,22 @@ void func_80295D88(void) {
             if ((gCCSelection != CC_50) && (gModeSelection != TIME_TRIALS)) {
 #ifdef AVOID_UB
                 nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_0);
+                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_98);
+                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_178);
+                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_280);
+                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_340);
+                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_3C8);
 #else
                 // d_course_choco_mountain_packed_dl_0
                 nullify_displaylist((uintptr_t) 0x07000000);
-#endif
-#ifdef AVOID_UB
-                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_98);
-#else
                 // d_course_choco_mountain_packed_dl_98
                 nullify_displaylist((uintptr_t) 0x07000098);
-#endif
-#ifdef AVOID_UB
-                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_178);
-#else
                 // d_course_choco_mountain_packed_dl_178
                 nullify_displaylist((uintptr_t) 0x07000178);
-#endif
-#ifdef AVOID_UB
-                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_280);
-#else
                 // d_course_choco_mountain_packed_dl_280
                 nullify_displaylist((uintptr_t) 0x07000280);
-#endif
-#ifdef AVOID_UB
-                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_340);
-#else
                 // d_course_choco_mountain_packed_dl_340
                 nullify_displaylist((uintptr_t) 0x07000340);
-#endif
-#ifdef AVOID_UB
-                nullify_displaylist((uintptr_t) d_course_choco_mountain_packed_dl_3C8);
-#else
                 // d_course_choco_mountain_packed_dl_3C8
                 nullify_displaylist((uintptr_t) 0x070003C8);
 #endif
@@ -2013,25 +1878,16 @@ void func_80295D88(void) {
             func_80295C6C();
 #ifdef AVOID_UB
             find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_ADE0, -0x6A, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_A540, -0x6A, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9E70, -0x6A, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_358, -0x6A, 255, 255, 255);
 #else
             // d_course_koopa_troopa_beach_packed_dl_ADE0
             find_vtx_and_set_colours((uintptr_t) 0x0700ADE0, -0x6A, 255, 255, 255);
-#endif
-#ifdef AVOID_UB
-            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_A540, -0x6A, 255, 255, 255);
-#else
             // d_course_koopa_troopa_beach_packed_dl_A540
             find_vtx_and_set_colours((uintptr_t) 0x0700A540, -0x6A, 255, 255, 255);
-#endif
-#ifdef AVOID_UB
-            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9E70, -0x6A, 255, 255, 255);
-#else
             // d_course_koopa_troopa_beach_packed_dl_9E70
             find_vtx_and_set_colours((uintptr_t) 0x07009E70, -0x6A, 255, 255, 255);
-#endif
-#ifdef AVOID_UB
-            find_vtx_and_set_colours((uintptr_t) d_course_koopa_troopa_beach_packed_dl_358, -0x6A, 255, 255, 255);
-#else
             // d_course_koopa_troopa_beach_packed_dl_358
             find_vtx_and_set_colours((uintptr_t) 0x07000358, -0x6A, 255, 255, 255);
 #endif
@@ -2072,13 +1928,10 @@ void func_80295D88(void) {
             D_8015F8E4 = -18.0f;
 #ifdef AVOID_UB
             find_vtx_and_set_colours((uintptr_t) d_course_sherbet_land_packed_dl_1EB8, -0x4C, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_sherbet_land_packed_dl_2308, -0x6A, 255, 255, 255);
 #else
             // d_course_sherbet_land_packed_dl_1EB8
             find_vtx_and_set_colours((uintptr_t) 0x07001EB8, -0x4C, 255, 255, 255);
-#endif
-#ifdef AVOID_UB
-            find_vtx_and_set_colours((uintptr_t) d_course_sherbet_land_packed_dl_2308, -0x6A, 255, 255, 255);
-#else
             // d_course_sherbet_land_packed_dl_2308
             find_vtx_and_set_colours((uintptr_t) 0x07002308, -0x6A, 255, 255, 255);
 #endif
@@ -2090,19 +1943,13 @@ void func_80295D88(void) {
             D_8015F8E4 = 0.0f;
 #ifdef AVOID_UB
             find_vtx_and_set_colours((uintptr_t) d_course_rainbow_road_packed_dl_2068, -0x6A, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_rainbow_road_packed_dl_1E18, -0x6A, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_rainbow_road_packed_dl_1318, 255, 255, 255, 0);
 #else
             // d_course_rainbow_road_packed_dl_2068
             find_vtx_and_set_colours((uintptr_t) 0x07002068, -0x6A, 255, 255, 255);
-#endif
-#ifdef AVOID_UB
-            find_vtx_and_set_colours((uintptr_t) d_course_rainbow_road_packed_dl_1E18, -0x6A, 255, 255, 255);
-#else
             // d_course_rainbow_road_packed_dl_1E18
             find_vtx_and_set_colours((uintptr_t) 0x07001E18, -0x6A, 255, 255, 255);
-#endif
-#ifdef AVOID_UB
-            find_vtx_and_set_colours((uintptr_t) d_course_rainbow_road_packed_dl_1318, 255, 255, 255, 0);
-#else
             // d_course_rainbow_road_packed_dl_1318
             find_vtx_and_set_colours((uintptr_t) 0x07001318, 255, 255, 255, 0);
 #endif
@@ -2121,49 +1968,28 @@ void func_80295D88(void) {
             D_8015F8E4 = gCourseMinY - 10.0f;
 #ifdef AVOID_UB
             find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_C50, 100, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_BD8, 100, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_B60, 100, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_AE8, 100, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_CC8, 100, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_D50, 100, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_DD0, 100, 255, 255, 255);
+            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_E48, 100, 255, 255, 255);
 #else
             // d_course_wario_stadium_packed_dl_C50
             find_vtx_and_set_colours((uintptr_t) 0x07000C50, 100, 255, 255, 255);
-#endif
-#ifdef AVOID_UB
-            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_BD8, 100, 255, 255, 255);
-#else
             // d_course_wario_stadium_packed_dl_BD8
             find_vtx_and_set_colours((uintptr_t) 0x07000BD8, 100, 255, 255, 255);
-#endif
-#ifdef AVOID_UB
-            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_B60, 100, 255, 255, 255);
-#else
             // d_course_wario_stadium_packed_dl_B60
             find_vtx_and_set_colours((uintptr_t) 0x07000B60, 100, 255, 255, 255);
-#endif
-#ifdef AVOID_UB
-            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_AE8, 100, 255, 255, 255);
-#else
             // d_course_wario_stadium_packed_dl_AE8
             find_vtx_and_set_colours((uintptr_t) 0x07000AE8, 100, 255, 255, 255);
-#endif
-#ifdef AVOID_UB
-            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_CC8, 100, 255, 255, 255);
-#else
             // d_course_wario_stadium_packed_dl_CC8
             find_vtx_and_set_colours((uintptr_t) 0x07000CC8, 100, 255, 255, 255);
-#endif
-#ifdef AVOID_UB
-            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_D50, 100, 255, 255, 255);
-#else
             // d_course_wario_stadium_packed_dl_D50
             find_vtx_and_set_colours((uintptr_t) 0x07000D50, 100, 255, 255, 255);
-#endif
-#ifdef AVOID_UB
-            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_DD0, 100, 255, 255, 255);
-#else
             // d_course_wario_stadium_packed_dl_DD0
             find_vtx_and_set_colours((uintptr_t) 0x07000DD0, 100, 255, 255, 255);
-#endif
-#ifdef AVOID_UB
-            find_vtx_and_set_colours((uintptr_t) d_course_wario_stadium_packed_dl_E48, 100, 255, 255, 255);
-#else
             // d_course_wario_stadium_packed_dl_E48
             find_vtx_and_set_colours((uintptr_t) 0x07000E48, 100, 255, 255, 255);
 #endif
@@ -2181,13 +2007,10 @@ void func_80295D88(void) {
         case COURSE_SKYSCRAPER:
 #ifdef AVOID_UB
             generate_collision_mesh_with_default_section_id((Gfx*) d_course_skyscraper_packed_dl_1110, 1);
+            generate_collision_mesh_with_default_section_id((Gfx*) d_course_skyscraper_packed_dl_258, 1);
 #else
             // d_course_skyscraper_packed_dl_1110
             generate_collision_mesh_with_default_section_id((Gfx*) 0x07001110, 1);
-#endif
-#ifdef AVOID_UB
-            generate_collision_mesh_with_default_section_id((Gfx*) d_course_skyscraper_packed_dl_258, 1);
-#else
             // d_course_skyscraper_packed_dl_258
             generate_collision_mesh_with_default_section_id((Gfx*) 0x07000258, 1);
 #endif
@@ -2219,31 +2042,19 @@ void func_80295D88(void) {
         case COURSE_BIG_DONUT:
 #ifdef AVOID_UB
             generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_1018, 6);
+            generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_450, 6);
+            generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_AC0, 6);
+            generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_B58, 6);
+            generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_230, 6);
 #else
             // d_course_big_donut_packed_dl_1018
             generate_collision_mesh_with_default_section_id((Gfx*) 0x07001018, 6);
-#endif
-#ifdef AVOID_UB
-            generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_450, 6);
-#else
             // d_course_big_donut_packed_dl_450
             generate_collision_mesh_with_default_section_id((Gfx*) 0x07000450, 6);
-#endif
-#ifdef AVOID_UB
-            generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_AC0, 6);
-#else
             // d_course_big_donut_packed_dl_AC0
             generate_collision_mesh_with_default_section_id((Gfx*) 0x07000AC0, 6);
-#endif
-#ifdef AVOID_UB
-            generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_B58, 6);
-#else
             // d_course_big_donut_packed_dl_B58
             generate_collision_mesh_with_default_section_id((Gfx*) 0x07000B58, 6);
-#endif
-#ifdef AVOID_UB
-            generate_collision_mesh_with_default_section_id((Gfx*) d_course_big_donut_packed_dl_230, 6);
-#else
             // d_course_big_donut_packed_dl_230
             generate_collision_mesh_with_default_section_id((Gfx*) 0x07000230, 6);
 #endif
@@ -2277,13 +2088,10 @@ void func_802966A0(void) {
 // waterfall animation
 #ifdef AVOID_UB
             find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9D58, 0, D_802B87BC);
+            find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9CD0, 0, D_802B87C4);
 #else
             // d_course_koopa_troopa_beach_packed_dl_9D58
             find_and_set_tile_size((uintptr_t) 0x07009D58, 0, D_802B87BC);
-#endif
-#ifdef AVOID_UB
-            find_and_set_tile_size((uintptr_t) d_course_koopa_troopa_beach_packed_dl_9CD0, 0, D_802B87C4);
-#else
             // d_course_koopa_troopa_beach_packed_dl_9CD0
             find_and_set_tile_size((uintptr_t) 0x07009CD0, 0, D_802B87C4);
 #endif
@@ -2316,13 +2124,10 @@ void func_802966A0(void) {
             }
 #ifdef AVOID_UB
             find_and_set_tile_size((uintptr_t) d_course_royal_raceway_packed_dl_A6A8, 0, D_802B87BC);
+            find_and_set_tile_size((uintptr_t) d_course_royal_raceway_packed_dl_A648, 0, D_802B87BC);
 #else
             // d_course_royal_raceway_packed_dl_A6A8
             find_and_set_tile_size((uintptr_t) 0x0700A6A8, 0, D_802B87BC);
-#endif
-#ifdef AVOID_UB
-            find_and_set_tile_size((uintptr_t) d_course_royal_raceway_packed_dl_A648, 0, D_802B87BC);
-#else
             // d_course_royal_raceway_packed_dl_A648
             find_and_set_tile_size((uintptr_t) 0x0700A648, 0, D_802B87BC);
 #endif
@@ -2334,31 +2139,19 @@ void func_802966A0(void) {
             }
 #ifdef AVOID_UB
             find_and_set_tile_size((uintptr_t) d_course_dks_jungle_parkway_packed_dl_3DD0, 0, D_802B87BC);
+            find_and_set_tile_size((uintptr_t) d_course_dks_jungle_parkway_packed_dl_3E40, 0, D_802B87BC);
+            find_and_set_tile_size((uintptr_t) d_course_dks_jungle_parkway_packed_dl_3EB0, 0, D_802B87BC);
+            find_and_set_tile_size((uintptr_t) d_course_dks_jungle_parkway_packed_dl_3F30, 0, D_802B87BC);
+            find_and_set_tile_size((uintptr_t) d_course_dks_jungle_parkway_packed_dl_36A8, 0, D_802B87BC);
 #else
             // d_course_dks_jungle_parkway_packed_dl_3DD0
             find_and_set_tile_size((uintptr_t) 0x07003DD0, 0, D_802B87BC);
-#endif
-#ifdef AVOID_UB
-            find_and_set_tile_size((uintptr_t) d_course_dks_jungle_parkway_packed_dl_3E40, 0, D_802B87BC);
-#else
             // d_course_dks_jungle_parkway_packed_dl_3E40
             find_and_set_tile_size((uintptr_t) 0x07003E40, 0, D_802B87BC);
-#endif
-#ifdef AVOID_UB
-            find_and_set_tile_size((uintptr_t) d_course_dks_jungle_parkway_packed_dl_3EB0, 0, D_802B87BC);
-#else
             // d_course_dks_jungle_parkway_packed_dl_3EB0
             find_and_set_tile_size((uintptr_t) 0x07003EB0, 0, D_802B87BC);
-#endif
-#ifdef AVOID_UB
-            find_and_set_tile_size((uintptr_t) d_course_dks_jungle_parkway_packed_dl_3F30, 0, D_802B87BC);
-#else
             // d_course_dks_jungle_parkway_packed_dl_3F30
             find_and_set_tile_size((uintptr_t) 0x07003F30, 0, D_802B87BC);
-#endif
-#ifdef AVOID_UB
-            find_and_set_tile_size((uintptr_t) d_course_dks_jungle_parkway_packed_dl_36A8, 0, D_802B87BC);
-#else
             // d_course_dks_jungle_parkway_packed_dl_36A8
             find_and_set_tile_size((uintptr_t) 0x070036A8, 0, D_802B87BC);
 #endif
