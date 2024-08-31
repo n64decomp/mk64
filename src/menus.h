@@ -71,7 +71,7 @@ extern s32 gMenuDelayTimer;
 extern s8 D_8018EE08;
 extern s8 gCupSelection;
 extern s8 D_8018EE0A;
-extern s8 gCupCourseSelection;
+extern s8 gCourseIndexInCup;
 extern s8 D_8018EE0C;
 extern struct_8018EE10_entry D_8018EE10[];
 
