@@ -278,7 +278,7 @@ else ifeq ($(DETECTED_OS), windows)
   BLENDER := "C:\Program Files\Blender Foundation\Blender 3.6\blender.exe"
 endif
 
-MODELS_JSON := $(wildcard models/*/models.json)
+MODELS_JSON := $(call rwildcard,models,*.json)
 MODELS_PROC := $(MODELS_JSON:%.json=%)
 
 models/%: models/%.json

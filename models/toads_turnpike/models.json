@@ -81,6 +81,29 @@
     {
         "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
         "out_dir": "banshee_boardwalk/collision_sections",
-        "models": []
+        "models": [
+            "d_course_toads_turnpike_packed_dl_32A0",
+            "d_course_toads_turnpike_packed_dl_33A8",
+            "d_course_toads_turnpike_packed_dl_3478",
+            "d_course_toads_turnpike_packed_dl_3548",
+            "d_course_toads_turnpike_packed_dl_31E8",
+            "d_course_toads_turnpike_packed_dl_2E40",
+            "d_course_toads_turnpike_packed_dl_2EE0",
+            "d_course_toads_turnpike_packed_dl_2FA0",
+            "d_course_toads_turnpike_packed_dl_3060",
+            "d_course_toads_turnpike_packed_dl_3118",
+            "d_course_toads_turnpike_packed_dl_3638",
+            "d_course_toads_turnpike_packed_dl_3AD0",
+            "d_course_toads_turnpike_packed_dl_3B58",
+            "d_course_toads_turnpike_packed_dl_3C28",
+            "d_course_toads_turnpike_packed_dl_3D00",
+            "d_course_toads_turnpike_packed_dl_39A8",
+            "d_course_toads_turnpike_packed_dl_36C0",
+            "d_course_toads_turnpike_packed_dl_3780",
+            "d_course_toads_turnpike_packed_dl_3850",
+            "d_course_toads_turnpike_packed_dl_38E8",
+            "d_course_toads_turnpike_packed_dl_FA8",
+            "d_course_toads_turnpike_packed_dl_51C8"
+        ]
     }
 ]

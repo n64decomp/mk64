@@ -43,6 +43,21 @@
     {
         "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
         "out_dir": "banshee_boardwalk/collision_sections",
-        "models": []
+        "models": [
+            "d_course_rainbow_road_packed_dl_20C0",
+            "d_course_rainbow_road_packed_dl_1850",
+            "d_course_rainbow_road_packed_dl_1758",
+            "d_course_rainbow_road_packed_dl_1698",
+            "d_course_rainbow_road_packed_dl_15F8",
+            "d_course_rainbow_road_packed_dl_1528",
+            "d_course_rainbow_road_packed_dl_13A0",
+            "d_course_rainbow_road_packed_dl_1978",
+            "d_course_rainbow_road_packed_dl_1D30",
+            "d_course_rainbow_road_packed_dl_1C70",
+            "d_course_rainbow_road_packed_dl_1BC0",
+            "d_course_rainbow_road_packed_dl_1B28",
+            "d_course_rainbow_road_packed_dl_1A20",
+            "d_course_rainbow_road_packed_dl_1318"
+        ]
     }
 ]
