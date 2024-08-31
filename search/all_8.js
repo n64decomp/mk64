@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['f_0',['f',['../structMtx__u.html#ad68774dbb28cac7430099fbf85046c87',1,'Mtx_u::f'],['../unionfu.html#a96f8b185386633ff7d9ef306d3a9cc20',1,'fu::f'],['../union____OSfp.html#aad7ba28b3e6aa7495eb9f9e73f5bd064',1,'__OSfp::f']]],
+  ['f_0',['f',['../structMtx__u.html#ad68774dbb28cac7430099fbf85046c87',1,'Mtx_u::f'],['../unionfu.html#a96f8b185386633ff7d9ef306d3a9cc20',1,'fu::f'],['../union____OSfp.html#a9791f396ae17ad67d1c4cae3709781f3',1,'__OSfp::f']]],
   ['f32_1',['f32',['../ultratypes_8h.html#a5f6906312a689f27d70e9d086649d3fd',1,'ultratypes.h']]],
   ['f32_5flerp_2',['f32_lerp',['../ceremony__and__credits_8c.html#a01e674e785c434c712f1ad700cb2e9c0',1,'f32_lerp(f32 *dest, f32 src, f32 lerp):&#160;ceremony_and_credits.c'],['../ceremony__and__credits_8h.html#aa747046d3ad377102209e71bcaff80ec',1,'f32_lerp(f32 *, f32, f32):&#160;ceremony_and_credits.c']]],
   ['f32_5fstep_5fdown_5ftowards_3',['f32_step_down_towards',['../math__util__2_8c.html#a99e6304891f46564f00965ce860d1c29',1,'f32_step_down_towards(f32 *value, f32 target, f32 step):&#160;math_util_2.c'],['../math__util__2_8h.html#ab2183a20811f82f73822f72f7e5820e7',1,'f32_step_down_towards(f32 *, f32, f32):&#160;math_util_2.c']]],
@@ -71,7 +71,7 @@ var searchData=
   ['fldregs_68',['fldRegs',['../structOSViMode.html#ab6feaae6755f702c1d2106301c166307',1,'OSViMode']]],
   ['float_5fcast_69',['FLOAT_CAST',['../internal_8h.html#a4bd7653c9384c1ed461fa054d7f283a1',1,'internal.h']]],
   ['flow_70',['Overall Control Flow',['../controlflow.html#overall-control-flow',1,'']]],
-  ['flower_5fcup_71',['FLOWER_CUP',['../defines_8h.html#a117189f1f7c0350b6da903e7f2c3c396',1,'defines.h']]],
+  ['flower_5fcup_71',['FLOWER_CUP',['../defines_8h.html#a77867ab4129f63159b37bca3b652a798a7d09bb2a90fc7f7e362a2969fb3e889b',1,'defines.h']]],
   ['folder_72',['Course Folder',['../controlflow.html#course-folder',1,'']]],
   ['force_5fbl_73',['FORCE_BL',['../gbi_8h.html#a692d7769eaab7b7c3a929ad122878e93',1,'gbi.h']]],
   ['force_5fstructure_5falignment_74',['force_structure_alignment',['../unionMtx2.html#addf34ff580685e645fb24671780fa102',1,'Mtx2::force_structure_alignment'],['../unionuObjBg.html#a3226432e20f0536cf83e1a026ae68010',1,'uObjBg::force_structure_alignment'],['../unionuObjSprite.html#a1e164c98674456d1d12d8b8de8e2c2ab',1,'uObjSprite::force_structure_alignment'],['../unionuObjMtx.html#aecec7dc5afe312f0636b882d2cafa8a7',1,'uObjMtx::force_structure_alignment'],['../unionuObjSubMtx.html#a64f3bb5d510fe7be3eb41784bca33e1c',1,'uObjSubMtx::force_structure_alignment'],['../unionuObjTxtr.html#a07990ed8470e4e8ff279100be92c28fc',1,'uObjTxtr::force_structure_alignment']]],

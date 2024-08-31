@@ -51,7 +51,7 @@ var searchData=
   ['basics_48',['Understanding the Basics',['../basics.html',1,'']]],
   ['basicsmenu_2emd_49',['basicsmenu.md',['../basicsmenu_8md.html',1,'']]],
   ['battle_50',['BATTLE',['../defines_8h.html#a3f48cce4d2125604131fc7878460f44a',1,'defines.h']]],
-  ['battle_5fcup_51',['BATTLE_CUP',['../defines_8h.html#a5d2d991e787a2b20f383bbb0520b4762',1,'defines.h']]],
+  ['battle_5fcup_51',['BATTLE_CUP',['../defines_8h.html#a77867ab4129f63159b37bca3b652a798ac92cb0afca1b2eb39ace61e1fa9cd730',1,'defines.h']]],
   ['bcmp_52',['bcmp',['../bstring_8h.html#a41defc2ecf285507e63eb254a8b427fd',1,'bstring.h']]],
   ['bcopy_53',['bcopy',['../bstring_8h.html#aa4c3aee2deb111efd7af25f98541c29a',1,'bcopy(const void *, void *, size_t):&#160;bstring.h'],['../os__libc_8h.html#aa4c3aee2deb111efd7af25f98541c29a',1,'bcopy(const void *, void *, size_t):&#160;os_libc.h']]],
   ['before_5fdisplay_5flists_54',['BEFORE_DISPLAY_LISTS',['../profiler_8h.html#a464075ec8b898dea3a20b3166dd123bfaef29dd7a1302a0c4489a4b4725dd198d',1,'profiler.h']]],

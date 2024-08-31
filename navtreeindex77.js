@@ -1,5 +1,14 @@
 var NAVTREEINDEX77 =
 {
+"mario__raceway_2course__displaylists_8inc_8h.html#a310a4cb5638268c80b6df82d103b17d1":[8,0,0,11,3,45],
+"mario__raceway_2course__displaylists_8inc_8h.html#a318717a643d9fc10e15104bb2b992e33":[8,0,0,11,3,3],
+"mario__raceway_2course__displaylists_8inc_8h.html#a32c27cc3870b9c6c966b190e8022073a":[8,0,0,11,3,71],
+"mario__raceway_2course__displaylists_8inc_8h.html#a32d56231b6698b562d51e6b12f2e78e9":[8,0,0,11,3,92],
+"mario__raceway_2course__displaylists_8inc_8h.html#a330ef6fb9f8e62619ea8ae50d40abb0b":[8,0,0,11,3,102],
+"mario__raceway_2course__displaylists_8inc_8h.html#a34b2d1233097d472cdef6ebf1c998b6c":[8,0,0,11,3,47],
+"mario__raceway_2course__displaylists_8inc_8h.html#a3520c1945f8de71b6f2fb3653114e5bf":[8,0,0,11,3,26],
+"mario__raceway_2course__displaylists_8inc_8h.html#a371cc6552bf6ac26acb66dbc9e7fcca4":[8,0,0,11,3,13],
+"mario__raceway_2course__displaylists_8inc_8h.html#a37e4f7061b4b5eda8c80bcdba172dcf9":[8,0,0,11,3,22],
 "mario__raceway_2course__displaylists_8inc_8h.html#a3aa04b1407147cdf148d44f644b687cd":[8,0,0,11,3,11],
 "mario__raceway_2course__displaylists_8inc_8h.html#a3ad12845d565140556216a36e4d02f0b":[8,0,0,11,3,43],
 "mario__raceway_2course__displaylists_8inc_8h.html#a3bdff2f54cc5b95a2db2c2a778156f48":[8,0,0,11,3,60],
@@ -240,14 +249,5 @@ var NAVTREEINDEX77 =
 "mario__raceway_2staff__ghost_8inc_8c_source.html":[8,0,0,11,8],
 "mario__sign_2render_8inc_8c.html":[8,0,3,0,10,0],
 "mario__sign_2render_8inc_8c.html#abcfb14ec53dc8eecd888faf9eedad475":[8,0,3,0,10,0,0],
-"mario__sign_2render_8inc_8c_source.html":[8,0,3,0,10,0],
-"mario__sign_2update_8inc_8c.html":[8,0,3,0,10,1],
-"mario__sign_2update_8inc_8c.html#ac0ea6010ea017b0c0db4d5a7cff001a3":[8,0,3,0,10,1,0],
-"mario__sign_2update_8inc_8c_source.html":[8,0,3,0,10,1],
-"math_8h.html":[8,0,2,1,0],
-"math_8h.html#a0546342e76f932239ccd5f92144a311b":[8,0,2,1,0,2],
-"math_8h.html#a312367f3e117fc37059783c301766042":[8,0,2,1,0,4],
-"math_8h.html#a37bde043e94a6f074c78f10518fb5d99":[8,0,2,1,0,5],
-"math_8h.html#a75f4e4dd379376514613d7ec27902d07":[8,0,2,1,0,1],
-"math_8h.html#ad910bc71940a50c2a35d308c236013b6":[8,0,2,1,0,3]
+"mario__sign_2render_8inc_8c_source.html":[8,0,3,0,10,0]
 };

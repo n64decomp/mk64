@@ -1,5 +1,14 @@
 var NAVTREEINDEX68 =
 {
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#a4b5e129457e661102effc6e064f7cb21":[8,0,0,9,5,7],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#a547d5598209ae72f6545dd9e825448aa":[8,0,0,9,5,11],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#a5fbdb96e96b26399a21cc68b6ebafa09":[8,0,0,9,5,12],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#a9b68e5349483b5ffb8fe569d2d13666f":[8,0,0,9,5,15],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#aa7ac6c446cf4ac21dfac083c2d94d1bd":[8,0,0,9,5,8],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#abb50afc215209da8bf15412eaa11cdb5":[8,0,0,9,5,6],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#abcec373caf8b7d6c73189ccc30c13ea3":[8,0,0,9,5,5],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#ae4a463607d262954ed48503724f06e98":[8,0,0,9,5,10],
+"koopa__troopa__beach_2course__textures_8linkonly_8c.html#af10da9d6836b8d0f0667707b2dd2ca11":[8,0,0,9,5,13],
 "koopa__troopa__beach_2course__textures_8linkonly_8h.html":[8,0,0,9,6],
 "koopa__troopa__beach_2course__textures_8linkonly_8h.html#a0ded0a0c82224f3f00c0bc0e2992945a":[8,0,0,9,6,4],
 "koopa__troopa__beach_2course__textures_8linkonly_8h.html#a1d8253338d216924f5f841595ec22481":[8,0,0,9,6,2],
@@ -240,14 +249,5 @@ var NAVTREEINDEX68 =
 "load_8h.html#a1fba068a271b6c5373450b2012880837":[8,0,3,1,11,8],
 "load_8h.html#a2481529a2e9892b5e55865a80299c48b":[8,0,3,1,11,20],
 "load_8h.html#a2a0e6e29dead30f53b2cd0a0369c541f":[8,0,3,1,11,33],
-"load_8h.html#a2d5e7be23881acc1931ec0cd838b601b":[8,0,3,1,11,11],
-"load_8h.html#a3031d5b0ad93c887c977128c6db34251":[8,0,3,1,11,52],
-"load_8h.html#a356515913422d06574f92d9bd03ab1b0":[8,0,3,1,11,49],
-"load_8h.html#a373420d8fa5333424853702a20393eff":[8,0,3,1,11,51],
-"load_8h.html#a3dcae640dac91c537a6ab6aebd44d0bb":[8,0,3,1,11,61],
-"load_8h.html#a4861cfe58523a44681d6d2a41764f4e6":[8,0,3,1,11,55],
-"load_8h.html#a4b2e2248fd2c62a38e204077327fbda5":[8,0,3,1,11,5],
-"load_8h.html#a4dea9c88977f11f7fa2f54639958efd9":[8,0,3,1,11,59],
-"load_8h.html#a4f3c39697cc74a48e1393a64a241bef2":[8,0,3,1,11,7],
-"load_8h.html#a532042ad44f378a1f5ed57d2145c306a":[8,0,3,1,11,58]
+"load_8h.html#a2d5e7be23881acc1931ec0cd838b601b":[8,0,3,1,11,11]
 };

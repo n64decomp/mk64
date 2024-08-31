@@ -1,5 +1,14 @@
 var NAVTREEINDEX85 =
 {
+"osSetTime_8c.html#a0d98a2d307753fb3c3764940365ecb65":[8,0,3,6,100,0],
+"osSetTime_8c.html#a4af0cb38d6a9bc36e9ee5dda55d7726e":[8,0,3,6,100,1],
+"osSetTimer_8c.html":[8,0,3,6,101],
+"osSetTimer_8c.html#a845415355645d4a89606df8b7e9cd0fc":[8,0,3,6,101,2],
+"osSetTimer_8c.html#a9886ad7553ac8a105022fe706777fb6f":[8,0,3,6,101,0],
+"osSetTimer_8c.html#ae185ba75a7718dbf19268876ea9b1b0e":[8,0,3,6,101,1],
+"osSpTaskLoadGo_8c.html":[8,0,3,6,102],
+"osSpTaskLoadGo_8c.html#a1a7e41a12f9ade8d32f68d637cd4a608":[8,0,3,6,102,2],
+"osSpTaskLoadGo_8c.html#a1e788ac2946d18ff0a4288c818c0ad5b":[8,0,3,6,102,0],
 "osSpTaskLoadGo_8c.html#a90d876dbebe26e948987817f78d98776":[8,0,3,6,102,4],
 "osSpTaskLoadGo_8c.html#accd51a65f4790f07ecb0371923455ffd":[8,0,3,6,102,1],
 "osSpTaskLoadGo_8c.html#ad5b72d5132a9f85e6c02a18bd67f6c2c":[8,0,3,6,102,3],
@@ -240,14 +249,5 @@ var NAVTREEINDEX85 =
 "os_8h.html#ac65114f80d3efb968725a922a2850a4d":[8,0,2,2,7,67],
 "os_8h.html#ac6cff9ff4c0614b7e977ce8b441e034b":[8,0,2,2,7,146],
 "os_8h.html#acaed2d656f2290a9a4373fc7757c33e9":[8,0,2,2,7,106],
-"os_8h.html#acb715a5ffd16bd1fc98379f70a456ec4":[8,0,2,2,7,40],
-"os_8h.html#acc78bc2433bb5450258508e23c52ccc0":[8,0,2,2,7,59],
-"os_8h.html#acccef2dc8897b399ec7abdd31d04715a":[8,0,2,2,7,19],
-"os_8h.html#acd43f2cb4570706d502d5e6f182862de":[8,0,2,2,7,54],
-"os_8h.html#acec0bfd95642f11fde3c020ef6655918":[8,0,2,2,7,225],
-"os_8h.html#acfbb26af44bdebf524df4af3d83b2d31":[8,0,2,2,7,43],
-"os_8h.html#ad035c2b97be3b346771e6335eb392d67":[8,0,2,2,7,131],
-"os_8h.html#ad19150a8034256651b143545417258bb":[8,0,2,2,7,70],
-"os_8h.html#ad2334d0de07837a8a0633d75d6673d6f":[8,0,2,2,7,196],
-"os_8h.html#ad3aaa7616f3c6e299a24c2f210893d90":[8,0,2,2,7,166]
+"os_8h.html#acb715a5ffd16bd1fc98379f70a456ec4":[8,0,2,2,7,40]
 };

@@ -1,5 +1,14 @@
 var NAVTREEINDEX115 =
 {
+"structTest.html#a500c4230994c24cb9c5277b6029b7566":[7,0,198,1],
+"structTest.html#aae69a0b4c2a97f1632c956db4bcd8e65":[7,0,198,0],
+"structTest.html#ac695d760a41cc0fa0fd2a4761e402f1f":[7,0,198,2],
+"structThwompSpawn.html":[7,0,201],
+"structThwompSpawn.html#a37b6087d0a9347a416e26a4d7079bd28":[7,0,201,0],
+"structThwompSpawn.html#a62a6d334f8884644437c7ea8400cd3d3":[7,0,201,2],
+"structThwompSpawn.html#ad125afdac071b04e78cc7c0134d9f7ae":[7,0,201,1],
+"structThwompSpawn.html#ae947218abf0b0de40a991c6a929b19d5":[7,0,201,3],
+"structTrackSections.html":[7,0,202],
 "structTrackSections.html#a095fe08228ac18a98e54f01c5ecc5a71":[7,0,202,0],
 "structTrackSections.html#a53d5aca8370d2850514a4507044dcbd3":[7,0,202,2],
 "structTrackSections.html#a5da9422111f0325e591566d162776c1d":[7,0,202,3],
@@ -240,14 +249,5 @@ var NAVTREEINDEX115 =
 "structUnk__8018EFD8.html#ac7dc721413daa7ae0805b8e3eec9461b":[7,0,213,14],
 "structUnk__8018EFD8.html#acc793a6cb5a8d59a3ef77245cccaf067":[7,0,213,8],
 "structUnk__8018EFD8.html#ad9e2a35fd5cd7b5b141100dda020fe4e":[7,0,213,10],
-"structUnk__8018EFD8.html#ae04728dc18fd30d092c44afd2c794590":[7,0,213,11],
-"structUnk__D__800E70A0.html":[7,0,214],
-"structUnk__D__800E70A0.html#a3568de4ca5a26d43cc4cf2a40bfd387e":[7,0,214,2],
-"structUnk__D__800E70A0.html#a36748d7e5b4a6ad0591f59a7ad3457e8":[7,0,214,0],
-"structUnk__D__800E70A0.html#aabcceb1f6566aaed3021b847d616f391":[7,0,214,3],
-"structUnk__D__800E70A0.html#ab0e69f5a8689bd33772493a71c02fff2":[7,0,214,1],
-"structVblankHandler.html":[7,0,248],
-"structVblankHandler.html#a78e5c201c12778e84361f487c5dd5763":[7,0,248,0],
-"structVblankHandler.html#afc8f0516d47e98661d3308c307f64b29":[7,0,248,1],
-"structVec3fs.html":[7,0,249]
+"structUnk__8018EFD8.html#ae04728dc18fd30d092c44afd2c794590":[7,0,213,11]
 };

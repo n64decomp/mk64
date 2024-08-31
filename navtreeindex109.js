@@ -1,5 +1,14 @@
 var NAVTREEINDEX109 =
 {
+"startup__logo_8h.html#aa518d21916fb55c0c88563bd2280311e":[8,0,2,0,5,70],
+"startup__logo_8h.html#aa8d94c22bfc0c101dfc51884b6680e80":[8,0,2,0,5,9],
+"startup__logo_8h.html#aa97fd068eb50a442e9c3166385fa89e8":[8,0,2,0,5,50],
+"startup__logo_8h.html#aaa8470e5345366493276f86776658db9":[8,0,2,0,5,89],
+"startup__logo_8h.html#aab80c14b54e660a8f06b47937637d7ee":[8,0,2,0,5,3],
+"startup__logo_8h.html#aad35375cca8e5816814e929e908f62fe":[8,0,2,0,5,19],
+"startup__logo_8h.html#aadeab5c4676173aadb382ff8f66a2bea":[8,0,2,0,5,54],
+"startup__logo_8h.html#aaec59325e6098137a617a9c4efd20ead":[8,0,2,0,5,29],
+"startup__logo_8h.html#aafd2bb1b224949d85d1016319b316d89":[8,0,2,0,5,14],
 "startup__logo_8h.html#ab23030f4995dfbe83749aafecc408862":[8,0,2,0,5,88],
 "startup__logo_8h.html#ab2f3718cbba8364e73b1a6ef9729c7cc":[8,0,2,0,5,57],
 "startup__logo_8h.html#ab3863d6316fa7cb249712cd8ce4221b0":[8,0,2,0,5,39],
@@ -129,8 +138,8 @@ var NAVTREEINDEX109 =
 "structALWaveTable__s.html":[7,0,40],
 "structALWaveTable__s.html#a0e0fc820a7b7c2c8dcdfe38e60c0fa25":[7,0,40,4],
 "structALWaveTable__s.html#a42402da278ae304efe7ff64ce3d1983f":[7,0,40,3],
+"structALWaveTable__s.html#a483d53b6fd3ec6030cf19485a5a1f254":[7,0,40,6],
 "structALWaveTable__s.html#a8b00d48faf540e97599e88086d7c9ba5":[7,0,40,1],
-"structALWaveTable__s.html#a9c57eb36c46ed8f511614226ee96e4f4":[7,0,40,6],
 "structALWaveTable__s.html#aa9aafaec1f56b5cb5a16e7bfde1c3bd9":[7,0,40,0],
 "structALWaveTable__s.html#acc769d06bf577d20eeb968567b0e905e":[7,0,40,2],
 "structALWaveTable__s.html#aebc02789aef2309a8a3d1dce0975b043":[7,0,40,5],
@@ -240,14 +249,5 @@ var NAVTREEINDEX109 =
 "structAudioListItem.html#a39c79f8d07aa4c9c3c7efde62022e521":[7,0,48,4],
 "structAudioListItem.html#a55779fbf47eea9adee6eb432b30424e0":[7,0,48,2],
 "structAudioListItem.html#a75f7cf4ca61be215028346fab2ac6ab8":[7,0,48,0],
-"structAudioListItem.html#ab838a8bb1d7648057b666190a9ee6108":[7,0,48,5],
-"structAudioListItem.html#ad518e6401fbb50f6221cb6d86e7fc2fd":[7,0,48,3],
-"structAudioListItem.html#afb3e57e2306a3f69ead1dff998ab4d9f":[7,0,48,1],
-"structAudioSessionSettings.html":[7,0,49],
-"structAudioSessionSettings.html#a05ebf9209e133d04eb887d6f48c74ef3":[7,0,49,9],
-"structAudioSessionSettings.html#a38f8c2f423cd8e270ea2e2abc023ce11":[7,0,49,8],
-"structAudioSessionSettings.html#a5dc790239abd49d372c105d831cc6173":[7,0,49,6],
-"structAudioSessionSettings.html#a7857d8f97c68b29e1151015c2b89f6d3":[7,0,49,1],
-"structAudioSessionSettings.html#ad0c517937406fc909fc1fa8fc98d8cc7":[7,0,49,2],
-"structAudioSessionSettings.html#adefa51428b36a65c49975c0734bd0edd":[7,0,49,7]
+"structAudioListItem.html#ab838a8bb1d7648057b666190a9ee6108":[7,0,48,5]
 };

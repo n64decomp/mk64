@@ -1,5 +1,14 @@
 var NAVTREEINDEX105 =
 {
+"sherbet__land_2course__data_8h.html#acc4d3bec9e6e259968481a04a3240b5b":[8,0,0,15,1,117],
+"sherbet__land_2course__data_8h.html#acf1351064b7b1a1b4a80a92105c6f718":[8,0,0,15,1,157],
+"sherbet__land_2course__data_8h.html#ad02da0857baa4cccf5a675210420efb3":[8,0,0,15,1,66],
+"sherbet__land_2course__data_8h.html#ad156cbb9727d5f9ac9b9a2d23af8f09d":[8,0,0,15,1,189],
+"sherbet__land_2course__data_8h.html#ad18f42772389d976e737a3e95401f9c4":[8,0,0,15,1,153],
+"sherbet__land_2course__data_8h.html#ad1f9712974133e2930feb05d29053296":[8,0,0,15,1,63],
+"sherbet__land_2course__data_8h.html#ad289dda1766f77b2856299a1c0f49283":[8,0,0,15,1,81],
+"sherbet__land_2course__data_8h.html#ad34dd1a087acf4b5710c0c58e7a80f04":[8,0,0,15,1,84],
+"sherbet__land_2course__data_8h.html#ad35890e2cdebe1381d1eb773d9d916a0":[8,0,0,15,1,169],
 "sherbet__land_2course__data_8h.html#ad36edb40492d948219d44a79de24cb22":[8,0,0,15,1,152],
 "sherbet__land_2course__data_8h.html#ad5bbbd5e143ebdd51d75e1ef6fce464e":[8,0,0,15,1,49],
 "sherbet__land_2course__data_8h.html#ad61b71e81c5db37446b0f676ce0a36c6":[8,0,0,15,1,164],
@@ -240,14 +249,5 @@ var NAVTREEINDEX105 =
 "sherbet__land_2course__offsets_8c.html#a3f559fd3ca702dfb026548a4a3efa44e":[8,0,0,15,4,11],
 "sherbet__land_2course__offsets_8c.html#a50c3d1143756227604bcb4ecde5e112a":[8,0,0,15,4,2],
 "sherbet__land_2course__offsets_8c.html#a58c5ec82e1e09fe41e517c8a3beca304":[8,0,0,15,4,7],
-"sherbet__land_2course__offsets_8c.html#a748b867bc98e0b70bc4c87d5990fd841":[8,0,0,15,4,1],
-"sherbet__land_2course__offsets_8c.html#a79a8680a46dfad1280e99d759e2fea26":[8,0,0,15,4,10],
-"sherbet__land_2course__offsets_8c.html#a7b16f5cb1a8fbe6d445a175245f73e9f":[8,0,0,15,4,5],
-"sherbet__land_2course__offsets_8c.html#ac03104bdc5af122c105a72a6fc92f458":[8,0,0,15,4,6],
-"sherbet__land_2course__offsets_8c.html#afacb201038ca7a029ee32a49f1becda5":[8,0,0,15,4,8],
-"sherbet__land_2course__offsets_8c.html#aff6835561146179db50de00385940443":[8,0,0,15,4,0],
-"sherbet__land_2course__textures_8linkonly_8c.html":[8,0,0,15,5],
-"sherbet__land_2course__textures_8linkonly_8c.html#a16da6dcb45570e87bb08f054d8d8dc07":[8,0,0,15,5,6],
-"sherbet__land_2course__textures_8linkonly_8c.html#a21fb464f5795e6eef48359329d730a6c":[8,0,0,15,5,4],
-"sherbet__land_2course__textures_8linkonly_8c.html#a3e13a33d5fe27754369a43201253629c":[8,0,0,15,5,5]
+"sherbet__land_2course__offsets_8c.html#a748b867bc98e0b70bc4c87d5990fd841":[8,0,0,15,4,1]
 };
