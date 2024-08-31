@@ -22,7 +22,7 @@ const course_texture sherbet_land_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-const Gfx* d_course_sherbet_land_section_dl1[] = {
+const Gfx* sherbet_land_dls[] = {
     d_course_sherbet_land_dl_0,    d_course_sherbet_land_dl_158,  d_course_sherbet_land_dl_C0,
     d_course_sherbet_land_dl_1A8,  d_course_sherbet_land_dl_280,  d_course_sherbet_land_dl_3B8,
     d_course_sherbet_land_dl_310,  d_course_sherbet_land_dl_400,  d_course_sherbet_land_dl_4E8,
@@ -49,7 +49,7 @@ const Gfx* d_course_sherbet_land_section_dl1[] = {
     d_course_sherbet_land_dl_25A0, d_course_sherbet_land_dl_2530, d_course_sherbet_land_dl_25F8,
 };
 
-const Gfx* d_course_sherbet_land_section_dl2[] = {
+const Gfx* sherbet_land_dls_2[] = {
     d_course_sherbet_land_dl_26D0, d_course_sherbet_land_dl_28A0, d_course_sherbet_land_dl_27F0,
     d_course_sherbet_land_dl_2918, d_course_sherbet_land_dl_2A38, d_course_sherbet_land_dl_2BE0,
     d_course_sherbet_land_dl_2B08, d_course_sherbet_land_dl_2C58, d_course_sherbet_land_dl_2D78,

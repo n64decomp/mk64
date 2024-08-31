@@ -301,7 +301,7 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
             gDPSetBlendMask(gDisplayListHead++, 0xFF);
             gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
             gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
-            render_course_segments((uintptr_t) d_course_koopa_troopa_beach_section_dl2, arg0);
+            render_course_segments((uintptr_t) d_course_koopa_troopa_beach_dl_list2, arg0);
             gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 1, 1, G_OFF);
             gSPSetGeometryMode(gDisplayListHead++, G_CULL_BACK);
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
@@ -319,7 +319,7 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
 
             mtxf_identity(matrix);
             render_set_position(matrix, 0);
-            render_course_segments((uintptr_t) d_course_sherbet_land_section_dl2, arg0);
+            render_course_segments((uintptr_t) sherbet_land_dls_2, arg0);
 
             gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
             if ((func_80290C20(arg0->camera) == 1) && (func_802AAB4C(player) < player->pos[1])) {
@@ -816,7 +816,7 @@ void render_koopa_troopa_beach(struct UnkStruct_800DC5EC* arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     // d_course_koopa_troopa_beach_packed_dl_9688
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07009688));
-    render_course_segments((uintptr_t) d_course_koopa_troopa_beach_section_dl1, arg0);
+    render_course_segments((uintptr_t) d_course_koopa_troopa_beach_dl_list1, arg0);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
@@ -1078,7 +1078,7 @@ void render_sherbet_land(struct UnkStruct_800DC5EC* arg0) {
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    render_course_segments((uintptr_t) d_course_sherbet_land_section_dl1, arg0);
+    render_course_segments((uintptr_t) sherbet_land_dls, arg0);
 }
 
 void render_rainbow_road(UNUSED struct UnkStruct_800DC5EC* arg0) {
