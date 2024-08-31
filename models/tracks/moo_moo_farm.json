@@ -1,7 +1,7 @@
 [
     {
         "file": "courses/moo_moo_farm/course_data.c",
-        "out_dir": "moo_moo_farm/objects",
+        "out_dir": "tracks/moo_moo_farm/objects",
         "models": [
             "d_course_moo_moo_farm_dl_cow1",
             "d_course_moo_moo_farm_dl_cow2",
@@ -13,7 +13,7 @@
     },
     {
         "file": "courses/moo_moo_farm/course_data.c",
-        "out_dir": "moo_moo_farm/sections",
+        "out_dir": "tracks/moo_moo_farm/sections",
         "models": [
             "d_course_moo_moo_farm_dl_88",
             "d_course_moo_moo_farm_dl_598",
@@ -110,8 +110,8 @@
         ]
     },
     {
-        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
-        "out_dir": "banshee_boardwalk/collision_sections",
+        "file":"courses/moo_moo_farm/course_displaylists.inc.c",
+        "out_dir": "tracks/moo_moo_farm/collision_sections",
         "models": [
             "d_course_moo_moo_farm_packed_dl_39F8",
             "d_course_moo_moo_farm_packed_dl_3B88",
@@ -189,6 +189,13 @@
             "d_course_moo_moo_farm_packed_dl_4DF8",
             "d_course_moo_moo_farm_packed_dl_CB0",
             "d_course_moo_moo_farm_packed_dl_F20"
+        ]
+    },
+    {
+        "file":"courses/moo_moo_farm/course_data.c",
+        "out_dir": "tracks/moo_moo_farm/preview",
+        "models": [
+            "d_course_moo_moo_farm_dl_14088"
         ]
     }
 ]

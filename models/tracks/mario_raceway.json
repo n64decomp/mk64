@@ -1,7 +1,7 @@
 [
     {
         "file": "courses/mario_raceway/course_data.c",
-        "out_dir": "mario_raceway/objects",
+        "out_dir": "tracks/mario_raceway/objects",
         "models": [
             "d_course_mario_raceway_dl_piranha_plant",
             "d_course_mario_raceway_dl_tree",
@@ -10,7 +10,7 @@
     },
     {
         "file": "courses/mario_raceway/course_data.c",
-        "out_dir": "mario_raceway/sections",
+        "out_dir": "tracks/mario_raceway/sections",
         "models": [
             "d_course_mario_raceway_dl_0",
             "d_course_mario_raceway_dl_1D0",
@@ -83,8 +83,8 @@
         ]
     },
     {
-        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
-        "out_dir": "banshee_boardwalk/collision_sections",
+        "file":"courses/mario_raceway/course_displaylists.inc.c",
+        "out_dir": "tracks/mario_raceway/collision_sections",
         "models": [
             "d_course_mario_raceway_packed_dl_17D8",
             "d_course_mario_raceway_packed_dl_1770",
@@ -138,6 +138,13 @@
             "d_course_mario_raceway_packed_dl_6068",
             "d_course_mario_raceway_packed_dl_6308",
             "d_course_mario_raceway_packed_dl_6490"
+        ]
+    },
+    {
+        "file":"courses/mario_raceway/course_data.c",
+        "out_dir": "tracks/mario_raceway/preview",
+        "models": [
+            "d_course_mario_raceway_dl_9348"
         ]
     }
 ]

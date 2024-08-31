@@ -1,7 +1,7 @@
 [
     {
         "file": "courses/kalimari_desert/course_data.c",
-        "out_dir": "kalimari_desert/objects",
+        "out_dir": "tracks/kalimari_desert/objects",
         "models": [
             "d_course_kalimari_desert_dl_cactus1",
             "d_course_kalimari_desert_dl_cactus2",
@@ -30,7 +30,7 @@
     },
     {
         "file": "courses/kalimari_desert/course_data.c",
-        "out_dir": "kalimari_desert/sections",
+        "out_dir": "tracks/kalimari_desert/sections",
         "models": [
             "d_course_kalimari_desert_dl_0",
             "d_course_kalimari_desert_dl_258",
@@ -115,8 +115,8 @@
         ]
     },
     {
-        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
-        "out_dir": "banshee_boardwalk/collision_sections",
+        "file":"courses/kalimari_desert/course_displaylists.inc.c",
+        "out_dir": "tracks/kalimari_desert/collision_sections",
         "models": [
             "d_course_kalimari_desert_packed_dl_8690",
             "d_course_kalimari_desert_packed_dl_8728",
@@ -219,6 +219,13 @@
             "d_course_kalimari_desert_packed_dl_9B10",
             "d_course_kalimari_desert_packed_dl_1B18",
             "d_course_kalimari_desert_packed_dl_998"
+        ]
+    },
+    {
+        "file":"courses/kalimari_desert/course_data.c",
+        "out_dir": "tracks/kalimari_desert/preview",
+        "models": [
+            "d_course_kalimari_desert_dl_22E00"
         ]
     }
 ]

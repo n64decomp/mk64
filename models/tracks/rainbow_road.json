@@ -1,7 +1,7 @@
 [
     {
         "file": "courses/rainbow_road/course_data.c",
-        "out_dir": "rainbow_road/objects",
+        "out_dir": "tracks/rainbow_road/objects",
         "models": [
             "d_course_rainbow_road_dl_151A8",
             "d_course_rainbow_road_dl_15550",
@@ -12,7 +12,7 @@
     },
     {
         "file": "courses/rainbow_road/course_data.c",
-        "out_dir": "rainbow_road/sections",
+        "out_dir": "tracks/rainbow_road/sections",
         "models": [
             "d_course_rainbow_road_dl_D8", "d_course_rainbow_road_dl_210",
             "d_course_rainbow_road_dl_178", "d_course_rainbow_road_dl_288",
@@ -41,8 +41,8 @@
         ]
     },
     {
-        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
-        "out_dir": "banshee_boardwalk/collision_sections",
+        "file":"courses/rainbow_road/course_displaylists.inc.c",
+        "out_dir": "tracks/rainbow_road/collision_sections",
         "models": [
             "d_course_rainbow_road_packed_dl_20C0",
             "d_course_rainbow_road_packed_dl_1850",
@@ -58,6 +58,13 @@
             "d_course_rainbow_road_packed_dl_1B28",
             "d_course_rainbow_road_packed_dl_1A20",
             "d_course_rainbow_road_packed_dl_1318"
+        ]
+    },
+    {
+        "file":"courses/rainbow_road/course_data.c",
+        "out_dir": "tracks/rainbow_road/preview",
+        "models": [
+            "d_course_rainbow_road_dl_16220"
         ]
     }
 ]

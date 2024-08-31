@@ -1,7 +1,7 @@
 [
     {
         "file": "courses/yoshi_valley/course_data.c",
-        "out_dir": "yoshi_valley/objects",
+        "out_dir": "tracks/yoshi_valley/objects",
         "models": [
             "d_course_yoshi_valley_dl_142C0",
             "d_course_yoshi_valley_dl_143C8",
@@ -16,7 +16,7 @@
     },
     {
         "file": "courses/yoshi_valley/course_data.c",
-        "out_dir": "yoshi_valley/sections",
+        "out_dir": "tracks/yoshi_valley/sections",
         "models": [
             "d_course_yoshi_valley_dl_40", "d_course_yoshi_valley_dl_3F0",
             "d_course_yoshi_valley_dl_290", "d_course_yoshi_valley_dl_4E8",
@@ -83,8 +83,8 @@
         ]
     },
     {
-        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
-        "out_dir": "banshee_boardwalk/collision_sections",
+        "file":"courses/yoshi_valley/course_displaylists.inc.c",
+        "out_dir": "tracks/yoshi_valley/collision_sections",
         "models": [
             "d_course_yoshi_valley_packed_dl_44C8",
             "d_course_yoshi_valley_packed_dl_4588",
@@ -139,6 +139,13 @@
             "d_course_yoshi_valley_packed_dl_8050",
             "d_course_yoshi_valley_packed_dl_13D8",
             "d_course_yoshi_valley_packed_dl_D20"
+        ]
+    },
+    {
+        "file":"courses/yoshi_valley/course_data.c",
+        "out_dir": "tracks/yoshi_valley/preview",
+        "models": [
+            "d_course_yoshi_valley_dl_18020"
         ]
     }
 ]

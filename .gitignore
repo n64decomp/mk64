@@ -101,8 +101,7 @@ mingw64/
 !tools/ido-recomp/*/*
 
 # models
-models/*/*
-!models/*/*.json
+*.blend
 
 # torch
 torch.hash.yml

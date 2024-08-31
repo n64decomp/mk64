@@ -1,7 +1,7 @@
 [
     {
         "file": "courses/koopa_troopa_beach/course_data.c",
-        "out_dir": "koopa_troopa_beach/objects",
+        "out_dir": "tracks/koopa_troopa_beach/objects",
         "models": [
             "d_course_koopa_troopa_beach_dl_16630",
             "d_course_koopa_troopa_beach_dl_tree_top1",
@@ -14,7 +14,7 @@
     },
     {
         "file": "courses/koopa_troopa_beach/course_data.c",
-        "out_dir": "koopa_troopa_beach/sections/list2",
+        "out_dir": "tracks/koopa_troopa_beach/sections/list2",
         "models": [
             "d_course_koopa_troopa_beach_dl_118", "d_course_koopa_troopa_beach_dl_328",
             "d_course_koopa_troopa_beach_dl_218", "d_course_koopa_troopa_beach_dl_458",
@@ -94,7 +94,7 @@
     },
     {
         "file": "courses/koopa_troopa_beach/course_data.c",
-        "out_dir": "koopa_troopa_beach/sections/list1",
+        "out_dir": "tracks/koopa_troopa_beach/sections/list1",
         "models": [
             "d_course_koopa_troopa_beach_dl_90", "d_course_koopa_troopa_beach_dl_278",
             "d_course_koopa_troopa_beach_dl_188", "d_course_koopa_troopa_beach_dl_3C0",
@@ -173,8 +173,8 @@
         ]
     },
     {
-        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
-        "out_dir": "banshee_boardwalk/collision_sections",
+        "file":"courses/koopa_troopa_beach/course_displaylists.inc.c",
+        "out_dir": "tracks/koopa_troopa_beach/collision_sections",
         "models": [
             "d_course_koopa_troopa_beach_packed_dl_9688",
             "d_course_koopa_troopa_beach_packed_dl_D70",
@@ -281,6 +281,13 @@
             "d_course_koopa_troopa_beach_packed_dl_7430",
             "d_course_koopa_troopa_beach_packed_dl_9B20",
             "d_course_koopa_troopa_beach_packed_dl_9B78"
+        ]
+    },
+    {
+        "file":"courses/koopa_troopa_beach/course_data.c",
+        "out_dir": "tracks/koopa_troopa_beach/preview",
+        "models": [
+            "d_course_koopa_troopa_beach_dl_18D68"
         ]
     }
 ]

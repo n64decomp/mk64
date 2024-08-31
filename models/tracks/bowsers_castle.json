@@ -1,7 +1,7 @@
 [
     {
         "file": "courses/bowsers_castle/course_data.c",
-        "out_dir": "bowsers_castle/objects",
+        "out_dir": "tracks/bowsers_castle/objects",
         "models": [
             "d_course_bowsers_castle_dl_thwomp",
             "d_course_bowsers_castle_dl_bush"
@@ -9,7 +9,7 @@
     },
     {
         "file": "courses/bowsers_castle/course_data.c",
-        "out_dir": "bowsers_castle/sections",
+        "out_dir": "tracks/bowsers_castle/sections",
         "models": [
             "d_course_bowsers_castle_dl_0",
             "d_course_bowsers_castle_dl_230",
@@ -122,8 +122,8 @@
         ]
     },
     {
-        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
-        "out_dir": "banshee_boardwalk/collision_sections",
+        "file":"courses/bowsers_castle/course_displaylists.inc.c",
+        "out_dir": "tracks/bowsers_castle/collision_sections",
         "models": [
             "d_course_bowsers_castle_packed_dl_5448",
             "d_course_bowsers_castle_packed_dl_53E0",
@@ -161,6 +161,13 @@
             "d_course_bowsers_castle_packed_dl_9278",
             "d_course_bowsers_castle_packed_dl_3B0",
             "d_course_bowsers_castle_packed_dl_83B0"
+        ]
+    },
+    {
+        "file":"courses/bowsers_castle/course_data.c",
+        "out_dir": "tracks/bowsers_castle/preview",
+        "models": [
+            "d_course_bowsers_castle_dl_9148"
         ]
     }
 ]

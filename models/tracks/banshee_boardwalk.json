@@ -1,7 +1,7 @@
 [
     {
         "file":"courses/banshee_boardwalk/course_data.c",
-        "out_dir": "banshee_boardwalk/objects",
+        "out_dir": "tracks/banshee_boardwalk/objects",
         "models": [
             "d_course_banshee_boardwalk_dl_B278",
             "d_course_banshee_boardwalk_dl_trash_bin",
@@ -10,7 +10,7 @@
     },
     {
         "file": "courses/banshee_boardwalk/course_data.c",
-        "out_dir": "banshee_boardwalk/sections",
+        "out_dir": "tracks/banshee_boardwalk/sections",
         "models": [
             "d_course_banshee_boardwalk_dl_A0",
             "d_course_banshee_boardwalk_dl_210",
@@ -116,7 +116,7 @@
     },
     {
         "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
-        "out_dir": "banshee_boardwalk/collision_sections",
+        "out_dir": "tracks/banshee_boardwalk/collision_sections",
         "models": [
             "d_course_banshee_boardwalk_packed_dl_1DA0",
             "d_course_banshee_boardwalk_packed_dl_5498",
@@ -166,6 +166,13 @@
             "d_course_banshee_boardwalk_packed_dl_60",
             "d_course_banshee_boardwalk_packed_dl_1CF8",
             "d_course_banshee_boardwalk_packed_dl_1748"
+        ]
+    },
+    {
+        "file":"courses/banshee_boardwalk/course_data.c",
+        "out_dir": "tracks/banshee_boardwalk/preview",
+        "models": [
+            "d_course_banshee_boardwalk_dl_B308"
         ]
     }
 ]

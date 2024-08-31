@@ -1,14 +1,14 @@
 [
     {
         "file": "courses/choco_mountain/course_data.c",
-        "out_dir": "choco_mountain/objects",
+        "out_dir": "tracks/choco_mountain/objects",
         "models": [
             "d_course_choco_mountain_dl_falling_rock"
         ]
     },
     {
         "file": "courses/choco_mountain/course_data.c",
-        "out_dir": "choco_mountain/sections",
+        "out_dir": "tracks/choco_mountain/sections",
         "models": [
             "d_course_choco_mountain_dl_0",
             "d_course_choco_mountain_dl_150",
@@ -109,8 +109,8 @@
         ]
     },
     {
-        "file":"courses/banshee_boardwalk/course_displaylists.inc.c",
-        "out_dir": "banshee_boardwalk/collision_sections",
+        "file":"courses/choco_mountain/course_displaylists.inc.c",
+        "out_dir": "tracks/choco_mountain/collision_sections",
         "models": [
             "d_course_choco_mountain_packed_dl_5A70",
             "d_course_choco_mountain_packed_dl_8E0",
@@ -182,6 +182,13 @@
             "d_course_choco_mountain_packed_dl_2BD0",
             "d_course_choco_mountain_packed_dl_30A8",
             "d_course_choco_mountain_packed_dl_3410"
+        ]
+    },
+    {
+        "file":"courses/choco_mountain/course_data.c",
+        "out_dir": "tracks/choco_mountain/preview",
+        "models": [
+            "d_course_choco_mountain_dl_71B8"
         ]
     }
 ]
