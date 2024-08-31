@@ -144,17 +144,17 @@ void func_8028E3A0(void) {
 
     if (D_80150120) {
 
-        if (gCourseIndexInCup == FOURTH_COURSE_IN_CUP) {
-            gCupSelectedCourseIndexG;
+        if (gCourseIndexInCup == COURSE_FOUR) {
+            gGotoMode = ENDING;
         } else {
             D_800DC544++;
             gCourseIndexInCup++;
-            gCupSelectedCourseIndexG;
+            gGotoMode = RACING;
         }
     } else {
         D_800DC544++;
         gCourseIndexInCup++;
-        gCupSelectedCourseIndexG;
+        gGotoMode = RACING;
     }
 }
 
