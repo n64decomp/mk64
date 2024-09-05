@@ -6,27 +6,27 @@
 /* Types */
 
 typedef struct {
-    void *dramAddr;
-    void *C2Addr;
+    void* dramAddr;
+    void* C2Addr;
     u32 sectorSize;
     u32 C1ErrNum;
     u32 C1ErrSector[4];
 } __OSBlockInfo;
 
 typedef struct {
-    u32 cmdType;       // 0
-    u16 transferMode;  // 4
-    u16 blockNum;      // 6
-    s32 sectorNum;     // 8
-    uintptr_t devAddr; // c
-    u32 errStatus; //error status added moved to blockinfo
+    u32 cmdType;            // 0
+    u16 transferMode;       // 4
+    u16 blockNum;           // 6
+    s32 sectorNum;          // 8
+    uintptr_t devAddr;      // c
+    u32 errStatus;          // error status added moved to blockinfo
     u32 bmCtlShadow;        // 10
     u32 seqCtlShadow;       // 14
     __OSBlockInfo block[2]; // 18
 } __OSTranxInfo;
 
 typedef struct OSPiHandle_s {
-    struct OSPiHandle_s *next;
+    struct OSPiHandle_s* next;
     u8 type;
     u8 latency;
     u8 pageSize;
@@ -47,15 +47,15 @@ typedef struct {
     u16 type;
     u8 pri;
     u8 status;
-    OSMesgQueue *retQueue;
+    OSMesgQueue* retQueue;
 } OSIoMesgHdr;
 
 typedef struct {
     /*0x00*/ OSIoMesgHdr hdr;
-    /*0x08*/ void *dramAddr;
+    /*0x08*/ void* dramAddr;
     /*0x0C*/ uintptr_t devAddr;
     /*0x10*/ size_t size;
-    OSPiHandle *piHandle; // from the official definition
+    OSPiHandle* piHandle; // from the official definition
 } OSIoMesg;
 
 /* Definitions */
@@ -68,13 +68,13 @@ typedef struct {
 
 /* Functions */
 
-s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, uintptr_t devAddr, void *vAddr,
-                 size_t nbytes, OSMesgQueue *mq);
-void osCreatePiManager(OSPri pri, OSMesgQueue *cmdQ, OSMesg *cmdBuf, s32 cmdMsgCnt);
-OSMesgQueue *osPiGetCmdQueue(void);
+s32 osPiStartDma(OSIoMesg* mb, s32 priority, s32 direction, uintptr_t devAddr, void* vAddr, size_t nbytes,
+                 OSMesgQueue* mq);
+void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSMesg* cmdBuf, s32 cmdMsgCnt);
+OSMesgQueue* osPiGetCmdQueue(void);
 s32 osPiWriteIo(uintptr_t devAddr, u32 data);
-s32 osPiReadIo(uintptr_t devAddr, u32 *data);
+s32 osPiReadIo(uintptr_t devAddr, u32* data);
 
-s32 osPiRawStartDma(s32 dir, u32 cart_addr, void *dram_addr, size_t size);
-s32 osEPiRawStartDma(OSPiHandle *piHandle, s32 dir, u32 cart_addr, void *dram_addr, size_t size);
+s32 osPiRawStartDma(s32 dir, u32 cart_addr, void* dram_addr, size_t size);
+s32 osEPiRawStartDma(OSPiHandle* piHandle, s32 dir, u32 cart_addr, void* dram_addr, size_t size);
 #endif
