@@ -87,7 +87,7 @@ const s8 D_800F2B50[] = { 0, 1, 2, 3, 3 };
 const s8 D_800F2B58[] = { 1, 2, 2, 3, 4 };
 
 // Set indexed slots numbers for one-two-three-four mode selection
-const s8 gPlayerModeSelection[] = {1, 2, 1, 1};
+const s8 gPlayerModeSelection[] = { 1, 2, 1, 1 };
 
 // Limit for each index column in one-two-three-four mode selection
 const s8 gGameModePlayerColumnDefault[][3] = {
@@ -106,12 +106,12 @@ const s8 gGameModePlayerColumnExtra[][3] = {
     { 3, 0, 0 }, // 4p (VS options, Battle, ...)
 };
 
-// Modes to select in one-two-three-four mode selection 
+// Modes to select in one-two-three-four mode selection
 const s32 gGameModePlayerSelection[][3] = {
     { GRAND_PRIX, TIME_TRIALS, 0x00000000 }, // 1p game modes
-    { GRAND_PRIX, VERSUS, BATTLE }, // 2p game modes
-    { VERSUS, BATTLE, 0x00000000 }, // 3p game modes
-    { VERSUS, BATTLE, 0x00000000 }, // 4p game modes
+    { GRAND_PRIX, VERSUS, BATTLE },          // 2p game modes
+    { VERSUS, BATTLE, 0x00000000 },          // 3p game modes
+    { VERSUS, BATTLE, 0x00000000 },          // 4p game modes
 };
 
 // map from character grid position id to character id
@@ -132,9 +132,10 @@ const s16 gCupCourseOrder[5][4] = {
     { COURSE_BIG_DONUT, COURSE_BLOCK_FORT, COURSE_DOUBLE_DECK, COURSE_SKYSCRAPER },
 };
 
-const s8 D_800F2BDC[8] = { 1, 0, 0, 0, 0, 1, 3, 4 };
+const s8 D_800F2BDC[4] = { 1, 0, 0, 0 };
+const s8 D_800F2BE0[4] = { 0, 1, 3, 4 };
 
-const union GameModePack gSoundMenuPack = { {SOUND_STEREO, SOUND_HEADPHONES, SOUND_UNUSED, SOUND_MONO} };
+const union GameModePack gSoundMenuPack = { { SOUND_STEREO, SOUND_HEADPHONES, SOUND_UNUSED, SOUND_MONO } };
 
 /**************************/
 
@@ -1830,7 +1831,7 @@ void func_800B3F74(s32 menuSelection) {
             if (gPlayerCount >= 5) {
                 gPlayerCount = 4;
             }
-            D_8018EDF1 = D_800F2BDC[gPlayerCount + 3];
+            D_8018EDF1 = D_800F2BE0[gPlayerCount - 1];
             func_800CA008(0, 0);
             func_800C8EAC(1);
             D_8018EDFC = 0;
