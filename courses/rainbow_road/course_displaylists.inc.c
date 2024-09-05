@@ -7,7 +7,8 @@
 #include "course_displaylists.inc.h"
 #include "course_textures.linkonly.h"
 
-Gfx d_course_rainbow_road_packed_dl_0[] = {
+Gfx d_course_rainbow_road_packed_dl_0[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04000000, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -107,7 +108,8 @@ Gfx d_course_rainbow_road_packed_dl_0[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_308[] = {
+Gfx d_course_rainbow_road_packed_dl_308[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04001500, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -160,7 +162,8 @@ Gfx d_course_rainbow_road_packed_dl_308[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_498[] = {
+Gfx d_course_rainbow_road_packed_dl_498[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04001F80, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -201,7 +204,8 @@ Gfx d_course_rainbow_road_packed_dl_498[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_5C8[] = {
+Gfx d_course_rainbow_road_packed_dl_5C8[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04002780, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -249,7 +253,8 @@ Gfx d_course_rainbow_road_packed_dl_5C8[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_730[] = {
+Gfx d_course_rainbow_road_packed_dl_730[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04003100, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -313,7 +318,8 @@ Gfx d_course_rainbow_road_packed_dl_730[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_918[] = {
+Gfx d_course_rainbow_road_packed_dl_918[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04003DC0, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -354,7 +360,8 @@ Gfx d_course_rainbow_road_packed_dl_918[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_A48[] = {
+Gfx d_course_rainbow_road_packed_dl_A48[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x040045A0, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -398,7 +405,8 @@ Gfx d_course_rainbow_road_packed_dl_A48[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_B90[] = {
+Gfx d_course_rainbow_road_packed_dl_B90[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04004E20, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -464,7 +472,8 @@ Gfx d_course_rainbow_road_packed_dl_B90[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_D88[] = {
+Gfx d_course_rainbow_road_packed_dl_D88[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04005BA0, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -503,7 +512,8 @@ Gfx d_course_rainbow_road_packed_dl_D88[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_EA8[] = {
+Gfx d_course_rainbow_road_packed_dl_EA8[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04006320, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -547,7 +557,8 @@ Gfx d_course_rainbow_road_packed_dl_EA8[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_FF0[] = {
+Gfx d_course_rainbow_road_packed_dl_FF0[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04006BA0, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -597,7 +608,8 @@ Gfx d_course_rainbow_road_packed_dl_FF0[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1168[] = {
+Gfx d_course_rainbow_road_packed_dl_1168[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x040075A0, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -654,7 +666,8 @@ Gfx d_course_rainbow_road_packed_dl_1168[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1318[] = {
+Gfx d_course_rainbow_road_packed_dl_1318[] =
+{
     gsSPDisplayList(d_course_rainbow_road_packed_dl_1168),
     gsSPDisplayList(d_course_rainbow_road_packed_dl_FF0),
     gsSPDisplayList(d_course_rainbow_road_packed_dl_EA8),
@@ -670,17 +683,20 @@ Gfx d_course_rainbow_road_packed_dl_1318[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1380[] = {
+Gfx d_course_rainbow_road_packed_dl_1380[] =
+{
     gsSPDisplayList(d_course_rainbow_road_packed_dl_1318),
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1390[] = {
+Gfx d_course_rainbow_road_packed_dl_1390[] =
+{
     gsSPDisplayList(d_course_rainbow_road_packed_dl_1380),
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_13A0[] = {
+Gfx d_course_rainbow_road_packed_dl_13A0[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04008100, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -732,7 +748,8 @@ Gfx d_course_rainbow_road_packed_dl_13A0[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1528[] = {
+Gfx d_course_rainbow_road_packed_dl_1528[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04008A80, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -761,7 +778,8 @@ Gfx d_course_rainbow_road_packed_dl_1528[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_15F8[] = {
+Gfx d_course_rainbow_road_packed_dl_15F8[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04008F00, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -784,7 +802,8 @@ Gfx d_course_rainbow_road_packed_dl_15F8[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1698[] = {
+Gfx d_course_rainbow_road_packed_dl_1698[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04009300, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -811,7 +830,8 @@ Gfx d_course_rainbow_road_packed_dl_1698[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1758[] = {
+Gfx d_course_rainbow_road_packed_dl_1758[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04009740, 30, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -845,28 +865,25 @@ Gfx d_course_rainbow_road_packed_dl_1758[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1850[] = {
+Gfx d_course_rainbow_road_packed_dl_1850[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,
-                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),
+    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gRRTextureCheckerboardBlackWhite),
     gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,
-                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
+    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),
     gsSPVertex(0x04009B80, 4, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
     gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,
-                G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD),
+    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gRRTextureRainbow),
     gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,
-                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
+    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 128),
     gsSPVertex(0x04009BC0, 30, 0),
@@ -889,7 +906,8 @@ Gfx d_course_rainbow_road_packed_dl_1850[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1978[] = {
+Gfx d_course_rainbow_road_packed_dl_1978[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x04009EE0, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -913,7 +931,8 @@ Gfx d_course_rainbow_road_packed_dl_1978[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1A20[] = {
+Gfx d_course_rainbow_road_packed_dl_1A20[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x0400A260, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
@@ -949,7 +968,8 @@ Gfx d_course_rainbow_road_packed_dl_1A20[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1B28[] = {
+Gfx d_course_rainbow_road_packed_dl_1B28[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x0400A8C0, 30, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -971,7 +991,8 @@ Gfx d_course_rainbow_road_packed_dl_1B28[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1BC0[] = {
+Gfx d_course_rainbow_road_packed_dl_1BC0[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x0400AC60, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 3, 4, 5, 0),
@@ -996,7 +1017,8 @@ Gfx d_course_rainbow_road_packed_dl_1BC0[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1C70[] = {
+Gfx d_course_rainbow_road_packed_dl_1C70[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x0400B080, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -1023,7 +1045,8 @@ Gfx d_course_rainbow_road_packed_dl_1C70[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1D30[] = {
+Gfx d_course_rainbow_road_packed_dl_1D30[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x0400B440, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -1055,7 +1078,8 @@ Gfx d_course_rainbow_road_packed_dl_1D30[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1E18[] = {
+Gfx d_course_rainbow_road_packed_dl_1E18[] =
+{
     gsSPDisplayList(d_course_rainbow_road_packed_dl_1D30),
     gsSPDisplayList(d_course_rainbow_road_packed_dl_1C70),
     gsSPDisplayList(d_course_rainbow_road_packed_dl_1BC0),
@@ -1071,16 +1095,15 @@ Gfx d_course_rainbow_road_packed_dl_1E18[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1E80[] = {
+Gfx d_course_rainbow_road_packed_dl_1E80[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,
-                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),
+    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gRRTexture662A34),
     gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,
-                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
+    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),
     gsSPVertex(0x0400B930, 30, 0),
@@ -1100,13 +1123,11 @@ Gfx d_course_rainbow_road_packed_dl_1E80[] = {
     gsSP2Triangles(12, 13, 14, 0, 12, 14, 15, 0),
     gsSP2Triangles(16, 17, 18, 0, 16, 18, 19, 0),
     gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD,
-                G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
+    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, gRRTexture67A1B8),
     gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,
-                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
+    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 1023, 256),
     gsSPVertex(0x0400BC50, 10, 0),
@@ -1117,12 +1138,14 @@ Gfx d_course_rainbow_road_packed_dl_1E80[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1FB8[] = {
+Gfx d_course_rainbow_road_packed_dl_1FB8[] =
+{
     gsSPDisplayList(d_course_rainbow_road_packed_dl_1E80),
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_1FC8[] = {
+Gfx d_course_rainbow_road_packed_dl_1FC8[] =
+{
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPVertex(0x0400BCF0, 32, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -1145,12 +1168,14 @@ Gfx d_course_rainbow_road_packed_dl_1FC8[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_2068[] = {
+Gfx d_course_rainbow_road_packed_dl_2068[] =
+{
     gsSPDisplayList(d_course_rainbow_road_packed_dl_1FC8),
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_2078[] = {
+Gfx d_course_rainbow_road_packed_dl_2078[] =
+{
     gsSPTexture(0x0001, 0x0001, 0, G_TX_RENDERTILE, G_OFF),
     gsSPVertex(0x0400C0F0, 24, 0),
     gsSP2Triangles(0, 1, 2, 0, 0, 2, 3, 0),
@@ -1162,12 +1187,14 @@ Gfx d_course_rainbow_road_packed_dl_2078[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_20C0[] = {
+Gfx d_course_rainbow_road_packed_dl_20C0[] =
+{
     gsSPDisplayList(d_course_rainbow_road_packed_dl_2078),
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_20D0[] = {
+Gfx d_course_rainbow_road_packed_dl_20D0[] =
+{
     gsSPDisplayList(d_course_rainbow_road_packed_dl_20C0),
     gsSPDisplayList(d_course_rainbow_road_packed_dl_2068),
     gsSPDisplayList(d_course_rainbow_road_packed_dl_1FB8),
@@ -1175,7 +1202,8 @@ Gfx d_course_rainbow_road_packed_dl_20D0[] = {
     gsSPEndDisplayList(),
 };
 
-Gfx d_course_rainbow_road_packed_dl_20F8[] = {
+Gfx d_course_rainbow_road_packed_dl_20F8[] =
+{
     gsSPDisplayList(d_course_rainbow_road_packed_dl_20D0),
     gsSPEndDisplayList(),
 };

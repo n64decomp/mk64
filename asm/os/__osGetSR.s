@@ -7,7 +7,7 @@
 .section .text, "ax"
 
 glabel __osGetSR
-    mfc0  $v0, C0_SR
+    mfc0  $v0, $12
     jr    $ra
      nop
 

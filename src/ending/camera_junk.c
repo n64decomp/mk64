@@ -9,14 +9,14 @@
 #include "main.h"
 
 void setup_camera_podium_ceremony(void) {
-    Camera* camera;
+    Camera *camera;
     f32 x_dist;
     f32 y_dist;
     f32 z_dist;
 
     camera = &cameras[0];
     func_80283648(camera);
-
+    
     x_dist = camera->lookAt[0] - camera->pos[0];
     y_dist = camera->lookAt[1] - camera->pos[1];
     z_dist = camera->lookAt[2] - camera->pos[2];

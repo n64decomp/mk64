@@ -9,18 +9,18 @@
 glabel osWritebackDCache
     blez  $a1, .osWritebackDCacheReturn
      nop
-    li    $t3, DCACHE_SIZE
+    li    $t3, 8192
     bgeu  $a1, $t3, .L80324E40
      nop
     move  $t0, $a0
     addu  $t1, $a0, $a1
     bgeu  $t0, $t1, .osWritebackDCacheReturn
      nop
-    andi  $t2, $t0, DCACHE_LINEMASK
-    addiu $t1, $t1, -DCACHE_LINESIZE
+    andi  $t2, $t0, 0xf
+    addiu $t1, $t1, -0x10
     subu  $t0, $t0, $t2
 .L80324E28:
-    cache C_HWB|CACH_PD, ($t0)
+    cache 0x19, ($t0)
     bltu  $t0, $t1, .L80324E28
      addiu $t0, $t0, 0x10
 .osWritebackDCacheReturn:
@@ -28,12 +28,12 @@ glabel osWritebackDCache
      nop
 
 .L80324E40:
-    li   $t0, KUSIZE
+    lui   $t0, 0x8000
     addu  $t1, $t0, $t3
-    addiu $t1, $t1, -DCACHE_LINESIZE
+    addiu $t1, $t1, -0x10
 .L80324E4C:
-    cache C_IWBINV|CACH_PD, ($t0)
+    cache 1, ($t0)
     bltu  $t0, $t1, .L80324E4C
-     addiu $t0, DCACHE_LINESIZE # addiu $t0, $t0, 0x10
+     addiu $t0, 0x10 # addiu $t0, $t0, 0x10
     jr    $ra
      nop

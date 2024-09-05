@@ -11,20 +11,15 @@
  * @param arg1
  * @param arg2
  */
-void render_actor_tree_mario_raceway(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_tree_mario_raceway(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
-    if ((temp_v0 & 0x800) != 0) {
-        return;
-    }
+    if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1],
-                                        16000000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 16000000.0f);
 
-    if (temp_f0 < 0.0f) {
-        return;
-    }
+    if (temp_f0 < 0.0f) { return; }
 
     if (((temp_v0 & 0x400) == 0) && (temp_f0 < 250000.0f)) {
         func_8029794C(arg2->pos, arg2->rot, 3.0f);
@@ -41,25 +36,20 @@ void render_actor_tree_mario_raceway(Camera* camera, Mat4 arg1, struct Actor* ar
 
 /**
  * @brief Renders the tree actor in Yoshi Valley.
- *
- * @param camera
- * @param arg1
- * @param arg2
+ * 
+ * @param camera 
+ * @param arg1 
+ * @param arg2 
  */
-void render_actor_tree_yoshi_valley(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_tree_yoshi_valley(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
-    if ((temp_v0 & 0x800) != 0) {
-        return;
-    }
+    if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
-    if (temp_f0 < 0.0f) {
-        return;
-    }
+    if (temp_f0 < 0.0f) { return; }
 
     if (((temp_v0 & 0x400) == 0) && (temp_f0 < 250000.0f)) {
         func_8029794C(arg2->pos, arg2->rot, 2.79999995f);
@@ -76,25 +66,20 @@ void render_actor_tree_yoshi_valley(Camera* camera, Mat4 arg1, struct Actor* arg
 
 /**
  * @brief Renders the tree actor in Royal Raceway.
- *
- * @param camera
- * @param arg1
- * @param arg2
+ * 
+ * @param camera 
+ * @param arg1 
+ * @param arg2 
  */
-void render_actor_tree_royal_raceway(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_tree_royal_raceway(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
-    if ((temp_v0 & 0x800) != 0) {
-        return;
-    }
+    if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
-    if (temp_f0 < 0.0f) {
-        return;
-    }
+    if (temp_f0 < 0.0f) { return; }
 
     if (((temp_v0 & 0x400) == 0) && (temp_f0 < 250000.0f)) {
         func_8029794C(arg2->pos, arg2->rot, 2.79999995f);
@@ -111,25 +96,20 @@ void render_actor_tree_royal_raceway(Camera* camera, Mat4 arg1, struct Actor* ar
 
 /**
  * @brief Renders the tree actor in Moo Moo Farm.
- *
- * @param camera
- * @param arg1
- * @param arg2
+ * 
+ * @param camera 
+ * @param arg1 
+ * @param arg2 
  */
-void render_actor_tree_moo_moo_farm(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_tree_moo_moo_farm(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
-    if ((temp_v0 & 0x800) != 0) {
-        return;
-    }
+    if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 6250000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 6250000.0f);
 
-    if (temp_f0 < 0.0f) {
-        return;
-    }
+    if (temp_f0 < 0.0f) { return; }
 
     if (((temp_v0 & 0x400) == 0) && (temp_f0 < 600.0f)) {
         func_8029794C(arg2->pos, arg2->rot, 5.0f);
@@ -145,20 +125,15 @@ void render_actor_tree_moo_moo_farm(Camera* camera, Mat4 arg1, struct Actor* arg
 }
 
 // have all the properties of the tree
-void func_80299864(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void func_80299864(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
-    if ((temp_v0 & 0x800) != 0) {
-        return;
-    }
+    if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
-    if (temp_f0 < 0.0f) {
-        return;
-    }
+    if (temp_f0 < 0.0f) { return; }
 
     if (((temp_v0 & 0x400) == 0) && (temp_f0 < 250000.0f)) {
         func_8029794C(arg2->pos, arg2->rot, 2.79999995f);
@@ -179,25 +154,20 @@ void func_80299864(Camera* camera, Mat4 arg1, struct Actor* arg2) {
 
 /**
  * @brief Renders the tree actor in Bowser's Castle.
- *
- * @param camera
- * @param arg1
- * @param arg2
+ * 
+ * @param camera 
+ * @param arg1 
+ * @param arg2 
  */
-void render_actor_tree_bowser_castle(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_tree_bowser_castle(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
-    if ((temp_v0 & 0x800) != 0) {
-        return;
-    }
+    if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
-    if (temp_f0 < 0.0f) {
-        return;
-    }
+    if (temp_f0 < 0.0f) { return; }
 
     if (((temp_v0 & 0x400) == 0) && (temp_f0 < 250000.0f)) {
         func_8029794C(arg2->pos, arg2->rot, 2.79999995f);
@@ -214,25 +184,20 @@ void render_actor_tree_bowser_castle(Camera* camera, Mat4 arg1, struct Actor* ar
 
 /**
  * @brief Renders the bush actor in Bowser's Castle.
- *
- * @param camera
- * @param arg1
- * @param arg2
+ * 
+ * @param camera 
+ * @param arg1 
+ * @param arg2 
  */
-void render_actor_bush_bowser_castle(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_bush_bowser_castle(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
-    if ((temp_v0 & 0x800) != 0) {
-        return;
-    }
+    if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 640000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 640000.0f);
 
-    if (temp_f0 < 0.0f) {
-        return;
-    }
+    if (temp_f0 < 0.0f) { return; }
 
     if (((temp_v0 & 0x400) == 0) && (temp_f0 < 250000.0f)) {
         func_8029794C(arg2->pos, arg2->rot, 2.79999995f);
@@ -249,25 +214,20 @@ void render_actor_bush_bowser_castle(Camera* camera, Mat4 arg1, struct Actor* ar
 
 /**
  * @brief Renders the tree actor in Frappe Snowland.
- *
- * @param camera
- * @param arg1
- * @param arg2
+ * 
+ * @param camera 
+ * @param arg1 
+ * @param arg2 
  */
-void render_actor_tree_frappe_snowland(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_tree_frappe_snowland(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
-    if ((temp_v0 & 0x800) != 0) {
-        return;
-    }
+    if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
-    if (temp_f0 < 0.0f) {
-        return;
-    }
+    if (temp_f0 < 0.0f) { return; }
 
     if (((temp_v0 & 0x400) == 0) && (temp_f0 < 250000.0f)) {
         func_8029794C(arg2->pos, arg2->rot, 2.79999995f);
@@ -283,25 +243,20 @@ void render_actor_tree_frappe_snowland(Camera* camera, Mat4 arg1, struct Actor* 
 
 /**
  * @brief Renders the a first variant of cactus in Kalimari Desert.
- *
- * @param camera
- * @param arg1
- * @param arg2
+ * 
+ * @param camera 
+ * @param arg1 
+ * @param arg2 
  */
-void render_actor_tree_cactus1_kalimari_desert(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_tree_cactus1_kalimari_desert(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
-    if ((temp_v0 & 0x800) != 0) {
-        return;
-    }
+    if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
-    if (temp_f0 < 0.0f) {
-        return;
-    }
+    if (temp_f0 < 0.0f) { return; }
 
     if (((temp_v0 & 0x400) == 0) && (temp_f0 < 40000.0f)) {
         func_8029794C(arg2->pos, arg2->rot, 1.0f);
@@ -317,25 +272,20 @@ void render_actor_tree_cactus1_kalimari_desert(Camera* camera, Mat4 arg1, struct
 
 /**
  * @brief Renders the a second variant of cactus in Kalimari Desert.
- *
- * @param camera
- * @param arg1
- * @param arg2
+ * 
+ * @param camera 
+ * @param arg1 
+ * @param arg2 
  */
-void render_actor_tree_cactus2_kalimari_desert(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_tree_cactus2_kalimari_desert(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
-    if ((temp_v0 & 0x800) != 0) {
-        return;
-    }
+    if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
-    if (temp_f0 < 0.0f) {
-        return;
-    }
+    if (temp_f0 < 0.0f) { return; }
 
     if (((temp_v0 & 0x400) == 0) && (temp_f0 < 40000.0f)) {
         func_8029794C(arg2->pos, arg2->rot, 1.0f);
@@ -351,25 +301,20 @@ void render_actor_tree_cactus2_kalimari_desert(Camera* camera, Mat4 arg1, struct
 
 /**
  * @brief Renders the a third variant of cactus in Kalimari Desert.
- *
- * @param camera
- * @param arg1
- * @param arg2
+ * 
+ * @param camera 
+ * @param arg1 
+ * @param arg2 
  */
-void render_actor_tree_cactus3_kalimari_desert(Camera* camera, Mat4 arg1, struct Actor* arg2) {
+void render_actor_tree_cactus3_kalimari_desert(Camera *camera, Mat4 arg1, struct Actor *arg2) {
     f32 temp_f0;
     s16 temp_v0 = arg2->flags;
 
-    if ((temp_v0 & 0x800) != 0) {
-        return;
-    }
+    if ((temp_v0 & 0x800) != 0) { return; }
 
-    temp_f0 =
-        is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
+    temp_f0 = is_within_render_distance(camera->pos, arg2->pos, camera->rot[1], 0, gCameraZoom[camera - camera1], 4000000.0f);
 
-    if (temp_f0 < 0.0f) {
-        return;
-    }
+    if (temp_f0 < 0.0f) { return; }
 
     if (((temp_v0 & 0x400) == 0) && (temp_f0 < 40000.0f)) {
         func_8029794C(arg2->pos, arg2->rot, 0.80000001f);

@@ -88,7 +88,7 @@ extern Gfx d_course_frappe_snowland_dl_tree[];
 extern Gfx d_course_frappe_snowland_dl_76A0[];
 extern struct ActorSpawnData d_course_frappe_snowland_tree_spawns[];
 extern struct ActorSpawnData d_course_frappe_snowland_item_box_spawns[];
-extern Gfx* d_course_frappe_snowland_dl_list[];
+extern Gfx *d_course_frappe_snowland_dl_list[];
 extern TrackSections d_course_frappe_snowland_addr[];
 
 #endif

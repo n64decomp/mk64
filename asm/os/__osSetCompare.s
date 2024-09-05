@@ -7,7 +7,7 @@
 .section .text, "ax"
 
 glabel __osSetCompare
-    mtc0  $a0, C0_COMPARE
+    mtc0  $a0, $11
     jr    $ra
      nop
 

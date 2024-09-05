@@ -8,20 +8,20 @@
 .section .text, "ax"
 
 glabel __osProbeTLB
-    mfc0  $t0, C0_ENTRYHI
-    andi  $t1, $t0, TLBHI_PIDMASK
-    li    $at, TLBHI_VPN2MASK
+    mfc0  $t0, $10
+    andi  $t1, $t0, 0xff
+    li    $at, -8192
     and   $t2, $a0, $at
     or    $t1, $t1, $t2
-    mtc0  $t1, C0_ENTRYHI
+    mtc0  $t1, $10
     nop
     nop
     nop
     tlbp
     nop
     nop
-    mfc0  $t3, C0_INX
-    lui   $at, %hi(TLBINX_PROBE)
+    mfc0  $t3, $0
+    lui   $at, 0x8000
     and   $t3, $t3, $at
     bnez  $t3, .L8032A0D8
      nop
@@ -29,25 +29,25 @@ glabel __osProbeTLB
     nop
     nop
     nop
-    mfc0  $t3, C0_PAGEMASK
-    addi  $t3, $t3, DCACHE_SIZE
+    mfc0  $t3, $5
+    addi  $t3, $t3, 0x2000
     srl   $t3, $t3, 1
     and   $t4, $t3, $a0
     bnez  $t4, .L8032A0A8
      addi  $t3, $t3, -1
-    mfc0  $v0, C0_ENTRYLO0
+    mfc0  $v0, $2
     b     .L8032A0AC
      nop
 .L8032A0A8:
-    mfc0  $v0, C0_ENTRYLO1
+    mfc0  $v0, $3
 .L8032A0AC:
-    andi  $t5, $v0, TLBLO_V
+    andi  $t5, $v0, 2
     beqz  $t5, .L8032A0D8
      nop
-    lui   $at, (TLBLO_PFNMASK >> 16) # lui $at, 0x3fff
-    ori   $at, %lo(TLBLO_PFNMASK) # ori $at, $at, 0xffc0
+    lui   $at, (0x3FFFFFC0 >> 16) # lui $at, 0x3fff
+    ori   $at, (0x3FFFFFC0 & 0xFFFF) # ori $at, $at, 0xffc0
     and   $v0, $v0, $at
-    sll   $v0, $v0, TLBLO_PFNSHIFT
+    sll   $v0, $v0, 6
     and   $t5, $a0, $t3
     add   $v0, $v0, $t5
     b     .L8032A0DC
@@ -55,7 +55,7 @@ glabel __osProbeTLB
 .L8032A0D8:
     li    $v0, -1
 .L8032A0DC:
-    mtc0  $t0, C0_ENTRYHI
+    mtc0  $t0, $10
     jr    $ra
      nop
 

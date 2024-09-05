@@ -81,7 +81,6 @@ endif
 ifeq      ($(COMPILER),ido)
   MIPSISET := -mips2
 else ifeq ($(COMPILER),gcc)
-  DEFINES += AVOID_UB=1 NON_MATCHING=1
   NON_MATCHING := 1
   VERSION_ASFLAGS := --defsym AVOID_UB=1
   MIPSISET     := -mips3
@@ -271,18 +270,7 @@ GLOBAL_ASM_OS_O_FILES = $(foreach file,$(GLOBAL_ASM_OS_FILES),$(BUILD_DIR)/$(fil
 GLOBAL_ASM_AUDIO_O_FILES = $(foreach file,$(GLOBAL_ASM_AUDIO_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_DIR)/$(file:.c=.o))
 
-ifneq ($(BLENDER),)
-else ifneq ($(call find-command,blender),)
-  BLENDER := blender
-else ifeq ($(DETECTED_OS), windows)
-  BLENDER := "C:\Program Files\Blender Foundation\Blender 3.6\blender.exe"
-endif
 
-MODELS_JSON := $(call rwildcard,models,*.json)
-MODELS_PROC := $(MODELS_JSON:%.json=%)
-
-models/%: models/%.json
-	$(PYTHON) tools/blender/extract_models.py $(BLENDER) $<
 
 #==============================================================================#
 # Compiler Options                                                             #
@@ -291,13 +279,13 @@ models/%: models/%.json
 # detect prefix for MIPS toolchain
 ifneq ($(CROSS),)
 else ifneq      ($(call find-command,mips-linux-gnu-ld),)
-  CROSS := mips-linux-gnu-
+	CROSS := mips-linux-gnu-
 else ifneq ($(call find-command,mips64-linux-gnu-ld),)
-  CROSS := mips64-linux-gnu-
+	CROSS := mips64-linux-gnu-
 else ifneq ($(call find-command,mips64-elf-ld),)
-  CROSS := mips64-elf-
+	CROSS := mips64-elf-
 else
-  $(error Unable to detect a suitable MIPS toolchain installed)
+	$(error Unable to detect a suitable MIPS toolchain installed)
 endif
 
 AS      := $(CROSS)as
@@ -445,16 +433,8 @@ doc:
 	@$(PRINT) "$(GREEN)Documentation generated in docs/html$(NO_COL)\n"
 	@$(PRINT) "$(GREEN)Results can be viewed by opening docs/html/index.html in a web browser$(NO_COL)\n"
 
-format:
-	@$(PYTHON) $(TOOLS_DIR)/format.py -j $(N_THREADS)
-
 clean:
 	$(RM) -r $(BUILD_DIR)
-
-model_extract: $(MODELS_PROC)
-
-fast64_blender:
-	$(BLENDER) --python tools/blender/fast64_run.py
 
 distclean: distclean_assets
 	$(RM) -r $(BUILD_DIR_BASE)
@@ -601,9 +581,6 @@ LDFLAGS += $(foreach elf,$(COURSE_DATA_ELFS),-R $(elf))
 
 COURSE_DATA_TARGETS := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.mio0.o)
 
-COURSE_DISPLAYLIST_OFILES := $(foreach dir,$(COURSE_DIRS),$(BUILD_DIR)/$(dir)/course_data.o)
-$(COURSE_DISPLAYLIST_OFILES): $(BUILD_DIR)/%/course_data.o: %/course_textures.linkonly.h
-
 %/course_data.elf: %/course_data.o %/course_displaylists.inc.elf
 	$(V)$(LD) -t -e 0 -Ttext=06000000 -Map $@.map -R $*/course_displaylists.inc.elf -o $@ $< --no-check-sections
 
@@ -656,7 +633,7 @@ $(GLOBAL_ASM_RACING_O_FILES): CC := $(PYTHON) $(TOOLS_DIR)/asm_processor/build.p
 $(BUILD_DIR)/src/os/%.o:          OPT_FLAGS :=
 $(BUILD_DIR)/src/os/math/%.o:     OPT_FLAGS := -O2
 $(BUILD_DIR)/src/os/math/ll%.o:   OPT_FLAGS :=
-$(BUILD_DIR)/src/os/math/ll%.o:   MIPSISET := -mips3
+$(BUILD_DIR)/src/os/math/ll%.o:   MIPSISET := -mips3 -32
 $(BUILD_DIR)/src/os/ldiv.o:       OPT_FLAGS := -O2
 $(BUILD_DIR)/src/os/string.o:     OPT_FLAGS := -O2
 $(BUILD_DIR)/src/os/gu%.o:        OPT_FLAGS := -O3

@@ -6,7 +6,7 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
-#include "animation.h"
+#include "code_80004740.h"
 
 extern Gfx d_course_koopa_troopa_beach_dl_0[];
 extern Gfx d_course_koopa_troopa_beach_dl_48[];
@@ -314,8 +314,8 @@ extern u8 d_course_koopa_troopa_beach_crab_tlut[];
 extern u8 d_course_koopa_troopa_beach_crab_frames[][4096];
 extern u32 d_course_koopa_troopa_beach_unk_data1[];
 extern s16 d_course_koopa_troopa_beach_unk_data2[];
-extern AnimationLimbVector d_course_koopa_troopa_beach_unk_data3[];
-extern Animation d_course_koopa_troopa_beach_unk_data4;
+extern animation_type_3_triplet d_course_koopa_troopa_beach_unk_data3[];
+extern animation_type_2 d_course_koopa_troopa_beach_unk_data4;
 extern Lights1 d_course_koopa_troopa_beach_light1;
 extern u8 d_course_koopa_troopa_beach_bird_wing[];
 extern u8 d_course_koopa_troopa_beach_bird_eye[];
@@ -332,7 +332,7 @@ extern Gfx d_course_koopa_troopa_beach_dl_168F0[];
 extern Vtx d_course_koopa_troopa_beach_bird_wing_3_model[];
 extern Gfx d_course_koopa_troopa_beach_dl_16990[];
 extern u32 d_course_koopa_troopa_beach_unk4[];
-extern Animation* d_course_koopa_troopa_beach_unk_data5[];
+extern animation_type_2 *d_course_koopa_troopa_beach_unk_data5[];
 extern u32 d_course_koopa_troopa_beach_unk_data6[];
 extern Lights1 d_course_koopa_troopa_beach_light2;
 extern Vtx d_course_koopa_troopa_beach_tree_model[];
@@ -367,7 +367,7 @@ extern Gfx d_course_koopa_troopa_beach_dl_18D68[];
 extern struct ActorSpawnData d_course_koopa_troopa_beach_item_box_spawns[];
 extern struct ActorSpawnData d_course_koopa_troopa_beach_tree_spawn[];
 extern TrackSections d_course_koopa_troopa_beach_addr[];
-extern Gfx* d_course_koopa_troopa_beach_dl_list1[];
-extern Gfx* d_course_koopa_troopa_beach_dl_list2[];
+extern Gfx *d_course_koopa_troopa_beach_dl_list1[];
+extern Gfx *d_course_koopa_troopa_beach_dl_list2[];
 
 #endif

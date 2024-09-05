@@ -7,9 +7,9 @@
 .section .text, "ax"
 
 glabel __osRestoreInt
-    mfc0  $t0, C0_SR
+    mfc0  $t0, $12
     or    $t0, $t0, $a0
-    mtc0  $t0, C0_SR
+    mtc0  $t0, $12
     nop
     nop
     jr    $ra

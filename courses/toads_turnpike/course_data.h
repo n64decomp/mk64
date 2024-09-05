@@ -391,7 +391,7 @@ extern Gfx d_course_toads_turnpike_dl_23858[];
 extern Gfx d_course_toads_turnpike_dl_238A0[];
 extern Gfx d_course_toads_turnpike_dl_238E8[];
 extern Gfx d_course_toads_turnpike_dl_23930[];
-extern Gfx* d_course_toads_turnpike_dl_list[];
+extern Gfx *d_course_toads_turnpike_dl_list[];
 extern struct ActorSpawnData d_course_toads_turnpike_item_box_spawns[];
 extern TrackSections d_course_toads_turnpike_addr[];
 

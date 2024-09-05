@@ -5,27 +5,22 @@
 /**
  * @brief Renders the falling rock actor.
  * Actor used in Choco Mountain.
- *
- * @param camera
- * @param rock
+ * 
+ * @param camera 
+ * @param rock 
  */
-void render_actor_falling_rock(Camera* camera, struct FallingRock* rock) {
+void render_actor_falling_rock(Camera *camera, struct FallingRock *rock) {
     Vec3s sp98;
     Vec3f sp8C;
     Mat4 sp4C;
     f32 height;
     UNUSED s32 pad[4];
 
-    if (rock->respawnTimer != 0) {
-        return;
-    }
+    if (rock->respawnTimer != 0) { return; }
 
-    height = is_within_render_distance(camera->pos, rock->pos, camera->rot[1], 400.0f, gCameraZoom[camera - camera1],
-                                       4000000.0f);
+    height = is_within_render_distance(camera->pos, rock->pos, camera->rot[1], 400.0f, gCameraZoom[camera - camera1], 4000000.0f);
 
-    if (height < 0.0f) {
-        return;
-    }
+    if (height < 0.0f) { return; }
 
     if (height < 250000.0f) {
 

@@ -95,7 +95,6 @@ Documentation generated using [Doxygen](https://www.doxygen.nl/index.html). Run 
 
 Pull requests are welcome. For major changes, please discuss in the Discord.
 
-Run `make format` to ensure it meets the project's coding standards.
-If code needs to avoid formatting place `// clang-format off` before the code and `// clang-format on` after.
+Run `clang-format` on your code to ensure it meets the project's coding standards.
 
 Official Discord: [discord.gg/DuYH3Fh](https://discord.gg/DuYH3Fh)

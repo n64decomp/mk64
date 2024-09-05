@@ -21,14 +21,14 @@
 
 /*---------------------------------------------------------------------*
         Copyright (C) 1998 Nintendo. (Originated by SGI)
-
+        
         $RCSfile: os_cache.h,v $
         $Revision: 1.1 $
         $Date: 1998/10/09 08:01:04 $
  *---------------------------------------------------------------------*/
 
 #ifndef _OS_CACHE_H_
-#define _OS_CACHE_H_
+#define	_OS_CACHE_H_
 
 #ifdef _LANGUAGE_C_PLUS_PLUS
 extern "C" {
@@ -44,6 +44,7 @@ extern "C" {
  *
  */
 
+
 #endif /* defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS) */
 
 /**************************************************************************
@@ -51,6 +52,7 @@ extern "C" {
  * Global definitions
  *
  */
+
 
 #if defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS)
 
@@ -60,14 +62,16 @@ extern "C" {
  *
  */
 
-#define OS_DCACHE_ROUNDUP_ADDR(x) (void*) (((((u32) (x) + 0xf) / 0x10) * 0x10))
-#define OS_DCACHE_ROUNDUP_SIZE(x) (u32)(((((u32) (x) + 0xf) / 0x10) * 0x10))
+#define	OS_DCACHE_ROUNDUP_ADDR(x)	(void *)(((((u32)(x)+0xf)/0x10)*0x10))
+#define	OS_DCACHE_ROUNDUP_SIZE(x)	(u32)(((((u32)(x)+0xf)/0x10)*0x10))
+
 
 /**************************************************************************
  *
  * Extern variables
  *
  */
+
 
 /**************************************************************************
  *
@@ -77,12 +81,13 @@ extern "C" {
 
 /* Cache operations and macros */
 
-extern void osInvalDCache(void*, size_t);
-extern void osInvalICache(void*, size_t);
-extern void osWritebackDCache(void*, size_t);
-extern void osWritebackDCacheAll(void);
+extern void		osInvalDCache(void *, size_t);
+extern void		osInvalICache(void *, size_t);
+extern void		osWritebackDCache(void *, size_t);
+extern void		osWritebackDCacheAll(void);
 
-#endif /* defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS) */
+
+#endif  /* defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS) */
 
 #ifdef _LANGUAGE_C_PLUS_PLUS
 }

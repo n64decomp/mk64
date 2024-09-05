@@ -15,30 +15,31 @@ OSThread D_80162790;
 ALIGNED8 u8 gDebugThreadStack[0x400];
 OSMesgQueue D_80162D40;
 OSMesg D_80162D58;
-u16* pFramebuffer;
+u16 *pFramebuffer;
 s32 sButtonSequenceIndex;
 
 #define DRAW_CODE 0xFFFF
 #define CHARACTER_DASH 16
 
-extern void osSetEventMesg(OSEvent, OSMesgQueue*, OSMesg);
-extern s32 osRecvMesg(OSMesgQueue*, OSMesg*, s32);
+extern void osSetEventMesg(OSEvent, OSMesgQueue *, OSMesg);
+extern s32 osRecvMesg(OSMesgQueue *, OSMesg *, s32);
 
 s32 sCounter = 0;
 
 u8 crashScreenFont[][8] = {
-#include "textures/crash_screen/crash_screen_font.ia1.inc.c"
+    #include "textures/crash_screen/crash_screen_font.ia1.inc.c"
 };
 
-u16 sCrashScreenButtonSequence[] = { L_TRIG, U_JPAD, L_JPAD,   D_JPAD,   R_JPAD,
-                                     R_TRIG, L_TRIG, B_BUTTON, A_BUTTON, DRAW_CODE };
+u16 sCrashScreenButtonSequence[] = {
+    L_TRIG, U_JPAD, L_JPAD, D_JPAD, R_JPAD, R_TRIG, L_TRIG, B_BUTTON, A_BUTTON, DRAW_CODE
+};
 
-void crash_screen_draw_glyph(u16* framebuffer, s32 x, s32 y, s32 glyph) {
+void crash_screen_draw_glyph(u16 *framebuffer, s32 x, s32 y, s32 glyph) {
     s32 data;
     s32 ptr;
     s32 i, j;
 
-    for (i = 0; i < 8; i++) {
+    for(i = 0; i < 8; i++) {
 
         data = crashScreenFont[glyph][i];
 
@@ -54,13 +55,13 @@ void crash_screen_draw_glyph(u16* framebuffer, s32 x, s32 y, s32 glyph) {
     }
 }
 
-void crash_screen_draw_square(u16* framebuffer);
+void crash_screen_draw_square(u16 *framebuffer);
 // Functionally Equivallent.
 #ifdef NON_MATCHING
 
 //                   0xRGBA (I think A maybe not).
 #define WHITE_COLOUR 0xFFFF
-#define RED_COLOUR 0xF801
+#define RED_COLOUR   0xF801
 
 /**
  * The big mismatch is the handling of the '6' used in the if statement
@@ -71,7 +72,8 @@ void crash_screen_draw_square(u16* framebuffer);
  * 5 different registers instead of just re-using one
  * There's some stack related differences too, maybe that's related?
  **/
-void crash_screen_draw_square(u16* framebuffer) {
+void crash_screen_draw_square(u16 *framebuffer)
+{
     s32 s0_end;
     s32 s2_start;
     s32 row;
@@ -97,18 +99,18 @@ GLOBAL_ASM("asm/non_matchings/crash_screen/crash_screen_draw_square.s")
  * Line 1: threadId - address of faulted instruction - error code
  * Line 2: Address in the return address register
  * Line 3: Machine code of faulted instruction
- *
+ * 
  * The R4300i manual discusses exceptions in more depth.
- *
- * @param framebuffer
- * @param faulted thread
+ * 
+ * @param framebuffer 
+ * @param faulted thread 
  **/
 
 //                     0xRGBA
 #define BLACK_COLOUR 0x0001
 
-void crash_screen_draw_info(u16* framebuffer, OSThread* thread) {
-    __OSThreadContext* context = &thread->context;
+void crash_screen_draw_info(u16 *framebuffer, OSThread *thread) {
+    __OSThreadContext *context = &thread->context;
     s32 i, j, x, y, h;
     uintptr_t faultedAddr;
     u32 exception;
@@ -163,7 +165,7 @@ void crash_screen_draw_info(u16* framebuffer, OSThread* thread) {
     //! @bug if this check fails, the ra register is printed a second time.
     if ((faultedAddr > 0x80000000) && (faultedAddr < 0x803FFF7F)) {
         // Cast the address to its value; the faulty machine code.
-        crashInfo = *(u32*) faultedAddr;
+        crashInfo = *(u32*)faultedAddr;
     }
     for (x = 180; x >= 124; x -= 4) {
         crash_screen_draw_glyph(framebuffer, x, 93, crashInfo & 0xF);
@@ -174,12 +176,13 @@ void crash_screen_draw_info(u16* framebuffer, OSThread* thread) {
     osViSwapBuffer(framebuffer);
 }
 
-OSThread* get_faulted_thread(void) {
-    OSThread* thread;
+OSThread *get_faulted_thread(void) {
+    OSThread *thread;
 
     thread = __osGetCurrFaultedThread();
     while (thread->priority != -1) {
-        if (thread->priority > OS_PRIORITY_IDLE && thread->priority <= OS_PRIORITY_APPMAX && (thread->flags & 3) != 0) {
+        if (thread->priority > OS_PRIORITY_IDLE && thread->priority <= OS_PRIORITY_APPMAX
+            && (thread->flags & 3) != 0) {
             return thread;
         }
         thread = thread->tlnext;
@@ -191,8 +194,9 @@ OSThread* get_faulted_thread(void) {
  * @brief Retrieves faulted thread and displays debug info after the user inputs the button sequence.
  * Button sequence: L, Up, Left, Down, Right, R, L, B, A
  **/
-void thread9_crash_screen(UNUSED void* arg0) {
-    static OSThread* thread;
+void thread9_crash_screen(UNUSED void *arg0)
+{
+    static OSThread *thread;
     OSMesg mesg;
 
     osSetEventMesg(12, &D_80162D40, (OSMesg) 16);
@@ -202,18 +206,17 @@ void thread9_crash_screen(UNUSED void* arg0) {
     while (true) {
         osRecvMesg(&D_80162D40, &mesg, 1);
         thread = get_faulted_thread();
-
+        
         if (thread) {
             // Run only on the first iteration.
             if (sCounter == 0) {
                 crash_screen_draw_square(pFramebuffer);
 #ifndef DEBUG
-                while (true) {
+                while(true)
+                {
                     read_controllers();
 
-                    if (!gControllerOne->buttonPressed) {
-                        continue;
-                    }
+                    if (!gControllerOne->buttonPressed) { continue; }
 
                     if (gControllerOne->buttonPressed == sCrashScreenButtonSequence[sButtonSequenceIndex]) {
                         sButtonSequenceIndex++;
@@ -232,23 +235,24 @@ void thread9_crash_screen(UNUSED void* arg0) {
 #else
                 crash_screen_draw_info(pFramebuffer, thread);
 #endif
+                
             }
-            if (sCounter < 5) {
+            if (sCounter < 5) {        
                 sCounter++;
             }
         }
     }
 }
 
-void crash_screen_set_framebuffer(u16* framebuffer) {
+void crash_screen_set_framebuffer(u16 *framebuffer) {
     pFramebuffer = framebuffer;
 }
 
-extern void thread9_crash_screen(void*);
+extern void thread9_crash_screen(void *);
 
 void create_debug_thread(void) {
     osCreateMesgQueue(&D_80162D40, &D_80162D58, 1);
-    osCreateThread((OSThread*) &D_80162790, 9, (void*) thread9_crash_screen, 0, &D_80162D40, 0x7F);
+    osCreateThread((OSThread *) &D_80162790, 9, (void *)thread9_crash_screen, 0, &D_80162D40, 0x7F);
 }
 
 void start_debug_thread(void) {
