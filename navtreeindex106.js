@@ -1,5 +1,6 @@
 var NAVTREEINDEX106 =
 {
+"sherbet__land_2course__offsets_8c.html#a748b867bc98e0b70bc4c87d5990fd841":[8,0,0,15,4,1],
 "sherbet__land_2course__offsets_8c.html#a79a8680a46dfad1280e99d759e2fea26":[8,0,0,15,4,10],
 "sherbet__land_2course__offsets_8c.html#a7b16f5cb1a8fbe6d445a175245f73e9f":[8,0,0,15,4,5],
 "sherbet__land_2course__offsets_8c.html#ac03104bdc5af122c105a72a6fc92f458":[8,0,0,15,4,6],
@@ -248,6 +249,5 @@ var NAVTREEINDEX106 =
 "skyscraper_2course__textures_8linkonly_8h.html#a421b620fd86645757855f72017a0625c":[8,0,0,16,6,22],
 "skyscraper_2course__textures_8linkonly_8h.html#a436b5dc969627690ec59cec11876df66":[8,0,0,16,6,19],
 "skyscraper_2course__textures_8linkonly_8h.html#a4e9e1da4f74207855da96eb1f6e7a2e8":[8,0,0,16,6,15],
-"skyscraper_2course__textures_8linkonly_8h.html#a58eaf0a0d859376ebaa65cd49eb0be05":[8,0,0,16,6,17],
-"skyscraper_2course__textures_8linkonly_8h.html#a7e25ea1bcbee4c6ddfc02228be09b713":[8,0,0,16,6,13]
+"skyscraper_2course__textures_8linkonly_8h.html#a58eaf0a0d859376ebaa65cd49eb0be05":[8,0,0,16,6,17]
 };

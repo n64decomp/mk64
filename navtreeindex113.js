@@ -1,5 +1,6 @@
 var NAVTREEINDEX113 =
 {
+"structOnlyBestTimeTrialRecords.html":[7,0,112],
 "structOnlyBestTimeTrialRecords.html#a056f1511f8f72a87d18f2b31de8edf95":[7,0,112,0],
 "structOnlyBestTimeTrialRecords.html#a893ecb20d3c6f02ba0e40428899c896c":[7,0,112,1],
 "structOnlyBestTimeTrialRecords.html#ae870e3959d821975470b9c07fd83cdc6":[7,0,112,2],
@@ -248,6 +249,5 @@ var NAVTREEINDEX113 =
 "structSPTask.html#ac8f151d1e297976743cca4fe8f282a6b":[7,0,167,1],
 "structSPTask.html#ae55ce0fc3c5a3baccc1fad7ffaa0d7b7":[7,0,167,3],
 "structSaveData.html":[7,0,151],
-"structSaveData.html#a2ff481cd3bd1a2837891600786ff1b48":[7,0,151,1],
-"structSaveData.html#a99de92ab584841746375150797f52829":[7,0,151,2]
+"structSaveData.html#a2ff481cd3bd1a2837891600786ff1b48":[7,0,151,1]
 };

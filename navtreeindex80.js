@@ -1,5 +1,6 @@
 var NAVTREEINDEX80 =
 {
+"menus_8h.html#a0f41682180986e32e8625b69ef4dc23d":[8,0,3,46,52],
 "menus_8h.html#a100ca4ac7ca7ea8d9becc9ed7eb34fe6":[8,0,3,46,43],
 "menus_8h.html#a12782c6dfda55fb80c3fdf7d11d302f0":[8,0,3,46,15],
 "menus_8h.html#a13d6b1229888156dc3616ec79566059f":[8,0,3,46,37],
@@ -248,6 +249,5 @@ var NAVTREEINDEX80 =
 "moo__moo__farm_2course__data_8c.html#aca4801bcb5972642e020b7ac44db223a":[8,0,0,12,0,14],
 "moo__moo__farm_2course__data_8c.html#acb4d2fa8f804389a0746ef7968d340cf":[8,0,0,12,0,20],
 "moo__moo__farm_2course__data_8c.html#acc229a22cbf29d783ceca5be40fcd013":[8,0,0,12,0,57],
-"moo__moo__farm_2course__data_8c.html#ad281e417ff51a446d1581253db552006":[8,0,0,12,0,80],
-"moo__moo__farm_2course__data_8c.html#ad2b7c436a56aa42bcab65606b9dd13e0":[8,0,0,12,0,73]
+"moo__moo__farm_2course__data_8c.html#ad281e417ff51a446d1581253db552006":[8,0,0,12,0,80]
 };
