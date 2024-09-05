@@ -8,7 +8,6 @@
 #include <mk64.h>
 
 #include "course_displaylists.inc.h"
-
 Gfx d_course_banshee_boardwalk_dl_0[] = {
     gsSPEndDisplayList(),
 };
