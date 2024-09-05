@@ -2541,6 +2541,9 @@ Gfx* func_800959F8(Gfx* displayListHead, Vtx* arg1) {
     return displayListHead;
 }
 
+#ifdef AVOID_UB
+#define MTX_TYPE Mtx
+#else
 typedef struct {
     u16 i[4][4];
     u16 f[4][4];
@@ -2557,28 +2560,42 @@ typedef union {
     s32 w;
 } TheWhyUnion;
 
+#define MTX_TYPE Mtx2
+#endif
+
 // Why... Why... Why... This function is so bad it's not going in the header.
-void func_80095AE0(Mtx2* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+void func_80095AE0(MTX_TYPE* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+#ifdef AVOID_UB
+    // Use Mat4 array to set matrix values using guMtxF2L. This helps little-endian systems.
+    Mat4 src;
+    src[0][0] = arg3;
+    src[0][1] = 0.0f;
+    src[0][2] = 0.0f;
+    src[0][3] = 0.0f;
+    src[1][0] = 0.0f;
+    src[1][1] = arg4;
+    src[1][2] = 0.0f;
+    src[1][3] = 0.0f;
+    src[2][0] = 0.0f;
+    src[2][1] = 0.0f;
+    src[2][2] = 1.0f;
+    src[2][3] = 0.0f;
+    src[3][0] = arg1;
+    src[3][1] = arg2;
+    src[3][2] = 0.0f;
+    src[3][3] = 1.0f;
+    guMtxF2L(src, arg0);
+#else
     TheWhyUnion sp14;
     TheWhyUnion sp10;
     TheWhyUnion spC;
     TheWhyUnion sp8;
     s32 i;
 
-#ifdef AVOID_UB
-    size_t row;
-    size_t col;
-    for (row = 0; row < 4; row++) {
-        for (col = 0; col < 4; col++) {
-            arg0->m[row][col] = 0;
-        }
-    }
-#else
     // clang-format off
     // should be inline
     for(i = 0; i < 16; i++) { arg0->m[0][i] = 0; }
     // clang-format on
-#endif
 
     sp14.w = arg3 * 65536.0f;
     sp10.w = arg4 * 65536.0f;
@@ -2594,7 +2611,10 @@ void func_80095AE0(Mtx2* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     arg0->u.f[1][1] = sp10.s[1];
     arg0->u.f[3][0] = spC.s[1];
     arg0->u.f[3][1] = sp8.s[1];
+#endif
 }
+
+#undef MTX_TYPE
 
 Gfx* func_80095BD0(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4, u32 arg5, f32 arg6, f32 arg7) {
     Vtx* var_a1;
