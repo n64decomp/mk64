@@ -7,10 +7,10 @@
 
 /**
  * @file Include for course gfx.inc.c.
-*/
+ */
 
 typedef struct {
-    Gfx *addr;
+    Gfx* addr;
     u8 surfaceType;
     u8 sectionId;
     u16 flags;
