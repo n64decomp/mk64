@@ -2385,7 +2385,7 @@ s16 find_closest_waypoint_track_section(f32 posX, f32 posY, f32 posZ, u16 trackS
 /**
  * Tries to find the waypoint nearest to (posX, posY, posZ)
  * Only consider waypoints in the same segment as trackSectionId
- * Only considers waypoints within 500 units of(posX, posY, posZ)
+ * Only considers waypoints within 500 units of (posX, posY, posZ)
  * Looks 3 waypoints behind and 6 waypoints ahead of waypointIndex
  **/
 s16 func_8000C884(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex, u16 trackSectionId) {
