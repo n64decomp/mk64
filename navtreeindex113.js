@@ -1,5 +1,9 @@
 var NAVTREEINDEX113 =
 {
+"structObject.html#af58cd5b1fc2358f645574ed8a3d78899":[7,0,111,39],
+"structObject.html#af9b1ba5b6cf08d49133e92f2344c0f63":[7,0,111,34],
+"structObject.html#afa45d9f3f77aaa4f055c9d2dae081120":[7,0,111,19],
+"structObject.html#afe06151dc6373870bb4f2c79e2aa5e8c":[7,0,111,42],
 "structOnlyBestTimeTrialRecords.html":[7,0,112],
 "structOnlyBestTimeTrialRecords.html#a056f1511f8f72a87d18f2b31de8edf95":[7,0,112,0],
 "structOnlyBestTimeTrialRecords.html#a893ecb20d3c6f02ba0e40428899c896c":[7,0,112,1],
@@ -245,9 +249,5 @@ var NAVTREEINDEX113 =
 "structReverbSettingsEU.html#aba10615f395a40b1695db5a576298b4f":[7,0,148,1],
 "structSPTask.html":[7,0,167],
 "structSPTask.html#a1cfd221ed795c4f717e289f36c9e552e":[7,0,167,2],
-"structSPTask.html#a4363043b6daf924a156887fca2f3a560":[7,0,167,0],
-"structSPTask.html#ac8f151d1e297976743cca4fe8f282a6b":[7,0,167,1],
-"structSPTask.html#ae55ce0fc3c5a3baccc1fad7ffaa0d7b7":[7,0,167,3],
-"structSaveData.html":[7,0,151],
-"structSaveData.html#a2ff481cd3bd1a2837891600786ff1b48":[7,0,151,1]
+"structSPTask.html#a4363043b6daf924a156887fca2f3a560":[7,0,167,0]
 };

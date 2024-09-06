@@ -126,13 +126,13 @@ $(function(){initNavTree('todo.html',''); initResizable(true); });
 <dt>Global <a class="el" href="courseTable_8h.html#a83643ea0bd8b0af88efc38bccc1b93ca">_course_mario_raceway_dl_mio0SegmentRomStart</a>  []</dt>
 <dd><a class="anchor" id="_todo000057"></a>These should probably be ptr's instead of array's?  </dd>
 <dt>Global <a class="el" href="update__objects_8c.html#a6e56a43ec98e81db05f2410893efa437">add_unused_obj_index</a>  (s32 *listIdx, s32 *nextFree, s32 size)</dt>
-<dd><a class="anchor" id="_todo000051"></a>This HAS to be a for-loop of some variety, but I can't make a for-loop to match. If you replace this with <code>for(var_v1 = 0; var_v1 &lt; size; var_v1++)</code> The diff gets massive.  </dd>
+<dd><a class="anchor" id="_todo000048"></a>This HAS to be a for-loop of some variety, but I can't make a for-loop to match. If you replace this with <code>for(var_v1 = 0; var_v1 &lt; size; var_v1++)</code> The diff gets massive.  </dd>
 <dt>Global <a class="el" href="camera_8h.html#a5d473430986a7e9d5ceca3b538321cc8">BAD_RETURN</a>  (cmd)</dt>
 <dd><a class="anchor" id="_todo000006"></a>put this define in types.h or similar. Certain functions are marked as having return values, but do not actually return a value. This causes undefined behavior, which we'd rather avoid on modern GCC. This only impacts -O2 and can matter for both the function itself and functions that call it.  </dd>
 <dt>Global <a class="el" href="main_8h.html#a9410901312e9664a26f6a854227f2f8b">clear_framebuffer</a>  (s32)</dt>
 <dd><a class="anchor" id="_todo000018"></a>Why did void* work for matching  </dd>
 <dt>Global <a class="el" href="update__objects_8c.html#adf5256c5c92e5b22c984e0b8d171cda6">D_800E43B0</a>  []</dt>
-<dd><a class="anchor" id="_todo000050"></a>unused?  </dd>
+<dd><a class="anchor" id="_todo000047"></a>unused?  </dd>
 <dt>Global <a class="el" href="code__80091750_8h.html#a08ffb920b7830a80106d74fae1eeca66">D_8018D9B0</a>  </dt>
 <dd><a class="anchor" id="_todo000009"></a>Move gGfxPool out of <a class="el" href="main_8h.html">main.h</a>  </dd>
 <dt>Global <a class="el" href="banshee__boardwalk_2course__data_8h.html#a3799dda94e3b34030115f4fa39953296">d_course_banshee_boardwalk_dl_0</a>  []</dt>
@@ -188,7 +188,7 @@ $(function(){initNavTree('todo.html',''); initResizable(true); });
 <dt>Global <a class="el" href="render__objects_8c.html#a33fc340f4fc3585368fc4612e85a606c">func_8004C268</a>  (u32 arg0, u32 arg1, u8 *texture, u32 width, u32 arg4, u32 height, s32 arg6)</dt>
 <dd><a class="anchor" id="_todo000046"></a>fakematch?  </dd>
 <dt>Global <a class="el" href="update__objects_8c.html#a1f05dd9812f9dd03cc7455dfe62292dd">func_800745C8</a>  (s32 objectIndex, uintptr_t arg1)</dt>
-<dd><a class="anchor" id="_todo000052"></a>arg1 should likely be a u8 *  </dd>
+<dd><a class="anchor" id="_todo000049"></a>arg1 should likely be a u8 *  </dd>
 <dt>Global <a class="el" href="code__80091750_8h.html#a11daab0c2cb2700179b2325d2c619769">func_80091FA4</a>  (void)</dt>
 <dd><a class="anchor" id="_todo000010"></a>These sizes need to be sizeof() for shiftability if possible  </dd>
 <dt>Global <a class="el" href="port__eu_8h.html#a01e0fb6ba3bfcf5f10f894ca7effbaea">func_800CBC24</a>  (void)</dt>
@@ -202,11 +202,11 @@ $(function(){initNavTree('todo.html',''); initResizable(true); });
 <dt>Global <a class="el" href="race__logic_8h.html#a4eb4cb5c0963bcfceae40d340c2e7756">func_8028F970</a>  (void)</dt>
 <dd><a class="anchor" id="_todo000042"></a>increasing players past four would require increase this loop iterator.  </dd>
 <dt>Global <a class="el" href="update__objects_8c.html#a5d5e90510363f2db4ec1d76839b76d95">gen_random_item</a>  (s16 rank, s16 isCpu)</dt>
-<dd><a class="anchor" id="_todo000053"></a>Cleanup this function to use array access and struct if possible.  </dd>
+<dd><a class="anchor" id="_todo000050"></a>Cleanup this function to use array access and struct if possible.  </dd>
 <dt>Global <a class="el" href="code__800029B0_8h.html#a8a6a0e5ed8709356fba948d0beeb6a95">gPlayerWinningIndex</a>  </dt>
 <dd><a class="anchor" id="_todo000007"></a>gPlayerWinningIndex (D_800DC5E8) accessed as word, D_800DC5EB as u8  </dd>
 <dt>Global <a class="el" href="some__data_8c.html#af40885efd72dc665a278c6f29e19ecf3">gTorchSpawns</a>  []</dt>
-<dd><a class="anchor" id="_todo000047"></a>fix this extern  </dd>
+<dd><a class="anchor" id="_todo000051"></a>fix this extern  </dd>
 <dt>Global <a class="el" href="osEPiRawStartDma_8c.html#a0f405b027addb60288ca287959d8d3d6">IO_WRITE</a>  (addr, data)</dt>
 <dd><a class="anchor" id="_todo000030"></a>These defines are from <a class="el" href="rcp_8h.html">PR/rcp.h</a>, but including that causes problems...  </dd>
 <dt>Global <a class="el" href="piint_8h.html#a8f6729a1dafa49bc6280eb2bcfb787d0">LEO_CMD_TYPE_0</a>  </dt>
@@ -216,7 +216,7 @@ $(function(){initNavTree('todo.html',''); initResizable(true); });
 <dt>Global <a class="el" href="piint_8h.html#ad43c4418deeccdbeaabd6b9657d3c0c1">LEO_CMD_TYPE_2</a>  </dt>
 <dd><a class="anchor" id="_todo000039"></a>name  </dd>
 <dt>Global <a class="el" href="sptask_8h.html#a3b54c742028b6c1e8246bf9349bad70c">M_TASK_FLAG0</a>  </dt>
-<dd><a class="anchor" id="_todo000048"></a>These defines shouldn't exist - <a class="el" href="rcp_8h.html">PR/rcp.h</a> has them properly defined (ultralib)  </dd>
+<dd><a class="anchor" id="_todo000052"></a>These defines shouldn't exist - <a class="el" href="rcp_8h.html">PR/rcp.h</a> has them properly defined (ultralib)  </dd>
 <dt>Global <a class="el" href="main_8h.html#a3e7f5dc57f158b3772b2ab86f730b3d7">MTX_KART_POOL_SIZE</a>  </dt>
 <dd><a class="anchor" id="_todo000017"></a>Verify with proper documentation  </dd>
 <dt>Global <a class="el" href="main_8h.html#a92feae5b57f31cf54ba83ec8dacfa031">MTX_SHADOW_POOL_SIZE</a>  </dt>
@@ -244,7 +244,7 @@ $(function(){initNavTree('todo.html',''); initResizable(true); });
 <dt>Global <a class="el" href="render__courses_8h.html#a3de0da2baa9027fe9120572a248699ed">render_course_segments</a>  (uintptr_t, struct <a class="el" href="structUnkStruct__800DC5EC.html">UnkStruct_800DC5EC</a> *)</dt>
 <dd><a class="anchor" id="_todo000043"></a>Should be Gfx*  </dd>
 <dt>Global <a class="el" href="sounds_8h.html#a71288c0bb15b503d4570b441a05013f4">SOUND_ARG_LOAD</a>  (sound_bank, byte2, byte3, sound_id)</dt>
-<dd><a class="anchor" id="_todo000049"></a>format like sm64 <a class="el" href="sounds_8h.html">sounds.h</a>  </dd>
+<dd><a class="anchor" id="_todo000053"></a>format like sm64 <a class="el" href="sounds_8h.html">sounds.h</a>  </dd>
 <dt>Global <a class="el" href="osEPiRawStartDma_8c.html#a9f68445808ae98c1a50579d2c5a95c7f">UPDATE_REG</a>  (reg, var)</dt>
 <dd><a class="anchor" id="_todo000028"></a>This define is from <a class="el" href="piint_8h.html">piint.h</a>, but including that causes problems...  </dd>
 <dt>Global <a class="el" href="internal_8h.html#aa8d5fa5d7506353e4e791caab237c721">US_FLOAT</a>  (x)</dt>
