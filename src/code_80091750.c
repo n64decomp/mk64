@@ -5926,7 +5926,7 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
             case 0x18: /* switch 6 */
             case 0x19: /* switch 6 */
                 var_v1 = D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]];
-                var_a1 = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
+                var_a1 = gGameModePlayerSelection[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]];
                 switch (arg0->type) { /* switch 5 */
                     case 0x12:        /* switch 5 */
                     case 0x13:        /* switch 5 */
@@ -8863,7 +8863,7 @@ void func_800A8270(s32 arg0, struct_8018D9E0_entry* arg1) {
         } else {
             gDisplayListHead = func_80098FC8(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x35);
         }
-        for (var_s0 += 0x41, var_s2 = 0; var_s2 <= D_800F2B60[0][arg0]; var_s2++, var_s0 += 0x12) {
+        for (var_s0 += 0x41, var_s2 = 0; var_s2 <= gPlayerModeSelection[arg0]; var_s2++, var_s0 += 0x12) {
             if ((var_s2 == D_800E86AC[arg0]) && ((arg0 + 1) == gPlayerCount) && (gMainMenuSelectionDepth >= 4)) {
                 if (gMainMenuSelectionDepth == GAME_MODE_SELECTION) {
                     gDisplayListHead =
@@ -9540,7 +9540,7 @@ void func_800A9E58(struct_8018D9E0_entry* arg0) {
             break;
     }
 
-    temp_a1 = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
+    temp_a1 = gGameModePlayerSelection[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]];
     switch (arg0->cursor) { /* switch 5; irregular */
         case 0:             /* switch 5 */
             if ((temp_a1 != sp20) && (temp_a1 != sp1C)) {
