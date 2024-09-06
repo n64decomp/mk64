@@ -1,13 +1,5 @@
 var NAVTREEINDEX108 =
 {
-"spawn__players_8c.html#a6adc28726b19a541088209dc75b2f7f7":[8,0,3,57,53],
-"spawn__players_8c.html#a6bbb8f200255159de1b23a505b597e19":[8,0,3,57,41],
-"spawn__players_8c.html#a6d2ed8c4456180517f0477c6aff958e8":[8,0,3,57,22],
-"spawn__players_8c.html#a715b8b56a6a1efddc66fd9249302f01d":[8,0,3,57,26],
-"spawn__players_8c.html#a738df48497186741691fcbf7c3483160":[8,0,3,57,45],
-"spawn__players_8c.html#a787da0fb73d34b942af79d4cea1bfb7f":[8,0,3,57,28],
-"spawn__players_8c.html#a78962671d015e5f922fb11a135bdd331":[8,0,3,57,30],
-"spawn__players_8c.html#a7898749fef0f0990a0380e0ee86c7990":[8,0,3,57,15],
 "spawn__players_8c.html#a7936732ad039ea27759ba4b9784460f6":[8,0,3,57,17],
 "spawn__players_8c.html#a82ae339563b96176bf4effcf6773decc":[8,0,3,57,11],
 "spawn__players_8c.html#a89350191378d3599b7afe30dd29b2854":[8,0,3,57,57],
@@ -44,9 +36,9 @@ var NAVTREEINDEX108 =
 "spawn__players_8h_source.html":[8,0,3,58],
 "spline_8h.html":[8,0,2,19],
 "spline_8h_source.html":[8,0,2,19],
-"sprintf_8c.html":[8,0,3,6,119],
-"sprintf_8c.html#a353b2f73aed82bd1eb8cc2b34ec936d9":[8,0,3,6,119,1],
-"sprintf_8c.html#a6151eb738d6a0c5af66836e8a50fad9e":[8,0,3,6,119,0],
+"sprintf_8c.html":[8,0,3,6,117],
+"sprintf_8c.html#a353b2f73aed82bd1eb8cc2b34ec936d9":[8,0,3,6,117,1],
+"sprintf_8c.html#a6151eb738d6a0c5af66836e8a50fad9e":[8,0,3,6,117,0],
 "sptask_8h.html":[8,0,2,2,25],
 "sptask_8h.html#a0296c458ceb9fb23da6fb6d231eacc6d":[8,0,2,2,25,25],
 "sptask_8h.html#a04a950eaa34a139e6866efcd11ee43a6":[8,0,2,2,25,12],
@@ -249,5 +241,13 @@ var NAVTREEINDEX108 =
 "startup__logo_8h.html#a80193c707e6b7c9a55dfca16bde85a5e":[8,0,2,0,5,66],
 "startup__logo_8h.html#a84465a5b59dd539779e5e8036ea76872":[8,0,2,0,5,62],
 "startup__logo_8h.html#a86a07f0db8b2babc6df1e25ee629ef66":[8,0,2,0,5,79],
-"startup__logo_8h.html#a8c05a9d4ded1494010ba3ddcef91873e":[8,0,2,0,5,48]
+"startup__logo_8h.html#a8c05a9d4ded1494010ba3ddcef91873e":[8,0,2,0,5,48],
+"startup__logo_8h.html#a8dedf8d6760e8be5be33cd0838809599":[8,0,2,0,5,47],
+"startup__logo_8h.html#a9b63546e3d8cacb75aae7242c65ffca3":[8,0,2,0,5,25],
+"startup__logo_8h.html#a9c20f0d85176b758bd5809a61ddb63db":[8,0,2,0,5,21],
+"startup__logo_8h.html#a9d8b493b1a844fc93e36d8fc819be17f":[8,0,2,0,5,52],
+"startup__logo_8h.html#aa033f580c41c4e9f8bcf669d81626309":[8,0,2,0,5,84],
+"startup__logo_8h.html#aa518d21916fb55c0c88563bd2280311e":[8,0,2,0,5,70],
+"startup__logo_8h.html#aa8d94c22bfc0c101dfc51884b6680e80":[8,0,2,0,5,9],
+"startup__logo_8h.html#aa97fd068eb50a442e9c3166385fa89e8":[8,0,2,0,5,50]
 };

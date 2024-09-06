@@ -112,7 +112,7 @@ $(function(){initNavTree('osContStartReadData_8c.html',''); initResizable(true);
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="libultra__internal_8h_source.html">libultra_internal.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="osContInternal_8h_source.html">osContInternal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="controller_8h_source.html">controller.h</a>&quot;</code><br />
 <code>#include &lt;<a class="el" href="macros_8h_source.html">macros.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for osContStartReadData.c:</div>
@@ -131,12 +131,6 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ab87352c56cec226b44c113e4434d18d3" id="r_ab87352c56cec226b44c113e4434d18d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="unionOSContPackedStruct.html">OSContPackedStruct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab87352c56cec226b44c113e4434d18d3">_osContCmdBuf</a> [7]</td></tr>
-<tr class="separator:ab87352c56cec226b44c113e4434d18d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab75d56e75ca96e6b1345522cc9214c9" id="r_aab75d56e75ca96e6b1345522cc9214c9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab75d56e75ca96e6b1345522cc9214c9">unused</a></td></tr>
-<tr class="separator:aab75d56e75ca96e6b1345522cc9214c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0b43c4d727c564834ad84901c262c14" id="r_af0b43c4d727c564834ad84901c262c14"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0b43c4d727c564834ad84901c262c14">_osContPifCtrl</a></td></tr>
-<tr class="separator:af0b43c4d727c564834ad84901c262c14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf9e03963d9e26809b0ce77d37dc444c" id="r_adf9e03963d9e26809b0ce77d37dc444c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf9e03963d9e26809b0ce77d37dc444c">__osContLastCmd</a></td></tr>
 <tr class="separator:adf9e03963d9e26809b0ce77d37dc444c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab58627f83d7b5069c7d442eb1c05f014" id="r_ab58627f83d7b5069c7d442eb1c05f014"><td class="memItemLeft" align="right" valign="top"><a class="el" href="ultratypes_8h.html#aed742c436da53c1080638ce6ef7d13de">u8</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab58627f83d7b5069c7d442eb1c05f014">_osContNumControllers</a></td></tr>
@@ -237,20 +231,6 @@ Here is the caller graph for this function:</div>
 
 </div>
 </div>
-<a id="ab87352c56cec226b44c113e4434d18d3" name="ab87352c56cec226b44c113e4434d18d3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab87352c56cec226b44c113e4434d18d3">&#9670;&#160;</a></span>_osContCmdBuf</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="macros_8h.html#afcf59d0855225b13f2060708ce1d6a9f">ALIGNED8</a> <a class="el" href="unionOSContPackedStruct.html">OSContPackedStruct</a> _osContCmdBuf[7]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ab58627f83d7b5069c7d442eb1c05f014" name="ab58627f83d7b5069c7d442eb1c05f014"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab58627f83d7b5069c7d442eb1c05f014">&#9670;&#160;</a></span>_osContNumControllers</h2>
 
@@ -267,45 +247,6 @@ Here is the caller graph for this function:</div>
   </td>
   <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af0b43c4d727c564834ad84901c262c14" name="af0b43c4d727c564834ad84901c262c14"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0b43c4d727c564834ad84901c262c14">&#9670;&#160;</a></span>_osContPifCtrl</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> _osContPifCtrl</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aab75d56e75ca96e6b1345522cc9214c9" name="aab75d56e75ca96e6b1345522cc9214c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab75d56e75ca96e6b1345522cc9214c9">&#9670;&#160;</a></span>unused</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="macros_8h.html#addf5ec070e9499d36b7f2009ce736076">UNUSED</a> <a class="el" href="ultratypes_8h.html#a10e94b422ef0c20dcdec20d31a1f5049">u32</a> unused </td>
-          <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

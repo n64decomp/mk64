@@ -1,6 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"bomb__kart_8h.html#aea94c908d9d67e818ad45594a1c29a57":[8,0,2,4,2],
 "bomb__kart_8h_source.html":[8,0,2,4],
 "boostramps.html":[4,0],
 "boostramps.html#boost-ramps":[4,0,0],
@@ -249,5 +248,6 @@ var NAVTREEINDEX7 =
 "bowsers__castle_2course__data_8h.html#adc9789813be81d9c2143b07c8626b27e":[8,0,0,3,1,122],
 "bowsers__castle_2course__data_8h.html#adf581cd92463481094fe93bcf52c2af8":[8,0,0,3,1,66],
 "bowsers__castle_2course__data_8h.html#ae2cc185f112f1532a2de5bd1af76550d":[8,0,0,3,1,69],
-"bowsers__castle_2course__data_8h.html#ae2f5cdcd4ec6608b3697d42980232af4":[8,0,0,3,1,6]
+"bowsers__castle_2course__data_8h.html#ae2f5cdcd4ec6608b3697d42980232af4":[8,0,0,3,1,6],
+"bowsers__castle_2course__data_8h.html#ae369217b825f55cb4c73e82dbd536bea":[8,0,0,3,1,98]
 };

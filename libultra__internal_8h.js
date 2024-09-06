@@ -1,7 +1,7 @@
 var libultra__internal_8h =
 [
     [ "__OSEventState", "struct____OSEventState.html", "struct____OSEventState" ],
-    [ "OSThreadTail", "structOSThreadTail.html", "structOSThreadTail" ],
+    [ "__osThreadTail", "struct____osThreadTail.html", "struct____osThreadTail" ],
     [ "OSThread_ListHead", "structOSThread__ListHead.html", "structOSThread__ListHead" ],
     [ "OSMgrArgs", "structOSMgrArgs.html", "structOSMgrArgs" ],
     [ "__OSEventState", "libultra__internal_8h.html#add2c870781ac2726008191dc5dd39976", null ],
@@ -44,9 +44,10 @@ var libultra__internal_8h =
     [ "__osViSwapContext", "libultra__internal_8h.html#a373db502e7520c5cba596527d68e0790", null ],
     [ "osPiRawReadIo", "libultra__internal_8h.html#ab8c59c07ecc578959b5c68a3b34e6d77", null ],
     [ "__osActiveQueue", "libultra__internal_8h.html#a31b577966e52be770c717b8bf5283124", null ],
+    [ "__osFaultedThread", "libultra__internal_8h.html#a8386b3993eefde5c773083a70bc964c1", null ],
     [ "__osRunningThread", "libultra__internal_8h.html#a4c57f3342a3bc2e836d06b78c85d70f0", null ],
     [ "__osRunQueue", "libultra__internal_8h.html#a95bd5a78cf0d49f922eb22c02533774e", null ],
-    [ "__osThreadTail", "libultra__internal_8h.html#a413e6044cd094bc0a3b1e8115019cf85", null ],
+    [ "__osThreadTail", "libultra__internal_8h.html#a9ee552280782a3919d3690d069bdf975", null ],
     [ "D_80365E00", "libultra__internal_8h.html#a7a1221c713332bc46cb682e84c137e8c", null ],
     [ "D_80365E3C", "libultra__internal_8h.html#af794df3bc939545afdd2a2a148b1659d", null ]
 ];

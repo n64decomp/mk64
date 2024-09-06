@@ -1,7 +1,5 @@
 var NAVTREEINDEX80 =
 {
-"menus_8h.html":[8,0,3,46],
-"menus_8h.html#a097beed7872ad2f5d34b5b2f4b5e9024":[8,0,3,46,12],
 "menus_8h.html#a0c26d97ea5eb904a73f61df6d7f4c172":[8,0,3,46,27],
 "menus_8h.html#a0f41682180986e32e8625b69ef4dc23d":[8,0,3,46,49],
 "menus_8h.html#a100ca4ac7ca7ea8d9becc9ed7eb34fe6":[8,0,3,46,40],
@@ -249,5 +247,7 @@ var NAVTREEINDEX80 =
 "moo__moo__farm_2course__data_8c.html#ac5523af006599d4c3cdbefba05a9d9d1":[8,0,0,12,0,33],
 "moo__moo__farm_2course__data_8c.html#ac5e4d0bede191d3c0ce5f8650ff4989f":[8,0,0,12,0,76],
 "moo__moo__farm_2course__data_8c.html#ac645c04892b737f856dd934577f1eea8":[8,0,0,12,0,59],
-"moo__moo__farm_2course__data_8c.html#ac8c7c3cd6a01829fadafe786d3e302f0":[8,0,0,12,0,84]
+"moo__moo__farm_2course__data_8c.html#ac8c7c3cd6a01829fadafe786d3e302f0":[8,0,0,12,0,84],
+"moo__moo__farm_2course__data_8c.html#aca4801bcb5972642e020b7ac44db223a":[8,0,0,12,0,14],
+"moo__moo__farm_2course__data_8c.html#acb4d2fa8f804389a0746ef7968d340cf":[8,0,0,12,0,20]
 };

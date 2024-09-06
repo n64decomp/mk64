@@ -4,6 +4,7 @@ var osContInit_8c =
     [ "__osPackRequestData", "osContInit_8c.html#a11f4c49e60a913e2e35ab507e250d486", null ],
     [ "osContInit", "osContInit_8c.html#a3a0e3a0d795150ad033f213754773c34", null ],
     [ "__osContLastCmd", "osContInit_8c.html#adf9e03963d9e26809b0ce77d37dc444c", null ],
+    [ "__osContPifRam", "osContInit_8c.html#ac483554fa1ef4be2c9c23f858d1f3dd5", null ],
     [ "_osContInitialized", "osContInit_8c.html#ad07c3aa2a03a718b7519f186ae3fc934", null ],
     [ "_osContMesgBuff", "osContInit_8c.html#a4b90d060d35a3fd4f1dce21b68a98789", null ],
     [ "_osContMesgQueue", "osContInit_8c.html#a9d2c6b666a1a317e841b46a6eee01123", null ],

@@ -1,57 +1,58 @@
 <map id="include/PR/R4300.h" name="include/PR/R4300.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="3427,5,3574,31"/>
-<area shape="rect" id="Node000002" href="$rcp_8h.html" title=" " alt="" coords="3231,79,3357,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="3455,38,3328,81,3327,76,3454,33"/>
-<area shape="rect" id="Node000022" href="$osCartRomInit_8c.html" title=" " alt="" coords="3522,152,3690,177"/>
-<area shape="poly" id="edge28_Node000001_Node000022" title=" " alt="" coords="3506,43,3514,73,3528,102,3555,130,3585,150,3582,154,3552,134,3524,106,3509,75,3501,45"/>
-<area shape="rect" id="Node000026" href="$osEPiRawStartDma_8c.html" title=" " alt="" coords="3538,79,3738,104"/>
-<area shape="poly" id="edge29_Node000001_Node000026" title=" " alt="" coords="3536,34,3617,76,3614,81,3533,39"/>
-<area shape="rect" id="Node000003" href="$contramread_8c.html" title=" " alt="" coords="2928,225,3087,251"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="3243,111,3190,130,3134,154,3071,193,3023,227,3020,223,3068,188,3131,150,3188,125,3241,106"/>
-<area shape="rect" id="Node000004" href="$contramwrite_8c.html" title=" " alt="" coords="3111,225,3274,251"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="3219,106,3177,124,3159,137,3144,153,3140,162,3140,171,3148,191,3162,208,3179,223,3175,227,3158,212,3143,193,3135,172,3135,161,3140,151,3155,133,3174,119,3217,101"/>
-<area shape="rect" id="Node000005" href="$controller_8h.html" title=" " alt="" coords="1645,152,1783,177"/>
-<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="3217,99,1783,163,1783,158,3217,93"/>
-<area shape="rect" id="Node000021" href="$leointerrupt_8c.html" title=" " alt="" coords="3299,225,3449,251"/>
-<area shape="poly" id="edge22_Node000002_Node000021" title=" " alt="" coords="3310,115,3331,151,3370,224,3366,226,3326,153,3306,117"/>
-<area shape="poly" id="edge23_Node000002_Node000022" title=" " alt="" coords="3358,104,3556,149,3555,154,3357,110"/>
-<area shape="rect" id="Node000023" href="$piint_8h.html" title=" " alt="" coords="3392,152,3497,177"/>
-<area shape="poly" id="edge24_Node000002_Node000023" title=" " alt="" coords="3332,107,3421,149,3419,154,3329,112"/>
-<area shape="rect" id="Node000025" href="$math__util_8c.html" title=" " alt="" coords="3154,152,3317,177"/>
-<area shape="poly" id="edge27_Node000002_Node000025" title=" " alt="" coords="3278,116,3247,154,3243,150,3274,113"/>
-<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="1796,165,2272,182,2591,199,2916,223,2928,224,2927,229,2915,228,2591,204,2271,188,1796,171"/>
-<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="1797,165,2343,180,2717,197,3098,223,3111,224,3111,229,3098,228,2717,203,2343,185,1796,170"/>
-<area shape="rect" id="Node000006" href="$contpfs_8c.html" title=" " alt="" coords="1739,225,1862,251"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="1740,184,1788,223,1785,227,1737,188"/>
-<area shape="rect" id="Node000007" href="$osEepromLongWrite_8c.html" title=" " alt="" coords="1887,225,2093,251"/>
-<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="1772,178,1946,223,1945,228,1771,183"/>
-<area shape="rect" id="Node000008" href="$osEepromProbe_8c.html" title=" " alt="" coords="2117,225,2295,251"/>
-<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="1797,175,2127,223,2127,228,1796,181"/>
-<area shape="rect" id="Node000009" href="$osEepromRead_8c.html" title=" " alt="" coords="2319,225,2493,251"/>
-<area shape="poly" id="edge10_Node000005_Node000009" title=" " alt="" coords="1797,171,2306,223,2320,224,2319,229,2306,228,1796,177"/>
-<area shape="rect" id="Node000010" href="$osEepromWrite_8c.html" title=" " alt="" coords="2517,225,2692,251"/>
-<area shape="poly" id="edge11_Node000005_Node000010" title=" " alt="" coords="1796,168,2108,190,2505,223,2517,224,2517,229,2504,228,2107,195,1796,174"/>
-<area shape="rect" id="Node000011" href="$osPfsAllocateFile_8c.html" title=" " alt="" coords="2717,225,2903,251"/>
-<area shape="poly" id="edge12_Node000005_Node000011" title=" " alt="" coords="1797,167,2188,187,2704,223,2717,224,2716,229,2703,228,2188,193,1797,172"/>
-<area shape="rect" id="Node000012" href="$osPfsChecker_8c.html" title=" " alt="" coords="5,225,167,251"/>
-<area shape="poly" id="edge13_Node000005_Node000012" title=" " alt="" coords="1632,169,1385,174,1027,183,608,201,180,228,167,229,167,224,179,223,607,195,1027,178,1385,168,1631,164"/>
-<area shape="rect" id="Node000013" href="$osPfsDeleteFile_8c.html" title=" " alt="" coords="191,225,367,251"/>
-<area shape="poly" id="edge14_Node000005_Node000013" title=" " alt="" coords="1631,170,1104,187,745,204,380,228,368,229,367,224,379,223,745,199,1104,182,1631,165"/>
-<area shape="rect" id="Node000014" href="$osPfsFileState_8c.html" title=" " alt="" coords="392,225,559,251"/>
-<area shape="poly" id="edge15_Node000005_Node000014" title=" " alt="" coords="1631,171,1180,189,878,206,572,228,559,229,559,224,571,223,878,200,1179,184,1631,166"/>
-<area shape="rect" id="Node000015" href="$osPfsFreeBlocks_8c.html" title=" " alt="" coords="583,225,765,251"/>
-<area shape="poly" id="edge16_Node000005_Node000015" title=" " alt="" coords="1632,173,1261,193,777,228,765,229,764,224,776,223,1261,188,1631,167"/>
-<area shape="rect" id="Node000016" href="$osPfsInit_8c.html" title=" " alt="" coords="789,225,919,251"/>
-<area shape="poly" id="edge17_Node000005_Node000016" title=" " alt="" coords="1632,173,1324,193,1128,209,932,228,920,229,919,224,931,223,1128,203,1323,188,1631,168"/>
-<area shape="rect" id="Node000017" href="$osPfsIsPlug_8c.html" title=" " alt="" coords="943,225,1093,251"/>
-<area shape="poly" id="edge18_Node000005_Node000017" title=" " alt="" coords="1632,176,1395,198,1105,228,1093,229,1092,224,1104,223,1394,192,1631,171"/>
-<area shape="rect" id="Node000018" href="$osPfsNumFiles_8c.html" title=" " alt="" coords="1117,225,1287,251"/>
-<area shape="poly" id="edge19_Node000005_Node000018" title=" " alt="" coords="1632,180,1285,228,1284,223,1631,175"/>
-<area shape="rect" id="Node000019" href="$osPfsReadWriteFile_8c.html" title=" " alt="" coords="1312,225,1513,251"/>
-<area shape="poly" id="edge20_Node000005_Node000019" title=" " alt="" coords="1653,183,1462,228,1461,223,1652,178"/>
-<area shape="rect" id="Node000020" href="$osPfsSearchFile_8c.html" title=" " alt="" coords="1537,225,1715,251"/>
-<area shape="poly" id="edge21_Node000005_Node000020" title=" " alt="" coords="1691,188,1642,227,1639,223,1688,184"/>
-<area shape="poly" id="edge26_Node000023_Node000021" title=" " alt="" coords="3425,189,3387,227,3384,223,3421,185"/>
-<area shape="rect" id="Node000024" href="$____osLeoInterrupt_8c.html" title=" " alt="" coords="3473,225,3656,251"/>
-<area shape="poly" id="edge25_Node000023_Node000024" title=" " alt="" coords="3477,182,3546,223,3544,227,3475,187"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="3137,5,3284,31"/>
+<area shape="rect" id="Node000002" href="$rcp_8h.html" title=" " alt="" coords="2937,79,3063,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="3165,37,3035,81,3033,76,3163,32"/>
+<area shape="rect" id="Node000023" href="$osCartRomInit_8c.html" title=" " alt="" coords="3236,152,3404,177"/>
+<area shape="poly" id="edge28_Node000001_Node000023" title=" " alt="" coords="3216,44,3224,73,3238,102,3266,130,3297,150,3294,154,3263,134,3234,106,3219,75,3211,45"/>
+<area shape="rect" id="Node000027" href="$osEPiRawStartDma_8c.html" title=" " alt="" coords="3248,79,3448,104"/>
+<area shape="poly" id="edge29_Node000001_Node000027" title=" " alt="" coords="3246,34,3327,76,3324,81,3243,39"/>
+<area shape="rect" id="Node000003" href="$contramread_8c.html" title=" " alt="" coords="3519,225,3678,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="2960,112,2934,126,2913,142,2903,159,2903,167,2909,175,2921,183,2943,191,3011,202,3099,210,3199,215,3507,223,3519,224,3519,229,3506,228,3199,220,3099,215,3010,207,2942,196,2919,188,2905,179,2898,169,2897,158,2909,138,2931,121,2957,107"/>
+<area shape="rect" id="Node000004" href="$contramwrite_8c.html" title=" " alt="" coords="5,225,168,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="2923,97,2508,107,1835,131,1020,170,596,196,180,228,168,229,168,224,180,223,596,191,1020,165,1835,125,2507,102,2923,92"/>
+<area shape="rect" id="Node000005" href="$controller_8h.html" title=" " alt="" coords="1973,152,2110,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="2923,101,2110,161,2110,156,2922,96"/>
+<area shape="poly" id="edge24_Node000002_Node000023" title=" " alt="" coords="3065,104,3269,149,3268,154,3064,110"/>
+<area shape="rect" id="Node000024" href="$piint_8h.html" title=" " alt="" coords="3106,152,3211,177"/>
+<area shape="poly" id="edge25_Node000002_Node000024" title=" " alt="" coords="3039,107,3134,149,3132,154,3037,112"/>
+<area shape="rect" id="Node000026" href="$math__util_8c.html" title=" " alt="" coords="2919,152,3081,177"/>
+<area shape="poly" id="edge27_Node000002_Node000026" title=" " alt="" coords="3003,118,3003,152,2997,152,2997,118"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="2124,164,2702,179,3100,196,3507,223,3519,224,3519,229,3506,228,3100,201,2701,184,2124,170"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="1959,169,1667,171,1229,179,711,197,443,210,180,228,168,229,168,224,180,223,443,205,711,191,1229,174,1667,165,1959,163"/>
+<area shape="rect" id="Node000006" href="$contpfs_8c.html" title=" " alt="" coords="3207,225,3329,251"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="2124,165,2581,180,2886,197,3195,223,3207,224,3206,229,3194,228,2885,202,2580,185,2124,170"/>
+<area shape="rect" id="Node000007" href="$osContInit_8c.html" title=" " alt="" coords="3353,225,3495,251"/>
+<area shape="poly" id="edge8_Node000005_Node000007" title=" " alt="" coords="2124,165,2638,179,2987,196,3342,223,3354,224,3353,229,3341,228,2986,202,2638,185,2124,170"/>
+<area shape="rect" id="Node000008" href="$osContStartReadData_8c.html" title=" " alt="" coords="193,225,407,251"/>
+<area shape="poly" id="edge9_Node000005_Node000008" title=" " alt="" coords="1959,170,1321,186,875,203,419,228,408,229,407,223,419,223,875,198,1321,181,1959,165"/>
+<area shape="rect" id="Node000009" href="$osEepromLongWrite_8c.html" title=" " alt="" coords="431,225,638,251"/>
+<area shape="poly" id="edge10_Node000005_Node000009" title=" " alt="" coords="1959,171,1410,188,1033,205,650,228,639,229,638,223,649,223,1033,200,1409,183,1959,165"/>
+<area shape="rect" id="Node000010" href="$osEepromProbe_8c.html" title=" " alt="" coords="662,225,839,251"/>
+<area shape="poly" id="edge11_Node000005_Node000010" title=" " alt="" coords="1959,171,1489,189,1173,206,852,228,840,229,839,224,852,223,1173,200,1488,184,1959,166"/>
+<area shape="rect" id="Node000011" href="$osEepromRead_8c.html" title=" " alt="" coords="864,225,1037,251"/>
+<area shape="poly" id="edge12_Node000005_Node000011" title=" " alt="" coords="1958,172,1566,192,1309,208,1050,228,1038,229,1038,224,1049,223,1309,203,1566,186,1958,167"/>
+<area shape="rect" id="Node000012" href="$osEepromWrite_8c.html" title=" " alt="" coords="1062,225,1237,251"/>
+<area shape="poly" id="edge13_Node000005_Node000012" title=" " alt="" coords="1959,174,1647,195,1250,228,1237,229,1237,224,1249,223,1647,190,1959,168"/>
+<area shape="rect" id="Node000013" href="$osPfsAllocateFile_8c.html" title=" " alt="" coords="1261,225,1448,251"/>
+<area shape="poly" id="edge14_Node000005_Node000013" title=" " alt="" coords="1959,177,1460,228,1449,229,1448,224,1460,223,1959,172"/>
+<area shape="rect" id="Node000014" href="$osPfsChecker_8c.html" title=" " alt="" coords="1473,225,1634,251"/>
+<area shape="poly" id="edge15_Node000005_Node000014" title=" " alt="" coords="1959,181,1632,228,1632,223,1958,175"/>
+<area shape="rect" id="Node000015" href="$osPfsDeleteFile_8c.html" title=" " alt="" coords="1659,225,1835,251"/>
+<area shape="poly" id="edge16_Node000005_Node000015" title=" " alt="" coords="1982,183,1795,228,1794,223,1980,178"/>
+<area shape="rect" id="Node000016" href="$osPfsFileState_8c.html" title=" " alt="" coords="1859,225,2026,251"/>
+<area shape="poly" id="edge17_Node000005_Node000016" title=" " alt="" coords="2016,187,1960,227,1957,223,2013,183"/>
+<area shape="rect" id="Node000017" href="$osPfsFreeBlocks_8c.html" title=" " alt="" coords="2051,225,2232,251"/>
+<area shape="poly" id="edge18_Node000005_Node000017" title=" " alt="" coords="2070,183,2127,223,2123,227,2067,187"/>
+<area shape="rect" id="Node000018" href="$osPfsInit_8c.html" title=" " alt="" coords="2256,225,2387,251"/>
+<area shape="poly" id="edge19_Node000005_Node000018" title=" " alt="" coords="2100,178,2277,223,2275,228,2099,183"/>
+<area shape="rect" id="Node000019" href="$osPfsIsPlug_8c.html" title=" " alt="" coords="2411,225,2560,251"/>
+<area shape="poly" id="edge20_Node000005_Node000019" title=" " alt="" coords="2124,176,2414,223,2414,228,2123,182"/>
+<area shape="rect" id="Node000020" href="$osPfsNumFiles_8c.html" title=" " alt="" coords="2584,225,2755,251"/>
+<area shape="poly" id="edge21_Node000005_Node000020" title=" " alt="" coords="2124,172,2572,223,2584,224,2584,229,2572,228,2123,178"/>
+<area shape="rect" id="Node000021" href="$osPfsReadWriteFile_8c.html" title=" " alt="" coords="2779,225,2981,251"/>
+<area shape="poly" id="edge22_Node000005_Node000021" title=" " alt="" coords="2124,170,2767,223,2780,224,2779,229,2766,228,2124,175"/>
+<area shape="rect" id="Node000022" href="$osPfsSearchFile_8c.html" title=" " alt="" coords="3005,225,3182,251"/>
+<area shape="poly" id="edge23_Node000005_Node000022" title=" " alt="" coords="2124,167,2500,187,2994,223,3005,224,3004,229,2993,228,2500,193,2123,172"/>
+<area shape="rect" id="Node000025" href="$____osLeoInterrupt_8c.html" title=" " alt="" coords="3702,225,3885,251"/>
+<area shape="poly" id="edge26_Node000024_Node000025" title=" " alt="" coords="3225,175,3460,201,3691,223,3702,224,3701,229,3690,228,3459,207,3224,180"/>
 </map>

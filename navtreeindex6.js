@@ -1,6 +1,5 @@
 var NAVTREEINDEX6 =
 {
-"banshee__boardwalk_2course__offsets_8c.html#a873865b698c1d70bf5f5651fb19f515a":[8,0,0,0,4,0],
 "banshee__boardwalk_2course__offsets_8c.html#a9214d056cab919771a302e04db0b47cf":[8,0,0,0,4,12],
 "banshee__boardwalk_2course__offsets_8c.html#aa7246daaccfe8c587d774823d33e791a":[8,0,0,0,4,22],
 "banshee__boardwalk_2course__offsets_8c.html#ac4637983617381d21594c0970888db2e":[8,0,0,0,4,9],
@@ -249,5 +248,6 @@ var NAVTREEINDEX6 =
 "bomb__kart_8h.html#aa5f0e977131ff31701339219d424359f":[8,0,2,4,10],
 "bomb__kart_8h.html#ab3937cf89894c822c117bbdfc4301aa1":[8,0,2,4,13],
 "bomb__kart_8h.html#abcecd1bb778612f9abaec48133c6f248":[8,0,2,4,8],
-"bomb__kart_8h.html#ac3cbac5b1e139c4891df180254ec34b3":[8,0,2,4,12]
+"bomb__kart_8h.html#ac3cbac5b1e139c4891df180254ec34b3":[8,0,2,4,12],
+"bomb__kart_8h.html#aea94c908d9d67e818ad45594a1c29a57":[8,0,2,4,2]
 };

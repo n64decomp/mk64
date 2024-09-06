@@ -58,7 +58,7 @@ var searchData=
   ['bufsize_55',['bufSize',['../structSharedDma.html#ae917391e6f1081549a03f1fc20ca42f5',1,'SharedDma']]],
   ['bufsizeperchannel_56',['bufSizePerChannel',['../structSynthesisReverb.html#a5a0bc86224c7b45b92f4f7d95d36efbe',1,'SynthesisReverb']]],
   ['burst_57',['burst',['../structOSViCommonRegs.html#aaa8f692cff98bec6674a08d380d8ebd2',1,'OSViCommonRegs']]],
-  ['button_58',['button',['../struct____OSContReadFormat.html#ae9cbac3e50bcd7400988aa5e64f56aae',1,'__OSContReadFormat::button'],['../structOSContPackedRead.html#a53568bb114163e6082aa5c446dcbf43e',1,'OSContPackedRead::button'],['../structController.html#aa5d1a358227833467d015fe3b2b35967',1,'Controller::button'],['../structStaffGhost.html#aa6b1baf853d009a3439c9d3f5165f1a5',1,'StaffGhost::button']]],
+  ['button_58',['button',['../struct____OSContReadFormat.html#ae9cbac3e50bcd7400988aa5e64f56aae',1,'__OSContReadFormat::button'],['../structController.html#aa5d1a358227833467d015fe3b2b35967',1,'Controller::button'],['../structStaffGhost.html#aa6b1baf853d009a3439c9d3f5165f1a5',1,'StaffGhost::button']]],
   ['buttondepressed_59',['buttonDepressed',['../structController.html#af68b8dc9459d69a7dfdf57dabf8dbae5',1,'Controller']]],
   ['buttonpressed_60',['buttonPressed',['../structController.html#a8c4688ece90c09c9c228512234b82fbb',1,'Controller']]]
 ];
