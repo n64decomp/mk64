@@ -57,7 +57,7 @@ typedef struct {
     /* 0xC6 */ u16 unk_0C6;
     /* 0xC8 */ u16 boundingBoxSize;
     /* 0xCA */ s8 unk_0CA;
-    /* 0xCB */ bool8 isTimerRunning;
+    /* 0xCB */ bool8 isTimerActive;
     /* 0xCC */ s8 unk_0CC;
     /* 0xCD */ s8 unk_0CD;
     /* 0xCE */ s8 unk_0CE;
@@ -132,7 +132,7 @@ typedef struct {
     /* 0xC6 */ u16 unk_0C6;
     /* 0xC8 */ u16 unk_0C8;
     /* 0xCA */ s8 unk_0CA;
-    /* 0xCB */ s8 isTimerRunning;
+    /* 0xCB */ s8 isTimerActive;
     /* 0xCC */ s8 unk_0CC;
     /* 0xCD */ s8 unk_0CD;
     /* 0xCE */ s8 unk_0CE;

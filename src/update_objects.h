@@ -26,7 +26,7 @@ void func_800722CC(s32, s32);
 void func_800722F8(s32, s32);
 bool func_80072320(s32, s32);
 bool func_80072354(s32, s32);
-void set_object_timer_running(s32, s32);
+void set_object_timer_state(s32, s32);
 void init_object(s32, s32);
 void func_80072408(s32);
 void func_80072428(s32);

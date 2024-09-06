@@ -267,8 +267,8 @@ bool func_80072354(s32 objectIndex, s32 arg1) {
     return b;
 }
 
-void set_object_timer_running(s32 objectIndex, s32 arg1) {
-    gObjectList[objectIndex].isTimerRunning = arg1;
+void set_object_timer_state(s32 objectIndex, s32 arg1) {
+    gObjectList[objectIndex].isTimerActive = arg1;
 }
 
 void init_object(s32 objectIndex, s32 arg1) {
@@ -277,19 +277,19 @@ void init_object(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].unk_05C = 0;
     gObjectList[objectIndex].unk_0CD = 0;
     gObjectList[objectIndex].unk_0CF = 0;
-    set_object_timer_running(objectIndex, 0);
+    set_object_timer_state(objectIndex, 0);
     gObjectList[objectIndex].unk_0D8 = arg1;
     gObjectList[objectIndex].state = 1;
 }
 
 UNUSED void func_80072408(s32 objectIndex) {
-    set_object_timer_running(objectIndex, 0);
+    set_object_timer_state(objectIndex, 0);
 }
 
 void func_80072428(s32 objectIndex) {
     gObjectList[objectIndex].state = 0;
     gObjectList[objectIndex].unk_0D8 = 0;
-    set_object_timer_running(objectIndex, 0);
+    set_object_timer_state(objectIndex, 0);
     gObjectList[objectIndex].status = 0;
     gObjectList[objectIndex].unk_058 = 0;
     gObjectList[objectIndex].unk_05C = 0;
@@ -297,7 +297,7 @@ void func_80072428(s32 objectIndex) {
 }
 
 void initiate_next_state(s32 objectIndex) {
-    set_object_timer_running(objectIndex, 0);
+    set_object_timer_state(objectIndex, 0);
     set_object_flag_status_false(objectIndex, 0x2000);
     gObjectList[objectIndex].state++;
 }
@@ -317,7 +317,7 @@ s16 func_80072530(s32 objectIndex) {
 }
 
 void func_80072568(s32 objectIndex, s32 arg1) {
-    set_object_timer_running(objectIndex, 0);
+    set_object_timer_state(objectIndex, 0);
     set_object_flag_status_false(objectIndex, 0x2000);
     set_object_flag_status_false(objectIndex, 8);
     initiate_next_state(objectIndex);
@@ -326,7 +326,7 @@ void func_80072568(s32 objectIndex, s32 arg1) {
 }
 
 void func_800725E8(s32 objectIndex, s32 arg1, s32 arg2) {
-    set_object_timer_running(objectIndex, 0);
+    set_object_timer_state(objectIndex, 0);
     set_object_flag_status_false(objectIndex, 0x2000);
     set_object_flag_status_false(objectIndex, 8);
     gObjectList[objectIndex].state = arg2;
@@ -337,26 +337,26 @@ void func_800725E8(s32 objectIndex, s32 arg1, s32 arg2) {
 s16 func_80072530(s32); // extern
 
 void func_8007266C(s32 objectIndex) {
-    set_object_timer_running(objectIndex, 0);
+    set_object_timer_state(objectIndex, 0);
     set_object_flag_status_false(objectIndex, 0x2000);
     set_object_flag_status_false(objectIndex, 8);
     gObjectList[objectIndex].state = func_80072530(objectIndex);
 }
 
 void func_800726CC(s32 objectIndex, s32 arg1) {
-    set_object_timer_running(objectIndex, 0);
+    set_object_timer_state(objectIndex, 0);
     set_object_flag_status_false(objectIndex, 0x2000);
     gObjectList[objectIndex].state = arg1;
 }
 
 UNUSED void func_8007271C(s32 objectIndex, s32 arg1) {
-    if (gObjectList[objectIndex].isTimerRunning == 0) {
+    if (gObjectList[objectIndex].isTimerActive == 0) {
         gObjectList[objectIndex].state = arg1;
     }
 }
 
 UNUSED void func_8007274C(s32 objectIndex) {
-    if (gObjectList[objectIndex].isTimerRunning == 0) {
+    if (gObjectList[objectIndex].isTimerActive == 0) {
         initiate_next_state(objectIndex);
     }
 }
@@ -368,14 +368,14 @@ bool set_and_run_timer_object(s32 objectIndex, s32 timer) {
     bool phi_v1;
 
     phi_v1 = false;
-    if (gObjectList[objectIndex].isTimerRunning == false) {
-        set_object_timer_running(objectIndex, true);
+    if (gObjectList[objectIndex].isTimerActive == false) {
+        set_object_timer_state(objectIndex, true);
         gObjectList[objectIndex].timer = timer;
     }
 
     gObjectList[objectIndex].timer--;
     if (gObjectList[objectIndex].timer < 0) {
-        set_object_timer_running(objectIndex, false);
+        set_object_timer_state(objectIndex, false);
         initiate_next_state(objectIndex);
         phi_v1 = true;
     }
@@ -387,14 +387,14 @@ UNUSED s32 func_8007281C(s32 objectIndex, s32 arg1) {
     s32 phi_a2;
 
     phi_a2 = 0;
-    if (gObjectList[objectIndex].isTimerRunning == 0) {
-        set_object_timer_running(objectIndex, 1);
+    if (gObjectList[objectIndex].isTimerActive == 0) {
+        set_object_timer_state(objectIndex, 1);
         gObjectList[objectIndex].timer = random_int((u16) arg1);
     }
 
     gObjectList[objectIndex].timer--;
     if (gObjectList[objectIndex].timer < 0) {
-        set_object_timer_running(objectIndex, 0);
+        set_object_timer_state(objectIndex, 0);
         initiate_next_state(objectIndex);
         phi_a2 = 1;
     }
@@ -406,14 +406,14 @@ UNUSED s32 func_800728B0(s32 objectIndex, s32 arg1, s32 arg2) {
     s32 phi_a3;
 
     phi_a3 = 0;
-    if (gObjectList[objectIndex].isTimerRunning == 0) {
-        set_object_timer_running(objectIndex, 1);
+    if (gObjectList[objectIndex].isTimerActive == 0) {
+        set_object_timer_state(objectIndex, 1);
         gObjectList[objectIndex].timer = random_int((u16) arg2) + arg1;
     }
 
     gObjectList[objectIndex].timer--;
     if (gObjectList[objectIndex].timer < 0) {
-        set_object_timer_running(objectIndex, 0);
+        set_object_timer_state(objectIndex, 0);
         initiate_next_state(objectIndex);
         phi_a3 = 1;
     }
@@ -471,16 +471,16 @@ s32 func_80072AAC(s32 objectIndex, s32 arg1, s32 arg2) {
     s32 phi_v1;
 
     phi_v1 = 0;
-    if (gObjectList[objectIndex].isTimerRunning == 0) {
+    if (gObjectList[objectIndex].isTimerActive == 0) {
 
-        set_object_timer_running(objectIndex, 1);
+        set_object_timer_state(objectIndex, 1);
         gObjectList[objectIndex].textureListIndex = arg1;
         gObjectList[objectIndex].timer = arg2;
     }
 
     gObjectList[objectIndex].timer--;
     if (gObjectList[objectIndex].timer < 0) {
-        set_object_timer_running(objectIndex, 0);
+        set_object_timer_state(objectIndex, 0);
         initiate_next_state(objectIndex);
         phi_v1 = 1;
     }
@@ -492,8 +492,8 @@ s32 func_80072B48(s32 objectIndex, s32 arg1) {
     s32 phi_v1;
 
     phi_v1 = 0;
-    if (gObjectList[objectIndex].isTimerRunning == 0) {
-        set_object_timer_running(objectIndex, 1);
+    if (gObjectList[objectIndex].isTimerActive == 0) {
+        set_object_timer_state(objectIndex, 1);
         set_object_flag_status_true(objectIndex, 0x80000);
         gObjectList[objectIndex].textureListIndex = D_8018D140;
         gObjectList[objectIndex].timer = arg1;
@@ -502,7 +502,7 @@ s32 func_80072B48(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].timer--;
     if (gObjectList[objectIndex].timer < 0) {
         set_object_flag_status_false(objectIndex, 0x80000);
-        set_object_timer_running(objectIndex, 0);
+        set_object_timer_state(objectIndex, 0);
         initiate_next_state(objectIndex);
         phi_v1 = 1;
     }
@@ -586,7 +586,7 @@ s32 func_80072E54(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
         gObjectList[objectIndex].textureListIndex = arg1;
         gObjectList[objectIndex].timer = arg4;
         gObjectList[objectIndex].unk_0CC = arg5;
-        set_object_timer_running(objectIndex, 1);
+        set_object_timer_state(objectIndex, 1);
         set_object_flag_status_true(objectIndex, 0x2000);
     } else {
         gObjectList[objectIndex].timer--;
@@ -601,7 +601,7 @@ s32 func_80072E54(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
                 if (gObjectList[objectIndex].unk_0CC == 0) {
                     gObjectList[objectIndex].textureListIndex = arg2;
                     set_object_flag_status_false(objectIndex, 0x2000);
-                    set_object_timer_running(objectIndex, 0);
+                    set_object_timer_state(objectIndex, 0);
                     initiate_next_state(objectIndex);
                     sp24 = 1;
                 } else {
@@ -621,7 +621,7 @@ bool func_80072F88(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
         gObjectList[objectIndex].textureListIndex = arg1;
         gObjectList[objectIndex].timer = arg4;
         gObjectList[objectIndex].unk_0CC = arg5;
-        set_object_timer_running(objectIndex, 1);
+        set_object_timer_state(objectIndex, 1);
         set_object_flag_status_true(objectIndex, 0x2000);
     } else {
         gObjectList[objectIndex].timer--;
@@ -635,7 +635,7 @@ bool func_80072F88(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
                 if (gObjectList[objectIndex].unk_0CC == 0) {
                     gObjectList[objectIndex].textureListIndex = arg2;
                     set_object_flag_status_false(objectIndex, 0x2000);
-                    set_object_timer_running(objectIndex, 0);
+                    set_object_timer_state(objectIndex, 0);
                     initiate_next_state(objectIndex);
                     sp24 = true;
                 } else {
@@ -655,7 +655,7 @@ bool func_800730BC(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
         gObjectList[objectIndex].textureListIndex = arg1;
         gObjectList[objectIndex].timer = arg4;
         gObjectList[objectIndex].unk_0CC = arg5;
-        set_object_timer_running(objectIndex, 1);
+        set_object_timer_state(objectIndex, 1);
         set_object_flag_status_true(objectIndex, 0x2000);
         set_object_flag_status_false(objectIndex, 0x4000);
     } else {
@@ -679,7 +679,7 @@ bool func_800730BC(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
                     if (gObjectList[objectIndex].unk_0CC == 0) {
                         set_object_flag_status_false(objectIndex, 0x80);
                         set_object_flag_status_false(objectIndex, 0x2000);
-                        set_object_timer_running(objectIndex, 0);
+                        set_object_timer_state(objectIndex, 0);
                         initiate_next_state(objectIndex);
                         sp24 = true;
                     } else {
@@ -701,7 +701,7 @@ s32 func_8007326C(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
         gObjectList[objectIndex].textureListIndex = arg1;
         gObjectList[objectIndex].timer = arg4;
         gObjectList[objectIndex].unk_0CC = arg5;
-        set_object_timer_running(objectIndex, 1);
+        set_object_timer_state(objectIndex, 1);
         set_object_flag_status_true(objectIndex, 0x2000);
         set_object_flag_status_false(objectIndex, 0x4000);
     } else {
@@ -723,7 +723,7 @@ s32 func_8007326C(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
                     }
                     if (gObjectList[objectIndex].unk_0CC == 0) {
                         set_object_flag_status_false(objectIndex, 0x2000);
-                        set_object_timer_running(objectIndex, 0);
+                        set_object_timer_state(objectIndex, 0);
                         initiate_next_state(objectIndex);
                         sp24 = 1;
                     } else {
@@ -805,7 +805,7 @@ void func_800735BC(s32 objectIndex, Gfx* arg1, f32 arg2) {
 }
 
 void func_80073600(s32 objectIndex) {
-    set_object_timer_running(objectIndex, 0);
+    set_object_timer_state(objectIndex, 0);
     gObjectList[objectIndex].unk_0D6 = 0;
     gObjectList[objectIndex].unk_04C = -1;
     set_object_flag_status_false(objectIndex, 0x8000);
@@ -3654,13 +3654,13 @@ void consume_item(s32 playerId) {
             func_800722CC(objectIndex, 2);
             player->currentItemCopy = ITEM_NONE;
             itemWindow->currentItem = ITEM_NONE;
-            set_object_timer_running(objectIndex, 0);
+            set_object_timer_state(objectIndex, 0);
             func_800726CC(objectIndex, 9);
         }
     } else {
         player->currentItemCopy = ITEM_NONE;
         itemWindow->currentItem = ITEM_NONE;
-        set_object_timer_running(objectIndex, 0);
+        set_object_timer_state(objectIndex, 0);
     }
 }
 
@@ -5159,7 +5159,7 @@ void func_8007E63C(s32 objectIndex) {
             }
             if (f32_step_up_towards(&gObjectList[objectIndex].offset[1], gObjectList[objectIndex].unk_01C[1], 0.5f) !=
                 0) {
-                set_object_timer_running(objectIndex, 0);
+                set_object_timer_state(objectIndex, 0);
                 initiate_next_state(objectIndex);
             }
             break;
