@@ -296,7 +296,7 @@ void func_80072428(s32 objectIndex) {
     func_80086F60(objectIndex);
 }
 
-void initiate_next_state(s32 objectIndex) {
+void initialize_next_state(s32 objectIndex) {
     set_object_timer_state(objectIndex, 0);
     set_object_flag_status_false(objectIndex, 0x2000);
     gObjectList[objectIndex].state++;
@@ -320,7 +320,7 @@ void func_80072568(s32 objectIndex, s32 arg1) {
     set_object_timer_state(objectIndex, 0);
     set_object_flag_status_false(objectIndex, 0x2000);
     set_object_flag_status_false(objectIndex, 8);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     func_800724F8(objectIndex, gObjectList[objectIndex].state);
     gObjectList[objectIndex].state = arg1;
 }
@@ -357,7 +357,7 @@ UNUSED void func_8007271C(s32 objectIndex, s32 arg1) {
 
 UNUSED void func_8007274C(s32 objectIndex) {
     if (gObjectList[objectIndex].isTimerActive == 0) {
-        initiate_next_state(objectIndex);
+        initialize_next_state(objectIndex);
     }
 }
 
@@ -376,7 +376,7 @@ bool set_and_run_timer_object(s32 objectIndex, s32 timer) {
     gObjectList[objectIndex].timer--;
     if (gObjectList[objectIndex].timer < 0) {
         set_object_timer_state(objectIndex, false);
-        initiate_next_state(objectIndex);
+        initialize_next_state(objectIndex);
         phi_v1 = true;
     }
 
@@ -395,7 +395,7 @@ UNUSED s32 func_8007281C(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].timer--;
     if (gObjectList[objectIndex].timer < 0) {
         set_object_timer_state(objectIndex, 0);
-        initiate_next_state(objectIndex);
+        initialize_next_state(objectIndex);
         phi_a2 = 1;
     }
 
@@ -414,7 +414,7 @@ UNUSED s32 func_800728B0(s32 objectIndex, s32 arg1, s32 arg2) {
     gObjectList[objectIndex].timer--;
     if (gObjectList[objectIndex].timer < 0) {
         set_object_timer_state(objectIndex, 0);
-        initiate_next_state(objectIndex);
+        initialize_next_state(objectIndex);
         phi_a3 = 1;
     }
 
@@ -450,7 +450,7 @@ void func_800729EC(s32 objectIndex) {
     s32 i;
 
     start_race();
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     D_8018D2BC = 1;
     D_8018D2A4 = 1;
 
@@ -464,7 +464,7 @@ void func_800729EC(s32 objectIndex) {
 
 UNUSED void func_80072A78(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].textureListIndex = arg1;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 s32 func_80072AAC(s32 objectIndex, s32 arg1, s32 arg2) {
@@ -481,7 +481,7 @@ s32 func_80072AAC(s32 objectIndex, s32 arg1, s32 arg2) {
     gObjectList[objectIndex].timer--;
     if (gObjectList[objectIndex].timer < 0) {
         set_object_timer_state(objectIndex, 0);
-        initiate_next_state(objectIndex);
+        initialize_next_state(objectIndex);
         phi_v1 = 1;
     }
 
@@ -503,7 +503,7 @@ s32 func_80072B48(s32 objectIndex, s32 arg1) {
     if (gObjectList[objectIndex].timer < 0) {
         set_object_flag_status_false(objectIndex, 0x80000);
         set_object_timer_state(objectIndex, 0);
-        initiate_next_state(objectIndex);
+        initialize_next_state(objectIndex);
         phi_v1 = 1;
     }
 
@@ -537,7 +537,7 @@ void func_80072C00(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3) {
 
                 if (gObjectList[objectIndex].unk_0CC == 0) {
                     set_object_flag_status_false(objectIndex, 0x2000);
-                    initiate_next_state(objectIndex);
+                    initialize_next_state(objectIndex);
                 }
             }
         }
@@ -572,7 +572,7 @@ void func_80072D3C(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
 
             if (gObjectList[objectIndex].unk_0CC == 0) {
                 set_object_flag_status_false(objectIndex, 0x2000);
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
         }
     }
@@ -602,7 +602,7 @@ s32 func_80072E54(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
                     gObjectList[objectIndex].textureListIndex = arg2;
                     set_object_flag_status_false(objectIndex, 0x2000);
                     set_object_timer_state(objectIndex, 0);
-                    initiate_next_state(objectIndex);
+                    initialize_next_state(objectIndex);
                     sp24 = 1;
                 } else {
                     gObjectList[objectIndex].textureListIndex = arg1;
@@ -636,7 +636,7 @@ bool func_80072F88(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
                     gObjectList[objectIndex].textureListIndex = arg2;
                     set_object_flag_status_false(objectIndex, 0x2000);
                     set_object_timer_state(objectIndex, 0);
-                    initiate_next_state(objectIndex);
+                    initialize_next_state(objectIndex);
                     sp24 = true;
                 } else {
                     gObjectList[objectIndex].textureListIndex = arg1;
@@ -680,7 +680,7 @@ bool func_800730BC(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 
                         set_object_flag_status_false(objectIndex, 0x80);
                         set_object_flag_status_false(objectIndex, 0x2000);
                         set_object_timer_state(objectIndex, 0);
-                        initiate_next_state(objectIndex);
+                        initialize_next_state(objectIndex);
                         sp24 = true;
                     } else {
                         set_object_flag_status_false(objectIndex, 0x4000);
@@ -724,7 +724,7 @@ s32 func_8007326C(s32 objectIndex, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
                     if (gObjectList[objectIndex].unk_0CC == 0) {
                         set_object_flag_status_false(objectIndex, 0x2000);
                         set_object_timer_state(objectIndex, 0);
-                        initiate_next_state(objectIndex);
+                        initialize_next_state(objectIndex);
                         sp24 = 1;
                     } else {
                         set_object_flag_status_false(objectIndex, 0x4000);
@@ -801,7 +801,7 @@ void func_800735BC(s32 objectIndex, Gfx* arg1, f32 arg2) {
     gObjectList[objectIndex].status = 0;
     gObjectList[objectIndex].model = arg1;
     gObjectList[objectIndex].sizeScaling = arg2;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_80073600(s32 objectIndex) {
@@ -1383,7 +1383,7 @@ void func_80074924(s32 objectIndex) {
         object->unk_084[7] = -0x100 - (sp20 / 32);
     }
     object->primAlpha = 0x00E6;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_80074D94(s32 objectIndex) {
@@ -1452,7 +1452,7 @@ void func_80074FD8(s32 objectIndex) {
             if (func_80087E08(objectIndex, gObjectList[objectIndex].velocity[1], 0.12f,
                               gObjectList[objectIndex].unk_034, gObjectList[objectIndex].direction_angle[1],
                               0x00000064) != 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             object_calculate_new_pos_offset(objectIndex);
             gObjectList[objectIndex].orientation[0] += D_8016582C[0];
@@ -1588,7 +1588,7 @@ void func_80075698(s32 objectIndex) {
     gObjectList[objectIndex].offset[1] = 0.0f;
     gObjectList[objectIndex].offset[2] = 0.0f;
     gObjectList[objectIndex].sizeScaling = 0.5f;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_80075714(s32 objectIndex) {
@@ -1601,7 +1601,7 @@ void func_80075714(s32 objectIndex) {
             f32_step_up_towards(&gObjectList[objectIndex].offset[1], 100.0f, gObjectList[objectIndex].velocity[1]);
             func_8007415C(objectIndex, &gObjectList[objectIndex].sizeScaling, 0.55f, 1.0f, 0.1f, 1, 0);
             if (func_80073B00(objectIndex, &gObjectList[objectIndex].primAlpha, 0xFF, 0x1E, 7, 0, 0) != 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 3:
@@ -1709,7 +1709,7 @@ void func_80075B08(s32 objectIndex) {
     gObjectList[objectIndex].offset[1] = 0.0f;
     gObjectList[objectIndex].offset[2] = 0.0f;
     gObjectList[objectIndex].sizeScaling = 0.5f;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_80075B84(s32 objectIndex) {
@@ -1722,7 +1722,7 @@ void func_80075B84(s32 objectIndex) {
             f32_step_up_towards(&gObjectList[objectIndex].offset[1], 100.0f, gObjectList[objectIndex].velocity[1]);
             func_8007415C(objectIndex, &gObjectList[objectIndex].sizeScaling, 0.55f, 1.0f, 0.1f, 1, 0);
             if (func_80073B00(objectIndex, &gObjectList[objectIndex].primAlpha, 0xFF, 0x1E, 7, 0, 0) != 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 3:
@@ -1923,7 +1923,7 @@ void func_8007634C(s32 objectIndex) {
     object->primAlpha = 0x00FF;
     set_obj_orientation(objectIndex, 0U, 0U, 0U);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_800763CC(s32 objectIndex) {
@@ -1952,7 +1952,7 @@ void func_800763CC(s32 objectIndex) {
             }
             if ((object->unk_0AE >= 2) &&
                 (func_80073B00(objectIndex, &object->primAlpha, 0x000000FF, 0x00000050, 0x00000020, 0, 0) != 0)) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 4:
@@ -2090,7 +2090,7 @@ void func_80076958(s32 objectIndex) {
     object->primAlpha = 0x00FF;
     set_obj_orientation(objectIndex, 0U, 0U, 0U);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_800769D8(s32 objectIndex) {
@@ -2113,7 +2113,7 @@ void func_800769D8(s32 objectIndex) {
             s16_step_towards(&object->type, 0, 0x0018);
             if ((object->unk_0AE >= 2) &&
                 (func_80073B00(objectIndex, &object->primAlpha, 0x000000FF, 0x00000050, 0x00000020, 0, 0) != 0)) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 4:
@@ -2198,7 +2198,7 @@ void init_smoke_particle(Vec3f arg0, UNUSED f32 arg1, s16 arg2) {
 }
 
 void func_80076DC4(s32 objectIndex) {
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     if (gObjectList[objectIndex].unk_0D5 != 0x0B) {
         func_80086E70(objectIndex);
     }
@@ -2213,7 +2213,7 @@ void func_80076E14(s32 objectIndex) {
             if ((gObjectList[objectIndex].unk_0AE >= 2) &&
                 (func_80073B00(objectIndex, &gObjectList[objectIndex].primAlpha, 0x000000FF, 0x00000050, 0x00000020, 0,
                                0) != 0)) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 0:
@@ -2338,7 +2338,7 @@ void func_800773D8(f32* arg0, s32 arg1) {
 }
 
 void func_80077428(s32 arg0) {
-    initiate_next_state(arg0);
+    initialize_next_state(arg0);
     func_80086E70(arg0);
 }
 
@@ -2473,7 +2473,7 @@ void spawn_leaf(Vec3f arg0, UNUSED s32 arg1) {
 }
 
 void func_80077B14(s32 arg0) {
-    initiate_next_state(arg0);
+    initialize_next_state(arg0);
     func_80086E70(arg0);
 }
 
@@ -2489,7 +2489,7 @@ void func_80077B3C(s32 objectIndex) {
             break;
         case 2:
             if (object->unk_0AE == 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 3:
@@ -2570,7 +2570,7 @@ void func_80077E20(s32 objectIndex) {
     object->primAlpha = 0x00FF;
     object->unk_0D5 = 0;
     object->type = 0;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_80077EB8(s32 objectIndex, u16 arg1, Camera* camera) {
@@ -2625,7 +2625,7 @@ void func_800780CC(s32 objectIndex, Camera* camera) {
         case 2:
             func_80077F64(objectIndex, camera);
             if (gObjectList[objectIndex].unk_0AE == 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
                 return;
             }
         case 0:
@@ -2658,7 +2658,7 @@ void func_80078220(s32 objectIndex) {
     object->vertex = common_vtx_rectangle;
     object->sizeScaling = 0.15f;
     func_80086EF0(objectIndex);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_80078288(s32 objectIndex) {
@@ -2727,7 +2727,7 @@ void func_800786EC(s32 objectIndex) {
         case 2:
             func_80078288(objectIndex);
             if (gObjectList[objectIndex].unk_0AE == 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 3:
@@ -3004,7 +3004,7 @@ void init_obj_lakitu_red_flag_countdown(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].vertex = common_vtx_lakitu;
     gObjectList[objectIndex].sizeScaling = 0.15f;
     set_object_flag_status_false(objectIndex, 0x00000010);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     gObjectList[objectIndex].unk_048 = D_8018D180;
 }
 
@@ -3025,7 +3025,7 @@ void update_object_lakitu_countdown(s32 objectIndex, s32 arg1) {
         case 3:
             set_object_flag_status_true(objectIndex, 0x00000010);
             func_80086F10(objectIndex, 1, &D_800E67B8); // set a spline
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             break;
         case 4:
             if ((set_and_run_timer_object(objectIndex, 0x0000001E) != false) && (gPlayerCount != 3) && (arg1 == 0)) {
@@ -3076,7 +3076,7 @@ void update_object_lakitu_countdown(s32 objectIndex, s32 arg1) {
                 D_8018D160 = 1;
                 break;
             }
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             break;
         case 14:
             set_and_run_timer_object(objectIndex, 0x00000078);
@@ -3102,7 +3102,7 @@ void init_obj_lakitu_red_flag(s32 objectIndex, s32 playerIndex) {
     object->sizeScaling = 0.15f;
     func_80086F10(objectIndex, 2, &D_800E6834);
     set_object_flag_status_false(objectIndex, 0x00000010);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void update_object_lakitu_red_flag(s32 objectIndex, s32 playerIndex) {
@@ -3114,7 +3114,7 @@ void update_object_lakitu_red_flag(s32 objectIndex, s32 playerIndex) {
             break;
         case 2:
             set_object_flag_status_true(objectIndex, 0x00000010);
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             break;
         case 3:
             func_80072E54(objectIndex, 0, 0x0000001F, 1, 2, -1);
@@ -3171,7 +3171,7 @@ void init_obj_lakitu_red_flag_fishing(s32 objectIndex, s32 arg1) {
     func_80086E70(objectIndex);
     set_object_flag_status_false(objectIndex, 0x00000010);
     func_80073720(objectIndex);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     func_800C8F80((u8) arg1, 0x0100FA28);
 }
 
@@ -3213,7 +3213,7 @@ void update_object_lakitu_fishing(s32 objectIndex, s32 playerId) {
         case 2: /* switch 1 */
             set_object_flag_status_true(objectIndex, 0x00000010);
             func_800736E0(objectIndex);
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             break;
         case 3: /* switch 1 */
             func_800730BC(objectIndex, 0, 3, 1, 2, -1);
@@ -3268,7 +3268,7 @@ void update_object_lakitu_fishing2(s32 objectIndex, s32 playerId) {
             set_object_flag_status_true(objectIndex, 0x00000010);
             func_800736E0(objectIndex);
             player->unk_0CA |= 0x80;
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             break;
         case 3: /* switch 1 */
             func_800730BC(objectIndex, 0, 3, 1, 2, -1);
@@ -3348,7 +3348,7 @@ void func_8007A060(s32 objectIndex, s32 playerIndex) {
     object->sizeScaling = 0.15f;
     set_object_flag_status_false(objectIndex, 0x00000010);
     func_80086F10(objectIndex, 5, &D_800E694C);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void update_object_lakitu_second_lap(s32 objectIndex, s32 playerIndex) {
@@ -3360,7 +3360,7 @@ void update_object_lakitu_second_lap(s32 objectIndex, s32 playerIndex) {
             break;
         case 2:
             set_object_flag_status_true(objectIndex, 0x00000010);
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             break;
         case 3:
             set_and_run_timer_object(objectIndex, 0x00000014);
@@ -3397,7 +3397,7 @@ void func_8007A228(s32 objectIndex, s32 playerIndex) {
     object->sizeScaling = 0.15f;
     set_object_flag_status_false(objectIndex, 0x00000010);
     func_80086F10(objectIndex, 5, &D_800E694C);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void update_object_lakitu_final_lap(s32 objectIndex, s32 playerIndex) {
@@ -3409,7 +3409,7 @@ void update_object_lakitu_final_lap(s32 objectIndex, s32 playerIndex) {
             break;
         case 2:
             set_object_flag_status_true(objectIndex, 0x00000010);
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             break;
         case 3:
             set_and_run_timer_object(objectIndex, 0x00000014);
@@ -3445,7 +3445,7 @@ void func_8007A3F0(s32 objectIndex, s32 arg1) {
     set_object_flag_status_false(objectIndex, 0x00000010);
     func_80086F10(objectIndex, 6, &D_800E69B0);
     gObjectList[objectIndex].unk_0D6 = 0;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     func_800C8F80((u8) arg1, 0x0100FA28);
 }
 
@@ -3461,7 +3461,7 @@ void update_object_lakitu_reverse(s32 objectIndex, s32 playerId) {
         case 2:
             set_object_flag_status_true(objectIndex, 0x00000010);
             gObjectList[objectIndex].unk_0D6 = 1;
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             break;
         case 3:
             func_800730BC(objectIndex, 0, 0x0000000F, 1, 2, -1);
@@ -3483,7 +3483,7 @@ void update_object_lakitu_reverse(s32 objectIndex, s32 playerId) {
         case 2: /* switch 1 */
             gObjectList[objectIndex].unk_04C--;
             if (gObjectList[objectIndex].unk_04C == 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
                 gObjectList[objectIndex].unk_0D6 = 0;
             }
             break;
@@ -3837,24 +3837,24 @@ void func_8007B34C(s32 playerId) {
             if (gActiveScreenMode == 0) {
                 s16_step_up_towards(&playerHUD[playerId].slideItemBoxY, 0x0040, 4);
                 if (playerHUD[playerId].slideItemBoxY == 0x0040) {
-                    initiate_next_state(temp_s0);
+                    initialize_next_state(temp_s0);
                 }
             } else if (gActiveScreenMode == 3) {
                 if ((playerId == 0) || (playerId == 2)) {
                     s16_step_up_towards(&playerHUD[playerId].slideItemBoxX, 0x0080, 8);
                     if (playerHUD[playerId].slideItemBoxX == 0x0080) {
-                        initiate_next_state(temp_s0);
+                        initialize_next_state(temp_s0);
                     }
                 } else {
                     s16_step_down_towards(&playerHUD[playerId].slideItemBoxX, -0x0080, 8);
                     if (playerHUD[playerId].slideItemBoxX == -0x0080) {
-                        initiate_next_state(temp_s0);
+                        initialize_next_state(temp_s0);
                     }
                 }
             } else {
                 s16_step_up_towards(&playerHUD[playerId].slideItemBoxX, 0x0080, 8);
                 if (playerHUD[playerId].slideItemBoxX == 0x0080) {
-                    initiate_next_state(temp_s0);
+                    initialize_next_state(temp_s0);
                 }
             }
             break;
@@ -3871,7 +3871,7 @@ void func_8007B34C(s32 playerId) {
             object->textureListIndex = func_8007AFB0(temp_s0, playerId);
             object->unk_04C = 8;
             object->unk_0D6 = 2;
-            initiate_next_state(temp_s0);
+            initialize_next_state(temp_s0);
             func_800C9018((u8) playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFE, 0x1C));
             func_800C8F80((u8) playerId, SOUND_ARG_LOAD(0x01, 0x00, 0xFE, 0x47));
             break;
@@ -3882,7 +3882,7 @@ void func_8007B34C(s32 playerId) {
             func_800722CC(temp_s0, 4);
             func_80073600(temp_s0);
             object->textureListIndex = 0;
-            initiate_next_state(temp_s0);
+            initialize_next_state(temp_s0);
             break;
         case 10:
             set_and_run_timer_object(temp_s0, 0x00000014);
@@ -3890,22 +3890,22 @@ void func_8007B34C(s32 playerId) {
         case 11:
             if (gActiveScreenMode == 0) {
                 if (s16_step_down_towards(&playerHUD[playerId].slideItemBoxY, 0, 4) != 0) {
-                    initiate_next_state(temp_s0);
+                    initialize_next_state(temp_s0);
                 }
             } else if (gActiveScreenMode == 3) {
                 if ((playerId == 0) || (playerId == 2)) {
                     s16_step_down_towards(&playerHUD[playerId].slideItemBoxX, 0, 8);
                     if (playerHUD[playerId].slideItemBoxX == 0) {
-                        initiate_next_state(temp_s0);
+                        initialize_next_state(temp_s0);
                     }
                 } else {
                     s16_step_up_towards(&playerHUD[playerId].slideItemBoxX, 0, 8);
                     if (playerHUD[playerId].slideItemBoxX == 0) {
-                        initiate_next_state(temp_s0);
+                        initialize_next_state(temp_s0);
                     }
                 }
             } else if (s16_step_down_towards(&playerHUD[playerId].slideItemBoxX, 0, 8) != 0) {
-                initiate_next_state(temp_s0);
+                initialize_next_state(temp_s0);
             }
             break;
         case 12:
@@ -4072,7 +4072,7 @@ void init_var_cheep_cheep(s32 objectIndex) {
     object->status = 0;
     object->model = d_course_banshee_boardwalk_dl_cheep_cheep;
     object->sizeScaling = 0.2f;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     set_obj_origin_pos(objectIndex, D_800E634C[0][0], D_800E634C[0][1] + 55.0, D_800E634C[0][2]);
     set_obj_origin_offset(objectIndex, 0.0f, 30.0f, 0.0f);
     set_obj_direction_angle(objectIndex, 0U, 0x3800U, 0U);
@@ -4094,7 +4094,7 @@ void func_8007BEC8(s32 objectIndex) {
             break;
         case 3:
             if (object->unk_0AE == 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 4:
@@ -4271,7 +4271,7 @@ void func_8007C5B4(s32 objectIndex) {
     object->pos[1] = 0.0f;
     object->pos[2] = 0.0f;
     set_object_flag_status_true(objectIndex, 0x00000020);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     object->primAlpha = 0;
     func_80073844(objectIndex);
     object->sizeScaling = 0.15f;
@@ -4472,7 +4472,7 @@ void func_8007CE0C(s32 objectIndex) {
     object->pos[1] = 0.0f;
     object->pos[2] = 0.0f;
     object->sizeScaling = 0.15f;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     object->primAlpha = 0;
     func_80073844(objectIndex);
     func_80086EF0(objectIndex);
@@ -4668,7 +4668,7 @@ s32 func_8007D804(s32 objectIndex) {
 }
 
 void func_8007D8AC(s32 arg0) {
-    initiate_next_state(arg0);
+    initialize_next_state(arg0);
     func_80086E70(arg0);
 }
 
@@ -4860,7 +4860,7 @@ void init_bb_trash_bin(s32 objectIndex) {
     gObjectList[objectIndex].pos[1] = 45.0f;
     set_obj_velocity(objectIndex, 0.0f, 0.0f, 0.0f);
     gObjectList[objectIndex].type = 0;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_8007E00C(s32 objectIndex) {
@@ -4870,7 +4870,7 @@ void func_8007E00C(s32 objectIndex) {
             break;
         case 3:
             D_8018CFB0 = 1;
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             break;
         case 4:
             set_and_run_timer_object(objectIndex, 0x000000D2);
@@ -4898,13 +4898,13 @@ void func_8007E00C(s32 objectIndex) {
         case 5:
             gObjectList[objectIndex].orientation[2] = func_800417B4(gObjectList[objectIndex].orientation[2], 0U);
             if (gObjectList[objectIndex].orientation[2] == 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 6:
             gObjectList[objectIndex].orientation[2] = 0;
             gObjectList[objectIndex].unk_084[7] = 0;
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             D_8018CFB0 = 0;
             break;
         case 0:
@@ -4971,7 +4971,7 @@ void func_8007E358(s32 objectIndex) {
     gObjectList[objectIndex].type = 0;
     gObjectList[objectIndex].unk_04C = 0;
     gObjectList[objectIndex].unk_084[7] = 0;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_8007E3EC(s32 objectIndex) {
@@ -4982,7 +4982,7 @@ void func_8007E3EC(s32 objectIndex) {
             break;
         case 3:
             D_8018CFE8 = 1;
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             break;
         case 4:
             set_and_run_timer_object(objectIndex, 0x000000D2);
@@ -4997,7 +4997,7 @@ void func_8007E3EC(s32 objectIndex) {
             break;
         case 5:
             D_8018CFE8 = 0;
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             break;
         case 0:
         case 2:
@@ -5054,7 +5054,7 @@ void func_8007E63C(s32 objectIndex) {
                 set_object_flag_status_true(objectIndex, 0x00000200);
                 func_800722A4(objectIndex, 1);
                 func_800722CC(objectIndex, 2);
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 0x33:
@@ -5076,7 +5076,7 @@ void func_8007E63C(s32 objectIndex) {
                 if (func_80072320(objectIndex, 2) != 0) {
                     func_800726CC(objectIndex, 0x00000064);
                 } else {
-                    initiate_next_state(objectIndex);
+                    initialize_next_state(objectIndex);
                 }
             }
             break;
@@ -5106,7 +5106,7 @@ void func_8007E63C(s32 objectIndex) {
             break;
         case 0x66:
             if (f32_step_up_towards(&gObjectList[objectIndex].offset[1], 20.0f, 1.5f) != 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 0x67:
@@ -5117,12 +5117,12 @@ void func_8007E63C(s32 objectIndex) {
                         func_800722A4(objectIndex, 0x00000020);
                     }
                 }
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 0x68:
             if (f32_step_up_towards(&gObjectList[objectIndex].offset[1], 12.0f, 1.5f) != 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 0x69:
@@ -5135,7 +5135,7 @@ void func_8007E63C(s32 objectIndex) {
                 }
                 func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity,
                               SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x45));
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 0x6A:
@@ -5160,7 +5160,7 @@ void func_8007E63C(s32 objectIndex) {
             if (f32_step_up_towards(&gObjectList[objectIndex].offset[1], gObjectList[objectIndex].unk_01C[1], 0.5f) !=
                 0) {
                 set_object_timer_state(objectIndex, 0);
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 0x6C:
@@ -5210,7 +5210,7 @@ void func_8007EC30(s32 objectIndex) {
     object->type = 0;
     object->unk_0DF = 6;
     func_800724DC(objectIndex);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_8007ED6C(s32 objectIndex) {
@@ -5271,7 +5271,7 @@ void func_8007EE5C(s32 objectIndex) {
     } else {
         object->unk_0DD = 2;
     }
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_8007EFBC(s32 objectIndex) {
@@ -5450,7 +5450,7 @@ void func_8007F5A8(s32 objectIndex) {
             break;
         case 4:
             func_80086FD4(objectIndex);
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             break;
     }
     func_8007E63C(objectIndex);
@@ -5569,7 +5569,7 @@ void func_8007FA08(s32 objectIndex) {
     object->unk_0DF = 8;
     object->offset[1] = 15.0f;
     object->unk_01C[1] = 15.0f;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_8007FB48(s32 objectIndex) {
@@ -5695,7 +5695,7 @@ void func_8007FFC0(s32 objectIndex) {
             func_80072568(objectIndex, 0x00000032);
             break;
         case 4:
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             func_80086FD4(objectIndex);
             break;
     }
@@ -5742,7 +5742,7 @@ void func_80080078(s32 objectIndex) {
             break;
     }
     func_800724DC(objectIndex);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_800801FC(s32 objectIndex) {
@@ -5799,7 +5799,7 @@ void func_800802C0(s32 objectIndex) {
     object->offset[0] = 0.0f;
     object->offset[2] = 0.0f;
     func_800724DC(objectIndex);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_80080408(s32 objectIndex) {
@@ -5814,7 +5814,7 @@ void func_80080408(s32 objectIndex) {
             if (is_obj_flag_status_active(objectIndex, VISIBLE) != 0) {
                 func_800C98B8(gObjectList[objectIndex].pos, gObjectList[objectIndex].velocity,
                               SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x45));
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 3:
@@ -5867,7 +5867,7 @@ void func_80080524(s32 objectIndex) {
             break;
     }
     func_800722A4(objectIndex, 0x00000080);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_800806BC(s32 objectIndex) {
@@ -6084,7 +6084,7 @@ void func_80081080(s32 objectIndex) {
     object->offset[1] = 0.0f;
     object->offset[2] = 0.0f;
     object->sizeScaling = 0.25f;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_800810F4(s32 objectIndex) {
@@ -6099,7 +6099,7 @@ void func_800810F4(s32 objectIndex) {
             f32_step_up_towards(&gObjectList[objectIndex].offset[1], 14.0f, 0.5f);
             func_8007415C(objectIndex, &gObjectList[objectIndex].sizeScaling, 0.25f, 0.75f, 0.025f, 1, 0);
             if (func_80073B00(objectIndex, &gObjectList[objectIndex].primAlpha, 0x000000FF, 0, 4, 0, 0) != 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 3:
@@ -6240,7 +6240,7 @@ void func_80081790(s32 objectIndex) {
         case 1:
             if (func_80087E08(objectIndex, gObjectList[objectIndex].velocity[1], 0.3f, gObjectList[objectIndex].unk_034,
                               gObjectList[objectIndex].orientation[1], 0x00000032) != 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             object_calculate_new_pos_offset(objectIndex);
             break;
@@ -6262,7 +6262,7 @@ void func_80081848(s32 objectIndex) {
     gObjectList[objectIndex].boundingBoxSize = 6;
     gObjectList[objectIndex].velocity[1] = 4.0f;
     set_object_flag_status_true(objectIndex, 0x04000000);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_80081924(s32 objectIndex) {
@@ -6327,7 +6327,7 @@ void func_80081AFC(s32 objectIndex, s32 arg1) {
         case 0x2:
             if (object->unk_04C == 0) {
                 func_80086EAC(objectIndex, 2, 1);
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
                 set_object_flag_status_true(objectIndex, 0x00000200);
             } else {
                 object->unk_04C--;
@@ -6337,7 +6337,7 @@ void func_80081AFC(s32 objectIndex, s32 arg1) {
             if (object->unk_0AE == 0) {
                 func_80086EAC(objectIndex, 2, 4);
                 func_8008153C(objectIndex);
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
                 func_800C98B8(object->pos, object->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x07));
             }
             break;
@@ -6561,7 +6561,7 @@ void func_8008241C(s32 objectIndex, s32 arg1) {
     func_80086EF0(objectIndex);
     gObjectList[objectIndex].spline = D_800E633C[arg1 % 4];
     set_object_flag_status_true(objectIndex, 0x00000800);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_80082714(s32 objectIndex, s32 arg1) {
@@ -6656,7 +6656,7 @@ void init_ktb_crab(s32 objectIndex) {
     object = &gObjectList[objectIndex];
     object->sizeScaling = 0.15f;
     object->textureListIndex = 0;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     object->boundingBoxSize = 1;
     set_object_flag_status_true(objectIndex, 0x04000420);
     func_80086EAC(objectIndex, 0, 1);
@@ -6758,7 +6758,7 @@ void func_80082F1C(s32 objectIndex, s32 arg1) {
     gObjectList[objectIndex].sizeScaling = 0.027f;
     if (test->rot && test->rot) {}
     test = &D_800E5DF4[arg1];
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     set_obj_origin_pos(objectIndex, test->pos[0] * xOrientation, test->pos[1], test->pos[2]);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
     set_obj_direction_angle(objectIndex, 0U, test->rot, 0U);
@@ -6806,7 +6806,7 @@ void func_8008311C(s32 objectIndex, s32 arg1) {
     object->vertex = common_vtx_hedgehog;
     object->sizeScaling = 0.2f;
     object->textureListIndex = 0;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
     set_obj_orientation(objectIndex, 0U, 0U, 0x8000U);
     object->unk_034 = ((arg1 % 6) * 0.1) + 0.5;
@@ -6929,7 +6929,7 @@ void func_8008379C(s32 objectIndex) {
             if (func_80087E08(objectIndex, gObjectList[objectIndex].velocity[1], 0.74f,
                               gObjectList[objectIndex].unk_034, gObjectList[objectIndex].direction_angle[1],
                               0x00000064) != 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 2:
@@ -6950,7 +6950,7 @@ void func_80083868(s32 objectIndex) {
     object->vertex = D_0D0061B0;
     object->sizeScaling = 0.1f;
     object->textureListIndex = 0;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
     object->orientation[0] = 0;
     object->orientation[1] = 0;
@@ -7013,7 +7013,7 @@ void func_80083B0C(s32 objectIndex) {
     gObjectList[objectIndex].vertex = common_vtx_hedgehog;
     gObjectList[objectIndex].sizeScaling = 0.1f;
     gObjectList[objectIndex].textureListIndex = 0;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
     gObjectList[objectIndex].orientation[0] = 0;
     gObjectList[objectIndex].orientation[1] = 0;
@@ -7053,7 +7053,7 @@ void func_80083C04(s32 objectIndex) {
             break;
         case 12:
             if (func_80074118(objectIndex, &object->sizeScaling, 0.001f, 0.1f, 0.0025f, 0, 0) != 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 13:
@@ -7121,7 +7121,7 @@ void func_80083F18(s32 objectIndex) {
             if (func_80087E08(objectIndex, gObjectList[objectIndex].velocity[1], 0.12f,
                               gObjectList[objectIndex].unk_034, gObjectList[objectIndex].direction_angle[1],
                               0x00000064) != 0) {
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             object_calculate_new_pos_offset(objectIndex);
             break;
@@ -7211,7 +7211,7 @@ void func_80084430(s32 objectIndex, UNUSED s32 arg1) {
     object->spline = D_800E672C[0];
     set_object_flag_status_true(objectIndex, 0x04000800);
     object->type = get_animation_length(d_course_sherbet_land_unk_data11, 0);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_8008453C(s32 objectIndex, s32 arg1) {
@@ -7329,7 +7329,7 @@ void func_800845C8(s32 objectIndex, s32 arg1) {
     func_80086EF0(objectIndex);
     object->unk_034 = 0.0f;
     object->type = get_animation_length(d_course_sherbet_land_unk_data11, 0);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_80084B7C(s32 objectIndex, s32 arg1) {
@@ -7358,7 +7358,7 @@ void func_80084B7C(s32 objectIndex, s32 arg1) {
             break;
         case 4:
             func_800722CC(objectIndex, 2);
-            initiate_next_state(objectIndex);
+            initialize_next_state(objectIndex);
             break;
     }
     if (func_80072320(objectIndex, 0x00000020) != 0) {
@@ -7570,7 +7570,7 @@ void init_hot_air_balloon(s32 objectIndex) {
     func_80086EF0(objectIndex);
     gObjectList[objectIndex].velocity[1] = -2.0f;
     init_actor_hot_air_balloon_item_box(0.0f, 0.0f, 0.0f);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_80085534(s32 objectIndex) {
@@ -7669,7 +7669,7 @@ void func_80085878(s32 objectIndex, s32 arg1) {
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
     object->unk_034 = 4.0f;
     object->type = get_animation_length(d_rainbow_road_unk3, 0);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_800859C8(s32 objectIndex, s32 arg1) {
@@ -7715,7 +7715,7 @@ void func_80085BB4(s32 objectIndex) {
     gObjectList[objectIndex].sizeScaling = 8.0f;
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
     set_obj_orientation(objectIndex, 0U, 0U, 0x8000U);
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void init_obj_neon_mushroom(s32 objectIndex) {
@@ -7908,7 +7908,7 @@ void func_8008629C(s32 objectIndex, s32 arg1) {
     set_obj_origin_offset(objectIndex, 0.0f, -10.0f, 0.0f);
     set_obj_direction_angle(objectIndex, 0U, 0xF8E4U, 0U);
     gObjectList[objectIndex].unk_048 = 0;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
 }
 
 void func_80086424(s32 objectIndex) {
@@ -7943,7 +7943,7 @@ void func_80086528(s32 objectIndex, s32 arg1) {
             if (set_and_run_timer_object(objectIndex, gObjectList[objectIndex].unk_04C) != 0) {
                 func_80091440(arg1);
                 func_80086E70(objectIndex);
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
         case 0:
@@ -7951,7 +7951,7 @@ void func_80086528(s32 objectIndex, s32 arg1) {
         case 3:
             if (gObjectList[objectIndex].unk_0AE == 0) {
                 gObjectList[objectIndex].unk_048 = 1;
-                initiate_next_state(objectIndex);
+                initialize_next_state(objectIndex);
             }
             break;
     }
@@ -8015,7 +8015,7 @@ void func_80086700(s32 objectIndex) {
     set_obj_origin_offset(objectIndex, 0.0f, 0.0f, 0.0f);
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
     gObjectList[objectIndex].unk_084[1] = 0x0200;
-    initiate_next_state(objectIndex);
+    initialize_next_state(objectIndex);
     func_80086E70(objectIndex);
 }
 

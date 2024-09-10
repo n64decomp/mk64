@@ -30,7 +30,7 @@ void set_object_timer_state(s32, s32);
 void init_object(s32, s32);
 void func_80072408(s32);
 void func_80072428(s32);
-void initiate_next_state(s32);
+void initialize_next_state(s32);
 void func_800724DC(s32);
 void func_800724F8(s32, s32);
 s16 func_80072530(s32);
