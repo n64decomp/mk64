@@ -88,7 +88,7 @@ var NAVTREEINDEX =
 "code__80091750_8h.html#ab308cffd7811f17cbb18b768c0e94dc7",
 "collision_8c.html#a6275a3a99f8faf62b7c64d9aeca44c48",
 "common__data_8h.html#a912a454178136f29dbc711478df15509",
-"controller_8h.html#a707a0c5b519ec9984d2c52ccdd93266a",
+"controller_8h.html#a76143c1f81ddeb59c526d145fb024528",
 "crash__screen__enhancement_8c.html#a2ad22896ced78c6e1f61b251dedd729f",
 "data__segment2_8h.html#a4b18264964c22e6de41576f82e9992cc",
 "defines_8h.html#ae9e9974737d16f8449f0fe7e68c8e7a4",
