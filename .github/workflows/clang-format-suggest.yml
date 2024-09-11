@@ -1,11 +1,5 @@
-name: clang-format Check
+name: clang-format Suggest
 on: [pull_request]
-jobs:
-  fedora-job:
-    runs-on: ubuntu-latest
-    container: fedora:35
-    steps:
-      - run: cat /etc/os-release
 jobs:
   formatting-check:
     runs-on: ubuntu-latest
