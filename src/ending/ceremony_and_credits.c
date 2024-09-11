@@ -203,7 +203,7 @@ void reset_spline(void) {
     D_80287B20 = 0;
 }
 
-void wrap_reset_spline(UNUSED CinematicCamera* arg0) {
+void reset_spline_wrap(UNUSED CinematicCamera* arg0) {
     reset_spline();
 }
 
@@ -380,7 +380,7 @@ s32 move_cinematic_camera_along_spline(CinematicCamera* camera, struct struct_80
                                        struct struct_80286A04* arg2, s32 arg3) {
     s32 res;
 
-    cutscene_event(wrap_reset_spline, camera, 0, 0);
+    cutscene_event(reset_spline_wrap, camera, 0, 0);
     func_80282C40(D_80287818, (struct struct_80282C40*) arg1, arg3);
     func_80282C40(D_80287998, (struct struct_80282C40*) arg2, arg3);
 
@@ -518,7 +518,7 @@ s32 func_8028336C(UNUSED CinematicCamera* arg0, UNUSED Camera* camera) {
     return D_802876D8;
 }
 
-s32 cinematic_empty_0_function(void) {
+s32 cinematic_stub(void) {
     return 0;
 }
 
@@ -584,7 +584,7 @@ s32 func_80283648(Camera* camera) {
     Vec3f up;
     CinematicCamera* cinematicCamera = &D_802876E0;
 
-    cinematic_empty_0_function();
+    cinematic_stub();
     vec3f_copy_return_dupe(pos, camera->pos);
     vec3f_copy_return_dupe(lookAt, camera->lookAt);
     vec3f_copy_return_dupe(up, camera->up);
@@ -1452,7 +1452,7 @@ void func_802847CC(CinematicCamera* camera) {
 #else
     cutscene_event(func_80283C78, camera, 149, 149);
 #endif
-    cutscene_event(wrap_reset_spline, camera, 0, 0);
+    cutscene_event(reset_spline_wrap, camera, 0, 0);
     switch (D_80286A04[D_800DC5E4].unk0) {
         case 1:
             cutscene_event(animation_disapears_sliding_borders, camera, 0, -1);
