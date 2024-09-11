@@ -31,12 +31,12 @@ s32 osContStartReadData(OSMesgQueue* mesg) {
     return ret;
 }
 void osContGetReadData(OSContPad* pad) {
-    u8 *ptr = (u8 *) __osContPifRam.ramarray;
+    u8* ptr = (u8*) __osContPifRam.ramarray;
     __OSContReadFormat readformat;
     s32 i;
 
     for (i = 0; i < _osContNumControllers; i++, ptr += sizeof(readformat), pad++) {
-        readformat = * (__OSContReadFormat *) ptr;
+        readformat = *(__OSContReadFormat*) ptr;
         pad->errno = CHNL_ERR(readformat);
 
         if (pad->errno != 0) {
@@ -49,7 +49,7 @@ void osContGetReadData(OSContPad* pad) {
     }
 }
 void __osPackReadData() {
-    u8 *ptr = (u8 *) __osContPifRam.ramarray;
+    u8* ptr = (u8*) __osContPifRam.ramarray;
     __OSContReadFormat readformat;
     s32 i;
 
@@ -67,7 +67,7 @@ void __osPackReadData() {
     readformat.stick_y = -1;
 
     for (i = 0; i < _osContNumControllers; i++) {
-        * (__OSContReadFormat *) ptr = readformat;
+        *(__OSContReadFormat*) ptr = readformat;
         ptr += sizeof(readformat);
     }
     *ptr = CONT_CMD_END;
