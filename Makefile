@@ -279,14 +279,20 @@ GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_
 
 # detect prefix for MIPS toolchain
 ifneq ($(CROSS),)
-else ifneq      ($(call find-command,mips-linux-gnu-ld),)
-	CROSS := mips-linux-gnu-
-else ifneq ($(call find-command,mips64-linux-gnu-ld),)
-	CROSS := mips64-linux-gnu-
 else ifneq ($(call find-command,mips64-elf-ld),)
-	CROSS := mips64-elf-
+  CROSS := mips64-elf-
+# else ifneq ($(call find-command,mips-n64-ld),)
+#   CROSS := mips-n64-
+else ifneq ($(call find-command,mips64-ld),)
+  CROSS := mips64-
+else ifneq ($(call find-command,mips-linux-gnu-ld),)
+  CROSS := mips-linux-gnu-
+else ifneq ($(call find-command,mips64-linux-gnu-ld),)
+  CROSS := mips64-linux-gnu-
+else ifneq ($(call find-command,mips-ld),)
+  CROSS := mips-
 else
-	$(error Unable to detect a suitable MIPS toolchain installed)
+  $(error Unable to detect a suitable MIPS toolchain installed)
 endif
 
 AS      := $(CROSS)as
