@@ -5,9 +5,9 @@
 
 static void __osLeoResume(void);
 static void __osLeoAbnormalResume(void);
-extern u8 leoDiskStack[OS_PIM_STACKSIZE]; // technically should have a OS_LEO_STACKSIZE or something..
-
 extern u32 D_800EA5F0;
+
+u8 leoDiskStack[OS_PIM_STACKSIZE]; // technically should have a OS_LEO_STACKSIZE or something..
 
 s32 __osLeoInterrupt() {
     u32 stat;
