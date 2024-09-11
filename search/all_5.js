@@ -602,7 +602,7 @@ var searchData=
   ['courseindex_599',['courseIndex',['../structstruct__8018EE10__entry.html#acee952c37d3917fd90809e58c6401e65',1,'struct_8018EE10_entry']]],
   ['courserecords_600',['courseRecords',['../structCupTimeTrialRecords.html#acf18ab0e69f90a2eefe248ef7090bd1c',1,'CupTimeTrialRecords']]],
   ['courses_601',['COURSES',['../mk64_8h.html#acf250ad4ca05ca435a61203c41d4ca88',1,'mk64.h']]],
-  ['courses_602',['Courses',['../courses.html',1,'Courses'],['../coursesmenu.html',1,'Courses'],['../courses.html#courses-1',1,'Courses'],['../controlflow.html#courses',1,'Courses']]],
+  ['courses_602',['Courses',['../courses.html',1,'Courses'],['../coursesmenu.html',1,'Courses'],['../courses.html#courses',1,'Courses'],['../controlflow.html#courses-1',1,'Courses']]],
   ['courses_2emd_603',['courses.md',['../courses_8md.html',1,'']]],
   ['coursesmenu_2emd_604',['coursesmenu.md',['../coursesmenu_8md.html',1,'']]],
   ['coursetable_605',['CourseTable',['../structCourseTable.html',1,'']]],
