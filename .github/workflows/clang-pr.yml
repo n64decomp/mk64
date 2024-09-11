@@ -1,4 +1,4 @@
-name: clang-format Suggest
+name: clang-format PR
 on: [push]
 jobs:
   formatting-check:
