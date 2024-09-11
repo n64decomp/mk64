@@ -1,0 +1,24 @@
+name: clang-format Check
+on: [pull_request]
+jobs:
+  fedora-job:
+    runs-on: ubuntu-latest
+    container: fedora:35
+    steps:
+      - run: cat /etc/os-release
+jobs:
+  formatting-check:
+    runs-on: ubuntu-latest
+    container: fedora:35
+    steps:
+      - run: cat /etc/os-release
+      - name: Install Dependance
+        run: |
+          sudo dnf install git clang-tools-extra make
+      - uses: actions/checkout@v4
+      - name: Run clang-format style check for C/C++/Protobuf programs.
+        run: |
+          make format
+      - uses: parkerbxyz/suggest-changes@v1
+        with:
+          comment: 'Please commit the suggested changes from clang-format.'
