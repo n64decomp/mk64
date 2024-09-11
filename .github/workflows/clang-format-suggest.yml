@@ -8,7 +8,7 @@ jobs:
       - run: cat /etc/os-release
       - name: Install Dependance
         run: |
-          sudo dnf install git clang-tools-extra make
+          sudo dnf install git clang-tools-extra make -y
       - uses: actions/checkout@v4
       - name: Run clang-format style check for C/C++/Protobuf programs.
         run: |
