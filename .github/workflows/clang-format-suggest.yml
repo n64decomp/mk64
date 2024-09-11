@@ -4,12 +4,13 @@ jobs:
   formatting-check:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Install Dependance
         run: |
           sudo apt install clang-format make
-      - uses: actions/checkout@v4
       - name: Run clang-format style check for C/C++/Protobuf programs.
         run: |
+          clang-format --version
           python tools/format.py
       - uses: parkerbxyz/suggest-changes@v1
         with:
