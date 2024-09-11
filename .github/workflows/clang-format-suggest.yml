@@ -8,11 +8,11 @@ jobs:
       - run: cat /etc/os-release
       - name: Install Dependance
         run: |
-          sudo dnf install git clang-tools-extra make -y
+          sudo dnf install git clang-tools-extra python make -y
       - uses: actions/checkout@v4
       - name: Run clang-format style check for C/C++/Protobuf programs.
         run: |
-          make format
+          python tools/format.py
       - uses: parkerbxyz/suggest-changes@v1
         with:
           comment: 'Please commit the suggested changes from clang-format.'
