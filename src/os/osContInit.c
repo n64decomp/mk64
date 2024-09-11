@@ -46,15 +46,15 @@ s32 osContInit(OSMesgQueue* mq, u8* bitpattern, OSContStatus* status) {
     return ret;
 }
 void __osContGetInitData(u8* bitpattern, OSContStatus* status) {
-    u8 *ptr;
+    u8* ptr;
     __OSContRequesFormat response;
     s32 i;
     u8 bits;
 
     bits = 0;
-    ptr = (u8 *) __osContPifRam.ramarray;
+    ptr = (u8*) __osContPifRam.ramarray;
     for (i = 0; i < _osContNumControllers; i++, ptr += sizeof(response), status++) {
-        response = *((__OSContRequesFormat*)(ptr));
+        response = *((__OSContRequesFormat*) (ptr));
         status->errnum = CHNL_ERR(response);
         if (status->errnum == 0) {
             status->type = response.typel << 8 | response.typeh;
@@ -76,7 +76,7 @@ void __osPackRequestData(u8 command) {
     }
 
     __osContPifRam.pifstatus = CONT_CMD_EXE;
-    ptr = (u8*)__osContPifRam.ramarray;
+    ptr = (u8*) __osContPifRam.ramarray;
     requestHeader.dummy = CONT_CMD_NOP;
     requestHeader.txsize = CONT_CMD_RESET_TX;
     requestHeader.rxsize = CONT_CMD_RESET_RX;
@@ -87,7 +87,7 @@ void __osPackRequestData(u8 command) {
     requestHeader.dummy1 = CONT_CMD_NOP;
 
     for (i = 0; i < _osContNumControllers; i++) {
-        *(__OSContRequesFormat*)ptr = requestHeader;
+        *(__OSContRequesFormat*) ptr = requestHeader;
         ptr += sizeof(requestHeader);
     }
     *ptr = CONT_CMD_END;
