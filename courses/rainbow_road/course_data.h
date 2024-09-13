@@ -93,12 +93,12 @@ extern Gfx d_course_rainbow_road_dl_15F18[];
 extern s16 d_rainbow_road_chomp_jaw_animation[];
 extern animation_type_3_triplet d_rainbow_road_unk1[];
 extern animation_type_2 d_rainbow_road_unk2;
-extern animation_type_2 *d_rainbow_road_unk3[];
+extern animation_type_2* d_rainbow_road_unk3[];
 extern u32 d_rainbow_road_unk4[];
 extern u32 d_rainbow_road_unk5[];
 extern Gfx d_course_rainbow_road_dl_16220[];
 extern struct ActorSpawnData d_course_rainbow_road_item_box_spawns[];
 extern TrackSections d_course_rainbow_road_addr[];
-extern Gfx *d_course_rainbow_road_dl_list[];
+extern Gfx* d_course_rainbow_road_dl_list[];
 
 #endif

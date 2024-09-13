@@ -332,7 +332,7 @@ extern Gfx d_course_koopa_troopa_beach_dl_168F0[];
 extern Vtx d_course_koopa_troopa_beach_bird_wing_3_model[];
 extern Gfx d_course_koopa_troopa_beach_dl_16990[];
 extern u32 d_course_koopa_troopa_beach_unk4[];
-extern animation_type_2 *d_course_koopa_troopa_beach_unk_data5[];
+extern animation_type_2* d_course_koopa_troopa_beach_unk_data5[];
 extern u32 d_course_koopa_troopa_beach_unk_data6[];
 extern Lights1 d_course_koopa_troopa_beach_light2;
 extern Vtx d_course_koopa_troopa_beach_tree_model[];
@@ -367,7 +367,7 @@ extern Gfx d_course_koopa_troopa_beach_dl_18D68[];
 extern struct ActorSpawnData d_course_koopa_troopa_beach_item_box_spawns[];
 extern struct ActorSpawnData d_course_koopa_troopa_beach_tree_spawn[];
 extern TrackSections d_course_koopa_troopa_beach_addr[];
-extern Gfx *d_course_koopa_troopa_beach_dl_list1[];
-extern Gfx *d_course_koopa_troopa_beach_dl_list2[];
+extern Gfx* d_course_koopa_troopa_beach_dl_list1[];
+extern Gfx* d_course_koopa_troopa_beach_dl_list2[];
 
 #endif
