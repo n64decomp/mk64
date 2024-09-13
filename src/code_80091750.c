@@ -37,11 +37,11 @@
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
 
-u16 *D_8018D9B0;
-u8 *D_8018D9B4;
-u8 *D_8018D9B8;
-u8 *D_8018D9BC;
-void *D_8018D9C0;
+u16* D_8018D9B0;
+u8* D_8018D9B4;
+u8* D_8018D9B8;
+u8* D_8018D9BC;
+void* D_8018D9C0;
 /**
  * List of bytes indexed by character ID
  * Indicates number of Grand Prix points that character
@@ -59,7 +59,7 @@ struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
 s32 gD_8018E118TotalSize;
 struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
 s32 gNumD_8018E118Entries;
-Gfx *D_8018E75C;
+Gfx* D_8018E75C;
 s32 gNumD_8018E768Entries;
 struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
 s32 gCycleFlashMenu;
@@ -146,17 +146,13 @@ Unk_D_800E70A0 D_800E7168[] = {
 
 // In a perfect world this would be `Unk_D_800E70A0 D_800E7188[][4]`
 Unk_D_800E70A0 D_800E7188[] = {
-    { 0x80, 0x58, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
-    { 0x00, 0x00, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
+    { 0x80, 0x58, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
 
-    { 0x80, 0x3f, 0x00, 0x00 }, { 0x80, 0x91, 0x00, 0x00 },
-    { 0x00, 0x00, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
+    { 0x80, 0x3f, 0x00, 0x00 }, { 0x80, 0x91, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
 
-    { 0x5a, 0x58, 0x00, 0x00 }, { 0xa6, 0x58, 0x00, 0x00 },
-    { 0x00, 0x00, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
+    { 0x5a, 0x58, 0x00, 0x00 }, { 0xa6, 0x58, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
 
-    { 0x5a, 0x3f, 0x00, 0x00 }, { 0xa6, 0x3f, 0x00, 0x00 },
-    { 0x5a, 0x91, 0x00, 0x00 }, { 0xa6, 0x91, 0x00, 0x00 },
+    { 0x5a, 0x3f, 0x00, 0x00 }, { 0xa6, 0x3f, 0x00, 0x00 }, { 0x5a, 0x91, 0x00, 0x00 }, { 0xa6, 0x91, 0x00, 0x00 },
 };
 
 Unk_D_800E70A0 D_800E7208[][2] = {
@@ -211,14 +207,11 @@ Unk_D_800E70A0 D_800E72F8 = { 0x140, 0x23, 0x00, 0x00 };
 
 // In a perfect world this would be `Unk_D_800E70A0 D_800E7300[][4]`
 Unk_D_800E70A0 D_800E7300[] = {
-    { 0x50, 0x23, 0x00, 0x00 }, { 0xb0, 0x23, 0x00, 0x00 },
-    { 0x00, 0x00, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
+    { 0x50, 0x23, 0x00, 0x00 }, { 0xb0, 0x23, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
 
-    { 0x32, 0x23, 0x00, 0x00 }, { 0x80, 0x23, 0x00, 0x00 },
-    { 0xce, 0x23, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
+    { 0x32, 0x23, 0x00, 0x00 }, { 0x80, 0x23, 0x00, 0x00 }, { 0xce, 0x23, 0x00, 0x00 }, { 0x00, 0x00, 0x00, 0x00 },
 
-    { 0x18, 0x23, 0x00, 0x00 }, { 0x5d, 0x23, 0x00, 0x00 },
-    { 0xa2, 0x23, 0x00, 0x00 }, { 0xe7, 0x23, 0x00, 0x00 },
+    { 0x18, 0x23, 0x00, 0x00 }, { 0x5d, 0x23, 0x00, 0x00 }, { 0xa2, 0x23, 0x00, 0x00 }, { 0xe7, 0x23, 0x00, 0x00 },
 };
 
 Unk_D_800E70A0 D_800E7360[] = {
@@ -296,29 +289,26 @@ RGBA16 D_800E74E8[] = {
 };
 
 const s16 gGlyphDisplayWidth[] = {
-    0x000c, 0x000d, 0x000b, 0x000b, 0x000a, 0x000b, 0x000b, 0x000d, 0x0007, 0x000a, 0x000c, 0x000a,
-    0x0012, 0x000d, 0x000c, 0x000c, 0x000c, 0x000c, 0x000b, 0x000d, 0x000c, 0x000c, 0x0012, 0x000d,
-    0x000c, 0x000c, 0x000a, 0x000a, 0x000a, 0x0006, 0x001e, 0x0006, 0x000a, 0x0008, 0x000b, 0x000c,
-    0x000c, 0x000d, 0x000a, 0x000b, 0x000a, 0x000a, 0x0008, 0x001c, 0x000a, 0x0010, 0x000f, 0x0010,
-    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
-    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
-    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000e, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
-    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
-    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
-    0x000f, 0x000e, 0x000f, 0x000e, 0x000f, 0x000e, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
-    0x000f, 0x000f, 0x000f, 0x000e, 0x000e, 0x000e, 0x000e, 0x000e, 0x000f, 0x000f, 0x000f, 0x000f,
-    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
-    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
-    0x000f, 0x000e, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
-    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
-    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000e, 0x000f, 0x000e,
-    0x000f, 0x000e, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000e,
-    0x000e, 0x000e, 0x000e, 0x000e, 0x000b, 0x000f, 0x000f, 0x000f, 0x000f, 0x001d, 0x001d, 0x001d,
-    0x001d, 0x001d, 0x001d, 0x001d, 0x001d, 0x001d, 0x001d, 0x000f, 0x000f, 0x0017, 0x000f, 0x0017,
-    0x0017, 0x0017, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000c, 0x000d, 0x000b, 0x000b, 0x000a, 0x000b, 0x000b, 0x000d, 0x0007, 0x000a, 0x000c, 0x000a, 0x0012, 0x000d,
+    0x000c, 0x000c, 0x000c, 0x000c, 0x000b, 0x000d, 0x000c, 0x000c, 0x0012, 0x000d, 0x000c, 0x000c, 0x000a, 0x000a,
+    0x000a, 0x0006, 0x001e, 0x0006, 0x000a, 0x0008, 0x000b, 0x000c, 0x000c, 0x000d, 0x000a, 0x000b, 0x000a, 0x000a,
+    0x0008, 0x001c, 0x000a, 0x0010, 0x000f, 0x0010, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000e, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000e, 0x000f, 0x000e,
+    0x000f, 0x000e, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000e, 0x000e, 0x000e,
+    0x000e, 0x000e, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000e, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000e, 0x000f, 0x000e, 0x000f, 0x000e, 0x000f, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000e, 0x000e, 0x000e, 0x000e, 0x000e, 0x000b, 0x000f,
+    0x000f, 0x000f, 0x000f, 0x001d, 0x001d, 0x001d, 0x001d, 0x001d, 0x001d, 0x001d, 0x001d, 0x001d, 0x001d, 0x000f,
+    0x000f, 0x0017, 0x000f, 0x0017, 0x0017, 0x0017, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f, 0x000f,
 };
 
-char *gCupNames[] = {
+char* gCupNames[] = {
     "mushroom cup",
     "flower cup",
     "star cup",
@@ -332,20 +322,20 @@ char *gCupNames[] = {
 };
 
 // Displays at beginning of course
-char *gCourseNames[] = {
+char* gCourseNames[] = {
 #include "assets/course_metadata/gCourseNames.inc.c"
 };
 
-char *gCourseNamesDup[] = {
+char* gCourseNamesDup[] = {
 #include "assets/course_metadata/gCourseNames.inc.c"
 };
 
-char *gCourseNamesDup2[] = {
+char* gCourseNamesDup2[] = {
 #include "assets/course_metadata/gCourseNames.inc.c"
 };
 
 // Used in debug menu at splash screen
-char *gDebugCourseNames[] = {
+char* gDebugCourseNames[] = {
 #include "assets/course_metadata/gCourseDebugNames.inc.c"
 };
 
@@ -361,80 +351,80 @@ s8 gCupSelectionByCourseId[] = {
 #include "assets/course_metadata/gCupSelectionByCourseId.inc.c"
 };
 
-char *D_800E7678[] = {
+char* D_800E7678[] = {
     "none",
     "bronze",
     "silver",
     "gold",
 };
 
-char *gDebugCharacterNames[] = {
+char* gDebugCharacterNames[] = {
     "MARIO", "LUIGI", "YOSHI", "KINOPIO", "D.KONG", "WARIO", "PEACH", "KOOPA",
 };
 
-char *D_800E76A8[] = {
+char* D_800E76A8[] = {
     "MARIO",    "LUIGI", "YOSHI", "TOAD", "D.K.", "WARIO", "PEACH", "BOWSER",
     "ーーーー", // NOT HYPHENS!!! These are EUC-JP characters (0xa1 0xbc)
 };
 
-char *D_800E76CC[] = {
+char* D_800E76CC[] = {
     "50(",
     "100(",
     "150(",
     "extra",
 };
 
-char *D_800E76DC[] = {
+char* D_800E76DC[] = {
     "50(",
     "100(",
     "150(",
     "extra",
 };
 
-char *gDebugScreenModeNames[] = {
+char* gDebugScreenModeNames[] = {
     "1p", "2players UD", "2players LR", "3players", "4players",
 };
 
-char *gDebugSoundModeNames[] = {
+char* gDebugSoundModeNames[] = {
     "stereo",
     "head phone",
     "xxx",
     "monaural",
 };
 
-char *gSoundModeNames[NUM_SOUND_MODES] = { "STEREO", "HEADPHONE", "", "MONO" };
+char* gSoundModeNames[NUM_SOUND_MODES] = { "STEREO", "HEADPHONE", "", "MONO" };
 
-char *D_800E7720[] = {
+char* D_800E7720[] = {
     "WINNER!",
     "LOSER!",
 };
 
-char *D_800E7728[] = {
+char* D_800E7728[] = {
     "BEST RECORDS",
     "BEST LAP",
 };
 
 // Might need a const?
-char *D_800E7730 = "LAP TIME";
+char* D_800E7730 = "LAP TIME";
 
-char *D_800E7734[] = {
+char* D_800E7734[] = {
     "LAP 1",
     "LAP 2",
     "LAP 3",
     "TOTAL",
 };
 
-char *D_800E7744[] = {
+char* D_800E7744[] = {
     // The s/n/r/t here are not ASCII, they are EUC-JP characters
     // 0xae 0xf3/0xae 0xee/0xae 0xf2/0xae 0xf4
     "1 ｓ", "2 ｎ", "3 ｒ", "4 ｔ", "5 ｔ", " ",
 };
 
-char *gTextPauseButton[] = {
+char* gTextPauseButton[] = {
     "CONTINUE GAME", "RETRY", "COURSE CHANGE", "DRIVER CHANGE", "QUIT", "REPLAY", "SAVE GHOST",
 };
 
-char *D_800E7778[] = {
+char* D_800E7778[] = {
     "VS MATCH RANKING",
     "BATTLE RANKING",
 };
@@ -442,9 +432,9 @@ char *D_800E7778[] = {
 // This is plain data, it should not end up in rodata
 char D_800E7780[] = "NOW-MEET THE COURSE GHOST!!!";
 
-char *D_800E77A0[] = { "CONNECT A CONTROLLER TO SOCKET 1,", "THEN POWER ON AGAIN" };
+char* D_800E77A0[] = { "CONNECT A CONTROLLER TO SOCKET 1,", "THEN POWER ON AGAIN" };
 
-char *D_800E77A8[] = {
+char* D_800E77A8[] = {
     "BATTLE GAME",
     "POP OPPOSING PLAYER'S BALLOONS",
     "WHEN ALL 3 ARE GONE,THEY ARE OUT!",
@@ -456,54 +446,54 @@ char D_800E77B4[] = "a BUTTON*SEE DATA  B BUTTON*EXIT";
 // This is plain data, it should not end up in rodata
 char D_800E77D8[] = "distance";
 
-char *sCourseLengths[] = {
+char* sCourseLengths[] = {
 #include "assets/course_metadata/sCourseLengths.inc.c"
 };
 
-char *D_800E7834[] = {
+char* D_800E7834[] = {
     "return to menu",
     "erase records for this course",
     "erase ghost from this course",
 };
 
-char *D_800E7840[] = {
+char* D_800E7840[] = {
     "quit",
     "erase",
 };
 
 // Why oh why is this array flat? It should be D_800E7848[][3]
-char *D_800E7848[] = {
+char* D_800E7848[] = {
     "THE BEST RECORDS AND BEST", "LAP FOR THIS COURSE WILL BE", "ERASED.  IS THIS OK?",
 
     "GHOST DATA FOR THIS",       "COURSE WILL BE ERASED.",      "IS THIS OK?",
 };
 
-char *D_800E7860[] = {
+char* D_800E7860[] = {
     "UNABLE TO ERASE ",
     "GHOST DATA",
 };
 
-char *D_800E7868[] = {
+char* D_800E7868[] = {
     "RETURN TO GAME SELECT",
     "SOUND MODE",
     "COPY N64 CONTROLLER PAK",
     "ERASE ALL DATA",
 };
 
-char *D_800E7878[] = {
+char* D_800E7878[] = {
     "ALL SAVED DATA WILL BE",
     "PERMANENTLY ERASED.",
     "ARE YOU REALLY SURE?",
 };
 
-char *D_800E7884[] = {
+char* D_800E7884[] = {
     "",
     "ALL SAVED DATA",
     "HAS BEEN NOW ERASED.",
 };
 
 // In a perfect world this would be `char *D_800E7890[][4]`
-char *D_800E7890[] = {
+char* D_800E7890[] = {
     "CONTROLLER 1 DOES NOT HAVE ",
     "N64 CONTROLLER PAK",
     "",
@@ -526,7 +516,7 @@ char *D_800E7890[] = {
 };
 
 // In a perfect world this would be `char *D_800E78D0[][3]`
-char *D_800E78D0[] = {
+char* D_800E78D0[] = {
     "NO GHOST DATA ",         "IN CONTROLLER 2 ",         "N64 CONTROLLER PAK",
 
     "NO MARIO KART 64 DATA ", "PRESENT IN CONTROLLER 2 ", "N64 CONTROLLER PAK",
@@ -537,39 +527,39 @@ char *D_800E78D0[] = {
 };
 
 // In a perfect world this would be `char *D_800E7900[][4]`
-char *D_800E7900[] = {
+char* D_800E7900[] = {
     "UNABLE TO COPY DATA ", "FROM CONTROLLER 1 ", "N64 CONTROLLER PAK",
 
     "UNABLE TO READ DATA ", "FROM CONTROLLER 2 ", "N64 CONTROLLER PAK",
 };
 
-char *D_800E7918[] = {
+char* D_800E7918[] = {
     "CONTROLLER 1",
     "CONTROLLER 2",
 };
 
-char *D_800E7920[] = {
+char* D_800E7920[] = {
     "WHICH FILE DO YOU WANT TO MAKE A COPY OF?",
     "TO WHICH FILE DO YOU WANT TO COPY?",
 };
 
-char *D_800E7928[] = {
+char* D_800E7928[] = {
     "CURRENT DATA WILL BE ERASED,",
     "IS THIS OK?",
 };
 
-char *D_800E7930[] = {
+char* D_800E7930[] = {
     "QUIT",
     "COPY",
 };
 
-char *D_800E7938[] = {
+char* D_800E7938[] = {
     "COPYING",
     "DATA COPY COMPLETED",
 };
 
 // In a perfect world this would be `char *D_800E7940[][4]`
-char *D_800E7940[] = {
+char* D_800E7940[] = {
     "NO N64 CONTROLLER PAK DETECTED",
     "TO SAVE GHOST DATA, ",
     "INSERT N64 CONTROLLER PAK ",
@@ -592,14 +582,14 @@ char *D_800E7940[] = {
 };
 
 // Unused?
-char *D_800E7980[] = {
+char* D_800E7980[] = {
     "TO SAVE GHOST DATA, ",
     "INSERT N64 CONTROLLER PAK ",
     "INTO CONTROLLER 1",
 };
 
 // In a perfect world this would be `char *D_800E798C[][7]`
-char *D_800E798C[] = {
+char* D_800E798C[] = {
     "N64 CONTROLLER PAK ",
     "NOT DETECTED. ",
     "IF YOU WANT TO SAVE ",
@@ -649,54 +639,54 @@ char *D_800E798C[] = {
     "",
 };
 
-char *D_800E7A34[] = {
+char* D_800E7A34[] = {
     "RACE DATA CANNOT ",
     "BE SAVED FOR GHOST",
 };
 
-char *D_800E7A3C[] = {
+char* D_800E7A3C[] = {
     "SELECT THE FILE ",
     "YOU WANT TO SAVE",
 };
 
 // Might need a const?
-char *D_800E7A44 = "NO DATA";
+char* D_800E7A44 = "NO DATA";
 
-char *D_800E7A48[] = {
+char* D_800E7A48[] = {
     "CREATING ",
     "MARIO KART 64 ",
     "GAME DATA",
 };
 
-char *D_800E7A54[] = {
+char* D_800E7A54[] = {
     "CANNOT CREATE GAME DATA",
     "",
     "",
 };
 
-char *D_800E7A60[] = {
+char* D_800E7A60[] = {
     "THE PREVIOUS DATA ",
     "WILL BE ERASED, ",
     "IS THIS OK?",
 };
 
-char *D_800E7A6C[] = {
+char* D_800E7A6C[] = {
     "QUIT",
     "SAVE",
 };
 
-char *D_800E7A74[] = {
+char* D_800E7A74[] = {
     "SAVING GHOST DATA",
     "",
     "PLEASE WAIT",
 };
 
-char *D_800E7A80[] = {
+char* D_800E7A80[] = {
     "UNABLE TO SAVE ",
     "THE GHOST",
 };
 
-char *D_800E7A88[] = {
+char* D_800E7A88[] = {
     "YOU ARE AWARDED THE",
     "GOLD CUP",
     "SILVER CUP",
@@ -704,14 +694,14 @@ char *D_800E7A88[] = {
 };
 
 // Might need a const?
-char *D_800E7A98 = "MAYBE NEXT TIME!";
+char* D_800E7A98 = "MAYBE NEXT TIME!";
 
-char *D_800E7A9C[] = {
+char* D_800E7A9C[] = {
     "CONGRATULATIONS!",
     "WHAT A PITY!",
 };
 
-char *D_800E7AA4[] = {
+char* D_800E7AA4[] = {
     "YOU PLACED", "    st", "    nd", "    rd", "    th", "    th", "    th", "    th", "    th",
 };
 
@@ -739,205 +729,199 @@ RGBA16 D_800E7AE8[] = {
     { 0xff, 0xff, 0xff, 0xff },
 };
 
-MkTexture *D_800E7AF8[] = {
-    D_02000000, D_02000028, D_02000050, D_02000078, D_020000A0, D_020000C8, D_020000F0, D_02000118,
-    D_02000140, D_02000168, D_02000190, D_020001B8, D_020001E0, D_02000208, D_02000230, D_02000258,
-    D_02000280, D_020002A8, D_020002D0, D_020002F8, D_02000320, D_02000348, D_02000370, D_02000398,
-    D_020003C0, D_020003E8, D_02000410, D_02000438, D_02000460, D_02000488, D_020004B0, D_020004D8,
-    D_02000500, D_02000528, D_02000550, D_02000578, D_020005A0, D_020005C8, D_020005F0, D_02000618,
-    D_02000640, D_02000668, D_02000690, D_020006B8, D_020006E0, D_02000708, D_02000730, D_02000758,
-    D_02000780, D_020007A8, D_020007D0, D_020007F8, D_02000820, D_02000848, D_02000870, D_02000898,
-    D_020008C0, D_020008E8, D_02000910, D_02000938, D_02000960, D_02000988, D_020009B0, D_020009D8,
-    D_02000A00, D_02000A28, D_02000A50, D_02000A78, D_02000AA0, D_02000AC8, D_02000AF0, D_02000B18,
-    D_02000B40, D_02000B68, D_02000B90, D_02000BB8, D_02000BE0, D_02000C08, D_02000C30, D_02000C58,
-    D_02000C80, D_02000CA8, D_02000CD0, D_02000CF8, D_02000D20, D_02000D48, D_02000D70, D_02000D98,
-    D_02000DC0, D_02000DE8, D_02000E10, D_02000E38, D_02000E60, D_02000E88, D_02000EB0, D_02000ED8,
-    D_02000F00, D_02000F28, D_02000F50, D_02000F78, D_02000FA0, D_02000FC8, D_02000FF0, D_02001018,
-    D_02001040, D_02001068, D_02001090, D_020010B8, D_020010E0, D_02001108, D_02001130, D_02001158,
-    D_02001180, D_020011A8, D_020011D0, D_020011F8, D_02001220, D_02001248, D_02001270, D_02001298,
-    D_020012C0, D_020012E8, D_02001310, D_02001338, D_02001360, D_02001388, D_020013B0, D_020013D8,
-    D_02001400, D_02001428, D_02001450, D_02001478, D_020014A0,
+MkTexture* D_800E7AF8[] = {
+    D_02000000, D_02000028, D_02000050, D_02000078, D_020000A0, D_020000C8, D_020000F0, D_02000118, D_02000140,
+    D_02000168, D_02000190, D_020001B8, D_020001E0, D_02000208, D_02000230, D_02000258, D_02000280, D_020002A8,
+    D_020002D0, D_020002F8, D_02000320, D_02000348, D_02000370, D_02000398, D_020003C0, D_020003E8, D_02000410,
+    D_02000438, D_02000460, D_02000488, D_020004B0, D_020004D8, D_02000500, D_02000528, D_02000550, D_02000578,
+    D_020005A0, D_020005C8, D_020005F0, D_02000618, D_02000640, D_02000668, D_02000690, D_020006B8, D_020006E0,
+    D_02000708, D_02000730, D_02000758, D_02000780, D_020007A8, D_020007D0, D_020007F8, D_02000820, D_02000848,
+    D_02000870, D_02000898, D_020008C0, D_020008E8, D_02000910, D_02000938, D_02000960, D_02000988, D_020009B0,
+    D_020009D8, D_02000A00, D_02000A28, D_02000A50, D_02000A78, D_02000AA0, D_02000AC8, D_02000AF0, D_02000B18,
+    D_02000B40, D_02000B68, D_02000B90, D_02000BB8, D_02000BE0, D_02000C08, D_02000C30, D_02000C58, D_02000C80,
+    D_02000CA8, D_02000CD0, D_02000CF8, D_02000D20, D_02000D48, D_02000D70, D_02000D98, D_02000DC0, D_02000DE8,
+    D_02000E10, D_02000E38, D_02000E60, D_02000E88, D_02000EB0, D_02000ED8, D_02000F00, D_02000F28, D_02000F50,
+    D_02000F78, D_02000FA0, D_02000FC8, D_02000FF0, D_02001018, D_02001040, D_02001068, D_02001090, D_020010B8,
+    D_020010E0, D_02001108, D_02001130, D_02001158, D_02001180, D_020011A8, D_020011D0, D_020011F8, D_02001220,
+    D_02001248, D_02001270, D_02001298, D_020012C0, D_020012E8, D_02001310, D_02001338, D_02001360, D_02001388,
+    D_020013B0, D_020013D8, D_02001400, D_02001428, D_02001450, D_02001478, D_020014A0,
 };
 
-MkTexture *D_800E7D0C[] = {
+MkTexture* D_800E7D0C[] = {
     D_020016BC, D_020016E4, D_0200170C, D_02001734, D_0200175C,
     D_02001784, D_020017AC, D_020017D4, D_020017FC, D_02001824,
 };
 
-MkAnimation *D_800E7D34[] = {
+MkAnimation* D_800E7D34[] = {
     D_0200198C, D_0200199C, D_020019AC, D_020019BC, D_020019CC, D_020019DC,
 };
 
-MkTexture *D_800E7D4C[] = {
+MkTexture* D_800E7D4C[] = {
     D_02004598,
     D_020045C0,
 };
 
-MkTexture *D_800E7D54[] = {
+MkTexture* D_800E7D54[] = {
     D_02001A8C, D_02001A64, D_02001AB4, D_02001A14, D_02001B04, D_020019EC, D_02001ADC, D_02001A3C,
 };
 
-MkTexture *D_800E7D74[] = {
+MkTexture* D_800E7D74[] = {
     D_02001B2C, D_02001B54, D_02001B7C, D_02001BA4, D_02001BCC, D_02001BF4, D_02001C1C,
     D_02001C44, D_02001C6C, D_02001C94, D_02001CBC, D_02001CE4, D_02001D0C, D_02001D34,
     D_02001D5C, D_02001D84, D_02001DAC, D_02001DD4, D_02001DFC, D_02001E24,
 };
 
-MkTexture *D_800E7DC4[] = {
+MkTexture* D_800E7DC4[] = {
     D_02004EA8, D_02004ED0, D_02004EF8, D_02004F20, D_02004F48, D_02004F70, D_02004F98,
     D_02004FC0, D_02004FE8, D_02005010, D_02005038, D_02005060, D_02005088, D_020050B0,
     D_020050D8, D_02005100, D_02005128, D_02005150, D_02005178, D_020051A0,
 };
 
 // Unused?
-MkAnimation *D_800E7E14[] = {
+MkAnimation* D_800E7E14[] = {
     D_020020BC,
     D_020020CC,
     D_020020DC,
 };
 
-MkAnimation *D_800E7E20[] = {
+MkAnimation* D_800E7E20[] = {
     D_020020DC, D_020020EC, D_020020FC, D_0200210C, D_0200210C,
 };
 
-MkAnimation *D_800E7E34[] = {
+MkAnimation* D_800E7E34[] = {
     D_02001E64, D_02001E74, D_02001E84, D_02001E94, D_02001EA4, D_02001EB4, D_02001EC4,
     D_02001ED4, D_02001EE4, D_02001EF4, D_02001F04, D_02001F14, D_02001F24, D_02001F34,
     D_02001F44, D_02001F54, D_02001F64, D_02001F74, D_02001F84, D_02001F94,
 };
 
-MkTexture *gGlyphTextureLUT[] = {
-    D_0200211C, D_02002144, D_0200216C, D_02002194, D_020021BC, D_020021E4, D_0200220C, D_02002234,
-    D_0200225C, D_02002284, D_020022AC, D_020022D4, D_020022FC, D_02002324, D_0200234C, D_02002374,
-    D_0200239C, D_020023C4, D_020023EC, D_02002414, D_0200243C, D_02002464, D_0200248C, D_020024B4,
-    D_020024DC, D_02002504, D_0200252C, D_02002554, D_0200257C, D_020025A4, D_02004584, D_0200261C,
-    D_02002694, D_020026BC, D_020026E4, D_0200270C, D_02002734, D_0200275C, D_02002784, D_020027AC,
-    D_020027D4, D_020027FC, D_020025CC, D_02002644, D_020025F4, D_0200266C, D_02004534, D_02004584,
-    D_02002824, D_0200284C, D_02002874, D_0200289C, D_020028C4, D_020028EC, D_02002F54, D_02002914,
-    D_02002F7C, D_0200293C, D_02002FA4, D_02002964, D_02002FCC, D_0200298C, D_02002FF4, D_020029B4,
-    D_0200301C, D_020029DC, D_02003044, D_02002A04, D_0200306C, D_02002A2C, D_02003094, D_02002A54,
-    D_020030BC, D_02002A7C, D_020030E4, D_02002AA4, D_0200310C, D_020033B4, D_02002ACC, D_02003134,
-    D_02002AF4, D_0200315C, D_02002B1C, D_02003184, D_02002B44, D_02002B6C, D_02002B94, D_02002BBC,
-    D_02002BE4, D_02002C0C, D_020031AC,
+MkTexture* gGlyphTextureLUT[] = {
+    D_0200211C, D_02002144, D_0200216C, D_02002194, D_020021BC, D_020021E4, D_0200220C, D_02002234, D_0200225C,
+    D_02002284, D_020022AC, D_020022D4, D_020022FC, D_02002324, D_0200234C, D_02002374, D_0200239C, D_020023C4,
+    D_020023EC, D_02002414, D_0200243C, D_02002464, D_0200248C, D_020024B4, D_020024DC, D_02002504, D_0200252C,
+    D_02002554, D_0200257C, D_020025A4, D_02004584, D_0200261C, D_02002694, D_020026BC, D_020026E4, D_0200270C,
+    D_02002734, D_0200275C, D_02002784, D_020027AC, D_020027D4, D_020027FC, D_020025CC, D_02002644, D_020025F4,
+    D_0200266C, D_02004534, D_02004584, D_02002824, D_0200284C, D_02002874, D_0200289C, D_020028C4, D_020028EC,
+    D_02002F54, D_02002914, D_02002F7C, D_0200293C, D_02002FA4, D_02002964, D_02002FCC, D_0200298C, D_02002FF4,
+    D_020029B4, D_0200301C, D_020029DC, D_02003044, D_02002A04, D_0200306C, D_02002A2C, D_02003094, D_02002A54,
+    D_020030BC, D_02002A7C, D_020030E4, D_02002AA4, D_0200310C, D_020033B4, D_02002ACC, D_02003134, D_02002AF4,
+    D_0200315C, D_02002B1C, D_02003184, D_02002B44, D_02002B6C, D_02002B94, D_02002BBC, D_02002BE4, D_02002C0C,
+    D_020031AC,
 };
 
-MkTexture *D_800E7FF0[] = {
-    D_02003274, D_02002C34, D_020031D4, D_0200329C, D_02002C5C, D_020031FC, D_020032C4, D_02002C84,
-    D_02003224, D_020032EC, D_02002CAC, D_0200324C, D_02003314, D_02002CD4, D_02002CFC, D_02002D24,
-    D_02002D4C, D_02002D74, D_0200333C, D_02002D9C, D_02003364, D_02002DC4, D_0200338C, D_02002DEC,
-    D_02002E14, D_02002E3C, D_02002E64, D_02002E8C, D_02002EB4, D_02002EDC, D_02002F04, D_02002F2C,
-    D_020033DC, D_02003404, D_0200342C, D_02003454, D_0200347C, D_020034A4, D_020034CC, D_020034F4,
-    D_0200351C, D_02003544, D_0200356C, D_02003BD4,
+MkTexture* D_800E7FF0[] = {
+    D_02003274, D_02002C34, D_020031D4, D_0200329C, D_02002C5C, D_020031FC, D_020032C4, D_02002C84, D_02003224,
+    D_020032EC, D_02002CAC, D_0200324C, D_02003314, D_02002CD4, D_02002CFC, D_02002D24, D_02002D4C, D_02002D74,
+    D_0200333C, D_02002D9C, D_02003364, D_02002DC4, D_0200338C, D_02002DEC, D_02002E14, D_02002E3C, D_02002E64,
+    D_02002E8C, D_02002EB4, D_02002EDC, D_02002F04, D_02002F2C, D_020033DC, D_02003404, D_0200342C, D_02003454,
+    D_0200347C, D_020034A4, D_020034CC, D_020034F4, D_0200351C, D_02003544, D_0200356C, D_02003BD4,
 };
 
-MkTexture *D_800E80A0[] = {
+MkTexture* D_800E80A0[] = {
     D_02003594, D_02003BFC, D_020035BC, D_02003C24, D_020035E4, D_02003C4C, D_0200360C, D_02003C74,
     D_02003634, D_02003C9C, D_0200365C, D_02003CC4, D_02003684, D_02003CEC, D_020036AC, D_02003D14,
     D_020036D4, D_02003D3C, D_020036FC, D_02003D64, D_02003724, D_02003D8C, D_02004034, D_0200374C,
     D_02003DB4, D_02003774, D_02003DDC, D_0200379C, D_02003E04,
 };
 
-MkTexture *D_800E8114[] = {
+MkTexture* D_800E8114[] = {
     D_020037C4, D_020037EC, D_02003814, D_0200383C, D_02003864, D_0200388C, D_02003E2C, D_02003EF4,
     D_020038B4, D_02003E54, D_02003F1C, D_020038DC, D_02003E7C, D_02003F44, D_02003904, D_02003EA4,
     D_02003F6C, D_0200392C, D_02003ECC, D_02003F94, D_02003954, D_0200397C, D_020039A4, D_020039CC,
 };
 
-MkTexture *D_800E8174[] = {
+MkTexture* D_800E8174[] = {
     D_020039F4,
     D_02003FBC,
 };
 
-MkTexture *D_800E817C[] = {
-    D_02003A1C, D_02003FE4, D_02003A44, D_0200400C, D_02003A6C, D_02003A94, D_02003ABC,
-    D_02003AE4, D_02003B0C, D_02003B34, D_02003B5C, D_02003B84, D_02003BAC, D_0200405C,
-    D_02004084, D_020040AC, D_020040D4, D_020040FC, D_020043CC, D_02004444, D_0200437C,
-    D_020043F4, D_02004124, D_0200414C, D_02004174, D_0200419C,
+MkTexture* D_800E817C[] = {
+    D_02003A1C, D_02003FE4, D_02003A44, D_0200400C, D_02003A6C, D_02003A94, D_02003ABC, D_02003AE4, D_02003B0C,
+    D_02003B34, D_02003B5C, D_02003B84, D_02003BAC, D_0200405C, D_02004084, D_020040AC, D_020040D4, D_020040FC,
+    D_020043CC, D_02004444, D_0200437C, D_020043F4, D_02004124, D_0200414C, D_02004174, D_0200419C,
 };
 
-MkTexture *D_800E81E4[] = {
-    D_020041C4, D_020041EC, D_02004214, D_0200423C, D_02004264, D_0200428C,
-    D_020042B4, D_020042DC, D_02004354, D_020043A4, D_0200441C, D_0200446C,
-    D_02004494, D_020044BC, D_02004304, D_0200432C, D_020044E4, D_0200450C,
+MkTexture* D_800E81E4[] = {
+    D_020041C4, D_020041EC, D_02004214, D_0200423C, D_02004264, D_0200428C, D_020042B4, D_020042DC, D_02004354,
+    D_020043A4, D_0200441C, D_0200446C, D_02004494, D_020044BC, D_02004304, D_0200432C, D_020044E4, D_0200450C,
 };
 
-MkTexture *D_800E822C[] = {
+MkTexture* D_800E822C[] = {
     D_02004534,
     D_0200455C,
 };
 
 // In a perfect world this would be `MkTexture *D_800E8234[][2]`
-MkTexture *D_800E8234[] = {
+MkTexture* D_800E8234[] = {
     D_02004688, D_020047DC, D_020046D8, D_02004804, D_0200473C, D_0200482C,
 };
 
-MkTexture *D_800E824C[] = {
+MkTexture* D_800E824C[] = {
     D_0200478C,
     D_02004854,
 };
 
-MkTexture *D_800E8254[] = {
+MkTexture* D_800E8254[] = {
     D_02004660, D_02004688, D_020046D8, D_0200473C, D_0200478C, D_0200487C, D_020048A4, D_020048CC,
 };
 
-MkTexture *D_800E8274[] = {
+MkTexture* D_800E8274[] = {
     D_020048F4, D_0200491C, D_02004944, D_0200496C, D_020049BC, D_02004994, D_020049E4, D_02004A34,
 };
 
-MkTexture *D_800E8294[] = {
+MkTexture* D_800E8294[] = {
     D_020048F4, D_0200491C, D_02004944, D_0200496C, D_020049BC, D_02004994, D_020049E4, D_02004A34,
 };
 
-MkTexture *D_800E82B4[] = {
+MkTexture* D_800E82B4[] = {
     D_02004A5C,
     D_02004A98,
     D_02004AD4,
     D_02004B10,
 };
 
-MkTexture *D_800E82C4[] = {
+MkTexture* D_800E82C4[] = {
     D_02004B9C, D_02004BC4, D_02004BEC, D_02004C14, D_02004C3C, D_02004C64,
     D_02004C8C, D_02004CF0, D_02004D54, D_02004DB8, D_02004E1C, D_02004E80,
 };
 
-MkTexture *D_800E82F4[] = {
+MkTexture* D_800E82F4[] = {
     D_02004BC4, D_02004BEC, D_02004C14, D_02004C3C, D_02004C64, D_02004C8C,
     D_02004CF0, D_02004D54, D_02004DB8, D_02004E1C, D_02004E80,
 };
 
-MkAnimation *D_800E8320[] = {
+MkAnimation* D_800E8320[] = {
     D_02006708, D_020068F0, D_02006CC0, D_02006EA8, D_02007090, D_02007280, D_02007468, D_02006AD8,
 };
 
-MkAnimation *D_800E8340[] = {
+MkAnimation* D_800E8340[] = {
     D_02006778, D_02006960, D_02006D30, D_02006F18, D_02007100, D_020072F0, D_020074D8, D_02006B48,
 };
 
-MkAnimation *D_800E8360[] = {
+MkAnimation* D_800E8360[] = {
     D_02006708, D_020068F0, D_02006CC0, D_02006EA8, D_02007090, D_02007280, D_02007468, D_02006AD8,
 };
 
-MkAnimation *gCharacterCelebrateAnimation[] = {
+MkAnimation* gCharacterCelebrateAnimation[] = {
     D_02006718, D_02006900, D_02006CD0, D_02006EB8, D_020070A0, D_02007290, D_02007478, D_02006AE8,
 };
 
-MkAnimation *D_800E83A0[] = {
+MkAnimation* D_800E83A0[] = {
     D_02006778, D_02006960, D_02006D30, D_02006F18, D_02007100, D_020072F0, D_020074D8, D_02006B48,
 };
 
-MkAnimation *gCharacterDeselectAnimation[] = {
+MkAnimation* gCharacterDeselectAnimation[] = {
     D_02006788, D_02006970, D_02006D40, D_02006F28, D_02007110, D_02007300, D_020074E8, D_02006B58,
 };
 
-MkAnimation *gCharacterSingleBlinkAnimation[] = {
+MkAnimation* gCharacterSingleBlinkAnimation[] = {
     D_020067E0, D_020069C8, D_02006D98, D_02006F80, D_02007170, D_02007358, D_02007540, D_02006BB0,
 };
 
-MkAnimation *gCharacterDoubleBlinkAnimation[] = {
+MkAnimation* gCharacterDoubleBlinkAnimation[] = {
     D_02006838, D_02006A20, D_02006DF0, D_02006FD8, D_020071C8, D_020073B0, D_02007598, D_02006C08,
 };
 
-MkAnimation *gCharacterDefeatAnimation[] = {
+MkAnimation* gCharacterDefeatAnimation[] = {
     D_020068E0, D_02006AC8, D_02006E98, D_02007080, D_02007270, D_02007458, D_02007640, D_02006CB0,
 };
 
@@ -957,21 +941,21 @@ s32 D_800E84A0[] = {
     0x13, 0x13, 0x13, 0x13, 0x13, 0x13, 0x13, 0x13,
 };
 
-Vtx *D_800E84C0[] = {
+Vtx* D_800E84C0[] = {
     &D_02007BB8[0],
     &D_02007BB8[18],
     &D_02007BB8[36],
 };
 
-Gfx *D_800E84CC[] = {
+Gfx* D_800E84CC[] = {
     D_02007838, D_02007858, D_02007878, D_02007898, D_020078B8, D_020078D8, D_020078F8, D_02007918,
 };
 
-Gfx *D_800E84EC[] = {
+Gfx* D_800E84EC[] = {
     D_02007938, D_02007958, D_02007978, D_02007998, D_020079B8, D_020079D8, D_020079F8, D_02007A18,
 };
 
-Gfx *D_800E850C[] = {
+Gfx* D_800E850C[] = {
     D_02007A38, D_02007A58, D_02007A78, D_02007A98, D_02007AB8, D_02007AD8, D_02007AF8, D_02007B18,
 };
 
@@ -985,41 +969,31 @@ Unk_D_800E70A0 D_800E8538[] = { { 0x69, 0x9b, 0x00, 0x00 } };
 
 // In a perfect world this would be `Unk_D_800E70A0 D_800E8540[][4]`
 Unk_D_800E70A0 D_800E8540[] = {
-    { 0x82, 0x64, 0x00, 0x00 }, { 0x82, 0x64, 0x00, 0x00 },
-    { 0x82, 0x64, 0x00, 0x00 }, { 0x82, 0x64, 0x00, 0x00 },
+    { 0x82, 0x64, 0x00, 0x00 }, { 0x82, 0x64, 0x00, 0x00 }, { 0x82, 0x64, 0x00, 0x00 }, { 0x82, 0x64, 0x00, 0x00 },
 
-    { 0x6e, 0x28, 0x00, 0x00 }, { 0x6e, 0xa0, 0x00, 0x00 },
-    { 0x6e, 0x28, 0x00, 0x00 }, { 0x6e, 0xa0, 0x00, 0x00 },
+    { 0x6e, 0x28, 0x00, 0x00 }, { 0x6e, 0xa0, 0x00, 0x00 }, { 0x6e, 0x28, 0x00, 0x00 }, { 0x6e, 0xa0, 0x00, 0x00 },
 
-    { 0x28, 0x64, 0x00, 0x00 }, { 0xb2, 0x64, 0x00, 0x00 },
-    { 0x28, 0x64, 0x00, 0x00 }, { 0xb2, 0x64, 0x00, 0x00 },
+    { 0x28, 0x64, 0x00, 0x00 }, { 0xb2, 0x64, 0x00, 0x00 }, { 0x28, 0x64, 0x00, 0x00 }, { 0xb2, 0x64, 0x00, 0x00 },
 
-    { 0x28, 0x28, 0x00, 0x00 }, { 0xb2, 0x28, 0x00, 0x00 },
-    { 0x28, 0xa0, 0x00, 0x00 }, { 0xb2, 0xa0, 0x00, 0x00 },
+    { 0x28, 0x28, 0x00, 0x00 }, { 0xb2, 0x28, 0x00, 0x00 }, { 0x28, 0xa0, 0x00, 0x00 }, { 0xb2, 0xa0, 0x00, 0x00 },
 };
 
 // In a perfect world this would be `Unk_D_800E70A0 D_800E85C0[][4]`
 Unk_D_800E70A0 D_800E85C0[] = {
-    { 0x69, 0x8c, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 },
-    { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 },
+    { 0x69, 0x8c, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 },
 
-    { 0x69, 0x55, 0x00, 0x00 }, { 0x69, 0xcd, 0x00, 0x00 },
-    { 0x78, 0x28, 0x00, 0x00 }, { 0x78, 0xa0, 0x00, 0x00 },
+    { 0x69, 0x55, 0x00, 0x00 }, { 0x69, 0xcd, 0x00, 0x00 }, { 0x78, 0x28, 0x00, 0x00 }, { 0x78, 0xa0, 0x00, 0x00 },
 };
 
 // In a perfect world this would be `Unk_D_800E70A0 D_800E8600[][4]`
 Unk_D_800E70A0 D_800E8600[] = {
-    { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 },
-    { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 },
+    { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 }, { 0x78, 0x64, 0x00, 0x00 },
 
-    { 0x6e, 0x28, 0x00, 0x00 }, { 0x6e, 0xa0, 0x00, 0x00 },
-    { 0x6e, 0x28, 0x00, 0x00 }, { 0x6e, 0xa0, 0x00, 0x00 },
+    { 0x6e, 0x28, 0x00, 0x00 }, { 0x6e, 0xa0, 0x00, 0x00 }, { 0x6e, 0x28, 0x00, 0x00 }, { 0x6e, 0xa0, 0x00, 0x00 },
 
-    { 0x28, 0x64, 0x00, 0x00 }, { 0xb2, 0x64, 0x00, 0x00 },
-    { 0x28, 0x64, 0x00, 0x00 }, { 0xb2, 0x64, 0x00, 0x00 },
+    { 0x28, 0x64, 0x00, 0x00 }, { 0xb2, 0x64, 0x00, 0x00 }, { 0x28, 0x64, 0x00, 0x00 }, { 0xb2, 0x64, 0x00, 0x00 },
 
-    { 0x28, 0x28, 0x00, 0x00 }, { 0xb2, 0x28, 0x00, 0x00 },
-    { 0x28, 0xa0, 0x00, 0x00 }, { 0xb2, 0xa0, 0x00, 0x00 },
+    { 0x28, 0x28, 0x00, 0x00 }, { 0xb2, 0x28, 0x00, 0x00 }, { 0x28, 0xa0, 0x00, 0x00 }, { 0xb2, 0xa0, 0x00, 0x00 },
 };
 
 f64 exponent_by_squaring(f64 base, s32 exponent) {
@@ -1110,10 +1084,7 @@ f64 func_8009195C(f64 arg0) {
      *https://math.stackexchange.com/questions/3241906/continued-fraction-02-6-10-14-22n-1-frace-1e1
      **/
     temp_f2 =
-        2
-        + (temp_f2
-           / (six
-              + (temp_f2 / (ten + (temp_f2 / (fourteen + (temp_f2 / (eighteen + (temp_f2 / 22)))))))));
+        2 + (temp_f2 / (six + (temp_f2 / (ten + (temp_f2 / (fourteen + (temp_f2 / (eighteen + (temp_f2 / 22)))))))));
     return func_80091A6C((temp_f2 + arg0) / (temp_f2 - arg0), temp_f10);
 }
 #else
@@ -1153,7 +1124,7 @@ f64 func_80091A6C(f64 value, s32 exponent) {
  * arg2 appears to track the exponent in the power-of-2
  * that would undo the changes to arg0
  **/
-f64 func_80091AC0(f64 arg0, s32 *arg2) {
+f64 func_80091AC0(f64 arg0, s32* arg2) {
     const f64 const1 = 2.0;
     s32 exponent = 0;
 
@@ -1170,7 +1141,7 @@ f64 func_80091AC0(f64 arg0, s32 *arg2) {
     return arg0;
 }
 
-void swap_values(s32 *arg0, s32 *arg1) {
+void swap_values(s32* arg0, s32* arg1) {
     s32 temp;
 
     temp = *arg0;
@@ -1198,15 +1169,14 @@ void func_80091B78(void) {
     }
     if (gMenuSelection == LOGO_INTRO_MENU) {
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
-        set_segment_base_addr(
-            6, decompress_segments((u8 *) STARTUP_LOGO_ROM_START, (u8 *) STARTUP_LOGO_ROM_END));
+        set_segment_base_addr(6, decompress_segments((u8*) STARTUP_LOGO_ROM_START, (u8*) STARTUP_LOGO_ROM_END));
     }
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     // Hypothetically, this should be a ptr... But only hypothetically.
     D_8018D9B0 = get_next_available_memory_addr(0x000900B0);
-    D_8018D9B4 = (u8 *) get_next_available_memory_addr(0x0000CE00);
-    D_8018D9B8 = (u8 *) get_next_available_memory_addr(0x00012C00);
-    D_8018D9C0 = (struct_8018EE10_entry *) get_next_available_memory_addr(0x00001000);
+    D_8018D9B4 = (u8*) get_next_available_memory_addr(0x0000CE00);
+    D_8018D9B8 = (u8*) get_next_available_memory_addr(0x00012C00);
+    D_8018D9C0 = (struct_8018EE10_entry*) get_next_available_memory_addr(0x00001000);
     func_800AF9B0();
     D_8018EE0C = 0;
 
@@ -1260,8 +1230,7 @@ s32 func_80091D74(void) {
         return 0;
     }
 
-    if (osPfsNumFiles(&gControllerPak1FileHandle, &gControllerPak1NumFilesUsed,
-                      &gControllerPak1MaxWriteableFiles)) {
+    if (osPfsNumFiles(&gControllerPak1FileHandle, &gControllerPak1NumFilesUsed, &gControllerPak1MaxWriteableFiles)) {
         return 0;
     }
 
@@ -1289,8 +1258,7 @@ void func_80091EE4(void) {
         func_800B6708();
 
         for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
-            if ((D_8018EE10[temp_s0].ghostDataSaved != 0)
-                && (temp_s2 == D_8018EE10[temp_s0].courseIndex)) {
+            if ((D_8018EE10[temp_s0].ghostDataSaved != 0) && (temp_s2 == D_8018EE10[temp_s0].courseIndex)) {
                 func_800B64EC(temp_s0);
                 temp_s0 = 2;
                 D_8018EDFB = 0;
@@ -1303,9 +1271,9 @@ void func_80091FA4(void) {
     s32 i;
 
     //! @todo These sizes need to be sizeof() for shiftability if possible
-    D_8018D9B4 = (u8 *) get_next_available_memory_addr(0x00002800);
+    D_8018D9B4 = (u8*) get_next_available_memory_addr(0x00002800);
     D_8018D9B0 = get_next_available_memory_addr(0x000124F8);
-    D_8018D9B8 = (u8 *) get_next_available_memory_addr(0x00001000);
+    D_8018D9B8 = (u8*) get_next_available_memory_addr(0x00001000);
     D_8018D9BC = get_next_available_memory_addr(4);
 
     for (i = 0; i < 5; i++) {
@@ -1338,7 +1306,7 @@ void func_80091FA4(void) {
 }
 
 void func_80092148(void) {
-    struct Controller *controller = gControllerFive;
+    struct Controller* controller = gControllerFive;
     s32 isHeld;
 
     isHeld = controller->button ? 1 : 0;
@@ -1387,7 +1355,7 @@ void func_80092258(void) {
     }
 }
 
-void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
+void func_80092290(s32 arg0, s32* arg1, s32* arg2) {
     s32 temp_v1;
     s32 i;
     s32 idx;
@@ -1397,7 +1365,7 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
     s32 temp_t9;
     s32 temp_t0;
     s32 a, b, c, d;
-    Vtx *vtx;
+    Vtx* vtx;
 
     if ((arg0 < 4) || (arg0 >= 6)) {
         return;
@@ -1412,7 +1380,7 @@ void func_80092290(s32 arg0, s32 *arg1, s32 *arg2) {
     }
 
     for (i = 0; i < 3; i++) {
-        vtx = (Vtx *) segmented_to_virtual_dupe_2(D_800E84C0[i]);
+        vtx = (Vtx*) segmented_to_virtual_dupe_2(D_800E84C0[i]);
 
         temp_v1 = (*arg1 * 2) + 2;
 
@@ -1462,7 +1430,7 @@ void func_800925A0(void) {
 }
 
 void func_800925CC(void) {
-    struct_8018D9E0_entry *temp = find_8018D9E0_entry_dupe(0xAF);
+    struct_8018D9E0_entry* temp = find_8018D9E0_entry_dupe(0xAF);
     if (temp->state == 2) {
         temp->state = 3;
     }
@@ -1596,7 +1564,7 @@ void func_80092C80(void) {
 // Originally func_80092C90
 // Some kind of lookup function, seems to return an index to be used
 // to get a character's width in pixels
-s32 char_to_glyph_index(char *character) {
+s32 char_to_glyph_index(char* character) {
     s32 var_v1;
     s8 temp_v0;
 
@@ -1669,11 +1637,11 @@ s32 char_to_glyph_index(char *character) {
     return var_v1;
 }
 
-s32 func_80092DF8(char *arg) {
+s32 func_80092DF8(char* arg) {
     return func_80092E1C(arg) + 0x50;
 }
 
-s32 func_80092E1C(char *character) {
+s32 func_80092E1C(char* character) {
     s32 ret;
     UNUSED s32 test;
     u8 temp_t6;
@@ -1682,8 +1650,7 @@ s32 func_80092E1C(char *character) {
     temp_t6 = (*character + 0x80);
     // Huh?
     temp = temp_t6;
-    if (temp) {
-    }
+    if (temp) {}
     if ((temp > 0x20) && (temp < 0x2B)) {
         if (temp % 2) {
             ret = ((temp - 0x21) / 2) + 0x7B;
@@ -1709,7 +1676,7 @@ s32 func_80092E1C(char *character) {
     return ret;
 }
 
-s32 func_80092EE4(char *character) {
+s32 func_80092EE4(char* character) {
     u8 temp_t6;
     s32 var_v1;
 
@@ -1807,7 +1774,7 @@ s32 func_80092EE4(char *character) {
 }
 
 // Originally func_80093034
-s32 get_string_width(char *buffer) {
+s32 get_string_width(char* buffer) {
     s32 glyphIndex;
     s32 stringWidth = 0;
 
@@ -1833,13 +1800,13 @@ void set_text_color(s32 arg0) {
     gTextColor = arg0;
 }
 
-UNUSED void func_800930E4(s32 arg0, s32 arg1, char *arg2) {
+UNUSED void func_800930E4(s32 arg0, s32 arg1, char* arg2) {
     set_text_color(TEXT_BLUE);
     func_80093324(arg0, arg1, arg2, 0, 1.0, 1.0);
 }
 
 // "tracking" is a uniform spacing between all characters in a given word
-void print_text0(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 scaleY, s32 mode) {
+void print_text0(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY, s32 mode) {
     s32 stringWidth = 0;
     s32 glyphIndex;
 
@@ -1848,12 +1815,10 @@ void print_text0(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 
         do {
             glyphIndex = char_to_glyph_index(text);
             if (glyphIndex >= 0) {
-                func_80099184((MkTexture *) segmented_to_virtual_dupe(
-                    (const void *) gGlyphTextureLUT[glyphIndex]));
+                func_80099184((MkTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]));
                 gDisplayListHead =
                     print_letter(gDisplayListHead,
-                                 (MkTexture *) segmented_to_virtual_dupe(
-                                     (const void *) gGlyphTextureLUT[glyphIndex]),
+                                 (MkTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]),
                                  column + (stringWidth * scaleX), row, mode, scaleX, scaleY);
                 stringWidth += gGlyphDisplayWidth[glyphIndex] + tracking;
             } else if ((glyphIndex != -2) && (glyphIndex == -1)) {
@@ -1872,17 +1837,17 @@ void print_text0(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 
     gSPDisplayList(gDisplayListHead++, D_020077D8);
 }
 
-void func_80093324(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 scaleY) {
+void func_80093324(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text0(column, row, text, tracking, scaleX, scaleY, 1);
 }
 
-void func_80093358(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 scaleY) {
+void func_80093358(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text0(column, row, text, tracking, scaleX, scaleY, 2);
 }
 
 // "tracking" is a uniform spacing between all characters in a given word
-void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 scaleY, s32 arg6) {
-    char *temp_string = text;
+void print_text1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY, s32 arg6) {
+    char* temp_string = text;
     s32 stringWidth = 0;
     s32 glyphIndex;
     s32 sp60;
@@ -1930,9 +1895,8 @@ void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 
         glyphIndex = char_to_glyph_index(text);
         if (glyphIndex >= 0) {
             func_80099184(segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]));
-            gDisplayListHead =
-                print_letter(gDisplayListHead, segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]),
-                             column, row, sp60, scaleX, scaleY);
+            gDisplayListHead = print_letter(gDisplayListHead, segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]),
+                                            column, row, sp60, scaleX, scaleY);
             column = column + (s32) ((gGlyphDisplayWidth[glyphIndex] + tracking) * scaleX);
         } else if ((glyphIndex != -2) && (glyphIndex == -1)) {
             column = column + (s32) ((tracking + 7) * scaleX);
@@ -1949,24 +1913,24 @@ void print_text1(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 
     gSPDisplayList(gDisplayListHead++, D_020077D8);
 }
 
-void func_800936B8(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 scaleY) {
+void func_800936B8(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text1(column, row, text, tracking, scaleX, scaleY, 1);
 }
 
-void draw_text(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 scaleY) {
+void draw_text(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text1(column, row, text, tracking, scaleX, scaleY, 2);
 }
 
-void func_80093720(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 scaleY) {
+void func_80093720(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text1(column, row, text, tracking, scaleX, scaleY, 3);
 }
 
-void func_80093754(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 scaleY) {
+void func_80093754(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text1(column, row, text, tracking, scaleX, scaleY, 4);
 }
 
-void print_text2(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 scaleY, s32 arg6) {
-    MkTexture *glyphTexture;
+void print_text2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY, s32 arg6) {
+    MkTexture* glyphTexture;
     s32 characterWidth;
     s32 glyphIndex;
 
@@ -1975,12 +1939,11 @@ void print_text2(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 
         do {
             glyphIndex = char_to_glyph_index(text);
             if (glyphIndex >= 0) {
-                glyphTexture = (MkTexture *) segmented_to_virtual_dupe(
-                    (const void *) gGlyphTextureLUT[glyphIndex]);
+                glyphTexture = (MkTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]);
                 func_80099184(glyphTexture);
-                gDisplayListHead = print_letter(gDisplayListHead, glyphTexture,
-                                                column - (gGlyphDisplayWidth[glyphIndex] / 2), row,
-                                                arg6, scaleX, scaleY);
+                gDisplayListHead =
+                    print_letter(gDisplayListHead, glyphTexture, column - (gGlyphDisplayWidth[glyphIndex] / 2), row,
+                                 arg6, scaleX, scaleY);
                 if ((glyphIndex >= 0xD5) && (glyphIndex < 0xE0)) {
                     characterWidth = 0x20;
                 } else {
@@ -2004,11 +1967,11 @@ void print_text2(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 
     gSPDisplayList(gDisplayListHead++, D_020077D8);
 }
 
-void func_800939C8(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 scaleY) {
+void func_800939C8(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text2(column, row, text, tracking, scaleX, scaleY, 1);
 }
 
-void text_draw(s32 column, s32 row, char *text, s32 tracking, f32 scaleX, f32 scaleY) {
+void text_draw(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
     print_text2(column, row, text, tracking, scaleX, scaleY, 2);
 }
 
@@ -2093,8 +2056,7 @@ UNUSED void func_80093C90(void) {
 
 void func_80093C98(s32 arg0) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
-    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f,
-            1.0f);
+    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007F18);
@@ -2141,14 +2103,13 @@ void func_80093E60(void) {
 
 void func_80093F10(void) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
-    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f,
-            1.0f);
+    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007F18);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
     func_80092290(4, D_8018E850, D_8018E858);
-    func_80092290(5, (s32 *) &D_8018E850[1], (s32 *) &D_8018E858[1]);
+    func_80092290(5, (s32*) &D_8018E850[1], (s32*) &D_8018E858[1]);
     func_8009C918();
     func_80099A70();
     func_80099E54();
@@ -2163,13 +2124,12 @@ void func_80093F10(void) {
 void func_800940EC(s32 arg0) {
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
-    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f,
-            1.0f);
+    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007F18);
     func_80092290(4, D_8018E850, D_8018E858);
-    func_80092290(5, (s32 *) &D_8018E850[1], (s32 *) &D_8018E858[1]);
+    func_80092290(5, (s32*) &D_8018E850[1], (s32*) &D_8018E858[1]);
     func_80092148();
     func_80099A70();
     func_80099E54();
@@ -2182,7 +2142,7 @@ void func_800940EC(s32 arg0) {
 }
 
 void func_800942D0(void) {
-    Mtx *test;
+    Mtx* test;
     f32 var_f26;
     s32 var_s2;
     s32 thing;
@@ -2219,7 +2179,7 @@ void func_800942D0(void) {
     }
 }
 
-void func_80094660(struct GfxPool *arg0, UNUSED s32 arg1) {
+void func_80094660(struct GfxPool* arg0, UNUSED s32 arg1) {
     u16 perspNorm;
     move_segment_table_to_dmem();
     gDPSetTexturePersp(gDisplayListHead++, G_TP_PERSP);
@@ -2232,7 +2192,7 @@ void func_80094660(struct GfxPool *arg0, UNUSED s32 arg1) {
     gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
 }
 
-void func_800947B4(struct GfxPool *arg0, UNUSED s32 arg1) {
+void func_800947B4(struct GfxPool* arg0, UNUSED s32 arg1) {
     u16 perspNorm;
     move_segment_table_to_dmem();
     guPerspective(&arg0->mtxPersp[0], &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
@@ -2255,7 +2215,7 @@ void func_800947B4(struct GfxPool *arg0, UNUSED s32 arg1) {
     gSPDisplayList(gDisplayListHead++, D_02007650);
 }
 
-void func_80094A64(struct GfxPool *pool) {
+void func_80094A64(struct GfxPool* pool) {
     gMatrixHudCount = 0;
     gMatrixEffectCount = 0;
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_802B8880));
@@ -2524,8 +2484,7 @@ void func_80095574(void) {
 // Instead we depend on the fact that the result of draw_box_fill is left
 // in v0 which means it is returned, sort of.
 // Its also weird that the displayListHead argument goes entirely unused. What's up with that?
-Gfx *draw_flash_select_case(UNUSED Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry,
-                            s32 speed) {
+Gfx* draw_flash_select_case(UNUSED Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 speed) {
     s32 greyscale;
 
     greyscale = ((gCycleFlashMenu % speed) << 9) / speed;
@@ -2538,23 +2497,22 @@ Gfx *draw_flash_select_case(UNUSED Gfx *displayListHead, s32 ulx, s32 uly, s32 l
     }
 
 #if AVOID_UB
-    return gDisplayListHead = draw_box_fill(gDisplayListHead, ulx, uly, lrx, lry, greyscale, greyscale,
-                                            greyscale, 0xFF);
+    return gDisplayListHead =
+               draw_box_fill(gDisplayListHead, ulx, uly, lrx, lry, greyscale, greyscale, greyscale, 0xFF);
 #else
-    gDisplayListHead =
-        draw_box_fill(gDisplayListHead, ulx, uly, lrx, lry, greyscale, greyscale, greyscale, 0xFF);
+    gDisplayListHead = draw_box_fill(gDisplayListHead, ulx, uly, lrx, lry, greyscale, greyscale, greyscale, 0xFF);
 #endif
 }
 
-Gfx *draw_flash_select_case_slow(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
+Gfx* draw_flash_select_case_slow(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
     return draw_flash_select_case(displayListHead, ulx, uly, lrx, lry, 64);
 }
 
-Gfx *draw_flash_select_case_fast(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
+Gfx* draw_flash_select_case_fast(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
     return draw_flash_select_case(displayListHead, ulx, uly, lrx, lry, 4);
 }
 
-Gfx *func_800959F8(Gfx *displayListHead, Vtx *arg1) {
+Gfx* func_800959F8(Gfx* displayListHead, Vtx* arg1) {
     s32 index;
 
     if ((s32) gTextColor < TEXT_BLUE_GREEN_RED_CYCLE_1) {
@@ -2600,7 +2558,7 @@ typedef union {
 } TheWhyUnion;
 
 // Why... Why... Why... This function is so bad it's not going in the header.
-void func_80095AE0(Mtx2 *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+void func_80095AE0(Mtx2* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     TheWhyUnion sp14;
     TheWhyUnion sp10;
     TheWhyUnion spC;
@@ -2637,10 +2595,9 @@ void func_80095AE0(Mtx2 *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     arg0->u.f[3][1] = sp8.s[1];
 }
 
-Gfx *func_80095BD0(Gfx *displayListHead, u8 *arg1, f32 arg2, f32 arg3, u32 arg4, u32 arg5, f32 arg6,
-                   f32 arg7) {
-    Vtx *var_a1;
-    Mtx *sp28;
+Gfx* func_80095BD0(Gfx* displayListHead, u8* arg1, f32 arg2, f32 arg3, u32 arg4, u32 arg5, f32 arg6, f32 arg7) {
+    Vtx* var_a1;
+    Mtx* sp28;
 
     // A match is a match, but why are goto's required here?
     if (gMatrixEffectCount >= 0x2F7) {
@@ -2659,9 +2616,8 @@ func_80095BD0_label2:
     gSPMatrix(displayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gMatrixEffectCount += 1;
-    gDPLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4, arg5, 0,
-                          G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,
-                          G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureTile_4b(displayListHead++, arg1, G_IM_FMT_I, arg4, 0, 0, 0, arg4, arg5, 0, G_TX_NOMIRROR | G_TX_WRAP,
+                          G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
     switch (arg4) {
         default:
             var_a1 = &D_02007BB8[18];
@@ -2680,8 +2636,8 @@ func_80095BD0_label2:
     return func_800959F8(displayListHead, var_a1);
 }
 
-Gfx *func_80095E10(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6,
-                   s32 arg7, s32 arg8, s32 arg9, u8 *argA, u32 argB, u32 argC) {
+Gfx* func_80095E10(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8,
+                   s32 arg9, u8* argA, u32 argB, u32 argC) {
     u32 var_a1_2 = arg4;
     u32 var_s3 = arg5;
     s32 sp7C;
@@ -2760,9 +2716,8 @@ Gfx *func_80095E10(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
             gDPLoadTextureTile(displayListHead++, argA, arg1, G_IM_SIZ_16b, argB, 0, var_a1_2, var_s3,
                                var_a1_2 + var_s2, var_s3 + var_s4, 0, G_TX_NOMIRROR | G_TX_WRAP,
                                G_TX_NOMIRROR | G_TX_WRAP, sp68, sp64, G_TX_NOLOD, G_TX_NOLOD);
-            gSPTextureRectangle(displayListHead++, arg8 * 4, arg9 * 4, (arg8 + var_s2) * 4,
-                                (arg9 + var_s4) * 4, 0, (var_a1_2 * 32) & 0xFFFF,
-                                (var_s3 * 32) & 0xFFFF, arg2, arg3);
+            gSPTextureRectangle(displayListHead++, arg8 * 4, arg9 * 4, (arg8 + var_s2) * 4, (arg9 + var_s4) * 4, 0,
+                                (var_a1_2 * 32) & 0xFFFF, (var_s3 * 32) & 0xFFFF, arg2, arg3);
 
             arg8 += var_t0;
         }
@@ -2773,8 +2728,8 @@ Gfx *func_80095E10(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
     return displayListHead;
 }
 
-Gfx *func_800963F0(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, f32 arg4, f32 arg5, s32 arg6,
-                   s32 arg7, s32 arg8, s32 arg9, s32 argA, s32 argB, u8 *argC, u32 argD, u32 argE) {
+Gfx* func_800963F0(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, f32 arg4, f32 arg5, s32 arg6, s32 arg7, s32 arg8,
+                   s32 arg9, s32 argA, s32 argB, u8* argC, u32 argD, u32 argE) {
     u32 var_a1_2 = arg6;
     u32 var_s3 = arg7;
     s32 sp7C;
@@ -2857,11 +2812,11 @@ Gfx *func_800963F0(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, f32 arg4, 
             }
             a = var_s2 * arg4;
 
-            gDPLoadTextureTile(displayListHead++, argC, arg1, G_IM_SIZ_16b, argD, argE, var_a1_2,
-                               var_s3, var_a1_2 + var_s2, var_s3 + var_s4, 0, G_TX_NOMIRROR | G_TX_WRAP,
+            gDPLoadTextureTile(displayListHead++, argC, arg1, G_IM_SIZ_16b, argD, argE, var_a1_2, var_s3,
+                               var_a1_2 + var_s2, var_s3 + var_s4, 0, G_TX_NOMIRROR | G_TX_WRAP,
                                G_TX_NOMIRROR | G_TX_WRAP, sp68, sp64, G_TX_NOLOD, G_TX_NOLOD);
-            gSPTextureRectangle(displayListHead++, argA * 4, argB * 4, (argA + a) * 4, (argB + b) * 4,
-                                0, (var_a1_2 * 32) & 0xFFFF, (var_s3 * 32) & 0xFFFF, arg2, arg3);
+            gSPTextureRectangle(displayListHead++, argA * 4, argB * 4, (argA + a) * 4, (argB + b) * 4, 0,
+                                (var_a1_2 * 32) & 0xFFFF, (var_s3 * 32) & 0xFFFF, arg2, arg3);
 
             argA += var_t0 * arg4;
         }
@@ -2887,7 +2842,7 @@ extern u8 D_0B002A00[];
 // Try locking the word at `8018DC80` to see something like 0x20 just before confirming character
 // selection to make it last longer
 
-Gfx *func_80096CD8(Gfx *displayListHead, s32 arg1, s32 arg2, u32 width, u32 arg4) {
+Gfx* func_80096CD8(Gfx* displayListHead, s32 arg1, s32 arg2, u32 width, u32 arg4) {
     u32 var_s1_3;
     u32 var_fp;
     u32 var_v0;
@@ -2964,14 +2919,12 @@ Gfx *func_80096CD8(Gfx *displayListHead, s32 arg1, s32 arg2, u32 width, u32 arg4
             } else {
                 var_a1 = var_ra;
             }
-            gDPLoadTextureTile(displayListHead++, D_0B002A00 + (random_int(128) * 2), G_IM_FMT_IA,
-                               G_IM_SIZ_16b, width, arg4, var_s1_3, var_fp, var_s1_3 + var_a1,
-                               var_fp + var_v0, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP,
-                               masks, maskt, G_TX_NOLOD, G_TX_NOLOD);
+            gDPLoadTextureTile(displayListHead++, D_0B002A00 + (random_int(128) * 2), G_IM_FMT_IA, G_IM_SIZ_16b, width,
+                               arg4, var_s1_3, var_fp, var_s1_3 + var_a1, var_fp + var_v0, 0, G_TX_NOMIRROR | G_TX_WRAP,
+                               G_TX_NOMIRROR | G_TX_WRAP, masks, maskt, G_TX_NOLOD, G_TX_NOLOD);
 
             gSPTextureRectangle(displayListHead++, var_s1_3 * 4, var_fp * 4, (var_s1_3 + var_a1) * 4,
-                                (var_fp + var_v0) * 4, 0, (var_s1_3 * 32) & 0xFFFF,
-                                (var_fp * 32) & 0xFFFF, 1024, 1024);
+                                (var_fp + var_v0) * 4, 0, (var_s1_3 * 32) & 0xFFFF, (var_fp * 32) & 0xFFFF, 1024, 1024);
         }
     }
 
@@ -2982,8 +2935,8 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_80096CD8.s")
 #endif
 
 #ifdef NON_MATCHING
-Gfx *func_80097274(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6,
-                   s32 arg7, s32 arg8, s32 arg9, u16 *argA, u32 argB, u32 argC, s32 argD) {
+Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8,
+                   s32 arg9, u16* argA, u32 argB, u32 argC, s32 argD) {
     u32 var_a1_2 = arg4;
     u32 var_s3 = arg5;
     s32 sp7C;
@@ -2999,8 +2952,8 @@ Gfx *func_80097274(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
     gDPSetCycleType(displayListHead++, G_CYC_2CYCLE);
     gDPSetTextureLOD(displayListHead++, G_TL_TILE);
     gDPSetPrimColor(displayListHead++, 0, 0, 0, 0, 0, gGlobalTimer % 256);
-    gDPSetCombineLERP(displayListHead++, TEXEL1, TEXEL0, PRIMITIVE_ALPHA, TEXEL0, TEXEL1, TEXEL0,
-                      PRIMITIVE, TEXEL0, 0, 0, 0, COMBINED, 0, 0, 0, COMBINED);
+    gDPSetCombineLERP(displayListHead++, TEXEL1, TEXEL0, PRIMITIVE_ALPHA, TEXEL0, TEXEL1, TEXEL0, PRIMITIVE, TEXEL0, 0,
+                      0, 0, COMBINED, 0, 0, 0, COMBINED);
 
     while (var_t0 < argB) {
         var_t0 *= 2;
@@ -3067,18 +3020,16 @@ Gfx *func_80097274(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
                 var_s2 = var_t0;
             }
 
-            gDPLoadMultiTile(displayListHead++, arg1, 0, G_TX_RENDERTILE, arg2, G_IM_SIZ_16b, argB,
-                             argC, var_a1_2, var_s3, var_a1_2 + var_s2, var_s3 + var_s4, 0, G_TX_WRAP,
-                             G_TX_WRAP, sp68, sp64, G_TX_NOLOD, G_TX_NOLOD);
-
-            gDPLoadMultiTile(displayListHead++, D_0B002A00 + random_int(128) * 2, 256,
-                             G_TX_RENDERTILE + 1, arg2, G_IM_SIZ_16b, argB, argC, var_a1_2, var_s3,
-                             var_a1_2 + var_s2, var_s3 + var_s4, 0, G_TX_WRAP, G_TX_WRAP, sp68, sp64,
+            gDPLoadMultiTile(displayListHead++, arg1, 0, G_TX_RENDERTILE, arg2, G_IM_SIZ_16b, argB, argC, var_a1_2,
+                             var_s3, var_a1_2 + var_s2, var_s3 + var_s4, 0, G_TX_WRAP, G_TX_WRAP, sp68, sp64,
                              G_TX_NOLOD, G_TX_NOLOD);
 
-            gSPTextureRectangle(displayListHead++, arg8 * 4, arg9 * 4, (arg8 + var_s2) * 4,
-                                (arg9 + var_s4) * 4, 0, (var_a1_2 * 32) & 0xFFFF,
-                                (var_s3 * 32) & 0xFFFF, arg2, arg3);
+            gDPLoadMultiTile(displayListHead++, D_0B002A00 + random_int(128) * 2, 256, G_TX_RENDERTILE + 1, arg2,
+                             G_IM_SIZ_16b, argB, argC, var_a1_2, var_s3, var_a1_2 + var_s2, var_s3 + var_s4, 0,
+                             G_TX_WRAP, G_TX_WRAP, sp68, sp64, G_TX_NOLOD, G_TX_NOLOD);
+
+            gSPTextureRectangle(displayListHead++, arg8 * 4, arg9 * 4, (arg8 + var_s2) * 4, (arg9 + var_s4) * 4, 0,
+                                (var_a1_2 * 32) & 0xFFFF, (var_s3 * 32) & 0xFFFF, arg2, arg3);
 
             arg8 += var_t0;
         }
@@ -3094,18 +3045,18 @@ Gfx *func_80097274(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80097274.s")
 #endif
 
-Gfx *func_80097A14(Gfx *displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6,
-                   s32 arg7, u8 *arg8, u32 arg9, u32 argA) {
+Gfx* func_80097A14(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, u8* arg8,
+                   u32 arg9, u32 argA) {
     gDPPipeSync(displayListHead++);
     gDPSetCycleType(displayListHead++, G_CYC_COPY);
-    displayListHead = func_80095E10(displayListHead, arg1, 0x00001000, 0x00000400, arg2, arg3, arg4,
-                                    arg5, arg6, arg7, arg8, arg9, argA);
+    displayListHead = func_80095E10(displayListHead, arg1, 0x00001000, 0x00000400, arg2, arg3, arg4, arg5, arg6, arg7,
+                                    arg8, arg9, argA);
     gDPPipeSync(displayListHead++);
     gDPSetCycleType(displayListHead++, G_CYC_1CYCLE);
     return displayListHead;
 }
 
-Gfx *func_80097AE4(Gfx *displayListHead, s8 fmt, s32 arg2, s32 arg3, u8 *arg4, s32 width) {
+Gfx* func_80097AE4(Gfx* displayListHead, s8 fmt, s32 arg2, s32 arg3, u8* arg4, s32 width) {
     s32 i;
     s32 temp;
     s32 arg2Copy;
@@ -3120,19 +3071,17 @@ Gfx *func_80097AE4(Gfx *displayListHead, s8 fmt, s32 arg2, s32 arg3, u8 *arg4, s
     for (i = 0; i < 64; i += 32) {
         temp = 0;
         dsdx = 0x8000 / (32 - width);
-        gDPLoadTextureTile(displayListHead++, arg4, fmt, G_IM_SIZ_16b, 64, 64, temp, i, temp + 32,
-                           i + 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5,
-                           G_TX_NOLOD, G_TX_NOLOD);
-        gSPTextureRectangle(displayListHead++, (arg2 + width) << 2, arg3 << 2, (arg2 + 32) << 2,
-                            (arg3 + 32) << 2, 0, 0, 0, dsdx, 1024);
+        gDPLoadTextureTile(displayListHead++, arg4, fmt, G_IM_SIZ_16b, 64, 64, temp, i, temp + 32, i + 32, 0,
+                           G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
+        gSPTextureRectangle(displayListHead++, (arg2 + width) << 2, arg3 << 2, (arg2 + 32) << 2, (arg3 + 32) << 2, 0, 0,
+                            0, dsdx, 1024);
 
         arg2 += 32;
 
-        gDPLoadTextureTile(displayListHead++, arg4, fmt, G_IM_SIZ_16b, 64, 64, temp + 32, i, temp + 64,
-                           i + 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5,
-                           G_TX_NOLOD, G_TX_NOLOD);
-        gSPTextureRectangle(displayListHead++, arg2 << 2, arg3 << 2, ((arg2 - width) + 32) << 2,
-                            (arg3 + 32) << 2, 0, 0, 0, dsdx, 1024);
+        gDPLoadTextureTile(displayListHead++, arg4, fmt, G_IM_SIZ_16b, 64, 64, temp + 32, i, temp + 64, i + 32, 0,
+                           G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
+        gSPTextureRectangle(displayListHead++, arg2 << 2, arg3 << 2, ((arg2 - width) + 32) << 2, (arg3 + 32) << 2, 0, 0,
+                            0, dsdx, 1024);
 
         arg2 = arg2Copy;
         arg3 += 32;
@@ -3140,8 +3089,8 @@ Gfx *func_80097AE4(Gfx *displayListHead, s8 fmt, s32 arg2, s32 arg3, u8 *arg4, s
     return displayListHead;
 }
 
-Gfx *func_80097E58(Gfx *displayListHead, s8 fmt, u32 arg2, u32 arg3, u32 arg4, u32 arg5, s32 arg6,
-                   s32 arg7, u8 *someTexture, u32 arg9, u32 argA, s32 width) {
+Gfx* func_80097E58(Gfx* displayListHead, s8 fmt, u32 arg2, u32 arg3, u32 arg4, u32 arg5, s32 arg6, s32 arg7,
+                   u8* someTexture, u32 arg9, u32 argA, s32 width) {
     u32 ult;
     u32 temp;
     s32 arg6Copy;
@@ -3171,28 +3120,26 @@ Gfx *func_80097E58(Gfx *displayListHead, s8 fmt, u32 arg2, u32 arg3, u32 arg4, u
         }
         temp_v1 = ((32 * lrs) << 10) / (lrs * (32 - width));
 
-        gDPLoadTextureTile(displayListHead++, someTexture, fmt, G_IM_SIZ_16b, arg9, argA, temp, ult,
-                           temp + lrs, ult + var_s2, 0, G_TX_NOMIRROR | G_TX_WRAP,
-                           G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
-        gSPTextureRectangle(displayListHead++, (arg6 + lrs * width / 32) << 2, arg7 << 2,
-                            (arg6 + lrs) << 2, (arg7 + var_s2) << 2, 0, 0, (ult << 5) & 0xFFFF, temp_v1,
-                            1024);
+        gDPLoadTextureTile(displayListHead++, someTexture, fmt, G_IM_SIZ_16b, arg9, argA, temp, ult, temp + lrs,
+                           ult + var_s2, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD,
+                           G_TX_NOLOD);
+        gSPTextureRectangle(displayListHead++, (arg6 + lrs * width / 32) << 2, arg7 << 2, (arg6 + lrs) << 2,
+                            (arg7 + var_s2) << 2, 0, 0, (ult << 5) & 0xFFFF, temp_v1, 1024);
         arg6 += lrs;
         temp_v1 = ((32 * spDC) << 10) / (spDC * (32 - width));
-        gDPLoadTextureTile(displayListHead++, someTexture, fmt, G_IM_SIZ_16b, arg9, argA, temp + lrs,
-                           ult, temp + arg9, ult + var_s2, 0, G_TX_NOMIRROR | G_TX_WRAP,
-                           G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
-        gSPTextureRectangle(displayListHead++, arg6 << 2, arg7 << 2,
-                            (arg6 + spDC * (32 - width) / 32) << 2, (arg7 + var_s2) << 2, 0,
-                            (lrs << 5) & 0xFFFF, (ult << 5) & 0xFFFF, temp_v1, 1024);
+        gDPLoadTextureTile(displayListHead++, someTexture, fmt, G_IM_SIZ_16b, arg9, argA, temp + lrs, ult, temp + arg9,
+                           ult + var_s2, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD,
+                           G_TX_NOLOD);
+        gSPTextureRectangle(displayListHead++, arg6 << 2, arg7 << 2, (arg6 + spDC * (32 - width) / 32) << 2,
+                            (arg7 + var_s2) << 2, 0, (lrs << 5) & 0xFFFF, (ult << 5) & 0xFFFF, temp_v1, 1024);
         arg6 = arg6Copy;
         arg7 += temp2;
     }
     return displayListHead;
 }
 
-Gfx *func_80098558(Gfx *displayListHead, u32 arg1, u32 arg2, u32 arg3, u32 arg4, u32 arg5, u32 arg6,
-                   UNUSED s32 arg7, s32 arg8) {
+Gfx* func_80098558(Gfx* displayListHead, u32 arg1, u32 arg2, u32 arg3, u32 arg4, u32 arg5, u32 arg6, UNUSED s32 arg7,
+                   s32 arg8) {
     u32 var_a3;
     u32 var_v0;
     s32 arg5Copy;
@@ -3200,12 +3147,11 @@ Gfx *func_80098558(Gfx *displayListHead, u32 arg1, u32 arg2, u32 arg3, u32 arg4,
     arg5Copy = arg5;
     for (var_v0 = arg2; var_v0 < arg4; var_v0 += 0x20) {
         for (var_a3 = arg1; var_a3 < arg3; var_a3 += 0x20) {
-            gDPLoadTextureTile(displayListHead++, D_8018D9B0, G_IM_FMT_RGBA, G_IM_SIZ_16b, arg8, 0,
-                               var_a3, var_v0, var_a3 + 0x20, var_v0 + 0x20, 0,
-                               G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD,
-                               G_TX_NOLOD);
-            gSPTextureRectangle(displayListHead++, arg5 << 2, arg6 << 2, (arg5 + 0x20) << 2,
-                                (arg6 + 0x20) << 2, 0, 0, 0, 1024, 1024);
+            gDPLoadTextureTile(displayListHead++, D_8018D9B0, G_IM_FMT_RGBA, G_IM_SIZ_16b, arg8, 0, var_a3, var_v0,
+                               var_a3 + 0x20, var_v0 + 0x20, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5,
+                               5, G_TX_NOLOD, G_TX_NOLOD);
+            gSPTextureRectangle(displayListHead++, arg5 << 2, arg6 << 2, (arg5 + 0x20) << 2, (arg6 + 0x20) << 2, 0, 0,
+                                0, 1024, 1024);
             arg5 += 0x20;
         }
         arg5 = arg5Copy;
@@ -3214,8 +3160,8 @@ Gfx *func_80098558(Gfx *displayListHead, u32 arg1, u32 arg2, u32 arg3, u32 arg4,
     return displayListHead;
 }
 
-Gfx *func_800987D0(Gfx *displayListHead, u32 arg1, u32 arg2, u32 width, u32 height, s32 column, s32 row,
-                   UNUSED u8 *arg7, u32 textureWidth, UNUSED s32 textureHeight) {
+Gfx* func_800987D0(Gfx* displayListHead, u32 arg1, u32 arg2, u32 width, u32 height, s32 column, s32 row,
+                   UNUSED u8* arg7, u32 textureWidth, UNUSED s32 textureHeight) {
     s32 var_a2;
     s32 var_v0_2;
     s32 columnCopy;
@@ -3235,16 +3181,13 @@ Gfx *func_800987D0(Gfx *displayListHead, u32 arg1, u32 arg2, u32 width, u32 heig
     columnCopy = column;
     for (var_v0_2 = arg2; (u32) var_v0_2 < height; var_v0_2 += 0x20) {
         for (var_a2 = arg1; (u32) var_a2 < width; var_a2 += 0x20) {
-            gDPLoadTextureTile(displayListHead++, D_8018D9B0, G_IM_FMT_RGBA, G_IM_SIZ_16b, textureWidth,
-                               0, var_a2, var_v0_2, var_a2 + 0x20, var_v0_2 + 0x20, 0,
-                               G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD,
-                               G_TX_NOLOD);
+            gDPLoadTextureTile(displayListHead++, D_8018D9B0, G_IM_FMT_RGBA, G_IM_SIZ_16b, textureWidth, 0, var_a2,
+                               var_v0_2, var_a2 + 0x20, var_v0_2 + 0x20, 0, G_TX_NOMIRROR | G_TX_WRAP,
+                               G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
             temp_f6 = (temp_f18 * ((temp_f0 * (column - 0xA0)) + (temp_f24 * (row - 0x78)))) + 160.0f;
-            temp_f4_2 =
-                (temp_f18 * ((-temp_f24 * (column - 0xA0)) + (temp_f0 * (row - 0x78)))) + 120.0f;
-            gSPTextureRectangle(displayListHead++, temp_f6 * 4, temp_f4_2 * 4,
-                                ((temp_f6 + 0x20) ^ 0) * 4, ((temp_f4_2 + 0x20) ^ 0) * 4, 0, 0, 0, 1024,
-                                1024);
+            temp_f4_2 = (temp_f18 * ((-temp_f24 * (column - 0xA0)) + (temp_f0 * (row - 0x78)))) + 120.0f;
+            gSPTextureRectangle(displayListHead++, temp_f6 * 4, temp_f4_2 * 4, ((temp_f6 + 0x20) ^ 0) * 4,
+                                ((temp_f4_2 + 0x20) ^ 0) * 4, 0, 0, 0, 1024, 1024);
             column += 0x20;
         }
         column = columnCopy;
@@ -3254,8 +3197,7 @@ Gfx *func_800987D0(Gfx *displayListHead, u32 arg1, u32 arg2, u32 width, u32 heig
 }
 
 // draw a box filled with a solid color
-Gfx *draw_box_fill(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 red, s32 green,
-                   s32 blue, s32 alpha) {
+Gfx* draw_box_fill(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32 red, s32 green, s32 blue, s32 alpha) {
     red &= 0xFF;
     green &= 0xFF;
     blue &= 0xFF;
@@ -3285,16 +3227,15 @@ Gfx *draw_box_fill(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, s32
         lry = 0xEF;
     }
     gSPDisplayList(displayListHead++, D_02008030);
-    gDPSetFillColor(displayListHead++, (GPACK_RGBA5551(red, green, (u32) blue, alpha) << 0x10
-                                        | GPACK_RGBA5551(red, green, (u32) blue, alpha)));
+    gDPSetFillColor(displayListHead++, (GPACK_RGBA5551(red, green, (u32) blue, alpha) << 0x10 |
+                                        GPACK_RGBA5551(red, green, (u32) blue, alpha)));
     gDPFillRectangle(displayListHead++, ulx, uly, lrx, lry);
     gSPDisplayList(displayListHead++, D_02008058);
     return displayListHead;
 }
 
 // draw a box with a solid outline
-Gfx *draw_box(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32 red, u32 green, u32 blue,
-              u32 alpha) {
+Gfx* draw_box(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32 red, u32 green, u32 blue, u32 alpha) {
     red &= 0xFF;
     green &= 0xFF;
     blue &= 0xFF;
@@ -3330,29 +3271,27 @@ Gfx *draw_box(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry, u32 red,
     return displayListHead;
 }
 
-Gfx *func_80098FC8(Gfx *displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
+Gfx* func_80098FC8(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
     return draw_box_fill(displayListHead, ulx, uly, lrx, lry, 0, 0, 0, 0xFF);
 }
 
-void dma_copy_base_729a30(u64 *arg0, size_t nbytes, void *vaddr) {
+void dma_copy_base_729a30(u64* arg0, size_t nbytes, void* vaddr) {
     OSIoMesg sp30;
     OSMesg sp2C;
 
     osInvalDCache(vaddr, nbytes);
-    osPiStartDma(&sp30, OS_MESG_PRI_NORMAL, OS_READ,
-                 (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(arg0)], vaddr, nbytes,
-                 &gDmaMesgQueue);
+    osPiStartDma(&sp30, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(arg0)],
+                 vaddr, nbytes, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp2C, OS_MESG_BLOCK);
 }
 
-void dma_copy_base_7fa3c0(u64 *arg0, size_t nbytes, void *vaddr) {
+void dma_copy_base_7fa3c0(u64* arg0, size_t nbytes, void* vaddr) {
     OSIoMesg sp30;
     OSMesg sp2C;
 
     osInvalDCache(vaddr, nbytes);
-    osPiStartDma(&sp30, OS_MESG_PRI_NORMAL, OS_READ,
-                 (uintptr_t) &_textures_0bSegmentRomStart[SEGMENT_OFFSET(arg0)], vaddr, nbytes,
-                 &gDmaMesgQueue);
+    osPiStartDma(&sp30, OS_MESG_PRI_NORMAL, OS_READ, (uintptr_t) &_textures_0bSegmentRomStart[SEGMENT_OFFSET(arg0)],
+                 vaddr, nbytes, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp2C, OS_MESG_BLOCK);
 }
 
@@ -3367,33 +3306,33 @@ void func_80099110(void) {
  * @param addr
  * @return void*
  */
-void *segmented_to_virtual_dupe(const void *addr) {
+void* segmented_to_virtual_dupe(const void* addr) {
     size_t segment = (uintptr_t) addr >> 24;
     size_t offset = (uintptr_t) addr & 0x00FFFFFF;
 
-    return (void *) ((gSegmentTable[segment] + offset) + 0x80000000);
+    return (void*) ((gSegmentTable[segment] + offset) + 0x80000000);
 }
 
 /**
  * @copydoc segmented_to_virtual_dupe
  */
-void *segmented_to_virtual_dupe_2(const void *addr) {
+void* segmented_to_virtual_dupe_2(const void* addr) {
     size_t segment = (uintptr_t) addr >> 24;
     size_t offset = (uintptr_t) addr & 0x00FFFFFF;
 
-    return (void *) ((gSegmentTable[segment] + offset) + 0x80000000);
+    return (void*) ((gSegmentTable[segment] + offset) + 0x80000000);
 }
 
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/NAZ12
 // Register allocation nonsense
-void func_80099184(MkTexture *arg0) {
+void func_80099184(MkTexture* arg0) {
     u16 var_a1_2;
     s32 var_v0;
     s32 var_a1;
     UNUSED s32 temp_s3;
-    MkTexture *var_s1;
-    UNUSED struct_8018E118_entry *thing;
+    MkTexture* var_s1;
+    UNUSED struct_8018E118_entry* thing;
 
     var_s1 = segmented_to_virtual_dupe(arg0);
     while (var_s1->textureData != NULL) {
@@ -3416,7 +3355,7 @@ void func_80099184(MkTexture *arg0) {
                     var_a1_2 = ((var_a1_2 / 8) * 8) + 8;
                 }
                 dma_copy_base_729a30(var_s1->textureData, var_a1_2, D_8018D9B4);
-                mio0decode(D_8018D9B4, (u8 *) &D_8018D9B0[gD_8018E118TotalSize]);
+                mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[gD_8018E118TotalSize]);
             } else {
                 dma_copy_base_729a30(var_s1->textureData, var_s1->height * var_s1->width * 2,
                                      &D_8018D9B0[gD_8018E118TotalSize]);
@@ -3441,13 +3380,13 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099184.s")
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/O2tkD
 // Register allocation nonsense
-void func_80099394(MkTexture *arg0) {
+void func_80099394(MkTexture* arg0) {
     UNUSED u16 var_a1_2;
     s32 var_v0;
     s32 var_a1;
     UNUSED s32 temp_s3;
-    MkTexture *var_s1;
-    struct_8018E118_entry *thing;
+    MkTexture* var_s1;
+    struct_8018E118_entry* thing;
 
     var_s1 = segmented_to_virtual_dupe(arg0);
     while (var_s1->textureData != NULL) {
@@ -3461,8 +3400,7 @@ void func_80099394(MkTexture *arg0) {
         }
         if (var_a1 == 0) {
             if (var_s1->type == 5) {
-                dma_copy_base_729a30(var_s1->textureData,
-                                     (u32) ((s32) (var_s1->height * var_s1->width) / 2),
+                dma_copy_base_729a30(var_s1->textureData, (u32) ((s32) (var_s1->height * var_s1->width) / 2),
                                      &D_8018D9B0[gD_8018E118TotalSize]);
             }
 
@@ -3485,13 +3423,13 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099394.s")
 #ifdef NON_MATCHING
 // Register allocation nonsense
 // https://decomp.me/scratch/Wv2MX
-void func_8009952C(MkTexture *arg0) {
+void func_8009952C(MkTexture* arg0) {
     UNUSED u16 var_a1_2;
     s32 var_v0;
     s32 var_a1;
     UNUSED s32 temp_s3;
-    MkTexture *var_s1;
-    struct_8018E118_entry *thing;
+    MkTexture* var_s1;
+    struct_8018E118_entry* thing;
 
     var_s1 = segmented_to_virtual_dupe(arg0);
     while (var_s1->textureData != NULL) {
@@ -3505,7 +3443,7 @@ void func_8009952C(MkTexture *arg0) {
         }
         if (var_a1 == 0) {
             dma_copy_base_729a30(var_s1->textureData, 0x00008000U, D_8018D9B4);
-            mio0decode(D_8018D9B4, (u8 *) &D_8018D9B0[gD_8018E118TotalSize]);
+            mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[gD_8018E118TotalSize]);
 
             thing = &D_8018E118[gNumD_8018E118Entries];
             thing->textureData = var_s1->textureData;
@@ -3523,20 +3461,20 @@ void func_8009952C(MkTexture *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009952C.s")
 #endif
 
-void func_8009969C(MkTexture *arg0) {
+void func_8009969C(MkTexture* arg0) {
     func_800996BC(arg0, 1);
 }
 
 #ifdef NON_MATCHING
 // Register allocation nonsense
 // https://decomp.me/scratch/hwAAp
-void func_800996BC(MkTexture *arg0, s32 arg1) {
+void func_800996BC(MkTexture* arg0, s32 arg1) {
     u16 var_a1_2;
     s32 var_v0;
     s32 var_a1;
     u8 var_v0_2;
-    MkTexture *var_s1;
-    struct_8018E118_entry *thing;
+    MkTexture* var_s1;
+    struct_8018E118_entry* thing;
 
     var_s1 = segmented_to_virtual_dupe(arg0);
     while (var_s1->textureData != NULL) {
@@ -3570,7 +3508,7 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
             switch (arg1) { /* switch 1; irregular */
                 case -1:    /* switch 1 */
                 case 1:     /* switch 1 */
-                    mio0decode(D_8018D9B4, (u8 *) &D_8018D9B0[gD_8018E118TotalSize]);
+                    mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[gD_8018E118TotalSize]);
                     break;
                 case 0: /* switch 1 */
                 case 2: /* switch 1 */
@@ -3579,10 +3517,8 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
                     } else {
                         var_v0_2 = 1;
                     }
-                    if (1) {
-                    }
-                    tkmk00decode(D_8018D9B4, D_8018D9B8, (u8 *) &D_8018D9B0[gD_8018E118TotalSize],
-                                 var_v0_2);
+                    if (1) {}
+                    tkmk00decode(D_8018D9B4, D_8018D9B8, (u8*) &D_8018D9B0[gD_8018E118TotalSize], var_v0_2);
                     break;
             }
             thing = &D_8018E118[gNumD_8018E118Entries];
@@ -3600,10 +3536,10 @@ void func_800996BC(MkTexture *arg0, s32 arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800996BC.s")
 #endif
 
-void func_80099958(MkTexture *arg0, s32 arg1, s32 arg2) {
+void func_80099958(MkTexture* arg0, s32 arg1, s32 arg2) {
     u16 var_a1;
-    UNUSED u8 *thing;
-    MkTexture *temp_v0;
+    UNUSED u8* thing;
+    MkTexture* temp_v0;
 
     temp_v0 = segmented_to_virtual_dupe(arg0);
     while (temp_v0->textureData != NULL) {
@@ -3626,12 +3562,11 @@ void func_80099958(MkTexture *arg0, s32 arg1, s32 arg2) {
 void func_80099A70(void) {
     s32 i;
     D_8018E060[0].texture = NULL;
-    for (i = 0; i < D_8018E060_SIZE; i++) {
-    }
+    for (i = 0; i < D_8018E060_SIZE; i++) {}
 }
 
-void func_80099A94(MkTexture *arg0, s32 arg1) {
-    struct_8018E060_entry *var_v1;
+void func_80099A94(MkTexture* arg0, s32 arg1) {
+    struct_8018E060_entry* var_v1;
 
     var_v1 = &D_8018E060[0];
     while (var_v1->texture != NULL) {
@@ -3652,10 +3587,10 @@ void func_80099AEC(void) {
     s32 huh;
     OSIoMesg sp68;
     OSMesg sp64;
-    UNUSED u8 *test;
+    UNUSED u8* test;
     s32 sp60;
-    MkTexture *temp_s2;
-    struct_8018E060_entry *var_s1;
+    MkTexture* temp_s2;
+    struct_8018E060_entry* var_s1;
 
     if (gGamestate == 4) {
         sp60 = 0x00000500;
@@ -3680,8 +3615,7 @@ void func_80099AEC(void) {
         var_s0 = ((var_s0 / 8) * 8) + 8;
     }
     osInvalDCache(D_8018D9B4, var_s0);
-    osPiStartDma(&sp68, 0, 0,
-                 (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
+    osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
                  D_8018D9B4, var_s0, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     while (1) {
@@ -3699,11 +3633,10 @@ void func_80099AEC(void) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
             osInvalDCache(D_8018D9B4 + sp60 * 4, var_s0);
-            osPiStartDma(&sp68, 0, 0,
-                         (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
+            osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
                          D_8018D9B4 + sp60 * 4, var_s0, &gDmaMesgQueue);
         }
-        mio0decode(D_8018D9B4, (u8 *) &D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
+        mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
         var_s1->texture = NULL;
         var_s1++;
         if (var_s4 != 0)
@@ -3723,11 +3656,10 @@ void func_80099AEC(void) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
             osInvalDCache(D_8018D9B4, var_s0);
-            osPiStartDma(&sp68, 0, 0,
-                         (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
+            osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
                          D_8018D9B4, var_s0, &gDmaMesgQueue);
         }
-        mio0decode(D_8018D9B4 + sp60 * 4, (u8 *) &D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
+        mio0decode(D_8018D9B4 + sp60 * 4, (u8*) &D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
         var_s1->texture = NULL;
         var_s1++;
         if (var_s4 != 0)
@@ -3743,8 +3675,8 @@ void func_80099E54(void) {
     D_8018E0E8[0].mk64Texture = NULL;
 }
 
-void func_80099E60(MkTexture *arg0, s32 arg1, s32 arg2) {
-    struct_8018E0E8_entry *var_v1;
+void func_80099E60(MkTexture* arg0, s32 arg1, s32 arg2) {
+    struct_8018E0E8_entry* var_v1;
 
     var_v1 = D_8018E0E8;
     while (var_v1->mk64Texture != NULL) {
@@ -3767,9 +3699,9 @@ void func_80099EC4(void) {
     OSIoMesg sp68;
     OSMesg sp64;
     s32 huh;
-    u8 *test;
-    MkTexture *temp_s2;
-    struct_8018E0E8_entry *var_s1;
+    u8* test;
+    MkTexture* temp_s2;
+    struct_8018E0E8_entry* var_s1;
 
     var_s4 = 0;
     var_s1 = D_8018E0E8;
@@ -3790,8 +3722,7 @@ void func_80099EC4(void) {
     osInvalDCache(D_8018D9B4, var_s0);
     test = &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)];
     osPiStartDma(&sp68, 0, 0, (uintptr_t) test, D_8018D9B4, var_s0, &gDmaMesgQueue);
-    if ((var_s0 && var_s0) && var_s0) {
-    }
+    if ((var_s0 && var_s0) && var_s0) {}
     // osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
     // D_8018D9B4, var_s0, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
@@ -3810,13 +3741,11 @@ void func_80099EC4(void) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
             osInvalDCache(D_8018D9B4 + 0x1400, var_s0);
-            osPiStartDma(&sp68, 0, 0,
-                         (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
+            osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
                          D_8018D9B4 + 0x1400, var_s0, &gDmaMesgQueue);
         }
         mio0decode(D_8018D9B4,
-                   D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2]
-                       .pixel_index_array);
+                   D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
         if (var_s4 != 0)
@@ -3836,13 +3765,11 @@ void func_80099EC4(void) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
             osInvalDCache(D_8018D9B4, var_s0);
-            osPiStartDma(&sp68, 0, 0,
-                         (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
+            osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
                          D_8018D9B4, var_s0, &gDmaMesgQueue);
         }
         mio0decode(D_8018D9B4 + 0x1400,
-                   D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2]
-                       .pixel_index_array);
+                   D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
         if (var_s4 != 0)
@@ -3854,11 +3781,11 @@ void func_80099EC4(void) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099EC4.s")
 #endif
 
-void func_8009A238(MkTexture *arg0, s32 arg1) {
+void func_8009A238(MkTexture* arg0, s32 arg1) {
     s32 var_a3;
     s32 temp_v1;
-    u64 *sp24;
-    UNUSED struct_8018E118_entry *temp_v0;
+    u64* sp24;
+    UNUSED struct_8018E118_entry* temp_v0;
 
     temp_v1 = D_8018E118[arg1].offset;
     sp24 = arg0->textureData;
@@ -3867,22 +3794,22 @@ void func_8009A238(MkTexture *arg0, s32 arg1) {
         var_a3 = ((var_a3 / 8) * 8) + 8;
     }
     dma_copy_base_7fa3c0(sp24, var_a3, D_8018D9B4);
-    tkmk00decode(D_8018D9B4, D_8018D9B8, (u8 *) &D_8018D9B0[temp_v1], 1);
+    tkmk00decode(D_8018D9B4, D_8018D9B8, (u8*) &D_8018D9B0[temp_v1], 1);
     D_8018E118[arg1].textureData = sp24;
 }
 
-void func_8009A2F0(struct_8018E0E8_entry *arg0) {
-    MkTexture *var_a0;
-    struct_8018E0E8_entry *temp_v0;
+void func_8009A2F0(struct_8018E0E8_entry* arg0) {
+    MkTexture* var_a0;
+    struct_8018E0E8_entry* temp_v0;
 
     temp_v0 = segmented_to_virtual_dupe_2(arg0);
     var_a0 = temp_v0->mk64Texture;
     while (var_a0 != NULL) {
-        if (var_a0 == NULL)
+        if (var_a0 == NULL) {
             break;
-        func_800996BC(var_a0, 0);
-        if (1) {
         }
+        func_800996BC(var_a0, 0);
+        if (1) {}
         temp_v0++;
         var_a0 = temp_v0->mk64Texture;
     }
@@ -3895,9 +3822,9 @@ void func_8009A344(void) {
     }
 }
 
-s32 func_8009A374(MkAnimation *anim) {
+s32 func_8009A374(MkAnimation* anim) {
     s32 i;
-    struct_8018DEE0_entry *entry;
+    struct_8018DEE0_entry* entry;
 
     anim = segmented_to_virtual_dupe_2(anim);
     i = 0;
@@ -3905,8 +3832,9 @@ s32 func_8009A374(MkAnimation *anim) {
         i++;
         if (i >= 0x10) {
             // No more space.
-            while (1)
+            while (1) {
                 ;
+            }
         }
     }
 
@@ -3930,9 +3858,9 @@ s32 func_8009A374(MkAnimation *anim) {
     return i;
 }
 
-s32 func_8009A478(MkAnimation *anim, s32 arg1) {
+s32 func_8009A478(MkAnimation* anim, s32 arg1) {
     s32 i;
-    struct_8018DEE0_entry *entry;
+    struct_8018DEE0_entry* entry;
 
     anim = segmented_to_virtual_dupe_2(anim);
     i = 0;
@@ -3940,8 +3868,9 @@ s32 func_8009A478(MkAnimation *anim, s32 arg1) {
         i++;
         if (i >= 0x10) {
             // No more space.
-            while (1)
+            while (1) {
                 ;
+            }
         }
     }
 
@@ -3963,9 +3892,9 @@ s32 func_8009A478(MkAnimation *anim, s32 arg1) {
     return i;
 }
 
-void func_8009A594(s32 index, s32 arg1, MkAnimation *arg2) {
-    MkAnimation *temp_v0;
-    MkTexture *temp_a0;
+void func_8009A594(s32 index, s32 arg1, MkAnimation* arg2) {
+    MkAnimation* temp_v0;
+    MkTexture* temp_a0;
 
     temp_v0 = segmented_to_virtual_dupe_2(arg2);
     D_8018DEE0[index].textureSequence = temp_v0;
@@ -3983,9 +3912,9 @@ void func_8009A594(s32 index, s32 arg1, MkAnimation *arg2) {
     }
 }
 
-void func_8009A640(s32 arg0, s32 arg1, s32 arg2, MkAnimation *arg3) {
-    MkAnimation *temp_v0;
-    MkTexture *temp_a0;
+void func_8009A640(s32 arg0, s32 arg1, s32 arg2, MkAnimation* arg3) {
+    MkAnimation* temp_v0;
+    MkTexture* temp_a0;
 
     temp_v0 = segmented_to_virtual_dupe_2(arg3);
     D_8018DEE0[arg0].textureSequence = temp_v0;
@@ -4008,7 +3937,7 @@ UNUSED void func_8009A6D4(void) {
 }
 
 void func_8009A76C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    struct_8018DEE0_entry *temp = &D_8018DEE0[arg0];
+    struct_8018DEE0_entry* temp = &D_8018DEE0[arg0];
     if (temp->visible & 0x80000000) {
         func_8009A878(temp);
         gDisplayListHead = func_8009C434(gDisplayListHead, temp, arg1, arg2, arg3);
@@ -4016,18 +3945,18 @@ void func_8009A76C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 
 void func_8009A7EC(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-    struct_8018DEE0_entry *temp = &D_8018DEE0[arg0];
+    struct_8018DEE0_entry* temp = &D_8018DEE0[arg0];
     if (temp->visible & 0x80000000) {
         func_8009A944(temp, arg3);
         gDisplayListHead = func_8009C708(gDisplayListHead, temp, arg1, arg2, arg3, arg4);
     }
 }
 
-MkTexture *func_8009A878(struct_8018DEE0_entry *arg0) {
-    MkAnimation *temp_v1;
-    MkAnimation *var_v0;
-    MkAnimation *test;
-    MkTexture *temp_a0;
+MkTexture* func_8009A878(struct_8018DEE0_entry* arg0) {
+    MkAnimation* temp_v1;
+    MkAnimation* var_v0;
+    MkAnimation* test;
+    MkTexture* temp_a0;
 
     temp_v1 = arg0->textureSequence;
     if (arg0->sequenceIndex < 0) {
@@ -4056,11 +3985,11 @@ MkTexture *func_8009A878(struct_8018DEE0_entry *arg0) {
     return arg0->textureSequence[arg0->sequenceIndex].mk64Texture;
 }
 
-MkTexture *func_8009A944(struct_8018DEE0_entry *arg0, s32 arg1) {
-    MkAnimation *temp_v1;
-    MkAnimation *var_v0;
-    MkAnimation *test;
-    MkTexture *temp_a0;
+MkTexture* func_8009A944(struct_8018DEE0_entry* arg0, s32 arg1) {
+    MkAnimation* temp_v1;
+    MkAnimation* var_v0;
+    MkAnimation* test;
+    MkTexture* temp_a0;
 
     temp_v1 = arg0->textureSequence;
     if (arg0->sequenceIndex < 0) {
@@ -4094,8 +4023,8 @@ void func_8009A9FC(s32 arg0, s32 arg1, u32 arg2, s32 arg3) {
     s32 temp_t9;
     u16 temp_a0;
     s32 var_t1;
-    u16 *color0;
-    u16 *color1;
+    u16* color0;
+    u16* color1;
 
     color0 = &D_8018D9B0[D_8018E118[arg0].offset];
     color1 = &D_8018D9B0[D_8018E118[arg1].offset];
@@ -4105,8 +4034,7 @@ void func_8009A9FC(s32 arg0, s32 arg1, u32 arg2, s32 arg3) {
         green = (temp_a0 & 0x7C0) >> 6;
         blue = (temp_a0 & 0x3E) >> 1;
         alpha = temp_a0 & 0x1;
-        if (alpha) {
-        }
+        if (alpha) {}
         temp_t9 = ((red * 0x4D) + (green * 0x96) + (blue * 0x1D)) >> 8;
         newred = (((((temp_t9 - red) * arg3) >> 8) + red) << 0xB);
         newgreen = (((((((temp_t9 * 7) / 8) - green) * arg3) >> 8) + green) << 6);
@@ -4125,7 +4053,7 @@ void func_8009AB7C(s32 arg0) {
     s32 newblue;
     u32 temp_t9;
     s32 var_v1;
-    u16 *color;
+    u16* color;
 
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     for (var_v1 = 0; var_v1 < 0x4B000; var_v1++) {
@@ -4154,7 +4082,7 @@ void func_8009AD78(s32 arg0, s32 arg1) {
     s32 var_v1;
     s32 size;
     UNUSED u16 temp_a0;
-    u16 *color;
+    u16* color;
 
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     size = D_8018E118[arg0 + 1].offset - D_8018E118[arg0].offset;
@@ -4178,7 +4106,7 @@ void func_8009B0A4(s32 arg0, u32 arg1) {
     s32 alpha;
     u32 temp_t9;
     s32 size;
-    u16 *color;
+    u16* color;
     f32 sp48[0x20];
 
     for (var_s0 = 0; var_s0 < 0x20; var_s0++) {
@@ -4211,7 +4139,7 @@ void func_8009B538(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     s32 newblue;
     u32 temp_t9;
     s32 var_v1;
-    u16 *color;
+    u16* color;
 
     color = &D_8018D9B0[D_8018E118[arg0].offset];
     for (var_v1 = 0; var_v1 != arg1; var_v1++) {
@@ -4228,7 +4156,7 @@ void func_8009B538(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     }
 }
 
-u16 *func_8009B8C4(u64 *arg0) {
+u16* func_8009B8C4(u64* arg0) {
     UNUSED s32 pad[2];
     s32 offset;
     s32 found;
@@ -4253,11 +4181,11 @@ u16 *func_8009B8C4(u64 *arg0) {
 // struct_8018EE10_entry pointer. But here its being treated as a
 // Gfx pointer. It seems to be multi use.
 void func_8009B938(void) {
-    D_8018E75C = (Gfx *) D_8018D9C0;
+    D_8018E75C = (Gfx*) D_8018D9C0;
     gNumD_8018E768Entries = 0;
 }
 
-void func_8009B954(MkTexture *arg0) {
+void func_8009B954(MkTexture* arg0) {
     D_8018E768[gNumD_8018E768Entries].textures = segmented_to_virtual_dupe(arg0);
     D_8018E768[gNumD_8018E768Entries].displayList = D_8018E75C;
 }
@@ -4272,8 +4200,8 @@ void func_8009B998(void) {
 // Based on the target assembly, in the event that it never finds
 // the desired entry, it'll treat the return value of segmented_to_virtual_dupe
 // as the return of this function. Which seems like a bug to me
-Gfx *func_8009B9D0(Gfx *displayListHead, MkTexture *textures) {
-    Gfx *displayList;
+Gfx* func_8009B9D0(Gfx* displayListHead, MkTexture* textures) {
+    Gfx* displayList;
     UNUSED s32 pad;
     bool found;
     s32 index;
@@ -4292,9 +4220,9 @@ Gfx *func_8009B9D0(Gfx *displayListHead, MkTexture *textures) {
     }
 }
 
-Gfx *func_8009BA74(Gfx *arg0, MkTexture *arg1, s32 column, s32 row) {
-    MkTexture *temp_v0;
-    u8 *temp_v0_3;
+Gfx* func_8009BA74(Gfx* arg0, MkTexture* arg1, s32 column, s32 row) {
+    MkTexture* temp_v0;
+    u8* temp_v0_3;
     s8 var_s4;
 
     temp_v0 = segmented_to_virtual_dupe(arg1);
@@ -4321,16 +4249,15 @@ Gfx *func_8009BA74(Gfx *arg0, MkTexture *arg1, s32 column, s32 row) {
                 gSPDisplayList(arg0++, D_02007728);
                 break;
         }
-        temp_v0_3 = (u8 *) func_8009B8C4(temp_v0->textureData);
+        temp_v0_3 = (u8*) func_8009B8C4(temp_v0->textureData);
         if (temp_v0_3 != 0) {
             if (D_8018E7AC[4] != 4) {
-                arg0 = func_80095E10(arg0, var_s4, 0x00000400, 0x00000400, 0, 0, temp_v0->width,
-                                     temp_v0->height, temp_v0->dX + column, temp_v0->dY + row,
-                                     temp_v0_3, temp_v0->width, temp_v0->height);
-            } else {
                 arg0 =
-                    func_800987D0(arg0, 0U, 0U, temp_v0->width, temp_v0->height, temp_v0->dX + column,
-                                  temp_v0->dY + row, temp_v0_3, temp_v0->width, temp_v0->height);
+                    func_80095E10(arg0, var_s4, 0x00000400, 0x00000400, 0, 0, temp_v0->width, temp_v0->height,
+                                  temp_v0->dX + column, temp_v0->dY + row, temp_v0_3, temp_v0->width, temp_v0->height);
+            } else {
+                arg0 = func_800987D0(arg0, 0U, 0U, temp_v0->width, temp_v0->height, temp_v0->dX + column,
+                                     temp_v0->dY + row, temp_v0_3, temp_v0->width, temp_v0->height);
             }
         }
         temp_v0++;
@@ -4338,9 +4265,9 @@ Gfx *func_8009BA74(Gfx *arg0, MkTexture *arg1, s32 column, s32 row) {
     return arg0;
 }
 
-Gfx *func_8009BC9C(Gfx *arg0, MkTexture *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
-    MkTexture *var_s0;
-    u8 *temp_v0_3;
+Gfx* func_8009BC9C(Gfx* arg0, MkTexture* arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
+    MkTexture* var_s0;
+    u8* temp_v0_3;
 
     var_s0 = segmented_to_virtual_dupe(arg1);
     while (var_s0->textureData != NULL) {
@@ -4352,27 +4279,24 @@ Gfx *func_8009BC9C(Gfx *arg0, MkTexture *arg1, s32 arg2, s32 arg3, s32 arg4, s32
                 gSPDisplayList(arg0++, D_02007728);
                 break;
         }
-        temp_v0_3 = (u8 *) func_8009B8C4(var_s0->textureData);
+        temp_v0_3 = (u8*) func_8009B8C4(var_s0->textureData);
         if (temp_v0_3 != 0) {
             switch (arg4) { /* switch 1; irregular */
                 case 1:     /* switch 1 */
-                    arg0 =
-                        func_80097AE4(arg0, 0, var_s0->dX + arg2, var_s0->dY + arg3, temp_v0_3, arg5);
+                    arg0 = func_80097AE4(arg0, 0, var_s0->dX + arg2, var_s0->dY + arg3, temp_v0_3, arg5);
                     break;
                 case 2: /* switch 1 */
-                    arg0 = func_80097E58(arg0, 0, 0, 0U, var_s0->width, var_s0->height,
-                                         var_s0->dX + arg2, var_s0->dY + arg3, temp_v0_3, var_s0->width,
-                                         var_s0->height, arg5);
+                    arg0 = func_80097E58(arg0, 0, 0, 0U, var_s0->width, var_s0->height, var_s0->dX + arg2,
+                                         var_s0->dY + arg3, temp_v0_3, var_s0->width, var_s0->height, arg5);
                     break;
                 case 3: /* switch 1 */
-                    arg0 =
-                        func_80097A14(arg0, 0, 0, 0, var_s0->width, var_s0->height, var_s0->dX + arg2,
-                                      var_s0->dY + arg3, temp_v0_3, var_s0->width, var_s0->height);
+                    arg0 = func_80097A14(arg0, 0, 0, 0, var_s0->width, var_s0->height, var_s0->dX + arg2,
+                                         var_s0->dY + arg3, temp_v0_3, var_s0->width, var_s0->height);
                     break;
                 case 4: /* switch 1 */
-                    arg0 = func_80097274(arg0, 0, 0x00000400, 0x00000400, 0, 0, var_s0->width,
-                                         var_s0->height, var_s0->dX + arg2, var_s0->dY + arg3,
-                                         temp_v0_3, var_s0->width, var_s0->height, arg5);
+                    arg0 = func_80097274(arg0, 0, 0x00000400, 0x00000400, 0, 0, var_s0->width, var_s0->height,
+                                         var_s0->dX + arg2, var_s0->dY + arg3, temp_v0_3, var_s0->width, var_s0->height,
+                                         arg5);
                     break;
             }
         }
@@ -4381,13 +4305,12 @@ Gfx *func_8009BC9C(Gfx *arg0, MkTexture *arg1, s32 arg2, s32 arg3, s32 arg4, s32
     return arg0;
 }
 
-Gfx *print_letter(Gfx *arg0, MkTexture *glyphTexture, f32 arg2, f32 arg3, s32 mode, f32 scaleX,
-                  f32 scaleY) {
+Gfx* print_letter(Gfx* arg0, MkTexture* glyphTexture, f32 arg2, f32 arg3, s32 mode, f32 scaleX, f32 scaleY) {
     s32 var_v0;
-    u8 *temp_v0_2;
+    u8* temp_v0_2;
     f32 thing0;
     f32 thing1;
-    MkTexture *var_s0;
+    MkTexture* var_s0;
 
     var_s0 = segmented_to_virtual_dupe(glyphTexture);
     while (var_s0->textureData != NULL) {
@@ -4413,18 +4336,18 @@ Gfx *print_letter(Gfx *arg0, MkTexture *glyphTexture, f32 arg2, f32 arg3, s32 mo
         if (var_v0 != 0) {
             var_s0++;
         } else {
-            temp_v0_2 = (u8 *) func_8009B8C4(var_s0->textureData);
+            temp_v0_2 = (u8*) func_8009B8C4(var_s0->textureData);
             if (temp_v0_2 != 0) {
                 switch (mode) { /* irregular */
                     case 1:
                         gSPDisplayList(arg0++, D_020077F8);
-                        arg0 = func_80095BD0(arg0, temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3,
-                                             var_s0->width, var_s0->height, scaleX, scaleY);
+                        arg0 = func_80095BD0(arg0, temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3, var_s0->width,
+                                             var_s0->height, scaleX, scaleY);
                         break;
                     case 2:
                         gSPDisplayList(arg0++, D_02007818);
-                        arg0 = func_80095BD0(arg0, temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3,
-                                             var_s0->width, var_s0->height, scaleX, scaleY);
+                        arg0 = func_80095BD0(arg0, temp_v0_2, var_s0->dX + arg2, var_s0->dY + arg3, var_s0->width,
+                                             var_s0->height, scaleX, scaleY);
                         break;
                 }
             }
@@ -4434,10 +4357,10 @@ Gfx *print_letter(Gfx *arg0, MkTexture *glyphTexture, f32 arg2, f32 arg3, s32 mo
     return arg0;
 }
 
-Gfx *func_8009C204(Gfx *arg0, MkTexture *arg1, s32 arg2, s32 arg3, s32 arg4) {
+Gfx* func_8009C204(Gfx* arg0, MkTexture* arg1, s32 arg2, s32 arg3, s32 arg4) {
     s32 var_s2;
-    u8 *temp_t0;
-    MkTexture *var_s1;
+    u8* temp_t0;
+    MkTexture* var_s1;
 
     var_s1 = segmented_to_virtual_dupe(arg1);
     while (var_s1->textureData != NULL) {
@@ -4457,17 +4380,17 @@ Gfx *func_8009C204(Gfx *arg0, MkTexture *arg1, s32 arg2, s32 arg3, s32 arg4) {
                 gSPDisplayList(arg0++, D_02007728);
                 break;
         }
-        temp_t0 = (u8 *) func_8009B8C4(var_s1->textureData);
+        temp_t0 = (u8*) func_8009B8C4(var_s1->textureData);
         switch (arg4) { /* switch 1; irregular */
             case 2:     /* switch 1 */
-                arg0 = func_800963F0(arg0, var_s2, 0x00000400, 0x00000400, 0.5f, 0.5f, 0, 0,
-                                     var_s1->width, var_s1->height, var_s1->dX + arg2,
-                                     var_s1->dY + arg3, temp_t0, var_s1->width, var_s1->height);
+                arg0 =
+                    func_800963F0(arg0, var_s2, 0x00000400, 0x00000400, 0.5f, 0.5f, 0, 0, var_s1->width, var_s1->height,
+                                  var_s1->dX + arg2, var_s1->dY + arg3, temp_t0, var_s1->width, var_s1->height);
                 break;
             case 3: /* switch 1 */
-                arg0 = func_800963F0(arg0, var_s2, 0x00000400, 0x00000400, 0.457f, 0.5f, 0, 0,
-                                     var_s1->width, var_s1->height, var_s1->dX + arg2,
-                                     var_s1->dY + arg3, temp_t0, var_s1->width, var_s1->height);
+                arg0 = func_800963F0(arg0, var_s2, 0x00000400, 0x00000400, 0.457f, 0.5f, 0, 0, var_s1->width,
+                                     var_s1->height, var_s1->dX + arg2, var_s1->dY + arg3, temp_t0, var_s1->width,
+                                     var_s1->height);
                 break;
         }
         var_s1++;
@@ -4475,11 +4398,11 @@ Gfx *func_8009C204(Gfx *arg0, MkTexture *arg1, s32 arg2, s32 arg3, s32 arg4) {
     return arg0;
 }
 
-Gfx *func_8009C434(Gfx *arg0, struct_8018DEE0_entry *arg1, s32 arg2, s32 arg3, s32 arg4) {
+Gfx* func_8009C434(Gfx* arg0, struct_8018DEE0_entry* arg1, s32 arg2, s32 arg3, s32 arg4) {
     s32 var_t0;
     s32 var_t1;
-    Gfx *temp;
-    MkTexture *var_s0;
+    Gfx* temp;
+    MkTexture* var_s0;
 
     var_s0 = segmented_to_virtual_dupe(arg1->textureSequence[arg1->sequenceIndex].mk64Texture);
     temp = D_02007728;
@@ -4504,29 +4427,25 @@ Gfx *func_8009C434(Gfx *arg0, struct_8018DEE0_entry *arg1, s32 arg2, s32 arg3, s
             var_t0 = D_8018E118[arg1->D_8018E118_index + 1].offset;
         } else {
             var_t0 = D_8018E118[arg1->D_8018E118_index].offset;
-            if (1) {
-            }
-            if (1) {
-            }
-            if (1) {
-            }
+            if (1) {}
+            if (1) {}
+            if (1) {}
         }
         if (arg4 >= 0) {
-            arg0 = func_80097E58(arg0, var_t1, 0, 0U, var_s0->width, var_s0->height, var_s0->dX + arg2,
-                                 var_s0->dY + arg3, (u8 *) &D_8018D9B0[var_t0], var_s0->width,
-                                 var_s0->height, (u32) arg4);
+            arg0 =
+                func_80097E58(arg0, var_t1, 0, 0U, var_s0->width, var_s0->height, var_s0->dX + arg2, var_s0->dY + arg3,
+                              (u8*) &D_8018D9B0[var_t0], var_s0->width, var_s0->height, (u32) arg4);
         } else {
             switch (arg4) {
                 case -1:
-                    arg0 = func_80095E10(arg0, var_t1, 0x00000400, 0x00000400, 0, 0, var_s0->width,
-                                         var_s0->height, var_s0->dX + arg2, var_s0->dY + arg3,
-                                         (u8 *) &D_8018D9B0[var_t0], var_s0->width, var_s0->height);
+                    arg0 = func_80095E10(arg0, var_t1, 0x00000400, 0x00000400, 0, 0, var_s0->width, var_s0->height,
+                                         var_s0->dX + arg2, var_s0->dY + arg3, (u8*) &D_8018D9B0[var_t0], var_s0->width,
+                                         var_s0->height);
                     break;
                 case -2:
-                    arg0 = func_800963F0(arg0, var_t1, 0x00000400, 0x00000400, 0.5f, 0.5f, 0, 0,
-                                         var_s0->width, var_s0->height, var_s0->dX + arg2,
-                                         var_s0->dY + arg3, (u8 *) &D_8018D9B0[var_t0], var_s0->width,
-                                         var_s0->height);
+                    arg0 = func_800963F0(arg0, var_t1, 0x00000400, 0x00000400, 0.5f, 0.5f, 0, 0, var_s0->width,
+                                         var_s0->height, var_s0->dX + arg2, var_s0->dY + arg3,
+                                         (u8*) &D_8018D9B0[var_t0], var_s0->width, var_s0->height);
                     break;
             }
         }
@@ -4535,11 +4454,11 @@ Gfx *func_8009C434(Gfx *arg0, struct_8018DEE0_entry *arg1, s32 arg2, s32 arg3, s
     return arg0;
 }
 
-Gfx *func_8009C708(Gfx *arg0, struct_8018DEE0_entry *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
+Gfx* func_8009C708(Gfx* arg0, struct_8018DEE0_entry* arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
     s32 var_t0;
     UNUSED s32 thing;
-    Gfx *temp;
-    MkTexture *var_s1;
+    Gfx* temp;
+    MkTexture* var_s1;
 
     var_s1 = segmented_to_virtual_dupe(arg1->textureSequence[arg1->sequenceIndex].mk64Texture);
     temp = D_02007728;
@@ -4564,11 +4483,10 @@ Gfx *func_8009C708(Gfx *arg0, struct_8018DEE0_entry *arg1, s32 arg2, s32 arg3, s
                 break;
         }
         if (arg5 >= 0) {
-            arg0 = func_80097E58(
-                arg0, var_t0, 0, 0U, var_s1->width, var_s1->height, var_s1->dX + arg2,
-                var_s1->dY + arg3,
-                D_802BFB80.arraySize4[arg1->unk14][arg4 / 2][(arg4 % 2) + 2].pixel_index_array,
-                var_s1->width, var_s1->height, (u32) arg5);
+            arg0 =
+                func_80097E58(arg0, var_t0, 0, 0U, var_s1->width, var_s1->height, var_s1->dX + arg2, var_s1->dY + arg3,
+                              D_802BFB80.arraySize4[arg1->unk14][arg4 / 2][(arg4 % 2) + 2].pixel_index_array,
+                              var_s1->width, var_s1->height, (u32) arg5);
         }
         var_s1++;
     }
@@ -4602,11 +4520,9 @@ void func_8009CA2C(void) {
 void func_8009CA6C(s32 arg0) {
     s32 var_a1;
 
-    if ((arg0 == 4)
-        || ((find_8018D9E0_entry(0x000000AA) == NULL) && (find_8018D9E0_entry(0x000000AB) == NULL)
-            && (find_8018D9E0_entry(0x000000B9) == NULL) && (find_8018D9E0_entry(0x000000BA) == NULL)
-            && (find_8018D9E0_entry(0x000000AC) == NULL)
-            && (find_8018D9E0_entry(0x000000B0) == NULL))) {
+    if ((arg0 == 4) || ((find_8018D9E0_entry(0x000000AA) == NULL) && (find_8018D9E0_entry(0x000000AB) == NULL) &&
+                        (find_8018D9E0_entry(0x000000B9) == NULL) && (find_8018D9E0_entry(0x000000BA) == NULL) &&
+                        (find_8018D9E0_entry(0x000000AC) == NULL) && (find_8018D9E0_entry(0x000000B0) == NULL))) {
         var_a1 = 0;
         gSPDisplayList(gDisplayListHead++, D_0D0076F8);
         if ((arg0 != 4) && (gIsGamePaused != 0)) {
@@ -4642,10 +4558,10 @@ void func_8009CA6C(s32 arg0) {
 }
 
 void func_8009CBE4(s32 arg0, s32 arg1, s32 arg2) {
-    RGBA16 *color;
+    RGBA16* color;
     s16 x, y, w, h;
     UNUSED s32 pad[3];
-    struct UnkStruct_800DC5EC *unk;
+    struct UnkStruct_800DC5EC* unk;
     struct UnkStruct_8018E7E8 *size, *start;
 
     if ((gModeSelection == GRAND_PRIX) || (gModeSelection == TIME_TRIALS)) {
@@ -4670,9 +4586,8 @@ void func_8009CBE4(s32 arg0, s32 arg1, s32 arg2) {
         h = unk->screenHeight;
     }
     color = &D_800E7AE8[arg2];
-    gDisplayListHead =
-        draw_box(gDisplayListHead, x - (w / 2), y - (h / 2), (w / 2) + x, (h / 2) + y, color->red,
-                 color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
+    gDisplayListHead = draw_box(gDisplayListHead, x - (w / 2), y - (h / 2), (w / 2) + x, (h / 2) + y, color->red,
+                                color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
 
     if ((arg1 == 0) && (D_8018E7D0[arg0] += 1, (D_8018E7D0[arg0] >= D_8018E7B8[arg0]))) {
         if (gGamestate == 4) {
@@ -4702,7 +4617,7 @@ void func_8009CE64(s32 arg0) {
     s32 thing;
     s32 var_a1;
     UNUSED s32 stackPadding0;
-    struct_8018D9E0_entry *temp_v0;
+    struct_8018D9E0_entry* temp_v0;
 
     var_a1 = 0;
     if (gGamestate == 5) {
@@ -5033,7 +4948,7 @@ void func_8009D77C(s32 arg0, s32 arg1, s32 arg2) {
     s32 var_t2;
     s32 someMath0;
     s32 someMath1;
-    RGBA16 *temp_v0_2;
+    RGBA16* temp_v0_2;
     s32 sp44;
     UNUSED s32 stackPadding0;
 
@@ -5065,8 +4980,8 @@ void func_8009D77C(s32 arg0, s32 arg1, s32 arg2) {
     someMath0 += var_t3;
     someMath1 = temp_t8;
     someMath1 += var_t4;
-    gDisplayListHead = draw_box(gDisplayListHead, var_t3 - temp_v1, var_t4 - temp_t8, someMath0,
-                                someMath1, temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
+    gDisplayListHead = draw_box(gDisplayListHead, var_t3 - temp_v1, var_t4 - temp_t8, someMath0, someMath1,
+                                temp_v0_2->red, temp_v0_2->green, temp_v0_2->blue, var_t2);
     if (arg1 == 0) {
         D_8018E7D0[arg0]++;
         if ((D_8018E7B8[arg0] + 1) < D_8018E7D0[arg0]) {
@@ -5116,8 +5031,8 @@ void func_8009D998(s32 arg0) {
     someMath0 += var_t0;
     someMath1 = temp_v1;
     someMath1 += var_t1;
-    gDisplayListHead = draw_box(gDisplayListHead, var_t0 - temp_v0, var_t1 - temp_v1, someMath0,
-                                someMath1, 0, 0, 0, 0x000000FF);
+    gDisplayListHead =
+        draw_box(gDisplayListHead, var_t0 - temp_v0, var_t1 - temp_v1, someMath0, someMath1, 0, 0, 0, 0x000000FF);
 }
 
 void func_8009DAA8(void) {
@@ -5157,8 +5072,7 @@ void func_8009DB8C(void) {
         var_s0 = 0;
         var_s3 = 0;
         while (var_s3 < (0x4B0U / D_8018E7B8[4])) {
-            if ((D_8018D9B8[var_s0] == 0)
-                && (random_int((0x4B0U - D_8018E7D0[4]) / D_8018E7B8[4]) == 0)) {
+            if ((D_8018D9B8[var_s0] == 0) && (random_int((0x4B0U - D_8018E7D0[4]) / D_8018E7B8[4]) == 0)) {
                 var_s3 += 1;
                 D_8018D9B8[var_s0] = 1;
             }
@@ -5343,9 +5257,9 @@ void func_8009E2F0(s32 arg0) {
     s32 someIndex;
     s32 temp_t7;
     f32 temp_t7_2;
-    RGBA16 *temp_v0;
-    struct UnkStruct_8018E7E8 *temp_t0;
-    struct UnkStruct_8018E7E8 *temp_t1;
+    RGBA16* temp_v0;
+    struct UnkStruct_8018E7E8* temp_t0;
+    struct UnkStruct_8018E7E8* temp_t1;
 
     temp_t7 = D_800F0B28[D_8018E840[arg0]];
     if (temp_t7 != 0) {
@@ -5353,16 +5267,14 @@ void func_8009E2F0(s32 arg0) {
         temp_t0 = &D_8018E810[arg0];
         temp_v0 = &D_800E7AC8[temp_t7];
         if ((u32) D_8018E840[arg0] < 0x1BU) {
-            gDisplayListHead =
-                draw_box(gDisplayListHead, temp_t1->x - (temp_t0->x / 2), temp_t1->y - (temp_t0->y / 2),
-                         temp_t1->x + (temp_t0->x / 2), temp_t1->y + (temp_t0->y / 2), temp_v0->red,
-                         temp_v0->green, temp_v0->blue, temp_v0->alpha);
+            gDisplayListHead = draw_box(gDisplayListHead, temp_t1->x - (temp_t0->x / 2), temp_t1->y - (temp_t0->y / 2),
+                                        temp_t1->x + (temp_t0->x / 2), temp_t1->y + (temp_t0->y / 2), temp_v0->red,
+                                        temp_v0->green, temp_v0->blue, temp_v0->alpha);
         } else {
             temp_t7_2 = ((u32) (38 - D_8018E840[arg0])) / 11.0;
-            gDisplayListHead =
-                draw_box(gDisplayListHead, temp_t1->x - (temp_t0->x / 2), temp_t1->y - (temp_t0->y / 2),
-                         temp_t1->x + (temp_t0->x / 2), temp_t1->y + (temp_t0->y / 2), temp_v0->red,
-                         temp_v0->green, temp_v0->blue, (u32) (temp_v0->alpha * temp_t7_2));
+            gDisplayListHead = draw_box(gDisplayListHead, temp_t1->x - (temp_t0->x / 2), temp_t1->y - (temp_t0->y / 2),
+                                        temp_t1->x + (temp_t0->x / 2), temp_t1->y + (temp_t0->y / 2), temp_v0->red,
+                                        temp_v0->green, temp_v0->blue, (u32) (temp_v0->alpha * temp_t7_2));
         }
     }
     D_8018E840[arg0]++;
@@ -5396,7 +5308,7 @@ void func_8009E620(void) {
 // https://decomp.me/scratch/1BHpa
 // Stack differences, can't figure out how to fix them
 void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
-    struct_8018D9E0_entry *var_ra;
+    struct_8018D9E0_entry* var_ra;
     s32 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
@@ -5404,8 +5316,8 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
     s32 var_v0;
     s32 var_v1_3;
     s32 temp_a1;
-    UNUSED MkTexture *mk64Texture;
-    MkAnimation *var_a0;
+    UNUSED MkTexture* mk64Texture;
+    MkAnimation* var_a0;
     s32 one = 1;
 
     var_v0 = 0;
@@ -5419,8 +5331,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             break;
 
         if (var_v0 > 0x20) {
-            while (1) {
-            }
+            while (1) {}
         }
         var_ra++;
     }
@@ -5485,11 +5396,10 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             func_80099184(D_020015A4);
             func_8009B954(D_020015A4);
             D_8018E75C = func_8009BA74(D_8018E75C, D_020015A4, var_ra->column, var_ra->row);
-            gDPLoadTextureBlock(D_8018E75C++, func_8009B8C4(gTexture7ED50C), G_IM_FMT_IA, G_IM_SIZ_16b,
-                                256, 5, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP,
-                                G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-            gSPTextureRectangle(D_8018E75C++, 0x80, 0x2C0, 0x480, 0x2D4, G_TX_RENDERTILE, 0, 0x80,
-                                0x0400, 0xFC00);
+            gDPLoadTextureBlock(D_8018E75C++, func_8009B8C4(gTexture7ED50C), G_IM_FMT_IA, G_IM_SIZ_16b, 256, 5, 0,
+                                G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK,
+                                G_TX_NOLOD, G_TX_NOLOD);
+            gSPTextureRectangle(D_8018E75C++, 0x80, 0x2C0, 0x480, 0x2D4, G_TX_RENDERTILE, 0, 0x80, 0x0400, 0xFC00);
             func_8009B998();
             func_80099184(D_020015CC);
             func_8009B954(D_020015CC);
@@ -5580,14 +5490,12 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         case 0x30:
         case 0x31:
         case 0x32:
-            var_ra->D_8018DEE0_index =
-                func_8009A374(segmented_to_virtual_dupe_2(D_800E8320[type - 0x2B]));
+            var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E8320[type - 0x2B]));
             func_800996BC(segmented_to_virtual_dupe(D_800E7D54[type - 0x2B]), 0);
             break;
         case 0xA0:
         case 0xA1:
-            var_ra->D_8018DEE0_index =
-                func_8009A374(segmented_to_virtual_dupe_2(D_800E8320[type - 0xA0]));
+            var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E8320[type - 0xA0]));
             break;
         case 0x5D:
             var_ra->unk1C = 0x00000020;
@@ -5608,8 +5516,8 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         case 0x60:
         case 0x61:
         case 0x62:
-            var_ra->D_8018DEE0_index = func_8009A374(
-                segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[0][var_ra->type - 0x5F]]));
+            var_ra->D_8018DEE0_index =
+                func_8009A374(segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[0][var_ra->type - 0x5F]]));
             break;
         case 0x5E:
             var_ra->unk20 = random_int(4U) + 2;
@@ -5622,8 +5530,8 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         case 0x67:
             var_ra->unk1C = (s32) gCupSelection;
             var_ra->unk20 = func_800B54C0(gCupSelection, gCCSelection);
-            var_ra->D_8018DEE0_index = func_8009A374(
-                segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - var_ra->unk20]));
+            var_ra->D_8018DEE0_index =
+                func_8009A374(segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - var_ra->unk20]));
             var_ra->column = D_800E7268[0].column;
             var_ra->row = D_800E7268[0].row;
             break;
@@ -5676,13 +5584,9 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         case 0x8A:
         case 0x8B:
             temp_v0_6 = var_ra->type - 0x7C;
-            func_800996BC(
-                segmented_to_virtual_dupe(D_800E7D74[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]),
-                -1);
+            func_800996BC(segmented_to_virtual_dupe(D_800E7D74[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]), -1);
             temp_v0_6 = var_ra->type - 0x7C;
-            func_800996BC(
-                segmented_to_virtual_dupe(D_800E7DC4[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]),
-                0);
+            func_800996BC(segmented_to_virtual_dupe(D_800E7DC4[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]), 0);
             func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
             break;
         case 0xB1:
@@ -5711,8 +5615,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             } else {
                 var_a0 = D_800E8320[temp_a1];
             }
-            var_ra->D_8018DEE0_index =
-                func_8009A478(segmented_to_virtual_dupe_2(var_a0), stackPadding0);
+            var_ra->D_8018DEE0_index = func_8009A478(segmented_to_virtual_dupe_2(var_a0), stackPadding0);
             func_800996BC(segmented_to_virtual_dupe(D_800E7D54[temp_a1]), 0);
             func_80099184(segmented_to_virtual_dupe(D_800E82B4[type - 0xB1]));
             break;
@@ -5730,8 +5633,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             break;
         case 0xE6:
             var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(
-                D_800E7E34[gCupCourseOrder[gTimeTrialDataCourseIndex / 4]
-                                          [gTimeTrialDataCourseIndex % 4]]));
+                D_800E7E34[gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4]]));
             var_ra->unk1C = gTimeTrialDataCourseIndex;
             func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
             func_8006EF60();
@@ -5841,12 +5743,12 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/add_8018D9E0_entry.s")
 // https://decomp.me/scratch/MatRp
 // Biggest diff left is in the case 0x12 though 0x19 handling. Not really sure what's going on there
 // There's also a diff in the handling of D_800E77A0 in case 0x4. Not sure what's going on there either
-void func_8009F5E0(struct_8018D9E0_entry *arg0) {
+void func_8009F5E0(struct_8018D9E0_entry* arg0) {
     s32 var_a1;
     s32 var_v1;
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
-    MkTexture *sp9C;
+    MkTexture* sp9C;
     UNUSED s32 stackPadding2;
     s32 temp_a0;
     s32 temp_t2;
@@ -5907,8 +5809,8 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
                 func_800A0EB8(arg0, arg0->type - 0xD8);
                 break;
             case 0x1: /* switch 6 */
-                gDisplayListHead = func_8009BA74(gDisplayListHead, D_800E7D4C[func_800B555C()],
-                                                 arg0->column, arg0->row);
+                gDisplayListHead =
+                    func_8009BA74(gDisplayListHead, D_800E7D4C[func_800B555C()], arg0->column, arg0->row);
                 break;
             case 0x2: /* switch 6 */
                 func_8004C8D4((arg0->column + 0xA0), (arg0->row + 0x47));
@@ -5916,14 +5818,13 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
                 break;
             case 0x3: /* switch 6 */
                 if (((gGlobalTimer / 8) % 3) != 0) {
-                    gDisplayListHead =
-                        func_8009BA74(gDisplayListHead, D_02004610, arg0->column, arg0->row);
+                    gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004610, arg0->column, arg0->row);
                 }
                 break;
             case 0x5: /* switch 6 */
                 var_t0 = (s32) ((f32) (get_string_width(gCourseNamesDup[0]) + 5) * 0.9f) / 2;
-                gDisplayListHead = draw_box(gDisplayListHead, 0xA0 - var_t0, 0x0000007B, var_t0 + 0xA0,
-                                            0x000000A4, 0, 0, 0, 0x00000096);
+                gDisplayListHead = draw_box(gDisplayListHead, 0xA0 - var_t0, 0x0000007B, var_t0 + 0xA0, 0x000000A4, 0,
+                                            0, 0, 0x00000096);
                 set_text_color(1);
                 draw_text(0x0000009B, 0x0000008C, gCourseNamesDup[0], 0, 0.9f, 0.9f);
                 temp_v1 = func_800B4EB4(0, 7) & 0xFFFFF;
@@ -5951,20 +5852,19 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
                 }
                 temp_t2 = (s32) (var_t0 * why) / 2;
                 temp_t5 = (s32) (((why * 2) + 0.5) * 16.0) / 2;
-                gDisplayListHead = draw_box(gDisplayListHead, 0xA0 - temp_t2, 0xB6 - temp_t5,
-                                            temp_t2 + 0xA0, temp_t5 + 0xB6, 0, 0, 0, 0x00000096);
+                gDisplayListHead = draw_box(gDisplayListHead, 0xA0 - temp_t2, 0xB6 - temp_t5, temp_t2 + 0xA0,
+                                            temp_t5 + 0xB6, 0, 0, 0, 0x00000096);
                 set_text_color(4);
                 for (temp_t9 = 0; temp_t9 < 2; temp_t9++) {
-                    draw_text(0xA0 * one - floatone * why,
-                              (s32) (0xB4 * one + ((f32) (temp_t9 * 0x12) * why)), D_800E77A0[temp_t9],
-                              0, why, why);
+                    draw_text(0xA0 * one - floatone * why, (s32) (0xB4 * one + ((f32) (temp_t9 * 0x12) * why)),
+                              D_800E77A0[temp_t9], 0, why, why);
                 }
                 break;
             case 0x23: /* switch 6 */
             case 0x24: /* switch 6 */
             case 0x25: /* switch 6 */
-                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_800E7D4C[func_800B555C()],
-                                                 arg0->column, arg0->row, 3, 0);
+                gDisplayListHead =
+                    func_8009BC9C(gDisplayListHead, D_800E7D4C[func_800B555C()], arg0->column, arg0->row, 3, 0);
                 break;
             case 0xA: /* switch 6 */
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004660, arg0->column, arg0->row);
@@ -5979,8 +5879,7 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
                 break;
             case 0xF: /* switch 6 */
                 func_800A8564(arg0);
-                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_0200487C, arg0->column, arg0->row,
-                                                 2, arg0->unk1C);
+                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_0200487C, arg0->column, arg0->row, 2, arg0->unk1C);
                 break;
             case 0x10: /* switch 6 */
             case 0x11: /* switch 6 */
@@ -5988,18 +5887,18 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
                 if (arg0->unk1C < 0x20) {
                     temp_t9 = (arg0->unk1C * 0x3A) / 64;
                     if (var_a1 == gMainMenuSelectionDepth) {
-                        gDisplayListHead = draw_flash_select_case_fast(
-                            gDisplayListHead, arg0->column + temp_t9, arg0->row,
-                            (arg0->column - temp_t9) + 0x39, arg0->row + 0x12);
+                        gDisplayListHead =
+                            draw_flash_select_case_fast(gDisplayListHead, arg0->column + temp_t9, arg0->row,
+                                                        (arg0->column - temp_t9) + 0x39, arg0->row + 0x12);
                     } else {
-                        gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column + temp_t9,
-                                                         arg0->row, (arg0->column - temp_t9) + 0x39,
-                                                         arg0->row + 0x12, 1, 1, 1, 0x000000FF);
+                        gDisplayListHead =
+                            draw_box_fill(gDisplayListHead, arg0->column + temp_t9, arg0->row,
+                                          (arg0->column - temp_t9) + 0x39, arg0->row + 0x12, 1, 1, 1, 0x000000FF);
                     }
                 }
                 var_v1 = arg0->type - 0xA;
-                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_800E8254[var_v1], arg0->column,
-                                                 arg0->row, 2, arg0->unk1C);
+                gDisplayListHead =
+                    func_8009BC9C(gDisplayListHead, D_800E8254[var_v1], arg0->column, arg0->row, 2, arg0->unk1C);
                 break;
             case 0x12: /* switch 6 */
             case 0x13: /* switch 6 */
@@ -6010,8 +5909,7 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
             case 0x18: /* switch 6 */
             case 0x19: /* switch 6 */
                 var_v1 = D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]];
-                var_a1 =
-                    gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
+                var_a1 = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 switch (arg0->type) { /* switch 5 */
                     case 0x12:        /* switch 5 */
                     case 0x13:        /* switch 5 */
@@ -6045,18 +5943,17 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
                 if (var_v1 != -1) {
                     if ((gMainMenuSelectionDepth >= 5) && (var_v1 == (arg0->type - var_a1))) {
                         if (gMainMenuSelectionDepth >= 6) {
-                            gDisplayListHead = draw_box_fill(
-                                gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
-                                arg0->row + 0x11, 0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
+                            gDisplayListHead =
+                                draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
+                                              arg0->row + 0x11, 0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
                         } else {
-                            gDisplayListHead = draw_flash_select_case_slow(
-                                gDisplayListHead, arg0->column ^ 0, arg0->row ^ 0, arg0->column + 0x3F,
-                                arg0->row + 0x11);
+                            gDisplayListHead =
+                                draw_flash_select_case_slow(gDisplayListHead, arg0->column ^ 0, arg0->row ^ 0,
+                                                            arg0->column + 0x3F, arg0->row + 0x11);
                         }
                     } else {
-                        gDisplayListHead =
-                            draw_box_fill(gDisplayListHead, arg0->column, arg0->row,
-                                          arg0->column + 0x3F, arg0->row + 0x11, 1, 1, 1, 0x000000FF);
+                        gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
+                                                         arg0->row + 0x11, 1, 1, 1, 0x000000FF);
                     }
                     gDisplayListHead = func_8009BA74(gDisplayListHead, sp9C, arg0->column, arg0->row);
                 }
@@ -6089,8 +5986,7 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
                 break;
             case 0x33: /* switch 6 */
                 func_800A8564(arg0);
-                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004B74, arg0->column, arg0->row,
-                                                 2, arg0->unk1C);
+                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004B74, arg0->column, arg0->row, 2, arg0->unk1C);
                 break;
             case 0x2B: /* switch 6 */
             case 0x2C: /* switch 6 */
@@ -6112,15 +6008,15 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
             case 0x5B: /* switch 6 */
             case 0x5C: /* switch 6 */
                 func_800A8A98(arg0);
-                gDisplayListHead = func_8009BA74(
-                    gDisplayListHead, segmented_to_virtual_dupe(D_800E82C4[arg0->type - 0x52]),
-                    arg0->column, arg0->row);
+                gDisplayListHead =
+                    func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82C4[arg0->type - 0x52]),
+                                  arg0->column, arg0->row);
                 func_800A8CA4(arg0);
                 break;
             case 0x52: /* switch 6 */
-                gDisplayListHead = func_8009BA74(
-                    gDisplayListHead, segmented_to_virtual_dupe(D_800E82C4[arg0->type - 0x52]),
-                    arg0->column, arg0->row);
+                gDisplayListHead =
+                    func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82C4[arg0->type - 0x52]),
+                                  arg0->column, arg0->row);
                 break;
             case 0x5F: /* switch 6 */
             case 0x60: /* switch 6 */
@@ -6138,8 +6034,7 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
                 break;
             case 0x5D: /* switch 6 */
                 func_800A8564(arg0);
-                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004E80, arg0->column, arg0->row,
-                                                 2, arg0->unk1C);
+                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004E80, arg0->column, arg0->row, 2, arg0->unk1C);
                 break;
             case 0x65: /* switch 6 */
             case 0x66: /* switch 6 */
@@ -6150,8 +6045,7 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
                 }
                 func_800A86E8(arg0);
                 set_text_color(3);
-                func_80093324(arg0->column + 8, arg0->row + 0x10, D_800E7728[arg0->type - 0x65], 0,
-                              var_f0, 0.8f);
+                func_80093324(arg0->column + 8, arg0->row + 0x10, D_800E7728[arg0->type - 0x65], 0, var_f0, 0.8f);
                 func_800A874C(arg0);
                 break;
             case 0x6E: /* switch 6 */
@@ -6161,12 +6055,10 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
                 func_800A8EC0(arg0);
                 break;
             case 0x68: /* switch 6 */
-                gDisplayListHead =
-                    draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
-                                  arg0->row + 0x11, 1, 1, 1, 0x000000FF);
-                gDisplayListHead =
-                    func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E8294[gCCSelection]),
-                                  arg0->column, arg0->row);
+                gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
+                                                 arg0->row + 0x11, 1, 1, 1, 0x000000FF);
+                gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E8294[gCCSelection]),
+                                                 arg0->column, arg0->row);
                 break;
             case 0x69: /* switch 6 */
                 func_800A8F48(arg0);
@@ -6182,18 +6074,16 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
             case 0x8C: /* switch 6 */
                 if ((gMainMenuSelectionDepth >= 5) && (var_a1 == (arg0->type - var_v1))) {
                     if (gMainMenuSelectionDepth >= 6) {
-                        gDisplayListHead = draw_box_fill(
-                            gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
-                            arg0->row + 0x11, 0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
+                        gDisplayListHead =
+                            draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
+                                          arg0->row + 0x11, 0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
                     } else {
                         gDisplayListHead = draw_flash_select_case_slow(
-                            gDisplayListHead, arg0->column ^ 0, arg0->row ^ 0, arg0->column + 0x3F,
-                            arg0->row + 0x11);
+                            gDisplayListHead, arg0->column ^ 0, arg0->row ^ 0, arg0->column + 0x3F, arg0->row + 0x11);
                     }
                 } else {
-                    gDisplayListHead =
-                        draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
-                                      arg0->row + 0x11, 1, 1, 1, 0x000000FF);
+                    gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
+                                                     arg0->row + 0x11, 1, 1, 1, 0x000000FF);
                 }
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004A34, arg0->column, arg0->row);
                 set_text_color(3);
@@ -6222,20 +6112,17 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
                 break;
             case 0x96: /* switch 6 */
                 set_text_color(4);
-                func_800936B8(arg0->column, arg0->row, gCupNames[D_800DC540], arg0->unk1C, arg0->unk24,
-                              1.0f);
+                func_800936B8(arg0->column, arg0->row, gCupNames[D_800DC540], arg0->unk1C, arg0->unk24, 1.0f);
                 break;
             case 0x97: /* switch 6 */
                 set_text_color(5);
-                func_80093324(arg0->column, arg0->row, gCourseNames[gCurrentCourseId], arg0->unk1C,
-                              arg0->unk24, 1.0f);
+                func_80093324(arg0->column, arg0->row, gCourseNames[gCurrentCourseId], arg0->unk1C, arg0->unk24, 1.0f);
                 break;
             case 0x98: /* switch 6 */
                 func_800A2D1C(arg0);
                 break;
             case 0x5E: /* switch 6 */
-                gDisplayListHead =
-                    func_80096CD8(gDisplayListHead, 0x00000019, 0x00000072, 0x0000007CU, 0x0000004AU);
+                gDisplayListHead = func_80096CD8(gDisplayListHead, 0x00000019, 0x00000072, 0x0000007CU, 0x0000004AU);
                 break;
             case 0xAA: /* switch 6 */
                 func_800A2EB8(arg0);
@@ -6258,10 +6145,10 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
             case 0xB4: /* switch 6 */
                 if (arg0->state != 0) {
                     var_v1 = arg0->type - 0xB1;
-                    gDisplayListHead = func_8009BA74(
-                        gDisplayListHead,
-                        segmented_to_virtual_dupe(D_800E7D54[D_800EFD64[gCharacterSelections[var_v1]]]),
-                        arg0->column, arg0->row);
+                    gDisplayListHead =
+                        func_8009BA74(gDisplayListHead,
+                                      segmented_to_virtual_dupe(D_800E7D54[D_800EFD64[gCharacterSelections[var_v1]]]),
+                                      arg0->column, arg0->row);
                     func_8009A7EC(arg0->D_8018DEE0_index, arg0->column, arg0->row, var_v1, arg0->unk1C);
                     func_800A11D0(arg0, var_v1, 0x000000FF);
                 }
@@ -6323,8 +6210,7 @@ void func_8009F5E0(struct_8018D9E0_entry *arg0) {
             case 0x130: /* switch 6 */
                 if (arg0->state != 0) {
                     gDisplayListHead = func_8009BA74(
-                        gDisplayListHead,
-                        segmented_to_virtual_dupe(D_800E7D54[D_800EFD64[D_802874D8.unk1E]]),
+                        gDisplayListHead, segmented_to_virtual_dupe(D_800E7D54[D_800EFD64[D_802874D8.unk1E]]),
                         arg0->column, arg0->row);
                     func_8009A7EC(arg0->D_8018DEE0_index, arg0->column, arg0->row, 0, arg0->unk1C);
                 }
@@ -6408,15 +6294,15 @@ void func_800A08D8(u8 arg0, s32 column, s32 row) {
             if (arg0 >= 0x32) {
                 arg0 = 0x2B;
             }
-            gDisplayListHead = func_8009BA74(gDisplayListHead,
-                                             segmented_to_virtual_dupe(D_800E7AF8[arg0]), column, row);
+            gDisplayListHead =
+                func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E7AF8[arg0]), column, row);
         }
     }
 }
 
 // Walks through `someString` for `len` charcters, seemingly even going over null terminators.
 // Returns a count of all non-terminator characters walked over.
-s32 func_800A095C(char *someString, s32 len, s32 column, s32 row) {
+s32 func_800A095C(char* someString, s32 len, s32 column, s32 row) {
     s32 tempColumn;
     s32 nonTerminatorCount;
 
@@ -6434,7 +6320,7 @@ s32 func_800A095C(char *someString, s32 len, s32 column, s32 row) {
 #ifdef NON_MATCHING
 // Non-matching due to the constants 9 and 0xA being saved to the wrong registers
 // Same functionality, but doesn't match byte for byte :/
-void func_800A09E0(struct_8018D9E0_entry *arg0) {
+void func_800A09E0(struct_8018D9E0_entry* arg0) {
     s32 table_row, x = 0x20, y;
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, 319, 194);
     for (table_row = 0; table_row < 9; table_row++) {
@@ -6448,31 +6334,32 @@ void func_800A09E0(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A09E0.s")
 #endif
 
-void func_800A0AD0(UNUSED struct_8018D9E0_entry *arg0) {
-    struct_8018D9E0_entry *temp_t1;
+void func_800A0AD0(UNUSED struct_8018D9E0_entry* arg0) {
+    struct_8018D9E0_entry* temp_t1;
     // Find struct_8018D9E0_entry with a type/id of 0xDA
     temp_t1 = find_8018D9E0_entry_dupe(0xDA);
-    if ((gControllerPakMenuSelection != CONTROLLER_PAK_MENU_SELECT_RECORD)
-        && (gControllerPakMenuSelection != CONTROLLER_PAK_MENU_END)) {
+    if ((gControllerPakMenuSelection != CONTROLLER_PAK_MENU_SELECT_RECORD) &&
+        (gControllerPakMenuSelection != CONTROLLER_PAK_MENU_END)) {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, temp_t1->unk20, 0x00, 0xFF);
-        gDisplayListHead = func_8009BA74(gDisplayListHead, D_02001874, 0x24,
-                                         (gControllerPakSelectedTableRow * 0xA) + 0x7C);
+        gDisplayListHead =
+            func_8009BA74(gDisplayListHead, D_02001874, 0x24, (gControllerPakSelectedTableRow * 0xA) + 0x7C);
     }
 }
 
-void func_800A0B80(struct_8018D9E0_entry *arg0) {
+void func_800A0B80(struct_8018D9E0_entry* arg0) {
     UNUSED s32 temp_a2;
     s32 temp_s1;
     s32 temp_s2;
     s32 var_s1;
     s32 var_s5;
     s32 var_s0;
-    OSPfsState *temp_s4;
+    OSPfsState* temp_s4;
 
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x32, 0xFF);
     for (var_s5 = 0; var_s5 < 9; var_s5++) {
-        if (D_800E86C4[var_s5] == 0)
+        if (D_800E86C4[var_s5] == 0) {
             continue;
+        }
 
         temp_s1 = var_s5 * 0xA;
         var_s0 = D_800E86C4[var_s5];
@@ -6514,17 +6401,17 @@ void func_800A0DFC(void) {
     do {
         temp_t6 = var_s0 % 10;
         var_s0 /= 10;
-        gDisplayListHead = func_8009BA74(
-            gDisplayListHead, segmented_to_virtual_dupe(D_800E7D0C[temp_t6]), var_s1, 0x000000B8);
+        gDisplayListHead =
+            func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E7D0C[temp_t6]), var_s1, 0x000000B8);
         var_s1 -= 9;
     } while (var_s0 != 0);
 }
 
-void func_800A0EB8(UNUSED struct_8018D9E0_entry *arg0, s32 arg1) {
+void func_800A0EB8(UNUSED struct_8018D9E0_entry* arg0, s32 arg1) {
     s32 var_t1;
     s32 thing;
-    Unk_D_800E70A0 *temp_v0;
-    struct_8018D9E0_entry *temp_t3;
+    Unk_D_800E70A0* temp_v0;
+    struct_8018D9E0_entry* temp_t3;
 
     temp_t3 = find_8018D9E0_entry_dupe(0x000000DA);
     if (arg1 == 0) {
@@ -6543,35 +6430,30 @@ void func_800A0EB8(UNUSED struct_8018D9E0_entry *arg0, s32 arg1) {
     }
     temp_v0 = &D_800E7278[var_t1];
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, temp_t3->unk20, 0x00, 0xFF);
-    gDisplayListHead =
-        func_8009BA74(gDisplayListHead, D_0200184C, (s32) temp_v0->column, (s32) temp_v0->row);
+    gDisplayListHead = func_8009BA74(gDisplayListHead, D_0200184C, (s32) temp_v0->column, (s32) temp_v0->row);
 }
 
-void func_800A0FA4(struct_8018D9E0_entry *arg0, s32 arg1) {
+void func_800A0FA4(struct_8018D9E0_entry* arg0, s32 arg1) {
     switch (arg0->state) {
         case 0:
         case 2:
         case 3:
-            gDisplayListHead =
-                func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E8234[(arg1 * 2) + 0]),
-                              arg0->column, arg0->row);
-            gDisplayListHead =
-                func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E8234[(arg1 * 2) + 1]),
-                              arg0->column, arg0->row);
+            gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E8234[(arg1 * 2) + 0]),
+                                             arg0->column, arg0->row);
+            gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E8234[(arg1 * 2) + 1]),
+                                             arg0->column, arg0->row);
             break;
         case 1:
         case 4:
-            gDisplayListHead =
-                func_8009BC9C(gDisplayListHead, segmented_to_virtual_dupe(D_800E8234[(arg1 * 2) + 0]),
-                              arg0->column, arg0->row, 2, arg0->unk1C);
-            gDisplayListHead =
-                func_8009BC9C(gDisplayListHead, segmented_to_virtual_dupe(D_800E8234[(arg1 * 2) + 1]),
-                              arg0->column, arg0->row, 2, arg0->unk1C);
+            gDisplayListHead = func_8009BC9C(gDisplayListHead, segmented_to_virtual_dupe(D_800E8234[(arg1 * 2) + 0]),
+                                             arg0->column, arg0->row, 2, arg0->unk1C);
+            gDisplayListHead = func_8009BC9C(gDisplayListHead, segmented_to_virtual_dupe(D_800E8234[(arg1 * 2) + 1]),
+                                             arg0->column, arg0->row, 2, arg0->unk1C);
             break;
     }
 }
 
-void func_800A10CC(struct_8018D9E0_entry *arg0) {
+void func_800A10CC(struct_8018D9E0_entry* arg0) {
     s32 var_s1;
     s32 index;
 
@@ -6580,14 +6462,13 @@ void func_800A10CC(struct_8018D9E0_entry *arg0) {
         case 3:
         case 4:
         case 5:
-            gDisplayListHead = draw_box_fill(gDisplayListHead, 0x0000001E, 0x00000032, 0x00000122,
-                                             0x0000006E, 0, 0, 0, 0x000000FF);
+            gDisplayListHead =
+                draw_box_fill(gDisplayListHead, 0x0000001E, 0x00000032, 0x00000122, 0x0000006E, 0, 0, 0, 0x000000FF);
             index = arg0->state - 2;
             set_text_color(3);
             for (var_s1 = 0; var_s1 < 4; var_s1++) {
                 // In a perfect world this would be `D_800E7940[index][var_s1]`
-                func_80093324(0x00000023, 0x41 + (0xD * var_s1), D_800E7940[(index * 4) + var_s1], 0,
-                              0.65f, 0.65f);
+                func_80093324(0x00000023, 0x41 + (0xD * var_s1), D_800E7940[(index * 4) + var_s1], 0, 0.65f, 0.65f);
             }
             break;
         default:
@@ -6595,18 +6476,17 @@ void func_800A10CC(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A11D0(struct_8018D9E0_entry *arg0, s32 arg1, s32 arg2) {
-    RGBA16 *temp_v1;
+void func_800A11D0(struct_8018D9E0_entry* arg0, s32 arg1, s32 arg2) {
+    RGBA16* temp_v1;
 
     temp_v1 = &D_800E74A8[arg1];
-    gDPSetPrimColor(gDisplayListHead++, 0, 0, temp_v1->red, temp_v1->green, temp_v1->blue,
-                    temp_v1->alpha);
+    gDPSetPrimColor(gDisplayListHead++, 0, 0, temp_v1->red, temp_v1->green, temp_v1->blue, temp_v1->alpha);
     gDPSetEnvColor(gDisplayListHead++, arg2, arg2, arg2, 0x00);
-    gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82B4[arg1]),
-                                     arg0->column, arg0->row);
+    gDisplayListHead =
+        func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82B4[arg1]), arg0->column, arg0->row);
 }
 
-void func_800A12BC(struct_8018D9E0_entry *arg0, MkTexture *arg1) {
+void func_800A12BC(struct_8018D9E0_entry* arg0, MkTexture* arg1) {
     switch (arg0->state) {
         case 0:
         case 2:
@@ -6615,54 +6495,50 @@ void func_800A12BC(struct_8018D9E0_entry *arg0, MkTexture *arg1) {
             break;
         case 1:
         case 3:
-            gDisplayListHead =
-                func_8009BC9C(gDisplayListHead, arg1, arg0->column, arg0->row, 2, arg0->unk1C);
+            gDisplayListHead = func_8009BC9C(gDisplayListHead, arg1, arg0->column, arg0->row, 2, arg0->unk1C);
             break;
     }
 }
 
-void func_800A1350(struct_8018D9E0_entry *arg0) {
+void func_800A1350(struct_8018D9E0_entry* arg0) {
     s32 thing;
     if (func_800AAFCC(arg0->type - 0x2B) < 0) {
         switch (arg0->state) {
             case 0:
             case 2:
             case 4:
-                gDisplayListHead = draw_box(gDisplayListHead, arg0->column, arg0->row,
-                                            arg0->column + 0x40, arg0->row + 0x4C, 0, 0, 0, 0x00000064);
+                gDisplayListHead = draw_box(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x40,
+                                            arg0->row + 0x4C, 0, 0, 0, 0x00000064);
                 break;
             case 1:
             case 3:
                 thing = arg0->unk1C;
-                gDisplayListHead =
-                    draw_box(gDisplayListHead, arg0->column + thing, arg0->row,
-                             (arg0->column - thing) + 0x40, arg0->row + 0x4C, 0, 0, 0, 0x00000064);
+                gDisplayListHead = draw_box(gDisplayListHead, arg0->column + thing, arg0->row,
+                                            (arg0->column - thing) + 0x40, arg0->row + 0x4C, 0, 0, 0, 0x00000064);
                 break;
         }
     }
 }
 
-void func_800A143C(struct_8018D9E0_entry *arg0, s32 arg1) {
+void func_800A143C(struct_8018D9E0_entry* arg0, s32 arg1) {
     switch (arg0->state) {
         case 0:
         case 2:
         case 3:
-            gDisplayListHead =
-                func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82C4[arg1 + 1]),
-                              arg0->column, arg0->row);
+            gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82C4[arg1 + 1]),
+                                             arg0->column, arg0->row);
             break;
         case 1:
         case 4:
-            gDisplayListHead =
-                func_8009BC9C(gDisplayListHead, segmented_to_virtual_dupe(D_800E82C4[arg1 + 1]),
-                              arg0->column, arg0->row, 2, arg0->unk1C);
+            gDisplayListHead = func_8009BC9C(gDisplayListHead, segmented_to_virtual_dupe(D_800E82C4[arg1 + 1]),
+                                             arg0->column, arg0->row, 2, arg0->unk1C);
             break;
     }
 }
 
-void func_800A1500(struct_8018D9E0_entry *arg0) {
-    struct_8018D9E0_entry *temp_v0;
-    Unk_D_800E70A0 *temp_v0_2;
+void func_800A1500(struct_8018D9E0_entry* arg0) {
+    struct_8018D9E0_entry* temp_v0;
+    Unk_D_800E70A0* temp_v0_2;
     s32 var_a1;
 
     var_a1 = 0;
@@ -6691,26 +6567,26 @@ void func_800A1500(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A15EC(struct_8018D9E0_entry *arg0) {
+void func_800A15EC(struct_8018D9E0_entry* arg0) {
     s16 courseId = gCupCourseOrder[(arg0->type - 0x7C) / 4][(arg0->type - 0x7C) % 4];
-    gDisplayListHead = func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(D_800E7D74[courseId]),
-                                     arg0->column, arg0->row, 2);
-    gDisplayListHead = draw_box(gDisplayListHead, arg0->column, arg0->row + 0x27, arg0->column + 0x40,
-                                arg0->row + 0x30, 0, 0, 0, 0xFF);
-    gDisplayListHead = func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(D_800E7DC4[courseId]),
-                                     arg0->column, arg0->row + 0x27, 3);
+    gDisplayListHead =
+        func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(D_800E7D74[courseId]), arg0->column, arg0->row, 2);
+    gDisplayListHead = draw_box(gDisplayListHead, arg0->column, arg0->row + 0x27, arg0->column + 0x40, arg0->row + 0x30,
+                                0, 0, 0, 0xFF);
+    gDisplayListHead = func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(D_800E7DC4[courseId]), arg0->column,
+                                     arg0->row + 0x27, 3);
     if (func_800B639C(arg0->type - 0x7C) >= 0) {
         // The "^ 0" is required to force the use of v1 instead of a 4th s* register
-        gDisplayListHead = draw_flash_select_case_slow(
-            gDisplayListHead, arg0->column + 0x20, arg0->row ^ 0, arg0->column + 0x3F, arg0->row + 9);
-        gDisplayListHead = func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(&D_02004A0C),
-                                         arg0->column + 0x20, arg0->row, 2);
+        gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, arg0->column + 0x20, arg0->row ^ 0,
+                                                       arg0->column + 0x3F, arg0->row + 9);
+        gDisplayListHead =
+            func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(&D_02004A0C), arg0->column + 0x20, arg0->row, 2);
     }
 }
 
-void func_800A1780(struct_8018D9E0_entry *arg0) {
-    RGBA16 *temp_a1;
-    RGBA16 *temp_v1;
+void func_800A1780(struct_8018D9E0_entry* arg0) {
+    RGBA16* temp_a1;
+    RGBA16* temp_v1;
     s32 temp_a2;
     u32 red;
     u32 green;
@@ -6725,11 +6601,10 @@ void func_800A1780(struct_8018D9E0_entry *arg0) {
     blue = ((temp_v1->blue * temp_a2) + (temp_a1->blue * arg0->unk1C)) / 256;
     alpha = ((temp_v1->alpha * temp_a2) + (temp_a1->alpha * arg0->unk1C)) / 256;
     gDPSetPrimColor(gDisplayListHead++, 0, 0, red, green, blue, alpha);
-    gDisplayListHead =
-        func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_02001FA4), arg0->column, arg0->row);
+    gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_02001FA4), arg0->column, arg0->row);
 }
 
-void func_800A1924(struct_8018D9E0_entry *arg0) {
+void func_800A1924(struct_8018D9E0_entry* arg0) {
     func_8009A76C(arg0->D_8018DEE0_index, 0x17, 0x84, -1);
     if (func_800B639C(gTimeTrialDataCourseIndex) >= TIME_TRIAL_DATA_LUIGI_RACEWAY) {
         gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, 0x57, 0x84, 0x96, 0x95);
@@ -6741,7 +6616,7 @@ void func_800A1924(struct_8018D9E0_entry *arg0) {
     } while (0);
 }
 
-void func_800A1A20(struct_8018D9E0_entry *arg0) {
+void func_800A1A20(struct_8018D9E0_entry* arg0) {
     s16 courseId;
     s32 recordType;
     s32 rowOffset;
@@ -6751,7 +6626,7 @@ void func_800A1A20(struct_8018D9E0_entry *arg0) {
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     draw_text(0x69, arg0->row + 0x19, gCourseNamesDup[courseId], 0, 0.75f, 0.75f);
     set_text_color(TEXT_RED);
-    func_80093324(0x2D, arg0->row + 0x28, (char *) &D_800E77D8, 0, 0.75f, 0.75f);
+    func_80093324(0x2D, arg0->row + 0x28, (char*) &D_800E77D8, 0, 0.75f, 0.75f);
     func_800936B8(0xA5, arg0->row + 0x28, sCourseLengths[courseId], 1, 0.75f, 0.75f);
     set_text_color(TEXT_YELLOW);
     func_80093324(0xA0, arg0->row + 0x86, D_800E7728[0], 0, 0.75f, 0.75f);
@@ -6766,17 +6641,17 @@ void func_800A1A20(struct_8018D9E0_entry *arg0) {
     func_800A474C(TIME_TRIAL_1LAP_RECORD, 0x96, arg0->row + 0xE1);
 }
 
-void func_800A1BE0(struct_8018D9E0_entry *arg0) {
+void func_800A1BE0(struct_8018D9E0_entry* arg0) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
-    UNUSED char *wut;
+    UNUSED char* wut;
     Unk_D_800E70A0 sp78;
     s32 var_s0;
     s32 var_s1;
     s32 var_s2;
     UNUSED s32 thing;
-    CourseTimeTrialRecords *temp_s6;
+    CourseTimeTrialRecords* temp_s6;
 
     temp_s6 = &gSaveData.allCourseTimeTrialRecords.cupRecords[gTimeTrialDataCourseIndex / 4]
                    .courseRecords[gTimeTrialDataCourseIndex % 4];
@@ -6811,10 +6686,10 @@ void func_800A1BE0(struct_8018D9E0_entry *arg0) {
     }
     sp78.column = 0x001F;
     sp78.row = (gCourseRecordsMenuSelection * 0xD) + 0x3A;
-    func_800A66A8(arg0, (Unk_D_800E70A0 *) &sp78);
+    func_800A66A8(arg0, (Unk_D_800E70A0*) &sp78);
 }
 
-void func_800A1DE0(struct_8018D9E0_entry *arg0) {
+void func_800A1DE0(struct_8018D9E0_entry* arg0) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
@@ -6823,15 +6698,15 @@ void func_800A1DE0(struct_8018D9E0_entry *arg0) {
     s32 var_a0;
     UNUSED s32 var_s0;
     s32 var_s1;
-    UNUSED char *wut;
+    UNUSED char* wut;
 
     set_text_color(1);
     for (var_s1 = 0; var_s1 < 3; var_s1++) {
         // Removing `wut` introduces counter intuitive changes to how this loop is handled
         // Also, in a perfect world this would be `D_800E7848[gCourseRecordsMenuSelection - 1][var_s1]`
         wut = D_800E7848[(gCourseRecordsMenuSelection - 1) * 3 + var_s1];
-        func_80093324(0x0000001B, 0x3C + (0xD * var_s1),
-                      D_800E7848[(gCourseRecordsMenuSelection - 1) * 3 + var_s1], 0, 0.65f, 0.65f);
+        func_80093324(0x0000001B, 0x3C + (0xD * var_s1), D_800E7848[(gCourseRecordsMenuSelection - 1) * 3 + var_s1], 0,
+                      0.65f, 0.65f);
     }
 
     for (var_s1 = 0; var_s1 < 2; var_s1++) {
@@ -6850,7 +6725,7 @@ void func_800A1DE0(struct_8018D9E0_entry *arg0) {
     func_800A66A8(arg0, &sp58);
 }
 
-void func_800A1F30(UNUSED struct_8018D9E0_entry *unused) {
+void func_800A1F30(UNUSED struct_8018D9E0_entry* unused) {
     s32 row;
     s32 text;
 
@@ -6862,7 +6737,7 @@ void func_800A1F30(UNUSED struct_8018D9E0_entry *unused) {
 
 #ifdef NON_MATCHING
 // Register allocation stuff, minor stack diffs
-void func_800A1FB0(struct_8018D9E0_entry *arg0) {
+void func_800A1FB0(struct_8018D9E0_entry* arg0) {
     Unk_D_800E70A0 spE0;
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
@@ -6882,7 +6757,7 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
     UNUSED s32 temp_v0;
     UNUSED s32 stackPadding9;
     char sp98[3];
-    struct_8018EE10_entry *var_v1;
+    struct_8018EE10_entry* var_v1;
 
     gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x00000140, 0x000000F0, 0, 0, 0, 0x00000064);
     switch (D_8018EDEC) { /* switch 1 */
@@ -6892,8 +6767,7 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
         case 0x18:        /* switch 1 */
             for (stackPadding0 = 0; stackPadding0 < 4; stackPadding0++) {
                 set_text_color_rainbow_if_selected(D_8018EDEC - 0x15, stackPadding0, 3);
-                func_80093324(0x00000032, 0x55 + (0x23 * stackPadding0), D_800E7868[stackPadding0], 0,
-                              0.9f, 1.0f);
+                func_80093324(0x00000032, 0x55 + (0x23 * stackPadding0), D_800E7868[stackPadding0], 0, 0.9f, 1.0f);
                 if (stackPadding0 == (D_8018EDEC - 0x15)) {
                     spE0.column = 0x0032;
                     spE0.row = 0x55 + (0x23 * stackPadding0);
@@ -6906,13 +6780,11 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
         case 0x1F: /* switch 1 */
             set_text_color(3);
             for (stackPadding0 = 0; stackPadding0 < 3; stackPadding0++) {
-                func_80093324(0x00000028, 0x55 + (0x14 * stackPadding0), D_800E7878[stackPadding0], 0,
-                              1.0f, 1.0f);
+                func_80093324(0x00000028, 0x55 + (0x14 * stackPadding0), D_800E7878[stackPadding0], 0, 1.0f, 1.0f);
             }
             for (stackPadding0 = 0; stackPadding0 < 2; stackPadding0++) {
                 set_text_color_rainbow_if_selected(D_8018EDEC - 0x1E, stackPadding0, 1);
-                func_80093324(0x00000084, 0x96 + (0x19 * stackPadding0), D_800E7840[stackPadding0], 0,
-                              1.0f, 1.0f);
+                func_80093324(0x00000084, 0x96 + (0x19 * stackPadding0), D_800E7840[stackPadding0], 0, 1.0f, 1.0f);
                 if (stackPadding0 == (D_8018EDEC - 0x1E)) {
                     spE0.column = 0x0084;
                     spE0.row = 0x96 + (0x19 * stackPadding0);
@@ -6922,8 +6794,7 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
         case 0x20: /* switch 1 */
             set_text_color(3);
             for (stackPadding0 = 0; stackPadding0 < 3; stackPadding0++) {
-                func_80093324(0x00000032, 0x55 + (0x14 * stackPadding0), D_800E7884[stackPadding0], 0,
-                              1.0f, 1.0f);
+                func_80093324(0x00000032, 0x55 + (0x14 * stackPadding0), D_800E7884[stackPadding0], 0, 1.0f, 1.0f);
             }
             break;
         case 0x2A: /* switch 1 */
@@ -6933,8 +6804,8 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
             set_text_color(2);
             var_s1 = D_8018EDEC - 0x2A;
             for (stackPadding0 = 0; stackPadding0 < 3; stackPadding0++) {
-                func_80093324(0x00000032, 0x55 + (0x14 * stackPadding0),
-                              D_800E78D0[(var_s1 * 3) + stackPadding0], 0, 0.9f, 0.9f);
+                func_80093324(0x00000032, 0x55 + (0x14 * stackPadding0), D_800E78D0[(var_s1 * 3) + stackPadding0], 0,
+                              0.9f, 0.9f);
             }
             break;
         case 0x34: /* switch 1 */
@@ -6944,8 +6815,8 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
             set_text_color(2);
             var_s1 = D_8018EDEC - 0x34;
             for (stackPadding0 = 0; stackPadding0 < 4; stackPadding0++) {
-                func_80093324(0x00000023, 0x55 + (0x14 * stackPadding0),
-                              D_800E7890[(var_s1 * 4) + stackPadding0], 0, 0.8f, 0.8f);
+                func_80093324(0x00000023, 0x55 + (0x14 * stackPadding0), D_800E7890[(var_s1 * 4) + stackPadding0], 0,
+                              0.8f, 0.8f);
             }
             break;
         case 0x41: /* switch 1 */
@@ -6953,16 +6824,15 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
             set_text_color(2);
             var_s1 = D_8018EDEC - 0x41;
             for (stackPadding0 = 0; stackPadding0 < 3; stackPadding0++) {
-                func_80093324(0x00000041, 0x55 + (0x14 * stackPadding0),
-                              D_800E7900[(var_s1 * 3) + stackPadding0], 0, 0.9f, 0.9f);
+                func_80093324(0x00000041, 0x55 + (0x14 * stackPadding0), D_800E7900[(var_s1 * 3) + stackPadding0], 0,
+                              0.9f, 0.9f);
             }
             break;
         case 0x46: /* switch 1 */
         case 0x47: /* switch 1 */
             set_text_color(3);
             for (stackPadding0 = 0; stackPadding0 < 3; stackPadding0++) {
-                func_80093324(0x00000050, 0x55 + (0x14 * stackPadding0), D_800E7A48[stackPadding0], 0,
-                              1.0f, 1.0f);
+                func_80093324(0x00000050, 0x55 + (0x14 * stackPadding0), D_800E7A48[stackPadding0], 0, 1.0f, 1.0f);
             }
             break;
         case 0x28: /* switch 1 */
@@ -7002,21 +6872,19 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
                         set_text_color(1);
                     }
                     convert_number_to_ascii(var_s2 + 1, &spB8[0]);
-                    func_80093324(0x20 + (0x89 * var_s1), 0x96 + (0x1E * var_s2), &spB8[1], 0, 0.6f,
-                                  0.6f);
+                    func_80093324(0x20 + (0x89 * var_s1), 0x96 + (0x1E * var_s2), &spB8[1], 0, 0.6f, 0.6f);
                     if (var_s1 == 0) {
                         var_v1 = &D_8018EE10[var_s2];
                     } else {
-                        var_v1 = &((struct_8018EE10_entry *) D_8018D9C0)[var_s2];
+                        var_v1 = &((struct_8018EE10_entry*) D_8018D9C0)[var_s2];
                     }
                     if (var_v1->ghostDataSaved == 0) {
-                        func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E7A44, 0,
-                                      0.5f, 0.5f);
+                        func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E7A44, 0, 0.5f, 0.5f);
                     } else {
-                        func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2),
-                                      gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4]
-                                                                      [var_v1->courseIndex % 4]],
-                                      0, 0.5f, 0.5f);
+                        func_80093324(
+                            0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2),
+                            gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0,
+                            0.5f, 0.5f);
                     }
                 }
             }
@@ -7043,21 +6911,19 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
                         set_text_color(1);
                     }
                     convert_number_to_ascii(var_s2 + 1, &spA8[0]);
-                    func_80093324(0x20 + (0x89 * var_s1), 0x96 + (0x1E * var_s2), &spA8[1], 0, 0.6f,
-                                  0.6f);
+                    func_80093324(0x20 + (0x89 * var_s1), 0x96 + (0x1E * var_s2), &spA8[1], 0, 0.6f, 0.6f);
                     if (var_s1 == 0) {
                         var_v1 = &D_8018EE10[var_s2];
                     } else {
-                        var_v1 = &((struct_8018EE10_entry *) D_8018D9C0)[var_s2];
+                        var_v1 = &((struct_8018EE10_entry*) D_8018D9C0)[var_s2];
                     }
                     if (var_v1->ghostDataSaved == 0) {
-                        func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E7A44, 0,
-                                      0.5f, 0.5f);
+                        func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E7A44, 0, 0.5f, 0.5f);
                     } else {
-                        func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2),
-                                      gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4]
-                                                                      [var_v1->courseIndex % 4]],
-                                      0, 0.5f, 0.5f);
+                        func_80093324(
+                            0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2),
+                            gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0,
+                            0.5f, 0.5f);
                     }
                 }
             }
@@ -7097,21 +6963,19 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
                         set_text_color(1);
                     }
                     convert_number_to_ascii(var_s2 + 1, &sp98[0]);
-                    func_80093324(0x20 + (0x89 * var_s1), 0x96 + (0x1E * var_s2), &sp98[1], 0, 0.6f,
-                                  0.6f);
+                    func_80093324(0x20 + (0x89 * var_s1), 0x96 + (0x1E * var_s2), &sp98[1], 0, 0.6f, 0.6f);
                     if (var_s1 == 0) {
                         var_v1 = &D_8018EE10[var_s2];
                     } else {
-                        var_v1 = &((struct_8018EE10_entry *) D_8018D9C0)[var_s2];
+                        var_v1 = &((struct_8018EE10_entry*) D_8018D9C0)[var_s2];
                     }
                     if (var_v1->ghostDataSaved == 0) {
-                        func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E7A44, 0,
-                                      0.5f, 0.5f);
+                        func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E7A44, 0, 0.5f, 0.5f);
                     } else {
-                        func_80093324(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2),
-                                      gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4]
-                                                                      [var_v1->courseIndex % 4]],
-                                      0, 0.5f, 0.5f);
+                        func_80093324(
+                            0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2),
+                            gCourseNamesDup2[gCupCourseOrder[var_v1->courseIndex / 4][var_v1->courseIndex % 4]], 0,
+                            0.5f, 0.5f);
                     }
                 }
             }
@@ -7132,13 +6996,13 @@ void func_800A1FB0(struct_8018D9E0_entry *arg0) {
             spE0.row -= 8;
             break;
     }
-    func_800A66A8(arg0, (Unk_D_800E70A0 *) &spE0);
+    func_800A66A8(arg0, (Unk_D_800E70A0*) &spE0);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1FB0.s")
 #endif
 
-void func_800A2D1C(struct_8018D9E0_entry *arg0) {
+void func_800A2D1C(struct_8018D9E0_entry* arg0) {
     switch (D_80164A28) {
         case 1:
             gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x13F, 0x28);
@@ -7161,8 +7025,7 @@ void func_800A2D1C(struct_8018D9E0_entry *arg0) {
                 arg0->unk1C -= 2;
                 if (arg0->unk1C > 0) {
                     gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x13F, arg0->unk1C);
-                    gDisplayListHead =
-                        func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->unk1C, 0x13F, 0xEF);
+                    gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->unk1C, 0x13F, 0xEF);
                 } else {
                     arg0->type = 0;
                 }
@@ -7171,7 +7034,7 @@ void func_800A2D1C(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A2EB8(struct_8018D9E0_entry *arg0) {
+void func_800A2EB8(struct_8018D9E0_entry* arg0) {
     s8 sp70[8];
     UNUSED s32 stackPadding0;
     char sp68[3];
@@ -7208,10 +7071,8 @@ void func_800A2EB8(struct_8018D9E0_entry *arg0) {
     }
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
     temp_s0 = (s32) (((f32) (get_string_width(gCupNames[gCupSelection]) + 8) * 0.6f) / 2);
-    draw_text(
-        (-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column)
-            + 0xF5,
-        arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
+    draw_text((-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xF5,
+              arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
     draw_text((temp_s0 - arg0->column) + 0xF5, arg0->row + 0xE1,
               D_800E76CC[D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
 }
@@ -7241,7 +7102,7 @@ void func_800A32B4(s32 arg0, s32 arg1, s32 characterId, s32 rank) {
     func_800939C8(arg0 + 0x6A, arg1, sp3C, 0, 0.7f, 0.7f);
 }
 
-void func_800A34A8(struct_8018D9E0_entry *arg0) {
+void func_800A34A8(struct_8018D9E0_entry* arg0) {
     s8 sp80[8];
     UNUSED s32 stackPadding0;
     char sp78[3];
@@ -7294,8 +7155,8 @@ void func_800A34A8(struct_8018D9E0_entry *arg0) {
                     var_a0 = 3;
                 }
                 set_text_color(var_a0);
-                func_800A3ADC(arg0, arg0->column + var_v1 + 0x1C, ((rank * 0x10) - arg0->row) + 0x38,
-                              sp80[rank], rank, sp80);
+                func_800A3ADC(arg0, arg0->column + var_v1 + 0x1C, ((rank * 0x10) - arg0->row) + 0x38, sp80[rank], rank,
+                              sp80);
             }
         }
         for (rank = 4; rank < NUM_PLAYERS; rank++) {
@@ -7321,29 +7182,25 @@ void func_800A34A8(struct_8018D9E0_entry *arg0) {
                     var_a0 = 3;
                 }
                 set_text_color(var_a0);
-                func_800A3ADC(arg0, 0xBE - arg0->column, arg0->row + (rank * 0x10) + 0x5A, sp80[rank],
-                              rank, sp80);
+                func_800A3ADC(arg0, 0xBE - arg0->column, arg0->row + (rank * 0x10) + 0x5A, sp80[rank], rank, sp80);
             }
         }
         set_text_color(5);
         temp_s0_3 = ((get_string_width(gCupNames[gCupSelection]) + 8) * 0.6f) / 2;
-        draw_text(
-            (-(s32) (((get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column)
-                + 0xE6,
-            arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
+        draw_text((-(s32) (((get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xE6,
+                  arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
         draw_text((temp_s0_3 - arg0->column) + 0xE6, arg0->row + 0xE1,
-                  D_800E76CC[D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]]], 0, 0.6f,
-                  0.6f);
+                  D_800E76CC[D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
     }
 }
 
-void func_800A3A10(s8 *arg0) {
+void func_800A3A10(s8* arg0) {
     s32 temp_a3;
     s32 temp_t1;
     s32 var_a1;
     s32 var_v0;
     UNUSED s32 thing1;
-    UNUSED s8 *new_var;
+    UNUSED s8* new_var;
 
     for (var_v0 = 0; var_v0 < 8; var_v0++) {
         arg0[var_v0] = var_v0;
@@ -7356,8 +7213,7 @@ void func_800A3A10(s8 *arg0) {
                 arg0[var_a1] = temp_a3;
                 arg0[var_a1 - 1] = temp_t1;
             } else if (gGPPointsByCharacterId[temp_t1] == gGPPointsByCharacterId[temp_a3]) {
-                if ((D_80164478[temp_t1] < gPlayerCount)
-                    && (D_80164478[temp_t1] < D_80164478[temp_a3])) {
+                if ((D_80164478[temp_t1] < gPlayerCount) && (D_80164478[temp_t1] < D_80164478[temp_a3])) {
                     arg0[var_a1] = temp_a3;
                     arg0[var_a1 - 1] = temp_t1;
                 } else {
@@ -7370,8 +7226,7 @@ void func_800A3A10(s8 *arg0) {
     }
 }
 
-void func_800A3ADC(struct_8018D9E0_entry *arg0, s32 arg1, s32 arg2, s32 characterId, s32 arg4,
-                   s8 *arg5) {
+void func_800A3ADC(struct_8018D9E0_entry* arg0, s32 arg1, s32 arg2, s32 characterId, s32 arg4, s8* arg5) {
     UNUSED s32 stackPadding0;
     s32 wut;
     char sp34[4];
@@ -7382,8 +7237,9 @@ void func_800A3ADC(struct_8018D9E0_entry *arg0, s32 arg1, s32 arg2, s32 characte
     } else {
         for (phi_v1 = arg4; phi_v1 > 0; phi_v1--) {
             wut = phi_v1 - 1;
-            if (gGPPointsByCharacterId[arg5[phi_v1]] != gGPPointsByCharacterId[arg5[wut]])
+            if (gGPPointsByCharacterId[arg5[phi_v1]] != gGPPointsByCharacterId[arg5[wut]]) {
                 break;
+            }
         }
         convert_number_to_ascii(phi_v1 + 1, sp34);
     }
@@ -7400,7 +7256,7 @@ void func_800A3ADC(struct_8018D9E0_entry *arg0, s32 arg1, s32 arg2, s32 characte
     }
 }
 
-void func_800A3C84(struct_8018D9E0_entry *arg0) {
+void func_800A3C84(struct_8018D9E0_entry* arg0) {
     s32 recordType;
     s32 rowOffset;
 
@@ -7409,14 +7265,12 @@ void func_800A3C84(struct_8018D9E0_entry *arg0) {
               gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 0.6f, 0.6f);
     set_text_color(TEXT_YELLOW);
     draw_text(arg0->column + 0x46, arg0->row + 0x28, D_800E7730, 0, 0.75f, 0.75f);
-    for (recordType = 0, rowOffset = 0; recordType < TIME_TRIAL_3LAP_RECORD_5;
-         recordType += 1, rowOffset += 0xF) {
+    for (recordType = 0, rowOffset = 0; recordType < TIME_TRIAL_3LAP_RECORD_5; recordType += 1, rowOffset += 0xF) {
         func_800A4550(recordType, arg0->column + 0x17, arg0->row + rowOffset + 0x37);
     }
     set_text_color(TEXT_YELLOW);
     func_80093324(0xB4 - arg0->column, arg0->row + 0x86, D_800E7728[0], 0, 0.75f, 0.75f);
-    for (recordType = 0, rowOffset = 0; recordType < TIME_TRIAL_1LAP_RECORD;
-         recordType += 1, rowOffset += 0xD) {
+    for (recordType = 0, rowOffset = 0; recordType < TIME_TRIAL_1LAP_RECORD; recordType += 1, rowOffset += 0xD) {
         set_text_color(TEXT_RED);
         func_800A474C(recordType, 0xAA - arg0->column, arg0->row + rowOffset + 0x92);
     }
@@ -7425,7 +7279,7 @@ void func_800A3C84(struct_8018D9E0_entry *arg0) {
     func_800A474C(TIME_TRIAL_1LAP_RECORD, 0xAA - arg0->column, arg0->row + 0xE1);
 }
 
-void func_800A3E60(struct_8018D9E0_entry *arg0) {
+void func_800A3E60(struct_8018D9E0_entry* arg0) {
     UNUSED s32 stackPadding0;
     Unk_D_800E70A0 sp84;
     UNUSED s32 stackPadding1;
@@ -7435,14 +7289,16 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
     s32 var_v0;
     s32 var_v1;
     s32 var_s1;
-    Unk_D_800E70A0 *var_v0_5;
+    Unk_D_800E70A0* var_v0_5;
     char sp60[3];
 
     var_v0 = arg0->state;
-    if (var_v0 == 0)
+    if (var_v0 == 0) {
         return;
-    if (var_v0 == 0x0000001F)
+    }
+    if (var_v0 == 0x0000001F) {
         return;
+    }
 
     set_text_color(4);
     draw_text(arg0->column + 0x55, 0x19 - arg0->row,
@@ -7479,11 +7335,11 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
                 if (var_v1 != 0) {
                     set_text_color(0);
                     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, 0x96);
-                    func_80093358(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93,
-                                  gTextPauseButton[var_s1 + 1], 0, 0.75f, 0.75f);
+                    func_80093358(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93, gTextPauseButton[var_s1 + 1],
+                                  0, 0.75f, 0.75f);
                 } else {
-                    func_80093324(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93,
-                                  gTextPauseButton[var_s1 + 1], 0, 0.75f, 0.75f);
+                    func_80093324(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93, gTextPauseButton[var_s1 + 1],
+                                  0, 0.75f, 0.75f);
                 }
             }
             break;
@@ -7496,24 +7352,21 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
             set_text_color(3);
             var_v1 = arg0->state - 11;
             for (var_s1 = 0; var_s1 < 7; var_s1++) {
-                func_80093324(0x000000A2, 0x8C + (0xD * var_s1), D_800E798C[(var_v1 * 7) + var_s1], 0,
-                              0.6f, 0.6f);
+                func_80093324(0x000000A2, 0x8C + (0xD * var_s1), D_800E798C[(var_v1 * 7) + var_s1], 0, 0.6f, 0.6f);
             }
             break;
         case 17: /* switch 1 */
         case 18: /* switch 1 */
             set_text_color(1);
             for (var_s1 = 0; var_s1 < 2; var_s1++) {
-                func_80093324(0x000000A5, arg0->row + (0xD * var_s1) + 0x8C, D_800E7A3C[var_s1], 0,
-                              0.7f, 0.7f);
+                func_80093324(0x000000A5, arg0->row + (0xD * var_s1) + 0x8C, D_800E7A3C[var_s1], 0, 0.7f, 0.7f);
             }
             for (var_s1 = 0; var_s1 < 2; var_s1++) {
                 text_rainbow_effect(arg0->state - 0x11, var_s1, 1);
                 convert_number_to_ascii(var_s1 + 1, sp60);
                 func_80093324(0xB1 - arg0->column, 0xAA + (0x1E * var_s1), &sp60[1], 0, 0.6f, 0.6f);
                 if (D_8018EE10[var_s1].ghostDataSaved == 0) {
-                    func_80093324(0xBB - arg0->column, 0xAA + (0x1E * var_s1), D_800E7A44, 0, 0.45f,
-                                  0.45f);
+                    func_80093324(0xBB - arg0->column, 0xAA + (0x1E * var_s1), D_800E7A44, 0, 0.45f, 0.45f);
                 } else {
                     func_80093324(0xBB - arg0->column, 0xAA + (0x1E * var_s1),
                                   gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4]
@@ -7530,17 +7383,14 @@ void func_800A3E60(struct_8018D9E0_entry *arg0) {
             break;
         case 20: /* switch 1 */
         case 21: /* switch 1 */
-            if (var_s1 && var_s1) {
-            }
+            if (var_s1 && var_s1) {}
             set_text_color(3);
             for (var_s1 = 0; var_s1 < 3; var_s1++) {
-                func_80093324(0x000000A3, arg0->row + (0xD * var_s1) + 0x8C, D_800E7A60[var_s1], 0,
-                              0.67f, 0.67f);
+                func_80093324(0x000000A3, arg0->row + (0xD * var_s1) + 0x8C, D_800E7A60[var_s1], 0, 0.67f, 0.67f);
             }
             for (var_s1 = 0; var_s1 < 2; var_s1++) {
                 text_rainbow_effect(arg0->state - 0x14, var_s1, 1);
-                func_80093324(0xC8 - arg0->column, 0xB9 + (0xF * var_s1), D_800E7A6C[var_s1], 0, 0.75f,
-                              0.75f);
+                func_80093324(0xC8 - arg0->column, 0xB9 + (0xF * var_s1), D_800E7A6C[var_s1], 0, 0.75f, 0.75f);
             }
             break;
         case 25: /* switch 1 */
@@ -7590,7 +7440,7 @@ void func_800A4550(s32 lapNumber, s32 column, s32 row) {
     UNUSED s32 stackPadding1;
     s32 textColor;
     char sp34[3];
-    struct_8018D9E0_entry *temp_v0_2;
+    struct_8018D9E0_entry* temp_v0_2;
 
     if (lapNumber < 3) {
         sp40 = playerHUD[PLAYER_ONE].lapDurations[lapNumber];
@@ -7638,7 +7488,7 @@ void func_800A474C(s32 recordType, s32 column, s32 row) {
     s32 temp_t0;
     s32 characterId;
     char sp38[3];
-    struct_8018D9E0_entry *temp_v0;
+    struct_8018D9E0_entry* temp_v0;
     s32 sp30;
     if (gGamestate == 4) {
         sp30 = 0;
@@ -7685,8 +7535,7 @@ void func_800A474C(s32 recordType, s32 column, s32 row) {
     get_time_record_minutes(temp_t0, sp38);
     func_800939C8(column + 0x27, row, sp38, 0, 0.65f, 0.65f);
     func_80093324(column + 0x32, row, "'", 0, 0.65f, 0.65f);
-    if (!textColor) {
-    }
+    if (!textColor) {}
     get_time_record_seconds(temp_t0, sp38);
     func_800939C8(column + 0x3B, row, sp38, 0, 0.65f, 0.65f);
     func_80093324(column + 0x46, row, "\"", 0, 0.65f, 0.65f);
@@ -7703,7 +7552,7 @@ void func_800A474C(s32 recordType, s32 column, s32 row) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A474C.s")
 #endif
 
-void func_800A4A24(struct_8018D9E0_entry *arg0) {
+void func_800A4A24(struct_8018D9E0_entry* arg0) {
     UNUSED s32 stackPadding0;
     s32 temp_t0;
     s32 temp_t1;
@@ -7714,13 +7563,13 @@ void func_800A4A24(struct_8018D9E0_entry *arg0) {
     temp_t0 = 0x140 - arg0->column;
     temp_t1 = arg0->row;
     temp_t2 = (s32) ((get_string_width(D_800E7780) + 8) * someMultiplier) / 2;
-    gDisplayListHead = draw_box(gDisplayListHead, temp_t0 - temp_t2, (temp_t1 - thing) + 4,
-                                temp_t2 + temp_t0, temp_t1 + 4, 0, 0, 0, 0x00000064);
+    gDisplayListHead = draw_box(gDisplayListHead, temp_t0 - temp_t2, (temp_t1 - thing) + 4, temp_t2 + temp_t0,
+                                temp_t1 + 4, 0, 0, 0, 0x00000064);
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
     draw_text(arg0->column - 3, arg0->row, D_800E7780, 0, 0.85f, 0.85f);
 }
 
-void render_pause_menu(struct_8018D9E0_entry *arg0) {
+void render_pause_menu(struct_8018D9E0_entry* arg0) {
     if (gIsGamePaused != 0) {
         switch (gModeSelection) {
             case TIME_TRIALS:
@@ -7739,7 +7588,7 @@ void render_pause_menu(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void render_pause_menu_time_trials(struct_8018D9E0_entry *arg0) {
+void render_pause_menu_time_trials(struct_8018D9E0_entry* arg0) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
@@ -7750,8 +7599,8 @@ void render_pause_menu_time_trials(struct_8018D9E0_entry *arg0) {
 
     gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x0000008C);
     set_text_color(TEXT_YELLOW);
-    draw_text(0x000000A0, 0x00000050,
-              gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f, 1.0f);
+    draw_text(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f,
+              1.0f);
     set_text_color(TEXT_RED);
     draw_text(0x0000009D, 0x00000060, D_800E7728[0], 0, 0.8f, 0.8f);
     temp_a0 = func_800B4E24(TIME_TRIAL_3LAP_RECORD_1);
@@ -7777,28 +7626,28 @@ void render_pause_menu_time_trials(struct_8018D9E0_entry *arg0) {
     func_800939C8(0x000000B3, 0x00000089, sp68, 0, 0.8f, 0.8f);
     for (var_s0 = 0; var_s0 < 5; var_s0++) {
         text_rainbow_effect(arg0->state - 11, var_s0, TEXT_GREEN);
-        func_80093324(D_800E8538[zero].column, D_800E8538[zero].row + (13 * var_s0),
-                      gTextPauseButton[var_s0], 0, 0.75f, 0.75f);
+        func_80093324(D_800E8538[zero].column, D_800E8538[zero].row + (13 * var_s0), gTextPauseButton[var_s0], 0, 0.75f,
+                      0.75f);
     }
 }
 
-void render_pause_menu_versus(struct_8018D9E0_entry *arg0) {
+void render_pause_menu_versus(struct_8018D9E0_entry* arg0) {
     s16 temp_t0;
     s16 temp_v1;
     s32 temp_t3;
     s32 temp_t4;
     s32 var_s0;
     s32 var_s1;
-    Unk_D_800E70A0 *temp_s3;
-    struct UnkStruct_800DC5EC *temp_v0;
+    Unk_D_800E70A0* temp_s3;
+    struct UnkStruct_800DC5EC* temp_v0;
 
     temp_v0 = &D_8015F480[gIsGamePaused - 1];
     temp_v1 = temp_v0->screenStartX;
     temp_t0 = temp_v0->screenStartY;
     temp_t3 = temp_v0->screenWidth / 2;
     temp_t4 = temp_v0->screenHeight / 2;
-    gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4,
-                                temp_v1 + temp_t3, temp_t0 + temp_t4, 0, 0, 0, 0x0000008C);
+    gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3,
+                                temp_t0 + temp_t4, 0, 0, 0, 0x0000008C);
     temp_s3 = &D_800E8540[(gScreenModeSelection * 4) + (gIsGamePaused - 1)];
     for (var_s0 = 0; var_s0 < 4; var_s0++) {
         if (var_s0 > 0) {
@@ -7807,12 +7656,11 @@ void render_pause_menu_versus(struct_8018D9E0_entry *arg0) {
             var_s1 = var_s0;
         }
         text_rainbow_effect(arg0->state - 0x15, var_s0, TEXT_YELLOW);
-        func_80093324(temp_s3->column - 2, temp_s3->row + (13 * var_s0), gTextPauseButton[var_s1], 0,
-                      0.75f, 0.75f);
+        func_80093324(temp_s3->column - 2, temp_s3->row + (13 * var_s0), gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
     }
 }
 
-void render_pause_grand_prix(struct_8018D9E0_entry *arg0) {
+void render_pause_grand_prix(struct_8018D9E0_entry* arg0) {
     s32 temp_t0;
     s32 temp_v1;
     s32 temp_s0;
@@ -7820,8 +7668,8 @@ void render_pause_grand_prix(struct_8018D9E0_entry *arg0) {
     s32 temp_t3;
     s32 temp_t4;
     s32 var_s0;
-    Unk_D_800E70A0 *temp_s3;
-    struct UnkStruct_800DC5EC *temp_v0;
+    Unk_D_800E70A0* temp_s3;
+    struct UnkStruct_800DC5EC* temp_v0;
     f32 one = 1.0f;
 
     temp_v0 = &D_8015F480[gIsGamePaused - 1];
@@ -7829,8 +7677,8 @@ void render_pause_grand_prix(struct_8018D9E0_entry *arg0) {
     temp_t0 = temp_v0->screenStartY;
     temp_t3 = temp_v0->screenWidth / 2;
     temp_t4 = temp_v0->screenHeight / 2;
-    gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4,
-                                temp_v1 + temp_t3, temp_t0 + temp_t4, 0, 0, 0, 140);
+    gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3,
+                                temp_t0 + temp_t4, 0, 0, 0, 140);
     temp_s3 = &D_800E85C0[(gScreenModeSelection * 4) + (gIsGamePaused - 1)];
     temp_s0 = ((get_string_width(gCupNames[gCupSelection]) * one) + 10.0f) / 2;
     temp_s1 = ((get_string_width(D_800E76CC[gCCSelection]) * one) + 10.0f) / 2;
@@ -7839,32 +7687,31 @@ void render_pause_grand_prix(struct_8018D9E0_entry *arg0) {
     set_text_color(TEXT_YELLOW);
     draw_text(160 + temp_s0, temp_s3->row - 50, D_800E76CC[gCCSelection], 0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
-    draw_text(160, temp_s3->row - 30,
-              gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f, 1.0f);
+    draw_text(160, temp_s3->row - 30, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f,
+              1.0f);
     for (var_s0 = 0; var_s0 < 2; var_s0++) {
         text_rainbow_effect(arg0->state - 31, var_s0, TEXT_YELLOW);
-        func_80093324(temp_s3->column, temp_s3->row + (var_s0 * 13), gTextPauseButton[var_s0 * 4], 0,
-                      0.75f, 0.75f);
+        func_80093324(temp_s3->column, temp_s3->row + (var_s0 * 13), gTextPauseButton[var_s0 * 4], 0, 0.75f, 0.75f);
     }
 }
 
-void render_pause_battle(struct_8018D9E0_entry *arg0) {
-    struct UnkStruct_800DC5EC *temp_v0;
+void render_pause_battle(struct_8018D9E0_entry* arg0) {
+    struct UnkStruct_800DC5EC* temp_v0;
     s16 temp_t0;
     s16 temp_v1;
     s32 temp_t3;
     s32 temp_t4;
     s32 var_a1;
     s32 var_s1;
-    Unk_D_800E70A0 *temp_s3;
+    Unk_D_800E70A0* temp_s3;
 
     temp_v0 = &D_8015F480[gIsGamePaused - 1];
     temp_v1 = temp_v0->screenStartX;
     temp_t0 = temp_v0->screenStartY;
     temp_t3 = temp_v0->screenWidth / 2;
     temp_t4 = temp_v0->screenHeight / 2;
-    gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4,
-                                temp_v1 + temp_t3, temp_t0 + temp_t4, 0, 0, 0, 0x0000008C);
+    gDisplayListHead = draw_box(gDisplayListHead, temp_v1 - temp_t3, temp_t0 - temp_t4, temp_v1 + temp_t3,
+                                temp_t0 + temp_t4, 0, 0, 0, 0x0000008C);
     temp_s3 = &D_800E8600[(gScreenModeSelection * 4) + (gIsGamePaused - 1)];
     for (var_a1 = 0; var_a1 < 4; var_a1++) {
         if (var_a1 > 0) {
@@ -7873,29 +7720,27 @@ void render_pause_battle(struct_8018D9E0_entry *arg0) {
             var_s1 = var_a1;
         }
         text_rainbow_effect(arg0->state - 0x29, var_a1, TEXT_YELLOW);
-        func_80093324(temp_s3->column - 2, temp_s3->row + 13 * var_a1, gTextPauseButton[var_s1], 0,
-                      0.75f, 0.75f);
+        func_80093324(temp_s3->column - 2, temp_s3->row + 13 * var_a1, gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
     }
 }
 
 void func_800A54EC(void) {
     Unk_D_800E70A0 sp50;
-    Unk_D_800E70A0 *var_v1;
-    struct_8018D9E0_entry *sp48;
+    Unk_D_800E70A0* var_v1;
+    struct_8018D9E0_entry* sp48;
     s32 whyTheSequel;
     s32 why;
-    UNUSED Unk_D_800E70A0 *huh;
+    UNUSED Unk_D_800E70A0* huh;
 
-    if (gIsGamePaused == 0)
+    if (gIsGamePaused == 0) {
         return;
+    }
 
     why = gModeSelection;
     sp48 = find_8018D9E0_entry(0x000000C7);
-    if (why) {
-    } // ?????
+    if (why) {} // ?????
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
-    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f,
-            1.0f);
+    guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     switch (why) { /* irregular */
@@ -7920,7 +7765,7 @@ void func_800A54EC(void) {
     func_800A66A8(sp48, &sp50);
 }
 
-void func_800A5738(struct_8018D9E0_entry *arg0) {
+void func_800A5738(struct_8018D9E0_entry* arg0) {
     Unk_D_800E70A0 sp98;
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
@@ -7935,14 +7780,14 @@ void func_800A5738(struct_8018D9E0_entry *arg0) {
     s32 var_s2;
     s32 temp_v0;
     s32 zero = 0;
-    Unk_D_800E70A0 *var_v0_9;
+    Unk_D_800E70A0* var_v0_9;
     char sp5C[3];
 
     if (arg0->state == 0) {
         if ((arg0->unk1C >= 0x1E) && ((gGlobalTimer / 16) % 2)) {
             why = get_string_width(gTextPauseButton[5]) * 0.8f;
-            gDisplayListHead = draw_box(gDisplayListHead, 0x000000C0, 0x00000021, (s32) (why) + 0xC6,
-                                        0x00000032, 0, 0, 0, 0x00000096);
+            gDisplayListHead =
+                draw_box(gDisplayListHead, 0x000000C0, 0x00000021, (s32) (why) + 0xC6, 0x00000032, 0, 0, 0, 0x00000096);
             set_text_color(1);
             func_80093324(0x000000BF, 0x00000030, gTextPauseButton[5], 0, 0.8f, 0.8f);
         }
@@ -7957,9 +7802,8 @@ void func_800A5738(struct_8018D9E0_entry *arg0) {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, var_s1);
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, var_s2);
         set_text_color(3);
-        func_80093754(0x000000A0, 0x00000050,
-                      gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0, 1.0f,
-                      1.0f);
+        func_80093754(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCupCourseSelection]], 0,
+                      1.0f, 1.0f);
         switch (arg0->state) { /* switch 1 */
             case 1:            /* switch 1 */
             case 11:           /* switch 1 */
@@ -8006,31 +7850,26 @@ void func_800A5738(struct_8018D9E0_entry *arg0) {
                 set_text_color(3);
                 temp_v0 = arg0->state - 0x15;
                 for (var_s1 = 0; var_s1 < 7; var_s1++) {
-                    func_80093324(0x0000004D, 0x6E + (0xD * var_s1), D_800E798C[(temp_v0 * 7) + var_s1],
-                                  0, 0.8f, 0.8f);
+                    func_80093324(0x0000004D, 0x6E + (0xD * var_s1), D_800E798C[(temp_v0 * 7) + var_s1], 0, 0.8f, 0.8f);
                 }
                 break;
             case 30: /* switch 1 */
             case 31: /* switch 1 */
                 set_text_color(1);
                 for (var_s1 = 0; var_s1 < 2; var_s1++) {
-                    func_80093324(0x0000005A, arg0->row + (0xD * var_s1) + 0x6E, D_800E7A3C[var_s1], 0,
-                                  0.8f, 0.8f);
+                    func_80093324(0x0000005A, arg0->row + (0xD * var_s1) + 0x6E, D_800E7A3C[var_s1], 0, 0.8f, 0.8f);
                 }
                 for (var_s1 = 0; var_s1 < 2; var_s1++) {
                     text_rainbow_effect(arg0->state - 0x1E, var_s1, TEXT_GREEN);
                     convert_number_to_ascii(var_s1 + 1, sp5C);
-                    func_80093324(0x5A - arg0->column, (0x96 + (0x14 * var_s1)), &sp5C[1], 0, 0.75f,
-                                  0.75f);
+                    func_80093324(0x5A - arg0->column, (0x96 + (0x14 * var_s1)), &sp5C[1], 0, 0.75f, 0.75f);
                     if (D_8018EE10[var_s1].ghostDataSaved == 0) {
-                        func_80093324(0x69 - arg0->column, (0x96 + (0x14 * var_s1)), D_800E7A44, 0,
-                                      0.75f, 0.75f);
+                        func_80093324(0x69 - arg0->column, (0x96 + (0x14 * var_s1)), D_800E7A44, 0, 0.75f, 0.75f);
                     } else {
-                        func_80093324(
-                            0x69 - arg0->column, (0x96 + (0x14 * var_s1)),
-                            gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4]
-                                                            [D_8018EE10[var_s1].courseIndex % 4]],
-                            0, 0.75f, 0.75f);
+                        func_80093324(0x69 - arg0->column, (0x96 + (0x14 * var_s1)),
+                                      gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4]
+                                                                      [D_8018EE10[var_s1].courseIndex % 4]],
+                                      0, 0.75f, 0.75f);
                     }
                 }
                 break;
@@ -8044,13 +7883,11 @@ void func_800A5738(struct_8018D9E0_entry *arg0) {
             case 36: /* switch 1 */
                 set_text_color(3);
                 for (var_s1 = 0; var_s1 < 3; var_s1++) {
-                    func_80093324(0x00000055, arg0->row + (0xD * var_s1) + 0x6E, D_800E7A60[var_s1], 0,
-                                  0.8f, 0.8f);
+                    func_80093324(0x00000055, arg0->row + (0xD * var_s1) + 0x6E, D_800E7A60[var_s1], 0, 0.8f, 0.8f);
                 }
                 for (var_s1 = 0; var_s1 < 2; var_s1++) {
                     text_rainbow_effect(arg0->state - 0x23, var_s1, TEXT_GREEN);
-                    func_80093324(0x7D - arg0->column, 0x9B + (0xF * var_s1), D_800E7A6C[var_s1], 0,
-                                  0.8f, 0.8f);
+                    func_80093324(0x7D - arg0->column, 0x9B + (0xF * var_s1), D_800E7A6C[var_s1], 0, 0.8f, 0.8f);
                 }
                 break;
             case 40: /* switch 1 */
@@ -8081,8 +7918,7 @@ void func_800A5738(struct_8018D9E0_entry *arg0) {
                 break;
             case 35: /* switch 2 */
             case 36: /* switch 2 */
-                if (0) {
-                } // wtf?
+                if (0) {} // wtf?
                 var_v0_9 = &D_800E7420[arg0->state - 35];
                 break;
             default:
@@ -8094,8 +7930,8 @@ void func_800A5738(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A6034(struct_8018D9E0_entry *arg0) {
-    char *text;
+void func_800A6034(struct_8018D9E0_entry* arg0) {
+    char* text;
 
     if (D_801657E8 != true) {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, arg0->unk1C);
@@ -8108,7 +7944,7 @@ void func_800A6034(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A6154(struct_8018D9E0_entry *arg0) {
+void func_800A6154(struct_8018D9E0_entry* arg0) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
@@ -8118,16 +7954,14 @@ void func_800A6154(struct_8018D9E0_entry *arg0) {
     s32 var_s1;
 
     if (arg0->state == 0) {
-        gDisplayListHead =
-            draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, arg0->unk1C);
+        gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, arg0->unk1C);
         set_text_color(3);
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, (arg0->unk1C * 0xFF) / 100);
         for (var_s1 = 0, var_s0 = 0x96; var_s0 < 0xBE; var_s1++, var_s0 += 0x14) {
             func_80093358(0x0000008C, var_s0, gTextPauseButton[(var_s1 * 3) + 1], 0, 1.0f, 1.0f);
         }
     } else {
-        gDisplayListHead =
-            draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x00000064);
+        gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x00000064);
         for (var_s1 = 0, var_s0 = 0x96; var_s1 < 2; var_s1++, var_s0 += 0x14) {
             text_rainbow_effect(arg0->state - 0xB, var_s1, TEXT_YELLOW);
             func_80093324(0x0000008C, var_s0, gTextPauseButton[(var_s1 * 3) + 1], 0, 1.0f, 1.0f);
@@ -8140,27 +7974,24 @@ void func_800A6154(struct_8018D9E0_entry *arg0) {
     }
     if (arg0->unk20 > 0) {
         gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x0000013F, arg0->unk20);
-        gDisplayListHead =
-            func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->unk20, 0x0000013F, 0x000000EF);
+        gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->unk20, 0x0000013F, 0x000000EF);
     }
 }
 
-void func_800A638C(struct_8018D9E0_entry *arg0) {
+void func_800A638C(struct_8018D9E0_entry* arg0) {
     UNUSED s32 temp_a0;
     s32 var_a1;
     UNUSED s32 var_s0;
     s32 var_s1;
-    UNUSED s8 **var_s2;
+    UNUSED s8** var_s2;
 
     if (arg0->state == 0) {
-        gDisplayListHead =
-            draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, arg0->unk1C);
+        gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, arg0->unk1C);
         set_text_color(5);
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, (arg0->unk1C * 0xFF) / 100);
         func_80093754(0x000000A0, arg0->row + 0x1E, D_800E7778[gModeSelection / 3], 0, 1.0f, 1.0f);
     } else {
-        gDisplayListHead =
-            draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x00000064);
+        gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x00000064);
         set_text_color(5);
         draw_text(0x000000A0, arg0->row + 0x1E, D_800E7778[gModeSelection / 3], 0, 1.0f, 1.0f);
     }
@@ -8193,20 +8024,19 @@ void func_800A638C(struct_8018D9E0_entry *arg0) {
     if (arg0->state >= 10) {
         for (var_s1 = 0; var_s1 < 4; var_s1++) {
             text_rainbow_effect(arg0->state - 0xA, var_s1, TEXT_GREEN);
-            func_80093324(0x00000069, 0xAE + (0xF * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.8f,
-                          0.8f);
+            func_80093324(0x00000069, 0xAE + (0xF * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.8f, 0.8f);
         }
         func_800A66A8(arg0, &D_800E7360[arg0->state - 10]);
     }
 }
 
 #ifdef NON_MATCHING
-void guMtxCatL(Mtx *, Mtx *, Mtx *);
+void guMtxCatL(Mtx*, Mtx*, Mtx*);
 // https://decomp.me/scratch/GUqCE
 // All the math stuff at the top is messed up
-void func_800A66A8(struct_8018D9E0_entry *arg0, Unk_D_800E70A0 *arg1) {
-    Mtx *temp_s0;
-    Mtx *temp_s1;
+void func_800A66A8(struct_8018D9E0_entry* arg0, Unk_D_800E70A0* arg1) {
+    Mtx* temp_s0;
+    Mtx* temp_s1;
     f32 temp_f2;
     f32 temp_f12;
     f32 temp_f14;
@@ -8248,14 +8078,14 @@ void func_800A66A8(struct_8018D9E0_entry *arg0, Unk_D_800E70A0 *arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A66A8.s")
 #endif
 
-void func_800A69C8(UNUSED struct_8018D9E0_entry *arg0) {
-    Unk_D_800E70A0 *thing;
+void func_800A69C8(UNUSED struct_8018D9E0_entry* arg0) {
+    Unk_D_800E70A0* thing;
     UNUSED s32 stackPadding1;
     s32 var_s0;
     char sp74[5];
     s32 var_v1;
-    char *temp_s3;
-    u8 *var_s4;
+    char* temp_s3;
+    u8* var_s4;
 
     for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
         var_v1 = 0;
@@ -8289,7 +8119,7 @@ void func_800A69C8(UNUSED struct_8018D9E0_entry *arg0) {
     text_draw(0x0000009E, D_800E7300[0].row + 0x6D, "ー", 0, 1.0f, 1.0f);
 }
 
-void func_800A6BEC(UNUSED struct_8018D9E0_entry *arg0) {
+void func_800A6BEC(UNUSED struct_8018D9E0_entry* arg0) {
     s32 var_s0;
 
     for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
@@ -8304,7 +8134,7 @@ void func_800A6BEC(UNUSED struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A6CC0(UNUSED struct_8018D9E0_entry *arg0) {
+void func_800A6CC0(UNUSED struct_8018D9E0_entry* arg0) {
     s32 var_s0;
 
     for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
@@ -8319,9 +8149,9 @@ void func_800A6CC0(UNUSED struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A6D94(s32 arg0, s32 arg1, u8 *arg2) {
+void func_800A6D94(s32 arg0, s32 arg1, u8* arg2) {
     UNUSED s32 stackPadding0;
-    Unk_D_800E70A0 *stackPadding1;
+    Unk_D_800E70A0* stackPadding1;
     char sp30[5];
     s32 var_v0;
     f32 otherThing;
@@ -8340,15 +8170,15 @@ void func_800A6D94(s32 arg0, s32 arg1, u8 *arg2) {
     stackPadding1 = &D_800E7300[((arg0 - 2) * 4) + arg1];
     func_800A79F4(thing, sp30);
     otherThing = 0.75f;
-    text_draw((stackPadding1->column + 0x20) - ((32.0f * otherThing) / 2), stackPadding1->row + 0x75,
-              sp30, 0, 0.75f, 0.75f);
+    text_draw((stackPadding1->column + 0x20) - ((32.0f * otherThing) / 2), stackPadding1->row + 0x75, sp30, 0, 0.75f,
+              0.75f);
 }
 
 // The ｓ/ｎ/ｒ/ー are not ASCII characters, they're EUC-JP characters
-void func_800A6E94(s32 arg0, s32 arg1, u8 *arg2) {
+void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
     UNUSED s32 stackPadding0;
-    u8 *temp_v0;
-    Unk_D_800E70A0 *temp_s0;
+    u8* temp_v0;
+    Unk_D_800E70A0* temp_s0;
     char sp40[3];
     s32 rank;
     // Everything about this variable is bizarre
@@ -8383,7 +8213,7 @@ void func_800A6E94(s32 arg0, s32 arg1, u8 *arg2) {
     text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x78, sp40, 0, 0.8f, 0.8f);
 }
 
-void func_800A70E8(struct_8018D9E0_entry *arg0) {
+void func_800A70E8(struct_8018D9E0_entry* arg0) {
     s32 var_s0;
     s32 temp_f6;
     s32 alpha;
@@ -8396,8 +8226,8 @@ void func_800A70E8(struct_8018D9E0_entry *arg0) {
         if (var_s0 < temp_f6) {
             var_s0 = temp_f6;
         }
-        gDisplayListHead = draw_box(gDisplayListHead, 0x000000C0, 0x00000022, var_s0 + 0xC6, 0x00000039,
-                                    0, 0, 0, 0x00000096);
+        gDisplayListHead =
+            draw_box(gDisplayListHead, 0x000000C0, 0x00000022, var_s0 + 0xC6, 0x00000039, 0, 0, 0, 0x00000096);
         alpha = 0x180 - ((arg0->unk1C % 32) * 8);
         if (alpha >= 0x100) {
             alpha = 0xFF;
@@ -8411,7 +8241,7 @@ void func_800A70E8(struct_8018D9E0_entry *arg0) {
 }
 
 // Shading layer of the grand prix podium result screen
-void func_800A7258(struct_8018D9E0_entry *arg0) {
+void func_800A7258(struct_8018D9E0_entry* arg0) {
     if (arg0->state == 0) {
         // If shading layer is fading in
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x13F, 0xEF, 0, 0, 0, arg0->unk1C);
@@ -8422,7 +8252,7 @@ void func_800A7258(struct_8018D9E0_entry *arg0) {
 }
 
 // Podium scene, top line
-void func_800A72FC(struct_8018D9E0_entry *arg0) {
+void func_800A72FC(struct_8018D9E0_entry* arg0) {
     UNUSED s32 pad;
     s32 cupNameLength = (((f32) get_string_width(gCupNames[gCupSelection]) * 1) + 10) / 2;
     s32 ccNameLength = (((f32) get_string_width(D_800E76CC[gCCSelection]) * 1) + 10) / 2;
@@ -8433,7 +8263,7 @@ void func_800A72FC(struct_8018D9E0_entry *arg0) {
     draw_text(arg0->column + cupNameLength, arg0->row, D_800E76DC[gCCSelection], 0, 1, 1);
 }
 
-void func_800A7448(struct_8018D9E0_entry *arg0) {
+void func_800A7448(struct_8018D9E0_entry* arg0) {
     UNUSED s32 pad;
     s32 sp40;
     s32 sp3C;
@@ -8451,7 +8281,7 @@ void func_800A7448(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A75A0(struct_8018D9E0_entry *arg0) {
+void func_800A75A0(struct_8018D9E0_entry* arg0) {
     UNUSED s32 pad;
     s32 topThree;
 
@@ -8465,7 +8295,7 @@ void func_800A75A0(struct_8018D9E0_entry *arg0) {
     draw_text(arg0->column, arg0->row, D_800E7A9C[topThree], 0, 1.3f, 1.3f);
 }
 
-void func_800A761C(struct_8018D9E0_entry *arg0) {
+void func_800A761C(struct_8018D9E0_entry* arg0) {
     UNUSED s32 stackPadding0;
     s32 sp48;
     s32 sp44;
@@ -8485,7 +8315,7 @@ void func_800A761C(struct_8018D9E0_entry *arg0) {
     func_800939C8((arg0->column + sp48) - 0x18, arg0->row, &sp3C[1], 0, 2.0f, 2.0f);
 }
 
-void func_800A7790(struct_8018D9E0_entry *arg0) {
+void func_800A7790(struct_8018D9E0_entry* arg0) {
     f32 someScaling;
     s32 creditIndex;
     s8 slideDirection;
@@ -8506,7 +8336,7 @@ void func_800A7790(struct_8018D9E0_entry *arg0) {
 
 // Originally func_800A7894
 // Presumes that "number" is a 2 digit number. Convert it to a string
-void convert_number_to_ascii(s32 number, char *buffer) {
+void convert_number_to_ascii(s32 number, char* buffer) {
     buffer[0] = (number / 0xA) + 0x30;
     buffer[1] = (number % 0xA) + 0x30;
     // Terminator
@@ -8517,7 +8347,7 @@ void convert_number_to_ascii(s32 number, char *buffer) {
 // MK 64 doesn't show more then 2 digits for any given time
 // (minute, second, centisecond)
 // So, if timeRecord is greater than 10 minutes, just use '-'s
-void write_dashes(char *buffer) {
+void write_dashes(char* buffer) {
     buffer[0] = 0x2D;
     buffer[1] = 0x2D;
     buffer[2] = '\0';
@@ -8525,7 +8355,7 @@ void write_dashes(char *buffer) {
 
 // Originally func_800A78F4
 // timeRecord is assumed to be measured in centiseconds
-void get_time_record_minutes(s32 timeRecord, char *buffer) {
+void get_time_record_minutes(s32 timeRecord, char* buffer) {
     // If timeRecord is greater than 100 minutes, put '-'
     // in buffer
     if (timeRecord >= MAX_TIME) {
@@ -8537,7 +8367,7 @@ void get_time_record_minutes(s32 timeRecord, char *buffer) {
 
 // Originally func_800A7944
 // timeRecord is assumed to be measured in centiseconds
-void get_time_record_seconds(s32 timeRecord, char *buffer) {
+void get_time_record_seconds(s32 timeRecord, char* buffer) {
     // If timeRecord is greater than 100 minutes, put '-'
     // in buffer
     if (timeRecord >= MAX_TIME) {
@@ -8549,7 +8379,7 @@ void get_time_record_seconds(s32 timeRecord, char *buffer) {
 
 // Originally func_800A79A4
 // timeRecord is assumed to be measured in centiseconds
-void get_time_record_centiseconds(s32 timeRecord, char *buffer) {
+void get_time_record_centiseconds(s32 timeRecord, char* buffer) {
     // If timeRecord is greater than 100 minutes, put '-'
     // in buffer
     if (timeRecord >= MAX_TIME) {
@@ -8560,7 +8390,7 @@ void get_time_record_centiseconds(s32 timeRecord, char *buffer) {
 }
 
 // Converts a 2-digit number to EUC-JP by the looks of it
-void func_800A79F4(s32 arg0, char *arg1) {
+void func_800A79F4(s32 arg0, char* arg1) {
     arg1[0] = 0xA3;
     arg1[1] = (arg0 / 0xA) - 0x50;
     arg1[2] = 0xA3;
@@ -8573,7 +8403,7 @@ void func_800A7A4C(s32 arg0) {
     s32 var_v1;
     s32 var_v1_2;
     s32 type;
-    struct_8018D9E0_entry *var_s1;
+    struct_8018D9E0_entry* var_s1;
     s32 one = 1;
 
     for (var_v1_2 = 0; var_v1_2 < D_8018D9E0_SIZE; var_v1_2++) {
@@ -8588,8 +8418,9 @@ void func_800A7A4C(s32 arg0) {
             var_v1 = 1;
         }
 
-        if (var_v1 == 0)
+        if (var_v1 == 0) {
             continue;
+        }
 
         switch (type) { /* switch 8; irregular */
             case 0xFA:  /* switch 8 */
@@ -8963,8 +8794,7 @@ void func_800A7A4C(s32 arg0) {
         for (var_v1_2 = 0; var_v1_2 < D_8018D9E0_SIZE; var_v1_2++) {
             var_v1 = 0;
             var_s1 = &D_8018D9E0[var_v1_2];
-            if (var_s1 && var_s1) {
-            } // ?
+            if (var_s1 && var_s1) {} // ?
             type = var_s1->type;
             if ((type == 4) || (type == 5) || (type == 0x000000C7)) {
                 if (arg0 != 0) {
@@ -8988,7 +8818,7 @@ void func_800A8250(void) {
     func_800A7A4C(1);
 }
 
-void func_800A8270(s32 arg0, struct_8018D9E0_entry *arg1) {
+void func_800A8270(s32 arg0, struct_8018D9E0_entry* arg1) {
     s32 temp_t1;
     s32 temp_t6;
     s32 var_s0;
@@ -9006,42 +8836,37 @@ void func_800A8270(s32 arg0, struct_8018D9E0_entry *arg1) {
         gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
         gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
         if ((arg0 + 1) == gPlayerCount) {
-            if ((gMainMenuSelectionDepth == OPTIONS_SELECTION)
-                || (gMainMenuSelectionDepth == DATA_SELECTION)
-                || (gMainMenuSelectionDepth == PLAYER_NUM_SELECTION)) {
-                gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, var_s3, var_s0, var_s4,
-                                                               var_s0 + 0x35);
+            if ((gMainMenuSelectionDepth == OPTIONS_SELECTION) || (gMainMenuSelectionDepth == DATA_SELECTION) ||
+                (gMainMenuSelectionDepth == PLAYER_NUM_SELECTION)) {
+                gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x35);
             } else {
-                gDisplayListHead =
-                    draw_box_fill(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x35, 0x000000FF,
-                                  0x000000F9, 0x000000DC, 0x000000FF);
+                gDisplayListHead = draw_box_fill(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x35, 0x000000FF,
+                                                 0x000000F9, 0x000000DC, 0x000000FF);
             }
         } else {
             gDisplayListHead = func_80098FC8(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x35);
         }
         for (var_s0 += 0x41, var_s2 = 0; var_s2 <= D_800F2B60[0][arg0]; var_s2++, var_s0 += 0x12) {
-            if ((var_s2 == D_800E86AC[arg0]) && ((arg0 + 1) == gPlayerCount)
-                && (gMainMenuSelectionDepth >= 4)) {
+            if ((var_s2 == D_800E86AC[arg0]) && ((arg0 + 1) == gPlayerCount) && (gMainMenuSelectionDepth >= 4)) {
                 if (gMainMenuSelectionDepth == GAME_MODE_SELECTION) {
-                    gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, var_s3, var_s0,
-                                                                   var_s4, var_s0 + 0x11);
-                } else {
                     gDisplayListHead =
-                        draw_box_fill(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x11,
-                                      0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
+                        draw_flash_select_case_slow(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x11);
+                } else {
+                    gDisplayListHead = draw_box_fill(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x11,
+                                                     0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
                 }
             } else {
-                gDisplayListHead = draw_box_fill(gDisplayListHead, var_s3, var_s0, var_s4,
-                                                 var_s0 + 0x11, 1, 1, 1, 0x000000FF);
+                gDisplayListHead =
+                    draw_box_fill(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x11, 1, 1, 1, 0x000000FF);
             }
         }
     }
 }
 
-void func_800A8564(struct_8018D9E0_entry *arg0) {
+void func_800A8564(struct_8018D9E0_entry* arg0) {
     s32 sp34;
     s32 var_a1;
-    MkTexture *var_a0;
+    MkTexture* var_a0;
     s32 temp_a2;
     s32 temp_t0;
 
@@ -9049,8 +8874,8 @@ void func_800A8564(struct_8018D9E0_entry *arg0) {
     switch (arg0->type) { /* irregular */
         case 0xF:
             var_a0 = D_0200487C;
-            if ((gMainMenuSelectionDepth == CONFIRM_OK_SELECTION)
-                || (gMainMenuSelectionDepth == CONFIRM_OK_SELECTION_FROM_BACK_OUT)) {
+            if ((gMainMenuSelectionDepth == CONFIRM_OK_SELECTION) ||
+                (gMainMenuSelectionDepth == CONFIRM_OK_SELECTION_FROM_BACK_OUT)) {
                 var_a1 = 1;
             }
             break;
@@ -9078,20 +8903,19 @@ void func_800A8564(struct_8018D9E0_entry *arg0) {
             gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, temp_t0 + sp34, temp_a2,
                                                            (temp_t0 - sp34) + 0x1E, temp_a2 + 0x12);
         } else {
-            gDisplayListHead =
-                draw_box_fill(gDisplayListHead, temp_t0 + sp34, temp_a2, (temp_t0 - sp34) + 0x1E,
-                              temp_a2 + 0x12, 1, 1, 1, 0x000000FF);
+            gDisplayListHead = draw_box_fill(gDisplayListHead, temp_t0 + sp34, temp_a2, (temp_t0 - sp34) + 0x1E,
+                                             temp_a2 + 0x12, 1, 1, 1, 0x000000FF);
         }
     }
 }
 
-void func_800A86E8(struct_8018D9E0_entry *arg0) {
-    gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x64,
-                                     arg0->row + 0x27, 1, 1, 1, 0xFF);
+void func_800A86E8(struct_8018D9E0_entry* arg0) {
+    gDisplayListHead =
+        draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x64, arg0->row + 0x27, 1, 1, 1, 0xFF);
 }
 
 // Credit for the use of ternary operators goes to LLONSIT
-void func_800A874C(struct_8018D9E0_entry *arg0) {
+void func_800A874C(struct_8018D9E0_entry* arg0) {
     UNUSED s32 stackPadding0;
     char sp58[3];
     UNUSED s32 stackPadding1;
@@ -9114,14 +8938,13 @@ void func_800A874C(struct_8018D9E0_entry *arg0) {
     func_800936B8(arg0->column + 0x60, arg0->row + 0x21, D_800E76A8[var_s2], 0, 0.6f, 0.65f);
 }
 
-void func_800A890C(s32 arg0, struct_8018D9E0_entry *arg1) {
+void func_800A890C(s32 arg0, struct_8018D9E0_entry* arg1) {
     s32 temp_a2;
     s32 temp_t1;
     s32 temp_t7;
 
     if (arg1->unk1C < 32) {
-        if (1) {
-        }
+        if (1) {}
         temp_t7 = (arg1->unk1C * 65) / 64;
         temp_t1 = arg1->column;
         temp_a2 = arg1->row;
@@ -9130,22 +8953,20 @@ void func_800A890C(s32 arg0, struct_8018D9E0_entry *arg1) {
         gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
         if (arg0 == gCupSelection) {
             if (D_8018EDEC == 1) {
-                gDisplayListHead =
-                    draw_flash_select_case_slow(gDisplayListHead, temp_t1 + temp_t7, temp_a2,
-                                                (temp_t1 - temp_t7) + 64, temp_a2 + 39);
+                gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, temp_t1 + temp_t7, temp_a2,
+                                                               (temp_t1 - temp_t7) + 64, temp_a2 + 39);
             } else {
-                gDisplayListHead =
-                    draw_box_fill(gDisplayListHead, temp_t1 + temp_t7, temp_a2,
-                                  (temp_t1 - temp_t7) + 64, temp_a2 + 39, 255, 249, 220, 255);
+                gDisplayListHead = draw_box_fill(gDisplayListHead, temp_t1 + temp_t7, temp_a2, (temp_t1 - temp_t7) + 64,
+                                                 temp_a2 + 39, 255, 249, 220, 255);
             }
         } else {
-            gDisplayListHead = draw_box_fill(gDisplayListHead, temp_t1 + temp_t7, temp_a2,
-                                             (temp_t1 - temp_t7) + 64, temp_a2 + 39, 1, 1, 1, 255);
+            gDisplayListHead = draw_box_fill(gDisplayListHead, temp_t1 + temp_t7, temp_a2, (temp_t1 - temp_t7) + 64,
+                                             temp_a2 + 39, 1, 1, 1, 255);
         }
     }
 }
 
-void func_800A8A98(struct_8018D9E0_entry *arg0) {
+void func_800A8A98(struct_8018D9E0_entry* arg0) {
     s32 temp_s2;
     s32 temp_s3;
     s32 someIndex;
@@ -9159,30 +8980,27 @@ void func_800A8A98(struct_8018D9E0_entry *arg0) {
         if ((someIndex == gCupCourseSelection) && (D_8018EDEC >= 2) && (gModeSelection != GRAND_PRIX)) {
             if ((D_8018EDEC == 2) || (D_8018EDEC == 4)) {
                 gDisplayListHead = draw_flash_select_case_slow(
-                    gDisplayListHead, D_800E7208[someIndex][0].column + temp_s2,
-                    D_800E7208[someIndex][0].row + temp_s3, D_800E7208[someIndex][1].column + temp_s2,
-                    D_800E7208[someIndex][1].row + temp_s3);
+                    gDisplayListHead, D_800E7208[someIndex][0].column + temp_s2, D_800E7208[someIndex][0].row + temp_s3,
+                    D_800E7208[someIndex][1].column + temp_s2, D_800E7208[someIndex][1].row + temp_s3);
             } else {
                 gDisplayListHead = draw_box_fill(
-                    gDisplayListHead, D_800E7208[someIndex][0].column + temp_s2,
-                    D_800E7208[someIndex][0].row + temp_s3, D_800E7208[someIndex][1].column + temp_s2,
-                    D_800E7208[someIndex][1].row + temp_s3, 0x000000FF, 0x000000F9, 0x000000DC,
-                    0x000000FF);
+                    gDisplayListHead, D_800E7208[someIndex][0].column + temp_s2, D_800E7208[someIndex][0].row + temp_s3,
+                    D_800E7208[someIndex][1].column + temp_s2, D_800E7208[someIndex][1].row + temp_s3, 0x000000FF,
+                    0x000000F9, 0x000000DC, 0x000000FF);
             }
         } else {
             gDisplayListHead = draw_box_fill(
-                gDisplayListHead, D_800E7208[someIndex][0].column + temp_s2,
-                D_800E7208[someIndex][0].row + temp_s3, D_800E7208[someIndex][1].column + temp_s2,
-                D_800E7208[someIndex][1].row + temp_s3, 1, 1, 1, 0x000000FF);
+                gDisplayListHead, D_800E7208[someIndex][0].column + temp_s2, D_800E7208[someIndex][0].row + temp_s3,
+                D_800E7208[someIndex][1].column + temp_s2, D_800E7208[someIndex][1].row + temp_s3, 1, 1, 1, 0x000000FF);
         }
     }
 }
 
-void func_800A8CA4(struct_8018D9E0_entry *arg0) {
+void func_800A8CA4(struct_8018D9E0_entry* arg0) {
     s32 temp_s2;
     s32 temp_s3;
     s32 var_s0;
-    struct_8018D9E0_entry *temp_v0;
+    struct_8018D9E0_entry* temp_v0;
 
     temp_v0 = find_8018D9E0_entry_dupe(0x00000064);
     temp_s2 = arg0->column;
@@ -9195,24 +9013,24 @@ void func_800A8CA4(struct_8018D9E0_entry *arg0) {
             for (var_s0 = 0; var_s0 < 4; var_s0++) {
                 // Wut?
                 if ((var_s0 != (temp_v0->unk1C % 4)) != 0) {
-                    gDisplayListHead = draw_box(
-                        gDisplayListHead, D_800E7208[var_s0][0].column + temp_s2,
-                        D_800E7208[var_s0][0].row + temp_s3, D_800E7208[var_s0][1].column + temp_s2,
-                        D_800E7208[var_s0][1].row + temp_s3, 0, 0, 0, 0x00000064);
+                    gDisplayListHead =
+                        draw_box(gDisplayListHead, D_800E7208[var_s0][0].column + temp_s2,
+                                 D_800E7208[var_s0][0].row + temp_s3, D_800E7208[var_s0][1].column + temp_s2,
+                                 D_800E7208[var_s0][1].row + temp_s3, 0, 0, 0, 0x00000064);
                 }
             }
         }
     }
 }
 
-void func_800A8E14(UNUSED struct_8018D9E0_entry *arg0) {
+void func_800A8E14(UNUSED struct_8018D9E0_entry* arg0) {
     set_text_color(TEXT_YELLOW);
     draw_text(0x98, 0x44, D_800E77A8[0], 0, 1.0f, 1.0f);
     func_80093324(0x17, 0x58, D_800E77A8[1], 0, 0.7f, 0.8f);
     func_80093324(0x17, 0x6A, D_800E77A8[2], 0, 0.7f, 0.8f);
 }
 
-void func_800A8EC0(struct_8018D9E0_entry *arg0) {
+void func_800A8EC0(struct_8018D9E0_entry* arg0) {
     if (arg0->unk20 != 0) {
         func_8009A76C(arg0->D_8018DEE0_index, arg0->column, arg0->row, -1);
         set_text_color(TEXT_YELLOW);
@@ -9220,9 +9038,9 @@ void func_800A8EC0(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A8F48(UNUSED struct_8018D9E0_entry *arg0) {
-    UNUSED Gfx *temp_v0_2;
-    Unk_D_800E70A0 *temp_v0;
+void func_800A8F48(UNUSED struct_8018D9E0_entry* arg0) {
+    UNUSED Gfx* temp_v0_2;
+    Unk_D_800E70A0* temp_v0;
     s16 temp_s0;
     s16 temp_v1;
     s32 temp_s2;
@@ -9236,50 +9054,47 @@ void func_800A8F48(UNUSED struct_8018D9E0_entry *arg0) {
                     temp_v1 = temp_v0->column;
                     temp_s0 = temp_v0->row;
                     temp_s2 = temp_v1 + 0x20;
-                    gDisplayListHead = func_80098FC8(gDisplayListHead, temp_s2, (s32) temp_s0,
-                                                     temp_v1 + 0x3F, temp_s0 + 9);
                     gDisplayListHead =
-                        func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(D_02004A0C), temp_s2,
-                                      (s32) temp_s0, 2);
+                        func_80098FC8(gDisplayListHead, temp_s2, (s32) temp_s0, temp_v1 + 0x3F, temp_s0 + 9);
+                    gDisplayListHead = func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(D_02004A0C), temp_s2,
+                                                     (s32) temp_s0, 2);
                 }
             }
             break;
         case 2:
         default:
             if (func_800B639C((gCupSelection * 4) + gCupCourseSelection) >= 0) {
-                gDisplayListHead =
-                    func_80098FC8(gDisplayListHead, 0x00000057, 0x00000070, 0x00000096, 0x00000081);
+                gDisplayListHead = func_80098FC8(gDisplayListHead, 0x00000057, 0x00000070, 0x00000096, 0x00000081);
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004A0C, 0x00000057, 0x00000070);
             }
             break;
     }
 }
 
-void func_800A90D4(UNUSED s32 arg0, struct_8018D9E0_entry *arg1) {
+void func_800A90D4(UNUSED s32 arg0, struct_8018D9E0_entry* arg1) {
     s32 temp_a2;
     s32 temp_t1;
     s32 temp_t7;
 
     if (arg1->unk1C < 0x20) {
-        if (1) {
-        }
+        if (1) {}
         temp_t7 = (arg1->unk1C * 0x41) / 0x40;
         temp_t1 = arg1->column;
         temp_a2 = arg1->row;
         gDPPipeSync(gDisplayListHead++);
         gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
         gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
-        gDisplayListHead = draw_box_fill(gDisplayListHead, temp_t1 + temp_t7, temp_a2,
-                                         (temp_t1 - temp_t7) + 0x40, temp_a2 + 0x27, 1, 1, 1, 0xFF);
+        gDisplayListHead = draw_box_fill(gDisplayListHead, temp_t1 + temp_t7, temp_a2, (temp_t1 - temp_t7) + 0x40,
+                                         temp_a2 + 0x27, 1, 1, 1, 0xFF);
     }
 }
 
-void func_800A91D8(struct_8018D9E0_entry *arg0, s32 columnTarget, s32 rowTarget) {
+void func_800A91D8(struct_8018D9E0_entry* arg0, s32 columnTarget, s32 rowTarget) {
     func_800A9208(arg0, columnTarget);
     func_800A9278(arg0, rowTarget);
 }
 
-void func_800A9208(struct_8018D9E0_entry *arg0, s32 columnTarget) {
+void func_800A9208(struct_8018D9E0_entry* arg0, s32 columnTarget) {
     s32 step = columnTarget - arg0->column;
 
     if (step != 0) {
@@ -9298,7 +9113,7 @@ void func_800A9208(struct_8018D9E0_entry *arg0, s32 columnTarget) {
     arg0->column += step;
 }
 
-void func_800A9278(struct_8018D9E0_entry *arg0, s32 rowTarget) {
+void func_800A9278(struct_8018D9E0_entry* arg0, s32 rowTarget) {
     s32 step = rowTarget - arg0->row;
 
     if (step != 0) {
@@ -9317,7 +9132,7 @@ void func_800A9278(struct_8018D9E0_entry *arg0, s32 rowTarget) {
     arg0->row += step;
 }
 
-void func_800A92E8(struct_8018D9E0_entry *arg0, s32 columnTarget) {
+void func_800A92E8(struct_8018D9E0_entry* arg0, s32 columnTarget) {
     s32 step = columnTarget - arg0->column;
 
     if (step != 0) {
@@ -9350,7 +9165,7 @@ void func_800A92E8(struct_8018D9E0_entry *arg0, s32 columnTarget) {
 }
 
 // Appears to be a copy of func_800A9278
-UNUSED void func_800A939C(struct_8018D9E0_entry *arg0, s32 rowTarget) {
+UNUSED void func_800A939C(struct_8018D9E0_entry* arg0, s32 rowTarget) {
     s32 step = rowTarget - arg0->row;
 
     if (step != 0) {
@@ -9369,7 +9184,7 @@ UNUSED void func_800A939C(struct_8018D9E0_entry *arg0, s32 rowTarget) {
     arg0->row += step;
 }
 
-void func_800A940C(struct_8018D9E0_entry *arg0, s32 columnTarget) {
+void func_800A940C(struct_8018D9E0_entry* arg0, s32 columnTarget) {
     s32 step = columnTarget - arg0->column;
 
     if (step != 0) {
@@ -9400,7 +9215,7 @@ void func_800A940C(struct_8018D9E0_entry *arg0, s32 columnTarget) {
     }
 }
 
-void func_800A94C8(struct_8018D9E0_entry *arg0, s32 columnTarget, s32 arg2) {
+void func_800A94C8(struct_8018D9E0_entry* arg0, s32 columnTarget, s32 arg2) {
     s32 step;
 
     if (columnTarget == arg0->column) {
@@ -9424,7 +9239,7 @@ void func_800A94C8(struct_8018D9E0_entry *arg0, s32 columnTarget, s32 arg2) {
     }
 }
 
-void func_800A954C(struct_8018D9E0_entry *arg0) {
+void func_800A954C(struct_8018D9E0_entry* arg0) {
     // Cycle lasts 26 (0x1A) frames
     if (arg0->state == 0) {
         // Move highlight from yellow to red
@@ -9441,7 +9256,7 @@ void func_800A954C(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A9710(struct_8018D9E0_entry *arg0) {
+void func_800A9710(struct_8018D9E0_entry* arg0) {
     s32 phi_v0;
 
     switch (gControllerPakMenuSelection) {
@@ -9472,7 +9287,7 @@ void func_800A9710(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A97BC(struct_8018D9E0_entry *arg0) {
+void func_800A97BC(struct_8018D9E0_entry* arg0) {
     s32 i;
 
     switch (*D_800E86D0) {
@@ -9524,10 +9339,11 @@ void func_800A97BC(struct_8018D9E0_entry *arg0) {
 // Don't know if this belongs here or inside func_800A9A98
 //   as a `static const`. But this matches so we'll leave
 //   it here for now.
-const s8 D_800F0CA0[] = { 0x03, 0x03, 0x03, 0x02, 0x00, 0x02, 0x02, 0x01,
-                          0x03, 0x02, 0x00, 0x00, 0x03, 0x03, 0x02, 0x00 };
+const s8 D_800F0CA0[] = {
+    0x03, 0x03, 0x03, 0x02, 0x00, 0x02, 0x02, 0x01, 0x03, 0x02, 0x00, 0x00, 0x03, 0x03, 0x02, 0x00
+};
 
-void func_800A9A98(struct_8018D9E0_entry *arg0) {
+void func_800A9A98(struct_8018D9E0_entry* arg0) {
     s32 sp4;
     s32 var_v0;
 
@@ -9571,7 +9387,7 @@ void func_800A9A98(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A9B9C(struct_8018D9E0_entry *arg0) {
+void func_800A9B9C(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) {
         case 0:
             func_800AA280(arg0);
@@ -9600,7 +9416,7 @@ void func_800A9B9C(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A9C40(struct_8018D9E0_entry *arg0) {
+void func_800A9C40(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) {
         case 0:
             func_800AA280(arg0);
@@ -9619,8 +9435,8 @@ void func_800A9C40(struct_8018D9E0_entry *arg0) {
             arg0->state = 1;
         case 1:
             func_800AA280(arg0);
-            if ((gMainMenuSelectionDepth == CONFIRM_OK_SELECTION_FROM_BACK_OUT)
-                || (gMainMenuSelectionDepth == TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT)) {
+            if ((gMainMenuSelectionDepth == CONFIRM_OK_SELECTION_FROM_BACK_OUT) ||
+                (gMainMenuSelectionDepth == TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT)) {
                 arg0->unk1C = 0x00000020;
             } else {
                 if (arg0->unk1C < 0x20) {
@@ -9642,8 +9458,8 @@ void func_800A9C40(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A9D5C(struct_8018D9E0_entry *arg0) {
-    Unk_D_800E70A0 *temp_v0;
+void func_800A9D5C(struct_8018D9E0_entry* arg0) {
+    Unk_D_800E70A0* temp_v0;
 
     if ((gPlayerCount + 0xA) == arg0->type) {
         arg0->priority = 0x0A;
@@ -9653,8 +9469,8 @@ void func_800A9D5C(struct_8018D9E0_entry *arg0) {
 
     switch (arg0->state) {
         case 2:
-            if ((gMainMenuSelectionDepth == CONFIRM_OK_SELECTION_FROM_BACK_OUT)
-                || (gMainMenuSelectionDepth == TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT)) {
+            if ((gMainMenuSelectionDepth == CONFIRM_OK_SELECTION_FROM_BACK_OUT) ||
+                (gMainMenuSelectionDepth == TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT)) {
                 arg0->column = 0x00000080;
                 arg0->row = 0x0000003E;
             } else {
@@ -9676,9 +9492,9 @@ void func_800A9D5C(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800A9E58(struct_8018D9E0_entry *arg0) {
-    struct_8018D9E0_entry *temp_v0;
-    Unk_D_800E70A0 *temp_v1_2;
+void func_800A9E58(struct_8018D9E0_entry* arg0) {
+    struct_8018D9E0_entry* temp_v0;
+    Unk_D_800E70A0* temp_v1_2;
     s32 sp24;
     s32 sp20;
     s32 sp1C;
@@ -9730,8 +9546,7 @@ void func_800A9E58(struct_8018D9E0_entry *arg0) {
                         temp_v0 = func_800AAE68();
                         temp_v1_2 = &D_800E70E8[arg0->type - sp24];
                         arg0->column = temp_v0->column + temp_v1_2->column;
-                        arg0->row =
-                            (D_800E86AC[gPlayerCount - 1] * 0x12) + temp_v0->row + temp_v1_2->row;
+                        arg0->row = (D_800E86AC[gPlayerCount - 1] * 0x12) + temp_v0->row + temp_v1_2->row;
                         arg0->unk1C = arg0->row - temp_v0->row;
                         arg0->visible = 1;
                         arg0->state = 2;
@@ -9792,8 +9607,7 @@ void func_800A9E58(struct_8018D9E0_entry *arg0) {
                         arg0->column = temp_v0->column + temp_v1_2->column;
                         arg0->row = temp_v0->row + arg0->unk1C;
                         func_800A91D8(arg0, arg0->column,
-                                      (D_800E86AC[gPlayerCount - 1] * 0x12) + temp_v0->row
-                                          + temp_v1_2->row);
+                                      (D_800E86AC[gPlayerCount - 1] * 0x12) + temp_v0->row + temp_v1_2->row);
                         arg0->unk1C = arg0->row - temp_v0->row;
                     }
                     break;
@@ -9806,12 +9620,12 @@ void func_800A9E58(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AA280(struct_8018D9E0_entry *arg0) {
-    Unk_D_800E70A0 *temp_v0;
+void func_800AA280(struct_8018D9E0_entry* arg0) {
+    Unk_D_800E70A0* temp_v0;
 
     temp_v0 = &D_800E70A0[arg0->type - 0xA];
-    if ((gMainMenuSelectionDepth == CONFIRM_OK_SELECTION_FROM_BACK_OUT)
-        || (gMainMenuSelectionDepth == TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT)) {
+    if ((gMainMenuSelectionDepth == CONFIRM_OK_SELECTION_FROM_BACK_OUT) ||
+        (gMainMenuSelectionDepth == TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT)) {
         arg0->column = temp_v0->column;
         arg0->row = temp_v0->row;
     } else {
@@ -9819,7 +9633,7 @@ void func_800AA280(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AA2EC(struct_8018D9E0_entry *arg0) {
+void func_800AA2EC(struct_8018D9E0_entry* arg0) {
     s32 temp_v0;
     s32 var_t1;
 
@@ -9835,19 +9649,21 @@ void func_800AA2EC(struct_8018D9E0_entry *arg0) {
         case CONFIRM_OK_SELECTION:
         case CONFIRM_OK_SELECTION_FROM_BACK_OUT:
         case TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT:
-            if (arg0->state != 0)
+            if (arg0->state != 0) {
                 break;
-            if (gPlayerCount != 1)
+            }
+            if (gPlayerCount != 1) {
                 break;
-            if (D_800E86AC[gPlayerCount - 1] != 1)
+            }
+            if (D_800E86AC[gPlayerCount - 1] != 1) {
                 break;
+            }
 
             if (gControllerPak1State != 0) {
                 var_t1 = 0;
-                switch (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode,
-                                      (u8 *) gGameName, (u8 *) gExtCode,
-                                      &gControllerPak1FileNote)) { /* switch 1; irregular */
-                    case 5:                                        /* switch 1 */
+                switch (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName,
+                                      (u8*) gExtCode, &gControllerPak1FileNote)) { /* switch 1; irregular */
+                    case 5:                                                        /* switch 1 */
                         break;
                     case 0: /* switch 1 */
                         arg0->state = 1;
@@ -9886,20 +9702,17 @@ void func_800AA2EC(struct_8018D9E0_entry *arg0) {
                     } else {
                         gControllerPak1State = 1;
                     }
-                    if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode,
-                                      (u8 *) gGameName, (u8 *) gExtCode, &gControllerPak1FileNote)
-                        == 0) {
+                    if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName,
+                                      (u8*) gExtCode, &gControllerPak1FileNote) == 0) {
                         arg0->state = 1;
                         break;
                     }
                     if (osPfsNumFiles(&gControllerPak1FileHandle, &gControllerPak1NumFilesUsed,
-                                      &gControllerPak1MaxWriteableFiles)
-                        != 0) {
+                                      &gControllerPak1MaxWriteableFiles) != 0) {
                         arg0->state = 3;
                         break;
                     }
-                    if (osPfsFreeBlocks(&gControllerPak1FileHandle, &gControllerPak1NumPagesFree)
-                        != 0) {
+                    if (osPfsFreeBlocks(&gControllerPak1FileHandle, &gControllerPak1NumPagesFree) != 0) {
                         arg0->state = 3;
                         break;
                     }
@@ -9921,7 +9734,7 @@ void func_800AA2EC(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AA5C8(struct_8018D9E0_entry *arg0, s8 arg1) {
+void func_800AA5C8(struct_8018D9E0_entry* arg0, s8 arg1) {
     s32 temp_v1;
 
     temp_v1 = arg0->type - 0x2B;
@@ -9929,21 +9742,19 @@ void func_800AA5C8(struct_8018D9E0_entry *arg0, s8 arg1) {
         case 0:
             if (func_800AAFCC((s32) arg1) >= 0) {
                 arg0->unk8 = 2;
-                func_8009A594(arg0->D_8018DEE0_index, 0,
-                              segmented_to_virtual_dupe_2(D_800E8340[temp_v1]));
+                func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E8340[temp_v1]));
             }
             break;
         case 2:
             if (func_800AAFCC((s32) arg1) < 0) {
                 arg0->unk8 = 0;
-                func_8009A594(arg0->D_8018DEE0_index, 0,
-                              segmented_to_virtual_dupe_2(D_800E8320[temp_v1]));
+                func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E8320[temp_v1]));
             }
             break;
     }
 }
 
-void func_800AA69C(struct_8018D9E0_entry *arg0) {
+void func_800AA69C(struct_8018D9E0_entry* arg0) {
     s32 temp_v0;
     s32 var_a0;
     s32 var_v0;
@@ -9979,8 +9790,7 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
         case 1:
             if (D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex >= D_800E8440[temp_a0]) {
                 arg0->unk8 = 2;
-                func_8009A594(arg0->D_8018DEE0_index, 0,
-                              segmented_to_virtual_dupe_2(D_800E83A0[temp_a0]));
+                func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E83A0[temp_a0]));
             } else if ((D_8018EDE8[temp_v0] == 0) && (var_a0 != 0)) {
                 arg0->unk8 = 3;
                 func_8009A594(arg0->D_8018DEE0_index,
@@ -9998,8 +9808,7 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
         case 3:
             if (D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex >= D_800E8460[temp_a0]) {
                 arg0->unk8 = 0;
-                func_8009A594(arg0->D_8018DEE0_index, 0,
-                              segmented_to_virtual_dupe_2(D_800E8360[temp_a0]));
+                func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E8360[temp_a0]));
             } else if ((D_8018EDE8[temp_v0] != 0) && (var_a0 != 0)) {
                 arg0->unk8 = 1;
                 func_8009A594(arg0->D_8018DEE0_index,
@@ -10021,8 +9830,7 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
                 }
                 if (D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex >= var_v0) {
                     arg0->unk8 = 0;
-                    func_8009A594(arg0->D_8018DEE0_index, 0,
-                                  segmented_to_virtual_dupe_2(D_800E8360[temp_a0]));
+                    func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E8360[temp_a0]));
                 }
             }
             break;
@@ -10031,7 +9839,7 @@ void func_800AA69C(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AAA9C(struct_8018D9E0_entry *arg0) {
+void func_800AAA9C(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) {
         case 3:
             arg0->state = 1;
@@ -10068,7 +9876,7 @@ void func_800AAA9C(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AAB90(struct_8018D9E0_entry *arg0) {
+void func_800AAB90(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) {
         case 1:
             if (arg0->unk1C > 0) {
@@ -10096,13 +9904,13 @@ void func_800AAB90(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AAC18(struct_8018D9E0_entry *arg0) {
+void func_800AAC18(struct_8018D9E0_entry* arg0) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     s32 temp_a1;
     s32 temp_v0;
     UNUSED s32 stackPadding2;
-    Unk_D_800E70A0 *var_t0;
+    Unk_D_800E70A0* var_t0;
 
     temp_a1 = arg0->type - 0x2B;
     switch (arg0->state) {
@@ -10115,8 +9923,7 @@ void func_800AAC18(struct_8018D9E0_entry *arg0) {
                     arg0->row = (s32) var_t0->row;
                     arg0->state = 2;
                     arg0->unk8 = 2;
-                    func_8009A594(arg0->D_8018DEE0_index, 0,
-                                  segmented_to_virtual_dupe_2(D_800E8340[temp_a1]));
+                    func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E8340[temp_a1]));
                 }
                 break;
             }
@@ -10149,7 +9956,7 @@ void func_800AAC18(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AADD4(struct_8018D9E0_entry *arg0) {
+void func_800AADD4(struct_8018D9E0_entry* arg0) {
     s32 playerId;
     s8 characterSelectionIndex;
 
@@ -10159,7 +9966,7 @@ void func_800AADD4(struct_8018D9E0_entry *arg0) {
     func_800AAF94(arg0, characterSelectionIndex - 1);
 }
 
-void func_800AAE18(struct_8018D9E0_entry *arg0) {
+void func_800AAE18(struct_8018D9E0_entry* arg0) {
     s32 temp_v0;
 
     temp_v0 = func_800AAFCC(arg0->type - 0x2B);
@@ -10175,8 +9982,8 @@ void func_800AAE18(struct_8018D9E0_entry *arg0) {
  * hard lock in the function if no appropriate D_8018D9E0 entry
  * is found.
  **/
-struct_8018D9E0_entry *func_800AAE68(void) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
+struct_8018D9E0_entry* func_800AAE68(void) {
+    struct_8018D9E0_entry* entry = D_8018D9E0;
     s32 thing = gPlayerCount - 1;
 
     for (; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
@@ -10186,8 +9993,9 @@ struct_8018D9E0_entry *func_800AAE68(void) {
     }
 
     // Something VERY wrong has occurred
-    while (true)
+    while (true) {
         ;
+    }
 escape:
     return entry;
 }
@@ -10197,8 +10005,8 @@ escape:
  * hard lock in the function if no appropriate D_8018D9E0 entry
  * is found.
  **/
-struct_8018D9E0_entry *func_800AAEB4(s32 arg0) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
+struct_8018D9E0_entry* func_800AAEB4(s32 arg0) {
+    struct_8018D9E0_entry* entry = D_8018D9E0;
 
     for (; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
         if ((arg0 + 0x2B) == entry->type) {
@@ -10207,8 +10015,9 @@ struct_8018D9E0_entry *func_800AAEB4(s32 arg0) {
     }
 
     // Something VERY wrong has occurred
-    while (true)
+    while (true) {
         ;
+    }
 escape:
     return entry;
 }
@@ -10223,8 +10032,8 @@ escape:
  * probably as much a matter of luck as it is good
  * reasoning on the original author(s) part.
  **/
-struct_8018D9E0_entry *find_8018D9E0_entry_dupe(s32 arg0) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
+struct_8018D9E0_entry* find_8018D9E0_entry_dupe(s32 arg0) {
+    struct_8018D9E0_entry* entry = D_8018D9E0;
     for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
         if (entry->type == arg0) {
             goto escape;
@@ -10232,14 +10041,15 @@ struct_8018D9E0_entry *find_8018D9E0_entry_dupe(s32 arg0) {
     }
 
     // Something VERY wrong has occurred
-    while (true)
+    while (true) {
         ;
+    }
 escape:
     return entry;
 }
 
-struct_8018D9E0_entry *find_8018D9E0_entry(s32 arg0) {
-    struct_8018D9E0_entry *entry = D_8018D9E0;
+struct_8018D9E0_entry* find_8018D9E0_entry(s32 arg0) {
+    struct_8018D9E0_entry* entry = D_8018D9E0;
     for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
         if (entry->type == arg0) {
             goto escape;
@@ -10252,13 +10062,13 @@ escape:
 }
 
 s32 func_800AAF70(s32 arg0) {
-    struct_8018D9E0_entry *temp;
+    struct_8018D9E0_entry* temp;
     temp = func_800AAEB4(arg0);
     return temp->state;
 }
 
-void func_800AAF94(struct_8018D9E0_entry *arg0, s32 arg1) {
-    struct_8018D9E0_entry *temp_v0;
+void func_800AAF94(struct_8018D9E0_entry* arg0, s32 arg1) {
+    struct_8018D9E0_entry* temp_v0;
 
     temp_v0 = func_800AAEB4(arg1);
     arg0->column = temp_v0->column;
@@ -10283,7 +10093,7 @@ s32 func_800AAFCC(s32 arg0) {
     return -1;
 }
 
-void func_800AB020(struct_8018D9E0_entry *arg0) {
+void func_800AB020(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) {
         case 1:
             arg0->state = 4;
@@ -10309,7 +10119,7 @@ void func_800AB020(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AB098(struct_8018D9E0_entry *arg0) {
+void func_800AB098(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) {
         case 0:
             if ((gCupSelection + 0x53) == arg0->type) {
@@ -10346,8 +10156,8 @@ void func_800AB098(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AB164(struct_8018D9E0_entry *arg0) {
-    Unk_D_800E70A0 *thing = &D_800E7148[arg0->type - 0x53];
+void func_800AB164(struct_8018D9E0_entry* arg0) {
+    Unk_D_800E70A0* thing = &D_800E7148[arg0->type - 0x53];
 
     if ((gCupSelection + 0x53) == arg0->type) {
         arg0->priority = 0x0A;
@@ -10378,7 +10188,7 @@ void func_800AB164(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AB260(struct_8018D9E0_entry *arg0) {
+void func_800AB260(struct_8018D9E0_entry* arg0) {
     s32 temp = (arg0->type - 0x58);
     if (temp == gCupSelection) {
         arg0->visible = 1;
@@ -10387,23 +10197,22 @@ void func_800AB260(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AB290(struct_8018D9E0_entry *arg0) {
+void func_800AB290(struct_8018D9E0_entry* arg0) {
     if (arg0->unk1C != gCupSelection) {
         arg0->unk1C = gCupSelection;
-        func_8009A594(
-            arg0->D_8018DEE0_index, 0,
-            segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[gCupSelection][arg0->type - 0x5F]]));
+        func_8009A594(arg0->D_8018DEE0_index, 0,
+                      segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[gCupSelection][arg0->type - 0x5F]]));
     }
 }
 
 #ifdef NON_MATCHING
 // Decent work has been done, but not quite right
 // https://decomp.me/scratch/YLbkC
-void func_800AB314(struct_8018D9E0_entry *arg0) {
+void func_800AB314(struct_8018D9E0_entry* arg0) {
     s32 var_a1;
     s32 one = 1;
     s32 four = 4;
-    struct_8018D9E0_entry *sp24[4];
+    struct_8018D9E0_entry* sp24[4];
     s32 var_v0;
 
     for (var_a1 = 0; var_a1 < 4; var_a1++) {
@@ -10530,8 +10339,8 @@ void func_800AB314(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB314.s")
 #endif
 
-void func_800AB904(struct_8018D9E0_entry *arg0) {
-    Unk_D_800E70A0 *temp_a1;
+void func_800AB904(struct_8018D9E0_entry* arg0) {
+    Unk_D_800E70A0* temp_a1;
 
     switch (D_8018EDEC) { /* irregular */
         case 1:
@@ -10550,8 +10359,8 @@ void func_800AB904(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AB9B0(struct_8018D9E0_entry *arg0) {
-    Unk_D_800E70A0 *temp_v1;
+void func_800AB9B0(struct_8018D9E0_entry* arg0) {
+    Unk_D_800E70A0* temp_v1;
 
     if (arg0->unk1C != gCupSelection) {
         arg0->unk1C = gCupSelection;
@@ -10578,7 +10387,7 @@ void func_800AB9B0(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800ABAE8(struct_8018D9E0_entry *arg0) {
+void func_800ABAE8(struct_8018D9E0_entry* arg0) {
     s32 index;
 
     if (arg0->type == 0x8C) {
@@ -10590,8 +10399,8 @@ void func_800ABAE8(struct_8018D9E0_entry *arg0) {
     arg0->row = D_800E7430[index].row;
 }
 
-void func_800ABB24(struct_8018D9E0_entry *arg0) {
-    Unk_D_800E70A0 *temp_v1;
+void func_800ABB24(struct_8018D9E0_entry* arg0) {
+    Unk_D_800E70A0* temp_v1;
     s32 thing = gTimeTrialDataCourseIndex;
 
     temp_v1 = &D_800E7430[thing / 4];
@@ -10604,9 +10413,9 @@ void func_800ABB24(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800ABBCC(struct_8018D9E0_entry *arg0) {
+void func_800ABBCC(struct_8018D9E0_entry* arg0) {
     s32 temp_v0;
-    Unk_D_800E70A0 *temp_v1;
+    Unk_D_800E70A0* temp_v1;
 
     temp_v0 = arg0->type - 0x7C;
     temp_v1 = &D_800E7430[temp_v0 / 4];
@@ -10614,7 +10423,7 @@ void func_800ABBCC(struct_8018D9E0_entry *arg0) {
     arg0->row = temp_v1->row + ((temp_v0 % 4) * 0x32) + 0x14;
 }
 
-void func_800ABC38(struct_8018D9E0_entry *arg0) {
+void func_800ABC38(struct_8018D9E0_entry* arg0) {
     // Huh?
     s32 one = 1;
     func_800ABCF4(arg0);
@@ -10630,8 +10439,7 @@ void func_800ABC38(struct_8018D9E0_entry *arg0) {
             }
             break;
         default:
-            if ((gModeSelection != GRAND_PRIX) || (gPlayerCountSelection1 != (s32) 1U)
-                || (D_8018EE08 != 0)) {
+            if ((gModeSelection != GRAND_PRIX) || (gPlayerCountSelection1 != (s32) 1U) || (D_8018EE08 != 0)) {
                 arg0->type = 0;
             } else {
                 if (arg0->row >= -0x13) {
@@ -10644,7 +10452,7 @@ void func_800ABC38(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800ABCF4(struct_8018D9E0_entry *arg0) {
+void func_800ABCF4(struct_8018D9E0_entry* arg0) {
     f64 temp_f0;
 
     switch (arg0->state) { /* irregular */
@@ -10678,7 +10486,7 @@ void func_800ABCF4(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800ABEAC(struct_8018D9E0_entry *arg0) {
+void func_800ABEAC(struct_8018D9E0_entry* arg0) {
     s32 why = 1;
     func_800ABF68(arg0);
     switch (D_80164A28) {
@@ -10693,8 +10501,7 @@ void func_800ABEAC(struct_8018D9E0_entry *arg0) {
             }
             break;
         default:
-            if ((gModeSelection != GRAND_PRIX) || (gPlayerCountSelection1 != why)
-                || (D_8018EE08 != 0)) {
+            if ((gModeSelection != GRAND_PRIX) || (gPlayerCountSelection1 != why) || (D_8018EE08 != 0)) {
                 arg0->type = 0;
             } else {
                 if (arg0->row < 0x104) {
@@ -10707,7 +10514,7 @@ void func_800ABEAC(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800ABF68(struct_8018D9E0_entry *arg0) {
+void func_800ABF68(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) {
         case 0:
             arg0->column = 0x140;
@@ -10730,8 +10537,7 @@ void func_800ABF68(struct_8018D9E0_entry *arg0) {
             func_800A9208(arg0, arg0->unk20);
             arg0->unk1C = (arg0->column - arg0->unk20) / 4;
             arg0->D_8018DEE0_index++;
-            arg0->unk24 =
-                ((arg0->D_8018DEE0_index - 0xA) * 0.0085 * (arg0->D_8018DEE0_index - 0xA)) + 0.4;
+            arg0->unk24 = ((arg0->D_8018DEE0_index - 0xA) * 0.0085 * (arg0->D_8018DEE0_index - 0xA)) + 0.4;
             if ((arg0->D_8018DEE0_index >= 9) && ((f64) arg0->unk24 > 1.0)) {
                 arg0->unk24 = 1.0f;
             }
@@ -10739,7 +10545,7 @@ void func_800ABF68(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AC128(struct_8018D9E0_entry *arg0) {
+void func_800AC128(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) {
         case 0:
             arg0->column = 0x00000140;
@@ -10760,8 +10566,7 @@ void func_800AC128(struct_8018D9E0_entry *arg0) {
         case 2:
             arg0->D_8018DEE0_index++;
             arg0->unk1C = 0;
-            arg0->unk24 =
-                (f32) (1.5 - ((arg0->D_8018DEE0_index - 0xF) * 0.004 * (arg0->D_8018DEE0_index - 0xF)));
+            arg0->unk24 = (f32) (1.5 - ((arg0->D_8018DEE0_index - 0xF) * 0.004 * (arg0->D_8018DEE0_index - 0xF)));
             if ((arg0->D_8018DEE0_index >= 0x10) && ((f64) arg0->unk24 < 0.8)) {
                 arg0->state = 3;
                 arg0->D_8018DEE0_index = 0;
@@ -10770,9 +10575,7 @@ void func_800AC128(struct_8018D9E0_entry *arg0) {
         case 3:
             arg0->D_8018DEE0_index++;
             arg0->unk1C = 0;
-            arg0->unk24 =
-                (f32) (1.25
-                       - ((arg0->D_8018DEE0_index - 0xF) * 0.002 * (arg0->D_8018DEE0_index - 0xF)));
+            arg0->unk24 = (f32) (1.25 - ((arg0->D_8018DEE0_index - 0xF) * 0.002 * (arg0->D_8018DEE0_index - 0xF)));
             if ((arg0->D_8018DEE0_index >= 0xD) && ((f64) arg0->unk24 < 1.0)) {
                 arg0->unk24 = 1.0f;
             }
@@ -10780,13 +10583,13 @@ void func_800AC128(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AC300(struct_8018D9E0_entry *arg0) {
+void func_800AC300(struct_8018D9E0_entry* arg0) {
     if (arg0->unk20 < ++arg0->unk1C) {
         arg0->type = 0;
     }
 }
 
-void func_800AC324(struct_8018D9E0_entry *arg0) {
+void func_800AC324(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) {
         case 0:
             arg0->column = 0x14A;
@@ -10826,7 +10629,7 @@ void func_800AC324(struct_8018D9E0_entry *arg0) {
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/NzdUC
 // A really stupid register allocation issue
-void func_800AC458(struct_8018D9E0_entry *arg0) {
+void func_800AC458(struct_8018D9E0_entry* arg0) {
     s32 var_a1;
     s32 var_t1;
 
@@ -10878,8 +10681,7 @@ void func_800AC458(struct_8018D9E0_entry *arg0) {
             if (((arg0->unk1C % 3) == 0) || (D_8018D9D8 != 0)) {
                 if (D_8018D9BC[var_a1] > 0) {
                     D_8018D9BC[var_a1]--;
-                    gGPPointsByCharacterId[gPlayers[gGPCurrentRacePlayerIdByRank[var_a1]]
-                                               .characterId] += 1;
+                    gGPPointsByCharacterId[gPlayers[gGPCurrentRacePlayerIdByRank[var_a1]].characterId] += 1;
                     play_sound2(SOUND_ACTION_COUNT_SCORE);
                     var_t1 = 0;
                     if ((D_8018D9BC[var_a1] == 0) && (arg0->unk20 == 0)) {
@@ -10888,8 +10690,7 @@ void func_800AC458(struct_8018D9E0_entry *arg0) {
                     }
                 }
             }
-            if ((arg0->unk20 != 0)
-                && ((arg0->unk1C > 0xA) || ((D_8018D9D8 != 0) && (arg0->unk1C >= 4)))) {
+            if ((arg0->unk20 != 0) && ((arg0->unk1C > 0xA) || ((D_8018D9D8 != 0) && (arg0->unk1C >= 4)))) {
                 var_t1 = 1;
             }
             if (var_t1 != 0) {
@@ -10904,8 +10705,7 @@ void func_800AC458(struct_8018D9E0_entry *arg0) {
             break;
         case 7:
             arg0->unk1C++;
-            if ((((D_8018D9D8 != 0) && (arg0->unk1C >= 0xB)) || (arg0->unk1C >= 0x3D))
-                && (D_800DDB24 != 0)) {
+            if ((((D_8018D9D8 != 0) && (arg0->unk1C >= 0xB)) || (arg0->unk1C >= 0x3D)) && (D_800DDB24 != 0)) {
                 arg0->state = 8;
                 arg0->unk1C = 0;
             }
@@ -10977,7 +10777,7 @@ void func_800AC458(struct_8018D9E0_entry *arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AC458.s")
 #endif
 
-void func_800AC978(struct_8018D9E0_entry *arg0) {
+void func_800AC978(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) { /* irregular */
         case 0:
             arg0->column = 0x14A;
@@ -11000,7 +10800,7 @@ void func_800AC978(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800ACA14(struct_8018D9E0_entry *arg0) {
+void func_800ACA14(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) { /* irregular */
         case 0:
             if (arg0->unk20 >= 0xB) {
@@ -11013,8 +10813,9 @@ void func_800ACA14(struct_8018D9E0_entry *arg0) {
             break;
         case 11:
         case 12:
-            if (func_800B4520())
+            if (func_800B4520()) {
                 break;
+            }
 
             if ((gControllerFive->buttonPressed | gControllerFive->stickPressed) & 0x800) {
                 if (arg0->state >= 0xC) {
@@ -11053,7 +10854,7 @@ void func_800ACA14(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800ACC50(struct_8018D9E0_entry *arg0) {
+void func_800ACC50(struct_8018D9E0_entry* arg0) {
     s32 var_s0;
 
     switch (arg0->state) {
@@ -11127,8 +10928,8 @@ void func_800ACC50(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800ACF40(struct_8018D9E0_entry *arg0) {
-    Unk_D_800E70A0 *temp_v0_2;
+void func_800ACF40(struct_8018D9E0_entry* arg0) {
+    Unk_D_800E70A0* temp_v0_2;
     s32 temp_a2;
     s32 temp_a1;
     s32 var_v1;
@@ -11169,9 +10970,8 @@ void func_800ACF40(struct_8018D9E0_entry *arg0) {
                 arg0->unk20++;
                 if (arg0->unk20 >= 0x1F) {
                     if (find_8018D9E0_entry_dupe(0x000000B0)->state >= 2) {
-                        func_8009A640(
-                            arg0->D_8018DEE0_index, 0, temp_a2,
-                            segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_a1]));
+                        func_8009A640(arg0->D_8018DEE0_index, 0, temp_a2,
+                                      segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_a1]));
                         arg0->state = 3;
                         func_800CA24C(temp_a2);
                         func_800C90F4(temp_a2, (gCharacterSelections[temp_a2] * 0x10) + 0x29008007);
@@ -11181,8 +10981,7 @@ void func_800ACF40(struct_8018D9E0_entry *arg0) {
             break;
         case 3:
             if (D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex >= D_800E8440[temp_a1]) {
-                func_8009A640(arg0->D_8018DEE0_index, 0, temp_a2,
-                              segmented_to_virtual_dupe_2(D_800E83A0[temp_a1]));
+                func_8009A640(arg0->D_8018DEE0_index, 0, temp_a2, segmented_to_virtual_dupe_2(D_800E83A0[temp_a1]));
                 arg0->state = 4;
             }
             break;
@@ -11192,7 +10991,7 @@ void func_800ACF40(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AD1A4(struct_8018D9E0_entry *arg0) {
+void func_800AD1A4(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) {
         case 0:
             arg0->column = 0x0000014A;
@@ -11238,8 +11037,8 @@ void func_800AD1A4(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AD2E8(struct_8018D9E0_entry *arg0) {
-    struct_8018EE10_entry *thing;
+void func_800AD2E8(struct_8018D9E0_entry* arg0) {
+    struct_8018EE10_entry* thing;
     s32 var_v1;
     s32 var_a1;
     s32 index;
@@ -11321,15 +11120,13 @@ void func_800AD2E8(struct_8018D9E0_entry *arg0) {
                         }
                         if (gControllerPak1State != 0) {
                             var_v1 = 0;
-                            switch (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode,
-                                                  (u8 *) gGameName, (u8 *) gExtCode,
-                                                  &gControllerPak1FileNote)) { /* switch 4; irregular */
-                                case 5:                                        /* switch 4 */
+                            switch (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName,
+                                                  (u8*) gExtCode, &gControllerPak1FileNote)) { /* switch 4; irregular */
+                                case 5:                                                        /* switch 4 */
                                     break;
                                 case 0: /* switch 4 */
                                     func_800B6708();
-                                    arg0->state =
-                                        func_800B6348((gCupSelection * 4) + gCupCourseSelection) + 0x11;
+                                    arg0->state = func_800B6348((gCupSelection * 4) + gCupCourseSelection) + 0x11;
                                     var_v1 = 1;
                                     play_sound2(SOUND_MENU_SELECT);
                                     break;
@@ -11373,13 +11170,10 @@ void func_800AD2E8(struct_8018D9E0_entry *arg0) {
                                     play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                                     return;
                                 }
-                                if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode,
-                                                  (u8 *) gGameName, (u8 *) gExtCode,
-                                                  &gControllerPak1FileNote)
-                                    == 0) {
+                                if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName,
+                                                  (u8*) gExtCode, &gControllerPak1FileNote) == 0) {
                                     func_800B6708();
-                                    arg0->state =
-                                        func_800B6348((gCupSelection * 4) + gCupCourseSelection) + 0x11;
+                                    arg0->state = func_800B6348((gCupSelection * 4) + gCupCourseSelection) + 0x11;
                                     play_sound2(SOUND_MENU_SELECT);
                                     return;
                                 }
@@ -11485,8 +11279,7 @@ void func_800AD2E8(struct_8018D9E0_entry *arg0) {
             break;
         case 20: /* switch 1 */
         case 21: /* switch 1 */
-            if (((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800)
-                && (arg0->state >= 0x15)) {
+            if (((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) && (arg0->state >= 0x15)) {
                 arg0->state--;
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
                 if (arg0->unk24 < 4.2) {
@@ -11526,9 +11319,8 @@ void func_800AD2E8(struct_8018D9E0_entry *arg0) {
             break;
         case 25: /* switch 1 */
             if (arg0->unk1C == 1) {
-                if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8 *) gGameName,
-                                  (u8 *) gExtCode, &gControllerPak1FileNote)
-                    != 0) {
+                if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName, (u8*) gExtCode,
+                                  &gControllerPak1FileNote) != 0) {
                     arg0->state = 0x0000001A;
                     play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                     return;
@@ -11591,9 +11383,9 @@ void func_800AD2E8(struct_8018D9E0_entry *arg0) {
 #else
 #define FUNC_800ADF48DEF 60
 #endif
-void func_800ADF48(struct_8018D9E0_entry *arg0) {
+void func_800ADF48(struct_8018D9E0_entry* arg0) {
     UNUSED s32 stackPadding;
-    struct Controller *controller;
+    struct Controller* controller;
 
     if (gIsGamePaused != 0) {
         switch (arg0->state) {
@@ -11669,8 +11461,8 @@ void func_800ADF48(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AE218(struct_8018D9E0_entry *arg0) {
-    struct_8018EE10_entry *thing;
+void func_800AE218(struct_8018D9E0_entry* arg0) {
+    struct_8018EE10_entry* thing;
     s32 var_v1;
 
     if (arg0->state != 0) {
@@ -11732,15 +11524,13 @@ void func_800AE218(struct_8018D9E0_entry *arg0) {
                         }
                         if (gControllerPak1State != 0) {
                             var_v1 = 0;
-                            switch (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode,
-                                                  (u8 *) gGameName, (u8 *) gExtCode,
-                                                  &gControllerPak1FileNote)) { /* switch 3; irregular */
-                                case PFS_ERR_INVALID:                          /* switch 3 */
+                            switch (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName,
+                                                  (u8*) gExtCode, &gControllerPak1FileNote)) { /* switch 3; irregular */
+                                case PFS_ERR_INVALID:                                          /* switch 3 */
                                     break;
                                 case PFS_NO_ERROR: /* switch 3 */
                                     func_800B6708();
-                                    arg0->state =
-                                        func_800B6348((gCupSelection * 4) + gCupCourseSelection) + 0x1E;
+                                    arg0->state = func_800B6348((gCupSelection * 4) + gCupCourseSelection) + 0x1E;
                                     var_v1 = 1;
                                     break;
                                 case PFS_ERR_NEW_PACK: /* switch 3 */
@@ -11786,13 +11576,10 @@ void func_800AE218(struct_8018D9E0_entry *arg0) {
                                 play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                                 return;
                             }
-                            if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode,
-                                              (u8 *) gGameName, (u8 *) gExtCode,
-                                              &gControllerPak1FileNote)
-                                == 0) {
+                            if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName,
+                                              (u8*) gExtCode, &gControllerPak1FileNote) == 0) {
                                 func_800B6708();
-                                arg0->state =
-                                    func_800B6348((gCupSelection * 4) + gCupCourseSelection) + 0x1E;
+                                arg0->state = func_800B6348((gCupSelection * 4) + gCupCourseSelection) + 0x1E;
                                 play_sound2(SOUND_MENU_SELECT);
                                 return;
                             }
@@ -11891,8 +11678,8 @@ void func_800AE218(struct_8018D9E0_entry *arg0) {
             break;
         case 35: /* switch 1 */
         case 36: /* switch 1 */
-            if (((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800)
-                && ((s32) (u32) arg0->state >= 0x24)) {
+            if (((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) &&
+                ((s32) (u32) arg0->state >= 0x24)) {
                 arg0->state--;
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
                 if (arg0->unk24 < 4.2) {
@@ -11929,9 +11716,8 @@ void func_800AE218(struct_8018D9E0_entry *arg0) {
             break;
         case 40: /* switch 1 */
             if (arg0->unk1C == 1) {
-                if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8 *) gGameName,
-                                  (u8 *) gExtCode, &gControllerPak1FileNote)
-                    != 0) {
+                if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName, (u8*) gExtCode,
+                                  &gControllerPak1FileNote) != 0) {
                     arg0->state = 0x00000029;
                     play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                     return;
@@ -11950,7 +11736,7 @@ void func_800AE218(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AEC54(struct_8018D9E0_entry *arg0) {
+void func_800AEC54(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) {
         case 0:
             arg0->column = (get_string_width(D_800E7780) / 2) + 0x140;
@@ -11990,13 +11776,12 @@ void func_800AEC54(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AEDBC(struct_8018D9E0_entry *arg0) {
+void func_800AEDBC(struct_8018D9E0_entry* arg0) {
     if (arg0->unk1C != gTimeTrialDataCourseIndex) {
         arg0->unk1C = (s32) gTimeTrialDataCourseIndex;
-        func_8009A594(
-            arg0->D_8018DEE0_index, 0,
-            segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[gTimeTrialDataCourseIndex / 4]
-                                                                  [gTimeTrialDataCourseIndex % 4]]));
+        func_8009A594(arg0->D_8018DEE0_index, 0,
+                      segmented_to_virtual_dupe_2(
+                          D_800E7E34[gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4]]));
         if (controller_pak_1_status() == PFS_NO_ERROR) {
             func_800B6708();
         } else {
@@ -12006,7 +11791,7 @@ void func_800AEDBC(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AEE90(struct_8018D9E0_entry *arg0) {
+void func_800AEE90(struct_8018D9E0_entry* arg0) {
     if (D_8018EDEC != 0xB) {
         arg0->visible = 0;
     } else {
@@ -12014,7 +11799,7 @@ void func_800AEE90(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AEEBC(struct_8018D9E0_entry *arg0) {
+void func_800AEEBC(struct_8018D9E0_entry* arg0) {
     if (D_8018EDEC != 0xC) {
         arg0->visible = 0;
     } else {
@@ -12022,7 +11807,7 @@ void func_800AEEBC(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AEEE8(struct_8018D9E0_entry *arg0) {
+void func_800AEEE8(struct_8018D9E0_entry* arg0) {
     if (D_8018EDEC != 0xD) {
         arg0->visible = 0;
     } else {
@@ -12030,7 +11815,7 @@ void func_800AEEE8(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AEF14(struct_8018D9E0_entry *arg0) {
+void func_800AEF14(struct_8018D9E0_entry* arg0) {
     if (playerHUD[PLAYER_ONE].raceCompleteBool != 0) {
         if ((u32) playerHUD[PLAYER_ONE].someTimer < (u32) (func_800B4E24(4) & 0xFFFFF)) {
             D_8018ED90 = 1;
@@ -12039,7 +11824,7 @@ void func_800AEF14(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AEF74(struct_8018D9E0_entry *arg0) {
+void func_800AEF74(struct_8018D9E0_entry* arg0) {
     switch (arg0->state) { /* irregular */
         case 0:
             if (D_80162DF8 == 1) {
@@ -12060,7 +11845,7 @@ void func_800AEF74(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AF004(struct_8018D9E0_entry *arg0) {
+void func_800AF004(struct_8018D9E0_entry* arg0) {
     UNUSED s32 temp_t1;
 
     switch (arg0->state) {
@@ -12087,8 +11872,8 @@ void func_800AF004(struct_8018D9E0_entry *arg0) {
             break;
         case 5:
             arg0->unk1C += 1;
-            if ((arg0->unk1C >= 0x65)
-                && ((gControllerFive->buttonPressed != 0) || (gControllerFive->stickPressed != 0))) {
+            if ((arg0->unk1C >= 0x65) &&
+                ((gControllerFive->buttonPressed != 0) || (gControllerFive->stickPressed != 0))) {
                 arg0->state = 6;
                 arg0->unk1C = 0;
                 if (D_802874D8.unk1D < 3) {
@@ -12110,8 +11895,8 @@ void func_800AF004(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AF1AC(struct_8018D9E0_entry *arg0) {
-    Unk_D_800E70A0 *temp_v0_2;
+void func_800AF1AC(struct_8018D9E0_entry* arg0) {
+    Unk_D_800E70A0* temp_v0_2;
     s32 idx = arg0->type - 0x12C;
 
     switch (arg0->state) { /* irregular */
@@ -12133,11 +11918,11 @@ void func_800AF1AC(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AF270(struct_8018D9E0_entry *arg0) {
+void func_800AF270(struct_8018D9E0_entry* arg0) {
     s32 temp_v1;
     s32 sp30;
     s32 temp_v0;
-    Unk_D_800E70A0 *thing;
+    Unk_D_800E70A0* thing;
 
     temp_v1 = arg0->type - 0x12C;
     sp30 = D_802874D8.unk1E;
@@ -12177,8 +11962,7 @@ void func_800AF270(struct_8018D9E0_entry *arg0) {
             break;
         case 3:
             if (D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex >= D_800E8440[temp_v0]) {
-                func_8009A640(arg0->D_8018DEE0_index, 0, sp30,
-                              segmented_to_virtual_dupe_2(D_800E83A0[temp_v0]));
+                func_8009A640(arg0->D_8018DEE0_index, 0, sp30, segmented_to_virtual_dupe_2(D_800E83A0[temp_v0]));
                 arg0->state = 4;
             }
             break;
@@ -12187,7 +11971,7 @@ void func_800AF270(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AF480(struct_8018D9E0_entry *arg0) {
+void func_800AF480(struct_8018D9E0_entry* arg0) {
     s32 idx = arg0->type - 0x190;
 
     if ((D_802850C0[idx].slideDirection == 0) || (D_802850C0[idx].slideDirection != 1)) {
@@ -12197,10 +11981,10 @@ void func_800AF480(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AF4DC(struct_8018D9E0_entry *arg0) {
+void func_800AF4DC(struct_8018D9E0_entry* arg0) {
     UNUSED s32 pad;
     s32 temp_v0;
-    struct_802850C0_entry *temp_v1;
+    struct_802850C0_entry* temp_v1;
 
     temp_v0 = arg0->type - 0x190;
     temp_v1 = &D_802850C0[temp_v0];
@@ -12209,8 +11993,7 @@ void func_800AF4DC(struct_8018D9E0_entry *arg0) {
         case 0:
             arg0->column = temp_v1->startingColumn;
             arg0->state = 1;
-            arg0->unk20 = temp_v1->columnExtra
-                          + (get_string_width(D_802854B0[temp_v0]) * temp_v1->textScaling / 2);
+            arg0->unk20 = temp_v1->columnExtra + (get_string_width(D_802854B0[temp_v0]) * temp_v1->textScaling / 2);
             /* fallthrough */
         case 1:
             func_800A9208(arg0, arg0->unk20);
@@ -12228,8 +12011,7 @@ void func_800AF4DC(struct_8018D9E0_entry *arg0) {
             func_800A9208(arg0, arg0->unk20);
             arg0->unk1C = (arg0->unk20 - arg0->column) / 4;
             arg0->D_8018DEE0_index += 1;
-            arg0->unk24 =
-                ((arg0->D_8018DEE0_index - 0xA) * 0.0085 * (arg0->D_8018DEE0_index - 0xA)) + 0.4;
+            arg0->unk24 = ((arg0->D_8018DEE0_index - 0xA) * 0.0085 * (arg0->D_8018DEE0_index - 0xA)) + 0.4;
             if ((arg0->D_8018DEE0_index >= 9) && ((f64) arg0->unk24 > 1)) {
                 arg0->unk24 = 1.0f;
                 arg0->state = 3;
@@ -12251,10 +12033,10 @@ void func_800AF4DC(struct_8018D9E0_entry *arg0) {
     }
 }
 
-void func_800AF740(struct_8018D9E0_entry *arg0) {
+void func_800AF740(struct_8018D9E0_entry* arg0) {
     UNUSED s32 pad;
     s32 temp_v0;
-    struct_802850C0_entry *temp_v1;
+    struct_802850C0_entry* temp_v1;
 
     temp_v0 = arg0->type - 0x190;
     temp_v1 = &D_802850C0[temp_v0];
@@ -12263,8 +12045,7 @@ void func_800AF740(struct_8018D9E0_entry *arg0) {
         case 0:
             arg0->column = temp_v1->startingColumn;
             arg0->state = 1;
-            arg0->unk20 = temp_v1->columnExtra
-                          - (get_string_width(D_802854B0[temp_v0]) * temp_v1->textScaling / 2);
+            arg0->unk20 = temp_v1->columnExtra - (get_string_width(D_802854B0[temp_v0]) * temp_v1->textScaling / 2);
             /* fallthrough */
         case 1:
             func_800A9208(arg0, arg0->unk20);
@@ -12282,8 +12063,7 @@ void func_800AF740(struct_8018D9E0_entry *arg0) {
             func_800A9208(arg0, arg0->unk20);
             arg0->unk1C = (arg0->column - arg0->unk20) / 4;
             arg0->D_8018DEE0_index += 1;
-            arg0->unk24 =
-                ((arg0->D_8018DEE0_index - 0xA) * 0.0085 * (arg0->D_8018DEE0_index - 0xA)) + 0.4;
+            arg0->unk24 = ((arg0->D_8018DEE0_index - 0xA) * 0.0085 * (arg0->D_8018DEE0_index - 0xA)) + 0.4;
             if ((arg0->D_8018DEE0_index >= 9) && ((f64) arg0->unk24 > 1)) {
                 arg0->unk24 = 1.0f;
                 arg0->state = 3;

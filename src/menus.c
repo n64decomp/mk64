@@ -98,8 +98,7 @@ const s8 D_800F2B60[5][3] = {
 
 // is this another union GameModePack? Figure out when decomping.
 const s32 gGameModeFromNumPlayersAndRowSelection[5][3] = {
-    { 0x03010003, 0x03000300,
-      0x00030000 }, // Despite this matching, there is no way this line belongs in this array
+    { 0x03010003, 0x03000300, 0x00030000 },  // Despite this matching, there is no way this line belongs in this array
     { GRAND_PRIX, TIME_TRIALS, 0x00000000 }, // first column
     { GRAND_PRIX, VERSUS, BATTLE },          // second
     { VERSUS, BATTLE, 0x00000000 },          // third
@@ -140,8 +139,8 @@ void update_menus(void) {
         for (controllerIdx = 0; controllerIdx < 4; controllerIdx++) {
 
             // Debug, quick jump through menus using the start button.
-            if ((func_800B4520() == 0) && (gEnableDebugMode)
-                && ((gControllers[controllerIdx].buttonPressed & START_BUTTON) != 0)) {
+            if ((func_800B4520() == 0) && (gEnableDebugMode) &&
+                ((gControllers[controllerIdx].buttonPressed & START_BUTTON) != 0)) {
                 // this is certainly a way to write these...
                 switch (gMenuSelection) {
                     case COURSE_SELECT_MENU:
@@ -202,11 +201,11 @@ void update_menus(void) {
 }
 
 // navigation of the options menu
-void options_menu_act(struct Controller *controller, u16 arg1) {
+void options_menu_act(struct Controller* controller, u16 arg1) {
     u16 btnAndStick; // sp3E
-    struct_8018D9E0_entry *sp38;
+    struct_8018D9E0_entry* sp38;
     s32 res;
-    struct_8018EE10_entry *sp30;
+    struct_8018EE10_entry* sp30;
     bool sp2C; // cursorWasMoved or communicateStoredAction
     UNUSED u32 pad;
 
@@ -218,7 +217,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
 
     if (!func_800B4520()) {
         sp38 = find_8018D9E0_entry_dupe(0xF0);
-        sp30 = (struct_8018EE10_entry *) D_8018D9C0;
+        sp30 = (struct_8018EE10_entry*) D_8018D9C0;
         switch (D_8018EDEC) {
             case 0x15:
             case 0x16:
@@ -317,8 +316,8 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                                             play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                                             break;
                                     }
-                                    if (sp2C == PFS_INVALID_DATA && !sp30[0].ghostDataSaved
-                                        && !sp30[1].ghostDataSaved) {
+                                    if (sp2C == PFS_INVALID_DATA && !sp30[0].ghostDataSaved &&
+                                        !sp30[1].ghostDataSaved) {
                                         D_8018EDEC = 0x2A;
                                         play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                                         return;
@@ -433,8 +432,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 if (btnAndStick & A_BUTTON) {
                     sp38->unk20 = D_8018EDEC - 0x28;
-                    if (sp30[sp38->unk20].courseIndex == D_8018EE10[1].courseIndex
-                        && D_8018EE10[1].ghostDataSaved) {
+                    if (sp30[sp38->unk20].courseIndex == D_8018EE10[1].courseIndex && D_8018EE10[1].ghostDataSaved) {
                         D_8018EDEC = 0x33;
                     } else {
                         D_8018EDEC = 0x32;
@@ -446,9 +444,8 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
             case 0x32:
             case 0x33: {
                 // bit of a fake match, but if it works it works?
-                if ((sp30[sp38->unk20].courseIndex
-                     != ((0, (D_8018EE10 + (D_8018EDEC - 0x32))->courseIndex)))
-                    || ((D_8018EE10 + (D_8018EDEC - 0x32))->ghostDataSaved == 0)) {
+                if ((sp30[sp38->unk20].courseIndex != ((0, (D_8018EE10 + (D_8018EDEC - 0x32))->courseIndex))) ||
+                    ((D_8018EE10 + (D_8018EDEC - 0x32))->ghostDataSaved == 0)) {
                     if ((btnAndStick & D_JPAD) && (D_8018EDEC < 0x33)) {
                         D_8018EDEC += 1;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -552,8 +549,8 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
                     play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                     return;
                 }
-                res = osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode,
-                                    (u8 *) gGameName, (u8 *) gExtCode, &gControllerPak1FileNote);
+                res = osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName,
+                                    (u8*) gExtCode, &gControllerPak1FileNote);
                 if (res == PFS_NO_ERROR) {
                     res = func_800B6178(sp38->unk1C);
                 }
@@ -594,7 +591,7 @@ void options_menu_act(struct Controller *controller, u16 arg1) {
 }
 
 // Handle navigating the data menu interface
-void data_menu_act(struct Controller *controller, UNUSED u16 arg1) {
+void data_menu_act(struct Controller* controller, UNUSED u16 arg1) {
     u16 buttonAndStickPress = (controller->buttonPressed | controller->stickPressed);
 
     // Make pressing Start have the same effect as pressing A
@@ -654,10 +651,10 @@ void data_menu_act(struct Controller *controller, UNUSED u16 arg1) {
     }
 }
 
-void course_data_menu_act(struct Controller *controller, UNUSED u16 arg1) {
+void course_data_menu_act(struct Controller* controller, UNUSED u16 arg1) {
     u16 btnAndStick; // sp2E
-    struct_8018D9E0_entry *sp28;
-    CourseTimeTrialRecords *sp24;
+    struct_8018D9E0_entry* sp28;
+    CourseTimeTrialRecords* sp24;
     s32 res;
 
     btnAndStick = (controller->buttonPressed | controller->stickPressed);
@@ -708,8 +705,7 @@ void course_data_menu_act(struct Controller *controller, UNUSED u16 arg1) {
                         gCourseRecordsMenuSelection += 1;
                     }
 
-                    if (gCourseRecordsMenuSelection == 2
-                        && func_800B639C(gTimeTrialDataCourseIndex) < 0) {
+                    if (gCourseRecordsMenuSelection == 2 && func_800B639C(gTimeTrialDataCourseIndex) < 0) {
                         if (sp24->unknownBytes[0] == 0) {
                             gCourseRecordsMenuSelection = 0;
                         } else {
@@ -814,7 +810,7 @@ void course_data_menu_act(struct Controller *controller, UNUSED u16 arg1) {
 /**
  * On input skip logo screen
  **/
-void logo_intro_menu_act(struct Controller *arg0, UNUSED u16 arg1) {
+void logo_intro_menu_act(struct Controller* arg0, UNUSED u16 arg1) {
     u16 anyInput = arg0->buttonPressed | arg0->stickPressed;
 
 // Note: Choosing a course in the middle of a cup
@@ -840,9 +836,9 @@ void logo_intro_menu_act(struct Controller *arg0, UNUSED u16 arg1) {
     }
 }
 
-void controller_pak_menu_act(struct Controller *controller, UNUSED u16 arg1) {
+void controller_pak_menu_act(struct Controller* controller, UNUSED u16 arg1) {
     u16 buttonAndStickPress;
-    OSPfsState *osPfsState;
+    OSPfsState* osPfsState;
     s32 selectedTableRow;
     UNUSED s8 pad;
 
@@ -954,9 +950,8 @@ void controller_pak_menu_act(struct Controller *controller, UNUSED u16 arg1) {
                 selectedTableRow = D_800E86C4[gControllerPakSelectedTableRow + 2] - 1;
                 osPfsState = &pfsState[selectedTableRow];
 
-                switch (osPfsDeleteFile(&gControllerPak1FileHandle, osPfsState->company_code,
-                                        osPfsState->game_code, (u8 *) &osPfsState->game_name,
-                                        (u8 *) &osPfsState->ext_name)) {
+                switch (osPfsDeleteFile(&gControllerPak1FileHandle, osPfsState->company_code, osPfsState->game_code,
+                                        (u8*) &osPfsState->game_name, (u8*) &osPfsState->ext_name)) {
                     default:
                         gControllerPakMenuSelection = CONTROLLER_PAK_MENU_ERASE_ERROR_NOT_ERASED;
                         return;
@@ -984,7 +979,7 @@ void controller_pak_menu_act(struct Controller *controller, UNUSED u16 arg1) {
     }
 }
 
-void splash_menu_act(struct Controller *controller, u16 arg1) {
+void splash_menu_act(struct Controller* controller, u16 arg1) {
     u16 btnAndStick;
     u16 i;
     s32 sp28;
@@ -1221,8 +1216,7 @@ void func_800B28C8(void) {
             gIsMirrorMode = 0;
             gPlaceItemBoxes = 0;
 
-            if ((temp_v0 && temp_v0) && temp_v0) {
-            }
+            if ((temp_v0 && temp_v0) && temp_v0) {}
 
             break;
     }
@@ -1230,7 +1224,7 @@ void func_800B28C8(void) {
 
 #ifdef NON_MATCHING
 // nonmatching: regalloc; arg1 is not AND-ed back into $a1, reg chaos follows
-void main_menu_act(struct Controller *controller, u16 arg1) {
+void main_menu_act(struct Controller* controller, u16 arg1) {
     u16 btnAndStick; // sp2E
     s32 sp28;
     bool sp24;
@@ -1244,8 +1238,7 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
     if (!func_800B4520()) {
         switch (gMainMenuSelectionDepth) {
             case BLANK_MAIN_MENU: {
-                newMode =
-                    gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
+                newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 break;
             }
             case PLAYER_NUM_SELECTION: {
@@ -1279,31 +1272,26 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
                     func_800CA330(0x19);
                     D_8018EDE0 = 1;
                     play_sound2(SOUND_MENU_GO_BACK);
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 } else if (btnAndStick & A_BUTTON) {
                     // L800B2C00
                     gMainMenuSelectionDepth = GAME_MODE_SELECTION;
                     func_800B44AC();
                     play_sound2(SOUND_MENU_SELECT);
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 } else if (btnAndStick & CONT_L) {
                     // L800B2C58
                     gMainMenuSelectionDepth = OPTIONS_SELECTION;
                     func_8009E280();
                     play_sound2(SOUND_MENU_OPTION);
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 } else if (btnAndStick & CONT_R) {
                     gMainMenuSelectionDepth = DATA_SELECTION;
                     func_8009E258();
                     play_sound2(SOUND_MENU_DATA);
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 } else {
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 }
                 break;
             }
@@ -1328,12 +1316,10 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
                     gMainMenuSelectionDepth = PLAYER_NUM_SELECTION;
                     func_800B44AC();
                     play_sound2(SOUND_MENU_GO_BACK);
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 } else if (btnAndStick & A_BUTTON) {
                     // L800B2E3C
-                    switch (gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                  [D_800E86AC[gPlayerCount - 1]]) {
+                    switch (gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]]) {
                         case 0:
                             gMainMenuSelectionDepth = GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION;
                             play_sound2(SOUND_MENU_GP);
@@ -1357,11 +1343,9 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
                     // L800B2F04
                     func_800B44AC();
                     gMenuTimingCounter = 0;
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 } else {
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 }
                 break;
             }
@@ -1371,12 +1355,8 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
                     gMenuTimingCounter++;
                     if ((gMenuTimingCounter == 100 || gMenuTimingCounter % 300 == 0)) {
                         // L800B2FAC
-                        if (gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                  [D_800E86AC[gPlayerCount - 1]]
-                                == 0
-                            || gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                     [D_800E86AC[gPlayerCount - 1]]
-                                   == 2) {
+                        if (gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]] == 0 ||
+                            gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]] == 2) {
                             play_sound2(SOUND_MENU_SELECT_LEVEL);
                         }
                     }
@@ -1414,8 +1394,7 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
                     gMainMenuSelectionDepth = GAME_MODE_SELECTION;
                     func_800B44AC();
                     play_sound2(SOUND_MENU_GO_BACK);
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 } else if (btnAndStick & A_BUTTON) {
                     // L800B31DC
                     func_800B44AC();
@@ -1427,12 +1406,10 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
                         play_sound2(SOUND_MENU_SELECT);
                         gMenuTimingCounter = 0;
                     }
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 } else {
                     // L800B3294
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 }
                 break;
             }
@@ -1443,8 +1420,7 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 // L800B330C
                 if (btnAndStick & B_BUTTON) {
-                    switch (gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                  [D_800E86AC[gPlayerCount - 1]]) {
+                    switch (gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]]) {
                         case 0:
                         case 1:
                         case 2:
@@ -1459,30 +1435,25 @@ void main_menu_act(struct Controller *controller, u16 arg1) {
                     func_800B44AC();
                     play_sound2(SOUND_MENU_GO_BACK);
                     gMenuTimingCounter = 0;
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 } else if (btnAndStick & A_BUTTON) {
                     // L800B33D8
                     func_8009E1C0();
                     play_sound2(SOUND_MENU_OK_CLICKED);
                     func_800B28C8();
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 } else {
-                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount]
-                                                                    [D_800E86AC[gPlayerCount - 1]];
+                    newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 }
                 break;
             }
             case OPTIONS_SELECTION:
             case DATA_SELECTION: {
-                newMode =
-                    gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
+                newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 break;
             }
             default: {
-                newMode =
-                    gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
+                newMode = gGameModeFromNumPlayersAndRowSelection[gPlayerCount][D_800E86AC[gPlayerCount - 1]];
                 break;
             }
         }
@@ -1507,8 +1478,8 @@ bool is_character_spot_free(s32 gridId) {
 #ifdef NON_MATCHING
 // grid positions are from right to left, then top to bottom
 // nonmatching: the gCharacterGridSelections pointer is not promoted to $s0
-void player_select_menu_act(struct Controller *controller, u16 arg1) {
-    s8 *bar;
+void player_select_menu_act(struct Controller* controller, u16 arg1) {
+    s8* bar;
     s8 selected;
     s8 i;
     s8 saved_selection;
@@ -1548,10 +1519,9 @@ void player_select_menu_act(struct Controller *controller, u16 arg1) {
                 }
                 // L800B36F4
                 selected = false;
-                for (i = 0; i < 4;
-                     i++) { // for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
-                    if ((gCharacterGridSelections[i] != 0)
-                        && (D_8018EDE8[i] == 0)) { //(gCharacterGridSelections[i] && D_8018EDE8[i]) {
+                for (i = 0; i < 4; i++) { // for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
+                    if ((gCharacterGridSelections[i] != 0) &&
+                        (D_8018EDE8[i] == 0)) { //(gCharacterGridSelections[i] && D_8018EDE8[i]) {
                         selected = true;
                         break;
                     }
@@ -1697,7 +1667,7 @@ GLOBAL_ASM("asm/non_matchings/menus/player_select_menu_act.s")
 #endif
 
 // Handle navigating the course menu interface
-void course_select_menu_act(struct Controller *arg0, u16 arg1) {
+void course_select_menu_act(struct Controller* arg0, u16 arg1) {
     u16 buttonAndStickPress = (arg0->buttonPressed | arg0->stickPressed);
 
     if ((!gEnableDebugMode) && ((buttonAndStickPress & START_BUTTON) != 0)) {
@@ -1772,8 +1742,7 @@ void course_select_menu_act(struct Controller *arg0, u16 arg1) {
                 }
                 break;
             case 3:
-                if ((arg1 == 0)
-                    && ((++gMenuTimingCounter == 0x3C) || ((gMenuTimingCounter % 300) == 0))) {
+                if ((arg1 == 0) && ((++gMenuTimingCounter == 0x3C) || ((gMenuTimingCounter % 300) == 0))) {
                     play_sound2(SOUND_MENU_OK);
                 }
 
@@ -1994,8 +1963,7 @@ void func_800B44BC(void) {
     union GameModePack pack;
 
     pack = D_800F2BE4;
-    if ((gSoundMode == SOUND_STEREO) || (gSoundMode == SOUND_HEADPHONES)
-        || (gSoundMode == SOUND_MONO)) {
+    if ((gSoundMode == SOUND_STEREO) || (gSoundMode == SOUND_HEADPHONES) || (gSoundMode == SOUND_MONO)) {
         func_800C3448(pack.modes[gSoundMode] | 0xE0000000);
     }
 }
@@ -2010,8 +1978,8 @@ bool func_800B4520(void) {
 }
 
 UNUSED void func_800B4560(s32 arg0, s32 arg1) {
-    struct_8018EE10_entry *pak1 = D_8018EE10;
-    struct_8018EE10_entry *pak2 = (struct_8018EE10_entry *) D_8018D9C0;
+    struct_8018EE10_entry* pak1 = D_8018EE10;
+    struct_8018EE10_entry* pak2 = (struct_8018EE10_entry*) D_8018D9C0;
 
     rmonPrintf("ghost_kart=%d,", D_80162DE0);
     rmonPrintf("pak1_ghost_kart=%d,", (pak1 + arg0)->characterId);

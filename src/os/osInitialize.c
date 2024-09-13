@@ -2,7 +2,7 @@
 #include "hardware.h"
 #include <macros.h>
 
-#define PIF_ADDR_START (void *) 0x1FC007FC
+#define PIF_ADDR_START (void*) 0x1FC007FC
 
 typedef struct {
     u32 instr00;
@@ -42,14 +42,12 @@ void osInitialize(void) {
     while (__osSiRawWriteIo(PIF_ADDR_START, sp34 | 8)) {
         ;
     }
-    *(exceptionPreamble *) EXCEPTION_TLB_MISS = __osExceptionPreamble;
-    *(exceptionPreamble *) EXCEPTION_XTLB_MISS = __osExceptionPreamble;
-    *(exceptionPreamble *) EXCEPTION_CACHE_ERROR = __osExceptionPreamble;
-    *(exceptionPreamble *) EXCEPTION_GENERAL = __osExceptionPreamble;
-    osWritebackDCache((void *) 0x80000000,
-                      EXCEPTION_GENERAL + sizeof(exceptionPreamble) - EXCEPTION_TLB_MISS);
-    osInvalICache((void *) 0x80000000,
-                  EXCEPTION_GENERAL + sizeof(exceptionPreamble) - EXCEPTION_TLB_MISS);
+    *(exceptionPreamble*) EXCEPTION_TLB_MISS = __osExceptionPreamble;
+    *(exceptionPreamble*) EXCEPTION_XTLB_MISS = __osExceptionPreamble;
+    *(exceptionPreamble*) EXCEPTION_CACHE_ERROR = __osExceptionPreamble;
+    *(exceptionPreamble*) EXCEPTION_GENERAL = __osExceptionPreamble;
+    osWritebackDCache((void*) 0x80000000, EXCEPTION_GENERAL + sizeof(exceptionPreamble) - EXCEPTION_TLB_MISS);
+    osInvalICache((void*) 0x80000000, EXCEPTION_GENERAL + sizeof(exceptionPreamble) - EXCEPTION_TLB_MISS);
     osMapTLBRdb();
     osPiRawReadIo(4, &sp30);
     sp30 &= ~0xf;
