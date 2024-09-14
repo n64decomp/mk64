@@ -22,9 +22,9 @@ it last longer See `func_80096CD8` for the actual drawing of the static
 */
 
 typedef struct {
-    /* 0x00 */ s32 type;   // id maybe?
-    /* 0x04 */ s32 cursor; // sound mode, maybe some other stuff
-    /* 0x08 */ s32 unk8;   // This is used but I can't tell what for
+    /* 0x00 */ s32 type;  // id maybe?
+    /* 0x04 */ s32 state; // sound mode, maybe some other stuff
+    /* 0x08 */ s32 unk8;  // This is used but I can't tell what for
     /* 0x0C */ s32 column;
     /* 0x10 */ s32 row;
     /* 0x14 */ u8 priority; // priority/depth/z-level. Higher values are drawn on top of lower values
