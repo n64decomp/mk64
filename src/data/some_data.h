@@ -1,7 +1,7 @@
 #ifndef SOME_DATA_H
 #define SOME_DATA_H
 
-#include "PR/gbi.h"
+#include <PR/gbi.h>
 #include "spline.h"
 #include "data/other_textures.h"
 #include "objects.h"

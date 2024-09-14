@@ -6,7 +6,7 @@
 #include <actor_types.h>
 #include <waypoints.h>
 #include <course.h>
-#include "code_80004740.h"
+#include "animation.h"
 
 extern Gfx d_course_rainbow_road_dl_0[];
 extern Gfx d_course_rainbow_road_dl_80[];
@@ -90,10 +90,10 @@ extern Vtx d_course_rainbow_road_chomp_body_upper_back_model3[];
 extern Gfx d_course_rainbow_road_dl_15C68[];
 extern Vtx d_course_rainbow_road_chomp_eyes_model[];
 extern Gfx d_course_rainbow_road_dl_15F18[];
-extern s16 d_rainbow_road_chomp_jaw_animation[];
-extern animation_type_3_triplet d_rainbow_road_unk1[];
-extern animation_type_2 d_rainbow_road_unk2;
-extern animation_type_2* d_rainbow_road_unk3[];
+extern s16 d_rainbow_road_chomp_angle[];
+extern AnimationLimbVector d_rainbow_road_chomp_animation_matrix[];
+extern Animation d_rainbow_road_unk2;
+extern Animation* d_rainbow_road_unk3[];
 extern u32 d_rainbow_road_unk4[];
 extern u32 d_rainbow_road_unk5[];
 extern Gfx d_course_rainbow_road_dl_16220[];

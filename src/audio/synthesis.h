@@ -2,7 +2,7 @@
 #define AUDIO_SYNTHESIS_H
 
 #include "audio/internal.h"
-#include "PR/abi.h"
+#include <PR/abi.h>
 
 #define DEFAULT_LEN_1CH 0x180
 #define DEFAULT_LEN_2CH 0x300

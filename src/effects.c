@@ -266,11 +266,9 @@ void func_8008C73C(Player* player, s8 arg1) {
         }
 
         player->unk_0B6 |= 0x80;
-        player->unk_0C0 = 0;
-        player->unk_07C = 0;
-        player->unk_078 = 0;
-        player->unk_0AE = player->rotation[1];
-        player->unk_0B2 = 2;
+        // clang-format off
+        player->unk_0C0 = 0; player->unk_07C = 0; player->unk_078 = 0; player->unk_0AE = player->rotation[1]; player->unk_0B2 = 2;
+        // clang-format on
         D_80165190[0][arg1] = 1;
         D_80165190[1][arg1] = 1;
         D_80165190[2][arg1] = 1;
@@ -727,9 +725,9 @@ void apply_hit_effect(Player* player, s8 arg1) {
     player->unk_0C0 = 0;
     player->unk_08C = 0.0f;
     player->currentSpeed = 0.0f;
-    if ((player->collision.surfaceDistance[2] >= 600.0f) || ((player->effects & 0x1000) != 0)) {
-        D_8018D990[arg1] = 3;
-    } // placed block on same line to match
+    // clang-format off
+    if ((player->collision.surfaceDistance[2] >= 600.0f) || ((player->effects & 0x1000) != 0)) { D_8018D990[arg1] = 3; } // placed block on same line to match
+    // clang-format on
 
     switch (D_8018D990[arg1]) {
         case 0:
@@ -1874,7 +1872,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                     player->unk_0CA &= ~0x0001;
                 }
             } else {
-                move_f32_towards(&player->pos[1], player->copy_rotation_y + 40.0f, 0.02f);
+                move_f32_towards(&player->pos[1], player->oldPos[1] + 40.0f, 0.02f);
                 player->unk_0C6 -= 8;
                 if (player->unk_0C6 < 9) {
                     player->unk_0C6 = 0;
@@ -2025,8 +2023,9 @@ void func_800911B4(Player* player, s8 arg1) {
     player->unk_258[30].unk_01E = 0;
     player->unk_258[30].unk_01C = 0;
 
-    temp_v0 = 2;
-    do {
+    // clang-format off
+    temp_v0 = 2; do {
+        // clang-format on
         player->unk_258[31 + temp_v0].unk_01C = 0;
         player->unk_258[31 + temp_v0].unk_01E = 0;
         player->unk_258[31 + temp_v0].unk_012 = 0;

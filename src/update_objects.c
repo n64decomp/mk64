@@ -115,16 +115,16 @@ s32 find_unused_obj_index(s32* arg0) {
     s32 temp_v1;
 
     temp_v1 = objectListSize;
-    temp_v0 = 0;
-    do {
+    // clang-format off
+    temp_v0 = 0; do { // this two SHOULD be on the same line
+        // clang-format on
         ++temp_v1;
         ++temp_v0;
 
-        if (temp_v1 == 0x226) {
+        if (temp_v1 == OBJECT_LIST_SIZE) {
             temp_v1 = 0;
         }
-
-    } while ((gObjectList[temp_v1].unk_0CA != 0) && (temp_v0 != 0x226));
+    } while ((gObjectList[temp_v1].unk_0CA != 0) && (temp_v0 != OBJECT_LIST_SIZE));
 
     gObjectList[temp_v1].unk_0CA = 1;
 
@@ -1226,7 +1226,7 @@ void func_80074574(u8* arg0, void* arg1, u16 arg2, u16 arg3) {
 }
 
 //! @todo arg1 should likely be a u8 *
-void func_800745C8(s32 objectIndex, s32 arg1) {
+void func_800745C8(s32 objectIndex, uintptr_t arg1) {
     s32 phi_a1;
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
@@ -1246,7 +1246,7 @@ void func_800745C8(s32 objectIndex, s32 arg1) {
     }
 }
 
-void func_8007466C(s32 objectIndex, s32 arg1) {
+void func_8007466C(s32 objectIndex, uintptr_t arg1) {
     s32 phi_a1;
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
@@ -1264,7 +1264,7 @@ void func_8007466C(s32 objectIndex, s32 arg1) {
     }
 }
 
-void func_80074704(s32 objectIndex, s32 arg1) {
+void func_80074704(s32 objectIndex, uintptr_t arg1) {
     s32 phi_a1;
 
     if ((gObjectList[objectIndex].status & 1) != 0) {
@@ -1306,17 +1306,17 @@ void func_800747F0(s32 objectIndex, u8* arg1) {
 
 void func_80074894(s32 objectIndex, u8* arg1) {
     func_800747F0(objectIndex, arg1);
-    func_800745C8(objectIndex, (s32) arg1);
+    func_800745C8(objectIndex, (uintptr_t) arg1);
 }
 
 void func_800748C4(s32 objectIndex, u8* arg1) {
     func_800747F0(objectIndex, arg1);
-    func_8007466C(objectIndex, (s32) arg1);
+    func_8007466C(objectIndex, (uintptr_t) arg1);
 }
 
 void func_800748F4(s32 objectIndex, u8* arg1) {
     func_800747F0(objectIndex, arg1);
-    func_80074704(objectIndex, (s32) arg1);
+    func_80074704(objectIndex, (uintptr_t) arg1);
 }
 
 void func_80074924(s32 objectIndex) {
@@ -1543,31 +1543,31 @@ void func_8007542C(s32 arg0) {
     }
 }
 
-void func_80075574(s32 objectIndex, Vec3f arg1, f32 arg2) {
+void init_train_smoke(s32 objectIndex, Vec3f pos, f32 velocity) {
     Object* object;
     UNUSED s32 pad[2];
 
     init_object(objectIndex, 0);
     object = &gObjectList[objectIndex];
-    object->origin_pos[0] = arg1[0];
-    object->origin_pos[1] = arg1[1];
-    object->origin_pos[2] = arg1[2];
-    object->velocity[1] = arg2;
+    object->origin_pos[0] = pos[0];
+    object->origin_pos[1] = pos[1];
+    object->origin_pos[2] = pos[2];
+    object->velocity[1] = velocity;
     object->type = random_int(0x0064U) + 0x1E;
 }
 
-s32 func_800755FC(s32 arg0, Vec3f arg1, f32 arg2) {
+s32 spawn_train_smoke(s32 trainIndex, Vec3f pos, f32 velocity) {
     s32 objectIndex;
 
-    if (arg0 == 0) {
+    if (trainIndex == 0) {
         objectIndex = add_unused_obj_index(gObjectParticle2, &gNextFreeObjectParticle2, gObjectParticle2_SIZE);
         if (objectIndex != NULL_OBJECT_ID) {
-            func_80075574(objectIndex, arg1, arg2);
+            init_train_smoke(objectIndex, pos, velocity);
         }
     } else {
         objectIndex = add_unused_obj_index(gObjectParticle3, &gNextFreeObjectParticle3, gObjectParticle3_SIZE);
         if (objectIndex != NULL_OBJECT_ID) {
-            func_80075574(objectIndex, arg1, arg2);
+            init_train_smoke(objectIndex, pos, velocity);
         }
     }
     return objectIndex;
@@ -1663,31 +1663,31 @@ void update_train_smoke(void) {
     }
 }
 
-void func_800759EC(s32 objectIndex, Vec3f arg1, f32 arg2) {
+void init_ferry_smoke(s32 objectIndex, Vec3f pos, f32 velocity) {
     Object* object;
 
     init_object(objectIndex, 0);
     object = &gObjectList[objectIndex];
-    object->origin_pos[0] = arg1[0];
-    object->origin_pos[1] = arg1[1];
-    object->origin_pos[2] = arg1[2];
-    object->velocity[1] = arg2;
+    object->origin_pos[0] = pos[0];
+    object->origin_pos[1] = pos[1];
+    object->origin_pos[2] = pos[2];
+    object->velocity[1] = velocity;
     object->type = 0x00FF;
     object->unk_0A2 = 0x0096;
 }
 
-s32 func_80075A6C(s32 arg0, Vec3f arg1, f32 arg2) {
+s32 spawn_ferry_smoke(s32 ferryIndex, Vec3f pos, f32 velocity) {
     s32 objectIndex;
 
-    if (arg0 == 0) {
+    if (ferryIndex == 0) {
         objectIndex = add_unused_obj_index(gObjectParticle2, &gNextFreeObjectParticle2, gObjectParticle2_SIZE);
         if (objectIndex != NULL_OBJECT_ID) {
-            func_800759EC(objectIndex, arg1, arg2);
+            init_ferry_smoke(objectIndex, pos, velocity);
         }
     } else {
         objectIndex = add_unused_obj_index(gObjectParticle3, &gNextFreeObjectParticle3, gObjectParticle3_SIZE);
         if (objectIndex != NULL_OBJECT_ID) {
-            func_800759EC(objectIndex, arg1, arg2);
+            init_ferry_smoke(objectIndex, pos, velocity);
         }
     }
 
@@ -3695,6 +3695,7 @@ u8 gen_random_item(s16 rank, s16 isCpu) {
         }
         randomItem = *((rank * 100) + curve + sRandomItemIndex);
     }
+
     return randomItem;
 }
 
@@ -7206,7 +7207,7 @@ void func_80084430(s32 objectIndex, UNUSED s32 arg1) {
     func_80086EF0(objectIndex);
     object->spline = D_800E672C[0];
     set_object_flag_status_true(objectIndex, 0x04000800);
-    object->type = func_80004EAC(d_course_sherbet_land_unk_data11, 0);
+    object->type = get_animation_length(d_course_sherbet_land_unk_data11, 0);
     func_80072488(objectIndex);
 }
 
@@ -7324,7 +7325,7 @@ void func_800845C8(s32 objectIndex, s32 arg1) {
     }
     func_80086EF0(objectIndex);
     object->unk_034 = 0.0f;
-    object->type = func_80004EAC(d_course_sherbet_land_unk_data11, 0);
+    object->type = get_animation_length(d_course_sherbet_land_unk_data11, 0);
     func_80072488(objectIndex);
 }
 
@@ -7399,7 +7400,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
                 gObjectList[objectIndex].unk_0D8 = 1;
                 gObjectList[objectIndex].itemDisplay = 0;
                 gObjectList[objectIndex].type =
-                    func_80004EAC(d_course_sherbet_land_unk_data11, gObjectList[objectIndex].unk_0D8);
+                    get_animation_length(d_course_sherbet_land_unk_data11, gObjectList[objectIndex].unk_0D8);
                 func_800726CC(objectIndex, 3);
                 func_80086FD4(objectIndex);
                 if (func_80072354(objectIndex, 0x00000020) != 0) {
@@ -7440,7 +7441,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
                 gObjectList[objectIndex].unk_0D8 = 2;
                 gObjectList[objectIndex].itemDisplay = 0;
                 gObjectList[objectIndex].type =
-                    func_80004EAC(d_course_sherbet_land_unk_data11, gObjectList[objectIndex].unk_0D8);
+                    get_animation_length(d_course_sherbet_land_unk_data11, gObjectList[objectIndex].unk_0D8);
                 func_800726CC(objectIndex, 3);
                 func_80086FD4(objectIndex);
             }
@@ -7450,7 +7451,7 @@ void func_80084D2C(s32 objectIndex, s32 arg1) {
                 gObjectList[objectIndex].unk_0D8 = 0;
                 gObjectList[objectIndex].itemDisplay = 0;
                 gObjectList[objectIndex].type =
-                    func_80004EAC(d_course_sherbet_land_unk_data11, gObjectList[objectIndex].unk_0D8);
+                    get_animation_length(d_course_sherbet_land_unk_data11, gObjectList[objectIndex].unk_0D8);
                 gObjectList[objectIndex].unk_0C6 += 0x8000;
                 func_800726CC(objectIndex, 2);
                 func_8008701C(objectIndex, 1);
@@ -7664,7 +7665,7 @@ void func_80085878(s32 objectIndex, s32 arg1) {
     set_obj_origin_offset(objectIndex, temp_v0->posX, temp_v0->posY, temp_v0->posZ);
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
     object->unk_034 = 4.0f;
-    object->type = func_80004EAC(d_rainbow_road_unk3, 0);
+    object->type = get_animation_length(d_rainbow_road_unk3, 0);
     func_80072488(objectIndex);
 }
 

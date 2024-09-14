@@ -734,9 +734,9 @@ void func_8002934C(Player* player, Camera* camera, s8 screenId, s8 playerId) {
         player->unk_0D4[screenId] = (((func_802B7C40(temp_f0 / temp_f2)) * 0.9));
     } else {
         if (((player->animFrameSelector[screenId]) >= 0) && ((player->animFrameSelector[screenId]) < 0x101)) {
-            var_f0 = player->copy_rotation_y - player->pos[1];
+            var_f0 = player->oldPos[1] - player->pos[1];
         } else {
-            var_f0 = player->pos[1] - player->copy_rotation_y;
+            var_f0 = player->pos[1] - player->oldPos[1];
         }
         player->unk_0D4[screenId] = (s16) ((s32) (((f64) func_802B7C40(var_f0 / temp_f2)) * 0.5));
     }
@@ -820,8 +820,8 @@ void func_8002934C(Player* player, Camera* camera, s8 screenId, s8 playerId) {
         D_80165190[screenId][playerId] = 1;
 
         if ((player->effects & 0x80) || (player->effects & 0x40)) {
-            if ((player->animFrameSelector[screenId] == D_801650D0[screenId][playerId]) &&
-                (player->animGroupSelector[screenId] == D_80165110[screenId][playerId])) {
+            if ((player->animFrameSelector[screenId] == gLastAnimFrameSelector[screenId][playerId]) &&
+                (player->animGroupSelector[screenId] == gLastAnimGroupSelector[screenId][playerId])) {
                 player->unk_002 &= ~(1 << (screenId * 4));
                 D_80165190[screenId][playerId] = 1;
             }
@@ -830,13 +830,13 @@ void func_8002934C(Player* player, Camera* camera, s8 screenId, s8 playerId) {
         }
     } else {
         player->unk_002 |= 1 << (screenId * 4);
-        if (((player->animFrameSelector[screenId] == D_801650D0[screenId][playerId]) &&
-             (player->animGroupSelector[screenId] == D_80165110[screenId][playerId])) &&
+        if (((player->animFrameSelector[screenId] == gLastAnimFrameSelector[screenId][playerId]) &&
+             (player->animGroupSelector[screenId] == gLastAnimGroupSelector[screenId][playerId])) &&
             ((D_80165190[screenId][playerId]) == 0)) {
             player->unk_002 &= ~(1 << (screenId * 4));
         }
     }
-    temp_a0_2 = D_801650D0[screenId][playerId] - player->animFrameSelector[screenId];
+    temp_a0_2 = gLastAnimFrameSelector[screenId][playerId] - player->animFrameSelector[screenId];
     if ((temp_a0_2 >= 0x14) || (temp_a0_2 < (-0x13))) {
         player->unk_002 |= 1 << (screenId * 4);
     }
@@ -873,8 +873,7 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     player->tyres[FRONT_LEFT].pos[0] = player->pos[0] + sp8C[0];
     player->tyres[FRONT_LEFT].pos[1] = player->pos[1] + sp8C[1];
     player->tyres[FRONT_LEFT].pos[2] = player->pos[2] + sp8C[2];
-    process_collision(player, &player->tyres[FRONT_LEFT], sp80[0], sp80[1], sp80[2]);
-
+    player_terrain_collision(player, &player->tyres[FRONT_LEFT], sp80[0], sp80[1], sp80[2]);
     sp8C[0] = (-var_f12) + 3.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = var_f12 - 2.0f;
@@ -885,7 +884,7 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     player->tyres[FRONT_RIGHT].pos[0] = player->pos[0] + sp8C[0];
     player->tyres[FRONT_RIGHT].pos[1] = player->pos[1] + sp8C[1];
     player->tyres[FRONT_RIGHT].pos[2] = player->pos[2] + sp8C[2];
-    process_collision(player, &player->tyres[FRONT_RIGHT], sp80[0], sp80[1], sp80[2]);
+    player_terrain_collision(player, &player->tyres[FRONT_RIGHT], sp80[0], sp80[1], sp80[2]);
     sp8C[0] = var_f12 - 2.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = (-var_f12) + 4.0f;
@@ -896,8 +895,7 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     player->tyres[BACK_LEFT].pos[0] = player->pos[0] + sp8C[0];
     player->tyres[BACK_LEFT].pos[1] = player->pos[1] + sp8C[1];
     player->tyres[BACK_LEFT].pos[2] = player->pos[2] + sp8C[2];
-    process_collision(player, &player->tyres[BACK_LEFT], sp80[0], sp80[1], sp80[2]);
-
+    player_terrain_collision(player, &player->tyres[BACK_LEFT], sp80[0], sp80[1], sp80[2]);
     sp8C[0] = (-var_f12) + 2.6;
     sp8C[1] = -player->boundingBoxSize;
     sp8C[2] = (-var_f12) + 4.0f;
@@ -908,8 +906,7 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
     player->tyres[BACK_RIGHT].pos[0] = player->pos[0] + sp8C[0];
     player->tyres[BACK_RIGHT].pos[1] = player->pos[1] + sp8C[1];
     player->tyres[BACK_RIGHT].pos[2] = player->pos[2] + sp8C[2];
-    process_collision(player, &player->tyres[BACK_RIGHT], sp80[0], sp80[1], sp80[2]);
-
+    player_terrain_collision(player, &player->tyres[BACK_RIGHT], sp80[0], sp80[1], sp80[2]);
     if (!(player->effects & 8)) {
         a = (player->tyres[BACK_LEFT].baseHeight + player->tyres[FRONT_LEFT].baseHeight) / 2;
         move_f32_towards(&player->unk_230, a, 0.5f);
@@ -933,7 +930,7 @@ void func_80029B4C(Player* player, UNUSED f32 arg1, f32 arg2, UNUSED f32 arg3) {
         temp_f0_2 = player->unk_1F8 - player->unk_1FC;
         move_s16_towards(&player->slopeAccel, func_802B7C40(temp_f0_2 / temp_f2_3), 0.5f);
     } else {
-        temp_f0_2 = player->copy_rotation_y - arg2;
+        temp_f0_2 = player->oldPos[1] - arg2;
         temp_v0 = func_802B7C40(temp_f0_2 / temp_f2_3);
         if (temp_f0_2 >= 0.0f) {
             temp_v0 /= 4;
@@ -1017,7 +1014,7 @@ void func_8002A194(Player* player, f32 arg1, f32 arg2, f32 arg3) {
         temp_f0 = (player->unk_1F8 - player->unk_1FC);
         move_s16_towards(&player->slopeAccel, func_802B7C40(temp_f0 / var_f20), 0.5f);
     } else {
-        temp_f0 = player->copy_rotation_y - arg2;
+        temp_f0 = player->oldPos[1] - arg2;
         temp_v0 = func_802B7C40(temp_f0 / var_f20);
         if (temp_f0 >= 0.0f) {
             var_a1 = temp_v0 * 2;
@@ -1468,61 +1465,47 @@ void func_8002B830(Player* player, s8 playerId, s8 screenId) {
 UNUSED void func_8002B8A4(Player* player_one, Player* player_two) {
     s32 var_v1;
 
+    // clang-format off
     /*
     if's are being done bracket-less on purpose,
     Technically only the `player_one == gPlayerEight` NEEDS to be
     bracket-less that looks weird
     */
-    if (player_one == gPlayerOne) {
-        var_v1 = 0;
-    }
-    if (player_one == gPlayerTwo) {
-        var_v1 = 1;
-    }
-    if (player_one == gPlayerThree) {
-        var_v1 = 2;
-    }
-    if (player_one == gPlayerFour) {
-        var_v1 = 3;
-    }
-    if (player_one == gPlayerFive) {
-        var_v1 = 4;
-    }
-    if (player_one == gPlayerSix) {
-        var_v1 = 5;
-    }
-    if (player_one == gPlayerSeven) {
-        var_v1 = 6;
-    }
-    if (player_one == gPlayerEight) {
-        var_v1 = 7;
-    }
+    if (player_one == gPlayerOne) {   var_v1 = 0;
+}
+    if (player_one == gPlayerTwo) {   var_v1 = 1;
+}
+    if (player_one == gPlayerThree) { var_v1 = 2;
+}
+    if (player_one == gPlayerFour) {  var_v1 = 3;
+}
+    if (player_one == gPlayerFive) {  var_v1 = 4;
+}
+    if (player_one == gPlayerSix) {   var_v1 = 5;
+}
+    if (player_one == gPlayerSeven) { var_v1 = 6;
+}
+    if (player_one == gPlayerEight) { var_v1 = 7;
+}
     D_801653C0[var_v1] = player_two;
-    if (player_two == gPlayerOne) {
-        var_v1 = 0;
-    }
-    if (player_two == gPlayerTwo) {
-        var_v1 = 1;
-    }
-    if (player_two == gPlayerThree) {
-        var_v1 = 2;
-    }
-    if (player_two == gPlayerFour) {
-        var_v1 = 3;
-    }
-    if (player_two == gPlayerFive) {
-        var_v1 = 4;
-    }
-    if (player_two == gPlayerSix) {
-        var_v1 = 5;
-    }
-    if (player_two == gPlayerSeven) {
-        var_v1 = 6;
-    }
-    if (player_two == gPlayerEight) {
-        var_v1 = 7;
-    }
+    if (player_two == gPlayerOne) {   var_v1 = 0;
+}
+    if (player_two == gPlayerTwo) {   var_v1 = 1;
+}
+    if (player_two == gPlayerThree) { var_v1 = 2;
+}
+    if (player_two == gPlayerFour) {  var_v1 = 3;
+}
+    if (player_two == gPlayerFive) {  var_v1 = 4;
+}
+    if (player_two == gPlayerSix) {   var_v1 = 5;
+}
+    if (player_two == gPlayerSeven) { var_v1 = 6;
+}
+    if (player_two == gPlayerEight) { var_v1 = 7;
+}
     D_801653C0[var_v1] = player_one;
+    // clang-format on
 }
 
 void func_8002B9CC(Player* player, s8 arg1, UNUSED s32 arg2) {
@@ -1554,7 +1537,7 @@ void func_8002B9CC(Player* player, s8 arg1, UNUSED s32 arg2) {
                 func_8008C73C(player, arg1);
             }
         }
-        temp = (-(s16) get_angle_between_two_vectors(player->pos, &player->copy_rotation_x));
+        temp = (-(s16) get_angle_between_two_vectors(player->pos, &player->oldPos[0]));
         temp2 = (player->rotation[1] - player->unk_0C0);
         temp = temp - temp2;
         player->unk_234 = temp / 182;
@@ -1590,9 +1573,9 @@ void func_8002BB9C(Player* player, f32* arg1, f32* arg2, UNUSED s8 arg3, UNUSED 
 
     mtxf_translate_vec3f_mat3(sp58, sp64);
 
-    sp4C[0] = player->copy_rotation_x;
+    sp4C[0] = player->oldPos[0];
     sp4C[1] = 0;
-    sp4C[2] = player->copy_rotation_z;
+    sp4C[2] = player->oldPos[2];
 
     mtxf_translate_vec3f_mat3(sp4C, sp64);
 
@@ -1873,6 +1856,7 @@ void func_8002C954(Player* player, s8 playerId, Vec3f arg2) {
     f32 zdist;
 
     temp_f0 = player->pos[1] - player->unk_074;
+
     if (((((player->effects & 0x10000) != 0x10000) &&
           ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT)) ||
          ((((temp_f0 >= 20.0f) || (temp_f0 < (-1.0f))) && ((player->effects & 0x10000) == 0)) &&
@@ -2057,9 +2041,9 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     f32 sp104[] = { 0.825, 0.8, 0.725, 0.625, 0.425, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3, 0.3,
                     0.3,   0.3, 0.3,   0.3,   0.3,   0.3, 0.3, 0.3, 0.3, 0.3, 0.3 };
     f32 temp;
-    f32 spFC;
-    f32 spF8;
-    f32 spF4;
+    f32 nextX;
+    f32 nextY;
+    f32 nextZ;
     f32 posX;
     f32 posY;
     f32 posZ;
@@ -2127,8 +2111,8 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
         spB0 = -1 * player->kartGravity;
         spAC = 0 * (player->unk_064[2] + sp16C[2]);
     }
-    temp_f2_2 = ((player->copy_rotation_z - player->pos[2]) * coss(player->rotation[1] + player->unk_0C0)) +
-                (-(player->copy_rotation_x - player->pos[0]) * sins(player->rotation[1] + player->unk_0C0));
+    temp_f2_2 = ((player->oldPos[2] - player->pos[2]) * coss(player->rotation[1] + player->unk_0C0)) +
+                (-(player->oldPos[0] - player->pos[0]) * sins(player->rotation[1] + player->unk_0C0));
     if (temp_f2_2 > 0.1) {
         player->unk_044 |= 8;
     } else {
@@ -2195,22 +2179,22 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     posY = player->pos[1];
     posZ = player->pos[2];
 
-    player->copy_rotation_x = player->pos[0];
-    player->copy_rotation_z = player->pos[2];
-    player->copy_rotation_y = player->pos[1];
-    spFC = posX + player->velocity[0] + D_8018CE10[playerId].unk_04[0];
-    spF8 = posY + player->velocity[1];
-    spF4 = posZ + player->velocity[2] + D_8018CE10[playerId].unk_04[2];
+    player->oldPos[0] = player->pos[0];
+    player->oldPos[2] = player->pos[2];
+    player->oldPos[1] = player->pos[1];
+    nextX = posX + player->velocity[0] + D_8018CE10[playerId].unk_04[0];
+    nextY = posY + player->velocity[1];
+    nextZ = posZ + player->velocity[2] + D_8018CE10[playerId].unk_04[2];
 
     if (((((player->unk_0CA & 2) != 2) && ((player->unk_0CA & 8) != 8)) &&
          ((player->effects & HIT_EFFECT) != HIT_EFFECT)) &&
         (!(player->unk_0CA & 1))) {
         func_8002AAC0(player);
-        spF8 += player->kartHopVelocity;
-        spF8 -= 0.02;
+        nextY += player->kartHopVelocity;
+        nextY -= 0.02;
     }
-    actor_terrain_collision(&player->collision, player->boundingBoxSize, spFC, spF8, spF4, player->copy_rotation_x,
-                            player->copy_rotation_y, player->copy_rotation_z);
+    actor_terrain_collision(&player->collision, player->boundingBoxSize, nextX, nextY, nextZ, player->oldPos[0],
+                            player->oldPos[1], player->oldPos[2]);
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
     player->unk_05C = 1.0f;
@@ -2276,16 +2260,16 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     }
     temp_var = player->collision.surfaceDistance[2];
     if (temp_var <= 0.0f) {
-        func_8003F46C(player, sp8C, sp98, sp178, &temp_var, &spFC, &spF8, &spF4);
+        func_8003F46C(player, sp8C, sp98, sp178, &temp_var, &nextX, &nextY, &nextZ);
     }
     temp_var = player->collision.surfaceDistance[0];
     if (temp_var < 0.0f) {
-        func_8003F734(player, sp8C, sp98, &temp_var, &spFC, &spF8, &spF4);
+        func_8003F734(player, sp8C, sp98, &temp_var, &nextX, &nextY, &nextZ);
         func_8002C954(player, playerId, sp98);
     }
     temp_var = player->collision.surfaceDistance[1];
     if (temp_var < 0.0f) {
-        func_8003FBAC(player, sp8C, sp98, &temp_var, &spFC, &spF8, &spF4);
+        func_8003FBAC(player, sp8C, sp98, &temp_var, &nextX, &nextY, &nextZ);
         func_8002C954(player, playerId, sp98);
     }
     temp_var = player->collision.surfaceDistance[0];
@@ -2310,15 +2294,15 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
                (player->effects & 0x10000)) {
         func_8008F5A4(player, playerId);
     }
-    player->unk_074 = calculate_surface_height(spFC, spF8, spF4, player->collision.meshIndexZX);
+    player->unk_074 = calculate_surface_height(nextX, nextY, nextZ, player->collision.meshIndexZX);
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
         (((gActiveScreenMode == SCREEN_MODE_1P) || (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_VERTICAL)) ||
          (gActiveScreenMode == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL))) {
-        func_80029B4C(player, spFC, spF8, spF4);
+        func_80029B4C(player, nextX, nextY, nextZ);
     } else {
-        func_8002A194(player, spFC, spF8, spF4);
+        func_8002A194(player, nextX, nextY, nextZ);
     }
-    func_8002AE38(player, playerId, posX, posZ, spFC, spF4);
+    func_8002AE38(player, playerId, posX, posZ, nextX, nextZ);
 
     temp2 = (sp98[0] * sp98[0]) + (sp98[2] * sp98[2]);
     player->unk_22C = player->unk_094;
@@ -2329,12 +2313,12 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
         sp98[0] = sp98[0] + (-1 * sp98[0]);
         sp98[2] = sp98[2] + (-1 * sp98[2]);
     } else {
-        player->pos[0] = spFC;
-        player->pos[2] = spF4;
+        player->pos[0] = nextX;
+        player->pos[2] = nextZ;
     }
-    player->pos[1] = spF8;
+    player->pos[1] = nextY;
     if ((player->type & PLAYER_HUMAN) && (!(player->type & PLAYER_KART_AI))) {
-        func_8002BB9C(player, &spFC, &spF4, screenId, playerId, sp98);
+        func_8002BB9C(player, &nextX, &nextZ, screenId, playerId, sp98);
     }
     player->unk_064[0] = sp178[0];
     player->unk_064[2] = sp178[2];
@@ -2379,7 +2363,7 @@ void func_8002E4C4(Player* player) {
                      player->boundingBoxSize;
     if (((player->pos[1] - D_80164510[player_index]) > 1200.0f) ||
         ((player->pos[1] - D_80164510[player_index]) < -1200.0f)) {
-        player->pos[1] = player->copy_rotation_y;
+        player->pos[1] = player->oldPos[1];
     }
     player->velocity[1] = 0.0f;
 }
@@ -2473,17 +2457,17 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     posY = player->pos[1];
     posZ = player->pos[2];
 
-    player->copy_rotation_x = player->pos[0];
-    player->copy_rotation_y = player->pos[1];
-    player->copy_rotation_z = player->pos[2];
+    player->oldPos[0] = player->pos[0];
+    player->oldPos[1] = player->pos[1];
+    player->oldPos[2] = player->pos[2];
 
     spD0 = posX + player->velocity[0] + D_8018CE10[playerId].unk_04[0];
     spCC = posY + player->velocity[1];
     spC8 = posZ + player->velocity[2] + D_8018CE10[playerId].unk_04[2];
     func_8002AAC0(player);
     spCC += player->kartHopVelocity;
-    actor_terrain_collision(&player->collision, player->boundingBoxSize, spD0, spCC, spC8, player->copy_rotation_x,
-                            player->copy_rotation_y, player->copy_rotation_z);
+    actor_terrain_collision(&player->collision, player->boundingBoxSize, spD0, spCC, spC8, player->oldPos[0],
+                            player->oldPos[1], player->oldPos[2]);
     player->effects |= 8;
     player->unk_0C2 += 1;
     player->unk_058 = 0.0f;
@@ -2667,9 +2651,9 @@ void control_kart_ai_movement(Player* player, UNUSED Camera* camera, s8 arg2, s8
     sp68[2] = player->velocity[2];
     sp68[0] += (((spF4[0] + sp84) + spD0[0]) - (sp68[0] * (0.12 * player->kartFriction))) / 6000.0;
     sp68[2] += (((spF4[2] + sp7C) + spD0[2]) - (sp68[2] * (0.12 * player->kartFriction))) / 6000.0;
-    player->copy_rotation_x = player->pos[0];
-    player->copy_rotation_y = test;
-    player->copy_rotation_z = player->pos[2];
+    player->oldPos[0] = player->pos[0];
+    player->oldPos[1] = test;
+    player->oldPos[2] = player->pos[2];
     spCC = player->pos[0] + player->velocity[0];
     spC4 = player->pos[2] + player->velocity[2];
     player->unk_0C0 = 0;
@@ -2748,9 +2732,9 @@ void func_8002F730(Player* player, UNUSED Camera* camera, UNUSED s8 screenId, s8
     sp44 = player->pos[1];
     spB8 = player->pos[2];
 
-    player->copy_rotation_x = player->pos[0];
-    player->copy_rotation_y = player->pos[1];
-    player->copy_rotation_z = player->pos[2];
+    player->oldPos[0] = player->pos[0];
+    player->oldPos[1] = player->pos[1];
+    player->oldPos[2] = player->pos[2];
 
     spCC = player->velocity[0] + spC0;
     spC8 = player->velocity[1] + sp44;
@@ -2759,8 +2743,8 @@ void func_8002F730(Player* player, UNUSED Camera* camera, UNUSED s8 screenId, s8
     func_8002AAC0(player);
 
     spC8 += player->kartHopVelocity;
-    actor_terrain_collision(&player->collision, player->boundingBoxSize, spCC, spC8, spC4, player->copy_rotation_x,
-                            player->copy_rotation_y, player->copy_rotation_z);
+    actor_terrain_collision(&player->collision, player->boundingBoxSize, spCC, spC8, spC4, player->oldPos[0],
+                            player->oldPos[1], player->oldPos[2]);
     player->unk_058 = 0.0f;
     player->unk_05C = 1.0f;
     player->unk_060 = 0.0f;
@@ -4852,9 +4836,9 @@ void func_80038C6C(Player* player, UNUSED Camera* camera, s8 arg2, s8 playerId) 
     posY = player->pos[1];
     posZ = player->pos[2];
 
-    player->copy_rotation_x = player->pos[0];
-    player->copy_rotation_y = player->pos[1];
-    player->copy_rotation_z = player->pos[2];
+    player->oldPos[0] = player->pos[0];
+    player->oldPos[1] = player->pos[1];
+    player->oldPos[2] = player->pos[2];
 
     spEC = posX + player->velocity[0];
     spE8 = posY + player->velocity[1];
@@ -4862,8 +4846,8 @@ void func_80038C6C(Player* player, UNUSED Camera* camera, s8 arg2, s8 playerId) 
     func_8002AAC0(player);
     spE8 += player->kartHopVelocity;
     spE8 -= 0.02;
-    actor_terrain_collision(&player->collision, player->boundingBoxSize, spEC, spE8, spE4, player->copy_rotation_x,
-                            player->copy_rotation_y, player->copy_rotation_z);
+    actor_terrain_collision(&player->collision, player->boundingBoxSize, spEC, spE8, spE4, player->oldPos[0],
+                            player->oldPos[1], player->oldPos[2]);
     player->unk_058 = 0;
     player->unk_060 = 0;
     player->unk_05C = 1.0f;

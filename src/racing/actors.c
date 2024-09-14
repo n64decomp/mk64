@@ -572,10 +572,8 @@ void evaluate_collision_players_palm_trees(void) {
     s32 index;
 
     for (index = 0; index < 4; index++) {
-        // wtf is up with the << 0x18 >> 0x18? is it some weird type conversion? just use & 0xFF have the same effect to
-        // keep 8 first bit
         if (((gPlayers[index].type & 0xC000) != 0) &&
-            (((get_surface_type(gPlayers[index].collision.meshIndexZX) << 24) >> 24) == GRASS)) {
+            ((s8) (u8) get_surface_type(gPlayers[index].collision.meshIndexZX) == GRASS)) {
             evaluate_collision_player_palm_trees(&gPlayers[index]);
         }
     }
@@ -1179,7 +1177,7 @@ void spawn_course_actors(void) {
 
 /**
  * @brief Loads actor textures, course specific actor textures.
- * Calls to init_course_vehicles and place_course_actors
+ * Calls to spawn_course_vehicles and place_course_actors
  *
  */
 void init_actors_and_load_textures(void) {
@@ -1280,7 +1278,7 @@ void init_actors_and_load_textures(void) {
     init_red_shell_texture();
     destroy_all_actors();
     spawn_course_actors();
-    init_course_vehicles();
+    spawn_course_vehicles();
 }
 
 void play_sound_before_despawn(struct Actor* actor) {
@@ -1857,7 +1855,7 @@ void destroy_destructable_actor(struct Actor* actor) {
                 case HELD_BANANA:
                     player = &gPlayers[banana->playerId];
                     player->soundEffects &= ~0x00040000;
-                /* fallthrough */
+                    /* fallthrough */
                 case BANANA_ON_GROUND:
                     banana->flags = -0x8000;
                     banana->unk_04 = 0x003C;

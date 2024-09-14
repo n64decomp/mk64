@@ -70,7 +70,7 @@ typedef struct {
 
 s32 osPiStartDma(OSIoMesg* mb, s32 priority, s32 direction, uintptr_t devAddr, void* vAddr, size_t nbytes,
                  OSMesgQueue* mq);
-void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSIoMesg* cmdBuf, s32 cmdMsgCnt);
+void osCreatePiManager(OSPri pri, OSMesgQueue* cmdQ, OSMesg* cmdBuf, s32 cmdMsgCnt);
 OSMesgQueue* osPiGetCmdQueue(void);
 s32 osPiWriteIo(uintptr_t devAddr, u32 data);
 s32 osPiReadIo(uintptr_t devAddr, u32* data);

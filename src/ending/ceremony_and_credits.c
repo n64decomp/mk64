@@ -1495,12 +1495,10 @@ void transition_sliding_borders(void) {
         temp_f14 = 0.0f;
     }
     temp_f0 = D_802856B0 + D_802856C0;
+    // clang-format off
     // Note that this MUST be on one line. All hail significant whitespace in C!
-    do {
-        if (temp_f0 > 240.0f) {
-            temp_f0 = 239.0f;
-        }
-    } while (0);
+    do {if (temp_f0 > 240.0f) { temp_f0 = 239.0f; } } while (0);
+    // clang-format on
 
     gDPPipeSync(gDisplayListHead++);
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);

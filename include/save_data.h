@@ -1,7 +1,7 @@
 #ifndef SAVE_DATA_H
 #define SAVE_DATA_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 typedef struct {
     // 6 little endian 3-byte records.
@@ -41,6 +41,10 @@ typedef struct {
     // Lowest dibit is the Mushroom Cup, 2nd dibit is the Flower Cup, etc
     u8 grandPrixPoints[4];
     u8 soundMode;
+} SaveInfo;
+
+typedef struct {
+    SaveInfo saveInfo;
     // It's unknown what the first byte is used for
     u8 checksum[3];
 } Stuff; // size = 0x8

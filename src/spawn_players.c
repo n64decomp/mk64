@@ -114,13 +114,13 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     ret = spawn_actor_on_surface(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
     player->pos[2] = startingColumn;
     player->pos[1] = ret;
-    player->copy_rotation_x = startingRow;
-    player->copy_rotation_y = ret;
+    player->oldPos[0] = startingRow;
+    player->oldPos[1] = ret;
 
     D_80164510[playerIndex] = ret;
 
     player->rotation[0] = 0;
-    player->copy_rotation_z = startingColumn;
+    player->oldPos[2] = startingColumn;
     player->unk_05C = 1.0f;
     player->unk_058 = 0.0f;
     player->unk_060 = 0.0f;
@@ -248,14 +248,14 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
 
     idx = playerIndex;
 
-    D_801650D0[0][idx] = 0;
-    D_801650D0[1][idx] = 0;
-    D_801650D0[2][idx] = 0;
-    D_801650D0[3][idx] = 0;
-    D_80165110[0][idx] = 0;
-    D_80165110[1][idx] = 0;
-    D_80165110[2][idx] = 0;
-    D_80165110[3][idx] = 0;
+    gLastAnimFrameSelector[0][idx] = 0;
+    gLastAnimFrameSelector[1][idx] = 0;
+    gLastAnimFrameSelector[2][idx] = 0;
+    gLastAnimFrameSelector[3][idx] = 0;
+    gLastAnimGroupSelector[0][idx] = 0;
+    gLastAnimGroupSelector[1][idx] = 0;
+    gLastAnimGroupSelector[2][idx] = 0;
+    gLastAnimGroupSelector[3][idx] = 0;
     D_80165190[0][idx] = 0;
     D_80165190[1][idx] = 0;
     D_80165190[2][idx] = 0;
@@ -465,7 +465,7 @@ void func_80039DA4(void) {
         0, 1, 2, 3, 4, 5, 6, 7,
     };
 
-    if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
+    if (((gCourseIndexInCup == COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         for (i = 0; i < NUM_PLAYERS; i++) {
             D_80165270[i] = sp2C[i];
@@ -483,7 +483,7 @@ UNUSED s16 D_800E43A8 = 0;
 
 void spawn_players_gp_one_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if (((gCupCourseSelection == CUP_COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
+    if (((gCourseIndexInCup == COURSE_ONE) && (D_8016556E == 0)) || (gDemoMode == 1) ||
         (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
         s16 i;
@@ -607,7 +607,7 @@ void spawn_players_versus_one_player(f32* arg0, f32* arg1, f32 arg2) {
 
 void spawn_players_gp_two_player(f32* arg0, f32* arg1, f32 arg2) {
     func_80039DA4();
-    if ((gCupCourseSelection == CUP_COURSE_ONE) || (gDemoMode == 1) || (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
+    if ((gCourseIndexInCup == COURSE_ONE) || (gDemoMode == 1) || (gDebugMenuSelection == DEBUG_MENU_EXITED)) {
         s16 rand;
         s16 i;
 
@@ -1178,17 +1178,18 @@ void func_8003CD98(Player* player, Camera* camera, s8 playerId, s8 screenId) {
             load_kart_palette(player, playerId, screenId, 0);
             load_kart_palette(player, playerId, screenId, 1);
             load_kart_texture(player, playerId, screenId, screenId, 0);
-            mio0decode((u8*) &D_802DFB80[0][screenId][playerId], (u8*) &D_802BFB80.arraySize8[0][screenId][playerId]);
+            mio0decode((u8*) &gEncodedKartTexture[0][screenId][playerId],
+                       (u8*) &D_802BFB80.arraySize8[0][screenId][playerId]);
         } else {
             load_kart_palette(player, playerId, screenId, 0);
             load_kart_palette(player, playerId, screenId, 1);
             load_kart_texture(player, (s8) (playerId + 4), screenId, (s8) (screenId - 2), 0);
-            mio0decode((u8*) &D_802DFB80[0][screenId - 2][playerId + 4],
+            mio0decode((u8*) &gEncodedKartTexture[0][screenId - 2][playerId + 4],
                        (u8*) &D_802BFB80.arraySize8[0][screenId - 2][playerId + 4]);
         }
 
-        D_801650D0[screenId][playerId] = player->animFrameSelector[screenId];
-        D_80165110[screenId][playerId] = player->animGroupSelector[screenId];
+        gLastAnimFrameSelector[screenId][playerId] = player->animFrameSelector[screenId];
+        gLastAnimGroupSelector[screenId][playerId] = player->animGroupSelector[screenId];
         D_80165150[screenId][playerId] = player->unk_0A8;
         D_801651D0[screenId][playerId] = 0;
         render_player(player, playerId, screenId);

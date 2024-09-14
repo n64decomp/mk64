@@ -1,7 +1,7 @@
 #ifndef CREDITS_H
 #define CREDITS_H
 
-#include "PR/ultratypes.h"
+#include <PR/ultratypes.h>
 
 #define SLIDE_RIGHT 0
 #define SLIDE_LEFT 1

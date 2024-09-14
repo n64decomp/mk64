@@ -84,10 +84,10 @@ void func_8006EB10(void) {
         gObjectParticle4[i] = NULL_OBJECT_ID;
     }
 
+    // clang-format off
     // Has to be on one line, because IDO hates you :)
-    for (i = 0; i < gLeafParticle_SIZE; i++) {
-        gLeafParticle[i] = NULL_OBJECT_ID;
-    }
+    for (i = 0; i < gLeafParticle_SIZE; i++) { gLeafParticle[i] = NULL_OBJECT_ID; }
+    // clang-format on
 
     D_8018CF18 = D_8018CF20 = D_8018CF48 = D_8018CF60 = D_8018CF78 = D_8018CF90 = D_8018CFA8 = 0;
     D_8018CFB0 = D_8018CFB8 = D_8018CFC0 = D_8018CFC8 = D_8018CFD0 = D_8018CFD8 = D_8018CFE0 = 0;
@@ -162,13 +162,10 @@ void func_8006EF60(void) {
     u8* wut;
 
     wut = D_8018D9B4 + 0xFFFF0000;
+    // clang-format off
     // God forgive me for my sins...
-    huh = 0x14;
-    if (0) {}
-    for (i = 0; i < huh; i++) {
-        D_8018D248[i] = func_8006ED94(gCourseOutlineTextures[i], wut, D_800E5520[i], D_800E5520[i]);
-        wut += D_800E5520[i];
-    }
+    huh = 0x14; if (0) {} for (i = 0; i < huh; i++) { D_8018D248[i] = func_8006ED94(gCourseOutlineTextures[i], wut, D_800E5520[i], D_800E5520[i]); wut += D_800E5520[i]; }
+    // clang-format on
 }
 
 void func_8006F008(void) {
@@ -579,7 +576,7 @@ void func_8006FA94(void) {
     D_8018D17C = D_8018D18C;
     D_8018D174 = D_8018D18C;
     player = gPlayerOne;
-    for (var_a0 = 0; var_a0 < 8; var_a0++) {
+    for (var_a0 = 0; var_a0 < NUM_PLAYERS; var_a0++) {
         D_8018D0F0[var_a0] = D_8018D050[var_a0] = -32.0f;
         D_8018CE10[var_a0].unk_04[0] = D_8018CE10[var_a0].unk_04[1] = D_8018CE10[var_a0].unk_04[2] = 0.0f;
         D_8018CF50[var_a0] = var_a0;

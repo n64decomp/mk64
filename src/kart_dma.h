@@ -2,15 +2,15 @@
 #define KART_DMA_H
 
 #include "macros.h"
-#include "common_structs.h"
+#include <common_structs.h>
 
 /* Function Prototypes */
 
 void load_kart_texture(Player*, s8, s8, s8, s8);
-void func_80027560(Player*, s8, s8, s8, s8);
+void load_kart_texture_non_blocking(Player*, s8, s8, s8, s8);
 void load_kart_palette(Player*, s8, s8, s8);
-void func_80027BDC(Player*, s32, void*, u16);
-void func_80027C74(Player*, s32, void*, u16);
+void load_player_data(Player*, s32, void*, u16);
+void load_player_data_non_blocking(Player*, s32, void*, u16);
 
 /* This is where I'd put my static data, if I had any */
 

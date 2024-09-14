@@ -2102,14 +2102,12 @@ typedef union {
 /***
  ***  1 Quadrangle
  ***/
-#define gSP1Quadrangle(v0, v1, v2, v3, flag)                     \
-    {                                                            \
-        {                                                        \
-            Gfx* _g = (Gfx*) (pkt);                              \
-                                                                 \
-            _g->words.w0 = _SHIFTL(G_QUAD, 24, 8);               \
-            _g->words.w1 = __gsSP1Quadrangle_w1(v0, v1, v2, v3); \
-        }                                                        \
+#define gSP1Quadrangle(v0, v1, v2, v3, flag)             \
+    { { Gfx* _g = (Gfx*) (pkt);                          \
+                                                         \
+    _g->words.w0 = _SHIFTL(G_QUAD, 24, 8);               \
+    _g->words.w1 = __gsSP1Quadrangle_w1(v0, v1, v2, v3); \
+    }                                                    \
     }
 
 #define gsSP1Quadrangle(v0, v1, v2, v3, flag)                            \
@@ -2613,8 +2611,7 @@ typedef union {
 #define gsSPLookAtY(l) gsDma1p(G_MOVEMEM, l, sizeof(Light), G_MV_LOOKATY)
 #endif /* F3DEX_GBI_2 */
 
-#define gSPLookAt(pkt, la) \
-    { gSPLookAtX(pkt, la) gSPLookAtY(pkt, (char*) (la) + 16) }
+#define gSPLookAt(pkt, la) { gSPLookAtX(pkt, la) gSPLookAtY(pkt, (char*) (la) + 16) }
 #define gsSPLookAt(la) gsSPLookAtX(la), gsSPLookAtY((char*) (la) + 16)
 
 #define gDPSetHilite1Tile(pkt, tile, hilite, width, height)                   \

@@ -1,7 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 /**
  * @todo put this define in types.h or similar.

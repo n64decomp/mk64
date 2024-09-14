@@ -1,7 +1,7 @@
 #ifndef VEHICLES_H
 #define VEHICLES_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 #define NUM_1P_PASSENGER_CARS 4
 #define NUM_2P_PASSENGER_CARS 1
@@ -49,26 +49,26 @@ typedef struct {
     /* 0x000 */ TrainCarStuff locomotive;
     /* 0x024 */ TrainCarStuff tender;
     /* 0x048 */ TrainCarStuff passengerCars[NUM_PASSENGER_CAR_ENTRIES];
-    /* 0x0FC */ f32 someMultiplier;
+    /* 0x0FC */ f32 speed;
     /* 0x100 */ s32 someFlags;
     /* 0x104 */ s32 numCars; // Non-locomotive car count?
     /* 0x108 */ s32 unused;  // Not read or written. Could be padding?
 } TrainStuff;                // size = 0x10C
 
 typedef struct {
-    /* 0x00 */ s16 isActive;       // The paddle wheel boat only shows up if the number of players is < 3
-    /* 0x02 */                     // s16 compilerPadding;
-    /* 0x04 */ Vec3f position;     //
-    /* 0x10 */ Vec3f velocity;     //
-    /* 0x1C */ u16 waypointIndex;  //
-    /* 0x1E */ s16 actorIndex;     //
-    /* 0x20 */ f32 someMultiplier; //
-    /* 0x24 */ s16 rotY;           // Only Y rotation is tracked in this struct
-    /* 0x26 */                     // s16 compilerPadding2;
-                                   /**
-                                    * Bit field that tracks whether a given human player is within a certain distance of the boat
-                                    * Probably audio related
-                                    **/
+    /* 0x00 */ s16 isActive;      // The paddle wheel boat only shows up if the number of players is < 3
+    /* 0x02 */                    // s16 compilerPadding;
+    /* 0x04 */ Vec3f position;    //
+    /* 0x10 */ Vec3f velocity;    //
+    /* 0x1C */ u16 waypointIndex; //
+    /* 0x1E */ s16 actorIndex;    //
+    /* 0x20 */ f32 speed;         //
+    /* 0x24 */ s16 rotY;          // Only Y rotation is tracked in this struct
+    /* 0x26 */                    // s16 compilerPadding2;
+                                  /**
+                                   * Bit field that tracks whether a given human player is within a certain distance of the boat
+                                   * Probably audio related
+                                   **/
     /* 0x28 */ s32 someFlags;
 } PaddleBoatStuff; // size = 0x2C
 
@@ -79,7 +79,7 @@ typedef struct {
     /* 0x10 */ Vec3f velocity;
     /* 0x1C */ u16 waypointIndex;
     /* 0x1E */ s16 actorIndex;
-    /* 0x20 */ f32 someMultiplier;          //
+    /* 0x20 */ f32 speed;                   //
     /* 0x24 */ f32 someMultiplierTheSequel; //
     /* 0x28 */ Vec3s rotation;
     /* 0x2E */ s16 someType;          //

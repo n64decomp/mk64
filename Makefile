@@ -81,6 +81,7 @@ endif
 ifeq      ($(COMPILER),ido)
   MIPSISET := -mips2
 else ifeq ($(COMPILER),gcc)
+  DEFINES += AVOID_UB=1 NON_MATCHING=1
   NON_MATCHING := 1
   VERSION_ASFLAGS := --defsym AVOID_UB=1
   MIPSISET     := -mips3
@@ -278,14 +279,20 @@ GLOBAL_ASM_RACING_O_FILES = $(foreach file,$(GLOBAL_ASM_RACING_C_FILES),$(BUILD_
 
 # detect prefix for MIPS toolchain
 ifneq ($(CROSS),)
-else ifneq      ($(call find-command,mips-linux-gnu-ld),)
-	CROSS := mips-linux-gnu-
-else ifneq ($(call find-command,mips64-linux-gnu-ld),)
-	CROSS := mips64-linux-gnu-
 else ifneq ($(call find-command,mips64-elf-ld),)
-	CROSS := mips64-elf-
+  CROSS := mips64-elf-
+# else ifneq ($(call find-command,mips-n64-ld),)
+#   CROSS := mips-n64-
+else ifneq ($(call find-command,mips64-ld),)
+  CROSS := mips64-
+else ifneq ($(call find-command,mips-linux-gnu-ld),)
+  CROSS := mips-linux-gnu-
+else ifneq ($(call find-command,mips64-linux-gnu-ld),)
+  CROSS := mips64-linux-gnu-
+else ifneq ($(call find-command,mips-ld),)
+  CROSS := mips-
 else
-	$(error Unable to detect a suitable MIPS toolchain installed)
+  $(error Unable to detect a suitable MIPS toolchain installed)
 endif
 
 AS      := $(CROSS)as
@@ -432,6 +439,9 @@ doc:
 	doxygen
 	@$(PRINT) "$(GREEN)Documentation generated in docs/html$(NO_COL)\n"
 	@$(PRINT) "$(GREEN)Results can be viewed by opening docs/html/index.html in a web browser$(NO_COL)\n"
+
+format:
+	@$(PYTHON) $(TOOLS_DIR)/format.py -j $(N_THREADS)
 
 clean:
 	$(RM) -r $(BUILD_DIR)
@@ -633,7 +643,7 @@ $(GLOBAL_ASM_RACING_O_FILES): CC := $(PYTHON) $(TOOLS_DIR)/asm_processor/build.p
 $(BUILD_DIR)/src/os/%.o:          OPT_FLAGS :=
 $(BUILD_DIR)/src/os/math/%.o:     OPT_FLAGS := -O2
 $(BUILD_DIR)/src/os/math/ll%.o:   OPT_FLAGS :=
-$(BUILD_DIR)/src/os/math/ll%.o:   MIPSISET := -mips3 -32
+$(BUILD_DIR)/src/os/math/ll%.o:   MIPSISET := -mips3
 $(BUILD_DIR)/src/os/ldiv.o:       OPT_FLAGS := -O2
 $(BUILD_DIR)/src/os/string.o:     OPT_FLAGS := -O2
 $(BUILD_DIR)/src/os/gu%.o:        OPT_FLAGS := -O3

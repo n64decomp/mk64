@@ -1,7 +1,7 @@
 #include "libultra_internal.h"
 #include "hardware.h"
 #include "new_func.h"
-#include "PR/R4300.h"
+#include <PR/R4300.h>
 //! @todo This define is from piint.h, but including that causes problems...
 #define UPDATE_REG(reg, var)           \
     if (cHandle->var != pihandle->var) \
@@ -15,8 +15,9 @@ s32 osEPiRawStartDma(OSPiHandle* pihandle, s32 dir, u32 cart_addr, void* dram_ad
     register int status;
 
     status = HW_REG(PI_STATUS_REG, u32);
-    while (status & PI_STATUS_ERROR)
+    while (status & PI_STATUS_ERROR) {
         status = HW_REG(PI_STATUS_REG, u32);
+    }
 
     HW_REG(PI_DRAM_ADDR_REG, void*) = (void*) osVirtualToPhysical(dram_addr);
     HW_REG(PI_CART_ADDR_REG, void*) = (void*) (((uintptr_t) pihandle->baseAddress | cart_addr) & 0x1fffffff);

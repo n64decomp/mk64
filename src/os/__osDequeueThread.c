@@ -1,28 +1,24 @@
 #include "libultra_internal.h"
 
-#ifndef AVOID_UB
-OSThread* __osThreadTail = NULL;
-u32 __osTest = -1;
-OSThread* __osRunQueue = (OSThread*) &__osThreadTail;
-OSThread* __osActiveQueue = (OSThread*) &__osThreadTail;
-OSThread* __osRunningThread = NULL;
-OSThread* __osFaultedThread = NULL;
-#else
-OSThread_ListHead __osThreadTail_fix = { NULL, -1, (OSThread*) &__osThreadTail_fix, (OSThread*) &__osThreadTail_fix,
-                                         NULL, 0 };
-#endif
+struct __osThreadTail __osThreadTail = { NULL, -1 };
+OSThread *__osRunQueue = (OSThread *) &__osThreadTail;
+OSThread *__osActiveQueue = (OSThread *) &__osThreadTail;
+OSThread *__osRunningThread = { 0 };
+OSThread *__osFaultedThread = { 0 };
 
-void __osDequeueThread(OSThread** queue, OSThread* thread) {
-    register OSThread** a2;
-    register OSThread* a3;
-    a2 = queue;
-    a3 = *a2;
-    while (a3 != NULL) {
-        if (a3 == thread) {
-            *a2 = thread->next;
+void __osDequeueThread(register OSThread **queue, register OSThread *t) {
+    register OSThread *pred;
+    register OSThread *succ;
+
+    pred = (OSThread *) queue;
+    succ = pred->next;
+
+    while (succ != NULL) {
+        if (succ == t) {
+            pred->next = t->next;
             return;
         }
-        a2 = &a3->next;
-        a3 = *a2;
+        pred = succ;
+        succ = pred->next;
     }
 }

@@ -365,8 +365,9 @@ void func_800BB43C(ALSeqFile* f, u8* base) {
     int i;
     u8* wut = base;
     for (i = 0; i < f->seqCount; i++) {
-        if (f->seqArray[i].len != 0)
+        if (f->seqArray[i].len != 0) {
             PATCH(f->seqArray[i].offset, wut, u8*);
+        }
     }
 #undef PATCH
 }
@@ -787,7 +788,7 @@ void audio_init(void) {
 #ifdef TARGET_N64
     // It seems boot.s doesn't clear the .bss area for audio, so do it here.
     ptr64 = (u64*) ((u8*) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer));
-    for (i = ((uintptr_t) &D_803B71A0 -
+    for (i = ((uintptr_t) &gAudioGlobalsEndMarker -
               (uintptr_t) ((u64*) ((u8*) gGfxSPTaskOutputBuffer + sizeof(gGfxSPTaskOutputBuffer)))) /
              8;
          i >= 0; i--) {

@@ -1,7 +1,7 @@
 #ifndef CODE_80091750_H
 #define CODE_80091750_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 #include "textures.h"
 #include "main.h"
 
@@ -17,14 +17,14 @@ Known `types` for `struct_8018D9E0_entry`
 0x56: "Special Cup" box on the cup selection screen
 0x5E: A box of static over the course images as the cup selection screen loads in.
       It is near unnoticeable though as in practice it doesn't last long enough to be seen.
-      Try locking the word at `8018DC80` to see something like 0x20 just before confirming character
-selection to make it last longer See `func_80096CD8` for the actual drawing of the static
+      Try locking the word at `8018DC80` to see something like 0x20 just before confirming character selection to make
+it last longer See `func_80096CD8` for the actual drawing of the static
 */
 
 typedef struct {
-    /* 0x00 */ s32 type;  // id maybe?
-    /* 0x04 */ s32 state; // sound mode, maybe some other stuff
-    /* 0x08 */ s32 unk8;  // This is used but I can't tell what for
+    /* 0x00 */ s32 type;   // id maybe?
+    /* 0x04 */ s32 cursor; // sound mode, maybe some other stuff
+    /* 0x08 */ s32 unk8;   // This is used but I can't tell what for
     /* 0x0C */ s32 column;
     /* 0x10 */ s32 row;
     /* 0x14 */ u8 priority; // priority/depth/z-level. Higher values are drawn on top of lower values
@@ -34,11 +34,10 @@ typedef struct {
     /* 0x16 */ s16 unk16;            // Potentially unused
     /* 0x18 */ s32 D_8018DEE0_index; // Index in D_8018DEE0, an array of some other struct type
     /* 0x1C */ s32 unk1C;            // Multi use. Sometimes cup selection, sometimes course index.
-    /* 0x20 */ s32 unk20;            // Multi use, hard to tell what for though. Sometimes a random number,
-                                     // sometimes GP points
-    /* 0x24 */ f32 unk24;            // Multi use, x scaling for some things, rotation multiplier for the question
-                                     // box in some menus, probably some other things
-} struct_8018D9E0_entry;             // size = 0x28
+    /* 0x20 */ s32 unk20; // Multi use, hard to tell what for though. Sometimes a random number, sometimes GP points
+    /* 0x24 */ f32 unk24; // Multi use, x scaling for some things, rotation multiplier for the question box in some
+                          // menus, probably some other things
+} struct_8018D9E0_entry;  // size = 0x28
 
 typedef struct {
     /* 0x00 */ MkAnimation* textureSequence;

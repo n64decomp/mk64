@@ -1,13 +1,13 @@
 #ifndef WAYPOINTS_H
 #define WAYPOINTS_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 typedef struct {
     /* 0x00 */ s16 posX;
     /* 0x02 */ s16 posY;
     /* 0x04 */ s16 posZ;
-    /* 0x06 */ u16 trackSegment;
+    /* 0x06 */ u16 trackSectionId;
 } TrackWaypoint; // size = 0x08
 
 /**

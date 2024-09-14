@@ -420,10 +420,10 @@ void func_802B5CAC(s16 arg0, s16 arg1, Vec3f arg2) {
 }
 
 void func_802B5D30(s16 arg0, s16 arg1, s32 arg2) {
-    func_802B5D64(0x9000000, arg0, arg1, arg2);
+    func_802B5D64((Lights1 *)0x9000000, arg0, arg1, arg2);
 }
 
-void func_802B5D64(uintptr_t addr, s16 arg1, s16 arg2, s32 arg3) {
+void func_802B5D64(Lights1 *addr, s16 arg1, s16 arg2, s32 arg3) {
     u32 segment = SEGMENT_NUMBER2(addr);
     u32 offset = SEGMENT_OFFSET(addr);
     UNUSED s32 pad;
@@ -953,6 +953,7 @@ f32 atan2f(f32 arg0, f32 arg1) {
     return atan2s(arg0, arg1);
 }
 
+#ifndef NON_MATCHING // The decomp does not support fabs
 UNUSED f32 func_802B79F0(f32 arg0, f32 arg1) {
     f64 halfpi;
     f32 temp_f0;
@@ -993,6 +994,7 @@ UNUSED f32 func_802B79F0(f32 arg0, f32 arg1) {
     }
     return var_f2;
 }
+#endif
 
 UNUSED u16 func_802B7B50(f32 arg0, f32 arg1) {
     return ((atan2f(arg0, arg1) * 32768.0f) / M_PI);

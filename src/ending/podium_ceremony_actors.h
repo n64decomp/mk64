@@ -1,7 +1,7 @@
 #ifndef podium_ceremony_actors_H
 #define podium_ceremony_actors_H
 
-#include "common_structs.h"
+#include <common_structs.h>
 
 enum CeremonyActorType { Initial, Balloon, FireworkCone, FireworkBurst };
 
