@@ -5426,26 +5426,25 @@ void func_80014D30(s32 cameraId, s32 pathIndex) {
                              (f32) temp_v0->posZ);
 }
 
-void func_80014DE4(s32 arg0) {
+void func_80014DE4(s32 cameraIndex) {
     s32 cameraId;
 
     D_801646CC = 0;
-    D_80164678[arg0] = D_80164670[arg0];
+    D_80164678[cameraIndex] = D_80164670[cameraIndex];
     if ((gModeSelection != 1) && ((gCourseIndexInCup == COURSE_ONE) || (gDemoMode == (u16) 1))) {
-        D_80164678[arg0] = 0;
-    } else if ((D_80164678[arg0] != 0) && (D_80164678[arg0] != (s16) 1) && (D_80164678[arg0] != 2) &&
-               (D_80164678[arg0] != 3)) {
-        D_80164678[arg0] = 0;
+        D_80164678[cameraIndex] = 0;
+    } else if ((D_80164678[cameraIndex] != 0) && (D_80164678[cameraIndex] != (s16) 1) && (D_80164678[cameraIndex] != 2) && (D_80164678[cameraIndex] != 3)) {
+        D_80164678[cameraIndex] = 0;
     }
-    D_80164680[arg0] = -1;
+    D_80164680[cameraIndex] = -1;
     D_80163238 = 0;
-    D_801646C0[arg0] = 0;
+    D_801646C0[cameraIndex] = 0;
     D_801646C8 = 0;
-    D_801646D0[arg0].unk0 = 0;
-    D_801646D0[arg0].unk2 = 0;
-    D_801646D0[arg0].unk4 = 0;
+    D_801646D0[cameraIndex].unk0 = 0;
+    D_801646D0[cameraIndex].unk2 = 0;
+    D_801646D0[cameraIndex].unk4 = 0;
     if ((gModeSelection == 1) && (D_8018EDFC == 0)) {
-        D_80164678[arg0] = 0;
+        D_80164678[cameraIndex] = 0;
     }
 
     for (cameraId = 0; cameraId < 4; cameraId++) {
@@ -5532,7 +5531,7 @@ f32 func_80014EE4(f32 arg0, s32 arg1) {
     return arg0;
 }
 
-void func_800151A4(Camera* camera, s32 arg1) {
+void calculate_camera_up_vector(Camera *camera, s32 cameraIndex) {
     f32 xnorm;
     f32 ynorm;
     f32 znorm;
@@ -5543,7 +5542,7 @@ void func_800151A4(Camera* camera, s32 arg1) {
     f32 sp28;
     u16 thing;
 
-    thing = D_801646C0[arg1];
+    thing = D_801646C0[cameraIndex];
     if (thing == 0) {
         camera->up[0] = 0.0f;
         camera->up[2] = 0.0f;
@@ -6665,10 +6664,10 @@ void func_80019890(s32 playerId, s32 cameraId) {
     }
 }
 
-void func_80019B50(s32 arg0, u16 arg1) {
+void func_80019B50(s32 cameraIndex, u16 arg1) {
     u16 var_v0;
 
-    var_v0 = D_801646C0[arg0];
+    var_v0 = D_801646C0[cameraIndex];
     if (var_v0 < arg1) {
         if ((arg1 - var_v0) < 0x8000) {
             var_v0 += 0x5A;
@@ -6692,10 +6691,10 @@ void func_80019B50(s32 arg0, u16 arg1) {
             }
         } else if ((var_v0 - arg1) >= 0x8000) {
             var_v0 += 0x5A;
-            if (!arg0) {} // wtf?
+            if (!cameraIndex) {} // wtf?
         }
     }
-    D_801646C0[arg0] = (s16) var_v0;
+    D_801646C0[cameraIndex] = (s16) var_v0;
 }
 
 void func_80019C50(s32 arg0) {
@@ -6723,7 +6722,7 @@ void func_80019D2C(Camera* camera, Player* player, s32 arg2) {
 
     playerId = camera->playerId;
     if ((D_80163378 != 0) && (gCurrentCourseId == 8)) {
-        func_800151A4(camera, arg2);
+        calculate_camera_up_vector(camera, arg2);
         nearestWaypoint = gNearestWaypointByPlayerId[playerId];
         if (((nearestWaypoint >= 0x65) && (nearestWaypoint < 0xFA)) ||
             ((nearestWaypoint >= 0x1AF) && (nearestWaypoint < 0x226))) {
@@ -6959,7 +6958,7 @@ void func_8001A588(UNUSED u16* localD_80152300, Camera* camera, Player* player, 
         func_80019D2C(camera, player, cameraIndex);
     } else {
         D_801646C0[cameraIndex] = 0;
-        func_800151A4(camera, cameraIndex);
+        calculate_camera_up_vector(camera, cameraIndex);
     }
     switch ((u16) D_801646CC) {
         case 1:
