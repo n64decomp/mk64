@@ -46,9 +46,9 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 707;
+var viewWidth = 720;
 var viewHeight = 64;
-var sectionId = 'dynsection-177';
+var sectionId = 'dynsection-174';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -156,9 +156,9 @@ var sectionId = 'dynsection-177';
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="update__objects_8c.html#a4b4f00a7df0f9bc44914cd922c3cd51b" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="699,-19 584,-19 584,0 699,0 699,-19"/>
-<text text-anchor="middle" x="641.5" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">set_object_unk_0CB</text>
+<g id="a_Node000007"><a xlink:href="update__objects_8c.html#af20e3f3c403dd4fbea56e358997e515a" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="712,-19 584,-19 584,0 712,0 712,-19"/>
+<text text-anchor="middle" x="648" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">set_object_timer_state</text>
 </a>
 </g>
 </g>
@@ -166,8 +166,8 @@ var sectionId = 'dynsection-177';
 <g id="edge6_Node000006_Node000007" class="edge">
 <title>Node6&#45;&gt;Node7</title>
 <g id="a_edge6_Node000006_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M518.36,-9.5C534.55,-9.5 554.6,-9.5 573.74,-9.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="573.94,-13 583.94,-9.5 573.94,-6 573.94,-13"/>
+<path fill="none" stroke="#63b8ff" d="M518.17,-9.5C534.25,-9.5 554.25,-9.5 573.66,-9.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="573.73,-13 583.73,-9.5 573.73,-6 573.73,-13"/>
 </a>
 </g>
 </g>

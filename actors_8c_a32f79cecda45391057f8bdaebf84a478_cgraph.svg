@@ -1166,9 +1166,9 @@ var sectionId = 'dynsection-27';
 <!-- Node40 -->
 <g id="Node000040" class="node">
 <title>Node40</title>
-<g id="a_Node000040"><a xlink:href="update__objects_8c.html#a4b4f00a7df0f9bc44914cd922c3cd51b" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="820,-95 705,-95 705,-76 820,-76 820,-95"/>
-<text text-anchor="middle" x="762.5" y="-83" font-family="Helvetica,sans-Serif" font-size="10.00">set_object_unk_0CB</text>
+<g id="a_Node000040"><a xlink:href="update__objects_8c.html#af20e3f3c403dd4fbea56e358997e515a" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="826.5,-95 698.5,-95 698.5,-76 826.5,-76 826.5,-95"/>
+<text text-anchor="middle" x="762.5" y="-83" font-family="Helvetica,sans-Serif" font-size="10.00">set_object_timer_state</text>
 </a>
 </g>
 </g>
@@ -1176,8 +1176,8 @@ var sectionId = 'dynsection-27';
 <g id="edge70_Node000039_Node000040" class="edge">
 <title>Node39&#45;&gt;Node40</title>
 <g id="a_edge70_Node000039_Node000040"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M608.34,-85.5C632.24,-85.5 665.25,-85.5 694.5,-85.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="694.67,-89 704.67,-85.5 694.67,-82 694.67,-89"/>
+<path fill="none" stroke="#63b8ff" d="M608.34,-85.5C630.55,-85.5 660.62,-85.5 688.24,-85.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="688.28,-89 698.28,-85.5 688.28,-82 688.28,-89"/>
 </a>
 </g>
 </g>

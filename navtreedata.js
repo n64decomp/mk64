@@ -192,7 +192,7 @@ var NAVTREEINDEX =
 "toads__turnpike_2course__displaylists_8inc_8c.html#a3fd2ba5f8ead40ac003fe192affea340",
 "toads__turnpike_2course__textures_8linkonly_8c.html#a5cc59c0e8d009ec4e3b1193150a51f60",
 "update__objects_8c.html#a36efe16e358299194a64dc1d7f0e6d3e",
-"update__objects_8c.html#ad2cf2690a00052ea43c81146dbc9f355",
+"update__objects_8c.html#ad31dee02d3db7cd8e8ac3a854c6cf38a",
 "wario__stadium_2course__data_8h.html#a1ed70cebe1107980e258b473f69ca74e",
 "wario__stadium_2course__displaylists_8inc_8c.html#a8e84669d5d26cad8c5fe17dc1c07e56a",
 "wario__stadium_2course__displaylists_8inc_8h.html#a8882b141b5dd45a246224a202bcae18e",

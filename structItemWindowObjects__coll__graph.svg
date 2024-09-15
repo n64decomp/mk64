@@ -107,9 +107,9 @@ var sectionId = 'dynsection-0';
 </a>
 </g>
 <text text-anchor="middle" x="179" y="-736.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> status</text>
-<text text-anchor="middle" x="179" y="-725.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_048</text>
-<text text-anchor="middle" x="179" y="-714.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_04C</text>
-<text text-anchor="middle" x="179" y="-703.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_050</text>
+<text text-anchor="middle" x="179" y="-725.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">timer</text>
+<text text-anchor="middle" x="179" y="-714.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_048</text>
+<text text-anchor="middle" x="179" y="-703.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_04C</text>
 <text text-anchor="middle" x="179" y="-692.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_058</text>
 <text text-anchor="middle" x="179" y="-681.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_05C</text>
 </g>
@@ -197,10 +197,10 @@ var sectionId = 'dynsection-0';
 <polygon fill="#9a32cd" stroke="#9a32cd" points="98.31,-313.57 88.73,-318.11 99.04,-320.54 98.31,-313.57"/>
 </a>
 </g>
-<text text-anchor="middle" x="179" y="-453.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> itemDisplay</text>
-<text text-anchor="middle" x="179" y="-442.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_078</text>
-<text text-anchor="middle" x="179" y="-431.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0CA</text>
-<text text-anchor="middle" x="179" y="-420.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0CB</text>
+<text text-anchor="middle" x="179" y="-453.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey"> isTimerActive</text>
+<text text-anchor="middle" x="179" y="-442.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">textureListIndex</text>
+<text text-anchor="middle" x="179" y="-431.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_078</text>
+<text text-anchor="middle" x="179" y="-420.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0CA</text>
 <text text-anchor="middle" x="179" y="-409.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0CC</text>
 <text text-anchor="middle" x="179" y="-398.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0CD</text>
 <text text-anchor="middle" x="179" y="-387.12" font-family="Helvetica,sans-Serif" font-size="10.00" fill="grey">unk_0CE</text>

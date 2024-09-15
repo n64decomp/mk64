@@ -164,9 +164,9 @@
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="update__objects_8c.html#a4b4f00a7df0f9bc44914cd922c3cd51b" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="693.5,-19 578.5,-19 578.5,0 693.5,0 693.5,-19"/>
-<text text-anchor="middle" x="636" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">set_object_unk_0CB</text>
+<g id="a_Node000007"><a xlink:href="update__objects_8c.html#af20e3f3c403dd4fbea56e358997e515a" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="700,-19 572,-19 572,0 700,0 700,-19"/>
+<text text-anchor="middle" x="636" y="-7" font-family="Helvetica,sans-Serif" font-size="10.00">set_object_timer_state</text>
 </a>
 </g>
 </g>
@@ -174,8 +174,8 @@
 <g id="edge6_Node000006_Node000007" class="edge">
 <title>Node6&#45;&gt;Node7</title>
 <g id="a_edge6_Node000006_Node000007"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M456.79,-203.96C464.72,-173.08 494.04,-75.06 557,-27.5 560.65,-24.74 564.66,-22.39 568.87,-20.4"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="570.38,-23.56 578.34,-16.56 567.75,-17.07 570.38,-23.56"/>
+<path fill="none" stroke="#63b8ff" d="M456.79,-203.96C464.72,-173.08 494.04,-75.06 557,-27.5 558.85,-26.1 560.78,-24.81 562.79,-23.62"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="564.62,-26.62 571.98,-19 561.48,-20.37 564.62,-26.62"/>
 </a>
 </g>
 </g>

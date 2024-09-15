@@ -46,9 +46,9 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 560;
+var viewWidth = 563;
 var viewHeight = 165;
-var sectionId = 'dynsection-530';
+var sectionId = 'dynsection-527';
 </script>
 <script type="application/ecmascript" xlink:href="svg.min.js"/>
 <svg id="graph" class="graph">
@@ -120,9 +120,9 @@ var sectionId = 'dynsection-530';
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="update__objects_8c.html#a91e6ccbfa10d972106998ad26b271c17" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="377.5,-130 286.5,-130 286.5,-111 377.5,-111 377.5,-130"/>
-<text text-anchor="middle" x="332" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">func_80072488</text>
+<g id="a_Node000003"><a xlink:href="update__objects_8c.html#a8bfc5f5c7034d61b534e14f325b6e399" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="384,-130 280,-130 280,-111 384,-111 384,-130"/>
+<text text-anchor="middle" x="332" y="-118" font-family="Helvetica,sans-Serif" font-size="10.00">object_next_state</text>
 </a>
 </g>
 </g>
@@ -175,9 +175,9 @@ var sectionId = 'dynsection-530';
 <g id="Node000004" class="node">
 <title>Node4</title>
 <g id="a_Node000004"><a xlink:href="update__objects_8c.html#ad33541b9fed7857e59b2d745298f2d44" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="552,-156.5 427,-156.5 427,-126.5 552,-126.5 552,-156.5"/>
-<text text-anchor="start" x="435" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">set_object_flag_status</text>
-<text text-anchor="middle" x="489.5" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">_false</text>
+<polygon fill="white" stroke="#666666" points="553.5,-156.5 428.5,-156.5 428.5,-126.5 553.5,-126.5 553.5,-156.5"/>
+<text text-anchor="start" x="436.5" y="-144.5" font-family="Helvetica,sans-Serif" font-size="10.00">set_object_flag_status</text>
+<text text-anchor="middle" x="491" y="-133.5" font-family="Helvetica,sans-Serif" font-size="10.00">_false</text>
 </a>
 </g>
 </g>
@@ -185,17 +185,17 @@ var sectionId = 'dynsection-530';
 <g id="edge3_Node000003_Node000004" class="edge">
 <title>Node3&#45;&gt;Node4</title>
 <g id="a_edge3_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M377.56,-126.52C389.79,-128.17 403.37,-130 416.71,-131.8"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="416.46,-135.3 426.84,-133.17 417.4,-128.37 416.46,-135.3"/>
+<path fill="none" stroke="#63b8ff" d="M384.41,-127.38C395.27,-128.83 406.91,-130.39 418.37,-131.92"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="417.98,-135.4 428.35,-133.25 418.91,-128.46 417.98,-135.4"/>
 </a>
 </g>
 </g>
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="update__objects_8c.html#a4b4f00a7df0f9bc44914cd922c3cd51b" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="547,-108 432,-108 432,-89 547,-89 547,-108"/>
-<text text-anchor="middle" x="489.5" y="-96" font-family="Helvetica,sans-Serif" font-size="10.00">set_object_unk_0CB</text>
+<g id="a_Node000005"><a xlink:href="update__objects_8c.html#af20e3f3c403dd4fbea56e358997e515a" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="555,-108 427,-108 427,-89 555,-89 555,-108"/>
+<text text-anchor="middle" x="491" y="-96" font-family="Helvetica,sans-Serif" font-size="10.00">set_object_timer_state</text>
 </a>
 </g>
 </g>
@@ -203,8 +203,8 @@ var sectionId = 'dynsection-530';
 <g id="edge4_Node000003_Node000005" class="edge">
 <title>Node3&#45;&gt;Node5</title>
 <g id="a_edge4_Node000003_Node000005"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M377.56,-114.2C391.27,-112.26 406.67,-110.08 421.54,-107.97"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="422.31,-111.4 431.72,-106.53 421.33,-104.47 422.31,-111.4"/>
+<path fill="none" stroke="#63b8ff" d="M384.41,-113.3C394.82,-111.84 405.95,-110.28 416.94,-108.74"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="417.54,-112.19 426.96,-107.33 416.57,-105.26 417.54,-112.19"/>
 </a>
 </g>
 </g>
