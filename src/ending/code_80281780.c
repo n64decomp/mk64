@@ -154,7 +154,7 @@ void load_ceremony_cutscene(void) {
     init_hud();
     func_8001C05C();
     balloons_and_fireworks_init();
-    func_802816B8();
+    init_camera_podium_ceremony();
     func_80093E60();
     D_801625F8 = (s32) gHeapEndPtr - gNextFreeMemoryAddress;
     D_801625FC = ((f32) D_801625F8 / 1000.0f);
