@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['r_0',['R',['../common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7ba1784b1a3d7cbd43c45ff82c72d05e4ae',1,'common_structs.h']]],
-  ['ramp_1',['RAMP',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a291e3bb43cd8449155161d1fa023348b',1,'mk64.h']]],
-  ['rdp_5fcomplete_2',['RDP_COMPLETE',['../profiler_8h.html#af588a3a9b27840d837d5417d4be531e8aa3296314d0bb67d38b2cb84ce4f8e4d1',1,'profiler.h']]],
-  ['red_5fshell_5flock_5fon_3',['RED_SHELL_LOCK_ON',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495baed8383aa36b27a569d33434e6638551d',1,'actor_types.h']]],
-  ['released_5fshell_4',['RELEASED_SHELL',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495ba6bccf5be381532660e62c226008d6382',1,'actor_types.h']]],
-  ['render_5fmodel_5for_5fadd_5fpos_5',['RENDER_MODEL_OR_ADD_POS',['../animation_8h.html#a52e412534f1af21caf39f50ea61280cea89e2160937075058c35008e43581de7e',1,'animation.h']]],
-  ['rope_5fbridge_6',['ROPE_BRIDGE',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a840c6af15539978eb506fbb93491bde4',1,'mk64.h']]],
-  ['rsp_5fcomplete_7',['RSP_COMPLETE',['../profiler_8h.html#af588a3a9b27840d837d5417d4be531e8a7bf6fe6348b92ac9975f5ac8b1777759',1,'profiler.h']]]
+  ['player_5feight_0',['PLAYER_EIGHT',['../defines_8h.html#a698be281bf8b3216136b9440f534ca11a567c700ea3cce8bc48320163851567c2',1,'defines.h']]],
+  ['player_5ffive_1',['PLAYER_FIVE',['../defines_8h.html#a698be281bf8b3216136b9440f534ca11a29ef02733c8fd3b4de72279fda1a7e0e',1,'defines.h']]],
+  ['player_5ffour_2',['PLAYER_FOUR',['../defines_8h.html#a698be281bf8b3216136b9440f534ca11a4836b69d029911617da8aed8985b5921',1,'defines.h']]],
+  ['player_5fnone_3',['PLAYER_NONE',['../defines_8h.html#a698be281bf8b3216136b9440f534ca11a78a76558246d12b89223be028248ad4d',1,'defines.h']]],
+  ['player_5fone_4',['PLAYER_ONE',['../defines_8h.html#a698be281bf8b3216136b9440f534ca11ad0d9b4e566d181f9e6233ccd339d1118',1,'defines.h']]],
+  ['player_5fseven_5',['PLAYER_SEVEN',['../defines_8h.html#a698be281bf8b3216136b9440f534ca11a2ad713c648befed31568918ed3886bc1',1,'defines.h']]],
+  ['player_5fsix_6',['PLAYER_SIX',['../defines_8h.html#a698be281bf8b3216136b9440f534ca11a295ad9e0dad9ad437ac26d97236da4c1',1,'defines.h']]],
+  ['player_5fthree_7',['PLAYER_THREE',['../defines_8h.html#a698be281bf8b3216136b9440f534ca11ae5ebed8f202b292a95a6ae89e1adad49',1,'defines.h']]],
+  ['player_5ftwo_8',['PLAYER_TWO',['../defines_8h.html#a698be281bf8b3216136b9440f534ca11aa494501c3a6f919c22d62a1114dafa1c',1,'defines.h']]],
+  ['pop_5fmatrix_9',['POP_MATRIX',['../animation_8h.html#a52e412534f1af21caf39f50ea61280cea5ddedc4a6115d6b8a69589e57bdadd69',1,'animation.h']]]
 ];

@@ -1,21 +1,11 @@
 var searchData=
 [
-  ['sand_0',['SAND',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aa4b82daa92a2c6388ae0dedd6e48b331',1,'mk64.h']]],
-  ['sand_5foffroad_1',['SAND_OFFROAD',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a922956be740c1fa2c08c1b66069507d7',1,'mk64.h']]],
-  ['snow_2',['SNOW',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a9e6e4a865dcb327f484752cf5af49846',1,'mk64.h']]],
-  ['snow_5foffroad_3',['SNOW_OFFROAD',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a9f2c03dfb50f9e0126e6256f44f8cbf7',1,'mk64.h']]],
-  ['special_5fcup_4',['SPECIAL_CUP',['../defines_8h.html#a77867ab4129f63159b37bca3b652a798ab9340fc3eb868a5f4ef6b627350000ad',1,'defines.h']]],
-  ['speed_5fkart_5fai_5fbehaviour_5ffast_5',['SPEED_KART_AI_BEHAVIOUR_FAST',['../code__80005FD0_8h.html#ab04a0655cd1e3bcac5e8f48c18df1a57a2910e369a361a21d48134ba36ce2a7fd',1,'code_80005FD0.h']]],
-  ['speed_5fkart_5fai_5fbehaviour_5fmax_6',['SPEED_KART_AI_BEHAVIOUR_MAX',['../code__80005FD0_8h.html#ab04a0655cd1e3bcac5e8f48c18df1a57aa5d32a8af74a12c83224a9a4ff4f61c7',1,'code_80005FD0.h']]],
-  ['speed_5fkart_5fai_5fbehaviour_5fnormal_7',['SPEED_KART_AI_BEHAVIOUR_NORMAL',['../code__80005FD0_8h.html#ab04a0655cd1e3bcac5e8f48c18df1a57a720f30a861b68f094521938c8e02569c',1,'code_80005FD0.h']]],
-  ['speed_5fkart_5fai_5fbehaviour_5fslow_8',['SPEED_KART_AI_BEHAVIOUR_SLOW',['../code__80005FD0_8h.html#ab04a0655cd1e3bcac5e8f48c18df1a57a415b7fb11fcbd6be5f42bd28f8d4baa5',1,'code_80005FD0.h']]],
-  ['sptask_5fstate_5ffinished_9',['SPTASK_STATE_FINISHED',['../common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03a5234c3b41678f169caab0117ec1faa54',1,'common_structs.h']]],
-  ['sptask_5fstate_5ffinished_5fdp_10',['SPTASK_STATE_FINISHED_DP',['../common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03a9d62e724f219613e37772edab447af26',1,'common_structs.h']]],
-  ['sptask_5fstate_5finterrupted_11',['SPTASK_STATE_INTERRUPTED',['../common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03a27835f996fe92824161464f3cd8a369b',1,'common_structs.h']]],
-  ['sptask_5fstate_5fnot_5fstarted_12',['SPTASK_STATE_NOT_STARTED',['../common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03aa1d36cbdfdd74c1dffec49c527c434e2',1,'common_structs.h']]],
-  ['sptask_5fstate_5frunning_13',['SPTASK_STATE_RUNNING',['../common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03a9afa6ccb46b744f4b86c4c8c3e882f0a',1,'common_structs.h']]],
-  ['star_5fcup_14',['STAR_CUP',['../defines_8h.html#a77867ab4129f63159b37bca3b652a798a2b273443feed8d212377eafc452015b8',1,'defines.h']]],
-  ['stone_15',['STONE',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a0fca859752b1db047acd56aca4021d2d',1,'mk64.h']]],
-  ['stop_5fanimation_16',['STOP_ANIMATION',['../animation_8h.html#a52e412534f1af21caf39f50ea61280cea72860dbb1005e509a3473551caf5c8f1',1,'animation.h']]],
-  ['surface_5fdefault_17',['SURFACE_DEFAULT',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98aa6970bca9abd16aa3e5dc8c83ed9ffac',1,'mk64.h']]]
+  ['r_0',['R',['../common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7ba1784b1a3d7cbd43c45ff82c72d05e4ae',1,'common_structs.h']]],
+  ['ramp_1',['RAMP',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a291e3bb43cd8449155161d1fa023348b',1,'mk64.h']]],
+  ['rdp_5fcomplete_2',['RDP_COMPLETE',['../profiler_8h.html#af588a3a9b27840d837d5417d4be531e8aa3296314d0bb67d38b2cb84ce4f8e4d1',1,'profiler.h']]],
+  ['red_5fshell_5flock_5fon_3',['RED_SHELL_LOCK_ON',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495baed8383aa36b27a569d33434e6638551d',1,'actor_types.h']]],
+  ['released_5fshell_4',['RELEASED_SHELL',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495ba6bccf5be381532660e62c226008d6382',1,'actor_types.h']]],
+  ['render_5fmodel_5for_5fadd_5fpos_5',['RENDER_MODEL_OR_ADD_POS',['../animation_8h.html#a52e412534f1af21caf39f50ea61280cea89e2160937075058c35008e43581de7e',1,'animation.h']]],
+  ['rope_5fbridge_6',['ROPE_BRIDGE',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a840c6af15539978eb506fbb93491bde4',1,'mk64.h']]],
+  ['rsp_5fcomplete_7',['RSP_COMPLETE',['../profiler_8h.html#af588a3a9b27840d837d5417d4be531e8a7bf6fe6348b92ac9975f5ac8b1777759',1,'profiler.h']]]
 ];

@@ -1,5 +1,11 @@
 var NAVTREEINDEX78 =
 {
+"mario__raceway_2staff__ghost_8inc_8c.html":[8,0,0,11,8],
+"mario__raceway_2staff__ghost_8inc_8c_source.html":[8,0,0,11,8],
+"mario__sign_2render_8inc_8c.html":[8,0,3,0,10,0],
+"mario__sign_2render_8inc_8c.html#abcfb14ec53dc8eecd888faf9eedad475":[8,0,3,0,10,0,0],
+"mario__sign_2render_8inc_8c_source.html":[8,0,3,0,10,0],
+"mario__sign_2update_8inc_8c.html":[8,0,3,0,10,1],
 "mario__sign_2update_8inc_8c.html#ac0ea6010ea017b0c0db4d5a7cff001a3":[8,0,3,0,10,1,0],
 "mario__sign_2update_8inc_8c_source.html":[8,0,3,0,10,1],
 "math_8h.html":[8,0,2,1,0],
@@ -243,11 +249,5 @@ var NAVTREEINDEX78 =
 "math__util__2_8h.html#a5e7c494f76605c62b0861ec461ee3f28":[8,0,3,44,53],
 "math__util__2_8h.html#a60afc0e0793ab6ea8836623001048873":[8,0,3,44,49],
 "math__util__2_8h.html#a616f40d23cc329cdffcbe5fcf6cee747":[8,0,3,44,44],
-"math__util__2_8h.html#a66052313bcfde0d6781810162ab0fa2f":[8,0,3,44,1],
-"math__util__2_8h.html#a679de4d82fcefa320278cd247a5f8d42":[8,0,3,44,52],
-"math__util__2_8h.html#a73a14e50dd3e7844fac7d576f0c8adb9":[8,0,3,44,46],
-"math__util__2_8h.html#a75bfb5b9c5e3191aaf80542caf2aa42a":[8,0,3,44,30],
-"math__util__2_8h.html#a7a2e445c129fb07f880cbe49d278184f":[8,0,3,44,7],
-"math__util__2_8h.html#a7ae92ff6cd417f23d4dcca06468abad7":[8,0,3,44,34],
-"math__util__2_8h.html#a7c43b4c4dff1ad4729852bf68855535d":[8,0,3,44,63]
+"math__util__2_8h.html#a66052313bcfde0d6781810162ab0fa2f":[8,0,3,44,1]
 };

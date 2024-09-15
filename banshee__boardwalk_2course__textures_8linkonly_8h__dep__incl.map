@@ -1,7 +1,9 @@
 <map id="courses/banshee_boardwalk/course_textures.linkonly.h" name="courses/banshee_boardwalk/course_textures.linkonly.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="120,5,327,45"/>
-<area shape="rect" id="Node000002" href="$banshee__boardwalk_2course__displaylists_8inc_8c.html" title=" " alt="" coords="5,93,212,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,56,136,95,132,91,185,52"/>
-<area shape="rect" id="Node000003" href="$banshee__boardwalk_2course__textures_8linkonly_8c.html" title=" " alt="" coords="236,93,443,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="262,52,315,91,312,95,258,56"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="236,5,443,45"/>
+<area shape="rect" id="Node000002" href="$banshee__boardwalk_2course__data_8c.html" title=" " alt="" coords="5,93,212,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="277,53,160,96,158,91,275,48"/>
+<area shape="rect" id="Node000003" href="$banshee__boardwalk_2course__displaylists_8inc_8c.html" title=" " alt="" coords="236,93,443,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="342,59,342,93,337,93,337,59"/>
+<area shape="rect" id="Node000004" href="$banshee__boardwalk_2course__textures_8linkonly_8c.html" title=" " alt="" coords="467,93,673,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="403,48,520,91,519,96,402,53"/>
 </map>

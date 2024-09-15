@@ -1,7 +1,9 @@
 <map id="courses/rainbow_road/course_textures.linkonly.h" name="courses/rainbow_road/course_textures.linkonly.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="107,5,301,45"/>
-<area shape="rect" id="Node000002" href="$rainbow__road_2course__displaylists_8inc_8c.html" title=" " alt="" coords="5,93,189,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,56,123,95,119,91,168,52"/>
-<area shape="rect" id="Node000003" href="$rainbow__road_2course__textures_8linkonly_8c.html" title=" " alt="" coords="213,93,408,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="240,52,289,91,285,95,237,56"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="189,5,383,45"/>
+<area shape="rect" id="Node000002" href="$rainbow__road_2course__data_8c.html" title=" " alt="" coords="5,93,169,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,53,132,96,130,91,229,48"/>
+<area shape="rect" id="Node000003" href="$rainbow__road_2course__displaylists_8inc_8c.html" title=" " alt="" coords="194,93,378,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="289,59,289,93,283,93,283,59"/>
+<area shape="rect" id="Node000004" href="$rainbow__road_2course__textures_8linkonly_8c.html" title=" " alt="" coords="402,93,597,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="346,48,454,91,452,96,344,53"/>
 </map>

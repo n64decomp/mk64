@@ -165,6 +165,12 @@ var defines_8h =
     [ "YOSHI", "defines_8h.html#a6a404189274b097f2b1d7d6bde0d490d", null ],
     [ "YOSHI_SIZE", "defines_8h.html#a7c821aaafac23cd14652df9992dc2fb5", null ],
     [ "ZERO_PLAYERS_SELECTED", "defines_8h.html#a0148c6452ed48b143e5517e0b0d11096", null ],
+    [ "DIRECTION", "defines_8h.html#aa268a41a13430b18e933ed40207178d0", [
+      [ "NORTH", "defines_8h.html#aa268a41a13430b18e933ed40207178d0ad0611de6f28d4a9c9eac959f5344698e", null ],
+      [ "EAST", "defines_8h.html#aa268a41a13430b18e933ed40207178d0ab5b3793b961949c817c7c0d99c05dad7", null ],
+      [ "SOUTH", "defines_8h.html#aa268a41a13430b18e933ed40207178d0a8ef5c0bce69283a9986011a63eea8a6b", null ],
+      [ "WEST", "defines_8h.html#aa268a41a13430b18e933ed40207178d0ae9449e8683a8199dad36b07a63b2f523", null ]
+    ] ],
     [ "ITEMS", "defines_8h.html#a73525c02acb5a3c282d73186bb3196f5", [
       [ "ITEM_NONE", "defines_8h.html#a73525c02acb5a3c282d73186bb3196f5ac53166781c81e2a421fed0c75e8ec042", null ],
       [ "ITEM_BANANA", "defines_8h.html#a73525c02acb5a3c282d73186bb3196f5ad23eebd2b6b3fe6e578376f5834ce1cd", null ],

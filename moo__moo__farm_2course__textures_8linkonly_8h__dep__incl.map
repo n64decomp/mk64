@@ -1,7 +1,9 @@
 <map id="courses/moo_moo_farm/course_textures.linkonly.h" name="courses/moo_moo_farm/course_textures.linkonly.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="107,5,301,45"/>
-<area shape="rect" id="Node000002" href="$moo__moo__farm_2course__displaylists_8inc_8c.html" title=" " alt="" coords="5,93,189,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="171,56,123,95,119,91,168,52"/>
-<area shape="rect" id="Node000003" href="$moo__moo__farm_2course__textures_8linkonly_8c.html" title=" " alt="" coords="213,93,408,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="240,52,289,91,285,95,237,56"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="203,5,397,45"/>
+<area shape="rect" id="Node000002" href="$moo__moo__farm_2course__data_8c.html" title=" " alt="" coords="5,93,184,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="243,53,141,96,139,91,241,48"/>
+<area shape="rect" id="Node000003" href="$moo__moo__farm_2course__displaylists_8inc_8c.html" title=" " alt="" coords="208,93,392,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="303,59,303,93,297,93,297,59"/>
+<area shape="rect" id="Node000004" href="$moo__moo__farm_2course__textures_8linkonly_8c.html" title=" " alt="" coords="416,93,611,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="360,48,468,91,466,96,358,53"/>
 </map>

@@ -118,6 +118,7 @@ $(function(){initNavTree('mario__raceway_2course__data_8c.html',''); initResizab
 <code>#include &lt;<a class="el" href="waypoints_8h_source.html">waypoints.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="mario__raceway_2course__displaylists_8inc_8h_source.html">course_displaylists.inc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mario__raceway_2course__textures_8linkonly_8h_source.html">course_textures.linkonly.h</a>&quot;</code><br />
 <code>#include &quot;assets/courses/mario_raceway/gTLUTMarioRacewayPiranhaPlant.inc.c&quot;</code><br />
 <code>#include &quot;assets/courses/mario_raceway/gTextureMarioRacewaySignLeft.inc.c&quot;</code><br />
 <code>#include &quot;assets/courses/mario_raceway/gTextureMarioRacewaySignRight.inc.c&quot;</code><br />
@@ -988,7 +989,7 @@ Variables</h2></td></tr>
 <div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 16, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
 <div class="line">                G_TX_MIRROR | G_TX_WRAP, 6, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C),</div>
-<div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, 0x0500E000),</div>
+<div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="mario__raceway_2course__textures_8linkonly_8c.html#ad3dc08bf4d32658ea5bf054a06e1b12b">gMRTextureRoad0</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
 <div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
 <div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
@@ -1032,6 +1033,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="amario__raceway_2course__displaylists_8inc_8c_html_aeac82ebb832c79d418bc66de25e7371f"><div class="ttname"><a href="mario__raceway_2course__displaylists_8inc_8c.html#aeac82ebb832c79d418bc66de25e7371f">d_course_mario_raceway_packed_dl_50E8</a></div><div class="ttdeci">Gfx d_course_mario_raceway_packed_dl_50E8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:3232</div></div>
 <div class="ttc" id="amario__raceway_2course__displaylists_8inc_8c_html_aeb019b4e4b48428abad955a6dd75a7a9"><div class="ttname"><a href="mario__raceway_2course__displaylists_8inc_8c.html#aeb019b4e4b48428abad955a6dd75a7a9">d_course_mario_raceway_packed_dl_1EA8</a></div><div class="ttdeci">Gfx d_course_mario_raceway_packed_dl_1EA8[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:1231</div></div>
 <div class="ttc" id="amario__raceway_2course__displaylists_8inc_8c_html_af8e0b4afad753f7a408d45b191c38886"><div class="ttname"><a href="mario__raceway_2course__displaylists_8inc_8c.html#af8e0b4afad753f7a408d45b191c38886">d_course_mario_raceway_packed_dl_4A68</a></div><div class="ttdeci">Gfx d_course_mario_raceway_packed_dl_4A68[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:2974</div></div>
+<div class="ttc" id="amario__raceway_2course__textures_8linkonly_8c_html_ad3dc08bf4d32658ea5bf054a06e1b12b"><div class="ttname"><a href="mario__raceway_2course__textures_8linkonly_8c.html#ad3dc08bf4d32658ea5bf054a06e1b12b">gMRTextureRoad0</a></div><div class="ttdeci">u8 gMRTextureRoad0[]</div><div class="ttdef"><b>Definition</b> course_textures.linkonly.c:109</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1219,7 +1221,7 @@ Variables</h2></td></tr>
 <div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 16, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
 <div class="line">                G_TX_MIRROR | G_TX_WRAP, 6, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C),</div>
-<div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, 0x0500E000),</div>
+<div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="mario__raceway_2course__textures_8linkonly_8c.html#ad3dc08bf4d32658ea5bf054a06e1b12b">gMRTextureRoad0</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
 <div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
 <div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
@@ -1469,7 +1471,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
 <div class="ttc" id="agbi_8h_html_ade5d23d9b4af596c713aed8b9d7f7ff7"><div class="ttname"><a href="gbi_8h.html#ade5d23d9b4af596c713aed8b9d7f7ff7">G_CC_SHADE</a></div><div class="ttdeci">#define G_CC_SHADE</div><div class="ttdef"><b>Definition</b> gbi.h:478</div></div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_abf365cea25e66116a08083b5d602ad68"><div class="ttname"><a href="#abf365cea25e66116a08083b5d602ad68">d_course_mario_sign_model</a></div><div class="ttdeci">Vtx d_course_mario_sign_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:3300</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_abf365cea25e66116a08083b5d602ad68"><div class="ttname"><a href="#abf365cea25e66116a08083b5d602ad68">d_course_mario_sign_model</a></div><div class="ttdeci">Vtx d_course_mario_sign_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:3301</div></div>
 <div class="ttc" id="ambi_8h_html_a3c1c2e9788a104f60f8e01457dfd2d43"><div class="ttname"><a href="mbi_8h.html#a3c1c2e9788a104f60f8e01457dfd2d43">G_OFF</a></div><div class="ttdeci">#define G_OFF</div><div class="ttdef"><b>Definition</b> mbi.h:52</div></div>
 </div><!-- fragment -->
 </div>
@@ -1489,7 +1491,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a7057ed9dd1b2396388c34221cf7f1d00">d_course_mario_raceway_dl_9068</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_a7057ed9dd1b2396388c34221cf7f1d00"><div class="ttname"><a href="#a7057ed9dd1b2396388c34221cf7f1d00">d_course_mario_raceway_dl_9068</a></div><div class="ttdeci">Gfx d_course_mario_raceway_dl_9068[]</div><div class="ttdef"><b>Definition</b> course_data.c:3417</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_a7057ed9dd1b2396388c34221cf7f1d00"><div class="ttname"><a href="#a7057ed9dd1b2396388c34221cf7f1d00">d_course_mario_raceway_dl_9068</a></div><div class="ttdeci">Gfx d_course_mario_raceway_dl_9068[]</div><div class="ttdef"><b>Definition</b> course_data.c:3418</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1532,8 +1534,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(19, 22, 23, 0, 19, 23, 20, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_ab5c126f9cace02717d0212caa7f40ede"><div class="ttname"><a href="#ab5c126f9cace02717d0212caa7f40ede">d_course_mario_raceway_06006B88</a></div><div class="ttdeci">Vtx d_course_mario_raceway_06006B88[]</div><div class="ttdef"><b>Definition</b> course_data.c:3311</div></div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_afcc704bcc76a24c8e4d0d8818d163fab"><div class="ttname"><a href="#afcc704bcc76a24c8e4d0d8818d163fab">d_course_mario_raceway_06006D68</a></div><div class="ttdeci">Vtx d_course_mario_raceway_06006D68[]</div><div class="ttdef"><b>Definition</b> course_data.c:3344</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_ab5c126f9cace02717d0212caa7f40ede"><div class="ttname"><a href="#ab5c126f9cace02717d0212caa7f40ede">d_course_mario_raceway_06006B88</a></div><div class="ttdeci">Vtx d_course_mario_raceway_06006B88[]</div><div class="ttdef"><b>Definition</b> course_data.c:3312</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_afcc704bcc76a24c8e4d0d8818d163fab"><div class="ttname"><a href="#afcc704bcc76a24c8e4d0d8818d163fab">d_course_mario_raceway_06006D68</a></div><div class="ttdeci">Vtx d_course_mario_raceway_06006D68[]</div><div class="ttdef"><b>Definition</b> course_data.c:3345</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1580,10 +1582,10 @@ Variables</h2></td></tr>
 <div class="ttc" id="agbi_8h_html_a96be6076a8e6bb27804f871a035d1210"><div class="ttname"><a href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a></div><div class="ttdeci">#define G_RM_AA_ZB_OPA_SURF</div><div class="ttdef"><b>Definition</b> gbi.h:878</div></div>
 <div class="ttc" id="agbi_8h_html_aadb5eb2ba3b0a454682ae544c2d7ab66"><div class="ttname"><a href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a></div><div class="ttdeci">#define G_RM_AA_ZB_OPA_SURF2</div><div class="ttdef"><b>Definition</b> gbi.h:879</div></div>
 <div class="ttc" id="agbi_8h_html_ae4a9361eec8b90bd63962d8aed9d87b0"><div class="ttname"><a href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a></div><div class="ttdeci">#define G_CC_MODULATEIA</div><div class="ttdef"><b>Definition</b> gbi.h:488</div></div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_a13e1a4b083213371ae4ca78719a91426"><div class="ttname"><a href="#a13e1a4b083213371ae4ca78719a91426">d_course_mario_sign_left</a></div><div class="ttdeci">u8 d_course_mario_sign_left[]</div><div class="ttdef"><b>Definition</b> course_data.c:3408</div></div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_a39966bd10f8d4ddcbdc050bc304fb855"><div class="ttname"><a href="#a39966bd10f8d4ddcbdc050bc304fb855">d_course_mario_sign_right</a></div><div class="ttdeci">u8 d_course_mario_sign_right[]</div><div class="ttdef"><b>Definition</b> course_data.c:3413</div></div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_ac48a84c5671148faf3c323c3636fcc78"><div class="ttname"><a href="#ac48a84c5671148faf3c323c3636fcc78">d_course_mario_raceway_06006EE8</a></div><div class="ttdeci">Vtx d_course_mario_raceway_06006EE8[]</div><div class="ttdef"><b>Definition</b> course_data.c:3371</div></div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_ade7193317c0923a33537d2cd76166f8b"><div class="ttname"><a href="#ade7193317c0923a33537d2cd76166f8b">d_course_mario_raceway_06006F48</a></div><div class="ttdeci">Vtx d_course_mario_raceway_06006F48[]</div><div class="ttdef"><b>Definition</b> course_data.c:3380</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_a13e1a4b083213371ae4ca78719a91426"><div class="ttname"><a href="#a13e1a4b083213371ae4ca78719a91426">d_course_mario_sign_left</a></div><div class="ttdeci">u8 d_course_mario_sign_left[]</div><div class="ttdef"><b>Definition</b> course_data.c:3409</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_a39966bd10f8d4ddcbdc050bc304fb855"><div class="ttname"><a href="#a39966bd10f8d4ddcbdc050bc304fb855">d_course_mario_sign_right</a></div><div class="ttdeci">u8 d_course_mario_sign_right[]</div><div class="ttdef"><b>Definition</b> course_data.c:3414</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_ac48a84c5671148faf3c323c3636fcc78"><div class="ttname"><a href="#ac48a84c5671148faf3c323c3636fcc78">d_course_mario_raceway_06006EE8</a></div><div class="ttdeci">Vtx d_course_mario_raceway_06006EE8[]</div><div class="ttdef"><b>Definition</b> course_data.c:3372</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_ade7193317c0923a33537d2cd76166f8b"><div class="ttname"><a href="#ade7193317c0923a33537d2cd76166f8b">d_course_mario_raceway_06006F48</a></div><div class="ttdeci">Vtx d_course_mario_raceway_06006F48[]</div><div class="ttdef"><b>Definition</b> course_data.c:3381</div></div>
 <div class="ttc" id="ambi_8h_html_a3502935c4007f9c00550286d895ca296"><div class="ttname"><a href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a></div><div class="ttdeci">#define G_ON</div><div class="ttdef"><b>Definition</b> mbi.h:51</div></div>
 </div><!-- fragment -->
 </div>
@@ -1628,8 +1630,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(1, 4, 5, 0, 1, 5, 2, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_a19174af03d95b1259b2d32c716da0d79"><div class="ttname"><a href="#a19174af03d95b1259b2d32c716da0d79">d_course_mario_raceway_06006FA8</a></div><div class="ttdeci">Vtx d_course_mario_raceway_06006FA8[]</div><div class="ttdef"><b>Definition</b> course_data.c:3389</div></div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_abe94ab859ea80d82b62d3fc870baf674"><div class="ttname"><a href="#abe94ab859ea80d82b62d3fc870baf674">d_course_mario_raceway_06007008</a></div><div class="ttdeci">Vtx d_course_mario_raceway_06007008[]</div><div class="ttdef"><b>Definition</b> course_data.c:3398</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_a19174af03d95b1259b2d32c716da0d79"><div class="ttname"><a href="#a19174af03d95b1259b2d32c716da0d79">d_course_mario_raceway_06006FA8</a></div><div class="ttdeci">Vtx d_course_mario_raceway_06006FA8[]</div><div class="ttdef"><b>Definition</b> course_data.c:3390</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_abe94ab859ea80d82b62d3fc870baf674"><div class="ttname"><a href="#abe94ab859ea80d82b62d3fc870baf674">d_course_mario_raceway_06007008</a></div><div class="ttdeci">Vtx d_course_mario_raceway_06007008[]</div><div class="ttdef"><b>Definition</b> course_data.c:3399</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1664,9 +1666,9 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ae858b170eb66bc3d4328b5b380bddf78">d_course_mario_raceway_dl_90C0</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_accd89dc1a656c5ce885158bb11d20f35"><div class="ttname"><a href="#accd89dc1a656c5ce885158bb11d20f35">d_course_mario_raceway_dl_9250</a></div><div class="ttdeci">Gfx d_course_mario_raceway_dl_9250[]</div><div class="ttdef"><b>Definition</b> course_data.c:3493</div></div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_ae858b170eb66bc3d4328b5b380bddf78"><div class="ttname"><a href="#ae858b170eb66bc3d4328b5b380bddf78">d_course_mario_raceway_dl_90C0</a></div><div class="ttdeci">Gfx d_course_mario_raceway_dl_90C0[]</div><div class="ttdef"><b>Definition</b> course_data.c:3434</div></div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_af497b13af138f11c2f4b968742ee228a"><div class="ttname"><a href="#af497b13af138f11c2f4b968742ee228a">d_course_mario_raceway_dl_9190</a></div><div class="ttdeci">Gfx d_course_mario_raceway_dl_9190[]</div><div class="ttdef"><b>Definition</b> course_data.c:3463</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_accd89dc1a656c5ce885158bb11d20f35"><div class="ttname"><a href="#accd89dc1a656c5ce885158bb11d20f35">d_course_mario_raceway_dl_9250</a></div><div class="ttdeci">Gfx d_course_mario_raceway_dl_9250[]</div><div class="ttdef"><b>Definition</b> course_data.c:3494</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_ae858b170eb66bc3d4328b5b380bddf78"><div class="ttname"><a href="#ae858b170eb66bc3d4328b5b380bddf78">d_course_mario_raceway_dl_90C0</a></div><div class="ttdeci">Gfx d_course_mario_raceway_dl_90C0[]</div><div class="ttdef"><b>Definition</b> course_data.c:3435</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_af497b13af138f11c2f4b968742ee228a"><div class="ttname"><a href="#af497b13af138f11c2f4b968742ee228a">d_course_mario_raceway_dl_9190</a></div><div class="ttdeci">Gfx d_course_mario_raceway_dl_9190[]</div><div class="ttdef"><b>Definition</b> course_data.c:3464</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1804,8 +1806,8 @@ Variables</h2></td></tr>
 <div class="ttc" id="agbi_8h_html_acc69043726595ba2648f986ec6469146"><div class="ttname"><a href="gbi_8h.html#acc69043726595ba2648f986ec6469146">G_IM_FMT_CI</a></div><div class="ttdeci">#define G_IM_FMT_CI</div><div class="ttdef"><b>Definition</b> gbi.h:394</div></div>
 <div class="ttc" id="agbi_8h_html_ace7a0e559b5d01f76f0481a2c23ba2e1"><div class="ttname"><a href="gbi_8h.html#ace7a0e559b5d01f76f0481a2c23ba2e1">G_LIGHTING</a></div><div class="ttdeci">#define G_LIGHTING</div><div class="ttdef"><b>Definition</b> gbi.h:355</div></div>
 <div class="ttc" id="agbi_8h_html_aec47fa07892860d18c0617eae167ce9e"><div class="ttname"><a href="gbi_8h.html#aec47fa07892860d18c0617eae167ce9e">G_RM_AA_ZB_TEX_EDGE</a></div><div class="ttdeci">#define G_RM_AA_ZB_TEX_EDGE</div><div class="ttdef"><b>Definition</b> gbi.h:894</div></div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_a2940da5051ea370577be58ff542c0fb2"><div class="ttname"><a href="#a2940da5051ea370577be58ff542c0fb2">d_course_mario_raceway_piranha_plant_tlut</a></div><div class="ttdeci">u8 d_course_mario_raceway_piranha_plant_tlut[]</div><div class="ttdef"><b>Definition</b> course_data.c:3242</div></div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_afaeabb6edbbe057609d373a77f5de074"><div class="ttname"><a href="#afaeabb6edbbe057609d373a77f5de074">d_course_mario_raceway_piranha_plant_model</a></div><div class="ttdeci">Vtx d_course_mario_raceway_piranha_plant_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:3247</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_a2940da5051ea370577be58ff542c0fb2"><div class="ttname"><a href="#a2940da5051ea370577be58ff542c0fb2">d_course_mario_raceway_piranha_plant_tlut</a></div><div class="ttdeci">u8 d_course_mario_raceway_piranha_plant_tlut[]</div><div class="ttdef"><b>Definition</b> course_data.c:3243</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_afaeabb6edbbe057609d373a77f5de074"><div class="ttname"><a href="#afaeabb6edbbe057609d373a77f5de074">d_course_mario_raceway_piranha_plant_model</a></div><div class="ttdeci">Vtx d_course_mario_raceway_piranha_plant_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:3248</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1825,8 +1827,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a325efa6e4b062b3a87123615dd244c02">d_course_mario_raceway_dl_90B0</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_a325efa6e4b062b3a87123615dd244c02"><div class="ttname"><a href="#a325efa6e4b062b3a87123615dd244c02">d_course_mario_raceway_dl_90B0</a></div><div class="ttdeci">Gfx d_course_mario_raceway_dl_90B0[]</div><div class="ttdef"><b>Definition</b> course_data.c:3429</div></div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_afeeada35a9fae6ef0818d183ec7ca3d6"><div class="ttname"><a href="#afeeada35a9fae6ef0818d183ec7ca3d6">d_course_mario_raceway_dl_9310</a></div><div class="ttdeci">Gfx d_course_mario_raceway_dl_9310[]</div><div class="ttdef"><b>Definition</b> course_data.c:3523</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_a325efa6e4b062b3a87123615dd244c02"><div class="ttname"><a href="#a325efa6e4b062b3a87123615dd244c02">d_course_mario_raceway_dl_90B0</a></div><div class="ttdeci">Gfx d_course_mario_raceway_dl_90B0[]</div><div class="ttdef"><b>Definition</b> course_data.c:3430</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_afeeada35a9fae6ef0818d183ec7ca3d6"><div class="ttname"><a href="#afeeada35a9fae6ef0818d183ec7ca3d6">d_course_mario_raceway_dl_9310</a></div><div class="ttdeci">Gfx d_course_mario_raceway_dl_9310[]</div><div class="ttdef"><b>Definition</b> course_data.c:3524</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1859,7 +1861,7 @@ Variables</h2></td></tr>
 <div class="line">    gsDPSetTextureLUT(<a class="code hl_define" href="gbi_8h.html#a51bf723f01e21d63223ab47bb739ac53">G_TT_NONE</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="amario__raceway_2course__data_8c_html_a48ac27850728389c9c953d0da0406f92"><div class="ttname"><a href="#a48ac27850728389c9c953d0da0406f92">d_course_mario_raceway_tree_model</a></div><div class="ttdeci">Vtx d_course_mario_raceway_tree_model[4]</div><div class="ttdef"><b>Definition</b> course_data.c:3273</div></div>
+<div class="ttc" id="amario__raceway_2course__data_8c_html_a48ac27850728389c9c953d0da0406f92"><div class="ttname"><a href="#a48ac27850728389c9c953d0da0406f92">d_course_mario_raceway_tree_model</a></div><div class="ttdeci">Vtx d_course_mario_raceway_tree_model[4]</div><div class="ttdef"><b>Definition</b> course_data.c:3274</div></div>
 </div><!-- fragment -->
 </div>
 </div>

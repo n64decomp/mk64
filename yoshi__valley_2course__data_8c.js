@@ -127,6 +127,7 @@ var yoshi__valley_2course__data_8c =
     [ "d_course_yoshi_valley_dl_C838", "yoshi__valley_2course__data_8c.html#a813f727a1a5e1c913b82cff3b03dc845", null ],
     [ "d_course_yoshi_valley_dl_C8F8", "yoshi__valley_2course__data_8c.html#a856a99006c2e6d9e40c6e26ef3708e09", null ],
     [ "d_course_yoshi_valley_dl_CAD8", "yoshi__valley_2course__data_8c.html#a290328d2f41054846083c4b4a87bd5d3", null ],
+    [ "d_course_yoshi_valley_dl_CC0", "yoshi__valley_2course__data_8c.html#af2314de6e80d0afafd25b01e4ad75664", null ],
     [ "d_course_yoshi_valley_dl_CC80", "yoshi__valley_2course__data_8c.html#a3828da71ba8d2406e52d52ca145733dd", null ],
     [ "d_course_yoshi_valley_dl_CEC8", "yoshi__valley_2course__data_8c.html#af5ac991d8a780d461af7c3224ab86b74", null ],
     [ "d_course_yoshi_valley_dl_D018", "yoshi__valley_2course__data_8c.html#ab14570b689bb7a0f59e5590b72b72752", null ],

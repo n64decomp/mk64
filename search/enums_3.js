@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ghostcontroller_0',['GhostController',['../common__structs_8h.html#a5d202d94ae5f52685624a11fe72ecc7b',1,'common_structs.h']]]
+  ['direction_0',['DIRECTION',['../defines_8h.html#aa268a41a13430b18e933ed40207178d0',1,'defines.h']]]
 ];

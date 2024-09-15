@@ -118,6 +118,7 @@ $(function(){initNavTree('moo__moo__farm_2course__data_8c.html',''); initResizab
 <code>#include &lt;<a class="el" href="course_8h_source.html">course.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="moo__moo__farm_2course__displaylists_8inc_8h_source.html">course_displaylists.inc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="moo__moo__farm_2course__textures_8linkonly_8h_source.html">course_textures.linkonly.h</a>&quot;</code><br />
 <code>#include &quot;assets/courses/moo_moo_farm/gTLUTMole.inc.c&quot;</code><br />
 <code>#include &quot;assets/courses/moo_moo_farm/gTextureMole1.inc.c&quot;</code><br />
 <code>#include &quot;assets/courses/moo_moo_farm/gTextureMole2.inc.c&quot;</code><br />
@@ -540,7 +541,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="agbi_8h_html_aec47fa07892860d18c0617eae167ce9e"><div class="ttname"><a href="gbi_8h.html#aec47fa07892860d18c0617eae167ce9e">G_RM_AA_ZB_TEX_EDGE</a></div><div class="ttdeci">#define G_RM_AA_ZB_TEX_EDGE</div><div class="ttdef"><b>Definition</b> gbi.h:894</div></div>
 <div class="ttc" id="agbi_8h_html_af50a1f9714aa958904a9a5548db54b16"><div class="ttname"><a href="gbi_8h.html#af50a1f9714aa958904a9a5548db54b16">G_CC_DECALRGBA</a></div><div class="ttdeci">#define G_CC_DECALRGBA</div><div class="ttdef"><b>Definition</b> gbi.h:508</div></div>
 <div class="ttc" id="ambi_8h_html_a3502935c4007f9c00550286d895ca296"><div class="ttname"><a href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a></div><div class="ttdeci">#define G_ON</div><div class="ttdef"><b>Definition</b> mbi.h:51</div></div>
-<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_a06f078866321a14cf79a9c652e2cb966"><div class="ttname"><a href="#a06f078866321a14cf79a9c652e2cb966">d_course_moo_moo_farm_cow_tlut</a></div><div class="ttdeci">u8 d_course_moo_moo_farm_cow_tlut[]</div><div class="ttdef"><b>Definition</b> course_data.c:8637</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_a06f078866321a14cf79a9c652e2cb966"><div class="ttname"><a href="#a06f078866321a14cf79a9c652e2cb966">d_course_moo_moo_farm_cow_tlut</a></div><div class="ttdeci">u8 d_course_moo_moo_farm_cow_tlut[]</div><div class="ttdef"><b>Definition</b> course_data.c:8638</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -563,7 +564,7 @@ Variables</h2></td></tr>
 <div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 16, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD,</div>
 <div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C),</div>
-<div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, 0x0500C000),</div>
+<div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="moo__moo__farm_2course__textures_8linkonly_8c.html#a3a24c2012aef08ac2fa8803d4bd186c4">gMMFTexture6775EC</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
 <div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
 <div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
@@ -577,6 +578,7 @@ Variables</h2></td></tr>
 <div class="ttc" id="agbi_8h_html_ad5e7c4c4dae792b27dd18c69f0ed550a"><div class="ttname"><a href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a></div><div class="ttdeci">#define G_IM_SIZ_16b</div><div class="ttdef"><b>Definition</b> gbi.h:403</div></div>
 <div class="ttc" id="amoo__moo__farm_2course__displaylists_8inc_8c_html_a024f7de5fa31de57e8064bac1d48e5d9"><div class="ttname"><a href="moo__moo__farm_2course__displaylists_8inc_8c.html#a024f7de5fa31de57e8064bac1d48e5d9">d_course_moo_moo_farm_packed_dl_CA0</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_packed_dl_CA0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:544</div></div>
 <div class="ttc" id="amoo__moo__farm_2course__displaylists_8inc_8c_html_a0e3ce155360558a8d911202c55f50286"><div class="ttname"><a href="moo__moo__farm_2course__displaylists_8inc_8c.html#a0e3ce155360558a8d911202c55f50286">d_course_moo_moo_farm_packed_dl_5290</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_packed_dl_5290[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:3276</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__textures_8linkonly_8c_html_a3a24c2012aef08ac2fa8803d4bd186c4"><div class="ttname"><a href="moo__moo__farm_2course__textures_8linkonly_8c.html#a3a24c2012aef08ac2fa8803d4bd186c4">gMMFTexture6775EC</a></div><div class="ttdeci">u8 gMMFTexture6775EC[]</div><div class="ttdef"><b>Definition</b> course_textures.linkonly.c:84</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1823,8 +1825,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
 <div class="ttc" id="agbi_8h_html_a51bf723f01e21d63223ab47bb739ac53"><div class="ttname"><a href="gbi_8h.html#a51bf723f01e21d63223ab47bb739ac53">G_TT_NONE</a></div><div class="ttdeci">#define G_TT_NONE</div><div class="ttdef"><b>Definition</b> gbi.h:634</div></div>
-<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_a80d61a81d5e798fc6d23c9fa29b8adae"><div class="ttname"><a href="#a80d61a81d5e798fc6d23c9fa29b8adae">d_course_moo_moo_farm_dl_13B88</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_dl_13B88[]</div><div class="ttdef"><b>Definition</b> course_data.c:8676</div></div>
-<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_aa3e050d0f9fac3c13f722b2b14500b59"><div class="ttname"><a href="#aa3e050d0f9fac3c13f722b2b14500b59">d_course_moo_moo_farm_cow_model</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_cow_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:8642</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_a80d61a81d5e798fc6d23c9fa29b8adae"><div class="ttname"><a href="#a80d61a81d5e798fc6d23c9fa29b8adae">d_course_moo_moo_farm_dl_13B88</a></div><div class="ttdeci">Gfx d_course_moo_moo_farm_dl_13B88[]</div><div class="ttdef"><b>Definition</b> course_data.c:8677</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_aa3e050d0f9fac3c13f722b2b14500b59"><div class="ttname"><a href="#aa3e050d0f9fac3c13f722b2b14500b59">d_course_moo_moo_farm_cow_model</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_cow_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:8643</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1859,7 +1861,7 @@ Variables</h2></td></tr>
 <div class="line">    gsDPSetTextureLUT(<a class="code hl_define" href="gbi_8h.html#a51bf723f01e21d63223ab47bb739ac53">G_TT_NONE</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_aef39362d3a6aa41391b736260edfc1dd"><div class="ttname"><a href="#aef39362d3a6aa41391b736260edfc1dd">d_course_moo_moo_farm_unknown_model1</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:8653</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_aef39362d3a6aa41391b736260edfc1dd"><div class="ttname"><a href="#aef39362d3a6aa41391b736260edfc1dd">d_course_moo_moo_farm_unknown_model1</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_unknown_model1[]</div><div class="ttdef"><b>Definition</b> course_data.c:8654</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1894,7 +1896,7 @@ Variables</h2></td></tr>
 <div class="line">    gsDPSetTextureLUT(<a class="code hl_define" href="gbi_8h.html#a51bf723f01e21d63223ab47bb739ac53">G_TT_NONE</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_a13040cc00f95d42e373036520e0224dc"><div class="ttname"><a href="#a13040cc00f95d42e373036520e0224dc">d_course_moo_moo_farm_unknown_model2</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:8664</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_a13040cc00f95d42e373036520e0224dc"><div class="ttname"><a href="#a13040cc00f95d42e373036520e0224dc">d_course_moo_moo_farm_unknown_model2</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_unknown_model2[]</div><div class="ttdef"><b>Definition</b> course_data.c:8665</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2166,7 +2168,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
 <div class="ttc" id="agbi_8h_html_ae4a9361eec8b90bd63962d8aed9d87b0"><div class="ttname"><a href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a></div><div class="ttdeci">#define G_CC_MODULATEIA</div><div class="ttdef"><b>Definition</b> gbi.h:488</div></div>
-<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_ac2f06c994f6801d392966851f13d2cb7"><div class="ttname"><a href="#ac2f06c994f6801d392966851f13d2cb7">d_course_moo_moo_farm_tree_model</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_tree_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:8788</div></div>
+<div class="ttc" id="amoo__moo__farm_2course__data_8c_html_ac2f06c994f6801d392966851f13d2cb7"><div class="ttname"><a href="#ac2f06c994f6801d392966851f13d2cb7">d_course_moo_moo_farm_tree_model</a></div><div class="ttdeci">Vtx d_course_moo_moo_farm_tree_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:8789</div></div>
 </div><!-- fragment -->
 </div>
 </div>

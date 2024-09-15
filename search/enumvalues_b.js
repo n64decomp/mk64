@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['num_5fcourses_0',['NUM_COURSES',['../mk64_8h.html#acf250ad4ca05ca435a61203c41d4ca88ab491e3c35f36dc6baccdb5ca3a2eff60',1,'mk64.h']]],
-  ['num_5fcups_1',['NUM_CUPS',['../defines_8h.html#a77867ab4129f63159b37bca3b652a798a247a3829ad369f4c64745af093f65304',1,'defines.h']]],
-  ['num_5ftime_5ftrial_5fdata_2',['NUM_TIME_TRIAL_DATA',['../mk64_8h.html#af99386c6c69e4c7491c1ca0f1a4b44ccadca646b71ad13bf72d1f26b440b7e187',1,'mk64.h']]]
+  ['menu_5foptions_5fcsrpos_5fsoundmode_0',['MENU_OPTIONS_CSRPOS_SOUNDMODE',['../menus_8h.html#a2d81b0ed3d81f6a682f89bbb9f1b6baea766000c84f49223667657444310d06d1',1,'menus.h']]],
+  ['moving_5fshell_1',['MOVING_SHELL',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495ba453f34a714854991280e3f087d9715af',1,'actor_types.h']]],
+  ['mushroom_5fcup_2',['MUSHROOM_CUP',['../defines_8h.html#a77867ab4129f63159b37bca3b652a798ac857115cf77e541256d673b827f08f4f',1,'defines.h']]]
 ];

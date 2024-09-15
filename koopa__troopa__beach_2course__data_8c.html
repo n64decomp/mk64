@@ -119,6 +119,7 @@ $(function(){initNavTree('koopa__troopa__beach_2course__data_8c.html',''); initR
 <code>#include &lt;<a class="el" href="mk64_8h_source.html">mk64.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="animation_8h_source.html">animation.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="koopa__troopa__beach_2course__displaylists_8inc_8h_source.html">course_displaylists.inc.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="koopa__troopa__beach_2course__textures_8linkonly_8h_source.html">course_textures.linkonly.h</a>&quot;</code><br />
 <code>#include &quot;assets/courses/koopa_troopa_beach/gTLUTCrab.inc.c&quot;</code><br />
 <code>#include &quot;assets/courses/koopa_troopa_beach/gTextureCrab1.inc.c&quot;</code><br />
 <code>#include &quot;assets/courses/koopa_troopa_beach/gTextureCrab2.inc.c&quot;</code><br />
@@ -1080,7 +1081,7 @@ Variables</h2></td></tr>
 <div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD,</div>
 <div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C),</div>
-<div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, 0x05003800),</div>
+<div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="koopa__troopa__beach_2course__textures_8linkonly_8c.html#a43530598d021cbb27b4b6e1eae51d17b">gKTBTexture660D8C</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
 <div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
 <div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
@@ -1090,6 +1091,7 @@ Variables</h2></td></tr>
 <div class="line">}</div>
 <div class="ttc" id="agbi_8h_html_ac8b0546f9482f12ed55f4b3cb1243a8c"><div class="ttname"><a href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a></div><div class="ttdeci">#define G_IM_FMT_RGBA</div><div class="ttdef"><b>Definition</b> gbi.h:392</div></div>
 <div class="ttc" id="agbi_8h_html_ad5e7c4c4dae792b27dd18c69f0ed550a"><div class="ttname"><a href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a></div><div class="ttdeci">#define G_IM_SIZ_16b</div><div class="ttdef"><b>Definition</b> gbi.h:403</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__textures_8linkonly_8c_html_a43530598d021cbb27b4b6e1eae51d17b"><div class="ttname"><a href="koopa__troopa__beach_2course__textures_8linkonly_8c.html#a43530598d021cbb27b4b6e1eae51d17b">gKTBTexture660D8C</a></div><div class="ttdeci">u8 gKTBTexture660D8C[]</div><div class="ttdef"><b>Definition</b> course_textures.linkonly.c:29</div></div>
 </div><!-- fragment --><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000060">Todo</a></b></dt><dd>Replace addresses with variables </dd></dl>
 
 </div>
@@ -1125,8 +1127,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="koopa__troopa__beach_2course__displaylists_8inc_8c.html#a6f3d9d4b96e59d9b26d84bc99412e3e9">d_course_koopa_troopa_beach_packed_dl_ABD0</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ac3a8f4fd16d50ada8690557f336fcd4d"><div class="ttname"><a href="#ac3a8f4fd16d50ada8690557f336fcd4d">d_course_koopa_troopa_beach_dl_0</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_0[]</div><div class="ttdef"><b>Definition</b> course_data.c:13</div></div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_af050f731e959f08c04f4b7d1a74daae1"><div class="ttname"><a href="#af050f731e959f08c04f4b7d1a74daae1">d_course_koopa_troopa_beach_dl_48</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_48[]</div><div class="ttdef"><b>Definition</b> course_data.c:27</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ac3a8f4fd16d50ada8690557f336fcd4d"><div class="ttname"><a href="#ac3a8f4fd16d50ada8690557f336fcd4d">d_course_koopa_troopa_beach_dl_0</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_0[]</div><div class="ttdef"><b>Definition</b> course_data.c:14</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_af050f731e959f08c04f4b7d1a74daae1"><div class="ttname"><a href="#af050f731e959f08c04f4b7d1a74daae1">d_course_koopa_troopa_beach_dl_48</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_48[]</div><div class="ttdef"><b>Definition</b> course_data.c:28</div></div>
 <div class="ttc" id="akoopa__troopa__beach_2course__displaylists_8inc_8c_html_a2c6fb93e5132e75d490b7f678330868b"><div class="ttname"><a href="koopa__troopa__beach_2course__displaylists_8inc_8c.html#a2c6fb93e5132e75d490b7f678330868b">d_course_koopa_troopa_beach_packed_dl_AA48</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_packed_dl_AA48[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:6905</div></div>
 <div class="ttc" id="akoopa__troopa__beach_2course__displaylists_8inc_8c_html_a38adb08754260c6db4f9f31ed0c3464b"><div class="ttname"><a href="koopa__troopa__beach_2course__displaylists_8inc_8c.html#a38adb08754260c6db4f9f31ed0c3464b">d_course_koopa_troopa_beach_packed_dl_A0B0</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_packed_dl_A0B0[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:6469</div></div>
 <div class="ttc" id="akoopa__troopa__beach_2course__displaylists_8inc_8c_html_a3c187b15c0dc82a63a019e53ada050f8"><div class="ttname"><a href="koopa__troopa__beach_2course__displaylists_8inc_8c.html#a3c187b15c0dc82a63a019e53ada050f8">d_course_koopa_troopa_beach_packed_dl_A080</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_packed_dl_A080[]</div><div class="ttdef"><b>Definition</b> course_displaylists.inc.c:6460</div></div>
@@ -1570,7 +1572,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a5b87d93fa091798fec23c2403b3fa322"><div class="ttname"><a href="#a5b87d93fa091798fec23c2403b3fa322">d_course_koopa_troopa_beach_bird_wing_model</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_bird_wing_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:7523</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a5b87d93fa091798fec23c2403b3fa322"><div class="ttname"><a href="#a5b87d93fa091798fec23c2403b3fa322">d_course_koopa_troopa_beach_bird_wing_model</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_bird_wing_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:7524</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1591,7 +1593,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a065b6a46a9dd62408bf2c83c1c36f438"><div class="ttname"><a href="#a065b6a46a9dd62408bf2c83c1c36f438">d_course_koopa_troopa_beach_bird_wing_2_model</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_bird_wing_2_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:7542</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a065b6a46a9dd62408bf2c83c1c36f438"><div class="ttname"><a href="#a065b6a46a9dd62408bf2c83c1c36f438">d_course_koopa_troopa_beach_bird_wing_2_model</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_bird_wing_2_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:7543</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1612,7 +1614,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP2Triangles(4, 5, 6, 0, 4, 6, 7, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_addeec240f854b6196b2a7aab97d907f6"><div class="ttname"><a href="#addeec240f854b6196b2a7aab97d907f6">d_course_koopa_troopa_beach_bird_wing_3_model</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_bird_wing_3_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:7561</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_addeec240f854b6196b2a7aab97d907f6"><div class="ttname"><a href="#addeec240f854b6196b2a7aab97d907f6">d_course_koopa_troopa_beach_bird_wing_3_model</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_bird_wing_3_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:7562</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1752,9 +1754,9 @@ Variables</h2></td></tr>
 <div class="ttc" id="agbi_8h_html_a33416a3dc247e60e2dc3696fb33bee42"><div class="ttname"><a href="gbi_8h.html#a33416a3dc247e60e2dc3696fb33bee42">G_CC_MODULATEIDECALA</a></div><div class="ttdeci">#define G_CC_MODULATEIDECALA</div><div class="ttdef"><b>Definition</b> gbi.h:481</div></div>
 <div class="ttc" id="agbi_8h_html_a3d301276b8a11ab1ec65ffbb1976ae27"><div class="ttname"><a href="gbi_8h.html#a3d301276b8a11ab1ec65ffbb1976ae27">G_RM_AA_ZB_TEX_EDGE2</a></div><div class="ttdeci">#define G_RM_AA_ZB_TEX_EDGE2</div><div class="ttdef"><b>Definition</b> gbi.h:895</div></div>
 <div class="ttc" id="agbi_8h_html_aec47fa07892860d18c0617eae167ce9e"><div class="ttname"><a href="gbi_8h.html#aec47fa07892860d18c0617eae167ce9e">G_RM_AA_ZB_TEX_EDGE</a></div><div class="ttdeci">#define G_RM_AA_ZB_TEX_EDGE</div><div class="ttdef"><b>Definition</b> gbi.h:894</div></div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a019a7f0803e90d872af7a89367162689"><div class="ttname"><a href="#a019a7f0803e90d872af7a89367162689">d_course_koopa_troopa_beach_light2</a></div><div class="ttdeci">Lights1 d_course_koopa_troopa_beach_light2</div><div class="ttdef"><b>Definition</b> course_data.c:7651</div></div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a7ec7fbeab9a56a12f907345f1126ccec"><div class="ttname"><a href="#a7ec7fbeab9a56a12f907345f1126ccec">d_course_koopa_troopa_beach_palm_frond</a></div><div class="ttdeci">u8 d_course_koopa_troopa_beach_palm_frond[]</div><div class="ttdef"><b>Definition</b> course_data.c:7686</div></div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_abad04b52f0c28bb331e8db62fbd6c846"><div class="ttname"><a href="#abad04b52f0c28bb331e8db62fbd6c846">d_course_koopa_troopa_beach_unknown_model4</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_unknown_model4[]</div><div class="ttdef"><b>Definition</b> course_data.c:7666</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a019a7f0803e90d872af7a89367162689"><div class="ttname"><a href="#a019a7f0803e90d872af7a89367162689">d_course_koopa_troopa_beach_light2</a></div><div class="ttdeci">Lights1 d_course_koopa_troopa_beach_light2</div><div class="ttdef"><b>Definition</b> course_data.c:7652</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a7ec7fbeab9a56a12f907345f1126ccec"><div class="ttname"><a href="#a7ec7fbeab9a56a12f907345f1126ccec">d_course_koopa_troopa_beach_palm_frond</a></div><div class="ttdeci">u8 d_course_koopa_troopa_beach_palm_frond[]</div><div class="ttdef"><b>Definition</b> course_data.c:7687</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_abad04b52f0c28bb331e8db62fbd6c846"><div class="ttname"><a href="#abad04b52f0c28bb331e8db62fbd6c846">d_course_koopa_troopa_beach_unknown_model4</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_unknown_model4[]</div><div class="ttdef"><b>Definition</b> course_data.c:7667</div></div>
 <div class="ttc" id="ambi_8h_html_a3502935c4007f9c00550286d895ca296"><div class="ttname"><a href="mbi_8h.html#a3502935c4007f9c00550286d895ca296">G_ON</a></div><div class="ttdeci">#define G_ON</div><div class="ttdef"><b>Definition</b> mbi.h:51</div></div>
 </div><!-- fragment -->
 </div>
@@ -1774,7 +1776,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#aeaab0e5c2b8f22bd3671c9a85e041703">d_course_koopa_troopa_beach_dl_18520</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_aeaab0e5c2b8f22bd3671c9a85e041703"><div class="ttname"><a href="#aeaab0e5c2b8f22bd3671c9a85e041703">d_course_koopa_troopa_beach_dl_18520</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18520[]</div><div class="ttdef"><b>Definition</b> course_data.c:7695</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_aeaab0e5c2b8f22bd3671c9a85e041703"><div class="ttname"><a href="#aeaab0e5c2b8f22bd3671c9a85e041703">d_course_koopa_troopa_beach_dl_18520</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18520[]</div><div class="ttdef"><b>Definition</b> course_data.c:7696</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1814,8 +1816,8 @@ Variables</h2></td></tr>
 <div class="ttc" id="agbi_8h_html_a96be6076a8e6bb27804f871a035d1210"><div class="ttname"><a href="gbi_8h.html#a96be6076a8e6bb27804f871a035d1210">G_RM_AA_ZB_OPA_SURF</a></div><div class="ttdeci">#define G_RM_AA_ZB_OPA_SURF</div><div class="ttdef"><b>Definition</b> gbi.h:878</div></div>
 <div class="ttc" id="agbi_8h_html_aadb5eb2ba3b0a454682ae544c2d7ab66"><div class="ttname"><a href="gbi_8h.html#aadb5eb2ba3b0a454682ae544c2d7ab66">G_RM_AA_ZB_OPA_SURF2</a></div><div class="ttdeci">#define G_RM_AA_ZB_OPA_SURF2</div><div class="ttdef"><b>Definition</b> gbi.h:879</div></div>
 <div class="ttc" id="agbi_8h_html_ae4a9361eec8b90bd63962d8aed9d87b0"><div class="ttname"><a href="gbi_8h.html#ae4a9361eec8b90bd63962d8aed9d87b0">G_CC_MODULATEIA</a></div><div class="ttdeci">#define G_CC_MODULATEIA</div><div class="ttdef"><b>Definition</b> gbi.h:488</div></div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a53c30361329ca66c9d9d6e3ad4ab206f"><div class="ttname"><a href="#a53c30361329ca66c9d9d6e3ad4ab206f">d_course_koopa_troopa_beach_palm_trunk</a></div><div class="ttdeci">u8 d_course_koopa_troopa_beach_palm_trunk[]</div><div class="ttdef"><b>Definition</b> course_data.c:7691</div></div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ad978130dc73840492df4a41c494cfb8a"><div class="ttname"><a href="#ad978130dc73840492df4a41c494cfb8a">d_course_koopa_troopa_beach_tree_model</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_tree_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:7654</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a53c30361329ca66c9d9d6e3ad4ab206f"><div class="ttname"><a href="#a53c30361329ca66c9d9d6e3ad4ab206f">d_course_koopa_troopa_beach_palm_trunk</a></div><div class="ttdeci">u8 d_course_koopa_troopa_beach_palm_trunk[]</div><div class="ttdef"><b>Definition</b> course_data.c:7692</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ad978130dc73840492df4a41c494cfb8a"><div class="ttname"><a href="#ad978130dc73840492df4a41c494cfb8a">d_course_koopa_troopa_beach_tree_model</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_tree_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:7655</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1834,7 +1836,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#afd030e49b960f4568e59147a333c0491">d_course_koopa_troopa_beach_dl_18608</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_afd030e49b960f4568e59147a333c0491"><div class="ttname"><a href="#afd030e49b960f4568e59147a333c0491">d_course_koopa_troopa_beach_dl_18608</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18608[]</div><div class="ttdef"><b>Definition</b> course_data.c:7733</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_afd030e49b960f4568e59147a333c0491"><div class="ttname"><a href="#afd030e49b960f4568e59147a333c0491">d_course_koopa_troopa_beach_dl_18608</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18608[]</div><div class="ttdef"><b>Definition</b> course_data.c:7734</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1954,8 +1956,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP1Triangle(12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a97d5a6d8345a00b395ff5ba502870493"><div class="ttname"><a href="#a97d5a6d8345a00b395ff5ba502870493">d_course_koopa_troopa_beach_light3</a></div><div class="ttdeci">Lights1 d_course_koopa_troopa_beach_light3</div><div class="ttdef"><b>Definition</b> course_data.c:7799</div></div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ab065d332d795ac253167defec7ae7fa6"><div class="ttname"><a href="#ab065d332d795ac253167defec7ae7fa6">d_course_koopa_troopa_beach_unknown_model5</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_unknown_model5[]</div><div class="ttdef"><b>Definition</b> course_data.c:7779</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a97d5a6d8345a00b395ff5ba502870493"><div class="ttname"><a href="#a97d5a6d8345a00b395ff5ba502870493">d_course_koopa_troopa_beach_light3</a></div><div class="ttdeci">Lights1 d_course_koopa_troopa_beach_light3</div><div class="ttdef"><b>Definition</b> course_data.c:7800</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ab065d332d795ac253167defec7ae7fa6"><div class="ttname"><a href="#ab065d332d795ac253167defec7ae7fa6">d_course_koopa_troopa_beach_unknown_model5</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_unknown_model5[]</div><div class="ttdef"><b>Definition</b> course_data.c:7780</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1974,7 +1976,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#aa6a626520bf80d0941928fd6e30562a5">d_course_koopa_troopa_beach_dl_18870</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_aa6a626520bf80d0941928fd6e30562a5"><div class="ttname"><a href="#aa6a626520bf80d0941928fd6e30562a5">d_course_koopa_troopa_beach_dl_18870</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18870[]</div><div class="ttdef"><b>Definition</b> course_data.c:7802</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_aa6a626520bf80d0941928fd6e30562a5"><div class="ttname"><a href="#aa6a626520bf80d0941928fd6e30562a5">d_course_koopa_troopa_beach_dl_18870</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18870[]</div><div class="ttdef"><b>Definition</b> course_data.c:7803</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2011,7 +2013,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP1Triangle(6, 7, 8, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a1531ad80274d69af003bd7cd9dd3605c"><div class="ttname"><a href="#a1531ad80274d69af003bd7cd9dd3605c">d_course_koopa_troopa_beach_tree_2_model</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_tree_2_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:7767</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a1531ad80274d69af003bd7cd9dd3605c"><div class="ttname"><a href="#a1531ad80274d69af003bd7cd9dd3605c">d_course_koopa_troopa_beach_tree_2_model</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_tree_2_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:7768</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2030,7 +2032,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a1ec8d14ed199ef8d7d74773cdfefb9c4">d_course_koopa_troopa_beach_dl_18958</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a1ec8d14ed199ef8d7d74773cdfefb9c4"><div class="ttname"><a href="#a1ec8d14ed199ef8d7d74773cdfefb9c4">d_course_koopa_troopa_beach_dl_18958</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18958[]</div><div class="ttdef"><b>Definition</b> course_data.c:7840</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a1ec8d14ed199ef8d7d74773cdfefb9c4"><div class="ttname"><a href="#a1ec8d14ed199ef8d7d74773cdfefb9c4">d_course_koopa_troopa_beach_dl_18958</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18958[]</div><div class="ttdef"><b>Definition</b> course_data.c:7841</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2072,8 +2074,8 @@ Variables</h2></td></tr>
 <div class="line">    gsSP1Triangle(12, 14, 15, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a63c2cb411ee6210782fb59f439bff1cb"><div class="ttname"><a href="#a63c2cb411ee6210782fb59f439bff1cb">d_course_koopa_troopa_beach_light4</a></div><div class="ttdeci">Lights1 d_course_koopa_troopa_beach_light4</div><div class="ttdef"><b>Definition</b> course_data.c:7906</div></div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ae8d43729a96351d52b257e647b568d86"><div class="ttname"><a href="#ae8d43729a96351d52b257e647b568d86">d_course_koopa_troopa_beach_unknown_model6</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_unknown_model6[]</div><div class="ttdef"><b>Definition</b> course_data.c:7886</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a63c2cb411ee6210782fb59f439bff1cb"><div class="ttname"><a href="#a63c2cb411ee6210782fb59f439bff1cb">d_course_koopa_troopa_beach_light4</a></div><div class="ttdeci">Lights1 d_course_koopa_troopa_beach_light4</div><div class="ttdef"><b>Definition</b> course_data.c:7907</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ae8d43729a96351d52b257e647b568d86"><div class="ttname"><a href="#ae8d43729a96351d52b257e647b568d86">d_course_koopa_troopa_beach_unknown_model6</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_unknown_model6[]</div><div class="ttdef"><b>Definition</b> course_data.c:7887</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2092,7 +2094,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a5b1a30bbae41b5bce26fa293b6d5c76c">d_course_koopa_troopa_beach_dl_18BC0</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a5b1a30bbae41b5bce26fa293b6d5c76c"><div class="ttname"><a href="#a5b1a30bbae41b5bce26fa293b6d5c76c">d_course_koopa_troopa_beach_dl_18BC0</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18BC0[]</div><div class="ttdef"><b>Definition</b> course_data.c:7909</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a5b1a30bbae41b5bce26fa293b6d5c76c"><div class="ttname"><a href="#a5b1a30bbae41b5bce26fa293b6d5c76c">d_course_koopa_troopa_beach_dl_18BC0</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18BC0[]</div><div class="ttdef"><b>Definition</b> course_data.c:7910</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2129,7 +2131,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSP1Triangle(6, 7, 8, 0),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a7f19d2101640040ae3e00a5a440fea79"><div class="ttname"><a href="#a7f19d2101640040ae3e00a5a440fea79">d_course_koopa_troopa_beach_tree_3_model</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_tree_3_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:7874</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a7f19d2101640040ae3e00a5a440fea79"><div class="ttname"><a href="#a7f19d2101640040ae3e00a5a440fea79">d_course_koopa_troopa_beach_tree_3_model</a></div><div class="ttdeci">Vtx d_course_koopa_troopa_beach_tree_3_model[]</div><div class="ttdef"><b>Definition</b> course_data.c:7875</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2148,7 +2150,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a566c9f96eae6b3faf80fa82c8246aab7">d_course_koopa_troopa_beach_dl_18CA8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a566c9f96eae6b3faf80fa82c8246aab7"><div class="ttname"><a href="#a566c9f96eae6b3faf80fa82c8246aab7">d_course_koopa_troopa_beach_dl_18CA8</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18CA8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7947</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a566c9f96eae6b3faf80fa82c8246aab7"><div class="ttname"><a href="#a566c9f96eae6b3faf80fa82c8246aab7">d_course_koopa_troopa_beach_dl_18CA8</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18CA8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7948</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -5200,7 +5202,7 @@ Variables</h2></td></tr>
 <div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD,</div>
 <div class="line">                G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD),</div>
 <div class="line">    gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x007C, 0x00FC),</div>
-<div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, 0x05004000),</div>
+<div class="line">    gsDPSetTextureImage(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 1, <a class="code hl_variable" href="koopa__troopa__beach_2course__textures_8linkonly_8c.html#a1d8253338d216924f5f841595ec22481">gKTBTexture6609D0</a>),</div>
 <div class="line">    gsDPTileSync(),</div>
 <div class="line">    gsDPSetTile(<a class="code hl_define" href="gbi_8h.html#ac8b0546f9482f12ed55f4b3cb1243a8c">G_IM_FMT_RGBA</a>, <a class="code hl_define" href="gbi_8h.html#ad5e7c4c4dae792b27dd18c69f0ed550a">G_IM_SIZ_16b</a>, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK,</div>
 <div class="line">                G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD),</div>
@@ -5208,6 +5210,7 @@ Variables</h2></td></tr>
 <div class="line">    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 2047, 256),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
+<div class="ttc" id="akoopa__troopa__beach_2course__textures_8linkonly_8c_html_a1d8253338d216924f5f841595ec22481"><div class="ttname"><a href="koopa__troopa__beach_2course__textures_8linkonly_8c.html#a1d8253338d216924f5f841595ec22481">gKTBTexture6609D0</a></div><div class="ttdeci">u8 gKTBTexture6609D0[]</div><div class="ttdef"><b>Definition</b> course_textures.linkonly.c:34</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -11324,7 +11327,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a0c1a0800df1f721bf3b344247a8ee7ae">d_course_koopa_troopa_beach_dl_185E8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a0c1a0800df1f721bf3b344247a8ee7ae"><div class="ttname"><a href="#a0c1a0800df1f721bf3b344247a8ee7ae">d_course_koopa_troopa_beach_dl_185E8</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_185E8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7723</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a0c1a0800df1f721bf3b344247a8ee7ae"><div class="ttname"><a href="#a0c1a0800df1f721bf3b344247a8ee7ae">d_course_koopa_troopa_beach_dl_185E8</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_185E8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7724</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -11343,7 +11346,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a0495272b44391b21ff31e61c29880d83">d_course_koopa_troopa_beach_dl_18938</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a0495272b44391b21ff31e61c29880d83"><div class="ttname"><a href="#a0495272b44391b21ff31e61c29880d83">d_course_koopa_troopa_beach_dl_18938</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18938[]</div><div class="ttdef"><b>Definition</b> course_data.c:7830</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a0495272b44391b21ff31e61c29880d83"><div class="ttname"><a href="#a0495272b44391b21ff31e61c29880d83">d_course_koopa_troopa_beach_dl_18938</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18938[]</div><div class="ttdef"><b>Definition</b> course_data.c:7831</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -11362,7 +11365,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ad1191b5c512f51ed426d5fa6718a21df">d_course_koopa_troopa_beach_dl_18C88</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ad1191b5c512f51ed426d5fa6718a21df"><div class="ttname"><a href="#ad1191b5c512f51ed426d5fa6718a21df">d_course_koopa_troopa_beach_dl_18C88</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18C88[]</div><div class="ttdef"><b>Definition</b> course_data.c:7937</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ad1191b5c512f51ed426d5fa6718a21df"><div class="ttname"><a href="#ad1191b5c512f51ed426d5fa6718a21df">d_course_koopa_troopa_beach_dl_18C88</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18C88[]</div><div class="ttdef"><b>Definition</b> course_data.c:7938</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -11381,7 +11384,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#a6e551eefe6b9b928b65ad19b5c06f4ad">d_course_koopa_troopa_beach_dl_186A8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a6e551eefe6b9b928b65ad19b5c06f4ad"><div class="ttname"><a href="#a6e551eefe6b9b928b65ad19b5c06f4ad">d_course_koopa_troopa_beach_dl_186A8</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_186A8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7756</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a6e551eefe6b9b928b65ad19b5c06f4ad"><div class="ttname"><a href="#a6e551eefe6b9b928b65ad19b5c06f4ad">d_course_koopa_troopa_beach_dl_186A8</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_186A8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7757</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -11400,7 +11403,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ab9174183eaf0d900459d6dd44b176fcc">d_course_koopa_troopa_beach_dl_189F8</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ab9174183eaf0d900459d6dd44b176fcc"><div class="ttname"><a href="#ab9174183eaf0d900459d6dd44b176fcc">d_course_koopa_troopa_beach_dl_189F8</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_189F8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7863</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ab9174183eaf0d900459d6dd44b176fcc"><div class="ttname"><a href="#ab9174183eaf0d900459d6dd44b176fcc">d_course_koopa_troopa_beach_dl_189F8</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_189F8[]</div><div class="ttdef"><b>Definition</b> course_data.c:7864</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -11419,7 +11422,7 @@ Variables</h2></td></tr>
 <div class="line">    gsSPDisplayList(<a class="code hl_variable" href="#ad462a232a6009b200d771c73b6623815">d_course_koopa_troopa_beach_dl_18D48</a>),</div>
 <div class="line">    gsSPEndDisplayList(),</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ad462a232a6009b200d771c73b6623815"><div class="ttname"><a href="#ad462a232a6009b200d771c73b6623815">d_course_koopa_troopa_beach_dl_18D48</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18D48[]</div><div class="ttdef"><b>Definition</b> course_data.c:7970</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ad462a232a6009b200d771c73b6623815"><div class="ttname"><a href="#ad462a232a6009b200d771c73b6623815">d_course_koopa_troopa_beach_dl_18D48</a></div><div class="ttdeci">Gfx d_course_koopa_troopa_beach_dl_18D48[]</div><div class="ttdef"><b>Definition</b> course_data.c:7971</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -11745,8 +11748,8 @@ Variables</h2></td></tr>
 <div class="line">    <a class="code hl_variable" href="#ad3afcd646013b41839b024849013b0ad">d_course_koopa_troopa_beach_unk_data2</a>,</div>
 <div class="line">    <a class="code hl_variable" href="#ae34d75d5973fd4830f31f90c06b6a7f6">d_course_koopa_troopa_beach_unk_data3</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ad3afcd646013b41839b024849013b0ad"><div class="ttname"><a href="#ad3afcd646013b41839b024849013b0ad">d_course_koopa_troopa_beach_unk_data2</a></div><div class="ttdeci">s16 d_course_koopa_troopa_beach_unk_data2[]</div><div class="ttdef"><b>Definition</b> course_data.c:7318</div></div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ae34d75d5973fd4830f31f90c06b6a7f6"><div class="ttname"><a href="#ae34d75d5973fd4830f31f90c06b6a7f6">d_course_koopa_troopa_beach_unk_data3</a></div><div class="ttdeci">AnimationLimbVector d_course_koopa_troopa_beach_unk_data3[]</div><div class="ttdef"><b>Definition</b> course_data.c:7351</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ad3afcd646013b41839b024849013b0ad"><div class="ttname"><a href="#ad3afcd646013b41839b024849013b0ad">d_course_koopa_troopa_beach_unk_data2</a></div><div class="ttdeci">s16 d_course_koopa_troopa_beach_unk_data2[]</div><div class="ttdef"><b>Definition</b> course_data.c:7319</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_ae34d75d5973fd4830f31f90c06b6a7f6"><div class="ttname"><a href="#ae34d75d5973fd4830f31f90c06b6a7f6">d_course_koopa_troopa_beach_unk_data3</a></div><div class="ttdeci">AnimationLimbVector d_course_koopa_troopa_beach_unk_data3[]</div><div class="ttdef"><b>Definition</b> course_data.c:7352</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -11764,7 +11767,7 @@ Variables</h2></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
 <div class="line">    &amp;<a class="code hl_variable" href="#a988be3198ec4dc277ed8c95a0b7130b2">d_course_koopa_troopa_beach_unk_data4</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a988be3198ec4dc277ed8c95a0b7130b2"><div class="ttname"><a href="#a988be3198ec4dc277ed8c95a0b7130b2">d_course_koopa_troopa_beach_unk_data4</a></div><div class="ttdeci">Animation d_course_koopa_troopa_beach_unk_data4</div><div class="ttdef"><b>Definition</b> course_data.c:7410</div></div>
+<div class="ttc" id="akoopa__troopa__beach_2course__data_8c_html_a988be3198ec4dc277ed8c95a0b7130b2"><div class="ttname"><a href="#a988be3198ec4dc277ed8c95a0b7130b2">d_course_koopa_troopa_beach_unk_data4</a></div><div class="ttdeci">Animation d_course_koopa_troopa_beach_unk_data4</div><div class="ttdef"><b>Definition</b> course_data.c:7411</div></div>
 </div><!-- fragment -->
 </div>
 </div>
