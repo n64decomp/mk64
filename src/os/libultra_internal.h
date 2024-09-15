@@ -9,9 +9,8 @@ typedef struct __OSEventState {
     OSMesg message;
 } __OSEventState;
 
-extern struct __osThreadTail
-{
-    OSThread *next;
+extern struct __osThreadTail {
+    OSThread* next;
     OSPri priority;
 } __osThreadTail;
 
@@ -31,10 +30,10 @@ typedef struct {
 } OSThread_ListHead;
 
 // Original OSThread_ListHead definitions
-extern OSThread *__osRunningThread;
-extern OSThread *__osActiveQueue;
-extern OSThread *__osFaultedThread;
-extern OSThread *__osRunQueue;
+extern OSThread* __osRunningThread;
+extern OSThread* __osActiveQueue;
+extern OSThread* __osFaultedThread;
+extern OSThread* __osRunQueue;
 
 // Original EEPROM definitions
 extern u32 D_80365E00[15];
