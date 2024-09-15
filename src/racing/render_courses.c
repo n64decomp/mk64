@@ -78,7 +78,7 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC* arg1) {
     u32 offset = SEGMENT_OFFSET(addr);
     //! @todo Should be Gfx*
     s32* gfx = (s32*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
-    s16 var_a3;
+    s16 direction;
     s16 index;
     s16 sp1E;
     s16 temp_v0_3;
@@ -86,31 +86,31 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC* arg1) {
     if (gIsMirrorMode) {
         rot = (u16) camera->rot[1];
         if (rot < 0x2000) {
-            var_a3 = 2;
+            direction = SOUTH;
         } else if (rot < 0x6000) {
-            var_a3 = 3;
+            direction = WEST;
         } else if (rot < 0xA000) {
-            var_a3 = 0;
+            direction = NORTH;
         } else if (rot < 0xE000) {
-            var_a3 = 1;
+            direction = EAST;
         } else {
-            var_a3 = 2;
+            direction = SOUTH;
         }
     } else {
         rot = (u16) camera->rot[1];
         if (rot < 0x2000) {
-            var_a3 = 2;
+            direction = SOUTH;
         } else if (rot < 0x6000) {
-            var_a3 = 1;
+            direction = EAST;
         } else if (rot < 0xA000) {
-            var_a3 = 0;
+            direction = NORTH;
         } else if (rot < 0xE000) {
-            var_a3 = 3;
+            direction = WEST;
         } else {
-            var_a3 = 2;
+            direction = SOUTH;
         }
     }
-    arg1->playerDirection = var_a3;
+    arg1->playerDirection = direction;
 
     if (D_80152300[camera - camera1] == 1) {
         sp1E = get_track_section_id(camera->collision.meshIndexZX);
@@ -176,7 +176,7 @@ void render_course_segments(uintptr_t addr, struct UnkStruct_800DC5EC* arg1) {
     }
 
     arg1->pathCounter = index;
-    index = ((index - 1) * 4) + var_a3;
+    index = ((index - 1) * 4) + direction;
     gSPDisplayList(gDisplayListHead++, gfx[index]);
 }
 
@@ -524,7 +524,7 @@ void func_8029122C(struct UnkStruct_800DC5EC* arg0, s32 playerId) {
 void render_mario_raceway(struct UnkStruct_800DC5EC* arg0) {
     UNUSED s32 pad;
     u16 sp22 = arg0->pathCounter;
-    u16 temp_t0 = arg0->playerDirection;
+    u16 playerDirection = arg0->playerDirection;
 
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
 
@@ -545,20 +545,20 @@ void render_mario_raceway(struct UnkStruct_800DC5EC* arg0) {
         case 1:
         case 2:
         case 17:
-            if ((temp_t0 == 2) || (temp_t0 == 1)) {
+            if ((playerDirection == 2) || (playerDirection == 1)) {
                 func_802911C4();
             }
             break;
         case 3:
-            if (temp_t0 != 0) {
+            if (playerDirection != 0) {
                 func_802911C4();
             }
             break;
         case 4:
-            if (temp_t0 == 0) {
+            if (playerDirection == 0) {
                 func_80291198();
             } else {
-                if (temp_t0 == 1) {
+                if (playerDirection == 1) {
                     func_80291198();
                 }
                 func_802911C4();
@@ -566,7 +566,7 @@ void render_mario_raceway(struct UnkStruct_800DC5EC* arg0) {
             break;
         case 5:
         case 6:
-            if ((temp_t0 == 2) || (temp_t0 == 3)) {
+            if ((playerDirection == 2) || (playerDirection == 3)) {
                 func_802911C4();
             } else {
                 func_80291198();
@@ -574,37 +574,37 @@ void render_mario_raceway(struct UnkStruct_800DC5EC* arg0) {
             break;
         case 7:
             func_80291198();
-            if ((temp_t0 == 2) || (temp_t0 == 3)) {
+            if ((playerDirection == 2) || (playerDirection == 3)) {
                 func_802911C4();
             }
             break;
         case 8:
         case 9:
-            if (temp_t0 != 1) {
+            if (playerDirection != 1) {
                 func_802911C4();
             }
             /* fallthrough */
         case 10:
-            if (temp_t0 != 2) {
+            if (playerDirection != 2) {
                 func_80291198();
             }
             break;
         case 11:
-            if (temp_t0 == 0) {
+            if (playerDirection == 0) {
                 func_802911C4();
                 func_80291198();
-            } else if (temp_t0 == 3) {
+            } else if (playerDirection == 3) {
                 func_802911C4();
             }
             break;
         case 12:
-            if ((temp_t0 == 0) || (temp_t0 == 3)) {
+            if ((playerDirection == 0) || (playerDirection == 3)) {
                 func_802911C4();
             }
             break;
         case 13:
         case 14:
-            if (temp_t0 != 1) {
+            if (playerDirection != 1) {
                 case 15:
                 case 16:
                     func_802911C4();
@@ -945,7 +945,7 @@ void render_luigi_raceway(struct UnkStruct_800DC5EC* arg0) {
 void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
     UNUSED s32 pad[13];
     s16 temp_s0 = arg0->pathCounter;
-    s16 temp_s1 = arg0->playerDirection;
+    s16 playerDirection = arg0->playerDirection;
 
     func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
@@ -962,45 +962,45 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
     render_course_segments((uintptr_t) moo_moo_farm_dls, arg0);
 
     if ((temp_s0 < 14) && (temp_s0 > 10)) {
-        if ((temp_s1 == 2) || (temp_s1 == 3) || (temp_s1 == 1))
+        if ((playerDirection == 2) || (playerDirection == 3) || (playerDirection == 1))
             //
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
 
     } else if (temp_s0 < 16) {
         gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
     } else if (temp_s0 < 19) {
-        if (temp_s1 != 2)
+        if (playerDirection != 2)
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
 
     } else if (temp_s0 < 20) {
-        if (temp_s1 == 0)
+        if (playerDirection == 0)
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_13FF8);
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEI, G_CC_MODULATEI);
     gDPSetRenderMode(gDisplayListHead++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
     if ((temp_s0 >= 16) && (temp_s0 < 24)) {
-        if ((temp_s1 == 2) || (temp_s1 == 3))
+        if ((playerDirection == 2) || (playerDirection == 3))
             // d_course_moo_moo_farm_packed_dl_5410
             gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07005410));
 
     } else if (temp_s0 < 9) {
-        if (temp_s1 == 2)
+        if (playerDirection == 2)
             // d_course_moo_moo_farm_packed_dl_5410
             gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07005410));
     }
     if (temp_s0 < 4) {
-        if (temp_s1 != 0)
+        if (playerDirection != 0)
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
 
     } else if (temp_s0 < 8) {
-        if (temp_s1 == 2)
+        if (playerDirection == 2)
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
 
     } else if (temp_s0 >= 22) {
         gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
     } else if (temp_s0 >= 18) {
-        if ((temp_s1 == 0) || (temp_s1 == 3))
+        if ((playerDirection == 0) || (playerDirection == 3))
             gSPDisplayList(gDisplayListHead++, d_course_moo_moo_farm_dl_14060);
     }
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
