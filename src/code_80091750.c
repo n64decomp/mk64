@@ -11972,7 +11972,7 @@ void func_800AF270(struct_8018D9E0_entry* arg0) {
                     func_8009A640(arg0->D_8018DEE0_index, 0, sp30,
                                   segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_v0]));
                     func_800CA0B8();
-                    func_800C90F4(0U, (sp30 * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80 ,0x07));
+                    func_800C90F4(0U, (sp30 * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x07));
                     func_800CA0A0();
                 }
             }
