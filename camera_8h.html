@@ -108,7 +108,6 @@ $(function(){initNavTree('camera_8h.html',''); initResizable(true); });
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">camera.h File Reference</div></div>
@@ -139,13 +138,6 @@ Data Structures</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a5d473430986a7e9d5ceca3b538321cc8" id="r_a5d473430986a7e9d5ceca3b538321cc8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d473430986a7e9d5ceca3b538321cc8">BAD_RETURN</a>(cmd)&#160;&#160;&#160;cmd</td></tr>
 <tr class="separator:a5d473430986a7e9d5ceca3b538321cc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a0d4f7c7abf5f3ce08a23c4ca571bc3eb" id="r_a0d4f7c7abf5f3ce08a23c4ca571bc3eb"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="#a5d473430986a7e9d5ceca3b538321cc8">BAD_RETURN</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d4f7c7abf5f3ce08a23c4ca571bc3eb">CameraEvent</a>) (<a class="el" href="structCamera.html">Camera</a> *c)</td></tr>
-<tr class="separator:a0d4f7c7abf5f3ce08a23c4ca571bc3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25230c5365692f85c8116f544fdce1cd" id="r_a25230c5365692f85c8116f544fdce1cd"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="#a0d4f7c7abf5f3ce08a23c4ca571bc3eb">CameraEvent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25230c5365692f85c8116f544fdce1cd">CutsceneShot</a></td></tr>
-<tr class="separator:a25230c5365692f85c8116f544fdce1cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -225,35 +217,6 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo</a></b></dt><dd>put this define in types.h or similar. Certain functions are marked as having return values, but do not actually return a value. This causes undefined behavior, which we'd rather avoid on modern GCC. This only impacts -O2 and can matter for both the function itself and functions that call it. </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="a0d4f7c7abf5f3ce08a23c4ca571bc3eb" name="a0d4f7c7abf5f3ce08a23c4ca571bc3eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d4f7c7abf5f3ce08a23c4ca571bc3eb">&#9670;&#160;</a></span>CameraEvent</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="#a5d473430986a7e9d5ceca3b538321cc8">BAD_RETURN</a> <a class="el" href="ultratypes_8h.html#a0ce6887c26c1c49ad3be5710dd42bfd6">s32</a>(* CameraEvent) (<a class="el" href="structCamera.html">Camera</a> *c)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a25230c5365692f85c8116f544fdce1cd" name="a25230c5365692f85c8116f544fdce1cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25230c5365692f85c8116f544fdce1cd">&#9670;&#160;</a></span>CutsceneShot</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="#a0d4f7c7abf5f3ce08a23c4ca571bc3eb">CameraEvent</a> <a class="el" href="#a25230c5365692f85c8116f544fdce1cd">CutsceneShot</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>

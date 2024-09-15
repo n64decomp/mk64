@@ -105,7 +105,7 @@ var searchData=
   ['shortnotedefaultplaypercentage_102',['shortNoteDefaultPlayPercentage',['../structSequenceChannelLayer.html#a3c8e8a36751dc46485093dd4bdf76340',1,'SequenceChannelLayer']]],
   ['shortnotedurationtable_103',['shortNoteDurationTable',['../structSequencePlayer.html#aa0daf3f194f27b7fae61560e748484ca',1,'SequencePlayer']]],
   ['shortnotevelocitytable_104',['shortNoteVelocityTable',['../structSequencePlayer.html#aa6c2859bbe8160c2570b6ef9e5603e1c',1,'SequencePlayer']]],
-  ['shot_105',['shot',['../structCutscene.html#ae1b25b8bf4f5b72ad672f766ae617145',1,'Cutscene']]],
+  ['shot_105',['shot',['../structCutscene.html#a55ce98625d678dba9988aa66f6b76514',1,'Cutscene']]],
   ['sid_106',['sid',['../structuObjTxtrBlock__t.html#a1db6d66fb36255bca8897e6bdfc1f528',1,'uObjTxtrBlock_t::sid'],['../structuObjTxtrTile__t.html#a8b640940a42fc930c2eba474b7a2318b',1,'uObjTxtrTile_t::sid'],['../structuObjTxtrTLUT__t.html#ab2fd6f0238105dd45fdf7a0237deeeb6',1,'uObjTxtrTLUT_t::sid']]],
   ['signedsomeid_107',['signedSomeId',['../structActorSpawnData.html#abe56902c1485bde757178d94912f36d6',1,'ActorSpawnData']]],
   ['silver_5ftrophy_5fdl_108',['silver_trophy_dl',['../ceremony__data_8h.html#aa268ee83244a928db773b429645c2c4c',1,'ceremony_data.h']]],
