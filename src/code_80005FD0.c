@@ -5433,7 +5433,8 @@ void func_80014DE4(s32 cameraIndex) {
     D_80164678[cameraIndex] = D_80164670[cameraIndex];
     if ((gModeSelection != 1) && ((gCourseIndexInCup == COURSE_ONE) || (gDemoMode == (u16) 1))) {
         D_80164678[cameraIndex] = 0;
-    } else if ((D_80164678[cameraIndex] != 0) && (D_80164678[cameraIndex] != (s16) 1) && (D_80164678[cameraIndex] != 2) && (D_80164678[cameraIndex] != 3)) {
+    } else if ((D_80164678[cameraIndex] != 0) && (D_80164678[cameraIndex] != (s16) 1) &&
+               (D_80164678[cameraIndex] != 2) && (D_80164678[cameraIndex] != 3)) {
         D_80164678[cameraIndex] = 0;
     }
     D_80164680[cameraIndex] = -1;
@@ -5531,7 +5532,7 @@ f32 func_80014EE4(f32 arg0, s32 arg1) {
     return arg0;
 }
 
-void calculate_camera_up_vector(Camera *camera, s32 cameraIndex) {
+void calculate_camera_up_vector(Camera* camera, s32 cameraIndex) {
     f32 xnorm;
     f32 ynorm;
     f32 znorm;
