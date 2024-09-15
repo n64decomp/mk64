@@ -98,7 +98,7 @@ var searchData=
   ['actor_5fyoshi_5fegg_95',['ACTOR_YOSHI_EGG',['../actor__types_8h.html#a06ad3f803827afd107e7682c8c22d990a9a5b90d71f1d6c4a72fafd72661e0660',1,'actor_types.h']]],
   ['actorindex_96',['actorIndex',['../structunexpiredActors.html#a1e1419ce2f7577336dd49e2bd062ce17',1,'unexpiredActors::actorIndex'],['../structD__801642D8__entry.html#a0fbf587266ea6cf89ce5d066e14a0caa',1,'D_801642D8_entry::actorIndex'],['../structTrainCarStuff.html#a534b8b495eec302fd11a493758be8a80',1,'TrainCarStuff::actorIndex'],['../structPaddleBoatStuff.html#ad9b828347dae9adcc6c5d8a301faad06',1,'PaddleBoatStuff::actorIndex'],['../structVehicleStuff.html#aa2cb9651e75a3ddf588ecda2135ed1b8',1,'VehicleStuff::actorIndex']]],
   ['actorinitparams_97',['ActorInitParams',['../structActorInitParams.html',1,'']]],
-  ['actors_98',['Actors',['../actorsmenu.html',1,'Actors'],['../controlflow.html#actors',1,'Actors'],['../actors.html#actors-1',1,'Actors']]],
+  ['actors_98',['Actors',['../actorsmenu.html',1,'Actors'],['../actors.html#actors',1,'Actors'],['../controlflow.html#actors-1',1,'Actors']]],
   ['actors_20work_99',['How Actors Work',['../actors.html',1,'actorsmenu']]],
   ['actors_2ec_100',['actors.c',['../actors_8c.html',1,'']]],
   ['actors_2eh_101',['actors.h',['../actors_8h.html',1,'']]],
