@@ -276,7 +276,7 @@ enum COLOR_ID {
     TEXT_YELLOW,
     TEXT_BLUE_GREEN_RED_CYCLE_1,
     TEXT_BLUE_GREEN_RED_CYCLE_2,
-}
+};
 
 /**
  * @brief Sound mode options

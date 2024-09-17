@@ -1298,19 +1298,19 @@ void func_80091FA4(void) {
     func_8009A344();
     func_8009E620();
     func_80092258();
-    add_8018D9E0_entry(0x00000096, 0x00000064, 0x00000024, 1);
-    add_8018D9E0_entry(0x00000097, 0x00000064, 0x000000DD, 1);
-    add_8018D9E0_entry(0x00000098, 0, 0, 0);
-    add_8018D9E0_entry(0x000000C7, 0, 0, 0);
+    add_8018D9E0_entry(D_8018D9E0_TYPE_096, 0x00000064, 0x00000024, D_8018D9E0_PRIORITY_1);
+    add_8018D9E0_entry(D_8018D9E0_TYPE_097, 0x00000064, 0x000000DD, D_8018D9E0_PRIORITY_1);
+    add_8018D9E0_entry(D_8018D9E0_TYPE_098, 0, 0, D_8018D9E0_PRIORITY_0);
+    add_8018D9E0_entry(D_8018D9E0_TYPE_0C7, 0, 0, D_8018D9E0_PRIORITY_0);
     if (gModeSelection == TIME_TRIALS) {
-        add_8018D9E0_entry(0x000000BE, 0, 0, 0);
-        add_8018D9E0_entry(0x0000010E, 0, 0, 0);
+        add_8018D9E0_entry(D_8018D9E0_TYPE_0BE, 0, 0, D_8018D9E0_PRIORITY_0);
+        add_8018D9E0_entry(D_8018D9E0_TYPE_10E, 0, 0, D_8018D9E0_PRIORITY_0);
     }
     if ((D_8015F890 != 0) && (gModeSelection == TIME_TRIALS)) {
-        add_8018D9E0_entry(0x000000BD, 0, 0, 0);
+        add_8018D9E0_entry(D_8018D9E0_TYPE_0BD, 0, 0, D_8018D9E0_PRIORITY_0);
     }
     if (!(gControllerBits & 1) && (D_8018EE08 != 0)) {
-        add_8018D9E0_entry(4, 0, 0, 2);
+        add_8018D9E0_entry(D_8018D9E0_TYPE_004, 0, 0, D_8018D9E0_PRIORITY_2);
     }
     func_800B5F30();
 }
@@ -1421,22 +1421,22 @@ void func_80092500(void) {
 
     switch (gModeSelection) {
         case GRAND_PRIX:
-            add_8018D9E0_entry(0xAA, 0, 0, 0);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_0AA, 0, 0, D_8018D9E0_PRIORITY_0);
             break;
         case TIME_TRIALS:
-            add_8018D9E0_entry(0xB9, 0, 0, 0);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_0B9, 0, 0, D_8018D9E0_PRIORITY_0);
             break;
     }
 }
 
 void func_80092564(void) {
-    add_8018D9E0_entry(0xAC, 0, 0, 0);
+    add_8018D9E0_entry(D_8018D9E0_TYPE_0AC, 0, 0, D_8018D9E0_PRIORITY_0);
     func_8005D18C();
     func_8001968C();
 }
 
 void func_800925A0(void) {
-    add_8018D9E0_entry(0xAF, 0, 0, 0);
+    add_8018D9E0_entry(D_8018D9E0_TYPE_0AF, 0, 0, D_8018D9E0_PRIORITY_0);
 }
 
 void func_800925CC(void) {
@@ -1447,122 +1447,122 @@ void func_800925CC(void) {
 }
 
 void func_80092604(void) {
-    add_8018D9E0_entry(0xB0, 0, 0, 0);
+    add_8018D9E0_entry(D_8018D9E0_TYPE_0B0, 0, 0, D_8018D9E0_PRIORITY_0);
 }
 
 void func_80092630(void) {
-    add_8018D9E0_entry(0xBC, 0, 0, 0);
+    add_8018D9E0_entry(D_8018D9E0_TYPE_0BC, 0, 0, D_8018D9E0_PRIORITY_0);
 }
 
 void func_8009265C(void) {
-    add_8018D9E0_entry(0x12B, 0, 0, 2);
+    add_8018D9E0_entry(D_8018D9E0_TYPE_12B, 0, 0, D_8018D9E0_PRIORITY_2);
 }
 
 void func_80092688(void) {
     switch (D_800DC5E4) {
         case 0:
-            add_8018D9E0_entry(0x1CE, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1CE, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         default:
-            add_8018D9E0_entry(0x190, 0, 0, 2);
-            add_8018D9E0_entry(0x191, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_190, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_191, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 2:
-            add_8018D9E0_entry(0x192, 0, 0, 2);
-            add_8018D9E0_entry(0x193, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_192, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_193, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 3:
-            add_8018D9E0_entry(0x194, 0, 0, 2);
-            add_8018D9E0_entry(0x195, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_194, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_195, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 4:
-            add_8018D9E0_entry(0x196, 0, 0, 2);
-            add_8018D9E0_entry(0x197, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_196, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_197, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 5:
-            add_8018D9E0_entry(0x198, 0, 0, 2);
-            add_8018D9E0_entry(0x199, 0, 0, 2);
-            add_8018D9E0_entry(0x19A, 0, 0, 2);
-            add_8018D9E0_entry(0x19B, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_198, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_199, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_19A, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_19B, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 6:
-            add_8018D9E0_entry(0x198, 0, 0, 2);
-            add_8018D9E0_entry(0x19C, 0, 0, 2);
-            add_8018D9E0_entry(0x19D, 0, 0, 2);
-            add_8018D9E0_entry(0x19E, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_198, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_19C, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_19D, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_19E, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 7:
-            add_8018D9E0_entry(0x19F, 0, 0, 2);
-            add_8018D9E0_entry(0x1A0, 0, 0, 2);
-            add_8018D9E0_entry(0x1A1, 0, 0, 2);
-            add_8018D9E0_entry(0x1A2, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_19F, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1A0, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1A1, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1A2, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 8:
-            add_8018D9E0_entry(0x1A3, 0, 0, 2);
-            add_8018D9E0_entry(0x1A4, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1A3, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1A4, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 9:
-            add_8018D9E0_entry(0x1A5, 0, 0, 2);
-            add_8018D9E0_entry(0x1A6, 0, 0, 2);
-            add_8018D9E0_entry(0x1A7, 0, 0, 2);
-            add_8018D9E0_entry(0x1A8, 0, 0, 2);
-            add_8018D9E0_entry(0x1A9, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1A5, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1A6, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1A7, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1A8, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1A9, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 10:
-            add_8018D9E0_entry(0x1A5, 0, 0, 2);
-            add_8018D9E0_entry(0x1A6, 0, 0, 2);
-            add_8018D9E0_entry(0x1AA, 0, 0, 2);
-            add_8018D9E0_entry(0x1AB, 0, 0, 2);
-            add_8018D9E0_entry(0x1AC, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1A5, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1A6, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1AA, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1AB, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1AC, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 11:
-            add_8018D9E0_entry(0x1AD, 0, 0, 2);
-            add_8018D9E0_entry(0x1AE, 0, 0, 2);
-            add_8018D9E0_entry(0x1AF, 0, 0, 2);
-            add_8018D9E0_entry(0x1B0, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1AD, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1AE, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1AF, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1B0, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 12:
-            add_8018D9E0_entry(0x1B1, 0, 0, 2);
-            add_8018D9E0_entry(0x1B2, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1B1, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1B2, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 13:
-            add_8018D9E0_entry(0x1B3, 0, 0, 2);
-            add_8018D9E0_entry(0x1B4, 0, 0, 2);
-            add_8018D9E0_entry(0x1B5, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1B3, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1B4, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1B5, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 14:
-            add_8018D9E0_entry(0x1B6, 0, 0, 2);
-            add_8018D9E0_entry(0x1B7, 0, 0, 2);
-            add_8018D9E0_entry(0x1B8, 0, 0, 2);
-            add_8018D9E0_entry(0x1B9, 0, 0, 2);
-            add_8018D9E0_entry(0x1BA, 0, 0, 2);
-            add_8018D9E0_entry(0x1BB, 0, 0, 2);
-            add_8018D9E0_entry(0x1BC, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1B6, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1B7, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1B8, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1B9, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1BA, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1BB, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1BC, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 15:
-            add_8018D9E0_entry(0x1BD, 0, 0, 2);
-            add_8018D9E0_entry(0x1BE, 0, 0, 2);
-            add_8018D9E0_entry(0x1BF, 0, 0, 2);
-            add_8018D9E0_entry(0x1C0, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1BD, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1BE, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1BF, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1C0, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 16:
-            add_8018D9E0_entry(0x1C1, 0, 0, 2);
-            add_8018D9E0_entry(0x1C2, 0, 0, 2);
-            add_8018D9E0_entry(0x1C3, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1C1, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1C2, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1C3, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 17:
-            add_8018D9E0_entry(0x1C4, 0, 0, 2);
-            add_8018D9E0_entry(0x1C5, 0, 0, 2);
-            add_8018D9E0_entry(0x1C6, 0, 0, 2);
-            add_8018D9E0_entry(0x1C7, 0, 0, 2);
-            add_8018D9E0_entry(0x1C8, 0, 0, 2);
-            add_8018D9E0_entry(0x1C9, 0, 0, 2);
-            add_8018D9E0_entry(0x1CA, 0, 0, 2);
-            add_8018D9E0_entry(0x1CB, 0, 0, 2);
-            add_8018D9E0_entry(0x1CC, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1C4, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1C5, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1C6, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1C7, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1C8, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1C9, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1CA, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1CB, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1CC, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 18:
-            add_8018D9E0_entry(0x1CD, 0, 0, 2);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_1CD, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
     }
 }
@@ -2273,133 +2273,133 @@ void func_80094C60(void) {
         func_800B3F74(gMenuSelection);
         switch (gMenuSelection) {
             case OPTIONS_MENU:
-                add_8018D9E0_entry(0x00000023, 0, 0, 2);
-                add_8018D9E0_entry(0x000000F1, 0, 0, 4);
-                add_8018D9E0_entry(0x000000F0, 0, 0, 2);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_023, 0, 0, D_8018D9E0_PRIORITY_2);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0F1, 0, 0, D_8018D9E0_PRIORITY_4);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0F0, 0, 0, D_8018D9E0_PRIORITY_2);
                 break;
             case DATA_MENU:
-                add_8018D9E0_entry(0x00000023, 0, 0, 2);
-                add_8018D9E0_entry(0x0000008C, 0, 0, 6);
-                add_8018D9E0_entry(0x0000007C, 0, 0, 6);
-                add_8018D9E0_entry(0x0000007D, 0, 0, 6);
-                add_8018D9E0_entry(0x0000007E, 0, 0, 6);
-                add_8018D9E0_entry(0x0000007F, 0, 0, 6);
-                add_8018D9E0_entry(0x00000080, 0, 0, 6);
-                add_8018D9E0_entry(0x00000081, 0, 0, 6);
-                add_8018D9E0_entry(0x00000082, 0, 0, 6);
-                add_8018D9E0_entry(0x00000083, 0, 0, 6);
-                add_8018D9E0_entry(0x00000084, 0, 0, 6);
-                add_8018D9E0_entry(0x00000085, 0, 0, 6);
-                add_8018D9E0_entry(0x00000086, 0, 0, 6);
-                add_8018D9E0_entry(0x00000087, 0, 0, 6);
-                add_8018D9E0_entry(0x00000088, 0, 0, 6);
-                add_8018D9E0_entry(0x00000089, 0, 0, 6);
-                add_8018D9E0_entry(0x0000008A, 0, 0, 6);
-                add_8018D9E0_entry(0x0000008B, 0, 0, 6);
-                add_8018D9E0_entry(0x0000008D, 0, 0, 8);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_023, 0, 0, D_8018D9E0_PRIORITY_2);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_08C, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_07C, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_07D, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_07E, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_07F, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_080, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_081, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_082, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_083, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_084, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_085, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_086, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_087, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_088, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_089, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_08A, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_08B, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_08D, 0, 0, D_8018D9E0_PRIORITY_8);
                 break;
             case COURSE_DATA_MENU:
-                add_8018D9E0_entry(0x000000E6, 0, 0, 8);
-                add_8018D9E0_entry(0x000000E7, 0, 0, 8);
-                add_8018D9E0_entry(0x000000E8, 0, 0, 8);
-                add_8018D9E0_entry(0x000000E9, 0, 0, 8);
-                add_8018D9E0_entry(0x000000EA, 0, 0, 8);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0E6, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0E7, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0E8, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0E9, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0EA, 0, 0, D_8018D9E0_PRIORITY_8);
                 break;
             case LOGO_INTRO_MENU:
-                add_8018D9E0_entry(0x000000FA, 0, 0, 0);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0FA, 0, 0, D_8018D9E0_PRIORITY_0);
                 break;
             case CONTROLLER_PAK_MENU:
-                add_8018D9E0_entry(0x000000DA, 0, 0, 0);
-                add_8018D9E0_entry(0x000000D2, 0, 0, 4);
-                add_8018D9E0_entry(0x000000D4, 0, 0, 6);
-                add_8018D9E0_entry(0x000000D3, 0, 0, 8);
-                add_8018D9E0_entry(0x000000D5, 0, 0, 0x0A);
-                add_8018D9E0_entry(0x000000D6, 0, 0, 0x0A);
-                add_8018D9E0_entry(0x000000D7, 0, 0, 0x0A);
-                add_8018D9E0_entry(0x000000D8, 0, 0, 0x0A);
-                add_8018D9E0_entry(0x000000D9, 0, 0, 0x0A);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0DA, 0, 0, D_8018D9E0_PRIORITY_0);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0D2, 0, 0, D_8018D9E0_PRIORITY_4);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0D4, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0D3, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0D5, 0, 0, D_8018D9E0_PRIORITY_A);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0D6, 0, 0, D_8018D9E0_PRIORITY_A);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0D7, 0, 0, D_8018D9E0_PRIORITY_A);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0D8, 0, 0, D_8018D9E0_PRIORITY_A);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0D9, 0, 0, D_8018D9E0_PRIORITY_A);
                 break;
             case START_MENU:
-                add_8018D9E0_entry(2, 0, 0, 4);
-                add_8018D9E0_entry(1, 0, 0, 0);
-                add_8018D9E0_entry(0x000000FB, 0, 0, 0);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_002, 0, 0, D_8018D9E0_PRIORITY_4);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_001, 0, 0, D_8018D9E0_PRIORITY_0);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0FB, 0, 0, D_8018D9E0_PRIORITY_0);
                 if (gControllerBits & 1) {
-                    add_8018D9E0_entry(3, 0, 0, 2);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_003, 0, 0, D_8018D9E0_PRIORITY_2);
                 } else {
-                    add_8018D9E0_entry(4, 0, 0, 2);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_004, 0, 0, D_8018D9E0_PRIORITY_2);
                 }
-                add_8018D9E0_entry(5, 0, 0, 6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_005, 0, 0, D_8018D9E0_PRIORITY_6);
                 gDemoMode = 0;
                 D_8018EE08 = 0;
                 break;
             case MAIN_MENU:
-                add_8018D9E0_entry(0x00000023, 0, 0, 2);
-                add_8018D9E0_entry(0x0000000A, 0x0000015E, 0x00000011, 6);
-                add_8018D9E0_entry(0x0000000E, 0x0000015E, 0x0000003E, 6);
-                add_8018D9E0_entry(0x0000000D, 0x0000015E, 0x0000003E, 6);
-                add_8018D9E0_entry(0x0000000C, 0x0000015E, 0x0000003E, 6);
-                add_8018D9E0_entry(0x0000000B, 0x0000015E, 0x0000003E, 6);
-                add_8018D9E0_entry(0x0000000F, 0x0000015E, 0x000000C8, 6);
-                add_8018D9E0_entry(0x00000011, 0x0000015E, 0x000000C8, 6);
-                add_8018D9E0_entry(0x00000010, 0x0000015E, 0x000000C8, 6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_023, 0, 0, D_8018D9E0_PRIORITY_2);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_00A, 0x0000015E, 0x00000011, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_00E, 0x0000015E, 0x0000003E, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_00D, 0x0000015E, 0x0000003E, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_00C, 0x0000015E, 0x0000003E, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_00B, 0x0000015E, 0x0000003E, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_00F, 0x0000015E, 0x000000C8, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_011, 0x0000015E, 0x000000C8, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_010, 0x0000015E, 0x000000C8, D_8018D9E0_PRIORITY_6);
                 if (func_800B555C() != 0) {
-                    add_8018D9E0_entry(0x00000015, 0, 0, 6);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_015, 0, 0, D_8018D9E0_PRIORITY_6);
                 }
-                add_8018D9E0_entry(0x00000014, 0, 0, 6);
-                add_8018D9E0_entry(0x00000013, 0, 0, 6);
-                add_8018D9E0_entry(0x00000012, 0, 0, 6);
-                add_8018D9E0_entry(0x00000019, 0, 0, 6);
-                add_8018D9E0_entry(0x00000018, 0, 0, 6);
-                add_8018D9E0_entry(0x0000001B, 0, 0, 0x0C);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_014, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_013, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_012, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_019, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_018, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_01B, 0, 0, D_8018D9E0_PRIORITY_C);
                 break;
             case PLAYER_SELECT_MENU:
-                add_8018D9E0_entry(0x00000024, 0, 0, 2);
-                add_8018D9E0_entry(0x0000002A, 0, 0, 6);
-                add_8018D9E0_entry(0x00000033, 0, 0, 6);
-                add_8018D9E0_entry(0x0000002B, 0, 0, 8);
-                add_8018D9E0_entry(0x0000002C, 0, 0, 8);
-                add_8018D9E0_entry(0x0000002D, 0, 0, 6);
-                add_8018D9E0_entry(0x0000002E, 0, 0, 6);
-                add_8018D9E0_entry(0x0000002F, 0, 0, 6);
-                add_8018D9E0_entry(0x00000030, 0, 0, 6);
-                add_8018D9E0_entry(0x00000031, 0, 0, 6);
-                add_8018D9E0_entry(0x00000032, 0, 0, 8);
-                add_8018D9E0_entry(0x00000034, 0, 0, 0x0C);
-                add_8018D9E0_entry(0x00000035, 0, 0, 0x0C);
-                add_8018D9E0_entry(0x00000036, 0, 0, 0x0C);
-                add_8018D9E0_entry(0x00000037, 0, 0, 0x0C);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_024, 0, 0, D_8018D9E0_PRIORITY_2);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_02A, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_033, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_02B, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_02C, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_02D, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_02E, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_02F, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_030, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_031, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_032, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_034, 0, 0, D_8018D9E0_PRIORITY_C);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_035, 0, 0, D_8018D9E0_PRIORITY_C);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_036, 0, 0, D_8018D9E0_PRIORITY_C);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_037, 0, 0, D_8018D9E0_PRIORITY_C);
                 break;
             case COURSE_SELECT_MENU:
-                add_8018D9E0_entry(0x00000025, 0, 0, 2);
-                add_8018D9E0_entry(0x00000052, 0, 0, 6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_025, 0, 0, D_8018D9E0_PRIORITY_2);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_052, 0, 0, D_8018D9E0_PRIORITY_6);
                 if (gModeSelection != BATTLE) {
-                    add_8018D9E0_entry(0x00000053, 0, 0, 4);
-                    add_8018D9E0_entry(0x00000054, 0, 0, 4);
-                    add_8018D9E0_entry(0x00000055, 0, 0, 4);
-                    add_8018D9E0_entry(0x00000056, 0, 0, 4);
-                    add_8018D9E0_entry(0x00000058, 0, 0, 6);
-                    add_8018D9E0_entry(0x00000059, 0, 0, 6);
-                    add_8018D9E0_entry(0x0000005A, 0, 0, 6);
-                    add_8018D9E0_entry(0x0000005B, 0, 0, 6);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_053, 0, 0, D_8018D9E0_PRIORITY_4);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_054, 0, 0, D_8018D9E0_PRIORITY_4);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_055, 0, 0, D_8018D9E0_PRIORITY_4);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_056, 0, 0, D_8018D9E0_PRIORITY_4);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_058, 0, 0, D_8018D9E0_PRIORITY_6);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_059, 0, 0, D_8018D9E0_PRIORITY_6);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_05A, 0, 0, D_8018D9E0_PRIORITY_6);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_05B, 0, 0, D_8018D9E0_PRIORITY_6);
                 } else {
-                    add_8018D9E0_entry(0x0000005C, 0, 0, 6);
-                    add_8018D9E0_entry(0x0000006E, 0, 0, 6);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_05C, 0, 0, D_8018D9E0_PRIORITY_6);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_06E, 0, 0, D_8018D9E0_PRIORITY_6);
                 }
-                add_8018D9E0_entry(0x00000064, 0, 0, 6);
-                add_8018D9E0_entry(0x0000005F, 0, 0, 6);
-                add_8018D9E0_entry(0x00000060, 0, 0, 6);
-                add_8018D9E0_entry(0x00000061, 0, 0, 6);
-                add_8018D9E0_entry(0x00000062, 0, 0, 6);
-                add_8018D9E0_entry(0x0000005D, 0, 0, 6);
-                add_8018D9E0_entry(0x0000005E, 0, 0, 8);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_064, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_05F, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_060, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_061, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_062, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_05D, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_05E, 0, 0, D_8018D9E0_PRIORITY_8);
                 if (gModeSelection == TIME_TRIALS) {
-                    add_8018D9E0_entry(0x00000065, 0, 0, 8);
-                    add_8018D9E0_entry(0x00000066, 0, 0, 8);
-                    add_8018D9E0_entry(0x00000069, 0, 0, 8);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_065, 0, 0, D_8018D9E0_PRIORITY_8);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_066, 0, 0, D_8018D9E0_PRIORITY_8);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_069, 0, 0, D_8018D9E0_PRIORITY_8);
                 }
                 if (gModeSelection == GRAND_PRIX) {
-                    add_8018D9E0_entry(0x00000068, 0, 0, 8);
-                    add_8018D9E0_entry(0x00000067, 0, 0, 5);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_068, 0, 0, D_8018D9E0_PRIORITY_8);
+                    add_8018D9E0_entry(D_8018D9E0_TYPE_067, 0, 0, D_8018D9E0_PRIORITY_5);
                 }
                 break;
             case 0:
@@ -6072,7 +6072,8 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                 }
                 func_800A86E8(arg0);
                 set_text_color(TEXT_YELLOW);
-                print_text_mode_1(arg0->column + 8, arg0->row + 0x10, gBestTimeText[arg0->type - 0x65], 0, var_f0, 0.8f);
+                print_text_mode_1(arg0->column + 8, arg0->row + 0x10, gBestTimeText[arg0->type - 0x65], 0, var_f0,
+                                  0.8f);
                 func_800A874C(arg0);
                 break;
             case 0x6E: /* switch 6 */
@@ -6143,7 +6144,8 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                 break;
             case 0x97: /* switch 6 */
                 set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-                print_text_mode_1(arg0->column, arg0->row, gCourseNames[gCurrentCourseId], arg0->unk1C, arg0->unk24, 1.0f);
+                print_text_mode_1(arg0->column, arg0->row, gCourseNames[gCurrentCourseId], arg0->unk1C, arg0->unk24,
+                                  1.0f);
                 break;
             case 0x98: /* switch 6 */
                 func_800A2D1C(arg0);
@@ -6733,7 +6735,7 @@ void func_800A1DE0(struct_8018D9E0_entry* arg0) {
         // Also, in a perfect world this would be `gEraseBestGhostText[gCourseRecordsMenuSelection - 1][var_s1]`
         wut = gEraseBestGhostText[(gCourseRecordsMenuSelection - 1) * 3 + var_s1];
         print_text_mode_1(0x0000001B, 0x3C + (0xD * var_s1),
-                      gEraseBestGhostText[(gCourseRecordsMenuSelection - 1) * 3 + var_s1], 0, 0.65f, 0.65f);
+                          gEraseBestGhostText[(gCourseRecordsMenuSelection - 1) * 3 + var_s1], 0, 0.65f, 0.65f);
     }
 
     for (var_s1 = 0; var_s1 < 2; var_s1++) {
@@ -6831,8 +6833,8 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
             set_text_color(TEXT_RED);
             var_s1 = D_8018EDEC - 0x2A;
             for (stackPadding0 = 0; stackPadding0 < 3; stackPadding0++) {
-                print_text_mode_1(0x00000032, 0x55 + (0x14 * stackPadding0), D_800E78D0[(var_s1 * 3) + stackPadding0], 0,
-                              0.9f, 0.9f);
+                print_text_mode_1(0x00000032, 0x55 + (0x14 * stackPadding0), D_800E78D0[(var_s1 * 3) + stackPadding0],
+                                  0, 0.9f, 0.9f);
             }
             break;
         case 0x34: /* switch 1 */
@@ -6842,8 +6844,8 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
             set_text_color(TEXT_RED);
             var_s1 = D_8018EDEC - 0x34;
             for (stackPadding0 = 0; stackPadding0 < 4; stackPadding0++) {
-                print_text_mode_1(0x00000023, 0x55 + (0x14 * stackPadding0), D_800E7890[(var_s1 * 4) + stackPadding0], 0,
-                              0.8f, 0.8f);
+                print_text_mode_1(0x00000023, 0x55 + (0x14 * stackPadding0), D_800E7890[(var_s1 * 4) + stackPadding0],
+                                  0, 0.8f, 0.8f);
             }
             break;
         case 0x41: /* switch 1 */
@@ -6851,8 +6853,8 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
             set_text_color(TEXT_RED);
             var_s1 = D_8018EDEC - 0x41;
             for (stackPadding0 = 0; stackPadding0 < 3; stackPadding0++) {
-                print_text_mode_1(0x00000041, 0x55 + (0x14 * stackPadding0), D_800E7900[(var_s1 * 3) + stackPadding0], 0,
-                              0.9f, 0.9f);
+                print_text_mode_1(0x00000041, 0x55 + (0x14 * stackPadding0), D_800E7900[(var_s1 * 3) + stackPadding0],
+                                  0, 0.9f, 0.9f);
             }
             break;
         case 0x46: /* switch 1 */
@@ -7363,10 +7365,10 @@ void func_800A3E60(struct_8018D9E0_entry* arg0) {
                     set_text_color(TEXT_BLUE);
                     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, 0x96);
                     print_text_mode_2(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93, gMenuText[var_s1 + 1], 0,
-                                  0.75f, 0.75f);
+                                      0.75f, 0.75f);
                 } else {
                     print_text_mode_1(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93, gMenuText[var_s1 + 1], 0,
-                                  0.75f, 0.75f);
+                                      0.75f, 0.75f);
                 }
             }
             break;
@@ -7396,9 +7398,9 @@ void func_800A3E60(struct_8018D9E0_entry* arg0) {
                     print_text_mode_1(0xBB - arg0->column, 0xAA + (0x1E * var_s1), D_800E7A44, 0, 0.45f, 0.45f);
                 } else {
                     print_text_mode_1(0xBB - arg0->column, 0xAA + (0x1E * var_s1),
-                                  gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4]
-                                                                  [D_8018EE10[var_s1].courseIndex % 4]],
-                                  0, 0.45f, 0.45f);
+                                      gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4]
+                                                                      [D_8018EE10[var_s1].courseIndex % 4]],
+                                      0, 0.45f, 0.45f);
                 }
             }
             break;
@@ -7654,7 +7656,7 @@ void render_pause_menu_time_trials(struct_8018D9E0_entry* arg0) {
     for (var_s0 = 0; var_s0 < 5; var_s0++) {
         text_rainbow_effect(arg0->state - 11, var_s0, TEXT_GREEN);
         print_text_mode_1(D_800E8538[zero].column, D_800E8538[zero].row + (13 * var_s0), gMenuText[var_s0], 0, 0.75f,
-                      0.75f);
+                          0.75f);
     }
 }
 
@@ -7864,8 +7866,8 @@ void func_800A5738(struct_8018D9E0_entry* arg0) {
                 text_draw(0x000000B3, 0x00000089, sp84, 0, 0.8f, 0.8f);
                 for (var_s1 = 0; var_s1 < 6; var_s1++) {
                     text_rainbow_effect(arg0->state - 0xB, var_s1, TEXT_GREEN);
-                    print_text_mode_2(D_800E8538[zero].column, D_800E8538[zero].row + (0xD * var_s1), gMenuText[var_s1 + 1],
-                                  0, 0.75f, 0.75f);
+                    print_text_mode_2(D_800E8538[zero].column, D_800E8538[zero].row + (0xD * var_s1),
+                                      gMenuText[var_s1 + 1], 0, 0.75f, 0.75f);
                 }
                 break;
             case 21: /* switch 1 */
@@ -7877,7 +7879,8 @@ void func_800A5738(struct_8018D9E0_entry* arg0) {
                 set_text_color(TEXT_YELLOW);
                 temp_v0 = arg0->state - 0x15;
                 for (var_s1 = 0; var_s1 < 7; var_s1++) {
-                    print_text_mode_1(0x0000004D, 0x6E + (0xD * var_s1), D_800E798C[(temp_v0 * 7) + var_s1], 0, 0.8f, 0.8f);
+                    print_text_mode_1(0x0000004D, 0x6E + (0xD * var_s1), D_800E798C[(temp_v0 * 7) + var_s1], 0, 0.8f,
+                                      0.8f);
                 }
                 break;
             case 30: /* switch 1 */
@@ -7894,9 +7897,9 @@ void func_800A5738(struct_8018D9E0_entry* arg0) {
                         print_text_mode_1(0x69 - arg0->column, (0x96 + (0x14 * var_s1)), D_800E7A44, 0, 0.75f, 0.75f);
                     } else {
                         print_text_mode_1(0x69 - arg0->column, (0x96 + (0x14 * var_s1)),
-                                      gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4]
-                                                                      [D_8018EE10[var_s1].courseIndex % 4]],
-                                      0, 0.75f, 0.75f);
+                                          gCourseNamesDup2[gCupCourseOrder[D_8018EE10[var_s1].courseIndex / 4]
+                                                                          [D_8018EE10[var_s1].courseIndex % 4]],
+                                          0, 0.75f, 0.75f);
                     }
                 }
                 break;
@@ -8357,7 +8360,7 @@ void func_800A7790(struct_8018D9E0_entry* arg0) {
     } else {
         someScaling = D_802850C0[creditIndex].textScaling;
         print_text_mode_1(arg0->column, arg0->row, D_802854B0[creditIndex], arg0->unk1C * someScaling,
-                      arg0->unk24 * someScaling, someScaling);
+                          arg0->unk24 * someScaling, someScaling);
     }
 }
 
@@ -8437,7 +8440,7 @@ void func_800A7A4C(s32 arg0) {
         var_v1 = 0;
         var_s1 = &D_8018D9E0[var_v1_2];
         type = var_s1->type;
-        if ((type == 4) || (type == 5) || (type == 0x000000C7)) {
+        if ((type == D_8018D9E0_TYPE_004) || (type == D_8018D9E0_TYPE_005) || (type == D_8018D9E0_TYPE_0C7)) {
             if (arg0 != 0) {
                 var_v1 = 1;
             }
@@ -8449,8 +8452,8 @@ void func_800A7A4C(s32 arg0) {
             continue;
         }
 
-        switch (type) { /* switch 8; irregular */
-            case 0xFA:  /* switch 8 */
+        switch (type) {               /* switch 8; irregular */
+            case D_8018D9E0_TYPE_0FA: /* switch 8 */
                 if (s8018ED94 < 0x50) {
                     D_800E8534 = 3.0f;
                 } else if (s8018ED94 < 0x5A) {
@@ -8479,16 +8482,16 @@ void func_800A7A4C(s32 arg0) {
                     play_sound2(SOUND_INTRO_LOGO);
                 }
                 break;
-            case 0xDA: /* switch 8 */
+            case D_8018D9E0_TYPE_0DA: /* switch 8 */
                 func_800A954C(var_s1);
                 break;
-            case 0xD6: /* switch 8 */
+            case D_8018D9E0_TYPE_0D6: /* switch 8 */
                 func_800A9710(var_s1);
                 break;
-            case 0xD4: /* switch 8 */
+            case D_8018D9E0_TYPE_0D4: /* switch 8 */
                 func_800A97BC(var_s1);
                 break;
-            case 0x5:                    /* switch 8 */
+            case D_8018D9E0_TYPE_005:    /* switch 8 */
                 switch (var_s1->state) { /* switch 9; irregular */
                     case 0:              /* switch 9 */
                         if (gControllerFive->button & R_TRIG) {
@@ -8504,11 +8507,11 @@ void func_800A7A4C(s32 arg0) {
                         break;
                 }
                 break;
-            case 0xA: /* switch 8 */
+            case D_8018D9E0_TYPE_00A: /* switch 8 */
                 func_800AA280(var_s1);
                 break;
-            case 0x10:                             /* switch 8 */
-            case 0x11:                             /* switch 8 */
+            case D_8018D9E0_TYPE_010:              /* switch 8 */
+            case D_8018D9E0_TYPE_011:              /* switch 8 */
                 switch (gMainMenuSelectionDepth) { /* switch 5 */
                     case OPTIONS_SELECTION:        /* switch 5 */
                     case DATA_SELECTION:           /* switch 5 */
@@ -8524,14 +8527,14 @@ void func_800A7A4C(s32 arg0) {
                         break;
                 }
                 break;
-            case 0xF: /* switch 8 */
+            case D_8018D9E0_TYPE_00F: /* switch 8 */
                 func_800AA280(var_s1);
                 func_800A9A98(var_s1);
                 break;
-            case 0xB:                              /* switch 8 */
-            case 0xC:                              /* switch 8 */
-            case 0xD:                              /* switch 8 */
-            case 0xE:                              /* switch 8 */
+            case D_8018D9E0_TYPE_00B:              /* switch 8 */
+            case D_8018D9E0_TYPE_00C:              /* switch 8 */
+            case D_8018D9E0_TYPE_00D:              /* switch 8 */
+            case D_8018D9E0_TYPE_00E:              /* switch 8 */
                 switch (gMainMenuSelectionDepth) { /* switch 6 */
                     case OPTIONS_SELECTION:        /* switch 6 */
                     case DATA_SELECTION:           /* switch 6 */
@@ -8548,43 +8551,43 @@ void func_800A7A4C(s32 arg0) {
                 }
                 func_800A9D5C(var_s1);
                 break;
-            case 0x12: /* switch 8 */
-            case 0x13: /* switch 8 */
-            case 0x14: /* switch 8 */
-            case 0x15: /* switch 8 */
-            case 0x16: /* switch 8 */
-            case 0x17: /* switch 8 */
-            case 0x18: /* switch 8 */
-            case 0x19: /* switch 8 */
+            case D_8018D9E0_TYPE_012: /* switch 8 */
+            case D_8018D9E0_TYPE_013: /* switch 8 */
+            case D_8018D9E0_TYPE_014: /* switch 8 */
+            case D_8018D9E0_TYPE_015: /* switch 8 */
+            case D_8018D9E0_TYPE_016: /* switch 8 */
+            case D_8018D9E0_TYPE_017: /* switch 8 */
+            case D_8018D9E0_TYPE_018: /* switch 8 */
+            case D_8018D9E0_TYPE_019: /* switch 8 */
                 func_800A9E58(var_s1);
                 break;
-            case 0x1B: /* switch 8 */
+            case D_8018D9E0_TYPE_01B: /* switch 8 */
                 func_800AA2EC(var_s1);
                 break;
-            case 0x34: /* switch 8 */
-            case 0x35: /* switch 8 */
-            case 0x36: /* switch 8 */
-            case 0x37: /* switch 8 */
+            case D_8018D9E0_TYPE_034: /* switch 8 */
+            case D_8018D9E0_TYPE_035: /* switch 8 */
+            case D_8018D9E0_TYPE_036: /* switch 8 */
+            case D_8018D9E0_TYPE_037: /* switch 8 */
                 func_800AADD4(var_s1);
                 break;
-            case 0x2B: /* switch 8 */
-            case 0x2C: /* switch 8 */
-            case 0x2D: /* switch 8 */
-            case 0x2E: /* switch 8 */
-            case 0x2F: /* switch 8 */
-            case 0x30: /* switch 8 */
-            case 0x31: /* switch 8 */
-            case 0x32: /* switch 8 */
+            case D_8018D9E0_TYPE_02B: /* switch 8 */
+            case D_8018D9E0_TYPE_02C: /* switch 8 */
+            case D_8018D9E0_TYPE_02D: /* switch 8 */
+            case D_8018D9E0_TYPE_02E: /* switch 8 */
+            case D_8018D9E0_TYPE_02F: /* switch 8 */
+            case D_8018D9E0_TYPE_030: /* switch 8 */
+            case D_8018D9E0_TYPE_031: /* switch 8 */
+            case D_8018D9E0_TYPE_032: /* switch 8 */
                 func_800AAC18(var_s1);
-                switch (var_s1->type) { /* switch 7 */
-                    case 43:            /* switch 7 */
-                    case 44:            /* switch 7 */
-                    case 45:            /* switch 7 */
-                    case 46:            /* switch 7 */
-                    case 47:            /* switch 7 */
-                    case 48:            /* switch 7 */
-                    case 49:            /* switch 7 */
-                    case 50:            /* switch 7 */
+                switch (var_s1->type) {       /* switch 7 */
+                    case D_8018D9E0_TYPE_043: /* switch 7 */
+                    case D_8018D9E0_TYPE_044: /* switch 7 */
+                    case D_8018D9E0_TYPE_045: /* switch 7 */
+                    case D_8018D9E0_TYPE_046: /* switch 7 */
+                    case D_8018D9E0_TYPE_047: /* switch 7 */
+                    case D_8018D9E0_TYPE_048: /* switch 7 */
+                    case D_8018D9E0_TYPE_049: /* switch 7 */
+                    case D_8018D9E0_TYPE_050: /* switch 7 */
                         func_800AA69C(var_s1);
                         break;
                 }
@@ -8599,14 +8602,14 @@ void func_800A7A4C(s32 arg0) {
                 }
                 func_800AAE18(var_s1);
                 break;
-            case 0x33: /* switch 8 */
-            case 0x5D: /* switch 8 */
+            case D_8018D9E0_TYPE_033: /* switch 8 */
+            case D_8018D9E0_TYPE_05D: /* switch 8 */
                 func_800A9A98(var_s1);
                 break;
-            case 0x53: /* switch 8 */
-            case 0x54: /* switch 8 */
-            case 0x55: /* switch 8 */
-            case 0x56: /* switch 8 */
+            case D_8018D9E0_TYPE_053: /* switch 8 */
+            case D_8018D9E0_TYPE_054: /* switch 8 */
+            case D_8018D9E0_TYPE_055: /* switch 8 */
+            case D_8018D9E0_TYPE_056: /* switch 8 */
                 func_800AB164(var_s1);
                 switch (D_8018EDEC) { /* switch 11; irregular */
                     case 1:           /* switch 11 */
@@ -8618,201 +8621,201 @@ void func_800A7A4C(s32 arg0) {
                         break;
                 }
                 break;
-            case 0x58: /* switch 8 */
-            case 0x59: /* switch 8 */
-            case 0x5A: /* switch 8 */
-            case 0x5B: /* switch 8 */
+            case D_8018D9E0_TYPE_058: /* switch 8 */
+            case D_8018D9E0_TYPE_059: /* switch 8 */
+            case D_8018D9E0_TYPE_05A: /* switch 8 */
+            case D_8018D9E0_TYPE_05B: /* switch 8 */
                 func_800AB260(var_s1);
                 break;
-            case 0x64: /* switch 8 */
+            case D_8018D9E0_TYPE_064: /* switch 8 */
                 func_800AB314(var_s1);
                 break;
-            case 0x5F: /* switch 8 */
-            case 0x60: /* switch 8 */
-            case 0x61: /* switch 8 */
-            case 0x62: /* switch 8 */
+            case D_8018D9E0_TYPE_05F: /* switch 8 */
+            case D_8018D9E0_TYPE_060: /* switch 8 */
+            case D_8018D9E0_TYPE_061: /* switch 8 */
+            case D_8018D9E0_TYPE_062: /* switch 8 */
                 func_800AB290(var_s1);
                 break;
-            case 0x65: /* switch 8 */
-            case 0x66: /* switch 8 */
+            case D_8018D9E0_TYPE_065: /* switch 8 */
+            case D_8018D9E0_TYPE_066: /* switch 8 */
                 func_800AB904(var_s1);
                 break;
-            case 0x67: /* switch 8 */
+            case D_8018D9E0_TYPE_067: /* switch 8 */
                 func_800AB9B0(var_s1);
                 break;
-            case 0x78: /* switch 8 */
-            case 0x79: /* switch 8 */
-            case 0x7A: /* switch 8 */
-            case 0x7B: /* switch 8 */
-            case 0x8C: /* switch 8 */
+            case D_8018D9E0_TYPE_078: /* switch 8 */
+            case D_8018D9E0_TYPE_079: /* switch 8 */
+            case D_8018D9E0_TYPE_07A: /* switch 8 */
+            case D_8018D9E0_TYPE_07B: /* switch 8 */
+            case D_8018D9E0_TYPE_08C: /* switch 8 */
                 func_800ABAE8(var_s1);
                 break;
-            case 0x8D: /* switch 8 */
+            case D_8018D9E0_TYPE_08D: /* switch 8 */
                 func_800ABB24(var_s1);
                 break;
-            case 0x7C: /* switch 8 */
-            case 0x7D: /* switch 8 */
-            case 0x7E: /* switch 8 */
-            case 0x7F: /* switch 8 */
-            case 0x80: /* switch 8 */
-            case 0x81: /* switch 8 */
-            case 0x82: /* switch 8 */
-            case 0x83: /* switch 8 */
-            case 0x84: /* switch 8 */
-            case 0x85: /* switch 8 */
-            case 0x86: /* switch 8 */
-            case 0x87: /* switch 8 */
-            case 0x88: /* switch 8 */
-            case 0x89: /* switch 8 */
-            case 0x8A: /* switch 8 */
-            case 0x8B: /* switch 8 */
+            case D_8018D9E0_TYPE_07C: /* switch 8 */
+            case D_8018D9E0_TYPE_07D: /* switch 8 */
+            case D_8018D9E0_TYPE_07E: /* switch 8 */
+            case D_8018D9E0_TYPE_07F: /* switch 8 */
+            case D_8018D9E0_TYPE_080: /* switch 8 */
+            case D_8018D9E0_TYPE_081: /* switch 8 */
+            case D_8018D9E0_TYPE_082: /* switch 8 */
+            case D_8018D9E0_TYPE_083: /* switch 8 */
+            case D_8018D9E0_TYPE_084: /* switch 8 */
+            case D_8018D9E0_TYPE_085: /* switch 8 */
+            case D_8018D9E0_TYPE_086: /* switch 8 */
+            case D_8018D9E0_TYPE_087: /* switch 8 */
+            case D_8018D9E0_TYPE_088: /* switch 8 */
+            case D_8018D9E0_TYPE_089: /* switch 8 */
+            case D_8018D9E0_TYPE_08A: /* switch 8 */
+            case D_8018D9E0_TYPE_08B: /* switch 8 */
                 func_800ABBCC(var_s1);
                 break;
-            case 0x96: /* switch 8 */
+            case D_8018D9E0_TYPE_096: /* switch 8 */
                 func_800ABC38(var_s1);
                 break;
-            case 0x97: /* switch 8 */
+            case D_8018D9E0_TYPE_097: /* switch 8 */
                 func_800ABEAC(var_s1);
                 break;
-            case 0x5E: /* switch 8 */
+            case D_8018D9E0_TYPE_05E: /* switch 8 */
                 func_800AC300(var_s1);
                 break;
-            case 0xAA: /* switch 8 */
+            case D_8018D9E0_TYPE_0AA: /* switch 8 */
                 func_800AC324(var_s1);
                 break;
-            case 0xAB: /* switch 8 */
+            case D_8018D9E0_TYPE_0AB: /* switch 8 */
                 func_800AC458(var_s1);
                 break;
-            case 0xAC: /* switch 8 */
+            case D_8018D9E0_TYPE_0AC: /* switch 8 */
                 func_800ACA14(var_s1);
                 break;
-            case 0xAF: /* switch 8 */
+            case D_8018D9E0_TYPE_0AF: /* switch 8 */
                 func_800AC978(var_s1);
                 break;
-            case 0xB0: /* switch 8 */
+            case D_8018D9E0_TYPE_0B0: /* switch 8 */
                 func_800ACC50(var_s1);
                 break;
-            case 0xB1: /* switch 8 */
-            case 0xB2: /* switch 8 */
-            case 0xB3: /* switch 8 */
-            case 0xB4: /* switch 8 */
+            case D_8018D9E0_TYPE_0B1: /* switch 8 */
+            case D_8018D9E0_TYPE_0B2: /* switch 8 */
+            case D_8018D9E0_TYPE_0B3: /* switch 8 */
+            case D_8018D9E0_TYPE_0B4: /* switch 8 */
                 func_800ACF40(var_s1);
                 break;
-            case 0xB9: /* switch 8 */
+            case D_8018D9E0_TYPE_0B9: /* switch 8 */
                 func_800AD1A4(var_s1);
                 break;
-            case 0xBA: /* switch 8 */
+            case D_8018D9E0_TYPE_0BA: /* switch 8 */
                 func_800AD2E8(var_s1);
                 break;
-            case 0xBC: /* switch 8 */
+            case D_8018D9E0_TYPE_0BC: /* switch 8 */
                 func_800AEC54(var_s1);
                 break;
-            case 0xC7: /* switch 8 */
+            case D_8018D9E0_TYPE_0C7: /* switch 8 */
                 func_800ADF48(var_s1);
                 break;
-            case 0xBD: /* switch 8 */
+            case D_8018D9E0_TYPE_0BD: /* switch 8 */
                 func_800AE218(var_s1);
                 break;
-            case 0xE6: /* switch 8 */
+            case D_8018D9E0_TYPE_0E6: /* switch 8 */
                 func_800AEDBC(var_s1);
                 break;
-            case 0xE8: /* switch 8 */
+            case D_8018D9E0_TYPE_0E8: /* switch 8 */
                 func_800AEE90(var_s1);
                 break;
-            case 0xE9: /* switch 8 */
+            case D_8018D9E0_TYPE_0E9: /* switch 8 */
                 func_800AEEBC(var_s1);
                 break;
-            case 0xEA: /* switch 8 */
+            case D_8018D9E0_TYPE_0EA: /* switch 8 */
                 func_800AEEE8(var_s1);
                 break;
-            case 0xBE: /* switch 8 */
+            case D_8018D9E0_TYPE_0BE: /* switch 8 */
                 func_800AEF14(var_s1);
                 break;
-            case 0x10E: /* switch 8 */
+            case D_8018D9E0_TYPE_10E: /* switch 8 */
                 func_800AEF74(var_s1);
                 break;
-            case 0x12B: /* switch 8 */
+            case D_8018D9E0_TYPE_12B: /* switch 8 */
                 func_800AF004(var_s1);
                 break;
-            case 0x12C: /* switch 8 */
-            case 0x12D: /* switch 8 */
-            case 0x12E: /* switch 8 */
-            case 0x12F: /* switch 8 */
+            case D_8018D9E0_TYPE_12C: /* switch 8 */
+            case D_8018D9E0_TYPE_12D: /* switch 8 */
+            case D_8018D9E0_TYPE_12E: /* switch 8 */
+            case D_8018D9E0_TYPE_12F: /* switch 8 */
                 func_800AF1AC(var_s1);
                 break;
-            case 0x130: /* switch 8 */
+            case D_8018D9E0_TYPE_130: /* switch 8 */
                 func_800AF270(var_s1);
                 break;
-            case 0x190: /* switch 8 */
-            case 0x191: /* switch 8 */
-            case 0x192: /* switch 8 */
-            case 0x193: /* switch 8 */
-            case 0x194: /* switch 8 */
-            case 0x195: /* switch 8 */
-            case 0x196: /* switch 8 */
-            case 0x197: /* switch 8 */
-            case 0x198: /* switch 8 */
-            case 0x199: /* switch 8 */
-            case 0x19A: /* switch 8 */
-            case 0x19B: /* switch 8 */
-            case 0x19C: /* switch 8 */
-            case 0x19D: /* switch 8 */
-            case 0x19E: /* switch 8 */
-            case 0x19F: /* switch 8 */
-            case 0x1A0: /* switch 8 */
-            case 0x1A1: /* switch 8 */
-            case 0x1A2: /* switch 8 */
-            case 0x1A3: /* switch 8 */
-            case 0x1A4: /* switch 8 */
-            case 0x1A5: /* switch 8 */
-            case 0x1A6: /* switch 8 */
-            case 0x1A7: /* switch 8 */
-            case 0x1A8: /* switch 8 */
-            case 0x1A9: /* switch 8 */
-            case 0x1AA: /* switch 8 */
-            case 0x1AB: /* switch 8 */
-            case 0x1AC: /* switch 8 */
-            case 0x1AD: /* switch 8 */
-            case 0x1AE: /* switch 8 */
-            case 0x1AF: /* switch 8 */
-            case 0x1B0: /* switch 8 */
-            case 0x1B1: /* switch 8 */
-            case 0x1B2: /* switch 8 */
-            case 0x1B3: /* switch 8 */
-            case 0x1B4: /* switch 8 */
-            case 0x1B5: /* switch 8 */
-            case 0x1B6: /* switch 8 */
-            case 0x1B7: /* switch 8 */
-            case 0x1B8: /* switch 8 */
-            case 0x1B9: /* switch 8 */
-            case 0x1BA: /* switch 8 */
-            case 0x1BB: /* switch 8 */
-            case 0x1BC: /* switch 8 */
-            case 0x1BD: /* switch 8 */
-            case 0x1BE: /* switch 8 */
-            case 0x1BF: /* switch 8 */
-            case 0x1C0: /* switch 8 */
-            case 0x1C1: /* switch 8 */
-            case 0x1C2: /* switch 8 */
-            case 0x1C3: /* switch 8 */
-            case 0x1C4: /* switch 8 */
-            case 0x1C5: /* switch 8 */
-            case 0x1C6: /* switch 8 */
-            case 0x1C7: /* switch 8 */
-            case 0x1C8: /* switch 8 */
-            case 0x1C9: /* switch 8 */
-            case 0x1CA: /* switch 8 */
-            case 0x1CB: /* switch 8 */
-            case 0x1CC: /* switch 8 */
-            case 0x1CD: /* switch 8 */
-            case 0x1CE: /* switch 8 */
+            case D_8018D9E0_TYPE_190: /* switch 8 */
+            case D_8018D9E0_TYPE_191: /* switch 8 */
+            case D_8018D9E0_TYPE_192: /* switch 8 */
+            case D_8018D9E0_TYPE_193: /* switch 8 */
+            case D_8018D9E0_TYPE_194: /* switch 8 */
+            case D_8018D9E0_TYPE_195: /* switch 8 */
+            case D_8018D9E0_TYPE_196: /* switch 8 */
+            case D_8018D9E0_TYPE_197: /* switch 8 */
+            case D_8018D9E0_TYPE_198: /* switch 8 */
+            case D_8018D9E0_TYPE_199: /* switch 8 */
+            case D_8018D9E0_TYPE_19A: /* switch 8 */
+            case D_8018D9E0_TYPE_19B: /* switch 8 */
+            case D_8018D9E0_TYPE_19C: /* switch 8 */
+            case D_8018D9E0_TYPE_19D: /* switch 8 */
+            case D_8018D9E0_TYPE_19E: /* switch 8 */
+            case D_8018D9E0_TYPE_19F: /* switch 8 */
+            case D_8018D9E0_TYPE_1A0: /* switch 8 */
+            case D_8018D9E0_TYPE_1A1: /* switch 8 */
+            case D_8018D9E0_TYPE_1A2: /* switch 8 */
+            case D_8018D9E0_TYPE_1A3: /* switch 8 */
+            case D_8018D9E0_TYPE_1A4: /* switch 8 */
+            case D_8018D9E0_TYPE_1A5: /* switch 8 */
+            case D_8018D9E0_TYPE_1A6: /* switch 8 */
+            case D_8018D9E0_TYPE_1A7: /* switch 8 */
+            case D_8018D9E0_TYPE_1A8: /* switch 8 */
+            case D_8018D9E0_TYPE_1A9: /* switch 8 */
+            case D_8018D9E0_TYPE_1AA: /* switch 8 */
+            case D_8018D9E0_TYPE_1AB: /* switch 8 */
+            case D_8018D9E0_TYPE_1AC: /* switch 8 */
+            case D_8018D9E0_TYPE_1AD: /* switch 8 */
+            case D_8018D9E0_TYPE_1AE: /* switch 8 */
+            case D_8018D9E0_TYPE_1AF: /* switch 8 */
+            case D_8018D9E0_TYPE_1B0: /* switch 8 */
+            case D_8018D9E0_TYPE_1B1: /* switch 8 */
+            case D_8018D9E0_TYPE_1B2: /* switch 8 */
+            case D_8018D9E0_TYPE_1B3: /* switch 8 */
+            case D_8018D9E0_TYPE_1B4: /* switch 8 */
+            case D_8018D9E0_TYPE_1B5: /* switch 8 */
+            case D_8018D9E0_TYPE_1B6: /* switch 8 */
+            case D_8018D9E0_TYPE_1B7: /* switch 8 */
+            case D_8018D9E0_TYPE_1B8: /* switch 8 */
+            case D_8018D9E0_TYPE_1B9: /* switch 8 */
+            case D_8018D9E0_TYPE_1BA: /* switch 8 */
+            case D_8018D9E0_TYPE_1BB: /* switch 8 */
+            case D_8018D9E0_TYPE_1BC: /* switch 8 */
+            case D_8018D9E0_TYPE_1BD: /* switch 8 */
+            case D_8018D9E0_TYPE_1BE: /* switch 8 */
+            case D_8018D9E0_TYPE_1BF: /* switch 8 */
+            case D_8018D9E0_TYPE_1C0: /* switch 8 */
+            case D_8018D9E0_TYPE_1C1: /* switch 8 */
+            case D_8018D9E0_TYPE_1C2: /* switch 8 */
+            case D_8018D9E0_TYPE_1C3: /* switch 8 */
+            case D_8018D9E0_TYPE_1C4: /* switch 8 */
+            case D_8018D9E0_TYPE_1C5: /* switch 8 */
+            case D_8018D9E0_TYPE_1C6: /* switch 8 */
+            case D_8018D9E0_TYPE_1C7: /* switch 8 */
+            case D_8018D9E0_TYPE_1C8: /* switch 8 */
+            case D_8018D9E0_TYPE_1C9: /* switch 8 */
+            case D_8018D9E0_TYPE_1CA: /* switch 8 */
+            case D_8018D9E0_TYPE_1CB: /* switch 8 */
+            case D_8018D9E0_TYPE_1CC: /* switch 8 */
+            case D_8018D9E0_TYPE_1CD: /* switch 8 */
+            case D_8018D9E0_TYPE_1CE: /* switch 8 */
                 func_800AF480(var_s1);
                 break;
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-            case 4:
+            case D_8018D9E0_TYPE_NULL:
+            case D_8018D9E0_TYPE_001:
+            case D_8018D9E0_TYPE_002:
+            case D_8018D9E0_TYPE_003:
+            case D_8018D9E0_TYPE_004:
                 break;
         }
     }
@@ -8823,7 +8826,7 @@ void func_800A7A4C(s32 arg0) {
             var_s1 = &D_8018D9E0[var_v1_2];
             if (var_s1 && var_s1) {} // ?
             type = var_s1->type;
-            if ((type == 4) || (type == 5) || (type == 0x000000C7)) {
+            if ((type == D_8018D9E0_TYPE_004) || (type == D_8018D9E0_TYPE_005) || (type == D_8018D9E0_TYPE_0C7)) {
                 if (arg0 != 0) {
                     var_v1 = 1;
                 }
@@ -10635,7 +10638,7 @@ void func_800AC324(struct_8018D9E0_entry* arg0) {
             if (((D_8018D9D8 != 0) || (arg0->unk20 >= 0x5B)) && (D_800DDB24 != 0)) {
                 arg0->state = 3;
                 arg0->unk1C = arg0->column;
-                add_8018D9E0_entry(0xAB, 0, 0, 0);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0AB, 0, 0, D_8018D9E0_PRIORITY_0);
             }
             break;
         case 3:
@@ -10882,7 +10885,7 @@ void func_800ACA14(struct_8018D9E0_entry* arg0) {
 }
 
 void func_800ACC50(struct_8018D9E0_entry* arg0) {
-    s32 var_s0;
+    s32 i;
 
     switch (arg0->state) {
         case 0:
@@ -10890,8 +10893,8 @@ void func_800ACC50(struct_8018D9E0_entry* arg0) {
             if (arg0->unk1C >= 0x65) {
                 arg0->state = 1;
                 arg0->unk1C = 0;
-                for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
-                    add_8018D9E0_entry(var_s0 + 0xB1, 0, 0, (s8) (5 - var_s0));
+                for (i = 0; i < gPlayerCount; i++) {
+                    add_8018D9E0_entry(i + D_8018D9E0_TYPE_0B1, 0, 0, (s8) (D_8018D9E0_PRIORITY_5 - i));
                 }
             }
             break;
@@ -11024,7 +11027,7 @@ void func_800AD1A4(struct_8018D9E0_entry* arg0) {
             arg0->column = 0x0000014A;
             arg0->state = 1;
             func_800921B4();
-            add_8018D9E0_entry(0x000000BB, 0, 0, 0);
+            add_8018D9E0_entry(D_8018D9E0_TYPE_0BB, 0, 0, D_8018D9E0_PRIORITY_0);
             break;
         case 1:
             func_800A9208(arg0, 0x000000A0);
@@ -11044,7 +11047,7 @@ void func_800AD1A4(struct_8018D9E0_entry* arg0) {
                 func_800921B4();
                 arg0->state = 4;
                 arg0->unk1C = arg0->column;
-                add_8018D9E0_entry(0x000000BA, 0, 0, 0);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_0BA, 0, 0, D_8018D9E0_PRIORITY_0);
             }
             break;
         case 4:
@@ -11883,7 +11886,7 @@ void func_800AF004(struct_8018D9E0_entry* arg0) {
                 arg0->state = 1;
                 gCupSelection %= 4;
                 gCCSelection %= 4;
-                add_8018D9E0_entry(0x0000012C, 0, 0, 4);
+                add_8018D9E0_entry(D_8018D9E0_TYPE_12C, 0, 0, D_8018D9E0_PRIORITY_4);
             }
             break;
         case 1:
@@ -11894,7 +11897,7 @@ void func_800AF004(struct_8018D9E0_entry* arg0) {
             if (arg0->unk1C >= 9) {
                 arg0->unk1C = 0;
                 arg0->state++;
-                add_8018D9E0_entry(arg0->state + 0x12B, 0, 0, 4);
+                add_8018D9E0_entry(arg0->state + D_8018D9E0_TYPE_12B, 0, 0, D_8018D9E0_PRIORITY_4);
             }
             break;
         case 5:
