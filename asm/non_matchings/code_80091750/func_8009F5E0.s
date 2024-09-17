@@ -443,7 +443,7 @@ glabel L8009F904
 /* 0A067C 8009FA7C 240500A0 */  li    $a1, 160
 /* 0A0680 8009FA80 00003825 */  move  $a3, $zero
 /* 0A0684 8009FA84 E7A00010 */  swc1  $f0, 0x10($sp)
-/* 0A0688 8009FA88 0C024CC9 */  jal   func_80093324
+/* 0A0688 8009FA88 0C024CC9 */  jal   print_text_mode_1
 /* 0A068C 8009FA8C E7A00014 */   swc1  $f0, 0x14($sp)
 /* 0A0690 8009FA90 02202025 */  move  $a0, $s1
 /* 0A0694 8009FA94 0C029E51 */  jal   get_time_record_seconds
@@ -465,7 +465,7 @@ glabel L8009F904
 /* 0A06D4 8009FAD4 240500A0 */  li    $a1, 160
 /* 0A06D8 8009FAD8 00003825 */  move  $a3, $zero
 /* 0A06DC 8009FADC E7A00010 */  swc1  $f0, 0x10($sp)
-/* 0A06E0 8009FAE0 0C024CC9 */  jal   func_80093324
+/* 0A06E0 8009FAE0 0C024CC9 */  jal   print_text_mode_1
 /* 0A06E4 8009FAE4 E7A00014 */   swc1  $f0, 0x14($sp)
 /* 0A06E8 8009FAE8 02202025 */  move  $a0, $s1
 /* 0A06EC 8009FAEC 0C029E69 */  jal   get_time_record_centiseconds
@@ -1039,15 +1039,15 @@ glabel L800A02DC
 /* 0A0F18 800A0318 C4261AF8 */  lwc1  $f6, %lo(D_800F1AF8)($at)
 /* 0A0F1C 800A031C 8E24000C */  lw    $a0, 0xc($s1)
 /* 0A0F20 800A0320 8E250010 */  lw    $a1, 0x10($s1)
-/* 0A0F24 800A0324 3C06800E */  lui   $a2, %hi(D_800E7728 - 0x194)
+/* 0A0F24 800A0324 3C06800E */  lui   $a2, %hi(gBestTimeText - 0x194)
 /* 0A0F28 800A0328 000B6080 */  sll   $t4, $t3, 2
 /* 0A0F2C 800A032C 00CC3021 */  addu  $a2, $a2, $t4
-/* 0A0F30 800A0330 8CC67594 */  lw    $a2, %lo(D_800E7728 - 0x194)($a2)
+/* 0A0F30 800A0330 8CC67594 */  lw    $a2, %lo(gBestTimeText - 0x194)($a2)
 /* 0A0F34 800A0334 00003825 */  move  $a3, $zero
 /* 0A0F38 800A0338 E7A00010 */  swc1  $f0, 0x10($sp)
 /* 0A0F3C 800A033C E7A60014 */  swc1  $f6, 0x14($sp)
 /* 0A0F40 800A0340 24840008 */  addiu $a0, $a0, 8
-/* 0A0F44 800A0344 0C024CC9 */  jal   func_80093324
+/* 0A0F44 800A0344 0C024CC9 */  jal   print_text_mode_1
 /* 0A0F48 800A0348 24A50010 */   addiu $a1, $a1, 0x10
 /* 0A0F4C 800A034C 0C02A1D3 */  jal   func_800A874C
 /* 0A0F50 800A0350 02202025 */   move  $a0, $s1
@@ -1236,7 +1236,7 @@ glabel L800A05C4
 /* 0A11F4 800A05F4 8E27001C */  lw    $a3, 0x1c($s1)
 /* 0A11F8 800A05F8 8CC67524 */  lw    $a2, %lo(gCourseNames)($a2)
 /* 0A11FC 800A05FC E7B20014 */  swc1  $f18, 0x14($sp)
-/* 0A1200 800A0600 0C024CC9 */  jal   func_80093324
+/* 0A1200 800A0600 0C024CC9 */  jal   print_text_mode_1
 /* 0A1204 800A0604 E7B00010 */   swc1  $f16, 0x10($sp)
 /* 0A1208 800A0608 100000AF */  b     .L800A08C8
 /* 0A120C 800A060C 8FBF0034 */   lw    $ra, 0x34($sp)

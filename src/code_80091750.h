@@ -22,9 +22,9 @@ it last longer See `func_80096CD8` for the actual drawing of the static
 */
 
 typedef struct {
-    /* 0x00 */ s32 type;   // id maybe?
-    /* 0x04 */ s32 cursor; // sound mode, maybe some other stuff
-    /* 0x08 */ s32 unk8;   // This is used but I can't tell what for
+    /* 0x00 */ s32 type;  // id maybe?
+    /* 0x04 */ s32 state; // sound mode, maybe some other stuff
+    /* 0x08 */ s32 unk8;  // This is used but I can't tell what for
     /* 0x0C */ s32 column;
     /* 0x10 */ s32 row;
     /* 0x14 */ u8 priority; // priority/depth/z-level. Higher values are drawn on top of lower values
@@ -124,8 +124,8 @@ s32 get_string_width(char*);
 void set_text_color(s32);
 void func_800930E4(s32, s32, char*);
 void print_text0(s32, s32, char*, s32, f32, f32, s32);
-void func_80093324(s32, s32, char*, s32, f32, f32);
-void func_80093358(s32, s32, char*, s32, f32, f32);
+void print_text_mode_1(s32, s32, char*, s32, f32, f32);
+void print_text_mode_2(s32, s32, char*, s32, f32, f32);
 void print_text1(s32, s32, char*, s32, f32, f32, s32);
 void func_800936B8(s32, s32, char*, s32, f32, f32);
 void draw_text(s32, s32, char*, s32, f32, f32);
@@ -494,7 +494,7 @@ extern char* gDebugCourseNames[];
 extern const s8 gPerCupIndexByCourseId[]; // D_800EFD50
 extern const s8 D_800EFD64[];
 extern s8 gCupSelectionByCourseId[];
-extern char* D_800E7678[];
+extern char* gCupText[];
 extern char* gDebugCharacterNames[];
 extern char* D_800E76A8[];
 extern char* D_800E76CC[];
@@ -502,12 +502,12 @@ extern char* D_800E76DC[];
 extern char* gDebugScreenModeNames[];
 extern char* gDebugSoundModeNames[];
 extern char* gSoundModeNames[]; // D_800E7710
-extern char* D_800E7720[];
-extern char* D_800E7728[];
-extern char* D_800E7730;
-extern char* D_800E7734[];
+extern char* gWinLoseText[];
+extern char* gBestTimeText[];
+extern char* gLapTimeText;
+extern char* gPrefixTimeText[];
 extern char* D_800E7744[];
-extern char* gTextPauseButton[];
+extern char* gMenuText[];
 extern char* D_800E7778[];
 extern char D_800E7780[];
 extern char* D_800E77A0[];
@@ -517,7 +517,7 @@ extern char D_800E77D8[];
 extern char* sCourseLengths[];
 extern char* D_800E7834[];
 extern char* D_800E7840[];
-extern char* D_800E7848[];
+extern char* gEraseBestGhostText[];
 extern char* D_800E7860[];
 extern char* D_800E7868[];
 extern char* D_800E7878[];
@@ -545,7 +545,7 @@ extern char* D_800E7A80[];
 extern char* D_800E7A88[];
 extern char* D_800E7A98;
 extern char* D_800E7A9C[];
-extern char* D_800E7AA4[];
+extern char* gPlaceText[];
 extern const s8 gGPPointRewards[];
 extern const s8 D_800F0B1C[];
 extern const s8 D_800F0B28[];

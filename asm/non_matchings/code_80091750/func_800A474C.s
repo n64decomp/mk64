@@ -152,7 +152,7 @@ glabel func_800A474C
 /* 0A552C 800A492C 00003825 */  move  $a3, $zero
 /* 0A5530 800A4930 E7B40010 */  swc1  $f20, 0x10($sp)
 /* 0A5534 800A4934 E7B40014 */  swc1  $f20, 0x14($sp)
-/* 0A5538 800A4938 0C024CC9 */  jal   func_80093324
+/* 0A5538 800A4938 0C024CC9 */  jal   print_text_mode_1
 /* 0A553C 800A493C 24840032 */   addiu $a0, $a0, 0x32
 /* 0A5540 800A4940 8FA4002C */  lw    $a0, 0x2c($sp)
 /* 0A5544 800A4944 0C029E51 */  jal   get_time_record_seconds
@@ -172,7 +172,7 @@ glabel func_800A474C
 /* 0A557C 800A497C 00003825 */  move  $a3, $zero
 /* 0A5580 800A4980 E7B40010 */  swc1  $f20, 0x10($sp)
 /* 0A5584 800A4984 E7B40014 */  swc1  $f20, 0x14($sp)
-/* 0A5588 800A4988 0C024CC9 */  jal   func_80093324
+/* 0A5588 800A4988 0C024CC9 */  jal   print_text_mode_1
 /* 0A558C 800A498C 24840046 */   addiu $a0, $a0, 0x46
 /* 0A5590 800A4990 8FA4002C */  lw    $a0, 0x2c($sp)
 /* 0A5594 800A4994 0C029E69 */  jal   get_time_record_centiseconds

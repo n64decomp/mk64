@@ -110,7 +110,7 @@ glabel L800A2054
 /* 0A2C90 800A2090 8E260000 */  lw    $a2, ($s1)
 /* 0A2C94 800A2094 00003825 */  move  $a3, $zero
 /* 0A2C98 800A2098 E7B40010 */  swc1  $f20, 0x10($sp)
-/* 0A2C9C 800A209C 0C024CC9 */  jal   func_80093324
+/* 0A2C9C 800A209C 0C024CC9 */  jal   print_text_mode_1
 /* 0A2CA0 800A20A0 E7B60014 */   swc1  $f22, 0x14($sp)
 /* 0A2CA4 800A20A4 3C048019 */  lui   $a0, %hi(D_8018EDEC) # $a0, 0x8019
 /* 0A2CA8 800A20A8 8084EDEC */  lb    $a0, %lo(D_8018EDEC)($a0)
@@ -158,7 +158,7 @@ glabel L800A2118
 /* 0A2D44 800A2144 8E260000 */  lw    $a2, ($s1)
 /* 0A2D48 800A2148 00003825 */  move  $a3, $zero
 /* 0A2D4C 800A214C E7B60010 */  swc1  $f22, 0x10($sp)
-/* 0A2D50 800A2150 0C024CC9 */  jal   func_80093324
+/* 0A2D50 800A2150 0C024CC9 */  jal   print_text_mode_1
 /* 0A2D54 800A2154 E7B60014 */   swc1  $f22, 0x14($sp)
 /* 0A2D58 800A2158 26310004 */  addiu $s1, $s1, 4
 /* 0A2D5C 800A215C 0232082B */  sltu  $at, $s1, $s2
@@ -180,7 +180,7 @@ glabel L800A2118
 /* 0A2D98 800A2198 8E260000 */  lw    $a2, ($s1)
 /* 0A2D9C 800A219C 00003825 */  move  $a3, $zero
 /* 0A2DA0 800A21A0 E7B60010 */  swc1  $f22, 0x10($sp)
-/* 0A2DA4 800A21A4 0C024CC9 */  jal   func_80093324
+/* 0A2DA4 800A21A4 0C024CC9 */  jal   print_text_mode_1
 /* 0A2DA8 800A21A8 E7B60014 */   swc1  $f22, 0x14($sp)
 /* 0A2DAC 800A21AC 3C038019 */  lui   $v1, %hi(D_8018EDEC) # $v1, 0x8019
 /* 0A2DB0 800A21B0 8063EDEC */  lb    $v1, %lo(D_8018EDEC)($v1)
@@ -213,7 +213,7 @@ glabel L800A21E4
 /* 0A2E10 800A2210 8E260000 */  lw    $a2, ($s1)
 /* 0A2E14 800A2214 00003825 */  move  $a3, $zero
 /* 0A2E18 800A2218 E7B60010 */  swc1  $f22, 0x10($sp)
-/* 0A2E1C 800A221C 0C024CC9 */  jal   func_80093324
+/* 0A2E1C 800A221C 0C024CC9 */  jal   print_text_mode_1
 /* 0A2E20 800A2220 E7B60014 */   swc1  $f22, 0x14($sp)
 /* 0A2E24 800A2224 26310004 */  addiu $s1, $s1, 4
 /* 0A2E28 800A2228 1632FFF7 */  bne   $s1, $s2, .L800A2208
@@ -243,7 +243,7 @@ glabel L800A223C
 /* 0A2E80 800A2280 8E260000 */  lw    $a2, ($s1)
 /* 0A2E84 800A2284 00003825 */  move  $a3, $zero
 /* 0A2E88 800A2288 E7B40010 */  swc1  $f20, 0x10($sp)
-/* 0A2E8C 800A228C 0C024CC9 */  jal   func_80093324
+/* 0A2E8C 800A228C 0C024CC9 */  jal   print_text_mode_1
 /* 0A2E90 800A2290 E7B40014 */   swc1  $f20, 0x14($sp)
 /* 0A2E94 800A2294 26100014 */  addiu $s0, $s0, 0x14
 /* 0A2E98 800A2298 1612FFF7 */  bne   $s0, $s2, .L800A2278
@@ -271,7 +271,7 @@ glabel L800A22AC
 /* 0A2EE8 800A22E8 8E260000 */  lw    $a2, ($s1)
 /* 0A2EEC 800A22EC 00003825 */  move  $a3, $zero
 /* 0A2EF0 800A22F0 E7B40010 */  swc1  $f20, 0x10($sp)
-/* 0A2EF4 800A22F4 0C024CC9 */  jal   func_80093324
+/* 0A2EF4 800A22F4 0C024CC9 */  jal   print_text_mode_1
 /* 0A2EF8 800A22F8 E7B40014 */   swc1  $f20, 0x14($sp)
 /* 0A2EFC 800A22FC 26100014 */  addiu $s0, $s0, 0x14
 /* 0A2F00 800A2300 1612FFF7 */  bne   $s0, $s2, .L800A22E0
@@ -301,7 +301,7 @@ glabel L800A2314
 /* 0A2F58 800A2358 8E260000 */  lw    $a2, ($s1)
 /* 0A2F5C 800A235C 00003825 */  move  $a3, $zero
 /* 0A2F60 800A2360 E7B40010 */  swc1  $f20, 0x10($sp)
-/* 0A2F64 800A2364 0C024CC9 */  jal   func_80093324
+/* 0A2F64 800A2364 0C024CC9 */  jal   print_text_mode_1
 /* 0A2F68 800A2368 E7B40014 */   swc1  $f20, 0x14($sp)
 /* 0A2F6C 800A236C 26100014 */  addiu $s0, $s0, 0x14
 /* 0A2F70 800A2370 1612FFF7 */  bne   $s0, $s2, .L800A2350
@@ -325,7 +325,7 @@ glabel L800A2384
 /* 0A2FB0 800A23B0 8E260000 */  lw    $a2, ($s1)
 /* 0A2FB4 800A23B4 00003825 */  move  $a3, $zero
 /* 0A2FB8 800A23B8 E7B60010 */  swc1  $f22, 0x10($sp)
-/* 0A2FBC 800A23BC 0C024CC9 */  jal   func_80093324
+/* 0A2FBC 800A23BC 0C024CC9 */  jal   print_text_mode_1
 /* 0A2FC0 800A23C0 E7B60014 */   swc1  $f22, 0x14($sp)
 /* 0A2FC4 800A23C4 26310004 */  addiu $s1, $s1, 4
 /* 0A2FC8 800A23C8 1632FFF7 */  bne   $s1, $s2, .L800A23A8
@@ -456,7 +456,7 @@ glabel L800A23DC
 /* 0A318C 800A258C 27A600B9 */  addiu $a2, $sp, 0xb9
 /* 0A3190 800A2590 00003825 */  move  $a3, $zero
 /* 0A3194 800A2594 E7B60010 */  swc1  $f22, 0x10($sp)
-/* 0A3198 800A2598 0C024CC9 */  jal   func_80093324
+/* 0A3198 800A2598 0C024CC9 */  jal   print_text_mode_1
 /* 0A319C 800A259C E7B60014 */   swc1  $f22, 0x14($sp)
 /* 0A31A0 800A25A0 2401002A */  li    $at, 42
 /* 0A31A4 800A25A4 16610006 */  bne   $s3, $at, .L800A25C0
@@ -482,7 +482,7 @@ glabel L800A23DC
 /* 0A31EC 800A25EC 02402825 */  move  $a1, $s2
 /* 0A31F0 800A25F0 00003825 */  move  $a3, $zero
 /* 0A31F4 800A25F4 E7B40010 */  swc1  $f20, 0x10($sp)
-/* 0A31F8 800A25F8 0C024CC9 */  jal   func_80093324
+/* 0A31F8 800A25F8 0C024CC9 */  jal   print_text_mode_1
 /* 0A31FC 800A25FC E7B40014 */   swc1  $f20, 0x14($sp)
 /* 0A3200 800A2600 10000019 */  b     .L800A2668
 /* 0A3204 800A2604 24010002 */   li    $at, 2
@@ -510,7 +510,7 @@ glabel L800A23DC
 /* 0A3250 800A2650 00003825 */  move  $a3, $zero
 /* 0A3254 800A2654 000D7080 */  sll   $t6, $t5, 2
 /* 0A3258 800A2658 00CE3021 */  addu  $a2, $a2, $t6
-/* 0A325C 800A265C 0C024CC9 */  jal   func_80093324
+/* 0A325C 800A265C 0C024CC9 */  jal   print_text_mode_1
 /* 0A3260 800A2660 8CC675C4 */   lw    $a2, %lo(gCourseNamesDup2)($a2)
 /* 0A3264 800A2664 24010002 */  li    $at, 2
 .L800A2668:
@@ -649,7 +649,7 @@ glabel L800A26A8
 /* 0A3448 800A2848 27A600A9 */  addiu $a2, $sp, 0xa9
 /* 0A344C 800A284C 00003825 */  move  $a3, $zero
 /* 0A3450 800A2850 E7B60010 */  swc1  $f22, 0x10($sp)
-/* 0A3454 800A2854 0C024CC9 */  jal   func_80093324
+/* 0A3454 800A2854 0C024CC9 */  jal   print_text_mode_1
 /* 0A3458 800A2858 E7B60014 */   swc1  $f22, 0x14($sp)
 /* 0A345C 800A285C 2401002A */  li    $at, 42
 /* 0A3460 800A2860 16610006 */  bne   $s3, $at, .L800A287C
@@ -675,7 +675,7 @@ glabel L800A26A8
 /* 0A34A8 800A28A8 02402825 */  move  $a1, $s2
 /* 0A34AC 800A28AC 00003825 */  move  $a3, $zero
 /* 0A34B0 800A28B0 E7B40010 */  swc1  $f20, 0x10($sp)
-/* 0A34B4 800A28B4 0C024CC9 */  jal   func_80093324
+/* 0A34B4 800A28B4 0C024CC9 */  jal   print_text_mode_1
 /* 0A34B8 800A28B8 E7B40014 */   swc1  $f20, 0x14($sp)
 /* 0A34BC 800A28BC 10000019 */  b     .L800A2924
 /* 0A34C0 800A28C0 24010002 */   li    $at, 2
@@ -703,7 +703,7 @@ glabel L800A26A8
 /* 0A350C 800A290C 00003825 */  move  $a3, $zero
 /* 0A3510 800A2910 00085080 */  sll   $t2, $t0, 2
 /* 0A3514 800A2914 00CA3021 */  addu  $a2, $a2, $t2
-/* 0A3518 800A2918 0C024CC9 */  jal   func_80093324
+/* 0A3518 800A2918 0C024CC9 */  jal   print_text_mode_1
 /* 0A351C 800A291C 8CC675C4 */   lw    $a2, %lo(gCourseNamesDup2)($a2)
 /* 0A3520 800A2920 24010002 */  li    $at, 2
 .L800A2924:
@@ -742,7 +742,7 @@ glabel L800A26A8
 /* 0A359C 800A299C 8E660000 */  lw    $a2, ($s3)
 /* 0A35A0 800A29A0 00003825 */  move  $a3, $zero
 /* 0A35A4 800A29A4 E7B80010 */  swc1  $f24, 0x10($sp)
-/* 0A35A8 800A29A8 0C024CC9 */  jal   func_80093324
+/* 0A35A8 800A29A8 0C024CC9 */  jal   print_text_mode_1
 /* 0A35AC 800A29AC E7B80014 */   swc1  $f24, 0x14($sp)
 /* 0A35B0 800A29B0 26520001 */  addiu $s2, $s2, 1
 /* 0A35B4 800A29B4 24010002 */  li    $at, 2
@@ -867,7 +867,7 @@ glabel L800A29D0
 /* 0A3764 800A2B64 27A60099 */  addiu $a2, $sp, 0x99
 /* 0A3768 800A2B68 00003825 */  move  $a3, $zero
 /* 0A376C 800A2B6C E7B60010 */  swc1  $f22, 0x10($sp)
-/* 0A3770 800A2B70 0C024CC9 */  jal   func_80093324
+/* 0A3770 800A2B70 0C024CC9 */  jal   print_text_mode_1
 /* 0A3774 800A2B74 E7B60014 */   swc1  $f22, 0x14($sp)
 /* 0A3778 800A2B78 2401002A */  li    $at, 42
 /* 0A377C 800A2B7C 16610006 */  bne   $s3, $at, .L800A2B98
@@ -893,7 +893,7 @@ glabel L800A29D0
 /* 0A37C4 800A2BC4 02402825 */  move  $a1, $s2
 /* 0A37C8 800A2BC8 00003825 */  move  $a3, $zero
 /* 0A37CC 800A2BCC E7B40010 */  swc1  $f20, 0x10($sp)
-/* 0A37D0 800A2BD0 0C024CC9 */  jal   func_80093324
+/* 0A37D0 800A2BD0 0C024CC9 */  jal   print_text_mode_1
 /* 0A37D4 800A2BD4 E7B40014 */   swc1  $f20, 0x14($sp)
 /* 0A37D8 800A2BD8 10000019 */  b     .L800A2C40
 /* 0A37DC 800A2BDC 24010002 */   li    $at, 2
@@ -921,7 +921,7 @@ glabel L800A29D0
 /* 0A3828 800A2C28 00003825 */  move  $a3, $zero
 /* 0A382C 800A2C2C 00194080 */  sll   $t0, $t9, 2
 /* 0A3830 800A2C30 00C83021 */  addu  $a2, $a2, $t0
-/* 0A3834 800A2C34 0C024CC9 */  jal   func_80093324
+/* 0A3834 800A2C34 0C024CC9 */  jal   print_text_mode_1
 /* 0A3838 800A2C38 8CC675C4 */   lw    $a2, %lo(gCourseNamesDup2)($a2)
 /* 0A383C 800A2C3C 24010002 */  li    $at, 2
 .L800A2C40:
