@@ -1,5 +1,8 @@
 name: clang-format PR
-on: [push]
+on:
+  push:
+    branches:
+      - master
 jobs:
   formatting-check:
     runs-on: ubuntu-24.04
@@ -16,5 +19,5 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: clang format
-          title: Applid Clang format on the branch
+          title: Clang format
           branch: clang-format
