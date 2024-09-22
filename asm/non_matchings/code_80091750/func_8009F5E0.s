@@ -383,7 +383,7 @@ glabel L8009F904
 /* 0A059C 8009F99C 8E260000 */  lw    $a2, ($s1)
 /* 0A05A0 8009F9A0 00003825 */  move  $a3, $zero
 /* 0A05A4 8009F9A4 E7A00010 */  swc1  $f0, 0x10($sp)
-/* 0A05A8 8009F9A8 0C024DBB */  jal   draw_text
+/* 0A05A8 8009F9A8 0C024DBB */  jal   print_text1_center_mode_1
 /* 0A05AC 8009F9AC E7A00014 */   swc1  $f0, 0x14($sp)
 /* 0A05B0 8009F9B0 00002025 */  move  $a0, $zero
 /* 0A05B4 8009F9B4 0C02D3AD */  jal   func_800B4EB4
@@ -583,7 +583,7 @@ glabel L8009FB24
 /* 0A0898 8009FC98 46101480 */  add.s $f18, $f2, $f16
 /* 0A089C 8009FC9C 4600910D */  trunc.w.s $f4, $f18
 /* 0A08A0 8009FCA0 44052000 */  mfc1  $a1, $f4
-/* 0A08A4 8009FCA4 0C024DBB */  jal   draw_text
+/* 0A08A4 8009FCA4 0C024DBB */  jal   print_text1_center_mode_1
 /* 0A08A8 8009FCA8 00000000 */   nop
 /* 0A08AC 8009FCAC 8FA20040 */  lw    $v0, 0x40($sp)
 /* 0A08B0 8009FCB0 8FA30044 */  lw    $v1, 0x44($sp)
@@ -1186,7 +1186,7 @@ glabel L800A0428
 /* 0A113C 800A053C 2405001C */  li    $a1, 28
 /* 0A1140 800A0540 00003825 */  move  $a3, $zero
 /* 0A1144 800A0544 E7A00010 */  swc1  $f0, 0x10($sp)
-/* 0A1148 800A0548 0C024DAE */  jal   func_800936B8
+/* 0A1148 800A0548 0C024DAE */  jal   print_text1_left
 /* 0A114C 800A054C E7A00014 */   swc1  $f0, 0x14($sp)
 /* 0A1150 800A0550 100000DD */  b     .L800A08C8
 /* 0A1154 800A0554 8FBF0034 */   lw    $ra, 0x34($sp)
@@ -1216,7 +1216,7 @@ glabel L800A0578
 /* 0A11A8 800A05A8 8E27001C */  lw    $a3, 0x1c($s1)
 /* 0A11AC 800A05AC 8CC67500 */  lw    $a2, %lo(gCupNames)($a2)
 /* 0A11B0 800A05B0 E7A80014 */  swc1  $f8, 0x14($sp)
-/* 0A11B4 800A05B4 0C024DAE */  jal   func_800936B8
+/* 0A11B4 800A05B4 0C024DAE */  jal   print_text1_left
 /* 0A11B8 800A05B8 E7AA0010 */   swc1  $f10, 0x10($sp)
 /* 0A11BC 800A05BC 100000C2 */  b     .L800A08C8
 /* 0A11C0 800A05C0 8FBF0034 */   lw    $ra, 0x34($sp)
@@ -1316,7 +1316,7 @@ glabel L800A0694
 /* 0A1314 800A0714 1000006C */  b     .L800A08C8
 /* 0A1318 800A0718 8FBF0034 */   lw    $ra, 0x34($sp)
 glabel L800A071C
-/* 0A131C 800A071C 0C028F21 */  jal   func_800A3C84
+/* 0A131C 800A071C 0C028F21 */  jal   menu_item_end_time_trial_render
 /* 0A1320 800A0720 02202025 */   move  $a0, $s1
 /* 0A1324 800A0724 10000068 */  b     .L800A08C8
 /* 0A1328 800A0728 8FBF0034 */   lw    $ra, 0x34($sp)
@@ -1351,7 +1351,7 @@ glabel L800A077C
 /* 0A1384 800A0784 10000050 */  b     .L800A08C8
 /* 0A1388 800A0788 8FBF0034 */   lw    $ra, 0x34($sp)
 glabel L800A078C
-/* 0A138C 800A078C 0C0286F8 */  jal   func_800A1BE0
+/* 0A138C 800A078C 0C0286F8 */  jal   menu_item_course_data_render
 /* 0A1390 800A0790 02202025 */   move  $a0, $s1
 /* 0A1394 800A0794 1000004C */  b     .L800A08C8
 /* 0A1398 800A0798 8FBF0034 */   lw    $ra, 0x34($sp)
@@ -1439,7 +1439,7 @@ glabel L800A084C
 /* 0A14B4 800A08B4 10000004 */  b     .L800A08C8
 /* 0A14B8 800A08B8 8FBF0034 */   lw    $ra, 0x34($sp)
 glabel L800A08BC
-/* 0A14BC 800A08BC 0C029DE4 */  jal   func_800A7790
+/* 0A14BC 800A08BC 0C029DE4 */  jal   menu_item_credit_render
 /* 0A14C0 800A08C0 02202025 */   move  $a0, $s1
 .L800A08C4:
 glabel L800A08C4

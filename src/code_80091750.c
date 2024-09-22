@@ -51,7 +51,7 @@ s8 gGPPointsByCharacterId[8];
 s8 gCharacterIdByGPOverallRank[8];
 s8 D_8018D9D8;
 s8 D_8018D9D9;
-struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE];
+MenuItem D_8018D9E0[D_8018D9E0_SIZE];
 struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
 struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
 UNUSED u8 code_80091750_bss_padding0[8];
@@ -451,7 +451,7 @@ char* D_800E77A8[] = {
 };
 
 // This is plain data, it should not end up in rodata
-char D_800E77B4[] = "a BUTTON*SEE DATA  B BUTTON*EXIT";
+char gTextMenuData[] = "a BUTTON*SEE DATA  B BUTTON*EXIT";
 
 // This is plain data, it should not end up in rodata
 char D_800E77D8[] = "distance";
@@ -460,7 +460,7 @@ char* sCourseLengths[] = {
 #include "assets/course_metadata/sCourseLengths.inc.c"
 };
 
-char* D_800E7834[] = {
+char* gTextMenuDataCourse[] = {
     "return to menu",
     "erase records for this course",
     "erase ghost from this course",
@@ -483,7 +483,7 @@ char* D_800E7860[] = {
     "GHOST DATA",
 };
 
-char* D_800E7868[] = {
+char* gTextOptionMenu[] = {
     "RETURN TO GAME SELECT",
     "SOUND MODE",
     "COPY N64 CONTROLLER PAK",
@@ -1440,7 +1440,7 @@ void func_800925A0(void) {
 }
 
 void func_800925CC(void) {
-    struct_8018D9E0_entry* temp = find_8018D9E0_entry_dupe(0xAF);
+    MenuItem* temp = find_8018D9E0_entry_dupe(D_8018D9E0_TYPE_0AF);
     if (temp->state == 2) {
         temp->state = 3;
     }
@@ -1879,15 +1879,15 @@ void print_text1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     }
 
     switch (arg6) {
-        case 1:
+        case LEFT_TEXT:
             // ???
             do {
             } while (0);
-        case 3:
+        case RIGHT_TEXT:
             column -= stringWidth;
             break;
-        case 2:
-        case 4:
+        case CENTER_TEXT_MODE_1:
+        case CENTER_TEXT_MODE_2:
             column -= stringWidth / 2;
             break;
         default:
@@ -1923,20 +1923,20 @@ void print_text1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     gSPDisplayList(gDisplayListHead++, D_020077D8);
 }
 
-void func_800936B8(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
-    print_text1(column, row, text, tracking, scaleX, scaleY, 1);
+void print_text1_left(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
+    print_text1(column, row, text, tracking, scaleX, scaleY, LEFT_TEXT);
 }
 
-void draw_text(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
-    print_text1(column, row, text, tracking, scaleX, scaleY, 2);
+void print_text1_center_mode_1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
+    print_text1(column, row, text, tracking, scaleX, scaleY, CENTER_TEXT_MODE_1);
 }
 
-void func_80093720(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
-    print_text1(column, row, text, tracking, scaleX, scaleY, 3);
+void print_text1_right(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
+    print_text1(column, row, text, tracking, scaleX, scaleY, RIGHT_TEXT);
 }
 
-void func_80093754(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
-    print_text1(column, row, text, tracking, scaleX, scaleY, 4);
+void print_text1_center_mode_2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY) {
+    print_text1(column, row, text, tracking, scaleX, scaleY, CENTER_TEXT_MODE_2);
 }
 
 void print_text2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 scaleY, s32 arg6) {
@@ -4644,7 +4644,7 @@ void func_8009CE64(s32 arg0) {
     s32 thing;
     s32 var_a1;
     UNUSED s32 stackPadding0;
-    struct_8018D9E0_entry* temp_v0;
+    MenuItem* temp_v0;
 
     var_a1 = 0;
     if (gGamestate == 5) {
@@ -5335,7 +5335,7 @@ void func_8009E620(void) {
 // https://decomp.me/scratch/1BHpa
 // Stack differences, can't figure out how to fix them
 void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
-    struct_8018D9E0_entry* var_ra;
+    MenuItem* var_ra;
     s32 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
@@ -5766,11 +5766,11 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/add_8018D9E0_entry.s")
 #endif
 
-#ifdef NON_MATCHING
+#ifndef NON_MATCHING
 // https://decomp.me/scratch/MatRp
 // Biggest diff left is in the case 0x12 though 0x19 handling. Not really sure what's going on there
 // There's also a diff in the handling of D_800E77A0 in case 0x4. Not sure what's going on there either
-void func_8009F5E0(struct_8018D9E0_entry* arg0) {
+void func_8009F5E0(MenuItem* arg0) {
     s32 var_a1;
     s32 var_v1;
     UNUSED s32 stackPadding0;
@@ -5790,32 +5790,32 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
     f32 floatone = 1;
     UNUSED s32 stackPadding3;
     UNUSED s32 stackPadding4;
-    f32 var_f0;
+    f32 scaleX;
 
     if ((s8) arg0->visible != 0) {
         gDPPipeSync(gDisplayListHead++);
-        switch (arg0->type) { /* switch 6; irregular */
-            case 0xFA:        /* switch 6 */
+        switch (arg0->type) {         /* switch 6; irregular */
+            case D_8018D9E0_TYPE_0FA: /* switch 6 */
                 func_80094660(gGfxPool, arg0->unk1C);
                 break;
-            case 0xFB: /* switch 6 */
+            case D_8018D9E0_TYPE_0FB: /* switch 6 */
                 func_800947B4(gGfxPool, arg0->unk1C);
                 break;
-            case 0xD2: /* switch 6 */
+            case D_8018D9E0_TYPE_0D2: /* switch 6 */
                 gDisplayListHead = func_8009B9D0(gDisplayListHead, D_020014C8);
                 break;
-            case 0xD3: /* switch 6 */
+            case D_8018D9E0_TYPE_0D3: /* switch 6 */
                 gDisplayListHead = func_8009B9D0(gDisplayListHead, D_02001540);
                 break;
-            case 0xD4: /* switch 6 */
+            case D_8018D9E0_TYPE_0D4: /* switch 6 */
                 func_800A09E0(arg0);
                 func_800A0AD0(arg0);
                 func_800A0B80(arg0);
                 break;
-            case 0xD5: /* switch 6 */
-                       // Sets the text color of the text on the Controller Pak menu
-                       // Also sets the color of the shading at the top and bottom of the menu
-                       // Does not set color of the text in the table itself
+            case D_8018D9E0_TYPE_0D5: /* switch 6 */
+                                      // Sets the text color of the text on the Controller Pak menu
+                                      // Also sets the color of the shading at the top and bottom of the menu
+                                      // Does not set color of the text in the table itself
                 gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
                 gDisplayListHead = func_8009B9D0(gDisplayListHead, D_020015A4);
                 gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x32, 0x00, 0x00, 0xFF);
@@ -5825,35 +5825,35 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                 gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x32, 0x32, 0x00, 0xFF);
                 gDisplayListHead = func_8009B9D0(gDisplayListHead, D_02001658);
                 break;
-            case 0xD6: /* switch 6 */
+            case D_8018D9E0_TYPE_0D6: /* switch 6 */
                 func_8009A76C(arg0->D_8018DEE0_index, arg0->column, arg0->row, -1);
                 break;
-            case 0xD7: /* switch 6 */
+            case D_8018D9E0_TYPE_0D7: /* switch 6 */
                 func_800A0DFC();
                 break;
-            case 0xD8: /* switch 6 */
-            case 0xD9: /* switch 6 */
+            case D_8018D9E0_TYPE_0D8: /* switch 6 */
+            case D_8018D9E0_TYPE_0D9: /* switch 6 */
                 func_800A0EB8(arg0, arg0->type - 0xD8);
                 break;
-            case 0x1: /* switch 6 */
+            case D_8018D9E0_TYPE_001: /* switch 6 */
                 gDisplayListHead =
                     func_8009BA74(gDisplayListHead, D_800E7D4C[func_800B555C()], arg0->column, arg0->row);
                 break;
-            case 0x2: /* switch 6 */
+            case D_8018D9E0_TYPE_002: /* switch 6 */
                 func_8004C8D4((arg0->column + 0xA0), (arg0->row + 0x47));
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_020045E8, arg0->column, arg0->row);
                 break;
-            case 0x3: /* switch 6 */
+            case D_8018D9E0_TYPE_003: /* switch 6 */
                 if (((gGlobalTimer / 8) % 3) != 0) {
                     gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004610, arg0->column, arg0->row);
                 }
                 break;
-            case 0x5: /* switch 6 */
+            case D_8018D9E0_TYPE_005: /* switch 6 */
                 var_t0 = (s32) ((f32) (get_string_width(gCourseNamesDup[0]) + 5) * 0.9f) / 2;
                 gDisplayListHead = draw_box(gDisplayListHead, 0xA0 - var_t0, 0x0000007B, var_t0 + 0xA0, 0x000000A4, 0,
                                             0, 0, 0x00000096);
                 set_text_color(TEXT_GREEN);
-                draw_text(0x0000009B, 0x0000008C, gCourseNamesDup[0], 0, 0.9f, 0.9f);
+                print_text1_center_mode_1(0x0000009B, 0x0000008C, gCourseNamesDup[0], 0, 0.9f, 0.9f);
                 temp_v1 = func_800B4EB4(0, 7) & 0xFFFFF;
                 if (temp_v1 < 0x1EAA) {
                     set_text_color((s32) gGlobalTimer % 2);
@@ -5871,7 +5871,7 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                 get_time_record_centiseconds(temp_v1, sp80);
                 func_800939C8(0x000000B4, 0x000000A0, sp80, 0, 1.0f, 1.0f);
                 break;
-            case 0x4: /* switch 6 */
+            case D_8018D9E0_TYPE_004: /* switch 6 */
                 var_t0 = get_string_width(D_800E77A0[0]);
                 temp_v1 = get_string_width(D_800E77A0[1]);
                 if (var_t0 < temp_v1) {
@@ -5883,33 +5883,34 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                                             temp_t5 + 0xB6, 0, 0, 0, 0x00000096);
                 set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
                 for (temp_t9 = 0; temp_t9 < 2; temp_t9++) {
-                    draw_text(0xA0 * one - floatone * why, (s32) (0xB4 * one + ((f32) (temp_t9 * 0x12) * why)),
-                              D_800E77A0[temp_t9], 0, why, why);
+                    print_text1_center_mode_1(0xA0 * one - floatone * why,
+                                              (s32) (0xB4 * one + ((f32) (temp_t9 * 0x12) * why)), D_800E77A0[temp_t9],
+                                              0, why, why);
                 }
                 break;
-            case 0x23: /* switch 6 */
-            case 0x24: /* switch 6 */
-            case 0x25: /* switch 6 */
+            case D_8018D9E0_TYPE_023: /* switch 6 */
+            case D_8018D9E0_TYPE_024: /* switch 6 */
+            case D_8018D9E0_TYPE_025: /* switch 6 */
                 gDisplayListHead =
                     func_8009BC9C(gDisplayListHead, D_800E7D4C[func_800B555C()], arg0->column, arg0->row, 3, 0);
                 break;
-            case 0xA: /* switch 6 */
+            case D_8018D9E0_TYPE_00A: /* switch 6 */
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004660, arg0->column, arg0->row);
                 break;
-            case 0xB: /* switch 6 */
-            case 0xC: /* switch 6 */
-            case 0xD: /* switch 6 */
-            case 0xE: /* switch 6 */
+            case D_8018D9E0_TYPE_00B: /* switch 6 */
+            case D_8018D9E0_TYPE_00C: /* switch 6 */
+            case D_8018D9E0_TYPE_00D: /* switch 6 */
+            case D_8018D9E0_TYPE_00E: /* switch 6 */
                 var_a1 = arg0->type - 0xB;
                 func_800A8270(var_a1, arg0);
                 func_800A0FA4(arg0, var_a1);
                 break;
-            case 0xF: /* switch 6 */
+            case D_8018D9E0_TYPE_00F: /* switch 6 */
                 func_800A8564(arg0);
                 gDisplayListHead = func_8009BC9C(gDisplayListHead, D_0200487C, arg0->column, arg0->row, 2, arg0->unk1C);
                 break;
-            case 0x10: /* switch 6 */
-            case 0x11: /* switch 6 */
+            case D_8018D9E0_TYPE_010: /* switch 6 */
+            case D_8018D9E0_TYPE_011: /* switch 6 */
                 var_a1 = arg0->type - 0xF;
                 if (arg0->unk1C < 0x20) {
                     temp_t9 = (arg0->unk1C * 0x3A) / 64;
@@ -5927,29 +5928,29 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                 gDisplayListHead =
                     func_8009BC9C(gDisplayListHead, D_800E8254[var_v1], arg0->column, arg0->row, 2, arg0->unk1C);
                 break;
-            case 0x12: /* switch 6 */
-            case 0x13: /* switch 6 */
-            case 0x14: /* switch 6 */
-            case 0x15: /* switch 6 */
-            case 0x16: /* switch 6 */
-            case 0x17: /* switch 6 */
-            case 0x18: /* switch 6 */
-            case 0x19: /* switch 6 */
+            case D_8018D9E0_TYPE_012: /* switch 6 */
+            case D_8018D9E0_TYPE_013: /* switch 6 */
+            case D_8018D9E0_TYPE_014: /* switch 6 */
+            case D_8018D9E0_TYPE_015: /* switch 6 */
+            case D_8018D9E0_TYPE_016: /* switch 6 */
+            case D_8018D9E0_TYPE_017: /* switch 6 */
+            case D_8018D9E0_TYPE_018: /* switch 6 */
+            case D_8018D9E0_TYPE_019: /* switch 6 */
                 var_v1 = D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]];
                 var_a1 = gGameModePlayerSelection[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]];
-                switch (arg0->type) { /* switch 5 */
-                    case 0x12:        /* switch 5 */
-                    case 0x13:        /* switch 5 */
-                    case 0x14:        /* switch 5 */
-                    case 0x15:        /* switch 5 */
+                switch (arg0->type) {         /* switch 5 */
+                    case D_8018D9E0_TYPE_012: /* switch 5 */
+                    case D_8018D9E0_TYPE_013: /* switch 5 */
+                    case D_8018D9E0_TYPE_014: /* switch 5 */
+                    case D_8018D9E0_TYPE_015: /* switch 5 */
                         if ((var_a1 != 0) && (var_a1 != 2)) {
                             var_v1 = -1;
                         }
                         var_a1 = 18;
                         sp9C = segmented_to_virtual_dupe(D_800E824C[arg0->type]);
                         break;
-                    case 0x16: /* switch 5 */
-                    case 0x17: /* switch 5 */
+                    case D_8018D9E0_TYPE_016: /* switch 5 */
+                    case D_8018D9E0_TYPE_017: /* switch 5 */
                         if (var_a1 != 2) {
                             var_v1 = -1;
                         } else {
@@ -5957,8 +5958,8 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                             sp9C = segmented_to_virtual_dupe(D_800E824C[arg0->type]);
                         }
                         break;
-                    case 0x18: /* switch 5 */
-                    case 0x19: /* switch 5 */
+                    case D_8018D9E0_TYPE_018: /* switch 5 */
+                    case D_8018D9E0_TYPE_019: /* switch 5 */
                         if (var_a1 != 1) {
                             var_v1 = -1;
                         } else {
@@ -5985,16 +5986,16 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                     gDisplayListHead = func_8009BA74(gDisplayListHead, sp9C, arg0->column, arg0->row);
                 }
                 break;
-            case 0x1B: /* switch 6 */
+            case D_8018D9E0_TYPE_01B: /* switch 6 */
                 func_800A10CC(arg0);
                 break;
-            case 0x2A: /* switch 6 */
+            case D_8018D9E0_TYPE_02A: /* switch 6 */
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004B4C, arg0->column, arg0->row);
                 break;
-            case 0x34: /* switch 6 */
-            case 0x35: /* switch 6 */
-            case 0x36: /* switch 6 */
-            case 0x37: /* switch 6 */
+            case D_8018D9E0_TYPE_034: /* switch 6 */
+            case D_8018D9E0_TYPE_035: /* switch 6 */
+            case D_8018D9E0_TYPE_036: /* switch 6 */
+            case D_8018D9E0_TYPE_037: /* switch 6 */
                 temp_a0 = arg0->type - 0x34;
                 if (gCharacterGridSelections[temp_a0]) {
                     if (D_8018EDE8[temp_a0] == 0) {
@@ -6011,95 +6012,95 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                     func_800A11D0(arg0, temp_a0, temp_t2);
                 }
                 break;
-            case 0x33: /* switch 6 */
+            case D_8018D9E0_TYPE_033: /* switch 6 */
                 func_800A8564(arg0);
                 gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004B74, arg0->column, arg0->row, 2, arg0->unk1C);
                 break;
-            case 0x2B: /* switch 6 */
-            case 0x2C: /* switch 6 */
-            case 0x2D: /* switch 6 */
-            case 0x2E: /* switch 6 */
-            case 0x2F: /* switch 6 */
-            case 0x30: /* switch 6 */
-            case 0x31: /* switch 6 */
-            case 0x32: /* switch 6 */
+            case D_8018D9E0_TYPE_02B: /* switch 6 */
+            case D_8018D9E0_TYPE_02C: /* switch 6 */
+            case D_8018D9E0_TYPE_02D: /* switch 6 */
+            case D_8018D9E0_TYPE_02E: /* switch 6 */
+            case D_8018D9E0_TYPE_02F: /* switch 6 */
+            case D_8018D9E0_TYPE_030: /* switch 6 */
+            case D_8018D9E0_TYPE_031: /* switch 6 */
+            case D_8018D9E0_TYPE_032: /* switch 6 */
                 func_800A12BC(arg0, segmented_to_virtual_dupe(D_800E7D54[arg0->type - 0x2B]));
                 /* fallthrough */
-            case 0xA0: /* switch 6 */
-            case 0xA1: /* switch 6 */
+            case D_8018D9E0_TYPE_0A0: /* switch 6 */
+            case D_8018D9E0_TYPE_0A1: /* switch 6 */
                 func_8009A76C(arg0->D_8018DEE0_index, arg0->column, arg0->row, arg0->unk1C);
                 break;
-            case 0x58: /* switch 6 */
-            case 0x59: /* switch 6 */
-            case 0x5A: /* switch 6 */
-            case 0x5B: /* switch 6 */
-            case 0x5C: /* switch 6 */
+            case D_8018D9E0_TYPE_058: /* switch 6 */
+            case D_8018D9E0_TYPE_059: /* switch 6 */
+            case D_8018D9E0_TYPE_05A: /* switch 6 */
+            case D_8018D9E0_TYPE_05B: /* switch 6 */
+            case D_8018D9E0_TYPE_05C: /* switch 6 */
                 func_800A8A98(arg0);
                 gDisplayListHead =
                     func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82C4[arg0->type - 0x52]),
                                   arg0->column, arg0->row);
                 func_800A8CA4(arg0);
                 break;
-            case 0x52: /* switch 6 */
+            case D_8018D9E0_TYPE_052: /* switch 6 */
                 gDisplayListHead =
                     func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82C4[arg0->type - 0x52]),
                                   arg0->column, arg0->row);
                 break;
-            case 0x5F: /* switch 6 */
-            case 0x60: /* switch 6 */
-            case 0x61: /* switch 6 */
-            case 0x62: /* switch 6 */
+            case D_8018D9E0_TYPE_05F: /* switch 6 */
+            case D_8018D9E0_TYPE_060: /* switch 6 */
+            case D_8018D9E0_TYPE_061: /* switch 6 */
+            case D_8018D9E0_TYPE_062: /* switch 6 */
                 func_800A1500(arg0);
                 break;
-            case 0x53: /* switch 6 */
-            case 0x54: /* switch 6 */
-            case 0x55: /* switch 6 */
-            case 0x56: /* switch 6 */
+            case D_8018D9E0_TYPE_053: /* switch 6 */
+            case D_8018D9E0_TYPE_054: /* switch 6 */
+            case D_8018D9E0_TYPE_055: /* switch 6 */
+            case D_8018D9E0_TYPE_056: /* switch 6 */
                 var_a1 = arg0->type - 0x53;
                 func_800A890C(var_a1, arg0);
                 func_800A143C(arg0, var_a1);
                 break;
-            case 0x5D: /* switch 6 */
+            case D_8018D9E0_TYPE_05D: /* switch 6 */
                 func_800A8564(arg0);
                 gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004E80, arg0->column, arg0->row, 2, arg0->unk1C);
                 break;
-            case 0x65: /* switch 6 */
-            case 0x66: /* switch 6 */
-                if (arg0->type == 0x00000065) {
-                    var_f0 = 0.6f;
+            case D_8018D9E0_TYPE_065: /* switch 6 */
+            case D_8018D9E0_TYPE_066: /* switch 6 */
+                if (arg0->type == D_8018D9E0_TYPE_065) {
+                    scaleX = 0.6f;
                 } else {
-                    var_f0 = 0.8f;
+                    scaleX = 0.8f;
                 }
                 func_800A86E8(arg0);
                 set_text_color(TEXT_YELLOW);
-                print_text_mode_1(arg0->column + 8, arg0->row + 0x10, gBestTimeText[arg0->type - 0x65], 0, var_f0,
+                print_text_mode_1(arg0->column + 8, arg0->row + 0x10, gBestTimeText[arg0->type - 0x65], 0, scaleX,
                                   0.8f);
                 func_800A874C(arg0);
                 break;
-            case 0x6E: /* switch 6 */
+            case D_8018D9E0_TYPE_06E: /* switch 6 */
                 func_800A8E14(arg0);
                 break;
-            case 0x67: /* switch 6 */
+            case D_8018D9E0_TYPE_067: /* switch 6 */
                 func_800A8EC0(arg0);
                 break;
-            case 0x68: /* switch 6 */
+            case D_8018D9E0_TYPE_068: /* switch 6 */
                 gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
                                                  arg0->row + 0x11, 1, 1, 1, 0x000000FF);
                 gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E8294[gCCSelection]),
                                                  arg0->column, arg0->row);
                 break;
-            case 0x69: /* switch 6 */
+            case D_8018D9E0_TYPE_069: /* switch 6 */
                 func_800A8F48(arg0);
                 break;
-            case 0x78: /* switch 6 */
-            case 0x79: /* switch 6 */
-            case 0x7A: /* switch 6 */
-            case 0x7B: /* switch 6 */
+            case D_8018D9E0_TYPE_078: /* switch 6 */
+            case D_8018D9E0_TYPE_079: /* switch 6 */
+            case D_8018D9E0_TYPE_07A: /* switch 6 */
+            case D_8018D9E0_TYPE_07B: /* switch 6 */
                 var_a1 = arg0->type - 0x78;
                 func_800A90D4(var_a1, arg0);
                 func_800A143C(arg0, var_a1);
                 break;
-            case 0x8C: /* switch 6 */
+            case D_8018D9E0_TYPE_08C: /* switch 6 */
                 if ((gMainMenuSelectionDepth >= 5) && (var_a1 == (arg0->type - var_v1))) {
                     if (gMainMenuSelectionDepth >= 6) {
                         gDisplayListHead =
@@ -6115,63 +6116,63 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                 }
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004A34, arg0->column, arg0->row);
                 set_text_color(TEXT_YELLOW);
-                func_800936B8(0x00000125, 0x0000001C, D_800E77B4, 0, 0.55f, 0.55f);
+                print_text1_left(0x00000125, 0x0000001C, gTextMenuData, 0, 0.55f, 0.55f);
                 break;
-            case 0x8D: /* switch 6 */
+            case D_8018D9E0_TYPE_08D: /* switch 6 */
                 func_800A1780(arg0);
                 break;
-            case 0x7C: /* switch 6 */
-            case 0x7D: /* switch 6 */
-            case 0x7E: /* switch 6 */
-            case 0x7F: /* switch 6 */
-            case 0x80: /* switch 6 */
-            case 0x81: /* switch 6 */
-            case 0x82: /* switch 6 */
-            case 0x83: /* switch 6 */
-            case 0x84: /* switch 6 */
-            case 0x85: /* switch 6 */
-            case 0x86: /* switch 6 */
-            case 0x87: /* switch 6 */
-            case 0x88: /* switch 6 */
-            case 0x89: /* switch 6 */
-            case 0x8A: /* switch 6 */
-            case 0x8B: /* switch 6 */
+            case D_8018D9E0_TYPE_07C: /* switch 6 */
+            case D_8018D9E0_TYPE_07D: /* switch 6 */
+            case D_8018D9E0_TYPE_07E: /* switch 6 */
+            case D_8018D9E0_TYPE_07F: /* switch 6 */
+            case D_8018D9E0_TYPE_080: /* switch 6 */
+            case D_8018D9E0_TYPE_081: /* switch 6 */
+            case D_8018D9E0_TYPE_082: /* switch 6 */
+            case D_8018D9E0_TYPE_083: /* switch 6 */
+            case D_8018D9E0_TYPE_084: /* switch 6 */
+            case D_8018D9E0_TYPE_085: /* switch 6 */
+            case D_8018D9E0_TYPE_086: /* switch 6 */
+            case D_8018D9E0_TYPE_087: /* switch 6 */
+            case D_8018D9E0_TYPE_088: /* switch 6 */
+            case D_8018D9E0_TYPE_089: /* switch 6 */
+            case D_8018D9E0_TYPE_08A: /* switch 6 */
+            case D_8018D9E0_TYPE_08B: /* switch 6 */
                 func_800A15EC(arg0);
                 break;
-            case 0x96: /* switch 6 */
+            case D_8018D9E0_TYPE_096: /* switch 6 */
                 set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-                func_800936B8(arg0->column, arg0->row, gCupNames[D_800DC540], arg0->unk1C, arg0->unk24, 1.0f);
+                print_text1_left(arg0->column, arg0->row, gCupNames[D_800DC540], arg0->unk1C, arg0->unk24, 1.0f);
                 break;
-            case 0x97: /* switch 6 */
+            case D_8018D9E0_TYPE_097: /* switch 6 */
                 set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
                 print_text_mode_1(arg0->column, arg0->row, gCourseNames[gCurrentCourseId], arg0->unk1C, arg0->unk24,
                                   1.0f);
                 break;
-            case 0x98: /* switch 6 */
+            case D_8018D9E0_TYPE_098: /* switch 6 */
                 func_800A2D1C(arg0);
                 break;
-            case 0x5E: /* switch 6 */
+            case D_8018D9E0_TYPE_05E: /* switch 6 */
                 gDisplayListHead = func_80096CD8(gDisplayListHead, 0x00000019, 0x00000072, 0x0000007CU, 0x0000004AU);
                 break;
-            case 0xAA: /* switch 6 */
+            case D_8018D9E0_TYPE_0AA: /* switch 6 */
                 func_800A2EB8(arg0);
                 break;
-            case 0xAB: /* switch 6 */
+            case D_8018D9E0_TYPE_0AB: /* switch 6 */
                 func_800A34A8(arg0);
                 break;
-            case 0xAC: /* switch 6 */
+            case D_8018D9E0_TYPE_0AC: /* switch 6 */
                 func_800A6154(arg0);
                 break;
-            case 0xAF: /* switch 6 */
+            case D_8018D9E0_TYPE_0AF: /* switch 6 */
                 func_800A6034(arg0);
                 break;
-            case 0xB0: /* switch 6 */
+            case D_8018D9E0_TYPE_0B0: /* switch 6 */
                 func_800A638C(arg0);
                 break;
-            case 0xB1: /* switch 6 */
-            case 0xB2: /* switch 6 */
-            case 0xB3: /* switch 6 */
-            case 0xB4: /* switch 6 */
+            case D_8018D9E0_TYPE_0B1: /* switch 6 */
+            case D_8018D9E0_TYPE_0B2: /* switch 6 */
+            case D_8018D9E0_TYPE_0B3: /* switch 6 */
+            case D_8018D9E0_TYPE_0B4: /* switch 6 */
                 if (arg0->state != 0) {
                     var_v1 = arg0->type - 0xB1;
                     gDisplayListHead =
@@ -6182,61 +6183,61 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                     func_800A11D0(arg0, var_v1, 0x000000FF);
                 }
                 break;
-            case 0xB9: /* switch 6 */
-                func_800A3C84(arg0);
+            case D_8018D9E0_TYPE_0B9: /* switch 6 */
+                menu_item_end_time_trial_render(arg0);
                 break;
-            case 0xBA: /* switch 6 */
+            case D_8018D9E0_TYPE_0BA: /* switch 6 */
                 func_800A3E60(arg0);
                 break;
-            case 0xBC: /* switch 6 */
+            case D_8018D9E0_TYPE_0BC: /* switch 6 */
                 func_800A4A24(arg0);
                 break;
-            case 0xC7: /* switch 6 */
+            case D_8018D9E0_TYPE_0C7: /* switch 6 */
                 render_pause_menu(arg0);
                 break;
-            case 0xBD: /* switch 6 */
+            case D_8018D9E0_TYPE_0BD: /* switch 6 */
                 func_800A5738(arg0);
                 break;
-            case 0xE6: /* switch 6 */
+            case D_8018D9E0_TYPE_0E6: /* switch 6 */
                 func_800A1924(arg0);
                 break;
-            case 0xE7: /* switch 6 */
+            case D_8018D9E0_TYPE_0E7: /* switch 6 */
                 func_800A1A20(arg0);
                 break;
-            case 0xE8: /* switch 6 */
-                func_800A1BE0(arg0);
+            case D_8018D9E0_TYPE_0E8: /* switch 6 */
+                menu_item_course_data_render(arg0);
                 break;
-            case 0xE9: /* switch 6 */
+            case D_8018D9E0_TYPE_0E9: /* switch 6 */
                 func_800A1DE0(arg0);
                 break;
-            case 0xEA: /* switch 6 */
+            case D_8018D9E0_TYPE_0EA: /* switch 6 */
                 func_800A1F30(arg0);
                 break;
-            case 0xF0: /* switch 6 */
+            case D_8018D9E0_TYPE_0F0: /* switch 6 */
                 func_800A1FB0(arg0);
                 break;
-            case 0xF1: /* switch 6 */
+            case D_8018D9E0_TYPE_0F1: /* switch 6 */
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004638, arg0->column, arg0->row);
                 break;
-            case 0x10E: /* switch 6 */
+            case D_8018D9E0_TYPE_10E: /* switch 6 */
                 func_800A70E8(arg0);
                 break;
-            case 0x12B: /* switch 6 */
+            case D_8018D9E0_TYPE_12B: /* switch 6 */
                 func_800A7258(arg0);
                 break;
-            case 0x12C: /* switch 6 */
+            case D_8018D9E0_TYPE_12C: /* switch 6 */
                 func_800A72FC(arg0);
                 break;
-            case 0x12D: /* switch 6 */
+            case D_8018D9E0_TYPE_12D: /* switch 6 */
                 func_800A7448(arg0);
                 break;
-            case 0x12E: /* switch 6 */
+            case D_8018D9E0_TYPE_12E: /* switch 6 */
                 func_800A75A0(arg0);
                 break;
-            case 0x12F: /* switch 6 */
+            case D_8018D9E0_TYPE_12F: /* switch 6 */
                 func_800A761C(arg0);
                 break;
-            case 0x130: /* switch 6 */
+            case D_8018D9E0_TYPE_130: /* switch 6 */
                 if (arg0->state != 0) {
                     gDisplayListHead = func_8009BA74(
                         gDisplayListHead, segmented_to_virtual_dupe(D_800E7D54[D_800EFD64[D_802874D8.unk1E]]),
@@ -6244,70 +6245,70 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                     func_8009A7EC(arg0->D_8018DEE0_index, arg0->column, arg0->row, 0, arg0->unk1C);
                 }
                 break;
-            case 0x190: /* switch 6 */
-            case 0x191: /* switch 6 */
-            case 0x192: /* switch 6 */
-            case 0x193: /* switch 6 */
-            case 0x194: /* switch 6 */
-            case 0x195: /* switch 6 */
-            case 0x196: /* switch 6 */
-            case 0x197: /* switch 6 */
-            case 0x198: /* switch 6 */
-            case 0x199: /* switch 6 */
-            case 0x19A: /* switch 6 */
-            case 0x19B: /* switch 6 */
-            case 0x19C: /* switch 6 */
-            case 0x19D: /* switch 6 */
-            case 0x19E: /* switch 6 */
-            case 0x19F: /* switch 6 */
-            case 0x1A0: /* switch 6 */
-            case 0x1A1: /* switch 6 */
-            case 0x1A2: /* switch 6 */
-            case 0x1A3: /* switch 6 */
-            case 0x1A4: /* switch 6 */
-            case 0x1A5: /* switch 6 */
-            case 0x1A6: /* switch 6 */
-            case 0x1A7: /* switch 6 */
-            case 0x1A8: /* switch 6 */
-            case 0x1A9: /* switch 6 */
-            case 0x1AA: /* switch 6 */
-            case 0x1AB: /* switch 6 */
-            case 0x1AC: /* switch 6 */
-            case 0x1AD: /* switch 6 */
-            case 0x1AE: /* switch 6 */
-            case 0x1AF: /* switch 6 */
-            case 0x1B0: /* switch 6 */
-            case 0x1B1: /* switch 6 */
-            case 0x1B2: /* switch 6 */
-            case 0x1B3: /* switch 6 */
-            case 0x1B4: /* switch 6 */
-            case 0x1B5: /* switch 6 */
-            case 0x1B6: /* switch 6 */
-            case 0x1B7: /* switch 6 */
-            case 0x1B8: /* switch 6 */
-            case 0x1B9: /* switch 6 */
-            case 0x1BA: /* switch 6 */
-            case 0x1BB: /* switch 6 */
-            case 0x1BC: /* switch 6 */
-            case 0x1BD: /* switch 6 */
-            case 0x1BE: /* switch 6 */
-            case 0x1BF: /* switch 6 */
-            case 0x1C0: /* switch 6 */
-            case 0x1C1: /* switch 6 */
-            case 0x1C2: /* switch 6 */
-            case 0x1C3: /* switch 6 */
-            case 0x1C4: /* switch 6 */
-            case 0x1C5: /* switch 6 */
-            case 0x1C6: /* switch 6 */
-            case 0x1C7: /* switch 6 */
-            case 0x1C8: /* switch 6 */
-            case 0x1C9: /* switch 6 */
-            case 0x1CA: /* switch 6 */
-            case 0x1CB: /* switch 6 */
-            case 0x1CC: /* switch 6 */
-            case 0x1CD: /* switch 6 */
-            case 0x1CE: /* switch 6 */
-                func_800A7790(arg0);
+            case D_8018D9E0_TYPE_190: /* switch 6 */
+            case D_8018D9E0_TYPE_191: /* switch 6 */
+            case D_8018D9E0_TYPE_192: /* switch 6 */
+            case D_8018D9E0_TYPE_193: /* switch 6 */
+            case D_8018D9E0_TYPE_194: /* switch 6 */
+            case D_8018D9E0_TYPE_195: /* switch 6 */
+            case D_8018D9E0_TYPE_196: /* switch 6 */
+            case D_8018D9E0_TYPE_197: /* switch 6 */
+            case D_8018D9E0_TYPE_198: /* switch 6 */
+            case D_8018D9E0_TYPE_199: /* switch 6 */
+            case D_8018D9E0_TYPE_19A: /* switch 6 */
+            case D_8018D9E0_TYPE_19B: /* switch 6 */
+            case D_8018D9E0_TYPE_19C: /* switch 6 */
+            case D_8018D9E0_TYPE_19D: /* switch 6 */
+            case D_8018D9E0_TYPE_19E: /* switch 6 */
+            case D_8018D9E0_TYPE_19F: /* switch 6 */
+            case D_8018D9E0_TYPE_1A0: /* switch 6 */
+            case D_8018D9E0_TYPE_1A1: /* switch 6 */
+            case D_8018D9E0_TYPE_1A2: /* switch 6 */
+            case D_8018D9E0_TYPE_1A3: /* switch 6 */
+            case D_8018D9E0_TYPE_1A4: /* switch 6 */
+            case D_8018D9E0_TYPE_1A5: /* switch 6 */
+            case D_8018D9E0_TYPE_1A6: /* switch 6 */
+            case D_8018D9E0_TYPE_1A7: /* switch 6 */
+            case D_8018D9E0_TYPE_1A8: /* switch 6 */
+            case D_8018D9E0_TYPE_1A9: /* switch 6 */
+            case D_8018D9E0_TYPE_1AA: /* switch 6 */
+            case D_8018D9E0_TYPE_1AB: /* switch 6 */
+            case D_8018D9E0_TYPE_1AC: /* switch 6 */
+            case D_8018D9E0_TYPE_1AD: /* switch 6 */
+            case D_8018D9E0_TYPE_1AE: /* switch 6 */
+            case D_8018D9E0_TYPE_1AF: /* switch 6 */
+            case D_8018D9E0_TYPE_1B0: /* switch 6 */
+            case D_8018D9E0_TYPE_1B1: /* switch 6 */
+            case D_8018D9E0_TYPE_1B2: /* switch 6 */
+            case D_8018D9E0_TYPE_1B3: /* switch 6 */
+            case D_8018D9E0_TYPE_1B4: /* switch 6 */
+            case D_8018D9E0_TYPE_1B5: /* switch 6 */
+            case D_8018D9E0_TYPE_1B6: /* switch 6 */
+            case D_8018D9E0_TYPE_1B7: /* switch 6 */
+            case D_8018D9E0_TYPE_1B8: /* switch 6 */
+            case D_8018D9E0_TYPE_1B9: /* switch 6 */
+            case D_8018D9E0_TYPE_1BA: /* switch 6 */
+            case D_8018D9E0_TYPE_1BB: /* switch 6 */
+            case D_8018D9E0_TYPE_1BC: /* switch 6 */
+            case D_8018D9E0_TYPE_1BD: /* switch 6 */
+            case D_8018D9E0_TYPE_1BE: /* switch 6 */
+            case D_8018D9E0_TYPE_1BF: /* switch 6 */
+            case D_8018D9E0_TYPE_1C0: /* switch 6 */
+            case D_8018D9E0_TYPE_1C1: /* switch 6 */
+            case D_8018D9E0_TYPE_1C2: /* switch 6 */
+            case D_8018D9E0_TYPE_1C3: /* switch 6 */
+            case D_8018D9E0_TYPE_1C4: /* switch 6 */
+            case D_8018D9E0_TYPE_1C5: /* switch 6 */
+            case D_8018D9E0_TYPE_1C6: /* switch 6 */
+            case D_8018D9E0_TYPE_1C7: /* switch 6 */
+            case D_8018D9E0_TYPE_1C8: /* switch 6 */
+            case D_8018D9E0_TYPE_1C9: /* switch 6 */
+            case D_8018D9E0_TYPE_1CA: /* switch 6 */
+            case D_8018D9E0_TYPE_1CB: /* switch 6 */
+            case D_8018D9E0_TYPE_1CC: /* switch 6 */
+            case D_8018D9E0_TYPE_1CD: /* switch 6 */
+            case D_8018D9E0_TYPE_1CE: /* switch 6 */
+                menu_item_credit_render(arg0);
                 break;
         }
     }
@@ -6349,7 +6350,7 @@ s32 func_800A095C(char* someString, s32 len, s32 column, s32 row) {
 #ifdef NON_MATCHING
 // Non-matching due to the constants 9 and 0xA being saved to the wrong registers
 // Same functionality, but doesn't match byte for byte :/
-void func_800A09E0(struct_8018D9E0_entry* arg0) {
+void func_800A09E0(MenuItem* arg0) {
     s32 table_row, x = 0x20, y;
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH - 1, 194);
     for (table_row = 0; table_row < 9; table_row++) {
@@ -6363,10 +6364,10 @@ void func_800A09E0(struct_8018D9E0_entry* arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A09E0.s")
 #endif
 
-void func_800A0AD0(UNUSED struct_8018D9E0_entry* arg0) {
-    struct_8018D9E0_entry* temp_t1;
-    // Find struct_8018D9E0_entry with a type/id of 0xDA
-    temp_t1 = find_8018D9E0_entry_dupe(0xDA);
+void func_800A0AD0(UNUSED MenuItem* arg0) {
+    MenuItem* temp_t1;
+    // Find MenuItem with a type/id of 0xDA
+    temp_t1 = find_8018D9E0_entry_dupe(D_8018D9E0_TYPE_0DA);
     if ((gControllerPakMenuSelection != CONTROLLER_PAK_MENU_SELECT_RECORD) &&
         (gControllerPakMenuSelection != CONTROLLER_PAK_MENU_END)) {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, temp_t1->unk20, 0x00, 0xFF);
@@ -6375,7 +6376,7 @@ void func_800A0AD0(UNUSED struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A0B80(struct_8018D9E0_entry* arg0) {
+void func_800A0B80(MenuItem* arg0) {
     UNUSED s32 temp_a2;
     s32 temp_s1;
     s32 temp_s2;
@@ -6436,13 +6437,13 @@ void func_800A0DFC(void) {
     } while (var_s0 != 0);
 }
 
-void func_800A0EB8(UNUSED struct_8018D9E0_entry* arg0, s32 arg1) {
+void func_800A0EB8(UNUSED MenuItem* arg0, s32 arg1) {
     s32 var_t1;
     s32 thing;
     Unk_D_800E70A0* temp_v0;
-    struct_8018D9E0_entry* temp_t3;
+    MenuItem* temp_t3;
 
-    temp_t3 = find_8018D9E0_entry_dupe(0x000000DA);
+    temp_t3 = find_8018D9E0_entry_dupe(D_8018D9E0_TYPE_0DA);
     if (arg1 == 0) {
         if (gControllerPakMenuSelection == CONTROLLER_PAK_MENU_END) {
             var_t1 = 1;
@@ -6462,7 +6463,7 @@ void func_800A0EB8(UNUSED struct_8018D9E0_entry* arg0, s32 arg1) {
     gDisplayListHead = func_8009BA74(gDisplayListHead, D_0200184C, (s32) temp_v0->column, (s32) temp_v0->row);
 }
 
-void func_800A0FA4(struct_8018D9E0_entry* arg0, s32 arg1) {
+void func_800A0FA4(MenuItem* arg0, s32 arg1) {
     switch (arg0->state) {
         case 0:
         case 2:
@@ -6482,7 +6483,7 @@ void func_800A0FA4(struct_8018D9E0_entry* arg0, s32 arg1) {
     }
 }
 
-void func_800A10CC(struct_8018D9E0_entry* arg0) {
+void func_800A10CC(MenuItem* arg0) {
     s32 var_s1;
     s32 index;
 
@@ -6505,7 +6506,7 @@ void func_800A10CC(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A11D0(struct_8018D9E0_entry* arg0, s32 arg1, s32 arg2) {
+void func_800A11D0(MenuItem* arg0, s32 arg1, s32 arg2) {
     RGBA16* temp_v1;
 
     temp_v1 = &D_800E74A8[arg1];
@@ -6515,7 +6516,7 @@ void func_800A11D0(struct_8018D9E0_entry* arg0, s32 arg1, s32 arg2) {
         func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82B4[arg1]), arg0->column, arg0->row);
 }
 
-void func_800A12BC(struct_8018D9E0_entry* arg0, MkTexture* arg1) {
+void func_800A12BC(MenuItem* arg0, MkTexture* arg1) {
     switch (arg0->state) {
         case 0:
         case 2:
@@ -6529,7 +6530,7 @@ void func_800A12BC(struct_8018D9E0_entry* arg0, MkTexture* arg1) {
     }
 }
 
-void func_800A1350(struct_8018D9E0_entry* arg0) {
+void func_800A1350(MenuItem* arg0) {
     s32 thing;
     if (func_800AAFCC(arg0->type - 0x2B) < 0) {
         switch (arg0->state) {
@@ -6549,7 +6550,7 @@ void func_800A1350(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A143C(struct_8018D9E0_entry* arg0, s32 arg1) {
+void func_800A143C(MenuItem* arg0, s32 arg1) {
     switch (arg0->state) {
         case 0:
         case 2:
@@ -6565,13 +6566,13 @@ void func_800A143C(struct_8018D9E0_entry* arg0, s32 arg1) {
     }
 }
 
-void func_800A1500(struct_8018D9E0_entry* arg0) {
-    struct_8018D9E0_entry* temp_v0;
+void func_800A1500(MenuItem* arg0) {
+    MenuItem* temp_v0;
     Unk_D_800E70A0* temp_v0_2;
     s32 var_a1;
 
     var_a1 = 0;
-    temp_v0 = find_8018D9E0_entry_dupe(0x00000064);
+    temp_v0 = find_8018D9E0_entry_dupe(D_8018D9E0_TYPE_064);
     switch (temp_v0->state) { /* irregular */
         case 0:
         case 1:
@@ -6596,7 +6597,7 @@ void func_800A1500(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A15EC(struct_8018D9E0_entry* arg0) {
+void func_800A15EC(MenuItem* arg0) {
     s16 courseId = gCupCourseOrder[(arg0->type - 0x7C) / 4][(arg0->type - 0x7C) % 4];
     gDisplayListHead =
         func_8009C204(gDisplayListHead, segmented_to_virtual_dupe(D_800E7D74[courseId]), arg0->column, arg0->row, 2);
@@ -6613,7 +6614,7 @@ void func_800A15EC(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A1780(struct_8018D9E0_entry* arg0) {
+void func_800A1780(MenuItem* arg0) {
     RGBA16* temp_a1;
     RGBA16* temp_v1;
     s32 temp_a2;
@@ -6633,7 +6634,7 @@ void func_800A1780(struct_8018D9E0_entry* arg0) {
     gDisplayListHead = func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_02001FA4), arg0->column, arg0->row);
 }
 
-void func_800A1924(struct_8018D9E0_entry* arg0) {
+void func_800A1924(MenuItem* arg0) {
     func_8009A76C(arg0->D_8018DEE0_index, 0x17, 0x84, -1);
     if (func_800B639C(gTimeTrialDataCourseIndex) >= TIME_TRIAL_DATA_LUIGI_RACEWAY) {
         gDisplayListHead = draw_flash_select_case_slow(gDisplayListHead, 0x57, 0x84, 0x96, 0x95);
@@ -6645,7 +6646,7 @@ void func_800A1924(struct_8018D9E0_entry* arg0) {
     } while (0);
 }
 
-void func_800A1A20(struct_8018D9E0_entry* arg0) {
+void func_800A1A20(MenuItem* arg0) {
     s16 courseId;
     s32 recordType;
     s32 rowOffset;
@@ -6653,30 +6654,30 @@ void func_800A1A20(struct_8018D9E0_entry* arg0) {
     courseId = gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4];
     arg0->column = 0x14;
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(0x69, arg0->row + 0x19, gCourseNamesDup[courseId], 0, 0.75f, 0.75f);
+    print_text1_center_mode_1(0x69, arg0->row + 0x19, gCourseNamesDup[courseId], 0, 0.75f, 0.75f);
     set_text_color(TEXT_RED);
     print_text_mode_1(0x2D, arg0->row + 0x28, (char*) &D_800E77D8, 0, 0.75f, 0.75f);
-    func_800936B8(0xA5, arg0->row + 0x28, sCourseLengths[courseId], 1, 0.75f, 0.75f);
+    print_text1_left(0xA5, arg0->row + 0x28, sCourseLengths[courseId], 1, 0.75f, 0.75f);
     set_text_color(TEXT_YELLOW);
     print_text_mode_1(0xA0, arg0->row + 0x86, gBestTimeText[0], 0, 0.75f, 0.75f);
     // Print the 3 Lap Time Trial records
     for (recordType = TIME_TRIAL_3LAP_RECORD_1, rowOffset = 0; recordType < TIME_TRIAL_1LAP_RECORD;
          recordType++, rowOffset += 0xD) {
         set_text_color(TEXT_RED);
-        func_800A474C(recordType, 0x96, arg0->row + rowOffset + 0x92);
+        render_player_time(recordType, 0x96, arg0->row + rowOffset + 0x92);
     }
     set_text_color(TEXT_YELLOW);
     print_text_mode_1(0xA0, arg0->row + 0xD5, gBestTimeText[1], 0, 0.75f, 0.75f);
-    func_800A474C(TIME_TRIAL_1LAP_RECORD, 0x96, arg0->row + 0xE1);
+    render_player_time(TIME_TRIAL_1LAP_RECORD, 0x96, arg0->row + 0xE1);
 }
 
-void func_800A1BE0(struct_8018D9E0_entry* arg0) {
+void menu_item_course_data_render(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
     UNUSED char* wut;
     Unk_D_800E70A0 sp78;
-    s32 var_s0;
+    s32 i;
     s32 var_s1;
     s32 var_s2;
     UNUSED s32 thing;
@@ -6684,14 +6685,14 @@ void func_800A1BE0(struct_8018D9E0_entry* arg0) {
 
     temp_s6 = &gSaveData.allCourseTimeTrialRecords.cupRecords[gTimeTrialDataCourseIndex / 4]
                    .courseRecords[gTimeTrialDataCourseIndex % 4];
-    for (var_s0 = 0; var_s0 < 3; var_s0++) {
-        wut = D_800E7834[var_s0];
+    for (i = 0; i < 3; i++) {
+        wut = gTextMenuDataCourse[i];
         var_s1 = 0;
-        if (var_s0 == gCourseRecordsMenuSelection) {
-            var_s2 = 5;
+        if (i == gCourseRecordsMenuSelection) {
+            var_s2 = TEXT_BLUE_GREEN_RED_CYCLE_2;
         } else {
-            var_s2 = 1;
-            switch (var_s0) { /* irregular */
+            var_s2 = TEXT_GREEN;
+            switch (i) { /* irregular */
                 case 1:
                     if (temp_s6->unknownBytes[0] == 0) {
                         var_s1 = 1;
@@ -6707,10 +6708,10 @@ void func_800A1BE0(struct_8018D9E0_entry* arg0) {
         if (var_s1 != 0) {
             set_text_color(TEXT_BLUE);
             gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, 0x96);
-            print_text_mode_2(0x00000025, 0x3F + (0xD * var_s0), D_800E7834[var_s0], 0, 0.6f, 0.6f);
+            print_text_mode_2(0x00000025, 0x3F + (0xD * i), gTextMenuDataCourse[i], 0, 0.6f, 0.6f);
         } else {
             set_text_color(var_s2);
-            print_text_mode_1(0x00000025, 0x3F + (0xD * var_s0), D_800E7834[var_s0], 0, 0.6f, 0.6f);
+            print_text_mode_1(0x00000025, 0x3F + (0xD * i), gTextMenuDataCourse[i], 0, 0.6f, 0.6f);
         }
     }
     sp78.column = 0x001F;
@@ -6718,7 +6719,7 @@ void func_800A1BE0(struct_8018D9E0_entry* arg0) {
     func_800A66A8(arg0, (Unk_D_800E70A0*) &sp78);
 }
 
-void func_800A1DE0(struct_8018D9E0_entry* arg0) {
+void func_800A1DE0(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
@@ -6754,7 +6755,7 @@ void func_800A1DE0(struct_8018D9E0_entry* arg0) {
     func_800A66A8(arg0, &sp58);
 }
 
-void func_800A1F30(UNUSED struct_8018D9E0_entry* unused) {
+void func_800A1F30(UNUSED MenuItem* unused) {
     s32 row;
     s32 text;
 
@@ -6766,7 +6767,7 @@ void func_800A1F30(UNUSED struct_8018D9E0_entry* unused) {
 
 #ifdef NON_MATCHING
 // Register allocation stuff, minor stack diffs
-void func_800A1FB0(struct_8018D9E0_entry* arg0) {
+void func_800A1FB0(MenuItem* arg0) {
     Unk_D_800E70A0 spE0;
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
@@ -6796,14 +6797,15 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
         case 0x18:        /* switch 1 */
             for (stackPadding0 = 0; stackPadding0 < 4; stackPadding0++) {
                 set_text_color_rainbow_if_selected(D_8018EDEC - 0x15, stackPadding0, 3);
-                print_text_mode_1(0x00000032, 0x55 + (0x23 * stackPadding0), D_800E7868[stackPadding0], 0, 0.9f, 1.0f);
+                print_text_mode_1(0x00000032, 0x55 + (0x23 * stackPadding0), gTextOptionMenu[stackPadding0], 0, 0.9f,
+                                  1.0f);
                 if (stackPadding0 == (D_8018EDEC - 0x15)) {
                     spE0.column = 0x0032;
                     spE0.row = 0x55 + (0x23 * stackPadding0);
                 }
             }
             set_text_color(TEXT_GREEN);
-            draw_text(0x000000E6, 0x00000078, gSoundModeNames[gSoundMode], 0, 1.0f, 1.0f);
+            print_text1_center_mode_1(0x000000E6, 0x00000078, gSoundModeNames[gSoundMode], 0, 1.0f, 1.0f);
             break;
         case 0x1E: /* switch 1 */
         case 0x1F: /* switch 1 */
@@ -6884,10 +6886,10 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
                     break;
             }
             set_text_color(var_s4 + 1);
-            draw_text(0x000000A0, 0x00000055, D_800E7920[var_s4], 0, 0.6f, 0.6f);
+            print_text1_center_mode_1(0x000000A0, 0x00000055, D_800E7920[var_s4], 0, 0.6f, 0.6f);
             for (var_s1 = 0; var_s1 < 2; var_s1++) {
                 set_text_color(TEXT_YELLOW);
-                draw_text(0x5C + (0x82 * var_s1), 0x0000007D, D_800E7918[var_s1], 0, 0.75f, 0.75f);
+                print_text1_center_mode_1(0x5C + (0x82 * var_s1), 0x0000007D, D_800E7918[var_s1], 0, 0.75f, 0.75f);
                 for (var_s2 = 0; var_s2 < 2; var_s2++) {
                     if (var_s1 != var_s4) {
                         text_rainbow_effect(D_8018EDEC - var_s5, var_s2, TEXT_GREEN);
@@ -6922,11 +6924,11 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
         case 0x39: /* switch 1 */
             set_text_color(TEXT_RED);
             for (var_s1 = 0; var_s1 < 2; var_s1++) {
-                draw_text(0x000000A0, 0x4D + (0x14 * var_s1), D_800E7928[var_s1], 0, 0.8f, 0.8f);
+                print_text1_center_mode_1(0x000000A0, 0x4D + (0x14 * var_s1), D_800E7928[var_s1], 0, 0.8f, 0.8f);
             }
             for (var_s1 = 0; var_s1 < 2; var_s1++) {
                 set_text_color(TEXT_YELLOW);
-                draw_text(0x5C + (0x82 * var_s1), 0x0000007D, D_800E7918[var_s1], 0, 0.75f, 0.75f);
+                print_text1_center_mode_1(0x5C + (0x82 * var_s1), 0x0000007D, D_800E7918[var_s1], 0, 0.75f, 0.75f);
                 for (var_s2 = 0; var_s2 != 2; var_s2++) {
                     if (var_s1 == 0) {
                         if (var_s2 == arg0->unk1C) {
@@ -6971,10 +6973,10 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
         case 0x3C: /* switch 1 */
             var_s5 = (D_8018EDEC - 0x3A) / 2;
             set_text_color(TEXT_RED);
-            draw_text(0x000000A0, 0x00000055, D_800E7938[var_s5], 0, 1.0f, 1.0f);
+            print_text1_center_mode_1(0x000000A0, 0x00000055, D_800E7938[var_s5], 0, 1.0f, 1.0f);
             for (var_s1 = 0; var_s1 < 2; var_s1++) {
                 set_text_color(TEXT_YELLOW);
-                draw_text(0x5C + (0x82 * var_s1), 0x0000007D, D_800E7918[var_s1], 0, 0.75f, 0.75f);
+                print_text1_center_mode_1(0x5C + (0x82 * var_s1), 0x0000007D, D_800E7918[var_s1], 0, 0.75f, 0.75f);
                 for (var_s2 = 0; var_s2 < 2; var_s2++) {
                     if (var_s1 == 0) {
                         if (var_s2 == arg0->unk1C) {
@@ -7031,7 +7033,7 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1FB0.s")
 #endif
 
-void func_800A2D1C(struct_8018D9E0_entry* arg0) {
+void func_800A2D1C(MenuItem* arg0) {
     switch (D_80164A28) {
         case 1:
             gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x13F, 0x28);
@@ -7063,7 +7065,7 @@ void func_800A2D1C(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A2EB8(struct_8018D9E0_entry* arg0) {
+void func_800A2EB8(MenuItem* arg0) {
     s8 sp70[8];
     UNUSED s32 stackPadding0;
     char sp68[3];
@@ -7100,10 +7102,11 @@ void func_800A2EB8(struct_8018D9E0_entry* arg0) {
     }
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
     temp_s0 = (s32) (((f32) (get_string_width(gCupNames[gCupSelection]) + 8) * 0.6f) / 2);
-    draw_text((-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xF5,
-              arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
-    draw_text((temp_s0 - arg0->column) + 0xF5, arg0->row + 0xE1,
-              D_800E76CC[D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
+    print_text1_center_mode_1(
+        (-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xF5,
+        arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
+    print_text1_center_mode_1((temp_s0 - arg0->column) + 0xF5, arg0->row + 0xE1,
+                              D_800E76CC[D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
 }
 
 void func_800A32B4(s32 arg0, s32 arg1, s32 characterId, s32 rank) {
@@ -7131,7 +7134,7 @@ void func_800A32B4(s32 arg0, s32 arg1, s32 characterId, s32 rank) {
     func_800939C8(arg0 + 0x6A, arg1, sp3C, 0, 0.7f, 0.7f);
 }
 
-void func_800A34A8(struct_8018D9E0_entry* arg0) {
+void func_800A34A8(MenuItem* arg0) {
     s8 sp80[8];
     UNUSED s32 stackPadding0;
     char sp78[3];
@@ -7216,10 +7219,12 @@ void func_800A34A8(struct_8018D9E0_entry* arg0) {
         }
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
         temp_s0_3 = ((get_string_width(gCupNames[gCupSelection]) + 8) * 0.6f) / 2;
-        draw_text((-(s32) (((get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xE6,
-                  arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
-        draw_text((temp_s0_3 - arg0->column) + 0xE6, arg0->row + 0xE1,
-                  D_800E76CC[D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
+        print_text1_center_mode_1(
+            (-(s32) (((get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xE6,
+            arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
+        print_text1_center_mode_1((temp_s0_3 - arg0->column) + 0xE6, arg0->row + 0xE1,
+                                  D_800E76CC[D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]]], 0, 0.6f,
+                                  0.6f);
     }
 }
 
@@ -7255,7 +7260,7 @@ void func_800A3A10(s8* arg0) {
     }
 }
 
-void func_800A3ADC(struct_8018D9E0_entry* arg0, s32 arg1, s32 arg2, s32 characterId, s32 arg4, s8* arg5) {
+void func_800A3ADC(MenuItem* arg0, s32 arg1, s32 arg2, s32 characterId, s32 arg4, s8* arg5) {
     UNUSED s32 stackPadding0;
     s32 wut;
     char sp34[4];
@@ -7285,30 +7290,39 @@ void func_800A3ADC(struct_8018D9E0_entry* arg0, s32 arg1, s32 arg2, s32 characte
     }
 }
 
-void func_800A3C84(struct_8018D9E0_entry* arg0) {
+void menu_item_end_time_trial_render(MenuItem* arg0) {
     s32 recordType;
     s32 rowOffset;
 
+    // name of the course
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(arg0->column + 0x43, arg0->row + 0x19, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]],
-              0, 0.6f, 0.6f);
+    print_text1_center_mode_1(arg0->column + 0x43, arg0->row + 0x19,
+                              gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 0.6f, 0.6f);
+
+    // lap time text
     set_text_color(TEXT_YELLOW);
-    draw_text(arg0->column + 0x46, arg0->row + 0x28, gLapTimeText, 0, 0.75f, 0.75f);
+    print_text1_center_mode_1(arg0->column + 0x46, arg0->row + 0x28, gLapTimeText, 0, 0.75f, 0.75f);
+
+    // lap time
     for (recordType = 0, rowOffset = 0; recordType < TIME_TRIAL_3LAP_RECORD_5; recordType += 1, rowOffset += 0xF) {
-        func_800A4550(recordType, arg0->column + 0x17, arg0->row + rowOffset + 0x37);
+        render_lap_time(recordType, arg0->column + 0x17, arg0->row + rowOffset + 0x37);
     }
+
+    // best record text
     set_text_color(TEXT_YELLOW);
     print_text_mode_1(0xB4 - arg0->column, arg0->row + 0x86, gBestTimeText[0], 0, 0.75f, 0.75f);
+
+    // best record
     for (recordType = 0, rowOffset = 0; recordType < TIME_TRIAL_1LAP_RECORD; recordType += 1, rowOffset += 0xD) {
         set_text_color(TEXT_RED);
-        func_800A474C(recordType, 0xAA - arg0->column, arg0->row + rowOffset + 0x92);
+        render_player_time(recordType, 0xAA - arg0->column, arg0->row + rowOffset + 0x92);
     }
     set_text_color(TEXT_YELLOW);
     print_text_mode_1(0xB4 - arg0->column, arg0->row + 0xD5, gBestTimeText[1], 0, 0.75f, 0.75f);
-    func_800A474C(TIME_TRIAL_1LAP_RECORD, 0xAA - arg0->column, arg0->row + 0xE1);
+    render_player_time(TIME_TRIAL_1LAP_RECORD, 0xAA - arg0->column, arg0->row + 0xE1);
 }
 
-void func_800A3E60(struct_8018D9E0_entry* arg0) {
+void func_800A3E60(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
     Unk_D_800E70A0 sp84;
     UNUSED s32 stackPadding1;
@@ -7330,12 +7344,12 @@ void func_800A3E60(struct_8018D9E0_entry* arg0) {
     }
 
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(arg0->column + 0x55, 0x19 - arg0->row, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]],
-              0, 0.6f, 0.6f);
+    print_text1_center_mode_1(arg0->column + 0x55, 0x19 - arg0->row,
+                              gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 0.6f, 0.6f);
     set_text_color(TEXT_YELLOW);
-    draw_text(arg0->column + 0x55, 0x28 - arg0->row, gLapTimeText, 0, 0.75f, 0.75f);
+    print_text1_center_mode_1(arg0->column + 0x55, 0x28 - arg0->row, gLapTimeText, 0, 0.75f, 0.75f);
     for (var_s1 = 0; var_s1 < 4; var_s1++) {
-        func_800A4550(var_s1, arg0->column + 0x26, ((0xF * var_s1) - arg0->row) + 0x37);
+        render_lap_time(var_s1, arg0->column + 0x26, ((0xF * var_s1) - arg0->row) + 0x37);
     }
     switch (arg0->state) { /* switch 1 */
         case 1:            /* switch 1 */
@@ -7463,25 +7477,25 @@ void func_800A3E60(struct_8018D9E0_entry* arg0) {
     func_800A66A8(arg0, &sp84);
 }
 
-void func_800A4550(s32 lapNumber, s32 column, s32 row) {
+void render_lap_time(s32 lapNumber, s32 column, s32 row) {
     UNUSED s32 stackPadding0;
-    s32 sp40;
+    s32 time;
     UNUSED s32 stackPadding1;
     s32 textColor;
     char sp34[3];
-    struct_8018D9E0_entry* temp_v0_2;
+    MenuItem* temp_v0_2;
 
     if (lapNumber < 3) {
-        sp40 = playerHUD[PLAYER_ONE].lapDurations[lapNumber];
+        time = playerHUD[PLAYER_ONE].lapDurations[lapNumber];
         set_text_color(TEXT_RED);
     } else {
-        sp40 = playerHUD[PLAYER_ONE].someTimer;
+        time = playerHUD[PLAYER_ONE].someTimer;
         set_text_color(TEXT_GREEN);
     }
-    func_800936B8(column + 0x21, row, gPrefixTimeText[lapNumber], 0, 0.7f, 0.7f);
-    temp_v0_2 = find_8018D9E0_entry_dupe(0x000000BB);
+    print_text1_left(column + 0x21, row, gPrefixTimeText[lapNumber], 0, 0.7f, 0.7f);
+    temp_v0_2 = find_8018D9E0_entry_dupe(D_8018D9E0_TYPE_0BB);
     if (lapNumber < 3) {
-        if (temp_v0_2->unk20 & (1 << lapNumber)) {
+        if (temp_v0_2->unk20 & (1 << lapNumber)) { // best lap
             textColor = (s32) gGlobalTimer % 3;
         } else {
             textColor = TEXT_YELLOW;
@@ -7494,13 +7508,13 @@ void func_800A4550(s32 lapNumber, s32 column, s32 row) {
         }
     }
     set_text_color(textColor);
-    get_time_record_minutes(sp40, sp34);
+    get_time_record_minutes(time, sp34);
     func_800939C8(column + 0x2C, row, sp34, 0, 0.7f, 0.7f);
     print_text_mode_1(column + 0x37, row, "'", 0, 0.7f, 0.7f);
-    get_time_record_seconds(sp40, sp34);
+    get_time_record_seconds(time, sp34);
     func_800939C8(column + 0x40, row, sp34, 0, 0.7f, 0.7f);
     print_text_mode_1(column + 0x4B, row, "\"", 0, 0.7f, 0.7f);
-    get_time_record_centiseconds(sp40, sp34);
+    get_time_record_centiseconds(time, sp34);
     func_800939C8(column + 0x55, row, sp34, 0, 0.7f, 0.7f);
 }
 
@@ -7510,14 +7524,14 @@ void func_800A4550(s32 lapNumber, s32 column, s32 row) {
 // The permuter found a decent improvement with making `textColor` a `volatile` variable but that
 // seems wrong for several reasons
 
-void func_800A474C(s32 recordType, s32 column, s32 row) {
+void render_player_time(s32 recordType, s32 column, s32 row) {
     UNUSED s32 stackPadding0;
     u32 timeRecord;
     s32 textColor;
     s32 temp_t0;
     s32 characterId;
     char sp38[3];
-    struct_8018D9E0_entry* temp_v0;
+    MenuItem* temp_v0;
     s32 sp30;
     if (gGamestate == 4) {
         sp30 = 0;
@@ -7540,7 +7554,7 @@ void func_800A474C(s32 recordType, s32 column, s32 row) {
     }
     func_800939C8(column + 0x14, row, D_800E7744[recordType], 2, 0.65f, 0.65f);
     if (sp30 == 0) {
-        temp_v0 = find_8018D9E0_entry_dupe(0x000000BB);
+        temp_v0 = find_8018D9E0_entry_dupe(D_8018D9E0_TYPE_0BB);
         if (recordType < 5) {
             if (recordType == temp_v0->unk1C) {
                 textColor = gGlobalTimer % 3;
@@ -7575,13 +7589,13 @@ void func_800A474C(s32 recordType, s32 column, s32 row) {
     } else {
         characterId = 8;
     }
-    draw_text(column + 0x78, row, D_800E76A8[characterId], 0, 0.65f, 0.65f);
+    print_text1_center_mode_1(column + 0x78, row, D_800E76A8[characterId], 0, 0.65f, 0.65f);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A474C.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/render_player_time.s")
 #endif
 
-void func_800A4A24(struct_8018D9E0_entry* arg0) {
+void func_800A4A24(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
     s32 temp_t0;
     s32 temp_t1;
@@ -7595,10 +7609,10 @@ void func_800A4A24(struct_8018D9E0_entry* arg0) {
     gDisplayListHead = draw_box(gDisplayListHead, temp_t0 - temp_t2, (temp_t1 - thing) + 4, temp_t2 + temp_t0,
                                 temp_t1 + 4, 0, 0, 0, 0x00000064);
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(arg0->column - 3, arg0->row, D_800E7780, 0, 0.85f, 0.85f);
+    print_text1_center_mode_1(arg0->column - 3, arg0->row, D_800E7780, 0, 0.85f, 0.85f);
 }
 
-void render_pause_menu(struct_8018D9E0_entry* arg0) {
+void render_pause_menu(MenuItem* arg0) {
     if (gIsGamePaused != 0) {
         switch (gModeSelection) {
             case TIME_TRIALS:
@@ -7617,7 +7631,7 @@ void render_pause_menu(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void render_pause_menu_time_trials(struct_8018D9E0_entry* arg0) {
+void render_pause_menu_time_trials(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
@@ -7628,10 +7642,10 @@ void render_pause_menu_time_trials(struct_8018D9E0_entry* arg0) {
 
     gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x0000008C);
     set_text_color(TEXT_YELLOW);
-    draw_text(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 1.0f,
-              1.0f);
+    print_text1_center_mode_1(0x000000A0, 0x00000050,
+                              gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 1.0f, 1.0f);
     set_text_color(TEXT_RED);
-    draw_text(0x0000009D, 0x00000060, gBestTimeText[0], 0, 0.8f, 0.8f);
+    print_text1_center_mode_1(0x0000009D, 0x00000060, gBestTimeText[0], 0, 0.8f, 0.8f);
     temp_a0 = func_800B4E24(TIME_TRIAL_3LAP_RECORD_1);
     temp_a0 &= 0xFFFFF;
     get_time_record_minutes(temp_a0, sp68);
@@ -7642,7 +7656,7 @@ void render_pause_menu_time_trials(struct_8018D9E0_entry* arg0) {
     print_text_mode_1(0x000000A7, 0x0000006D, "\"", 0, 0.8f, 0.8f);
     get_time_record_centiseconds(temp_a0, sp68);
     func_800939C8(0x000000B3, 0x0000006D, sp68, 0, 0.8f, 0.8f);
-    draw_text(0x0000009D, 0x0000007C, gBestTimeText[1], 0, 0.8f, 0.8f);
+    print_text1_center_mode_1(0x0000009D, 0x0000007C, gBestTimeText[1], 0, 0.8f, 0.8f);
     temp_a0 = func_800B4F2C();
     temp_a0 &= 0xFFFFF;
     get_time_record_minutes(temp_a0, sp68);
@@ -7660,7 +7674,7 @@ void render_pause_menu_time_trials(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void render_pause_menu_versus(struct_8018D9E0_entry* arg0) {
+void render_pause_menu_versus(MenuItem* arg0) {
     s16 temp_t0;
     s16 temp_v1;
     s32 temp_t3;
@@ -7689,7 +7703,7 @@ void render_pause_menu_versus(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void render_pause_grand_prix(struct_8018D9E0_entry* arg0) {
+void render_pause_grand_prix(MenuItem* arg0) {
     s32 temp_t0;
     s32 temp_v1;
     s32 temp_s0;
@@ -7712,19 +7726,19 @@ void render_pause_grand_prix(struct_8018D9E0_entry* arg0) {
     temp_s0 = ((get_string_width(gCupNames[gCupSelection]) * one) + 10.0f) / 2;
     temp_s1 = ((get_string_width(D_800E76CC[gCCSelection]) * one) + 10.0f) / 2;
     set_text_color(TEXT_YELLOW);
-    draw_text(160 - temp_s1, temp_s3->row - 50, gCupNames[gCupSelection], 0, 1.0f, 1.0f);
+    print_text1_center_mode_1(160 - temp_s1, temp_s3->row - 50, gCupNames[gCupSelection], 0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
-    draw_text(160 + temp_s0, temp_s3->row - 50, D_800E76CC[gCCSelection], 0, 1.0f, 1.0f);
+    print_text1_center_mode_1(160 + temp_s0, temp_s3->row - 50, D_800E76CC[gCCSelection], 0, 1.0f, 1.0f);
     set_text_color(TEXT_YELLOW);
-    draw_text(160, temp_s3->row - 30, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 1.0f,
-              1.0f);
+    print_text1_center_mode_1(160, temp_s3->row - 30,
+                              gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 1.0f, 1.0f);
     for (var_s0 = 0; var_s0 < 2; var_s0++) {
         text_rainbow_effect(arg0->state - 31, var_s0, TEXT_YELLOW);
         print_text_mode_1(temp_s3->column, temp_s3->row + (var_s0 * 13), gMenuText[var_s0 * 4], 0, 0.75f, 0.75f);
     }
 }
 
-void render_pause_battle(struct_8018D9E0_entry* arg0) {
+void render_pause_battle(MenuItem* arg0) {
     struct UnkStruct_800DC5EC* temp_v0;
     s16 temp_t0;
     s16 temp_v1;
@@ -7756,7 +7770,7 @@ void render_pause_battle(struct_8018D9E0_entry* arg0) {
 void func_800A54EC(void) {
     Unk_D_800E70A0 sp50;
     Unk_D_800E70A0* var_v1;
-    struct_8018D9E0_entry* sp48;
+    MenuItem* sp48;
     s32 whyTheSequel;
     s32 why;
     UNUSED Unk_D_800E70A0* huh;
@@ -7794,7 +7808,7 @@ void func_800A54EC(void) {
     func_800A66A8(sp48, &sp50);
 }
 
-void func_800A5738(struct_8018D9E0_entry* arg0) {
+void func_800A5738(MenuItem* arg0) {
     Unk_D_800E70A0 sp98;
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
@@ -7831,8 +7845,8 @@ void func_800A5738(struct_8018D9E0_entry* arg0) {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, var_s1);
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, var_s2);
         set_text_color(TEXT_YELLOW);
-        func_80093754(0x000000A0, 0x00000050, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0,
-                      1.0f, 1.0f);
+        print_text1_center_mode_2(0x000000A0, 0x00000050,
+                                  gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 1.0f, 1.0f);
         switch (arg0->state) { /* switch 1 */
             case 1:            /* switch 1 */
             case 11:           /* switch 1 */
@@ -7842,7 +7856,7 @@ void func_800A5738(struct_8018D9E0_entry* arg0) {
             case 15:           /* switch 1 */
             case 16:           /* switch 1 */
                 set_text_color(TEXT_RED);
-                func_80093754(0x0000009D, 0x00000060, gBestTimeText[0], 0, 0.8f, 0.8f);
+                print_text1_center_mode_2(0x0000009D, 0x00000060, gBestTimeText[0], 0, 0.8f, 0.8f);
                 temp_a0 = func_800B4E24(0);
                 temp_a0 &= 0xFFFFF;
                 get_time_record_minutes(temp_a0, sp84);
@@ -7853,7 +7867,7 @@ void func_800A5738(struct_8018D9E0_entry* arg0) {
                 print_text_mode_2(0x000000A7, 0x0000006D, "\"", 0, 0.8f, 0.8f);
                 get_time_record_centiseconds(temp_a0, sp84);
                 text_draw(0x000000B3, 0x0000006D, sp84, 0, 0.8f, 0.8f);
-                func_80093754(0x0000009D, 0x0000007C, gBestTimeText[1], 0, 0.8f, 0.8f);
+                print_text1_center_mode_2(0x0000009D, 0x0000007C, gBestTimeText[1], 0, 0.8f, 0.8f);
                 temp_a0 = func_800B4F2C();
                 temp_a0 &= 0xFFFFF;
                 get_time_record_minutes(temp_a0, sp84);
@@ -7960,21 +7974,21 @@ void func_800A5738(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A6034(struct_8018D9E0_entry* arg0) {
+void func_800A6034(MenuItem* arg0) {
     char* text;
 
     if (D_801657E8 != true) {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, arg0->unk1C);
         text = gCupNames[D_800DC540];
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-        func_80093754(arg0->column + 0x41, arg0->row + 0xA0, text, 0, 0.85f, 1.0f);
+        print_text1_center_mode_2(arg0->column + 0x41, arg0->row + 0xA0, text, 0, 0.85f, 1.0f);
         text = gCourseNames[gCurrentCourseId];
         set_text_color((s32) gCurrentCourseId % 4);
-        func_80093754(arg0->column + 0x41, arg0->row + 0xC3, text, 0, 0.65f, 0.85f);
+        print_text1_center_mode_2(arg0->column + 0x41, arg0->row + 0xC3, text, 0, 0.65f, 0.85f);
     }
 }
 
-void func_800A6154(struct_8018D9E0_entry* arg0) {
+void func_800A6154(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
@@ -8008,7 +8022,7 @@ void func_800A6154(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A638C(struct_8018D9E0_entry* arg0) {
+void func_800A638C(MenuItem* arg0) {
     UNUSED s32 temp_a0;
     s32 var_a1;
     UNUSED s32 var_s0;
@@ -8019,11 +8033,11 @@ void func_800A638C(struct_8018D9E0_entry* arg0) {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, arg0->unk1C);
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, (arg0->unk1C * 0xFF) / 100);
-        func_80093754(0x000000A0, arg0->row + 0x1E, D_800E7778[gModeSelection / 3], 0, 1.0f, 1.0f);
+        print_text1_center_mode_2(0x000000A0, arg0->row + 0x1E, D_800E7778[gModeSelection / 3], 0, 1.0f, 1.0f);
     } else {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x00000064);
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-        draw_text(0x000000A0, arg0->row + 0x1E, D_800E7778[gModeSelection / 3], 0, 1.0f, 1.0f);
+        print_text1_center_mode_1(0x000000A0, arg0->row + 0x1E, D_800E7778[gModeSelection / 3], 0, 1.0f, 1.0f);
     }
     switch (arg0->state) { /* irregular */
         default:
@@ -8064,7 +8078,7 @@ void func_800A638C(struct_8018D9E0_entry* arg0) {
 void guMtxCatL(Mtx*, Mtx*, Mtx*);
 // https://decomp.me/scratch/GUqCE
 // All the math stuff at the top is messed up
-void func_800A66A8(struct_8018D9E0_entry* arg0, Unk_D_800E70A0* arg1) {
+void func_800A66A8(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     Mtx* temp_s0;
     Mtx* temp_s1;
     f32 temp_f2;
@@ -8108,7 +8122,7 @@ void func_800A66A8(struct_8018D9E0_entry* arg0, Unk_D_800E70A0* arg1) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A66A8.s")
 #endif
 
-void func_800A69C8(UNUSED struct_8018D9E0_entry* arg0) {
+void func_800A69C8(UNUSED MenuItem* arg0) {
     Unk_D_800E70A0* thing;
     UNUSED s32 stackPadding1;
     s32 var_s0;
@@ -8142,14 +8156,14 @@ void func_800A69C8(UNUSED struct_8018D9E0_entry* arg0) {
         }
         func_800A79F4(var_s4[0], sp74);
         text_draw(thing->column + 0x10, thing->row + 0x75, sp74, 0, 1.0f, 1.0f);
-        func_80093754(D_800E7380[var_s0].column, D_800E7380[var_s0].row, temp_s3, 0, 0.65f, 1.0f);
+        print_text1_center_mode_2(D_800E7380[var_s0].column, D_800E7380[var_s0].row, temp_s3, 0, 0.65f, 1.0f);
     }
     set_text_color(TEXT_BLUE);
     // Not a hyphen, that is an EUC-JP character
     text_draw(0x0000009E, D_800E7300[0].row + 0x6D, "ー", 0, 1.0f, 1.0f);
 }
 
-void func_800A6BEC(UNUSED struct_8018D9E0_entry* arg0) {
+void func_800A6BEC(UNUSED MenuItem* arg0) {
     s32 var_s0;
 
     for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
@@ -8164,7 +8178,7 @@ void func_800A6BEC(UNUSED struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A6CC0(UNUSED struct_8018D9E0_entry* arg0) {
+void func_800A6CC0(UNUSED MenuItem* arg0) {
     s32 var_s0;
 
     for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
@@ -8243,7 +8257,7 @@ void func_800A6E94(s32 arg0, s32 arg1, u8* arg2) {
     text_draw(temp_s0->column + 0x2D, temp_s0->row + 0x78, sp40, 0, 0.8f, 0.8f);
 }
 
-void func_800A70E8(struct_8018D9E0_entry* arg0) {
+void func_800A70E8(MenuItem* arg0) {
     s32 var_s0;
     s32 temp_f6;
     s32 alpha;
@@ -8271,7 +8285,7 @@ void func_800A70E8(struct_8018D9E0_entry* arg0) {
 }
 
 // Shading layer of the grand prix podium result screen
-void func_800A7258(struct_8018D9E0_entry* arg0) {
+void func_800A7258(MenuItem* arg0) {
     if (arg0->state == 0) {
         // If shading layer is fading in
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x13F, 0xEF, 0, 0, 0, arg0->unk1C);
@@ -8282,36 +8296,36 @@ void func_800A7258(struct_8018D9E0_entry* arg0) {
 }
 
 // Podium scene, top line
-void func_800A72FC(struct_8018D9E0_entry* arg0) {
+void func_800A72FC(MenuItem* arg0) {
     UNUSED s32 pad;
     s32 cupNameLength = (((f32) get_string_width(gCupNames[gCupSelection]) * 1) + 10) / 2;
     s32 ccNameLength = (((f32) get_string_width(D_800E76CC[gCCSelection]) * 1) + 10) / 2;
 
     set_text_color(TEXT_YELLOW);
-    draw_text(arg0->column - ccNameLength, arg0->row, gCupNames[gCupSelection], 0, 1, 1);
+    print_text1_center_mode_1(arg0->column - ccNameLength, arg0->row, gCupNames[gCupSelection], 0, 1, 1);
     set_text_color(TEXT_YELLOW);
-    draw_text(arg0->column + cupNameLength, arg0->row, D_800E76DC[gCCSelection], 0, 1, 1);
+    print_text1_center_mode_1(arg0->column + cupNameLength, arg0->row, D_800E76DC[gCCSelection], 0, 1, 1);
 }
 
-void func_800A7448(struct_8018D9E0_entry* arg0) {
+void func_800A7448(MenuItem* arg0) {
     UNUSED s32 pad;
     s32 sp40;
     s32 sp3C;
     s32 thing = D_802874D8.unk1D;
     if (thing >= 3) {
         set_text_color(TEXT_YELLOW);
-        draw_text(arg0->column, arg0->row, D_800E7A98, 0, 0.75f, 0.75f);
+        print_text1_center_mode_1(arg0->column, arg0->row, D_800E7A98, 0, 0.75f, 0.75f);
     } else {
         sp40 = (s32) (((f32) (get_string_width(D_800E7A88[0]) + 5) * 0.75f) / 2);
         sp3C = (s32) (((f32) (get_string_width(D_800E7A88[thing + 1]) + 5) * 0.75f) / 2);
         set_text_color(TEXT_YELLOW);
-        draw_text(arg0->column - sp3C, arg0->row, D_800E7A88[0], 0, 0.75f, 0.75f);
+        print_text1_center_mode_1(arg0->column - sp3C, arg0->row, D_800E7A88[0], 0, 0.75f, 0.75f);
         set_text_color(TEXT_YELLOW);
-        draw_text(arg0->column + sp40, arg0->row, D_800E7A88[thing + 1], 0, 0.75f, 0.75f);
+        print_text1_center_mode_1(arg0->column + sp40, arg0->row, D_800E7A88[thing + 1], 0, 0.75f, 0.75f);
     }
 }
 
-void func_800A75A0(struct_8018D9E0_entry* arg0) {
+void func_800A75A0(MenuItem* arg0) {
     UNUSED s32 pad;
     s32 topThree;
 
@@ -8322,10 +8336,10 @@ void func_800A75A0(struct_8018D9E0_entry* arg0) {
     }
 
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(arg0->column, arg0->row, D_800E7A9C[topThree], 0, 1.3f, 1.3f);
+    print_text1_center_mode_1(arg0->column, arg0->row, D_800E7A9C[topThree], 0, 1.3f, 1.3f);
 }
 
-void func_800A761C(struct_8018D9E0_entry* arg0) {
+void func_800A761C(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
     s32 sp48;
     s32 sp44;
@@ -8338,28 +8352,28 @@ void func_800A761C(struct_8018D9E0_entry* arg0) {
     sp48 = ((get_string_width(gPlaceText[0]) + 5) * 1.2f) / 2;
     sp44 = ((get_string_width(gPlaceText[temp_a0]) + 5) * 1.2f) / 2;
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-    draw_text(arg0->column - sp44, arg0->row, gPlaceText[0], 0, 1.2f, 1.2f);
+    print_text1_center_mode_1(arg0->column - sp44, arg0->row, gPlaceText[0], 0, 1.2f, 1.2f);
     set_text_color((s32) gGlobalTimer % 3);
-    draw_text(arg0->column + sp48, arg0->row, gPlaceText[temp_a0], 0, 1.2f, 1.2f);
+    print_text1_center_mode_1(arg0->column + sp48, arg0->row, gPlaceText[temp_a0], 0, 1.2f, 1.2f);
     convert_number_to_ascii(temp_a0, sp3C);
     func_800939C8((arg0->column + sp48) - 0x18, arg0->row, &sp3C[1], 0, 2.0f, 2.0f);
 }
 
-void func_800A7790(struct_8018D9E0_entry* arg0) {
+void menu_item_credit_render(MenuItem* arg0) {
     f32 someScaling;
     s32 creditIndex;
     s8 slideDirection;
     UNUSED s32 pad;
     creditIndex = arg0->type - 0x190;
-    set_text_color(D_802850C0[creditIndex].textColor);
-    slideDirection = D_802850C0[creditIndex].slideDirection;
+    set_text_color(gTextCreaditRenderInformation[creditIndex].textColor);
+    slideDirection = gTextCreaditRenderInformation[creditIndex].slideDirection;
     if ((slideDirection == SLIDE_RIGHT) || (slideDirection != SLIDE_LEFT)) {
-        someScaling = D_802850C0[creditIndex].textScaling;
-        func_800936B8(arg0->column, arg0->row, D_802854B0[creditIndex], arg0->unk1C * someScaling,
-                      arg0->unk24 * someScaling, someScaling);
+        someScaling = gTextCreaditRenderInformation[creditIndex].textScaling;
+        print_text1_left(arg0->column, arg0->row, gTextCredit[creditIndex], arg0->unk1C * someScaling,
+                         arg0->unk24 * someScaling, someScaling);
     } else {
-        someScaling = D_802850C0[creditIndex].textScaling;
-        print_text_mode_1(arg0->column, arg0->row, D_802854B0[creditIndex], arg0->unk1C * someScaling,
+        someScaling = gTextCreaditRenderInformation[creditIndex].textScaling;
+        print_text_mode_1(arg0->column, arg0->row, gTextCredit[creditIndex], arg0->unk1C * someScaling,
                           arg0->unk24 * someScaling, someScaling);
     }
 }
@@ -8433,7 +8447,7 @@ void func_800A7A4C(s32 arg0) {
     s32 var_v1;
     s32 var_v1_2;
     s32 type;
-    struct_8018D9E0_entry* var_s1;
+    MenuItem* var_s1;
     s32 one = 1;
 
     for (var_v1_2 = 0; var_v1_2 < D_8018D9E0_SIZE; var_v1_2++) {
@@ -8848,7 +8862,7 @@ void func_800A8250(void) {
     func_800A7A4C(1);
 }
 
-void func_800A8270(s32 arg0, struct_8018D9E0_entry* arg1) {
+void func_800A8270(s32 arg0, MenuItem* arg1) {
     s32 temp_t1;
     s32 temp_t6;
     s32 var_s0;
@@ -8893,7 +8907,7 @@ void func_800A8270(s32 arg0, struct_8018D9E0_entry* arg1) {
     }
 }
 
-void func_800A8564(struct_8018D9E0_entry* arg0) {
+void func_800A8564(MenuItem* arg0) {
     s32 sp34;
     s32 var_a1;
     MkTexture* var_a0;
@@ -8939,36 +8953,36 @@ void func_800A8564(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A86E8(struct_8018D9E0_entry* arg0) {
+void func_800A86E8(MenuItem* arg0) {
     gDisplayListHead =
         draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x64, arg0->row + 0x27, 1, 1, 1, 0xFF);
 }
 
 // Credit for the use of ternary operators goes to LLONSIT
-void func_800A874C(struct_8018D9E0_entry* arg0) {
+void func_800A874C(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
-    char sp58[3];
+    char buffer[3];
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
     s32 temp_s1;
     UNUSED u32 var_v0;
     u32 var_s2;
     set_text_color(TEXT_GREEN);
-    var_s2 = arg0->type == 0x00000065 ? func_800B4E24(0) : func_800B4F2C();
+    var_s2 = arg0->type == D_8018D9E0_TYPE_065 ? func_800B4E24(0) : func_800B4F2C();
     temp_s1 = var_s2 & 0xFFFFF;
-    get_time_record_minutes((temp_s1 ^ 0), sp58);
-    text_draw(arg0->column + 5, arg0->row + 0x21, sp58, 0, 0.6f, 0.65f);
+    get_time_record_minutes((temp_s1 ^ 0), buffer);
+    text_draw(arg0->column + 5, arg0->row + 0x21, buffer, 0, 0.6f, 0.65f);
     print_text_mode_1(arg0->column + 0xE, arg0->row + 0x21, "'", 0, 0.6f, 0.65f);
-    get_time_record_seconds(temp_s1, sp58);
-    text_draw(arg0->column + 0x16, arg0->row + 0x21, sp58, 0, 0.6f, 0.65f);
+    get_time_record_seconds(temp_s1, buffer);
+    text_draw(arg0->column + 0x16, arg0->row + 0x21, buffer, 0, 0.6f, 0.65f);
     print_text_mode_1(arg0->column + 0x20, arg0->row + 0x21, "\"", 0, 0.6f, 0.65f);
-    get_time_record_centiseconds(temp_s1, sp58);
-    text_draw(arg0->column + 0x29, arg0->row + 0x21, sp58, 0, 0.6f, 0.65f);
+    get_time_record_centiseconds(temp_s1, buffer);
+    text_draw(arg0->column + 0x29, arg0->row + 0x21, buffer, 0, 0.6f, 0.65f);
     var_s2 = (u32) temp_s1 < 0x927C0U ? var_s2 >> 0x14 : 8;
-    func_800936B8(arg0->column + 0x60, arg0->row + 0x21, D_800E76A8[var_s2], 0, 0.6f, 0.65f);
+    print_text1_left(arg0->column + 0x60, arg0->row + 0x21, D_800E76A8[var_s2], 0, 0.6f, 0.65f);
 }
 
-void func_800A890C(s32 arg0, struct_8018D9E0_entry* arg1) {
+void func_800A890C(s32 arg0, MenuItem* arg1) {
     s32 temp_a2;
     s32 temp_t1;
     s32 temp_t7;
@@ -8996,7 +9010,7 @@ void func_800A890C(s32 arg0, struct_8018D9E0_entry* arg1) {
     }
 }
 
-void func_800A8A98(struct_8018D9E0_entry* arg0) {
+void func_800A8A98(MenuItem* arg0) {
     s32 temp_s2;
     s32 temp_s3;
     s32 someIndex;
@@ -9026,13 +9040,13 @@ void func_800A8A98(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A8CA4(struct_8018D9E0_entry* arg0) {
+void func_800A8CA4(MenuItem* arg0) {
     s32 temp_s2;
     s32 temp_s3;
     s32 var_s0;
-    struct_8018D9E0_entry* temp_v0;
+    MenuItem* temp_v0;
 
-    temp_v0 = find_8018D9E0_entry_dupe(0x00000064);
+    temp_v0 = find_8018D9E0_entry_dupe(D_8018D9E0_TYPE_064);
     temp_s2 = arg0->column;
     temp_s3 = arg0->row;
     gDPPipeSync(gDisplayListHead++);
@@ -9053,14 +9067,14 @@ void func_800A8CA4(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A8E14(UNUSED struct_8018D9E0_entry* arg0) {
+void func_800A8E14(UNUSED MenuItem* arg0) {
     set_text_color(TEXT_YELLOW);
-    draw_text(0x98, 0x44, D_800E77A8[0], 0, 1.0f, 1.0f);
+    print_text1_center_mode_1(0x98, 0x44, D_800E77A8[0], 0, 1.0f, 1.0f);
     print_text_mode_1(0x17, 0x58, D_800E77A8[1], 0, 0.7f, 0.8f);
     print_text_mode_1(0x17, 0x6A, D_800E77A8[2], 0, 0.7f, 0.8f);
 }
 
-void func_800A8EC0(struct_8018D9E0_entry* arg0) {
+void func_800A8EC0(MenuItem* arg0) {
     if (arg0->unk20 != 0) {
         func_8009A76C(arg0->D_8018DEE0_index, arg0->column, arg0->row, -1);
         set_text_color(TEXT_YELLOW);
@@ -9068,7 +9082,7 @@ void func_800A8EC0(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A8F48(UNUSED struct_8018D9E0_entry* arg0) {
+void func_800A8F48(UNUSED MenuItem* arg0) {
     UNUSED Gfx* temp_v0_2;
     Unk_D_800E70A0* temp_v0;
     s16 temp_s0;
@@ -9101,7 +9115,7 @@ void func_800A8F48(UNUSED struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A90D4(UNUSED s32 arg0, struct_8018D9E0_entry* arg1) {
+void func_800A90D4(UNUSED s32 arg0, MenuItem* arg1) {
     s32 temp_a2;
     s32 temp_t1;
     s32 temp_t7;
@@ -9119,12 +9133,12 @@ void func_800A90D4(UNUSED s32 arg0, struct_8018D9E0_entry* arg1) {
     }
 }
 
-void func_800A91D8(struct_8018D9E0_entry* arg0, s32 columnTarget, s32 rowTarget) {
+void func_800A91D8(MenuItem* arg0, s32 columnTarget, s32 rowTarget) {
     func_800A9208(arg0, columnTarget);
     func_800A9278(arg0, rowTarget);
 }
 
-void func_800A9208(struct_8018D9E0_entry* arg0, s32 columnTarget) {
+void func_800A9208(MenuItem* arg0, s32 columnTarget) {
     s32 step = columnTarget - arg0->column;
 
     if (step != 0) {
@@ -9143,7 +9157,7 @@ void func_800A9208(struct_8018D9E0_entry* arg0, s32 columnTarget) {
     arg0->column += step;
 }
 
-void func_800A9278(struct_8018D9E0_entry* arg0, s32 rowTarget) {
+void func_800A9278(MenuItem* arg0, s32 rowTarget) {
     s32 step = rowTarget - arg0->row;
 
     if (step != 0) {
@@ -9162,7 +9176,7 @@ void func_800A9278(struct_8018D9E0_entry* arg0, s32 rowTarget) {
     arg0->row += step;
 }
 
-void func_800A92E8(struct_8018D9E0_entry* arg0, s32 columnTarget) {
+void func_800A92E8(MenuItem* arg0, s32 columnTarget) {
     s32 step = columnTarget - arg0->column;
 
     if (step != 0) {
@@ -9195,7 +9209,7 @@ void func_800A92E8(struct_8018D9E0_entry* arg0, s32 columnTarget) {
 }
 
 // Appears to be a copy of func_800A9278
-UNUSED void func_800A939C(struct_8018D9E0_entry* arg0, s32 rowTarget) {
+UNUSED void func_800A939C(MenuItem* arg0, s32 rowTarget) {
     s32 step = rowTarget - arg0->row;
 
     if (step != 0) {
@@ -9214,7 +9228,7 @@ UNUSED void func_800A939C(struct_8018D9E0_entry* arg0, s32 rowTarget) {
     arg0->row += step;
 }
 
-void func_800A940C(struct_8018D9E0_entry* arg0, s32 columnTarget) {
+void func_800A940C(MenuItem* arg0, s32 columnTarget) {
     s32 step = columnTarget - arg0->column;
 
     if (step != 0) {
@@ -9245,7 +9259,7 @@ void func_800A940C(struct_8018D9E0_entry* arg0, s32 columnTarget) {
     }
 }
 
-void func_800A94C8(struct_8018D9E0_entry* arg0, s32 columnTarget, s32 arg2) {
+void func_800A94C8(MenuItem* arg0, s32 columnTarget, s32 arg2) {
     s32 step;
 
     if (columnTarget == arg0->column) {
@@ -9269,7 +9283,7 @@ void func_800A94C8(struct_8018D9E0_entry* arg0, s32 columnTarget, s32 arg2) {
     }
 }
 
-void func_800A954C(struct_8018D9E0_entry* arg0) {
+void func_800A954C(MenuItem* arg0) {
     // Cycle lasts 26 (0x1A) frames
     if (arg0->state == 0) {
         // Move highlight from yellow to red
@@ -9286,7 +9300,7 @@ void func_800A954C(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A9710(struct_8018D9E0_entry* arg0) {
+void func_800A9710(MenuItem* arg0) {
     s32 phi_v0;
 
     switch (gControllerPakMenuSelection) {
@@ -9317,7 +9331,7 @@ void func_800A9710(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A97BC(struct_8018D9E0_entry* arg0) {
+void func_800A97BC(MenuItem* arg0) {
     s32 i;
 
     switch (*D_800E86D0) {
@@ -9373,7 +9387,7 @@ const s8 D_800F0CA0[] = {
     0x03, 0x03, 0x03, 0x02, 0x00, 0x02, 0x02, 0x01, 0x03, 0x02, 0x00, 0x00, 0x03, 0x03, 0x02, 0x00
 };
 
-void func_800A9A98(struct_8018D9E0_entry* arg0) {
+void func_800A9A98(MenuItem* arg0) {
     s32 sp4;
     s32 var_v0;
 
@@ -9417,7 +9431,7 @@ void func_800A9A98(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A9B9C(struct_8018D9E0_entry* arg0) {
+void func_800A9B9C(MenuItem* arg0) {
     switch (arg0->state) {
         case 0:
             func_800AA280(arg0);
@@ -9446,7 +9460,7 @@ void func_800A9B9C(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A9C40(struct_8018D9E0_entry* arg0) {
+void func_800A9C40(MenuItem* arg0) {
     switch (arg0->state) {
         case 0:
             func_800AA280(arg0);
@@ -9488,7 +9502,7 @@ void func_800A9C40(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A9D5C(struct_8018D9E0_entry* arg0) {
+void func_800A9D5C(MenuItem* arg0) {
     Unk_D_800E70A0* temp_v0;
 
     if ((gPlayerCount + 0xA) == arg0->type) {
@@ -9522,8 +9536,8 @@ void func_800A9D5C(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A9E58(struct_8018D9E0_entry* arg0) {
-    struct_8018D9E0_entry* temp_v0;
+void func_800A9E58(MenuItem* arg0) {
+    MenuItem* temp_v0;
     Unk_D_800E70A0* temp_v1_2;
     s32 sp24;
     s32 sp20;
@@ -9650,7 +9664,7 @@ void func_800A9E58(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AA280(struct_8018D9E0_entry* arg0) {
+void func_800AA280(MenuItem* arg0) {
     Unk_D_800E70A0* temp_v0;
 
     temp_v0 = &D_800E70A0[arg0->type - 0xA];
@@ -9663,7 +9677,7 @@ void func_800AA280(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AA2EC(struct_8018D9E0_entry* arg0) {
+void func_800AA2EC(MenuItem* arg0) {
     s32 temp_v0;
     s32 var_t1;
 
@@ -9764,7 +9778,7 @@ void func_800AA2EC(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AA5C8(struct_8018D9E0_entry* arg0, s8 arg1) {
+void func_800AA5C8(MenuItem* arg0, s8 arg1) {
     s32 temp_v1;
 
     temp_v1 = arg0->type - 0x2B;
@@ -9784,7 +9798,7 @@ void func_800AA5C8(struct_8018D9E0_entry* arg0, s8 arg1) {
     }
 }
 
-void func_800AA69C(struct_8018D9E0_entry* arg0) {
+void func_800AA69C(MenuItem* arg0) {
     s32 temp_v0;
     s32 var_a0;
     s32 var_v0;
@@ -9869,7 +9883,7 @@ void func_800AA69C(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AAA9C(struct_8018D9E0_entry* arg0) {
+void func_800AAA9C(MenuItem* arg0) {
     switch (arg0->state) {
         case 3:
             arg0->state = 1;
@@ -9906,7 +9920,7 @@ void func_800AAA9C(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AAB90(struct_8018D9E0_entry* arg0) {
+void func_800AAB90(MenuItem* arg0) {
     switch (arg0->state) {
         case 1:
             if (arg0->unk1C > 0) {
@@ -9934,7 +9948,7 @@ void func_800AAB90(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AAC18(struct_8018D9E0_entry* arg0) {
+void func_800AAC18(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
     s32 temp_a1;
@@ -9986,7 +10000,7 @@ void func_800AAC18(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AADD4(struct_8018D9E0_entry* arg0) {
+void func_800AADD4(MenuItem* arg0) {
     s32 playerId;
     s8 characterSelectionIndex;
 
@@ -9996,7 +10010,7 @@ void func_800AADD4(struct_8018D9E0_entry* arg0) {
     func_800AAF94(arg0, characterSelectionIndex - 1);
 }
 
-void func_800AAE18(struct_8018D9E0_entry* arg0) {
+void func_800AAE18(MenuItem* arg0) {
     s32 temp_v0;
 
     temp_v0 = func_800AAFCC(arg0->type - 0x2B);
@@ -10012,8 +10026,8 @@ void func_800AAE18(struct_8018D9E0_entry* arg0) {
  * hard lock in the function if no appropriate D_8018D9E0 entry
  * is found.
  **/
-struct_8018D9E0_entry* func_800AAE68(void) {
-    struct_8018D9E0_entry* entry = D_8018D9E0;
+MenuItem* func_800AAE68(void) {
+    MenuItem* entry = D_8018D9E0;
     s32 thing = gPlayerCount - 1;
 
     for (; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
@@ -10035,8 +10049,8 @@ escape:
  * hard lock in the function if no appropriate D_8018D9E0 entry
  * is found.
  **/
-struct_8018D9E0_entry* func_800AAEB4(s32 arg0) {
-    struct_8018D9E0_entry* entry = D_8018D9E0;
+MenuItem* func_800AAEB4(s32 arg0) {
+    MenuItem* entry = D_8018D9E0;
 
     for (; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
         if ((arg0 + 0x2B) == entry->type) {
@@ -10062,10 +10076,10 @@ escape:
  * probably as much a matter of luck as it is good
  * reasoning on the original author(s) part.
  **/
-struct_8018D9E0_entry* find_8018D9E0_entry_dupe(s32 arg0) {
-    struct_8018D9E0_entry* entry = D_8018D9E0;
+MenuItem* find_8018D9E0_entry_dupe(s32 type) {
+    MenuItem* entry = D_8018D9E0;
     for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
-        if (entry->type == arg0) {
+        if (entry->type == type) {
             goto escape;
         }
     }
@@ -10078,8 +10092,8 @@ escape:
     return entry;
 }
 
-struct_8018D9E0_entry* find_8018D9E0_entry(s32 arg0) {
-    struct_8018D9E0_entry* entry = D_8018D9E0;
+MenuItem* find_8018D9E0_entry(s32 arg0) {
+    MenuItem* entry = D_8018D9E0;
     for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
         if (entry->type == arg0) {
             goto escape;
@@ -10092,13 +10106,13 @@ escape:
 }
 
 s32 func_800AAF70(s32 arg0) {
-    struct_8018D9E0_entry* temp;
+    MenuItem* temp;
     temp = func_800AAEB4(arg0);
     return temp->state;
 }
 
-void func_800AAF94(struct_8018D9E0_entry* arg0, s32 arg1) {
-    struct_8018D9E0_entry* temp_v0;
+void func_800AAF94(MenuItem* arg0, s32 arg1) {
+    MenuItem* temp_v0;
 
     temp_v0 = func_800AAEB4(arg1);
     arg0->column = temp_v0->column;
@@ -10123,7 +10137,7 @@ s32 func_800AAFCC(s32 arg0) {
     return -1;
 }
 
-void func_800AB020(struct_8018D9E0_entry* arg0) {
+void func_800AB020(MenuItem* arg0) {
     switch (arg0->state) {
         case 1:
             arg0->state = 4;
@@ -10149,7 +10163,7 @@ void func_800AB020(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AB098(struct_8018D9E0_entry* arg0) {
+void func_800AB098(MenuItem* arg0) {
     switch (arg0->state) {
         case 0:
             if ((gCupSelection + 0x53) == arg0->type) {
@@ -10186,7 +10200,7 @@ void func_800AB098(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AB164(struct_8018D9E0_entry* arg0) {
+void func_800AB164(MenuItem* arg0) {
     Unk_D_800E70A0* thing = &D_800E7148[arg0->type - 0x53];
 
     if ((gCupSelection + 0x53) == arg0->type) {
@@ -10218,7 +10232,7 @@ void func_800AB164(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AB260(struct_8018D9E0_entry* arg0) {
+void func_800AB260(MenuItem* arg0) {
     s32 temp = (arg0->type - 0x58);
     if (temp == gCupSelection) {
         arg0->visible = 1;
@@ -10227,7 +10241,7 @@ void func_800AB260(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AB290(struct_8018D9E0_entry* arg0) {
+void func_800AB290(MenuItem* arg0) {
     if (arg0->unk1C != gCupSelection) {
         arg0->unk1C = gCupSelection;
         func_8009A594(arg0->D_8018DEE0_index, 0,
@@ -10238,11 +10252,11 @@ void func_800AB290(struct_8018D9E0_entry* arg0) {
 #ifdef NON_MATCHING
 // Decent work has been done, but not quite right
 // https://decomp.me/scratch/YLbkC
-void func_800AB314(struct_8018D9E0_entry* arg0) {
+void func_800AB314(MenuItem* arg0) {
     s32 var_a1;
     s32 one = 1;
     s32 four = 4;
-    struct_8018D9E0_entry* sp24[4];
+    MenuItem* sp24[4];
     s32 var_v0;
 
     for (var_a1 = 0; var_a1 < 4; var_a1++) {
@@ -10369,7 +10383,7 @@ void func_800AB314(struct_8018D9E0_entry* arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB314.s")
 #endif
 
-void func_800AB904(struct_8018D9E0_entry* arg0) {
+void func_800AB904(MenuItem* arg0) {
     Unk_D_800E70A0* temp_a1;
 
     switch (D_8018EDEC) { /* irregular */
@@ -10389,7 +10403,7 @@ void func_800AB904(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AB9B0(struct_8018D9E0_entry* arg0) {
+void func_800AB9B0(MenuItem* arg0) {
     Unk_D_800E70A0* temp_v1;
 
     if (arg0->unk1C != gCupSelection) {
@@ -10417,7 +10431,7 @@ void func_800AB9B0(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800ABAE8(struct_8018D9E0_entry* arg0) {
+void func_800ABAE8(MenuItem* arg0) {
     s32 index;
 
     if (arg0->type == 0x8C) {
@@ -10429,7 +10443,7 @@ void func_800ABAE8(struct_8018D9E0_entry* arg0) {
     arg0->row = D_800E7430[index].row;
 }
 
-void func_800ABB24(struct_8018D9E0_entry* arg0) {
+void func_800ABB24(MenuItem* arg0) {
     Unk_D_800E70A0* temp_v1;
     s32 thing = gTimeTrialDataCourseIndex;
 
@@ -10443,7 +10457,7 @@ void func_800ABB24(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800ABBCC(struct_8018D9E0_entry* arg0) {
+void func_800ABBCC(MenuItem* arg0) {
     s32 temp_v0;
     Unk_D_800E70A0* temp_v1;
 
@@ -10453,7 +10467,7 @@ void func_800ABBCC(struct_8018D9E0_entry* arg0) {
     arg0->row = temp_v1->row + ((temp_v0 % 4) * 0x32) + 0x14;
 }
 
-void func_800ABC38(struct_8018D9E0_entry* arg0) {
+void func_800ABC38(MenuItem* arg0) {
     // Huh?
     s32 one = 1;
     func_800ABCF4(arg0);
@@ -10482,7 +10496,7 @@ void func_800ABC38(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800ABCF4(struct_8018D9E0_entry* arg0) {
+void func_800ABCF4(MenuItem* arg0) {
     f64 temp_f0;
 
     switch (arg0->state) { /* irregular */
@@ -10516,7 +10530,7 @@ void func_800ABCF4(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800ABEAC(struct_8018D9E0_entry* arg0) {
+void func_800ABEAC(MenuItem* arg0) {
     s32 why = 1;
     func_800ABF68(arg0);
     switch (D_80164A28) {
@@ -10544,7 +10558,7 @@ void func_800ABEAC(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800ABF68(struct_8018D9E0_entry* arg0) {
+void func_800ABF68(MenuItem* arg0) {
     switch (arg0->state) {
         case 0:
             arg0->column = 0x140;
@@ -10575,7 +10589,7 @@ void func_800ABF68(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AC128(struct_8018D9E0_entry* arg0) {
+void func_800AC128(MenuItem* arg0) {
     switch (arg0->state) {
         case 0:
             arg0->column = 0x00000140;
@@ -10613,13 +10627,13 @@ void func_800AC128(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AC300(struct_8018D9E0_entry* arg0) {
+void func_800AC300(MenuItem* arg0) {
     if (arg0->unk20 < ++arg0->unk1C) {
         arg0->type = 0;
     }
 }
 
-void func_800AC324(struct_8018D9E0_entry* arg0) {
+void func_800AC324(MenuItem* arg0) {
     switch (arg0->state) {
         case 0:
             arg0->column = 0x14A;
@@ -10807,7 +10821,7 @@ void func_800AC458(struct_8018D9E0_entry* arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AC458.s")
 #endif
 
-void func_800AC978(struct_8018D9E0_entry* arg0) {
+void func_800AC978(MenuItem* arg0) {
     switch (arg0->state) { /* irregular */
         case 0:
             arg0->column = 0x14A;
@@ -10830,7 +10844,7 @@ void func_800AC978(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800ACA14(struct_8018D9E0_entry* arg0) {
+void func_800ACA14(MenuItem* arg0) {
     switch (arg0->state) { /* irregular */
         case 0:
             if (arg0->unk20 >= 0xB) {
@@ -10884,7 +10898,7 @@ void func_800ACA14(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800ACC50(struct_8018D9E0_entry* arg0) {
+void func_800ACC50(MenuItem* arg0) {
     s32 i;
 
     switch (arg0->state) {
@@ -10958,7 +10972,7 @@ void func_800ACC50(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800ACF40(struct_8018D9E0_entry* arg0) {
+void func_800ACF40(MenuItem* arg0) {
     Unk_D_800E70A0* temp_v0_2;
     s32 temp_a2;
     s32 temp_a1;
@@ -11021,7 +11035,7 @@ void func_800ACF40(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AD1A4(struct_8018D9E0_entry* arg0) {
+void func_800AD1A4(MenuItem* arg0) {
     switch (arg0->state) {
         case 0:
             arg0->column = 0x0000014A;
@@ -11067,7 +11081,7 @@ void func_800AD1A4(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AD2E8(struct_8018D9E0_entry* arg0) {
+void func_800AD2E8(MenuItem* arg0) {
     struct_8018EE10_entry* thing;
     s32 var_v1;
     s32 var_a1;
@@ -11413,7 +11427,7 @@ void func_800AD2E8(struct_8018D9E0_entry* arg0) {
 #else
 #define FUNC_800ADF48DEF 60
 #endif
-void func_800ADF48(struct_8018D9E0_entry* arg0) {
+void func_800ADF48(MenuItem* arg0) {
     UNUSED s32 stackPadding;
     struct Controller* controller;
 
@@ -11491,7 +11505,7 @@ void func_800ADF48(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AE218(struct_8018D9E0_entry* arg0) {
+void func_800AE218(MenuItem* arg0) {
     struct_8018EE10_entry* thing;
     s32 var_v1;
 
@@ -11766,7 +11780,7 @@ void func_800AE218(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AEC54(struct_8018D9E0_entry* arg0) {
+void func_800AEC54(MenuItem* arg0) {
     switch (arg0->state) {
         case 0:
             arg0->column = (get_string_width(D_800E7780) / 2) + 0x140;
@@ -11806,7 +11820,7 @@ void func_800AEC54(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AEDBC(struct_8018D9E0_entry* arg0) {
+void func_800AEDBC(MenuItem* arg0) {
     if (arg0->unk1C != gTimeTrialDataCourseIndex) {
         arg0->unk1C = (s32) gTimeTrialDataCourseIndex;
         func_8009A594(arg0->D_8018DEE0_index, 0,
@@ -11821,7 +11835,7 @@ void func_800AEDBC(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AEE90(struct_8018D9E0_entry* arg0) {
+void func_800AEE90(MenuItem* arg0) {
     if (D_8018EDEC != 0xB) {
         arg0->visible = 0;
     } else {
@@ -11829,7 +11843,7 @@ void func_800AEE90(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AEEBC(struct_8018D9E0_entry* arg0) {
+void func_800AEEBC(MenuItem* arg0) {
     if (D_8018EDEC != 0xC) {
         arg0->visible = 0;
     } else {
@@ -11837,7 +11851,7 @@ void func_800AEEBC(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AEEE8(struct_8018D9E0_entry* arg0) {
+void func_800AEEE8(MenuItem* arg0) {
     if (D_8018EDEC != 0xD) {
         arg0->visible = 0;
     } else {
@@ -11845,7 +11859,7 @@ void func_800AEEE8(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AEF14(struct_8018D9E0_entry* arg0) {
+void func_800AEF14(MenuItem* arg0) {
     if (playerHUD[PLAYER_ONE].raceCompleteBool != 0) {
         if ((u32) playerHUD[PLAYER_ONE].someTimer < (u32) (func_800B4E24(4) & 0xFFFFF)) {
             D_8018ED90 = 1;
@@ -11854,7 +11868,7 @@ void func_800AEF14(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AEF74(struct_8018D9E0_entry* arg0) {
+void func_800AEF74(MenuItem* arg0) {
     switch (arg0->state) { /* irregular */
         case 0:
             if (D_80162DF8 == 1) {
@@ -11875,7 +11889,7 @@ void func_800AEF74(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AF004(struct_8018D9E0_entry* arg0) {
+void func_800AF004(MenuItem* arg0) {
     UNUSED s32 temp_t1;
 
     switch (arg0->state) {
@@ -11925,7 +11939,7 @@ void func_800AF004(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AF1AC(struct_8018D9E0_entry* arg0) {
+void func_800AF1AC(MenuItem* arg0) {
     Unk_D_800E70A0* temp_v0_2;
     s32 idx = arg0->type - 0x12C;
 
@@ -11948,7 +11962,7 @@ void func_800AF1AC(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AF270(struct_8018D9E0_entry* arg0) {
+void func_800AF270(MenuItem* arg0) {
     s32 temp_v1;
     s32 sp30;
     s32 temp_v0;
@@ -12001,29 +12015,30 @@ void func_800AF270(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AF480(struct_8018D9E0_entry* arg0) {
+void func_800AF480(MenuItem* arg0) {
     s32 idx = arg0->type - 0x190;
 
-    if ((D_802850C0[idx].slideDirection == 0) || (D_802850C0[idx].slideDirection != 1)) {
+    if ((gTextCreaditRenderInformation[idx].slideDirection == 0) ||
+        (gTextCreaditRenderInformation[idx].slideDirection != 1)) {
         func_800AF4DC(arg0);
     } else {
         func_800AF740(arg0);
     }
 }
 
-void func_800AF4DC(struct_8018D9E0_entry* arg0) {
+void func_800AF4DC(MenuItem* arg0) {
     UNUSED s32 pad;
     s32 temp_v0;
-    struct_802850C0_entry* temp_v1;
+    CreditRenderInformation* temp_v1;
 
     temp_v0 = arg0->type - 0x190;
-    temp_v1 = &D_802850C0[temp_v0];
+    temp_v1 = &gTextCreaditRenderInformation[temp_v0];
     arg0->row = temp_v1->row;
     switch (arg0->state) {
         case 0:
             arg0->column = temp_v1->startingColumn;
             arg0->state = 1;
-            arg0->unk20 = temp_v1->columnExtra + (get_string_width(D_802854B0[temp_v0]) * temp_v1->textScaling / 2);
+            arg0->unk20 = temp_v1->columnExtra + (get_string_width(gTextCredit[temp_v0]) * temp_v1->textScaling / 2);
             /* fallthrough */
         case 1:
             func_800A9208(arg0, arg0->unk20);
@@ -12063,19 +12078,19 @@ void func_800AF4DC(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800AF740(struct_8018D9E0_entry* arg0) {
+void func_800AF740(MenuItem* arg0) {
     UNUSED s32 pad;
     s32 temp_v0;
-    struct_802850C0_entry* temp_v1;
+    CreditRenderInformation* temp_v1;
 
     temp_v0 = arg0->type - 0x190;
-    temp_v1 = &D_802850C0[temp_v0];
+    temp_v1 = &gTextCreaditRenderInformation[temp_v0];
     arg0->row = temp_v1->row;
     switch (arg0->state) {
         case 0:
             arg0->column = temp_v1->startingColumn;
             arg0->state = 1;
-            arg0->unk20 = temp_v1->columnExtra - (get_string_width(D_802854B0[temp_v0]) * temp_v1->textScaling / 2);
+            arg0->unk20 = temp_v1->columnExtra - (get_string_width(gTextCredit[temp_v0]) * temp_v1->textScaling / 2);
             /* fallthrough */
         case 1:
             func_800A9208(arg0, arg0->unk20);

@@ -19,9 +19,9 @@ typedef struct {
     /* 0x0C */ s8 slideDirection; // 0 for slide right, 1 for slide left. May have other uses/effects
     /* 0x0D */ s8 textColor;
     /* 0x0E */ s16 padding; // Always seems to be 0, never read (that I can see)
-} struct_802850C0_entry;    // size = 0x10
+} CreditRenderInformation;  // size = 0x10
 
-extern struct_802850C0_entry D_802850C0[]; // D_802850C0
-extern char* D_802854B0[];
+extern CreditRenderInformation gTextCreaditRenderInformation[]; // gTextCreaditRenderInformation
+extern char* gTextCredit[];
 
 #endif

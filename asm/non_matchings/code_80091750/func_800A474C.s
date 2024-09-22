@@ -15,7 +15,7 @@ glabel D_800F1DC8
 
 .section .text
 
-glabel func_800A474C
+glabel render_player_time
 /* 0A534C 800A474C 27BDFFB0 */  addiu $sp, $sp, -0x50
 /* 0A5350 800A4750 3C0E800E */  lui   $t6, %hi(gGamestate) # $t6, 0x800e
 /* 0A5354 800A4754 8DCEC50C */  lw    $t6, %lo(gGamestate)($t6)
@@ -206,7 +206,7 @@ glabel func_800A474C
 /* 0A55FC 800A49FC 8FA50058 */  lw    $a1, 0x58($sp)
 /* 0A5600 800A4A00 00003825 */  move  $a3, $zero
 /* 0A5604 800A4A04 E7B40010 */  swc1  $f20, 0x10($sp)
-/* 0A5608 800A4A08 0C024DBB */  jal   draw_text
+/* 0A5608 800A4A08 0C024DBB */  jal   print_text1_center_mode_1
 /* 0A560C 800A4A0C E7B40014 */   swc1  $f20, 0x14($sp)
 /* 0A5610 800A4A10 8FBF0024 */  lw    $ra, 0x24($sp)
 /* 0A5614 800A4A14 D7B40018 */  ldc1  $f20, 0x18($sp)

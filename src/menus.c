@@ -213,7 +213,7 @@ void update_menus(void) {
 // navigation of the options menu
 void options_menu_act(struct Controller* controller, u16 arg1) {
     u16 btnAndStick; // sp3E
-    struct_8018D9E0_entry* sp38;
+    MenuItem* sp38;
     s32 res;
     struct_8018EE10_entry* sp30;
     bool sp2C; // cursorWasMoved or communicateStoredAction
@@ -663,7 +663,7 @@ void data_menu_act(struct Controller* controller, UNUSED u16 arg1) {
 
 void course_data_menu_act(struct Controller* controller, UNUSED u16 arg1) {
     u16 btnAndStick; // sp2E
-    struct_8018D9E0_entry* sp28;
+    MenuItem* sp28;
     CourseTimeTrialRecords* sp24;
     s32 res;
 
