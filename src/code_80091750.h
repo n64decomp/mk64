@@ -114,33 +114,33 @@ enum CenterText {
 
 enum D_8018D9E0_type {
     D_8018D9E0_TYPE_NULL,
-    D_8018D9E0_TYPE_001,
-    D_8018D9E0_TYPE_002,
-    D_8018D9E0_TYPE_003,
-    D_8018D9E0_TYPE_004,
-    D_8018D9E0_TYPE_005,
-    D_8018D9E0_TYPE_00A = 0xA,
+    START_MENU_BACKGROUND,
+    START_MENU_LOGO_AND_COPYRIGHT,
+    START_MENU_PUSH_START_BUTTON,
+    UNUSED_TYPE_004,
+    START_MENU_TEXT_BOX,
+    MAIN_MENU_GAME_SELECT = 0xA,
     D_8018D9E0_TYPE_00B,
     D_8018D9E0_TYPE_00C,
     D_8018D9E0_TYPE_00D,
-    D_8018D9E0_TYPE_00E,
-    D_8018D9E0_TYPE_00F,
-    D_8018D9E0_TYPE_010,
-    D_8018D9E0_TYPE_011,
-    D_8018D9E0_TYPE_012,
-    D_8018D9E0_TYPE_013,
-    D_8018D9E0_TYPE_014,
+    MAIN_MENU_4P_GAME,
+    MAIN_MENU_OK,
+    MAIN_MENU_OPTION,
+    MAIN_MENU_DATA,
+    MAIN_MENU_50CC,
+    MAIN_MENU_100CC,
+    MAIN_MENU_150CC,
     D_8018D9E0_TYPE_015,
     D_8018D9E0_TYPE_016,
     D_8018D9E0_TYPE_017,
-    D_8018D9E0_TYPE_018,
-    D_8018D9E0_TYPE_019,
+    MAIN_MENU_TIME_TRIALS_BEGIN,
+    MAIN_MENU_TIME_TRIALS_DATA,
     D_8018D9E0_TYPE_01B = 0x1B,
-    D_8018D9E0_TYPE_023 = 0x23,
+    MAIN_MENU_BACKGROUND = 0x23,
     D_8018D9E0_TYPE_024,
     D_8018D9E0_TYPE_025,
-    D_8018D9E0_TYPE_02A = 0x2A,
-    D_8018D9E0_TYPE_02B,
+    CHARACTER_SELECT_MENU_PLAYER_SELECT_BANNER = 0x2A,
+    CHARACTER_SELECT_MENU_MARIO,
     D_8018D9E0_TYPE_02C,
     D_8018D9E0_TYPE_02D,
     D_8018D9E0_TYPE_02E,
@@ -148,8 +148,8 @@ enum D_8018D9E0_type {
     D_8018D9E0_TYPE_030,
     D_8018D9E0_TYPE_031,
     D_8018D9E0_TYPE_032,
-    D_8018D9E0_TYPE_033,
-    D_8018D9E0_TYPE_034,
+    CHARACTER_SELECT_MENU_OK,
+    CHARACTER_SELECT_MENU_1P_CURSOR,
     D_8018D9E0_TYPE_035,
     D_8018D9E0_TYPE_036,
     D_8018D9E0_TYPE_037,
@@ -161,8 +161,8 @@ enum D_8018D9E0_type {
     D_8018D9E0_TYPE_048,
     D_8018D9E0_TYPE_049,
     D_8018D9E0_TYPE_050 = 0x50,
-    D_8018D9E0_TYPE_052 = 0x52,
-    D_8018D9E0_TYPE_053,
+    COURSE_SELECT_MAP_SELECT = 0x52,
+    COURSE_SELECT_MUSHROOM_CUP,
     D_8018D9E0_TYPE_054,
     D_8018D9E0_TYPE_055,
     D_8018D9E0_TYPE_056,
@@ -241,8 +241,8 @@ enum D_8018D9E0_type {
     D_8018D9E0_TYPE_0EA,
     D_8018D9E0_TYPE_0F0 = 0xF0,
     D_8018D9E0_TYPE_0F1,
-    D_8018D9E0_TYPE_0FA = 0xFA,
-    D_8018D9E0_TYPE_0FB,
+    LOGO_INTRO_MENU_LOGO = 0xFA,
+    START_MENU_FLAG,
     D_8018D9E0_TYPE_10E = 0x10E,
     D_8018D9E0_TYPE_12B = 0X12B,
     D_8018D9E0_TYPE_12C,
@@ -376,7 +376,7 @@ void func_800942D0(void);
 void func_80094660(struct GfxPool*, s32);
 void func_800947B4(struct GfxPool*, s32);
 void func_80094A64(struct GfxPool*);
-void func_80094C60(void);
+void render_menus(void);
 void func_80095574(void);
 Gfx* draw_flash_select_case(Gfx*, s32, s32, s32, s32, s32);
 Gfx* draw_flash_select_case_slow(Gfx*, s32, s32, s32, s32);
@@ -400,11 +400,11 @@ Gfx* func_80098FC8(Gfx*, s32, s32, s32, s32);
 void dma_copy_base_729a30(u64*, size_t, void*);
 void dma_copy_base_7fa3c0(u64*, size_t, void*);
 void func_80099110(void);
-void func_80099184(MkTexture*);
+void load_menu_img(MkTexture*);
 void* segmented_to_virtual_dupe(const void*);
 void* segmented_to_virtual_dupe_2(const void*);
-void func_8009969C(MkTexture*);
-void func_800996BC(MkTexture*, s32);
+void load_img_wrap(MkTexture*);
+void load_menu_img2(MkTexture*, s32);
 void func_80099958(MkTexture*, s32, s32);
 void func_80099E54(void);
 void func_80099E60(MkTexture*, s32, s32);
@@ -415,7 +415,7 @@ void func_80099AEC(void);
 void func_8009A238(MkTexture*, s32);
 void func_8009A2F0(struct_8018E0E8_entry*);
 void func_8009A344(void);
-s32 func_8009A374(MkAnimation*);
+s32 animate_character_select_menu(MkAnimation*);
 s32 func_8009A478(MkAnimation*, s32);
 void func_8009A594(s32, s32, MkAnimation*);
 void func_8009A640(s32, s32, s32, MkAnimation*);
@@ -427,8 +427,8 @@ MkTexture* func_8009A944(struct_8018DEE0_entry*, s32);
 void func_8009A9FC(s32, s32, u32, s32);
 void func_8009AB7C(s32);
 void func_8009AD78(s32, s32);
-void func_8009B0A4(s32, u32);
-void func_8009B538(s32, s32, s32, s32, s32);
+void convert_img_to_greyscale(s32, u32);
+void adjust_img_colour(s32, s32, s32, s32, s32);
 u16* func_8009B8C4(u64*);
 void func_8009B938(void);
 void func_8009B954(MkTexture*);
@@ -474,7 +474,7 @@ void func_8009E2F0(s32);
 void func_8009E5BC(void);
 void func_8009E5FC(s32);
 void func_8009E620(void);
-void add_8018D9E0_entry(s32, s32, s32, s8);
+void add_ui_element(s32, s32, s32, s8);
 void func_8009F5E0(MenuItem*);
 void func_800A08D8(u8, s32, s32);
 s32 func_800A095C(char*, s32, s32, s32);
@@ -657,7 +657,7 @@ extern MenuItem D_8018D9E0[D_8018D9E0_SIZE];
 extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
 extern struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
 extern struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
-extern s32 gD_8018E118TotalSize;
+extern s32 gMenuTextureBufferIndex;
 extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
 extern s32 gNumD_8018E118Entries;
 extern Gfx* D_8018E75C;

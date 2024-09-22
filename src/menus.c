@@ -157,7 +157,7 @@ void update_menus(void) {
                         func_800CA330(0x19);
                         // deliberate (?) fallthru
                     case MAIN_MENU:
-                    case PLAYER_SELECT_MENU:
+                    case CHARACTER_SELECT_MENU:
                         play_sound2(SOUND_MENU_OK_CLICKED);
                         break;
                 }
@@ -198,7 +198,7 @@ void update_menus(void) {
                     main_menu_act(&gControllers[controllerIdx], controllerIdx);
                     break;
                 case PLAYER_SELECT_MENU_FROM_QUIT:
-                case PLAYER_SELECT_MENU:
+                case CHARACTER_SELECT_MENU:
                     player_select_menu_act(&gControllers[controllerIdx], controllerIdx);
                     break;
                 case COURSE_SELECT_MENU_FROM_QUIT:
