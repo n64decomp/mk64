@@ -2378,11 +2378,11 @@ void render_menus(void) {
                     add_ui_element(COURSE_SELECT_STAR_CUP, 0, 0, D_8018D9E0_PRIORITY_4);
                     add_ui_element(COURSE_SELECT_SPECIAL_CUP, 0, 0, D_8018D9E0_PRIORITY_4);
                     add_ui_element(D_8018D9E0_TYPE_058, 0, 0, D_8018D9E0_PRIORITY_6);
-                    add_ui_element(D_8018D9E0_TYPE_059, 0, 0, D_8018D9E0_PRIORITY_6);
+                    add_ui_element(COURSE_SELECT_COURSE_NAMES, 0, 0, D_8018D9E0_PRIORITY_6);
                     add_ui_element(D_8018D9E0_TYPE_05A, 0, 0, D_8018D9E0_PRIORITY_6);
                     add_ui_element(D_8018D9E0_TYPE_05B, 0, 0, D_8018D9E0_PRIORITY_6);
                 } else {
-                    add_ui_element(D_8018D9E0_TYPE_05C, 0, 0, D_8018D9E0_PRIORITY_6);
+                    add_ui_element(COURSE_SELECT_BATTLE_NAMES, 0, 0, D_8018D9E0_PRIORITY_6);
                     add_ui_element(D_8018D9E0_TYPE_06E, 0, 0, D_8018D9E0_PRIORITY_6);
                 }
                 add_ui_element(D_8018D9E0_TYPE_064, 0, 0, D_8018D9E0_PRIORITY_6);
@@ -2390,7 +2390,7 @@ void render_menus(void) {
                 add_ui_element(D_8018D9E0_TYPE_060, 0, 0, D_8018D9E0_PRIORITY_6);
                 add_ui_element(D_8018D9E0_TYPE_061, 0, 0, D_8018D9E0_PRIORITY_6);
                 add_ui_element(D_8018D9E0_TYPE_062, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_ui_element(D_8018D9E0_TYPE_05D, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(COURSE_SELECT_OK, 0, 0, D_8018D9E0_PRIORITY_6);
                 add_ui_element(D_8018D9E0_TYPE_05E, 0, 0, D_8018D9E0_PRIORITY_8);
                 if (gModeSelection == TIME_TRIALS) {
                     add_ui_element(D_8018D9E0_TYPE_065, 0, 0, D_8018D9E0_PRIORITY_8);
@@ -5524,7 +5524,7 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
         case 0xA1:
             var_ra->D_8018DEE0_index = animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E8320[type - 0xA0]));
             break;
-        case 0x5D:
+        case COURSE_SELECT_OK:
             var_ra->unk1C = 0x00000020;
             /* fallthrough */
         case COURSE_SELECT_MAP_SELECT:
@@ -5533,10 +5533,10 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
         case COURSE_SELECT_STAR_CUP:
         case COURSE_SELECT_SPECIAL_CUP:
         case 0x58:
-        case 0x59:
+        case COURSE_SELECT_COURSE_NAMES:
         case 0x5A:
         case 0x5B:
-        case 0x5C:
+        case COURSE_SELECT_BATTLE_NAMES:
             load_menu_img2(segmented_to_virtual_dupe(D_800E82C4[type - 0x52]), 0);
             break;
         case 0x5F:
@@ -5993,9 +5993,9 @@ void func_8009F5E0(MenuItem* arg0) {
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004B4C, arg0->column, arg0->row);
                 break;
             case CHARACTER_SELECT_MENU_1P_CURSOR: /* switch 6 */
-            case D_8018D9E0_TYPE_035: /* switch 6 */
-            case D_8018D9E0_TYPE_036: /* switch 6 */
-            case D_8018D9E0_TYPE_037: /* switch 6 */
+            case CHARACTER_SELECT_MENU_2P_CURSOR: /* switch 6 */
+            case CHARACTER_SELECT_MENU_3P_CURSOR: /* switch 6 */
+            case CHARACTER_SELECT_MENU_4P_CURSOR: /* switch 6 */
                 temp_a0 = arg0->type - 0x34;
                 if (gCharacterGridSelections[temp_a0]) {
                     if (D_8018EDE8[temp_a0] == 0) {
@@ -6031,10 +6031,10 @@ void func_8009F5E0(MenuItem* arg0) {
                 func_8009A76C(arg0->D_8018DEE0_index, arg0->column, arg0->row, arg0->unk1C);
                 break;
             case D_8018D9E0_TYPE_058: /* switch 6 */
-            case D_8018D9E0_TYPE_059: /* switch 6 */
+            case COURSE_SELECT_COURSE_NAMES: /* switch 6 */
             case D_8018D9E0_TYPE_05A: /* switch 6 */
             case D_8018D9E0_TYPE_05B: /* switch 6 */
-            case D_8018D9E0_TYPE_05C: /* switch 6 */
+            case COURSE_SELECT_BATTLE_NAMES: /* switch 6 */
                 func_800A8A98(arg0);
                 gDisplayListHead =
                     func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82C4[arg0->type - 0x52]),
@@ -6060,7 +6060,7 @@ void func_8009F5E0(MenuItem* arg0) {
                 func_800A890C(var_a1, arg0);
                 func_800A143C(arg0, var_a1);
                 break;
-            case D_8018D9E0_TYPE_05D: /* switch 6 */
+            case COURSE_SELECT_OK: /* switch 6 */
                 func_800A8564(arg0);
                 gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004E80, arg0->column, arg0->row, 2, arg0->unk1C);
                 break;
@@ -8579,9 +8579,9 @@ void func_800A7A4C(s32 arg0) {
                 func_800AA2EC(var_s1);
                 break;
             case CHARACTER_SELECT_MENU_1P_CURSOR: /* switch 8 */
-            case D_8018D9E0_TYPE_035: /* switch 8 */
-            case D_8018D9E0_TYPE_036: /* switch 8 */
-            case D_8018D9E0_TYPE_037: /* switch 8 */
+            case CHARACTER_SELECT_MENU_2P_CURSOR: /* switch 8 */
+            case CHARACTER_SELECT_MENU_3P_CURSOR: /* switch 8 */
+            case CHARACTER_SELECT_MENU_4P_CURSOR: /* switch 8 */
                 func_800AADD4(var_s1);
                 break;
             case CHARACTER_SELECT_MENU_MARIO: /* switch 8 */
@@ -8617,7 +8617,7 @@ void func_800A7A4C(s32 arg0) {
                 func_800AAE18(var_s1);
                 break;
             case CHARACTER_SELECT_MENU_OK: /* switch 8 */
-            case D_8018D9E0_TYPE_05D: /* switch 8 */
+            case COURSE_SELECT_OK: /* switch 8 */
                 func_800A9A98(var_s1);
                 break;
             case COURSE_SELECT_MUSHROOM_CUP: /* switch 8 */
@@ -8636,7 +8636,7 @@ void func_800A7A4C(s32 arg0) {
                 }
                 break;
             case D_8018D9E0_TYPE_058: /* switch 8 */
-            case D_8018D9E0_TYPE_059: /* switch 8 */
+            case COURSE_SELECT_COURSE_NAMES: /* switch 8 */
             case D_8018D9E0_TYPE_05A: /* switch 8 */
             case D_8018D9E0_TYPE_05B: /* switch 8 */
                 func_800AB260(var_s1);
