@@ -1380,7 +1380,7 @@ void main_menu_act(struct Controller* controller, u16 arg1) {
                 // L800B3068
                 if (btnAndStick & D_JPAD) {
                     sp24 = false;
-                    if (func_800B555C()) {
+                    if (has_terminate_150cc()) {
                         if (sp28 < gGameModePlayerColumnExtra[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1] + 1]) {
                             sp24 = true;
                         }

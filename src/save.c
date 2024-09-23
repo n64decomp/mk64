@@ -423,21 +423,21 @@ u8 func_800B5508(s32 cup, s32 ccGrandPrixPoints, s32 points_scored) {
 
 // Check if all 4 cups have gold cups scored
 // for a given CC mode
-s32 func_800B5530(s32 cc_mode) {
+bool has_terminate_cc_mode(s32 cc_mode) {
     if (gSaveData.main.saveInfo.grandPrixPoints[cc_mode] == 0xFF) {
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
 
 // Check if the 150CC mode has all 4 gold cups
-s32 func_800B555C(void) {
-    return func_800B5530(CC_150);
+s32 has_terminate_150cc(void) {
+    return has_terminate_cc_mode(CC_150);
 }
 
 // Check if the Extra mode has all 4 gold cups
-s32 func_800B557C(void) {
-    return func_800B5530(CC_EXTRA);
+s32 has_terminate_cc_extra(void) {
+    return has_terminate_cc_mode(CC_EXTRA);
 }
 
 void func_800B559C(s32 arg0) {
