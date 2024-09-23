@@ -37,7 +37,7 @@ typedef struct {
     /* 0x20 */ s32 unk20; // Multi use, hard to tell what for though. Sometimes a random number, sometimes GP points
     /* 0x24 */ f32 unk24; // Multi use, x scaling for some things, rotation multiplier for the question box in some
                           // menus, probably some other things
-} MenuItem;  // size = 0x28
+} MenuItem;               // size = 0x28
 
 typedef struct {
     /* 0x00 */ MkAnimation* textureSequence;
