@@ -195,7 +195,7 @@ glabel L8009F6CC
 glabel L8009F6E4
 /* 0A02E4 8009F6E4 3C048015 */  lui   $a0, %hi(gGfxPool) # $a0, 0x8015
 /* 0A02E8 8009F6E8 8C84EF40 */  lw    $a0, %lo(gGfxPool)($a0)
-/* 0A02EC 8009F6EC 0C0251ED */  jal   func_800947B4
+/* 0A02EC 8009F6EC 0C0251ED */  jal   render_checkered_flag
 /* 0A02F0 8009F6F0 8E25001C */   lw    $a1, 0x1c($s1)
 /* 0A02F4 8009F6F4 10000474 */  b     .L800A08C8
 /* 0A02F8 8009F6F8 8FBF0034 */   lw    $ra, 0x34($sp)

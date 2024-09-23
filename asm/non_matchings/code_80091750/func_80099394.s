@@ -10,14 +10,14 @@ glabel func_80099394
 /* 099FB4 800993B4 0C026449 */  jal   segmented_to_virtual_dupe
 /* 099FB8 800993B8 AFB00018 */   sw    $s0, 0x18($sp)
 /* 099FBC 800993BC 8C4E0004 */  lw    $t6, 4($v0)
-/* 099FC0 800993C0 3C168019 */  lui   $s6, %hi(D_8018D9B0) # $s6, 0x8019
+/* 099FC0 800993C0 3C168019 */  lui   $s6, %hi(gMenuTextureBuffer) # $s6, 0x8019
 /* 099FC4 800993C4 00409025 */  move  $s2, $v0
 /* 099FC8 800993C8 11C0004E */  beqz  $t6, .L80099504
-/* 099FCC 800993CC 26D6D9B0 */   addiu $s6, %lo(D_8018D9B0) # addiu $s6, $s6, -0x2650
+/* 099FCC 800993CC 26D6D9B0 */   addiu $s6, %lo(gMenuTextureBuffer) # addiu $s6, $s6, -0x2650
 /* 099FD0 800993D0 3C148019 */  lui   $s4, %hi(gNumD_8018E118Entries) # $s4, 0x8019
 /* 099FD4 800993D4 3C138019 */  lui   $s3, %hi(gMenuTextureBufferIndex) # $s3, 0x8019
-/* 099FD8 800993D8 3C118019 */  lui   $s1, %hi(D_8018E118) # $s1, 0x8019
-/* 099FDC 800993DC 2631E118 */  addiu $s1, %lo(D_8018E118) # addiu $s1, $s1, -0x1ee8
+/* 099FD8 800993D8 3C118019 */  lui   $s1, %hi(sMenuTextureMap) # $s1, 0x8019
+/* 099FDC 800993DC 2631E118 */  addiu $s1, %lo(sMenuTextureMap) # addiu $s1, $s1, -0x1ee8
 /* 099FE0 800993E0 2673E110 */  addiu $s3, %lo(gMenuTextureBufferIndex) # addiu $s3, $s3, -0x1ef0
 /* 099FE4 800993E4 2694E758 */  addiu $s4, %lo(gNumD_8018E118Entries) # addiu $s4, $s4, -0x18a8
 /* 099FE8 800993E8 24150005 */  li    $s5, 5

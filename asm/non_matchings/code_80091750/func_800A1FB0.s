@@ -460,14 +460,14 @@ glabel L800A23DC
 /* 0A319C 800A259C E7B60014 */   swc1  $f22, 0x14($sp)
 /* 0A31A0 800A25A0 2401002A */  li    $at, 42
 /* 0A31A4 800A25A4 16610006 */  bne   $s3, $at, .L800A25C0
-/* 0A31A8 800A25A8 3C0F8019 */   lui   $t7, %hi(D_8018D9C0) # $t7, 0x8019
+/* 0A31A8 800A25A8 3C0F8019 */   lui   $t7, %hi(gSomeDLBuffer) # $t7, 0x8019
 /* 0A31AC 800A25AC 3C0E8019 */  lui   $t6, %hi(D_8018EE10) # $t6, 0x8019
 /* 0A31B0 800A25B0 25CEEE10 */  addiu $t6, %lo(D_8018EE10) # addiu $t6, $t6, -0x11f0
 /* 0A31B4 800A25B4 001069C0 */  sll   $t5, $s0, 7
 /* 0A31B8 800A25B8 10000004 */  b     .L800A25CC
 /* 0A31BC 800A25BC 01AE1821 */   addu  $v1, $t5, $t6
 .L800A25C0:
-/* 0A31C0 800A25C0 8DEFD9C0 */  lw    $t7, %lo(D_8018D9C0)($t7)
+/* 0A31C0 800A25C0 8DEFD9C0 */  lw    $t7, %lo(gSomeDLBuffer)($t7)
 /* 0A31C4 800A25C4 0010C1C0 */  sll   $t8, $s0, 7
 /* 0A31C8 800A25C8 01F81821 */  addu  $v1, $t7, $t8
 .L800A25CC:
@@ -653,14 +653,14 @@ glabel L800A26A8
 /* 0A3458 800A2858 E7B60014 */   swc1  $f22, 0x14($sp)
 /* 0A345C 800A285C 2401002A */  li    $at, 42
 /* 0A3460 800A2860 16610006 */  bne   $s3, $at, .L800A287C
-/* 0A3464 800A2864 3C098019 */   lui   $t1, %hi(D_8018D9C0) # $t1, 0x8019
+/* 0A3464 800A2864 3C098019 */   lui   $t1, %hi(gSomeDLBuffer) # $t1, 0x8019
 /* 0A3468 800A2868 3C0A8019 */  lui   $t2, %hi(D_8018EE10) # $t2, 0x8019
 /* 0A346C 800A286C 254AEE10 */  addiu $t2, %lo(D_8018EE10) # addiu $t2, $t2, -0x11f0
 /* 0A3470 800A2870 001041C0 */  sll   $t0, $s0, 7
 /* 0A3474 800A2874 10000004 */  b     .L800A2888
 /* 0A3478 800A2878 010A1821 */   addu  $v1, $t0, $t2
 .L800A287C:
-/* 0A347C 800A287C 8D29D9C0 */  lw    $t1, %lo(D_8018D9C0)($t1)
+/* 0A347C 800A287C 8D29D9C0 */  lw    $t1, %lo(gSomeDLBuffer)($t1)
 /* 0A3480 800A2880 001059C0 */  sll   $t3, $s0, 7
 /* 0A3484 800A2884 012B1821 */  addu  $v1, $t1, $t3
 .L800A2888:
@@ -871,14 +871,14 @@ glabel L800A29D0
 /* 0A3774 800A2B74 E7B60014 */   swc1  $f22, 0x14($sp)
 /* 0A3778 800A2B78 2401002A */  li    $at, 42
 /* 0A377C 800A2B7C 16610006 */  bne   $s3, $at, .L800A2B98
-/* 0A3780 800A2B80 3C0A8019 */   lui   $t2, %hi(D_8018D9C0) # $t2, 0x8019
+/* 0A3780 800A2B80 3C0A8019 */   lui   $t2, %hi(gSomeDLBuffer) # $t2, 0x8019
 /* 0A3784 800A2B84 3C088019 */  lui   $t0, %hi(D_8018EE10) # $t0, 0x8019
 /* 0A3788 800A2B88 2508EE10 */  addiu $t0, %lo(D_8018EE10) # addiu $t0, $t0, -0x11f0
 /* 0A378C 800A2B8C 0010C9C0 */  sll   $t9, $s0, 7
 /* 0A3790 800A2B90 10000004 */  b     .L800A2BA4
 /* 0A3794 800A2B94 03281821 */   addu  $v1, $t9, $t0
 .L800A2B98:
-/* 0A3798 800A2B98 8D4AD9C0 */  lw    $t2, %lo(D_8018D9C0)($t2)
+/* 0A3798 800A2B98 8D4AD9C0 */  lw    $t2, %lo(gSomeDLBuffer)($t2)
 /* 0A379C 800A2B9C 001049C0 */  sll   $t1, $s0, 7
 /* 0A37A0 800A2BA0 01491821 */  addu  $v1, $t2, $t1
 .L800A2BA4:

@@ -13,10 +13,10 @@ glabel func_80099EC4
 /* 09AAF0 80099EF0 AFB20030 */  sw    $s2, 0x30($sp)
 /* 09AAF4 80099EF4 AFB00028 */  sw    $s0, 0x28($sp)
 /* 09AAF8 80099EF8 8E320000 */  lw    $s2, ($s1)
-/* 09AAFC 80099EFC 3C138019 */  lui   $s3, %hi(D_8018D9B4) # $s3, 0x8019
+/* 09AAFC 80099EFC 3C138019 */  lui   $s3, %hi(gMenuCompressedBuffer) # $s3, 0x8019
 /* 09AB00 80099F00 0000A025 */  move  $s4, $zero
 /* 09AB04 80099F04 124000C0 */  beqz  $s2, .L8009A208
-/* 09AB08 80099F08 2673D9B4 */   addiu $s3, %lo(D_8018D9B4) # addiu $s3, $s3, -0x264c
+/* 09AB08 80099F08 2673D9B4 */   addiu $s3, %lo(gMenuCompressedBuffer) # addiu $s3, $s3, -0x264c
 /* 09AB0C 80099F0C 96430010 */  lhu   $v1, 0x10($s2)
 /* 09AB10 80099F10 24101400 */  li    $s0, 5120
 /* 09AB14 80099F14 10600003 */  beqz  $v1, .L80099F24

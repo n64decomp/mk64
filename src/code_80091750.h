@@ -28,7 +28,7 @@ typedef struct {
     /* 0x0C */ s32 column;
     /* 0x10 */ s32 row;
     /* 0x14 */ u8 priority; // priority/depth/z-level. Higher values are drawn on top of lower values
-                            // If equal, later entries in D_8018D9E0 are on top
+                            // If equal, later entries in gMenuItems are on top
     /* 0x15 */ u8 visible;  // active? If 1 its displayed, if 0 its not
     // These seem to be generic space available for use by the struct, no 1 purpose for any given member
     /* 0x16 */ s16 unk16;            // Potentially unused
@@ -44,7 +44,7 @@ typedef struct {
     /* 0x04 */ s32 sequenceIndex;    // Index in textureSequence that the animation is currently on
     /* 0x08 */ s32 frameCountDown;   // Frames left for the given animation part
     /* 0x0C */ u32 visible;          // visbile if 0x80000000, otherwise invisbile AND paused
-    /* 0x10 */ s32 D_8018E118_index; // Don't know what D_8018E118 tracks
+    /* 0x10 */ s32 D_8018E118_index; // Don't know what sMenuTextureMap tracks
     /* 0x14 */ s32 unk14;            // Flip flops between 0 and 1, use unknown
 } struct_8018DEE0_entry;             // size = 0x18
 
@@ -63,12 +63,12 @@ typedef struct {
     /* 0x00 */ u64* textureData; // This should be interpreted as a segmented address
                                  /**
                                   * Its hard to tell what exactly what this is meant to be,
-                                  * but it appears to be used as some sort of offset/index from the address stored in D_8018D9B0.
+                                  * but it appears to be used as some sort of offset/index from the address stored in gMenuTextureBuffer.
                                   * This value is (roughly) the sum of (width * height) of the
-                                  * textures in all the previous entries in D_8018E118
+                                  * textures in all the previous entries in sMenuTextureMap
                                   */
     /* 0x04 */ s32 offset;
-} struct_8018E118_entry; // size = 0x08
+} TextureMap; // size = 0x08
 
 typedef struct {
     /* 0x00 */ MkTexture* textures;
@@ -374,7 +374,7 @@ void func_80093F10(void);
 void func_800940EC(s32);
 void func_800942D0(void);
 void func_80094660(struct GfxPool*, s32);
-void func_800947B4(struct GfxPool*, s32);
+void render_checkered_flag(struct GfxPool*, s32);
 void func_80094A64(struct GfxPool*);
 void render_menus(void);
 void func_80095574(void);
@@ -630,11 +630,11 @@ void tkmk00decode(u8*, u8*, u8*, s32);
 
 /* File specific defines */
 
-#define D_8018D9E0_SIZE 0x20
+#define MENU_ITEMS_MAX 0x20
 #define D_8018DEE0_SIZE 0x10
 #define D_8018E060_SIZE 0x10
 #define D_8018E0E8_SIZE 0x05
-#define D_8018E118_SIZE 0xC8
+#define TEXTURE_MAP_MAX 0xC8
 #define D_8018E768_SIZE 0x08
 #define D_8018E7E8_SIZE 0x05
 #define D_8018E810_SIZE 0x05
@@ -644,23 +644,23 @@ void tkmk00decode(u8*, u8*, u8*, s32);
 extern s32 D_800DDB24;
 extern s16 D_80164478[];
 
-extern u16* D_8018D9B0;
-extern u8* D_8018D9B4;
-extern u8* D_8018D9B8;
-extern u8* D_8018D9BC;
-extern void* D_8018D9C0;
+extern u16* gMenuTextureBuffer;
+extern u8* gMenuCompressedBuffer;
+extern u8* sTKMK00_LowResBuffer;
+extern u8* sGPPointsCopy;
+extern void* gSomeDLBuffer;
 extern s8 gGPPointsByCharacterId[8];
 extern s8 gCharacterIdByGPOverallRank[];
 extern s8 D_8018D9D8;
 extern s8 D_8018D9D9;
-extern MenuItem D_8018D9E0[D_8018D9E0_SIZE];
+extern MenuItem gMenuItems[MENU_ITEMS_MAX];
 extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
 extern struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
 extern struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
 extern s32 gMenuTextureBufferIndex;
-extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
+extern TextureMap sMenuTextureMap[TEXTURE_MAP_MAX];
 extern s32 gNumD_8018E118Entries;
-extern Gfx* D_8018E75C;
+extern Gfx* sGfxPtr;
 extern s32 gNumD_8018E768Entries;
 extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
 extern s32 gCycleFlashMenu;
