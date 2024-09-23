@@ -37,11 +37,11 @@
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
 
-u16* D_8018D9B0;
-u8* D_8018D9B4;
-u8* D_8018D9B8;
-u8* D_8018D9BC;
-void* D_8018D9C0;
+u16* gMenuTextureBuffer;
+u8* gMenuCompressedBuffer;
+u8* sTKMK00_LowResBuffer;
+u8* sGPPointsCopy;
+void* gSomeDLBuffer;
 /**
  * List of bytes indexed by character ID
  * Indicates number of Grand Prix points that character
@@ -51,15 +51,15 @@ s8 gGPPointsByCharacterId[8];
 s8 gCharacterIdByGPOverallRank[8];
 s8 D_8018D9D8;
 s8 D_8018D9D9;
-MenuItem D_8018D9E0[D_8018D9E0_SIZE];
+MenuItem gMenuItems[MENU_ITEMS_MAX];
 struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
 struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
 UNUSED u8 code_80091750_bss_padding0[8];
 struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
-s32 gD_8018E118TotalSize;
-struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
+s32 gMenuTextureBufferIndex;
+static TextureMap sMenuTextureMap[TEXTURE_MAP_MAX];
 s32 gNumD_8018E118Entries;
-Gfx* D_8018E75C;
+Gfx* sGfxPtr;
 s32 gNumD_8018E768Entries;
 struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
 s32 gCycleFlashMenu;
@@ -1183,10 +1183,10 @@ void func_80091B78(void) {
     }
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     // Hypothetically, this should be a ptr... But only hypothetically.
-    D_8018D9B0 = get_next_available_memory_addr(0x000900B0);
-    D_8018D9B4 = (u8*) get_next_available_memory_addr(0x0000CE00);
-    D_8018D9B8 = (u8*) get_next_available_memory_addr(0x00012C00);
-    D_8018D9C0 = (struct_8018EE10_entry*) get_next_available_memory_addr(0x00001000);
+    gMenuTextureBuffer = get_next_available_memory_addr(0x000900B0);
+    gMenuCompressedBuffer = (u8*) get_next_available_memory_addr(0x0000CE00);
+    sTKMK00_LowResBuffer = (u8*) get_next_available_memory_addr(SCREEN_WIDTH * SCREEN_HEIGHT);
+    gSomeDLBuffer = (struct_8018EE10_entry*) get_next_available_memory_addr(0x00001000);
     func_800AF9B0();
     D_8018EE0C = 0;
 
@@ -1203,7 +1203,7 @@ void func_80091B78(void) {
     D_800DC5EC->screenWidth = SCREEN_WIDTH;
     D_800DC5EC->screenHeight = SCREEN_HEIGHT;
     D_800E86A4 = 1;
-    func_80094C60();
+    render_menus();
 
     for (i = 0; i < 4; i++) {
         func_800C97C4((u8) i);
@@ -1281,10 +1281,10 @@ void func_80091FA4(void) {
     s32 i;
 
     //! @todo These sizes need to be sizeof() for shiftability if possible
-    D_8018D9B4 = (u8*) get_next_available_memory_addr(0x00002800);
-    D_8018D9B0 = (u16*) get_next_available_memory_addr(0x000124F8);
-    D_8018D9B8 = (u8*) get_next_available_memory_addr(0x00001000);
-    D_8018D9BC = get_next_available_memory_addr(4);
+    gMenuCompressedBuffer = (u8*) get_next_available_memory_addr(0x00002800);
+    gMenuTextureBuffer = (u16*) get_next_available_memory_addr(0x000124F8);
+    sTKMK00_LowResBuffer = (u8*) get_next_available_memory_addr(0x00001000);
+    sGPPointsCopy = get_next_available_memory_addr(4);
 
     for (i = 0; i < 5; i++) {
         D_8018E7AC[i] = 0;
@@ -1298,19 +1298,19 @@ void func_80091FA4(void) {
     func_8009A344();
     func_8009E620();
     func_80092258();
-    add_8018D9E0_entry(D_8018D9E0_TYPE_096, 0x00000064, 0x00000024, D_8018D9E0_PRIORITY_1);
-    add_8018D9E0_entry(D_8018D9E0_TYPE_097, 0x00000064, 0x000000DD, D_8018D9E0_PRIORITY_1);
-    add_8018D9E0_entry(D_8018D9E0_TYPE_098, 0, 0, D_8018D9E0_PRIORITY_0);
-    add_8018D9E0_entry(D_8018D9E0_TYPE_0C7, 0, 0, D_8018D9E0_PRIORITY_0);
+    add_ui_element(D_8018D9E0_TYPE_096, 0x00000064, 0x00000024, D_8018D9E0_PRIORITY_1);
+    add_ui_element(D_8018D9E0_TYPE_097, 0x00000064, 0x000000DD, D_8018D9E0_PRIORITY_1);
+    add_ui_element(D_8018D9E0_TYPE_098, 0, 0, D_8018D9E0_PRIORITY_0);
+    add_ui_element(D_8018D9E0_TYPE_0C7, 0, 0, D_8018D9E0_PRIORITY_0);
     if (gModeSelection == TIME_TRIALS) {
-        add_8018D9E0_entry(D_8018D9E0_TYPE_0BE, 0, 0, D_8018D9E0_PRIORITY_0);
-        add_8018D9E0_entry(D_8018D9E0_TYPE_10E, 0, 0, D_8018D9E0_PRIORITY_0);
+        add_ui_element(D_8018D9E0_TYPE_0BE, 0, 0, D_8018D9E0_PRIORITY_0);
+        add_ui_element(D_8018D9E0_TYPE_10E, 0, 0, D_8018D9E0_PRIORITY_0);
     }
     if ((D_8015F890 != 0) && (gModeSelection == TIME_TRIALS)) {
-        add_8018D9E0_entry(D_8018D9E0_TYPE_0BD, 0, 0, D_8018D9E0_PRIORITY_0);
+        add_ui_element(D_8018D9E0_TYPE_0BD, 0, 0, D_8018D9E0_PRIORITY_0);
     }
     if (!(gControllerBits & 1) && (D_8018EE08 != 0)) {
-        add_8018D9E0_entry(D_8018D9E0_TYPE_004, 0, 0, D_8018D9E0_PRIORITY_2);
+        add_ui_element(UNUSED_TYPE_004, 0, 0, D_8018D9E0_PRIORITY_2);
     }
     func_800B5F30();
 }
@@ -1421,22 +1421,22 @@ void func_80092500(void) {
 
     switch (gModeSelection) {
         case GRAND_PRIX:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_0AA, 0, 0, D_8018D9E0_PRIORITY_0);
+            add_ui_element(D_8018D9E0_TYPE_0AA, 0, 0, D_8018D9E0_PRIORITY_0);
             break;
         case TIME_TRIALS:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_0B9, 0, 0, D_8018D9E0_PRIORITY_0);
+            add_ui_element(D_8018D9E0_TYPE_0B9, 0, 0, D_8018D9E0_PRIORITY_0);
             break;
     }
 }
 
 void func_80092564(void) {
-    add_8018D9E0_entry(D_8018D9E0_TYPE_0AC, 0, 0, D_8018D9E0_PRIORITY_0);
+    add_ui_element(D_8018D9E0_TYPE_0AC, 0, 0, D_8018D9E0_PRIORITY_0);
     func_8005D18C();
     func_8001968C();
 }
 
 void func_800925A0(void) {
-    add_8018D9E0_entry(D_8018D9E0_TYPE_0AF, 0, 0, D_8018D9E0_PRIORITY_0);
+    add_ui_element(D_8018D9E0_TYPE_0AF, 0, 0, D_8018D9E0_PRIORITY_0);
 }
 
 void func_800925CC(void) {
@@ -1447,122 +1447,122 @@ void func_800925CC(void) {
 }
 
 void func_80092604(void) {
-    add_8018D9E0_entry(D_8018D9E0_TYPE_0B0, 0, 0, D_8018D9E0_PRIORITY_0);
+    add_ui_element(D_8018D9E0_TYPE_0B0, 0, 0, D_8018D9E0_PRIORITY_0);
 }
 
 void func_80092630(void) {
-    add_8018D9E0_entry(D_8018D9E0_TYPE_0BC, 0, 0, D_8018D9E0_PRIORITY_0);
+    add_ui_element(D_8018D9E0_TYPE_0BC, 0, 0, D_8018D9E0_PRIORITY_0);
 }
 
 void func_8009265C(void) {
-    add_8018D9E0_entry(D_8018D9E0_TYPE_12B, 0, 0, D_8018D9E0_PRIORITY_2);
+    add_ui_element(D_8018D9E0_TYPE_12B, 0, 0, D_8018D9E0_PRIORITY_2);
 }
 
 void func_80092688(void) {
     switch (D_800DC5E4) {
         case 0:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1CE, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1CE, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         default:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_190, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_191, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_190, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_191, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 2:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_192, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_193, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_192, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_193, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 3:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_194, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_195, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_194, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_195, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 4:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_196, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_197, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_196, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_197, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 5:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_198, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_199, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_19A, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_19B, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_198, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_199, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_19A, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_19B, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 6:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_198, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_19C, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_19D, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_19E, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_198, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_19C, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_19D, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_19E, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 7:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_19F, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1A0, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1A1, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1A2, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_19F, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1A0, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1A1, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1A2, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 8:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1A3, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1A4, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1A3, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1A4, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 9:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1A5, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1A6, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1A7, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1A8, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1A9, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1A5, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1A6, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1A7, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1A8, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1A9, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 10:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1A5, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1A6, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1AA, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1AB, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1AC, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1A5, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1A6, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1AA, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1AB, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1AC, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 11:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1AD, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1AE, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1AF, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1B0, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1AD, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1AE, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1AF, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1B0, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 12:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1B1, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1B2, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1B1, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1B2, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 13:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1B3, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1B4, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1B5, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1B3, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1B4, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1B5, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 14:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1B6, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1B7, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1B8, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1B9, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1BA, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1BB, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1BC, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1B6, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1B7, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1B8, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1B9, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1BA, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1BB, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1BC, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 15:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1BD, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1BE, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1BF, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1C0, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1BD, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1BE, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1BF, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1C0, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 16:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1C1, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1C2, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1C3, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1C1, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1C2, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1C3, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 17:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1C4, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1C5, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1C6, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1C7, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1C8, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1C9, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1CA, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1CB, 0, 0, D_8018D9E0_PRIORITY_2);
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1CC, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1C4, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1C5, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1C6, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1C7, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1C8, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1C9, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1CA, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1CB, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1CC, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
         case 18:
-            add_8018D9E0_entry(D_8018D9E0_TYPE_1CD, 0, 0, D_8018D9E0_PRIORITY_2);
+            add_ui_element(D_8018D9E0_TYPE_1CD, 0, 0, D_8018D9E0_PRIORITY_2);
             return;
     }
 }
@@ -1825,7 +1825,7 @@ void print_text0(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
         do {
             glyphIndex = char_to_glyph_index(text);
             if (glyphIndex >= 0) {
-                func_80099184((MkTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]));
+                load_menu_img((MkTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]));
                 gDisplayListHead =
                     print_letter(gDisplayListHead,
                                  (MkTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]),
@@ -1904,7 +1904,7 @@ void print_text1(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
     while (*text != 0) {
         glyphIndex = char_to_glyph_index(text);
         if (glyphIndex >= 0) {
-            func_80099184(segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]));
+            load_menu_img(segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]));
             gDisplayListHead = print_letter(gDisplayListHead, segmented_to_virtual_dupe(gGlyphTextureLUT[glyphIndex]),
                                             column, row, sp60, scaleX, scaleY);
             column = column + (s32) ((gGlyphDisplayWidth[glyphIndex] + tracking) * scaleX);
@@ -1950,7 +1950,7 @@ void print_text2(s32 column, s32 row, char* text, s32 tracking, f32 scaleX, f32 
             glyphIndex = char_to_glyph_index(text);
             if (glyphIndex >= 0) {
                 glyphTexture = (MkTexture*) segmented_to_virtual_dupe((const void*) gGlyphTextureLUT[glyphIndex]);
-                func_80099184(glyphTexture);
+                load_menu_img(glyphTexture);
                 gDisplayListHead =
                     print_letter(gDisplayListHead, glyphTexture, column - (gGlyphDisplayWidth[glyphIndex] / 2), row,
                                  arg6, scaleX, scaleY);
@@ -2091,10 +2091,10 @@ void func_80093E40(void) {
 void func_80093E60(void) {
     s32 i;
 
-    D_8018D9B4 = get_next_available_memory_addr(0x00002800);
-    D_8018D9B0 = (u16*) get_next_available_memory_addr(0x000124F8);
-    D_8018D9B8 = get_next_available_memory_addr(0x00001000);
-    D_8018D9BC = get_next_available_memory_addr(4U);
+    gMenuCompressedBuffer = get_next_available_memory_addr(0x00002800);
+    gMenuTextureBuffer = (u16*) get_next_available_memory_addr(0x000124F8);
+    sTKMK00_LowResBuffer = get_next_available_memory_addr(0x00001000);
+    sGPPointsCopy = get_next_available_memory_addr(4U);
 
     for (i = 0; i < 5; i++) {
         D_8018E7AC[i] = 0;
@@ -2202,7 +2202,7 @@ void func_80094660(struct GfxPool* arg0, UNUSED s32 arg1) {
     gDPSetTextureFilter(gDisplayListHead++, G_TF_BILERP);
 }
 
-void func_800947B4(struct GfxPool* arg0, UNUSED s32 arg1) {
+void render_checkered_flag(struct GfxPool* arg0, UNUSED s32 arg1) {
     u16 perspNorm;
     move_segment_table_to_dmem();
     guPerspective(&arg0->mtxPersp[0], &perspNorm, 45.0f, 1.3333334f, 100.0f, 12800.0f, 1.0f);
@@ -2233,7 +2233,7 @@ void func_80094A64(struct GfxPool* pool) {
     guOrtho(&pool->mtxScreen, 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
     gSPMatrix(gDisplayListHead++, &pool->mtxScreen, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007650);
-    func_80094C60();
+    render_menus();
     func_80092290(4, D_8018E850, D_8018E858);
     func_80092290(5, &D_8018E850[1], &D_8018E858[1]);
     func_80099A70();
@@ -2249,7 +2249,7 @@ void func_80094A64(struct GfxPool* pool) {
         case LOGO_INTRO_MENU:
         case CONTROLLER_PAK_MENU:
         case MAIN_MENU:
-        case PLAYER_SELECT_MENU:
+        case CHARACTER_SELECT_MENU:
         case COURSE_SELECT_MENU:
             func_800A8230();
             func_80099AEC();
@@ -2261,7 +2261,7 @@ void func_80094A64(struct GfxPool* pool) {
     gSPDisplayList(gDisplayListHead++, D_020076B0);
 }
 
-void func_80094C60(void) {
+void render_menus(void) {
     if (D_800E86A4 != 0) {
         func_80099110();
         func_8009A344();
@@ -2273,133 +2273,133 @@ void func_80094C60(void) {
         func_800B3F74(gMenuSelection);
         switch (gMenuSelection) {
             case OPTIONS_MENU:
-                add_8018D9E0_entry(D_8018D9E0_TYPE_023, 0, 0, D_8018D9E0_PRIORITY_2);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0F1, 0, 0, D_8018D9E0_PRIORITY_4);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0F0, 0, 0, D_8018D9E0_PRIORITY_2);
+                add_ui_element(MAIN_MENU_BACKGROUND, 0, 0, D_8018D9E0_PRIORITY_2);
+                add_ui_element(D_8018D9E0_TYPE_0F1, 0, 0, D_8018D9E0_PRIORITY_4);
+                add_ui_element(D_8018D9E0_TYPE_0F0, 0, 0, D_8018D9E0_PRIORITY_2);
                 break;
             case DATA_MENU:
-                add_8018D9E0_entry(D_8018D9E0_TYPE_023, 0, 0, D_8018D9E0_PRIORITY_2);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_08C, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_07C, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_07D, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_07E, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_07F, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_080, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_081, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_082, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_083, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_084, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_085, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_086, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_087, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_088, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_089, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_08A, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_08B, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_08D, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_ui_element(MAIN_MENU_BACKGROUND, 0, 0, D_8018D9E0_PRIORITY_2);
+                add_ui_element(D_8018D9E0_TYPE_08C, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_07C, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_07D, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_07E, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_07F, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_080, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_081, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_082, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_083, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_084, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_085, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_086, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_087, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_088, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_089, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_08A, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_08B, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_08D, 0, 0, D_8018D9E0_PRIORITY_8);
                 break;
             case COURSE_DATA_MENU:
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0E6, 0, 0, D_8018D9E0_PRIORITY_8);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0E7, 0, 0, D_8018D9E0_PRIORITY_8);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0E8, 0, 0, D_8018D9E0_PRIORITY_8);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0E9, 0, 0, D_8018D9E0_PRIORITY_8);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0EA, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_ui_element(D_8018D9E0_TYPE_0E6, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_ui_element(D_8018D9E0_TYPE_0E7, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_ui_element(D_8018D9E0_TYPE_0E8, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_ui_element(D_8018D9E0_TYPE_0E9, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_ui_element(D_8018D9E0_TYPE_0EA, 0, 0, D_8018D9E0_PRIORITY_8);
                 break;
             case LOGO_INTRO_MENU:
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0FA, 0, 0, D_8018D9E0_PRIORITY_0);
+                add_ui_element(LOGO_INTRO_MENU_LOGO, 0, 0, D_8018D9E0_PRIORITY_0);
                 break;
             case CONTROLLER_PAK_MENU:
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0DA, 0, 0, D_8018D9E0_PRIORITY_0);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0D2, 0, 0, D_8018D9E0_PRIORITY_4);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0D4, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0D3, 0, 0, D_8018D9E0_PRIORITY_8);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0D5, 0, 0, D_8018D9E0_PRIORITY_A);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0D6, 0, 0, D_8018D9E0_PRIORITY_A);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0D7, 0, 0, D_8018D9E0_PRIORITY_A);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0D8, 0, 0, D_8018D9E0_PRIORITY_A);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0D9, 0, 0, D_8018D9E0_PRIORITY_A);
+                add_ui_element(D_8018D9E0_TYPE_0DA, 0, 0, D_8018D9E0_PRIORITY_0);
+                add_ui_element(D_8018D9E0_TYPE_0D2, 0, 0, D_8018D9E0_PRIORITY_4);
+                add_ui_element(D_8018D9E0_TYPE_0D4, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_0D3, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_ui_element(D_8018D9E0_TYPE_0D5, 0, 0, D_8018D9E0_PRIORITY_A);
+                add_ui_element(D_8018D9E0_TYPE_0D6, 0, 0, D_8018D9E0_PRIORITY_A);
+                add_ui_element(D_8018D9E0_TYPE_0D7, 0, 0, D_8018D9E0_PRIORITY_A);
+                add_ui_element(D_8018D9E0_TYPE_0D8, 0, 0, D_8018D9E0_PRIORITY_A);
+                add_ui_element(D_8018D9E0_TYPE_0D9, 0, 0, D_8018D9E0_PRIORITY_A);
                 break;
             case START_MENU:
-                add_8018D9E0_entry(D_8018D9E0_TYPE_002, 0, 0, D_8018D9E0_PRIORITY_4);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_001, 0, 0, D_8018D9E0_PRIORITY_0);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0FB, 0, 0, D_8018D9E0_PRIORITY_0);
+                add_ui_element(START_MENU_LOGO_AND_COPYRIGHT, 0, 0, D_8018D9E0_PRIORITY_4);
+                add_ui_element(START_MENU_BACKGROUND, 0, 0, D_8018D9E0_PRIORITY_0);
+                add_ui_element(START_MENU_FLAG, 0, 0, D_8018D9E0_PRIORITY_0);
                 if (gControllerBits & 1) {
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_003, 0, 0, D_8018D9E0_PRIORITY_2);
+                    add_ui_element(START_MENU_PUSH_START_BUTTON, 0, 0, D_8018D9E0_PRIORITY_2);
                 } else {
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_004, 0, 0, D_8018D9E0_PRIORITY_2);
+                    add_ui_element(UNUSED_TYPE_004, 0, 0, D_8018D9E0_PRIORITY_2);
                 }
-                add_8018D9E0_entry(D_8018D9E0_TYPE_005, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(START_MENU_TEXT_BOX, 0, 0, D_8018D9E0_PRIORITY_6);
                 gDemoMode = 0;
                 D_8018EE08 = 0;
                 break;
             case MAIN_MENU:
-                add_8018D9E0_entry(D_8018D9E0_TYPE_023, 0, 0, D_8018D9E0_PRIORITY_2);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_00A, 0x0000015E, 0x00000011, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_00E, 0x0000015E, 0x0000003E, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_00D, 0x0000015E, 0x0000003E, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_00C, 0x0000015E, 0x0000003E, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_00B, 0x0000015E, 0x0000003E, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_00F, 0x0000015E, 0x000000C8, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_011, 0x0000015E, 0x000000C8, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_010, 0x0000015E, 0x000000C8, D_8018D9E0_PRIORITY_6);
+                add_ui_element(MAIN_MENU_BACKGROUND, 0, 0, D_8018D9E0_PRIORITY_2);
+                add_ui_element(MAIN_MENU_GAME_SELECT, 0x0000015E, 0x00000011, D_8018D9E0_PRIORITY_6);
+                add_ui_element(MAIN_MENU_4P_GAME, 0x0000015E, 0x0000003E, D_8018D9E0_PRIORITY_6);
+                add_ui_element(MAIN_MENU_3P_GAME, 0x0000015E, 0x0000003E, D_8018D9E0_PRIORITY_6);
+                add_ui_element(MAIN_MENU_2P_GAME, 0x0000015E, 0x0000003E, D_8018D9E0_PRIORITY_6);
+                add_ui_element(MAIN_MENU_1P_GAME, 0x0000015E, 0x0000003E, D_8018D9E0_PRIORITY_6);
+                add_ui_element(MAIN_MENU_OK, 0x0000015E, 0x000000C8, D_8018D9E0_PRIORITY_6);
+                add_ui_element(MAIN_MENU_DATA, 0x0000015E, 0x000000C8, D_8018D9E0_PRIORITY_6);
+                add_ui_element(MAIN_MENU_OPTION, 0x0000015E, 0x000000C8, D_8018D9E0_PRIORITY_6);
                 if (func_800B555C() != 0) {
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_015, 0, 0, D_8018D9E0_PRIORITY_6);
+                    add_ui_element(D_8018D9E0_TYPE_015, 0, 0, D_8018D9E0_PRIORITY_6);
                 }
-                add_8018D9E0_entry(D_8018D9E0_TYPE_014, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_013, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_012, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_019, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_018, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_01B, 0, 0, D_8018D9E0_PRIORITY_C);
+                add_ui_element(MAIN_MENU_150CC, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(MAIN_MENU_100CC, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(MAIN_MENU_50CC, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(MAIN_MENU_TIME_TRIALS_DATA, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(MAIN_MENU_TIME_TRIALS_BEGIN, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_01B, 0, 0, D_8018D9E0_PRIORITY_C);
                 break;
-            case PLAYER_SELECT_MENU:
-                add_8018D9E0_entry(D_8018D9E0_TYPE_024, 0, 0, D_8018D9E0_PRIORITY_2);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_02A, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_033, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_02B, 0, 0, D_8018D9E0_PRIORITY_8);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_02C, 0, 0, D_8018D9E0_PRIORITY_8);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_02D, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_02E, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_02F, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_030, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_031, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_032, 0, 0, D_8018D9E0_PRIORITY_8);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_034, 0, 0, D_8018D9E0_PRIORITY_C);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_035, 0, 0, D_8018D9E0_PRIORITY_C);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_036, 0, 0, D_8018D9E0_PRIORITY_C);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_037, 0, 0, D_8018D9E0_PRIORITY_C);
+            case CHARACTER_SELECT_MENU:
+                add_ui_element(CHARACTER_SELECT_BACKGROUND, 0, 0, D_8018D9E0_PRIORITY_2);
+                add_ui_element(CHARACTER_SELECT_MENU_PLAYER_SELECT_BANNER, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(CHARACTER_SELECT_MENU_OK, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(CHARACTER_SELECT_MENU_MARIO, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_ui_element(CHARACTER_SELECT_MENU_LUIGI, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_ui_element(CHARACTER_SELECT_MENU_TOAD, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(CHARACTER_SELECT_MENU_PEACH, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(CHARACTER_SELECT_MENU_YOSHI, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(CHARACTER_SELECT_MENU_DK, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(CHARACTER_SELECT_MENU_WARIO, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(CHARACTER_SELECT_MENU_BOWSER, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_ui_element(CHARACTER_SELECT_MENU_1P_CURSOR, 0, 0, D_8018D9E0_PRIORITY_C);
+                add_ui_element(CHARACTER_SELECT_MENU_2P_CURSOR, 0, 0, D_8018D9E0_PRIORITY_C);
+                add_ui_element(CHARACTER_SELECT_MENU_3P_CURSOR, 0, 0, D_8018D9E0_PRIORITY_C);
+                add_ui_element(CHARACTER_SELECT_MENU_4P_CURSOR, 0, 0, D_8018D9E0_PRIORITY_C);
                 break;
             case COURSE_SELECT_MENU:
-                add_8018D9E0_entry(D_8018D9E0_TYPE_025, 0, 0, D_8018D9E0_PRIORITY_2);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_052, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(COURSE_SELECT_BACKGROUND, 0, 0, D_8018D9E0_PRIORITY_2);
+                add_ui_element(COURSE_SELECT_MAP_SELECT, 0, 0, D_8018D9E0_PRIORITY_6);
                 if (gModeSelection != BATTLE) {
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_053, 0, 0, D_8018D9E0_PRIORITY_4);
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_054, 0, 0, D_8018D9E0_PRIORITY_4);
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_055, 0, 0, D_8018D9E0_PRIORITY_4);
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_056, 0, 0, D_8018D9E0_PRIORITY_4);
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_058, 0, 0, D_8018D9E0_PRIORITY_6);
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_059, 0, 0, D_8018D9E0_PRIORITY_6);
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_05A, 0, 0, D_8018D9E0_PRIORITY_6);
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_05B, 0, 0, D_8018D9E0_PRIORITY_6);
+                    add_ui_element(COURSE_SELECT_MUSHROOM_CUP, 0, 0, D_8018D9E0_PRIORITY_4);
+                    add_ui_element(COURSE_SELECT_FLOWER_CUP, 0, 0, D_8018D9E0_PRIORITY_4);
+                    add_ui_element(COURSE_SELECT_STAR_CUP, 0, 0, D_8018D9E0_PRIORITY_4);
+                    add_ui_element(COURSE_SELECT_SPECIAL_CUP, 0, 0, D_8018D9E0_PRIORITY_4);
+                    add_ui_element(D_8018D9E0_TYPE_058, 0, 0, D_8018D9E0_PRIORITY_6);
+                    add_ui_element(COURSE_SELECT_COURSE_NAMES, 0, 0, D_8018D9E0_PRIORITY_6);
+                    add_ui_element(D_8018D9E0_TYPE_05A, 0, 0, D_8018D9E0_PRIORITY_6);
+                    add_ui_element(D_8018D9E0_TYPE_05B, 0, 0, D_8018D9E0_PRIORITY_6);
                 } else {
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_05C, 0, 0, D_8018D9E0_PRIORITY_6);
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_06E, 0, 0, D_8018D9E0_PRIORITY_6);
+                    add_ui_element(COURSE_SELECT_BATTLE_NAMES, 0, 0, D_8018D9E0_PRIORITY_6);
+                    add_ui_element(D_8018D9E0_TYPE_06E, 0, 0, D_8018D9E0_PRIORITY_6);
                 }
-                add_8018D9E0_entry(D_8018D9E0_TYPE_064, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_05F, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_060, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_061, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_062, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_05D, 0, 0, D_8018D9E0_PRIORITY_6);
-                add_8018D9E0_entry(D_8018D9E0_TYPE_05E, 0, 0, D_8018D9E0_PRIORITY_8);
+                add_ui_element(D_8018D9E0_TYPE_064, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_05F, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_060, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_061, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_062, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(COURSE_SELECT_OK, 0, 0, D_8018D9E0_PRIORITY_6);
+                add_ui_element(D_8018D9E0_TYPE_05E, 0, 0, D_8018D9E0_PRIORITY_8);
                 if (gModeSelection == TIME_TRIALS) {
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_065, 0, 0, D_8018D9E0_PRIORITY_8);
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_066, 0, 0, D_8018D9E0_PRIORITY_8);
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_069, 0, 0, D_8018D9E0_PRIORITY_8);
+                    add_ui_element(D_8018D9E0_TYPE_065, 0, 0, D_8018D9E0_PRIORITY_8);
+                    add_ui_element(D_8018D9E0_TYPE_066, 0, 0, D_8018D9E0_PRIORITY_8);
+                    add_ui_element(D_8018D9E0_TYPE_069, 0, 0, D_8018D9E0_PRIORITY_8);
                 }
                 if (gModeSelection == GRAND_PRIX) {
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_068, 0, 0, D_8018D9E0_PRIORITY_8);
-                    add_8018D9E0_entry(D_8018D9E0_TYPE_067, 0, 0, D_8018D9E0_PRIORITY_5);
+                    add_ui_element(D_8018D9E0_TYPE_068, 0, 0, D_8018D9E0_PRIORITY_8);
+                    add_ui_element(D_8018D9E0_TYPE_067, 0, 0, D_8018D9E0_PRIORITY_5);
                 }
                 break;
             case 0:
@@ -3177,7 +3177,7 @@ Gfx* func_80098558(Gfx* displayListHead, u32 arg1, u32 arg2, u32 arg3, u32 arg4,
     arg5Copy = arg5;
     for (var_v0 = arg2; var_v0 < arg4; var_v0 += 0x20) {
         for (var_a3 = arg1; var_a3 < arg3; var_a3 += 0x20) {
-            gDPLoadTextureTile(displayListHead++, D_8018D9B0, G_IM_FMT_RGBA, G_IM_SIZ_16b, arg8, 0, var_a3, var_v0,
+            gDPLoadTextureTile(displayListHead++, gMenuTextureBuffer, G_IM_FMT_RGBA, G_IM_SIZ_16b, arg8, 0, var_a3, var_v0,
                                var_a3 + 0x20, var_v0 + 0x20, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5,
                                5, G_TX_NOLOD, G_TX_NOLOD);
             gSPTextureRectangle(displayListHead++, arg5 << 2, arg6 << 2, (arg5 + 0x20) << 2, (arg6 + 0x20) << 2, 0, 0,
@@ -3211,7 +3211,7 @@ Gfx* func_800987D0(Gfx* displayListHead, u32 arg1, u32 arg2, u32 width, u32 heig
     columnCopy = column;
     for (var_v0_2 = arg2; (u32) var_v0_2 < height; var_v0_2 += 0x20) {
         for (var_a2 = arg1; (u32) var_a2 < width; var_a2 += 0x20) {
-            gDPLoadTextureTile(displayListHead++, D_8018D9B0, G_IM_FMT_RGBA, G_IM_SIZ_16b, textureWidth, 0, var_a2,
+            gDPLoadTextureTile(displayListHead++, gMenuTextureBuffer, G_IM_FMT_RGBA, G_IM_SIZ_16b, textureWidth, 0, var_a2,
                                var_v0_2, var_a2 + 0x20, var_v0_2 + 0x20, 0, G_TX_NOMIRROR | G_TX_WRAP,
                                G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
             temp_f6 = (temp_f18 * ((temp_f0 * (column - 0xA0)) + (temp_f24 * (row - 0x78)))) + 160.0f;
@@ -3326,7 +3326,7 @@ void dma_copy_base_7fa3c0(u64* arg0, size_t nbytes, void* vaddr) {
 }
 
 void func_80099110(void) {
-    gD_8018E118TotalSize = 0;
+    gMenuTextureBufferIndex = 0;
     gNumD_8018E118Entries = 0;
 }
 
@@ -3353,20 +3353,20 @@ void* segmented_to_virtual_dupe_2(const void* addr) {
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/NAZ12
 // Register allocation nonsense
-void func_80099184(MkTexture* arg0) {
+void load_menu_img(MkTexture* arg0) {
     u16 var_a1_2;
     s32 var_v0;
     s32 var_a1;
     UNUSED s32 temp_s3;
     MkTexture* var_s1;
-    UNUSED struct_8018E118_entry* thing;
+    UNUSED TextureMap* thing;
 
     var_s1 = segmented_to_virtual_dupe(arg0);
     while (var_s1->textureData != NULL) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
             // wtf is going on here?
-            if (D_8018E118[var_v0 ^ 0].textureData == (*var_s1).textureData) {
+            if (sMenuTextureMap[var_v0 ^ 0].textureData == (*var_s1).textureData) {
                 var_a1 = 1;
                 break;
             }
@@ -3381,27 +3381,27 @@ void func_80099184(MkTexture* arg0) {
                 if (var_a1_2 % 8) {
                     var_a1_2 = ((var_a1_2 / 8) * 8) + 8;
                 }
-                dma_copy_base_729a30(var_s1->textureData, var_a1_2, D_8018D9B4);
-                mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[gD_8018E118TotalSize]);
+                dma_copy_base_729a30(var_s1->textureData, var_a1_2, gMenuCompressedBuffer);
+                mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[gMenuTextureBufferIndex]);
             } else {
                 dma_copy_base_729a30(var_s1->textureData, var_s1->height * var_s1->width * 2,
-                                     &D_8018D9B0[gD_8018E118TotalSize]);
+                                     &gMenuTextureBuffer[gMenuTextureBufferIndex]);
             }
 
-            thing = &D_8018E118[gNumD_8018E118Entries];
+            thing = &sMenuTextureMap[gNumD_8018E118Entries];
             thing->textureData = var_s1->textureData;
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->offset = gD_8018E118TotalSize;
+            thing = &sMenuTextureMap[gNumD_8018E118Entries];
+            thing->offset = gMenuTextureBufferIndex;
 
-            gD_8018E118TotalSize += (var_s1->height * var_s1->width);
+            gMenuTextureBufferIndex += (var_s1->height * var_s1->width);
             gNumD_8018E118Entries += 1;
-            gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
+            gMenuTextureBufferIndex = ((gMenuTextureBufferIndex / 8) * 8) + 8;
         }
         var_s1++;
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099184.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/load_menu_img.s")
 #endif
 
 #ifdef NON_MATCHING
@@ -3413,14 +3413,14 @@ void func_80099394(MkTexture* arg0) {
     s32 var_a1;
     UNUSED s32 temp_s3;
     MkTexture* var_s1;
-    struct_8018E118_entry* thing;
+    TextureMap* thing;
 
     var_s1 = segmented_to_virtual_dupe(arg0);
     while (var_s1->textureData != NULL) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
             // wtf is going on here?
-            if (D_8018E118[var_v0 ^ 0].textureData == (*var_s1).textureData) {
+            if (sMenuTextureMap[var_v0 ^ 0].textureData == (*var_s1).textureData) {
                 var_a1 = 1;
                 break;
             }
@@ -3428,16 +3428,16 @@ void func_80099394(MkTexture* arg0) {
         if (var_a1 == 0) {
             if (var_s1->type == 5) {
                 dma_copy_base_729a30(var_s1->textureData, (u32) ((s32) (var_s1->height * var_s1->width) / 2),
-                                     &D_8018D9B0[gD_8018E118TotalSize]);
+                                     &gMenuTextureBuffer[gMenuTextureBufferIndex]);
             }
 
-            thing = &D_8018E118[gNumD_8018E118Entries];
+            thing = &sMenuTextureMap[gNumD_8018E118Entries];
             thing->textureData = var_s1->textureData;
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->offset = gD_8018E118TotalSize;
+            thing = &sMenuTextureMap[gNumD_8018E118Entries];
+            thing->offset = gMenuTextureBufferIndex;
 
-            gD_8018E118TotalSize += (var_s1->height * var_s1->width);
-            gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
+            gMenuTextureBufferIndex += (var_s1->height * var_s1->width);
+            gMenuTextureBufferIndex = ((gMenuTextureBufferIndex / 8) * 8) + 8;
             gNumD_8018E118Entries += 1;
         }
         var_s1++;
@@ -3456,29 +3456,29 @@ void func_8009952C(MkTexture* arg0) {
     s32 var_a1;
     UNUSED s32 temp_s3;
     MkTexture* var_s1;
-    struct_8018E118_entry* thing;
+    TextureMap* thing;
 
     var_s1 = segmented_to_virtual_dupe(arg0);
     while (var_s1->textureData != NULL) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
             // wtf is going on here?
-            if (D_8018E118[var_v0 ^ 0].textureData == (*var_s1).textureData) {
+            if (sMenuTextureMap[var_v0 ^ 0].textureData == (*var_s1).textureData) {
                 var_a1 = 1;
                 break;
             }
         }
         if (var_a1 == 0) {
-            dma_copy_base_729a30(var_s1->textureData, 0x00008000U, D_8018D9B4);
-            mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[gD_8018E118TotalSize]);
+            dma_copy_base_729a30(var_s1->textureData, 0x00008000U, gMenuCompressedBuffer);
+            mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[gMenuTextureBufferIndex]);
 
-            thing = &D_8018E118[gNumD_8018E118Entries];
+            thing = &sMenuTextureMap[gNumD_8018E118Entries];
             thing->textureData = var_s1->textureData;
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->offset = gD_8018E118TotalSize;
+            thing = &sMenuTextureMap[gNumD_8018E118Entries];
+            thing->offset = gMenuTextureBufferIndex;
 
-            gD_8018E118TotalSize += (var_s1->height * var_s1->width);
-            gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
+            gMenuTextureBufferIndex += (var_s1->height * var_s1->width);
+            gMenuTextureBufferIndex = ((gMenuTextureBufferIndex / 8) * 8) + 8;
             gNumD_8018E118Entries += 1;
         }
         var_s1++;
@@ -3488,27 +3488,27 @@ void func_8009952C(MkTexture* arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009952C.s")
 #endif
 
-void func_8009969C(MkTexture* arg0) {
-    func_800996BC(arg0, 1);
+void load_img_wrap(MkTexture* arg0) {
+    load_menu_img2(arg0, 1);
 }
 
 #ifdef NON_MATCHING
 // Register allocation nonsense
 // https://decomp.me/scratch/hwAAp
-void func_800996BC(MkTexture* arg0, s32 arg1) {
+void load_menu_img2(MkTexture* arg0, s32 arg1) {
     u16 var_a1_2;
     s32 var_v0;
     s32 var_a1;
     u8 var_v0_2;
     MkTexture* var_s1;
-    struct_8018E118_entry* thing;
+    TextureMap* thing;
 
     var_s1 = segmented_to_virtual_dupe(arg0);
     while (var_s1->textureData != NULL) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
             // wtf is going on here?
-            if (D_8018E118[var_v0 ^ 0].textureData == (*var_s1).textureData) {
+            if (sMenuTextureMap[var_v0 ^ 0].textureData == (*var_s1).textureData) {
                 var_a1 = 1;
                 break;
             }
@@ -3525,17 +3525,17 @@ void func_800996BC(MkTexture* arg0, s32 arg1) {
             switch (arg1) { /* irregular */
                 case -1:
                 case 1:
-                    dma_copy_base_729a30(var_s1->textureData, var_a1_2, D_8018D9B4);
+                    dma_copy_base_729a30(var_s1->textureData, var_a1_2, gMenuCompressedBuffer);
                     break;
                 case 0:
                 case 2:
-                    dma_copy_base_7fa3c0(var_s1->textureData, var_a1_2, D_8018D9B4);
+                    dma_copy_base_7fa3c0(var_s1->textureData, var_a1_2, gMenuCompressedBuffer);
                     break;
             }
             switch (arg1) { /* switch 1; irregular */
                 case -1:    /* switch 1 */
                 case 1:     /* switch 1 */
-                    mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[gD_8018E118TotalSize]);
+                    mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[gMenuTextureBufferIndex]);
                     break;
                 case 0: /* switch 1 */
                 case 2: /* switch 1 */
@@ -3545,22 +3545,22 @@ void func_800996BC(MkTexture* arg0, s32 arg1) {
                         var_v0_2 = 1;
                     }
                     if (1) {}
-                    tkmk00decode(D_8018D9B4, D_8018D9B8, (u8*) &D_8018D9B0[gD_8018E118TotalSize], var_v0_2);
+                    tkmk00decode(gMenuCompressedBuffer, sTKMK00_LowResBuffer, (u8*) &gMenuTextureBuffer[gMenuTextureBufferIndex], var_v0_2);
                     break;
             }
-            thing = &D_8018E118[gNumD_8018E118Entries];
+            thing = &sMenuTextureMap[gNumD_8018E118Entries];
             thing->textureData = var_s1->textureData;
-            thing = &D_8018E118[gNumD_8018E118Entries];
-            thing->offset = gD_8018E118TotalSize;
-            gD_8018E118TotalSize += var_s1->height * var_s1->width;
-            gD_8018E118TotalSize = ((gD_8018E118TotalSize / 8) * 8) + 8;
+            thing = &sMenuTextureMap[gNumD_8018E118Entries];
+            thing->offset = gMenuTextureBufferIndex;
+            gMenuTextureBufferIndex += var_s1->height * var_s1->width;
+            gMenuTextureBufferIndex = ((gMenuTextureBufferIndex / 8) * 8) + 8;
             gNumD_8018E118Entries += 1;
         }
         var_s1++;
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800996BC.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/load_menu_img2.s")
 #endif
 
 void func_80099958(MkTexture* arg0, s32 arg1, s32 arg2) {
@@ -3579,8 +3579,8 @@ void func_80099958(MkTexture* arg0, s32 arg1, s32 arg2) {
             // Round up to the next multiple of eight
             var_a1 = ((var_a1 / 8) * 8) + 8;
         }
-        dma_copy_base_729a30(temp_v0->textureData, var_a1, D_8018D9B4);
-        mio0decode(D_8018D9B4, D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
+        dma_copy_base_729a30(temp_v0->textureData, var_a1, gMenuCompressedBuffer);
+        mio0decode(gMenuCompressedBuffer, D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
         temp_v0++;
     }
 }
@@ -3641,9 +3641,9 @@ void func_80099AEC(void) {
     if (var_s0 % 8) {
         var_s0 = ((var_s0 / 8) * 8) + 8;
     }
-    osInvalDCache(D_8018D9B4, var_s0);
+    osInvalDCache(gMenuCompressedBuffer, var_s0);
     osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-                 D_8018D9B4, var_s0, &gDmaMesgQueue);
+                 gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     while (1) {
         if ((var_s1 + 1)->texture == NULL) {
@@ -3659,11 +3659,11 @@ void func_80099AEC(void) {
             if (var_s0 % 8) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
-            osInvalDCache(D_8018D9B4 + sp60 * 4, var_s0);
+            osInvalDCache(gMenuCompressedBuffer + sp60 * 4, var_s0);
             osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-                         D_8018D9B4 + sp60 * 4, var_s0, &gDmaMesgQueue);
+                         gMenuCompressedBuffer + sp60 * 4, var_s0, &gDmaMesgQueue);
         }
-        mio0decode(D_8018D9B4, (u8*) &D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
+        mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[sMenuTextureMap[var_s1->unk_4].offset]);
         var_s1->texture = NULL;
         var_s1++;
         if (var_s4 != 0)
@@ -3682,11 +3682,11 @@ void func_80099AEC(void) {
             if (var_s0 % 8) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
-            osInvalDCache(D_8018D9B4, var_s0);
+            osInvalDCache(gMenuCompressedBuffer, var_s0);
             osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-                         D_8018D9B4, var_s0, &gDmaMesgQueue);
+                         gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
         }
-        mio0decode(D_8018D9B4 + sp60 * 4, (u8*) &D_8018D9B0[D_8018E118[var_s1->unk_4].offset]);
+        mio0decode(gMenuCompressedBuffer + sp60 * 4, (u8*) &gMenuTextureBuffer[sMenuTextureMap[var_s1->unk_4].offset]);
         var_s1->texture = NULL;
         var_s1++;
         if (var_s4 != 0)
@@ -3746,11 +3746,11 @@ void func_80099EC4(void) {
     if (var_s0 % 8) {
         var_s0 = ((var_s0 / 8) * 8) + 8;
     }
-    osInvalDCache(D_8018D9B4, var_s0);
+    osInvalDCache(gMenuCompressedBuffer, var_s0);
     test = &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)];
-    osPiStartDma(&sp68, 0, 0, (uintptr_t) test, D_8018D9B4, var_s0, &gDmaMesgQueue);
+    osPiStartDma(&sp68, 0, 0, (uintptr_t) test, gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
     if ((var_s0 && var_s0) && var_s0) {}
-    // osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], D_8018D9B4, var_s0,
+    // osPiStartDma(&sp68, 0, 0, &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)], gMenuCompressedBuffer, var_s0,
     // &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     while (1) {
@@ -3767,11 +3767,11 @@ void func_80099EC4(void) {
             if (var_s0 % 8) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
-            osInvalDCache(D_8018D9B4 + 0x1400, var_s0);
+            osInvalDCache(gMenuCompressedBuffer + 0x1400, var_s0);
             osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-                         D_8018D9B4 + 0x1400, var_s0, &gDmaMesgQueue);
+                         gMenuCompressedBuffer + 0x1400, var_s0, &gDmaMesgQueue);
         }
-        mio0decode(D_8018D9B4,
+        mio0decode(gMenuCompressedBuffer,
                    D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
@@ -3791,11 +3791,11 @@ void func_80099EC4(void) {
             if (var_s0 % 8) {
                 var_s0 = ((var_s0 / 8) * 8) + 8;
             }
-            osInvalDCache(D_8018D9B4, var_s0);
+            osInvalDCache(gMenuCompressedBuffer, var_s0);
             osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-                         D_8018D9B4, var_s0, &gDmaMesgQueue);
+                         gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
         }
-        mio0decode(D_8018D9B4 + 0x1400,
+        mio0decode(gMenuCompressedBuffer + 0x1400,
                    D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
@@ -3812,17 +3812,17 @@ void func_8009A238(MkTexture* arg0, s32 arg1) {
     s32 var_a3;
     s32 temp_v1;
     u64* sp24;
-    UNUSED struct_8018E118_entry* temp_v0;
+    UNUSED TextureMap* temp_v0;
 
-    temp_v1 = D_8018E118[arg1].offset;
+    temp_v1 = sMenuTextureMap[arg1].offset;
     sp24 = arg0->textureData;
     var_a3 = arg0->size;
     if (var_a3 % 8) {
         var_a3 = ((var_a3 / 8) * 8) + 8;
     }
-    dma_copy_base_7fa3c0(sp24, var_a3, D_8018D9B4);
-    tkmk00decode(D_8018D9B4, D_8018D9B8, (u8*) &D_8018D9B0[temp_v1], 1);
-    D_8018E118[arg1].textureData = sp24;
+    dma_copy_base_7fa3c0(sp24, var_a3, gMenuCompressedBuffer);
+    tkmk00decode(gMenuCompressedBuffer, sTKMK00_LowResBuffer, (u8*) &gMenuTextureBuffer[temp_v1], 1);
+    sMenuTextureMap[arg1].textureData = sp24;
 }
 
 void func_8009A2F0(struct_8018E0E8_entry* arg0) {
@@ -3835,7 +3835,7 @@ void func_8009A2F0(struct_8018E0E8_entry* arg0) {
         if (var_a0 == NULL) {
             break;
         }
-        func_800996BC(var_a0, 0);
+        load_menu_img2(var_a0, 0);
         if (1) {}
         temp_v0++;
         var_a0 = temp_v0->mk64Texture;
@@ -3849,7 +3849,7 @@ void func_8009A344(void) {
     }
 }
 
-s32 func_8009A374(MkAnimation* anim) {
+s32 animate_character_select_menu(MkAnimation* anim) {
     s32 i;
     struct_8018DEE0_entry* entry;
 
@@ -3873,12 +3873,12 @@ s32 func_8009A374(MkAnimation* anim) {
     entry->D_8018E118_index = gNumD_8018E118Entries;
 
     if (anim[0].mk64Texture) {
-        func_8009969C(anim[0].mk64Texture);
+        load_img_wrap(anim[0].mk64Texture);
     }
     if (anim[1].mk64Texture) {
-        func_8009969C(anim[1].mk64Texture);
+        load_img_wrap(anim[1].mk64Texture);
     } else {
-        func_8009969C(anim[0].mk64Texture);
+        load_img_wrap(anim[0].mk64Texture);
     }
 
     entry->unk14 = 0;
@@ -4053,8 +4053,8 @@ void func_8009A9FC(s32 arg0, s32 arg1, u32 arg2, s32 arg3) {
     u16* color0;
     u16* color1;
 
-    color0 = &D_8018D9B0[D_8018E118[arg0].offset];
-    color1 = &D_8018D9B0[D_8018E118[arg1].offset];
+    color0 = &gMenuTextureBuffer[sMenuTextureMap[arg0].offset];
+    color1 = &gMenuTextureBuffer[sMenuTextureMap[arg1].offset];
     for (var_t1 = 0; (u32) var_t1 < arg2; var_t1++) {
         temp_a0 = *color0++;
         red = (temp_a0 & 0xF800) >> 0xB;
@@ -4082,7 +4082,7 @@ void func_8009AB7C(s32 arg0) {
     s32 var_v1;
     u16* color;
 
-    color = &D_8018D9B0[D_8018E118[arg0].offset];
+    color = &gMenuTextureBuffer[sMenuTextureMap[arg0].offset];
     for (var_v1 = 0; var_v1 < 0x4B000; var_v1++) {
         red = ((*color & 0xF800) >> 0xB) * 0x4D;
         green = ((*color & 0x7C0) >> 6) * 0x96;
@@ -4111,8 +4111,8 @@ void func_8009AD78(s32 arg0, s32 arg1) {
     UNUSED u16 temp_a0;
     u16* color;
 
-    color = &D_8018D9B0[D_8018E118[arg0].offset];
-    size = D_8018E118[arg0 + 1].offset - D_8018E118[arg0].offset;
+    color = &gMenuTextureBuffer[sMenuTextureMap[arg0].offset];
+    size = sMenuTextureMap[arg0 + 1].offset - sMenuTextureMap[arg0].offset;
     for (var_v1 = 0; var_v1 != size; var_v1++) {
         red = ((*color & 0xF800) >> 0xB) * 0x4D;
         green = ((*color & 0x7C0) >> 6) * 0x96;
@@ -4125,7 +4125,7 @@ void func_8009AD78(s32 arg0, s32 arg1) {
     }
 }
 
-void func_8009B0A4(s32 arg0, u32 arg1) {
+void convert_img_to_greyscale(s32 arg0, u32 arg1) {
     u32 var_s0;
     s32 red;
     s32 green;
@@ -4139,8 +4139,8 @@ void func_8009B0A4(s32 arg0, u32 arg1) {
     for (var_s0 = 0; var_s0 < 0x20; var_s0++) {
         sp48[var_s0] = func_800917B0(var_s0 * 0.03125, (arg1 * 1.5 * 0.00390625) + 0.25);
     }
-    color = &D_8018D9B0[D_8018E118[arg0].offset];
-    size = D_8018E118[arg0 + 1].offset - D_8018E118[arg0].offset;
+    color = &gMenuTextureBuffer[sMenuTextureMap[arg0].offset];
+    size = sMenuTextureMap[arg0 + 1].offset - sMenuTextureMap[arg0].offset;
     for (var_s0 = 0; var_s0 < (u32) size; var_s0++) {
         red = ((*color & 0xF800) >> 0xB) * 0x55;
         green = ((*color & 0x7C0) >> 6) * 0x4B;
@@ -4156,7 +4156,7 @@ void func_8009B0A4(s32 arg0, u32 arg1) {
     }
 }
 
-void func_8009B538(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+void adjust_img_colour(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     s32 red;
     s32 green;
     s32 blue;
@@ -4168,7 +4168,7 @@ void func_8009B538(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     s32 var_v1;
     u16* color;
 
-    color = &D_8018D9B0[D_8018E118[arg0].offset];
+    color = &gMenuTextureBuffer[sMenuTextureMap[arg0].offset];
     for (var_v1 = 0; var_v1 != arg1; var_v1++) {
         red = ((*color & 0xF800) >> 0xB) * 0x4D;
         green = ((*color & 0x7C0) >> 6) * 0x96;
@@ -4191,34 +4191,34 @@ u16* func_8009B8C4(u64* arg0) {
 
     found = 0;
     for (someIndex = 0; someIndex < gNumD_8018E118Entries; someIndex++) {
-        if (arg0 == D_8018E118[someIndex].textureData) {
+        if (arg0 == sMenuTextureMap[someIndex].textureData) {
             found = 1;
-            offset = D_8018E118[someIndex].offset;
+            offset = sMenuTextureMap[someIndex].offset;
             break;
         }
     }
 
     if (found != 0) {
-        return &D_8018D9B0[offset];
+        return &gMenuTextureBuffer[offset];
     }
     return NULL;
 }
 
-// D_8018D9C0 is a little weird. In code_800AF9B0 its treated as a
+// gSomeDLBuffer is a little weird. In code_800AF9B0 its treated as a
 // struct_8018EE10_entry pointer. But here its being treated as a
 // Gfx pointer. It seems to be multi use.
 void func_8009B938(void) {
-    D_8018E75C = (Gfx*) D_8018D9C0;
+    sGfxPtr = (Gfx*) gSomeDLBuffer;
     gNumD_8018E768Entries = 0;
 }
 
 void func_8009B954(MkTexture* arg0) {
     D_8018E768[gNumD_8018E768Entries].textures = segmented_to_virtual_dupe(arg0);
-    D_8018E768[gNumD_8018E768Entries].displayList = D_8018E75C;
+    D_8018E768[gNumD_8018E768Entries].displayList = sGfxPtr;
 }
 
 void func_8009B998(void) {
-    gSPEndDisplayList(D_8018E75C++);
+    gSPEndDisplayList(sGfxPtr++);
     gNumD_8018E768Entries += 1;
 }
 
@@ -4451,9 +4451,9 @@ Gfx* func_8009C434(Gfx* arg0, struct_8018DEE0_entry* arg1, s32 arg2, s32 arg3, s
                 break;
         }
         if (arg1->unk14 != 0) {
-            var_t0 = D_8018E118[arg1->D_8018E118_index + 1].offset;
+            var_t0 = sMenuTextureMap[arg1->D_8018E118_index + 1].offset;
         } else {
-            var_t0 = D_8018E118[arg1->D_8018E118_index].offset;
+            var_t0 = sMenuTextureMap[arg1->D_8018E118_index].offset;
             if (1) {}
             if (1) {}
             if (1) {}
@@ -4461,18 +4461,18 @@ Gfx* func_8009C434(Gfx* arg0, struct_8018DEE0_entry* arg1, s32 arg2, s32 arg3, s
         if (arg4 >= 0) {
             arg0 =
                 func_80097E58(arg0, var_t1, 0, 0U, var_s0->width, var_s0->height, var_s0->dX + arg2, var_s0->dY + arg3,
-                              (u8*) &D_8018D9B0[var_t0], var_s0->width, var_s0->height, (u32) arg4);
+                              (u8*) &gMenuTextureBuffer[var_t0], var_s0->width, var_s0->height, (u32) arg4);
         } else {
             switch (arg4) {
                 case -1:
                     arg0 = func_80095E10(arg0, var_t1, 0x00000400, 0x00000400, 0, 0, var_s0->width, var_s0->height,
-                                         var_s0->dX + arg2, var_s0->dY + arg3, (u8*) &D_8018D9B0[var_t0], var_s0->width,
+                                         var_s0->dX + arg2, var_s0->dY + arg3, (u8*) &gMenuTextureBuffer[var_t0], var_s0->width,
                                          var_s0->height);
                     break;
                 case -2:
                     arg0 = func_800963F0(arg0, var_t1, 0x00000400, 0x00000400, 0.5f, 0.5f, 0, 0, var_s0->width,
                                          var_s0->height, var_s0->dX + arg2, var_s0->dY + arg3,
-                                         (u8*) &D_8018D9B0[var_t0], var_s0->width, var_s0->height);
+                                         (u8*) &gMenuTextureBuffer[var_t0], var_s0->width, var_s0->height);
                     break;
             }
         }
@@ -5090,7 +5090,7 @@ void func_8009DB8C(void) {
     if ((u32) var_v1 >= D_8018E7B8[4]) {
         if ((u32) var_v1 == D_8018E7B8[4]) {
             for (var_s0 = 0; var_s0 < 0x4B0; var_s0++) {
-                D_8018D9B8[var_s0] = 1;
+                sTKMK00_LowResBuffer[var_s0] = 1;
             }
         } else {
             func_8009CE64(4);
@@ -5099,9 +5099,9 @@ void func_8009DB8C(void) {
         var_s0 = 0;
         var_s3 = 0;
         while (var_s3 < (0x4B0U / D_8018E7B8[4])) {
-            if ((D_8018D9B8[var_s0] == 0) && (random_int((0x4B0U - D_8018E7D0[4]) / D_8018E7B8[4]) == 0)) {
+            if ((sTKMK00_LowResBuffer[var_s0] == 0) && (random_int((0x4B0U - D_8018E7D0[4]) / D_8018E7B8[4]) == 0)) {
                 var_s3 += 1;
-                D_8018D9B8[var_s0] = 1;
+                sTKMK00_LowResBuffer[var_s0] = 1;
             }
             var_s0 += 1;
             if (var_s0 >= 0x4B0) {
@@ -5114,7 +5114,7 @@ void func_8009DB8C(void) {
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
     gDPSetCombineMode(gDisplayListHead++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
     for (var_s0 = 0; var_s0 < 0x4B0; var_s0++) {
-        if (D_8018D9B8[var_s0] != 0) {
+        if (sTKMK00_LowResBuffer[var_s0] != 0) {
             temp_t4 = (var_s0 % 40) * 8;
             temp_t5 = (var_s0 / 40) * 8;
             gDPFillRectangle(gDisplayListHead++, temp_t4, temp_t5, temp_t4 + 8, temp_t5 + 8);
@@ -5219,7 +5219,7 @@ void func_8009E0F0(s32 arg0) {
         }
         D_8018E7E0 = 0;
         for (var_v0 = 0; var_v0 < 0x4B0; var_v0++) {
-            D_8018D9B8[var_v0] = 0;
+            sTKMK00_LowResBuffer[var_v0] = 0;
         }
     }
 }
@@ -5326,15 +5326,15 @@ void func_8009E5FC(s32 arg0) {
 
 void func_8009E620(void) {
     s32 index;
-    for (index = 0; index < D_8018D9E0_SIZE; index++) {
-        D_8018D9E0[index].type = 0;
+    for (index = 0; index < MENU_ITEMS_MAX; index++) {
+        gMenuItems[index].type = 0;
     }
 }
 
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/1BHpa
 // Stack differences, can't figure out how to fix them
-void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
+void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
     MenuItem* var_ra;
     s32 stackPadding0;
     UNUSED s32 stackPadding1;
@@ -5348,17 +5348,17 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
     s32 one = 1;
 
     var_v0 = 0;
-    var_ra = D_8018D9E0;
+    var_ra = gMenuItems;
     // ????????
     // Credit to Vetri for the idea to mess around with this loop
     // to fix the issue near the 0xD4 case
-    while (1 & 0xFFFFFFFFFFFFFFFF) {
+    while (true & 0xFFFFFFFFFFFFFFFF) {
         var_v0++;
         if (var_ra->type == 0)
             break;
 
-        if (var_v0 > 0x20) {
-            while (1) {}
+        if (var_v0 > MENU_ITEMS_MAX) {
+            while (true) {}
         }
         var_ra++;
     }
@@ -5400,151 +5400,151 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             var_ra->unk20 = one;
             break;
         case 0xD2:
-            func_800996BC(D_020014C8, 0);
+            load_menu_img2(D_020014C8, 0);
             func_8009B954(D_020014C8);
-            D_8018E75C = func_8009BA74(D_8018E75C, D_020014C8, var_ra->column, var_ra->row);
+            sGfxPtr = func_8009BA74(sGfxPtr, D_020014C8, var_ra->column, var_ra->row);
             func_8009B998();
             break;
         case 0xD3:
-            func_800996BC(D_02001540, 0);
+            load_menu_img2(D_02001540, 0);
             func_8009B954(D_02001540);
-            D_8018E75C = func_8009BA74(D_8018E75C, D_02001540, var_ra->column, var_ra->row);
+            sGfxPtr = func_8009BA74(sGfxPtr, D_02001540, var_ra->column, var_ra->row);
             func_8009B998();
             break;
         case 0xD4:
-            func_800996BC(D_0200157C, 0);
-            func_80099184(D_02001874);
+            load_menu_img2(D_0200157C, 0);
+            load_menu_img(D_02001874);
             var_ra->row = 0x00000069;
             for (var_v0 = 0; var_v0 < 133; var_v0++) {
-                func_80099184(segmented_to_virtual_dupe(D_800E7AF8[var_v0]));
+                load_menu_img(segmented_to_virtual_dupe(D_800E7AF8[var_v0]));
             }
             break;
         case 0xD5:
-            func_80099184(D_020015A4);
+            load_menu_img(D_020015A4);
             func_8009B954(D_020015A4);
-            D_8018E75C = func_8009BA74(D_8018E75C, D_020015A4, var_ra->column, var_ra->row);
-            gDPLoadTextureBlock(D_8018E75C++, func_8009B8C4(gTexture7ED50C), G_IM_FMT_IA, G_IM_SIZ_16b, 256, 5, 0,
+            sGfxPtr = func_8009BA74(sGfxPtr, D_020015A4, var_ra->column, var_ra->row);
+            gDPLoadTextureBlock(sGfxPtr++, func_8009B8C4(gTexture7ED50C), G_IM_FMT_IA, G_IM_SIZ_16b, 256, 5, 0,
                                 G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK,
                                 G_TX_NOLOD, G_TX_NOLOD);
-            gSPTextureRectangle(D_8018E75C++, 0x80, 0x2C0, 0x480, 0x2D4, G_TX_RENDERTILE, 0, 0x80, 0x0400, 0xFC00);
+            gSPTextureRectangle(sGfxPtr++, 0x80, 0x2C0, 0x480, 0x2D4, G_TX_RENDERTILE, 0, 0x80, 0x0400, 0xFC00);
             func_8009B998();
-            func_80099184(D_020015CC);
+            load_menu_img(D_020015CC);
             func_8009B954(D_020015CC);
-            D_8018E75C = func_8009BA74(D_8018E75C, D_020015CC, var_ra->column, var_ra->row);
+            sGfxPtr = func_8009BA74(sGfxPtr, D_020015CC, var_ra->column, var_ra->row);
             func_8009B998();
-            func_80099184(D_02001630);
+            load_menu_img(D_02001630);
             func_8009B954(D_02001630);
-            D_8018E75C = func_8009BA74(D_8018E75C, D_02001630, var_ra->column, var_ra->row);
+            sGfxPtr = func_8009BA74(sGfxPtr, D_02001630, var_ra->column, var_ra->row);
             func_8009B998();
-            func_80099184(D_02001658);
+            load_menu_img(D_02001658);
             func_8009B954(D_02001658);
-            D_8018E75C = func_8009BA74(D_8018E75C, D_02001658, var_ra->column, var_ra->row);
+            sGfxPtr = func_8009BA74(sGfxPtr, D_02001658, var_ra->column, var_ra->row);
             func_8009B998();
             break;
         case 0xD6:
-            var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E7D34[0]));
+            var_ra->D_8018DEE0_index = animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E7D34[0]));
             break;
         case 0xD7:
             for (var_v0 = 0; var_v0 < 10; var_v0++) {
-                func_80099184(segmented_to_virtual_dupe(D_800E7D0C[var_v0]));
+                load_menu_img(segmented_to_virtual_dupe(D_800E7D0C[var_v0]));
             }
             break;
         case 0xD8:
         case 0xD9:
-            func_80099184(D_0200184C);
+            load_menu_img(D_0200184C);
             break;
-        case 0x1:
-            func_800996BC(D_800E7D4C[func_800B555C()], 0);
+        case START_MENU_BACKGROUND:
+            load_menu_img2(D_800E7D4C[func_800B555C()], 0);
             break;
-        case 0x2:
-            func_8006EE44();
-            gD_8018E118TotalSize += 0x10000;
-            func_80099184(D_020045E8);
+        case START_MENU_LOGO_AND_COPYRIGHT:
+            load_mario_kart_64_logo();
+            gMenuTextureBufferIndex += 0x10000;
+            load_menu_img(D_020045E8);
             break;
-        case 0x3:
-            func_80099184(D_02004610);
+        case START_MENU_PUSH_START_BUTTON:
+            load_menu_img(D_02004610);
             break;
-        case 0x23:
-        case 0x24:
-        case 0x25:
-            func_800996BC(D_800E7D4C[func_800B555C()], 0);
-            func_800996BC(D_02004B74, 0);
-            func_8009B0A4(0, 0x00000019);
-            func_8009B538(0, SCREEN_WIDTH * SCREEN_HEIGHT, D_800E74E8[type - 0x23].red, D_800E74E8[type - 0x23].green,
+        case MAIN_MENU_BACKGROUND:
+        case CHARACTER_SELECT_BACKGROUND:
+        case COURSE_SELECT_BACKGROUND:
+            load_menu_img2(D_800E7D4C[func_800B555C()], 0);
+            load_menu_img2(D_02004B74, 0);
+            convert_img_to_greyscale(0, 0x00000019);
+            adjust_img_colour(0, SCREEN_WIDTH * SCREEN_HEIGHT, D_800E74E8[type - 0x23].red, D_800E74E8[type - 0x23].green,
                           D_800E74E8[type - 0x23].blue);
             break;
-        case 0xF:
+        case MAIN_MENU_OK:
             var_ra->unk1C = 0x00000020;
             /* fallthrough */
-        case 0x0A:
-        case 0x10:
-        case 0x11:
-        case 0x12:
-        case 0x13:
-        case 0x14:
+        case MAIN_MENU_GAME_SELECT:
+        case MAIN_MENU_DATA:
+        case MAIN_MENU_OPTION:
+        case MAIN_MENU_50CC:
+        case MAIN_MENU_100CC:
+        case MAIN_MENU_150CC:
         case 0x15:
         case 0x16:
         case 0x17:
-        case 0x18:
-        case 0x19:
-            func_800996BC(segmented_to_virtual_dupe(D_800E8274[type - 0x12]), 0);
+        case MAIN_MENU_TIME_TRIALS_BEGIN:
+        case MAIN_MENU_TIME_TRIALS_DATA:
+            load_menu_img2(segmented_to_virtual_dupe(D_800E8274[type - 0x12]), 0);
             break;
-        case 0xB:
-        case 0xC:
-        case 0xD:
-        case 0xE:
-            func_800996BC(segmented_to_virtual_dupe(D_800E8234[((type - 0xB) * 2) + 0]), 0);
-            func_80099184(segmented_to_virtual_dupe(D_800E8234[((type - 0xB) * 2) + 1]));
+        case MAIN_MENU_1P_GAME:
+        case MAIN_MENU_2P_GAME:
+        case MAIN_MENU_3P_GAME:
+        case MAIN_MENU_4P_GAME:
+            load_menu_img2(segmented_to_virtual_dupe(D_800E8234[((type - 0xB) * 2) + 0]), 0);
+            load_menu_img(segmented_to_virtual_dupe(D_800E8234[((type - 0xB) * 2) + 1]));
             break;
-        case 0x2A:
-            func_800996BC(D_02004B4C, 0);
+        case CHARACTER_SELECT_MENU_PLAYER_SELECT_BANNER:
+            load_menu_img2(D_02004B4C, 0);
             break;
         case 0x33:
-            func_800996BC(D_02004B74, 0);
+            load_menu_img2(D_02004B74, 0);
             var_ra->unk1C = 0x00000020;
             break;
-        case 0x34:
-        case 0x35:
-        case 0x36:
-        case 0x37:
-            func_80099184(segmented_to_virtual_dupe(D_800E82B4[type - 0x34]));
+        case CHARACTER_SELECT_MENU_1P_CURSOR:
+        case CHARACTER_SELECT_MENU_2P_CURSOR:
+        case CHARACTER_SELECT_MENU_3P_CURSOR:
+        case CHARACTER_SELECT_MENU_4P_CURSOR:
+            load_menu_img(segmented_to_virtual_dupe(D_800E82B4[type - 0x34]));
             break;
-        case 0x2B:
-        case 0x2C:
-        case 0x2D:
-        case 0x2E:
-        case 0x2F:
-        case 0x30:
-        case 0x31:
-        case 0x32:
-            var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E8320[type - 0x2B]));
-            func_800996BC(segmented_to_virtual_dupe(D_800E7D54[type - 0x2B]), 0);
+        case CHARACTER_SELECT_MENU_MARIO:
+        case CHARACTER_SELECT_MENU_LUIGI:
+        case CHARACTER_SELECT_MENU_TOAD:
+        case CHARACTER_SELECT_MENU_PEACH:
+        case CHARACTER_SELECT_MENU_YOSHI:
+        case CHARACTER_SELECT_MENU_DK:
+        case CHARACTER_SELECT_MENU_WARIO:
+        case CHARACTER_SELECT_MENU_BOWSER:
+            var_ra->D_8018DEE0_index = animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E8320[type - 0x2B]));
+            load_menu_img2(segmented_to_virtual_dupe(D_800E7D54[type - 0x2B]), 0);
             break;
         case 0xA0:
         case 0xA1:
-            var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(D_800E8320[type - 0xA0]));
+            var_ra->D_8018DEE0_index = animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E8320[type - 0xA0]));
             break;
-        case 0x5D:
+        case COURSE_SELECT_OK:
             var_ra->unk1C = 0x00000020;
             /* fallthrough */
-        case 0x52:
-        case 0x53:
-        case 0x54:
-        case 0x55:
-        case 0x56:
+        case COURSE_SELECT_MAP_SELECT:
+        case COURSE_SELECT_MUSHROOM_CUP:
+        case COURSE_SELECT_FLOWER_CUP:
+        case COURSE_SELECT_STAR_CUP:
+        case COURSE_SELECT_SPECIAL_CUP:
         case 0x58:
-        case 0x59:
+        case COURSE_SELECT_COURSE_NAMES:
         case 0x5A:
         case 0x5B:
-        case 0x5C:
-            func_800996BC(segmented_to_virtual_dupe(D_800E82C4[type - 0x52]), 0);
+        case COURSE_SELECT_BATTLE_NAMES:
+            load_menu_img2(segmented_to_virtual_dupe(D_800E82C4[type - 0x52]), 0);
             break;
         case 0x5F:
         case 0x60:
         case 0x61:
         case 0x62:
             var_ra->D_8018DEE0_index =
-                func_8009A374(segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[0][var_ra->type - 0x5F]]));
+                animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[0][var_ra->type - 0x5F]]));
             break;
         case 0x5E:
             var_ra->unk20 = random_int(4U) + 2;
@@ -5558,17 +5558,17 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             var_ra->unk1C = (s32) gCupSelection;
             var_ra->unk20 = func_800B54C0(gCupSelection, gCCSelection);
             var_ra->D_8018DEE0_index =
-                func_8009A374(segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - var_ra->unk20]));
+                animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - var_ra->unk20]));
             var_ra->column = D_800E7268[0].column;
             var_ra->row = D_800E7268[0].row;
             break;
         case 0x68:
-            func_800996BC(segmented_to_virtual_dupe(D_800E8294[gCCSelection]), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_800E8294[gCCSelection]), 0);
             var_ra->column = 0x00000037;
             var_ra->row = 0x000000C3;
             break;
         case 0x69:
-            func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_02004A0C), 0);
             if (controller_pak_1_status() == 0) {
                 func_800B6708();
             } else {
@@ -5580,10 +5580,10 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         case 0x79:
         case 0x7A:
         case 0x7B:
-            func_800996BC(segmented_to_virtual_dupe(D_800E82F4[type - 0x78]), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_800E82F4[type - 0x78]), 0);
             break;
         case 0x8C:
-            func_800996BC(segmented_to_virtual_dupe(D_02004A34), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_02004A34), 0);
             if (controller_pak_1_status() == 0) {
                 func_800B6708();
             } else {
@@ -5592,7 +5592,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             }
             break;
         case 0x8D:
-            func_80099184(segmented_to_virtual_dupe(D_02001FA4));
+            load_menu_img(segmented_to_virtual_dupe(D_02001FA4));
             break;
         case 0x7C:
         case 0x7D:
@@ -5611,10 +5611,10 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
         case 0x8A:
         case 0x8B:
             temp_v0_6 = var_ra->type - 0x7C;
-            func_800996BC(segmented_to_virtual_dupe(D_800E7D74[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]), -1);
+            load_menu_img2(segmented_to_virtual_dupe(D_800E7D74[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]), -1);
             temp_v0_6 = var_ra->type - 0x7C;
-            func_800996BC(segmented_to_virtual_dupe(D_800E7DC4[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]), 0);
-            func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_800E7DC4[gCupCourseOrder[temp_v0_6 / 4][temp_v0_6 % 4]]), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_02004A0C), 0);
             break;
         case 0xB1:
         case 0xB2:
@@ -5643,8 +5643,8 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
                 var_a0 = D_800E8320[temp_a1];
             }
             var_ra->D_8018DEE0_index = func_8009A478(segmented_to_virtual_dupe_2(var_a0), stackPadding0);
-            func_800996BC(segmented_to_virtual_dupe(D_800E7D54[temp_a1]), 0);
-            func_80099184(segmented_to_virtual_dupe(D_800E82B4[type - 0xB1]));
+            load_menu_img2(segmented_to_virtual_dupe(D_800E7D54[temp_a1]), 0);
+            load_menu_img(segmented_to_virtual_dupe(D_800E82B4[type - 0xB1]));
             break;
         case 0xBB:
             var_ra->unk1C = func_800B5020(playerHUD[0].someTimer, gCharacterSelections[0]);
@@ -5659,10 +5659,10 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             }
             break;
         case 0xE6:
-            var_ra->D_8018DEE0_index = func_8009A374(segmented_to_virtual_dupe_2(
+            var_ra->D_8018DEE0_index = animate_character_select_menu(segmented_to_virtual_dupe_2(
                 D_800E7E34[gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4]]));
             var_ra->unk1C = gTimeTrialDataCourseIndex;
-            func_800996BC(segmented_to_virtual_dupe(D_02004A0C), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_02004A0C), 0);
             func_8006EF60();
             if (controller_pak_1_status() == 0) {
                 func_800B6708();
@@ -5675,7 +5675,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
             var_ra->state = (s32) gSoundMode;
             break;
         case 0xF1:
-            func_800996BC(segmented_to_virtual_dupe(D_02004638), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_02004638), 0);
             break;
         case 0xBE:
             D_8018ED90 = 0;
@@ -5693,7 +5693,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
                 var_a0 = D_800E8320[temp_a1];
             }
             var_ra->D_8018DEE0_index = func_8009A478(segmented_to_virtual_dupe_2(var_a0), 0);
-            func_800996BC(segmented_to_virtual_dupe(D_800E7D54[temp_a1]), 0);
+            load_menu_img2(segmented_to_virtual_dupe(D_800E7D54[temp_a1]), 0);
             break;
         case 0x190:
         case 0x191:
@@ -5763,7 +5763,7 @@ void add_8018D9E0_entry(s32 type, s32 column, s32 row, s8 priority) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/add_8018D9E0_entry.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/add_ui_element.s")
 #endif
 
 #ifndef NON_MATCHING
@@ -5795,11 +5795,11 @@ void func_8009F5E0(MenuItem* arg0) {
     if ((s8) arg0->visible != 0) {
         gDPPipeSync(gDisplayListHead++);
         switch (arg0->type) {         /* switch 6; irregular */
-            case D_8018D9E0_TYPE_0FA: /* switch 6 */
+            case LOGO_INTRO_MENU_LOGO: /* switch 6 */
                 func_80094660(gGfxPool, arg0->unk1C);
                 break;
-            case D_8018D9E0_TYPE_0FB: /* switch 6 */
-                func_800947B4(gGfxPool, arg0->unk1C);
+            case START_MENU_FLAG: /* switch 6 */
+                render_checkered_flag(gGfxPool, arg0->unk1C);
                 break;
             case D_8018D9E0_TYPE_0D2: /* switch 6 */
                 gDisplayListHead = func_8009B9D0(gDisplayListHead, D_020014C8);
@@ -5835,20 +5835,20 @@ void func_8009F5E0(MenuItem* arg0) {
             case D_8018D9E0_TYPE_0D9: /* switch 6 */
                 func_800A0EB8(arg0, arg0->type - 0xD8);
                 break;
-            case D_8018D9E0_TYPE_001: /* switch 6 */
+            case START_MENU_BACKGROUND: /* switch 6 */
                 gDisplayListHead =
                     func_8009BA74(gDisplayListHead, D_800E7D4C[func_800B555C()], arg0->column, arg0->row);
                 break;
-            case D_8018D9E0_TYPE_002: /* switch 6 */
+            case START_MENU_LOGO_AND_COPYRIGHT: /* switch 6 */
                 func_8004C8D4((arg0->column + 0xA0), (arg0->row + 0x47));
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_020045E8, arg0->column, arg0->row);
                 break;
-            case D_8018D9E0_TYPE_003: /* switch 6 */
+            case START_MENU_PUSH_START_BUTTON: /* switch 6 */
                 if (((gGlobalTimer / 8) % 3) != 0) {
                     gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004610, arg0->column, arg0->row);
                 }
                 break;
-            case D_8018D9E0_TYPE_005: /* switch 6 */
+            case START_MENU_TEXT_BOX: /* switch 6 */
                 var_t0 = (s32) ((f32) (get_string_width(gCourseNamesDup[0]) + 5) * 0.9f) / 2;
                 gDisplayListHead = draw_box(gDisplayListHead, 0xA0 - var_t0, 0x0000007B, var_t0 + 0xA0, 0x000000A4, 0,
                                             0, 0, 0x00000096);
@@ -5871,7 +5871,7 @@ void func_8009F5E0(MenuItem* arg0) {
                 get_time_record_centiseconds(temp_v1, sp80);
                 func_800939C8(0x000000B4, 0x000000A0, sp80, 0, 1.0f, 1.0f);
                 break;
-            case D_8018D9E0_TYPE_004: /* switch 6 */
+            case UNUSED_TYPE_004: /* switch 6 */
                 var_t0 = get_string_width(D_800E77A0[0]);
                 temp_v1 = get_string_width(D_800E77A0[1]);
                 if (var_t0 < temp_v1) {
@@ -5888,29 +5888,29 @@ void func_8009F5E0(MenuItem* arg0) {
                                               0, why, why);
                 }
                 break;
-            case D_8018D9E0_TYPE_023: /* switch 6 */
+            case MAIN_MENU_BACKGROUND: /* switch 6 */
             case D_8018D9E0_TYPE_024: /* switch 6 */
             case D_8018D9E0_TYPE_025: /* switch 6 */
                 gDisplayListHead =
                     func_8009BC9C(gDisplayListHead, D_800E7D4C[func_800B555C()], arg0->column, arg0->row, 3, 0);
                 break;
-            case D_8018D9E0_TYPE_00A: /* switch 6 */
+            case MAIN_MENU_GAME_SELECT: /* switch 6 */
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004660, arg0->column, arg0->row);
                 break;
             case D_8018D9E0_TYPE_00B: /* switch 6 */
             case D_8018D9E0_TYPE_00C: /* switch 6 */
             case D_8018D9E0_TYPE_00D: /* switch 6 */
-            case D_8018D9E0_TYPE_00E: /* switch 6 */
+            case MAIN_MENU_4P_GAME: /* switch 6 */
                 var_a1 = arg0->type - 0xB;
                 func_800A8270(var_a1, arg0);
                 func_800A0FA4(arg0, var_a1);
                 break;
-            case D_8018D9E0_TYPE_00F: /* switch 6 */
+            case MAIN_MENU_OK: /* switch 6 */
                 func_800A8564(arg0);
                 gDisplayListHead = func_8009BC9C(gDisplayListHead, D_0200487C, arg0->column, arg0->row, 2, arg0->unk1C);
                 break;
-            case D_8018D9E0_TYPE_010: /* switch 6 */
-            case D_8018D9E0_TYPE_011: /* switch 6 */
+            case MAIN_MENU_OPTION: /* switch 6 */
+            case MAIN_MENU_DATA: /* switch 6 */
                 var_a1 = arg0->type - 0xF;
                 if (arg0->unk1C < 0x20) {
                     temp_t9 = (arg0->unk1C * 0x3A) / 64;
@@ -5928,20 +5928,20 @@ void func_8009F5E0(MenuItem* arg0) {
                 gDisplayListHead =
                     func_8009BC9C(gDisplayListHead, D_800E8254[var_v1], arg0->column, arg0->row, 2, arg0->unk1C);
                 break;
-            case D_8018D9E0_TYPE_012: /* switch 6 */
-            case D_8018D9E0_TYPE_013: /* switch 6 */
-            case D_8018D9E0_TYPE_014: /* switch 6 */
+            case MAIN_MENU_50CC: /* switch 6 */
+            case MAIN_MENU_100CC: /* switch 6 */
+            case MAIN_MENU_150CC: /* switch 6 */
             case D_8018D9E0_TYPE_015: /* switch 6 */
             case D_8018D9E0_TYPE_016: /* switch 6 */
             case D_8018D9E0_TYPE_017: /* switch 6 */
-            case D_8018D9E0_TYPE_018: /* switch 6 */
-            case D_8018D9E0_TYPE_019: /* switch 6 */
+            case MAIN_MENU_TIME_TRIALS_BEGIN: /* switch 6 */
+            case MAIN_MENU_TIME_TRIALS_DATA: /* switch 6 */
                 var_v1 = D_800E86B0[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]];
                 var_a1 = gGameModePlayerSelection[gPlayerCount - 1][D_800E86AC[gPlayerCount - 1]];
                 switch (arg0->type) {         /* switch 5 */
-                    case D_8018D9E0_TYPE_012: /* switch 5 */
-                    case D_8018D9E0_TYPE_013: /* switch 5 */
-                    case D_8018D9E0_TYPE_014: /* switch 5 */
+                    case MAIN_MENU_50CC: /* switch 5 */
+                    case MAIN_MENU_100CC: /* switch 5 */
+                    case MAIN_MENU_150CC: /* switch 5 */
                     case D_8018D9E0_TYPE_015: /* switch 5 */
                         if ((var_a1 != 0) && (var_a1 != 2)) {
                             var_v1 = -1;
@@ -5958,8 +5958,8 @@ void func_8009F5E0(MenuItem* arg0) {
                             sp9C = segmented_to_virtual_dupe(D_800E824C[arg0->type]);
                         }
                         break;
-                    case D_8018D9E0_TYPE_018: /* switch 5 */
-                    case D_8018D9E0_TYPE_019: /* switch 5 */
+                    case MAIN_MENU_TIME_TRIALS_BEGIN: /* switch 5 */
+                    case MAIN_MENU_TIME_TRIALS_DATA: /* switch 5 */
                         if (var_a1 != 1) {
                             var_v1 = -1;
                         } else {
@@ -5989,13 +5989,13 @@ void func_8009F5E0(MenuItem* arg0) {
             case D_8018D9E0_TYPE_01B: /* switch 6 */
                 func_800A10CC(arg0);
                 break;
-            case D_8018D9E0_TYPE_02A: /* switch 6 */
+            case CHARACTER_SELECT_MENU_PLAYER_SELECT_BANNER: /* switch 6 */
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004B4C, arg0->column, arg0->row);
                 break;
-            case D_8018D9E0_TYPE_034: /* switch 6 */
-            case D_8018D9E0_TYPE_035: /* switch 6 */
-            case D_8018D9E0_TYPE_036: /* switch 6 */
-            case D_8018D9E0_TYPE_037: /* switch 6 */
+            case CHARACTER_SELECT_MENU_1P_CURSOR: /* switch 6 */
+            case CHARACTER_SELECT_MENU_2P_CURSOR: /* switch 6 */
+            case CHARACTER_SELECT_MENU_3P_CURSOR: /* switch 6 */
+            case CHARACTER_SELECT_MENU_4P_CURSOR: /* switch 6 */
                 temp_a0 = arg0->type - 0x34;
                 if (gCharacterGridSelections[temp_a0]) {
                     if (D_8018EDE8[temp_a0] == 0) {
@@ -6012,11 +6012,11 @@ void func_8009F5E0(MenuItem* arg0) {
                     func_800A11D0(arg0, temp_a0, temp_t2);
                 }
                 break;
-            case D_8018D9E0_TYPE_033: /* switch 6 */
+            case CHARACTER_SELECT_MENU_OK: /* switch 6 */
                 func_800A8564(arg0);
                 gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004B74, arg0->column, arg0->row, 2, arg0->unk1C);
                 break;
-            case D_8018D9E0_TYPE_02B: /* switch 6 */
+            case CHARACTER_SELECT_MENU_MARIO: /* switch 6 */
             case D_8018D9E0_TYPE_02C: /* switch 6 */
             case D_8018D9E0_TYPE_02D: /* switch 6 */
             case D_8018D9E0_TYPE_02E: /* switch 6 */
@@ -6031,17 +6031,17 @@ void func_8009F5E0(MenuItem* arg0) {
                 func_8009A76C(arg0->D_8018DEE0_index, arg0->column, arg0->row, arg0->unk1C);
                 break;
             case D_8018D9E0_TYPE_058: /* switch 6 */
-            case D_8018D9E0_TYPE_059: /* switch 6 */
+            case COURSE_SELECT_COURSE_NAMES: /* switch 6 */
             case D_8018D9E0_TYPE_05A: /* switch 6 */
             case D_8018D9E0_TYPE_05B: /* switch 6 */
-            case D_8018D9E0_TYPE_05C: /* switch 6 */
+            case COURSE_SELECT_BATTLE_NAMES: /* switch 6 */
                 func_800A8A98(arg0);
                 gDisplayListHead =
                     func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82C4[arg0->type - 0x52]),
                                   arg0->column, arg0->row);
                 func_800A8CA4(arg0);
                 break;
-            case D_8018D9E0_TYPE_052: /* switch 6 */
+            case COURSE_SELECT_MAP_SELECT: /* switch 6 */
                 gDisplayListHead =
                     func_8009BA74(gDisplayListHead, segmented_to_virtual_dupe(D_800E82C4[arg0->type - 0x52]),
                                   arg0->column, arg0->row);
@@ -6052,7 +6052,7 @@ void func_8009F5E0(MenuItem* arg0) {
             case D_8018D9E0_TYPE_062: /* switch 6 */
                 func_800A1500(arg0);
                 break;
-            case D_8018D9E0_TYPE_053: /* switch 6 */
+            case COURSE_SELECT_MUSHROOM_CUP: /* switch 6 */
             case D_8018D9E0_TYPE_054: /* switch 6 */
             case D_8018D9E0_TYPE_055: /* switch 6 */
             case D_8018D9E0_TYPE_056: /* switch 6 */
@@ -6060,7 +6060,7 @@ void func_8009F5E0(MenuItem* arg0) {
                 func_800A890C(var_a1, arg0);
                 func_800A143C(arg0, var_a1);
                 break;
-            case D_8018D9E0_TYPE_05D: /* switch 6 */
+            case COURSE_SELECT_OK: /* switch 6 */
                 func_800A8564(arg0);
                 gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004E80, arg0->column, arg0->row, 2, arg0->unk1C);
                 break;
@@ -6907,7 +6907,7 @@ void func_800A1FB0(MenuItem* arg0) {
                     if (var_s1 == 0) {
                         var_v1 = &D_8018EE10[var_s2];
                     } else {
-                        var_v1 = &((struct_8018EE10_entry*) D_8018D9C0)[var_s2];
+                        var_v1 = &((struct_8018EE10_entry*) gSomeDLBuffer)[var_s2];
                     }
                     if (var_v1->ghostDataSaved == 0) {
                         print_text_mode_1(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E7A44, 0, 0.5f, 0.5f);
@@ -6946,7 +6946,7 @@ void func_800A1FB0(MenuItem* arg0) {
                     if (var_s1 == 0) {
                         var_v1 = &D_8018EE10[var_s2];
                     } else {
-                        var_v1 = &((struct_8018EE10_entry*) D_8018D9C0)[var_s2];
+                        var_v1 = &((struct_8018EE10_entry*) gSomeDLBuffer)[var_s2];
                     }
                     if (var_v1->ghostDataSaved == 0) {
                         print_text_mode_1(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E7A44, 0, 0.5f, 0.5f);
@@ -6998,7 +6998,7 @@ void func_800A1FB0(MenuItem* arg0) {
                     if (var_s1 == 0) {
                         var_v1 = &D_8018EE10[var_s2];
                     } else {
-                        var_v1 = &((struct_8018EE10_entry*) D_8018D9C0)[var_s2];
+                        var_v1 = &((struct_8018EE10_entry*) gSomeDLBuffer)[var_s2];
                     }
                     if (var_v1->ghostDataSaved == 0) {
                         print_text_mode_1(0x2A + (var_s1 * 0x89), 0x96 + (0x1E * var_s2), D_800E7A44, 0, 0.5f, 0.5f);
@@ -7149,7 +7149,7 @@ void func_800A34A8(MenuItem* arg0) {
 
     if (arg0->state != 0) {
         if (arg0->state < 9) {
-            for (rank = 0; rank < 8; rank++) {
+            for (rank = 0; rank < NUM_PLAYERS; rank++) {
                 sp80[rank] = gPlayers[gGPCurrentRacePlayerIdByRank[rank]].characterId;
             }
         } else {
@@ -7283,8 +7283,8 @@ void func_800A3ADC(MenuItem* arg0, s32 arg1, s32 arg2, s32 characterId, s32 arg4
     print_text_mode_1(arg1 + 0xA, arg2, D_800E76A8[characterId], 0, 0.7f, 0.7f);
     convert_number_to_ascii(gGPPointsByCharacterId[characterId], sp34);
     func_800939C8(arg1 + 0x47, arg2, sp34, 0, 0.7f, 0.7f);
-    if ((arg4 < 4) && (arg0->state < 9)) {
-        convert_number_to_ascii(D_8018D9BC[arg4], sp34);
+    if ((arg4 < ARRAY_COUNT(gGPPointRewards)) && (arg0->state < 9)) {
+        convert_number_to_ascii(sGPPointsCopy[arg4], sp34);
         sp34[0] = '+';
         print_text_mode_1(arg1 + 0x5A, arg2, sp34, 0, 0.7f, 0.7f);
     }
@@ -8450,11 +8450,11 @@ void func_800A7A4C(s32 arg0) {
     MenuItem* var_s1;
     s32 one = 1;
 
-    for (var_v1_2 = 0; var_v1_2 < D_8018D9E0_SIZE; var_v1_2++) {
+    for (var_v1_2 = 0; var_v1_2 < MENU_ITEMS_MAX; var_v1_2++) {
         var_v1 = 0;
-        var_s1 = &D_8018D9E0[var_v1_2];
+        var_s1 = &gMenuItems[var_v1_2];
         type = var_s1->type;
-        if ((type == D_8018D9E0_TYPE_004) || (type == D_8018D9E0_TYPE_005) || (type == D_8018D9E0_TYPE_0C7)) {
+        if ((type == UNUSED_TYPE_004) || (type == START_MENU_TEXT_BOX) || (type == D_8018D9E0_TYPE_0C7)) {
             if (arg0 != 0) {
                 var_v1 = 1;
             }
@@ -8467,7 +8467,7 @@ void func_800A7A4C(s32 arg0) {
         }
 
         switch (type) {               /* switch 8; irregular */
-            case D_8018D9E0_TYPE_0FA: /* switch 8 */
+            case LOGO_INTRO_MENU_LOGO: /* switch 8 */
                 if (s8018ED94 < 0x50) {
                     D_800E8534 = 3.0f;
                 } else if (s8018ED94 < 0x5A) {
@@ -8505,7 +8505,7 @@ void func_800A7A4C(s32 arg0) {
             case D_8018D9E0_TYPE_0D4: /* switch 8 */
                 func_800A97BC(var_s1);
                 break;
-            case D_8018D9E0_TYPE_005:    /* switch 8 */
+            case START_MENU_TEXT_BOX:    /* switch 8 */
                 switch (var_s1->state) { /* switch 9; irregular */
                     case 0:              /* switch 9 */
                         if (gControllerFive->button & R_TRIG) {
@@ -8521,11 +8521,11 @@ void func_800A7A4C(s32 arg0) {
                         break;
                 }
                 break;
-            case D_8018D9E0_TYPE_00A: /* switch 8 */
+            case MAIN_MENU_GAME_SELECT: /* switch 8 */
                 func_800AA280(var_s1);
                 break;
-            case D_8018D9E0_TYPE_010:              /* switch 8 */
-            case D_8018D9E0_TYPE_011:              /* switch 8 */
+            case MAIN_MENU_OPTION:              /* switch 8 */
+            case MAIN_MENU_DATA:              /* switch 8 */
                 switch (gMainMenuSelectionDepth) { /* switch 5 */
                     case OPTIONS_SELECTION:        /* switch 5 */
                     case DATA_SELECTION:           /* switch 5 */
@@ -8541,14 +8541,14 @@ void func_800A7A4C(s32 arg0) {
                         break;
                 }
                 break;
-            case D_8018D9E0_TYPE_00F: /* switch 8 */
+            case MAIN_MENU_OK: /* switch 8 */
                 func_800AA280(var_s1);
                 func_800A9A98(var_s1);
                 break;
             case D_8018D9E0_TYPE_00B:              /* switch 8 */
             case D_8018D9E0_TYPE_00C:              /* switch 8 */
             case D_8018D9E0_TYPE_00D:              /* switch 8 */
-            case D_8018D9E0_TYPE_00E:              /* switch 8 */
+            case MAIN_MENU_4P_GAME:              /* switch 8 */
                 switch (gMainMenuSelectionDepth) { /* switch 6 */
                     case OPTIONS_SELECTION:        /* switch 6 */
                     case DATA_SELECTION:           /* switch 6 */
@@ -8565,26 +8565,26 @@ void func_800A7A4C(s32 arg0) {
                 }
                 func_800A9D5C(var_s1);
                 break;
-            case D_8018D9E0_TYPE_012: /* switch 8 */
-            case D_8018D9E0_TYPE_013: /* switch 8 */
-            case D_8018D9E0_TYPE_014: /* switch 8 */
+            case MAIN_MENU_50CC: /* switch 8 */
+            case MAIN_MENU_100CC: /* switch 8 */
+            case MAIN_MENU_150CC: /* switch 8 */
             case D_8018D9E0_TYPE_015: /* switch 8 */
             case D_8018D9E0_TYPE_016: /* switch 8 */
             case D_8018D9E0_TYPE_017: /* switch 8 */
-            case D_8018D9E0_TYPE_018: /* switch 8 */
-            case D_8018D9E0_TYPE_019: /* switch 8 */
+            case MAIN_MENU_TIME_TRIALS_BEGIN: /* switch 8 */
+            case MAIN_MENU_TIME_TRIALS_DATA: /* switch 8 */
                 func_800A9E58(var_s1);
                 break;
             case D_8018D9E0_TYPE_01B: /* switch 8 */
                 func_800AA2EC(var_s1);
                 break;
-            case D_8018D9E0_TYPE_034: /* switch 8 */
-            case D_8018D9E0_TYPE_035: /* switch 8 */
-            case D_8018D9E0_TYPE_036: /* switch 8 */
-            case D_8018D9E0_TYPE_037: /* switch 8 */
+            case CHARACTER_SELECT_MENU_1P_CURSOR: /* switch 8 */
+            case CHARACTER_SELECT_MENU_2P_CURSOR: /* switch 8 */
+            case CHARACTER_SELECT_MENU_3P_CURSOR: /* switch 8 */
+            case CHARACTER_SELECT_MENU_4P_CURSOR: /* switch 8 */
                 func_800AADD4(var_s1);
                 break;
-            case D_8018D9E0_TYPE_02B: /* switch 8 */
+            case CHARACTER_SELECT_MENU_MARIO: /* switch 8 */
             case D_8018D9E0_TYPE_02C: /* switch 8 */
             case D_8018D9E0_TYPE_02D: /* switch 8 */
             case D_8018D9E0_TYPE_02E: /* switch 8 */
@@ -8616,11 +8616,11 @@ void func_800A7A4C(s32 arg0) {
                 }
                 func_800AAE18(var_s1);
                 break;
-            case D_8018D9E0_TYPE_033: /* switch 8 */
-            case D_8018D9E0_TYPE_05D: /* switch 8 */
+            case CHARACTER_SELECT_MENU_OK: /* switch 8 */
+            case COURSE_SELECT_OK: /* switch 8 */
                 func_800A9A98(var_s1);
                 break;
-            case D_8018D9E0_TYPE_053: /* switch 8 */
+            case COURSE_SELECT_MUSHROOM_CUP: /* switch 8 */
             case D_8018D9E0_TYPE_054: /* switch 8 */
             case D_8018D9E0_TYPE_055: /* switch 8 */
             case D_8018D9E0_TYPE_056: /* switch 8 */
@@ -8636,7 +8636,7 @@ void func_800A7A4C(s32 arg0) {
                 }
                 break;
             case D_8018D9E0_TYPE_058: /* switch 8 */
-            case D_8018D9E0_TYPE_059: /* switch 8 */
+            case COURSE_SELECT_COURSE_NAMES: /* switch 8 */
             case D_8018D9E0_TYPE_05A: /* switch 8 */
             case D_8018D9E0_TYPE_05B: /* switch 8 */
                 func_800AB260(var_s1);
@@ -8826,21 +8826,21 @@ void func_800A7A4C(s32 arg0) {
                 func_800AF480(var_s1);
                 break;
             case D_8018D9E0_TYPE_NULL:
-            case D_8018D9E0_TYPE_001:
-            case D_8018D9E0_TYPE_002:
-            case D_8018D9E0_TYPE_003:
-            case D_8018D9E0_TYPE_004:
+            case START_MENU_BACKGROUND:
+            case START_MENU_LOGO_AND_COPYRIGHT:
+            case START_MENU_PUSH_START_BUTTON:
+            case UNUSED_TYPE_004:
                 break;
         }
     }
 
     for (var_s0 = 0; var_s0 < 0x10; var_s0++) {
-        for (var_v1_2 = 0; var_v1_2 < D_8018D9E0_SIZE; var_v1_2++) {
+        for (var_v1_2 = 0; var_v1_2 < MENU_ITEMS_MAX; var_v1_2++) {
             var_v1 = 0;
-            var_s1 = &D_8018D9E0[var_v1_2];
+            var_s1 = &gMenuItems[var_v1_2];
             if (var_s1 && var_s1) {} // ?
             type = var_s1->type;
-            if ((type == D_8018D9E0_TYPE_004) || (type == D_8018D9E0_TYPE_005) || (type == D_8018D9E0_TYPE_0C7)) {
+            if ((type == UNUSED_TYPE_004) || (type == START_MENU_TEXT_BOX) || (type == D_8018D9E0_TYPE_0C7)) {
                 if (arg0 != 0) {
                     var_v1 = 1;
                 }
@@ -10023,14 +10023,14 @@ void func_800AAE18(MenuItem* arg0) {
 
 /**
  * Similar to find_8018D9E0_entry_dupe, there is potential for a
- * hard lock in the function if no appropriate D_8018D9E0 entry
+ * hard lock in the function if no appropriate gMenuItems entry
  * is found.
  **/
 MenuItem* func_800AAE68(void) {
-    MenuItem* entry = D_8018D9E0;
+    MenuItem* entry = gMenuItems;
     s32 thing = gPlayerCount - 1;
 
-    for (; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
+    for (; !(entry > &gMenuItems[MENU_ITEMS_MAX]); entry++) {
         if ((thing + 0xB) == entry->type) {
             goto escape;
         }
@@ -10046,13 +10046,13 @@ escape:
 
 /**
  * Similar to find_8018D9E0_entry_dupe, there is potential for a
- * hard lock in the function if no appropriate D_8018D9E0 entry
+ * hard lock in the function if no appropriate gMenuItems entry
  * is found.
  **/
 MenuItem* func_800AAEB4(s32 arg0) {
-    MenuItem* entry = D_8018D9E0;
+    MenuItem* entry = gMenuItems;
 
-    for (; !(entry > &D_8018D9E0[D_8018D9E0_SIZE]); entry++) {
+    for (; !(entry > &gMenuItems[MENU_ITEMS_MAX]); entry++) {
         if ((arg0 + 0x2B) == entry->type) {
             goto escape;
         }
@@ -10077,8 +10077,8 @@ escape:
  * reasoning on the original author(s) part.
  **/
 MenuItem* find_8018D9E0_entry_dupe(s32 type) {
-    MenuItem* entry = D_8018D9E0;
-    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
+    MenuItem* entry = gMenuItems;
+    for (; !(entry > (&gMenuItems[MENU_ITEMS_MAX])); entry++) {
         if (entry->type == type) {
             goto escape;
         }
@@ -10093,8 +10093,8 @@ escape:
 }
 
 MenuItem* find_8018D9E0_entry(s32 arg0) {
-    MenuItem* entry = D_8018D9E0;
-    for (; !(entry > (&D_8018D9E0[D_8018D9E0_SIZE])); entry++) {
+    MenuItem* entry = gMenuItems;
+    for (; !(entry > (&gMenuItems[MENU_ITEMS_MAX])); entry++) {
         if (entry->type == arg0) {
             goto escape;
         }
@@ -10652,7 +10652,7 @@ void func_800AC324(MenuItem* arg0) {
             if (((D_8018D9D8 != 0) || (arg0->unk20 >= 0x5B)) && (D_800DDB24 != 0)) {
                 arg0->state = 3;
                 arg0->unk1C = arg0->column;
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0AB, 0, 0, D_8018D9E0_PRIORITY_0);
+                add_ui_element(D_8018D9E0_TYPE_0AB, 0, 0, D_8018D9E0_PRIORITY_0);
             }
             break;
         case 3:
@@ -10681,8 +10681,8 @@ void func_800AC458(struct_8018D9E0_entry* arg0) {
         case 0:
             arg0->column = -0x000000A0;
             arg0->state = 1;
-            for (var_a1 = 0; var_a1 < 4; var_a1++) {
-                D_8018D9BC[var_a1] = gGPPointRewards[var_a1];
+            for (var_a1 = 0; var_a1 < ARRAY_COUNT(gGPPointRewards); var_a1++) {
+                sGPPointsCopy[var_a1] = gGPPointRewards[var_a1];
             }
             arg0->unk20 = arg0->column;
             break;
@@ -10723,12 +10723,12 @@ void func_800AC458(struct_8018D9E0_entry* arg0) {
             var_a1 = arg0->state - 3;
             arg0->unk1C++;
             if (((arg0->unk1C % 3) == 0) || (D_8018D9D8 != 0)) {
-                if (D_8018D9BC[var_a1] > 0) {
-                    D_8018D9BC[var_a1]--;
+                if (sGPPointsCopy[var_a1] > 0) {
+                    sGPPointsCopy[var_a1]--;
                     gGPPointsByCharacterId[gPlayers[gGPCurrentRacePlayerIdByRank[var_a1]].characterId] += 1;
                     play_sound2(SOUND_ACTION_COUNT_SCORE);
                     var_t1 = 0;
-                    if ((D_8018D9BC[var_a1] == 0) && (arg0->unk20 == 0)) {
+                    if ((sGPPointsCopy[var_a1] == 0) && (arg0->unk20 == 0)) {
                         arg0->unk20 = 1;
                         arg0->unk1C = 0;
                     }
@@ -10908,7 +10908,7 @@ void func_800ACC50(MenuItem* arg0) {
                 arg0->state = 1;
                 arg0->unk1C = 0;
                 for (i = 0; i < gPlayerCount; i++) {
-                    add_8018D9E0_entry(i + D_8018D9E0_TYPE_0B1, 0, 0, (s8) (D_8018D9E0_PRIORITY_5 - i));
+                    add_ui_element(i + D_8018D9E0_TYPE_0B1, 0, 0, (s8) (D_8018D9E0_PRIORITY_5 - i));
                 }
             }
             break;
@@ -11041,7 +11041,7 @@ void func_800AD1A4(MenuItem* arg0) {
             arg0->column = 0x0000014A;
             arg0->state = 1;
             func_800921B4();
-            add_8018D9E0_entry(D_8018D9E0_TYPE_0BB, 0, 0, D_8018D9E0_PRIORITY_0);
+            add_ui_element(D_8018D9E0_TYPE_0BB, 0, 0, D_8018D9E0_PRIORITY_0);
             break;
         case 1:
             func_800A9208(arg0, 0x000000A0);
@@ -11061,7 +11061,7 @@ void func_800AD1A4(MenuItem* arg0) {
                 func_800921B4();
                 arg0->state = 4;
                 arg0->unk1C = arg0->column;
-                add_8018D9E0_entry(D_8018D9E0_TYPE_0BA, 0, 0, D_8018D9E0_PRIORITY_0);
+                add_ui_element(D_8018D9E0_TYPE_0BA, 0, 0, D_8018D9E0_PRIORITY_0);
             }
             break;
         case 4:
@@ -11091,8 +11091,8 @@ void func_800AD2E8(MenuItem* arg0) {
         case 0:            /* switch 3 */
             arg0->column = -0x000000A0;
             arg0->state = 1;
-            for (index = 0; index < 4; index++) {
-                D_8018D9BC[index] = gGPPointRewards[index];
+            for (index = 0; index < ARRAY_COUNT(gGPPointRewards); index++) {
+                sGPPointsCopy[index] = gGPPointRewards[index];
             }
             arg0->unk20 = arg0->column;
             break;
@@ -11900,7 +11900,7 @@ void func_800AF004(MenuItem* arg0) {
                 arg0->state = 1;
                 gCupSelection %= 4;
                 gCCSelection %= 4;
-                add_8018D9E0_entry(D_8018D9E0_TYPE_12C, 0, 0, D_8018D9E0_PRIORITY_4);
+                add_ui_element(D_8018D9E0_TYPE_12C, 0, 0, D_8018D9E0_PRIORITY_4);
             }
             break;
         case 1:
@@ -11911,7 +11911,7 @@ void func_800AF004(MenuItem* arg0) {
             if (arg0->unk1C >= 9) {
                 arg0->unk1C = 0;
                 arg0->state++;
-                add_8018D9E0_entry(arg0->state + D_8018D9E0_TYPE_12B, 0, 0, D_8018D9E0_PRIORITY_4);
+                add_ui_element(arg0->state + D_8018D9E0_TYPE_12B, 0, 0, D_8018D9E0_PRIORITY_4);
             }
             break;
         case 5:

@@ -1,4 +1,4 @@
-glabel func_800996BC
+glabel load_menu_img2
 /* 09A2BC 800996BC 27BDFFC0 */  addiu $sp, $sp, -0x40
 /* 09A2C0 800996C0 AFBF003C */  sw    $ra, 0x3c($sp)
 /* 09A2C4 800996C4 AFB20020 */  sw    $s2, 0x20($sp)
@@ -17,14 +17,14 @@ glabel func_800996BC
 /* 09A2F8 800996F8 241E0002 */  li    $fp, 2
 /* 09A2FC 800996FC 11C0008A */  beqz  $t6, .L80099928
 /* 09A300 80099700 2417FFFF */   li    $s7, -1
-/* 09A304 80099704 3C158019 */  lui   $s5, %hi(D_8018D9B4) # $s5, 0x8019
+/* 09A304 80099704 3C158019 */  lui   $s5, %hi(gMenuCompressedBuffer) # $s5, 0x8019
 /* 09A308 80099708 3C148019 */  lui   $s4, %hi(gNumD_8018E118Entries) # $s4, 0x8019
-/* 09A30C 8009970C 3C138019 */  lui   $s3, %hi(gD_8018E118TotalSize) # $s3, 0x8019
-/* 09A310 80099710 3C118019 */  lui   $s1, %hi(D_8018E118) # $s1, 0x8019
-/* 09A314 80099714 2631E118 */  addiu $s1, %lo(D_8018E118) # addiu $s1, $s1, -0x1ee8
-/* 09A318 80099718 2673E110 */  addiu $s3, %lo(gD_8018E118TotalSize) # addiu $s3, $s3, -0x1ef0
+/* 09A30C 8009970C 3C138019 */  lui   $s3, %hi(gMenuTextureBufferIndex) # $s3, 0x8019
+/* 09A310 80099710 3C118019 */  lui   $s1, %hi(sMenuTextureMap) # $s1, 0x8019
+/* 09A314 80099714 2631E118 */  addiu $s1, %lo(sMenuTextureMap) # addiu $s1, $s1, -0x1ee8
+/* 09A318 80099718 2673E110 */  addiu $s3, %lo(gMenuTextureBufferIndex) # addiu $s3, $s3, -0x1ef0
 /* 09A31C 8009971C 2694E758 */  addiu $s4, %lo(gNumD_8018E118Entries) # addiu $s4, $s4, -0x18a8
-/* 09A320 80099720 26B5D9B4 */  addiu $s5, %lo(D_8018D9B4) # addiu $s5, $s5, -0x264c
+/* 09A320 80099720 26B5D9B4 */  addiu $s5, %lo(gMenuCompressedBuffer) # addiu $s5, $s5, -0x264c
 /* 09A324 80099724 24160001 */  li    $s6, 1
 /* 09A328 80099728 8E830000 */  lw    $v1, ($s4)
 .L8009972C:
@@ -100,9 +100,9 @@ glabel func_800996BC
 /* 09A418 80099818 8EA60000 */   lw    $a2, ($s5)
 .L8009981C:
 /* 09A41C 8009981C 1257000A */  beq   $s2, $s7, .L80099848
-/* 09A420 80099820 3C0D8019 */   lui   $t5, %hi(D_8018D9B0) # $t5, 0x8019
+/* 09A420 80099820 3C0D8019 */   lui   $t5, %hi(gMenuTextureBuffer) # $t5, 0x8019
 /* 09A424 80099824 12400011 */  beqz  $s2, .L8009986C
-/* 09A428 80099828 3C058019 */   lui   $a1, %hi(D_8018D9B8) # 0x8019
+/* 09A428 80099828 3C058019 */   lui   $a1, %hi(sTKMK00_LowResBuffer) # 0x8019
 /* 09A42C 8009982C 52560007 */  beql  $s2, $s6, .L8009984C
 /* 09A430 80099830 8E6B0000 */   lw    $t3, ($s3)
 /* 09A434 80099834 525E000E */  beql  $s2, $fp, .L80099870
@@ -113,7 +113,7 @@ glabel func_800996BC
 .L80099848:
 /* 09A448 80099848 8E6B0000 */  lw    $t3, ($s3)
 .L8009984C:
-/* 09A44C 8009984C 8DADD9B0 */  lw    $t5, %lo(D_8018D9B0)($t5)
+/* 09A44C 8009984C 8DADD9B0 */  lw    $t5, %lo(gMenuTextureBuffer)($t5)
 /* 09A450 80099850 8EA40000 */  lw    $a0, ($s5)
 /* 09A454 80099854 000B6040 */  sll   $t4, $t3, 1
 /* 09A458 80099858 0C010034 */  jal   mio0decode
@@ -125,17 +125,17 @@ glabel func_800996BC
 /* 09A46C 8009986C 860E0000 */  lh    $t6, ($s0)
 .L80099870:
 /* 09A470 80099870 24020001 */  li    $v0, 1
-/* 09A474 80099874 3C198019 */  lui   $t9, %hi(D_8018D9B0) # $t9, 0x8019
+/* 09A474 80099874 3C198019 */  lui   $t9, %hi(gMenuTextureBuffer) # $t9, 0x8019
 /* 09A478 80099878 16CE0003 */  bne   $s6, $t6, .L80099888
 /* 09A47C 8009987C 00000000 */   nop   
 /* 09A480 80099880 10000001 */  b     .L80099888
 /* 09A484 80099884 240200BE */   li    $v0, 190
 .L80099888:
 /* 09A488 80099888 8E6F0000 */  lw    $t7, ($s3)
-/* 09A48C 8009988C 8F39D9B0 */  lw    $t9, %lo(D_8018D9B0)($t9)
+/* 09A48C 8009988C 8F39D9B0 */  lw    $t9, %lo(gMenuTextureBuffer)($t9)
 /* 09A490 80099890 8EA40000 */  lw    $a0, ($s5)
 /* 09A494 80099894 000FC040 */  sll   $t8, $t7, 1
-/* 09A498 80099898 8CA5D9B8 */  lw    $a1, %lo(D_8018D9B8)($a1) # -0x2648($a1)
+/* 09A498 80099898 8CA5D9B8 */  lw    $a1, %lo(sTKMK00_LowResBuffer)($a1) # -0x2648($a1)
 /* 09A49C 8009989C 00403825 */  move  $a3, $v0
 /* 09A4A0 800998A0 0C010174 */  jal   tkmk00decode
 /* 09A4A4 800998A4 03193021 */   addu  $a2, $t8, $t9

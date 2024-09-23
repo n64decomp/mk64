@@ -157,7 +157,7 @@ void update_menus(void) {
                         func_800CA330(0x19);
                         // deliberate (?) fallthru
                     case MAIN_MENU:
-                    case PLAYER_SELECT_MENU:
+                    case CHARACTER_SELECT_MENU:
                         play_sound2(SOUND_MENU_OK_CLICKED);
                         break;
                 }
@@ -198,7 +198,7 @@ void update_menus(void) {
                     main_menu_act(&gControllers[controllerIdx], controllerIdx);
                     break;
                 case PLAYER_SELECT_MENU_FROM_QUIT:
-                case PLAYER_SELECT_MENU:
+                case CHARACTER_SELECT_MENU:
                     player_select_menu_act(&gControllers[controllerIdx], controllerIdx);
                     break;
                 case COURSE_SELECT_MENU_FROM_QUIT:
@@ -227,7 +227,7 @@ void options_menu_act(struct Controller* controller, u16 arg1) {
 
     if (!func_800B4520()) {
         sp38 = find_8018D9E0_entry_dupe(0xF0);
-        sp30 = (struct_8018EE10_entry*) D_8018D9C0;
+        sp30 = (struct_8018EE10_entry*) gSomeDLBuffer;
         switch (D_8018EDEC) {
             case 0x15:
             case 0x16:
@@ -1988,7 +1988,7 @@ bool func_800B4520(void) {
 
 UNUSED void func_800B4560(s32 arg0, s32 arg1) {
     struct_8018EE10_entry* pak1 = D_8018EE10;
-    struct_8018EE10_entry* pak2 = (struct_8018EE10_entry*) D_8018D9C0;
+    struct_8018EE10_entry* pak2 = (struct_8018EE10_entry*) gSomeDLBuffer;
 
     rmonPrintf("ghost_kart=%d,", D_80162DE0);
     rmonPrintf("pak1_ghost_kart=%d,", (pak1 + arg0)->characterId);

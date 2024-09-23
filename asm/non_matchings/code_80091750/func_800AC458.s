@@ -26,8 +26,8 @@ glabel L800AC488
 /* 0AD08C 800AC48C 24180001 */  li    $t8, 1
 /* 0AD090 800AC490 ACEF000C */  sw    $t7, 0xc($a3)
 /* 0AD094 800AC494 ACF80004 */  sw    $t8, 4($a3)
-/* 0AD098 800AC498 3C028019 */  lui   $v0, %hi(D_8018D9BC) # $v0, 0x8019
-/* 0AD09C 800AC49C 2442D9BC */  addiu $v0, %lo(D_8018D9BC) # addiu $v0, $v0, -0x2644
+/* 0AD098 800AC498 3C028019 */  lui   $v0, %hi(sGPPointsCopy) # $v0, 0x8019
+/* 0AD09C 800AC49C 2442D9BC */  addiu $v0, %lo(sGPPointsCopy) # addiu $v0, $v0, -0x2644
 /* 0AD0A0 800AC4A0 3C19800F */  lui   $t9, %hi(gGPPointRewards) # $t9, 0x800f
 /* 0AD0A4 800AC4A4 83390B18 */  lb    $t9, %lo(gGPPointRewards)($t9)
 /* 0AD0A8 800AC4A8 8C4A0000 */  lw    $t2, ($v0)
@@ -123,8 +123,8 @@ glabel L800AC5D0
 /* 0AD1F8 800AC5F8 81CED9D8 */  lb    $t6, %lo(D_8018D9D8)($t6)
 /* 0AD1FC 800AC5FC 11C00032 */  beqz  $t6, .L800AC6C8
 .L800AC600:
-/* 0AD200 800AC600 3C028019 */   lui   $v0, %hi(D_8018D9BC) # $v0, 0x8019
-/* 0AD204 800AC604 2442D9BC */  addiu $v0, %lo(D_8018D9BC) # addiu $v0, $v0, -0x2644
+/* 0AD200 800AC600 3C028019 */   lui   $v0, %hi(sGPPointsCopy) # $v0, 0x8019
+/* 0AD204 800AC604 2442D9BC */  addiu $v0, %lo(sGPPointsCopy) # addiu $v0, $v0, -0x2644
 /* 0AD208 800AC608 8C4F0000 */  lw    $t7, ($v0)
 /* 0AD20C 800AC60C 0005C840 */  sll   $t9, $a1, 1
 /* 0AD210 800AC610 3C0A8016 */  lui   $t2, %hi(gGPCurrentRacePlayerIdByRank) # 0x8016
@@ -157,8 +157,8 @@ glabel L800AC5D0
 /* 0AD27C 800AC67C A06F0000 */  sb    $t7, ($v1)
 /* 0AD280 800AC680 0C032384 */  jal   play_sound2
 /* 0AD284 800AC684 AFA5001C */   sw    $a1, 0x1c($sp)
-/* 0AD288 800AC688 3C028019 */  lui   $v0, %hi(D_8018D9BC) # $v0, 0x8019
-/* 0AD28C 800AC68C 2442D9BC */  addiu $v0, %lo(D_8018D9BC) # addiu $v0, $v0, -0x2644
+/* 0AD288 800AC688 3C028019 */  lui   $v0, %hi(sGPPointsCopy) # $v0, 0x8019
+/* 0AD28C 800AC68C 2442D9BC */  addiu $v0, %lo(sGPPointsCopy) # addiu $v0, $v0, -0x2644
 /* 0AD290 800AC690 8FA5001C */  lw    $a1, 0x1c($sp)
 /* 0AD294 800AC694 8C580000 */  lw    $t8, ($v0)
 /* 0AD298 800AC698 8FA70020 */  lw    $a3, 0x20($sp)

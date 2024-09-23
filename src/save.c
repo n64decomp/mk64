@@ -909,7 +909,7 @@ s32 func_800B65F4(s32 arg0, s32 arg1) {
     writeStatus = osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNote, 0U, (arg0 * 0x3C00) + 0x100,
                                      0x00003C00, (u8*) D_800DC714);
     if (writeStatus == 0) {
-        temp_s3 = &((struct_8018EE10_entry*) D_8018D9C0)[arg0];
+        temp_s3 = &((struct_8018EE10_entry*) gSomeDLBuffer)[arg0];
         for (i = 0; i < 0x3C; i++) {
             if (temp_s3->unk_07[i] != func_800B60E8(i)) {
                 temp_s3->ghostDataSaved = 0;
@@ -940,14 +940,14 @@ void func_800B6798(void) {
     s32 temp_s0;
     u8* tmp;
 
-    tmp = (u8*) D_8018D9C0;
+    tmp = (u8*) gSomeDLBuffer;
 
     osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNote, PFS_READ, 0,
                        0x100 /*  2*sizeof(struct_8018EE10_entry) ? */, tmp);
 
     for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
-        // if (D_8018D9C0[temp_s0]->checksum != func_800B68F4(temp_s0)) {
-        //     D_8018D9C0[temp_s0]->ghostDataSaved = 0;
+        // if (gSomeDLBuffer[temp_s0]->checksum != func_800B68F4(temp_s0)) {
+        //     gSomeDLBuffer[temp_s0]->ghostDataSaved = 0;
         // }
         if (((struct_8018EE10_entry*) (tmp + (temp_s0 << 7)))->checksum != func_800B68F4(temp_s0)) {
             ((struct_8018EE10_entry*) (tmp + (temp_s0 << 7)))->ghostDataSaved = 0;
@@ -972,7 +972,7 @@ u8 func_800B68F4(s32 arg0) {
     s32 i;
     checksum = 0;
     for (i = 0; i < 0x43; i++) {
-        u8* addr = &((u8*) D_8018D9C0)[arg0];
+        u8* addr = &((u8*) gSomeDLBuffer)[arg0];
         checksum += addr[i] * multiplier + i;
     }
     return checksum;

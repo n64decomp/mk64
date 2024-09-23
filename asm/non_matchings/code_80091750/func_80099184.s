@@ -1,4 +1,4 @@
-glabel func_80099184
+glabel load_menu_img
 /* 099D84 80099184 27BDFFC8 */  addiu $sp, $sp, -0x38
 /* 099D88 80099188 AFBF0034 */  sw    $ra, 0x34($sp)
 /* 099D8C 8009918C AFB60030 */  sw    $s6, 0x30($sp)
@@ -13,16 +13,16 @@ glabel func_80099184
 /* 099DB0 800991B0 00408825 */  move  $s1, $v0
 /* 099DB4 800991B4 24160003 */  li    $s6, 3
 /* 099DB8 800991B8 11C0006C */  beqz  $t6, .L8009936C
-/* 099DBC 800991BC 3C158019 */   lui   $s5, %hi(D_8018D9B0) # $s5, 0x8019
-/* 099DC0 800991C0 3C148019 */  lui   $s4, %hi(D_8018D9B4) # $s4, 0x8019
+/* 099DBC 800991BC 3C158019 */   lui   $s5, %hi(gMenuTextureBuffer) # $s5, 0x8019
+/* 099DC0 800991C0 3C148019 */  lui   $s4, %hi(gMenuCompressedBuffer) # $s4, 0x8019
 /* 099DC4 800991C4 3C138019 */  lui   $s3, %hi(gNumD_8018E118Entries) # $s3, 0x8019
-/* 099DC8 800991C8 3C128019 */  lui   $s2, %hi(gD_8018E118TotalSize) # $s2, 0x8019
-/* 099DCC 800991CC 3C108019 */  lui   $s0, %hi(D_8018E118) # $s0, 0x8019
-/* 099DD0 800991D0 2610E118 */  addiu $s0, %lo(D_8018E118) # addiu $s0, $s0, -0x1ee8
-/* 099DD4 800991D4 2652E110 */  addiu $s2, %lo(gD_8018E118TotalSize) # addiu $s2, $s2, -0x1ef0
+/* 099DC8 800991C8 3C128019 */  lui   $s2, %hi(gMenuTextureBufferIndex) # $s2, 0x8019
+/* 099DCC 800991CC 3C108019 */  lui   $s0, %hi(sMenuTextureMap) # $s0, 0x8019
+/* 099DD0 800991D0 2610E118 */  addiu $s0, %lo(sMenuTextureMap) # addiu $s0, $s0, -0x1ee8
+/* 099DD4 800991D4 2652E110 */  addiu $s2, %lo(gMenuTextureBufferIndex) # addiu $s2, $s2, -0x1ef0
 /* 099DD8 800991D8 2673E758 */  addiu $s3, %lo(gNumD_8018E118Entries) # addiu $s3, $s3, -0x18a8
-/* 099DDC 800991DC 2694D9B4 */  addiu $s4, %lo(D_8018D9B4) # addiu $s4, $s4, -0x264c
-/* 099DE0 800991E0 26B5D9B0 */  addiu $s5, %lo(D_8018D9B0) # addiu $s5, $s5, -0x2650
+/* 099DDC 800991DC 2694D9B4 */  addiu $s4, %lo(gMenuCompressedBuffer) # addiu $s4, $s4, -0x264c
+/* 099DE0 800991E0 26B5D9B0 */  addiu $s5, %lo(gMenuTextureBuffer) # addiu $s5, $s5, -0x2650
 /* 099DE4 800991E4 8E630000 */  lw    $v1, ($s3)
 .L800991E8:
 /* 099DE8 800991E8 00002825 */  move  $a1, $zero

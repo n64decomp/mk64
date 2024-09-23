@@ -28,7 +28,7 @@ typedef struct {
     /* 0x0C */ s32 column;
     /* 0x10 */ s32 row;
     /* 0x14 */ u8 priority; // priority/depth/z-level. Higher values are drawn on top of lower values
-                            // If equal, later entries in D_8018D9E0 are on top
+                            // If equal, later entries in gMenuItems are on top
     /* 0x15 */ u8 visible;  // active? If 1 its displayed, if 0 its not
     // These seem to be generic space available for use by the struct, no 1 purpose for any given member
     /* 0x16 */ s16 unk16;            // Potentially unused
@@ -44,7 +44,7 @@ typedef struct {
     /* 0x04 */ s32 sequenceIndex;    // Index in textureSequence that the animation is currently on
     /* 0x08 */ s32 frameCountDown;   // Frames left for the given animation part
     /* 0x0C */ u32 visible;          // visbile if 0x80000000, otherwise invisbile AND paused
-    /* 0x10 */ s32 D_8018E118_index; // Don't know what D_8018E118 tracks
+    /* 0x10 */ s32 D_8018E118_index; // Don't know what sMenuTextureMap tracks
     /* 0x14 */ s32 unk14;            // Flip flops between 0 and 1, use unknown
 } struct_8018DEE0_entry;             // size = 0x18
 
@@ -63,12 +63,12 @@ typedef struct {
     /* 0x00 */ u64* textureData; // This should be interpreted as a segmented address
                                  /**
                                   * Its hard to tell what exactly what this is meant to be,
-                                  * but it appears to be used as some sort of offset/index from the address stored in D_8018D9B0.
+                                  * but it appears to be used as some sort of offset/index from the address stored in gMenuTextureBuffer.
                                   * This value is (roughly) the sum of (width * height) of the
-                                  * textures in all the previous entries in D_8018E118
+                                  * textures in all the previous entries in sMenuTextureMap
                                   */
     /* 0x04 */ s32 offset;
-} struct_8018E118_entry; // size = 0x08
+} TextureMap; // size = 0x08
 
 typedef struct {
     /* 0x00 */ MkTexture* textures;
@@ -114,33 +114,33 @@ enum CenterText {
 
 enum D_8018D9E0_type {
     D_8018D9E0_TYPE_NULL,
-    D_8018D9E0_TYPE_001,
-    D_8018D9E0_TYPE_002,
-    D_8018D9E0_TYPE_003,
-    D_8018D9E0_TYPE_004,
-    D_8018D9E0_TYPE_005,
-    D_8018D9E0_TYPE_00A = 0xA,
+    START_MENU_BACKGROUND,
+    START_MENU_LOGO_AND_COPYRIGHT,
+    START_MENU_PUSH_START_BUTTON,
+    UNUSED_TYPE_004,
+    START_MENU_TEXT_BOX,
+    MAIN_MENU_GAME_SELECT = 0xA,
     D_8018D9E0_TYPE_00B,
     D_8018D9E0_TYPE_00C,
     D_8018D9E0_TYPE_00D,
-    D_8018D9E0_TYPE_00E,
-    D_8018D9E0_TYPE_00F,
-    D_8018D9E0_TYPE_010,
-    D_8018D9E0_TYPE_011,
-    D_8018D9E0_TYPE_012,
-    D_8018D9E0_TYPE_013,
-    D_8018D9E0_TYPE_014,
+    MAIN_MENU_4P_GAME,
+    MAIN_MENU_OK,
+    MAIN_MENU_OPTION,
+    MAIN_MENU_DATA,
+    MAIN_MENU_50CC,
+    MAIN_MENU_100CC,
+    MAIN_MENU_150CC,
     D_8018D9E0_TYPE_015,
     D_8018D9E0_TYPE_016,
     D_8018D9E0_TYPE_017,
-    D_8018D9E0_TYPE_018,
-    D_8018D9E0_TYPE_019,
+    MAIN_MENU_TIME_TRIALS_BEGIN,
+    MAIN_MENU_TIME_TRIALS_DATA,
     D_8018D9E0_TYPE_01B = 0x1B,
-    D_8018D9E0_TYPE_023 = 0x23,
+    MAIN_MENU_BACKGROUND = 0x23,
     D_8018D9E0_TYPE_024,
     D_8018D9E0_TYPE_025,
-    D_8018D9E0_TYPE_02A = 0x2A,
-    D_8018D9E0_TYPE_02B,
+    CHARACTER_SELECT_MENU_PLAYER_SELECT_BANNER = 0x2A,
+    CHARACTER_SELECT_MENU_MARIO,
     D_8018D9E0_TYPE_02C,
     D_8018D9E0_TYPE_02D,
     D_8018D9E0_TYPE_02E,
@@ -148,11 +148,11 @@ enum D_8018D9E0_type {
     D_8018D9E0_TYPE_030,
     D_8018D9E0_TYPE_031,
     D_8018D9E0_TYPE_032,
-    D_8018D9E0_TYPE_033,
-    D_8018D9E0_TYPE_034,
-    D_8018D9E0_TYPE_035,
-    D_8018D9E0_TYPE_036,
-    D_8018D9E0_TYPE_037,
+    CHARACTER_SELECT_MENU_OK,
+    CHARACTER_SELECT_MENU_1P_CURSOR,
+    CHARACTER_SELECT_MENU_2P_CURSOR,
+    CHARACTER_SELECT_MENU_3P_CURSOR,
+    CHARACTER_SELECT_MENU_4P_CURSOR,
     D_8018D9E0_TYPE_043 = 0x43,
     D_8018D9E0_TYPE_044,
     D_8018D9E0_TYPE_045,
@@ -161,17 +161,17 @@ enum D_8018D9E0_type {
     D_8018D9E0_TYPE_048,
     D_8018D9E0_TYPE_049,
     D_8018D9E0_TYPE_050 = 0x50,
-    D_8018D9E0_TYPE_052 = 0x52,
-    D_8018D9E0_TYPE_053,
+    COURSE_SELECT_MAP_SELECT = 0x52,
+    COURSE_SELECT_MUSHROOM_CUP,
     D_8018D9E0_TYPE_054,
     D_8018D9E0_TYPE_055,
     D_8018D9E0_TYPE_056,
     D_8018D9E0_TYPE_058 = 0x58,
-    D_8018D9E0_TYPE_059,
+    COURSE_SELECT_COURSE_NAMES,
     D_8018D9E0_TYPE_05A,
     D_8018D9E0_TYPE_05B,
-    D_8018D9E0_TYPE_05C,
-    D_8018D9E0_TYPE_05D,
+    COURSE_SELECT_BATTLE_NAMES,
+    COURSE_SELECT_OK,
     D_8018D9E0_TYPE_05E,
     D_8018D9E0_TYPE_05F,
     D_8018D9E0_TYPE_060,
@@ -241,8 +241,8 @@ enum D_8018D9E0_type {
     D_8018D9E0_TYPE_0EA,
     D_8018D9E0_TYPE_0F0 = 0xF0,
     D_8018D9E0_TYPE_0F1,
-    D_8018D9E0_TYPE_0FA = 0xFA,
-    D_8018D9E0_TYPE_0FB,
+    LOGO_INTRO_MENU_LOGO = 0xFA,
+    START_MENU_FLAG,
     D_8018D9E0_TYPE_10E = 0x10E,
     D_8018D9E0_TYPE_12B = 0X12B,
     D_8018D9E0_TYPE_12C,
@@ -374,9 +374,9 @@ void func_80093F10(void);
 void func_800940EC(s32);
 void func_800942D0(void);
 void func_80094660(struct GfxPool*, s32);
-void func_800947B4(struct GfxPool*, s32);
+void render_checkered_flag(struct GfxPool*, s32);
 void func_80094A64(struct GfxPool*);
-void func_80094C60(void);
+void render_menus(void);
 void func_80095574(void);
 Gfx* draw_flash_select_case(Gfx*, s32, s32, s32, s32, s32);
 Gfx* draw_flash_select_case_slow(Gfx*, s32, s32, s32, s32);
@@ -400,11 +400,11 @@ Gfx* func_80098FC8(Gfx*, s32, s32, s32, s32);
 void dma_copy_base_729a30(u64*, size_t, void*);
 void dma_copy_base_7fa3c0(u64*, size_t, void*);
 void func_80099110(void);
-void func_80099184(MkTexture*);
+void load_menu_img(MkTexture*);
 void* segmented_to_virtual_dupe(const void*);
 void* segmented_to_virtual_dupe_2(const void*);
-void func_8009969C(MkTexture*);
-void func_800996BC(MkTexture*, s32);
+void load_img_wrap(MkTexture*);
+void load_menu_img2(MkTexture*, s32);
 void func_80099958(MkTexture*, s32, s32);
 void func_80099E54(void);
 void func_80099E60(MkTexture*, s32, s32);
@@ -415,7 +415,7 @@ void func_80099AEC(void);
 void func_8009A238(MkTexture*, s32);
 void func_8009A2F0(struct_8018E0E8_entry*);
 void func_8009A344(void);
-s32 func_8009A374(MkAnimation*);
+s32 animate_character_select_menu(MkAnimation*);
 s32 func_8009A478(MkAnimation*, s32);
 void func_8009A594(s32, s32, MkAnimation*);
 void func_8009A640(s32, s32, s32, MkAnimation*);
@@ -427,8 +427,8 @@ MkTexture* func_8009A944(struct_8018DEE0_entry*, s32);
 void func_8009A9FC(s32, s32, u32, s32);
 void func_8009AB7C(s32);
 void func_8009AD78(s32, s32);
-void func_8009B0A4(s32, u32);
-void func_8009B538(s32, s32, s32, s32, s32);
+void convert_img_to_greyscale(s32, u32);
+void adjust_img_colour(s32, s32, s32, s32, s32);
 u16* func_8009B8C4(u64*);
 void func_8009B938(void);
 void func_8009B954(MkTexture*);
@@ -474,7 +474,7 @@ void func_8009E2F0(s32);
 void func_8009E5BC(void);
 void func_8009E5FC(s32);
 void func_8009E620(void);
-void add_8018D9E0_entry(s32, s32, s32, s8);
+void add_ui_element(s32, s32, s32, s8);
 void func_8009F5E0(MenuItem*);
 void func_800A08D8(u8, s32, s32);
 s32 func_800A095C(char*, s32, s32, s32);
@@ -630,11 +630,11 @@ void tkmk00decode(u8*, u8*, u8*, s32);
 
 /* File specific defines */
 
-#define D_8018D9E0_SIZE 0x20
+#define MENU_ITEMS_MAX 0x20
 #define D_8018DEE0_SIZE 0x10
 #define D_8018E060_SIZE 0x10
 #define D_8018E0E8_SIZE 0x05
-#define D_8018E118_SIZE 0xC8
+#define TEXTURE_MAP_MAX 0xC8
 #define D_8018E768_SIZE 0x08
 #define D_8018E7E8_SIZE 0x05
 #define D_8018E810_SIZE 0x05
@@ -644,23 +644,23 @@ void tkmk00decode(u8*, u8*, u8*, s32);
 extern s32 D_800DDB24;
 extern s16 D_80164478[];
 
-extern u16* D_8018D9B0;
-extern u8* D_8018D9B4;
-extern u8* D_8018D9B8;
-extern u8* D_8018D9BC;
-extern void* D_8018D9C0;
+extern u16* gMenuTextureBuffer;
+extern u8* gMenuCompressedBuffer;
+extern u8* sTKMK00_LowResBuffer;
+extern u8* sGPPointsCopy;
+extern void* gSomeDLBuffer;
 extern s8 gGPPointsByCharacterId[8];
 extern s8 gCharacterIdByGPOverallRank[];
 extern s8 D_8018D9D8;
 extern s8 D_8018D9D9;
-extern MenuItem D_8018D9E0[D_8018D9E0_SIZE];
+extern MenuItem gMenuItems[MENU_ITEMS_MAX];
 extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
 extern struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
 extern struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
-extern s32 gD_8018E118TotalSize;
-extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
+extern s32 gMenuTextureBufferIndex;
+extern TextureMap sMenuTextureMap[TEXTURE_MAP_MAX];
 extern s32 gNumD_8018E118Entries;
-extern Gfx* D_8018E75C;
+extern Gfx* sGfxPtr;
 extern s32 gNumD_8018E768Entries;
 extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
 extern s32 gCycleFlashMenu;
