@@ -336,12 +336,7 @@ enum KART_AI_BEHAVIOURS {
     BEHAVIOUR_MAX_SPEED
 };
 
-enum DIRECTION {
-    NORTH,
-    EAST,
-    SOUTH,
-    WEST
-};
+enum DIRECTION { NORTH, EAST, SOUTH, WEST };
 
 /**
  * @brief Balloon status
