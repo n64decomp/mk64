@@ -94,8 +94,8 @@ glabel L800A2054
 /* 0A2C54 800A2054 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 0A2C58 800A2058 4481B000 */  mtc1  $at, $f22
 /* 0A2C5C 800A205C 3C01800F */  lui   $at, %hi(D_800F1C28) # $at, 0x800f
-/* 0A2C60 800A2060 3C11800E */  lui   $s1, %hi(D_800E7868) # $s1, 0x800e
-/* 0A2C64 800A2064 26317868 */  addiu $s1, %lo(D_800E7868) # addiu $s1, $s1, 0x7868
+/* 0A2C60 800A2060 3C11800E */  lui   $s1, %hi(gTextOptionMenu) # $s1, 0x800e
+/* 0A2C64 800A2064 26317868 */  addiu $s1, %lo(gTextOptionMenu) # addiu $s1, $s1, 0x7868
 /* 0A2C68 800A2068 C4341C28 */  lwc1  $f20, %lo(D_800F1C28)($at)
 /* 0A2C6C 800A206C 00009025 */  move  $s2, $zero
 /* 0A2C70 800A2070 2464FFEB */  addiu $a0, $v1, -0x15

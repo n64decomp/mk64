@@ -511,12 +511,12 @@ glabel L8009EC98
 /* 09F8A4 8009ECA4 1000024B */  b     .L8009F5D4
 /* 09F8A8 8009ECA8 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L8009ECAC
-/* 09F8AC 8009ECAC 0C02D557 */  jal   func_800B555C
+/* 09F8AC 8009ECAC 0C02D557 */  jal   has_terminate_150cc
 /* 09F8B0 8009ECB0 00000000 */   nop
 /* 09F8B4 8009ECB4 0002C080 */  sll   $t8, $v0, 2
-/* 09F8B8 8009ECB8 3C04800E */  lui   $a0, %hi(D_800E7D4C)
+/* 09F8B8 8009ECB8 3C04800E */  lui   $a0, %hi(gMenuTexturesBackground)
 /* 09F8BC 8009ECBC 00982021 */  addu  $a0, $a0, $t8
-/* 09F8C0 8009ECC0 8C847D4C */  lw    $a0, %lo(D_800E7D4C)($a0)
+/* 09F8C0 8009ECC0 8C847D4C */  lw    $a0, %lo(gMenuTexturesBackground)($a0)
 /* 09F8C4 8009ECC4 0C0265AF */  jal   load_menu_img2
 /* 09F8C8 8009ECC8 00002825 */   move  $a1, $zero
 /* 09F8CC 8009ECCC 10000241 */  b     .L8009F5D4
@@ -542,12 +542,12 @@ glabel L8009ED08
 /* 09F914 8009ED14 1000022F */  b     .L8009F5D4
 /* 09F918 8009ED18 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L8009ED1C
-/* 09F91C 8009ED1C 0C02D557 */  jal   func_800B555C
+/* 09F91C 8009ED1C 0C02D557 */  jal   has_terminate_150cc
 /* 09F920 8009ED20 00000000 */   nop
 /* 09F924 8009ED24 00027880 */  sll   $t7, $v0, 2
-/* 09F928 8009ED28 3C04800E */  lui   $a0, %hi(D_800E7D4C)
+/* 09F928 8009ED28 3C04800E */  lui   $a0, %hi(gMenuTexturesBackground)
 /* 09F92C 8009ED2C 008F2021 */  addu  $a0, $a0, $t7
-/* 09F930 8009ED30 8C847D4C */  lw    $a0, %lo(D_800E7D4C)($a0)
+/* 09F930 8009ED30 8C847D4C */  lw    $a0, %lo(gMenuTexturesBackground)($a0)
 /* 09F934 8009ED34 0C0265AF */  jal   load_menu_img2
 /* 09F938 8009ED38 00002825 */   move  $a1, $zero
 /* 09F93C 8009ED3C 3C040200 */  lui   $a0, %hi(D_02004B74) # $a0, 0x200

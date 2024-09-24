@@ -122,7 +122,7 @@ glabel D_800F1AFC
 
 .section .text
 
-glabel func_8009F5E0
+glabel menu_item_render
 /* 0A01E0 8009F5E0 27BDFF50 */  addiu $sp, $sp, -0xb0
 /* 0A01E4 8009F5E4 AFBF0034 */  sw    $ra, 0x34($sp)
 /* 0A01E8 8009F5E8 AFB10030 */  sw    $s1, 0x30($sp)
@@ -289,12 +289,12 @@ glabel L8009F830
 /* 0A043C 8009F83C 10000422 */  b     .L800A08C8
 /* 0A0440 8009F840 8FBF0034 */   lw    $ra, 0x34($sp)
 glabel L8009F844
-/* 0A0444 8009F844 0C02D557 */  jal   func_800B555C
+/* 0A0444 8009F844 0C02D557 */  jal   has_terminate_150cc
 /* 0A0448 8009F848 00000000 */   nop
 /* 0A044C 8009F84C 00025880 */  sll   $t3, $v0, 2
-/* 0A0450 8009F850 3C05800E */  lui   $a1, %hi(D_800E7D4C)
+/* 0A0450 8009F850 3C05800E */  lui   $a1, %hi(gMenuTexturesBackground)
 /* 0A0454 8009F854 00AB2821 */  addu  $a1, $a1, $t3
-/* 0A0458 8009F858 8CA57D4C */  lw    $a1, %lo(D_800E7D4C)($a1)
+/* 0A0458 8009F858 8CA57D4C */  lw    $a1, %lo(gMenuTexturesBackground)($a1)
 /* 0A045C 8009F85C 8E040000 */  lw    $a0, ($s0)
 /* 0A0460 8009F860 8E26000C */  lw    $a2, %lo(D_FA00000C)($s1)
 /* 0A0464 8009F864 0C026E9D */  jal   func_8009BA74
@@ -597,17 +597,17 @@ glabel L8009FB24
 /* 0A08D0 8009FCD0 100002FD */  b     .L800A08C8
 /* 0A08D4 8009FCD4 8FBF0034 */   lw    $ra, 0x34($sp)
 glabel L8009FCD8
-/* 0A08D8 8009FCD8 0C02D557 */  jal   func_800B555C
+/* 0A08D8 8009FCD8 0C02D557 */  jal   has_terminate_150cc
 /* 0A08DC 8009FCDC 00000000 */   nop
 /* 0A08E0 8009FCE0 00026880 */  sll   $t5, $v0, 2
-/* 0A08E4 8009FCE4 3C05800E */  lui   $a1, %hi(D_800E7D4C)
+/* 0A08E4 8009FCE4 3C05800E */  lui   $a1, %hi(gMenuTexturesBackground)
 /* 0A08E8 8009FCE8 00AD2821 */  addu  $a1, $a1, $t5
 /* 0A08EC 8009FCEC 8E26000C */  lw    $a2, 0xc($s1)
 /* 0A08F0 8009FCF0 8E270010 */  lw    $a3, 0x10($s1)
 /* 0A08F4 8009FCF4 240E0003 */  li    $t6, 3
 /* 0A08F8 8009FCF8 AFAE0010 */  sw    $t6, 0x10($sp)
 /* 0A08FC 8009FCFC AFA00014 */  sw    $zero, 0x14($sp)
-/* 0A0900 8009FD00 8CA57D4C */  lw    $a1, %lo(D_800E7D4C)($a1)
+/* 0A0900 8009FD00 8CA57D4C */  lw    $a1, %lo(gMenuTexturesBackground)($a1)
 /* 0A0904 8009FD04 0C026F27 */  jal   func_8009BC9C
 /* 0A0908 8009FD08 8E040000 */   lw    $a0, ($s0)
 /* 0A090C 8009FD0C 100002ED */  b     .L800A08C4
@@ -757,10 +757,10 @@ glabel L8009FF0C
 .L8009FF24:
 /* 0A0B24 8009FF24 00084880 */  sll   $t1, $t0, 2
 .L8009FF28:
-/* 0A0B28 8009FF28 3C04800F */  lui   $a0, %hi(D_800E824C) # 0x800f
+/* 0A0B28 8009FF28 3C04800F */  lui   $a0, %hi(D_800E8234-0x18) # 0x800f
 /* 0A0B2C 8009FF2C 00892021 */  addu  $a0, $a0, $t1
 /* 0A0B30 8009FF30 AFB900A8 */  sw    $t9, 0xa8($sp)
-/* 0A0B34 8009FF34 8C84824C */  lw    $a0, %lo(D_800E824C)($a0) # -0x7db4($a0)
+/* 0A0B34 8009FF34 8C84824C */  lw    $a0, %lo(D_800E8234-0x18)($a0) # -0x7db4($a0)
 /* 0A0B38 8009FF38 0C026449 */  jal   segmented_to_virtual_dupe
 /* 0A0B3C 8009FF3C AFA600AC */   sw    $a2, 0xac($sp)
 /* 0A0B40 8009FF40 8FA600AC */  lw    $a2, 0xac($sp)
@@ -774,10 +774,10 @@ glabel L8009FF50
 /* 0A0B5C 8009FF5C 1000001B */  b     .L8009FFCC
 /* 0A0B60 8009FF60 2406FFFF */   li    $a2, -1
 .L8009FF64:
-/* 0A0B64 8009FF64 3C04800F */  lui   $a0, %hi(D_800E824C) # 0x800f
+/* 0A0B64 8009FF64 3C04800F */  lui   $a0, %hi(D_800E8234-0x18) # 0x800f
 /* 0A0B68 8009FF68 24050016 */  li    $a1, 22
 /* 0A0B6C 8009FF6C 008A2021 */  addu  $a0, $a0, $t2
-/* 0A0B70 8009FF70 8C84824C */  lw    $a0, %lo(D_800E824C)($a0) # -0x7db4($a0)
+/* 0A0B70 8009FF70 8C84824C */  lw    $a0, %lo(D_800E8234-0x18)($a0) # -0x7db4($a0)
 /* 0A0B74 8009FF74 AFA500A8 */  sw    $a1, 0xa8($sp)
 /* 0A0B78 8009FF78 0C026449 */  jal   segmented_to_virtual_dupe
 /* 0A0B7C 8009FF7C AFA600AC */   sw    $a2, 0xac($sp)
@@ -792,10 +792,10 @@ glabel L8009FF90
 /* 0A0B9C 8009FF9C 1000000B */  b     .L8009FFCC
 /* 0A0BA0 8009FFA0 2406FFFF */   li    $a2, -1
 .L8009FFA4:
-/* 0A0BA4 8009FFA4 3C04800F */  lui   $a0, %hi(D_800E824C) # 0x800f
+/* 0A0BA4 8009FFA4 3C04800F */  lui   $a0, %hi(D_800E8234-0x18) # 0x800f
 /* 0A0BA8 8009FFA8 24050018 */  li    $a1, 24
 /* 0A0BAC 8009FFAC 008B2021 */  addu  $a0, $a0, $t3
-/* 0A0BB0 8009FFB0 8C84824C */  lw    $a0, %lo(D_800E824C)($a0) # -0x7db4($a0)
+/* 0A0BB0 8009FFB0 8C84824C */  lw    $a0, %lo(D_800E8234-0x18)($a0) # -0x7db4($a0)
 /* 0A0BB4 8009FFB4 AFA500A8 */  sw    $a1, 0xa8($sp)
 /* 0A0BB8 8009FFB8 0C026449 */  jal   segmented_to_virtual_dupe
 /* 0A0BBC 8009FFBC AFA600AC */   sw    $a2, 0xac($sp)
@@ -1180,8 +1180,8 @@ glabel L800A0428
 /* 0A1124 800A0524 24040003 */   li    $a0, 3
 /* 0A1128 800A0528 3C01800F */  lui   $at, %hi(D_800F1AFC) # $at, 0x800f
 /* 0A112C 800A052C C4201AFC */  lwc1  $f0, %lo(D_800F1AFC)($at)
-/* 0A1130 800A0530 3C06800E */  lui   $a2, %hi(D_800E77B4) # $a2, 0x800e
-/* 0A1134 800A0534 24C677B4 */  addiu $a2, %lo(D_800E77B4) # addiu $a2, $a2, 0x77b4
+/* 0A1130 800A0530 3C06800E */  lui   $a2, %hi(gTextMenuData) # $a2, 0x800e
+/* 0A1134 800A0534 24C677B4 */  addiu $a2, %lo(gTextMenuData) # addiu $a2, $a2, 0x77b4
 /* 0A1138 800A0538 24040125 */  li    $a0, 293
 /* 0A113C 800A053C 2405001C */  li    $a1, 28
 /* 0A1140 800A0540 00003825 */  move  $a3, $zero

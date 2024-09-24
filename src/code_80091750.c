@@ -57,7 +57,7 @@ struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
 UNUSED u8 code_80091750_bss_padding0[8];
 struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
 s32 gMenuTextureBufferIndex;
-static TextureMap sMenuTextureMap[TEXTURE_MAP_MAX];
+TextureMap sMenuTextureMap[TEXTURE_MAP_MAX];
 s32 gNumD_8018E118Entries;
 Gfx* sGfxPtr;
 s32 gNumD_8018E768Entries;
@@ -879,16 +879,19 @@ MenuTexture* D_800E822C[] = {
 
 // In a perfect world this would be `MenuTexture *D_800E8234[][2]`
 MenuTexture* D_800E8234[] = {
-    D_02004688, D_020047DC, D_020046D8, D_02004804, D_0200473C, D_0200482C,
-};
-
-MenuTexture* D_800E824C[] = {
-    D_0200478C,
-    D_02004854,
+    gMenuTextureOnePlayerColone,   D_020047DC, gMenuTextureTwoPlayerColone,  D_02004804,
+    gMenuTextureThreePlayerColone, D_0200482C, gMenuTextureFourPlayerColone, D_02004854,
 };
 
 MenuTexture* D_800E8254[] = {
-    D_02004660, D_02004688, D_020046D8, D_0200473C, D_0200478C, D_0200487C, D_020048A4, D_020048CC,
+    D_02004660,
+    gMenuTextureOnePlayerColone,
+    gMenuTextureTwoPlayerColone,
+    gMenuTextureThreePlayerColone,
+    gMenuTextureFourPlayerColone,
+    D_0200487C,
+    D_020048A4,
+    D_020048CC,
 };
 
 MenuTexture* D_800E8274[] = {
@@ -5361,7 +5364,7 @@ void func_8009E620(void) {
     }
 }
 
-#ifndef NON_MATCHING
+#ifdef NON_MATCHING
 // https://decomp.me/scratch/1BHpa
 // Stack differences, can't figure out how to fix them
 void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
@@ -5798,7 +5801,7 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/add_ui_element.s")
 #endif
 
-#ifndef NON_MATCHING
+#ifdef NON_MATCHING
 // https://decomp.me/scratch/MatRp
 // Biggest diff left is in the case 0x12 though 0x19 handling. Not really sure what's going on there
 // There's also a diff in the handling of D_800E77A0 in case 0x4. Not sure what's going on there either
@@ -5868,8 +5871,8 @@ void menu_item_render(MenuItem* arg0) {
                 func_800A0EB8(arg0, arg0->type - 0xD8);
                 break;
             case START_MENU_BACKGROUND: /* switch 6 */
-                gDisplayListHead =
-                    func_8009BA74(gDisplayListHead, gMenuTexturesBackground[has_terminate_150cc()], arg0->column, arg0->row);
+                gDisplayListHead = func_8009BA74(gDisplayListHead, gMenuTexturesBackground[has_terminate_150cc()],
+                                                 arg0->column, arg0->row);
                 break;
             case START_MENU_LOGO_AND_COPYRIGHT: /* switch 6 */
                 func_8004C8D4((arg0->column + 0xA0), (arg0->row + 0x47));
@@ -5923,8 +5926,8 @@ void menu_item_render(MenuItem* arg0) {
             case MAIN_MENU_BACKGROUND:        /* switch 6 */
             case CHARACTER_SELECT_BACKGROUND: /* switch 6 */
             case COURSE_SELECT_BACKGROUND:    /* switch 6 */
-                gDisplayListHead =
-                    func_8009BC9C(gDisplayListHead, gMenuTexturesBackground[has_terminate_150cc()], arg0->column, arg0->row, 3, 0);
+                gDisplayListHead = func_8009BC9C(gDisplayListHead, gMenuTexturesBackground[has_terminate_150cc()],
+                                                 arg0->column, arg0->row, 3, 0);
                 break;
             case MAIN_MENU_GAME_SELECT: /* switch 6 */
                 gDisplayListHead = func_8009BA74(gDisplayListHead, D_02004660, arg0->column, arg0->row);
@@ -5979,7 +5982,7 @@ void menu_item_render(MenuItem* arg0) {
                             var_v1 = -1;
                         }
                         var_a1 = 18;
-                        sp9C = segmented_to_virtual_dupe(D_800E824C[arg0->type]);
+                        sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - MAIN_MENU_50CC]);
                         break;
                     case D_8018D9E0_TYPE_016: /* switch 5 */
                     case D_8018D9E0_TYPE_017: /* switch 5 */
@@ -5987,7 +5990,7 @@ void menu_item_render(MenuItem* arg0) {
                             var_v1 = -1;
                         } else {
                             var_a1 = 22;
-                            sp9C = segmented_to_virtual_dupe(D_800E824C[arg0->type]);
+                            sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - MAIN_MENU_50CC]);
                         }
                         break;
                     case MAIN_MENU_TIME_TRIALS_BEGIN: /* switch 5 */
@@ -5996,7 +5999,7 @@ void menu_item_render(MenuItem* arg0) {
                             var_v1 = -1;
                         } else {
                             var_a1 = 24;
-                            sp9C = segmented_to_virtual_dupe(D_800E824C[arg0->type]);
+                            sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - MAIN_MENU_50CC]);
                         }
                         break;
                 }
@@ -8108,7 +8111,7 @@ void func_800A638C(MenuItem* arg0) {
     }
 }
 
-#ifdef NON_MATCHING
+#ifndef NON_MATCHING
 void guMtxCatL(Mtx*, Mtx*, Mtx*);
 // https://decomp.me/scratch/GUqCE
 // All the math stuff at the top is messed up
@@ -10707,7 +10710,7 @@ void func_800AC324(MenuItem* arg0) {
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/NzdUC
 // A really stupid register allocation issue
-void func_800AC458(struct_8018D9E0_entry* arg0) {
+void func_800AC458(MenuItem* arg0) {
     s32 var_a1;
     s32 var_t1;
 

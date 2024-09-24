@@ -4204,7 +4204,7 @@ MenuTexture D_02004660[2] = {
  * @brief MenuTexture for the first colone one player
  *
  */
-MenuTexture D_02004688[4] = {
+MenuTexture gMenuTextureOnePlayerColone[4] = {
     { 1, 0, gTextureMenu1PGame, 64, 54, 0, 0, 0x0, 0 },
     { 1, 0, gTextureMenuModeMarioGP, 64, 18, 0, 65, 0x0, 0 },
     { 1, 0, gTextureMenuModeTimeTrials, 64, 18, 0, 83, 0x0, 0 },
@@ -4215,7 +4215,7 @@ MenuTexture D_02004688[4] = {
  * @brief MenuTexture for the first colone two player
  *
  */
-MenuTexture D_020046D8[5] = {
+MenuTexture gMenuTextureTwoPlayerColone[5] = {
     { 1, 0, gTextureMenu2PGame, 64, 54, 0, 0, 0x0, 0 },
     { 1, 0, gTextureMenuModeMarioGP, 64, 18, 0, 65, 0x0, 0 },
     { 1, 0, gTextureMenuModeVS, 64, 18, 0, 83, 0x0, 0 },
@@ -4227,7 +4227,7 @@ MenuTexture D_020046D8[5] = {
  * @brief MenuTexture for the first colone three player
  *
  */
-MenuTexture D_0200473C[4] = {
+MenuTexture gMenuTextureThreePlayerColone[4] = {
     { 1, 0, gTextureMenu3PGame, 64, 54, 0, 0, 0x0, 0 },
     { 1, 0, gTextureMenuModeVS, 64, 18, 0, 65, 0x0, 0 },
     { 1, 0, gTextureMenuModeBattle, 64, 18, 0, 83, 0x0, 0 },
@@ -4238,7 +4238,7 @@ MenuTexture D_0200473C[4] = {
  * @brief MenuTexture for the first colone four player
  *
  */
-MenuTexture D_0200478C[4] = {
+MenuTexture gMenuTextureFourPlayerColone[4] = {
     { 1, 0, gTextureMenu4PGame, 64, 54, 0, 0, 0x0, 0 },
     { 1, 0, gTextureMenuModeVS, 64, 18, 0, 65, 0x0, 0 },
     { 1, 0, gTextureMenuModeBattle, 64, 18, 0, 83, 0x0, 0 },

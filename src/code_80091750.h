@@ -209,6 +209,8 @@ enum D_8018D9E0_type {
     D_8018D9E0_TYPE_096 = 0x96,
     D_8018D9E0_TYPE_097,
     D_8018D9E0_TYPE_098,
+    D_8018D9E0_TYPE_0A0 = 0xA0,
+    D_8018D9E0_TYPE_0A1,
     D_8018D9E0_TYPE_0AA = 0xAA,
     D_8018D9E0_TYPE_0AB,
     D_8018D9E0_TYPE_0AC,
@@ -798,7 +800,6 @@ extern MenuTexture* D_800E817C[];
 extern MenuTexture* D_800E81E4[];
 extern MenuTexture* D_800E822C[];
 extern MenuTexture* D_800E8234[];
-extern MenuTexture* D_800E824C[];
 extern MenuTexture* D_800E8254[];
 extern MenuTexture* D_800E8274[];
 extern MenuTexture* D_800E8294[];
