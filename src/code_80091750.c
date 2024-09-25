@@ -8039,12 +8039,12 @@ void func_800A638C(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void func_800A66A8(struct_8018D9E0_entry *arg0, Unk_D_800E70A0 *arg1) {
-    Mtx *mtx;
+void func_800A66A8(struct_8018D9E0_entry* arg0, Unk_D_800E70A0* arg1) {
+    Mtx* mtx;
     f32 tmp;
     static float x2, y2, z2;
     static float x1, y1, z1;
-    
+
     mtx = &gGfxPool->mtxEffect[gMatrixEffectCount];
     if (arg0->unk24 > 1.5) {
         arg0->unk24 *= 0.95;
@@ -8060,7 +8060,15 @@ void func_800A66A8(struct_8018D9E0_entry *arg0, Unk_D_800E70A0 *arg1) {
     y2 += y1;
     z2 += z1;
 
-    if(x2); if(y2); if(z2);  
+    if (x2) {
+        ;
+    }
+    if (y2) {
+        ;
+    }
+    if (z2) {
+        ;
+    }
 
     guScale(mtx, 1.2f, 1.2f, 1.2f);
     guRotate(mtx + 1, y2, 0.0f, 1.0f, 0.0f);
@@ -8071,7 +8079,8 @@ void func_800A66A8(struct_8018D9E0_entry *arg0, Unk_D_800E70A0 *arg1) {
     guMtxCatL(mtx, mtx + 1, mtx);
     guTranslate(mtx + 1, arg1->column, arg1->row, 0.0f);
     guMtxCatL(mtx, mtx + 1, mtx);
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]), (G_MTX_NOPUSH | G_MTX_LOAD) | G_MTX_MODELVIEW);
+    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount++]),
+              (G_MTX_NOPUSH | G_MTX_LOAD) | G_MTX_MODELVIEW);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPNoOp(gDisplayListHead++);
