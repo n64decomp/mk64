@@ -8039,7 +8039,6 @@ void func_800A638C(struct_8018D9E0_entry* arg0) {
     }
 }
 
-void guMtxCatL(Mtx*, Mtx*, Mtx*);
 void func_800A66A8(struct_8018D9E0_entry *arg0, Unk_D_800E70A0 *arg1) {
     Mtx *mtx;
     f32 tmp;
