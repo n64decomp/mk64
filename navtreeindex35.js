@@ -1,10 +1,5 @@
 var NAVTREEINDEX35 =
 {
-"dks__jungle__parkway_2course__displaylists_8inc_8h.html#a6d889d2e4de649f3cc4b00738c75bcaa":[8,0,0,5,3,3],
-"dks__jungle__parkway_2course__displaylists_8inc_8h.html#a6ef268dfd1c871c17b14a0e734f60045":[8,0,0,5,3,25],
-"dks__jungle__parkway_2course__displaylists_8inc_8h.html#a701eb59570d8fd4fa4f05dea1f73fdb2":[8,0,0,5,3,66],
-"dks__jungle__parkway_2course__displaylists_8inc_8h.html#a71d5aff866ad25b99b161e7293928b0e":[8,0,0,5,3,62],
-"dks__jungle__parkway_2course__displaylists_8inc_8h.html#a728245d0d0900387fc0c2766b3fff44f":[8,0,0,5,3,121],
 "dks__jungle__parkway_2course__displaylists_8inc_8h.html#a728438febb71a1e6065e2ef455a7b7b4":[8,0,0,5,3,80],
 "dks__jungle__parkway_2course__displaylists_8inc_8h.html#a735a053f14cb2f070a8e9768ec8a7fe8":[8,0,0,5,3,24],
 "dks__jungle__parkway_2course__displaylists_8inc_8h.html#a73c78bd0b78ecf7406a76bd5fdc728f5":[8,0,0,5,3,169],
@@ -249,5 +244,10 @@ var NAVTREEINDEX35 =
 "effects_8c.html#a0d5728af3b320b88b01fadef778fcbff":[8,0,3,36,109],
 "effects_8c.html#a0da77e512014b35036089a9cdc745511":[8,0,3,36,83],
 "effects_8c.html#a0fb4928e7128ee9e78ae7eedb5d2192e":[8,0,3,36,55],
-"effects_8c.html#a105203221e314be241a95e006b62ef80":[8,0,3,36,29]
+"effects_8c.html#a105203221e314be241a95e006b62ef80":[8,0,3,36,29],
+"effects_8c.html#a160f8e464381374d9a9d6e2a419f7c2a":[8,0,3,36,84],
+"effects_8c.html#a1698463639e133ec28807bb36a303efe":[8,0,3,36,24],
+"effects_8c.html#a16c1b4e4ea9cc5bb21fcc653ea8fbf6d":[8,0,3,36,3],
+"effects_8c.html#a17332237b5c2a4249328a35071e23bf7":[8,0,3,36,64],
+"effects_8c.html#a182b175354c4b3b40e3cbf158e8d6bc3":[8,0,3,36,111]
 };

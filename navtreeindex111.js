@@ -1,10 +1,5 @@
 var NAVTREEINDEX111 =
 {
-"structD__801642D8__entry.html#abf0df00e5788611960d349b7e943bcff":[7,0,75,2],
-"structDrum.html":[7,0,76],
-"structDrum.html#a042ebd42088ca9bb904e2c1410ff20a0":[7,0,76,2],
-"structDrum.html#a594bcec833a2b26bbf8a9134a9b16f9e":[7,0,76,1],
-"structDrum.html#a73e4e7022f0c3df80a3a4bae4352d132":[7,0,76,0],
 "structDrum.html#a7fa01f66282a6c93f8a1bc88feee7350":[7,0,76,4],
 "structDrum.html#a94e4457930c5d90b51ee4a78da53df56":[7,0,76,3],
 "structEuAudioCmd.html":[7,0,78],
@@ -249,5 +244,10 @@ var NAVTREEINDEX111 =
 "structNote.html#abd3501a8f180a2e242f25eac90f6f006":[7,0,105,7],
 "structNote.html#acb6498cf6c900ac099722a0b00525f7d":[7,0,105,4],
 "structNote.html#acb65073283d073ca4db00521d34f0e45":[7,0,105,3],
-"structNote.html#ad0a972c83730f0ce9b1d9be225004cac":[7,0,105,11]
+"structNote.html#ad0a972c83730f0ce9b1d9be225004cac":[7,0,105,11],
+"structNote.html#ad84c5a727f09a9ea8140bcf1b56ce512":[7,0,105,10],
+"structNote.html#ae766484849cc18986ee8acba9bea544a":[7,0,105,9],
+"structNote.html#ae9b2aea09e7d0b2725fec75b043ea859":[7,0,105,1],
+"structNote.html#afaf02ce3668f6dd71c1d185781b3b8f2":[7,0,105,2],
+"structNoteAttributes.html":[7,0,106]
 };

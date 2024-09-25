@@ -1,10 +1,5 @@
 var NAVTREEINDEX71 =
 {
-"luigi__raceway_2course__displaylists_8inc_8c.html#a63785407ae201041629a3b18967120e2":[8,0,0,10,2,208],
-"luigi__raceway_2course__displaylists_8inc_8c.html#a63c4569618e07f507a5ff86351ddb732":[8,0,0,10,2,131],
-"luigi__raceway_2course__displaylists_8inc_8c.html#a64a36b95a0275f6b9ca49badaebec74b":[8,0,0,10,2,3],
-"luigi__raceway_2course__displaylists_8inc_8c.html#a65d19a0409d0a382843fe5821a3d8ca5":[8,0,0,10,2,80],
-"luigi__raceway_2course__displaylists_8inc_8c.html#a65d841022534172199043f519a42b6c4":[8,0,0,10,2,356],
 "luigi__raceway_2course__displaylists_8inc_8c.html#a65e76e46188586b81a45814a3217bae0":[8,0,0,10,2,229],
 "luigi__raceway_2course__displaylists_8inc_8c.html#a66acda09d554034ca133f6d0f41a6149":[8,0,0,10,2,236],
 "luigi__raceway_2course__displaylists_8inc_8c.html#a67380d1d361dae5dd15bbd1a7d8b4457":[8,0,0,10,2,231],
@@ -249,5 +244,10 @@ var NAVTREEINDEX71 =
 "luigi__raceway_2course__displaylists_8inc_8h.html#a039a3674da6949ef6ebf2311dfe3d091":[8,0,0,10,3,18],
 "luigi__raceway_2course__displaylists_8inc_8h.html#a041ac12811751cac2ca10776824973b9":[8,0,0,10,3,251],
 "luigi__raceway_2course__displaylists_8inc_8h.html#a049922f4f0472c2583ee134132bc57bb":[8,0,0,10,3,212],
-"luigi__raceway_2course__displaylists_8inc_8h.html#a0542beac590a668efe9f2b98bc951346":[8,0,0,10,3,112]
+"luigi__raceway_2course__displaylists_8inc_8h.html#a0542beac590a668efe9f2b98bc951346":[8,0,0,10,3,112],
+"luigi__raceway_2course__displaylists_8inc_8h.html#a0545f52856ad228aad19eb6d6f6bf0bd":[8,0,0,10,3,125],
+"luigi__raceway_2course__displaylists_8inc_8h.html#a06a15a987ce64a7542b481043e69763b":[8,0,0,10,3,299],
+"luigi__raceway_2course__displaylists_8inc_8h.html#a06da0e091d7a02ab31a6348aacd26092":[8,0,0,10,3,171],
+"luigi__raceway_2course__displaylists_8inc_8h.html#a073761d159ac60690ac6af00179c0e1f":[8,0,0,10,3,70],
+"luigi__raceway_2course__displaylists_8inc_8h.html#a07e5a464ca6ebc8975fbbd8f7b3ba5b0":[8,0,0,10,3,74]
 };
