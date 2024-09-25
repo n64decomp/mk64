@@ -8060,15 +8060,9 @@ void func_800A66A8(struct_8018D9E0_entry* arg0, Unk_D_800E70A0* arg1) {
     y2 += y1;
     z2 += z1;
 
-    if (x2) {
-        ;
-    }
-    if (y2) {
-        ;
-    }
-    if (z2) {
-        ;
-    }
+    // clang-format off
+    if (x2); if (y2); if (z2);
+    // clang-format on
 
     guScale(mtx, 1.2f, 1.2f, 1.2f);
     guRotate(mtx + 1, y2, 0.0f, 1.0f, 0.0f);
