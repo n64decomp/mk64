@@ -2514,7 +2514,6 @@ Gfx* func_800959F8(Gfx* displayListHead, Vtx* arg1) {
     } else {
         index = ((gTextColor * 2) + ((s32) gGlobalTimer % 2)) - 4;
     }
-
 #ifdef AVOID_UB
     gSPVertex(displayListHead++, arg1, 2, 0);
     gSPVertex(displayListHead++, &arg1[(index + 1) * 2], 2, 2);

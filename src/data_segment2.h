@@ -17,6 +17,7 @@ extern Gfx D_020077A8[];
 extern Gfx D_020077D8[];
 extern Gfx D_020077F8[];
 extern Gfx D_02007818[];
+#ifndef AVOID_UB
 extern Gfx D_02007838[];
 extern Gfx D_02007858[];
 extern Gfx D_02007878[];
@@ -41,6 +42,7 @@ extern Gfx D_02007AB8[];
 extern Gfx D_02007AD8[];
 extern Gfx D_02007AF8[];
 extern Gfx D_02007B18[];
+#endif
 extern Gfx D_02007F18[];
 extern Gfx D_02007F48[];
 extern Gfx D_02007F60[];
