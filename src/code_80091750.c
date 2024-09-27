@@ -1391,7 +1391,7 @@ void func_80092290(s32 arg0, s32* arg1, s32* arg2) {
     s32 temp_t7;
     s32 temp_t8_2;
     s32 temp_t9;
-    s32 temp_t0;
+    UNUSED s32 temp_t0;
     s32 a, b, c, d;
     Vtx* vtx;
 
@@ -2694,13 +2694,13 @@ Gfx* func_80095E10(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
     s32 sp64 = 0;
     s32 var_v0_2;
 
-    while (var_t0 < argB) {
+    while ((u32) var_t0 < argB) {
         var_t0 *= 2;
     }
 
     temp_lo = 0x400 / var_t0;
 
-    while ((temp_lo / 2) > argC) {
+    while ((u32) (temp_lo / 2) > argC) {
         temp_lo /= 2;
     }
 
@@ -2737,9 +2737,9 @@ Gfx* func_80095E10(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
         return displayListHead;
     }
     sp7C = arg8;
-    for (var_s3 = arg5; var_s3 < arg7; var_s3 += temp_lo) {
+    for (var_s3 = arg5; var_s3 < (u32) arg7; var_s3 += temp_lo) {
 
-        if (arg7 < temp_lo + var_s3) {
+        if ((u32) arg7 < temp_lo + var_s3) {
             var_s4 = arg7 - var_s3;
             if (!var_s4) {
                 break;
@@ -2748,9 +2748,9 @@ Gfx* func_80095E10(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
             var_s4 = temp_lo;
         }
 
-        for (var_a1_2 = arg4; var_a1_2 < arg6; var_a1_2 += var_t0) {
+        for (var_a1_2 = arg4; var_a1_2 < (u32) arg6; var_a1_2 += var_t0) {
 
-            if (arg6 < var_t0 + var_a1_2) {
+            if ((u32) arg6 < var_t0 + var_a1_2) {
                 var_s2 = arg6 - var_a1_2;
                 if (!var_s2) {
                     break;
@@ -2788,13 +2788,13 @@ Gfx* func_800963F0(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, f32 arg4, 
     s32 sp64 = 0;
     s32 var_v0_2;
 
-    while (var_t0 < argD) {
+    while ((u32) var_t0 < argD) {
         var_t0 *= 2;
     }
 
     temp_lo = 0x400 / var_t0;
 
-    while ((temp_lo / 2) > argE) {
+    while ((u32) (temp_lo / 2) > argE) {
         temp_lo /= 2;
     }
 
@@ -2834,9 +2834,9 @@ Gfx* func_800963F0(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, f32 arg4, 
     arg3 /= arg5;
 
     sp7C = argA;
-    for (var_s3 = arg7; var_s3 < arg9; var_s3 += temp_lo) {
+    for (var_s3 = arg7; var_s3 < (u32) arg9; var_s3 += temp_lo) {
 
-        if (arg9 < temp_lo + var_s3) {
+        if ((u32) arg9 < temp_lo + var_s3) {
             var_s4 = arg9 - var_s3;
             if (!var_s4) {
                 break;
@@ -2845,9 +2845,9 @@ Gfx* func_800963F0(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, f32 arg4, 
             var_s4 = temp_lo;
         }
         b = var_s4 * arg5;
-        for (var_a1_2 = arg6; var_a1_2 < arg8; var_a1_2 += var_t0) {
+        for (var_a1_2 = arg6; var_a1_2 < (u32) arg8; var_a1_2 += var_t0) {
 
-            if (arg8 < var_t0 + var_a1_2) {
+            if ((u32) arg8 < (var_t0 + var_a1_2)) {
                 var_s2 = arg8 - var_a1_2;
                 if (!var_s2) {
                     break;
@@ -2897,13 +2897,13 @@ Gfx* func_80096CD8(Gfx* displayListHead, s32 arg1, s32 arg2, u32 width, u32 arg4
     s32 maskt = 0;
     s32 rand;
 
-    while (var_ra < width) {
+    while (var_ra < (s32) width) {
         var_ra *= 2;
     }
 
     spCC = 0x400 / var_ra;
 
-    while ((spCC / 2) > arg4) {
+    while ((spCC / 2) > (s32) arg4) {
         spCC /= 2;
     }
 
@@ -2999,13 +2999,13 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
     gDPSetCombineLERP(displayListHead++, TEXEL1, TEXEL0, PRIMITIVE_ALPHA, TEXEL0, TEXEL1, TEXEL0, PRIMITIVE, TEXEL0, 0,
                       0, 0, COMBINED, 0, 0, 0, COMBINED);
 
-    while (var_t0 < argB) {
+    while (var_t0 < (s32) argB) {
         var_t0 *= 2;
     }
 
     temp_lo = 0x400 / var_t0;
 
-    while ((temp_lo / 2) > argC) {
+    while ((temp_lo / 2) > (s32) argC) {
         temp_lo /= 2;
     }
 
@@ -3042,9 +3042,9 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
         return displayListHead;
     }
     sp7C = arg8;
-    for (var_s3 = arg5; var_s3 < arg7; var_s3 += temp_lo) {
+    for (var_s3 = arg5; var_s3 < (u32) arg7; var_s3 += temp_lo) {
 
-        if (arg7 < temp_lo + var_s3) {
+        if (arg7 < (s32) (temp_lo + var_s3)) {
             var_s4 = arg7 - var_s3;
             if (!var_s4) {
                 break;
@@ -3055,7 +3055,7 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
 
         for (var_a1_2 = arg4; var_a1_2 < (u32) arg6; var_a1_2 += var_t0) {
 
-            if (arg6 < var_t0 + var_a1_2) {
+            if (arg6 < (s32) (var_t0 + var_a1_2)) {
                 var_s2 = arg6 - var_a1_2;
                 if (!var_s2) {
                     break;
