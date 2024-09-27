@@ -17,6 +17,7 @@ extern Gfx D_020077A8[];
 extern Gfx D_020077D8[];
 extern Gfx D_020077F8[];
 extern Gfx D_02007818[];
+#ifndef AVOID_UB
 extern Gfx D_02007838[];
 extern Gfx D_02007858[];
 extern Gfx D_02007878[];
@@ -41,6 +42,7 @@ extern Gfx D_02007AB8[];
 extern Gfx D_02007AD8[];
 extern Gfx D_02007AF8[];
 extern Gfx D_02007B18[];
+#endif
 extern Gfx D_02007F18[];
 extern Gfx D_02007F48[];
 extern Gfx D_02007F60[];
@@ -51,33 +53,7 @@ extern Gfx D_02008058[];
 extern Gfx common_rectangle_display[];
 
 extern Vtx D_02007BB8[];
-#ifndef AVOID_UB
-extern Vtx D_02007BD8[];
-extern Vtx D_02007BF8[];
-extern Vtx D_02007C18[];
-extern Vtx D_02007C38[];
-extern Vtx D_02007C58[];
-extern Vtx D_02007C78[];
-extern Vtx D_02007C98[];
-extern Vtx D_02007CB8[];
 extern Vtx D_02007CD8[];
-extern Vtx D_02007CF8[];
-extern Vtx D_02007D18[];
-extern Vtx D_02007D38[];
-extern Vtx D_02007D58[];
-extern Vtx D_02007D78[];
-extern Vtx D_02007D98[];
-extern Vtx D_02007DB8[];
-extern Vtx D_02007DD8[];
 extern Vtx D_02007DF8[];
-extern Vtx D_02007E18[];
-extern Vtx D_02007E38[];
-extern Vtx D_02007E58[];
-extern Vtx D_02007E78[];
-extern Vtx D_02007E98[];
-extern Vtx D_02007EB8[];
-extern Vtx D_02007ED8[];
-extern Vtx D_02007EF8[];
-#endif
 
 #endif
