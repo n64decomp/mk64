@@ -37,6 +37,8 @@
 // Unfortunately that's not a small effort due to weird import structure in this project
 #include "main.h"
 
+void guMtxCatL(Mtx* m, Mtx* n, Mtx* res);
+
 u16* gMenuTextureBuffer;
 u8* gMenuCompressedBuffer;
 u8* sTKMK00_LowResBuffer;
@@ -414,16 +416,6 @@ char* D_800E7744[] = {
 
 char* gMenuText[] = {
     "CONTINUE GAME", "RETRY", "COURSE CHANGE", "DRIVER CHANGE", "QUIT", "REPLAY", "SAVE GHOST",
-};
-
-enum TEXT_MENU_ID {
-    CONTINUE_GAME,
-    RETRY,
-    COURSE_CHANGE,
-    DRIVER_CHANGE,
-    QUIT,
-    REPLAY,
-    SAVE_GHOST,
 };
 
 char* D_800E7778[] = {
@@ -2665,7 +2657,7 @@ func_80095BD0_label1:
     rmonPrintf("MAX effectcount(760) over!!!!(kawano)\n");
     return displayListHead;
 func_80095BD0_label2:
-    func_80095AE0(sp28, arg2, arg3, arg6, arg7);
+    func_80095AE0((void*) sp28, arg2, arg3, arg6, arg7);
     gSPMatrix(displayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxEffect[gMatrixEffectCount]),
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gMatrixEffectCount += 1;
@@ -2988,7 +2980,7 @@ GLOBAL_ASM("asm/non_matchings/code_80091750/func_80096CD8.s")
 
 #ifdef NON_MATCHING
 Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8,
-                   s32 arg9, u16* argA, u32 argB, u32 argC, s32 argD) {
+                   s32 arg9, UNUSED u16* argA, u32 argB, u32 argC, UNUSED s32 argD) {
     u32 var_a1_2 = arg4;
     u32 var_s3 = arg5;
     s32 sp7C;
@@ -3061,7 +3053,7 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
             var_s4 = temp_lo;
         }
 
-        for (var_a1_2 = arg4; var_a1_2 < arg6; var_a1_2 += var_t0) {
+        for (var_a1_2 = arg4; var_a1_2 < (u32) arg6; var_a1_2 += var_t0) {
 
             if (arg6 < var_t0 + var_a1_2) {
                 var_s2 = arg6 - var_a1_2;
@@ -3141,8 +3133,8 @@ Gfx* func_80097AE4(Gfx* displayListHead, s8 fmt, s32 arg2, s32 arg3, u8* arg4, s
     return displayListHead;
 }
 
-Gfx* func_80097E58(Gfx* displayListHead, s8 fmt, u32 arg2, u32 arg3, u32 arg4, u32 arg5, s32 arg6, s32 arg7,
-                   u8* someTexture, u32 arg9, u32 argA, s32 width) {
+Gfx* func_80097E58(Gfx* displayListHead, s8 fmt, UNUSED u32 arg2, u32 arg3, UNUSED u32 arg4, u32 arg5, s32 arg6,
+                   s32 arg7, u8* someTexture, u32 arg9, UNUSED u32 argA, s32 width) {
     u32 ult;
     u32 temp;
     s32 arg6Copy;
@@ -4345,8 +4337,8 @@ Gfx* func_8009BC9C(Gfx* arg0, MenuTexture* arg1, s32 arg2, s32 arg3, s32 arg4, s
                     break;
                 case 4: /* switch 1 */
                     arg0 = func_80097274(arg0, 0, 0x00000400, 0x00000400, 0, 0, var_s0->width, var_s0->height,
-                                         var_s0->dX + arg2, var_s0->dY + arg3, temp_v0_3, var_s0->width, var_s0->height,
-                                         arg5);
+                                         var_s0->dX + arg2, var_s0->dY + arg3, (u16*) temp_v0_3, var_s0->width,
+                                         var_s0->height, arg5);
                     break;
             }
         }
@@ -6342,6 +6334,8 @@ void menu_item_render(MenuItem* arg0) {
 GLOBAL_ASM("asm/non_matchings/code_80091750/menu_item_render.s")
 #endif
 
+// GLOBAL_ASM("print_rodata.S")
+
 void func_800A08D8(u8 arg0, s32 column, s32 row) {
     if (arg0 >= 0x10) {
         arg0 -= 0x10;
@@ -8123,7 +8117,7 @@ void func_800A66A8(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     z2 += z1;
 
     // clang-format off
-    if (x2); if (y2); if (z2);
+    if (x2) {}; if (y2) {}; if (z2) {};
     // clang-format on
 
     guScale(mtx, 1.2f, 1.2f, 1.2f);
@@ -8615,15 +8609,15 @@ void func_800A7A4C(s32 arg0) {
             case CHARACTER_SELECT_MENU_WARIO:  /* switch 8 */
             case CHARACTER_SELECT_MENU_BOWSER: /* switch 8 */
                 func_800AAC18(var_s1);
-                switch (var_s1->type) {       /* switch 7 */
-                    case D_8018D9E0_TYPE_043: /* switch 7 */
-                    case D_8018D9E0_TYPE_044: /* switch 7 */
-                    case D_8018D9E0_TYPE_045: /* switch 7 */
-                    case D_8018D9E0_TYPE_046: /* switch 7 */
-                    case D_8018D9E0_TYPE_047: /* switch 7 */
-                    case D_8018D9E0_TYPE_048: /* switch 7 */
-                    case D_8018D9E0_TYPE_049: /* switch 7 */
-                    case D_8018D9E0_TYPE_050: /* switch 7 */
+                switch (var_s1->type) {                /* switch 7 */
+                    case CHARACTER_SELECT_MENU_MARIO:  /* switch 7 */
+                    case CHARACTER_SELECT_MENU_LUIGI:  /* switch 7 */
+                    case CHARACTER_SELECT_MENU_TOAD:   /* switch 7 */
+                    case CHARACTER_SELECT_MENU_PEACH:  /* switch 7 */
+                    case CHARACTER_SELECT_MENU_YOSHI:  /* switch 7 */
+                    case CHARACTER_SELECT_MENU_DK:     /* switch 7 */
+                    case CHARACTER_SELECT_MENU_WARIO:  /* switch 7 */
+                    case CHARACTER_SELECT_MENU_BOWSER: /* switch 7 */
                         func_800AA69C(var_s1);
                         break;
                 }
