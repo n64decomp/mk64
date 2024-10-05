@@ -176,63 +176,63 @@ glabel L8009E774
 /* 09F390 8009E790 3C01800F */  lui   $at, %hi(D_800E8534) # $at, 0x800f
 /* 09F394 8009E794 44800000 */  mtc1  $zero, $f0
 /* 09F398 8009E798 E4268534 */  swc1  $f6, %lo(D_800E8534)($at)
-/* 09F39C 8009E79C 3C018019 */  lui   $at, %hi(D_8018EDC0) # $at, 0x8019
+/* 09F39C 8009E79C 3C018019 */  lui   $at, %hi(gIntroModelZEye) # $at, 0x8019
 /* 09F3A0 8009E7A0 241909C4 */  li    $t9, 2500
-/* 09F3A4 8009E7A4 AC39EDC0 */  sw    $t9, %lo(D_8018EDC0)($at)
-/* 09F3A8 8009E7A8 3C018019 */  lui   $at, %hi(D_8018EDC8) # $at, 0x8019
-/* 09F3AC 8009E7AC E420EDC8 */  swc1  $f0, %lo(D_8018EDC8)($at)
+/* 09F3A4 8009E7A4 AC39EDC0 */  sw    $t9, %lo(gIntroModelZEye)($at)
+/* 09F3A8 8009E7A8 3C018019 */  lui   $at, %hi(gIntroModelRotX) # $at, 0x8019
+/* 09F3AC 8009E7AC E420EDC8 */  swc1  $f0, %lo(gIntroModelRotX)($at)
 /* 09F3B0 8009E7B0 3C01C387 */  li    $at, 0xC3870000 # -270.000000
 /* 09F3B4 8009E7B4 44814000 */  mtc1  $at, $f8
-/* 09F3B8 8009E7B8 3C018019 */  lui   $at, %hi(D_8018EDCC) # $at, 0x8019
+/* 09F3B8 8009E7B8 3C018019 */  lui   $at, %hi(gIntroModelRotY) # $at, 0x8019
 /* 09F3BC 8009E7BC 240EFFFF */  li    $t6, -1
-/* 09F3C0 8009E7C0 E428EDCC */  swc1  $f8, %lo(D_8018EDCC)($at)
-/* 09F3C4 8009E7C4 3C018019 */  lui   $at, %hi(D_8018EDD0) # $at, 0x8019
-/* 09F3C8 8009E7C8 E420EDD0 */  swc1  $f0, %lo(D_8018EDD0)($at)
-/* 09F3CC 8009E7CC 3C018019 */  lui   $at, %hi(D_8018EDD4) # $at, 0x8019
-/* 09F3D0 8009E7D0 E420EDD4 */  swc1  $f0, %lo(D_8018EDD4)($at)
-/* 09F3D4 8009E7D4 3C018019 */  lui   $at, %hi(D_8018EDD8) # $at, 0x8019
-/* 09F3D8 8009E7D8 E420EDD8 */  swc1  $f0, %lo(D_8018EDD8)($at)
-/* 09F3DC 8009E7DC 3C018019 */  lui   $at, %hi(D_8018EDDC) # $at, 0x8019
-/* 09F3E0 8009E7E0 E420EDDC */  swc1  $f0, %lo(D_8018EDDC)($at)
+/* 09F3C0 8009E7C0 E428EDCC */  swc1  $f8, %lo(gIntroModelRotY)($at)
+/* 09F3C4 8009E7C4 3C018019 */  lui   $at, %hi(gIntroModelRotZ) # $at, 0x8019
+/* 09F3C8 8009E7C8 E420EDD0 */  swc1  $f0, %lo(gIntroModelRotZ)($at)
+/* 09F3CC 8009E7CC 3C018019 */  lui   $at, %hi(gIntroModelPosX) # $at, 0x8019
+/* 09F3D0 8009E7D0 E420EDD4 */  swc1  $f0, %lo(gIntroModelPosX)($at)
+/* 09F3D4 8009E7D4 3C018019 */  lui   $at, %hi(gIntroModelPosY) # $at, 0x8019
+/* 09F3D8 8009E7D8 E420EDD8 */  swc1  $f0, %lo(gIntroModelPosY)($at)
+/* 09F3DC 8009E7DC 3C018019 */  lui   $at, %hi(gIntroModelPosZ) # $at, 0x8019
+/* 09F3E0 8009E7E0 E420EDDC */  swc1  $f0, %lo(gIntroModelPosZ)($at)
 /* 09F3E4 8009E7E4 3C014040 */  li    $at, 0x40400000 # 3.000000
 /* 09F3E8 8009E7E8 44815000 */  mtc1  $at, $f10
-/* 09F3EC 8009E7EC 3C018019 */  lui   $at, %hi(D_8018EDC4) # $at, 0x8019
-/* 09F3F0 8009E7F0 E42AEDC4 */  swc1  $f10, %lo(D_8018EDC4)($at)
+/* 09F3EC 8009E7EC 3C018019 */  lui   $at, %hi(gIntroModelScale) # $at, 0x8019
+/* 09F3F0 8009E7F0 E42AEDC4 */  swc1  $f10, %lo(gIntroModelScale)($at)
 /* 09F3F4 8009E7F4 AFEE001C */  sw    $t6, 0x1c($ra)
 /* 09F3F8 8009E7F8 10000375 */  b     .L8009F5D0
 /* 09F3FC 8009E7FC AFE30020 */   sw    $v1, 0x20($ra)
 glabel L8009E800
 /* 09F400 8009E800 240F0708 */  li    $t7, 1800
-/* 09F404 8009E804 3C018019 */  lui   $at, %hi(D_8018EDC0) # $at, 0x8019
-/* 09F408 8009E808 AC2FEDC0 */  sw    $t7, %lo(D_8018EDC0)($at)
+/* 09F404 8009E804 3C018019 */  lui   $at, %hi(gIntroModelZEye) # $at, 0x8019
+/* 09F408 8009E808 AC2FEDC0 */  sw    $t7, %lo(gIntroModelZEye)($at)
 /* 09F40C 8009E80C 3C01C24C */  li    $at, 0xC24C0000 # -51.000000
 /* 09F410 8009E810 44818000 */  mtc1  $at, $f16
-/* 09F414 8009E814 3C018019 */  lui   $at, %hi(D_8018EDC8) # $at, 0x8019
+/* 09F414 8009E814 3C018019 */  lui   $at, %hi(gIntroModelRotX) # $at, 0x8019
 /* 09F418 8009E818 44800000 */  mtc1  $zero, $f0
-/* 09F41C 8009E81C E430EDC8 */  swc1  $f16, %lo(D_8018EDC8)($at)
+/* 09F41C 8009E81C E430EDC8 */  swc1  $f16, %lo(gIntroModelRotX)($at)
 /* 09F420 8009E820 3C01C140 */  li    $at, 0xC1400000 # -12.000000
 /* 09F424 8009E824 44819000 */  mtc1  $at, $f18
-/* 09F428 8009E828 3C018019 */  lui   $at, %hi(D_8018EDCC) # $at, 0x8019
+/* 09F428 8009E828 3C018019 */  lui   $at, %hi(gIntroModelRotY) # $at, 0x8019
 /* 09F42C 8009E82C 2418FFFF */  li    $t8, -1
-/* 09F430 8009E830 E432EDCC */  swc1  $f18, %lo(D_8018EDCC)($at)
+/* 09F430 8009E830 E432EDCC */  swc1  $f18, %lo(gIntroModelRotY)($at)
 /* 09F434 8009E834 3C01C190 */  li    $at, 0xC1900000 # -18.000000
 /* 09F438 8009E838 44812000 */  mtc1  $at, $f4
-/* 09F43C 8009E83C 3C018019 */  lui   $at, %hi(D_8018EDD0) # $at, 0x8019
-/* 09F440 8009E840 E424EDD0 */  swc1  $f4, %lo(D_8018EDD0)($at)
+/* 09F43C 8009E83C 3C018019 */  lui   $at, %hi(gIntroModelRotZ) # $at, 0x8019
+/* 09F440 8009E840 E424EDD0 */  swc1  $f4, %lo(gIntroModelRotZ)($at)
 /* 09F444 8009E844 3C01C387 */  li    $at, 0xC3870000 # -270.000000
 /* 09F448 8009E848 44813000 */  mtc1  $at, $f6
-/* 09F44C 8009E84C 3C018019 */  lui   $at, %hi(D_8018EDD4) # $at, 0x8019
-/* 09F450 8009E850 E426EDD4 */  swc1  $f6, %lo(D_8018EDD4)($at)
+/* 09F44C 8009E84C 3C018019 */  lui   $at, %hi(gIntroModelPosX) # $at, 0x8019
+/* 09F450 8009E850 E426EDD4 */  swc1  $f6, %lo(gIntroModelPosX)($at)
 /* 09F454 8009E854 3C01800F */  lui   $at, %hi(D_800F15E0) # $at, 0x800f
 /* 09F458 8009E858 C42815E0 */  lwc1  $f8, %lo(D_800F15E0)($at)
-/* 09F45C 8009E85C 3C018019 */  lui   $at, %hi(D_8018EDD8) # $at, 0x8019
-/* 09F460 8009E860 E428EDD8 */  swc1  $f8, %lo(D_8018EDD8)($at)
-/* 09F464 8009E864 3C018019 */  lui   $at, %hi(D_8018EDDC) # $at, 0x8019
-/* 09F468 8009E868 E420EDDC */  swc1  $f0, %lo(D_8018EDDC)($at)
+/* 09F45C 8009E85C 3C018019 */  lui   $at, %hi(gIntroModelPosY) # $at, 0x8019
+/* 09F460 8009E860 E428EDD8 */  swc1  $f8, %lo(gIntroModelPosY)($at)
+/* 09F464 8009E864 3C018019 */  lui   $at, %hi(gIntroModelPosZ) # $at, 0x8019
+/* 09F468 8009E868 E420EDDC */  swc1  $f0, %lo(gIntroModelPosZ)($at)
 /* 09F46C 8009E86C 3C013F80 */  li    $at, 0x3F800000 # 1.000000
 /* 09F470 8009E870 44815000 */  mtc1  $at, $f10
-/* 09F474 8009E874 3C018019 */  lui   $at, %hi(D_8018EDC4) # $at, 0x8019
-/* 09F478 8009E878 E42AEDC4 */  swc1  $f10, %lo(D_8018EDC4)($at)
+/* 09F474 8009E874 3C018019 */  lui   $at, %hi(gIntroModelScale) # $at, 0x8019
+/* 09F478 8009E878 E42AEDC4 */  swc1  $f10, %lo(gIntroModelScale)($at)
 /* 09F47C 8009E87C AFF8001C */  sw    $t8, 0x1c($ra)
 /* 09F480 8009E880 10000353 */  b     .L8009F5D0
 /* 09F484 8009E884 AFE30020 */   sw    $v1, 0x20($ra)

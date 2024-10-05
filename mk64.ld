@@ -338,6 +338,7 @@ SECTIONS
       BUILD_DIR/src/code_80091750.jp.o(.bss*);
       BUILD_DIR/src/code_800AF9B0.o(.bss*);
       BUILD_DIR/src/menus.o(.bss*);
+      BUILD_DIR/src/save.o(.bss*);
       #if DEBUG
          BUILD_DIR/src/os/osCartRomInit.o(.bss*);
          BUILD_DIR/src/debug/crash_screen_enhancement.o(.bss*);

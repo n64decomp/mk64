@@ -3590,7 +3590,7 @@ void func_8000F628(void) {
             }
         }
     }
-    if ((D_8018EE08 == 1) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
+    if ((gDemoUseController == 1) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
         for (i = 0; i < NUM_PLAYERS; i++) {
             D_80163330[i] = 0;
         }
@@ -3642,7 +3642,7 @@ void func_8000F628(void) {
     D_8016348C = 0;
     D_801634EC = 0;
     func_8001AB00();
-    if (D_8018EE08 == 1) {
+    if (gDemoUseController == 1) {
         if (gDemoMode == 1) {
 
             for (i = 0; i < NUM_PLAYERS; i++) {
@@ -5444,7 +5444,7 @@ void func_80014DE4(s32 cameraIndex) {
     D_801646D0[cameraIndex].unk0 = 0;
     D_801646D0[cameraIndex].unk2 = 0;
     D_801646D0[cameraIndex].unk4 = 0;
-    if ((gModeSelection == 1) && (D_8018EDFC == 0)) {
+    if ((gModeSelection == 1) && (gCourseMapInit == 0)) {
         D_80164678[cameraIndex] = 0;
     }
 
