@@ -808,9 +808,9 @@ var sectionId = 'dynsection-80';
 <!-- Node33 -->
 <g id="Node000033" class="node">
 <title>Node33</title>
-<g id="a_Node000033"><a xlink:href="menus_8c.html#a6a7fe841b2312b5d5bfb88939ef86df9" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="482.5,-209.66 389.5,-209.66 389.5,-190.66 482.5,-190.66 482.5,-209.66"/>
-<text text-anchor="middle" x="436" y="-197.66" font-family="Helvetica,sans-Serif" font-size="10.00">func_800B44BC</text>
+<g id="a_Node000033"><a xlink:href="menus_8c.html#ac9f18df3bed3128812e7edb31f84300f" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="485.5,-209.66 386.5,-209.66 386.5,-190.66 485.5,-190.66 485.5,-209.66"/>
+<text text-anchor="middle" x="436" y="-197.66" font-family="Helvetica,sans-Serif" font-size="10.00">set_sound_mode</text>
 </a>
 </g>
 </g>
@@ -818,8 +818,8 @@ var sectionId = 'dynsection-80';
 <g id="edge48_Node000032_Node000033" class="edge">
 <title>Node32&#45;&gt;Node33</title>
 <g id="a_edge48_Node000032_Node000033"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M315.16,-203.12C336.76,-202.59 359.54,-202.03 379.36,-201.54"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="379.53,-205.03 389.44,-201.29 379.36,-198.03 379.53,-205.03"/>
+<path fill="none" stroke="#63b8ff" d="M315.16,-203.12C335.64,-202.62 357.18,-202.08 376.26,-201.61"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="376.38,-205.11 386.29,-201.36 376.2,-198.11 376.38,-205.11"/>
 </a>
 </g>
 </g>
@@ -855,8 +855,8 @@ var sectionId = 'dynsection-80';
 <g id="edge49_Node000033_Node000034" class="edge">
 <title>Node33&#45;&gt;Node34</title>
 <g id="a_edge49_Node000033_Node000034"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M482.72,-200.16C514.58,-200.16 557.25,-200.16 591.06,-200.16"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="591.24,-203.66 601.24,-200.16 591.24,-196.66 591.24,-203.66"/>
+<path fill="none" stroke="#63b8ff" d="M485.59,-200.16C517.11,-200.16 558.27,-200.16 591.06,-200.16"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="591.4,-203.66 601.4,-200.16 591.4,-196.66 591.4,-203.66"/>
 </a>
 </g>
 </g>

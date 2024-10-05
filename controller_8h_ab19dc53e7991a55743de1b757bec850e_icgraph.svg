@@ -264,7 +264,7 @@ var sectionId = 'dynsection-22';
 <!-- Node37 -->
 <g id="Node000037" class="node">
 <title>Node37</title>
-<g id="a_Node000037"><a xlink:href="menus_8c.html#ac12b794ad6e6f958a6ab8eaebde7efae" target="_top" xlink:title=" ">
+<g id="a_Node000037"><a xlink:href="menus_8c.html#a5c1ec8ad59526a5670e47ef57ea8fcbd" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1228,-472 1122,-472 1122,-453 1228,-453 1228,-472"/>
 <text text-anchor="middle" x="1175" y="-460" font-family="Helvetica,sans-Serif" font-size="10.00">options_menu_act</text>
 </a>
@@ -977,9 +977,9 @@ var sectionId = 'dynsection-22';
 <!-- Node56 -->
 <g id="Node000056" class="node">
 <title>Node56</title>
-<g id="a_Node000056"><a xlink:href="menus_8c.html#a7e237b5fa61d543f8aedfd821d4aa48b" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1221,-246 1129,-246 1129,-227 1221,-227 1221,-246"/>
-<text text-anchor="middle" x="1175" y="-234" font-family="Helvetica,sans-Serif" font-size="10.00">func_800B3F74</text>
+<g id="a_Node000056"><a xlink:href="menus_8c.html#ab415efc50e6890fb19378842960af7fc" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1228,-246 1122,-246 1122,-227 1228,-227 1228,-246"/>
+<text text-anchor="middle" x="1175" y="-234" font-family="Helvetica,sans-Serif" font-size="10.00">load_menu_states</text>
 </a>
 </g>
 </g>
@@ -1086,8 +1086,8 @@ var sectionId = 'dynsection-22';
 <g id="edge63_Node000056_Node000053" class="edge">
 <title>Node56&#45;&gt;Node53</title>
 <g id="a_edge63_Node000056_Node000053"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1118.48,-236.5C1107.55,-236.5 1096.2,-236.5 1085.65,-236.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1118.8,-240 1128.8,-236.5 1118.8,-233 1118.8,-240"/>
+<path fill="none" stroke="#63b8ff" d="M1111.52,-236.5C1102.85,-236.5 1094.08,-236.5 1085.81,-236.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1111.62,-240 1121.62,-236.5 1111.62,-233 1111.62,-240"/>
 </a>
 </g>
 </g>

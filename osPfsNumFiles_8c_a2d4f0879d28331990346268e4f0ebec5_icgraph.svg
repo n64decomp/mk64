@@ -174,7 +174,7 @@ var sectionId = 'dynsection-2';
 <!-- Node35 -->
 <g id="Node000035" class="node">
 <title>Node35</title>
-<g id="a_Node000035"><a xlink:href="menus_8c.html#ac12b794ad6e6f958a6ab8eaebde7efae" target="_top" xlink:title=" ">
+<g id="a_Node000035"><a xlink:href="menus_8c.html#a5c1ec8ad59526a5670e47ef57ea8fcbd" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1228,-516 1122,-516 1122,-497 1228,-497 1228,-516"/>
 <text text-anchor="middle" x="1175" y="-504" font-family="Helvetica,sans-Serif" font-size="10.00">options_menu_act</text>
 </a>
@@ -992,9 +992,9 @@ var sectionId = 'dynsection-2';
 <!-- Node53 -->
 <g id="Node000053" class="node">
 <title>Node53</title>
-<g id="a_Node000053"><a xlink:href="menus_8c.html#a7e237b5fa61d543f8aedfd821d4aa48b" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1221,-629 1129,-629 1129,-610 1221,-610 1221,-629"/>
-<text text-anchor="middle" x="1175" y="-617" font-family="Helvetica,sans-Serif" font-size="10.00">func_800B3F74</text>
+<g id="a_Node000053"><a xlink:href="menus_8c.html#ab415efc50e6890fb19378842960af7fc" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1228,-629 1122,-629 1122,-610 1228,-610 1228,-629"/>
+<text text-anchor="middle" x="1175" y="-617" font-family="Helvetica,sans-Serif" font-size="10.00">load_menu_states</text>
 </a>
 </g>
 </g>
@@ -1101,8 +1101,8 @@ var sectionId = 'dynsection-2';
 <g id="edge65_Node000053_Node000050" class="edge">
 <title>Node53&#45;&gt;Node50</title>
 <g id="a_edge65_Node000053_Node000050"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1118.82,-611.65C1107.78,-610.08 1096.3,-608.44 1085.65,-606.93"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1118.41,-615.12 1128.8,-613.07 1119.4,-608.19 1118.41,-615.12"/>
+<path fill="none" stroke="#63b8ff" d="M1111.52,-610.61C1102.85,-609.37 1094.08,-608.13 1085.81,-606.95"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1111.23,-614.1 1121.62,-612.05 1112.21,-607.17 1111.23,-614.1"/>
 </a>
 </g>
 </g>

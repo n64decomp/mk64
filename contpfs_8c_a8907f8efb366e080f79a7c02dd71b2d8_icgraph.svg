@@ -246,7 +246,7 @@ var sectionId = 'dynsection-2';
 <!-- Node37 -->
 <g id="Node000037" class="node">
 <title>Node37</title>
-<g id="a_Node000037"><a xlink:href="menus_8c.html#ac12b794ad6e6f958a6ab8eaebde7efae" target="_top" xlink:title=" ">
+<g id="a_Node000037"><a xlink:href="menus_8c.html#a5c1ec8ad59526a5670e47ef57ea8fcbd" target="_top" xlink:title=" ">
 <polygon fill="white" stroke="#666666" points="1228,-438 1122,-438 1122,-419 1228,-419 1228,-438"/>
 <text text-anchor="middle" x="1175" y="-426" font-family="Helvetica,sans-Serif" font-size="10.00">options_menu_act</text>
 </a>
@@ -997,9 +997,9 @@ var sectionId = 'dynsection-2';
 <!-- Node56 -->
 <g id="Node000056" class="node">
 <title>Node56</title>
-<g id="a_Node000056"><a xlink:href="menus_8c.html#a7e237b5fa61d543f8aedfd821d4aa48b" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1221,-137 1129,-137 1129,-118 1221,-118 1221,-137"/>
-<text text-anchor="middle" x="1175" y="-125" font-family="Helvetica,sans-Serif" font-size="10.00">func_800B3F74</text>
+<g id="a_Node000056"><a xlink:href="menus_8c.html#ab415efc50e6890fb19378842960af7fc" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1228,-137 1122,-137 1122,-118 1228,-118 1228,-137"/>
+<text text-anchor="middle" x="1175" y="-125" font-family="Helvetica,sans-Serif" font-size="10.00">load_menu_states</text>
 </a>
 </g>
 </g>
@@ -1106,8 +1106,8 @@ var sectionId = 'dynsection-2';
 <g id="edge65_Node000056_Node000053" class="edge">
 <title>Node56&#45;&gt;Node53</title>
 <g id="a_edge65_Node000056_Node000053"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1118.48,-127.5C1107.55,-127.5 1096.2,-127.5 1085.65,-127.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1118.8,-131 1128.8,-127.5 1118.8,-124 1118.8,-131"/>
+<path fill="none" stroke="#63b8ff" d="M1111.52,-127.5C1102.85,-127.5 1094.08,-127.5 1085.81,-127.5"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1111.62,-131 1121.62,-127.5 1111.62,-124 1111.62,-131"/>
 </a>
 </g>
 </g>

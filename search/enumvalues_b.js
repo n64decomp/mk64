@@ -1,6 +1,20 @@
 var searchData=
 [
-  ['menu_5foptions_5fcsrpos_5fsoundmode_0',['MENU_OPTIONS_CSRPOS_SOUNDMODE',['../menus_8h.html#a2d81b0ed3d81f6a682f89bbb9f1b6baea766000c84f49223667657444310d06d1',1,'menus.h']]],
-  ['moving_5fshell_1',['MOVING_SHELL',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495ba453f34a714854991280e3f087d9715af',1,'actor_types.h']]],
-  ['mushroom_5fcup_2',['MUSHROOM_CUP',['../defines_8h.html#a77867ab4129f63159b37bca3b652a798ac857115cf77e541256d673b827f08f4f',1,'defines.h']]]
+  ['main_5fmenu_5fdata_0',['MAIN_MENU_DATA',['../menus_8h.html#ad5aa1f6b0b486ffbb500442c627f8b3ca5eb616a929dc40790526d085cc204e8b',1,'menus.h']]],
+  ['main_5fmenu_5fmode_5fselect_1',['MAIN_MENU_MODE_SELECT',['../menus_8h.html#ad5aa1f6b0b486ffbb500442c627f8b3cac59b748e8b537c636ed8039c903c3719',1,'menus.h']]],
+  ['main_5fmenu_5fmode_5fsub_5fselect_2',['MAIN_MENU_MODE_SUB_SELECT',['../menus_8h.html#ad5aa1f6b0b486ffbb500442c627f8b3caddf6bebcbb82d9b4641862f8a695172b',1,'menus.h']]],
+  ['main_5fmenu_5fmode_5fsub_5fselect_5fgo_5fback_3',['MAIN_MENU_MODE_SUB_SELECT_GO_BACK',['../menus_8h.html#ad5aa1f6b0b486ffbb500442c627f8b3cacb868889a1331cd59f72738fb6976c67',1,'menus.h']]],
+  ['main_5fmenu_5fnone_4',['MAIN_MENU_NONE',['../menus_8h.html#ad5aa1f6b0b486ffbb500442c627f8b3ca31b82f0e63f58b7b5ba6eb93b954e9d8',1,'menus.h']]],
+  ['main_5fmenu_5fok_5fselect_5',['MAIN_MENU_OK_SELECT',['../menus_8h.html#ad5aa1f6b0b486ffbb500442c627f8b3caa45a373e486175726251073dc014b453',1,'menus.h']]],
+  ['main_5fmenu_5fok_5fselect_5fgo_5fback_6',['MAIN_MENU_OK_SELECT_GO_BACK',['../menus_8h.html#ad5aa1f6b0b486ffbb500442c627f8b3ca5dd04f2ade3fa632f58382e314c6cece',1,'menus.h']]],
+  ['main_5fmenu_5foption_7',['MAIN_MENU_OPTION',['../menus_8h.html#ad5aa1f6b0b486ffbb500442c627f8b3caa292310fc3c35ca5b7bc631aaa06bc5e',1,'menus.h']]],
+  ['main_5fmenu_5fplayer_5fselect_8',['MAIN_MENU_PLAYER_SELECT',['../menus_8h.html#ad5aa1f6b0b486ffbb500442c627f8b3ca641725436146c302b95d7064cba66616',1,'menus.h']]],
+  ['menu_5ffade_5ftype_5fback_9',['MENU_FADE_TYPE_BACK',['../menus_8h.html#ae27524e11002d246314d28cb2246ac57ad7aae11d6c534fa5364355b7d74095ed',1,'menus.h']]],
+  ['menu_5ffade_5ftype_5fdata_10',['MENU_FADE_TYPE_DATA',['../menus_8h.html#ae27524e11002d246314d28cb2246ac57ad25c082f1658af015941af002ae55dff',1,'menus.h']]],
+  ['menu_5ffade_5ftype_5fdemo_11',['MENU_FADE_TYPE_DEMO',['../menus_8h.html#ae27524e11002d246314d28cb2246ac57a84ec8d1d948ee2adcf6cb09d227eaefb',1,'menus.h']]],
+  ['menu_5ffade_5ftype_5fmain_12',['MENU_FADE_TYPE_MAIN',['../menus_8h.html#ae27524e11002d246314d28cb2246ac57a43e3c0d4eba7028fd1d40fda230d3ab6',1,'menus.h']]],
+  ['menu_5ffade_5ftype_5fmax_13',['MENU_FADE_TYPE_MAX',['../menus_8h.html#ae27524e11002d246314d28cb2246ac57a7fcea817ff16921e91c1339fe9e3faa6',1,'menus.h']]],
+  ['menu_5ffade_5ftype_5foption_14',['MENU_FADE_TYPE_OPTION',['../menus_8h.html#ae27524e11002d246314d28cb2246ac57a6a61b35a8a96f372a7c1ee199303c377',1,'menus.h']]],
+  ['moving_5fshell_15',['MOVING_SHELL',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495ba453f34a714854991280e3f087d9715af',1,'actor_types.h']]],
+  ['mushroom_5fcup_16',['MUSHROOM_CUP',['../defines_8h.html#a77867ab4129f63159b37bca3b652a798ac857115cf77e541256d673b827f08f4f',1,'defines.h']]]
 ];

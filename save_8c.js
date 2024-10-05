@@ -56,6 +56,7 @@ var save_8c =
     [ "validate_save_data_checksum_backup", "save_8c.html#ab9bff5073d8eb0971f86030dde8bcd26", null ],
     [ "write_save_data_grand_prix_points_and_sound_mode", "save_8c.html#a2afb543114bf6836bf722730aed3fbc0", null ],
     [ "D_800F2E60", "save_8c.html#a92370c0260328c84cb41d7cfd2c532da", null ],
+    [ "D_8018EE10", "save_8c.html#a34a2729986fa0b726a79699aa68c5dbb", null ],
     [ "gCompanyCode", "save_8c.html#aa10fd8552c1d409993e43f3cd6fe8966", null ],
     [ "gControllerPak1State", "save_8c.html#a2ab0af6800288debbd9f4ae53f91325b", null ],
     [ "gExtCode", "save_8c.html#a1bfb0d1d3a7dbeeb56a2ac8c3ce84a50", null ],

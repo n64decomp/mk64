@@ -1,9 +1,11 @@
 <map id="rmonPrintf" name="rmonPrintf">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,307,96,332"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,331,96,356"/>
 <area shape="rect" id="Node000002" href="$__Printf_8c.html#a39bb05c90efce6c6790c5d58d271d72d" title=" " alt="" coords="182,281,246,307"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="96,310,168,298,169,304,97,315"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,328,168,305,169,310,94,333"/>
 <area shape="rect" id="Node000014" href="$is__debug_8c.html#aaccfac8d9098530b6592eefe679d86b4" title=" " alt="" coords="144,331,284,356"/>
-<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="97,323,131,328,130,334,96,329"/>
+<area shape="poly" id="edge15_Node000001_Node000014" title=" " alt="" coords="96,341,130,341,130,346,96,346"/>
+<area shape="rect" id="Node000015" href="$osSyncPrintf_8c.html#af2956cd92becd74f149439d84cd55096" title=" " alt="" coords="163,380,265,405"/>
+<area shape="poly" id="edge16_Node000001_Node000015" title=" " alt="" coords="94,353,159,373,157,378,93,359"/>
 <area shape="rect" id="Node000003" href="$__Printf_8c.html#ad73a5847f2d7c9de14cc2723da86bf45" title=" " alt="" coords="332,256,399,281"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="246,286,318,274,319,279,247,291"/>
 <area shape="rect" id="Node000013" href="$string_8c.html#a988b4defe51a1815ef3b9ddab10e7a89" title=" " alt="" coords="336,305,395,331"/>

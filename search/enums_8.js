@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['playerid_0',['PlayerId',['../defines_8h.html#a698be281bf8b3216136b9440f534ca11',1,'defines.h']]],
-  ['profilergameevent_1',['ProfilerGameEvent',['../profiler_8h.html#a464075ec8b898dea3a20b3166dd123bf',1,'profiler.h']]],
-  ['profilergfxevent_2',['ProfilerGfxEvent',['../profiler_8h.html#af588a3a9b27840d837d5417d4be531e8',1,'profiler.h']]]
+  ['mainmenuselectiontype_0',['MainMenuSelectionType',['../menus_8h.html#ad5aa1f6b0b486ffbb500442c627f8b3c',1,'menus.h']]],
+  ['menufadetypes_1',['MenuFadeTypes',['../menus_8h.html#ae27524e11002d246314d28cb2246ac57',1,'menus.h']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['shellstate_0',['ShellState',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495b',1,'actor_types.h']]],
-  ['sptaskstate_1',['SpTaskState',['../common__structs_8h.html#a4bb374aee872d45ca8292940f2a0ed03',1,'common_structs.h']]],
-  ['surface_5ftype_2',['SURFACE_TYPE',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98',1,'mk64.h']]]
+  ['playerid_0',['PlayerId',['../defines_8h.html#a698be281bf8b3216136b9440f534ca11',1,'defines.h']]],
+  ['playerselectmenuselectiontypes_1',['PlayerSelectMenuSelectionTypes',['../menus_8h.html#a289ed41d88f6aaf162bb650589c7021c',1,'menus.h']]],
+  ['profilergameevent_2',['ProfilerGameEvent',['../profiler_8h.html#a464075ec8b898dea3a20b3166dd123bf',1,'profiler.h']]],
+  ['profilergfxevent_3',['ProfilerGfxEvent',['../profiler_8h.html#af588a3a9b27840d837d5417d4be531e8',1,'profiler.h']]]
 ];

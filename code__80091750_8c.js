@@ -426,6 +426,8 @@ var code__80091750_8c =
     [ "D_800F0B50", "code__80091750_8c.html#aaa71313af943332d70113f5464a315e9", null ],
     [ "D_800F0B54", "code__80091750_8c.html#a6bbcbed072de5a2686119a2b69561a77", null ],
     [ "D_800F0CA0", "code__80091750_8c.html#a64f35c2a6410e0faef3340c5a52b3f8a", null ],
+    [ "D_800F0CA8", "code__80091750_8c.html#ac0bda10c2ac4947e764d730570b9b568", null ],
+    [ "D_800F0CAC", "code__80091750_8c.html#a5c90d7d34daf8277006d9ab12da40bc3", null ],
     [ "D_8018D9B0", "code__80091750_8c.html#a08ffb920b7830a80106d74fae1eeca66", null ],
     [ "D_8018D9B4", "code__80091750_8c.html#a0a6223a05cd52c535379a73aa1848bcb", null ],
     [ "D_8018D9B8", "code__80091750_8c.html#a2de8f3e8c34fa678b78b33468f1a1ac9", null ],

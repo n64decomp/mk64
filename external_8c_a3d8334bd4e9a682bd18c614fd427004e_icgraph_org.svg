@@ -92,9 +92,9 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="menus_8c.html#a7e237b5fa61d543f8aedfd821d4aa48b" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="1147,-131 1055,-131 1055,-112 1147,-112 1147,-131"/>
-<text text-anchor="middle" x="1101" y="-119" font-family="Helvetica,sans-Serif" font-size="10.00">func_800B3F74</text>
+<g id="a_Node000005"><a xlink:href="menus_8c.html#ab415efc50e6890fb19378842960af7fc" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="1154,-131 1048,-131 1048,-112 1154,-112 1154,-131"/>
+<text text-anchor="middle" x="1101" y="-119" font-family="Helvetica,sans-Serif" font-size="10.00">load_menu_states</text>
 </a>
 </g>
 </g>
@@ -156,8 +156,8 @@
 <g id="edge5_Node000005_Node000006" class="edge">
 <title>Node5&#45;&gt;Node6</title>
 <g id="a_edge5_Node000005_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M1044.39,-119.52C1031.2,-119.05 1017.3,-118.56 1004.64,-118.11"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="1044.65,-123.03 1054.77,-119.89 1044.9,-116.04 1044.65,-123.03"/>
+<path fill="none" stroke="#63b8ff" d="M1037.67,-119.28C1026.65,-118.89 1015.38,-118.49 1004.93,-118.12"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="1037.56,-122.78 1047.68,-119.64 1037.81,-115.78 1037.56,-122.78"/>
 </a>
 </g>
 </g>

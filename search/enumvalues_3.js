@@ -1,9 +1,22 @@
 var searchData=
 [
-  ['destroyed_5fbanana_0',['DESTROYED_BANANA',['../actor__types_8h.html#ac1412f2ed50826478acf5d826cb0e4bca368a3bf24e30022ca67635f4dd09a386',1,'actor_types.h']]],
-  ['destroyed_5fshell_1',['DESTROYED_SHELL',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495ba27fa834989e28bdd46500b6204a16f29',1,'actor_types.h']]],
-  ['dirt_2',['DIRT',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98acc4e9a6b72b8cb231cf382b6320aeed2',1,'mk64.h']]],
-  ['dirt_5foffroad_3',['DIRT_OFFROAD',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a9b7899bece29ab1a6a42237ddbb1b5a8',1,'mk64.h']]],
-  ['disable_5fautomatic_5fpop_5fmatrix_4',['DISABLE_AUTOMATIC_POP_MATRIX',['../animation_8h.html#a52e412534f1af21caf39f50ea61280cea4c013f2b23a17714b68c9b94847fa4b2',1,'animation.h']]],
-  ['dropped_5fbanana_5',['DROPPED_BANANA',['../actor__types_8h.html#ac1412f2ed50826478acf5d826cb0e4bca2e7784d017a544d7bbfe8f856c0f0f07',1,'actor_types.h']]]
+  ['debug_5fgoto_5fcredits_5fsequence_5fdefault_0',['DEBUG_GOTO_CREDITS_SEQUENCE_DEFAULT',['../menus_8h.html#a9db093d5f4c647c5ce4f7e858dfc5960a5c1b871c384f19e00d10fc0d567d239c',1,'menus.h']]],
+  ['debug_5fgoto_5fcredits_5fsequence_5fextra_1',['DEBUG_GOTO_CREDITS_SEQUENCE_EXTRA',['../menus_8h.html#a9db093d5f4c647c5ce4f7e858dfc5960a9c5e53464578cd47bee6f5171fecb3a9',1,'menus.h']]],
+  ['debug_5fgoto_5fending_2',['DEBUG_GOTO_ENDING',['../menus_8h.html#a9db093d5f4c647c5ce4f7e858dfc5960a77d15931319edea3c689d1e81a94c511',1,'menus.h']]],
+  ['debug_5fgoto_5fracing_3',['DEBUG_GOTO_RACING',['../menus_8h.html#a9db093d5f4c647c5ce4f7e858dfc5960a1286562cd65f0831adf2f38601d7c243',1,'menus.h']]],
+  ['debug_5fmenu_5fcourse_4',['DEBUG_MENU_COURSE',['../menus_8h.html#ae19736bcf4a3556fd62ad21bf5773e7ca3506c601d9ee50184c77db99c9e656da',1,'menus.h']]],
+  ['debug_5fmenu_5fdebug_5fmode_5',['DEBUG_MENU_DEBUG_MODE',['../menus_8h.html#ae19736bcf4a3556fd62ad21bf5773e7ca205faa97da6c8694e69b0cf14dd3b642',1,'menus.h']]],
+  ['debug_5fmenu_5fdisabled_6',['DEBUG_MENU_DISABLED',['../menus_8h.html#ae19736bcf4a3556fd62ad21bf5773e7cad84593cd663311aaa74aa618c68577c0',1,'menus.h']]],
+  ['debug_5fmenu_5fgive_5fall_5fgold_5fcup_7',['DEBUG_MENU_GIVE_ALL_GOLD_CUP',['../menus_8h.html#ae19736bcf4a3556fd62ad21bf5773e7ca70c464afdb5c2c851ecae709e7b5b71d',1,'menus.h']]],
+  ['debug_5fmenu_5fnone_8',['DEBUG_MENU_NONE',['../menus_8h.html#ae19736bcf4a3556fd62ad21bf5773e7ca23f5c90961a714a2cc3461c08cb0ba59',1,'menus.h']]],
+  ['debug_5fmenu_5foption_5fselected_9',['DEBUG_MENU_OPTION_SELECTED',['../menus_8h.html#ae19736bcf4a3556fd62ad21bf5773e7ca520c391db4f8a90acb8bf5d520da20b0',1,'menus.h']]],
+  ['debug_5fmenu_5fplayer_10',['DEBUG_MENU_PLAYER',['../menus_8h.html#ae19736bcf4a3556fd62ad21bf5773e7ca83aed20e05b9f4455d08d8c95844dbc4',1,'menus.h']]],
+  ['debug_5fmenu_5fscreen_5fmode_11',['DEBUG_MENU_SCREEN_MODE',['../menus_8h.html#ae19736bcf4a3556fd62ad21bf5773e7ca4be120a56f99914d803d852c29f78af7',1,'menus.h']]],
+  ['debug_5fmenu_5fsound_5fmode_12',['DEBUG_MENU_SOUND_MODE',['../menus_8h.html#ae19736bcf4a3556fd62ad21bf5773e7caea406d2fa030183f08b58432e98a2def',1,'menus.h']]],
+  ['destroyed_5fbanana_13',['DESTROYED_BANANA',['../actor__types_8h.html#ac1412f2ed50826478acf5d826cb0e4bca368a3bf24e30022ca67635f4dd09a386',1,'actor_types.h']]],
+  ['destroyed_5fshell_14',['DESTROYED_SHELL',['../actor__types_8h.html#ac01c8e97d91d8f2968ca1f8d4eb0495ba27fa834989e28bdd46500b6204a16f29',1,'actor_types.h']]],
+  ['dirt_15',['DIRT',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98acc4e9a6b72b8cb231cf382b6320aeed2',1,'mk64.h']]],
+  ['dirt_5foffroad_16',['DIRT_OFFROAD',['../mk64_8h.html#a5344f2bdca4f9506c40f044e08ea8c98a9b7899bece29ab1a6a42237ddbb1b5a8',1,'mk64.h']]],
+  ['disable_5fautomatic_5fpop_5fmatrix_17',['DISABLE_AUTOMATIC_POP_MATRIX',['../animation_8h.html#a52e412534f1af21caf39f50ea61280cea4c013f2b23a17714b68c9b94847fa4b2',1,'animation.h']]],
+  ['dropped_5fbanana_18',['DROPPED_BANANA',['../actor__types_8h.html#ac1412f2ed50826478acf5d826cb0e4bca2e7784d017a544d7bbfe8f856c0f0f07',1,'actor_types.h']]]
 ];
