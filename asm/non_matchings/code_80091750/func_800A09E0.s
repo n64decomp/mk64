@@ -17,11 +17,11 @@ glabel func_800A09E0
 /* 0A161C 800A0A1C 3C18004F */  lui   $t8, (0x004FC308 >> 16) # lui $t8, 0x4f
 /* 0A1620 800A0A20 3718C308 */  ori   $t8, (0x004FC308 & 0xFFFF) # ori $t8, $t8, 0xc308
 /* 0A1624 800A0A24 3C0FED00 */  lui   $t7, 0xed00
-/* 0A1628 800A0A28 3C13800F */  lui   $s3, %hi(D_800E86D0) # $s3, 0x800f
+/* 0A1628 800A0A28 3C13800F */  lui   $s3, %hi(gControllerPakScrollDirection) # $s3, 0x800f
 /* 0A162C 800A0A2C 3C160200 */  lui   $s6, %hi(D_0200157C) # $s6, 0x200
 /* 0A1630 800A0A30 00809025 */  move  $s2, $a0
 /* 0A1634 800A0A34 26D6157C */  addiu $s6, %lo(D_0200157C) # addiu $s6, $s6, 0x157c
-/* 0A1638 800A0A38 267386D0 */  addiu $s3, %lo(D_800E86D0) # addiu $s3, $s3, -0x7930
+/* 0A1638 800A0A38 267386D0 */  addiu $s3, %lo(gControllerPakScrollDirection) # addiu $s3, $s3, -0x7930
 /* 0A163C 800A0A3C 00008025 */  move  $s0, $zero
 /* 0A1640 800A0A40 24140008 */  li    $s4, 8
 /* 0A1644 800A0A44 24150009 */  li    $s5, 9

@@ -17,6 +17,10 @@
 // very fragile!
 #define EEPROM_ADDR(ptr) (((uintptr_t) (ptr) - (uintptr_t) (&gSaveData)) / 8)
 
+/** BSS **/
+// stores ghost data
+struct_8018EE10_entry D_8018EE10[2];
+
 /*** data ***/
 u16 gCompanyCode = PFS_COMPANY_CODE('0', '1');
 u32 gGameCode = PFS_GAME_CODE('N', 'K', 'T', 'J');
@@ -91,7 +95,7 @@ void reset_save_data_grand_prix_points_and_sound_mode(void) {
     }
     main->saveInfo.soundMode = SOUND_STEREO;
     gSoundMode = SOUND_STEREO;
-    func_800B44BC();
+    set_sound_mode();
     write_save_data_grand_prix_points_and_sound_mode();
 }
 

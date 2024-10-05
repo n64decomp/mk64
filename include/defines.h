@@ -38,35 +38,13 @@
  *
  */
 #if defined(GCC) || defined(DEBUG)
-#define DEBUG_MODE 1
-#define DEBUG_MENU 2
+#define ENABLE_DEBUG_MODE 1
 #else
-#define DEBUG_MODE 0
-#define DEBUG_MENU 1
+#define ENABLE_DEBUG_MODE 0
 #endif
 
 #define HOLD_ALL_DPAD_AND_C_BUTTONS \
     (U_JPAD | L_JPAD | R_JPAD | D_JPAD | U_CBUTTONS | L_CBUTTONS | R_CBUTTONS | D_CBUTTONS)
-
-/**
- * @brief Options for gDebugMenuSelection
- */
-#define DEBUG_MENU_DISABLED 1
-#define DEBUG_MENU_DEBUG_MODE 2
-#define DEBUG_MENU_COURSE 3
-#define DEBUG_MENU_SCREEN_MODE 4
-#define DEBUG_MENU_PLAYER 5
-#define DEBUG_MENU_SOUND_MODE 6
-#define DEBUG_MENU_GIVE_ALL_GOLD_CUP 7
-#define DEBUG_MENU_EXITED 64
-
-/**
- * @brief Options for gDebugGotoScene
- */
-#define DEBUG_GOTO_RACING 0
-#define DEBUG_GOTO_ENDING 1
-#define DEBUG_GOTO_CREDITS_SEQUENCE_CC_50 2
-#define DEBUG_GOTO_CREDITS_SEQUENCE_CC_EXTRA 3
 
 /**
  * @brief Jump to demo mode from the debug menu using L and A
@@ -213,34 +191,6 @@ enum { COURSE_ONE, COURSE_TWO, COURSE_THREE, COURSE_FOUR };
 #define RACING 4
 #define ENDING 5
 #define CREDITS_SEQUENCE 9
-
-/**
- * @brief Options for gMainMenuSelectionDepth
- */
-#define BLANK_MAIN_MENU 0
-#define OPTIONS_SELECTION 1
-#define DATA_SELECTION 2
-#define PLAYER_NUM_SELECTION 3
-#define GAME_MODE_SELECTION 4
-#define GAME_MODE_CC_OR_TIME_TRIALS_OPTIONS_SELECTION \
-    5 // Selecting CC for GP and Versus. Selecting "Begin" or "Data" for Time Trials. Unused for Battle
-#define CONFIRM_OK_SELECTION 6
-#define CONFIRM_OK_SELECTION_FROM_BACK_OUT 7
-#define TIME_TRIALS_DATA_SELECTION_FROM_BACK_OUT 8
-
-/**
- * @brief Options for gControllerPakMenuSelection
- */
-#define CONTROLLER_PAK_MENU_SELECT_RECORD 1
-#define CONTROLLER_PAK_MENU_END 2
-#define CONTROLLER_PAK_MENU_ERASE 3
-#define CONTROLLER_PAK_MENU_QUIT 4
-#define CONTROLLER_PAK_MENU_TABLE_GAME_DATA 5
-#define CONTROLLER_PAK_MENU_GO_TO_ERASING 6
-#define CONTROLLER_PAK_MENU_ERASING 7
-#define CONTROLLER_PAK_MENU_ERASE_ERROR_NOT_ERASED 8
-#define CONTROLLER_PAK_MENU_ERASE_ERROR_NO_PAK 9
-#define CONTROLLER_PAK_MENU_ERASE_ERROR_PAK_CHANGED 10
 
 /**
  * @brief Options for gScreenModeSelection and gActiveScreenMode
