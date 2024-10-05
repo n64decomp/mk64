@@ -99,12 +99,12 @@ u32 sVIGammaOffDitherOn = (OS_VI_GAMMA_OFF | OS_VI_DITHER_FILTER_ON);
 /** RoData **/
 
 // Sets the actual screen mode based on values set in sScreenModePlayerCount
-const s8 sScreenModePlayerTable[] = { 
+const s8 sScreenModePlayerTable[] = {
     SCREEN_MODE_1P,
-    SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL, 
-    SCREEN_MODE_2P_SPLITSCREEN_VERTICAL, 
-    SCREEN_MODE_3P_4P_SPLITSCREEN, 
-    SCREEN_MODE_3P_4P_SPLITSCREEN 
+    SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL,
+    SCREEN_MODE_2P_SPLITSCREEN_VERTICAL,
+    SCREEN_MODE_3P_4P_SPLITSCREEN,
+    SCREEN_MODE_3P_4P_SPLITSCREEN
 };
 
 // Sets how many players can load on each screen mode set in sScreenModePlayerTable
@@ -1507,7 +1507,7 @@ GLOBAL_ASM("asm/non_matchings/menus/main_menu_act.s")
 #endif
 
 /**
- * Check if there is no currently selected and/or 
+ * Check if there is no currently selected and/or
  * hovered character at grid position `gridId`
  */
 bool is_character_spot_free(s32 gridId) {
