@@ -96,8 +96,8 @@ enum MainMenuSelectionType {
     MAIN_MENU_MODE_SELECT, // Mario GP - T. Trials - VS - Battle
     MAIN_MENU_MODE_SUB_SELECT, // CC Selection and T.Trials options (Begin, Data)
     MAIN_MENU_OK_SELECT, // OK option after selecting a submode
-    MAIN_MENU_OK_SELECT_BACK_OUT, // OK option after backing out player select
-    MAIN_MENU_MODE_SUB_SELECT_BACK_OUT // Used in T.Trials after backing out Data menu
+    MAIN_MENU_OK_SELECT_GO_BACK, // OK option after going back from player select
+    MAIN_MENU_MODE_SUB_SELECT_GO_BACK // Used in T.Trials after going back to Data option from course data
 };
 
 /**
@@ -107,7 +107,7 @@ enum PlayerSelectMenuSelectionTypes {
     PLAYER_SELECT_MENU_NONE,
     PLAYER_SELECT_MENU_MAIN,
     PLAYER_SELECT_MENU_OK, // OK option after selecting characters
-    PLAYER_SELECT_MENU_OK_BACK_OUT // OK option after backing out map select
+    PLAYER_SELECT_MENU_OK_GO_BACK // OK option after going back from map select
 };
 
 /**

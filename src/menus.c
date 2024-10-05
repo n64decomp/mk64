@@ -1392,7 +1392,7 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                 break;
             }
             case MAIN_MENU_MODE_SUB_SELECT:
-            case MAIN_MENU_MODE_SUB_SELECT_BACK_OUT: {
+            case MAIN_MENU_MODE_SUB_SELECT_GO_BACK: {
                 if (controllerIdx == PLAYER_ONE) {
                     gMenuTimingCounter++;
                     if ((gMenuTimingCounter == 100 || gMenuTimingCounter % 300 == 0)) {
@@ -1456,7 +1456,7 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                 break;
             }
             case MAIN_MENU_OK_SELECT:
-            case MAIN_MENU_OK_SELECT_BACK_OUT: {
+            case MAIN_MENU_OK_SELECT_GO_BACK: {
                 if ((controllerIdx == PLAYER_ONE) && (++gMenuTimingCounter == 60 || gMenuTimingCounter % 300 == 0)) {
                     play_sound2(SOUND_MENU_OK);
                 }
@@ -1909,14 +1909,14 @@ void load_menu_states(s32 menuSelection) {
                     break;
                 }
                 case MENU_FADE_TYPE_BACK: {
-                    gMainMenuSelection = MAIN_MENU_OK_SELECT_BACK_OUT;
+                    gMainMenuSelection = MAIN_MENU_OK_SELECT_GO_BACK;
                     break;
                 }
                 case MENU_FADE_TYPE_DATA: {
                     // why...
                     switch (gMainMenuSelection) {
                         default:
-                            gMainMenuSelection = MAIN_MENU_MODE_SUB_SELECT_BACK_OUT;
+                            gMainMenuSelection = MAIN_MENU_MODE_SUB_SELECT_GO_BACK;
                             break;
                         case MAIN_MENU_OPTION:
                         case MAIN_MENU_DATA:
@@ -1961,7 +1961,7 @@ void load_menu_states(s32 menuSelection) {
                     break;
                 }
                 case MENU_FADE_TYPE_BACK: {
-                    gPlayerSelectMenuSelection = PLAYER_SELECT_MENU_OK_BACK_OUT;
+                    gPlayerSelectMenuSelection = PLAYER_SELECT_MENU_OK_GO_BACK;
                     for (i = 0; i < ARRAY_COUNT(gCharacterGridIsSelected); i++) {
                         if (gPlayerCount > i) {
                             gCharacterGridIsSelected[i] = true;

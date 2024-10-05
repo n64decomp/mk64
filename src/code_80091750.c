@@ -8490,8 +8490,8 @@ void func_800A7A4C(s32 arg0) {
                     case MAIN_MENU_MODE_SELECT:                           /* switch 5 */
                     case MAIN_MENU_MODE_SUB_SELECT: /* switch 5 */
                     case MAIN_MENU_OK_SELECT:                          /* switch 5 */
-                    case MAIN_MENU_OK_SELECT_BACK_OUT:            /* switch 5 */
-                    case MAIN_MENU_MODE_SUB_SELECT_BACK_OUT:      /* switch 5 */
+                    case MAIN_MENU_OK_SELECT_GO_BACK:            /* switch 5 */
+                    case MAIN_MENU_MODE_SUB_SELECT_GO_BACK:      /* switch 5 */
                         func_800A9C40(var_s1);
                         break;
                 }
@@ -8513,8 +8513,8 @@ void func_800A7A4C(s32 arg0) {
                     case MAIN_MENU_MODE_SELECT:                           /* switch 6 */
                     case MAIN_MENU_MODE_SUB_SELECT: /* switch 6 */
                     case MAIN_MENU_OK_SELECT:                          /* switch 6 */
-                    case MAIN_MENU_OK_SELECT_BACK_OUT:            /* switch 6 */
-                    case MAIN_MENU_MODE_SUB_SELECT_BACK_OUT:      /* switch 6 */
+                    case MAIN_MENU_OK_SELECT_GO_BACK:            /* switch 6 */
+                    case MAIN_MENU_MODE_SUB_SELECT_GO_BACK:      /* switch 6 */
                         func_800A9C40(var_s1);
                         break;
                 }
@@ -8565,7 +8565,7 @@ void func_800A7A4C(s32 arg0) {
                         func_800AAB90(var_s1);
                         break;
                     case PLAYER_SELECT_MENU_OK: /* switch 10 */
-                    case PLAYER_SELECT_MENU_OK_BACK_OUT: /* switch 10 */
+                    case PLAYER_SELECT_MENU_OK_GO_BACK: /* switch 10 */
                         func_800AAA9C(var_s1);
                         break;
                 }
@@ -8874,14 +8874,14 @@ void func_800A8564(struct_8018D9E0_entry* arg0) {
         case 0xF:
             var_a0 = D_0200487C;
             if ((gMainMenuSelection == MAIN_MENU_OK_SELECT) ||
-                (gMainMenuSelection == MAIN_MENU_OK_SELECT_BACK_OUT)) {
+                (gMainMenuSelection == MAIN_MENU_OK_SELECT_GO_BACK)) {
                 var_a1 = 1;
             }
             break;
         case 0x33:
             var_a0 = D_02004B74;
             if ((gPlayerSelectMenuSelection == PLAYER_SELECT_MENU_OK) || 
-                (gPlayerSelectMenuSelection == PLAYER_SELECT_MENU_OK_BACK_OUT)) {
+                (gPlayerSelectMenuSelection == PLAYER_SELECT_MENU_OK_GO_BACK)) {
                 var_a1 = 1;
             }
             break;
@@ -9443,8 +9443,8 @@ void func_800A9C40(struct_8018D9E0_entry* arg0) {
             arg0->cursor = 1;
         case 1:
             func_800AA280(arg0);
-            if ((gMainMenuSelection == MAIN_MENU_OK_SELECT_BACK_OUT) ||
-                (gMainMenuSelection == MAIN_MENU_MODE_SUB_SELECT_BACK_OUT)) {
+            if ((gMainMenuSelection == MAIN_MENU_OK_SELECT_GO_BACK) ||
+                (gMainMenuSelection == MAIN_MENU_MODE_SUB_SELECT_GO_BACK)) {
                 arg0->unk1C = 0x00000020;
             } else {
                 if (arg0->unk1C < 0x20) {
@@ -9477,8 +9477,8 @@ void func_800A9D5C(struct_8018D9E0_entry* arg0) {
 
     switch (arg0->cursor) {
         case 2:
-            if ((gMainMenuSelection == MAIN_MENU_OK_SELECT_BACK_OUT) ||
-                (gMainMenuSelection == MAIN_MENU_MODE_SUB_SELECT_BACK_OUT)) {
+            if ((gMainMenuSelection == MAIN_MENU_OK_SELECT_GO_BACK) ||
+                (gMainMenuSelection == MAIN_MENU_MODE_SUB_SELECT_GO_BACK)) {
                 arg0->column = 0x00000080;
                 arg0->row = 0x0000003E;
             } else {
@@ -9549,8 +9549,8 @@ void func_800A9E58(struct_8018D9E0_entry* arg0) {
                         arg0->unk1C = 0;
                         arg0->cursor = 1;
                         break;
-                    case MAIN_MENU_OK_SELECT_BACK_OUT:       /* switch 2 */
-                    case MAIN_MENU_MODE_SUB_SELECT_BACK_OUT: /* switch 2 */
+                    case MAIN_MENU_OK_SELECT_GO_BACK:       /* switch 2 */
+                    case MAIN_MENU_MODE_SUB_SELECT_GO_BACK: /* switch 2 */
                         temp_v0 = func_800AAE68();
                         temp_v1_2 = &D_800E70E8[arg0->type - sp24];
                         arg0->column = temp_v0->column + temp_v1_2->column;
@@ -9570,8 +9570,8 @@ void func_800A9E58(struct_8018D9E0_entry* arg0) {
                 case MAIN_MENU_MODE_SELECT:                           /* switch 3 */
                 case MAIN_MENU_MODE_SUB_SELECT: /* switch 3 */
                 case MAIN_MENU_OK_SELECT:                          /* switch 3 */
-                case MAIN_MENU_OK_SELECT_BACK_OUT:            /* switch 3 */
-                case MAIN_MENU_MODE_SUB_SELECT_BACK_OUT:      /* switch 3 */
+                case MAIN_MENU_OK_SELECT_GO_BACK:            /* switch 3 */
+                case MAIN_MENU_MODE_SUB_SELECT_GO_BACK:      /* switch 3 */
                     if ((temp_a1 != sp20) && (temp_a1 != sp1C)) {
                         arg0->visible = 0;
                         arg0->cursor = 0;
@@ -9601,8 +9601,8 @@ void func_800A9E58(struct_8018D9E0_entry* arg0) {
                 case MAIN_MENU_MODE_SELECT:                           /* switch 4 */
                 case MAIN_MENU_MODE_SUB_SELECT: /* switch 4 */
                 case MAIN_MENU_OK_SELECT:                          /* switch 4 */
-                case MAIN_MENU_OK_SELECT_BACK_OUT:            /* switch 4 */
-                case MAIN_MENU_MODE_SUB_SELECT_BACK_OUT:      /* switch 4 */
+                case MAIN_MENU_OK_SELECT_GO_BACK:            /* switch 4 */
+                case MAIN_MENU_MODE_SUB_SELECT_GO_BACK:      /* switch 4 */
                     if ((temp_a1 != sp20) && (temp_a1 != sp1C)) {
                         arg0->visible = 0;
                         arg0->cursor = 0;
@@ -9632,8 +9632,8 @@ void func_800AA280(struct_8018D9E0_entry* arg0) {
     Unk_D_800E70A0* temp_v0;
 
     temp_v0 = &D_800E70A0[arg0->type - 0xA];
-    if ((gMainMenuSelection == MAIN_MENU_OK_SELECT_BACK_OUT) ||
-        (gMainMenuSelection == MAIN_MENU_MODE_SUB_SELECT_BACK_OUT)) {
+    if ((gMainMenuSelection == MAIN_MENU_OK_SELECT_GO_BACK) ||
+        (gMainMenuSelection == MAIN_MENU_MODE_SUB_SELECT_GO_BACK)) {
         arg0->column = temp_v0->column;
         arg0->row = temp_v0->row;
     } else {
@@ -9655,8 +9655,8 @@ void func_800AA2EC(struct_8018D9E0_entry* arg0) {
             break;
         case MAIN_MENU_MODE_SUB_SELECT:
         case MAIN_MENU_OK_SELECT:
-        case MAIN_MENU_OK_SELECT_BACK_OUT:
-        case MAIN_MENU_MODE_SUB_SELECT_BACK_OUT:
+        case MAIN_MENU_OK_SELECT_GO_BACK:
+        case MAIN_MENU_MODE_SUB_SELECT_GO_BACK:
             if (arg0->cursor != 0) {
                 break;
             }
@@ -9853,7 +9853,7 @@ void func_800AAA9C(struct_8018D9E0_entry* arg0) {
             arg0->cursor = 1;
             /* fallthrough */
         case 1:
-            if (gPlayerSelectMenuSelection == PLAYER_SELECT_MENU_OK_BACK_OUT) {
+            if (gPlayerSelectMenuSelection == PLAYER_SELECT_MENU_OK_GO_BACK) {
                 arg0->unk1C = 0x00000020;
             } else {
                 if (arg0->unk1C < 0x20) {
@@ -9923,7 +9923,7 @@ void func_800AAC18(struct_8018D9E0_entry* arg0) {
     temp_a1 = arg0->type - 0x2B;
     switch (arg0->cursor) {
         case 0:
-            if (gPlayerSelectMenuSelection == PLAYER_SELECT_MENU_OK_BACK_OUT) {
+            if (gPlayerSelectMenuSelection == PLAYER_SELECT_MENU_OK_GO_BACK) {
                 temp_v0 = func_800AAFCC(temp_a1);
                 if (temp_v0 >= 0) {
                     var_t0 = &D_800E7188[(gScreenModeSelection * 4) + temp_v0];
