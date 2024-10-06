@@ -366,8 +366,8 @@ void func_8006F824(s32 arg0) {
 }
 
 void func_8006F8CC(void) {
-    if (D_8018EDFC == 0) {
-        D_8018EDFC = 1;
+    if (gCourseMapInit == 0) {
+        gCourseMapInit = 1;
         D_801657E4 = 0;
         D_801657E6 = 0;
         D_801657F0 = 0;

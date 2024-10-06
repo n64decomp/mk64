@@ -127,7 +127,7 @@ void func_802A38B4(void) {
     gGamestate = 255;
     gIsInQuitToMenuTransition = 0;
     gQuitToMenuTransitionCounter = 0;
-    D_800E86A4 = 1;
+    gFadeModeSelection = FADE_MODE_MAIN;
 
     switch (gGotoMode) {
         case START_MENU_FROM_QUIT:

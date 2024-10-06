@@ -20,10 +20,10 @@ glabel func_800AB314
 /* 0ABF58 800AB358 AC62FFFC */   sw    $v0, -4($v1)
 /* 0ABF5C 800AB35C 3C0E800E */  lui   $t6, %hi(gModeSelection) # $t6, 0x800e
 /* 0ABF60 800AB360 8DCEC53C */  lw    $t6, %lo(gModeSelection)($t6)
-/* 0ABF64 800AB364 3C0F8019 */  lui   $t7, %hi(D_8018EDEC) # $t7, 0x8019
+/* 0ABF64 800AB364 3C0F8019 */  lui   $t7, %hi(gSubMenuSelection) # $t7, 0x8019
 /* 0ABF68 800AB368 51C00053 */  beql  $t6, $zero, .L800AB4B8
 /* 0ABF6C 800AB36C 8CC20004 */   lw    $v0, 4($a2)
-/* 0ABF70 800AB370 81EFEDEC */  lb    $t7, %lo(D_8018EDEC)($t7)
+/* 0ABF70 800AB370 81EFEDEC */  lb    $t7, %lo(gSubMenuSelection)($t7)
 /* 0ABF74 800AB374 24040001 */  li    $a0, 1
 /* 0ABF78 800AB378 24030003 */  li    $v1, 3
 /* 0ABF7C 800AB37C 108F003A */  beq   $a0, $t7, .L800AB468
@@ -124,10 +124,10 @@ glabel func_800AB314
 /* 0AC0CC 800AB4CC 3C038019 */   lui   $v1, %hi(gCupSelection) # $v1, 0x8019
 /* 0AC0D0 800AB4D0 24010002 */  li    $at, 2
 /* 0AC0D4 800AB4D4 1041005C */  beq   $v0, $at, .L800AB648
-/* 0AC0D8 800AB4D8 3C0D8019 */   lui   $t5, %hi(D_8018EDEC) # 0x8019
+/* 0AC0D8 800AB4D8 3C0D8019 */   lui   $t5, %hi(gSubMenuSelection) # 0x8019
 /* 0AC0DC 800AB4DC 24030003 */  li    $v1, 3
 /* 0AC0E0 800AB4E0 1043006A */  beq   $v0, $v1, .L800AB68C
-/* 0AC0E4 800AB4E4 3C198019 */   lui   $t9, %hi(D_8018EDEC) # 0x8019
+/* 0AC0E4 800AB4E4 3C198019 */   lui   $t9, %hi(gSubMenuSelection) # 0x8019
 /* 0AC0E8 800AB4E8 1000006F */  b     .L800AB6A8
 /* 0AC0EC 800AB4EC 00000000 */   nop   
 /* 0AC0F0 800AB4F0 8CD9001C */  lw    $t9, 0x1c($a2)
@@ -163,8 +163,8 @@ glabel func_800AB314
 /* 0AC158 800AB558 000A5880 */  sll   $t3, $t2, 2
 /* 0AC15C 800AB55C ACCB001C */  sw    $t3, 0x1c($a2)
 .L800AB560:
-/* 0AC160 800AB560 3C0C8019 */  lui   $t4, %hi(D_8018EDEC) # $t4, 0x8019
-/* 0AC164 800AB564 818CEDEC */  lb    $t4, %lo(D_8018EDEC)($t4)
+/* 0AC160 800AB560 3C0C8019 */  lui   $t4, %hi(gSubMenuSelection) # $t4, 0x8019
+/* 0AC164 800AB564 818CEDEC */  lb    $t4, %lo(gSubMenuSelection)($t4)
 /* 0AC168 800AB568 24030003 */  li    $v1, 3
 /* 0AC16C 800AB56C 240D0002 */  li    $t5, 2
 /* 0AC170 800AB570 146C0003 */  bne   $v1, $t4, .L800AB580
@@ -219,8 +219,8 @@ glabel func_800AB314
 /* 0AC21C 800AB61C 10000022 */  b     .L800AB6A8
 /* 0AC220 800AB620 ACCA001C */   sw    $t2, 0x1c($a2)
 .L800AB624:
-/* 0AC224 800AB624 3C0B8019 */  lui   $t3, %hi(D_8018EDEC) # $t3, 0x8019
-/* 0AC228 800AB628 816BEDEC */  lb    $t3, %lo(D_8018EDEC)($t3)
+/* 0AC224 800AB624 3C0B8019 */  lui   $t3, %hi(gSubMenuSelection) # $t3, 0x8019
+/* 0AC228 800AB628 816BEDEC */  lb    $t3, %lo(gSubMenuSelection)($t3)
 /* 0AC22C 800AB62C 24030003 */  li    $v1, 3
 /* 0AC230 800AB630 146B0003 */  bne   $v1, $t3, .L800AB640
 /* 0AC234 800AB634 240C0002 */   li    $t4, 2
@@ -239,7 +239,7 @@ glabel func_800AB314
 /* 0AC260 800AB660 ACC30004 */  sw    $v1, 4($a2)
 /* 0AC264 800AB664 ACC00020 */  sw    $zero, 0x20($a2)
 .L800AB668:
-/* 0AC268 800AB668 81ADEDEC */  lb    $t5, %lo(D_8018EDEC)($t5) # -0x1214($t5)
+/* 0AC268 800AB668 81ADEDEC */  lb    $t5, %lo(gSubMenuSelection)($t5) # -0x1214($t5)
 /* 0AC26C 800AB66C 24030003 */  li    $v1, 3
 /* 0AC270 800AB670 106D0004 */  beq   $v1, $t5, .L800AB684
 /* 0AC274 800AB674 00000000 */   nop   
@@ -250,7 +250,7 @@ glabel func_800AB314
 /* 0AC284 800AB684 10000008 */  b     .L800AB6A8
 /* 0AC288 800AB688 8CC20004 */   lw    $v0, 4($a2)
 .L800AB68C:
-/* 0AC28C 800AB68C 8339EDEC */  lb    $t9, %lo(D_8018EDEC)($t9) # -0x1214($t9)
+/* 0AC28C 800AB68C 8339EDEC */  lb    $t9, %lo(gSubMenuSelection)($t9) # -0x1214($t9)
 /* 0AC290 800AB690 10790005 */  beq   $v1, $t9, .L800AB6A8
 /* 0AC294 800AB694 00000000 */   nop   
 /* 0AC298 800AB698 ACC00004 */  sw    $zero, 4($a2)

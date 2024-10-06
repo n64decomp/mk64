@@ -891,7 +891,7 @@ void func_8028FCBC(void) {
     s32 i;
     u32 phi_v0_4;
 
-    if (D_8018EE08) {
+    if (gDemoUseController) {
         func_8028FC34();
     }
     switch (D_800DC510) {
