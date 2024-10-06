@@ -3364,27 +3364,23 @@ void* segmented_to_virtual_dupe_2(const void* addr) {
     return (void*) ((gSegmentTable[segment] + offset) + 0x80000000);
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/NAZ12
-// Register allocation nonsense
 void load_menu_img(MenuTexture* arg0) {
     u16 var_a1_2;
     s32 var_v0;
     s32 var_a1;
-    UNUSED s32 temp_s3;
     MenuTexture* var_s1;
-    UNUSED TextureMap* thing;
+    TextureMap* thing = &sMenuTextureMap[0];
 
     var_s1 = segmented_to_virtual_dupe(arg0);
-    while (var_s1->textureData != NULL) {
+    while (var_s1->textureData != ((void*) 0)) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
-            // wtf is going on here?
-            if (sMenuTextureMap[var_v0 ^ 0].textureData == (*var_s1).textureData) {
+            if (var_s1->textureData == (thing + var_v0)->textureData) {
                 var_a1 = 1;
                 break;
             }
         }
+
         if (var_a1 == 0) {
             if (var_s1->type == 3) {
                 if (var_s1->size != 0) {
@@ -3398,145 +3394,115 @@ void load_menu_img(MenuTexture* arg0) {
                 dma_copy_base_729a30(var_s1->textureData, var_a1_2, gMenuCompressedBuffer);
                 mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[gMenuTextureBufferIndex]);
             } else {
-                dma_copy_base_729a30(var_s1->textureData, var_s1->height * var_s1->width * 2,
+                dma_copy_base_729a30(var_s1->textureData, (var_s1->height * var_s1->width) * 2,
                                      &gMenuTextureBuffer[gMenuTextureBufferIndex]);
             }
-
-            thing = &sMenuTextureMap[gNumD_8018E118Entries];
-            thing->textureData = var_s1->textureData;
-            thing = &sMenuTextureMap[gNumD_8018E118Entries];
-            thing->offset = gMenuTextureBufferIndex;
-
-            gMenuTextureBufferIndex += (var_s1->height * var_s1->width);
-            gNumD_8018E118Entries += 1;
+            thing[gNumD_8018E118Entries].textureData = var_s1->textureData;
+            thing[gNumD_8018E118Entries].offset = gMenuTextureBufferIndex;
+            gMenuTextureBufferIndex += var_s1->height * var_s1->width;
             gMenuTextureBufferIndex = ((gMenuTextureBufferIndex / 8) * 8) + 8;
+            gNumD_8018E118Entries += 1;
         }
         var_s1++;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/load_menu_img.s")
-#endif
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/O2tkD
-// Register allocation nonsense
 void func_80099394(MenuTexture* arg0) {
     UNUSED u16 var_a1_2;
     s32 var_v0;
     s32 var_a1;
     UNUSED s32 temp_s3;
     MenuTexture* var_s1;
-    TextureMap* thing;
+    TextureMap* thing = &sMenuTextureMap[0];
 
     var_s1 = segmented_to_virtual_dupe(arg0);
-    while (var_s1->textureData != NULL) {
+    while (var_s1->textureData != ((void*) 0)) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
-            // wtf is going on here?
-            if (sMenuTextureMap[var_v0 ^ 0].textureData == (*var_s1).textureData) {
+            if (var_s1->textureData == (thing + var_v0)->textureData) {
                 var_a1 = 1;
                 break;
             }
         }
+
         if (var_a1 == 0) {
             if (var_s1->type == 5) {
-                dma_copy_base_729a30(var_s1->textureData, (u32) ((s32) (var_s1->height * var_s1->width) / 2),
+                dma_copy_base_729a30(var_s1->textureData, (u32)(((s32)(var_s1->height * var_s1->width)) / 2),
                                      &gMenuTextureBuffer[gMenuTextureBufferIndex]);
             }
-
-            thing = &sMenuTextureMap[gNumD_8018E118Entries];
-            thing->textureData = var_s1->textureData;
-            thing = &sMenuTextureMap[gNumD_8018E118Entries];
-            thing->offset = gMenuTextureBufferIndex;
-
-            gMenuTextureBufferIndex += (var_s1->height * var_s1->width);
+            thing[gNumD_8018E118Entries].textureData = var_s1->textureData;
+            thing[gNumD_8018E118Entries].offset = gMenuTextureBufferIndex;
+            gMenuTextureBufferIndex += var_s1->height * var_s1->width;
             gMenuTextureBufferIndex = ((gMenuTextureBufferIndex / 8) * 8) + 8;
             gNumD_8018E118Entries += 1;
         }
         var_s1++;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099394.s")
-#endif
 
-#ifdef NON_MATCHING
-// Register allocation nonsense
-// https://decomp.me/scratch/Wv2MX
 void func_8009952C(MenuTexture* arg0) {
     UNUSED u16 var_a1_2;
     s32 var_v0;
     s32 var_a1;
     UNUSED s32 temp_s3;
     MenuTexture* var_s1;
-    TextureMap* thing;
+    TextureMap* thing = &sMenuTextureMap[0];
 
     var_s1 = segmented_to_virtual_dupe(arg0);
-    while (var_s1->textureData != NULL) {
+    while (var_s1->textureData != ((void*) 0)) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
-            // wtf is going on here?
-            if (sMenuTextureMap[var_v0 ^ 0].textureData == (*var_s1).textureData) {
+            if (var_s1->textureData == (thing + var_v0)->textureData) {
                 var_a1 = 1;
                 break;
             }
         }
+
         if (var_a1 == 0) {
             dma_copy_base_729a30(var_s1->textureData, 0x00008000U, gMenuCompressedBuffer);
             mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[gMenuTextureBufferIndex]);
-
-            thing = &sMenuTextureMap[gNumD_8018E118Entries];
-            thing->textureData = var_s1->textureData;
-            thing = &sMenuTextureMap[gNumD_8018E118Entries];
-            thing->offset = gMenuTextureBufferIndex;
-
-            gMenuTextureBufferIndex += (var_s1->height * var_s1->width);
+            thing[gNumD_8018E118Entries].textureData = var_s1->textureData;
+            thing[gNumD_8018E118Entries].offset = gMenuTextureBufferIndex;
+            gMenuTextureBufferIndex += var_s1->height * var_s1->width;
             gMenuTextureBufferIndex = ((gMenuTextureBufferIndex / 8) * 8) + 8;
             gNumD_8018E118Entries += 1;
         }
         var_s1++;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009952C.s")
-#endif
 
 void load_img_wrap(MenuTexture* arg0) {
     load_menu_img2(arg0, 1);
 }
 
-#ifdef NON_MATCHING
-// Register allocation nonsense
-// https://decomp.me/scratch/hwAAp
 void load_menu_img2(MenuTexture* arg0, s32 arg1) {
     u16 var_a1_2;
     s32 var_v0;
     s32 var_a1;
     u8 var_v0_2;
     MenuTexture* var_s1;
-    TextureMap* thing;
+    TextureMap* thing = &sMenuTextureMap[0];
 
     var_s1 = segmented_to_virtual_dupe(arg0);
-    while (var_s1->textureData != NULL) {
+    while (var_s1->textureData != ((void*) 0)) {
         var_a1 = 0;
         for (var_v0 = 0; var_v0 < gNumD_8018E118Entries; var_v0++) {
-            // wtf is going on here?
-            if (sMenuTextureMap[var_v0 ^ 0].textureData == (*var_s1).textureData) {
+            if (var_s1->textureData == (thing + var_v0)->textureData) {
                 var_a1 = 1;
                 break;
             }
         }
+
         if ((var_a1 == 0) || (arg1 > 0)) {
             if (var_s1->size != 0) {
                 var_a1_2 = var_s1->size;
             } else {
                 var_a1_2 = 0x1000;
             }
-            if ((var_a1_2 % 8)) {
-                var_a1_2 = (((var_a1_2 / 8) * 8) + 8);
+            if (var_a1_2 % 8) {
+                var_a1_2 = ((var_a1_2 / 8) * 8) + 8;
             }
-            switch (arg1) { /* irregular */
+            switch (arg1) {
                 case -1:
                 case 1:
                     dma_copy_base_729a30(var_s1->textureData, var_a1_2, gMenuCompressedBuffer);
@@ -3546,27 +3512,26 @@ void load_menu_img2(MenuTexture* arg0, s32 arg1) {
                     dma_copy_base_7fa3c0(var_s1->textureData, var_a1_2, gMenuCompressedBuffer);
                     break;
             }
-            switch (arg1) { /* switch 1; irregular */
-                case -1:    /* switch 1 */
-                case 1:     /* switch 1 */
+
+            switch (arg1) {
+                case -1:
+                case 1:
                     mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[gMenuTextureBufferIndex]);
                     break;
-                case 0: /* switch 1 */
-                case 2: /* switch 1 */
+                case 0:
+                case 2:
                     if (var_s1->type == 1) {
                         var_v0_2 = 0x000000BE;
                     } else {
                         var_v0_2 = 1;
                     }
                     if (1) {}
-                    tkmk00decode(gMenuCompressedBuffer, sTKMK00_LowResBuffer,
-                                 (u8*) &gMenuTextureBuffer[gMenuTextureBufferIndex], var_v0_2);
+                    tkmk00decode(gMenuCompressedBuffer, sTKMK00_LowResBuffer, (u8*) &gMenuTextureBuffer[gMenuTextureBufferIndex], var_v0_2);
                     break;
             }
-            thing = &sMenuTextureMap[gNumD_8018E118Entries];
-            thing->textureData = var_s1->textureData;
-            thing = &sMenuTextureMap[gNumD_8018E118Entries];
-            thing->offset = gMenuTextureBufferIndex;
+
+            thing[gNumD_8018E118Entries].textureData = var_s1->textureData;
+            thing[gNumD_8018E118Entries].offset = gMenuTextureBufferIndex;
             gMenuTextureBufferIndex += var_s1->height * var_s1->width;
             gMenuTextureBufferIndex = ((gMenuTextureBufferIndex / 8) * 8) + 8;
             gNumD_8018E118Entries += 1;
@@ -3574,9 +3539,6 @@ void load_menu_img2(MenuTexture* arg0, s32 arg1) {
         var_s1++;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/load_menu_img2.s")
-#endif
 
 void func_80099958(MenuTexture* arg0, s32 arg1, s32 arg2) {
     u16 var_a1;
@@ -6363,22 +6325,17 @@ s32 func_800A095C(char* someString, s32 len, s32 column, s32 row) {
     return nonTerminatorCount;
 }
 
-#ifdef NON_MATCHING
-// Non-matching due to the constants 9 and 0xA being saved to the wrong registers
-// Same functionality, but doesn't match byte for byte :/
-void func_800A09E0(MenuItem* arg0) {
-    s32 table_row, x = 0x20, y;
-    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH - 1, 194);
-    for (table_row = 0; table_row < 9; table_row++) {
-        if ((gControllerPakScrollDirection != CONTROLLER_PAK_SCROLL_DIR_NONE) || ((table_row != 0) && (table_row != 8))) {
-            y = (table_row * 0xA) + arg0->row;
-            gDisplayListHead = func_8009BA74(gDisplayListHead, D_0200157C, x, y);
+void func_800A09E0(MenuItem *arg0) {
+	s32 table_row;
+
+	gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH - 1, 194);
+	for (table_row = 0; table_row < 9; table_row++) {
+		if (gControllerPakScrollDirection == CONTROLLER_PAK_SCROLL_DIR_NONE && (table_row == 0 || table_row == 8)) {
+			continue;
         }
-    }
+		gDisplayListHead = func_8009BA74(gDisplayListHead, D_0200157C, 0x20, (table_row * 0xA) + arg0->row);
+	}
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A09E0.s")
-#endif
 
 void func_800A0AD0(UNUSED MenuItem* arg0) {
     MenuItem* temp_t1;
@@ -10692,12 +10649,10 @@ void func_800AC324(MenuItem* arg0) {
     }
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/NzdUC
-// A really stupid register allocation issue
 void func_800AC458(MenuItem* arg0) {
     s32 var_a1;
     s32 var_t1;
+    s32 temp;
 
     switch (arg0->state) {
         case 0:
@@ -10710,15 +10665,13 @@ void func_800AC458(MenuItem* arg0) {
             break;
         case 1:
             arg0->column = arg0->unk20;
-            if (D_8018D9D8 != 0) {
-                var_a1 = 0x20;
-            } else {
-                var_a1 = 0x10;
-            }
-            if ((arg0->unk20 + var_a1) < 0) {
-                arg0->unk20 += var_a1;
-                D_800DC5EC->screenStartX += var_a1;
-                D_800DC5F0->screenStartX -= var_a1;
+
+            temp = (D_8018D9D8 != 0) ? 0x20 : 0x10;
+
+            if ((arg0->unk20 + temp) < 0) {
+                arg0->unk20 += temp;
+                D_800DC5EC->screenStartX += temp;
+                D_800DC5F0->screenStartX -= temp;
             } else {
                 arg0->unk20 = 0;
                 arg0->column = 0;
@@ -10839,9 +10792,6 @@ void func_800AC458(MenuItem* arg0) {
             break;
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AC458.s")
-#endif
 
 void func_800AC978(MenuItem* arg0) {
     switch (arg0->state) { /* irregular */
