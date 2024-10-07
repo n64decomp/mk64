@@ -1,6 +1,6 @@
 glabel func_800B68F4
-/* 0B74F4 800B68F4 3C028019 */  lui   $v0, %hi(D_8018D9C0) # $v0, 0x8019
-/* 0B74F8 800B68F8 8C42D9C0 */  lw    $v0, %lo(D_8018D9C0)($v0)
+/* 0B74F4 800B68F4 3C028019 */  lui   $v0, %hi(gSomeDLBuffer) # $v0, 0x8019
+/* 0B74F8 800B68F8 8C42D9C0 */  lw    $v0, %lo(gSomeDLBuffer)($v0)
 /* 0B74FC 800B68FC 000471C0 */  sll   $t6, $a0, 7
 /* 0B7500 800B6900 24870001 */  addiu $a3, $a0, 1
 /* 0B7504 800B6904 01C21821 */  addu  $v1, $t6, $v0

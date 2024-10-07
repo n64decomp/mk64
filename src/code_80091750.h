@@ -10,7 +10,7 @@ extern u32 _course_mario_raceway_dl_mio0SegmentRomStart[];
 /* File specific types */
 
 /*
-Known `types` for `struct_8018D9E0_entry`
+Known `types` for `MenuItem`
 0x53: "Mushroom Cup" box on the cup selection screen
 0x54: "Flower Cup" box on the cup selection screen
 0x55: "Star Cup" box on the cup selection screen
@@ -22,14 +22,14 @@ it last longer See `func_80096CD8` for the actual drawing of the static
 */
 
 typedef struct {
-    /* 0x00 */ s32 type;   // id maybe?
-    /* 0x04 */ s32 cursor; // sound mode, maybe some other stuff
-    /* 0x08 */ s32 unk8;   // This is used but I can't tell what for
+    /* 0x00 */ s32 type;  // id maybe?
+    /* 0x04 */ s32 state; // sound mode, maybe some other stuff
+    /* 0x08 */ s32 unk8;  // This is used but I can't tell what for
     /* 0x0C */ s32 column;
     /* 0x10 */ s32 row;
-    /* 0x14 */ u8 priority; // priority/depth/z-level. Higher values are drawn on top of lower values
-                            // If equal, later entries in D_8018D9E0 are on top
-    /* 0x15 */ u8 visible;  // active? If 1 its displayed, if 0 its not
+    /* 0x14 */ u8 priority;   // priority/depth/z-level. Higher values are drawn on top of lower values
+                              // If equal, later entries in gMenuItems are on top
+    /* 0x15 */ bool8 visible; // active? If 1 its displayed, if 0 its not
     // These seem to be generic space available for use by the struct, no 1 purpose for any given member
     /* 0x16 */ s16 unk16;            // Potentially unused
     /* 0x18 */ s32 D_8018DEE0_index; // Index in D_8018DEE0, an array of some other struct type
@@ -37,24 +37,24 @@ typedef struct {
     /* 0x20 */ s32 unk20; // Multi use, hard to tell what for though. Sometimes a random number, sometimes GP points
     /* 0x24 */ f32 unk24; // Multi use, x scaling for some things, rotation multiplier for the question box in some
                           // menus, probably some other things
-} struct_8018D9E0_entry;  // size = 0x28
+} MenuItem;               // size = 0x28
 
 typedef struct {
     /* 0x00 */ MkAnimation* textureSequence;
     /* 0x04 */ s32 sequenceIndex;    // Index in textureSequence that the animation is currently on
     /* 0x08 */ s32 frameCountDown;   // Frames left for the given animation part
     /* 0x0C */ u32 visible;          // visbile if 0x80000000, otherwise invisbile AND paused
-    /* 0x10 */ s32 D_8018E118_index; // Don't know what D_8018E118 tracks
+    /* 0x10 */ s32 D_8018E118_index; // Don't know what sMenuTextureMap tracks
     /* 0x14 */ s32 unk14;            // Flip flops between 0 and 1, use unknown
 } struct_8018DEE0_entry;             // size = 0x18
 
 typedef struct {
-    /* 0x0 */ MkTexture* texture;
+    /* 0x0 */ MenuTexture* texture;
     /* 0x4 */ s32 unk_4;
 } struct_8018E060_entry; // size = 0x8
 
 typedef struct {
-    /* 0x0 */ MkTexture* mk64Texture;
+    /* 0x0 */ MenuTexture* mk64Texture;
     /* 0x4 */ s16 unk4;
     /* 0x6 */ s16 unk6;
 } struct_8018E0E8_entry; // size = 0x8
@@ -63,15 +63,15 @@ typedef struct {
     /* 0x00 */ u64* textureData; // This should be interpreted as a segmented address
                                  /**
                                   * Its hard to tell what exactly what this is meant to be,
-                                  * but it appears to be used as some sort of offset/index from the address stored in D_8018D9B0.
+                                  * but it appears to be used as some sort of offset/index from the address stored in gMenuTextureBuffer.
                                   * This value is (roughly) the sum of (width * height) of the
-                                  * textures in all the previous entries in D_8018E118
+                                  * textures in all the previous entries in sMenuTextureMap
                                   */
     /* 0x04 */ s32 offset;
-} struct_8018E118_entry; // size = 0x08
+} TextureMap; // size = 0x08
 
 typedef struct {
-    /* 0x00 */ MkTexture* textures;
+    /* 0x00 */ MenuTexture* textures;
     /* 0x04 */ Gfx* displayList;
 } struct_8018E768_entry; // size = 0x08
 
@@ -88,6 +88,231 @@ typedef struct {
     /* 0x04 */ s16 pad0;
     /* 0x06 */ s16 pad1;
 } Unk_D_800E70A0; // size = 0x08
+
+enum MENU_ITEMpriority {
+    MENU_ITEM_PRIORITY_0,
+    MENU_ITEM_PRIORITY_1,
+    MENU_ITEM_PRIORITY_2,
+    MENU_ITEM_PRIORITY_3,
+    MENU_ITEM_PRIORITY_4,
+    MENU_ITEM_PRIORITY_5,
+    MENU_ITEM_PRIORITY_6,
+    MENU_ITEM_PRIORITY_7,
+    MENU_ITEM_PRIORITY_8,
+    MENU_ITEM_PRIORITY_9,
+    MENU_ITEM_PRIORITY_A,
+    MENU_ITEM_PRIORITY_B,
+    MENU_ITEM_PRIORITY_C
+};
+
+enum CenterText { LEFT_TEXT = 1, CENTER_TEXT_MODE_1, RIGHT_TEXT, CENTER_TEXT_MODE_2 };
+
+enum MENU_ITEMtype {
+    MENU_ITEM_TYPE_NULL,
+    START_MENU_BACKGROUND,
+    START_MENU_LOGO_AND_COPYRIGHT,
+    START_MENU_PUSH_START_BUTTON,
+    UNUSED_TYPE_004,
+    START_MENU_TEXT_BOX,
+    MAIN_MENU_GAME_SELECT_GFX = 0xA,
+    MAIN_MENU_1P_GAME,
+    MAIN_MENU_2P_GAME,
+    MAIN_MENU_3P_GAME,
+    MAIN_MENU_4P_GAME,
+    MAIN_MENU_OK,
+    MAIN_MENU_OPTION_GFX,
+    MAIN_MENU_DATA_GFX,
+    MAIN_MENU_50CC,
+    MAIN_MENU_100CC,
+    MAIN_MENU_150CC,
+    MENU_ITEM_TYPE_015,
+    MENU_ITEM_TYPE_016,
+    MENU_ITEM_TYPE_017,
+    MAIN_MENU_TIME_TRIALS_BEGIN,
+    MAIN_MENU_TIME_TRIALS_DATA,
+    MENU_ITEM_TYPE_01B = 0x1B,
+    MAIN_MENU_BACKGROUND = 0x23,
+    CHARACTER_SELECT_BACKGROUND,
+    COURSE_SELECT_BACKGROUND,
+    CHARACTER_SELECT_MENU_PLAYER_SELECT_BANNER = 0x2A,
+    CHARACTER_SELECT_MENU_MARIO,
+    CHARACTER_SELECT_MENU_LUIGI,
+    CHARACTER_SELECT_MENU_TOAD,
+    CHARACTER_SELECT_MENU_PEACH,
+    CHARACTER_SELECT_MENU_YOSHI,
+    CHARACTER_SELECT_MENU_DK,
+    CHARACTER_SELECT_MENU_WARIO,
+    CHARACTER_SELECT_MENU_BOWSER,
+    CHARACTER_SELECT_MENU_OK,
+    CHARACTER_SELECT_MENU_1P_CURSOR,
+    CHARACTER_SELECT_MENU_2P_CURSOR,
+    CHARACTER_SELECT_MENU_3P_CURSOR,
+    CHARACTER_SELECT_MENU_4P_CURSOR,
+    MENU_ITEM_TYPE_043 = 0x43,
+    MENU_ITEM_TYPE_044,
+    MENU_ITEM_TYPE_045,
+    MENU_ITEM_TYPE_046,
+    MENU_ITEM_TYPE_047,
+    MENU_ITEM_TYPE_048,
+    MENU_ITEM_TYPE_049,
+    MENU_ITEM_TYPE_050 = 0x50,
+    COURSE_SELECT_MAP_SELECT = 0x52,
+    COURSE_SELECT_MUSHROOM_CUP,
+    COURSE_SELECT_FLOWER_CUP,
+    COURSE_SELECT_STAR_CUP,
+    COURSE_SELECT_SPECIAL_CUP,
+    MENU_ITEM_TYPE_058 = 0x58,
+    COURSE_SELECT_COURSE_NAMES,
+    MENU_ITEM_TYPE_05A,
+    MENU_ITEM_TYPE_05B,
+    COURSE_SELECT_BATTLE_NAMES,
+    COURSE_SELECT_OK,
+    MENU_ITEM_TYPE_05E,
+    MENU_ITEM_TYPE_05F,
+    MENU_ITEM_TYPE_060,
+    MENU_ITEM_TYPE_061,
+    MENU_ITEM_TYPE_062,
+    MENU_ITEM_TYPE_064 = 0x64,
+    MENU_ITEM_TYPE_065,
+    MENU_ITEM_TYPE_066,
+    MENU_ITEM_TYPE_067,
+    MENU_ITEM_TYPE_068,
+    MENU_ITEM_TYPE_069,
+    MENU_ITEM_TYPE_06E = 0x6E,
+    MENU_ITEM_TYPE_078 = 0x78,
+    MENU_ITEM_TYPE_079,
+    MENU_ITEM_TYPE_07A,
+    MENU_ITEM_TYPE_07B,
+    MENU_ITEM_TYPE_07C,
+    MENU_ITEM_TYPE_07D,
+    MENU_ITEM_TYPE_07E,
+    MENU_ITEM_TYPE_07F,
+    MENU_ITEM_TYPE_080,
+    MENU_ITEM_TYPE_081,
+    MENU_ITEM_TYPE_082,
+    MENU_ITEM_TYPE_083,
+    MENU_ITEM_TYPE_084,
+    MENU_ITEM_TYPE_085,
+    MENU_ITEM_TYPE_086,
+    MENU_ITEM_TYPE_087,
+    MENU_ITEM_TYPE_088,
+    MENU_ITEM_TYPE_089,
+    MENU_ITEM_TYPE_08A,
+    MENU_ITEM_TYPE_08B,
+    MENU_ITEM_TYPE_08C,
+    MENU_ITEM_TYPE_08D,
+    MENU_ITEM_TYPE_096 = 0x96,
+    MENU_ITEM_TYPE_097,
+    MENU_ITEM_TYPE_098,
+    MENU_ITEM_TYPE_0A0 = 0xA0,
+    MENU_ITEM_TYPE_0A1,
+    MENU_ITEM_TYPE_0AA = 0xAA,
+    MENU_ITEM_TYPE_0AB,
+    MENU_ITEM_TYPE_0AC,
+    MENU_ITEM_TYPE_0AF = 0XAF,
+    MENU_ITEM_TYPE_0B0,
+    MENU_ITEM_TYPE_0B1,
+    MENU_ITEM_TYPE_0B2,
+    MENU_ITEM_TYPE_0B3,
+    MENU_ITEM_TYPE_0B4,
+    MENU_ITEM_TYPE_0B9 = 0xB9,
+    MENU_ITEM_TYPE_0BA,
+    MENU_ITEM_TYPE_0BB,
+    MENU_ITEM_TYPE_0BC,
+    MENU_ITEM_TYPE_0BD,
+    MENU_ITEM_TYPE_0BE,
+    MENU_ITEM_TYPE_0C7 = 0xC7,
+    MENU_ITEM_TYPE_0D2 = 0xD2,
+    MENU_ITEM_TYPE_0D3,
+    MENU_ITEM_TYPE_0D4,
+    MENU_ITEM_TYPE_0D5,
+    MENU_ITEM_TYPE_0D6,
+    MENU_ITEM_TYPE_0D7,
+    MENU_ITEM_TYPE_0D8,
+    MENU_ITEM_TYPE_0D9,
+    MENU_ITEM_TYPE_0DA,
+    MENU_ITEM_TYPE_0E6 = 0xE6,
+    MENU_ITEM_TYPE_0E7,
+    MENU_ITEM_TYPE_0E8,
+    MENU_ITEM_TYPE_0E9,
+    MENU_ITEM_TYPE_0EA,
+    MENU_ITEM_TYPE_0F0 = 0xF0,
+    MENU_ITEM_TYPE_0F1,
+    LOGO_INTRO_MENU_LOGO = 0xFA,
+    START_MENU_FLAG,
+    MENU_ITEM_TYPE_10E = 0x10E,
+    MENU_ITEM_TYPE_12B = 0X12B,
+    MENU_ITEM_TYPE_12C,
+    MENU_ITEM_TYPE_12D,
+    MENU_ITEM_TYPE_12E,
+    MENU_ITEM_TYPE_12F,
+    MENU_ITEM_TYPE_130,
+    MENU_ITEM_TYPE_190 = 0x190,
+    MENU_ITEM_TYPE_191,
+    MENU_ITEM_TYPE_192,
+    MENU_ITEM_TYPE_193,
+    MENU_ITEM_TYPE_194,
+    MENU_ITEM_TYPE_195,
+    MENU_ITEM_TYPE_196,
+    MENU_ITEM_TYPE_197,
+    MENU_ITEM_TYPE_198,
+    MENU_ITEM_TYPE_199,
+    MENU_ITEM_TYPE_19A,
+    MENU_ITEM_TYPE_19B,
+    MENU_ITEM_TYPE_19C,
+    MENU_ITEM_TYPE_19D,
+    MENU_ITEM_TYPE_19E,
+    MENU_ITEM_TYPE_19F,
+    MENU_ITEM_TYPE_1A0,
+    MENU_ITEM_TYPE_1A1,
+    MENU_ITEM_TYPE_1A2,
+    MENU_ITEM_TYPE_1A3,
+    MENU_ITEM_TYPE_1A4,
+    MENU_ITEM_TYPE_1A5,
+    MENU_ITEM_TYPE_1A6,
+    MENU_ITEM_TYPE_1A7,
+    MENU_ITEM_TYPE_1A8,
+    MENU_ITEM_TYPE_1A9,
+    MENU_ITEM_TYPE_1AA,
+    MENU_ITEM_TYPE_1AB,
+    MENU_ITEM_TYPE_1AC,
+    MENU_ITEM_TYPE_1AD,
+    MENU_ITEM_TYPE_1AE,
+    MENU_ITEM_TYPE_1AF,
+    MENU_ITEM_TYPE_1B0,
+    MENU_ITEM_TYPE_1B1,
+    MENU_ITEM_TYPE_1B2,
+    MENU_ITEM_TYPE_1B3,
+    MENU_ITEM_TYPE_1B4,
+    MENU_ITEM_TYPE_1B5,
+    MENU_ITEM_TYPE_1B6,
+    MENU_ITEM_TYPE_1B7,
+    MENU_ITEM_TYPE_1B8,
+    MENU_ITEM_TYPE_1B9,
+    MENU_ITEM_TYPE_1BA,
+    MENU_ITEM_TYPE_1BB,
+    MENU_ITEM_TYPE_1BC,
+    MENU_ITEM_TYPE_1BD,
+    MENU_ITEM_TYPE_1BE,
+    MENU_ITEM_TYPE_1BF,
+    MENU_ITEM_TYPE_1C0,
+    MENU_ITEM_TYPE_1C1,
+    MENU_ITEM_TYPE_1C2,
+    MENU_ITEM_TYPE_1C3,
+    MENU_ITEM_TYPE_1C4,
+    MENU_ITEM_TYPE_1C5,
+    MENU_ITEM_TYPE_1C6,
+    MENU_ITEM_TYPE_1C7,
+    MENU_ITEM_TYPE_1C8,
+    MENU_ITEM_TYPE_1C9,
+    MENU_ITEM_TYPE_1CA,
+    MENU_ITEM_TYPE_1CB,
+    MENU_ITEM_TYPE_1CC,
+    MENU_ITEM_TYPE_1CD,
+    MENU_ITEM_TYPE_1CE
+};
+
+enum TEXT_MENU_ID { CONTINUE_GAME, RETRY, COURSE_CHANGE, DRIVER_CHANGE, QUIT_TEXT_MENU, REPLAY, SAVE_GHOST };
 
 /* Function Prototypes */
 
@@ -124,13 +349,13 @@ s32 get_string_width(char*);
 void set_text_color(s32);
 void func_800930E4(s32, s32, char*);
 void print_text0(s32, s32, char*, s32, f32, f32, s32);
-void func_80093324(s32, s32, char*, s32, f32, f32);
-void func_80093358(s32, s32, char*, s32, f32, f32);
+void print_text_mode_1(s32, s32, char*, s32, f32, f32);
+void print_text_mode_2(s32, s32, char*, s32, f32, f32);
 void print_text1(s32, s32, char*, s32, f32, f32, s32);
-void func_800936B8(s32, s32, char*, s32, f32, f32);
-void draw_text(s32, s32, char*, s32, f32, f32);
-void func_80093720(s32, s32, char*, s32, f32, f32);
-void func_80093754(s32, s32, char*, s32, f32, f32);
+void print_text1_left(s32, s32, char*, s32, f32, f32);
+void print_text1_center_mode_1(s32, s32, char*, s32, f32, f32);
+void print_text1_right(s32, s32, char*, s32, f32, f32);
+void print_text1_center_mode_2(s32, s32, char*, s32, f32, f32);
 void print_text2(s32, s32, char*, s32, f32, f32, s32);
 void func_800939C8(s32, s32, char*, s32, f32, f32);
 void text_draw(s32, s32, char*, s32, f32, f32);
@@ -148,9 +373,9 @@ void func_80093F10(void);
 void func_800940EC(s32);
 void func_800942D0(void);
 void func_80094660(struct GfxPool*, s32);
-void func_800947B4(struct GfxPool*, s32);
+void render_checkered_flag(struct GfxPool*, s32);
 void func_80094A64(struct GfxPool*);
-void func_80094C60(void);
+void render_menus(void);
 void func_80095574(void);
 Gfx* draw_flash_select_case(Gfx*, s32, s32, s32, s32, s32);
 Gfx* draw_flash_select_case_slow(Gfx*, s32, s32, s32, s32);
@@ -174,44 +399,44 @@ Gfx* func_80098FC8(Gfx*, s32, s32, s32, s32);
 void dma_copy_base_729a30(u64*, size_t, void*);
 void dma_copy_base_7fa3c0(u64*, size_t, void*);
 void func_80099110(void);
-void func_80099184(MkTexture*);
+void load_menu_img(MenuTexture*);
 void* segmented_to_virtual_dupe(const void*);
 void* segmented_to_virtual_dupe_2(const void*);
-void func_8009969C(MkTexture*);
-void func_800996BC(MkTexture*, s32);
-void func_80099958(MkTexture*, s32, s32);
+void load_img_wrap(MenuTexture*);
+void load_menu_img2(MenuTexture*, s32);
+void func_80099958(MenuTexture*, s32, s32);
 void func_80099E54(void);
-void func_80099E60(MkTexture*, s32, s32);
+void func_80099E60(MenuTexture*, s32, s32);
 void func_80099EC4(void);
 void func_80099A70(void);
-void func_80099A94(MkTexture*, s32);
+void func_80099A94(MenuTexture*, s32);
 void func_80099AEC(void);
-void func_8009A238(MkTexture*, s32);
+void func_8009A238(MenuTexture*, s32);
 void func_8009A2F0(struct_8018E0E8_entry*);
 void func_8009A344(void);
-s32 func_8009A374(MkAnimation*);
+s32 animate_character_select_menu(MkAnimation*);
 s32 func_8009A478(MkAnimation*, s32);
 void func_8009A594(s32, s32, MkAnimation*);
 void func_8009A640(s32, s32, s32, MkAnimation*);
 void func_8009A6D4(void);
 void func_8009A76C(s32, s32, s32, s32);
 void func_8009A7EC(s32, s32, s32, s32, s32);
-MkTexture* func_8009A878(struct_8018DEE0_entry*);
-MkTexture* func_8009A944(struct_8018DEE0_entry*, s32);
+MenuTexture* func_8009A878(struct_8018DEE0_entry*);
+MenuTexture* func_8009A944(struct_8018DEE0_entry*, s32);
 void func_8009A9FC(s32, s32, u32, s32);
 void func_8009AB7C(s32);
 void func_8009AD78(s32, s32);
-void func_8009B0A4(s32, u32);
-void func_8009B538(s32, s32, s32, s32, s32);
+void convert_img_to_greyscale(s32, u32);
+void adjust_img_colour(s32, s32, s32, s32, s32);
 u16* func_8009B8C4(u64*);
 void func_8009B938(void);
-void func_8009B954(MkTexture*);
+void func_8009B954(MenuTexture*);
 void func_8009B998(void);
-Gfx* func_8009B9D0(Gfx*, MkTexture*);
-Gfx* func_8009BA74(Gfx*, MkTexture*, s32, s32);
-Gfx* func_8009BC9C(Gfx*, MkTexture*, s32, s32, s32, s32);
-Gfx* print_letter(Gfx*, MkTexture*, f32, f32, s32, f32, f32);
-Gfx* func_8009C204(Gfx*, MkTexture*, s32, s32, s32);
+Gfx* func_8009B9D0(Gfx*, MenuTexture*);
+Gfx* render_menu_textures(Gfx*, MenuTexture*, s32, s32);
+Gfx* func_8009BC9C(Gfx*, MenuTexture*, s32, s32, s32, s32);
+Gfx* print_letter(Gfx*, MenuTexture*, f32, f32, s32, f32, f32);
+Gfx* func_8009C204(Gfx*, MenuTexture*, s32, s32, s32);
 Gfx* func_8009C434(Gfx*, struct_8018DEE0_entry*, s32, s32, s32);
 Gfx* func_8009C708(Gfx*, struct_8018DEE0_entry*, s32, s32, s32, s32);
 void func_8009C918(void);
@@ -248,64 +473,64 @@ void func_8009E2F0(s32);
 void func_8009E5BC(void);
 void func_8009E5FC(s32);
 void func_8009E620(void);
-void add_8018D9E0_entry(s32, s32, s32, s8);
-void func_8009F5E0(struct_8018D9E0_entry*);
+void add_ui_element(s32, s32, s32, s8);
+void menu_item_render(MenuItem*);
 void func_800A08D8(u8, s32, s32);
 s32 func_800A095C(char*, s32, s32, s32);
-void func_800A09E0(struct_8018D9E0_entry*);
-void func_800A0AD0(struct_8018D9E0_entry*);
-void func_800A0B80(struct_8018D9E0_entry*);
+void func_800A09E0(MenuItem*);
+void func_800A0AD0(MenuItem*);
+void func_800A0B80(MenuItem*);
 void func_800A0DFC(void);
-void func_800A0EB8(struct_8018D9E0_entry*, s32);
-void func_800A0FA4(struct_8018D9E0_entry*, s32);
-void func_800A10CC(struct_8018D9E0_entry*);
-void func_800A11D0(struct_8018D9E0_entry*, s32, s32);
-void func_800A12BC(struct_8018D9E0_entry*, MkTexture*);
-void func_800A1350(struct_8018D9E0_entry*);
-void func_800A143C(struct_8018D9E0_entry*, s32);
-void func_800A1500(struct_8018D9E0_entry*);
-void func_800A15EC(struct_8018D9E0_entry*);
-void func_800A1780(struct_8018D9E0_entry*);
-void func_800A1924(struct_8018D9E0_entry*);
-void func_800A1A20(struct_8018D9E0_entry*);
-void func_800A1BE0(struct_8018D9E0_entry*);
-void func_800A1DE0(struct_8018D9E0_entry*);
-void func_800A1F30(struct_8018D9E0_entry*);
-void func_800A1FB0(struct_8018D9E0_entry*);
-void func_800A2D1C(struct_8018D9E0_entry*);
-void func_800A2EB8(struct_8018D9E0_entry*);
+void func_800A0EB8(MenuItem*, s32);
+void func_800A0FA4(MenuItem*, s32);
+void func_800A10CC(MenuItem*);
+void render_cursor_player(MenuItem*, s32, s32);
+void func_800A12BC(MenuItem*, MenuTexture*);
+void func_800A1350(MenuItem*);
+void func_800A143C(MenuItem*, s32);
+void func_800A1500(MenuItem*);
+void func_800A15EC(MenuItem*);
+void func_800A1780(MenuItem*);
+void func_800A1924(MenuItem*);
+void func_800A1A20(MenuItem*);
+void menu_item_course_data_render(MenuItem*);
+void func_800A1DE0(MenuItem*);
+void func_800A1F30(MenuItem*);
+void func_800A1FB0(MenuItem*);
+void func_800A2D1C(MenuItem*);
+void func_800A2EB8(MenuItem*);
 void func_800A32B4(s32, s32, s32, s32);
-void func_800A34A8(struct_8018D9E0_entry*);
+void func_800A34A8(MenuItem*);
 void func_800A3A10(s8*);
-void func_800A3ADC(struct_8018D9E0_entry*, s32, s32, s32, s32, s8*);
-void func_800A3C84(struct_8018D9E0_entry*);
-void func_800A3E60(struct_8018D9E0_entry*);
-void func_800A4550(s32, s32, s32);
-void func_800A474C(s32, s32, s32);
-void func_800A4A24(struct_8018D9E0_entry*);
-void render_pause_menu(struct_8018D9E0_entry*);
-void render_pause_menu_time_trials(struct_8018D9E0_entry*);
-void render_pause_menu_versus(struct_8018D9E0_entry*);
-void render_pause_grand_prix(struct_8018D9E0_entry*);
-void render_pause_battle(struct_8018D9E0_entry*);
+void func_800A3ADC(MenuItem*, s32, s32, s32, s32, s8*);
+void menu_item_end_time_trial_render(MenuItem*);
+void func_800A3E60(MenuItem*);
+void render_lap_time(s32, s32, s32);
+void render_player_time(s32, s32, s32);
+void func_800A4A24(MenuItem*);
+void render_pause_menu(MenuItem*);
+void render_pause_menu_time_trials(MenuItem*);
+void render_pause_menu_versus(MenuItem*);
+void render_pause_grand_prix(MenuItem*);
+void render_pause_battle(MenuItem*);
 void func_800A54EC(void);
-void func_800A5738(struct_8018D9E0_entry*);
-void func_800A6034(struct_8018D9E0_entry*);
-void func_800A6154(struct_8018D9E0_entry*);
-void func_800A638C(struct_8018D9E0_entry*);
-void func_800A66A8(struct_8018D9E0_entry*, Unk_D_800E70A0*);
-void func_800A69C8(struct_8018D9E0_entry*);
-void func_800A6BEC(struct_8018D9E0_entry*);
-void func_800A6CC0(struct_8018D9E0_entry*);
+void func_800A5738(MenuItem*);
+void func_800A6034(MenuItem*);
+void func_800A6154(MenuItem*);
+void func_800A638C(MenuItem*);
+void func_800A66A8(MenuItem*, Unk_D_800E70A0*);
+void func_800A69C8(MenuItem*);
+void func_800A6BEC(MenuItem*);
+void func_800A6CC0(MenuItem*);
 void func_800A6D94(s32, s32, u8*);
 void func_800A6E94(s32, s32, u8*);
-void func_800A70E8(struct_8018D9E0_entry*);
-void func_800A7258(struct_8018D9E0_entry*);
-void func_800A72FC(struct_8018D9E0_entry*);
-void func_800A7448(struct_8018D9E0_entry*);
-void func_800A75A0(struct_8018D9E0_entry*);
-void func_800A761C(struct_8018D9E0_entry*);
-void func_800A7790(struct_8018D9E0_entry*);
+void func_800A70E8(MenuItem*);
+void func_800A7258(MenuItem*);
+void func_800A72FC(MenuItem*);
+void func_800A7448(MenuItem*);
+void func_800A75A0(MenuItem*);
+void func_800A761C(MenuItem*);
+void menu_item_credit_render(MenuItem*);
 void convert_number_to_ascii(s32, char*);
 void write_dashes(char*);
 void get_time_record_minutes(s32, char*);
@@ -315,88 +540,88 @@ void func_800A79F4(s32, char*);
 void func_800A7A4C(s32);
 void func_800A8230(void);
 void func_800A8250(void);
-void func_800A8270(s32, struct_8018D9E0_entry*);
-void func_800A8564(struct_8018D9E0_entry*);
-void func_800A86E8(struct_8018D9E0_entry*);
-void func_800A874C(struct_8018D9E0_entry*);
-void func_800A890C(s32, struct_8018D9E0_entry*);
-void func_800A8A98(struct_8018D9E0_entry*);
-void func_800A8CA4(struct_8018D9E0_entry*);
-void func_800A8E14(struct_8018D9E0_entry*);
-void func_800A8EC0(struct_8018D9E0_entry*);
-void func_800A8F48(struct_8018D9E0_entry*);
-void func_800A90D4(s32, struct_8018D9E0_entry*);
-void func_800A91D8(struct_8018D9E0_entry*, s32, s32);
-void func_800A9208(struct_8018D9E0_entry*, s32);
-void func_800A9278(struct_8018D9E0_entry*, s32);
-void func_800A92E8(struct_8018D9E0_entry*, s32);
-void func_800A939C(struct_8018D9E0_entry*, s32);
-void func_800A940C(struct_8018D9E0_entry*, s32);
-void func_800A94C8(struct_8018D9E0_entry*, s32, s32);
-void func_800A954C(struct_8018D9E0_entry*);
-void func_800A9710(struct_8018D9E0_entry*);
-void func_800A97BC(struct_8018D9E0_entry*);
-void func_800A9A98(struct_8018D9E0_entry*);
-void func_800A9B9C(struct_8018D9E0_entry*);
-void func_800A9C40(struct_8018D9E0_entry*);
-void func_800A9D5C(struct_8018D9E0_entry*);
-void func_800A9E58(struct_8018D9E0_entry*);
-void func_800AA280(struct_8018D9E0_entry*);
-void func_800AA2EC(struct_8018D9E0_entry*);
-void func_800AA5C8(struct_8018D9E0_entry*, s8);
-void func_800AA69C(struct_8018D9E0_entry*);
-void func_800AAA9C(struct_8018D9E0_entry*);
-void func_800AAB90(struct_8018D9E0_entry*);
-void func_800AAC18(struct_8018D9E0_entry*);
-void func_800AADD4(struct_8018D9E0_entry*);
-void func_800AAE18(struct_8018D9E0_entry*);
-struct_8018D9E0_entry* func_800AAE68(void);
-struct_8018D9E0_entry* func_800AAEB4(s32);
-struct_8018D9E0_entry* find_8018D9E0_entry_dupe(s32);
-struct_8018D9E0_entry* find_8018D9E0_entry(s32);
-s32 func_800AAF70(s32);
-void func_800AAF94(struct_8018D9E0_entry*, s32);
+void func_800A8270(s32, MenuItem*);
+void func_800A8564(MenuItem*);
+void func_800A86E8(MenuItem*);
+void func_800A874C(MenuItem*);
+void func_800A890C(s32, MenuItem*);
+void func_800A8A98(MenuItem*);
+void func_800A8CA4(MenuItem*);
+void render_battle_introduction(MenuItem*);
+void func_800A8EC0(MenuItem*);
+void func_800A8F48(MenuItem*);
+void func_800A90D4(s32, MenuItem*);
+void func_800A91D8(MenuItem*, s32, s32);
+void func_800A9208(MenuItem*, s32);
+void func_800A9278(MenuItem*, s32);
+void func_800A92E8(MenuItem*, s32);
+void func_800A939C(MenuItem*, s32);
+void func_800A940C(MenuItem*, s32);
+void func_800A94C8(MenuItem*, s32, s32);
+void func_800A954C(MenuItem*);
+void func_800A9710(MenuItem*);
+void func_800A97BC(MenuItem*);
+void update_ok_menu_item(MenuItem*);
+void func_800A9B9C(MenuItem*);
+void func_800A9C40(MenuItem*);
+void func_800A9D5C(MenuItem*);
+void func_800A9E58(MenuItem*);
+void func_800AA280(MenuItem*);
+void func_800AA2EC(MenuItem*);
+void func_800AA5C8(MenuItem*, s8);
+void func_800AA69C(MenuItem*);
+void func_800AAA9C(MenuItem*);
+void func_800AAB90(MenuItem*);
+void func_800AAC18(MenuItem*);
+void update_cursor(MenuItem*);
+void func_800AAE18(MenuItem*);
+MenuItem* get_menu_item_player_count(void);
+MenuItem* get_menu_item_character(s32);
+MenuItem* find_menu_items_type_dupe(s32);
+MenuItem* find_menu_items_type(s32);
+s32 get_state_menu_item_character(s32);
+void move_menu_item_at_character_portrait(MenuItem*, s32);
 s32 func_800AAFCC(s32);
-void func_800AB020(struct_8018D9E0_entry*);
-void func_800AB098(struct_8018D9E0_entry*);
-void func_800AB164(struct_8018D9E0_entry*);
-void func_800AB260(struct_8018D9E0_entry*);
-void func_800AB290(struct_8018D9E0_entry*);
-void func_800AB314(struct_8018D9E0_entry*);
-void func_800AB904(struct_8018D9E0_entry*);
-void func_800AB9B0(struct_8018D9E0_entry*);
-void func_800ABAE8(struct_8018D9E0_entry*);
-void func_800ABB24(struct_8018D9E0_entry*);
-void func_800ABBCC(struct_8018D9E0_entry*);
-void func_800ABC38(struct_8018D9E0_entry*);
-void func_800ABCF4(struct_8018D9E0_entry*);
-void func_800ABEAC(struct_8018D9E0_entry*);
-void func_800ABF68(struct_8018D9E0_entry*);
-void func_800AC128(struct_8018D9E0_entry*);
-void func_800AC300(struct_8018D9E0_entry*);
-void func_800AC324(struct_8018D9E0_entry*);
-void func_800AC458(struct_8018D9E0_entry*);
-void func_800AC978(struct_8018D9E0_entry*);
-void func_800ACA14(struct_8018D9E0_entry*);
-void func_800ACC50(struct_8018D9E0_entry*);
-void func_800ACF40(struct_8018D9E0_entry*);
-void func_800AD1A4(struct_8018D9E0_entry*);
-void func_800AD2E8(struct_8018D9E0_entry*);
-void func_800ADF48(struct_8018D9E0_entry*);
-void func_800AE218(struct_8018D9E0_entry*);
-void func_800AEC54(struct_8018D9E0_entry*);
-void func_800AEDBC(struct_8018D9E0_entry*);
-void func_800AEE90(struct_8018D9E0_entry*);
-void func_800AEEBC(struct_8018D9E0_entry*);
-void func_800AEEE8(struct_8018D9E0_entry*);
-void func_800AEF14(struct_8018D9E0_entry*);
-void func_800AEF74(struct_8018D9E0_entry*);
-void func_800AF004(struct_8018D9E0_entry*);
-void func_800AF1AC(struct_8018D9E0_entry*);
-void func_800AF270(struct_8018D9E0_entry*);
-void func_800AF480(struct_8018D9E0_entry*);
-void func_800AF4DC(struct_8018D9E0_entry*);
-void func_800AF740(struct_8018D9E0_entry*);
+void func_800AB020(MenuItem*);
+void func_800AB098(MenuItem*);
+void func_800AB164(MenuItem*);
+void func_800AB260(MenuItem*);
+void func_800AB290(MenuItem*);
+void func_800AB314(MenuItem*);
+void func_800AB904(MenuItem*);
+void func_800AB9B0(MenuItem*);
+void func_800ABAE8(MenuItem*);
+void func_800ABB24(MenuItem*);
+void func_800ABBCC(MenuItem*);
+void func_800ABC38(MenuItem*);
+void func_800ABCF4(MenuItem*);
+void func_800ABEAC(MenuItem*);
+void func_800ABF68(MenuItem*);
+void func_800AC128(MenuItem*);
+void func_800AC300(MenuItem*);
+void func_800AC324(MenuItem*);
+void func_800AC458(MenuItem*);
+void func_800AC978(MenuItem*);
+void func_800ACA14(MenuItem*);
+void func_800ACC50(MenuItem*);
+void func_800ACF40(MenuItem*);
+void func_800AD1A4(MenuItem*);
+void func_800AD2E8(MenuItem*);
+void func_800ADF48(MenuItem*);
+void func_800AE218(MenuItem*);
+void func_800AEC54(MenuItem*);
+void func_800AEDBC(MenuItem*);
+void func_800AEE90(MenuItem*);
+void func_800AEEBC(MenuItem*);
+void func_800AEEE8(MenuItem*);
+void func_800AEF14(MenuItem*);
+void func_800AEF74(MenuItem*);
+void func_800AF004(MenuItem*);
+void func_800AF1AC(MenuItem*);
+void func_800AF270(MenuItem*);
+void func_800AF480(MenuItem*);
+void func_800AF4DC(MenuItem*);
+void func_800AF740(MenuItem*);
 
 // This really, really shouldn't be in this header file, but I don't know where else to put it
 void rmonPrintf(const char*, ...);
@@ -404,11 +629,11 @@ void tkmk00decode(u8*, u8*, u8*, s32);
 
 /* File specific defines */
 
-#define D_8018D9E0_SIZE 0x20
+#define MENU_ITEMS_MAX 0x20
 #define D_8018DEE0_SIZE 0x10
 #define D_8018E060_SIZE 0x10
 #define D_8018E0E8_SIZE 0x05
-#define D_8018E118_SIZE 0xC8
+#define TEXTURE_MAP_MAX 0xC8
 #define D_8018E768_SIZE 0x08
 #define D_8018E7E8_SIZE 0x05
 #define D_8018E810_SIZE 0x05
@@ -418,23 +643,23 @@ void tkmk00decode(u8*, u8*, u8*, s32);
 extern s32 D_800DDB24;
 extern s16 D_80164478[];
 
-extern u16* D_8018D9B0;
-extern u8* D_8018D9B4;
-extern u8* D_8018D9B8;
-extern u8* D_8018D9BC;
-extern void* D_8018D9C0;
+extern u16* gMenuTextureBuffer;
+extern u8* gMenuCompressedBuffer;
+extern u8* sTKMK00_LowResBuffer;
+extern u8* sGPPointsCopy;
+extern void* gSomeDLBuffer;
 extern s8 gGPPointsByCharacterId[8];
 extern s8 gCharacterIdByGPOverallRank[];
 extern s8 D_8018D9D8;
 extern s8 D_8018D9D9;
-extern struct_8018D9E0_entry D_8018D9E0[D_8018D9E0_SIZE];
+extern MenuItem gMenuItems[MENU_ITEMS_MAX];
 extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
 extern struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
 extern struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
-extern s32 gD_8018E118TotalSize;
-extern struct_8018E118_entry D_8018E118[D_8018E118_SIZE];
+extern s32 gMenuTextureBufferIndex;
+extern TextureMap sMenuTextureMap[TEXTURE_MAP_MAX];
 extern s32 gNumD_8018E118Entries;
-extern Gfx* D_8018E75C;
+extern Gfx* sGfxPtr;
 extern s32 gNumD_8018E768Entries;
 extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE];
 extern s32 gCycleFlashMenu;
@@ -494,7 +719,7 @@ extern char* gDebugCourseNames[];
 extern const s8 gPerCupIndexByCourseId[]; // D_800EFD50
 extern const s8 D_800EFD64[];
 extern s8 gCupSelectionByCourseId[];
-extern char* D_800E7678[];
+extern char* gCupText[];
 extern char* gDebugCharacterNames[];
 extern char* D_800E76A8[];
 extern char* D_800E76CC[];
@@ -502,24 +727,24 @@ extern char* D_800E76DC[];
 extern char* gDebugScreenModeNames[];
 extern char* gDebugSoundModeNames[];
 extern char* gSoundModeNames[]; // D_800E7710
-extern char* D_800E7720[];
-extern char* D_800E7728[];
-extern char* D_800E7730;
-extern char* D_800E7734[];
+extern char* gWinLoseText[];
+extern char* gBestTimeText[];
+extern char* gLapTimeText;
+extern char* gPrefixTimeText[];
 extern char* D_800E7744[];
-extern char* gTextPauseButton[];
+extern char* gMenuText[];
 extern char* D_800E7778[];
-extern char D_800E7780[];
+extern char gTextMenuAnnounceGhost[];
 extern char* D_800E77A0[];
-extern char* D_800E77A8[];
-extern char D_800E77B4[];
+extern char* gTextBattleIntroduction[];
+extern char gTextMenuData[];
 extern char D_800E77D8[];
 extern char* sCourseLengths[];
-extern char* D_800E7834[];
+extern char* gTextMenuOption[];
 extern char* D_800E7840[];
-extern char* D_800E7848[];
+extern char* gEraseBestGhostText[];
 extern char* D_800E7860[];
-extern char* D_800E7868[];
+extern char* gTextOptionMenu[];
 extern char* D_800E7878[];
 extern char* D_800E7884[];
 extern char* D_800E7890[];
@@ -545,7 +770,7 @@ extern char* D_800E7A80[];
 extern char* D_800E7A88[];
 extern char* D_800E7A98;
 extern char* D_800E7A9C[];
-extern char* D_800E7AA4[];
+extern char* gPlaceText[];
 extern const s8 gGPPointRewards[];
 extern const s8 D_800F0B1C[];
 extern const s8 D_800F0B28[];
@@ -553,32 +778,31 @@ extern const s8 D_800F0B50[];
 extern const s8 D_800F0B54[];
 extern RGBA16 D_800E7AC8[];
 extern RGBA16 D_800E7AE8[];
-extern MkTexture* D_800E7AF8[];
-extern MkTexture* D_800E7D0C[];
+extern MenuTexture* D_800E7AF8[];
+extern MenuTexture* D_800E7D0C[];
 extern MkAnimation* D_800E7D34[];
-extern MkTexture* D_800E7D4C[];
-extern MkTexture* D_800E7D54[];
-extern MkTexture* D_800E7D74[];
-extern MkTexture* D_800E7DC4[];
+extern MenuTexture* gMenuTexturesBackground[];
+extern MenuTexture* D_800E7D54[];
+extern MenuTexture* D_800E7D74[];
+extern MenuTexture* D_800E7DC4[];
 extern MkAnimation* D_800E7E14[];
 extern MkAnimation* D_800E7E20[];
 extern MkAnimation* D_800E7E34[];
-extern MkTexture* gGlyphTextureLUT[];
-extern MkTexture* D_800E7FF0[];
-extern MkTexture* D_800E80A0[];
-extern MkTexture* D_800E8114[];
-extern MkTexture* D_800E8174[];
-extern MkTexture* D_800E817C[];
-extern MkTexture* D_800E81E4[];
-extern MkTexture* D_800E822C[];
-extern MkTexture* D_800E8234[];
-extern MkTexture* D_800E824C[];
-extern MkTexture* D_800E8254[];
-extern MkTexture* D_800E8274[];
-extern MkTexture* D_800E8294[];
-extern MkTexture* D_800E82B4[];
-extern MkTexture* D_800E82C4[];
-extern MkTexture* D_800E82F4[];
+extern MenuTexture* gGlyphTextureLUT[];
+extern MenuTexture* D_800E7FF0[];
+extern MenuTexture* D_800E80A0[];
+extern MenuTexture* D_800E8114[];
+extern MenuTexture* D_800E8174[];
+extern MenuTexture* D_800E817C[];
+extern MenuTexture* D_800E81E4[];
+extern MenuTexture* D_800E822C[];
+extern MenuTexture* D_800E8234[];
+extern MenuTexture* D_800E8254[];
+extern MenuTexture* D_800E8274[];
+extern MenuTexture* D_800E8294[];
+extern MenuTexture* gMenuTexturesBorderPlayer[];
+extern MenuTexture* gMenuTexturesTrackSelection[];
+extern MenuTexture* D_800E82F4[];
 extern MkAnimation* D_800E8320[];
 extern MkAnimation* D_800E8340[];
 extern MkAnimation* D_800E8360[];
