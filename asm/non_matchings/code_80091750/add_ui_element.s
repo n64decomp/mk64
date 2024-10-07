@@ -252,7 +252,7 @@ glabel L8009E888
 /* 09F4B8 8009E8B8 8FE6000C */  lw    $a2, 0xc($ra)
 /* 09F4BC 8009E8BC 8FE70010 */  lw    $a3, 0x10($ra)
 /* 09F4C0 8009E8C0 24A514C8 */  addiu $a1, %lo(D_020014C8) # addiu $a1, $a1, 0x14c8
-/* 09F4C4 8009E8C4 0C026E9D */  jal   func_8009BA74
+/* 09F4C4 8009E8C4 0C026E9D */  jal   render_menu_textures
 /* 09F4C8 8009E8C8 8D040000 */   lw    $a0, ($t0)
 /* 09F4CC 8009E8CC 3C088019 */  lui   $t0, %hi(sGfxPtr) # $t0, 0x8019
 /* 09F4D0 8009E8D0 2508E75C */  addiu $t0, %lo(sGfxPtr) # addiu $t0, $t0, -0x18a4
@@ -276,7 +276,7 @@ glabel L8009E8E4
 /* 09F514 8009E914 8FE6000C */  lw    $a2, 0xc($ra)
 /* 09F518 8009E918 8FE70010 */  lw    $a3, 0x10($ra)
 /* 09F51C 8009E91C 24A51540 */  addiu $a1, %lo(D_02001540) # addiu $a1, $a1, 0x1540
-/* 09F520 8009E920 0C026E9D */  jal   func_8009BA74
+/* 09F520 8009E920 0C026E9D */  jal   render_menu_textures
 /* 09F524 8009E924 8D040000 */   lw    $a0, ($t0)
 /* 09F528 8009E928 3C088019 */  lui   $t0, %hi(sGfxPtr) # $t0, 0x8019
 /* 09F52C 8009E92C 2508E75C */  addiu $t0, %lo(sGfxPtr) # addiu $t0, $t0, -0x18a4
@@ -328,7 +328,7 @@ glabel L8009E9AC
 /* 09F5D8 8009E9D8 8FE6000C */  lw    $a2, 0xc($ra)
 /* 09F5DC 8009E9DC 8FE70010 */  lw    $a3, 0x10($ra)
 /* 09F5E0 8009E9E0 24A515A4 */  addiu $a1, %lo(D_020015A4) # addiu $a1, $a1, 0x15a4
-/* 09F5E4 8009E9E4 0C026E9D */  jal   func_8009BA74
+/* 09F5E4 8009E9E4 0C026E9D */  jal   render_menu_textures
 /* 09F5E8 8009E9E8 8D040000 */   lw    $a0, ($t0)
 /* 09F5EC 8009E9EC 3C088019 */  lui   $t0, %hi(sGfxPtr) # $t0, 0x8019
 /* 09F5F0 8009E9F0 2508E75C */  addiu $t0, %lo(sGfxPtr) # addiu $t0, $t0, -0x18a4
@@ -431,7 +431,7 @@ glabel L8009E9AC
 /* 09F774 8009EB74 8FE6000C */  lw    $a2, 0xc($ra)
 /* 09F778 8009EB78 8FE70010 */  lw    $a3, 0x10($ra)
 /* 09F77C 8009EB7C 24A515CC */  addiu $a1, %lo(D_020015CC) # addiu $a1, $a1, 0x15cc
-/* 09F780 8009EB80 0C026E9D */  jal   func_8009BA74
+/* 09F780 8009EB80 0C026E9D */  jal   render_menu_textures
 /* 09F784 8009EB84 8D040000 */   lw    $a0, ($t0)
 /* 09F788 8009EB88 3C088019 */  lui   $t0, %hi(sGfxPtr) # $t0, 0x8019
 /* 09F78C 8009EB8C 2508E75C */  addiu $t0, %lo(sGfxPtr) # addiu $t0, $t0, -0x18a4
@@ -450,7 +450,7 @@ glabel L8009E9AC
 /* 09F7C0 8009EBC0 8FE6000C */  lw    $a2, 0xc($ra)
 /* 09F7C4 8009EBC4 8FE70010 */  lw    $a3, 0x10($ra)
 /* 09F7C8 8009EBC8 24A51630 */  addiu $a1, %lo(D_02001630) # addiu $a1, $a1, 0x1630
-/* 09F7CC 8009EBCC 0C026E9D */  jal   func_8009BA74
+/* 09F7CC 8009EBCC 0C026E9D */  jal   render_menu_textures
 /* 09F7D0 8009EBD0 8D040000 */   lw    $a0, ($t0)
 /* 09F7D4 8009EBD4 3C088019 */  lui   $t0, %hi(sGfxPtr) # $t0, 0x8019
 /* 09F7D8 8009EBD8 2508E75C */  addiu $t0, %lo(sGfxPtr) # addiu $t0, $t0, -0x18a4
@@ -469,7 +469,7 @@ glabel L8009E9AC
 /* 09F80C 8009EC0C 8FE6000C */  lw    $a2, 0xc($ra)
 /* 09F810 8009EC10 8FE70010 */  lw    $a3, 0x10($ra)
 /* 09F814 8009EC14 24A51658 */  addiu $a1, %lo(D_02001658) # addiu $a1, $a1, 0x1658
-/* 09F818 8009EC18 0C026E9D */  jal   func_8009BA74
+/* 09F818 8009EC18 0C026E9D */  jal   render_menu_textures
 /* 09F81C 8009EC1C 8D040000 */   lw    $a0, ($t0)
 /* 09F820 8009EC20 3C088019 */  lui   $t0, %hi(sGfxPtr) # $t0, 0x8019
 /* 09F824 8009EC24 2508E75C */  addiu $t0, %lo(sGfxPtr) # addiu $t0, $t0, -0x18a4
@@ -814,9 +814,9 @@ glabel L8009F0E0
 /* 09FD04 8009F104 10000133 */  b     .L8009F5D4
 /* 09FD08 8009F108 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L8009F10C
-/* 09FD0C 8009F10C 3C040200 */  lui   $a0, %hi(D_02004A34) # $a0, 0x200
+/* 09FD0C 8009F10C 3C040200 */  lui   $a0, %hi(gMenuTextureData) # $a0, 0x200
 /* 09FD10 8009F110 0C026449 */  jal   segmented_to_virtual_dupe
-/* 09FD14 8009F114 24844A34 */   addiu $a0, %lo(D_02004A34) # addiu $a0, $a0, 0x4a34
+/* 09FD14 8009F114 24844A34 */   addiu $a0, %lo(gMenuTextureData) # addiu $a0, $a0, 0x4a34
 /* 09FD18 8009F118 00402025 */  move  $a0, $v0
 /* 09FD1C 8009F11C 0C0265AF */  jal   load_menu_img2
 /* 09FD20 8009F120 00002825 */   move  $a1, $zero

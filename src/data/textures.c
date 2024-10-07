@@ -1562,7 +1562,7 @@ MenuTexture D_02001B04[2] = {
  * @brief MenuTexture of Course Preview Mario Raceway
  *
  */
-MenuTexture D_02001B2C[2] = {
+MenuTexture gMenuTexturePreviewMarioRaceway[2] = {
     { 0, 0, gTextureCoursePreviewMarioRaceway, 128, 78, 0, 0, 0x3157, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -1743,8 +1743,8 @@ MenuTexture D_02001E24[2] = {
  *
  */
 MkAnimation D_02001E4C[3] = {
-    { D_02001B2C, 0x0000003c },
-    { D_02001B2C, 0x0000003c },
+    { gMenuTexturePreviewMarioRaceway, 0x0000003c },
+    { gMenuTexturePreviewMarioRaceway, 0x0000003c },
     { NULL, 0x00000000 },
 };
 
@@ -1753,7 +1753,7 @@ MkAnimation D_02001E4C[3] = {
  *
  */
 MkAnimation D_02001E64[2] = {
-    { D_02001B2C, 0x0000003c },
+    { gMenuTexturePreviewMarioRaceway, 0x0000003c },
     { NULL, 0x00000000 },
 };
 
@@ -4384,7 +4384,7 @@ MenuTexture D_02004A0C[2] = {
  * @brief MenuTextures for Menu Data
  *
  */
-MenuTexture D_02004A34[2] = {
+MenuTexture gMenuTextureData[2] = {
     { 1, 0, gTextureMenuData, 64, 18, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4393,7 +4393,7 @@ MenuTexture D_02004A34[2] = {
  * @brief MenuTextures P1 Border ?
  *
  */
-MenuTexture D_02004A5C[3] = {
+MenuTexture gMenuTextureBorderP1[3] = {
     { 3, 0, gTexture7E56E4, 64, 64, 0, 0, 0x116c, 0 },
     { 4, 0, gTextureP1BorderBlue, 64, 64, 0, 0, 0x0000, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
@@ -4403,7 +4403,7 @@ MenuTexture D_02004A5C[3] = {
  * @brief MenuTextures P2 Border ?
  *
  */
-MenuTexture D_02004A98[3] = {
+MenuTexture gMenuTextureBorderP2[3] = {
     { 3, 0, gTexture7E56E4, 64, 64, 0, 0, 0x116c, 0 },
     { 4, 0, gTextureP2BorderRed, 64, 64, 0, 0, 0x0000, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
@@ -4413,7 +4413,7 @@ MenuTexture D_02004A98[3] = {
  * @brief MenuTextures P3 Border ?
  *
  */
-MenuTexture D_02004AD4[3] = {
+MenuTexture gMenuTextureBorderP3[3] = {
     { 3, 0, gTexture7E56E4, 64, 64, 0, 0, 0x116c, 0 },
     { 4, 0, gTextureP3BorderOrange, 64, 64, 0, 0, 0x0000, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
@@ -4423,7 +4423,7 @@ MenuTexture D_02004AD4[3] = {
  * @brief MenuTextures P4 Border ?
  *
  */
-MenuTexture D_02004B10[3] = {
+MenuTexture gMenuTextureBorderP4[3] = {
     { 3, 0, gTexture7E56E4, 64, 64, 0, 0, 0x116c, 0 },
     { 4, 0, gTextureP4BorderGreen, 64, 64, 0, 0, 0x0000, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
@@ -4496,7 +4496,7 @@ MenuTexture gMenuTextureSpecialCup[2] = {
  * @brief MenuTextures for the course preview mario raceway
  *
  */
-MenuTexture gMenuTexturePreviewMarioRaceway[2] = {
+MenuTexture gMenuTexturePreviewMarioRacewaySmall[2] = {
     { 0, 0, gTextureCoursePreviewMarioRaceway, 128, 78, 23, 112, 0x1e3d, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
