@@ -2,14 +2,19 @@
 #include "courses/all_course_data.h"
 #include <assets/ceremony_data.h>
 
+#if !USE_CUSTOM_COURSE_ENGINE
 // @warning Array contains an extra zero element at the end.
 KartAIBehaviour* gKartAIBehaviourLUT[] = {
 #include "assets/course_metadata/gKartAIBehaviourLUT.inc.c"
 
 };
+#else
+
+#endif
 
 TrackWaypoint nullPath = { 0x8000, 0x0000, 0x0000, 0x0000 };
 
+#if !USE_CUSTOM_COURSE_ENGINE
 TrackWaypoint* gCoursePathTable[][4] = {
 #include "assets/course_metadata/gCoursePathTableUnknown.inc.c"
 };
@@ -18,7 +23,7 @@ TrackWaypoint* gCoursePathTable2[][4] = {
 #include "assets/course_metadata/gCoursePathTable.inc.c"
 };
 
-// @warning Array contains an extra zero element at the end.
+/// @warning Array contains an extra zero element at the end.
 s16 gKartAISteeringSensitivity[] = {
 #include "assets/course_metadata/gCPUSteeringSensitivity.inc.c"
 };
@@ -32,6 +37,9 @@ f32 gKartAICourseMaximumSeparation[] = {
 f32 gKartAICourseMinimumSeparation[] = {
 #include "assets/course_metadata/gKartAICourseMinimumSeparation.inc.c"
 };
+#else
+
+#endif
 
 // I think the types for D_800DCAF4, D_800DCB34, and D_800DCBB4 are all
 // wrong in some way based on their usage in func_800088D8
@@ -60,9 +68,13 @@ BombKartSpawn gBombKartSpawns[][NUM_BOMB_KARTS_MAX] = {
 #include "assets/course_metadata/gBombKartSpawns.inc.c"
 };
 
+#if !USE_CUSTOM_COURSE_ENGINE
 struct _struct_gCoursePathSizes_0x10 gCoursePathSizes[] = {
 #include "assets/course_metadata/gCoursePathSizes.inc.c"
 };
+#else
+
+#endif
 
 s32 D_800DDB20 = 0x00000000;
 

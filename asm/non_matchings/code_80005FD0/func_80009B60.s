@@ -171,7 +171,7 @@ glabel func_80009B60
 /* 00A988 80009D88 1000001A */  b     .L80009DF4
 /* 00A98C 80009D8C 8FA50040 */   lw    $a1, 0x40($sp)
 .L80009D90:
-/* 00A990 80009D90 0C004B70 */  jal   func_80012DC0
+/* 00A990 80009D90 0C004B70 */  jal   train_collision
 /* 00A994 80009D94 8FA50040 */   lw    $a1, 0x40($sp)
 /* 00A998 80009D98 8FAC00D0 */  lw    $t4, 0xd0($sp)
 /* 00A99C 80009D9C 55800015 */  bnel  $t4, $zero, .L80009DF4

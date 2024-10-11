@@ -2831,7 +2831,7 @@ void update_stars(s32 arg0, Camera* camera, StarData* starList) {
 UNUSED void func_80078C68() {
 }
 
-void func_80078C70(s32 arg0) {
+void course_update_clouds(s32 arg0) {
     s32 sp1C;
     Camera* camera;
 
@@ -2868,6 +2868,7 @@ void func_80078C70(s32 arg0) {
         D_8018D210 = (-(D_8018D200 / 2) * 0xB6) - 0x71C;
         D_8018D1E8 = 1.7578125 / D_8018D200;
         D_8018D218 = 0xA0;
+#if !USE_CUSTOM_COURSE_ENGINE
         switch (gCurrentCourseId) {    /* switch 2 */
             case COURSE_MARIO_RACEWAY: /* switch 2 */
                 // Uses Luigi Raceway's clouds for display purposes?
@@ -2908,6 +2909,9 @@ void func_80078C70(s32 arg0) {
                 break;
         }
     }
+#else
+
+#endif
 }
 
 void func_80078F64(void) {
@@ -2953,7 +2957,7 @@ void func_80079114(s32 objectIndex, s32 arg1, s32 arg2) {
     if (gObjectList[objectIndex].state >= 2) {
         if ((u8) gObjectList[objectIndex].unk_0D8 == 1) {
             if (arg1 == 0) {
-                func_80074894(objectIndex, D_8018C028);
+                func_80074894(objectIndex, gLakituTexturePtr);
                 return;
             }
             a = gIndexLakituList[0];
@@ -2964,13 +2968,13 @@ void func_80079114(s32 objectIndex, s32 arg1, s32 arg2) {
         }
         switch (arg2) {
             case 0:
-                func_800748F4(objectIndex, D_8018C028);
+                func_800748F4(objectIndex, gLakituTexturePtr);
                 break;
             case 1:
-                func_800748C4(objectIndex, D_8018C028);
+                func_800748C4(objectIndex, gLakituTexturePtr);
                 break;
             case 2:
-                func_80074894(objectIndex, D_8018C028);
+                func_80074894(objectIndex, gLakituTexturePtr);
                 break;
         }
     }
@@ -3094,7 +3098,7 @@ void init_obj_lakitu_red_flag(s32 objectIndex, s32 playerIndex) {
     init_texture_object(objectIndex, (u8*) common_tlut_lakitu_checkered_flag, gTextureLakituCheckeredFlag01, 0x48U,
                         (u16) 0x00000038);
     object = &gObjectList[objectIndex];
-    object->activeTexture = D_8018C028;
+    object->activeTexture = gLakituTexturePtr;
     object->vertex = common_vtx_also_lakitu;
     object->pos[2] = 5000.0f;
     object->pos[1] = 5000.0f;
@@ -3340,7 +3344,7 @@ void func_8007A060(s32 objectIndex, s32 playerIndex) {
     init_texture_object(objectIndex, (u8*) common_tlut_lakitu_second_lap, gTextureLakituSecondLap01, 0x48U,
                         (u16) 0x00000038);
     object = &gObjectList[objectIndex];
-    object->activeTexture = D_8018C028;
+    object->activeTexture = gLakituTexturePtr;
     object->vertex = common_vtx_also_lakitu;
     object->pos[2] = 5000.0f;
     object->pos[1] = 5000.0f;
@@ -3389,7 +3393,7 @@ void func_8007A228(s32 objectIndex, s32 playerIndex) {
     init_texture_object(objectIndex, (u8*) common_tlut_lakitu_final_lap, gTextureLakituFinalLap01, 0x48U,
                         (u16) 0x00000038);
     object = &gObjectList[objectIndex];
-    object->activeTexture = D_8018C028;
+    object->activeTexture = gLakituTexturePtr;
     object->vertex = common_vtx_also_lakitu;
     object->pos[2] = 5000.0f;
     object->pos[1] = 5000.0f;
@@ -3436,7 +3440,7 @@ void func_8007A3F0(s32 objectIndex, s32 arg1) {
     func_800791F0(objectIndex, arg1);
     init_texture_object(objectIndex, (u8*) common_tlut_lakitu_reverse, gTextureLakituReverse01, 0x48U,
                         (u16) 0x00000038);
-    gObjectList[objectIndex].activeTexture = D_8018C028;
+    gObjectList[objectIndex].activeTexture = gLakituTexturePtr;
     gObjectList[objectIndex].vertex = common_vtx_also_lakitu;
     gObjectList[objectIndex].pos[2] = var;
     gObjectList[objectIndex].pos[1] = var;
@@ -3584,7 +3588,7 @@ void func_8007AA44(s32 playerId) {
 
     func_8007A910(playerId);
     objectIndex = gIndexLakituList[playerId];
-    D_8018C028 = D_80183FA8[playerId];
+    gLakituTexturePtr = D_80183FA8[playerId];
     switch (gObjectList[objectIndex].unk_0D8) {
         case 1:
             func_80079114(objectIndex, playerId, 2);
@@ -6054,7 +6058,7 @@ void func_80080E8C(s32 objectIndex1, s32 objectIndex2, s32 arg2) {
     gObjectList[objectIndex1].velocity[2] = coss(anAngle) * 0.6;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/update_objects/func_80080E8C.s")
+    GLOBAL_ASM("asm/non_matchings/update_objects/func_80080E8C.s")
 #endif
 
 void func_80080FEC(s32 arg0) {
@@ -6764,7 +6768,7 @@ void func_80082F1C(s32 objectIndex, s32 arg1) {
     set_obj_direction_angle(objectIndex, 0U, test->rot, 0U);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/update_objects/func_80082F1C.s")
+    GLOBAL_ASM("asm/non_matchings/update_objects/func_80082F1C.s")
 #endif
 
 void func_80083018(s32 objectIndex, s32 arg1) {
@@ -7840,7 +7844,7 @@ void func_80086074(s32 objectIndex, s32 arg1) {
     func_80085BB4(objectIndex);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/update_objects/func_80086074.s")
+    GLOBAL_ASM("asm/non_matchings/update_objects/func_80086074.s")
 #endif
 
 void func_80086110(s32 objectIndex, s32 arg1) {

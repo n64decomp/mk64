@@ -420,10 +420,10 @@ void func_802B5CAC(s16 arg0, s16 arg1, Vec3f arg2) {
 }
 
 void func_802B5D30(s16 arg0, s16 arg1, s32 arg2) {
-    func_802B5D64((Lights1*) 0x9000000, arg0, arg1, arg2);
+    course_light((Lights1*) 0x9000000, arg0, arg1, arg2);
 }
 
-void func_802B5D64(Lights1* addr, s16 arg1, s16 arg2, s32 arg3) {
+void course_light(Lights1* addr, s16 arg1, s16 arg2, s32 arg3) {
     u32 segment = SEGMENT_NUMBER2(addr);
     u32 offset = SEGMENT_OFFSET(addr);
     UNUSED s32 pad;
@@ -1175,7 +1175,7 @@ f32 is_within_render_distance(Vec3f cameraPos, Vec3f objectPos, u16 orientationY
 }
 
 // No idea if arg1 is actually a Mat4 or not, but since this function is unused
-// its impossible to know with certainty either way, very close of func_802B5D64
+// its impossible to know with certainty either way, very close of course_light
 UNUSED void func_802B8414(uintptr_t addr, Mat4 arg1, s16 arg2, s16 arg3, s32 arg4) {
     u32 segment = SEGMENT_NUMBER2(addr);
     u32 offset = SEGMENT_OFFSET(addr);

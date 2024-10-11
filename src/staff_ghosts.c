@@ -1,9 +1,11 @@
 #include <ultra64.h>
 #include <macros.h>
-#include <mk64.h>
 #include <common_structs.h>
 #include <defines.h>
 #include <decode.h>
+#include <mk64.h>
+#include <course.h>
+
 #include "main.h"
 #include "code_800029B0.h"
 #include "buffers.h"
@@ -106,7 +108,7 @@ void func_80004FF8(void) {
 
 void set_staff_ghost(void) {
     u32 temp_v0; // Appears to be player total lap time.
-
+#if !USE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             temp_v0 = func_800B4E24(0) & 0xfffff;
@@ -148,6 +150,9 @@ void set_staff_ghost(void) {
             D_80162DD6 = 1;
             D_80162DF4 = 1;
     }
+#else
+
+#endif
 }
 
 s32 func_800051C4(void) {

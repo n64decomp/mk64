@@ -1,9 +1,11 @@
 #include <ultra64.h>
 #include <macros.h>
 #include <PR/gbi.h>
-#include <mk64.h>
 #include <common_structs.h>
+#include <mk64.h>
 #include <actor_types.h>
+#include <course.h>
+
 #include "main.h"
 #include "memory.h"
 #include "collision.h"
@@ -871,8 +873,8 @@ s32 is_colliding_with_drivable_surface(Collision* collision, f32 boundingBoxSize
 /**
  * Wall collision
  */
-s32 is_colliding_with_wall2(Collision* arg, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 surfaceIndex, f32 posX,
-                            f32 posY, f32 posZ) {
+s32 is_colliding_with_wall_z(Collision* arg, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 surfaceIndex, f32 posX,
+                             f32 posY, f32 posZ) {
     CollisionTriangle* triangle = &gCollisionMesh[surfaceIndex];
     UNUSED s32 pad[6];
     f32 x4;
@@ -1053,8 +1055,8 @@ s32 is_colliding_with_wall2(Collision* arg, f32 boundingBoxSize, f32 x1, f32 y1,
 /**
  * This is actually more like colliding with face X/Y/Z
  */
-s32 is_colliding_with_wall1(Collision* arg, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 surfaceIndex, f32 posX,
-                            f32 posY, f32 posZ) {
+s32 is_colliding_with_wall_x(Collision* arg, f32 boundingBoxSize, f32 x1, f32 y1, f32 z1, u16 surfaceIndex, f32 posX,
+                             f32 posY, f32 posZ) {
     CollisionTriangle* triangle = &gCollisionMesh[surfaceIndex];
     s32 b = 1;
     UNUSED s32 pad[7];
@@ -1267,15 +1269,15 @@ u16 actor_terrain_collision(Collision* collision, f32 boundingBoxSize, f32 newX,
     }
 
     if ((s32) collision->meshIndexYX < (s32) gCollisionMeshCount) {
-        if (is_colliding_with_wall2(collision, boundingBoxSize, newX, newY, newZ, collision->meshIndexYX, oldX, oldY,
-                                    oldZ) == COLLISION) {
+        if (is_colliding_with_wall_z(collision, boundingBoxSize, newX, newY, newZ, collision->meshIndexYX, oldX, oldY,
+                                     oldZ) == COLLISION) {
             flags |= FACING_Z_AXIS;
         }
     }
 
     if ((s32) collision->meshIndexZY < (s32) gCollisionMeshCount) {
-        if (is_colliding_with_wall1(collision, boundingBoxSize, newX, newY, newZ, collision->meshIndexZY, oldX, oldY,
-                                    oldZ) == COLLISION) {
+        if (is_colliding_with_wall_x(collision, boundingBoxSize, newX, newY, newZ, collision->meshIndexZY, oldX, oldY,
+                                     oldZ) == COLLISION) {
             flags |= FACING_X_AXIS;
         }
     }
@@ -1334,16 +1336,16 @@ u16 actor_terrain_collision(Collision* collision, f32 boundingBoxSize, f32 newX,
         } else if ((gCollisionMesh[collisionIndex].flags & FACING_X_AXIS) != 0) {
             if ((flags & FACING_X_AXIS) == 0) {
                 if (collisionIndex != collision->meshIndexZY) {
-                    if (is_colliding_with_wall1(collision, boundingBoxSize, newX, newY, newZ, collisionIndex, oldX,
-                                                oldY, oldZ) == COLLISION) {
+                    if (is_colliding_with_wall_x(collision, boundingBoxSize, newX, newY, newZ, collisionIndex, oldX,
+                                                 oldY, oldZ) == COLLISION) {
                         flags |= FACING_X_AXIS;
                     }
                 }
             }
         } else if ((flags & FACING_Z_AXIS) == 0) {
             if (collisionIndex != collision->meshIndexYX) {
-                if (is_colliding_with_wall2(collision, boundingBoxSize, newX, newY, newZ, collisionIndex, oldX, oldY,
-                                            oldZ) == COLLISION) {
+                if (is_colliding_with_wall_z(collision, boundingBoxSize, newX, newY, newZ, collisionIndex, oldX, oldY,
+                                             oldZ) == COLLISION) {
                     flags |= FACING_Z_AXIS;
                 }
             }
@@ -1464,7 +1466,7 @@ extern u8 D_8014F1110;
  * If unable to spawn actor on the surface set to -3000.0f or
  * if outside the collision grid, spawn in the air (3000.0f).
  */
-f32 spawn_actor_on_surface(f32 posX, f32 posY, f32 posZ) {
+f32 get_ground_below(f32 posX, f32 posY, f32 posZ) {
     f32 height;
     s16 sectionIndexX;
     s16 sectionIndexZ;
@@ -2178,8 +2180,8 @@ u16 player_terrain_collision(Player* player, KartTyre* tyre, f32 tyre2X, f32 tyr
     tyreZ = tyre->pos[2];
     switch (tyre->surfaceFlags) {
         case 0x80:
-            if (is_colliding_with_wall1(collision, boundingBoxSize, tyreX, tyreY, tyreZ, tyre->collisionMeshIndex,
-                                        tyre2X, tyre2Y, tyre2Z) == 1) {
+            if (is_colliding_with_wall_x(collision, boundingBoxSize, tyreX, tyreY, tyreZ, tyre->collisionMeshIndex,
+                                         tyre2X, tyre2Y, tyre2Z) == 1) {
                 height = calculate_surface_height(tyreX, tyreY, tyreZ, tyre->collisionMeshIndex);
                 if ((!(height > player->pos[1])) && !((player->pos[1] - height) > (2 * boundingBoxSize))) {
                     tyre->baseHeight = height;
@@ -2200,8 +2202,8 @@ u16 player_terrain_collision(Player* player, KartTyre* tyre, f32 tyre2X, f32 tyr
             }
             break;
         case 0x20:
-            if (is_colliding_with_wall2(collision, boundingBoxSize, tyreX, tyreY, tyreZ, tyre->collisionMeshIndex,
-                                        tyre2X, tyre2Y, tyre2Z) == 1) {
+            if (is_colliding_with_wall_z(collision, boundingBoxSize, tyreX, tyreY, tyreZ, tyre->collisionMeshIndex,
+                                         tyre2X, tyre2Y, tyre2Z) == 1) {
                 height = calculate_surface_height(tyreX, tyreY, tyreZ, tyre->collisionMeshIndex);
                 if (!(player->pos[1] < height) && !((2 * boundingBoxSize) < (player->pos[1] - height))) {
                     tyre->baseHeight = height;
@@ -2273,8 +2275,8 @@ u16 player_terrain_collision(Player* player, KartTyre* tyre, f32 tyre2X, f32 tyr
         } else if (gCollisionMesh[meshIndex].flags & FACING_X_AXIS) {
             if (gCollisionMesh[meshIndex].normalY != 0.0f) {
                 if (meshIndex != tyre->collisionMeshIndex) {
-                    if (is_colliding_with_wall1(collision, boundingBoxSize, tyreX, tyreY, tyreZ, meshIndex, tyre2X,
-                                                tyre2Y, tyre2Z) == 1) {
+                    if (is_colliding_with_wall_x(collision, boundingBoxSize, tyreX, tyreY, tyreZ, meshIndex, tyre2X,
+                                                 tyre2Y, tyre2Z) == 1) {
                         height = calculate_surface_height(tyreX, tyreY, tyreZ, meshIndex);
                         if (!(player->pos[1] < height) && !((2 * boundingBoxSize) < (player->pos[1] - height))) {
                             tyre->baseHeight = height;
@@ -2291,8 +2293,8 @@ u16 player_terrain_collision(Player* player, KartTyre* tyre, f32 tyre2X, f32 tyr
         } else {
             if (gCollisionMesh[meshIndex].normalY != 0.0f) {
                 if (meshIndex != tyre->collisionMeshIndex) {
-                    if (is_colliding_with_wall2(collision, boundingBoxSize, tyreX, tyreY, tyreZ, meshIndex, tyre2X,
-                                                tyre2Y, tyre2Z) == 1) {
+                    if (is_colliding_with_wall_z(collision, boundingBoxSize, tyreX, tyreY, tyreZ, meshIndex, tyre2X,
+                                                 tyre2Y, tyre2Z) == 1) {
                         height = calculate_surface_height(tyreX, tyreY, tyreZ, meshIndex);
                         if (!(player->pos[1] < height) && !((2 * boundingBoxSize) < (player->pos[1] - height))) {
                             tyre->baseHeight = height;

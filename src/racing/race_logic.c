@@ -1,9 +1,11 @@
 #include <ultra64.h>
 #include <macros.h>
-#include <mk64.h>
 #include <common_structs.h>
 #include <defines.h>
 #include <sounds.h>
+#include <mk64.h>
+#include <course.h>
+
 #include "camera.h"
 #include "waypoints.h"
 #include "staff_ghosts.h"
@@ -422,48 +424,48 @@ void func_8028EC98(s32 arg0) {
     func_800029B0();
 
     switch (arg0) {
-        case 0:
-        case 7:
-        case 8:
-        case 14:
+        case COURSE_MARIO_RACEWAY:
+        case COURSE_ROYAL_RACEWAY:
+        case COURSE_LUIGI_RACEWAY:
+        case COURSE_WARIO_STADIUM:
             func_800C8EAC(3);
             break;
-        case 10:
+        case COURSE_TOADS_TURNPIKE:
             func_800C8EAC(21);
             break;
-        case 4:
-        case 9:
+        case COURSE_YOSHI_VALLEY:
+        case COURSE_MOO_MOO_FARM:
             func_800C8EAC(4);
             break;
-        case 1:
-        case 15:
-        case 17:
+        case COURSE_CHOCO_MOUNTAIN:
+        case COURSE_BLOCK_FORT:
+        case COURSE_DOUBLE_DECK:
             func_800C8EAC(5);
             break;
-        case 11:
+        case COURSE_KALAMARI_DESERT:
             func_800C8EAC(10);
             break;
-        case 6:
+        case COURSE_KOOPA_BEACH:
             func_800C8EAC(6);
             break;
-        case 2:
+        case COURSE_BOWSER_CASTLE:
             func_800C8EAC(9);
             break;
-        case 3:
+        case COURSE_BANSHEE_BOARDWALK:
             func_800C8EAC(7);
             break;
-        case 5:
-        case 12:
+        case COURSE_FRAPPE_SNOWLAND:
+        case COURSE_SHERBET_LAND:
             func_800C8EAC(8);
             break;
-        case 13:
+        case COURSE_RAINBOW_ROAD:
             func_800C8EAC(18);
             break;
-        case 18:
+        case COURSE_DK_JUNGLE:
             func_800C8EAC(19);
             break;
-        case 16:
-        case 19:
+        case COURSE_SKYSCRAPER:
+        case COURSE_BIG_DONUT:
             func_800C8EAC(25);
             break;
     }

@@ -182,7 +182,7 @@ extern s16 D_80165750;
 
 /**
  * These seem to be limits on different object types in Moo Moo Farm
- * See init_course_object in code_8006E9C0.c
+ * See init_course_objects in code_8006E9C0.c
  * Maybe max number of active moles in a given group of moles?
  */
 extern s32 D_8018D1C8;
