@@ -111,7 +111,7 @@ void clear_object_list() {
     objectListSize = -1;
 }
 
-u8* func_8006ED94(u8* devAddr, u8* baseAddress, u32 size, u32 offset) {
+u8* dma_copy_base_misc_textures(u8* devAddr, u8* baseAddress, u32 size, u32 offset) {
     u8** tempAddress;
     u8* address;
     address = baseAddress + offset;
@@ -126,8 +126,8 @@ u8* func_8006ED94(u8* devAddr, u8* baseAddress, u32 size, u32 offset) {
     return baseAddress;
 }
 
-void load_mario_kart_64_logo(void) {
-    D_8018D1E0 = func_8006ED94((u8*) &gTextureLogoMarioKart64, (u8*) gMenuTextureBuffer, 0x79E1, 0x20000);
+void load_game_logo(void) {
+    gGameLogoAddress = dma_copy_base_misc_textures((u8*) &gTextureLogoMarioKart64, (u8*) gMenuTextureBuffer, 0x79E1, 0x20000);
 }
 
 // Some kind of initalization for the Item Window part of the HUD
@@ -164,7 +164,7 @@ void func_8006EF60(void) {
     wut = gMenuCompressedBuffer + 0xFFFF0000;
     // clang-format off
     // God forgive me for my sins...
-    huh = 0x14; if (0) {} for (i = 0; i < huh; i++) { D_8018D248[i] = func_8006ED94(gCourseOutlineTextures[i], wut, D_800E5520[i], D_800E5520[i]); wut += D_800E5520[i]; }
+    huh = 0x14; if (0) {} for (i = 0; i < huh; i++) { D_8018D248[i] = dma_copy_base_misc_textures(gCourseOutlineTextures[i], wut, D_800E5520[i], D_800E5520[i]); wut += D_800E5520[i]; }
     // clang-format on
 }
 

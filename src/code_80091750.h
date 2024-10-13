@@ -108,18 +108,18 @@ enum MENU_ITEMpriority {
 enum CenterText { LEFT_TEXT = 1, CENTER_TEXT_MODE_1, RIGHT_TEXT, CENTER_TEXT_MODE_2 };
 
 enum MENU_ITEMtype {
-    MENU_ITEM_TYPE_NULL,
-    START_MENU_BACKGROUND,
-    START_MENU_LOGO_AND_COPYRIGHT,
-    START_MENU_PUSH_START_BUTTON,
-    UNUSED_TYPE_004,
-    START_MENU_TEXT_BOX,
-    MAIN_MENU_GAME_SELECT_GFX = 0xA,
-    MAIN_MENU_1P_GAME,
-    MAIN_MENU_2P_GAME,
-    MAIN_MENU_3P_GAME,
-    MAIN_MENU_4P_GAME,
-    MAIN_MENU_OK,
+    MENU_ITEM_UI_NONE,
+    MENU_ITEM_UI_START_BACKGROUND,
+    MENU_ITEM_UI_LOGO_AND_COPYRIGHT,
+    MENU_ITEM_UI_PUSH_START_BUTTON,
+    MENU_ITEM_UI_NO_CONTROLLER,
+    MENU_ITEM_UI_START_RECORD_TIME,
+    MENU_ITEM_UI_GAME_SELECT = 0xA,
+    MENU_ITEM_UI_1P_GAME,
+    MENU_ITEM_UI_2P_GAME,
+    MENU_ITEM_UI_3P_GAME,
+    MENU_ITEM_UI_4P_GAME,
+    MENU_ITEM_UI_OK,
     MAIN_MENU_OPTION_GFX,
     MAIN_MENU_DATA_GFX,
     MAIN_MENU_50CC,
@@ -312,6 +312,15 @@ enum MENU_ITEMtype {
     MENU_ITEM_TYPE_1CE
 };
 
+enum LoadImgCompType {
+    LOAD_MENU_IMG_MIO0_ONCE = -1,
+    LOAD_MENU_IMG_TKMK00_ONCE,
+    // Force load image even if the data is loaded before
+    LOAD_MENU_IMG_FORCE = LOAD_MENU_IMG_TKMK00_ONCE, // 0
+    LOAD_MENU_IMG_MIO0_FORCE,
+    LOAD_MENU_IMG_TKMK00_FORCE
+};
+
 enum TEXT_MENU_ID { CONTINUE_GAME, RETRY, COURSE_CHANGE, DRIVER_CHANGE, QUIT_TEXT_MENU, REPLAY, SAVE_GHOST };
 
 /* Function Prototypes */
@@ -402,8 +411,8 @@ void func_80099110(void);
 void load_menu_img(MenuTexture*);
 void* segmented_to_virtual_dupe(const void*);
 void* segmented_to_virtual_dupe_2(const void*);
-void load_img_wrap(MenuTexture*);
-void load_menu_img2(MenuTexture*, s32);
+void load_menu_img_mio0_always(MenuTexture*);
+void load_menu_img_comp_type(MenuTexture*, s32);
 void func_80099958(MenuTexture*, s32, s32);
 void func_80099E54(void);
 void func_80099E60(MenuTexture*, s32, s32);
@@ -656,9 +665,9 @@ extern MenuItem gMenuItems[MENU_ITEMS_MAX];
 extern struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
 extern struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
 extern struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
-extern s32 gMenuTextureBufferIndex;
+extern s32 sMenuTextureBufferIndex;
 extern TextureMap sMenuTextureMap[TEXTURE_MAP_MAX];
-extern s32 gNumD_8018E118Entries;
+extern s32 sMenuTextureEntries;
 extern Gfx* sGfxPtr;
 extern s32 gNumD_8018E768Entries;
 extern struct_8018E768_entry D_8018E768[D_8018E768_SIZE];

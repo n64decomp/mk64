@@ -4168,7 +4168,7 @@ MenuTexture gMenuTextureBackgroundSunset[2] = {
  * @brief MenuTexture for copyright
  *
  */
-MenuTexture D_020045E8[2] = {
+MenuTexture gMenuTextureCopyright1996[2] = {
     { 1, 0, gTextureCopyright1996, 124, 17, 98, 199, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4177,7 +4177,7 @@ MenuTexture D_020045E8[2] = {
  * @brief MenuTexture for press start
  *
  */
-MenuTexture D_02004610[2] = {
+MenuTexture gMenuTexturePushStartButton[2] = {
     { 1, 0, gTexturePushStartButton, 159, 16, 81, 179, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4195,7 +4195,7 @@ MenuTexture D_02004638[2] = {
  * @brief MenuTexture for the game select menu
  *
  */
-MenuTexture D_02004660[2] = {
+MenuTexture gMenuTextureGameSelect[2] = {
     { 0, 0, gTextureGameSelect, 200, 32, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
