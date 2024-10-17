@@ -1463,6 +1463,7 @@ u16 check_bounding_collision(Collision* collision, f32 boundingBoxSize, f32 posX
 extern u8 D_8014F1110;
 
 /**
+ * @brief Returns the height of the surface below the provided position. Used to set actors onto the course mesh.
  * If unable to spawn actor on the surface set to -3000.0f or
  * if outside the collision grid, spawn in the air (3000.0f).
  */

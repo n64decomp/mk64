@@ -1259,6 +1259,10 @@ void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000230));
 }
 
+/**
+ * @brief dev made two version of the Course one for 1-4p and another for credit.
+ *
+ */
 void render_course_credits(void) {
 #if !USE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
