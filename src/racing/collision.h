@@ -26,7 +26,7 @@ void adjust_pos_orthogonally(Vec3f, f32, Vec3f, f32);
 s32 detect_tyre_collision(KartTyre*);
 u16 actor_terrain_collision(Collision*, f32, f32, f32, f32, f32, f32, f32);
 u16 check_bounding_collision(Collision*, f32, f32, f32, f32);
-f32 get_ground_below(f32, f32, f32);
+f32 get_surface_height(f32, f32, f32);
 void set_vtx_buffer(uintptr_t, u32, u32);
 s32 is_line_intersecting_rectangle(s16, s16, s16, s16, s16, s16, s16, s16);
 s32 is_triangle_intersecting_bounding_box(s16, s16, s16, s16, u16);

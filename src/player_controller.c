@@ -2370,7 +2370,7 @@ void func_8002E4C4(Player* player) {
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = 0.0f;
     player->pos[1] =
-        get_ground_below(player->pos[0], D_80164510[player_index] + 10.0f, player->pos[2]) + player->boundingBoxSize;
+        get_surface_height(player->pos[0], D_80164510[player_index] + 10.0f, player->pos[2]) + player->boundingBoxSize;
     if (((player->pos[1] - D_80164510[player_index]) > 1200.0f) ||
         ((player->pos[1] - D_80164510[player_index]) < -1200.0f)) {
         player->pos[1] = player->oldPos[1];

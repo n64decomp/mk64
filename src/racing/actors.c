@@ -981,7 +981,7 @@ void spawn_all_item_boxes(struct ActorSpawnData* spawnData) {
         startingRot[1] = random_u16();
         startingRot[2] = random_u16();
         temp_s1 = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_ITEM_BOX);
-        temp_f0 = get_ground_below(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
+        temp_f0 = get_surface_height(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
 
         // Should be struct ItemBox but not enough space in the stack.
         // It's either the ItemBox or the SEGMENT/OFFSET variables.

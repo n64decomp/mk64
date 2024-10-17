@@ -458,7 +458,7 @@ void podium_ceremony_loop(void) {
         func_8001C14C();
         update_vehicles();
     }
-    render_ceremony();
+    render_podium_ceremony();
     func_80281540();
 #if DVDL
     display_dvdl();

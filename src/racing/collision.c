@@ -1466,7 +1466,7 @@ extern u8 D_8014F1110;
  * If unable to spawn actor on the surface set to -3000.0f or
  * if outside the collision grid, spawn in the air (3000.0f).
  */
-f32 get_ground_below(f32 posX, f32 posY, f32 posZ) {
+f32 get_surface_height(f32 posX, f32 posY, f32 posZ) {
     f32 height;
     s16 sectionIndexX;
     s16 sectionIndexZ;

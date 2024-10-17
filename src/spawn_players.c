@@ -112,7 +112,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     }
 
     player->pos[0] = startingRow;
-    ret = get_ground_below(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
+    ret = get_surface_height(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
     player->pos[2] = startingColumn;
     player->pos[1] = ret;
     player->oldPos[0] = startingRow;

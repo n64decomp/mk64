@@ -5,7 +5,7 @@
 
 void func_80281C40(void);
 void func_80281CB4(s32, s32, s32, s32);
-void render_ceremony(void);
+void render_podium_ceremony(void);
 
 extern s32 gGotoMenu;
 extern u16 gIsInQuitToMenuTransition;

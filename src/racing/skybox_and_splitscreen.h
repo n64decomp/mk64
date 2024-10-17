@@ -28,7 +28,7 @@ s32 set_viewport2(void);
 void set_viewport(void);
 void select_framebuffer(void);
 void func_802A4300(void);
-void course_set_skybox_color(Vtx*);
+void course_set_skybox_colours(Vtx*);
 void func_802A487C(Vtx*, struct UnkStruct_800DC5EC*, s32, s32, f32*);
 void set_perspective_and_aspect_ratio(void);
 void func_802A4EF4(void);

@@ -160,7 +160,7 @@ void set_vehicle_pos_waypoint(TrainCarStuff*, Path2D*, u16);
 void init_vehicles_trains(void);
 void sync_train_components(TrainCarStuff*, s16);
 void update_vehicle_trains(void);
-void train_collision(s32, Player*);
+void func_80012DC0(s32, Player*);
 
 void func_80013054(void);
 void check_ai_crossing_distance(s32);

@@ -310,7 +310,11 @@ void func_802A4300(void) {
     gDPPipeSync(gDisplayListHead++);
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
 }
-
+/**
+ * @note that the second half of the s16 value is truncated (unused). So if you want red, put 255. But the original
+ * programmers might have put something like `42,239`, in bytes: b1010010011111111 The extra bits are skipped and the
+ * game only reads `11111111` (255)
+ */
 struct Skybox {
     s16 topRed;
     s16 topGreen;
@@ -364,7 +368,7 @@ struct Skybox sBottomSkyBoxColors[] = {
 #include "assets/course_metadata/sSkyColors2.inc.c"
 };
 
-void course_set_skybox_color(Vtx* skybox) {
+void course_set_skybox_colours(Vtx* skybox) {
     s32 i;
 
     if (D_800DC5BC != 0) {
@@ -470,7 +474,7 @@ void func_802A4A0C(Vtx* vtx, struct UnkStruct_800DC5EC* arg1, UNUSED s32 arg2, U
     Vec3f sp5C;
     f32 sp58;
 
-    course_set_skybox_color(vtx);
+    course_set_skybox_colours(vtx);
     sp5C[0] = 0.0f;
     sp5C[1] = 0.0f;
     sp5C[2] = 30000.0f;

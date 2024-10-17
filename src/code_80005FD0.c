@@ -1682,7 +1682,7 @@ void func_80009B60(s32 playerId) {
             func_80008DC0(D_80163448);
             switch (gCurrentCourseId) { /* irregular */
                 case COURSE_KALAMARI_DESERT:
-                    train_collision(playerId, player);
+                    func_80012DC0(playerId, player);
                     if (playerId == 0) {
                         func_80013054();
                     }
@@ -2932,7 +2932,7 @@ void set_bomb_kart_spawn_positions(void) {
             case COURSE_YOSHI_VALLEY:
                 startingXPos = bombKartSpawn->startingXPos;
                 startingZPos = bombKartSpawn->startingZPos;
-                startingYPos = get_ground_below(startingXPos, 2000.0f, startingZPos);
+                startingYPos = get_surface_height(startingXPos, 2000.0f, startingZPos);
                 break;
             case COURSE_AWARD_CEREMONY:
                 temp_v0 = &D_80164550[3][bombKartSpawn->waypointIndex];
@@ -3923,13 +3923,13 @@ void func_80010E6C(s32 pathIndex) {
 }
 
 f32 func_80010F40(f32 arg0, f32 arg1, f32 arg2, UNUSED s32 arg3, UNUSED s32 arg4) {
-    arg1 = get_ground_below(arg0, 2000.0f, arg2);
+    arg1 = get_surface_height(arg0, 2000.0f, arg2);
     check_bounding_collision(&D_80162E70, 1.0f, arg0, arg1, arg2);
     return arg1;
 }
 
 f32 func_80010FA0(f32 arg0, f32 arg1, f32 arg2, UNUSED s32 arg3, UNUSED s32 arg4) {
-    arg1 = get_ground_below(arg0, (f32) ((f64) arg1 + 30.0), arg2);
+    arg1 = get_surface_height(arg0, (f32) ((f64) arg1 + 30.0), arg2);
     check_bounding_collision(&D_80162E70, 10.0f, arg0, arg1, arg2);
     return arg1;
 }
@@ -4353,7 +4353,7 @@ void generate_train_waypoints(void) {
 
     temp = gVehicle2DWaypoint;
     gVehicle2DWaypointLength = generate_2d_path(temp, waypoint, i - 1);
-    D_80162EB0 = get_ground_below(temp[0].x, 2000.0f, temp[0].z);
+    D_80162EB0 = get_surface_height(temp[0].x, 2000.0f, temp[0].z);
 }
 
 void generate_ferry_waypoints(void) {
@@ -4688,7 +4688,7 @@ void update_vehicle_trains(void) {
     }
 }
 
-void train_collision(s32 playerId, Player* player) {
+void func_80012DC0(s32 playerId, Player* player) {
     TrainCarStuff* trainCar;
     f32 playerPosX;
     f32 playerPosZ;
@@ -5648,7 +5648,7 @@ void func_80015544(s32 playerId, f32 arg1, s32 cameraId, s32 pathIndex) {
 
     temp_f2 = (f32) D_80164550[pathIndex][gNearestWaypointByCameraId[cameraId]].posY;
 
-    temp_f12 = get_ground_below(D_80162FA0[0], (f32) (temp_f2 + 30.0), D_80162FA0[2]);
+    temp_f12 = get_surface_height(D_80162FA0[0], (f32) (temp_f2 + 30.0), D_80162FA0[2]);
     if ((temp_f12 < (temp_f2 - 20.0)) || (temp_f12 >= 3000.0)) {
         D_80164618[cameraId] = (f32) (temp_f2 + 10.0);
     } else {
@@ -5804,7 +5804,7 @@ void func_80015C94(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
     }
     camera->pos[0] = midX;
     camera->pos[2] = midZ;
-    temp_f2_2 = get_ground_below(midX, (midY + 30.0), midZ);
+    temp_f2_2 = get_surface_height(midX, (midY + 30.0), midZ);
     if ((temp_f2_2 < (midY - 20.0)) || (temp_f2_2 >= 3000.0)) {
         camera->pos[1] = midY + 10.0;
     } else {
@@ -5932,7 +5932,7 @@ void func_80016494(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
     }
     camera->pos[0] = midX;
     camera->pos[2] = midZ;
-    temp_f2_5 = get_ground_below(midX, midY + 30.0, midZ);
+    temp_f2_5 = get_surface_height(midX, midY + 30.0, midZ);
     if ((temp_f2_5 < (midY - 20.0)) || (temp_f2_5 >= 3000.0)) {
         camera->pos[1] = midY + 10.0;
     } else {
@@ -6462,7 +6462,7 @@ void func_800188F4(Camera* camera, UNUSED Player* unusePlayer, UNUSED s32 arg2, 
     }
     camera->pos[0] = midX;
     camera->pos[2] = midZ;
-    temp_f2_4 = get_ground_below(midX, midY + 30.0, midZ);
+    temp_f2_4 = get_surface_height(midX, midY + 30.0, midZ);
     if ((temp_f2_4 < (midY - 20.0)) || (temp_f2_4 >= 3000.0)) {
         camera->pos[1] = midY + 10.0;
     } else {
@@ -6498,7 +6498,7 @@ void func_80019118(s32 playerId, f32 arg1, s32 cameraId, UNUSED s16 pathIndex) {
     D_80164638[cameraId] = D_80162FA0[2];
     temp_f2 = (f32) D_80164550[0][gNearestWaypointByCameraId[cameraId]].posY;
 
-    temp_f12 = get_ground_below(D_80162FA0[0], (f32) (temp_f2 + 30.0), D_80162FA0[2]);
+    temp_f12 = get_surface_height(D_80162FA0[0], (f32) (temp_f2 + 30.0), D_80162FA0[2]);
 
     if ((temp_f12 < (temp_f2 - 20.0)) || (temp_f12 >= 3000.0)) {
         D_80164618[cameraId] = (f32) (temp_f2 + 10.0);
@@ -7221,7 +7221,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
                     banana->velocity[2] = 0.0f;
                     if (D_801631E0[playerId] == ((u16) 1)) {
                         banana->pos[1] =
-                            get_ground_below(player->pos[0], (f32) (((f64) player->pos[1]) + 30.0), player->pos[2]) +
+                            get_surface_height(player->pos[0], (f32) (((f64) player->pos[1]) + 30.0), player->pos[2]) +
                             (banana->boundingBoxSize + 1.0f);
                     }
                 }
@@ -7283,7 +7283,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
                     banana->velocity[1] = 0.0f;
                     banana->velocity[2] = 0.0f;
                     banana->pos[1] =
-                        get_ground_below(banana->pos[0], (f32) (((f64) banana->pos[1]) + 30.0), banana->pos[2]) +
+                        get_surface_height(banana->pos[0], (f32) (((f64) banana->pos[1]) + 30.0), banana->pos[2]) +
                         (banana->boundingBoxSize + 1.0f);
                 }
                 player->soundEffects &= ~0x00040000;
@@ -7501,7 +7501,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
                     func_802A1064(fakeItemBox);
                     if (D_801631E0[playerId] == 1) {
                         fakeItemBox->pos[1] =
-                            get_ground_below(fakeItemBox->pos[0], fakeItemBox->pos[1] + 30.0, fakeItemBox->pos[2]) +
+                            get_surface_height(fakeItemBox->pos[0], fakeItemBox->pos[1] + 30.0, fakeItemBox->pos[2]) +
                             fakeItemBox->boundingBoxSize;
                     }
                 }
@@ -7639,7 +7639,7 @@ void func_8001BE78(void) {
         temp_s0 = &D_80164550[i][gNearestWaypointByPlayerId[i]];
         temp_s1->pos[0] = (f32) temp_s0->posX;
         temp_s1->pos[1] =
-            get_ground_below((f32) temp_s0->posX, 2000.0f, (f32) temp_s0->posZ) + temp_s1->boundingBoxSize;
+            get_surface_height((f32) temp_s0->posX, 2000.0f, (f32) temp_s0->posZ) + temp_s1->boundingBoxSize;
         temp_s1->pos[2] = (f32) temp_s0->posZ;
         temp_s1->rotation[1] = (s16) *D_80164590[i];
         func_8003680C(temp_s1, 0);

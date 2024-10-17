@@ -947,7 +947,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
     s16 temp_s0 = arg0->pathCounter;
     s16 playerDirection = arg0->playerDirection;
 
-    course_light(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1012,7 +1012,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
 void render_toads_turnpike(struct UnkStruct_800DC5EC* arg0) {
     UNUSED s32 pad[13];
 
-    course_light(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1039,7 +1039,7 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC* arg0) {
 
 void render_kalimari_desert(struct UnkStruct_800DC5EC* arg0) {
 
-    course_light(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1168,7 +1168,7 @@ void render_wario_stadium(struct UnkStruct_800DC5EC* arg0) {
 
 void render_block_fort(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
-    course_light(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1177,7 +1177,7 @@ void render_block_fort(UNUSED struct UnkStruct_800DC5EC* arg0) {
 }
 
 void render_skyscraper(UNUSED struct UnkStruct_800DC5EC* arg0) {
-    course_light(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1201,7 +1201,7 @@ void render_skyscraper(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
 void render_double_deck(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
-    course_light(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1213,8 +1213,8 @@ void render_double_deck(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
 void render_dks_jungle_parkway(struct UnkStruct_800DC5EC* arg0) {
 
-    course_light(D_800DC610, D_802B87D4, 0, 1);
-    course_light(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_LIGHTING);
@@ -1239,7 +1239,7 @@ void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    course_light(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
 
@@ -1259,7 +1259,7 @@ void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000230));
 }
 
-void course_render_credits_version(void) {
+void render_course_credits(void) {
 #if !USE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
@@ -1330,9 +1330,9 @@ void course_render_credits_version(void) {
 
 void render_course(struct UnkStruct_800DC5EC* arg0) {
 
-    course_light(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     if (creditsRenderMode) {
-        course_render_credits_version();
+        render_course_credits();
         return;
     }
 
@@ -1439,6 +1439,10 @@ void func_80295D6C(void) {
     D_8015F6F6 = -3000;
 }
 
+/**
+ * @brief Also sets vertex colours for the course vtx data
+ *
+ */
 void course_generate_collision_mesh(void) {
     gNumActors = 0;
 
@@ -1523,7 +1527,7 @@ void course_generate_collision_mesh(void) {
             D_8015F8E4 = -80.0f;
             break;
         case COURSE_YOSHI_VALLEY:
-            course_light(&d_course_yoshi_valley_lights4, -0x38F0, 0x1C70, 1);
+            set_course_lighting(&d_course_yoshi_valley_lights4, -0x38F0, 0x1C70, 1);
             parse_course_displaylists((uintptr_t) d_course_yoshi_valley_addr);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;

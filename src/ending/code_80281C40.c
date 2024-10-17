@@ -50,7 +50,7 @@ void func_80281CB4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 extern Gfx D_80284F70[];
 extern Gfx D_80284EE0[];
 
-void render_ceremony(void) {
+void render_podium_ceremony(void) {
     Camera* camera = &cameras[0];
     UNUSED s32 pad[3];
     u16 perspNorm;
