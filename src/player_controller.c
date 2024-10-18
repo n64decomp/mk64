@@ -247,7 +247,7 @@ void func_80027EDC(Player* player, s8 playerId) {
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
         switch (gCurrentCourseId) {
             case COURSE_MARIO_RACEWAY:
                 if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
@@ -382,7 +382,7 @@ void func_80027EDC(Player* player, s8 playerId) {
 
 #endif
     } else {
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
         switch (gCurrentCourseId) {
             case COURSE_MARIO_RACEWAY:
                 if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&

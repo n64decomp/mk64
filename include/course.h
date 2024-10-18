@@ -26,7 +26,7 @@ struct _struct_gCoursePathSizes_0x10 {
     /* 0x0A */ char padA[6];
 }; // size 0x10
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 typedef enum {
     /* 0x00 */ COURSE_MARIO_RACEWAY = 0,
     /* 0x01 */ COURSE_CHOCO_MOUNTAIN,
@@ -79,7 +79,7 @@ typedef enum {
 
 #endif
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 extern s16 gCurrentCourseId;
 extern s16* D_800DCBB4[];
 #define GET_COURSE_800DCBB4(n) D_800DCBB4[gCurrentCourseId][n]

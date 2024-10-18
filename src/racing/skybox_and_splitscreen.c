@@ -406,7 +406,7 @@ void course_set_skybox_colours(Vtx* skybox) {
         return;
     }
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     skybox[0].v.cn[0] = sTopSkyBoxColors[gCurrentCourseId].topRed;
     skybox[0].v.cn[1] = sTopSkyBoxColors[gCurrentCourseId].topGreen;
     skybox[0].v.cn[2] = sTopSkyBoxColors[gCurrentCourseId].topBlue;

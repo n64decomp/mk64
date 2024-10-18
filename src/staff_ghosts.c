@@ -108,7 +108,7 @@ void func_80004FF8(void) {
 
 void set_staff_ghost(void) {
     u32 temp_v0; // Appears to be player total lap time.
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             temp_v0 = func_800B4E24(0) & 0xfffff;

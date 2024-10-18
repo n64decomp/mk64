@@ -183,7 +183,7 @@ void course_mini_map_settings(void) {
     if (gCurrentCourseId < NUM_COURSES - 1) {
         func_8006EEE8((s32) gCurrentCourseId);
     }
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             D_8018D220 = (void*) dma_textures(gTextureExhaust5, 0x443, 0x1000);
@@ -691,7 +691,7 @@ void course_init_cloud(void) {
     s32 var_s0;
     s32 var_s4;
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             // Uses Kalimari Desert's clouds for initialization?
@@ -763,7 +763,7 @@ void init_course_objects(void) {
     s32 objectId;
     s32 i;
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             if (gGamestate != 9) {

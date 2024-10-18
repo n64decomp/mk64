@@ -1591,7 +1591,7 @@ void func_8008FEDC(Player* player, UNUSED s8 arg1) {
 void course_update_waypoint(Player* player, s8 playerId) {
     s16 waypoint;
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_BOWSER_CASTLE:
             waypoint = gNearestWaypointByPlayerId[playerId];

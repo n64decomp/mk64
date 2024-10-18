@@ -26,7 +26,7 @@
 
 extern s32 D_802BA038;
 extern s16 D_802BA048;
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 s16 gCurrentCourseId = 0;
 #endif
 s16 gCurrentlyLoadedCourseId = 0xFF;
@@ -245,7 +245,7 @@ void setup_race(void) {
 
 // sound related
 void func_80002DAC(void) {
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             vec3f_set(D_8015F748, -223.0f, 94.0f, -155.0f);
@@ -309,7 +309,7 @@ void func_80003040(void) {
     gPlayerCountSelection1 = 1;
     set_segment_base_addr(0x3, (void*) (gNextFreeMemoryAddress + 0xFFFF7000));
     destroy_all_actors();
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             dma_textures(gTextureTrees1, 0x35B, 0x800);

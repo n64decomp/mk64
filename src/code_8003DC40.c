@@ -233,7 +233,7 @@ void func_8003F46C(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4
         player->kartHopVelocity = 0.0f;
         return;
     } else {
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
         switch (gCurrentCourseId) {
             case COURSE_MARIO_RACEWAY:
                 func_8003E048(player, arg1, arg2, arg3, arg4, arg5, arg6, arg7);

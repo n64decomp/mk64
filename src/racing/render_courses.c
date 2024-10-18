@@ -1260,11 +1260,12 @@ void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
 }
 
 /**
- * @brief dev made two version of the Course one for 1-4p and another for credit.
+ * @brief The game has two versions of each course. One for normal gameplay and another for credits.
+ * The credits version is not split into segments so that the game camera can fly around the whole course.
  *
  */
 void render_course_credits(void) {
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_9348);
@@ -1340,7 +1341,7 @@ void render_course(struct UnkStruct_800DC5EC* arg0) {
         return;
     }
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             render_mario_raceway(arg0);
@@ -1466,7 +1467,7 @@ void course_generate_collision_mesh(void) {
     gCollisionMesh = (CollisionTriangle*) gNextFreeMemoryAddress;
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             // d_course_mario_raceway_packed_dl_1140
@@ -1678,7 +1679,7 @@ void course_generate_collision_mesh(void) {
 }
 
 void course_update_water(void) {
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_KOOPA_BEACH:
             // clang-format off

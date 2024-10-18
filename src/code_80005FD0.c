@@ -1538,7 +1538,7 @@ void update_vehicles(void) {
                 func_8000DF8C(i);
             }
         }
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
         switch (gCurrentCourseId) {
             case COURSE_KALAMARI_DESERT:
                 update_vehicle_trains();
@@ -3467,7 +3467,7 @@ void func_8000F2DC(void) {
     }
 
     D_80164430 = *gWaypointCountByPathIndex;
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_KALAMARI_DESERT:
             generate_train_waypoints();
@@ -4412,7 +4412,7 @@ void spawn_course_vehicles(void) {
     f32 origXPos;
     f32 origZPos;
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_KALAMARI_DESERT:
             for (loopIndex = 0; loopIndex < NUM_TRAINS; loopIndex++) {

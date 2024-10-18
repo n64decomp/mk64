@@ -315,7 +315,7 @@ char* gCupNames[] = {
     "special cup",
 };
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 // Displays at beginning of course
 char* gCourseNames[] = {
 #include "assets/course_metadata/gCourseNames.inc.c"
@@ -332,7 +332,7 @@ char* gCourseNamesDup2[] = {
 #include "assets/course_metadata/gCourseNames.inc.c"
 };
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 // Used in debug menu at splash screen
 char* gDebugCourseNames[] = {
 #include "assets/course_metadata/gCourseDebugNames.inc.c"

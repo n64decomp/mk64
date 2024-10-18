@@ -2,7 +2,7 @@
 #include "courses/all_course_data.h"
 #include <assets/ceremony_data.h>
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 // @warning Array contains an extra zero element at the end.
 KartAIBehaviour* gKartAIBehaviourLUT[] = {
 #include "assets/course_metadata/gKartAIBehaviourLUT.inc.c"
@@ -14,7 +14,7 @@ KartAIBehaviour* gKartAIBehaviourLUT[] = {
 
 TrackWaypoint nullPath = { 0x8000, 0x0000, 0x0000, 0x0000 };
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 TrackWaypoint* gCoursePathTable[][4] = {
 #include "assets/course_metadata/gCoursePathTableUnknown.inc.c"
 };
@@ -68,7 +68,7 @@ BombKartSpawn gBombKartSpawns[][NUM_BOMB_KARTS_MAX] = {
 #include "assets/course_metadata/gBombKartSpawns.inc.c"
 };
 
-#if !USE_CUSTOM_COURSE_ENGINE
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 struct _struct_gCoursePathSizes_0x10 gCoursePathSizes[] = {
 #include "assets/course_metadata/gCoursePathSizes.inc.c"
 };
