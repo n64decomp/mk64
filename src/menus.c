@@ -264,20 +264,20 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if ((btnAndStick & D_JPAD) && (gSubMenuSelection < SUB_MENU_OPTION_MAX)) {
                     gSubMenuSelection += 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (sp38->unk24 < 4.2) {
-                        sp38->unk24 += 4.0;
+                    if (sp38->paramf < 4.2) {
+                        sp38->paramf += 4.0;
                     }
-                    sp38->unk8 = 1;
+                    sp38->subState = 1;
                     tempVar = true;
                 }
                 if ((btnAndStick & U_JPAD) && (gSubMenuSelection > SUB_MENU_OPTION_MIN)) {
                     gSubMenuSelection -= 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (sp38->unk24 < 4.2) {
-                        sp38->unk24 += 4.0;
+                    if (sp38->paramf < 4.2) {
+                        sp38->paramf += 4.0;
                     }
                     tempVar = true;
-                    sp38->unk8 = -1;
+                    sp38->subState = -1;
                 }
                 if (tempVar && gSoundMode != sp38->state) {
                     gSaveData.main.saveInfo.soundMode = gSoundMode;
@@ -403,18 +403,18 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if ((btnAndStick & D_JPAD) && (gSubMenuSelection < SUB_MENU_ERASE_MAX)) {
                     gSubMenuSelection += 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (sp38->unk24 < 4.2) {
-                        sp38->unk24 += 4.0;
+                    if (sp38->paramf < 4.2) {
+                        sp38->paramf += 4.0;
                     }
-                    sp38->unk8 = 1;
+                    sp38->subState = 1;
                 }
                 if ((btnAndStick & U_JPAD) && (gSubMenuSelection > SUB_MENU_ERASE_MIN)) {
                     gSubMenuSelection -= 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (sp38->unk24 < 4.2) {
-                        sp38->unk24 += 4.0;
+                    if (sp38->paramf < 4.2) {
+                        sp38->paramf += 4.0;
                     }
-                    sp38->unk8 = -1;
+                    sp38->subState = -1;
                 }
                 if (btnAndStick & B_BUTTON) {
                     gSubMenuSelection = SUB_MENU_OPTION_ERASE_ALL_DATA;
@@ -450,19 +450,19 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                     (sp30[PLAYER_TWO].ghostDataSaved)) {
                     gSubMenuSelection += 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (sp38->unk24 < 4.2) {
-                        sp38->unk24 += 4.0;
+                    if (sp38->paramf < 4.2) {
+                        sp38->paramf += 4.0;
                     }
-                    sp38->unk8 = 1;
+                    sp38->subState = 1;
                 }
                 if ((btnAndStick & U_JPAD) && (gSubMenuSelection > SUB_MENU_COPY_PAK_FROM_GHOST_MIN) &&
                     sp30[PLAYER_ONE].ghostDataSaved) {
                     gSubMenuSelection -= 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (sp38->unk24 < 4.2) {
-                        sp38->unk24 += 4.0;
+                    if (sp38->paramf < 4.2) {
+                        sp38->paramf += 4.0;
                     }
-                    sp38->unk8 = -1;
+                    sp38->subState = -1;
                 }
                 if (btnAndStick & B_BUTTON) {
                     gSubMenuSelection = SUB_MENU_OPTION_COPY_CONTROLLER_PAK;
@@ -470,8 +470,8 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                     return;
                 }
                 if (btnAndStick & A_BUTTON) {
-                    sp38->unk20 = gSubMenuSelection - SUB_MENU_COPY_PAK_FROM_GHOST_MIN;
-                    if (sp30[sp38->unk20].courseIndex == D_8018EE10[PLAYER_TWO].courseIndex &&
+                    sp38->param2 = gSubMenuSelection - SUB_MENU_COPY_PAK_FROM_GHOST_MIN;
+                    if (sp30[sp38->param2].courseIndex == D_8018EE10[PLAYER_TWO].courseIndex &&
                         D_8018EE10[PLAYER_TWO].ghostDataSaved) {
                         gSubMenuSelection = SUB_MENU_COPY_PAK_TO_GHOST2_2P;
                     } else {
@@ -484,32 +484,32 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
             case SUB_MENU_COPY_PAK_TO_GHOST1_2P:
             case SUB_MENU_COPY_PAK_TO_GHOST2_2P: {
                 // bit of a fake match, but if it works it works?
-                if ((sp30[sp38->unk20].courseIndex !=
+                if ((sp30[sp38->param2].courseIndex !=
                      ((0, (D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->courseIndex))) ||
                     ((D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->ghostDataSaved == 0)) {
                     if ((btnAndStick & D_JPAD) && (gSubMenuSelection < SUB_MENU_COPY_PAK_TO_GHOST_MAX)) {
                         gSubMenuSelection += 1;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
-                        if (sp38->unk24 < 4.2) {
-                            sp38->unk24 += 4.0;
+                        if (sp38->paramf < 4.2) {
+                            sp38->paramf += 4.0;
                         }
-                        sp38->unk8 = 1;
+                        sp38->subState = 1;
                     }
                     if ((btnAndStick & U_JPAD) && (gSubMenuSelection > SUB_MENU_COPY_PAK_TO_GHOST_MIN)) {
                         gSubMenuSelection -= 1;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
-                        if (sp38->unk24 < 4.2) {
-                            sp38->unk24 += 4.0;
+                        if (sp38->paramf < 4.2) {
+                            sp38->paramf += 4.0;
                         }
-                        sp38->unk8 = -1;
+                        sp38->subState = -1;
                     }
                 }
                 if (btnAndStick & B_BUTTON) {
-                    gSubMenuSelection = sp38->unk20 + SUB_MENU_COPY_PAK_FROM_GHOST_MIN;
+                    gSubMenuSelection = sp38->param2 + SUB_MENU_COPY_PAK_FROM_GHOST_MIN;
                     play_sound2(SOUND_MENU_GO_BACK);
                 } else if (btnAndStick & A_BUTTON) {
-                    sp38->unk1C = gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN;
-                    if (D_8018EE10[(sp38->unk1C)].ghostDataSaved) {
+                    sp38->param1 = gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN;
+                    if (D_8018EE10[(sp38->param1)].ghostDataSaved) {
                         gSubMenuSelection = SUB_MENU_COPY_PAK_PROMPT_QUIT;
                     } else {
                         gSubMenuSelection = SUB_MENU_COPY_PAK_START;
@@ -540,21 +540,21 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if ((btnAndStick & R_JPAD) && gSubMenuSelection < SUB_MENU_COPY_PAK_PROMPT_MAX) {
                     gSubMenuSelection += 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (sp38->unk24 < 4.2) {
-                        sp38->unk24 += 4.0;
+                    if (sp38->paramf < 4.2) {
+                        sp38->paramf += 4.0;
                     }
-                    sp38->unk8 = 1;
+                    sp38->subState = 1;
                 }
                 if ((btnAndStick & L_JPAD) && gSubMenuSelection > SUB_MENU_COPY_PAK_PROMPT_MIN) {
                     gSubMenuSelection -= 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (sp38->unk24 < 4.2) {
-                        sp38->unk24 += 4.0;
+                    if (sp38->paramf < 4.2) {
+                        sp38->paramf += 4.0;
                     }
-                    sp38->unk8 = -1;
+                    sp38->subState = -1;
                 }
                 if (btnAndStick & B_BUTTON) {
-                    gSubMenuSelection = sp38->unk1C + SUB_MENU_COPY_PAK_TO_GHOST_MIN;
+                    gSubMenuSelection = sp38->param1 + SUB_MENU_COPY_PAK_TO_GHOST_MIN;
                     play_sound2(SOUND_MENU_GO_BACK);
                     return;
                 }
@@ -583,7 +583,7 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
             case SUB_MENU_COPY_PAK_COPYING: {
                 res = controller_pak_2_status();
                 if (res == PFS_NO_ERROR) {
-                    res = func_800B65F4(sp38->unk20, sp38->unk1C);
+                    res = func_800B65F4(sp38->param2, sp38->param1);
                 }
                 if (res != 0) {
                     gSubMenuSelection = SUB_MENU_COPY_PAK_UNABLE_READ_FROM_2P;
@@ -593,7 +593,7 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                 res = osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName,
                                     (u8*) gExtCode, &gControllerPak1FileNote);
                 if (res == PFS_NO_ERROR) {
-                    res = func_800B6178(sp38->unk1C);
+                    res = func_800B6178(sp38->param1);
                 }
                 if (res != 0) {
                     gSubMenuSelection = SUB_MENU_COPY_PAK_UNABLE_COPY_FROM_1P;
@@ -601,8 +601,8 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                     return;
                 }
                 gSubMenuSelection = SUB_MENU_COPY_PAK_COMPLETED;
-                D_8018EE10[sp38->unk1C].courseIndex = (sp30 + sp38->unk20)->courseIndex;
-                func_800B6088(sp38->unk1C);
+                D_8018EE10[sp38->param1].courseIndex = (sp30 + sp38->param2)->courseIndex;
+                func_800B6088(sp38->param1);
                 break;
             }
             case SUB_MENU_COPY_PAK_CREATE_GAME_DATA_INIT: {
@@ -740,10 +740,10 @@ void course_data_menu_act(struct Controller* controller, UNUSED u16 controllerId
                         gCourseRecordsMenuSelection -= 1;
                     }
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (sp28->unk24 < 4.2) {
-                        sp28->unk24 += 4.0;
+                    if (sp28->paramf < 4.2) {
+                        sp28->paramf += 4.0;
                     }
-                    sp28->unk8 = -1;
+                    sp28->subState = -1;
                 }
 
                 if ((btnAndStick & D_JPAD) && (gCourseRecordsMenuSelection < COURSE_RECORDS_MENU_MAX)) {
@@ -762,10 +762,10 @@ void course_data_menu_act(struct Controller* controller, UNUSED u16 controllerId
                         }
                     } else {
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
-                        if (sp28->unk24 < 4.2) {
-                            sp28->unk24 += 4.0;
+                        if (sp28->paramf < 4.2) {
+                            sp28->paramf += 4.0;
                         }
-                        sp28->unk8 = 1;
+                        sp28->subState = 1;
                     }
                 }
 
@@ -773,8 +773,8 @@ void course_data_menu_act(struct Controller* controller, UNUSED u16 controllerId
                     func_8009E208();
                     play_sound2(SOUND_MENU_GO_BACK);
                 } else if (btnAndStick & A_BUTTON) {
-                    if (sp28->unk24 < 4.2) {
-                        sp28->unk24 += 4.0;
+                    if (sp28->paramf < 4.2) {
+                        sp28->paramf += 4.0;
                     }
                     if (gCourseRecordsMenuSelection == COURSE_RECORDS_MENU_RETURN_MENU) {
                         func_8009E208();
@@ -792,19 +792,19 @@ void course_data_menu_act(struct Controller* controller, UNUSED u16 controllerId
                 if ((btnAndStick & U_JPAD) && (gCourseRecordsSubMenuSelection > COURSE_RECORDS_SUB_MENU_MIN)) {
                     gCourseRecordsSubMenuSelection -= 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (sp28->unk24 < 4.2) {
-                        sp28->unk24 += 4.0;
+                    if (sp28->paramf < 4.2) {
+                        sp28->paramf += 4.0;
                     }
-                    sp28->unk8 = -1;
+                    sp28->subState = -1;
                 }
 
                 if ((btnAndStick & D_JPAD) && (gCourseRecordsSubMenuSelection < COURSE_RECORDS_SUB_MENU_MAX)) {
                     gCourseRecordsSubMenuSelection += 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (sp28->unk24 < 4.2) {
-                        sp28->unk24 += 4.0;
+                    if (sp28->paramf < 4.2) {
+                        sp28->paramf += 4.0;
                     }
-                    sp28->unk8 = 1;
+                    sp28->subState = 1;
                 }
 
                 if (btnAndStick & B_BUTTON) {

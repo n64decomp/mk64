@@ -122,7 +122,7 @@ glabel D_800F1AFC
 
 .section .text
 
-glabel menu_item_render
+glabel render_menus
 /* 0A01E0 8009F5E0 27BDFF50 */  addiu $sp, $sp, -0xb0
 /* 0A01E4 8009F5E4 AFBF0034 */  sw    $ra, 0x34($sp)
 /* 0A01E8 8009F5E8 AFB10030 */  sw    $s1, 0x30($sp)

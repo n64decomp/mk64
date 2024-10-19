@@ -84,7 +84,7 @@ glabel D_800F15E0
 
 .section .text
 
-glabel add_ui_element
+glabel load_menu_item_ui
 /* 09F250 8009E650 27BDFF80 */  addiu $sp, $sp, -0x80
 /* 09F254 8009E654 AFBF001C */  sw    $ra, 0x1c($sp)
 /* 09F258 8009E658 AFA7008C */  sw    $a3, 0x8c($sp)
@@ -167,15 +167,15 @@ glabel add_ui_element
 /* 09F370 8009E770 00000000 */   nop
 glabel L8009E774
 /* 09F374 8009E774 44802000 */  mtc1  $zero, $f4
-/* 09F378 8009E778 3C018019 */  lui   $at, %hi(s8018ED94) # $at, 0x8019
-/* 09F37C 8009E77C AC20ED94 */  sw    $zero, %lo(s8018ED94)($at)
-/* 09F380 8009E780 3C01800F */  lui   $at, %hi(D_800E8530) # $at, 0x800f
-/* 09F384 8009E784 E4248530 */  swc1  $f4, %lo(D_800E8530)($at)
+/* 09F378 8009E778 3C018019 */  lui   $at, %hi(sIntroModelTimer) # $at, 0x8019
+/* 09F37C 8009E77C AC20ED94 */  sw    $zero, %lo(sIntroModelTimer)($at)
+/* 09F380 8009E780 3C01800F */  lui   $at, %hi(sIntroModelMotionSpeed) # $at, 0x800f
+/* 09F384 8009E784 E4248530 */  swc1  $f4, %lo(sIntroModelMotionSpeed)($at)
 /* 09F388 8009E788 3C014040 */  li    $at, 0x40400000 # 3.000000
 /* 09F38C 8009E78C 44813000 */  mtc1  $at, $f6
-/* 09F390 8009E790 3C01800F */  lui   $at, %hi(D_800E8534) # $at, 0x800f
+/* 09F390 8009E790 3C01800F */  lui   $at, %hi(sIntroModelSpeed) # $at, 0x800f
 /* 09F394 8009E794 44800000 */  mtc1  $zero, $f0
-/* 09F398 8009E798 E4268534 */  swc1  $f6, %lo(D_800E8534)($at)
+/* 09F398 8009E798 E4268534 */  swc1  $f6, %lo(sIntroModelSpeed)($at)
 /* 09F39C 8009E79C 3C018019 */  lui   $at, %hi(gIntroModelZEye) # $at, 0x8019
 /* 09F3A0 8009E7A0 241909C4 */  li    $t9, 2500
 /* 09F3A4 8009E7A4 AC39EDC0 */  sw    $t9, %lo(gIntroModelZEye)($at)

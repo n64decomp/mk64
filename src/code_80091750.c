@@ -94,7 +94,7 @@ ALIGNED8 SaveData gSaveData;
 
 u8 D_8018ED90;
 u8 D_8018ED91;
-s32 s8018ED94;
+s32 sIntroModelTimer;
 
 Unk_D_800E70A0 D_800E70A0[] = {
     { 0x3d, 0x11, 0x00, 0x00 }, { 0x15, 0x3e, 0x00, 0x00 }, { 0x5c, 0x3e, 0x00, 0x00 },
@@ -1007,9 +1007,11 @@ Gfx* D_800E850C[] = {
 
 s8 D_800E852C = 1;
 
-f32 D_800E8530 = 0.0f;
+// Speed of the "motion" effect intro logo model
+f32 sIntroModelMotionSpeed = 0.0f;
 
-f32 D_800E8534 = 3.0f;
+// Speed of the intro logo model
+f32 sIntroModelSpeed = 3.0f;
 
 Unk_D_800E70A0 D_800E8538[] = { { 0x69, 0x9b, 0x00, 0x00 } };
 
@@ -1239,7 +1241,7 @@ void func_80091B78(void) {
     D_800DC5EC->screenWidth = SCREEN_WIDTH;
     D_800DC5EC->screenHeight = SCREEN_HEIGHT;
     gFadeModeSelection = FADE_MODE_MAIN;
-    render_menus();
+    load_menus();
 
     for (i = 0; i < 4; i++) {
         func_800C97C4((u8) i);
@@ -1334,19 +1336,19 @@ void func_80091FA4(void) {
     func_8009A344();
     func_8009E620();
     func_80092258();
-    add_ui_element(MENU_ITEM_TYPE_096, 0x00000064, 0x00000024, MENU_ITEM_PRIORITY_1);
-    add_ui_element(MENU_ITEM_TYPE_097, 0x00000064, 0x000000DD, MENU_ITEM_PRIORITY_1);
-    add_ui_element(MENU_ITEM_TYPE_098, 0, 0, MENU_ITEM_PRIORITY_0);
-    add_ui_element(MENU_ITEM_TYPE_0C7, 0, 0, MENU_ITEM_PRIORITY_0);
+    load_menu_item_ui(MENU_ITEM_TYPE_096, 0x00000064, 0x00000024, MENU_ITEM_UI_PRIO_1);
+    load_menu_item_ui(MENU_ITEM_TYPE_097, 0x00000064, 0x000000DD, MENU_ITEM_UI_PRIO_1);
+    load_menu_item_ui(MENU_ITEM_TYPE_098, 0, 0, MENU_ITEM_UI_PRIO_0);
+    load_menu_item_ui(MENU_ITEM_TYPE_0C7, 0, 0, MENU_ITEM_UI_PRIO_0);
     if (gModeSelection == TIME_TRIALS) {
-        add_ui_element(MENU_ITEM_TYPE_0BE, 0, 0, MENU_ITEM_PRIORITY_0);
-        add_ui_element(MENU_ITEM_TYPE_10E, 0, 0, MENU_ITEM_PRIORITY_0);
+        load_menu_item_ui(MENU_ITEM_TYPE_0BE, 0, 0, MENU_ITEM_UI_PRIO_0);
+        load_menu_item_ui(MENU_ITEM_TYPE_10E, 0, 0, MENU_ITEM_UI_PRIO_0);
     }
     if ((D_8015F890 != 0) && (gModeSelection == TIME_TRIALS)) {
-        add_ui_element(MENU_ITEM_TYPE_0BD, 0, 0, MENU_ITEM_PRIORITY_0);
+        load_menu_item_ui(MENU_ITEM_TYPE_0BD, 0, 0, MENU_ITEM_UI_PRIO_0);
     }
     if (!(gControllerBits & 1) && (gDemoUseController != 0)) {
-        add_ui_element(MENU_ITEM_UI_NO_CONTROLLER, 0, 0, MENU_ITEM_PRIORITY_2);
+        load_menu_item_ui(MENU_ITEM_UI_NO_CONTROLLER, 0, 0, MENU_ITEM_UI_PRIO_2);
     }
     func_800B5F30();
 }
@@ -1457,22 +1459,22 @@ void func_80092500(void) {
 
     switch (gModeSelection) {
         case GRAND_PRIX:
-            add_ui_element(MENU_ITEM_TYPE_0AA, 0, 0, MENU_ITEM_PRIORITY_0);
+            load_menu_item_ui(MENU_ITEM_TYPE_0AA, 0, 0, MENU_ITEM_UI_PRIO_0);
             break;
         case TIME_TRIALS:
-            add_ui_element(MENU_ITEM_TYPE_0B9, 0, 0, MENU_ITEM_PRIORITY_0);
+            load_menu_item_ui(MENU_ITEM_TYPE_0B9, 0, 0, MENU_ITEM_UI_PRIO_0);
             break;
     }
 }
 
 void func_80092564(void) {
-    add_ui_element(MENU_ITEM_TYPE_0AC, 0, 0, MENU_ITEM_PRIORITY_0);
+    load_menu_item_ui(MENU_ITEM_TYPE_0AC, 0, 0, MENU_ITEM_UI_PRIO_0);
     func_8005D18C();
     func_8001968C();
 }
 
 void func_800925A0(void) {
-    add_ui_element(MENU_ITEM_TYPE_0AF, 0, 0, MENU_ITEM_PRIORITY_0);
+    load_menu_item_ui(MENU_ITEM_TYPE_0AF, 0, 0, MENU_ITEM_UI_PRIO_0);
 }
 
 void func_800925CC(void) {
@@ -1483,122 +1485,122 @@ void func_800925CC(void) {
 }
 
 void func_80092604(void) {
-    add_ui_element(MENU_ITEM_TYPE_0B0, 0, 0, MENU_ITEM_PRIORITY_0);
+    load_menu_item_ui(MENU_ITEM_TYPE_0B0, 0, 0, MENU_ITEM_UI_PRIO_0);
 }
 
 void func_80092630(void) {
-    add_ui_element(MENU_ITEM_TYPE_0BC, 0, 0, MENU_ITEM_PRIORITY_0);
+    load_menu_item_ui(MENU_ITEM_TYPE_0BC, 0, 0, MENU_ITEM_UI_PRIO_0);
 }
 
 void func_8009265C(void) {
-    add_ui_element(MENU_ITEM_TYPE_12B, 0, 0, MENU_ITEM_PRIORITY_2);
+    load_menu_item_ui(MENU_ITEM_TYPE_12B, 0, 0, MENU_ITEM_UI_PRIO_2);
 }
 
 void func_80092688(void) {
     switch (D_800DC5E4) {
         case 0:
-            add_ui_element(MENU_ITEM_TYPE_1CE, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1CE, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         default:
-            add_ui_element(MENU_ITEM_TYPE_190, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_191, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_190, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_191, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 2:
-            add_ui_element(MENU_ITEM_TYPE_192, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_193, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_192, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_193, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 3:
-            add_ui_element(MENU_ITEM_TYPE_194, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_195, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_194, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_195, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 4:
-            add_ui_element(MENU_ITEM_TYPE_196, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_197, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_196, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_197, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 5:
-            add_ui_element(MENU_ITEM_TYPE_198, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_199, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_19A, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_19B, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_198, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_199, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_19A, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_19B, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 6:
-            add_ui_element(MENU_ITEM_TYPE_198, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_19C, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_19D, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_19E, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_198, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_19C, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_19D, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_19E, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 7:
-            add_ui_element(MENU_ITEM_TYPE_19F, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1A0, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1A1, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1A2, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_19F, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1A0, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1A1, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1A2, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 8:
-            add_ui_element(MENU_ITEM_TYPE_1A3, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1A4, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1A3, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1A4, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 9:
-            add_ui_element(MENU_ITEM_TYPE_1A5, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1A6, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1A7, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1A8, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1A9, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1A5, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1A6, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1A7, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1A8, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1A9, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 10:
-            add_ui_element(MENU_ITEM_TYPE_1A5, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1A6, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1AA, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1AB, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1AC, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1A5, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1A6, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1AA, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1AB, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1AC, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 11:
-            add_ui_element(MENU_ITEM_TYPE_1AD, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1AE, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1AF, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1B0, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1AD, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1AE, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1AF, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1B0, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 12:
-            add_ui_element(MENU_ITEM_TYPE_1B1, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1B2, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1B1, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1B2, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 13:
-            add_ui_element(MENU_ITEM_TYPE_1B3, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1B4, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1B5, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1B3, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1B4, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1B5, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 14:
-            add_ui_element(MENU_ITEM_TYPE_1B6, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1B7, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1B8, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1B9, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1BA, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1BB, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1BC, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1B6, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1B7, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1B8, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1B9, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1BA, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1BB, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1BC, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 15:
-            add_ui_element(MENU_ITEM_TYPE_1BD, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1BE, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1BF, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1C0, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1BD, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1BE, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1BF, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1C0, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 16:
-            add_ui_element(MENU_ITEM_TYPE_1C1, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1C2, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1C3, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1C1, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1C2, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1C3, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 17:
-            add_ui_element(MENU_ITEM_TYPE_1C4, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1C5, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1C6, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1C7, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1C8, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1C9, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1CA, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1CB, 0, 0, MENU_ITEM_PRIORITY_2);
-            add_ui_element(MENU_ITEM_TYPE_1CC, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1C4, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1C5, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1C6, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1C7, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1C8, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1C9, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1CA, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1CB, 0, 0, MENU_ITEM_UI_PRIO_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1CC, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
         case 18:
-            add_ui_element(MENU_ITEM_TYPE_1CD, 0, 0, MENU_ITEM_PRIORITY_2);
+            load_menu_item_ui(MENU_ITEM_TYPE_1CD, 0, 0, MENU_ITEM_UI_PRIO_2);
             return;
     }
 }
@@ -2107,7 +2109,7 @@ void func_80093C98(s32 arg0) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007F18);
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    func_800A8250();
+    handle_menus_special();
     if (arg0 == 0) {
         func_800A54EC();
         func_8009CA6C(4);
@@ -2159,7 +2161,7 @@ void func_80093F10(void) {
     func_8009C918();
     func_80099A70();
     func_80099E54();
-    func_800A8230();
+    handle_menus_default();
     func_80099AEC();
     func_80099EC4();
     func_8009CA2C();
@@ -2179,7 +2181,7 @@ void func_800940EC(s32 arg0) {
     func_80092148();
     func_80099A70();
     func_80099E54();
-    func_800A8230();
+    handle_menus_default();
     func_80099AEC();
     func_80099EC4();
     func_8009CA6C(arg0);
@@ -2205,14 +2207,14 @@ void func_800942D0(void) {
     gDPSetEnvColor(gDisplayListHead++, 0x00, 0x00, 0x00, 0x00);
     gSPDisplayList(gDisplayListHead++, D_02007F60);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
-    if (D_800E8530 > 0) {
-        var_f26 = D_800E8534;
+    if (sIntroModelMotionSpeed > 0) {
+        var_f26 = sIntroModelSpeed;
         if (var_f26 > 10.0f) {
             var_f26 = 10.0f;
         }
         for (var_s2 = 0, thing = 0xC0; var_s2 < 0xC; var_s2++, thing -= 0x10) {
             guRotate(test, 0.0f, 1.0f, 0.0f, 0.0f);
-            guRotate(test + 1, (var_s2 + 1) * D_800E8530 * var_f26, 0.0f, 1.0f, 0.0f);
+            guRotate(test + 1, (var_s2 + 1) * sIntroModelMotionSpeed * var_f26, 0.0f, 1.0f, 0.0f);
             guScale(test + 2, 1.0f, 1.0f, 2.0f);
             gSPMatrix(gDisplayListHead++, test++, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
             gSPMatrix(gDisplayListHead++, test++, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
@@ -2269,7 +2271,7 @@ void func_80094A64(struct GfxPool* pool) {
     guOrtho(&pool->mtxScreen, 0.0f, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1, 0.0f, -100.0f, 100.0f, 1.0f);
     gSPMatrix(gDisplayListHead++, &pool->mtxScreen, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPDisplayList(gDisplayListHead++, D_02007650);
-    render_menus();
+    load_menus();
     func_80092290(4, D_8018E850, D_8018E858);
     func_80092290(5, &D_8018E850[1], &D_8018E858[1]);
     func_80099A70();
@@ -2287,7 +2289,7 @@ void func_80094A64(struct GfxPool* pool) {
         case MAIN_MENU:
         case CHARACTER_SELECT_MENU:
         case COURSE_SELECT_MENU:
-            func_800A8230();
+            handle_menus_default();
             func_80099AEC();
             break;
     }
@@ -2297,7 +2299,7 @@ void func_80094A64(struct GfxPool* pool) {
     gSPDisplayList(gDisplayListHead++, D_020076B0);
 }
 
-void render_menus(void) {
+void load_menus(void) {
     if (gFadeModeSelection != FADE_MODE_NONE) {
         func_80099110();
         func_8009A344();
@@ -2309,133 +2311,133 @@ void render_menus(void) {
         load_menu_states(gMenuSelection);
         switch (gMenuSelection) {
             case OPTIONS_MENU:
-                add_ui_element(MAIN_MENU_BACKGROUND, 0, 0, MENU_ITEM_PRIORITY_2);
-                add_ui_element(MENU_ITEM_TYPE_0F1, 0, 0, MENU_ITEM_PRIORITY_4);
-                add_ui_element(MENU_ITEM_TYPE_0F0, 0, 0, MENU_ITEM_PRIORITY_2);
+                load_menu_item_ui(MAIN_MENU_BACKGROUND, 0, 0, MENU_ITEM_UI_PRIO_2);
+                load_menu_item_ui(MENU_ITEM_TYPE_0F1, 0, 0, MENU_ITEM_UI_PRIO_4);
+                load_menu_item_ui(MENU_ITEM_TYPE_0F0, 0, 0, MENU_ITEM_UI_PRIO_2);
                 break;
             case DATA_MENU:
-                add_ui_element(MAIN_MENU_BACKGROUND, 0, 0, MENU_ITEM_PRIORITY_2);
-                add_ui_element(MENU_ITEM_TYPE_08C, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_07C, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_07D, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_07E, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_07F, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_080, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_081, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_082, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_083, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_084, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_085, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_086, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_087, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_088, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_089, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_08A, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_08B, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_08D, 0, 0, MENU_ITEM_PRIORITY_8);
+                load_menu_item_ui(MAIN_MENU_BACKGROUND, 0, 0, MENU_ITEM_UI_PRIO_2);
+                load_menu_item_ui(MENU_ITEM_TYPE_08C, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_07C, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_07D, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_07E, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_07F, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_080, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_081, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_082, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_083, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_084, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_085, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_086, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_087, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_088, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_089, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_08A, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_08B, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_08D, 0, 0, MENU_ITEM_UI_PRIO_8);
                 break;
             case COURSE_DATA_MENU:
-                add_ui_element(MENU_ITEM_TYPE_0E6, 0, 0, MENU_ITEM_PRIORITY_8);
-                add_ui_element(MENU_ITEM_TYPE_0E7, 0, 0, MENU_ITEM_PRIORITY_8);
-                add_ui_element(MENU_ITEM_TYPE_0E8, 0, 0, MENU_ITEM_PRIORITY_8);
-                add_ui_element(MENU_ITEM_TYPE_0E9, 0, 0, MENU_ITEM_PRIORITY_8);
-                add_ui_element(MENU_ITEM_TYPE_0EA, 0, 0, MENU_ITEM_PRIORITY_8);
+                load_menu_item_ui(MENU_ITEM_TYPE_0E6, 0, 0, MENU_ITEM_UI_PRIO_8);
+                load_menu_item_ui(MENU_ITEM_TYPE_0E7, 0, 0, MENU_ITEM_UI_PRIO_8);
+                load_menu_item_ui(MENU_ITEM_TYPE_0E8, 0, 0, MENU_ITEM_UI_PRIO_8);
+                load_menu_item_ui(MENU_ITEM_TYPE_0E9, 0, 0, MENU_ITEM_UI_PRIO_8);
+                load_menu_item_ui(MENU_ITEM_TYPE_0EA, 0, 0, MENU_ITEM_UI_PRIO_8);
                 break;
             case LOGO_INTRO_MENU:
-                add_ui_element(LOGO_INTRO_MENU_LOGO, 0, 0, MENU_ITEM_PRIORITY_0);
+                load_menu_item_ui(MENU_ITEM_UI_LOGO_INTRO, 0, 0, MENU_ITEM_UI_PRIO_0);
                 break;
             case CONTROLLER_PAK_MENU:
-                add_ui_element(MENU_ITEM_TYPE_0DA, 0, 0, MENU_ITEM_PRIORITY_0);
-                add_ui_element(MENU_ITEM_TYPE_0D2, 0, 0, MENU_ITEM_PRIORITY_4);
-                add_ui_element(MENU_ITEM_TYPE_0D4, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_0D3, 0, 0, MENU_ITEM_PRIORITY_8);
-                add_ui_element(MENU_ITEM_TYPE_0D5, 0, 0, MENU_ITEM_PRIORITY_A);
-                add_ui_element(MENU_ITEM_TYPE_0D6, 0, 0, MENU_ITEM_PRIORITY_A);
-                add_ui_element(MENU_ITEM_TYPE_0D7, 0, 0, MENU_ITEM_PRIORITY_A);
-                add_ui_element(MENU_ITEM_TYPE_0D8, 0, 0, MENU_ITEM_PRIORITY_A);
-                add_ui_element(MENU_ITEM_TYPE_0D9, 0, 0, MENU_ITEM_PRIORITY_A);
+                load_menu_item_ui(MENU_ITEM_TYPE_0DA, 0, 0, MENU_ITEM_UI_PRIO_0);
+                load_menu_item_ui(MENU_ITEM_TYPE_0D2, 0, 0, MENU_ITEM_UI_PRIO_4);
+                load_menu_item_ui(MENU_ITEM_TYPE_0D4, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_0D3, 0, 0, MENU_ITEM_UI_PRIO_8);
+                load_menu_item_ui(MENU_ITEM_TYPE_0D5, 0, 0, MENU_ITEM_UI_PRIO_A);
+                load_menu_item_ui(MENU_ITEM_TYPE_0D6, 0, 0, MENU_ITEM_UI_PRIO_A);
+                load_menu_item_ui(MENU_ITEM_TYPE_0D7, 0, 0, MENU_ITEM_UI_PRIO_A);
+                load_menu_item_ui(MENU_ITEM_TYPE_0D8, 0, 0, MENU_ITEM_UI_PRIO_A);
+                load_menu_item_ui(MENU_ITEM_TYPE_0D9, 0, 0, MENU_ITEM_UI_PRIO_A);
                 break;
             case START_MENU:
-                add_ui_element(MENU_ITEM_UI_LOGO_AND_COPYRIGHT, 0, 0, MENU_ITEM_PRIORITY_4);
-                add_ui_element(MENU_ITEM_UI_START_BACKGROUND, 0, 0, MENU_ITEM_PRIORITY_0);
-                add_ui_element(START_MENU_FLAG, 0, 0, MENU_ITEM_PRIORITY_0);
+                load_menu_item_ui(MENU_ITEM_UI_LOGO_AND_COPYRIGHT, 0, 0, MENU_ITEM_UI_PRIO_4);
+                load_menu_item_ui(MENU_ITEM_UI_START_BACKGROUND, 0, 0, MENU_ITEM_UI_PRIO_0);
+                load_menu_item_ui(START_MENU_FLAG, 0, 0, MENU_ITEM_UI_PRIO_0);
                 if (gControllerBits & 1) {
-                    add_ui_element(MENU_ITEM_UI_PUSH_START_BUTTON, 0, 0, MENU_ITEM_PRIORITY_2);
+                    load_menu_item_ui(MENU_ITEM_UI_PUSH_START_BUTTON, 0, 0, MENU_ITEM_UI_PRIO_2);
                 } else {
-                    add_ui_element(MENU_ITEM_UI_NO_CONTROLLER, 0, 0, MENU_ITEM_PRIORITY_2);
+                    load_menu_item_ui(MENU_ITEM_UI_NO_CONTROLLER, 0, 0, MENU_ITEM_UI_PRIO_2);
                 }
-                add_ui_element(MENU_ITEM_UI_START_RECORD_TIME, 0, 0, MENU_ITEM_PRIORITY_6);
+                load_menu_item_ui(MENU_ITEM_UI_START_RECORD_TIME, 0, 0, MENU_ITEM_UI_PRIO_6);
                 gDemoMode = 0;
                 gDemoUseController = 0;
                 break;
             case MAIN_MENU:
-                add_ui_element(MAIN_MENU_BACKGROUND, 0, 0, MENU_ITEM_PRIORITY_2);
-                add_ui_element(MENU_ITEM_UI_GAME_SELECT, 0x0000015E, 0x00000011, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_UI_4P_GAME, 0x0000015E, 0x0000003E, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_UI_3P_GAME, 0x0000015E, 0x0000003E, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_UI_2P_GAME, 0x0000015E, 0x0000003E, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_UI_1P_GAME, 0x0000015E, 0x0000003E, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_UI_OK, 0x0000015E, 0x000000C8, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MAIN_MENU_DATA_GFX, 0x0000015E, 0x000000C8, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MAIN_MENU_OPTION_GFX, 0x0000015E, 0x000000C8, MENU_ITEM_PRIORITY_6);
+                load_menu_item_ui(MAIN_MENU_BACKGROUND, 0, 0, MENU_ITEM_UI_PRIO_2);
+                load_menu_item_ui(MENU_ITEM_UI_GAME_SELECT, 0x0000015E, 0x00000011, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_UI_4P_GAME, 0x0000015E, 0x0000003E, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_UI_3P_GAME, 0x0000015E, 0x0000003E, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_UI_2P_GAME, 0x0000015E, 0x0000003E, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_UI_1P_GAME, 0x0000015E, 0x0000003E, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_UI_OK, 0x0000015E, 0x000000C8, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MAIN_MENU_DATA_GFX, 0x0000015E, 0x000000C8, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MAIN_MENU_OPTION_GFX, 0x0000015E, 0x000000C8, MENU_ITEM_UI_PRIO_6);
                 if (has_terminate_150cc() != 0) {
-                    add_ui_element(MENU_ITEM_TYPE_015, 0, 0, MENU_ITEM_PRIORITY_6);
+                    load_menu_item_ui(MENU_ITEM_TYPE_015, 0, 0, MENU_ITEM_UI_PRIO_6);
                 }
-                add_ui_element(MAIN_MENU_150CC, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MAIN_MENU_100CC, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MAIN_MENU_50CC, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MAIN_MENU_TIME_TRIALS_DATA, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MAIN_MENU_TIME_TRIALS_BEGIN, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_01B, 0, 0, MENU_ITEM_PRIORITY_C);
+                load_menu_item_ui(MAIN_MENU_150CC, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MAIN_MENU_100CC, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MAIN_MENU_50CC, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MAIN_MENU_TIME_TRIALS_DATA, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MAIN_MENU_TIME_TRIALS_BEGIN, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_01B, 0, 0, MENU_ITEM_UI_PRIO_C);
                 break;
             case CHARACTER_SELECT_MENU:
-                add_ui_element(CHARACTER_SELECT_BACKGROUND, 0, 0, MENU_ITEM_PRIORITY_2);
-                add_ui_element(CHARACTER_SELECT_MENU_PLAYER_SELECT_BANNER, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(CHARACTER_SELECT_MENU_OK, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(CHARACTER_SELECT_MENU_MARIO, 0, 0, MENU_ITEM_PRIORITY_8);
-                add_ui_element(CHARACTER_SELECT_MENU_LUIGI, 0, 0, MENU_ITEM_PRIORITY_8);
-                add_ui_element(CHARACTER_SELECT_MENU_TOAD, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(CHARACTER_SELECT_MENU_PEACH, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(CHARACTER_SELECT_MENU_YOSHI, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(CHARACTER_SELECT_MENU_DK, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(CHARACTER_SELECT_MENU_WARIO, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(CHARACTER_SELECT_MENU_BOWSER, 0, 0, MENU_ITEM_PRIORITY_8);
-                add_ui_element(CHARACTER_SELECT_MENU_1P_CURSOR, 0, 0, MENU_ITEM_PRIORITY_C);
-                add_ui_element(CHARACTER_SELECT_MENU_2P_CURSOR, 0, 0, MENU_ITEM_PRIORITY_C);
-                add_ui_element(CHARACTER_SELECT_MENU_3P_CURSOR, 0, 0, MENU_ITEM_PRIORITY_C);
-                add_ui_element(CHARACTER_SELECT_MENU_4P_CURSOR, 0, 0, MENU_ITEM_PRIORITY_C);
+                load_menu_item_ui(CHARACTER_SELECT_BACKGROUND, 0, 0, MENU_ITEM_UI_PRIO_2);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_PLAYER_SELECT_BANNER, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_OK, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_MARIO, 0, 0, MENU_ITEM_UI_PRIO_8);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_LUIGI, 0, 0, MENU_ITEM_UI_PRIO_8);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_TOAD, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_PEACH, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_YOSHI, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_DK, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_WARIO, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_BOWSER, 0, 0, MENU_ITEM_UI_PRIO_8);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_1P_CURSOR, 0, 0, MENU_ITEM_UI_PRIO_C);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_2P_CURSOR, 0, 0, MENU_ITEM_UI_PRIO_C);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_3P_CURSOR, 0, 0, MENU_ITEM_UI_PRIO_C);
+                load_menu_item_ui(CHARACTER_SELECT_MENU_4P_CURSOR, 0, 0, MENU_ITEM_UI_PRIO_C);
                 break;
             case COURSE_SELECT_MENU:
-                add_ui_element(COURSE_SELECT_BACKGROUND, 0, 0, MENU_ITEM_PRIORITY_2);
-                add_ui_element(COURSE_SELECT_MAP_SELECT, 0, 0, MENU_ITEM_PRIORITY_6);
+                load_menu_item_ui(COURSE_SELECT_BACKGROUND, 0, 0, MENU_ITEM_UI_PRIO_2);
+                load_menu_item_ui(COURSE_SELECT_MAP_SELECT, 0, 0, MENU_ITEM_UI_PRIO_6);
                 if (gModeSelection != BATTLE) {
-                    add_ui_element(COURSE_SELECT_MUSHROOM_CUP, 0, 0, MENU_ITEM_PRIORITY_4);
-                    add_ui_element(COURSE_SELECT_FLOWER_CUP, 0, 0, MENU_ITEM_PRIORITY_4);
-                    add_ui_element(COURSE_SELECT_STAR_CUP, 0, 0, MENU_ITEM_PRIORITY_4);
-                    add_ui_element(COURSE_SELECT_SPECIAL_CUP, 0, 0, MENU_ITEM_PRIORITY_4);
-                    add_ui_element(MENU_ITEM_TYPE_058, 0, 0, MENU_ITEM_PRIORITY_6);
-                    add_ui_element(COURSE_SELECT_COURSE_NAMES, 0, 0, MENU_ITEM_PRIORITY_6);
-                    add_ui_element(MENU_ITEM_TYPE_05A, 0, 0, MENU_ITEM_PRIORITY_6);
-                    add_ui_element(MENU_ITEM_TYPE_05B, 0, 0, MENU_ITEM_PRIORITY_6);
+                    load_menu_item_ui(COURSE_SELECT_MUSHROOM_CUP, 0, 0, MENU_ITEM_UI_PRIO_4);
+                    load_menu_item_ui(COURSE_SELECT_FLOWER_CUP, 0, 0, MENU_ITEM_UI_PRIO_4);
+                    load_menu_item_ui(COURSE_SELECT_STAR_CUP, 0, 0, MENU_ITEM_UI_PRIO_4);
+                    load_menu_item_ui(COURSE_SELECT_SPECIAL_CUP, 0, 0, MENU_ITEM_UI_PRIO_4);
+                    load_menu_item_ui(MENU_ITEM_TYPE_058, 0, 0, MENU_ITEM_UI_PRIO_6);
+                    load_menu_item_ui(COURSE_SELECT_COURSE_NAMES, 0, 0, MENU_ITEM_UI_PRIO_6);
+                    load_menu_item_ui(MENU_ITEM_TYPE_05A, 0, 0, MENU_ITEM_UI_PRIO_6);
+                    load_menu_item_ui(MENU_ITEM_TYPE_05B, 0, 0, MENU_ITEM_UI_PRIO_6);
                 } else {
-                    add_ui_element(COURSE_SELECT_BATTLE_NAMES, 0, 0, MENU_ITEM_PRIORITY_6);
-                    add_ui_element(MENU_ITEM_TYPE_06E, 0, 0, MENU_ITEM_PRIORITY_6);
+                    load_menu_item_ui(COURSE_SELECT_BATTLE_NAMES, 0, 0, MENU_ITEM_UI_PRIO_6);
+                    load_menu_item_ui(MENU_ITEM_TYPE_06E, 0, 0, MENU_ITEM_UI_PRIO_6);
                 }
-                add_ui_element(MENU_ITEM_TYPE_064, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_05F, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_060, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_061, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_062, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(COURSE_SELECT_OK, 0, 0, MENU_ITEM_PRIORITY_6);
-                add_ui_element(MENU_ITEM_TYPE_05E, 0, 0, MENU_ITEM_PRIORITY_8);
+                load_menu_item_ui(MENU_ITEM_TYPE_064, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_05F, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_060, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_061, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_062, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(COURSE_SELECT_OK, 0, 0, MENU_ITEM_UI_PRIO_6);
+                load_menu_item_ui(MENU_ITEM_TYPE_05E, 0, 0, MENU_ITEM_UI_PRIO_8);
                 if (gModeSelection == TIME_TRIALS) {
-                    add_ui_element(MENU_ITEM_TYPE_065, 0, 0, MENU_ITEM_PRIORITY_8);
-                    add_ui_element(MENU_ITEM_TYPE_066, 0, 0, MENU_ITEM_PRIORITY_8);
-                    add_ui_element(MENU_ITEM_TYPE_069, 0, 0, MENU_ITEM_PRIORITY_8);
+                    load_menu_item_ui(MENU_ITEM_TYPE_065, 0, 0, MENU_ITEM_UI_PRIO_8);
+                    load_menu_item_ui(MENU_ITEM_TYPE_066, 0, 0, MENU_ITEM_UI_PRIO_8);
+                    load_menu_item_ui(MENU_ITEM_TYPE_069, 0, 0, MENU_ITEM_UI_PRIO_8);
                 }
                 if (gModeSelection == GRAND_PRIX) {
-                    add_ui_element(MENU_ITEM_TYPE_068, 0, 0, MENU_ITEM_PRIORITY_8);
-                    add_ui_element(MENU_ITEM_TYPE_067, 0, 0, MENU_ITEM_PRIORITY_5);
+                    load_menu_item_ui(MENU_ITEM_TYPE_068, 0, 0, MENU_ITEM_UI_PRIO_8);
+                    load_menu_item_ui(MENU_ITEM_TYPE_067, 0, 0, MENU_ITEM_UI_PRIO_5);
                 }
                 break;
             case 0:
@@ -2459,7 +2461,7 @@ void func_80095574(void) {
     s32 var_v0;
 
     if ((unref_8018EE0C < 3) || (D_8018E7AC[4] != 0)) {
-        func_800A8230();
+        handle_menus_default();
     }
     if (gDebugMenuSelection > DEBUG_MENU_DISABLED) { // If not disabled
         load_debug_font();
@@ -3591,98 +3593,98 @@ void func_80099A94(MenuTexture* arg0, s32 arg1) {
         var_v1++;
     }
     var_v1->texture = segmented_to_virtual_dupe(arg0);
-    var_v1->unk_4 = arg1;
+    var_v1->texNum = arg1;
 }
 
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/rxEoi
 // Something's up with the handling of `_textures_0aSegmentRomStart`, I don't know how to fix it
 void func_80099AEC(void) {
-    s8 var_s4;
-    s32 var_s0;
+    s8 texEnd;
+    s32 size;
     UNUSED s32 stackPadding0;
     UNUSED s32 stackPadding1;
-    s32 huh;
-    OSIoMesg sp68;
-    OSMesg sp64;
+    s32 texSize;
+    OSIoMesg mb;
+    OSMesg msg;
     UNUSED u8* test;
-    s32 sp60;
-    MenuTexture* temp_s2;
+    s32 bufSize;
+    MenuTexture* texAddr;
     struct_8018E060_entry* var_s1;
 
-    if (gGamestate == 4) {
-        sp60 = 0x00000500;
+    if (gGamestate == RACING) {
+        bufSize = 0x00000500;
     } else {
-        sp60 = 0x00001000;
+        bufSize = 0x00001000;
     }
 
-    var_s4 = 0;
+    texEnd = 0;
     var_s1 = D_8018E060;
-    temp_s2 = var_s1->texture;
+    texAddr = var_s1->texture;
 
-    if (temp_s2 == NULL)
+    if (texAddr == NULL)
         return;
 
-    huh = temp_s2->size;
-    if (huh != 0) {
-        var_s0 = huh;
+    texSize = texAddr->size;
+    if (texSize != 0) {
+        size = texSize;
     } else {
-        var_s0 = 0x1400;
+        size = 0x1400;
     }
-    if (var_s0 % 8) {
-        var_s0 = ((var_s0 / 8) * 8) + 8;
+    if (size % 8) {
+        size = ((size / 8) * 8) + 8;
     }
-    osInvalDCache(gMenuCompressedBuffer, var_s0);
-    osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-                 gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
-    osRecvMesg(&gDmaMesgQueue, &sp64, 1);
+    osInvalDCache(gMenuCompressedBuffer, size);
+    osPiStartDma(&mb, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(texAddr->textureData)],
+                 gMenuCompressedBuffer, size, &gDmaMesgQueue);
+    osRecvMesg(&gDmaMesgQueue, &msg, 1);
     while (1) {
         if ((var_s1 + 1)->texture == NULL) {
-            var_s4 += 1;
+            texEnd += 1;
         } else {
-            temp_s2 = (var_s1 + 1)->texture;
-            huh = (var_s1 + 1)->texture->size;
-            if (huh != 0) {
-                var_s0 = huh;
+            texAddr = (var_s1 + 1)->texture;
+            texSize = (var_s1 + 1)->texture->size;
+            if (texSize != 0) {
+                size = texSize;
             } else {
-                var_s0 = 0x1400;
+                size = 0x1400;
             }
-            if (var_s0 % 8) {
-                var_s0 = ((var_s0 / 8) * 8) + 8;
+            if (size % 8) {
+                size = ((size / 8) * 8) + 8;
             }
-            osInvalDCache(gMenuCompressedBuffer + sp60 * 4, var_s0);
-            osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-                         gMenuCompressedBuffer + sp60 * 4, var_s0, &gDmaMesgQueue);
+            osInvalDCache(gMenuCompressedBuffer + bufSize * 4, size);
+            osPiStartDma(&mb, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(texAddr->textureData)],
+                         gMenuCompressedBuffer + bufSize * 4, size, &gDmaMesgQueue);
         }
-        mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[sMenuTextureMap[var_s1->unk_4].offset]);
+        mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[sMenuTextureMap[var_s1->texNum].offset]);
         var_s1->texture = NULL;
         var_s1++;
-        if (var_s4 != 0)
+        if (texEnd != 0)
             break;
-        osRecvMesg(&gDmaMesgQueue, &sp64, 1);
+        osRecvMesg(&gDmaMesgQueue, &msg, 1);
         if ((var_s1 + 1)->texture == NULL) {
-            var_s4 += 1;
+            texEnd += 1;
         } else {
-            temp_s2 = (var_s1 + 1)->texture;
-            huh = (var_s1 + 1)->texture->size;
-            if (huh != 0) {
-                var_s0 = huh;
+            texAddr = (var_s1 + 1)->texture;
+            texSize = (var_s1 + 1)->texture->size;
+            if (texSize != 0) {
+                size = texSize;
             } else {
-                var_s0 = 0x1400;
+                size = 0x1400;
             }
-            if (var_s0 % 8) {
-                var_s0 = ((var_s0 / 8) * 8) + 8;
+            if (size % 8) {
+                size = ((size / 8) * 8) + 8;
             }
-            osInvalDCache(gMenuCompressedBuffer, var_s0);
-            osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
-                         gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
+            osInvalDCache(gMenuCompressedBuffer, size);
+            osPiStartDma(&mb, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(texAddr->textureData)],
+                         gMenuCompressedBuffer, size, &gDmaMesgQueue);
         }
-        mio0decode(gMenuCompressedBuffer + sp60 * 4, (u8*) &gMenuTextureBuffer[sMenuTextureMap[var_s1->unk_4].offset]);
+        mio0decode(gMenuCompressedBuffer + bufSize * 4, (u8*) &gMenuTextureBuffer[sMenuTextureMap[var_s1->texNum].offset]);
         var_s1->texture = NULL;
         var_s1++;
-        if (var_s4 != 0)
+        if (texEnd != 0)
             break;
-        osRecvMesg(&gDmaMesgQueue, &sp64, 1);
+        osRecvMesg(&gDmaMesgQueue, &msg, 1);
     }
 }
 #else
@@ -5325,7 +5327,7 @@ void func_8009E620(void) {
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/1BHpa
 // Stack differences, can't figure out how to fix them
-void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
+void load_menu_item_ui(s32 type, s32 column, s32 row, s8 priority) {
     MenuItem* var_ra;
     s32 stackPadding0;
     UNUSED s32 stackPadding1;
@@ -5352,18 +5354,18 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
     }
     var_ra->type = type;
     var_ra->state = 0;
-    var_ra->unk8 = 0;
+    var_ra->subState = 0;
     var_ra->column = column;
     var_ra->row = row;
     var_ra->priority = (u8) priority;
     var_ra->visible = one;
-    var_ra->unk1C = 0;
-    var_ra->unk20 = 0;
+    var_ra->param1 = 0;
+    var_ra->param2 = 0;
     switch (type) {
-        case LOGO_INTRO_MENU_LOGO:
-            s8018ED94 = 0;
-            D_800E8530 = 0.0f;
-            D_800E8534 = 3.0f;
+        case MENU_ITEM_UI_LOGO_INTRO:
+            sIntroModelTimer = 0;
+            sIntroModelMotionSpeed = 0.0f;
+            sIntroModelSpeed = 3.0f;
             gIntroModelZEye = 2500;
             gIntroModelRotX = 0;
             gIntroModelRotY = -270.0f;
@@ -5372,8 +5374,8 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
             gIntroModelPosY = 0;
             gIntroModelPosZ = 0;
             gIntroModelScale = 3;
-            var_ra->unk1C = -1;
-            var_ra->unk20 = one;
+            var_ra->param1 = -1;
+            var_ra->param2 = one;
             break;
         case START_MENU_FLAG:
             gIntroModelZEye = 1800;
@@ -5384,8 +5386,8 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
             gIntroModelPosY = 750.0f;
             gIntroModelPosZ = 0;
             gIntroModelScale = 1.0f;
-            var_ra->unk1C = -1;
-            var_ra->unk20 = one;
+            var_ra->param1 = -1;
+            var_ra->param2 = one;
             break;
         case MENU_ITEM_TYPE_0D2:
             load_menu_img_comp_type(D_020014C8, LOAD_MENU_IMG_TKMK00_ONCE);
@@ -5462,7 +5464,7 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
                               D_800E74E8[type - 0x23].green, D_800E74E8[type - 0x23].blue);
             break;
         case MENU_ITEM_UI_OK:
-            var_ra->unk1C = 0x00000020;
+            var_ra->param1 = 0x00000020;
             /* fallthrough */
         case MENU_ITEM_UI_GAME_SELECT:
         case MAIN_MENU_DATA_GFX:
@@ -5489,7 +5491,7 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
             break;
         case CHARACTER_SELECT_MENU_OK:
             load_menu_img_comp_type(D_02004B74, LOAD_MENU_IMG_TKMK00_ONCE);
-            var_ra->unk1C = 0x00000020;
+            var_ra->param1 = 0x00000020;
             break;
         case CHARACTER_SELECT_MENU_1P_CURSOR:
         case CHARACTER_SELECT_MENU_2P_CURSOR:
@@ -5515,7 +5517,7 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
                 animate_character_select_menu(segmented_to_virtual_dupe_2(D_800E8320[type - 0xA0]));
             break;
         case COURSE_SELECT_OK:
-            var_ra->unk1C = 0x00000020;
+            var_ra->param1 = 0x00000020;
             /* fallthrough */
         case COURSE_SELECT_MAP_SELECT:
         case COURSE_SELECT_MUSHROOM_CUP:
@@ -5537,7 +5539,7 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
                 segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[0][var_ra->type - 0x5F]]));
             break;
         case MENU_ITEM_TYPE_05E:
-            var_ra->unk20 = random_int(4U) + 2;
+            var_ra->param2 = random_int(4U) + 2;
             break;
         case MENU_ITEM_TYPE_065:
         case MENU_ITEM_TYPE_066:
@@ -5545,10 +5547,10 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
             var_ra->row = D_800E7248[type - 0x65].row;
             break;
         case MENU_ITEM_TYPE_067:
-            var_ra->unk1C = (s32) gCupSelection;
-            var_ra->unk20 = func_800B54C0(gCupSelection, gCCSelection);
+            var_ra->param1 = (s32) gCupSelection;
+            var_ra->param2 = func_800B54C0(gCupSelection, gCCSelection);
             var_ra->D_8018DEE0_index = animate_character_select_menu(
-                segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - var_ra->unk20]));
+                segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - var_ra->param2]));
             var_ra->column = D_800E7268[0].column;
             var_ra->row = D_800E7268[0].row;
             break;
@@ -5637,21 +5639,21 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
             load_menu_img(segmented_to_virtual_dupe(gMenuTexturesBorderPlayer[type - MENU_ITEM_TYPE_0B1]));
             break;
         case MENU_ITEM_TYPE_0BB:
-            var_ra->unk1C = func_800B5020(playerHUD[0].someTimer, gCharacterSelections[0]);
-            var_ra->unk20 = func_800B5218();
+            var_ra->param1 = func_800B5020(playerHUD[0].someTimer, gCharacterSelections[0]);
+            var_ra->param2 = func_800B5218();
             if (D_80162DD4 != 1) {
                 if (func_800051C4() >= 0x3C01) {
                     D_80162DD4 = 1;
                 }
             }
-            if ((var_ra->unk1C == 0) || (var_ra->unk20 != 0)) {
+            if ((var_ra->param1 == 0) || (var_ra->param2 != 0)) {
                 func_800B559C((gCupSelection * 4) + gCourseIndexInCup);
             }
             break;
         case MENU_ITEM_TYPE_0E6:
             var_ra->D_8018DEE0_index = animate_character_select_menu(segmented_to_virtual_dupe_2(
                 D_800E7E34[gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4]]));
-            var_ra->unk1C = gTimeTrialDataCourseIndex;
+            var_ra->param1 = gTimeTrialDataCourseIndex;
             load_menu_img_comp_type(segmented_to_virtual_dupe(D_02004A0C), LOAD_MENU_IMG_TKMK00_ONCE);
             func_8006EF60();
             if (controller_pak_1_status() == 0) {
@@ -5753,14 +5755,14 @@ void add_ui_element(s32 type, s32 column, s32 row, s8 priority) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/add_ui_element.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/load_menu_item_ui.s")
 #endif
 
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/MatRp
 // Biggest diff left is in the case 0x12 though 0x19 handling. Not really sure what's going on there
 // There's also a diff in the handling of gTextNoController in case 0x4. Not sure what's going on there either
-void menu_item_render(MenuItem* arg0) {
+void render_menus(MenuItem* arg0) {
     s32 var_a1;
     s32 var_v1;
     UNUSED s32 stackPadding0;
@@ -5785,11 +5787,11 @@ void menu_item_render(MenuItem* arg0) {
     if ((s8) arg0->visible != false) {
         gDPPipeSync(gDisplayListHead++);
         switch (arg0->type) {          /* switch 6; irregular */
-            case LOGO_INTRO_MENU_LOGO: /* switch 6 */
-                func_80094660(gGfxPool, arg0->unk1C);
+            case MENU_ITEM_UI_LOGO_INTRO: /* switch 6 */
+                func_80094660(gGfxPool, arg0->param1);
                 break;
             case START_MENU_FLAG: /* switch 6 */
-                render_checkered_flag(gGfxPool, arg0->unk1C);
+                render_checkered_flag(gGfxPool, arg0->param1);
                 break;
             case MENU_ITEM_TYPE_0D2: /* switch 6 */
                 gDisplayListHead = func_8009B9D0(gDisplayListHead, D_020014C8);
@@ -5897,13 +5899,13 @@ void menu_item_render(MenuItem* arg0) {
                 break;
             case MENU_ITEM_UI_OK: /* switch 6 */
                 func_800A8564(arg0);
-                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_0200487C, arg0->column, arg0->row, 2, arg0->unk1C);
+                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_0200487C, arg0->column, arg0->row, 2, arg0->param1);
                 break;
             case MAIN_MENU_OPTION_GFX: /* switch 6 */
             case MAIN_MENU_DATA_GFX:   /* switch 6 */
                 var_a1 = arg0->type - 0xF;
-                if (arg0->unk1C < 0x20) {
-                    temp_t9 = (arg0->unk1C * 0x3A) / 64;
+                if (arg0->param1 < 0x20) {
+                    temp_t9 = (arg0->param1 * 0x3A) / 64;
                     if (var_a1 == gMainMenuSelection) {
                         gDisplayListHead =
                             draw_flash_select_case_fast(gDisplayListHead, arg0->column + temp_t9, arg0->row,
@@ -5916,7 +5918,7 @@ void menu_item_render(MenuItem* arg0) {
                 }
                 var_v1 = arg0->type - 0xA;
                 gDisplayListHead =
-                    func_8009BC9C(gDisplayListHead, D_800E8254[var_v1], arg0->column, arg0->row, 2, arg0->unk1C);
+                    func_8009BC9C(gDisplayListHead, D_800E8254[var_v1], arg0->column, arg0->row, 2, arg0->param1);
                 break;
             case MAIN_MENU_50CC:              /* switch 6 */
             case MAIN_MENU_100CC:             /* switch 6 */
@@ -6004,7 +6006,7 @@ void menu_item_render(MenuItem* arg0) {
                 break;
             case CHARACTER_SELECT_MENU_OK: /* switch 6 */
                 func_800A8564(arg0);
-                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004B74, arg0->column, arg0->row, 2, arg0->unk1C);
+                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004B74, arg0->column, arg0->row, 2, arg0->param1);
                 break;
             case CHARACTER_SELECT_MENU_MARIO:  /* switch 6 */
             case CHARACTER_SELECT_MENU_LUIGI:  /* switch 6 */
@@ -6018,7 +6020,7 @@ void menu_item_render(MenuItem* arg0) {
                 /* fallthrough */
             case MENU_ITEM_TYPE_0A0: /* switch 6 */
             case MENU_ITEM_TYPE_0A1: /* switch 6 */
-                func_8009A76C(arg0->D_8018DEE0_index, arg0->column, arg0->row, arg0->unk1C);
+                func_8009A76C(arg0->D_8018DEE0_index, arg0->column, arg0->row, arg0->param1);
                 break;
             case MENU_ITEM_TYPE_058:         /* switch 6 */
             case COURSE_SELECT_COURSE_NAMES: /* switch 6 */
@@ -6054,7 +6056,7 @@ void menu_item_render(MenuItem* arg0) {
                 break;
             case COURSE_SELECT_OK: /* switch 6 */
                 func_800A8564(arg0);
-                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004E80, arg0->column, arg0->row, 2, arg0->unk1C);
+                gDisplayListHead = func_8009BC9C(gDisplayListHead, D_02004E80, arg0->column, arg0->row, 2, arg0->param1);
                 break;
             case MENU_ITEM_TYPE_065: /* switch 6 */
             case MENU_ITEM_TYPE_066: /* switch 6 */
@@ -6133,11 +6135,11 @@ void menu_item_render(MenuItem* arg0) {
                 break;
             case MENU_ITEM_TYPE_096: /* switch 6 */
                 set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-                print_text1_left(arg0->column, arg0->row, gCupNames[D_800DC540], arg0->unk1C, arg0->unk24, 1.0f);
+                print_text1_left(arg0->column, arg0->row, gCupNames[D_800DC540], arg0->param1, arg0->paramf, 1.0f);
                 break;
             case MENU_ITEM_TYPE_097: /* switch 6 */
                 set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-                print_text_mode_1(arg0->column, arg0->row, gCourseNames[gCurrentCourseId], arg0->unk1C, arg0->unk24,
+                print_text_mode_1(arg0->column, arg0->row, gCourseNames[gCurrentCourseId], arg0->param1, arg0->paramf,
                                   1.0f);
                 break;
             case MENU_ITEM_TYPE_098: /* switch 6 */
@@ -6171,7 +6173,7 @@ void menu_item_render(MenuItem* arg0) {
                         gDisplayListHead,
                         segmented_to_virtual_dupe(D_800E7D54[D_800EFD64[gCharacterSelections[var_v1]]]), arg0->column,
                         arg0->row);
-                    func_8009A7EC(arg0->D_8018DEE0_index, arg0->column, arg0->row, var_v1, arg0->unk1C);
+                    func_8009A7EC(arg0->D_8018DEE0_index, arg0->column, arg0->row, var_v1, arg0->param1);
                     render_cursor_player(arg0, var_v1, 0x000000FF);
                 }
                 break;
@@ -6234,7 +6236,7 @@ void menu_item_render(MenuItem* arg0) {
                     gDisplayListHead = render_menu_textures(
                         gDisplayListHead, segmented_to_virtual_dupe(D_800E7D54[D_800EFD64[D_802874D8.unk1E]]),
                         arg0->column, arg0->row);
-                    func_8009A7EC(arg0->D_8018DEE0_index, arg0->column, arg0->row, 0, arg0->unk1C);
+                    func_8009A7EC(arg0->D_8018DEE0_index, arg0->column, arg0->row, 0, arg0->param1);
                 }
                 break;
             case MENU_ITEM_TYPE_190: /* switch 6 */
@@ -6306,7 +6308,7 @@ void menu_item_render(MenuItem* arg0) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/menu_item_render.s")
+GLOBAL_ASM("asm/non_matchings/code_80091750/render_menus.s")
 #endif
 
 // GLOBAL_ASM("print_rodata.S")
@@ -6359,7 +6361,7 @@ void func_800A0AD0(UNUSED MenuItem* arg0) {
     temp_t1 = find_menu_items_type_dupe(MENU_ITEM_TYPE_0DA);
     if ((gControllerPakMenuSelection != CONTROLLER_PAK_MENU_SELECT_RECORD) &&
         (gControllerPakMenuSelection != CONTROLLER_PAK_MENU_END)) {
-        gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, temp_t1->unk20, 0x00, 0xFF);
+        gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, temp_t1->param2, 0x00, 0xFF);
         gDisplayListHead =
             render_menu_textures(gDisplayListHead, D_02001874, 0x24, (gControllerPakSelectedTableRow * 0xA) + 0x7C);
     }
@@ -6448,7 +6450,7 @@ void func_800A0EB8(UNUSED MenuItem* arg0, s32 arg1) {
         }
     }
     temp_v0 = &D_800E7278[var_t1];
-    gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, temp_t3->unk20, 0x00, 0xFF);
+    gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, temp_t3->param2, 0x00, 0xFF);
     gDisplayListHead = render_menu_textures(gDisplayListHead, D_0200184C, (s32) temp_v0->column, (s32) temp_v0->row);
 }
 
@@ -6465,9 +6467,9 @@ void func_800A0FA4(MenuItem* arg0, s32 arg1) {
         case 1:
         case 4:
             gDisplayListHead = func_8009BC9C(gDisplayListHead, segmented_to_virtual_dupe(D_800E8234[(arg1 * 2) + 0]),
-                                             arg0->column, arg0->row, 2, arg0->unk1C);
+                                             arg0->column, arg0->row, 2, arg0->param1);
             gDisplayListHead = func_8009BC9C(gDisplayListHead, segmented_to_virtual_dupe(D_800E8234[(arg1 * 2) + 1]),
-                                             arg0->column, arg0->row, 2, arg0->unk1C);
+                                             arg0->column, arg0->row, 2, arg0->param1);
             break;
     }
 }
@@ -6514,7 +6516,7 @@ void func_800A12BC(MenuItem* arg0, MenuTexture* arg1) {
             break;
         case 1:
         case 3:
-            gDisplayListHead = func_8009BC9C(gDisplayListHead, arg1, arg0->column, arg0->row, 2, arg0->unk1C);
+            gDisplayListHead = func_8009BC9C(gDisplayListHead, arg1, arg0->column, arg0->row, 2, arg0->param1);
             break;
     }
 }
@@ -6531,7 +6533,7 @@ void func_800A1350(MenuItem* arg0) {
                 break;
             case 1:
             case 3:
-                thing = arg0->unk1C;
+                thing = arg0->param1;
                 gDisplayListHead = draw_box(gDisplayListHead, arg0->column + thing, arg0->row,
                                             (arg0->column - thing) + 0x40, arg0->row + 0x4C, 0, 0, 0, 0x00000064);
                 break;
@@ -6552,7 +6554,7 @@ void func_800A143C(MenuItem* arg0, s32 arg1) {
         case 4:
             gDisplayListHead =
                 func_8009BC9C(gDisplayListHead, segmented_to_virtual_dupe(gMenuTexturesTrackSelection[arg1 + 1]),
-                              arg0->column, arg0->row, 2, arg0->unk1C);
+                              arg0->column, arg0->row, 2, arg0->param1);
             break;
     }
 }
@@ -6569,7 +6571,7 @@ void func_800A1500(MenuItem* arg0) {
         case 1:
             break;
         case 2:
-            if (((temp_v0->unk1C % 4) + 0x5F) != arg0->type) {
+            if (((temp_v0->param1 % 4) + 0x5F) != arg0->type) {
                 var_a1 = 1;
             }
             break;
@@ -6614,13 +6616,13 @@ void func_800A1780(MenuItem* arg0) {
     u32 blue;
     u32 alpha;
 
-    temp_v1 = &D_800E74D0[arg0->unk20];
-    temp_a1 = &D_800E74D0[(arg0->unk20 + 1) % 3];
-    temp_a2 = 256 - arg0->unk1C;
-    red = ((temp_v1->red * temp_a2) + (temp_a1->red * arg0->unk1C)) / 256;
-    green = ((temp_v1->green * temp_a2) + (temp_a1->green * arg0->unk1C)) / 256;
-    blue = ((temp_v1->blue * temp_a2) + (temp_a1->blue * arg0->unk1C)) / 256;
-    alpha = ((temp_v1->alpha * temp_a2) + (temp_a1->alpha * arg0->unk1C)) / 256;
+    temp_v1 = &D_800E74D0[arg0->param2];
+    temp_a1 = &D_800E74D0[(arg0->param2 + 1) % 3];
+    temp_a2 = 256 - arg0->param1;
+    red = ((temp_v1->red * temp_a2) + (temp_a1->red * arg0->param1)) / 256;
+    green = ((temp_v1->green * temp_a2) + (temp_a1->green * arg0->param1)) / 256;
+    blue = ((temp_v1->blue * temp_a2) + (temp_a1->blue * arg0->param1)) / 256;
+    alpha = ((temp_v1->alpha * temp_a2) + (temp_a1->alpha * arg0->param1)) / 256;
     gDPSetPrimColor(gDisplayListHead++, 0, 0, red, green, blue, alpha);
     gDisplayListHead =
         render_menu_textures(gDisplayListHead, segmented_to_virtual_dupe(D_02001FA4), arg0->column, arg0->row);
@@ -6889,7 +6891,7 @@ void func_800A1FB0(MenuItem* arg0) {
                             spE0.column = 0x20 + (0x89 * var_s1);
                             spE0.row = 0x96 + (0x1E * var_s2);
                         }
-                    } else if ((var_s4 != 0) && (var_s2 == arg0->unk20)) {
+                    } else if ((var_s4 != 0) && (var_s2 == arg0->param2)) {
                         set_text_color((s32) gGlobalTimer % 3);
                     } else {
                         set_text_color(TEXT_GREEN);
@@ -6923,12 +6925,12 @@ void func_800A1FB0(MenuItem* arg0) {
                 print_text1_center_mode_1(0x5C + (0x82 * var_s1), 0x0000007D, D_800E7918[var_s1], 0, 0.75f, 0.75f);
                 for (var_s2 = 0; var_s2 != 2; var_s2++) {
                     if (var_s1 == 0) {
-                        if (var_s2 == arg0->unk1C) {
+                        if (var_s2 == arg0->param1) {
                             set_text_color((s32) gGlobalTimer % 3);
                         } else {
                             set_text_color(TEXT_GREEN);
                         }
-                    } else if (var_s2 == arg0->unk20) {
+                    } else if (var_s2 == arg0->param2) {
                         set_text_color((s32) gGlobalTimer % 3);
                     } else {
                         set_text_color(TEXT_GREEN);
@@ -6971,7 +6973,7 @@ void func_800A1FB0(MenuItem* arg0) {
                 print_text1_center_mode_1(0x5C + (0x82 * var_s1), 0x0000007D, D_800E7918[var_s1], 0, 0.75f, 0.75f);
                 for (var_s2 = 0; var_s2 < 2; var_s2++) {
                     if (var_s1 == 0) {
-                        if (var_s2 == arg0->unk1C) {
+                        if (var_s2 == arg0->param1) {
                             if (var_s5 == 0) {
                                 set_text_color(TEXT_RED);
                             } else {
@@ -6980,7 +6982,7 @@ void func_800A1FB0(MenuItem* arg0) {
                         } else {
                             set_text_color(TEXT_GREEN);
                         }
-                    } else if (var_s2 == arg0->unk20) {
+                    } else if (var_s2 == arg0->param2) {
                         set_text_color(TEXT_RED);
                     } else {
                         set_text_color(TEXT_GREEN);
@@ -7030,13 +7032,13 @@ void func_800A2D1C(MenuItem* arg0) {
         case 1:
             gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x13F, 0x28);
             gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xC7, 0x13F, 0xEF);
-            arg0->unk1C = 0x28;
+            arg0->param1 = 0x28;
             break;
         case 2:
-            arg0->unk1C -= 2;
-            if (arg0->unk1C > 0) {
-                gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x13F, arg0->unk1C);
-                gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->unk1C, 0x13F, 0xEF);
+            arg0->param1 -= 2;
+            if (arg0->param1 > 0) {
+                gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x13F, arg0->param1);
+                gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->param1, 0x13F, 0xEF);
             } else {
                 arg0->type = 0;
             }
@@ -7045,10 +7047,10 @@ void func_800A2D1C(MenuItem* arg0) {
             if ((gModeSelection != GRAND_PRIX) || (gPlayerCountSelection1 != 1) || (gDemoUseController != 0)) {
                 arg0->type = 0;
             } else {
-                arg0->unk1C -= 2;
-                if (arg0->unk1C > 0) {
-                    gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x13F, arg0->unk1C);
-                    gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->unk1C, 0x13F, 0xEF);
+                arg0->param1 -= 2;
+                if (arg0->param1 > 0) {
+                    gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x13F, arg0->param1);
+                    gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->param1, 0x13F, 0xEF);
                 } else {
                     arg0->type = 0;
                 }
@@ -7160,7 +7162,7 @@ void func_800A34A8(MenuItem* arg0) {
             if ((test != 8) && (test != 9)) {
                 var_v0 = 0;
             } else {
-                if ((rank * 5) < arg0->unk1C) {
+                if ((rank * 5) < arg0->param1) {
                     var_v0 = 1;
                 } else {
                     var_v0 = 0;
@@ -7189,7 +7191,7 @@ void func_800A34A8(MenuItem* arg0) {
             if ((test != 8) && (test != 9)) {
                 var_v0 = 0;
             } else {
-                if ((rank * 5) < arg0->unk1C) {
+                if ((rank * 5) < arg0->param1) {
                     var_v0 = 1;
                 } else {
                     var_v0 = 0;
@@ -7460,7 +7462,7 @@ void func_800A3E60(MenuItem* arg0) {
             var_v0_5 = &D_800E73D0[arg0->state - 20];
             break;
         case 30: /* switch 2 */
-            var_v0_5 = &D_800E7390[arg0->unk1C - 5];
+            var_v0_5 = &D_800E7390[arg0->param1 - 5];
             break;
         default:
             return;
@@ -7488,13 +7490,13 @@ void render_lap_time(s32 lapNumber, s32 column, s32 row) {
     print_text1_left(column + 0x21, row, gPrefixTimeText[lapNumber], 0, 0.7f, 0.7f);
     temp_v0_2 = find_menu_items_type_dupe(MENU_ITEM_TYPE_0BB);
     if (lapNumber < 3) {
-        if (temp_v0_2->unk20 & (1 << lapNumber)) { // best lap
+        if (temp_v0_2->param2 & (1 << lapNumber)) { // best lap
             textColor = (s32) gGlobalTimer % 3;
         } else {
             textColor = TEXT_YELLOW;
         }
     } else {
-        if (temp_v0_2->unk1C >= 0) {
+        if (temp_v0_2->param1 >= 0) {
             textColor = (s32) gGlobalTimer % 3;
         } else {
             textColor = TEXT_YELLOW;
@@ -7549,7 +7551,7 @@ void render_player_time(s32 recordType, s32 column, s32 row) {
     if (sp30 == 0) {
         temp_v0 = find_menu_items_type_dupe(MENU_ITEM_TYPE_0BB);
         if (recordType < 5) {
-            if (recordType == temp_v0->unk1C) {
+            if (recordType == temp_v0->param1) {
                 textColor = gGlobalTimer % 3;
             } else {
                 textColor = TEXT_YELLOW;
@@ -7557,7 +7559,7 @@ void render_player_time(s32 recordType, s32 column, s32 row) {
         } else {
             // huh?
             textColor = TEXT_YELLOW;
-            if (temp_v0->unk20 != 0) {
+            if (temp_v0->param2 != 0) {
                 textColor = gGlobalTimer;
                 textColor %= 3;
             } else {
@@ -7820,7 +7822,7 @@ void func_800A5738(MenuItem* arg0) {
     char sp5C[3];
 
     if (arg0->state == 0) {
-        if ((arg0->unk1C >= 0x1E) && ((gGlobalTimer / 16) % 2)) {
+        if ((arg0->param1 >= 0x1E) && ((gGlobalTimer / 16) % 2)) {
             why = get_string_width(gMenuText[REPLAY]) * 0.8f;
             gDisplayListHead =
                 draw_box(gDisplayListHead, 0x000000C0, 0x00000021, (s32) (why) + 0xC6, 0x00000032, 0, 0, 0, 0x00000096);
@@ -7829,8 +7831,8 @@ void func_800A5738(MenuItem* arg0) {
         }
     } else {
         if (arg0->state == 1) {
-            var_s1 = arg0->unk1C;
-            var_s2 = (s32) (arg0->unk1C * 0xFF) / 140;
+            var_s1 = arg0->param1;
+            var_s2 = (s32) (arg0->param1 * 0xFF) / 140;
         } else {
             var_s1 = 0x0000008C;
             var_s2 = 0x000000FF;
@@ -7971,7 +7973,7 @@ void func_800A6034(MenuItem* arg0) {
     char* text;
 
     if (D_801657E8 != true) {
-        gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, arg0->unk1C);
+        gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, arg0->param1);
         text = gCupNames[D_800DC540];
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
         print_text1_center_mode_2(arg0->column + 0x41, arg0->row + 0xA0, text, 0, 0.85f, 1.0f);
@@ -7991,9 +7993,9 @@ void func_800A6154(MenuItem* arg0) {
     s32 var_s1;
 
     if (arg0->state == 0) {
-        gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, arg0->unk1C);
+        gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, arg0->param1);
         set_text_color(TEXT_YELLOW);
-        gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, (arg0->unk1C * 0xFF) / 100);
+        gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, (arg0->param1 * 0xFF) / 100);
         for (var_s1 = 0, var_s0 = 0x96; var_s0 < 0xBE; var_s1++, var_s0 += 0x14) {
             print_text_mode_2(0x0000008C, var_s0, gMenuText[(var_s1 * 3) + 1], 0, 1.0f, 1.0f);
         }
@@ -8009,9 +8011,9 @@ void func_800A6154(MenuItem* arg0) {
         sp6C.row = (arg0->state * 0x14) - 0x4E;
         func_800A66A8(arg0, &sp6C);
     }
-    if (arg0->unk20 > 0) {
-        gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x0000013F, arg0->unk20);
-        gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->unk20, 0x0000013F, 0x000000EF);
+    if (arg0->param2 > 0) {
+        gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0, 0x0000013F, arg0->param2);
+        gDisplayListHead = func_80098FC8(gDisplayListHead, 0, 0xEF - arg0->param2, 0x0000013F, 0x000000EF);
     }
 }
 
@@ -8023,9 +8025,9 @@ void func_800A638C(MenuItem* arg0) {
     UNUSED s8** var_s2;
 
     if (arg0->state == 0) {
-        gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, arg0->unk1C);
+        gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, arg0->param1);
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
-        gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, (arg0->unk1C * 0xFF) / 100);
+        gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, (arg0->param1 * 0xFF) / 100);
         print_text1_center_mode_2(0x000000A0, arg0->row + 0x1E, D_800E7778[gModeSelection / 3], 0, 1.0f, 1.0f);
     } else {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x00000064);
@@ -8041,7 +8043,7 @@ void func_800A638C(MenuItem* arg0) {
             var_a1 = 0;
             break;
         case 2:
-            var_a1 = arg0->unk1C;
+            var_a1 = arg0->param1;
             break;
     }
     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, var_a1);
@@ -8074,14 +8076,14 @@ void func_800A66A8(MenuItem* arg0, Unk_D_800E70A0* arg1) {
     static float x1, y1, z1;
 
     mtx = &gGfxPool->mtxEffect[gMatrixEffectCount];
-    if (arg0->unk24 > 1.5) {
-        arg0->unk24 *= 0.95;
+    if (arg0->paramf > 1.5) {
+        arg0->paramf *= 0.95;
     } else {
-        arg0->unk24 = 1.5;
+        arg0->paramf = 1.5;
     }
 
-    tmp = arg0->unk24;
-    x1 = (tmp * 3) * arg0->unk8;
+    tmp = arg0->paramf;
+    x1 = (tmp * 3) * arg0->subState;
     y1 = tmp * 4;
     z1 = tmp * 2;
     x2 += x1;
@@ -8260,7 +8262,7 @@ void func_800A70E8(MenuItem* arg0) {
         }
         gDisplayListHead =
             draw_box(gDisplayListHead, 0x000000C0, 0x00000022, var_s0 + 0xC6, 0x00000039, 0, 0, 0, 0x00000096);
-        alpha = 0x180 - ((arg0->unk1C % 32) * 8);
+        alpha = 0x180 - ((arg0->param1 % 32) * 8);
         if (alpha >= 0x100) {
             alpha = 0xFF;
         }
@@ -8276,7 +8278,7 @@ void func_800A70E8(MenuItem* arg0) {
 void func_800A7258(MenuItem* arg0) {
     if (arg0->state == 0) {
         // If shading layer is fading in
-        gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x13F, 0xEF, 0, 0, 0, arg0->unk1C);
+        gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x13F, 0xEF, 0, 0, 0, arg0->param1);
     } else {
         // All other stages of the podium scene
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x13F, 0xEF, 0, 0, 0, 0x64);
@@ -8357,12 +8359,12 @@ void menu_item_credit_render(MenuItem* arg0) {
     slideDirection = gTextCreaditRenderInformation[creditIndex].slideDirection;
     if ((slideDirection == SLIDE_RIGHT) || (slideDirection != SLIDE_LEFT)) {
         someScaling = gTextCreaditRenderInformation[creditIndex].textScaling;
-        print_text1_left(arg0->column, arg0->row, gTextCredit[creditIndex], arg0->unk1C * someScaling,
-                         arg0->unk24 * someScaling, someScaling);
+        print_text1_left(arg0->column, arg0->row, gTextCredit[creditIndex], arg0->param1 * someScaling,
+                         arg0->paramf * someScaling, someScaling);
     } else {
         someScaling = gTextCreaditRenderInformation[creditIndex].textScaling;
-        print_text_mode_1(arg0->column, arg0->row, gTextCredit[creditIndex], arg0->unk1C * someScaling,
-                          arg0->unk24 * someScaling, someScaling);
+        print_text_mode_1(arg0->column, arg0->row, gTextCredit[creditIndex], arg0->param1 * someScaling,
+                          arg0->paramf * someScaling, someScaling);
     }
 }
 
@@ -8430,87 +8432,86 @@ void func_800A79F4(s32 arg0, char* arg1) {
     arg1[4] = '\0';
 }
 
-void func_800A7A4C(s32 arg0) {
-    s32 var_s0;
-    s32 var_v1;
-    s32 var_v1_2;
+void handle_menus_with_pri_arg(s32 priSpecial) {
+    s32 j;
+    s32 isRendered;
+    s32 i;
     s32 type;
-    MenuItem* var_s1;
-    s32 one = 1;
+    MenuItem* entry;
 
-    for (var_v1_2 = 0; var_v1_2 < MENU_ITEMS_MAX; var_v1_2++) {
-        var_v1 = 0;
-        var_s1 = &gMenuItems[var_v1_2];
-        type = var_s1->type;
+    for (i = 0; i < MENU_ITEMS_MAX; i++) {
+        isRendered = false;
+        entry = &gMenuItems[i];
+        type = entry->type;
         if ((type == MENU_ITEM_UI_NO_CONTROLLER) || (type == MENU_ITEM_UI_START_RECORD_TIME) || (type == MENU_ITEM_TYPE_0C7)) {
-            if (arg0 != 0) {
-                var_v1 = 1;
+            if (priSpecial != 0) {
+                isRendered = true;
             }
-        } else if (arg0 == 0) {
-            var_v1 = 1;
+        } else if (priSpecial == 0) {
+            isRendered = true;
         }
 
-        if (var_v1 == 0) {
+        if (isRendered == false) {
             continue;
         }
 
         switch (type) {                /* switch 8; irregular */
-            case LOGO_INTRO_MENU_LOGO: /* switch 8 */
-                if (s8018ED94 < 0x50) {
-                    D_800E8534 = 3.0f;
-                } else if (s8018ED94 < 0x5A) {
-                    if (D_800E8530 < 1.0) {
-                        D_800E8530 += 0.1;
+            case MENU_ITEM_UI_LOGO_INTRO: /* switch 8 */
+                if (sIntroModelTimer < 0x50) {
+                    sIntroModelSpeed = 3.0f;
+                } else if (sIntroModelTimer < 0x5A) {
+                    if (sIntroModelMotionSpeed < 1.0) {
+                        sIntroModelMotionSpeed += 0.1;
                     }
-                    D_800E8534 += 0.1;
-                } else if (s8018ED94 < 0xA0) {
-                    D_800E8534 += 0.1;
-                } else if (s8018ED94 < 0x190) {
-                    D_800E8534 += 0.3;
+                    sIntroModelSpeed += 0.1;
+                } else if (sIntroModelTimer < 0xA0) {
+                    sIntroModelSpeed += 0.1;
+                } else if (sIntroModelTimer < 0x190) {
+                    sIntroModelSpeed += 0.3;
                 }
-                gIntroModelRotY -= D_800E8534;
-                s8018ED94 += 1;
+                gIntroModelRotY -= sIntroModelSpeed;
+                sIntroModelTimer += 1;
                 if (gIntroModelRotY < -360.0f) {
                     gIntroModelRotY += 360.0f;
                 }
-                var_s1->unk1C++;
-                if (var_s1->unk1C == 0x000000B4) {
+                entry->param1++;
+                if (entry->param1 == 0x000000B4) {
                     func_8009E000(0x00000028);
                     func_800CA388(0x64U);
                     gMenuFadeType = MENU_FADE_TYPE_MAIN;
                 }
-                if ((var_s1->unk20 != 0) && (var_s1->unk1C >= 3)) {
-                    var_s1->unk20 = 0;
+                if ((entry->param2 != 0) && (entry->param1 >= 3)) {
+                    entry->param2 = 0;
                     play_sound2(SOUND_INTRO_LOGO);
                 }
                 break;
             case MENU_ITEM_TYPE_0DA: /* switch 8 */
-                func_800A954C(var_s1);
+                func_800A954C(entry);
                 break;
             case MENU_ITEM_TYPE_0D6: /* switch 8 */
-                func_800A9710(var_s1);
+                func_800A9710(entry);
                 break;
             case MENU_ITEM_TYPE_0D4: /* switch 8 */
-                func_800A97BC(var_s1);
+                func_800A97BC(entry);
                 break;
             case MENU_ITEM_UI_START_RECORD_TIME:    /* switch 8 */
-                switch (var_s1->state) { /* switch 9; irregular */
+                switch (entry->state) { /* switch 9; irregular */
                     case 0:              /* switch 9 */
                         if (gControllerFive->button & R_TRIG) {
-                            var_s1->state = (s32) 1U;
+                            entry->state = (s32) 1U;
                             play_sound2(SOUND_ACTION_PING);
                         } else {
-                            var_s1->visible = 0;
+                            entry->visible = 0;
                         }
                         break;
                     case 1:  /* switch 9 */
                     default: /* switch 9 */
-                        var_s1->visible = one;
+                        entry->visible = 1;
                         break;
                 }
                 break;
             case MENU_ITEM_UI_GAME_SELECT: /* switch 8 */
-                func_800AA280(var_s1);
+                func_800AA280(entry);
                 break;
             case MAIN_MENU_OPTION_GFX:            /* switch 8 */
             case MAIN_MENU_DATA_GFX:              /* switch 8 */
@@ -8518,20 +8519,20 @@ void func_800A7A4C(s32 arg0) {
                     case MAIN_MENU_OPTION:        /* switch 5 */
                     case MAIN_MENU_DATA:          /* switch 5 */
                     case MAIN_MENU_PLAYER_SELECT: /* switch 5 */
-                        func_800A9B9C(var_s1);
+                        func_800A9B9C(entry);
                         break;
                     case MAIN_MENU_MODE_SELECT:             /* switch 5 */
                     case MAIN_MENU_MODE_SUB_SELECT:         /* switch 5 */
                     case MAIN_MENU_OK_SELECT:               /* switch 5 */
                     case MAIN_MENU_OK_SELECT_GO_BACK:       /* switch 5 */
                     case MAIN_MENU_MODE_SUB_SELECT_GO_BACK: /* switch 5 */
-                        func_800A9C40(var_s1);
+                        func_800A9C40(entry);
                         break;
                 }
                 break;
             case MENU_ITEM_UI_OK: /* switch 8 */
-                func_800AA280(var_s1);
-                update_ok_menu_item(var_s1);
+                func_800AA280(entry);
+                update_ok_menu_item(entry);
                 break;
             case MENU_ITEM_UI_1P_GAME:               /* switch 8 */
             case MENU_ITEM_UI_2P_GAME:               /* switch 8 */
@@ -8541,17 +8542,17 @@ void func_800A7A4C(s32 arg0) {
                     case MAIN_MENU_OPTION:        /* switch 6 */
                     case MAIN_MENU_DATA:          /* switch 6 */
                     case MAIN_MENU_PLAYER_SELECT: /* switch 6 */
-                        func_800A9B9C(var_s1);
+                        func_800A9B9C(entry);
                         break;
                     case MAIN_MENU_MODE_SELECT:             /* switch 6 */
                     case MAIN_MENU_MODE_SUB_SELECT:         /* switch 6 */
                     case MAIN_MENU_OK_SELECT:               /* switch 6 */
                     case MAIN_MENU_OK_SELECT_GO_BACK:       /* switch 6 */
                     case MAIN_MENU_MODE_SUB_SELECT_GO_BACK: /* switch 6 */
-                        func_800A9C40(var_s1);
+                        func_800A9C40(entry);
                         break;
                 }
-                func_800A9D5C(var_s1);
+                func_800A9D5C(entry);
                 break;
             case MAIN_MENU_50CC:              /* switch 8 */
             case MAIN_MENU_100CC:             /* switch 8 */
@@ -8561,16 +8562,16 @@ void func_800A7A4C(s32 arg0) {
             case MENU_ITEM_TYPE_017:          /* switch 8 */
             case MAIN_MENU_TIME_TRIALS_BEGIN: /* switch 8 */
             case MAIN_MENU_TIME_TRIALS_DATA:  /* switch 8 */
-                func_800A9E58(var_s1);
+                func_800A9E58(entry);
                 break;
             case MENU_ITEM_TYPE_01B: /* switch 8 */
-                func_800AA2EC(var_s1);
+                func_800AA2EC(entry);
                 break;
             case CHARACTER_SELECT_MENU_1P_CURSOR: /* switch 8 */
             case CHARACTER_SELECT_MENU_2P_CURSOR: /* switch 8 */
             case CHARACTER_SELECT_MENU_3P_CURSOR: /* switch 8 */
             case CHARACTER_SELECT_MENU_4P_CURSOR: /* switch 8 */
-                update_cursor(var_s1);
+                update_cursor(entry);
                 break;
             case CHARACTER_SELECT_MENU_MARIO:  /* switch 8 */
             case CHARACTER_SELECT_MENU_LUIGI:  /* switch 8 */
@@ -8580,8 +8581,8 @@ void func_800A7A4C(s32 arg0) {
             case CHARACTER_SELECT_MENU_DK:     /* switch 8 */
             case CHARACTER_SELECT_MENU_WARIO:  /* switch 8 */
             case CHARACTER_SELECT_MENU_BOWSER: /* switch 8 */
-                func_800AAC18(var_s1);
-                switch (var_s1->type) {                /* switch 7 */
+                func_800AAC18(entry);
+                switch (entry->type) {                /* switch 7 */
                     case CHARACTER_SELECT_MENU_MARIO:  /* switch 7 */
                     case CHARACTER_SELECT_MENU_LUIGI:  /* switch 7 */
                     case CHARACTER_SELECT_MENU_TOAD:   /* switch 7 */
@@ -8590,36 +8591,36 @@ void func_800A7A4C(s32 arg0) {
                     case CHARACTER_SELECT_MENU_DK:     /* switch 7 */
                     case CHARACTER_SELECT_MENU_WARIO:  /* switch 7 */
                     case CHARACTER_SELECT_MENU_BOWSER: /* switch 7 */
-                        func_800AA69C(var_s1);
+                        func_800AA69C(entry);
                         break;
                 }
                 switch (gPlayerSelectMenuSelection) { /* switch 10; irregular */
                     case PLAYER_SELECT_MENU_MAIN:     /* switch 10 */
-                        func_800AAB90(var_s1);
+                        func_800AAB90(entry);
                         break;
                     case PLAYER_SELECT_MENU_OK:         /* switch 10 */
                     case PLAYER_SELECT_MENU_OK_GO_BACK: /* switch 10 */
-                        func_800AAA9C(var_s1);
+                        func_800AAA9C(entry);
                         break;
                 }
-                func_800AAE18(var_s1);
+                func_800AAE18(entry);
                 break;
             case CHARACTER_SELECT_MENU_OK: /* switch 8 */
             case COURSE_SELECT_OK:         /* switch 8 */
-                update_ok_menu_item(var_s1);
+                update_ok_menu_item(entry);
                 break;
             case COURSE_SELECT_MUSHROOM_CUP: /* switch 8 */
             case COURSE_SELECT_FLOWER_CUP:   /* switch 8 */
             case COURSE_SELECT_STAR_CUP:     /* switch 8 */
             case COURSE_SELECT_SPECIAL_CUP:  /* switch 8 */
-                func_800AB164(var_s1);
+                func_800AB164(entry);
                 switch (gSubMenuSelection) {      /* switch 11; irregular */
                     case SUB_MENU_MAP_SELECT_CUP: /* switch 11 */
-                        func_800AB020(var_s1);
+                        func_800AB020(entry);
                         break;
                     case SUB_MENU_MAP_SELECT_COURSE: /* switch 11 */
                     case SUB_MENU_MAP_SELECT_OK:     /* switch 11 */
-                        func_800AB098(var_s1);
+                        func_800AB098(entry);
                         break;
                 }
                 break;
@@ -8627,33 +8628,33 @@ void func_800A7A4C(s32 arg0) {
             case COURSE_SELECT_COURSE_NAMES: /* switch 8 */
             case MENU_ITEM_TYPE_05A:         /* switch 8 */
             case MENU_ITEM_TYPE_05B:         /* switch 8 */
-                func_800AB260(var_s1);
+                func_800AB260(entry);
                 break;
             case MENU_ITEM_TYPE_064: /* switch 8 */
-                func_800AB314(var_s1);
+                func_800AB314(entry);
                 break;
             case MENU_ITEM_TYPE_05F: /* switch 8 */
             case MENU_ITEM_TYPE_060: /* switch 8 */
             case MENU_ITEM_TYPE_061: /* switch 8 */
             case MENU_ITEM_TYPE_062: /* switch 8 */
-                func_800AB290(var_s1);
+                func_800AB290(entry);
                 break;
             case MENU_ITEM_TYPE_065: /* switch 8 */
             case MENU_ITEM_TYPE_066: /* switch 8 */
-                func_800AB904(var_s1);
+                func_800AB904(entry);
                 break;
             case MENU_ITEM_TYPE_067: /* switch 8 */
-                func_800AB9B0(var_s1);
+                func_800AB9B0(entry);
                 break;
             case MENU_ITEM_TYPE_078: /* switch 8 */
             case MENU_ITEM_TYPE_079: /* switch 8 */
             case MENU_ITEM_TYPE_07A: /* switch 8 */
             case MENU_ITEM_TYPE_07B: /* switch 8 */
             case MENU_ITEM_TYPE_08C: /* switch 8 */
-                func_800ABAE8(var_s1);
+                func_800ABAE8(entry);
                 break;
             case MENU_ITEM_TYPE_08D: /* switch 8 */
-                func_800ABB24(var_s1);
+                func_800ABB24(entry);
                 break;
             case MENU_ITEM_TYPE_07C: /* switch 8 */
             case MENU_ITEM_TYPE_07D: /* switch 8 */
@@ -8671,82 +8672,82 @@ void func_800A7A4C(s32 arg0) {
             case MENU_ITEM_TYPE_089: /* switch 8 */
             case MENU_ITEM_TYPE_08A: /* switch 8 */
             case MENU_ITEM_TYPE_08B: /* switch 8 */
-                func_800ABBCC(var_s1);
+                func_800ABBCC(entry);
                 break;
             case MENU_ITEM_TYPE_096: /* switch 8 */
-                func_800ABC38(var_s1);
+                func_800ABC38(entry);
                 break;
             case MENU_ITEM_TYPE_097: /* switch 8 */
-                func_800ABEAC(var_s1);
+                func_800ABEAC(entry);
                 break;
             case MENU_ITEM_TYPE_05E: /* switch 8 */
-                func_800AC300(var_s1);
+                func_800AC300(entry);
                 break;
             case MENU_ITEM_TYPE_0AA: /* switch 8 */
-                func_800AC324(var_s1);
+                func_800AC324(entry);
                 break;
             case MENU_ITEM_TYPE_0AB: /* switch 8 */
-                func_800AC458(var_s1);
+                func_800AC458(entry);
                 break;
             case MENU_ITEM_TYPE_0AC: /* switch 8 */
-                func_800ACA14(var_s1);
+                func_800ACA14(entry);
                 break;
             case MENU_ITEM_TYPE_0AF: /* switch 8 */
-                func_800AC978(var_s1);
+                func_800AC978(entry);
                 break;
             case MENU_ITEM_TYPE_0B0: /* switch 8 */
-                func_800ACC50(var_s1);
+                func_800ACC50(entry);
                 break;
             case MENU_ITEM_TYPE_0B1: /* switch 8 */
             case MENU_ITEM_TYPE_0B2: /* switch 8 */
             case MENU_ITEM_TYPE_0B3: /* switch 8 */
             case MENU_ITEM_TYPE_0B4: /* switch 8 */
-                func_800ACF40(var_s1);
+                func_800ACF40(entry);
                 break;
             case MENU_ITEM_TYPE_0B9: /* switch 8 */
-                func_800AD1A4(var_s1);
+                func_800AD1A4(entry);
                 break;
             case MENU_ITEM_TYPE_0BA: /* switch 8 */
-                func_800AD2E8(var_s1);
+                func_800AD2E8(entry);
                 break;
             case MENU_ITEM_TYPE_0BC: /* switch 8 */
-                func_800AEC54(var_s1);
+                func_800AEC54(entry);
                 break;
             case MENU_ITEM_TYPE_0C7: /* switch 8 */
-                func_800ADF48(var_s1);
+                func_800ADF48(entry);
                 break;
             case MENU_ITEM_TYPE_0BD: /* switch 8 */
-                func_800AE218(var_s1);
+                func_800AE218(entry);
                 break;
             case MENU_ITEM_TYPE_0E6: /* switch 8 */
-                func_800AEDBC(var_s1);
+                func_800AEDBC(entry);
                 break;
             case MENU_ITEM_TYPE_0E8: /* switch 8 */
-                func_800AEE90(var_s1);
+                func_800AEE90(entry);
                 break;
             case MENU_ITEM_TYPE_0E9: /* switch 8 */
-                func_800AEEBC(var_s1);
+                func_800AEEBC(entry);
                 break;
             case MENU_ITEM_TYPE_0EA: /* switch 8 */
-                func_800AEEE8(var_s1);
+                func_800AEEE8(entry);
                 break;
             case MENU_ITEM_TYPE_0BE: /* switch 8 */
-                func_800AEF14(var_s1);
+                func_800AEF14(entry);
                 break;
             case MENU_ITEM_TYPE_10E: /* switch 8 */
-                func_800AEF74(var_s1);
+                func_800AEF74(entry);
                 break;
             case MENU_ITEM_TYPE_12B: /* switch 8 */
-                func_800AF004(var_s1);
+                func_800AF004(entry);
                 break;
             case MENU_ITEM_TYPE_12C: /* switch 8 */
             case MENU_ITEM_TYPE_12D: /* switch 8 */
             case MENU_ITEM_TYPE_12E: /* switch 8 */
             case MENU_ITEM_TYPE_12F: /* switch 8 */
-                func_800AF1AC(var_s1);
+                func_800AF1AC(entry);
                 break;
             case MENU_ITEM_TYPE_130: /* switch 8 */
-                func_800AF270(var_s1);
+                func_800AF270(entry);
                 break;
             case MENU_ITEM_TYPE_190: /* switch 8 */
             case MENU_ITEM_TYPE_191: /* switch 8 */
@@ -8811,7 +8812,7 @@ void func_800A7A4C(s32 arg0) {
             case MENU_ITEM_TYPE_1CC: /* switch 8 */
             case MENU_ITEM_TYPE_1CD: /* switch 8 */
             case MENU_ITEM_TYPE_1CE: /* switch 8 */
-                func_800AF480(var_s1);
+                func_800AF480(entry);
                 break;
             case MENU_ITEM_UI_NONE:
             case MENU_ITEM_UI_START_BACKGROUND:
@@ -8822,32 +8823,32 @@ void func_800A7A4C(s32 arg0) {
         }
     }
 
-    for (var_s0 = 0; var_s0 < 0x10; var_s0++) {
-        for (var_v1_2 = 0; var_v1_2 < MENU_ITEMS_MAX; var_v1_2++) {
-            var_v1 = 0;
-            var_s1 = &gMenuItems[var_v1_2];
-            if (var_s1 && var_s1) {} // ?
-            type = var_s1->type;
+    for (j = 0; j < MENU_ITEM_UI_PRIO_MAX; j++) {
+        for (i = 0; i < MENU_ITEMS_MAX; i++) {
+            isRendered = false;
+            entry = &gMenuItems[i];
+            if (entry && entry) {} // ?
+            type = entry->type;
             if ((type == MENU_ITEM_UI_NO_CONTROLLER) || (type == MENU_ITEM_UI_START_RECORD_TIME) || (type == MENU_ITEM_TYPE_0C7)) {
-                if (arg0 != 0) {
-                    var_v1 = 1;
+                if (priSpecial != 0) {
+                    isRendered = true;
                 }
-            } else if (arg0 == 0) {
-                var_v1 = 1;
+            } else if (priSpecial == 0) {
+                isRendered = true;
             }
-            if ((var_v1 != 0) && (var_s0 == (s8) var_s1->priority)) {
-                menu_item_render(var_s1);
+            if ((isRendered != 0) && (j == (s8) entry->priority)) {
+                render_menus(entry);
             }
         }
     }
 }
 
-void func_800A8230(void) {
-    func_800A7A4C(0);
+void handle_menus_default(void) {
+    handle_menus_with_pri_arg(0);
 }
 
-void func_800A8250(void) {
-    func_800A7A4C(1);
+void handle_menus_special(void) {
+    handle_menus_with_pri_arg(1);
 }
 
 void func_800A8270(s32 arg0, MenuItem* arg1) {
@@ -8858,8 +8859,8 @@ void func_800A8270(s32 arg0, MenuItem* arg1) {
     s32 var_s3;
     s32 var_s4;
 
-    if (arg1->unk1C < 0x20) {
-        temp_t6 = (arg1->unk1C << 6) / 64;
+    if (arg1->param1 < 0x20) {
+        temp_t6 = (arg1->param1 << 6) / 64;
         temp_t1 = arg1->column;
         var_s0 = arg1->row;
         var_s3 = temp_t1 + temp_t6;
@@ -8927,8 +8928,8 @@ void func_800A8564(MenuItem* arg0) {
         default:
             return;
     }
-    if (arg0->unk1C < 0x20) {
-        sp34 = (arg0->unk1C << 5) / 64;
+    if (arg0->param1 < 0x20) {
+        sp34 = (arg0->param1 << 5) / 64;
         var_a0 = segmented_to_virtual_dupe(var_a0);
         temp_t0 = arg0->column + var_a0->dX;
         temp_a2 = arg0->row + var_a0->dY;
@@ -8976,9 +8977,9 @@ void func_800A890C(s32 arg0, MenuItem* arg1) {
     s32 temp_t1;
     s32 temp_t7;
 
-    if (arg1->unk1C < 32) {
+    if (arg1->param1 < 32) {
         if (1) {}
-        temp_t7 = (arg1->unk1C * 65) / 64;
+        temp_t7 = (arg1->param1 * 65) / 64;
         temp_t1 = arg1->column;
         temp_a2 = arg1->row;
         gDPPipeSync(gDisplayListHead++);
@@ -9047,7 +9048,7 @@ void func_800A8CA4(MenuItem* arg0) {
         if (gSubMenuSelection != SUB_MENU_MAP_SELECT_OK) {
             for (var_s0 = 0; var_s0 < 4; var_s0++) {
                 // Wut?
-                if ((var_s0 != (temp_v0->unk1C % 4)) != 0) {
+                if ((var_s0 != (temp_v0->param1 % 4)) != 0) {
                     gDisplayListHead =
                         draw_box(gDisplayListHead, D_800E7208[var_s0][0].column + temp_s2,
                                  D_800E7208[var_s0][0].row + temp_s3, D_800E7208[var_s0][1].column + temp_s2,
@@ -9066,10 +9067,10 @@ void render_battle_introduction(UNUSED MenuItem* arg0) {
 }
 
 void func_800A8EC0(MenuItem* arg0) {
-    if (arg0->unk20 != 0) {
+    if (arg0->param2 != 0) {
         func_8009A76C(arg0->D_8018DEE0_index, arg0->column, arg0->row, -1);
         set_text_color(TEXT_YELLOW);
-        print_text_mode_1(arg0->column + 0x20, arg0->row + 0x28, gCupText[arg0->unk20], 0, 0.7f, 0.7f);
+        print_text_mode_1(arg0->column + 0x20, arg0->row + 0x28, gCupText[arg0->param2], 0, 0.7f, 0.7f);
     }
 }
 
@@ -9111,9 +9112,9 @@ void func_800A90D4(UNUSED s32 arg0, MenuItem* arg1) {
     s32 temp_t1;
     s32 temp_t7;
 
-    if (arg1->unk1C < 0x20) {
+    if (arg1->param1 < 0x20) {
         if (1) {}
-        temp_t7 = (arg1->unk1C * 0x41) / 0x40;
+        temp_t7 = (arg1->param1 * 0x41) / 0x40;
         temp_t1 = arg1->column;
         temp_a2 = arg1->row;
         gDPPipeSync(gDisplayListHead++);
@@ -9278,15 +9279,15 @@ void func_800A954C(MenuItem* arg0) {
     // Cycle lasts 26 (0x1A) frames
     if (arg0->state == 0) {
         // Move highlight from yellow to red
-        arg0->unk20 = (s32) (u32) ((((f32) (0xC - arg0->unk1C) * 127.0f) / 12.0f) + 128.0f);
+        arg0->param2 = (s32) (u32) ((((f32) (0xC - arg0->param1) * 127.0f) / 12.0f) + 128.0f);
     } else {
         // Move highlight from red to  yellow
-        arg0->unk20 = (s32) (u32) ((((f64) (f32) arg0->unk1C * 127.0) / 12.0) + 128.0);
+        arg0->param2 = (s32) (u32) ((((f64) (f32) arg0->param1 * 127.0) / 12.0) + 128.0);
     }
-    arg0->unk1C++;
-    if (arg0->unk1C >= 0xC) {
+    arg0->param1++;
+    if (arg0->param1 >= 0xC) {
         // Every 13 (0xC) frames reverse direction
-        arg0->unk1C = 0;
+        arg0->param1 = 0;
         arg0->state ^= 1;
     }
 }
@@ -9402,24 +9403,24 @@ void update_ok_menu_item(MenuItem* arg0) {
     }
     switch (var_v0) { /* switch 1; irregular */
         case 0:       /* switch 1 */
-            arg0->unk1C = 0;
+            arg0->param1 = 0;
             break;
         case 1: /* switch 1 */
-            arg0->unk1C = 0x00000020;
+            arg0->param1 = 0x00000020;
             break;
         case 2: /* switch 1 */
-            if (arg0->unk1C > 0) {
-                arg0->unk1C = (arg0->unk1C - (arg0->unk1C / 12)) - 2;
-                if (arg0->unk1C < 0) {
-                    arg0->unk1C = 0;
+            if (arg0->param1 > 0) {
+                arg0->param1 = (arg0->param1 - (arg0->param1 / 12)) - 2;
+                if (arg0->param1 < 0) {
+                    arg0->param1 = 0;
                 }
             }
             break;
         case 3: /* switch 1 */
-            if (arg0->unk1C < 0x20) {
-                arg0->unk1C += 2;
-                if (arg0->unk1C >= 0x20) {
-                    arg0->unk1C = 0x00000020;
+            if (arg0->param1 < 0x20) {
+                arg0->param1 += 2;
+                if (arg0->param1 >= 0x20) {
+                    arg0->param1 = 0x00000020;
                 }
             }
             break;
@@ -9436,13 +9437,13 @@ void func_800A9B9C(MenuItem* arg0) {
             arg0->state = 4;
             /* fallthrough */
         case 4:
-            if (arg0->unk1C > 0) {
-                arg0->unk1C = (arg0->unk1C - (arg0->unk1C / 12)) - 2;
-                if (arg0->unk1C < 0) {
-                    arg0->unk1C = 0;
+            if (arg0->param1 > 0) {
+                arg0->param1 = (arg0->param1 - (arg0->param1 / 12)) - 2;
+                if (arg0->param1 < 0) {
+                    arg0->param1 = 0;
                 }
             } else {
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
                 arg0->state = 0;
             }
             break;
@@ -9468,7 +9469,7 @@ void func_800A9C40(MenuItem* arg0) {
         case 4:
             if ((gPlayerCount + 0xA) == arg0->type) {
                 arg0->state = 2;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
                 break;
             }
             arg0->state = 1;
@@ -9476,12 +9477,12 @@ void func_800A9C40(MenuItem* arg0) {
             func_800AA280(arg0);
             if ((gMainMenuSelection == MAIN_MENU_OK_SELECT_GO_BACK) ||
                 (gMainMenuSelection == MAIN_MENU_MODE_SUB_SELECT_GO_BACK)) {
-                arg0->unk1C = 0x00000020;
+                arg0->param1 = 0x00000020;
             } else {
-                if (arg0->unk1C < 0x20) {
-                    arg0->unk1C += 2;
-                    if (arg0->unk1C >= 0x20) {
-                        arg0->unk1C = 0x00000020;
+                if (arg0->param1 < 0x20) {
+                    arg0->param1 += 2;
+                    if (arg0->param1 >= 0x20) {
+                        arg0->param1 = 0x00000020;
                     }
                 }
             }
@@ -9568,7 +9569,7 @@ void func_800A9E58(MenuItem* arg0) {
             if ((temp_a1 != sp20) && (temp_a1 != sp1C)) {
                 arg0->visible = 0;
             } else {
-                arg0->unk20 = gGameModeMenuColumn[gPlayerCount - 1];
+                arg0->param2 = gGameModeMenuColumn[gPlayerCount - 1];
                 switch (gMainMenuSelection) {       /* switch 2 */
                     case MAIN_MENU_MODE_SELECT:     /* switch 2 */
                     case MAIN_MENU_MODE_SUB_SELECT: /* switch 2 */
@@ -9577,7 +9578,7 @@ void func_800A9E58(MenuItem* arg0) {
                         temp_v0 = get_menu_item_player_count();
                         arg0->column = temp_v0->column;
                         arg0->row = (gGameModeMenuColumn[gPlayerCount - 1] * 0x12) + temp_v0->row + 0x41;
-                        arg0->unk1C = 0;
+                        arg0->param1 = 0;
                         arg0->state = 1;
                         break;
                     case MAIN_MENU_OK_SELECT_GO_BACK:       /* switch 2 */
@@ -9586,7 +9587,7 @@ void func_800A9E58(MenuItem* arg0) {
                         temp_v1_2 = &D_800E70E8[arg0->type - sp24];
                         arg0->column = temp_v0->column + temp_v1_2->column;
                         arg0->row = (gGameModeMenuColumn[gPlayerCount - 1] * 0x12) + temp_v0->row + temp_v1_2->row;
-                        arg0->unk1C = arg0->row - temp_v0->row;
+                        arg0->param1 = arg0->row - temp_v0->row;
                         arg0->visible = 1;
                         arg0->state = 2;
                         break;
@@ -9607,17 +9608,17 @@ void func_800A9E58(MenuItem* arg0) {
                         arg0->visible = 0;
                         arg0->state = 0;
                     } else {
-                        if (arg0->unk20 != gGameModeMenuColumn[gPlayerCount - 1]) {
+                        if (arg0->param2 != gGameModeMenuColumn[gPlayerCount - 1]) {
                             arg0->state = 0;
                         }
                         temp_v0 = get_menu_item_player_count();
-                        arg0->column = temp_v0->column + arg0->unk1C;
+                        arg0->column = temp_v0->column + arg0->param1;
                         temp_v1_2 = &D_800E70E8[arg0->type - sp24];
                         func_800A92E8(arg0, temp_v0->column + temp_v1_2->column);
-                        arg0->unk1C = arg0->column - temp_v0->column;
-                        if (arg0->unk1C == temp_v1_2->column) {
+                        arg0->param1 = arg0->column - temp_v0->column;
+                        if (arg0->param1 == temp_v1_2->column) {
                             arg0->state = 2;
-                            arg0->unk1C = arg0->row - temp_v0->row;
+                            arg0->param1 = arg0->row - temp_v0->row;
                         }
                     }
                     break;
@@ -9638,16 +9639,16 @@ void func_800A9E58(MenuItem* arg0) {
                         arg0->visible = 0;
                         arg0->state = 0;
                     } else {
-                        if (arg0->unk20 != gGameModeMenuColumn[gPlayerCount - 1]) {
+                        if (arg0->param2 != gGameModeMenuColumn[gPlayerCount - 1]) {
                             arg0->state = 0;
                         }
                         temp_v0 = get_menu_item_player_count();
                         temp_v1_2 = &D_800E70E8[arg0->type - sp24];
                         arg0->column = temp_v0->column + temp_v1_2->column;
-                        arg0->row = temp_v0->row + arg0->unk1C;
+                        arg0->row = temp_v0->row + arg0->param1;
                         func_800A91D8(arg0, arg0->column,
                                       (gGameModeMenuColumn[gPlayerCount - 1] * 0x12) + temp_v0->row + temp_v1_2->row);
-                        arg0->unk1C = arg0->row - temp_v0->row;
+                        arg0->param1 = arg0->row - temp_v0->row;
                     }
                     break;
                 default: /* switch 4 */
@@ -9777,16 +9778,16 @@ void func_800AA5C8(MenuItem* arg0, s8 arg1) {
     s32 temp_v1;
 
     temp_v1 = arg0->type - 0x2B;
-    switch (arg0->unk8) { /* irregular */
+    switch (arg0->subState) { /* irregular */
         case 0:
             if (func_800AAFCC((s32) arg1) >= 0) {
-                arg0->unk8 = 2;
+                arg0->subState = 2;
                 func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E8340[temp_v1]));
             }
             break;
         case 2:
             if (func_800AAFCC((s32) arg1) < 0) {
-                arg0->unk8 = 0;
+                arg0->subState = 0;
                 func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E8320[temp_v1]));
             }
             break;
@@ -9807,20 +9808,20 @@ void func_800AA69C(MenuItem* arg0) {
     } else {
         var_a0 = 0;
     }
-    switch (arg0->unk8) {
+    switch (arg0->subState) {
         case 0:
             if ((gCharacterGridIsSelected[temp_v0] != 0) && (var_a0 != 0)) {
-                arg0->unk8 = 1;
+                arg0->subState = 1;
                 func_8009A594(arg0->D_8018DEE0_index, 0,
                               segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_a0]));
             } else {
                 temp_v0 = random_int(0x00C8U);
                 if (temp_v0 >= 0xC6) {
-                    arg0->unk8 = 4;
+                    arg0->subState = 4;
                     func_8009A594(arg0->D_8018DEE0_index, 0,
                                   segmented_to_virtual_dupe_2(gCharacterSingleBlinkAnimation[temp_a0]));
                 } else if (temp_v0 >= 0xC5) {
-                    arg0->unk8 = 5;
+                    arg0->subState = 5;
                     func_8009A594(arg0->D_8018DEE0_index, 0,
                                   segmented_to_virtual_dupe_2(gCharacterDoubleBlinkAnimation[temp_a0]));
                 }
@@ -9828,10 +9829,10 @@ void func_800AA69C(MenuItem* arg0) {
             break;
         case 1:
             if (D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex >= D_800E8440[temp_a0]) {
-                arg0->unk8 = 2;
+                arg0->subState = 2;
                 func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E83A0[temp_a0]));
             } else if ((gCharacterGridIsSelected[temp_v0] == 0) && (var_a0 != 0)) {
-                arg0->unk8 = 3;
+                arg0->subState = 3;
                 func_8009A594(arg0->D_8018DEE0_index,
                               D_800E8460[temp_a0] - D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex,
                               segmented_to_virtual_dupe_2(gCharacterDeselectAnimation[temp_a0]));
@@ -9839,17 +9840,17 @@ void func_800AA69C(MenuItem* arg0) {
             break;
         case 2:
             if ((gCharacterGridIsSelected[temp_v0] == 0) && (var_a0 != 0)) {
-                arg0->unk8 = 3;
+                arg0->subState = 3;
                 func_8009A594(arg0->D_8018DEE0_index, 0,
                               segmented_to_virtual_dupe_2(gCharacterDeselectAnimation[temp_a0]));
             }
             break;
         case 3:
             if (D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex >= D_800E8460[temp_a0]) {
-                arg0->unk8 = 0;
+                arg0->subState = 0;
                 func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E8360[temp_a0]));
             } else if ((gCharacterGridIsSelected[temp_v0] != 0) && (var_a0 != 0)) {
-                arg0->unk8 = 1;
+                arg0->subState = 1;
                 func_8009A594(arg0->D_8018DEE0_index,
                               D_800E8460[temp_a0] - D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex,
                               segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_a0]));
@@ -9858,17 +9859,17 @@ void func_800AA69C(MenuItem* arg0) {
         case 4:
         case 5:
             if ((gCharacterGridIsSelected[temp_v0] != 0) && (var_a0 != 0)) {
-                arg0->unk8 = 1;
+                arg0->subState = 1;
                 func_8009A594(arg0->D_8018DEE0_index, 0,
                               segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_a0]));
             } else {
-                if (arg0->unk8 == 4) {
+                if (arg0->subState == 4) {
                     var_v0 = D_800E8480[temp_a0];
                 } else {
                     var_v0 = D_800E84A0[temp_a0];
                 }
                 if (D_8018DEE0[arg0->D_8018DEE0_index].sequenceIndex >= var_v0) {
-                    arg0->unk8 = 0;
+                    arg0->subState = 0;
                     func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E8360[temp_a0]));
                 }
             }
@@ -9885,12 +9886,12 @@ void func_800AAA9C(MenuItem* arg0) {
             /* fallthrough */
         case 1:
             if (gPlayerSelectMenuSelection == PLAYER_SELECT_MENU_OK_GO_BACK) {
-                arg0->unk1C = 0x00000020;
+                arg0->param1 = 0x00000020;
             } else {
-                if (arg0->unk1C < 0x20) {
-                    arg0->unk1C += (arg0->unk1C / 12) + 2;
-                    if (arg0->unk1C >= 0x20) {
-                        arg0->unk1C = 0x00000020;
+                if (arg0->param1 < 0x20) {
+                    arg0->param1 += (arg0->param1 / 12) + 2;
+                    if (arg0->param1 >= 0x20) {
+                        arg0->param1 = 0x00000020;
                     }
                 }
             }
@@ -9898,7 +9899,7 @@ void func_800AAA9C(MenuItem* arg0) {
         case 0:
             if (func_800AAFCC(arg0->type - 0x2B) >= 0) {
                 arg0->state = 2;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
             } else {
                 arg0->state = 1;
             }
@@ -9906,7 +9907,7 @@ void func_800AAA9C(MenuItem* arg0) {
         case 4:
             if (func_800AAFCC(arg0->type - 0x2B) >= 0) {
                 arg0->state = 2;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
             }
             break;
         case 2:
@@ -9918,7 +9919,7 @@ void func_800AAA9C(MenuItem* arg0) {
 void func_800AAB90(MenuItem* arg0) {
     switch (arg0->state) {
         case 1:
-            if (arg0->unk1C > 0) {
+            if (arg0->param1 > 0) {
                 arg0->state = 3;
             }
             break;
@@ -9926,13 +9927,13 @@ void func_800AAB90(MenuItem* arg0) {
             arg0->state = 4;
             break;
         case 3:
-            if (arg0->unk1C > 0) {
-                arg0->unk1C = (arg0->unk1C - (arg0->unk1C / 12)) - 2;
-                if (arg0->unk1C < 0) {
-                    arg0->unk1C = 0;
+            if (arg0->param1 > 0) {
+                arg0->param1 = (arg0->param1 - (arg0->param1 / 12)) - 2;
+                if (arg0->param1 < 0) {
+                    arg0->param1 = 0;
                 }
             } else {
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
                 arg0->state = 0;
             }
             break;
@@ -9961,7 +9962,7 @@ void func_800AAC18(MenuItem* arg0) {
                     arg0->column = (s32) var_t0->column;
                     arg0->row = (s32) var_t0->row;
                     arg0->state = 2;
-                    arg0->unk8 = 2;
+                    arg0->subState = 2;
                     func_8009A594(arg0->D_8018DEE0_index, 0, segmented_to_virtual_dupe_2(D_800E8340[temp_a1]));
                 }
                 break;
@@ -9986,7 +9987,7 @@ void func_800AAC18(MenuItem* arg0) {
                     return;
                 }
             }
-            if ((arg0->state != 2) || (arg0->unk8 != 1)) {
+            if ((arg0->state != 2) || (arg0->subState != 1)) {
                 func_800A91D8(arg0, (s32) var_t0->column, (s32) var_t0->row);
             }
             break;
@@ -10138,13 +10139,13 @@ void func_800AB020(MenuItem* arg0) {
             arg0->state = 4;
             /* fallthrough */
         case 4:
-            if (arg0->unk1C > 0) {
-                arg0->unk1C = (arg0->unk1C - (arg0->unk1C / 12)) - 2;
-                if (arg0->unk1C < 0) {
-                    arg0->unk1C = 0;
+            if (arg0->param1 > 0) {
+                arg0->param1 = (arg0->param1 - (arg0->param1 / 12)) - 2;
+                if (arg0->param1 < 0) {
+                    arg0->param1 = 0;
                 }
             } else {
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
                 arg0->state = 0;
             }
             break;
@@ -10170,17 +10171,17 @@ void func_800AB098(MenuItem* arg0) {
         case 4:
             if ((gCupSelection + 0x53) == arg0->type) {
                 arg0->state = 2;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
                 break;
             } else {
                 arg0->state = 1;
             }
         // Purposeful fallthrough
         case 1:
-            if (arg0->unk1C < 32) {
-                arg0->unk1C += 2;
-                if (arg0->unk1C >= 32) {
-                    arg0->unk1C = 32;
+            if (arg0->param1 < 32) {
+                arg0->param1 += 2;
+                if (arg0->param1 >= 32) {
+                    arg0->param1 = 32;
                 }
             }
             break;
@@ -10237,8 +10238,8 @@ void func_800AB260(MenuItem* arg0) {
 }
 
 void func_800AB290(MenuItem* arg0) {
-    if (arg0->unk1C != gCupSelection) {
-        arg0->unk1C = gCupSelection;
+    if (arg0->param1 != gCupSelection) {
+        arg0->param1 = gCupSelection;
         func_8009A594(arg0->D_8018DEE0_index, 0,
                       segmented_to_virtual_dupe_2(D_800E7E34[gCupCourseOrder[gCupSelection][arg0->type - 0x5F]]));
     }
@@ -10261,12 +10262,12 @@ void func_800AB314(MenuItem* arg0) {
         default:
             if (gSubMenuSelection != SUB_MENU_MAP_SELECT_CUP) {
                 arg0->state = 0;
-                arg0->unk20 = 0;
+                arg0->param2 = 0;
                 for (var_a1 = 0; var_a1 < 4; var_a1++) {
                     if (gCourseIndexInCup == var_a1) {
                         sp24[var_a1]->visible = one;
-                        if (arg0->unk1C != var_a1) {
-                            arg0->unk1C = var_a1;
+                        if (arg0->param1 != var_a1) {
+                            arg0->param1 = var_a1;
                         }
                     } else {
                         sp24[var_a1]->visible = 0;
@@ -10283,58 +10284,58 @@ void func_800AB314(MenuItem* arg0) {
         case 0:
             switch (arg0->state) { /* irregular */
                 case 0:
-                    if ((arg0->unk1C / 4) == gCupSelection) {
-                        arg0->unk20++;
-                        if (arg0->unk20 >= 0x33) {
+                    if ((arg0->param1 / 4) == gCupSelection) {
+                        arg0->param2++;
+                        if (arg0->param2 >= 0x33) {
                             arg0->state = one;
-                            arg0->unk20 = 0;
+                            arg0->param2 = 0;
                             var_v0 = gCupSelection * 4;
-                            arg0->unk1C = var_v0 + 1;
+                            arg0->param1 = var_v0 + 1;
                         }
                     } else {
-                        arg0->unk20 = 0;
-                        arg0->unk1C = gCupSelection * 4;
+                        arg0->param2 = 0;
+                        arg0->param1 = gCupSelection * 4;
                     }
                     if (gSubMenuSelection == SUB_MENU_MAP_SELECT_OK) {
                         arg0->state = 2;
-                        arg0->unk20 = 0;
+                        arg0->param2 = 0;
                     }
                     break;
                 case 1:
-                    if ((arg0->unk1C / 4) != gCupSelection) {
+                    if ((arg0->param1 / 4) != gCupSelection) {
                         arg0->state = 0;
-                        arg0->unk20 = 0;
-                        arg0->unk1C = 0;
+                        arg0->param2 = 0;
+                        arg0->param1 = 0;
                     } else {
-                        arg0->unk20++;
-                        if (arg0->unk20 >= 0x1F) {
-                            arg0->unk20 = 0;
-                            arg0->unk1C = (gCupSelection * 4) + (((arg0->unk1C % 4) + one) % 4);
+                        arg0->param2++;
+                        if (arg0->param2 >= 0x1F) {
+                            arg0->param2 = 0;
+                            arg0->param1 = (gCupSelection * 4) + (((arg0->param1 % 4) + one) % 4);
                         } else {
                             if (gSubMenuSelection == SUB_MENU_MAP_SELECT_OK) {
                                 arg0->state = 2;
-                                arg0->unk20 = 0;
+                                arg0->param2 = 0;
                             }
                         }
                     }
                     break;
                 case 2:
-                    arg0->unk20++;
-                    if (arg0->unk20 >= 0x1A) {
+                    arg0->param2++;
+                    if (arg0->param2 >= 0x1A) {
                         arg0->state = 3;
-                        arg0->unk20 = 0;
+                        arg0->param2 = 0;
                     }
                     if (gSubMenuSelection != SUB_MENU_MAP_SELECT_OK) {
                         arg0->state = 0;
-                        arg0->unk20 = 0;
-                        arg0->unk1C = 0;
+                        arg0->param2 = 0;
+                        arg0->param1 = 0;
                     }
                     break;
                 case 3:
                     if (gSubMenuSelection != SUB_MENU_MAP_SELECT_OK) {
                         arg0->state = 0;
-                        arg0->unk20 = 0;
-                        arg0->unk1C = 0;
+                        arg0->param2 = 0;
+                        arg0->param1 = 0;
                     }
                     break;
             }
@@ -10342,7 +10343,7 @@ void func_800AB314(MenuItem* arg0) {
                 case 0:
                 case 1:
                     for (var_a1 = 0; var_a1 < 4; var_a1++) {
-                        if ((arg0->unk1C % 4) == var_a1) {
+                        if ((arg0->param1 % 4) == var_a1) {
                             sp24[var_a1]->visible = one;
                         } else {
                             sp24[var_a1]->visible = 0;
@@ -10352,9 +10353,9 @@ void func_800AB314(MenuItem* arg0) {
                     break;
                 case 2:
                     for (var_a1 = 0; var_a1 < 4; var_a1++) {
-                        if (var_a1 == (arg0->unk1C % 4)) {
+                        if (var_a1 == (arg0->param1 % 4)) {
                             sp24[var_a1]->priority = 6;
-                        } else if (arg0->unk20 < (var_a1 * 5)) {
+                        } else if (arg0->param2 < (var_a1 * 5)) {
                             sp24[var_a1]->priority = four;
                         } else {
                             sp24[var_a1]->priority = 8;
@@ -10401,11 +10402,11 @@ void func_800AB904(MenuItem* arg0) {
 void func_800AB9B0(MenuItem* arg0) {
     Unk_D_800E70A0* temp_v1;
 
-    if (arg0->unk1C != gCupSelection) {
-        arg0->unk1C = gCupSelection;
-        arg0->unk20 = func_800B54C0((s32) gCupSelection, gCCSelection);
+    if (arg0->param1 != gCupSelection) {
+        arg0->param1 = gCupSelection;
+        arg0->param2 = func_800B54C0((s32) gCupSelection, gCCSelection);
         func_8009A594(arg0->D_8018DEE0_index, 0,
-                      segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - arg0->unk20]));
+                      segmented_to_virtual_dupe_2(D_800E7E20[((gCCSelection / 2) * 4) - arg0->param2]));
         arg0->column = (s32) D_800E7268->column;
         arg0->row = D_800E7268->row;
     }
@@ -10445,10 +10446,10 @@ void func_800ABB24(MenuItem* arg0) {
     temp_v1 = &D_800E7430[thing / 4];
     arg0->column = temp_v1->column - 2;
     arg0->row = temp_v1->row + ((thing % 4) * 0x32) + 0x13;
-    arg0->unk1C += 0x10;
-    if (arg0->unk1C >= 0x100) {
-        arg0->unk1C -= 0x100;
-        arg0->unk20 = (s32) (arg0->unk20 + 1) % 3;
+    arg0->param1 += 0x10;
+    if (arg0->param1 >= 0x100) {
+        arg0->param1 -= 0x100;
+        arg0->param2 = (s32) (arg0->param2 + 1) % 3;
     }
 }
 
@@ -10498,28 +10499,28 @@ void func_800ABCF4(MenuItem* arg0) {
         case 0:
             arg0->column = 0;
             arg0->state = 1;
-            arg0->unk20 = (get_string_width(gCupNames[D_800DC540]) / 2) + 0xA0;
+            arg0->param2 = (get_string_width(gCupNames[D_800DC540]) / 2) + 0xA0;
             /* fallthrough */
         case 1:
-            func_800A9208(arg0, arg0->unk20);
-            arg0->unk1C = (s32) (arg0->unk20 - arg0->column) / 4;
-            if (arg0->unk1C >= 9) {
-                arg0->unk1C = 8;
+            func_800A9208(arg0, arg0->param2);
+            arg0->param1 = (s32) (arg0->param2 - arg0->column) / 4;
+            if (arg0->param1 >= 9) {
+                arg0->param1 = 8;
             }
-            arg0->unk24 = (f32) (((f64) arg0->unk1C * 0.05) + 1.0);
-            if (arg0->column >= (arg0->unk20 - 0x14)) {
+            arg0->paramf = (f32) (((f64) arg0->param1 * 0.05) + 1.0);
+            if (arg0->column >= (arg0->param2 - 0x14)) {
                 arg0->state = 2;
                 arg0->D_8018DEE0_index = 0;
             }
             break;
         case 2:
-            func_800A9208(arg0, arg0->unk20);
-            arg0->unk1C = (s32) (arg0->unk20 - arg0->column) / 4;
+            func_800A9208(arg0, arg0->param2);
+            arg0->param1 = (s32) (arg0->param2 - arg0->column) / 4;
             arg0->D_8018DEE0_index++;
             temp_f0 = (f64) (arg0->D_8018DEE0_index - 0xA);
-            arg0->unk24 = (f32) ((temp_f0 * 0.0085 * temp_f0) + 0.4);
-            if ((arg0->D_8018DEE0_index >= 9) && ((f64) arg0->unk24 > 1.0)) {
-                arg0->unk24 = 1.0f;
+            arg0->paramf = (f32) ((temp_f0 * 0.0085 * temp_f0) + 0.4);
+            if ((arg0->D_8018DEE0_index >= 9) && ((f64) arg0->paramf > 1.0)) {
+                arg0->paramf = 1.0f;
             }
             break;
     }
@@ -10558,27 +10559,27 @@ void func_800ABF68(MenuItem* arg0) {
         case 0:
             arg0->column = 0x140;
             arg0->state = 1;
-            arg0->unk20 = 0xA0 - (get_string_width(gCourseNames[gCurrentCourseId]) / 2);
+            arg0->param2 = 0xA0 - (get_string_width(gCourseNames[gCurrentCourseId]) / 2);
             /* fallthrough */
         case 1:
-            func_800A9208(arg0, arg0->unk20);
-            arg0->unk1C = (arg0->column - arg0->unk20) / 4;
-            if (arg0->unk1C >= 9) {
-                arg0->unk1C = 8;
+            func_800A9208(arg0, arg0->param2);
+            arg0->param1 = (arg0->column - arg0->param2) / 4;
+            if (arg0->param1 >= 9) {
+                arg0->param1 = 8;
             }
-            arg0->unk24 = (arg0->unk1C * 0.05) + 1.0;
-            if ((arg0->unk20 + 0x14) >= arg0->column) {
+            arg0->paramf = (arg0->param1 * 0.05) + 1.0;
+            if ((arg0->param2 + 0x14) >= arg0->column) {
                 arg0->state = 2;
                 arg0->D_8018DEE0_index = 0;
             }
             break;
         case 2:
-            func_800A9208(arg0, arg0->unk20);
-            arg0->unk1C = (arg0->column - arg0->unk20) / 4;
+            func_800A9208(arg0, arg0->param2);
+            arg0->param1 = (arg0->column - arg0->param2) / 4;
             arg0->D_8018DEE0_index++;
-            arg0->unk24 = ((arg0->D_8018DEE0_index - 0xA) * 0.0085 * (arg0->D_8018DEE0_index - 0xA)) + 0.4;
-            if ((arg0->D_8018DEE0_index >= 9) && ((f64) arg0->unk24 > 1.0)) {
-                arg0->unk24 = 1.0f;
+            arg0->paramf = ((arg0->D_8018DEE0_index - 0xA) * 0.0085 * (arg0->D_8018DEE0_index - 0xA)) + 0.4;
+            if ((arg0->D_8018DEE0_index >= 9) && ((f64) arg0->paramf > 1.0)) {
+                arg0->paramf = 1.0f;
             }
             break;
     }
@@ -10592,11 +10593,11 @@ void func_800AC128(MenuItem* arg0) {
             /* fallthrough */
         case 1:
             func_800A940C(arg0, 0x00000064);
-            arg0->unk1C = (s32) (arg0->column - 0x64) / 6;
-            if (arg0->unk1C >= 9) {
-                arg0->unk1C = 8;
+            arg0->param1 = (s32) (arg0->column - 0x64) / 6;
+            if (arg0->param1 >= 9) {
+                arg0->param1 = 8;
             }
-            arg0->unk24 = (f32) (((f64) arg0->unk1C * 0.07) + 0.6);
+            arg0->paramf = (f32) (((f64) arg0->param1 * 0.07) + 0.6);
             if (arg0->column == 0x00000064) {
                 arg0->state = 2;
                 arg0->D_8018DEE0_index = 0;
@@ -10604,26 +10605,26 @@ void func_800AC128(MenuItem* arg0) {
             break;
         case 2:
             arg0->D_8018DEE0_index++;
-            arg0->unk1C = 0;
-            arg0->unk24 = (f32) (1.5 - ((arg0->D_8018DEE0_index - 0xF) * 0.004 * (arg0->D_8018DEE0_index - 0xF)));
-            if ((arg0->D_8018DEE0_index >= 0x10) && ((f64) arg0->unk24 < 0.8)) {
+            arg0->param1 = 0;
+            arg0->paramf = (f32) (1.5 - ((arg0->D_8018DEE0_index - 0xF) * 0.004 * (arg0->D_8018DEE0_index - 0xF)));
+            if ((arg0->D_8018DEE0_index >= 0x10) && ((f64) arg0->paramf < 0.8)) {
                 arg0->state = 3;
                 arg0->D_8018DEE0_index = 0;
             }
             break;
         case 3:
             arg0->D_8018DEE0_index++;
-            arg0->unk1C = 0;
-            arg0->unk24 = (f32) (1.25 - ((arg0->D_8018DEE0_index - 0xF) * 0.002 * (arg0->D_8018DEE0_index - 0xF)));
-            if ((arg0->D_8018DEE0_index >= 0xD) && ((f64) arg0->unk24 < 1.0)) {
-                arg0->unk24 = 1.0f;
+            arg0->param1 = 0;
+            arg0->paramf = (f32) (1.25 - ((arg0->D_8018DEE0_index - 0xF) * 0.002 * (arg0->D_8018DEE0_index - 0xF)));
+            if ((arg0->D_8018DEE0_index >= 0xD) && ((f64) arg0->paramf < 1.0)) {
+                arg0->paramf = 1.0f;
             }
             break;
     }
 }
 
 void func_800AC300(MenuItem* arg0) {
-    if (arg0->unk20 < ++arg0->unk1C) {
+    if (arg0->param2 < ++arg0->param1) {
         arg0->type = 0;
     }
 }
@@ -10639,24 +10640,24 @@ void func_800AC324(MenuItem* arg0) {
             func_800A9208(arg0, 0xA0);
             if (arg0->column == 0xA0) {
                 arg0->state = 2;
-                arg0->unk20 = 0;
+                arg0->param2 = 0;
             }
             break;
         case 2:
-            arg0->unk20++;
-            if (((D_8018D9D8 != 0) || (arg0->unk20 >= 0x5B)) && (D_800DDB24 != 0)) {
+            arg0->param2++;
+            if (((D_8018D9D8 != 0) || (arg0->param2 >= 0x5B)) && (D_800DDB24 != 0)) {
                 arg0->state = 3;
-                arg0->unk1C = arg0->column;
-                add_ui_element(MENU_ITEM_TYPE_0AB, 0, 0, MENU_ITEM_PRIORITY_0);
+                arg0->param1 = arg0->column;
+                load_menu_item_ui(MENU_ITEM_TYPE_0AB, 0, 0, MENU_ITEM_UI_PRIO_0);
             }
             break;
         case 3:
-            arg0->column = arg0->unk1C;
-            if (arg0->unk1C < 0x14A) {
+            arg0->column = arg0->param1;
+            if (arg0->param1 < 0x14A) {
                 if (D_8018D9D8 != 0) {
-                    arg0->unk1C += 0x20;
+                    arg0->param1 += 0x20;
                 } else {
-                    arg0->unk1C += 0x10;
+                    arg0->param1 += 0x10;
                 }
             } else {
                 arg0->type = 0;
@@ -10677,33 +10678,33 @@ void func_800AC458(MenuItem* arg0) {
             for (var_a1 = 0; var_a1 < ARRAY_COUNT(gGPPointRewards); var_a1++) {
                 sGPPointsCopy[var_a1] = gGPPointRewards[var_a1];
             }
-            arg0->unk20 = arg0->column;
+            arg0->param2 = arg0->column;
             break;
         case 1:
-            arg0->column = arg0->unk20;
+            arg0->column = arg0->param2;
 
             temp = (D_8018D9D8 != 0) ? 0x20 : 0x10;
 
-            if ((arg0->unk20 + temp) < 0) {
-                arg0->unk20 += temp;
+            if ((arg0->param2 + temp) < 0) {
+                arg0->param2 += temp;
                 D_800DC5EC->screenStartX += temp;
                 D_800DC5F0->screenStartX -= temp;
             } else {
-                arg0->unk20 = 0;
+                arg0->param2 = 0;
                 arg0->column = 0;
                 arg0->state = 2;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
                 D_800DC5EC->screenStartX = 0x00F0;
                 D_800DC5F0->screenStartX = 0x0050;
             }
             break;
         case 2:
             arg0->column = 0;
-            arg0->unk1C++;
-            if (((D_8018D9D8 != 0) || (arg0->unk1C >= 0x1F)) && (D_800DDB24 != 0)) {
+            arg0->param1++;
+            if (((D_8018D9D8 != 0) || (arg0->param1 >= 0x1F)) && (D_800DDB24 != 0)) {
                 arg0->state = 3;
-                arg0->unk1C = 0;
-                arg0->unk20 = 0;
+                arg0->param1 = 0;
+                arg0->param2 = 0;
             }
             break;
         case 3:
@@ -10712,25 +10713,25 @@ void func_800AC458(MenuItem* arg0) {
         case 6:
             var_t1 = 0;
             var_a1 = arg0->state - 3;
-            arg0->unk1C++;
-            if (((arg0->unk1C % 3) == 0) || (D_8018D9D8 != 0)) {
+            arg0->param1++;
+            if (((arg0->param1 % 3) == 0) || (D_8018D9D8 != 0)) {
                 if (sGPPointsCopy[var_a1] > 0) {
                     sGPPointsCopy[var_a1]--;
                     gGPPointsByCharacterId[gPlayers[gGPCurrentRacePlayerIdByRank[var_a1]].characterId] += 1;
                     play_sound2(SOUND_ACTION_COUNT_SCORE);
                     var_t1 = 0;
-                    if ((sGPPointsCopy[var_a1] == 0) && (arg0->unk20 == 0)) {
-                        arg0->unk20 = 1;
-                        arg0->unk1C = 0;
+                    if ((sGPPointsCopy[var_a1] == 0) && (arg0->param2 == 0)) {
+                        arg0->param2 = 1;
+                        arg0->param1 = 0;
                     }
                 }
             }
-            if ((arg0->unk20 != 0) && ((arg0->unk1C > 0xA) || ((D_8018D9D8 != 0) && (arg0->unk1C >= 4)))) {
+            if ((arg0->param2 != 0) && ((arg0->param1 > 0xA) || ((D_8018D9D8 != 0) && (arg0->param1 >= 4)))) {
                 var_t1 = 1;
             }
             if (var_t1 != 0) {
-                arg0->unk20 = 0;
-                arg0->unk1C = 0;
+                arg0->param2 = 0;
+                arg0->param1 = 0;
                 if (arg0->state < 6) {
                     arg0->state++;
                 } else {
@@ -10739,29 +10740,29 @@ void func_800AC458(MenuItem* arg0) {
             }
             break;
         case 7:
-            arg0->unk1C++;
-            if ((((D_8018D9D8 != 0) && (arg0->unk1C >= 0xB)) || (arg0->unk1C >= 0x3D)) && (D_800DDB24 != 0)) {
+            arg0->param1++;
+            if ((((D_8018D9D8 != 0) && (arg0->param1 >= 0xB)) || (arg0->param1 >= 0x3D)) && (D_800DDB24 != 0)) {
                 arg0->state = 8;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
             }
             break;
         case 8:
-            arg0->unk1C++;
+            arg0->param1++;
             if (D_8018D9D8 != 0) {
-                arg0->unk1C += 5;
+                arg0->param1 += 5;
             }
-            if (arg0->unk1C >= 0x29) {
+            if (arg0->param1 >= 0x29) {
                 arg0->state = 9;
             }
             break;
         case 9:
-            arg0->unk1C--;
+            arg0->param1--;
             if (D_8018D9D8 != 0) {
-                arg0->unk1C -= 5;
+                arg0->param1 -= 5;
             }
-            if (arg0->unk1C <= 0) {
+            if (arg0->param1 <= 0) {
                 arg0->state = 0x0000000A;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
                 if (gCourseIndexInCup == 3) {
                     for (var_a1 = 0; var_a1 < 8; var_a1++) {
                         if (D_80164478[gCharacterIdByGPOverallRank[var_a1]] < gPlayerCount) {
@@ -10773,30 +10774,30 @@ void func_800AC458(MenuItem* arg0) {
             }
             break;
         case 10:
-            arg0->unk1C++;
-            if (arg0->unk1C > 0) {
+            arg0->param1++;
+            if (arg0->param1 > 0) {
                 arg0->state = 0x0000000B;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
                 func_800921B4();
             }
             break;
         case 11:
             if ((D_8018D9D8 != 0) && (D_800DDB24 != 0)) {
                 arg0->state = 0x0000000C;
-                arg0->unk20 = arg0->row;
+                arg0->param2 = arg0->row;
                 play_sound2(SOUND_ACTION_NEXT_COURSE);
             }
             break;
         case 12:
-            arg0->row = arg0->unk20;
-            if (arg0->unk20 < 0xF0) {
-                arg0->unk20 += 0x10;
+            arg0->row = arg0->param2;
+            if (arg0->param2 < 0xF0) {
+                arg0->param2 += 0x10;
                 D_800DC5EC->screenStartY += 0x10;
                 D_800DC5F0->screenStartY -= 0x10;
             } else {
-                arg0->unk20 = 0;
+                arg0->param2 = 0;
                 arg0->state = 0x0000000D;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
                 D_800DC5EC->screenStartY = 0x012C;
                 D_800DC5F0->screenStartY = -0x003C;
                 D_8015F894 = 4;
@@ -10814,7 +10815,7 @@ void func_800AC978(MenuItem* arg0) {
         case 0:
             arg0->column = 0x14A;
             arg0->state = 1;
-            arg0->unk1C = 0xFF;
+            arg0->param1 = 0xFF;
             break;
         case 1:
             func_800A9208(arg0, 0xA0);
@@ -10825,8 +10826,8 @@ void func_800AC978(MenuItem* arg0) {
         case 2:
             break;
         case 3:
-            if (arg0->unk1C != 0) {
-                arg0->unk1C -= 0x33;
+            if (arg0->param1 != 0) {
+                arg0->param1 -= 0x33;
             }
             break;
     }
@@ -10835,12 +10836,12 @@ void func_800AC978(MenuItem* arg0) {
 void func_800ACA14(MenuItem* arg0) {
     switch (arg0->state) { /* irregular */
         case 0:
-            if (arg0->unk20 >= 0xB) {
-                arg0->unk1C += 3;
+            if (arg0->param2 >= 0xB) {
+                arg0->param1 += 3;
             }
-            if (arg0->unk1C >= 0x65) {
+            if (arg0->param1 >= 0x65) {
                 arg0->state = 0x0000000B;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
             }
             break;
         case 11:
@@ -10853,36 +10854,36 @@ void func_800ACA14(MenuItem* arg0) {
                 if (arg0->state >= 0xC) {
                     arg0->state--;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (arg0->unk24 < 4.2) {
-                        arg0->unk24 += 4.0;
+                    if (arg0->paramf < 4.2) {
+                        arg0->paramf += 4.0;
                     }
-                    arg0->unk8 = -1;
+                    arg0->subState = -1;
                 }
             }
             if ((gControllerFive->buttonPressed | gControllerFive->stickPressed) & 0x400) {
                 if (arg0->state < 0xC) {
                     arg0->state++;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (arg0->unk24 < 4.2) {
-                        arg0->unk24 += 4.0;
+                    if (arg0->paramf < 4.2) {
+                        arg0->paramf += 4.0;
                     }
-                    arg0->unk8 = 1;
+                    arg0->subState = 1;
                 }
             }
             if (gControllerFive->buttonPressed & 0x9000) {
                 func_8009DFE0(0x0000001E);
                 func_800CA330(0x19U);
                 play_sound2(SOUND_ACTION_CONTINUE_UNKNOWN);
-                if (arg0->unk24 < 4.2) {
-                    arg0->unk24 += 4.0;
+                if (arg0->paramf < 4.2) {
+                    arg0->paramf += 4.0;
                 }
             }
             break;
         default:
             break;
     }
-    if (arg0->unk20 < 0x28) {
-        arg0->unk20++;
+    if (arg0->param2 < 0x28) {
+        arg0->param2++;
     }
 }
 
@@ -10891,12 +10892,12 @@ void func_800ACC50(MenuItem* arg0) {
 
     switch (arg0->state) {
         case 0:
-            arg0->unk1C += 3;
-            if (arg0->unk1C >= 0x65) {
+            arg0->param1 += 3;
+            if (arg0->param1 >= 0x65) {
                 arg0->state = 1;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
                 for (i = 0; i < gPlayerCount; i++) {
-                    add_ui_element(i + MENU_ITEM_TYPE_0B1, 0, 0, (s8) (MENU_ITEM_PRIORITY_5 - i));
+                    load_menu_item_ui(i + MENU_ITEM_TYPE_0B1, 0, 0, (s8) (MENU_ITEM_UI_PRIO_5 - i));
                 }
             }
             break;
@@ -10906,14 +10907,14 @@ void func_800ACC50(MenuItem* arg0) {
             }
             break;
         case 2:
-            arg0->unk1C += 0x20;
-            if (arg0->unk1C >= 0x100) {
+            arg0->param1 += 0x20;
+            if (arg0->param1 >= 0x100) {
                 if (gModeSelection == VERSUS) {
                     arg0->state = (s32) gVersusResultCursorSelection;
                 } else {
                     arg0->state = (s32) gBattleResultCursorSelection;
                 }
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
             }
             break;
         case 10:
@@ -10925,20 +10926,20 @@ void func_800ACC50(MenuItem* arg0) {
                     if (arg0->state >= 0xB) {
                         arg0->state--;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
-                        if (arg0->unk24 < 4.2) {
-                            arg0->unk24 += 4.0;
+                        if (arg0->paramf < 4.2) {
+                            arg0->paramf += 4.0;
                         }
-                        arg0->unk8 = -1;
+                        arg0->subState = -1;
                     }
                 }
                 if ((gControllerFive->buttonPressed | gControllerFive->stickPressed) & 0x400) {
                     if (arg0->state < 0xD) {
                         arg0->state++;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
-                        if (arg0->unk24 < 4.2) {
-                            arg0->unk24 += 4.0;
+                        if (arg0->paramf < 4.2) {
+                            arg0->paramf += 4.0;
                         }
-                        arg0->unk8 = 1;
+                        arg0->subState = 1;
                     }
                 }
                 if (gControllerFive->buttonPressed & 0x9000) {
@@ -10949,8 +10950,8 @@ void func_800ACC50(MenuItem* arg0) {
                     } else {
                         gBattleResultCursorSelection = (s8) arg0->state;
                     }
-                    if (arg0->unk24 < 4.2) {
-                        arg0->unk24 += 4.0;
+                    if (arg0->paramf < 4.2) {
+                        arg0->paramf += 4.0;
                     }
                 }
             }
@@ -10981,7 +10982,7 @@ void func_800ACF40(MenuItem* arg0) {
             func_800A9278(arg0, temp_v0_2->row);
             if (arg0->column == temp_v0_2->column) {
                 arg0->state = 2;
-                arg0->unk20 = 0;
+                arg0->param2 = 0;
             }
             break;
         case 2:
@@ -10999,8 +11000,8 @@ void func_800ACF40(MenuItem* arg0) {
                     break;
             }
             if (var_v1 == 0) {
-                arg0->unk20++;
-                if (arg0->unk20 >= 0x1F) {
+                arg0->param2++;
+                if (arg0->param2 >= 0x1F) {
                     if (find_menu_items_type_dupe(0x000000B0)->state >= 2) {
                         func_8009A640(arg0->D_8018DEE0_index, 0, temp_a2,
                                       segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_a1]));
@@ -11029,18 +11030,18 @@ void func_800AD1A4(MenuItem* arg0) {
             arg0->column = 0x0000014A;
             arg0->state = 1;
             func_800921B4();
-            add_ui_element(MENU_ITEM_TYPE_0BB, 0, 0, MENU_ITEM_PRIORITY_0);
+            load_menu_item_ui(MENU_ITEM_TYPE_0BB, 0, 0, MENU_ITEM_UI_PRIO_0);
             break;
         case 1:
             func_800A9208(arg0, 0x000000A0);
             if (arg0->column == 0x000000A0) {
                 arg0->state = 2;
-                arg0->unk20 = 0;
+                arg0->param2 = 0;
             }
             break;
         case 2:
-            arg0->unk20++;
-            if (arg0->unk20 >= 0x15) {
+            arg0->param2++;
+            if (arg0->param2 >= 0x15) {
                 arg0->state = 3;
             }
             break;
@@ -11048,17 +11049,17 @@ void func_800AD1A4(MenuItem* arg0) {
             if (D_8018D9D8 != 0) {
                 func_800921B4();
                 arg0->state = 4;
-                arg0->unk1C = arg0->column;
-                add_ui_element(MENU_ITEM_TYPE_0BA, 0, 0, MENU_ITEM_PRIORITY_0);
+                arg0->param1 = arg0->column;
+                load_menu_item_ui(MENU_ITEM_TYPE_0BA, 0, 0, MENU_ITEM_UI_PRIO_0);
             }
             break;
         case 4:
-            arg0->column = arg0->unk1C;
-            if (arg0->unk1C < 0x14A) {
+            arg0->column = arg0->param1;
+            if (arg0->param1 < 0x14A) {
                 if (D_8018D9D8 != 0) {
-                    arg0->unk1C += 0x20;
+                    arg0->param1 += 0x20;
                 } else {
-                    arg0->unk1C += 0x10;
+                    arg0->param1 += 0x10;
                 }
             } else {
                 arg0->type = 0;
@@ -11082,22 +11083,22 @@ void func_800AD2E8(MenuItem* arg0) {
             for (index = 0; index < ARRAY_COUNT(gGPPointRewards); index++) {
                 sGPPointsCopy[index] = gGPPointRewards[index];
             }
-            arg0->unk20 = arg0->column;
+            arg0->param2 = arg0->column;
             break;
             ;
         case 1: /* switch 3 */
-            arg0->column = arg0->unk20;
+            arg0->column = arg0->param2;
             if (D_8018D9D8 != 0) {
                 var_a1 = 0x20;
             } else {
                 var_a1 = 0x10;
             }
-            if ((arg0->unk20 + var_a1) < 0) {
-                arg0->unk20 += var_a1;
+            if ((arg0->param2 + var_a1) < 0) {
+                arg0->param2 += var_a1;
                 D_800DC5EC->screenStartX += var_a1;
                 D_800DC5F0->screenStartX -= var_a1;
             } else {
-                arg0->unk20 = 0;
+                arg0->param2 = 0;
                 arg0->column = 0;
                 arg0->state = gTimeTrialsResultCursorSelection;
                 if ((arg0->state == 9) && (D_80162DF8 == 1)) {
@@ -11121,10 +11122,10 @@ void func_800AD2E8(MenuItem* arg0) {
                             arg0->state--;
                         }
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
-                        if (arg0->unk24 < 4.2) {
-                            arg0->unk24 += 4.0;
+                        if (arg0->paramf < 4.2) {
+                            arg0->paramf += 4.0;
                         }
-                        arg0->unk8 = -1;
+                        arg0->subState = -1;
                     }
                 }
                 if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x400) {
@@ -11137,18 +11138,18 @@ void func_800AD2E8(MenuItem* arg0) {
                             arg0->state -= 2;
                         } else {
                             play_sound2(SOUND_MENU_CURSOR_MOVE);
-                            if (arg0->unk24 < 4.2) {
-                                arg0->unk24 += 4.0;
+                            if (arg0->paramf < 4.2) {
+                                arg0->paramf += 4.0;
                             }
-                            arg0->unk8 = 1;
+                            arg0->subState = 1;
                         }
                     }
                 }
                 if (gControllerOne->buttonPressed & 0x9000) {
                     if (arg0->state == 0x0000000A) {
                         var_v1 = 0;
-                        if (arg0->unk24 < 4.2) {
-                            arg0->unk24 += 4.0;
+                        if (arg0->paramf < 4.2) {
+                            arg0->paramf += 4.0;
                         }
                         if (gControllerPak1State != 0) {
                             var_v1 = 0;
@@ -11217,7 +11218,7 @@ void func_800AD2E8(MenuItem* arg0) {
                             }
                             if (gControllerPak1NumPagesFree >= 0x79) {
                                 arg0->state = 0x00000013;
-                                arg0->unk1C = 0;
+                                arg0->param1 = 0;
                                 play_sound2(SOUND_MENU_SELECT);
                                 return;
                             }
@@ -11225,13 +11226,13 @@ void func_800AD2E8(MenuItem* arg0) {
                             play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                         }
                     } else {
-                        arg0->unk1C = arg0->state;
+                        arg0->param1 = arg0->state;
                         gTimeTrialsResultCursorSelection = arg0->state;
                         arg0->state = 0x0000001E;
-                        arg0->unk20 = arg0->row;
+                        arg0->param2 = arg0->row;
                         play_sound2(SOUND_ACTION_NEXT_COURSE);
-                        if (arg0->unk24 < 4.2) {
-                            arg0->unk24 += 4.0;
+                        if (arg0->paramf < 4.2) {
+                            arg0->paramf += 4.0;
                         }
                     }
                 }
@@ -11247,33 +11248,33 @@ void func_800AD2E8(MenuItem* arg0) {
             if (gControllerOne->buttonPressed & 0xD000) {
                 arg0->state = 0x0000000A;
                 play_sound2(SOUND_MENU_GO_BACK);
-                if (arg0->unk24 < 4.2) {
-                    arg0->unk24 += 4.0;
+                if (arg0->paramf < 4.2) {
+                    arg0->paramf += 4.0;
                 }
             }
             break;
         case 17: /* switch 1 */
         case 18: /* switch 1 */
-            arg0->unk20 = arg0->state - 0x11;
-            if (func_800B639C((gCupSelection * 4) + gCourseIndexInCup) != arg0->unk20) {
+            arg0->param2 = arg0->state - 0x11;
+            if (func_800B639C((gCupSelection * 4) + gCourseIndexInCup) != arg0->param2) {
                 if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) {
                     if (arg0->state >= 0x12) {
                         arg0->state--;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
-                        if (arg0->unk24 < 4.2) {
-                            arg0->unk24 += 4.0;
+                        if (arg0->paramf < 4.2) {
+                            arg0->paramf += 4.0;
                         }
-                        arg0->unk8 = -1;
+                        arg0->subState = -1;
                     }
                 }
                 if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x400) {
                     if (arg0->state < 0x12) {
                         arg0->state++;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
-                        if (arg0->unk24 < 4.2) {
-                            arg0->unk24 += 4.0;
+                        if (arg0->paramf < 4.2) {
+                            arg0->paramf += 4.0;
                         }
-                        arg0->unk8 = 1;
+                        arg0->subState = 1;
                     }
                 }
             }
@@ -11283,28 +11284,28 @@ void func_800AD2E8(MenuItem* arg0) {
                 return;
             }
             if (gControllerOne->buttonPressed & 0x9000) {
-                thing = &D_8018EE10[arg0->unk20];
+                thing = &D_8018EE10[arg0->param2];
                 if (thing->ghostDataSaved == 0) {
                     arg0->state = 0x00000019;
-                    arg0->unk1C = 0;
-                } else if (func_800B63F0(arg0->unk20) == 0) {
+                    arg0->param1 = 0;
+                } else if (func_800B63F0(arg0->param2) == 0) {
                     arg0->state = 0x00000010;
                 } else {
                     arg0->state = 0x00000014;
                 }
                 play_sound2(SOUND_MENU_SELECT);
-                if (arg0->unk24 < 4.2) {
-                    arg0->unk24 += 4.0;
+                if (arg0->paramf < 4.2) {
+                    arg0->paramf += 4.0;
                 }
             }
             break;
         case 19: /* switch 1 */
-            if ((arg0->unk1C == 1) && (func_800B6A68() != 0)) {
+            if ((arg0->param1 == 1) && (func_800B6A68() != 0)) {
                 arg0->state = 0x0000000F;
                 return;
             } else {
-                arg0->unk1C++;
-                if (arg0->unk1C >= 2) {
+                arg0->param1++;
+                if (arg0->param1 >= 2) {
                     arg0->state = 0x00000011;
                 }
             }
@@ -11314,70 +11315,70 @@ void func_800AD2E8(MenuItem* arg0) {
             if (((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) && (arg0->state >= 0x15)) {
                 arg0->state--;
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
-                if (arg0->unk24 < 4.2) {
-                    arg0->unk24 += 4.0;
+                if (arg0->paramf < 4.2) {
+                    arg0->paramf += 4.0;
                 }
-                arg0->unk8 = -1;
+                arg0->subState = -1;
             }
             if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x400) {
                 if (arg0->state < 0x15) {
                     arg0->state++;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (arg0->unk24 < 4.2) {
-                        arg0->unk24 += 4.0;
+                    if (arg0->paramf < 4.2) {
+                        arg0->paramf += 4.0;
                     }
-                    arg0->unk8 = 1;
+                    arg0->subState = 1;
                 }
             }
             if (gControllerOne->buttonPressed & 0x4000) {
-                arg0->state = arg0->unk20 + 0x11;
+                arg0->state = arg0->param2 + 0x11;
                 play_sound2(SOUND_MENU_GO_BACK);
                 return;
             }
             if (gControllerOne->buttonPressed & 0x9000) {
                 if (arg0->state == 0x00000015) {
                     arg0->state = 0x00000019;
-                    arg0->unk1C = 0;
+                    arg0->param1 = 0;
                     play_sound2(SOUND_MENU_SELECT);
-                    if (arg0->unk24 < 4.2) {
-                        arg0->unk24 += 4.0;
+                    if (arg0->paramf < 4.2) {
+                        arg0->paramf += 4.0;
                     }
                 } else {
-                    arg0->state = arg0->unk20 + 0x11;
+                    arg0->state = arg0->param2 + 0x11;
                     play_sound2(SOUND_MENU_GO_BACK);
                     return;
                 }
             }
             break;
         case 25: /* switch 1 */
-            if (arg0->unk1C == 1) {
+            if (arg0->param1 == 1) {
                 if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName, (u8*) gExtCode,
                                   &gControllerPak1FileNote) != 0) {
                     arg0->state = 0x0000001A;
                     play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                     return;
                 }
-                if (func_800B6178(arg0->unk20) != 0) {
+                if (func_800B6178(arg0->param2) != 0) {
                     arg0->state = 0x0000001A;
                     play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                     return;
                 }
             }
-            arg0->unk1C++;
-            if (arg0->unk1C >= 2) {
+            arg0->param1++;
+            if (arg0->param1 >= 2) {
                 arg0->state = 0x0000000A;
                 return;
             }
             break;
         case 30: /* switch 1 */
-            arg0->row = arg0->unk20;
-            if (arg0->unk20 < 0xF0) {
-                arg0->unk20 += 0x10;
+            arg0->row = arg0->param2;
+            if (arg0->param2 < 0xF0) {
+                arg0->param2 += 0x10;
                 D_800DC5EC->screenStartY += 0x10;
                 D_800DC5F0->screenStartY -= 0x10;
                 return;
             }
-            switch (arg0->unk1C) { /* switch 3 */
+            switch (arg0->param1) { /* switch 3 */
                 case 5:            /* switch 3 */
                     D_8015F890 = 0;
                     D_8015F892 = 1;
@@ -11398,7 +11399,7 @@ void func_800AD2E8(MenuItem* arg0) {
                     func_802903B0();
                     break;
             }
-            arg0->unk20 = 0;
+            arg0->param2 = 0;
             arg0->state = 0x0000001F;
             D_800DC5EC->screenStartY = 0x012C;
             D_800DC5F0->screenStartY = -0x003C;
@@ -11445,20 +11446,20 @@ void func_800ADF48(MenuItem* arg0) {
                         if (D_800F0B50[gModeSelection] < arg0->state) {
                             arg0->state--;
                             play_sound2(SOUND_MENU_CURSOR_MOVE);
-                            if (arg0->unk24 < 4.2) {
-                                arg0->unk24 += 4.0;
+                            if (arg0->paramf < 4.2) {
+                                arg0->paramf += 4.0;
                             }
-                            arg0->unk8 = -1;
+                            arg0->subState = -1;
                         }
                     }
                     if ((controller->buttonPressed | controller->stickPressed) & 0x400) {
                         if (arg0->state < D_800F0B54[gModeSelection]) {
                             arg0->state++;
                             play_sound2(SOUND_MENU_CURSOR_MOVE);
-                            if (arg0->unk24 < 4.2) {
-                                arg0->unk24 += 4.0;
+                            if (arg0->paramf < 4.2) {
+                                arg0->paramf += 4.0;
                             }
-                            arg0->unk8 = 1;
+                            arg0->subState = 1;
                         }
                     }
                     if (controller->buttonPressed & B_BUTTON) {
@@ -11478,8 +11479,8 @@ void func_800ADF48(MenuItem* arg0) {
                             func_8009DFE0(30);
                             play_sound2(SOUND_ACTION_CONTINUE_UNKNOWN);
                             func_800CA330(FUNC_800ADF48DEF);
-                            if (arg0->unk24 < 4.2) {
-                                arg0->unk24 += 4.0;
+                            if (arg0->paramf < 4.2) {
+                                arg0->paramf += 4.0;
                             }
                         }
                     }
@@ -11502,22 +11503,22 @@ void func_800AE218(MenuItem* arg0) {
     }
     switch (arg0->state) { /* switch 1 */
         case 0:            /* switch 1 */
-            if (arg0->unk1C < 0x1E) {
-                arg0->unk1C++;
+            if (arg0->param1 < 0x1E) {
+                arg0->param1++;
             }
             if (gControllerOne->buttonPressed & 0x1000) {
                 arg0->state = 0x0000000F;
                 play_sound2(SOUND_ACTION_GO_BACK_2);
             } else if (playerHUD[PLAYER_ONE].raceCompleteBool != 0) {
                 arg0->state = 1;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
             }
             break;
         default: /* switch 1 */
             break;
         case 1: /* switch 1 */
-            arg0->unk1C += 3;
-            if (arg0->unk1C >= 0x8D) {
+            arg0->param1 += 3;
+            if (arg0->param1 >= 0x8D) {
                 arg0->state = 0x0000000F;
             }
             break;
@@ -11532,27 +11533,27 @@ void func_800AE218(MenuItem* arg0) {
                     if (arg0->state >= 0xC) {
                         arg0->state--;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
-                        if (arg0->unk24 < 4.2) {
-                            arg0->unk24 += 4.0;
+                        if (arg0->paramf < 4.2) {
+                            arg0->paramf += 4.0;
                         }
-                        arg0->unk8 = -1;
+                        arg0->subState = -1;
                     }
                 }
                 if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x400) {
                     if (arg0->state < 0x10) {
                         arg0->state++;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
-                        if (arg0->unk24 < 4.2) {
-                            arg0->unk24 += 4.0;
+                        if (arg0->paramf < 4.2) {
+                            arg0->paramf += 4.0;
                         }
-                        arg0->unk8 = 1;
+                        arg0->subState = 1;
                     }
                 }
                 if (gControllerOne->buttonPressed & 0x9000) {
                     if (arg0->state == 0x00000010) {
                         var_v1 = 0;
-                        if (arg0->unk24 < 4.2) {
-                            arg0->unk24 += 4.0;
+                        if (arg0->paramf < 4.2) {
+                            arg0->paramf += 4.0;
                         }
                         if (gControllerPak1State != 0) {
                             var_v1 = 0;
@@ -11621,7 +11622,7 @@ void func_800AE218(MenuItem* arg0) {
                             play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                         } else if (gControllerPak1NumPagesFree >= 0x79) {
                             arg0->state = 0x00000020;
-                            arg0->unk1C = 0;
+                            arg0->param1 = 0;
                             play_sound2(SOUND_MENU_SELECT);
                         } else {
                             arg0->state = 0x00000018;
@@ -11632,8 +11633,8 @@ void func_800AE218(MenuItem* arg0) {
                         play_sound2(SOUND_MENU_OK_CLICKED);
                         func_800CA330(0x19U);
                         func_800CA388(0x19U);
-                        if (arg0->unk24 < 4.2) {
-                            arg0->unk24 += 4.0;
+                        if (arg0->paramf < 4.2) {
+                            arg0->paramf += 4.0;
                         }
                     }
                 }
@@ -11649,33 +11650,33 @@ void func_800AE218(MenuItem* arg0) {
             if (gControllerOne->buttonPressed & 0xD000) {
                 arg0->state = 0x00000010;
                 play_sound2(SOUND_MENU_GO_BACK);
-                if (arg0->unk24 < 4.2) {
-                    arg0->unk24 += 4.0;
+                if (arg0->paramf < 4.2) {
+                    arg0->paramf += 4.0;
                 }
             }
             break;
         case 30: /* switch 1 */
         case 31: /* switch 1 */
-            arg0->unk20 = (u32) arg0->state - 0x1E;
-            if (func_800B639C((gCupSelection * 4) + gCourseIndexInCup) != arg0->unk20) {
+            arg0->param2 = (u32) arg0->state - 0x1E;
+            if (func_800B639C((gCupSelection * 4) + gCourseIndexInCup) != arg0->param2) {
                 if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x800) {
                     if (arg0->state >= 0x1F) {
                         arg0->state--;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
-                        if (arg0->unk24 < 4.2) {
-                            arg0->unk24 += 4.0;
+                        if (arg0->paramf < 4.2) {
+                            arg0->paramf += 4.0;
                         }
-                        arg0->unk8 = -1;
+                        arg0->subState = -1;
                     }
                 }
                 if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x400) {
                     if (arg0->state < 0x1F) {
                         arg0->state++;
                         play_sound2(SOUND_MENU_CURSOR_MOVE);
-                        if (arg0->unk24 < 4.2) {
-                            arg0->unk24 += 4.0;
+                        if (arg0->paramf < 4.2) {
+                            arg0->paramf += 4.0;
                         }
-                        arg0->unk8 = 1;
+                        arg0->subState = 1;
                     }
                 }
             }
@@ -11683,27 +11684,27 @@ void func_800AE218(MenuItem* arg0) {
                 arg0->state = 0x00000010;
                 play_sound2(SOUND_MENU_GO_BACK);
             } else if (gControllerOne->buttonPressed & 0x9000) {
-                thing = &D_8018EE10[arg0->unk20];
+                thing = &D_8018EE10[arg0->param2];
                 if (thing->ghostDataSaved == 0) {
                     arg0->state = 0x00000028;
-                    arg0->unk1C = 0;
-                } else if (func_800B63F0(arg0->unk20) == 0) {
+                    arg0->param1 = 0;
+                } else if (func_800B63F0(arg0->param2) == 0) {
                     arg0->state = 0x0000001A;
                 } else {
                     arg0->state = 0x00000023;
                 }
                 play_sound2(SOUND_MENU_SELECT);
-                if (arg0->unk24 < 4.2) {
-                    arg0->unk24 += 4.0;
+                if (arg0->paramf < 4.2) {
+                    arg0->paramf += 4.0;
                 }
             }
             break;
         case 32: /* switch 1 */
-            if ((arg0->unk1C == 1) && (func_800B6A68() != 0)) {
+            if ((arg0->param1 == 1) && (func_800B6A68() != 0)) {
                 arg0->state = 0x00000019;
             } else {
-                arg0->unk1C++;
-                if (arg0->unk1C >= 2) {
+                arg0->param1++;
+                if (arg0->param1 >= 2) {
                     arg0->state = 0x0000001E;
                 }
             }
@@ -11714,54 +11715,54 @@ void func_800AE218(MenuItem* arg0) {
                 ((s32) (u32) arg0->state >= 0x24)) {
                 arg0->state--;
                 play_sound2(SOUND_MENU_CURSOR_MOVE);
-                if (arg0->unk24 < 4.2) {
-                    arg0->unk24 += 4.0;
+                if (arg0->paramf < 4.2) {
+                    arg0->paramf += 4.0;
                 }
-                arg0->unk8 = -1;
+                arg0->subState = -1;
             }
             if ((gControllerOne->buttonPressed | gControllerOne->stickPressed) & 0x400) {
                 if (arg0->state < 0x24) {
                     arg0->state++;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
-                    if (arg0->unk24 < 4.2) {
-                        arg0->unk24 += 4.0;
+                    if (arg0->paramf < 4.2) {
+                        arg0->paramf += 4.0;
                     }
-                    arg0->unk8 = 1;
+                    arg0->subState = 1;
                 }
             }
             if (gControllerOne->buttonPressed & 0x4000) {
-                arg0->state = arg0->unk20 + 0x1E;
+                arg0->state = arg0->param2 + 0x1E;
                 play_sound2(SOUND_MENU_GO_BACK);
             } else if (gControllerOne->buttonPressed & 0x9000) {
                 if (arg0->state == 0x00000024) {
                     arg0->state = 0x00000028;
-                    arg0->unk1C = 0;
+                    arg0->param1 = 0;
                     play_sound2(SOUND_MENU_SELECT);
-                    if (arg0->unk24 < 4.2) {
-                        arg0->unk24 += 4.0;
+                    if (arg0->paramf < 4.2) {
+                        arg0->paramf += 4.0;
                     }
                 } else {
-                    arg0->state = arg0->unk20 + 0x1E;
+                    arg0->state = arg0->param2 + 0x1E;
                     play_sound2(SOUND_MENU_GO_BACK);
                 }
             }
             break;
         case 40: /* switch 1 */
-            if (arg0->unk1C == 1) {
+            if (arg0->param1 == 1) {
                 if (osPfsFindFile(&gControllerPak1FileHandle, gCompanyCode, gGameCode, (u8*) gGameName, (u8*) gExtCode,
                                   &gControllerPak1FileNote) != 0) {
                     arg0->state = 0x00000029;
                     play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                     return;
                 }
-                if (func_800B6178(arg0->unk20) != 0) {
+                if (func_800B6178(arg0->param2) != 0) {
                     arg0->state = 0x00000029;
                     play_sound2(SOUND_MENU_FILE_NOT_FOUND);
                     return;
                 }
             }
-            arg0->unk1C++;
-            if (arg0->unk1C >= 2) {
+            arg0->param1++;
+            if (arg0->param1 >= 2) {
                 arg0->state = 0x00000010;
             }
             break;
@@ -11780,19 +11781,19 @@ void func_800AEC54(MenuItem* arg0) {
             func_800A9208(arg0, 0x000000A0);
             if (arg0->column == 0x000000A0) {
                 arg0->state = 2;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
             }
             break;
         case 2:
-            arg0->unk1C++;
-            if (arg0->unk1C >= 0x3D) {
+            arg0->param1++;
+            if (arg0->param1 >= 0x3D) {
                 arg0->state = 3;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
             }
             break;
         case 4:
-            arg0->unk1C++;
-            if (arg0->unk1C >= 6) {
+            arg0->param1++;
+            if (arg0->param1 >= 6) {
                 arg0->type = 0;
                 break;
             }
@@ -11809,8 +11810,8 @@ void func_800AEC54(MenuItem* arg0) {
 }
 
 void func_800AEDBC(MenuItem* arg0) {
-    if (arg0->unk1C != gTimeTrialDataCourseIndex) {
-        arg0->unk1C = (s32) gTimeTrialDataCourseIndex;
+    if (arg0->param1 != gTimeTrialDataCourseIndex) {
+        arg0->param1 = (s32) gTimeTrialDataCourseIndex;
         func_8009A594(arg0->D_8018DEE0_index, 0,
                       segmented_to_virtual_dupe_2(
                           D_800E7E34[gCupCourseOrder[gTimeTrialDataCourseIndex / 4][gTimeTrialDataCourseIndex % 4]]));
@@ -11861,7 +11862,7 @@ void func_800AEF74(MenuItem* arg0) {
         case 0:
             if (D_80162DF8 == 1) {
                 arg0->state = 1;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
             } else if (playerHUD[PLAYER_ONE].raceCompleteBool == (s8) 1) {
                 arg0->state = 2;
             }
@@ -11869,7 +11870,7 @@ void func_800AEF74(MenuItem* arg0) {
         case 2:
             break;
         case 1:
-            arg0->unk1C += 1;
+            arg0->param1 += 1;
             if (playerHUD[PLAYER_ONE].raceCompleteBool == 1) {
                 arg0->state = 2;
             }
@@ -11882,32 +11883,32 @@ void func_800AF004(MenuItem* arg0) {
 
     switch (arg0->state) {
         case 0:
-            arg0->unk1C += 3;
-            if (arg0->unk1C >= 0x65) {
-                arg0->unk1C = 0;
+            arg0->param1 += 3;
+            if (arg0->param1 >= 0x65) {
+                arg0->param1 = 0;
                 arg0->state = 1;
                 gCupSelection %= 4;
                 gCCSelection %= 4;
-                add_ui_element(MENU_ITEM_TYPE_12C, 0, 0, MENU_ITEM_PRIORITY_4);
+                load_menu_item_ui(MENU_ITEM_TYPE_12C, 0, 0, MENU_ITEM_UI_PRIO_4);
             }
             break;
         case 1:
         case 2:
         case 3:
         case 4:
-            arg0->unk1C += 1;
-            if (arg0->unk1C >= 9) {
-                arg0->unk1C = 0;
+            arg0->param1 += 1;
+            if (arg0->param1 >= 9) {
+                arg0->param1 = 0;
                 arg0->state++;
-                add_ui_element(arg0->state + MENU_ITEM_TYPE_12B, 0, 0, MENU_ITEM_PRIORITY_4);
+                load_menu_item_ui(arg0->state + MENU_ITEM_TYPE_12B, 0, 0, MENU_ITEM_UI_PRIO_4);
             }
             break;
         case 5:
-            arg0->unk1C += 1;
-            if ((arg0->unk1C >= 0x65) &&
+            arg0->param1 += 1;
+            if ((arg0->param1 >= 0x65) &&
                 ((gControllerFive->buttonPressed != 0) || (gControllerFive->stickPressed != 0))) {
                 arg0->state = 6;
-                arg0->unk1C = 0;
+                arg0->param1 = 0;
                 if (D_802874D8.unk1D < 3) {
                     play_sound2(SOUND_MENU_OK_CLICKED);
                 } else {
@@ -11971,12 +11972,12 @@ void func_800AF270(MenuItem* arg0) {
             func_800A91D8(arg0, thing->column, thing->row);
             if ((arg0->column == thing->column) && (arg0->row == thing->row)) {
                 arg0->state = 2;
-                arg0->unk20 = 0;
+                arg0->param2 = 0;
             }
             break;
         case 2:
-            arg0->unk20++;
-            if (arg0->unk20 >= 0x1F) {
+            arg0->param2++;
+            if (arg0->param2 >= 0x1F) {
                 if (D_802874D8.unk1D >= 3) {
                     arg0->state = 4;
                     func_800CA0B8();
@@ -12026,27 +12027,27 @@ void func_800AF4DC(MenuItem* arg0) {
         case 0:
             arg0->column = temp_v1->startingColumn;
             arg0->state = 1;
-            arg0->unk20 = temp_v1->columnExtra + (get_string_width(gTextCredit[temp_v0]) * temp_v1->textScaling / 2);
+            arg0->param2 = temp_v1->columnExtra + (get_string_width(gTextCredit[temp_v0]) * temp_v1->textScaling / 2);
             /* fallthrough */
         case 1:
-            func_800A9208(arg0, arg0->unk20);
-            arg0->unk1C = (s32) (arg0->unk20 - arg0->column) / 4;
-            if (arg0->unk1C >= 9) {
-                arg0->unk1C = 8;
+            func_800A9208(arg0, arg0->param2);
+            arg0->param1 = (s32) (arg0->param2 - arg0->column) / 4;
+            if (arg0->param1 >= 9) {
+                arg0->param1 = 8;
             }
-            arg0->unk24 = (arg0->unk1C * 0.05) + 1.0;
-            if (arg0->column >= (arg0->unk20 - 0x14)) {
+            arg0->paramf = (arg0->param1 * 0.05) + 1.0;
+            if (arg0->column >= (arg0->param2 - 0x14)) {
                 arg0->state = 2;
                 arg0->D_8018DEE0_index = 0;
             }
             break;
         case 2:
-            func_800A9208(arg0, arg0->unk20);
-            arg0->unk1C = (arg0->unk20 - arg0->column) / 4;
+            func_800A9208(arg0, arg0->param2);
+            arg0->param1 = (arg0->param2 - arg0->column) / 4;
             arg0->D_8018DEE0_index += 1;
-            arg0->unk24 = ((arg0->D_8018DEE0_index - 0xA) * 0.0085 * (arg0->D_8018DEE0_index - 0xA)) + 0.4;
-            if ((arg0->D_8018DEE0_index >= 9) && ((f64) arg0->unk24 > 1)) {
-                arg0->unk24 = 1.0f;
+            arg0->paramf = ((arg0->D_8018DEE0_index - 0xA) * 0.0085 * (arg0->D_8018DEE0_index - 0xA)) + 0.4;
+            if ((arg0->D_8018DEE0_index >= 9) && ((f64) arg0->paramf > 1)) {
+                arg0->paramf = 1.0f;
                 arg0->state = 3;
             }
             break;
@@ -12056,7 +12057,7 @@ void func_800AF4DC(MenuItem* arg0) {
             }
             break;
         case 4:
-            func_800A94C8(arg0, arg0->unk20, 1);
+            func_800A94C8(arg0, arg0->param2, 1);
             if (arg0->row > 480.0) {
                 arg0->type = 0;
             }
@@ -12078,27 +12079,27 @@ void func_800AF740(MenuItem* arg0) {
         case 0:
             arg0->column = temp_v1->startingColumn;
             arg0->state = 1;
-            arg0->unk20 = temp_v1->columnExtra - (get_string_width(gTextCredit[temp_v0]) * temp_v1->textScaling / 2);
+            arg0->param2 = temp_v1->columnExtra - (get_string_width(gTextCredit[temp_v0]) * temp_v1->textScaling / 2);
             /* fallthrough */
         case 1:
-            func_800A9208(arg0, arg0->unk20);
-            arg0->unk1C = (s32) (arg0->column - arg0->unk20) / 4;
-            if (arg0->unk1C >= 9) {
-                arg0->unk1C = 8;
+            func_800A9208(arg0, arg0->param2);
+            arg0->param1 = (s32) (arg0->column - arg0->param2) / 4;
+            if (arg0->param1 >= 9) {
+                arg0->param1 = 8;
             }
-            arg0->unk24 = (arg0->unk1C * 0.05) + 1.0;
-            if ((arg0->unk20 + 0x14) >= arg0->column) {
+            arg0->paramf = (arg0->param1 * 0.05) + 1.0;
+            if ((arg0->param2 + 0x14) >= arg0->column) {
                 arg0->state = 2;
                 arg0->D_8018DEE0_index = 0;
             }
             break;
         case 2:
-            func_800A9208(arg0, arg0->unk20);
-            arg0->unk1C = (arg0->column - arg0->unk20) / 4;
+            func_800A9208(arg0, arg0->param2);
+            arg0->param1 = (arg0->column - arg0->param2) / 4;
             arg0->D_8018DEE0_index += 1;
-            arg0->unk24 = ((arg0->D_8018DEE0_index - 0xA) * 0.0085 * (arg0->D_8018DEE0_index - 0xA)) + 0.4;
-            if ((arg0->D_8018DEE0_index >= 9) && ((f64) arg0->unk24 > 1)) {
-                arg0->unk24 = 1.0f;
+            arg0->paramf = ((arg0->D_8018DEE0_index - 0xA) * 0.0085 * (arg0->D_8018DEE0_index - 0xA)) + 0.4;
+            if ((arg0->D_8018DEE0_index >= 9) && ((f64) arg0->paramf > 1)) {
+                arg0->paramf = 1.0f;
                 arg0->state = 3;
             }
             break;
@@ -12108,7 +12109,7 @@ void func_800AF740(MenuItem* arg0) {
             }
             break;
         case 4:
-            func_800A94C8(arg0, arg0->unk20, -1);
+            func_800A94C8(arg0, arg0->param2, -1);
             if (arg0->row > 480.0) {
                 arg0->type = 0;
             }

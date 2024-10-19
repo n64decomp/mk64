@@ -22,21 +22,21 @@ it last longer See `func_80096CD8` for the actual drawing of the static
 */
 
 typedef struct {
-    /* 0x00 */ s32 type;  // id maybe?
-    /* 0x04 */ s32 state; // sound mode, maybe some other stuff
-    /* 0x08 */ s32 unk8;  // This is used but I can't tell what for
+    /* 0x00 */ s32 type;     // id maybe?
+    /* 0x04 */ s32 state;    // sound mode, maybe some other stuff
+    /* 0x08 */ s32 subState; // This is used but I can't tell what for
     /* 0x0C */ s32 column;
     /* 0x10 */ s32 row;
     /* 0x14 */ u8 priority;   // priority/depth/z-level. Higher values are drawn on top of lower values
                               // If equal, later entries in gMenuItems are on top
     /* 0x15 */ bool8 visible; // active? If 1 its displayed, if 0 its not
     // These seem to be generic space available for use by the struct, no 1 purpose for any given member
-    /* 0x16 */ s16 unk16;            // Potentially unused
+    /* 0x16 */ s16 unused;           // Unused
     /* 0x18 */ s32 D_8018DEE0_index; // Index in D_8018DEE0, an array of some other struct type
-    /* 0x1C */ s32 unk1C;            // Multi use. Sometimes cup selection, sometimes course index.
-    /* 0x20 */ s32 unk20; // Multi use, hard to tell what for though. Sometimes a random number, sometimes GP points
-    /* 0x24 */ f32 unk24; // Multi use, x scaling for some things, rotation multiplier for the question box in some
-                          // menus, probably some other things
+    /* 0x1C */ s32 param1;            // Multi use. Sometimes cup selection, sometimes course index.
+    /* 0x20 */ s32 param2; // Multi use, hard to tell what for though. Sometimes a random number, sometimes GP points
+    /* 0x24 */ f32 paramf; // Multi use, x scaling for some things, rotation multiplier for the question box in some
+                           // menus, probably some other things
 } MenuItem;               // size = 0x28
 
 typedef struct {
@@ -50,7 +50,7 @@ typedef struct {
 
 typedef struct {
     /* 0x0 */ MenuTexture* texture;
-    /* 0x4 */ s32 unk_4;
+    /* 0x4 */ s32 texNum;
 } struct_8018E060_entry; // size = 0x8
 
 typedef struct {
@@ -90,19 +90,23 @@ typedef struct {
 } Unk_D_800E70A0; // size = 0x08
 
 enum MENU_ITEMpriority {
-    MENU_ITEM_PRIORITY_0,
-    MENU_ITEM_PRIORITY_1,
-    MENU_ITEM_PRIORITY_2,
-    MENU_ITEM_PRIORITY_3,
-    MENU_ITEM_PRIORITY_4,
-    MENU_ITEM_PRIORITY_5,
-    MENU_ITEM_PRIORITY_6,
-    MENU_ITEM_PRIORITY_7,
-    MENU_ITEM_PRIORITY_8,
-    MENU_ITEM_PRIORITY_9,
-    MENU_ITEM_PRIORITY_A,
-    MENU_ITEM_PRIORITY_B,
-    MENU_ITEM_PRIORITY_C
+    MENU_ITEM_UI_PRIO_0,
+    MENU_ITEM_UI_PRIO_1,
+    MENU_ITEM_UI_PRIO_2,
+    MENU_ITEM_UI_PRIO_3,
+    MENU_ITEM_UI_PRIO_4,
+    MENU_ITEM_UI_PRIO_5,
+    MENU_ITEM_UI_PRIO_6,
+    MENU_ITEM_UI_PRIO_7,
+    MENU_ITEM_UI_PRIO_8,
+    MENU_ITEM_UI_PRIO_9,
+    MENU_ITEM_UI_PRIO_A,
+    MENU_ITEM_UI_PRIO_B,
+    MENU_ITEM_UI_PRIO_C,
+    MENU_ITEM_UI_PRIO_D,
+    MENU_ITEM_UI_PRIO_E,
+    MENU_ITEM_UI_PRIO_F,
+    MENU_ITEM_UI_PRIO_MAX // 0x10
 };
 
 enum CenterText { LEFT_TEXT = 1, CENTER_TEXT_MODE_1, RIGHT_TEXT, CENTER_TEXT_MODE_2 };
@@ -238,7 +242,7 @@ enum MENU_ITEMtype {
     MENU_ITEM_TYPE_0EA,
     MENU_ITEM_TYPE_0F0 = 0xF0,
     MENU_ITEM_TYPE_0F1,
-    LOGO_INTRO_MENU_LOGO = 0xFA,
+    MENU_ITEM_UI_LOGO_INTRO = 0xFA,
     START_MENU_FLAG,
     MENU_ITEM_TYPE_10E = 0x10E,
     MENU_ITEM_TYPE_12B = 0X12B,
@@ -384,7 +388,7 @@ void func_800942D0(void);
 void func_80094660(struct GfxPool*, s32);
 void render_checkered_flag(struct GfxPool*, s32);
 void func_80094A64(struct GfxPool*);
-void render_menus(void);
+void load_menus(void);
 void func_80095574(void);
 Gfx* draw_flash_select_case(Gfx*, s32, s32, s32, s32, s32);
 Gfx* draw_flash_select_case_slow(Gfx*, s32, s32, s32, s32);
@@ -482,8 +486,8 @@ void func_8009E2F0(s32);
 void func_8009E5BC(void);
 void func_8009E5FC(s32);
 void func_8009E620(void);
-void add_ui_element(s32, s32, s32, s8);
-void menu_item_render(MenuItem*);
+void load_menu_item_ui(s32, s32, s32, s8);
+void render_menus(MenuItem*);
 void func_800A08D8(u8, s32, s32);
 s32 func_800A095C(char*, s32, s32, s32);
 void func_800A09E0(MenuItem*);
@@ -546,9 +550,9 @@ void get_time_record_minutes(s32, char*);
 void get_time_record_seconds(s32, char*);
 void get_time_record_centiseconds(s32, char*);
 void func_800A79F4(s32, char*);
-void func_800A7A4C(s32);
-void func_800A8230(void);
-void func_800A8250(void);
+void handle_menus_with_pri_arg(s32);
+void handle_menus_default(void);
+void handle_menus_special(void);
 void func_800A8270(s32, MenuItem*);
 void func_800A8564(MenuItem*);
 void func_800A86E8(MenuItem*);
@@ -830,8 +834,8 @@ extern Gfx* D_800E84CC[];
 extern Gfx* D_800E84EC[];
 extern Gfx* D_800E850C[];
 extern s8 D_800E852C;
-extern f32 D_800E8530;
-extern f32 D_800E8534;
+extern f32 sIntroModelMotionSpeed;
+extern f32 sIntroModelSpeed;
 extern Unk_D_800E70A0 D_800E8538[];
 extern Unk_D_800E70A0 D_800E8540[];
 extern Unk_D_800E70A0 D_800E85C0[];
