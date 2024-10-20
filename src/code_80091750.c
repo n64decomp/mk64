@@ -8068,7 +8068,10 @@ void func_800A66A8(struct_8018D9E0_entry* arg0, Unk_D_800E70A0* arg1) {
     z2 += z1;
 
     // clang-format off
-    if (x2); if (y2); if (z2);
+    if (x2) {; 
+}if (y2) {; 
+}if (z2) {;
+}
     // clang-format on
 
     guScale(mtx, 1.2f, 1.2f, 1.2f);
