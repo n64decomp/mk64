@@ -68,7 +68,7 @@ s8 D_8018D1B8[NUM_GROUP3_MOLES];
 s32 D_8018D1C4;
 /**
  * These seem to be limits on different object types in Moo Moo Farm
- * See init_course_object in code_8006E9C0.c
+ * See init_course_objects in code_8006E9C0.c
  * Maybe max number of active moles in a given group of moles?
  */
 s32 D_8018D1C8;
@@ -108,7 +108,7 @@ s8 D_8018D230;
 UNUSED s32 D_8018D238[2];
 s32 D_8018D240;
 u8* D_8018D248[22];
-f32 D_8018D2A0;
+f32 gMiniMapMarkerScale;
 s32 D_8018D2A4;
 UNUSED s32 D_8018D2A8;
 s32 D_8018D2AC;
@@ -116,12 +116,12 @@ s16 D_8018D2B0;
 s32 D_8018D2B4;
 s16 D_8018D2B8;
 s32 D_8018D2BC;
-s16 D_8018D2C0[4];
+s16 gMiniMapFinishLineX[4];
 s32 D_8018D2C8[4];
-s16 D_8018D2D8[4];
-s16 D_8018D2E0;
+s16 gMiniMapFinishLineY[4];
+s16 gMiniMapX;
 UNUSED s32 D_8018D2E4;
-s16 D_8018D2E8;
+s16 gMiniMapY;
 UNUSED s32 D_8018D2EC;
 s16 D_8018D2F0;
 UNUSED s32 D_8018D2F4;

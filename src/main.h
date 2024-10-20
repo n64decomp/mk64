@@ -167,8 +167,6 @@ extern s32 gGotoMode;
 extern f32 gCameraZoom[];
 
 extern f32 gScreenAspect;
-extern f32 D_8015014C;
-extern f32 D_80150150;
 
 extern struct D_80150158 gD_80150158[];
 extern uintptr_t gSegmentTable[];

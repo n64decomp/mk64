@@ -1,8 +1,10 @@
 #include <ultra64.h>
 #include <macros.h>
-#include <mk64.h>
 #include <common_structs.h>
 #include <defines.h>
+#include <mk64.h>
+#include <course.h>
+
 #include "code_800029B0.h"
 #include "camera.h"
 #include "math_util.h"

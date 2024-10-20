@@ -17,6 +17,8 @@
 #include "main.h"
 #include "spawn_players.h"
 
+#include <course.h>
+
 f32 D_800DDB30[] = { 0.4f, 0.6f, 0.275f, 0.3f };
 
 Camera cameras[4];
