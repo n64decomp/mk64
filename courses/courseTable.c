@@ -3,7 +3,9 @@
 #include "courseTable.h"
 #include "all_course_model.h"
 #include "all_course_packed.h"
+#include "config.h"
 
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 struct CourseTable gCourseTable[] = { {
                                           _course_mario_raceway_dl_mio0SegmentRomStart,
                                           _course_mario_raceway_dl_mio0SegmentRomEnd,
@@ -304,3 +306,4 @@ struct CourseTable gCourseTable[] = { {
                                           0,
                                           0x0000,
                                       } };
+#endif

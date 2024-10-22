@@ -1,6 +1,7 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
 #include "course_data.h"
+#include "asset_types.h"
 
 extern u8 gTexture64313C[];
 extern u8 gTexture6528DC[];
@@ -63,7 +64,7 @@ const course_texture bowsers_castle_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-const Gfx* bowsers_castle_dls[] = {
+const GfxAsset bowsers_castle_dls[] = {
     d_course_bowsers_castle_dl_0,    d_course_bowsers_castle_dl_230,  d_course_bowsers_castle_dl_110,
     d_course_bowsers_castle_dl_398,  d_course_bowsers_castle_dl_428,  d_course_bowsers_castle_dl_640,
     d_course_bowsers_castle_dl_4F0,  d_course_bowsers_castle_dl_7A0,  d_course_bowsers_castle_dl_860,

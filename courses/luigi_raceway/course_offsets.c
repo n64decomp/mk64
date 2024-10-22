@@ -1,6 +1,7 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
 #include "course_data.h"
+#include "asset_types.h"
 
 extern u8 gTextureSignShellShot0[];
 extern u8 gTextureSignShellShot1[];
@@ -87,7 +88,7 @@ const course_texture luigi_raceway_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-const Gfx* luigi_raceway_dls[] = {
+const GfxAsset luigi_raceway_dls[] = {
     d_course_luigi_raceway_dl_0,    d_course_luigi_raceway_dl_328,  d_course_luigi_raceway_dl_1A8,
     d_course_luigi_raceway_dl_480,  d_course_luigi_raceway_dl_6E0,  d_course_luigi_raceway_dl_9F8,
     d_course_luigi_raceway_dl_868,  d_course_luigi_raceway_dl_B48,  d_course_luigi_raceway_dl_D80,
