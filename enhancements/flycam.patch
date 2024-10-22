@@ -435,7 +435,7 @@ index c2a84aa..338e2bd 100644
      temp_v1 = ((temp_v1 - 1) * 4) + var_a3;
      
 +    if (isFlycam) {
-+        func_8029569C();
++        render_course_credits();
 +       return;
 +    }
 +

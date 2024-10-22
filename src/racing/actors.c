@@ -981,7 +981,7 @@ void spawn_all_item_boxes(struct ActorSpawnData* spawnData) {
         startingRot[1] = random_u16();
         startingRot[2] = random_u16();
         temp_s1 = add_actor_to_empty_slot(startingPos, startingRot, startingVelocity, ACTOR_ITEM_BOX);
-        temp_f0 = spawn_actor_on_surface(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
+        temp_f0 = get_surface_height(startingPos[0], startingPos[1] + 10.0f, startingPos[2]);
 
         // Should be struct ItemBox but not enough space in the stack.
         // It's either the ItemBox or the SEGMENT/OFFSET variables.
@@ -1053,6 +1053,7 @@ void spawn_course_actors(void) {
     struct RailroadCrossing* rrxing;
 
     gNumPermanentActors = 0;
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             spawn_foliage(d_course_mario_raceway_tree_spawns);
@@ -1172,6 +1173,9 @@ void spawn_course_actors(void) {
             spawn_all_item_boxes(d_course_big_donut_item_box_spawns);
             break;
     }
+#else
+
+#endif
     gNumPermanentActors = gNumActors;
 }
 
@@ -1208,6 +1212,7 @@ void init_actors_and_load_textures(void) {
     dma_textures(gTextureFinishLineBanner8, 0x0000025BU, 0x00000800U);
     dma_textures(gTexture671A88, 0x00000400U, 0x00000800U);
     dma_textures(gTexture6774D8, 0x00000400U, 0x00000800U);
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             dma_textures(gTextureTrees1, 0x0000035BU, 0x00000800U);
@@ -1275,6 +1280,9 @@ void init_actors_and_load_textures(void) {
             dma_textures(gTextureDksJungleParkwayKiwanoFruit3, 0x00000364U, 0x00000400U);
             break;
     }
+#else
+
+#endif
     init_red_shell_texture();
     destroy_all_actors();
     spawn_course_actors();

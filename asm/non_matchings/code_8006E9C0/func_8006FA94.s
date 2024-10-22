@@ -3,7 +3,7 @@ glabel func_8006FA94
 /* 070698 8006FA98 AFBF0014 */  sw    $ra, 0x14($sp)
 /* 07069C 8006FA9C 0C01BE33 */  jal   func_8006F8CC
 /* 0706A0 8006FAA0 00000000 */   nop
-/* 0706A4 8006FAA4 0C01BC02 */  jal   func_8006F008
+/* 0706A4 8006FAA4 0C01BC02 */  jal   course_mini_map_settings
 /* 0706A8 8006FAA8 00000000 */   nop
 /* 0706AC 8006FAAC 24040000 */  li    $a0, 0
 /* 0706B0 8006FAB0 0C0338C4 */  jal   osSetTime

@@ -26,7 +26,9 @@
 
 extern s32 D_802BA038;
 extern s16 D_802BA048;
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 s16 gCurrentCourseId = 0;
+#endif
 s16 gCurrentlyLoadedCourseId = 0xFF;
 u16 D_800DC5A8 = 0;
 s32 D_800DC5AC = 0;
@@ -193,7 +195,7 @@ void setup_race(void) {
         gCurrentlyLoadedCourseId = gCurrentCourseId;
         gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
         load_course(gCurrentCourseId);
-        func_80295D88();
+        course_generate_collision_mesh();
         D_8015F730 = gNextFreeMemoryAddress;
     } else {
         gNextFreeMemoryAddress = D_8015F730;
@@ -209,7 +211,7 @@ void setup_race(void) {
     D_802BA038 = -1;
     D_802BA048 = 0;
     func_802A74BC();
-    func_802A4D18();
+    set_perspective_and_aspect_ratio();
     func_80091FA4();
     init_actors_and_load_textures();
 
@@ -241,7 +243,9 @@ void setup_race(void) {
     }
 }
 
+// sound related
 void func_80002DAC(void) {
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             vec3f_set(D_8015F748, -223.0f, 94.0f, -155.0f);
@@ -276,6 +280,9 @@ void func_80002DAC(void) {
         default:
             break;
     }
+#else
+
+#endif
 }
 
 /**
@@ -302,6 +309,7 @@ void func_80003040(void) {
     gPlayerCountSelection1 = 1;
     set_segment_base_addr(0x3, (void*) (gNextFreeMemoryAddress + 0xFFFF7000));
     destroy_all_actors();
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             dma_textures(gTextureTrees1, 0x35B, 0x800);
@@ -380,5 +388,8 @@ void func_80003040(void) {
         default:
             break;
     }
+#else
+
+#endif
     gNumPermanentActors = gNumActors;
 }

@@ -181,7 +181,7 @@ void func_800788F8(s32, u16, Camera*);
 void update_clouds(s32, Camera*, CloudData*);
 void update_stars(s32, Camera*, StarData*);
 void func_80078C68(void);
-void func_80078C70(s32);
+void course_update_clouds(s32);
 void func_80078F64(void);
 void func_80079054(s32);
 void func_80079084(s32);

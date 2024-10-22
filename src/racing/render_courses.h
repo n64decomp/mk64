@@ -28,14 +28,14 @@ void render_skyscraper(struct UnkStruct_800DC5EC*);
 void render_double_deck(struct UnkStruct_800DC5EC*);
 void render_dks_jungle_parkway(struct UnkStruct_800DC5EC*);
 void render_big_donut(struct UnkStruct_800DC5EC*);
-void func_8029569C(void);
+void render_course_credits(void);
 void render_course(struct UnkStruct_800DC5EC*);
 void func_80295BF8(s32);
 void func_80295C6C(void);
 void func_80295D50(s16, s16);
 void func_80295D6C(void);
-void func_80295D88(void);
-void func_802966A0(void);
+void course_generate_collision_mesh(void);
+void course_update_water(void);
 void func_802969F8(void);
 
 extern s32 D_8015F59C;
