@@ -17,12 +17,12 @@
 
 // Used to delete the choco mountain guard rail
 void nullify_displaylist(uintptr_t addr) {
-    s32 segment = SEGMENT_NUMBER2(addr);
-    s32 offset = SEGMENT_OFFSET(addr);
+    UNUSED u32 segment;
+    UNUSED s32 offset;
 
     Gfx* macro;
 
-    macro = (Gfx*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    macro = (Gfx*) VIRTUAL_TO_PHYSICAL_ASSET(addr);
     macro->words.w0 = (G_ENDDL << 24);
     macro->words.w1 = 0;
 }
@@ -1813,9 +1813,9 @@ void set_vtx_from_quadrangle(u32 line, s8 surfaceType, u16 sectionId) {
  */
 void set_vtx_buffer(uintptr_t addr, u32 numVertices, u32 bufferIndex) {
     u32 i;
-    u32 segment = SEGMENT_NUMBER2(addr);
-    u32 offset = SEGMENT_OFFSET(addr);
-    Vtx* vtx = (Vtx*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    UNUSED u32 segment;
+    UNUSED u32 offset;
+    Vtx* vtx = (Vtx*) VIRTUAL_TO_PHYSICAL_ASSET(addr);
     for (i = 0; i < numVertices; i++) {
         vtxBuffer[bufferIndex] = vtx;
         vtx++;
@@ -2026,9 +2026,9 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
     uintptr_t hi;
     s32 i;
 
-    s32 segment = SEGMENT_NUMBER2(addr);
-    s32 offset = SEGMENT_OFFSET(addr);
-    Gfx* gfx = (Gfx*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    UNUSED s32 segment;
+    UNUSED s32 offset;
+    Gfx* gfx = (Gfx*) VIRTUAL_TO_PHYSICAL_ASSET(addr);
     D_8015F6FA = 0;
     D_8015F6FC = 0;
 
@@ -2068,9 +2068,9 @@ void generate_collision_mesh(Gfx* addr, s8 surfaceType, u16 sectionId) {
  * Search for G_SETTILESIZE and set its args.
  */
 void find_and_set_tile_size(uintptr_t addr, s32 uls, s32 ult) {
-    u32 segment = SEGMENT_NUMBER2(addr);
-    u32 offset = SEGMENT_OFFSET(addr);
-    Gfx* gfx = (Gfx*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    UNUSED u32 segment;
+    UNUSED u32 offset;
+    Gfx* gfx = (Gfx*) VIRTUAL_TO_PHYSICAL_ASSET(addr);
     u32 opcode;
 
     uls = (uls << 12) & 0xFFF000;
@@ -2092,10 +2092,10 @@ void find_and_set_tile_size(uintptr_t addr, s32 uls, s32 ult) {
 }
 
 void set_vertex_colours(uintptr_t addr, u32 vertexCount, UNUSED s32 vert3, s8 alpha, u8 red, u8 green, u8 blue) {
-    s32 segment = SEGMENT_NUMBER2(addr);
-    s32 offset = SEGMENT_OFFSET(addr);
+    UNUSED s32 segment;
+    UNUSED s32 offset;
     s32 i;
-    Vtx* vtx = (Vtx*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    Vtx* vtx = (Vtx*) VIRTUAL_TO_PHYSICAL_ASSET(addr);
 
     for (i = 0; (u32) i < vertexCount; i++) {
         if (red) {
@@ -2112,9 +2112,9 @@ void set_vertex_colours(uintptr_t addr, u32 vertexCount, UNUSED s32 vert3, s8 al
  * Recursive search for vertices and set their colour values.
  */
 void find_vtx_and_set_colours(uintptr_t displayList, s8 alpha, u8 red, u8 green, u8 blue) {
-    s32 segment = SEGMENT_NUMBER2(displayList);
-    s32 offset = SEGMENT_OFFSET(displayList);
-    Gfx* gfx = (Gfx*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    UNUSED s32 segment;
+    UNUSED s32 offset;
+    Gfx* gfx = (Gfx*) VIRTUAL_TO_PHYSICAL_ASSET(displayList);
     uintptr_t lo;
     uintptr_t hi;
     s32 opcode;

@@ -21,7 +21,9 @@ struct CourseTable {
     u16 padding;                // 0x2E
 };
 
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 extern struct CourseTable gCourseTable[];
+#endif
 
 //! @todo These should probably be ptr's instead of array's?
 extern u8 _course_mario_raceway_dl_mio0SegmentRomStart[];

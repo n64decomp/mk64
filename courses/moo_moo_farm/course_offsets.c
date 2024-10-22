@@ -1,6 +1,7 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
 #include "course_data.h"
+#include "asset_types.h"
 
 extern u8 gTextureWoodDoor0[];
 extern u8 gTextureGrass2[];
@@ -63,7 +64,7 @@ const course_texture moo_moo_farm_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-const Gfx* moo_moo_farm_dls[] = {
+const GfxAsset moo_moo_farm_dls[] = {
     d_course_moo_moo_farm_dl_88,   d_course_moo_moo_farm_dl_598,  d_course_moo_moo_farm_dl_338,
     d_course_moo_moo_farm_dl_8A0,  d_course_moo_moo_farm_dl_B00,  d_course_moo_moo_farm_dl_FE0,
     d_course_moo_moo_farm_dl_D70,  d_course_moo_moo_farm_dl_12B8, d_course_moo_moo_farm_dl_1530,

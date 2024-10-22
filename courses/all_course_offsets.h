@@ -2,18 +2,19 @@
 #define ALL_COURSE_OFFSETS_H
 
 #include "course_offsets.h"
+#include "asset_types.h"
 
-extern Gfx* banshee_boardwalk_dls[];
-extern Gfx* bowsers_castle_dls[];
-extern Gfx* choco_mountain_dls[];
-extern Gfx* kalimari_desert_dls[];
-extern Gfx* luigi_raceway_dls[];
-extern Gfx* mario_raceway_dls[];
-extern Gfx* moo_moo_farm_dls[];
-extern Gfx* royal_raceway_dls[];
-extern Gfx* sherbet_land_dls[];
-extern Gfx* sherbet_land_dls_2[];
-extern Gfx* wario_stadium_dls[];
+extern GfxAsset banshee_boardwalk_dls[];
+extern GfxAsset bowsers_castle_dls[];
+extern GfxAsset choco_mountain_dls[];
+extern GfxAsset kalimari_desert_dls[];
+extern GfxAsset luigi_raceway_dls[];
+extern GfxAsset mario_raceway_dls[];
+extern GfxAsset moo_moo_farm_dls[];
+extern GfxAsset royal_raceway_dls[];
+extern GfxAsset sherbet_land_dls[];
+extern GfxAsset sherbet_land_dls_2[];
+extern GfxAsset wario_stadium_dls[];
 
 extern Gfx toads_turnpike_dl_0[];
 extern Gfx toads_turnpike_dl_1[];

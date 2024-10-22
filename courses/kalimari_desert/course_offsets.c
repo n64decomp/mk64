@@ -1,6 +1,7 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
 #include "course_data.h"
+#include "asset_types.h"
 
 extern u8 gTexture6684F8[];
 extern u8 gTextureSignLuigis0[];
@@ -44,7 +45,7 @@ const course_texture kalimari_desert_textures[] = {
     { gTextureSignKoopaAir1, 0x0304, 0x1000, 0x0 },    { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-const Gfx* kalimari_desert_dls[] = {
+const GfxAsset kalimari_desert_dls[] = {
     d_course_kalimari_desert_dl_0,    d_course_kalimari_desert_dl_258,  d_course_kalimari_desert_dl_100,
     d_course_kalimari_desert_dl_310,  d_course_kalimari_desert_dl_4A0,  d_course_kalimari_desert_dl_778,
     d_course_kalimari_desert_dl_5C0,  d_course_kalimari_desert_dl_858,  d_course_kalimari_desert_dl_A58,

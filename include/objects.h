@@ -3,6 +3,7 @@
 
 #include "spline.h"
 #include <common_structs.h>
+#include "asset_types.h"
 
 #define OBJECT_LIST_SIZE 0x226
 #define SOME_OBJECT_INDEX_LIST_SIZE 32
@@ -22,15 +23,15 @@ typedef struct {
     /* 0x54 */ s32 status;
     /* 0x58 */ s32 unk_058;
     /* 0x5C */ s32 unk_05C;
-    /* 0x60 */ u8* activeTLUT;
-    /* 0x64 */ u8* activeTexture;
+    /* 0x60 */ TextureAsset activeTLUT;
+    /* 0x64 */ TextureAsset activeTexture;
     /**
      * "list" is something of a misnomer for the names here
      * they can be pointers to just 1 tlut/texture, but it is common for one or the other
      * to be a pointer to an array of tluts/textures.
      **/
     /* 0x68 */ u8* tlutList; // I feel like this should actually be `u8 (*tlutList)[512]`, but that causes mismatches
-    /* 0x6C */ u8* textureList;
+    /* 0x6C */ TextureAssetList textureList;
     /* 0x70 */ Gfx* model;
     /* 0x74 */ Vtx* vertex;
     /* 0x78 */ s8 unk_078[0x04];

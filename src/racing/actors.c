@@ -401,8 +401,7 @@ void func_802977E4(Player* arg0) {
 // Invert green and red on green shell texture
 void init_red_shell_texture(void) {
     s16* red_shell_texture = (s16*) &gTLUTRedShell[0];
-    s16* green_shell_texture = (s16*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(common_tlut_green_shell)] +
-                                                           SEGMENT_OFFSET(common_tlut_green_shell));
+    s16* green_shell_texture = (s16*) VIRTUAL_TO_PHYSICAL_ASSET(common_tlut_green_shell);
     s16 color_pixel, red_color, green_color, blue_color, alpha_color;
     s32 i;
     for (i = 0; i < 256; i++) {
@@ -475,10 +474,9 @@ void render_cows(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
     struct ActorSpawnData* var_s5;
     Vec3f sp88;
     u32 soundThing = SOUND_ARG_LOAD(0x19, 0x01, 0x90, 0x4D);
-    s32 segment = SEGMENT_NUMBER2(d_course_moo_moo_farm_cow_spawn);
-    s32 offset = SEGMENT_OFFSET(d_course_moo_moo_farm_cow_spawn);
-
-    var_t1 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    UNUSED u32 unk;
+    UNUSED u32 unk2;
+    var_t1 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL_ASSET(d_course_moo_moo_farm_cow_spawn);
     D_8015F704 = 6.4e7f;
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPSetCombineMode(gDisplayListHead++, G_CC_MODULATEIDECALA, G_CC_MODULATEIDECALA);
@@ -544,9 +542,10 @@ void render_cows(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
 
 void evaluate_collision_player_palm_trees(Player* player) {
     Vec3f pos;
-    s32 segment = SEGMENT_NUMBER2(d_course_dks_jungle_parkway_tree_spawn);
-    s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
-    struct UnkActorSpawnData* data = (struct UnkActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    UNUSED s32 segment;
+    UNUSED s32 offset;
+    struct UnkActorSpawnData* data =
+        (struct UnkActorSpawnData*) VIRTUAL_TO_PHYSICAL_ASSET(d_course_dks_jungle_parkway_tree_spawn);
 
     while (data->pos[0] != END_OF_SPAWN_DATA) {
         pos[0] = data->pos[0] * gCourseDirection;
@@ -580,10 +579,10 @@ void evaluate_collision_players_palm_trees(void) {
 }
 
 void func_80298D10(void) {
-    s32 segment = SEGMENT_NUMBER2(d_course_dks_jungle_parkway_tree_spawn);
-    s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
+    UNUSED s32 segment;
+    UNUSED s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
     struct UnkActorSpawnData* temp_v1 =
-        (struct UnkActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+        (struct UnkActorSpawnData*) VIRTUAL_TO_PHYSICAL_ASSET(d_course_dks_jungle_parkway_tree_spawn);
 
     while (temp_v1->pos[0] != END_OF_SPAWN_DATA) {
         temp_v1->pos[1] = temp_v1->unk8;
@@ -593,10 +592,10 @@ void func_80298D10(void) {
 }
 
 void render_palm_trees(Camera* camera, Mat4 arg1, UNUSED struct Actor* actor) {
-    s32 segment = SEGMENT_NUMBER2(d_course_dks_jungle_parkway_tree_spawn);
-    s32 offset = SEGMENT_OFFSET(d_course_dks_jungle_parkway_tree_spawn);
+    UNUSED s32 segment;
+    UNUSED s32 offset;
     struct UnkActorSpawnData* var_s1 =
-        (struct UnkActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+        (struct UnkActorSpawnData*) VIRTUAL_TO_PHYSICAL_ASSET(d_course_dks_jungle_parkway_tree_spawn);
     UNUSED s32 pad;
     Vec3f spD4;
     f32 var_f22;
@@ -814,9 +813,9 @@ UNUSED void func_8029AE14() {
 #include "actors/falling_rock/render.inc.c"
 
 void spawn_piranha_plants(struct ActorSpawnData* spawnData) {
-    s32 segment = SEGMENT_NUMBER2(spawnData);
-    s32 offset = SEGMENT_OFFSET(spawnData);
-    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    UNUSED s32 segment;
+    UNUSED s32 offset;
+    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL_ASSET(spawnData);
     struct PiranhaPlant* temp_v1;
     UNUSED s32 pad;
     Vec3f startingPos;
@@ -846,9 +845,9 @@ void spawn_piranha_plants(struct ActorSpawnData* spawnData) {
 }
 
 void spawn_palm_trees(struct ActorSpawnData* spawnData) {
-    s32 segment = SEGMENT_NUMBER2(spawnData);
-    s32 offset = SEGMENT_OFFSET(spawnData);
-    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    UNUSED s32 segment;
+    UNUSED s32 offset;
+    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL_ASSET(spawnData);
     struct PalmTree* temp_v1;
     Vec3f startingPos;
     Vec3f startingVelocity;
@@ -884,10 +883,10 @@ void spawn_foliage(struct ActorSpawnData* arg0) {
     s16 actorType;
     struct Actor* temp_s0;
     struct ActorSpawnData* var_s3;
-    s32 segment = SEGMENT_NUMBER2(arg0);
-    s32 offset = SEGMENT_OFFSET(arg0);
+    UNUSED s32 segment;
+    UNUSED s32 offset;
 
-    var_s3 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    var_s3 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL_ASSET(arg0);
     vec3f_set(velocity, 0.0f, 0.0f, 0.0f);
     rotation[0] = 0x4000;
     rotation[1] = 0;
@@ -958,14 +957,14 @@ void spawn_foliage(struct ActorSpawnData* arg0) {
 }
 
 void spawn_all_item_boxes(struct ActorSpawnData* spawnData) {
-    s32 segment = SEGMENT_NUMBER2(spawnData);
-    s32 offset = SEGMENT_OFFSET(spawnData);
+    UNUSED s32 segment;
+    UNUSED s32 offset;
     s16 temp_s1;
     f32 temp_f0;
     Vec3f startingPos;
     Vec3f startingVelocity;
     Vec3s startingRot;
-    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL_ASSET(spawnData);
     // struct ItemBox *itemBox;
 
     if ((gModeSelection == TIME_TRIALS) || (gPlaceItemBoxes == 0)) {
@@ -1478,10 +1477,10 @@ struct test {
 UNUSED void prototype_actor_spawn_data(Player* player, uintptr_t arg1) {
     Vec3f sp64;
     struct test* var_s0;
-    s32 segment = SEGMENT_NUMBER2(arg1);
-    s32 offset = SEGMENT_OFFSET(arg1);
+    UNUSED s32 segment;
+    UNUSED s32 offset;
 
-    var_s0 = (struct test*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    var_s0 = (struct test*) VIRTUAL_TO_PHYSICAL_ASSET(arg1);
     while (var_s0->thing[0] != END_OF_SPAWN_DATA) {
         sp64[0] = var_s0->thing[0] * gCourseDirection;
         sp64[1] = var_s0->thing[1];

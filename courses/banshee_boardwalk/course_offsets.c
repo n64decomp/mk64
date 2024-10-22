@@ -3,6 +3,7 @@
 #include "course_offsets.h"
 #include "courses/banshee_boardwalk/course_data.h"
 #include <PR/gbi.h>
+#include "asset_types.h"
 
 extern u8 gTexture6447C4[];
 extern u8 gTexture676FB0[];
@@ -53,7 +54,7 @@ const course_texture banshee_boardwalk_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-const Gfx* banshee_boardwalk_dls[] = {
+const GfxAsset banshee_boardwalk_dls[] = {
     d_course_banshee_boardwalk_dl_A0,   d_course_banshee_boardwalk_dl_210,  d_course_banshee_boardwalk_dl_160,
     d_course_banshee_boardwalk_dl_270,  d_course_banshee_boardwalk_dl_358,  d_course_banshee_boardwalk_dl_4F0,
     d_course_banshee_boardwalk_dl_408,  d_course_banshee_boardwalk_dl_540,  d_course_banshee_boardwalk_dl_620,
