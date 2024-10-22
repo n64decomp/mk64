@@ -2,6 +2,7 @@
 #include <macros.h>
 #include <defines.h>
 #include <mk64.h>
+#include <course.h>
 
 #include "player_controller.h"
 #include "code_800029B0.h"
@@ -245,6 +246,8 @@ void func_80027EDC(Player* player, s8 playerId) {
     UNUSED s32 pad;
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
+
+#if !ENABLE_CUSTOM_COURSE_ENGINE
         switch (gCurrentCourseId) {
             case COURSE_MARIO_RACEWAY:
                 if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
@@ -375,7 +378,11 @@ void func_80027EDC(Player* player, s8 playerId) {
             default:
                 break;
         }
+#else
+
+#endif
     } else {
+#if !ENABLE_CUSTOM_COURSE_ENGINE
         switch (gCurrentCourseId) {
             case COURSE_MARIO_RACEWAY:
                 if (((s16) gNearestWaypointByPlayerId[playerId] >= 0x19B) &&
@@ -491,6 +498,9 @@ void func_80027EDC(Player* player, s8 playerId) {
             default:
                 break;
         }
+#else
+
+#endif
     }
 }
 
@@ -2359,8 +2369,8 @@ void func_8002E4C4(Player* player) {
     player->kartHopJerk = 0.0f;
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = 0.0f;
-    player->pos[1] = spawn_actor_on_surface(player->pos[0], D_80164510[player_index] + 10.0f, player->pos[2]) +
-                     player->boundingBoxSize;
+    player->pos[1] =
+        get_surface_height(player->pos[0], D_80164510[player_index] + 10.0f, player->pos[2]) + player->boundingBoxSize;
     if (((player->pos[1] - D_80164510[player_index]) > 1200.0f) ||
         ((player->pos[1] - D_80164510[player_index]) < -1200.0f)) {
         player->pos[1] = player->oldPos[1];

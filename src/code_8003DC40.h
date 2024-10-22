@@ -18,6 +18,4 @@ void func_8003F46C(Player*, Vec3f, Vec3f, Vec3f, f32*, f32*, f32*, f32*);
 void func_8003F734(Player*, Vec3f, Vec3f, f32*, f32*, f32*, f32*);
 void func_8003FBAC(Player*, Vec3f, Vec3f, f32*, f32*, f32*, f32*);
 
-extern s16 gCurrentCourseId;
-
 #endif

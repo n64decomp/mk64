@@ -3,6 +3,7 @@
 #include <defines.h>
 #include <common_structs.h>
 #include <mk64.h>
+#include <course.h>
 
 #include "menus.h"
 #include "main.h"
@@ -40,9 +41,9 @@ f32 gIntroModelPosY;
 f32 gIntroModelPosZ;
 
 s32 gMenuFadeType;
-s8 gCharacterGridSelections[4]; // Map from each player to current grid position (1-4 top, 5-8 bottom)
+s8 gCharacterGridSelections[4];    // Map from each player to current grid position (1-4 top, 5-8 bottom)
 bool8 gCharacterGridIsSelected[4]; // Sets true if a character is selected for each player
-s8 gSubMenuSelection; // Map Select states, Options and Ghost Data text selection
+s8 gSubMenuSelection;              // Map Select states, Options and Ghost Data text selection
 s8 gMainMenuSelection;
 s8 gPlayerSelectMenuSelection;
 s8 gDebugMenuSelection;
@@ -50,11 +51,12 @@ s8 gControllerPakMenuSelection;
 s8 gScreenModeListIndex; // 0-4 index, selects a screen mode in sScreenModePlayerTable
 u8 gSoundMode;
 s8 gPlayerCount;
-s8 gVersusResultCursorSelection; // 4 options indexed (10-13), gets set when selecting an option
-s8 gTimeTrialsResultCursorSelection; // 5 options indexed (5-9), gets set when selecting an option (excluding Save Ghost)
-s8 gBattleResultCursorSelection; // 4 options indexed (10-13), gets set when selecting an option
+s8 gVersusResultCursorSelection;     // 4 options indexed (10-13), gets set when selecting an option
+s8 gTimeTrialsResultCursorSelection; // 5 options indexed (5-9), gets set when selecting an option (excluding Save
+                                     // Ghost)
+s8 gBattleResultCursorSelection;     // 4 options indexed (10-13), gets set when selecting an option
 s8 gTimeTrialDataCourseIndex;
-s8 gCourseRecordsMenuSelection; // Used for selecting an option in course record data
+s8 gCourseRecordsMenuSelection;    // Used for selecting an option in course record data
 s8 gCourseRecordsSubMenuSelection; // Used for erase records and ghosts (Quit - Erase)
 s8 gDebugGotoScene;
 bool8 gGhostPlayerInit;
@@ -99,13 +101,9 @@ u32 sVIGammaOffDitherOn = (OS_VI_GAMMA_OFF | OS_VI_DITHER_FILTER_ON);
 /** RoData **/
 
 // Sets the actual screen mode based on values set in sScreenModePlayerCount
-const s8 sScreenModePlayerTable[] = {
-    SCREEN_MODE_1P,
-    SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL,
-    SCREEN_MODE_2P_SPLITSCREEN_VERTICAL,
-    SCREEN_MODE_3P_4P_SPLITSCREEN,
-    SCREEN_MODE_3P_4P_SPLITSCREEN
-};
+const s8 sScreenModePlayerTable[] = { SCREEN_MODE_1P, SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL,
+                                      SCREEN_MODE_2P_SPLITSCREEN_VERTICAL, SCREEN_MODE_3P_4P_SPLITSCREEN,
+                                      SCREEN_MODE_3P_4P_SPLITSCREEN };
 
 // Sets how many players can load on each screen mode set in sScreenModePlayerTable
 const s8 sScreenModePlayerCount[] = { 1, 2, 2, 3, 4 };
@@ -141,8 +139,7 @@ const s32 gGameModePlayerSelection[][3] = {
 // Map from character grid position id to character id
 // Note: changing order doesn't affect graphics, only the selection
 const s8 sCharacterGridOrder[] = {
-    MARIO, LUIGI, PEACH, TOAD,
-    YOSHI, DK, WARIO, BOWSER,
+    MARIO, LUIGI, PEACH, TOAD, YOSHI, DK, WARIO, BOWSER,
 };
 
 const s16 gCupCourseOrder[5][4] = {
@@ -450,7 +447,8 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
             }
             case SUB_MENU_COPY_PAK_FROM_GHOST1_1P:
             case SUB_MENU_COPY_PAK_FROM_GHOST2_1P: {
-                if ((btnAndStick & D_JPAD) && (gSubMenuSelection < SUB_MENU_COPY_PAK_FROM_GHOST_MAX) && (sp30[PLAYER_TWO].ghostDataSaved)) {
+                if ((btnAndStick & D_JPAD) && (gSubMenuSelection < SUB_MENU_COPY_PAK_FROM_GHOST_MAX) &&
+                    (sp30[PLAYER_TWO].ghostDataSaved)) {
                     gSubMenuSelection += 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                     if (sp38->unk24 < 4.2) {
@@ -458,7 +456,8 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                     }
                     sp38->unk8 = 1;
                 }
-                if ((btnAndStick & U_JPAD) && (gSubMenuSelection > SUB_MENU_COPY_PAK_FROM_GHOST_MIN) && sp30[PLAYER_ONE].ghostDataSaved) {
+                if ((btnAndStick & U_JPAD) && (gSubMenuSelection > SUB_MENU_COPY_PAK_FROM_GHOST_MIN) &&
+                    sp30[PLAYER_ONE].ghostDataSaved) {
                     gSubMenuSelection -= 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                     if (sp38->unk24 < 4.2) {
@@ -473,7 +472,8 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
                 }
                 if (btnAndStick & A_BUTTON) {
                     sp38->unk20 = gSubMenuSelection - SUB_MENU_COPY_PAK_FROM_GHOST_MIN;
-                    if (sp30[sp38->unk20].courseIndex == D_8018EE10[PLAYER_TWO].courseIndex && D_8018EE10[PLAYER_TWO].ghostDataSaved) {
+                    if (sp30[sp38->unk20].courseIndex == D_8018EE10[PLAYER_TWO].courseIndex &&
+                        D_8018EE10[PLAYER_TWO].ghostDataSaved) {
                         gSubMenuSelection = SUB_MENU_COPY_PAK_TO_GHOST2_2P;
                     } else {
                         gSubMenuSelection = SUB_MENU_COPY_PAK_TO_GHOST1_2P;
@@ -485,7 +485,8 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
             case SUB_MENU_COPY_PAK_TO_GHOST1_2P:
             case SUB_MENU_COPY_PAK_TO_GHOST2_2P: {
                 // bit of a fake match, but if it works it works?
-                if ((sp30[sp38->unk20].courseIndex != ((0, (D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->courseIndex))) ||
+                if ((sp30[sp38->unk20].courseIndex !=
+                     ((0, (D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->courseIndex))) ||
                     ((D_8018EE10 + (gSubMenuSelection - SUB_MENU_COPY_PAK_TO_GHOST_MIN))->ghostDataSaved == 0)) {
                     if ((btnAndStick & D_JPAD) && (gSubMenuSelection < SUB_MENU_COPY_PAK_TO_GHOST_MAX)) {
                         gSubMenuSelection += 1;
@@ -725,7 +726,8 @@ void course_data_menu_act(struct Controller* controller, UNUSED u16 controllerId
                 sp28 = find_8018D9E0_entry_dupe(0xE8);
                 sp24 = &gSaveData.allCourseTimeTrialRecords.cupRecords[gTimeTrialDataCourseIndex / 4]
                             .courseRecords[gTimeTrialDataCourseIndex % 4];
-                if (gCourseRecordsMenuSelection == COURSE_RECORDS_MENU_ERASE_GHOST && func_800B639C(gTimeTrialDataCourseIndex) < 0) {
+                if (gCourseRecordsMenuSelection == COURSE_RECORDS_MENU_ERASE_GHOST &&
+                    func_800B639C(gTimeTrialDataCourseIndex) < 0) {
                     gCourseRecordsMenuSelection -= 1;
                 }
 
@@ -747,11 +749,13 @@ void course_data_menu_act(struct Controller* controller, UNUSED u16 controllerId
 
                 if ((btnAndStick & D_JPAD) && (gCourseRecordsMenuSelection < COURSE_RECORDS_MENU_MAX)) {
                     gCourseRecordsMenuSelection += 1;
-                    if (gCourseRecordsMenuSelection == COURSE_RECORDS_MENU_ERASE_RECORDS && sp24->unknownBytes[0] == 0) {
+                    if (gCourseRecordsMenuSelection == COURSE_RECORDS_MENU_ERASE_RECORDS &&
+                        sp24->unknownBytes[0] == 0) {
                         gCourseRecordsMenuSelection += 1;
                     }
 
-                    if (gCourseRecordsMenuSelection == COURSE_RECORDS_MENU_ERASE_GHOST && func_800B639C(gTimeTrialDataCourseIndex) < 0) {
+                    if (gCourseRecordsMenuSelection == COURSE_RECORDS_MENU_ERASE_GHOST &&
+                        func_800B639C(gTimeTrialDataCourseIndex) < 0) {
                         if (sp24->unknownBytes[0] == 0) {
                             gCourseRecordsMenuSelection = COURSE_RECORDS_MENU_RETURN_MENU;
                         } else {
@@ -934,7 +938,8 @@ void controller_pak_menu_act(struct Controller* controller, UNUSED u16 controlle
                             return;
                         }
                     }
-                } else if (((btnAndStick & D_JPAD) != 0) && (gControllerPakScrollDirection == CONTROLLER_PAK_SCROLL_DIR_NONE)) {
+                } else if (((btnAndStick & D_JPAD) != 0) &&
+                           (gControllerPakScrollDirection == CONTROLLER_PAK_SCROLL_DIR_NONE)) {
                     ++gControllerPakSelectedTableRow;
                     if (gControllerPakSelectedTableRow >= CONTROLLER_PAK_MENU_TABLE_GAME_DATA) {
                         gControllerPakSelectedTableRow = CONTROLLER_PAK_MENU_QUIT;
@@ -1414,12 +1419,14 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                 if (btnAndStick & D_JPAD) {
                     cursorMoved = false;
                     if (func_800B555C()) {
-                        if (subMode < sGameModePlayerColumnExtra[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
+                        if (subMode <
+                            sGameModePlayerColumnExtra[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
                             cursorMoved = true;
                         }
                     } else {
                         // L800B30D4
-                        if (subMode < sGameModePlayerColumnDefault[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
+                        if (subMode <
+                            sGameModePlayerColumnDefault[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
                             cursorMoved = true;
                         }
                     }
@@ -1569,8 +1576,7 @@ void player_select_menu_act(struct Controller* controller, u16 controllerIdx) {
                 // L800B36F4
                 selected = false;
                 for (i = 0; i < ARRAY_COUNT(gCharacterGridSelections); i++) {
-                    if ((gCharacterGridSelections[i] != 0) &&
-                        (gCharacterGridIsSelected[i] == 0)) {
+                    if ((gCharacterGridSelections[i] != 0) && (gCharacterGridIsSelected[i] == 0)) {
                         selected = true;
                         break;
                     }
@@ -1793,7 +1799,8 @@ void course_select_menu_act(struct Controller* arg0, u16 controllerIdx) {
                 }
                 break;
             case SUB_MENU_MAP_SELECT_OK:
-                if ((controllerIdx == PLAYER_ONE) && ((++gMenuTimingCounter == 0x3C) || ((gMenuTimingCounter % 300) == 0))) {
+                if ((controllerIdx == PLAYER_ONE) &&
+                    ((++gMenuTimingCounter == 0x3C) || ((gMenuTimingCounter % 300) == 0))) {
                     play_sound2(SOUND_MENU_OK);
                 }
 

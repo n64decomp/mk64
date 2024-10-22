@@ -7,6 +7,7 @@
 #include <macros.h>
 #include <decode.h>
 #include <mk64.h>
+#include <course.h>
 
 #include "profiler.h"
 #include "main.h"
@@ -123,8 +124,8 @@ f32 gCameraZoom[4]; // look like to be the fov of each character
 UNUSED s32 D_80150140;
 UNUSED s32 D_80150144;
 f32 gScreenAspect;
-f32 D_8015014C;
-f32 D_80150150;
+f32 gCourseFarPersp;
+f32 gCourseNearPersp;
 UNUSED f32 D_80150154;
 
 struct D_80150158 gD_80150158[16];
@@ -612,7 +613,7 @@ void race_logic_loop(void) {
                     func_8028F474();
                     func_80059AC8();
                     update_course_actors();
-                    func_802966A0();
+                    course_update_water();
                     func_8028FCBC();
                 }
                 func_80022744();
@@ -676,7 +677,7 @@ void race_logic_loop(void) {
                     func_8028F474();
                     func_80059AC8();
                     update_course_actors();
-                    func_802966A0();
+                    course_update_water();
                     func_8028FCBC();
                 }
                 func_80022744();
@@ -722,7 +723,7 @@ void race_logic_loop(void) {
                     func_8028F474();
                     func_80059AC8();
                     update_course_actors();
-                    func_802966A0();
+                    course_update_water();
                     func_8028FCBC();
                 }
                 func_80022744();
@@ -794,7 +795,7 @@ void race_logic_loop(void) {
                     func_8028F474();
                     func_80059AC8();
                     update_course_actors();
-                    func_802966A0();
+                    course_update_water();
                     func_8028FCBC();
                 }
                 func_80022744();
@@ -1105,25 +1106,25 @@ void thread3_video(UNUSED void* arg0) {
 void func_800025D4(void) {
     func_80091B78();
     gActiveScreenMode = SCREEN_MODE_1P;
-    func_802A4D18();
+    set_perspective_and_aspect_ratio();
 }
 
 void func_80002600(void) {
     func_80091B78();
     gActiveScreenMode = SCREEN_MODE_1P;
-    func_802A4D18();
+    set_perspective_and_aspect_ratio();
 }
 
 void func_8000262C(void) {
     func_80091B78();
     gActiveScreenMode = SCREEN_MODE_1P;
-    func_802A4D18();
+    set_perspective_and_aspect_ratio();
 }
 
 void func_80002658(void) {
     func_80091B78();
     gActiveScreenMode = SCREEN_MODE_1P;
-    func_802A4D18();
+    set_perspective_and_aspect_ratio();
 }
 
 /**

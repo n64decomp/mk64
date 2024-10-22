@@ -3,6 +3,7 @@
 
 #include <common_structs.h>
 #include <mk64.h>
+#include <course.h>
 
 #define NUM_BOMB_KARTS_MAX 7
 #define NUM_BOMB_KARTS_VERSUS 7

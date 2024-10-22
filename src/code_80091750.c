@@ -1,10 +1,12 @@
 #include <ultra64.h>
+#include <PR/ultratypes.h>
 #include <macros.h>
-#include <mk64.h>
 #include <defines.h>
 #include <segments.h>
-#include <PR/ultratypes.h>
 #include <sounds.h>
+#include <mk64.h>
+#include <course.h>
+
 #include "code_800029B0.h"
 #include "code_80091750.h"
 #include "code_80005FD0.h"
@@ -313,6 +315,7 @@ char* gCupNames[] = {
     "special cup",
 };
 
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 // Displays at beginning of course
 char* gCourseNames[] = {
 #include "assets/course_metadata/gCourseNames.inc.c"
@@ -321,15 +324,22 @@ char* gCourseNames[] = {
 char* gCourseNamesDup[] = {
 #include "assets/course_metadata/gCourseNames.inc.c"
 };
+#else
+
+#endif
 
 char* gCourseNamesDup2[] = {
 #include "assets/course_metadata/gCourseNames.inc.c"
 };
 
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 // Used in debug menu at splash screen
 char* gDebugCourseNames[] = {
 #include "assets/course_metadata/gCourseDebugNames.inc.c"
 };
+#else
+
+#endif
 
 const s8 gPerCupIndexByCourseId[] = {
 #include "assets/course_metadata/gPerCupIndexByCourseId.inc.c"
@@ -2446,7 +2456,7 @@ void func_80095574(void) {
         } else {
             var_v0 = 8;
         }
-        debug_print_str2(var_v0 + 0xB9, 0x0000006E, gDebugCourseNames[gCurrentCourseId]);
+        debug_print_str2(var_v0 + 0xB9, 0x0000006E, GET_COURSE_debugName);
         debug_print_str2(0x00000050, 0x00000078, "screen_mode");
         debug_print_str2(0x000000AA, 0x00000078, gDebugScreenModeNames[gScreenModeListIndex]);
         debug_print_str2(0x00000050, 0x00000082, "player");
@@ -4761,7 +4771,7 @@ void func_8009CE64(s32 arg0) {
     } else {
         D_8018E7AC[arg0] = 0;
         if (gDebugMenuSelection != DEBUG_MENU_OPTION_SELECTED) {
-            switch (gMenuFadeType) { /* switch 3 */
+            switch (gMenuFadeType) {      /* switch 3 */
                 case MENU_FADE_TYPE_MAIN: /* switch 3 */
                     if (gMenuSelection == LOGO_INTRO_MENU) {
                         gMenuSelection = START_MENU;
@@ -4780,7 +4790,7 @@ void func_8009CE64(s32 arg0) {
                     gCCSelection = (s32) 1;
                     switch (gNextDemoId) { /* switch 4 */
                         case 0:            /* switch 4 */
-                            gCurrentCourseId = 0;
+                            gCurrentCourseId = COURSE_MARIO_RACEWAY;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = 1;
                             gPlayerCount = 1;
@@ -4788,7 +4798,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = 0;
                             break;
                         case 1: /* switch 4 */
-                            gCurrentCourseId = (s16) 1;
+                            gCurrentCourseId = COURSE_CHOCO_MOUNTAIN;
                             gScreenModeSelection = (s32) 1;
                             gPlayerCountSelection1 = 2;
                             gPlayerCount = (s8) 2;
@@ -4797,7 +4807,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = 2;
                             break;
                         case 2: /* switch 4 */
-                            gCurrentCourseId = 0x000B;
+                            gCurrentCourseId = COURSE_KALAMARI_DESERT;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = (s32) 1;
                             gPlayerCount = 1;
@@ -4805,7 +4815,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = 0;
                             break;
                         case 3: /* switch 4 */
-                            gCurrentCourseId = 0x000E;
+                            gCurrentCourseId = COURSE_WARIO_STADIUM;
                             gScreenModeSelection = 3;
                             gPlayerCountSelection1 = 3;
                             gPlayerCount = (s8) 3;
@@ -4815,7 +4825,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = (s32) 2;
                             break;
                         case 4: /* switch 4 */
-                            gCurrentCourseId = 2;
+                            gCurrentCourseId = COURSE_BOWSER_CASTLE;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = (s32) 1;
                             gPlayerCount = 1;
@@ -4823,7 +4833,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = 0;
                             break;
                         case 5: /* switch 4 */
-                            gCurrentCourseId = 0x000C;
+                            gCurrentCourseId = COURSE_SHERBET_LAND;
                             gScreenModeSelection = 3;
                             gPlayerCountSelection1 = 4;
                             gPlayerCount = 4;
@@ -4877,12 +4887,12 @@ void func_8009CE64(s32 arg0) {
             }
             unref_8018EE0C = 0;
         } else {
-            switch (gDebugGotoScene) { /* switch 5; irregular */
+            switch (gDebugGotoScene) {  /* switch 5; irregular */
                 case DEBUG_GOTO_ENDING: /* switch 5 */
                     gGamestateNext = (s32) 5;
                     break;
                 case DEBUG_GOTO_CREDITS_SEQUENCE_DEFAULT: /* switch 5 */
-                case DEBUG_GOTO_CREDITS_SEQUENCE_EXTRA: /* switch 5 */
+                case DEBUG_GOTO_CREDITS_SEQUENCE_EXTRA:   /* switch 5 */
                     gGamestateNext = 9;
                     gCreditsCourseId = 8;
                     break;
@@ -4925,7 +4935,7 @@ void func_8009CE64(s32 arg0) {
             gCupSelection = gCupSelectionByCourseId[gCurrentCourseId];
             D_800DC540 = gCupSelection;
             gCourseIndexInCup = gPerCupIndexByCourseId[gCurrentCourseId];
-            switch (gDebugGotoScene) { /* switch 6; irregular */
+            switch (gDebugGotoScene) {  /* switch 6; irregular */
                 case DEBUG_GOTO_ENDING: /* switch 6 */
                     break;
                 case DEBUG_GOTO_CREDITS_SEQUENCE_DEFAULT: /* switch 6 */
@@ -6120,7 +6130,7 @@ void func_8009F5E0(struct_8018D9E0_entry* arg0) {
                 break;
             case 0x97: /* switch 6 */
                 set_text_color(5);
-                func_80093324(arg0->column, arg0->row, gCourseNames[gCurrentCourseId], arg0->unk1C, arg0->unk24, 1.0f);
+                func_80093324(arg0->column, arg0->row, GET_COURSE_Name, arg0->unk1C, arg0->unk24, 1.0f);
                 break;
             case 0x98: /* switch 6 */
                 func_800A2D1C(arg0);
@@ -6328,7 +6338,8 @@ void func_800A09E0(struct_8018D9E0_entry* arg0) {
     s32 table_row, x = 0x20, y;
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH - 1, 194);
     for (table_row = 0; table_row < 9; table_row++) {
-        if ((gControllerPakScrollDirection != CONTROLLER_PAK_SCROLL_DIR_NONE) || ((table_row != 0) && (table_row != 8))) {
+        if ((gControllerPakScrollDirection != CONTROLLER_PAK_SCROLL_DIR_NONE) ||
+            ((table_row != 0) && (table_row != 8))) {
             y = (table_row * 0xA) + arg0->row;
             gDisplayListHead = func_8009BA74(gDisplayListHead, D_0200157C, x, y);
         }
@@ -6764,7 +6775,7 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
     struct_8018EE10_entry* var_v1;
 
     gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x00000140, 0x000000F0, 0, 0, 0, 0x00000064);
-    switch (gSubMenuSelection) { /* switch 1 */
+    switch (gSubMenuSelection) {                  /* switch 1 */
         case SUB_MENU_OPTION_RETURN_GAME_SELECT:  /* switch 1 */
         case SUB_MENU_OPTION_SOUND_MODE:          /* switch 1 */
         case SUB_MENU_OPTION_COPY_CONTROLLER_PAK: /* switch 1 */
@@ -6780,7 +6791,7 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
             set_text_color(1);
             draw_text(0x000000E6, 0x55 + 0x23, gSoundModeNames[gSoundMode], 0, 1.0f, 1.0f);
             break;
-        case SUB_MENU_ERASE_QUIT: /* switch 1 */
+        case SUB_MENU_ERASE_QUIT:  /* switch 1 */
         case SUB_MENU_ERASE_ERASE: /* switch 1 */
             set_text_color(3);
             for (stackPadding0 = 0; stackPadding0 < ARRAY_COUNT(D_800E7878); stackPadding0++) {
@@ -6802,9 +6813,9 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
             }
             break;
         case SUB_MENU_COPY_PAK_ERROR_NO_GHOST_DATA: /* switch 1 */
-        case SUB_MENU_COPY_PAK_ERROR_NO_GAME_DATA: /* switch 1 */
-        case SUB_MENU_COPY_PAK_ERROR_NO_PAK_2P: /* switch 1 */
-        case SUB_MENU_COPY_PAK_ERROR_BAD_READ_2P: /* switch 1 */
+        case SUB_MENU_COPY_PAK_ERROR_NO_GAME_DATA:  /* switch 1 */
+        case SUB_MENU_COPY_PAK_ERROR_NO_PAK_2P:     /* switch 1 */
+        case SUB_MENU_COPY_PAK_ERROR_BAD_READ_2P:   /* switch 1 */
             set_text_color(2);
             var_s1 = gSubMenuSelection - SUB_MENU_COPY_PAK_ERROR_2P_MIN;
             for (stackPadding0 = 0; stackPadding0 < ARRAY_COUNT(D_800E78D0) / 4; stackPadding0++) { // 12 / 4 = 3
@@ -6812,10 +6823,10 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
                               0.9f, 0.9f);
             }
             break;
-        case SUB_MENU_COPY_PAK_ERROR_NO_PAK_1P: /* switch 1 */
-        case SUB_MENU_COPY_PAK_ERROR_BAD_READ_1P: /* switch 1 */
+        case SUB_MENU_COPY_PAK_ERROR_NO_PAK_1P:      /* switch 1 */
+        case SUB_MENU_COPY_PAK_ERROR_BAD_READ_1P:    /* switch 1 */
         case SUB_MENU_COPY_PAK_ERROR_CANT_CREATE_1P: /* switch 1 */
-        case SUB_MENU_COPY_PAK_ERROR_NO_PAGES_1P: /* switch 1 */
+        case SUB_MENU_COPY_PAK_ERROR_NO_PAGES_1P:    /* switch 1 */
             set_text_color(2);
             var_s1 = gSubMenuSelection - SUB_MENU_COPY_PAK_ERROR_1P_MIN;
             for (stackPadding0 = 0; stackPadding0 < ARRAY_COUNT(D_800E7890) / 4; stackPadding0++) { // 16 / 4 = 4
@@ -6841,8 +6852,8 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
             break;
         case SUB_MENU_COPY_PAK_FROM_GHOST1_1P: /* switch 1 */
         case SUB_MENU_COPY_PAK_FROM_GHOST2_1P: /* switch 1 */
-        case SUB_MENU_COPY_PAK_TO_GHOST1_2P: /* switch 1 */
-        case SUB_MENU_COPY_PAK_TO_GHOST2_2P: /* switch 1 */
+        case SUB_MENU_COPY_PAK_TO_GHOST1_2P:   /* switch 1 */
+        case SUB_MENU_COPY_PAK_TO_GHOST2_2P:   /* switch 1 */
             switch (gSubMenuSelection) {
                 case SUB_MENU_COPY_PAK_FROM_GHOST1_1P:
                 case SUB_MENU_COPY_PAK_FROM_GHOST2_1P:
@@ -6941,8 +6952,8 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
                 func_80093324(0x6E + (0x32 * var_s2), 0x000000D2, D_800E7930[var_s2], 0, 0.75f, 0.75f);
             }
             break;
-        case SUB_MENU_COPY_PAK_START: /* switch 1 */
-        case SUB_MENU_COPY_PAK_COPYING: /* switch 1 */
+        case SUB_MENU_COPY_PAK_START:     /* switch 1 */
+        case SUB_MENU_COPY_PAK_COPYING:   /* switch 1 */
         case SUB_MENU_COPY_PAK_COMPLETED: /* switch 1 */
             var_s5 = (gSubMenuSelection - SUB_MENU_COPY_PAK_ACTION_MIN) / 2;
             set_text_color(2);
@@ -6985,13 +6996,13 @@ void func_800A1FB0(struct_8018D9E0_entry* arg0) {
             }
             break;
     }
-    switch (gSubMenuSelection) { /* switch 2 */
-        case SUB_MENU_COPY_PAK_FROM_GHOST1_1P:        /* switch 2 */
-        case SUB_MENU_COPY_PAK_FROM_GHOST2_1P:        /* switch 2 */
-        case SUB_MENU_COPY_PAK_TO_GHOST1_2P:        /* switch 2 */
-        case SUB_MENU_COPY_PAK_TO_GHOST2_2P:        /* switch 2 */
-        case SUB_MENU_COPY_PAK_PROMPT_QUIT:        /* switch 2 */
-        case SUB_MENU_COPY_PAK_PROMPT_COPY:        /* switch 2 */
+    switch (gSubMenuSelection) {               /* switch 2 */
+        case SUB_MENU_COPY_PAK_FROM_GHOST1_1P: /* switch 2 */
+        case SUB_MENU_COPY_PAK_FROM_GHOST2_1P: /* switch 2 */
+        case SUB_MENU_COPY_PAK_TO_GHOST1_2P:   /* switch 2 */
+        case SUB_MENU_COPY_PAK_TO_GHOST2_2P:   /* switch 2 */
+        case SUB_MENU_COPY_PAK_PROMPT_QUIT:    /* switch 2 */
+        case SUB_MENU_COPY_PAK_PROMPT_COPY:    /* switch 2 */
             spE0.column -= 5;
             spE0.row -= 6;
             break;
@@ -7078,7 +7089,8 @@ void func_800A2EB8(struct_8018D9E0_entry* arg0) {
     draw_text((-(s32) (((f32) (get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xF5,
               arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
     draw_text((temp_s0 - arg0->column) + 0xF5, arg0->row + 0xE1,
-              D_800E76CC[gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
+              D_800E76CC[gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]], 0, 0.6f,
+              0.6f);
 }
 
 void func_800A32B4(s32 arg0, s32 arg1, s32 characterId, s32 rank) {
@@ -7194,7 +7206,8 @@ void func_800A34A8(struct_8018D9E0_entry* arg0) {
         draw_text((-(s32) (((get_string_width(D_800E76CC[gCCSelection]) + 8) * 0.6f) / 2) - arg0->column) + 0xE6,
                   arg0->row + 0xE1, gCupNames[D_800DC540], 0, 0.6f, 0.6f);
         draw_text((temp_s0_3 - arg0->column) + 0xE6, arg0->row + 0xE1,
-                  D_800E76CC[gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]], 0, 0.6f, 0.6f);
+                  D_800E76CC[gGameModeSubMenuColumn[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]], 0, 0.6f,
+                  0.6f);
     }
 }
 
@@ -7265,8 +7278,7 @@ void func_800A3C84(struct_8018D9E0_entry* arg0) {
     s32 rowOffset;
 
     set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_1);
-    draw_text(arg0->column + 0x43, arg0->row + 0x19, gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]],
-              0, 0.6f, 0.6f);
+    draw_text(arg0->column + 0x43, arg0->row + 0x19, GET_COURSE_NameDup, 0, 0.6f, 0.6f);
     set_text_color(TEXT_YELLOW);
     draw_text(arg0->column + 0x46, arg0->row + 0x28, D_800E7730, 0, 0.75f, 0.75f);
     for (recordType = 0, rowOffset = 0; recordType < TIME_TRIAL_3LAP_RECORD_5; recordType += 1, rowOffset += 0xF) {
@@ -7942,7 +7954,7 @@ void func_800A6034(struct_8018D9E0_entry* arg0) {
         text = gCupNames[D_800DC540];
         set_text_color(TEXT_BLUE_GREEN_RED_CYCLE_2);
         func_80093754(arg0->column + 0x41, arg0->row + 0xA0, text, 0, 0.85f, 1.0f);
-        text = gCourseNames[gCurrentCourseId];
+        text = GET_COURSE_Name;
         set_text_color((s32) gCurrentCourseId % 4);
         func_80093754(arg0->column + 0x41, arg0->row + 0xC3, text, 0, 0.65f, 0.85f);
     }
@@ -8479,19 +8491,19 @@ void func_800A7A4C(s32 arg0) {
             case 0xA: /* switch 8 */
                 func_800AA280(var_s1);
                 break;
-            case 0x10:                             /* switch 8 */
-            case 0x11:                             /* switch 8 */
-                switch (gMainMenuSelection) { /* switch 5 */
+            case 0x10:                            /* switch 8 */
+            case 0x11:                            /* switch 8 */
+                switch (gMainMenuSelection) {     /* switch 5 */
                     case MAIN_MENU_OPTION:        /* switch 5 */
-                    case MAIN_MENU_DATA:           /* switch 5 */
-                    case MAIN_MENU_PLAYER_SELECT:     /* switch 5 */
+                    case MAIN_MENU_DATA:          /* switch 5 */
+                    case MAIN_MENU_PLAYER_SELECT: /* switch 5 */
                         func_800A9B9C(var_s1);
                         break;
-                    case MAIN_MENU_MODE_SELECT:                           /* switch 5 */
-                    case MAIN_MENU_MODE_SUB_SELECT: /* switch 5 */
-                    case MAIN_MENU_OK_SELECT:                          /* switch 5 */
-                    case MAIN_MENU_OK_SELECT_GO_BACK:            /* switch 5 */
-                    case MAIN_MENU_MODE_SUB_SELECT_GO_BACK:      /* switch 5 */
+                    case MAIN_MENU_MODE_SELECT:             /* switch 5 */
+                    case MAIN_MENU_MODE_SUB_SELECT:         /* switch 5 */
+                    case MAIN_MENU_OK_SELECT:               /* switch 5 */
+                    case MAIN_MENU_OK_SELECT_GO_BACK:       /* switch 5 */
+                    case MAIN_MENU_MODE_SUB_SELECT_GO_BACK: /* switch 5 */
                         func_800A9C40(var_s1);
                         break;
                 }
@@ -8500,21 +8512,21 @@ void func_800A7A4C(s32 arg0) {
                 func_800AA280(var_s1);
                 func_800A9A98(var_s1);
                 break;
-            case 0xB:                              /* switch 8 */
-            case 0xC:                              /* switch 8 */
-            case 0xD:                              /* switch 8 */
-            case 0xE:                              /* switch 8 */
-                switch (gMainMenuSelection) { /* switch 6 */
+            case 0xB:                             /* switch 8 */
+            case 0xC:                             /* switch 8 */
+            case 0xD:                             /* switch 8 */
+            case 0xE:                             /* switch 8 */
+                switch (gMainMenuSelection) {     /* switch 6 */
                     case MAIN_MENU_OPTION:        /* switch 6 */
-                    case MAIN_MENU_DATA:           /* switch 6 */
-                    case MAIN_MENU_PLAYER_SELECT:     /* switch 6 */
+                    case MAIN_MENU_DATA:          /* switch 6 */
+                    case MAIN_MENU_PLAYER_SELECT: /* switch 6 */
                         func_800A9B9C(var_s1);
                         break;
-                    case MAIN_MENU_MODE_SELECT:                           /* switch 6 */
-                    case MAIN_MENU_MODE_SUB_SELECT: /* switch 6 */
-                    case MAIN_MENU_OK_SELECT:                          /* switch 6 */
-                    case MAIN_MENU_OK_SELECT_GO_BACK:            /* switch 6 */
-                    case MAIN_MENU_MODE_SUB_SELECT_GO_BACK:      /* switch 6 */
+                    case MAIN_MENU_MODE_SELECT:             /* switch 6 */
+                    case MAIN_MENU_MODE_SUB_SELECT:         /* switch 6 */
+                    case MAIN_MENU_OK_SELECT:               /* switch 6 */
+                    case MAIN_MENU_OK_SELECT_GO_BACK:       /* switch 6 */
+                    case MAIN_MENU_MODE_SUB_SELECT_GO_BACK: /* switch 6 */
                         func_800A9C40(var_s1);
                         break;
                 }
@@ -8561,10 +8573,10 @@ void func_800A7A4C(s32 arg0) {
                         break;
                 }
                 switch (gPlayerSelectMenuSelection) { /* switch 10; irregular */
-                    case PLAYER_SELECT_MENU_MAIN: /* switch 10 */
+                    case PLAYER_SELECT_MENU_MAIN:     /* switch 10 */
                         func_800AAB90(var_s1);
                         break;
-                    case PLAYER_SELECT_MENU_OK: /* switch 10 */
+                    case PLAYER_SELECT_MENU_OK:         /* switch 10 */
                     case PLAYER_SELECT_MENU_OK_GO_BACK: /* switch 10 */
                         func_800AAA9C(var_s1);
                         break;
@@ -8580,12 +8592,12 @@ void func_800A7A4C(s32 arg0) {
             case 0x55: /* switch 8 */
             case 0x56: /* switch 8 */
                 func_800AB164(var_s1);
-                switch (gSubMenuSelection) { /* switch 11; irregular */
+                switch (gSubMenuSelection) {      /* switch 11; irregular */
                     case SUB_MENU_MAP_SELECT_CUP: /* switch 11 */
                         func_800AB020(var_s1);
                         break;
                     case SUB_MENU_MAP_SELECT_COURSE: /* switch 11 */
-                    case SUB_MENU_MAP_SELECT_OK: /* switch 11 */
+                    case SUB_MENU_MAP_SELECT_OK:     /* switch 11 */
                         func_800AB098(var_s1);
                         break;
                 }
@@ -8846,7 +8858,8 @@ void func_800A8270(s32 arg0, struct_8018D9E0_entry* arg1) {
             gDisplayListHead = func_80098FC8(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x35);
         }
         for (var_s0 += 0x41, var_s2 = 0; var_s2 <= gPlayerModeSelection[arg0]; var_s2++, var_s0 += 0x12) {
-            if ((var_s2 == gGameModeMenuColumn[arg0]) && ((arg0 + 1) == gPlayerCount) && (gMainMenuSelection > MAIN_MENU_PLAYER_SELECT)) {
+            if ((var_s2 == gGameModeMenuColumn[arg0]) && ((arg0 + 1) == gPlayerCount) &&
+                (gMainMenuSelection > MAIN_MENU_PLAYER_SELECT)) {
                 if (gMainMenuSelection == MAIN_MENU_MODE_SELECT) {
                     gDisplayListHead =
                         draw_flash_select_case_slow(gDisplayListHead, var_s3, var_s0, var_s4, var_s0 + 0x11);
@@ -8873,14 +8886,13 @@ void func_800A8564(struct_8018D9E0_entry* arg0) {
     switch (arg0->type) { /* irregular */
         case 0xF:
             var_a0 = D_0200487C;
-            if ((gMainMenuSelection == MAIN_MENU_OK_SELECT) ||
-                (gMainMenuSelection == MAIN_MENU_OK_SELECT_GO_BACK)) {
+            if ((gMainMenuSelection == MAIN_MENU_OK_SELECT) || (gMainMenuSelection == MAIN_MENU_OK_SELECT_GO_BACK)) {
                 var_a1 = 1;
             }
             break;
         case 0x33:
             var_a0 = D_02004B74;
-            if ((gPlayerSelectMenuSelection == PLAYER_SELECT_MENU_OK) || 
+            if ((gPlayerSelectMenuSelection == PLAYER_SELECT_MENU_OK) ||
                 (gPlayerSelectMenuSelection == PLAYER_SELECT_MENU_OK_GO_BACK)) {
                 var_a1 = 1;
             }
@@ -8977,8 +8989,10 @@ void func_800A8A98(struct_8018D9E0_entry* arg0) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCombineMode(gDisplayListHead++, G_CC_DECALRGBA, G_CC_DECALRGBA);
     for (someIndex = 0; someIndex < NUM_COURSES_PER_CUP; someIndex++) {
-        if ((someIndex == gCourseIndexInCup) && (gSubMenuSelection > SUB_MENU_MAP_SELECT_CUP) && (gModeSelection != GRAND_PRIX)) {
-            if ((gSubMenuSelection == SUB_MENU_MAP_SELECT_COURSE) || (gSubMenuSelection == SUB_MENU_MAP_SELECT_BATTLE_COURSE)) {
+        if ((someIndex == gCourseIndexInCup) && (gSubMenuSelection > SUB_MENU_MAP_SELECT_CUP) &&
+            (gModeSelection != GRAND_PRIX)) {
+            if ((gSubMenuSelection == SUB_MENU_MAP_SELECT_COURSE) ||
+                (gSubMenuSelection == SUB_MENU_MAP_SELECT_BATTLE_COURSE)) {
                 gDisplayListHead = draw_flash_select_case_slow(
                     gDisplayListHead, D_800E7208[someIndex][0].column + temp_s2, D_800E7208[someIndex][0].row + temp_s3,
                     D_800E7208[someIndex][1].column + temp_s2, D_800E7208[someIndex][1].row + temp_s3);
@@ -9300,7 +9314,8 @@ void func_800A97BC(struct_8018D9E0_entry* arg0) {
                     if (i < 7) {
                         gControllerPakVisibleTableRows[i] = gControllerPakVisibleTableRows[i + 1];
                     } else {
-                        if ((gControllerPakVisibleTableRows[i - 1] == 0x10) || (gControllerPakVisibleTableRows[i - 1] == 0)) {
+                        if ((gControllerPakVisibleTableRows[i - 1] == 0x10) ||
+                            (gControllerPakVisibleTableRows[i - 1] == 0)) {
                             gControllerPakVisibleTableRows[i] = 0;
                         } else {
                             gControllerPakVisibleTableRows[i] = gControllerPakVisibleTableRows[i - 1] + 1;
@@ -9320,7 +9335,8 @@ void func_800A97BC(struct_8018D9E0_entry* arg0) {
                     if (i > 1) {
                         gControllerPakVisibleTableRows[i] = gControllerPakVisibleTableRows[i - 1];
                     } else {
-                        if ((gControllerPakVisibleTableRows[i + 1] == 1) || (gControllerPakVisibleTableRows[i + 1] == 0)) {
+                        if ((gControllerPakVisibleTableRows[i + 1] == 1) ||
+                            (gControllerPakVisibleTableRows[i + 1] == 0)) {
                             gControllerPakVisibleTableRows[i] = 0;
                         } else {
                             gControllerPakVisibleTableRows[i] = gControllerPakVisibleTableRows[i + 1] - 1;
@@ -9339,17 +9355,11 @@ void func_800A97BC(struct_8018D9E0_entry* arg0) {
 // Don't know if this belongs here or inside func_800A9A98
 //   as a `static const`. But this matches so we'll leave
 //   it here for now.
-const s8 D_800F0CA0[] = {
-    0x03, 0x03, 0x03, 0x02, 0x00, 0x02, 0x02, 0x01
-};
+const s8 D_800F0CA0[] = { 0x03, 0x03, 0x03, 0x02, 0x00, 0x02, 0x02, 0x01 };
 
-const s8 D_800F0CA8[] = {
-    0x03, 0x02, 0x00
-};
+const s8 D_800F0CA8[] = { 0x03, 0x02, 0x00 };
 
-const s8 D_800F0CAC[] = {
-    0x03, 0x03, 0x02
-};
+const s8 D_800F0CAC[] = { 0x03, 0x03, 0x02 };
 
 void func_800A9A98(struct_8018D9E0_entry* arg0) {
     s32 sp4;
@@ -9538,10 +9548,10 @@ void func_800A9E58(struct_8018D9E0_entry* arg0) {
                 arg0->visible = 0;
             } else {
                 arg0->unk20 = gGameModeMenuColumn[gPlayerCount - 1];
-                switch (gMainMenuSelection) {                      /* switch 2 */
-                    case MAIN_MENU_MODE_SELECT:                           /* switch 2 */
+                switch (gMainMenuSelection) {       /* switch 2 */
+                    case MAIN_MENU_MODE_SELECT:     /* switch 2 */
                     case MAIN_MENU_MODE_SUB_SELECT: /* switch 2 */
-                    case MAIN_MENU_OK_SELECT:                          /* switch 2 */
+                    case MAIN_MENU_OK_SELECT:       /* switch 2 */
                         arg0->visible = 1;
                         temp_v0 = func_800AAE68();
                         arg0->column = temp_v0->column;
@@ -9565,13 +9575,13 @@ void func_800A9E58(struct_8018D9E0_entry* arg0) {
                 }
             }
             break;
-        case 1:                                                     /* switch 5 */
-            switch (gMainMenuSelection) {                      /* switch 3 */
-                case MAIN_MENU_MODE_SELECT:                           /* switch 3 */
-                case MAIN_MENU_MODE_SUB_SELECT: /* switch 3 */
-                case MAIN_MENU_OK_SELECT:                          /* switch 3 */
-                case MAIN_MENU_OK_SELECT_GO_BACK:            /* switch 3 */
-                case MAIN_MENU_MODE_SUB_SELECT_GO_BACK:      /* switch 3 */
+        case 1:                                         /* switch 5 */
+            switch (gMainMenuSelection) {               /* switch 3 */
+                case MAIN_MENU_MODE_SELECT:             /* switch 3 */
+                case MAIN_MENU_MODE_SUB_SELECT:         /* switch 3 */
+                case MAIN_MENU_OK_SELECT:               /* switch 3 */
+                case MAIN_MENU_OK_SELECT_GO_BACK:       /* switch 3 */
+                case MAIN_MENU_MODE_SUB_SELECT_GO_BACK: /* switch 3 */
                     if ((temp_a1 != sp20) && (temp_a1 != sp1C)) {
                         arg0->visible = 0;
                         arg0->cursor = 0;
@@ -9596,13 +9606,13 @@ void func_800A9E58(struct_8018D9E0_entry* arg0) {
                     break;
             }
             break;
-        case 2:                                                     /* switch 5 */
-            switch (gMainMenuSelection) {                      /* switch 4 */
-                case MAIN_MENU_MODE_SELECT:                           /* switch 4 */
-                case MAIN_MENU_MODE_SUB_SELECT: /* switch 4 */
-                case MAIN_MENU_OK_SELECT:                          /* switch 4 */
-                case MAIN_MENU_OK_SELECT_GO_BACK:            /* switch 4 */
-                case MAIN_MENU_MODE_SUB_SELECT_GO_BACK:      /* switch 4 */
+        case 2:                                         /* switch 5 */
+            switch (gMainMenuSelection) {               /* switch 4 */
+                case MAIN_MENU_MODE_SELECT:             /* switch 4 */
+                case MAIN_MENU_MODE_SUB_SELECT:         /* switch 4 */
+                case MAIN_MENU_OK_SELECT:               /* switch 4 */
+                case MAIN_MENU_OK_SELECT_GO_BACK:       /* switch 4 */
+                case MAIN_MENU_MODE_SUB_SELECT_GO_BACK: /* switch 4 */
                     if ((temp_a1 != sp20) && (temp_a1 != sp1C)) {
                         arg0->visible = 0;
                         arg0->cursor = 0;
@@ -10527,7 +10537,7 @@ void func_800ABF68(struct_8018D9E0_entry* arg0) {
         case 0:
             arg0->column = 0x140;
             arg0->cursor = 1;
-            arg0->unk20 = 0xA0 - (get_string_width(gCourseNames[gCurrentCourseId]) / 2);
+            arg0->unk20 = 0xA0 - (get_string_width(GET_COURSE_Name) / 2);
             /* fallthrough */
         case 1:
             func_800A9208(arg0, arg0->unk20);

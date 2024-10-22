@@ -4,10 +4,11 @@
 #include <debug.h>
 #include <PR/gu.h>
 #include <mk64.h>
+#include <course.h>
 
-#include <main.h>
+#include "main.h"
 #include <segments.h>
-#include <code_800029B0.h>
+#include "code_800029B0.h"
 #include "camera.h"
 #include "memory.h"
 #include "math_util.h"
@@ -30,7 +31,7 @@ s32 D_802874A0;
 // s32 D_802874A4[5];
 
 void func_80280000(void) {
-    func_802966A0();
+    course_update_water();
     func_80059AC8();
     func_80059AC8();
     func_8005A070();
@@ -51,7 +52,8 @@ void func_80280038(void) {
     func_80057FC4(0);
 
     gSPSetGeometryMode(gDisplayListHead++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
-    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, D_80150150, D_8015014C, 1.0f);
+    guPerspective(&gGfxPool->mtxPersp[0], &perspNorm, gCameraZoom[0], gScreenAspect, gCourseNearPersp, gCourseFarPersp,
+                  1.0f);
     gSPPerspNormalize(gDisplayListHead++, perspNorm);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxPersp[0]),
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
@@ -128,7 +130,7 @@ void load_credits(void) {
     gCurrentCourseId = gCreditsCourseId;
     D_800DC5B4 = 1;
     creditsRenderMode = 1;
-    func_802A4D18();
+    set_perspective_and_aspect_ratio();
     func_802A74BC();
     camera->unk_B4 = 60.0f;
     gCameraZoom[0] = 60.0f;

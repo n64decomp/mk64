@@ -2425,13 +2425,13 @@ void func_8004ED40(s32 arg0) {
 
 void func_8004EE54(s32 arg0) {
     if (gIsMirrorMode != 0) {
-        func_8004D4E8(D_8018D2C0[arg0] + D_8018D2F0, D_8018D2D8[arg0] + D_8018D2F8, (u8*) D_8018D240, (s32) D_8018D300,
-                      (s32) D_8018D308, (s32) D_8018D310, 0x000000FF, (s32) D_8018D2B0, (s32) D_8018D2B8,
-                      (s32) D_8018D2B0, (s32) D_8018D2B8);
+        func_8004D4E8(gMiniMapFinishLineX[arg0] + D_8018D2F0, gMiniMapFinishLineY[arg0] + D_8018D2F8, (u8*) D_8018D240,
+                      (s32) D_8018D300, (s32) D_8018D308, (s32) D_8018D310, 0x000000FF, (s32) D_8018D2B0,
+                      (s32) D_8018D2B8, (s32) D_8018D2B0, (s32) D_8018D2B8);
     } else {
-        func_8004D37C(D_8018D2C0[arg0] + D_8018D2F0, D_8018D2D8[arg0] + D_8018D2F8, (u8*) D_8018D240, (s32) D_8018D300,
-                      (s32) D_8018D308, (s32) D_8018D310, 0x000000FF, (s32) D_8018D2B0, (s32) D_8018D2B8,
-                      (s32) D_8018D2B0, (s32) D_8018D2B8);
+        func_8004D37C(gMiniMapFinishLineX[arg0] + D_8018D2F0, gMiniMapFinishLineY[arg0] + D_8018D2F8, (u8*) D_8018D240,
+                      (s32) D_8018D300, (s32) D_8018D308, (s32) D_8018D310, 0x000000FF, (s32) D_8018D2B0,
+                      (s32) D_8018D2B8, (s32) D_8018D2B0, (s32) D_8018D2B8);
     }
 }
 
@@ -2445,12 +2445,13 @@ void func_8004EF9C(s32 arg0) {
                   temp_t0, temp_v0, temp_t0);
 }
 
-void func_8004F020(s32 arg0) {
+void render_mini_map_finish_line(s32 arg0) {
     f32 var_f0;
     f32 var_f2;
 
-    var_f2 = ((D_8018D2C0[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + D_8018D2E0;
-    var_f0 = ((D_8018D2D8[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + D_8018D2E8;
+    var_f2 = ((gMiniMapFinishLineX[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + gMiniMapX;
+    var_f0 = ((gMiniMapFinishLineY[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + gMiniMapY;
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) { /* irregular */
         case COURSE_MARIO_RACEWAY:
             var_f0 = var_f0 - 2.0;
@@ -2463,6 +2464,9 @@ void func_8004F020(s32 arg0) {
             break;
     }
     draw_hud_2d_texture_8x8(var_f2, var_f0, (u8*) common_texture_minimap_finish_line);
+#else
+
+#endif
 }
 
 #ifdef NON_MATCHING
@@ -2479,10 +2483,10 @@ void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
     Player* player = &gPlayerOne[playerId];
 
     if (player->type & (1 << 15)) {
-        thing0 = player->pos[0] * D_8018D2A0;
-        thing1 = player->pos[2] * D_8018D2A0;
-        temp_a0 = ((D_8018D2C0[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + D_8018D2E0 + (s16) (thing0);
-        temp_a1 = ((D_8018D2D8[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + D_8018D2E8 + (s16) (thing1);
+        thing0 = player->pos[0] * gMiniMapMarkerScale;
+        thing1 = player->pos[2] * gMiniMapMarkerScale;
+        temp_a0 = ((gMiniMapFinishLineX[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + gMiniMapX + (s16) (thing0);
+        temp_a1 = ((gMiniMapFinishLineY[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + gMiniMapY + (s16) (thing1);
         if (characterId != 8) {
             if ((gGPCurrentRaceRankByPlayerId[playerId] == 0) && (gModeSelection != 3) && (gModeSelection != 1)) {
 #if EXPLICIT_AND == 1
@@ -3179,16 +3183,16 @@ void func_80051C60(s16 arg0, s32 arg1) {
     Object* object;
 
     if (D_801658FE == 0) {
-        if (gCurrentCourseId == 6) {
+        if (gCurrentCourseId == COURSE_KOOPA_BEACH) {
             var_s5 = arg0;
-        } else if (gCurrentCourseId == 9) {
+        } else if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
             var_s5 = arg0 - 0x10;
-        } else if (gCurrentCourseId == 4) {
+        } else if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
             var_s5 = arg0 - 0x10;
         } else {
             var_s5 = arg0 + 0x10;
         }
-    } else if (gCurrentCourseId == 6) {
+    } else if (gCurrentCourseId == COURSE_KOOPA_BEACH) {
         var_s5 = arg0 * 2;
     } else {
         var_s5 = arg0 + 0x20;
