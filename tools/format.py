@@ -193,7 +193,7 @@ def main():
     else:
         files = []
         for folder in default_list_folder:
-            files += glob.glob(f"{folder}*/**/*.c", recursive=True) + glob.glob(f"{folder}*/**/*.h", recursive=True)
+            files += glob.glob(f"{folder}*/**/*.c", recursive=True) + glob.glob(f"{folder}*/**/*.cpp", recursive=True) + glob.glob(f"{folder}*/**/*.h", recursive=True)
         files = [x for x in files if "assets" not in x]
         extra_files = glob.glob("assets/**/*.xml", recursive=True)
 
