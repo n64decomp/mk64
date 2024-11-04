@@ -44,9 +44,9 @@ s32 func_80290C20(Camera* camera) {
 }
 
 void parse_course_displaylists(uintptr_t addr) {
-    s32 segment = SEGMENT_NUMBER2(addr);
-    s32 offset = SEGMENT_OFFSET(addr);
-    TrackSections* section = (TrackSections*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    UNUSED s32 segment;
+    UNUSED s32 offset;
+    TrackSections* section = (TrackSections*) VIRTUAL_TO_PHYSICAL_ASSET(addr);
 
     while (section->addr != 0) {
         if (section->flags & 0x8000) {
