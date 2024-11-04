@@ -307,7 +307,14 @@ void func_80003040(void) {
     gCourseDirection = 1.0f;
 
     gPlayerCountSelection1 = 1;
-    set_segment_base_addr(0x3, (void*) (gNextFreeMemoryAddress + 0xFFFF7000));
+
+    //! @warning Grand Prix loads some textures that credits does not
+    // Therefore, this calculation allows future texture allocations to skip 0x9000
+    // this allows hard-coded data addresses to sync with memory data.
+    // In other words, the first texture in segment 3 for credits should start at 0x9000
+    // This is only required for moo moo farm.
+    // This is also bad memory management practice as this could result in overwriting the wrong memory.
+    set_segment_base_addr(0x3, (void*) (gNextFreeMemoryAddress - 0x9000));
     destroy_all_actors();
 #if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
