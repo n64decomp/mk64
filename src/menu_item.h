@@ -41,12 +41,12 @@ typedef struct {
 
 typedef struct {
     /* 0x00 */ MkAnimation* textureSequence;
-    /* 0x04 */ s32 sequenceIndex;    // Index in textureSequence that the animation is currently on
-    /* 0x08 */ s32 frameCountDown;   // Frames left for the given animation part
-    /* 0x0C */ u32 visible;          // visbile if 0x80000000, otherwise invisbile AND paused
-    /* 0x10 */ s32 D_8018E118_index; // Don't know what sMenuTextureMap tracks
-    /* 0x14 */ s32 unk14;            // Flip flops between 0 and 1, use unknown
-} struct_8018DEE0_entry;             // size = 0x18
+    /* 0x04 */ s32 sequenceIndex;      // Index in textureSequence that the animation is currently on
+    /* 0x08 */ s32 frameCountDown;     // Frames left for the given animation part
+    /* 0x0C */ u32 visible;            // visbile if 0x80000000, otherwise invisbile AND paused
+    /* 0x10 */ s32 menu_texture_index; // Don't know what sMenuTextureMap tracks
+    /* 0x14 */ s32 unk14;              // Flip flops between 0 and 1, use unknown
+} struct_8018DEE0_entry;               // size = 0x18
 
 typedef struct {
     /* 0x0 */ MenuTexture* texture;
@@ -90,23 +90,23 @@ typedef struct {
 } Unk_D_800E70A0; // size = 0x08
 
 enum MENU_ITEMpriority {
-    MENU_ITEM_UI_PRIO_0,
-    MENU_ITEM_UI_PRIO_1,
-    MENU_ITEM_UI_PRIO_2,
-    MENU_ITEM_UI_PRIO_3,
-    MENU_ITEM_UI_PRIO_4,
-    MENU_ITEM_UI_PRIO_5,
-    MENU_ITEM_UI_PRIO_6,
-    MENU_ITEM_UI_PRIO_7,
-    MENU_ITEM_UI_PRIO_8,
-    MENU_ITEM_UI_PRIO_9,
-    MENU_ITEM_UI_PRIO_A,
-    MENU_ITEM_UI_PRIO_B,
-    MENU_ITEM_UI_PRIO_C,
-    MENU_ITEM_UI_PRIO_D,
-    MENU_ITEM_UI_PRIO_E,
-    MENU_ITEM_UI_PRIO_F,
-    MENU_ITEM_UI_PRIO_MAX // 0x10
+    MENU_ITEM_UI_PRIORITY_0,
+    MENU_ITEM_UI_PRIORITY_1,
+    MENU_ITEM_UI_PRIORITY_2,
+    MENU_ITEM_UI_PRIORITY_3,
+    MENU_ITEM_UI_PRIORITY_4,
+    MENU_ITEM_UI_PRIORITY_5,
+    MENU_ITEM_UI_PRIORITY_6,
+    MENU_ITEM_UI_PRIORITY_7,
+    MENU_ITEM_UI_PRIORITY_8,
+    MENU_ITEM_UI_PRIORITY_9,
+    MENU_ITEM_UI_PRIORITY_A,
+    MENU_ITEM_UI_PRIORITY_B,
+    MENU_ITEM_UI_PRIORITY_C,
+    MENU_ITEM_UI_PRIORITY_D,
+    MENU_ITEM_UI_PRIORITY_E,
+    MENU_ITEM_UI_PRIORITY_F,
+    MENU_ITEM_UI_PRIORITY_MAX // 0x10
 };
 
 enum CenterText { LEFT_TEXT = 1, CENTER_TEXT_MODE_1, RIGHT_TEXT, CENTER_TEXT_MODE_2 };
