@@ -12,7 +12,7 @@
 #include <defines.h>
 #include "collision.h"
 #include "memory.h"
-#include "code_80091750.h"
+#include "menu_item.h"
 #include "skybox_and_splitscreen.h"
 #include "code_8006E9C0.h"
 #include "spawn_players.h"
