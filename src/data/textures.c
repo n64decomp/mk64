@@ -2,7 +2,7 @@
  * @file textures.c
  * @brief Texture data.
  * start in ram 0x801978D0
- * look like link to code_80091750
+ * look like link to menu_item
  */
 #include "textures.h"
 

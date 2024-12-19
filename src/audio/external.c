@@ -11,7 +11,7 @@
 #include "audio/port_eu.h"
 #include "code_800029B0.h"
 #include "code_80005FD0.h"
-#include "code_80091750.h"
+#include "menu_item.h"
 
 s8 D_8018EF10;
 UnkStruct8018EF18 D_8018EF18[16];

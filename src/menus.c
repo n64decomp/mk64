@@ -11,7 +11,7 @@
 #include "audio/external.h"
 #include "code_800029B0.h"
 #include "code_80005FD0.h"
-#include "code_80091750.h"
+#include "menu_item.h"
 #include "code_800AF9B0.h"
 #include "save.h"
 #include "staff_ghosts.h"

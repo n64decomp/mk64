@@ -6,7 +6,7 @@
 #include <PR/ultratypes.h>
 #include <sounds.h>
 #include "code_800029B0.h"
-#include "code_80091750.h"
+#include "menu_item.h"
 #include "code_80005FD0.h"
 #include "code_8006E9C0.h"
 #include "menus.h"
@@ -56,7 +56,7 @@ s8 D_8018D9D9;
 MenuItem gMenuItems[MENU_ITEMS_MAX];
 struct_8018DEE0_entry D_8018DEE0[D_8018DEE0_SIZE];
 struct_8018E060_entry D_8018E060[D_8018E060_SIZE];
-UNUSED u8 code_80091750_bss_padding0[8];
+UNUSED u8 menu_item_bss_padding0[8];
 struct_8018E0E8_entry D_8018E0E8[D_8018E0E8_SIZE];
 s32 sMenuTextureBufferIndex;
 TextureMap sMenuTextureMap[TEXTURE_MAP_MAX];
@@ -89,7 +89,7 @@ s32 gControllerPak1MaxWriteableFiles;
 s32 gControllerPak1NumPagesFree;
 s32 gControllerPak1FileNote;
 s32 gControllerPak2FileNote;
-s32 code_80091750_bss_pad2;
+s32 menu_item_bss_pad2;
 ALIGNED8 SaveData gSaveData;
 
 u8 D_8018ED90;
@@ -1136,7 +1136,7 @@ f64 func_8009195C(f64 arg0) {
     return func_80091A6C((temp_f2 + arg0) / (temp_f2 - arg0), temp_f10);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_8009195C.s")
+GLOBAL_ASM("asm/non_matchings/menu_item/func_8009195C.s")
 #endif
 
 /**
@@ -2995,7 +2995,7 @@ Gfx* func_80096CD8(Gfx* displayListHead, s32 arg1, s32 arg2, u32 width, u32 arg4
     return displayListHead;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80096CD8.s")
+GLOBAL_ASM("asm/non_matchings/menu_item/func_80096CD8.s")
 #endif
 
 #ifdef NON_MATCHING
@@ -3106,7 +3106,7 @@ Gfx* func_80097274(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, 
     return displayListHead;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80097274.s")
+GLOBAL_ASM("asm/non_matchings/menu_item/func_80097274.s")
 #endif
 
 Gfx* func_80097A14(Gfx* displayListHead, s8 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, u8* arg8,
@@ -3689,7 +3689,7 @@ void func_80099AEC(void) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099AEC.s")
+GLOBAL_ASM("asm/non_matchings/menu_item/func_80099AEC.s")
 #endif
 
 void func_80099E54(void) {
@@ -3799,7 +3799,7 @@ void func_80099EC4(void) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_80099EC4.s")
+GLOBAL_ASM("asm/non_matchings/menu_item/func_80099EC4.s")
 #endif
 
 void func_8009A238(MenuTexture* arg0, s32 arg1) {
@@ -5762,7 +5762,7 @@ void load_menu_item_ui(s32 type, s32 column, s32 row, s8 priority) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/load_menu_item_ui.s")
+GLOBAL_ASM("asm/non_matchings/menu_item/load_menu_item_ui.s")
 #endif
 
 #ifdef NON_MATCHING
@@ -6321,7 +6321,7 @@ void render_menus(MenuItem* arg0) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/render_menus.s")
+GLOBAL_ASM("asm/non_matchings/menu_item/render_menus.s")
 #endif
 
 // GLOBAL_ASM("print_rodata.S")
@@ -7044,7 +7044,7 @@ void func_800A1FB0(MenuItem* arg0) {
     func_800A66A8(arg0, (Unk_D_800E70A0*) &spE0);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800A1FB0.s")
+GLOBAL_ASM("asm/non_matchings/menu_item/func_800A1FB0.s")
 #endif
 
 void func_800A2D1C(MenuItem* arg0) {
@@ -7607,7 +7607,7 @@ void render_player_time(s32 recordType, s32 column, s32 row) {
     print_text1_center_mode_1(column + 0x78, row, D_800E76A8[characterId], 0, 0.65f, 0.65f);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/render_player_time.s")
+GLOBAL_ASM("asm/non_matchings/menu_item/render_player_time.s")
 #endif
 
 void render_menu_titem_announce_ghost(MenuItem* arg0) {
@@ -10398,7 +10398,7 @@ void func_800AB314(MenuItem* arg0) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80091750/func_800AB314.s")
+GLOBAL_ASM("asm/non_matchings/menu_item/func_800AB314.s")
 #endif
 
 void func_800AB904(MenuItem* arg0) {

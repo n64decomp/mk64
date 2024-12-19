@@ -22,7 +22,7 @@
 #include "menus.h"
 #include "data/other_textures.h"
 #include "render_objects.h"
-#include "code_80091750.h"
+#include "menu_item.h"
 #include "src/data/some_data.h"
 #include "effects.h"
 
@@ -127,7 +127,8 @@ u8* dma_copy_base_misc_textures(u8* devAddr, u8* baseAddress, u32 size, u32 offs
 }
 
 void load_game_logo(void) {
-    gGameLogoAddress = dma_copy_base_misc_textures((u8*) &gTextureLogoMarioKart64, (u8*) gMenuTextureBuffer, 0x79E1, 0x20000);
+    gGameLogoAddress =
+        dma_copy_base_misc_textures((u8*) &gTextureLogoMarioKart64, (u8*) gMenuTextureBuffer, 0x79E1, 0x20000);
 }
 
 // Some kind of initalization for the Item Window part of the HUD

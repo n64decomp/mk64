@@ -25,7 +25,7 @@
 #include "code_8006E9C0.h"
 #include "render_objects.h"
 #include "update_objects.h"
-#include "code_80091750.h"
+#include "menu_item.h"
 #include "collision.h"
 #include "main.h"
 #include "menus.h"
@@ -1537,13 +1537,11 @@ void render_texture_rectangle(s32 x, s32 y, s32 width, s32 height, s32 s, s32 w,
 
     // If no cycle mode is set, render texture rectangle in copy mode
     if (mode == 0) {
-        gSPTextureRectangle(gDisplayListHead++, xl, yl, xh, yh, G_TX_RENDERTILE, s << 5, (w << 5), 4 << 10,
-                            1 << 10);
+        gSPTextureRectangle(gDisplayListHead++, xl, yl, xh, yh, G_TX_RENDERTILE, s << 5, (w << 5), 4 << 10, 1 << 10);
         return;
     }
     // Render texture rectangle in default cycle mode (1 cycle or 2 cycle)
-    gSPTextureRectangle(gDisplayListHead++, xl, yl, xh2, yh2, G_TX_RENDERTILE, s << 5, (w << 5), 1 << 10,
-                        1 << 10);
+    gSPTextureRectangle(gDisplayListHead++, xl, yl, xh2, yh2, G_TX_RENDERTILE, s << 5, (w << 5), 1 << 10, 1 << 10);
 }
 
 void render_texture_rectangle_from_base(s32 x, s32 y, s32 width, s32 height, s32 mode) {
@@ -4689,7 +4687,8 @@ UNUSED void func_800573DC(void) {
 }
 
 void func_800573E4(s32 x, s32 y, s8 str) {
-    render_texture_rectangle(x, y, 8, 8, (((str % 16) * 8) << 16) >> 16, (((unsigned short) (str / 16)) << 19) >> 16, 0);
+    render_texture_rectangle(x, y, 8, 8, (((str % 16) * 8) << 16) >> 16, (((unsigned short) (str / 16)) << 19) >> 16,
+                             0);
 }
 
 void debug_wrap_text(s32* x, s32* y) {

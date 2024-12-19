@@ -16,7 +16,7 @@
 #include "collision.h"
 #include "code_80281C40.h"
 #include "code_800029B0.h"
-#include "code_80091750.h"
+#include "menu_item.h"
 #include "main.h"
 #include "menus.h"
 #include "render_courses.h"
