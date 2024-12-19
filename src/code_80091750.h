@@ -33,11 +33,11 @@ typedef struct {
     // These seem to be generic space available for use by the struct, no 1 purpose for any given member
     /* 0x16 */ s16 unused;           // Unused
     /* 0x18 */ s32 D_8018DEE0_index; // Index in D_8018DEE0, an array of some other struct type
-    /* 0x1C */ s32 param1;            // Multi use. Sometimes cup selection, sometimes course index.
+    /* 0x1C */ s32 param1;           // Multi use. Sometimes cup selection, sometimes course index.
     /* 0x20 */ s32 param2; // Multi use, hard to tell what for though. Sometimes a random number, sometimes GP points
     /* 0x24 */ f32 paramf; // Multi use, x scaling for some things, rotation multiplier for the question box in some
                            // menus, probably some other things
-} MenuItem;               // size = 0x28
+} MenuItem;                // size = 0x28
 
 typedef struct {
     /* 0x00 */ MkAnimation* textureSequence;
@@ -222,10 +222,10 @@ enum MENU_ITEMtype {
     MENU_ITEM_TYPE_0B9 = 0xB9,
     MENU_ITEM_TYPE_0BA,
     MENU_ITEM_TYPE_0BB,
-    MENU_ITEM_TYPE_0BC,
-    MENU_ITEM_TYPE_0BD,
+    MENU_ITEM_ANNOUNCE_GHOST,
+    MENU_ITEM_END_COURSE_OPTION,
     MENU_ITEM_TYPE_0BE,
-    MENU_ITEM_TYPE_0C7 = 0xC7,
+    MENU_ITEM_PAUSE = 0xC7,
     MENU_ITEM_TYPE_0D2 = 0xD2,
     MENU_ITEM_TYPE_0D3,
     MENU_ITEM_TYPE_0D4,
@@ -235,9 +235,9 @@ enum MENU_ITEMtype {
     MENU_ITEM_TYPE_0D8,
     MENU_ITEM_TYPE_0D9,
     MENU_ITEM_TYPE_0DA,
-    MENU_ITEM_TYPE_0E6 = 0xE6,
-    MENU_ITEM_TYPE_0E7,
-    MENU_ITEM_TYPE_0E8,
+    MENU_ITEM_DATA_COURSE_IMAGE = 0xE6,
+    MENU_ITEM_DATA_COURSE_INFO,
+    MENU_ITEM_DATA_COURSE_SELECTABLE,
     MENU_ITEM_TYPE_0E9,
     MENU_ITEM_TYPE_0EA,
     MENU_ITEM_TYPE_0F0 = 0xF0,
@@ -504,9 +504,9 @@ void func_800A143C(MenuItem*, s32);
 void func_800A1500(MenuItem*);
 void func_800A15EC(MenuItem*);
 void func_800A1780(MenuItem*);
-void func_800A1924(MenuItem*);
-void func_800A1A20(MenuItem*);
-void menu_item_course_data_render(MenuItem*);
+void render_menu_item_data_course_image(MenuItem*);
+void render_menu_item_data_course_info(MenuItem*);
+void menu_item_data_course_selectable(MenuItem*);
 void func_800A1DE0(MenuItem*);
 void func_800A1F30(MenuItem*);
 void func_800A1FB0(MenuItem*);
@@ -520,14 +520,14 @@ void menu_item_end_time_trial_render(MenuItem*);
 void func_800A3E60(MenuItem*);
 void render_lap_time(s32, s32, s32);
 void render_player_time(s32, s32, s32);
-void func_800A4A24(MenuItem*);
+void render_menu_titem_announce_ghost(MenuItem*);
 void render_pause_menu(MenuItem*);
 void render_pause_menu_time_trials(MenuItem*);
 void render_pause_menu_versus(MenuItem*);
 void render_pause_grand_prix(MenuItem*);
 void render_pause_battle(MenuItem*);
 void func_800A54EC(void);
-void func_800A5738(MenuItem*);
+void render_menu_item_end_course_option(MenuItem*);
 void func_800A6034(MenuItem*);
 void func_800A6154(MenuItem*);
 void func_800A638C(MenuItem*);
