@@ -4,9 +4,9 @@
 #include "courses/choco_mountain/course_data.h"
 
 void func_8029CF0C(struct ActorSpawnData* spawnData, struct FallingRock* rock) {
-    s32 segment = SEGMENT_NUMBER2(spawnData);
-    s32 offset = SEGMENT_OFFSET(spawnData);
-    struct ActorSpawnData* temp_v0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    UNUSED u32 unk;
+    UNUSED u32 unk2;
+    struct ActorSpawnData* temp_v0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL_ASSET(spawnData);
     Vec3s sp24 = { 60, 120, 180 };
     temp_v0 += rock->unk_06;
     rock->respawnTimer = sp24[rock->unk_06]; // * 2
@@ -24,10 +24,9 @@ void func_8029CF0C(struct ActorSpawnData* spawnData, struct FallingRock* rock) {
  * @param spawnData
  */
 void spawn_falling_rocks(struct ActorSpawnData* spawnData) {
-    s32 addr = SEGMENT_NUMBER2(spawnData);
-    s32 offset = SEGMENT_OFFSET(spawnData);
-    // Casting this to prevent warning does not work.
-    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[addr] + offset);
+    UNUSED u32 unk;
+    UNUSED u32 unk1;
+    struct ActorSpawnData* temp_s0 = (struct ActorSpawnData*) VIRTUAL_TO_PHYSICAL_ASSET(spawnData);
     struct FallingRock* temp_v1;
     Vec3f startingPos;
     Vec3f startingVelocity;
