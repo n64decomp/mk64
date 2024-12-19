@@ -166,6 +166,4 @@ void func_8008BFFC(s32);
 void func_8008C1B8(s32);
 void func_8008C1C0(s32);
 
-extern s16 gCurrentCourseId;
-
 #endif

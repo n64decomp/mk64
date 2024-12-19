@@ -7,6 +7,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <mk64.h>
+#include <course.h>
 
 #include "camera.h"
 #include "code_80057C60.h"
@@ -291,7 +292,7 @@ u8 D_80183FA8[4][0x2000];
  */
 s32 indexObjectList3[32];
 //! Seemingly a pointer to Lakitu texture(s)
-u8* D_8018C028;
+u8* gLakituTexturePtr;
 /**
  * Unused list of object indices
  */
@@ -348,8 +349,7 @@ s16 D_8018CF18;
 Player* D_8018CF1C;
 s16 D_8018CF20;
 UNUSED s32 D_8018CF24;
-Player* D_8018CF28[4];
-UNUSED s32 D_8018CF38[4];
+Player* D_8018CF28[8];
 s16 D_8018CF48;
 s16 D_8018CF50[8];
 s16 D_8018CF60;
@@ -692,7 +692,7 @@ void render_player_snow_effect_four(void) {
 }
 
 void render_object_for_player(s32 cameraId) {
-
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             break;
@@ -777,6 +777,9 @@ void render_object_for_player(s32 cameraId) {
             }
             break;
     }
+#else
+
+#endif
 
     render_object_smoke_particles(cameraId);
     render_object_leaf_particle(cameraId);
@@ -1039,14 +1042,14 @@ void func_800591B4(void) {
                     if (D_80165800[0] != 0) {
                         func_8004EE54(0);
                         if (gModeSelection != BATTLE) {
-                            func_8004F020(0);
+                            render_mini_map_finish_line(0);
                         }
                         func_8004F3E4(0);
                     }
                     if ((gScreenModeSelection == SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL) && (D_80165800[1] != 0)) {
                         func_8004EE54(1);
                         if (gModeSelection != BATTLE) {
-                            func_8004F020(1);
+                            render_mini_map_finish_line(1);
                         }
                         func_8004F3E4(1);
                     }
@@ -1316,16 +1319,16 @@ void func_80059D00(void) {
                     if (!gDemoMode) {
                         func_8007AA44(0);
                     }
-                    func_80078C70(0);
+                    course_update_clouds(0);
                     if (playerHUD[PLAYER_ONE].raceCompleteBool == 0) {
                         func_8005C360((gPlayerOneCopy->unk_094 / 18.0f) * 216.0f);
                     }
                     func_8005D0FC(PLAYER_ONE);
                 } else {
                     func_80059820(PLAYER_ONE);
-                    func_80078C70(1);
+                    course_update_clouds(1);
                     func_80059820(PLAYER_TWO);
-                    func_80078C70(2);
+                    course_update_clouds(2);
                 }
                 update_object();
                 break;
@@ -1337,14 +1340,14 @@ void func_80059D00(void) {
                 if (!gDemoMode) {
                     func_8007AA44(0);
                 }
-                func_80078C70(1);
+                course_update_clouds(1);
                 func_8005D1F4(0);
                 func_80059820(PLAYER_TWO);
                 func_8005D0FC(PLAYER_TWO);
                 if (!gDemoMode) {
                     func_8007AA44(1);
                 }
-                func_80078C70(2);
+                course_update_clouds(2);
                 func_8005D1F4(1);
                 update_object();
                 break;
@@ -1356,14 +1359,14 @@ void func_80059D00(void) {
                 if (!gDemoMode) {
                     func_8007AA44(0);
                 }
-                func_80078C70(3);
+                course_update_clouds(3);
                 func_8005D1F4(0);
                 func_80059820(PLAYER_TWO);
                 func_8005D0FC(PLAYER_TWO);
                 if (!gDemoMode) {
                     func_8007AA44(1);
                 }
-                func_80078C70(4);
+                course_update_clouds(4);
                 func_8005D1F4(1);
                 update_object();
                 break;
@@ -1419,7 +1422,7 @@ void func_8005A070(void) {
             func_80077640();
         } else if (gGamestate == CREDITS_SEQUENCE) {
             func_80059820(PLAYER_ONE);
-            func_80078C70(0);
+            course_update_clouds(0);
             update_object();
         } else {
             func_80059D00();
@@ -1567,6 +1570,7 @@ void func_8005A71C(void) {
 }
 
 void update_object(void) {
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
         case COURSE_CHOCO_MOUNTAIN:
@@ -1635,6 +1639,10 @@ void update_object(void) {
             update_ferries_smoke_particle();
             break;
     }
+#else
+
+#endif
+
     if (D_80165730 != 0) {
         func_80074EE8();
     }
@@ -2589,7 +2597,8 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
                 case 1: /* switch 1 */
                     func_80079084(playerId);
                     func_800C9060(playerId, SOUND_ARG_LOAD(0x19, 0x00, 0xF0, 0x15));
-                    if ((gCurrentCourseId == 8) && (D_80165898 == 0) && (gModeSelection != (s32) 1)) {
+                    if ((gCurrentCourseId == COURSE_LUIGI_RACEWAY) && (D_80165898 == 0) &&
+                        (gModeSelection != (s32) 1)) {
                         D_80165898 = 1;
                     }
                     break;
@@ -2610,7 +2619,7 @@ void func_8005CB60(s32 playerId, s32 lapCount) {
                     if (D_8018D114 == 2) {
                         D_80165800[playerId] = 0;
                     }
-                    if (gCurrentCourseId == 4) {
+                    if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
                         playerHUD[playerId].unk_81 = 1;
                     }
                     playerHUD[playerId].lap1CompletionTimeX = 0x0140;
@@ -3390,44 +3399,44 @@ void func_8005F90C(Player* player, s16 arg1, s32 arg2, UNUSED s8 arg3, UNUSED s8
                 ((player->unk_258[10 + arg2].unk_01E > 0) || (player->unk_258[10 + arg2].unk_01C == 0))) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
                 func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-                if ((gCurrentCourseId == 1) || (gCurrentCourseId == 7)) {
+                if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x000B) {
+                if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 9) {
+                if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x000E) {
+                if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 4) {
+                if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x0012) {
+                if (gCurrentCourseId == COURSE_DK_JUNGLE) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
                 }
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);
             } else if (player->unk_258[10 + arg2].unk_01E > 0) {
                 func_8005D794(player, &player->unk_258[10 + arg1], var_f0, var_f2, var_f12, surfaceType, var_t1);
                 func_8005D7D8(&player->unk_258[10 + arg1], 4, 0.46f);
-                if ((gCurrentCourseId == 1) || (gCurrentCourseId == 7)) {
+                if ((gCurrentCourseId == COURSE_CHOCO_MOUNTAIN) || (gCurrentCourseId == COURSE_ROYAL_RACEWAY)) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 1, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x000B) {
+                if (gCurrentCourseId == COURSE_KALAMARI_DESERT) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 7, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 9) {
+                if (gCurrentCourseId == COURSE_MOO_MOO_FARM) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 8, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x000E) {
+                if (gCurrentCourseId == COURSE_WARIO_STADIUM) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 9, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 4) {
+                if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 0x000A, 0, 0x0080);
                 }
-                if (gCurrentCourseId == 0x0012) {
+                if (gCurrentCourseId == COURSE_DK_JUNGLE) {
                     func_8005DAD8(&player->unk_258[10 + arg1], 0x000B, 0, 0x0080);
                 }
                 player->unk_258[10 + arg1].unk_03A = random_int(0x0010U);

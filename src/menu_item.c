@@ -1,10 +1,12 @@
 #include <ultra64.h>
+#include <PR/ultratypes.h>
 #include <macros.h>
-#include <mk64.h>
 #include <defines.h>
 #include <segments.h>
-#include <PR/ultratypes.h>
 #include <sounds.h>
+#include <mk64.h>
+#include <course.h>
+
 #include "code_800029B0.h"
 #include "menu_item.h"
 #include "code_80005FD0.h"
@@ -315,6 +317,7 @@ char* gCupNames[] = {
     "special cup",
 };
 
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 // Displays at beginning of course
 char* gCourseNames[] = {
 #include "assets/course_metadata/gCourseNames.inc.c"
@@ -323,15 +326,22 @@ char* gCourseNames[] = {
 char* gCourseNamesDup[] = {
 #include "assets/course_metadata/gCourseNames.inc.c"
 };
+#else
+
+#endif
 
 char* gCourseNamesDup2[] = {
 #include "assets/course_metadata/gCourseNames.inc.c"
 };
 
+#if !ENABLE_CUSTOM_COURSE_ENGINE
 // Used in debug menu at splash screen
 char* gDebugCourseNames[] = {
 #include "assets/course_metadata/gCourseDebugNames.inc.c"
 };
+#else
+
+#endif
 
 const s8 gPerCupIndexByCourseId[] = {
 #include "assets/course_metadata/gPerCupIndexByCourseId.inc.c"
@@ -2500,7 +2510,7 @@ void func_80095574(void) {
         } else {
             var_v0 = 8;
         }
-        debug_print_str2(var_v0 + 0xB9, 0x0000006E, gDebugCourseNames[gCurrentCourseId]);
+        debug_print_str2(var_v0 + 0xB9, 0x0000006E, GET_COURSE_debugName);
         debug_print_str2(0x00000050, 0x00000078, "screen_mode");
         debug_print_str2(0x000000AA, 0x00000078, gDebugScreenModeNames[gScreenModeListIndex]);
         debug_print_str2(0x00000050, 0x00000082, "player");
@@ -4794,7 +4804,7 @@ void func_8009CE64(s32 arg0) {
                     gCCSelection = (s32) 1;
                     switch (gNextDemoId) { /* switch 4 */
                         case 0:            /* switch 4 */
-                            gCurrentCourseId = 0;
+                            gCurrentCourseId = COURSE_MARIO_RACEWAY;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = 1;
                             gPlayerCount = 1;
@@ -4802,7 +4812,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = 0;
                             break;
                         case 1: /* switch 4 */
-                            gCurrentCourseId = (s16) 1;
+                            gCurrentCourseId = COURSE_CHOCO_MOUNTAIN;
                             gScreenModeSelection = (s32) 1;
                             gPlayerCountSelection1 = 2;
                             gPlayerCount = (s8) 2;
@@ -4811,7 +4821,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = 2;
                             break;
                         case 2: /* switch 4 */
-                            gCurrentCourseId = 0x000B;
+                            gCurrentCourseId = COURSE_KALAMARI_DESERT;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = (s32) 1;
                             gPlayerCount = 1;
@@ -4819,7 +4829,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = 0;
                             break;
                         case 3: /* switch 4 */
-                            gCurrentCourseId = 0x000E;
+                            gCurrentCourseId = COURSE_WARIO_STADIUM;
                             gScreenModeSelection = 3;
                             gPlayerCountSelection1 = 3;
                             gPlayerCount = (s8) 3;
@@ -4829,7 +4839,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = (s32) 2;
                             break;
                         case 4: /* switch 4 */
-                            gCurrentCourseId = 2;
+                            gCurrentCourseId = COURSE_BOWSER_CASTLE;
                             gScreenModeSelection = 0;
                             gPlayerCountSelection1 = (s32) 1;
                             gPlayerCount = 1;
@@ -4837,7 +4847,7 @@ void func_8009CE64(s32 arg0) {
                             gModeSelection = 0;
                             break;
                         case 5: /* switch 4 */
-                            gCurrentCourseId = 0x000C;
+                            gCurrentCourseId = COURSE_SHERBET_LAND;
                             gScreenModeSelection = 3;
                             gPlayerCountSelection1 = 4;
                             gPlayerCount = 4;

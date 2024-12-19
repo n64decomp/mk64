@@ -947,7 +947,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
     s16 temp_s0 = arg0->pathCounter;
     s16 playerDirection = arg0->playerDirection;
 
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1012,7 +1012,7 @@ void render_moo_moo_farm(struct UnkStruct_800DC5EC* arg0) {
 void render_toads_turnpike(struct UnkStruct_800DC5EC* arg0) {
     UNUSED s32 pad[13];
 
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1039,7 +1039,7 @@ void render_toads_turnpike(struct UnkStruct_800DC5EC* arg0) {
 
 void render_kalimari_desert(struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
 
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1168,7 +1168,7 @@ void render_wario_stadium(struct UnkStruct_800DC5EC* arg0) {
 
 void render_block_fort(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1177,7 +1177,7 @@ void render_block_fort(UNUSED struct UnkStruct_800DC5EC* arg0) {
 }
 
 void render_skyscraper(UNUSED struct UnkStruct_800DC5EC* arg0) {
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1201,7 +1201,7 @@ void render_skyscraper(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
 void render_double_deck(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
@@ -1213,8 +1213,8 @@ void render_double_deck(UNUSED struct UnkStruct_800DC5EC* arg0) {
 
 void render_dks_jungle_parkway(struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
-    func_802B5D64(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(&D_800DC610[1], D_802B87D4, D_802B87D0, 1);
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_CULL_BACK | G_LIGHTING);
@@ -1239,7 +1239,7 @@ void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
 
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
     gSPClearGeometryMode(gDisplayListHead++, G_LIGHTING);
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     gSPTexture(gDisplayListHead++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gSPSetGeometryMode(gDisplayListHead++, G_SHADING_SMOOTH);
 
@@ -1259,7 +1259,13 @@ void render_big_donut(struct UnkStruct_800DC5EC* arg0) {
     gSPDisplayList(gDisplayListHead++, ((uintptr_t) 0x07000230));
 }
 
-void func_8029569C(void) {
+/**
+ * @brief The game has two versions of each course. One for normal gameplay and another for credits.
+ * The credits version is not split into segments so that the game camera can fly around the whole course.
+ *
+ */
+void render_course_credits(void) {
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             gSPDisplayList(gDisplayListHead++, d_course_mario_raceway_dl_9348);
@@ -1322,16 +1328,20 @@ void func_8029569C(void) {
             gSPDisplayList(gDisplayListHead++, d_course_sherbet_land_dl_0);
             break;
     }
+#else
+
+#endif
 }
 
 void render_course(struct UnkStruct_800DC5EC* arg0) {
 
-    func_802B5D64(D_800DC610, D_802B87D4, 0, 1);
+    set_course_lighting(D_800DC610, D_802B87D4, 0, 1);
     if (creditsRenderMode) {
-        func_8029569C();
+        render_course_credits();
         return;
     }
 
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             render_mario_raceway(arg0);
@@ -1394,6 +1404,9 @@ void render_course(struct UnkStruct_800DC5EC* arg0) {
             render_big_donut(arg0);
             break;
     }
+#else
+
+#endif
 }
 
 void func_80295BF8(s32 playerIndex) {
@@ -1431,7 +1444,11 @@ void func_80295D6C(void) {
     D_8015F6F6 = -3000;
 }
 
-void func_80295D88(void) {
+/**
+ * @brief Also sets vertex colours for the course vtx data
+ *
+ */
+void course_generate_collision_mesh(void) {
     gNumActors = 0;
 
     gCourseMinX = 0;
@@ -1450,6 +1467,7 @@ void func_80295D88(void) {
     gCollisionMesh = (CollisionTriangle*) gNextFreeMemoryAddress;
     D_800DC5BC = 0;
     D_800DC5C8 = 0;
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_MARIO_RACEWAY:
             // d_course_mario_raceway_packed_dl_1140
@@ -1514,7 +1532,7 @@ void func_80295D88(void) {
             D_8015F8E4 = -80.0f;
             break;
         case COURSE_YOSHI_VALLEY:
-            func_802B5D64(&d_course_yoshi_valley_lights4, -0x38F0, 0x1C70, 1);
+            set_course_lighting(&d_course_yoshi_valley_lights4, -0x38F0, 0x1C70, 1);
             parse_course_displaylists((uintptr_t) d_course_yoshi_valley_addr);
             func_80295C6C();
             D_8015F8E4 = gCourseMinY - 10.0f;
@@ -1655,10 +1673,13 @@ void func_80295D88(void) {
             D_8015F8E4 = 100.0f;
             break;
     }
+#else
+
+#endif
 }
 
-void func_802966A0(void) {
-
+void course_update_water(void) {
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_KOOPA_BEACH:
             // clang-format off
@@ -1735,6 +1756,9 @@ void func_802966A0(void) {
             evaluate_collision_players_palm_trees();
             break;
     }
+#else
+
+#endif
 }
 
 void func_802969F8(void) {

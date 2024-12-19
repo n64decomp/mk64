@@ -1,5 +1,6 @@
 #include <defines.h>
 #include <mk64.h>
+#include <course.h>
 
 #include "spawn_players.h"
 #include "code_800029B0.h"
@@ -111,7 +112,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     }
 
     player->pos[0] = startingRow;
-    ret = spawn_actor_on_surface(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
+    ret = get_surface_height(startingRow, arg4 + 50.0f, startingColumn) + player->boundingBoxSize;
     player->pos[2] = startingColumn;
     player->pos[1] = ret;
     player->oldPos[0] = startingRow;

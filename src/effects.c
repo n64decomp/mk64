@@ -17,6 +17,7 @@
 #include "audio/external.h"
 #include "spawn_players.h"
 #include "menu_item.h"
+#include <course.h>
 
 s32 D_8018D900[8];
 s16 D_8018D920[8];
@@ -1587,8 +1588,10 @@ void func_8008FEDC(Player* player, UNUSED s8 arg1) {
     player->kartHopAcceleration = 0.0f;
 }
 
-void func_8008FF08(Player* player, s8 playerId) {
+void course_update_waypoint(Player* player, s8 playerId) {
     s16 waypoint;
+
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_BOWSER_CASTLE:
             waypoint = gNearestWaypointByPlayerId[playerId];
@@ -1670,6 +1673,9 @@ void func_8008FF08(Player* player, s8 playerId) {
             }
             break;
     }
+#else
+
+#endif
 }
 
 void func_80090178(Player* player, s8 playerId, Vec3f arg2, Vec3f arg3) {
@@ -1795,7 +1801,7 @@ void func_80090868(Player* player) {
         player->unk_D98 = 1;
         player->unk_D9C = 0.0f;
         player->unk_DA0 = 0.5f;
-        func_8008FF08(player, playerIndex);
+        course_update_waypoint(player, playerIndex);
         player->unk_222 = 0;
         player->unk_0CA |= 2;
         player->unk_0C8 = 0;

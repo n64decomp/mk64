@@ -413,7 +413,7 @@ extern Vec3su D_80183E98;
 extern u8 D_80183FA8[4][0x2000];
 // extern s32 indexObjectList3[]; -> objects.h
 
-extern u8* D_8018C028;
+extern u8* gLakituTexturePtr;
 // extern s32 indexObjectList4[]; -> objects.h
 // extern Collision D_8018C0B0[]; -> objects.h
 // extern s32 gObjectParticle1[]; -> objects.h
@@ -544,18 +544,18 @@ extern s32 D_8018D22C;
 
 extern s32 D_8018D240;
 extern u8* D_8018D248[];
-extern f32 D_8018D2A0;
+extern f32 gMiniMapMarkerScale;
 extern s32 D_8018D2A4;
 extern s32 D_8018D2AC;
 extern s16 D_8018D2B0;
 extern s32 D_8018D2B4;
 extern s16 D_8018D2B8;
 extern s32 D_8018D2BC;
-extern s16 D_8018D2C0[];
+extern s16 gMiniMapFinishLineX[];
 extern s32 D_8018D2C8[];
-extern s16 D_8018D2D8[];
-extern s16 D_8018D2E0;
-extern s16 D_8018D2E8;
+extern s16 gMiniMapFinishLineY[];
+extern s16 gMiniMapX;
+extern s16 gMiniMapY;
 extern s16 D_8018D2F0;
 extern s16 D_8018D2F8;
 extern u16 D_8018D300;

@@ -6,6 +6,8 @@
  * Global header for mk64
  */
 
+#include <config.h>
+
 /*=======================
     Configuration
 =======================*/
@@ -22,31 +24,6 @@
 
 // Border Height Define for NTSC Versions
 #define BORDER_HEIGHT 1
-
-typedef enum {
-    /* 0x00 */ COURSE_MARIO_RACEWAY = 0,
-    /* 0x01 */ COURSE_CHOCO_MOUNTAIN,
-    /* 0x02 */ COURSE_BOWSER_CASTLE,
-    /* 0x03 */ COURSE_BANSHEE_BOARDWALK,
-    /* 0x04 */ COURSE_YOSHI_VALLEY,
-    /* 0x05 */ COURSE_FRAPPE_SNOWLAND,
-    /* 0x06 */ COURSE_KOOPA_BEACH,
-    /* 0x07 */ COURSE_ROYAL_RACEWAY,
-    /* 0x08 */ COURSE_LUIGI_RACEWAY,
-    /* 0x09 */ COURSE_MOO_MOO_FARM,
-    /* 0x0A */ COURSE_TOADS_TURNPIKE,
-    /* 0x0B */ COURSE_KALAMARI_DESERT,
-    /* 0x0C */ COURSE_SHERBET_LAND,
-    /* 0x0D */ COURSE_RAINBOW_ROAD,
-    /* 0x0E */ COURSE_WARIO_STADIUM,
-    /* 0x0F */ COURSE_BLOCK_FORT,
-    /* 0x10 */ COURSE_SKYSCRAPER,
-    /* 0x11 */ COURSE_DOUBLE_DECK,
-    /* 0x12 */ COURSE_DK_JUNGLE,
-    /* 0x13 */ COURSE_BIG_DONUT,
-    /* 0x14 */ COURSE_AWARD_CEREMONY,
-    /* 0x15 */ NUM_COURSES
-} COURSES;
 
 #define COURSE_NULL 0xFF
 

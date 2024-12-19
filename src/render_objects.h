@@ -294,7 +294,7 @@ void func_8004ED40(s32);
 void func_8004EE54(s32);
 
 void func_8004EF9C(s32);
-void func_8004F020(s32);
+void render_mini_map_finish_line(s32);
 void func_8004F168(s32, s32, s32);
 void func_8004F3E4(s32);
 s32 func_8004F674(s32*, s32);
@@ -441,8 +441,8 @@ extern Vec3su D_80183E80;
 
 extern f32 D_8018CFEC;
 extern f32 D_8018CFF4;
-extern s16 D_8018D2E0;
-extern s16 D_8018D2E8;
+extern s16 gMiniMapX;
+extern s16 gMiniMapY;
 
 extern u8* D_8018D4BC;
 extern u8* D_8018D4C0;

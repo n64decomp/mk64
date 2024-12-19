@@ -3,6 +3,7 @@
 #include <defines.h>
 #include <segments.h>
 #include <mk64.h>
+#include <course.h>
 
 #include "code_80281780.h"
 #include "memory.h"
@@ -92,7 +93,7 @@ void load_ceremony_cutscene(void) {
     gIsMirrorMode = 0;
     gGotoMenu = 0xFFFF;
     D_80287554 = 0;
-    func_802A4D18();
+    set_perspective_and_aspect_ratio();
     func_802A74BC();
     camera->unk_B4 = 60.0f;
     gCameraZoom[0] = 60.0f;
