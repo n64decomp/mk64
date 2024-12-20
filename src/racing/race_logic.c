@@ -139,7 +139,7 @@ void func_8028E298(void) {
         gTimePlayerLastTouchedFinishLine[i] = gCourseTimer + temp_v0;
     }
     D_8016348C = 1;
-    update_places();
+    func_800070F4();
 }
 
 void func_8028E3A0(void) {
@@ -625,7 +625,7 @@ void func_8028EF28(void) {
     }
     if ((D_802BA048 != 0) && (D_802BA048 != 100)) {
         D_802BA048 = 100;
-        set_places_end_course_with_time();
+        func_800074D4();
     }
 }
 

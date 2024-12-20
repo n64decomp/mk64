@@ -61,7 +61,6 @@ UNUSED void func_8003DE4C(Player* player, Vec3f arg1) {
     arg1[1] = 0.0f;
     mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
 }
-
 // Stick to ground?
 void func_8003E048(Player* player, Vec3f arg1, Vec3f arg2, Vec3f arg3, f32* arg4, f32* arg5, f32* arg6, f32* arg7) {
     *arg5 += arg1[0] * player->collision.surfaceDistance[2] * 1;

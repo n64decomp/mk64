@@ -18,9 +18,9 @@ typedef struct {
 } TrackSections;
 
 struct _struct_gCoursePathSizes_0x10 {
-    /* 0x00 */ u16 numWaypoint;
-    /* 0x02 */ u16 numInnerWaypoint;
-    /* 0x04 */ u16 numOuterWaypoint;
+    /* 0x00 */ u16 unk0;
+    /* 0x02 */ u16 unk2;
+    /* 0x04 */ u16 unk4;
     /* 0x06 */ u16 unk6;
     /* 0x08 */ u16 unk8;
     /* 0x0A */ char padA[6];

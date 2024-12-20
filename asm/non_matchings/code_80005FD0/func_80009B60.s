@@ -349,10 +349,10 @@ glabel func_80009B60
 /* 00AC08 8000A008 8FB90038 */  lw    $t9, 0x38($sp)
 /* 00AC0C 8000A00C AFAE0024 */  sw    $t6, 0x24($sp)
 /* 00AC10 8000A010 00027880 */  sll   $t7, $v0, 2
-/* 00AC14 8000A014 3C0D8016 */  lui   $t5, %hi(gTrackWaypoints) # 0x8016
+/* 00AC14 8000A014 3C0D8016 */  lui   $t5, %hi(D_80164550) # 0x8016
 /* 00AC18 8000A018 95D80000 */  lhu   $t8, ($t6)
 /* 00AC1C 8000A01C 01AF6821 */  addu  $t5, $t5, $t7
-/* 00AC20 8000A020 8DAD4550 */  lw    $t5, %lo(gTrackWaypoints)($t5) # 0x4550($t5)
+/* 00AC20 8000A020 8DAD4550 */  lw    $t5, %lo(D_80164550)($t5) # 0x4550($t5)
 /* 00AC24 8000A024 032A3021 */  addu  $a2, $t9, $t2
 /* 00AC28 8000A028 0018C8C0 */  sll   $t9, $t8, 3
 /* 00AC2C 8000A02C 01B95021 */  addu  $t2, $t5, $t9
@@ -569,8 +569,8 @@ glabel func_80009B60
 /* 00AF48 8000A348 0C00350E */  jal   func_8000D438
 /* 00AF4C 8000A34C 8FA400D0 */   lw    $a0, 0xd0($sp)
 /* 00AF50 8000A350 8FA60040 */  lw    $a2, 0x40($sp)
-/* 00AF54 8000A354 3C078016 */  lui   $a3, %hi(gOffsetPosition) # $a3, 0x8016
-/* 00AF58 8000A358 24E72FA0 */  addiu $a3, %lo(gOffsetPosition) # addiu $a3, $a3, 0x2fa0
+/* 00AF54 8000A354 3C078016 */  lui   $a3, %hi(D_80162FA0) # $a3, 0x8016
+/* 00AF58 8000A358 24E72FA0 */  addiu $a3, %lo(D_80162FA0) # addiu $a3, $a3, 0x2fa0
 /* 00AF5C 8000A35C 8CC200BC */  lw    $v0, 0xbc($a2)
 /* 00AF60 8000A360 C4E80000 */  lwc1  $f8, ($a3)
 /* 00AF64 8000A364 C4EA0008 */  lwc1  $f10, 8($a3)
@@ -593,7 +593,7 @@ glabel func_80009B60
 /* 00AFA8 8000A3A8 3C0B8016 */  lui   $t3, %hi(D_801630E0) # 0x8016
 /* 00AFAC 8000A3AC 3C0C8016 */  lui   $t4, %hi(D_80164430) # $t4, 0x8016
 /* 00AFB0 8000A3B0 3C198016 */  lui   $t9, %hi(D_80163448) # 0x8016
-/* 00AFB4 8000A3B4 3C0F8016 */  lui   $t7, %hi(gWaypointExpectedRotation) # 0x8016
+/* 00AFB4 8000A3B4 3C0F8016 */  lui   $t7, %hi(D_80164590) # 0x8016
 /* 00AFB8 8000A3B8 46062200 */  add.s $f8, $f4, $f6
 /* 00AFBC 8000A3BC 4608903C */  c.lt.s $f18, $f8
 /* 00AFC0 8000A3C0 00000000 */  nop
@@ -608,10 +608,10 @@ glabel func_80009B60
 /* 00AFE4 8000A3E4 AFA8003C */   sw    $t0, 0x3c($sp)
 /* 00AFE8 8000A3E8 8FAB0034 */  lw    $t3, 0x34($sp)
 /* 00AFEC 8000A3EC 3C0E8016 */  lui   $t6, %hi(D_80162FF8) # 0x8016
-/* 00AFF0 8000A3F0 3C078016 */  lui   $a3, %hi(gOffsetPosition) # $a3, 0x8016
+/* 00AFF0 8000A3F0 3C078016 */  lui   $a3, %hi(D_80162FA0) # $a3, 0x8016
 /* 00AFF4 8000A3F4 01CB7021 */  addu  $t6, $t6, $t3
 /* 00AFF8 8000A3F8 85CE2FF8 */  lh    $t6, %lo(D_80162FF8)($t6) # 0x2ff8($t6)
-/* 00AFFC 8000A3FC 24E72FA0 */  addiu $a3, %lo(gOffsetPosition) # addiu $a3, $a3, 0x2fa0
+/* 00AFFC 8000A3FC 24E72FA0 */  addiu $a3, %lo(D_80162FA0) # addiu $a3, $a3, 0x2fa0
 /* 00B000 8000A400 8FA8003C */  lw    $t0, 0x3c($sp)
 /* 00B004 8000A404 19C0001F */  blez  $t6, .L8000A484
 /* 00B008 8000A408 3C048016 */   lui   $a0, %hi(D_801630E0) # $a0, 0x8016
@@ -644,8 +644,8 @@ glabel func_80009B60
 /* 00B06C 8000A46C 84C6344A */  lh    $a2, %lo(D_80163448 + 2)($a2)
 /* 00B070 8000A470 0C002EF6 */  jal   func_8000BBD8
 /* 00B074 8000A474 AFA8003C */   sw    $t0, 0x3c($sp)
-/* 00B078 8000A478 3C078016 */  lui   $a3, %hi(gOffsetPosition) # $a3, 0x8016
-/* 00B07C 8000A47C 24E72FA0 */  addiu $a3, %lo(gOffsetPosition) # addiu $a3, $a3, 0x2fa0
+/* 00B078 8000A478 3C078016 */  lui   $a3, %hi(D_80162FA0) # $a3, 0x8016
+/* 00B07C 8000A47C 24E72FA0 */  addiu $a3, %lo(D_80162FA0) # addiu $a3, $a3, 0x2fa0
 /* 00B080 8000A480 8FA8003C */  lw    $t0, 0x3c($sp)
 .L8000A484:
 /* 00B084 8000A484 8FA60040 */  lw    $a2, 0x40($sp)
@@ -667,7 +667,7 @@ glabel func_80009B60
 /* 00B0BC 8000A4BC 01CC001A */  div   $zero, $t6, $t4
 /* 00B0C0 8000A4C0 00196880 */  sll   $t5, $t9, 2
 /* 00B0C4 8000A4C4 01ED7821 */  addu  $t7, $t7, $t5
-/* 00B0C8 8000A4C8 8DEF4590 */  lw    $t7, %lo(gWaypointExpectedRotation)($t7) # 0x4590($t7)
+/* 00B0C8 8000A4C8 8DEF4590 */  lw    $t7, %lo(D_80164590)($t7) # 0x4590($t7)
 /* 00B0CC 8000A4CC 0000C010 */  mfhi  $t8
 /* 00B0D0 8000A4D0 00185040 */  sll   $t2, $t8, 1
 /* 00B0D4 8000A4D4 15800002 */  bnez  $t4, .L8000A4E0
@@ -1092,8 +1092,8 @@ glabel func_80009B60
 /* 00B6CC 8000AACC 24010003 */  li    $at, 3
 /* 00B6D0 8000AAD0 004A1021 */  addu  $v0, $v0, $t2
 /* 00B6D4 8000AAD4 84423410 */  lh    $v0, %lo(D_80163410)($v0) # 0x3410($v0)
-/* 00B6D8 8000AAD8 3C078016 */  lui   $a3, %hi(gOffsetPosition) # $a3, 0x8016
-/* 00B6DC 8000AADC 24E72FA0 */  addiu $a3, %lo(gOffsetPosition) # addiu $a3, $a3, 0x2fa0
+/* 00B6D8 8000AAD8 3C078016 */  lui   $a3, %hi(D_80162FA0) # $a3, 0x8016
+/* 00B6DC 8000AADC 24E72FA0 */  addiu $a3, %lo(D_80162FA0) # addiu $a3, $a3, 0x2fa0
 /* 00B6E0 8000AAE0 10410005 */  beq   $v0, $at, .L8000AAF8
 /* 00B6E4 8000AAE4 24010004 */   li    $at, 4
 /* 00B6E8 8000AAE8 1041000C */  beq   $v0, $at, .L8000AB1C
@@ -1117,16 +1117,16 @@ glabel func_80009B60
 /* 00B728 8000AB28 030CC021 */  addu  $t8, $t8, $t4
 /* 00B72C 8000AB2C 971845C8 */  lhu   $t8, %lo(gWaypointCountByPathIndex)($t8) # 0x45c8($t8)
 /* 00B730 8000AB30 25EB000A */  addiu $t3, $t7, 0xa
-/* 00B734 8000AB34 3C0A8016 */  lui   $t2, %hi(gTrackWaypoints) # 0x8016
+/* 00B734 8000AB34 3C0A8016 */  lui   $t2, %hi(D_80164550) # 0x8016
 /* 00B738 8000AB38 0178001A */  div   $zero, $t3, $t8
 /* 00B73C 8000AB3C 01495021 */  addu  $t2, $t2, $t1
-/* 00B740 8000AB40 8D4A4550 */  lw    $t2, %lo(gTrackWaypoints)($t2) # 0x4550($t2)
+/* 00B740 8000AB40 8D4A4550 */  lw    $t2, %lo(D_80164550)($t2) # 0x4550($t2)
 /* 00B744 8000AB44 0000C810 */  mfhi  $t9
 /* 00B748 8000AB48 001970C0 */  sll   $t6, $t9, 3
 /* 00B74C 8000AB4C 01CA1021 */  addu  $v0, $t6, $t2
 /* 00B750 8000AB50 844D0000 */  lh    $t5, ($v0)
-/* 00B754 8000AB54 3C078016 */  lui   $a3, %hi(gOffsetPosition) # $a3, 0x8016
-/* 00B758 8000AB58 24E72FA0 */  addiu $a3, %lo(gOffsetPosition) # addiu $a3, $a3, 0x2fa0
+/* 00B754 8000AB54 3C078016 */  lui   $a3, %hi(D_80162FA0) # $a3, 0x8016
+/* 00B758 8000AB58 24E72FA0 */  addiu $a3, %lo(D_80162FA0) # addiu $a3, $a3, 0x2fa0
 /* 00B75C 8000AB5C 448D9000 */  mtc1  $t5, $f18
 /* 00B760 8000AB60 17000002 */  bnez  $t8, .L8000AB6C
 /* 00B764 8000AB64 00000000 */   nop
@@ -1148,9 +1148,9 @@ glabel func_80009B60
 /* 00B79C 8000AB9C E4F00008 */  swc1  $f16, 8($a3)
 .L8000ABA0:
 /* 00B7A0 8000ABA0 3C0C8016 */  lui   $t4, %hi(D_80163178) # $t4, 0x8016
-/* 00B7A4 8000ABA4 3C078016 */  lui   $a3, %hi(gOffsetPosition) # 0x8016
+/* 00B7A4 8000ABA4 3C078016 */  lui   $a3, %hi(D_80162FA0) # 0x8016
 /* 00B7A8 8000ABA8 258C3178 */  addiu $t4, %lo(D_80163178) # addiu $t4, $t4, 0x3178
-/* 00B7AC 8000ABAC 24E52FA0 */  addiu $a1, $a3, %lo(gOffsetPosition) # 0x2fa0
+/* 00B7AC 8000ABAC 24E52FA0 */  addiu $a1, $a3, %lo(D_80162FA0) # 0x2fa0
 /* 00B7B0 8000ABB0 012C1021 */  addu  $v0, $t1, $t4
 /* 00B7B4 8000ABB4 C4460000 */  lwc1  $f6, ($v0)
 /* 00B7B8 8000ABB8 C4A40000 */  lwc1  $f4, ($a1)
