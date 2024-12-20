@@ -24,10 +24,10 @@ glabel func_80099AEC
 /* 09A73C 80099B3C 3C028019 */  lui   $v0, %hi(D_8018E060) # 0x8019
 /* 09A740 80099B40 2451E060 */  addiu $s1, $v0, %lo(D_8018E060) # -0x1fa0
 /* 09A744 80099B44 8E320000 */  lw    $s2, ($s1)
-/* 09A748 80099B48 3C148019 */  lui   $s4, %hi(D_8018D9B4) # $s4, 0x8019
+/* 09A748 80099B48 3C148019 */  lui   $s4, %hi(gMenuCompressedBuffer) # $s4, 0x8019
 /* 09A74C 80099B4C 0000A825 */  move  $s5, $zero
 /* 09A750 80099B50 124000B4 */  beqz  $s2, .L80099E24
-/* 09A754 80099B54 2694D9B4 */   addiu $s4, %lo(D_8018D9B4) # addiu $s4, $s4, -0x264c
+/* 09A754 80099B54 2694D9B4 */   addiu $s4, %lo(gMenuCompressedBuffer) # addiu $s4, $s4, -0x264c
 /* 09A758 80099B58 96430010 */  lhu   $v1, 0x10($s2)
 /* 09A75C 80099B5C 24101400 */  li    $s0, 5120
 /* 09A760 80099B60 10600003 */  beqz  $v1, .L80099B70
@@ -77,8 +77,8 @@ glabel func_80099AEC
 /* 09A800 80099C00 02C02025 */  move  $a0, $s6
 /* 09A804 80099C04 0C0335D4 */  jal   osRecvMesg
 /* 09A808 80099C08 24060001 */   li    $a2, 1
-/* 09A80C 80099C0C 3C1E8019 */  lui   $fp, %hi(D_8018E118) # $fp, 0x8019
-/* 09A810 80099C10 27DEE118 */  addiu $fp, %lo(D_8018E118) # addiu $fp, $fp, -0x1ee8
+/* 09A80C 80099C0C 3C1E8019 */  lui   $fp, %hi(sMenuTextureMap) # $fp, 0x8019
+/* 09A810 80099C10 27DEE118 */  addiu $fp, %lo(sMenuTextureMap) # addiu $fp, $fp, -0x1ee8
 /* 09A814 80099C14 8E220008 */  lw    $v0, 8($s1)
 .L80099C18:
 /* 09A818 80099C18 8FB30060 */  lw    $s3, 0x60($sp)
@@ -136,8 +136,8 @@ glabel func_80099AEC
 /* 09A8D0 80099CD0 014C3821 */   addu  $a3, $t2, $t4
 .L80099CD4:
 /* 09A8D4 80099CD4 8E2F0004 */  lw    $t7, 4($s1)
-/* 09A8D8 80099CD8 3C098019 */  lui   $t1, %hi(D_8018D9B0) # $t1, 0x8019
-/* 09A8DC 80099CDC 8D29D9B0 */  lw    $t1, %lo(D_8018D9B0)($t1)
+/* 09A8D8 80099CD8 3C098019 */  lui   $t1, %hi(gMenuTextureBuffer) # $t1, 0x8019
+/* 09A8DC 80099CDC 8D29D9B0 */  lw    $t1, %lo(gMenuTextureBuffer)($t1)
 /* 09A8E0 80099CE0 000FC0C0 */  sll   $t8, $t7, 3
 /* 09A8E4 80099CE4 031EC821 */  addu  $t9, $t8, $fp
 /* 09A8E8 80099CE8 8F220004 */  lw    $v0, 4($t9)
@@ -206,8 +206,8 @@ glabel func_80099AEC
 /* 09A9D0 80099DD0 AFA90010 */   sw    $t1, 0x10($sp)
 .L80099DD4:
 /* 09A9D4 80099DD4 8E2B0004 */  lw    $t3, 4($s1)
-/* 09A9D8 80099DD8 3C0F8019 */  lui   $t7, %hi(D_8018D9B0) # $t7, 0x8019
-/* 09A9DC 80099DDC 8DEFD9B0 */  lw    $t7, %lo(D_8018D9B0)($t7)
+/* 09A9D8 80099DD8 3C0F8019 */  lui   $t7, %hi(gMenuTextureBuffer) # $t7, 0x8019
+/* 09A9DC 80099DDC 8DEFD9B0 */  lw    $t7, %lo(gMenuTextureBuffer)($t7)
 /* 09A9E0 80099DE0 000B50C0 */  sll   $t2, $t3, 3
 /* 09A9E4 80099DE4 015E6021 */  addu  $t4, $t2, $fp
 /* 09A9E8 80099DE8 8D820004 */  lw    $v0, 4($t4)
