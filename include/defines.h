@@ -325,6 +325,7 @@ enum DIRECTION { NORTH, EAST, SOUTH, WEST };
 #define STAR_EFFECT 0x200                  // being a star
 #define BOOST_EFFECT 0x2000                // being boosted by trigger a mushroom
 #define BOOST_RAMP_ASPHALT_EFFECT 0x100000 // being boosted by a boost pad
+#define REVERSE_EFFECT 0x400000            // being in reverse of the course
 #define HIT_BY_ITEM_EFFECT 0x2000000       // being hit by an item
 #define HIT_EFFECT 0x4000000               // hitting an object
 #define LIGHTNING_EFFECT 0x40000000        // being hit by lightning

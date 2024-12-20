@@ -61,14 +61,14 @@ typedef struct {
 /* Function Prototypes */
 s16 get_angle_between_waypoints(Vec3f, Vec3f);
 
-s32 func_80006018(f32, f32, f32, f32, f32, f32, f32, f32);
+s32 is_collide_with_vehicle(f32, f32, f32, f32, f32, f32, f32, f32);
 void adjust_position_by_angle(Vec3f, Vec3f, s16);
 s32 set_vehicle_render_distance_flags(Vec3f, f32, s32);
-void func_800065D0(s32, Player*);
+void detect_player_wrong_direction(s32, Player*);
 void set_places(void);
 
-void func_800070F4(void);
-void func_800074D4(void);
+void update_places(void);
+void set_places_end_course_with_time(void);
 s32 func_80007BF8(u16, u16, u16, u16, u16);
 void func_80007D04(s32, Player*);
 void func_80007FA4(s32, Player*, f32);
@@ -93,7 +93,7 @@ s32 func_8000B7E4(s32, u16);
 s32 func_8000B820(s32);
 f32 func_8000B874(f32, f32, u16, s32);
 void func_8000B95C(s32, u16, s32);
-void func_8000BA14(u16, f32, f32, s16);
+void calculate_track_offset_position(u16, f32, f32, s16);
 void func_8000BBD8(u16, f32, s16);
 s16 func_8000BD94(f32, f32, f32, s32);
 
@@ -127,12 +127,12 @@ void generate_player_smoke(void);
 
 void func_8000F0E0(void);
 void func_8000F124(void);
-void func_8000F2BC(TrackWaypoint*, size_t);
-void func_8000F2DC(void);
+void clear_waypoint(TrackWaypoint*, size_t);
+void init_course_waypoint(void);
 void func_8000F628(void);
 
-void func_800100F0(s32);
-void func_80010218(s32);
+void load_track_waypoint(s32);
+void calculate_track_boundaries(s32);
 f32 func_80010480(s32, u16);
 void func_800107C4(s32);
 s16 func_80010CB0(s32, s32);
@@ -261,7 +261,7 @@ extern s16 D_80162EB2; // possibly [3]
 extern KartAIBehaviour* gCoursesKartAIBehaviour[];
 extern s16 D_80162F10[];
 extern s16 D_80162F50[];
-extern Vec3f D_80162FA0;
+extern Vec3f gOffsetPosition;
 extern Vec3f D_80162FB0;
 extern Vec3f D_80162FC0;
 extern s16 gTrainSmokeTimer;
@@ -294,8 +294,8 @@ extern f32 D_8016320C;
 extern f32 D_80163210[];
 extern s32 D_80163238;
 extern u16 D_80163240[];
-extern u16 D_80163258[];
-extern u16 D_80163270[];
+extern u16 gWrongDirectionCounter[];
+extern u16 gIsPlayerWrongDirection[];
 extern s32 D_80163288[];
 // Exact pointer type unknown
 extern KartAIBehaviour* sCurrentKartAIBehaviour;
@@ -407,6 +407,12 @@ extern s32 D_801643E0[];
 extern s32 D_8016448C;
 extern u16 D_801637BE;
 extern u16 D_80163E2A;
+
+#define SEVERE_WRONG_DIRECTION_MIN 136
+#define SEVERE_WRONG_DIRECTION_MAX 225
+#define SEVERE_CORRECT_DIRECTION_MIN 45
+#define SEVERE_CORRECT_DIRECTION_MAX 316
+#define WRONG_DIRECTION_FRAMES_LIMIT 5
 
 // extern Gfx D_0D0076F8[];
 

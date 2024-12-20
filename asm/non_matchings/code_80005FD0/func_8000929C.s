@@ -328,7 +328,7 @@ glabel func_8000929C
 /* 00A340 80009740 304C1000 */   andi  $t4, $v0, 0x1000
 /* 00A344 80009744 1580001E */  bnez  $t4, .L800097C0
 /* 00A348 80009748 01402825 */   move  $a1, $t2
-/* 00A34C 8000974C 0C001974 */  jal   func_800065D0
+/* 00A34C 8000974C 0C001974 */  jal   detect_player_wrong_direction
 /* 00A350 80009750 AFA40050 */   sw    $a0, 0x50($sp)
 /* 00A354 80009754 3C0D800E */  lui   $t5, %hi(gModeSelection)
 /* 00A358 80009758 8DADC53C */  lw    $t5, %lo(gModeSelection)($t5)

@@ -398,11 +398,11 @@ glabel L8001B0EC
 /* 01BD9C 8001B19C 01EB7821 */  addu  $t7, $t7, $t3
 /* 01BDA0 8001B1A0 95EF45C8 */  lhu   $t7, %lo(gWaypointCountByPathIndex)($t7) # 0x45c8($t7)
 /* 01BDA4 8001B1A4 952D0000 */  lhu   $t5, ($t1)
-/* 01BDA8 8001B1A8 3C0B8016 */  lui   $t3, %hi(D_80164550) # 0x8016
+/* 01BDA8 8001B1A8 3C0B8016 */  lui   $t3, %hi(gTrackWaypoints) # 0x8016
 /* 01BDAC 8001B1AC 018F001A */  div   $zero, $t4, $t7
 /* 01BDB0 8001B1B0 000DC880 */  sll   $t9, $t5, 2
 /* 01BDB4 8001B1B4 01795821 */  addu  $t3, $t3, $t9
-/* 01BDB8 8001B1B8 8D6B4550 */  lw    $t3, %lo(D_80164550)($t3) # 0x4550($t3)
+/* 01BDB8 8001B1B8 8D6B4550 */  lw    $t3, %lo(gTrackWaypoints)($t3) # 0x4550($t3)
 /* 01BDBC 8001B1BC 00007010 */  mfhi  $t6
 /* 01BDC0 8001B1C0 000EC0C0 */  sll   $t8, $t6, 3
 /* 01BDC4 8001B1C4 030B1021 */  addu  $v0, $t8, $t3
