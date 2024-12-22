@@ -2847,7 +2847,7 @@ void func_800507D8(u16 bombIndex, s32* arg1, s32* arg2) {
     s32 var_v1 = 0;
 
     if (temp_v0 != 0) {
-        var_v1 = (s32) (temp_v0 * 0x3A0) / (s32) D_80164430;
+        var_v1 = (s32) (temp_v0 * 0x3A0) / (s32) gCurrentWaypointCountByPathIndex;
     }
     if (var_v1 < 0x104) {
         *arg1 = var_v1;

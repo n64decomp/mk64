@@ -7668,7 +7668,7 @@ void func_80085878(s32 objectIndex, s32 arg1) {
     set_object_flag_status_true(objectIndex, 0x04000200);
     object->unk_084[8] = (arg1 * 0x12C) + 0x1F4;
     set_obj_origin_pos(objectIndex, 0.0f, -15.0f, 0.0f);
-    temp_v0 = &D_80164490[(u16) object->unk_084[8]];
+    temp_v0 = &gCurrentTrackPath[(u16) object->unk_084[8]];
     set_obj_origin_offset(objectIndex, temp_v0->posX, temp_v0->posY, temp_v0->posZ);
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
     object->unk_034 = 4.0f;

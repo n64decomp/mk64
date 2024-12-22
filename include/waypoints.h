@@ -10,31 +10,39 @@ typedef struct {
     /* 0x06 */ u16 trackSectionId;
 } TrackWaypoint; // size = 0x08
 
+enum {
+    RIGHT_LEANING_CURVE = 0,
+    LEFT_LEANING_CURVE = 1,
+    RIGHT_CURVE = 2, // strong curve
+    LEFT_CURVE = 3,  // strong curve
+    STRAIGHT = 4
+};
+
 /**
  * These are per-path arrays that contain some information relating to waypoints
- * The arrays in gTrackWaypoints contain X/Y/Z and track segment information
- * The arrays in gTrackInnerPath and gTrackOuterPath track some other X/Y/Z, but the track segment is always 0 (so,
- *untracked/unused) Its unclear how these arrays relate to each other
+ * The arrays in gTrackPath contain X/Y/Z and track segment information
+ * The arrays in gTrackInnerPath and gCurrentTrackOuterPath track some other X/Y/Z, but the track segment is always 0
+ *(so, untracked/unused) Its unclear how these arrays relate to each other
  **/
-extern TrackWaypoint* gTrackWaypoints[];
+extern TrackWaypoint* gTrackPath[];
 extern TrackWaypoint* gTrackInnerPath[];
 extern TrackWaypoint* gTrackOuterPath[];
 
 /**
- * Don't know what exactly these are, but like gTrackWaypoints, gTrackInnerPath, and gTrackOuterPath
+ * Don't know what exactly these are, but like gTrackPath, gTrackInnerPath, and gCurrentTrackOuterPath
  * they track something about the waypoints on a per-path basis
  **/
 // Waypoint types?
-extern s16* D_80164580[];
-// Based on func_80010DBC this may be angles between waypoints
-// gWaypointExpectedRotation[i] = atan2(waypoint_i, waypoint_i+1)?
-extern s16* gWaypointExpectedRotation[];
+extern s16* gTrackSectionTypes[];
+// Based on analyse_angle_path this may be angles between waypoints
+// gPathExpectedRotation[i] = atan2(waypoint_i, waypoint_i+1)?
+extern s16* gPathExpectedRotation[];
 // No idea. Adjacency list?
-extern s16* D_801645A0[];
+extern s16* gTrackConsecutiveCurveCounts[];
 
 /**
  * Certain parts of the waypoint logic will copy some path/player specific data to a temporary variable.
- * For example: D_80164490 is always a value from gTrackWaypoints. Depending on which path
+ * For example: gCurrentTrackPath is always a value from gTrackPath. Depending on which path
  * a given player is on, the specific value may change
  **/
 // Shadows values from gNearestWaypointByPlayerId
@@ -42,25 +50,25 @@ extern s16 sSomeNearestWaypoint;
 // Shadows values from gPathIndexByPlayerId
 extern s32 D_80163448;
 // Shadows values from gTrackInnerPath
-extern TrackWaypoint* D_801631D0;
-// Shadows values from gTrackOuterPath
-extern TrackWaypoint* D_801631D4;
-// Shadows values from D_80164580
-extern s16* D_801631D8;
-// Shadows values from gWaypointExpectedRotation
-extern s16* D_801631DC;
-// Shadowd values from gWaypointCountByPathIndex
-extern u16 D_80164430;
-// Shadows values from gTrackWaypoints
-extern TrackWaypoint* D_80164490;
-// Shadows values from D_801645A0
-extern s16* D_801645E0;
+extern TrackWaypoint* gCurrentTrackInnerPath;
+// Shadows values from gCurrentTrackOuterPath
+extern TrackWaypoint* gCurrentTrackOuterPath;
+// Shadows values from gTrackSectionTypes
+extern s16* gCurrentTrackSectionTypesPath;
+// Shadows values from gPathExpectedRotation
+extern s16* gCurrentWaypointExpectedRotationPath;
+// Shadowd values from gPathCountByPathIndex
+extern u16 gCurrentWaypointCountByPathIndex;
+// Shadows values from gTrackPath
+extern TrackWaypoint* gCurrentTrackPath;
+// Shadows values from gTrackConsecutiveCurveCounts
+extern s16* gCurrentTrackConsecutiveCurveCountsPath;
 
 extern u16 gNearestWaypointByPlayerId[]; // D_80164438
 // Total waypoints passed by playerId?
 extern s32 D_80164450[];
-extern u16 gPathIndexByPlayerId[];      // D_801645B0
-extern u16 gWaypointCountByPathIndex[]; // D_801645C8
+extern u16 gPathIndexByPlayerId[];  // D_801645B0
+extern u16 gPathCountByPathIndex[]; // D_801645C8
 // These values are only used when the camera is in "cinematic" mode
 extern s16 gNearestWaypointByCameraId[]; // D_80164668
 
@@ -81,7 +89,7 @@ extern f32 D_8016344C;
 // These seem to track whether a player has entered or exited the "unknown" zone in yoshi's valley
 // See func_80009000 and func_800090F0
 // Is 1 when a player is in the "unknown" zone in yoshi's valley
-extern s16 D_80163490[];
+extern s16 gCpuNeedChoosePath[];
 // Is 1 when a player leaves the "unknown" zone in yoshi's valley
 extern s16 D_801634A8[];
 // Tracks whether a given player is in the "unknown" zone of yoshi's valley

@@ -872,9 +872,9 @@ void func_8003C0F0(void) {
         case COURSE_WARIO_STADIUM:
         case COURSE_DK_JUNGLE:
             init_course_waypoint();
-            sp5E = (f32) gTrackWaypoints[0][0].posX;
-            sp5C = (f32) gTrackWaypoints[0][0].posZ;
-            sp5A = (f32) gTrackWaypoints[0][0].posY;
+            sp5E = (f32) gTrackPath[0][0].posX;
+            sp5C = (f32) gTrackPath[0][0].posZ;
+            sp5A = (f32) gTrackPath[0][0].posY;
             if (gCurrentCourseId == COURSE_TOADS_TURNPIKE) {
                 sp5E = 0;
             }

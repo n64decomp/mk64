@@ -134,8 +134,8 @@ glabel func_800088D8
 /* 0096C8 80008AC8 100000BB */  b     .L80008DB8
 /* 0096CC 80008ACC 24020001 */   li    $v0, 1
 .L80008AD0:
-/* 0096D0 80008AD0 3C0F8016 */  lui   $t7, %hi(gWaypointCountByPathIndex) # $t7, 0x8016
-/* 0096D4 80008AD4 95EF45C8 */  lhu   $t7, %lo(gWaypointCountByPathIndex)($t7)
+/* 0096D0 80008AD0 3C0F8016 */  lui   $t7, %hi(gPathCountByPathIndex) # $t7, 0x8016
+/* 0096D4 80008AD4 95EF45C8 */  lhu   $t7, %lo(gPathCountByPathIndex)($t7)
 /* 0096D8 80008AD8 87020002 */  lh    $v0, 2($t8)
 /* 0096DC 80008ADC 24010003 */  li    $at, 3
 /* 0096E0 80008AE0 000FC040 */  sll   $t8, $t7, 1

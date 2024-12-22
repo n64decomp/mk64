@@ -1602,7 +1602,7 @@ void course_update_waypoint(Player* player, s8 playerId) {
             } else {
                 player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
                 if (player->nearestWaypointId < 0) {
-                    player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+                    player->nearestWaypointId = gPathCountByPathIndex[0] + player->nearestWaypointId;
                 }
             }
             break;
@@ -1613,7 +1613,7 @@ void course_update_waypoint(Player* player, s8 playerId) {
             } else {
                 player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
                 if (player->nearestWaypointId < 0) {
-                    player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+                    player->nearestWaypointId = gPathCountByPathIndex[0] + player->nearestWaypointId;
                 }
             }
             break;
@@ -1634,7 +1634,7 @@ void course_update_waypoint(Player* player, s8 playerId) {
             } else {
                 player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
                 if (player->nearestWaypointId < 0) {
-                    player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+                    player->nearestWaypointId = gPathCountByPathIndex[0] + player->nearestWaypointId;
                 }
             }
             break;
@@ -1645,7 +1645,7 @@ void course_update_waypoint(Player* player, s8 playerId) {
             } else {
                 player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
                 if (player->nearestWaypointId < 0) {
-                    player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+                    player->nearestWaypointId = gPathCountByPathIndex[0] + player->nearestWaypointId;
                 }
             }
             break;
@@ -1656,7 +1656,7 @@ void course_update_waypoint(Player* player, s8 playerId) {
             } else {
                 player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
                 if (player->nearestWaypointId < 0) {
-                    player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+                    player->nearestWaypointId = gPathCountByPathIndex[0] + player->nearestWaypointId;
                 }
             }
             break;
@@ -1669,7 +1669,7 @@ void course_update_waypoint(Player* player, s8 playerId) {
         default:
             player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
             if (player->nearestWaypointId < 0) {
-                player->nearestWaypointId = gWaypointCountByPathIndex[0] + player->nearestWaypointId;
+                player->nearestWaypointId = gPathCountByPathIndex[0] + player->nearestWaypointId;
             }
             break;
     }
@@ -1701,13 +1701,13 @@ void func_80090178(Player* player, s8 playerId, Vec3f arg2, Vec3f arg3) {
     switch (gCurrentCourseId) {
         case COURSE_YOSHI_VALLEY:
             test = player->nearestWaypointId;
-            temp_v1 = &gTrackWaypoints[gCopyPathIndexByPlayerId[playerId]][test];
+            temp_v1 = &gTrackPath[gCopyPathIndexByPlayerId[playerId]][test];
             arg2[0] = temp_v1->posX;
             arg2[1] = temp_v1->posY;
             arg2[2] = temp_v1->posZ;
-            temp_v1 = &gTrackWaypoints[gCopyPathIndexByPlayerId[playerId]]
-                                      [(player->nearestWaypointId + 5) %
-                                       (gWaypointCountByPathIndex[gCopyPathIndexByPlayerId[playerId]] + 1)];
+            temp_v1 = &gTrackPath[gCopyPathIndexByPlayerId[playerId]]
+                                 [(player->nearestWaypointId + 5) %
+                                  (gPathCountByPathIndex[gCopyPathIndexByPlayerId[playerId]] + 1)];
             arg3[0] = temp_v1->posX;
             arg3[1] = temp_v1->posY;
             arg3[2] = temp_v1->posZ;
@@ -1746,11 +1746,11 @@ void func_80090178(Player* player, s8 playerId, Vec3f arg2, Vec3f arg3) {
             break;
         default:
             test = player->nearestWaypointId;
-            temp_v1 = &gTrackWaypoints[0][test];
+            temp_v1 = &gTrackPath[0][test];
             arg2[0] = temp_v1->posX;
             arg2[1] = temp_v1->posY;
             arg2[2] = temp_v1->posZ;
-            temp_v1 = &gTrackWaypoints[0][(player->nearestWaypointId + 5) % (gWaypointCountByPathIndex[0] + 1)];
+            temp_v1 = &gTrackPath[0][(player->nearestWaypointId + 5) % (gPathCountByPathIndex[0] + 1)];
             arg3[0] = temp_v1->posX;
             arg3[1] = temp_v1->posY;
             arg3[2] = temp_v1->posZ;
@@ -1921,7 +1921,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                 player->pos[0] = player->pos[0] + sins(-player->rotation[1]) * -10.0f;
             }
             if (player->unk_0C8 == 0x00FC) {
-                waypoint = gTrackWaypoints[0];
+                waypoint = gTrackPath[0];
                 player->pos[0] = waypoint->posX;
                 player->pos[1] = waypoint->posY;
                 player->pos[2] = waypoint->posZ;

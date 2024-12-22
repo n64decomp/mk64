@@ -132,8 +132,8 @@ void func_8028E298(void) {
         }
         temp_a2 = gPathIndexByPlayerId[i];
 
-        temp_v0 = ((2 - gPlayers[i].lapCount) * gWaypointCountByPathIndex[temp_a2]);
-        temp_v0 += gWaypointCountByPathIndex[temp_a2] * (1.0f - gLapCompletionPercentByPlayerId[i]);
+        temp_v0 = ((2 - gPlayers[i].lapCount) * gPathCountByPathIndex[temp_a2]);
+        temp_v0 += gPathCountByPathIndex[temp_a2] * (1.0f - gLapCompletionPercentByPlayerId[i]);
         temp_v0 /= 15.0f;
 
         gTimePlayerLastTouchedFinishLine[i] = gCourseTimer + temp_v0;

@@ -75,7 +75,7 @@ void func_80007FA4(s32, Player*, f32);
 
 void func_80008424(s32, f32, Player*);
 s32 func_800088D8(s32, s16, s16);
-void func_80008DC0(s32);
+void set_current_path(s32);
 s32 func_80008E58(s32, s32);
 void func_80008F38(s32);
 
@@ -91,7 +91,7 @@ void func_80009B60(s32);
 void func_8000B140(s32);
 s32 func_8000B7E4(s32, u16);
 s32 func_8000B820(s32);
-f32 func_8000B874(f32, f32, u16, s32);
+f32 calculate_track_position_factor(f32, f32, u16, s32);
 void func_8000B95C(s32, u16, s32);
 void calculate_track_offset_position(u16, f32, f32, s16);
 void func_8000BBD8(u16, f32, s16);
@@ -133,11 +133,11 @@ void func_8000F628(void);
 
 void load_track_waypoint(s32);
 void calculate_track_boundaries(s32);
-f32 func_80010480(s32, u16);
-void func_800107C4(s32);
-s16 func_80010CB0(s32, s32);
-void func_80010DBC(s32);
-void func_80010E6C(s32);
+f32 calculate_track_curvature(s32, u16);
+void analize_track_section(s32);
+s16 calculate_angle_path(s32, s32);
+void analyse_angle_path(s32);
+void analisze_curved_path(s32);
 f32 func_80010F40(f32, f32, f32, s32, s32);
 f32 func_80010FA0(f32, f32, f32, s32, s32);
 
@@ -285,9 +285,9 @@ extern f32 D_80163178[];
 extern f32 D_801631A0[];
 extern s16 D_801631C8;
 extern s32 D_801631CC;
-extern TrackWaypoint* D_801631D0;
-extern TrackWaypoint* D_801631D4;
-extern s16* D_801631D8;
+extern TrackWaypoint* gCurrentTrackInnerPath;
+extern TrackWaypoint* gCurrentTrackOuterPath;
+extern s16* gCurrentTrackSectionTypesPath;
 extern u16 D_801631E0[];
 extern u16 D_801631F8[];
 extern f32 D_8016320C;
@@ -345,7 +345,7 @@ extern s32 D_80163480;
 extern s32 D_80163484;
 extern s32 D_80163488;
 extern s16 D_8016348C;
-extern s16 D_80163490[];
+extern s16 gCpuNeedChoosePath[];
 extern s16 D_801634A8[];
 extern s16 D_801634C0[];
 extern s16 bStopAICrossing[];
@@ -369,7 +369,7 @@ extern s32 gLapCountByPlayerId[];          // D_80164390
 extern s32 gGPCurrentRaceRankByPlayerId[]; // D_801643B8
 extern s32 D_801643E0[];
 extern s32 D_80164408[];
-extern u16 D_80164430;
+extern u16 gCurrentWaypointCountByPathIndex;
 extern u16 gNearestWaypointByPlayerId[];
 extern s32 D_80164450[];
 extern s16 D_80164478[];
