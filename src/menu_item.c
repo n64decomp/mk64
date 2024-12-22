@@ -7805,7 +7805,7 @@ void func_800A54EC(void) {
     }
 
     why = gModeSelection;
-    sp48 = find_menu_items(0x000000C7);
+    sp48 = find_menu_items(MENU_ITEM_PAUSE);
     if (why) {} // ?????
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
     guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
