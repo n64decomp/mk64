@@ -289,7 +289,7 @@ glabel L8009F830
 /* 0A043C 8009F83C 10000422 */  b     .L800A08C8
 /* 0A0440 8009F840 8FBF0034 */   lw    $ra, 0x34($sp)
 glabel L8009F844
-/* 0A0444 8009F844 0C02D557 */  jal   has_terminate_150cc
+/* 0A0444 8009F844 0C02D557 */  jal   has_unlocked_extra_mode
 /* 0A0448 8009F848 00000000 */   nop
 /* 0A044C 8009F84C 00025880 */  sll   $t3, $v0, 2
 /* 0A0450 8009F850 3C05800E */  lui   $a1, %hi(gMenuTexturesBackground)
@@ -597,7 +597,7 @@ glabel L8009FB24
 /* 0A08D0 8009FCD0 100002FD */  b     .L800A08C8
 /* 0A08D4 8009FCD4 8FBF0034 */   lw    $ra, 0x34($sp)
 glabel L8009FCD8
-/* 0A08D8 8009FCD8 0C02D557 */  jal   has_terminate_150cc
+/* 0A08D8 8009FCD8 0C02D557 */  jal   has_unlocked_extra_mode
 /* 0A08DC 8009FCDC 00000000 */   nop
 /* 0A08E0 8009FCE0 00026880 */  sll   $t5, $v0, 2
 /* 0A08E4 8009FCE4 3C05800E */  lui   $a1, %hi(gMenuTexturesBackground)
@@ -1326,7 +1326,7 @@ glabel L800A072C
 /* 0A1334 800A0734 10000064 */  b     .L800A08C8
 /* 0A1338 800A0738 8FBF0034 */   lw    $ra, 0x34($sp)
 glabel L800A073C
-/* 0A133C 800A073C 0C029289 */  jal   render_menu_titem_announce_ghost
+/* 0A133C 800A073C 0C029289 */  jal   render_menu_item_announce_ghost
 /* 0A1340 800A0740 02202025 */   move  $a0, $s1
 /* 0A1344 800A0744 10000060 */  b     .L800A08C8
 /* 0A1348 800A0748 8FBF0034 */   lw    $ra, 0x34($sp)

@@ -424,7 +424,7 @@ char* D_800E7744[] = {
     "1 ｓ", "2 ｎ", "3 ｒ", "4 ｔ", "5 ｔ", " ",
 };
 
-char* gMenuText[] = {
+char* gTextPauseButton[] = {
     "CONTINUE GAME", "RETRY", "COURSE CHANGE", "DRIVER CHANGE", "QUIT", "REPLAY", "SAVE GHOST",
 };
 
@@ -1488,7 +1488,7 @@ void func_800925A0(void) {
 }
 
 void func_800925CC(void) {
-    MenuItem* temp = find_menu_items_type_dupe(MENU_ITEM_TYPE_0AF);
+    MenuItem* temp = find_menu_items_dupe(MENU_ITEM_TYPE_0AF);
     if (temp->state == 2) {
         temp->state = 3;
     }
@@ -2390,7 +2390,7 @@ void load_menus(void) {
                 load_menu_item_ui(MENU_ITEM_UI_OK, 0x0000015E, 0x000000C8, MENU_ITEM_UI_PRIORITY_6);
                 load_menu_item_ui(MAIN_MENU_DATA_GFX, 0x0000015E, 0x000000C8, MENU_ITEM_UI_PRIORITY_6);
                 load_menu_item_ui(MAIN_MENU_OPTION_GFX, 0x0000015E, 0x000000C8, MENU_ITEM_UI_PRIORITY_6);
-                if (has_terminate_150cc() != 0) {
+                if (has_unlocked_extra_mode() != 0) {
                     load_menu_item_ui(MENU_ITEM_TYPE_015, 0, 0, MENU_ITEM_UI_PRIORITY_6);
                 }
                 load_menu_item_ui(MAIN_MENU_150CC, 0, 0, MENU_ITEM_UI_PRIORITY_6);
@@ -3359,7 +3359,7 @@ void dma_copy_base_mio0(u64* data, size_t nbytes, void* vaddr) {
     osRecvMesg(&gDmaMesgQueue, &msg, OS_MESG_BLOCK);
 }
 
-void dma_copy_base_tkmk00(u64* data, size_t nbytes, void* vaddr) {
+void dma_tkmk00_textures(u64* data, size_t nbytes, void* vaddr) {
     OSIoMesg mb;
     OSMesg msg;
 
@@ -3535,7 +3535,7 @@ void load_menu_img_comp_type(MenuTexture* addr, s32 compType) {
                     break;
                 case LOAD_MENU_IMG_TKMK00_ONCE:
                 case LOAD_MENU_IMG_TKMK00_FORCE:
-                    dma_copy_base_tkmk00(texAddr->textureData, size, gMenuCompressedBuffer);
+                    dma_tkmk00_textures(texAddr->textureData, size, gMenuCompressedBuffer);
                     break;
             }
 
@@ -3824,7 +3824,7 @@ void func_8009A238(MenuTexture* arg0, s32 arg1) {
     if (var_a3 % 8) {
         var_a3 = ((var_a3 / 8) * 8) + 8;
     }
-    dma_copy_base_tkmk00(sp24, var_a3, gMenuCompressedBuffer);
+    dma_tkmk00_textures(sp24, var_a3, gMenuCompressedBuffer);
     tkmk00decode(gMenuCompressedBuffer, sTKMK00_LowResBuffer, (u8*) &gMenuTextureBuffer[temp_v1], 1);
     sMenuTextureMap[arg1].textureData = sp24;
 }
@@ -4551,9 +4551,9 @@ void func_8009CA2C(void) {
 void func_8009CA6C(s32 arg0) {
     s32 var_a1;
 
-    if ((arg0 == 4) || ((find_menu_items_type(0x000000AA) == NULL) && (find_menu_items_type(0x000000AB) == NULL) &&
-                        (find_menu_items_type(0x000000B9) == NULL) && (find_menu_items_type(0x000000BA) == NULL) &&
-                        (find_menu_items_type(0x000000AC) == NULL) && (find_menu_items_type(0x000000B0) == NULL))) {
+    if ((arg0 == 4) || ((find_menu_items(0x000000AA) == NULL) && (find_menu_items(0x000000AB) == NULL) &&
+                        (find_menu_items(0x000000B9) == NULL) && (find_menu_items(0x000000BA) == NULL) &&
+                        (find_menu_items(0x000000AC) == NULL) && (find_menu_items(0x000000B0) == NULL))) {
         var_a1 = 0;
         gSPDisplayList(gDisplayListHead++, D_0D0076F8);
         if ((arg0 != 4) && (gIsGamePaused != 0)) {
@@ -4677,7 +4677,7 @@ void func_8009CE64(s32 arg0) {
                 D_8018E7AC[arg0] = 5;
             } else {
                 var_a1 = 0;
-                temp_v0 = find_menu_items_type(0x000000B0);
+                temp_v0 = find_menu_items(0x000000B0);
                 if (temp_v0 != NULL) {
                     switch (temp_v0->state) { /* switch 8; irregular */
                         case 10:              /* switch 8 */
@@ -4696,7 +4696,7 @@ void func_8009CE64(s32 arg0) {
                     }
                 } else {
                     var_a1 = 0;
-                    temp_v0 = find_menu_items_type(0x000000AC);
+                    temp_v0 = find_menu_items(0x000000AC);
                     if (temp_v0 != NULL) {
                         switch (temp_v0->state) { /* switch 7; irregular */
                             case 11:              /* switch 7 */
@@ -4710,7 +4710,7 @@ void func_8009CE64(s32 arg0) {
                         }
                     } else {
                         var_a1 = 0;
-                        temp_v0 = find_menu_items_type(0x000000C7);
+                        temp_v0 = find_menu_items(0x000000C7);
                         if (temp_v0 != NULL) {
                             switch (temp_v0->state) { /* switch 1 */
                                 case 12:              /* switch 1 */
@@ -4744,7 +4744,7 @@ void func_8009CE64(s32 arg0) {
                                 gIsGamePaused = 0;
                             }
                         }
-                        temp_v0 = find_menu_items_type(0x000000BD);
+                        temp_v0 = find_menu_items(0x000000BD);
                         if (temp_v0 != NULL) {
                             switch (temp_v0->state) { /* switch 2 */
                                 case 11:              /* switch 2 */
@@ -5455,10 +5455,10 @@ void load_menu_item_ui(s32 type, s32 column, s32 row, s8 priority) {
             load_menu_img(D_0200184C);
             break;
         case MENU_ITEM_UI_START_BACKGROUND:
-            load_menu_img_comp_type(gMenuTexturesBackground[has_terminate_150cc()], LOAD_MENU_IMG_TKMK00_ONCE);
+            load_menu_img_comp_type(gMenuTexturesBackground[has_unlocked_extra_mode()], LOAD_MENU_IMG_TKMK00_ONCE);
             break;
         case MENU_ITEM_UI_LOGO_AND_COPYRIGHT:
-            load_game_logo();
+            load_mario_kart_64_logo();
             sMenuTextureBufferIndex += 0x10000;
             load_menu_img(gMenuTextureCopyright1996);
             break;
@@ -5468,7 +5468,7 @@ void load_menu_item_ui(s32 type, s32 column, s32 row, s8 priority) {
         case MAIN_MENU_BACKGROUND:
         case CHARACTER_SELECT_BACKGROUND:
         case COURSE_SELECT_BACKGROUND:
-            load_menu_img_comp_type(gMenuTexturesBackground[has_terminate_150cc()], LOAD_MENU_IMG_TKMK00_ONCE);
+            load_menu_img_comp_type(gMenuTexturesBackground[has_unlocked_extra_mode()], LOAD_MENU_IMG_TKMK00_ONCE);
             load_menu_img_comp_type(D_02004B74, LOAD_MENU_IMG_TKMK00_ONCE);
             convert_img_to_greyscale(0, 0x00000019);
             adjust_img_colour(0, SCREEN_WIDTH * SCREEN_HEIGHT, D_800E74E8[type - 0x23].red,
@@ -5846,7 +5846,7 @@ void render_menus(MenuItem* arg0) {
                 break;
             case MENU_ITEM_UI_START_BACKGROUND: /* switch 6 */
                 gDisplayListHead = render_menu_textures(
-                    gDisplayListHead, gMenuTexturesBackground[has_terminate_150cc()], arg0->column, arg0->row);
+                    gDisplayListHead, gMenuTexturesBackground[has_unlocked_extra_mode()], arg0->column, arg0->row);
                 break;
             case MENU_ITEM_UI_LOGO_AND_COPYRIGHT: /* switch 6 */
                 render_game_logo((arg0->column + 0xA0), (arg0->row + 0x47));
@@ -5902,7 +5902,7 @@ void render_menus(MenuItem* arg0) {
             case MAIN_MENU_BACKGROUND:        /* switch 6 */
             case CHARACTER_SELECT_BACKGROUND: /* switch 6 */
             case COURSE_SELECT_BACKGROUND:    /* switch 6 */
-                gDisplayListHead = func_8009BC9C(gDisplayListHead, gMenuTexturesBackground[has_terminate_150cc()],
+                gDisplayListHead = func_8009BC9C(gDisplayListHead, gMenuTexturesBackground[has_unlocked_extra_mode()],
                                                  arg0->column, arg0->row, 3, 0);
                 break;
             case MENU_ITEM_UI_GAME_SELECT: /* switch 6 */
@@ -6207,7 +6207,7 @@ void render_menus(MenuItem* arg0) {
                 func_800A3E60(arg0);
                 break;
             case MENU_ITEM_ANNOUNCE_GHOST: /* switch 6 */
-                render_menu_titem_announce_ghost(arg0);
+                render_menu_item_announce_ghost(arg0);
                 break;
             case MENU_ITEM_PAUSE: /* switch 6 */
                 render_pause_menu(arg0);
@@ -6381,7 +6381,7 @@ void func_800A09E0(MenuItem* arg0) {
 void func_800A0AD0(UNUSED MenuItem* arg0) {
     MenuItem* temp_t1;
     // Find MenuItem with a type/id of 0xDA
-    temp_t1 = find_menu_items_type_dupe(MENU_ITEM_TYPE_0DA);
+    temp_t1 = find_menu_items_dupe(MENU_ITEM_TYPE_0DA);
     if ((gControllerPakMenuSelection != CONTROLLER_PAK_MENU_SELECT_RECORD) &&
         (gControllerPakMenuSelection != CONTROLLER_PAK_MENU_END)) {
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0xFF, temp_t1->param2, 0x00, 0xFF);
@@ -6457,7 +6457,7 @@ void func_800A0EB8(UNUSED MenuItem* arg0, s32 arg1) {
     Unk_D_800E70A0* temp_v0;
     MenuItem* temp_t3;
 
-    temp_t3 = find_menu_items_type_dupe(MENU_ITEM_TYPE_0DA);
+    temp_t3 = find_menu_items_dupe(MENU_ITEM_TYPE_0DA);
     if (arg1 == 0) {
         if (gControllerPakMenuSelection == CONTROLLER_PAK_MENU_END) {
             var_t1 = 1;
@@ -6588,7 +6588,7 @@ void func_800A1500(MenuItem* arg0) {
     s32 var_a1;
 
     var_a1 = 0;
-    temp_v0 = find_menu_items_type_dupe(MENU_ITEM_TYPE_064);
+    temp_v0 = find_menu_items_dupe(MENU_ITEM_TYPE_064);
     switch (temp_v0->state) { /* irregular */
         case 0:
         case 1:
@@ -7403,11 +7403,11 @@ void func_800A3E60(MenuItem* arg0) {
                 if (var_v1 != 0) {
                     set_text_color(TEXT_BLUE);
                     gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, 0x96);
-                    print_text_mode_2(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93, gMenuText[var_s1 + 1], 0,
-                                      0.75f, 0.75f);
+                    print_text_mode_2(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93,
+                                      gTextPauseButton[var_s1 + 1], 0, 0.75f, 0.75f);
                 } else {
-                    print_text_mode_1(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93, gMenuText[var_s1 + 1], 0,
-                                      0.75f, 0.75f);
+                    print_text_mode_1(0xB2 - arg0->column, arg0->row + (0xD * var_s1) + 0x93,
+                                      gTextPauseButton[var_s1 + 1], 0, 0.75f, 0.75f);
                 }
             }
             break;
@@ -7518,7 +7518,7 @@ void render_lap_time(s32 lapNumber, s32 column, s32 row) {
         set_text_color(TEXT_GREEN);
     }
     print_text1_left(column + 0x21, row, gPrefixTimeText[lapNumber], 0, 0.7f, 0.7f);
-    temp_v0_2 = find_menu_items_type_dupe(MENU_ITEM_TYPE_0BB);
+    temp_v0_2 = find_menu_items_dupe(MENU_ITEM_TYPE_0BB);
     if (lapNumber < 3) {
         if (temp_v0_2->param2 & (1 << lapNumber)) { // best lap
             textColor = (s32) gGlobalTimer % 3;
@@ -7579,7 +7579,7 @@ void render_player_time(s32 recordType, s32 column, s32 row) {
     }
     func_800939C8(column + 0x14, row, D_800E7744[recordType], 2, 0.65f, 0.65f);
     if (sp30 == 0) {
-        temp_v0 = find_menu_items_type_dupe(MENU_ITEM_TYPE_0BB);
+        temp_v0 = find_menu_items_dupe(MENU_ITEM_TYPE_0BB);
         if (recordType < 5) {
             if (recordType == temp_v0->param1) {
                 textColor = gGlobalTimer % 3;
@@ -7620,7 +7620,7 @@ void render_player_time(s32 recordType, s32 column, s32 row) {
 GLOBAL_ASM("asm/non_matchings/menu_item/render_player_time.s")
 #endif
 
-void render_menu_titem_announce_ghost(MenuItem* arg0) {
+void render_menu_item_announce_ghost(MenuItem* arg0) {
     UNUSED s32 stackPadding0;
     s32 temp_t0;
     s32 temp_t1;
@@ -7694,8 +7694,8 @@ void render_pause_menu_time_trials(MenuItem* arg0) {
     func_800939C8(0x000000B3, 0x00000089, sp68, 0, 0.8f, 0.8f);
     for (var_s0 = 0; var_s0 < 5; var_s0++) {
         text_rainbow_effect(arg0->state - 11, var_s0, TEXT_GREEN);
-        print_text_mode_1(D_800E8538[zero].column, D_800E8538[zero].row + (13 * var_s0), gMenuText[var_s0], 0, 0.75f,
-                          0.75f);
+        print_text_mode_1(D_800E8538[zero].column, D_800E8538[zero].row + (13 * var_s0), gTextPauseButton[var_s0], 0,
+                          0.75f, 0.75f);
     }
 }
 
@@ -7724,7 +7724,7 @@ void render_pause_menu_versus(MenuItem* arg0) {
             var_s1 = var_s0;
         }
         text_rainbow_effect(arg0->state - 0x15, var_s0, TEXT_YELLOW);
-        print_text_mode_1(temp_s3->column - 2, temp_s3->row + (13 * var_s0), gMenuText[var_s1], 0, 0.75f, 0.75f);
+        print_text_mode_1(temp_s3->column - 2, temp_s3->row + (13 * var_s0), gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
     }
 }
 
@@ -7759,7 +7759,7 @@ void render_pause_grand_prix(MenuItem* arg0) {
                               gCourseNamesDup[gCupCourseOrder[gCupSelection][gCourseIndexInCup]], 0, 1.0f, 1.0f);
     for (var_s0 = 0; var_s0 < 2; var_s0++) {
         text_rainbow_effect(arg0->state - 31, var_s0, TEXT_YELLOW);
-        print_text_mode_1(temp_s3->column, temp_s3->row + (var_s0 * 13), gMenuText[var_s0 * 4], 0, 0.75f, 0.75f);
+        print_text_mode_1(temp_s3->column, temp_s3->row + (var_s0 * 13), gTextPauseButton[var_s0 * 4], 0, 0.75f, 0.75f);
     }
 }
 
@@ -7788,7 +7788,7 @@ void render_pause_battle(MenuItem* arg0) {
             var_s1 = var_a1;
         }
         text_rainbow_effect(arg0->state - 0x29, var_a1, TEXT_YELLOW);
-        print_text_mode_1(temp_s3->column - 2, temp_s3->row + 13 * var_a1, gMenuText[var_s1], 0, 0.75f, 0.75f);
+        print_text_mode_1(temp_s3->column - 2, temp_s3->row + 13 * var_a1, gTextPauseButton[var_s1], 0, 0.75f, 0.75f);
     }
 }
 
@@ -7805,7 +7805,7 @@ void func_800A54EC(void) {
     }
 
     why = gModeSelection;
-    sp48 = find_menu_items_type(0x000000C7);
+    sp48 = find_menu_items(0x000000C7);
     if (why) {} // ?????
     gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(D_802B8880));
     guOrtho(&gGfxPool->mtxEffect[gMatrixEffectCount], 0.0f, 319.0f, 239.0f, 0.0f, -100.0f, 100.0f, 1.0f);
@@ -7853,11 +7853,11 @@ void render_menu_item_end_course_option(MenuItem* arg0) {
 
     if (arg0->state == 0) {
         if ((arg0->param1 >= 0x1E) && ((gGlobalTimer / 16) % 2)) {
-            why = get_string_width(gMenuText[REPLAY]) * 0.8f;
+            why = get_string_width(gTextPauseButton[REPLAY]) * 0.8f;
             gDisplayListHead =
                 draw_box(gDisplayListHead, 0x000000C0, 0x00000021, (s32) (why) + 0xC6, 0x00000032, 0, 0, 0, 0x00000096);
             set_text_color(TEXT_GREEN);
-            print_text_mode_1(0x000000BF, 0x00000030, gMenuText[REPLAY], 0, 0.8f, 0.8f);
+            print_text_mode_1(0x000000BF, 0x00000030, gTextPauseButton[REPLAY], 0, 0.8f, 0.8f);
         }
     } else {
         if (arg0->state == 1) {
@@ -7906,7 +7906,7 @@ void render_menu_item_end_course_option(MenuItem* arg0) {
                 for (var_s1 = 0; var_s1 < 6; var_s1++) {
                     text_rainbow_effect(arg0->state - 0xB, var_s1, TEXT_GREEN);
                     print_text_mode_2(D_800E8538[zero].column, D_800E8538[zero].row + (0xD * var_s1),
-                                      gMenuText[var_s1 + 1], 0, 0.75f, 0.75f);
+                                      gTextPauseButton[var_s1 + 1], 0, 0.75f, 0.75f);
                 }
                 break;
             case 21: /* switch 1 */
@@ -8027,13 +8027,13 @@ void func_800A6154(MenuItem* arg0) {
         set_text_color(TEXT_YELLOW);
         gDPSetPrimColor(gDisplayListHead++, 0, 0, 0x00, 0x00, 0x00, (arg0->param1 * 0xFF) / 100);
         for (var_s1 = 0, var_s0 = 0x96; var_s0 < 0xBE; var_s1++, var_s0 += 0x14) {
-            print_text_mode_2(0x0000008C, var_s0, gMenuText[(var_s1 * 3) + 1], 0, 1.0f, 1.0f);
+            print_text_mode_2(0x0000008C, var_s0, gTextPauseButton[(var_s1 * 3) + 1], 0, 1.0f, 1.0f);
         }
     } else {
         gDisplayListHead = draw_box(gDisplayListHead, 0, 0, 0x0000013F, 0x000000EF, 0, 0, 0, 0x00000064);
         for (var_s1 = 0, var_s0 = 0x96; var_s1 < 2; var_s1++, var_s0 += 0x14) {
             text_rainbow_effect(arg0->state - 0xB, var_s1, TEXT_YELLOW);
-            print_text_mode_1(0x0000008C, var_s0, gMenuText[(var_s1 * 3) + 1], 0, 1.0f, 1.0f);
+            print_text_mode_1(0x0000008C, var_s0, gTextPauseButton[(var_s1 * 3) + 1], 0, 1.0f, 1.0f);
         }
     }
     if (arg0->state >= 0xB) {
@@ -8093,7 +8093,7 @@ void func_800A638C(MenuItem* arg0) {
     if (arg0->state >= 10) {
         for (var_s1 = 0; var_s1 < 4; var_s1++) {
             text_rainbow_effect(arg0->state - 0xA, var_s1, TEXT_GREEN);
-            print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1), gMenuText[var_s1 + 1], 0, 0.8f, 0.8f);
+            print_text_mode_1(0x00000069, 0xAE + (0xF * var_s1), gTextPauseButton[var_s1 + 1], 0, 0.8f, 0.8f);
         }
         func_800A66A8(arg0, &D_800E7360[arg0->state - 10]);
     }
@@ -8389,11 +8389,11 @@ void menu_item_credit_render(MenuItem* arg0) {
     slideDirection = gTextCreaditRenderInformation[creditIndex].slideDirection;
     if ((slideDirection == SLIDE_RIGHT) || (slideDirection != SLIDE_LEFT)) {
         someScaling = gTextCreaditRenderInformation[creditIndex].textScaling;
-        print_text1_left(arg0->column, arg0->row, gTextCredit[creditIndex], arg0->param1 * someScaling,
+        print_text1_left(arg0->column, arg0->row, gTextCredits[creditIndex], arg0->param1 * someScaling,
                          arg0->paramf * someScaling, someScaling);
     } else {
         someScaling = gTextCreaditRenderInformation[creditIndex].textScaling;
-        print_text_mode_1(arg0->column, arg0->row, gTextCredit[creditIndex], arg0->param1 * someScaling,
+        print_text_mode_1(arg0->column, arg0->row, gTextCredits[creditIndex], arg0->param1 * someScaling,
                           arg0->paramf * someScaling, someScaling);
     }
 }
@@ -9070,7 +9070,7 @@ void func_800A8CA4(MenuItem* arg0) {
     s32 var_s0;
     MenuItem* temp_v0;
 
-    temp_v0 = find_menu_items_type_dupe(MENU_ITEM_TYPE_064);
+    temp_v0 = find_menu_items_dupe(MENU_ITEM_TYPE_064);
     temp_s2 = arg0->column;
     temp_s3 = arg0->row;
     gDPPipeSync(gDisplayListHead++);
@@ -10050,7 +10050,7 @@ void func_800AAE18(MenuItem* arg0) {
 }
 
 /**
- * Similar to find_menu_items_type_dupe, there is potential for a
+ * Similar to find_menu_items_dupe, there is potential for a
  * hard lock in the function if no appropriate gMenuItems entry
  * is found.
  **/
@@ -10073,7 +10073,7 @@ escape:
 }
 
 /**
- * Similar to find_menu_items_type_dupe, there is potential for a
+ * Similar to find_menu_items_dupe, there is potential for a
  * hard lock in the function if no appropriate gMenuItems entry
  * is found.
  **/
@@ -10104,7 +10104,7 @@ escape:
  * probably as much a matter of luck as it is good
  * reasoning on the original author(s) part.
  **/
-MenuItem* find_menu_items_type_dupe(s32 type) {
+MenuItem* find_menu_items_dupe(s32 type) {
     MenuItem* entry = gMenuItems;
     for (; !(entry > (&gMenuItems[MENU_ITEMS_MAX])); entry++) {
         if (entry->type == type) {
@@ -10120,7 +10120,7 @@ escape:
     return entry;
 }
 
-MenuItem* find_menu_items_type(s32 type) {
+MenuItem* find_menu_items(s32 type) {
     MenuItem* entry = gMenuItems;
     for (; !(entry > (&gMenuItems[MENU_ITEMS_MAX])); entry++) {
         if (entry->type == type) {
@@ -10133,7 +10133,7 @@ escape:
     return entry;
 }
 
-UNUSED s32 get_state_menu_item_character(s32 arg0) {
+UNUSED s32 get_character_menu_state(s32 arg0) {
     MenuItem* temp;
     temp = get_menu_item_character(arg0);
     return temp->state;
@@ -10288,7 +10288,7 @@ void func_800AB314(MenuItem* arg0) {
     s32 var_v0;
 
     for (var_a1 = 0; var_a1 < 4; var_a1++) {
-        sp24[var_a1] = find_menu_items_type_dupe(var_a1 + 0x5F);
+        sp24[var_a1] = find_menu_items_dupe(var_a1 + 0x5F);
     }
     switch (gModeSelection) {
         default:
@@ -10934,7 +10934,7 @@ void func_800ACC50(MenuItem* arg0) {
             }
             break;
         case 1:
-            if (find_menu_items_type_dupe(0x000000B1)->state >= 2) {
+            if (find_menu_items_dupe(0x000000B1)->state >= 2) {
                 arg0->state = 2;
             }
             break;
@@ -11034,7 +11034,7 @@ void func_800ACF40(MenuItem* arg0) {
             if (var_v1 == 0) {
                 arg0->param2++;
                 if (arg0->param2 >= 0x1F) {
-                    if (find_menu_items_type_dupe(0x000000B0)->state >= 2) {
+                    if (find_menu_items_dupe(0x000000B0)->state >= 2) {
                         func_8009A640(arg0->D_8018DEE0_index, 0, temp_a2,
                                       segmented_to_virtual_dupe_2(gCharacterCelebrateAnimation[temp_a1]));
                         arg0->state = 3;
@@ -12050,7 +12050,7 @@ void func_800AF480(MenuItem* arg0) {
 void func_800AF4DC(MenuItem* arg0) {
     UNUSED s32 pad;
     s32 temp_v0;
-    CreditRenderInformation* temp_v1;
+    CreditsRenderInfo* temp_v1;
 
     temp_v0 = arg0->type - 0x190;
     temp_v1 = &gTextCreaditRenderInformation[temp_v0];
@@ -12059,7 +12059,7 @@ void func_800AF4DC(MenuItem* arg0) {
         case 0:
             arg0->column = temp_v1->startingColumn;
             arg0->state = 1;
-            arg0->param2 = temp_v1->columnExtra + (get_string_width(gTextCredit[temp_v0]) * temp_v1->textScaling / 2);
+            arg0->param2 = temp_v1->columnExtra + (get_string_width(gTextCredits[temp_v0]) * temp_v1->textScaling / 2);
             /* fallthrough */
         case 1:
             func_800A9208(arg0, arg0->param2);
@@ -12102,7 +12102,7 @@ void func_800AF4DC(MenuItem* arg0) {
 void func_800AF740(MenuItem* arg0) {
     UNUSED s32 pad;
     s32 temp_v0;
-    CreditRenderInformation* temp_v1;
+    CreditsRenderInfo* temp_v1;
 
     temp_v0 = arg0->type - 0x190;
     temp_v1 = &gTextCreaditRenderInformation[temp_v0];
@@ -12111,7 +12111,7 @@ void func_800AF740(MenuItem* arg0) {
         case 0:
             arg0->column = temp_v1->startingColumn;
             arg0->state = 1;
-            arg0->param2 = temp_v1->columnExtra - (get_string_width(gTextCredit[temp_v0]) * temp_v1->textScaling / 2);
+            arg0->param2 = temp_v1->columnExtra - (get_string_width(gTextCredits[temp_v0]) * temp_v1->textScaling / 2);
             /* fallthrough */
         case 1:
             func_800A9208(arg0, arg0->param2);

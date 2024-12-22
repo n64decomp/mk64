@@ -511,7 +511,7 @@ glabel L8009EC98
 /* 09F8A4 8009ECA4 1000024B */  b     .L8009F5D4
 /* 09F8A8 8009ECA8 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L8009ECAC
-/* 09F8AC 8009ECAC 0C02D557 */  jal   has_terminate_150cc
+/* 09F8AC 8009ECAC 0C02D557 */  jal   has_unlocked_extra_mode
 /* 09F8B0 8009ECB0 00000000 */   nop
 /* 09F8B4 8009ECB4 0002C080 */  sll   $t8, $v0, 2
 /* 09F8B8 8009ECB8 3C04800E */  lui   $a0, %hi(gMenuTexturesBackground)
@@ -522,7 +522,7 @@ glabel L8009ECAC
 /* 09F8CC 8009ECCC 10000241 */  b     .L8009F5D4
 /* 09F8D0 8009ECD0 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L8009ECD4
-/* 09F8D4 8009ECD4 0C01BB91 */  jal   load_game_logo
+/* 09F8D4 8009ECD4 0C01BB91 */  jal   load_mario_kart_64_logo
 /* 09F8D8 8009ECD8 00000000 */   nop   
 /* 09F8DC 8009ECDC 3C028019 */  lui   $v0, %hi(sMenuTextureBufferIndex) # $v0, 0x8019
 /* 09F8E0 8009ECE0 2442E110 */  addiu $v0, %lo(sMenuTextureBufferIndex) # addiu $v0, $v0, -0x1ef0
@@ -542,7 +542,7 @@ glabel L8009ED08
 /* 09F914 8009ED14 1000022F */  b     .L8009F5D4
 /* 09F918 8009ED18 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L8009ED1C
-/* 09F91C 8009ED1C 0C02D557 */  jal   has_terminate_150cc
+/* 09F91C 8009ED1C 0C02D557 */  jal   has_unlocked_extra_mode
 /* 09F920 8009ED20 00000000 */   nop
 /* 09F924 8009ED24 00027880 */  sll   $t7, $v0, 2
 /* 09F928 8009ED28 3C04800E */  lui   $a0, %hi(gMenuTexturesBackground)

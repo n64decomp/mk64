@@ -111,6 +111,9 @@ void clear_object_list() {
     objectListSize = -1;
 }
 
+/**
+ * Dma's mario kart 64 logo and course outline textures.
+ */
 u8* dma_copy_base_misc_textures(u8* devAddr, u8* baseAddress, u32 size, u32 offset) {
     u8** tempAddress;
     u8* address;
@@ -126,7 +129,7 @@ u8* dma_copy_base_misc_textures(u8* devAddr, u8* baseAddress, u32 size, u32 offs
     return baseAddress;
 }
 
-void load_game_logo(void) {
+void load_mario_kart_64_logo(void) {
     gGameLogoAddress =
         dma_copy_base_misc_textures((u8*) &gTextureLogoMarioKart64, (u8*) gMenuTextureBuffer, 0x79E1, 0x20000);
 }

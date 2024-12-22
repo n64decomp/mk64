@@ -86,7 +86,7 @@ glabel render_player_time
 /* 0A5438 800A4838 8FAB0030 */  lw    $t3, 0x30($sp)
 /* 0A543C 800A483C 55600024 */  bnel  $t3, $zero, .L800A48D0
 /* 0A5440 800A4840 24020003 */   li    $v0, 3
-/* 0A5444 800A4844 0C02ABBD */  jal   find_menu_items_type_dupe
+/* 0A5444 800A4844 0C02ABBD */  jal   find_menu_items_dupe
 /* 0A5448 800A4848 240400BB */   li    $a0, 187
 /* 0A544C 800A484C 8FAC0050 */  lw    $t4, 0x50($sp)
 /* 0A5450 800A4850 29810005 */  slti  $at, $t4, 5

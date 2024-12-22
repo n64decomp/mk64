@@ -254,7 +254,7 @@ void options_menu_act(struct Controller* controller, u16 controllerIdx) {
     }
 
     if (!is_screen_being_faded()) {
-        sp38 = find_menu_items_type_dupe(0xF0);
+        sp38 = find_menu_items_dupe(0xF0);
         sp30 = (struct_8018EE10_entry*) gSomeDLBuffer;
         switch (gSubMenuSelection) {
             case SUB_MENU_OPTION_RETURN_GAME_SELECT:
@@ -723,7 +723,7 @@ void course_data_menu_act(struct Controller* controller, UNUSED u16 controllerId
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
                 }
 
-                sp28 = find_menu_items_type_dupe(0xE8);
+                sp28 = find_menu_items_dupe(0xE8);
                 sp24 = &gSaveData.allCourseTimeTrialRecords.cupRecords[gTimeTrialDataCourseIndex / 4]
                             .courseRecords[gTimeTrialDataCourseIndex % 4];
                 if (gCourseRecordsMenuSelection == COURSE_RECORDS_MENU_ERASE_GHOST &&
@@ -789,7 +789,7 @@ void course_data_menu_act(struct Controller* controller, UNUSED u16 controllerId
                 break;
             }
             case SUB_MENU_DATA_ERASE_CONFIRM: {
-                sp28 = find_menu_items_type_dupe(0xE9);
+                sp28 = find_menu_items_dupe(0xE9);
                 if ((btnAndStick & U_JPAD) && (gCourseRecordsSubMenuSelection > COURSE_RECORDS_SUB_MENU_MIN)) {
                     gCourseRecordsSubMenuSelection -= 1;
                     play_sound2(SOUND_MENU_CURSOR_MOVE);
@@ -1418,7 +1418,7 @@ void main_menu_act(struct Controller* controller, u16 controllerIdx) {
                 // L800B3068
                 if (btnAndStick & D_JPAD) {
                     cursorMoved = false;
-                    if (has_terminate_150cc()) {
+                    if (has_unlocked_extra_mode()) {
                         if (subMode <
                             sGameModePlayerColumnExtra[gPlayerCount - 1][gGameModeMenuColumn[gPlayerCount - 1]]) {
                             cursorMoved = true;

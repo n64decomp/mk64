@@ -9,7 +9,7 @@ void reset_object_variable(void);
 void func_8006EB10(void);
 void clear_object_list(void);
 u8* dma_copy_base_misc_textures(u8*, u8*, u32, u32);
-void load_game_logo(void);
+void load_mario_kart_64_logo(void);
 void init_item_window(s32);
 void func_8006EEE8(s32);
 void func_8006EF60(void);
