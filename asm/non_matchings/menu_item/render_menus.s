@@ -1316,7 +1316,7 @@ glabel L800A0694
 /* 0A1314 800A0714 1000006C */  b     .L800A08C8
 /* 0A1318 800A0718 8FBF0034 */   lw    $ra, 0x34($sp)
 glabel L800A071C
-/* 0A131C 800A071C 0C028F21 */  jal   menu_item_end_time_trial_render
+/* 0A131C 800A071C 0C028F21 */  jal   time_trials_finish_text_render
 /* 0A1320 800A0720 02202025 */   move  $a0, $s1
 /* 0A1324 800A0724 10000068 */  b     .L800A08C8
 /* 0A1328 800A0728 8FBF0034 */   lw    $ra, 0x34($sp)

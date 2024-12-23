@@ -516,7 +516,7 @@ void func_800A32B4(s32, s32, s32, s32);
 void func_800A34A8(MenuItem*);
 void func_800A3A10(s8*);
 void func_800A3ADC(MenuItem*, s32, s32, s32, s32, s8*);
-void menu_item_end_time_trial_render(MenuItem*);
+void time_trials_finish_text_render(MenuItem*);
 void func_800A3E60(MenuItem*);
 void render_lap_time(s32, s32, s32);
 void render_player_time(s32, s32, s32);

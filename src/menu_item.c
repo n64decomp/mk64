@@ -6201,7 +6201,7 @@ void render_menus(MenuItem* arg0) {
                 }
                 break;
             case MENU_ITEM_TYPE_0B9: /* switch 6 */
-                menu_item_end_time_trial_render(arg0);
+                time_trials_finish_text_render(arg0);
                 break;
             case MENU_ITEM_TYPE_0BA: /* switch 6 */
                 func_800A3E60(arg0);
@@ -7315,7 +7315,7 @@ void func_800A3ADC(MenuItem* arg0, s32 arg1, s32 arg2, s32 characterId, s32 arg4
     }
 }
 
-void menu_item_end_time_trial_render(MenuItem* arg0) {
+void time_trials_finish_text_render(MenuItem* arg0) {
     s32 recordType;
     s32 rowOffset;
 
@@ -8385,14 +8385,14 @@ void menu_item_credit_render(MenuItem* arg0) {
     s8 slideDirection;
     UNUSED s32 pad;
     creditIndex = arg0->type - 0x190;
-    set_text_color(gTextCreaditRenderInformation[creditIndex].textColor);
-    slideDirection = gTextCreaditRenderInformation[creditIndex].slideDirection;
+    set_text_color(gTextCreaditsRenderInformation[creditIndex].textColor);
+    slideDirection = gTextCreaditsRenderInformation[creditIndex].slideDirection;
     if ((slideDirection == SLIDE_RIGHT) || (slideDirection != SLIDE_LEFT)) {
-        someScaling = gTextCreaditRenderInformation[creditIndex].textScaling;
+        someScaling = gTextCreaditsRenderInformation[creditIndex].textScaling;
         print_text1_left(arg0->column, arg0->row, gTextCredits[creditIndex], arg0->param1 * someScaling,
                          arg0->paramf * someScaling, someScaling);
     } else {
-        someScaling = gTextCreaditRenderInformation[creditIndex].textScaling;
+        someScaling = gTextCreaditsRenderInformation[creditIndex].textScaling;
         print_text_mode_1(arg0->column, arg0->row, gTextCredits[creditIndex], arg0->param1 * someScaling,
                           arg0->paramf * someScaling, someScaling);
     }
@@ -12039,8 +12039,8 @@ void func_800AF270(MenuItem* arg0) {
 void func_800AF480(MenuItem* arg0) {
     s32 idx = arg0->type - 0x190;
 
-    if ((gTextCreaditRenderInformation[idx].slideDirection == 0) ||
-        (gTextCreaditRenderInformation[idx].slideDirection != 1)) {
+    if ((gTextCreaditsRenderInformation[idx].slideDirection == 0) ||
+        (gTextCreaditsRenderInformation[idx].slideDirection != 1)) {
         func_800AF4DC(arg0);
     } else {
         func_800AF740(arg0);
@@ -12053,7 +12053,7 @@ void func_800AF4DC(MenuItem* arg0) {
     CreditsRenderInfo* temp_v1;
 
     temp_v0 = arg0->type - 0x190;
-    temp_v1 = &gTextCreaditRenderInformation[temp_v0];
+    temp_v1 = &gTextCreaditsRenderInformation[temp_v0];
     arg0->row = temp_v1->row;
     switch (arg0->state) {
         case 0:
@@ -12105,7 +12105,7 @@ void func_800AF740(MenuItem* arg0) {
     CreditsRenderInfo* temp_v1;
 
     temp_v0 = arg0->type - 0x190;
-    temp_v1 = &gTextCreaditRenderInformation[temp_v0];
+    temp_v1 = &gTextCreaditsRenderInformation[temp_v0];
     arg0->row = temp_v1->row;
     switch (arg0->state) {
         case 0:
