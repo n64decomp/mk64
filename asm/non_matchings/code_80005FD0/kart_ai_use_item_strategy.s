@@ -154,7 +154,7 @@ glabel L8001AD64
 /* 01BA00 8001AE00 97040000 */  lhu   $a0, ($t8)
 /* 01BA04 8001AE04 24060028 */  li    $a2, 40
 /* 01BA08 8001AE08 24070002 */  li    $a3, 2
-/* 01BA0C 8001AE0C 0C001EFE */  jal   func_80007BF8
+/* 01BA0C 8001AE0C 0C001EFE */  jal   is_waypoint_in_range
 /* 01BA10 8001AE10 AFAC0010 */   sw    $t4, 0x10($sp)
 /* 01BA14 8001AE14 18400045 */  blez  $v0, .L8001AF2C
 /* 01BA18 8001AE18 240D0022 */   li    $t5, 34
@@ -173,7 +173,7 @@ glabel L8001AD64
 /* 01BA48 8001AE48 97040000 */  lhu   $a0, ($t8)
 /* 01BA4C 8001AE4C 24060004 */  li    $a2, 4
 /* 01BA50 8001AE50 24070002 */  li    $a3, 2
-/* 01BA54 8001AE54 0C001EFE */  jal   func_80007BF8
+/* 01BA54 8001AE54 0C001EFE */  jal   is_waypoint_in_range
 /* 01BA58 8001AE58 AFAC0010 */   sw    $t4, 0x10($sp)
 /* 01BA5C 8001AE5C 18400033 */  blez  $v0, .L8001AF2C
 /* 01BA60 8001AE60 240D0022 */   li    $t5, 34
@@ -192,7 +192,7 @@ glabel L8001AD64
 /* 01BA90 8001AE90 97040000 */  lhu   $a0, ($t8)
 /* 01BA94 8001AE94 2406000A */  li    $a2, 10
 /* 01BA98 8001AE98 24070002 */  li    $a3, 2
-/* 01BA9C 8001AE9C 0C001EFE */  jal   func_80007BF8
+/* 01BA9C 8001AE9C 0C001EFE */  jal   is_waypoint_in_range
 /* 01BAA0 8001AEA0 AFAC0010 */   sw    $t4, 0x10($sp)
 /* 01BAA4 8001AEA4 18400021 */  blez  $v0, .L8001AF2C
 /* 01BAA8 8001AEA8 240D0022 */   li    $t5, 34

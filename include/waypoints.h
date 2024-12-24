@@ -87,12 +87,12 @@ extern s32 D_80163368[];
 // Seemingly the Z position of the 1st waypoint in the 0th path?
 extern f32 gPathStartZ;
 // These seem to track whether a player has entered or exited the "unknown" zone in yoshi's valley
-// See func_80009000 and func_800090F0
+// See yoshi_valley_cpu_path and update_cpu_path_completion
 // Is 1 when a player is in the "unknown" zone in yoshi's valley
 extern s16 gCpuNeedChoosePath[];
 // Is 1 when a player leaves the "unknown" zone in yoshi's valley
 extern s16 gCpuResetPath[];
 // Tracks whether a given player is in the "unknown" zone of yoshi's valley
-extern s16 D_801644F8[];
+extern s16 gNeedToChoose[];
 
 #endif

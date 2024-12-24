@@ -1161,7 +1161,7 @@ void func_8003C0F0(void) {
     }
 
     if (gModeSelection != BATTLE) {
-        func_8000F628();
+        init_players();
     }
 }
 

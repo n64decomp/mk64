@@ -8,17 +8,17 @@ glabel D_800ECFAC
 
 .section .text
 
-glabel func_8000929C
+glabel update_player_path_completion
 /* 009E9C 8000929C 27BDFFB0 */  addiu $sp, $sp, -0x50
 /* 009EA0 800092A0 AFBF0024 */  sw    $ra, 0x24($sp)
 /* 009EA4 800092A4 C4A0001C */  lwc1  $f0, 0x1c($a1)
 /* 009EA8 800092A8 C4AC0014 */  lwc1  $f12, 0x14($a1)
 /* 009EAC 800092AC C4AE0018 */  lwc1  $f14, 0x18($a1)
 /* 009EB0 800092B0 3C0E8016 */  lui   $t6, %hi(D_80163240) # $t6, 0x8016
-/* 009EB4 800092B4 3C018016 */  lui   $at, %hi(D_801630E2) # $at, 0x8016
+/* 009EB4 800092B4 3C018016 */  lui   $at, %hi(gIsPlayerNewWaypoint) # $at, 0x8016
 /* 009EB8 800092B8 25CE3240 */  addiu $t6, %lo(D_80163240) # addiu $t6, $t6, 0x3240
 /* 009EBC 800092BC 00041040 */  sll   $v0, $a0, 1
-/* 009EC0 800092C0 A42030E2 */  sh    $zero, %lo(D_801630E2)($at)
+/* 009EC0 800092C0 A42030E2 */  sh    $zero, %lo(gIsPlayerNewWaypoint)($at)
 /* 009EC4 800092C4 004E1821 */  addu  $v1, $v0, $t6
 /* 009EC8 800092C8 A4600000 */  sh    $zero, ($v1)
 /* 009ECC 800092CC 3C0F8016 */  lui   $t7, %hi(gNearestWaypointByPlayerId) # $t7, 0x8016
@@ -52,8 +52,8 @@ glabel func_8000929C
 /* 009F3C 8000933C 00E01825 */   move  $v1, $a3
 /* 009F40 80009340 A5030000 */  sh    $v1, ($t0)
 /* 009F44 80009344 24090001 */  li    $t1, 1
-/* 009F48 80009348 3C018016 */  lui   $at, %hi(D_801630E2) # $at, 0x8016
-/* 009F4C 8000934C A42930E2 */  sh    $t1, %lo(D_801630E2)($at)
+/* 009F48 80009348 3C018016 */  lui   $at, %hi(gIsPlayerNewWaypoint) # $at, 0x8016
+/* 009F4C 8000934C A42930E2 */  sh    $t1, %lo(gIsPlayerNewWaypoint)($at)
 /* 009F50 80009350 AFA40050 */  sw    $a0, 0x50($sp)
 /* 009F54 80009354 0C0023CE */  jal   update_player_completion
 /* 009F58 80009358 E7AC004C */   swc1  $f12, 0x4c($sp)
@@ -68,7 +68,7 @@ glabel func_8000929C
 /* 009F78 80009378 30E5FFFF */  andi  $a1, $a3, 0xffff
 /* 009F7C 8000937C 14410005 */  bne   $v0, $at, .L80009394
 /* 009F80 80009380 3C068016 */   lui   $a2, %hi(gActualPath) # $a2, 0x8016
-/* 009F84 80009384 0C002E57 */  jal   func_8000B95C
+/* 009F84 80009384 0C002E57 */  jal   update_player_position_factor
 /* 009F88 80009388 8CC63448 */   lw    $a2, %lo(gActualPath)($a2)
 /* 009F8C 8000938C 10000111 */  b     .L800097D4
 /* 009F90 80009390 8FBF0024 */   lw    $ra, 0x24($sp)
@@ -297,12 +297,12 @@ glabel func_8000929C
 /* 00A2D0 800096D0 E42A3450 */  swc1  $f10, %lo(gPreviousPlayerZ)($at)
 /* 00A2D4 800096D4 24010004 */  li    $at, 4
 /* 00A2D8 800096D8 15C10013 */  bne   $t6, $at, .L80009728
-/* 00A2DC 800096DC 3C0F8016 */   lui   $t7, %hi(D_801630E2) # $t7, 0x8016
-/* 00A2E0 800096E0 85EF30E2 */  lh    $t7, %lo(D_801630E2)($t7)
+/* 00A2DC 800096DC 3C0F8016 */   lui   $t7, %hi(gIsPlayerNewWaypoint) # $t7, 0x8016
+/* 00A2E0 800096E0 85EF30E2 */  lh    $t7, %lo(gIsPlayerNewWaypoint)($t7)
 /* 00A2E4 800096E4 24010001 */  li    $at, 1
 /* 00A2E8 800096E8 55E10010 */  bnel  $t7, $at, .L8000972C
 /* 00A2EC 800096EC 8FAA0054 */   lw    $t2, 0x54($sp)
-/* 00A2F0 800096F0 0C002400 */  jal   func_80009000
+/* 00A2F0 800096F0 0C002400 */  jal   yoshi_valley_cpu_path
 /* 00A2F4 800096F4 AFA40050 */   sw    $a0, 0x50($sp)
 /* 00A2F8 800096F8 8FB80054 */  lw    $t8, 0x54($sp)
 /* 00A2FC 800096FC 8FA40050 */  lw    $a0, 0x50($sp)
@@ -314,7 +314,7 @@ glabel func_8000929C
 /* 00A314 80009714 51200005 */  beql  $t1, $zero, .L8000972C
 /* 00A318 80009718 8FAA0054 */   lw    $t2, 0x54($sp)
 .L8000971C:
-/* 00A31C 8000971C 0C00243C */  jal   func_800090F0
+/* 00A31C 8000971C 0C00243C */  jal   update_cpu_path_completion
 /* 00A320 80009720 AFA40050 */   sw    $a0, 0x50($sp)
 /* 00A324 80009724 8FA40050 */  lw    $a0, 0x50($sp)
 .L80009728:
@@ -363,7 +363,7 @@ glabel func_8000929C
 /* 00A3C0 800097C0 8CC63448 */  lw    $a2, %lo(gActualPath)($a2) # 0x3448($a2)
 /* 00A3C4 800097C4 84632FCE */  lh    $v1, %lo(sSomeNearestWaypoint)($v1)
 .L800097C8:
-/* 00A3C8 800097C8 0C002E57 */  jal   func_8000B95C
+/* 00A3C8 800097C8 0C002E57 */  jal   update_player_position_factor
 /* 00A3CC 800097CC 3065FFFF */   andi  $a1, $v1, 0xffff
 /* 00A3D0 800097D0 8FBF0024 */  lw    $ra, 0x24($sp)
 .L800097D4:

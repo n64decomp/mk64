@@ -171,7 +171,7 @@ glabel func_80009B60
 /* 00A988 80009D88 1000001A */  b     .L80009DF4
 /* 00A98C 80009D8C 8FA50040 */   lw    $a1, 0x40($sp)
 .L80009D90:
-/* 00A990 80009D90 0C004B70 */  jal   func_80012DC0
+/* 00A990 80009D90 0C004B70 */  jal   handle_trains_interactions
 /* 00A994 80009D94 8FA50040 */   lw    $a1, 0x40($sp)
 /* 00A998 80009D98 8FAC00D0 */  lw    $t4, 0xd0($sp)
 /* 00A99C 80009D9C 55800015 */  bnel  $t4, $zero, .L80009DF4
@@ -181,21 +181,21 @@ glabel func_80009B60
 /* 00A9AC 80009DAC 10000011 */  b     .L80009DF4
 /* 00A9B0 80009DB0 8FA50040 */   lw    $a1, 0x40($sp)
 .L80009DB4:
-/* 00A9B4 80009DB4 0C004E15 */  jal   func_80013854
+/* 00A9B4 80009DB4 0C004E15 */  jal   handle_paddleBoats_interactions
 /* 00A9B8 80009DB8 8FA40040 */   lw    $a0, 0x40($sp)
 /* 00A9BC 80009DBC 1000000D */  b     .L80009DF4
 /* 00A9C0 80009DC0 8FA50040 */   lw    $a1, 0x40($sp)
 .L80009DC4:
-/* 00A9C4 80009DC4 0C005231 */  jal   func_800148C4
+/* 00A9C4 80009DC4 0C005231 */  jal   handle_box_trucks_interactions
 /* 00A9C8 80009DC8 8FA50040 */   lw    $a1, 0x40($sp)
 /* 00A9CC 80009DCC 8FA400D0 */  lw    $a0, 0xd0($sp)
-/* 00A9D0 80009DD0 0C005286 */  jal   func_80014A18
+/* 00A9D0 80009DD0 0C005286 */  jal   handle_school_buses_interactions
 /* 00A9D4 80009DD4 8FA50040 */   lw    $a1, 0x40($sp)
 /* 00A9D8 80009DD8 8FA400D0 */  lw    $a0, 0xd0($sp)
-/* 00A9DC 80009DDC 0C0052DB */  jal   func_80014B6C
+/* 00A9DC 80009DDC 0C0052DB */  jal   handle_tanker_trucks_interactions
 /* 00A9E0 80009DE0 8FA50040 */   lw    $a1, 0x40($sp)
 /* 00A9E4 80009DE4 8FA400D0 */  lw    $a0, 0xd0($sp)
-/* 00A9E8 80009DE8 0C005330 */  jal   func_80014CC0
+/* 00A9E8 80009DE8 0C005330 */  jal   handle_cars_interactions
 /* 00A9EC 80009DEC 8FA50040 */   lw    $a1, 0x40($sp)
 /* 00A9F0 80009DF0 8FA50040 */  lw    $a1, 0x40($sp)
 .L80009DF4:
@@ -212,7 +212,7 @@ glabel func_80009B60
 /* 00AA1C 80009E1C ACB800BC */  sw    $t8, 0xbc($a1)
 /* 00AA20 80009E20 A4AA0044 */  sh    $t2, 0x44($a1)
 .L80009E24:
-/* 00AA24 80009E24 0C0024A7 */  jal   func_8000929C
+/* 00AA24 80009E24 0C0024A7 */  jal   update_player_path_completion
 /* 00AA28 80009E28 8FA400D0 */   lw    $a0, 0xd0($sp)
 /* 00AA2C 80009E2C 3C0B800E */  lui   $t3, %hi(gCurrentCourseId)
 /* 00AA30 80009E30 856BC5A0 */  lh    $t3, %lo(gCurrentCourseId)($t3)
@@ -234,12 +234,12 @@ glabel func_80009B60
 .L80009E6C:
 /* 00AA6C 80009E6C 8FAF0040 */  lw    $t7, 0x40($sp)
 .L80009E70:
-/* 00AA70 80009E70 3C0A8016 */  lui   $t2, %hi(D_801630E2) # $t2, 0x8016
+/* 00AA70 80009E70 3C0A8016 */  lui   $t2, %hi(gIsPlayerNewWaypoint) # $t2, 0x8016
 /* 00AA74 80009E74 95F80000 */  lhu   $t8, ($t7)
 /* 00AA78 80009E78 33191000 */  andi  $t9, $t8, 0x1000
 /* 00AA7C 80009E7C 532004AD */  beql  $t9, $zero, .L8000B134
 /* 00AA80 80009E80 8FBF0014 */   lw    $ra, 0x14($sp)
-/* 00AA84 80009E84 854A30E2 */  lh    $t2, %lo(D_801630E2)($t2)
+/* 00AA84 80009E84 854A30E2 */  lh    $t2, %lo(gIsPlayerNewWaypoint)($t2)
 /* 00AA88 80009E88 24010001 */  li    $at, 1
 /* 00AA8C 80009E8C 15410007 */  bne   $t2, $at, .L80009EAC
 /* 00AA90 80009E90 3C0B800E */   lui   $t3, %hi(gCurrentCourseId)
@@ -415,13 +415,13 @@ glabel func_80009B60
 /* 00ACFC 8000A0FC 1000000D */  b     .L8000A134
 /* 00AD00 8000A100 E42634FC */   swc1  $f6, %lo(D_801634F8 + 4)($at)
 .L8000A104:
-/* 00AD04 8000A104 0C005243 */  jal   func_8001490C
+/* 00AD04 8000A104 0C005243 */  jal   update_player_track_position_factor_from_box_trucks
 /* 00AD08 8000A108 AFA5002C */   sw    $a1, 0x2c($sp)
-/* 00AD0C 8000A10C 0C005298 */  jal   func_80014A60
+/* 00AD0C 8000A10C 0C005298 */  jal   update_player_track_position_factor_from_buses
 /* 00AD10 8000A110 8FA400D0 */   lw    $a0, 0xd0($sp)
-/* 00AD14 8000A114 0C0052ED */  jal   func_80014BB4
+/* 00AD14 8000A114 0C0052ED */  jal   update_player_track_position_factor_from_tanker_truck
 /* 00AD18 8000A118 8FA400D0 */   lw    $a0, 0xd0($sp)
-/* 00AD1C 8000A11C 0C005342 */  jal   func_80014D08
+/* 00AD1C 8000A11C 0C005342 */  jal   update_player_track_position_factor_from_cars
 /* 00AD20 8000A120 8FA400D0 */   lw    $a0, 0xd0($sp)
 /* 00AD24 8000A124 8FA5002C */  lw    $a1, 0x2c($sp)
 /* 00AD28 8000A128 24090001 */  li    $t1, 1

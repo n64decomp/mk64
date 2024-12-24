@@ -155,7 +155,7 @@ glabel func_8000B140
 /* 00BF64 8000B364 AFAA00F0 */  sw    $t2, 0xf0($sp)
 /* 00BF68 8000B368 E7A000DC */  swc1  $f0, 0xdc($sp)
 /* 00BF6C 8000B36C E7A20060 */  swc1  $f2, 0x60($sp)
-/* 00BF70 8000B370 0C001EFE */  jal   func_80007BF8
+/* 00BF70 8000B370 0C001EFE */  jal   is_waypoint_in_range
 /* 00BF74 8000B374 AFAC0010 */   sw    $t4, 0x10($sp)
 /* 00BF78 8000B378 3C0B8016 */  lui   $t3, %hi(gTrackPositionFactor) # $t3, 0x8016
 /* 00BF7C 8000B37C 256B3068 */  addiu $t3, %lo(gTrackPositionFactor) # addiu $t3, $t3, 0x3068
