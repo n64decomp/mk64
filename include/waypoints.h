@@ -48,7 +48,7 @@ extern s16* gTrackConsecutiveCurveCounts[];
 // Shadows values from gNearestWaypointByPlayerId
 extern s16 sSomeNearestWaypoint;
 // Shadows values from gPathIndexByPlayerId
-extern s32 D_80163448;
+extern s32 gActualPath;
 // Shadows values from gTrackInnerPath
 extern TrackWaypoint* gCurrentTrackInnerPath;
 // Shadows values from gCurrentTrackOuterPath
@@ -66,7 +66,7 @@ extern s16* gCurrentTrackConsecutiveCurveCountsPath;
 
 extern u16 gNearestWaypointByPlayerId[]; // D_80164438
 // Total waypoints passed by playerId?
-extern s32 D_80164450[];
+extern s32 gLapProgressScore[];
 extern u16 gPathIndexByPlayerId[];  // D_801645B0
 extern u16 gPathCountByPathIndex[]; // D_801645C8
 // These values are only used when the camera is in "cinematic" mode
@@ -78,20 +78,20 @@ extern s16 gNearestWaypointByCameraId[]; // D_80164668
  **/
 
 // Tracks something on a per-player basis, no idea what though
-extern f32 D_80163068[];
+extern f32 gTrackPositionFactor[];
 // Track segment by playerId, although it curiously does NOT track values for human players
 // So, in 2 Player Grand Prix, the first 2 entries are always 0
-extern u16 D_80163318[];
+extern u16 gPlayersTrackSectionId[];
 // Seems to be a per-path overcount of the waypoint count
 extern s32 D_80163368[];
 // Seemingly the Z position of the 1st waypoint in the 0th path?
-extern f32 D_8016344C;
+extern f32 gPathStartZ;
 // These seem to track whether a player has entered or exited the "unknown" zone in yoshi's valley
 // See func_80009000 and func_800090F0
 // Is 1 when a player is in the "unknown" zone in yoshi's valley
 extern s16 gCpuNeedChoosePath[];
 // Is 1 when a player leaves the "unknown" zone in yoshi's valley
-extern s16 D_801634A8[];
+extern s16 gCpuResetPath[];
 // Tracks whether a given player is in the "unknown" zone of yoshi's valley
 extern s16 D_801644F8[];
 

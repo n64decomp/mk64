@@ -223,7 +223,7 @@ s32 get_player_index_for_player(Player* player) {
 void func_80027DA8(Player* player, s8 playerId) {
     if (D_8015F890 != 1) {
         if ((player->type & 0x10) != 0x10) {
-            if (((D_8018D168 == 1) && ((player->type & 0x4000) == 0x4000)) && ((player->type & 0x100) != 0x100)) {
+            if (((D_8018D168 == 1) && ((player->type & PLAYER_HUMAN) == 0x4000)) && ((player->type & 0x100) != 0x100)) {
                 func_800C94A4(playerId);
                 player->type |= 0x10;
             } else if ((player->type & 0x2000) == 0) {
@@ -1669,7 +1669,8 @@ void func_8002BF4C(Player* player, s8 arg1) {
     } else {
         for (i = 0; i < NUM_PLAYERS; i++) {
             playerBorrow = &players[i];
-            if (((player != playerBorrow) && ((playerBorrow->type & 0x100) == 0) && (playerBorrow->type & 0x8000)) &&
+            if (((player != playerBorrow) && ((playerBorrow->type & PLAYER_INVISIBLE_OR_BOMB) == 0) &&
+                 (playerBorrow->type & PLAYER_EXISTS)) &&
                 ((var_a2 = func_8001FD78(player, playerBorrow->pos[0], playerBorrow->pos[1], playerBorrow->pos[2]),
                   var_a2 == 1))) {
                 player->unk_0E2 += 1;
@@ -1807,7 +1808,7 @@ void func_8002C4F8(Player* player, s8 arg1) {
     }
     if ((player->type & PLAYER_KART_AI) &&
         ((func_802ABDF4(player->collision.meshIndexZX) != 0) || (player->unk_0CA & 1))) {
-        if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8) && !(player->effects & 0x1000)) {
+        if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8) && !(player->effects & UNKNOWN_EFFECT_0x1000)) {
             func_80090778(player);
             func_80090868(player);
         }
@@ -4224,7 +4225,7 @@ void func_80036DB4(Player* player, Vec3f arg1, Vec3f arg2) {
     f32 var_f18;
     s32 temp_t6;
 
-    if (((player->effects & 0x1000) == 0x1000) || ((player->effects & 0x20) == 0x20)) {
+    if (((player->effects & UNKNOWN_EFFECT_0x1000) == UNKNOWN_EFFECT_0x1000) || ((player->effects & 0x20) == 0x20)) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
@@ -4282,7 +4283,7 @@ void func_800371F4(Player* player, Vec3f arg1, Vec3f arg2) {
     f32 var_f18;
     s32 temp_t6;
 
-    if (((player->effects & 0x1000) == 0x1000) || ((player->effects & 0x20) == 0x20)) {
+    if (((player->effects & UNKNOWN_EFFECT_0x1000) == 0x1000) || ((player->effects & 0x20) == 0x20)) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
@@ -4341,7 +4342,7 @@ void func_80037614(Player* player, Vec3f arg1, Vec3f arg2) {
     f32 var_f12;
     f32 var_f2;
 
-    if (((player->effects & 0x1000) == 0x1000) || ((player->effects & 0x20) == 0x20)) {
+    if (((player->effects & UNKNOWN_EFFECT_0x1000) == 0x1000) || ((player->effects & 0x20) == 0x20)) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
@@ -4368,7 +4369,7 @@ void func_8003777C(Player* player, Vec3f arg1, Vec3f arg2) {
     f32 var_f12;
     f32 var_f2;
 
-    if (((player->effects & 0x1000) == 0x1000) || ((player->effects & 0x20) == 0x20)) {
+    if (((player->effects & UNKNOWN_EFFECT_0x1000) == 0x1000) || ((player->effects & 0x20) == 0x20)) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;

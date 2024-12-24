@@ -65,12 +65,12 @@ glabel L8001ACAC
 /* 01B8AC 8001ACAC 2405FFFF */  li    $a1, -1
 /* 01B8B0 8001ACB0 A6050002 */  sh    $a1, 2($s0)
 /* 01B8B4 8001ACB4 8FAD0030 */  lw    $t5, 0x30($sp)
-/* 01B8B8 8001ACB8 3C0E8016 */  lui   $t6, %hi(D_80164450) # 0x8016
+/* 01B8B8 8001ACB8 3C0E8016 */  lui   $t6, %hi(gLapProgressScore) # 0x8016
 /* 01B8BC 8001ACBC 8FA40030 */  lw    $a0, 0x30($sp)
 /* 01B8C0 8001ACC0 000D1080 */  sll   $v0, $t5, 2
 /* 01B8C4 8001ACC4 01C27021 */  addu  $t6, $t6, $v0
 /* 01B8C8 8001ACC8 000D7880 */  sll   $t7, $t5, 2
-/* 01B8CC 8001ACCC 8DCE4450 */  lw    $t6, %lo(D_80164450)($t6) # 0x4450($t6)
+/* 01B8CC 8001ACCC 8DCE4450 */  lw    $t6, %lo(gLapProgressScore)($t6) # 0x4450($t6)
 /* 01B8D0 8001ACD0 01ED7821 */  addu  $t7, $t7, $t5
 /* 01B8D4 8001ACD4 000F7880 */  sll   $t7, $t7, 2
 /* 01B8D8 8001ACD8 25F80064 */  addiu $t8, $t7, 0x64

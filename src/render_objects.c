@@ -3073,12 +3073,12 @@ void func_800514BC(void) {
     for (var_s0 = var_s3 - 1, var_s1 = 0; var_s1 < var_s3; var_s1++, var_s0--) {
         temp_a0 = gGPCurrentRacePlayerIdByRank[var_s0];
         player = &gPlayerOne[temp_a0];
-        if ((player->type & 0x8000) && ((temp_a0 != 0) || (gPlayerCountSelection1 != 1))) {
+        if ((player->type & PLAYER_EXISTS) && ((temp_a0 != 0) || (gPlayerCountSelection1 != 1))) {
             func_80050E34(temp_a0, var_s0);
         }
     }
     if (gModeSelection == 1) {
-        func_80050E34(0, D_80164408[0]);
+        func_80050E34(0, gGPCurrentRaceRankByPlayerIdDup[0]);
     } else if (gPlayerCountSelection1 == 1) {
         func_80050E34(0, gGPCurrentRaceRankByPlayerId[0]);
     }

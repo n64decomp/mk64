@@ -380,7 +380,7 @@ void func_8008CDC0(Player* player, s8 arg1) {
 
     if (((player->unk_07C >> 0x10) >= 0x14) || ((player->unk_07C >> 0x10) < -0x13) ||
         (((player->unk_094 / 18.0f) * 216.0f) <= 30.0f) || ((player->effects & 8) != 0) ||
-        (((player->type & PLAYER_HUMAN) == 0) && ((player->effects & 0x1000) == 0))) {
+        (((player->type & PLAYER_HUMAN) == 0) && ((player->effects & UNKNOWN_EFFECT_0x1000) == 0))) {
         func_8008C73C(player, arg1);
     } else {
         player->effects |= 0x800;
@@ -727,7 +727,7 @@ void apply_hit_effect(Player* player, s8 arg1) {
     player->unk_08C = 0.0f;
     player->currentSpeed = 0.0f;
     // clang-format off
-    if ((player->collision.surfaceDistance[2] >= 600.0f) || ((player->effects & 0x1000) != 0)) { D_8018D990[arg1] = 3; } // placed block on same line to match
+    if ((player->collision.surfaceDistance[2] >= 600.0f) || ((player->effects & UNKNOWN_EFFECT_0x1000) != 0)) { D_8018D990[arg1] = 3; } // placed block on same line to match
     // clang-format on
 
     switch (D_8018D990[arg1]) {

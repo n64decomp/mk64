@@ -6787,7 +6787,7 @@ void func_8006E058(void) {
                 case TIME_TRIALS:
                     func_8006E420(gPlayerOne, 0, 0);
 
-                    if ((gPlayerTwo->type & 0x8000) == 0x8000) {
+                    if ((gPlayerTwo->type & PLAYER_EXISTS) == PLAYER_EXISTS) {
                         func_8006E420(gPlayerTwo, 1, 0);
                         break;
                     }

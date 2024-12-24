@@ -41,8 +41,8 @@ glabel func_8000B140
 /* 00BDA8 8000B1A8 10410187 */  beq   $v0, $at, .L8000B7C8
 /* 00BDAC 8000B1AC 2406FFFF */   li    $a2, -1
 /* 00BDB0 8000B1B0 10C20185 */  beq   $a2, $v0, .L8000B7C8
-/* 00BDB4 8000B1B4 3C0B8016 */   lui   $t3, %hi(D_80163068) # $t3, 0x8016
-/* 00BDB8 8000B1B8 256B3068 */  addiu $t3, %lo(D_80163068) # addiu $t3, $t3, 0x3068
+/* 00BDB4 8000B1B4 3C0B8016 */   lui   $t3, %hi(gTrackPositionFactor) # $t3, 0x8016
+/* 00BDB8 8000B1B8 256B3068 */  addiu $t3, %lo(gTrackPositionFactor) # addiu $t3, $t3, 0x3068
 /* 00BDBC 8000B1BC 00047880 */  sll   $t7, $a0, 2
 /* 00BDC0 8000B1C0 016FC021 */  addu  $t8, $t3, $t7
 /* 00BDC4 8000B1C4 3C01BF80 */  li    $at, 0xBF800000 # -1.000000
@@ -157,8 +157,8 @@ glabel func_8000B140
 /* 00BF6C 8000B36C E7A20060 */  swc1  $f2, 0x60($sp)
 /* 00BF70 8000B370 0C001EFE */  jal   func_80007BF8
 /* 00BF74 8000B374 AFAC0010 */   sw    $t4, 0x10($sp)
-/* 00BF78 8000B378 3C0B8016 */  lui   $t3, %hi(D_80163068) # $t3, 0x8016
-/* 00BF7C 8000B37C 256B3068 */  addiu $t3, %lo(D_80163068) # addiu $t3, $t3, 0x3068
+/* 00BF78 8000B378 3C0B8016 */  lui   $t3, %hi(gTrackPositionFactor) # $t3, 0x8016
+/* 00BF7C 8000B37C 256B3068 */  addiu $t3, %lo(gTrackPositionFactor) # addiu $t3, $t3, 0x3068
 /* 00BF80 8000B380 87A300E4 */  lh    $v1, 0xe4($sp)
 /* 00BF84 8000B384 8FA800FC */  lw    $t0, 0xfc($sp)
 /* 00BF88 8000B388 87A900E6 */  lh    $t1, 0xe6($sp)

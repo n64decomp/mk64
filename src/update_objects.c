@@ -5985,7 +5985,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
             temp_f0 = func_80088F54(objectIndex, temp_s0);
             if ((temp_f0 <= 9.0) && !(temp_s0->effects & 0x04000000) &&
                 (has_collided_horizontally_with_player(objectIndex, temp_s0) != 0)) {
-                if ((temp_s0->type & 0x8000) && !(temp_s0->type & 0x100)) {
+                if ((temp_s0->type & PLAYER_EXISTS) && !(temp_s0->type & 0x100)) {
                     if (!(temp_s0->effects & 0x200)) {
                         func_80089474(objectIndex, playerId, 1.4f, 1.1f, SOUND_ARG_LOAD(0x19, 0x00, 0xA0, 0x4C));
                     } else if (func_80072354(objectIndex, 0x00000040) != 0) {
@@ -6005,7 +6005,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
             } else if ((temp_f0 <= 17.5) && (func_80072320(objectIndex, 1) != 0) &&
                        (is_within_horizontal_distance_of_player(objectIndex, temp_s0, (temp_s0->unk_094 * 0.5) + 7.0) !=
                         0)) {
-                if ((temp_s0->type & 0x8000) && !(temp_s0->type & 0x100)) {
+                if ((temp_s0->type & PLAYER_EXISTS) && !(temp_s0->type & 0x100)) {
                     if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
@@ -6396,7 +6396,7 @@ void func_80081D34(s32 objectIndex) {
     for (var_s2 = 0; var_s2 < D_8018D158; var_s2++, player++, var_s4++) {
         if ((is_obj_flag_status_active(objectIndex, 0x00000200) != 0) && !(player->effects & 0x80000000) &&
             (has_collided_with_player(objectIndex, player) != 0)) {
-            if ((player->type & 0x8000) && !(player->type & 0x100)) {
+            if ((player->type & PLAYER_EXISTS) && !(player->type & 0x100)) {
                 var_s5 = 1;
                 object = &gObjectList[objectIndex];
                 if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {

@@ -2281,7 +2281,7 @@ void evaluate_collision_for_players_and_actors(void) {
     for (i = 0; i < NUM_PLAYERS; i++) {
         phi_s1 = &gPlayers[i];
 
-        if (((phi_s1->type & 0x8000) != 0) && ((phi_s1->effects & 0x4000000) == 0)) {
+        if (((phi_s1->type & PLAYER_EXISTS) != 0) && ((phi_s1->effects & 0x4000000) == 0)) {
             func_802977E4(phi_s1);
             for (j = 0; j < ACTOR_LIST_SIZE; j++) {
                 temp_a1 = &gActorList[j];
