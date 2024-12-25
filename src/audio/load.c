@@ -873,7 +873,7 @@ void audio_init(void) {
     audio_dma_copy_immediate(test, gAlTbl, size);
     func_800BB43C(gAlTbl, test);
     gAlBankSets = soundAlloc(&gAudioInitPool, 0x00000100U);
-    audio_dma_copy_immediate((u32) &_instrument_setsSegmentRomStart, gAlBankSets, 0x00000100U);
+    audio_dma_copy_immediate(&_instrument_setsSegmentRomStart, gAlBankSets, 0x00000100U);
     sound_alloc_pool_init(&gUnkPool1.pool, soundAlloc(&gAudioInitPool, (u32) D_800EA5D8), (u32) D_800EA5D8);
     init_sequence_players();
     gAudioLoadLock = 0x76557364;
