@@ -116,7 +116,7 @@ void destroy_banana_in_banana_bunch(struct BananaActor* banana) {
 }
 
 // Drop a banana from a banana bunch?
-void func_802B0648(struct BananaBunchParent* banana_bunch) {
+void drop_banana_in_banana_bunch(struct BananaBunchParent* banana_bunch) {
     s16 elderIndex;
     struct BananaActor* banana;
 
@@ -303,7 +303,7 @@ void update_actor_banana_bunch(struct BananaBunchParent* banana_bunch) {
                         ((controller->rawStickX < 0x28) && (controller->rawStickX >= -0x27))) {
                         func_802B0788(controller->rawStickY, banana_bunch, owner);
                     } else {
-                        func_802B0648(banana_bunch);
+                        drop_banana_in_banana_bunch(banana_bunch);
                     }
                 }
             }

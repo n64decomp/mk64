@@ -58,7 +58,7 @@ void update_actor_banana(struct BananaActor* banana) {
                 }
                 if ((controller->buttonDepressed & Z_TRIG) != 0) {
                     controller->buttonDepressed &= ~Z_TRIG;
-                    banana->state = 1;
+                    banana->state = DROPPED_BANANA;
                     banana->unk_04 = 0x00B4;
                     player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
                     func_800C9060(player - gPlayerOne, SOUND_ARG_LOAD(0x19, 0x00, 0x80, 0x12));

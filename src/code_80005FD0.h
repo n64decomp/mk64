@@ -6,15 +6,6 @@
 #include "waypoints.h"
 #include <assets/common_data.h>
 
-struct struct_801642D8 {
-    /* 0x0 */ u16 unk0;
-    /* 0x2 */ s16 ffff;
-    /* 0x4 */ s16 timer; // confirm?
-    /* 0x6 */ s16 laps;  // confirm?
-    /* 0x8 */ s32 blank;
-    /* 0xC */ s32 unkC;
-};
-
 struct unexpiredActors {
     /* 0x00 */ s32 unk0;
     /* 0x04 */ s32 unk4;
@@ -36,15 +27,15 @@ typedef struct {
 
 // Something related to CPU item usage
 typedef struct {
-    /* 0x00 */ s16 unk_00;
+    /* 0x00 */ s16 branch;
     /* 0x02 */ s16 actorIndex;
-    /* 0x04 */ s16 unk_04;
-    /* 0x06 */ s16 unk_06;
-    /* 0x08 */ s16 unk_08;
+    /* 0x04 */ s16 timer;      // confirm?
+    /* 0x06 */ s16 numItemUse; // confirm?
+    /* 0x08 */ s16 numDroppedBananaBunch;
     /* 0x0A */ s16 unk_0A;
     /* 0x0C */ s16 unk_0C;
-    /* 0x0E */ s16 unk_0E;
-} D_801642D8_entry; // size = 0x10
+    /* 0x0E */ s16 timeBeforeThrow;
+} CpuItemStrategyData; // size = 0x10
 
 typedef struct {
     s16 unk0;
@@ -57,6 +48,48 @@ typedef struct {
     s16 x;
     s16 z;
 } Path2D;
+
+enum CpuItemStrategyEnum {
+    CPU_STRATEGY_WAIT_NEXT_ITEM = 0,
+
+    CPU_STRATEGY_ITEM_BANANA,
+    CPU_STRATEGY_HOLD_BANANA,
+    CPU_STRATEGY_DROP_BANANA,
+
+    CPU_STRATEGY_ITEM_GREEN_SHELL,
+    CPU_STRATEGY_HOLD_GREEN_SHELL,
+    CPU_STRATEGY_THROW_GREEN_SHELL,
+
+    CPU_STRATEGY_ITEM_RED_SHELL,
+    CPU_STRATEGY_HOLD_RED_SHELL,
+    CPU_STRATEGY_THROW_RED_SHELL,
+
+    CPU_STRATEGY_ITEM_BANANA_BUNCH,
+    CPU_STRATEGY_WAIT_INIT_BANANA_BUNCH,
+    CPU_STRATEGY_DROP_BANANA_BUNCH,
+
+    CPU_STRATEGY_ITEM_FAKE_ITEM_BOX,
+    CPU_STRATEGY_HOLD_FAKE_ITEM_BOX,
+    CPU_STRATEGY_THROW_FAKE_ITEM_BOX,
+
+    CPU_STRATEGY_ITEM_THUNDERBOLT = 0x16,
+    CPU_STRATEGY_END_THUNDERBOLT,
+
+    CPU_STRATEGY_ITEM_STAR = 0x19,
+    CPU_STRATEGY_END_ITEM_STAR,
+
+    CPU_STRATEGY_ITEM_BOO,
+
+    CPU_STRATEGY_ITEM_MUSHROOM = 0x1D,
+    CPU_STRATEGY_ITEM_DOUBLE_MUSHROOM,
+    CPU_STRATEGY_ITEM_TRIPLE_MUSHROOM,
+    CPU_STRATEGY_ITEM_SUPER_MUSHROOM,
+    CPU_STRATEGY_USE_SUPER_MUSHROOM,
+
+    CPU_STRATEGY_THROW_BANANA = 34,
+    CPU_STRATEGY_HOLD_THROW_BANANA,
+    CPU_STRATEGY_END_THROW_BANANA
+};
 
 /* Function Prototypes */
 s16 get_angle_between_waypoints(Vec3f, Vec3f);
@@ -242,8 +275,8 @@ void func_8001A588(u16*, Camera*, Player*, s8, s32);
 void func_8001AAAC(s16, s16, s16);
 void func_8001AB00(void);
 void kart_ai_decisions_branch_item(s32, s16*, s32);
-void func_8001ABE0(s32, D_801642D8_entry*);
-void func_8001ABEC(struct struct_801642D8*);
+void func_8001ABE0(s32, CpuItemStrategyData*);
+void reset_strategy_if_actor_valid(CpuItemStrategyData*);
 void kart_ai_use_item_strategy(s32);
 
 void func_8001BE78(void);
@@ -321,7 +354,7 @@ enum {
 };
 
 extern s32 D_80163368[];
-extern s32 D_80163378;
+extern s32 gIncrementUpdatePlayer;
 extern s32 D_8016337C;
 extern s16 D_80163380[];
 extern s16 D_80163398[];
@@ -336,7 +369,7 @@ extern f32 D_80163438[];
 extern s32 gActualPath;
 extern f32 gPathStartZ;
 extern f32 gPreviousPlayerZ[];
-extern s16 D_80163478;
+extern s16 gPlayerInFront;
 // 0 or 1, only 1 when when in extra (mirror) mode
 extern s16 gIsInExtra;
 extern s16 D_8016347C;
@@ -359,7 +392,7 @@ extern u16 isCrossingTriggeredByIndex[];
 extern u16 sCrossingActiveTimer[];
 extern s32 D_80163DD8[];
 extern struct unexpiredActors gUnexpiredActorsList[];
-extern D_801642D8_entry D_801642D8[];
+extern CpuItemStrategyData gCpuItemStrategy[];
 extern s16 D_80164358;
 extern s16 D_8016435A;
 extern s16 D_8016435C;
@@ -367,7 +400,7 @@ extern s16 gGPCurrentRacePlayerIdByRank[]; // D_80164360
 extern s16 D_80164378[];
 extern s32 gLapCountByPlayerId[];          // D_80164390
 extern s32 gGPCurrentRaceRankByPlayerId[]; // D_801643B8
-extern s32 D_801643E0[];
+extern s32 gPreviousGPCurrentRaceRankByPlayerId[];
 extern s32 gGPCurrentRaceRankByPlayerIdDup[];
 extern u16 gCurrentWaypointCountByPathIndex;
 extern u16 gNearestWaypointByPlayerId[];
@@ -403,7 +436,7 @@ extern UnkStruct_46D0 D_801646D0[];
 
 // See bss_80005FD0.s
 extern f32 gCourseCompletionPercentByRank[NUM_PLAYERS];
-extern s32 D_801643E0[];
+extern s32 gPreviousGPCurrentRaceRankByPlayerId[];
 extern s32 D_8016448C;
 extern u16 D_801637BE;
 extern u16 D_80163E2A;

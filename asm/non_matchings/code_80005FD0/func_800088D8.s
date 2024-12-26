@@ -140,8 +140,8 @@ glabel func_800088D8
 /* 0096DC 80008ADC 24010003 */  li    $at, 3
 /* 0096E0 80008AE0 000FC040 */  sll   $t8, $t7, 1
 /* 0096E4 80008AE4 0301001A */  div   $zero, $t8, $at
-/* 0096E8 80008AE8 3C0B8016 */  lui   $t3, %hi(D_80163478) # $t3, 0x8016
-/* 0096EC 80008AEC 856B3478 */  lh    $t3, %lo(D_80163478)($t3)
+/* 0096E8 80008AE8 3C0B8016 */  lui   $t3, %hi(gPlayerInFront) # $t3, 0x8016
+/* 0096EC 80008AEC 856B3478 */  lh    $t3, %lo(gPlayerInFront)($t3)
 /* 0096F0 80008AF0 3C0D8016 */  lui   $t5, %hi(gGPCurrentRaceRankByPlayerId + 0x2) # 0x8016
 /* 0096F4 80008AF4 000BC880 */  sll   $t9, $t3, 2
 /* 0096F8 80008AF8 00997021 */  addu  $t6, $a0, $t9

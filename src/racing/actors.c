@@ -2376,7 +2376,7 @@ void evaluate_collision_for_destructible_actors(void) {
 void func_802A1064(struct FakeItemBox* fake_item_box) {
     if ((u32) (fake_item_box - (struct FakeItemBox*) gActorList) <= (u32) ACTOR_LIST_SIZE) {
         if (((fake_item_box->flags & 0x8000) != 0) && (fake_item_box->type == ACTOR_FAKE_ITEM_BOX)) {
-            fake_item_box->state = 1;
+            fake_item_box->state = FAKE_ITEM_BOX_ON_GROUND;
             fake_item_box->targetY = func_802ABEAC(&fake_item_box->unk30, fake_item_box->pos) + 8.66f;
             fake_item_box->someTimer = 100;
         }

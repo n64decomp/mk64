@@ -104,7 +104,7 @@ u16 D_80163348[2];
 u16 D_8016334C[2];
 u16 gSpeedKartAIBehaviour[12];
 s32 gSizePath[4];
-s32 D_80163378;
+s32 gIncrementUpdatePlayer;
 s32 D_8016337C;
 s16 D_80163380[12];
 s16 D_80163398[12];
@@ -119,7 +119,7 @@ f32 D_80163438[4];
 s32 gActualPath;
 f32 gPathStartZ;
 f32 gPreviousPlayerZ[10];
-s16 D_80163478;
+s16 gPlayerInFront;
 s16 gIsInExtra;
 s16 D_8016347C;
 s16 D_8016347E;
@@ -149,7 +149,7 @@ s32 D_80163DD8[4];
 BombKart gBombKarts[NUM_BOMB_KARTS_MAX];
 Collision D_80164038[NUM_BOMB_KARTS_MAX];
 struct unexpiredActors gUnexpiredActorsList[8];
-D_801642D8_entry D_801642D8[8];
+CpuItemStrategyData gCpuItemStrategy[NUM_PLAYERS];
 s16 D_80164358;
 s16 D_8016435A;
 s16 D_8016435C;
@@ -157,7 +157,7 @@ s16 gGPCurrentRacePlayerIdByRank[12]; // D_80164360
 s16 D_80164378[12];
 s32 gLapCountByPlayerId[10];          // D_80164390
 s32 gGPCurrentRaceRankByPlayerId[10]; // D_801643B8
-s32 D_801643E0[10];
+s32 gPreviousGPCurrentRaceRankByPlayerId[10];
 s32 gGPCurrentRaceRankByPlayerIdDup[10];
 u16 gCurrentWaypointCountByPathIndex;
 u16 gNearestWaypointByPlayerId[12];
@@ -762,7 +762,7 @@ void set_places(void) {
     }
 
     for (playerId = 0; playerId < NUM_PLAYERS; playerId++) {
-        D_801643E0[playerId] = gGPCurrentRaceRankByPlayerId[playerId];
+        gPreviousGPCurrentRaceRankByPlayerId[playerId] = gGPCurrentRaceRankByPlayerId[playerId];
     }
 
     for (playerId = 0; playerId < numPlayer; playerId++) {
@@ -838,7 +838,7 @@ void update_places(void) {
     }
 
     for (i = 0; i < NUM_PLAYERS; i++) {
-        D_801643E0[i] = gGPCurrentRaceRankByPlayerId[i];
+        gPreviousGPCurrentRaceRankByPlayerId[i] = gGPCurrentRaceRankByPlayerId[i];
     }
 
     for (i = 0; i < numRacers; i++) {
@@ -904,8 +904,8 @@ void set_places_end_course_with_time(void) {
         }
     }
 
-    for (i = 0; i < 8; i++) {
-        D_801643E0[i] = gGPCurrentRaceRankByPlayerId[i];
+    for (i = 0; i < NUM_PLAYERS; i++) {
+        gPreviousGPCurrentRaceRankByPlayerId[i] = gGPCurrentRaceRankByPlayerId[i];
     }
 
     for (i = 0; i < this_loops_upper_bound_is_brough_to_you_by_the_number; i++) {
@@ -950,11 +950,11 @@ void func_80007D04(s32 playerId, Player* player) {
     s16 temp_t2;
     s32 var_v0;
 
-    temp_t1 = gLapProgressScore[D_80163478];
+    temp_t1 = gLapProgressScore[gPlayerInFront];
     temp_t2 = gLapProgressScore[playerId];
 
     if (gGPCurrentRaceRankByPlayerId[playerId] < 2) {
-        s16 val1 = gGPCurrentRaceRankByPlayerId[D_80163478];
+        s16 val1 = gGPCurrentRaceRankByPlayerId[gPlayerInFront];
         s16 val2 = temp_t2 - temp_t1;
 
         if (val2 > 400 && val1 >= 6) {
@@ -1253,8 +1253,8 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
             }
             return true;
         }
-        progress = gLapProgressScore[playerId] - gLapProgressScore[D_80163478];
-        rank = gGPCurrentRaceRankByPlayerId[2 + (D_80163478 * 4)];
+        progress = gLapProgressScore[playerId] - gLapProgressScore[gPlayerInFront];
+        rank = gGPCurrentRaceRankByPlayerId[2 + (gPlayerInFront * 4)];
         if (gPathCountByPathIndex[0] * 2 / 3 < progress && rank >= 6) {
             progress = gLapProgressScore[playerId] - gLapProgressScore[gLapCountByPlayerId[-26 + rank * 2]];
         }
@@ -1498,7 +1498,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
                 gLapCountByPlayerId[playerId]++;
                 if ((gModeSelection == 0) && (gLapCountByPlayerId[playerId] == 5)) {
                     if (gGPCurrentRaceRankByPlayerIdDup[playerId] == 7) {
-                        for (var_v0 = 0; var_v0 < 8; var_v0++) {
+                        for (var_v0 = 0; var_v0 < NUM_PLAYERS; var_v0++) {
                             gLapCountByPlayerId[var_v0]--;
                         }
                     }
@@ -1506,7 +1506,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
                 D_80163240[playerId] = 1;
                 update_player_completion(playerId);
                 reset_kart_ai_behaviour(playerId);
-                D_801642D8[playerId].unk_06 = 0;
+                gCpuItemStrategy[playerId].timer = 0;
                 if ((D_8016348C == 0) && !(player->type & PLAYER_CINEMATIC_MODE)) {
                     gTimePlayerLastTouchedFinishLine[playerId] = func_80009258(playerId, previousPlayerZ, playerZ);
                 }
@@ -1527,10 +1527,10 @@ void update_player_path_completion(s32 playerId, Player* player) {
     if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_KART_AI)) {
         detect_player_wrong_direction(playerId, player);
         if ((gModeSelection == 0) && (gPlayerCount == 2) && (playerId == 0)) {
-            if (gGPCurrentRaceRankByPlayerIdDup[0] < gGPCurrentRaceRankByPlayerIdDup[1]) {
-                D_80163478 = 0;
+            if (gGPCurrentRaceRankByPlayerIdDup[PLAYER_ONE] < gGPCurrentRaceRankByPlayerIdDup[PLAYER_TWO]) {
+                gPlayerInFront = PLAYER_ONE;
             } else {
-                D_80163478 = 1;
+                gPlayerInFront = PLAYER_TWO;
             }
         }
     } else {
@@ -1603,8 +1603,8 @@ void func_800099EC(s32 playerId, UNUSED Player* unused) {
     if (D_801633C8[playerId] >= 0x65) {
         for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
             if ((gGPCurrentRaceRankByPlayerId[playerId] < gGPCurrentRaceRankByPlayerId[var_s0]) &&
-                (gGPCurrentRaceRankByPlayerId[playerId] == D_801643E0[var_s0]) &&
-                (gGPCurrentRaceRankByPlayerId[var_s0] == D_801643E0[playerId])) {
+                (gGPCurrentRaceRankByPlayerId[playerId] == gPreviousGPCurrentRaceRankByPlayerId[var_s0]) &&
+                (gGPCurrentRaceRankByPlayerId[var_s0] == gPreviousGPCurrentRaceRankByPlayerId[playerId])) {
                 func_800C92CC(playerId, 0x2900800DU);
                 D_801633C8[playerId] = 0;
             }
@@ -1674,8 +1674,8 @@ void func_80009B60(s32 playerId) {
     if ((s32) GET_COURSE_AIMaximumSeparation >= 0) {
         D_80163100[playerId] += 1;
         if (playerId == 0) {
-            D_80163378++;
-            if (D_80163378 & 1) {
+            gIncrementUpdatePlayer++;
+            if (gIncrementUpdatePlayer & 1) {
                 D_80163488 += 1;
             }
         }
@@ -1731,7 +1731,8 @@ void func_80009B60(s32 playerId) {
                 if ((gIsPlayerNewWaypoint == true) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
                     kart_ai_behaviour(playerId);
                 }
-                if ((playerId & 1) != (D_80163378 & 1)) {
+                // one update it try to use an item, the other it doesn't
+                if ((playerId & 1) != (gIncrementUpdatePlayer & 1)) {
                     kart_ai_use_item_strategy(playerId);
                 }
                 func_800099EC(playerId, player);
@@ -1785,7 +1786,7 @@ void func_80009B60(s32 playerId) {
                 if (D_801631E0[playerId] == 1) {
                     D_801630E8[playerId] = 0;
                     player->effects &= ~0x10;
-                    if ((playerId & 1) != (D_80163378 & 1)) {
+                    if ((playerId & 1) != (gIncrementUpdatePlayer & 1)) {
                         func_8003680C(player, 0);
                         func_80008424(playerId, D_80163210[playerId], player);
                         return;
@@ -1874,10 +1875,10 @@ void func_80009B60(s32 playerId) {
                 }
                 // MISMATCH1
 #if FAKEMATCH2 == 1
-                stackPadding00 = (playerId & 1) != (D_80163378 & 1);
+                stackPadding00 = (playerId & 1) != (gIncrementUpdatePlayer & 1);
                 if (stackPadding00) {
 #else
-                if ((playerId & 1) != (D_80163378 & 1)) {
+                if ((playerId & 1) != (gIncrementUpdatePlayer & 1)) {
 #endif
                     func_8003680C(player, D_80163050[playerId]);
                     func_80008424(playerId, D_80163210[playerId], player);
@@ -3591,10 +3592,10 @@ void init_players(void) {
             if (1) {};
             if (1) {}; // Maybe some debug code?
             gGPCurrentRaceRankByPlayerId[i] = (s32) D_80165270[i];
-            D_801643E0[i] = (s32) D_80165270[i];
+            gPreviousGPCurrentRaceRankByPlayerId[i] = (s32) D_80165270[i];
         } else {
             gGPCurrentRaceRankByPlayerId[i] = i;
-            D_801643E0[i] = i;
+            gPreviousGPCurrentRaceRankByPlayerId[i] = i;
         }
         temp_v0_3 = gGPCurrentRaceRankByPlayerId[i];
         gGPCurrentRacePlayerIdByRank[temp_v0_3] = (s16) i;
@@ -3701,8 +3702,8 @@ void init_players(void) {
     D_80164358 = 0;
     D_8016435A = 1;
     D_8016435C = 1;
-    D_80163478 = 0;
-    D_80163378 = 0;
+    gPlayerInFront = 0;
+    gIncrementUpdatePlayer = 0;
     D_8016337C = 0;
     gPathStartZ = (f32) gTrackPath[0][0].posZ; // [i][2]
     D_801634F0 = 0;
@@ -6826,7 +6827,7 @@ void func_80019D2C(Camera* camera, Player* player, s32 arg2) {
     s32 nearestWaypoint;
 
     playerId = camera->playerId;
-    if ((D_80163378 != 0) && (gCurrentCourseId == COURSE_LUIGI_RACEWAY)) {
+    if ((gIncrementUpdatePlayer != 0) && (gCurrentCourseId == COURSE_LUIGI_RACEWAY)) {
         calculate_camera_up_vector(camera, arg2);
         nearestWaypoint = gNearestWaypointByPlayerId[playerId];
         if (((nearestWaypoint >= 0x65) && (nearestWaypoint < 0xFA)) ||
@@ -7170,34 +7171,34 @@ void func_8001AB00(void) {
     s32 var_v1;
 
     for (var_v1 = 0; var_v1 < NUM_PLAYERS; var_v1++) {
-        D_801642D8[var_v1].unk_00 = 0;
-        D_801642D8[var_v1].unk_04 = 0;
-        D_801642D8[var_v1].actorIndex = -1;
-        D_801642D8[var_v1].unk_06 = 0;
-        D_801642D8[var_v1].unk_08 = 0;
+        gCpuItemStrategy[var_v1].branch = 0;
+        gCpuItemStrategy[var_v1].timer = 0;
+        gCpuItemStrategy[var_v1].actorIndex = -1;
+        gCpuItemStrategy[var_v1].numItemUse = 0;
+        gCpuItemStrategy[var_v1].numDroppedBananaBunch = 0;
     }
 }
 
-void kart_ai_decisions_branch_item(UNUSED s32 arg0, s16* arg1, s32 arg2) {
+void kart_ai_decisions_branch_item(UNUSED s32 playerId, s16* branch, s32 itemId) {
     s32 value = -1;
-    switch (arg2) {
+    switch (itemId) {
         case ITEM_FAKE_ITEM_BOX:
-            value = 0xD;
+            value = CPU_STRATEGY_ITEM_FAKE_ITEM_BOX;
             break;
         case ITEM_BOO:
-            value = 0x1B;
+            value = CPU_STRATEGY_ITEM_BOO;
             break;
         case ITEM_BANANA:
-            value = 1;
+            value = CPU_STRATEGY_ITEM_BANANA;
             break;
         case ITEM_THUNDERBOLT:
-            value = 0x16;
+            value = CPU_STRATEGY_ITEM_THUNDERBOLT;
             break;
         case ITEM_STAR:
-            value = 0x19;
+            value = CPU_STRATEGY_ITEM_STAR;
             break;
         case ITEM_MUSHROOM:
-            value = 0x1D;
+            value = CPU_STRATEGY_ITEM_MUSHROOM;
             break;
         case ITEM_DOUBLE_MUSHROOM:
             break;
@@ -7207,16 +7208,16 @@ void kart_ai_decisions_branch_item(UNUSED s32 arg0, s16* arg1, s32 arg2) {
             break;
     }
     if (value >= 0) {
-        *arg1 = value;
+        *branch = value;
     }
 }
 
-void func_8001ABE0(UNUSED s32 arg0, UNUSED D_801642D8_entry* arg1) {
+void func_8001ABE0(UNUSED s32 playerId, UNUSED CpuItemStrategyData* arg1) {
 }
 
-void func_8001ABEC(struct struct_801642D8* arg0) {
-    if ((arg0->ffff < 0) || (arg0->ffff >= 100)) {
-        arg0->unk0 = 0;
+void reset_strategy_if_actor_valid(CpuItemStrategyData* arg0) {
+    if ((arg0->actorIndex < 0) || (arg0->actorIndex >= 0x64)) {
+        arg0->branch = 0;
         arg0->timer = 0;
     }
 }
@@ -7227,10 +7228,10 @@ void func_8001ABEC(struct struct_801642D8* arg0) {
 // might have to get creative/ugly with just a single generic `Actor` variable.
 // https://decomp.me/scratch/FOlbG
 void kart_ai_use_item_strategy(s32 playerId) {
-    s32 var_v0;
+    bool isNoProblem;
     Player* player;
     TrackWaypoint* waypoint;
-    D_801642D8_entry* temp_s0;
+    CpuItemStrategyData* temp_s0;
     struct Actor* actor;
     struct ShellActor* shell;
     struct BananaActor* banana;
@@ -7240,13 +7241,13 @@ void kart_ai_use_item_strategy(s32 playerId) {
     player = &gPlayerOne[playerId];
     if (((gModeSelection != ((s32) 1)) && (((u16) D_801646CC) != ((u16) 1))) &&
         (!(player->type & PLAYER_CINEMATIC_MODE))) {
-        temp_s0 = &D_801642D8[playerId];
-        switch (temp_s0->unk_00) {
-            case 0:
+        temp_s0 = &gCpuItemStrategy[playerId];
+        switch (temp_s0->branch) {
+            case CPU_STRATEGY_WAIT_NEXT_ITEM:
                 temp_s0->actorIndex = -1;
-                if ((((playerId * 0x14) + 0x64) < gLapProgressScore[playerId]) && (temp_s0->unk_04 >= 0x259) &&
-                    (temp_s0->unk_06 < 3) && (gLapCountByPlayerId[playerId] < 3)) {
-                    kart_ai_decisions_branch_item(playerId, &temp_s0->unk_00,
+                if ((((playerId * 0x14) + 0x64) < gLapProgressScore[playerId]) && (temp_s0->timer >= 0x259) &&
+                    (temp_s0->numItemUse < 3) && (gLapCountByPlayerId[playerId] < 3)) {
+                    kart_ai_decisions_branch_item(playerId, &temp_s0->branch,
                                                   kart_ai_gen_random_item((s16) gLapCountByPlayerId[playerId],
                                                                           gGPCurrentRaceRankByPlayerId[playerId]));
                 } else {
@@ -7254,69 +7255,71 @@ void kart_ai_use_item_strategy(s32 playerId) {
                 }
                 break;
 
-            case 1:
+            case CPU_STRATEGY_ITEM_BANANA:
+                // never true
                 if ((gLapCountByPlayerId[playerId] > 0) &&
-                    (gGPCurrentRaceRankByPlayerId[D_80163478] > gGPCurrentRaceRankByPlayerId[playerId]) &&
-                    (gGPCurrentRaceRankByPlayerId[D_80163478] == 0)) {
+                    (gGPCurrentRaceRankByPlayerId[gPlayerInFront] > gGPCurrentRaceRankByPlayerId[playerId]) &&
+                    (gGPCurrentRaceRankByPlayerId[gPlayerInFront] == FIRST_PLACE)) {
                     switch (player->characterId) {
-                        case 4:
+                        case DK:
                             if (is_waypoint_in_range(gNearestWaypointByPlayerId[playerId],
-                                                     gNearestWaypointByPlayerId[D_80163478], 0x0028U, 2U,
+                                                     gNearestWaypointByPlayerId[gPlayerInFront], 0x0028U, 2U,
                                                      (u16) ((s32) gCurrentWaypointCountByPathIndex)) > 0) {
-                                temp_s0->unk_00 = 0x0022;
+                                temp_s0->branch = CPU_STRATEGY_THROW_BANANA;
                             }
                             break;
 
-                        case 6:
+                        case PEACH:
                             if (is_waypoint_in_range(gNearestWaypointByPlayerId[playerId],
-                                                     gNearestWaypointByPlayerId[D_80163478], 4U, 2U,
+                                                     gNearestWaypointByPlayerId[gPlayerInFront], 4U, 2U,
                                                      (u16) ((s32) gCurrentWaypointCountByPathIndex)) > 0) {
-                                temp_s0->unk_00 = 0x0022;
+                                temp_s0->branch = CPU_STRATEGY_THROW_BANANA;
                             }
                             break;
 
                         default:
                             if (is_waypoint_in_range(gNearestWaypointByPlayerId[playerId],
-                                                     gNearestWaypointByPlayerId[D_80163478], 0x000AU, 2U,
+                                                     gNearestWaypointByPlayerId[gPlayerInFront], 0x000AU, 2U,
                                                      (u16) ((s32) gCurrentWaypointCountByPathIndex)) > 0) {
-                                temp_s0->unk_00 = 0x0022;
+                                temp_s0->branch = CPU_STRATEGY_THROW_BANANA;
                             }
                             break;
                     }
-                } else if (temp_s0->unk_00 == 1) {
+                } else if (temp_s0->branch == CPU_STRATEGY_ITEM_BANANA) {
                     temp_s0->actorIndex = use_banana_item(player);
                     if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
                         player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
-                        temp_s0->unk_00 = 2;
-                        temp_s0->unk_04 = 0;
-                        temp_s0->unk_06 += 1;
-                        temp_s0->unk_0E = (random_int(3U) * 0x14) + 0xA;
+                        temp_s0->branch = CPU_STRATEGY_HOLD_BANANA;
+                        temp_s0->timer = 0;
+                        temp_s0->numItemUse += 1;
+                        temp_s0->timeBeforeThrow = (random_int(3U) * 0x14) + 0xA;
                     } else {
-                        temp_s0->unk_00 = 0;
-                        temp_s0->unk_04 = 0;
+                        temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                        temp_s0->timer = 0;
                     }
                 }
                 break;
 
-            case 2:
+            case CPU_STRATEGY_HOLD_BANANA:
                 banana = (struct BananaActor*) &gActorList[temp_s0->actorIndex];
-                if ((!(banana->flags & 0x8000)) || (banana->type != 6) || (banana->state != 0) ||
+                if ((!(banana->flags & 0x8000)) || (banana->type != ACTOR_BANANA) || (banana->state != HELD_BANANA) ||
                     (playerId != banana->playerId)) {
-                    temp_s0->unk_00 = 0;
-                    temp_s0->unk_04 = 0;
-                    player->soundEffects &= ~0x00040000;
-                } else if (temp_s0->unk_0E < temp_s0->unk_04) {
-                    temp_s0->unk_00 = 3;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                    temp_s0->timer = 0;
+                    player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                } else if (temp_s0->timeBeforeThrow < temp_s0->timer) {
+                    temp_s0->branch = CPU_STRATEGY_DROP_BANANA;
                 }
                 break;
 
-            case 3:
+            case CPU_STRATEGY_DROP_BANANA:
                 banana = (struct BananaActor*) &gActorList[temp_s0->actorIndex];
-                if ((((!(banana->flags & 0x8000)) || (banana->type != 6)) || (banana->state != 0)) ||
+                if ((((!(banana->flags & 0x8000)) || (banana->type != ACTOR_BANANA)) ||
+                     (banana->state != HELD_BANANA)) ||
                     (playerId != banana->playerId)) {
                     if (playerId != banana->playerId) {}
                 } else {
-                    banana->state = 1;
+                    banana->state = DROPPED_BANANA;
                     banana->velocity[0] = 0.0f;
                     banana->velocity[1] = 0.0f;
                     banana->velocity[2] = 0.0f;
@@ -7326,23 +7329,23 @@ void kart_ai_use_item_strategy(s32 playerId) {
                             (banana->boundingBoxSize + 1.0f);
                     }
                 }
-                player->soundEffects &= ~0x00040000;
-                temp_s0->unk_04 = 0;
-                temp_s0->unk_00 = 0;
+                player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                temp_s0->timer = 0;
+                temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 break;
 
-            case 34:
+            case CPU_STRATEGY_THROW_BANANA:
                 temp_s0->actorIndex = use_banana_item(player);
                 if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
                     banana = (struct BananaActor*) &gActorList[temp_s0->actorIndex];
-                    banana->state = 4;
+                    banana->state = BANANA_ON_GROUND;
                     player->soundEffects |= HOLD_BANANA_SOUND_EFFECT;
-                    temp_s0->unk_00 = 0x0023;
-                    temp_s0->unk_04 = 0;
-                    temp_s0->unk_06 += 1;
-                    waypoint =
-                        &gTrackPath[gPathIndexByPlayerId[0]][(gNearestWaypointByPlayerId[D_80163478] + 0x1E) %
-                                                             gPathCountByPathIndex[gPathIndexByPlayerId[D_80163478]]];
+                    temp_s0->branch = CPU_STRATEGY_HOLD_THROW_BANANA;
+                    temp_s0->timer = 0;
+                    temp_s0->numItemUse += 1;
+                    waypoint = &gTrackPath[gPathIndexByPlayerId[0]]
+                                          [(gNearestWaypointByPlayerId[gPlayerInFront] + 0x1E) %
+                                           gPathCountByPathIndex[gPathIndexByPlayerId[gPlayerInFront]]];
                     banana->velocity[0] = (waypoint->posX - player->pos[0]) / 20.0;
                     banana->velocity[1] = ((waypoint->posY - player->pos[1]) / 20.0) + 4.0;
                     banana->velocity[2] = (waypoint->posZ - player->pos[2]) / 20.0;
@@ -7350,36 +7353,38 @@ void kart_ai_use_item_strategy(s32 playerId) {
                     func_800C92CC(playerId, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x09));
                     func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x14));
                 } else {
-                    temp_s0->unk_00 = 0;
-                    temp_s0->unk_04 = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                    temp_s0->timer = 0;
                 }
                 break;
 
-            case 35:
+            case CPU_STRATEGY_HOLD_THROW_BANANA:
                 banana = (struct BananaActor*) &gActorList[temp_s0->actorIndex];
-                if ((((!(banana->flags & 0x8000)) || (banana->type != 6)) || (banana->state != 4)) ||
+                if ((((!(banana->flags & 0x8000)) || (banana->type != ACTOR_BANANA)) ||
+                     (banana->state != BANANA_ON_GROUND)) ||
                     (playerId != banana->playerId)) {
-                    temp_s0->unk_00 = 0;
-                    temp_s0->unk_04 = 0;
-                    player->soundEffects &= ~0x00040000;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                    temp_s0->timer = 0;
+                    player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
                 } else {
                     banana->velocity[1] -= 0.4;
                     banana->pos[0] += banana->velocity[0];
                     banana->pos[1] += banana->velocity[1];
                     banana->pos[2] += banana->velocity[2];
-                    if (temp_s0->unk_04 >= 0x15) {
-                        temp_s0->unk_00 = 0x0024;
+                    if (temp_s0->timer >= 0x15) {
+                        temp_s0->branch = CPU_STRATEGY_END_THROW_BANANA;
                     }
                 }
                 break;
 
-            case 36:
+            case CPU_STRATEGY_END_THROW_BANANA:
                 banana = (struct BananaActor*) &gActorList[temp_s0->actorIndex];
-                if ((((!(banana->flags & 0x8000)) || (banana->type != 6)) || (banana->state != 4)) ||
+                if ((((!(banana->flags & 0x8000)) || (banana->type != ACTOR_BANANA)) ||
+                     (banana->state != BANANA_ON_GROUND)) ||
                     (playerId != banana->playerId)) {
                     if (playerId != banana->playerId) {}
                 } else {
-                    banana->state = 1;
+                    banana->state = DROPPED_BANANA;
                     banana->velocity[0] = 0.0f;
                     banana->velocity[1] = 0.0f;
                     banana->velocity[2] = 0.0f;
@@ -7387,214 +7392,219 @@ void kart_ai_use_item_strategy(s32 playerId) {
                         get_surface_height(banana->pos[0], (f32) (((f64) banana->pos[1]) + 30.0), banana->pos[2]) +
                         (banana->boundingBoxSize + 1.0f);
                 }
-                player->soundEffects &= ~0x00040000;
-                temp_s0->unk_00 = 0;
-                temp_s0->unk_04 = 0;
+                player->soundEffects &= ~HOLD_BANANA_SOUND_EFFECT;
+                temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                temp_s0->timer = 0;
                 break;
 
-            case 4:
+            case CPU_STRATEGY_ITEM_GREEN_SHELL:
                 if (((s32) gNumActors) < 0x50) {
                     temp_s0->actorIndex = use_green_shell_item(player);
                     if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
-                        temp_s0->unk_00 = 5;
-                        temp_s0->unk_04 = 0;
-                        temp_s0->unk_06 += 1;
-                        temp_s0->unk_0E = (random_int(3U) * 0x14) + 0xA;
+                        temp_s0->branch = CPU_STRATEGY_HOLD_GREEN_SHELL;
+                        temp_s0->timer = 0;
+                        temp_s0->numItemUse += 1;
+                        temp_s0->timeBeforeThrow = (random_int(3U) * 0x14) + 0xA;
                     } else {
-                        temp_s0->unk_00 = 0;
+                        temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                     }
                 } else {
-                    temp_s0->unk_00 = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 }
                 break;
 
-            case 5:
+            case CPU_STRATEGY_HOLD_GREEN_SHELL:
                 actor = &gActorList[temp_s0->actorIndex];
-                if ((((!(actor->flags & 0x8000)) || (actor->type != 7)) || (actor->state != 0)) ||
+                if ((((!(actor->flags & 0x8000)) || (actor->type != ACTOR_GREEN_SHELL)) ||
+                     (actor->state != HELD_SHELL)) ||
                     (playerId != actor->rot[2])) {
-                    temp_s0->unk_00 = 0;
-                    temp_s0->unk_04 = 0;
-                } else if (temp_s0->unk_0E < temp_s0->unk_04) {
-                    temp_s0->unk_00 = 6;
-                    temp_s0->unk_04 = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                    temp_s0->timer = 0;
+                } else if (temp_s0->timeBeforeThrow < temp_s0->timer) {
+                    temp_s0->branch = CPU_STRATEGY_THROW_GREEN_SHELL;
+                    temp_s0->timer = 0;
                 }
                 break;
 
-            case 6:
+            case CPU_STRATEGY_THROW_GREEN_SHELL:
                 actor = &gActorList[temp_s0->actorIndex];
-                if ((((!(actor->flags & 0x8000)) || (actor->type != 7)) || (actor->state != 0)) ||
+                if ((((!(actor->flags & 0x8000)) || (actor->type != ACTOR_GREEN_SHELL)) ||
+                     (actor->state != HELD_SHELL)) ||
                     (playerId != actor->rot[2])) {
-                    temp_s0->unk_00 = 0;
-                    temp_s0->unk_04 = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                    temp_s0->timer = 0;
                 } else {
-                    actor->state = 1;
-                    temp_s0->unk_04 = 0;
-                    temp_s0->unk_00 = 0;
+                    actor->state = RELEASED_SHELL;
+                    temp_s0->timer = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 }
                 break;
 
-            case 7:
+            case CPU_STRATEGY_ITEM_RED_SHELL:
                 if (((s32) gNumActors) < 0x50) {
                     temp_s0->actorIndex = use_red_shell_item(player);
                     if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
-                        temp_s0->unk_00 = 8;
-                        temp_s0->unk_04 = 0;
-                        temp_s0->unk_06 += 1;
-                        temp_s0->unk_0E = (random_int(3U) * 0x14) + 0xA;
+                        temp_s0->branch = CPU_STRATEGY_HOLD_RED_SHELL;
+                        temp_s0->timer = 0;
+                        temp_s0->numItemUse += 1;
+                        temp_s0->timeBeforeThrow = (random_int(3U) * 0x14) + 0xA;
                     } else {
-                        temp_s0->unk_00 = 0;
+                        temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                     }
                 } else {
-                    temp_s0->unk_00 = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 }
                 break;
 
-            case 8:
+            case CPU_STRATEGY_HOLD_RED_SHELL:
                 shell = (struct ShellActor*) &gActorList[temp_s0->actorIndex];
-                if ((((!(shell->flags & 0x8000)) || (shell->type != 8)) || (shell->state != 0)) ||
+                if ((((!(shell->flags & 0x8000)) || (shell->type != ACTOR_RED_SHELL)) ||
+                     (shell->state != HELD_SHELL)) ||
                     (playerId != shell->playerId)) {
-                    temp_s0->unk_00 = 0;
-                    temp_s0->unk_04 = 0;
-                } else if (temp_s0->unk_0E < temp_s0->unk_04) {
-                    temp_s0->unk_00 = 9;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                    temp_s0->timer = 0;
+                } else if (temp_s0->timeBeforeThrow < temp_s0->timer) {
+                    temp_s0->branch = CPU_STRATEGY_THROW_RED_SHELL;
                 }
                 break;
 
-            case 9:
-                func_8001ABEC((struct struct_801642D8*) temp_s0);
+            case CPU_STRATEGY_THROW_RED_SHELL:
+                reset_strategy_if_actor_valid(temp_s0);
                 shell = (struct ShellActor*) &gActorList[temp_s0->actorIndex];
-                if ((((!(shell->flags & 0x8000)) || (shell->type != 8)) || (shell->state != 0)) ||
+                if ((((!(shell->flags & 0x8000)) || (shell->type != ACTOR_RED_SHELL)) ||
+                     (shell->state != HELD_SHELL)) ||
                     (playerId != shell->playerId)) {
-                    temp_s0->unk_00 = 0;
-                    temp_s0->unk_04 = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                    temp_s0->timer = 0;
                 } else {
-                    shell->state = 1;
-                    temp_s0->unk_04 = 0;
-                    temp_s0->unk_00 = 0;
+                    shell->state = RELEASED_SHELL;
+                    temp_s0->timer = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 }
                 break;
 
-            case 10:
+            case CPU_STRATEGY_ITEM_BANANA_BUNCH:
                 if (((s32) gNumActors) < 0x50) {
                     temp_s0->actorIndex = use_banana_bunch_item(player);
                     if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
-                        temp_s0->unk_00 = 0x000B;
-                        temp_s0->unk_04 = 0;
-                        temp_s0->unk_06 += 1;
-                        temp_s0->unk_0E = (random_int(3U) * 0x14) + 0x3C;
+                        temp_s0->branch = CPU_STRATEGY_WAIT_INIT_BANANA_BUNCH;
+                        temp_s0->timer = 0;
+                        temp_s0->numItemUse += 1;
+                        temp_s0->timeBeforeThrow = (random_int(3U) * 0x14) + 0x3C;
                     } else {
-                        temp_s0->unk_00 = 0;
+                        temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                     }
                 } else {
-                    temp_s0->unk_00 = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 }
                 break;
 
-            case 11:
+            case CPU_STRATEGY_WAIT_INIT_BANANA_BUNCH:
                 bananaBunchParent = (struct BananaBunchParent*) &gActorList[temp_s0->actorIndex];
                 if (bananaBunchParent->state == 6) {
-                    var_v0 = 0;
+                    isNoProblem = false;
                     if (bananaBunchParent->bananaIndices[4] != (-1)) {
-                        var_v0 = 1;
+                        isNoProblem = true;
                     }
                     if (bananaBunchParent->bananaIndices[3] != (-1)) {
-                        var_v0 = 1;
+                        isNoProblem = true;
                     }
                     if (bananaBunchParent->bananaIndices[2] != (-1)) {
-                        var_v0 = 1;
+                        isNoProblem = true;
                     }
                     if (bananaBunchParent->bananaIndices[1] != (-1)) {
-                        var_v0 = 1;
+                        isNoProblem = true;
                     }
                     if (bananaBunchParent->bananaIndices[0] != (-1)) {
-                        var_v0 = 1;
+                        isNoProblem = true;
                     }
-                    if ((bananaBunchParent->type != 0x000E) || (var_v0 == 0)) {
-                        temp_s0->unk_00 = 0;
-                        temp_s0->unk_04 = 0;
-                    } else if (temp_s0->unk_0E < temp_s0->unk_04) {
-                        temp_s0->unk_00 = 0x000C;
-                        temp_s0->unk_08 = 0;
-                        temp_s0->unk_04 = 0;
+                    if ((bananaBunchParent->type != ACTOR_BANANA_BUNCH) || (isNoProblem == false)) {
+                        temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                        temp_s0->timer = 0;
+                    } else if (temp_s0->timeBeforeThrow < temp_s0->timer) {
+                        temp_s0->branch = CPU_STRATEGY_DROP_BANANA_BUNCH;
+                        temp_s0->numDroppedBananaBunch = 0;
+                        temp_s0->timer = 0;
                     }
                 }
                 break;
 
-            case 12:
-                if ((((s16) temp_s0->unk_04) % 10) == 0) {
-                    if (temp_s0->unk_08 < 5) {
+            case CPU_STRATEGY_DROP_BANANA_BUNCH:
+                if ((((s16) temp_s0->timer) % 10) == 0) {
+                    if (temp_s0->numDroppedBananaBunch < 5) {
                         bananaBunchParent = (struct BananaBunchParent*) &gActorList[temp_s0->actorIndex];
-                        var_v0 = 0;
-                        switch (temp_s0->unk_08) {
+                        isNoProblem = 0;
+                        switch (temp_s0->numDroppedBananaBunch) {
                             case 0:
                                 if (bananaBunchParent->bananaIndices[4] != (-1)) {
-                                    var_v0 = 1;
+                                    isNoProblem = true;
                                 }
                                 break;
 
                             case 1:
                                 if (bananaBunchParent->bananaIndices[3] != (-1)) {
-                                    var_v0 = 1;
+                                    isNoProblem = true;
                                 }
                                 break;
 
                             case 2:
                                 if (bananaBunchParent->bananaIndices[2] != (-1)) {
-                                    var_v0 = 1;
+                                    isNoProblem = true;
                                 }
                                 break;
 
                             case 3:
                                 if (bananaBunchParent->bananaIndices[1] != (-1)) {
-                                    var_v0 = 1;
+                                    isNoProblem = true;
                                 }
                                 break;
 
                             case 4:
                                 if (bananaBunchParent->bananaIndices[0] != (-1)) {
-                                    var_v0 = 1;
+                                    isNoProblem = true;
                                 }
                                 break;
                         }
 
-                        if (((bananaBunchParent->type == 0x000E) && (bananaBunchParent->state == 6)) && (var_v0 == 1)) {
-                            func_802B0648(bananaBunchParent);
+                        if (((bananaBunchParent->type == ACTOR_BANANA_BUNCH) && (bananaBunchParent->state == 6)) &&
+                            (isNoProblem == true)) {
+                            drop_banana_in_banana_bunch(bananaBunchParent);
                         }
-                        temp_s0->unk_08 += 1;
+                        temp_s0->numDroppedBananaBunch += 1;
                     } else {
-                        temp_s0->unk_00 = 0;
-                        temp_s0->unk_04 = 0;
+                        temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                        temp_s0->timer = 0;
                     }
                 }
                 break;
 
-            case 13:
+            case CPU_STRATEGY_ITEM_FAKE_ITEM_BOX:
                 temp_s0->actorIndex = use_fake_itembox_item(player);
                 if ((temp_s0->actorIndex >= 0) && (temp_s0->actorIndex < 0x64)) {
-                    temp_s0->unk_00 = 0x000E;
-                    temp_s0->unk_04 = 0;
-                    temp_s0->unk_06 += 1;
-                    temp_s0->unk_0E = (random_int(3U) * 0x14) + 0xA;
+                    temp_s0->branch = CPU_STRATEGY_HOLD_FAKE_ITEM_BOX;
+                    temp_s0->timer = 0;
+                    temp_s0->numItemUse += 1;
+                    temp_s0->timeBeforeThrow = (random_int(3U) * 0x14) + 0xA;
                 } else {
-                    temp_s0->unk_00 = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 }
                 break;
 
-            case 14:
+            case CPU_STRATEGY_HOLD_FAKE_ITEM_BOX:
                 fakeItemBox = (struct FakeItemBox*) &gActorList[temp_s0->actorIndex];
-                if ((((!(fakeItemBox->flags & 0x8000)) || (fakeItemBox->type != 0x000D)) ||
+                if ((((!(fakeItemBox->flags & 0x8000)) || (fakeItemBox->type != ACTOR_FAKE_ITEM_BOX)) ||
                      (fakeItemBox->state != 0)) ||
                     (playerId != ((s32) fakeItemBox->playerId))) {
-                    temp_s0->unk_00 = 0;
-                    temp_s0->unk_04 = 0;
-                } else if (temp_s0->unk_0E < temp_s0->unk_04) {
-                    temp_s0->unk_00 = 0x000F;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                    temp_s0->timer = 0;
+                } else if (temp_s0->timeBeforeThrow < temp_s0->timer) {
+                    temp_s0->branch = CPU_STRATEGY_THROW_FAKE_ITEM_BOX;
                 }
                 break;
 
-            case 15:
+            case CPU_STRATEGY_THROW_FAKE_ITEM_BOX:
                 fakeItemBox = (struct FakeItemBox*) &gActorList[temp_s0->actorIndex];
-                if ((((!(fakeItemBox->flags & 0x8000)) || (fakeItemBox->type != 0x000D)) ||
+                if ((((!(fakeItemBox->flags & 0x8000)) || (fakeItemBox->type != ACTOR_FAKE_ITEM_BOX)) ||
                      (fakeItemBox->state != 0)) ||
                     (playerId != ((s32) fakeItemBox->playerId))) {
                     if (playerId != fakeItemBox->rot[0]) {}
@@ -7606,90 +7616,90 @@ void kart_ai_use_item_strategy(s32 playerId) {
                             fakeItemBox->boundingBoxSize;
                     }
                 }
-                temp_s0->unk_00 = 0;
-                temp_s0->unk_04 = 0;
+                temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                temp_s0->timer = 0;
                 break;
 
-            case 22:
+            case CPU_STRATEGY_ITEM_THUNDERBOLT:
                 use_thunder_item(player);
                 func_800CAC60(playerId);
                 func_8009E5BC();
-                temp_s0->unk_00 = 0x0017;
-                temp_s0->unk_04 = 0;
-                temp_s0->unk_06 += 1;
+                temp_s0->branch = CPU_STRATEGY_END_THUNDERBOLT;
+                temp_s0->timer = 0;
+                temp_s0->numItemUse += 1;
                 break;
 
-            case 23:
-                if (temp_s0->unk_04 >= 0xF1) {
+            case CPU_STRATEGY_END_THUNDERBOLT:
+                if (temp_s0->timer >= 0xF1) {
                     func_800CAD40((s32) ((u8) playerId));
-                    temp_s0->unk_00 = 0;
-                    temp_s0->unk_04 = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                    temp_s0->timer = 0;
                 }
                 break;
 
-            case 25:
+            case CPU_STRATEGY_ITEM_STAR:
                 player->soundEffects |= STAR_SOUND_EFFECT;
-                temp_s0->unk_00 = 0x001A;
-                temp_s0->unk_04 = 0;
-                temp_s0->unk_06 += 1;
+                temp_s0->branch = CPU_STRATEGY_END_ITEM_STAR;
+                temp_s0->timer = 0;
+                temp_s0->numItemUse += 1;
                 break;
 
-            case 26:
+            case CPU_STRATEGY_END_ITEM_STAR:
                 if (!(player->effects & STAR_EFFECT)) {
-                    temp_s0->unk_00 = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 }
-                temp_s0->unk_04 = 0;
+                temp_s0->timer = 0;
                 break;
 
             case 27:
                 player->soundEffects |= BOO_SOUND_EFFECT;
-                temp_s0->unk_00 = 0x001C;
-                temp_s0->unk_04 = 0;
-                temp_s0->unk_06 += 1;
+                temp_s0->branch = 0x001C;
+                temp_s0->timer = 0;
+                temp_s0->numItemUse += 1;
                 break;
 
             case 28:
                 if (!(player->effects & BOO_EFFECT)) {
-                    temp_s0->unk_00 = 0;
+                    temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 }
-                temp_s0->unk_04 = 0;
+                temp_s0->timer = 0;
                 break;
 
-            case 29:
+            case CPU_STRATEGY_ITEM_MUSHROOM:
                 player->soundEffects |= BOOST_SOUND_EFFECT;
-                temp_s0->unk_00 = 0;
-                temp_s0->unk_04 = 0;
-                temp_s0->unk_06 += 1;
+                temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                temp_s0->timer = 0;
+                temp_s0->numItemUse += 1;
                 break;
 
-            case 30:
-                if (temp_s0->unk_04 >= 0x3D) {
+            case CPU_STRATEGY_ITEM_DOUBLE_MUSHROOM:
+                if (temp_s0->timer >= 0x3D) {
                     player->soundEffects |= BOOST_SOUND_EFFECT;
-                    temp_s0->unk_00 = 0x001D;
-                    temp_s0->unk_04 = 0;
+                    temp_s0->branch = CPU_STRATEGY_ITEM_MUSHROOM;
+                    temp_s0->timer = 0;
                 }
                 break;
 
-            case 31:
-                if (temp_s0->unk_04 >= 0x3D) {
+            case CPU_STRATEGY_ITEM_TRIPLE_MUSHROOM:
+                if (temp_s0->timer >= 0x3D) {
                     player->soundEffects |= BOOST_SOUND_EFFECT;
-                    temp_s0->unk_00 = 0x001E;
-                    temp_s0->unk_04 = 0;
+                    temp_s0->branch = CPU_STRATEGY_ITEM_DOUBLE_MUSHROOM;
+                    temp_s0->timer = 0;
                 }
                 break;
 
-            case 32:
-                temp_s0->unk_00 = 0x0021;
-                temp_s0->unk_04 = 0;
-                temp_s0->unk_0E = 0x0258;
+            case CPU_STRATEGY_ITEM_SUPER_MUSHROOM:
+                temp_s0->branch = CPU_STRATEGY_USE_SUPER_MUSHROOM;
+                temp_s0->timer = 0;
+                temp_s0->timeBeforeThrow = 0x0258;
                 break;
 
-            case 33:
-                if ((((s16) temp_s0->unk_04) % 60) == 0) {
+            case CPU_STRATEGY_USE_SUPER_MUSHROOM:
+                if ((((s16) temp_s0->timer) % 60) == 0) {
                     player->soundEffects |= BOOST_SOUND_EFFECT;
-                    if (temp_s0->unk_0E < temp_s0->unk_04) {
-                        temp_s0->unk_00 = 0;
-                        temp_s0->unk_04 = 0;
+                    if (temp_s0->timeBeforeThrow < temp_s0->timer) {
+                        temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
+                        temp_s0->timer = 0;
                     }
                 }
                 break;
@@ -7698,11 +7708,11 @@ void kart_ai_use_item_strategy(s32 playerId) {
                 break;
         }
 
-        if (temp_s0->unk_04 < 0x2710) {
-            temp_s0->unk_04 += 1;
+        if (temp_s0->timer < 0x2710) {
+            temp_s0->timer += 1;
         }
         if (player->effects & (BOO_EFFECT | BOOST_EFFECT | STAR_EFFECT)) { // 0x80002200
-            temp_s0->unk_04 = 0;
+            temp_s0->timer = 0;
         }
     }
 }

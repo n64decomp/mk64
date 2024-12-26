@@ -42,8 +42,8 @@ glabel func_80009B60
 /* 00A79C 80009B9C 07220565 */  bltzl $t9, .L8000B134
 /* 00A7A0 80009BA0 8FBF0014 */   lw    $ra, 0x14($sp)
 /* 00A7A4 80009BA4 8C4B0000 */  lw    $t3, ($v0)
-/* 00A7A8 80009BA8 3C088016 */  lui   $t0, %hi(D_80163378) # $t0, 0x8016
-/* 00A7AC 80009BAC 25083378 */  addiu $t0, %lo(D_80163378) # addiu $t0, $t0, 0x3378
+/* 00A7A8 80009BA8 3C088016 */  lui   $t0, %hi(gIncrementUpdatePlayer) # $t0, 0x8016
+/* 00A7AC 80009BAC 25083378 */  addiu $t0, %lo(gIncrementUpdatePlayer) # addiu $t0, $t0, 0x3378
 /* 00A7B0 80009BB0 256C0001 */  addiu $t4, $t3, 1
 /* 00A7B4 80009BB4 1480000B */  bnez  $a0, .L80009BE4
 /* 00A7B8 80009BB8 AC4C0000 */   sw    $t4, ($v0)
@@ -250,8 +250,8 @@ glabel func_80009B60
 /* 00AAA4 80009EA4 0C00478E */  jal   kart_ai_behaviour
 /* 00AAA8 80009EA8 8FA400D0 */   lw    $a0, 0xd0($sp)
 .L80009EAC:
-/* 00AAAC 80009EAC 3C0E8016 */  lui   $t6, %hi(D_80163378) # $t6, 0x8016
-/* 00AAB0 80009EB0 8DCE3378 */  lw    $t6, %lo(D_80163378)($t6)
+/* 00AAAC 80009EAC 3C0E8016 */  lui   $t6, %hi(gIncrementUpdatePlayer) # $t6, 0x8016
+/* 00AAB0 80009EB0 8DCE3378 */  lw    $t6, %lo(gIncrementUpdatePlayer)($t6)
 /* 00AAB4 80009EB4 8FAC00D0 */  lw    $t4, 0xd0($sp)
 /* 00AAB8 80009EB8 31CF0001 */  andi  $t7, $t6, 1
 /* 00AABC 80009EBC 318D0001 */  andi  $t5, $t4, 1
@@ -436,10 +436,10 @@ glabel func_80009B60
 /* 00AD48 8000A148 A42030E8 */  sh    $zero, %lo(D_801630E8)($at) # 0x30e8($at)
 /* 00AD4C 8000A14C 8D4B00BC */  lw    $t3, 0xbc($t2)
 /* 00AD50 8000A150 2401FFEF */  li    $at, -17
-/* 00AD54 8000A154 3C0F8016 */  lui   $t7, %hi(D_80163378) # $t7, 0x8016
+/* 00AD54 8000A154 3C0F8016 */  lui   $t7, %hi(gIncrementUpdatePlayer) # $t7, 0x8016
 /* 00AD58 8000A158 01617024 */  and   $t6, $t3, $at
 /* 00AD5C 8000A15C AD4E00BC */  sw    $t6, 0xbc($t2)
-/* 00AD60 8000A160 8DEF3378 */  lw    $t7, %lo(D_80163378)($t7)
+/* 00AD60 8000A160 8DEF3378 */  lw    $t7, %lo(gIncrementUpdatePlayer)($t7)
 /* 00AD64 8000A164 8FB80030 */  lw    $t8, 0x30($sp)
 /* 00AD68 8000A168 3C028019 */  lui   $v0, %hi(gPlayerCount) # $v0, 0x8019
 /* 00AD6C 8000A16C 31EC0001 */  andi  $t4, $t7, 1
@@ -870,8 +870,8 @@ glabel func_80009B60
 /* 00B390 8000A790 01416824 */  and   $t5, $t2, $at
 /* 00B394 8000A794 ADED00BC */  sw    $t5, 0xbc($t7)
 .L8000A798:
-/* 00B398 8000A798 3C0B8016 */  lui   $t3, %hi(D_80163378) # $t3, 0x8016
-/* 00B39C 8000A79C 8D6B3378 */  lw    $t3, %lo(D_80163378)($t3)
+/* 00B398 8000A798 3C0B8016 */  lui   $t3, %hi(gIncrementUpdatePlayer) # $t3, 0x8016
+/* 00B39C 8000A79C 8D6B3378 */  lw    $t3, %lo(gIncrementUpdatePlayer)($t3)
 /* 00B3A0 8000A7A0 8FB80030 */  lw    $t8, 0x30($sp)
 /* 00B3A4 8000A7A4 8FA400D0 */  lw    $a0, 0xd0($sp)
 /* 00B3A8 8000A7A8 316C0001 */  andi  $t4, $t3, 1

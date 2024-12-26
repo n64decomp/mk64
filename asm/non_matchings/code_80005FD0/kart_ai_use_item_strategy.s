@@ -46,8 +46,8 @@ glabel kart_ai_use_item_strategy
 /* 01B864 8001AC64 510C0480 */  beql  $t0, $t4, .L8001BE68
 /* 01B868 8001AC68 8FBF0024 */   lw    $ra, 0x24($sp)
 /* 01B86C 8001AC6C 972E0000 */  lhu   $t6, ($t9)
-/* 01B870 8001AC70 3C0B8016 */  lui   $t3, %hi(D_801642D8) # $t3, 0x8016
-/* 01B874 8001AC74 256B42D8 */  addiu $t3, %lo(D_801642D8) # addiu $t3, $t3, 0x42d8
+/* 01B870 8001AC70 3C0B8016 */  lui   $t3, %hi(gCpuItemStrategy) # $t3, 0x8016
+/* 01B874 8001AC74 256B42D8 */  addiu $t3, %lo(gCpuItemStrategy) # addiu $t3, $t3, 0x42d8
 /* 01B878 8001AC78 31CF0800 */  andi  $t7, $t6, 0x800
 /* 01B87C 8001AC7C 15E00479 */  bnez  $t7, .L8001BE64
 /* 01B880 8001AC80 0004C900 */   sll   $t9, $a0, 4
@@ -118,10 +118,10 @@ glabel L8001AD64
 /* 01B974 8001AD74 01CF7021 */  addu  $t6, $t6, $t7
 /* 01B978 8001AD78 8DCE4390 */  lw    $t6, %lo(gLapCountByPlayerId)($t6) # 0x4390($t6)
 /* 01B97C 8001AD7C 24C643B8 */  addiu $a2, %lo(gGPCurrentRaceRankByPlayerId) # addiu $a2, $a2, 0x43b8
-/* 01B980 8001AD80 3C038016 */  lui   $v1, %hi(D_80163478) # $v1, 0x8016
+/* 01B980 8001AD80 3C038016 */  lui   $v1, %hi(gPlayerInFront) # $v1, 0x8016
 /* 01B984 8001AD84 19C0004B */  blez  $t6, .L8001AEB4
 /* 01B988 8001AD88 00000000 */   nop
-/* 01B98C 8001AD8C 84633478 */  lh    $v1, %lo(D_80163478)($v1)
+/* 01B98C 8001AD8C 84633478 */  lh    $v1, %lo(gPlayerInFront)($v1)
 /* 01B990 8001AD90 00CF5821 */  addu  $t3, $a2, $t7
 /* 01B994 8001AD94 8D6C0000 */  lw    $t4, ($t3)
 /* 01B998 8001AD98 0003C080 */  sll   $t8, $v1, 2
@@ -381,8 +381,8 @@ glabel L8001B0EC
 /* 01BD58 8001B158 A6000004 */  sh    $zero, 4($s0)
 /* 01BD5C 8001B15C 272B0001 */  addiu $t3, $t9, 1
 /* 01BD60 8001B160 A60B0006 */  sh    $t3, 6($s0)
-/* 01BD64 8001B164 3C068016 */  lui   $a2, %hi(D_80163478) # $a2, 0x8016
-/* 01BD68 8001B168 84C63478 */  lh    $a2, %lo(D_80163478)($a2)
+/* 01BD64 8001B164 3C068016 */  lui   $a2, %hi(gPlayerInFront) # $a2, 0x8016
+/* 01BD68 8001B168 84C63478 */  lh    $a2, %lo(gPlayerInFront)($a2)
 /* 01BD6C 8001B16C 25084438 */  addiu $t0, %lo(gNearestWaypointByPlayerId) # addiu $t0, $t0, 0x4438
 /* 01BD70 8001B170 3C098016 */  lui   $t1, %hi(gPathIndexByPlayerId) # $t1, 0x8016
 /* 01BD74 8001B174 00067840 */  sll   $t7, $a2, 1
@@ -782,7 +782,7 @@ glabel L8001B6AC
 /* 01C330 8001B730 100001C0 */  b     .L8001BE34
 /* 01C334 8001B734 86020004 */   lh    $v0, 4($s0)
 glabel L8001B738
-/* 01C338 8001B738 0C006AFB */  jal   func_8001ABEC
+/* 01C338 8001B738 0C006AFB */  jal   reset_strategy_if_actor_valid
 /* 01C33C 8001B73C 02002025 */   move  $a0, $s0
 /* 01C340 8001B740 860D0002 */  lh    $t5, 2($s0)
 /* 01C344 8001B744 3C0F8016 */  lui   $t7, %hi(gActorList) # $t7, 0x8016
@@ -986,7 +986,7 @@ glabel L8001B9D0
 /* 01C600 8001BA00 24790001 */   addiu $t9, $v1, 1
 /* 01C604 8001BA04 54480005 */  bnel  $v0, $t0, .L8001BA1C
 /* 01C608 8001BA08 24790001 */   addiu $t9, $v1, 1
-/* 01C60C 8001BA0C 0C0AC192 */  jal   func_802B0648
+/* 01C60C 8001BA0C 0C0AC192 */  jal   drop_banana_in_banana_bunch
 /* 01C610 8001BA10 00E02025 */   move  $a0, $a3
 /* 01C614 8001BA14 86030008 */  lh    $v1, 8($s0)
 /* 01C618 8001BA18 24790001 */  addiu $t9, $v1, 1
