@@ -1344,7 +1344,7 @@ void func_80091FA4(void) {
 
     func_80099110();
     func_8009A344();
-    func_8009E620();
+    clear_menus();
     func_80092258();
     load_menu_item_ui(MENU_ITEM_TYPE_096, 0x00000064, 0x00000024, MENU_ITEM_UI_PRIORITY_1);
     load_menu_item_ui(MENU_ITEM_TYPE_097, 0x00000064, 0x000000DD, MENU_ITEM_UI_PRIORITY_1);
@@ -2154,7 +2154,7 @@ void func_80093E60(void) {
 
     func_80099110();
     func_8009A344();
-    func_8009E620();
+    clear_menus();
     func_80092258();
     D_8018ED91 = 0;
 }
@@ -2313,7 +2313,7 @@ void load_menus(void) {
     if (gFadeModeSelection != FADE_MODE_NONE) {
         func_80099110();
         func_8009A344();
-        func_8009E620();
+        clear_menus();
         func_8009B938();
         func_80092258();
         func_800B5F30();
@@ -5328,7 +5328,7 @@ void func_8009E5FC(s32 arg0) {
     D_8018E840[arg0] = 0;
 }
 
-void func_8009E620(void) {
+void clear_menus(void) {
     s32 index;
     for (index = 0; index < MENU_ITEMS_MAX; index++) {
         gMenuItems[index].type = 0;

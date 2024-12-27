@@ -485,7 +485,7 @@ void func_8009E2A8(s32);
 void func_8009E2F0(s32);
 void func_8009E5BC(void);
 void func_8009E5FC(s32);
-void func_8009E620(void);
+void clear_menus(void);
 void load_menu_item_ui(s32, s32, s32, s8);
 void render_menus(MenuItem*);
 void func_800A08D8(u8, s32, s32);
