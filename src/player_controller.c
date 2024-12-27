@@ -540,11 +540,11 @@ void func_80028864(Player* player, Camera* camera, s8 playerId, s8 screenId) {
             (gModeSelection == BATTLE) || ((player->unk_0CA & 2) != 0) || (player->unk_0CA & 8) ||
             //! @todo make a proper match
             ((*(D_801633F8 + (playerId))) == ((s16) 1U))) {
-            player->effects &= ~0x1000;
+            player->effects &= ~UNKNOWN_EFFECT_0x1000;
             if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||
                 ((player->effects & 0x400) == 0x400) || ((player->effects & 0x4000) == 0x4000) ||
                 ((player->effects & 0x80000) == 0x80000) || ((player->effects & 0x800000) == 0x800000) ||
-                ((player->effects & 0x01000000) == 0x01000000) ||
+                ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) ||
                 ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) ||
                 ((player->effects & 0x20000) == 0x20000) || (player->unk_044 & 0x800)) {
                 func_8002E594(player, camera, screenId, playerId);
@@ -569,11 +569,11 @@ void func_80028864(Player* player, Camera* camera, s8 playerId, s8 screenId) {
 
 void func_80028C44(Player* player, Camera* camera, s8 playerId, s8 screenId) {
     if ((player->type & PLAYER_START_SEQUENCE) == 0) {
-        player->effects &= ~0x1000;
+        player->effects &= ~UNKNOWN_EFFECT_0x1000;
         if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||
             ((player->effects & 0x400) == 0x400) || ((player->effects & 0x4000) == 0x4000) ||
             ((player->effects & 0x80000) == 0x80000) || ((player->effects & 0x800000) == 0x800000) ||
-            ((player->effects & 0x1000000) == 0x1000000) ||
+            ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) ||
             ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) ||
             ((player->effects & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0)) {
             func_8002E594(player, camera, screenId, playerId);
@@ -588,12 +588,12 @@ void func_80028C44(Player* player, Camera* camera, s8 playerId, s8 screenId) {
 void func_80028D3C(Player* player, Camera* camera, s8 playerId, s8 screenId) {
     if ((((player->type & PLAYER_START_SEQUENCE) == 0) && (D_800DC510 != 5)) || (player->unk_0CA & 2) != 0 ||
         (player->unk_0CA & 8) != 0 || (player->effects & 0x4F010CC0) != 0) {
-        player->effects &= ~0x1000;
+        player->effects &= ~UNKNOWN_EFFECT_0x1000;
 
         if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||
             ((player->effects & 0x400) == 0x400) || ((player->effects & 0x4000) == 0x4000) ||
             ((player->effects & 0x80000) == 0x80000) || ((player->effects & 0x800000) == 0x800000) ||
-            ((player->effects & 0x1000000) == 0x1000000) ||
+            ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) ||
             ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) ||
             ((player->effects & 0x20000) == 0x20000) || ((player->unk_044 & 0x800) != 0)) {
             func_8002E594(player, camera, screenId, playerId);
@@ -822,8 +822,9 @@ void func_8002934C(Player* player, Camera* camera, s8 screenId, s8 playerId) {
 
         player->animGroupSelector[screenId] = 4;
     }
-    if (((player->effects & 0x400) == 0x400) || ((player->effects & 0x01000000) == 0x01000000) ||
-        ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) || (player->effects & 0x10000) ||
+    if (((player->effects & 0x400) == 0x400) ||
+        ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) ||
+        ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) || (player->effects & UNKNOWN_EFFECT_0x10000) ||
         (player->effects & 0x80) || (player->effects & 0x40)) {
 
         player->unk_002 |= 1 << (screenId * 4);
@@ -1255,7 +1256,7 @@ void func_8002AB70(Player* player) {
     if ((player->effects & 0x800000) == 0x800000) {
         player->kartGravity = 300.0f;
     }
-    if ((player->effects & 0x01000000) == 0x01000000) {
+    if ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) {
         player->kartGravity = 550.0f;
     }
     if ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) {
@@ -1431,7 +1432,7 @@ void func_8002B5C0(Player* player, UNUSED s8 playerId, UNUSED s8 screenId) {
     if ((player->effects & HIT_EFFECT) == HIT_EFFECT) {
         player->soundEffects &= 0xFE1D0578;
     }
-    if ((player->effects & 0x01000000) == 0x01000000) {
+    if ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) {
         player->soundEffects &= 0xFE1D4478;
     }
     if ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) {
@@ -1443,7 +1444,7 @@ void func_8002B5C0(Player* player, UNUSED s8 playerId, UNUSED s8 screenId) {
     if ((player->effects & BOOST_RAMP_WOOD_EFFECT) == BOOST_RAMP_WOOD_EFFECT) {
         player->soundEffects &= 0xFE1D0478;
     }
-    if ((player->effects & 0x10000) == 0x10000) {
+    if ((player->effects & UNKNOWN_EFFECT_0x10000) == UNKNOWN_EFFECT_0x10000) {
         player->soundEffects &= 0xFE1D0478;
     }
     if ((player->effects & STAR_EFFECT) == STAR_EFFECT) {
@@ -1868,11 +1869,11 @@ void func_8002C954(Player* player, s8 playerId, Vec3f arg2) {
 
     temp_f0 = player->pos[1] - player->unk_074;
 
-    if (((((player->effects & 0x10000) != 0x10000) &&
+    if (((((player->effects & UNKNOWN_EFFECT_0x10000) != UNKNOWN_EFFECT_0x10000) &&
           ((player->effects & BOOST_RAMP_ASPHALT_EFFECT) == BOOST_RAMP_ASPHALT_EFFECT)) ||
-         ((((temp_f0 >= 20.0f) || (temp_f0 < (-1.0f))) && ((player->effects & 0x10000) == 0)) &&
+         ((((temp_f0 >= 20.0f) || (temp_f0 < (-1.0f))) && ((player->effects & UNKNOWN_EFFECT_0x10000) == 0)) &&
           (player->effects & 8)) ||
-         ((player->collision.unk34 == 0) && ((player->effects & 0x10000) == 0))) &&
+         ((player->collision.unk34 == 0) && ((player->effects & UNKNOWN_EFFECT_0x10000) == 0))) &&
         (((player->unk_0CA & 2) == 0) || (!(player->unk_0CA & 8)))) {
         func_8008F494(player, playerId);
     }
@@ -1945,7 +1946,7 @@ void apply_effect(Player* player, s8 arg1, s8 arg2) {
     if ((player->effects & LIGHTNING_EFFECT) == LIGHTNING_EFFECT) {
         apply_lightning_effect(player, arg1);
     }
-    if ((player->effects & 0x10000) == 0x10000) {
+    if ((player->effects & UNKNOWN_EFFECT_0x10000) == UNKNOWN_EFFECT_0x10000) {
         func_8008F3F4(player, arg1);
     }
     if ((player->effects & STAR_EFFECT) == STAR_EFFECT) {
@@ -1963,7 +1964,7 @@ void apply_effect(Player* player, s8 arg1, s8 arg2) {
     if ((player->effects & 0x400) == 0x400) {
         func_8008C62C(player, arg1);
     }
-    if ((player->effects & 0x01000000) == 0x01000000) {
+    if ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) {
         func_8008E4A4(player, arg1);
     }
     if ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) {
@@ -2297,12 +2298,12 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
         }
     }
     if (((!(player->effects & 8)) && (func_802ABDB8(player->collision.meshIndexZX) != 0)) &&
-        ((player->effects & 0x10000) != 0x10000)) {
+        ((player->effects & UNKNOWN_EFFECT_0x10000) != UNKNOWN_EFFECT_0x10000)) {
         if ((!(player->unk_0CA & 2)) || (!(player->unk_0CA & 8))) {
             func_8008F494(player, playerId);
         }
     } else if (((!(player->effects & 8)) && (func_802ABDB8(player->collision.meshIndexZX) == 0)) &&
-               (player->effects & 0x10000)) {
+               (player->effects & UNKNOWN_EFFECT_0x10000)) {
         func_8008F5A4(player, playerId);
     }
     player->unk_074 = calculate_surface_height(nextX, nextY, nextZ, player->collision.meshIndexZX);
@@ -2445,7 +2446,7 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     sp54[1] = player->velocity[1];
     sp54[2] = player->velocity[2];
     if ((player->unk_10C < 3) && ((player->unk_256) < 3) && ((player->effects & 0x400) != 0x400) &&
-        ((player->effects & 0x01000000) != 0x01000000) &&
+        ((player->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000) &&
         ((player->effects & HIT_BY_ITEM_EFFECT) != HIT_BY_ITEM_EFFECT)) {
         sp54[0] += (((((spEC[0] + sp80) + spD4[0])) - (sp54[0] * (0.12 * player->kartFriction))) / 6000) /
                    ((player->unk_20C * 5.0f) + 1.0f);
@@ -2488,7 +2489,8 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     if (sp74 <= 0.0f) {
         player->effects &= ~2;
         player->effects &= ~8;
-        if ((((player->effects & 0x400) != 0x400) && ((player->effects & 0x01000000) != 0x01000000)) &&
+        if ((((player->effects & 0x400) != 0x400) &&
+             ((player->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000)) &&
             ((player->effects & HIT_BY_ITEM_EFFECT) != HIT_BY_ITEM_EFFECT)) {
             if (player->unk_0C2 >= 0x1C) {
                 if (player->unk_0C2 >= 0x32) {
@@ -2577,13 +2579,14 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
             }
         }
     }
-    if (((func_802ABDB8(player->collision.meshIndexZX) != 0) && ((player->effects & 0x10000) != 0x10000)) &&
+    if (((func_802ABDB8(player->collision.meshIndexZX) != 0) &&
+         ((player->effects & UNKNOWN_EFFECT_0x10000) != UNKNOWN_EFFECT_0x10000)) &&
         (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
         if ((!(player->unk_0CA & 2)) || (!(player->unk_0CA & 8))) {
             func_8008F494(player, playerId);
         }
     } else if (((!(player->effects & 8)) && (func_802ABDB8(player->collision.meshIndexZX) == 0)) &&
-               (player->effects & 0x10000)) {
+               (player->effects & UNKNOWN_EFFECT_0x10000)) {
         func_8008F5A4(player, playerId);
     }
     player->unk_074 = calculate_surface_height(spD0, spCC, spC8, player->collision.meshIndexZX);
@@ -2643,7 +2646,7 @@ void control_kart_ai_movement(Player* player, UNUSED Camera* camera, s8 arg2, s8
     f32 toSqrt;
     f32 temp_f0_2;
     f32 test;
-    player->effects |= 0x1000;
+    player->effects |= UNKNOWN_EFFECT_0x1000;
     player->unk_044 |= 0x10;
     test = D_80164510[playerId];
     player->unk_204 = 0;
@@ -3025,7 +3028,7 @@ f32 func_80030150(Player* player, s8 arg1) {
         return (1.0f - player->unk_104) * var_f2;
     }
     if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||
-        ((player->effects & 0x01000000) == 0x01000000) ||
+        ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) ||
         ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT)) {
         return (1.0f - player->unk_104) * var_f2;
     }
@@ -4138,8 +4141,9 @@ void func_8003680C(Player* player, s16 arg1) {
     };
 
     if (!((player->effects & 0x80) || (player->effects & 0x40) || (player->effects & 0x400) ||
-          (player->effects & 0x10000) || (player->effects & 0x20000) || (player->effects & 0x01000000) ||
-          (player->effects & HIT_BY_ITEM_EFFECT) || (player->effects & HIT_EFFECT))) {
+          (player->effects & UNKNOWN_EFFECT_0x10000) || (player->effects & 0x20000) ||
+          (player->effects & UNKNOWN_EFFECT_0x1000000) || (player->effects & HIT_BY_ITEM_EFFECT) ||
+          (player->effects & HIT_EFFECT))) {
         if (!(((player->unk_094 / 18.0f) * 216.0f) >= 110.0f)) {
             player->effects &= ~0x20000000;
             player->unk_228 = 0;
@@ -4283,7 +4287,7 @@ void func_800371F4(Player* player, Vec3f arg1, Vec3f arg2) {
     f32 var_f18;
     s32 temp_t6;
 
-    if (((player->effects & UNKNOWN_EFFECT_0x1000) == 0x1000) || ((player->effects & 0x20) == 0x20)) {
+    if (((player->effects & UNKNOWN_EFFECT_0x1000) == UNKNOWN_EFFECT_0x1000) || ((player->effects & 0x20) == 0x20)) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
@@ -4342,7 +4346,7 @@ void func_80037614(Player* player, Vec3f arg1, Vec3f arg2) {
     f32 var_f12;
     f32 var_f2;
 
-    if (((player->effects & UNKNOWN_EFFECT_0x1000) == 0x1000) || ((player->effects & 0x20) == 0x20)) {
+    if (((player->effects & UNKNOWN_EFFECT_0x1000) == UNKNOWN_EFFECT_0x1000) || ((player->effects & 0x20) == 0x20)) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
@@ -4369,7 +4373,7 @@ void func_8003777C(Player* player, Vec3f arg1, Vec3f arg2) {
     f32 var_f12;
     f32 var_f2;
 
-    if (((player->effects & UNKNOWN_EFFECT_0x1000) == 0x1000) || ((player->effects & 0x20) == 0x20)) {
+    if (((player->effects & UNKNOWN_EFFECT_0x1000) == UNKNOWN_EFFECT_0x1000) || ((player->effects & 0x20) == 0x20)) {
         arg1[0] = 0.0f;
         arg1[1] = 0.0f;
         arg1[2] = 0.0f;
@@ -4488,8 +4492,9 @@ void func_80037BB4(Player* player, Vec3f arg1) {
 void func_80037CFC(Player* player, struct Controller* controller, s8 arg2) {
     if (((player->effects & 0x80) != 0x80) && ((player->effects & 0x40) != 0x40) &&
         ((player->effects & 0x400) != 0x400) && ((player->effects & 0x4000) != 0x4000) &&
-        ((player->effects & 0x01000000) != 0x01000000) &&
-        ((player->effects & HIT_BY_ITEM_EFFECT) != HIT_BY_ITEM_EFFECT) && ((player->effects & 0x10000) != 0x10000) &&
+        ((player->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000) &&
+        ((player->effects & HIT_BY_ITEM_EFFECT) != HIT_BY_ITEM_EFFECT) &&
+        ((player->effects & UNKNOWN_EFFECT_0x10000) != UNKNOWN_EFFECT_0x10000) &&
         ((player->effects & 0x20000) != 0x20000)) {
         if (((player->effects & HIT_EFFECT) != HIT_EFFECT) && ((player->effects & 8) != 8) &&
             ((player->effects & 2) != 2) && ((player->effects & 0x10) != 0x10) &&
@@ -4566,7 +4571,7 @@ void func_80037CFC(Player* player, struct Controller* controller, s8 arg2) {
             }
         }
         if (((((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40)) ||
-             ((player->effects & 0x01000000) == 0x01000000)) ||
+             ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000)) ||
             ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT)) {
             if (controller->button & A_BUTTON) {
                 detect_triple_a_combo_a_pressed(player);

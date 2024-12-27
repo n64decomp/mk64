@@ -2148,7 +2148,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             break;
         case ACTOR_RED_SHELL:
             temp_v1 = actor->rot[2];
-            if (player->effects & 0x01000000) {
+            if (player->effects & UNKNOWN_EFFECT_0x1000000) {
                 break;
             }
             if (player->soundEffects & 2) {

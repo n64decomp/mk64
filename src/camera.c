@@ -362,7 +362,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     arg2[0] = camera->lookAt[0];
     arg2[1] = camera->lookAt[1];
     arg2[2] = camera->lookAt[2];
-    if ((player->effects & 0x01000000) == 0x01000000) {
+    if ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) {
         sp84[2] /= 3.0f;
     }
     calculate_orientation_matrix(sp9C, 0, 1, 0, arg7);
@@ -383,7 +383,7 @@ void func_8001CCEC(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     mtxf_translate_vec3f_mat3(sp90, sp9C);
     x = player->pos[0] + sp90[0];
     z = player->pos[2] + sp90[2];
-    if ((player->effects & 0x01000000) != 0x01000000) {
+    if ((player->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000) {
         var_f0 = player->pos[1] + sp90[1];
         // permute
         y = var_f0;
@@ -582,7 +582,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     arg2[0] = camera->lookAt[0];
     arg2[1] = camera->lookAt[1];
     arg2[2] = camera->lookAt[2];
-    if ((player->effects & 0x01000000) == 0x01000000) {
+    if ((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) {
         sp84[2] /= 3.0f;
     }
     calculate_orientation_matrix(sp9C, 0, 1, 0, arg7);
@@ -603,7 +603,7 @@ void func_8001D944(Player* player, Camera* camera, Vec3f arg2, f32* arg3, f32* a
     mtxf_translate_vec3f_mat3(sp90, sp9C);
     x = player->pos[0] + sp90[0];
     z = player->pos[2] + sp90[2];
-    if ((player->effects & 0x01000000) != 0x01000000) {
+    if ((player->effects & UNKNOWN_EFFECT_0x1000000) != UNKNOWN_EFFECT_0x1000000) {
         var_f0 = player->pos[1] + sp90[1];
         // permute
         y = var_f0;

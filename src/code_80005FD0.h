@@ -79,14 +79,15 @@ enum CpuItemStrategyEnum {
     CPU_STRATEGY_END_ITEM_STAR,
 
     CPU_STRATEGY_ITEM_BOO,
+    CPU_STRATEGY_WAIT_END_BOO,
 
-    CPU_STRATEGY_ITEM_MUSHROOM = 0x1D,
+    CPU_STRATEGY_ITEM_MUSHROOM,
     CPU_STRATEGY_ITEM_DOUBLE_MUSHROOM,
     CPU_STRATEGY_ITEM_TRIPLE_MUSHROOM,
     CPU_STRATEGY_ITEM_SUPER_MUSHROOM,
     CPU_STRATEGY_USE_SUPER_MUSHROOM,
 
-    CPU_STRATEGY_THROW_BANANA = 34,
+    CPU_STRATEGY_THROW_BANANA,
     CPU_STRATEGY_HOLD_THROW_BANANA,
     CPU_STRATEGY_END_THROW_BANANA
 };
@@ -117,8 +118,8 @@ void update_cpu_path_completion(s32, Player*);
 f32 func_80009258(s32, f32, f32);
 void update_player_path_completion(s32, Player*);
 void update_vehicles(void);
-void func_800098FC(s32, Player*);
-void func_800099EC(s32, Player*);
+void play_ai_sound_effect(s32, Player*);
+void update_player_timer_sound(s32, Player*);
 void func_80009B60(s32);
 
 void func_8000B140(s32);

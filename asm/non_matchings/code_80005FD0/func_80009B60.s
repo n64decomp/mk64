@@ -261,7 +261,7 @@ glabel func_80009B60
 /* 00AACC 80009ECC 01802025 */   move  $a0, $t4
 .L80009ED0:
 /* 00AAD0 80009ED0 8FA400D0 */  lw    $a0, 0xd0($sp)
-/* 00AAD4 80009ED4 0C00267B */  jal   func_800099EC
+/* 00AAD4 80009ED4 0C00267B */  jal   update_player_timer_sound
 /* 00AAD8 80009ED8 8FA50040 */   lw    $a1, 0x40($sp)
 /* 00AADC 80009EDC 3C02800E */  lui   $v0, %hi(gModeSelection)
 /* 00AAE0 80009EE0 8C42C53C */  lw    $v0, %lo(gModeSelection)($v0)

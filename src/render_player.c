@@ -1298,11 +1298,11 @@ void render_player_shadow(Player* player, s8 playerId, s8 screenId) {
     spB0 = -coss(temp_t9 << 7) * 2;
     spAC = -sins(temp_t9 << 7) * 2;
 
-    if (((player->effects & 0x01000000) == 0x01000000) || ((player->effects & 0x400) == 0x400) ||
-        ((player->effects & 0x80000) == 0x80000) || ((player->effects & 0x800000) == 0x800000) ||
-        ((player->effects & 0x400) == 0x400) || ((player->unk_0CA & 2) == 2) ||
-        ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) || ((player->effects & 0x10000) == 0x10000) ||
-        ((player->effects & 8) == 8)) {
+    if (((player->effects & UNKNOWN_EFFECT_0x1000000) == UNKNOWN_EFFECT_0x1000000) ||
+        ((player->effects & 0x400) == 0x400) || ((player->effects & 0x80000) == 0x80000) ||
+        ((player->effects & 0x800000) == 0x800000) || ((player->effects & 0x400) == 0x400) ||
+        ((player->unk_0CA & 2) == 2) || ((player->effects & HIT_BY_ITEM_EFFECT) == HIT_BY_ITEM_EFFECT) ||
+        ((player->effects & UNKNOWN_EFFECT_0x10000) == UNKNOWN_EFFECT_0x10000) || ((player->effects & 8) == 8)) {
 
         var_f2 = (f32) (1.0 - ((f64) player->collision.surfaceDistance[2] * 0.02));
         if (var_f2 < 0.0f) {

@@ -109,7 +109,7 @@ s32 D_8016337C;
 s16 D_80163380[12];
 s16 D_80163398[12];
 s16 D_801633B0[12];
-s16 D_801633C8[12];
+s16 gPositionSwapTimer[12];
 s16 D_801633E0[12];
 s16 D_801633F8[12];
 s16 D_80163410[4];
@@ -958,13 +958,13 @@ void func_80007D04(s32 playerId, Player* player) {
         s16 val2 = temp_t2 - temp_t1;
 
         if (val2 > 400 && val1 >= 6) {
-            player->effects &= ~0x200000;
+            player->effects &= ~UNKNOWN_EFFECT_0x200000;
             player_speed(player);
             D_801634C0[playerId] = 4;
             return;
         }
     } else {
-        player->effects |= 0x200000;
+        player->effects |= UNKNOWN_EFFECT_0x200000;
         player_speed(player);
         D_801634C0[playerId] = 3;
         return;
@@ -1010,19 +1010,19 @@ void func_80007D04(s32 playerId, Player* player) {
     }
 
     if (temp_t2 < temp_t1) {
-        player->effects |= 0x200000;
+        player->effects |= UNKNOWN_EFFECT_0x200000;
         player_speed(player);
         D_801634C0[playerId] = 1;
     } else if (temp_t2 < (temp_t1 + var_v0 + 0x32)) {
-        player->effects &= ~0x200000;
+        player->effects &= ~UNKNOWN_EFFECT_0x200000;
         player_speed(player);
         D_801634C0[playerId] = 3;
     } else if (D_801631E0[playerId] == 0) {
-        player->effects &= ~0x200000;
+        player->effects &= ~UNKNOWN_EFFECT_0x200000;
         player_speed(player);
         D_801634C0[playerId] = 2;
     } else {
-        player->effects &= ~0x200000;
+        player->effects &= ~UNKNOWN_EFFECT_0x200000;
         decelerate_ai_player(player, 1.0f);
         D_801634C0[playerId] = -1;
     }
@@ -1105,34 +1105,34 @@ void func_80008424(s32 playerId, f32 arg1, Player* player) {
                     break;
             }
             if (var_f2 < var_f0) {
-                player->effects &= ~0x00200000;
+                player->effects &= ~UNKNOWN_EFFECT_0x200000;
                 player_speed(player);
             } else if (player->type & PLAYER_CINEMATIC_MODE) {
                 if (var_f2 < arg1) {
-                    player->effects &= ~0x00200000;
+                    player->effects &= ~UNKNOWN_EFFECT_0x200000;
                     player_speed(player);
                 } else {
-                    player->effects &= ~0x00200000;
+                    player->effects &= ~UNKNOWN_EFFECT_0x200000;
                     decelerate_ai_player(player, 1.0f);
                 }
             } else if ((D_801631E0[playerId] == 1) && (D_80163330[playerId] != 1)) {
                 if (func_800088D8(playerId, gLapCountByPlayerId[playerId], gGPCurrentRaceRankByPlayerIdDup[playerId]) ==
                     1) {
-                    player->effects |= 0x200000;
+                    player->effects |= UNKNOWN_EFFECT_0x200000;
                     player_speed(player);
                 } else {
-                    player->effects &= ~0x00200000;
+                    player->effects &= ~UNKNOWN_EFFECT_0x200000;
                     decelerate_ai_player(player, 1.0f);
                 }
             } else {
                 var_a1 = 1;
                 switch (gSpeedKartAIBehaviour[playerId]) { /* switch 1; irregular */
                     case SPEED_KART_AI_BEHAVIOUR_FAST:     /* switch 1 */
-                        player->effects &= ~0x00200000;
+                        player->effects &= ~UNKNOWN_EFFECT_0x200000;
                         player_speed(player);
                         break;
                     case SPEED_KART_AI_BEHAVIOUR_MAX: /* switch 1 */
-                        player->effects |= 0x200000;
+                        player->effects |= UNKNOWN_EFFECT_0x200000;
                         player_speed(player);
                         break;
                     case SPEED_KART_AI_BEHAVIOUR_SLOW: /* switch 1 */
@@ -1154,14 +1154,14 @@ void func_80008424(s32 playerId, f32 arg1, Player* player) {
                             func_80007D04(playerId, player);
                         } else if (func_800088D8(playerId, gLapCountByPlayerId[playerId],
                                                  gGPCurrentRaceRankByPlayerIdDup[playerId]) == 1) {
-                            player->effects |= 0x200000;
+                            player->effects |= UNKNOWN_EFFECT_0x200000;
                             player_speed(player);
                         } else {
-                            player->effects &= ~0x00200000;
+                            player->effects &= ~UNKNOWN_EFFECT_0x200000;
                             decelerate_ai_player(player, 1.0f);
                         }
                     } else {
-                        player->effects &= ~0x00200000;
+                        player->effects &= ~UNKNOWN_EFFECT_0x200000;
                         if (arg1 > 1.0f) {
                             decelerate_ai_player(player, 2.0f);
                         } else {
@@ -1581,37 +1581,38 @@ void update_vehicles(void) {
     }
 }
 
-void func_800098FC(s32 arg0, Player* player) {
+void play_ai_sound_effect(s32 arg0, Player* player) {
     if (D_80163398[arg0] >= 0xB) {
         if ((player->effects & 0x80) || (player->effects & 0x40) || (player->effects & 0x20000)) {
-            func_800C92CC(arg0, 0x2900800AU);
+            func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0A));
             D_80163398[arg0] = 0;
         }
     }
     if (D_801633B0[arg0] >= 0xB) {
-        if ((player->soundEffects & 0x400000) || (player->soundEffects & 0x01000000) || (player->soundEffects & 2) ||
-            (player->soundEffects & 4) || (player->effects & HIT_EFFECT)) {
-            func_800C92CC(arg0, 0x2900800BU);
+        if ((player->soundEffects & REVERSE_EFFECT) || (player->soundEffects & 0x01000000) ||
+            (player->soundEffects & 2) || (player->soundEffects & 4) || (player->effects & HIT_EFFECT)) {
+            func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0B));
             D_801633B0[arg0] = 0;
         }
     }
 }
 
-void func_800099EC(s32 playerId, UNUSED Player* unused) {
-    s32 var_s0;
+void update_player_timer_sound(s32 playerId, UNUSED Player* unused) {
+    s32 otherPlayerId;
 
-    if (D_801633C8[playerId] >= 0x65) {
-        for (var_s0 = 0; var_s0 < gPlayerCount; var_s0++) {
-            if ((gGPCurrentRaceRankByPlayerId[playerId] < gGPCurrentRaceRankByPlayerId[var_s0]) &&
-                (gGPCurrentRaceRankByPlayerId[playerId] == gPreviousGPCurrentRaceRankByPlayerId[var_s0]) &&
-                (gGPCurrentRaceRankByPlayerId[var_s0] == gPreviousGPCurrentRaceRankByPlayerId[playerId])) {
-                func_800C92CC(playerId, 0x2900800DU);
-                D_801633C8[playerId] = 0;
+    if (gPositionSwapTimer[playerId] >= 0x65) {
+        for (otherPlayerId = 0; otherPlayerId < gPlayerCount; otherPlayerId++) {
+            // detect swap of positions
+            if ((gGPCurrentRaceRankByPlayerId[playerId] < gGPCurrentRaceRankByPlayerId[otherPlayerId]) &&
+                (gGPCurrentRaceRankByPlayerId[playerId] == gPreviousGPCurrentRaceRankByPlayerId[otherPlayerId]) &&
+                (gGPCurrentRaceRankByPlayerId[otherPlayerId] == gPreviousGPCurrentRaceRankByPlayerId[playerId])) {
+                func_800C92CC(playerId, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
+                gPositionSwapTimer[playerId] = 0;
             }
         }
     }
-    if (D_801633C8[playerId] < 0x3E8) {
-        D_801633C8[playerId]++;
+    if (gPositionSwapTimer[playerId] < 0x3E8) {
+        gPositionSwapTimer[playerId]++;
     }
     if (D_80163398[playerId] < 0xC8) {
         D_80163398[playerId]++;
@@ -1735,7 +1736,7 @@ void func_80009B60(s32 playerId) {
                 if ((playerId & 1) != (gIncrementUpdatePlayer & 1)) {
                     kart_ai_use_item_strategy(playerId);
                 }
-                func_800099EC(playerId, player);
+                update_player_timer_sound(playerId, player);
                 D_80162FD0 = 0;
                 switch (gModeSelection) { /* switch 1; irregular */
                     case 1:               /* switch 1 */
@@ -1993,7 +1994,7 @@ void func_80009B60(s32 playerId) {
                             var_a1 = (D_80163050[playerId] + ((var_a2 * var_v1) / temp_f2)) / 2;
                             break;
                     }
-                } else if (player->effects & 0x1000000C) {
+                } else if (player->effects & (UNKNOWN_EFFECT_0x10000000 | UNKNOWN_EFFECT_0xC)) {
                     var_a1 = 0;
                 } else {
                     var_a1 = (D_80163050[playerId] + ((var_a2 * var_v1) / temp_f2)) / 2;
@@ -2001,7 +2002,7 @@ void func_80009B60(s32 playerId) {
                 func_8003680C(player, var_a1);
                 D_80163050[playerId] = var_a1;
                 if ((D_801630B8[playerId] == 1) || (D_801630E8[playerId] == 1) || (D_801630E8[playerId] == -1) ||
-                    (player->effects & 0x1000000C)) {
+                    (player->effects & (UNKNOWN_EFFECT_0x10000000 | UNKNOWN_EFFECT_0xC))) {
                     D_80163028[playerId] = GET_COURSE_D_0D009418(gCCSelection);
                 } else {
                     D_80163028[playerId] = GET_COURSE_D_0D009568(gCCSelection);
@@ -3620,7 +3621,7 @@ void init_players(void) {
         gNeedToChoose[i] = 0;
         D_80163398[i] = 0;
         D_801633B0[i] = 0;
-        D_801633C8[i] = 0;
+        gPositionSwapTimer[i] = 0;
         D_801633F8[i] = 0;
         gPlayersTrackSectionId[i] = 0;
         gPreviousPlayerZ[i] = player->pos[2];
@@ -4792,7 +4793,7 @@ void handle_trains_interactions(s32 playerId, Player* player) {
     s32 passengerCarIndex;
 
     if (D_801631E0[playerId] != 1) {
-        if (!(player->effects & 0x01000000)) {
+        if (!(player->effects & UNKNOWN_EFFECT_0x1000000)) {
             playerPosX = player->pos[0];
             playerPosZ = player->pos[2];
             for (trainIndex = 0; trainIndex < NUM_TRAINS; trainIndex++) {
@@ -5037,7 +5038,7 @@ void handle_paddleBoats_interactions(Player* player) {
     f32 playerZ;
     f32 playerY;
 
-    if (!((player->effects & 0x01000000)) && (!(player->effects & HIT_BY_ITEM_EFFECT))) {
+    if (!((player->effects & UNKNOWN_EFFECT_0x1000000)) && (!(player->effects & HIT_BY_ITEM_EFFECT))) {
         playerX = player->pos[0];
         playerY = player->pos[1];
         playerZ = player->pos[2];
@@ -5220,7 +5221,7 @@ void handle_vehicle_interactions(s32 playerId, Player* player, VehicleStuff* veh
     f32 playerZ;
 
     if (((D_801631E0[playerId] != 1) || ((((player->type & PLAYER_HUMAN) != 0)) && !(player->type & PLAYER_KART_AI))) &&
-        !(player->effects & 0x01000000)) {
+        !(player->effects & UNKNOWN_EFFECT_0x1000000)) {
 
         playerX = player->pos[0];
         playerY = player->pos[1];
@@ -7651,14 +7652,14 @@ void kart_ai_use_item_strategy(s32 playerId) {
                 temp_s0->timer = 0;
                 break;
 
-            case 27:
+            case CPU_STRATEGY_ITEM_BOO:
                 player->soundEffects |= BOO_SOUND_EFFECT;
-                temp_s0->branch = 0x001C;
+                temp_s0->branch = CPU_STRATEGY_WAIT_END_BOO;
                 temp_s0->timer = 0;
                 temp_s0->numItemUse += 1;
                 break;
 
-            case 28:
+            case CPU_STRATEGY_WAIT_END_BOO:
                 if (!(player->effects & BOO_EFFECT)) {
                     temp_s0->branch = CPU_STRATEGY_WAIT_NEXT_ITEM;
                 }

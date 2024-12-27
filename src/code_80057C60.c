@@ -3832,8 +3832,8 @@ void func_80061754(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s32 arg3, U
     sp48 = random_int(2U);
     func_8005D794(player, &player->unk_258[0x1E + arg1], 0.0f, 0.0f, 0.0f, (s8) 0, (s8) 0);
     func_8005D7D8(&player->unk_258[0x1E + arg1], 6, 1.0f);
-    if ((player->effects & HIT_BY_ITEM_EFFECT) || ((player->effects) & 0x01000000) || ((player->effects) & 0x400) ||
-        ((player->effects) & BOO_EFFECT)) {
+    if ((player->effects & HIT_BY_ITEM_EFFECT) || ((player->effects) & UNKNOWN_EFFECT_0x1000000) ||
+        ((player->effects) & 0x400) || ((player->effects) & BOO_EFFECT)) {
         func_8005D800(&player->unk_258[0x1E + arg1], 0x00FFFFFF, 0x00A0);
         player->unk_258[0x1E + arg1].unk_038 -= temp_s1;
         player->unk_258[0x1E + arg1].unk_03A -= temp_s1;
@@ -6367,7 +6367,8 @@ void func_8006C9B8(Player* player, s16 arg1, s8 arg2, s8 arg3) {
             player->unk_044 &= ~0x0100;
             return;
         }
-        if (((((player->unk_0CA & 0x1000) == 0x1000) || ((player->unk_0E0 < 2) && (player->effects & 0x01000000))) ||
+        if (((((player->unk_0CA & 0x1000) == 0x1000) ||
+              ((player->unk_0E0 < 2) && (player->effects & UNKNOWN_EFFECT_0x1000000))) ||
              ((player->unk_0E0 < 2) && (player->effects & HIT_BY_ITEM_EFFECT))) ||
             (player->effects & 0x400)) {
             func_8006199C(player, arg1, sp28, arg2, arg3);
