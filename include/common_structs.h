@@ -281,7 +281,7 @@ typedef struct {
     /* 0x0088 */ f32 unk_088;
     /* 0x008C */ f32 unk_08C;
     /* 0x0090 */ f32 unk_090;
-    /* 0x0094 */ f32 unk_094;
+    /* 0x0094 */ f32 speed;
     /* 0x0098 */ f32 unk_098;
     /* 0x009C */ f32 currentSpeed;
     /* 0x00A0 */ f32 unk_0A0;
@@ -341,7 +341,7 @@ typedef struct {
     /* 0x0224 */ f32 size;
     /* 0x0228 */ s16 unk_228;
     /* 0x022A */ s16 unk_22A;
-    /* 0x022C */ f32 unk_22C;
+    /* 0x022C */ f32 previousSpeed;
     /* 0x0230 */ f32 unk_230;
     /* 0x0234 */ s16 unk_234;
     /* 0x0236 */ s16 unk_236;

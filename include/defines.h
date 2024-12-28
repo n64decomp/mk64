@@ -321,10 +321,14 @@ enum PLACE { FIRST_PLACE, SECOND_PLACE, THIRD_PLACE, FOURTH_PLACE };
  * @brief effect of player's
  * for effects
  */
+#define UNKNOWN_EFFECT_0x1 0x1               //
 #define BOOST_RAMP_WOOD_EFFECT 0x4           // being boosted by a ramp
+#define UNKNOWN_EFFECT_0x10 0x10             //
 #define UNKNOWN_EFFECT_0x40 0x40             //
 #define UNKNOWN_EFFECT_0x80 0x80             //
 #define UNKNOWN_EFFECT_0xC 0xC               //
+#define UNKNOWN_EFFECT_0x10 0x10             //
+#define UNKNOWN_EFFECT_0x100 0x100           //
 #define UNKNOWN_EFFECT_0x1000 0x1000         //
 #define STAR_EFFECT 0x200                    // being a star
 #define BOOST_EFFECT 0x2000                  // being boosted by trigger a mushroom

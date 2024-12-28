@@ -134,7 +134,7 @@ glabel func_80017054
 /* 017E1C 8001721C 8C650000 */  lw    $a1, ($v1)
 /* 017E20 80017220 AFA30044 */  sw    $v1, 0x44($sp)
 /* 017E24 80017224 3044FFFF */  andi  $a0, $v0, 0xffff
-/* 017E28 80017228 0C002EF6 */  jal   func_8000BBD8
+/* 017E28 80017228 0C002EF6 */  jal   set_track_offset_position
 /* 017E2C 8001722C AFA6003C */   sw    $a2, 0x3c($sp)
 /* 017E30 80017230 3C038016 */  lui   $v1, %hi(gOffsetPosition) # $v1, 0x8016
 /* 017E34 80017234 24632FA0 */  addiu $v1, %lo(gOffsetPosition) # addiu $v1, $v1, 0x2fa0
@@ -154,7 +154,7 @@ glabel func_80017054
 /* 017E6C 8001726C E7A4008C */  swc1  $f4, 0x8c($sp)
 /* 017E70 80017270 46205120 */  cvt.s.d $f4, $f10
 /* 017E74 80017274 E7A40084 */  swc1  $f4, 0x84($sp)
-/* 017E78 80017278 0C002EF6 */  jal   func_8000BBD8
+/* 017E78 80017278 0C002EF6 */  jal   set_track_offset_position
 /* 017E7C 8001727C 8F050000 */   lw    $a1, ($t8)
 /* 017E80 80017280 3C038016 */  lui   $v1, %hi(gOffsetPosition) # $v1, 0x8016
 /* 017E84 80017284 24632FA0 */  addiu $v1, %lo(gOffsetPosition) # addiu $v1, $v1, 0x2fa0
@@ -270,7 +270,7 @@ glabel func_80017054
 /* 01801C 8001741C 8F050000 */  lw    $a1, ($t8)
 /* 018020 80017420 AFAA002C */  sw    $t2, 0x2c($sp)
 /* 018024 80017424 A7AF006C */  sh    $t7, 0x6c($sp)
-/* 018028 80017428 0C002EF6 */  jal   func_8000BBD8
+/* 018028 80017428 0C002EF6 */  jal   set_track_offset_position
 /* 01802C 8001742C A7A2006E */   sh    $v0, 0x6e($sp)
 /* 018030 80017430 3C038016 */  lui   $v1, %hi(gOffsetPosition) # $v1, 0x8016
 /* 018034 80017434 24632FA0 */  addiu $v1, %lo(gOffsetPosition) # addiu $v1, $v1, 0x2fa0
@@ -290,7 +290,7 @@ glabel func_80017054
 /* 01806C 8001746C 462053A0 */  cvt.s.d $f14, $f10
 /* 018070 80017470 46204420 */  cvt.s.d $f16, $f8
 /* 018074 80017474 E7AE0098 */  swc1  $f14, 0x98($sp)
-/* 018078 80017478 0C002EF6 */  jal   func_8000BBD8
+/* 018078 80017478 0C002EF6 */  jal   set_track_offset_position
 /* 01807C 8001747C E7B00090 */   swc1  $f16, 0x90($sp)
 /* 018080 80017480 3C038016 */  lui   $v1, %hi(gOffsetPosition) # $v1, 0x8016
 /* 018084 80017484 24632FA0 */  addiu $v1, %lo(gOffsetPosition) # addiu $v1, $v1, 0x2fa0

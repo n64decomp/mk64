@@ -1736,7 +1736,7 @@ bool collision_tree(Player* player, struct Actor* actor) {
     actorPos[2] = actor->pos[2];
     if (((gCurrentCourseId == COURSE_MARIO_RACEWAY) || (gCurrentCourseId == COURSE_YOSHI_VALLEY) ||
          (gCurrentCourseId == COURSE_ROYAL_RACEWAY) || (gCurrentCourseId == COURSE_LUIGI_RACEWAY)) &&
-        (player->unk_094 > 1.0f)) {
+        (player->speed > 1.0f)) {
         spawn_leaf(actorPos, 0);
     }
     if (xz_dist < 0.1f) {

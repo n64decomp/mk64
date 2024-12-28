@@ -118,7 +118,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->oldPos[0] = startingRow;
     player->oldPos[1] = ret;
 
-    D_80164510[playerIndex] = ret;
+    gPlayerPathY[playerIndex] = ret;
 
     player->rotation[0] = 0;
     player->oldPos[2] = startingColumn;
@@ -141,7 +141,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->lapCount = -1;
     player->unk_08C = 0.0f;
     player->unk_090 = 0.0f;
-    player->unk_094 = 0.0f;
+    player->speed = 0.0f;
     player->unk_074 = 0.0f;
     player->type = playerType;
     player->unk_0CA = 0;
@@ -223,7 +223,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_088 = 0.0f;
     player->unk_08C = 0.0f;
     player->unk_090 = 0.0f;
-    player->unk_094 = 0.0f;
+    player->speed = 0.0f;
     player->unk_098 = 0.0f;
     player->currentSpeed = 0.0f;
     player->unk_0A0 = 0.0f;
@@ -243,7 +243,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_210 = 0.0f;
     player->unk_218 = 0.0f;
     player->unk_21C = 0.0f;
-    player->unk_22C = 0.0f;
+    player->previousSpeed = 0.0f;
     player->unk_230 = 0.0f;
     player->unk_23C = 0.0f;
 

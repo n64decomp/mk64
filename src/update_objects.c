@@ -2673,7 +2673,7 @@ void func_80078288(s32 objectIndex) {
             break;
         case 1:
             if (gGamestate != 9) {
-                sp3A = ((gPlayerOneCopy->unk_094 / 18) * 216) / 2;
+                sp3A = ((gPlayerOneCopy->speed / 18) * 216) / 2;
                 sp3E = (random_int(0x000FU) - sp3A) + 0x2D;
                 sp3C = random_int(0x012CU) + 0x1E;
                 temp_t6 = camera1->rot[1] + ((s32) (random_int(0x3000U) - 0x1800) / (s16) ((sp3A / 15) + 1));
@@ -5591,7 +5591,7 @@ void func_8007FB48(s32 objectIndex) {
             func_80086FD4(objectIndex);
             break;
         case 2:
-            gObjectList[objectIndex].velocity[0] = player->unk_094 * xOrientation * 1.25;
+            gObjectList[objectIndex].velocity[0] = player->speed * xOrientation * 1.25;
             if (gObjectList[objectIndex].unk_048 >= gObjectList[objectIndex].unk_0B0) {
                 if (gObjectList[objectIndex].unk_0B0 == gObjectList[objectIndex].unk_048) {
                     if (D_8018D400 & 1) {
@@ -6003,7 +6003,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
                     }
                 }
             } else if ((temp_f0 <= 17.5) && (func_80072320(objectIndex, 1) != 0) &&
-                       (is_within_horizontal_distance_of_player(objectIndex, temp_s0, (temp_s0->unk_094 * 0.5) + 7.0) !=
+                       (is_within_horizontal_distance_of_player(objectIndex, temp_s0, (temp_s0->speed * 0.5) + 7.0) !=
                         0)) {
                 if ((temp_s0->type & PLAYER_EXISTS) && !(temp_s0->type & 0x100)) {
                     if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
@@ -6408,8 +6408,8 @@ void func_80081D34(s32 objectIndex) {
                     player->soundEffects |= 2;
                 }
                 object->direction_angle[1] = var_s4->rot[1];
-                object->velocity[1] = (player->unk_094 / 2) + 3.0;
-                object->unk_034 = player->unk_094 + 1.0;
+                object->velocity[1] = (player->speed / 2) + 3.0;
+                object->unk_034 = player->speed + 1.0;
                 if (object->velocity[1] >= 5.0) {
                     object->velocity[1] = 5.0f;
                 }

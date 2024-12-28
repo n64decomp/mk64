@@ -19,11 +19,11 @@ struct unexpiredActors {
 }; // size = 0x1C
 
 typedef struct {
-    /* 0x00 */ f32 unk0;
-    /* 0x04 */ f32 unk4;
-    /* 0x08 */ f32 unk8;
+    /* 0x00 */ f32 current;
+    /* 0x04 */ f32 target;
+    /* 0x08 */ f32 step;
     /* 0x0C */ f32 unkC;
-} Test; // size = 0x10
+} TrackPositionFactorInstruction; // size = 0x10
 
 // Something related to CPU item usage
 typedef struct {
@@ -124,11 +124,11 @@ void func_80009B60(s32);
 
 void func_8000B140(s32);
 s32 func_8000B7E4(s32, u16);
-s32 func_8000B820(s32);
+bool is_far_from_path(s32);
 f32 calculate_track_position_factor(f32, f32, u16, s32);
 void update_player_position_factor(s32, u16, s32);
 void calculate_track_offset_position(u16, f32, f32, s16);
-void func_8000BBD8(u16, f32, s16);
+void set_track_offset_position(u16, f32, s16);
 s16 func_8000BD94(f32, f32, f32, s32);
 
 s16 find_closest_waypoint_track_section(f32, f32, f32, u16, s32*);
@@ -143,8 +143,8 @@ s16 find_closest_vehicles_waypoint(f32, f32, f32, s16);
 s16 func_8000D24C(f32, f32, f32, s32*);
 s16 func_8000D2B4(f32, f32, f32, s16, s32);
 s16 func_8000D33C(f32, f32, f32, s16, s32);
-f32 func_8000D3B8(s32);
-void func_8000D438(s32, u16);
+f32 cpu_track_position_factor(s32);
+void determine_ideal_position_offset(s32, u16);
 s16 func_8000D6D0(Vec3f, s16*, f32, f32, s16, s16);
 s16 func_8000D940(Vec3f, s16*, f32, f32, s16);
 s16 update_vehicle_following_waypoint(Vec3f, s16*, f32);
@@ -315,8 +315,8 @@ extern s16 gFerrySmokeTimer;
 extern s32 D_80163100[];
 extern s32 D_80163128[];
 extern s32 D_80163150[];
-extern f32 D_80163178[];
-extern f32 D_801631A0[];
+extern f32 gPreviousPlayerAiOffsetX[];
+extern f32 gPreviousPlayerAiOffsetZ[];
 extern s16 sVehicleSoundRenderCounter;
 extern s32 D_801631CC;
 extern TrackWaypoint* gCurrentTrackInnerPath;
@@ -357,7 +357,7 @@ enum {
 extern s32 D_80163368[];
 extern s32 gIncrementUpdatePlayer;
 extern s32 D_8016337C;
-extern s16 D_80163380[];
+extern s16 gCurrentPlayerLookAhead[];
 extern s16 D_80163398[];
 extern s16 D_801633B0[];
 extern s16 D_801633C8[];
@@ -386,7 +386,7 @@ extern s16 bStopAICrossing[];
 extern s16 D_801634EC;
 extern s32 D_801634F0;
 extern s32 D_801634F4;
-extern Test D_801634F8[];
+extern TrackPositionFactorInstruction gPlayerTrackPositionFactorInstruction[];
 extern Path2D* gVehicle2DWaypoint;
 extern s32 gVehicle2DWaypointLength;
 extern u16 isCrossingTriggeredByIndex[];
@@ -412,7 +412,7 @@ extern f32 D_80164498[];
 extern f32 gLapCompletionPercentByPlayerId[];    // D_801644A8
 extern f32 gCourseCompletionPercentByPlayerId[]; // D_801644D0
 extern s16 gNeedToChoose[];
-extern f32 D_80164510[];
+extern f32 gPlayerPathY[];
 extern s16 D_80164538[];
 extern s32 D_801645D0[];
 extern s32 D_801645E8[];

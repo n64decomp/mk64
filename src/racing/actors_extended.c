@@ -185,12 +185,12 @@ void func_802B0788(s16 rawStickY, struct BananaBunchParent* banana_bunch, Player
         elderBanana = (struct BananaActor*) &gActorList[banana->elderIndex];
         elderBanana->youngerIndex = -1;
     }
-    if (player->unk_094 < 2.0f) {
+    if (player->speed < 2.0f) {
         var_f0 = ((rawStickY - 30.0f) / 20.0f) + 1.5f;
         var_f12 = 4.0f;
     } else {
         var_f0 = ((rawStickY - 30.0f) / 20.0f) + 1.5f;
-        var_f12 = (player->unk_094 * 0.75f) + 4.5f + var_f0;
+        var_f12 = (player->speed * 0.75f) + 4.5f + var_f0;
     }
     vec3f_set(velocity, 0.0f, var_f0, var_f12);
     func_802B64C4(velocity, player->rotation[1] + player->unk_0C0);

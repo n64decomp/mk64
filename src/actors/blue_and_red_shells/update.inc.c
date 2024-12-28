@@ -317,8 +317,8 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
             if (shell->state == MOVING_SHELL) {
                 shell->someTimer = 0x001E;
                 height = 8.0f;
-                if (player->unk_094 > 8.0f) {
-                    height = player->unk_094 * 1.2f;
+                if (player->speed > 8.0f) {
+                    height = player->speed * 1.2f;
                 }
                 somePosVel[0] = 0.0f;
                 somePosVel[1] = 0.0f;

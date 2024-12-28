@@ -505,38 +505,38 @@ void func_80027EDC(Player* player, s8 playerId) {
 }
 
 void func_80028864(Player* player, Camera* camera, s8 playerId, s8 screenId) {
-    u16 sp1E;
+    u16 isVisible;
 
     if (!(player->type & PLAYER_START_SEQUENCE)) {
         switch (gActiveScreenMode) {
             case SCREEN_MODE_1P:
-                sp1E = check_player_camera_collision(player, camera1, (f32) D_8016557C, 0.0f);
+                isVisible = check_player_camera_collision(player, camera1, (f32) D_8016557C, 0.0f);
                 break;
             case SCREEN_MODE_2P_SPLITSCREEN_HORIZONTAL:
             case SCREEN_MODE_2P_SPLITSCREEN_VERTICAL:
-                sp1E = check_player_camera_collision(player, camera1, (f32) D_8016557C, 0.0f);
-                if (sp1E == 1) {
+                isVisible = check_player_camera_collision(player, camera1, (f32) D_8016557C, 0.0f);
+                if (isVisible == true) {
                     break;
                 }
-                sp1E = check_player_camera_collision(player, camera2, (f32) D_8016557C, 0.0f);
+                isVisible = check_player_camera_collision(player, camera2, (f32) D_8016557C, 0.0f);
                 break;
             case SCREEN_MODE_3P_4P_SPLITSCREEN:
-                sp1E = check_player_camera_collision(player, camera1, (f32) D_8016557C, 0.0f);
-                if (sp1E == 1) {
+                isVisible = check_player_camera_collision(player, camera1, (f32) D_8016557C, 0.0f);
+                if (isVisible == true) {
                     break;
                 }
-                sp1E = check_player_camera_collision(player, camera2, (f32) D_8016557C, 0.0f);
-                if (sp1E == 1) {
+                isVisible = check_player_camera_collision(player, camera2, (f32) D_8016557C, 0.0f);
+                if (isVisible == true) {
                     break;
                 }
-                sp1E = check_player_camera_collision(player, camera3, (f32) D_8016557C, 0.0f);
-                if (sp1E == 1) {
+                isVisible = check_player_camera_collision(player, camera3, (f32) D_8016557C, 0.0f);
+                if (isVisible == true) {
                     break;
                 }
-                sp1E = check_player_camera_collision(player, camera4, (f32) D_8016557C, 0.0f);
+                isVisible = check_player_camera_collision(player, camera4, (f32) D_8016557C, 0.0f);
                 break;
         }
-        if ((sp1E == 1) || ((player->type & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) ||
+        if ((isVisible == 1) || ((player->type & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) ||
             (gModeSelection == BATTLE) || ((player->unk_0CA & 2) != 0) || (player->unk_0CA & 8) ||
             //! @todo make a proper match
             ((*(D_801633F8 + (playerId))) == ((s16) 1U))) {
@@ -587,7 +587,9 @@ void func_80028C44(Player* player, Camera* camera, s8 playerId, s8 screenId) {
 
 void func_80028D3C(Player* player, Camera* camera, s8 playerId, s8 screenId) {
     if ((((player->type & PLAYER_START_SEQUENCE) == 0) && (D_800DC510 != 5)) || (player->unk_0CA & 2) != 0 ||
-        (player->unk_0CA & 8) != 0 || (player->effects & 0x4F010CC0) != 0) {
+        (player->unk_0CA & 8) != 0 ||
+        (player->effects & (0x40000000 | UNKNOWN_EFFECT_0x1000000 | 0x2000000 | 0x4000000 | 0x8000000 |
+                            UNKNOWN_EFFECT_0x10000 | 0xC00 | 0xC0)) != 0) {
         player->effects &= ~UNKNOWN_EFFECT_0x1000;
 
         if (((player->effects & 0x80) == 0x80) || ((player->effects & 0x40) == 0x40) ||
@@ -1098,8 +1100,9 @@ void func_8002A704(Player* player, s8 arg1) {
 }
 
 void func_8002A79C(Player* player, s8 arg1) {
-    if (((player->effects & 0x100) != 0x100) && ((player->effects & 0x10) != 0x10) && (player->unk_22A >= 2)) {
-        player->effects |= 0x100;
+    if (((player->effects & UNKNOWN_EFFECT_0x100) != UNKNOWN_EFFECT_0x100) &&
+        ((player->effects & UNKNOWN_EFFECT_0x10) != UNKNOWN_EFFECT_0x10) && (player->unk_22A >= 2)) {
+        player->effects |= UNKNOWN_EFFECT_0x100;
         player->unk_23A = 0;
         player->unk_22A = 0;
         player->unk_228 = 0;
@@ -1110,7 +1113,7 @@ void func_8002A79C(Player* player, s8 arg1) {
         } else if (player == gPlayerOne) {
             func_800C9250(arg1);
         }
-    } else if ((player->effects & 0x100) == 0x100) {
+    } else if ((player->effects & UNKNOWN_EFFECT_0x100) == UNKNOWN_EFFECT_0x100) {
         player->unk_23A += 1;
         if (player->unk_23A >= 0x1F) {
             player->unk_23A = 0;
@@ -1218,7 +1221,7 @@ void func_8002AB70(Player* player) {
     UNUSED s32 pad[2];
     if (((player->effects & 8) != 8) && (player->unk_08C > 0.0f)) {
         if (((player->slopeAccel / 182) < -1) && ((player->slopeAccel / 182) >= -0x14) &&
-            (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
+            (((player->speed / 18.0f) * 216.0f) >= 20.0f)) {
             move_f32_towards(&player->kartGravity, 500.0f, 1.0f);
             move_f32_towards(&player->unk_DAC, 3.0f, 0.05f);
         } else {
@@ -1281,10 +1284,11 @@ void func_8002AE38(Player* player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
     s16 temp_a0;
     s32 var_v1;
 
-    sp28 = (sins(-player->rotation[1]) * player->unk_094) + arg2;
-    temp_f16 = (coss(-player->rotation[1]) * player->unk_094) + arg3;
-    if (((player->effects & 0x800) != 0x800) && ((player->effects & 0x10) != 0x10) && !(player->unk_044 & 0x4000) &&
-        ((((player->unk_094 / 18.0f) * 216.0f) <= 8.0f) ||
+    sp28 = (sins(-player->rotation[1]) * player->speed) + arg2;
+    temp_f16 = (coss(-player->rotation[1]) * player->speed) + arg3;
+    if (((player->effects & 0x800) != 0x800) && ((player->effects & UNKNOWN_EFFECT_0x10) != UNKNOWN_EFFECT_0x10) &&
+        !(player->unk_044 & 0x4000) &&
+        ((((player->speed / 18.0f) * 216.0f) <= 8.0f) ||
          (((player->unk_07C >> 0x10) < 5) && ((player->unk_07C >> 0x10) > -5)))) {
         if ((player->effects & 0x20) == 0x20) {
             player->unk_0C0 = (f32) (player->unk_0C0 - (player->unk_0C0 / 10));
@@ -1307,8 +1311,9 @@ void func_8002AE38(Player* player, s8 arg1, f32 arg2, f32 arg3, f32 arg4, f32 ar
         } else {
             player->unk_0C0 = (atan2s(arg2 - arg4, arg3 - arg5) - atan2s(arg2 - sp28, arg3 - temp_f16)) * 2;
         }
-        if (((player->effects & 0x10) != 0x10) && ((((player->unk_07C >> 0x10) > 0) && (player->unk_0C0 < 0)) ||
-                                                   (((player->unk_07C >> 0x10) < 0) && (player->unk_0C0 > 0)))) {
+        if (((player->effects & UNKNOWN_EFFECT_0x10) != UNKNOWN_EFFECT_0x10) &&
+            ((((player->unk_07C >> 0x10) > 0) && (player->unk_0C0 < 0)) ||
+             (((player->unk_07C >> 0x10) < 0) && (player->unk_0C0 > 0)))) {
             if (player->unk_0C0 > 0) {
                 player->unk_0C0 = player->unk_078 * 0x14;
             }
@@ -1337,7 +1342,7 @@ void func_8002B218(Player* player) {
 
     for (someIndex = 0; someIndex < 10; someIndex++) {
         if (player->unk_006 == sp38[someIndex]) {
-            player->effects |= 0x10;
+            player->effects |= UNKNOWN_EFFECT_0x10;
             kart_hop(player);
             player->unk_204 = 0;
             break;
@@ -1657,7 +1662,7 @@ void func_8002BF4C(Player* player, s8 arg1) {
 
     var_a2 = 0;
 
-    if (((player->unk_094 / 18.0f) * 216.0f) < 50.0f) {
+    if (((player->speed / 18.0f) * 216.0f) < 50.0f) {
         player->unk_0E2 = 0;
         player->effects &= 0xFFDFFFFF;
         return;
@@ -1697,7 +1702,7 @@ void func_8002BF4C(Player* player, s8 arg1) {
 }
 
 void func_8002C11C(Player* player) {
-    if ((player->effects & 0x10) == 0x10) {
+    if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
         player->unk_204 += 1;
         if (player->unk_204 >= 0x65) {
             player->unk_204 = 0x64;
@@ -1883,7 +1888,7 @@ void func_8002C954(Player* player, s8 playerId, Vec3f arg2) {
         }
         player->unk_046 |= 0x20;
     }
-    if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && (((player->unk_094 / 18.0f) * 216.0f) > 30.0f)) {
+    if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && (((player->speed / 18.0f) * 216.0f) > 30.0f)) {
         func_8001CA24(player, 3.0f);
     }
     player->unk_046 |= 0x10;
@@ -1891,7 +1896,7 @@ void func_8002C954(Player* player, s8 playerId, Vec3f arg2) {
     if (player->unk_256 >= 0xA) {
         player->unk_256 = 0;
     }
-    if ((player->slopeAccel >= 0) && (((player->unk_094 / 18.0f) * 216.0f) > 5.0f)) {
+    if ((player->slopeAccel >= 0) && (((player->speed / 18.0f) * 216.0f) > 5.0f)) {
         decelerate_ai_player(player, 18.0f);
     }
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
@@ -1903,12 +1908,12 @@ void func_8002C954(Player* player, s8 playerId, Vec3f arg2) {
         if (var_f14 >= 1.0) {
             var_f14 = 1.0f;
         }
-        if ((var_f14 <= 0.6) && (((player->unk_094 / 18.0f) * 216.0f) >= 40.0f) &&
+        if ((var_f14 <= 0.6) && (((player->speed / 18.0f) * 216.0f) >= 40.0f) &&
             (!(player->type & PLAYER_INVISIBLE_OR_BOMB))) {
             func_800CAEC4(playerId, 0.6F);
         } else if (!(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
-            if ((var_f14 <= 0.6) && (((player->unk_094 / 18.0f) * 216.0f) < 40.0f) &&
-                (((player->unk_094 / 18.0f) * 216.0f) >= 10.0f)) {
+            if ((var_f14 <= 0.6) && (((player->speed / 18.0f) * 216.0f) < 40.0f) &&
+                (((player->speed / 18.0f) * 216.0f) >= 10.0f)) {
                 func_800CAEC4(playerId, 0.3F);
             } else {
                 func_800CAEC4(playerId, var_f14);
@@ -2031,7 +2036,7 @@ void func_8002D028(Player* player, s8 arg1) {
             player->type &= ~0x0200;
         }
         player->unk_08C = 0;
-        player->unk_094 = 0;
+        player->speed = 0;
         player->unk_104 = 0;
         player->unk_240 = 0;
         player->unk_07C = 0;
@@ -2103,7 +2108,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
         spAC = (-1 * (player->unk_064[2] + sp16C[2])) +
                ((-player->collision.orientationVector[2] * player->kartGravity) * 0.925);
     } else {
-        temp3 = (((player->unk_094 / 18.0f) * 216.0f) / 10.0f);
+        temp3 = (((player->speed / 18.0f) * 216.0f) / 10.0f);
         if (temp3 >= 10) {
             temp3 = 10;
         }
@@ -2243,8 +2248,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
                 player->unk_044 |= 0x100;
             }
         }
-        if (((player->unk_0C2 < 0x23) && (player->unk_0C2 >= 0x1C)) &&
-            (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
+        if (((player->unk_0C2 < 0x23) && (player->unk_0C2 >= 0x1C)) && (((player->speed / 18.0f) * 216.0f) >= 20.0f)) {
             player->unk_DB4.unkC = 2.8f;
             player->unk_DB4.unk18 = 0;
             if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
@@ -2255,7 +2259,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
                 player->unk_044 |= 0x100;
             }
         }
-        if (((player->unk_0C2 < 0x1C) && (player->unk_0C2 >= 4)) && (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
+        if (((player->unk_0C2 < 0x1C) && (player->unk_0C2 >= 4)) && (((player->speed / 18.0f) * 216.0f) >= 20.0f)) {
             player->unk_DB4.unk18 = 0;
             player->unk_DB4.unkC = 1.5f;
             if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
@@ -2317,10 +2321,10 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     func_8002AE38(player, playerId, posX, posZ, nextX, nextZ);
 
     temp2 = (sp98[0] * sp98[0]) + (sp98[2] * sp98[2]);
-    player->unk_22C = player->unk_094;
-    player->unk_094 = sqrtf(temp2);
+    player->previousSpeed = player->speed;
+    player->speed = sqrtf(temp2);
 
-    if ((player->unk_08C <= 0.0f) && (player->unk_094 <= 0.08) && (D_8018CE10[playerId].unk_04[0] == 0.0f) &&
+    if ((player->unk_08C <= 0.0f) && (player->speed <= 0.08) && (D_8018CE10[playerId].unk_04[0] == 0.0f) &&
         (D_8018CE10[playerId].unk_04[2] == 0.0f)) {
         sp98[0] = sp98[0] + (-1 * sp98[0]);
         sp98[2] = sp98[2] + (-1 * sp98[2]);
@@ -2341,21 +2345,21 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     D_80165070[playerId][1] = sp98[1];
     D_80165070[playerId][2] = sp98[2];
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-        if (gKartTopSpeedTable[player->characterId] < player->unk_094) {
-            temp = gKartTopSpeedTable[player->characterId] / player->unk_094;
+        if (gKartTopSpeedTable[player->characterId] < player->speed) {
+            temp = gKartTopSpeedTable[player->characterId] / player->speed;
             player->velocity[0] *= temp;
             player->velocity[1] *= temp;
             player->velocity[2] *= temp;
-            player->unk_094 = gKartTopSpeedTable[player->characterId];
+            player->speed = gKartTopSpeedTable[player->characterId];
         }
     }
     if ((player->unk_044 & 1) == 1) {
-        if (player->unk_094 > 1) {
-            temp = 1 / player->unk_094;
+        if (player->speed > 1) {
+            temp = 1 / player->speed;
             player->velocity[0] *= temp;
             player->velocity[1] *= temp;
             player->velocity[2] *= temp;
-            player->unk_094 = 1;
+            player->speed = 1;
         }
     }
     if (player->collision.surfaceDistance[2] >= 500.0f) {
@@ -2371,10 +2375,10 @@ void func_8002E4C4(Player* player) {
     player->kartHopJerk = 0.0f;
     player->kartHopAcceleration = 0.0f;
     player->kartHopVelocity = 0.0f;
-    player->pos[1] =
-        get_surface_height(player->pos[0], D_80164510[player_index] + 10.0f, player->pos[2]) + player->boundingBoxSize;
-    if (((player->pos[1] - D_80164510[player_index]) > 1200.0f) ||
-        ((player->pos[1] - D_80164510[player_index]) < -1200.0f)) {
+    player->pos[1] = get_surface_height(player->pos[0], gPlayerPathY[player_index] + 10.0f, player->pos[2]) +
+                     player->boundingBoxSize;
+    if (((player->pos[1] - gPlayerPathY[player_index]) > 1200.0f) ||
+        ((player->pos[1] - gPlayerPathY[player_index]) < -1200.0f)) {
         player->pos[1] = player->oldPos[1];
     }
     player->velocity[1] = 0.0f;
@@ -2508,7 +2512,7 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
                 }
             }
             if (((player->unk_0C2 < 0x1C) && (player->unk_0C2 >= 0xA)) &&
-                (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
+                (((player->speed / 18.0f) * 216.0f) >= 20.0f)) {
                 player->unk_DB4.unkC = 2.0f;
                 player->unk_DB4.unk18 = 0;
                 if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
@@ -2581,7 +2585,7 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     }
     if (((func_802ABDB8(player->collision.meshIndexZX) != 0) &&
          ((player->effects & UNKNOWN_EFFECT_0x10000) != UNKNOWN_EFFECT_0x10000)) &&
-        (((player->unk_094 / 18.0f) * 216.0f) >= 20.0f)) {
+        (((player->speed / 18.0f) * 216.0f) >= 20.0f)) {
         if ((!(player->unk_0CA & 2)) || (!(player->unk_0CA & 8))) {
             func_8008F494(player, playerId);
         }
@@ -2599,10 +2603,10 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     }
     func_8002AE38(player, playerId, posX, posZ, spD0, spC8);
     temp = (sp54[0] * sp54[0]) + (sp54[2] * sp54[2]);
-    player->unk_22C = player->unk_094;
-    player->unk_094 = sqrtf(temp);
-    if ((((player->effects & 0x400) != 0x400) && (player->unk_08C <= 0) && (player->unk_094 < 0.13)) ||
-        (((player->effects & 0x400) != 0x400) && (player->unk_08C <= 0) && (player->unk_094 < 0.20) &&
+    player->previousSpeed = player->speed;
+    player->speed = sqrtf(temp);
+    if ((((player->effects & 0x400) != 0x400) && (player->unk_08C <= 0) && (player->speed < 0.13)) ||
+        (((player->effects & 0x400) != 0x400) && (player->unk_08C <= 0) && (player->speed < 0.20) &&
          ((player->effects & 1) == 1))) {
         sp54[0] = sp54[0] + (-1 * sp54[0]);
         sp54[2] = sp54[2] + (-1 * sp54[2]);
@@ -2617,12 +2621,12 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     player->velocity[1] = sp54[1];
     player->velocity[2] = sp54[2];
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-        if (gKartTopSpeedTable[player->characterId] < player->unk_094) {
-            temp_f0_6 = gKartTopSpeedTable[player->characterId] / player->unk_094;
+        if (gKartTopSpeedTable[player->characterId] < player->speed) {
+            temp_f0_6 = gKartTopSpeedTable[player->characterId] / player->speed;
             player->velocity[0] *= temp_f0_6;
             player->velocity[1] *= temp_f0_6;
             player->velocity[2] *= temp_f0_6;
-            player->unk_094 = gKartTopSpeedTable[player->characterId];
+            player->speed = gKartTopSpeedTable[player->characterId];
         }
     }
     func_8002C4F8(player, playerId);
@@ -2648,7 +2652,7 @@ void control_kart_ai_movement(Player* player, UNUSED Camera* camera, s8 arg2, s8
     f32 test;
     player->effects |= UNKNOWN_EFFECT_0x1000;
     player->unk_044 |= 0x10;
-    test = D_80164510[playerId];
+    test = gPlayerPathY[playerId];
     player->unk_204 = 0;
     player->effects &= ~0x10;
     func_8002B830(player, playerId, arg2);
@@ -2682,8 +2686,8 @@ void control_kart_ai_movement(Player* player, UNUSED Camera* camera, s8 arg2, s8
     player->slopeAccel = 0;
     player->unk_206 = 0;
     toSqrt = (sp68[0] * sp68[0]) + (sp68[2] * sp68[2]);
-    player->unk_22C = player->unk_094;
-    player->unk_094 = sqrtf(toSqrt);
+    player->previousSpeed = player->speed;
+    player->speed = sqrtf(toSqrt);
     player->pos[0] = spCC;
     player->pos[2] = spC4;
     player->pos[1] = test;
@@ -2695,12 +2699,12 @@ void control_kart_ai_movement(Player* player, UNUSED Camera* camera, s8 arg2, s8
     D_80165070[playerId][0] = sp68[0];
     D_80165070[playerId][1] = sp68[1];
     D_80165070[playerId][2] = sp68[2];
-    if (gKartTopSpeedTable[player->characterId] < player->unk_094) {
-        temp_f0_2 = gKartTopSpeedTable[player->characterId] / player->unk_094;
+    if (gKartTopSpeedTable[player->characterId] < player->speed) {
+        temp_f0_2 = gKartTopSpeedTable[player->characterId] / player->speed;
         player->velocity[0] *= temp_f0_2;
         player->velocity[1] *= temp_f0_2;
         player->velocity[2] *= temp_f0_2;
-        player->unk_094 = gKartTopSpeedTable[player->characterId];
+        player->speed = gKartTopSpeedTable[player->characterId];
     }
 }
 
@@ -2779,10 +2783,10 @@ void func_8002F730(Player* player, UNUSED Camera* camera, UNUSED s8 screenId, s8
     }
     func_8002AE38(player, playerId, spC0, spB8, spCC, spC4);
     sqrt = (sp68[0] * sp68[0]) + (sp68[1] * sp68[1]) + (sp68[2] * sp68[2]);
-    player->unk_22C = player->unk_094;
-    player->unk_094 = sqrtf(sqrt);
-    if (((player->unk_08C <= 0.0f) && ((f64) player->unk_094 < 0.13)) ||
-        ((player->unk_08C <= 0.0f) && ((f64) player->unk_094 < 0.2) && ((player->effects & 1) == 1))) {
+    player->previousSpeed = player->speed;
+    player->speed = sqrtf(sqrt);
+    if (((player->unk_08C <= 0.0f) && ((f64) player->speed < 0.13)) ||
+        ((player->unk_08C <= 0.0f) && ((f64) player->speed < 0.2) && ((player->effects & 1) == 1))) {
         sp68[0] = sp68[0] + (sp68[0] * -1.0f);
         sp68[2] = sp68[2] + (sp68[2] * -1.0f);
     } else {
@@ -2803,12 +2807,12 @@ void func_8002F730(Player* player, UNUSED Camera* camera, UNUSED s8 screenId, s8
     D_80165070[playerId][2] = sp68[2];
 
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-        if (gKartTopSpeedTable[player->characterId] < player->unk_094) {
-            temp_f0_2 = gKartTopSpeedTable[player->characterId] / player->unk_094;
+        if (gKartTopSpeedTable[player->characterId] < player->speed) {
+            temp_f0_2 = gKartTopSpeedTable[player->characterId] / player->speed;
             player->velocity[0] *= temp_f0_2;
             player->velocity[1] *= temp_f0_2;
             player->velocity[2] *= temp_f0_2;
-            player->unk_094 = gKartTopSpeedTable[player->characterId];
+            player->speed = gKartTopSpeedTable[player->characterId];
         }
     }
 }
@@ -2911,7 +2915,7 @@ f32 func_80030150(Player* player, s8 arg1) {
     s32 var_v0;
 
     var_f0 = 0.0f;
-    var_f2 = (player->unk_094 / 18.0f) * 216.0f;
+    var_f2 = (player->speed / 18.0f) * 216.0f;
     if (var_f2 >= 8.0f) {
         if ((player->effects & STAR_EFFECT) != STAR_EFFECT) {
             if ((s32) player->tyres[BACK_RIGHT].surfaceType >= 0xF) {
@@ -2947,7 +2951,7 @@ f32 func_80030150(Player* player, s8 arg1) {
                     var_f0 += -0.55;
                 }
             }
-            if (((player->effects & 0x10) == 0x10) || (player->unk_204 > 0)) {
+            if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) || (player->unk_204 > 0)) {
                 var_v0 = (s16) player->unk_0C0 / 182;
                 if (var_v0 < 0) {
                     var_f0 += -var_v0 * 0.004;
@@ -3007,7 +3011,8 @@ f32 func_80030150(Player* player, s8 arg1) {
         }
     }
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-        if (((player->effects & 0x100) == 0x100) && ((player->effects & 0x10) != 0x10)) {
+        if (((player->effects & UNKNOWN_EFFECT_0x100) == UNKNOWN_EFFECT_0x100) &&
+            ((player->effects & UNKNOWN_EFFECT_0x10) != UNKNOWN_EFFECT_0x10)) {
             move_f32_towards(&player->unk_0E8, 580.0f, 0.2f);
         } else {
             move_f32_towards(&player->unk_0E8, 0.0f, 0.01f);
@@ -3048,7 +3053,7 @@ void func_80030A34(Player* player) {
     f32 var_f2;
 
     if (((player->unk_0CA & 2) != 2) && ((player->unk_0CA & 8) != 8)) {
-        if ((((player->unk_094 / 18.0f) * 216.0f) >= 8.0f) && (player->unk_DB4.unkC < 1.0f)) {
+        if ((((player->speed / 18.0f) * 216.0f) >= 8.0f) && (player->unk_DB4.unkC < 1.0f)) {
             switch (player->surfaceType) { /* irregular */
                 case ASPHALT:
                     if (random_int(0x000AU) != 8) {
@@ -3333,7 +3338,7 @@ void decelerate_ai_player(Player* player, f32 speed) {
     if (player->currentSpeed <= 0.0f) {
         player->currentSpeed = 0.0f;
     }
-    if (player->unk_094 < 0.2) {
+    if (player->speed < 0.2) {
         player->unk_08C = 0.0f;
     }
     if (player->topSpeed <= player->currentSpeed) {
@@ -3513,7 +3518,7 @@ void func_800323E4(Player* player) {
         if ((s32) player->tyres[BACK_LEFT].surfaceType < 0xF) {
             var_f2 += D_800E3210[player->characterId][player->tyres[BACK_LEFT].surfaceType];
         }
-        test = player->unk_22C - player->unk_094;
+        test = player->previousSpeed - player->speed;
         if (test <= 0.0f) {
             player->unk_20C = 0.0f;
         } else {
@@ -3529,7 +3534,7 @@ void func_800323E4(Player* player) {
                 decelerate_ai_player(player, (1.0f - var_f2) * 3.0f);
             }
         } else {
-            if (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f) {
+            if (((player->speed / 18.0f) * 216.0f) <= 20.0f) {
                 decelerate_ai_player(player, (1.0f - var_f2) * 4.0f);
             }
             if (player->unk_20C >= 2.0f) {
@@ -3602,7 +3607,7 @@ void func_80032CB0(Player* player, f32 arg1) {
     if (player->currentSpeed <= 0.0f) {
         player->currentSpeed = 0.0f;
     }
-    if (player->unk_094 < 0.2) {
+    if (player->speed < 0.2) {
         player->unk_08C = 0.0f;
     }
     if (player->topSpeed <= player->currentSpeed) {
@@ -3826,7 +3831,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
 
     if (((((player->effects & 2) != 2) && ((((player->unk_0C0 / 182) <= 6) && ((player->unk_0C0 / 182) >= (-6))) ||
                                            ((controller->button & R_TRIG) != R_TRIG))) ||
-         (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f)) ||
+         (((player->speed / 18.0f) * 216.0f) <= 20.0f)) ||
         ((player->effects & 0x8000) == 0x8000)) {
         func_80036CB4(player);
     }
@@ -3842,7 +3847,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
         player->unk_044 &= 0xFFF9;
         D_801652C0[arg2] = 0;
     }
-    if (((player->effects & 2) == 2) || ((player->effects & 0x10) == 0x10)) {
+    if (((player->effects & 2) == 2) || ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10)) {
         player->unk_044 &= 0xFFF9;
     }
     sp2E4 = player->unk_07C;
@@ -3855,9 +3860,10 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
     sp2D0 = sp2D0 >> 16;
     player->unk_0FA = (s16) sp2D0;
     if (((sp2D0 >= 0x5A) || (sp2D0 < (-0x59))) && (!(player->unk_044 & 0x4000))) {
-        if ((((((!(player->effects & 0x10)) && (gCCSelection == CC_150)) && (gModeSelection != BATTLE)) &&
+        if ((((((!(player->effects & UNKNOWN_EFFECT_0x10)) && (gCCSelection == CC_150)) &&
+               (gModeSelection != BATTLE)) &&
               (!(player->effects & 8))) &&
-             (((player->unk_094 / 18.0f) * 216.0f) >= 40.0f)) &&
+             (((player->speed / 18.0f) * 216.0f) >= 40.0f)) &&
             (player->unk_204 == 0)) {
             player->soundEffects |= 0x80;
         }
@@ -3872,12 +3878,12 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
         sp2C8 = 10;
         sp2CC = 10;
     } else {
-        if (((player->effects & 0x10) == 0x10) && ((player->effects & 2) != 2)) {
+        if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) && ((player->effects & 2) != 2)) {
             var_a0 = 3;
         } else {
             var_a0 = 0;
         }
-        if (((player->unk_094 / 18.0f) * 216.0f) >= 15.0f) {
+        if (((player->speed / 18.0f) * 216.0f) >= 15.0f) {
             if ((player->unk_044 & 2) == 2) {
                 if ((sp2D0 < 36) && (sp2D0 >= 0)) {
                     sp2C8 =
@@ -4011,9 +4017,9 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
     func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 2, 0x6000 / sp2CC, 1.9f);
     func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 1, 0x5000 / sp2CC, 1.9f);
     func_80033A40(player, &sp2D0, &sp2E4, player->unk_07C, 0, 0 / sp2CC, 1.9f);
-    if ((player->effects & 0x10) == 0x10) {
+    if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
         var_f2_2 = (f32) (((s32) (sp2E4 >> 16)) / 8);
-    } else if (((player->unk_094 / 18.0f) * 216.0f) <= 25.0f) {
+    } else if (((player->speed / 18.0f) * 216.0f) <= 25.0f) {
         var_f2_2 = (f32) ((sp2E4 >> 16) / 12);
     } else {
         var_f2_2 = ((f32) (sp2E4 >> 0x10)) / (8.0f + (player->currentSpeed / 50.0f));
@@ -4022,11 +4028,11 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
         var_f2_2 = -var_f2_2;
     }
     if ((player->effects & 0x20) == 0x20) {
-        var_f2_2 = var_f2_2 * (sp44[((s16) ((player->unk_094 / 18.0f) * 216.0f)) + 10] * 1.5f);
-    } else if ((player->effects & 0x10) == 0x10) {
-        var_f2_2 = var_f2_2 * sp44[(s16) ((player->unk_094 / 18.0f) * 216.0f)];
+        var_f2_2 = var_f2_2 * (sp44[((s16) ((player->speed / 18.0f) * 216.0f)) + 10] * 1.5f);
+    } else if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
+        var_f2_2 = var_f2_2 * sp44[(s16) ((player->speed / 18.0f) * 216.0f)];
     } else {
-        var_f2_2 = var_f2_2 * (sp44[(s16) ((player->unk_094 / 18.0f) * 216.0f)] * 1.5f);
+        var_f2_2 = var_f2_2 * (sp44[(s16) ((player->speed / 18.0f) * 216.0f)] * 1.5f);
     }
     player->unk_07C = sp2E4;
     if (player->unk_10C != 0) {
@@ -4041,11 +4047,11 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
     if (((s32) player->tyres[BACK_LEFT].surfaceType) < 0xF) {
         var_f12 += D_800E3410[player->characterId][player->tyres[BACK_LEFT].surfaceType];
     }
-    if (((player->effects & 2) != 2) && ((player->effects & 0x10) != 0x10)) {
+    if (((player->effects & 2) != 2) && ((player->effects & UNKNOWN_EFFECT_0x10) != UNKNOWN_EFFECT_0x10)) {
         if ((player->effects & 0x20) == 0x20) {
             player->unk_078 = (s16) ((s32) (((f32) ((((s32) player->unk_07C) >> 0x10) * 5)) * var_f2_2));
         } else {
-            if ((player->effects & 0x1) != 0x1) {
+            if ((player->effects & UNKNOWN_EFFECT_0x1) != UNKNOWN_EFFECT_0x1) {
                 if (((player->unk_07C >> 16) >= 45) || ((player->unk_07C >> 16) <= (-45))) {
                     player->unk_078 = ((player->unk_07C >> 16) * (var_f2_2 + (var_f2_2 * var_f12))) *
                                       (0.15 + gKartHandlingTable[player->characterId]);
@@ -4054,13 +4060,13 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
                                       gKartHandlingTable[player->characterId];
                 }
             } else {
-                if ((((player->unk_094 / 18.0f) * 216.0f) >= 0.0f) && (((player->unk_094 / 18.0f) * 216.0f) < 8.0f)) {
+                if ((((player->speed / 18.0f) * 216.0f) >= 0.0f) && (((player->speed / 18.0f) * 216.0f) < 8.0f)) {
                     player->unk_078 = (player->unk_07C >> 16) * (var_f2_2 + (var_f2_2 * var_f12));
                 }
-                if ((((player->unk_094 / 18.0f) * 216.0f) >= 8.0f) && (((player->unk_094 / 18.0f) * 216.0f) < 65.0f)) {
+                if ((((player->speed / 18.0f) * 216.0f) >= 8.0f) && (((player->speed / 18.0f) * 216.0f) < 65.0f)) {
                     player->unk_078 = (player->unk_07C >> 16) * ((var_f2_2 + 1.5) + (var_f2_2 * var_f12));
                 }
-                if (((player->unk_094 / 18.0f) * 216.0f) >= 65.0f) {
+                if (((player->speed / 18.0f) * 216.0f) >= 65.0f) {
                     player->unk_078 = (player->unk_07C >> 16) * ((var_f2_2 + 1.6) + (var_f2_2 * var_f12));
                 }
             }
@@ -4089,13 +4095,13 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
             }
             func_8002A8A4(player, arg2);
         }
-        if ((((player->unk_094 / 18.0f) * 216.0f) >= 0.0f) && (((player->unk_094 / 18.0f) * 216.0f) < 8.0f)) {
+        if ((((player->speed / 18.0f) * 216.0f) >= 0.0f) && (((player->speed / 18.0f) * 216.0f) < 8.0f)) {
             player->unk_078 = (s16) ((s32) (var_s1_2 * ((var_f2_2 + 2.0f) + (var_f2_2 * var_f12))));
         }
-        if ((((player->unk_094 / 18.0f) * 216.0f) >= 8.0f) && (((player->unk_094 / 18.0f) * 216.0f) < 65.0f)) {
+        if ((((player->speed / 18.0f) * 216.0f) >= 8.0f) && (((player->speed / 18.0f) * 216.0f) < 65.0f)) {
             player->unk_078 = var_s1_2 * ((var_f2_2 + 3) + (var_f2_2 * var_f12));
         }
-        if (((player->unk_094 / 18.0f) * 216.0f) >= 65.0f) {
+        if (((player->speed / 18.0f) * 216.0f) >= 65.0f) {
             player->unk_078 = var_s1_2 * ((((f64) var_f2_2) + 3.5) + (var_f2_2 * var_f12));
         }
         if ((player->effects & 0x20000000) == 0x20000000) {
@@ -4108,7 +4114,7 @@ void func_80033AE0(Player* player, struct Controller* controller, s8 arg2) {
         if (temp_v0_3 == 0) {
             var_s1_2 = 0;
         }
-        if (((player->unk_094 / 18.0f) * 216.0f) <= 5.0f) {
+        if (((player->speed / 18.0f) * 216.0f) <= 5.0f) {
             player->unk_078 = (s16) ((s32) (((f32) var_s1_2) * (var_f2_2 + 6.0f)));
         } else {
             player->unk_078 = ((s16) var_s1_2) * (var_f2_2 + 1.5f);
@@ -4144,14 +4150,14 @@ void func_8003680C(Player* player, s16 arg1) {
           (player->effects & UNKNOWN_EFFECT_0x10000) || (player->effects & 0x20000) ||
           (player->effects & UNKNOWN_EFFECT_0x1000000) || (player->effects & HIT_BY_ITEM_EFFECT) ||
           (player->effects & HIT_EFFECT))) {
-        if (!(((player->unk_094 / 18.0f) * 216.0f) >= 110.0f)) {
+        if (!(((player->speed / 18.0f) * 216.0f) >= 110.0f)) {
             player->effects &= ~0x20000000;
             player->unk_228 = 0;
             if (!(player->effects & 0x80) && !(player->effects & 0x40)) {
                 sp304 = (s32) player->unk_07C >> 0x10;
                 move_s32_towards(&sp304, (s32) arg1, 0.35f);
                 sp304 <<= 0x10;
-                if ((player->effects & 0x10) == 0x10) {
+                if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
                     var_f0 = (sp304 >> 0x10) / 5;
                 } else {
                     var_f0 = (f32) (sp304 >> 0x10) / (8.0f + (player->currentSpeed / 50.0f));
@@ -4159,13 +4165,13 @@ void func_8003680C(Player* player, s16 arg1) {
                 if (var_f0 < 0.0f) {
                     var_f0 = -var_f0;
                 }
-                if ((player->effects & 0x10) == 0x10) {
-                    var_f0 = sp44[(s16) ((player->unk_094 / 18.0f) * 216.0f)] * var_f0;
+                if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
+                    var_f0 = sp44[(s16) ((player->speed / 18.0f) * 216.0f)] * var_f0;
                 } else {
-                    var_f0 = sp44[(s16) ((player->unk_094 / 18.0f) * 216.0f)] * sp24[player->characterId] * var_f0;
+                    var_f0 = sp44[(s16) ((player->speed / 18.0f) * 216.0f)] * sp24[player->characterId] * var_f0;
                 }
                 player->unk_07C = sp304;
-                if (((player->effects & 2) != 2) && ((player->effects & 0x10) != 0x10)) {
+                if (((player->effects & 2) != 2) && ((player->effects & UNKNOWN_EFFECT_0x10) != UNKNOWN_EFFECT_0x10)) {
                     if ((player->effects & 1) != 1) {
                         player->unk_078 = (player->unk_07C >> 0x10) * var_f0;
                     } else {
@@ -4187,7 +4193,7 @@ void func_8003680C(Player* player, s16 arg1) {
                     player->unk_078 = var_v0 * var_f0;
                 }
                 if ((((player->effects & 2) != 2) && (player->unk_0C0 < 0x3D) && (player->unk_0C0 > -0x3D)) ||
-                    (((player->unk_094 / 18.0f) * 216.0f) <= 20.0f) || ((player->effects & 0x8000) == 0x8000)) {
+                    (((player->speed / 18.0f) * 216.0f) <= 20.0f) || ((player->effects & 0x8000) == 0x8000)) {
                     func_80036CB4(player);
                 }
             }
@@ -4196,9 +4202,9 @@ void func_8003680C(Player* player, s16 arg1) {
 }
 
 void func_80036C5C(Player* arg0) {
-    if (((arg0->unk_094 / 18.0f) * 216.0f) > 20.0f) {
+    if (((arg0->speed / 18.0f) * 216.0f) > 20.0f) {
         arg0->unk_204 = 0;
-        arg0->effects |= 0x10;
+        arg0->effects |= UNKNOWN_EFFECT_0x10;
         arg0->unk_0B6 |= 0x800;
     }
 }
@@ -4206,7 +4212,8 @@ void func_80036C5C(Player* arg0) {
 void func_80036CB4(Player* player) {
     s32 test;
 
-    if (((player->effects & 0x10) == 0x10) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
+    if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) &&
+        ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
         if ((player->unk_0C0 / 182) > 0) {
             test = ((((player->unk_07C >> 0x10) * 0xD) + 0x2B1) / 106) + 0x28;
             player->unk_07C = test << 0x10;
@@ -4217,7 +4224,8 @@ void func_80036CB4(Player* player) {
         }
         player->effects &= ~0x10;
     }
-    if (((player->effects & 0x10) == 0x10) && ((player->type & PLAYER_HUMAN) != PLAYER_HUMAN)) {
+    if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) &&
+        ((player->type & PLAYER_HUMAN) != PLAYER_HUMAN)) {
         player->effects &= ~0x10;
     }
 }
@@ -4235,8 +4243,8 @@ void func_80036DB4(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[2] = 0.0f;
         mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
     } else {
-        if (((player->effects & 0x10) == 0x10) && ((player->effects & 2) != 2)) {
-            var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 10.0f);
+        if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) && ((player->effects & 2) != 2)) {
+            var_f18 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 10.0f);
             sp20 = player->unk_084 * 3.0f;
         } else if (!(player->effects & 0x800) && !(player->unk_044 & 0x4000)) {
             thing = player->unk_0FA;
@@ -4246,34 +4254,34 @@ void func_80036DB4(Player* player, Vec3f arg1, Vec3f arg2) {
             temp_t6 = player->unk_07C >> 0x10;
             if ((temp_t6 < 0x15) && (temp_t6 >= -0x14)) {
                 if (thing < 0x14) {
-                    var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) +
+                    var_f18 = (player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f)) +
                               (-player->currentSpeed * 0.02) + (-player->unk_20C * 50.0f);
                 } else {
-                    var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) +
+                    var_f18 = (player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f)) +
                               ((temp_t6 * 0.01) + (-player->currentSpeed * 0.05)) + (-player->unk_20C * 50.0f);
                 }
             } else {
-                var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) +
+                var_f18 = (player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f)) +
                           ((temp_t6 * 0.1) + (-player->currentSpeed * 0.15)) + (-player->unk_20C * 50.0f);
             }
             sp20 = player->unk_084;
         } else {
-            var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 1.5) +
+            var_f18 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) * 1.5) +
                       (((player->unk_07C >> 0x10) * 0.1) + (-player->currentSpeed * 0.05)) + (-player->unk_20C * 50.0f);
             sp20 = player->unk_084;
         }
         if ((player->effects & STAR_EFFECT) == STAR_EFFECT) {
-            if (((player->effects & 0x10) == 0x10) && ((player->effects & 2) != 2)) {
-                var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 10.0f);
+            if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) && ((player->effects & 2) != 2)) {
+                var_f18 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 10.0f);
                 sp20 = player->unk_084 * 3.0f;
             } else {
-                var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f);
+                var_f18 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f);
                 sp20 = player->unk_084;
             }
         }
-        arg1[0] = (player->unk_090 + var_f18) * player->unk_094;
+        arg1[0] = (player->unk_090 + var_f18) * player->speed;
         arg1[1] = 0.0f;
-        arg1[2] = player->unk_094 * sp20;
+        arg1[2] = player->speed * sp20;
         mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
     }
     arg2[0] = arg1[0];
@@ -4293,8 +4301,8 @@ void func_800371F4(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[2] = 0.0f;
         mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
     } else {
-        if (((player->effects & 0x10) == 0x10) && ((player->effects & 2) != 2)) {
-            var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 50.0f);
+        if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) && ((player->effects & 2) != 2)) {
+            var_f18 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 50.0f);
             sp20 = player->unk_084 * 3.0f;
         } else if (!(player->effects & 0x800) && !(player->unk_044 & 0x4000)) {
             var_v0 = player->unk_0FA;
@@ -4304,37 +4312,37 @@ void func_800371F4(Player* player, Vec3f arg1, Vec3f arg2) {
             temp_t6 = (s32) player->unk_07C >> 0x10;
             if ((temp_t6 < 0x15) && (temp_t6 >= -0x14)) {
                 if (var_v0 < 0x14) {
-                    var_f18 = (player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) +
+                    var_f18 = (player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f)) +
                               (-player->currentSpeed * 0.02) + (-player->unk_20C * 50.0f);
                 } else {
-                    var_f18 = ((player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) -
+                    var_f18 = ((player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f)) -
                                ((temp_t6 * 0.01) + (player->currentSpeed * 0.05))) +
                               (-player->unk_20C * 50.0f);
                 }
             } else {
-                var_f18 = ((player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f)) -
+                var_f18 = ((player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f)) -
                            ((temp_t6 * 0.1) + (player->currentSpeed * 0.15))) +
                           (-player->unk_20C * 50.0f);
             }
             sp20 = player->unk_084;
         } else {
-            var_f18 = ((player->unk_208 + ((f64) (-(player->unk_094 / 18.0f) * 216.0f) * 1.5)) -
+            var_f18 = ((player->unk_208 + ((f64) (-(player->speed / 18.0f) * 216.0f) * 1.5)) -
                        (((player->unk_07C >> 0x10) * 0.1) + (player->currentSpeed * 0.05))) +
                       (-player->unk_20C * 50.0f);
             sp20 = player->unk_084;
         }
         if ((player->effects & STAR_EFFECT) == STAR_EFFECT) {
-            if (((player->effects & 0x10) == 0x10) && ((player->effects & 2) != 2)) {
-                var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 50.0f);
+            if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) && ((player->effects & 2) != 2)) {
+                var_f18 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) * 3.0f) + (-player->unk_20C * 50.0f);
                 sp20 = player->unk_084 * 3.0f;
             } else {
-                var_f18 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 3.0f);
+                var_f18 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 3.0f);
                 sp20 = player->unk_084;
             }
         }
-        arg1[0] = -(player->unk_090 + var_f18) * player->unk_094;
+        arg1[0] = -(player->unk_090 + var_f18) * player->speed;
         arg1[1] = 0.0f;
-        arg1[2] = player->unk_094 * sp20;
+        arg1[2] = player->speed * sp20;
         mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
     }
     arg2[0] = arg1[0];
@@ -4352,16 +4360,16 @@ void func_80037614(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[2] = 0.0f;
         mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
     } else {
-        if (((player->effects & 0x10) == 0x10) && ((player->effects & 2) != 2)) {
-            var_f2 = ((-(player->unk_094 / 18.0f) * 216.0f) * 2) + -80.0f;
+        if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) && ((player->effects & 2) != 2)) {
+            var_f2 = ((-(player->speed / 18.0f) * 216.0f) * 2) + -80.0f;
             var_f12 = -80.0f;
         } else {
-            var_f2 = ((-(player->unk_094 / 18.0f) * 216.0f) / 2) + -20.0f;
+            var_f2 = ((-(player->speed / 18.0f) * 216.0f) / 2) + -20.0f;
             var_f12 = -40.0f;
         }
-        arg1[0] = (var_f2 + 28.0f) * player->unk_094;
+        arg1[0] = (var_f2 + 28.0f) * player->speed;
         arg1[1] = 0.0f;
-        arg1[2] = var_f12 * player->unk_094;
+        arg1[2] = var_f12 * player->speed;
         mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
     }
     arg2[0] = arg1[0];
@@ -4379,16 +4387,16 @@ void func_8003777C(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[2] = 0.0f;
         mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
     } else {
-        if (((player->effects & 0x10) == 0x10) && ((player->effects & 2) != 2)) {
-            var_f2 = ((-(player->unk_094 / 18.0f) * 216.0f) * 2) + -80.0f;
+        if (((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) && ((player->effects & 2) != 2)) {
+            var_f2 = ((-(player->speed / 18.0f) * 216.0f) * 2) + -80.0f;
             var_f12 = -80.0f;
         } else {
-            var_f2 = ((-(player->unk_094 / 18.0f) * 216.0f) / 2) + -20.0f;
+            var_f2 = ((-(player->speed / 18.0f) * 216.0f) / 2) + -20.0f;
             var_f12 = -40.0f;
         }
-        arg1[0] = -(var_f2 + 28.0f) * player->unk_094;
+        arg1[0] = -(var_f2 + 28.0f) * player->speed;
         arg1[1] = 0.0f;
-        arg1[2] = var_f12 * player->unk_094;
+        arg1[2] = var_f12 * player->speed;
         mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
     }
     arg2[0] = arg1[0];
@@ -4406,16 +4414,16 @@ void func_800378E8(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[2] = 0.0f;
         mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
     } else {
-        if ((player->effects & 0x10) == 0x10) {
-            var_f2 = player->unk_208 + (-(player->unk_094 / 18.0f) * 216.0f * 5.0f) + (-player->unk_20C * 10.0f);
+        if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
+            var_f2 = player->unk_208 + (-(player->speed / 18.0f) * 216.0f * 5.0f) + (-player->unk_20C * 10.0f);
             var_f12 = -100.0f;
         } else {
-            var_f2 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 40.0f) + (-player->unk_20C * 50.0f);
+            var_f2 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 40.0f) + (-player->unk_20C * 50.0f);
             var_f12 = player->unk_084;
         }
-        arg1[0] = (player->unk_090 + var_f2) * player->unk_094;
+        arg1[0] = (player->unk_090 + var_f2) * player->speed;
         arg1[1] = 0.0f;
-        arg1[2] = player->unk_094 * var_f12;
+        arg1[2] = player->speed * var_f12;
         mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
     }
     arg2[0] = arg1[0];
@@ -4433,16 +4441,16 @@ void func_80037A4C(Player* player, Vec3f arg1, Vec3f arg2) {
         arg1[2] = 0.0f;
         mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
     } else {
-        if ((player->effects & 0x10) == 0x10) {
-            var_f2 = player->unk_208 + (-(player->unk_094 / 18.0f) * 216.0f * 5.0f) + (-player->unk_20C * 50.0f);
+        if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
+            var_f2 = player->unk_208 + (-(player->speed / 18.0f) * 216.0f * 5.0f) + (-player->unk_20C * 50.0f);
             var_f12 = -100.0f;
         } else {
-            var_f2 = player->unk_208 + ((-(player->unk_094 / 18.0f) * 216.0f) / 40.0f) + (-player->unk_20C * 50.0f);
+            var_f2 = player->unk_208 + ((-(player->speed / 18.0f) * 216.0f) / 40.0f) + (-player->unk_20C * 50.0f);
             var_f12 = player->unk_084;
         }
-        arg1[0] = -(player->unk_090 + var_f2) * player->unk_094;
+        arg1[0] = -(player->unk_090 + var_f2) * player->speed;
         arg1[1] = 0.0f;
-        arg1[2] = player->unk_094 * var_f12;
+        arg1[2] = player->speed * var_f12;
         mtxf_translate_vec3f_mat3(arg1, player->orientationMatrix);
     }
     arg2[0] = arg1[0];
@@ -4497,7 +4505,7 @@ void func_80037CFC(Player* player, struct Controller* controller, s8 arg2) {
         ((player->effects & UNKNOWN_EFFECT_0x10000) != UNKNOWN_EFFECT_0x10000) &&
         ((player->effects & 0x20000) != 0x20000)) {
         if (((player->effects & HIT_EFFECT) != HIT_EFFECT) && ((player->effects & 8) != 8) &&
-            ((player->effects & 2) != 2) && ((player->effects & 0x10) != 0x10) &&
+            ((player->effects & 2) != 2) && ((player->effects & UNKNOWN_EFFECT_0x10) != UNKNOWN_EFFECT_0x10) &&
             (controller->buttonPressed & R_TRIG)) {
             kart_hop(player);
             if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
@@ -4512,7 +4520,7 @@ void func_80037CFC(Player* player, struct Controller* controller, s8 arg2) {
         }
         player->effects &= ~1;
         if ((!(player->effects & BOOST_RAMP_ASPHALT_EFFECT)) && (!(player->effects & BOOST_RAMP_WOOD_EFFECT))) {
-            if (((player->unk_094 / 18.0f) * 216.0f) <= 12.0f) {
+            if (((player->speed / 18.0f) * 216.0f) <= 12.0f) {
                 if (controller->button & A_BUTTON) {
                     if (controller->button & B_BUTTON) {
                         player->effects |= 0x20;
@@ -4548,7 +4556,7 @@ void func_80037CFC(Player* player, struct Controller* controller, s8 arg2) {
             }
         }
         if ((!(player->effects & BOOST_RAMP_ASPHALT_EFFECT)) && (!(player->effects & 4))) {
-            if (((func_800388B0(controller) < (-0x31)) && (((player->unk_094 / 18.0f) * 216.0f) <= 5.0f)) &&
+            if (((func_800388B0(controller) < (-0x31)) && (((player->speed / 18.0f) * 216.0f) <= 5.0f)) &&
                 (controller->button & B_BUTTON)) {
                 player->currentSpeed = 140.0f;
                 player->unk_044 |= 1;
@@ -4902,8 +4910,8 @@ void func_80038C6C(Player* player, UNUSED Camera* camera, s8 arg2, s8 playerId) 
     func_80029B4C(player, spEC, spE8, spE4);
     func_8002AE38(player, playerId, posX, posZ, spEC, spE4);
     sqrt = (sp88[0] * sp88[0]) + (sp88[2] * sp88[2]);
-    player->unk_22C = player->unk_094;
-    player->unk_094 = sqrtf(sqrt);
+    player->previousSpeed = player->speed;
+    player->speed = sqrtf(sqrt);
 
     player->pos[0] = spEC;
     player->pos[2] = spE4;
@@ -4921,20 +4929,20 @@ void func_80038C6C(Player* player, UNUSED Camera* camera, s8 arg2, s8 playerId) 
     D_80165070[playerId][2] = sp88[2];
 
     if ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) {
-        if (gKartTopSpeedTable[player->characterId] < player->unk_094) {
-            divOptimize = gKartTopSpeedTable[player->characterId] / player->unk_094;
+        if (gKartTopSpeedTable[player->characterId] < player->speed) {
+            divOptimize = gKartTopSpeedTable[player->characterId] / player->speed;
             player->velocity[0] *= divOptimize;
             player->velocity[1] *= divOptimize;
             player->velocity[2] *= divOptimize;
-            player->unk_094 = gKartTopSpeedTable[player->characterId];
+            player->speed = gKartTopSpeedTable[player->characterId];
         }
     }
     if ((player->unk_044 & 1) == 1) {
-        if (player->unk_094 > 1.0f) {
-            player->velocity[0] *= 1.0f / player->unk_094;
-            player->velocity[1] *= 1.0f / player->unk_094;
-            player->velocity[2] *= 1.0f / player->unk_094;
-            player->unk_094 = 1.0f;
+        if (player->speed > 1.0f) {
+            player->velocity[0] *= 1.0f / player->speed;
+            player->velocity[1] *= 1.0f / player->speed;
+            player->velocity[2] *= 1.0f / player->speed;
+            player->speed = 1.0f;
         }
     }
     if (player->collision.surfaceDistance[2] >= 500.0f) {

@@ -317,28 +317,28 @@ glabel func_80009B60
 /* 00AB94 80009F94 8FAA00D0 */   lw    $t2, 0xd0($sp)
 /* 00AB98 80009F98 44808000 */  mtc1  $zero, $f16
 /* 00AB9C 80009F9C 000A5900 */  sll   $t3, $t2, 4
-/* 00ABA0 80009FA0 3C018016 */  lui   $at, %hi(D_801634F8 + 4)
+/* 00ABA0 80009FA0 3C018016 */  lui   $at, %hi(gPlayerTrackPositionFactorInstruction + 4)
 /* 00ABA4 80009FA4 002B0821 */  addu  $at, $at, $t3
-/* 00ABA8 80009FA8 E43034FC */  swc1  $f16, %lo(D_801634F8 + 4)($at)
+/* 00ABA8 80009FA8 E43034FC */  swc1  $f16, %lo(gPlayerTrackPositionFactorInstruction + 4)($at)
 .L80009FAC:
 /* 00ABAC 80009FAC 8FAE00D0 */  lw    $t6, 0xd0($sp)
 /* 00ABB0 80009FB0 44809000 */  mtc1  $zero, $f18
-/* 00ABB4 80009FB4 3C018016 */  lui   $at, %hi(D_801634F8 + 12)
+/* 00ABB4 80009FB4 3C018016 */  lui   $at, %hi(gPlayerTrackPositionFactorInstruction + 12)
 /* 00ABB8 80009FB8 000E7900 */  sll   $t7, $t6, 4
 /* 00ABBC 80009FBC 002F0821 */  addu  $at, $at, $t7
-/* 00ABC0 80009FC0 E4323504 */  swc1  $f18, %lo(D_801634F8 + 12)($at)
+/* 00ABC0 80009FC0 E4323504 */  swc1  $f18, %lo(gPlayerTrackPositionFactorInstruction + 12)($at)
 .L80009FC4:
 /* 00ABC4 80009FC4 3C028016 */  lui   $v0, %hi(gActualPath) # $v0, 0x8016
 /* 00ABC8 80009FC8 8C423448 */  lw    $v0, %lo(gActualPath)($v0)
-/* 00ABCC 80009FCC 3C0A8016 */  lui   $t2, %hi(D_80164510) # $t2, 0x8016
-/* 00ABD0 80009FD0 254A4510 */  addiu $t2, %lo(D_80164510) # addiu $t2, $t2, 0x4510
+/* 00ABCC 80009FCC 3C0A8016 */  lui   $t2, %hi(gPlayerPathY) # $t2, 0x8016
+/* 00ABD0 80009FD0 254A4510 */  addiu $t2, %lo(gPlayerPathY) # addiu $t2, $t2, 0x4510
 /* 00ABD4 80009FD4 1840000A */  blez  $v0, .L8000A000
 /* 00ABD8 80009FD8 3C0B8016 */   lui   $t3, %hi(gNearestWaypointByPlayerId) # $t3, 0x8016
 /* 00ABDC 80009FDC 8FAD00D0 */  lw    $t5, 0xd0($sp)
-/* 00ABE0 80009FE0 3C188016 */  lui   $t8, %hi(D_801634F8) # $t8, 0x8016
+/* 00ABE0 80009FE0 3C188016 */  lui   $t8, %hi(gPlayerTrackPositionFactorInstruction) # $t8, 0x8016
 /* 00ABE4 80009FE4 44802000 */  mtc1  $zero, $f4
 /* 00ABE8 80009FE8 44803000 */  mtc1  $zero, $f6
-/* 00ABEC 80009FEC 271834F8 */  addiu $t8, %lo(D_801634F8) # addiu $t8, $t8, 0x34f8
+/* 00ABEC 80009FEC 271834F8 */  addiu $t8, %lo(gPlayerTrackPositionFactorInstruction) # addiu $t8, $t8, 0x34f8
 /* 00ABF0 80009FF0 000D6100 */  sll   $t4, $t5, 4
 /* 00ABF4 80009FF4 01981821 */  addu  $v1, $t4, $t8
 /* 00ABF8 80009FF8 E4640004 */  swc1  $f4, 4($v1)
@@ -410,10 +410,10 @@ glabel func_80009B60
 /* 00ACEC 8000A0EC 00602025 */  move  $a0, $v1
 .L8000A0F0:
 /* 00ACF0 8000A0F0 44803000 */  mtc1  $zero, $f6
-/* 00ACF4 8000A0F4 3C018016 */  lui   $at, %hi(D_801634F8 + 4)
+/* 00ACF4 8000A0F4 3C018016 */  lui   $at, %hi(gPlayerTrackPositionFactorInstruction + 4)
 /* 00ACF8 8000A0F8 00390821 */  addu  $at, $at, $t9
 /* 00ACFC 8000A0FC 1000000D */  b     .L8000A134
-/* 00AD00 8000A100 E42634FC */   swc1  $f6, %lo(D_801634F8 + 4)($at)
+/* 00AD00 8000A100 E42634FC */   swc1  $f6, %lo(gPlayerTrackPositionFactorInstruction + 4)($at)
 .L8000A104:
 /* 00AD04 8000A104 0C005243 */  jal   update_player_track_position_factor_from_box_trucks
 /* 00AD08 8000A108 AFA5002C */   sw    $a1, 0x2c($sp)
@@ -491,8 +491,8 @@ glabel func_80009B60
 /* 00AE1C 8000A21C 8F39C548 */  lw    $t9, %lo(gCCSelection)($t9)
 /* 00AE20 8000A220 8FAC00D0 */  lw    $t4, 0xd0($sp)
 /* 00AE24 8000A224 000A6900 */  sll   $t5, $t2, 4
-/* 00AE28 8000A228 3C0A8016 */  lui   $t2, %hi(D_801634F8) # $t2, 0x8016
-/* 00AE2C 8000A22C 254A34F8 */  addiu $t2, %lo(D_801634F8) # addiu $t2, $t2, 0x34f8
+/* 00AE28 8000A228 3C0A8016 */  lui   $t2, %hi(gPlayerTrackPositionFactorInstruction) # $t2, 0x8016
+/* 00AE2C 8000A22C 254A34F8 */  addiu $t2, %lo(gPlayerTrackPositionFactorInstruction) # addiu $t2, $t2, 0x34f8
 /* 00AE30 8000A230 3C0E0D01 */  lui   $t6, %hi(D_0D0096B8) # $t6, 0xd01
 /* 00AE34 8000A234 00195880 */  sll   $t3, $t9, 2
 /* 00AE38 8000A238 000CC100 */  sll   $t8, $t4, 4
@@ -562,11 +562,11 @@ glabel func_80009B60
 /* 00AF2C 8000A32C 8FA400D0 */  lw    $a0, 0xd0($sp)
 /* 00AF30 8000A330 0C004C77 */  jal   check_ai_crossing_distance
 /* 00AF34 8000A334 AFA8003C */   sw    $t0, 0x3c($sp)
-/* 00AF38 8000A338 0C0034EE */  jal   func_8000D3B8
+/* 00AF38 8000A338 0C0034EE */  jal   cpu_track_position_factor
 /* 00AF3C 8000A33C 8FA400D0 */   lw    $a0, 0xd0($sp)
 /* 00AF40 8000A340 3C058016 */  lui   $a1, %hi(gCurrentNearestWaypoint) # $a1, 0x8016
 /* 00AF44 8000A344 94A530E0 */  lhu   $a1, %lo(gCurrentNearestWaypoint)($a1)
-/* 00AF48 8000A348 0C00350E */  jal   func_8000D438
+/* 00AF48 8000A348 0C00350E */  jal   determine_ideal_position_offset
 /* 00AF4C 8000A34C 8FA400D0 */   lw    $a0, 0xd0($sp)
 /* 00AF50 8000A350 8FA60040 */  lw    $a2, 0x40($sp)
 /* 00AF54 8000A354 3C078016 */  lui   $a3, %hi(gOffsetPosition) # $a3, 0x8016
@@ -642,7 +642,7 @@ glabel func_80009B60
 /* 00B064 8000A464 01402025 */  move  $a0, $t2
 /* 00B068 8000A468 8CA53090 */  lw    $a1, %lo(D_80163090)($a1) # 0x3090($a1)
 /* 00B06C 8000A46C 84C6344A */  lh    $a2, %lo(gActualPath + 2)($a2)
-/* 00B070 8000A470 0C002EF6 */  jal   func_8000BBD8
+/* 00B070 8000A470 0C002EF6 */  jal   set_track_offset_position
 /* 00B074 8000A474 AFA8003C */   sw    $t0, 0x3c($sp)
 /* 00B078 8000A478 3C078016 */  lui   $a3, %hi(gOffsetPosition) # $a3, 0x8016
 /* 00B07C 8000A47C 24E72FA0 */  addiu $a3, %lo(gOffsetPosition) # addiu $a3, $a3, 0x2fa0
@@ -906,7 +906,7 @@ glabel func_80009B60
 /* 00B418 8000A818 3C058016 */  lui   $a1, %hi(sSomeNearestWaypoint) # $a1, 0x8016
 /* 00B41C 8000A81C 94A52FCE */  lhu   $a1, %lo(sSomeNearestWaypoint)($a1)
 /* 00B420 8000A820 AFA30028 */  sw    $v1, 0x28($sp)
-/* 00B424 8000A824 0C00350E */  jal   func_8000D438
+/* 00B424 8000A824 0C00350E */  jal   determine_ideal_position_offset
 /* 00B428 8000A828 8FA400D0 */   lw    $a0, 0xd0($sp)
 /* 00B42C 8000A82C 3C02800E */  lui   $v0, %hi(gCurrentCourseId)
 /* 00B430 8000A830 8442C5A0 */  lh    $v0, %lo(gCurrentCourseId)($v0)
@@ -917,8 +917,8 @@ glabel func_80009B60
 /* 00B444 8000A844 3C058016 */  lui   $a1, %hi(gLapProgressScore) # 0x8016
 /* 00B448 8000A848 00A92821 */  addu  $a1, $a1, $t1
 /* 00B44C 8000A84C 8CA54450 */  lw    $a1, %lo(gLapProgressScore)($a1) # 0x4450($a1)
-/* 00B450 8000A850 3C198016 */  lui   $t9, %hi(D_801634F8) # $t9, 0x8016
-/* 00B454 8000A854 273934F8 */  addiu $t9, %lo(D_801634F8) # addiu $t9, $t9, 0x34f8
+/* 00B450 8000A850 3C198016 */  lui   $t9, %hi(gPlayerTrackPositionFactorInstruction) # $t9, 0x8016
+/* 00B454 8000A854 273934F8 */  addiu $t9, %lo(gPlayerTrackPositionFactorInstruction) # addiu $t9, $t9, 0x34f8
 /* 00B458 8000A858 28A1000B */  slti  $at, $a1, 0xb
 /* 00B45C 8000A85C 10200045 */  beqz  $at, .L8000A974
 /* 00B460 8000A860 00000000 */   nop
@@ -953,7 +953,7 @@ glabel func_80009B60
 /* 00B4CC 8000A8CC 308DFFFF */  andi  $t5, $a0, 0xffff
 /* 00B4D0 8000A8D0 01A02025 */  move  $a0, $t5
 /* 00B4D4 8000A8D4 00003025 */  move  $a2, $zero
-/* 00B4D8 8000A8D8 0C002EF6 */  jal   func_8000BBD8
+/* 00B4D8 8000A8D8 0C002EF6 */  jal   set_track_offset_position
 /* 00B4DC 8000A8DC AFA30030 */   sw    $v1, 0x30($sp)
 /* 00B4E0 8000A8E0 8FA30030 */  lw    $v1, 0x30($sp)
 /* 00B4E4 8000A8E4 44805000 */  mtc1  $zero, $f10
@@ -989,7 +989,7 @@ glabel func_80009B60
 /* 00B54C 8000A94C 84C6344A */  lh    $a2, %lo(gActualPath + 2)($a2)
 /* 00B550 8000A950 8D050000 */  lw    $a1, ($t0)
 /* 00B554 8000A954 AFA80020 */  sw    $t0, 0x20($sp)
-/* 00B558 8000A958 0C002EF6 */  jal   func_8000BBD8
+/* 00B558 8000A958 0C002EF6 */  jal   set_track_offset_position
 /* 00B55C 8000A95C AFA30030 */   sw    $v1, 0x30($sp)
 /* 00B560 8000A960 8FA80020 */  lw    $t0, 0x20($sp)
 /* 00B564 8000A964 8FA30030 */  lw    $v1, 0x30($sp)
@@ -1032,7 +1032,7 @@ glabel func_80009B60
 /* 00B5EC 8000A9EC 3C068016 */  lui   $a2, %hi(gActualPath + 2) # $a2, 0x8016
 /* 00B5F0 8000A9F0 01602025 */  move  $a0, $t3
 /* 00B5F4 8000A9F4 84C6344A */  lh    $a2, %lo(gActualPath + 2)($a2)
-/* 00B5F8 8000A9F8 0C002EF6 */  jal   func_8000BBD8
+/* 00B5F8 8000A9F8 0C002EF6 */  jal   set_track_offset_position
 /* 00B5FC 8000A9FC 34A53333 */   ori   $a1, (0xBF333333 & 0xFFFF) # ori $a1, $a1, 0x3333
 .L8000AA00:
 /* 00B600 8000AA00 3C0C8016 */  lui   $t4, %hi(gActualPath) # $t4, 0x8016
@@ -1076,7 +1076,7 @@ glabel func_80009B60
 /* 00B690 8000AA90 3C068016 */  lui   $a2, %hi(gActualPath + 2) # $a2, 0x8016
 /* 00B694 8000AA94 01802025 */  move  $a0, $t4
 /* 00B698 8000AA98 84C6344A */  lh    $a2, %lo(gActualPath + 2)($a2)
-/* 00B69C 8000AA9C 0C002EF6 */  jal   func_8000BBD8
+/* 00B69C 8000AA9C 0C002EF6 */  jal   set_track_offset_position
 /* 00B6A0 8000AAA0 8CA53090 */   lw    $a1, %lo(D_80163090)($a1) # 0x3090($a1)
 .L8000AAA4:
 /* 00B6A4 8000AAA4 3C0E800E */  lui   $t6, %hi(gCurrentCourseId)
@@ -1147,9 +1147,9 @@ glabel func_80009B60
 /* 00B798 8000AB98 46805420 */  cvt.s.w $f16, $f10
 /* 00B79C 8000AB9C E4F00008 */  swc1  $f16, 8($a3)
 .L8000ABA0:
-/* 00B7A0 8000ABA0 3C0C8016 */  lui   $t4, %hi(D_80163178) # $t4, 0x8016
+/* 00B7A0 8000ABA0 3C0C8016 */  lui   $t4, %hi(gPreviousPlayerAiOffsetX) # $t4, 0x8016
 /* 00B7A4 8000ABA4 3C078016 */  lui   $a3, %hi(gOffsetPosition) # 0x8016
-/* 00B7A8 8000ABA8 258C3178 */  addiu $t4, %lo(D_80163178) # addiu $t4, $t4, 0x3178
+/* 00B7A8 8000ABA8 258C3178 */  addiu $t4, %lo(gPreviousPlayerAiOffsetX) # addiu $t4, $t4, 0x3178
 /* 00B7AC 8000ABAC 24E52FA0 */  addiu $a1, $a3, %lo(gOffsetPosition) # 0x2fa0
 /* 00B7B0 8000ABB0 012C1021 */  addu  $v0, $t1, $t4
 /* 00B7B4 8000ABB4 C4460000 */  lwc1  $f6, ($v0)
@@ -1157,8 +1157,8 @@ glabel func_80009B60
 /* 00B7BC 8000ABBC 3C013F00 */  li    $at, 0x3F000000 # 0.500000
 /* 00B7C0 8000ABC0 44810000 */  mtc1  $at, $f0
 /* 00B7C4 8000ABC4 46062480 */  add.s $f18, $f4, $f6
-/* 00B7C8 8000ABC8 3C0B8016 */  lui   $t3, %hi(D_801631A0) # $t3, 0x8016
-/* 00B7CC 8000ABCC 256B31A0 */  addiu $t3, %lo(D_801631A0) # addiu $t3, $t3, 0x31a0
+/* 00B7C8 8000ABC8 3C0B8016 */  lui   $t3, %hi(gPreviousPlayerAiOffsetZ) # $t3, 0x8016
+/* 00B7CC 8000ABCC 256B31A0 */  addiu $t3, %lo(gPreviousPlayerAiOffsetZ) # addiu $t3, $t3, 0x31a0
 /* 00B7D0 8000ABD0 012B1821 */  addu  $v1, $t1, $t3
 /* 00B7D4 8000ABD4 46009202 */  mul.s $f8, $f18, $f0
 /* 00B7D8 8000ABD8 C4AA0008 */  lwc1  $f10, 8($a1)

@@ -379,7 +379,7 @@ void func_8008CDC0(Player* player, s8 arg1) {
     player->effects &= ~0x10;
 
     if (((player->unk_07C >> 0x10) >= 0x14) || ((player->unk_07C >> 0x10) < -0x13) ||
-        (((player->unk_094 / 18.0f) * 216.0f) <= 30.0f) || ((player->effects & 8) != 0) ||
+        (((player->speed / 18.0f) * 216.0f) <= 30.0f) || ((player->effects & 8) != 0) ||
         (((player->type & PLAYER_HUMAN) == 0) && ((player->effects & UNKNOWN_EFFECT_0x1000) == 0))) {
         func_8008C73C(player, arg1);
     } else {
@@ -2081,7 +2081,7 @@ void func_80091298(Player* player, s8 arg1) {
                 player->kartGravity = gKartGravityTable[player->characterId];
                 player->unk_0D4[0] = 0;
                 player->type |= PLAYER_START_SEQUENCE;
-                player->unk_094 = 0.0f;
+                player->speed = 0.0f;
                 player->unk_08C = 0.0f;
                 player->currentSpeed = 0.0f;
                 if (arg1 == 0) {
