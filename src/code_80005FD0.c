@@ -4338,13 +4338,13 @@ void kart_ai_behaviour_start(s32 playerId, Player* player) {
                 player->effects &= ~0x10;
                 D_801630E8[playerId] = 0;
                 break;
-            case BEHAVIOUR_3:
+            case BEHAVIOUR_GO_CENTER:
                 gPlayerTrackPositionFactorInstruction[playerId].target = 0.0f;
                 break;
-            case BEHAVIOUR_4:
+            case BEHAVIOUR_GO_INNER:
                 gPlayerTrackPositionFactorInstruction[playerId].target = -0.6f;
                 break;
-            case BEHAVIOUR_5:
+            case BEHAVIOUR_GO_OUTER:
                 gPlayerTrackPositionFactorInstruction[playerId].target = 0.6f;
                 break;
             case BEHAVIOUR_NORMAL_SPEED:
@@ -4362,7 +4362,7 @@ void kart_ai_behaviour_start(s32 playerId, Player* player) {
             case BEHAVIOUR_9:
                 D_801633F8[playerId] = 1;
                 D_801631E0[playerId] = 0;
-                gPlayers[playerId].effects &= ~0x1000;
+                gPlayers[playerId].effects &= ~UNKNOWN_EFFECT_0x1000;
                 break;
             case BEHAVIOUR_10:
                 D_801633F8[playerId] = 0;
@@ -4387,9 +4387,9 @@ void kart_ai_behaviour_end(s32 playerIndex, Player* player) {
                 D_801630E8[playerIndex] = 0;
                 gKartAIBehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
                 break;
-            case BEHAVIOUR_3:
-            case BEHAVIOUR_4:
-            case BEHAVIOUR_5:
+            case BEHAVIOUR_GO_CENTER:
+            case BEHAVIOUR_GO_INNER:
+            case BEHAVIOUR_GO_OUTER:
                 gPlayerTrackPositionFactorInstruction[playerIndex].target =
                     gPlayerTrackPositionFactorInstruction[playerIndex].unkC;
                 gKartAIBehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
