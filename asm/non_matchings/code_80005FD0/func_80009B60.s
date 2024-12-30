@@ -896,11 +896,11 @@ glabel func_80009B60
 /* 00B3F0 8000A7F0 3C058016 */  lui   $a1, %hi(sSomeNearestWaypoint) # $a1, 0x8016
 /* 00B3F4 8000A7F4 254D0014 */  addiu $t5, $t2, 0x14
 /* 00B3F8 8000A7F8 AFAD001C */  sw    $t5, 0x1c($sp)
-/* 00B3FC 8000A7FC 0C002DF9 */  jal   func_8000B7E4
+/* 00B3FC 8000A7FC 0C002DF9 */  jal   are_in_curse
 /* 00B400 8000A800 94A52FCE */   lhu   $a1, %lo(sSomeNearestWaypoint)($a1)
 /* 00B404 8000A804 8FAF0038 */  lw    $t7, 0x38($sp)
-/* 00B408 8000A808 3C0B8016 */  lui   $t3, %hi(D_801630B8) # $t3, 0x8016
-/* 00B40C 8000A80C 256B30B8 */  addiu $t3, %lo(D_801630B8) # addiu $t3, $t3, 0x30b8
+/* 00B408 8000A808 3C0B8016 */  lui   $t3, %hi(gIsPlayerInCurve) # $t3, 0x8016
+/* 00B40C 8000A80C 256B30B8 */  addiu $t3, %lo(gIsPlayerInCurve) # addiu $t3, $t3, 0x30b8
 /* 00B410 8000A810 01EB1821 */  addu  $v1, $t7, $t3
 /* 00B414 8000A814 AC620000 */  sw    $v0, ($v1)
 /* 00B418 8000A818 3C058016 */  lui   $a1, %hi(sSomeNearestWaypoint) # $a1, 0x8016

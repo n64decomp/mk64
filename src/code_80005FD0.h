@@ -123,7 +123,7 @@ void update_player_timer_sound(s32, Player*);
 void func_80009B60(s32);
 
 void func_8000B140(s32);
-s32 func_8000B7E4(s32, u16);
+s32 are_in_curse(s32, u16);
 bool is_far_from_path(s32);
 f32 calculate_track_position_factor(f32, f32, u16, s32);
 void update_player_position_factor(s32, u16, s32);
@@ -307,7 +307,7 @@ extern f32 D_80163028[];
 extern s16 D_80163050[];
 extern f32 gTrackPositionFactor[];
 extern f32 D_80163090[];
-extern s32 D_801630B8[];
+extern bool gIsPlayerInCurve[];
 extern u16 gCurrentNearestWaypoint;
 extern s16 gIsPlayerNewWaypoint;
 extern s16 D_801630E8[];

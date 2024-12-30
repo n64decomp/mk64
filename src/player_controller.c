@@ -3217,7 +3217,7 @@ void detect_triple_a_combo_a_pressed(Player* player) {
     }
 }
 
-void player_speed(Player* player) {
+void player_accelerate(Player* player) {
     s32 player_index;
 
     player_index = get_player_index_for_player(player);
@@ -4537,7 +4537,7 @@ void func_80037CFC(Player* player, struct Controller* controller, s8 arg2) {
         }
         if ((player->unk_044 & 1) != 1) {
             if (controller->button & A_BUTTON) {
-                player_speed(player);
+                player_accelerate(player);
                 detect_triple_a_combo_a_pressed(player);
             } else {
                 if (gModeSelection == BATTLE) {
@@ -4573,7 +4573,7 @@ void func_80037CFC(Player* player, struct Controller* controller, s8 arg2) {
     } else {
         if ((player->effects & 0x4000) == 0x4000) {
             if (controller->button & A_BUTTON) {
-                player_speed(player);
+                player_accelerate(player);
             } else {
                 decelerate_ai_player(player, 5.0f);
             }
