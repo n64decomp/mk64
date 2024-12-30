@@ -593,7 +593,7 @@ MenuItem* get_menu_item_character(s32);
 MenuItem* find_menu_items_dupe(s32);
 MenuItem* find_menu_items(s32);
 s32 get_character_menu_state(s32);
-void move_menu_item_at_character_portrait(MenuItem*, s32);
+void hover_cursor_over_character_portrait(MenuItem*, s32);
 s32 func_800AAFCC(s32);
 void func_800AB020(MenuItem*);
 void func_800AB098(MenuItem*);

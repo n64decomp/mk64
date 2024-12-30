@@ -10035,7 +10035,7 @@ void update_cursor(MenuItem* arg0) {
     playerId = arg0->type - CHARACTER_SELECT_MENU_1P_CURSOR;
     characterSelectionIndex = gCharacterGridSelections[playerId];
     arg0->priority = 0xE - (playerId * 2);
-    move_menu_item_at_character_portrait(arg0, characterSelectionIndex - 1);
+    hover_cursor_over_character_portrait(arg0, characterSelectionIndex - 1);
 }
 
 void func_800AAE18(MenuItem* arg0) {
@@ -10139,7 +10139,7 @@ UNUSED s32 get_character_menu_state(s32 arg0) {
     return temp->state;
 }
 
-void move_menu_item_at_character_portrait(MenuItem* arg0, s32 character_id) {
+void hover_cursor_over_character_portrait(MenuItem* arg0, s32 character_id) {
     MenuItem* temp_v0;
 
     temp_v0 = get_menu_item_character(character_id);
