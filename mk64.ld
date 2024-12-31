@@ -71,7 +71,7 @@ SECTIONS
       BUILD_DIR/src/code_80086E70.o(.text*);
       BUILD_DIR/src/effects.o(.text*);
       BUILD_DIR/src/code_80091440.o(.text*);
-      BUILD_DIR/src/menu_item.jp.o(.text*);
+      BUILD_DIR/src/menu_items.jp.o(.text*);
       BUILD_DIR/src/code_800AF9B0.o(.text*);
       BUILD_DIR/src/menus.o(.text*);
       BUILD_DIR/src/save.o(.text*);
@@ -232,7 +232,7 @@ SECTIONS
       BUILD_DIR/src/data/some_data.o(.data*);
       BUILD_DIR/src/effects.o(.data*);
       BUILD_DIR/src/code_80091440.o(.data*);
-      BUILD_DIR/src/menu_item.jp.o(.data*);
+      BUILD_DIR/src/menu_items.jp.o(.data*);
       BUILD_DIR/src/code_800AF9B0.o(.data*);
       BUILD_DIR/src/menus.o(.data*);
       BUILD_DIR/src/save.o(.data*);
@@ -284,7 +284,7 @@ SECTIONS
       BUILD_DIR/src/code_80086E70.o(.rodata*);
       BUILD_DIR/src/effects.o(.rodata*);
       BUILD_DIR/src/code_80091440.o(.rodata*);
-      BUILD_DIR/src/menu_item.jp.o(.rodata*);
+      BUILD_DIR/src/menu_items.jp.o(.rodata*);
       BUILD_DIR/src/code_800AF9B0.o(.rodata*);
       BUILD_DIR/src/menus.o(.rodata*);
       BUILD_DIR/src/save.o(.rodata*);
@@ -335,7 +335,7 @@ SECTIONS
       BUILD_DIR/src/code_80057C60.o(.bss*);
       BUILD_DIR/src/code_80057C60_var.o(.bss*);
       BUILD_DIR/src/effects.o(.bss*);
-      BUILD_DIR/src/menu_item.jp.o(.bss*);
+      BUILD_DIR/src/menu_items.jp.o(.bss*);
       BUILD_DIR/src/code_800AF9B0.o(.bss*);
       BUILD_DIR/src/menus.o(.bss*);
       BUILD_DIR/src/save.o(.bss*);

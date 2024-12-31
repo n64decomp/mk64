@@ -203,7 +203,7 @@ void func_8004B5A8(s32, s32, s32, s32);
 void func_8004B614(s32, s32, s32, s32, s32, s32, s32);
 void func_8004B6C4(s32, s32, s32);
 void func_8004B72C(s32, s32, s32, s32, s32, s32, s32);
-void render_texture_rectangle_from_base(s32, s32, s32, s32, s32);
+void render_texture_rectangle_wrap(s32, s32, s32, s32, s32);
 void func_8004BB34(void);
 void func_8004BB3C(s32, s32, s32, s32, f32);
 void func_8004BD14(s32, s32, u32, u32, s32, u8*, u8*);

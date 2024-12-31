@@ -12,7 +12,7 @@
 #include <assets/common_data.h>
 #include "render_player.h"
 #include "code_80057C60.h"
-#include "menu_item.h"
+#include "menu_items.h"
 #include "actors.h"
 #include "render_courses.h"
 #include "math_util.h"

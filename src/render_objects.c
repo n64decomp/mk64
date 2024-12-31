@@ -25,7 +25,7 @@
 #include "code_8006E9C0.h"
 #include "render_objects.h"
 #include "update_objects.h"
-#include "menu_item.h"
+#include "menu_items.h"
 #include "collision.h"
 #include "main.h"
 #include "menus.h"
@@ -1544,7 +1544,7 @@ void render_texture_rectangle(s32 x, s32 y, s32 width, s32 height, s32 s, s32 w,
     gSPTextureRectangle(gDisplayListHead++, xl, yl, xh2, yh2, G_TX_RENDERTILE, s << 5, (w << 5), 1 << 10, 1 << 10);
 }
 
-void render_texture_rectangle_from_base(s32 x, s32 y, s32 width, s32 height, s32 mode) {
+void render_texture_rectangle_wrap(s32 x, s32 y, s32 width, s32 height, s32 mode) {
     // (0, 0) means texture coordinates will be rendered from the top left corner
     render_texture_rectangle(x, y, width, height, 0, 0, mode);
 }
@@ -1678,7 +1678,7 @@ UNUSED void func_8004BD14(s32 x, s32 y, u32 width, u32 height, s32 alpha, u8* te
     gDPLoadMultiTile(gDisplayListHead++, texture2, 256, G_TX_RENDERTILE + 1, G_IM_FMT_RGBA, G_IM_SIZ_16b, width, height,
                      0, 0, width - 1, height - 1, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP,
                      G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-    render_texture_rectangle_from_base(x, y, width, height, 2);
+    render_texture_rectangle_wrap(x, y, width, height, 2);
     gSPDisplayList(gDisplayListHead++, D_0D008120);
 }
 
@@ -1793,7 +1793,7 @@ void render_texture_tile_rgba32_block(s16 x, s16 y, u8* texture, u32 width, u32 
     realCount = texBlockCount;
     for (i = 0; i < realCount; i++) {
         load_texture_tile_rgba32_nomirror(textureCopy, width, heightDiv);
-        render_texture_rectangle_from_base(xPos, yPos, width, heightDiv, 1);
+        render_texture_rectangle_wrap(xPos, yPos, width, heightDiv, 1);
         texSizeLess = texSize - (width * heightDiv * 4);
         textureCopy += (width * heightDiv * 4);
         if (texSizeLess < 0) {

@@ -1,7 +1,7 @@
 #include "credits.h"
 #include "defines.h"
 
-CreditsRenderInfo gTextCreaditsRenderInformation[] = {
+CreditsRenderInfo gTextCreditsRenderInformation[] = {
     { 0.80f, -200, 38, 160, 30, SLIDE_RIGHT, TEXT_BLUE_GREEN_RED_CYCLE_1, 0 },
     { 0.90f, 520, 200, 160, 200, SLIDE_LEFT, TEXT_BLUE, 0 },
     { 0.80f, -200, 38, 160, 30, SLIDE_RIGHT, TEXT_BLUE_GREEN_RED_CYCLE_1, 0 },

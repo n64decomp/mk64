@@ -18,7 +18,7 @@
 #include "audio/external.h"
 #include <sounds.h>
 #include "podium_ceremony_actors.h"
-#include "menu_item.h"
+#include "menu_items.h"
 #include "code_80057C60.h"
 #include "defines.h"
 

@@ -22,7 +22,7 @@
 #include "menus.h"
 #include "data/other_textures.h"
 #include "render_objects.h"
-#include "menu_item.h"
+#include "menu_items.h"
 #include "src/data/some_data.h"
 #include "effects.h"
 

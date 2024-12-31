@@ -22,7 +22,7 @@
 #include <code_80086E70.h>
 #include <effects.h>
 #include <code_80091440.h>
-#include <menu_item.h>
+#include <menu_items.h>
 #include <code_800AF9B0.h>
 #include <save.h>
 #include <code_80280000.h>

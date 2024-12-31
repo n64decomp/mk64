@@ -24,7 +24,7 @@
 #include <common_structs.h>
 #include "main.h"
 #include "menus.h"
-#include "menu_item.h"
+#include "menu_items.h"
 #include "audio/external.h"
 #include "ending/podium_ceremony_actors.h"
 #include "spawn_players.h"

@@ -12,7 +12,7 @@
 #include "save.h"
 #include "staff_ghosts.h"
 #include "code_8006E9C0.h"
-#include "menu_item.h"
+#include "menu_items.h"
 #include "code_80057C60.h"
 #include "kart_dma.h"
 

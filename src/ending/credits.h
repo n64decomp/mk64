@@ -21,7 +21,7 @@ typedef struct {
     /* 0x0E */ s16 padding; // Always seems to be 0, never read (that I can see)
 } CreditsRenderInfo;        // size = 0x10
 
-extern CreditsRenderInfo gTextCreaditsRenderInformation[]; // gTextCreaditsRenderInformation
+extern CreditsRenderInfo gTextCreditsRenderInformation[]; // gTextCreditsRenderInformation
 extern char* gTextCredits[];
 
 #endif

@@ -84,7 +84,7 @@ glabel D_800F15E0
 
 .section .text
 
-glabel load_menu_item_ui
+glabel add_ui_item
 /* 09F250 8009E650 27BDFF80 */  addiu $sp, $sp, -0x80
 /* 09F254 8009E654 AFBF001C */  sw    $ra, 0x1c($sp)
 /* 09F258 8009E658 AFA7008C */  sw    $a3, 0x8c($sp)

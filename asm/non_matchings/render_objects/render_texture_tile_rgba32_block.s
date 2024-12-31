@@ -81,7 +81,7 @@ glabel render_texture_tile_rgba32_block
 /* 04D42C 8004C82C 03C02025 */  move  $a0, $fp
 /* 04D430 8004C830 02802825 */  move  $a1, $s4
 /* 04D434 8004C834 02403025 */  move  $a2, $s2
-/* 04D438 8004C838 0C012E54 */  jal   render_texture_rectangle_from_base
+/* 04D438 8004C838 0C012E54 */  jal   render_texture_rectangle_wrap
 /* 04D43C 8004C83C 02003825 */   move  $a3, $s0
 /* 04D440 8004C840 02D11023 */  subu  $v0, $s6, $s1
 /* 04D444 8004C844 04410008 */  bgez  $v0, .L8004C868

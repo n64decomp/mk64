@@ -15,7 +15,7 @@ glabel D_800F1DC8
 
 .section .text
 
-glabel render_player_time
+glabel render_lap_times
 /* 0A534C 800A474C 27BDFFB0 */  addiu $sp, $sp, -0x50
 /* 0A5350 800A4750 3C0E800E */  lui   $t6, %hi(gGamestate) # $t6, 0x800e
 /* 0A5354 800A4754 8DCEC50C */  lw    $t6, %lo(gGamestate)($t6)
