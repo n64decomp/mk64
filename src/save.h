@@ -55,7 +55,7 @@ void func_800B5404(s32, s32);
 u8 func_800B54C0(s32, s32);
 u8 func_800B54EC(s32, s32);
 u8 func_800B5508(s32, s32, s32);
-s32 has_terminate_cc_mode(s32);
+s32 is_cc_mode_complete(s32);
 s32 has_unlocked_extra_mode(void);
 s32 has_completed_extra_mode(void);
 void func_800B559C(s32);

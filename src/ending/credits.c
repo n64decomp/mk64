@@ -1,7 +1,7 @@
 #include "credits.h"
 #include "defines.h"
 
-CreditsRenderInfo gTextCreditsRenderInformation[] = {
+CreditsRenderInfo gCreditsTextRenderInfo[] = {
     { 0.80f, -200, 38, 160, 30, SLIDE_RIGHT, TEXT_BLUE_GREEN_RED_CYCLE_1, 0 },
     { 0.90f, 520, 200, 160, 200, SLIDE_LEFT, TEXT_BLUE, 0 },
     { 0.80f, -200, 38, 160, 30, SLIDE_RIGHT, TEXT_BLUE_GREEN_RED_CYCLE_1, 0 },
@@ -67,7 +67,7 @@ CreditsRenderInfo gTextCreditsRenderInformation[] = {
     { 0.90f, 520, 130, 160, 130, SLIDE_LEFT, TEXT_YELLOW, 0 },
 };
 
-char* gTextCredits[] = {
+char* gCreditsText[] = {
     // English Credits
     "executive producer", "hiroshi yamauchi", "producer", "shigeru miyamoto", "director", "hideki konno",
     "assistant director", "yasuyuki oyagi", "programmer", "masato kimura", "kenji yamamoto", "yasuhiro kawaguchi",
