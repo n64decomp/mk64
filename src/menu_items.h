@@ -44,7 +44,7 @@ typedef struct {
     /* 0x04 */ s32 sequenceIndex;      // Index in textureSequence that the animation is currently on
     /* 0x08 */ s32 frameCountDown;     // Frames left for the given animation part
     /* 0x0C */ u32 visible;            // visbile if 0x80000000, otherwise invisbile AND paused
-    /* 0x10 */ s32 menu_texture_index; // Don't know what sMenuTextureMap tracks
+    /* 0x10 */ s32 menuTextureIndex; // Don't know what sMenuTextureMap tracks
     /* 0x14 */ s32 unk14;              // Flip flops between 0 and 1, use unknown
 } struct_8018DEE0_entry;               // size = 0x18
 

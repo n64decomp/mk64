@@ -3874,7 +3874,7 @@ s32 animate_character_select_menu(MkAnimation* anim) {
     entry->sequenceIndex = -1;
     entry->frameCountDown = 0;
     entry->visible = 0x80000000;
-    entry->menu_texture_index = sMenuTextureEntries;
+    entry->menuTextureIndex = sMenuTextureEntries;
 
     if (anim[0].mk64Texture) {
         load_menu_img_mio0_always(anim[0].mk64Texture);
@@ -3910,7 +3910,7 @@ s32 func_8009A478(MkAnimation* anim, s32 arg1) {
     entry->sequenceIndex = -1;
     entry->frameCountDown = 0;
     entry->visible = 0x80000000;
-    entry->menu_texture_index = sMenuTextureEntries;
+    entry->menuTextureIndex = sMenuTextureEntries;
     if (anim[0].mk64Texture) {
         func_80099958(anim[0].mk64Texture, arg1, 0);
     }
@@ -3935,10 +3935,10 @@ void func_8009A594(s32 arg0, s32 arg1, MkAnimation* arg2) {
     D_8018DEE0[arg0].frameCountDown = (temp_v0 + arg1)->frame_length;
     temp_a0 = segmented_to_virtual_dupe(temp_v0[arg1].mk64Texture);
     if (D_8018DEE0[arg0].unk14 != 0) {
-        func_80099A94(temp_a0, D_8018DEE0[arg0].menu_texture_index);
+        func_80099A94(temp_a0, D_8018DEE0[arg0].menuTextureIndex);
         D_8018DEE0[arg0].unk14 = 0;
     } else {
-        func_80099A94(temp_a0, D_8018DEE0[arg0].menu_texture_index + 1);
+        func_80099A94(temp_a0, D_8018DEE0[arg0].menuTextureIndex + 1);
         D_8018DEE0[arg0].unk14 = 1;
     }
 }
@@ -4006,10 +4006,10 @@ MenuTexture* func_8009A878(struct_8018DEE0_entry* arg0) {
         arg0->frameCountDown = var_v0->frame_length;
         temp_a0 = segmented_to_virtual_dupe(var_v0->mk64Texture);
         if (arg0->unk14 != 0) {
-            func_80099A94(temp_a0, arg0->menu_texture_index);
+            func_80099A94(temp_a0, arg0->menuTextureIndex);
             arg0->unk14 = 0;
         } else {
-            func_80099A94(temp_a0, arg0->menu_texture_index + 1);
+            func_80099A94(temp_a0, arg0->menuTextureIndex + 1);
             arg0->unk14 = 1;
         }
     }
@@ -4455,9 +4455,9 @@ Gfx* func_8009C434(Gfx* arg0, struct_8018DEE0_entry* arg1, s32 arg2, s32 arg3, s
                 break;
         }
         if (arg1->unk14 != 0) {
-            var_t0 = sMenuTextureMap[arg1->menu_texture_index + 1].offset;
+            var_t0 = sMenuTextureMap[arg1->menuTextureIndex + 1].offset;
         } else {
-            var_t0 = sMenuTextureMap[arg1->menu_texture_index].offset;
+            var_t0 = sMenuTextureMap[arg1->menuTextureIndex].offset;
             if (1) {}
             if (1) {}
             if (1) {}
@@ -5633,12 +5633,12 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
             var_v1_3 = 0;
             stackPadding0 = type - MENU_ITEM_TYPE_0B1;
             switch (gModeSelection) {
-                case 2:
+                case VERSUS:
                     if (gGPCurrentRaceRankByPlayerId[type - MENU_ITEM_TYPE_0B1] != 0) {
                         var_v1_3 = 1;
                     }
                     break;
-                case 3:
+                case BATTLE:
                     if ((type - MENU_ITEM_TYPE_0B1) != gPlayerWinningIndex) {
                         var_v1_3 = 1;
                     }
