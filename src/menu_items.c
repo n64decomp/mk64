@@ -5801,7 +5801,7 @@ void render_menus(MenuItem* arg0) {
     UNUSED s32 stackPadding4;
     f32 scaleX;
 
-    if ((s8) arg0->visible != false) {
+    if (arg0->visible) {
         gDPPipeSync(gDisplayListHead++);
         switch (arg0->type) {             /* switch 6; irregular */
             case MENU_ITEM_UI_LOGO_INTRO: /* switch 6 */
@@ -6325,7 +6325,7 @@ void render_menus(MenuItem* arg0) {
             case MENU_ITEM_TYPE_1CC: /* switch 6 */
             case MENU_ITEM_TYPE_1CD: /* switch 6 */
             case MENU_ITEM_TYPE_1CE: /* switch 6 */
-                menu_item_credit_render(arg0);
+                menu_item_credits_render(arg0);
                 break;
         }
     }
@@ -6333,8 +6333,6 @@ void render_menus(MenuItem* arg0) {
 #else
 GLOBAL_ASM("asm/non_matchings/menu_items/render_menus.s")
 #endif
-
-// GLOBAL_ASM("print_rodata.S")
 
 void func_800A08D8(u8 arg0, s32 column, s32 row) {
     if (arg0 >= 0x10) {
@@ -8379,7 +8377,7 @@ void func_800A761C(MenuItem* arg0) {
     func_800939C8((arg0->column + sp48) - 0x18, arg0->row, &sp3C[1], 0, 2.0f, 2.0f);
 }
 
-void menu_item_credit_render(MenuItem* arg0) {
+void menu_item_credits_render(MenuItem* arg0) {
     f32 someScaling;
     s32 creditIndex;
     s8 slideDirection;

@@ -543,7 +543,7 @@ void func_800A72FC(MenuItem*);
 void func_800A7448(MenuItem*);
 void func_800A75A0(MenuItem*);
 void func_800A761C(MenuItem*);
-void menu_item_credit_render(MenuItem*);
+void menu_item_credits_render(MenuItem*);
 void convert_number_to_ascii(s32, char*);
 void write_dashes(char*);
 void get_time_record_minutes(s32, char*);

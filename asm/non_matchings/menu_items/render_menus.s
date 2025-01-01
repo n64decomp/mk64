@@ -1439,7 +1439,7 @@ glabel L800A084C
 /* 0A14B4 800A08B4 10000004 */  b     .L800A08C8
 /* 0A14B8 800A08B8 8FBF0034 */   lw    $ra, 0x34($sp)
 glabel L800A08BC
-/* 0A14BC 800A08BC 0C029DE4 */  jal   menu_item_credit_render
+/* 0A14BC 800A08BC 0C029DE4 */  jal   menu_item_credits_render
 /* 0A14C0 800A08C0 02202025 */   move  $a0, $s1
 .L800A08C4:
 glabel L800A08C4
