@@ -74,7 +74,7 @@ void func_80030A34(Player*);
 void detect_triple_a_combo_a_released(Player*);
 void detect_triple_a_combo_a_pressed(Player*);
 void player_accelerate(Player*);
-void decelerate_ai_player(Player*, f32);
+void decelerate_player(Player*, f32);
 void detect_triple_b_combo_b_released(Player*);
 void detect_triple_b_combo_b_pressed(Player*);
 void func_800323E4(Player*);
@@ -91,7 +91,7 @@ void func_800339C4(Player*, s32*, s32, s32, f32);
 void func_80033A40(Player*, s32*, s32*, s32, s32, s32, f32);
 void func_80033AE0(Player*, struct Controller*, s8);
 
-void func_8003680C(Player*, s16);
+void apply_cpu_turn(Player*, s16);
 void func_80036C5C(Player*);
 void func_80036CB4(Player*);
 void func_80036DB4(Player*, Vec3f, Vec3f);

@@ -7163,7 +7163,7 @@ void func_800A34A8(struct_8018D9E0_entry* arg0) {
                     var_v1 = 0;
                 } else {
                     var_v1 = 0x0000000D;
-                    var_v0 = D_80164478[sp80[rank]];
+                    var_v0 = gCharacterPlayer[sp80[rank]];
                 }
                 if (var_v0 < gPlayerCount) {
                     var_a0 = (s32) gGlobalTimer % 3;
@@ -7190,7 +7190,7 @@ void func_800A34A8(struct_8018D9E0_entry* arg0) {
                 if (arg0->cursor < 9) {
                     var_v0 = gGPCurrentRacePlayerIdByRank[rank];
                 } else {
-                    var_v0 = D_80164478[sp80[rank]];
+                    var_v0 = gCharacterPlayer[sp80[rank]];
                 }
                 if (var_v0 < gPlayerCount) {
                     var_a0 = (s32) gGlobalTimer % 3;
@@ -7230,7 +7230,7 @@ void func_800A3A10(s8* arg0) {
                 arg0[var_a1] = temp_a3;
                 arg0[var_a1 - 1] = temp_t1;
             } else if (gGPPointsByCharacterId[temp_t1] == gGPPointsByCharacterId[temp_a3]) {
-                if ((D_80164478[temp_t1] < gPlayerCount) && (D_80164478[temp_t1] < D_80164478[temp_a3])) {
+                if ((gCharacterPlayer[temp_t1] < gPlayerCount) && (gCharacterPlayer[temp_t1] < gCharacterPlayer[temp_a3])) {
                     arg0[var_a1] = temp_a3;
                     arg0[var_a1 - 1] = temp_t1;
                 } else {
@@ -10747,7 +10747,7 @@ void func_800AC458(struct_8018D9E0_entry* arg0) {
                 arg0->unk1C = 0;
                 if (gCourseIndexInCup == 3) {
                     for (var_a1 = 0; var_a1 < 8; var_a1++) {
-                        if (D_80164478[gCharacterIdByGPOverallRank[var_a1]] < gPlayerCount) {
+                        if (gCharacterPlayer[gCharacterIdByGPOverallRank[var_a1]] < gPlayerCount) {
                             func_800B536C(var_a1);
                             break;
                         }

@@ -416,7 +416,7 @@ void tkmk00decode(u8*, u8*, u8*, s32);
 /* This is where I'd put my static data, if I had any */
 
 extern s32 D_800DDB24;
-extern s16 D_80164478[];
+extern s16 gCharacterPlayer[];
 
 extern u16* D_8018D9B0;
 extern u8* D_8018D9B4;

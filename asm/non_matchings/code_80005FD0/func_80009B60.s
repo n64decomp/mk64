@@ -445,14 +445,14 @@ glabel func_80009B60
 /* 00AD6C 8000A16C 31EC0001 */  andi  $t4, $t7, 1
 /* 00AD70 8000A170 1198000C */  beq   $t4, $t8, .L8000A1A4
 /* 00AD74 8000A174 01402025 */   move  $a0, $t2
-/* 00AD78 8000A178 0C00DA03 */  jal   func_8003680C
+/* 00AD78 8000A178 0C00DA03 */  jal   apply_cpu_turn
 /* 00AD7C 8000A17C 00002825 */   move  $a1, $zero
 /* 00AD80 8000A180 8FAD0038 */  lw    $t5, 0x38($sp)
-/* 00AD84 8000A184 3C058016 */  lui   $a1, %hi(D_80163210) # 0x8016
+/* 00AD84 8000A184 3C058016 */  lui   $a1, %hi(gPreviousCpuTargetSpeed) # 0x8016
 /* 00AD88 8000A188 8FA400D0 */  lw    $a0, 0xd0($sp)
 /* 00AD8C 8000A18C 00AD2821 */  addu  $a1, $a1, $t5
-/* 00AD90 8000A190 8CA53210 */  lw    $a1, %lo(D_80163210)($a1) # 0x3210($a1)
-/* 00AD94 8000A194 0C002109 */  jal   func_80008424
+/* 00AD90 8000A190 8CA53210 */  lw    $a1, %lo(gPreviousCpuTargetSpeed)($a1) # 0x3210($a1)
+/* 00AD94 8000A194 0C002109 */  jal   regulate_cpu_speed
 /* 00AD98 8000A198 8FA60040 */   lw    $a2, 0x40($sp)
 /* 00AD9C 8000A19C 100003E5 */  b     .L8000B134
 /* 00ADA0 8000A1A0 8FBF0014 */   lw    $ra, 0x14($sp)
@@ -472,8 +472,8 @@ glabel func_80009B60
 /* 00ADD4 8000A1D4 01EE7821 */  addu  $t7, $t7, $t6
 /* 00ADD8 8000A1D8 8DEF43B8 */  lw    $t7, %lo(gGPCurrentRaceRankByPlayerId)($t7)
 /* 00ADDC 8000A1DC 956B334C */  lhu   $t3, %lo(D_8016334C)($t3) # 0x334c($t3)
-/* 00ADE0 8000A1E0 3C0C8016 */  lui   $t4, %hi(D_80163210) # $t4, 0x8016
-/* 00ADE4 8000A1E4 258C3210 */  addiu $t4, %lo(D_80163210) # addiu $t4, $t4, 0x3210
+/* 00ADE0 8000A1E0 3C0C8016 */  lui   $t4, %hi(gPreviousCpuTargetSpeed) # $t4, 0x8016
+/* 00ADE4 8000A1E4 258C3210 */  addiu $t4, %lo(gPreviousCpuTargetSpeed) # addiu $t4, $t4, 0x3210
 /* 00ADE8 8000A1E8 016F082A */  slt   $at, $t3, $t7
 /* 00ADEC 8000A1EC 10200005 */  beqz  $at, .L8000A204
 /* 00ADF0 8000A1F0 3C01800F */   lui   $at, %hi(D_800ECFB4) # $at, 0x800f
@@ -503,12 +503,12 @@ glabel func_80009B60
 /* 00AE4C 8000A24C 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 00AE50 8000A250 AFA30030 */   sw    $v1, 0x30($sp)
 /* 00AE54 8000A254 8FB90038 */  lw    $t9, 0x38($sp)
-/* 00AE58 8000A258 3C0D8016 */  lui   $t5, %hi(D_80163210) # $t5, 0x8016
+/* 00AE58 8000A258 3C0D8016 */  lui   $t5, %hi(gPreviousCpuTargetSpeed) # $t5, 0x8016
 /* 00AE5C 8000A25C 3C01BF00 */  li    $at, 0xBF000000 # -0.500000
 /* 00AE60 8000A260 8FA30030 */  lw    $v1, 0x30($sp)
 /* 00AE64 8000A264 C44A0000 */  lwc1  $f10, ($v0)
 /* 00AE68 8000A268 44818000 */  mtc1  $at, $f16
-/* 00AE6C 8000A26C 25AD3210 */  addiu $t5, %lo(D_80163210) # addiu $t5, $t5, 0x3210
+/* 00AE6C 8000A26C 25AD3210 */  addiu $t5, %lo(gPreviousCpuTargetSpeed) # addiu $t5, $t5, 0x3210
 /* 00AE70 8000A270 032D4021 */  addu  $t0, $t9, $t5
 /* 00AE74 8000A274 E50A0000 */  swc1  $f10, ($t0)
 /* 00AE78 8000A278 1000002C */  b     .L8000A32C
@@ -526,17 +526,17 @@ glabel func_80009B60
 /* 00AEA4 8000A2A4 3C0D800E */  lui   $t5, %hi(gCCSelection)
 /* 00AEA8 8000A2A8 8DADC548 */  lw    $t5, %lo(gCCSelection)($t5)
 /* 00AEAC 8000A2AC 854AC5A0 */  lh    $t2, %lo(gCurrentCourseId)($t2)
-/* 00AEB0 8000A2B0 3C0E0D01 */  lui   $t6, %hi(D_0D009418) # $t6, 0xd01
+/* 00AEB0 8000A2B0 3C0E0D01 */  lui   $t6, %hi(gCpuCurveTargetSpeed) # $t6, 0xd01
 /* 00AEB4 8000A2B4 000D7880 */  sll   $t7, $t5, 2
 /* 00AEB8 8000A2B8 000AC900 */  sll   $t9, $t2, 4
 /* 00AEBC 8000A2BC 032F5821 */  addu  $t3, $t9, $t7
-/* 00AEC0 8000A2C0 25CE9418 */  addiu $t6, %lo(D_0D009418) # addiu $t6, $t6, -0x6be8
+/* 00AEC0 8000A2C0 25CE9418 */  addiu $t6, %lo(gCpuCurveTargetSpeed) # addiu $t6, $t6, -0x6be8
 /* 00AEC4 8000A2C4 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 00AEC8 8000A2C8 016E2021 */   addu  $a0, $t3, $t6
 /* 00AECC 8000A2CC 8FAC0038 */  lw    $t4, 0x38($sp)
-/* 00AED0 8000A2D0 3C188016 */  lui   $t8, %hi(D_80163210) # $t8, 0x8016
+/* 00AED0 8000A2D0 3C188016 */  lui   $t8, %hi(gPreviousCpuTargetSpeed) # $t8, 0x8016
 /* 00AED4 8000A2D4 C4520000 */  lwc1  $f18, ($v0)
-/* 00AED8 8000A2D8 27183210 */  addiu $t8, %lo(D_80163210) # addiu $t8, $t8, 0x3210
+/* 00AED8 8000A2D8 27183210 */  addiu $t8, %lo(gPreviousCpuTargetSpeed) # addiu $t8, $t8, 0x3210
 /* 00AEDC 8000A2DC 01984021 */  addu  $t0, $t4, $t8
 /* 00AEE0 8000A2E0 10000012 */  b     .L8000A32C
 /* 00AEE4 8000A2E4 E5120000 */   swc1  $f18, ($t0)
@@ -545,17 +545,17 @@ glabel func_80009B60
 /* 00AEEC 8000A2EC 3C19800E */  lui   $t9, %hi(gCCSelection)
 /* 00AEF0 8000A2F0 8F39C548 */  lw    $t9, %lo(gCCSelection)($t9)
 /* 00AEF4 8000A2F4 854AC5A0 */  lh    $t2, %lo(gCurrentCourseId)($t2)
-/* 00AEF8 8000A2F8 3C0E0D01 */  lui   $t6, %hi(D_0D009568) # $t6, 0xd01
+/* 00AEF8 8000A2F8 3C0E0D01 */  lui   $t6, %hi(gCpuNormalTargetSpeed) # $t6, 0xd01
 /* 00AEFC 8000A2FC 00197880 */  sll   $t7, $t9, 2
 /* 00AF00 8000A300 000A6900 */  sll   $t5, $t2, 4
 /* 00AF04 8000A304 01AF5821 */  addu  $t3, $t5, $t7
-/* 00AF08 8000A308 25CE9568 */  addiu $t6, %lo(D_0D009568) # addiu $t6, $t6, -0x6a98
+/* 00AF08 8000A308 25CE9568 */  addiu $t6, %lo(gCpuNormalTargetSpeed) # addiu $t6, $t6, -0x6a98
 /* 00AF0C 8000A30C 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 00AF10 8000A310 016E2021 */   addu  $a0, $t3, $t6
 /* 00AF14 8000A314 8FAC0038 */  lw    $t4, 0x38($sp)
 /* 00AF18 8000A318 C4440000 */  lwc1  $f4, ($v0)
-/* 00AF1C 8000A31C 3C188016 */  lui   $t8, %hi(D_80163210) # $t8, 0x8016
-/* 00AF20 8000A320 27183210 */  addiu $t8, %lo(D_80163210) # addiu $t8, $t8, 0x3210
+/* 00AF1C 8000A31C 3C188016 */  lui   $t8, %hi(gPreviousCpuTargetSpeed) # $t8, 0x8016
+/* 00AF20 8000A320 27183210 */  addiu $t8, %lo(gPreviousCpuTargetSpeed) # addiu $t8, $t8, 0x3210
 /* 00AF24 8000A324 01984021 */  addu  $t0, $t4, $t8
 /* 00AF28 8000A328 E5040000 */  swc1  $f4, ($t0)
 .L8000A32C:
@@ -566,7 +566,7 @@ glabel func_80009B60
 /* 00AF3C 8000A33C 8FA400D0 */   lw    $a0, 0xd0($sp)
 /* 00AF40 8000A340 3C058016 */  lui   $a1, %hi(gCurrentNearestWaypoint) # $a1, 0x8016
 /* 00AF44 8000A344 94A530E0 */  lhu   $a1, %lo(gCurrentNearestWaypoint)($a1)
-/* 00AF48 8000A348 0C00350E */  jal   determine_ideal_position_offset
+/* 00AF48 8000A348 0C00350E */  jal   determine_ideal_cpu_position_offset
 /* 00AF4C 8000A34C 8FA400D0 */   lw    $a0, 0xd0($sp)
 /* 00AF50 8000A350 8FA60040 */  lw    $a2, 0x40($sp)
 /* 00AF54 8000A354 3C078016 */  lui   $a3, %hi(gOffsetPosition) # $a3, 0x8016
@@ -688,12 +688,12 @@ glabel func_80009B60
 /* 00B104 8000A504 00C02025 */  move  $a0, $a2
 .L8000A508:
 /* 00B108 8000A508 00002825 */  move  $a1, $zero
-/* 00B10C 8000A50C 0C00DA03 */  jal   func_8003680C
+/* 00B10C 8000A50C 0C00DA03 */  jal   apply_cpu_turn
 /* 00B110 8000A510 AFA8003C */   sw    $t0, 0x3c($sp)
 /* 00B114 8000A514 8FA8003C */  lw    $t0, 0x3c($sp)
 /* 00B118 8000A518 8FA400D0 */  lw    $a0, 0xd0($sp)
 /* 00B11C 8000A51C 8FA60040 */  lw    $a2, 0x40($sp)
-/* 00B120 8000A520 0C002109 */  jal   func_80008424
+/* 00B120 8000A520 0C002109 */  jal   regulate_cpu_speed
 /* 00B124 8000A524 8D050000 */   lw    $a1, ($t0)
 /* 00B128 8000A528 10000302 */  b     .L8000B134
 /* 00B12C 8000A52C 8FBF0014 */   lw    $ra, 0x14($sp)
@@ -721,8 +721,8 @@ glabel func_80009B60
 /* 00B178 8000A578 0C0AD489 */  jal   get_angle_between_two_vectors
 /* 00B17C 8000A57C 25C50014 */   addiu $a1, $t6, 0x14
 /* 00B180 8000A580 8FAC0034 */  lw    $t4, 0x34($sp)
-/* 00B184 8000A584 3C188016 */  lui   $t8, %hi(D_80163300) # $t8, 0x8016
-/* 00B188 8000A588 27183300 */  addiu $t8, %lo(D_80163300) # addiu $t8, $t8, 0x3300
+/* 00B184 8000A584 3C188016 */  lui   $t8, %hi(sPlayerAngle) # $t8, 0x8016
+/* 00B188 8000A588 27183300 */  addiu $t8, %lo(sPlayerAngle) # addiu $t8, $t8, 0x3300
 /* 00B18C 8000A58C 0002C823 */  negu  $t9, $v0
 /* 00B190 8000A590 01981821 */  addu  $v1, $t4, $t8
 /* 00B194 8000A594 A4790000 */  sh    $t9, ($v1)
@@ -878,17 +878,17 @@ glabel func_80009B60
 /* 00B3AC 8000A7AC 11980010 */  beq   $t4, $t8, .L8000A7F0
 /* 00B3B0 8000A7B0 8FAA0040 */   lw    $t2, 0x40($sp)
 /* 00B3B4 8000A7B4 8FB90034 */  lw    $t9, 0x34($sp)
-/* 00B3B8 8000A7B8 3C058016 */  lui   $a1, %hi(D_80163050) # 0x8016
+/* 00B3B8 8000A7B8 3C058016 */  lui   $a1, %hi(gPreviousAngleSteering) # 0x8016
 /* 00B3BC 8000A7BC 8FA40040 */  lw    $a0, 0x40($sp)
 /* 00B3C0 8000A7C0 00B92821 */  addu  $a1, $a1, $t9
-/* 00B3C4 8000A7C4 0C00DA03 */  jal   func_8003680C
-/* 00B3C8 8000A7C8 84A53050 */   lh    $a1, %lo(D_80163050)($a1) # 0x3050($a1)
+/* 00B3C4 8000A7C4 0C00DA03 */  jal   apply_cpu_turn
+/* 00B3C8 8000A7C8 84A53050 */   lh    $a1, %lo(gPreviousAngleSteering)($a1) # 0x3050($a1)
 /* 00B3CC 8000A7CC 8FAE0038 */  lw    $t6, 0x38($sp)
-/* 00B3D0 8000A7D0 3C058016 */  lui   $a1, %hi(D_80163210) # 0x8016
+/* 00B3D0 8000A7D0 3C058016 */  lui   $a1, %hi(gPreviousCpuTargetSpeed) # 0x8016
 /* 00B3D4 8000A7D4 8FA400D0 */  lw    $a0, 0xd0($sp)
 /* 00B3D8 8000A7D8 00AE2821 */  addu  $a1, $a1, $t6
-/* 00B3DC 8000A7DC 8CA53210 */  lw    $a1, %lo(D_80163210)($a1) # 0x3210($a1)
-/* 00B3E0 8000A7E0 0C002109 */  jal   func_80008424
+/* 00B3DC 8000A7DC 8CA53210 */  lw    $a1, %lo(gPreviousCpuTargetSpeed)($a1) # 0x3210($a1)
+/* 00B3E0 8000A7E0 0C002109 */  jal   regulate_cpu_speed
 /* 00B3E4 8000A7E4 8FA60040 */   lw    $a2, 0x40($sp)
 /* 00B3E8 8000A7E8 10000252 */  b     .L8000B134
 /* 00B3EC 8000A7EC 8FBF0014 */   lw    $ra, 0x14($sp)
@@ -906,7 +906,7 @@ glabel func_80009B60
 /* 00B418 8000A818 3C058016 */  lui   $a1, %hi(sSomeNearestWaypoint) # $a1, 0x8016
 /* 00B41C 8000A81C 94A52FCE */  lhu   $a1, %lo(sSomeNearestWaypoint)($a1)
 /* 00B420 8000A820 AFA30028 */  sw    $v1, 0x28($sp)
-/* 00B424 8000A824 0C00350E */  jal   determine_ideal_position_offset
+/* 00B424 8000A824 0C00350E */  jal   determine_ideal_cpu_position_offset
 /* 00B428 8000A828 8FA400D0 */   lw    $a0, 0xd0($sp)
 /* 00B42C 8000A82C 3C02800E */  lui   $v0, %hi(gCurrentCourseId)
 /* 00B430 8000A830 8442C5A0 */  lh    $v0, %lo(gCurrentCourseId)($v0)
@@ -1309,8 +1309,8 @@ glabel func_80009B60
 /* 00B9F0 8000ADF0 24050035 */   li    $a1, 53
 /* 00B9F4 8000ADF4 00C30019 */  multu $a2, $v1
 /* 00B9F8 8000ADF8 8FAE0034 */  lw    $t6, 0x34($sp)
-/* 00B9FC 8000ADFC 3C0A8016 */  lui   $t2, %hi(D_80163050) # $t2, 0x8016
-/* 00BA00 8000AE00 254A3050 */  addiu $t2, %lo(D_80163050) # addiu $t2, $t2, 0x3050
+/* 00B9FC 8000ADFC 3C0A8016 */  lui   $t2, %hi(gPreviousAngleSteering) # $t2, 0x8016
+/* 00BA00 8000AE00 254A3050 */  addiu $t2, %lo(gPreviousAngleSteering) # addiu $t2, $t2, 0x3050
 /* 00BA04 8000AE04 01CA1021 */  addu  $v0, $t6, $t2
 /* 00BA08 8000AE08 844D0000 */  lh    $t5, ($v0)
 /* 00BA0C 8000AE0C 3C014000 */  li    $at, 0x40000000 # 2.000000
@@ -1331,13 +1331,13 @@ glabel func_80009B60
 /* 00BA48 8000AE48 000C2C03 */   sra   $a1, $t4, 0x10
 .L8000AE4C:
 /* 00BA4C 8000AE4C 8FB90034 */  lw    $t9, 0x34($sp)
-/* 00BA50 8000AE50 3C0E8016 */  lui   $t6, %hi(D_80163050) # $t6, 0x8016
-/* 00BA54 8000AE54 25CE3050 */  addiu $t6, %lo(D_80163050) # addiu $t6, $t6, 0x3050
+/* 00BA50 8000AE50 3C0E8016 */  lui   $t6, %hi(gPreviousAngleSteering) # $t6, 0x8016
+/* 00BA54 8000AE54 25CE3050 */  addiu $t6, %lo(gPreviousAngleSteering) # addiu $t6, $t6, 0x3050
 /* 00BA58 8000AE58 10000025 */  b     .L8000AEF0
 /* 00BA5C 8000AE5C 032E1021 */   addu  $v0, $t9, $t6
 .L8000AE60:
-/* 00BA60 8000AE60 3C0D8016 */  lui   $t5, %hi(D_80163050) # $t5, 0x8016
-/* 00BA64 8000AE64 25AD3050 */  addiu $t5, %lo(D_80163050) # addiu $t5, $t5, 0x3050
+/* 00BA60 8000AE60 3C0D8016 */  lui   $t5, %hi(gPreviousAngleSteering) # $t5, 0x8016
+/* 00BA64 8000AE64 25AD3050 */  addiu $t5, %lo(gPreviousAngleSteering) # addiu $t5, $t5, 0x3050
 /* 00BA68 8000AE68 10000021 */  b     .L8000AEF0
 /* 00BA6C 8000AE6C 014D1021 */   addu  $v0, $t2, $t5
 /* 00BA70 8000AE70 3C011000 */  lui   $at, (0x1000000C >> 16) # lui $at, 0x1000
@@ -1347,16 +1347,16 @@ glabel func_80009B60
 /* 00BA7C 8000AE7C 11E00007 */  beqz  $t7, .L8000AE9C
 /* 00BA80 8000AE80 00000000 */   nop
 /* 00BA84 8000AE84 8FAB0034 */  lw    $t3, 0x34($sp)
-/* 00BA88 8000AE88 3C0C8016 */  lui   $t4, %hi(D_80163050) # $t4, 0x8016
-/* 00BA8C 8000AE8C 258C3050 */  addiu $t4, %lo(D_80163050) # addiu $t4, $t4, 0x3050
+/* 00BA88 8000AE88 3C0C8016 */  lui   $t4, %hi(gPreviousAngleSteering) # $t4, 0x8016
+/* 00BA8C 8000AE8C 258C3050 */  addiu $t4, %lo(gPreviousAngleSteering) # addiu $t4, $t4, 0x3050
 /* 00BA90 8000AE90 00002825 */  move  $a1, $zero
 /* 00BA94 8000AE94 10000016 */  b     .L8000AEF0
 /* 00BA98 8000AE98 016C1021 */   addu  $v0, $t3, $t4
 .L8000AE9C:
 /* 00BA9C 8000AE9C 00C30019 */  multu $a2, $v1
 /* 00BAA0 8000AEA0 8FB80034 */  lw    $t8, 0x34($sp)
-/* 00BAA4 8000AEA4 3C198016 */  lui   $t9, %hi(D_80163050) # $t9, 0x8016
-/* 00BAA8 8000AEA8 27393050 */  addiu $t9, %lo(D_80163050) # addiu $t9, $t9, 0x3050
+/* 00BAA4 8000AEA4 3C198016 */  lui   $t9, %hi(gPreviousAngleSteering) # $t9, 0x8016
+/* 00BAA8 8000AEA8 27393050 */  addiu $t9, %lo(gPreviousAngleSteering) # addiu $t9, $t9, 0x3050
 /* 00BAAC 8000AEAC 03191021 */  addu  $v0, $t8, $t9
 /* 00BAB0 8000AEB0 844E0000 */  lh    $t6, ($v0)
 /* 00BAB4 8000AEB4 3C014000 */  li    $at, 0x40000000 # 2.000000
@@ -1378,7 +1378,7 @@ glabel func_80009B60
 /* 00BAF0 8000AEF0 00E02025 */  move  $a0, $a3
 /* 00BAF4 8000AEF4 AFA2003C */  sw    $v0, 0x3c($sp)
 /* 00BAF8 8000AEF8 A7A50094 */  sh    $a1, 0x94($sp)
-/* 00BAFC 8000AEFC 0C00DA03 */  jal   func_8003680C
+/* 00BAFC 8000AEFC 0C00DA03 */  jal   apply_cpu_turn
 /* 00BB00 8000AF00 AFA80020 */   sw    $t0, 0x20($sp)
 /* 00BB04 8000AF04 8FA2003C */  lw    $v0, 0x3c($sp)
 /* 00BB08 8000AF08 87A50094 */  lh    $a1, 0x94($sp)
@@ -1406,18 +1406,18 @@ glabel func_80009B60
 /* 00BB5C 8000AF5C 3C0C800E */  lui   $t4, %hi(gCCSelection)
 /* 00BB60 8000AF60 8D8CC548 */  lw    $t4, %lo(gCCSelection)($t4)
 /* 00BB64 8000AF64 85EFC5A0 */  lh    $t7, %lo(gCurrentCourseId)($t7)
-/* 00BB68 8000AF68 3C0E0D01 */  lui   $t6, %hi(D_0D009418) # $t6, 0xd01
+/* 00BB68 8000AF68 3C0E0D01 */  lui   $t6, %hi(gCpuCurveTargetSpeed) # $t6, 0xd01
 /* 00BB6C 8000AF6C 000CC080 */  sll   $t8, $t4, 2
 /* 00BB70 8000AF70 000F5900 */  sll   $t3, $t7, 4
 /* 00BB74 8000AF74 0178C821 */  addu  $t9, $t3, $t8
-/* 00BB78 8000AF78 25CE9418 */  addiu $t6, %lo(D_0D009418) # addiu $t6, $t6, -0x6be8
+/* 00BB78 8000AF78 25CE9418 */  addiu $t6, %lo(gCpuCurveTargetSpeed) # addiu $t6, $t6, -0x6be8
 /* 00BB7C 8000AF7C 032E2021 */  addu  $a0, $t9, $t6
 /* 00BB80 8000AF80 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 00BB84 8000AF84 AFA80020 */   sw    $t0, 0x20($sp)
 /* 00BB88 8000AF88 8FAA0038 */  lw    $t2, 0x38($sp)
-/* 00BB8C 8000AF8C 3C0D8016 */  lui   $t5, %hi(D_80163028) # $t5, 0x8016
+/* 00BB8C 8000AF8C 3C0D8016 */  lui   $t5, %hi(gCpuTargetSpeed) # $t5, 0x8016
 /* 00BB90 8000AF90 C4440000 */  lwc1  $f4, ($v0)
-/* 00BB94 8000AF94 25AD3028 */  addiu $t5, %lo(D_80163028) # addiu $t5, $t5, 0x3028
+/* 00BB94 8000AF94 25AD3028 */  addiu $t5, %lo(gCpuTargetSpeed) # addiu $t5, $t5, 0x3028
 /* 00BB98 8000AF98 014D1821 */  addu  $v1, $t2, $t5
 /* 00BB9C 8000AF9C 8FA80020 */  lw    $t0, 0x20($sp)
 /* 00BBA0 8000AFA0 10000014 */  b     .L8000AFF4
@@ -1427,18 +1427,18 @@ glabel func_80009B60
 /* 00BBAC 8000AFAC 3C0B800E */  lui   $t3, %hi(gCCSelection)
 /* 00BBB0 8000AFB0 8D6BC548 */  lw    $t3, %lo(gCCSelection)($t3)
 /* 00BBB4 8000AFB4 85EFC5A0 */  lh    $t7, %lo(gCurrentCourseId)($t7)
-/* 00BBB8 8000AFB8 3C0E0D01 */  lui   $t6, %hi(D_0D009568) # $t6, 0xd01
+/* 00BBB8 8000AFB8 3C0E0D01 */  lui   $t6, %hi(gCpuNormalTargetSpeed) # $t6, 0xd01
 /* 00BBBC 8000AFBC 000BC080 */  sll   $t8, $t3, 2
 /* 00BBC0 8000AFC0 000F6100 */  sll   $t4, $t7, 4
 /* 00BBC4 8000AFC4 0198C821 */  addu  $t9, $t4, $t8
-/* 00BBC8 8000AFC8 25CE9568 */  addiu $t6, %lo(D_0D009568) # addiu $t6, $t6, -0x6a98
+/* 00BBC8 8000AFC8 25CE9568 */  addiu $t6, %lo(gCpuNormalTargetSpeed) # addiu $t6, $t6, -0x6a98
 /* 00BBCC 8000AFCC 032E2021 */  addu  $a0, $t9, $t6
 /* 00BBD0 8000AFD0 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 00BBD4 8000AFD4 AFA80020 */   sw    $t0, 0x20($sp)
 /* 00BBD8 8000AFD8 8FAA0038 */  lw    $t2, 0x38($sp)
 /* 00BBDC 8000AFDC C44A0000 */  lwc1  $f10, ($v0)
-/* 00BBE0 8000AFE0 3C0D8016 */  lui   $t5, %hi(D_80163028) # $t5, 0x8016
-/* 00BBE4 8000AFE4 25AD3028 */  addiu $t5, %lo(D_80163028) # addiu $t5, $t5, 0x3028
+/* 00BBE0 8000AFE0 3C0D8016 */  lui   $t5, %hi(gCpuTargetSpeed) # $t5, 0x8016
+/* 00BBE4 8000AFE4 25AD3028 */  addiu $t5, %lo(gCpuTargetSpeed) # addiu $t5, $t5, 0x3028
 /* 00BBE8 8000AFE8 014D1821 */  addu  $v1, $t2, $t5
 /* 00BBEC 8000AFEC 8FA80020 */  lw    $t0, 0x20($sp)
 /* 00BBF0 8000AFF0 E46A0000 */  swc1  $f10, ($v1)
@@ -1446,10 +1446,10 @@ glabel func_80009B60
 /* 00BBF4 8000AFF4 3C01800F */  lui   $at, %hi(D_800ECFC0) # $at, 0x800f
 /* 00BBF8 8000AFF8 C430CFC0 */  lwc1  $f16, %lo(D_800ECFC0)($at)
 /* 00BBFC 8000AFFC C5000000 */  lwc1  $f0, ($t0)
-/* 00BC00 8000B000 3C0E0D01 */  lui   $t6, %hi(D_0D009808) # $t6, 0xd01
+/* 00BC00 8000B000 3C0E0D01 */  lui   $t6, %hi(gCpuOffTrackTargetSpeed) # $t6, 0xd01
 /* 00BC04 8000B004 3C01800F */  lui   $at, %hi(D_800ECFC4) # $at, 0x800f
 /* 00BC08 8000B008 4600803C */  c.lt.s $f16, $f0
-/* 00BC0C 8000B00C 25CE9808 */  addiu $t6, %lo(D_0D009808) # addiu $t6, $t6, -0x67f8
+/* 00BC0C 8000B00C 25CE9808 */  addiu $t6, %lo(gCpuOffTrackTargetSpeed) # addiu $t6, $t6, -0x67f8
 /* 00BC10 8000B010 3C0F800E */  lui   $t7, %hi(gCurrentCourseId)
 /* 00BC14 8000B014 3C0C800E */  lui   $t4, %hi(gCCSelection)
 /* 00BC18 8000B018 45010006 */  bc1t  .L8000B034
@@ -1507,8 +1507,8 @@ glabel func_80009B60
 .L8000B0D8:
 /* 00BCD8 8000B0D8 C46A0000 */  lwc1  $f10, ($v1)
 /* 00BCDC 8000B0DC 8FAA0040 */  lw    $t2, 0x40($sp)
-/* 00BCE0 8000B0E0 3C028016 */  lui   $v0, %hi(D_8016320C) # $v0, 0x8016
-/* 00BCE4 8000B0E4 2442320C */  addiu $v0, %lo(D_8016320C) # addiu $v0, $v0, 0x320c
+/* 00BCE0 8000B0E0 3C028016 */  lui   $v0, %hi(gCurrentCpuTargetSpeed) # $v0, 0x8016
+/* 00BCE4 8000B0E4 2442320C */  addiu $v0, %lo(gCurrentCpuTargetSpeed) # addiu $v0, $v0, 0x320c
 /* 00BCE8 8000B0E8 E44A0000 */  swc1  $f10, ($v0)
 /* 00BCEC 8000B0EC 8D4D00BC */  lw    $t5, 0xbc($t2)
 /* 00BCF0 8000B0F0 3C01FFDF */  lui   $at, (0xFFDFFFFF >> 16) # lui $at, 0xffdf
@@ -1517,15 +1517,15 @@ glabel func_80009B60
 /* 00BCFC 8000B0FC AD4C00BC */  sw    $t4, 0xbc($t2)
 /* 00BD00 8000B100 8FAF0038 */  lw    $t7, 0x38($sp)
 /* 00BD04 8000B104 C4500000 */  lwc1  $f16, ($v0)
-/* 00BD08 8000B108 3C018016 */  lui   $at, %hi(D_80163210)
+/* 00BD08 8000B108 3C018016 */  lui   $at, %hi(gPreviousCpuTargetSpeed)
 /* 00BD0C 8000B10C 002F0821 */  addu  $at, $at, $t7
 /* 00BD10 8000B110 8FA400D0 */  lw    $a0, 0xd0($sp)
 /* 00BD14 8000B114 0C004C77 */  jal   check_ai_crossing_distance
-/* 00BD18 8000B118 E4303210 */   swc1  $f16, %lo(D_80163210)($at)
-/* 00BD1C 8000B11C 3C058016 */  lui   $a1, %hi(D_8016320C) # $a1, 0x8016
-/* 00BD20 8000B120 8CA5320C */  lw    $a1, %lo(D_8016320C)($a1)
+/* 00BD18 8000B118 E4303210 */   swc1  $f16, %lo(gPreviousCpuTargetSpeed)($at)
+/* 00BD1C 8000B11C 3C058016 */  lui   $a1, %hi(gCurrentCpuTargetSpeed) # $a1, 0x8016
+/* 00BD20 8000B120 8CA5320C */  lw    $a1, %lo(gCurrentCpuTargetSpeed)($a1)
 /* 00BD24 8000B124 8FA400D0 */  lw    $a0, 0xd0($sp)
-/* 00BD28 8000B128 0C002109 */  jal   func_80008424
+/* 00BD28 8000B128 0C002109 */  jal   regulate_cpu_speed
 /* 00BD2C 8000B12C 8FA60040 */   lw    $a2, 0x40($sp)
 .L8000B130:
 /* 00BD30 8000B130 8FBF0014 */  lw    $ra, 0x14($sp)

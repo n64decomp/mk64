@@ -108,9 +108,9 @@ extern f32 gCourseFarPersp;
 extern f32 gCourseNearPersp;
 #define gCourseNearPersp gCourseNearPersp
 #define GET_COURSE_D_0D0096B8(cc) *(f32*) segmented_to_virtual_dupe_2(&D_0D0096B8[gCurrentCourseId][cc])
-#define GET_COURSE_D_0D009808(cc) *(f32*) segmented_to_virtual_dupe_2(&D_0D009808[gCurrentCourseId][cc])
-#define GET_COURSE_D_0D009418(cc) *(f32*) segmented_to_virtual_dupe_2(&D_0D009418[gCurrentCourseId][cc])
-#define GET_COURSE_D_0D009568(cc) *(f32*) segmented_to_virtual_dupe_2(&D_0D009568[gCurrentCourseId][cc])
+#define GET_COURSE_gCpuOffTrackTargetSpeed(cc) *(f32*) segmented_to_virtual_dupe_2(&gCpuOffTrackTargetSpeed[gCurrentCourseId][cc])
+#define GET_COURSE_gCpuCurveTargetSpeed(cc) *(f32*) segmented_to_virtual_dupe_2(&gCpuCurveTargetSpeed[gCurrentCourseId][cc])
+#define GET_COURSE_gCpuNormalTargetSpeed(cc) *(f32*) segmented_to_virtual_dupe_2(&gCpuNormalTargetSpeed[gCurrentCourseId][cc])
 #else
 #define gCurrentCourseId
 #define GET_COURSE_800DCBB4(n)
@@ -127,9 +127,9 @@ extern f32 gCourseNearPersp;
 #define gCourseFarPersp
 #define gCourseNearPersp
 #define GET_COURSE_D_0D0096B8(cc)
-#define GET_COURSE_D_0D009808(cc)
-#define GET_COURSE_D_0D009418(cc)
-#define GET_COURSE_D_0D009568(cc)
+#define GET_COURSE_gCpuOffTrackTargetSpeed(cc)
+#define GET_COURSE_gCpuCurveTargetSpeed(cc)
+#define GET_COURSE_gCpuNormalTargetSpeed(cc)
 #endif
 
 #endif // COURSE_H
