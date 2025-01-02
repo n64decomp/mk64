@@ -94,7 +94,7 @@ s8 gControllerPakVisibleTableRows[12] = { 0, 0, 1, 2, 3, 4, 5, 6, 0, 0, 0, 0 };
 
 s8 gControllerPakScrollDirection = CONTROLLER_PAK_SCROLL_DIR_NONE; // 1 is down, 2 is up
 s8 unref_D_800E86D4[12] = { 0 };
-s8 unref_800E86E0[4] = { 0, 0, 0, 1 };
+s8 unref_D_800E86E0[4] = { 0, 0, 0, 1 };
 
 u32 sVIGammaOffDitherOn = (OS_VI_GAMMA_OFF | OS_VI_DITHER_FILTER_ON);
 
