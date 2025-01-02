@@ -550,6 +550,8 @@ char* D_800ECF3C = "４位の人終了\n";
 char* D_800ECF4C = "OGA 表彰 move 終了\n";
 char* D_800ECF60 = "OGAWA DEBUG DRAW\n";
 
+// utils function path, cpu, vehicle
+
 s16 get_angle_between_waypoints(Vec3f arg0, Vec3f arg1) {
     s16 temp_ret;
     s16 phi_v1;
@@ -944,6 +946,8 @@ s32 is_waypoint_in_range(u16 waypoint, u16 currentWaypoint, u16 backwardRange, u
     }
     return var_v1;
 }
+
+// cpu utils function
 
 void func_80007D04(s32 playerId, Player* player) {
     s16 temp_t1;
@@ -1632,7 +1636,7 @@ void update_player_timer_sound(s32 playerId, UNUSED Player* unused) {
 // MISMATCH3: there's a small instruction ordering issue concerning `gCourseMaxX`. No idea what to do about it
 // FAKEMATCH1 is the best improvement I've seen yet, MISMATCH2/3 become the only issues.
 
-void func_80009B60(s32 playerId) {
+void update_player(s32 playerId) {
     UNUSED s32 stackPadding00;
     UNUSED s32 stackPadding01;
     UNUSED s32 stackPadding02;
@@ -2030,7 +2034,7 @@ void func_80009B60(s32 playerId) {
 #undef FAKEMATCH1
 #undef FAKEMATCH2
 #else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80009B60.s")
+GLOBAL_ASM("asm/non_matchings/code_80005FD0/update_player.s")
 #endif
 
 #ifdef NON_MATCHING
@@ -2172,6 +2176,8 @@ void func_8000B140(s32 playerId) {
 #else
 GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000B140.s")
 #endif
+
+// utils track position
 
 bool are_in_curse(UNUSED s32 arg0, u16 waypointIndex) {
     s16 thing = gCurrentTrackConsecutiveCurveCountsPath[waypointIndex];
@@ -3015,6 +3021,8 @@ s16 update_vehicle_following_waypoint(Vec3f pos, s16* waypointIndex, f32 speed) 
     return get_angle_between_waypoints(sp38, pos);
 }
 
+// bomb_kart utils
+
 void set_bomb_kart_spawn_positions(void) {
     UNUSED Collision* var_s2;
     f32 startingXPos;
@@ -3339,6 +3347,8 @@ void func_8000DF8C(s32 bombKartId) {
         bombKart2->circleTimer = var_s1;
     }
 }
+
+// actor utils
 
 s32 add_actor_in_unexpired_actor_list(s32 actorIndex, s16 arg1) {
     s32 i;
@@ -7817,7 +7827,7 @@ void func_8001C05C(void) {
 void func_8001C14C(void) {
     f32 temp_f0;
     f32 temp_f2;
-    s32 var_s1;
+    s32 playerId;
     Player* temp_s0;
 
     if (D_8016347C == 1) {
@@ -7831,18 +7841,18 @@ void func_8001C14C(void) {
             func_8009265C();
         }
     }
-    for (var_s1 = 0; var_s1 < 4; var_s1++) {
-        if ((var_s1 == 3) && (D_8016347C == 0)) {
+    for (playerId = 0; playerId < 4; playerId++) {
+        if ((playerId == 3) && (D_8016347C == 0)) {
             break;
         }
 
-        temp_s0 = &gPlayerOne[var_s1];
-        func_80009B60(var_s1);
+        temp_s0 = &gPlayerOne[playerId];
+        update_player(playerId);
         if (!(temp_s0->type & 0x2000)) {
-            temp_f0 = D_80163418[var_s1] - temp_s0->pos[0];
-            temp_f2 = D_80163438[var_s1] - temp_s0->pos[2];
+            temp_f0 = D_80163418[playerId] - temp_s0->pos[0];
+            temp_f2 = D_80163438[playerId] - temp_s0->pos[2];
             if ((f64) ((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) < 1.0) {
-                if (var_s1 != 3) {
+                if (playerId != 3) {
                     if (1) {}
                     // Why oh why is a ternary required here? Who does that?
                     (D_8016347C == 0) ? (temp_s0->type |= 0x2000) : (temp_s0->type &= ~0x2000);

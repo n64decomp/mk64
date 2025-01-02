@@ -120,7 +120,7 @@ void update_player_path_completion(s32, Player*);
 void update_vehicles(void);
 void play_ai_sound_effect(s32, Player*);
 void update_player_timer_sound(s32, Player*);
-void func_80009B60(s32);
+void update_player(s32);
 
 void func_8000B140(s32);
 s32 are_in_curse(s32, u16);

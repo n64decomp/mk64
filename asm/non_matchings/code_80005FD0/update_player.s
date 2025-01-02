@@ -23,7 +23,7 @@ glabel D_800ECFC8
 
 .section .text
 
-glabel func_80009B60
+glabel update_player
 /* 00A760 80009B60 3C0E800E */  lui   $t6, %hi(gCurrentCourseId)
 /* 00A764 80009B64 85CEC5A0 */  lh    $t6, %lo(gCurrentCourseId)($t6)
 /* 00A768 80009B68 3C01800E */  lui   $at, %hi(gKartAICourseMaximumSeparation)

@@ -404,7 +404,7 @@ void func_8028E678(void) {
     }
 }
 
-void func_8028EC38(s32 arg0) {
+UNUSED void func_8028EC38(s32 arg0) {
     gGotoMode = arg0;
     D_800DC510 = 6;
     func_800CA330(25);
@@ -656,7 +656,7 @@ void func_8028F474(void) {
         case 5:
         case 7:
             for (i = 0; i < NUM_PLAYERS; i++) {
-                func_80009B60(i);
+                update_player(i);
             }
         case 1:
         case 2:
