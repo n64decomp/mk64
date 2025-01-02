@@ -41,12 +41,12 @@ typedef struct {
 
 typedef struct {
     /* 0x00 */ MkAnimation* textureSequence;
-    /* 0x04 */ s32 sequenceIndex;      // Index in textureSequence that the animation is currently on
-    /* 0x08 */ s32 frameCountDown;     // Frames left for the given animation part
-    /* 0x0C */ u32 visible;            // visbile if 0x80000000, otherwise invisbile AND paused
+    /* 0x04 */ s32 sequenceIndex;    // Index in textureSequence that the animation is currently on
+    /* 0x08 */ s32 frameCountDown;   // Frames left for the given animation part
+    /* 0x0C */ u32 visible;          // visbile if 0x80000000, otherwise invisbile AND paused
     /* 0x10 */ s32 menuTextureIndex; // Don't know what sMenuTextureMap tracks
-    /* 0x14 */ s32 unk14;              // Flip flops between 0 and 1, use unknown
-} struct_8018DEE0_entry;               // size = 0x18
+    /* 0x14 */ s32 unk14;            // Flip flops between 0 and 1, use unknown
+} struct_8018DEE0_entry;             // size = 0x18
 
 typedef struct {
     /* 0x0 */ MenuTexture* texture;
@@ -415,7 +415,7 @@ void func_80099110(void);
 void load_menu_img(MenuTexture*);
 void* segmented_to_virtual_dupe(const void*);
 void* segmented_to_virtual_dupe_2(const void*);
-void load_menu_img_mio0_always(MenuTexture*);
+void load_menu_img_mio0_forced(MenuTexture*);
 void load_menu_img_comp_type(MenuTexture*, s32);
 void func_80099958(MenuTexture*, s32, s32);
 void func_80099E54(void);

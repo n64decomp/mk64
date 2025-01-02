@@ -3349,7 +3349,7 @@ Gfx* func_80098FC8(Gfx* displayListHead, s32 ulx, s32 uly, s32 lrx, s32 lry) {
     return draw_box_fill(displayListHead, ulx, uly, lrx, lry, 0, 0, 0, 0xFF);
 }
 
-void dma_copy_base_mio0(u64* data, size_t nbytes, void* vaddr) {
+void dma_copy_mio0_segment(u64* data, size_t nbytes, void* vaddr) {
     OSIoMesg mb;
     OSMesg msg;
 
@@ -3421,11 +3421,11 @@ void load_menu_img(MenuTexture* addr) {
                 if (size % 8) {
                     size = ((size / 8) * 8) + 8;
                 }
-                dma_copy_base_mio0(texAddr->textureData, size, gMenuCompressedBuffer);
+                dma_copy_mio0_segment(texAddr->textureData, size, gMenuCompressedBuffer);
                 mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[sMenuTextureBufferIndex]);
             } else {
-                dma_copy_base_mio0(texAddr->textureData, (texAddr->height * texAddr->width) * 2,
-                                   &gMenuTextureBuffer[sMenuTextureBufferIndex]);
+                dma_copy_mio0_segment(texAddr->textureData, (texAddr->height * texAddr->width) * 2,
+                                      &gMenuTextureBuffer[sMenuTextureBufferIndex]);
             }
             texMap[sMenuTextureEntries].textureData = texAddr->textureData;
             texMap[sMenuTextureEntries].offset = sMenuTextureBufferIndex;
@@ -3455,8 +3455,8 @@ void func_80099394(MenuTexture* addr) {
 
         if (imgLoaded == false) {
             if (texAddr->type == 5) {
-                dma_copy_base_mio0(texAddr->textureData, (u32) (((s32) (texAddr->height * texAddr->width)) / 2),
-                                   &gMenuTextureBuffer[sMenuTextureBufferIndex]);
+                dma_copy_mio0_segment(texAddr->textureData, (u32) (((s32) (texAddr->height * texAddr->width)) / 2),
+                                      &gMenuTextureBuffer[sMenuTextureBufferIndex]);
             }
             texMap[sMenuTextureEntries].textureData = texAddr->textureData;
             texMap[sMenuTextureEntries].offset = sMenuTextureBufferIndex;
@@ -3485,7 +3485,7 @@ void func_8009952C(MenuTexture* addr) {
         }
 
         if (imgLoaded == false) {
-            dma_copy_base_mio0(texAddr->textureData, 0x00008000U, gMenuCompressedBuffer);
+            dma_copy_mio0_segment(texAddr->textureData, 0x00008000U, gMenuCompressedBuffer);
             mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[sMenuTextureBufferIndex]);
             texMap[sMenuTextureEntries].textureData = texAddr->textureData;
             texMap[sMenuTextureEntries].offset = sMenuTextureBufferIndex;
@@ -3497,7 +3497,7 @@ void func_8009952C(MenuTexture* addr) {
     }
 }
 
-void load_menu_img_mio0_always(MenuTexture* addr) {
+void load_menu_img_mio0_forced(MenuTexture* addr) {
     load_menu_img_comp_type(addr, LOAD_MENU_IMG_MIO0_FORCE);
 }
 
@@ -3531,7 +3531,7 @@ void load_menu_img_comp_type(MenuTexture* addr, s32 compType) {
             switch (compType) {
                 case LOAD_MENU_IMG_MIO0_ONCE:
                 case LOAD_MENU_IMG_MIO0_FORCE:
-                    dma_copy_base_mio0(texAddr->textureData, size, gMenuCompressedBuffer);
+                    dma_copy_mio0_segment(texAddr->textureData, size, gMenuCompressedBuffer);
                     break;
                 case LOAD_MENU_IMG_TKMK00_ONCE:
                 case LOAD_MENU_IMG_TKMK00_FORCE:
@@ -3582,7 +3582,7 @@ void func_80099958(MenuTexture* addr, s32 arg1, s32 arg2) {
             // Round up to the next multiple of eight
             size = ((size / 8) * 8) + 8;
         }
-        dma_copy_base_mio0(texAddr->textureData, size, gMenuCompressedBuffer);
+        dma_copy_mio0_segment(texAddr->textureData, size, gMenuCompressedBuffer);
         mio0decode(gMenuCompressedBuffer, D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
         texAddr++;
     }
@@ -3877,12 +3877,12 @@ s32 animate_character_select_menu(MkAnimation* anim) {
     entry->menuTextureIndex = sMenuTextureEntries;
 
     if (anim[0].mk64Texture) {
-        load_menu_img_mio0_always(anim[0].mk64Texture);
+        load_menu_img_mio0_forced(anim[0].mk64Texture);
     }
     if (anim[1].mk64Texture) {
-        load_menu_img_mio0_always(anim[1].mk64Texture);
+        load_menu_img_mio0_forced(anim[1].mk64Texture);
     } else {
-        load_menu_img_mio0_always(anim[0].mk64Texture);
+        load_menu_img_mio0_forced(anim[0].mk64Texture);
     }
 
     entry->unk14 = 0;
@@ -5960,7 +5960,7 @@ void render_menus(MenuItem* arg0) {
                             var_v1 = -1;
                         }
                         var_a1 = 18;
-                        sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - MAIN_MENU_50CC]);
+                        sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - 2]);
                         break;
                     case MENU_ITEM_TYPE_016: /* switch 5 */
                     case MENU_ITEM_TYPE_017: /* switch 5 */
@@ -5968,7 +5968,7 @@ void render_menus(MenuItem* arg0) {
                             var_v1 = -1;
                         } else {
                             var_a1 = 22;
-                            sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - MAIN_MENU_50CC]);
+                            sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - 3]);
                         }
                         break;
                     case MAIN_MENU_TIME_TRIALS_BEGIN: /* switch 5 */
@@ -5977,7 +5977,7 @@ void render_menus(MenuItem* arg0) {
                             var_v1 = -1;
                         } else {
                             var_a1 = 24;
-                            sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - MAIN_MENU_50CC]);
+                            sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - 4]);
                         }
                         break;
                 }
@@ -12037,8 +12037,7 @@ void func_800AF270(MenuItem* arg0) {
 void func_800AF480(MenuItem* arg0) {
     s32 idx = arg0->type - 0x190;
 
-    if ((gCreditsTextRenderInfo[idx].slideDirection == 0) ||
-        (gCreditsTextRenderInfo[idx].slideDirection != 1)) {
+    if ((gCreditsTextRenderInfo[idx].slideDirection == 0) || (gCreditsTextRenderInfo[idx].slideDirection != 1)) {
         func_800AF4DC(arg0);
     } else {
         func_800AF740(arg0);
