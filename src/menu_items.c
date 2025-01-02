@@ -2391,7 +2391,7 @@ void setup_menus(void) {
                 add_menu_item(MAIN_MENU_DATA_GFX, 0x0000015E, 0x000000C8, MENU_ITEM_PRIORITY_6);
                 add_menu_item(MAIN_MENU_OPTION_GFX, 0x0000015E, 0x000000C8, MENU_ITEM_PRIORITY_6);
                 if (has_unlocked_extra_mode() != 0) {
-                    add_menu_item(MENU_ITEM_TYPE_015, 0, 0, MENU_ITEM_PRIORITY_6);
+                    add_menu_item(MAIN_MENU_EXTRA_CC, 0, 0, MENU_ITEM_PRIORITY_6);
                 }
                 add_menu_item(MAIN_MENU_150CC, 0, 0, MENU_ITEM_PRIORITY_6);
                 add_menu_item(MAIN_MENU_100CC, 0, 0, MENU_ITEM_PRIORITY_6);
@@ -5944,7 +5944,7 @@ void render_menus(MenuItem* arg0) {
             case MAIN_MENU_50CC:              /* switch 6 */
             case MAIN_MENU_100CC:             /* switch 6 */
             case MAIN_MENU_150CC:             /* switch 6 */
-            case MENU_ITEM_TYPE_015:          /* switch 6 */
+            case MAIN_MENU_EXTRA_CC:          /* switch 6 */
             case MENU_ITEM_TYPE_016:          /* switch 6 */
             case MENU_ITEM_TYPE_017:          /* switch 6 */
             case MAIN_MENU_TIME_TRIALS_BEGIN: /* switch 6 */
@@ -5955,20 +5955,20 @@ void render_menus(MenuItem* arg0) {
                     case MAIN_MENU_50CC:     /* switch 5 */
                     case MAIN_MENU_100CC:    /* switch 5 */
                     case MAIN_MENU_150CC:    /* switch 5 */
-                    case MENU_ITEM_TYPE_015: /* switch 5 */
+                    case MAIN_MENU_EXTRA_CC: /* switch 5 */
                         if ((var_a1 != 0) && (var_a1 != 2)) {
                             var_v1 = -1;
                         }
-                        var_a1 = 18;
-                        sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - 2]);
+                        var_a1 = MAIN_MENU_50CC;
+                        sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - MAIN_MENU_50CC]);
                         break;
                     case MENU_ITEM_TYPE_016: /* switch 5 */
                     case MENU_ITEM_TYPE_017: /* switch 5 */
                         if (var_a1 != 2) {
                             var_v1 = -1;
                         } else {
-                            var_a1 = 22;
-                            sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - 3]);
+                            var_a1 = MENU_ITEM_TYPE_016;
+                            sp9C = segmented_to_virtual_dupe(D_800E823C[arg0->type - MENU_ITEM_TYPE_016]);
                         }
                         break;
                     case MAIN_MENU_TIME_TRIALS_BEGIN: /* switch 5 */
@@ -5976,28 +5976,28 @@ void render_menus(MenuItem* arg0) {
                         if (var_a1 != 1) {
                             var_v1 = -1;
                         } else {
-                            var_a1 = 24;
-                            sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - 4]);
+                            var_a1 = MAIN_MENU_TIME_TRIALS_BEGIN;
+                            sp9C = segmented_to_virtual_dupe(D_800E8244[arg0->type - MAIN_MENU_TIME_TRIALS_BEGIN]);
                         }
                         break;
                 }
-                if (var_v1 != -1) {
-                    if ((gMainMenuSelection >= MAIN_MENU_MODE_SUB_SELECT) && (var_v1 == (arg0->type - var_a1))) {
-                        if (gMainMenuSelection > MAIN_MENU_MODE_SUB_SELECT) {
-                            gDisplayListHead =
-                                draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
-                                              arg0->row + 0x11, 0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
-                        } else {
-                            gDisplayListHead =
-                                draw_flash_select_case_slow(gDisplayListHead, arg0->column ^ 0, arg0->row ^ 0,
-                                                            arg0->column + 0x3F, arg0->row + 0x11);
-                        }
-                    } else {
-                        gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
-                                                         arg0->row + 0x11, 1, 1, 1, 0x000000FF);
-                    }
-                    gDisplayListHead = render_menu_textures(gDisplayListHead, sp9C, arg0->column, arg0->row);
+                if (var_v1 == -1) {
+                    break;
                 }
+                if ((gMainMenuSelection >= MAIN_MENU_MODE_SUB_SELECT) && (var_v1 == (arg0->type - var_a1))) {
+                    if (gMainMenuSelection > MAIN_MENU_MODE_SUB_SELECT) {
+                        gDisplayListHead =
+                            draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
+                                          arg0->row + 0x11, 0x000000FF, 0x000000F9, 0x000000DC, 0x000000FF);
+                    } else {
+                        gDisplayListHead = draw_flash_select_case_slow(
+                            gDisplayListHead, arg0->column ^ 0, arg0->row ^ 0, arg0->column + 0x3F, arg0->row + 0x11);
+                    }
+                } else {
+                    gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
+                                                     arg0->row + 0x11, 1, 1, 1, 0x000000FF);
+                }
+                gDisplayListHead = render_menu_textures(gDisplayListHead, sp9C, arg0->column, arg0->row);
                 break;
             case MENU_ITEM_TYPE_01B: /* switch 6 */
                 func_800A10CC(arg0);
@@ -8586,7 +8586,7 @@ void handle_menus_with_pri_arg(s32 priSpecial) {
             case MAIN_MENU_50CC:              /* switch 8 */
             case MAIN_MENU_100CC:             /* switch 8 */
             case MAIN_MENU_150CC:             /* switch 8 */
-            case MENU_ITEM_TYPE_015:          /* switch 8 */
+            case MAIN_MENU_EXTRA_CC:          /* switch 8 */
             case MENU_ITEM_TYPE_016:          /* switch 8 */
             case MENU_ITEM_TYPE_017:          /* switch 8 */
             case MAIN_MENU_TIME_TRIALS_BEGIN: /* switch 8 */
