@@ -9,7 +9,6 @@
  */
 typedef struct {
     /* 0x00 */ s16 type;
-    /* 0x02 */ s16 unused1;
     /* 0x04 */ u64* textureData; // This should be interpreted as a segmented address
     /* 0x08 */ u16 width;
     /* 0x0A */ u16 height;
