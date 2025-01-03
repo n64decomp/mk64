@@ -1562,7 +1562,7 @@ MenuTexture D_02001B04[2] = {
  * @brief MenuTexture of Course Preview Mario Raceway
  *
  */
-MenuTexture gMenuTexturePreviewMarioRaceway[2] = {
+MenuTexture seg2_mario_raceway_preview_texture[2] = {
     { 0, 0, gTextureCoursePreviewMarioRaceway, 128, 78, 0, 0, 0x3157, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -1743,8 +1743,8 @@ MenuTexture D_02001E24[2] = {
  *
  */
 MkAnimation D_02001E4C[3] = {
-    { gMenuTexturePreviewMarioRaceway, 0x0000003c },
-    { gMenuTexturePreviewMarioRaceway, 0x0000003c },
+    { seg2_mario_raceway_preview_texture, 0x0000003c },
+    { seg2_mario_raceway_preview_texture, 0x0000003c },
     { NULL, 0x00000000 },
 };
 
@@ -1753,7 +1753,7 @@ MkAnimation D_02001E4C[3] = {
  *
  */
 MkAnimation D_02001E64[2] = {
-    { gMenuTexturePreviewMarioRaceway, 0x0000003c },
+    { seg2_mario_raceway_preview_texture, 0x0000003c },
     { NULL, 0x00000000 },
 };
 
@@ -4150,7 +4150,7 @@ MenuTexture D_02004584[1] = {
  * @brief MenuTexture for the blue sky background
  *
  */
-MenuTexture gMenuTextureBackgroundBlueSky[2] = {
+MenuTexture seg2_blue_sky_background_texture[2] = {
     { 0, 0, gTextureBackgroundBlueSky, 320, 240, 0, 0, 0xcd60, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4159,7 +4159,7 @@ MenuTexture gMenuTextureBackgroundBlueSky[2] = {
  * @brief MenuTexture for the sunset background
  *
  */
-MenuTexture gMenuTextureBackgroundSunset[2] = {
+MenuTexture seg2_sunset_background_texture[2] = {
     { 0, 0, gTextureBackgroundSunset, 320, 240, 0, 0, 0x93c4, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4168,7 +4168,7 @@ MenuTexture gMenuTextureBackgroundSunset[2] = {
  * @brief MenuTexture for copyright
  *
  */
-MenuTexture gMenuTextureCopyright1996[2] = {
+MenuTexture seg2_copyright_1996_texture[2] = {
     { 1, 0, gTextureCopyright1996, 124, 17, 98, 199, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4177,7 +4177,7 @@ MenuTexture gMenuTextureCopyright1996[2] = {
  * @brief MenuTexture for press start
  *
  */
-MenuTexture gMenuTexturePushStartButton[2] = {
+MenuTexture seg2_push_start_button_texture[2] = {
     { 1, 0, gTexturePushStartButton, 159, 16, 81, 179, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4195,7 +4195,7 @@ MenuTexture D_02004638[2] = {
  * @brief MenuTexture for the game select menu
  *
  */
-MenuTexture gMenuTextureGameSelect[2] = {
+MenuTexture seg2_game_select_texture[2] = {
     { 0, 0, gTextureGameSelect, 200, 32, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4204,7 +4204,7 @@ MenuTexture gMenuTextureGameSelect[2] = {
  * @brief MenuTexture for the first colone one player
  *
  */
-MenuTexture gMenuTextureOnePlayerColone[4] = {
+MenuTexture seg2_menu_1p_column[4] = {
     { 1, 0, gTextureMenu1PGame, 64, 54, 0, 0, 0x0, 0 },
     { 1, 0, gTextureMenuModeMarioGP, 64, 18, 0, 65, 0x0, 0 },
     { 1, 0, gTextureMenuModeTimeTrials, 64, 18, 0, 83, 0x0, 0 },
@@ -4215,7 +4215,7 @@ MenuTexture gMenuTextureOnePlayerColone[4] = {
  * @brief MenuTexture for the first colone two player
  *
  */
-MenuTexture gMenuTextureTwoPlayerColone[5] = {
+MenuTexture seg2_menu_2p_column[5] = {
     { 1, 0, gTextureMenu2PGame, 64, 54, 0, 0, 0x0, 0 },
     { 1, 0, gTextureMenuModeMarioGP, 64, 18, 0, 65, 0x0, 0 },
     { 1, 0, gTextureMenuModeVS, 64, 18, 0, 83, 0x0, 0 },
@@ -4227,7 +4227,7 @@ MenuTexture gMenuTextureTwoPlayerColone[5] = {
  * @brief MenuTexture for the first colone three player
  *
  */
-MenuTexture gMenuTextureThreePlayerColone[4] = {
+MenuTexture seg2_menu_3p_column[4] = {
     { 1, 0, gTextureMenu3PGame, 64, 54, 0, 0, 0x0, 0 },
     { 1, 0, gTextureMenuModeVS, 64, 18, 0, 65, 0x0, 0 },
     { 1, 0, gTextureMenuModeBattle, 64, 18, 0, 83, 0x0, 0 },
@@ -4238,7 +4238,7 @@ MenuTexture gMenuTextureThreePlayerColone[4] = {
  * @brief MenuTexture for the first colone four player
  *
  */
-MenuTexture gMenuTextureFourPlayerColone[4] = {
+MenuTexture seg2_menu_4p_column[4] = {
     { 1, 0, gTextureMenu4PGame, 64, 54, 0, 0, 0x0, 0 },
     { 1, 0, gTextureMenuModeVS, 64, 18, 0, 65, 0x0, 0 },
     { 1, 0, gTextureMenuModeBattle, 64, 18, 0, 83, 0x0, 0 },
@@ -4312,7 +4312,7 @@ MenuTexture D_020048CC[2] = {
  * @brief MenuTexture for Menu 50cc
  *
  */
-MenuTexture gMenuTexture50cc[2] = {
+MenuTexture seg2_50_CC_texture[2] = {
     { 1, 0, gTextureMenu50cc, 64, 18, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4321,7 +4321,7 @@ MenuTexture gMenuTexture50cc[2] = {
  * @brief MenuTexture for Menu 100cc
  *
  */
-MenuTexture gMenuTexture100cc[2] = {
+MenuTexture seg2_100_CC_texture[2] = {
     { 1, 0, gTextureMenu100cc, 64, 18, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4330,7 +4330,7 @@ MenuTexture gMenuTexture100cc[2] = {
  * @brief MenuTexture for Menu 150cc
  *
  */
-MenuTexture gMenuTexture150cc[2] = {
+MenuTexture seg2_150_CC_texture[2] = {
     { 1, 0, gTextureMenu150cc, 64, 18, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4339,7 +4339,7 @@ MenuTexture gMenuTexture150cc[2] = {
  * @brief MenuTexture for Menu Extra
  *
  */
-MenuTexture gMenuTextureExtra[2] = {
+MenuTexture seg2_extra_CC_texture[2] = {
     { 1, 0, gTextureMenuExtra, 64, 18, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4348,7 +4348,7 @@ MenuTexture gMenuTextureExtra[2] = {
  * @brief MenuTextures for Menu Without Item
  *
  */
-MenuTexture gMenuTextureWithoutItem[2] = {
+MenuTexture seg2_menu_no_item_texture[2] = {
     { 1, 0, gTextureMenuWithoutItem, 64, 18, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4384,7 +4384,7 @@ MenuTexture D_02004A0C[2] = {
  * @brief MenuTextures for Menu Data
  *
  */
-MenuTexture gMenuTextureData[2] = {
+MenuTexture seg2_data_texture[2] = {
     { 1, 0, gTextureMenuData, 64, 18, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4393,7 +4393,7 @@ MenuTexture gMenuTextureData[2] = {
  * @brief MenuTextures P1 Border ?
  *
  */
-MenuTexture gMenuTextureBorderP1[3] = {
+MenuTexture seg2_P1_border_texture[3] = {
     { 3, 0, gTexture7E56E4, 64, 64, 0, 0, 0x116c, 0 },
     { 4, 0, gTextureP1BorderBlue, 64, 64, 0, 0, 0x0000, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
@@ -4403,7 +4403,7 @@ MenuTexture gMenuTextureBorderP1[3] = {
  * @brief MenuTextures P2 Border ?
  *
  */
-MenuTexture gMenuTextureBorderP2[3] = {
+MenuTexture seg2_P2_border_texture[3] = {
     { 3, 0, gTexture7E56E4, 64, 64, 0, 0, 0x116c, 0 },
     { 4, 0, gTextureP2BorderRed, 64, 64, 0, 0, 0x0000, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
@@ -4413,7 +4413,7 @@ MenuTexture gMenuTextureBorderP2[3] = {
  * @brief MenuTextures P3 Border ?
  *
  */
-MenuTexture gMenuTextureBorderP3[3] = {
+MenuTexture seg2_P3_border_texture[3] = {
     { 3, 0, gTexture7E56E4, 64, 64, 0, 0, 0x116c, 0 },
     { 4, 0, gTextureP3BorderOrange, 64, 64, 0, 0, 0x0000, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
@@ -4423,7 +4423,7 @@ MenuTexture gMenuTextureBorderP3[3] = {
  * @brief MenuTextures P4 Border ?
  *
  */
-MenuTexture gMenuTextureBorderP4[3] = {
+MenuTexture seg2_P4_border_texture[3] = {
     { 3, 0, gTexture7E56E4, 64, 64, 0, 0, 0x116c, 0 },
     { 4, 0, gTextureP4BorderGreen, 64, 64, 0, 0, 0x0000, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
@@ -4451,7 +4451,7 @@ MenuTexture D_02004B74[2] = {
  * @brief MenuTextures for Menu Select
  *
  */
-MenuTexture gMenuTextureMenuSelect[2] = {
+MenuTexture seg2_menu_select_texture[2] = {
     { 0, 0, gTextureMapSelect, 190, 32, 65, 18, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4460,7 +4460,7 @@ MenuTexture gMenuTextureMenuSelect[2] = {
  * @brief MenuTextures for Menu Mushroom Cup
  *
  */
-MenuTexture gMenuTextureMushroomCup[2] = {
+MenuTexture seg2_mushroom_cup_texture[2] = {
     { 1, 0, gTextureMenuMushroomCup, 65, 40, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4469,7 +4469,7 @@ MenuTexture gMenuTextureMushroomCup[2] = {
  * @brief MenuTextures for Menu Flower Cup
  *
  */
-MenuTexture gMenuTextureFlowerCup[2] = {
+MenuTexture seg2_flower_cup_texture[2] = {
     { 1, 0, gTextureMenuFlowerCup, 65, 40, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4478,7 +4478,7 @@ MenuTexture gMenuTextureFlowerCup[2] = {
  * @brief MenuTextures for Menu Star Cup
  *
  */
-MenuTexture gMenuTextureStarCup[2] = {
+MenuTexture seg2_star_cup_texture[2] = {
     { 1, 0, gTextureMenuStarCup, 65, 40, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4487,7 +4487,7 @@ MenuTexture gMenuTextureStarCup[2] = {
  * @brief MenuTextures for Menu Special Cup
  *
  */
-MenuTexture gMenuTextureSpecialCup[2] = {
+MenuTexture seg2_special_cup_texture[2] = {
     { 1, 0, gTextureMenuSpecialCup, 65, 40, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4496,7 +4496,7 @@ MenuTexture gMenuTextureSpecialCup[2] = {
  * @brief MenuTextures for the course preview mario raceway
  *
  */
-MenuTexture gMenuTexturePreviewMarioRacewaySmall[2] = {
+MenuTexture seg2_mario_raceway_preview_small_texture[2] = {
     { 0, 0, gTextureCoursePreviewMarioRaceway, 128, 78, 23, 112, 0x1e3d, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4505,7 +4505,7 @@ MenuTexture gMenuTexturePreviewMarioRacewaySmall[2] = {
  * @brief MenuTexture title for mushroom cup
  *
  */
-MenuTexture gMenuTextureTitleMushroomCup[5] = {
+MenuTexture seg2_mushroom_cup_title_texture[5] = {
     { 1, 0, gTextureTitleLuigiRaceway, 140, 18, 157, 112, 0x0, 0 },
     { 1, 0, gTextureTitleMooMooFarm, 140, 18, 157, 136, 0x0, 0 },
     { 1, 0, gTextureTitleKoopaTroopaBeach, 140, 18, 157, 160, 0x0, 0 },
@@ -4517,7 +4517,7 @@ MenuTexture gMenuTextureTitleMushroomCup[5] = {
  * @brief MenuTexture title for flower cup
  *
  */
-MenuTexture gMenuTextureTitleFlowerCup[5] = {
+MenuTexture seg2_flower_cup_title_texture[5] = {
     { 1, 0, gTextureTitleToadsTurnpike, 140, 18, 157, 112, 0x0, 0 },
     { 1, 0, gTextureTitleFrappeSnowland, 140, 18, 157, 136, 0x0, 0 },
     { 1, 0, gTextureTitleChocoMountain, 140, 18, 157, 160, 0x0, 0 },
@@ -4529,7 +4529,7 @@ MenuTexture gMenuTextureTitleFlowerCup[5] = {
  * @brief MenuTexture title for star cup
  *
  */
-MenuTexture gMenuTextureTitleStarCup[5] = {
+MenuTexture seg2_star_cup_title_texture[5] = {
     { 1, 0, gTextureTitleWarioStadium, 140, 18, 157, 112, 0x0, 0 },
     { 1, 0, gTextureTitleSherbetLand, 140, 18, 157, 136, 0x0, 0 },
     { 1, 0, gTextureTitleRoyalRaceway, 140, 18, 157, 160, 0x0, 0 },
@@ -4541,7 +4541,7 @@ MenuTexture gMenuTextureTitleStarCup[5] = {
  * @brief MenuTexture title for special cup
  *
  */
-MenuTexture gMenuTextureTitleSpecialCup[5] = {
+MenuTexture seg2_special_cup_title_texture[5] = {
     { 1, 0, gTextureTitleDKsJungleParkway, 140, 18, 157, 112, 0x0, 0 },
     { 1, 0, gTextureTitleYoshiValley, 140, 18, 157, 136, 0x0, 0 },
     { 1, 0, gTextureTitleBansheeBoardwalk, 140, 18, 157, 160, 0x0, 0 },
@@ -4553,7 +4553,7 @@ MenuTexture gMenuTextureTitleSpecialCup[5] = {
  * @brief MenuTextures title for battle mode
  *
  */
-MenuTexture gMenuTextureTitleBattleTrack[5] = {
+MenuTexture seg2_battle_title_texture[5] = {
     { 1, 0, gTextureTitleBigDonut, 140, 18, 157, 112, 0x0, 0 },
     { 1, 0, gTextureTitleBlockFort, 140, 18, 157, 136, 0x0, 0 },
     { 1, 0, gTextureTitleDoubleDeck, 140, 18, 157, 160, 0x0, 0 },
@@ -4574,7 +4574,7 @@ MenuTexture D_02004E80[2] = {
  * @brief MenuTextures title Mario Raceway
  *
  */
-MenuTexture gMenuTextureTitleMarioRaceway[2] = {
+MenuTexture seg2_mario_raceway_title_texture[2] = {
     { 1, 0, gTextureTitleMarioRaceway, 140, 18, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
@@ -4583,7 +4583,7 @@ MenuTexture gMenuTextureTitleMarioRaceway[2] = {
  * @brief MenuTextures title Choco Mountain
  *
  */
-MenuTexture gMenuTextureTitleChocoMountain[2] = {
+MenuTexture seg2_choco_mountain_title_texture[2] = {
     { 1, 0, gTextureTitleChocoMountain, 140, 18, 0, 0, 0x0, 0 },
     { 0, 0, NULL, 0, 0, 0, 0, 0, 0 },
 };

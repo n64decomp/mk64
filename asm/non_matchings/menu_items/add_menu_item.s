@@ -528,17 +528,17 @@ glabel L8009ECD4
 /* 09F8E0 8009ECE0 2442E110 */  addiu $v0, %lo(sMenuTextureBufferIndex) # addiu $v0, $v0, -0x1ef0
 /* 09F8E4 8009ECE4 8C590000 */  lw    $t9, ($v0)
 /* 09F8E8 8009ECE8 3C010001 */  lui   $at, 1
-/* 09F8EC 8009ECEC 3C040200 */  lui   $a0, %hi(gMenuTextureCopyright1996) # $a0, 0x200
+/* 09F8EC 8009ECEC 3C040200 */  lui   $a0, %hi(seg2_copyright_1996_texture) # $a0, 0x200
 /* 09F8F0 8009ECF0 03217021 */  addu  $t6, $t9, $at
 /* 09F8F4 8009ECF4 AC4E0000 */  sw    $t6, ($v0)
 /* 09F8F8 8009ECF8 0C026461 */  jal   load_menu_img
-/* 09F8FC 8009ECFC 248445E8 */   addiu $a0, %lo(gMenuTextureCopyright1996) # addiu $a0, $a0, 0x45e8
+/* 09F8FC 8009ECFC 248445E8 */   addiu $a0, %lo(seg2_copyright_1996_texture) # addiu $a0, $a0, 0x45e8
 /* 09F900 8009ED00 10000234 */  b     .L8009F5D4
 /* 09F904 8009ED04 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L8009ED08
-/* 09F908 8009ED08 3C040200 */  lui   $a0, %hi(gMenuTexturePushStartButton) # $a0, 0x200
+/* 09F908 8009ED08 3C040200 */  lui   $a0, %hi(seg2_push_start_button_texture) # $a0, 0x200
 /* 09F90C 8009ED0C 0C026461 */  jal   load_menu_img
-/* 09F910 8009ED10 24844610 */   addiu $a0, %lo(gMenuTexturePushStartButton) # addiu $a0, $a0, 0x4610
+/* 09F910 8009ED10 24844610 */   addiu $a0, %lo(seg2_push_start_button_texture) # addiu $a0, $a0, 0x4610
 /* 09F914 8009ED14 1000022F */  b     .L8009F5D4
 /* 09F918 8009ED18 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L8009ED1C
@@ -814,9 +814,9 @@ glabel L8009F0E0
 /* 09FD04 8009F104 10000133 */  b     .L8009F5D4
 /* 09FD08 8009F108 8FBF001C */   lw    $ra, 0x1c($sp)
 glabel L8009F10C
-/* 09FD0C 8009F10C 3C040200 */  lui   $a0, %hi(gMenuTextureData) # $a0, 0x200
+/* 09FD0C 8009F10C 3C040200 */  lui   $a0, %hi(seg2_data_texture) # $a0, 0x200
 /* 09FD10 8009F110 0C026449 */  jal   segmented_to_virtual_dupe
-/* 09FD14 8009F114 24844A34 */   addiu $a0, %lo(gMenuTextureData) # addiu $a0, $a0, 0x4a34
+/* 09FD14 8009F114 24844A34 */   addiu $a0, %lo(seg2_data_texture) # addiu $a0, $a0, 0x4a34
 /* 09FD18 8009F118 00402025 */  move  $a0, $v0
 /* 09FD1C 8009F11C 0C0265AF */  jal   load_menu_img_comp_type
 /* 09FD20 8009F120 00002825 */   move  $a1, $zero

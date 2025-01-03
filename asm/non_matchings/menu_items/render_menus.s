@@ -311,8 +311,8 @@ glabel L8009F874
 /* 0A048C 8009F88C 000C2403 */  sra   $a0, $t4, 0x10
 /* 0A0490 8009F890 0C013235 */  jal   render_game_logo
 /* 0A0494 8009F894 000E2C03 */   sra   $a1, $t6, 0x10
-/* 0A0498 8009F898 3C050200 */  lui   $a1, %hi(gMenuTextureCopyright1996) # $a1, 0x200
-/* 0A049C 8009F89C 24A545E8 */  addiu $a1, %lo(gMenuTextureCopyright1996) # addiu $a1, $a1, 0x45e8
+/* 0A0498 8009F898 3C050200 */  lui   $a1, %hi(seg2_copyright_1996_texture) # $a1, 0x200
+/* 0A049C 8009F89C 24A545E8 */  addiu $a1, %lo(seg2_copyright_1996_texture) # addiu $a1, $a1, 0x45e8
 /* 0A04A0 8009F8A0 8E040000 */  lw    $a0, ($s0)
 /* 0A04A4 8009F8A4 8E26000C */  lw    $a2, %lo(D_FA00000C)($s1)
 /* 0A04A8 8009F8A8 0C026E9D */  jal   render_menu_textures
@@ -322,8 +322,8 @@ glabel L8009F874
 glabel L8009F8B8
 /* 0A04B8 8009F8B8 3C18800E */  lui   $t8, %hi(gGlobalTimer) # $t8, 0x800e
 /* 0A04BC 8009F8BC 8F18C54C */  lw    $t8, %lo(gGlobalTimer)($t8)
-/* 0A04C0 8009F8C0 3C050200 */  lui   $a1, %hi(gMenuTexturePushStartButton) # $a1, 0x200
-/* 0A04C4 8009F8C4 24A54610 */  addiu $a1, %lo(gMenuTexturePushStartButton) # addiu $a1, $a1, 0x4610
+/* 0A04C0 8009F8C0 3C050200 */  lui   $a1, %hi(seg2_push_start_button_texture) # $a1, 0x200
+/* 0A04C4 8009F8C4 24A54610 */  addiu $a1, %lo(seg2_push_start_button_texture) # addiu $a1, $a1, 0x4610
 /* 0A04C8 8009F8C8 07010003 */  bgez  $t8, .L8009F8D8
 /* 0A04CC 8009F8CC 0018C8C3 */   sra   $t9, $t8, 3
 /* 0A04D0 8009F8D0 27010007 */  addiu $at, $t8, 7
@@ -613,8 +613,8 @@ glabel L8009FCD8
 /* 0A090C 8009FD0C 100002ED */  b     .L800A08C4
 /* 0A0910 8009FD10 AE020000 */   sw    $v0, ($s0)
 glabel L8009FD14
-/* 0A0914 8009FD14 3C050200 */  lui   $a1, %hi(gMenuTextureGameSelect) # $a1, 0x200
-/* 0A0918 8009FD18 24A54660 */  addiu $a1, %lo(gMenuTextureGameSelect) # addiu $a1, $a1, 0x4660
+/* 0A0914 8009FD14 3C050200 */  lui   $a1, %hi(seg2_game_select_texture) # $a1, 0x200
+/* 0A0918 8009FD18 24A54660 */  addiu $a1, %lo(seg2_game_select_texture) # addiu $a1, $a1, 0x4660
 /* 0A091C 8009FD1C 8E040000 */  lw    $a0, ($s0)
 /* 0A0920 8009FD20 8E26000C */  lw    $a2, 0xc($s1)
 /* 0A0924 8009FD24 0C026E9D */  jal   render_menu_textures
@@ -1169,8 +1169,8 @@ glabel L800A0428
 /* 0A10FC 800A04FC 24A7003F */   addiu $a3, $a1, 0x3f
 /* 0A1100 800A0500 AE020000 */  sw    $v0, ($s0)
 .L800A0504:
-/* 0A1104 800A0504 3C050200 */  lui   $a1, %hi(gMenuTextureData) # $a1, 0x200
-/* 0A1108 800A0508 24A54A34 */  addiu $a1, %lo(gMenuTextureData) # addiu $a1, $a1, 0x4a34
+/* 0A1104 800A0504 3C050200 */  lui   $a1, %hi(seg2_data_texture) # $a1, 0x200
+/* 0A1108 800A0508 24A54A34 */  addiu $a1, %lo(seg2_data_texture) # addiu $a1, $a1, 0x4a34
 /* 0A110C 800A050C 8E040000 */  lw    $a0, ($s0)
 /* 0A1110 800A0510 8E26000C */  lw    $a2, 0xc($s1)
 /* 0A1114 800A0514 0C026E9D */  jal   render_menu_textures
