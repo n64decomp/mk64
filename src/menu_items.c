@@ -890,50 +890,48 @@ MenuTexture* D_800E822C[] = {
 
 // In a perfect world this would be `MenuTexture *D_800E8234[][2]`
 MenuTexture* D_800E8234[] = {
-    seg2_menu_1p_column,   D_020047DC, seg2_menu_2p_column,  D_02004804,
+    seg2_menu_1p_column, D_020047DC, seg2_menu_2p_column, D_02004804,
     seg2_menu_3p_column, D_0200482C, seg2_menu_4p_column, D_02004854,
 };
 
 MenuTexture* D_800E8254[] = {
-    seg2_game_select_texture,
-    seg2_menu_1p_column,
-    seg2_menu_2p_column,
-    seg2_menu_3p_column,
-    seg2_menu_4p_column,
-    D_0200487C,
-    D_020048A4,
-    D_020048CC,
+    seg2_game_select_texture, seg2_menu_1p_column, seg2_menu_2p_column, seg2_menu_3p_column,
+    seg2_menu_4p_column,      D_0200487C,          D_020048A4,          D_020048CC,
 };
 
 // CC textures
 MenuTexture* D_800E8274[] = {
-    seg2_50_CC_texture, seg2_100_CC_texture, seg2_150_CC_texture, seg2_extra_CC_texture,
+    seg2_50_CC_texture,
+    seg2_100_CC_texture,
+    seg2_150_CC_texture,
+    seg2_extra_CC_texture,
 };
 
 // Versus and battle textures
-MenuTexture* D_800E8284[] = {
-    D_020049BC, seg2_menu_no_item_texture
-};
+MenuTexture* D_800E8284[] = { D_020049BC, seg2_menu_no_item_texture };
 
 // Time trials begin and data textures
 MenuTexture* D_800E828C[] = {
-    D_020049E4, seg2_data_texture,
+    D_020049E4,
+    seg2_data_texture,
 };
 
 // Duplicates of the above 3 arrays
 // CC textures
 MenuTexture* D_800E8294[] = {
-    seg2_50_CC_texture, seg2_100_CC_texture, seg2_150_CC_texture, seg2_extra_CC_texture,
+    seg2_50_CC_texture,
+    seg2_100_CC_texture,
+    seg2_150_CC_texture,
+    seg2_extra_CC_texture,
 };
 
 // Versus and battle textures
-MenuTexture* D_800E82A4[] = {
-    D_020049BC, seg2_menu_no_item_texture
-};
+MenuTexture* D_800E82A4[] = { D_020049BC, seg2_menu_no_item_texture };
 
 // Time trials begin and data textures
 MenuTexture* D_800E82AC[] = {
-    D_020049E4, seg2_data_texture,
+    D_020049E4,
+    seg2_data_texture,
 };
 
 MenuTexture* gMenuTexturesBorderPlayer[] = {
@@ -944,10 +942,10 @@ MenuTexture* gMenuTexturesBorderPlayer[] = {
 };
 
 MenuTexture* gMenuTexturesTrackSelection[] = {
-    seg2_menu_select_texture,       seg2_mushroom_cup_texture,      seg2_flower_cup_texture,
-    seg2_star_cup_texture,          seg2_special_cup_texture,       seg2_mario_raceway_preview_small_texture,
-    seg2_mushroom_cup_title_texture, seg2_flower_cup_title_texture,   seg2_star_cup_title_texture,
-    seg2_special_cup_title_texture,  seg2_battle_title_texture, D_02004E80,
+    seg2_menu_select_texture,        seg2_mushroom_cup_texture,     seg2_flower_cup_texture,
+    seg2_star_cup_texture,           seg2_special_cup_texture,      seg2_mario_raceway_preview_small_texture,
+    seg2_mushroom_cup_title_texture, seg2_flower_cup_title_texture, seg2_star_cup_title_texture,
+    seg2_special_cup_title_texture,  seg2_battle_title_texture,     D_02004E80,
 };
 
 MenuTexture* D_800E82F4[] = {
@@ -1363,7 +1361,7 @@ void func_80091FA4(void) {
         D_8018E838[i] = 0;
     }
 
-    func_80099110();
+    clear_menu_textures();
     func_8009A344();
     clear_menus();
     func_80092258();
@@ -2173,7 +2171,7 @@ void func_80093E60(void) {
         D_8018E838[i] = 0;
     }
 
-    func_80099110();
+    clear_menu_textures();
     func_8009A344();
     clear_menus();
     func_80092258();
@@ -2332,7 +2330,7 @@ void func_80094A64(struct GfxPool* pool) {
 
 void setup_menus(void) {
     if (gFadeModeSelection != FADE_MODE_NONE) {
-        func_80099110();
+        clear_menu_textures();
         func_8009A344();
         clear_menus();
         func_8009B938();
@@ -3390,7 +3388,7 @@ void dma_tkmk00_textures(u64* data, size_t nbytes, void* vaddr) {
     osRecvMesg(&gDmaMesgQueue, &msg, OS_MESG_BLOCK);
 }
 
-void func_80099110(void) {
+void clear_menu_textures(void) {
     sMenuTextureBufferIndex = 0;
     sMenuTextureEntries = 0;
 }
@@ -5977,7 +5975,7 @@ void render_menus(MenuItem* arg0) {
                     case MAIN_MENU_100CC:    /* switch 5 */
                     case MAIN_MENU_150CC:    /* switch 5 */
                     case MAIN_MENU_EXTRA_CC: /* switch 5 */
-                        switch(var_a1) {
+                        switch (var_a1) {
                             case 0:
                             case 2:
                                 break;

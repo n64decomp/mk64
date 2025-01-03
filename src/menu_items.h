@@ -411,7 +411,7 @@ Gfx* draw_box(Gfx*, s32, s32, s32, s32, u32, u32, u32, u32);
 Gfx* func_80098FC8(Gfx*, s32, s32, s32, s32);
 void dma_copy_base_729a30(u64*, size_t, void*);
 void dma_copy_base_7fa3c0(u64*, size_t, void*);
-void func_80099110(void);
+void clear_menu_textures(void);
 void load_menu_img(MenuTexture*);
 void* segmented_to_virtual_dupe(const void*);
 void* segmented_to_virtual_dupe_2(const void*);
