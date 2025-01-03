@@ -905,14 +905,35 @@ MenuTexture* D_800E8254[] = {
     D_020048CC,
 };
 
+// CC textures
 MenuTexture* D_800E8274[] = {
-    gMenuTexture50cc, gMenuTexture100cc,       gMenuTexture150cc, gMenuTextureExtra,
-    D_020049BC,       gMenuTextureWithoutItem, D_020049E4,        gMenuTextureData,
+    gMenuTexture50cc, gMenuTexture100cc, gMenuTexture150cc, gMenuTextureExtra,
 };
 
+// Versus and battle textures
+MenuTexture* D_800E8284[] = {
+    D_020049BC, gMenuTextureWithoutItem
+};
+
+// Time trials begin and data textures
+MenuTexture* D_800E828C[] = {
+    D_020049E4, gMenuTextureData,
+};
+
+// Duplicates of the above 3 arrays
+// CC textures
 MenuTexture* D_800E8294[] = {
-    gMenuTexture50cc, gMenuTexture100cc,       gMenuTexture150cc, gMenuTextureExtra,
-    D_020049BC,       gMenuTextureWithoutItem, D_020049E4,        gMenuTextureData,
+    gMenuTexture50cc, gMenuTexture100cc, gMenuTexture150cc, gMenuTextureExtra,
+};
+
+// Versus and battle textures
+MenuTexture* D_800E82A4[] = {
+    D_020049BC, gMenuTextureWithoutItem
+};
+
+// Time trials begin and data textures
+MenuTexture* D_800E82AC[] = {
+    D_020049E4, gMenuTextureData,
 };
 
 MenuTexture* gMenuTexturesBorderPlayer[] = {
@@ -5956,11 +5977,17 @@ void render_menus(MenuItem* arg0) {
                     case MAIN_MENU_100CC:    /* switch 5 */
                     case MAIN_MENU_150CC:    /* switch 5 */
                     case MAIN_MENU_EXTRA_CC: /* switch 5 */
-                        if ((var_a1 != 0) && (var_a1 != 2)) {
-                            var_v1 = -1;
+                        switch(var_a1) {
+                            case 0:
+                            case 2:
+                                break;
+                            default:
+                                var_v1 = -1;
+                                break;
                         }
+
                         var_a1 = MAIN_MENU_50CC;
-                        sp9C = segmented_to_virtual_dupe(D_800E8234[arg0->type - MAIN_MENU_50CC]);
+                        sp9C = segmented_to_virtual_dupe(D_800E8294[arg0->type - MAIN_MENU_50CC]);
                         break;
                     case MENU_ITEM_TYPE_016: /* switch 5 */
                     case MENU_ITEM_TYPE_017: /* switch 5 */
@@ -5968,7 +5995,7 @@ void render_menus(MenuItem* arg0) {
                             var_v1 = -1;
                         } else {
                             var_a1 = MENU_ITEM_TYPE_016;
-                            sp9C = segmented_to_virtual_dupe(D_800E823C[arg0->type - MENU_ITEM_TYPE_016]);
+                            sp9C = segmented_to_virtual_dupe(D_800E82A4[arg0->type - MENU_ITEM_TYPE_016]);
                         }
                         break;
                     case MAIN_MENU_TIME_TRIALS_BEGIN: /* switch 5 */
@@ -5977,7 +6004,7 @@ void render_menus(MenuItem* arg0) {
                             var_v1 = -1;
                         } else {
                             var_a1 = MAIN_MENU_TIME_TRIALS_BEGIN;
-                            sp9C = segmented_to_virtual_dupe(D_800E8244[arg0->type - MAIN_MENU_TIME_TRIALS_BEGIN]);
+                            sp9C = segmented_to_virtual_dupe(D_800E82AC[arg0->type - MAIN_MENU_TIME_TRIALS_BEGIN]);
                         }
                         break;
                 }
