@@ -757,10 +757,10 @@ glabel L8009FF0C
 .L8009FF24:
 /* 0A0B24 8009FF24 00084880 */  sll   $t1, $t0, 2
 .L8009FF28:
-/* 0A0B28 8009FF28 3C04800F */  lui   $a0, %hi(D_800E8234+0x18) # 0x800f
+/* 0A0B28 8009FF28 3C04800F */  lui   $a0, %hi(D_800E8294-0x48) # 0x800f
 /* 0A0B2C 8009FF2C 00892021 */  addu  $a0, $a0, $t1
 /* 0A0B30 8009FF30 AFB900A8 */  sw    $t9, 0xa8($sp)
-/* 0A0B34 8009FF34 8C84824C */  lw    $a0, %lo(D_800E8234+0x18)($a0) # -0x7db4($a0)
+/* 0A0B34 8009FF34 8C84824C */  lw    $a0, %lo(D_800E8294-0x48)($a0) # -0x7db4($a0)
 /* 0A0B38 8009FF38 0C026449 */  jal   segmented_to_virtual_dupe
 /* 0A0B3C 8009FF3C AFA600AC */   sw    $a2, 0xac($sp)
 /* 0A0B40 8009FF40 8FA600AC */  lw    $a2, 0xac($sp)
@@ -774,10 +774,10 @@ glabel L8009FF50
 /* 0A0B5C 8009FF5C 1000001B */  b     .L8009FFCC
 /* 0A0B60 8009FF60 2406FFFF */   li    $a2, -1
 .L8009FF64:
-/* 0A0B64 8009FF64 3C04800F */  lui   $a0, %hi(D_800E8234+0x18) # 0x800f
+/* 0A0B64 8009FF64 3C04800F */  lui   $a0, %hi(D_800E82A4-0x58) # 0x800f
 /* 0A0B68 8009FF68 24050016 */  li    $a1, 22
 /* 0A0B6C 8009FF6C 008A2021 */  addu  $a0, $a0, $t2
-/* 0A0B70 8009FF70 8C84824C */  lw    $a0, %lo(D_800E8234+0x18)($a0) # -0x7db4($a0)
+/* 0A0B70 8009FF70 8C84824C */  lw    $a0, %lo(D_800E82A4-0x58)($a0) # -0x7db4($a0)
 /* 0A0B74 8009FF74 AFA500A8 */  sw    $a1, 0xa8($sp)
 /* 0A0B78 8009FF78 0C026449 */  jal   segmented_to_virtual_dupe
 /* 0A0B7C 8009FF7C AFA600AC */   sw    $a2, 0xac($sp)
@@ -792,10 +792,10 @@ glabel L8009FF90
 /* 0A0B9C 8009FF9C 1000000B */  b     .L8009FFCC
 /* 0A0BA0 8009FFA0 2406FFFF */   li    $a2, -1
 .L8009FFA4:
-/* 0A0BA4 8009FFA4 3C04800F */  lui   $a0, %hi(D_800E8234+0x18) # 0x800f
+/* 0A0BA4 8009FFA4 3C04800F */  lui   $a0, %hi(D_800E82AC-0x60) # 0x800f
 /* 0A0BA8 8009FFA8 24050018 */  li    $a1, 24
 /* 0A0BAC 8009FFAC 008B2021 */  addu  $a0, $a0, $t3
-/* 0A0BB0 8009FFB0 8C84824C */  lw    $a0, %lo(D_800E8234+0x18)($a0) # -0x7db4($a0)
+/* 0A0BB0 8009FFB0 8C84824C */  lw    $a0, %lo(D_800E82AC-0x60)($a0) # -0x7db4($a0)
 /* 0A0BB4 8009FFB4 AFA500A8 */  sw    $a1, 0xa8($sp)
 /* 0A0BB8 8009FFB8 0C026449 */  jal   segmented_to_virtual_dupe
 /* 0A0BBC 8009FFBC AFA600AC */   sw    $a2, 0xac($sp)
