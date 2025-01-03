@@ -761,8 +761,8 @@ MkAnimation* D_800E7D34[] = {
 };
 
 MenuTexture* gMenuTexturesBackground[] = {
-    gMenuTextureBackgroundBlueSky,
-    gMenuTextureBackgroundSunset,
+    seg2_blue_sky_background_texture,
+    seg2_sunset_background_texture,
 };
 
 MenuTexture* D_800E7D54[] = {
@@ -770,7 +770,7 @@ MenuTexture* D_800E7D54[] = {
 };
 
 MenuTexture* D_800E7D74[] = {
-    gMenuTexturePreviewMarioRaceway,
+    seg2_mario_raceway_preview_texture,
     D_02001B54,
     D_02001B7C,
     D_02001BA4,
@@ -793,8 +793,8 @@ MenuTexture* D_800E7D74[] = {
 };
 
 MenuTexture* D_800E7DC4[] = {
-    gMenuTextureTitleMarioRaceway,
-    gMenuTextureTitleChocoMountain,
+    seg2_mario_raceway_title_texture,
+    seg2_choco_mountain_title_texture,
     D_02004EF8,
     D_02004F20,
     D_02004F48,
@@ -890,16 +890,16 @@ MenuTexture* D_800E822C[] = {
 
 // In a perfect world this would be `MenuTexture *D_800E8234[][2]`
 MenuTexture* D_800E8234[] = {
-    gMenuTextureOnePlayerColone,   D_020047DC, gMenuTextureTwoPlayerColone,  D_02004804,
-    gMenuTextureThreePlayerColone, D_0200482C, gMenuTextureFourPlayerColone, D_02004854,
+    seg2_menu_1p_column,   D_020047DC, seg2_menu_2p_column,  D_02004804,
+    seg2_menu_3p_column, D_0200482C, seg2_menu_4p_column, D_02004854,
 };
 
 MenuTexture* D_800E8254[] = {
-    gMenuTextureGameSelect,
-    gMenuTextureOnePlayerColone,
-    gMenuTextureTwoPlayerColone,
-    gMenuTextureThreePlayerColone,
-    gMenuTextureFourPlayerColone,
+    seg2_game_select_texture,
+    seg2_menu_1p_column,
+    seg2_menu_2p_column,
+    seg2_menu_3p_column,
+    seg2_menu_4p_column,
     D_0200487C,
     D_020048A4,
     D_020048CC,
@@ -907,60 +907,60 @@ MenuTexture* D_800E8254[] = {
 
 // CC textures
 MenuTexture* D_800E8274[] = {
-    gMenuTexture50cc, gMenuTexture100cc, gMenuTexture150cc, gMenuTextureExtra,
+    seg2_50_CC_texture, seg2_100_CC_texture, seg2_150_CC_texture, seg2_extra_CC_texture,
 };
 
 // Versus and battle textures
 MenuTexture* D_800E8284[] = {
-    D_020049BC, gMenuTextureWithoutItem
+    D_020049BC, seg2_menu_no_item_texture
 };
 
 // Time trials begin and data textures
 MenuTexture* D_800E828C[] = {
-    D_020049E4, gMenuTextureData,
+    D_020049E4, seg2_data_texture,
 };
 
 // Duplicates of the above 3 arrays
 // CC textures
 MenuTexture* D_800E8294[] = {
-    gMenuTexture50cc, gMenuTexture100cc, gMenuTexture150cc, gMenuTextureExtra,
+    seg2_50_CC_texture, seg2_100_CC_texture, seg2_150_CC_texture, seg2_extra_CC_texture,
 };
 
 // Versus and battle textures
 MenuTexture* D_800E82A4[] = {
-    D_020049BC, gMenuTextureWithoutItem
+    D_020049BC, seg2_menu_no_item_texture
 };
 
 // Time trials begin and data textures
 MenuTexture* D_800E82AC[] = {
-    D_020049E4, gMenuTextureData,
+    D_020049E4, seg2_data_texture,
 };
 
 MenuTexture* gMenuTexturesBorderPlayer[] = {
-    gMenuTextureBorderP1,
-    gMenuTextureBorderP2,
-    gMenuTextureBorderP3,
-    gMenuTextureBorderP4,
+    seg2_P1_border_texture,
+    seg2_P2_border_texture,
+    seg2_P3_border_texture,
+    seg2_P4_border_texture,
 };
 
 MenuTexture* gMenuTexturesTrackSelection[] = {
-    gMenuTextureMenuSelect,       gMenuTextureMushroomCup,      gMenuTextureFlowerCup,
-    gMenuTextureStarCup,          gMenuTextureSpecialCup,       gMenuTexturePreviewMarioRacewaySmall,
-    gMenuTextureTitleMushroomCup, gMenuTextureTitleFlowerCup,   gMenuTextureTitleStarCup,
-    gMenuTextureTitleSpecialCup,  gMenuTextureTitleBattleTrack, D_02004E80,
+    seg2_menu_select_texture,       seg2_mushroom_cup_texture,      seg2_flower_cup_texture,
+    seg2_star_cup_texture,          seg2_special_cup_texture,       seg2_mario_raceway_preview_small_texture,
+    seg2_mushroom_cup_title_texture, seg2_flower_cup_title_texture,   seg2_star_cup_title_texture,
+    seg2_special_cup_title_texture,  seg2_battle_title_texture, D_02004E80,
 };
 
 MenuTexture* D_800E82F4[] = {
-    gMenuTextureMushroomCup,
-    gMenuTextureFlowerCup,
-    gMenuTextureStarCup,
-    gMenuTextureSpecialCup,
-    gMenuTexturePreviewMarioRacewaySmall,
-    gMenuTextureTitleMushroomCup,
-    gMenuTextureTitleFlowerCup,
-    gMenuTextureTitleStarCup,
-    gMenuTextureTitleSpecialCup,
-    gMenuTextureTitleBattleTrack,
+    seg2_mushroom_cup_texture,
+    seg2_flower_cup_texture,
+    seg2_star_cup_texture,
+    seg2_special_cup_texture,
+    seg2_mario_raceway_preview_small_texture,
+    seg2_mushroom_cup_title_texture,
+    seg2_flower_cup_title_texture,
+    seg2_star_cup_title_texture,
+    seg2_special_cup_title_texture,
+    seg2_battle_title_texture,
     D_02004E80,
 };
 
@@ -5481,10 +5481,10 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
         case MENU_ITEM_UI_LOGO_AND_COPYRIGHT:
             load_mario_kart_64_logo();
             sMenuTextureBufferIndex += 0x10000;
-            load_menu_img(gMenuTextureCopyright1996);
+            load_menu_img(seg2_copyright_1996_texture);
             break;
         case MENU_ITEM_UI_PUSH_START_BUTTON:
-            load_menu_img(gMenuTexturePushStartButton);
+            load_menu_img(seg2_push_start_button_texture);
             break;
         case MAIN_MENU_BACKGROUND:
         case CHARACTER_SELECT_BACKGROUND:
@@ -5609,7 +5609,7 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
             load_menu_img_comp_type(segmented_to_virtual_dupe(D_800E82F4[type - 0x78]), LOAD_MENU_IMG_TKMK00_ONCE);
             break;
         case MENU_ITEM_TYPE_08C:
-            load_menu_img_comp_type(segmented_to_virtual_dupe(gMenuTextureData), LOAD_MENU_IMG_TKMK00_ONCE);
+            load_menu_img_comp_type(segmented_to_virtual_dupe(seg2_data_texture), LOAD_MENU_IMG_TKMK00_ONCE);
             if (controller_pak_1_status() == 0) {
                 func_800B6708();
             } else {
@@ -5872,12 +5872,12 @@ void render_menus(MenuItem* arg0) {
             case MENU_ITEM_UI_LOGO_AND_COPYRIGHT: /* switch 6 */
                 render_game_logo((arg0->column + 0xA0), (arg0->row + 0x47));
                 gDisplayListHead =
-                    render_menu_textures(gDisplayListHead, gMenuTextureCopyright1996, arg0->column, arg0->row);
+                    render_menu_textures(gDisplayListHead, seg2_copyright_1996_texture, arg0->column, arg0->row);
                 break;
             case MENU_ITEM_UI_PUSH_START_BUTTON: /* switch 6 */
                 if (((gGlobalTimer / 8) % 3) != 0) {
                     gDisplayListHead =
-                        render_menu_textures(gDisplayListHead, gMenuTexturePushStartButton, arg0->column, arg0->row);
+                        render_menu_textures(gDisplayListHead, seg2_push_start_button_texture, arg0->column, arg0->row);
                 }
                 break;
             case MENU_ITEM_UI_START_RECORD_TIME: /* switch 6 */
@@ -5928,7 +5928,7 @@ void render_menus(MenuItem* arg0) {
                 break;
             case MENU_ITEM_UI_GAME_SELECT: /* switch 6 */
                 gDisplayListHead =
-                    render_menu_textures(gDisplayListHead, gMenuTextureGameSelect, arg0->column, arg0->row);
+                    render_menu_textures(gDisplayListHead, seg2_game_select_texture, arg0->column, arg0->row);
                 break;
             case MENU_ITEM_UI_1P_GAME: /* switch 6 */
             case MENU_ITEM_UI_2P_GAME: /* switch 6 */
@@ -6158,7 +6158,7 @@ void render_menus(MenuItem* arg0) {
                     gDisplayListHead = draw_box_fill(gDisplayListHead, arg0->column, arg0->row, arg0->column + 0x3F,
                                                      arg0->row + 0x11, 1, 1, 1, 0x000000FF);
                 }
-                gDisplayListHead = render_menu_textures(gDisplayListHead, gMenuTextureData, arg0->column, arg0->row);
+                gDisplayListHead = render_menu_textures(gDisplayListHead, seg2_data_texture, arg0->column, arg0->row);
                 set_text_color(TEXT_YELLOW);
                 print_text1_left(0x00000125, 0x0000001C, gTextMenuData, 0, 0.55f, 0.55f);
                 break;
