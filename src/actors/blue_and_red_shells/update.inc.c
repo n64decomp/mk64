@@ -34,8 +34,8 @@ void func_802B3B44(struct ShellActor* shell) {
     temp_f28 = gCurrentTrackPath[currentWaypoint].posZ;
     nextWaypoint = currentWaypoint + 1;
 
-    if (nextWaypoint >= gCurrentWaypointCountByPathIndex) {
-        nextWaypoint -= gCurrentWaypointCountByPathIndex;
+    if (nextWaypoint >= gSelectedPathCount) {
+        nextWaypoint -= gSelectedPathCount;
     }
 
     temp_f20 = temp_f2 - shell->pos[0];
@@ -347,8 +347,8 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                     shell->state = BLUE_SHELL_LOCK_ON;
                     shell->shellId = 1000.0f;
                     temp_v0 = gNearestWaypointByPlayerId[player - gPlayerOne] + 8;
-                    if ((s32) gCurrentWaypointCountByPathIndex < temp_v0) {
-                        temp_v0 -= gCurrentWaypointCountByPathIndex;
+                    if ((s32) gSelectedPathCount < temp_v0) {
+                        temp_v0 -= gSelectedPathCount;
                     }
                     shell->pathIndex = temp_v0;
                 } else if (gModeSelection == BATTLE) {
@@ -368,16 +368,16 @@ void update_actor_red_blue_shell(struct ShellActor* shell) {
                         shell->state = TRIPLE_GREEN_SHELL;
                         shell->someTimer = 0x0258;
                         temp_v0 = gNearestWaypointByPlayerId[player - gPlayerOne] + 8;
-                        if ((s32) gCurrentWaypointCountByPathIndex < temp_v0) {
-                            temp_v0 -= gCurrentWaypointCountByPathIndex;
+                        if ((s32) gSelectedPathCount < temp_v0) {
+                            temp_v0 -= gSelectedPathCount;
                         }
                         shell->pathIndex = temp_v0;
                     } else if (player->currentRank >= 5) {
                         shell->state = GREEN_SHELL_HIT_A_RACER;
                         shell->shellId = 1000.0f;
                         temp_v0 = gNearestWaypointByPlayerId[player - gPlayerOne] + 8;
-                        if ((s32) gCurrentWaypointCountByPathIndex < temp_v0) {
-                            temp_v0 -= gCurrentWaypointCountByPathIndex;
+                        if ((s32) gSelectedPathCount < temp_v0) {
+                            temp_v0 -= gSelectedPathCount;
                         }
                         shell->pathIndex = temp_v0;
                         shell->targetPlayer = gPlayerPositionLUT[player->currentRank - 1];

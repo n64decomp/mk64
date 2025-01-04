@@ -145,16 +145,16 @@ glabel L8001AD64
 .L8001ADE0:
 /* 01B9E0 8001ADE0 8FAF0030 */  lw    $t7, 0x30($sp)
 /* 01B9E4 8001ADE4 0003C840 */  sll   $t9, $v1, 1
-/* 01B9E8 8001ADE8 3C0C8016 */  lui   $t4, %hi(gCurrentWaypointCountByPathIndex) # $t4, 0x8016
+/* 01B9E8 8001ADE8 3C0C8016 */  lui   $t4, %hi(gSelectedPathCount) # $t4, 0x8016
 /* 01B9EC 8001ADEC 000F7040 */  sll   $t6, $t7, 1
-/* 01B9F0 8001ADF0 958C4430 */  lhu   $t4, %lo(gCurrentWaypointCountByPathIndex)($t4)
+/* 01B9F0 8001ADF0 958C4430 */  lhu   $t4, %lo(gSelectedPathCount)($t4)
 /* 01B9F4 8001ADF4 010EC021 */  addu  $t8, $t0, $t6
 /* 01B9F8 8001ADF8 01195821 */  addu  $t3, $t0, $t9
 /* 01B9FC 8001ADFC 95650000 */  lhu   $a1, ($t3)
 /* 01BA00 8001AE00 97040000 */  lhu   $a0, ($t8)
 /* 01BA04 8001AE04 24060028 */  li    $a2, 40
 /* 01BA08 8001AE08 24070002 */  li    $a3, 2
-/* 01BA0C 8001AE0C 0C001EFE */  jal   is_waypoint_in_range
+/* 01BA0C 8001AE0C 0C001EFE */  jal   is_path_point_in_range
 /* 01BA10 8001AE10 AFAC0010 */   sw    $t4, 0x10($sp)
 /* 01BA14 8001AE14 18400045 */  blez  $v0, .L8001AF2C
 /* 01BA18 8001AE18 240D0022 */   li    $t5, 34
@@ -164,16 +164,16 @@ glabel L8001AD64
 /* 01BA24 8001AE24 8FAF0030 */  lw    $t7, 0x30($sp)
 /* 01BA28 8001AE28 25084438 */  addiu $t0, %lo(gNearestWaypointByPlayerId) # addiu $t0, $t0, 0x4438
 /* 01BA2C 8001AE2C 0003C840 */  sll   $t9, $v1, 1
-/* 01BA30 8001AE30 3C0C8016 */  lui   $t4, %hi(gCurrentWaypointCountByPathIndex) # $t4, 0x8016
+/* 01BA30 8001AE30 3C0C8016 */  lui   $t4, %hi(gSelectedPathCount) # $t4, 0x8016
 /* 01BA34 8001AE34 000F7040 */  sll   $t6, $t7, 1
-/* 01BA38 8001AE38 958C4430 */  lhu   $t4, %lo(gCurrentWaypointCountByPathIndex)($t4)
+/* 01BA38 8001AE38 958C4430 */  lhu   $t4, %lo(gSelectedPathCount)($t4)
 /* 01BA3C 8001AE3C 010EC021 */  addu  $t8, $t0, $t6
 /* 01BA40 8001AE40 01195821 */  addu  $t3, $t0, $t9
 /* 01BA44 8001AE44 95650000 */  lhu   $a1, ($t3)
 /* 01BA48 8001AE48 97040000 */  lhu   $a0, ($t8)
 /* 01BA4C 8001AE4C 24060004 */  li    $a2, 4
 /* 01BA50 8001AE50 24070002 */  li    $a3, 2
-/* 01BA54 8001AE54 0C001EFE */  jal   is_waypoint_in_range
+/* 01BA54 8001AE54 0C001EFE */  jal   is_path_point_in_range
 /* 01BA58 8001AE58 AFAC0010 */   sw    $t4, 0x10($sp)
 /* 01BA5C 8001AE5C 18400033 */  blez  $v0, .L8001AF2C
 /* 01BA60 8001AE60 240D0022 */   li    $t5, 34
@@ -183,16 +183,16 @@ glabel L8001AD64
 /* 01BA6C 8001AE6C 8FAF0030 */  lw    $t7, 0x30($sp)
 /* 01BA70 8001AE70 25084438 */  addiu $t0, $t0, %lo(gNearestWaypointByPlayerId) # 0x4438
 /* 01BA74 8001AE74 0003C840 */  sll   $t9, $v1, 1
-/* 01BA78 8001AE78 3C0C8016 */  lui   $t4, %hi(gCurrentWaypointCountByPathIndex) # $t4, 0x8016
+/* 01BA78 8001AE78 3C0C8016 */  lui   $t4, %hi(gSelectedPathCount) # $t4, 0x8016
 /* 01BA7C 8001AE7C 000F7040 */  sll   $t6, $t7, 1
-/* 01BA80 8001AE80 958C4430 */  lhu   $t4, %lo(gCurrentWaypointCountByPathIndex)($t4)
+/* 01BA80 8001AE80 958C4430 */  lhu   $t4, %lo(gSelectedPathCount)($t4)
 /* 01BA84 8001AE84 010EC021 */  addu  $t8, $t0, $t6
 /* 01BA88 8001AE88 01195821 */  addu  $t3, $t0, $t9
 /* 01BA8C 8001AE8C 95650000 */  lhu   $a1, ($t3)
 /* 01BA90 8001AE90 97040000 */  lhu   $a0, ($t8)
 /* 01BA94 8001AE94 2406000A */  li    $a2, 10
 /* 01BA98 8001AE98 24070002 */  li    $a3, 2
-/* 01BA9C 8001AE9C 0C001EFE */  jal   is_waypoint_in_range
+/* 01BA9C 8001AE9C 0C001EFE */  jal   is_path_point_in_range
 /* 01BAA0 8001AEA0 AFAC0010 */   sw    $t4, 0x10($sp)
 /* 01BAA4 8001AEA4 18400021 */  blez  $v0, .L8001AF2C
 /* 01BAA8 8001AEA8 240D0022 */   li    $t5, 34

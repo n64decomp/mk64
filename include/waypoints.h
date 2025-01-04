@@ -58,7 +58,7 @@ extern s16* gCurrentTrackSectionTypesPath;
 // Shadows values from gPathExpectedRotation
 extern s16* gCurrentWaypointExpectedRotationPath;
 // Shadowd values from gPathCountByPathIndex
-extern u16 gCurrentWaypointCountByPathIndex;
+extern u16 gSelectedPathCount;
 // Shadows values from gTrackPath
 extern TrackWaypoint* gCurrentTrackPath;
 // Shadows values from gTrackConsecutiveCurveCounts

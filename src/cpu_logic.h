@@ -103,7 +103,7 @@ void set_places(void);
 
 void update_places(void);
 void set_places_end_course_with_time(void);
-s32 is_waypoint_in_range(u16, u16, u16, u16, u16);
+s32 is_path_point_in_range(u16, u16, u16, u16, u16);
 void func_80007D04(s32, Player*);
 void func_80007FA4(s32, Player*, f32);
 
@@ -403,7 +403,7 @@ extern s32 gLapCountByPlayerId[];          // D_80164390
 extern s32 gGPCurrentRaceRankByPlayerId[]; // D_801643B8
 extern s32 gPreviousGPCurrentRaceRankByPlayerId[];
 extern s32 gGPCurrentRaceRankByPlayerIdDup[];
-extern u16 gCurrentWaypointCountByPathIndex;
+extern u16 gSelectedPathCount;
 extern u16 gNearestWaypointByPlayerId[];
 extern s32 gLapProgressScore[];
 extern s16 gCharacterPlayer[];

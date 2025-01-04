@@ -141,21 +141,21 @@ glabel func_8000B140
 /* 00BF2C 8000B32C 3125FFFF */  andi  $a1, $t1, 0xffff
 /* 00BF30 8000B330 00003025 */  move  $a2, $zero
 /* 00BF34 8000B334 24070014 */  li    $a3, 20
-/* 00BF38 8000B338 3C0C8016 */  lui   $t4, %hi(gCurrentWaypointCountByPathIndex) # $t4, 0x8016
+/* 00BF38 8000B338 3C0C8016 */  lui   $t4, %hi(gSelectedPathCount) # $t4, 0x8016
 /* 00BF3C 8000B33C 3064FFFF */  andi  $a0, $v1, 0xffff
 /* 00BF40 8000B340 460A4002 */  mul.s $f0, $f8, $f10
 /* 00BF44 8000B344 4602003C */  c.lt.s $f0, $f2
 /* 00BF48 8000B348 00000000 */  nop   
 /* 00BF4C 8000B34C 45020028 */  bc1fl .L8000B3F0
 /* 00BF50 8000B350 29410002 */   slti  $at, $t2, 2
-/* 00BF54 8000B354 958C4430 */  lhu   $t4, %lo(gCurrentWaypointCountByPathIndex)($t4)
+/* 00BF54 8000B354 958C4430 */  lhu   $t4, %lo(gSelectedPathCount)($t4)
 /* 00BF58 8000B358 A7A300E4 */  sh    $v1, 0xe4($sp)
 /* 00BF5C 8000B35C AFA800FC */  sw    $t0, 0xfc($sp)
 /* 00BF60 8000B360 A7A900E6 */  sh    $t1, 0xe6($sp)
 /* 00BF64 8000B364 AFAA00F0 */  sw    $t2, 0xf0($sp)
 /* 00BF68 8000B368 E7A000DC */  swc1  $f0, 0xdc($sp)
 /* 00BF6C 8000B36C E7A20060 */  swc1  $f2, 0x60($sp)
-/* 00BF70 8000B370 0C001EFE */  jal   is_waypoint_in_range
+/* 00BF70 8000B370 0C001EFE */  jal   is_path_point_in_range
 /* 00BF74 8000B374 AFAC0010 */   sw    $t4, 0x10($sp)
 /* 00BF78 8000B378 3C0B8016 */  lui   $t3, %hi(gTrackPositionFactor) # $t3, 0x8016
 /* 00BF7C 8000B37C 256B3068 */  addiu $t3, %lo(gTrackPositionFactor) # addiu $t3, $t3, 0x3068
@@ -179,8 +179,8 @@ glabel func_8000B140
 /* 00BFC4 8000B3C4 10000006 */  b     .L8000B3E0
 /* 00BFC8 8000B3C8 A4C50000 */   sh    $a1, ($a2)
 .L8000B3CC:
-/* 00BFCC 8000B3CC 3C0E8016 */  lui   $t6, %hi(gCurrentWaypointCountByPathIndex) # $t6, 0x8016
-/* 00BFD0 8000B3D0 95CE4430 */  lhu   $t6, %lo(gCurrentWaypointCountByPathIndex)($t6)
+/* 00BFCC 8000B3CC 3C0E8016 */  lui   $t6, %hi(gSelectedPathCount) # $t6, 0x8016
+/* 00BFD0 8000B3D0 95CE4430 */  lhu   $t6, %lo(gSelectedPathCount)($t6)
 /* 00BFD4 8000B3D4 006E6021 */  addu  $t4, $v1, $t6
 /* 00BFD8 8000B3D8 01896823 */  subu  $t5, $t4, $t1
 /* 00BFDC 8000B3DC A4CD0000 */  sh    $t5, ($a2)
