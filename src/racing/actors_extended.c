@@ -7,7 +7,7 @@
 #include "memory.h"
 #include "waypoints.h"
 #include "code_80005FD0.h"
-#include "code_80091750.h"
+#include "menu_items.h"
 #include "collision.h"
 #include "actors.h"
 #include "actors_extended.h"

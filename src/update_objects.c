@@ -26,7 +26,7 @@
 #include "collision.h"
 #include "effects.h"
 #include "code_80091440.h"
-#include "code_80091750.h"
+#include "menu_items.h"
 #include "podium_ceremony_actors.h"
 #include "courses/all_course_data.h"
 #include <assets/ceremony_data.h>

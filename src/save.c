@@ -4,7 +4,7 @@
 
 #include "save.h"
 
-#include "code_80091750.h"
+#include "menu_items.h"
 #include "menus.h"
 #include "save_data.h"
 #include "staff_ghosts.h"
@@ -427,21 +427,21 @@ u8 func_800B5508(s32 cup, s32 ccGrandPrixPoints, s32 points_scored) {
 
 // Check if all 4 cups have gold cups scored
 // for a given CC mode
-s32 func_800B5530(s32 cc_mode) {
+bool is_cc_mode_complete(s32 cc_mode) {
     if (gSaveData.main.saveInfo.grandPrixPoints[cc_mode] == 0xFF) {
-        return 1;
+        return true;
     }
-    return 0;
+    return false;
 }
 
 // Check if the 150CC mode has all 4 gold cups
-s32 func_800B555C(void) {
-    return func_800B5530(CC_150);
+s32 has_unlocked_extra_mode(void) {
+    return is_cc_mode_complete(CC_150);
 }
 
 // Check if the Extra mode has all 4 gold cups
-s32 func_800B557C(void) {
-    return func_800B5530(CC_EXTRA);
+s32 has_completed_extra_mode(void) {
+    return is_cc_mode_complete(CC_EXTRA);
 }
 
 void func_800B559C(s32 arg0) {
@@ -913,7 +913,7 @@ s32 func_800B65F4(s32 arg0, s32 arg1) {
     writeStatus = osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNote, 0U, (arg0 * 0x3C00) + 0x100,
                                      0x00003C00, (u8*) D_800DC714);
     if (writeStatus == 0) {
-        temp_s3 = &((struct_8018EE10_entry*) D_8018D9C0)[arg0];
+        temp_s3 = &((struct_8018EE10_entry*) gSomeDLBuffer)[arg0];
         for (i = 0; i < 0x3C; i++) {
             if (temp_s3->unk_07[i] != func_800B60E8(i)) {
                 temp_s3->ghostDataSaved = 0;
@@ -944,14 +944,14 @@ void func_800B6798(void) {
     s32 temp_s0;
     u8* tmp;
 
-    tmp = (u8*) D_8018D9C0;
+    tmp = (u8*) gSomeDLBuffer;
 
     osPfsReadWriteFile(&gControllerPak2FileHandle, gControllerPak2FileNote, PFS_READ, 0,
                        0x100 /*  2*sizeof(struct_8018EE10_entry) ? */, tmp);
 
     for (temp_s0 = 0; temp_s0 < 2; ++temp_s0) {
-        // if (D_8018D9C0[temp_s0]->checksum != func_800B68F4(temp_s0)) {
-        //     D_8018D9C0[temp_s0]->ghostDataSaved = 0;
+        // if (gSomeDLBuffer[temp_s0]->checksum != func_800B68F4(temp_s0)) {
+        //     gSomeDLBuffer[temp_s0]->ghostDataSaved = 0;
         // }
         if (((struct_8018EE10_entry*) (tmp + (temp_s0 << 7)))->checksum != func_800B68F4(temp_s0)) {
             ((struct_8018EE10_entry*) (tmp + (temp_s0 << 7)))->ghostDataSaved = 0;
@@ -976,7 +976,7 @@ u8 func_800B68F4(s32 arg0) {
     s32 i;
     checksum = 0;
     for (i = 0; i < 0x43; i++) {
-        u8* addr = &((u8*) D_8018D9C0)[arg0];
+        u8* addr = &((u8*) gSomeDLBuffer)[arg0];
         checksum += addr[i] * multiplier + i;
     }
     return checksum;

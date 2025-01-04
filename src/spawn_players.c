@@ -22,7 +22,7 @@
 #include "main.h"
 #include "menus.h"
 #include "render_player.h"
-#include "code_80091750.h"
+#include "menu_items.h"
 #include "effects.h"
 #include "decode.h"
 

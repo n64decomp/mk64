@@ -15,7 +15,7 @@ glabel D_800F1DC8
 
 .section .text
 
-glabel func_800A474C
+glabel render_lap_times
 /* 0A534C 800A474C 27BDFFB0 */  addiu $sp, $sp, -0x50
 /* 0A5350 800A4750 3C0E800E */  lui   $t6, %hi(gGamestate) # $t6, 0x800e
 /* 0A5354 800A4754 8DCEC50C */  lw    $t6, %lo(gGamestate)($t6)
@@ -86,7 +86,7 @@ glabel func_800A474C
 /* 0A5438 800A4838 8FAB0030 */  lw    $t3, 0x30($sp)
 /* 0A543C 800A483C 55600024 */  bnel  $t3, $zero, .L800A48D0
 /* 0A5440 800A4840 24020003 */   li    $v0, 3
-/* 0A5444 800A4844 0C02ABBD */  jal   find_8018D9E0_entry_dupe
+/* 0A5444 800A4844 0C02ABBD */  jal   find_menu_items_dupe
 /* 0A5448 800A4848 240400BB */   li    $a0, 187
 /* 0A544C 800A484C 8FAC0050 */  lw    $t4, 0x50($sp)
 /* 0A5450 800A4850 29810005 */  slti  $at, $t4, 5
@@ -152,7 +152,7 @@ glabel func_800A474C
 /* 0A552C 800A492C 00003825 */  move  $a3, $zero
 /* 0A5530 800A4930 E7B40010 */  swc1  $f20, 0x10($sp)
 /* 0A5534 800A4934 E7B40014 */  swc1  $f20, 0x14($sp)
-/* 0A5538 800A4938 0C024CC9 */  jal   func_80093324
+/* 0A5538 800A4938 0C024CC9 */  jal   print_text_mode_1
 /* 0A553C 800A493C 24840032 */   addiu $a0, $a0, 0x32
 /* 0A5540 800A4940 8FA4002C */  lw    $a0, 0x2c($sp)
 /* 0A5544 800A4944 0C029E51 */  jal   get_time_record_seconds
@@ -172,7 +172,7 @@ glabel func_800A474C
 /* 0A557C 800A497C 00003825 */  move  $a3, $zero
 /* 0A5580 800A4980 E7B40010 */  swc1  $f20, 0x10($sp)
 /* 0A5584 800A4984 E7B40014 */  swc1  $f20, 0x14($sp)
-/* 0A5588 800A4988 0C024CC9 */  jal   func_80093324
+/* 0A5588 800A4988 0C024CC9 */  jal   print_text_mode_1
 /* 0A558C 800A498C 24840046 */   addiu $a0, $a0, 0x46
 /* 0A5590 800A4990 8FA4002C */  lw    $a0, 0x2c($sp)
 /* 0A5594 800A4994 0C029E69 */  jal   get_time_record_centiseconds
@@ -206,7 +206,7 @@ glabel func_800A474C
 /* 0A55FC 800A49FC 8FA50058 */  lw    $a1, 0x58($sp)
 /* 0A5600 800A4A00 00003825 */  move  $a3, $zero
 /* 0A5604 800A4A04 E7B40010 */  swc1  $f20, 0x10($sp)
-/* 0A5608 800A4A08 0C024DBB */  jal   draw_text
+/* 0A5608 800A4A08 0C024DBB */  jal   print_text1_center_mode_1
 /* 0A560C 800A4A0C E7B40014 */   swc1  $f20, 0x14($sp)
 /* 0A5610 800A4A10 8FBF0024 */  lw    $ra, 0x24($sp)
 /* 0A5614 800A4A14 D7B40018 */  ldc1  $f20, 0x18($sp)

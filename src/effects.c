@@ -16,7 +16,7 @@
 #include "effects.h"
 #include "audio/external.h"
 #include "spawn_players.h"
-#include "code_80091750.h"
+#include "menu_items.h"
 #include <course.h>
 
 s32 D_8018D900[8];

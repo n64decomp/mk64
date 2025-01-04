@@ -177,7 +177,7 @@ enum { COURSE_ONE, COURSE_TWO, COURSE_THREE, COURSE_FOUR };
 #define CONTROLLER_PAK_MENU 9
 #define START_MENU 10
 #define MAIN_MENU 11
-#define PLAYER_SELECT_MENU 12
+#define CHARACTER_SELECT_MENU 12
 #define COURSE_SELECT_MENU 13
 #define RACING_DUPLICATE 14
 
@@ -219,12 +219,14 @@ enum { COURSE_ONE, COURSE_TWO, COURSE_THREE, COURSE_FOUR };
  * flashing between 2 colors, but also cause individual characters
  * to be cutoff on their right side
  */
-#define TEXT_BLUE 0
-#define TEXT_GREEN 1
-#define TEXT_RED 2
-#define TEXT_YELLOW 3
-#define TEXT_BLUE_GREEN_RED_CYCLE_1 4
-#define TEXT_BLUE_GREEN_RED_CYCLE_2 5
+enum COLOR_ID {
+    TEXT_BLUE,
+    TEXT_GREEN,
+    TEXT_RED,
+    TEXT_YELLOW,
+    TEXT_BLUE_GREEN_RED_CYCLE_1,
+    TEXT_BLUE_GREEN_RED_CYCLE_2
+};
 
 /**
  * @brief Sound mode options

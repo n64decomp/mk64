@@ -5,7 +5,7 @@
 # Utility to aid in the generation of m2c output for specific functions
 #
 # example usages:
-#  m2c_helper.sh code_80091750 func_800AAC18
+#  m2c_helper.sh menu_item func_800AAC18
 #  m2c_helper.sh audio/load audio_init
 #
 # Be sure to set DISASSEMBLY_FILE to a filename you are comfortable with.
