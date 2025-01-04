@@ -22,7 +22,7 @@
 #include "menus.h"
 #include "data/other_textures.h"
 #include "render_objects.h"
-#include "code_80091750.h"
+#include "menu_items.h"
 #include "src/data/some_data.h"
 #include "effects.h"
 
@@ -111,7 +111,10 @@ void clear_object_list() {
     objectListSize = -1;
 }
 
-u8* func_8006ED94(u8* devAddr, u8* baseAddress, u32 size, u32 offset) {
+/**
+ * Dma's mario kart 64 logo and course outline textures.
+ */
+u8* dma_copy_base_misc_textures(u8* devAddr, u8* baseAddress, u32 size, u32 offset) {
     u8** tempAddress;
     u8* address;
     address = baseAddress + offset;
@@ -126,8 +129,9 @@ u8* func_8006ED94(u8* devAddr, u8* baseAddress, u32 size, u32 offset) {
     return baseAddress;
 }
 
-void func_8006EE44(void) {
-    D_8018D1E0 = func_8006ED94((u8*) &gTextureLogoMarioKart64, (u8*) D_8018D9B0, 0x79E1, 0x20000);
+void load_mario_kart_64_logo(void) {
+    gGameLogoAddress =
+        dma_copy_base_misc_textures((u8*) &gTextureLogoMarioKart64, (u8*) gMenuTextureBuffer, 0x79E1, 0x20000);
 }
 
 // Some kind of initalization for the Item Window part of the HUD
@@ -161,10 +165,10 @@ void func_8006EF60(void) {
     s16 huh;
     u8* wut;
 
-    wut = D_8018D9B4 + 0xFFFF0000;
+    wut = gMenuCompressedBuffer + 0xFFFF0000;
     // clang-format off
     // God forgive me for my sins...
-    huh = 0x14; if (0) {} for (i = 0; i < huh; i++) { D_8018D248[i] = func_8006ED94(gCourseOutlineTextures[i], wut, D_800E5520[i], D_800E5520[i]); wut += D_800E5520[i]; }
+    huh = 0x14; if (0) {} for (i = 0; i < huh; i++) { D_8018D248[i] = dma_copy_base_misc_textures(gCourseOutlineTextures[i], wut, D_800E5520[i], D_800E5520[i]); wut += D_800E5520[i]; }
     // clang-format on
 }
 

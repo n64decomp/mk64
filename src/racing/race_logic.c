@@ -13,7 +13,7 @@
 #include "code_800029B0.h"
 #include "code_80057C60.h"
 #include "update_objects.h"
-#include "code_80091750.h"
+#include "menu_items.h"
 #include "code_80005FD0.h"
 #include "spawn_players.h"
 #include "audio/external.h"

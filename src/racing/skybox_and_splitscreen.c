@@ -12,7 +12,7 @@
 #include <assets/common_data.h>
 #include "render_player.h"
 #include "code_80057C60.h"
-#include "code_80091750.h"
+#include "menu_items.h"
 #include "actors.h"
 #include "render_courses.h"
 #include "math_util.h"
@@ -140,7 +140,7 @@ void func_802A38B4(void) {
             gMenuSelection = MAIN_MENU;
             break;
         case PLAYER_SELECT_MENU_FROM_QUIT:
-            gMenuSelection = PLAYER_SELECT_MENU;
+            gMenuSelection = CHARACTER_SELECT_MENU;
             break;
         case COURSE_SELECT_MENU_FROM_QUIT:
             gMenuSelection = COURSE_SELECT_MENU;

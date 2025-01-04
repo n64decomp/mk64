@@ -8,7 +8,7 @@ glabel func_800AB314
 /* 0ABF28 800AB328 24A4005F */  addiu $a0, $a1, 0x5f
 /* 0ABF2C 800AB32C AFA3001C */  sw    $v1, 0x1c($sp)
 /* 0ABF30 800AB330 AFA5003C */  sw    $a1, 0x3c($sp)
-/* 0ABF34 800AB334 0C02ABBD */  jal   find_8018D9E0_entry_dupe
+/* 0ABF34 800AB334 0C02ABBD */  jal   find_menu_items_dupe
 /* 0ABF38 800AB338 AFA60040 */   sw    $a2, 0x40($sp)
 /* 0ABF3C 800AB33C 8FA5003C */  lw    $a1, 0x3c($sp)
 /* 0ABF40 800AB340 8FA3001C */  lw    $v1, 0x1c($sp)

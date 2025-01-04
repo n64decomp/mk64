@@ -1,4 +1,4 @@
-glabel func_8004C6FC
+glabel render_texture_tile_rgba32_block
 /* 04D2FC 8004C6FC 27BDFFB8 */  addiu $sp, $sp, -0x48
 /* 04D300 8004C700 AFB10024 */  sw    $s1, 0x24($sp)
 /* 04D304 8004C704 8FB10058 */  lw    $s1, 0x58($sp)
@@ -81,7 +81,7 @@ glabel func_8004C6FC
 /* 04D42C 8004C82C 03C02025 */  move  $a0, $fp
 /* 04D430 8004C830 02802825 */  move  $a1, $s4
 /* 04D434 8004C834 02403025 */  move  $a2, $s2
-/* 04D438 8004C838 0C012E54 */  jal   func_8004B950
+/* 04D438 8004C838 0C012E54 */  jal   render_texture_rectangle_wrap
 /* 04D43C 8004C83C 02003825 */   move  $a3, $s0
 /* 04D440 8004C840 02D11023 */  subu  $v0, $s6, $s1
 /* 04D444 8004C844 04410008 */  bgez  $v0, .L8004C868

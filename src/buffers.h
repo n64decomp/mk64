@@ -23,7 +23,7 @@ typedef struct {
 
 /*
  * In render_player, spawn_players, and staff_ghosts D_802BFB80 is the arraySize8 entry
- * But in code_80091750 its the arraySize4 entry
+ * But in menu_item its the arraySize4 entry
  * The only way to unify those 2 things is to use a union
  */
 typedef union {

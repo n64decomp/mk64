@@ -28,7 +28,7 @@
 #include "code_800029B0.h"
 #include "code_80280000.h"
 #include "podium_ceremony_actors.h"
-#include "code_80091750.h"
+#include "menu_items.h"
 #include "code_80057C60.h"
 #include "profiler.h"
 #include "player_controller.h"
