@@ -73,7 +73,7 @@ extern u16 gPathCountByPathIndex[]; // D_801645C8
 extern s16 gNearestWaypointByCameraId[]; // D_80164668
 
 /**
- * Stuff that may not be directly related to waypoints, but are only referenced in code_80005FD0.
+ * Stuff that may not be directly related to waypoints, but are only referenced in cpu_logic.
  * So they are at least waypoint adjacent.
  **/
 

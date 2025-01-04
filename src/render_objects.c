@@ -20,7 +20,7 @@
 #include <assets/common_data.h>
 #include "render_player.h"
 #include "animation.h"
-#include "code_80005FD0.h"
+#include "cpu_logic.h"
 #include "code_80057C60.h"
 #include "code_8006E9C0.h"
 #include "render_objects.h"

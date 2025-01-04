@@ -8,7 +8,7 @@
 #include "math_util.h"
 #include "kart_attributes.h"
 #include "waypoints.h"
-#include "code_80005FD0.h"
+#include "cpu_logic.h"
 #include "render_player.h"
 #include "player_controller.h"
 #include "render_objects.h"

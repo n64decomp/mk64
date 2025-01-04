@@ -9,7 +9,7 @@
 
 #include "code_800029B0.h"
 #include "menu_items.h"
-#include "code_80005FD0.h"
+#include "cpu_logic.h"
 #include "code_8006E9C0.h"
 #include "menus.h"
 #include "save.h"
@@ -7295,7 +7295,8 @@ void func_800A3A10(s8* arg0) {
                 arg0[var_a1] = temp_a3;
                 arg0[var_a1 - 1] = temp_t1;
             } else if (gGPPointsByCharacterId[temp_t1] == gGPPointsByCharacterId[temp_a3]) {
-                if ((gCharacterPlayer[temp_t1] < gPlayerCount) && (gCharacterPlayer[temp_t1] < gCharacterPlayer[temp_a3])) {
+                if ((gCharacterPlayer[temp_t1] < gPlayerCount) &&
+                    (gCharacterPlayer[temp_t1] < gCharacterPlayer[temp_a3])) {
                     arg0[var_a1] = temp_a3;
                     arg0[var_a1 - 1] = temp_t1;
                 } else {

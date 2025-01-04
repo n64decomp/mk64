@@ -16,7 +16,7 @@
 #include "collision.h"
 #include "render_courses.h"
 #include "staff_ghosts.h"
-#include "code_80005FD0.h"
+#include "cpu_logic.h"
 #include "render_player.h"
 #include "podium_ceremony_actors.h"
 #include "main.h"

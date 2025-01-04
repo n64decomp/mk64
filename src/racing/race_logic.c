@@ -14,7 +14,7 @@
 #include "code_80057C60.h"
 #include "update_objects.h"
 #include "menu_items.h"
-#include "code_80005FD0.h"
+#include "cpu_logic.h"
 #include "spawn_players.h"
 #include "audio/external.h"
 #include "race_logic.h"

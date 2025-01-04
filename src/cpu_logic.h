@@ -1,5 +1,5 @@
-#ifndef CODE_80005FD0_H
-#define CODE_80005FD0_H
+#ifndef cpu_logic_H
+#define cpu_logic_H
 
 #include "vehicles.h"
 #include "camera.h"

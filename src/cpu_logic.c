@@ -2,7 +2,7 @@
 #include <macros.h>
 #include <defines.h>
 
-#include "code_80005FD0.h"
+#include "cpu_logic.h"
 #include "math_util.h"
 #include "code_800029B0.h"
 #include "racing/memory.h"
@@ -32,7 +32,7 @@
 #include "data/path_spawn_metadata.h"
 #include "math_util_2.h"
 
-s32 unk_code_80005FD0_pad[24];
+s32 unk_cpu_logic_pad[24];
 Collision D_80162E70;
 s16 D_80162EB0; // Possibly a float.
 s16 D_80162EB2; // possibly [3]
@@ -1316,7 +1316,7 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_800088D8.s")
+GLOBAL_ASM("asm/non_matchings/cpu_logic/func_800088D8.s")
 #endif
 
 void set_current_path(s32 pathIndex) {
@@ -1543,7 +1543,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
     update_player_position_factor(playerId, sSomeNearestWaypoint, gActualPath);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/update_player_path_completion.s")
+GLOBAL_ASM("asm/non_matchings/cpu_logic/update_player_path_completion.s")
 #endif
 
 void update_vehicles(void) {
@@ -2034,7 +2034,7 @@ void update_player(s32 playerId) {
 #undef FAKEMATCH1
 #undef FAKEMATCH2
 #else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/update_player.s")
+GLOBAL_ASM("asm/non_matchings/cpu_logic/update_player.s")
 #endif
 
 #ifdef NON_MATCHING
@@ -2174,7 +2174,7 @@ void func_8000B140(s32 playerId) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_8000B140.s")
+GLOBAL_ASM("asm/non_matchings/cpu_logic/func_8000B140.s")
 #endif
 
 // utils track position
@@ -6257,7 +6257,7 @@ void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 
     camera->rot[2] = 0;
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/func_80017054.s")
+GLOBAL_ASM("asm/non_matchings/cpu_logic/func_80017054.s")
 #endif
 
 void func_80017720(s32 playerId, UNUSED f32 arg1, s32 cameraId, s16 pathIndex) {
@@ -7758,7 +7758,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80005FD0/kart_ai_use_item_strategy.s")
+GLOBAL_ASM("asm/non_matchings/cpu_logic/kart_ai_use_item_strategy.s")
 #endif
 
 void func_8001BE78(void) {

@@ -14,7 +14,7 @@
 #include "objects.h"
 #include "waypoints.h"
 #include "code_800029B0.h"
-#include "code_80005FD0.h"
+#include "cpu_logic.h"
 #include "code_80057C60.h"
 #include "code_8006E9C0.h"
 #include "code_80086E70.h"

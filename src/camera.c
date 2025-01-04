@@ -13,7 +13,7 @@
 #include "render_player.h"
 #include "collision.h"
 #include "code_80057C60.h"
-#include "code_80005FD0.h"
+#include "cpu_logic.h"
 #include "main.h"
 #include "spawn_players.h"
 

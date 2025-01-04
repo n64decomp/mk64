@@ -11,7 +11,7 @@
 #include "actors.h"
 #include "audio/external.h"
 #include "code_800029B0.h"
-#include "code_80005FD0.h"
+#include "cpu_logic.h"
 #include "menu_items.h"
 #include "code_800AF9B0.h"
 #include "save.h"

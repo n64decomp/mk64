@@ -18,7 +18,7 @@
 #include <defines.h>
 #include "math_util.h"
 #include "math_util_2.h"
-#include "code_80005FD0.h"
+#include "cpu_logic.h"
 #include "render_player.h"
 #include "render_objects.h"
 #include "code_8006E9C0.h"

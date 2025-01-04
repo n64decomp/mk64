@@ -16,7 +16,7 @@
 #include "actors.h"
 #include "waypoints.h"
 #include "macros.h"
-#include "code_80005FD0.h"
+#include "cpu_logic.h"
 #include "update_objects.h"
 #include "effects.h"
 #include "collision.h"

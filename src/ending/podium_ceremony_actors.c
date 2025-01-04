@@ -13,7 +13,7 @@
 #include "camera_junk.h"
 #include "player_controller.h"
 #include "code_80057C60.h"
-#include "code_80005FD0.h"
+#include "cpu_logic.h"
 #include "code_80281C40.h"
 #include "math_util.h"
 

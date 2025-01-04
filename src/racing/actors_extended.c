@@ -6,7 +6,7 @@
 #include "math_util.h"
 #include "memory.h"
 #include "waypoints.h"
-#include "code_80005FD0.h"
+#include "cpu_logic.h"
 #include "menu_items.h"
 #include "collision.h"
 #include "actors.h"

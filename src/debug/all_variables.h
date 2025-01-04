@@ -12,7 +12,7 @@
 #include <ceremony_and_credits.h>
 #include <code_800029B0.h>
 #include <animation.h>
-#include <code_80005FD0.h>
+#include <cpu_logic.h>
 #include <render_player.h>
 #include <player_controller.h>
 #include <code_8003DC40.h>
