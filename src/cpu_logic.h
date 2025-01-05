@@ -98,10 +98,10 @@ s16 get_angle_between_waypoints(Vec3f, Vec3f);
 s32 is_collide_with_vehicle(f32, f32, f32, f32, f32, f32, f32, f32);
 void adjust_position_by_angle(Vec3f, Vec3f, s16);
 s32 set_vehicle_render_distance_flags(Vec3f, f32, s32);
-void detect_player_wrong_direction(s32, Player*);
+void detect_wrong_player_direction(s32, Player*);
 void set_places(void);
 
-void update_places(void);
+void update_player_rankings(void);
 void set_places_end_course_with_time(void);
 s32 is_path_point_in_range(u16, u16, u16, u16, u16);
 void func_80007D04(s32, Player*);
@@ -411,7 +411,7 @@ extern s32 D_8016448C;
 extern f32 D_80164498[];
 extern f32 gLapCompletionPercentByPlayerId[];    // D_801644A8
 extern f32 gCourseCompletionPercentByPlayerId[]; // D_801644D0
-extern s16 gNeedToChoose[];
+extern s16 gNeedToChoosePath[];
 extern f32 gPlayerPathY[];
 extern s16 D_80164538[];
 extern s32 D_801645D0[];

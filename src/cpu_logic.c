@@ -168,7 +168,7 @@ TrackWaypoint* gCurrentTrackPath;
 f32 D_80164498[4];
 f32 gLapCompletionPercentByPlayerId[10];    // D_801644A8
 f32 gCourseCompletionPercentByPlayerId[10]; // D_801644D0
-s16 gNeedToChoose[12];
+s16 gNeedToChoosePath[12];
 f32 gPlayerPathY[10];
 s16 D_80164538[12];
 TrackWaypoint* gTrackPath[4];
@@ -670,7 +670,7 @@ s32 set_vehicle_render_distance_flags(Vec3f vehiclePos, f32 renderDistance, s32 
     return flag;
 }
 
-void detect_player_wrong_direction(s32 playerId, Player* player) {
+void detect_wrong_player_direction(s32 playerId, Player* player) {
     s16 playerAngle;
     s16 rotationDifference;
     s16 waypointAngle;
@@ -797,7 +797,7 @@ void set_places(void) {
     }
 }
 
-void update_places(void) {
+void update_player_rankings(void) {
     f32 temp_f0;
     UNUSED s32 pad;
     s32 playerIds[8];
@@ -921,8 +921,8 @@ void set_places_end_course_with_time(void) {
  *
  * @param waypoint The waypoint to check
  * @param currentWaypoint The reference waypoint
- * @param backwardRange Number of waypoints to check behind
- * @param forwardRange Number of waypoints to check ahead
+ * @param backwardRange Number of waypoints to look behind
+ * @param forwardRange Number of waypoints to look ahead
  * @param totalWaypoints Total number of waypoints in the track
  * @return
  *   1: waypoint is within normal range
@@ -1356,7 +1356,10 @@ s32 update_player_path_selection(s32 payerId, s32 pathIndex) {
 void update_player_completion(s32 playerId) {
     f32 percent;
 
+    // arbitrary score calculation
     gLapProgressScore[playerId] = (gLapCountByPlayerId[playerId] * gPathCountByPathIndex[0]) + sSomeNearestWaypoint;
+
+    // calculate completion in percent
     percent = (f32) gNearestWaypointByPlayerId[playerId] / (f32) gPathCountByPathIndex[gPathIndexByPlayerId[playerId]];
     gLapCompletionPercentByPlayerId[playerId] = percent;
     gCourseCompletionPercentByPlayerId[playerId] = percent;
@@ -1366,36 +1369,36 @@ void update_player_completion(s32 playerId) {
 void yoshi_valley_cpu_path(s32 playerId) {
     s16 previous;
 
-    previous = gNeedToChoose[playerId];
+    previous = gNeedToChoosePath[playerId];
     if (sSomeNearestWaypoint >= 0x6D) {
-        gNeedToChoose[playerId] = true;
+        gNeedToChoosePath[playerId] = true;
         switch (gActualPath) {
             case 0:
                 if (sSomeNearestWaypoint >= 0x20F) {
-                    gNeedToChoose[playerId] = false;
+                    gNeedToChoosePath[playerId] = false;
                 }
                 break;
             case 1:
                 if (sSomeNearestWaypoint >= 0x206) {
-                    gNeedToChoose[playerId] = false;
+                    gNeedToChoosePath[playerId] = false;
                 }
                 break;
             case 2:
                 if (sSomeNearestWaypoint >= 0x211) {
-                    gNeedToChoose[playerId] = false;
+                    gNeedToChoosePath[playerId] = false;
                 }
                 break;
             case 3:
                 if (sSomeNearestWaypoint >= 0x283) {
-                    gNeedToChoose[playerId] = false;
+                    gNeedToChoosePath[playerId] = false;
                 }
                 break;
         }
     }
-    if ((previous == false) && (gNeedToChoose[playerId] == true)) {
+    if ((previous == false) && (gNeedToChoosePath[playerId] == true)) {
         gCpuNeedChoosePath[playerId] = true;
     }
-    if ((previous == true) && (gNeedToChoose[playerId] == false)) {
+    if ((previous == true) && (gNeedToChoosePath[playerId] == false)) {
         gCpuResetPath[playerId] = true;
     }
 }
@@ -1529,7 +1532,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
         }
     }
     if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_KART_AI)) {
-        detect_player_wrong_direction(playerId, player);
+        detect_wrong_player_direction(playerId, player);
         if ((gModeSelection == 0) && (gPlayerCount == 2) && (playerId == 0)) {
             if (gGPCurrentRaceRankByPlayerIdDup[PLAYER_ONE] < gGPCurrentRaceRankByPlayerIdDup[PLAYER_TWO]) {
                 gPlayerInFront = PLAYER_ONE;
@@ -3655,7 +3658,7 @@ void init_players(void) {
         var_s5->step = 0.015f;
         reset_kart_ai_behaviour_none(i);
         gSpeedKartAIBehaviour[i] = 0;
-        gNeedToChoose[i] = 0;
+        gNeedToChoosePath[i] = 0;
         D_80163398[i] = 0;
         D_801633B0[i] = 0;
         gPositionSwapTimer[i] = 0;

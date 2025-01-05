@@ -139,7 +139,7 @@ void func_8028E298(void) {
         gTimePlayerLastTouchedFinishLine[i] = gCourseTimer + temp_v0;
     }
     D_8016348C = 1;
-    update_places();
+    update_player_rankings();
 }
 
 void func_8028E3A0(void) {

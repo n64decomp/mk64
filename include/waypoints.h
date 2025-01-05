@@ -93,6 +93,6 @@ extern s16 gCpuNeedChoosePath[];
 // Is 1 when a player leaves the "unknown" zone in yoshi's valley
 extern s16 gCpuResetPath[];
 // Tracks whether a given player is in the "unknown" zone of yoshi's valley
-extern s16 gNeedToChoose[];
+extern s16 gNeedToChoosePath[];
 
 #endif
