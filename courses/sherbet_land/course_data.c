@@ -3428,7 +3428,7 @@ Vtx d_course_sherbet_land_penguin_unknown_model[] = {
 };
 
 // Why the fuck is this outside of the function?????
-Gfx wut = gsSPLight(&d_course_sherbet_land_light4.l, 1);
+Gfx d_course_sherbet_land_dl_8808 = gsSPLight(&d_course_sherbet_land_light4.l, 1);
 
 Gfx d_course_sherbet_land_dl_8810[] = {
     gsSPLight(&d_course_sherbet_land_light4.a, 2), gsSPVertex(d_course_sherbet_land_penguin_unknown_model, 10, 0),
@@ -3626,7 +3626,7 @@ u32 d_course_sherbet_land_unk_data1[] = {
 
     ANIMATION_DISABLE_AUTOMATIC_POP,
 
-    ANIMATION_RENDER_MODEL(&wut),
+    ANIMATION_RENDER_MODEL(&d_course_sherbet_land_dl_8808),
 
     ANIMATION_POP_MATRIX,
 

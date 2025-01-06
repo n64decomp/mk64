@@ -1,6 +1,8 @@
 #ifndef _MACROS_H_
 #define _MACROS_H_
 
+#include "config.h"
+
 #ifndef __sgi
 #define GLOBAL_ASM(...)
 #endif
@@ -92,6 +94,14 @@
 // another way of converting virtual to physical
 #define VIRTUAL_TO_PHYSICAL2(addr) ((u8*) (addr) - 0x80000000U)
 
+#if !ENABLE_CUSTOM_ASSET_TYPE
+#define VIRTUAL_TO_PHYSICAL_ASSET(addr) \
+    VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(addr)] + SEGMENT_OFFSET(addr))
+#else
+#define VIRTUAL_TO_PHYSICAL_ASSET(addr)
+
+#endif
+
 // aligns an address to the next 16 bytes
 #define ALIGN16(val) (((val) + 0xF) & ~0xF)
 
@@ -102,5 +112,17 @@
  * - 0x07000000 : get just the offset
  **/
 #define GET_PACKED_END(dl) (((u8*) dl) + sizeof(dl) - sizeof(dl[0]) - 0x07000000)
+
+#ifndef MAX
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#endif
+
+#ifndef MIN
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#endif
+
+#ifndef CLAMP
+#define CLAMP(var, min, max) ((var) < (min) ? min : (var) > (max) ? max : var)
+#endif
 
 #endif

@@ -4345,9 +4345,7 @@ void func_80011EC0(s32 arg0, Player* player, s32 arg2, UNUSED u16 arg3) {
 void generate_train_waypoints(void) {
     s32 i;
     Path2D* temp;
-    TrackWaypoint* waypoint =
-        (TrackWaypoint*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(d_course_kalimari_desert_train_waypoints)] +
-                                              SEGMENT_OFFSET(d_course_kalimari_desert_train_waypoints));
+    TrackWaypoint* waypoint = (TrackWaypoint*) VIRTUAL_TO_PHYSICAL_ASSET(d_course_kalimari_desert_train_waypoints);
 
     GET_PATH_LENGTH(waypoint)
 
@@ -4357,12 +4355,8 @@ void generate_train_waypoints(void) {
 }
 
 void generate_ferry_waypoints(void) {
-    TrackWaypoint* waypoint;
+    TrackWaypoint* waypoint = (TrackWaypoint*) VIRTUAL_TO_PHYSICAL_ASSET(d_course_dks_jungle_parkway_ferry_waypoints);
     s32 i;
-
-    waypoint = (TrackWaypoint*) VIRTUAL_TO_PHYSICAL2(
-        gSegmentTable[SEGMENT_NUMBER2(d_course_dks_jungle_parkway_ferry_waypoints)] +
-        (SEGMENT_OFFSET(d_course_dks_jungle_parkway_ferry_waypoints)));
 
     GET_PATH_LENGTH(waypoint)
 

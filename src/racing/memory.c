@@ -459,10 +459,10 @@ void func_802A86A8(CourseVtx* data, u32 arg1) {
 
 void decompress_vtx(CourseVtx* arg0, u32 vertexCount) {
     s32 size = ALIGN16(vertexCount * 0x18);
-    u32 segment = SEGMENT_NUMBER2(arg0);
-    u32 offset = SEGMENT_OFFSET(arg0);
+    UNUSED u32 segment;
+    UNUSED u32 offset;
     void* freeSpace;
-    u8* vtxCompressed = VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    u8* vtxCompressed = VIRTUAL_TO_PHYSICAL_ASSET(arg0);
     UNUSED s32 pad;
 
     freeSpace = (void*) gNextFreeMemoryAddress;
@@ -961,9 +961,9 @@ UNUSED void func_802A9AEC(void) {
  * increments the file pointer the correct number of times.
  */
 void displaylist_unpack(uintptr_t* data, uintptr_t finalDisplaylistOffset, u32 arg2) {
-    uintptr_t segment = SEGMENT_NUMBER2(data);
-    uintptr_t offset = SEGMENT_OFFSET(data);
-    u8* packed_dl = VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    UNUSED uintptr_t segment;
+    UNUSED uintptr_t offset;
+    u8* packed_dl = VIRTUAL_TO_PHYSICAL_ASSET(data);
 
     Gfx* gfx;
     u32 addr;
@@ -1265,9 +1265,9 @@ struct UnkStr_802AA7C8 {
 };
 
 void decompress_textures(u32* arg0) {
-    u32 segment = SEGMENT_NUMBER2(arg0);
-    u32 offset = SEGMENT_OFFSET(arg0);
-    struct UnkStr_802AA7C8* phi_s0 = (struct UnkStr_802AA7C8*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[segment] + offset);
+    UNUSED u32 segment;
+    UNUSED u32 offset;
+    struct UnkStr_802AA7C8* phi_s0 = (struct UnkStr_802AA7C8*) VIRTUAL_TO_PHYSICAL_ASSET(arg0);
     struct UnkStr_802AA7C8* temp_s0;
     uintptr_t temp_t2;
     u8* temp_a0;
@@ -1324,6 +1324,7 @@ void* decompress_segments(u8* start, u8* end) {
  * @param courseId
  */
 u8* load_course(s32 courseId) {
+#if !ENABLE_CUSTOM_COURSE_ENGINE
     UNUSED s32 pad[4];
     u8* vtxCompressed;      // mio0 compressed
     u8* courseDataRomStart; // mio0 compressed
@@ -1375,4 +1376,7 @@ u8* load_course(s32 courseId) {
     decompress_textures(textures);
     gNextFreeMemoryAddress = prevLoadedAddress_saved;
     return vtxCompressed;
+#else
+
+#endif
 }

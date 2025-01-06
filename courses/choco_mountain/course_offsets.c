@@ -1,6 +1,7 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
 #include "course_data.h"
+#include "asset_types.h"
 
 extern u8 gTexture64619C[];
 extern u8 gTexture64647C[];
@@ -47,7 +48,7 @@ const course_texture choco_mountain_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-const Gfx* choco_mountain_dls[] = {
+const GfxAsset choco_mountain_dls[] = {
     d_course_choco_mountain_dl_0,    d_course_choco_mountain_dl_150,  d_course_choco_mountain_dl_B0,
     d_course_choco_mountain_dl_208,  d_course_choco_mountain_dl_2A8,  d_course_choco_mountain_dl_410,
     d_course_choco_mountain_dl_330,  d_course_choco_mountain_dl_4D8,  d_course_choco_mountain_dl_588,

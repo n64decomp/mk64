@@ -1,6 +1,7 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
 #include "course_data.h"
+#include "asset_types.h"
 
 extern u8 gTexture64619C[];
 extern u8 gTexture645134[];
@@ -93,7 +94,7 @@ const course_texture royal_raceway_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-const Gfx* royal_raceway_dls[] = {
+const GfxAsset royal_raceway_dls[] = {
     d_course_royal_raceway_dl_0,    d_course_royal_raceway_dl_360,  d_course_royal_raceway_dl_258,
     d_course_royal_raceway_dl_470,  d_course_royal_raceway_dl_6D0,  d_course_royal_raceway_dl_A48,
     d_course_royal_raceway_dl_8E0,  d_course_royal_raceway_dl_B40,  d_course_royal_raceway_dl_DA0,

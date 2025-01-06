@@ -1,6 +1,7 @@
 #include <PR/ultratypes.h>
 #include "course_offsets.h"
 #include "course_data.h"
+#include "asset_types.h"
 
 extern u8 gTextureCheckerboardYellowPink[];
 extern u8 gTexture64619C[];
@@ -67,7 +68,7 @@ const course_texture mario_raceway_textures[] = {
     { 0x00000000, 0x0000, 0x0000, 0x0 },
 };
 
-const Gfx* mario_raceway_dls[] = {
+const GfxAsset mario_raceway_dls[] = {
     d_course_mario_raceway_dl_0,    d_course_mario_raceway_dl_1D0,  d_course_mario_raceway_dl_E8,
     d_course_mario_raceway_dl_2C8,  d_course_mario_raceway_dl_3A8,  d_course_mario_raceway_dl_568,
     d_course_mario_raceway_dl_478,  d_course_mario_raceway_dl_668,  d_course_mario_raceway_dl_750,
