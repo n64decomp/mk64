@@ -328,7 +328,7 @@ typedef struct {
     /* 0x01F8 */ f32 unk_1F8;
     /* 0x01FC */ f32 unk_1FC;
     /* 0x0200 */ u32 unk_200; // May be s32. but less casting required if u32
-    /* 0x0204 */ s16 unk_204;
+    /* 0x0204 */ s16 driftDuration;
     /* 0x0206 */ s16 unk_206;
     /* 0x0208 */ f32 unk_208;
     /* 0x020C */ f32 unk_20C;
@@ -353,7 +353,10 @@ typedef struct {
     /* 0x024C */ u16 animGroupSelector[4];
     /* 0x0254 */ u16 characterId;
     /* 0x0256 */ u16 unk_256;
-    /* 0x0258 */ UnkPlayerStruct258 unk_258[40];
+    /* 0x0258 */ UnkPlayerStruct258 playerPacticlePool0[10];
+    /* 0x0258 */ UnkPlayerStruct258 playerPacticlePool1[10];
+    /* 0x0258 */ UnkPlayerStruct258 playerPacticlePool2[10];
+    /* 0x0258 */ UnkPlayerStruct258 playerPacticlePool3[10];
     /* 0x0D98 */ s16 unk_D98;
     /* 0x0D9A */ s16 unk_D9A;
     /* 0x0D9C */ f32 unk_D9C;

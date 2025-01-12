@@ -116,7 +116,7 @@ void func_8005D18C(void);
 void func_8005D1F4(s32);
 
 void func_8005D290(void);
-void func_8005D6C0(Player*);
+void reset_player_particle_pool(Player*);
 void func_8005D794(Player*, UnkPlayerStruct258*, f32, f32, f32, s8, s8);
 s32 func_8005D7D8(UnkPlayerStruct258*, s8, f32);
 s32 func_8005D800(UnkPlayerStruct258*, s32, s16);
@@ -192,7 +192,7 @@ void func_800651F4(Player*, s8, s8, s8);
 void func_800652D4(Vec3f, Vec3s, f32);
 void func_8006538C(Player*, s8, s16, s8);
 void func_800658A0(Player*, s8, s16, s8);
-void func_80065AB0(Player*, s8, s16, s8);
+void render_drift_particle(Player*, s8, s16, s8);
 void func_80065F0C(Player*, s8, s16, s8);
 
 void func_800664E0(Player*, s8, s16, s8);
@@ -220,15 +220,15 @@ void func_80069DB8(Player*, s8, s16, s8);
 void func_8006A01C(Player*, s8, s16, s8);
 void func_8006A280(Player*, s8, s16, s8);
 void func_8006A50C(Player*, f32, f32, s8, s8, s16);
-void func_8006A7C0(Player*, f32, f32, s8, s8);
+void update_player_one_balloon_position(Player*, f32, f32, s8, s8);
 void render_battle_balloon(Player*, s8, s16, s8);
 
 void func_8006B7E4(Player*, s8);
 void func_8006B87C(Player*, s8);
 void func_8006B8B4(Player*, s8);
 void func_8006B974(s32, s8, s8);
-void func_8006B9CC(Player*, s8);
-void func_8006BA94(Player*, s8, s8);
+void update_player_balloons_position(Player*, s8);
+void render_player_balloons(Player*, s8, s8);
 void render_balloon(Vec3f, f32, s16, s16);
 
 void func_8006C0C8(Vec3f, f32, s32, s16);
@@ -606,7 +606,7 @@ extern u8* D_8018D464;
 extern u8* D_8018D468;
 extern u8* D_8018D46C;
 extern u8* D_8018D470;
-extern u8* D_8018D474;
+extern u8* gLoadedTextureKartShadow;
 extern u8* D_8018D478;
 extern u8* D_8018D480;
 extern u8* D_8018D484;
