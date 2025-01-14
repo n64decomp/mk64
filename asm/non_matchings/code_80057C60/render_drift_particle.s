@@ -5,7 +5,7 @@ glabel D_800E48C8
 
 .section .text
 
-glabel func_80065AB0
+glabel render_drift_particle
 /* 0666B0 80065AB0 27BDFF40 */  addiu $sp, $sp, -0xc0
 /* 0666B4 80065AB4 AFA600C8 */  sw    $a2, 0xc8($sp)
 /* 0666B8 80065AB8 00067400 */  sll   $t6, $a2, 0x10

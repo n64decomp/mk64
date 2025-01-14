@@ -854,148 +854,148 @@ glabel gTexture7F17A4
 .incbin "textures/raw/7F17A4.i4"
 
 .align 2, 0x00
-glabel gTexture7F1874
-.incbin "textures/raw/7F1874.i4"
+glabel gTextureFontNumberZero
+.incbin "textures/raw/gTextureFontNumberZero.i4"
 
 .align 2, 0x00
-glabel gTexture7F1944
-.incbin "textures/raw/7F1944.i4"
+glabel gTextureFontNumberOne
+.incbin "textures/raw/gTextureFontNumberOne.i4"
 
 .align 2, 0x00
-glabel gTexture7F1A14
-.incbin "textures/raw/7F1A14.i4"
+glabel gTextureFontNumberTwo
+.incbin "textures/raw/gTextureFontNumberTwo.i4"
 
 .align 2, 0x00
-glabel gTexture7F1AE4
-.incbin "textures/raw/7F1AE4.i4"
+glabel gTextureFontNumberThree
+.incbin "textures/raw/gTextureFontNumberThree.i4"
 
 .align 2, 0x00
-glabel gTexture7F1BB4
-.incbin "textures/raw/7F1BB4.i4"
+glabel gTextureFontNumberFour
+.incbin "textures/raw/gTextureFontNumberFour.i4"
 
 .align 2, 0x00
-glabel gTexture7F1C84
-.incbin "textures/raw/7F1C84.i4"
+glabel gTextureFontNumberFive
+.incbin "textures/raw/gTextureFontNumberFive.i4"
 
 .align 2, 0x00
-glabel gTexture7F1D54
-.incbin "textures/raw/7F1D54.i4"
+glabel gTextureFontNumberSix
+.incbin "textures/raw/gTextureFontNumberSix.i4"
 
 .align 2, 0x00
-glabel gTexture7F1E24
-.incbin "textures/raw/7F1E24.i4"
+glabel gTextureFontNumberSeven
+.incbin "textures/raw/gTextureFontNumberSeven.i4"
 
 .align 2, 0x00
-glabel gTexture7F1EF4
-.incbin "textures/raw/7F1EF4.i4"
+glabel gTextureFontNumberEight
+.incbin "textures/raw/gTextureFontNumberEight.i4"
 
 .align 2, 0x00
-glabel gTexture7F1FC4
-.incbin "textures/raw/7F1FC4.i4"
+glabel gTextureFontNumberNine
+.incbin "textures/raw/gTextureFontNumberNine.i4"
 
 .align 2, 0x00
-glabel gTexture7F2094
-.incbin "textures/raw/7F2094.i4"
+glabel gTextureFontLetterA
+.incbin "textures/raw/gTextureFontLetterA.i4"
 
 .align 2, 0x00
-glabel gTexture7F2164
-.incbin "textures/raw/7F2164.i4"
+glabel gTextureFontLetterB
+.incbin "textures/raw/gTextureFontLetterB.i4"
 
 .align 2, 0x00
-glabel gTexture7F2234
-.incbin "textures/raw/7F2234.i4"
+glabel gTextureFontLetterC
+.incbin "textures/raw/gTextureFontLetterC.i4"
 
 .align 2, 0x00
-glabel gTexture7F2304
-.incbin "textures/raw/7F2304.i4"
+glabel gTextureFontLetterD
+.incbin "textures/raw/gTextureFontLetterD.i4"
 
 .align 2, 0x00
-glabel gTexture7F23D4
-.incbin "textures/raw/7F23D4.i4"
+glabel gTextureFontLetterE
+.incbin "textures/raw/gTextureFontLetterE.i4"
 
 .align 2, 0x00
-glabel gTexture7F24A4
-.incbin "textures/raw/7F24A4.i4"
+glabel gTextureFontLetterF
+.incbin "textures/raw/gTextureFontLetterF.i4"
 
 .align 2, 0x00
-glabel gTexture7F2574
-.incbin "textures/raw/7F2574.i4"
+glabel gTextureFontLetterG
+.incbin "textures/raw/gTextureFontLetterG.i4"
 
 .align 2, 0x00
-glabel gTexture7F2644
-.incbin "textures/raw/7F2644.i4"
+glabel gTextureFontLetterH
+.incbin "textures/raw/gTextureFontLetterH.i4"
 
 .align 2, 0x00
-glabel gTexture7F2714
-.incbin "textures/raw/7F2714.i4"
+glabel gTextureFontLetterI
+.incbin "textures/raw/gTextureFontLetterI.i4"
 
 .align 2, 0x00
-glabel gTexture7F27E4
-.incbin "textures/raw/7F27E4.i4"
+glabel gTextureFontLetterJ
+.incbin "textures/raw/gTextureFontLetterJ.i4"
 
 .align 2, 0x00
-glabel gTexture7F28B4
-.incbin "textures/raw/7F28B4.i4"
+glabel gTextureFontLetterK
+.incbin "textures/raw/gTextureFontLetterK.i4"
 
 .align 2, 0x00
-glabel gTexture7F2984
-.incbin "textures/raw/7F2984.i4"
+glabel gTextureFontLetterL
+.incbin "textures/raw/gTextureFontLetterL.i4"
 
 .align 2, 0x00
-glabel gTexture7F2A54
-.incbin "textures/raw/7F2A54.i4"
+glabel gTextureFontLetterM
+.incbin "textures/raw/gTextureFontLetterM.i4"
 
 .align 2, 0x00
-glabel gTexture7F2B24
-.incbin "textures/raw/7F2B24.i4"
+glabel gTextureFontLetterN
+.incbin "textures/raw/gTextureFontLetterN.i4"
 
 .align 2, 0x00
-glabel gTexture7F2BF4
-.incbin "textures/raw/7F2BF4.i4"
+glabel gTextureFontLetterO
+.incbin "textures/raw/gTextureFontLetterO.i4"
 
 .align 2, 0x00
-glabel gTexture7F2CC4
-.incbin "textures/raw/7F2CC4.i4"
+glabel gTextureFontLetterP
+.incbin "textures/raw/gTextureFontLetterP.i4"
 
 .align 2, 0x00
-glabel gTexture7F2D94
-.incbin "textures/raw/7F2D94.i4"
+glabel gTextureFontLetterQ
+.incbin "textures/raw/gTextureFontLetterQ.i4"
 
 .align 2, 0x00
-glabel gTexture7F2E64
-.incbin "textures/raw/7F2E64.i4"
+glabel gTextureFontLetterR
+.incbin "textures/raw/gTextureFontLetterR.i4"
 
 .align 2, 0x00
-glabel gTexture7F2F34
-.incbin "textures/raw/7F2F34.i4"
+glabel gTextureFontLetterS
+.incbin "textures/raw/gTextureFontLetterS.i4"
 
 .align 2, 0x00
-glabel gTexture7F3004
-.incbin "textures/raw/7F3004.i4"
+glabel gTextureFontLetterT
+.incbin "textures/raw/gTextureFontLetterT.i4"
 
 .align 2, 0x00
-glabel gTexture7F30D4
-.incbin "textures/raw/7F30D4.i4"
+glabel gTextureFontLetterU
+.incbin "textures/raw/gTextureFontLetterU.i4"
 
 .align 2, 0x00
-glabel gTexture7F31A4
-.incbin "textures/raw/7F31A4.i4"
+glabel gTextureFontLetterV
+.incbin "textures/raw/gTextureFontLetterV.i4"
 
 .align 2, 0x00
-glabel gTexture7F3274
-.incbin "textures/raw/7F3274.i4"
+glabel gTextureFontLetterW
+.incbin "textures/raw/gTextureFontLetterW.i4"
 
 .align 2, 0x00
-glabel gTexture7F3344
-.incbin "textures/raw/7F3344.i4"
+glabel gTextureFontLetterX
+.incbin "textures/raw/gTextureFontLetterX.i4"
 
 .align 2, 0x00
-glabel gTexture7F3414
-.incbin "textures/raw/7F3414.i4"
+glabel gTextureFontLetterY
+.incbin "textures/raw/gTextureFontLetterY.i4"
 
 .align 2, 0x00
-glabel gTexture7F34E4
-.incbin "textures/raw/7F34E4.i4"
+glabel gTextureFontLetterZ
+.incbin "textures/raw/gTextureFontLetterZ.i4"
 
 .align 2, 0x00
 glabel gTexture7F35B4

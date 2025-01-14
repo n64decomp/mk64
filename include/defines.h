@@ -322,6 +322,7 @@ enum DIRECTION { NORTH, EAST, SOUTH, WEST };
  * for effects
  */
 #define BOOST_RAMP_WOOD_EFFECT 0x4         // being boosted by a ramp
+#define DRIFTING_EFFECT 0x10               // drifting
 #define STAR_EFFECT 0x200                  // being a star
 #define BOOST_EFFECT 0x2000                // being boosted by trigger a mushroom
 #define BOOST_RAMP_ASPHALT_EFFECT 0x100000 // being boosted by a boost pad

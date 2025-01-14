@@ -1803,7 +1803,7 @@ void func_80009B60(s32 playerId) {
                     return;
                 }
                 if ((D_801630E8[playerId] == 1) || (D_801630E8[playerId] == -1)) {
-                    player->effects |= 0x10;
+                    player->effects |= DRIFTING_EFFECT;
                 }
                 if (D_801630E8[playerId] != 0) {
                     D_80163300[playerId] = -get_angle_between_two_vectors(&player->oldPos[0], player->pos);
@@ -4310,7 +4310,7 @@ void func_80011EC0(s32 arg0, Player* player, s32 arg2, UNUSED u16 arg3) {
                 if ((arg2 >= -9) && (D_80162FF8[arg0] == 0)) {
                     if ((D_80163068[arg0] > -0.8) && (D_80163068[arg0] < 0.5)) {
                         kart_hop(player);
-                        player->effects |= 0x10;
+                        player->effects |= DRIFTING_EFFECT;
                         D_801630E8[arg0] = 1;
                         break;
                     }
@@ -4322,7 +4322,7 @@ void func_80011EC0(s32 arg0, Player* player, s32 arg2, UNUSED u16 arg3) {
                 if ((arg2 < 0xA) && (D_80162FF8[arg0] == 0)) {
                     if ((D_80163068[arg0] > -0.5) && (D_80163068[arg0] < 0.8)) {
                         kart_hop(player);
-                        player->effects |= 0x10;
+                        player->effects |= DRIFTING_EFFECT;
                         D_801630E8[arg0] = -1;
                         break;
                     }
