@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 
 extern Gfx d_course_dks_jungle_parkway_dl_0[];
@@ -112,9 +112,9 @@ extern Gfx d_course_dks_jungle_parkway_dl_6F10[];
 extern Gfx d_course_dks_jungle_parkway_dl_7008[];
 extern Gfx d_course_dks_jungle_parkway_dl_7080[];
 extern Gfx d_course_dks_jungle_parkway_dl_7108[];
-extern TrackWaypoint d_course_dks_jungle_parkway_unknown_waypoints[];
-extern TrackWaypoint d_course_dks_jungle_parkway_ferry_waypoints[];
-extern TrackWaypoint d_course_dks_jungle_parkway_track_waypoints[];
+extern TrackPathPoint d_course_dks_jungle_parkway_unknown_path[];
+extern TrackPathPoint d_course_dks_jungle_parkway_ferry_path[];
+extern TrackPathPoint d_course_dks_jungle_parkway_track_path[];
 extern Vtx d_course_dks_jungle_parkway_paddle_boat_model1[];
 extern Vtx d_course_dks_jungle_parkway_paddle_boat_model2[];
 extern Vtx d_course_dks_jungle_parkway_paddle_boat_model3[];

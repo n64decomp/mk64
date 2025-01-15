@@ -15,7 +15,7 @@
 #include "math_util.h"
 #include "math_util_2.h"
 #include "objects.h"
-#include "waypoints.h"
+#include "path.h"
 #include "bomb_kart.h"
 #include <assets/common_data.h>
 #include "render_player.h"
@@ -2843,7 +2843,7 @@ s32 func_80050644(u16 arg0, s32* arg1, s32* arg2) {
 }
 
 void func_800507D8(u16 bombIndex, s32* arg1, s32* arg2) {
-    s32 temp_v0 = gBombKarts[bombIndex].waypointIndex;
+    s32 temp_v0 = gBombKarts[bombIndex].pathPointIndex;
     s32 var_v1 = 0;
 
     if (temp_v0 != 0) {

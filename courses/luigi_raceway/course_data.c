@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <mk64.h>
 
@@ -4693,7 +4693,7 @@ Gfx d_course_luigi_raceway_dl_A320[] = {
 };
 
 // 0xA540
-TrackWaypoint d_course_luigi_raceway_unknown_waypoints[] = {
+TrackPathPoint d_course_luigi_raceway_unknown_path[] = {
     { -139, 0, -202, 0 },   { -139, 0, -218, 0 },   { -139, 0, -297, 0 },   { -139, 0, -2247, 0 },
     { -138, 0, -2474, 0 },  { -170, 0, -2745, 0 },  { -249, 0, -2930, 0 },  { -373, 0, -3095, 0 },
     { -550, 0, -3226, 0 },  { -787, 0, -3310, 0 },  { -1022, 0, -3321, 0 }, { -1236, 0, -3258, 0 },
@@ -4710,7 +4710,7 @@ TrackWaypoint d_course_luigi_raceway_unknown_waypoints[] = {
 };
 
 // 0xA6D0
-TrackWaypoint d_course_luigi_raceway_track_waypoints[] = {
+TrackPathPoint d_course_luigi_raceway_track_path[] = {
     { -139, -50, -210, 1 },    { -139, -50, -230, 2 },    { -139, -50, -250, 2 },    { -139, -50, -270, 2 },
     { -139, -50, -290, 2 },    { -139, -50, -310, 2 },    { -139, -50, -330, 2 },    { -139, -50, -350, 2 },
     { -139, -50, -370, 2 },    { -139, -50, -390, 2 },    { -139, -50, -410, 2 },    { -139, -50, -430, 2 },

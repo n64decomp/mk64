@@ -7,7 +7,7 @@
 #include "code_800029B0.h"
 #include "math_util.h"
 #include "kart_attributes.h"
-#include "waypoints.h"
+#include "path.h"
 #include "cpu_logic.h"
 #include "render_player.h"
 #include "player_controller.h"
@@ -1589,75 +1589,75 @@ void func_8008FEDC(Player* player, UNUSED s8 arg1) {
     player->kartHopAcceleration = 0.0f;
 }
 
-void course_update_waypoint(Player* player, s8 playerId) {
-    s16 waypoint;
+void course_update_pathPoint(Player* player, s8 playerId) {
+    s16 pathPoint;
 
 #if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_BOWSER_CASTLE:
-            waypoint = gNearestWaypointByPlayerId[playerId];
-            if ((waypoint >= 0x235) && (waypoint < 0x247)) {
-                player->nearestWaypointId = 0x214;
-            } else if ((waypoint >= 0x267) && (waypoint < 0x277)) {
-                player->nearestWaypointId = 0x25B;
+            pathPoint = gNearestPathPointByPlayerId[playerId];
+            if ((pathPoint >= 0x235) && (pathPoint < 0x247)) {
+                player->nearestPathPointId = 0x214;
+            } else if ((pathPoint >= 0x267) && (pathPoint < 0x277)) {
+                player->nearestPathPointId = 0x25B;
             } else {
-                player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
-                if (player->nearestWaypointId < 0) {
-                    player->nearestWaypointId = gPathCountByPathIndex[0] + player->nearestWaypointId;
+                player->nearestPathPointId = gNearestPathPointByPlayerId[playerId];
+                if (player->nearestPathPointId < 0) {
+                    player->nearestPathPointId = gPathCountByPathIndex[0] + player->nearestPathPointId;
                 }
             }
             break;
         case COURSE_BANSHEE_BOARDWALK:
-            waypoint = gNearestWaypointByPlayerId[playerId];
-            if ((waypoint >= 0x12C) && (waypoint < 0x13C)) {
-                player->nearestWaypointId = 0x12CU;
+            pathPoint = gNearestPathPointByPlayerId[playerId];
+            if ((pathPoint >= 0x12C) && (pathPoint < 0x13C)) {
+                player->nearestPathPointId = 0x12CU;
             } else {
-                player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
-                if (player->nearestWaypointId < 0) {
-                    player->nearestWaypointId = gPathCountByPathIndex[0] + player->nearestWaypointId;
+                player->nearestPathPointId = gNearestPathPointByPlayerId[playerId];
+                if (player->nearestPathPointId < 0) {
+                    player->nearestPathPointId = gPathCountByPathIndex[0] + player->nearestPathPointId;
                 }
             }
             break;
         case COURSE_YOSHI_VALLEY:
         case COURSE_RAINBOW_ROAD:
-            player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
+            player->nearestPathPointId = gCopyNearestPathPointByPlayerId[playerId];
             break;
         case COURSE_FRAPPE_SNOWLAND:
-            waypoint = gNearestWaypointByPlayerId[playerId];
+            pathPoint = gNearestPathPointByPlayerId[playerId];
 #ifdef VERSION_EU
-            if (((waypoint >= 0xF0) && (waypoint < 0x11E)) || ((gCopyNearestWaypointByPlayerId[playerId] >= 0xF0) &&
-                                                               (gCopyNearestWaypointByPlayerId[playerId] < 0x11E)))
+            if (((pathPoint >= 0xF0) && (pathPoint < 0x11E)) || ((gCopyNearestPathPointByPlayerId[playerId] >= 0xF0) &&
+                                                                 (gCopyNearestPathPointByPlayerId[playerId] < 0x11E)))
 #else
-            if ((waypoint >= 0xF0) && (waypoint < 0x105))
+            if ((pathPoint >= 0xF0) && (pathPoint < 0x105))
 #endif
             {
-                player->nearestWaypointId = 0xF0U;
+                player->nearestPathPointId = 0xF0U;
             } else {
-                player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
-                if (player->nearestWaypointId < 0) {
-                    player->nearestWaypointId = gPathCountByPathIndex[0] + player->nearestWaypointId;
+                player->nearestPathPointId = gCopyNearestPathPointByPlayerId[playerId];
+                if (player->nearestPathPointId < 0) {
+                    player->nearestPathPointId = gPathCountByPathIndex[0] + player->nearestPathPointId;
                 }
             }
             break;
         case COURSE_ROYAL_RACEWAY:
-            waypoint = gNearestWaypointByPlayerId[playerId];
-            if ((waypoint >= 0x258) && (waypoint < 0x2A4)) {
-                player->nearestWaypointId = 0x258U;
+            pathPoint = gNearestPathPointByPlayerId[playerId];
+            if ((pathPoint >= 0x258) && (pathPoint < 0x2A4)) {
+                player->nearestPathPointId = 0x258U;
             } else {
-                player->nearestWaypointId = gCopyNearestWaypointByPlayerId[playerId];
-                if (player->nearestWaypointId < 0) {
-                    player->nearestWaypointId = gPathCountByPathIndex[0] + player->nearestWaypointId;
+                player->nearestPathPointId = gCopyNearestPathPointByPlayerId[playerId];
+                if (player->nearestPathPointId < 0) {
+                    player->nearestPathPointId = gPathCountByPathIndex[0] + player->nearestPathPointId;
                 }
             }
             break;
         case COURSE_DK_JUNGLE:
-            waypoint = gNearestWaypointByPlayerId[playerId];
-            if ((waypoint >= 0xB9) && (waypoint < 0x119)) {
-                player->nearestWaypointId = 0xB9U;
+            pathPoint = gNearestPathPointByPlayerId[playerId];
+            if ((pathPoint >= 0xB9) && (pathPoint < 0x119)) {
+                player->nearestPathPointId = 0xB9U;
             } else {
-                player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
-                if (player->nearestWaypointId < 0) {
-                    player->nearestWaypointId = gPathCountByPathIndex[0] + player->nearestWaypointId;
+                player->nearestPathPointId = gNearestPathPointByPlayerId[playerId];
+                if (player->nearestPathPointId < 0) {
+                    player->nearestPathPointId = gPathCountByPathIndex[0] + player->nearestPathPointId;
                 }
             }
             break;
@@ -1665,12 +1665,12 @@ void course_update_waypoint(Player* player, s8 playerId) {
         case COURSE_SKYSCRAPER:
         case COURSE_DOUBLE_DECK:
         case COURSE_BIG_DONUT:
-            player->nearestWaypointId = 0U;
+            player->nearestPathPointId = 0U;
             break;
         default:
-            player->nearestWaypointId = gNearestWaypointByPlayerId[playerId];
-            if (player->nearestWaypointId < 0) {
-                player->nearestWaypointId = gPathCountByPathIndex[0] + player->nearestWaypointId;
+            player->nearestPathPointId = gNearestPathPointByPlayerId[playerId];
+            if (player->nearestPathPointId < 0) {
+                player->nearestPathPointId = gPathCountByPathIndex[0] + player->nearestPathPointId;
             }
             break;
     }
@@ -1681,7 +1681,7 @@ void course_update_waypoint(Player* player, s8 playerId) {
 
 void func_80090178(Player* player, s8 playerId, Vec3f arg2, Vec3f arg3) {
     u16 test;
-    TrackWaypoint* temp_v1;
+    TrackPathPoint* temp_v1;
     f32 spF8[4] = { 0.0f, 0.0f, -700.0f, 700.0f };
     f32 spE8[4] = { 700.0f, -700.0f, 0.0f, 0.0f };
     f32 spD8[4] = { 0.0f, 0.0f, -650.0f, 650.0f };
@@ -1701,13 +1701,13 @@ void func_80090178(Player* player, s8 playerId, Vec3f arg2, Vec3f arg3) {
 
     switch (gCurrentCourseId) {
         case COURSE_YOSHI_VALLEY:
-            test = player->nearestWaypointId;
+            test = player->nearestPathPointId;
             temp_v1 = &gTrackPath[gCopyPathIndexByPlayerId[playerId]][test];
             arg2[0] = temp_v1->posX;
             arg2[1] = temp_v1->posY;
             arg2[2] = temp_v1->posZ;
             temp_v1 = &gTrackPath[gCopyPathIndexByPlayerId[playerId]]
-                                 [(player->nearestWaypointId + 5) %
+                                 [(player->nearestPathPointId + 5) %
                                   (gPathCountByPathIndex[gCopyPathIndexByPlayerId[playerId]] + 1)];
             arg3[0] = temp_v1->posX;
             arg3[1] = temp_v1->posY;
@@ -1746,12 +1746,12 @@ void func_80090178(Player* player, s8 playerId, Vec3f arg2, Vec3f arg3) {
             arg3[2] = sp08[playerId];
             break;
         default:
-            test = player->nearestWaypointId;
+            test = player->nearestPathPointId;
             temp_v1 = &gTrackPath[0][test];
             arg2[0] = temp_v1->posX;
             arg2[1] = temp_v1->posY;
             arg2[2] = temp_v1->posZ;
-            temp_v1 = &gTrackPath[0][(player->nearestWaypointId + 5) % (gPathCountByPathIndex[0] + 1)];
+            temp_v1 = &gTrackPath[0][(player->nearestPathPointId + 5) % (gPathCountByPathIndex[0] + 1)];
             arg3[0] = temp_v1->posX;
             arg3[1] = temp_v1->posY;
             arg3[2] = temp_v1->posZ;
@@ -1802,7 +1802,7 @@ void func_80090868(Player* player) {
         player->unk_D98 = 1;
         player->unk_D9C = 0.0f;
         player->unk_DA0 = 0.5f;
-        course_update_waypoint(player, playerIndex);
+        course_update_pathPoint(player, playerIndex);
         player->unk_222 = 0;
         player->unk_0CA |= 2;
         player->unk_0C8 = 0;
@@ -1826,7 +1826,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
     UNUSED s32 stackPadding1;
     Vec3f sp44;
     Vec3f sp38;
-    TrackWaypoint* waypoint;
+    TrackPathPoint* pathPoint;
     UNUSED s32 stackPadding2;
     UNUSED s32 stackPadding3;
 
@@ -1922,10 +1922,10 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                 player->pos[0] = player->pos[0] + sins(-player->rotation[1]) * -10.0f;
             }
             if (player->unk_0C8 == 0x00FC) {
-                waypoint = gTrackPath[0];
-                player->pos[0] = waypoint->posX;
-                player->pos[1] = waypoint->posY;
-                player->pos[2] = waypoint->posZ;
+                pathPoint = gTrackPath[0];
+                player->pos[0] = pathPoint->posX;
+                player->pos[1] = pathPoint->posY;
+                player->pos[2] = pathPoint->posZ;
             }
             move_f32_towards(&player->pos[1], (player->unk_074 + player->boundingBoxSize) - 2.0f, 0.04f);
             player->unk_0C8++;

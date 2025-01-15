@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <animation.h>
 #include <mk64.h>
@@ -5644,7 +5644,7 @@ Gfx d_course_yoshi_valley_dl_D540[] = {
 };
 
 // 0xD780
-TrackWaypoint d_course_yoshi_valley_unknown_waypoints[] = {
+TrackPathPoint d_course_yoshi_valley_unknown_path[] = {
     { -3, 0, -4, 0 },       { -3, 0, -20, 0 },      { -3, 0, -261, 0 },     { -18, 0, -642, 0 },
     { -62, 0, -955, 0 },    { -155, 0, -1297, 0 },  { -232, 0, -1502, 0 },  { -317, 0, -1596, 0 },
     { -432, 0, -1625, 0 },  { -554, 0, -1619, 0 },  { -765, 0, -1542, 0 },  { -1069, 0, -1409, 0 },
@@ -5666,7 +5666,7 @@ TrackWaypoint d_course_yoshi_valley_unknown_waypoints[] = {
     { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_yoshi_valley_unknown_waypoints_2[] = {
+TrackPathPoint d_course_yoshi_valley_unknown_path_2[] = {
     { -6, 0, -5, 1 },       { -6, 0, -21, 1 },      { -5, 0, -434, 1 },     { -37, 0, -841, 1 },
     { -150, 0, -1267, 1 },  { -228, 0, -1498, 1 },  { -328, 0, -1603, 1 },  { -439, 0, -1627, 1 },
     { -548, 0, -1621, 1 },  { -759, 0, -1544, 1 },  { -1078, 0, -1402, 1 }, { -1207, 0, -1400, 1 },
@@ -5688,7 +5688,7 @@ TrackWaypoint d_course_yoshi_valley_unknown_waypoints_2[] = {
     { -2, 0, 33, 1 },       { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_yoshi_valley_unknown_waypoints_3[] = {
+TrackPathPoint d_course_yoshi_valley_unknown_path_3[] = {
     { -3, 0, -3, 4 },       { -3, 0, -19, 4 },      { 0, 0, -268, 4 },      { -21, 0, -638, 4 },
     { -66, 0, -952, 4 },    { -162, 0, -1297, 4 },  { -232, 0, -1502, 4 },  { -318, 0, -1594, 4 },
     { -434, 0, -1624, 4 },  { -562, 0, -1612, 4 },  { -768, 0, -1547, 4 },  { -1081, 0, -1412, 4 },
@@ -5712,7 +5712,7 @@ TrackWaypoint d_course_yoshi_valley_unknown_waypoints_3[] = {
     { -6, 0, 21, 4 },       { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_yoshi_valley_unknown_waypoints_4[] = {
+TrackPathPoint d_course_yoshi_valley_unknown_path_4[] = {
     { -2, 0, -1, 7 },       { 0, 0, -18, 7 },       { -2, 0, -268, 7 },     { -21, 0, -653, 7 },
     { -70, 0, -965, 7 },    { -162, 0, -1303, 7 },  { -235, 0, -1506, 7 },  { -324, 0, -1596, 7 },
     { -438, 0, -1624, 7 },  { -571, 0, -1611, 7 },  { -773, 0, -1533, 7 },  { -1077, 0, -1399, 7 },
@@ -5737,7 +5737,7 @@ TrackWaypoint d_course_yoshi_valley_unknown_waypoints_4[] = {
     { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_yoshi_valley_track_waypoints[] = {
+TrackPathPoint d_course_yoshi_valley_track_path[] = {
     { -3, 180, -12, 1 },       { -3, 180, -32, 2 },       { -3, 180, -52, 2 },
     { -2, 180, -72, 2 },       { -3, 180, -92, 2 },       { -3, 180, -112, 2 },
     { -3, 180, -132, 2 },      { -3, 180, -152, 2 },      { -3, 180, -172, 2 },
@@ -5966,7 +5966,7 @@ TrackWaypoint d_course_yoshi_valley_track_waypoints[] = {
     { -4, 180, 18, 1 },        { -3, 180, -1, 1 },        { -32768, -32768, -32768, 0 },
 };
 
-TrackWaypoint d_course_yoshi_valley_track_waypoints_2[] = {
+TrackPathPoint d_course_yoshi_valley_track_path_2[] = {
     { -6, 180, -13, 1 },
     { -5, 180, -33, 2 },
     { -5, 180, -53, 2 },
@@ -6636,7 +6636,7 @@ TrackWaypoint d_course_yoshi_valley_track_waypoints_2[] = {
     { -32768, -32768, -32768, 0 },
 };
 
-TrackWaypoint d_course_yoshi_valley_track_waypoints_3[] = {
+TrackPathPoint d_course_yoshi_valley_track_path_3[] = {
     { -3, 180, -11, 1 },
     { -2, 180, -31, 2 },
     { -2, 180, -51, 2 },
@@ -7318,7 +7318,7 @@ TrackWaypoint d_course_yoshi_valley_track_waypoints_3[] = {
     { -32768, -32768, -32768, 0 },
 };
 
-TrackWaypoint d_course_yoshi_valley_track_waypoints_4[] = {
+TrackPathPoint d_course_yoshi_valley_track_path_4[] = {
     { -1, 180, -9, 1 },
     { 0, 180, -29, 2 },
     { 0, 180, -49, 2 },

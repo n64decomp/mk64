@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <mk64.h>
 
@@ -2988,7 +2988,7 @@ Gfx d_course_kalimari_desert_dl_6940[] = {
 };
 
 // 0x6AC8
-TrackWaypoint d_course_kalimari_desert_unknown_waypoints[] = {
+TrackPathPoint d_course_kalimari_desert_unknown_path[] = {
     { 1, 0, 503, 0 },      { 1, 0, 485, 0 },      { 1, 0, 325, 0 },      { 3, 0, -247, 0 },     { -47, 0, -559, 0 },
     { -176, 0, -821, 0 },  { -379, 0, -996, 0 },  { -620, 0, -1082, 0 }, { -878, 0, -1095, 0 }, { -1133, 0, -1037, 0 },
     { -1342, 0, -907, 0 }, { -1513, 0, -691, 0 }, { -1610, 0, -448, 0 }, { -1642, 0, -133, 0 }, { -1642, 0, 18, 0 },
@@ -3002,7 +3002,7 @@ TrackWaypoint d_course_kalimari_desert_unknown_waypoints[] = {
     { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_kalimari_desert_train_waypoints[] = {
+TrackPathPoint d_course_kalimari_desert_train_path[] = {
     { -741, 0, 2114, 0 },  { -741, 0, 2130, 0 },  { -741, 0, 2364, 0 },  { -744, 0, 2840, 0 },  { -749, 0, 2906, 0 },
     { -758, 0, 2962, 0 },  { -769, 0, 3017, 0 },  { -784, 0, 3085, 0 },  { -801, 0, 3138, 0 },  { -818, 0, 3184, 0 },
     { -838, 0, 3229, 0 },  { -864, 0, 3281, 0 },  { -891, 0, 3325, 0 },  { -917, 0, 3364, 0 },  { -951, 0, 3404, 0 },
@@ -3021,7 +3021,7 @@ TrackWaypoint d_course_kalimari_desert_train_waypoints[] = {
     { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_kalimari_desert_track_waypoints[] = {
+TrackPathPoint d_course_kalimari_desert_track_path[] = {
     { 1, 0, 494, 1 },        { 1, 0, 473, 2 },        { 1, 0, 453, 2 },        { 1, 1, 433, 2 },
     { 1, 1, 413, 2 },        { 1, 1, 393, 2 },        { 1, 1, 373, 2 },        { 1, 1, 353, 2 },
     { 1, 1, 333, 2 },        { 1, 2, 313, 2 },        { 1, 3, 293, 2 },        { 1, 3, 273, 2 },

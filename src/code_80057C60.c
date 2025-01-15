@@ -2718,22 +2718,22 @@ void func_8005D18C(void) {
 }
 
 void func_8005D1F4(s32 arg0) {
-    s32 playerWaypoint;
-    s32 bombWaypoint;
+    s32 playerPathPoint;
+    s32 bombPathPoint;
     s32 var_a2;
-    s32 waypointDiff;
+    s32 pathPointDiff;
 
     if (gModeSelection == 2) {
-        playerWaypoint = gNearestWaypointByPlayerId[arg0];
+        playerPathPoint = gNearestPathPointByPlayerId[arg0];
         playerHUD[arg0].unk_74 = 0;
         for (var_a2 = 0; var_a2 < NUM_BOMB_KARTS_VERSUS; var_a2++) {
             if ((gBombKarts[var_a2].state == BOMB_STATE_EXPLODED) ||
                 (gBombKarts[var_a2].state == BOMB_STATE_INACTIVE)) {
                 continue;
             }
-            bombWaypoint = gBombKarts[var_a2].waypointIndex;
-            waypointDiff = bombWaypoint - playerWaypoint;
-            if ((waypointDiff < -5) || (waypointDiff > 0x1E)) {
+            bombPathPoint = gBombKarts[var_a2].pathPointIndex;
+            pathPointDiff = bombPathPoint - playerPathPoint;
+            if ((pathPointDiff < -5) || (pathPointDiff > 0x1E)) {
                 continue;
             }
             playerHUD[arg0].unk_74 = 1;

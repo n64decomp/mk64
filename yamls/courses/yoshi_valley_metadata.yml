@@ -28,22 +28,22 @@ course:
   D_0D0096B8: [3.3333332f, 3.3333332f, 3.3333332f, 3.3333332f]
   gCpuOffTrackTargetSpeed: [2.9166667f, 3.75f, 3.75f, 3.75f]
 
-  # Course waypoints
+  # Course path
   path_table:
     [
-      d_course_yoshi_valley_track_waypoints,
-      "d_course_yoshi_valley_track_waypoints_2",
-      "d_course_yoshi_valley_track_waypoints_3",
-      "d_course_yoshi_valley_track_waypoints_4",
+      d_course_yoshi_valley_track_path,
+      "d_course_yoshi_valley_track_path_2",
+      "d_course_yoshi_valley_track_path_3",
+      "d_course_yoshi_valley_track_path_4",
     ]
 
   # Unused except in podium ceremony
   path_table_unknown:
     [
-      d_course_yoshi_valley_unknown_waypoints,
-      d_course_yoshi_valley_unknown_waypoints_2,
-      d_course_yoshi_valley_unknown_waypoints_3,
-      d_course_yoshi_valley_unknown_waypoints_4,
+      d_course_yoshi_valley_unknown_path,
+      d_course_yoshi_valley_unknown_path_2,
+      d_course_yoshi_valley_unknown_path_3,
+      d_course_yoshi_valley_unknown_path_4,
     ]
 
   sky_colors: [113, 70, 255, 255, 184, 99]

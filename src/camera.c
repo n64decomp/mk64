@@ -9,7 +9,7 @@
 #include "code_800029B0.h"
 #include "math_util.h"
 #include "racing/memory.h"
-#include "waypoints.h"
+#include "path.h"
 #include "render_player.h"
 #include "collision.h"
 #include "code_80057C60.h"
@@ -221,7 +221,7 @@ void func_8001CA78(UNUSED Player* player, Camera* camera, Vec3f arg2, f32* arg3,
     f32 temp_f18;
     f32 temp_f16;
     UNUSED s32 pad;
-    TrackWaypoint* temp_s2;
+    TrackPathPoint* temp_s2;
 
     temp_s2 = &gTrackPath[0][gPathCountByPathIndex[0] - 10];
     sp68[0] = camera->unk_30[0];

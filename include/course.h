@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <macros.h>
-#include "waypoints.h"
+#include "path.h"
 
 /**
  * @file Include for course gfx.inc.c.
@@ -91,9 +91,9 @@ extern s16 gKartAISteeringSensitivity[];
 #define GET_COURSE_AISteeringSensitivity gKartAISteeringSensitivity[gCurrentCourseId]
 extern f32 gKartAICourseMinimumSeparation[];
 #define GET_COURSE_AIMinimumSeparation gKartAICourseMinimumSeparation[gCurrentCourseId]
-extern TrackWaypoint* gCoursePathTable[][4];
+extern TrackPathPoint* gCoursePathTable[][4];
 #define GET_COURSE_PathTable(p) segmented_to_virtual_dupe_2(gCoursePathTable[gCurrentCourseId][p])
-extern TrackWaypoint* gCoursePathTable2[][4];
+extern TrackPathPoint* gCoursePathTable2[][4];
 #define GET_COURSE_PathTable2(p) segmented_to_virtual_dupe_2(gCoursePathTable2[gCurrentCourseId][p])
 extern KartAIBehaviour* gKartAIBehaviourLUT[];
 #define GET_COURSE_AIBehaviour segmented_to_virtual_dupe_2(gKartAIBehaviourLUT[i])
@@ -108,9 +108,12 @@ extern f32 gCourseFarPersp;
 extern f32 gCourseNearPersp;
 #define gCourseNearPersp gCourseNearPersp
 #define GET_COURSE_D_0D0096B8(cc) *(f32*) segmented_to_virtual_dupe_2(&D_0D0096B8[gCurrentCourseId][cc])
-#define GET_COURSE_gCpuOffTrackTargetSpeed(cc) *(f32*) segmented_to_virtual_dupe_2(&gCpuOffTrackTargetSpeed[gCurrentCourseId][cc])
-#define GET_COURSE_gCpuCurveTargetSpeed(cc) *(f32*) segmented_to_virtual_dupe_2(&gCpuCurveTargetSpeed[gCurrentCourseId][cc])
-#define GET_COURSE_gCpuNormalTargetSpeed(cc) *(f32*) segmented_to_virtual_dupe_2(&gCpuNormalTargetSpeed[gCurrentCourseId][cc])
+#define GET_COURSE_gCpuOffTrackTargetSpeed(cc) \
+    *(f32*) segmented_to_virtual_dupe_2(&gCpuOffTrackTargetSpeed[gCurrentCourseId][cc])
+#define GET_COURSE_gCpuCurveTargetSpeed(cc) \
+    *(f32*) segmented_to_virtual_dupe_2(&gCpuCurveTargetSpeed[gCurrentCourseId][cc])
+#define GET_COURSE_gCpuNormalTargetSpeed(cc) \
+    *(f32*) segmented_to_virtual_dupe_2(&gCpuNormalTargetSpeed[gCurrentCourseId][cc])
 #else
 #define gCurrentCourseId
 #define GET_COURSE_800DCBB4(n)

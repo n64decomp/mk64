@@ -5,7 +5,7 @@
 #include "code_800029B0.h"
 #include "math_util.h"
 #include "memory.h"
-#include "waypoints.h"
+#include "path.h"
 #include "cpu_logic.h"
 #include "menu_items.h"
 #include "collision.h"

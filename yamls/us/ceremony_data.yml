@@ -1,13 +1,13 @@
 :config:
   segments:
     - [0x0B, 0x821D10]
-  header: 
+  header:
     code:
-    - '#include <assets/ceremony_data.h>'
+      - "#include <assets/ceremony_data.h>"
     header:
-    - '#include <ultra64.h>'
-    - '#include <common_structs.h>'
-    - '#include <waypoints.h>'
+      - "#include <ultra64.h>"
+      - "#include <common_structs.h>"
+      - "#include <path.h>"
 
 silver_trophy_dl:
   symbol: silver_trophy_dl
@@ -219,21 +219,21 @@ podium3_dl4:
   offset: 0x8AA0
 ending_sequence:
   symbol: podium_ceremony_path
-  type: mk64:track_waypoints
+  type: mk64:track_path
   offset: 0x8AA8
   count: 24
 ending_sequence2:
   symbol: podium_ceremony_path_2
-  type: mk64:track_waypoints
+  type: mk64:track_path
   offset: 0x8B68
   count: 23
 ending_sequence3:
   symbol: podium_ceremony_path_3
-  type: mk64:track_waypoints
+  type: mk64:track_path
   offset: 0x8C20
   count: 24
 ending_sequence4:
   symbol: podium_ceremony_path_4
-  type: mk64:track_waypoints
+  type: mk64:track_path
   offset: 0x8CE0
   count: 21

@@ -3,7 +3,7 @@
 
 #include "vehicles.h"
 #include "camera.h"
-#include "waypoints.h"
+#include "path.h"
 #include <assets/common_data.h>
 
 struct unexpiredActors {
@@ -93,7 +93,7 @@ enum CpuItemStrategyEnum {
 };
 
 /* Function Prototypes */
-s16 get_angle_between_waypoints(Vec3f, Vec3f);
+s16 get_angle_between_path(Vec3f, Vec3f);
 
 s32 is_collide_with_vehicle(f32, f32, f32, f32, f32, f32, f32, f32);
 void adjust_position_by_angle(Vec3f, Vec3f, s16);
@@ -131,7 +131,7 @@ void calculate_track_offset_position(u16, f32, f32, s16);
 void set_track_offset_position(u16, f32, s16);
 s16 func_8000BD94(f32, f32, f32, s32);
 
-s16 find_closest_waypoint_track_section(f32, f32, f32, u16, s32*);
+s16 find_closest_pathPoint_track_section(f32, f32, f32, u16, s32*);
 s16 update_path_index_with_track(f32, f32, f32, s16, s32, u16);
 s16 update_path_index(f32, f32, f32, s16, s32);
 void tweak_path_index_wario_stadium(f32, f32, f32, s16*, s32);
@@ -139,7 +139,7 @@ void adjust_path_at_start_line(f32, f32, f32, s16*, s32);
 s16 update_path_index_track_section(f32, f32, f32, Player*, s32, s32*);
 s16 update_player_path(f32, f32, f32, s16, Player*, s32, s32);
 
-s16 find_closest_vehicles_waypoint(f32, f32, f32, s16);
+s16 find_closest_vehicles_pathPoint(f32, f32, f32, s16);
 s16 func_8000D24C(f32, f32, f32, s32*);
 s16 func_8000D2B4(f32, f32, f32, s16, s32);
 s16 func_8000D33C(f32, f32, f32, s16, s32);
@@ -147,7 +147,7 @@ f32 cpu_track_position_factor(s32);
 void determine_ideal_cpu_position_offset(s32, u16);
 s16 func_8000D6D0(Vec3f, s16*, f32, f32, s16, s16);
 s16 func_8000D940(Vec3f, s16*, f32, f32, s16);
-s16 update_vehicle_following_waypoint(Vec3f, s16*, f32);
+s16 update_vehicle_following_pathPoint(Vec3f, s16*, f32);
 void set_bomb_kart_spawn_positions(void);
 void func_8000DF8C(s32);
 
@@ -161,11 +161,11 @@ void generate_player_smoke(void);
 
 void func_8000F0E0(void);
 void func_8000F124(void);
-void clear_waypoint(TrackWaypoint*, size_t);
-void init_course_waypoint(void);
+void clear_pathPoint(TrackPathPoint*, size_t);
+void init_course_pathPoint(void);
 void init_players(void);
 
-void load_track_waypoint(s32);
+void load_track_path(s32);
 void calculate_track_boundaries(s32);
 f32 calculate_track_curvature(s32, u16);
 void analize_track_section(s32);
@@ -175,9 +175,9 @@ void analisze_curved_path(s32);
 f32 func_80010F40(f32, f32, f32, s32, s32);
 f32 func_80010FA0(f32, f32, f32, s32, s32);
 
-s32 func_80011014(TrackWaypoint*, TrackWaypoint*, s32, s32);
-s32 process_path_data(TrackWaypoint*, TrackWaypoint*);
-s32 generate_2d_path(Path2D*, TrackWaypoint*, s32);
+s32 func_80011014(TrackPathPoint*, TrackPathPoint*, s32, s32);
+s32 process_path_data(TrackPathPoint*, TrackPathPoint*);
+s32 generate_2d_path(Path2D*, TrackPathPoint*, s32);
 void copy_courses_kart_ai_behaviour(void);
 void reset_kart_ai_behaviour_none(s32);
 void reset_kart_ai_behaviour(s32);
@@ -186,11 +186,11 @@ void kart_ai_behaviour_end(s32, Player*);
 void kart_ai_behaviour(s32);
 void func_80011EC0(s32, Player*, s32, u16);
 
-void generate_train_waypoints(void);
-void generate_ferry_waypoints(void);
+void generate_train_path(void);
+void generate_ferry_path(void);
 void spawn_vehicle_on_road(VehicleStuff*);
 void spawn_course_vehicles(void);
-void set_vehicle_pos_waypoint(TrainCarStuff*, Path2D*, u16);
+void set_vehicle_pos_pathPoint(TrainCarStuff*, Path2D*, u16);
 void init_vehicles_trains(void);
 void sync_train_components(TrainCarStuff*, s16);
 void update_vehicle_trains(void);
@@ -201,9 +201,9 @@ void check_ai_crossing_distance(s32);
 void init_vehicles_ferry(void);
 void update_vehicle_paddle_boats(void);
 void handle_paddleBoats_interactions(Player*);
-void initialize_toads_turnpike_vehicle(f32, f32, s32, s32, VehicleStuff*, TrackWaypoint*);
+void initialize_toads_turnpike_vehicle(f32, f32, s32, s32, VehicleStuff*, TrackPathPoint*);
 f32 func_80013C74(s16, s16);
-void update_vehicle_follow_waypoint(VehicleStuff*);
+void update_vehicle_follow_pathPoint(VehicleStuff*);
 void handle_vehicle_interactions(s32, Player*, VehicleStuff*, f32, f32, s32, u32);
 
 f32 player_track_position_factor_vehicle(s16, f32, s16);
@@ -308,8 +308,8 @@ extern s16 gPreviousAngleSteering[];
 extern f32 gTrackPositionFactor[];
 extern f32 D_80163090[];
 extern bool gIsPlayerInCurve[];
-extern u16 gCurrentNearestWaypoint;
-extern s16 gIsPlayerNewWaypoint;
+extern u16 gCurrentNearestPathPoint;
+extern s16 gIsPlayerNewPathPoint;
 extern s16 D_801630E8[];
 extern s16 gFerrySmokeTimer;
 extern s32 D_80163100[];
@@ -319,8 +319,8 @@ extern f32 gPreviousPlayerAiOffsetX[];
 extern f32 gPreviousPlayerAiOffsetZ[];
 extern s16 sVehicleSoundRenderCounter;
 extern s32 D_801631CC;
-extern TrackWaypoint* gCurrentTrackInnerPath;
-extern TrackWaypoint* gCurrentTrackOuterPath;
+extern TrackPathPoint* gCurrentTrackInnerPath;
+extern TrackPathPoint* gCurrentTrackOuterPath;
 extern s16* gCurrentTrackSectionTypesPath;
 extern u16 D_801631E0[];
 extern u16 D_801631F8[];
@@ -387,8 +387,8 @@ extern s16 D_801634EC;
 extern s32 D_801634F0;
 extern s32 D_801634F4;
 extern TrackPositionFactorInstruction gPlayerTrackPositionFactorInstruction[];
-extern Path2D* gVehicle2DWaypoint;
-extern s32 gVehicle2DWaypointLength;
+extern Path2D* gVehicle2DPathPoint;
+extern s32 gVehicle2DPathPointLength;
 extern u16 isCrossingTriggeredByIndex[];
 extern u16 sCrossingActiveTimer[];
 extern s32 D_80163DD8[];
@@ -404,7 +404,7 @@ extern s32 gGPCurrentRaceRankByPlayerId[]; // D_801643B8
 extern s32 gPreviousGPCurrentRaceRankByPlayerId[];
 extern s32 gGPCurrentRaceRankByPlayerIdDup[];
 extern u16 gSelectedPathCount;
-extern u16 gNearestWaypointByPlayerId[];
+extern u16 gNearestPathPointByPlayerId[];
 extern s32 gLapProgressScore[];
 extern s16 gCharacterPlayer[];
 extern s32 D_8016448C;

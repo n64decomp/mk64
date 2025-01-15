@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <mk64.h>
 
@@ -3971,7 +3971,7 @@ Gfx d_course_dks_jungle_parkway_dl_7108[] = {
 };
 
 // 0x71F0
-TrackWaypoint d_course_dks_jungle_parkway_unknown_waypoints[] = {
+TrackPathPoint d_course_dks_jungle_parkway_unknown_path[] = {
     { 2, 0, 12, 0 },        { 5, 0, -5, 0 },        { 0, 0, -211, 0 },      { 0, 0, -455, 0 },
     { 9, 0, -522, 0 },      { 39, 0, -585, 0 },     { 91, 0, -634, 0 },     { 149, 0, -678, 0 },
     { 428, 0, -840, 0 },    { 730, 0, -1014, 0 },   { 884, 0, -1081, 0 },   { 1118, 0, -1142, 0 },
@@ -4000,7 +4000,7 @@ TrackWaypoint d_course_dks_jungle_parkway_unknown_waypoints[] = {
     { 3, 0, 45, 0 },        { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_dks_jungle_parkway_ferry_waypoints[] = {
+TrackPathPoint d_course_dks_jungle_parkway_ferry_path[] = {
     { 1237, 0, -1373, 0 }, { 1206, 0, -1365, 0 }, { 877, 0, -1272, 0 },  { 614, 0, -1152, 0 },  { 254, 0, -959, 0 },
     { -44, 0, -852, 0 },   { -217, 0, -814, 0 },  { -350, 0, -801, 0 },  { -431, 0, -842, 0 },  { -442, 0, -942, 0 },
     { -395, 0, -1039, 0 }, { -314, 0, -1154, 0 }, { -125, 0, -1307, 0 }, { 95, 0, -1466, 0 },   { 316, 0, -1570, 0 },
@@ -4010,7 +4010,7 @@ TrackWaypoint d_course_dks_jungle_parkway_ferry_waypoints[] = {
     { 1293, 0, -1375, 0 }, { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_dks_jungle_parkway_track_waypoints[] = {
+TrackPathPoint d_course_dks_jungle_parkway_track_path[] = {
     { 3, 0, 3, 1 },
     { 4, 0, -16, 1 },
     { 3, 0, -36, 1 },

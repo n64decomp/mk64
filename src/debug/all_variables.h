@@ -65,7 +65,7 @@
 #include "buffers/trig_tables.h"
 #include <ultra64.h>
 #include <vehicles.h>
-#include <waypoints.h>
+#include <path.h>
 
 #include <courses/all_course_data.h>
 #include <courses/all_course_packed.h>

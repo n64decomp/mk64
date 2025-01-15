@@ -4,7 +4,7 @@
 
 #include "code_800029B0.h"
 #include "memory.h"
-#include "waypoints.h"
+#include "path.h"
 #include "actors.h"
 #include "actor_types.h"
 #include "math_util.h"

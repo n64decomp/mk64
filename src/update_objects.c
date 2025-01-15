@@ -12,7 +12,7 @@
 #include "math_util_2.h"
 #include "render_objects.h"
 #include "objects.h"
-#include "waypoints.h"
+#include "path.h"
 #include "code_800029B0.h"
 #include "cpu_logic.h"
 #include "code_80057C60.h"
@@ -4050,8 +4050,8 @@ void func_8007BD04(s32 playerId) {
 
     objectIndex = indexObjectList2[0];
     if (gObjectList[objectIndex].state == 0) {
-        if (((s32) gNearestWaypointByPlayerId[playerId] >= 0xA0) &&
-            ((s32) gNearestWaypointByPlayerId[playerId] < 0xAB)) {
+        if (((s32) gNearestPathPointByPlayerId[playerId] >= 0xA0) &&
+            ((s32) gNearestPathPointByPlayerId[playerId] < 0xAB)) {
             set_obj_origin_pos(objectIndex, xOrientation * -1650.0, -200.0f, -1650.0f);
             init_object(objectIndex, 1);
         }
@@ -4398,14 +4398,14 @@ void func_8007CA70(void) {
     if (D_8018CFF0 == 0) {
         playerId = func_8007C9F8();
         D_8018D018 = playerId;
-        test = &gNearestWaypointByPlayerId[playerId];
+        test = &gNearestPathPointByPlayerId[playerId];
         if ((*test >= 0xC9) && (*test < 0xD2)) {
             func_8007C7B4(0, (s32) playerId);
         }
     }
     if (D_8018CFF0 != 0) {
         playerId = D_8018D018;
-        test = &gNearestWaypointByPlayerId[playerId];
+        test = &gNearestPathPointByPlayerId[playerId];
         if ((*test >= 0xB5) && (*test < 0xBE)) {
             func_8007C91C(0);
         }
@@ -4416,14 +4416,14 @@ void func_8007CA70(void) {
     if (D_8018D048 == 0) {
         playerId = func_8007C9F8();
         D_8018D110 = playerId;
-        test = &gNearestWaypointByPlayerId[playerId];
+        test = &gNearestPathPointByPlayerId[playerId];
         if ((*test >= 0x1FF) && (*test < 0x208)) {
             func_8007C7B4(5, (s32) playerId);
         }
     }
     if (D_8018D048 != 0) {
         playerId = D_8018D110;
-        test = &gNearestWaypointByPlayerId[playerId];
+        test = &gNearestPathPointByPlayerId[playerId];
         if ((*test >= 0x1EB) && (*test < 0x1F4)) {
             func_8007C91C(5);
         }
@@ -5490,11 +5490,11 @@ s32 func_8007F75C(s32 playerId) {
     s32 objectIndex;
     s32 temp_s7;
     s32 var_s6;
-    s32 waypoint;
+    s32 pathPoint;
 
-    waypoint = gNearestWaypointByPlayerId[playerId];
+    pathPoint = gNearestPathPointByPlayerId[playerId];
     var_s6 = 0;
-    if ((waypoint >= 0xAA) && (waypoint < 0xB5)) {
+    if ((pathPoint >= 0xAA) && (pathPoint < 0xB5)) {
         temp_s7 = random_int(0x0032U) + 0x32;
         for (someIndex = 0; someIndex < gNumActiveThwomps; someIndex++) {
             objectIndex = indexObjectList1[someIndex];
@@ -5503,7 +5503,7 @@ s32 func_8007F75C(s32 playerId) {
                 func_8007F660(objectIndex, playerId, temp_s7);
             }
         }
-    } else if ((waypoint >= 0xD7) && (waypoint < 0xE2)) {
+    } else if ((pathPoint >= 0xD7) && (pathPoint < 0xE2)) {
         for (someIndex = 0; someIndex < gNumActiveThwomps; someIndex++) {
             objectIndex = indexObjectList1[someIndex];
             if (gObjectList[objectIndex].unk_0D5 == 3) {
@@ -7656,7 +7656,7 @@ void update_hot_air_balloon(void) {
 }
 
 void func_80085878(s32 objectIndex, s32 arg1) {
-    TrackWaypoint* temp_v0;
+    TrackPathPoint* temp_v0;
     Object* object;
 
     object = &gObjectList[objectIndex];

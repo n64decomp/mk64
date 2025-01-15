@@ -6,7 +6,7 @@
 #include "code_800029B0.h"
 #include "kart_attributes.h"
 #include "memory.h"
-#include "waypoints.h"
+#include "path.h"
 #include "buffers.h"
 #include "kart_dma.h"
 #include "camera.h"
@@ -37,8 +37,8 @@ s32 D_801652E0[8];
 s16 D_80165300[8];
 // Shadows values from gPathIndexByPlayerId, but is an array
 u16 gCopyPathIndexByPlayerId[8];
-// Shadows values from gNearestWaypointByPlayerId, but is an array
-s16 gCopyNearestWaypointByPlayerId[8];
+// Shadows values from gNearestPathPointByPlayerId, but is an array
+s16 gCopyNearestPathPointByPlayerId[8];
 s16 D_80165330[8];
 s16 D_80165340;
 UNUSED s32 D_80165348[29];
@@ -193,7 +193,7 @@ void spawn_player(Player* player, s8 playerIndex, f32 startingRow, f32 startingC
     player->unk_10C = 0;
     player->unk_200 = 0;
     player->unk_204 = 0;
-    player->nearestWaypointId = 0;
+    player->nearestPathPointId = 0;
     player->unk_228 = 0;
     player->unk_22A = 0;
     player->unk_234 = 0;
@@ -871,7 +871,7 @@ void func_8003C0F0(void) {
         case COURSE_RAINBOW_ROAD:
         case COURSE_WARIO_STADIUM:
         case COURSE_DK_JUNGLE:
-            init_course_waypoint();
+            init_course_pathPoint();
             sp5E = (f32) gTrackPath[0][0].posX;
             sp5C = (f32) gTrackPath[0][0].posZ;
             sp5A = (f32) gTrackPath[0][0].posY;

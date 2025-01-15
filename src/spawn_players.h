@@ -34,7 +34,7 @@ extern s32 D_801652C0[];
 extern s32 D_801652E0[];
 extern s16 D_80165300[];
 extern u16 gCopyPathIndexByPlayerId[];
-extern s16 gCopyNearestWaypointByPlayerId[];
+extern s16 gCopyNearestPathPointByPlayerId[];
 extern s16 D_80165330[];
 extern s16 D_80165340;
 extern Player* D_801653C0[];

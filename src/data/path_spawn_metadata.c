@@ -12,14 +12,14 @@ KartAIBehaviour* gKartAIBehaviourLUT[] = {
 
 #endif
 
-TrackWaypoint nullPath = { 0x8000, 0x0000, 0x0000, 0x0000 };
+TrackPathPoint nullPath = { 0x8000, 0x0000, 0x0000, 0x0000 };
 
 #if !ENABLE_CUSTOM_COURSE_ENGINE
-TrackWaypoint* gCoursePathTable[][4] = {
+TrackPathPoint* gCoursePathTable[][4] = {
 #include "assets/course_metadata/gCoursePathTableUnknown.inc.c"
 };
 
-TrackWaypoint* gCoursePathTable2[][4] = {
+TrackPathPoint* gCoursePathTable2[][4] = {
 #include "assets/course_metadata/gCoursePathTable.inc.c"
 };
 

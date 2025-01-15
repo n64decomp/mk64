@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <mk64.h>
 
@@ -8424,7 +8424,7 @@ Gfx d_course_moo_moo_farm_dl_EA18[] = {
 };
 
 // 0xEC80
-TrackWaypoint d_course_moo_moo_farm_unknown_waypoints[] = {
+TrackPathPoint d_course_moo_moo_farm_unknown_path[] = {
     { 11, 0, 46, 0 },      { 9, 0, 21, 0 },       { 5, 0, -307, 0 },     { -19, 0, -698, 0 },   { -28, 0, -1122, 0 },
     { -11, 0, -1281, 0 },  { -17, 0, -1480, 0 },  { 35, 0, -1705, 0 },   { 221, 0, -1918, 0 },  { 413, 0, -2044, 0 },
     { 628, 0, -2130, 0 },  { 851, 0, -2141, 0 },  { 1056, 0, -2065, 0 }, { 1200, 0, -1919, 0 }, { 1336, 0, -1771, 0 },
@@ -8436,7 +8436,7 @@ TrackWaypoint d_course_moo_moo_farm_unknown_waypoints[] = {
     { 27, 0, 423, 0 },     { 6, 0, 185, 0 },      { 6, 0, 78, 0 },       { 1737, 0, -186, 0 },  { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_moo_moo_farm_track_waypoints[] = {
+TrackPathPoint d_course_moo_moo_farm_track_path[] = {
     { 10, 18, 33, 1 },      { 9, 17, 13, 2 },       { 8, 17, -6, 2 },
     { 8, 16, -26, 2 },      { 8, 15, -46, 2 },      { 7, 14, -66, 2 },
     { 7, 14, -86, 2 },      { 7, 14, -106, 2 },     { 7, 14, -126, 2 },

@@ -234,12 +234,12 @@ glabel update_player
 .L80009E6C:
 /* 00AA6C 80009E6C 8FAF0040 */  lw    $t7, 0x40($sp)
 .L80009E70:
-/* 00AA70 80009E70 3C0A8016 */  lui   $t2, %hi(gIsPlayerNewWaypoint) # $t2, 0x8016
+/* 00AA70 80009E70 3C0A8016 */  lui   $t2, %hi(gIsPlayerNewPathPoint) # $t2, 0x8016
 /* 00AA74 80009E74 95F80000 */  lhu   $t8, ($t7)
 /* 00AA78 80009E78 33191000 */  andi  $t9, $t8, 0x1000
 /* 00AA7C 80009E7C 532004AD */  beql  $t9, $zero, .L8000B134
 /* 00AA80 80009E80 8FBF0014 */   lw    $ra, 0x14($sp)
-/* 00AA84 80009E84 854A30E2 */  lh    $t2, %lo(gIsPlayerNewWaypoint)($t2)
+/* 00AA84 80009E84 854A30E2 */  lh    $t2, %lo(gIsPlayerNewPathPoint)($t2)
 /* 00AA88 80009E88 24010001 */  li    $at, 1
 /* 00AA8C 80009E8C 15410007 */  bne   $t2, $at, .L80009EAC
 /* 00AA90 80009E90 3C0B800E */   lui   $t3, %hi(gCurrentCourseId)
@@ -333,7 +333,7 @@ glabel update_player
 /* 00ABCC 80009FCC 3C0A8016 */  lui   $t2, %hi(gPlayerPathY) # $t2, 0x8016
 /* 00ABD0 80009FD0 254A4510 */  addiu $t2, %lo(gPlayerPathY) # addiu $t2, $t2, 0x4510
 /* 00ABD4 80009FD4 1840000A */  blez  $v0, .L8000A000
-/* 00ABD8 80009FD8 3C0B8016 */   lui   $t3, %hi(gNearestWaypointByPlayerId) # $t3, 0x8016
+/* 00ABD8 80009FD8 3C0B8016 */   lui   $t3, %hi(gNearestPathPointByPlayerId) # $t3, 0x8016
 /* 00ABDC 80009FDC 8FAD00D0 */  lw    $t5, 0xd0($sp)
 /* 00ABE0 80009FE0 3C188016 */  lui   $t8, %hi(gPlayerTrackPositionFactorInstruction) # $t8, 0x8016
 /* 00ABE4 80009FE4 44802000 */  mtc1  $zero, $f4
@@ -344,7 +344,7 @@ glabel update_player
 /* 00ABF8 80009FF8 E4640004 */  swc1  $f4, 4($v1)
 /* 00ABFC 80009FFC E466000C */  swc1  $f6, 0xc($v1)
 .L8000A000:
-/* 00AC00 8000A000 256B4438 */  addiu $t3, %lo(gNearestWaypointByPlayerId) # addiu $t3, $t3, 0x4438
+/* 00AC00 8000A000 256B4438 */  addiu $t3, %lo(gNearestPathPointByPlayerId) # addiu $t3, $t3, 0x4438
 /* 00AC04 8000A004 010B7021 */  addu  $t6, $t0, $t3
 /* 00AC08 8000A008 8FB90038 */  lw    $t9, 0x38($sp)
 /* 00AC0C 8000A00C AFAE0024 */  sw    $t6, 0x24($sp)
@@ -514,8 +514,8 @@ glabel update_player
 /* 00AE78 8000A278 1000002C */  b     .L8000A32C
 /* 00AE7C 8000A27C E4700004 */   swc1  $f16, 4($v1)
 .L8000A280:
-/* 00AE80 8000A280 3C0F8016 */  lui   $t7, %hi(sSomeNearestWaypoint) # $t7, 0x8016
-/* 00AE84 8000A284 85EF2FCE */  lh    $t7, %lo(sSomeNearestWaypoint)($t7)
+/* 00AE80 8000A280 3C0F8016 */  lui   $t7, %hi(sSomeNearestPathPoint) # $t7, 0x8016
+/* 00AE84 8000A284 85EF2FCE */  lh    $t7, %lo(sSomeNearestPathPoint)($t7)
 /* 00AE88 8000A288 3C0B8016 */  lui   $t3, %hi(gCurrentTrackConsecutiveCurveCountsPath) # $t3, 0x8016
 /* 00AE8C 8000A28C 8D6B45E0 */  lw    $t3, %lo(gCurrentTrackConsecutiveCurveCountsPath)($t3)
 /* 00AE90 8000A290 000F7040 */  sll   $t6, $t7, 1
@@ -564,8 +564,8 @@ glabel update_player
 /* 00AF34 8000A334 AFA8003C */   sw    $t0, 0x3c($sp)
 /* 00AF38 8000A338 0C0034EE */  jal   cpu_track_position_factor
 /* 00AF3C 8000A33C 8FA400D0 */   lw    $a0, 0xd0($sp)
-/* 00AF40 8000A340 3C058016 */  lui   $a1, %hi(gCurrentNearestWaypoint) # $a1, 0x8016
-/* 00AF44 8000A344 94A530E0 */  lhu   $a1, %lo(gCurrentNearestWaypoint)($a1)
+/* 00AF40 8000A340 3C058016 */  lui   $a1, %hi(gCurrentNearestPathPoint) # $a1, 0x8016
+/* 00AF44 8000A344 94A530E0 */  lhu   $a1, %lo(gCurrentNearestPathPoint)($a1)
 /* 00AF48 8000A348 0C00350E */  jal   determine_ideal_cpu_position_offset
 /* 00AF4C 8000A34C 8FA400D0 */   lw    $a0, 0xd0($sp)
 /* 00AF50 8000A350 8FA60040 */  lw    $a2, 0x40($sp)
@@ -590,7 +590,7 @@ glabel update_player
 /* 00AF9C 8000A39C 3C0145C8 */  li    $at, 0x45C80000 # 6400.000000
 /* 00AFA0 8000A3A0 44819000 */  mtc1  $at, $f18
 /* 00AFA4 8000A3A4 46021182 */  mul.s $f6, $f2, $f2
-/* 00AFA8 8000A3A8 3C0B8016 */  lui   $t3, %hi(gCurrentNearestWaypoint) # 0x8016
+/* 00AFA8 8000A3A8 3C0B8016 */  lui   $t3, %hi(gCurrentNearestPathPoint) # 0x8016
 /* 00AFAC 8000A3AC 3C0C8016 */  lui   $t4, %hi(gSelectedPathCount) # $t4, 0x8016
 /* 00AFB0 8000A3B0 3C198016 */  lui   $t9, %hi(gActualPath) # 0x8016
 /* 00AFB4 8000A3B4 3C0F8016 */  lui   $t7, %hi(gPathExpectedRotation) # 0x8016
@@ -614,8 +614,8 @@ glabel update_player
 /* 00AFFC 8000A3FC 24E72FA0 */  addiu $a3, %lo(gOffsetPosition) # addiu $a3, $a3, 0x2fa0
 /* 00B000 8000A400 8FA8003C */  lw    $t0, 0x3c($sp)
 /* 00B004 8000A404 19C0001F */  blez  $t6, .L8000A484
-/* 00B008 8000A408 3C048016 */   lui   $a0, %hi(gCurrentNearestWaypoint) # $a0, 0x8016
-/* 00B00C 8000A40C 948430E0 */  lhu   $a0, %lo(gCurrentNearestWaypoint)($a0)
+/* 00B008 8000A408 3C048016 */   lui   $a0, %hi(gCurrentNearestPathPoint) # $a0, 0x8016
+/* 00B00C 8000A40C 948430E0 */  lhu   $a0, %lo(gCurrentNearestPathPoint)($a0)
 /* 00B010 8000A410 3C188016 */  lui   $t8, %hi(gSelectedPathCount) # $t8, 0x8016
 /* 00B014 8000A414 97184430 */  lhu   $t8, %lo(gSelectedPathCount)($t8)
 /* 00B018 8000A418 24840005 */  addiu $a0, $a0, 5
@@ -660,7 +660,7 @@ glabel update_player
 /* 00B0A4 8000A4A4 10000017 */  b     .L8000A504
 /* 00B0A8 8000A4A8 A4CD002E */   sh    $t5, 0x2e($a2)
 .L8000A4AC:
-/* 00B0AC 8000A4AC 956B30E0 */  lhu   $t3, %lo(gCurrentNearestWaypoint)($t3) # 0x30e0($t3)
+/* 00B0AC 8000A4AC 956B30E0 */  lhu   $t3, %lo(gCurrentNearestPathPoint)($t3) # 0x30e0($t3)
 /* 00B0B0 8000A4B0 958C4430 */  lhu   $t4, %lo(gSelectedPathCount)($t4)
 /* 00B0B4 8000A4B4 8F393448 */  lw    $t9, %lo(gActualPath)($t9) # 0x3448($t9)
 /* 00B0B8 8000A4B8 256E0004 */  addiu $t6, $t3, 4
@@ -726,14 +726,14 @@ glabel update_player
 /* 00B18C 8000A58C 0002C823 */  negu  $t9, $v0
 /* 00B190 8000A590 01981821 */  addu  $v1, $t4, $t8
 /* 00B194 8000A594 A4790000 */  sh    $t9, ($v1)
-/* 00B198 8000A598 3C0F8016 */  lui   $t7, %hi(sSomeNearestWaypoint) # $t7, 0x8016
-/* 00B19C 8000A59C 85EF2FCE */  lh    $t7, %lo(sSomeNearestWaypoint)($t7)
+/* 00B198 8000A598 3C0F8016 */  lui   $t7, %hi(sSomeNearestPathPoint) # $t7, 0x8016
+/* 00B19C 8000A59C 85EF2FCE */  lh    $t7, %lo(sSomeNearestPathPoint)($t7)
 /* 00B1A0 8000A5A0 3C0D8016 */  lui   $t5, %hi(gSelectedPathCount) # $t5, 0x8016
 /* 00B1A4 8000A5A4 95AD4430 */  lhu   $t5, %lo(gSelectedPathCount)($t5)
 /* 00B1A8 8000A5A8 25EA0002 */  addiu $t2, $t7, 2
-/* 00B1AC 8000A5AC 3C0C8016 */  lui   $t4, %hi(gCurrentWaypointExpectedRotationPath) # $t4, 0x8016
+/* 00B1AC 8000A5AC 3C0C8016 */  lui   $t4, %hi(gCurrentPathPointExpectedRotationPath) # $t4, 0x8016
 /* 00B1B0 8000A5B0 014D001A */  div   $zero, $t2, $t5
-/* 00B1B4 8000A5B4 8D8C31DC */  lw    $t4, %lo(gCurrentWaypointExpectedRotationPath)($t4)
+/* 00B1B4 8000A5B4 8D8C31DC */  lw    $t4, %lo(gCurrentPathPointExpectedRotationPath)($t4)
 /* 00B1B8 8000A5B8 00005810 */  mfhi  $t3
 /* 00B1BC 8000A5BC 000B7040 */  sll   $t6, $t3, 1
 /* 00B1C0 8000A5C0 018EC021 */  addu  $t8, $t4, $t6
@@ -893,18 +893,18 @@ glabel update_player
 /* 00B3E8 8000A7E8 10000252 */  b     .L8000B134
 /* 00B3EC 8000A7EC 8FBF0014 */   lw    $ra, 0x14($sp)
 .L8000A7F0:
-/* 00B3F0 8000A7F0 3C058016 */  lui   $a1, %hi(sSomeNearestWaypoint) # $a1, 0x8016
+/* 00B3F0 8000A7F0 3C058016 */  lui   $a1, %hi(sSomeNearestPathPoint) # $a1, 0x8016
 /* 00B3F4 8000A7F4 254D0014 */  addiu $t5, $t2, 0x14
 /* 00B3F8 8000A7F8 AFAD001C */  sw    $t5, 0x1c($sp)
 /* 00B3FC 8000A7FC 0C002DF9 */  jal   are_in_curse
-/* 00B400 8000A800 94A52FCE */   lhu   $a1, %lo(sSomeNearestWaypoint)($a1)
+/* 00B400 8000A800 94A52FCE */   lhu   $a1, %lo(sSomeNearestPathPoint)($a1)
 /* 00B404 8000A804 8FAF0038 */  lw    $t7, 0x38($sp)
 /* 00B408 8000A808 3C0B8016 */  lui   $t3, %hi(gIsPlayerInCurve) # $t3, 0x8016
 /* 00B40C 8000A80C 256B30B8 */  addiu $t3, %lo(gIsPlayerInCurve) # addiu $t3, $t3, 0x30b8
 /* 00B410 8000A810 01EB1821 */  addu  $v1, $t7, $t3
 /* 00B414 8000A814 AC620000 */  sw    $v0, ($v1)
-/* 00B418 8000A818 3C058016 */  lui   $a1, %hi(sSomeNearestWaypoint) # $a1, 0x8016
-/* 00B41C 8000A81C 94A52FCE */  lhu   $a1, %lo(sSomeNearestWaypoint)($a1)
+/* 00B418 8000A818 3C058016 */  lui   $a1, %hi(sSomeNearestPathPoint) # $a1, 0x8016
+/* 00B41C 8000A81C 94A52FCE */  lhu   $a1, %lo(sSomeNearestPathPoint)($a1)
 /* 00B420 8000A820 AFA30028 */  sw    $v1, 0x28($sp)
 /* 00B424 8000A824 0C00350E */  jal   determine_ideal_cpu_position_offset
 /* 00B428 8000A828 8FA400D0 */   lw    $a0, 0xd0($sp)
@@ -923,8 +923,8 @@ glabel update_player
 /* 00B45C 8000A85C 10200045 */  beqz  $at, .L8000A974
 /* 00B460 8000A860 00000000 */   nop
 /* 00B464 8000A864 8FAC00D0 */  lw    $t4, 0xd0($sp)
-/* 00B468 8000A868 3C048016 */  lui   $a0, %hi(gCurrentNearestWaypoint) # $a0, 0x8016
-/* 00B46C 8000A86C 948430E0 */  lhu   $a0, %lo(gCurrentNearestWaypoint)($a0)
+/* 00B468 8000A868 3C048016 */  lui   $a0, %hi(gCurrentNearestPathPoint) # $a0, 0x8016
+/* 00B46C 8000A86C 948430E0 */  lhu   $a0, %lo(gCurrentNearestPathPoint)($a0)
 /* 00B470 8000A870 000CC100 */  sll   $t8, $t4, 4
 /* 00B474 8000A874 18A0001F */  blez  $a1, .L8000A8F4
 /* 00B478 8000A878 03191821 */   addu  $v1, $t8, $t9
@@ -1008,8 +1008,8 @@ glabel update_player
 /* 00B594 8000A994 3C0F8016 */  lui   $t7, %hi(gSelectedPathCount) # $t7, 0x8016
 /* 00B598 8000A998 15400019 */  bnez  $t2, .L8000AA00
 /* 00B59C 8000A99C 00000000 */   nop
-/* 00B5A0 8000A9A0 3C048016 */  lui   $a0, %hi(gCurrentNearestWaypoint) # $a0, 0x8016
-/* 00B5A4 8000A9A4 948430E0 */  lhu   $a0, %lo(gCurrentNearestWaypoint)($a0)
+/* 00B5A0 8000A9A0 3C048016 */  lui   $a0, %hi(gCurrentNearestPathPoint) # $a0, 0x8016
+/* 00B5A4 8000A9A4 948430E0 */  lhu   $a0, %lo(gCurrentNearestPathPoint)($a0)
 /* 00B5A8 8000A9A8 95EF4430 */  lhu   $t7, %lo(gSelectedPathCount)($t7)
 /* 00B5AC 8000A9AC 3C05BF33 */  lui   $a1, (0xBF333333 >> 16) # lui $a1, 0xbf33
 /* 00B5B0 8000A9B0 24840007 */  addiu $a0, $a0, 7
@@ -1051,8 +1051,8 @@ glabel update_player
 /* 00B634 8000AA34 854D0000 */  lh    $t5, ($t2)
 /* 00B638 8000AA38 19A0001A */  blez  $t5, .L8000AAA4
 /* 00B63C 8000AA3C 00000000 */   nop
-/* 00B640 8000AA40 3C048016 */  lui   $a0, %hi(gCurrentNearestWaypoint) # $a0, 0x8016
-/* 00B644 8000AA44 948430E0 */  lhu   $a0, %lo(gCurrentNearestWaypoint)($a0)
+/* 00B640 8000AA40 3C048016 */  lui   $a0, %hi(gCurrentNearestPathPoint) # $a0, 0x8016
+/* 00B644 8000AA44 948430E0 */  lhu   $a0, %lo(gCurrentNearestPathPoint)($a0)
 /* 00B648 8000AA48 956B4430 */  lhu   $t3, %lo(gSelectedPathCount)($t3)
 /* 00B64C 8000AA4C 3C058016 */  lui   $a1, %hi(D_80163090) # 0x8016
 /* 00B650 8000AA50 24840005 */  addiu $a0, $a0, 5

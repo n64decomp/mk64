@@ -27,8 +27,8 @@ typedef enum { A = 0x80, B = 0x40, Z = 0x20, R = 0x10 } GhostController;
 /***  types.h  ***/
 
 typedef struct {
-    /* 0x0 */ s16 waypointStart;
-    /* 0x2 */ s16 waypointEnd;
+    /* 0x0 */ s16 pathPointStart;
+    /* 0x2 */ s16 pathPointEnd;
     /* 0x4 */ s32 type;
 } KartAIBehaviour; // size = 0x8
 
@@ -336,7 +336,7 @@ typedef struct {
     /* 0x0214 */ f32 topSpeed;
     /* 0x0218 */ f32 unk_218;
     /* 0x021C */ f32 unk_21C;
-    /* 0x0220 */ s16 nearestWaypointId; // ??
+    /* 0x0220 */ s16 nearestPathPointId; // ??
     /* 0x0222 */ s16 unk_222;
     /* 0x0224 */ f32 size;
     /* 0x0228 */ s16 unk_228;

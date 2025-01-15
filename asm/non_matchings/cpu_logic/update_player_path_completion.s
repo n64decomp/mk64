@@ -15,16 +15,16 @@ glabel update_player_path_completion
 /* 009EA8 800092A8 C4AC0014 */  lwc1  $f12, 0x14($a1)
 /* 009EAC 800092AC C4AE0018 */  lwc1  $f14, 0x18($a1)
 /* 009EB0 800092B0 3C0E8016 */  lui   $t6, %hi(D_80163240) # $t6, 0x8016
-/* 009EB4 800092B4 3C018016 */  lui   $at, %hi(gIsPlayerNewWaypoint) # $at, 0x8016
+/* 009EB4 800092B4 3C018016 */  lui   $at, %hi(gIsPlayerNewPathPoint) # $at, 0x8016
 /* 009EB8 800092B8 25CE3240 */  addiu $t6, %lo(D_80163240) # addiu $t6, $t6, 0x3240
 /* 009EBC 800092BC 00041040 */  sll   $v0, $a0, 1
-/* 009EC0 800092C0 A42030E2 */  sh    $zero, %lo(gIsPlayerNewWaypoint)($at)
+/* 009EC0 800092C0 A42030E2 */  sh    $zero, %lo(gIsPlayerNewPathPoint)($at)
 /* 009EC4 800092C4 004E1821 */  addu  $v1, $v0, $t6
 /* 009EC8 800092C8 A4600000 */  sh    $zero, ($v1)
-/* 009ECC 800092CC 3C0F8016 */  lui   $t7, %hi(gNearestWaypointByPlayerId) # $t7, 0x8016
+/* 009ECC 800092CC 3C0F8016 */  lui   $t7, %hi(gNearestPathPointByPlayerId) # $t7, 0x8016
 /* 009ED0 800092D0 3C188016 */  lui   $t8, %hi(gActualPath) # $t8, 0x8016
 /* 009ED4 800092D4 8F183448 */  lw    $t8, %lo(gActualPath)($t8)
-/* 009ED8 800092D8 25EF4438 */  addiu $t7, %lo(gNearestWaypointByPlayerId) # addiu $t7, $t7, 0x4438
+/* 009ED8 800092D8 25EF4438 */  addiu $t7, %lo(gNearestPathPointByPlayerId) # addiu $t7, $t7, 0x4438
 /* 009EDC 800092DC 004F4021 */  addu  $t0, $v0, $t7
 /* 009EE0 800092E0 44060000 */  mfc1  $a2, $f0
 /* 009EE4 800092E4 85070000 */  lh    $a3, ($t0)
@@ -38,13 +38,13 @@ glabel update_player_path_completion
 /* 009F04 80009304 E7AC004C */  swc1  $f12, 0x4c($sp)
 /* 009F08 80009308 0C003349 */  jal   update_player_path
 /* 009F0C 8000930C AFB80018 */   sw    $t8, 0x18($sp)
-/* 009F10 80009310 3C058016 */  lui   $a1, %hi(sSomeNearestWaypoint) # $a1, 0x8016
-/* 009F14 80009314 24A52FCE */  addiu $a1, %lo(sSomeNearestWaypoint) # addiu $a1, $a1, 0x2fce
+/* 009F10 80009310 3C058016 */  lui   $a1, %hi(sSomeNearestPathPoint) # $a1, 0x8016
+/* 009F14 80009314 24A52FCE */  addiu $a1, %lo(sSomeNearestPathPoint) # addiu $a1, $a1, 0x2fce
 /* 009F18 80009318 A4A20000 */  sh    $v0, ($a1)
 /* 009F1C 8000931C 84A70000 */  lh    $a3, ($a1)
 /* 009F20 80009320 8FA80030 */  lw    $t0, 0x30($sp)
-/* 009F24 80009324 3C018016 */  lui   $at, %hi(gCurrentNearestWaypoint) # $at, 0x8016
-/* 009F28 80009328 A42730E0 */  sh    $a3, %lo(gCurrentNearestWaypoint)($at)
+/* 009F24 80009324 3C018016 */  lui   $at, %hi(gCurrentNearestPathPoint) # $at, 0x8016
+/* 009F28 80009328 A42730E0 */  sh    $a3, %lo(gCurrentNearestPathPoint)($at)
 /* 009F2C 8000932C 95190000 */  lhu   $t9, ($t0)
 /* 009F30 80009330 8FA40050 */  lw    $a0, 0x50($sp)
 /* 009F34 80009334 C7AC004C */  lwc1  $f12, 0x4c($sp)
@@ -52,13 +52,13 @@ glabel update_player_path_completion
 /* 009F3C 8000933C 00E01825 */   move  $v1, $a3
 /* 009F40 80009340 A5030000 */  sh    $v1, ($t0)
 /* 009F44 80009344 24090001 */  li    $t1, 1
-/* 009F48 80009348 3C018016 */  lui   $at, %hi(gIsPlayerNewWaypoint) # $at, 0x8016
-/* 009F4C 8000934C A42930E2 */  sh    $t1, %lo(gIsPlayerNewWaypoint)($at)
+/* 009F48 80009348 3C018016 */  lui   $at, %hi(gIsPlayerNewPathPoint) # $at, 0x8016
+/* 009F4C 8000934C A42930E2 */  sh    $t1, %lo(gIsPlayerNewPathPoint)($at)
 /* 009F50 80009350 AFA40050 */  sw    $a0, 0x50($sp)
 /* 009F54 80009354 0C0023CE */  jal   update_player_completion
 /* 009F58 80009358 E7AC004C */   swc1  $f12, 0x4c($sp)
-/* 009F5C 8000935C 3C078016 */  lui   $a3, %hi(sSomeNearestWaypoint) # $a3, 0x8016
-/* 009F60 80009360 84E72FCE */  lh    $a3, %lo(sSomeNearestWaypoint)($a3)
+/* 009F5C 8000935C 3C078016 */  lui   $a3, %hi(sSomeNearestPathPoint) # $a3, 0x8016
+/* 009F60 80009360 84E72FCE */  lh    $a3, %lo(sSomeNearestPathPoint)($a3)
 /* 009F64 80009364 8FA40050 */  lw    $a0, 0x50($sp)
 /* 009F68 80009368 C7AC004C */  lwc1  $f12, 0x4c($sp)
 .L8000936C:
@@ -297,8 +297,8 @@ glabel update_player_path_completion
 /* 00A2D0 800096D0 E42A3450 */  swc1  $f10, %lo(gPreviousPlayerZ)($at)
 /* 00A2D4 800096D4 24010004 */  li    $at, 4
 /* 00A2D8 800096D8 15C10013 */  bne   $t6, $at, .L80009728
-/* 00A2DC 800096DC 3C0F8016 */   lui   $t7, %hi(gIsPlayerNewWaypoint) # $t7, 0x8016
-/* 00A2E0 800096E0 85EF30E2 */  lh    $t7, %lo(gIsPlayerNewWaypoint)($t7)
+/* 00A2DC 800096DC 3C0F8016 */   lui   $t7, %hi(gIsPlayerNewPathPoint) # $t7, 0x8016
+/* 00A2E0 800096E0 85EF30E2 */  lh    $t7, %lo(gIsPlayerNewPathPoint)($t7)
 /* 00A2E4 800096E4 24010001 */  li    $at, 1
 /* 00A2E8 800096E8 55E10010 */  bnel  $t7, $at, .L8000972C
 /* 00A2EC 800096EC 8FAA0054 */   lw    $t2, 0x54($sp)
@@ -321,7 +321,7 @@ glabel update_player_path_completion
 /* 00A328 80009728 8FAA0054 */  lw    $t2, 0x54($sp)
 .L8000972C:
 /* 00A32C 8000972C 3C068016 */  lui   $a2, %hi(gActualPath) # 0x8016
-/* 00A330 80009730 3C038016 */  lui   $v1, %hi(sSomeNearestWaypoint) # 0x8016
+/* 00A330 80009730 3C038016 */  lui   $v1, %hi(sSomeNearestPathPoint) # 0x8016
 /* 00A334 80009734 95420000 */  lhu   $v0, ($t2)
 /* 00A338 80009738 304B4000 */  andi  $t3, $v0, 0x4000
 /* 00A33C 8000973C 11600020 */  beqz  $t3, .L800097C0
@@ -335,7 +335,7 @@ glabel update_player_path_completion
 /* 00A35C 8000975C 8FA40050 */  lw    $a0, 0x50($sp)
 /* 00A360 80009760 3C068016 */  lui   $a2, %hi(gActualPath) # $a2, 0x8016
 /* 00A364 80009764 15A00013 */  bnez  $t5, .L800097B4
-/* 00A368 80009768 3C038016 */   lui   $v1, %hi(sSomeNearestWaypoint) # $v1, 0x8016
+/* 00A368 80009768 3C038016 */   lui   $v1, %hi(sSomeNearestPathPoint) # $v1, 0x8016
 /* 00A36C 8000976C 3C0E8019 */  lui   $t6, %hi(gPlayerCount) # $t6, 0x8019
 /* 00A370 80009770 81CEEDF3 */  lb    $t6, %lo(gPlayerCount)($t6)
 /* 00A374 80009774 24010002 */  li    $at, 2
@@ -358,10 +358,10 @@ glabel update_player_path_completion
 .L800097B4:
 /* 00A3B4 800097B4 8CC63448 */  lw    $a2, %lo(gActualPath)($a2)
 /* 00A3B8 800097B8 10000003 */  b     .L800097C8
-/* 00A3BC 800097BC 84632FCE */   lh    $v1, %lo(sSomeNearestWaypoint)($v1)
+/* 00A3BC 800097BC 84632FCE */   lh    $v1, %lo(sSomeNearestPathPoint)($v1)
 .L800097C0:
 /* 00A3C0 800097C0 8CC63448 */  lw    $a2, %lo(gActualPath)($a2) # 0x3448($a2)
-/* 00A3C4 800097C4 84632FCE */  lh    $v1, %lo(sSomeNearestWaypoint)($v1)
+/* 00A3C4 800097C4 84632FCE */  lh    $v1, %lo(sSomeNearestPathPoint)($v1)
 .L800097C8:
 /* 00A3C8 800097C8 0C002E57 */  jal   update_player_position_factor
 /* 00A3CC 800097CC 3065FFFF */   andi  $a1, $v1, 0xffff

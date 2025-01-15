@@ -28,7 +28,7 @@ course:
   D_0D0096B8: [3.3333332f, 3.9166667f, 4.5f, 5.0833334f]
   gCpuOffTrackTargetSpeed: [3.75f, 5.1666665f, 5.75f, 6.3333334f]
 
-  # Course waypoints
+  # Course path
   path_table: ["&nullPath", "&nullPath", "&nullPath", "&nullPath"]
 
   # Unused except in podium ceremony

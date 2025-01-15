@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <mk64.h>
 
@@ -1428,7 +1428,7 @@ Gfx d_course_frappe_snowland_dl_33E0[] = {
     gsSPDisplayList(d_course_frappe_snowland_packed_dl_5B58), gsSPEndDisplayList(),
 };
 
-TrackWaypoint d_course_frappe_snowland_unknown_waypoints[] = {
+TrackPathPoint d_course_frappe_snowland_unknown_path[] = {
     { -4, 0, -259, 0 },    { -4, 0, -282, 0 },    { -10, 0, -526, 0 },   { 41, 0, -658, 0 },     { 150, 0, -769, 0 },
     { 358, 0, -831, 0 },   { 572, 0, -881, 0 },   { 719, 0, -982, 0 },   { 801, 0, -1109, 0 },   { 838, 0, -1262, 0 },
     { 820, 0, -1435, 0 },  { 749, 0, -1568, 0 },  { 674, 0, -1676, 0 },  { 621, 0, -1863, 0 },   { 603, 0, -2054, 0 },
@@ -1446,7 +1446,7 @@ TrackWaypoint d_course_frappe_snowland_unknown_waypoints[] = {
     { 0, 0, 155, 0 },      { -3, 0, -133, 0 },    { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_frappe_snowland_track_waypoints[] = {
+TrackPathPoint d_course_frappe_snowland_track_path[] = {
     { -4, 0, -270, 1 },
     { -4, 0, -290, 1 },
     { -4, 0, -310, 2 },

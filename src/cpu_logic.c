@@ -6,7 +6,7 @@
 #include "math_util.h"
 #include "code_800029B0.h"
 #include "racing/memory.h"
-#include "waypoints.h"
+#include "path.h"
 #include "camera.h"
 #include "actors.h"
 #include "actors_extended.h"
@@ -52,7 +52,7 @@ Vec3f gOffsetPosition;
 Vec3f D_80162FB0;
 Vec3f D_80162FC0;
 s16 gTrainSmokeTimer;
-s16 sSomeNearestWaypoint;
+s16 sSomeNearestPathPoint;
 s16 D_80162FD0;
 f32 gCourseCompletionPercentByRank[NUM_PLAYERS];
 /*
@@ -68,8 +68,8 @@ s16 gPreviousAngleSteering[12];
 f32 gTrackPositionFactor[10];
 f32 D_80163090[10];
 bool gIsPlayerInCurve[10];
-u16 gCurrentNearestWaypoint;
-s16 gIsPlayerNewWaypoint;
+u16 gCurrentNearestPathPoint;
+s16 gIsPlayerNewPathPoint;
 s16 D_801630E8[10];
 s16 gFerrySmokeTimer;
 s32 D_80163100[10];
@@ -79,10 +79,10 @@ f32 gPreviousPlayerAiOffsetX[10];
 f32 gPreviousPlayerAiOffsetZ[10];
 s16 sVehicleSoundRenderCounter;
 s32 D_801631CC;
-TrackWaypoint* gCurrentTrackInnerPath;
-TrackWaypoint* gCurrentTrackOuterPath;
+TrackPathPoint* gCurrentTrackInnerPath;
+TrackPathPoint* gCurrentTrackOuterPath;
 s16* gCurrentTrackSectionTypesPath;
-s16* gCurrentWaypointExpectedRotationPath;
+s16* gCurrentPathPointExpectedRotationPath;
 u16 D_801631E0[12];
 u16 D_801631F8[10];
 f32 gCurrentCpuTargetSpeed;
@@ -135,8 +135,8 @@ s16 D_801634EC;
 s32 D_801634F0;
 s32 D_801634F4;
 TrackPositionFactorInstruction gPlayerTrackPositionFactorInstruction[10];
-Path2D* gVehicle2DWaypoint;
-s32 gVehicle2DWaypointLength;
+Path2D* gVehicle2DPathPoint;
+s32 gVehicle2DPathPointLength;
 TrainStuff gTrainList[NUM_TRAINS];
 u16 isCrossingTriggeredByIndex[NUM_CROSSINGS];
 u16 sCrossingActiveTimer[NUM_CROSSINGS];
@@ -160,20 +160,20 @@ s32 gGPCurrentRaceRankByPlayerId[10]; // D_801643B8
 s32 gPreviousGPCurrentRaceRankByPlayerId[10];
 s32 gGPCurrentRaceRankByPlayerIdDup[10];
 u16 gSelectedPathCount;
-u16 gNearestWaypointByPlayerId[12];
+u16 gNearestPathPointByPlayerId[12];
 s32 gLapProgressScore[10];
 s16 gCharacterPlayer[10];
 s32 D_8016448C;
-TrackWaypoint* gCurrentTrackPath;
+TrackPathPoint* gCurrentTrackPath;
 f32 D_80164498[4];
 f32 gLapCompletionPercentByPlayerId[10];    // D_801644A8
 f32 gCourseCompletionPercentByPlayerId[10]; // D_801644D0
 s16 gNeedToChoosePath[12];
 f32 gPlayerPathY[10];
 s16 D_80164538[12];
-TrackWaypoint* gTrackPath[4];
-TrackWaypoint* gTrackInnerPath[4];
-TrackWaypoint* gTrackOuterPath[4];
+TrackPathPoint* gTrackPath[4];
+TrackPathPoint* gTrackInnerPath[4];
+TrackPathPoint* gTrackOuterPath[4];
 s16* gTrackSectionTypes[4];
 s16* gPathExpectedRotation[4];
 s16* gTrackConsecutiveCurveCounts[4];
@@ -189,7 +189,7 @@ s32 D_80164628[4];
 f32 D_80164638[4];
 f32 D_80164648[4];
 f32 D_80164658[4];
-s16 gNearestWaypointByCameraId[4];
+s16 gNearestPathPointByCameraId[4];
 s16 D_80164670[4];
 s16 D_80164678[4];
 s16 D_80164680[4];
@@ -552,7 +552,7 @@ char* D_800ECF60 = "OGAWA DEBUG DRAW\n";
 
 // utils function path, cpu, vehicle
 
-s16 get_angle_between_waypoints(Vec3f arg0, Vec3f arg1) {
+s16 get_angle_between_path(Vec3f arg0, Vec3f arg1) {
     s16 temp_ret;
     s16 phi_v1;
 
@@ -673,17 +673,17 @@ s32 set_vehicle_render_distance_flags(Vec3f vehiclePos, f32 renderDistance, s32 
 void detect_wrong_player_direction(s32 playerId, Player* player) {
     s16 playerAngle;
     s16 rotationDifference;
-    s16 waypointAngle;
+    s16 pathPointAngle;
     s16 pathIndex;
-    u32 waypoint;
+    u32 pathPoint;
 
     pathIndex = (s16) gPathIndexByPlayerId[playerId];
-    waypoint = gNearestWaypointByPlayerId[playerId];
+    pathPoint = gNearestPathPointByPlayerId[playerId];
 
     playerAngle = (s16) ((s16) player->rotation[1] / DEGREES_CONVERSION_FACTOR);
-    waypointAngle = (s16) ((s16) gPathExpectedRotation[pathIndex][waypoint] / DEGREES_CONVERSION_FACTOR);
+    pathPointAngle = (s16) ((s16) gPathExpectedRotation[pathIndex][pathPoint] / DEGREES_CONVERSION_FACTOR);
 
-    rotationDifference = playerAngle - waypointAngle;
+    rotationDifference = playerAngle - pathPointAngle;
 
     if (rotationDifference < 0) {
         rotationDifference = -rotationDifference;
@@ -917,29 +917,30 @@ void set_places_end_course_with_time(void) {
 }
 
 /**
- * Checks if a waypoint is within a valid range of another waypoint, accounting for track wrapping
+ * Checks if a pathPoint is within a valid range of another pathPoint, accounting for track wrapping
  *
- * @param waypoint The waypoint to check
- * @param currentWaypoint The reference waypoint
- * @param backwardRange Number of waypoints to look behind
- * @param forwardRange Number of waypoints to look ahead
- * @param totalWaypoints Total number of waypoints in the track
+ * @param pathPoint The pathPoint to check
+ * @param currentPathPoint The reference pathPoint
+ * @param backwardRange Number of path to look behind
+ * @param forwardRange Number of path to look ahead
+ * @param totalPathPoints Total number of path in the track
  * @return
- *   1: waypoint is within normal range
- *  -1: waypoint is within wrapped range
- *   2: waypoint is out of range
+ *   1: pathPoint is within normal range
+ *  -1: pathPoint is within wrapped range
+ *   2: pathPoint is out of range
  *   0: invalid range parameters
  */
-s32 is_path_point_in_range(u16 waypoint, u16 currentWaypoint, u16 backwardRange, u16 forwardRange, u16 totalWaypoints) {
+s32 is_path_point_in_range(u16 pathPoint, u16 currentPathPoint, u16 backwardRange, u16 forwardRange,
+                           u16 totalPathPoints) {
     s32 var_v1;
 
     var_v1 = 0;
-    if ((currentWaypoint >= backwardRange) && (currentWaypoint < (totalWaypoints - forwardRange))) {
-        if ((waypoint >= (currentWaypoint - backwardRange)) && ((currentWaypoint + forwardRange) >= waypoint)) {
+    if ((currentPathPoint >= backwardRange) && (currentPathPoint < (totalPathPoints - forwardRange))) {
+        if ((pathPoint >= (currentPathPoint - backwardRange)) && ((currentPathPoint + forwardRange) >= pathPoint)) {
             var_v1 = 1;
         }
-    } else if ((((currentWaypoint + forwardRange) % totalWaypoints) < waypoint) &&
-               ((((currentWaypoint + totalWaypoints) - backwardRange) % totalWaypoints) >= waypoint)) {
+    } else if ((((currentPathPoint + forwardRange) % totalPathPoints) < pathPoint) &&
+               ((((currentPathPoint + totalPathPoints) - backwardRange) % totalPathPoints) >= pathPoint)) {
         var_v1 = -1;
     } else {
         var_v1 = 2;
@@ -1324,7 +1325,7 @@ void set_current_path(s32 pathIndex) {
     gCurrentTrackInnerPath = gTrackInnerPath[pathIndex];
     gCurrentTrackOuterPath = gTrackOuterPath[pathIndex];
     gCurrentTrackSectionTypesPath = gTrackSectionTypes[pathIndex];
-    gCurrentWaypointExpectedRotationPath = gPathExpectedRotation[pathIndex];
+    gCurrentPathPointExpectedRotationPath = gPathExpectedRotation[pathIndex];
     gCurrentTrackConsecutiveCurveCountsPath = gTrackConsecutiveCurveCounts[pathIndex];
     gSelectedPathCount = gPathCountByPathIndex[pathIndex];
 }
@@ -1344,8 +1345,8 @@ s32 update_player_path_selection(s32 payerId, s32 pathIndex) {
     stackPadding = pathIndex;
     trackSectionId = get_track_section_id(player->collision.meshIndexZX);
     gPlayersTrackSectionId[payerId] = trackSectionId;
-    sSomeNearestWaypoint = find_closest_waypoint_track_section(posX, posY, posZ, trackSectionId, &pathIndex);
-    gNearestWaypointByPlayerId[payerId] = sSomeNearestWaypoint;
+    sSomeNearestPathPoint = find_closest_pathPoint_track_section(posX, posY, posZ, trackSectionId, &pathIndex);
+    gNearestPathPointByPlayerId[payerId] = sSomeNearestPathPoint;
     if (pathIndex) {};
     gPathIndexByPlayerId[payerId] = pathIndex;
     set_current_path(pathIndex);
@@ -1357,10 +1358,10 @@ void update_player_completion(s32 playerId) {
     f32 percent;
 
     // arbitrary score calculation
-    gLapProgressScore[playerId] = (gLapCountByPlayerId[playerId] * gPathCountByPathIndex[0]) + sSomeNearestWaypoint;
+    gLapProgressScore[playerId] = (gLapCountByPlayerId[playerId] * gPathCountByPathIndex[0]) + sSomeNearestPathPoint;
 
     // calculate completion in percent
-    percent = (f32) gNearestWaypointByPlayerId[playerId] / (f32) gPathCountByPathIndex[gPathIndexByPlayerId[playerId]];
+    percent = (f32) gNearestPathPointByPlayerId[playerId] / (f32) gPathCountByPathIndex[gPathIndexByPlayerId[playerId]];
     gLapCompletionPercentByPlayerId[playerId] = percent;
     gCourseCompletionPercentByPlayerId[playerId] = percent;
     gCourseCompletionPercentByPlayerId[playerId] += gLapCountByPlayerId[playerId];
@@ -1370,26 +1371,26 @@ void yoshi_valley_cpu_path(s32 playerId) {
     s16 previous;
 
     previous = gNeedToChoosePath[playerId];
-    if (sSomeNearestWaypoint >= 0x6D) {
+    if (sSomeNearestPathPoint >= 0x6D) {
         gNeedToChoosePath[playerId] = true;
         switch (gActualPath) {
             case 0:
-                if (sSomeNearestWaypoint >= 0x20F) {
+                if (sSomeNearestPathPoint >= 0x20F) {
                     gNeedToChoosePath[playerId] = false;
                 }
                 break;
             case 1:
-                if (sSomeNearestWaypoint >= 0x206) {
+                if (sSomeNearestPathPoint >= 0x206) {
                     gNeedToChoosePath[playerId] = false;
                 }
                 break;
             case 2:
-                if (sSomeNearestWaypoint >= 0x211) {
+                if (sSomeNearestPathPoint >= 0x211) {
                     gNeedToChoosePath[playerId] = false;
                 }
                 break;
             case 3:
-                if (sSomeNearestWaypoint >= 0x283) {
+                if (sSomeNearestPathPoint >= 0x283) {
                     gNeedToChoosePath[playerId] = false;
                 }
                 break;
@@ -1414,15 +1415,15 @@ void update_cpu_path_completion(s32 playerId, Player* player) {
     posZ = player->pos[2];
     if (gCpuNeedChoosePath[playerId] == 1) {
         gActualPath = update_player_path_selection(playerId, random_int(4U));
-        sSomeNearestWaypoint = update_player_path(posX, posY, posZ, 0, player, playerId, gActualPath);
-        gNearestWaypointByPlayerId[playerId] = sSomeNearestWaypoint;
+        sSomeNearestPathPoint = update_player_path(posX, posY, posZ, 0, player, playerId, gActualPath);
+        gNearestPathPointByPlayerId[playerId] = sSomeNearestPathPoint;
         update_player_completion(playerId);
         gCpuNeedChoosePath[playerId] = 0;
     }
     if (gCpuResetPath[playerId] == 1) {
         gActualPath = update_player_path_selection(playerId, 0);
-        sSomeNearestWaypoint = update_player_path(posX, posY, posZ, 0, player, playerId, gActualPath);
-        gNearestWaypointByPlayerId[playerId] = sSomeNearestWaypoint;
+        sSomeNearestPathPoint = update_player_path(posX, posY, posZ, 0, player, playerId, gActualPath);
+        gNearestPathPointByPlayerId[playerId] = sSomeNearestPathPoint;
         update_player_completion(playerId);
         gCpuResetPath[playerId] = 0;
     }
@@ -1453,21 +1454,21 @@ void update_player_path_completion(s32 playerId, Player* player) {
     playerX = player->pos[0];
     playerY = player->pos[1];
     playerZ = player->pos[2];
-    gIsPlayerNewWaypoint = false;
+    gIsPlayerNewPathPoint = false;
     D_80163240[playerId] = 0;
-    sSomeNearestWaypoint = update_player_path(playerX, playerY, playerZ, gNearestWaypointByPlayerId[playerId], player,
-                                              playerId, gActualPath);
-    gCurrentNearestWaypoint = sSomeNearestWaypoint;
-    if (gNearestWaypointByPlayerId[playerId] != sSomeNearestWaypoint) {
-        gNearestWaypointByPlayerId[playerId] = sSomeNearestWaypoint;
-        gIsPlayerNewWaypoint = true;
+    sSomeNearestPathPoint = update_player_path(playerX, playerY, playerZ, gNearestPathPointByPlayerId[playerId], player,
+                                               playerId, gActualPath);
+    gCurrentNearestPathPoint = sSomeNearestPathPoint;
+    if (gNearestPathPointByPlayerId[playerId] != sSomeNearestPathPoint) {
+        gNearestPathPointByPlayerId[playerId] = sSomeNearestPathPoint;
+        gIsPlayerNewPathPoint = true;
         update_player_completion(playerId);
     }
     if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
-        update_player_position_factor(playerId, sSomeNearestWaypoint, gActualPath);
+        update_player_position_factor(playerId, sSomeNearestPathPoint, gActualPath);
         return;
     }
-    if ((sSomeNearestWaypoint < 0x14) || ((gPathCountByPathIndex[gActualPath] - 0x14) < sSomeNearestWaypoint) ||
+    if ((sSomeNearestPathPoint < 0x14) || ((gPathCountByPathIndex[gActualPath] - 0x14) < sSomeNearestPathPoint) ||
         (gCurrentCourseId == COURSE_KALAMARI_DESERT)) {
         var_v1 = 0;
         var_t0 = 0;
@@ -1525,7 +1526,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
         }
     }
     gPreviousPlayerZ[playerId] = playerZ;
-    if ((gCurrentCourseId == COURSE_YOSHI_VALLEY) && (gIsPlayerNewWaypoint == true)) {
+    if ((gCurrentCourseId == COURSE_YOSHI_VALLEY) && (gIsPlayerNewPathPoint == true)) {
         yoshi_valley_cpu_path(playerId);
         if (((player->type & PLAYER_HUMAN) == 0) || (player->type & PLAYER_KART_AI)) {
             update_cpu_path_completion(playerId, player);
@@ -1543,7 +1544,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
     } else {
         //????
     }
-    update_player_position_factor(playerId, sSomeNearestWaypoint, gActualPath);
+    update_player_position_factor(playerId, sSomeNearestPathPoint, gActualPath);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/cpu_logic/update_player_path_completion.s")
@@ -1675,7 +1676,7 @@ void update_player(s32 playerId) {
     s16 steeringSensitivity;
     s32 maxAngle;
     Player* player;
-    TrackWaypoint* waypoint;
+    TrackPathPoint* pathPoint;
     f32 onePointFive = 1.5f;
 
     player = &gPlayers[playerId];
@@ -1736,7 +1737,7 @@ void update_player(s32 playerId) {
                 set_places();
             }
             if (player->type & PLAYER_KART_AI) {
-                if ((gIsPlayerNewWaypoint == true) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
+                if ((gIsPlayerNewPathPoint == true) && (gCurrentCourseId != COURSE_AWARD_CEREMONY)) {
                     kart_ai_behaviour(playerId);
                 }
                 // one update it try to use an item, the other it doesn't
@@ -1768,8 +1769,8 @@ void update_player(s32 playerId) {
                     gPlayerTrackPositionFactorInstruction[playerId].target = 0.0f;
                     gPlayerTrackPositionFactorInstruction[playerId].unkC = 0.0f;
                 }
-                // gNearestWaypointByPlayerId[playerId] might need to be saved to a temp
-                gPlayerPathY[playerId] = gTrackPath[gActualPath][gNearestWaypointByPlayerId[playerId]].posY + 4.3f;
+                // gNearestPathPointByPlayerId[playerId] might need to be saved to a temp
+                gPlayerPathY[playerId] = gTrackPath[gActualPath][gNearestPathPointByPlayerId[playerId]].posY + 4.3f;
                 if ((D_801631F8[playerId] == 1) && (D_801631E0[playerId] == false)) {
                     func_8002E4C4(player);
                 }
@@ -1805,14 +1806,14 @@ void update_player(s32 playerId) {
                     } else if (D_80162FD0 == (s16) 1U) {
                         gPreviousCpuTargetSpeed[playerId] = GET_COURSE_D_0D0096B8(gCCSelection);
                         gPlayerTrackPositionFactorInstruction[playerId].target = -0.5f;
-                    } else if (gCurrentTrackConsecutiveCurveCountsPath[sSomeNearestWaypoint] > 0) {
+                    } else if (gCurrentTrackConsecutiveCurveCountsPath[sSomeNearestPathPoint] > 0) {
                         gPreviousCpuTargetSpeed[playerId] = GET_COURSE_gCpuCurveTargetSpeed(gCCSelection);
                     } else {
                         gPreviousCpuTargetSpeed[playerId] = GET_COURSE_gCpuNormalTargetSpeed(gCCSelection);
                     }
                     check_ai_crossing_distance(playerId);
                     cpu_track_position_factor(playerId);
-                    determine_ideal_cpu_position_offset(playerId, gCurrentNearestWaypoint);
+                    determine_ideal_cpu_position_offset(playerId, gCurrentNearestPathPoint);
                     distX = gOffsetPosition[0] - player->pos[0];
                     minAngle = gOffsetPosition[2] - player->pos[2];
                     if (!(player->effects & 0x80) && !(player->effects & 0x40) && !(player->effects & 0x800)) {
@@ -1820,7 +1821,7 @@ void update_player(s32 playerId) {
                             if (gActualPath == 0) {
                                 func_8000B140(playerId);
                                 if (D_80162FF8[playerId] > 0) {
-                                    pathIndex = gCurrentNearestWaypoint + 5;
+                                    pathIndex = gCurrentNearestPathPoint + 5;
                                     pathIndex %= gSelectedPathCount;
                                     set_track_offset_position(pathIndex, D_80163090[playerId], gActualPath);
                                 }
@@ -1828,7 +1829,7 @@ void update_player(s32 playerId) {
                             player->rotation[1] = -get_angle_between_two_vectors(player->pos, gOffsetPosition);
                         } else {
                             player->rotation[1] =
-                                gPathExpectedRotation[gActualPath][(gCurrentNearestWaypoint + 4) % gSelectedPathCount];
+                                gPathExpectedRotation[gActualPath][(gCurrentNearestPathPoint + 4) % gSelectedPathCount];
                         }
                     }
                     apply_cpu_turn(player, 0);
@@ -1840,9 +1841,10 @@ void update_player(s32 playerId) {
                 }
                 if (D_801630E8[playerId] != 0) {
                     sPlayerAngle[playerId] = -get_angle_between_two_vectors(player->oldPos, player->pos);
-                    var_a0_2 = (gCurrentWaypointExpectedRotationPath[(sSomeNearestWaypoint + 2) % gSelectedPathCount] *
-                                0x168) /
-                               65535;
+                    var_a0_2 =
+                        (gCurrentPathPointExpectedRotationPath[(sSomeNearestPathPoint + 2) % gSelectedPathCount] *
+                         0x168) /
+                        65535;
                     newAngle = (sPlayerAngle[playerId] * 0x168) / 65535;
                     if (var_a0_2 < -0xB4) {
                         var_a0_2 += 0x168;
@@ -1891,11 +1893,11 @@ void update_player(s32 playerId) {
                     regulate_cpu_speed(playerId, gPreviousCpuTargetSpeed[playerId], player);
                     return;
                 }
-                gIsPlayerInCurve[playerId] = are_in_curse(playerId, sSomeNearestWaypoint);
-                determine_ideal_cpu_position_offset(playerId, sSomeNearestWaypoint);
+                gIsPlayerInCurve[playerId] = are_in_curse(playerId, sSomeNearestPathPoint);
+                determine_ideal_cpu_position_offset(playerId, sSomeNearestPathPoint);
                 if (gCurrentCourseId != COURSE_AWARD_CEREMONY) {
                     if (gLapProgressScore[playerId] < 0xB) {
-                        pathIndex = gCurrentNearestWaypoint;
+                        pathIndex = gCurrentNearestPathPoint;
                         if ((gLapProgressScore[playerId] > 0) && (gCurrentCourseId == COURSE_TOADS_TURNPIKE)) {
                             pathIndex += 0x14;
                             pathIndex %= gSelectedPathCount;
@@ -1909,14 +1911,14 @@ void update_player(s32 playerId) {
                         }
                     }
                     if ((D_80162FD0 == 1) && (D_80162FF8[playerId] == 0)) {
-                        pathIndex = gCurrentNearestWaypoint + 7;
+                        pathIndex = gCurrentNearestPathPoint + 7;
                         pathIndex %= gSelectedPathCount;
                         set_track_offset_position(pathIndex, -0.7f, gActualPath);
                     }
                     if (gActualPath == 0) {
                         func_8000B140(playerId);
                         if (D_80162FF8[playerId] > 0) {
-                            pathIndex = gCurrentNearestWaypoint + 5;
+                            pathIndex = gCurrentNearestPathPoint + 5;
 #if FAKEMATCH1 == 1
                             if (1) {}
                             if (1) {}
@@ -1937,10 +1939,10 @@ void update_player(s32 playerId) {
                             gOffsetPosition[2] = D_80163438[playerId];
                             break;
                         case 4: /* switch 3 */
-                            waypoint = &gTrackPath[playerId][(gNearestWaypointByPlayerId[playerId] + 0xA) %
-                                                             gPathCountByPathIndex[playerId]];
-                            gOffsetPosition[0] = waypoint->posX;
-                            gOffsetPosition[2] = waypoint->posZ;
+                            pathPoint = &gTrackPath[playerId][(gNearestPathPointByPlayerId[playerId] + 0xA) %
+                                                              gPathCountByPathIndex[playerId]];
+                            gOffsetPosition[0] = pathPoint->posX;
+                            gOffsetPosition[2] = pathPoint->posZ;
                             break;
                     }
                 }
@@ -2065,7 +2067,7 @@ void func_8000B140(s32 playerId) {
     f32 sp74[8];
     s32 temp_a1_2;
     s16 temp_v1_2;
-    s16 currWaypoint;
+    s16 currPathPoint;
     s32 j;
     s32 i;
     Player* player;
@@ -2095,7 +2097,7 @@ void func_8000B140(s32 playerId) {
     if (player->effects & STAR_EFFECT)
         return;
 
-    currWaypoint = gNearestWaypointByPlayerId[playerId];
+    currPathPoint = gNearestPathPointByPlayerId[playerId];
     temp_f22 = (player->speed / 18.0f) * 216.0f;
     for (i = 0; i < 8; i++) {
         sp9C[i] = -1;
@@ -2115,16 +2117,16 @@ void func_8000B140(s32 playerId) {
         if (!(player->type & PLAYER_EXISTS))
             continue;
         temp_f2 = (temp_f22) -5.0f;
-        temp_v1_2 = gNearestWaypointByPlayerId[i];
+        temp_v1_2 = gNearestPathPointByPlayerId[i];
         temp_f0_2 = (player->speed / 18.0f) * 216.0f;
         if (temp_f0_2 < temp_f2) {
-            if (is_path_point_in_range(temp_v1_2, currWaypoint, 0U, 0x0014U, gSelectedPathCount) > 0) {
-                temp_a1_2 = temp_v1_2 - currWaypoint;
+            if (is_path_point_in_range(temp_v1_2, currPathPoint, 0U, 0x0014U, gSelectedPathCount) > 0) {
+                temp_a1_2 = temp_v1_2 - currPathPoint;
                 sp9C[j] = i;
                 if (temp_a1_2 > 0) {
                     spB0[j] = temp_a1_2;
                 } else {
-                    spB0[j] = (temp_v1_2 + gSelectedPathCount) - currWaypoint;
+                    spB0[j] = (temp_v1_2 + gSelectedPathCount) - currPathPoint;
                 }
                 sp74[j] = temp_f2 - temp_f0_2;
                 j += 1;
@@ -2181,8 +2183,8 @@ GLOBAL_ASM("asm/non_matchings/cpu_logic/func_8000B140.s")
 
 // utils track position
 
-bool are_in_curse(UNUSED s32 arg0, u16 waypointIndex) {
-    s16 thing = gCurrentTrackConsecutiveCurveCountsPath[waypointIndex];
+bool are_in_curse(UNUSED s32 arg0, u16 pathPointIndex) {
+    s16 thing = gCurrentTrackConsecutiveCurveCountsPath[pathPointIndex];
     if (thing > 0) {
         return true;
     }
@@ -2206,27 +2208,27 @@ bool is_far_from_path(s32 playerIndex) {
  *
  * @param posX Player's X position
  * @param posZ Player's Z position
- * @param waypointIndex Current waypoint index
+ * @param pathPointIndex Current pathPoint index
  * @param pathIndex Current path/track index
  * @return Position factor between track boundaries
  */
-f32 calculate_track_position_factor(f32 posX, f32 posZ, u16 waypointIndex, s32 pathIndex) {
+f32 calculate_track_position_factor(f32 posX, f32 posZ, u16 pathPointIndex, s32 pathIndex) {
     f32 innerX;
     f32 innerZ;
     f32 outerX;
     f32 outerZ;
     f32 boundarySquaredDistance;
     f32 positionFactor;
-    TrackWaypoint* innerWaypoint;
-    TrackWaypoint* outerWaypoint;
+    TrackPathPoint* innerPathPoint;
+    TrackPathPoint* outerPathPoint;
 
-    innerWaypoint = &gTrackInnerPath[pathIndex][waypointIndex];
-    outerWaypoint = &gTrackOuterPath[pathIndex][waypointIndex];
+    innerPathPoint = &gTrackInnerPath[pathIndex][pathPointIndex];
+    outerPathPoint = &gTrackOuterPath[pathIndex][pathPointIndex];
 
-    innerX = innerWaypoint->posX;
-    innerZ = innerWaypoint->posZ;
-    outerX = outerWaypoint->posX;
-    outerZ = outerWaypoint->posZ;
+    innerX = innerPathPoint->posX;
+    innerZ = innerPathPoint->posZ;
+    outerX = outerPathPoint->posX;
+    outerZ = outerPathPoint->posZ;
 
     boundarySquaredDistance = ((outerX - innerX) * (outerX - innerX)) + ((outerZ - innerZ) * (outerZ - innerZ));
 
@@ -2243,69 +2245,69 @@ f32 calculate_track_position_factor(f32 posX, f32 posZ, u16 waypointIndex, s32 p
     return positionFactor;
 }
 
-void update_player_position_factor(s32 playerId, u16 waypointIndex, s32 pathIndex) {
+void update_player_position_factor(s32 playerId, u16 pathPointIndex, s32 pathIndex) {
     UNUSED Vec3f pad;
     gTrackPositionFactor[playerId] = 0.0f;
     if ((s32) GET_COURSE_AIMaximumSeparation >= 0) {
         if ((gPlayers[playerId].type & PLAYER_EXISTS) != 0) {
             gTrackPositionFactor[playerId] = calculate_track_position_factor(
-                gPlayers[playerId].pos[0], gPlayers[playerId].pos[2], waypointIndex, pathIndex);
+                gPlayers[playerId].pos[0], gPlayers[playerId].pos[2], pathPointIndex, pathIndex);
         }
     }
 }
 
-void calculate_track_offset_position(u16 waypointIndex, f32 lerpFactor, f32 offsetDistance, s16 pathIndex) {
+void calculate_track_offset_position(u16 pathPointIndex, f32 lerpFactor, f32 offsetDistance, s16 pathIndex) {
     UNUSED s32 pad[4];
-    f32 waypointOneX;
-    f32 waypointOneZ;
-    f32 waypointTwoX;
-    f32 waypointTwoZ;
+    f32 pathPointOneX;
+    f32 pathPointOneZ;
+    f32 pathPointTwoX;
+    f32 pathPointTwoZ;
     UNUSED s32 pad2;
     f32 xdiff;
     f32 zdiff;
     f32 segmentLength;
     UNUSED f32 temp_f12;
     UNUSED f32 temp_f2_2;
-    UNUSED TrackWaypoint* path;
-    TrackWaypoint* waypointTwo;
-    TrackWaypoint* waypointOne;
+    UNUSED TrackPathPoint* path;
+    TrackPathPoint* pathPointTwo;
+    TrackPathPoint* pathPointOne;
 
-    waypointOne = &gTrackPath[pathIndex][waypointIndex];
-    waypointOneX = waypointOne->posX;
-    waypointOneZ = waypointOne->posZ;
-    waypointTwo = &gTrackPath[pathIndex][(waypointIndex + 1) % gSelectedPathCount];
-    waypointTwoX = waypointTwo->posX;
-    waypointTwoZ = waypointTwo->posZ;
+    pathPointOne = &gTrackPath[pathIndex][pathPointIndex];
+    pathPointOneX = pathPointOne->posX;
+    pathPointOneZ = pathPointOne->posZ;
+    pathPointTwo = &gTrackPath[pathIndex][(pathPointIndex + 1) % gSelectedPathCount];
+    pathPointTwoX = pathPointTwo->posX;
+    pathPointTwoZ = pathPointTwo->posZ;
 
-    // Calculate vector between waypoints
-    zdiff = waypointTwoZ - waypointOneZ;
-    xdiff = waypointTwoX - waypointOneX;
+    // Calculate vector between path
+    zdiff = pathPointTwoZ - pathPointOneZ;
+    xdiff = pathPointTwoX - pathPointOneX;
     if (xdiff && xdiff) {}
 
     segmentLength = sqrtf((xdiff * xdiff) + (zdiff * zdiff));
     if (segmentLength < 0.01f) {
-        gOffsetPosition[0] = waypointTwoX;
-        gOffsetPosition[2] = waypointTwoZ;
+        gOffsetPosition[0] = pathPointTwoX;
+        gOffsetPosition[2] = pathPointTwoZ;
     } else {
         gOffsetPosition[0] =
-            ((0.5f - (lerpFactor * 0.5f)) * (((offsetDistance * zdiff) / segmentLength) + waypointOneX)) +
-            ((1.0f - (0.5f - (lerpFactor * 0.5f))) * (((offsetDistance * -zdiff) / segmentLength) + waypointOneX));
+            ((0.5f - (lerpFactor * 0.5f)) * (((offsetDistance * zdiff) / segmentLength) + pathPointOneX)) +
+            ((1.0f - (0.5f - (lerpFactor * 0.5f))) * (((offsetDistance * -zdiff) / segmentLength) + pathPointOneX));
         gOffsetPosition[2] =
-            ((0.5f - (lerpFactor * 0.5f)) * (((offsetDistance * -xdiff) / segmentLength) + waypointOneZ)) +
-            ((1.0f - (0.5f - (lerpFactor * 0.5f))) * (((offsetDistance * xdiff) / segmentLength) + waypointOneZ));
+            ((0.5f - (lerpFactor * 0.5f)) * (((offsetDistance * -xdiff) / segmentLength) + pathPointOneZ)) +
+            ((1.0f - (0.5f - (lerpFactor * 0.5f))) * (((offsetDistance * xdiff) / segmentLength) + pathPointOneZ));
     }
 }
 
 /**
  * Calculates an interpolated position between inner and outer track paths.
  *
- * @param currentWaypoint Index of the current waypoint
+ * @param currentPathPoint Index of the current pathPoint
  * @param trackOffset Value between 0.0 and 1.0 determining position between inner (0.0) and outer (1.0) path
  * @param pathIndex Index of the track/path segment
  */
-void set_track_offset_position(u16 waypointIndex, f32 trackOffset, s16 pathIndex) {
-    TrackWaypoint* path1;
-    TrackWaypoint* path2;
+void set_track_offset_position(u16 pathPointIndex, f32 trackOffset, s16 pathIndex) {
+    TrackPathPoint* path1;
+    TrackPathPoint* path2;
     f32 x1;
     f32 z1;
     f32 x3;
@@ -2317,8 +2319,8 @@ void set_track_offset_position(u16 waypointIndex, f32 trackOffset, s16 pathIndex
     f32 temp_f0;
     f32 temp_f12;
 
-    path1 = &gTrackInnerPath[pathIndex][waypointIndex];
-    path2 = &gTrackOuterPath[pathIndex][waypointIndex];
+    path1 = &gTrackInnerPath[pathIndex][pathPointIndex];
+    path2 = &gTrackOuterPath[pathIndex][pathPointIndex];
 
     x1 = (f32) path1->posX;
     z1 = (f32) path1->posZ;
@@ -2326,11 +2328,11 @@ void set_track_offset_position(u16 waypointIndex, f32 trackOffset, s16 pathIndex
     x2 = (f32) path2->posX;
     z2 = (f32) path2->posZ;
 
-    waypointIndex += 1;
-    waypointIndex = waypointIndex % gPathCountByPathIndex[pathIndex];
+    pathPointIndex += 1;
+    pathPointIndex = pathPointIndex % gPathCountByPathIndex[pathIndex];
 
-    path1 = &gTrackInnerPath[pathIndex][waypointIndex];
-    path2 = &gTrackOuterPath[pathIndex][waypointIndex];
+    path1 = &gTrackInnerPath[pathIndex][pathPointIndex];
+    path2 = &gTrackOuterPath[pathIndex][pathPointIndex];
 
     x3 = (f32) path1->posX;
     z3 = (f32) path1->posZ;
@@ -2350,69 +2352,69 @@ s16 func_8000BD94(f32 posX, f32 posY, f32 posZ, s32 pathIndex) {
     f32 z_dist;
     f32 considerSquaredDistance;
     f32 minimumSquaredDistance;
-    s32 considerWaypointIndex;
-    s32 pathWaypointCount;
-    s16 nearestWaypointIndex;
-    TrackWaypoint* pathWaypoints;
-    TrackWaypoint* considerWaypoint;
+    s32 considerPathPointIndex;
+    s32 pathPathPointCount;
+    s16 nearestPathPointIndex;
+    TrackPathPoint* pathPathPoints;
+    TrackPathPoint* considerPathPoint;
 
-    pathWaypoints = gTrackPath[pathIndex];
-    pathWaypointCount = gPathCountByPathIndex[pathIndex];
-    considerWaypoint = &pathWaypoints[0];
-    x_dist = (f32) considerWaypoint->posX - posX;
-    y_dist = (f32) considerWaypoint->posY - posY;
-    z_dist = (f32) considerWaypoint->posZ - posZ;
+    pathPathPoints = gTrackPath[pathIndex];
+    pathPathPointCount = gPathCountByPathIndex[pathIndex];
+    considerPathPoint = &pathPathPoints[0];
+    x_dist = (f32) considerPathPoint->posX - posX;
+    y_dist = (f32) considerPathPoint->posY - posY;
+    z_dist = (f32) considerPathPoint->posZ - posZ;
     minimumSquaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
-    nearestWaypointIndex = 0;
-    for (considerWaypointIndex = 1; considerWaypointIndex < pathWaypointCount;
-         considerWaypoint++, considerWaypointIndex++) {
-        x_dist = (f32) considerWaypoint->posX - posX;
-        y_dist = (f32) considerWaypoint->posY - posY;
-        z_dist = (f32) considerWaypoint->posZ - posZ;
+    nearestPathPointIndex = 0;
+    for (considerPathPointIndex = 1; considerPathPointIndex < pathPathPointCount;
+         considerPathPoint++, considerPathPointIndex++) {
+        x_dist = (f32) considerPathPoint->posX - posX;
+        y_dist = (f32) considerPathPoint->posY - posY;
+        z_dist = (f32) considerPathPoint->posZ - posZ;
         considerSquaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
         if (considerSquaredDistance < minimumSquaredDistance) {
-            nearestWaypointIndex = considerWaypointIndex;
+            nearestPathPointIndex = considerPathPointIndex;
             minimumSquaredDistance = considerSquaredDistance;
         }
     }
-    return nearestWaypointIndex;
+    return nearestPathPointIndex;
 }
 
-s16 find_closest_waypoint_track_section(f32 posX, f32 posY, f32 posZ, u16 trackSectionId, s32* pathIndex) {
-    TrackWaypoint* pathWaypoints;
-    TrackWaypoint* considerWaypoint;
+s16 find_closest_pathPoint_track_section(f32 posX, f32 posY, f32 posZ, u16 trackSectionId, s32* pathIndex) {
+    TrackPathPoint* pathPathPoints;
+    TrackPathPoint* considerPathPoint;
     f32 x_dist;
     f32 y_dist;
     f32 z_dist;
     f32 considerSquaredDistance;
     f32 minimumSquaredDistance;
-    s32 considerWaypointIndex;
-    s32 pathWaypointCount;
+    s32 considerPathPointIndex;
+    s32 pathPathPointCount;
     s32 temp_t0;
     s32 var_a1;
     s32 var_t1;
     s32 considerPathIndex;
     s32 var_t4;
-    s16 nearestWaypointIndex;
+    s16 nearestPathPointIndex;
 
     minimumSquaredDistance = 1000000.0f;
     temp_t0 = *pathIndex;
-    nearestWaypointIndex = 0;
+    nearestPathPointIndex = 0;
     var_t1 = 0;
     var_a1 = 0;
-    pathWaypoints = gTrackPath[temp_t0];
-    pathWaypointCount = gPathCountByPathIndex[temp_t0];
-    considerWaypoint = &pathWaypoints[0];
-    for (considerWaypointIndex = 0; considerWaypointIndex < pathWaypointCount;
-         considerWaypointIndex++, considerWaypoint++) {
-        if ((considerWaypoint->trackSectionId == trackSectionId) || (gCurrentCourseId == COURSE_AWARD_CEREMONY)) {
+    pathPathPoints = gTrackPath[temp_t0];
+    pathPathPointCount = gPathCountByPathIndex[temp_t0];
+    considerPathPoint = &pathPathPoints[0];
+    for (considerPathPointIndex = 0; considerPathPointIndex < pathPathPointCount;
+         considerPathPointIndex++, considerPathPoint++) {
+        if ((considerPathPoint->trackSectionId == trackSectionId) || (gCurrentCourseId == COURSE_AWARD_CEREMONY)) {
             var_t1 = 1;
-            x_dist = (f32) considerWaypoint->posX - posX;
-            y_dist = (f32) considerWaypoint->posY - posY;
-            z_dist = (f32) considerWaypoint->posZ - posZ;
+            x_dist = (f32) considerPathPoint->posX - posX;
+            y_dist = (f32) considerPathPoint->posY - posY;
+            z_dist = (f32) considerPathPoint->posZ - posZ;
             considerSquaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
             if (considerSquaredDistance < minimumSquaredDistance) {
-                nearestWaypointIndex = considerWaypointIndex;
+                nearestPathPointIndex = considerPathPointIndex;
                 var_a1 = 1;
                 minimumSquaredDistance = considerSquaredDistance;
             }
@@ -2421,18 +2423,18 @@ s16 find_closest_waypoint_track_section(f32 posX, f32 posY, f32 posZ, u16 trackS
     if (var_t1 == 0) {
         for (considerPathIndex = 0; considerPathIndex < 4; considerPathIndex++) {
             if ((considerPathIndex != temp_t0) && (gSizePath[considerPathIndex] >= 2)) {
-                pathWaypoints = gTrackPath[considerPathIndex];
-                considerWaypoint = &pathWaypoints[0];
-                pathWaypointCount = gPathCountByPathIndex[considerPathIndex];
-                for (considerWaypointIndex = 0; considerWaypointIndex < pathWaypointCount;
-                     considerWaypointIndex++, considerWaypoint++) {
-                    if (considerWaypoint->trackSectionId == trackSectionId) {
-                        x_dist = (f32) considerWaypoint->posX - posX;
-                        y_dist = (f32) considerWaypoint->posY - posY;
-                        z_dist = (f32) considerWaypoint->posZ - posZ;
+                pathPathPoints = gTrackPath[considerPathIndex];
+                considerPathPoint = &pathPathPoints[0];
+                pathPathPointCount = gPathCountByPathIndex[considerPathIndex];
+                for (considerPathPointIndex = 0; considerPathPointIndex < pathPathPointCount;
+                     considerPathPointIndex++, considerPathPoint++) {
+                    if (considerPathPoint->trackSectionId == trackSectionId) {
+                        x_dist = (f32) considerPathPoint->posX - posX;
+                        y_dist = (f32) considerPathPoint->posY - posY;
+                        z_dist = (f32) considerPathPoint->posZ - posZ;
                         considerSquaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
                         if (considerSquaredDistance < minimumSquaredDistance) {
-                            nearestWaypointIndex = considerWaypointIndex;
+                            nearestPathPointIndex = considerPathPointIndex;
                             var_t4 = considerPathIndex;
                             var_a1 = 2;
                             minimumSquaredDistance = considerSquaredDistance;
@@ -2443,22 +2445,22 @@ s16 find_closest_waypoint_track_section(f32 posX, f32 posY, f32 posZ, u16 trackS
         }
     }
     if (var_a1 == 0) {
-        pathWaypoints = gTrackPath[0];
-        pathWaypointCount = gPathCountByPathIndex[0];
-        considerWaypoint = &pathWaypoints[0];
-        x_dist = (f32) considerWaypoint->posX - posX;
-        y_dist = (f32) considerWaypoint->posY - posY;
-        z_dist = (f32) considerWaypoint->posZ - posZ;
+        pathPathPoints = gTrackPath[0];
+        pathPathPointCount = gPathCountByPathIndex[0];
+        considerPathPoint = &pathPathPoints[0];
+        x_dist = (f32) considerPathPoint->posX - posX;
+        y_dist = (f32) considerPathPoint->posY - posY;
+        z_dist = (f32) considerPathPoint->posZ - posZ;
         minimumSquaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
-        nearestWaypointIndex = 0;
-        for (considerWaypointIndex = 1; considerWaypointIndex < pathWaypointCount;
-             considerWaypoint++, considerWaypointIndex++) {
-            x_dist = (f32) considerWaypoint->posX - posX;
-            y_dist = (f32) considerWaypoint->posY - posY;
-            z_dist = (f32) considerWaypoint->posZ - posZ;
+        nearestPathPointIndex = 0;
+        for (considerPathPointIndex = 1; considerPathPointIndex < pathPathPointCount;
+             considerPathPoint++, considerPathPointIndex++) {
+            x_dist = (f32) considerPathPoint->posX - posX;
+            y_dist = (f32) considerPathPoint->posY - posY;
+            z_dist = (f32) considerPathPoint->posZ - posZ;
             considerSquaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
             if (considerSquaredDistance < minimumSquaredDistance) {
-                nearestWaypointIndex = considerWaypointIndex;
+                nearestPathPointIndex = considerPathPointIndex;
                 var_t4 = 0;
                 var_a1 = 2;
                 minimumSquaredDistance = considerSquaredDistance;
@@ -2468,126 +2470,126 @@ s16 find_closest_waypoint_track_section(f32 posX, f32 posY, f32 posZ, u16 trackS
     if (var_a1 == 2) {
         *pathIndex = var_t4;
     }
-    return nearestWaypointIndex;
+    return nearestPathPointIndex;
 }
 
 /**
- * Tries to find the waypoint nearest to (posX, posY, posZ)
- * Only consider waypoints in the same segment as trackSectionId
- * Only considers waypoints within 500 units of(posX, posY, posZ)
- * Looks 3 waypoints behind and 6 waypoints ahead of waypointIndex
+ * Tries to find the pathPoint nearest to (posX, posY, posZ)
+ * Only consider path in the same segment as trackSectionId
+ * Only considers path within 500 units of(posX, posY, posZ)
+ * Looks 3 path behind and 6 path ahead of pathPointIndex
  **/
-s16 update_path_index_with_track(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex, u16 trackSectionId) {
-    s16 nearestWaypointIndex;
+s16 update_path_index_with_track(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, s32 pathIndex, u16 trackSectionId) {
+    s16 nearestPathPointIndex;
     s16 searchIndex;
     s16 considerIndex;
-    s32 pathWaypointCount;
+    s32 pathPathPointCount;
     f32 x_dist;
     f32 y_dist;
     f32 z_dist;
     f32 minimumDistance;
     f32 squaredDistance;
-    TrackWaypoint* pathWaypoints;
-    TrackWaypoint* considerWaypoint;
+    TrackPathPoint* pathPathPoints;
+    TrackPathPoint* considerPathPoint;
 
-    nearestWaypointIndex = -1;
+    nearestPathPointIndex = -1;
     minimumDistance = 500.0f * 500.0f;
-    pathWaypointCount = gPathCountByPathIndex[pathIndex];
-    pathWaypoints = gTrackPath[pathIndex];
-    for (searchIndex = waypointIndex - 3; searchIndex < waypointIndex + 7; searchIndex++) {
-        // Its possible for searchIndex to be less than 0 or greater than the number of waypoints in a given path
+    pathPathPointCount = gPathCountByPathIndex[pathIndex];
+    pathPathPoints = gTrackPath[pathIndex];
+    for (searchIndex = pathPointIndex - 3; searchIndex < pathPointIndex + 7; searchIndex++) {
+        // Its possible for searchIndex to be less than 0 or greater than the number of path in a given path
         // This is done to ensure we access gTrackPath at a valid index
-        considerIndex = (searchIndex + pathWaypointCount) % pathWaypointCount;
-        considerWaypoint = &pathWaypoints[considerIndex];
-        if (considerWaypoint->trackSectionId == trackSectionId) {
-            x_dist = considerWaypoint->posX - posX;
-            y_dist = considerWaypoint->posY - posY;
-            z_dist = considerWaypoint->posZ - posZ;
+        considerIndex = (searchIndex + pathPathPointCount) % pathPathPointCount;
+        considerPathPoint = &pathPathPoints[considerIndex];
+        if (considerPathPoint->trackSectionId == trackSectionId) {
+            x_dist = considerPathPoint->posX - posX;
+            y_dist = considerPathPoint->posY - posY;
+            z_dist = considerPathPoint->posZ - posZ;
             squaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
             if (squaredDistance < minimumDistance) {
                 minimumDistance = squaredDistance;
-                nearestWaypointIndex = considerIndex;
+                nearestPathPointIndex = considerIndex;
             }
         }
     }
-    return nearestWaypointIndex;
+    return nearestPathPointIndex;
 }
 
 /**
- * Tries to find the waypoint nearest to (posX, posY, posZ)
- * Only considers waypoints within 400 units of (posX, posY, posZ)
- * Looks 3 waypoints behind and 6 waypoints ahead of waypointIndex
+ * Tries to find the pathPoint nearest to (posX, posY, posZ)
+ * Only considers path within 400 units of (posX, posY, posZ)
+ * Looks 3 path behind and 6 path ahead of pathPointIndex
  **/
-s16 update_path_index(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex) {
-    s16 nearestWaypointIndex;
+s16 update_path_index(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, s32 pathIndex) {
+    s16 nearestPathPointIndex;
     s16 searchIndex;
     s16 considerIndex;
-    bool waypointFound;
-    s32 pathWaypointCount;
+    bool pathPointFound;
+    s32 pathPathPointCount;
     f32 x_dist;
     f32 y_dist;
     f32 z_dist;
     f32 minimumDistance;
     f32 squaredDistance;
-    TrackWaypoint* pathWaypoints;
-    TrackWaypoint* considerWaypoint;
+    TrackPathPoint* pathPathPoints;
+    TrackPathPoint* considerPathPoint;
 
-    waypointFound = false;
-    nearestWaypointIndex = -1;
+    pathPointFound = false;
+    nearestPathPointIndex = -1;
     minimumDistance = 400.0f * 400.0f;
-    pathWaypointCount = gPathCountByPathIndex[pathIndex];
-    pathWaypoints = gTrackPath[pathIndex];
-    for (searchIndex = waypointIndex - 3; searchIndex < waypointIndex + 7; searchIndex++) {
-        // Its possible for searchIndex to be less than 0 or greater than the number of waypoints in a given path
+    pathPathPointCount = gPathCountByPathIndex[pathIndex];
+    pathPathPoints = gTrackPath[pathIndex];
+    for (searchIndex = pathPointIndex - 3; searchIndex < pathPointIndex + 7; searchIndex++) {
+        // Its possible for searchIndex to be less than 0 or greater than the number of path in a given path
         // This is done to ensure we access gTrackPath at a valid index
-        considerIndex = (searchIndex + pathWaypointCount) % pathWaypointCount;
-        considerWaypoint = &pathWaypoints[considerIndex];
-        x_dist = considerWaypoint->posX - posX;
-        y_dist = considerWaypoint->posY - posY;
-        z_dist = considerWaypoint->posZ - posZ;
+        considerIndex = (searchIndex + pathPathPointCount) % pathPathPointCount;
+        considerPathPoint = &pathPathPoints[considerIndex];
+        x_dist = considerPathPoint->posX - posX;
+        y_dist = considerPathPoint->posY - posY;
+        z_dist = considerPathPoint->posZ - posZ;
         squaredDistance = (x_dist * x_dist) + (y_dist * y_dist) + (z_dist * z_dist);
         if (squaredDistance < minimumDistance) {
             minimumDistance = squaredDistance;
-            nearestWaypointIndex = considerIndex;
-            waypointFound = true;
+            nearestPathPointIndex = considerIndex;
+            pathPointFound = true;
         }
     }
-    if (waypointFound == false) {
-        for (searchIndex = waypointIndex - 3; searchIndex < waypointIndex + 7; searchIndex++) {
-            considerIndex = ((searchIndex + pathWaypointCount) % pathWaypointCount);
-            considerWaypoint = &pathWaypoints[considerIndex];
+    if (pathPointFound == false) {
+        for (searchIndex = pathPointIndex - 3; searchIndex < pathPointIndex + 7; searchIndex++) {
+            considerIndex = ((searchIndex + pathPathPointCount) % pathPathPointCount);
+            considerPathPoint = &pathPathPoints[considerIndex];
             /**
-             * This fake match is done to stop the compiler from optimzing out considerWaypoint.
-             * Maybe if no waypoint was found some debugging info was printed out, but come
+             * This fake match is done to stop the compiler from optimzing out considerPathPoint.
+             * Maybe if no pathPoint was found some debugging info was printed out, but come
              * production time they removed the debug printing but not the loop?
              **/
-            if (considerWaypoint && considerWaypoint) {};
+            if (considerPathPoint && considerPathPoint) {};
         }
     }
-    return nearestWaypointIndex;
+    return nearestPathPointIndex;
 }
 
-void tweak_path_index_wario_stadium(UNUSED f32 posX, f32 posY, UNUSED f32 posZ, s16* waypointIndex, UNUSED s32 arg4) {
+void tweak_path_index_wario_stadium(UNUSED f32 posX, f32 posY, UNUSED f32 posZ, s16* pathPointIndex, UNUSED s32 arg4) {
     s16 var_v0;
 
-    var_v0 = *waypointIndex;
+    var_v0 = *pathPointIndex;
     if ((gCurrentCourseId == COURSE_WARIO_STADIUM) && (var_v0 >= 0x475) && (var_v0 < 0x480) && (posY < 0.0f)) {
         var_v0 = 0x0398;
     }
-    *waypointIndex = var_v0;
+    *pathPointIndex = var_v0;
 }
 
-void adjust_path_at_start_line(UNUSED f32 posX, UNUSED f32 posY, f32 posZ, s16* waypointIndex, s32 pathIndex) {
-    s16 waypoint;
-    waypoint = *waypointIndex;
-    if (waypoint == 0) {
+void adjust_path_at_start_line(UNUSED f32 posX, UNUSED f32 posY, f32 posZ, s16* pathPointIndex, s32 pathIndex) {
+    s16 pathPoint;
+    pathPoint = *pathPointIndex;
+    if (pathPoint == 0) {
         if (gPathStartZ < posZ) {
-            waypoint = gPathCountByPathIndex[pathIndex] - 1;
+            pathPoint = gPathCountByPathIndex[pathIndex] - 1;
         }
-    } else if (((waypoint + 1) == gPathCountByPathIndex[pathIndex]) && (posZ <= gPathStartZ)) {
-        waypoint = 0;
+    } else if (((pathPoint + 1) == gPathCountByPathIndex[pathIndex]) && (posZ <= gPathStartZ)) {
+        pathPoint = 0;
     }
-    *waypointIndex = waypoint;
+    *pathPointIndex = pathPoint;
 }
 
 s16 update_path_index_track_section(f32 posX, f32 posY, f32 posZ, Player* player, s32 playerId, s32* pathIndex) {
@@ -2599,69 +2601,69 @@ s16 update_path_index_track_section(f32 posX, f32 posY, f32 posZ, Player* player
         trackSectionId = gPlayersTrackSectionId[playerId];
     }
     gPlayersTrackSectionId[playerId] = trackSectionId;
-    ret = find_closest_waypoint_track_section(posX, posY, posZ, trackSectionId, pathIndex);
+    ret = find_closest_pathPoint_track_section(posX, posY, posZ, trackSectionId, pathIndex);
     gPathIndexByPlayerId[playerId] = *pathIndex;
     return ret;
 }
 
 /**
- * Updates and validates a player's waypoint position on the track
+ * Updates and validates a player's pathPoint position on the track
  * Handles different logic for human players vs AI, and includes recovery mechanisms
  *
  * @param posX Current X position
  * @param posY Current Y position
  * @param posZ Current Z position
- * @param waypointIndex Current waypoint index
+ * @param pathPointIndex Current pathPoint index
  * @param player Pointer to player structure
  * @param playerId Player's ID
  * @param pathIndex Current track path index
- * @return New waypoint index or -1 if invalid
+ * @return New pathPoint index or -1 if invalid
  */
-s16 update_player_path(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player* player, s32 playerId, s32 pathIndex) {
-    s16 newWaypoint;
+s16 update_player_path(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, Player* player, s32 playerId, s32 pathIndex) {
+    s16 newPathPoint;
     UNUSED s16 stackPadding0;
     UNUSED s32 stackPadding1;
     UNUSED s32 stackPadding2;
-    TrackWaypoint* temp_v1;
+    TrackPathPoint* temp_v1;
 
     // Human player handling (non-AI controlled)
     if ((player->type & PLAYER_HUMAN) && !(player->type & PLAYER_KART_AI)) {
-        newWaypoint = update_path_index_with_track(posX, posY, posZ, waypointIndex, pathIndex,
-                                                   (u16) get_track_section_id(player->collision.meshIndexZX));
-        if (newWaypoint == -1) {
-            newWaypoint = update_path_index_track_section(posX, posY, posZ, player, playerId, &pathIndex);
+        newPathPoint = update_path_index_with_track(posX, posY, posZ, pathPointIndex, pathIndex,
+                                                    (u16) get_track_section_id(player->collision.meshIndexZX));
+        if (newPathPoint == -1) {
+            newPathPoint = update_path_index_track_section(posX, posY, posZ, player, playerId, &pathIndex);
         }
     } else { // AI or special case player handling
         if (D_801631E0[playerId] == true) {
             if (player->unk_0CA & 1) {
-                temp_v1 = &gTrackPath[pathIndex][waypointIndex];
+                temp_v1 = &gTrackPath[pathIndex][pathPointIndex];
                 player->pos[0] = (f32) temp_v1->posX;
                 player->pos[1] = (f32) temp_v1->posY;
                 player->pos[2] = (f32) temp_v1->posZ;
                 player->unk_0CA &= ~0x0001;
-                return waypointIndex;
+                return pathPointIndex;
             }
             if (playerId == ((s32) D_80163488 % 8)) {
                 check_bounding_collision(&player->collision, 10.0f, posX, posY, posZ);
                 gPlayersTrackSectionId[playerId] = get_track_section_id(player->collision.meshIndexZX);
-                newWaypoint = update_path_index_with_track(posX, posY, posZ, waypointIndex, pathIndex,
-                                                           gPlayersTrackSectionId[playerId]);
-                if (newWaypoint == -1) {
-                    newWaypoint = update_path_index(posX, posY, posZ, waypointIndex, pathIndex);
+                newPathPoint = update_path_index_with_track(posX, posY, posZ, pathPointIndex, pathIndex,
+                                                            gPlayersTrackSectionId[playerId]);
+                if (newPathPoint == -1) {
+                    newPathPoint = update_path_index(posX, posY, posZ, pathPointIndex, pathIndex);
                 }
-                if (newWaypoint == -1) {
-                    newWaypoint = find_closest_waypoint_track_section(posX, posY, posZ,
-                                                                      gPlayersTrackSectionId[playerId], &pathIndex);
-                    temp_v1 = &gTrackPath[pathIndex][newWaypoint];
+                if (newPathPoint == -1) {
+                    newPathPoint = find_closest_pathPoint_track_section(posX, posY, posZ,
+                                                                        gPlayersTrackSectionId[playerId], &pathIndex);
+                    temp_v1 = &gTrackPath[pathIndex][newPathPoint];
                     player->pos[0] = (f32) temp_v1->posX;
                     player->pos[1] = (f32) temp_v1->posY;
                     player->pos[2] = (f32) temp_v1->posZ;
                 }
             } else {
-                newWaypoint = update_path_index(posX, posY, posZ, waypointIndex, pathIndex);
-                if (newWaypoint == -1) {
-                    newWaypoint = func_8000BD94(posX, posY, posZ, pathIndex);
-                    temp_v1 = &gTrackPath[pathIndex][newWaypoint];
+                newPathPoint = update_path_index(posX, posY, posZ, pathPointIndex, pathIndex);
+                if (newPathPoint == -1) {
+                    newPathPoint = func_8000BD94(posX, posY, posZ, pathIndex);
+                    temp_v1 = &gTrackPath[pathIndex][newPathPoint];
                     posX = (f32) temp_v1->posX;
                     posY = (f32) temp_v1->posY;
                     posZ = (f32) temp_v1->posZ;
@@ -2673,18 +2675,18 @@ s16 update_player_path(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, Player* 
                 }
             }
         } else {
-            newWaypoint = update_path_index(posX, posY, posZ, waypointIndex, pathIndex);
-            if (newWaypoint == -1) {
-                newWaypoint = update_path_index_track_section(posX, posY, posZ, player, playerId, &pathIndex);
+            newPathPoint = update_path_index(posX, posY, posZ, pathPointIndex, pathIndex);
+            if (newPathPoint == -1) {
+                newPathPoint = update_path_index_track_section(posX, posY, posZ, player, playerId, &pathIndex);
             }
         }
-        tweak_path_index_wario_stadium(posX, posY, posZ, &newWaypoint, pathIndex);
+        tweak_path_index_wario_stadium(posX, posY, posZ, &newPathPoint, pathIndex);
     }
-    adjust_path_at_start_line(posX, posY, posZ, &newWaypoint, pathIndex);
-    return newWaypoint;
+    adjust_path_at_start_line(posX, posY, posZ, &newPathPoint, pathIndex);
+    return newPathPoint;
 }
 
-s16 find_closest_vehicles_waypoint(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 waypointIndex) {
+s16 find_closest_vehicles_pathPoint(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 pathPointIndex) {
     f32 xdiff;
     f32 zdiff;
     f32 minimumDistance;
@@ -2692,19 +2694,19 @@ s16 find_closest_vehicles_waypoint(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 wayp
     s16 realIndex;
     s16 minimumIndex;
     s16 considerIndex;
-    Path2D* considerWaypoint;
+    Path2D* considerPathPoint;
 
     minimumDistance = 250000.0f;
     minimumIndex = -1;
-    for (realIndex = waypointIndex - 2; realIndex < waypointIndex + 7; realIndex++) {
+    for (realIndex = pathPointIndex - 2; realIndex < pathPointIndex + 7; realIndex++) {
         considerIndex = realIndex;
         if (realIndex < 0) {
-            considerIndex = realIndex + gVehicle2DWaypointLength;
+            considerIndex = realIndex + gVehicle2DPathPointLength;
         }
-        considerIndex %= gVehicle2DWaypointLength;
-        considerWaypoint = &gVehicle2DWaypoint[considerIndex];
-        xdiff = considerWaypoint->x - xPos;
-        zdiff = considerWaypoint->z - zPos;
+        considerIndex %= gVehicle2DPathPointLength;
+        considerPathPoint = &gVehicle2DPathPoint[considerIndex];
+        xdiff = considerPathPoint->x - xPos;
+        zdiff = considerPathPoint->z - zPos;
         considerSquaredDistance = (xdiff * xdiff) + (zdiff * zdiff);
         if (considerSquaredDistance < minimumDistance) {
             minimumDistance = considerSquaredDistance;
@@ -2712,7 +2714,7 @@ s16 find_closest_vehicles_waypoint(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 wayp
         }
     }
     if (minimumIndex == -1) {
-        minimumIndex = waypointIndex;
+        minimumIndex = pathPointIndex;
     }
     return minimumIndex;
 }
@@ -2722,28 +2724,28 @@ s16 func_8000D24C(f32 posX, f32 posY, f32 posZ, s32* pathIndex) {
     Collision sp24;
 
     check_bounding_collision(&sp24, 10.0f, posX, posY, posZ);
-    return find_closest_waypoint_track_section(posX, posY, posZ, get_track_section_id(sp24.meshIndexZX), pathIndex);
+    return find_closest_pathPoint_track_section(posX, posY, posZ, get_track_section_id(sp24.meshIndexZX), pathIndex);
 }
 
-s16 func_8000D2B4(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex) {
-    s16 waypoint;
+s16 func_8000D2B4(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, s32 pathIndex) {
+    s16 pathPoint;
 
-    waypoint = update_path_index(posX, posY, posZ, waypointIndex, pathIndex);
-    if (waypoint == -1) {
-        waypoint = func_8000D24C(posX, posY, posZ, &pathIndex);
+    pathPoint = update_path_index(posX, posY, posZ, pathPointIndex, pathIndex);
+    if (pathPoint == -1) {
+        pathPoint = func_8000D24C(posX, posY, posZ, &pathIndex);
     }
-    adjust_path_at_start_line(posX, posY, posZ, &waypoint, pathIndex);
-    return waypoint;
+    adjust_path_at_start_line(posX, posY, posZ, &pathPoint, pathIndex);
+    return pathPoint;
 }
 
-s16 func_8000D33C(f32 posX, f32 posY, f32 posZ, s16 waypointIndex, s32 pathIndex) {
-    s16 waypoint;
+s16 func_8000D33C(f32 posX, f32 posY, f32 posZ, s16 pathPointIndex, s32 pathIndex) {
+    s16 pathPoint;
 
-    waypoint = update_path_index(posX, posY, posZ, waypointIndex, pathIndex);
-    if (waypoint == -1) {
-        waypoint = func_8000D24C(posX, posY, posZ, &pathIndex);
+    pathPoint = update_path_index(posX, posY, posZ, pathPointIndex, pathIndex);
+    if (pathPoint == -1) {
+        pathPoint = func_8000D24C(posX, posY, posZ, &pathIndex);
     }
-    return waypoint;
+    return pathPoint;
 }
 
 f32 cpu_track_position_factor(s32 playerId) {
@@ -2769,7 +2771,7 @@ f32 cpu_track_position_factor(s32 playerId) {
     return current;
 }
 
-void determine_ideal_cpu_position_offset(s32 playerId, u16 waypoint) {
+void determine_ideal_cpu_position_offset(s32 playerId, u16 pathPoint) {
     UNUSED s32 stackPadding0;
     f32 sp48;
     f32 sp44;
@@ -2783,10 +2785,10 @@ void determine_ideal_cpu_position_offset(s32 playerId, u16 waypoint) {
     s16 curveCount;
     u16 thing;
 
-    curveCount = gCurrentTrackConsecutiveCurveCountsPath[waypoint];
+    curveCount = gCurrentTrackConsecutiveCurveCountsPath[pathPoint];
     lookAheadDistance = 6;
     sp2C = cpu_track_position_factor(playerId);
-    thing = waypoint;
+    thing = pathPoint;
 
     switch (gCurrentCourseId) {
         case COURSE_AWARD_CEREMONY:
@@ -2823,24 +2825,24 @@ void determine_ideal_cpu_position_offset(s32 playerId, u16 waypoint) {
     if (lookAheadDistance < gCurrentPlayerLookAhead[playerId]) {
         gCurrentPlayerLookAhead[playerId]--;
     }
-    waypoint = (gCurrentPlayerLookAhead[playerId] + waypoint) % gSelectedPathCount;
-    set_track_offset_position(waypoint, sp2C, gActualPath);
+    pathPoint = (gCurrentPlayerLookAhead[playerId] + pathPoint) % gSelectedPathCount;
+    set_track_offset_position(pathPoint, sp2C, gActualPath);
     sp48 = gOffsetPosition[0];
     sp44 = gOffsetPosition[2];
-    set_track_offset_position(((waypoint + 1) % gSelectedPathCount) & 0xFFFF, sp2C, gActualPath);
+    set_track_offset_position(((pathPoint + 1) % gSelectedPathCount) & 0xFFFF, sp2C, gActualPath);
     stackPadding5 = gOffsetPosition[0];
     gOffsetPosition[0] = (sp48 + stackPadding5) * 0.5f;
     stackPadding4 = gOffsetPosition[2];
     gOffsetPosition[2] = (sp44 + stackPadding4) * 0.5f;
 }
 
-s16 func_8000D6D0(Vec3f position, s16* waypointIndex, f32 speed, f32 arg3, s16 pathIndex, s16 arg5) {
+s16 func_8000D6D0(Vec3f position, s16* pathPointIndex, f32 speed, f32 arg3, s16 pathIndex, s16 arg5) {
     f32 temp1;
     f32 temp2;
     f32 midX;
     UNUSED s16 stackPadding1;
-    s16 waypoint1;
-    s16 waypoint2;
+    s16 pathPoint1;
+    s16 pathPoint2;
     f32 pad3;
     f32 midY;
     f32 pad4;
@@ -2858,7 +2860,7 @@ s16 func_8000D6D0(Vec3f position, s16* waypointIndex, f32 speed, f32 arg3, s16 p
     f32 ydiff;
     f32 zdiff;
     Vec3f oldPos;
-    TrackWaypoint* path;
+    TrackPathPoint* path;
 
     path = gTrackPath[pathIndex];
     oldPos[0] = position[0];
@@ -2867,18 +2869,18 @@ s16 func_8000D6D0(Vec3f position, s16* waypointIndex, f32 speed, f32 arg3, s16 p
     oldPosX = position[0];
     oldPosY = position[1];
     oldPosZ = position[2];
-    temp_v0 = func_8000D2B4(oldPosX, oldPosY, oldPosZ, *waypointIndex, (s32) pathIndex);
-    *waypointIndex = temp_v0;
+    temp_v0 = func_8000D2B4(oldPosX, oldPosY, oldPosZ, *pathPointIndex, (s32) pathIndex);
+    *pathPointIndex = temp_v0;
     temp_v1 = temp_v0 + arg5;
-    waypoint1 = temp_v1 % gPathCountByPathIndex[pathIndex];
-    waypoint2 = (temp_v1 + 1) % gPathCountByPathIndex[pathIndex];
-    set_track_offset_position(waypoint1, arg3, pathIndex);
+    pathPoint1 = temp_v1 % gPathCountByPathIndex[pathIndex];
+    pathPoint2 = (temp_v1 + 1) % gPathCountByPathIndex[pathIndex];
+    set_track_offset_position(pathPoint1, arg3, pathIndex);
     pad3 = gOffsetPosition[0];
     pad4 = gOffsetPosition[2];
-    set_track_offset_position(waypoint2, arg3, pathIndex);
+    set_track_offset_position(pathPoint2, arg3, pathIndex);
     temp1 = gOffsetPosition[0];
     temp2 = gOffsetPosition[2];
-    midY = (path[waypoint1].posY + path[waypoint2].posY) * 0.5f;
+    midY = (path[pathPoint1].posY + path[pathPoint2].posY) * 0.5f;
     midX = (pad3 + temp1) * 0.5f;
     midZ = (pad4 + temp2) * 0.5f;
     xdiff = midX - oldPosX;
@@ -2897,16 +2899,16 @@ s16 func_8000D6D0(Vec3f position, s16* waypointIndex, f32 speed, f32 arg3, s16 p
     position[0] = var_f2;
     position[1] = var_f12;
     position[2] = var_f14;
-    return get_angle_between_waypoints(oldPos, position);
+    return get_angle_between_path(oldPos, position);
 }
 
-s16 func_8000D940(Vec3f pos, s16* waypointIndex, f32 speed, f32 arg3, s16 pathIndex) {
+s16 func_8000D940(Vec3f pos, s16* pathPointIndex, f32 speed, f32 arg3, s16 pathIndex) {
     UNUSED f32 pad;
     f32 thing1;
     f32 thing2;
     UNUSED s16 stackPadding1;
-    s16 waypoint1;
-    s16 waypoint2;
+    s16 pathPoint1;
+    s16 pathPoint2;
     UNUSED s16 stackPadding2;
     f32 pad2;
     f32 midX;
@@ -2924,27 +2926,27 @@ s16 func_8000D940(Vec3f pos, s16* waypointIndex, f32 speed, f32 arg3, s16 pathIn
     f32 xdiff;
     f32 ydiff;
     f32 zdiff;
-    s32 waypointCount;
+    s32 pathPointCount;
     Vec3f sp54;
 
     sp54[0] = pos[0];
     sp54[1] = pos[1];
     sp54[2] = pos[2];
-    waypointCount = gPathCountByPathIndex[pathIndex];
+    pathPointCount = gPathCountByPathIndex[pathIndex];
     temp_f20 = pos[0];
     temp_f22 = pos[1];
     temp_f24 = pos[2];
-    temp_v0 = func_8000D2B4(temp_f20, temp_f22, temp_f24, *waypointIndex, (s32) pathIndex);
-    *waypointIndex = temp_v0;
-    waypoint1 = ((temp_v0 + waypointCount) - 3) % waypointCount;
-    waypoint2 = ((temp_v0 + waypointCount) - 4) % waypointCount;
-    set_track_offset_position(waypoint1, arg3, pathIndex);
+    temp_v0 = func_8000D2B4(temp_f20, temp_f22, temp_f24, *pathPointIndex, (s32) pathIndex);
+    *pathPointIndex = temp_v0;
+    pathPoint1 = ((temp_v0 + pathPointCount) - 3) % pathPointCount;
+    pathPoint2 = ((temp_v0 + pathPointCount) - 4) % pathPointCount;
+    set_track_offset_position(pathPoint1, arg3, pathIndex);
     pad2 = gOffsetPosition[0];
     pad3 = gOffsetPosition[2];
-    set_track_offset_position(waypoint2, arg3, pathIndex);
+    set_track_offset_position(pathPoint2, arg3, pathIndex);
     thing1 = gOffsetPosition[0];
     thing2 = gOffsetPosition[2];
-    midY = (gTrackPath[pathIndex][waypoint1].posY + gTrackPath[pathIndex][waypoint2].posY) * 0.5f;
+    midY = (gTrackPath[pathIndex][pathPoint1].posY + gTrackPath[pathIndex][pathPoint2].posY) * 0.5f;
     midX = (pad2 + thing1) * 0.5f;
     midZ = (pad3 + thing2) * 0.5f;
     xdiff = midX - temp_f20;
@@ -2963,10 +2965,10 @@ s16 func_8000D940(Vec3f pos, s16* waypointIndex, f32 speed, f32 arg3, s16 pathIn
     pos[0] = var_f2;
     pos[1] = var_f12;
     pos[2] = var_f14;
-    return get_angle_between_waypoints(sp54, pos);
+    return get_angle_between_path(sp54, pos);
 }
 
-s16 update_vehicle_following_waypoint(Vec3f pos, s16* waypointIndex, f32 speed) {
+s16 update_vehicle_following_pathPoint(Vec3f pos, s16* pathPointIndex, f32 speed) {
     f32 origXPos;
     f32 origYPos;
     f32 origZPos;
@@ -2979,16 +2981,16 @@ s16 update_vehicle_following_waypoint(Vec3f pos, s16* waypointIndex, f32 speed) 
     UNUSED s32 stackPadding6;
     UNUSED s32 stackPadding7;
     UNUSED s32 stackPadding8;
-    f32 farWaypointAverageX;
-    f32 farWaypointAverageZ;
+    f32 farPathPointAverageX;
+    f32 farPathPointAverageZ;
     f32 x_dist;
     f32 y_dist;
     f32 distance;
     f32 newX;
     f32 newZ;
-    s16 newWaypointIndex;
-    s16 farWaypoint1;
-    s16 farWaypoint2;
+    s16 newPathPointIndex;
+    s16 farPathPoint1;
+    s16 farPathPoint2;
     Path2D* temp_a0;
     Path2D* temp_a2;
     Vec3f sp38;
@@ -2999,16 +3001,16 @@ s16 update_vehicle_following_waypoint(Vec3f pos, s16* waypointIndex, f32 speed) 
     sp38[0] = pos[0];
     sp38[1] = pos[1];
     sp38[2] = pos[2];
-    newWaypointIndex = find_closest_vehicles_waypoint(origXPos, origYPos, origZPos, *waypointIndex);
-    *waypointIndex = newWaypointIndex;
-    farWaypoint1 = (newWaypointIndex + 3) % gVehicle2DWaypointLength;
-    farWaypoint2 = (newWaypointIndex + 4) % gVehicle2DWaypointLength;
-    temp_a0 = &gVehicle2DWaypoint[farWaypoint1];
-    temp_a2 = &gVehicle2DWaypoint[farWaypoint2];
-    farWaypointAverageX = (temp_a0->x + temp_a2->x) * 0.5f;
-    farWaypointAverageZ = (temp_a0->z + temp_a2->z) * 0.5f;
-    x_dist = farWaypointAverageX - origXPos;
-    y_dist = farWaypointAverageZ - origZPos;
+    newPathPointIndex = find_closest_vehicles_pathPoint(origXPos, origYPos, origZPos, *pathPointIndex);
+    *pathPointIndex = newPathPointIndex;
+    farPathPoint1 = (newPathPointIndex + 3) % gVehicle2DPathPointLength;
+    farPathPoint2 = (newPathPointIndex + 4) % gVehicle2DPathPointLength;
+    temp_a0 = &gVehicle2DPathPoint[farPathPoint1];
+    temp_a2 = &gVehicle2DPathPoint[farPathPoint2];
+    farPathPointAverageX = (temp_a0->x + temp_a2->x) * 0.5f;
+    farPathPointAverageZ = (temp_a0->z + temp_a2->z) * 0.5f;
+    x_dist = farPathPointAverageX - origXPos;
+    y_dist = farPathPointAverageZ - origZPos;
     distance = sqrtf((x_dist * x_dist) + (y_dist * y_dist));
     if (distance > 0.01f) {
         newX = ((x_dist * speed) / distance) + origXPos;
@@ -3020,7 +3022,7 @@ s16 update_vehicle_following_waypoint(Vec3f pos, s16* waypointIndex, f32 speed) 
     pos[0] = newX;
     pos[1] = origYPos;
     pos[2] = newZ;
-    return get_angle_between_waypoints(sp38, pos);
+    return get_angle_between_path(sp38, pos);
 }
 
 // bomb_kart utils
@@ -3031,7 +3033,7 @@ void set_bomb_kart_spawn_positions(void) {
     f32 startingZPos;
     f32 startingYPos;
     s32 var_s3;
-    TrackWaypoint* temp_v0;
+    TrackPathPoint* temp_v0;
     UNUSED BombKart* var_s0;
     BombKartSpawn* bombKartSpawn;
 
@@ -3044,13 +3046,13 @@ void set_bomb_kart_spawn_positions(void) {
                 startingYPos = get_surface_height(startingXPos, 2000.0f, startingZPos);
                 break;
             case COURSE_AWARD_CEREMONY:
-                temp_v0 = &gTrackPath[3][bombKartSpawn->waypointIndex];
+                temp_v0 = &gTrackPath[3][bombKartSpawn->pathPointIndex];
                 startingXPos = temp_v0->posX;
                 startingYPos = temp_v0->posY;
                 startingZPos = temp_v0->posZ;
                 break;
             default:
-                temp_v0 = &gTrackPath[0][bombKartSpawn->waypointIndex];
+                temp_v0 = &gTrackPath[0][bombKartSpawn->pathPointIndex];
                 startingXPos = temp_v0->posX;
                 startingYPos = temp_v0->posY;
                 startingZPos = temp_v0->posZ;
@@ -3071,7 +3073,7 @@ void set_bomb_kart_spawn_positions(void) {
         gBombKarts[var_s3].wheel4Pos[0] = startingXPos;
         gBombKarts[var_s3].wheel4Pos[1] = startingYPos;
         gBombKarts[var_s3].wheel4Pos[2] = startingZPos;
-        gBombKarts[var_s3].waypointIndex = bombKartSpawn->waypointIndex;
+        gBombKarts[var_s3].pathPointIndex = bombKartSpawn->pathPointIndex;
         gBombKarts[var_s3].unk_3C = bombKartSpawn->unk_04;
         gBombKarts[var_s3].bounceTimer = 0;
         gBombKarts[var_s3].circleTimer = 0;
@@ -3087,7 +3089,7 @@ void func_8000DF8C(s32 bombKartId) {
     UNUSED s32 stackPadding0;
     f32 sp118;
     f32 var_f18;
-    TrackWaypoint* temp_v0_2;
+    TrackPathPoint* temp_v0_2;
     f32 temp_f0_3;
     f32 sp108;
     UNUSED s32 stackPadding1;
@@ -3132,7 +3134,7 @@ void func_8000DF8C(s32 bombKartId) {
     u16 var_s1;
     s32 var_a0;
     UNUSED s32 stackPaddingE;
-    TrackWaypoint* temp_v0_4;
+    TrackPathPoint* temp_v0_4;
     BombKart* bombKart;
     BombKart* bombKart2;
     Collision* temp_a0_4;
@@ -3150,7 +3152,7 @@ void func_8000DF8C(s32 bombKartId) {
         var_f22 = bombKart->bombPos[0];
         var_f20 = bombKart->bombPos[1];
         var_f24 = bombKart->bombPos[2];
-        spCA = bombKart->waypointIndex;
+        spCA = bombKart->pathPointIndex;
         spC4 = bombKart->unk_3C;
         spC2 = bombKart->someRot;
         sp7C = bombKart->bounceTimer;
@@ -3238,7 +3240,7 @@ void func_8000DF8C(s32 bombKartId) {
                 break;
 
             case 5:
-                if ((D_8016347C == 0) || (gNearestWaypointByPlayerId[3] < 5)) {
+                if ((D_8016347C == 0) || (gNearestPathPointByPlayerId[3] < 5)) {
                     break;
                 } else {
                     spCA = func_8000D2B4(var_f22, var_f20, var_f24, spCA, 3);
@@ -3341,7 +3343,7 @@ void func_8000DF8C(s32 bombKartId) {
         bombKart2->bombPos[0] = var_f22;
         bombKart2->bombPos[1] = var_f20;
         bombKart2->bombPos[2] = var_f24;
-        bombKart2->waypointIndex = spCA;
+        bombKart2->pathPointIndex = spCA;
         bombKart2->unk_3C = spC4;
         bombKart2->someRot = spC2;
         bombKart2->state = sp7E;
@@ -3519,13 +3521,13 @@ void func_8000F124(void) {
     }
 }
 
-// Delete track waypoints
-void clear_waypoint(TrackWaypoint* arg0, size_t size) {
-    bzero((void*) arg0, size * sizeof(TrackWaypoint));
+// Delete track path
+void clear_pathPoint(TrackPathPoint* arg0, size_t size) {
+    bzero((void*) arg0, size * sizeof(TrackPathPoint));
 }
 
 // Appears to allocate memory for each course.
-void init_course_waypoint(void) {
+void init_course_pathPoint(void) {
 
     struct _struct_gCoursePathSizes_0x10* ptr = &GET_COURSE_PathSizes;
     s32 temp;
@@ -3537,13 +3539,13 @@ void init_course_waypoint(void) {
     gSizePath[3] = (s32) ptr->fourthPath;
 
     temp = ptr->unk8;
-    gVehicle2DWaypoint = get_next_available_memory_addr(temp * 4);
+    gVehicle2DPathPoint = get_next_available_memory_addr(temp * 4);
 
     // Podium ceremony appears to allocate 1 * 8 bytes of data. Which would be aligned to 0x10.
     for (i = 0; i < 4; i++) {
-        gTrackPath[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(TrackWaypoint));
-        gTrackInnerPath[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(TrackWaypoint));
-        gTrackOuterPath[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(TrackWaypoint));
+        gTrackPath[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(TrackPathPoint));
+        gTrackInnerPath[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(TrackPathPoint));
+        gTrackOuterPath[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(TrackPathPoint));
         gTrackSectionTypes[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(s16));
         gPathExpectedRotation[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(s16));
         gTrackConsecutiveCurveCounts[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(s16));
@@ -3553,15 +3555,15 @@ void init_course_waypoint(void) {
     gCurrentTrackInnerPath = gTrackInnerPath[0];
     gCurrentTrackOuterPath = gTrackOuterPath[0];
     gCurrentTrackSectionTypesPath = gTrackSectionTypes[0];
-    gCurrentWaypointExpectedRotationPath = gPathExpectedRotation[0];
+    gCurrentPathPointExpectedRotationPath = gPathExpectedRotation[0];
     gCurrentTrackConsecutiveCurveCountsPath = gTrackConsecutiveCurveCounts[0];
 
     // zero allocated memory?
     //! @warning does not appear to zero all the above allocated variables.
     for (i = 0; i < 4; i++) {
-        clear_waypoint(gTrackPath[i], gSizePath[i]);
-        clear_waypoint(gTrackInnerPath[i], gSizePath[i]);
-        clear_waypoint(gTrackOuterPath[i], gSizePath[i]);
+        clear_pathPoint(gTrackPath[i], gSizePath[i]);
+        clear_pathPoint(gTrackInnerPath[i], gSizePath[i]);
+        clear_pathPoint(gTrackOuterPath[i], gSizePath[i]);
     }
 
     // Skip several cpu cycles.
@@ -3569,7 +3571,7 @@ void init_course_waypoint(void) {
 
     for (i = 0; i < 4; i++) {
         if (gSizePath[i] >= 2) {
-            load_track_waypoint(i);
+            load_track_path(i);
             calculate_track_boundaries(i);
             analize_track_section(i);
             analyse_angle_path(i);
@@ -3581,11 +3583,11 @@ void init_course_waypoint(void) {
 #if !ENABLE_CUSTOM_COURSE_ENGINE
     switch (gCurrentCourseId) {
         case COURSE_KALAMARI_DESERT:
-            generate_train_waypoints();
+            generate_train_path();
             init_vehicles_trains();
             break;
         case COURSE_DK_JUNGLE:
-            generate_ferry_waypoints();
+            generate_ferry_path();
             init_vehicles_ferry();
             break;
         case COURSE_TOADS_TURNPIKE:
@@ -3722,7 +3724,7 @@ void init_players(void) {
     for (i = 0; i < NUM_PLAYERS; i++) {
         if (1) {};
         gPathIndexByPlayerId[i] = 0;
-        gNearestWaypointByPlayerId[i] =
+        gNearestPathPointByPlayerId[i] =
             gPathCountByPathIndex[gPathIndexByPlayerId[i]] - gGPCurrentRaceRankByPlayerId[i] - 4;
     }
 
@@ -3771,11 +3773,11 @@ void init_players(void) {
 // Processes course path by index.
 // @arg index from 0 to 3.
 // Each course can have 1-4 course paths.
-void load_track_waypoint(s32 pathIndex) {
+void load_track_path(s32 pathIndex) {
 
-    TrackWaypoint* ptr;
-    TrackWaypoint* pathDest;
-    TrackWaypoint* path;
+    TrackPathPoint* ptr;
+    TrackPathPoint* pathDest;
+    TrackPathPoint* path;
     s32 var_v0;
     s32 sp24;
     UNUSED s32 pad[2];
@@ -3815,7 +3817,7 @@ void load_track_waypoint(s32 pathIndex) {
 }
 
 void calculate_track_boundaries(s32 pathIndex) {
-    f32 waypointWidth;
+    f32 pathPointWidth;
     f32 x1;
     f32 y1;
     f32 z1;
@@ -3828,26 +3830,27 @@ void calculate_track_boundaries(s32 pathIndex) {
     f32 neg_z_dist;
     f32 xz_dist;
     s32 temp_f16;
-    s32 waypointIndex;
-    TrackWaypoint* waypoint;
-    TrackWaypoint* nextWaypoint;
-    TrackWaypoint* var_s1;
-    TrackWaypoint* var_s2;
+    s32 pathPointIndex;
+    TrackPathPoint* pathPoint;
+    TrackPathPoint* nextPathPoint;
+    TrackPathPoint* var_s1;
+    TrackPathPoint* var_s2;
 
     if (((s32) GET_COURSE_AIMaximumSeparation) >= 0) {
-        waypointWidth = GET_COURSE_AIMaximumSeparation;
-        waypoint = &gTrackPath[pathIndex][0];
+        pathPointWidth = GET_COURSE_AIMaximumSeparation;
+        pathPoint = &gTrackPath[pathIndex][0];
         var_s1 = &gTrackInnerPath[pathIndex][0];
         var_s2 = &gTrackOuterPath[pathIndex][0];
-        for (waypointIndex = 0; waypointIndex < gPathCountByPathIndex[pathIndex]; waypointIndex++, var_s1++, var_s2++) {
-            x1 = waypoint->posX;
-            y1 = waypoint->posY;
-            z1 = waypoint->posZ;
-            waypoint++;
-            nextWaypoint = &gTrackPath[pathIndex][(waypointIndex + 1) % ((s32) gPathCountByPathIndex[pathIndex])];
-            x2 = nextWaypoint->posX;
-            y2 = nextWaypoint->posY;
-            z2 = nextWaypoint->posZ;
+        for (pathPointIndex = 0; pathPointIndex < gPathCountByPathIndex[pathIndex];
+             pathPointIndex++, var_s1++, var_s2++) {
+            x1 = pathPoint->posX;
+            y1 = pathPoint->posY;
+            z1 = pathPoint->posZ;
+            pathPoint++;
+            nextPathPoint = &gTrackPath[pathIndex][(pathPointIndex + 1) % ((s32) gPathCountByPathIndex[pathIndex])];
+            x2 = nextPathPoint->posX;
+            y2 = nextPathPoint->posY;
+            z2 = nextPathPoint->posZ;
             x_dist = x2 - x1;
             z_dist = z2 - z1;
             neg_x_dist = x1 - x2;
@@ -3857,35 +3860,35 @@ void calculate_track_boundaries(s32 pathIndex) {
 
             // Calculate inner boundary position
             // Uses perpendicular vector (Z, -X) normalized by segment length
-            var_s1->posX = ((waypointWidth * z_dist) / xz_dist) + x1;
+            var_s1->posX = ((pathPointWidth * z_dist) / xz_dist) + x1;
             var_s1->posY = temp_f16;
-            var_s1->posZ = ((waypointWidth * neg_x_dist) / xz_dist) + z1;
+            var_s1->posZ = ((pathPointWidth * neg_x_dist) / xz_dist) + z1;
 
             // Calculate outer boundary position
             // Uses opposite perpendicular vector (-Z, X)
-            var_s2->posX = ((waypointWidth * neg_z_dist) / xz_dist) + x1;
+            var_s2->posX = ((pathPointWidth * neg_z_dist) / xz_dist) + x1;
             var_s2->posY = temp_f16;
-            var_s2->posZ = ((waypointWidth * x_dist) / xz_dist) + z1;
+            var_s2->posZ = ((pathPointWidth * x_dist) / xz_dist) + z1;
         }
     }
 }
 
 /**
- * Calculates the track curvature using two sets of three waypoints.
+ * Calculates the track curvature using two sets of three path.
  * Returns a normalized value indicating curve direction and severity:
  * - Positive: Right turn
  * - Negative: Left turn
  * - Near zero: Straight section
  *
  * @param pathIndex Track path index
- * @param waypointIndex Starting waypoint for calculation
+ * @param pathPointIndex Starting pathPoint for calculation
  * @return Normalized curvature value (-1 to 1)
  */
-f32 calculate_track_curvature(s32 pathIndex, u16 waypointIndex) {
+f32 calculate_track_curvature(s32 pathIndex, u16 pathPointIndex) {
     f32 secondVectorX;
     f32 secondVectorZ;
     UNUSED f32 pad;
-    TrackWaypoint* pathWaypoints;
+    TrackPathPoint* pathPathPoints;
     f32 x1;
     f32 z1;
     f32 x2;
@@ -3894,43 +3897,43 @@ f32 calculate_track_curvature(s32 pathIndex, u16 waypointIndex) {
     f32 z3;
     f32 firstVectorX;
     f32 firstVectorZ;
-    s32 waypointCount;
-    TrackWaypoint* waypoint3;
-    TrackWaypoint* waypoint2;
-    TrackWaypoint* waypoint1;
+    s32 pathPointCount;
+    TrackPathPoint* pathPoint3;
+    TrackPathPoint* pathPoint2;
+    TrackPathPoint* pathPoint1;
     f32 secondLength;
     f32 firstLength;
 
     if ((s32) GET_COURSE_AIMaximumSeparation < 0) {
         return 0.0f;
     }
-    waypointCount = gPathCountByPathIndex[pathIndex];
-    pathWaypoints = gTrackPath[pathIndex];
+    pathPointCount = gPathCountByPathIndex[pathIndex];
+    pathPathPoints = gTrackPath[pathIndex];
 
-    waypoint1 = &pathWaypoints[waypointIndex];
-    waypoint2 = &pathWaypoints[(waypointIndex + 1) % waypointCount];
-    waypoint3 = &pathWaypoints[(waypointIndex + 2) % waypointCount];
+    pathPoint1 = &pathPathPoints[pathPointIndex];
+    pathPoint2 = &pathPathPoints[(pathPointIndex + 1) % pathPointCount];
+    pathPoint3 = &pathPathPoints[(pathPointIndex + 2) % pathPointCount];
 
-    x1 = waypoint1->posX;
-    z1 = waypoint1->posZ;
-    x2 = waypoint2->posX;
-    z2 = waypoint2->posZ;
-    x3 = waypoint3->posX;
-    z3 = waypoint3->posZ;
+    x1 = pathPoint1->posX;
+    z1 = pathPoint1->posZ;
+    x2 = pathPoint2->posX;
+    z2 = pathPoint2->posZ;
+    x3 = pathPoint3->posX;
+    z3 = pathPoint3->posZ;
 
     firstVectorX = (((x2 + x3) * 0.5) - x1);
     firstVectorZ = (((z2 + z3) * 0.5) - z1);
 
-    waypoint1 = &pathWaypoints[(waypointIndex + 3) % waypointCount];
-    waypoint2 = &pathWaypoints[(waypointIndex + 4) % waypointCount];
-    waypoint3 = &pathWaypoints[(waypointIndex + 5) % waypointCount];
+    pathPoint1 = &pathPathPoints[(pathPointIndex + 3) % pathPointCount];
+    pathPoint2 = &pathPathPoints[(pathPointIndex + 4) % pathPointCount];
+    pathPoint3 = &pathPathPoints[(pathPointIndex + 5) % pathPointCount];
 
-    x1 = waypoint1->posX;
-    z1 = waypoint1->posZ;
-    x2 = waypoint2->posX;
-    z2 = waypoint2->posZ;
-    x3 = waypoint3->posX;
-    z3 = waypoint3->posZ;
+    x1 = pathPoint1->posX;
+    z1 = pathPoint1->posZ;
+    x2 = pathPoint2->posX;
+    z2 = pathPoint2->posZ;
+    x3 = pathPoint3->posX;
+    z3 = pathPoint3->posZ;
 
     secondVectorX = (((x2 + x3) * 0.5) - x1);
     secondVectorZ = (((z2 + z3) * 0.5) - z1);
@@ -3947,13 +3950,13 @@ void analize_track_section(s32 pathIndex) {
     s32 i;
     s32 j;
     s16* currentSection;
-    s32 waypointCount;
+    s32 pathPointCount;
     s16* nextSection;
 
     if ((s32) GET_COURSE_AIMaximumSeparation >= 0) {
-        waypointCount = gPathCountByPathIndex[pathIndex];
+        pathPointCount = gPathCountByPathIndex[pathIndex];
         currentSection = gTrackSectionTypes[pathIndex];
-        for (i = 0; i < waypointCount; i++, currentSection++) {
+        for (i = 0; i < pathPointCount; i++, currentSection++) {
             sectionCurvature = calculate_track_curvature(pathIndex, i);
             *currentSection = STRAIGHT;
             if (sectionCurvature > 0.1) {
@@ -3964,29 +3967,29 @@ void analize_track_section(s32 pathIndex) {
             }
         }
         currentSection = gTrackSectionTypes[pathIndex];
-        for (i = 0; i < waypointCount; i++, currentSection++) {
+        for (i = 0; i < pathPointCount; i++, currentSection++) {
             if (*currentSection == STRAIGHT) {
                 // Look ahead for next curved section
-                for (j = 1; j < waypointCount; j++) {
-                    nextSection = &gTrackSectionTypes[pathIndex][(i + j) % waypointCount];
+                for (j = 1; j < pathPointCount; j++) {
+                    nextSection = &gTrackSectionTypes[pathIndex][(i + j) % pathPointCount];
                     switch (*nextSection) {
                         case RIGHT_LEANING_CURVE:
                         case RIGHT_CURVE:
                             for (k = 0; k < j; k++) {
-                                gTrackSectionTypes[pathIndex][(i + k) % waypointCount] = RIGHT_LEANING_CURVE;
+                                gTrackSectionTypes[pathIndex][(i + k) % pathPointCount] = RIGHT_LEANING_CURVE;
                             }
                             i += j;
                             currentSection += j;
-                            j = waypointCount;
+                            j = pathPointCount;
                             break;
                         case LEFT_LEANING_CURVE:
                         case LEFT_CURVE:
                             for (k = 0; k < j; k++) {
-                                gTrackSectionTypes[pathIndex][(i + k) % waypointCount] = LEFT_LEANING_CURVE;
+                                gTrackSectionTypes[pathIndex][(i + k) % pathPointCount] = LEFT_LEANING_CURVE;
                             }
                             i += j;
                             currentSection += j;
-                            j = waypointCount;
+                            j = pathPointCount;
                             break;
                     }
                 }
@@ -3995,18 +3998,18 @@ void analize_track_section(s32 pathIndex) {
     }
 }
 
-// Seemingly calculates the atan2 angle between a waypoint and its forward neighbor
-s16 calculate_angle_path(s32 pathIndex, s32 waypointIndex) {
+// Seemingly calculates the atan2 angle between a pathPoint and its forward neighbor
+s16 calculate_angle_path(s32 pathIndex, s32 pathPointIndex) {
     s16 ret;
     Vec3f sp30;
     Vec3f sp24;
-    TrackWaypoint* temp_v0;
+    TrackPathPoint* temp_v0;
 
-    temp_v0 = &gTrackPath[pathIndex][waypointIndex];
+    temp_v0 = &gTrackPath[pathIndex][pathPointIndex];
     sp30[0] = temp_v0->posX;
     sp30[1] = temp_v0->posY;
     sp30[2] = temp_v0->posZ;
-    temp_v0 = &gTrackPath[pathIndex][(waypointIndex + 1) % gPathCountByPathIndex[pathIndex]];
+    temp_v0 = &gTrackPath[pathIndex][(pathPointIndex + 1) % gPathCountByPathIndex[pathIndex]];
     sp24[0] = temp_v0->posX;
     sp24[1] = temp_v0->posY;
     sp24[2] = temp_v0->posZ;
@@ -4016,13 +4019,13 @@ s16 calculate_angle_path(s32 pathIndex, s32 waypointIndex) {
 
 // Populates gPathExpectedRotation
 void analyse_angle_path(s32 pathIndex) {
-    s32 waypointIndex;
+    s32 pathPointIndex;
     u16* angle;
 
     if ((s32) GET_COURSE_AIMaximumSeparation >= 0) {
-        for (angle = (u16*) &gPathExpectedRotation[pathIndex][0], waypointIndex = 0;
-             waypointIndex < gPathCountByPathIndex[pathIndex]; waypointIndex++, angle++) {
-            *angle = calculate_angle_path(pathIndex, waypointIndex);
+        for (angle = (u16*) &gPathExpectedRotation[pathIndex][0], pathPointIndex = 0;
+             pathPointIndex < gPathCountByPathIndex[pathIndex]; pathPointIndex++, angle++) {
+            *angle = calculate_angle_path(pathIndex, pathPointIndex);
         }
     }
 }
@@ -4031,18 +4034,18 @@ void analisze_curved_path(s32 pathIndex) {
     s16* trackCurveCount;
     s16 curveCount;
     s16 temp_t0;
-    s32 waypointCount;
+    s32 pathPointCount;
     s16* trackSectionType;
     s32 i, j;
 
-    waypointCount = gPathCountByPathIndex[pathIndex];
+    pathPointCount = gPathCountByPathIndex[pathIndex];
     trackSectionType = gTrackSectionTypes[pathIndex];
     trackCurveCount = gTrackConsecutiveCurveCounts[pathIndex];
 
-    for (i = 0; i < waypointCount; i++) {
+    for (i = 0; i < pathPointCount; i++) {
         curveCount = 0;
-        for (j = 0; j < waypointCount; j++) {
-            temp_t0 = trackSectionType[(i + j) % waypointCount];
+        for (j = 0; j < pathPointCount; j++) {
+            temp_t0 = trackSectionType[(i + j) % pathPointCount];
             if ((temp_t0 == LEFT_LEANING_CURVE) || (temp_t0 == RIGHT_LEANING_CURVE)) {
                 curveCount += 1;
             } else {
@@ -4072,7 +4075,7 @@ f32 func_80010FA0(f32 arg0, f32 arg1, f32 arg2, UNUSED s32 arg3, UNUSED s32 arg4
 /**
  * @return's the number of items processed.
  */
-s32 func_80011014(TrackWaypoint* pathDest, TrackWaypoint* path, s32 numPathPoints, UNUSED s32 pathIndex) {
+s32 func_80011014(TrackPathPoint* pathDest, TrackPathPoint* path, s32 numPathPoints, UNUSED s32 pathIndex) {
     f32 temp_f24_2;
     f32 temp_f2_3;
     f32 var_f20_2;
@@ -4094,11 +4097,11 @@ s32 func_80011014(TrackWaypoint* pathDest, TrackWaypoint* path, s32 numPathPoint
     s32 var_s0;
     f32 var_f28;
 
-    TrackWaypoint* point1;
-    TrackWaypoint* point2;
-    TrackWaypoint* point3;
+    TrackPathPoint* point1;
+    TrackPathPoint* point2;
+    TrackPathPoint* point3;
     f32 temp;
-    UNUSED TrackWaypoint* dest;
+    UNUSED TrackPathPoint* dest;
     var_f30 = 0.0f;
     var_s0 = 0;
     temp_f20 = (f32) path[0].posX;
@@ -4193,8 +4196,8 @@ s32 func_80011014(TrackWaypoint* pathDest, TrackWaypoint* path, s32 numPathPoint
     return var_s0;
 }
 
-// Returns number of waypoints processed.
-s32 process_path_data(TrackWaypoint* dest, TrackWaypoint* src) {
+// Returns number of path processed.
+s32 process_path_data(TrackPathPoint* dest, TrackPathPoint* src) {
     s16 temp_a0;
     s16 temp_a2;
     s16 temp_a3;
@@ -4226,7 +4229,7 @@ s32 process_path_data(TrackWaypoint* dest, TrackWaypoint* src) {
     return var_v1;
 }
 
-s32 generate_2d_path(Path2D* pathDest, TrackWaypoint* pathSrc, s32 numWaypoints) {
+s32 generate_2d_path(Path2D* pathDest, TrackPathPoint* pathSrc, s32 numPathPoints) {
     f32 temp_f14_3;
     f32 temp_f16_2;
     UNUSED s32 pad;
@@ -4247,10 +4250,10 @@ s32 generate_2d_path(Path2D* pathDest, TrackWaypoint* pathSrc, s32 numWaypoints)
 
     f32 temp_f2_3;
 
-    TrackWaypoint* point1;
+    TrackPathPoint* point1;
     f32 j;
-    TrackWaypoint* point2;
-    TrackWaypoint* point3;
+    TrackPathPoint* point2;
+    TrackPathPoint* point3;
     s32 i;
     f32 temp_f6 = 0.0f;
     s32 nbElement;
@@ -4260,10 +4263,10 @@ s32 generate_2d_path(Path2D* pathDest, TrackWaypoint* pathSrc, s32 numWaypoints)
     spA0 = pathSrc[0].posZ;
     nbElement = 0;
 
-    for (i = 0; i < numWaypoints; i++) {
-        point1 = &pathSrc[((i % numWaypoints))];
-        point2 = &pathSrc[(((i + 1) % numWaypoints))];
-        point3 = &pathSrc[(((i + 2) % numWaypoints))];
+    for (i = 0; i < numPathPoints; i++) {
+        point1 = &pathSrc[((i % numPathPoints))];
+        point2 = &pathSrc[(((i + 1) % numPathPoints))];
+        point3 = &pathSrc[(((i + 2) % numPathPoints))];
         x1 = point1->posX;
         z1 = point1->posZ;
         x2 = point2->posX;
@@ -4320,32 +4323,32 @@ void reset_kart_ai_behaviour(s32 playerIndex) {
 }
 
 void kart_ai_behaviour_start(s32 playerId, Player* player) {
-    u16 playerWaypoint;
-    s16 waypointStart;
-    s16 waypointEnd;
+    u16 playerPathPoint;
+    s16 pathPointStart;
+    s16 pathPointEnd;
     s32 behaviourType;
     UNUSED s32 test;
 
     sCurrentKartAIBehaviour = &gCoursesKartAIBehaviour[gCurrentCourseId][gCurrentKartAIBehaviourId[playerId]];
 
-    playerWaypoint = gNearestWaypointByPlayerId[playerId];
+    playerPathPoint = gNearestPathPointByPlayerId[playerId];
 
-    waypointStart = sCurrentKartAIBehaviour->waypointStart;
-    waypointEnd = sCurrentKartAIBehaviour->waypointEnd;
+    pathPointStart = sCurrentKartAIBehaviour->pathPointStart;
+    pathPointEnd = sCurrentKartAIBehaviour->pathPointEnd;
     behaviourType = sCurrentKartAIBehaviour->type;
 
-    if ((waypointStart == -1) && (waypointEnd == -1)) {
+    if ((pathPointStart == -1) && (pathPointEnd == -1)) {
         sCurrentKartAIBehaviour = &gCoursesKartAIBehaviour[gCurrentCourseId][0];
         reset_kart_ai_behaviour_none(playerId);
         return;
     }
-    if ((u32) playerWaypoint == (u32) waypointStart) {
+    if ((u32) playerPathPoint == (u32) pathPointStart) {
         gKartAIBehaviourState[playerId] = KART_AI_BEHAVIOUR_STATE_RUNNING;
         gPreviousKartAIBehaviourId[playerId] = gCurrentKartAIBehaviourId[playerId];
         gCurrentKartAIBehaviourId[playerId]++;
         switch (behaviourType) {
             case BEHAVIOUR_1:
-                func_80011EC0(playerId, player, player->unk_07C >> 0x10, playerWaypoint);
+                func_80011EC0(playerId, player, player->unk_07C >> 0x10, playerPathPoint);
                 break;
             case BEHAVIOUR_HOP:
                 kart_hop(player);
@@ -4386,15 +4389,15 @@ void kart_ai_behaviour_start(s32 playerId, Player* player) {
 }
 
 void kart_ai_behaviour_end(s32 playerIndex, Player* player) {
-    u16 nearestWaypoint;
-    u32 waypointEnd;
+    u16 nearestPathPoint;
+    u32 pathPointEnd;
     s32 behaviourType;
 
     sCurrentKartAIBehaviour = &gCoursesKartAIBehaviour[gCurrentCourseId][gPreviousKartAIBehaviourId[playerIndex]];
-    nearestWaypoint = gNearestWaypointByPlayerId[playerIndex];
+    nearestPathPoint = gNearestPathPointByPlayerId[playerIndex];
     behaviourType = sCurrentKartAIBehaviour->type;
-    waypointEnd = sCurrentKartAIBehaviour->waypointEnd;
-    if (nearestWaypoint >= waypointEnd) {
+    pathPointEnd = sCurrentKartAIBehaviour->pathPointEnd;
+    if (nearestPathPoint >= pathPointEnd) {
         switch (behaviourType) {
             case BEHAVIOUR_1:
                 player->effects &= ~0x10;
@@ -4440,7 +4443,7 @@ void kart_ai_behaviour(s32 playerIndex) {
 
 void func_80011EC0(s32 arg0, Player* player, s32 arg2, UNUSED u16 arg3) {
     if ((((player->speed / 18.0f) * 216.0f) >= 45.0f) && (D_801630E8[arg0] == 0)) {
-        switch (gCurrentTrackSectionTypesPath[sSomeNearestWaypoint]) {
+        switch (gCurrentTrackSectionTypesPath[sSomeNearestPathPoint]) {
             case RIGHT_LEANING_CURVE:
             case RIGHT_CURVE:
                 if ((arg2 >= -9) && (D_80162FF8[arg0] == 0)) {
@@ -4471,38 +4474,38 @@ void func_80011EC0(s32 arg0, Player* player, s32 arg2, UNUSED u16 arg3) {
     }
 }
 
-#define GET_PATH_LENGTH(waypoint)               \
-    for (i = 0;; i++) {                         \
-        if ((u16) waypoint[i].posX == 0x8000) { \
-            break;                              \
-        }                                       \
+#define GET_PATH_LENGTH(pathPoint)               \
+    for (i = 0;; i++) {                          \
+        if ((u16) pathPoint[i].posX == 0x8000) { \
+            break;                               \
+        }                                        \
     }
 
-void generate_train_waypoints(void) {
+void generate_train_path(void) {
     s32 i;
     Path2D* temp;
-    TrackWaypoint* waypoint =
-        (TrackWaypoint*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(d_course_kalimari_desert_train_waypoints)] +
-                                              SEGMENT_OFFSET(d_course_kalimari_desert_train_waypoints));
+    TrackPathPoint* pathPoint =
+        (TrackPathPoint*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(d_course_kalimari_desert_train_path)] +
+                                               SEGMENT_OFFSET(d_course_kalimari_desert_train_path));
 
-    GET_PATH_LENGTH(waypoint)
+    GET_PATH_LENGTH(pathPoint)
 
-    temp = gVehicle2DWaypoint;
-    gVehicle2DWaypointLength = generate_2d_path(temp, waypoint, i - 1);
+    temp = gVehicle2DPathPoint;
+    gVehicle2DPathPointLength = generate_2d_path(temp, pathPoint, i - 1);
     D_80162EB0 = get_surface_height(temp[0].x, 2000.0f, temp[0].z);
 }
 
-void generate_ferry_waypoints(void) {
-    TrackWaypoint* waypoint;
+void generate_ferry_path(void) {
+    TrackPathPoint* pathPoint;
     s32 i;
 
-    waypoint = (TrackWaypoint*) VIRTUAL_TO_PHYSICAL2(
-        gSegmentTable[SEGMENT_NUMBER2(d_course_dks_jungle_parkway_ferry_waypoints)] +
-        (SEGMENT_OFFSET(d_course_dks_jungle_parkway_ferry_waypoints)));
+    pathPoint =
+        (TrackPathPoint*) VIRTUAL_TO_PHYSICAL2(gSegmentTable[SEGMENT_NUMBER2(d_course_dks_jungle_parkway_ferry_path)] +
+                                               (SEGMENT_OFFSET(d_course_dks_jungle_parkway_ferry_path)));
 
-    GET_PATH_LENGTH(waypoint)
+    GET_PATH_LENGTH(pathPoint)
 
-    gVehicle2DWaypointLength = generate_2d_path(gVehicle2DWaypoint, waypoint, i - 1);
+    gVehicle2DPathPointLength = generate_2d_path(gVehicle2DPathPoint, pathPoint, i - 1);
     D_80162EB2 = -40;
 }
 
@@ -4514,13 +4517,13 @@ void spawn_vehicle_on_road(VehicleStuff* vehicle) {
     origXPos = vehicle->position[0];
     origZPos = vehicle->position[2];
     if (gIsInExtra == false) {
-        func_8000D6D0(vehicle->position, (s16*) &vehicle->waypointIndex, vehicle->speed,
+        func_8000D6D0(vehicle->position, (s16*) &vehicle->pathPointIndex, vehicle->speed,
                       vehicle->someMultiplierTheSequel, 0, 3);
         vehicle->rotation[0] = 0;
         vehicle->rotation[1] = -0x8000;
         vehicle->rotation[2] = 0;
     } else {
-        func_8000D940(vehicle->position, (s16*) &vehicle->waypointIndex, vehicle->speed,
+        func_8000D940(vehicle->position, (s16*) &vehicle->pathPointIndex, vehicle->speed,
                       vehicle->someMultiplierTheSequel, 0);
         vehicle->rotation[0] = 0;
         vehicle->rotation[1] = 0;
@@ -4555,8 +4558,8 @@ void spawn_course_vehicles(void) {
                 tempLocomotive = &gTrainList[loopIndex].locomotive;
                 origXPos = tempLocomotive->position[0];
                 origZPos = tempLocomotive->position[2];
-                trainCarYRot = update_vehicle_following_waypoint(
-                    tempLocomotive->position, (s16*) &tempLocomotive->waypointIndex, gTrainList[loopIndex].speed);
+                trainCarYRot = update_vehicle_following_pathPoint(
+                    tempLocomotive->position, (s16*) &tempLocomotive->pathPointIndex, gTrainList[loopIndex].speed);
                 tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
                 tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
                 vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -4567,8 +4570,8 @@ void spawn_course_vehicles(void) {
                 if (tempTender->isActive == 1) {
                     origXPos = tempTender->position[0];
                     origZPos = tempTender->position[2];
-                    trainCarYRot = update_vehicle_following_waypoint(
-                        tempTender->position, (s16*) &tempTender->waypointIndex, gTrainList[loopIndex].speed);
+                    trainCarYRot = update_vehicle_following_pathPoint(
+                        tempTender->position, (s16*) &tempTender->pathPointIndex, gTrainList[loopIndex].speed);
                     tempTender->velocity[0] = tempTender->position[0] - origXPos;
                     tempTender->velocity[2] = tempTender->position[2] - origZPos;
                     vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -4581,9 +4584,9 @@ void spawn_course_vehicles(void) {
                     if (tempPassengerCar->isActive == 1) {
                         origXPos = tempPassengerCar->position[0];
                         origZPos = tempPassengerCar->position[2];
-                        trainCarYRot = update_vehicle_following_waypoint(tempPassengerCar->position,
-                                                                         (s16*) &tempPassengerCar->waypointIndex,
-                                                                         gTrainList[loopIndex].speed);
+                        trainCarYRot = update_vehicle_following_pathPoint(tempPassengerCar->position,
+                                                                          (s16*) &tempPassengerCar->pathPointIndex,
+                                                                          gTrainList[loopIndex].speed);
                         tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
                         tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
                         vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -4600,8 +4603,8 @@ void spawn_course_vehicles(void) {
                 if (tempPaddleWheelBoat->isActive == 1) {
                     origXPos = tempPaddleWheelBoat->position[0];
                     origZPos = tempPaddleWheelBoat->position[2];
-                    tempPaddleWheelBoat->rotY = update_vehicle_following_waypoint(
-                        tempPaddleWheelBoat->position, (s16*) &tempPaddleWheelBoat->waypointIndex,
+                    tempPaddleWheelBoat->rotY = update_vehicle_following_pathPoint(
+                        tempPaddleWheelBoat->position, (s16*) &tempPaddleWheelBoat->pathPointIndex,
                         tempPaddleWheelBoat->speed);
                     tempPaddleWheelBoat->velocity[0] = tempPaddleWheelBoat->position[0] - origXPos;
                     tempPaddleWheelBoat->velocity[2] = tempPaddleWheelBoat->position[2] - origZPos;
@@ -4645,12 +4648,12 @@ void spawn_course_vehicles(void) {
 #endif
 }
 
-void set_vehicle_pos_waypoint(TrainCarStuff* trainCar, Path2D* posXZ, u16 waypoint) {
+void set_vehicle_pos_pathPoint(TrainCarStuff* trainCar, Path2D* posXZ, u16 pathPoint) {
     trainCar->position[0] = (f32) posXZ->x;
     trainCar->position[1] = (f32) D_80162EB0;
     trainCar->position[2] = (f32) posXZ->z;
     trainCar->actorIndex = -1;
-    trainCar->waypointIndex = waypoint;
+    trainCar->pathPointIndex = pathPoint;
     trainCar->isActive = 0;
     trainCar->velocity[0] = 0.0f;
     trainCar->velocity[1] = 0.0f;
@@ -4658,11 +4661,11 @@ void set_vehicle_pos_waypoint(TrainCarStuff* trainCar, Path2D* posXZ, u16 waypoi
 }
 
 /**
- * Set waypoint spawn locations for each rolling stock
- * The railroad has 465 waypoints
+ * Set pathPoint spawn locations for each rolling stock
+ * The railroad has 465 path
  */
 void init_vehicles_trains(void) {
-    u16 waypointOffset;
+    u16 pathPointOffset;
     TrainCarStuff* ptr1;
     Path2D* pos;
     s32 i;
@@ -4670,27 +4673,27 @@ void init_vehicles_trains(void) {
 
     for (i = 0; i < NUM_TRAINS; i++) {
         // outputs 160 or 392 depending on the train.
-        // Wraps the value around to always output a valid waypoint.
-        waypointOffset = (((i * gVehicle2DWaypointLength) / NUM_TRAINS) + 160) % gVehicle2DWaypointLength;
+        // Wraps the value around to always output a valid pathPoint.
+        pathPointOffset = (((i * gVehicle2DPathPointLength) / NUM_TRAINS) + 160) % gVehicle2DPathPointLength;
 
         // 120.0f is about the maximum usable value
         gTrainList[i].speed = 5.0f;
         for (j = 0; j < NUM_PASSENGER_CAR_ENTRIES; j++) {
-            waypointOffset += 4;
+            pathPointOffset += 4;
             ptr1 = &gTrainList[i].passengerCars[j];
-            pos = &gVehicle2DWaypoint[waypointOffset];
-            set_vehicle_pos_waypoint(ptr1, pos, waypointOffset);
+            pos = &gVehicle2DPathPoint[pathPointOffset];
+            set_vehicle_pos_pathPoint(ptr1, pos, pathPointOffset);
         }
         // Smaller offset for the tender
-        waypointOffset += 3;
+        pathPointOffset += 3;
         ptr1 = &gTrainList[i].tender;
-        pos = &gVehicle2DWaypoint[waypointOffset];
-        set_vehicle_pos_waypoint(ptr1, pos, waypointOffset);
+        pos = &gVehicle2DPathPoint[pathPointOffset];
+        set_vehicle_pos_pathPoint(ptr1, pos, pathPointOffset);
 
-        waypointOffset += 4;
+        pathPointOffset += 4;
         ptr1 = &gTrainList[i].locomotive;
-        pos = &gVehicle2DWaypoint[waypointOffset];
-        set_vehicle_pos_waypoint(ptr1, pos, waypointOffset);
+        pos = &gVehicle2DPathPoint[pathPointOffset];
+        set_vehicle_pos_pathPoint(ptr1, pos, pathPointOffset);
 
         // Only use locomotive unless overwritten below.
         gTrainList[i].numCars = LOCOMOTIVE_ONLY;
@@ -4752,7 +4755,7 @@ void update_vehicle_trains(void) {
     UNUSED s32 pad[3];
     f32 temp_f20;
     TrainCarStuff* car;
-    u16 oldWaypointIndex;
+    u16 oldPathPointIndex;
     s16 orientationYUpdate;
     f32 temp_f22;
     s32 i;
@@ -4762,22 +4765,22 @@ void update_vehicle_trains(void) {
     gTrainSmokeTimer += 1;
 
     for (i = 0; i < NUM_TRAINS; i++) {
-        oldWaypointIndex = (u16) gTrainList[i].locomotive.waypointIndex;
+        oldPathPointIndex = (u16) gTrainList[i].locomotive.pathPointIndex;
 
         temp_f20 = gTrainList[i].locomotive.position[0];
         temp_f22 = gTrainList[i].locomotive.position[2];
 
-        orientationYUpdate = update_vehicle_following_waypoint(
-            gTrainList[i].locomotive.position, (s16*) &gTrainList[i].locomotive.waypointIndex, gTrainList[i].speed);
+        orientationYUpdate = update_vehicle_following_pathPoint(
+            gTrainList[i].locomotive.position, (s16*) &gTrainList[i].locomotive.pathPointIndex, gTrainList[i].speed);
 
         gTrainList[i].locomotive.velocity[0] = gTrainList[i].locomotive.position[0] - temp_f20;
         gTrainList[i].locomotive.velocity[2] = gTrainList[i].locomotive.position[2] - temp_f22;
 
         sync_train_components(&gTrainList[i].locomotive, orientationYUpdate);
 
-        if ((oldWaypointIndex != gTrainList[i].locomotive.waypointIndex) &&
-            ((gTrainList[i].locomotive.waypointIndex == 0x00BE) ||
-             (gTrainList[i].locomotive.waypointIndex == 0x0140))) { // play crossing bell sound
+        if ((oldPathPointIndex != gTrainList[i].locomotive.pathPointIndex) &&
+            ((gTrainList[i].locomotive.pathPointIndex == 0x00BE) ||
+             (gTrainList[i].locomotive.pathPointIndex == 0x0140))) { // play crossing bell sound
             func_800C98B8(gTrainList[i].locomotive.position, gTrainList[i].locomotive.velocity,
                           SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x0E));
         } else if (random_int(100) == 0) { // play train whistle sound
@@ -4802,7 +4805,7 @@ void update_vehicle_trains(void) {
             temp_f20 = car->position[0];
             temp_f22 = car->position[2];
             orientationYUpdate =
-                update_vehicle_following_waypoint(car->position, (s16*) &car->waypointIndex, gTrainList[i].speed);
+                update_vehicle_following_pathPoint(car->position, (s16*) &car->pathPointIndex, gTrainList[i].speed);
             car->velocity[0] = car->position[0] - temp_f20;
             car->velocity[2] = car->position[2] - temp_f22;
             sync_train_components(car, orientationYUpdate);
@@ -4815,7 +4818,7 @@ void update_vehicle_trains(void) {
                 temp_f22 = car->position[2];
 
                 orientationYUpdate =
-                    update_vehicle_following_waypoint(car->position, (s16*) &car->waypointIndex, gTrainList[i].speed);
+                    update_vehicle_following_pathPoint(car->position, (s16*) &car->pathPointIndex, gTrainList[i].speed);
                 car->velocity[0] = car->position[0] - temp_f20;
                 car->velocity[2] = car->position[2] - temp_f22;
                 sync_train_components(car, orientationYUpdate);
@@ -4892,7 +4895,7 @@ void func_80013054(void) {
     isCrossingTriggeredByIndex[1] = 0;
 
     for (i = 0; i < NUM_TRAINS; i++) {
-        temp_f16 = gTrainList[i].locomotive.waypointIndex / ((f32) gVehicle2DWaypointLength);
+        temp_f16 = gTrainList[i].locomotive.pathPointIndex / ((f32) gVehicle2DPathPointLength);
         temp_f18 = 0.72017354f;
         temp_f12 = 0.42299348f;
 
@@ -4925,12 +4928,12 @@ void check_ai_crossing_distance(s32 playerId) {
 
             if ((isCrossingTriggeredByIndex[1] == 1) && ((sCrossingActiveTimer[1]) > FRAMES_SINCE_CROSSING_ACTIVATED)) {
 
-                if ((sSomeNearestWaypoint > 176) && (sSomeNearestWaypoint < 182)) {
+                if ((sSomeNearestPathPoint > 176) && (sSomeNearestPathPoint < 182)) {
                     bStopAICrossing[playerId] = 1;
                 }
             }
             if ((isCrossingTriggeredByIndex[0] == 1) && ((sCrossingActiveTimer[0]) > FRAMES_SINCE_CROSSING_ACTIVATED)) {
-                if ((sSomeNearestWaypoint >= 306) && (sSomeNearestWaypoint < 310)) {
+                if ((sSomeNearestPathPoint >= 306) && (sSomeNearestPathPoint < 310)) {
                     bStopAICrossing[playerId] = 1;
                 }
             }
@@ -4946,11 +4949,11 @@ void init_vehicles_ferry(void) {
     for (i = 0; i < NUM_ACTIVE_PADDLE_BOATS; i++) {
         temp = i * 0xB4;
         paddleBoat = &gPaddleBoats[i];
-        temp_a2 = &gVehicle2DWaypoint[temp];
+        temp_a2 = &gVehicle2DPathPoint[temp];
         paddleBoat->position[0] = temp_a2->x;
         paddleBoat->position[1] = D_80162EB2;
         paddleBoat->position[2] = temp_a2->z;
-        paddleBoat->waypointIndex = i * 0xB4;
+        paddleBoat->pathPointIndex = i * 0xB4;
         paddleBoat->actorIndex = -1;
 
         if (gPlayerCount >= 3) {
@@ -4969,7 +4972,7 @@ void init_vehicles_ferry(void) {
 
 void update_vehicle_paddle_boats(void) {
     PaddleBoatStuff* paddleBoat;
-    Path2D* waypoint;
+    Path2D* pathPoint;
     s32 i;
     struct Actor* paddleBoatActor;
     f32 temp_f26;
@@ -4990,8 +4993,8 @@ void update_vehicle_paddle_boats(void) {
             temp_f26 = paddleBoat->position[0];
             temp_f28 = paddleBoat->position[1];
             temp_f30 = paddleBoat->position[2];
-            update_vehicle_following_waypoint(paddleBoat->position, (s16*) &paddleBoat->waypointIndex,
-                                              paddleBoat->speed);
+            update_vehicle_following_pathPoint(paddleBoat->position, (s16*) &paddleBoat->pathPointIndex,
+                                               paddleBoat->speed);
             paddleBoat->someFlags = set_vehicle_render_distance_flags(paddleBoat->position, BOAT_SMOKE_RENDER_DISTANCE,
                                                                       paddleBoat->someFlags);
             if ((((s16) gFerrySmokeTimer % 10) == 0) && (paddleBoat->someFlags != 0)) {
@@ -5016,11 +5019,11 @@ void update_vehicle_paddle_boats(void) {
             sp94[0] = temp_f26;
             sp94[1] = temp_f28;
             sp94[2] = temp_f30;
-            waypoint = &gVehicle2DWaypoint[(paddleBoat->waypointIndex + 5) % gVehicle2DWaypointLength];
-            sp88[0] = (f32) waypoint->x;
+            pathPoint = &gVehicle2DPathPoint[(paddleBoat->pathPointIndex + 5) % gVehicle2DPathPointLength];
+            sp88[0] = (f32) pathPoint->x;
             sp88[1] = (f32) D_80162EB0;
-            sp88[2] = (f32) waypoint->z;
-            temp_a1 = get_angle_between_waypoints(sp94, sp88);
+            sp88[2] = (f32) pathPoint->z;
+            temp_a1 = get_angle_between_path(sp94, sp88);
             temp = temp_a1 - paddleBoat->rotY;
             var_v1 = temp;
             if (var_v1 < 0) {
@@ -5105,21 +5108,21 @@ void handle_paddleBoats_interactions(Player* player) {
 }
 
 void initialize_toads_turnpike_vehicle(f32 speedA, f32 speedB, s32 numVehicles, s32 arg3, VehicleStuff* vehicleList,
-                                       TrackWaypoint* waypointList) {
+                                       TrackPathPoint* pathPointList) {
     VehicleStuff* veh;
-    TrackWaypoint* temp_v0;
+    TrackPathPoint* temp_v0;
     s32 i;
-    u16 waypointOffset;
-    s32 numWaypoints = gPathCountByPathIndex[0];
+    u16 pathPointOffset;
+    s32 numPathPoints = gPathCountByPathIndex[0];
     for (i = 0; i < numVehicles; i++) {
-        waypointOffset = (((i * numWaypoints) / numVehicles) + arg3) % numWaypoints;
+        pathPointOffset = (((i * numPathPoints) / numVehicles) + arg3) % numPathPoints;
         veh = &vehicleList[i];
-        temp_v0 = &waypointList[waypointOffset];
+        temp_v0 = &pathPointList[pathPointOffset];
         veh->position[0] = (f32) temp_v0->posX;
         veh->position[1] = (f32) temp_v0->posY;
         veh->position[2] = (f32) temp_v0->posZ;
         veh->actorIndex = -1;
-        veh->waypointIndex = waypointOffset;
+        veh->pathPointIndex = pathPointOffset;
         veh->unused = 0;
         veh->velocity[0] = 0.0f;
         veh->velocity[1] = 0.0f;
@@ -5140,21 +5143,21 @@ void initialize_toads_turnpike_vehicle(f32 speedA, f32 speedB, s32 numVehicles, 
         veh->rotation[0] = 0;
         veh->rotation[2] = 0;
         if (gIsInExtra == false) {
-            veh->rotation[1] = func_8000D6D0(veh->position, (s16*) &veh->waypointIndex, veh->speed,
+            veh->rotation[1] = func_8000D6D0(veh->position, (s16*) &veh->pathPointIndex, veh->speed,
                                              veh->someMultiplierTheSequel, 0, 3);
         } else {
             veh->rotation[1] =
-                func_8000D940(veh->position, (s16*) &veh->waypointIndex, veh->speed, veh->someMultiplierTheSequel, 0);
+                func_8000D940(veh->position, (s16*) &veh->pathPointIndex, veh->speed, veh->someMultiplierTheSequel, 0);
         }
     }
     sVehicleSoundRenderCounter = 10;
 }
 
-f32 func_80013C74(s16 someType, s16 waypointIndex) {
+f32 func_80013C74(s16 someType, s16 pathPointIndex) {
     f32 var_f2;
 
     var_f2 = 0.0f;
-    if (waypointIndex < 0x28A) {
+    if (pathPointIndex < 0x28A) {
         switch (someType) {
             case 0:
                 var_f2 = -0.7f;
@@ -5183,7 +5186,7 @@ f32 func_80013C74(s16 someType, s16 waypointIndex) {
     return var_f2;
 }
 
-void update_vehicle_follow_waypoint(VehicleStuff* vehicle) {
+void update_vehicle_follow_pathPoint(VehicleStuff* vehicle) {
     f32 temp_f0_2;
     f32 temp_f0_3;
     f32 sp5C;
@@ -5202,7 +5205,7 @@ void update_vehicle_follow_waypoint(VehicleStuff* vehicle) {
     sp40[0] = sp58;
     sp40[1] = 0.0f;
     sp40[2] = 0.0f;
-    temp_f0_2 = func_80013C74(vehicle->someType, vehicle->waypointIndex);
+    temp_f0_2 = func_80013C74(vehicle->someType, vehicle->pathPointIndex);
     if (vehicle->someMultiplierTheSequel < temp_f0_2) {
         vehicle->someMultiplierTheSequel = vehicle->someMultiplierTheSequel + 0.06;
         if (temp_f0_2 < vehicle->someMultiplierTheSequel) {
@@ -5216,10 +5219,10 @@ void update_vehicle_follow_waypoint(VehicleStuff* vehicle) {
         }
     }
     if (gIsInExtra == false) {
-        var_a1 = func_8000D6D0(vehicle->position, (s16*) &vehicle->waypointIndex, vehicle->speed,
+        var_a1 = func_8000D6D0(vehicle->position, (s16*) &vehicle->pathPointIndex, vehicle->speed,
                                vehicle->someMultiplierTheSequel, 0, 3);
     } else {
-        var_a1 = func_8000D940(vehicle->position, (s16*) &vehicle->waypointIndex, vehicle->speed,
+        var_a1 = func_8000D940(vehicle->position, (s16*) &vehicle->pathPointIndex, vehicle->speed,
                                vehicle->someMultiplierTheSequel, 0);
     }
     adjust_angle(&vehicle->rotation[1], var_a1, 100);
@@ -5316,8 +5319,8 @@ void handle_vehicle_interactions(s32 playerId, Player* player, VehicleStuff* veh
 
                         switch (gIsInExtra) {
                             case false:
-                                t1 = is_path_point_in_range(vehicle->waypointIndex,
-                                                            gNearestWaypointByPlayerId[playerId], 10, 0, path);
+                                t1 = is_path_point_in_range(vehicle->pathPointIndex,
+                                                            gNearestPathPointByPlayerId[playerId], 10, 0, path);
                                 if ((gIsPlayerWrongDirection[playerId] == 0) && (t1 > 0) &&
                                     (player->speed < vehicle->speed)) {
                                     shouldInteract = true;
@@ -5327,8 +5330,8 @@ void handle_vehicle_interactions(s32 playerId, Player* player, VehicleStuff* veh
                                 }
                                 break;
                             case true:
-                                t2 = is_path_point_in_range(vehicle->waypointIndex,
-                                                            gNearestWaypointByPlayerId[playerId], 0, 10, path);
+                                t2 = is_path_point_in_range(vehicle->pathPointIndex,
+                                                            gNearestPathPointByPlayerId[playerId], 0, 10, path);
                                 if (t2 > 0) {
                                     if (random_int(2) == 0) {
                                         // temp_v1_2 = gIsPlayerWrongDirection[playerId];
@@ -5434,20 +5437,20 @@ f32 player_track_position_factor_vehicle(s16 someType, f32 arg1, s16 pathIndex) 
 
 void update_player_track_position_factor_from_vehicle(s32 playerId, s32 vehicleCount, VehicleStuff* vehicle) {
     UNUSED s32 var_v1;
-    s32 waypointOffset;
+    s32 pathPointOffset;
     s32 var_s2;
-    s32 waypointCount;
-    u16 vehicleWaypoint;
+    s32 pathPointCount;
+    u16 vehiclePathPoint;
     UNUSED VehicleStuff* tempVehicle;
 
-    waypointCount = gPathCountByPathIndex[0];
+    pathPointCount = gPathCountByPathIndex[0];
     if (!(gPlayers[playerId].speed < 1.6666666666666667)) {
         for (var_s2 = 0; var_s2 < vehicleCount; var_s2++, vehicle++) {
-            vehicleWaypoint = vehicle->waypointIndex;
-            for (waypointOffset = 0; waypointOffset < 0x18; waypointOffset += 3) {
-                if (((sSomeNearestWaypoint + waypointOffset) % waypointCount) == vehicleWaypoint) {
+            vehiclePathPoint = vehicle->pathPointIndex;
+            for (pathPointOffset = 0; pathPointOffset < 0x18; pathPointOffset += 3) {
+                if (((sSomeNearestPathPoint + pathPointOffset) % pathPointCount) == vehiclePathPoint) {
                     gPlayerTrackPositionFactorInstruction[playerId].target = player_track_position_factor_vehicle(
-                        vehicle->someType, gTrackPositionFactor[playerId], vehicleWaypoint);
+                        vehicle->someType, gTrackPositionFactor[playerId], vehiclePathPoint);
                     return;
                 }
             }
@@ -5468,7 +5471,7 @@ void init_vehicles_box_trucks(void) {
 void update_vehicle_box_trucks(void) {
     s32 loopIndex;
     for (loopIndex = 0; loopIndex < NUM_RACE_BOX_TRUCKS; loopIndex++) {
-        update_vehicle_follow_waypoint(&gBoxTruckList[loopIndex]);
+        update_vehicle_follow_pathPoint(&gBoxTruckList[loopIndex]);
     }
 }
 
@@ -5496,7 +5499,7 @@ void init_vehicles_school_buses(void) {
 void update_vehicle_school_bus(void) {
     s32 loopIndex;
     for (loopIndex = 0; loopIndex < NUM_RACE_SCHOOL_BUSES; loopIndex++) {
-        update_vehicle_follow_waypoint(&gSchoolBusList[loopIndex]);
+        update_vehicle_follow_pathPoint(&gSchoolBusList[loopIndex]);
     }
 }
 
@@ -5524,7 +5527,7 @@ void init_vehicles_trucks(void) {
 void update_vehicle_tanker_trucks(void) {
     s32 loopIndex;
     for (loopIndex = 0; loopIndex < NUM_RACE_TANKER_TRUCKS; loopIndex++) {
-        update_vehicle_follow_waypoint(&gTankerTruckList[loopIndex]);
+        update_vehicle_follow_pathPoint(&gTankerTruckList[loopIndex]);
     }
 }
 
@@ -5552,7 +5555,7 @@ void init_vehicles_cars(void) {
 void update_vehicle_cars(void) {
     s32 loopIndex;
     for (loopIndex = 0; loopIndex < NUM_RACE_CARS; loopIndex++) {
-        update_vehicle_follow_waypoint(&gCarList[loopIndex]);
+        update_vehicle_follow_pathPoint(&gCarList[loopIndex]);
     }
 }
 
@@ -5566,11 +5569,11 @@ void update_player_track_position_factor_from_cars(s32 playerId) {
 }
 
 void func_80014D30(s32 cameraId, s32 pathIndex) {
-    s16 cameraWaypoint;
-    TrackWaypoint* temp_v0;
+    s16 cameraPathPoint;
+    TrackPathPoint* temp_v0;
 
-    cameraWaypoint = gNearestWaypointByCameraId[cameraId];
-    temp_v0 = &gTrackPath[pathIndex][cameraWaypoint];
+    cameraPathPoint = gNearestPathPointByCameraId[cameraId];
+    temp_v0 = &gTrackPath[pathIndex][cameraPathPoint];
     check_bounding_collision(&cameras[cameraId].collision, 10.0f, (f32) temp_v0->posX, (f32) temp_v0->posY + 30.0f,
                              (f32) temp_v0->posZ);
 }
@@ -5598,7 +5601,7 @@ void func_80014DE4(s32 cameraIndex) {
     }
 
     for (cameraId = 0; cameraId < 4; cameraId++) {
-        gNearestWaypointByCameraId[cameraId] = 0;
+        gNearestPathPointByCameraId[cameraId] = 0;
     }
 }
 
@@ -5785,14 +5788,14 @@ void func_80015544(s32 playerId, f32 arg1, s32 cameraId, s32 pathIndex) {
 
     D_80164688[cameraId] = arg1;
     camera = cameras + cameraId;
-    gNearestWaypointByCameraId[cameraId] = (gNearestWaypointByPlayerId[playerId] + 10) % test;
+    gNearestPathPointByCameraId[cameraId] = (gNearestPathPointByPlayerId[playerId] + 10) % test;
 
-    set_track_offset_position(gNearestWaypointByCameraId[cameraId], arg1, pathIndex);
+    set_track_offset_position(gNearestPathPointByCameraId[cameraId], arg1, pathIndex);
 
     D_801645F8[cameraId] = gOffsetPosition[0];
     D_80164638[cameraId] = gOffsetPosition[2];
 
-    temp_f2 = (f32) gTrackPath[pathIndex][gNearestWaypointByCameraId[cameraId]].posY;
+    temp_f2 = (f32) gTrackPath[pathIndex][gNearestPathPointByCameraId[cameraId]].posY;
 
     temp_f12 = get_surface_height(gOffsetPosition[0], (f32) (temp_f2 + 30.0), gOffsetPosition[2]);
     if ((temp_f12 < (temp_f2 - 20.0)) || (temp_f12 >= 3000.0)) {
@@ -5807,8 +5810,8 @@ void func_80015544(s32 playerId, f32 arg1, s32 cameraId, s32 pathIndex) {
 }
 
 void func_8001577C(Camera* camera, UNUSED Player* playerArg, UNUSED s32 arg2, s32 cameraId) {
-    s16 cameraWaypoint;
-    s16 playerWaypoint;
+    s16 cameraPathPoint;
+    s16 playerPathPoint;
     UNUSED s32 pad;
     f32 xdiff;
     f32 ydiff;
@@ -5817,31 +5820,31 @@ void func_8001577C(Camera* camera, UNUSED Player* playerArg, UNUSED s32 arg2, s3
     s32 playerId;
     UNUSED s32 pad3[9];
     Player* player;
-    s32 waypointDiff;
+    s32 pathPointDiff;
     s32 pathIndex;
 
     playerId = camera->playerId;
     pathIndex = gPathIndexByPlayerId[playerId];
     player = gPlayerOne;
     player += playerId;
-    gNearestWaypointByCameraId[cameraId] =
-        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], pathIndex);
-    playerWaypoint = gNearestWaypointByPlayerId[playerId];
-    cameraWaypoint = gNearestWaypointByCameraId[cameraId];
-    if (is_path_point_in_range(playerWaypoint, cameraWaypoint, 0x0032U, 0x000FU, gPathCountByPathIndex[pathIndex]) <=
+    gNearestPathPointByCameraId[cameraId] =
+        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestPathPointByCameraId[cameraId], pathIndex);
+    playerPathPoint = gNearestPathPointByPlayerId[playerId];
+    cameraPathPoint = gNearestPathPointByCameraId[cameraId];
+    if (is_path_point_in_range(playerPathPoint, cameraPathPoint, 0x0032U, 0x000FU, gPathCountByPathIndex[pathIndex]) <=
         0) {
         func_8001A348(cameraId, D_80164688[cameraId], D_80164680[cameraId]);
     } else {
         if (gTrackPositionFactor[playerId] < (-0.7)) {
-            waypointDiff = playerWaypoint - cameraWaypoint;
-            if ((D_80164688[cameraId] < (-0.5)) && ((waypointDiff * waypointDiff) < 5)) {
+            pathPointDiff = playerPathPoint - cameraPathPoint;
+            if ((D_80164688[cameraId] < (-0.5)) && ((pathPointDiff * pathPointDiff) < 5)) {
                 func_8001A348(cameraId, 1.0f, 3);
                 goto alable;
             }
         }
         // clang-format off
         // I hate this, but a fakematch is a fakematch
-        if (gTrackPositionFactor[playerId] > 0.7) { waypointDiff = playerWaypoint - cameraWaypoint; if ((D_80164688[cameraId] > 0.5) && ((waypointDiff * waypointDiff) < 5)) {
+        if (gTrackPositionFactor[playerId] > 0.7) { pathPointDiff = playerPathPoint - cameraPathPoint; if ((D_80164688[cameraId] > 0.5) && ((pathPointDiff * pathPointDiff) < 5)) {
                 func_8001A348(cameraId, -1.0f, 2);
                 // clang-format on
             }
@@ -5867,13 +5870,13 @@ void func_80015A9C(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
     Camera* camera = cameras + cameraId;
 
     D_80164688[cameraId] = arg1;
-    gNearestWaypointByCameraId[cameraId] = gNearestWaypointByPlayerId[playerId] + 10;
-    gNearestWaypointByCameraId[cameraId] = (gNearestWaypointByCameraId[cameraId]) % gPathCountByPathIndex[pathIndex];
+    gNearestPathPointByCameraId[cameraId] = gNearestPathPointByPlayerId[playerId] + 10;
+    gNearestPathPointByCameraId[cameraId] = (gNearestPathPointByCameraId[cameraId]) % gPathCountByPathIndex[pathIndex];
 
-    set_track_offset_position(gNearestWaypointByCameraId[cameraId], arg1, pathIndex);
+    set_track_offset_position(gNearestPathPointByCameraId[cameraId], arg1, pathIndex);
 
     D_801645F8[cameraId] = gOffsetPosition[0];
-    D_80164618[cameraId] = (f32) gTrackPath[pathIndex][gNearestWaypointByCameraId[cameraId]].posY;
+    D_80164618[cameraId] = (f32) gTrackPath[pathIndex][gNearestPathPointByCameraId[cameraId]].posY;
     D_80164638[cameraId] = gOffsetPosition[2];
 
     D_80164648[cameraId] = gPlayers[playerId].speed / 5.0f;
@@ -5887,8 +5890,8 @@ void func_80015A9C(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
 }
 
 void func_80015C94(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2, s32 cameraId) {
-    s16 playerWaypoint;
-    s16 cameraWaypoint;
+    s16 playerPathPoint;
+    s16 cameraPathPoint;
     UNUSED s32 stackPadding0;
     f32 xdiff2;
     f32 ydiff2;
@@ -5903,8 +5906,8 @@ void func_80015C94(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
     f32 zdiff;
     f32 distance;
     UNUSED s32 stackPadding1;
-    s16 waypoint1;
-    s16 waypoint2;
+    s16 pathPoint1;
+    s16 pathPoint2;
     UNUSED f32 var_f18;
     UNUSED f32 var_f20;
     f32 temp_f2_2;
@@ -5915,11 +5918,11 @@ void func_80015C94(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
     player += playerId;
     D_80163238 = playerId;
     pathIndex = gPathIndexByPlayerId[playerId];
-    gNearestWaypointByCameraId[cameraId] =
-        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], pathIndex);
-    playerWaypoint = gNearestWaypointByPlayerId[playerId];
-    cameraWaypoint = gNearestWaypointByCameraId[cameraId];
-    if (is_path_point_in_range(playerWaypoint, cameraWaypoint, 0x0032U, 0x000FU, gPathCountByPathIndex[pathIndex]) <=
+    gNearestPathPointByCameraId[cameraId] =
+        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestPathPointByCameraId[cameraId], pathIndex);
+    playerPathPoint = gNearestPathPointByPlayerId[playerId];
+    cameraPathPoint = gNearestPathPointByCameraId[cameraId];
+    if (is_path_point_in_range(playerPathPoint, cameraPathPoint, 0x0032U, 0x000FU, gPathCountByPathIndex[pathIndex]) <=
         0) {
         func_8001A348(cameraId, D_80164688[cameraId], D_80164680[cameraId]);
     } else if ((gTrackPositionFactor[playerId] < -0.5) && (D_80164688[cameraId] < -0.5)) {
@@ -5927,15 +5930,15 @@ void func_80015C94(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
     } else if ((gTrackPositionFactor[playerId] > 0.5) && (D_80164688[cameraId] > 0.5)) {
         func_8001A348(cameraId, -1.0f, 6);
     }
-    waypoint1 = (gNearestWaypointByCameraId[cameraId] + 1) % gPathCountByPathIndex[pathIndex];
-    waypoint2 = (gNearestWaypointByCameraId[cameraId] + 2) % gPathCountByPathIndex[pathIndex];
-    set_track_offset_position(waypoint1, D_80164688[cameraId], pathIndex);
+    pathPoint1 = (gNearestPathPointByCameraId[cameraId] + 1) % gPathCountByPathIndex[pathIndex];
+    pathPoint2 = (gNearestPathPointByCameraId[cameraId] + 2) % gPathCountByPathIndex[pathIndex];
+    set_track_offset_position(pathPoint1, D_80164688[cameraId], pathIndex);
     midX = gOffsetPosition[0] * 0.5;
     midZ = gOffsetPosition[2] * 0.5;
-    set_track_offset_position(waypoint2, D_80164688[cameraId], pathIndex);
+    set_track_offset_position(pathPoint2, D_80164688[cameraId], pathIndex);
     midX += gOffsetPosition[0] * 0.5;
     midZ += gOffsetPosition[2] * 0.5;
-    midY = (gTrackPath[pathIndex][waypoint1].posY + gTrackPath[pathIndex][waypoint2].posY) / 2.0;
+    midY = (gTrackPath[pathIndex][pathPoint1].posY + gTrackPath[pathIndex][pathPoint2].posY) / 2.0;
     xdiff = midX - D_801645F8[cameraId];
     ydiff = midY - D_80164618[cameraId];
     zdiff = midZ - D_80164638[cameraId];
@@ -5976,13 +5979,13 @@ void func_800162CC(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
     Camera* camera = cameras + cameraId;
 
     D_80164688[cameraId] = arg1;
-    gNearestWaypointByCameraId[cameraId] = gNearestWaypointByPlayerId[playerId];
-    gNearestWaypointByCameraId[cameraId] = (gNearestWaypointByCameraId[cameraId]) % gPathCountByPathIndex[pathIndex];
+    gNearestPathPointByCameraId[cameraId] = gNearestPathPointByPlayerId[playerId];
+    gNearestPathPointByCameraId[cameraId] = (gNearestPathPointByCameraId[cameraId]) % gPathCountByPathIndex[pathIndex];
 
-    set_track_offset_position(gNearestWaypointByCameraId[cameraId], arg1, pathIndex);
+    set_track_offset_position(gNearestPathPointByCameraId[cameraId], arg1, pathIndex);
 
     D_801645F8[cameraId] = gOffsetPosition[0];
-    D_80164618[cameraId] = (f32) gTrackPath[pathIndex][gNearestWaypointByCameraId[cameraId]].posY;
+    D_80164618[cameraId] = (f32) gTrackPath[pathIndex][gNearestPathPointByCameraId[cameraId]].posY;
     D_80164638[cameraId] = gOffsetPosition[2];
 
     D_80164658[cameraId] = gPlayers[playerId].speed;
@@ -5994,8 +5997,8 @@ void func_800162CC(s32 playerId, f32 arg1, s32 cameraId, s16 pathIndex) {
 }
 
 void func_80016494(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2, s32 cameraId) {
-    s16 cameraWaypoint;
-    s16 playerWaypoint;
+    s16 cameraPathPoint;
+    s16 playerPathPoint;
     UNUSED s32 stackPadding0;
     f32 xdiff2;
     f32 ydiff2;
@@ -6010,8 +6013,8 @@ void func_80016494(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
     f32 zdiff;
     f32 distance;
     UNUSED f32 sp98;
-    s16 waypoint1;
-    s16 waypoint2;
+    s16 pathPoint1;
+    s16 pathPoint2;
     UNUSED f32 sp94;
     UNUSED f32 sp90;
     UNUSED s32 stackPadding1;
@@ -6024,13 +6027,13 @@ void func_80016494(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
     D_80163238 = playerId;
     pathIndex = gPathIndexByPlayerId[playerId];
     player += playerId;
-    gNearestWaypointByCameraId[cameraId] =
-        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], pathIndex);
+    gNearestPathPointByCameraId[cameraId] =
+        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestPathPointByCameraId[cameraId], pathIndex);
     temp_f2_5 = (gTrackPositionFactor[playerId] - D_80164688[cameraId]);
     temp_f2_5 *= temp_f2_5;
-    playerWaypoint = gNearestWaypointByPlayerId[playerId];
-    cameraWaypoint = gNearestWaypointByCameraId[cameraId];
-    if (is_path_point_in_range(playerWaypoint, cameraWaypoint, 0x000FU, 0x000FU, gPathCountByPathIndex[pathIndex]) <=
+    playerPathPoint = gNearestPathPointByPlayerId[playerId];
+    cameraPathPoint = gNearestPathPointByCameraId[cameraId];
+    if (is_path_point_in_range(playerPathPoint, cameraPathPoint, 0x000FU, 0x000FU, gPathCountByPathIndex[pathIndex]) <=
         0) {
         func_8001A348(cameraId, D_80164688[cameraId], D_80164680[cameraId]);
     } else {
@@ -6040,10 +6043,10 @@ void func_80016494(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
             if ((gTrackPositionFactor[playerId] > 0.0) && (D_80164688[cameraId] > 0.0) && (temp_f2_5 < 0.01)) {
                 func_8001A348(cameraId, -1.0f, 4);
             } else {
-                if ((cameraWaypoint < playerWaypoint) && ((playerWaypoint - cameraWaypoint) < 0xA)) {
+                if ((cameraPathPoint < playerPathPoint) && ((playerPathPoint - cameraPathPoint) < 0xA)) {
                     D_80164658[cameraId] = gPlayers[playerId].speed + 0.4;
                 }
-                if ((playerWaypoint < cameraWaypoint) && ((cameraWaypoint - playerWaypoint) < 0xA)) {
+                if ((playerPathPoint < cameraPathPoint) && ((cameraPathPoint - playerPathPoint) < 0xA)) {
                     D_80164658[cameraId] = gPlayers[playerId].speed - 0.4;
                 }
                 if (D_80164658[cameraId] > 10.0) {
@@ -6055,15 +6058,15 @@ void func_80016494(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
             }
         }
     }
-    waypoint1 = (gNearestWaypointByCameraId[cameraId] + 1) % gPathCountByPathIndex[pathIndex];
-    waypoint2 = (gNearestWaypointByCameraId[cameraId] + 2) % gPathCountByPathIndex[pathIndex];
-    set_track_offset_position(waypoint1, D_80164688[cameraId], pathIndex);
+    pathPoint1 = (gNearestPathPointByCameraId[cameraId] + 1) % gPathCountByPathIndex[pathIndex];
+    pathPoint2 = (gNearestPathPointByCameraId[cameraId] + 2) % gPathCountByPathIndex[pathIndex];
+    set_track_offset_position(pathPoint1, D_80164688[cameraId], pathIndex);
     midX = gOffsetPosition[0] * 0.5;
     midZ = gOffsetPosition[2] * 0.5;
-    set_track_offset_position(waypoint2, D_80164688[cameraId], pathIndex);
+    set_track_offset_position(pathPoint2, D_80164688[cameraId], pathIndex);
     midX += gOffsetPosition[0] * 0.5;
     midZ += gOffsetPosition[2] * 0.5;
-    midY = (gTrackPath[pathIndex][waypoint1].posY + gTrackPath[pathIndex][waypoint2].posY) / 2.0;
+    midY = (gTrackPath[pathIndex][pathPoint1].posY + gTrackPath[pathIndex][pathPoint2].posY) / 2.0;
     xdiff = midX - D_801645F8[cameraId];
     ydiff = midY - D_80164618[cameraId];
     zdiff = midZ - D_80164638[cameraId];
@@ -6106,7 +6109,7 @@ void func_80016C3C(UNUSED s32 playerId, UNUSED f32 arg1, s32 cameraId) {
     f32 temp_f2;
     UNUSED s32 stackPadding2;
     f32 temp_f12;
-    TrackWaypoint** path;
+    TrackPathPoint** path;
     f32 sp54;
     s32 temp_s0;
     s16 sp48;
@@ -6124,24 +6127,24 @@ void func_80016C3C(UNUSED s32 playerId, UNUSED f32 arg1, s32 cameraId) {
         D_80164688[cameraId] = 0.0f;
     }
     temp_s0 = gPathCountByPathIndex[D_80163DD8[cameraId]];
-    gNearestWaypointByCameraId[cameraId] %= temp_s0;
-    set_track_offset_position(gNearestWaypointByCameraId[cameraId], D_80164688[cameraId], 0);
+    gNearestPathPointByCameraId[cameraId] %= temp_s0;
+    set_track_offset_position(gNearestPathPointByCameraId[cameraId], D_80164688[cameraId], 0);
     D_801645F8[cameraId] = gOffsetPosition[0];
-    D_80164618[cameraId] = gTrackPath[0][gNearestWaypointByCameraId[cameraId]].posY;
+    D_80164618[cameraId] = gTrackPath[0][gNearestPathPointByCameraId[cameraId]].posY;
     path = gTrackPath;
     D_80164638[cameraId] = gOffsetPosition[2];
     D_80164658[cameraId] = 16.666666f;
     D_80164648[cameraId] = 0.0f;
-    sp48 = (gNearestWaypointByCameraId[cameraId] + 0xA) % temp_s0;
-    sp44 = (gNearestWaypointByCameraId[cameraId] + 0xB) % temp_s0;
+    sp48 = (gNearestPathPointByCameraId[cameraId] + 0xA) % temp_s0;
+    sp44 = (gNearestPathPointByCameraId[cameraId] + 0xB) % temp_s0;
     set_track_offset_position(sp48, D_80164688[cameraId], 0);
     temp_f2 = gOffsetPosition[0] * 0.5;
     temp_f12 = gOffsetPosition[2] * 0.5;
     set_track_offset_position(sp44, D_80164688[cameraId], 0);
     temp_f2 += gOffsetPosition[0] * 0.5;
     temp_f12 += gOffsetPosition[2] * 0.5;
-    sp48 = (gNearestWaypointByCameraId[cameraId] + 0x5) % temp_s0;
-    sp44 = (gNearestWaypointByCameraId[cameraId] + 0x6) % temp_s0;
+    sp48 = (gNearestPathPointByCameraId[cameraId] + 0x5) % temp_s0;
+    sp44 = (gNearestPathPointByCameraId[cameraId] + 0x6) % temp_s0;
     sp54 = (path[0][sp48].posY + path[0][sp44].posY) * 0.5f;
     camera = cameras;
     camera += cameraId;
@@ -6193,29 +6196,29 @@ void func_80017054(Camera* camera, UNUSED Player* player, UNUSED s32 index, s32 
     D_80164648[cameraId] += (D_80164658[cameraId] - D_80164648[cameraId]) * 0.5f;
     sp58 = gPathCountByPathIndex[pathIndex];
     D_80163238 = playerId;
-    sp56 = gNearestWaypointByCameraId[cameraId];
-    gNearestWaypointByCameraId[cameraId] =
-        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], pathIndex);
+    sp56 = gNearestPathPointByCameraId[cameraId];
+    gNearestPathPointByCameraId[cameraId] =
+        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestPathPointByCameraId[cameraId], pathIndex);
     if (gCurrentCourseId == COURSE_YOSHI_VALLEY) {
-        if ((sp56 != gNearestWaypointByCameraId[cameraId]) && (gNearestWaypointByCameraId[cameraId] == 1)) {
+        if ((sp56 != gNearestPathPointByCameraId[cameraId]) && (gNearestPathPointByCameraId[cameraId] == 1)) {
             pathIndex = (D_80163DD8[cameraId] = random_int(4U));
-            gNearestWaypointByCameraId[cameraId] = func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2],
-                                                                 gNearestWaypointByCameraId[cameraId], pathIndex);
+            gNearestPathPointByCameraId[cameraId] = func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2],
+                                                                  gNearestPathPointByCameraId[cameraId], pathIndex);
         }
     }
-    sp6E = (gNearestWaypointByCameraId[cameraId] + 0xA) % sp58;
-    sp6C = (gNearestWaypointByCameraId[cameraId] + 0xB) % sp58;
+    sp6E = (gNearestPathPointByCameraId[cameraId] + 0xA) % sp58;
+    sp6C = (gNearestPathPointByCameraId[cameraId] + 0xB) % sp58;
     set_track_offset_position(sp6E, D_80164688[cameraId], pathIndex);
     sp8C = gOffsetPosition[0] * 0.5;
     sp84 = gOffsetPosition[2] * 0.5;
     set_track_offset_position(sp6C, D_80164688[cameraId], pathIndex);
     sp8C += gOffsetPosition[0] * 0.5;
     sp84 += gOffsetPosition[2] * 0.5;
-    sp6E = (gNearestWaypointByCameraId[cameraId] + 5) % sp58;
-    sp6C = (gNearestWaypointByCameraId[cameraId] + 6) % sp58;
+    sp6E = (gNearestPathPointByCameraId[cameraId] + 5) % sp58;
+    sp6C = (gNearestPathPointByCameraId[cameraId] + 6) % sp58;
     sp88 = (gTrackPath[pathIndex][sp6E].posY + gTrackPath[pathIndex][sp6C].posY) * 0.5f;
-    sp6E = (gNearestWaypointByCameraId[cameraId] + 1) % sp58;
-    sp6C = (gNearestWaypointByCameraId[cameraId] + 2) % sp58;
+    sp6E = (gNearestPathPointByCameraId[cameraId] + 1) % sp58;
+    sp6C = (gNearestPathPointByCameraId[cameraId] + 2) % sp58;
     set_track_offset_position(sp6E, D_80164688[cameraId], pathIndex);
     sp98 = gOffsetPosition[0] * 0.5;
     sp90 = gOffsetPosition[2] * 0.5;
@@ -6270,13 +6273,13 @@ void func_80017720(s32 playerId, UNUSED f32 arg1, s32 cameraId, s16 pathIndex) {
     UNUSED s32 pad;
 
     D_80164688[cameraId] = gTrackPositionFactor[playerId];
-    gNearestWaypointByCameraId[cameraId] = gNearestWaypointByPlayerId[playerId] + 3;
-    gNearestWaypointByCameraId[cameraId] = gNearestWaypointByCameraId[cameraId] % gPathCountByPathIndex[pathIndex];
+    gNearestPathPointByCameraId[cameraId] = gNearestPathPointByPlayerId[playerId] + 3;
+    gNearestPathPointByCameraId[cameraId] = gNearestPathPointByCameraId[cameraId] % gPathCountByPathIndex[pathIndex];
 
-    set_track_offset_position(gNearestWaypointByCameraId[cameraId], gTrackPositionFactor[playerId], pathIndex);
+    set_track_offset_position(gNearestPathPointByCameraId[cameraId], gTrackPositionFactor[playerId], pathIndex);
 
     D_801645F8[cameraId] = gOffsetPosition[0];
-    D_80164618[cameraId] = (f32) gTrackPath[pathIndex][gNearestWaypointByCameraId[cameraId]].posY;
+    D_80164618[cameraId] = (f32) gTrackPath[pathIndex][gNearestPathPointByCameraId[cameraId]].posY;
     D_80164638[cameraId] = gOffsetPosition[2];
 
     D_80164658[cameraId] = gPlayers[playerId].speed;
@@ -6288,8 +6291,8 @@ void func_80017720(s32 playerId, UNUSED f32 arg1, s32 cameraId, s16 pathIndex) {
 }
 
 void func_800178F4(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2, s32 cameraId) {
-    s16 cameraWaypoint;
-    s16 playerWaypoint;
+    s16 cameraPathPoint;
+    s16 playerPathPoint;
     UNUSED f32 stackPadding0;
     f32 xdiff2;
     f32 ydiff2;
@@ -6304,13 +6307,13 @@ void func_800178F4(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
     f32 zdiff;
     UNUSED f32 var_f2;
     UNUSED f32 var_f18;
-    s16 waypoint1;
-    s16 waypoint2;
+    s16 pathPoint1;
+    s16 pathPoint2;
     UNUSED f32 stackPadding1;
     UNUSED f32 var_f14;
     s32 playerId;
     s32 pathIndex;
-    s32 waypointCount;
+    s32 pathPointCount;
 
     playerId = camera->playerId;
     player = gPlayerOne;
@@ -6319,18 +6322,18 @@ void func_800178F4(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
     D_80163238 = playerId;
     pathIndex = gPathIndexByPlayerId[playerId];
     player += playerId;
-    waypointCount = gPathCountByPathIndex[pathIndex];
-    gNearestWaypointByCameraId[cameraId] =
-        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], pathIndex);
-    playerWaypoint = (gNearestWaypointByPlayerId[playerId] + 3) % waypointCount;
-    cameraWaypoint = gNearestWaypointByCameraId[cameraId];
-    if (is_path_point_in_range(playerWaypoint, cameraWaypoint, 0x000DU, 1U, waypointCount) <= 0) {
+    pathPointCount = gPathCountByPathIndex[pathIndex];
+    gNearestPathPointByCameraId[cameraId] =
+        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestPathPointByCameraId[cameraId], pathIndex);
+    playerPathPoint = (gNearestPathPointByPlayerId[playerId] + 3) % pathPointCount;
+    cameraPathPoint = gNearestPathPointByCameraId[cameraId];
+    if (is_path_point_in_range(playerPathPoint, cameraPathPoint, 0x000DU, 1U, pathPointCount) <= 0) {
         func_8001A348(cameraId, D_80164688[cameraId], D_80164680[cameraId]);
     } else {
-        if ((cameraWaypoint < playerWaypoint) && ((playerWaypoint - cameraWaypoint) < 3)) {
+        if ((cameraPathPoint < playerPathPoint) && ((playerPathPoint - cameraPathPoint) < 3)) {
             D_80164658[cameraId] = gPlayers[playerId].speed + 0.1;
         }
-        if ((playerWaypoint < cameraWaypoint) && ((cameraWaypoint - playerWaypoint) < 3)) {
+        if ((playerPathPoint < cameraPathPoint) && ((cameraPathPoint - playerPathPoint) < 3)) {
             D_80164658[cameraId] = gPlayers[playerId].speed - 0.1;
         }
         if (D_80164658[cameraId] > 10.0) {
@@ -6340,15 +6343,15 @@ void func_800178F4(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
             D_80164658[cameraId] = 0.0f;
         }
     }
-    waypoint1 = (gNearestWaypointByCameraId[cameraId] + 1) % waypointCount;
-    waypoint2 = (gNearestWaypointByCameraId[cameraId] + 2) % waypointCount;
-    set_track_offset_position(waypoint1, D_80164688[cameraId], pathIndex);
+    pathPoint1 = (gNearestPathPointByCameraId[cameraId] + 1) % pathPointCount;
+    pathPoint2 = (gNearestPathPointByCameraId[cameraId] + 2) % pathPointCount;
+    set_track_offset_position(pathPoint1, D_80164688[cameraId], pathIndex);
     midX = gOffsetPosition[0] * 0.5;
     midZ = gOffsetPosition[2] * 0.5;
-    set_track_offset_position(waypoint2, D_80164688[cameraId], pathIndex);
+    set_track_offset_position(pathPoint2, D_80164688[cameraId], pathIndex);
     midX += gOffsetPosition[0] * 0.5;
     midZ += gOffsetPosition[2] * 0.5;
-    midY = (gTrackPath[pathIndex][waypoint1].posY + gTrackPath[pathIndex][waypoint2].posY) / 2.0;
+    midY = (gTrackPath[pathIndex][pathPoint1].posY + gTrackPath[pathIndex][pathPoint2].posY) / 2.0;
     xdiff = midX - D_801645F8[cameraId];
     ydiff = midY - D_80164618[cameraId];
     zdiff = midZ - D_80164638[cameraId];
@@ -6385,13 +6388,13 @@ void func_80017F10(s32 playerId, UNUSED f32 arg1, s32 cameraId, s16 pathIndex) {
     s32 test = gPathCountByPathIndex[pathIndex];
 
     D_80164688[cameraId] = gTrackPositionFactor[playerId];
-    gNearestWaypointByCameraId[cameraId] = (gNearestWaypointByPlayerId[playerId] + test) - 2;
-    gNearestWaypointByCameraId[cameraId] = gNearestWaypointByCameraId[cameraId] % test;
+    gNearestPathPointByCameraId[cameraId] = (gNearestPathPointByPlayerId[playerId] + test) - 2;
+    gNearestPathPointByCameraId[cameraId] = gNearestPathPointByCameraId[cameraId] % test;
 
-    set_track_offset_position(gNearestWaypointByCameraId[cameraId], gTrackPositionFactor[playerId], pathIndex);
+    set_track_offset_position(gNearestPathPointByCameraId[cameraId], gTrackPositionFactor[playerId], pathIndex);
 
     D_801645F8[cameraId] = gOffsetPosition[0];
-    D_80164618[cameraId] = (f32) gTrackPath[pathIndex][gNearestWaypointByCameraId[cameraId]].posY;
+    D_80164618[cameraId] = (f32) gTrackPath[pathIndex][gNearestPathPointByCameraId[cameraId]].posY;
     D_80164638[cameraId] = gOffsetPosition[2];
 
     D_80164658[cameraId] = gPlayers[playerId].speed;
@@ -6403,8 +6406,8 @@ void func_80017F10(s32 playerId, UNUSED f32 arg1, s32 cameraId, s16 pathIndex) {
 }
 
 void func_800180F0(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2, s32 cameraId) {
-    s16 cameraWaypoint;
-    s16 playerWaypoint;
+    s16 cameraPathPoint;
+    s16 playerPathPoint;
     UNUSED s32 stackPadding3;
     f32 sp94;
     f32 sp90;
@@ -6419,13 +6422,13 @@ void func_800180F0(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
     f32 zdiff;
     Player* player;
     s32 playerId;
-    s16 waypoint1;
-    s16 waypoint2;
+    s16 pathPoint1;
+    s16 pathPoint2;
     UNUSED f32 var_f2;
     UNUSED f32 var_f18;
     UNUSED f32 var_f14;
     s32 pathIndex;
-    s32 waypointCount;
+    s32 pathPointCount;
 
     playerId = camera->playerId;
     player = gPlayerOne;
@@ -6433,19 +6436,19 @@ void func_800180F0(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
     D_80164648[cameraId] += ((D_80164658[cameraId] - D_80164648[cameraId]) * 0.5f);
     D_80163238 = playerId;
     pathIndex = gPathIndexByPlayerId[playerId];
-    waypointCount = gPathCountByPathIndex[pathIndex];
+    pathPointCount = gPathCountByPathIndex[pathIndex];
     player += playerId;
-    gNearestWaypointByCameraId[cameraId] =
-        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], pathIndex);
-    playerWaypoint = ((gNearestWaypointByPlayerId[playerId] + waypointCount) - 2) % waypointCount;
-    cameraWaypoint = gNearestWaypointByCameraId[cameraId];
-    if (is_path_point_in_range(playerWaypoint, cameraWaypoint, 1U, 0x000AU, waypointCount) <= 0) {
+    gNearestPathPointByCameraId[cameraId] =
+        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestPathPointByCameraId[cameraId], pathIndex);
+    playerPathPoint = ((gNearestPathPointByPlayerId[playerId] + pathPointCount) - 2) % pathPointCount;
+    cameraPathPoint = gNearestPathPointByCameraId[cameraId];
+    if (is_path_point_in_range(playerPathPoint, cameraPathPoint, 1U, 0x000AU, pathPointCount) <= 0) {
         func_8001A348(cameraId, D_80164688[cameraId], D_80164680[cameraId]);
     } else {
-        if ((cameraWaypoint < playerWaypoint) && ((playerWaypoint - cameraWaypoint) < 3)) {
+        if ((cameraPathPoint < playerPathPoint) && ((playerPathPoint - cameraPathPoint) < 3)) {
             D_80164658[cameraId] = gPlayers[playerId].speed + 0.1;
         }
-        if ((playerWaypoint < cameraWaypoint) && ((cameraWaypoint - playerWaypoint) < 3)) {
+        if ((playerPathPoint < cameraPathPoint) && ((cameraPathPoint - playerPathPoint) < 3)) {
             D_80164658[cameraId] = gPlayers[playerId].speed - 0.1;
         }
         if (D_80164658[cameraId] > 10.0) {
@@ -6455,15 +6458,15 @@ void func_800180F0(Camera* camera, UNUSED Player* unusedPlayer, UNUSED s32 arg2,
             D_80164658[cameraId] = 0.0f;
         }
     }
-    waypoint1 = (gNearestWaypointByCameraId[cameraId] + 1) % waypointCount;
-    waypoint2 = (gNearestWaypointByCameraId[cameraId] + 2) % waypointCount;
-    set_track_offset_position(waypoint1, D_80164688[cameraId], pathIndex);
+    pathPoint1 = (gNearestPathPointByCameraId[cameraId] + 1) % pathPointCount;
+    pathPoint2 = (gNearestPathPointByCameraId[cameraId] + 2) % pathPointCount;
+    set_track_offset_position(pathPoint1, D_80164688[cameraId], pathIndex);
     midX = gOffsetPosition[0] * 0.5;
     midZ = gOffsetPosition[2] * 0.5;
-    set_track_offset_position(waypoint2, D_80164688[cameraId], pathIndex);
+    set_track_offset_position(pathPoint2, D_80164688[cameraId], pathIndex);
     midX += gOffsetPosition[0] * 0.5;
     midZ += gOffsetPosition[2] * 0.5;
-    midY = (gTrackPath[pathIndex][waypoint1].posY + gTrackPath[pathIndex][waypoint2].posY) / 2.0;
+    midY = (gTrackPath[pathIndex][pathPoint1].posY + gTrackPath[pathIndex][pathPoint2].posY) / 2.0;
     xdiff = midX - D_801645F8[cameraId];
     ydiff = midY - D_80164618[cameraId];
     zdiff = midZ - D_80164638[cameraId];
@@ -6500,13 +6503,13 @@ void func_80018718(s32 playerId, UNUSED f32 arg1, s32 cameraId, s16 pathIndex) {
     s32 test = gPathCountByPathIndex[pathIndex];
 
     D_80164688[cameraId] = gTrackPositionFactor[playerId];
-    gNearestWaypointByCameraId[cameraId] = ((gNearestWaypointByPlayerId[playerId] + test) - 5) % test;
+    gNearestPathPointByCameraId[cameraId] = ((gNearestPathPointByPlayerId[playerId] + test) - 5) % test;
 
-    calculate_track_offset_position(gNearestWaypointByCameraId[cameraId], gTrackPositionFactor[playerId], 60.0f,
+    calculate_track_offset_position(gNearestPathPointByCameraId[cameraId], gTrackPositionFactor[playerId], 60.0f,
                                     pathIndex);
 
     D_801645F8[cameraId] = gOffsetPosition[0];
-    D_80164618[cameraId] = (f32) gTrackPath[pathIndex][gNearestWaypointByCameraId[cameraId]].posY;
+    D_80164618[cameraId] = (f32) gTrackPath[pathIndex][gNearestPathPointByCameraId[cameraId]].posY;
     D_80164638[cameraId] = gOffsetPosition[2];
 
     D_80164658[cameraId] = gPlayers[playerId].speed;
@@ -6518,8 +6521,8 @@ void func_80018718(s32 playerId, UNUSED f32 arg1, s32 cameraId, s16 pathIndex) {
 }
 
 void func_800188F4(Camera* camera, UNUSED Player* unusePlayer, UNUSED s32 arg2, s32 cameraId) {
-    s16 cameraWaypoint;
-    s16 playerWaypoint;
+    s16 cameraPathPoint;
+    s16 playerPathPoint;
     UNUSED s32 stackPadding0;
     f32 spAC;
     f32 spA8;
@@ -6534,22 +6537,22 @@ void func_800188F4(Camera* camera, UNUSED Player* unusePlayer, UNUSED s32 arg2, 
     f32 zdiff;
     UNUSED f32 sp64;
     UNUSED f32 sp60;
-    s16 waypoint1;
-    s16 waypoint2;
+    s16 pathPoint1;
+    s16 pathPoint2;
     UNUSED f32 sp5C;
     f32 temp_f2_4;
     s32 playerId;
     s32 pathIndex;
-    s32 waypointCount;
+    s32 pathPointCount;
 
     player = gPlayerOne;
     playerId = camera->playerId;
     pathIndex = gPathIndexByPlayerId[playerId];
-    waypointCount = gPathCountByPathIndex[pathIndex];
+    pathPointCount = gPathCountByPathIndex[pathIndex];
     D_80164648[cameraId] = gPlayers[playerId].speed;
     if (D_8016448C == 0) {
-        if (gNearestWaypointByCameraId[cameraId] ==
-            (((gNearestWaypointByPlayerId[playerId] + waypointCount) - 6) % waypointCount)) {
+        if (gNearestPathPointByCameraId[cameraId] ==
+            (((gNearestPathPointByPlayerId[playerId] + pathPointCount) - 6) % pathPointCount)) {
             D_8016448C = 1;
         }
         if (D_80164688[cameraId] < (gTrackPositionFactor[playerId] - 0.2)) {
@@ -6563,7 +6566,7 @@ void func_800188F4(Camera* camera, UNUSED Player* unusePlayer, UNUSED s32 arg2, 
             D_80164648[cameraId] = gPlayers[playerId].speed * 0.8;
         }
     } else {
-        if (gNearestWaypointByCameraId[cameraId] == ((gNearestWaypointByPlayerId[playerId] + 6) % waypointCount)) {
+        if (gNearestPathPointByCameraId[cameraId] == ((gNearestPathPointByPlayerId[playerId] + 6) % pathPointCount)) {
             D_8016448C = 0;
         }
         if ((gTrackPositionFactor[playerId] + 0.2) < D_80164688[cameraId]) {
@@ -6579,22 +6582,22 @@ void func_800188F4(Camera* camera, UNUSED Player* unusePlayer, UNUSED s32 arg2, 
     }
     D_80163238 = playerId;
     player += playerId;
-    gNearestWaypointByCameraId[cameraId] =
-        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], pathIndex);
-    playerWaypoint = gNearestWaypointByPlayerId[playerId];
-    cameraWaypoint = gNearestWaypointByCameraId[cameraId];
-    if (is_path_point_in_range(playerWaypoint, cameraWaypoint, 0x000FU, 0x000FU, waypointCount) <= 0) {
+    gNearestPathPointByCameraId[cameraId] =
+        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestPathPointByCameraId[cameraId], pathIndex);
+    playerPathPoint = gNearestPathPointByPlayerId[playerId];
+    cameraPathPoint = gNearestPathPointByCameraId[cameraId];
+    if (is_path_point_in_range(playerPathPoint, cameraPathPoint, 0x000FU, 0x000FU, pathPointCount) <= 0) {
         func_8001A348(cameraId, D_80164688[cameraId], D_80164680[cameraId]);
     }
-    waypoint1 = (gNearestWaypointByCameraId[cameraId] + 1) % waypointCount;
-    waypoint2 = (gNearestWaypointByCameraId[cameraId] + 2) % waypointCount;
-    calculate_track_offset_position(waypoint1, D_80164688[cameraId], 60.0f, pathIndex);
+    pathPoint1 = (gNearestPathPointByCameraId[cameraId] + 1) % pathPointCount;
+    pathPoint2 = (gNearestPathPointByCameraId[cameraId] + 2) % pathPointCount;
+    calculate_track_offset_position(pathPoint1, D_80164688[cameraId], 60.0f, pathIndex);
     midX = gOffsetPosition[0] * 0.5;
     midZ = gOffsetPosition[2] * 0.5;
-    calculate_track_offset_position(waypoint2, D_80164688[cameraId], 60.0f, pathIndex);
+    calculate_track_offset_position(pathPoint2, D_80164688[cameraId], 60.0f, pathIndex);
     midX += gOffsetPosition[0] * 0.5;
     midZ += gOffsetPosition[2] * 0.5;
-    midY = (gTrackPath[pathIndex][waypoint1].posY + gTrackPath[pathIndex][waypoint2].posY) / 2.0;
+    midY = (gTrackPath[pathIndex][pathPoint1].posY + gTrackPath[pathIndex][pathPoint2].posY) / 2.0;
     xdiff = midX - D_801645F8[cameraId];
     ydiff = midY - D_80164618[cameraId];
     zdiff = midZ - D_80164638[cameraId];
@@ -6638,13 +6641,13 @@ void func_80019118(s32 playerId, f32 arg1, s32 cameraId, UNUSED s16 pathIndex) {
     f32 temp_f2;
 
     D_80164688[cameraId] = arg1;
-    gNearestWaypointByCameraId[cameraId] = gNearestWaypointByPlayerId[playerId] + 12;
-    gNearestWaypointByCameraId[cameraId] = gNearestWaypointByCameraId[cameraId] % test;
+    gNearestPathPointByCameraId[cameraId] = gNearestPathPointByPlayerId[playerId] + 12;
+    gNearestPathPointByCameraId[cameraId] = gNearestPathPointByCameraId[cameraId] % test;
 
-    set_track_offset_position(gNearestWaypointByCameraId[cameraId], arg1, 0);
+    set_track_offset_position(gNearestPathPointByCameraId[cameraId], arg1, 0);
     D_801645F8[cameraId] = gOffsetPosition[0];
     D_80164638[cameraId] = gOffsetPosition[2];
-    temp_f2 = (f32) gTrackPath[0][gNearestWaypointByCameraId[cameraId]].posY;
+    temp_f2 = (f32) gTrackPath[0][gNearestPathPointByCameraId[cameraId]].posY;
 
     temp_f12 = get_surface_height(gOffsetPosition[0], (f32) (temp_f2 + 30.0), gOffsetPosition[2]);
 
@@ -6660,8 +6663,8 @@ void func_80019118(s32 playerId, f32 arg1, s32 cameraId, UNUSED s16 pathIndex) {
 }
 
 void func_8001933C(Camera* camera, UNUSED Player* playerArg, UNUSED s32 arg2, s32 cameraId) {
-    s16 cameraWaypoint;
-    s16 playerWaypoint;
+    s16 cameraPathPoint;
+    s16 playerPathPoint;
     UNUSED s32 pad;
     f32 xdiff;
     f32 ydiff;
@@ -6670,20 +6673,20 @@ void func_8001933C(Camera* camera, UNUSED Player* playerArg, UNUSED s32 arg2, s3
     s32 playerId;
     UNUSED s32 pad3[10];
     Player* player;
-    TrackWaypoint* waypoint;
+    TrackPathPoint* pathPoint;
     s32 pathIndex;
-    s32 waypointCount;
+    s32 pathPointCount;
 
     playerId = camera->playerId;
     pathIndex = gPathIndexByPlayerId[playerId];
     player = gPlayerOne;
     player += playerId;
-    waypointCount = gPathCountByPathIndex[pathIndex];
-    gNearestWaypointByCameraId[cameraId] =
-        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestWaypointByCameraId[cameraId], 0);
-    playerWaypoint = gNearestWaypointByPlayerId[playerId];
-    cameraWaypoint = gNearestWaypointByCameraId[cameraId];
-    if (is_path_point_in_range(playerWaypoint, cameraWaypoint, 0x0032U, 0x0014U, waypointCount) <= 0) {
+    pathPointCount = gPathCountByPathIndex[pathIndex];
+    gNearestPathPointByCameraId[cameraId] =
+        func_8000D33C(camera->pos[0], camera->pos[1], camera->pos[2], gNearestPathPointByCameraId[cameraId], 0);
+    playerPathPoint = gNearestPathPointByPlayerId[playerId];
+    cameraPathPoint = gNearestPathPointByCameraId[cameraId];
+    if (is_path_point_in_range(playerPathPoint, cameraPathPoint, 0x0032U, 0x0014U, pathPointCount) <= 0) {
         func_8001A348(cameraId, D_80164688[cameraId], D_80164680[cameraId]);
     } else {
         if ((gTrackPositionFactor[playerId] < -0.5) && ((f64) D_80164688[cameraId] < -0.5)) {
@@ -6695,10 +6698,10 @@ void func_8001933C(Camera* camera, UNUSED Player* playerArg, UNUSED s32 arg2, s3
     camera->pos[0] = D_801645F8[cameraId];
     camera->pos[1] = D_80164618[cameraId];
     camera->pos[2] = D_80164638[cameraId];
-    waypoint = &gTrackPath[pathIndex][cameraWaypoint];
-    camera->lookAt[0] = (player->pos[0] * 0.8) + (0.2 * waypoint->posX);
-    camera->lookAt[1] = (player->pos[1] * 0.8) + (0.2 * waypoint->posY);
-    camera->lookAt[2] = (player->pos[2] * 0.8) + (0.2 * waypoint->posZ);
+    pathPoint = &gTrackPath[pathIndex][cameraPathPoint];
+    camera->lookAt[0] = (player->pos[0] * 0.8) + (0.2 * pathPoint->posX);
+    camera->lookAt[1] = (player->pos[1] * 0.8) + (0.2 * pathPoint->posY);
+    camera->lookAt[2] = (player->pos[2] * 0.8) + (0.2 * pathPoint->posZ);
     func_80014D30(cameraId, pathIndex);
     xdiff = camera->lookAt[0] - camera->pos[0];
     ydiff = camera->lookAt[1] - camera->pos[1];
@@ -6713,16 +6716,16 @@ void func_8001968C(void) {
 }
 
 void func_8001969C(UNUSED s32 playerId, UNUSED f32 arg1, s32 cameraId, UNUSED s16 pathIndex) {
-    TrackWaypoint* waypoint;
+    TrackPathPoint* pathPoint;
 
-    gNearestWaypointByCameraId[cameraId] = gPathCountByPathIndex[0] - 18;
+    gNearestPathPointByCameraId[cameraId] = gPathCountByPathIndex[0] - 18;
 
-    waypoint = &gTrackPath[0][gNearestWaypointByCameraId[cameraId]];
+    pathPoint = &gTrackPath[0][gNearestPathPointByCameraId[cameraId]];
 
-    D_801645F8[cameraId] = waypoint->posX;
+    D_801645F8[cameraId] = pathPoint->posX;
     //! @bug Adding an (f32) cast changes asm, why?
-    D_80164618[cameraId] = waypoint->posY + 10.0;
-    D_80164638[cameraId] = waypoint->posZ;
+    D_80164618[cameraId] = pathPoint->posY + 10.0;
+    D_80164638[cameraId] = pathPoint->posZ;
     D_80164648[cameraId] = 0.0f;
     D_80164678[cameraId] = 0;
 }
@@ -6732,12 +6735,12 @@ void func_80019760(Camera* camera, UNUSED Player* player, UNUSED s32 arg2, s32 c
     f32 xdiff;
     f32 ydiff;
     f32 zdiff;
-    TrackWaypoint* temp_v1;
+    TrackPathPoint* temp_v1;
 
     camera->pos[0] = D_801645F8[cameraId];
     camera->pos[1] = D_80164618[cameraId];
     camera->pos[2] = D_80164638[cameraId];
-    temp_v1 = &(*gTrackPath)[gNearestWaypointByCameraId[cameraId]];
+    temp_v1 = &(*gTrackPath)[gNearestPathPointByCameraId[cameraId]];
     camera->lookAt[0] = (f32) temp_v1->posX;
     camera->lookAt[1] = (f32) temp_v1->posY;
     camera->lookAt[2] = (f32) temp_v1->posZ;
@@ -6809,7 +6812,7 @@ void func_80019890(s32 playerId, s32 cameraId) {
             func_80015314(playerId, 0.0f, cameraId);
             break;
     }
-    gNearestWaypointByCameraId[cameraId] =
+    gNearestPathPointByCameraId[cameraId] =
         func_8000BD94(camera->pos[0], camera->pos[1], camera->pos[2], (s32) pathIndex);
     if ((s16) D_80164680[cameraId] == 9) {
         D_80163DD8[cameraId] = (s32) pathIndex;
@@ -6870,14 +6873,14 @@ void func_80019C50(s32 arg0) {
 
 void func_80019D2C(Camera* camera, Player* player, s32 arg2) {
     s32 playerId;
-    s32 nearestWaypoint;
+    s32 nearestPathPoint;
 
     playerId = camera->playerId;
     if ((gIncrementUpdatePlayer != 0) && (gCurrentCourseId == COURSE_LUIGI_RACEWAY)) {
         calculate_camera_up_vector(camera, arg2);
-        nearestWaypoint = gNearestWaypointByPlayerId[playerId];
-        if (((nearestWaypoint >= 0x65) && (nearestWaypoint < 0xFA)) ||
-            ((nearestWaypoint >= 0x1AF) && (nearestWaypoint < 0x226))) {
+        nearestPathPoint = gNearestPathPointByPlayerId[playerId];
+        if (((nearestPathPoint >= 0x65) && (nearestPathPoint < 0xFA)) ||
+            ((nearestPathPoint >= 0x1AF) && (nearestPathPoint < 0x226))) {
             func_80019B50(arg2, (player->unk_206 * 2));
         } else {
             func_80019B50(arg2, 0U);
@@ -7017,8 +7020,8 @@ void func_8001A220(UNUSED s32 arg0, s32 cameraId) {
     }
 }
 
-s32 func_8001A310(s32 waypoint, s32 arg1) {
-    if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) && (arg1 != 0) && (waypoint >= 0xE7) && (waypoint < 0x1C2)) {
+s32 func_8001A310(s32 pathPoint, s32 arg1) {
+    if ((gCurrentCourseId == COURSE_BOWSER_CASTLE) && (arg1 != 0) && (pathPoint >= 0xE7) && (pathPoint < 0x1C2)) {
         arg1 = 0;
     }
     return arg1;
@@ -7030,7 +7033,7 @@ void func_8001A348(s32 cameraId, f32 arg1, s32 arg2) {
 
     playerId = cameras[cameraId].playerId;
     D_80164688[cameraId] = arg1;
-    D_80164680[cameraId] = func_8001A310((s32) gNearestWaypointByCameraId[cameraId], arg2);
+    D_80164680[cameraId] = func_8001A310((s32) gNearestPathPointByCameraId[cameraId], arg2);
     func_80019890(playerId, cameraId);
 }
 
@@ -7047,13 +7050,13 @@ void func_8001A3D8(s32 arg0, f32 arg1, s32 arg2) {
 
 void func_8001A450(s32 playerId, s32 arg1, s32 arg2) {
     s32 temp_v1;
-    s16 waypoint;
+    s16 pathPoint;
     s32 temp_v0;
 
     if (!(gPlayers[playerId].effects & (UNKNOWN_EFFECT_0x10000000 | UNKNOWN_EFFECT_0xC))) {
         temp_v1 = D_80164680[arg1];
-        waypoint = gNearestWaypointByCameraId[arg1];
-        temp_v0 = func_8001A310(waypoint, (temp_v1 + 1) % 10);
+        pathPoint = gNearestPathPointByCameraId[arg1];
+        temp_v0 = func_8001A310(pathPoint, (temp_v1 + 1) % 10);
         if ((temp_v0 != temp_v1) || (arg2 != playerId)) {
             D_80164680[arg1] = temp_v0;
             func_80019890(arg2, arg1);
@@ -7276,7 +7279,7 @@ void reset_strategy_if_actor_valid(CpuItemStrategyData* arg0) {
 void kart_ai_use_item_strategy(s32 playerId) {
     bool isNoProblem;
     Player* player;
-    TrackWaypoint* waypoint;
+    TrackPathPoint* pathPoint;
     CpuItemStrategyData* temp_s0;
     struct Actor* actor;
     struct ShellActor* shell;
@@ -7308,24 +7311,24 @@ void kart_ai_use_item_strategy(s32 playerId) {
                     (gGPCurrentRaceRankByPlayerId[gPlayerInFront] == FIRST_PLACE)) {
                     switch (player->characterId) {
                         case DK:
-                            if (is_path_point_in_range(gNearestWaypointByPlayerId[playerId],
-                                                       gNearestWaypointByPlayerId[gPlayerInFront], 0x0028U, 2U,
+                            if (is_path_point_in_range(gNearestPathPointByPlayerId[playerId],
+                                                       gNearestPathPointByPlayerId[gPlayerInFront], 0x0028U, 2U,
                                                        (u16) ((s32) gSelectedPathCount)) > 0) {
                                 temp_s0->branch = CPU_STRATEGY_THROW_BANANA;
                             }
                             break;
 
                         case PEACH:
-                            if (is_path_point_in_range(gNearestWaypointByPlayerId[playerId],
-                                                       gNearestWaypointByPlayerId[gPlayerInFront], 4U, 2U,
+                            if (is_path_point_in_range(gNearestPathPointByPlayerId[playerId],
+                                                       gNearestPathPointByPlayerId[gPlayerInFront], 4U, 2U,
                                                        (u16) ((s32) gSelectedPathCount)) > 0) {
                                 temp_s0->branch = CPU_STRATEGY_THROW_BANANA;
                             }
                             break;
 
                         default:
-                            if (is_path_point_in_range(gNearestWaypointByPlayerId[playerId],
-                                                       gNearestWaypointByPlayerId[gPlayerInFront], 0x000AU, 2U,
+                            if (is_path_point_in_range(gNearestPathPointByPlayerId[playerId],
+                                                       gNearestPathPointByPlayerId[gPlayerInFront], 0x000AU, 2U,
                                                        (u16) ((s32) gSelectedPathCount)) > 0) {
                                 temp_s0->branch = CPU_STRATEGY_THROW_BANANA;
                             }
@@ -7389,12 +7392,12 @@ void kart_ai_use_item_strategy(s32 playerId) {
                     temp_s0->branch = CPU_STRATEGY_HOLD_THROW_BANANA;
                     temp_s0->timer = 0;
                     temp_s0->numItemUse += 1;
-                    waypoint = &gTrackPath[gPathIndexByPlayerId[0]]
-                                          [(gNearestWaypointByPlayerId[gPlayerInFront] + 0x1E) %
-                                           gPathCountByPathIndex[gPathIndexByPlayerId[gPlayerInFront]]];
-                    banana->velocity[0] = (waypoint->posX - player->pos[0]) / 20.0;
-                    banana->velocity[1] = ((waypoint->posY - player->pos[1]) / 20.0) + 4.0;
-                    banana->velocity[2] = (waypoint->posZ - player->pos[2]) / 20.0;
+                    pathPoint = &gTrackPath[gPathIndexByPlayerId[0]]
+                                           [(gNearestPathPointByPlayerId[gPlayerInFront] + 0x1E) %
+                                            gPathCountByPathIndex[gPathIndexByPlayerId[gPlayerInFront]]];
+                    banana->velocity[0] = (pathPoint->posX - player->pos[0]) / 20.0;
+                    banana->velocity[1] = ((pathPoint->posY - player->pos[1]) / 20.0) + 4.0;
+                    banana->velocity[2] = (pathPoint->posZ - player->pos[2]) / 20.0;
                     banana->pos[1] = player->pos[1];
                     func_800C92CC(playerId, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x09));
                     func_800C98B8(player->pos, player->velocity, SOUND_ARG_LOAD(0x19, 0x01, 0x80, 0x14));
@@ -7768,7 +7771,7 @@ GLOBAL_ASM("asm/non_matchings/cpu_logic/kart_ai_use_item_strategy.s")
 
 void func_8001BE78(void) {
     Player* temp_s1;
-    TrackWaypoint* temp_s0;
+    TrackPathPoint* temp_s0;
     s32 i;
 
     init_players();
@@ -7781,19 +7784,19 @@ void func_8001BE78(void) {
         gPlayerTrackPositionFactorInstruction[i].current = 0.0f;
         switch (i) {
             case 0:
-                gNearestWaypointByPlayerId[i] = 6;
+                gNearestPathPointByPlayerId[i] = 6;
                 break;
             case 1:
-                gNearestWaypointByPlayerId[i] = 1;
+                gNearestPathPointByPlayerId[i] = 1;
                 break;
             case 2:
-                gNearestWaypointByPlayerId[i] = 6;
+                gNearestPathPointByPlayerId[i] = 6;
                 break;
             case 3:
-                gNearestWaypointByPlayerId[i] = 1;
+                gNearestPathPointByPlayerId[i] = 1;
                 break;
         }
-        temp_s0 = &gTrackPath[i][gNearestWaypointByPlayerId[i]];
+        temp_s0 = &gTrackPath[i][gNearestPathPointByPlayerId[i]];
         temp_s1->pos[0] = (f32) temp_s0->posX;
         temp_s1->pos[1] =
             get_surface_height((f32) temp_s0->posX, 2000.0f, (f32) temp_s0->posZ) + temp_s1->boundingBoxSize;
@@ -7812,7 +7815,7 @@ void func_8001C05C(void) {
     D_8016347E = 0;
     D_80163480 = 0;
     D_80163484 = 0;
-    init_course_waypoint();
+    init_course_pathPoint();
     func_80014DE4(0);
     func_8001BE78();
     D_80163418[0] = -3202.475097656f;
@@ -7881,7 +7884,7 @@ void func_8001C14C(void) {
 
 void func_8001C3C4(s32 cameraId) {
     if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
-        if (gBombKarts[0].waypointIndex >= 16) {
+        if (gBombKarts[0].pathPointIndex >= 16) {
             func_80057114(PLAYER_FOUR);
         }
     } else {
