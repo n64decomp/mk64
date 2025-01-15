@@ -83,20 +83,20 @@ typedef enum {
 extern s16 gCurrentCourseId;
 extern s16* D_800DCBB4[];
 #define GET_COURSE_800DCBB4(n) D_800DCBB4[gCurrentCourseId][n]
-extern f32 gKartAICourseMaximumSeparation[];
-#define GET_COURSE_AIMaximumSeparation gKartAICourseMaximumSeparation[gCurrentCourseId]
+extern f32 cpu_CourseMaximumSeparation[];
+#define GET_COURSE_AIMaximumSeparation cpu_CourseMaximumSeparation[gCurrentCourseId]
 extern struct _struct_gCoursePathSizes_0x10 gCoursePathSizes[];
 #define GET_COURSE_PathSizes gCoursePathSizes[gCurrentCourseId]
-extern s16 gKartAISteeringSensitivity[];
-#define GET_COURSE_AISteeringSensitivity gKartAISteeringSensitivity[gCurrentCourseId]
-extern f32 gKartAICourseMinimumSeparation[];
-#define GET_COURSE_AIMinimumSeparation gKartAICourseMinimumSeparation[gCurrentCourseId]
+extern s16 cpu_SteeringSensitivity[];
+#define GET_COURSE_AISteeringSensitivity cpu_SteeringSensitivity[gCurrentCourseId]
+extern f32 cpu_CourseMinimumSeparation[];
+#define GET_COURSE_AIMinimumSeparation cpu_CourseMinimumSeparation[gCurrentCourseId]
 extern TrackPathPoint* gCoursePathTable[][4];
 #define GET_COURSE_PathTable(p) segmented_to_virtual_dupe_2(gCoursePathTable[gCurrentCourseId][p])
 extern TrackPathPoint* gCoursePathTable2[][4];
 #define GET_COURSE_PathTable2(p) segmented_to_virtual_dupe_2(gCoursePathTable2[gCurrentCourseId][p])
-extern KartAIBehaviour* gKartAIBehaviourLUT[];
-#define GET_COURSE_AIBehaviour segmented_to_virtual_dupe_2(gKartAIBehaviourLUT[i])
+extern CPUBehaviour* cpu_BehaviourLUT[];
+#define GET_COURSE_AIBehaviour segmented_to_virtual_dupe_2(cpu_BehaviourLUT[i])
 extern char* gCourseNames[];
 #define GET_COURSE_Name gCourseNames[gCurrentCourseId]
 extern char* gCourseNamesDup[];
@@ -108,12 +108,12 @@ extern f32 gCourseFarPersp;
 extern f32 gCourseNearPersp;
 #define gCourseNearPersp gCourseNearPersp
 #define GET_COURSE_D_0D0096B8(cc) *(f32*) segmented_to_virtual_dupe_2(&D_0D0096B8[gCurrentCourseId][cc])
-#define GET_COURSE_gCpuOffTrackTargetSpeed(cc) \
-    *(f32*) segmented_to_virtual_dupe_2(&gCpuOffTrackTargetSpeed[gCurrentCourseId][cc])
-#define GET_COURSE_gCpuCurveTargetSpeed(cc) \
-    *(f32*) segmented_to_virtual_dupe_2(&gCpuCurveTargetSpeed[gCurrentCourseId][cc])
-#define GET_COURSE_gCpuNormalTargetSpeed(cc) \
-    *(f32*) segmented_to_virtual_dupe_2(&gCpuNormalTargetSpeed[gCurrentCourseId][cc])
+#define GET_COURSE_cpu_OffTrackTargetSpeed(cc) \
+    *(f32*) segmented_to_virtual_dupe_2(&cpu_OffTrackTargetSpeed[gCurrentCourseId][cc])
+#define GET_COURSE_cpu_CurveTargetSpeed(cc) \
+    *(f32*) segmented_to_virtual_dupe_2(&cpu_CurveTargetSpeed[gCurrentCourseId][cc])
+#define GET_COURSE_cpu_NormalTargetSpeed(cc) \
+    *(f32*) segmented_to_virtual_dupe_2(&cpu_NormalTargetSpeed[gCurrentCourseId][cc])
 #else
 #define gCurrentCourseId
 #define GET_COURSE_800DCBB4(n)
@@ -130,9 +130,9 @@ extern f32 gCourseNearPersp;
 #define gCourseFarPersp
 #define gCourseNearPersp
 #define GET_COURSE_D_0D0096B8(cc)
-#define GET_COURSE_gCpuOffTrackTargetSpeed(cc)
-#define GET_COURSE_gCpuCurveTargetSpeed(cc)
-#define GET_COURSE_gCpuNormalTargetSpeed(cc)
+#define GET_COURSE_cpu_OffTrackTargetSpeed(cc)
+#define GET_COURSE_cpu_CurveTargetSpeed(cc)
+#define GET_COURSE_cpu_NormalTargetSpeed(cc)
 #endif
 
 #endif // COURSE_H

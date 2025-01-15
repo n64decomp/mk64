@@ -4,8 +4,8 @@
 
 #if !ENABLE_CUSTOM_COURSE_ENGINE
 // @warning Array contains an extra zero element at the end.
-KartAIBehaviour* gKartAIBehaviourLUT[] = {
-#include "assets/course_metadata/gKartAIBehaviourLUT.inc.c"
+CPUBehaviour* cpu_BehaviourLUT[] = {
+#include "assets/course_metadata/cpu_BehaviourLUT.inc.c"
 
 };
 #else
@@ -24,18 +24,18 @@ TrackPathPoint* gCoursePathTable2[][4] = {
 };
 
 /// @warning Array contains an extra zero element at the end.
-s16 gKartAISteeringSensitivity[] = {
-#include "assets/course_metadata/gCPUSteeringSensitivity.inc.c"
+s16 cpu_SteeringSensitivity[] = {
+#include "assets/course_metadata/cpu_SteeringSensitivity.inc.c"
 };
 
 // Possibly maximum cpu separation
-f32 gKartAICourseMaximumSeparation[] = {
-#include "assets/course_metadata/gKartAICourseMaximumSeparation.inc.c"
+f32 cpu_CourseMaximumSeparation[] = {
+#include "assets/course_metadata/cpu_CourseMaximumSeparation.inc.c"
 };
 
 // Possibly minimum cpu separation
-f32 gKartAICourseMinimumSeparation[] = {
-#include "assets/course_metadata/gKartAICourseMinimumSeparation.inc.c"
+f32 cpu_CourseMinimumSeparation[] = {
+#include "assets/course_metadata/cpu_CourseMinimumSeparation.inc.c"
 };
 #else
 

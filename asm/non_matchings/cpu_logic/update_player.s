@@ -26,11 +26,11 @@ glabel D_800ECFC8
 glabel update_player
 /* 00A760 80009B60 3C0E800E */  lui   $t6, %hi(gCurrentCourseId)
 /* 00A764 80009B64 85CEC5A0 */  lh    $t6, %lo(gCurrentCourseId)($t6)
-/* 00A768 80009B68 3C01800E */  lui   $at, %hi(gKartAICourseMaximumSeparation)
+/* 00A768 80009B68 3C01800E */  lui   $at, %hi(cpu_CourseMaximumSeparation)
 /* 00A76C 80009B6C 3C0A8016 */  lui   $t2, %hi(D_80163100) # $t2, 0x8016
 /* 00A770 80009B70 000E7880 */  sll   $t7, $t6, 2
 /* 00A774 80009B74 002F0821 */  addu  $at, $at, $t7
-/* 00A778 80009B78 C424CA4C */  lwc1  $f4, %lo(gKartAICourseMaximumSeparation)($at)
+/* 00A778 80009B78 C424CA4C */  lwc1  $f4, %lo(cpu_CourseMaximumSeparation)($at)
 /* 00A77C 80009B7C 27BDFF30 */  addiu $sp, $sp, -0xd0
 /* 00A780 80009B80 254A3100 */  addiu $t2, %lo(D_80163100) # addiu $t2, $t2, 0x3100
 /* 00A784 80009B84 4600218D */  trunc.w.s $f6, $f4
@@ -526,11 +526,11 @@ glabel update_player
 /* 00AEA4 8000A2A4 3C0D800E */  lui   $t5, %hi(gCCSelection)
 /* 00AEA8 8000A2A8 8DADC548 */  lw    $t5, %lo(gCCSelection)($t5)
 /* 00AEAC 8000A2AC 854AC5A0 */  lh    $t2, %lo(gCurrentCourseId)($t2)
-/* 00AEB0 8000A2B0 3C0E0D01 */  lui   $t6, %hi(gCpuCurveTargetSpeed) # $t6, 0xd01
+/* 00AEB0 8000A2B0 3C0E0D01 */  lui   $t6, %hi(cpu_CurveTargetSpeed) # $t6, 0xd01
 /* 00AEB4 8000A2B4 000D7880 */  sll   $t7, $t5, 2
 /* 00AEB8 8000A2B8 000AC900 */  sll   $t9, $t2, 4
 /* 00AEBC 8000A2BC 032F5821 */  addu  $t3, $t9, $t7
-/* 00AEC0 8000A2C0 25CE9418 */  addiu $t6, %lo(gCpuCurveTargetSpeed) # addiu $t6, $t6, -0x6be8
+/* 00AEC0 8000A2C0 25CE9418 */  addiu $t6, %lo(cpu_CurveTargetSpeed) # addiu $t6, $t6, -0x6be8
 /* 00AEC4 8000A2C4 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 00AEC8 8000A2C8 016E2021 */   addu  $a0, $t3, $t6
 /* 00AECC 8000A2CC 8FAC0038 */  lw    $t4, 0x38($sp)
@@ -545,11 +545,11 @@ glabel update_player
 /* 00AEEC 8000A2EC 3C19800E */  lui   $t9, %hi(gCCSelection)
 /* 00AEF0 8000A2F0 8F39C548 */  lw    $t9, %lo(gCCSelection)($t9)
 /* 00AEF4 8000A2F4 854AC5A0 */  lh    $t2, %lo(gCurrentCourseId)($t2)
-/* 00AEF8 8000A2F8 3C0E0D01 */  lui   $t6, %hi(gCpuNormalTargetSpeed) # $t6, 0xd01
+/* 00AEF8 8000A2F8 3C0E0D01 */  lui   $t6, %hi(cpu_NormalTargetSpeed) # $t6, 0xd01
 /* 00AEFC 8000A2FC 00197880 */  sll   $t7, $t9, 2
 /* 00AF00 8000A300 000A6900 */  sll   $t5, $t2, 4
 /* 00AF04 8000A304 01AF5821 */  addu  $t3, $t5, $t7
-/* 00AF08 8000A308 25CE9568 */  addiu $t6, %lo(gCpuNormalTargetSpeed) # addiu $t6, $t6, -0x6a98
+/* 00AF08 8000A308 25CE9568 */  addiu $t6, %lo(cpu_NormalTargetSpeed) # addiu $t6, $t6, -0x6a98
 /* 00AF0C 8000A30C 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 00AF10 8000A310 016E2021 */   addu  $a0, $t3, $t6
 /* 00AF14 8000A314 8FAC0038 */  lw    $t4, 0x38($sp)
@@ -1195,7 +1195,7 @@ glabel update_player
 /* 00B854 8000AC54 4600218D */  trunc.w.s $f6, $f4
 /* 00B858 8000AC58 44055000 */  mfc1  $a1, $f10
 /* 00B85C 8000AC5C 3C0B800E */  lui   $t3, %hi(gCurrentCourseId)
-/* 00B860 8000AC60 3C03800E */  lui   $v1, %hi(gKartAISteeringSensitivity)
+/* 00B860 8000AC60 3C03800E */  lui   $v1, %hi(cpu_SteeringSensitivity)
 /* 00B864 8000AC64 00057C00 */  sll   $t7, $a1, 0x10
 /* 00B868 8000AC68 44023000 */  mfc1  $v0, $f6
 /* 00B86C 8000AC6C 000F6403 */  sra   $t4, $t7, 0x10
@@ -1223,7 +1223,7 @@ glabel update_player
 /* 00B8BC 8000ACBC 000B6040 */  sll   $t4, $t3, 1
 /* 00B8C0 8000ACC0 006C1821 */  addu  $v1, $v1, $t4
 /* 00B8C4 8000ACC4 10410006 */  beq   $v0, $at, .L8000ACE0
-/* 00B8C8 8000ACC8 8463CA20 */   lh    $v1, %lo(gKartAISteeringSensitivity)($v1)
+/* 00B8C8 8000ACC8 8463CA20 */   lh    $v1, %lo(cpu_SteeringSensitivity)($v1)
 /* 00B8CC 8000ACCC 24010003 */  li    $at, 3
 /* 00B8D0 8000ACD0 50410014 */  beql  $v0, $at, .L8000AD24
 /* 00B8D4 8000ACD4 3C013F00 */   lui   $at, 0x3f00
@@ -1267,10 +1267,10 @@ glabel update_player
 .L8000AD5C:
 /* 00B95C 8000AD5C 8FAA0034 */  lw    $t2, 0x34($sp)
 .L8000AD60:
-/* 00B960 8000AD60 3C0D8016 */  lui   $t5, %hi(gKartAIBehaviourState) # 0x8016
+/* 00B960 8000AD60 3C0D8016 */  lui   $t5, %hi(cpu_BehaviourState) # 0x8016
 /* 00B964 8000AD64 24010002 */  li    $at, 2
 /* 00B968 8000AD68 01AA6821 */  addu  $t5, $t5, $t2
-/* 00B96C 8000AD6C 95AD32E8 */  lhu   $t5, %lo(gKartAIBehaviourState)($t5) # 0x32e8($t5)
+/* 00B96C 8000AD6C 95AD32E8 */  lhu   $t5, %lo(cpu_BehaviourState)($t5) # 0x32e8($t5)
 /* 00B970 8000AD70 15A10013 */  bne   $t5, $at, .L8000ADC0
 /* 00B974 8000AD74 3C01800F */   lui   $at, %hi(D_800ECFB8) # $at, 0x800f
 /* 00B978 8000AD78 C424CFB8 */  lwc1  $f4, %lo(D_800ECFB8)($at)
@@ -1406,18 +1406,18 @@ glabel update_player
 /* 00BB5C 8000AF5C 3C0C800E */  lui   $t4, %hi(gCCSelection)
 /* 00BB60 8000AF60 8D8CC548 */  lw    $t4, %lo(gCCSelection)($t4)
 /* 00BB64 8000AF64 85EFC5A0 */  lh    $t7, %lo(gCurrentCourseId)($t7)
-/* 00BB68 8000AF68 3C0E0D01 */  lui   $t6, %hi(gCpuCurveTargetSpeed) # $t6, 0xd01
+/* 00BB68 8000AF68 3C0E0D01 */  lui   $t6, %hi(cpu_CurveTargetSpeed) # $t6, 0xd01
 /* 00BB6C 8000AF6C 000CC080 */  sll   $t8, $t4, 2
 /* 00BB70 8000AF70 000F5900 */  sll   $t3, $t7, 4
 /* 00BB74 8000AF74 0178C821 */  addu  $t9, $t3, $t8
-/* 00BB78 8000AF78 25CE9418 */  addiu $t6, %lo(gCpuCurveTargetSpeed) # addiu $t6, $t6, -0x6be8
+/* 00BB78 8000AF78 25CE9418 */  addiu $t6, %lo(cpu_CurveTargetSpeed) # addiu $t6, $t6, -0x6be8
 /* 00BB7C 8000AF7C 032E2021 */  addu  $a0, $t9, $t6
 /* 00BB80 8000AF80 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 00BB84 8000AF84 AFA80020 */   sw    $t0, 0x20($sp)
 /* 00BB88 8000AF88 8FAA0038 */  lw    $t2, 0x38($sp)
-/* 00BB8C 8000AF8C 3C0D8016 */  lui   $t5, %hi(gCpuTargetSpeed) # $t5, 0x8016
+/* 00BB8C 8000AF8C 3C0D8016 */  lui   $t5, %hi(cpu_TargetSpeed) # $t5, 0x8016
 /* 00BB90 8000AF90 C4440000 */  lwc1  $f4, ($v0)
-/* 00BB94 8000AF94 25AD3028 */  addiu $t5, %lo(gCpuTargetSpeed) # addiu $t5, $t5, 0x3028
+/* 00BB94 8000AF94 25AD3028 */  addiu $t5, %lo(cpu_TargetSpeed) # addiu $t5, $t5, 0x3028
 /* 00BB98 8000AF98 014D1821 */  addu  $v1, $t2, $t5
 /* 00BB9C 8000AF9C 8FA80020 */  lw    $t0, 0x20($sp)
 /* 00BBA0 8000AFA0 10000014 */  b     .L8000AFF4
@@ -1427,18 +1427,18 @@ glabel update_player
 /* 00BBAC 8000AFAC 3C0B800E */  lui   $t3, %hi(gCCSelection)
 /* 00BBB0 8000AFB0 8D6BC548 */  lw    $t3, %lo(gCCSelection)($t3)
 /* 00BBB4 8000AFB4 85EFC5A0 */  lh    $t7, %lo(gCurrentCourseId)($t7)
-/* 00BBB8 8000AFB8 3C0E0D01 */  lui   $t6, %hi(gCpuNormalTargetSpeed) # $t6, 0xd01
+/* 00BBB8 8000AFB8 3C0E0D01 */  lui   $t6, %hi(cpu_NormalTargetSpeed) # $t6, 0xd01
 /* 00BBBC 8000AFBC 000BC080 */  sll   $t8, $t3, 2
 /* 00BBC0 8000AFC0 000F6100 */  sll   $t4, $t7, 4
 /* 00BBC4 8000AFC4 0198C821 */  addu  $t9, $t4, $t8
-/* 00BBC8 8000AFC8 25CE9568 */  addiu $t6, %lo(gCpuNormalTargetSpeed) # addiu $t6, $t6, -0x6a98
+/* 00BBC8 8000AFC8 25CE9568 */  addiu $t6, %lo(cpu_NormalTargetSpeed) # addiu $t6, $t6, -0x6a98
 /* 00BBCC 8000AFCC 032E2021 */  addu  $a0, $t9, $t6
 /* 00BBD0 8000AFD0 0C026455 */  jal   segmented_to_virtual_dupe_2
 /* 00BBD4 8000AFD4 AFA80020 */   sw    $t0, 0x20($sp)
 /* 00BBD8 8000AFD8 8FAA0038 */  lw    $t2, 0x38($sp)
 /* 00BBDC 8000AFDC C44A0000 */  lwc1  $f10, ($v0)
-/* 00BBE0 8000AFE0 3C0D8016 */  lui   $t5, %hi(gCpuTargetSpeed) # $t5, 0x8016
-/* 00BBE4 8000AFE4 25AD3028 */  addiu $t5, %lo(gCpuTargetSpeed) # addiu $t5, $t5, 0x3028
+/* 00BBE0 8000AFE0 3C0D8016 */  lui   $t5, %hi(cpu_TargetSpeed) # $t5, 0x8016
+/* 00BBE4 8000AFE4 25AD3028 */  addiu $t5, %lo(cpu_TargetSpeed) # addiu $t5, $t5, 0x3028
 /* 00BBE8 8000AFE8 014D1821 */  addu  $v1, $t2, $t5
 /* 00BBEC 8000AFEC 8FA80020 */  lw    $t0, 0x20($sp)
 /* 00BBF0 8000AFF0 E46A0000 */  swc1  $f10, ($v1)
@@ -1446,10 +1446,10 @@ glabel update_player
 /* 00BBF4 8000AFF4 3C01800F */  lui   $at, %hi(D_800ECFC0) # $at, 0x800f
 /* 00BBF8 8000AFF8 C430CFC0 */  lwc1  $f16, %lo(D_800ECFC0)($at)
 /* 00BBFC 8000AFFC C5000000 */  lwc1  $f0, ($t0)
-/* 00BC00 8000B000 3C0E0D01 */  lui   $t6, %hi(gCpuOffTrackTargetSpeed) # $t6, 0xd01
+/* 00BC00 8000B000 3C0E0D01 */  lui   $t6, %hi(cpu_OffTrackTargetSpeed) # $t6, 0xd01
 /* 00BC04 8000B004 3C01800F */  lui   $at, %hi(D_800ECFC4) # $at, 0x800f
 /* 00BC08 8000B008 4600803C */  c.lt.s $f16, $f0
-/* 00BC0C 8000B00C 25CE9808 */  addiu $t6, %lo(gCpuOffTrackTargetSpeed) # addiu $t6, $t6, -0x67f8
+/* 00BC0C 8000B00C 25CE9808 */  addiu $t6, %lo(cpu_OffTrackTargetSpeed) # addiu $t6, $t6, -0x67f8
 /* 00BC10 8000B010 3C0F800E */  lui   $t7, %hi(gCurrentCourseId)
 /* 00BC14 8000B014 3C0C800E */  lui   $t4, %hi(gCCSelection)
 /* 00BC18 8000B018 45010006 */  bc1t  .L8000B034

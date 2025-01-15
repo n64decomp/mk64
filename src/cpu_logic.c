@@ -37,7 +37,7 @@ Collision D_80162E70;
 s16 D_80162EB0; // Possibly a float.
 s16 D_80162EB2; // possibly [3]
 
-KartAIBehaviour* gCoursesKartAIBehaviour[NUM_COURSES - 1];
+CPUBehaviour* gCoursesCPUBehaviour[NUM_COURSES - 1];
 
 // more padding?
 s32 D_80162F08[2];
@@ -63,7 +63,7 @@ Or maybe at some point in development they had plans for more players?
 */
 s16 D_80162FF8[12];
 s16 D_80163010[12];
-f32 gCpuTargetSpeed[10];
+f32 cpu_TargetSpeed[10];
 s16 gPreviousAngleSteering[12];
 f32 gTrackPositionFactor[10];
 f32 D_80163090[10];
@@ -92,17 +92,17 @@ u16 D_80163240[12];
 u16 gWrongDirectionCounter[12];
 u16 gIsPlayerWrongDirection[12];
 s32 gPreviousLapProgressScore[10];
-KartAIBehaviour* sCurrentKartAIBehaviour;
-u16 gCurrentKartAIBehaviourId[12];
-u16 gPreviousKartAIBehaviourId[12];
-u16 gKartAIBehaviourState[12];
+CPUBehaviour* sCurrentCPUBehaviour;
+u16 gCurrentCPUBehaviourId[12];
+u16 gPreviousCPUBehaviourId[12];
+u16 cpu_BehaviourState[12];
 s16 sPlayerAngle[12];
 u16 gPlayersTrackSectionId[12];
 u16 D_80163330[10];
 u16 D_80163344[2];
 u16 D_80163348[2];
 u16 D_8016334C[2];
-u16 gSpeedKartAIBehaviour[12];
+u16 gSpeedCPUBehaviour[12];
 s32 gSizePath[4];
 s32 gIncrementUpdatePlayer;
 s32 D_8016337C;
@@ -127,8 +127,8 @@ s32 D_80163480;
 s32 D_80163484;
 s32 D_80163488;
 s16 D_8016348C;
-s16 gCpuNeedChoosePath[12];
-s16 gCpuResetPath[12];
+s16 cpu_NeedChoosePath[12];
+s16 cpu_ResetPath[12];
 s16 D_801634C0[12];
 s16 bStopAICrossing[10];
 s16 D_801634EC;
@@ -149,7 +149,7 @@ s32 D_80163DD8[4];
 BombKart gBombKarts[NUM_BOMB_KARTS_MAX];
 Collision D_80164038[NUM_BOMB_KARTS_MAX];
 struct unexpiredActors gUnexpiredActorsList[8];
-CpuItemStrategyData gCpuItemStrategy[NUM_PLAYERS];
+CpuItemStrategyData cpu_ItemStrategy[NUM_PLAYERS];
 s16 D_80164358;
 s16 D_8016435A;
 s16 D_8016435C;
@@ -1131,8 +1131,8 @@ void regulate_cpu_speed(s32 playerId, f32 targetSpeed, Player* player) {
                 }
             } else {
                 var_a1 = 1;
-                switch (gSpeedKartAIBehaviour[playerId]) { /* switch 1; irregular */
-                    case SPEED_KART_AI_BEHAVIOUR_FAST:     /* switch 1 */
+                switch (gSpeedCPUBehaviour[playerId]) { /* switch 1; irregular */
+                    case SPEED_KART_AI_BEHAVIOUR_FAST:  /* switch 1 */
                         player->effects &= ~UNKNOWN_EFFECT_0x200000;
                         player_accelerate(player);
                         break;
@@ -1397,10 +1397,10 @@ void yoshi_valley_cpu_path(s32 playerId) {
         }
     }
     if ((previous == false) && (gNeedToChoosePath[playerId] == true)) {
-        gCpuNeedChoosePath[playerId] = true;
+        cpu_NeedChoosePath[playerId] = true;
     }
     if ((previous == true) && (gNeedToChoosePath[playerId] == false)) {
-        gCpuResetPath[playerId] = true;
+        cpu_ResetPath[playerId] = true;
     }
 }
 
@@ -1413,19 +1413,19 @@ void update_cpu_path_completion(s32 playerId, Player* player) {
     posX = player->pos[0];
     posY = player->pos[1];
     posZ = player->pos[2];
-    if (gCpuNeedChoosePath[playerId] == 1) {
+    if (cpu_NeedChoosePath[playerId] == 1) {
         gActualPath = update_player_path_selection(playerId, random_int(4U));
         sSomeNearestPathPoint = update_player_path(posX, posY, posZ, 0, player, playerId, gActualPath);
         gNearestPathPointByPlayerId[playerId] = sSomeNearestPathPoint;
         update_player_completion(playerId);
-        gCpuNeedChoosePath[playerId] = 0;
+        cpu_NeedChoosePath[playerId] = 0;
     }
-    if (gCpuResetPath[playerId] == 1) {
+    if (cpu_ResetPath[playerId] == 1) {
         gActualPath = update_player_path_selection(playerId, 0);
         sSomeNearestPathPoint = update_player_path(posX, posY, posZ, 0, player, playerId, gActualPath);
         gNearestPathPointByPlayerId[playerId] = sSomeNearestPathPoint;
         update_player_completion(playerId);
-        gCpuResetPath[playerId] = 0;
+        cpu_ResetPath[playerId] = 0;
     }
 }
 
@@ -1514,7 +1514,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
                 D_80163240[playerId] = 1;
                 update_player_completion(playerId);
                 reset_kart_ai_behaviour(playerId);
-                gCpuItemStrategy[playerId].timer = 0;
+                cpu_ItemStrategy[playerId].timer = 0;
                 if ((D_8016348C == 0) && !(player->type & PLAYER_CINEMATIC_MODE)) {
                     gTimePlayerLastTouchedFinishLine[playerId] = func_80009258(playerId, previousPlayerZ, playerZ);
                 }
@@ -1807,9 +1807,9 @@ void update_player(s32 playerId) {
                         gPreviousCpuTargetSpeed[playerId] = GET_COURSE_D_0D0096B8(gCCSelection);
                         gPlayerTrackPositionFactorInstruction[playerId].target = -0.5f;
                     } else if (gCurrentTrackConsecutiveCurveCountsPath[sSomeNearestPathPoint] > 0) {
-                        gPreviousCpuTargetSpeed[playerId] = GET_COURSE_gCpuCurveTargetSpeed(gCCSelection);
+                        gPreviousCpuTargetSpeed[playerId] = GET_COURSE_cpu_CurveTargetSpeed(gCCSelection);
                     } else {
-                        gPreviousCpuTargetSpeed[playerId] = GET_COURSE_gCpuNormalTargetSpeed(gCCSelection);
+                        gPreviousCpuTargetSpeed[playerId] = GET_COURSE_cpu_NormalTargetSpeed(gCCSelection);
                     }
                     check_ai_crossing_distance(playerId);
                     cpu_track_position_factor(playerId);
@@ -1985,7 +1985,7 @@ void update_player(s32 playerId) {
                         }
                         break;
                 }
-                if ((gKartAIBehaviourState[playerId] == KART_AI_BEHAVIOUR_STATE_RUNNING) &&
+                if ((cpu_BehaviourState[playerId] == KART_AI_BEHAVIOUR_STATE_RUNNING) &&
                     ((gTrackPositionFactor[playerId] > 0.9f) || (gTrackPositionFactor[playerId] < -0.9f))) {
                     D_801630E8[playerId] = 0;
                     player->effects &= ~0x10;
@@ -2013,20 +2013,20 @@ void update_player(s32 playerId) {
                 if ((gIsPlayerInCurve[playerId] == true) || (D_801630E8[playerId] == 1) ||
                     (D_801630E8[playerId] == -1) ||
                     (player->effects & (UNKNOWN_EFFECT_0x10000000 | UNKNOWN_EFFECT_0xC))) {
-                    gCpuTargetSpeed[playerId] = GET_COURSE_gCpuCurveTargetSpeed(gCCSelection);
+                    cpu_TargetSpeed[playerId] = GET_COURSE_cpu_CurveTargetSpeed(gCCSelection);
                 } else {
-                    gCpuTargetSpeed[playerId] = GET_COURSE_gCpuNormalTargetSpeed(gCCSelection);
+                    cpu_TargetSpeed[playerId] = GET_COURSE_cpu_NormalTargetSpeed(gCCSelection);
                 }
                 if ((gTrackPositionFactor[playerId] > 0.9f) || (gTrackPositionFactor[playerId] < -0.9f)) {
-                    gCpuTargetSpeed[playerId] = GET_COURSE_gCpuOffTrackTargetSpeed(gCCSelection);
+                    cpu_TargetSpeed[playerId] = GET_COURSE_cpu_OffTrackTargetSpeed(gCCSelection);
                 }
                 if (D_80162FD0 == 1) {
-                    gCpuTargetSpeed[playerId] = GET_COURSE_D_0D0096B8(gCCSelection);
+                    cpu_TargetSpeed[playerId] = GET_COURSE_D_0D0096B8(gCCSelection);
                 }
                 if ((D_801630E8[playerId] == 2) || (D_801630E8[playerId] == -2) || (D_801630E8[playerId] == 3)) {
-                    gCpuTargetSpeed[playerId] = 3.3333333f;
+                    cpu_TargetSpeed[playerId] = 3.3333333f;
                 }
-                gCurrentCpuTargetSpeed = gCpuTargetSpeed[playerId];
+                gCurrentCpuTargetSpeed = cpu_TargetSpeed[playerId];
                 player->effects &= ~UNKNOWN_EFFECT_0x200000;
                 gPreviousCpuTargetSpeed[playerId] = gCurrentCpuTargetSpeed;
                 check_ai_crossing_distance(playerId);
@@ -3622,7 +3622,7 @@ void init_players(void) {
         if (gCurrentCourseId < (NUM_COURSES - 1)) {
             update_player_position_factor(i, 0, 0);
         }
-        gCpuTargetSpeed[i] = GET_COURSE_gCpuCurveTargetSpeed(gCCSelection);
+        cpu_TargetSpeed[i] = GET_COURSE_cpu_CurveTargetSpeed(gCCSelection);
         D_801630E8[i] = 0;
         D_80163100[i] = 0;
         gPreviousPlayerAiOffsetX[i] = 0.0f;
@@ -3659,7 +3659,7 @@ void init_players(void) {
         var_s5->current = 0.0f;
         var_s5->step = 0.015f;
         reset_kart_ai_behaviour_none(i);
-        gSpeedKartAIBehaviour[i] = 0;
+        gSpeedCPUBehaviour[i] = 0;
         gNeedToChoosePath[i] = 0;
         D_80163398[i] = 0;
         D_801633B0[i] = 0;
@@ -3675,8 +3675,8 @@ void init_players(void) {
             D_80163330[i] = 0;
         }
 
-        gCpuNeedChoosePath[i] = 0;
-        gCpuResetPath[i] = 0;
+        cpu_NeedChoosePath[i] = 0;
+        cpu_ResetPath[i] = 0;
         D_80163128[i] = -1;
         D_80163150[i] = -1;
         D_80164538[i] = -1;
@@ -4306,20 +4306,20 @@ s32 generate_2d_path(Path2D* pathDest, TrackPathPoint* pathSrc, s32 numPathPoint
 void copy_courses_kart_ai_behaviour(void) {
     s32 i;
     for (i = 0; i < NUM_COURSES - 1; i++) {
-        gCoursesKartAIBehaviour[i] = GET_COURSE_AIBehaviour;
+        gCoursesCPUBehaviour[i] = GET_COURSE_AIBehaviour;
     }
 }
 
 void reset_kart_ai_behaviour_none(s32 playerIndex) {
-    gCurrentKartAIBehaviourId[playerIndex] = 0;
-    gPreviousKartAIBehaviourId[playerIndex] = 0;
-    gKartAIBehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_NONE;
+    gCurrentCPUBehaviourId[playerIndex] = 0;
+    gPreviousCPUBehaviourId[playerIndex] = 0;
+    cpu_BehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_NONE;
 }
 
 void reset_kart_ai_behaviour(s32 playerIndex) {
-    gCurrentKartAIBehaviourId[playerIndex] = 0;
-    gPreviousKartAIBehaviourId[playerIndex] = 0;
-    gKartAIBehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
+    gCurrentCPUBehaviourId[playerIndex] = 0;
+    gPreviousCPUBehaviourId[playerIndex] = 0;
+    cpu_BehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
 }
 
 void kart_ai_behaviour_start(s32 playerId, Player* player) {
@@ -4329,23 +4329,23 @@ void kart_ai_behaviour_start(s32 playerId, Player* player) {
     s32 behaviourType;
     UNUSED s32 test;
 
-    sCurrentKartAIBehaviour = &gCoursesKartAIBehaviour[gCurrentCourseId][gCurrentKartAIBehaviourId[playerId]];
+    sCurrentCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][gCurrentCPUBehaviourId[playerId]];
 
     playerPathPoint = gNearestPathPointByPlayerId[playerId];
 
-    pathPointStart = sCurrentKartAIBehaviour->pathPointStart;
-    pathPointEnd = sCurrentKartAIBehaviour->pathPointEnd;
-    behaviourType = sCurrentKartAIBehaviour->type;
+    pathPointStart = sCurrentCPUBehaviour->pathPointStart;
+    pathPointEnd = sCurrentCPUBehaviour->pathPointEnd;
+    behaviourType = sCurrentCPUBehaviour->type;
 
     if ((pathPointStart == -1) && (pathPointEnd == -1)) {
-        sCurrentKartAIBehaviour = &gCoursesKartAIBehaviour[gCurrentCourseId][0];
+        sCurrentCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][0];
         reset_kart_ai_behaviour_none(playerId);
         return;
     }
     if ((u32) playerPathPoint == (u32) pathPointStart) {
-        gKartAIBehaviourState[playerId] = KART_AI_BEHAVIOUR_STATE_RUNNING;
-        gPreviousKartAIBehaviourId[playerId] = gCurrentKartAIBehaviourId[playerId];
-        gCurrentKartAIBehaviourId[playerId]++;
+        cpu_BehaviourState[playerId] = KART_AI_BEHAVIOUR_STATE_RUNNING;
+        gPreviousCPUBehaviourId[playerId] = gCurrentCPUBehaviourId[playerId];
+        gCurrentCPUBehaviourId[playerId]++;
         switch (behaviourType) {
             case BEHAVIOUR_1:
                 func_80011EC0(playerId, player, player->unk_07C >> 0x10, playerPathPoint);
@@ -4365,16 +4365,16 @@ void kart_ai_behaviour_start(s32 playerId, Player* player) {
                 gPlayerTrackPositionFactorInstruction[playerId].target = 0.6f;
                 break;
             case BEHAVIOUR_NORMAL_SPEED:
-                gSpeedKartAIBehaviour[playerId] = SPEED_KART_AI_BEHAVIOUR_NORMAL;
+                gSpeedCPUBehaviour[playerId] = SPEED_KART_AI_BEHAVIOUR_NORMAL;
                 break;
             case BEHAVIOUR_FAST_SPEED:
-                gSpeedKartAIBehaviour[playerId] = SPEED_KART_AI_BEHAVIOUR_FAST;
+                gSpeedCPUBehaviour[playerId] = SPEED_KART_AI_BEHAVIOUR_FAST;
                 break;
             case BEHAVIOUR_SLOW_SPEED:
-                gSpeedKartAIBehaviour[playerId] = SPEED_KART_AI_BEHAVIOUR_SLOW;
+                gSpeedCPUBehaviour[playerId] = SPEED_KART_AI_BEHAVIOUR_SLOW;
                 break;
             case BEHAVIOUR_MAX_SPEED:
-                gSpeedKartAIBehaviour[playerId] = SPEED_KART_AI_BEHAVIOUR_MAX;
+                gSpeedCPUBehaviour[playerId] = SPEED_KART_AI_BEHAVIOUR_MAX;
                 break;
             case BEHAVIOUR_9:
                 D_801633F8[playerId] = 1;
@@ -4393,23 +4393,23 @@ void kart_ai_behaviour_end(s32 playerIndex, Player* player) {
     u32 pathPointEnd;
     s32 behaviourType;
 
-    sCurrentKartAIBehaviour = &gCoursesKartAIBehaviour[gCurrentCourseId][gPreviousKartAIBehaviourId[playerIndex]];
+    sCurrentCPUBehaviour = &gCoursesCPUBehaviour[gCurrentCourseId][gPreviousCPUBehaviourId[playerIndex]];
     nearestPathPoint = gNearestPathPointByPlayerId[playerIndex];
-    behaviourType = sCurrentKartAIBehaviour->type;
-    pathPointEnd = sCurrentKartAIBehaviour->pathPointEnd;
+    behaviourType = sCurrentCPUBehaviour->type;
+    pathPointEnd = sCurrentCPUBehaviour->pathPointEnd;
     if (nearestPathPoint >= pathPointEnd) {
         switch (behaviourType) {
             case BEHAVIOUR_1:
                 player->effects &= ~0x10;
                 D_801630E8[playerIndex] = 0;
-                gKartAIBehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
+                cpu_BehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
                 break;
             case BEHAVIOUR_GO_CENTER:
             case BEHAVIOUR_GO_INNER:
             case BEHAVIOUR_GO_OUTER:
                 gPlayerTrackPositionFactorInstruction[playerIndex].target =
                     gPlayerTrackPositionFactorInstruction[playerIndex].unkC;
-                gKartAIBehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
+                cpu_BehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
                 break;
             case BEHAVIOUR_HOP:
             case BEHAVIOUR_NORMAL_SPEED:
@@ -4418,7 +4418,7 @@ void kart_ai_behaviour_end(s32 playerIndex, Player* player) {
             case BEHAVIOUR_9:
             case BEHAVIOUR_10:
             case BEHAVIOUR_MAX_SPEED:
-                gKartAIBehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
+                cpu_BehaviourState[playerIndex] = KART_AI_BEHAVIOUR_STATE_START;
                 break;
             default:
                 break;
@@ -4429,7 +4429,7 @@ void kart_ai_behaviour_end(s32 playerIndex, Player* player) {
 void kart_ai_behaviour(s32 playerIndex) {
     Player* player = gPlayerOne + playerIndex;
 
-    switch (gKartAIBehaviourState[playerIndex]) {
+    switch (cpu_BehaviourState[playerIndex]) {
         case KART_AI_BEHAVIOUR_STATE_NONE:
             break;
         case KART_AI_BEHAVIOUR_STATE_START:
@@ -7220,11 +7220,11 @@ void func_8001AB00(void) {
     s32 var_v1;
 
     for (var_v1 = 0; var_v1 < NUM_PLAYERS; var_v1++) {
-        gCpuItemStrategy[var_v1].branch = 0;
-        gCpuItemStrategy[var_v1].timer = 0;
-        gCpuItemStrategy[var_v1].actorIndex = -1;
-        gCpuItemStrategy[var_v1].numItemUse = 0;
-        gCpuItemStrategy[var_v1].numDroppedBananaBunch = 0;
+        cpu_ItemStrategy[var_v1].branch = 0;
+        cpu_ItemStrategy[var_v1].timer = 0;
+        cpu_ItemStrategy[var_v1].actorIndex = -1;
+        cpu_ItemStrategy[var_v1].numItemUse = 0;
+        cpu_ItemStrategy[var_v1].numDroppedBananaBunch = 0;
     }
 }
 
@@ -7290,7 +7290,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
     player = &gPlayerOne[playerId];
     if (((gModeSelection != ((s32) 1)) && (((u16) D_801646CC) != ((u16) 1))) &&
         (!(player->type & PLAYER_CINEMATIC_MODE))) {
-        temp_s0 = &gCpuItemStrategy[playerId];
+        temp_s0 = &cpu_ItemStrategy[playerId];
         switch (temp_s0->branch) {
             case CPU_STRATEGY_WAIT_NEXT_ITEM:
                 temp_s0->actorIndex = -1;

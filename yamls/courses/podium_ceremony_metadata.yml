@@ -23,10 +23,10 @@ course:
   path_sizes: [0x01F4, 0x01F4, 0x01F4, 0x01F4, 0x0001, 0x0000, 0x0000, 0x0000]
 
   # unk common_textures data
-  gCpuCurveTargetSpeed: [0.0f, 0.0f, 0.0f, 0.0f]
-  gCpuNormalTargetSpeed: [0.0f, 0.0f, 0.0f, 0.0f]
+  cpu_CurveTargetSpeed: [0.0f, 0.0f, 0.0f, 0.0f]
+  cpu_NormalTargetSpeed: [0.0f, 0.0f, 0.0f, 0.0f]
   D_0D0096B8: [0.0f, 0.0f, 0.0f, 0.0f]
-  gCpuOffTrackTargetSpeed: [0.0f, 0.0f, 0.0f, 0.0f]
+  cpu_OffTrackTargetSpeed: [0.0f, 0.0f, 0.0f, 0.0f]
 
   # Course path
   path_table: ["&nullPath", "&nullPath", "&nullPath", "&nullPath"]

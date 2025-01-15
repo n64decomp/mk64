@@ -46,8 +46,8 @@ glabel kart_ai_use_item_strategy
 /* 01B864 8001AC64 510C0480 */  beql  $t0, $t4, .L8001BE68
 /* 01B868 8001AC68 8FBF0024 */   lw    $ra, 0x24($sp)
 /* 01B86C 8001AC6C 972E0000 */  lhu   $t6, ($t9)
-/* 01B870 8001AC70 3C0B8016 */  lui   $t3, %hi(gCpuItemStrategy) # $t3, 0x8016
-/* 01B874 8001AC74 256B42D8 */  addiu $t3, %lo(gCpuItemStrategy) # addiu $t3, $t3, 0x42d8
+/* 01B870 8001AC70 3C0B8016 */  lui   $t3, %hi(cpu_ItemStrategy) # $t3, 0x8016
+/* 01B874 8001AC74 256B42D8 */  addiu $t3, %lo(cpu_ItemStrategy) # addiu $t3, $t3, 0x42d8
 /* 01B878 8001AC78 31CF0800 */  andi  $t7, $t6, 0x800
 /* 01B87C 8001AC7C 15E00479 */  bnez  $t7, .L8001BE64
 /* 01B880 8001AC80 0004C900 */   sll   $t9, $a0, 4

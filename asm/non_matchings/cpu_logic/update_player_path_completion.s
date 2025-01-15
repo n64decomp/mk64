@@ -240,13 +240,13 @@ glabel update_player_path_completion
 /* 00A1F8 800095F8 8FA40050 */  lw    $a0, 0x50($sp)
 /* 00A1FC 800095FC 3C0F8016 */  lui   $t7, %hi(D_8016348C) # $t7, 0x8016
 /* 00A200 80009600 85EF348C */  lh    $t7, %lo(D_8016348C)($t7)
-/* 00A204 80009604 3C018016 */  lui   $at, %hi(gCpuItemStrategy + 0x6) # 0x8016
+/* 00A204 80009604 3C018016 */  lui   $at, %hi(cpu_ItemStrategy + 0x6) # 0x8016
 /* 00A208 80009608 00047100 */  sll   $t6, $a0, 4
 /* 00A20C 8000960C 002E0821 */  addu  $at, $at, $t6
 /* 00A210 80009610 8FA70030 */  lw    $a3, 0x30($sp)
 /* 00A214 80009614 87A80034 */  lh    $t0, 0x34($sp)
 /* 00A218 80009618 15E00012 */  bnez  $t7, .L80009664
-/* 00A21C 8000961C A42042DE */   sh    $zero, %lo(gCpuItemStrategy + 0x6)($at) # 0x42de($at)
+/* 00A21C 8000961C A42042DE */   sh    $zero, %lo(cpu_ItemStrategy + 0x6)($at) # 0x42de($at)
 /* 00A220 80009620 8FB80054 */  lw    $t8, 0x54($sp)
 /* 00A224 80009624 8FA50038 */  lw    $a1, 0x38($sp)
 /* 00A228 80009628 8FA60044 */  lw    $a2, 0x44($sp)

@@ -292,7 +292,7 @@ void func_8001C42C(void);
 extern Collision D_80162E70;
 extern s16 D_80162EB0; // Possibly a float.
 extern s16 D_80162EB2; // possibly [3]
-extern KartAIBehaviour* gCoursesKartAIBehaviour[];
+extern CPUBehaviour* gCoursesCPUBehaviour[];
 extern s16 D_80162F10[];
 extern s16 D_80162F50[];
 extern Vec3f gOffsetPosition;
@@ -303,7 +303,7 @@ extern s16 D_80162FD0;
 extern f32 gCourseCompletionPercentByRank[]; // D_80162FD8
 extern s16 D_80162FF8[];
 extern s16 D_80163010[];
-extern f32 gCpuTargetSpeed[];
+extern f32 cpu_TargetSpeed[];
 extern s16 gPreviousAngleSteering[];
 extern f32 gTrackPositionFactor[];
 extern f32 D_80163090[];
@@ -332,10 +332,10 @@ extern u16 gWrongDirectionCounter[];
 extern u16 gIsPlayerWrongDirection[];
 extern s32 gPreviousLapProgressScore[];
 // Exact pointer type unknown
-extern KartAIBehaviour* sCurrentKartAIBehaviour;
-extern u16 gCurrentKartAIBehaviourId[];
-extern u16 gPreviousKartAIBehaviourId[];
-extern u16 gKartAIBehaviourState[];
+extern CPUBehaviour* sCurrentCPUBehaviour;
+extern u16 gCurrentCPUBehaviourId[];
+extern u16 gPreviousCPUBehaviourId[];
+extern u16 cpu_BehaviourState[];
 
 enum { KART_AI_BEHAVIOUR_STATE_NONE, KART_AI_BEHAVIOUR_STATE_START, KART_AI_BEHAVIOUR_STATE_RUNNING };
 
@@ -345,7 +345,7 @@ extern u16 D_80163330[];
 extern u16 D_80163344[];
 extern u16 D_80163348[];
 extern u16 D_8016334C[];
-extern u16 gSpeedKartAIBehaviour[];
+extern u16 gSpeedCPUBehaviour[];
 
 enum {
     SPEED_KART_AI_BEHAVIOUR_NORMAL,
@@ -379,8 +379,8 @@ extern s32 D_80163480;
 extern s32 D_80163484;
 extern s32 D_80163488;
 extern s16 D_8016348C;
-extern s16 gCpuNeedChoosePath[];
-extern s16 gCpuResetPath[];
+extern s16 cpu_NeedChoosePath[];
+extern s16 cpu_ResetPath[];
 extern s16 D_801634C0[];
 extern s16 bStopAICrossing[];
 extern s16 D_801634EC;
@@ -393,7 +393,7 @@ extern u16 isCrossingTriggeredByIndex[];
 extern u16 sCrossingActiveTimer[];
 extern s32 D_80163DD8[];
 extern struct unexpiredActors gUnexpiredActorsList[];
-extern CpuItemStrategyData gCpuItemStrategy[];
+extern CpuItemStrategyData cpu_ItemStrategy[];
 extern s16 D_80164358;
 extern s16 D_8016435A;
 extern s16 D_8016435C;

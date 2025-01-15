@@ -30,7 +30,7 @@ typedef struct {
     /* 0x0 */ s16 pathPointStart;
     /* 0x2 */ s16 pathPointEnd;
     /* 0x4 */ s32 type;
-} KartAIBehaviour; // size = 0x8
+} CPUBehaviour; // size = 0x8
 
 enum SpTaskState {
     SPTASK_STATE_NOT_STARTED,
