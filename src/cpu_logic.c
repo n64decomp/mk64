@@ -116,10 +116,10 @@ s16 D_80163410[4];
 f32 D_80163418[4];
 f32 D_80163428[4];
 f32 D_80163438[4];
-s32 gActualPath;
+s32 gPlayerPathIndex;
 f32 gPathStartZ;
 f32 gPreviousPlayerZ[10];
-s16 gPlayerInFront;
+s16 gBestRankedHumanPlayer;
 s16 gIsInExtra;
 s16 D_8016347C;
 s16 D_8016347E;
@@ -161,7 +161,7 @@ s32 gPreviousGPCurrentRaceRankByPlayerId[10];
 s32 gGPCurrentRaceRankByPlayerIdDup[10];
 u16 gSelectedPathCount;
 u16 gNearestPathPointByPlayerId[12];
-s32 gLapProgressScore[10];
+s32 gNumPathPointsTraversed[10];
 s16 gCharacterPlayer[10];
 s32 D_8016448C;
 TrackPathPoint* gCurrentTrackPath;
@@ -689,7 +689,7 @@ void detect_wrong_player_direction(s32 playerId, Player* player) {
         rotationDifference = -rotationDifference;
     }
 
-    if ((gLapProgressScore[playerId] < gPreviousLapProgressScore[playerId]) &&
+    if ((gNumPathPointsTraversed[playerId] < gPreviousLapProgressScore[playerId]) &&
         (rotationDifference >= SEVERE_WRONG_DIRECTION_MIN) && (rotationDifference < SEVERE_WRONG_DIRECTION_MAX)) {
         gWrongDirectionCounter[playerId]++;
         if ((gWrongDirectionCounter[playerId]) >= WRONG_DIRECTION_FRAMES_LIMIT) {
@@ -703,7 +703,7 @@ void detect_wrong_player_direction(s32 playerId, Player* player) {
         gWrongDirectionCounter[playerId] = 0;
         gPlayers[playerId].effects &= ~REVERSE_EFFECT;
     }
-    gPreviousLapProgressScore[playerId] = gLapProgressScore[playerId];
+    gPreviousLapProgressScore[playerId] = gNumPathPointsTraversed[playerId];
 }
 
 void set_places(void) {
@@ -917,17 +917,17 @@ void set_places_end_course_with_time(void) {
 }
 
 /**
- * Checks if a pathPoint is within a valid range of another pathPoint, accounting for track wrapping
+ * Checks if a path point is within a valid range of another path point, accounting for track wrapping
  *
- * @param pathPoint The pathPoint to check
- * @param currentPathPoint The reference pathPoint
+ * @param pathPoint The path point to check
+ * @param currentPathPoint The reference path point
  * @param backwardRange Number of path to look behind
  * @param forwardRange Number of path to look ahead
  * @param totalPathPoints Total number of path in the track
  * @return
- *   1: pathPoint is within normal range
- *  -1: pathPoint is within wrapped range
- *   2: pathPoint is out of range
+ *   1: path point is within normal range
+ *  -1: path point is within wrapped range
+ *   2: path point is out of range
  *   0: invalid range parameters
  */
 s32 is_path_point_in_range(u16 pathPoint, u16 currentPathPoint, u16 backwardRange, u16 forwardRange,
@@ -955,11 +955,11 @@ void func_80007D04(s32 playerId, Player* player) {
     s16 temp_t2;
     s32 var_v0;
 
-    temp_t1 = gLapProgressScore[gPlayerInFront];
-    temp_t2 = gLapProgressScore[playerId];
+    temp_t1 = gNumPathPointsTraversed[gBestRankedHumanPlayer];
+    temp_t2 = gNumPathPointsTraversed[playerId];
 
     if (gGPCurrentRaceRankByPlayerId[playerId] < 2) {
-        s16 val1 = gGPCurrentRaceRankByPlayerId[gPlayerInFront];
+        s16 val1 = gGPCurrentRaceRankByPlayerId[gBestRankedHumanPlayer];
         s16 val2 = temp_t2 - temp_t1;
 
         if (val2 > 400 && val1 >= 6) {
@@ -1243,7 +1243,7 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
     temp_a3 = &GET_COURSE_800DCBB4(arg1_times_8);
     if (arg2 == 0) {
         if (gDemoMode == 1) {
-            temp_a2 = gLapProgressScore[playerId] - gLapProgressScore[D_80164378[7]];
+            temp_a2 = gNumPathPointsTraversed[playerId] - gNumPathPointsTraversed[D_80164378[7]];
             if (temp_a2 < 0) {
                 temp_a2 = -temp_a2;
             }
@@ -1258,10 +1258,10 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
             }
             return true;
         }
-        progress = gLapProgressScore[playerId] - gLapProgressScore[gPlayerInFront];
-        rank = gGPCurrentRaceRankByPlayerId[2 + (gPlayerInFront * 4)];
+        progress = gNumPathPointsTraversed[playerId] - gNumPathPointsTraversed[gBestRankedHumanPlayer];
+        rank = gGPCurrentRaceRankByPlayerId[2 + (gBestRankedHumanPlayer * 4)];
         if (gPathCountByPathIndex[0] * 2 / 3 < progress && rank >= 6) {
-            progress = gLapProgressScore[playerId] - gLapProgressScore[gLapCountByPlayerId[-26 + rank * 2]];
+            progress = gNumPathPointsTraversed[playerId] - gNumPathPointsTraversed[gLapCountByPlayerId[-26 + rank * 2]];
         }
         if (progress < 0) {
             progress = -progress;
@@ -1278,7 +1278,7 @@ bool func_800088D8(s32 playerId, s16 arg1, s16 arg2) {
         }
         return true;
     } else {
-        var_a1_4 = gLapProgressScore[(s16) *D_80163344] - gLapProgressScore[playerId];
+        var_a1_4 = gNumPathPointsTraversed[(s16) *D_80163344] - gNumPathPointsTraversed[playerId];
         if (var_a1_4 < 0) {
             var_a1_4 = -var_a1_4;
         }
@@ -1358,7 +1358,8 @@ void update_player_completion(s32 playerId) {
     f32 percent;
 
     // arbitrary score calculation
-    gLapProgressScore[playerId] = (gLapCountByPlayerId[playerId] * gPathCountByPathIndex[0]) + sSomeNearestPathPoint;
+    gNumPathPointsTraversed[playerId] =
+        (gLapCountByPlayerId[playerId] * gPathCountByPathIndex[0]) + sSomeNearestPathPoint;
 
     // calculate completion in percent
     percent = (f32) gNearestPathPointByPlayerId[playerId] / (f32) gPathCountByPathIndex[gPathIndexByPlayerId[playerId]];
@@ -1373,7 +1374,7 @@ void yoshi_valley_cpu_path(s32 playerId) {
     previous = gNeedToChoosePath[playerId];
     if (sSomeNearestPathPoint >= 0x6D) {
         gNeedToChoosePath[playerId] = true;
-        switch (gActualPath) {
+        switch (gPlayerPathIndex) {
             case 0:
                 if (sSomeNearestPathPoint >= 0x20F) {
                     gNeedToChoosePath[playerId] = false;
@@ -1414,15 +1415,15 @@ void update_cpu_path_completion(s32 playerId, Player* player) {
     posY = player->pos[1];
     posZ = player->pos[2];
     if (cpu_NeedChoosePath[playerId] == 1) {
-        gActualPath = update_player_path_selection(playerId, random_int(4U));
-        sSomeNearestPathPoint = update_player_path(posX, posY, posZ, 0, player, playerId, gActualPath);
+        gPlayerPathIndex = update_player_path_selection(playerId, random_int(4U));
+        sSomeNearestPathPoint = update_player_path(posX, posY, posZ, 0, player, playerId, gPlayerPathIndex);
         gNearestPathPointByPlayerId[playerId] = sSomeNearestPathPoint;
         update_player_completion(playerId);
         cpu_NeedChoosePath[playerId] = 0;
     }
     if (cpu_ResetPath[playerId] == 1) {
-        gActualPath = update_player_path_selection(playerId, 0);
-        sSomeNearestPathPoint = update_player_path(posX, posY, posZ, 0, player, playerId, gActualPath);
+        gPlayerPathIndex = update_player_path_selection(playerId, 0);
+        sSomeNearestPathPoint = update_player_path(posX, posY, posZ, 0, player, playerId, gPlayerPathIndex);
         gNearestPathPointByPlayerId[playerId] = sSomeNearestPathPoint;
         update_player_completion(playerId);
         cpu_ResetPath[playerId] = 0;
@@ -1457,7 +1458,7 @@ void update_player_path_completion(s32 playerId, Player* player) {
     gIsPlayerNewPathPoint = false;
     D_80163240[playerId] = 0;
     sSomeNearestPathPoint = update_player_path(playerX, playerY, playerZ, gNearestPathPointByPlayerId[playerId], player,
-                                               playerId, gActualPath);
+                                               playerId, gPlayerPathIndex);
     gCurrentNearestPathPoint = sSomeNearestPathPoint;
     if (gNearestPathPointByPlayerId[playerId] != sSomeNearestPathPoint) {
         gNearestPathPointByPlayerId[playerId] = sSomeNearestPathPoint;
@@ -1465,10 +1466,10 @@ void update_player_path_completion(s32 playerId, Player* player) {
         update_player_completion(playerId);
     }
     if (gCurrentCourseId == COURSE_AWARD_CEREMONY) {
-        update_player_position_factor(playerId, sSomeNearestPathPoint, gActualPath);
+        update_player_position_factor(playerId, sSomeNearestPathPoint, gPlayerPathIndex);
         return;
     }
-    if ((sSomeNearestPathPoint < 0x14) || ((gPathCountByPathIndex[gActualPath] - 0x14) < sSomeNearestPathPoint) ||
+    if ((sSomeNearestPathPoint < 0x14) || ((gPathCountByPathIndex[gPlayerPathIndex] - 0x14) < sSomeNearestPathPoint) ||
         (gCurrentCourseId == COURSE_KALAMARI_DESERT)) {
         var_v1 = 0;
         var_t0 = 0;
@@ -1536,15 +1537,15 @@ void update_player_path_completion(s32 playerId, Player* player) {
         detect_wrong_player_direction(playerId, player);
         if ((gModeSelection == 0) && (gPlayerCount == 2) && (playerId == 0)) {
             if (gGPCurrentRaceRankByPlayerIdDup[PLAYER_ONE] < gGPCurrentRaceRankByPlayerIdDup[PLAYER_TWO]) {
-                gPlayerInFront = PLAYER_ONE;
+                gBestRankedHumanPlayer = PLAYER_ONE;
             } else {
-                gPlayerInFront = PLAYER_TWO;
+                gBestRankedHumanPlayer = PLAYER_TWO;
             }
         }
     } else {
         //????
     }
-    update_player_position_factor(playerId, sSomeNearestPathPoint, gActualPath);
+    update_player_position_factor(playerId, sSomeNearestPathPoint, gPlayerPathIndex);
 }
 #else
 GLOBAL_ASM("asm/non_matchings/cpu_logic/update_player_path_completion.s")
@@ -1689,7 +1690,7 @@ void update_player(s32 playerId) {
             }
         }
         if (!(player->type & PLAYER_EXISTS)) {
-            gLapProgressScore[playerId] = -0x00000014;
+            gNumPathPointsTraversed[playerId] = -0x00000014;
             gCourseCompletionPercentByPlayerId[playerId] = -1000.0f;
             gLapCompletionPercentByPlayerId[playerId] = -1000.0f;
             return;
@@ -1709,8 +1710,8 @@ void update_player(s32 playerId) {
             D_801633E0[playerId] = 4;
         }
         if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8)) {
-            gActualPath = gPathIndexByPlayerId[playerId];
-            set_current_path(gActualPath);
+            gPlayerPathIndex = gPathIndexByPlayerId[playerId];
+            set_current_path(gPlayerPathIndex);
             switch (gCurrentCourseId) { /* irregular */
                 case COURSE_KALAMARI_DESERT:
                     handle_trains_interactions(playerId, player);
@@ -1765,12 +1766,13 @@ void update_player(s32 playerId) {
                     }
                     gPlayerTrackPositionFactorInstruction[playerId].unkC = 0.0f;
                 }
-                if (gActualPath > 0) {
+                if (gPlayerPathIndex > 0) {
                     gPlayerTrackPositionFactorInstruction[playerId].target = 0.0f;
                     gPlayerTrackPositionFactorInstruction[playerId].unkC = 0.0f;
                 }
                 // gNearestPathPointByPlayerId[playerId] might need to be saved to a temp
-                gPlayerPathY[playerId] = gTrackPath[gActualPath][gNearestPathPointByPlayerId[playerId]].posY + 4.3f;
+                gPlayerPathY[playerId] =
+                    gTrackPath[gPlayerPathIndex][gNearestPathPointByPlayerId[playerId]].posY + 4.3f;
                 if ((D_801631F8[playerId] == 1) && (D_801631E0[playerId] == false)) {
                     func_8002E4C4(player);
                 }
@@ -1818,18 +1820,19 @@ void update_player(s32 playerId) {
                     minAngle = gOffsetPosition[2] - player->pos[2];
                     if (!(player->effects & 0x80) && !(player->effects & 0x40) && !(player->effects & 0x800)) {
                         if (((distX * distX) + (minAngle * minAngle)) > 6400.0f) {
-                            if (gActualPath == 0) {
+                            if (gPlayerPathIndex == 0) {
                                 func_8000B140(playerId);
                                 if (D_80162FF8[playerId] > 0) {
                                     pathIndex = gCurrentNearestPathPoint + 5;
                                     pathIndex %= gSelectedPathCount;
-                                    set_track_offset_position(pathIndex, D_80163090[playerId], gActualPath);
+                                    set_track_offset_position(pathIndex, D_80163090[playerId], gPlayerPathIndex);
                                 }
                             }
                             player->rotation[1] = -get_angle_between_two_vectors(player->pos, gOffsetPosition);
                         } else {
                             player->rotation[1] =
-                                gPathExpectedRotation[gActualPath][(gCurrentNearestPathPoint + 4) % gSelectedPathCount];
+                                gPathExpectedRotation[gPlayerPathIndex]
+                                                     [(gCurrentNearestPathPoint + 4) % gSelectedPathCount];
                         }
                     }
                     apply_cpu_turn(player, 0);
@@ -1896,9 +1899,9 @@ void update_player(s32 playerId) {
                 gIsPlayerInCurve[playerId] = are_in_curse(playerId, sSomeNearestPathPoint);
                 determine_ideal_cpu_position_offset(playerId, sSomeNearestPathPoint);
                 if (gCurrentCourseId != COURSE_AWARD_CEREMONY) {
-                    if (gLapProgressScore[playerId] < 0xB) {
+                    if (gNumPathPointsTraversed[playerId] < 0xB) {
                         pathIndex = gCurrentNearestPathPoint;
-                        if ((gLapProgressScore[playerId] > 0) && (gCurrentCourseId == COURSE_TOADS_TURNPIKE)) {
+                        if ((gNumPathPointsTraversed[playerId] > 0) && (gCurrentCourseId == COURSE_TOADS_TURNPIKE)) {
                             pathIndex += 0x14;
                             pathIndex %= gSelectedPathCount;
                             set_track_offset_position(pathIndex, 0.0f, 0);
@@ -1906,16 +1909,16 @@ void update_player(s32 playerId) {
                         } else {
                             pathIndex += 8;
                             pathIndex %= gSelectedPathCount;
-                            set_track_offset_position(pathIndex, gTrackPositionFactor[playerId], gActualPath);
+                            set_track_offset_position(pathIndex, gTrackPositionFactor[playerId], gPlayerPathIndex);
                             gPlayerTrackPositionFactorInstruction[playerId].current = gTrackPositionFactor[playerId];
                         }
                     }
                     if ((D_80162FD0 == 1) && (D_80162FF8[playerId] == 0)) {
                         pathIndex = gCurrentNearestPathPoint + 7;
                         pathIndex %= gSelectedPathCount;
-                        set_track_offset_position(pathIndex, -0.7f, gActualPath);
+                        set_track_offset_position(pathIndex, -0.7f, gPlayerPathIndex);
                     }
-                    if (gActualPath == 0) {
+                    if (gPlayerPathIndex == 0) {
                         func_8000B140(playerId);
                         if (D_80162FF8[playerId] > 0) {
                             pathIndex = gCurrentNearestPathPoint + 5;
@@ -1928,7 +1931,7 @@ void update_player(s32 playerId) {
                             if (1) {}
 #endif
                             pathIndex %= gSelectedPathCount;
-                            set_track_offset_position(pathIndex, D_80163090[playerId], gActualPath);
+                            set_track_offset_position(pathIndex, D_80163090[playerId], gPlayerPathIndex);
                         }
                     }
                 }
@@ -2826,10 +2829,10 @@ void determine_ideal_cpu_position_offset(s32 playerId, u16 pathPoint) {
         gCurrentPlayerLookAhead[playerId]--;
     }
     pathPoint = (gCurrentPlayerLookAhead[playerId] + pathPoint) % gSelectedPathCount;
-    set_track_offset_position(pathPoint, sp2C, gActualPath);
+    set_track_offset_position(pathPoint, sp2C, gPlayerPathIndex);
     sp48 = gOffsetPosition[0];
     sp44 = gOffsetPosition[2];
-    set_track_offset_position(((pathPoint + 1) % gSelectedPathCount) & 0xFFFF, sp2C, gActualPath);
+    set_track_offset_position(((pathPoint + 1) % gSelectedPathCount) & 0xFFFF, sp2C, gPlayerPathIndex);
     stackPadding5 = gOffsetPosition[0];
     gOffsetPosition[0] = (sp48 + stackPadding5) * 0.5f;
     stackPadding4 = gOffsetPosition[2];
@@ -3648,7 +3651,7 @@ void init_players(void) {
         gIsPlayerWrongDirection[i] = 0;
         D_801631E0[i] = false;
         D_801631F8[i] = 0;
-        gLapProgressScore[i] = -20;
+        gNumPathPointsTraversed[i] = -20;
         gPreviousLapProgressScore[i] = -20;
         gCharacterPlayer[gPlayers[i].characterId] = (s16) i;
         gTrackPositionFactor[i] = 0.0f;
@@ -3745,7 +3748,7 @@ void init_players(void) {
     D_80164358 = 0;
     D_8016435A = 1;
     D_8016435C = 1;
-    gPlayerInFront = PLAYER_ONE;
+    gBestRankedHumanPlayer = PLAYER_ONE;
     gIncrementUpdatePlayer = 0;
     D_8016337C = 0;
     gPathStartZ = (f32) gTrackPath[0][0].posZ; // [i][2]
@@ -7294,7 +7297,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
         switch (temp_s0->branch) {
             case CPU_STRATEGY_WAIT_NEXT_ITEM:
                 temp_s0->actorIndex = -1;
-                if ((((playerId * 0x14) + 0x64) < gLapProgressScore[playerId]) && (temp_s0->timer >= 0x259) &&
+                if ((((playerId * 0x14) + 0x64) < gNumPathPointsTraversed[playerId]) && (temp_s0->timer >= 0x259) &&
                     (temp_s0->numItemUse < 3) && (gLapCountByPlayerId[playerId] < 3)) {
                     kart_ai_decisions_branch_item(playerId, &temp_s0->branch,
                                                   kart_ai_gen_random_item((s16) gLapCountByPlayerId[playerId],
@@ -7307,12 +7310,12 @@ void kart_ai_use_item_strategy(s32 playerId) {
             case CPU_STRATEGY_ITEM_BANANA:
                 // never true
                 if ((gLapCountByPlayerId[playerId] > 0) &&
-                    (gGPCurrentRaceRankByPlayerId[gPlayerInFront] > gGPCurrentRaceRankByPlayerId[playerId]) &&
-                    (gGPCurrentRaceRankByPlayerId[gPlayerInFront] == FIRST_PLACE)) {
+                    (gGPCurrentRaceRankByPlayerId[gBestRankedHumanPlayer] > gGPCurrentRaceRankByPlayerId[playerId]) &&
+                    (gGPCurrentRaceRankByPlayerId[gBestRankedHumanPlayer] == FIRST_PLACE)) {
                     switch (player->characterId) {
                         case DK:
                             if (is_path_point_in_range(gNearestPathPointByPlayerId[playerId],
-                                                       gNearestPathPointByPlayerId[gPlayerInFront], 0x0028U, 2U,
+                                                       gNearestPathPointByPlayerId[gBestRankedHumanPlayer], 0x0028U, 2U,
                                                        (u16) ((s32) gSelectedPathCount)) > 0) {
                                 temp_s0->branch = CPU_STRATEGY_THROW_BANANA;
                             }
@@ -7320,7 +7323,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
 
                         case PEACH:
                             if (is_path_point_in_range(gNearestPathPointByPlayerId[playerId],
-                                                       gNearestPathPointByPlayerId[gPlayerInFront], 4U, 2U,
+                                                       gNearestPathPointByPlayerId[gBestRankedHumanPlayer], 4U, 2U,
                                                        (u16) ((s32) gSelectedPathCount)) > 0) {
                                 temp_s0->branch = CPU_STRATEGY_THROW_BANANA;
                             }
@@ -7328,7 +7331,7 @@ void kart_ai_use_item_strategy(s32 playerId) {
 
                         default:
                             if (is_path_point_in_range(gNearestPathPointByPlayerId[playerId],
-                                                       gNearestPathPointByPlayerId[gPlayerInFront], 0x000AU, 2U,
+                                                       gNearestPathPointByPlayerId[gBestRankedHumanPlayer], 0x000AU, 2U,
                                                        (u16) ((s32) gSelectedPathCount)) > 0) {
                                 temp_s0->branch = CPU_STRATEGY_THROW_BANANA;
                             }
@@ -7393,8 +7396,8 @@ void kart_ai_use_item_strategy(s32 playerId) {
                     temp_s0->timer = 0;
                     temp_s0->numItemUse += 1;
                     pathPoint = &gTrackPath[gPathIndexByPlayerId[0]]
-                                           [(gNearestPathPointByPlayerId[gPlayerInFront] + 0x1E) %
-                                            gPathCountByPathIndex[gPathIndexByPlayerId[gPlayerInFront]]];
+                                           [(gNearestPathPointByPlayerId[gBestRankedHumanPlayer] + 0x1E) %
+                                            gPathCountByPathIndex[gPathIndexByPlayerId[gBestRankedHumanPlayer]]];
                     banana->velocity[0] = (pathPoint->posX - player->pos[0]) / 20.0;
                     banana->velocity[1] = ((pathPoint->posY - player->pos[1]) / 20.0) + 4.0;
                     banana->velocity[2] = (pathPoint->posZ - player->pos[2]) / 20.0;

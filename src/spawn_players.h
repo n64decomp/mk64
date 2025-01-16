@@ -50,7 +50,7 @@ extern s32 gFrameSinceLastBCombo[];
 extern s32 gCountBChangement[];
 extern bool gIsPlayerTripleBButtonCombo[];
 extern s32 gTimerBoostTripleBCombo[];
-extern s16 chooseCPUPlayers[];
+extern s16 cpu_chooseCharacters[];
 extern s16 D_8016556E;
 extern s16 D_80165570;
 extern s16 D_80165572;

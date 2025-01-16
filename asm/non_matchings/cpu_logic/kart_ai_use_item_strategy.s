@@ -65,12 +65,12 @@ glabel L8001ACAC
 /* 01B8AC 8001ACAC 2405FFFF */  li    $a1, -1
 /* 01B8B0 8001ACB0 A6050002 */  sh    $a1, 2($s0)
 /* 01B8B4 8001ACB4 8FAD0030 */  lw    $t5, 0x30($sp)
-/* 01B8B8 8001ACB8 3C0E8016 */  lui   $t6, %hi(gLapProgressScore) # 0x8016
+/* 01B8B8 8001ACB8 3C0E8016 */  lui   $t6, %hi(gNumPathPointsTraversed) # 0x8016
 /* 01B8BC 8001ACBC 8FA40030 */  lw    $a0, 0x30($sp)
 /* 01B8C0 8001ACC0 000D1080 */  sll   $v0, $t5, 2
 /* 01B8C4 8001ACC4 01C27021 */  addu  $t6, $t6, $v0
 /* 01B8C8 8001ACC8 000D7880 */  sll   $t7, $t5, 2
-/* 01B8CC 8001ACCC 8DCE4450 */  lw    $t6, %lo(gLapProgressScore)($t6) # 0x4450($t6)
+/* 01B8CC 8001ACCC 8DCE4450 */  lw    $t6, %lo(gNumPathPointsTraversed)($t6) # 0x4450($t6)
 /* 01B8D0 8001ACD0 01ED7821 */  addu  $t7, $t7, $t5
 /* 01B8D4 8001ACD4 000F7880 */  sll   $t7, $t7, 2
 /* 01B8D8 8001ACD8 25F80064 */  addiu $t8, $t7, 0x64
@@ -118,10 +118,10 @@ glabel L8001AD64
 /* 01B974 8001AD74 01CF7021 */  addu  $t6, $t6, $t7
 /* 01B978 8001AD78 8DCE4390 */  lw    $t6, %lo(gLapCountByPlayerId)($t6) # 0x4390($t6)
 /* 01B97C 8001AD7C 24C643B8 */  addiu $a2, %lo(gGPCurrentRaceRankByPlayerId) # addiu $a2, $a2, 0x43b8
-/* 01B980 8001AD80 3C038016 */  lui   $v1, %hi(gPlayerInFront) # $v1, 0x8016
+/* 01B980 8001AD80 3C038016 */  lui   $v1, %hi(gBestRankedHumanPlayer) # $v1, 0x8016
 /* 01B984 8001AD84 19C0004B */  blez  $t6, .L8001AEB4
 /* 01B988 8001AD88 00000000 */   nop
-/* 01B98C 8001AD8C 84633478 */  lh    $v1, %lo(gPlayerInFront)($v1)
+/* 01B98C 8001AD8C 84633478 */  lh    $v1, %lo(gBestRankedHumanPlayer)($v1)
 /* 01B990 8001AD90 00CF5821 */  addu  $t3, $a2, $t7
 /* 01B994 8001AD94 8D6C0000 */  lw    $t4, ($t3)
 /* 01B998 8001AD98 0003C080 */  sll   $t8, $v1, 2
@@ -381,8 +381,8 @@ glabel L8001B0EC
 /* 01BD58 8001B158 A6000004 */  sh    $zero, 4($s0)
 /* 01BD5C 8001B15C 272B0001 */  addiu $t3, $t9, 1
 /* 01BD60 8001B160 A60B0006 */  sh    $t3, 6($s0)
-/* 01BD64 8001B164 3C068016 */  lui   $a2, %hi(gPlayerInFront) # $a2, 0x8016
-/* 01BD68 8001B168 84C63478 */  lh    $a2, %lo(gPlayerInFront)($a2)
+/* 01BD64 8001B164 3C068016 */  lui   $a2, %hi(gBestRankedHumanPlayer) # $a2, 0x8016
+/* 01BD68 8001B168 84C63478 */  lh    $a2, %lo(gBestRankedHumanPlayer)($a2)
 /* 01BD6C 8001B16C 25084438 */  addiu $t0, %lo(gNearestPathPointByPlayerId) # addiu $t0, $t0, 0x4438
 /* 01BD70 8001B170 3C098016 */  lui   $t1, %hi(gPathIndexByPlayerId) # $t1, 0x8016
 /* 01BD74 8001B174 00067840 */  sll   $t7, $a2, 1

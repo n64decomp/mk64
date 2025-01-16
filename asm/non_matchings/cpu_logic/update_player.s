@@ -76,10 +76,10 @@ glabel update_player
 /* 00A820 80009C20 00053040 */   sll   $a2, $a1, 1
 /* 00A824 80009C24 3C01C47A */  li    $at, 0xC47A0000 # -1000.000000
 /* 00A828 80009C28 44810000 */  mtc1  $at, $f0
-/* 00A82C 80009C2C 3C018016 */  lui   $at, %hi(gLapProgressScore) # 0x8016
+/* 00A82C 80009C2C 3C018016 */  lui   $at, %hi(gNumPathPointsTraversed) # 0x8016
 /* 00A830 80009C30 00270821 */  addu  $at, $at, $a3
 /* 00A834 80009C34 240FFFEC */  li    $t7, -20
-/* 00A838 80009C38 AC2F4450 */  sw    $t7, %lo(gLapProgressScore)($at) # 0x4450($at)
+/* 00A838 80009C38 AC2F4450 */  sw    $t7, %lo(gNumPathPointsTraversed)($at) # 0x4450($at)
 /* 00A83C 80009C3C 3C018016 */  lui   $at, %hi(gCourseCompletionPercentByPlayerId)
 /* 00A840 80009C40 00270821 */  addu  $at, $at, $a3
 /* 00A844 80009C44 E42044D0 */  swc1  $f0, %lo(gCourseCompletionPercentByPlayerId)($at)
@@ -146,11 +146,11 @@ glabel update_player
 /* 00A924 80009D24 17200502 */  bnez  $t9, .L8000B130
 /* 00A928 80009D28 304A0008 */   andi  $t2, $v0, 8
 /* 00A92C 80009D2C 15400500 */  bnez  $t2, .L8000B130
-/* 00A930 80009D30 3C028016 */   lui   $v0, %hi(gActualPath) # $v0, 0x8016
+/* 00A930 80009D30 3C028016 */   lui   $v0, %hi(gPlayerPathIndex) # $v0, 0x8016
 /* 00A934 80009D34 3C0B8016 */  lui   $t3, %hi(gPathIndexByPlayerId) # 0x8016
 /* 00A938 80009D38 01665821 */  addu  $t3, $t3, $a2
 /* 00A93C 80009D3C 956445B0 */  lhu   $a0, %lo(gPathIndexByPlayerId)($t3) # 0x45b0($t3)
-/* 00A940 80009D40 24423448 */  addiu $v0, %lo(gActualPath) # addiu $v0, $v0, 0x3448
+/* 00A940 80009D40 24423448 */  addiu $v0, %lo(gPlayerPathIndex) # addiu $v0, $v0, 0x3448
 /* 00A944 80009D44 AFA30040 */  sw    $v1, 0x40($sp)
 /* 00A948 80009D48 AFA500D0 */  sw    $a1, 0xd0($sp)
 /* 00A94C 80009D4C AFA60034 */  sw    $a2, 0x34($sp)
@@ -328,8 +328,8 @@ glabel update_player
 /* 00ABBC 80009FBC 002F0821 */  addu  $at, $at, $t7
 /* 00ABC0 80009FC0 E4323504 */  swc1  $f18, %lo(gPlayerTrackPositionFactorInstruction + 12)($at)
 .L80009FC4:
-/* 00ABC4 80009FC4 3C028016 */  lui   $v0, %hi(gActualPath) # $v0, 0x8016
-/* 00ABC8 80009FC8 8C423448 */  lw    $v0, %lo(gActualPath)($v0)
+/* 00ABC4 80009FC4 3C028016 */  lui   $v0, %hi(gPlayerPathIndex) # $v0, 0x8016
+/* 00ABC8 80009FC8 8C423448 */  lw    $v0, %lo(gPlayerPathIndex)($v0)
 /* 00ABCC 80009FCC 3C0A8016 */  lui   $t2, %hi(gPlayerPathY) # $t2, 0x8016
 /* 00ABD0 80009FD0 254A4510 */  addiu $t2, %lo(gPlayerPathY) # addiu $t2, $t2, 0x4510
 /* 00ABD4 80009FD4 1840000A */  blez  $v0, .L8000A000
@@ -592,15 +592,15 @@ glabel update_player
 /* 00AFA4 8000A3A4 46021182 */  mul.s $f6, $f2, $f2
 /* 00AFA8 8000A3A8 3C0B8016 */  lui   $t3, %hi(gCurrentNearestPathPoint) # 0x8016
 /* 00AFAC 8000A3AC 3C0C8016 */  lui   $t4, %hi(gSelectedPathCount) # $t4, 0x8016
-/* 00AFB0 8000A3B0 3C198016 */  lui   $t9, %hi(gActualPath) # 0x8016
+/* 00AFB0 8000A3B0 3C198016 */  lui   $t9, %hi(gPlayerPathIndex) # 0x8016
 /* 00AFB4 8000A3B4 3C0F8016 */  lui   $t7, %hi(gPathExpectedRotation) # 0x8016
 /* 00AFB8 8000A3B8 46062200 */  add.s $f8, $f4, $f6
 /* 00AFBC 8000A3BC 4608903C */  c.lt.s $f18, $f8
 /* 00AFC0 8000A3C0 00000000 */  nop
 /* 00AFC4 8000A3C4 45000039 */  bc1f  .L8000A4AC
 /* 00AFC8 8000A3C8 00000000 */   nop
-/* 00AFCC 8000A3CC 3C0F8016 */  lui   $t7, %hi(gActualPath) # $t7, 0x8016
-/* 00AFD0 8000A3D0 8DEF3448 */  lw    $t7, %lo(gActualPath)($t7)
+/* 00AFCC 8000A3CC 3C0F8016 */  lui   $t7, %hi(gPlayerPathIndex) # $t7, 0x8016
+/* 00AFD0 8000A3D0 8DEF3448 */  lw    $t7, %lo(gPlayerPathIndex)($t7)
 /* 00AFD4 8000A3D4 8FA400D0 */  lw    $a0, 0xd0($sp)
 /* 00AFD8 8000A3D8 55E0002B */  bnel  $t7, $zero, .L8000A488
 /* 00AFDC 8000A3DC 8FA60040 */   lw    $a2, 0x40($sp)
@@ -637,11 +637,11 @@ glabel update_player
 /* 00B050 8000A450 00002010 */  mfhi  $a0
 /* 00B054 8000A454 3C058016 */  lui   $a1, %hi(D_80163090) # 0x8016
 /* 00B058 8000A458 308AFFFF */  andi  $t2, $a0, 0xffff
-/* 00B05C 8000A45C 3C068016 */  lui   $a2, %hi(gActualPath + 2) # $a2, 0x8016
+/* 00B05C 8000A45C 3C068016 */  lui   $a2, %hi(gPlayerPathIndex + 2) # $a2, 0x8016
 /* 00B060 8000A460 00B92821 */  addu  $a1, $a1, $t9
 /* 00B064 8000A464 01402025 */  move  $a0, $t2
 /* 00B068 8000A468 8CA53090 */  lw    $a1, %lo(D_80163090)($a1) # 0x3090($a1)
-/* 00B06C 8000A46C 84C6344A */  lh    $a2, %lo(gActualPath + 2)($a2)
+/* 00B06C 8000A46C 84C6344A */  lh    $a2, %lo(gPlayerPathIndex + 2)($a2)
 /* 00B070 8000A470 0C002EF6 */  jal   set_track_offset_position
 /* 00B074 8000A474 AFA8003C */   sw    $t0, 0x3c($sp)
 /* 00B078 8000A478 3C078016 */  lui   $a3, %hi(gOffsetPosition) # $a3, 0x8016
@@ -662,7 +662,7 @@ glabel update_player
 .L8000A4AC:
 /* 00B0AC 8000A4AC 956B30E0 */  lhu   $t3, %lo(gCurrentNearestPathPoint)($t3) # 0x30e0($t3)
 /* 00B0B0 8000A4B0 958C4430 */  lhu   $t4, %lo(gSelectedPathCount)($t4)
-/* 00B0B4 8000A4B4 8F393448 */  lw    $t9, %lo(gActualPath)($t9) # 0x3448($t9)
+/* 00B0B4 8000A4B4 8F393448 */  lw    $t9, %lo(gPlayerPathIndex)($t9) # 0x3448($t9)
 /* 00B0B8 8000A4B8 256E0004 */  addiu $t6, $t3, 4
 /* 00B0BC 8000A4BC 01CC001A */  div   $zero, $t6, $t4
 /* 00B0C0 8000A4C0 00196880 */  sll   $t5, $t9, 2
@@ -914,9 +914,9 @@ glabel update_player
 /* 00B438 8000A838 8FA90038 */  lw    $t1, 0x38($sp)
 /* 00B43C 8000A83C 10410099 */  beq   $v0, $at, .L8000AAA4
 /* 00B440 8000A840 00000000 */   nop
-/* 00B444 8000A844 3C058016 */  lui   $a1, %hi(gLapProgressScore) # 0x8016
+/* 00B444 8000A844 3C058016 */  lui   $a1, %hi(gNumPathPointsTraversed) # 0x8016
 /* 00B448 8000A848 00A92821 */  addu  $a1, $a1, $t1
-/* 00B44C 8000A84C 8CA54450 */  lw    $a1, %lo(gLapProgressScore)($a1) # 0x4450($a1)
+/* 00B44C 8000A84C 8CA54450 */  lw    $a1, %lo(gNumPathPointsTraversed)($a1) # 0x4450($a1)
 /* 00B450 8000A850 3C198016 */  lui   $t9, %hi(gPlayerTrackPositionFactorInstruction) # $t9, 0x8016
 /* 00B454 8000A854 273934F8 */  addiu $t9, %lo(gPlayerTrackPositionFactorInstruction) # addiu $t9, $t9, 0x34f8
 /* 00B458 8000A858 28A1000B */  slti  $at, $a1, 0xb
@@ -984,9 +984,9 @@ glabel update_player
 /* 00B538 8000A938 27183068 */  addiu $t8, %lo(gTrackPositionFactor) # addiu $t8, $t8, 0x3068
 /* 00B53C 8000A93C 308CFFFF */  andi  $t4, $a0, 0xffff
 /* 00B540 8000A940 01384021 */  addu  $t0, $t1, $t8
-/* 00B544 8000A944 3C068016 */  lui   $a2, %hi(gActualPath + 2) # $a2, 0x8016
+/* 00B544 8000A944 3C068016 */  lui   $a2, %hi(gPlayerPathIndex + 2) # $a2, 0x8016
 /* 00B548 8000A948 01802025 */  move  $a0, $t4
-/* 00B54C 8000A94C 84C6344A */  lh    $a2, %lo(gActualPath + 2)($a2)
+/* 00B54C 8000A94C 84C6344A */  lh    $a2, %lo(gPlayerPathIndex + 2)($a2)
 /* 00B550 8000A950 8D050000 */  lw    $a1, ($t0)
 /* 00B554 8000A954 AFA80020 */  sw    $t0, 0x20($sp)
 /* 00B558 8000A958 0C002EF6 */  jal   set_track_offset_position
@@ -1029,14 +1029,14 @@ glabel update_player
 .L8000A9E4:
 /* 00B5E4 8000A9E4 00002010 */  mfhi  $a0
 /* 00B5E8 8000A9E8 308BFFFF */  andi  $t3, $a0, 0xffff
-/* 00B5EC 8000A9EC 3C068016 */  lui   $a2, %hi(gActualPath + 2) # $a2, 0x8016
+/* 00B5EC 8000A9EC 3C068016 */  lui   $a2, %hi(gPlayerPathIndex + 2) # $a2, 0x8016
 /* 00B5F0 8000A9F0 01602025 */  move  $a0, $t3
-/* 00B5F4 8000A9F4 84C6344A */  lh    $a2, %lo(gActualPath + 2)($a2)
+/* 00B5F4 8000A9F4 84C6344A */  lh    $a2, %lo(gPlayerPathIndex + 2)($a2)
 /* 00B5F8 8000A9F8 0C002EF6 */  jal   set_track_offset_position
 /* 00B5FC 8000A9FC 34A53333 */   ori   $a1, (0xBF333333 & 0xFFFF) # ori $a1, $a1, 0x3333
 .L8000AA00:
-/* 00B600 8000AA00 3C0C8016 */  lui   $t4, %hi(gActualPath) # $t4, 0x8016
-/* 00B604 8000AA04 8D8C3448 */  lw    $t4, %lo(gActualPath)($t4)
+/* 00B600 8000AA00 3C0C8016 */  lui   $t4, %hi(gPlayerPathIndex) # $t4, 0x8016
+/* 00B604 8000AA04 8D8C3448 */  lw    $t4, %lo(gPlayerPathIndex)($t4)
 /* 00B608 8000AA08 3C198016 */  lui   $t9, %hi(D_80162FF8) # $t9, 0x8016
 /* 00B60C 8000AA0C 27392FF8 */  addiu $t9, %lo(D_80162FF8) # addiu $t9, $t9, 0x2ff8
 /* 00B610 8000AA10 15800024 */  bnez  $t4, .L8000AAA4
@@ -1073,9 +1073,9 @@ glabel update_player
 /* 00B684 8000AA84 00002010 */  mfhi  $a0
 /* 00B688 8000AA88 308CFFFF */  andi  $t4, $a0, 0xffff
 /* 00B68C 8000AA8C 00B82821 */  addu  $a1, $a1, $t8
-/* 00B690 8000AA90 3C068016 */  lui   $a2, %hi(gActualPath + 2) # $a2, 0x8016
+/* 00B690 8000AA90 3C068016 */  lui   $a2, %hi(gPlayerPathIndex + 2) # $a2, 0x8016
 /* 00B694 8000AA94 01802025 */  move  $a0, $t4
-/* 00B698 8000AA98 84C6344A */  lh    $a2, %lo(gActualPath + 2)($a2)
+/* 00B698 8000AA98 84C6344A */  lh    $a2, %lo(gPlayerPathIndex + 2)($a2)
 /* 00B69C 8000AA9C 0C002EF6 */  jal   set_track_offset_position
 /* 00B6A0 8000AAA0 8CA53090 */   lw    $a1, %lo(D_80163090)($a1) # 0x3090($a1)
 .L8000AAA4:

@@ -48,7 +48,7 @@ extern s16* gTrackConsecutiveCurveCounts[];
 // Shadows values from gNearestPathPointByPlayerId
 extern s16 sSomeNearestPathPoint;
 // Shadows values from gPathIndexByPlayerId
-extern s32 gActualPath;
+extern s32 gPlayerPathIndex;
 // Shadows values from gTrackInnerPath
 extern TrackPathPoint* gCurrentTrackInnerPath;
 // Shadows values from gCurrentTrackOuterPath
@@ -66,7 +66,7 @@ extern s16* gCurrentTrackConsecutiveCurveCountsPath;
 
 extern u16 gNearestPathPointByPlayerId[]; // D_80164438
 // Total path passed by playerId?
-extern s32 gLapProgressScore[];
+extern s32 gNumPathPointsTraversed[];
 extern u16 gPathIndexByPlayerId[];  // D_801645B0
 extern u16 gPathCountByPathIndex[]; // D_801645C8
 // These values are only used when the camera is in "cinematic" mode
