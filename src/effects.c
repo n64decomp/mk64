@@ -8,7 +8,7 @@
 #include "math_util.h"
 #include "kart_attributes.h"
 #include "path.h"
-#include "cpu_logic.h"
+#include "cpu_vehicles_camera_path.h"
 #include "render_player.h"
 #include "player_controller.h"
 #include "render_objects.h"
@@ -309,7 +309,7 @@ void func_8008C8C4(Player* player, s8 playerId) {
     if ((gIsPlayerTripleAButtonCombo[playerId] == true) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN)) {
         player->currentSpeed = (f32) (player->currentSpeed + 100.0f);
     }
-    if ((gModeSelection == VERSUS) && ((player->type & PLAYER_KART_AI) == PLAYER_KART_AI) && (!gDemoMode) &&
+    if ((gModeSelection == VERSUS) && ((player->type & PLAYER_CPU) == PLAYER_CPU) && (!gDemoMode) &&
         ((player->unk_0CA & 2) == 0) && (gGPCurrentRaceRankByPlayerId[playerId] != 0)) {
         player->soundEffects = (s32) (player->soundEffects | REVERSE_SOUND_EFFECT);
     }
@@ -1010,14 +1010,14 @@ void apply_reverse_sound_effect(Player* player, s8 arg1) {
 
     if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
-        if (((gModeSelection == VERSUS) && ((player->type & PLAYER_KART_AI) != 0)) && (!gDemoMode)) {
+        if (((gModeSelection == VERSUS) && ((player->type & PLAYER_CPU) != 0)) && (!gDemoMode)) {
             func_800CA24C(arg1);
         }
 
         if (1) {}
 
         func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008005);
-        if (((gModeSelection == VERSUS) && ((player->type & PLAYER_KART_AI) != 0)) && (!gDemoMode)) {
+        if (((gModeSelection == VERSUS) && ((player->type & PLAYER_CPU) != 0)) && (!gDemoMode)) {
             func_800CA24C(arg1);
         }
         func_800C9060(arg1, SOUND_ACTION_EXPLOSION);
@@ -1702,13 +1702,13 @@ void func_80090178(Player* player, s8 playerId, Vec3f arg2, Vec3f arg3) {
     switch (gCurrentCourseId) {
         case COURSE_YOSHI_VALLEY:
             test = player->nearestPathPointId;
-            temp_v1 = &gTrackPath[gCopyPathIndexByPlayerId[playerId]][test];
+            temp_v1 = &gTrackPaths[gCopyPathIndexByPlayerId[playerId]][test];
             arg2[0] = temp_v1->posX;
             arg2[1] = temp_v1->posY;
             arg2[2] = temp_v1->posZ;
-            temp_v1 = &gTrackPath[gCopyPathIndexByPlayerId[playerId]]
-                                 [(player->nearestPathPointId + 5) %
-                                  (gPathCountByPathIndex[gCopyPathIndexByPlayerId[playerId]] + 1)];
+            temp_v1 = &gTrackPaths[gCopyPathIndexByPlayerId[playerId]]
+                                  [(player->nearestPathPointId + 5) %
+                                   (gPathCountByPathIndex[gCopyPathIndexByPlayerId[playerId]] + 1)];
             arg3[0] = temp_v1->posX;
             arg3[1] = temp_v1->posY;
             arg3[2] = temp_v1->posZ;
@@ -1747,11 +1747,11 @@ void func_80090178(Player* player, s8 playerId, Vec3f arg2, Vec3f arg3) {
             break;
         default:
             test = player->nearestPathPointId;
-            temp_v1 = &gTrackPath[0][test];
+            temp_v1 = &gTrackPaths[0][test];
             arg2[0] = temp_v1->posX;
             arg2[1] = temp_v1->posY;
             arg2[2] = temp_v1->posZ;
-            temp_v1 = &gTrackPath[0][(player->nearestPathPointId + 5) % (gPathCountByPathIndex[0] + 1)];
+            temp_v1 = &gTrackPaths[0][(player->nearestPathPointId + 5) % (gPathCountByPathIndex[0] + 1)];
             arg3[0] = temp_v1->posX;
             arg3[1] = temp_v1->posY;
             arg3[2] = temp_v1->posZ;
@@ -1867,7 +1867,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
             }
             break;
         case 1:
-            if (((player->type & PLAYER_HUMAN) == 0x4000) && ((player->type & PLAYER_KART_AI) == 0)) {
+            if (((player->type & PLAYER_HUMAN) == 0x4000) && ((player->type & PLAYER_CPU) == 0)) {
                 func_8009E088(playerId, 0xA);
             }
             if ((player->unk_0CA & 1) == 1) {
@@ -1899,7 +1899,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
             break;
         case 3:
             D_80165330[playerId] = 0;
-            if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_KART_AI) == 0)) {
+            if (((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) && ((player->type & PLAYER_CPU) == 0)) {
                 func_8009E020(playerId, 0x14);
             }
             func_80090178(player, playerId, sp44, sp38);
@@ -1922,7 +1922,7 @@ void func_80090970(Player* player, s8 playerId, s8 arg2) {
                 player->pos[0] = player->pos[0] + sins(-player->rotation[1]) * -10.0f;
             }
             if (player->unk_0C8 == 0x00FC) {
-                pathPoint = gTrackPath[0];
+                pathPoint = gTrackPaths[0];
                 player->pos[0] = pathPoint->posX;
                 player->pos[1] = pathPoint->posY;
                 player->pos[2] = pathPoint->posZ;

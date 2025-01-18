@@ -74,13 +74,13 @@
 #define PLAYER_STAGING (1 << 9)           // 0x0200
 #define PLAYER_UNKNOWN (1 << 10)          // 0x0400 // unused ?
 #define PLAYER_CINEMATIC_MODE (1 << 11)   // 0x0800 // Also used to track eliminations in Battle mode.
-#define PLAYER_KART_AI (1 << 12)          // 0x1000
+#define PLAYER_CPU (1 << 12)              // 0x1000
 #define PLAYER_START_SEQUENCE (1 << 13)   // 0x2000
 #define PLAYER_HUMAN (1 << 14)            // 0x4000
 #define PLAYER_EXISTS (1 << 15)           // 0x8000
 
 // Compiles to -0x1000 in diff.py
-#define PLAYER_HUMAN_AND_KART_AI PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_KART_AI | PLAYER_START_SEQUENCE
+#define PLAYER_HUMAN_AND_cpu PLAYER_EXISTS | PLAYER_HUMAN | PLAYER_CPU | PLAYER_START_SEQUENCE
 
 #define ZERO_PLAYERS_SELECTED 0
 #define ONE_PLAYERS_SELECTED 1
@@ -273,7 +273,7 @@ enum ITEMS {
     /* 0x0F */ ITEM_SUPER_MUSHROOM
 };
 
-enum KART_AI_BEHAVIOURS {
+enum cpu_BEHAVIOURS {
     BEHAVIOUR_NONE = 0,
     BEHAVIOUR_1,
     BEHAVIOUR_HOP,

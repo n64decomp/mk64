@@ -18,7 +18,7 @@
 #include <defines.h>
 #include "math_util.h"
 #include "math_util_2.h"
-#include "cpu_logic.h"
+#include "cpu_vehicles_camera_path.h"
 #include "render_player.h"
 #include "render_objects.h"
 #include "code_8006E9C0.h"
@@ -785,7 +785,7 @@ void render_object_for_player(s32 cameraId) {
     render_object_leaf_particle(cameraId);
 
     if (D_80165730 != 0) {
-        func_80053E6C(cameraId);
+        render_object_balloon(cameraId);
     }
     if (gModeSelection == BATTLE) {
         render_object_bomb_kart(cameraId);

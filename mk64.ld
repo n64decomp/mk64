@@ -52,7 +52,7 @@ SECTIONS
       BUILD_DIR/src/animation.o(.text*);
       BUILD_DIR/src/staff_ghosts.o(.text*);
       BUILD_DIR/asm/unused_overflow_check.o(.text);
-      BUILD_DIR/src/cpu_logic.jp.o(.text*);
+      BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.text*);
       BUILD_DIR/src/camera.o(.text*);
       BUILD_DIR/src/render_player.o(.text*);
       BUILD_DIR/src/kart_dma.o(.text*);
@@ -269,7 +269,7 @@ SECTIONS
       BUILD_DIR/src/main.o(.rodata*);
       BUILD_DIR/src/animation.o(.rodata*);
       BUILD_DIR/src/code_800029B0.o(.rodata*);
-      BUILD_DIR/src/cpu_logic.jp.o(.rodata*);
+      BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.rodata*);
       BUILD_DIR/src/camera.o(.rodata*);
       BUILD_DIR/src/render_player.o(.rodata*);
       BUILD_DIR/src/player_controller.o(.rodata*);
@@ -328,7 +328,7 @@ SECTIONS
       BUILD_DIR/src/crash_screen.o(.bss*);
       BUILD_DIR/src/animation.o(.bss*);
       BUILD_DIR/src/staff_ghosts.o(.bss*);
-      BUILD_DIR/src/cpu_logic.jp.o(.bss*);
+      BUILD_DIR/src/cpu_vehicles_camera_path.jp.o(.bss*);
       BUILD_DIR/src/camera.o(.bss*);
       BUILD_DIR/src/render_player.o(.bss*);
       BUILD_DIR/src/spawn_players.o(.bss*);

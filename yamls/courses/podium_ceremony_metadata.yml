@@ -7,9 +7,9 @@ course:
   cup: null
   cup_index: -1
   course_length: null
-  kart_ai_behaviour_ptr: D_0D008F18
-  kart_ai_maximum_separation: 40.0f # entry
-  kart_ai_minimum_separation: 0.5f # entry
+  cpu_behaviour_ptr: D_0D008F18
+  cpu_maximum_separation: 40.0f # entry
+  cpu_minimum_separation: 0.5f # entry
   D_800DCBB4: D_800DCAF4
   cpu_steering_sensitivity: 53 # entry
   bomb_kart_spawns: # 7 bomb kart spawn locations

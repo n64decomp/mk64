@@ -7,9 +7,9 @@ course:
   cup: SPECIAL_CUP
   cup_index: 0
   course_length: 893m
-  kart_ai_behaviour_ptr: D_0D0093C0
-  kart_ai_maximum_separation: 40.0f
-  kart_ai_minimum_separation: 0.1f
+  cpu_behaviour_ptr: D_0D0093C0
+  cpu_maximum_separation: 40.0f
+  cpu_minimum_separation: 0.1f
   D_800DCBB4: D_800DCAF4
   cpu_steering_sensitivity: 53
   bomb_kart_spawns: # 7 bomb kart spawn locations

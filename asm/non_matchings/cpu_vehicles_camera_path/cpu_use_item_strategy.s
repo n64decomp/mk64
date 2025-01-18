@@ -21,7 +21,7 @@ glabel jpt_800ED4A0
 
 .section .text
 
-glabel kart_ai_use_item_strategy
+glabel cpu_use_item_strategy
 /* 01B810 8001AC10 000478C0 */  sll   $t7, $a0, 3
 /* 01B814 8001AC14 01E47823 */  subu  $t7, $t7, $a0
 /* 01B818 8001AC18 000F7900 */  sll   $t7, $t7, 4
@@ -96,11 +96,11 @@ glabel L8001ACAC
 /* 01B928 8001AD28 00032400 */  sll   $a0, $v1, 0x10
 /* 01B92C 8001AD2C 00046403 */  sra   $t4, $a0, 0x10
 /* 01B930 8001AD30 01802025 */  move  $a0, $t4
-/* 01B934 8001AD34 0C01EBDE */  jal   kart_ai_gen_random_item
+/* 01B934 8001AD34 0C01EBDE */  jal   cpu_gen_random_item
 /* 01B938 8001AD38 85A50002 */   lh    $a1, 2($t5)
 /* 01B93C 8001AD3C 8FA40030 */  lw    $a0, 0x30($sp)
 /* 01B940 8001AD40 02002825 */  move  $a1, $s0
-/* 01B944 8001AD44 0C006ADD */  jal   kart_ai_decisions_branch_item
+/* 01B944 8001AD44 0C006ADD */  jal   cpu_decisions_branch_item
 /* 01B948 8001AD48 00403025 */   move  $a2, $v0
 /* 01B94C 8001AD4C 10000003 */  b     .L8001AD5C
 /* 01B950 8001AD50 00000000 */   nop
@@ -398,11 +398,11 @@ glabel L8001B0EC
 /* 01BD9C 8001B19C 01EB7821 */  addu  $t7, $t7, $t3
 /* 01BDA0 8001B1A0 95EF45C8 */  lhu   $t7, %lo(gPathCountByPathIndex)($t7) # 0x45c8($t7)
 /* 01BDA4 8001B1A4 952D0000 */  lhu   $t5, ($t1)
-/* 01BDA8 8001B1A8 3C0B8016 */  lui   $t3, %hi(gTrackPath) # 0x8016
+/* 01BDA8 8001B1A8 3C0B8016 */  lui   $t3, %hi(gTrackPaths) # 0x8016
 /* 01BDAC 8001B1AC 018F001A */  div   $zero, $t4, $t7
 /* 01BDB0 8001B1B0 000DC880 */  sll   $t9, $t5, 2
 /* 01BDB4 8001B1B4 01795821 */  addu  $t3, $t3, $t9
-/* 01BDB8 8001B1B8 8D6B4550 */  lw    $t3, %lo(gTrackPath)($t3) # 0x4550($t3)
+/* 01BDB8 8001B1B8 8D6B4550 */  lw    $t3, %lo(gTrackPaths)($t3) # 0x4550($t3)
 /* 01BDBC 8001B1BC 00007010 */  mfhi  $t6
 /* 01BDC0 8001B1C0 000EC0C0 */  sll   $t8, $t6, 3
 /* 01BDC4 8001B1C4 030B1021 */  addu  $v0, $t8, $t3
@@ -782,7 +782,7 @@ glabel L8001B6AC
 /* 01C330 8001B730 100001C0 */  b     .L8001BE34
 /* 01C334 8001B734 86020004 */   lh    $v0, 4($s0)
 glabel L8001B738
-/* 01C338 8001B738 0C006AFB */  jal   reset_strategy_if_actor_valid
+/* 01C338 8001B738 0C006AFB */  jal   clear_expired_strategies
 /* 01C33C 8001B73C 02002025 */   move  $a0, $s0
 /* 01C340 8001B740 860D0002 */  lh    $t5, 2($s0)
 /* 01C344 8001B744 3C0F8016 */  lui   $t7, %hi(gActorList) # $t7, 0x8016

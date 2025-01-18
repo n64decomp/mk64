@@ -201,9 +201,9 @@ glabel func_80017054
 /* 017F20 80017320 8FAC005C */  lw    $t4, 0x5c($sp)
 /* 017F24 80017324 000D7403 */  sra   $t6, $t5, 0x10
 /* 017F28 80017328 01C01025 */  move  $v0, $t6
-/* 017F2C 8001732C 3C0E8016 */  lui   $t6, %hi(gTrackPath) # $t6, 0x8016
+/* 017F2C 8001732C 3C0E8016 */  lui   $t6, %hi(gTrackPaths) # $t6, 0x8016
 /* 017F30 80017330 00004810 */  mfhi  $t1
-/* 017F34 80017334 25CE4550 */  addiu $t6, %lo(gTrackPath) # addiu $t6, $t6, 0x4550
+/* 017F34 80017334 25CE4550 */  addiu $t6, %lo(gTrackPaths) # addiu $t6, $t6, 0x4550
 /* 017F38 80017338 000C6880 */  sll   $t5, $t4, 2
 /* 017F3C 8001733C 0009C400 */  sll   $t8, $t1, 0x10
 /* 017F40 80017340 01AE5021 */  addu  $t2, $t5, $t6

@@ -11,7 +11,7 @@ SAFE_C_FILES :=    \
     build/us/src/code_800029B0.o    \
     build/us/src/animation.o    \
     build/us/src/player_controller.o    \
-    build/us/src/cpu_logic.o    \
+    build/us/src/cpu_vehicles_camera_path.o    \
     build/us/src/profiler.o    \
     build/us/src/render_player.o    \
     build/us/src/code_80086E70.o    \

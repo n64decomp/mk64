@@ -20,7 +20,7 @@
 #include <assets/common_data.h>
 #include "render_player.h"
 #include "animation.h"
-#include "cpu_logic.h"
+#include "cpu_vehicles_camera_path.h"
 #include "code_80057C60.h"
 #include "code_8006E9C0.h"
 #include "render_objects.h"
@@ -1736,12 +1736,12 @@ void draw_hud_2d_texture(s32 x, s32 y, u32 width, u32 height, u8* texture) {
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
-void func_8004C450(s32 arg0, s32 arg1, u32 arg2, u32 arg3, u8* texture) {
+void func_8004C450(s32 x, s32 y, u32 width, u32 height, u8* texture) {
 
     gSPDisplayList(gDisplayListHead++, D_0D007F38);
     func_8004B614(D_801656C0, D_801656D0, D_801656E0, 0x80, 0x80, 0x80, 0xFF);
-    load_texture_block_rgba16_mirror(texture, arg2, arg3);
-    func_8004B97C(arg0 - (arg2 >> 1), arg1 - (arg3 >> 1), arg2, arg3, 1);
+    load_texture_block_rgba16_mirror(texture, width, height);
+    func_8004B97C(x - (width >> 1), y - (height >> 1), width, height, 1);
     gSPDisplayList(gDisplayListHead++, D_0D007EB8);
 }
 
@@ -2475,52 +2475,52 @@ void render_mini_map_finish_line(s32 arg0) {
  * characterId of 8 appears to be a type of null check or control flow alteration.
  */
 #define EXPLICIT_AND 1
-void func_8004F168(s32 arg0, s32 playerId, s32 characterId) {
+void draw_minimap_character(s32 arg0, s32 playerId, s32 characterId) {
     f32 thing0;
     f32 thing1;
-    s16 temp_a0;
-    s16 temp_a1;
+    s16 x;
+    s16 y;
     Player* player = &gPlayerOne[playerId];
 
     if (player->type & (1 << 15)) {
         thing0 = player->pos[0] * gMiniMapMarkerScale;
         thing1 = player->pos[2] * gMiniMapMarkerScale;
-        temp_a0 = ((gMiniMapFinishLineX[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + gMiniMapX + (s16) (thing0);
-        temp_a1 = ((gMiniMapFinishLineY[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + gMiniMapY + (s16) (thing1);
+        x = ((gMiniMapFinishLineX[arg0] + D_8018D2F0) - (D_8018D2B0 / 2)) + gMiniMapX + (s16) (thing0);
+        y = ((gMiniMapFinishLineY[arg0] + D_8018D2F8) - (D_8018D2B8 / 2)) + gMiniMapY + (s16) (thing1);
         if (characterId != 8) {
             if ((gGPCurrentRaceRankByPlayerId[playerId] == 0) && (gModeSelection != 3) && (gModeSelection != 1)) {
 #if EXPLICIT_AND == 1
-                func_80046424(temp_a0, temp_a1, (player->rotation[1] + 0x8000) & 0xFFFF, 1.0f,
+                func_80046424(x, y, (player->rotation[1] + 0x8000) & 0xFFFF, 1.0f,
                               (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
                               8, 8, 8, 8);
 #else
-                func_80046424(temp_a0, temp_a1, player->rotation[1] + 0x8000, 1.0f,
+                func_80046424(x, y, player->rotation[1] + 0x8000, 1.0f,
                               (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
                               8, 8, 8, 8);
 #endif
             } else {
 #if EXPLICIT_AND == 1
-                func_800463B0(temp_a0, temp_a1, (player->rotation[1] + 0x8000) & 0xFFFF, 1.0f,
+                func_800463B0(x, y, (player->rotation[1] + 0x8000) & 0xFFFF, 1.0f,
                               (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
                               8, 8, 8, 8);
 #else
-                func_800463B0(temp_a0, temp_a1, player->rotation[1] + 0x8000, 1.0f,
+                func_800463B0(x, y, player->rotation[1] + 0x8000, 1.0f,
                               (u8*) common_texture_minimap_kart_character[characterId], common_vtx_player_minimap_icon,
                               8, 8, 8, 8);
 #endif
             }
         } else {
             if (gGPCurrentRaceRankByPlayerId[playerId] == 0) {
-                func_8004C450(temp_a0, temp_a1, 8, 8, (u8*) common_texture_minimap_progress_dot);
+                func_8004C450(x, y, 8, 8, (u8*) common_texture_minimap_progress_dot);
             } else {
-                draw_hud_2d_texture(temp_a0, temp_a1, 8, 8, (u8*) common_texture_minimap_progress_dot);
+                draw_hud_2d_texture(x, y, 8, 8, (u8*) common_texture_minimap_progress_dot);
             }
         }
     }
 }
 #undef EXPLICIT_AND
 #else
-GLOBAL_ASM("asm/non_matchings/render_objects/func_8004F168.s")
+GLOBAL_ASM("asm/non_matchings/render_objects/draw_minimap_character.s")
 #endif
 
 // WTF is up with the gPlayerOne access in this function?
@@ -2533,35 +2533,35 @@ void func_8004F3E4(s32 arg0) {
         case GRAND_PRIX:
             for (idx = D_8018D158 - 1; idx >= 0; idx--) {
                 playerId = gGPCurrentRacePlayerIdByRank[idx];
-                if ((gPlayerOne + playerId)->type & PLAYER_KART_AI) {
-                    func_8004F168(arg0, playerId, 8);
+                if ((gPlayerOne + playerId)->type & PLAYER_CPU) {
+                    draw_minimap_character(arg0, playerId, 8);
                 }
             }
             for (idx = D_8018D158 - 1; idx >= 0; idx--) {
                 playerId = gGPCurrentRacePlayerIdByRank[idx];
-                if (((gPlayerOne + playerId)->type & PLAYER_KART_AI) != PLAYER_KART_AI) {
-                    func_8004F168(arg0, playerId, (gPlayerOne + playerId)->characterId);
+                if (((gPlayerOne + playerId)->type & PLAYER_CPU) != PLAYER_CPU) {
+                    draw_minimap_character(arg0, playerId, (gPlayerOne + playerId)->characterId);
                 }
             }
             break;
         case TIME_TRIALS:
             for (idx = 0; idx < 8; idx++) {
                 if (((gPlayerOne + idx)->type & PLAYER_INVISIBLE_OR_BOMB) == PLAYER_INVISIBLE_OR_BOMB) {
-                    func_8004F168(arg0, idx, 8);
+                    draw_minimap_character(arg0, idx, 8);
                 }
             }
-            func_8004F168(arg0, 0, gPlayerOne->characterId);
+            draw_minimap_character(arg0, 0, gPlayerOne->characterId);
             break;
         case VERSUS:
             for (idx = gPlayerCountSelection1 - 1; idx >= 0; idx--) {
                 playerId = gGPCurrentRacePlayerIdByRank[idx];
-                func_8004F168(arg0, playerId, (gPlayerOne + playerId)->characterId);
+                draw_minimap_character(arg0, playerId, (gPlayerOne + playerId)->characterId);
             }
             break;
         case BATTLE:
             for (idx = 0; idx < gPlayerCountSelection1; idx++) {
                 if (!((gPlayerOne + idx)->type & PLAYER_UNKNOWN_0x40)) {
-                    func_8004F168(arg0, idx, (gPlayerOne + idx)->characterId);
+                    draw_minimap_character(arg0, idx, (gPlayerOne + idx)->characterId);
                 }
             }
             break;
@@ -3745,7 +3745,7 @@ void func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 vertexIndex) {
     }
 }
 
-void func_80053E6C(s32 arg0) {
+void render_object_balloon(s32 arg0) {
     s32 var_s1;
     s32 objectIndex;
 
@@ -3761,7 +3761,7 @@ void func_80053E6C(s32 arg0) {
             func_80053D74(objectIndex, arg0, 0);
         }
     }
-    rsp_load_texture(D_8018D4C0, 0x40, 0x20);
+    rsp_load_texture(D_8018D4C0, 64, 32);
     for (var_s1 = 0; var_s1 < D_80165738; var_s1++) {
         objectIndex = gObjectParticle3[var_s1];
         if ((objectIndex != NULL_OBJECT_ID) && (gObjectList[objectIndex].state >= 2)) {

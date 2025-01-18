@@ -6,7 +6,7 @@
 #include "math_util.h"
 #include "memory.h"
 #include "path.h"
-#include "cpu_logic.h"
+#include "cpu_vehicles_camera_path.h"
 #include "menu_items.h"
 #include "collision.h"
 #include "actors.h"

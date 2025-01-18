@@ -20,16 +20,16 @@ enum {
 
 /**
  * These are per-path arrays that contain some information relating to path
- * The arrays in gTrackPath contain X/Y/Z and track segment information
+ * The arrays in gTrackPaths contain X/Y/Z and track segment information
  * The arrays in gTrackInnerPath and gCurrentTrackOuterPath track some other X/Y/Z, but the track segment is always 0
  *(so, untracked/unused) Its unclear how these arrays relate to each other
  **/
-extern TrackPathPoint* gTrackPath[];
+extern TrackPathPoint* gTrackPaths[];
 extern TrackPathPoint* gTrackInnerPath[];
 extern TrackPathPoint* gTrackOuterPath[];
 
 /**
- * Don't know what exactly these are, but like gTrackPath, gTrackInnerPath, and gCurrentTrackOuterPath
+ * Don't know what exactly these are, but like gTrackPaths, gTrackInnerPath, and gCurrentTrackOuterPath
  * they track something about the path on a per-path basis
  **/
 // PathPoint types?
@@ -42,7 +42,7 @@ extern s16* gTrackConsecutiveCurveCounts[];
 
 /**
  * Certain parts of the pathPoint logic will copy some path/player specific data to a temporary variable.
- * For example: gCurrentTrackPath is always a value from gTrackPath. Depending on which path
+ * For example: gCurrentTrackPath is always a value from gTrackPaths. Depending on which path
  * a given player is on, the specific value may change
  **/
 // Shadows values from gNearestPathPointByPlayerId
@@ -59,7 +59,7 @@ extern s16* gCurrentTrackSectionTypesPath;
 extern s16* gCurrentPathPointExpectedRotationPath;
 // Shadowd values from gPathCountByPathIndex
 extern u16 gSelectedPathCount;
-// Shadows values from gTrackPath
+// Shadows values from gTrackPaths
 extern TrackPathPoint* gCurrentTrackPath;
 // Shadows values from gTrackConsecutiveCurveCounts
 extern s16* gCurrentTrackConsecutiveCurveCountsPath;
@@ -73,7 +73,7 @@ extern u16 gPathCountByPathIndex[]; // D_801645C8
 extern s16 gNearestPathPointByCameraId[]; // D_80164668
 
 /**
- * Stuff that may not be directly related to path, but are only referenced in cpu_logic.
+ * Stuff that may not be directly related to path, but are only referenced in cpu_vehicles_camera_path.
  * So they are at least pathPoint adjacent.
  **/
 

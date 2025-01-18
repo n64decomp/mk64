@@ -1,4 +1,4 @@
-glabel func_8004F168
+glabel draw_minimap_character
 /* 04FD68 8004F168 000570C0 */  sll   $t6, $a1, 3
 /* 04FD6C 8004F16C 01C57023 */  subu  $t6, $t6, $a1
 /* 04FD70 8004F170 000E7100 */  sll   $t6, $t6, 4

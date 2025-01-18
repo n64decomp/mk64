@@ -247,7 +247,7 @@ glabel update_player
 /* 00AA98 80009E98 24010014 */  li    $at, 20
 /* 00AA9C 80009E9C 11610003 */  beq   $t3, $at, .L80009EAC
 /* 00AAA0 80009EA0 00000000 */   nop
-/* 00AAA4 80009EA4 0C00478E */  jal   kart_ai_behaviour
+/* 00AAA4 80009EA4 0C00478E */  jal   cpu_behaviour
 /* 00AAA8 80009EA8 8FA400D0 */   lw    $a0, 0xd0($sp)
 .L80009EAC:
 /* 00AAAC 80009EAC 3C0E8016 */  lui   $t6, %hi(gIncrementUpdatePlayer) # $t6, 0x8016
@@ -257,7 +257,7 @@ glabel update_player
 /* 00AABC 80009EBC 318D0001 */  andi  $t5, $t4, 1
 /* 00AAC0 80009EC0 11ED0003 */  beq   $t7, $t5, .L80009ED0
 /* 00AAC4 80009EC4 AFAD0030 */   sw    $t5, 0x30($sp)
-/* 00AAC8 80009EC8 0C006B04 */  jal   kart_ai_use_item_strategy
+/* 00AAC8 80009EC8 0C006B04 */  jal   cpu_use_item_strategy
 /* 00AACC 80009ECC 01802025 */   move  $a0, $t4
 .L80009ED0:
 /* 00AAD0 80009ED0 8FA400D0 */  lw    $a0, 0xd0($sp)
@@ -349,10 +349,10 @@ glabel update_player
 /* 00AC08 8000A008 8FB90038 */  lw    $t9, 0x38($sp)
 /* 00AC0C 8000A00C AFAE0024 */  sw    $t6, 0x24($sp)
 /* 00AC10 8000A010 00027880 */  sll   $t7, $v0, 2
-/* 00AC14 8000A014 3C0D8016 */  lui   $t5, %hi(gTrackPath) # 0x8016
+/* 00AC14 8000A014 3C0D8016 */  lui   $t5, %hi(gTrackPaths) # 0x8016
 /* 00AC18 8000A018 95D80000 */  lhu   $t8, ($t6)
 /* 00AC1C 8000A01C 01AF6821 */  addu  $t5, $t5, $t7
-/* 00AC20 8000A020 8DAD4550 */  lw    $t5, %lo(gTrackPath)($t5) # 0x4550($t5)
+/* 00AC20 8000A020 8DAD4550 */  lw    $t5, %lo(gTrackPaths)($t5) # 0x4550($t5)
 /* 00AC24 8000A024 032A3021 */  addu  $a2, $t9, $t2
 /* 00AC28 8000A028 0018C8C0 */  sll   $t9, $t8, 3
 /* 00AC2C 8000A02C 01B95021 */  addu  $t2, $t5, $t9
@@ -896,7 +896,7 @@ glabel update_player
 /* 00B3F0 8000A7F0 3C058016 */  lui   $a1, %hi(sSomeNearestPathPoint) # $a1, 0x8016
 /* 00B3F4 8000A7F4 254D0014 */  addiu $t5, $t2, 0x14
 /* 00B3F8 8000A7F8 AFAD001C */  sw    $t5, 0x1c($sp)
-/* 00B3FC 8000A7FC 0C002DF9 */  jal   are_in_curse
+/* 00B3FC 8000A7FC 0C002DF9 */  jal   are_in_curve
 /* 00B400 8000A800 94A52FCE */   lhu   $a1, %lo(sSomeNearestPathPoint)($a1)
 /* 00B404 8000A804 8FAF0038 */  lw    $t7, 0x38($sp)
 /* 00B408 8000A808 3C0B8016 */  lui   $t3, %hi(gIsPlayerInCurve) # $t3, 0x8016
@@ -1117,10 +1117,10 @@ glabel update_player
 /* 00B728 8000AB28 030CC021 */  addu  $t8, $t8, $t4
 /* 00B72C 8000AB2C 971845C8 */  lhu   $t8, %lo(gPathCountByPathIndex)($t8) # 0x45c8($t8)
 /* 00B730 8000AB30 25EB000A */  addiu $t3, $t7, 0xa
-/* 00B734 8000AB34 3C0A8016 */  lui   $t2, %hi(gTrackPath) # 0x8016
+/* 00B734 8000AB34 3C0A8016 */  lui   $t2, %hi(gTrackPaths) # 0x8016
 /* 00B738 8000AB38 0178001A */  div   $zero, $t3, $t8
 /* 00B73C 8000AB3C 01495021 */  addu  $t2, $t2, $t1
-/* 00B740 8000AB40 8D4A4550 */  lw    $t2, %lo(gTrackPath)($t2) # 0x4550($t2)
+/* 00B740 8000AB40 8D4A4550 */  lw    $t2, %lo(gTrackPaths)($t2) # 0x4550($t2)
 /* 00B744 8000AB44 0000C810 */  mfhi  $t9
 /* 00B748 8000AB48 001970C0 */  sll   $t6, $t9, 3
 /* 00B74C 8000AB4C 01CA1021 */  addu  $v0, $t6, $t2

@@ -1,5 +1,5 @@
-#ifndef cpu_logic_H
-#define cpu_logic_H
+#ifndef cpu_vehicles_camera_path_H
+#define cpu_vehicles_camera_path_H
 
 #include "vehicles.h"
 #include "camera.h"
@@ -123,7 +123,7 @@ void update_player_timer_sound(s32, Player*);
 void update_player(s32);
 
 void func_8000B140(s32);
-s32 are_in_curse(s32, u16);
+s32 are_in_curve(s32, u16);
 bool is_far_from_path(s32);
 f32 calculate_track_position_factor(f32, f32, u16, s32);
 void update_player_position_factor(s32, u16, s32);
@@ -162,7 +162,7 @@ void generate_player_smoke(void);
 void func_8000F0E0(void);
 void func_8000F124(void);
 void clear_pathPoint(TrackPathPoint*, size_t);
-void init_course_pathPoint(void);
+void init_course_path_point(void);
 void init_players(void);
 
 void load_track_path(s32);
@@ -178,12 +178,12 @@ f32 func_80010FA0(f32, f32, f32, s32, s32);
 s32 func_80011014(TrackPathPoint*, TrackPathPoint*, s32, s32);
 s32 process_path_data(TrackPathPoint*, TrackPathPoint*);
 s32 generate_2d_path(Path2D*, TrackPathPoint*, s32);
-void copy_courses_kart_ai_behaviour(void);
-void reset_kart_ai_behaviour_none(s32);
-void reset_kart_ai_behaviour(s32);
-void kart_ai_behaviour_start(s32, Player*);
-void kart_ai_behaviour_end(s32, Player*);
-void kart_ai_behaviour(s32);
+void copy_courses_cpu_behaviour(void);
+void reset_cpu_behaviour_none(s32);
+void reset_cpu_behaviour(s32);
+void cpu_behaviour_start(s32, Player*);
+void cpu_behaviour_end(s32, Player*);
+void cpu_behaviour(s32);
 void func_80011EC0(s32, Player*, s32, u16);
 
 void generate_train_path(void);
@@ -275,10 +275,10 @@ void func_8001A518(s32, s32, s32);
 void func_8001A588(u16*, Camera*, Player*, s8, s32);
 void func_8001AAAC(s16, s16, s16);
 void func_8001AB00(void);
-void kart_ai_decisions_branch_item(s32, s16*, s32);
+void cpu_decisions_branch_item(s32, s16*, s32);
 void func_8001ABE0(s32, CpuItemStrategyData*);
-void reset_strategy_if_actor_valid(CpuItemStrategyData*);
-void kart_ai_use_item_strategy(s32);
+void clear_expired_strategies(CpuItemStrategyData*);
+void cpu_use_item_strategy(s32);
 
 void func_8001BE78(void);
 
@@ -337,7 +337,7 @@ extern u16 gCurrentCPUBehaviourId[];
 extern u16 gPreviousCPUBehaviourId[];
 extern u16 cpu_BehaviourState[];
 
-enum { KART_AI_BEHAVIOUR_STATE_NONE, KART_AI_BEHAVIOUR_STATE_START, KART_AI_BEHAVIOUR_STATE_RUNNING };
+enum { cpu_BEHAVIOUR_STATE_NONE, cpu_BEHAVIOUR_STATE_START, cpu_BEHAVIOUR_STATE_RUNNING };
 
 extern s16 sPlayerAngle[];
 extern u16 gPlayersTrackSectionId[];
@@ -347,12 +347,7 @@ extern u16 D_80163348[];
 extern u16 D_8016334C[];
 extern u16 gSpeedCPUBehaviour[];
 
-enum {
-    SPEED_KART_AI_BEHAVIOUR_NORMAL,
-    SPEED_KART_AI_BEHAVIOUR_FAST,
-    SPEED_KART_AI_BEHAVIOUR_SLOW,
-    SPEED_KART_AI_BEHAVIOUR_MAX
-};
+enum { SPEED_cpu_BEHAVIOUR_NORMAL, SPEED_cpu_BEHAVIOUR_FAST, SPEED_cpu_BEHAVIOUR_SLOW, SPEED_cpu_BEHAVIOUR_MAX };
 
 extern s32 D_80163368[];
 extern s32 gIncrementUpdatePlayer;
@@ -406,7 +401,7 @@ extern s32 gGPCurrentRaceRankByPlayerIdDup[];
 extern u16 gSelectedPathCount;
 extern u16 gNearestPathPointByPlayerId[];
 extern s32 gNumPathPointsTraversed[];
-extern s16 gCharacterPlayer[];
+extern s16 gGetPlayerByCharacterId[];
 extern s32 D_8016448C;
 extern f32 D_80164498[];
 extern f32 gLapCompletionPercentByPlayerId[];    // D_801644A8

@@ -5,7 +5,7 @@
 #include <mk64.h>
 
 #include "code_800029B0.h"
-#include "cpu_logic.h"
+#include "cpu_vehicles_camera_path.h"
 #include "code_80057C60.h"
 #include "code_8006E9C0.h"
 #include "code_80086E70.h"

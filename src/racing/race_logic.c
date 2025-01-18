@@ -14,7 +14,7 @@
 #include "code_80057C60.h"
 #include "update_objects.h"
 #include "menu_items.h"
-#include "cpu_logic.h"
+#include "cpu_vehicles_camera_path.h"
 #include "spawn_players.h"
 #include "audio/external.h"
 #include "race_logic.h"
@@ -40,7 +40,7 @@ u16 D_802BA032;
 
 float D_802BA034;
 
-s32 D_802BA038;
+s32 gDemoTimer;
 UNUSED s32 D_802BA03C;
 
 s16 D_802BA040[4];
@@ -81,7 +81,7 @@ void func_8028E028(void) {
     }
     func_800CA118((u8) gPlayerWinningIndex);
     D_800DC510 = 5;
-    D_802BA038 = 10;
+    gDemoTimer = 10;
 }
 
 void update_player_battle_status(void) {
@@ -412,7 +412,7 @@ UNUSED void func_8028EC38(s32 arg0) {
     D_800DC5B4 = 1;
     D_800DC5B0 = 1;
     D_800DC5B8 = 0;
-    D_802BA038 = 5;
+    gDemoTimer = 5;
 }
 
 void func_8028EC98(s32 arg0) {
@@ -529,7 +529,7 @@ void func_8028EF28(void) {
                     func_8028EEF0(i);
 
                     currentPosition = gPlayers[i].currentRank;
-                    gPlayers[i].type |= PLAYER_KART_AI;
+                    gPlayers[i].type |= PLAYER_CPU;
 
                     if (currentPosition < 4) {
                         D_80150120 = 1;
@@ -551,7 +551,7 @@ void func_8028EF28(void) {
                     }
 
                     if (gModeSelection == VERSUS) {
-                        D_802BA038 = 180;
+                        gDemoTimer = 180;
                         if (currentPosition == 0) {
                             gPlayerWinningIndex = i;
                         }
@@ -566,7 +566,7 @@ void func_8028EF28(void) {
                                 D_800DC510 = 5;
                                 i = gPlayerPositionLUT[1];
                                 gPlayers[i].soundEffects |= 0x200000;
-                                gPlayers[i].type |= PLAYER_KART_AI;
+                                gPlayers[i].type |= PLAYER_CPU;
                                 func_800CA118((u8) i);
                                 break;
                             case 3:
@@ -584,7 +584,7 @@ void func_8028EF28(void) {
                                         *(gNmiUnknown2 + i * 3 + 2) = 99;
                                     }
                                     gPlayers[i].soundEffects |= 0x200000;
-                                    gPlayers[i].type |= PLAYER_KART_AI;
+                                    gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8) i);
                                 }
                                 break;
@@ -599,7 +599,7 @@ void func_8028EF28(void) {
                                     D_800DC510 = 5;
                                     i = gPlayerPositionLUT[3];
                                     gPlayers[i].soundEffects |= 0x200000;
-                                    gPlayers[i].type |= PLAYER_KART_AI;
+                                    gPlayers[i].type |= PLAYER_CPU;
                                     func_800CA118((u8) i);
                                 }
                                 break;
@@ -677,7 +677,7 @@ void func_8028F4E8(void) {
             D_800DC5B4 = 1;
             D_800DC5B0 = 1;
             D_800DC5B8 = 0;
-            D_802BA038 = 5;
+            gDemoTimer = 5;
         }
     }
 }
@@ -791,7 +791,7 @@ void func_8028F970(void) {
         if (!(player->type & PLAYER_HUMAN)) {
             continue;
         }
-        if (player->type & PLAYER_KART_AI) {
+        if (player->type & PLAYER_CPU) {
             continue;
         }
 
@@ -862,27 +862,27 @@ void func_8028FBD4(void) {
     D_800DC5B4 = 1;
     D_800DC5B0 = 1;
     D_800DC5B8 = 0;
-    D_802BA038 = 5;
+    gDemoTimer = 5;
 }
 
 #ifdef VERSION_EU
-#define D_802BA038_SIZE 1600
+#define gDemoTimer_SIZE 1600
 #else
-#define D_802BA038_SIZE 1920
+#define gDemoTimer_SIZE 1920
 #endif
 
-void func_8028FC34(void) {
-    if (D_802BA038 < 0) {
-        D_802BA038 = D_802BA038_SIZE;
+void end_demo_update(void) {
+    if (gDemoTimer < 0) {
+        gDemoTimer = gDemoTimer_SIZE;
         return;
     }
-    D_802BA038--;
+    gDemoTimer--;
     if (gControllerFive->buttonPressed != 0) {
         func_8028FBD4();
         gMenuSelection = START_MENU;
         return;
     }
-    if (D_802BA038 == 0) {
+    if (gDemoTimer == 0) {
         func_8028FBD4();
         gMenuSelection = LOGO_INTRO_MENU;
     }
@@ -894,7 +894,7 @@ void func_8028FCBC(void) {
     u32 phi_v0_4;
 
     if (gDemoUseController) {
-        func_8028FC34();
+        end_demo_update();
     }
     switch (D_800DC510) {
         case 0:
@@ -991,7 +991,7 @@ void func_8028FCBC(void) {
 
                     switch (gScreenModeSelection) {
                         case SCREEN_MODE_1P:
-                            D_802BA038 = 690;
+                            gDemoTimer = 690;
                             D_800DC510 = 5;
                             func_8028E298();
                             break;
@@ -1007,7 +1007,7 @@ void func_8028FCBC(void) {
                                 }
 
                                 func_8028E298();
-                                D_802BA038 = 600;
+                                gDemoTimer = 600;
                                 D_800DC510 = 5;
                             }
                             break;
@@ -1020,7 +1020,7 @@ void func_8028FCBC(void) {
                     func_8028F970();
                     break;
                 case TIME_TRIALS:
-                    D_802BA038 = 360;
+                    gDemoTimer = 360;
                     if (D_8015F890 != 0) {
                         D_800DC510 = 7;
                     } else {
@@ -1030,8 +1030,8 @@ void func_8028FCBC(void) {
             }
             break;
         case 5:
-            if (D_802BA038 != 0) {
-                D_802BA038--;
+            if (gDemoTimer != 0) {
+                gDemoTimer--;
             } else {
                 switch (gModeSelection) {
                     case GRAND_PRIX:

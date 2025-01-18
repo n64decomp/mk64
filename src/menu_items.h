@@ -654,7 +654,7 @@ void tkmk00decode(u8*, u8*, u8*, s32);
 /* This is where I'd put my static data, if I had any */
 
 extern s32 D_800DDB24;
-extern s16 gCharacterPlayer[];
+extern s16 gGetPlayerByCharacterId[];
 
 extern u16* gMenuTextureBuffer;
 extern u8* gMenuCompressedBuffer;

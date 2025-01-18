@@ -91,7 +91,7 @@ Actor related code resides in
 |---|---|
 |[actors](@ref actors.c)|Variety of [actors](actorsmenu.html), see link for specifics.|
 |[actors_extended](@ref actors_extended.c)|Shells and bananas|
-|[cpu_logic](@ref cpu_logic.c)| Vehicles; trains, cars, trucks, boats |
+|[cpu_vehicles_camera_path](@ref cpu_vehicles_camera_path.c)| Vehicles; trains, cars, trucks, boats |
 
 ## Objects
 
@@ -131,10 +131,10 @@ Course related code resides in
 
 ## Engine
 
-| file                          | desc         |
-| ----------------------------- | ------------ |
-| [collision](@ref collision.c) |              |
-| [cpu_logic](@ref cpu_logic.c) | Pathing code |
+| file                                                        | desc         |
+| ----------------------------------------------------------- | ------------ |
+| [collision](@ref collision.c)                               |              |
+| [cpu_vehicles_camera_path](@ref cpu_vehicles_camera_path.c) | Pathing code |
 
 ## Math
 

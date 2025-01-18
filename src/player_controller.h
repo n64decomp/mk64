@@ -64,7 +64,7 @@ void func_8002D028(Player*, s8);
 void func_8002D268(Player*, Camera*, s8, s8);
 
 void func_8002E4C4(Player*);
-void control_kart_ai_movement(Player*, Camera*, s8, s8);
+void control_cpu_movement(Player*, Camera*, s8, s8);
 
 void func_8002FCA8(Player*, s8);
 void func_8002FE84(Player*, f32);

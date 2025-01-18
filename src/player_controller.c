@@ -19,7 +19,7 @@
 #include "camera.h"
 #include "spawn_players.h"
 #include "code_80057C60.h"
-#include "cpu_logic.h"
+#include "cpu_vehicles_camera_path.h"
 #include "sounds.h"
 
 extern s32 D_8018D168;
@@ -547,7 +547,7 @@ void func_80028864(Player* player, Camera* camera, s8 playerId, s8 screenId) {
                 func_8002D268(player, camera, screenId, playerId);
             }
         } else {
-            control_kart_ai_movement(player, camera, screenId, playerId);
+            control_cpu_movement(player, camera, screenId, playerId);
         }
     } else if ((player->type & PLAYER_STAGING) == PLAYER_STAGING) {
         func_8002D028(player, playerId);
@@ -1807,14 +1807,13 @@ void func_8002C4F8(Player* player, s8 arg1) {
     } else if ((player->effects & 8) != 8) {
         player->unk_0CA &= ~0x0100;
     }
-    if ((player->type & PLAYER_KART_AI) &&
-        ((func_802ABDF4(player->collision.meshIndexZX) != 0) || (player->unk_0CA & 1))) {
+    if ((player->type & PLAYER_CPU) && ((func_802ABDF4(player->collision.meshIndexZX) != 0) || (player->unk_0CA & 1))) {
         if (!(player->unk_0CA & 2) && !(player->unk_0CA & 8) && !(player->effects & UNKNOWN_EFFECT_0x1000)) {
             func_80090778(player);
             func_80090868(player);
         }
     }
-    if ((player->type & PLAYER_KART_AI) && (player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & 8)) {
+    if ((player->type & PLAYER_CPU) && (player->surfaceType == OUT_OF_BOUNDS) && !(player->effects & 8)) {
         func_80090778(player);
         func_80090868(player);
     }
@@ -2328,7 +2327,7 @@ void func_8002D268(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
         player->pos[2] = nextZ;
     }
     player->pos[1] = nextY;
-    if ((player->type & PLAYER_HUMAN) && (!(player->type & PLAYER_KART_AI))) {
+    if ((player->type & PLAYER_HUMAN) && (!(player->type & PLAYER_CPU))) {
         func_8002BB9C(player, &nextX, &nextZ, screenId, playerId, sp98);
     }
     player->unk_064[0] = sp178[0];
@@ -2627,7 +2626,7 @@ void func_8002E594(Player* player, UNUSED Camera* camera, s8 screenId, s8 player
     func_8002C4F8(player, playerId);
 }
 
-void control_kart_ai_movement(Player* player, UNUSED Camera* camera, s8 arg2, s8 playerId) {
+void control_cpu_movement(Player* player, UNUSED Camera* camera, s8 arg2, s8 playerId) {
     Vec3f spF4 = { 0.0f, 0.0f, 1.0f };
     UNUSED Vec3f spE8 = { 0.0f, 0.0f, 0.0f };
     Vec3f spDC = { 0.0f, 0.0f, 0.0f };
@@ -4469,7 +4468,7 @@ void func_80037BB4(Player* player, Vec3f arg1) {
             if (((player->effects & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
                 player->rotation[1] += player->unk_078;
             }
-            if (!(player->type & PLAYER_KART_AI)) {
+            if (!(player->type & PLAYER_CPU)) {
                 if (gModeSelection == BATTLE) {
                     func_800378E8(player, sp20, arg1);
                 } else {
@@ -4482,7 +4481,7 @@ void func_80037BB4(Player* player, Vec3f arg1) {
             if (((player->effects & 0x20000000) != 0x20000000) || (player->unk_228 >= 0x64)) {
                 player->rotation[1] += player->unk_078;
             }
-            if (!(player->type & PLAYER_KART_AI)) {
+            if (!(player->type & PLAYER_CPU)) {
                 if (gModeSelection == BATTLE) {
                     func_80037A4C(player, sp20, arg1);
                 } else {
@@ -4592,7 +4591,7 @@ void func_80037CFC(Player* player, struct Controller* controller, s8 arg2) {
 
 void func_800381AC(Player* player, struct Controller* controller, s8 arg2) {
     if (((player->type & PLAYER_EXISTS) == PLAYER_EXISTS) && ((player->type & PLAYER_HUMAN) == PLAYER_HUMAN) &&
-        ((player->type & PLAYER_KART_AI) != PLAYER_KART_AI)) {
+        ((player->type & PLAYER_CPU) != PLAYER_CPU)) {
         if ((player->type & PLAYER_START_SEQUENCE) != PLAYER_START_SEQUENCE) {
             if (((player->unk_0CA & 2) == 2) || ((player->unk_0CA & 8) == 8)) {
                 if (controller->button & A_BUTTON) {

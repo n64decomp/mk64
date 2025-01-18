@@ -24,7 +24,7 @@
 #include "menus.h"
 #include "data/other_textures.h"
 
-extern s32 D_802BA038;
+extern s32 gDemoTimer;
 extern s16 D_802BA048;
 #if !ENABLE_CUSTOM_COURSE_ENGINE
 s16 gCurrentCourseId = 0;
@@ -208,7 +208,7 @@ void setup_race(void) {
     gNumSpawnedShells = 0;
     D_800DC5B8 = 0;
     D_80152308 = 0;
-    D_802BA038 = -1;
+    gDemoTimer = -1;
     D_802BA048 = 0;
     func_802A74BC();
     set_perspective_and_aspect_ratio();
