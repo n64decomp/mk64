@@ -147,7 +147,7 @@ f32 cpu_track_position_factor(s32);
 void determine_ideal_cpu_position_offset(s32, u16);
 s16 func_8000D6D0(Vec3f, s16*, f32, f32, s16, s16);
 s16 func_8000D940(Vec3f, s16*, f32, f32, s16);
-s16 update_vehicle_following_pathPoint(Vec3f, s16*, f32);
+s16 update_vehicle_following_path(Vec3f, s16*, f32);
 void set_bomb_kart_spawn_positions(void);
 void func_8000DF8C(s32);
 
@@ -383,7 +383,7 @@ extern s32 D_801634F0;
 extern s32 D_801634F4;
 extern TrackPositionFactorInstruction gPlayerTrackPositionFactorInstruction[];
 extern Path2D* gVehicle2DPathPoint;
-extern s32 gVehicle2DPathPointLength;
+extern s32 gVehicle2DPathLength;
 extern u16 isCrossingTriggeredByIndex[];
 extern u16 sCrossingActiveTimer[];
 extern s32 D_80163DD8[];

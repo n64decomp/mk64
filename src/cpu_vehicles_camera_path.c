@@ -136,7 +136,7 @@ s32 D_801634F0;
 s32 D_801634F4;
 TrackPositionFactorInstruction gPlayerTrackPositionFactorInstruction[10];
 Path2D* gVehicle2DPathPoint;
-s32 gVehicle2DPathPointLength;
+s32 gVehicle2DPathLength;
 TrainStuff gTrainList[NUM_TRAINS];
 u16 isCrossingTriggeredByIndex[NUM_CROSSINGS];
 u16 sCrossingActiveTimer[NUM_CROSSINGS];

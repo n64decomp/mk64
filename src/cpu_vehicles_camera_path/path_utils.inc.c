@@ -524,9 +524,9 @@ s16 find_closest_vehicles_pathPoint(f32 xPos, UNUSED f32 yPos, f32 zPos, s16 pat
     for (realIndex = pathPointIndex - 2; realIndex < pathPointIndex + 7; realIndex++) {
         considerIndex = realIndex;
         if (realIndex < 0) {
-            considerIndex = realIndex + gVehicle2DPathPointLength;
+            considerIndex = realIndex + gVehicle2DPathLength;
         }
-        considerIndex %= gVehicle2DPathPointLength;
+        considerIndex %= gVehicle2DPathLength;
         considerPathPoint = &gVehicle2DPathPoint[considerIndex];
         xdiff = considerPathPoint->x - xPos;
         zdiff = considerPathPoint->z - zPos;
@@ -791,7 +791,7 @@ s16 func_8000D940(Vec3f pos, s16* pathPointIndex, f32 speed, f32 arg3, s16 pathI
     return get_angle_between_path(sp54, pos);
 }
 
-s16 update_vehicle_following_pathPoint(Vec3f pos, s16* pathPointIndex, f32 speed) {
+s16 update_vehicle_following_path(Vec3f pos, s16* pathPointIndex, f32 speed) {
     f32 origXPos;
     f32 origYPos;
     f32 origZPos;
@@ -826,8 +826,8 @@ s16 update_vehicle_following_pathPoint(Vec3f pos, s16* pathPointIndex, f32 speed
     sp38[2] = pos[2];
     newPathPointIndex = find_closest_vehicles_pathPoint(origXPos, origYPos, origZPos, *pathPointIndex);
     *pathPointIndex = newPathPointIndex;
-    farPathPoint1 = (newPathPointIndex + 3) % gVehicle2DPathPointLength;
-    farPathPoint2 = (newPathPointIndex + 4) % gVehicle2DPathPointLength;
+    farPathPoint1 = (newPathPointIndex + 3) % gVehicle2DPathLength;
+    farPathPoint2 = (newPathPointIndex + 4) % gVehicle2DPathLength;
     temp_a0 = &gVehicle2DPathPoint[farPathPoint1];
     temp_a2 = &gVehicle2DPathPoint[farPathPoint2];
     farPathPointAverageX = (temp_a0->x + temp_a2->x) * 0.5f;

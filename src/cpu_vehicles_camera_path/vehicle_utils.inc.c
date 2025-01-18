@@ -15,7 +15,7 @@ void generate_train_path(void) {
     GET_PATH_LENGTH(pathPoint)
 
     temp = gVehicle2DPathPoint;
-    gVehicle2DPathPointLength = generate_2d_path(temp, pathPoint, i - 1);
+    gVehicle2DPathLength = generate_2d_path(temp, pathPoint, i - 1);
     D_80162EB0 = get_surface_height(temp[0].x, 2000.0f, temp[0].z);
 }
 
@@ -29,7 +29,7 @@ void generate_ferry_path(void) {
 
     GET_PATH_LENGTH(pathPoint)
 
-    gVehicle2DPathPointLength = generate_2d_path(gVehicle2DPathPoint, pathPoint, i - 1);
+    gVehicle2DPathLength = generate_2d_path(gVehicle2DPathPoint, pathPoint, i - 1);
     D_80162EB2 = -40;
 }
 
@@ -82,7 +82,7 @@ void spawn_course_vehicles(void) {
                 tempLocomotive = &gTrainList[loopIndex].locomotive;
                 origXPos = tempLocomotive->position[0];
                 origZPos = tempLocomotive->position[2];
-                trainCarYRot = update_vehicle_following_pathPoint(
+                trainCarYRot = update_vehicle_following_path(
                     tempLocomotive->position, (s16*) &tempLocomotive->pathPointIndex, gTrainList[loopIndex].speed);
                 tempLocomotive->velocity[0] = tempLocomotive->position[0] - origXPos;
                 tempLocomotive->velocity[2] = tempLocomotive->position[2] - origZPos;
@@ -94,7 +94,7 @@ void spawn_course_vehicles(void) {
                 if (tempTender->isActive == 1) {
                     origXPos = tempTender->position[0];
                     origZPos = tempTender->position[2];
-                    trainCarYRot = update_vehicle_following_pathPoint(
+                    trainCarYRot = update_vehicle_following_path(
                         tempTender->position, (s16*) &tempTender->pathPointIndex, gTrainList[loopIndex].speed);
                     tempTender->velocity[0] = tempTender->position[0] - origXPos;
                     tempTender->velocity[2] = tempTender->position[2] - origZPos;
@@ -108,9 +108,9 @@ void spawn_course_vehicles(void) {
                     if (tempPassengerCar->isActive == 1) {
                         origXPos = tempPassengerCar->position[0];
                         origZPos = tempPassengerCar->position[2];
-                        trainCarYRot = update_vehicle_following_pathPoint(tempPassengerCar->position,
-                                                                          (s16*) &tempPassengerCar->pathPointIndex,
-                                                                          gTrainList[loopIndex].speed);
+                        trainCarYRot = update_vehicle_following_path(tempPassengerCar->position,
+                                                                     (s16*) &tempPassengerCar->pathPointIndex,
+                                                                     gTrainList[loopIndex].speed);
                         tempPassengerCar->velocity[0] = tempPassengerCar->position[0] - origXPos;
                         tempPassengerCar->velocity[2] = tempPassengerCar->position[2] - origZPos;
                         vec3s_set(trainCarRot, 0, trainCarYRot, 0);
@@ -127,7 +127,7 @@ void spawn_course_vehicles(void) {
                 if (tempPaddleWheelBoat->isActive == 1) {
                     origXPos = tempPaddleWheelBoat->position[0];
                     origZPos = tempPaddleWheelBoat->position[2];
-                    tempPaddleWheelBoat->rotY = update_vehicle_following_pathPoint(
+                    tempPaddleWheelBoat->rotY = update_vehicle_following_path(
                         tempPaddleWheelBoat->position, (s16*) &tempPaddleWheelBoat->pathPointIndex,
                         tempPaddleWheelBoat->speed);
                     tempPaddleWheelBoat->velocity[0] = tempPaddleWheelBoat->position[0] - origXPos;
@@ -198,7 +198,7 @@ void init_vehicles_trains(void) {
     for (i = 0; i < NUM_TRAINS; i++) {
         // outputs 160 or 392 depending on the train.
         // Wraps the value around to always output a valid pathPoint.
-        pathPointOffset = (((i * gVehicle2DPathPointLength) / NUM_TRAINS) + 160) % gVehicle2DPathPointLength;
+        pathPointOffset = (((i * gVehicle2DPathLength) / NUM_TRAINS) + 160) % gVehicle2DPathLength;
 
         // 120.0f is about the maximum usable value
         gTrainList[i].speed = 5.0f;
@@ -294,7 +294,7 @@ void update_vehicle_trains(void) {
         temp_f20 = gTrainList[i].locomotive.position[0];
         temp_f22 = gTrainList[i].locomotive.position[2];
 
-        orientationYUpdate = update_vehicle_following_pathPoint(
+        orientationYUpdate = update_vehicle_following_path(
             gTrainList[i].locomotive.position, (s16*) &gTrainList[i].locomotive.pathPointIndex, gTrainList[i].speed);
 
         gTrainList[i].locomotive.velocity[0] = gTrainList[i].locomotive.position[0] - temp_f20;
@@ -329,7 +329,7 @@ void update_vehicle_trains(void) {
             temp_f20 = car->position[0];
             temp_f22 = car->position[2];
             orientationYUpdate =
-                update_vehicle_following_pathPoint(car->position, (s16*) &car->pathPointIndex, gTrainList[i].speed);
+                update_vehicle_following_path(car->position, (s16*) &car->pathPointIndex, gTrainList[i].speed);
             car->velocity[0] = car->position[0] - temp_f20;
             car->velocity[2] = car->position[2] - temp_f22;
             sync_train_components(car, orientationYUpdate);
@@ -342,7 +342,7 @@ void update_vehicle_trains(void) {
                 temp_f22 = car->position[2];
 
                 orientationYUpdate =
-                    update_vehicle_following_pathPoint(car->position, (s16*) &car->pathPointIndex, gTrainList[i].speed);
+                    update_vehicle_following_path(car->position, (s16*) &car->pathPointIndex, gTrainList[i].speed);
                 car->velocity[0] = car->position[0] - temp_f20;
                 car->velocity[2] = car->position[2] - temp_f22;
                 sync_train_components(car, orientationYUpdate);
@@ -419,7 +419,7 @@ void func_80013054(void) {
     isCrossingTriggeredByIndex[1] = 0;
 
     for (i = 0; i < NUM_TRAINS; i++) {
-        temp_f16 = gTrainList[i].locomotive.pathPointIndex / ((f32) gVehicle2DPathPointLength);
+        temp_f16 = gTrainList[i].locomotive.pathPointIndex / ((f32) gVehicle2DPathLength);
         temp_f18 = 0.72017354f;
         temp_f12 = 0.42299348f;
 
@@ -517,8 +517,7 @@ void update_vehicle_paddle_boats(void) {
             temp_f26 = paddleBoat->position[0];
             temp_f28 = paddleBoat->position[1];
             temp_f30 = paddleBoat->position[2];
-            update_vehicle_following_pathPoint(paddleBoat->position, (s16*) &paddleBoat->pathPointIndex,
-                                               paddleBoat->speed);
+            update_vehicle_following_path(paddleBoat->position, (s16*) &paddleBoat->pathPointIndex, paddleBoat->speed);
             paddleBoat->someFlags = set_vehicle_render_distance_flags(paddleBoat->position, BOAT_SMOKE_RENDER_DISTANCE,
                                                                       paddleBoat->someFlags);
             if ((((s16) gFerrySmokeTimer % 10) == 0) && (paddleBoat->someFlags != 0)) {
@@ -543,7 +542,7 @@ void update_vehicle_paddle_boats(void) {
             sp94[0] = temp_f26;
             sp94[1] = temp_f28;
             sp94[2] = temp_f30;
-            pathPoint = &gVehicle2DPathPoint[(paddleBoat->pathPointIndex + 5) % gVehicle2DPathPointLength];
+            pathPoint = &gVehicle2DPathPoint[(paddleBoat->pathPointIndex + 5) % gVehicle2DPathLength];
             sp88[0] = (f32) pathPoint->x;
             sp88[1] = (f32) D_80162EB0;
             sp88[2] = (f32) pathPoint->z;
