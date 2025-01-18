@@ -89,10 +89,10 @@ extern f32 gPathStartZ;
 // These seem to track whether a player has entered or exited the "unknown" zone in yoshi's valley
 // See yoshi_valley_cpu_path and update_cpu_path_completion
 // Is 1 when a player is in the "unknown" zone in yoshi's valley
-extern s16 cpu_NeedChoosePath[];
+extern s16 cpu_enteringPathIntersection[];
 // Is 1 when a player leaves the "unknown" zone in yoshi's valley
-extern s16 cpu_ResetPath[];
+extern s16 cpu_exitingPathIntersection[];
 // Tracks whether a given player is in the "unknown" zone of yoshi's valley
-extern s16 gNeedToChoosePath[];
+extern s16 bInMultiPathSection[];
 
 #endif

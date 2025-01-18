@@ -374,8 +374,8 @@ extern s32 D_80163480;
 extern s32 D_80163484;
 extern s32 D_80163488;
 extern s16 D_8016348C;
-extern s16 cpu_NeedChoosePath[];
-extern s16 cpu_ResetPath[];
+extern s16 cpu_enteringPathIntersection[];
+extern s16 cpu_exitingPathIntersection[];
 extern s16 D_801634C0[];
 extern s16 bStopAICrossing[];
 extern s16 D_801634EC;
@@ -406,7 +406,7 @@ extern s32 D_8016448C;
 extern f32 D_80164498[];
 extern f32 gLapCompletionPercentByPlayerId[];    // D_801644A8
 extern f32 gCourseCompletionPercentByPlayerId[]; // D_801644D0
-extern s16 gNeedToChoosePath[];
+extern s16 bInMultiPathSection[];
 extern f32 gPlayerPathY[];
 extern s16 D_80164538[];
 extern s32 D_801645D0[];

@@ -127,8 +127,8 @@ s32 D_80163480;
 s32 D_80163484;
 s32 D_80163488;
 s16 D_8016348C;
-s16 cpu_NeedChoosePath[12];
-s16 cpu_ResetPath[12];
+s16 cpu_enteringPathIntersection[12];
+s16 cpu_exitingPathIntersection[12];
 s16 D_801634C0[12];
 s16 bStopAICrossing[10];
 s16 D_801634EC;
@@ -168,7 +168,7 @@ TrackPathPoint* gCurrentTrackPath;
 f32 D_80164498[4];
 f32 gLapCompletionPercentByPlayerId[10];    // D_801644A8
 f32 gCourseCompletionPercentByPlayerId[10]; // D_801644D0
-s16 gNeedToChoosePath[12];
+s16 bInMultiPathSection[12];
 f32 gPlayerPathY[10];
 s16 D_80164538[12];
 TrackPathPoint* gTrackPaths[4];
@@ -1144,37 +1144,37 @@ void update_player_completion(s32 playerId) {
 void yoshi_valley_cpu_path(s32 playerId) {
     s16 previous;
 
-    previous = gNeedToChoosePath[playerId];
+    previous = bInMultiPathSection[playerId];
     if (sSomeNearestPathPoint >= 0x6D) {
-        gNeedToChoosePath[playerId] = true;
+        bInMultiPathSection[playerId] = true;
         switch (gPlayerPathIndex) {
             case 0:
                 if (sSomeNearestPathPoint >= 0x20F) {
-                    gNeedToChoosePath[playerId] = false;
+                    bInMultiPathSection[playerId] = false;
                 }
                 break;
             case 1:
                 if (sSomeNearestPathPoint >= 0x206) {
-                    gNeedToChoosePath[playerId] = false;
+                    bInMultiPathSection[playerId] = false;
                 }
                 break;
             case 2:
                 if (sSomeNearestPathPoint >= 0x211) {
-                    gNeedToChoosePath[playerId] = false;
+                    bInMultiPathSection[playerId] = false;
                 }
                 break;
             case 3:
                 if (sSomeNearestPathPoint >= 0x283) {
-                    gNeedToChoosePath[playerId] = false;
+                    bInMultiPathSection[playerId] = false;
                 }
                 break;
         }
     }
-    if ((previous == false) && (gNeedToChoosePath[playerId] == true)) {
-        cpu_NeedChoosePath[playerId] = true;
+    if ((previous == false) && (bInMultiPathSection[playerId] == true)) {
+        cpu_enteringPathIntersection[playerId] = true;
     }
-    if ((previous == true) && (gNeedToChoosePath[playerId] == false)) {
-        cpu_ResetPath[playerId] = true;
+    if ((previous == true) && (bInMultiPathSection[playerId] == false)) {
+        cpu_exitingPathIntersection[playerId] = true;
     }
 }
 
@@ -1187,19 +1187,19 @@ void update_cpu_path_completion(s32 playerId, Player* player) {
     posX = player->pos[0];
     posY = player->pos[1];
     posZ = player->pos[2];
-    if (cpu_NeedChoosePath[playerId] == 1) {
+    if (cpu_enteringPathIntersection[playerId] == 1) {
         gPlayerPathIndex = update_player_path_selection(playerId, random_int(4U));
         sSomeNearestPathPoint = update_player_path(posX, posY, posZ, 0, player, playerId, gPlayerPathIndex);
         gNearestPathPointByPlayerId[playerId] = sSomeNearestPathPoint;
         update_player_completion(playerId);
-        cpu_NeedChoosePath[playerId] = 0;
+        cpu_enteringPathIntersection[playerId] = 0;
     }
-    if (cpu_ResetPath[playerId] == 1) {
+    if (cpu_exitingPathIntersection[playerId] == 1) {
         gPlayerPathIndex = update_player_path_selection(playerId, 0);
         sSomeNearestPathPoint = update_player_path(posX, posY, posZ, 0, player, playerId, gPlayerPathIndex);
         gNearestPathPointByPlayerId[playerId] = sSomeNearestPathPoint;
         update_player_completion(playerId);
-        cpu_ResetPath[playerId] = 0;
+        cpu_exitingPathIntersection[playerId] = 0;
     }
 }
 
@@ -2162,7 +2162,7 @@ void init_players(void) {
         var_s5->step = 0.015f;
         reset_cpu_behaviour_none(i);
         gSpeedCPUBehaviour[i] = 0;
-        gNeedToChoosePath[i] = 0;
+        bInMultiPathSection[i] = 0;
         D_80163398[i] = 0;
         D_801633B0[i] = 0;
         gPositionSwapTimer[i] = 0;
@@ -2177,8 +2177,8 @@ void init_players(void) {
             D_80163330[i] = 0;
         }
 
-        cpu_NeedChoosePath[i] = 0;
-        cpu_ResetPath[i] = 0;
+        cpu_enteringPathIntersection[i] = 0;
+        cpu_exitingPathIntersection[i] = 0;
         D_80163128[i] = -1;
         D_80163150[i] = -1;
         D_80164538[i] = -1;
