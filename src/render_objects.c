@@ -3745,7 +3745,7 @@ void func_80053D74(s32 objectIndex, UNUSED s32 arg1, s32 vertexIndex) {
     }
 }
 
-void render_object_balloon(s32 arg0) {
+void render_object_grand_prix_balloons(s32 arg0) {
     s32 var_s1;
     s32 objectIndex;
 

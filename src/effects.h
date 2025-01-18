@@ -106,7 +106,7 @@ void func_8008FDA8(Player*, s8);
 void func_8008FDF4(Player*, s8);
 void func_8008FE84(Player*, s8);
 void func_8008FEDC(Player*, s8);
-void course_update_pathPoint(Player*, s8);
+void course_update_path_point(Player*, s8);
 void func_80090178(Player*, s8, Vec3f, Vec3f);
 void func_80090778(Player*);
 void func_80090868(Player*);

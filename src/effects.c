@@ -214,7 +214,7 @@ void func_8008C528(Player* player, s8 arg1) {
         func_800C90F4(arg1, (temp_v1 * 0x10) + 0x29008005);
         func_800C9060(arg1, SOUND_ACTION_EXPLOSION);
     } else {
-        play_ai_sound_effect(arg1, player);
+        play_cpu_sound_effect(arg1, player);
     }
     player->soundEffects = (s32) (player->soundEffects & ~4);
 }
@@ -285,7 +285,7 @@ void func_8008C73C(Player* player, s8 arg1) {
             ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
             func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008003);
         } else {
-            play_ai_sound_effect(arg1, player);
+            play_cpu_sound_effect(arg1, player);
         }
     }
 }
@@ -714,7 +714,7 @@ void apply_hit_sound_effect(Player* player, s8 arg1) {
 
         player->effects |= HIT_EFFECT;
         if (((player->type) & 0x1000) != 0) {
-            play_ai_sound_effect(arg1, player);
+            play_cpu_sound_effect(arg1, player);
         }
     }
 }
@@ -854,7 +854,7 @@ void apply_hit_rotating_sound_effect(Player* player, s8 arg1) {
         ((player->type & PLAYER_INVISIBLE_OR_BOMB) != PLAYER_INVISIBLE_OR_BOMB)) {
         func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008003);
     } else {
-        play_ai_sound_effect(arg1, player);
+        play_cpu_sound_effect(arg1, player);
     }
     if (gModeSelection == BATTLE) {
         func_8006B8B4(player, arg1);
@@ -1022,7 +1022,7 @@ void apply_reverse_sound_effect(Player* player, s8 arg1) {
         }
         func_800C9060(arg1, SOUND_ACTION_EXPLOSION);
     } else {
-        play_ai_sound_effect(arg1, player);
+        play_cpu_sound_effect(arg1, player);
     }
 
     player->soundEffects &= ~(REVERSE_SOUND_EFFECT | 0x80000);
@@ -1121,7 +1121,7 @@ void apply_hit_by_item_sound_effect(Player* player, s8 arg1) {
         func_800C90F4(arg1, (player->characterId * 0x10) + 0x29008005);
         func_800C9060(arg1, SOUND_ACTION_EXPLOSION);
     } else {
-        play_ai_sound_effect(arg1, player);
+        play_cpu_sound_effect(arg1, player);
     }
 
     player->effects |= HIT_BY_ITEM_EFFECT;
@@ -1589,7 +1589,7 @@ void func_8008FEDC(Player* player, UNUSED s8 arg1) {
     player->kartHopAcceleration = 0.0f;
 }
 
-void course_update_pathPoint(Player* player, s8 playerId) {
+void course_update_path_point(Player* player, s8 playerId) {
     s16 pathPoint;
 
 #if !ENABLE_CUSTOM_COURSE_ENGINE
@@ -1802,7 +1802,7 @@ void func_80090868(Player* player) {
         player->unk_D98 = 1;
         player->unk_D9C = 0.0f;
         player->unk_DA0 = 0.5f;
-        course_update_pathPoint(player, playerIndex);
+        course_update_path_point(player, playerIndex);
         player->unk_222 = 0;
         player->unk_0CA |= 2;
         player->unk_0C8 = 0;

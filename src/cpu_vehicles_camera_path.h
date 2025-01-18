@@ -118,7 +118,7 @@ void update_cpu_path_completion(s32, Player*);
 f32 func_80009258(s32, f32, f32);
 void update_player_path_completion(s32, Player*);
 void update_vehicles(void);
-void play_ai_sound_effect(s32, Player*);
+void play_cpu_sound_effect(s32, Player*);
 void update_player_timer_sound(s32, Player*);
 void update_player(s32);
 

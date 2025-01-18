@@ -785,7 +785,7 @@ void render_object_for_player(s32 cameraId) {
     render_object_leaf_particle(cameraId);
 
     if (D_80165730 != 0) {
-        render_object_balloon(cameraId);
+        render_object_grand_prix_balloons(cameraId);
     }
     if (gModeSelection == BATTLE) {
         render_object_bomb_kart(cameraId);

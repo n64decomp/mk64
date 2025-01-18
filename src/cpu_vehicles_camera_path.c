@@ -1363,7 +1363,7 @@ void update_vehicles(void) {
     }
 }
 
-void play_ai_sound_effect(s32 arg0, Player* player) {
+void play_cpu_sound_effect(s32 arg0, Player* player) {
     if (D_80163398[arg0] >= 0xB) {
         if ((player->effects & 0x80) || (player->effects & 0x40) || (player->effects & 0x20000)) {
             func_800C92CC(arg0, SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0A));
