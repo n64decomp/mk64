@@ -50,13 +50,13 @@ void cpu_behaviour_start(s32 playerId, Player* player) {
                 player->effects &= ~0x10;
                 D_801630E8[playerId] = 0;
                 break;
-            case BEHAVIOUR_GO_CENTER:
+            case BEHAVIOUR_DRIVE_CENTER:
                 gPlayerTrackPositionFactorInstruction[playerId].target = 0.0f;
                 break;
-            case BEHAVIOUR_GO_INNER:
+            case BEHAVIOUR_DRIVE_LEFT:
                 gPlayerTrackPositionFactorInstruction[playerId].target = -0.6f;
                 break;
-            case BEHAVIOUR_GO_OUTER:
+            case BEHAVIOUR_DRIVE_OUTER:
                 gPlayerTrackPositionFactorInstruction[playerId].target = 0.6f;
                 break;
             case BEHAVIOUR_NORMAL_SPEED:
@@ -99,9 +99,9 @@ void cpu_behaviour_end(s32 playerIndex, Player* player) {
                 D_801630E8[playerIndex] = 0;
                 cpu_BehaviourState[playerIndex] = cpu_BEHAVIOUR_STATE_START;
                 break;
-            case BEHAVIOUR_GO_CENTER:
-            case BEHAVIOUR_GO_INNER:
-            case BEHAVIOUR_GO_OUTER:
+            case BEHAVIOUR_DRIVE_CENTER:
+            case BEHAVIOUR_DRIVE_LEFT:
+            case BEHAVIOUR_DRIVE_OUTER:
                 gPlayerTrackPositionFactorInstruction[playerIndex].target =
                     gPlayerTrackPositionFactorInstruction[playerIndex].unkC;
                 cpu_BehaviourState[playerIndex] = cpu_BEHAVIOUR_STATE_START;

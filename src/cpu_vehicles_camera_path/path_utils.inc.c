@@ -23,11 +23,11 @@ bool is_far_from_path(s32 playerIndex) {
 }
 
 /**
- * Calculates a factor representing where the player is positioned between inner and outer track boundaries
+ * Calculates a factor representing where the player is positioned between left and right track boundaries
  * Returns a value between -1.0 and 1.0:
- * -1.0 = On the inner boundary
+ * -1.0 = On the left boundary
  *  0.0 = In the middle of the track
- *  1.0 = On the outer boundary
+ *  1.0 = On the right boundary
  *
  * @param posX Player's X position
  * @param posZ Player's Z position
@@ -36,24 +36,24 @@ bool is_far_from_path(s32 playerIndex) {
  * @return Position factor between track boundaries
  */
 f32 calculate_track_position_factor(f32 posX, f32 posZ, u16 pathPointIndex, s32 pathIndex) {
-    f32 innerX;
-    f32 innerZ;
-    f32 outerX;
-    f32 outerZ;
+    f32 leftX;
+    f32 leftZ;
+    f32 rightX;
+    f32 rightZ;
     f32 boundarySquaredDistance;
     f32 positionFactor;
-    TrackPathPoint* innerPathPoint;
-    TrackPathPoint* outerPathPoint;
+    TrackPathPoint* leftPathPoint;
+    TrackPathPoint* rightPathPoint;
 
-    innerPathPoint = &gTrackInnerPath[pathIndex][pathPointIndex];
-    outerPathPoint = &gTrackOuterPath[pathIndex][pathPointIndex];
+    leftPathPoint = &gTrackInnerPath[pathIndex][pathPointIndex];
+    rightPathPoint = &gTrackOuterPath[pathIndex][pathPointIndex];
 
-    innerX = innerPathPoint->posX;
-    innerZ = innerPathPoint->posZ;
-    outerX = outerPathPoint->posX;
-    outerZ = outerPathPoint->posZ;
+    leftX = leftPathPoint->posX;
+    leftZ = leftPathPoint->posZ;
+    rightX = rightPathPoint->posX;
+    rightZ = rightPathPoint->posZ;
 
-    boundarySquaredDistance = ((outerX - innerX) * (outerX - innerX)) + ((outerZ - innerZ) * (outerZ - innerZ));
+    boundarySquaredDistance = ((rightX - leftX) * (rightX - leftX)) + ((rightZ - leftZ) * (rightZ - leftZ));
 
     // Avoid division by zero for very close or identical boundary points
     if (boundarySquaredDistance < 0.01f) {
@@ -62,9 +62,9 @@ f32 calculate_track_position_factor(f32 posX, f32 posZ, u16 pathPointIndex, s32 
     // Calculate normalized position factor using vector projection
     // Formula: 2 * (dot product of vectors) / (squared magnitude) - 1
     // This maps the position to a -1 to 1 range
-    positionFactor = ((2.0f * ((outerX - innerX) * (posX - innerX) + (outerZ - innerZ) * (posZ - innerZ))) /
-                      boundarySquaredDistance) -
-                     1.0f;
+    positionFactor =
+        ((2.0f * ((rightX - leftX) * (posX - leftX) + (rightZ - leftZ) * (posZ - leftZ))) / boundarySquaredDistance) -
+        1.0f;
     return positionFactor;
 }
 
@@ -122,10 +122,10 @@ void calculate_track_offset_position(u16 pathPointIndex, f32 lerpFactor, f32 off
 }
 
 /**
- * Calculates an interpolated position between inner and outer track paths.
+ * Calculates an interpolated position between left and right track paths.
  *
  * @param currentPathPoint Index of the current pathPoint
- * @param trackOffset Value between 0.0 and 1.0 determining position between inner (0.0) and outer (1.0) path
+ * @param trackOffset Value between 0.0 and 1.0 determining position between left (0.0) and right (1.0) path
  * @param pathIndex Index of the track/path segment
  */
 void set_track_offset_position(u16 pathPointIndex, f32 trackOffset, s16 pathIndex) {

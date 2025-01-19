@@ -66,7 +66,7 @@ void crash_screen_draw_square(u16* framebuffer);
  * The big mismatch is the handling of the '6' used in the if statement
  * In the target assembly that 6 is saved to 5 different temp registers,
  * while in this non-matching decomp its only saved to one temp register.
- * This seems to be related to how the innermost for loop is unrolled, but
+ * This seems to be related to how the leftmost for loop is unrolled, but
  * its not clear why the target assembley would save the same immediate to
  * 5 different registers instead of just re-using one
  * There's some stack related differences too, maybe that's related?

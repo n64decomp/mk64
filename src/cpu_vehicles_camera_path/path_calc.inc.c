@@ -88,13 +88,13 @@ void calculate_track_boundaries(s32 pathIndex) {
             xz_dist = sqrtf((x_dist * x_dist) + (z_dist * z_dist));
             temp_f16 = (f32) ((y1 + y2) * 0.5);
 
-            // Calculate inner boundary position
+            // Calculate left boundary position
             // Uses perpendicular vector (Z, -X) normalized by segment length
             var_s1->posX = ((pathPointWidth * z_dist) / xz_dist) + x1;
             var_s1->posY = temp_f16;
             var_s1->posZ = ((pathPointWidth * neg_x_dist) / xz_dist) + z1;
 
-            // Calculate outer boundary position
+            // Calculate right boundary position
             // Uses opposite perpendicular vector (-Z, X)
             var_s2->posX = ((pathPointWidth * neg_z_dist) / xz_dist) + x1;
             var_s2->posY = temp_f16;
