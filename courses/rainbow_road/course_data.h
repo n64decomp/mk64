@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include "animation.h"
 
@@ -58,8 +58,8 @@ extern Gfx d_course_rainbow_road_dl_17D0[];
 extern Gfx d_course_rainbow_road_dl_1878[];
 extern Gfx d_course_rainbow_road_dl_18D0[];
 extern Gfx d_course_rainbow_road_dl_1948[];
-extern TrackWaypoint d_course_rainbow_road_unknown_waypoints[];
-extern TrackWaypoint d_course_rainbow_road_track_waypoints[];
+extern TrackPathPoint d_course_rainbow_road_unknown_path[];
+extern TrackPathPoint d_course_rainbow_road_track_path[];
 extern u8 d_course_rainbow_road_neon_mushroom_tlut_list[][512];
 extern u8 d_course_rainbow_road_neon_mario_tlut_list[][512];
 extern u8 d_course_rainbow_road_neon_boo_tlut_list[][512];

@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <mk64.h>
 
@@ -2283,7 +2283,7 @@ Gfx d_course_bowsers_castle_dl_4EA8[] = {
 };
 
 // 0x4F90
-TrackWaypoint d_course_bowsers_castle_unknown_waypoints[] = {
+TrackPathPoint d_course_bowsers_castle_unknown_path[] = {
     { 2, 0, -172, 0 },     { 2, 0, -197, 0 },     { -2, 0, -691, 0 },    { -1, 0, -1087, 0 },   { 4, 0, -1519, 0 },
     { 88, 0, -1645, 0 },   { 228, 0, -1743, 0 },  { 571, 0, -1749, 0 },  { 999, 0, -1749, 0 },  { 1201, 0, -1747, 0 },
     { 1262, 0, -1759, 0 }, { 1274, 0, -1797, 0 }, { 1277, 0, -2193, 0 }, { 1272, 0, -2487, 0 }, { 1281, 0, -2631, 0 },
@@ -2301,7 +2301,7 @@ TrackWaypoint d_course_bowsers_castle_unknown_waypoints[] = {
     { 3, 0, -144, 0 },     { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_bowsers_castle_track_waypoints[] = {
+TrackPathPoint d_course_bowsers_castle_track_path[] = {
     { 2, 0, -184, 1 },
     { 1, 0, -204, 2 },
     { 1, 0, -224, 2 },

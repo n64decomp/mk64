@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 
 extern Gfx d_course_bowsers_castle_dl_0[];
@@ -115,8 +115,8 @@ extern Gfx d_course_bowsers_castle_dl_4A98[];
 extern Gfx d_course_bowsers_castle_dl_4C00[];
 extern Gfx d_course_bowsers_castle_dl_4CE8[];
 extern Gfx d_course_bowsers_castle_dl_4EA8[];
-extern TrackWaypoint d_course_bowsers_castle_unknown_waypoints[];
-extern TrackWaypoint d_course_bowsers_castle_track_waypoints[];
+extern TrackPathPoint d_course_bowsers_castle_unknown_path[];
+extern TrackPathPoint d_course_bowsers_castle_track_path[];
 extern u8 d_course_bowsers_castle_thwomp_side[];
 extern u8 d_course_bowsers_castle_thwomp_tlut[];
 extern u8 d_course_bowsers_castle_thwomp_faces[][1024];

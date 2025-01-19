@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 
 extern Gfx d_course_luigi_raceway_dl_0[];
@@ -127,8 +127,8 @@ extern Gfx d_course_luigi_raceway_dl_9E58[];
 extern Gfx d_course_luigi_raceway_dl_A028[];
 extern Gfx d_course_luigi_raceway_dl_A178[];
 extern Gfx d_course_luigi_raceway_dl_A320[];
-extern TrackWaypoint d_course_luigi_raceway_unknown_waypoints[];
-extern TrackWaypoint d_course_luigi_raceway_track_waypoints[];
+extern TrackPathPoint d_course_luigi_raceway_unknown_path[];
+extern TrackPathPoint d_course_luigi_raceway_track_path[];
 extern Vtx d_course_luigi_raceway_basket_model_lod2[];
 extern Vtx d_course_luigi_raceway_unknown_model1[];
 extern Vtx d_course_luigi_raceway_unknown_model2[];

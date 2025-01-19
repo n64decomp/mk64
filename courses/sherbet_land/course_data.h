@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include "animation.h"
 
@@ -152,8 +152,8 @@ extern Gfx d_course_sherbet_land_dl_4930[];
 extern Gfx d_course_sherbet_land_dl_4A20[];
 extern Gfx d_course_sherbet_land_dl_4A98[];
 extern Gfx d_course_sherbet_land_dl_4B20[];
-extern TrackWaypoint d_course_sherbet_land_unknown_waypoints[];
-extern TrackWaypoint d_course_sherbet_land_track_waypoints[];
+extern TrackPathPoint d_course_sherbet_land_unknown_path[];
+extern TrackPathPoint d_course_sherbet_land_track_path[];
 extern Vtx d_course_sherbet_land_model1[];
 extern Vtx d_course_sherbet_land_model2[];
 extern Vtx d_course_sherbet_land_model3[];

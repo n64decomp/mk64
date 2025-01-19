@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <mk64.h>
 
@@ -2549,7 +2549,7 @@ Gfx d_course_banshee_boardwalk_dl_4480[] = {
 };
 
 // 0x4578 Spawn location
-TrackWaypoint d_course_banshee_boardwalk_unknown_waypoints[] = {
+TrackPathPoint d_course_banshee_boardwalk_unknown_path[] = {
     { 5, 0, -65, 0 },       { 5, 0, -90, 0 },       { 4, 0, -203, 0 },      { 5, 0, -501, 0 },
     { -13, 0, -575, 0 },    { -54, 0, -598, 0 },    { -244, 0, -605, 0 },   { -634, 0, -602, 0 },
     { -688, 0, -629, 0 },   { -704, 0, -697, 0 },   { -702, 0, -895, 0 },   { -702, 0, -1095, 0 },
@@ -2572,7 +2572,7 @@ TrackWaypoint d_course_banshee_boardwalk_unknown_waypoints[] = {
     { 5, 0, 100, 0 },       { 7, 0, -28, 0 },       { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_banshee_boardwalk_track_waypoints[] = {
+TrackPathPoint d_course_banshee_boardwalk_track_path[] = {
     { 5, 12, -77, 1 },         { 4, 12, -97, 1 },
     { 4, 12, -117, 1 },        { 4, 12, -137, 1 },
     { 4, 12, -157, 1 },        { 4, 12, -177, 1 },

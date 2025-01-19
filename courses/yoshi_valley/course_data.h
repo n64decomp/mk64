@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include "animation.h"
 
@@ -133,14 +133,14 @@ extern Gfx d_course_yoshi_valley_dl_D018[];
 extern Gfx d_course_yoshi_valley_dl_D1E8[];
 extern Gfx d_course_yoshi_valley_dl_D3D0[];
 extern Gfx d_course_yoshi_valley_dl_D540[];
-extern TrackWaypoint d_course_yoshi_valley_unknown_waypoints[];
-extern TrackWaypoint d_course_yoshi_valley_unknown_waypoints_2[];
-extern TrackWaypoint d_course_yoshi_valley_unknown_waypoints_3[];
-extern TrackWaypoint d_course_yoshi_valley_unknown_waypoints_4[];
-extern TrackWaypoint d_course_yoshi_valley_track_waypoints[];
-extern TrackWaypoint d_course_yoshi_valley_track_waypoints_2[];
-extern TrackWaypoint d_course_yoshi_valley_track_waypoints_3[];
-extern TrackWaypoint d_course_yoshi_valley_track_waypoints_4[];
+extern TrackPathPoint d_course_yoshi_valley_unknown_path[];
+extern TrackPathPoint d_course_yoshi_valley_unknown_path_2[];
+extern TrackPathPoint d_course_yoshi_valley_unknown_path_3[];
+extern TrackPathPoint d_course_yoshi_valley_unknown_path_4[];
+extern TrackPathPoint d_course_yoshi_valley_track_path[];
+extern TrackPathPoint d_course_yoshi_valley_track_path_2[];
+extern TrackPathPoint d_course_yoshi_valley_track_path_3[];
+extern TrackPathPoint d_course_yoshi_valley_track_path_4[];
 extern Lights1 d_course_yoshi_valley_unknown_light1;
 extern Lights1 d_course_yoshi_valley_unknown_light2;
 extern Lights1 d_course_yoshi_valley_unknown_light3;

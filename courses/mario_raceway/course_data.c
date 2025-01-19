@@ -4,7 +4,7 @@
 #include <PR/gbi.h>
 #include <actor_types.h>
 #include <course.h>
-#include <waypoints.h>
+#include <path.h>
 #include <mk64.h>
 
 #include "course_displaylists.inc.h"
@@ -3093,7 +3093,7 @@ Gfx d_course_mario_raceway_dl_5228[] = {
     gsSPEndDisplayList(),
 };
 
-TrackWaypoint d_course_mario_raceway_unknown_waypoints[] = {
+TrackPathPoint d_course_mario_raceway_unknown_path[] = {
     { 0, 0, -224, 0 },    { 0, 0, -241, 0 },    { 0, 0, -612, 0 },    { 16, 0, -690, 0 },   { 62, 0, -756, 0 },
     { 128, 0, -798, 0 },  { 494, 0, -944, 0 },  { 637, 0, -997, 0 },  { 708, 0, -1007, 0 }, { 776, 0, -992, 0 },
     { 836, 0, -949, 0 },  { 883, 0, -890, 0 },  { 902, 0, -796, 0 },  { 878, 0, -706, 0 },  { 812, 0, -584, 0 },
@@ -3111,7 +3111,7 @@ TrackWaypoint d_course_mario_raceway_unknown_waypoints[] = {
     { 1, 0, 255, 0 },     { 0, 0, -180, 0 },    { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_mario_raceway_track_waypoints[] = {
+TrackPathPoint d_course_mario_raceway_track_path[] = {
     { 0, 0, -232, 1 },      { 0, 0, -252, 1 },      { 0, 0, -272, 1 },      { 0, 0, -292, 1 },
     { 0, 0, -312, 1 },      { 0, 0, -332, 1 },      { 0, 0, -352, 1 },      { 0, 0, -372, 1 },
     { 0, 0, -392, 1 },      { 0, 0, -412, 1 },      { 0, 0, -432, 1 },      { 0, 0, -452, 1 },

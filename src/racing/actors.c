@@ -14,9 +14,9 @@
 #include "memory.h"
 #include "actors_extended.h"
 #include "actors.h"
-#include "waypoints.h"
+#include "path.h"
 #include "macros.h"
-#include "code_80005FD0.h"
+#include "cpu_vehicles_camera_path.h"
 #include "update_objects.h"
 #include "effects.h"
 #include "collision.h"
@@ -1659,7 +1659,7 @@ bool collision_yoshi_egg(Player* player, struct YoshiValleyEgg* egg) {
             func_800C90F4(player - gPlayerOne, (player->characterId * 0x10) + SOUND_ARG_LOAD(0x29, 0x00, 0x80, 0x0D));
         } else {
             apply_hit_sound_effect(player, player - gPlayerOne);
-            if ((gModeSelection == TIME_TRIALS) && ((player->type & PLAYER_KART_AI) == 0)) {
+            if ((gModeSelection == TIME_TRIALS) && ((player->type & PLAYER_CPU) == 0)) {
                 D_80162DF8 = 1;
             }
         }
@@ -1736,7 +1736,7 @@ bool collision_tree(Player* player, struct Actor* actor) {
     actorPos[2] = actor->pos[2];
     if (((gCurrentCourseId == COURSE_MARIO_RACEWAY) || (gCurrentCourseId == COURSE_YOSHI_VALLEY) ||
          (gCurrentCourseId == COURSE_ROYAL_RACEWAY) || (gCurrentCourseId == COURSE_LUIGI_RACEWAY)) &&
-        (player->unk_094 > 1.0f)) {
+        (player->speed > 1.0f)) {
         spawn_leaf(actorPos, 0);
     }
     if (xz_dist < 0.1f) {
@@ -2148,7 +2148,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             break;
         case ACTOR_RED_SHELL:
             temp_v1 = actor->rot[2];
-            if (player->effects & 0x01000000) {
+            if (player->effects & UNKNOWN_EFFECT_0x1000000) {
                 break;
             }
             if (player->soundEffects & 2) {
@@ -2199,7 +2199,7 @@ void evaluate_collision_between_player_actor(Player* player, struct Actor* actor
             if (!(player->effects & BOO_EFFECT) && !(player->type & PLAYER_INVISIBLE_OR_BOMB)) {
                 if (query_collision_player_vs_actor_item(player, actor) == COLLISION) {
                     func_800C98B8(actor->pos, actor->velocity, SOUND_ACTION_EXPLOSION);
-                    if ((gModeSelection == TIME_TRIALS) && !(player->type & PLAYER_KART_AI)) {
+                    if ((gModeSelection == TIME_TRIALS) && !(player->type & PLAYER_CPU)) {
                         D_80162DF8 = 1;
                     }
                     if (player->effects & STAR_EFFECT) {
@@ -2281,7 +2281,7 @@ void evaluate_collision_for_players_and_actors(void) {
     for (i = 0; i < NUM_PLAYERS; i++) {
         phi_s1 = &gPlayers[i];
 
-        if (((phi_s1->type & 0x8000) != 0) && ((phi_s1->effects & 0x4000000) == 0)) {
+        if (((phi_s1->type & PLAYER_EXISTS) != 0) && ((phi_s1->effects & 0x4000000) == 0)) {
             func_802977E4(phi_s1);
             for (j = 0; j < ACTOR_LIST_SIZE; j++) {
                 temp_a1 = &gActorList[j];
@@ -2376,7 +2376,7 @@ void evaluate_collision_for_destructible_actors(void) {
 void func_802A1064(struct FakeItemBox* fake_item_box) {
     if ((u32) (fake_item_box - (struct FakeItemBox*) gActorList) <= (u32) ACTOR_LIST_SIZE) {
         if (((fake_item_box->flags & 0x8000) != 0) && (fake_item_box->type == ACTOR_FAKE_ITEM_BOX)) {
-            fake_item_box->state = 1;
+            fake_item_box->state = FAKE_ITEM_BOX_ON_GROUND;
             fake_item_box->targetY = func_802ABEAC(&fake_item_box->unk30, fake_item_box->pos) + 8.66f;
             fake_item_box->someTimer = 100;
         }

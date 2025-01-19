@@ -7,10 +7,10 @@ course:
   cup: null
   cup_index: -1
   course_length: null
-  kart_ai_behaviour_ptr: D_0D008F18
-  kart_ai_maximum_separation: 40.0f    # entry
-  kart_ai_minimum_separation: 0.5f    # entry
-  D_800DCBB4: D_800DCAF4 
+  cpu_behaviour_ptr: D_0D008F18
+  cpu_maximum_separation: 40.0f # entry
+  cpu_minimum_separation: 0.5f # entry
+  D_800DCBB4: D_800DCAF4
   cpu_steering_sensitivity: 53 # entry
   bomb_kart_spawns: # 7 bomb kart spawn locations
     - [0x0003, 0x0005, 1.25, 0.0, 0.0, 0.0, 0.0]
@@ -23,16 +23,22 @@ course:
   path_sizes: [0x01F4, 0x01F4, 0x01F4, 0x01F4, 0x0001, 0x0000, 0x0000, 0x0000]
 
   # unk common_textures data
-  D_0D009418: [0.0f, 0.0f, 0.0f, 0.0f]
-  D_0D009568: [0.0f, 0.0f, 0.0f, 0.0f]
+  cpu_CurveTargetSpeed: [0.0f, 0.0f, 0.0f, 0.0f]
+  cpu_NormalTargetSpeed: [0.0f, 0.0f, 0.0f, 0.0f]
   D_0D0096B8: [0.0f, 0.0f, 0.0f, 0.0f]
-  D_0D009808: [0.0f, 0.0f, 0.0f, 0.0f]
+  cpu_OffTrackTargetSpeed: [0.0f, 0.0f, 0.0f, 0.0f]
 
-  # Course waypoints
-  path_table: ["&nullPath", "&nullPath",   "&nullPath", "&nullPath"]
+  # Course path
+  path_table: ["&nullPath", "&nullPath", "&nullPath", "&nullPath"]
 
   # Unused except in podium ceremony
-  path_table_unknown: [podium_ceremony_path, podium_ceremony_path_2,   podium_ceremony_path_3, podium_ceremony_path_4]
+  path_table_unknown:
+    [
+      podium_ceremony_path,
+      podium_ceremony_path_2,
+      podium_ceremony_path_3,
+      podium_ceremony_path_4,
+    ]
 
   sky_colors: [238, 144, 255, 255, 224, 240]
   sky_colors2: [255, 224, 240, 0, 0, 0]

@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <mk64.h>
 #include <animation.h>
@@ -2838,7 +2838,7 @@ Gfx d_course_sherbet_land_dl_4B20[] = {
 };
 
 // unk 0x4BF8
-TrackWaypoint d_course_sherbet_land_unknown_waypoints[] = {
+TrackPathPoint d_course_sherbet_land_unknown_path[] = {
     { -10, 0, 10, 0 },      { -10, 0, -8, 0 },      { -18, 0, -213, 0 },    { 52, 0, -308, 0 },
     { 217, 0, -455, 0 },    { 436, 0, -587, 0 },    { 487, 0, -649, 0 },    { 465, 0, -722, 0 },
     { 308, 0, -890, 0 },    { 132, 0, -1099, 0 },   { 37, 0, -1319, 0 },    { 31, 0, -1396, 0 },
@@ -2857,7 +2857,7 @@ TrackWaypoint d_course_sherbet_land_unknown_waypoints[] = {
     { -2058, 0, 1043, 0 },  { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_sherbet_land_track_waypoints[] = {
+TrackPathPoint d_course_sherbet_land_track_path[] = {
     { -10, 0, 1, 1 },         { -10, 0, -19, 1 },       { -11, 0, -38, 1 },
     { -12, 0, -58, 1 },       { -12, 0, -78, 1 },       { -13, 0, -98, 1 },
     { -14, 0, -118, 1 },      { -14, 0, -139, 1 },      { -13, 0, -159, 1 },

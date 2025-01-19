@@ -3,7 +3,7 @@
 #include <macros.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 #include <mk64.h>
 
@@ -2256,7 +2256,7 @@ Gfx d_course_wario_stadium_dl_5588[] = {
 };
 
 // 0x56A0
-TrackWaypoint d_course_wario_stadium_unknown_waypoints[] = {
+TrackPathPoint d_course_wario_stadium_unknown_path[] = {
     { 16, 0, 7, 0 },        { 11, 0, -25, 0 },      { 8, 0, -227, 0 },      { 6, 0, -674, 0 },
     { -3, 0, -1560, 0 },    { -121, 0, -1883, 0 },  { -430, 0, -2100, 0 },  { -790, 0, -2160, 0 },
     { -1487, 0, -2155, 0 }, { -2171, 0, -2139, 0 }, { -2522, 0, -2014, 0 }, { -2757, 0, -1691, 0 },
@@ -2279,7 +2279,7 @@ TrackWaypoint d_course_wario_stadium_unknown_waypoints[] = {
     { -32768, 0, 0, 0 },
 };
 
-TrackWaypoint d_course_wario_stadium_track_waypoints[] = {
+TrackPathPoint d_course_wario_stadium_track_path[] = {
     { 13, 0, -9, 1 },         { 11, 0, -28, 1 },        { 11, 0, -48, 1 },
     { 10, 0, -68, 1 },        { 10, 0, -88, 1 },        { 9, 0, -108, 1 },
     { 9, 0, -128, 1 },        { 9, 0, -148, 1 },        { 8, 0, -168, 1 },

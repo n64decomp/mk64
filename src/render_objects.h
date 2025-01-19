@@ -295,7 +295,7 @@ void func_8004EE54(s32);
 
 void func_8004EF9C(s32);
 void render_mini_map_finish_line(s32);
-void func_8004F168(s32, s32, s32);
+void draw_minimap_character(s32, s32, s32);
 void func_8004F3E4(s32);
 s32 func_8004F674(s32*, s32);
 void print_timer(s32, s32, s32);
@@ -346,7 +346,7 @@ void func_800534E8(s32);
 void render_object_thwomps_model(s32);
 void render_object_thwomps(s32);
 void func_80053D74(s32, s32, s32);
-void func_80053E6C(s32);
+void render_object_grand_prix_balloons(s32);
 
 void render_object_train_smoke_particle(s32, s32);
 void render_object_trains_smoke_particles(s32);

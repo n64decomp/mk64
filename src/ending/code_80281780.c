@@ -13,7 +13,7 @@
 #include "skybox_and_splitscreen.h"
 #include "code_8006E9C0.h"
 #include "podium_ceremony_actors.h"
-#include "code_80005FD0.h"
+#include "cpu_vehicles_camera_path.h"
 #include "collision.h"
 #include "code_80281C40.h"
 #include "code_800029B0.h"

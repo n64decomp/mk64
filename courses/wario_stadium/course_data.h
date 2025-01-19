@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 
 extern Gfx d_course_wario_stadium_dl_0[];
@@ -115,8 +115,8 @@ extern Gfx d_course_wario_stadium_dl_5338[];
 extern Gfx d_course_wario_stadium_dl_5460[];
 extern Gfx d_course_wario_stadium_dl_54E8[];
 extern Gfx d_course_wario_stadium_dl_5588[];
-extern TrackWaypoint d_course_wario_stadium_unknown_waypoints[];
-extern TrackWaypoint d_course_wario_stadium_track_waypoints[];
+extern TrackPathPoint d_course_wario_stadium_unknown_path[];
+extern TrackPathPoint d_course_wario_stadium_track_path[];
 extern Vtx d_course_wario_stadium_sign_head_model1[];
 extern Vtx d_course_wario_stadium_sign_head_model2[];
 extern Vtx d_course_wario_stadium_sign_head_model3[];

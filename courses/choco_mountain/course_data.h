@@ -4,7 +4,7 @@
 #include <ultra64.h>
 #include <PR/gbi.h>
 #include <actor_types.h>
-#include <waypoints.h>
+#include <path.h>
 #include <course.h>
 
 extern Gfx d_course_choco_mountain_dl_0[];
@@ -103,8 +103,8 @@ extern Gfx d_course_choco_mountain_dl_4138[];
 extern Gfx d_course_choco_mountain_dl_41F8[];
 extern Gfx d_course_choco_mountain_dl_42C8[];
 extern Gfx d_course_choco_mountain_dl_43C8[];
-extern TrackWaypoint d_course_choco_mountain_unknown_waypoints[];
-extern TrackWaypoint d_course_choco_mountain_track_waypoints[];
+extern TrackPathPoint d_course_choco_mountain_unknown_path[];
+extern TrackPathPoint d_course_choco_mountain_track_path[];
 extern Lights1 d_course_choco_mountain_light;
 extern Vtx d_course_choco_mountain_6005AF8[];
 extern u8 d_course_choco_mountain_wall_texture[];

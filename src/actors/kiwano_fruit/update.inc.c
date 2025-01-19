@@ -1,7 +1,7 @@
 #include <actors.h>
 #include <main.h>
 #include <defines.h>
-#include <waypoints.h>
+#include <path.h>
 
 /**
  * @brief Updates the kiwano fruit actor.
@@ -15,10 +15,10 @@ void update_actor_kiwano_fruit(struct KiwanoFruit* fruit) {
     f32 temp_f16;
     f32 temp_f14;
     f32 temp_f12;
-    s32 nearestWaypoint;
+    s32 nearestPathPoint;
 
     player = &gPlayers[fruit->targetPlayer];
-    if (((player->type & PLAYER_KART_AI) != 0) || (player->collision.unk34 == 0)) {
+    if (((player->type & PLAYER_CPU) != 0) || (player->collision.unk34 == 0)) {
         fruit->state = 0;
         return;
     }
@@ -30,10 +30,10 @@ void update_actor_kiwano_fruit(struct KiwanoFruit* fruit) {
             fruit->state = 1;
             fruit->velocity[0] = 80.0f;
         case 1:
-            nearestWaypoint = gNearestWaypointByPlayerId[(u16) (player - gPlayerOne)];
-            temp_f2 = player->pos[0] - D_80164490[nearestWaypoint].posX;
-            temp_f16 = player->pos[1] - D_80164490[nearestWaypoint].posY;
-            temp_f14 = player->pos[2] - D_80164490[nearestWaypoint].posZ;
+            nearestPathPoint = gNearestPathPointByPlayerId[(u16) (player - gPlayerOne)];
+            temp_f2 = player->pos[0] - gCurrentTrackPath[nearestPathPoint].posX;
+            temp_f16 = player->pos[1] - gCurrentTrackPath[nearestPathPoint].posY;
+            temp_f14 = player->pos[2] - gCurrentTrackPath[nearestPathPoint].posZ;
             temp_f12 = fruit->velocity[0] / sqrtf((temp_f2 * temp_f2) + (temp_f16 * temp_f16) + (temp_f14 * temp_f14));
             temp_f2 *= temp_f12;
             temp_f16 *= temp_f12;

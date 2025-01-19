@@ -12,9 +12,9 @@
 #include "math_util_2.h"
 #include "render_objects.h"
 #include "objects.h"
-#include "waypoints.h"
+#include "path.h"
 #include "code_800029B0.h"
-#include "code_80005FD0.h"
+#include "cpu_vehicles_camera_path.h"
 #include "code_80057C60.h"
 #include "code_8006E9C0.h"
 #include "code_80086E70.h"
@@ -205,7 +205,7 @@ void func_80072120(s32* arg0, s32 arg1) {
 void func_80072180(void) {
     if (gModeSelection == TIME_TRIALS) {
         if (((gPlayerOne->type & PLAYER_EXISTS) != 0) &&
-            ((gPlayerOne->type & (PLAYER_INVISIBLE_OR_BOMB | PLAYER_KART_AI)) == 0)) {
+            ((gPlayerOne->type & (PLAYER_INVISIBLE_OR_BOMB | PLAYER_CPU)) == 0)) {
             D_80162DF8 = 1;
         }
     }
@@ -2673,7 +2673,7 @@ void func_80078288(s32 objectIndex) {
             break;
         case 1:
             if (gGamestate != 9) {
-                sp3A = ((gPlayerOneCopy->unk_094 / 18) * 216) / 2;
+                sp3A = ((gPlayerOneCopy->speed / 18) * 216) / 2;
                 sp3E = (random_int(0x000FU) - sp3A) + 0x2D;
                 sp3C = random_int(0x012CU) + 0x1E;
                 temp_t6 = camera1->rot[1] + ((s32) (random_int(0x3000U) - 0x1800) / (s16) ((sp3A / 15) + 1));
@@ -3698,7 +3698,7 @@ u8 gen_random_item(s16 rank, s16 isCpu) {
         if (isCpu == 0) {
             curve = segmented_to_virtual((void*) common_grand_prix_human_item_curve);
         } else {
-            curve = segmented_to_virtual((void*) common_grand_prix_kart_ai_item_curve);
+            curve = segmented_to_virtual((void*) common_grand_prix_cpu_item_curve);
         }
         randomItem = *((rank * 100) + curve + sRandomItemIndex);
     }
@@ -3710,7 +3710,7 @@ u8 gen_random_item_human(UNUSED s16 arg0, s16 rank) {
     return gen_random_item(rank, false);
 }
 
-u8 kart_ai_gen_random_item(UNUSED s32 arg0, s16 rank) {
+u8 cpu_gen_random_item(UNUSED s32 arg0, s16 rank) {
     return gen_random_item(rank, true);
 }
 
@@ -4050,8 +4050,8 @@ void func_8007BD04(s32 playerId) {
 
     objectIndex = indexObjectList2[0];
     if (gObjectList[objectIndex].state == 0) {
-        if (((s32) gNearestWaypointByPlayerId[playerId] >= 0xA0) &&
-            ((s32) gNearestWaypointByPlayerId[playerId] < 0xAB)) {
+        if (((s32) gNearestPathPointByPlayerId[playerId] >= 0xA0) &&
+            ((s32) gNearestPathPointByPlayerId[playerId] < 0xAB)) {
             set_obj_origin_pos(objectIndex, xOrientation * -1650.0, -200.0f, -1650.0f);
             init_object(objectIndex, 1);
         }
@@ -4398,14 +4398,14 @@ void func_8007CA70(void) {
     if (D_8018CFF0 == 0) {
         playerId = func_8007C9F8();
         D_8018D018 = playerId;
-        test = &gNearestWaypointByPlayerId[playerId];
+        test = &gNearestPathPointByPlayerId[playerId];
         if ((*test >= 0xC9) && (*test < 0xD2)) {
             func_8007C7B4(0, (s32) playerId);
         }
     }
     if (D_8018CFF0 != 0) {
         playerId = D_8018D018;
-        test = &gNearestWaypointByPlayerId[playerId];
+        test = &gNearestPathPointByPlayerId[playerId];
         if ((*test >= 0xB5) && (*test < 0xBE)) {
             func_8007C91C(0);
         }
@@ -4416,14 +4416,14 @@ void func_8007CA70(void) {
     if (D_8018D048 == 0) {
         playerId = func_8007C9F8();
         D_8018D110 = playerId;
-        test = &gNearestWaypointByPlayerId[playerId];
+        test = &gNearestPathPointByPlayerId[playerId];
         if ((*test >= 0x1FF) && (*test < 0x208)) {
             func_8007C7B4(5, (s32) playerId);
         }
     }
     if (D_8018D048 != 0) {
         playerId = D_8018D110;
-        test = &gNearestWaypointByPlayerId[playerId];
+        test = &gNearestPathPointByPlayerId[playerId];
         if ((*test >= 0x1EB) && (*test < 0x1F4)) {
             func_8007C91C(5);
         }
@@ -5490,11 +5490,11 @@ s32 func_8007F75C(s32 playerId) {
     s32 objectIndex;
     s32 temp_s7;
     s32 var_s6;
-    s32 waypoint;
+    s32 pathPoint;
 
-    waypoint = gNearestWaypointByPlayerId[playerId];
+    pathPoint = gNearestPathPointByPlayerId[playerId];
     var_s6 = 0;
-    if ((waypoint >= 0xAA) && (waypoint < 0xB5)) {
+    if ((pathPoint >= 0xAA) && (pathPoint < 0xB5)) {
         temp_s7 = random_int(0x0032U) + 0x32;
         for (someIndex = 0; someIndex < gNumActiveThwomps; someIndex++) {
             objectIndex = indexObjectList1[someIndex];
@@ -5503,7 +5503,7 @@ s32 func_8007F75C(s32 playerId) {
                 func_8007F660(objectIndex, playerId, temp_s7);
             }
         }
-    } else if ((waypoint >= 0xD7) && (waypoint < 0xE2)) {
+    } else if ((pathPoint >= 0xD7) && (pathPoint < 0xE2)) {
         for (someIndex = 0; someIndex < gNumActiveThwomps; someIndex++) {
             objectIndex = indexObjectList1[someIndex];
             if (gObjectList[objectIndex].unk_0D5 == 3) {
@@ -5538,7 +5538,7 @@ void func_8007F8D8(void) {
     }
     if (var_s4 != 0) {
         for (var_s0 = 0; var_s0 < 4; var_s0++, player++) {
-            if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_KART_AI)) {
+            if ((player->type & PLAYER_EXISTS) && !(player->type & PLAYER_CPU)) {
                 if (func_8007F75C(var_s0) != 0) {
                     break;
                 }
@@ -5591,7 +5591,7 @@ void func_8007FB48(s32 objectIndex) {
             func_80086FD4(objectIndex);
             break;
         case 2:
-            gObjectList[objectIndex].velocity[0] = player->unk_094 * xOrientation * 1.25;
+            gObjectList[objectIndex].velocity[0] = player->speed * xOrientation * 1.25;
             if (gObjectList[objectIndex].unk_048 >= gObjectList[objectIndex].unk_0B0) {
                 if (gObjectList[objectIndex].unk_0B0 == gObjectList[objectIndex].unk_048) {
                     if (D_8018D400 & 1) {
@@ -5985,7 +5985,7 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
             temp_f0 = func_80088F54(objectIndex, temp_s0);
             if ((temp_f0 <= 9.0) && !(temp_s0->effects & 0x04000000) &&
                 (has_collided_horizontally_with_player(objectIndex, temp_s0) != 0)) {
-                if ((temp_s0->type & 0x8000) && !(temp_s0->type & 0x100)) {
+                if ((temp_s0->type & PLAYER_EXISTS) && !(temp_s0->type & 0x100)) {
                     if (!(temp_s0->effects & 0x200)) {
                         func_80089474(objectIndex, playerId, 1.4f, 1.1f, SOUND_ARG_LOAD(0x19, 0x00, 0xA0, 0x4C));
                     } else if (func_80072354(objectIndex, 0x00000040) != 0) {
@@ -6003,9 +6003,9 @@ void func_80080B28(s32 objectIndex, s32 playerId) {
                     }
                 }
             } else if ((temp_f0 <= 17.5) && (func_80072320(objectIndex, 1) != 0) &&
-                       (is_within_horizontal_distance_of_player(objectIndex, temp_s0, (temp_s0->unk_094 * 0.5) + 7.0) !=
+                       (is_within_horizontal_distance_of_player(objectIndex, temp_s0, (temp_s0->speed * 0.5) + 7.0) !=
                         0)) {
-                if ((temp_s0->type & 0x8000) && !(temp_s0->type & 0x100)) {
+                if ((temp_s0->type & PLAYER_EXISTS) && !(temp_s0->type & 0x100)) {
                     if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
                         func_80072180();
                     }
@@ -6396,7 +6396,7 @@ void func_80081D34(s32 objectIndex) {
     for (var_s2 = 0; var_s2 < D_8018D158; var_s2++, player++, var_s4++) {
         if ((is_obj_flag_status_active(objectIndex, 0x00000200) != 0) && !(player->effects & 0x80000000) &&
             (has_collided_with_player(objectIndex, player) != 0)) {
-            if ((player->type & 0x8000) && !(player->type & 0x100)) {
+            if ((player->type & PLAYER_EXISTS) && !(player->type & 0x100)) {
                 var_s5 = 1;
                 object = &gObjectList[objectIndex];
                 if (is_obj_flag_status_active(objectIndex, 0x04000000) != 0) {
@@ -6408,8 +6408,8 @@ void func_80081D34(s32 objectIndex) {
                     player->soundEffects |= 2;
                 }
                 object->direction_angle[1] = var_s4->rot[1];
-                object->velocity[1] = (player->unk_094 / 2) + 3.0;
-                object->unk_034 = player->unk_094 + 1.0;
+                object->velocity[1] = (player->speed / 2) + 3.0;
+                object->unk_034 = player->speed + 1.0;
                 if (object->velocity[1] >= 5.0) {
                     object->velocity[1] = 5.0f;
                 }
@@ -7656,7 +7656,7 @@ void update_hot_air_balloon(void) {
 }
 
 void func_80085878(s32 objectIndex, s32 arg1) {
-    TrackWaypoint* temp_v0;
+    TrackPathPoint* temp_v0;
     Object* object;
 
     object = &gObjectList[objectIndex];
@@ -7668,7 +7668,7 @@ void func_80085878(s32 objectIndex, s32 arg1) {
     set_object_flag_status_true(objectIndex, 0x04000200);
     object->unk_084[8] = (arg1 * 0x12C) + 0x1F4;
     set_obj_origin_pos(objectIndex, 0.0f, -15.0f, 0.0f);
-    temp_v0 = &D_80164490[(u16) object->unk_084[8]];
+    temp_v0 = &gCurrentTrackPath[(u16) object->unk_084[8]];
     set_obj_origin_offset(objectIndex, temp_v0->posX, temp_v0->posY, temp_v0->posZ);
     set_obj_direction_angle(objectIndex, 0U, 0U, 0U);
     object->unk_034 = 4.0f;

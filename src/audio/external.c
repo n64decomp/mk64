@@ -12,7 +12,7 @@
 #include "audio/data.h"
 #include "audio/port_eu.h"
 #include "code_800029B0.h"
-#include "code_80005FD0.h"
+#include "cpu_vehicles_camera_path.h"
 #include "menu_items.h"
 
 s8 D_8018EF10;
@@ -1868,7 +1868,7 @@ void func_800C6108(u8 playerId) {
         D_800E9E64[playerId] = (player->unk_098 / D_800E9F7C[playerId].unk_34) + D_800E9F7C[playerId].unk_28;
         if (D_800E9EC4) {} // ?
     }
-    if (player->unk_094 > 4.75f) {
+    if (player->speed > 4.75f) {
         if (D_800E9EB4[playerId] < (D_800E9F7C[playerId].unk_18 + 0.4f)) {
             D_800E9DE4[playerId] += 0.005f;
         }
@@ -1880,7 +1880,7 @@ void func_800C6108(u8 playerId) {
     } else {
         D_800E9E54[playerId] = (f32) -player->unk_0C0;
     }
-    if ((player->effects & 0x10) == 0x10) {
+    if ((player->effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
         D_800E9EB4[playerId] = D_800E9E64[playerId] + D_800E9DE4[playerId];
     } else {
         D_800E9EB4[playerId] = D_800E9E64[playerId] + D_800E9DE4[playerId] - (D_800E9E54[playerId] / 12000.0f);
@@ -1927,7 +1927,7 @@ D_800E9F7C[playerId].unk_38 = (D_800E9F7C[playerId].unk_0C / 1.5f) + 0.4f;
 void func_800C64A0(u8 playerId) {
     switch (D_800E9E74[playerId]) {
         case 3:
-            D_800E9EF4[playerId] = (gPlayers[playerId].unk_094 / 5.0f) + 0.2f;
+            D_800E9EF4[playerId] = (gPlayers[playerId].speed / 5.0f) + 0.2f;
             break;
         case 1:
         case 13:
@@ -1950,7 +1950,7 @@ void func_800C64A0(u8 playerId) {
         case 29:
         case 30:
         case 31:
-            D_800E9EF4[playerId] = (gPlayers[playerId].unk_094 / 5.0f) + 0.2f;
+            D_800E9EF4[playerId] = (gPlayers[playerId].speed / 5.0f) + 0.2f;
             break;
         default:
             D_800E9EF4[playerId] = 1.0f;
@@ -1978,7 +1978,7 @@ void func_800C64A0(u8 playerId) {
 void func_800C6758(u8 playerId) {
     switch (D_800E9E74[playerId]) { /* irregular */
         case 3:
-            D_800E9F14[playerId] = (gPlayers[playerId].unk_094 / 9.0f) + 0.6f;
+            D_800E9F14[playerId] = (gPlayers[playerId].speed / 9.0f) + 0.6f;
             break;
         case 2:
         case 13:
@@ -2150,7 +2150,8 @@ void func_800C683C(u8 cameraId) {
 void func_800C70A8(u8 playerId) {
     if (D_800EA0EC[playerId] == 0) {
         D_800E9E74[playerId] = 0;
-        if ((D_800E9E54[playerId] > 3500.0f) || ((gPlayers[playerId].effects & 0x10) == 0x10)) {
+        if ((D_800E9E54[playerId] > 3500.0f) ||
+            ((gPlayers[playerId].effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10)) {
             D_800E9E74[playerId] = 1;
             switch (gPlayers[playerId].tyres[AUDIO_LEFT_TYRE].surfaceType) {
                 case DIRT: /* switch 1 */
@@ -2182,7 +2183,7 @@ void func_800C70A8(u8 playerId) {
                     break;
             }
         }
-        if ((gPlayers[playerId].effects & 0x10) == 0x10) {
+        if ((gPlayers[playerId].effects & UNKNOWN_EFFECT_0x10) == UNKNOWN_EFFECT_0x10) {
             D_800E9E74[playerId] = 2;
             switch (gPlayers[playerId].tyres[AUDIO_LEFT_TYRE].surfaceType) { /* switch 2 */
                 case DIRT:                                                   /* switch 2 */
@@ -2334,7 +2335,7 @@ void func_800C70A8(u8 playerId) {
                 D_800E9E74[playerId] = 0x0000001B;
                 break;
         }
-        if (((gPlayers[playerId].unk_094 < 0.5f) || ((gPlayers[playerId].effects & 8) == 8)) &&
+        if (((gPlayers[playerId].speed < 0.5f) || ((gPlayers[playerId].effects & 8) == 8)) &&
             (D_800E9E74[playerId] != 0x0000001C)) {
             D_800E9E74[playerId] = 0;
         }
