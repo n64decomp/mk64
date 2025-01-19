@@ -192,7 +192,7 @@ void func_800651F4(Player*, s8, s8, s8);
 void func_800652D4(Vec3f, Vec3s, f32);
 void func_8006538C(Player*, s8, s16, s8);
 void func_800658A0(Player*, s8, s16, s8);
-void render_drift_particle(Player*, s8, s16, s8);
+void render_player_drift_particles(Player*, s8, s16, s8);
 void func_80065F0C(Player*, s8, s16, s8);
 
 void func_800664E0(Player*, s8, s16, s8);

@@ -5068,7 +5068,7 @@ void func_800658A0(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
 #ifdef NON_MATCHING
 // Something about the handling of the prim/env colors is off,
 // its causing a huge diff. Can't figure out what's up.
-void render_drift_particle(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
+void render_player_drift_particles(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     Vec3f spB4;
     Vec3s spAC;
     s32 var_s0;
@@ -5121,7 +5121,7 @@ void render_drift_particle(Player* player, UNUSED s8 arg1, s16 arg2, s8 arg3) {
     }
 }
 #else
-GLOBAL_ASM("asm/non_matchings/code_80057C60/render_drift_particle.s")
+GLOBAL_ASM("asm/non_matchings/code_80057C60/render_player_drift_particles.s")
 #endif
 
 #ifndef NON_MATCHING
@@ -6613,10 +6613,10 @@ void func_8006D474(Player* player, s8 playerId, s8 screenId) {
                 case DRIFT_PARTICLE:
                     if (gActiveScreenMode == SCREEN_MODE_3P_4P_SPLITSCREEN) {
                         if (screenId == playerId) {
-                            render_drift_particle(player, playerId, var_s2, screenId);
+                            render_player_drift_particles(player, playerId, var_s2, screenId);
                         }
                     } else {
-                        render_drift_particle(player, playerId, var_s2, screenId);
+                        render_player_drift_particles(player, playerId, var_s2, screenId);
                     }
                     break;
                 case GROUND_PARTCLE:
