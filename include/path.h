@@ -21,15 +21,15 @@ enum {
 /**
  * These are per-path arrays that contain some information relating to path
  * The arrays in gTrackPaths contain X/Y/Z and track segment information
- * The arrays in gTrackLeftPath and gCurrentTrackRightPath track some other X/Y/Z, but the track segment is always 0
+ * The arrays in gTrackLeftPaths and gCurrentTrackRightPath track some other X/Y/Z, but the track segment is always 0
  *(so, untracked/unused) Its unclear how these arrays relate to each other
  **/
 extern TrackPathPoint* gTrackPaths[];
-extern TrackPathPoint* gTrackLeftPath[];
-extern TrackPathPoint* gTrackRightPath[];
+extern TrackPathPoint* gTrackLeftPaths[];
+extern TrackPathPoint* gTrackRightPaths[];
 
 /**
- * Don't know what exactly these are, but like gTrackPaths, gTrackLeftPath, and gCurrentTrackRightPath
+ * Don't know what exactly these are, but like gTrackPaths, gTrackLeftPaths, and gCurrentTrackRightPath
  * they track something about the path on a per-path basis
  **/
 // PathPoint types?
@@ -49,7 +49,7 @@ extern s16* gTrackConsecutiveCurveCounts[];
 extern s16 sSomeNearestPathPoint;
 // Shadows values from gPathIndexByPlayerId
 extern s32 gPlayerPathIndex;
-// Shadows values from gTrackLeftPath
+// Shadows values from gTrackLeftPaths
 extern TrackPathPoint* gCurrentTrackLeftPath;
 // Shadows values from gCurrentTrackRightPath
 extern TrackPathPoint* gCurrentTrackRightPath;
