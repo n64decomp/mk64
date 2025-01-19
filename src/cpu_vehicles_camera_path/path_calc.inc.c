@@ -69,8 +69,8 @@ void calculate_track_boundaries(s32 pathIndex) {
     if (((s32) GET_COURSE_AIMaximumSeparation) >= 0) {
         pathPointWidth = GET_COURSE_AIMaximumSeparation;
         pathPoint = &gTrackPaths[pathIndex][0];
-        var_s1 = &gTrackInnerPath[pathIndex][0];
-        var_s2 = &gTrackOuterPath[pathIndex][0];
+        var_s1 = &gTrackLeftPath[pathIndex][0];
+        var_s2 = &gTrackRightPath[pathIndex][0];
         for (pathPointIndex = 0; pathPointIndex < gPathCountByPathIndex[pathIndex];
              pathPointIndex++, var_s1++, var_s2++) {
             x1 = pathPoint->posX;

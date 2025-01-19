@@ -45,8 +45,8 @@ f32 calculate_track_position_factor(f32 posX, f32 posZ, u16 pathPointIndex, s32 
     TrackPathPoint* leftPathPoint;
     TrackPathPoint* rightPathPoint;
 
-    leftPathPoint = &gTrackInnerPath[pathIndex][pathPointIndex];
-    rightPathPoint = &gTrackOuterPath[pathIndex][pathPointIndex];
+    leftPathPoint = &gTrackLeftPath[pathIndex][pathPointIndex];
+    rightPathPoint = &gTrackRightPath[pathIndex][pathPointIndex];
 
     leftX = leftPathPoint->posX;
     leftZ = leftPathPoint->posZ;
@@ -142,8 +142,8 @@ void set_track_offset_position(u16 pathPointIndex, f32 trackOffset, s16 pathInde
     f32 temp_f0;
     f32 temp_f12;
 
-    path1 = &gTrackInnerPath[pathIndex][pathPointIndex];
-    path2 = &gTrackOuterPath[pathIndex][pathPointIndex];
+    path1 = &gTrackLeftPath[pathIndex][pathPointIndex];
+    path2 = &gTrackRightPath[pathIndex][pathPointIndex];
 
     x1 = (f32) path1->posX;
     z1 = (f32) path1->posZ;
@@ -154,8 +154,8 @@ void set_track_offset_position(u16 pathPointIndex, f32 trackOffset, s16 pathInde
     pathPointIndex += 1;
     pathPointIndex = pathPointIndex % gPathCountByPathIndex[pathIndex];
 
-    path1 = &gTrackInnerPath[pathIndex][pathPointIndex];
-    path2 = &gTrackOuterPath[pathIndex][pathPointIndex];
+    path1 = &gTrackLeftPath[pathIndex][pathPointIndex];
+    path2 = &gTrackRightPath[pathIndex][pathPointIndex];
 
     x3 = (f32) path1->posX;
     z3 = (f32) path1->posZ;

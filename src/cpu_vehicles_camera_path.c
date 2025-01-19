@@ -79,8 +79,8 @@ f32 gPreviousPlayerAiOffsetX[10];
 f32 gPreviousPlayerAiOffsetZ[10];
 s16 sVehicleSoundRenderCounter;
 s32 D_801631CC;
-TrackPathPoint* gCurrentTrackInnerPath;
-TrackPathPoint* gCurrentTrackOuterPath;
+TrackPathPoint* gCurrentTrackLeftPath;
+TrackPathPoint* gCurrentTrackRightPath;
 s16* gCurrentTrackSectionTypesPath;
 s16* gCurrentPathPointExpectedRotationPath;
 u16 D_801631E0[12];
@@ -172,8 +172,8 @@ s16 bInMultiPathSection[12];
 f32 gPlayerPathY[10];
 s16 D_80164538[12];
 TrackPathPoint* gTrackPaths[4];
-TrackPathPoint* gTrackInnerPath[4];
-TrackPathPoint* gTrackOuterPath[4];
+TrackPathPoint* gTrackLeftPath[4];
+TrackPathPoint* gTrackRightPath[4];
 s16* gTrackSectionTypes[4];
 s16* gPathExpectedRotation[4];
 s16* gTrackConsecutiveCurveCounts[4];
@@ -1095,8 +1095,8 @@ GLOBAL_ASM("asm/non_matchings/cpu_vehicles_camera_path/func_800088D8.s")
 
 void set_current_path(s32 pathIndex) {
     gCurrentTrackPath = gTrackPaths[pathIndex];
-    gCurrentTrackInnerPath = gTrackInnerPath[pathIndex];
-    gCurrentTrackOuterPath = gTrackOuterPath[pathIndex];
+    gCurrentTrackLeftPath = gTrackLeftPath[pathIndex];
+    gCurrentTrackRightPath = gTrackRightPath[pathIndex];
     gCurrentTrackSectionTypesPath = gTrackSectionTypes[pathIndex];
     gCurrentPathPointExpectedRotationPath = gPathExpectedRotation[pathIndex];
     gCurrentTrackConsecutiveCurveCountsPath = gTrackConsecutiveCurveCounts[pathIndex];
@@ -2046,16 +2046,16 @@ void init_course_path_point(void) {
     // Podium ceremony appears to allocate 1 * 8 bytes of data. Which would be aligned to 0x10.
     for (i = 0; i < 4; i++) {
         gTrackPaths[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(TrackPathPoint));
-        gTrackInnerPath[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(TrackPathPoint));
-        gTrackOuterPath[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(TrackPathPoint));
+        gTrackLeftPath[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(TrackPathPoint));
+        gTrackRightPath[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(TrackPathPoint));
         gTrackSectionTypes[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(s16));
         gPathExpectedRotation[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(s16));
         gTrackConsecutiveCurveCounts[i] = get_next_available_memory_addr(gSizePath[i] * sizeof(s16));
     }
 
     gCurrentTrackPath = gTrackPaths[0];
-    gCurrentTrackInnerPath = gTrackInnerPath[0];
-    gCurrentTrackOuterPath = gTrackOuterPath[0];
+    gCurrentTrackLeftPath = gTrackLeftPath[0];
+    gCurrentTrackRightPath = gTrackRightPath[0];
     gCurrentTrackSectionTypesPath = gTrackSectionTypes[0];
     gCurrentPathPointExpectedRotationPath = gPathExpectedRotation[0];
     gCurrentTrackConsecutiveCurveCountsPath = gTrackConsecutiveCurveCounts[0];
@@ -2064,8 +2064,8 @@ void init_course_path_point(void) {
     //! @warning does not appear to zero all the above allocated variables.
     for (i = 0; i < 4; i++) {
         clear_pathPoint(gTrackPaths[i], gSizePath[i]);
-        clear_pathPoint(gTrackInnerPath[i], gSizePath[i]);
-        clear_pathPoint(gTrackOuterPath[i], gSizePath[i]);
+        clear_pathPoint(gTrackLeftPath[i], gSizePath[i]);
+        clear_pathPoint(gTrackRightPath[i], gSizePath[i]);
     }
 
     // Skip several cpu cycles.
