@@ -79,7 +79,7 @@ glabel L8005F9A0
 /* 060608 8005FA08 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 06060C 8005FA0C 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 060610 8005FA10 02002025 */  move  $a0, $s0
-/* 060614 8005FA14 0C0175F6 */  jal   func_8005D7D8
+/* 060614 8005FA14 0C0175F6 */  jal   init_new_particle_player
 /* 060618 8005FA18 24050004 */   li    $a1, 4
 /* 06061C 8005FA1C 3C03800E */  lui   $v1, %hi(gCurrentCourseId) # $v1, 0x800e
 /* 060620 8005FA20 8463C5A0 */  lh    $v1, %lo(gCurrentCourseId)($v1)
@@ -172,7 +172,7 @@ glabel L8005F9A0
 /* 06075C 8005FB5C 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 060760 8005FB60 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 060764 8005FB64 02002025 */  move  $a0, $s0
-/* 060768 8005FB68 0C0175F6 */  jal   func_8005D7D8
+/* 060768 8005FB68 0C0175F6 */  jal   init_new_particle_player
 /* 06076C 8005FB6C 24050004 */   li    $a1, 4
 /* 060770 8005FB70 3C03800E */  lui   $v1, %hi(gCurrentCourseId) # $v1, 0x800e
 /* 060774 8005FB74 8463C5A0 */  lh    $v1, %lo(gCurrentCourseId)($v1)
@@ -272,12 +272,12 @@ glabel L8005FC60
 /* 0608C8 8005FCC8 3C063DCC */  lui   $a2, (0x3DCCCCCD >> 16) # lui $a2, 0x3dcc
 /* 0608CC 8005FCCC 34C6CCCD */  ori   $a2, (0x3DCCCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 0608D0 8005FCD0 02002025 */  move  $a0, $s0
-/* 0608D4 8005FCD4 0C0175F6 */  jal   func_8005D7D8
+/* 0608D4 8005FCD4 0C0175F6 */  jal   init_new_particle_player
 /* 0608D8 8005FCD8 24050004 */   li    $a1, 4
 /* 0608DC 8005FCDC 3C0500FF */  lui   $a1, (0x00FFFFFF >> 16) # lui $a1, 0xff
 /* 0608E0 8005FCE0 34A5FFFF */  ori   $a1, (0x00FFFFFF & 0xFFFF) # ori $a1, $a1, 0xffff
 /* 0608E4 8005FCE4 02002025 */  move  $a0, $s0
-/* 0608E8 8005FCE8 0C017600 */  jal   func_8005D800
+/* 0608E8 8005FCE8 0C017600 */  jal   set_particle_color
 /* 0608EC 8005FCEC 240600FF */   li    $a2, 255
 /* 0608F0 8005FCF0 87A3003E */  lh    $v1, 0x3e($sp)
 /* 0608F4 8005FCF4 864F0560 */  lh    $t7, 0x560($s2)
@@ -316,12 +316,12 @@ glabel L8005FC60
 /* 060974 8005FD74 3C063DCC */  lui   $a2, (0x3DCCCCCD >> 16) # lui $a2, 0x3dcc
 /* 060978 8005FD78 34C6CCCD */  ori   $a2, (0x3DCCCCCD & 0xFFFF) # ori $a2, $a2, 0xcccd
 /* 06097C 8005FD7C 02002025 */  move  $a0, $s0
-/* 060980 8005FD80 0C0175F6 */  jal   func_8005D7D8
+/* 060980 8005FD80 0C0175F6 */  jal   init_new_particle_player
 /* 060984 8005FD84 24050004 */   li    $a1, 4
 /* 060988 8005FD88 3C0500FF */  lui   $a1, (0x00FFFFFF >> 16) # lui $a1, 0xff
 /* 06098C 8005FD8C 34A5FFFF */  ori   $a1, (0x00FFFFFF & 0xFFFF) # ori $a1, $a1, 0xffff
 /* 060990 8005FD90 02002025 */  move  $a0, $s0
-/* 060994 8005FD94 0C017600 */  jal   func_8005D800
+/* 060994 8005FD94 0C017600 */  jal   set_particle_color
 /* 060998 8005FD98 240600FF */   li    $a2, 255
 /* 06099C 8005FD9C 87A3003E */  lh    $v1, 0x3e($sp)
 /* 0609A0 8005FDA0 864B0560 */  lh    $t3, 0x560($s2)
@@ -381,7 +381,7 @@ glabel L8005FE00
 /* 060A68 8005FE68 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 060A6C 8005FE6C 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 060A70 8005FE70 02002025 */  move  $a0, $s0
-/* 060A74 8005FE74 0C0175F6 */  jal   func_8005D7D8
+/* 060A74 8005FE74 0C0175F6 */  jal   init_new_particle_player
 /* 060A78 8005FE78 24050004 */   li    $a1, 4
 /* 060A7C 8005FE7C 02002025 */  move  $a0, $s0
 /* 060A80 8005FE80 24050002 */  li    $a1, 2
@@ -416,7 +416,7 @@ glabel L8005FE00
 /* 060AF0 8005FEF0 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 060AF4 8005FEF4 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 060AF8 8005FEF8 02002025 */  move  $a0, $s0
-/* 060AFC 8005FEFC 0C0175F6 */  jal   func_8005D7D8
+/* 060AFC 8005FEFC 0C0175F6 */  jal   init_new_particle_player
 /* 060B00 8005FF00 24050004 */   li    $a1, 4
 /* 060B04 8005FF04 02002025 */  move  $a0, $s0
 /* 060B08 8005FF08 24050002 */  li    $a1, 2
@@ -458,7 +458,7 @@ glabel L8005FF28
 /* 060B90 8005FF90 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 060B94 8005FF94 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 060B98 8005FF98 02002025 */  move  $a0, $s0
-/* 060B9C 8005FF9C 0C0175F6 */  jal   func_8005D7D8
+/* 060B9C 8005FF9C 0C0175F6 */  jal   init_new_particle_player
 /* 060BA0 8005FFA0 24050004 */   li    $a1, 4
 /* 060BA4 8005FFA4 02002025 */  move  $a0, $s0
 /* 060BA8 8005FFA8 24050003 */  li    $a1, 3
@@ -493,7 +493,7 @@ glabel L8005FF28
 /* 060C18 80060018 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 060C1C 8006001C 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 060C20 80060020 02002025 */  move  $a0, $s0
-/* 060C24 80060024 0C0175F6 */  jal   func_8005D7D8
+/* 060C24 80060024 0C0175F6 */  jal   init_new_particle_player
 /* 060C28 80060028 24050004 */   li    $a1, 4
 /* 060C2C 8006002C 02002025 */  move  $a0, $s0
 /* 060C30 80060030 24050003 */  li    $a1, 3
@@ -535,7 +535,7 @@ glabel L80060050
 /* 060CB8 800600B8 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 060CBC 800600BC 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 060CC0 800600C0 02002025 */  move  $a0, $s0
-/* 060CC4 800600C4 0C0175F6 */  jal   func_8005D7D8
+/* 060CC4 800600C4 0C0175F6 */  jal   init_new_particle_player
 /* 060CC8 800600C8 24050004 */   li    $a1, 4
 /* 060CCC 800600CC 02002025 */  move  $a0, $s0
 /* 060CD0 800600D0 24050004 */  li    $a1, 4
@@ -570,7 +570,7 @@ glabel L80060050
 /* 060D40 80060140 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 060D44 80060144 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 060D48 80060148 02002025 */  move  $a0, $s0
-/* 060D4C 8006014C 0C0175F6 */  jal   func_8005D7D8
+/* 060D4C 8006014C 0C0175F6 */  jal   init_new_particle_player
 /* 060D50 80060150 24050004 */   li    $a1, 4
 /* 060D54 80060154 02002025 */  move  $a0, $s0
 /* 060D58 80060158 24050004 */  li    $a1, 4
@@ -612,7 +612,7 @@ glabel L80060178
 /* 060DE0 800601E0 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 060DE4 800601E4 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 060DE8 800601E8 02002025 */  move  $a0, $s0
-/* 060DEC 800601EC 0C0175F6 */  jal   func_8005D7D8
+/* 060DEC 800601EC 0C0175F6 */  jal   init_new_particle_player
 /* 060DF0 800601F0 24050004 */   li    $a1, 4
 /* 060DF4 800601F4 02002025 */  move  $a0, $s0
 /* 060DF8 800601F8 24050005 */  li    $a1, 5
@@ -647,7 +647,7 @@ glabel L80060178
 /* 060E68 80060268 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 060E6C 8006026C 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 060E70 80060270 02002025 */  move  $a0, $s0
-/* 060E74 80060274 0C0175F6 */  jal   func_8005D7D8
+/* 060E74 80060274 0C0175F6 */  jal   init_new_particle_player
 /* 060E78 80060278 24050004 */   li    $a1, 4
 /* 060E7C 8006027C 02002025 */  move  $a0, $s0
 /* 060E80 80060280 24050005 */  li    $a1, 5
@@ -689,7 +689,7 @@ glabel L800602A0
 /* 060F08 80060308 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 060F0C 8006030C 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 060F10 80060310 02002025 */  move  $a0, $s0
-/* 060F14 80060314 0C0175F6 */  jal   func_8005D7D8
+/* 060F14 80060314 0C0175F6 */  jal   init_new_particle_player
 /* 060F18 80060318 24050004 */   li    $a1, 4
 /* 060F1C 8006031C 02002025 */  move  $a0, $s0
 /* 060F20 80060320 24050006 */  li    $a1, 6
@@ -724,7 +724,7 @@ glabel L800602A0
 /* 060F90 80060390 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 060F94 80060394 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 060F98 80060398 02002025 */  move  $a0, $s0
-/* 060F9C 8006039C 0C0175F6 */  jal   func_8005D7D8
+/* 060F9C 8006039C 0C0175F6 */  jal   init_new_particle_player
 /* 060FA0 800603A0 24050004 */   li    $a1, 4
 /* 060FA4 800603A4 02002025 */  move  $a0, $s0
 /* 060FA8 800603A8 24050006 */  li    $a1, 6
@@ -766,7 +766,7 @@ glabel L800603C8
 /* 061030 80060430 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 061034 80060434 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 061038 80060438 02002025 */  move  $a0, $s0
-/* 06103C 8006043C 0C0175F6 */  jal   func_8005D7D8
+/* 06103C 8006043C 0C0175F6 */  jal   init_new_particle_player
 /* 061040 80060440 24050004 */   li    $a1, 4
 /* 061044 80060444 02002025 */  move  $a0, $s0
 /* 061048 80060448 00002825 */  move  $a1, $zero
@@ -801,7 +801,7 @@ glabel L800603C8
 /* 0610B8 800604B8 3C063EEB */  lui   $a2, (0x3EEB851F >> 16) # lui $a2, 0x3eeb
 /* 0610BC 800604BC 34C6851F */  ori   $a2, (0x3EEB851F & 0xFFFF) # ori $a2, $a2, 0x851f
 /* 0610C0 800604C0 02002025 */  move  $a0, $s0
-/* 0610C4 800604C4 0C0175F6 */  jal   func_8005D7D8
+/* 0610C4 800604C4 0C0175F6 */  jal   init_new_particle_player
 /* 0610C8 800604C8 24050004 */   li    $a1, 4
 /* 0610CC 800604CC 02002025 */  move  $a0, $s0
 /* 0610D0 800604D0 00002825 */  move  $a1, $zero

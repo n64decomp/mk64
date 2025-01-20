@@ -17,6 +17,8 @@
 #define RENDER_SCREEN_MODE_3P_4P_PLAYER_THREE PLAYER_THREE + SCREEN_MODE_3P_4P_SPLITSCREEN + 5
 #define RENDER_SCREEN_MODE_3P_4P_PLAYER_FOUR PLAYER_FOUR + SCREEN_MODE_3P_4P_SPLITSCREEN + 5
 
+#define RGB32(r, g, b) ((r << 16) | (g << 8) | (b))
+
 typedef struct {
     char unk_00[0x4];
     Vec3f unk_04;
@@ -118,8 +120,8 @@ void func_8005D1F4(s32);
 void func_8005D290(void);
 void reset_player_particle_pool(Player*);
 void func_8005D794(Player*, UnkPlayerStruct258*, f32, f32, f32, s8, s8);
-s32 func_8005D7D8(UnkPlayerStruct258*, s8, f32);
-s32 func_8005D800(UnkPlayerStruct258*, s32, s16);
+s32 init_new_particle_player(UnkPlayerStruct258*, s8, f32);
+s32 set_particle_color(UnkPlayerStruct258*, s32, s16);
 s32 func_8005D82C(UnkPlayerStruct258*, s32, s16);
 void func_8005D898(Player*, s16, s32, s8, s8);
 void func_8005DA30(Player*, s16, s32, s8, s8);
@@ -193,7 +195,7 @@ void func_800652D4(Vec3f, Vec3s, f32);
 void func_8006538C(Player*, s8, s16, s8);
 void func_800658A0(Player*, s8, s16, s8);
 void render_player_drift_particles(Player*, s8, s16, s8);
-void func_80065F0C(Player*, s8, s16, s8);
+void render_player_ground_particles(Player*, s8, s16, s8);
 
 void func_800664E0(Player*, s8, s16, s8);
 void func_80066998(Player*, s8, s16, s8);
@@ -613,8 +615,8 @@ extern u8* D_8018D484;
 extern u8* D_8018D488;
 extern u8* D_8018D48C;
 extern u8* D_8018D490;
-extern u8* D_8018D494;
-extern u8* D_8018D498;
+extern u8* gLoadedGroundDust;
+extern u8* gLoadedGrassParticle;
 extern u8* D_8018D49C;
 extern u8* D_8018D4A0;
 extern u8* D_8018D4A4;

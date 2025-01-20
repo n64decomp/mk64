@@ -1,4 +1,4 @@
-glabel func_80065F0C
+glabel render_player_ground_particles
 /* 066B0C 80065F0C 27BDFF18 */  addiu $sp, $sp, -0xe8
 /* 066B10 80065F10 00067400 */  sll   $t6, $a2, 0x10
 /* 066B14 80065F14 000E7C03 */  sra   $t7, $t6, 0x10
@@ -112,11 +112,11 @@ glabel func_80065F0C
 /* 066CC4 800660C4 AE190000 */  sw    $t9, ($s0)
 /* 066CC8 800660C8 8E300000 */  lw    $s0, ($s1)
 /* 066CCC 800660CC 3C18FD90 */  lui   $t8, 0xfd90
-/* 066CD0 800660D0 3C198019 */  lui   $t9, %hi(D_8018D494) # $t9, 0x8019
+/* 066CD0 800660D0 3C198019 */  lui   $t9, %hi(gLoadedGroundDust) # $t9, 0x8019
 /* 066CD4 800660D4 260F0008 */  addiu $t7, $s0, 8
 /* 066CD8 800660D8 AE2F0000 */  sw    $t7, ($s1)
 /* 066CDC 800660DC AE180000 */  sw    $t8, ($s0)
-/* 066CE0 800660E0 8F39D494 */  lw    $t9, %lo(D_8018D494)($t9)
+/* 066CE0 800660E0 8F39D494 */  lw    $t9, %lo(gLoadedGroundDust)($t9)
 /* 066CE4 800660E4 3C180700 */  lui   $t8, 0x700
 /* 066CE8 800660E8 3C0FF590 */  lui   $t7, 0xf590
 /* 066CEC 800660EC AE190004 */  sw    $t9, 4($s0)
@@ -190,11 +190,11 @@ glabel func_80065F0C
 /* 066DF8 800661F8 AE180000 */  sw    $t8, ($s0)
 /* 066DFC 800661FC 8E300000 */  lw    $s0, ($s1)
 /* 066E00 80066200 3C0FFD90 */  lui   $t7, 0xfd90
-/* 066E04 80066204 3C188019 */  lui   $t8, %hi(D_8018D494) # $t8, 0x8019
+/* 066E04 80066204 3C188019 */  lui   $t8, %hi(gLoadedGroundDust) # $t8, 0x8019
 /* 066E08 80066208 260E0008 */  addiu $t6, $s0, 8
 /* 066E0C 8006620C AE2E0000 */  sw    $t6, ($s1)
 /* 066E10 80066210 AE0F0000 */  sw    $t7, ($s0)
-/* 066E14 80066214 8F18D494 */  lw    $t8, %lo(D_8018D494)($t8)
+/* 066E14 80066214 8F18D494 */  lw    $t8, %lo(gLoadedGroundDust)($t8)
 /* 066E18 80066218 3C0F0700 */  lui   $t7, 0x700
 /* 066E1C 8006621C 3C0EF590 */  lui   $t6, 0xf590
 /* 066E20 80066220 AE180004 */  sw    $t8, 4($s0)
@@ -283,11 +283,11 @@ glabel func_80065F0C
 /* 066F68 80066368 AE190000 */  sw    $t9, ($s0)
 /* 066F6C 8006636C 8E300000 */  lw    $s0, ($s1)
 /* 066F70 80066370 3C0FFD10 */  lui   $t7, 0xfd10
-/* 066F74 80066374 3C188019 */  lui   $t8, %hi(D_8018D498) # $t8, 0x8019
+/* 066F74 80066374 3C188019 */  lui   $t8, %hi(gLoadedGrassParticle) # $t8, 0x8019
 /* 066F78 80066378 260E0008 */  addiu $t6, $s0, 8
 /* 066F7C 8006637C AE2E0000 */  sw    $t6, ($s1)
 /* 066F80 80066380 AE0F0000 */  sw    $t7, ($s0)
-/* 066F84 80066384 8F18D498 */  lw    $t8, %lo(D_8018D498)($t8)
+/* 066F84 80066384 8F18D498 */  lw    $t8, %lo(gLoadedGrassParticle)($t8)
 /* 066F88 80066388 3C0F0708 */  lui   $t7, (0x07080200 >> 16) # lui $t7, 0x708
 /* 066F8C 8006638C 35EF0200 */  ori   $t7, (0x07080200 & 0xFFFF) # ori $t7, $t7, 0x200
 /* 066F90 80066390 AE180004 */  sw    $t8, 4($s0)

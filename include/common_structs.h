@@ -146,12 +146,12 @@ typedef struct {
 
 typedef struct {
     /* 0x00 */ Vec3f pos;
-    /* 0x0C */ f32 unk_00C;
+    /* 0x0C */ f32 scale;
     /* 0x10 */ u16 unk_010;
     /* 0x12 */ u16 type;
     /* 0x14 */ f32 surfaceType;
     /* 0x18 */ f32 unk_018;
-    /* 0x1C */ s16 unk_01C;
+    /* 0x1C */ s16 isAlive;
     /* 0x1E */ s16 timer;
     /* 0x20 */ s16 unk_020;
     /* 0x22 */ s16 unk_022;
@@ -163,10 +163,10 @@ typedef struct {
     /* 0x32 */ s16 unk_032;
     /* 0x34 */ s16 unk_034;
     /* 0x36 */ s16 unk_036;
-    /* 0x38 */ s16 unk_038;
-    /* 0x3A */ s16 unk_03A;
-    /* 0x3C */ s16 unk_03C;
-    /* 0x3E */ s16 unk_03E;
+    /* 0x38 */ s16 red;
+    /* 0x3A */ s16 green;
+    /* 0x3C */ s16 blue;
+    /* 0x3E */ s16 alpha;
     /* 0x40 */ s16 unk_040;
     /* 0x42 */ s16 unk_042;
     /* 0x44 */ s16 unk_044;
@@ -384,7 +384,7 @@ enum POOL_1_PARTICLE_TYPES {
     NO_PARTICLE,
     DRIFT_PARTICLE,
     GROUND_PARTCLE,
-    POOL_1_PARTICLE_TYPE_3,
+    GRASS_PARTICLE,
     POOL_1_PARTICLE_TYPE_4,
     POOL_1_PARTICLE_TYPE_5,
     POOL_1_PARTICLE_TYPE_6,

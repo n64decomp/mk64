@@ -818,16 +818,16 @@ glabel gTexture7F109C
 glabel gTexture7F109C_end
 
 .align 2, 0x00
-glabel gTexture7F1124
-.incbin "textures/raw/7F1124.i4"
+glabel gTextureFontFourPoint
+.incbin "textures/raw/gTextureFontFourPoint.i4"
 
 .align 2, 0x00
-glabel gTexture7F11F4
-.incbin "textures/raw/7F11F4.i4"
+glabel gTextureFontCC
+.incbin "textures/raw/gTextureFontCC.i4"
 
 .align 2, 0x00
-glabel gTexture7F12C4
-.incbin "textures/raw/7F12C4.i4"
+glabel gTextureFontDoubleQuote
+.incbin "textures/raw/gTextureFontDoubleQuote.i4"
 
 .align 2, 0x00
 glabel gTexture7F1394
@@ -1738,8 +1738,8 @@ glabel gTexture7F9FC4
 .incbin "textures/raw/7F9FC4.i4"
 
 .align 2, 0x00
-glabel gTexture7FA044
-.incbin "textures/raw/7FA044.i4"
+glabel gTextureFontSimpleQuote
+.incbin "textures/raw/gTextureFontSimpleQuote.i4"
 
 .align 2, 0x00
 glabel gTexture7FA0C4
