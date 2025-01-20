@@ -18,7 +18,7 @@ This stuff is all about the b-splines used objects like Lakitu and the Boos on B
 For splines used during the award ceremony and credits, see src/ending/ceremony_and_credits.h
 */
 
-typedef struct {
+typedef struct SplineControlPoint {
     /* 0x0 */ Vec3s pos;
     // Don't really know what to call this member.
     // It somehow controls the speed of travel along a segment of the spline but I don't really get how it works
@@ -28,7 +28,7 @@ typedef struct {
 // WARNING!!!
 // You really, really shouldn't use this type for actual spline data. This is intended as a generic SplineData
 // type. I would use a union, but that would cause significant ugliness elsewhere in the codebase
-typedef struct {
+typedef struct SplineData {
     // This name is a little misleading
     // The control point arrays have more control points in them than this number indicates. Not sure why though.
     s16 numControlPoints;

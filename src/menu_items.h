@@ -638,7 +638,7 @@ void func_800AF740(MenuItem*);
 
 // This really, really shouldn't be in this header file, but I don't know where else to put it
 void rmonPrintf(const char*, ...);
-void tkmk00decode(u8*, u8*, u8*, s32);
+void tkmk00decode(u32*, u8*, u16*, s32);
 
 /* File specific defines */
 
@@ -657,7 +657,7 @@ extern s32 D_800DDB24;
 extern s16 gGetPlayerByCharacterId[];
 
 extern u16* gMenuTextureBuffer;
-extern u8* gMenuCompressedBuffer;
+extern u32* gMenuCompressedBuffer;
 extern u8* sTKMK00_LowResBuffer;
 extern u8* sGPPointsCopy;
 extern void* gSomeDLBuffer;

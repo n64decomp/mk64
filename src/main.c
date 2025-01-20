@@ -40,14 +40,10 @@
 #include "crash_screen.h"
 #include "buffers/gfx_output_buffer.h"
 
-// Declarations (not in this file)
 void func_80091B78(void);
-
-void audio_init();
-
+void audio_init(void);
 void create_debug_thread(void);
 void start_debug_thread(void);
-
 struct SPTask* create_next_audio_frame_task(void);
 
 struct VblankHandler* gVblankHandler1 = NULL;

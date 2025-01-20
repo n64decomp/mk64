@@ -42,7 +42,7 @@
 void guMtxCatL(Mtx* m, Mtx* n, Mtx* res);
 
 u16* gMenuTextureBuffer;
-u8* gMenuCompressedBuffer;
+u32* gMenuCompressedBuffer;
 u8* sTKMK00_LowResBuffer;
 u8* sGPPointsCopy;
 void* gSomeDLBuffer;
@@ -1251,7 +1251,7 @@ void func_80091B78(void) {
     gNextFreeMemoryAddress = gFreeMemoryResetAnchor;
     // Hypothetically, this should be a ptr... But only hypothetically.
     gMenuTextureBuffer = get_next_available_memory_addr(0x000900B0);
-    gMenuCompressedBuffer = (u8*) get_next_available_memory_addr(0x0000CE00);
+    gMenuCompressedBuffer = get_next_available_memory_addr(0x0000CE00);
     sTKMK00_LowResBuffer = (u8*) get_next_available_memory_addr(SCREEN_WIDTH * SCREEN_HEIGHT);
     gSomeDLBuffer = (struct_8018EE10_entry*) get_next_available_memory_addr(0x00001000);
     func_800AF9B0();
@@ -1348,7 +1348,7 @@ void func_80091FA4(void) {
     s32 i;
 
     //! @todo These sizes need to be sizeof() for shiftability if possible
-    gMenuCompressedBuffer = (u8*) get_next_available_memory_addr(0x00002800);
+    gMenuCompressedBuffer = get_next_available_memory_addr(0x00002800);
     gMenuTextureBuffer = (u16*) get_next_available_memory_addr(0x000124F8);
     sTKMK00_LowResBuffer = (u8*) get_next_available_memory_addr(0x00001000);
     sGPPointsCopy = get_next_available_memory_addr(4);
@@ -3400,15 +3400,15 @@ void clear_menu_textures(void) {
  * @return void*
  */
 void* segmented_to_virtual_dupe(const void* addr) {
-    size_t segment = (uintptr_t) addr >> 24;
-    size_t offset = (uintptr_t) addr & 0x00FFFFFF;
+    ssize_t segment = (uintptr_t) addr >> 24;
+    ssize_t offset = (uintptr_t) addr & 0x00FFFFFF;
 
     return (void*) ((gSegmentTable[segment] + offset) + 0x80000000);
 }
 
 void* segmented_to_virtual_dupe_2(const void* addr) {
-    size_t segment = (uintptr_t) addr >> 24;
-    size_t offset = (uintptr_t) addr & 0x00FFFFFF;
+    ssize_t segment = (uintptr_t) addr >> 24;
+    ssize_t offset = (uintptr_t) addr & 0x00FFFFFF;
 
     return (void*) ((gSegmentTable[segment] + offset) + 0x80000000);
 }
@@ -3441,7 +3441,7 @@ void load_menu_img(MenuTexture* addr) {
                     size = ((size / 8) * 8) + 8;
                 }
                 dma_copy_mio0_segment(texAddr->textureData, size, gMenuCompressedBuffer);
-                mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[sMenuTextureBufferIndex]);
+                mio0decode((u8*) gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[sMenuTextureBufferIndex]);
             } else {
                 dma_copy_mio0_segment(texAddr->textureData, (texAddr->height * texAddr->width) * 2,
                                       &gMenuTextureBuffer[sMenuTextureBufferIndex]);
@@ -3505,7 +3505,7 @@ void func_8009952C(MenuTexture* addr) {
 
         if (imgLoaded == false) {
             dma_copy_mio0_segment(texAddr->textureData, 0x00008000U, gMenuCompressedBuffer);
-            mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[sMenuTextureBufferIndex]);
+            mio0decode((u8*) gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[sMenuTextureBufferIndex]);
             texMap[sMenuTextureEntries].textureData = texAddr->textureData;
             texMap[sMenuTextureEntries].offset = sMenuTextureBufferIndex;
             sMenuTextureBufferIndex += texAddr->height * texAddr->width;
@@ -3561,7 +3561,7 @@ void load_menu_img_comp_type(MenuTexture* addr, s32 compType) {
             switch (compType) {
                 case LOAD_MENU_IMG_MIO0_ONCE:
                 case LOAD_MENU_IMG_MIO0_FORCE:
-                    mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[sMenuTextureBufferIndex]);
+                    mio0decode((u8*) gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[sMenuTextureBufferIndex]);
                     break;
                 case LOAD_MENU_IMG_TKMK00_ONCE:
                 case LOAD_MENU_IMG_TKMK00_FORCE:
@@ -3572,7 +3572,7 @@ void load_menu_img_comp_type(MenuTexture* addr, s32 compType) {
                     }
                     if (1) {}
                     tkmk00decode(gMenuCompressedBuffer, sTKMK00_LowResBuffer,
-                                 (u8*) &gMenuTextureBuffer[sMenuTextureBufferIndex], clearBit);
+                                 &gMenuTextureBuffer[sMenuTextureBufferIndex], clearBit);
                     break;
             }
 
@@ -3602,7 +3602,7 @@ void func_80099958(MenuTexture* addr, s32 arg1, s32 arg2) {
             size = ((size / 8) * 8) + 8;
         }
         dma_copy_mio0_segment(texAddr->textureData, size, gMenuCompressedBuffer);
-        mio0decode(gMenuCompressedBuffer, D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
+        mio0decode((u8*) gMenuCompressedBuffer, (u8*) D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
         texAddr++;
     }
 }
@@ -3625,101 +3625,103 @@ void func_80099A94(MenuTexture* arg0, s32 arg1) {
     var_v1->texNum = arg1;
 }
 
-#ifdef NON_MATCHING
-// https://decomp.me/scratch/rxEoi
-// Something's up with the handling of `_textures_0aSegmentRomStart`, I don't know how to fix it
 void func_80099AEC(void) {
-    s8 texEnd;
-    s32 size;
-    UNUSED s32 stackPadding0;
-    UNUSED s32 stackPadding1;
-    s32 texSize;
-    OSIoMesg mb;
-    OSMesg msg;
-    UNUSED u8* test;
-    s32 bufSize;
-    MenuTexture* texAddr;
+    s32 some_var;
+    s8 var_s4;
     struct_8018E060_entry* var_s1;
+    TextureMap* entry;
+    MenuTexture* texPtr;
+    OSIoMesg sp68;
+    OSMesg sp64;
+    s32 cacheSize;
+    s32 sp60;
 
-    if (gGamestate == RACING) {
-        bufSize = 0x00000500;
+    if (gGamestate == 4) {
+        sp60 = 0x500;
     } else {
-        bufSize = 0x00001000;
+        sp60 = 0x1000;
     }
 
-    texEnd = 0;
-    var_s1 = D_8018E060;
-    texAddr = var_s1->texture;
+    var_s4 = 0;
+    entry = &sMenuTextureMap[0];
+    var_s1 = &D_8018E060[0];
+    texPtr = var_s1->texture;
 
-    if (texAddr == NULL)
+    if (texPtr == NULL) {
         return;
+}
 
-    texSize = texAddr->size;
-    if (texSize != 0) {
-        size = texSize;
+    if (texPtr->size) {
+        cacheSize = texPtr->size;
     } else {
-        size = 0x1400;
+        cacheSize = 0x1400;
     }
-    if (size % 8) {
-        size = ((size / 8) * 8) + 8;
+    if (cacheSize % 8) {
+        cacheSize = ((cacheSize / 8) * 8) + 8;
     }
-    osInvalDCache(gMenuCompressedBuffer, size);
-    osPiStartDma(&mb, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(texAddr->textureData)],
-                 gMenuCompressedBuffer, size, &gDmaMesgQueue);
-    osRecvMesg(&gDmaMesgQueue, &msg, 1);
+
+    osInvalDCache(gMenuCompressedBuffer, cacheSize);
+    osPiStartDma(&sp68, 0, 0, (uintptr_t) _textures_0aSegmentRomStart + SEGMENT_OFFSET(texPtr->textureData),
+                 gMenuCompressedBuffer, cacheSize, &gDmaMesgQueue);
+    osRecvMesg(&gDmaMesgQueue, &sp64, 1);
+
     while (1) {
         if ((var_s1 + 1)->texture == NULL) {
-            texEnd += 1;
+            var_s4 += 1;
         } else {
-            texAddr = (var_s1 + 1)->texture;
-            texSize = (var_s1 + 1)->texture->size;
-            if (texSize != 0) {
-                size = texSize;
+            texPtr = (var_s1 + 1)->texture;
+            if (texPtr->size) {
+                cacheSize = texPtr->size;
             } else {
-                size = 0x1400;
+                cacheSize = 0x1400;
             }
-            if (size % 8) {
-                size = ((size / 8) * 8) + 8;
+            if (cacheSize % 8) {
+                cacheSize = ((cacheSize / 8) * 8) + 8;
             }
-            osInvalDCache(gMenuCompressedBuffer + bufSize * 4, size);
-            osPiStartDma(&mb, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(texAddr->textureData)],
-                         gMenuCompressedBuffer + bufSize * 4, size, &gDmaMesgQueue);
+            osInvalDCache(&gMenuCompressedBuffer[sp60], cacheSize);
+            osPiStartDma(&sp68, 0, 0, (uintptr_t) _textures_0aSegmentRomStart + SEGMENT_OFFSET(texPtr->textureData),
+                         &gMenuCompressedBuffer[sp60], cacheSize, &gDmaMesgQueue);
         }
-        mio0decode(gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[sMenuTextureMap[var_s1->texNum].offset]);
+
+        some_var = (entry + var_s1->texNum)->offset;
+
+        mio0decode((u8*) gMenuCompressedBuffer, (u8*) &gMenuTextureBuffer[some_var]);
+
         var_s1->texture = NULL;
         var_s1++;
-        if (texEnd != 0)
+        if (var_s4) {
             break;
-        osRecvMesg(&gDmaMesgQueue, &msg, 1);
+        }
+
+        osRecvMesg(&gDmaMesgQueue, &sp64, 1);
+
         if ((var_s1 + 1)->texture == NULL) {
-            texEnd += 1;
+            var_s4 += 1;
         } else {
-            texAddr = (var_s1 + 1)->texture;
-            texSize = (var_s1 + 1)->texture->size;
-            if (texSize != 0) {
-                size = texSize;
+            texPtr = (var_s1 + 1)->texture;
+            if (texPtr->size) {
+                cacheSize = texPtr->size;
             } else {
-                size = 0x1400;
+                cacheSize = 0x1400;
             }
-            if (size % 8) {
-                size = ((size / 8) * 8) + 8;
+            if (cacheSize % 8) {
+                cacheSize = ((cacheSize / 8) * 8) + 8;
             }
-            osInvalDCache(gMenuCompressedBuffer, size);
-            osPiStartDma(&mb, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(texAddr->textureData)],
-                         gMenuCompressedBuffer, size, &gDmaMesgQueue);
+            osInvalDCache(gMenuCompressedBuffer, cacheSize);
+            osPiStartDma(&sp68, 0, 0, (uintptr_t) _textures_0aSegmentRomStart + SEGMENT_OFFSET(texPtr->textureData),
+                         gMenuCompressedBuffer, cacheSize, &gDmaMesgQueue);
         }
-        mio0decode(gMenuCompressedBuffer + bufSize * 4,
-                   (u8*) &gMenuTextureBuffer[sMenuTextureMap[var_s1->texNum].offset]);
+
+        some_var = (entry + var_s1->texNum)->offset;
+        mio0decode((u8*) &gMenuCompressedBuffer[sp60], (u8*) &gMenuTextureBuffer[some_var]);
         var_s1->texture = NULL;
         var_s1++;
-        if (texEnd != 0)
+        if (var_s4) {
             break;
-        osRecvMesg(&gDmaMesgQueue, &msg, 1);
+}
+        osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     }
 }
-#else
-GLOBAL_ASM("asm/non_matchings/menu_items/func_80099AEC.s")
-#endif
 
 void func_80099E54(void) {
     D_8018E0E8[0].mk64Texture = NULL;
@@ -3794,8 +3796,8 @@ void func_80099EC4(void) {
             osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
                          gMenuCompressedBuffer + 0x1400, var_s0, &gDmaMesgQueue);
         }
-        mio0decode(gMenuCompressedBuffer,
-                   D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        mio0decode((u8*) gMenuCompressedBuffer,
+                   (u8*) D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
         if (var_s4 != 0)
@@ -3818,8 +3820,8 @@ void func_80099EC4(void) {
             osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
                          gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
         }
-        mio0decode(gMenuCompressedBuffer + 0x1400,
-                   D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        mio0decode((u8*) gMenuCompressedBuffer + 0x1400,
+                   (u8*) D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
         if (var_s4 != 0)
@@ -3844,7 +3846,7 @@ void func_8009A238(MenuTexture* arg0, s32 arg1) {
         var_a3 = ((var_a3 / 8) * 8) + 8;
     }
     dma_tkmk00_textures(sp24, var_a3, gMenuCompressedBuffer);
-    tkmk00decode(gMenuCompressedBuffer, sTKMK00_LowResBuffer, (u8*) &gMenuTextureBuffer[temp_v1], 1);
+    tkmk00decode(gMenuCompressedBuffer, sTKMK00_LowResBuffer, &gMenuTextureBuffer[temp_v1], 1);
     sMenuTextureMap[arg1].textureData = sp24;
 }
 
