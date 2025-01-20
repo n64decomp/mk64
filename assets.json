@@ -191,8 +191,8 @@
 "bin/gTextureMenuData.rgba16.tkmk00": {"meta":{"size":"0x200"}, "offsets": {"us":["0x8090C0", "0x0"]}},
 "bin/gTextureMenuOK.rgba16.tkmk00": {"meta":{"size":"0x200"}, "offsets": {"us":["0x8092C0", "0x0"]}},
 
-"bin/gTextureBackgroundBlueSky.rgba16.tkmk00": {"meta":{"size":"0xCE00"}, "offsets": {"us":["0x8094C0", "0x0"]}},
-"bin/gTextureBackgroundSunset.rgba16.tkmk00": {"meta":{"size":"0x9400"}, "offsets": {"us":["0x8162C0", "0x0"]}},
+"bin/background_blue_sky.rgba16.tkmk00": {"meta":{"size":"0xCE00"}, "offsets": {"us":["0x8094C0", "0x0"]}},
+"bin/background_sunset.rgba16.tkmk00": {"meta":{"size":"0x9400"}, "offsets": {"us":["0x8162C0", "0x0"]}},
 
 "bin/gTextureGreenGoldStripe.rgba16.tkmk00": {"meta":{"size":"0xC00"}, "offsets": {"us":["0x81F6C0", "0x0"]}},
 "bin/gTextureGoldStripe.rgba16.tkmk00": {"meta":{"size":"0x700"}, "offsets": {"us":["0x8202C0", "0x0"]}},
@@ -1057,8 +1057,8 @@
 "textures/gTextureMenuData.rgba16.png": {"meta":{"dims":[64,18], "alpha":"0xBE"}, "offsets": {"us":["0x8090C0", "0x0"]}},
 "textures/gTextureMenuOK.rgba16.png": {"meta":{"dims":[31,19], "alpha":"0xBE"}, "offsets": {"us":["0x8092C0", "0x0"]}},
 
-"textures/gTextureBackgroundBlueSky.rgba16.png": {"meta":{"dims":[320,240], "alpha":"0x01"}, "offsets": {"us":["0x8094C0", "0x0"]}},
-"textures/gTextureBackgroundSunset.rgba16.png": {"meta":{"dims":[320,240], "alpha":"0x01"}, "offsets": {"us":["0x8162C0", "0x0"]}},
+"textures/background_blue_sky.rgba16.png": {"meta":{"dims":[320,240], "alpha":"0x01"}, "offsets": {"us":["0x8094C0", "0x0"]}},
+"textures/background_sunset.rgba16.png": {"meta":{"dims":[320,240], "alpha":"0x01"}, "offsets": {"us":["0x8162C0", "0x0"]}},
 
 "textures/gTextureGreenGoldStripe.rgba16.png": {"meta":{"dims":[256,29], "alpha":"0x01"}, "offsets": {"us":["0x81F6C0", "0x0"]}},
 "textures/gTextureGoldStripe.rgba16.png": {"meta":{"dims":[256,15], "alpha":"0x01"}, "offsets": {"us":["0x8202C0", "0x0"]}},

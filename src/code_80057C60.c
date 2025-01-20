@@ -2835,14 +2835,14 @@ s32 set_particle_color(UnkPlayerStruct258* arg0, s32 color, s16 alpha) {
     arg0->alpha = alpha;
 }
 
-s32 func_8005D82C(UnkPlayerStruct258* arg0, s32 arg1, s16 arg2) {
+s32 func_8005D82C(UnkPlayerStruct258* arg0, s32 arg1, s16 alpha) {
     s32 temp_v0;
     temp_v0 = random_int(48);
 
     arg0->red = (u8) ((u8) (arg1 >> 16) - temp_v0);
     arg0->green = (u8) ((u8) (arg1 >> 8) - temp_v0);
     arg0->blue = (u8) ((u8) arg1 - temp_v0);
-    arg0->alpha = arg2;
+    arg0->alpha = alpha;
 }
 
 void func_8005D898(Player* player, s16 arg1, UNUSED s32 arg2, UNUSED s8 arg3, UNUSED s8 arg4) {
