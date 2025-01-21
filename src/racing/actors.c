@@ -1186,22 +1186,22 @@ void spawn_course_actors(void) {
  */
 void init_actors_and_load_textures(void) {
     set_segment_base_addr(3, (void*) gNextFreeMemoryAddress);
-    D_802BA050 = dma_textures(gTextureGreenShell0, 0x00000257U, 0x00000400U);
-    dma_textures(gTextureGreenShell1, 0x00000242U, 0x00000400U);
-    dma_textures(gTextureGreenShell2, 0x00000259U, 0x00000400U);
-    dma_textures(gTextureGreenShell3, 0x00000256U, 0x00000400U);
-    dma_textures(gTextureGreenShell4, 0x00000246U, 0x00000400U);
-    dma_textures(gTextureGreenShell5, 0x0000025EU, 0x00000400U);
-    dma_textures(gTextureGreenShell6, 0x0000025CU, 0x00000400U);
-    dma_textures(gTextureGreenShell7, 0x00000254U, 0x00000400U);
-    D_802BA054 = dma_textures(gTextureBlueShell0, 0x0000022AU, 0x00000400U);
-    dma_textures(gTextureBlueShell1, 0x00000237U, 0x00000400U);
-    dma_textures(gTextureBlueShell2, 0x0000023EU, 0x00000400U);
-    dma_textures(gTextureBlueShell3, 0x00000243U, 0x00000400U);
-    dma_textures(gTextureBlueShell4, 0x00000255U, 0x00000400U);
-    dma_textures(gTextureBlueShell5, 0x00000259U, 0x00000400U);
-    dma_textures(gTextureBlueShell6, 0x00000239U, 0x00000400U);
-    dma_textures(gTextureBlueShell7, 0x00000236U, 0x00000400U);
+    D_802BA050 = dma_textures(texture_green_shell_0, 0x00000257U, 0x00000400U);
+    dma_textures(texture_green_shell_1, 0x00000242U, 0x00000400U);
+    dma_textures(texture_green_shell_2, 0x00000259U, 0x00000400U);
+    dma_textures(texture_green_shell_3, 0x00000256U, 0x00000400U);
+    dma_textures(texture_green_shell_4, 0x00000246U, 0x00000400U);
+    dma_textures(texture_green_shell_5, 0x0000025EU, 0x00000400U);
+    dma_textures(texture_green_shell_6, 0x0000025CU, 0x00000400U);
+    dma_textures(texture_green_shell_7, 0x00000254U, 0x00000400U);
+    D_802BA054 = dma_textures(texture_blue_shell_0, 0x0000022AU, 0x00000400U);
+    dma_textures(texture_blue_shell_1, 0x00000237U, 0x00000400U);
+    dma_textures(texture_blue_shell_2, 0x0000023EU, 0x00000400U);
+    dma_textures(texture_blue_shell_3, 0x00000243U, 0x00000400U);
+    dma_textures(texture_blue_shell_4, 0x00000255U, 0x00000400U);
+    dma_textures(texture_blue_shell_5, 0x00000259U, 0x00000400U);
+    dma_textures(texture_blue_shell_6, 0x00000239U, 0x00000400U);
+    dma_textures(texture_blue_shell_7, 0x00000236U, 0x00000400U);
     dma_textures(gTextureFinishLineBanner1, 0x0000028EU, 0x00000800U);
     dma_textures(gTextureFinishLineBanner2, 0x000002FBU, 0x00000800U);
     dma_textures(gTextureFinishLineBanner3, 0x00000302U, 0x00000800U);

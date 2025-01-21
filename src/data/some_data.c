@@ -186,13 +186,11 @@ u8 D_800E52D0[] = {
 };
 
 u8* gCourseOutlineTextures[] = {
-    gTextureCourseOutlineMarioRaceway,     gTextureCourseOutlineChocoMountain, gTextureCourseOutlineBowsersCastle,
-    gTextureCourseOutlineBansheeBoardwalk, gTextureCourseOutlineYoshiValley,   gTextureCourseOutlineFrappeSnowland,
-    gTextureCourseOutlineKoopaTroopaBeach, gTextureCourseOutlineRoyalRaceway,  gTextureCourseOutlineLuigiRaceway,
-    gTextureCourseOutlineMooMooFarm,       gTextureCourseOutlineToadsTurnpike, gTextureCourseOutlineKalimariDesert,
-    gTextureCourseOutlineSherbetLand,      gTextureCourseOutlineRainbowRoad,   gTextureCourseOutlineWarioStadium,
-    gTextureCourseOutlineBlockFort,        gTextureCourseOutlineSkyscraper,    gTextureCourseOutlineDoubleDeck,
-    gTextureCourseOutlineDksJungleParkway, gTextureCourseOutlineBigDonut,
+    minimap_mario_raceway, minimap_choco_mountain,  minimap_bowsers_castle,     minimap_banshee_boardwalk,
+    minimap_yoshi_valley,  minimap_frappe_snowland, minimap_koopa_troopa_beach, minimap_royal_raceway,
+    minimap_luigi_raceway, minimap_moo_moo_farm,    minimap_toads_turnpike,     minimap_kalimari_desert,
+    minimap_sherbet_land,  minimap_rainbow_road,    minimap_wario_stadium,      minimap_block_fort,
+    minimap_skyscraper,    minimap_double_deck,     minimap_dks_jungle_parkway, minimap_big_donut,
 };
 
 s16 D_800E5520[] = {
