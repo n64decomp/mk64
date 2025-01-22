@@ -374,7 +374,7 @@ glabel gTextureTinyFontMinus_end
 
 .align 2, 0x00
 glabel gTextureTinyFontComma
-.incbin "textures/standalone/tiny_font_comma.ia16.mio0"
+.incbin "textures/standalone/tiny_font_dot.ia16.mio0"
 glabel gTextureTinyFontComma_end
 
 .align 2, 0x00
@@ -838,20 +838,20 @@ glabel font_minus
 .incbin "textures/raw/font_minus.i4"
 
 .align 2, 0x00
-glabel gTexture7F1534
-.incbin "textures/raw/7F1534.i4"
+glabel font_dot
+.incbin "textures/raw/font_dot.i4"
 
 .align 2, 0x00
 glabel font_plus
 .incbin "textures/raw/font_plus.i4"
 
 .align 2, 0x00
-glabel gTexture7F16D4
-.incbin "textures/raw/7F16D4.i4"
+glabel font_interogation_mark
+.incbin "textures/raw/font_interogation_mark.i4"
 
 .align 2, 0x00
-glabel gTexture7F17A4
-.incbin "textures/raw/7F17A4.i4"
+glabel font_simple_quote
+.incbin "textures/raw/font_simple_quote.i4"
 
 .align 2, 0x00
 glabel font_number_zero
@@ -1738,8 +1738,8 @@ glabel gTexture7F9FC4
 .incbin "textures/raw/7F9FC4.i4"
 
 .align 2, 0x00
-glabel font_simple_quote
-.incbin "textures/raw/font_simple_quote.i4"
+glabel font_apostrophe
+.incbin "textures/raw/font_apostrophe.i4"
 
 .align 2, 0x00
 glabel gTexture7FA0C4
@@ -1754,5 +1754,5 @@ glabel gTexture7FA264
 .incbin "textures/raw/7FA264.i4"
 
 .align 2, 0x00
-glabel font_dote
-.incbin "textures/raw/font_dote.i4"
+glabel font_comma
+.incbin "textures/raw/font_comma.i4"

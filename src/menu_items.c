@@ -861,10 +861,10 @@ MenuTexture* gGlyphTextureLUT[] = {
     gTextureFontLetterZ,
     gTextureFontExclamationMark,
     gTextureFontMinus,
-    D_0200257C,
-    D_020025A4,
-    D_02004584,
-    D_0200261C,
+    gTextureFontInterogationMark,
+    gTextureFontSimpleQuote,
+    gTextureFontEmpty,
+    gTextureFontDot,
     gTextureFontNumberZero,
     gTextureFontNumberOne,
     gTextureFontNumberTwo,
@@ -879,8 +879,8 @@ MenuTexture* gGlyphTextureLUT[] = {
     gTextureFontFourDote,
     gTextureFontPlus,
     gTextureFontCC,
-    D_02004534,
-    D_02004584,
+    gTextureFontComma,
+    gTextureFontEmpty,
     D_02002824,
     D_0200284C,
     D_02002874,
@@ -964,7 +964,7 @@ MenuTexture* D_800E81E4[] = {
 };
 
 MenuTexture* D_800E822C[] = {
-    D_02004534,
+    gTextureFontComma,
     D_0200455C,
 };
 
@@ -976,7 +976,7 @@ MenuTexture* D_800E8234[] = {
 
 MenuTexture* D_800E8254[] = {
     seg2_game_select_texture, seg2_menu_1p_column, seg2_menu_2p_column, seg2_menu_3p_column,
-    seg2_menu_4p_column,      D_0200487C,          D_020048A4,          D_020048CC,
+    seg2_menu_4p_column,      D_0200487C,          gTextureMenuLOption, gTextureMenuRData,
 };
 
 // CC textures

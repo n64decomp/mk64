@@ -2060,7 +2060,7 @@ glabel gTextureExhaust5
 .incbin "textures/standalone/exhaust_5.ia8.mio0"
 
 .balign 4, 0x00
-glabel gTextureLogoMarioKart64
+glabel logo_mario_kart_64
 .incbin "textures/standalone/logo_mario_kart_64.rgba32.mio0"
 
 .balign 4, 0x00

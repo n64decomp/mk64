@@ -1491,7 +1491,7 @@ MkAnimation D_020019DC[2] = {
  *
  */
 MenuTexture D_020019EC[2] = {
-    { 0, gTextureNameDK, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_dk, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1500,7 +1500,7 @@ MenuTexture D_020019EC[2] = {
  *
  */
 MenuTexture D_02001A14[2] = {
-    { 0, gTextureNameToad, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_toad, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1509,7 +1509,7 @@ MenuTexture D_02001A14[2] = {
  *
  */
 MenuTexture D_02001A3C[2] = {
-    { 0, gTextureNameBowser, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_bowser, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1518,7 +1518,7 @@ MenuTexture D_02001A3C[2] = {
  *
  */
 MenuTexture D_02001A64[2] = {
-    { 0, gTextureNameLuigi, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_luigi, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1527,7 +1527,7 @@ MenuTexture D_02001A64[2] = {
  *
  */
 MenuTexture D_02001A8C[2] = {
-    { 0, gTextureNameMario, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_mario, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1536,7 +1536,7 @@ MenuTexture D_02001A8C[2] = {
  *
  */
 MenuTexture D_02001AB4[2] = {
-    { 0, gTextureNamePeach, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_peach, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1545,7 +1545,7 @@ MenuTexture D_02001AB4[2] = {
  *
  */
 MenuTexture D_02001ADC[2] = {
-    { 0, gTextureNameWario, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_wario, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -1554,7 +1554,7 @@ MenuTexture D_02001ADC[2] = {
  *
  */
 MenuTexture D_02001B04[2] = {
-    { 0, gTextureNameYoshi, 64, 12, 0, 64, 0x0, 0 },
+    { 0, texture_name_yoshi, 64, 12, 0, 64, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2297,8 +2297,8 @@ MenuTexture gTextureFontMinus[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200257C[2] = {
-    { 5, gTexture7F16D4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture gTextureFontInterogationMark[2] = {
+    { 5, font_interogation_mark, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2306,8 +2306,8 @@ MenuTexture D_0200257C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_020025A4[2] = {
-    { 5, gTexture7F17A4, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture gTextureFontSimpleQuote[2] = {
+    { 5, font_simple_quote, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -2333,8 +2333,8 @@ MenuTexture gTextureFontPlus[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_0200261C[2] = {
-    { 5, gTexture7F1534, 26, 16, 0, 0, 0x0, 0 },
+MenuTexture gTextureFontDot[2] = {
+    { 5, font_dot, 26, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4071,7 +4071,7 @@ MenuTexture D_0200441C[2] = {
  *
  */
 MenuTexture D_02004444[2] = {
-    { 5, font_simple_quote, 16, 16, 0, 0, 0x0, 0 },
+    { 5, font_apostrophe, 16, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4124,8 +4124,8 @@ MenuTexture D_0200450C[2] = {
  * @brief unknown MenuTexture
  *
  */
-MenuTexture D_02004534[2] = {
-    { 5, font_dote, 16, 16, 0, 0, 0x0, 0 },
+MenuTexture gTextureFontComma[2] = {
+    { 5, font_comma, 16, 16, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4142,7 +4142,7 @@ MenuTexture D_0200455C[2] = {
  * @brief unknown empty MenuTexture
  *
  */
-MenuTexture D_02004584[1] = {
+MenuTexture gTextureFontEmpty[1] = {
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4169,7 +4169,7 @@ MenuTexture seg2_sunset_background_texture[2] = {
  *
  */
 MenuTexture seg2_copyright_1996_texture[2] = {
-    { 1, gTextureCopyright1996, 124, 17, 98, 199, 0x0, 0 },
+    { 1, copyright_1996, 124, 17, 98, 199, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4178,7 +4178,7 @@ MenuTexture seg2_copyright_1996_texture[2] = {
  *
  */
 MenuTexture seg2_push_start_button_texture[2] = {
-    { 1, gTexturePushStartButton, 159, 16, 81, 179, 0x0, 0 },
+    { 1, push_start_button, 159, 16, 81, 179, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4187,7 +4187,7 @@ MenuTexture seg2_push_start_button_texture[2] = {
  *
  */
 MenuTexture D_02004638[2] = {
-    { 0, gTextureOption, 130, 32, 95, 16, 0x0, 0 },
+    { 0, texture_option, 130, 32, 95, 16, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4196,7 +4196,7 @@ MenuTexture D_02004638[2] = {
  *
  */
 MenuTexture seg2_game_select_texture[2] = {
-    { 0, gTextureGameSelect, 200, 32, 0, 0, 0x0, 0 },
+    { 0, texture_game_select, 200, 32, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4205,9 +4205,9 @@ MenuTexture seg2_game_select_texture[2] = {
  *
  */
 MenuTexture seg2_menu_1p_column[4] = {
-    { 1, gTextureMenu1PGame, 64, 54, 0, 0, 0x0, 0 },
-    { 1, gTextureMenuModeMarioGP, 64, 18, 0, 65, 0x0, 0 },
-    { 1, gTextureMenuModeTimeTrials, 64, 18, 0, 83, 0x0, 0 },
+    { 1, texture_menu_1p_game, 64, 54, 0, 0, 0x0, 0 },
+    { 1, texture_mode_mario_gp, 64, 18, 0, 65, 0x0, 0 },
+    { 1, texture_mode_time_trials, 64, 18, 0, 83, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4216,10 +4216,10 @@ MenuTexture seg2_menu_1p_column[4] = {
  *
  */
 MenuTexture seg2_menu_2p_column[5] = {
-    { 1, gTextureMenu2PGame, 64, 54, 0, 0, 0x0, 0 },
-    { 1, gTextureMenuModeMarioGP, 64, 18, 0, 65, 0x0, 0 },
-    { 1, gTextureMenuModeVS, 64, 18, 0, 83, 0x0, 0 },
-    { 1, gTextureMenuModeBattle, 64, 18, 0, 101, 0x0, 0 },
+    { 1, texture_menu_2p_game, 64, 54, 0, 0, 0x0, 0 },
+    { 1, texture_mode_mario_gp, 64, 18, 0, 65, 0x0, 0 },
+    { 1, texture_mode_vs, 64, 18, 0, 83, 0x0, 0 },
+    { 1, texture_mode_battle, 64, 18, 0, 101, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4228,9 +4228,9 @@ MenuTexture seg2_menu_2p_column[5] = {
  *
  */
 MenuTexture seg2_menu_3p_column[4] = {
-    { 1, gTextureMenu3PGame, 64, 54, 0, 0, 0x0, 0 },
-    { 1, gTextureMenuModeVS, 64, 18, 0, 65, 0x0, 0 },
-    { 1, gTextureMenuModeBattle, 64, 18, 0, 83, 0x0, 0 },
+    { 1, texture_menu_3p_game, 64, 54, 0, 0, 0x0, 0 },
+    { 1, texture_mode_vs, 64, 18, 0, 65, 0x0, 0 },
+    { 1, texture_mode_battle, 64, 18, 0, 83, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4239,9 +4239,9 @@ MenuTexture seg2_menu_3p_column[4] = {
  *
  */
 MenuTexture seg2_menu_4p_column[4] = {
-    { 1, gTextureMenu4PGame, 64, 54, 0, 0, 0x0, 0 },
-    { 1, gTextureMenuModeVS, 64, 18, 0, 65, 0x0, 0 },
-    { 1, gTextureMenuModeBattle, 64, 18, 0, 83, 0x0, 0 },
+    { 1, texture_menu_4p_game, 64, 54, 0, 0, 0x0, 0 },
+    { 1, texture_mode_vs, 64, 18, 0, 65, 0x0, 0 },
+    { 1, texture_mode_battle, 64, 18, 0, 83, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4250,7 +4250,7 @@ MenuTexture seg2_menu_4p_column[4] = {
  *
  */
 MenuTexture D_020047DC[2] = {
-    { 1, gTextureSmallGreenTriangle, 12, 7, 27, 56, 0x0, 0 },
+    { 1, texture_small_green_triangle, 12, 7, 27, 56, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4259,7 +4259,7 @@ MenuTexture D_020047DC[2] = {
  *
  */
 MenuTexture D_02004804[2] = {
-    { 1, gTextureSmallGreenTriangle, 12, 7, 27, 56, 0x0, 0 },
+    { 1, texture_small_green_triangle, 12, 7, 27, 56, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4268,7 +4268,7 @@ MenuTexture D_02004804[2] = {
  *
  */
 MenuTexture D_0200482C[2] = {
-    { 1, gTextureSmallGreenTriangle, 12, 7, 27, 56, 0x0, 0 },
+    { 1, texture_small_green_triangle, 12, 7, 27, 56, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4277,7 +4277,7 @@ MenuTexture D_0200482C[2] = {
  *
  */
 MenuTexture D_02004854[2] = {
-    { 1, gTextureSmallGreenTriangle, 12, 7, 27, 56, 0x0, 0 },
+    { 1, texture_small_green_triangle, 12, 7, 27, 56, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4294,8 +4294,8 @@ MenuTexture D_0200487C[2] = {
  * @brief MenuTexture for Menu L Option
  *
  */
-MenuTexture D_020048A4[2] = {
-    { 1, gTextureMenuLOption, 58, 19, 0, 0, 0x0, 0 },
+MenuTexture gTextureMenuLOption[2] = {
+    { 1, texture_l_option, 58, 19, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4303,8 +4303,8 @@ MenuTexture D_020048A4[2] = {
  * @brief MenuTexture for Menu R Option
  *
  */
-MenuTexture D_020048CC[2] = {
-    { 1, gTextureMenuRData, 58, 19, 0, 0, 0x0, 0 },
+MenuTexture gTextureMenuRData[2] = {
+    { 1, texture_r_data, 58, 19, 0, 0, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 
@@ -4434,7 +4434,7 @@ MenuTexture seg2_P4_border_texture[3] = {
  *
  */
 MenuTexture D_02004B4C[2] = {
-    { 0, gTexturePlayerSelect, 220, 32, 51, 16, 0x0, 0 },
+    { 0, texture_player_select, 220, 32, 51, 16, 0x0, 0 },
     { 0, NULL, 0, 0, 0, 0, 0, 0 },
 };
 

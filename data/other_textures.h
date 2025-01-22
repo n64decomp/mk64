@@ -514,7 +514,7 @@ extern u8 gTextureExhaust2[];
 extern u8 gTextureExhaust3[];
 extern u8 gTextureExhaust4[];
 extern u8 gTextureExhaust5[];
-extern u8 gTextureLogoMarioKart64[];
+extern u8 logo_mario_kart_64[];
 extern u8 minimap_mario_raceway[];
 extern u8 minimap_choco_mountain[];
 extern u8 minimap_bowsers_castle[];
