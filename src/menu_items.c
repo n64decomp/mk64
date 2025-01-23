@@ -3400,15 +3400,15 @@ void clear_menu_textures(void) {
  * @return void*
  */
 void* segmented_to_virtual_dupe(const void* addr) {
-    ssize_t segment = (uintptr_t) addr >> 24;
-    ssize_t offset = (uintptr_t) addr & 0x00FFFFFF;
+    size_t segment = (uintptr_t) addr >> 24;
+    size_t offset = (uintptr_t) addr & 0x00FFFFFF;
 
     return (void*) ((gSegmentTable[segment] + offset) + 0x80000000);
 }
 
 void* segmented_to_virtual_dupe_2(const void* addr) {
-    ssize_t segment = (uintptr_t) addr >> 24;
-    ssize_t offset = (uintptr_t) addr & 0x00FFFFFF;
+    size_t segment = (uintptr_t) addr >> 24;
+    size_t offset = (uintptr_t) addr & 0x00FFFFFF;
 
     return (void*) ((gSegmentTable[segment] + offset) + 0x80000000);
 }
