@@ -416,7 +416,7 @@ extern u16 D_800EA1C4;
 // a sound source, its usage makes it look like a 0'd Vec3f for general usage
 extern Vec3f D_800EA1C8; // = {0.0f, 0.0f, 0.0f}
 extern f32 D_800EA1D4;
-extern u8 D_800EA1DC; // = 0;
+extern s8 D_800EA1DC; // = 0;
 extern u8 D_800EA1E4;
 extern u8 D_800EA1E8;
 extern u8 D_800EA1EC;
