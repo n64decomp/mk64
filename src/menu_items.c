@@ -3627,29 +3627,29 @@ void func_80099A94(MenuTexture* arg0, s32 arg1) {
 
 void func_80099AEC(void) {
     s32 some_var;
-    s8 var_s4;
+    s8 texEnd;
     struct_8018E060_entry* var_s1;
     TextureMap* entry;
     MenuTexture* texPtr;
-    OSIoMesg sp68;
+    OSIoMesg mb;
     OSMesg sp64;
     s32 cacheSize;
-    s32 sp60;
+    s32 bufSize;
 
-    if (gGamestate == 4) {
-        sp60 = 0x500;
+    if (gGamestate == RACING) {
+        bufSize = 0x500;
     } else {
-        sp60 = 0x1000;
+        bufSize = 0x1000;
     }
 
-    var_s4 = 0;
+    texEnd = 0;
     entry = &sMenuTextureMap[0];
     var_s1 = &D_8018E060[0];
     texPtr = var_s1->texture;
 
     if (texPtr == NULL) {
         return;
-}
+    }
 
     if (texPtr->size) {
         cacheSize = texPtr->size;
@@ -3661,13 +3661,13 @@ void func_80099AEC(void) {
     }
 
     osInvalDCache(gMenuCompressedBuffer, cacheSize);
-    osPiStartDma(&sp68, 0, 0, (uintptr_t) _textures_0aSegmentRomStart + SEGMENT_OFFSET(texPtr->textureData),
+    osPiStartDma(&mb, 0, 0, (uintptr_t) _textures_0aSegmentRomStart + SEGMENT_OFFSET(texPtr->textureData),
                  gMenuCompressedBuffer, cacheSize, &gDmaMesgQueue);
     osRecvMesg(&gDmaMesgQueue, &sp64, 1);
 
     while (1) {
         if ((var_s1 + 1)->texture == NULL) {
-            var_s4 += 1;
+            texEnd += 1;
         } else {
             texPtr = (var_s1 + 1)->texture;
             if (texPtr->size) {
@@ -3678,9 +3678,9 @@ void func_80099AEC(void) {
             if (cacheSize % 8) {
                 cacheSize = ((cacheSize / 8) * 8) + 8;
             }
-            osInvalDCache(&gMenuCompressedBuffer[sp60], cacheSize);
-            osPiStartDma(&sp68, 0, 0, (uintptr_t) _textures_0aSegmentRomStart + SEGMENT_OFFSET(texPtr->textureData),
-                         &gMenuCompressedBuffer[sp60], cacheSize, &gDmaMesgQueue);
+            osInvalDCache(&gMenuCompressedBuffer[bufSize], cacheSize);
+            osPiStartDma(&mb, 0, 0, (uintptr_t) _textures_0aSegmentRomStart + SEGMENT_OFFSET(texPtr->textureData),
+                         &gMenuCompressedBuffer[bufSize], cacheSize, &gDmaMesgQueue);
         }
 
         some_var = (entry + var_s1->texNum)->offset;
@@ -3689,14 +3689,14 @@ void func_80099AEC(void) {
 
         var_s1->texture = NULL;
         var_s1++;
-        if (var_s4) {
+        if (texEnd) {
             break;
         }
 
         osRecvMesg(&gDmaMesgQueue, &sp64, 1);
 
         if ((var_s1 + 1)->texture == NULL) {
-            var_s4 += 1;
+            texEnd += 1;
         } else {
             texPtr = (var_s1 + 1)->texture;
             if (texPtr->size) {
@@ -3708,17 +3708,17 @@ void func_80099AEC(void) {
                 cacheSize = ((cacheSize / 8) * 8) + 8;
             }
             osInvalDCache(gMenuCompressedBuffer, cacheSize);
-            osPiStartDma(&sp68, 0, 0, (uintptr_t) _textures_0aSegmentRomStart + SEGMENT_OFFSET(texPtr->textureData),
+            osPiStartDma(&mb, 0, 0, (uintptr_t) _textures_0aSegmentRomStart + SEGMENT_OFFSET(texPtr->textureData),
                          gMenuCompressedBuffer, cacheSize, &gDmaMesgQueue);
         }
 
         some_var = (entry + var_s1->texNum)->offset;
-        mio0decode((u8*) &gMenuCompressedBuffer[sp60], (u8*) &gMenuTextureBuffer[some_var]);
+        mio0decode((u8*) &gMenuCompressedBuffer[bufSize], (u8*) &gMenuTextureBuffer[some_var]);
         var_s1->texture = NULL;
         var_s1++;
-        if (var_s4) {
+        if (texEnd) {
             break;
-}
+        }
         osRecvMesg(&gDmaMesgQueue, &sp64, 1);
     }
 }
@@ -4642,7 +4642,7 @@ void func_8009CBE4(s32 arg0, s32 arg1, s32 arg2) {
                                 color->green, color->blue, 0xFF - (D_8018E7D0[arg0] * 0xFF / D_8018E7B8[arg0]));
 
     if ((arg1 == 0) && (D_8018E7D0[arg0] += 1, (D_8018E7D0[arg0] >= D_8018E7B8[arg0]))) {
-        if (gGamestate == 4) {
+        if (gGamestate == RACING) {
             D_8018E7AC[arg0] = 6;
             return;
         }
@@ -4692,7 +4692,7 @@ void func_8009CE64(s32 arg0) {
             gGotoMenu = 1;
             gMenuSelection = 0x0000000B;
         }
-    } else if (gGamestate == 4) {
+    } else if (gGamestate == RACING) {
         if (D_8018E7AC[arg0] == 2) {
             if (arg0 != 4) {
                 D_8018E7AC[arg0] = 5;
@@ -7584,7 +7584,7 @@ void render_lap_times(s32 recordType, s32 column, s32 row) {
     char sp38[3];
     MenuItem* temp_v0;
     s32 sp30;
-    if (gGamestate == 4) {
+    if (gGamestate == RACING) {
         sp30 = 0;
     } else {
         sp30 = 1;

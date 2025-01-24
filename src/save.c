@@ -771,7 +771,7 @@ s32 func_800B6178(s32 arg0) {
         default:
             return -1;
     }
-    if (gGamestate == 4) {
+    if (gGamestate == RACING) {
         func_800051C4();
     }
     temp_s3 = &D_8018EE10[arg0];
@@ -787,7 +787,7 @@ s32 func_800B6178(s32 arg0) {
                                     0x00003C00, (u8*) D_800DC714);
         if (var_v0 == 0) {
             temp_s3->ghostDataSaved = 1;
-            if (gGamestate == 4) {
+            if (gGamestate == RACING) {
                 temp_s3->courseIndex = (gCupSelection * 4) + gCourseIndexInCup;
             }
             temp_s3->unk_00 = D_80162DFC;
