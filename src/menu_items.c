@@ -3602,7 +3602,8 @@ void func_80099958(MenuTexture* addr, s32 arg1, s32 arg2) {
             size = ((size / 8) * 8) + 8;
         }
         dma_copy_mio0_segment(texAddr->textureData, size, gMenuCompressedBuffer);
-        mio0decode((u8*) gMenuCompressedBuffer, (u8*) D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
+        mio0decode((u8*) gMenuCompressedBuffer,
+                   (u8*) D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
         texAddr++;
     }
 }
@@ -3796,8 +3797,9 @@ void func_80099EC4(void) {
             osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
                          gMenuCompressedBuffer + 0x1400, var_s0, &gDmaMesgQueue);
         }
-        mio0decode((u8*) gMenuCompressedBuffer,
-                   (u8*) D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        mio0decode(
+            (u8*) gMenuCompressedBuffer,
+            (u8*) D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
         if (var_s4 != 0)
@@ -3820,8 +3822,9 @@ void func_80099EC4(void) {
             osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
                          gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
         }
-        mio0decode((u8*) gMenuCompressedBuffer + 0x1400,
-                   (u8*) D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        mio0decode(
+            (u8*) gMenuCompressedBuffer + 0x1400,
+            (u8*) D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
         if (var_s4 != 0)
