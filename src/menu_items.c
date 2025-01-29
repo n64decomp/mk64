@@ -1099,19 +1099,19 @@ f64 exponent_by_squaring(f64 base, s32 exponent) {
     return 1.0 / result;
 }
 
-f64 func_800917B0(f64 arg0, f64 arg1) {
+f64 pow(f64 arg0, f64 arg1) {
     if ((arg1 <= 2147483647.0) && (-2147483647.0 <= arg1)) {
         if (arg1 == (s32) arg1) {
             return exponent_by_squaring(arg0, arg1);
         }
     }
     if (arg0 > 0.0) {
-        return func_8009195C(func_8009186C(arg0) * arg1);
+        return exponential(ln(arg0) * arg1);
     }
     return 0.0;
 }
 
-f64 func_8009186C(f64 arg0) {
+f64 ln(f64 arg0) {
     s32 var_v0;
     s32 sp38;
     f64 var_f2;
@@ -1121,8 +1121,8 @@ f64 func_8009186C(f64 arg0) {
     if (arg0 <= 0.0) {
         return 0.0;
     }
-    func_80091AC0(arg0 / 1.414213562373095, &sp38);
-    arg0 /= func_80091A6C(1.0, sp38);
+    normalize_to_unit_interval(arg0 / 1.414213562373095, &sp38);
+    arg0 /= pow2(1.0, sp38);
     var_v0 = 1;
     arg0 = (arg0 - 1.0) / (arg0 + 1.0);
     temp_f12 = arg0 * arg0;
@@ -1139,7 +1139,7 @@ f64 func_8009186C(f64 arg0) {
 #ifdef NON_MATCHING
 // https://decomp.me/scratch/dXpT5
 // Some math reordering issues on the continued fraction line
-f64 func_8009195C(f64 arg0) {
+f64 exponential(f64 arg0) {
     s32 temp_f10;
     s32 six = 6;
     s32 ten = 10;
@@ -1162,17 +1162,17 @@ f64 func_8009195C(f64 arg0) {
      **/
     temp_f2 =
         2 + (temp_f2 / (six + (temp_f2 / (ten + (temp_f2 / (fourteen + (temp_f2 / (eighteen + (temp_f2 / 22)))))))));
-    return func_80091A6C((temp_f2 + arg0) / (temp_f2 - arg0), temp_f10);
+    return pow2((temp_f2 + arg0) / (temp_f2 - arg0), temp_f10);
 }
 #else
-GLOBAL_ASM("asm/non_matchings/menu_items/func_8009195C.s")
+GLOBAL_ASM("asm/non_matchings/menu_items/exponential.s")
 #endif
 
 /**
  * This function appears to multiply some `value`
  * by 2 ^ `exponent`, even if that exponent is negative
  **/
-f64 func_80091A6C(f64 value, s32 exponent) {
+f64 pow2(f64 value, s32 exponent) {
     f64 base;
 
     if (exponent >= 0) {
@@ -1201,7 +1201,7 @@ f64 func_80091A6C(f64 value, s32 exponent) {
  * arg2 appears to track the exponent in the power-of-2
  * that would undo the changes to arg0
  **/
-f64 func_80091AC0(f64 arg0, s32* arg2) {
+f64 normalize_to_unit_interval(f64 arg0, s32* arg2) {
     const f64 const1 = 2.0;
     s32 exponent = 0;
 
@@ -3602,7 +3602,8 @@ void func_80099958(MenuTexture* addr, s32 arg1, s32 arg2) {
             size = ((size / 8) * 8) + 8;
         }
         dma_copy_mio0_segment(texAddr->textureData, size, gMenuCompressedBuffer);
-        mio0decode((u8*) gMenuCompressedBuffer, (u8*) D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
+        mio0decode((u8*) gMenuCompressedBuffer,
+                   (u8*) D_802BFB80.arraySize4[arg2][arg1 / 2][(arg1 % 2) + 2].pixel_index_array);
         texAddr++;
     }
 }
@@ -3796,8 +3797,9 @@ void func_80099EC4(void) {
             osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
                          gMenuCompressedBuffer + 0x1400, var_s0, &gDmaMesgQueue);
         }
-        mio0decode((u8*) gMenuCompressedBuffer,
-                   (u8*) D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        mio0decode(
+            (u8*) gMenuCompressedBuffer,
+            (u8*) D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
         if (var_s4 != 0)
@@ -3820,8 +3822,9 @@ void func_80099EC4(void) {
             osPiStartDma(&sp68, 0, 0, (uintptr_t) &_textures_0aSegmentRomStart[SEGMENT_OFFSET(temp_s2->textureData)],
                          gMenuCompressedBuffer, var_s0, &gDmaMesgQueue);
         }
-        mio0decode((u8*) gMenuCompressedBuffer + 0x1400,
-                   (u8*) D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
+        mio0decode(
+            (u8*) gMenuCompressedBuffer + 0x1400,
+            (u8*) D_802BFB80.arraySize4[var_s1->unk6][var_s1->unk4 / 2][(var_s1->unk4 % 2) + 2].pixel_index_array);
         var_s1->mk64Texture = NULL;
         var_s1++;
         if (var_s4 != 0)
@@ -4151,7 +4154,7 @@ void func_8009AD78(s32 arg0, s32 arg1) {
 }
 
 void convert_img_to_greyscale(s32 arg0, u32 arg1) {
-    u32 var_s0;
+    u32 i;
     s32 red;
     s32 green;
     s32 blue;
@@ -4159,23 +4162,23 @@ void convert_img_to_greyscale(s32 arg0, u32 arg1) {
     u32 temp_t9;
     s32 size;
     u16* color;
-    f32 sp48[0x20];
+    f32 sp48[32];
 
-    for (var_s0 = 0; var_s0 < 0x20; var_s0++) {
-        sp48[var_s0] = func_800917B0(var_s0 * 0.03125, (arg1 * 1.5 * 0.00390625) + 0.25);
+    for (i = 0; i < 32; i++) {
+        sp48[i] = pow(i / 32.0, (arg1 * 1.5 / 256) + 0.25);
     }
     color = &gMenuTextureBuffer[sMenuTextureMap[arg0].offset];
     size = sMenuTextureMap[arg0 + 1].offset - sMenuTextureMap[arg0].offset;
-    for (var_s0 = 0; var_s0 < (u32) size; var_s0++) {
+    for (i = 0; i < (u32) size; i++) {
         red = ((*color & 0xF800) >> 0xB) * 0x55;
         green = ((*color & 0x7C0) >> 6) * 0x4B;
         blue = ((*color & 0x3E) >> 1) * 0x5F;
         alpha = *color & 0x1;
         temp_t9 = red + green + blue;
-        temp_t9 >>= 8;
+        temp_t9 /= 256;
         temp_t9 = sp48[temp_t9] * 32.0f;
-        if (temp_t9 >= 0x20) {
-            temp_t9 = 0x1F;
+        if (temp_t9 >= 32) {
+            temp_t9 = 31;
         }
         *color++ = (temp_t9 << 1) + (temp_t9 << 6) + (temp_t9 << 0xB) + alpha;
     }
@@ -4200,10 +4203,10 @@ void adjust_img_colour(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
         blue = ((*color & 0x3E) >> 1) * 0x1D;
         alpha = *color & 0x1;
         temp_t9 = red + green + blue;
-        temp_t9 = temp_t9 >> 8;
-        newred = ((temp_t9 * arg2) >> 8) << 0xB;
-        newgreen = ((temp_t9 * arg3) >> 8) << 6;
-        newblue = ((temp_t9 * arg4) >> 8) << 1;
+        temp_t9 = temp_t9 / 256;
+        newred = ((temp_t9 * arg2) / 256) << 0xB;
+        newgreen = ((temp_t9 * arg3) / 256) << 6;
+        newblue = ((temp_t9 * arg4) / 256) << 1;
         *color++ = newred + newgreen + newblue + alpha;
     }
 }
