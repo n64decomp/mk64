@@ -181,7 +181,7 @@ glabel update_player
 /* 00A9AC 80009DAC 10000011 */  b     .L80009DF4
 /* 00A9B0 80009DB0 8FA50040 */   lw    $a1, 0x40($sp)
 .L80009DB4:
-/* 00A9B4 80009DB4 0C004E15 */  jal   handle_paddleBoats_interactions
+/* 00A9B4 80009DB4 0C004E15 */  jal   handle_paddle_boats_interactions
 /* 00A9B8 80009DB8 8FA40040 */   lw    $a0, 0x40($sp)
 /* 00A9BC 80009DBC 1000000D */  b     .L80009DF4
 /* 00A9C0 80009DC0 8FA50040 */   lw    $a1, 0x40($sp)

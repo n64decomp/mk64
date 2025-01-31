@@ -180,21 +180,21 @@ void regulate_cpu_speed(s32 playerId, f32 targetSpeed, Player* player) {
             } else {
                 var_a1 = 1;
                 switch (gSpeedCPUBehaviour[playerId]) { /* switch 1; irregular */
-                    case SPEED_cpu_BEHAVIOUR_FAST:      /* switch 1 */
+                    case SPEED_CPU_BEHAVIOUR_FAST:      /* switch 1 */
                         player->effects &= ~UNKNOWN_EFFECT_0x200000;
                         player_accelerate(player);
                         break;
-                    case SPEED_cpu_BEHAVIOUR_MAX: /* switch 1 */
+                    case SPEED_CPU_BEHAVIOUR_MAX: /* switch 1 */
                         player->effects |= UNKNOWN_EFFECT_0x200000;
                         player_accelerate(player);
                         break;
-                    case SPEED_cpu_BEHAVIOUR_SLOW: /* switch 1 */
+                    case SPEED_CPU_BEHAVIOUR_SLOW: /* switch 1 */
                         if (((speed / 18.0f) * 216.0f) > 20.0f) {
                             targetSpeed = 1.6666666f;
                         }
                         var_a1 = 0;
                         break;
-                    case SPEED_cpu_BEHAVIOUR_NORMAL: /* switch 1 */
+                    case SPEED_CPU_BEHAVIOUR_NORMAL: /* switch 1 */
                     default:                         /* switch 1 */
                         var_a1 = 0;
                         break;
