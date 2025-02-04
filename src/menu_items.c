@@ -4165,7 +4165,7 @@ void convert_img_to_greyscale(s32 arg0, u32 arg1) {
     f32 sp48[32];
 
     for (i = 0; i < 32; i++) {
-        sp48[i] = pow(i / 32.0, (arg1 * 1.5 / 256) + 0.25);
+        sp48[i] = pow(i / 32.0, (arg1 * 1.5 / 256.0) + 0.25);
     }
     color = &gMenuTextureBuffer[sMenuTextureMap[arg0].offset];
     size = sMenuTextureMap[arg0 + 1].offset - sMenuTextureMap[arg0].offset;
