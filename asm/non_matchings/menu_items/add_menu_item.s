@@ -558,8 +558,8 @@ glabel L8009ED1C
 /* 09F950 8009ED50 0C026C29 */  jal   convert_img_to_greyscale
 /* 09F954 8009ED54 24050019 */   li    $a1, 25
 /* 09F958 8009ED58 8FB80080 */  lw    $t8, 0x80($sp)
-/* 09F95C 8009ED5C 3C0E800E */  lui   $t6, %hi(D_800E74E8) # $t6, 0x800e
-/* 09F960 8009ED60 25CE74E8 */  addiu $t6, %lo(D_800E74E8) # addiu $t6, $t6, 0x74e8
+/* 09F95C 8009ED5C 3C0E800E */  lui   $t6, %hi(gBackgroundColor) # $t6, 0x800e
+/* 09F960 8009ED60 25CE74E8 */  addiu $t6, %lo(gBackgroundColor) # addiu $t6, $t6, 0x74e8
 /* 09F964 8009ED64 0018C8C0 */  sll   $t9, $t8, 3
 /* 09F968 8009ED68 032E1021 */  addu  $v0, $t9, $t6
 /* 09F96C 8009ED6C 944FFEEC */  lhu   $t7, -0x114($v0)

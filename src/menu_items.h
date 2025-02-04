@@ -721,7 +721,7 @@ extern Unk_D_800E70A0 D_800E7458[];
 extern Unk_D_800E70A0 D_800E7480[];
 extern RGBA16 D_800E74A8[];
 extern RGBA16 D_800E74D0[];
-extern RGBA16 D_800E74E8[];
+extern RGBA16 gBackgroundColor[];
 extern const s16 gGlyphDisplayWidth[];
 extern char* gCupNames[];
 extern char* gCourseNamesDup2[];

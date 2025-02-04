@@ -278,7 +278,7 @@ RGBA16 D_800E74D0[] = {
     { 0xff, 0xff, 0x00, 0xff },
 };
 
-RGBA16 D_800E74E8[] = {
+RGBA16 gBackgroundColor[] = {
     { 0xff, 0xaf, 0xaf, 0xff },
     { 0xaf, 0xff, 0xaf, 0xff },
     { 0xaf, 0xaf, 0xff, 0xff },
@@ -5573,8 +5573,8 @@ void add_menu_item(s32 type, s32 column, s32 row, s8 priority) {
             load_menu_img_comp_type(gMenuTexturesBackground[has_unlocked_extra_mode()], LOAD_MENU_IMG_TKMK00_ONCE);
             load_menu_img_comp_type(D_02004B74, LOAD_MENU_IMG_TKMK00_ONCE);
             convert_img_to_greyscale(0, 0x00000019);
-            adjust_img_colour(0, SCREEN_WIDTH * SCREEN_HEIGHT, D_800E74E8[type - 0x23].red,
-                              D_800E74E8[type - 0x23].green, D_800E74E8[type - 0x23].blue);
+            adjust_img_colour(0, SCREEN_WIDTH * SCREEN_HEIGHT, gBackgroundColor[type - 0x23].red,
+                              gBackgroundColor[type - 0x23].green, gBackgroundColor[type - 0x23].blue);
             break;
         case MENU_ITEM_UI_OK:
             var_ra->param1 = 0x00000020;

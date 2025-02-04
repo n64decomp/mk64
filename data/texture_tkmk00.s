@@ -189,21 +189,21 @@ glabel texture_r_data
 .incbin "bin/texture_r_data.rgba16.tkmk00"
 glabel texture_r_data_end
 
-glabel gTextureMenu50cc
-.incbin "bin/gTextureMenu50cc.rgba16.tkmk00"
-glabel gTextureMenu50cc_end
+glabel texture_50cc
+.incbin "bin/texture_50cc.rgba16.tkmk00"
+glabel texture_50cc_end
 
-glabel gTextureMenu100cc
-.incbin "bin/gTextureMenu100cc.rgba16.tkmk00"
-glabel gTextureMenu100cc_end
+glabel texture_100cc
+.incbin "bin/texture_100cc.rgba16.tkmk00"
+glabel texture_100cc_end
 
-glabel gTextureMenu150cc
-.incbin "bin/gTextureMenu150cc.rgba16.tkmk00"
-glabel gTextureMenu150cc_end
+glabel texture_150cc
+.incbin "bin/texture_150cc.rgba16.tkmk00"
+glabel texture_150cc_end
 
-glabel gTextureMenuExtra
-.incbin "bin/gTextureMenuExtra.rgba16.tkmk00"
-glabel gTextureMenuExtra_end
+glabel texture_extra
+.incbin "bin/texture_extra.rgba16.tkmk00"
+glabel texture_extra_end
 
 glabel gTextureMenuWithoutItem
 .incbin "bin/gTextureMenuWithoutItem.rgba16.tkmk00"
@@ -213,21 +213,21 @@ glabel gTextureMenuWithItem
 .incbin "bin/gTextureMenuWithItem.rgba16.tkmk00"
 glabel gTextureMenuWithItem_end
 
-glabel gTextureMenuBegin
-.incbin "bin/gTextureMenuBegin.rgba16.tkmk00"
-glabel gTextureMenuBegin_end
+glabel texture_begin
+.incbin "bin/texture_begin.rgba16.tkmk00"
+glabel texture_begin_end
 
-glabel gTextureMenuGhost
-.incbin "bin/gTextureMenuGhost.rgba16.tkmk00"
-glabel gTextureMenuGhost_end
+glabel texture_menu_ghost
+.incbin "bin/texture_menu_ghost.rgba16.tkmk00"
+glabel texture_menu_ghost_end
 
-glabel gTextureMenuData
-.incbin "bin/gTextureMenuData.rgba16.tkmk00"
-glabel gTextureMenuData_end
+glabel texture_data
+.incbin "bin/texture_data.rgba16.tkmk00"
+glabel texture_data_end
 
-glabel gTextureMenuOK
-.incbin "bin/gTextureMenuOK.rgba16.tkmk00"
-glabel gTextureMenuOK_end
+glabel texture_ok
+.incbin "bin/texture_ok.rgba16.tkmk00"
+glabel texture_ok_end
 
 glabel background_blue_sky
 .incbin "bin/background_blue_sky.rgba16.tkmk00"
