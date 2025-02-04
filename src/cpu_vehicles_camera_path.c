@@ -564,7 +564,7 @@ s16 get_angle_between_path(Vec3f arg0, Vec3f arg1) {
     return phi_v1;
 }
 
-bool is_collide_with_vehicle(f32 vehicleX, f32 vehicleY, f32 vehicleVelocityX, f32 vehicleVelocityZ, f32 distanceX,
+bool is_collide_with_vehicle(f32 vehicleX, f32 vehicleZ, f32 vehicleVelocityX, f32 vehicleVelocityZ, f32 distanceX,
                              f32 distanceY, f32 playerX, f32 playerZ) {
     f32 velocity;
     f32 temp_f18;
@@ -574,10 +574,10 @@ bool is_collide_with_vehicle(f32 vehicleX, f32 vehicleY, f32 vehicleVelocityX, f
         return false;
     }
     temp_f18 =
-        ((vehicleVelocityX / velocity) * (playerX - vehicleX)) + ((vehicleVelocityZ / velocity) * (playerZ - vehicleY));
+        ((vehicleVelocityX / velocity) * (playerX - vehicleX)) + ((vehicleVelocityZ / velocity) * (playerZ - vehicleZ));
     if ((-distanceX < temp_f18) && (temp_f18 < distanceX)) {
         temp_f18 = ((vehicleVelocityZ / velocity) * (playerX - vehicleX)) +
-                   (-(vehicleVelocityX / velocity) * (playerZ - vehicleY));
+                   (-(vehicleVelocityX / velocity) * (playerZ - vehicleZ));
         if ((-distanceY < temp_f18) && (temp_f18 < distanceY)) {
             return true;
         }
