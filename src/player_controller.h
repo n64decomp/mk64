@@ -74,7 +74,7 @@ void func_80030A34(Player*);
 void detect_triple_a_combo_a_released(Player*);
 void detect_triple_a_combo_a_pressed(Player*);
 void player_accelerate(Player*);
-void decelerate_player(Player*, f32);
+void player_decelerate(Player*, f32);
 void detect_triple_b_combo_b_released(Player*);
 void detect_triple_b_combo_b_pressed(Player*);
 void func_800323E4(Player*);
