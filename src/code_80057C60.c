@@ -555,7 +555,7 @@ void render_object_p1(void) {
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[0]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
 
-    func_8001C3C4(PLAYER_ONE);
+    render_bomb_karts_wrap(PLAYER_ONE);
     if (gGamestate == ENDING) {
         func_80055F48(PLAYER_ONE);
         func_80056160(PLAYER_ONE);
@@ -576,7 +576,7 @@ void render_object_p2(void) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[1]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(PLAYER_TWO);
+    render_bomb_karts_wrap(PLAYER_TWO);
     if (!gDemoMode) {
         render_lakitu(PLAYER_TWO);
     }
@@ -589,7 +589,7 @@ void render_object_p3(void) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[2]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(PLAYER_THREE);
+    render_bomb_karts_wrap(PLAYER_THREE);
     if (!gDemoMode) {
         render_lakitu(PLAYER_THREE);
     }
@@ -603,7 +603,7 @@ void render_object_p4(void) {
               G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&gGfxPool->mtxLookAt[3]),
               G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    func_8001C3C4(PLAYER_FOUR);
+    render_bomb_karts_wrap(PLAYER_FOUR);
     if ((!gDemoMode) && (gPlayerCountSelection1 == 4)) {
         render_lakitu(PLAYER_FOUR);
     }
